@@ -435,6 +435,17 @@ let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
 let V={playing:false,paused:false,idx:0,queue:[],pause:300,readPause:300,flipped:false,langs:{en:true,uk:true,de:true},timer:null,speed:1.0,repeats:1,repeatCount:0,mode:'smart'};
 
+// ── HAPTIC FEEDBACK ───────────────────────────────────────────
+// Android: реальна вібрація через Vibration API
+// iOS PWA: тихо ігнорується (API недоступний)
+const haptic = {
+  light:   ()=>navigator.vibrate?.([8]),
+  medium:  ()=>navigator.vibrate?.([15]),
+  heavy:   ()=>navigator.vibrate?.([25]),
+  success: ()=>navigator.vibrate?.([10, 60, 20]),
+  error:   ()=>navigator.vibrate?.([20, 40, 20, 40, 20]),
+};
+
 async function init(){
   await loadVoices();
   initVoiceSelects();
@@ -559,9 +570,9 @@ function renderVocabCard(){
   document.getElementById('vpbf').style.width=((V.idx/Math.max(1,V.queue.length))*100)+'%';
   document.getElementById('vprgtxt').textContent=(V.idx+1)+' / '+V.queue.length;
 }
-function flipCard(){V.flipped=!V.flipped;document.getElementById('flashcard').classList.toggle('flipped',V.flipped);}
-function vocabPrev(){stopVocab();if(!V.queue.length)return;V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();}
-function vocabNext(){stopVocab();V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();}
+function flipCard(){haptic.light();V.flipped=!V.flipped;document.getElementById('flashcard').classList.toggle('flipped',V.flipped);}
+function vocabPrev(){haptic.medium();stopVocab();if(!V.queue.length)return;V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();}
+function vocabNext(){haptic.medium();stopVocab();V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();}
 function resetVocabQ(){const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);}
 
 // ── SWIPE ─────────────────────────────────────────────────────
@@ -574,8 +585,8 @@ function initSwipe(){
     const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
     const adx=Math.abs(dx),ady=Math.abs(dy);
     if(!moved||adx<8&&ady<8){flipCard();return;}
-    if(adx>ady&&adx>48){if(dx<0)vocabNext();else vocabPrev();}
-    else if(ady>adx&&ady>48)flipCard();
+    if(adx>ady&&adx>48){haptic.medium();if(dx<0)vocabNext();else vocabPrev();}
+    else if(ady>adx&&ady>48){flipCard();}
   },{passive:true});
 }
 
@@ -622,6 +633,7 @@ function cycleVocabMode(){
 // ── FAVORITES ─────────────────────────────────────────────────
 function isFavorite(id){try{return!!JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite;}catch(e){return false;}}
 function toggleFavorite(id){
+  haptic.light();
   const key='mova_'+id;let data={};try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
   data.favorite=!data.favorite;localStorage.setItem(key,JSON.stringify(data));
   const fav=data.favorite;
@@ -667,7 +679,7 @@ function trackCardToday(id){
       p.weekHistory[today]=true;
       const keys=Object.keys(p.weekHistory).sort();
       if(keys.length>30)keys.slice(0,keys.length-30).forEach(k=>delete p.weekHistory[k]);
-      saveProgress(p);renderStreakUI(true);return;
+      saveProgress(p);renderStreakUI(true);haptic.success();return;
     }
     saveProgress(p);renderStreakUI();
   }catch(e){}
@@ -712,7 +724,7 @@ function initVocabChips(){
   div.innerHTML='<button class="chip active" onclick="setVocabCat(\'all\',this)">Alle</button>';
   CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+c.de;btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
 }
-function setVocabCat(id,btn){const sel=document.getElementById('vf-cat');if(sel)sel.value=id;document.querySelectorAll('#vchips .chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');resetVocabQ();}
+function setVocabCat(id,btn){haptic.light();const sel=document.getElementById('vf-cat');if(sel)sel.value=id;document.querySelectorAll('#vchips .chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');resetVocabQ();}
 
 window.addEventListener('DOMContentLoaded',init);
 
