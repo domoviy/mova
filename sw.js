@@ -2,7 +2,7 @@
 // ⚠️  Змінюйте CACHE_VERSION при кожному оновленні файлів на GitHub.
 //     Браузер виявить зміну і автоматично завантажить нову версію.
 //     Формат: 'mova-v<major>.<minor>' — напр. mova-v1.1, mova-v1.2
-const CACHE_VERSION = 'mova-v1.0';
+const CACHE_VERSION = 'mova-v1.1';
 
 const ASSETS = [
   '/mova/',
