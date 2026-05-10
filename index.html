@@ -12,6 +12,56 @@
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<!-- Firebase Analytics -->
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getAnalytics, logEvent, setUserId } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js';
+
+const firebaseConfig = {
+  apiKey: "AIzaSyAxY0dxMiCDtpQBsDgrrOm2Q7tTZWfe98c",
+  authDomain: "mova-b.firebaseapp.com",
+  projectId: "mova-b",
+  storageBucket: "mova-b.firebasestorage.app",
+  messagingSenderId: "961357218910",
+  appId: "1:961357218910:web:7c4ff747076a6349de20cf",
+  measurementId: "G-MLNBGMC805"
+};
+
+const app  = initializeApp(firebaseConfig);
+const anal = getAnalytics(app);
+
+// ── Persistent user ID ──────────────────────────────────────
+// Зберігаємо UUID між сесіями → Firebase може рахувати retention
+let uid = localStorage.getItem('mova_uid');
+if(!uid){ uid = crypto.randomUUID(); localStorage.setItem('mova_uid', uid); }
+setUserId(anal, uid);
+
+// ── Session tracking ────────────────────────────────────────
+const sessionId    = Date.now().toString();
+const sessionStart = Date.now();
+
+logEvent(anal, 'app_open', {
+  session_id: sessionId,
+  app_version: document.querySelector('script[src*="sw.js"]')?.src.match(/v=([\d.]+)/)?.[1] || '?'
+});
+
+// Session length при переході у фон
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState === 'hidden'){
+    logEvent(anal, 'session_end', {
+      session_id: sessionId,
+      duration_sec: Math.round((Date.now() - sessionStart) / 1000)
+    });
+  }
+});
+
+// ── Expose globally для основного скрипту ───────────────────
+window.mlog = (event, params={}) => {
+  try{ logEvent(anal, event, { session_id: sessionId, ...params }); }
+  catch(e){}
+};
+</script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d2b1a'/%3E%3Cpath d='M3,18 L7,11 C8.5,13 10,15 11,14 S13,8 13.5,9 C14,10 15.5,13 16,12 C16.5,11 21,5 24,4 L24,2 L30,2' fill='none' stroke='%23c9a84c' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <style>
 /* ══ TOKENS ══ */
@@ -425,7 +475,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '1.0.3';
+const APP_VERSION = '1.0.4';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -569,7 +619,7 @@ function renderVocabCard(){
   const v=V.queue[V.idx];if(!v)return;
   const cat=CATS.find(c=>c.id===v.cat);
   const al=getActiveLangs();
-  if(!V.flipped)trackCardToday(v.id);
+  if(!V.flipped){trackCardToday(v.id);window.mlog?.('card_viewed',{cat:v.cat,mode:V.mode});}
   const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${v.term[l]||v.term.de}</div><div class="fc-short">${v.short[l]||v.short.de}</div></div></div>`).join('');
   const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${v.def[l]||v.def.de}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('flashcard');if(!card)return;
@@ -594,9 +644,13 @@ function renderVocabCard(){
   document.getElementById('vpbf').style.width=((V.idx/Math.max(1,V.queue.length))*100)+'%';
   document.getElementById('vprgtxt').textContent=(V.idx+1)+' / '+V.queue.length;
 }
-function flipCard(){haptic.light();V.flipped=!V.flipped;document.getElementById('flashcard').classList.toggle('flipped',V.flipped);}
-function vocabPrev(){haptic.medium();stopVocab();if(!V.queue.length)return;V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();}
-function vocabNext(){haptic.medium();stopVocab();V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();}
+function flipCard(){
+  haptic.light();V.flipped=!V.flipped;
+  document.getElementById('flashcard').classList.toggle('flipped',V.flipped);
+  if(V.flipped) window.mlog?.('card_flipped');
+}
+function vocabPrev(){haptic.medium();stopVocab();if(!V.queue.length)return;V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();window.mlog?.('card_nav',{direction:'prev'});}
+function vocabNext(){haptic.medium();stopVocab();V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();window.mlog?.('card_nav',{direction:'next'});}
 function resetVocabQ(){const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);}
 
 // ── SWIPE ─────────────────────────────────────────────────────
@@ -621,20 +675,20 @@ function toggleVocab(){
     V.playing=true;V.paused=false;
     document.getElementById('vplaybtn').textContent='⏸';
     document.getElementById('vplaybtn').classList.add('pause');
+    window.mlog?.('autoplay_started',{mode:V.mode,queue_size:V.queue.length});
     playVocabNext();
   } else if(!V.paused){
-    // Пауза
     V.paused=true;
-    speechSynthesis.cancel(); // cancel надійніше ніж pause() після блокування екрану
+    speechSynthesis.cancel();
     clearTimeout(V.timer);
     document.getElementById('vplaybtn').textContent='▶';
     document.getElementById('vplaybtn').classList.remove('pause');
+    window.mlog?.('autoplay_paused');
   } else {
-    // Відновлення — перезапускаємо поточну картку замість resume()
     V.paused=false;
     document.getElementById('vplaybtn').textContent='⏸';
     document.getElementById('vplaybtn').classList.add('pause');
-    // Якщо картка вже перевернута — починаємо з визначень, інакше з початку
+    window.mlog?.('autoplay_resumed');
     const v=V.queue[V.idx];
     const al=getActiveLangs();
     if(v&&V.flipped){
@@ -698,6 +752,7 @@ function toggleFavorite(id){
   const fav=data.favorite;
   document.querySelectorAll('.fc-fav,.fc-fav-back').forEach(btn=>{btn.textContent=fav?'★':'☆';btn.classList.toggle('active',fav);});
   notify(fav?'★ Favorit hinzugefügt':'☆ Aus Favoriten entfernt');
+  window.mlog?.('favorite_changed',{action: fav?'add':'remove'});
   updateFavBadge();
 }
 function updateFavBadge(){const count=VOCAB.filter(v=>isFavorite(v.id)).length;const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
@@ -749,7 +804,9 @@ function trackCardToday(id){
       p.weekHistory[today]=true;
       const keys=Object.keys(p.weekHistory).sort();
       if(keys.length>30)keys.slice(0,keys.length-30).forEach(k=>delete p.weekHistory[k]);
-      saveProgress(p);renderStreakUI(true);haptic.success();return;
+      saveProgress(p);renderStreakUI(true);haptic.success();
+      window.mlog?.('streak_completed',{streak:p.streak,total_cards:p.totalCards,goal:goal});
+      return;
     }
     saveProgress(p);renderStreakUI();
   }catch(e){}
@@ -806,7 +863,7 @@ function initVocabChips(){
   div.innerHTML='<button class="chip active" onclick="setVocabCat(\'all\',this)">Alle</button>';
   CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+c.de;btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
 }
-function setVocabCat(id,btn){haptic.light();const sel=document.getElementById('vf-cat');if(sel)sel.value=id;document.querySelectorAll('#vchips .chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');resetVocabQ();}
+function setVocabCat(id,btn){haptic.light();const sel=document.getElementById('vf-cat');if(sel)sel.value=id;document.querySelectorAll('#vchips .chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');window.mlog?.('category_selected',{cat:id});resetVocabQ();}
 
 window.addEventListener('DOMContentLoaded',init);
 
