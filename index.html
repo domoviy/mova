@@ -37,19 +37,15 @@ body{
   overscroll-behavior:none;
 }
 
-/* ══ LANDSCAPE LOCK ══ */
-#rotate-msg{
-  display:none;position:fixed;inset:0;z-index:9999;
-  background:var(--forest);
-  flex-direction:column;align-items:center;justify-content:center;gap:16px;
-  color:var(--gold-lt);font-size:18px;font-weight:600;text-align:center;
-  padding:24px;
-}
-#rotate-msg .icon{font-size:48px;animation:rotateHint 2s ease-in-out infinite}
-@keyframes rotateHint{0%,100%{transform:rotate(0)}50%{transform:rotate(-90deg)}}
+/* ══ PORTRAIT LOCK ══ */
 @media(orientation:landscape){
-  #rotate-msg{display:flex}
-  body > *:not(#rotate-msg){visibility:hidden}
+  body{
+    width:100vh;
+    height:100vw;
+    transform-origin:top left;
+    transform:rotate(90deg) translateY(-100%);
+    overflow:hidden;
+  }
 }
 
 /* ══ LAYOUT ══ */
@@ -297,12 +293,6 @@ body{
 </head>
 <body>
 
-<!-- Landscape rotation message -->
-<div id="rotate-msg">
-  <div class="icon">📱</div>
-  <div>Bitte das Gerät<br>hochkant halten</div>
-</div>
-
 <script src="vocab-data.js"></script>
 
 <!-- ══ MAIN COL ══ -->
@@ -378,10 +368,10 @@ body{
 
       <div class="ssec">
         <h3>Wiedergabe</h3>
-        <div class="srow"><div class="srow-label"><label>Wiederholungen</label><small>Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×'"><span id="vrpv2">1×</span></div></div>
-        <div class="srow"><div class="srow-label"><label>Tempo</label><small>Sprechgeschwindigkeit</small></div><div class="srow-ctrl"><input type="range" min="0.6" max="2" step="0.1" value="1.0" id="vspeed" oninput="V.speed=+this.value;document.getElementById('vspv').textContent=(+this.value).toFixed(1)+'×'"><span id="vspv">1.0×</span></div></div>
-        <div class="srow"><div class="srow-label"><label>Pause</label><small>Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s'"><span id="vppv">0,3s</span></div></div>
-        <div class="srow"><div class="srow-label"><label>Lesepause</label><small>Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s'"><span id="vrpv">0,3s</span></div></div>
+        <div class="srow"><div class="srow-label"><label>Wiederholungen</label><small>Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
+        <div class="srow"><div class="srow-label"><label>Tempo</label><small>Sprechgeschwindigkeit</small></div><div class="srow-ctrl"><input type="range" min="0.6" max="2" step="0.1" value="1.0" id="vspeed" oninput="V.speed=+this.value;document.getElementById('vspv').textContent=(+this.value).toFixed(1)+'×';saveSettings()"><span id="vspv">1.0×</span></div></div>
+        <div class="srow"><div class="srow-label"><label>Pause</label><small>Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
+        <div class="srow"><div class="srow-label"><label>Lesepause</label><small>Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
         <div class="srow"><div class="srow-label"><label>Sprechrate</label><small>Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
       </div>
 
@@ -434,16 +424,31 @@ body{
 
 <script>
 // ── VERSION (змінити при кожному деплої для оновлення SW) ─────
-const APP_VERSION = '1.1.0';
+const APP_VERSION = '1.0.0';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
 
-// Відновлюємо збережені мови (або всі активні за замовчуванням)
+// Відновлюємо всі збережені налаштування
+const _s=JSON.parse(localStorage.getItem('mova_settings')||'{}');
 const savedLangs=JSON.parse(localStorage.getItem('mova_langs')||'null');
-let V={playing:false,paused:false,idx:0,queue:[],pause:300,readPause:300,flipped:false,
-  langs:savedLangs||{en:true,uk:true,de:true},
-  timer:null,speed:1.0,repeats:1,repeatCount:0,mode:'smart'};
+let V={
+  playing:false,paused:false,idx:0,queue:[],flipped:false,timer:null,
+  repeatCount:0,
+  langs:   savedLangs||{en:true,uk:true,de:true},
+  speed:   _s.speed   ??1.0,
+  repeats: _s.repeats ??1,
+  pause:   _s.pause   ??300,
+  readPause:_s.readPause??300,
+  mode:    _s.mode    ||'smart',
+};
+
+function saveSettings(){
+  localStorage.setItem('mova_settings',JSON.stringify({
+    speed:V.speed, repeats:V.repeats,
+    pause:V.pause, readPause:V.readPause, mode:V.mode
+  }));
+}
 
 // ── HAPTIC FEEDBACK ───────────────────────────────────────────
 // Android: реальна вібрація через Vibration API
@@ -458,12 +463,22 @@ const haptic = {
 
 async function init(){
   await loadVoices();
+  // Синхронізуємо слайдери із збереженими значеннями
+  const sp=document.getElementById('vspeed');if(sp){sp.value=V.speed;document.getElementById('vspv').textContent=V.speed.toFixed(1)+'×';}
+  const rp=document.getElementById('vrepeats');if(rp){rp.value=V.repeats;document.getElementById('vrpv2').textContent=V.repeats+'×';}
+  const pp=document.getElementById('vpause');if(pp){pp.value=V.pause/1000;document.getElementById('vppv').textContent=(V.pause/1000).toFixed(1).replace('.',',')+'s';}
+  const lp=document.getElementById('vreadpause');if(lp){lp.value=V.readPause/1000;document.getElementById('vrpv').textContent=(V.readPause/1000).toFixed(1).replace('.',',')+'s';}
+  // Синхронізуємо кнопку режиму
+  const sb=document.getElementById('vshuffle-btn');
+  if(sb){sb.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'}}[V.mode];sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
   initVoiceSelects();
   initVocab();
   initVocabChips();
   updateFavBadge();
   renderStreakUI();
   initSwipe();
+  // PWA portrait lock via API (працює тільки в installed PWA)
+  try{await screen.orientation?.lock?.('portrait');}catch(e){}
 }
 
 // ── TTS ───────────────────────────────────────────────────────
@@ -641,7 +656,7 @@ function cycleVocabMode(){
   const modes=['smart','seq','random'];V.mode=modes[(modes.indexOf(V.mode)+1)%3];
   const btn=document.getElementById('vshuffle-btn');
   if(btn){btn.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'}}[V.mode];btn.textContent=cfg.icon;if(cfg.cls)btn.classList.add(cfg.cls);}
-  resetVocabQ();
+  saveSettings();resetVocabQ();
 }
 
 // ── FAVORITES ─────────────────────────────────────────────────
@@ -730,7 +745,19 @@ function renderVocabBrowse(){
   const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||'de';
   document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term[dl]||v.term.de}</div><div class="vmc-short">${v.short[dl]||v.short.de}</div></div>`;}).join('');
 }
-function openVocabCard(idx){V.idx=idx;V.flipped=false;if(!V.queue.length)V.queue=buildVocabQueue();renderVocabCard();document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===0));document.getElementById('vocab-panel-card').style.display='';document.getElementById('vocab-panel-browse').style.display='none';}
+function openVocabCard(vocabIdx){
+  const card=VOCAB[vocabIdx];if(!card)return;
+  if(!V.queue.length)V.queue=buildVocabQueue();
+  // Знаходимо картку у черзі за id
+  const qIdx=V.queue.findIndex(c=>c.id===card.id);
+  if(qIdx!==-1){V.idx=qIdx;}
+  else{V.queue.unshift(card);V.idx=0;} // якщо не в черзі — ставимо першою
+  V.flipped=false;
+  renderVocabCard();
+  document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===0));
+  document.getElementById('vocab-panel-card').style.display='';
+  document.getElementById('vocab-panel-browse').style.display='none';
+}
 
 // ── CHIPS ─────────────────────────────────────────────────────
 function initVocabChips(){
