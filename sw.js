@@ -2,7 +2,7 @@
 // ⚠️  Змінюйте CACHE_VERSION при кожному оновленні файлів на GitHub.
 //     Браузер виявить зміну і автоматично завантажить нову версію.
 //     Формат: 'mova-v<major>.<minor>' — напр. mova-v1.1, mova-v1.2
-const CACHE_VERSION = 'mova-v1.2';
+const CACHE_VERSION = 'mova-v1.3';
 
 const ASSETS = [
   '/mova/',
@@ -38,7 +38,20 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
-  // vocab-data.js: Network First — нові картки одразу без зміни версії SW
+  // index.html — завжди з мережі (щоб оновлення були миттєвими)
+  if(url.pathname === '/mova/' || url.pathname.endsWith('index.html')){
+    e.respondWith(
+      fetch(e.request)
+        .then(res => {
+          caches.open(CACHE_VERSION).then(c => c.put(e.request, res.clone()));
+          return res;
+        })
+        .catch(() => caches.match(e.request))
+    );
+    return;
+  }
+
+  // vocab-data.js — Network First (нові картки одразу)
   if(url.pathname.endsWith('vocab-data.js')){
     e.respondWith(
       fetch(e.request)
@@ -51,7 +64,7 @@ self.addEventListener('fetch', e => {
     return;
   }
 
-  // Все інше: Cache First (офлайн-підтримка)
+  // Все інше — Cache First (офлайн-підтримка)
   e.respondWith(
     caches.match(e.request).then(cached => cached ||
       fetch(e.request).then(res => {

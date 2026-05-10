@@ -423,8 +423,9 @@ body{
 <div class="notif" id="notif"></div>
 
 <script>
-// ── VERSION (змінити при кожному деплої для оновлення SW) ─────
-const APP_VERSION = '1.0.0';
+// ── VERSION ───────────────────────────────────────────────────
+// Змінюйте при кожному деплої → SW автоматично оновиться
+const APP_VERSION = '1.0.1';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -772,7 +773,8 @@ window.addEventListener('DOMContentLoaded',init);
 // ── SERVICE WORKER ────────────────────────────────────────────
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
-    navigator.serviceWorker.register('sw.js').then(reg=>{
+    // Версія в URL sw.js гарантує що браузер перевіряє оновлення при кожному деплої
+    navigator.serviceWorker.register(`sw.js?v=${APP_VERSION}`).then(reg=>{
       reg.addEventListener('updatefound',()=>{
         const nw=reg.installing;
         nw.addEventListener('statechange',()=>{
