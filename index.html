@@ -207,7 +207,7 @@ body{
 .flashcard.flipped{transform:rotateY(180deg)}
 .fc-face{
   grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  border-radius:16px;display:flex;flex-direction:column;min-height:200px;
+  border-radius:16px;display:flex;flex-direction:column;
 }
 .fc-front{
   background:linear-gradient(145deg,var(--forest),var(--leaf));
@@ -239,13 +239,13 @@ body{
 }
 .fc-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,.28);margin-left:auto}
 .fc-num-back{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-left:auto}
-.fc-body{padding:14px 16px;flex:1;display:flex;flex-direction:column;gap:7px}
+.fc-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px}
 .fc-lang-row{display:flex;align-items:baseline;gap:9px;margin-bottom:5px}
 .fc-flag{font-size:20px;flex-shrink:0}
 .fc-term{font-size:19px;font-weight:700;color:#fff;line-height:1.25}
 .fc-short{font-size:13px;color:rgba(255,255,255,.42);margin-top:1px}
-.fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:0 0 14px;margin-top:auto}
-.fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:0 0 14px;margin-top:auto}
+.fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:4px 0 14px}
+.fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:4px 0 14px}
 .fc-back-header{
   padding:13px 16px 10px;display:flex;align-items:center;
   gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--soft);
@@ -425,7 +425,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '1.0.1';
+const APP_VERSION = '1.0.3';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -616,9 +616,38 @@ function initSwipe(){
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
 function toggleVocab(){
-  if(!V.playing){if(!V.queue.length)V.queue=buildVocabQueue();V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();}
-  else if(!V.paused){V.paused=true;speechSynthesis.pause();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
-  else{V.paused=false;speechSynthesis.resume();document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');}
+  if(!V.playing){
+    if(!V.queue.length)V.queue=buildVocabQueue();
+    V.playing=true;V.paused=false;
+    document.getElementById('vplaybtn').textContent='⏸';
+    document.getElementById('vplaybtn').classList.add('pause');
+    playVocabNext();
+  } else if(!V.paused){
+    // Пауза
+    V.paused=true;
+    speechSynthesis.cancel(); // cancel надійніше ніж pause() після блокування екрану
+    clearTimeout(V.timer);
+    document.getElementById('vplaybtn').textContent='▶';
+    document.getElementById('vplaybtn').classList.remove('pause');
+  } else {
+    // Відновлення — перезапускаємо поточну картку замість resume()
+    V.paused=false;
+    document.getElementById('vplaybtn').textContent='⏸';
+    document.getElementById('vplaybtn').classList.add('pause');
+    // Якщо картка вже перевернута — починаємо з визначень, інакше з початку
+    const v=V.queue[V.idx];
+    const al=getActiveLangs();
+    if(v&&V.flipped){
+      speakVocabDefs(v,al,0,()=>{
+        if(!V.playing||V.paused)return;
+        saveCardPlay(v.id);V.repeatCount++;
+        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+      });
+    } else {
+      playVocabNext();
+    }
+  }
 }
 function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
 function playVocabNext(){
@@ -679,7 +708,18 @@ function renderFavGrid(){
   if(empty)empty.style.display='none';
   grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term[dl]||v.term.de}</div><div class="vmc-short">${v.short[dl]||v.short.de}</div></div>`;}).join('');
 }
-function openFavCard(idx){V.idx=idx;V.flipped=false;if(!V.queue.length)V.queue=buildVocabQueue();showView('vocab');setTimeout(()=>renderVocabCard(),50);}
+function openFavCard(vocabIdx){
+  const card=VOCAB[vocabIdx];if(!card)return;
+  // Черга — тільки обрані картки
+  const favQueue=VOCAB.filter(v=>isFavorite(v.id));
+  V.queue=favQueue;
+  // Знаходимо позицію картки в черзі обраних
+  const qIdx=favQueue.findIndex(v=>v.id===card.id);
+  V.idx=qIdx!==-1?qIdx:0;
+  V.flipped=false;
+  showView('vocab');
+  setTimeout(()=>renderVocabCard(),50);
+}
 
 // ── STATS ─────────────────────────────────────────────────────
 function saveCardPlay(id){const key='mova_'+id;let d={};try{d=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}d.totalPlays=(d.totalPlays||0)+1;d.lastSeen=Date.now();localStorage.setItem(key,JSON.stringify(d));}
