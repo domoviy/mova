@@ -112,15 +112,8 @@ body{
   background-image:radial-gradient(ellipse at 15% 50%,rgba(201,168,76,.08) 0%,transparent 60%);
 }
 #main-col{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
-#content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:12px 14px calc(var(--nav-h) + var(--prog-h) + env(safe-area-inset-bottom,0px) + 28px);-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+#content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:14px 14px calc(var(--nav-h) + var(--safe-b) + 64px);-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
 .view{display:none}.view.active{display:block}
-#view-vocab{flex-direction:column}
-#view-vocab.active{display:flex}
-#view-vocab > .vplayer{flex-shrink:0}
-#view-vocab > .vchips{flex-shrink:0}
-#view-vocab > .vtab-bar{flex-shrink:0}
-#vocab-panel-card{flex:1;min-height:0;display:flex;flex-direction:column}
-.fc-area{perspective:1400px;user-select:none;flex:1;min-height:0;margin-bottom:var(--gap)}
 #bottom-nav{
   position:fixed;bottom:0;left:0;right:0;z-index:20;
   background:var(--paper);border-top:1px solid var(--border);
@@ -317,13 +310,13 @@ body{
 }
 .fc-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,.28);margin-left:auto}
 .fc-num-back{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-left:auto}
-.fc-body{padding:14px 16px 0;display:flex;flex-direction:column;gap:7px;flex:1;overflow:hidden}
+.fc-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px}
 .fc-lang-row{display:flex;align-items:baseline;gap:9px;margin-bottom:5px}
 .fc-flag{font-size:20px;flex-shrink:0}
 .fc-term{font-size:19px;font-weight:700;color:#fff;line-height:1.25}
 .fc-short{font-size:13px;color:rgba(255,255,255,.42);margin-top:1px}
-.fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
-.fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
+.fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:4px 0 14px}
+.fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:4px 0 14px}
 .fc-back-header{
   padding:13px 16px 10px;display:flex;align-items:center;
   gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--soft);
@@ -371,10 +364,7 @@ body{
 .srow-ctrl{display:flex;gap:7px;align-items:center;flex-shrink:0}
 .srow-ctrl input[type=range]{width:85px;accent-color:var(--gold)}
 .srow-ctrl span{font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--gold);min-width:34px;text-align:right}
-.speed-toggle{display:flex;gap:6px}
-.sp-btn{padding:6px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--soft);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.15s}
-.sp-btn.active{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
-.sp-btn:active{opacity:.7}
+.btn{padding:8px 14px;border-radius:9px;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
 .btn-s{background:var(--soft);color:var(--warm);border:1px solid var(--border)}
 .btn-s:active{border-color:var(--red);color:var(--red)}
 </style>
@@ -457,27 +447,7 @@ body{
       <div class="ssec">
         <h3>Wiedergabe</h3>
         <div class="srow"><div class="srow-label"><label>Wiederholungen</label><small>Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
-        <div class="srow">
-          <div class="srow-label"><label>🇩🇪 Tempo</label><small>Deutsch</small></div>
-          <div class="speed-toggle" id="speed-de">
-            <button onclick="setLangSpeed('de','070')" class="sp-btn" data-lang="de" data-val="070">🐢 Langsam</button>
-            <button onclick="setLangSpeed('de','100')" class="sp-btn active" data-lang="de" data-val="100">▶ Normal</button>
-          </div>
-        </div>
-        <div class="srow">
-          <div class="srow-label"><label>🇬🇧 Tempo</label><small>English</small></div>
-          <div class="speed-toggle" id="speed-en">
-            <button onclick="setLangSpeed('en','070')" class="sp-btn" data-lang="en" data-val="070">🐢 Langsam</button>
-            <button onclick="setLangSpeed('en','100')" class="sp-btn active" data-lang="en" data-val="100">▶ Normal</button>
-          </div>
-        </div>
-        <div class="srow">
-          <div class="srow-label"><label>🇺🇦 Tempo</label><small>Українська</small></div>
-          <div class="speed-toggle" id="speed-uk">
-            <button onclick="setLangSpeed('uk','070')" class="sp-btn" data-lang="uk" data-val="070">🐢 Langsam</button>
-            <button onclick="setLangSpeed('uk','100')" class="sp-btn active" data-lang="uk" data-val="100">▶ Normal</button>
-          </div>
-        </div>
+        <div class="srow"><div class="srow-label"><label>Tempo</label><small>Sprechgeschwindigkeit</small></div><div class="srow-ctrl"><input type="range" min="0.6" max="2" step="0.1" value="1.0" id="vspeed" oninput="V.speed=+this.value;document.getElementById('vspv').textContent=(+this.value).toFixed(1)+'×';saveSettings()"><span id="vspv">1.0×</span></div></div>
         <div class="srow"><div class="srow-label"><label>Pause</label><small>Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
         <div class="srow"><div class="srow-label"><label>Lesepause</label><small>Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
         <div class="srow"><div class="srow-label"><label>Sprechrate</label><small>Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
@@ -533,7 +503,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '1.0.7';
+const APP_VERSION = '1.0.6';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -541,37 +511,18 @@ let vs={};
 // Відновлюємо всі збережені налаштування
 const _s=JSON.parse(localStorage.getItem('mova_settings')||'{}');
 const savedLangs=JSON.parse(localStorage.getItem('mova_langs')||'null');
-// Швидкість по мовах: '070' або '100'
-const savedLangSpeeds=JSON.parse(localStorage.getItem('mova_lang_speed')||'null');
 let V={
   playing:false,paused:false,idx:0,queue:[],flipped:false,timer:null,
   repeatCount:0,
-  langs:    savedLangs||{en:true,uk:true,de:true},
-  langSpeed:savedLangSpeeds||{de:'100',en:'100',uk:'100'},
-  speed:    _s.speed   ??1.0,
-  repeats:  _s.repeats ??1,
-  pause:    _s.pause   ??300,
+  langs:   savedLangs||{en:true,uk:true,de:true},
+  speed:   _s.speed   ??1.0,
+  repeats: _s.repeats ??1,
+  pause:   _s.pause   ??300,
   readPause:_s.readPause??300,
-  mode:     _s.mode    ||'smart',
+  mode:    _s.mode    ||'smart',
 };
 
-function setLangSpeed(lang,val){
-  V.langSpeed[lang]=val;
-  localStorage.setItem('mova_lang_speed',JSON.stringify(V.langSpeed));
-  // Оновлюємо кнопки
-  document.querySelectorAll(`.sp-btn[data-lang="${lang}"]`).forEach(b=>{
-    b.classList.toggle('active',b.dataset.val===val);
-  });
-}
-
-function syncSpeedButtons(){
-  ['de','en','uk'].forEach(lang=>{
-    const val=V.langSpeed[lang]||'100';
-    document.querySelectorAll(`.sp-btn[data-lang="${lang}"]`).forEach(b=>{
-      b.classList.toggle('active',b.dataset.val===val);
-    });
-  });
-}
+function saveSettings(){
   localStorage.setItem('mova_settings',JSON.stringify({
     speed:V.speed, repeats:V.repeats,
     pause:V.pause, readPause:V.readPause, mode:V.mode
@@ -604,7 +555,6 @@ async function init(){
   initVocabChips();
   updateFavBadge();
   renderStreakUI();
-  syncSpeedButtons();
   initSwipe();
   // PWA portrait lock via API (працює тільки в installed PWA)
   try{await screen.orientation?.lock?.('portrait');}catch(e){}
@@ -647,7 +597,7 @@ function showView(id){
   const btn=document.querySelector('[data-view="'+id+'"]');if(btn)btn.classList.add('active');
   if(id==='vocab'){initVocab();initVocabChips();}
   if(id==='favs')renderFavGrid();
-  if(id==='settings'){initVoiceSelects();renderStreakUI();syncSpeedButtons();}
+  if(id==='settings'){initVoiceSelects();renderStreakUI();}
   document.getElementById('content').scrollTo(0,0);
 }
 
