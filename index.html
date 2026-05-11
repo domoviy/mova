@@ -72,6 +72,9 @@ window.mlog = (event, params={}) => {
   --ink:#1c1917;    --warm:#44403c; --muted:#78716c;
   --border:#e7e3dc; --soft:#f5f2eb; --red:#c0392b;
   --nav-h:64px;
+  --hdr-h:56px;
+  --prog-h:44px;  /* висота vprogrow */
+  --gap:10px;     /* однаковий відступ між всіма блоками */
   --safe-t:env(safe-area-inset-top,0px);
   --safe-b:env(safe-area-inset-bottom,0px);
 }
@@ -247,9 +250,27 @@ body{
 .vtab.active{color:var(--ink);border-bottom-color:var(--gold)}
 
 /* ══ FLASHCARD ══ */
-.fc-area{perspective:1400px;margin-bottom:10px;user-select:none}
+.fc-area{
+  perspective:1400px;
+  user-select:none;
+  /* Весь вільний простір між контентом вгорі і vprogrow внизу */
+  height:calc(
+    100dvh
+    - var(--hdr-h) - var(--safe-t)  /* header */
+    - 75px                            /* vplayer */
+    - var(--gap)
+    - 40px                            /* chips */
+    - var(--gap)
+    - 38px                            /* tabs */
+    - var(--gap)
+    - var(--prog-h) - var(--gap)      /* vprogrow + gap під нею */
+    - var(--nav-h)                    /* bottom-nav */
+    - env(safe-area-inset-bottom,0px)
+  );
+  margin-bottom:var(--gap);
+}
 .flashcard{
-  width:100%;position:relative;
+  width:100%;height:100%;position:relative;
   transform-style:preserve-3d;
   transition:transform .5s cubic-bezier(.4,0,.2,1);
   cursor:pointer;display:grid;
@@ -257,7 +278,7 @@ body{
 .flashcard.flipped{transform:rotateY(180deg)}
 .fc-face{
   grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;
-  border-radius:16px;display:flex;flex-direction:column;
+  border-radius:16px;display:flex;flex-direction:column;height:100%;overflow:hidden;
 }
 .fc-front{
   background:linear-gradient(145deg,var(--forest),var(--leaf));
@@ -297,22 +318,22 @@ body{
 .fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:4px 0 14px}
 .fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:4px 0 14px}
 .fc-back-header{
-  padding:13px 16px 0;
-  border-bottom:1px solid var(--soft);
+  padding:13px 16px 10px;display:flex;align-items:center;
+  gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--soft);
 }
-.fc-back-header-row{
-  display:flex;align-items:center;gap:8px;margin-bottom:8px;
-}
-.fc-back-term{
-  font-size:17px;font-weight:700;color:var(--ink);
-  padding:0 16px 12px;line-height:1.3;
-  word-break:break-word;
-}
+.fc-back-term{font-size:15px;font-weight:700;color:var(--ink);flex:1;min-width:0;word-break:break-word}
 .fc-def-block{margin-bottom:9px}
 .fc-def-lang-label{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:2px}
 .fc-def{font-size:14px;line-height:1.6;color:var(--warm)}
 
-/* ══ PROGRESS ══ */
+@keyframes slideOutLeft {from{transform:translateX(0);opacity:1}to{transform:translateX(-110%);opacity:0}}
+@keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(110%);opacity:0}}
+@keyframes slideInLeft {from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes slideInRight{from{transform:translateX(-110%);opacity:0}to{transform:translateX(0);opacity:1}}
+.fc-area.swipe-out-left  .flashcard{animation:slideOutLeft  .2s ease forwards}
+.fc-area.swipe-out-right .flashcard{animation:slideOutRight .2s ease forwards}
+.fc-area.swipe-in-left   .flashcard{animation:slideInLeft   .22s ease forwards}
+.fc-area.swipe-in-right  .flashcard{animation:slideInRight  .22s ease forwards}
 .vprogrow{
   position:fixed;
   bottom:calc(var(--nav-h) + var(--safe-b) + 8px);
@@ -482,7 +503,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '1.0.5';
+const APP_VERSION = '1.0.6';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -641,25 +662,43 @@ function renderVocabCard(){
     <div class="fc-hint">↕ Tippen · ← → Wischen</div>`;
   document.getElementById('fc-back-inner').innerHTML=`
     <div class="fc-back-header">
-      <div class="fc-back-header-row">
-        <button class="fc-fav-back ${fav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${v.id}')">${fav?'★':'☆'}</button>
-        <span class="fc-flag" style="font-size:16px">🇩🇪</span>
-        <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e+' '+cat.de:v.cat}</span>
-      </div>
-      <div class="fc-back-term">${v.term.de}</div>
+      <button class="fc-fav-back ${fav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${v.id}')">${fav?'★':'☆'}</button>
+      <span class="fc-flag" style="font-size:15px">🇩🇪</span>
+      <span class="fc-back-term">${v.term.de}</span>
+      <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
     </div>
     <div class="fc-body" style="padding-top:12px">${defRows}</div>
     <div class="fc-hint-back">↕ Zurück zur Vorderseite</div>`;
   document.getElementById('vpbf').style.width=((V.idx/Math.max(1,V.queue.length))*100)+'%';
   document.getElementById('vprgtxt').textContent=(V.idx+1)+' / '+V.queue.length;
 }
+function swipeCard(dir, action){
+  const area=document.getElementById('fc-area');
+  const outCls=dir==='left'?'swipe-out-left':'swipe-out-right';
+  const inCls =dir==='left'?'swipe-in-left':'swipe-in-right';
+  area.classList.add(outCls);
+  setTimeout(()=>{
+    area.classList.remove(outCls);
+    action();
+    area.classList.add(inCls);
+    setTimeout(()=>area.classList.remove(inCls),240);
+  },180);
+}
 function flipCard(){
   haptic.light();V.flipped=!V.flipped;
   document.getElementById('flashcard').classList.toggle('flipped',V.flipped);
   if(V.flipped) window.mlog?.('card_flipped');
 }
-function vocabPrev(){haptic.medium();stopVocab();if(!V.queue.length)return;V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();window.mlog?.('card_nav',{direction:'prev'});}
-function vocabNext(){haptic.medium();stopVocab();V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();window.mlog?.('card_nav',{direction:'next'});}
+function vocabPrev(){
+  haptic.medium();stopVocab();if(!V.queue.length)return;
+  swipeCard('right',()=>{V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();});
+  window.mlog?.('card_nav',{direction:'prev'});
+}
+function vocabNext(){
+  haptic.medium();stopVocab();
+  swipeCard('left',()=>{V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();});
+  window.mlog?.('card_nav',{direction:'next'});
+}
 function resetVocabQ(){const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);}
 
 // ── SWIPE ─────────────────────────────────────────────────────
@@ -672,8 +711,10 @@ function initSwipe(){
     const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
     const adx=Math.abs(dx),ady=Math.abs(dy);
     if(!moved||adx<8&&ady<8){flipCard();return;}
-    if(adx>ady&&adx>48){haptic.medium();if(dx<0)vocabNext();else vocabPrev();}
-    else if(ady>adx&&ady>48){flipCard();}
+    if(adx>ady&&adx>48){
+      if(dx<0){haptic.medium();swipeCard('left',()=>{V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();});}
+      else{haptic.medium();swipeCard('right',()=>{V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();});}
+    }else if(ady>adx&&ady>48){flipCard();}
   },{passive:true});
 }
 
