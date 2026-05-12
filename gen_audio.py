@@ -6,6 +6,8 @@ MOVA · Azure TTS Audio Generator
 
 import os, sys, json, re, subprocess, time, pathlib
 import urllib.request, urllib.error
+from concurrent.futures import ThreadPoolExecutor, as_completed
+import threading
 
 # ── Конфігурація ──────────────────────────────────────────────
 AZURE_KEY    = os.environ['AZURE_SPEECH_KEY']
@@ -118,58 +120,67 @@ def synthesize(ssml, retries=3):
     return None
 
 # ── Main ──────────────────────────────────────────────────────
+manifest_lock = threading.Lock()
+
+def process_one(task, manifest):
+    card, field, lang, speed_key = task
+    card_id = card['id']
+    text = card.get(field, {}).get(lang) or card.get(field, {}).get('de', '')
+    if not text:
+        return 'skip', f'{card_id}_{field}_{lang}_{speed_key}'
+
+    mkey = manifest_key(card_id, field, lang, speed_key)
+    fname = AUDIO_DIR / f'{card_id}_{field}_{lang}_{speed_key}.mp3'
+
+    with manifest_lock:
+        if mkey in manifest and fname.exists():
+            return 'skip', mkey
+
+    ssml  = build_ssml(text, lang, speed_key)
+    audio = synthesize(ssml)
+
+    if audio:
+        fname.write_bytes(audio)
+        with manifest_lock:
+            manifest[mkey] = True
+            save_manifest(manifest)
+        return 'ok', mkey
+    return 'err', mkey
+
 def main():
     print(f'\n🎙  MOVA Audio Generator  |  Course: {COURSE}')
     print(f'    Region: {AZURE_REGION}  |  Output: {AUDIO_DIR}\n')
 
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
-
     vocab, cats = load_vocab()
     manifest    = load_manifest()
 
-    total    = len(vocab) * len(FIELDS) * len(VOICES) * len(SPEEDS)
-    done     = 0
-    skipped  = 0
-    errors   = 0
-    generated = 0
+    # Будуємо список всіх завдань
+    tasks = [
+        (card, field, lang, speed)
+        for card  in vocab
+        for field in FIELDS
+        for lang  in VOICES
+        for speed in SPEEDS
+    ]
+    total = len(tasks)
+    done = skipped = errors = generated = 0
 
-    for card in vocab:
-        card_id = card['id']
-        for field in FIELDS:
-            for lang in VOICES:
-                text = card.get(field, {}).get(lang) or card.get(field, {}).get('de', '')
-                if not text:
-                    print(f'  ⚠  {card_id} {field} {lang}: empty text, skip')
-                    skipped += 1
-                    continue
+    print(f'    Total tasks: {total}  (parallel workers: 8)\n')
 
-                for speed_key in SPEEDS:
-                    mkey = manifest_key(card_id, field, lang, speed_key)
-                    fname = AUDIO_DIR / f'{card_id}_{field}_{lang}_{speed_key}.mp3'
-
-                    done += 1
-
-                    # Пропускаємо якщо вже є
-                    if mkey in manifest and fname.exists():
-                        skipped += 1
-                        continue
-
-                    print(f'  [{done}/{total}] {card_id} {field} {lang} {speed_key}x ... ', end='', flush=True)
-
-                    ssml  = build_ssml(text, lang, speed_key)
-                    audio = synthesize(ssml)
-
-                    if audio:
-                        fname.write_bytes(audio)
-                        manifest[mkey] = True
-                        generated += 1
-                        print('✓')
-                        # Зберігаємо маніфест після кожного файлу (збереження прогресу)
-                        save_manifest(manifest)
-                        time.sleep(0.15)  # rate limiting
-                    else:
-                        errors += 1
-                        print('✗ error')
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        futures = {pool.submit(process_one, t, manifest): t for t in tasks}
+        for fut in as_completed(futures):
+            done += 1
+            status, mkey = fut.result()
+            if status == 'ok':
+                generated += 1
+                print(f'  [{done}/{total}] ✓ {mkey}')
+            elif status == 'skip':
+                skipped += 1
+            else:
+                errors += 1
+                print(f'  [{done}/{total}] ✗ {mkey}')
 
     print(f'\n✅  Done: {generated} generated, {skipped} skipped, {errors} errors')
     return 0 if errors == 0 else 1
