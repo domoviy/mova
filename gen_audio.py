@@ -86,25 +86,36 @@ def build_ssml(text, lang, speed_key):
 </speak>'''
 
 # ── Azure TTS Request ─────────────────────────────────────────
-def synthesize(ssml):
+def synthesize(ssml, retries=3):
     """Відправляє SSML на Azure TTS і повертає MP3 bytes."""
-    req = urllib.request.Request(
-        TTS_URL,
-        data=ssml.encode('utf-8'),
-        headers={
-            'Ocp-Apim-Subscription-Key': AZURE_KEY,
-            'Content-Type': 'application/ssml+xml',
-            'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
-            'User-Agent': 'MOVA-TTS-Generator/1.0',
-        },
-        method='POST'
-    )
-    try:
-        with urllib.request.urlopen(req) as resp:
-            return resp.read()
-    except urllib.error.HTTPError as e:
-        print(f'  ✗ Azure error {e.code}: {e.read().decode()}')
-        return None
+    for attempt in range(retries):
+        req = urllib.request.Request(
+            TTS_URL,
+            data=ssml.encode('utf-8'),
+            headers={
+                'Ocp-Apim-Subscription-Key': AZURE_KEY,
+                'Content-Type': 'application/ssml+xml',
+                'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
+                'User-Agent': 'MOVA-TTS-Generator/1.0',
+            },
+            method='POST'
+        )
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:  # 30s timeout
+                return resp.read()
+        except urllib.error.HTTPError as e:
+            body = e.read().decode()
+            if e.code == 429:  # Rate limit
+                wait = int(e.headers.get('Retry-After', 60))
+                print(f'  ⏳ Rate limit, waiting {wait}s...')
+                time.sleep(wait)
+            else:
+                print(f'  ✗ Azure {e.code}: {body[:100]}')
+                return None
+        except (urllib.error.URLError, TimeoutError) as e:
+            print(f'  ✗ Network error (attempt {attempt+1}): {e}')
+            time.sleep(5)
+    return None
 
 # ── Main ──────────────────────────────────────────────────────
 def main():
