@@ -104,23 +104,29 @@ body{
 /* ══ LAYOUT ══ */
 #header{
   background:var(--forest);
-  padding-top:var(--safe-t);
-  height:calc(var(--hdr-h, 56px) + var(--safe-t));
+  padding-top:env(safe-area-inset-top,0px);
+  min-height:56px;
   display:flex;align-items:center;
   padding-left:16px;padding-right:16px;
   gap:14px;flex-shrink:0;z-index:10;
   background-image:radial-gradient(ellipse at 15% 50%,rgba(201,168,76,.08) 0%,transparent 60%);
 }
 #main-col{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
-#content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;padding:14px 14px calc(var(--nav-h) + var(--safe-b) + 64px);-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
-.view{display:none}.view.active{display:block}
+#content{flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain}
+.view{display:none}.view.active{display:block;padding:12px 14px}
+/* Vokabeln — особливий layout без скролу */
+#view-vocab{padding:0 !important}
+#view-vocab.active{display:flex;flex-direction:column;height:100%}
+#view-vocab .vocab-top{padding:12px 14px 0;flex-shrink:0}
+#vocab-panel-card{flex:1;min-height:0;display:flex;flex-direction:column;padding:0 14px}
+.fc-area{perspective:1400px;user-select:none;flex:1;min-height:120px;margin-bottom:8px}
 #bottom-nav{
   position:fixed;bottom:0;left:0;right:0;z-index:20;
   background:var(--paper);border-top:1px solid var(--border);
   display:flex;align-items:stretch;
   padding-bottom:env(safe-area-inset-bottom,0px);
 }
-.bn-item{height:var(--nav-h)}
+.bn-item{height:64px}
 
 /* ══ HEADER ELEMENTS ══ */
 .h-logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
@@ -184,7 +190,7 @@ body{
 }
 .notif.show{transform:translateX(-50%) translateY(0);opacity:1}
 
-/* ══ PLAYER ══ */
+#view-favs.active,#view-settings.active{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px) + 16px)}
 .vplayer{
   background:var(--paper);border-radius:14px;border:1px solid var(--border);
   padding:11px 13px;margin-bottom:12px;
@@ -310,13 +316,13 @@ body{
 }
 .fc-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,.28);margin-left:auto}
 .fc-num-back{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-left:auto}
-.fc-body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:7px}
+.fc-body{padding:14px 16px 0;display:flex;flex-direction:column;gap:7px;flex:1;overflow:hidden}
 .fc-lang-row{display:flex;align-items:baseline;gap:9px;margin-bottom:5px}
 .fc-flag{font-size:20px;flex-shrink:0}
 .fc-term{font-size:19px;font-weight:700;color:#fff;line-height:1.25}
 .fc-short{font-size:13px;color:rgba(255,255,255,.42);margin-top:1px}
-.fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:4px 0 14px}
-.fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:4px 0 14px}
+.fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
+.fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
 .fc-back-header{
   padding:13px 16px 10px;display:flex;align-items:center;
   gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--soft);
@@ -364,14 +370,59 @@ body{
 .srow-ctrl{display:flex;gap:7px;align-items:center;flex-shrink:0}
 .srow-ctrl input[type=range]{width:85px;accent-color:var(--gold)}
 .srow-ctrl span{font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--gold);min-width:34px;text-align:right}
-.btn{padding:8px 14px;border-radius:9px;border:none;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.speed-toggle{display:flex;gap:6px}
+.sp-btn{padding:6px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--soft);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.15s}
+.sp-btn.active{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
+.sp-btn:active{opacity:.7}
 .btn-s{background:var(--soft);color:var(--warm);border:1px solid var(--border)}
 .btn-s:active{border-color:var(--red);color:var(--red)}
 </style>
 </head>
 <body>
 
-<script src="vocab-data.js"></script>
+<script>
+// ── КАТЕГОРІЇ ─────────────────────────────────────────────────
+const CATS = [
+  {id:'NVV',                    de:'Nomen-Verb-Verbindungen',  e:'🔗'},
+  {id:'Soft Skills',            de:'Soft Skills',              e:'☺️'},
+  {id:'Hard Skills',            de:'Hard Skills',              e:'⚒️'},
+  {id:'Mein Beruf',             de:'Mein Beruf',               e:'👨‍💻'},
+  {id:'Zusammenarbeit',         de:'Zusammenarbeit',           e:'👥'},
+  {id:'Mein Weg in den Beruf',  de:'Mein Weg in den Beruf',    e:'🦶'},
+  {id:'Der erste Arbeitstag',   de:'Der erste Arbeitstag',     e:'📆'},
+  {id:'Über uns',               de:'Über uns',                 e:'🫶'},
+  {id:'Kommunikation ist alles',de:'Kommunikation ist alles',  e:'🤷‍♂️'}
+];
+const LC = {
+  de:{code:'de-DE', ms:['Katja','Hedda','Stefan','Conrad','Anna']},
+  en:{code:'en-US', ms:['Aria','Jenny','Guy','Zira','David','Ava','Allison']},
+  uk:{code:'uk-UA', ms:['Ostap','Polina','Lesya','Dmytro']}
+};
+const F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪'};
+const LN = {en:'English', uk:'Українська', de:'Deutsch'};
+
+const VOCAB = [
+  {
+    id:'nvv_001', cat:'NVV',
+    term: {de:'sich in Acht nehmen vor', en:'to be wary of', uk:'остерігатися чогось'},
+    short:{de:'aufpassen, vorsichtig sein', en:'to be careful', uk:'бути обережним'},
+    def:  {de:'Vor komplizierten Verträgen sollte man sich in Acht nehmen.', en:'One should be wary of complicated contracts.', uk:'Слід бути обережним щодо складних договорів.'}
+  },
+  {
+    id:'nvv_002', cat:'NVV',
+    term: {de:'jdm. Achtung entgegenbringen', en:'to show respect to someone', uk:'виявляти повагу до когось'},
+    short:{de:'jdn. respektieren', en:'to respect someone', uk:'поважати когось'},
+    def:  {de:'Es ist wichtig, auch der Konkurrenz Achtung entgegenzubringen.', en:'It is important to show respect even to the competition.', uk:'Важливо виявляти повагу навіть до конкурентів.'}
+  },
+  {
+    id:'nvv_003', cat:'NVV',
+    term: {de:'die Absicht haben zu', en:'to intend to', uk:'мати намір'},
+    short:{de:'beabsichtigen', en:'to plan to do', uk:'планувати зробити'},
+    def:  {de:'Ich habe die Absicht, Karriere zu machen.', en:'I intend to build a career.', uk:"Я маю намір зробити кар'єру."}
+  }
+  // ← Ваші картки додаються сюди
+];
+</script>
 
 <!-- ══ MAIN COL ══ -->
 <div id="main-col">
@@ -400,21 +451,23 @@ body{
 
     <!-- VOKABELN -->
     <div id="view-vocab" class="view active">
-      <div class="vplayer">
-        <button class="vplay" id="vplaybtn" onclick="toggleVocab()">▶</button>
-        <button class="vstop" onclick="stopVocab()">⏹</button>
-        <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()">🧠</button>
-        <div class="vlang-grp">
-          <button class="vlang-btn on" id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
-          <button class="vlang-btn on" id="vlcard-uk" onclick="toggleVocabLang('uk')">🇺🇦 UK</button>
-          <button class="vlang-btn on" id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
+      <div class="vocab-top">
+        <div class="vplayer">
+          <button class="vplay" id="vplaybtn" onclick="toggleVocab()">▶</button>
+          <button class="vstop" onclick="stopVocab()">⏹</button>
+          <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()">🧠</button>
+          <div class="vlang-grp">
+            <button class="vlang-btn on" id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
+            <button class="vlang-btn on" id="vlcard-uk" onclick="toggleVocabLang('uk')">🇺🇦 UK</button>
+            <button class="vlang-btn on" id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
+          </div>
+          <select id="vf-cat" onchange="resetVocabQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
-        <select id="vf-cat" onchange="resetVocabQ()" style="display:none"><option value="all">Alle</option></select>
-      </div>
-      <div class="vchips" id="vchips"></div>
-      <div class="vtab-bar" id="vocab-tabs">
-        <button class="vtab active" onclick="switchVocabTab(0)">🃏 Karte</button>
-        <button class="vtab" onclick="switchVocabTab(1)">📋 Alle</button>
+        <div class="vchips" id="vchips"></div>
+        <div class="vtab-bar" id="vocab-tabs">
+          <button class="vtab active" onclick="switchVocabTab(0)">🃏 Karte</button>
+          <button class="vtab" onclick="switchVocabTab(1)">📋 Alle</button>
+        </div>
       </div>
       <div id="vocab-panel-card">
         <div class="fc-area" id="fc-area">
@@ -447,7 +500,27 @@ body{
       <div class="ssec">
         <h3>Wiedergabe</h3>
         <div class="srow"><div class="srow-label"><label>Wiederholungen</label><small>Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
-        <div class="srow"><div class="srow-label"><label>Tempo</label><small>Sprechgeschwindigkeit</small></div><div class="srow-ctrl"><input type="range" min="0.6" max="2" step="0.1" value="1.0" id="vspeed" oninput="V.speed=+this.value;document.getElementById('vspv').textContent=(+this.value).toFixed(1)+'×';saveSettings()"><span id="vspv">1.0×</span></div></div>
+        <div class="srow">
+          <div class="srow-label"><label>🇩🇪 Tempo</label><small>Deutsch</small></div>
+          <div class="speed-toggle" id="speed-de">
+            <button onclick="setLangSpeed('de','070')" class="sp-btn" data-lang="de" data-val="070">🐢 Langsam</button>
+            <button onclick="setLangSpeed('de','100')" class="sp-btn active" data-lang="de" data-val="100">▶ Normal</button>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="srow-label"><label>🇬🇧 Tempo</label><small>English</small></div>
+          <div class="speed-toggle" id="speed-en">
+            <button onclick="setLangSpeed('en','070')" class="sp-btn" data-lang="en" data-val="070">🐢 Langsam</button>
+            <button onclick="setLangSpeed('en','100')" class="sp-btn active" data-lang="en" data-val="100">▶ Normal</button>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="srow-label"><label>🇺🇦 Tempo</label><small>Українська</small></div>
+          <div class="speed-toggle" id="speed-uk">
+            <button onclick="setLangSpeed('uk','070')" class="sp-btn" data-lang="uk" data-val="070">🐢 Langsam</button>
+            <button onclick="setLangSpeed('uk','100')" class="sp-btn active" data-lang="uk" data-val="100">▶ Normal</button>
+          </div>
+        </div>
         <div class="srow"><div class="srow-label"><label>Pause</label><small>Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
         <div class="srow"><div class="srow-label"><label>Lesepause</label><small>Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
         <div class="srow"><div class="srow-label"><label>Sprechrate</label><small>Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
@@ -503,7 +576,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '1.0.6';
+const APP_VERSION = '1.0.9';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -511,18 +584,37 @@ let vs={};
 // Відновлюємо всі збережені налаштування
 const _s=JSON.parse(localStorage.getItem('mova_settings')||'{}');
 const savedLangs=JSON.parse(localStorage.getItem('mova_langs')||'null');
+// Швидкість по мовах: '070' або '100'
+const savedLangSpeeds=JSON.parse(localStorage.getItem('mova_lang_speed')||'null');
 let V={
   playing:false,paused:false,idx:0,queue:[],flipped:false,timer:null,
   repeatCount:0,
-  langs:   savedLangs||{en:true,uk:true,de:true},
-  speed:   _s.speed   ??1.0,
-  repeats: _s.repeats ??1,
-  pause:   _s.pause   ??300,
+  langs:    savedLangs||{en:true,uk:true,de:true},
+  langSpeed:savedLangSpeeds||{de:'100',en:'100',uk:'100'},
+  speed:    _s.speed   ??1.0,
+  repeats:  _s.repeats ??1,
+  pause:    _s.pause   ??300,
   readPause:_s.readPause??300,
-  mode:    _s.mode    ||'smart',
+  mode:     _s.mode    ||'smart',
 };
 
-function saveSettings(){
+function setLangSpeed(lang,val){
+  V.langSpeed[lang]=val;
+  localStorage.setItem('mova_lang_speed',JSON.stringify(V.langSpeed));
+  // Оновлюємо кнопки
+  document.querySelectorAll(`.sp-btn[data-lang="${lang}"]`).forEach(b=>{
+    b.classList.toggle('active',b.dataset.val===val);
+  });
+}
+
+function syncSpeedButtons(){
+  ['de','en','uk'].forEach(lang=>{
+    const val=V.langSpeed[lang]||'100';
+    document.querySelectorAll(`.sp-btn[data-lang="${lang}"]`).forEach(b=>{
+      b.classList.toggle('active',b.dataset.val===val);
+    });
+  });
+}
   localStorage.setItem('mova_settings',JSON.stringify({
     speed:V.speed, repeats:V.repeats,
     pause:V.pause, readPause:V.readPause, mode:V.mode
@@ -555,6 +647,7 @@ async function init(){
   initVocabChips();
   updateFavBadge();
   renderStreakUI();
+  syncSpeedButtons();
   initSwipe();
   // PWA portrait lock via API (працює тільки в installed PWA)
   try{await screen.orientation?.lock?.('portrait');}catch(e){}
@@ -577,17 +670,54 @@ async function loadVoices(){
     else{speechSynthesis.onvoiceschanged=load;setTimeout(load,1200);}
   });
 }
-function speak(text,l,onEnd){
-  stopTTS();
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang=LC[l].code;if(vs[l])u.voice=vs[l];
-  u.rate=V.playing?V.speed:parseFloat(document.getElementById('trate')?.value||1);
-  u.onend=onEnd||null;
-  u.onerror=(e)=>{if(e.error!=='interrupted'&&e.error!=='canceled'&&onEnd)onEnd();};
-  speechSynthesis.speak(u);
-  document.getElementById('stopbtn').classList.add('show');
+// ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
+const AUDIO_BASE = 'audio/B2-Beruf/';
+let currentAudio = null;
+
+function getAudioUrl(cardId, field, lang){
+  const speed = V.langSpeed?.[lang] || '100';
+  return `${AUDIO_BASE}${cardId}_${field}_${lang}_${speed}.mp3`;
 }
-function stopTTS(){speechSynthesis.cancel();document.getElementById('stopbtn').classList.remove('show');}
+
+function playAzureAudio(url, onEnd){
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  const a = new Audio(url);
+  currentAudio = a;
+  a.onended  = ()=>{ currentAudio=null; onEnd&&onEnd(); };
+  a.onerror  = ()=>{ currentAudio=null; onEnd&&onEnd(); }; // fallback на Web Speech
+  a.play().catch(()=>{ currentAudio=null; onEnd&&onEnd(); });
+}
+
+function speak(text, lang, onEnd, cardId, field){
+  stopTTS();
+  // Якщо є cardId і field — пробуємо Azure
+  if(cardId && field){
+    const url = getAudioUrl(cardId, field, lang);
+    // Перевіряємо чи існує файл
+    fetch(url, {method:'HEAD'}).then(r=>{
+      if(r.ok){ playAzureAudio(url, onEnd); }
+      else     { webSpeech(text, lang, onEnd); }
+    }).catch(()=>webSpeech(text, lang, onEnd));
+    return;
+  }
+  webSpeech(text, lang, onEnd);
+}
+
+function webSpeech(text, lang, onEnd){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang  = LC[lang].code;
+  if(vs[lang]) u.voice = vs[lang];
+  u.rate  = parseFloat(document.getElementById('trate')?.value||1);
+  u.onend = onEnd||null;
+  u.onerror=(e)=>{ if(e.error!=='interrupted'&&e.error!=='canceled'&&onEnd)onEnd(); };
+  speechSynthesis.speak(u);
+}
+
+function stopTTS(){
+  speechSynthesis.cancel();
+  if(currentAudio){ currentAudio.pause(); currentAudio=null; }
+  document.getElementById('stopbtn').classList.remove('show');
+}
 
 // ── NAVIGATION ────────────────────────────────────────────────
 function showView(id){
@@ -597,7 +727,7 @@ function showView(id){
   const btn=document.querySelector('[data-view="'+id+'"]');if(btn)btn.classList.add('active');
   if(id==='vocab'){initVocab();initVocabChips();}
   if(id==='favs')renderFavGrid();
-  if(id==='settings'){initVoiceSelects();renderStreakUI();}
+  if(id==='settings'){initVoiceSelects();renderStreakUI();syncSpeedButtons();}
   document.getElementById('content').scrollTo(0,0);
 }
 
@@ -773,8 +903,20 @@ function playVocabNext(){
     });
   });
 }
-function speakVocabTerms(v,langs,i,done){if(!V.playing||V.paused){done&&done();return;}if(i>=langs.length){done&&done();return;}speak(v.term[langs[i]]||v.term.de,langs[i],()=>setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause));}
-function speakVocabDefs(v,langs,i,done){if(!V.playing||V.paused){done&&done();return;}if(i>=langs.length){done&&done();return;}speak(v.def[langs[i]]||v.def.de,langs[i],()=>setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause));}
+function speakVocabTerms(v,langs,i,done){
+  if(!V.playing||V.paused){done&&done();return;}
+  if(i>=langs.length){done&&done();return;}
+  speak(v.term[langs[i]]||v.term.de, langs[i],
+    ()=>setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause),
+    v.id, 'term');
+}
+function speakVocabDefs(v,langs,i,done){
+  if(!V.playing||V.paused){done&&done();return;}
+  if(i>=langs.length){done&&done();return;}
+  speak(v.def[langs[i]]||v.def.de, langs[i],
+    ()=>setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause),
+    v.id, 'def');
+}
 
 // ── LANG ──────────────────────────────────────────────────────
 function getActiveLangs(){return['en','uk','de'].filter(l=>V.langs[l]);}
