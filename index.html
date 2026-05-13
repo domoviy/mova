@@ -515,7 +515,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '1.1.2';
+const APP_VERSION = '1.1.3';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -761,13 +761,28 @@ function flipCard(){
   if(V.flipped) window.mlog?.('card_flipped');
 }
 function vocabPrev(){
-  haptic.medium();stopVocab();if(!V.queue.length)return;
-  swipeCard('right',()=>{V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();});
+  haptic.medium();
+  const wasPlaying=V.playing;
+  stopVocab();
+  if(!V.queue.length)return;
+  swipeCard('right',()=>{
+    V.idx=(V.idx-1+V.queue.length)%V.queue.length;
+    V.flipped=false;V.repeatCount=0;
+    renderVocabCard();
+    if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+  });
   window.mlog?.('card_nav',{direction:'prev'});
 }
 function vocabNext(){
-  haptic.medium();stopVocab();
-  swipeCard('left',()=>{V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();});
+  haptic.medium();
+  const wasPlaying=V.playing;
+  stopVocab();
+  swipeCard('left',()=>{
+    V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}
+    V.flipped=false;V.repeatCount=0;
+    renderVocabCard();
+    if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+  });
   window.mlog?.('card_nav',{direction:'next'});
 }
 function resetVocabQ(){const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);}
@@ -783,8 +798,14 @@ function initSwipe(){
     const adx=Math.abs(dx),ady=Math.abs(dy);
     if(!moved||adx<8&&ady<8){flipCard();return;}
     if(adx>ady&&adx>48){
-      if(dx<0){haptic.medium();swipeCard('left',()=>{V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;renderVocabCard();});}
-      else{haptic.medium();swipeCard('right',()=>{V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;renderVocabCard();});}
+      const wp=V.playing;
+      if(dx<0){
+        haptic.medium();stopVocab();
+        swipeCard('left',()=>{V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);});
+      }else{
+        haptic.medium();stopVocab();if(!V.queue.length)return;
+        swipeCard('right',()=>{V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);});
+      }
     }else if(ady>adx&&ady>48){flipCard();}
   },{passive:true});
 }
@@ -900,13 +921,21 @@ function cycleVocabMode(){
 function isFavorite(id){try{return!!JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite;}catch(e){return false;}}
 function toggleFavorite(id){
   haptic.light();
-  const key='mova_'+id;let data={};try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
-  data.favorite=!data.favorite;localStorage.setItem(key,JSON.stringify(data));
+  const key='mova_'+id;let data={};
+  try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+  data.favorite=!data.favorite;
+  localStorage.setItem(key,JSON.stringify(data));
   const fav=data.favorite;
-  document.querySelectorAll('.fc-fav,.fc-fav-back').forEach(btn=>{btn.textContent=fav?'★':'☆';btn.classList.toggle('active',fav);});
+  // Оновлюємо лише кнопки — не перерендеримо картку, не чіпаємо V.flipped
+  document.querySelectorAll('.fc-fav,.fc-fav-back').forEach(btn=>{
+    btn.textContent=fav?'★':'☆';
+    btn.classList.toggle('active',fav);
+  });
   notify(fav?'★ Favorit hinzugefügt':'☆ Aus Favoriten entfernt');
-  window.mlog?.('favorite_changed',{action: fav?'add':'remove'});
+  window.mlog?.('favorite_changed',{action:fav?'add':'remove'});
   updateFavBadge();
+  // Якщо активний режим Favoriten і картку прибрали — перебудовуємо чергу
+  if(!fav && V.queue===VOCAB.filter(v=>isFavorite(v.id))) resetVocabQ();
 }
 function updateFavBadge(){const count=VOCAB.filter(v=>isFavorite(v.id)).length;const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
 function renderFavGrid(){
