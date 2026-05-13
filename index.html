@@ -515,7 +515,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '1.1.1';
+const APP_VERSION = '1.1.2';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -832,15 +832,19 @@ function playVocabNext(){
   else{V.flipped=false;document.getElementById('flashcard').classList.remove('flipped');}
   const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;playVocabNext();return;}
   const al=getActiveLangs();
+  // term → short (DE only, as hint) → flip → def
   speakVocabTerms(v,al,0,()=>{
     if(!V.playing||V.paused)return;
-    V.flipped=true;document.getElementById('flashcard').classList.add('flipped');
-    speakVocabDefs(v,al,0,()=>{
+    // short — тільки DE, як підказка перед перекладом
+    speakVocabShort(v,al,()=>{
       if(!V.playing||V.paused)return;
-      saveCardPlay(v.id);V.repeatCount++;
-      const delay=V.repeatCount<V.repeats?V.readPause:V.readPause;
-      if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
-      else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+      V.flipped=true;document.getElementById('flashcard').classList.add('flipped');
+      speakVocabDefs(v,al,0,()=>{
+        if(!V.playing||V.paused)return;
+        saveCardPlay(v.id);V.repeatCount++;
+        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+      });
     });
   });
 }
@@ -850,6 +854,22 @@ function speakVocabTerms(v,langs,i,done){
   speak(v.term[langs[i]]||v.term.de, langs[i],
     ()=>setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause),
     v.id, 'term');
+}
+function speakVocabShort(v,langs,done){
+  if(!V.playing||V.paused){done&&done();return;}
+  // Перевіряємо чи є хоч один short текст
+  const hasShort=langs.some(l=>v.short?.[l]||v.short?.de);
+  if(!hasShort){done&&done();return;}
+  setTimeout(()=>speakVocabShortLang(v,langs,0,done),V.pause);
+}
+function speakVocabShortLang(v,langs,i,done){
+  if(!V.playing||V.paused){done&&done();return;}
+  if(i>=langs.length){done&&done();return;}
+  const text=v.short?.[langs[i]]||v.short?.de;
+  if(!text){speakVocabShortLang(v,langs,i+1,done);return;}
+  speak(text,langs[i],
+    ()=>setTimeout(()=>speakVocabShortLang(v,langs,i+1,done),V.pause),
+    v.id,'short');
 }
 function speakVocabDefs(v,langs,i,done){
   if(!V.playing||V.paused){done&&done();return;}
