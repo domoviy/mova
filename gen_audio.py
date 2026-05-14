@@ -119,7 +119,7 @@ def synthesize(ssml, retries=3):
             method='POST'
         )
         try:
-            with urllib.request.urlopen(req, timeout=20) as r:
+            with urllib.request.urlopen(req, timeout=90) as r: # було timeout=90
                 data = r.read()
                 time.sleep(DELAY_SEC)  # пауза після успіху
                 return data
