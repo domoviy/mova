@@ -18,7 +18,8 @@ TTS_URL      = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservic
 COURSE    = 'B2-Beruf'
 AUDIO_DIR = pathlib.Path('audio') / COURSE
 MANIFEST  = pathlib.Path('audio') / 'manifest.json'
-WORKERS   = 4   # паралельні запити (F0 ліміт ~20 rps)
+WORKERS   = 1    # F0 tier: тільки 1 паралельний запит
+DELAY_SEC = 0.6  # пауза між запитами щоб не попасти в rate limit
 FIELDS    = ['term', 'short', 'def']
 
 VOICES = {
@@ -119,11 +120,13 @@ def synthesize(ssml, retries=3):
         )
         try:
             with urllib.request.urlopen(req, timeout=20) as r:
-                return r.read()
+                data = r.read()
+                time.sleep(DELAY_SEC)  # пауза після успіху
+                return data
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                wait = int(e.headers.get('Retry-After', 30))
-                print(f'\n  ⏳ Rate limit 429, wait {wait}s...', flush=True)
+                wait = int(e.headers.get('Retry-After', 10))
+                print(f'\n  ⏳ 429 Rate limit, wait {wait}s...', flush=True)
                 time.sleep(wait)
             else:
                 print(f'\n  ✗ HTTP {e.code}: {e.read().decode()[:80]}', flush=True)
@@ -161,18 +164,34 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2')
-    print(f'    Region: {AZURE_REGION} | Course: {COURSE} | Workers: {WORKERS}')
+    print(f'\n🎙  MOVA TTS Generator v2', flush=True)
+    print(f'    Region: {AZURE_REGION} | Course: {COURSE} | Workers: {WORKERS}', flush=True)
 
     if not AZURE_KEY:
-        print('✗ AZURE_SPEECH_KEY не встановлений!'); return 1
+        print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
+
+    # ── Тест з'єднання з Azure ────────────────────────────────
+    print('\n🔌 Тест з\'єднання з Azure...', flush=True)
+    test_ssml = '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="de"><voice name="de-DE-KatjaNeural"><prosody rate="1.0">Test</prosody></voice></speak>'
+    test_audio = synthesize(test_ssml)
+    if test_audio:
+        print(f'   ✓ Azure OK — отримано {len(test_audio)} bytes', flush=True)
+    else:
+        print('   ✗ Azure НЕДОСТУПНИЙ — перевірте KEY і REGION!', flush=True)
+        return 1
 
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
+    print(f'   ✓ Папка {AUDIO_DIR} готова', flush=True)
 
     print('\n📖 Завантаження бази...', flush=True)
-    vocab    = load_vocab()
+    try:
+        vocab = load_vocab()
+    except Exception as e:
+        print(f'   ✗ Помилка завантаження бази: {e}', flush=True)
+        return 1
+
     manifest = load_manifest()
-    print(f'   Карток: {len(vocab)}', flush=True)
+    print(f'   ✓ Карток: {len(vocab)} | В маніфесті: {len(manifest)}', flush=True)
 
     tasks = [
         (card, field, lang, speed)
@@ -182,15 +201,15 @@ def main():
         for speed in SPEEDS
     ]
 
-    total = len(tasks)
+    total   = len(tasks)
     already = sum(1 for c,f,l,s in tasks
                   if f'{COURSE}/{c["id"]}_{f}_{l}_{s}' in manifest
                   and (AUDIO_DIR/f'{c["id"]}_{f}_{l}_{s}.mp3').exists())
 
-    print(f'\n🎯 Завдань: {total} | Вже є: {already} | Нових: {total-already}')
+    print(f'\n🎯 Завдань: {total} | Вже є: {already} | Нових: {total-already}', flush=True)
 
     if total == already:
-        print('\n✅ Всі файли вже згенеровані!'); return 0
+        print('\n✅ Всі файли вже згенеровані!', flush=True); return 0
 
     print(f'\n▶  Генерація ({WORKERS} паралельних запитів)...\n', flush=True)
 
@@ -202,10 +221,10 @@ def main():
             done += 1
             status, mkey = fut.result()
             if   status == 'ok':   generated += 1; print(f'  ✓ [{done}/{total}] {mkey}', flush=True)
-            elif status == 'skip': skipped   += 1
-            else:                  errors    += 1; print(f'  ✗ [{done}/{total}] {mkey}', flush=True)
+            elif status == 'skip': skipped   += 1; print(f'  · [{done}/{total}] skip {mkey}', flush=True)
+            else:                  errors    += 1; print(f'  ✗ [{done}/{total}] ERROR {mkey}', flush=True)
 
-    print(f'\n{"✅" if errors==0 else "⚠️"}  Готово: +{generated} нових, {skipped} пропущено, {errors} помилок')
+    print(f'\n{"✅" if errors==0 else "⚠️"}  Готово: +{generated} нових, {skipped} пропущено, {errors} помилок', flush=True)
     return 0 if errors == 0 else 1
 
 if __name__ == '__main__':
