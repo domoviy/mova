@@ -442,21 +442,21 @@ body{
         <div class="srow">
           <div class="srow-label"><label>🇩🇪 Tempo</label><small>Deutsch</small></div>
           <div class="speed-toggle" id="speed-de">
-            <button onclick="setLangSpeed('de','070')" class="sp-btn" data-lang="de" data-val="070">🐢 Langsam</button>
+            <button onclick="setLangSpeed('de','080')" class="sp-btn" data-lang="de" data-val="080">🐢 Langsam</button>
             <button onclick="setLangSpeed('de','100')" class="sp-btn active" data-lang="de" data-val="100">▶ Normal</button>
           </div>
         </div>
         <div class="srow">
           <div class="srow-label"><label>🇬🇧 Tempo</label><small>English</small></div>
           <div class="speed-toggle" id="speed-en">
-            <button onclick="setLangSpeed('en','070')" class="sp-btn" data-lang="en" data-val="070">🐢 Langsam</button>
+            <button onclick="setLangSpeed('en','080')" class="sp-btn" data-lang="en" data-val="080">🐢 Langsam</button>
             <button onclick="setLangSpeed('en','100')" class="sp-btn active" data-lang="en" data-val="100">▶ Normal</button>
           </div>
         </div>
         <div class="srow">
           <div class="srow-label"><label>🇺🇦 Tempo</label><small>Українська</small></div>
           <div class="speed-toggle" id="speed-uk">
-            <button onclick="setLangSpeed('uk','070')" class="sp-btn" data-lang="uk" data-val="070">🐢 Langsam</button>
+            <button onclick="setLangSpeed('uk','080')" class="sp-btn" data-lang="uk" data-val="080">🐢 Langsam</button>
             <button onclick="setLangSpeed('uk','100')" class="sp-btn active" data-lang="uk" data-val="100">▶ Normal</button>
           </div>
         </div>
@@ -523,7 +523,7 @@ let vs={};
 // Відновлюємо всі збережені налаштування
 const _s=JSON.parse(localStorage.getItem('mova_settings')||'{}');
 const savedLangs=JSON.parse(localStorage.getItem('mova_langs')||'null');
-// Швидкість по мовах: '070' або '100'
+// Швидкість по мовах: '080' або '100'
 const savedLangSpeeds=JSON.parse(localStorage.getItem('mova_lang_speed')||'null');
 let V={
   playing:false,paused:false,idx:0,queue:[],flipped:false,timer:null,
