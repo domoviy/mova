@@ -19,7 +19,7 @@ COURSE    = 'B2-Beruf'
 AUDIO_DIR = pathlib.Path('audio') / COURSE
 MANIFEST  = pathlib.Path('audio') / 'manifest.json'
 WORKERS   = 1    # F0 tier: тільки 1 паралельний запит
-DELAY_SEC = 2.1  # пауза між запитами щоб не попасти в rate limit
+DELAY_SEC = 3.6  # пауза між запитами щоб не попасти в rate limit
 FIELDS    = ['term', 'short', 'def']
 
 VOICES = {
