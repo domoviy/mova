@@ -39,7 +39,8 @@ const LN = {en:'English', uk:'Українська', de:'Deutsch'};
 // ── КАРТКИ ───────────────────────────────────────────────────
 const VOCAB = [
 
-// ── Nomen-Verb-Verbindungen ────────────────────────────
-{"id":"nvv_001","cat":"NVV","term":{"de":"sich in Acht nehmen vor","en":"to be wary of / to watch out for","uk":"остерігатися / бути обережним щодо чогось"},"short":{"de":"aufpassen, vorsichtig sein","en":"to be careful, cautious","uk":"бути уважним, обережним"},"def":{"de":"Vor komplizierten Verträgen sollte man sich in Acht nehmen.","en":"One should be wary of complicated contracts.","uk":"Слід бути обережним щодо складних договорів."}}
+{"id":"ss_001","cat":"Soft Skills","term":{"de":"die Kommunikationsfähigkeit","en":"communication skills","uk":"комунікабельність"},"short":{"de":"sich klar ausdrücken","en":"expressing oneself clearly","uk":"вміння чітко висловлюватися"},"def":{"de":"Gut mit anderen sprechen und auch gut zuhören können.","en":"Being able to speak well with others and also listen well.","uk":"Вміння добре спілкуватися з іншими, а також уважно слухати."}},
+{"id":"ss_002","cat":"Soft Skills","term":{"de":"die Teamfähigkeit","en":"ability to work in a team","uk":"вміння працювати в команді"},"short":{"de":"Kooperation mit Kollegen","en":"cooperation with colleagues","uk":"співпраця з колегами"},"def":{"de":"Gut und freundlich mit anderen Personen zusammenarbeiten.","en":"Working well and friendly with other people.","uk":"Добра та дружня співпраця з іншими людьми."}},
+{"id":"ss_003","cat":"Soft Skills","term":{"de":"die Problemlösungskompetenz","en":"problem-solving skills","uk":"навичка вирішення проблем"},"short":{"de":"Lösungen finden","en":"finding solutions","uk":"пошук рішень"},"def":{"de":"Schwierige Situationen verstehen und schnell eine Lösung finden.","en":"Understanding difficult situations and finding a solution quickly.","uk":"Розуміння складних ситуацій та швидкий пошук рішення."}}
 
 ];
