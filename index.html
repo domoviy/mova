@@ -616,9 +616,11 @@ const AUDIO_BASE = 'audio/B2-Beruf/';
 let currentAudio = null;
 let audioAbortController = null; // Новий контролер для скасування запитів fetch
 
-function getAudioUrl(cardId, field, lang){
+function getAudioUrl(cardId, field, lang) {
   const speed = V.langSpeed?.[lang] || '100';
-  return `${AUDIO_BASE}${cardId}_${field}_${lang}_${speed}.mp3`;
+  // v= допомагає браузеру ігнорувати старий кеш при оновленні файлів
+  const v = Date.now(); 
+  return `audio/B2-Beruf/${cardId}_${field}_${lang}_${speed}.mp3?v=${v}`;
 }
 
 function playAzureAudio(url, onEnd){
@@ -633,29 +635,28 @@ function playAzureAudio(url, onEnd){
 function speak(text, lang, onEnd, cardId, field) {
   stopTTS();
   
-  // Створюємо контролер для можливості скасування запиту
+  // Створюємо контролер для можливості миттєвого скасування запиту
   audioAbortController = new AbortController();
   const signal = audioAbortController.signal;
 
   if (cardId && field) {
-    // Формуємо прямий шлях до файлу: audio/B2-Beruf/ID_field_lang.mp3
-    // Наприклад: audio/B2-Beruf/101_fc-term_de-DE.mp3
-    const url = `audio/B2-Beruf/${cardId}_${field}_${lang}.mp3`;
+    const url = getAudioUrl(cardId, field, lang);
     
     fetch(url, { method: 'HEAD', signal })
       .then(r => {
         if (r.ok) { 
-          // Якщо файл знайдено — граємо його
           playAzureAudio(url, onEnd); 
-        } else { 
-          // Якщо файлу немає (404) — використовуємо генерацію мови
-          console.warn("Audio file not found:", url);
-          webSpeech(text, lang, onEnd); 
+        } else {
+          // Якщо файл зі швидкістю не знайдено, пробуємо без швидкості у назві
+          const fallbackUrl = `audio/B2-Beruf/${cardId}_${field}_${lang}.mp3`;
+          fetch(fallbackUrl, { method: 'HEAD', signal }).then(r2 => {
+            if (r2.ok) playAzureAudio(fallbackUrl, onEnd);
+            else webSpeech(text, lang, onEnd);
+          }).catch(() => webSpeech(text, lang, onEnd));
         }
       })
       .catch(err => {
-        if (err.name === 'AbortError') return;
-        // У разі помилки мережі — генерація мови
+        if (err.name === 'AbortError') return; // Запит було скасовано нами
         webSpeech(text, lang, onEnd);
       });
     return;
