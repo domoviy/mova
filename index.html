@@ -621,7 +621,12 @@ function getAudioUrl(cardId, field, lang) {
   const cleanField = field.replace('fc-', '');
   const speed = (typeof V !== 'undefined' && V.langSpeed?.[lang]) || '100';
   const v = Date.now();
-  return `audio/B2-Beruf/nvv_${cardId}_${cleanField}_${shortLang}_${speed}.mp3?v=${v}`;
+
+  // Перевіряємо, чи cardId вже містить nvv_, щоб не дублювати префікс
+  const idStr = cardId.toString();
+  const finalId = idStr.startsWith('nvv_') ? idStr : `nvv_${idStr}`;
+
+  return `audio/B2-Beruf/${finalId}_${cleanField}_${shortLang}_${speed}.mp3?v=${v}`;
 }
 
 function playAzureAudio(url, onEnd){

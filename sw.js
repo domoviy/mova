@@ -1,4 +1,5 @@
-const CACHE_VERSION = 'mova-v1.1.9';
+// ══ MOVA Service Worker ══════════════════════════════════════
+const CACHE_VERSION = 'mova-v1.1.10';
 
 const ASSETS = [
   './',
@@ -27,10 +28,12 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+  // Пропускаємо технічні перевірки (HEAD), щоб не ламався кеш
   if (e.request.method !== 'GET') return;
 
   const url = new URL(e.request.url);
 
+  // vocab-data.js — Network First
   if (url.pathname.endsWith('vocab-data.js')) {
     e.respondWith(
       fetch(e.request)
@@ -44,6 +47,7 @@ self.addEventListener('fetch', e => {
     return;
   }
 
+  // Все інше — Cache First
   e.respondWith(
     caches.match(e.request).then(cached => {
       return cached || fetch(e.request).then(res => {
