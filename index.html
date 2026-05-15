@@ -614,6 +614,7 @@ async function loadVoices(){
 // ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
 const AUDIO_BASE = 'audio/B2-Beruf/';
 let currentAudio = null;
+let audioAbortController = null; // Новий контролер для скасування запитів fetch
 
 function getAudioUrl(cardId, field, lang){
   const speed = V.langSpeed?.[lang] || '100';
@@ -629,16 +630,30 @@ function playAzureAudio(url, onEnd){
   a.play().catch(()=>{ currentAudio=null; onEnd&&onEnd(); });
 }
 
-function speak(text, lang, onEnd, cardId, field){
+function speak(text, lang, onEnd, cardId, field) {
   stopTTS();
-  // Якщо є cardId і field — пробуємо Azure
-  if(cardId && field){
-    const url = getAudioUrl(cardId, field, lang);
-    // Перевіряємо чи існує файл
-    fetch(url, {method:'HEAD'}).then(r=>{
-      if(r.ok){ playAzureAudio(url, onEnd); }
-      else     { webSpeech(text, lang, onEnd); }
-    }).catch(()=>webSpeech(text, lang, onEnd));
+  
+  // Створюємо новий контролер для цього конкретного виклику
+  audioAbortController = new AbortController();
+  const signal = audioAbortController.signal;
+
+  if (cardId && field) {
+    // Формуємо шлях: audio/B2-Beruf/[ID]_[field]_[lang].mp3
+    const url = `audio/B2-Beruf/${cardId}_${field}_${lang}.mp3`;
+    
+    fetch(url, { method: 'HEAD', signal })
+      .then(r => {
+        if (r.ok) { 
+          playAzureAudio(url, onEnd); 
+        } else { 
+          webSpeech(text, lang, onEnd); 
+        }
+      })
+      .catch(err => {
+        // Якщо запит скасовано через abort(), нічого не робимо
+        if (err.name === 'AbortError') return;
+        webSpeech(text, lang, onEnd);
+      });
     return;
   }
   webSpeech(text, lang, onEnd);
@@ -654,9 +669,18 @@ function webSpeech(text, lang, onEnd){
   speechSynthesis.speak(u);
 }
 
-function stopTTS(){
+function stopTTS() {
   speechSynthesis.cancel();
-  if(currentAudio){ currentAudio.pause(); currentAudio=null; }
+  if (currentAudio) { 
+    currentAudio.pause(); 
+    currentAudio.onended = null; // Видаляємо обробник подій, щоб він не викликав наступне аудіо
+    currentAudio = null; 
+  }
+  // Скасовуємо активний fetch запит, якщо він ще триває
+  if (audioAbortController) {
+    audioAbortController.abort();
+    audioAbortController = null;
+  }
   document.getElementById('stopbtn').classList.remove('show');
 }
 
@@ -847,28 +871,73 @@ function toggleVocab(){
 }
 function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
 function playVocabNext(){
-  if(!V.playing||V.paused)return;
-  if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;V.repeatCount=0;}
-  if(V.repeatCount===0){V.flipped=false;renderVocabCard();}
-  else{V.flipped=false;document.getElementById('flashcard').classList.remove('flipped');}
-  const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;playVocabNext();return;}
+  // 1. Очищуємо старий таймер, щоб уникнути накопичення викликів
+  if(V.timer) clearTimeout(V.timer);
+  
+  if(!V.playing||V.paused) return;
+
+  if(V.idx>=V.queue.length){
+    V.queue=buildVocabQueue();
+    V.idx=0;
+    V.repeatCount=0;
+  }
+
+  // Зберігаємо поточний індекс для перевірки в колбеках
+  const currentIdx = V.idx;
+
+  if(V.repeatCount===0){
+    V.flipped=false;
+    renderVocabCard();
+  } else {
+    V.flipped=false;
+    const fc = document.getElementById('flashcard');
+    if(fc) fc.classList.remove('flipped');
+  }
+
+  const v=V.queue[V.idx];
+  if(!v){
+    V.idx++;
+    V.repeatCount=0;
+    playVocabNext();
+    return;
+  }
+
   const al=getActiveLangs();
+
   // term → short (DE only, as hint) → flip → def
   speakVocabTerms(v,al,0,()=>{
-    if(!V.playing||V.paused)return;
-    // short — тільки DE, як підказка перед перекладом
+    // Перевірка: чи ми все ще на тій самій картці і чи плеєр активний
+    if(!V.playing || V.paused || V.idx !== currentIdx) return;
+
     speakVocabShort(v,al,()=>{
-      if(!V.playing||V.paused)return;
-      V.flipped=true;document.getElementById('flashcard').classList.add('flipped');
+      if(!V.playing || V.paused || V.idx !== currentIdx) return;
+
+      V.flipped=true;
+      const fc = document.getElementById('flashcard');
+      if(fc) fc.classList.add('flipped');
+
       speakVocabDefs(v,al,0,()=>{
-        if(!V.playing||V.paused)return;
-        saveCardPlay(v.id);V.repeatCount++;
-        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
-        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+        if(!V.playing || V.paused || V.idx !== currentIdx) return;
+
+        saveCardPlay(v.id);
+        V.repeatCount++;
+
+        if(V.repeatCount < V.repeats){
+          V.timer = setTimeout(() => {
+            if(V.playing && !V.paused) playVocabNext();
+          }, V.readPause);
+        } else {
+          V.repeatCount = 0;
+          V.idx++;
+          V.timer = setTimeout(() => {
+            if(V.playing && !V.paused) playVocabNext();
+          }, V.readPause);
+        }
       });
     });
   });
 }
+
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){done&&done();return;}
   if(i>=langs.length){done&&done();return;}
