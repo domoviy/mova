@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0d2b1a">
-<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="MOVA">
 <title>MOVA · Deutsch B2</title>
@@ -614,24 +614,10 @@ async function loadVoices(){
 // ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
 const AUDIO_BASE = 'audio/B2-Beruf/';
 let currentAudio = null;
-let audioAbortController = null; // Новий контролер для скасування запитів fetch
 
-function getAudioUrl(cardId, field, lang) {
-  // Витягуємо код мови, якщо lang - це об'єкт, або перевіряємо чи це рядок
-  let lCode = (typeof lang === 'object' && lang !== null) ? (lang.code || lang.id) : lang;
-  
-  // Якщо прийшов не рядок або занадто довгий текст (як код функції) — ігноруємо
-  if (typeof lCode !== 'string' || lCode.length > 7) return '';
-
-  const shortLang = lCode.split('-')[0]; 
-  const cleanField = field.replace('fc-', '');
-  const speed = (typeof V !== 'undefined' && V.langSpeed?.[lCode]) || '100';
-  const v = Date.now();
-
-  const idStr = cardId.toString();
-  const finalId = idStr.startsWith('nvv_') ? idStr : `nvv_${idStr}`;
-
-  return `audio/B2-Beruf/${finalId}_${cleanField}_${shortLang}_${speed}.mp3?v=${v}`;
+function getAudioUrl(cardId, field, lang){
+  const speed = V.langSpeed?.[lang] || '100';
+  return `${AUDIO_BASE}${cardId}_${field}_${lang}_${speed}.mp3`;
 }
 
 function playAzureAudio(url, onEnd){
@@ -643,108 +629,34 @@ function playAzureAudio(url, onEnd){
   a.play().catch(()=>{ currentAudio=null; onEnd&&onEnd(); });
 }
 
-function speak(text, lang, onEnd, cardId, field) {
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.onended = null;
-    currentAudio = null;
-  }
-  speechSynthesis.cancel();
-
-  // Використовуємо window, щоб уникнути помилок доступу до змінної
-  if (window.audioAbortController) window.audioAbortController.abort();
-  window.audioAbortController = new AbortController();
-  const { signal } = window.audioAbortController;
-
-  if (cardId && field) {
+function speak(text, lang, onEnd, cardId, field){
+  stopTTS();
+  // Якщо є cardId і field — пробуємо Azure
+  if(cardId && field){
     const url = getAudioUrl(cardId, field, lang);
-    
-    fetch(url, { method: 'HEAD', signal })
-      .then(r => {
-        if (r.ok) {
-          playAzureAudio(url, onEnd);
-        } else {
-          console.warn("MP3 not found, falling back to TTS:", url);
-          webSpeech(text, lang, onEnd);
-        }
-      })
-      .catch(err => {
-        if (err.name === 'AbortError') return;
-        webSpeech(text, lang, onEnd);
-      });
+    // Перевіряємо чи існує файл
+    fetch(url, {method:'HEAD'}).then(r=>{
+      if(r.ok){ playAzureAudio(url, onEnd); }
+      else     { webSpeech(text, lang, onEnd); }
+    }).catch(()=>webSpeech(text, lang, onEnd));
     return;
   }
   webSpeech(text, lang, onEnd);
 }
 
-function webSpeech(text, lang, onEnd) {
-  speechSynthesis.cancel();
-  
-  // Виправляємо "object Object": дістаємо текст, якщо прийшов об'єкт
-  let cleanText = (typeof text === 'object' && text !== null) ? (text.text || text.val || "") : text;
-  if (!cleanText) { if (onEnd) onEnd(); return; }
-
-  const utterance = new SpeechSynthesisUtterance(String(cleanText));
-  const voices = speechSynthesis.getVoices();
-  const voice = voices.find(v => v.lang.startsWith(lang.split('-')[0]));
-  if (voice) utterance.voice = voice;
-  
-  utterance.lang = lang;
-  const speedVal = (V.langSpeed && V.langSpeed[lang]) ? V.langSpeed[lang] : 100;
-  utterance.rate = parseFloat(speedVal) / 100;
-  
-  utterance.onend = () => { if (onEnd) onEnd(); };
-  utterance.onerror = () => { if (onEnd) onEnd(); };
-  
-  speechSynthesis.speak(utterance);
+function webSpeech(text, lang, onEnd){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang  = LC[lang].code;
+  if(vs[lang]) u.voice = vs[lang];
+  u.rate  = parseFloat(document.getElementById('trate')?.value||1);
+  u.onend = onEnd||null;
+  u.onerror=(e)=>{ if(e.error!=='interrupted'&&e.error!=='canceled'&&onEnd)onEnd(); };
+  speechSynthesis.speak(u);
 }
 
-function speak(text, lang, onEnd, cardId, field) {
-  if (currentAudio) {
-    currentAudio.pause();
-    currentAudio.onended = null;
-    currentAudio = null;
-  }
+function stopTTS(){
   speechSynthesis.cancel();
-
-  // Використовуємо window, щоб уникнути помилок з неоголошеною змінною
-  if (window.audioAbortController) window.audioAbortController.abort();
-  window.audioAbortController = new AbortController();
-  const { signal } = window.audioAbortController;
-
-  if (cardId && field) {
-    const url = getAudioUrl(cardId, field, lang);
-    
-    fetch(url, { method: 'HEAD', signal })
-      .then(r => {
-        if (r.ok) {
-          playAzureAudio(url, onEnd);
-        } else {
-          // Якщо файл 404, переходимо на синтез мови
-          webSpeech(text, lang, onEnd);
-        }
-      })
-      .catch(err => {
-        if (err.name === 'AbortError') return;
-        webSpeech(text, lang, onEnd);
-      });
-    return;
-  }
-  webSpeech(text, lang, onEnd);
-}
-
-function stopTTS() {
-  speechSynthesis.cancel();
-  if (currentAudio) { 
-    currentAudio.pause(); 
-    currentAudio.onended = null; // Видаляємо обробник подій, щоб він не викликав наступне аудіо
-    currentAudio = null; 
-  }
-  // Скасовуємо активний fetch запит, якщо він ще триває
-  if (audioAbortController) {
-    audioAbortController.abort();
-    audioAbortController = null;
-  }
+  if(currentAudio){ currentAudio.pause(); currentAudio=null; }
   document.getElementById('stopbtn').classList.remove('show');
 }
 
@@ -899,74 +811,64 @@ function initSwipe(){
 }
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
-function toggleVocab() {
-  haptic.light();
-  const card = document.querySelector('.vocab-card');
-  if (!card) return;
-  
-  card.classList.toggle('flipped');
-  
-  // Якщо ми в режимі авто-відтворення, запускаємо озвучку нової сторони
-  if (V.isVocabPlaying) {
+function toggleVocab(){
+  if(!V.playing){
+    if(!V.queue.length)V.queue=buildVocabQueue();
+    V.playing=true;V.paused=false;
+    document.getElementById('vplaybtn').textContent='⏸';
+    document.getElementById('vplaybtn').classList.add('pause');
+    window.mlog?.('autoplay_started',{mode:V.mode,queue_size:V.queue.length});
     playVocabNext();
-  }
-}
-function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
-async function playVocabNext() {
-  if (!V.isVocabPlaying || !V.currentCard) return;
-
-  const card = V.currentCard;
-  const cardElement = document.querySelector('.vocab-card');
-  const isFront = !cardElement.classList.contains('flipped');
-  
-  // Визначаємо поля для поточної сторони
-  const fields = isFront ? ['fc-term', 'fc-short'] : ['fc-def'];
-  const queue = [];
-
-  // Отримуємо тільки коди активних мов з налаштувань
-  const activeCodes = V.langActive.map(l => (typeof l === 'object' ? (l.code || l.id) : l)).filter(Boolean);
-
-  // Створюємо чергу: для кожного поля озвучуємо всі вибрані мови
-  fields.forEach(field => {
-    activeCodes.forEach(lCode => {
-      queue.push({ field, lang: lCode });
-    });
-  });
-
-  // Послідовне відтворення з очікуванням (await)
-  for (const item of queue) {
-    if (!V.isVocabPlaying) break;
-    await speak(card.id, item.field, item.lang);
-  }
-
-  // Логіка автоматичного переходу
-  if (V.isVocabPlaying) {
-    if (isFront) {
-      setTimeout(() => { if(V.isVocabPlaying) toggleVocab(); }, 800);
+  } else if(!V.paused){
+    V.paused=true;
+    speechSynthesis.cancel();
+    clearTimeout(V.timer);
+    document.getElementById('vplaybtn').textContent='▶';
+    document.getElementById('vplaybtn').classList.remove('pause');
+    window.mlog?.('autoplay_paused');
+  } else {
+    V.paused=false;
+    document.getElementById('vplaybtn').textContent='⏸';
+    document.getElementById('vplaybtn').classList.add('pause');
+    window.mlog?.('autoplay_resumed');
+    const v=V.queue[V.idx];
+    const al=getActiveLangs();
+    if(v&&V.flipped){
+      speakVocabDefs(v,al,0,()=>{
+        if(!V.playing||V.paused)return;
+        saveCardPlay(v.id);V.repeatCount++;
+        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+      });
     } else {
-      setTimeout(() => { if(V.isVocabPlaying) nextVocab(); }, 1200);
+      playVocabNext();
     }
   }
 }
-
-function speak(cardId, field, lang) {
-  return new Promise((resolve) => {
-    const url = getAudioUrl(cardId, field, lang);
-    if (!url) return resolve();
-
-    const audio = new Audio(url);
-    audio.onended = () => resolve();
-    audio.onerror = () => {
-      console.warn("Missing audio:", url);
-      resolve(); 
-    };
-
-    audio.play().catch(() => resolve());
+function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
+function playVocabNext(){
+  if(!V.playing||V.paused)return;
+  if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;V.repeatCount=0;}
+  if(V.repeatCount===0){V.flipped=false;renderVocabCard();}
+  else{V.flipped=false;document.getElementById('flashcard').classList.remove('flipped');}
+  const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;playVocabNext();return;}
+  const al=getActiveLangs();
+  // term → short (DE only, as hint) → flip → def
+  speakVocabTerms(v,al,0,()=>{
+    if(!V.playing||V.paused)return;
+    // short — тільки DE, як підказка перед перекладом
+    speakVocabShort(v,al,()=>{
+      if(!V.playing||V.paused)return;
+      V.flipped=true;document.getElementById('flashcard').classList.add('flipped');
+      speakVocabDefs(v,al,0,()=>{
+        if(!V.playing||V.paused)return;
+        saveCardPlay(v.id);V.repeatCount++;
+        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+      });
+    });
   });
 }
-
-
-
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){done&&done();return;}
   if(i>=langs.length){done&&done();return;}
@@ -974,7 +876,13 @@ function speakVocabTerms(v,langs,i,done){
     ()=>setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause),
     v.id, 'term');
 }
-
+function speakVocabShort(v,langs,done){
+  if(!V.playing||V.paused){done&&done();return;}
+  // Перевіряємо чи є хоч один short текст
+  const hasShort=langs.some(l=>v.short?.[l]||v.short?.de);
+  if(!hasShort){done&&done();return;}
+  setTimeout(()=>speakVocabShortLang(v,langs,0,done),V.pause);
+}
 function speakVocabShortLang(v,langs,i,done){
   if(!V.playing||V.paused){done&&done();return;}
   if(i>=langs.length){done&&done();return;}
@@ -984,7 +892,13 @@ function speakVocabShortLang(v,langs,i,done){
     ()=>setTimeout(()=>speakVocabShortLang(v,langs,i+1,done),V.pause),
     v.id,'short');
 }
-
+function speakVocabDefs(v,langs,i,done){
+  if(!V.playing||V.paused){done&&done();return;}
+  if(i>=langs.length){done&&done();return;}
+  speak(v.def[langs[i]]||v.def.de, langs[i],
+    ()=>setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause),
+    v.id, 'def');
+}
 
 // ── LANG ──────────────────────────────────────────────────────
 function getActiveLangs(){return['en','uk','de'].filter(l=>V.langs[l]);}
