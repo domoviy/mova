@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.1 (Anti-Crash & Auto-Throttle)
+MOVA · Azure TTS Audio Generator  v2.2 (Auto-Save & Anti-Crash)
 Читає vocab-data.json (або конвертує з vocab-data.js)
-Генерує MP3 з Azure Neural TTS
+Генерує MP3 з Azure Neural TTS та порціями зберігає прогрес в Git
 """
 
 import os, sys, json, time, pathlib, re
@@ -36,19 +36,18 @@ SPEEDS = {
 }
 
 lock = threading.Lock()
+NEW_FILES_COUNT = 0
+COMMIT_EVERY_X_FILES = 30  # Робити автоматичний push кожні 30 нових файлів
 
-# ── Завантаження бази (JSON або JS) ───────────────────────────
+# ── Завантаження 😊 бази (JSON або JS) ───────────────────────────
 def load_vocab():
     """Пробує vocab-data.json, потім парсить vocab-data.js regex."""
-
-    # 1) JSON файл — найпростіше
     jp = pathlib.Path('vocab-data.json')
     if jp.exists():
         print('  ← vocab-data.json')
         data = json.loads(jp.read_text('utf-8'))
         return data['VOCAB']
 
-    # 2) Парсимо vocab-data.js без Node.js
     jsp = pathlib.Path('vocab-data.js')
     if not jsp.exists():
         raise FileNotFoundError('Не знайдено vocab-data.json або vocab-data.js!')
@@ -56,35 +55,21 @@ def load_vocab():
     print('  ← vocab-data.js (regex parse)')
     src = jsp.read_text('utf-8')
 
-    # Витягуємо масив VOCAB
     m = re.search(r'const\s+VOCAB\s*=\s*(\[[\s\S]*?\]);', src)
     if not m:
         raise ValueError('Не знайдено масив VOCAB у vocab-data.js')
 
-    # Конвертуємо JS об'єктний літерал у JSON
     arr_js = m.group(1)
 
-    # ── АВТОКОРЕКЦІЯ АПОСТРОФІВ ────────────────────────────────
-    # Міняємо " або ' всередині українських слів на безпечний апостроф ’
+    # Автокорекція апострофів
     arr_js = re.sub(r'([а-яА-ЯёЁіІїЇєЄґҐ])"([а-яА-ЯёЁіІїЇєЄґҐ])', r'\1’\2', arr_js)
     arr_js = re.sub(r"([а-яА-ЯёЁіІїЇєЄґҐ])'([а-яА-ЯёЁіІїЇєЄґҐ])", r'\1’\2', arr_js)
-    
-    # Міняємо ' всередині англійських слів (company's, don't) на безпечний апостроф ’
     arr_js = re.sub(r"([a-zA-Z])'([a-zA-Z])", r'\1’\2', arr_js)
 
-    # Прибираємо JS коментарі
     arr_js = re.sub(r'//[^\n]*', '', arr_js)
-    
-    # Тимчасово прибираємо екранування, якщо воно вже було, щоб не дузвужувати його
     arr_js = arr_js.replace('\\"', '"')
-    
-    # Одинарні лапки → подвійні (безпечно обгортаємо рядки, екрануючи внутрішні лапки)
     arr_js = re.sub(r"'([^']*)'", lambda m: json.dumps(m.group(1).replace('"', '\\"')), arr_js)
-    
-    # JS ключі без лапок → з лапками (чітко за межею слова, щоб не зламати текст)
     arr_js = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', arr_js)
-    
-    # Кінцеві коми перед } або ]
     arr_js = re.sub(r',\s*([}\]])', r'\1', arr_js)
 
     try:
@@ -95,7 +80,6 @@ def load_vocab():
         start = max(0, pos - 40)
         end = min(len(arr_js), pos + 40)
         print(f'  Контекст помилки: ... {arr_js[start:pos]}🔴[ПОМИЛКА ТУТ] {arr_js[pos:end]} ...')
-        print(f'  Спробуйте створити vocab-data.json')
         raise
 
     return vocab
@@ -127,7 +111,7 @@ def build_ssml(text, lang, speed_key):
 
 # ── Azure запит (з автопереходом на безкоштовний режим) ───────
 def synthesize(ssml, retries=3):
-    global WORKERS, DELAY_SEC  # Дозволяємо динамічно гальмувати скрипт
+    global WORKERS, DELAY_SEC
     
     for attempt in range(retries):
         req = urllib.request.Request(
@@ -144,17 +128,16 @@ def synthesize(ssml, retries=3):
         try:
             with urllib.request.urlopen(req, timeout=90) as r:
                 data = r.read()
-                time.sleep(DELAY_SEC)  # Динамічна пауза
+                time.sleep(DELAY_SEC)
                 return data
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                # АВТО-ГАЛЬМУВАННЯ: Якщо зловили 429 у TURBO режимі — скидаємо ліміти до F0 Free
                 if WORKERS > 1 or DELAY_SEC < 0.6:
                     with lock:
                         if WORKERS > 1 or DELAY_SEC < 0.6:
                             print('\n  ⚠️ [Azure F0 Detected] Зловлено ліміт 429! Автоматично переходжу на повільний режим...', flush=True)
                             WORKERS = 1
-                            DELAY_SEC = 1.2  # Виставляємо безпечні 1.2 сек для безкоштовного тарифу
+                            DELAY_SEC = 1.2
                 
                 wait = int(e.headers.get('Retry-After', 10))
                 print(f'\n  ⏳ 429 Rate limit, очікування {wait}s перед повтором...', flush=True)
@@ -169,6 +152,7 @@ def synthesize(ssml, retries=3):
 
 # ── Завдання ─────────────────────────────────────────────────
 def process(task, manifest):
+    global NEW_FILES_COUNT
     card, field, lang, speed = task
     cid  = card['id']
     text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
@@ -187,22 +171,32 @@ def process(task, manifest):
     if not audio:
         return 'err', mkey
 
-    # Одразу пишемо на диск «на льоту»
     fpath.write_bytes(audio)
+    
     with lock:
         manifest[mkey] = True
         save_manifest(manifest)
+        NEW_FILES_COUNT += 1
+        
+        # ── АВТОЗБЕРЕЖЕННЯ (PUSH) В GIT НА ЛЬОТУ ──────────────────
+        if NEW_FILES_COUNT >= COMMIT_EVERY_X_FILES:
+            print(f'\n📦 [Auto-Sync] Накопичилося {NEW_FILES_COUNT} нових файлів. Фіксуємо прогрес у GitHub...', flush=True)
+            os.system('git add audio/')
+            if os.system('git diff --staged --quiet') != 0:
+                os.system('git commit -m "🎙 TTS Auto-Save: проміжне збереження пакету файлів [skip ci]"')
+                os.system('git push')
+            NEW_FILES_COUNT = 0
+
     return 'ok', mkey
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.1', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.2 (Auto-Save)', flush=True)
     print(f'    Region: {AZURE_REGION} | Course: {COURSE} | Начальні Workers: {WORKERS}', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
 
-    # ── Тест з'єднання з Azure ────────────────────────────────
     print('\n🔌 Тест з\'єднання з Azure...', flush=True)
     test_ssml = '<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="de"><voice name="de-DE-KatjaNeural"><prosody rate="1.0">Test</prosody></voice></speak>'
     test_audio = synthesize(test_ssml)
@@ -246,7 +240,6 @@ def main():
 
     done = skipped = errors = generated = 0
 
-    # Використовуємо динамічний пул
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = {pool.submit(process, t, manifest): t for t in tasks}
         for fut in as_completed(futures):
