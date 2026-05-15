@@ -46,7 +46,7 @@ def load_vocab():
     # 2) Парсимо vocab-data.js без Node.js
     jsp = pathlib.Path('vocab-data.js')
     if not jsp.exists():
-        raise FileNotFoundError('Не знадено vocab-data.json або vocab-data.js!')
+        raise FileNotFoundError('Не знайдено vocab-data.json або vocab-data.js!')
 
     print('  ← vocab-data.js (regex parse)')
     src = jsp.read_text('utf-8')
@@ -58,6 +58,14 @@ def load_vocab():
 
     # Конвертуємо JS об'єктний літерал у JSON
     arr_js = m.group(1)
+
+    # ── АВТОКОРЕКЦІЯ АПОСТРОФІВ ────────────────────────────────
+    # Міняємо " або ' всередині українських слів на безпечний апостроф ’
+    arr_js = re.sub(r'([а-яА-ЯёЁіІїЇєЄґҐ])"([а-яА-ЯёЁіІїЇєЄґҐ])', r'\1’\2', arr_js)
+    arr_js = re.sub(r"([а-яА-ЯёЁіІїЇєЄґҐ])'([а-яА-ЯёЁіІїЇєЄґҐ])", r'\1’\2', arr_js)
+    
+    # Міняємо ' всередині англійських слів (company's, don't) на безпечний апостроф ’
+    arr_js = re.sub(r"([a-zA-Z])'([a-zA-Z])", r'\1’\2', arr_js)
 
     # Прибираємо JS коментарі
     arr_js = re.sub(r'//[^\n]*', '', arr_js)
