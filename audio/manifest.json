@@ -778,5 +778,8 @@
   "B2-Beruf/nvv_042_term_en_100": true,
   "B2-Beruf/nvv_042_term_en_080": true,
   "B2-Beruf/nvv_042_term_uk_100": true,
-  "B2-Beruf/nvv_042_term_uk_080": true
+  "B2-Beruf/nvv_042_term_uk_080": true,
+  "B2-Beruf/nvv_042_short_de_100": true,
+  "B2-Beruf/nvv_042_short_de_080": true,
+  "B2-Beruf/nvv_042_short_en_100": true
 }
