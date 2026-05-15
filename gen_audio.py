@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2
+MOVA · Azure TTS Audio Generator  v2.1 (Anti-Crash & Auto-Throttle)
 Читає vocab-data.json (або конвертує з vocab-data.js)
 Генерує MP3 з Azure Neural TTS
 """
@@ -18,8 +18,11 @@ TTS_URL      = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservic
 COURSE    = 'B2-Beruf'
 AUDIO_DIR = pathlib.Path('audio') / COURSE
 MANIFEST  = pathlib.Path('audio') / 'manifest.json'
-WORKERS   = 1    # F0 tier: тільки 1 паралельний запит
-DELAY_SEC = 0.6  # пауза між запитами щоб не попасти в rate limit
+
+# ДИНАМІЧНІ ЛІМІТИ (читаються з GitHub Actions або беруть значення за замовчуванням)
+WORKERS   = int(os.environ.get('TTS_WORKERS', '1'))
+DELAY_SEC = float(os.environ.get('TTS_DELAY', '0.6'))
+
 FIELDS    = ['term', 'short', 'def']
 
 VOICES = {
@@ -31,6 +34,8 @@ SPEEDS = {
     '100': {'rate': '1.0', 'pause_ms': 0},
     '080': {'rate': '0.8', 'pause_ms': 300},
 }
+
+lock = threading.Lock()
 
 # ── Завантаження бази (JSON або JS) ───────────────────────────
 def load_vocab():
@@ -70,7 +75,7 @@ def load_vocab():
     # Прибираємо JS коментарі
     arr_js = re.sub(r'//[^\n]*', '', arr_js)
     
-    # Тимчасово прибираємо екранування, якщо воно вже було, щоб не дублювати його
+    # Тимчасово прибираємо екранування, якщо воно вже було, щоб не дузвужувати його
     arr_js = arr_js.replace('\\"', '"')
     
     # Одинарні лапки → подвійні (безпечно обгортаємо рядки, екрануючи внутрішні лапки)
@@ -86,7 +91,6 @@ def load_vocab():
         vocab = json.loads(arr_js)
     except json.JSONDecodeError as e:
         print(f'  ✗ JSON parse error: {e}')
-        # Виводимо проблемний шматок коду навколо помилки, щоб легше було зрозуміти де збій
         pos = e.pos
         start = max(0, pos - 40)
         end = min(len(arr_js), pos + 40)
@@ -97,8 +101,6 @@ def load_vocab():
     return vocab
 
 # ── Маніфест ─────────────────────────────────────────────────
-lock = threading.Lock()
-
 def load_manifest():
     if MANIFEST.exists():
         try: return json.loads(MANIFEST.read_text('utf-8'))
@@ -123,8 +125,10 @@ def build_ssml(text, lang, speed_key):
         f'<voice name="{voice}"><prosody rate="{rate}">{body}</prosody></voice></speak>'
     )
 
-# ── Azure запит ───────────────────────────────────────────────
+# ── Azure запит (з автопереходом на безкоштовний режим) ───────
 def synthesize(ssml, retries=3):
+    global WORKERS, DELAY_SEC  # Дозволяємо динамічно гальмувати скрипт
+    
     for attempt in range(retries):
         req = urllib.request.Request(
             TTS_URL,
@@ -140,12 +144,20 @@ def synthesize(ssml, retries=3):
         try:
             with urllib.request.urlopen(req, timeout=90) as r:
                 data = r.read()
-                time.sleep(DELAY_SEC)  # пауза після успіху
+                time.sleep(DELAY_SEC)  # Динамічна пауза
                 return data
         except urllib.error.HTTPError as e:
             if e.code == 429:
+                # АВТО-ГАЛЬМУВАННЯ: Якщо зловили 429 у TURBO режимі — скидаємо ліміти до F0 Free
+                if WORKERS > 1 or DELAY_SEC < 0.6:
+                    with lock:
+                        if WORKERS > 1 or DELAY_SEC < 0.6:
+                            print('\n  ⚠️ [Azure F0 Detected] Зловлено ліміт 429! Автоматично переходжу на повільний режим...', flush=True)
+                            WORKERS = 1
+                            DELAY_SEC = 1.2  # Виставляємо безпечні 1.2 сек для безкоштовного тарифу
+                
                 wait = int(e.headers.get('Retry-After', 10))
-                print(f'\n  ⏳ 429 Rate limit, wait {wait}s...', flush=True)
+                print(f'\n  ⏳ 429 Rate limit, очікування {wait}s перед повтором...', flush=True)
                 time.sleep(wait)
             else:
                 print(f'\n  ✗ HTTP {e.code}: {e.read().decode()[:80]}', flush=True)
@@ -175,6 +187,7 @@ def process(task, manifest):
     if not audio:
         return 'err', mkey
 
+    # Одразу пишемо на диск «на льоту»
     fpath.write_bytes(audio)
     with lock:
         manifest[mkey] = True
@@ -183,8 +196,8 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2', flush=True)
-    print(f'    Region: {AZURE_REGION} | Course: {COURSE} | Workers: {WORKERS}', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.1', flush=True)
+    print(f'    Region: {AZURE_REGION} | Course: {COURSE} | Начальні Workers: {WORKERS}', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
@@ -200,7 +213,6 @@ def main():
         return 1
 
     AUDIO_DIR.mkdir(parents=True, exist_ok=True)
-    print(f'   ✓ Папка {AUDIO_DIR} готова', flush=True)
 
     print('\n📖 Завантаження бази...', flush=True)
     try:
@@ -230,10 +242,11 @@ def main():
     if total == already:
         print('\n✅ Всі файли вже згенеровані!', flush=True); return 0
 
-    print(f'\n▶  Генерація ({WORKERS} паралельних запитів)...\n', flush=True)
+    print(f'\n▶  Генерація...\n', flush=True)
 
     done = skipped = errors = generated = 0
 
+    # Використовуємо динамічний пул
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = {pool.submit(process, t, manifest): t for t in tasks}
         for fut in as_completed(futures):
