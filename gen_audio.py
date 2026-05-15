@@ -46,7 +46,7 @@ def load_vocab():
     # 2) Парсимо vocab-data.js без Node.js
     jsp = pathlib.Path('vocab-data.js')
     if not jsp.exists():
-        raise FileNotFoundError('Не знайдено vocab-data.json або vocab-data.js!')
+        raise FileNotFoundError('Не знадено vocab-data.json або vocab-data.js!')
 
     print('  ← vocab-data.js (regex parse)')
     src = jsp.read_text('utf-8')
@@ -61,10 +61,16 @@ def load_vocab():
 
     # Прибираємо JS коментарі
     arr_js = re.sub(r'//[^\n]*', '', arr_js)
-    # JS ключі без лапок → з лапками
-    arr_js = re.sub(r'(\{|,)\s*([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1 "\2":', arr_js)
-    # Одинарні лапки → подвійні
-    arr_js = re.sub(r"'([^']*)'", lambda m: json.dumps(m.group(1)), arr_js)
+    
+    # Тимчасово прибираємо екранування, якщо воно вже було, щоб не дублювати його
+    arr_js = arr_js.replace('\\"', '"')
+    
+    # Одинарні лапки → подвійні (безпечно обгортаємо рядки, екрануючи внутрішні лапки)
+    arr_js = re.sub(r"'([^']*)'", lambda m: json.dumps(m.group(1).replace('"', '\\"')), arr_js)
+    
+    # JS ключі без лапок → з лапками (чітко за межею слова, щоб не зламати текст)
+    arr_js = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', arr_js)
+    
     # Кінцеві коми перед } або ]
     arr_js = re.sub(r',\s*([}\]])', r'\1', arr_js)
 
@@ -72,6 +78,11 @@ def load_vocab():
         vocab = json.loads(arr_js)
     except json.JSONDecodeError as e:
         print(f'  ✗ JSON parse error: {e}')
+        # Виводимо проблемний шматок коду навколо помилки, щоб легше було зрозуміти де збій
+        pos = e.pos
+        start = max(0, pos - 40)
+        end = min(len(arr_js), pos + 40)
+        print(f'  Контекст помилки: ... {arr_js[start:pos]}🔴[ПОМИЛКА ТУТ] {arr_js[pos:end]} ...')
         print(f'  Спробуйте створити vocab-data.json')
         raise
 
@@ -119,7 +130,7 @@ def synthesize(ssml, retries=3):
             method='POST'
         )
         try:
-            with urllib.request.urlopen(req, timeout=90) as r: # було timeout=90
+            with urllib.request.urlopen(req, timeout=90) as r:
                 data = r.read()
                 time.sleep(DELAY_SEC)  # пауза після успіху
                 return data
