@@ -1114,5 +1114,20 @@
   "B2-Beruf/nvv_060_short_uk_080": true,
   "B2-Beruf/nvv_060_term_uk_080": true,
   "B2-Beruf/nvv_060_def_en_080": true,
-  "B2-Beruf/nvv_061_term_de_100": true
+  "B2-Beruf/nvv_061_term_de_100": true,
+  "B2-Beruf/nvv_061_term_de_080": true,
+  "B2-Beruf/nvv_061_term_en_100": true,
+  "B2-Beruf/nvv_061_short_de_100": true,
+  "B2-Beruf/nvv_061_short_en_080": true,
+  "B2-Beruf/nvv_061_short_en_100": true,
+  "B2-Beruf/nvv_061_def_de_100": true,
+  "B2-Beruf/nvv_061_short_de_080": true,
+  "B2-Beruf/nvv_061_def_de_080": true,
+  "B2-Beruf/nvv_061_short_uk_100": true,
+  "B2-Beruf/nvv_061_term_uk_100": true,
+  "B2-Beruf/nvv_061_term_en_080": true,
+  "B2-Beruf/nvv_061_short_uk_080": true,
+  "B2-Beruf/nvv_061_term_uk_080": true,
+  "B2-Beruf/nvv_062_term_de_100": true,
+  "B2-Beruf/nvv_062_short_en_100": true
 }
