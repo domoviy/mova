@@ -2194,5 +2194,8 @@
   "B2-Beruf/nvv_120_def_en_100": true,
   "B2-Beruf/nvv_120_def_en_080": true,
   "B2-Beruf/nvv_120_def_de_100": true,
-  "B2-Beruf/nvv_120_def_uk_080": true
+  "B2-Beruf/nvv_120_def_uk_080": true,
+  "B2-Beruf/nvv_005_term_de_100": true,
+  "B2-Beruf/nvv_005_term_de_080": true,
+  "B2-Beruf/nvv_005_term_en_100": true
 }
