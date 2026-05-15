@@ -617,12 +617,19 @@ let currentAudio = null;
 let audioAbortController = null; // Новий контролер для скасування запитів fetch
 
 function getAudioUrl(cardId, field, lang) {
-  const shortLang = lang.split('-')[0]; 
+  // Захист: якщо lang - об'єкт (напр. {code: 'de-DE'}), беремо його код
+  const langCode = (typeof lang === 'object' && lang !== null) ? (lang.code || lang.id) : lang;
+  
+  if (!langCode || typeof langCode !== 'string') {
+    console.error("Invalid lang passed to getAudioUrl:", lang);
+    return '';
+  }
+
+  const shortLang = langCode.split('-')[0]; 
   const cleanField = field.replace('fc-', '');
-  const speed = (typeof V !== 'undefined' && V.langSpeed?.[lang]) || '100';
+  const speed = (typeof V !== 'undefined' && V.langSpeed?.[langCode]) || '100';
   const v = Date.now();
 
-  // Перевіряємо, чи cardId вже містить nvv_, щоб не дублювати префікс
   const idStr = cardId.toString();
   const finalId = idStr.startsWith('nvv_') ? idStr : `nvv_${idStr}`;
 
@@ -934,31 +941,27 @@ async function playVocabNext() {
 
   const card = V.currentCard;
   const isFront = !document.querySelector('.vocab-card').classList.contains('flipped');
-  
-  // Визначаємо поля для поточної сторони
   const fields = isFront ? ['fc-term', 'fc-short'] : ['fc-def'];
   const queue = [];
 
-  // Збираємо чергу: тільки активні мови з vlang-grp
+  // Збираємо чергу
   fields.forEach(field => {
-    V.langActive.forEach(lang => {
-      queue.push({ field, lang });
+    V.langActive.forEach(l => {
+      // Витягуємо код мови, незалежно від того, чи l це рядок чи об'єкт
+      const lCode = (typeof l === 'object') ? (l.code || l.id) : l;
+      if (lCode) queue.push({ field, lang: lCode });
     });
   });
 
-  // Послідовне відтворення
   for (const item of queue) {
     if (!V.isVocabPlaying) break;
     await speak(card.id, item.field, item.lang);
   }
 
-  // Логіка переходу
   if (V.isVocabPlaying) {
     if (isFront) {
-      // Чекаємо секунду і повертаємо картку
       setTimeout(() => toggleVocab(), 1000);
     } else {
-      // Чекаємо 1.5 сек і переходимо до наступної
       setTimeout(() => {
         if (V.isVocabPlaying) nextVocab();
       }, 1500);
