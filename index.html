@@ -635,9 +635,9 @@ function playAzureAudio(url, onEnd){
 function speak(text, lang, onEnd, cardId, field) {
   stopTTS();
   
-  // Створюємо контролер для можливості миттєвого скасування запиту
+  // Створюємо новий контролер для скасування
   audioAbortController = new AbortController();
-  const signal = audioAbortController.signal;
+  const { signal } = audioAbortController;
 
   if (cardId && field) {
     const url = getAudioUrl(cardId, field, lang);
@@ -646,17 +646,12 @@ function speak(text, lang, onEnd, cardId, field) {
       .then(r => {
         if (r.ok) { 
           playAzureAudio(url, onEnd); 
-        } else {
-          // Якщо файл зі швидкістю не знайдено, пробуємо без швидкості у назві
-          const fallbackUrl = `audio/B2-Beruf/${cardId}_${field}_${lang}.mp3`;
-          fetch(fallbackUrl, { method: 'HEAD', signal }).then(r2 => {
-            if (r2.ok) playAzureAudio(fallbackUrl, onEnd);
-            else webSpeech(text, lang, onEnd);
-          }).catch(() => webSpeech(text, lang, onEnd));
+        } else { 
+          webSpeech(text, lang, onEnd); 
         }
       })
       .catch(err => {
-        if (err.name === 'AbortError') return; // Запит було скасовано нами
+        if (err.name === 'AbortError') return; // Якщо скасовано — нічого не робимо
         webSpeech(text, lang, onEnd);
       });
     return;
@@ -876,52 +871,52 @@ function toggleVocab(){
 }
 function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
 function playVocabNext(){
-  // 1. Очищуємо старий таймер, щоб уникнути накопичення викликів
   if(V.timer) clearTimeout(V.timer);
   
   if(!V.playing||V.paused) return;
 
-  if(V.idx>=V.queue.length){
-    V.queue=buildVocabQueue();
-    V.idx=0;
-    V.repeatCount=0;
+  if(V.idx >= V.queue.length){
+    V.queue = buildVocabQueue(); 
+    V.idx = 0; 
+    V.repeatCount = 0;
   }
 
-  // Зберігаємо поточний індекс для перевірки в колбеках
+  // Критично: фіксуємо індекс на початку циклу
   const currentIdx = V.idx;
 
-  if(V.repeatCount===0){
-    V.flipped=false;
+  if(V.repeatCount === 0){
+    V.flipped = false;
     renderVocabCard();
   } else {
-    V.flipped=false;
+    V.flipped = false;
     const fc = document.getElementById('flashcard');
     if(fc) fc.classList.remove('flipped');
   }
 
-  const v=V.queue[V.idx];
-  if(!v){
-    V.idx++;
-    V.repeatCount=0;
-    playVocabNext();
-    return;
+  const v = V.queue[V.idx];
+  if(!v){ 
+    V.idx++; 
+    V.repeatCount = 0; 
+    playVocabNext(); 
+    return; 
   }
 
-  const al=getActiveLangs();
+  const al = getActiveLangs();
 
-  // term → short (DE only, as hint) → flip → def
-  speakVocabTerms(v,al,0,()=>{
-    // Перевірка: чи ми все ще на тій самій картці і чи плеєр активний
+  // 1. Термін
+  speakVocabTerms(v, al, 0, () => {
     if(!V.playing || V.paused || V.idx !== currentIdx) return;
 
-    speakVocabShort(v,al,()=>{
+    // 2. Коротка підказка
+    speakVocabShort(v, al, () => {
       if(!V.playing || V.paused || V.idx !== currentIdx) return;
 
-      V.flipped=true;
+      V.flipped = true;
       const fc = document.getElementById('flashcard');
       if(fc) fc.classList.add('flipped');
 
-      speakVocabDefs(v,al,0,()=>{
+      // 3. Визначення
+      speakVocabDefs(v, al, 0, () => {
         if(!V.playing || V.paused || V.idx !== currentIdx) return;
 
         saveCardPlay(v.id);
