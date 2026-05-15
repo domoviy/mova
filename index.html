@@ -635,7 +635,6 @@ function playAzureAudio(url, onEnd){
 function speak(text, lang, onEnd, cardId, field) {
   stopTTS();
   
-  // Створюємо новий контролер для скасування
   audioAbortController = new AbortController();
   const { signal } = audioAbortController;
 
@@ -647,16 +646,17 @@ function speak(text, lang, onEnd, cardId, field) {
         if (r.ok) { 
           playAzureAudio(url, onEnd); 
         } else { 
+          console.warn(`Файл ${field} не знайдено, граю TTS`);
           webSpeech(text, lang, onEnd); 
         }
       })
       .catch(err => {
-        if (err.name === 'AbortError') return; // Якщо скасовано — нічого не робимо
+        if (err.name === 'AbortError') return;
         webSpeech(text, lang, onEnd);
       });
-    return;
+  } else {
+    webSpeech(text, lang, onEnd);
   }
-  webSpeech(text, lang, onEnd);
 }
 
 function webSpeech(text, lang, onEnd){
@@ -872,7 +872,6 @@ function toggleVocab(){
 function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
 function playVocabNext(){
   if(V.timer) clearTimeout(V.timer);
-  
   if(!V.playing||V.paused) return;
 
   if(V.idx >= V.queue.length){
@@ -881,9 +880,11 @@ function playVocabNext(){
     V.repeatCount = 0;
   }
 
-  // Критично: фіксуємо індекс на початку циклу
   const currentIdx = V.idx;
+  const v = V.queue[V.idx];
+  if(!v){ V.idx++; playVocabNext(); return; }
 
+  // Візуальна частина
   if(V.repeatCount === 0){
     V.flipped = false;
     renderVocabCard();
@@ -893,49 +894,48 @@ function playVocabNext(){
     if(fc) fc.classList.remove('flipped');
   }
 
-  const v = V.queue[V.idx];
-  if(!v){ 
-    V.idx++; 
-    V.repeatCount = 0; 
-    playVocabNext(); 
-    return; 
-  }
-
-  const al = getActiveLangs();
-
-  // 1. Термін
-  speakVocabTerms(v, al, 0, () => {
+  // ЛАНЦЮЖОК ВІДТВОРЕННЯ
+  // 1. Спочатку Термін (de-DE)
+  speak(v.term, 'de-DE', () => {
     if(!V.playing || V.paused || V.idx !== currentIdx) return;
-
-    // 2. Коротка підказка
-    speakVocabShort(v, al, () => {
-      if(!V.playing || V.paused || V.idx !== currentIdx) return;
-
-      V.flipped = true;
-      const fc = document.getElementById('flashcard');
-      if(fc) fc.classList.add('flipped');
-
-      // 3. Визначення
-      speakVocabDefs(v, al, 0, () => {
+    
+    // ПАУЗА 400мс перед коротким описом
+    V.timer = setTimeout(() => {
+      
+      // 2. Тепер Коротка підказка (de-DE)
+      speak(v.short, 'de-DE', () => {
         if(!V.playing || V.paused || V.idx !== currentIdx) return;
+        
+        // ПЕРЕВЕРТАЄМО КАРТКУ
+        V.flipped = true;
+        const fc = document.getElementById('flashcard');
+        if(fc) fc.classList.add('flipped');
 
-        saveCardPlay(v.id);
-        V.repeatCount++;
+        // ПАУЗА 600мс перед дефініцією
+        V.timer = setTimeout(() => {
+          
+          // 3. Тепер Дефініція/Переклад (uk-UA)
+          speak(v.def, 'uk-UA', () => {
+            if(!V.playing || V.paused || V.idx !== currentIdx) return;
 
-        if(V.repeatCount < V.repeats){
-          V.timer = setTimeout(() => {
-            if(V.playing && !V.paused) playVocabNext();
-          }, V.readPause);
-        } else {
-          V.repeatCount = 0;
-          V.idx++;
-          V.timer = setTimeout(() => {
-            if(V.playing && !V.paused) playVocabNext();
-          }, V.readPause);
-        }
-      });
-    });
-  });
+            saveCardPlay(v.id);
+            V.repeatCount++;
+
+            // Наступний крок або повтор
+            if(V.repeatCount < V.repeats){
+              V.timer = setTimeout(playVocabNext, V.readPause);
+            } else {
+              V.repeatCount = 0;
+              V.idx++;
+              V.timer = setTimeout(playVocabNext, V.readPause + 500);
+            }
+          }, v.id, 'fc-def'); // Важливо: перевірте чи поле зветься fc-def чи fc-short на сервері
+          
+        }, 600);
+      }, v.id, 'fc-short');
+      
+    }, 400);
+  }, v.id, 'fc-term');
 }
 
 function speakVocabTerms(v,langs,i,done){
