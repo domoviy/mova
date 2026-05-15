@@ -929,58 +929,60 @@ function toggleVocab(){
   }
 }
 function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
-function playVocabNext(){
-  if(V.timer) clearTimeout(V.timer);
-  if(!V.playing||V.paused) return;
+async function playVocabNext() {
+  if (!V.isVocabPlaying || !V.currentCard) return;
 
-  if(V.idx >= V.queue.length){
-    V.queue = buildVocabQueue(); 
-    V.idx = 0; 
-    V.repeatCount = 0;
+  const card = V.currentCard;
+  const isFront = !document.querySelector('.vocab-card').classList.contains('flipped');
+  
+  // Визначаємо поля для поточної сторони
+  const fields = isFront ? ['fc-term', 'fc-short'] : ['fc-def'];
+  const queue = [];
+
+  // Збираємо чергу: тільки активні мови з vlang-grp
+  fields.forEach(field => {
+    V.langActive.forEach(lang => {
+      queue.push({ field, lang });
+    });
+  });
+
+  // Послідовне відтворення
+  for (const item of queue) {
+    if (!V.isVocabPlaying) break;
+    await speak(card.id, item.field, item.lang);
   }
 
-  const currentIdx = V.idx;
-  const v = V.queue[V.idx];
-  if(!v){ V.idx++; playVocabNext(); return; }
-
-  if(V.repeatCount === 0) renderVocabCard();
-  else {
-    const fc = document.getElementById('flashcard');
-    if(fc) fc.classList.remove('flipped');
+  // Логіка переходу
+  if (V.isVocabPlaying) {
+    if (isFront) {
+      // Чекаємо секунду і повертаємо картку
+      setTimeout(() => toggleVocab(), 1000);
+    } else {
+      // Чекаємо 1.5 сек і переходимо до наступної
+      setTimeout(() => {
+        if (V.isVocabPlaying) nextVocab();
+      }, 1500);
+    }
   }
+}
 
-  // 1. Термін (de-DE)
-  speak(v.term, 'de-DE', () => {
-    if(!V.playing || V.paused || V.idx !== currentIdx) return;
+// Нова функція speak, яка підтримує чергу (Promise)
+function speak(cardId, field, lang) {
+  return new Promise((resolve) => {
+    const url = getAudioUrl(cardId, field, lang);
+    const audio = new Audio(url);
+    
+    audio.onended = () => resolve();
+    audio.onerror = () => {
+      console.warn(`Файл не знайдено: ${url}`);
+      resolve(); // Йдемо далі, якщо файлу немає
+    };
 
-    V.timer = setTimeout(() => {
-      // 2. Підказка (de-DE)
-      speak(v.short, 'de-DE', () => {
-        if(!V.playing || V.paused || V.idx !== currentIdx) return;
-
-        V.flipped = true;
-        const fc = document.getElementById('flashcard');
-        if(fc) fc.classList.add('flipped');
-
-        V.timer = setTimeout(() => {
-          // 3. Переклад (uk-UA)
-          speak(v.def, 'uk-UA', () => {
-            if(!V.playing || V.paused || V.idx !== currentIdx) return;
-
-            saveCardPlay(v.id);
-            V.repeatCount++;
-
-            if(V.repeatCount < V.repeats){
-              V.timer = setTimeout(playVocabNext, V.readPause);
-            } else {
-              V.repeatCount = 0; V.idx++;
-              V.timer = setTimeout(playVocabNext, V.readPause + 500);
-            }
-          }, v.id, 'fc-def'); 
-        }, 600);
-      }, v.id, 'fc-short');
-    }, 400);
-  }, v.id, 'fc-term');
+    audio.play().catch(err => {
+      console.error("Помилка відтворення:", err);
+      resolve();
+    });
+  });
 }
 
 function speakVocabTerms(v,langs,i,done){
