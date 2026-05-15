@@ -1,48 +1,67 @@
 name: Generate TTS Audio
 
+# Запускається при зміні vocab-data.js або вручну
 on:
   push:
     paths:
       - 'vocab-data.js'
-  workflow_dispatch:
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+  workflow_dispatch:   # ← Дві незалежні кнопки-перемикачі для ручного запуску
+    inputs:
+      run_turbo:
+        description: 'Увімкнути режим TURBO (для тарифу S0 Standard)'
+        required: false
+        default: false
+        type: boolean
+      run_free:
+        description: 'Увімкнути режим FREE (повільний потік для F0)'
+        required: false
+        default: false
+        type: boolean
 
 jobs:
   generate:
     runs-on: ubuntu-latest
+
     permissions:
-      contents: write
+      contents: write   # потрібно щоб комітити аудіо файли
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: '24'
+          node-version: '20'
 
-      - uses: actions/setup-python@v5
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.11'
 
+      # Виставляємо параметри швидкості залежно від типу запуску та вибраної кнопки
       - name: Generate audio files
         env:
           AZURE_SPEECH_KEY:    ${{ secrets.AZURE_SPEECH_KEY }}
           AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+          # Якщо активовано 'run_turbo' — ставимо 15 потоків, інакше (авто-пуш або кнопка free) — 1 потік.
+          TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
+          # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше (для стабільності F0) — 1.2 сек.
+          TTS_DELAY:   ${{ github.event.inputs.run_turbo == 'true' && '0.05' || '1.2' }}
         run: python gen_audio.py
 
-      - name: Commit audio files
+      - name: Commit and push audio files
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add audio/
+          # Комітимо тільки якщо є нові файли
           if git diff --staged --quiet; then
-            echo "No new files."
+            echo "No new audio files to commit."
           else
-            COUNT=$(git diff --staged --name-only | grep -c '\.mp3$' || true)
-            git commit -m "🎙 TTS: ${COUNT} new audio files [skip ci]"
+            CARD_COUNT=$(git diff --staged --name-only | grep '\.mp3$' | wc -l | tr -d ' ')
+            git commit -m "🎙 Generate TTS audio: ${CARD_COUNT} new files [skip ci]"
             git push
           fi
