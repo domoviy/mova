@@ -633,25 +633,29 @@ function playAzureAudio(url, onEnd){
 function speak(text, lang, onEnd, cardId, field) {
   stopTTS();
   
-  // Створюємо новий контролер для цього конкретного виклику
+  // Створюємо контролер для можливості скасування запиту
   audioAbortController = new AbortController();
   const signal = audioAbortController.signal;
 
   if (cardId && field) {
-    // Формуємо шлях: audio/B2-Beruf/[ID]_[field]_[lang].mp3
+    // Формуємо прямий шлях до файлу: audio/B2-Beruf/ID_field_lang.mp3
+    // Наприклад: audio/B2-Beruf/101_fc-term_de-DE.mp3
     const url = `audio/B2-Beruf/${cardId}_${field}_${lang}.mp3`;
     
     fetch(url, { method: 'HEAD', signal })
       .then(r => {
         if (r.ok) { 
+          // Якщо файл знайдено — граємо його
           playAzureAudio(url, onEnd); 
         } else { 
+          // Якщо файлу немає (404) — використовуємо генерацію мови
+          console.warn("Audio file not found:", url);
           webSpeech(text, lang, onEnd); 
         }
       })
       .catch(err => {
-        // Якщо запит скасовано через abort(), нічого не робимо
         if (err.name === 'AbortError') return;
+        // У разі помилки мережі — генерація мови
         webSpeech(text, lang, onEnd);
       });
     return;
