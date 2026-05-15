@@ -617,12 +617,11 @@ let currentAudio = null;
 let audioAbortController = null; // Новий контролер для скасування запитів fetch
 
 function getAudioUrl(cardId, field, lang) {
-  // Якщо lang не є рядком або об'єктом з кодом - це помилковий виклик, ігноруємо
+  // Витягуємо код мови, якщо lang - це об'єкт, або перевіряємо чи це рядок
   let lCode = (typeof lang === 'object' && lang !== null) ? (lang.code || lang.id) : lang;
   
-  if (typeof lCode !== 'string' || lCode.length > 6) {
-    return ''; 
-  }
+  // Якщо прийшов не рядок або занадто довгий текст (як код функції) — ігноруємо
+  if (typeof lCode !== 'string' || lCode.length > 7) return '';
 
   const shortLang = lCode.split('-')[0]; 
   const cleanField = field.replace('fc-', '');
@@ -901,12 +900,13 @@ function initSwipe(){
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
 function toggleVocab() {
+  haptic.light();
   const card = document.querySelector('.vocab-card');
   if (!card) return;
   
   card.classList.toggle('flipped');
   
-  // Якщо активовано режим Play, запускаємо озвучку нової сторони
+  // Якщо ми в режимі авто-відтворення, запускаємо озвучку нової сторони
   if (V.isVocabPlaying) {
     playVocabNext();
   }
@@ -919,43 +919,40 @@ async function playVocabNext() {
   const cardElement = document.querySelector('.vocab-card');
   const isFront = !cardElement.classList.contains('flipped');
   
+  // Визначаємо поля для поточної сторони
   const fields = isFront ? ['fc-term', 'fc-short'] : ['fc-def'];
   const queue = [];
 
-  // Беремо тільки коди активних мов
+  // Отримуємо тільки коди активних мов з налаштувань
   const activeCodes = V.langActive.map(l => (typeof l === 'object' ? (l.code || l.id) : l)).filter(Boolean);
 
+  // Створюємо чергу: для кожного поля озвучуємо всі вибрані мови
   fields.forEach(field => {
     activeCodes.forEach(lCode => {
       queue.push({ field, lang: lCode });
     });
   });
 
+  // Послідовне відтворення з очікуванням (await)
   for (const item of queue) {
     if (!V.isVocabPlaying) break;
     await speak(card.id, item.field, item.lang);
   }
 
+  // Логіка автоматичного переходу
   if (V.isVocabPlaying) {
     if (isFront) {
-      // Після лицьової сторони - перевертаємо
-      setTimeout(() => {
-        if (V.isVocabPlaying) toggleVocab(); 
-      }, 800);
+      setTimeout(() => { if(V.isVocabPlaying) toggleVocab(); }, 800);
     } else {
-      // Після зворотної сторони - наступна картка
-      setTimeout(() => {
-        if (V.isVocabPlaying) nextVocab();
-      }, 1200);
+      setTimeout(() => { if(V.isVocabPlaying) nextVocab(); }, 1200);
     }
   }
 }
 
-// Нова функція speak, яка підтримує чергу (Promise)
 function speak(cardId, field, lang) {
   return new Promise((resolve) => {
     const url = getAudioUrl(cardId, field, lang);
-    if (!url) return resolve(); // Пропускаємо порожні URL
+    if (!url) return resolve();
 
     const audio = new Audio(url);
     audio.onended = () => resolve();
