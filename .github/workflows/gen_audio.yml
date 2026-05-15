@@ -18,6 +18,10 @@ on:
         default: false
         type: boolean
 
+# Глобальні налаштування для всього Workflow
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'   # Виправляє депрекацію Node.js 20 і вмикає Node 24
+
 jobs:
   generate:
     runs-on: ubuntu-latest
@@ -34,7 +38,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'   # Оновлено версію Node для самого середовища виконання
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -56,7 +60,7 @@ jobs:
           TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
           # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше — 1.2 сек
           TTS_DELAY:   ${{ github.event.inputs.run_turbo == 'true' && '0.05' || '1.2' }}
-          # ДИНАМІЧНИЙ ЛІМІТ КАРТОК: 15 для турбо, 3 для безкоштовного режиму
+          # 15 для турбо, 3 для безкоштовного режиму
           TTS_COMMIT_LIMIT: ${{ github.event.inputs.run_turbo == 'true' && '15' || '3' }}
         run: python gen_audio.py
 
