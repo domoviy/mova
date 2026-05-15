@@ -1,5 +1,5 @@
 // ══ MOVA Service Worker ══════════════════════════════════════
-const CACHE_VERSION = 'mova-v1.1.14';
+const CACHE_VERSION = 'mova-v1.1.15';
 
 const ASSETS = [
   './',
