@@ -18,7 +18,7 @@ const CATS = [
   {id:'Hard Skills',             de:'Hard Skills',             en:'Hard Skills',                 uk:'Hard Skills',          e:'💻'}, // Технічні навички (комп'ютер/інструмент)
   {id:'Mein Beruf',              de:'Mein Beruf',              en:'My profession',               uk:'Моя професія',         e:'💼'}, // Портфель — класичний символ професії
   {id:'Zusammenarbeit',          de:'Zusammenarbeit',          en:'Zusammenarbeit',              uk:'Zusammenarbeit',       e:'🤝'}, // Рукостискання краще за просто силуети
-  {id:'Mein Weg in den Beruf',   de:'Mein Weg in den Beruf',   en:'My way in profession',        uk:'Мій шлях у професії',  e:'🚀'}, // Ракета або сходи (📈) замість просто ступні
+  {id:'Mein Weg in den Beruf',   de:'Mein Weg in den Beruf',   en:'My way in profession',        uk:'Мій шлях у професії',  e:'🚀'}, // Ракета або сходи замість просто ступні
   {id:'Der erste Arbeitstag',    de:'Der erste Arbeitstag',    en:'The First Day of Work',       uk:'Перший робочий день',  e:'✨'}, // Новий старт, свіжість
   {id:'Über uns',                de:'Über uns',                en:'About us',                    uk:'Про нас',              e:'🏢'}, // Будівля офісу або команда (🏘️)
   {id:'Kommunikation ist alles', de:'Kommunikation ist alles', en:'Communication is everything', uk:'Спілкування - це все', e:'💬'}, // Бабли діалогу замість знизування плечима
