@@ -47,7 +47,7 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      # Виставляємо параметри швидкості залежно від типу запуску та вибраної кнопки
+      # Виставляємо параметри швидкості та ліміти збереження залежно від типу запуску
       - name: Generate audio files
         env:
           AZURE_SPEECH_KEY:    ${{ secrets.AZURE_SPEECH_KEY }}
@@ -56,9 +56,11 @@ jobs:
           TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
           # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше — 1.2 сек
           TTS_DELAY:   ${{ github.event.inputs.run_turbo == 'true' && '0.05' || '1.2' }}
+          # ДИНАМІЧНИЙ ЛІМІТ КАРТОК: 15 для турбо, 3 для безкоштовного режиму
+          TTS_COMMIT_LIMIT: ${{ github.event.inputs.run_turbo == 'true' && '15' || '3' }}
         run: python gen_audio.py
 
-      # ФІНАЛЬНИЙ КОМІТ: Дозаписує залишки файлів, які не ввійшли в останню пачку по 30
+      # ФІНАЛЬНИЙ КОМІТ: Дозаписує залишки файлів, які не ввійшли в останню пачку
       - name: Final Commit and push
         run: |
           git add audio/
