@@ -2476,5 +2476,20 @@
   "B2-Beruf/mb_014_def_en_080": true,
   "B2-Beruf/mb_014_def_uk_100": true,
   "B2-Beruf/mb_014_def_uk_080": true,
-  "B2-Beruf/mb_016_term_en_100": true
+  "B2-Beruf/mb_016_term_en_100": true,
+  "B2-Beruf/mb_016_term_de_100": true,
+  "B2-Beruf/mb_016_term_uk_100": true,
+  "B2-Beruf/mb_016_short_de_100": true,
+  "B2-Beruf/mb_015_def_en_100": true,
+  "B2-Beruf/mb_016_term_de_080": true,
+  "B2-Beruf/mb_016_term_en_080": true,
+  "B2-Beruf/mb_015_short_uk_080": true,
+  "B2-Beruf/mb_016_term_uk_080": true,
+  "B2-Beruf/mb_015_def_de_080": true,
+  "B2-Beruf/mb_016_short_de_080": true,
+  "B2-Beruf/mb_015_def_de_100": true,
+  "B2-Beruf/mb_015_def_en_080": true,
+  "B2-Beruf/mb_015_def_uk_100": true,
+  "B2-Beruf/mb_015_def_uk_080": true,
+  "B2-Beruf/mb_017_term_de_100": true
 }
