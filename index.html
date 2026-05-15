@@ -617,17 +617,16 @@ let currentAudio = null;
 let audioAbortController = null; // Новий контролер для скасування запитів fetch
 
 function getAudioUrl(cardId, field, lang) {
-  // Захист: якщо lang - об'єкт (напр. {code: 'de-DE'}), беремо його код
-  const langCode = (typeof lang === 'object' && lang !== null) ? (lang.code || lang.id) : lang;
+  // Якщо lang не є рядком або об'єктом з кодом - це помилковий виклик, ігноруємо
+  let lCode = (typeof lang === 'object' && lang !== null) ? (lang.code || lang.id) : lang;
   
-  if (!langCode || typeof langCode !== 'string') {
-    console.error("Invalid lang passed to getAudioUrl:", lang);
-    return '';
+  if (typeof lCode !== 'string' || lCode.length > 6) {
+    return ''; 
   }
 
-  const shortLang = langCode.split('-')[0]; 
+  const shortLang = lCode.split('-')[0]; 
   const cleanField = field.replace('fc-', '');
-  const speed = (typeof V !== 'undefined' && V.langSpeed?.[langCode]) || '100';
+  const speed = (typeof V !== 'undefined' && V.langSpeed?.[lCode]) || '100';
   const v = Date.now();
 
   const idStr = cardId.toString();
@@ -901,38 +900,15 @@ function initSwipe(){
 }
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
-function toggleVocab(){
-  if(!V.playing){
-    if(!V.queue.length)V.queue=buildVocabQueue();
-    V.playing=true;V.paused=false;
-    document.getElementById('vplaybtn').textContent='⏸';
-    document.getElementById('vplaybtn').classList.add('pause');
-    window.mlog?.('autoplay_started',{mode:V.mode,queue_size:V.queue.length});
+function toggleVocab() {
+  const card = document.querySelector('.vocab-card');
+  if (!card) return;
+  
+  card.classList.toggle('flipped');
+  
+  // Якщо активовано режим Play, запускаємо озвучку нової сторони
+  if (V.isVocabPlaying) {
     playVocabNext();
-  } else if(!V.paused){
-    V.paused=true;
-    speechSynthesis.cancel();
-    clearTimeout(V.timer);
-    document.getElementById('vplaybtn').textContent='▶';
-    document.getElementById('vplaybtn').classList.remove('pause');
-    window.mlog?.('autoplay_paused');
-  } else {
-    V.paused=false;
-    document.getElementById('vplaybtn').textContent='⏸';
-    document.getElementById('vplaybtn').classList.add('pause');
-    window.mlog?.('autoplay_resumed');
-    const v=V.queue[V.idx];
-    const al=getActiveLangs();
-    if(v&&V.flipped){
-      speakVocabDefs(v,al,0,()=>{
-        if(!V.playing||V.paused)return;
-        saveCardPlay(v.id);V.repeatCount++;
-        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
-        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
-      });
-    } else {
-      playVocabNext();
-    }
   }
 }
 function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
@@ -940,16 +916,18 @@ async function playVocabNext() {
   if (!V.isVocabPlaying || !V.currentCard) return;
 
   const card = V.currentCard;
-  const isFront = !document.querySelector('.vocab-card').classList.contains('flipped');
+  const cardElement = document.querySelector('.vocab-card');
+  const isFront = !cardElement.classList.contains('flipped');
+  
   const fields = isFront ? ['fc-term', 'fc-short'] : ['fc-def'];
   const queue = [];
 
-  // Збираємо чергу
+  // Беремо тільки коди активних мов
+  const activeCodes = V.langActive.map(l => (typeof l === 'object' ? (l.code || l.id) : l)).filter(Boolean);
+
   fields.forEach(field => {
-    V.langActive.forEach(l => {
-      // Витягуємо код мови, незалежно від того, чи l це рядок чи об'єкт
-      const lCode = (typeof l === 'object') ? (l.code || l.id) : l;
-      if (lCode) queue.push({ field, lang: lCode });
+    activeCodes.forEach(lCode => {
+      queue.push({ field, lang: lCode });
     });
   });
 
@@ -960,11 +938,15 @@ async function playVocabNext() {
 
   if (V.isVocabPlaying) {
     if (isFront) {
-      setTimeout(() => toggleVocab(), 1000);
+      // Після лицьової сторони - перевертаємо
+      setTimeout(() => {
+        if (V.isVocabPlaying) toggleVocab(); 
+      }, 800);
     } else {
+      // Після зворотної сторони - наступна картка
       setTimeout(() => {
         if (V.isVocabPlaying) nextVocab();
-      }, 1500);
+      }, 1200);
     }
   }
 }
@@ -973,20 +955,20 @@ async function playVocabNext() {
 function speak(cardId, field, lang) {
   return new Promise((resolve) => {
     const url = getAudioUrl(cardId, field, lang);
+    if (!url) return resolve(); // Пропускаємо порожні URL
+
     const audio = new Audio(url);
-    
     audio.onended = () => resolve();
     audio.onerror = () => {
-      console.warn(`Файл не знайдено: ${url}`);
-      resolve(); // Йдемо далі, якщо файлу немає
+      console.warn("Missing audio:", url);
+      resolve(); 
     };
 
-    audio.play().catch(err => {
-      console.error("Помилка відтворення:", err);
-      resolve();
-    });
+    audio.play().catch(() => resolve());
   });
 }
+
+
 
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){done&&done();return;}
@@ -995,13 +977,7 @@ function speakVocabTerms(v,langs,i,done){
     ()=>setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause),
     v.id, 'term');
 }
-function speakVocabShort(v,langs,done){
-  if(!V.playing||V.paused){done&&done();return;}
-  // Перевіряємо чи є хоч один short текст
-  const hasShort=langs.some(l=>v.short?.[l]||v.short?.de);
-  if(!hasShort){done&&done();return;}
-  setTimeout(()=>speakVocabShortLang(v,langs,0,done),V.pause);
-}
+
 function speakVocabShortLang(v,langs,i,done){
   if(!V.playing||V.paused){done&&done();return;}
   if(i>=langs.length){done&&done();return;}
@@ -1011,13 +987,7 @@ function speakVocabShortLang(v,langs,i,done){
     ()=>setTimeout(()=>speakVocabShortLang(v,langs,i+1,done),V.pause),
     v.id,'short');
 }
-function speakVocabDefs(v,langs,i,done){
-  if(!V.playing||V.paused){done&&done();return;}
-  if(i>=langs.length){done&&done();return;}
-  speak(v.def[langs[i]]||v.def.de, langs[i],
-    ()=>setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause),
-    v.id, 'def');
-}
+
 
 // ── LANG ──────────────────────────────────────────────────────
 function getActiveLangs(){return['en','uk','de'].filter(l=>V.langs[l]);}
