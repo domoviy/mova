@@ -633,30 +633,43 @@ function playAzureAudio(url, onEnd){
 }
 
 function speak(text, lang, onEnd, cardId, field) {
-  stopTTS();
-  
+  // 1. Зупиняємо попереднє аудіо
+  if (currentAudio) {
+    currentAudio.pause();
+    currentAudio.onended = null;
+    currentAudio = null;
+  }
+  speechSynthesis.cancel();
+
+  // 2. Скасовуємо попередній запит до сервера
+  if (audioAbortController) audioAbortController.abort();
   audioAbortController = new AbortController();
   const { signal } = audioAbortController;
 
   if (cardId && field) {
+    // Використовуємо вашу перевірену логіку шляху
     const url = getAudioUrl(cardId, field, lang);
     
     fetch(url, { method: 'HEAD', signal })
       .then(r => {
-        if (r.ok) { 
-          playAzureAudio(url, onEnd); 
-        } else { 
-          console.warn(`Файл ${field} не знайдено, граю TTS`);
-          webSpeech(text, lang, onEnd); 
+        if (r.ok) {
+          // Граємо mp3 файл
+          currentAudio = new Audio(url);
+          currentAudio.onended = () => { currentAudio = null; if (onEnd) onEnd(); };
+          currentAudio.onerror = () => { currentAudio = null; webSpeech(text, lang, onEnd); };
+          currentAudio.play().catch(() => webSpeech(text, lang, onEnd));
+        } else {
+          // Якщо файлу немає — голос браузера
+          webSpeech(text, lang, onEnd);
         }
       })
       .catch(err => {
         if (err.name === 'AbortError') return;
         webSpeech(text, lang, onEnd);
       });
-  } else {
-    webSpeech(text, lang, onEnd);
+    return;
   }
+  webSpeech(text, lang, onEnd);
 }
 
 function webSpeech(text, lang, onEnd){
@@ -875,65 +888,50 @@ function playVocabNext(){
   if(!V.playing||V.paused) return;
 
   if(V.idx >= V.queue.length){
-    V.queue = buildVocabQueue(); 
-    V.idx = 0; 
-    V.repeatCount = 0;
+    V.queue = buildVocabQueue(); V.idx = 0; V.repeatCount = 0;
   }
 
   const currentIdx = V.idx;
   const v = V.queue[V.idx];
-  if(!v){ V.idx++; playVocabNext(); return; }
+  if(!v) { V.idx++; playVocabNext(); return; }
 
-  // Візуальна частина
-  if(V.repeatCount === 0){
-    V.flipped = false;
-    renderVocabCard();
-  } else {
-    V.flipped = false;
+  // Показуємо передню сторону
+  if(V.repeatCount === 0) renderVocabCard();
+  else {
     const fc = document.getElementById('flashcard');
     if(fc) fc.classList.remove('flipped');
   }
 
-  // ЛАНЦЮЖОК ВІДТВОРЕННЯ
-  // 1. Спочатку Термін (de-DE)
+  // КРОК 1: ТЕРМІН (de-DE)
   speak(v.term, 'de-DE', () => {
     if(!V.playing || V.paused || V.idx !== currentIdx) return;
-    
-    // ПАУЗА 400мс перед коротким описом
+
     V.timer = setTimeout(() => {
-      
-      // 2. Тепер Коротка підказка (de-DE)
+      // КРОК 2: ПІДКАЗКА (de-DE)
       speak(v.short, 'de-DE', () => {
         if(!V.playing || V.paused || V.idx !== currentIdx) return;
-        
-        // ПЕРЕВЕРТАЄМО КАРТКУ
-        V.flipped = true;
+
+        // ПЕРЕВЕРТАЄМО
         const fc = document.getElementById('flashcard');
         if(fc) fc.classList.add('flipped');
 
-        // ПАУЗА 600мс перед дефініцією
         V.timer = setTimeout(() => {
-          
-          // 3. Тепер Дефініція/Переклад (uk-UA)
+          // КРОК 3: ПЕРЕКЛАД (uk-UA)
           speak(v.def, 'uk-UA', () => {
             if(!V.playing || V.paused || V.idx !== currentIdx) return;
 
             saveCardPlay(v.id);
             V.repeatCount++;
 
-            // Наступний крок або повтор
             if(V.repeatCount < V.repeats){
               V.timer = setTimeout(playVocabNext, V.readPause);
             } else {
-              V.repeatCount = 0;
-              V.idx++;
+              V.repeatCount = 0; V.idx++;
               V.timer = setTimeout(playVocabNext, V.readPause + 500);
             }
-          }, v.id, 'fc-def'); // Важливо: перевірте чи поле зветься fc-def чи fc-short на сервері
-          
+          }, v.id, 'fc-def'); // Спробуйте змінити на 'fc-short' якщо файли так називаються
         }, 600);
       }, v.id, 'fc-short');
-      
     }, 400);
   }, v.id, 'fc-term');
 }
