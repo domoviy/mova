@@ -41,27 +41,31 @@ jobs:
         with:
           python-version: '3.11'
 
+      # НАЛАШТУВАННЯ GIT: Потрібно заздалегідь, щоб Python міг робити авто-сейви
+      - name: Configure Git Bot
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
       # Виставляємо параметри швидкості залежно від типу запуску та вибраної кнопки
       - name: Generate audio files
         env:
           AZURE_SPEECH_KEY:    ${{ secrets.AZURE_SPEECH_KEY }}
           AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
-          # Якщо активовано 'run_turbo' — ставимо 15 потоків, інакше (авто-пуш або кнопка free) — 1 потік.
+          # Якщо активовано 'run_turbo' — ставимо 15 потоків, інакше — 1 потік
           TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
-          # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше (для стабільності F0) — 1.2 сек.
+          # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше — 1.2 сек
           TTS_DELAY:   ${{ github.event.inputs.run_turbo == 'true' && '0.05' || '1.2' }}
         run: python gen_audio.py
 
-      - name: Commit and push audio files
+      # ФІНАЛЬНИЙ КОМІТ: Дозаписує залишки файлів, які не ввійшли в останню пачку по 30
+      - name: Final Commit and push
         run: |
-          git config user.name  "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
           git add audio/
-          # Комітимо тільки якщо є нові файли
           if git diff --staged --quiet; then
-            echo "No new audio files to commit."
+            echo "All files were already synced by Python script."
           else
             CARD_COUNT=$(git diff --staged --name-only | grep '\.mp3$' | wc -l | tr -d ' ')
-            git commit -m "🎙 Generate TTS audio: ${CARD_COUNT} new files [skip ci]"
+            git commit -m "🎙 Generate TTS audio (Final Batch): ${CARD_COUNT} files [skip ci]"
             git push
           fi
