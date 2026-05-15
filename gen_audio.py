@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.2 (Auto-Save & Anti-Crash)
+MOVA · Azure TTS Audio Generator  v2.3 (Dynamic Auto-Save)
 Читає vocab-data.json (або конвертує з vocab-data.js)
-Генерує MP3 з Azure Neural TTS та порціями зберігає прогрес в Git
+Генерує MP3 з Azure Neural TTS та порціями зберігає прогрес в Git (3 для F0 / 15 для S0)
 """
 
 import os, sys, json, time, pathlib, re
@@ -19,9 +19,10 @@ COURSE    = 'B2-Beruf'
 AUDIO_DIR = pathlib.Path('audio') / COURSE
 MANIFEST  = pathlib.Path('audio') / 'manifest.json'
 
-# ДИНАМІЧНІ ЛІМІТИ (читаються з GitHub Actions або беруть значення за замовчуванням)
+# ДИНАМІЧНІ ЛІМІТИ (читаються з GitHub Actions)
 WORKERS   = int(os.environ.get('TTS_WORKERS', '1'))
-DELAY_SEC = float(os.environ.get('TTS_DELAY', '0.6'))
+DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
+COMMIT_EVERY_X_FILES = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))  # 3 для Free, 15 для Turbo
 
 FIELDS    = ['term', 'short', 'def']
 
@@ -37,9 +38,8 @@ SPEEDS = {
 
 lock = threading.Lock()
 NEW_FILES_COUNT = 0
-COMMIT_EVERY_X_FILES = 30  # Робити автоматичний push кожні 30 нових файлів
 
-# ── Завантаження 😊 бази (JSON або JS) ───────────────────────────
+# ── Завантаження бази (JSON або JS) ───────────────────────────
 def load_vocab():
     """Пробує vocab-data.json, потім парсить vocab-data.js regex."""
     jp = pathlib.Path('vocab-data.json')
@@ -111,7 +111,7 @@ def build_ssml(text, lang, speed_key):
 
 # ── Azure запит (з автопереходом на безкоштовний режим) ───────
 def synthesize(ssml, retries=3):
-    global WORKERS, DELAY_SEC
+    global WORKERS, DELAY_SEC, COMMIT_EVERY_X_FILES
     
     for attempt in range(retries):
         req = urllib.request.Request(
@@ -132,12 +132,14 @@ def synthesize(ssml, retries=3):
                 return data
         except urllib.error.HTTPError as e:
             if e.code == 429:
+                # АВТО-ГАЛЬМУВАННЯ: скидаємо швидкість та змінюємо ліміт комітів на 3
                 if WORKERS > 1 or DELAY_SEC < 0.6:
                     with lock:
                         if WORKERS > 1 or DELAY_SEC < 0.6:
-                            print('\n  ⚠️ [Azure F0 Detected] Зловлено ліміт 429! Автоматично переходжу на повільний режим...', flush=True)
+                            print('\n  ⚠️ [Azure F0 Detected] Зловлено ліміт 429! Переходжу на повільний режим та ліміт сейвів = 3...', flush=True)
                             WORKERS = 1
                             DELAY_SEC = 1.2
+                            COMMIT_EVERY_X_FILES = 3
                 
                 wait = int(e.headers.get('Retry-After', 10))
                 print(f'\n  ⏳ 429 Rate limit, очікування {wait}s перед повтором...', flush=True)
@@ -178,12 +180,12 @@ def process(task, manifest):
         save_manifest(manifest)
         NEW_FILES_COUNT += 1
         
-        # ── АВТОЗБЕРЕЖЕННЯ (PUSH) В GIT НА ЛЬОТУ ──────────────────
+        # ── ДИНАМІЧНЕ АВТОЗБЕРЕЖЕННЯ (PUSH) В GIT ─────────────────
         if NEW_FILES_COUNT >= COMMIT_EVERY_X_FILES:
             print(f'\n📦 [Auto-Sync] Накопичилося {NEW_FILES_COUNT} нових файлів. Фіксуємо прогрес у GitHub...', flush=True)
             os.system('git add audio/')
             if os.system('git diff --staged --quiet') != 0:
-                os.system('git commit -m "🎙 TTS Auto-Save: проміжне збереження пакету файлів [skip ci]"')
+                os.system(f'git commit -m "🎙 TTS Auto-Save: проміжне збереження пакету з {NEW_FILES_COUNT} файлів [skip ci]"')
                 os.system('git push')
             NEW_FILES_COUNT = 0
 
@@ -191,8 +193,9 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.2 (Auto-Save)', flush=True)
-    print(f'    Region: {AZURE_REGION} | Course: {COURSE} | Начальні Workers: {WORKERS}', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.3 (Dynamic Auto-Save)', flush=True)
+    print(f'    Region: {AZURE_REGION} | Course: {COURSE}', flush=True)
+    print(f'    Начальні Потоки (Workers): {WORKERS} | Пауза: {DELAY_SEC}s | Автосейв кожні: {COMMIT_EVERY_X_FILES} файлів', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
