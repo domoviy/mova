@@ -15,9 +15,9 @@ AZURE_KEY    = os.environ.get('AZURE_SPEECH_KEY','')
 AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION','westeurope')
 TTS_URL      = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1'
 
-COURSE    = 'B2-Beruf'
-AUDIO_DIR = pathlib.Path('audio') / COURSE
-MANIFEST  = pathlib.Path('audio') / 'manifest.json'
+COURSE     = 'B2-Beruf'
+AUDIO_BASE = pathlib.Path('audio') / COURSE   # audio/B2-Beruf/
+MANIFEST   = pathlib.Path('audio') / 'manifest.json'
 
 # ДИНАМІЧНІ ЛІМІТИ (читаються з GitHub Actions)
 WORKERS   = int(os.environ.get('TTS_WORKERS', '1'))
@@ -162,8 +162,10 @@ def process(task, manifest):
     if not text.strip():
         return 'skip', f'{cid}_{field}_{lang}_{speed}'
 
-    mkey  = f'{COURSE}/{cid}_{field}_{lang}_{speed}'
-    fpath = AUDIO_DIR / f'{cid}_{field}_{lang}_{speed}.mp3'
+    cat   = cid.split('_')[0]                              # 'mbr' з 'mbr_056'
+    fname = f'{cid}_{field}_{lang}_{speed}'                # mbr_056_short_en_080
+    mkey  = f'{COURSE}/{lang}/{speed}/{cat}/{fname}'       # B2-Beruf/en/080/mbr/mbr_056_short_en_080
+    fpath = AUDIO_BASE / lang / speed / cat / f'{fname}.mp3'
 
     with lock:
         if mkey in manifest and fpath.exists():
@@ -173,6 +175,7 @@ def process(task, manifest):
     if not audio:
         return 'err', mkey
 
+    fpath.parent.mkdir(parents=True, exist_ok=True)
     fpath.write_bytes(audio)
     
     with lock:
@@ -209,7 +212,7 @@ def main():
         print('   ✗ Azure НЕДОСТУПНИЙ — перевірте KEY і REGION!', flush=True)
         return 1
 
-    AUDIO_DIR.mkdir(parents=True, exist_ok=True)
+    AUDIO_BASE.mkdir(parents=True, exist_ok=True)
 
     print('\n📖 Завантаження бази...', flush=True)
     try:
@@ -232,7 +235,7 @@ def main():
     total   = len(tasks)
     already = sum(1 for c,f,l,s in tasks
                   if f'{COURSE}/{c["id"]}_{f}_{l}_{s}' in manifest
-                  and (AUDIO_DIR/f'{c["id"]}_{f}_{l}_{s}.mp3').exists())
+                  and (AUDIO_BASE / l / s / c['id'].split('_')[0] / f'{c["id"]}_{f}_{l}_{s}.mp3').exists())
 
     print(f'\n🎯 Завдань: {total} | Вже є: {already} | Нових: {total-already}', flush=True)
 
