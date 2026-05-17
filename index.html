@@ -612,12 +612,14 @@ async function loadVoices(){
   });
 }
 // ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
-const AUDIO_BASE = 'audio/B2-Beruf/';
 let currentAudio = null;
 
 function getAudioUrl(cardId, field, lang){
   const speed = V.langSpeed?.[lang] || '100';
-  return `${AUDIO_BASE}${cardId}_${field}_${lang}_${speed}.mp3`;
+  // Префікс категорії — літери до першого '_' у cardId (напр. 'mbr' з 'mbr_056')
+  const catPrefix = cardId.split('_')[0];
+  const filename = `${cardId}_${field}_${lang}_${speed}.mp3`;
+  return `audio/B2-Beruf/${lang}/${speed}/${catPrefix}/${filename}`;
 }
 
 function playAzureAudio(url, onEnd){
