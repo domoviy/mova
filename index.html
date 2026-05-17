@@ -11,7 +11,9 @@
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<!-- Шрифти завантажуються асинхронно — не блокують рендер і не ламають офлайн -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Syne:wght@800&family=Figtree:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"></noscript>
 
 <!-- Firebase Analytics (тільки на https://) -->
 <script type="module">
@@ -613,50 +615,86 @@ async function loadVoices(){
 }
 // ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
 let currentAudio = null;
+let playGen = 0;  // інкрементується при кожному stop → скасовує усі in-flight колбеки
+
+// Кеш: url → blob URL (уникає повторного завантаження того самого файлу)
+const audioBlobCache = new Map();
+// Кеш: url → true/false (чи існує файл на сервері)
+const audioExistsCache = new Map();
 
 function getAudioUrl(cardId, field, lang){
   const speed = V.langSpeed?.[lang] || '100';
-  // Префікс категорії — літери до першого '_' у cardId (напр. 'mbr' з 'mbr_056')
-  const catPrefix = cardId.split('_')[0];
-  const filename = `${cardId}_${field}_${lang}_${speed}.mp3`;
-  return `audio/B2-Beruf/${lang}/${speed}/${catPrefix}/${filename}`;
+  const cat   = cardId.split('_')[0];
+  return `audio/B2-Beruf/${lang}/${speed}/${cat}/${cardId}_${field}_${lang}_${speed}.mp3`;
 }
 
-function playAzureAudio(url, onEnd){
+async function playAzureAudio(url, onEnd, gen){
   if(currentAudio){ currentAudio.pause(); currentAudio = null; }
-  const a = new Audio(url);
+  // Якщо blob вже кешований — використовуємо одразу (без мережевого запиту)
+  let blobUrl = audioBlobCache.get(url);
+  if(!blobUrl){
+    try{
+      const resp = await fetch(url);
+      if(!resp.ok){ if(playGen===gen && onEnd) onEnd(); return; }
+      const blob = await resp.blob();
+      blobUrl = URL.createObjectURL(blob);
+      audioBlobCache.set(url, blobUrl);
+    }catch(e){ if(playGen===gen && onEnd) onEnd(); return; }
+  }
+  if(playGen !== gen) return; // скасовано під час завантаження
+  const a = new Audio(blobUrl);
   currentAudio = a;
-  a.onended  = ()=>{ currentAudio=null; onEnd&&onEnd(); };
-  a.onerror  = ()=>{ currentAudio=null; onEnd&&onEnd(); }; // fallback на Web Speech
-  a.play().catch(()=>{ currentAudio=null; onEnd&&onEnd(); });
+  const finish = ()=>{ if(currentAudio===a) currentAudio=null; if(playGen===gen && onEnd) onEnd(); };
+  a.onended = finish;
+  a.onerror = finish;
+  a.play().catch(finish);
 }
 
 function speak(text, lang, onEnd, cardId, field){
   stopTTS();
-  // Якщо є cardId і field — пробуємо Azure
+  const gen = playGen; // фіксуємо покоління до будь-якого async
+  const safeEnd = ()=>{ if(playGen===gen && onEnd) onEnd(); };
+
   if(cardId && field){
     const url = getAudioUrl(cardId, field, lang);
-    // Перевіряємо чи існує файл
-    fetch(url, {method:'HEAD'}).then(r=>{
-      if(r.ok){ playAzureAudio(url, onEnd); }
-      else     { webSpeech(text, lang, onEnd); }
-    }).catch(()=>webSpeech(text, lang, onEnd));
+    // Якщо вже знаємо що файл існує/не існує — не робимо мережевий запит
+    if(audioBlobCache.has(url)){
+      playAzureAudio(url, safeEnd, gen); return;
+    }
+    if(audioExistsCache.get(url) === false){
+      webSpeech(text, lang, safeEnd); return;
+    }
+    // Перший раз — завантажуємо і кешуємо blob одразу (без окремого HEAD)
+    fetch(url).then(r=>{
+      if(playGen!==gen) return;
+      if(!r.ok){ audioExistsCache.set(url, false); webSpeech(text, lang, safeEnd); return; }
+      r.blob().then(blob=>{
+        if(playGen!==gen) return;
+        const blobUrl = URL.createObjectURL(blob);
+        audioBlobCache.set(url, blobUrl);
+        audioExistsCache.set(url, true);
+        playAzureAudio(url, safeEnd, gen);
+      });
+    }).catch(()=>{ if(playGen===gen) webSpeech(text, lang, safeEnd); });
     return;
   }
-  webSpeech(text, lang, onEnd);
+  webSpeech(text, lang, safeEnd);
 }
 
 function webSpeech(text, lang, onEnd){
   const u = new SpeechSynthesisUtterance(text);
   u.lang  = LC[lang].code;
   if(vs[lang]) u.voice = vs[lang];
-  u.rate  = parseFloat(document.getElementById('trate')?.value||1);
+  // Кнопки 🐢/▶ задають швидкість — поважаємо їх і у webSpeech fallback
+  const spd = V.langSpeed?.[lang];
+  u.rate = spd ? (spd==='080'?0.8:1.0) : parseFloat(document.getElementById('trate')?.value||1);
   u.onend = onEnd||null;
   u.onerror=(e)=>{ if(e.error!=='interrupted'&&e.error!=='canceled'&&onEnd)onEnd(); };
   speechSynthesis.speak(u);
 }
 
 function stopTTS(){
+  playGen++;  // скасовує всі in-flight async колбеки
   speechSynthesis.cancel();
   if(currentAudio){ currentAudio.pause(); currentAudio=null; }
   document.getElementById('stopbtn').classList.remove('show');
@@ -1047,7 +1085,17 @@ function initVocabChips(){
   div.innerHTML='<button class="chip active" onclick="setVocabCat(\'all\',this)">Alle</button>';
   CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+c.de;btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
 }
-function setVocabCat(id,btn){haptic.light();const sel=document.getElementById('vf-cat');if(sel)sel.value=id;document.querySelectorAll('#vchips .chip').forEach(b=>b.classList.remove('active'));btn.classList.add('active');window.mlog?.('category_selected',{cat:id});resetVocabQ();}
+function setVocabCat(id,btn){
+  haptic.light();
+  const sel=document.getElementById('vf-cat');if(sel)sel.value=id;
+  document.querySelectorAll('#vchips .chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.mlog?.('category_selected',{cat:id});
+  resetVocabQ();
+  // Якщо відкрита вкладка "Alle" — оновлюємо browse-грід одразу
+  const browse=document.getElementById('vocab-panel-browse');
+  if(browse && browse.style.display!=='none') renderVocabBrowse();
+}
 
 window.addEventListener('DOMContentLoaded',init);
 
