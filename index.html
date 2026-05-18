@@ -113,7 +113,7 @@ body{
 
 /* ══ HEADER ELEMENTS ══ */
 .h-logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
-.h-logo-icon{width:36px;height:36px;flex-shrink:0}
+.h-logo-icon{height:26px;width:auto;flex-shrink:0}
 .h-logo-icon svg{width:100%;height:100%;display:block}
 .h-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;color:var(--gold);letter-spacing:1px;line-height:1}
 #stopbtn{
@@ -359,9 +359,96 @@ body{
 .sp-btn:active{opacity:.7}
 .btn-s{background:var(--soft);color:var(--warm);border:1px solid var(--border)}
 .btn-s:active{border-color:var(--red);color:var(--red)}
+
+/* ══ SPLASH ══ */
+#splash{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--forest);
+  background-image:
+    radial-gradient(ellipse at 35% 45%, rgba(201,168,76,.10) 0%, transparent 55%),
+    radial-gradient(ellipse at 70% 60%, rgba(30,74,44,.5) 0%, transparent 50%);
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:all;
+}
+#splash-inner{
+  display:flex;align-items:center;
+  transform-origin:50% 50%;
+  will-change:transform,opacity;
+}
+#splash-svg{
+  width:min(72vw,420px);
+  height:auto;
+  display:block;
+}
+/* fly-out — запускається JS-ом */
+#splash.fly-out{
+  pointer-events:none;
+}
+#splash.fly-out #splash-inner{
+  transition:transform .7s cubic-bezier(.4,0,.2,1), opacity .25s ease .45s;
+}
+
 </style>
 </head>
 <body>
+
+<!-- ══ SPLASH SCREEN ══ -->
+<div id="splash">
+  <div id="splash-inner">
+    <svg id="splash-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700">
+    <style>
+      @keyframes sp-draw { to { stroke-dashoffset: 0; } }
+      @keyframes sp-glow {
+        0%,100%{filter:drop-shadow(0 0 0px rgba(201,168,76,0))}
+        50%{filter:drop-shadow(0 0 14px rgba(201,168,76,.65))}
+      }
+      #sp-icon {
+        stroke-dasharray:1400;stroke-dashoffset:1400;
+        animation:sp-draw 1.6s cubic-bezier(.4,0,.2,1) forwards,
+                  sp-glow 2.2s ease-in-out 1.7s infinite;
+      }
+      #sp-lM {stroke-dasharray:650;stroke-dashoffset:650;animation:sp-draw .5s ease-in-out 1.8s forwards;}
+      #sp-lO {stroke-dasharray:470;stroke-dashoffset:470;animation:sp-draw .42s ease-in-out 2.3s forwards;}
+      #sp-lV {stroke-dasharray:430;stroke-dashoffset:430;animation:sp-draw .38s ease-in-out 2.72s forwards;}
+      #sp-lA {stroke-dasharray:430;stroke-dashoffset:430;animation:sp-draw .38s ease-in-out 3.1s forwards;}
+      #sp-lAbar{stroke-dasharray:70;stroke-dashoffset:70;animation:sp-draw .13s ease-in-out 3.48s forwards;}
+    </style>
+
+    <!-- ICON: хвиляста монолінія -->
+    <path id="sp-icon"
+      d="M 50,385 L 194,212 C 231,252 277,296 297,280 S 355,152 370,168
+         C 388,200 424,272 441,258 C 460,228 577,90 658,76"
+      fill="none" stroke="#c9a84c"
+      stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- M -->
+    <path id="sp-lM"
+      d="M 50,660 L 50,460 L 99,560 L 148,460 L 148,660"
+      fill="none" stroke="#c9a84c"
+      stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- O -->
+    <path id="sp-lO"
+      d="M 297,477.5 A 59.5,82.5 0 0 1 356.5,560 A 59.5,82.5 0 0 1 297,642.5
+         A 59.5,82.5 0 0 1 237.5,560 A 59.5,82.5 0 0 1 297,477.5"
+      fill="none" stroke="#c9a84c"
+      stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- V -->
+    <path id="sp-lV"
+      d="M 421.5,460 L 470.5,660 L 519.5,460"
+      fill="none" stroke="#c9a84c"
+      stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- A -->
+    <path id="sp-lA"
+      d="M 560,660 L 609,460 L 658,660"
+      fill="none" stroke="#c9a84c"
+      stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- A перекладина -->
+    <line id="sp-lAbar"
+      x1="580.8" y1="575" x2="637.2" y2="575"
+      stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
+    </svg>
+  </div>
+</div>
+
 
 <script src="vocab-data.js"></script>
 
@@ -370,19 +457,49 @@ body{
 
   <!-- HEADER -->
   <div id="header">
-    <div class="h-logo">
+    <div class="h-logo" id="h-logo" style="opacity:0;transition:opacity .35s ease">
       <div class="h-logo-icon">
-        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+        <!-- Іконка-хвиля: точно масштабована з mova_monoline_animiert.svg -->
+        <svg viewBox="0 0 130 80" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">
           <style>
-            @keyframes di{to{stroke-dashoffset:0}}
-            .ic{stroke-dasharray:500;stroke-dashoffset:500;animation:di 1.4s cubic-bezier(.4,0,.2,1) .2s forwards}
-            @keyframes ig{0%,100%{filter:drop-shadow(0 0 0 rgba(201,168,76,0))}50%{filter:drop-shadow(0 0 5px rgba(201,168,76,.45))}}
-            svg{animation:ig 3s ease-in-out 2s infinite}
+            @keyframes hig{0%,100%{filter:drop-shadow(0 0 0 rgba(201,168,76,0))}50%{filter:drop-shadow(0 0 4px rgba(201,168,76,.5))}}
+            #h-wave{animation:hig 3.5s ease-in-out 1s infinite}
           </style>
-          <path class="ic" d="M10,75 L26,48 C30,54 36,62 40,58 S52,30 55,34 C58,42 64,56 68,52 C72,44 92,18 108,14 L108,6 L118,6" fill="none" stroke="#c9a84c" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path id="h-wave"
+            d="M 5,75 L 33,36 C 41,45 50,55 54,51
+               S 65,22 68,26
+               C 72,33 79,49 82,46
+               C 86,39 109,8 125,5"
+            fill="none" stroke="#c9a84c"
+            stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <span class="h-logo-text">MOVA</span>
+      <!-- MOVA: літери з mova_monoline_animiert.svg, статичні (вже намальовані) -->
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="38 448 634 226"
+           style="height:26px;width:auto;display:block;flex-shrink:0" aria-label="MOVA">
+        <!-- M -->
+        <path d="M 50,660 L 50,460 L 99,560 L 148,460 L 148,660"
+          fill="none" stroke="#c9a84c" stroke-width="35"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- O -->
+        <path d="M 297,477.5 A 59.5,82.5 0 0 1 356.5,560
+                             A 59.5,82.5 0 0 1 297,642.5
+                             A 59.5,82.5 0 0 1 237.5,560
+                             A 59.5,82.5 0 0 1 297,477.5"
+          fill="none" stroke="#c9a84c" stroke-width="35"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- V -->
+        <path d="M 421.5,460 L 470.5,660 L 519.5,460"
+          fill="none" stroke="#c9a84c" stroke-width="35"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- A -->
+        <path d="M 560,660 L 609,460 L 658,660"
+          fill="none" stroke="#c9a84c" stroke-width="35"
+          stroke-linecap="round" stroke-linejoin="round"/>
+        <!-- A перекладина -->
+        <line x1="580.8" y1="575" x2="637.2" y2="575"
+          stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
+      </svg>
     </div>
     <button id="stopbtn" onclick="stopTTS()">⏹ Stop</button>
   </div>
@@ -595,6 +712,62 @@ async function init(){
   // PWA portrait lock via API (працює тільки в installed PWA)
   try{await screen.orientation?.lock?.('portrait');}catch(e){}
 }
+
+// ── SPLASH — запускається одразу, незалежно від init() ───────
+(function(){
+  function startSplash(){
+    const splash      = document.getElementById('splash');
+    const splashInner = document.getElementById('splash-inner');
+    const hLogo       = document.getElementById('h-logo');
+    if(!splash) return;
+
+    // Анімація в SVG завершується ~3.61s → даємо ще трохи часу
+    const FLY_DELAY   = 4050;   // ms після старту — починаємо політ
+    const FLY_DUR     = 700;    // ms тривалість польоту
+    const REMOVE_WAIT = FLY_DUR + 150;
+
+    setTimeout(()=>{
+      const si = splashInner.getBoundingClientRect();
+      const hi = hLogo ? hLogo.getBoundingClientRect() : null;
+
+      if(hi && hi.width > 0){
+        // Цільова позиція — центр h-logo в хедері
+        const dx = (hi.left + hi.width/2)  - (si.left + si.width/2);
+        const dy = (hi.top  + hi.height/2) - (si.top  + si.height/2);
+        // Масштаб: вписуємо у висоту h-logo, але не більше 0.45 і не менше 0.12
+        const sc = Math.min(Math.max(hi.height / si.height, 0.12), 0.45);
+
+        splash.classList.add('fly-out');
+        // Два rAF — гарантія що transition застосується перед трансформом
+        requestAnimationFrame(()=> requestAnimationFrame(()=>{
+          splashInner.style.transform = `translate(${dx}px,${dy}px) scale(${sc})`;
+          splashInner.style.opacity   = '0';
+        }));
+      } else {
+        // Хедер недоступний → fade-out
+        splash.style.transition = 'opacity .4s';
+        splash.style.opacity    = '0';
+      }
+
+      setTimeout(()=>{
+        if(hLogo) hLogo.style.opacity = '1';
+        splash.remove();
+      }, REMOVE_WAIT);
+
+    }, FLY_DELAY);
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', startSplash);
+  } else {
+    startSplash();
+  }
+})();
+
+
+
+
+
 
 // ── TTS ───────────────────────────────────────────────────────
 async function loadVoices(){
