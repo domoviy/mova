@@ -112,7 +112,7 @@ body{
 .bn-item{height:64px}
 
 /* ══ HEADER ELEMENTS ══ */
-.h-logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.h-logo{display:flex;align-items:center;gap:9px;flex-shrink:0;margin-right:auto}
 .h-logo-icon{height:26px;width:auto;flex-shrink:0}
 .h-logo-icon svg{width:100%;height:100%;display:block}
 .h-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;color:var(--gold);letter-spacing:1px;line-height:1}
@@ -362,7 +362,15 @@ body{
 
 /* ══ SPLASH ══ */
 #splash{
-  position:fixed;inset:0;z-index:9999;
+  position:fixed;
+  top:0;left:0;right:0;bottom:0;
+  /* Покриваємо весь екран включно з safe-area на iOS */
+  top:env(safe-area-inset-top, 0px);
+  padding-bottom:env(safe-area-inset-bottom, 0px);
+  /* Розтягуємо на весь viewport включно з notch/dynamic island */
+  margin-top:calc(-1 * env(safe-area-inset-top, 0px));
+  min-height:100dvh;
+  z-index:9999;
   background:var(--forest);
   background-image:
     radial-gradient(ellipse at 35% 45%, rgba(201,168,76,.10) 0%, transparent 55%),
@@ -376,7 +384,7 @@ body{
   will-change:transform,opacity;
 }
 #splash-svg{
-  width:min(72vw,420px);
+  width:min(68vw,400px);
   height:auto;
   display:block;
 }
@@ -872,6 +880,29 @@ function stopTTS(){
   if(currentAudio){ currentAudio.pause(); currentAudio=null; }
   document.getElementById('stopbtn').classList.remove('show');
 }
+
+// ── BACKGROUND/FOREGROUND handling ────────────────────────────
+// Коли додаток іде у background під час відтворення — зупиняємо аудіо
+// і позначаємо що треба відновити. При поверненні — починаємо картку знову.
+let _wasPlayingBeforeHidden = false;
+document.addEventListener('visibilitychange', ()=>{
+  if(document.visibilityState === 'hidden'){
+    _wasPlayingBeforeHidden = V.playing && !V.paused;
+    if(_wasPlayingBeforeHidden){
+      // Зупиняємо поточне аудіо без переходу на наступну картку
+      playGen++;
+      speechSynthesis.cancel();
+      if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+    }
+  } else if(document.visibilityState === 'visible'){
+    if(_wasPlayingBeforeHidden && V.playing && !V.paused){
+      _wasPlayingBeforeHidden = false;
+      // Невелика затримка щоб браузер повністю повернувся
+      setTimeout(()=>{ if(V.playing && !V.paused) playVocabNext(); }, 400);
+    }
+    _wasPlayingBeforeHidden = false;
+  }
+});
 
 // ── NAVIGATION ────────────────────────────────────────────────
 function showView(id){
