@@ -1,0 +1,53 @@
+name: Update SW Cache Version
+
+# Запускається при кожному пуші у main (крім пушів від самого бота)
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'audio/**'   # аудіо-файли не потребують оновлення кешу SW
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'
+
+jobs:
+  bump-sw-version:
+    runs-on: ubuntu-latest
+    # Не запускаємось якщо це пуш від github-actions[bot] (щоб не зациклитись)
+    if: github.actor != 'github-actions[bot]'
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Bump CACHE_VERSION in sw.js
+        run: |
+          # Версія = дата + короткий SHA коміту: напр. 20260518-a1b2c3d
+          NEW_VERSION="${{ github.run_number }}-$(echo ${{ github.sha }} | cut -c1-7)"
+          echo "Нова версія SW: $NEW_VERSION"
+
+          # Замінюємо рядок CACHE_VERSION у sw.js
+          sed -i "s|const CACHE_VERSION = '.*';|const CACHE_VERSION = '${NEW_VERSION}';|" sw.js
+
+          echo "Результат:"
+          grep "CACHE_VERSION" sw.js
+
+      - name: Configure Git Bot
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Commit updated sw.js
+        run: |
+          git add sw.js
+          if git diff --staged --quiet; then
+            echo "sw.js не змінився — пропускаємо коміт"
+          else
+            git commit -m "⚙️ SW cache version bump [skip ci]"
+            git push
+          fi
