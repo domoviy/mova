@@ -1310,21 +1310,9 @@ if('serviceWorker' in navigator){
     // Реєструємо БЕЗ ?v= — query string ігнорується браузером при реєстрації SW.
     // Версія кешу контролюється всередині sw.js через CACHE_NAME.
     navigator.serviceWorker.register('sw.js').then(reg=>{
-      // Одразу перевіряємо оновлення при кожному запуску
+      // Перевіряємо оновлення при кожному запуску
       reg.update();
-
-      reg.addEventListener('updatefound',()=>{
-        const nw = reg.installing;
-        nw.addEventListener('statechange',()=>{
-          if(nw.state === 'installed' && navigator.serviceWorker.controller){
-            // Новий SW встановився — надсилаємо йому SKIP_WAITING
-            // щоб він одразу взяв контроль без очікування закриття вкладок
-            nw.postMessage({ type: 'SKIP_WAITING' });
-          }
-        });
-      });
-
-      // Коли новий SW взяв контроль — перезавантажуємо сторінку
+      // SW сам викликає skipWaiting() в install → ми лише перезавантажуємось
       navigator.serviceWorker.addEventListener('controllerchange', ()=>{
         window.location.reload();
       });

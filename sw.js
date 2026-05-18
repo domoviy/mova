@@ -1,7 +1,7 @@
 // ── MOVA Service Worker ───────────────────────────────────────
 // Щоб примусово оновити кеш — змінюй тільки CACHE_VERSION нижче.
 // index.html більше не передає ?v= — версія контролюється тут.
-const CACHE_VERSION = '1-6c55bd7';
+const CACHE_VERSION = '1.1.4';
 const CACHE_NAME    = `mova-v${CACHE_VERSION}`;
 
 // Файли що кешуються при першій установці (app shell)
@@ -14,15 +14,12 @@ const PRECACHE = [
   './icon-512.png',
 ];
 
-// ── INSTALL: кешуємо app shell ────────────────────────────────
+// ── INSTALL: кешуємо app shell і одразу активуємось ──────────
 self.addEventListener('install', e => {
   e.waitUntil(
     caches.open(CACHE_NAME)
       .then(cache => cache.addAll(PRECACHE))
-      .then(() => {
-        // НЕ чекаємо — одразу готові до активації
-        // (activate відбудеться після SKIP_WAITING від клієнта)
-      })
+      .then(() => self.skipWaiting()) // одразу витісняємо старий SW — не чекаємо
   );
 });
 
