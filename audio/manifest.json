@@ -6061,5 +6061,20 @@
   "B2-Beruf/de/100/eat/eat_018_def_de_100": true,
   "B2-Beruf/uk/080/eat/eat_017_def_uk_080": true,
   "B2-Beruf/uk/100/eat/eat_019_term_uk_100": true,
-  "B2-Beruf/de/100/eat/eat_019_term_de_100": true
+  "B2-Beruf/de/100/eat/eat_019_term_de_100": true,
+  "B2-Beruf/en/100/eat/eat_019_short_en_100": true,
+  "B2-Beruf/en/100/eat/eat_019_term_en_100": true,
+  "B2-Beruf/uk/080/eat/eat_019_term_uk_080": true,
+  "B2-Beruf/de/080/eat/eat_019_short_de_080": true,
+  "B2-Beruf/en/080/eat/eat_019_short_en_080": true,
+  "B2-Beruf/en/080/eat/eat_019_term_en_080": true,
+  "B2-Beruf/de/080/eat/eat_019_term_de_080": true,
+  "B2-Beruf/uk/080/eat/eat_018_def_uk_080": true,
+  "B2-Beruf/uk/100/eat/eat_019_short_uk_100": true,
+  "B2-Beruf/de/100/eat/eat_019_short_de_100": true,
+  "B2-Beruf/de/080/eat/eat_018_def_de_080": true,
+  "B2-Beruf/en/100/eat/eat_018_def_en_100": true,
+  "B2-Beruf/en/080/eat/eat_018_def_en_080": true,
+  "B2-Beruf/uk/100/eat/eat_018_def_uk_100": true,
+  "B2-Beruf/de/100/eat/eat_020_term_de_100": true
 }
