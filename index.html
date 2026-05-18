@@ -314,6 +314,9 @@ body{
 .fc-term{font-size:19px;font-weight:700;color:#fff;line-height:1.25}
 .fc-short{font-size:13px;color:rgba(255,255,255,.42);margin-top:1px}
 .fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
+.fc-srs-badge{display:block;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 0;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
+.fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
+.fc-srs-due{background:rgba(201,168,76,.2);color:var(--gold);border-color:rgba(201,168,76,.5)}
 .fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
 .fc-back-header{
   padding:13px 16px 10px;display:flex;align-items:center;
@@ -677,6 +680,7 @@ let V={
   pause:    _s.pause   ??300,
   readPause:_s.readPause??300,
   mode:     _s.mode    ||'smart',
+  srsRating: null,  // поточна оцінка SM-2 (1/3/5), null = ще не оцінено
 };
 
 function setLangSpeed(lang,val){
@@ -703,6 +707,71 @@ function saveSettings(){
     pause:V.pause, readPause:V.readPause, mode:V.mode
   }));
 }
+// ── SM-2 ENGINE ───────────────────────────────────────────────
+// Спрощений SM-2: зберігає interval, easiness, dueDate для кожної картки
+// Дані: localStorage 'srs_' + cardId
+
+const SRS_MIN_EF = 1.3;   // мінімальний коефіцієнт легкості
+const SRS_DEFAULT_EF = 2.5;
+
+function srsLoad(id){
+  try{ return JSON.parse(localStorage.getItem('srs_'+id)||'{}'); }catch(e){ return {}; }
+}
+function srsSave(id,data){
+  localStorage.setItem('srs_'+id, JSON.stringify(data));
+}
+
+// q: 1=Не знаю, 3=Невпевнений, 5=Знаю
+function srsRate(id, q){
+  const d = srsLoad(id);
+  let ef       = d.ef       ?? SRS_DEFAULT_EF;
+  let interval = d.interval ?? 0;
+  const now    = Date.now();
+
+  // Оновлення коефіцієнту легкості (формула SM-2)
+  ef = ef + (0.1 - (5-q) * (0.08 + (5-q) * 0.02));
+  if(ef < SRS_MIN_EF) ef = SRS_MIN_EF;
+  if(ef > 2.5)        ef = 2.5;
+
+  // Інтервал
+  if(q === 1){
+    interval = 1;                           // не знаю → завтра
+  } else if(q === 3){
+    interval = Math.max(1, Math.round(interval * 1.2)); // невпевнений → +20%
+  } else {
+    // знаю → SM-2 прогресія
+    if(interval === 0)      interval = 1;
+    else if(interval === 1) interval = 4;
+    else                    interval = Math.round(interval * ef);
+  }
+
+  const dueDate = now + interval * 86400000; // ms до наступного показу
+
+  srsSave(id, {ef, interval, dueDate, lastRated: now, lastQ: q});
+  return {ef, interval, dueDate};
+}
+
+function srsDue(id){
+  const d = srsLoad(id);
+  if(!d.dueDate) return true; // нова картка — завжди показуємо
+  return Date.now() >= d.dueDate;
+}
+
+function srsDaysUntil(id){
+  const d = srsLoad(id);
+  if(!d.dueDate || Date.now() >= d.dueDate) return 0;
+  return Math.ceil((d.dueDate - Date.now()) / 86400000);
+}
+
+// Рейтинг картки для сортування черги SM-2
+function srsPriority(id){
+  const d = srsLoad(id);
+  if(!d.dueDate) return 999;           // нові — першими
+  const overdue = Date.now() - d.dueDate;
+  return overdue / 86400000;           // більше прострочено → вище
+}
+
+
 
 // ── HAPTIC FEEDBACK ───────────────────────────────────────────
 // Android: реальна вібрація через Vibration API
@@ -962,8 +1031,16 @@ function initVocabFilters(){
 function buildVocabQueue(){
   const cf=document.getElementById('vf-cat')?.value||'all';
   let arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
-  if(V.mode==='random')arr=arr.sort(()=>Math.random()-.5);
-  else if(V.mode==='smart')arr=arr.sort((a,b)=>cardScore(b)-cardScore(a));
+  if(V.mode==='random'){
+    arr=arr.sort(()=>Math.random()-.5);
+  } else if(V.mode==='smart'){
+    arr=arr.sort((a,b)=>cardScore(b)-cardScore(a));
+  } else if(V.mode==='srs'){
+    // SM-2: спочатку прострочені та нові, потім за пріоритетом
+    const due   = arr.filter(v=>srsDue(v.id)).sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
+    const notDue= arr.filter(v=>!srsDue(v.id));
+    arr = [...due, ...notDue];
+  }
   return arr;
 }
 function cardScore(v){
@@ -985,13 +1062,29 @@ function renderVocabCard(){
   const card=document.getElementById('flashcard');if(!card)return;
   card.classList.toggle('flipped',V.flipped);
   const fav=isFavorite(v.id);
+  // SRS badge — будуємо окремо щоб уникнути вкладених template literals
+  let srsBadgeHtml = '';
+  if(V.mode==='srs'){
+    const sd=srsLoad(v.id);
+    if(!sd.dueDate){
+      srsBadgeHtml='<div class="fc-srs-badge fc-srs-new">✨ нова картка</div>';
+    } else {
+      const sdays=srsDaysUntil(v.id);
+      const sef=(sd.ef||SRS_DEFAULT_EF).toFixed(1);
+      srsBadgeHtml=sdays===0
+        ? '<div class="fc-srs-badge fc-srs-due">📅 сьогодні · EF '+sef+'</div>'
+        : '<div class="fc-srs-badge">📅 +'+sdays+'д · EF '+sef+'</div>';
+    }
+  }
+  const srsHintText = V.mode==='srs' ? '↑ Не знаю · ↓ Знаю · ← Далі' : '↕ Tippen · ← → Wischen';
   document.getElementById('fc-front-inner').innerHTML=`
     <div class="fc-header">
       <button class="fc-fav ${fav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${v.id}')">${fav?'★':'☆'}</button>
       <span class="fc-cat">${cat?cat.e+' '+cat.de:v.cat}</span>
     </div>
     <div class="fc-body">${termRows}</div>
-    <div class="fc-hint">↕ Tippen · ← → Wischen</div>`;
+    <div class="fc-hint">${srsHintText}</div>
+    ${srsBadgeHtml}`;
   document.getElementById('fc-back-inner').innerHTML=`
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${v.id}')">${fav?'★':'☆'}</button>
@@ -1067,8 +1160,83 @@ function initSwipe(){
         haptic.medium();stopVocab();if(!V.queue.length)return;
         swipeCard('right',()=>{V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);});
       }
-    }else if(ady>adx&&ady>48){flipCard();}
+    }else if(ady>adx&&ady>48){
+      if(V.mode==='srs' && V.playing){
+        if(dy < 0){
+          // Змах вгору = Не знаю (q=1) → аудіо грає до кінця
+          haptic.error();
+          srsSwipe(1);
+        } else {
+          // Змах вниз = Знаю (q=5) → одразу наступна картка
+          haptic.success();
+          srsSwipe(5);
+        }
+      } else {
+        flipCard();
+      }
+    }
   },{passive:true});
+}
+
+
+// ── SRS SWIPE HANDLER ─────────────────────────────────────────
+function srsSwipe(q){
+  const v = V.queue[V.idx];
+  if(!v) return;
+
+  V.srsRating = q;
+  const result = srsRate(v.id, q);
+
+  // Показуємо фідбек
+  const days = result.interval;
+  const emoji = q===1 ? '🔄' : q===3 ? '🤔' : '✅';
+  const label = q===1
+    ? 'Повторимо завтра'
+    : q===3
+    ? `Знову через ${days} дн.`
+    : days===1 ? 'Завтра' : `Через ${days} дн.`;
+  showSrsHint(emoji, label, q);
+
+  if(q === 5){
+    // Знаю → одразу наступна картка (зупиняємо аудіо)
+    playGen++;
+    speechSynthesis.cancel();
+    if(currentAudio){ currentAudio.pause(); currentAudio=null; }
+    V.repeatCount=0; V.idx++;
+    const ticket = ++cardGen;
+    setTimeout(()=>{
+      if(V.playing && !V.paused && cardGen===ticket) playVocabNext();
+    }, 600); // пауза щоб показати хінт
+  }
+  // q===1 (Не знаю) → аудіо грає до кінця, playVocabNext спрацює сам
+  // Після завершення saveCardPlay вже збережеться, srsRate вже викликано
+}
+
+// Показує інформаційний хінт з результатом SRS
+function showSrsHint(emoji, label, q){
+  let hint = document.getElementById('srs-hint');
+  if(!hint){
+    hint = document.createElement('div');
+    hint.id = 'srs-hint';
+    hint.style.cssText = `
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      background:rgba(13,43,26,.92);
+      border:1px solid rgba(201,168,76,.35);
+      border-radius:16px;padding:14px 24px;
+      font-size:15px;font-weight:600;
+      color:var(--gold);text-align:center;
+      pointer-events:none;z-index:100;
+      backdrop-filter:blur(8px);
+      transition:opacity .3s ease;
+      white-space:nowrap;
+    `;
+    document.getElementById('fc-area')?.appendChild(hint);
+  }
+  hint.innerHTML = emoji+'<br><span style="font-size:12px;opacity:.8">'+label+'</span>';
+  hint.style.opacity = '1';
+  clearTimeout(hint._t);
+  hint._t = setTimeout(()=>{ hint.style.opacity='0'; }, 1200);
 }
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
@@ -1183,9 +1351,23 @@ function toggleVocabLang(l){
 }
 function applyVocabLangUI(){['en','uk','de'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
 function cycleVocabMode(){
-  const modes=['smart','seq','random'];V.mode=modes[(modes.indexOf(V.mode)+1)%3];
+  const modes=['smart','seq','random','srs'];
+  V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
   const btn=document.getElementById('vshuffle-btn');
-  if(btn){btn.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'}}[V.mode];btn.textContent=cfg.icon;if(cfg.cls)btn.classList.add(cfg.cls);}
+  const cfg={
+    smart: {icon:'🧠',cls:'smart'},
+    seq:   {icon:'➡', cls:''},
+    random:{icon:'🔀',cls:'shuffle'},
+    srs:   {icon:'🔬',cls:'smart'},
+  }[V.mode];
+  if(btn){btn.classList.remove('smart','shuffle');btn.textContent=cfg.icon;if(cfg.cls)btn.classList.add(cfg.cls);}
+  if(V.mode==='srs'){
+    const cf=document.getElementById('vf-cat')?.value||'all';
+    const arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
+    const dueCount=arr.filter(v=>srsDue(v.id)).length;
+    const newCount=arr.filter(v=>!srsLoad(v.id).dueDate).length;
+    notify(`🔬 SM-2: ${dueCount} сьогодні · ${newCount} нових`);
+  }
   saveSettings();resetVocabQ();
 }
 
