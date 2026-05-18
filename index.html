@@ -67,7 +67,7 @@ if(location.protocol === 'https:'){
 html{height:100%}
 body{
   font-family:'Figtree',sans-serif;
-  background:var(--cream);color:var(--ink);font-size:14px;
+  background:var(--forest);color:var(--ink);font-size:14px;
   display:flex;flex-direction:column;
   height:100dvh;overflow:hidden;
   overscroll-behavior:none;
@@ -115,7 +115,7 @@ body{
 .bn-item{height:64px}
 
 /* ══ HEADER ELEMENTS ══ */
-.h-logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
+.h-logo{display:flex;align-items:center;gap:9px;flex-shrink:0;overflow:hidden;max-width:calc(100% - 120px)}
 .h-logo-icon{height:26px;width:auto;flex-shrink:0}
 .h-logo-icon svg{width:100%;height:100%;display:block}
 .h-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;color:var(--gold);letter-spacing:1px;line-height:1}
@@ -487,7 +487,7 @@ body{
       </div>
       <!-- MOVA: літери з mova_monoline_animiert.svg, статичні (вже намальовані) -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="38 448 634 226"
-           style="height:26px;width:auto;display:block;flex-shrink:0" aria-label="MOVA">
+           style="height:26px;width:73px;display:block;flex-shrink:0" aria-label="MOVA">
         <!-- M -->
         <path d="M 50,660 L 50,460 L 99,560 L 148,460 L 148,660"
           fill="none" stroke="#c9a84c" stroke-width="35"
@@ -1115,9 +1115,9 @@ function playVocabNext(){
   const al=getActiveLangs();
 
   speakVocabTerms(v,al,0,()=>{
-    if(!guard())return;
+    if(!guard()||!V.playing||V.paused)return;
     speakVocabShort(v,al,()=>{
-      if(!guard())return;
+      if(!guard()||!V.playing||V.paused)return;
       V.flipped=true;document.getElementById('flashcard').classList.add('flipped');
       speakVocabDefs(v,al,0,()=>{
         if(!guard())return;
@@ -1133,21 +1133,21 @@ function playVocabNext(){
   });
 }
 function speakVocabTerms(v,langs,i,done){
-  if(!V.playing||V.paused){done&&done();return;}
+  if(!V.playing||V.paused){return;}  // НЕ викликаємо done — зупиняємо ланцюжок
   if(i>=langs.length){done&&done();return;}
   speak(v.term[langs[i]]||v.term.de, langs[i],
     ()=>setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause),
     v.id, 'term');
 }
 function speakVocabShort(v,langs,done){
-  if(!V.playing||V.paused){done&&done();return;}
+  if(!V.playing||V.paused){return;}
   // Перевіряємо чи є хоч один short текст
   const hasShort=langs.some(l=>v.short?.[l]||v.short?.de);
   if(!hasShort){done&&done();return;}
   setTimeout(()=>speakVocabShortLang(v,langs,0,done),V.pause);
 }
 function speakVocabShortLang(v,langs,i,done){
-  if(!V.playing||V.paused){done&&done();return;}
+  if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
   const text=v.short?.[langs[i]]||v.short?.de;
   if(!text){speakVocabShortLang(v,langs,i+1,done);return;}
@@ -1156,7 +1156,7 @@ function speakVocabShortLang(v,langs,i,done){
     v.id,'short');
 }
 function speakVocabDefs(v,langs,i,done){
-  if(!V.playing||V.paused){done&&done();return;}
+  if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
   speak(v.def[langs[i]]||v.def.de, langs[i],
     ()=>setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause),
