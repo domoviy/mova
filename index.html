@@ -866,9 +866,10 @@ function webSpeech(text, lang, onEnd){
   const u = new SpeechSynthesisUtterance(text);
   u.lang  = LC[lang].code;
   if(vs[lang]) u.voice = vs[lang];
-  // Кнопки 🐢/▶ задають швидкість — поважаємо їх і у webSpeech fallback
-  const spd = V.langSpeed?.[lang];
-  u.rate = spd ? (spd==='080'?0.8:1.0) : parseFloat(document.getElementById('trate')?.value||1);
+  // Кнопки 🐢/▶ задають швидкість для WebSpeech fallback (коли файл недоступний)
+  // '080' → 0.8, '100' → 1.0, не задано → 1.0 (а не значення слайдера)
+  const spd = V.langSpeed?.[lang] ?? '100';
+  u.rate = spd === '080' ? 0.8 : 1.0;
   u.onend = onEnd||null;
   u.onerror=(e)=>{ if(e.error!=='interrupted'&&e.error!=='canceled'&&onEnd)onEnd(); };
   speechSynthesis.speak(u);
