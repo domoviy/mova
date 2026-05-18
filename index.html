@@ -1307,15 +1307,26 @@ window.addEventListener('DOMContentLoaded',init);
 // ── SERVICE WORKER ────────────────────────────────────────────
 if('serviceWorker' in navigator){
   window.addEventListener('load',()=>{
-    // Версія в URL sw.js гарантує що браузер перевіряє оновлення при кожному деплої
-    navigator.serviceWorker.register(`sw.js?v=${APP_VERSION}`).then(reg=>{
+    // Реєструємо БЕЗ ?v= — query string ігнорується браузером при реєстрації SW.
+    // Версія кешу контролюється всередині sw.js через CACHE_NAME.
+    navigator.serviceWorker.register('sw.js').then(reg=>{
+      // Одразу перевіряємо оновлення при кожному запуску
+      reg.update();
+
       reg.addEventListener('updatefound',()=>{
-        const nw=reg.installing;
+        const nw = reg.installing;
         nw.addEventListener('statechange',()=>{
-          if(nw.state==='installed'&&navigator.serviceWorker.controller){
-            notify('🔄 Update verfügbar — App neu starten');
+          if(nw.state === 'installed' && navigator.serviceWorker.controller){
+            // Новий SW встановився — надсилаємо йому SKIP_WAITING
+            // щоб він одразу взяв контроль без очікування закриття вкладок
+            nw.postMessage({ type: 'SKIP_WAITING' });
           }
         });
+      });
+
+      // Коли новий SW взяв контроль — перезавантажуємо сторінку
+      navigator.serviceWorker.addEventListener('controllerchange', ()=>{
+        window.location.reload();
       });
     }).catch(e=>console.warn('SW:',e));
   });
