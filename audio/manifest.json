@@ -8959,5 +8959,20 @@
   "B2-Beruf/en/080/hsk/hsk_011_def_en_080": true,
   "B2-Beruf/uk/100/hsk/hsk_011_def_uk_100": true,
   "B2-Beruf/uk/080/hsk/hsk_011_def_uk_080": true,
-  "B2-Beruf/de/100/hsk/hsk_012_short_de_100": true
+  "B2-Beruf/de/100/hsk/hsk_012_short_de_100": true,
+  "B2-Beruf/en/100/hsk/hsk_012_short_en_100": true,
+  "B2-Beruf/de/080/hsk/hsk_012_short_de_080": true,
+  "B2-Beruf/en/080/hsk/hsk_012_short_en_080": true,
+  "B2-Beruf/de/100/hsk/hsk_012_def_de_100": true,
+  "B2-Beruf/en/100/hsk/hsk_012_def_en_100": true,
+  "B2-Beruf/uk/100/hsk/hsk_012_def_uk_100": true,
+  "B2-Beruf/de/080/hsk/hsk_012_def_de_080": true,
+  "B2-Beruf/uk/100/hsk/hsk_012_term_uk_100": true,
+  "B2-Beruf/uk/100/hsk/hsk_012_short_uk_100": true,
+  "B2-Beruf/de/100/hsk/hsk_013_term_de_100": true,
+  "B2-Beruf/en/080/hsk/hsk_012_def_en_080": true,
+  "B2-Beruf/uk/080/hsk/hsk_012_short_uk_080": true,
+  "B2-Beruf/uk/080/hsk/hsk_012_term_uk_080": true,
+  "B2-Beruf/uk/080/hsk/hsk_012_def_uk_080": true,
+  "B2-Beruf/de/100/hsk/hsk_013_short_de_100": true
 }
