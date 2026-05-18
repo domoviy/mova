@@ -512,7 +512,6 @@ body{
           stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
       </svg>
     </div>
-    <div style="flex:1;min-width:8px"></div>
     <button id="stopbtn" onclick="stopTTS()">⏹ Stop</button>
   </div>
 
@@ -617,6 +616,12 @@ body{
         <h3>Daten</h3>
         <div class="srow"><div class="srow-label"><label>Karteistatistik löschen</label><small>Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
       </div>
+
+      <!-- Версія додатку -->
+      <div style="text-align:center;padding:20px 0 8px;opacity:.45;font-size:12px;
+                  font-family:'JetBrains Mono',monospace;letter-spacing:.5px">
+        MOVA v<span id="app-ver"></span>
+      </div>
     </div>
 
   </div><!-- #content -->
@@ -646,7 +651,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '1.1.3';
+const APP_VERSION = '1.2.6';
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -801,6 +806,7 @@ async function loadVoices(){
 // ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
 let currentAudio = null;
 let playGen = 0;  // інкрементується при кожному stop → скасовує усі in-flight колбеки
+let cardGen  = 0;  // окремий лічильник для карток — не конфліктує з аудіо playGen
 
 // Кеш: url → blob URL (уникає повторного завантаження того самого файлу)
 const audioBlobCache = new Map();
@@ -1094,13 +1100,13 @@ function toggleVocab(){
     }
   }
 }
-function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
+function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);cardGen++;stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
 function playVocabNext(){
   if(!V.playing||V.paused)return;
-  // Ticket захищає від двох паралельних "ниток" відтворення
-  // (може виникнути після бекграунду або подвійного onEnd)
-  const ticket = ++playGen;
-  const guard  = ()=> V.playing && !V.paused && playGen===ticket;
+  // cardGen захищає від двох паралельних "ниток" карток
+  // (не чіпає playGen щоб не конфліктувати з аудіо-колбеками)
+  const ticket = ++cardGen;
+  const guard  = ()=> V.playing && !V.paused && cardGen===ticket;
 
   if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;V.repeatCount=0;}
   if(V.repeatCount===0){V.flipped=false;renderVocabCard();}
@@ -1314,7 +1320,12 @@ function setVocabCat(id,btn){
   if(browse && browse.style.display!=='none') renderVocabBrowse();
 }
 
-window.addEventListener('DOMContentLoaded',init);
+window.addEventListener('DOMContentLoaded', ()=>{
+  // Показуємо версію у налаштуваннях
+  const el = document.getElementById('app-ver');
+  if(el) el.textContent = APP_VERSION;
+  init();
+});
 
 // ── SERVICE WORKER ────────────────────────────────────────────
 if('serviceWorker' in navigator){
