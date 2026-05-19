@@ -318,6 +318,7 @@ body{
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
 .ui-lang-btn{border:1px solid var(--border);background:var(--card);color:var(--ink);padding:7px 4px;border-radius:10px;cursor:pointer;transition:all .2s;font-family:inherit}
 .ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
+.course-btn.active{border-color:var(--gold)!important;background:rgba(201,168,76,.08)!important;}
 .fc-srs-due{background:rgba(201,168,76,.2);color:var(--gold);border-color:rgba(201,168,76,.5)}
 .fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
 .fc-back-header{
@@ -472,7 +473,7 @@ body{
 </div>
 
 
-<script src="vocab-data.js"></script>
+<!-- Курс завантажується динамічно через loadCourse() -->
 
 <!-- ══ MAIN COL ══ -->
 <div id="main-col">
@@ -628,7 +629,14 @@ body{
         <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
       </div>
 
-      <div class="ssec" id="ssec-lang">
+      <div class="ssec" id="ssec-course">
+        <h3>📚 Kurs / Курс / Course</h3>
+        <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
+          <!-- Рендериться через renderCourseList() при ініті -->
+        </div>
+      </div>
+
+            <div class="ssec" id="ssec-lang">
         <h3 data-i18n="sec_lang">Sprache / Мова / Language</h3>
         <div style="display:flex;gap:8px;padding:4px 0">
           <button class="btn ui-lang-btn active" data-lang="de" onclick="setUiLang('de')" style="flex:1;font-size:13px">🇩🇪 Deutsch</button>
@@ -672,6 +680,92 @@ body{
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
 const APP_VERSION = '1.2.6';
+
+// ── COURSE ENGINE ─────────────────────────────────────────────
+// Список доступних курсів. Додавати нові — тільки тут.
+const COURSES = [
+  {
+    id:       'B2-Beruf',
+    file:     'B2-Beruf.js',    // JS файл бази (перейменований з vocab-data.js)
+    title:    'B2 Beruf',
+    emoji:    '💼',
+    level:    'B2',
+    langs:    ['de','uk','en'],
+    desc:     { de:'Deutsch für den Beruf', uk:'Німецька для роботи', en:'German for Work' },
+  },
+  // Приклад як додати новий курс:
+  // {
+  //   id:    'A2-Alltag',
+  //   file:  'A2-Alltag.js',
+  //   title: 'A2 Alltag',
+  //   emoji: '🏠',
+  //   level: 'A2',
+  //   langs: ['de','uk','en'],
+  //   desc:  { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
+  // },
+];
+
+let activeCourse = null;  // поточний курс (об'єкт з COURSES)
+
+function getSavedCourseId(){
+  return localStorage.getItem('mova_course') || 'B2-Beruf';
+}
+function saveCourseId(id){
+  localStorage.setItem('mova_course', id);
+}
+
+// Динамічно завантажує JS файл курсу і повертає Promise
+function loadCourseScript(courseId){
+  return new Promise((resolve, reject)=>{
+    // Видаляємо попередній скрипт курсу якщо є
+    const old = document.getElementById('course-script');
+    if(old) old.remove();
+    // Очищаємо стару базу
+    if(window.VOCAB) window.VOCAB = [];
+
+    const course = COURSES.find(c=>c.id===courseId);
+    if(!course){ reject(new Error('Course not found: '+courseId)); return; }
+
+    const s = document.createElement('script');
+    s.id  = 'course-script';
+    s.src = course.file + '?v=' + APP_VERSION;
+    s.onload  = ()=>{ activeCourse = course; resolve(course); };
+    s.onerror = ()=>reject(new Error('Failed to load: '+course.file));
+    document.head.appendChild(s);
+  });
+}
+
+// Завантажує курс і перезапускає vocab UI
+async function switchCourse(courseId){
+  if(activeCourse?.id === courseId) return; // вже активний
+  saveCourseId(courseId);
+  audioBlobCache.clear();
+  audioExistsCache.clear();
+
+  try{
+    await loadCourseScript(courseId);
+    document.querySelectorAll('.course-btn').forEach(b=>{
+      b.classList.toggle('active', b.dataset.course===courseId);
+    });
+    // Обнуляємо денний лічильник — streak рахується окремо для кожного курсу
+    // зберігаємо попередній streak і починаємо новий відлік
+    const todayKey='mova_today_'+new Date().toISOString().slice(0,10)+'_'+courseId;
+    if(!localStorage.getItem(todayKey)){
+      // Перший раз відкриваємо цей курс сьогодні — обнуляємо daily count в UI
+      const todayEl=document.getElementById('stat-today');
+      if(todayEl) todayEl.textContent='0';
+    }
+    V.queue=[]; V.idx=0; V.repeatCount=0; V.playing=false; V.paused=false;
+    stopTTS();
+    initVocab();
+    notify((activeCourse?.emoji||'📚')+' '+activeCourse?.title);
+  }catch(e){
+    console.error('switchCourse error:', e);
+    notify('⚠️ Курс не вдалося завантажити');
+  }
+}
+
+
 
 // ── I18N ─────────────────────────────────────────────────────
 const I18N = {
@@ -938,6 +1032,15 @@ const haptic = {
 };
 
 async function init(){
+  // Завантажуємо активний курс
+  const courseId = getSavedCourseId();
+  try{
+    await loadCourseScript(courseId);
+  }catch(e){
+    console.warn('init: course load failed, trying B2-Beruf:', e);
+    try{ await loadCourseScript('B2-Beruf'); }catch(e2){ console.error(e2); }
+  }
+
   await loadVoices();
   // Синхронізуємо слайдери із збереженими значеннями
   const sp=document.getElementById('vspeed');if(sp){sp.value=V.speed;document.getElementById('vspv').textContent=V.speed.toFixed(1)+'×';}
@@ -1042,9 +1145,10 @@ const audioBlobCache = new Map();
 const audioExistsCache = new Map();
 
 function getAudioUrl(cardId, field, lang){
-  const speed = V.langSpeed?.[lang] || '100';
-  const cat   = cardId.split('_')[0];
-  return `audio/B2-Beruf/${lang}/${speed}/${cat}/${cardId}_${field}_${lang}_${speed}.mp3`;
+  const speed  = V.langSpeed?.[lang] || '100';
+  const cat    = cardId.split('_')[0];
+  const course = activeCourse?.id || 'B2-Beruf';
+  return `audio/${course}/${lang}/${speed}/${cat}/${cardId}_${field}_${lang}_${speed}.mp3`;
 }
 
 // Завантажує blob з таймаутом — повертає blobUrl або null
@@ -1326,37 +1430,55 @@ function resetVocabQ(){const wp=V.playing;stopVocab();V.queue=buildVocabQueue();
 function initSwipe(){
   const area=document.getElementById('fc-area');if(!area)return;
   let sx=0,sy=0,moved=false;
-  area.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY;moved=false;},{passive:true});
-  area.addEventListener('touchmove',e=>{if(Math.abs(e.touches[0].clientX-sx)>8||Math.abs(e.touches[0].clientY-sy)>8)moved=true;},{passive:true});
-  area.addEventListener('touchend',e=>{
-    const dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
-    const adx=Math.abs(dx),ady=Math.abs(dy);
-    if(!moved||adx<8&&ady<8){flipCard();return;}
+
+  function onStart(cx,cy){ sx=cx; sy=cy; moved=false; }
+  function onMove(cx,cy){ if(Math.abs(cx-sx)>8||Math.abs(cy-sy)>8) moved=true; }
+  function onEnd(cx,cy){
+    const dx=cx-sx, dy=cy-sy;
+    const adx=Math.abs(dx), ady=Math.abs(dy);
+
+    if(!moved||adx<8&&ady<8){ flipCard(); return; }
+
     if(adx>ady&&adx>48){
+      // ← → горизонтальний свайп
       const wp=V.playing;
+      haptic.medium(); stopVocab();
       if(dx<0){
-        haptic.medium();stopVocab();
-        swipeCard('left',()=>{V.idx++;if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);});
+        swipeCard('left',()=>{
+          V.idx++; if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}
+          V.flipped=false;V.repeatCount=0;renderVocabCard();
+          if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+        });
       }else{
-        haptic.medium();stopVocab();if(!V.queue.length)return;
-        swipeCard('right',()=>{V.idx=(V.idx-1+V.queue.length)%V.queue.length;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);});
+        if(!V.queue.length)return;
+        swipeCard('right',()=>{
+          V.idx=(V.idx-1+V.queue.length)%V.queue.length;
+          V.flipped=false;V.repeatCount=0;renderVocabCard();
+          if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+        });
       }
-    }else if(ady>adx&&ady>48){
-      if(V.mode==='srs' && V.playing){
-        if(dy < 0){
-          // Змах вгору = Не знаю (q=1) → аудіо грає до кінця
-          haptic.error();
-          srsSwipe(1);
-        } else {
-          // Змах вниз = Знаю (q=5) → одразу наступна картка
-          haptic.success();
-          srsSwipe(5);
-        }
+    } else if(ady>adx&&ady>48){
+      // ↑ ↓ вертикальний свайп
+      if(V.mode==='srs'){
+        if(dy<0){ haptic.error();  srsSwipe(1); }  // вгору = Не знаю
+        else     { haptic.success();srsSwipe(5); }  // вниз  = Знаю
       } else {
         flipCard();
       }
     }
-  },{passive:true});
+  }
+
+  // Touch events (passive:true для start/move — не блокуємо скрол)
+  area.addEventListener('touchstart', e=>onStart(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
+  area.addEventListener('touchmove',  e=>onMove(e.touches[0].clientX,e.touches[0].clientY), {passive:true});
+  area.addEventListener('touchend',   e=>{ e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
+
+  // Mouse fallback (для браузера/емулятора)
+  let mouseDown=false;
+  area.addEventListener('mousedown',e=>{ mouseDown=true; onStart(e.clientX,e.clientY); });
+  area.addEventListener('mousemove',e=>{ if(mouseDown) onMove(e.clientX,e.clientY); });
+  area.addEventListener('mouseup',  e=>{ if(mouseDown){mouseDown=false; onEnd(e.clientX,e.clientY);} });
+  area.addEventListener('mouseleave',()=>{ mouseDown=false; });
 }
 
 
@@ -1424,6 +1546,28 @@ function showSrsHint(emoji, label, q){
   hint._t = setTimeout(()=>{ hint.style.opacity='0'; }, 1200);
 }
 
+
+function renderCourseList(){
+  const container = document.getElementById('course-list');
+  if(!container) return;
+  container.innerHTML = COURSES.map(c=>`
+    <button class="course-btn ${c.id===activeCourse?.id?'active':''}"
+            data-course="${c.id}"
+            onclick="switchCourse('${c.id}')"
+            style="display:flex;align-items:center;gap:12px;padding:10px 14px;
+                   border-radius:12px;border:1px solid var(--border);
+                   background:var(--card);font-family:inherit;cursor:pointer;
+                   text-align:left;transition:all .2s;width:100%">
+      <span style="font-size:24px">${c.emoji}</span>
+      <span style="flex:1">
+        <span style="display:block;font-weight:700;font-size:14px;color:var(--ink)">${c.title}</span>
+        <span style="display:block;font-size:11px;color:var(--muted);margin-top:1px">${c.desc[uiLang]||c.desc.de}</span>
+      </span>
+      <span style="font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;
+                   background:rgba(201,168,76,.12);color:var(--gold)">${c.level}</span>
+    </button>
+  `).join('');
+}
 // ── AUTOPLAY ──────────────────────────────────────────────────
 function toggleVocab(){
   if(!V.playing){
@@ -1700,6 +1844,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   const el = document.getElementById('app-ver');
   if(el) el.textContent = APP_VERSION;
   applyI18n(); // застосовуємо мову до того як init() рендерить контент
+  renderCourseList();
   init();
 });
 
