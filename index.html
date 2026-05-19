@@ -1047,54 +1047,82 @@ function getAudioUrl(cardId, field, lang){
   return `audio/B2-Beruf/${lang}/${speed}/${cat}/${cardId}_${field}_${lang}_${speed}.mp3`;
 }
 
+// Завантажує blob з таймаутом — повертає blobUrl або null
+async function fetchAudioBlob(url, timeoutMs=8000){
+  // Вже в кеші — одразу
+  if(audioBlobCache.has(url)) return audioBlobCache.get(url);
+  // Знаємо що файл не існує — не йдемо в мережу
+  if(audioExistsCache.get(url) === false) return null;
+
+  const ctrl = new AbortController();
+  const timer = setTimeout(()=>ctrl.abort(), timeoutMs);
+  try{
+    const resp = await fetch(url, {signal: ctrl.signal});
+    clearTimeout(timer);
+    if(!resp.ok){ audioExistsCache.set(url, false); return null; }
+    const blob = await resp.blob();
+    const blobUrl = URL.createObjectURL(blob);
+    audioBlobCache.set(url, blobUrl);
+    audioExistsCache.set(url, true);
+    return blobUrl;
+  }catch(e){
+    clearTimeout(timer);
+    // AbortError = таймаут; NetworkError = офлайн
+    // Не кешуємо як false — спробуємо наступного разу
+    if(e.name !== 'AbortError') audioExistsCache.set(url, false);
+    return null;
+  }
+}
+
 async function playAzureAudio(url, onEnd, gen){
   if(currentAudio){ currentAudio.pause(); currentAudio = null; }
-  // Якщо blob вже кешований — використовуємо одразу (без мережевого запиту)
-  let blobUrl = audioBlobCache.get(url);
-  if(!blobUrl){
-    try{
-      const resp = await fetch(url);
-      if(!resp.ok){ if(playGen===gen && onEnd) onEnd(); return; }
-      const blob = await resp.blob();
-      blobUrl = URL.createObjectURL(blob);
-      audioBlobCache.set(url, blobUrl);
-    }catch(e){ if(playGen===gen && onEnd) onEnd(); return; }
-  }
-  if(playGen !== gen) return; // скасовано під час завантаження
+  const blobUrl = await fetchAudioBlob(url);
+  if(playGen !== gen){ onEnd && onEnd(); return; } // скасовано поки завантажували
+  if(!blobUrl){ onEnd && onEnd(); return; }        // файл не знайдено → fallback
+
   const a = new Audio(blobUrl);
   currentAudio = a;
-  const finish = ()=>{ if(currentAudio===a) currentAudio=null; if(playGen===gen && onEnd) onEnd(); };
+  let _done = false;
+  const finish = ()=>{
+    if(_done) return; _done = true;
+    if(currentAudio === a) currentAudio = null;
+    if(playGen === gen) onEnd && onEnd();
+  };
   a.onended = finish;
   a.onerror = finish;
-  a.play().catch(finish);
+  // iOS: якщо play() не стартує за 15с — вважаємо зависанням
+  const wdog = setTimeout(finish, 15000);
+  a.onended = ()=>{ clearTimeout(wdog); finish(); };
+  a.onerror = ()=>{ clearTimeout(wdog); finish(); };
+  a.play().catch(()=>{ clearTimeout(wdog); finish(); });
 }
 
 function speak(text, lang, onEnd, cardId, field){
   stopTTS();
-  const gen = playGen; // фіксуємо покоління до будь-якого async
-  const safeEnd = ()=>{ if(playGen===gen && onEnd) onEnd(); };
+  const gen = playGen;
+  // one-shot: onEnd викликається рівно один раз
+  let _ended = false;
+  const safeEnd = ()=>{
+    if(_ended) return; _ended = true;
+    if(playGen === gen) onEnd && onEnd();
+  };
 
   if(cardId && field){
     const url = getAudioUrl(cardId, field, lang);
-    // Якщо вже знаємо що файл існує/не існує — не робимо мережевий запит
-    if(audioBlobCache.has(url)){
-      playAzureAudio(url, safeEnd, gen); return;
-    }
     if(audioExistsCache.get(url) === false){
+      // Знаємо що файл відсутній — одразу WebSpeech
       webSpeech(text, lang, safeEnd); return;
     }
-    // Перший раз — завантажуємо і кешуємо blob одразу (без окремого HEAD)
-    fetch(url).then(r=>{
-      if(playGen!==gen) return;
-      if(!r.ok){ audioExistsCache.set(url, false); webSpeech(text, lang, safeEnd); return; }
-      r.blob().then(blob=>{
-        if(playGen!==gen) return;
-        const blobUrl = URL.createObjectURL(blob);
-        audioBlobCache.set(url, blobUrl);
-        audioExistsCache.set(url, true);
-        playAzureAudio(url, safeEnd, gen);
-      });
-    }).catch(()=>{ if(playGen===gen) webSpeech(text, lang, safeEnd); });
+    // Спробуємо Azure (fetchAudioBlob вже містить кеш-логіку)
+    playAzureAudio(url, ()=>{
+      if(playGen !== gen) return;
+      // playAzureAudio повернув onEnd без відтворення → fallback
+      if(!audioBlobCache.has(url)){
+        webSpeech(text, lang, safeEnd);
+      } else {
+        safeEnd();
+      }
+    }, gen);
     return;
   }
   webSpeech(text, lang, safeEnd);
