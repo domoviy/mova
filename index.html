@@ -316,6 +316,8 @@ body{
 .fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
 .fc-srs-badge{display:block;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 0;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
+.ui-lang-btn{border:1px solid var(--border);background:var(--card);color:var(--ink);padding:7px 4px;border-radius:10px;cursor:pointer;transition:all .2s;font-family:inherit}
+.ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
 .fc-srs-due{background:rgba(201,168,76,.2);color:var(--gold);border-color:rgba(201,168,76,.5)}
 .fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
 .fc-back-header{
@@ -577,31 +579,31 @@ body{
 
       <div class="ssec">
         <h3>Wiedergabe</h3>
-        <div class="srow"><div class="srow-label"><label>Wiederholungen</label><small>Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
         <div class="srow">
-          <div class="srow-label"><label>🇩🇪 Tempo</label><small>Deutsch</small></div>
+          <div class="srow-label"><label data-i18n="lbl_tempo_de">🇩🇪 Tempo</label><small data-i18n="sub_tempo_de">Deutsch</small></div>
           <div class="speed-toggle" id="speed-de">
             <button onclick="setLangSpeed('de','080')" class="sp-btn" data-lang="de" data-val="080">🐢 Langsam</button>
             <button onclick="setLangSpeed('de','100')" class="sp-btn active" data-lang="de" data-val="100">▶ Normal</button>
           </div>
         </div>
         <div class="srow">
-          <div class="srow-label"><label>🇬🇧 Tempo</label><small>English</small></div>
+          <div class="srow-label"><label data-i18n="lbl_tempo_en">🇬🇧 Tempo</label><small>English</small></div>
           <div class="speed-toggle" id="speed-en">
             <button onclick="setLangSpeed('en','080')" class="sp-btn" data-lang="en" data-val="080">🐢 Langsam</button>
             <button onclick="setLangSpeed('en','100')" class="sp-btn active" data-lang="en" data-val="100">▶ Normal</button>
           </div>
         </div>
         <div class="srow">
-          <div class="srow-label"><label>🇺🇦 Tempo</label><small>Українська</small></div>
+          <div class="srow-label"><label data-i18n="lbl_tempo_uk">🇺🇦 Tempo</label><small>Українська</small></div>
           <div class="speed-toggle" id="speed-uk">
             <button onclick="setLangSpeed('uk','080')" class="sp-btn" data-lang="uk" data-val="080">🐢 Langsam</button>
             <button onclick="setLangSpeed('uk','100')" class="sp-btn active" data-lang="uk" data-val="100">▶ Normal</button>
           </div>
         </div>
-        <div class="srow"><div class="srow-label"><label>Pause</label><small>Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
-        <div class="srow"><div class="srow-label"><label>Lesepause</label><small>Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
-        <div class="srow"><div class="srow-label"><label>Sprechrate</label><small>Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_pause">Pause</label><small data-i18n="sub_pause">Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_readpause">Lesepause</label><small data-i18n="sub_readpause">Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_trate">Sprechrate</label><small data-i18n="sub_trate">Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
       </div>
 
       <div class="ssec">
@@ -609,21 +611,30 @@ body{
         <div class="srow"><div class="srow-label"><label>🇩🇪 Deutsch</label><small>z.B. Anna</small></div><select id="vde" onchange="VP.de=this.value;saveVP()"></select></div>
         <div class="srow"><div class="srow-label"><label>🇬🇧 English</label><small>z.B. Ava, Siri</small></div><select id="ven" onchange="VP.en=this.value;saveVP()"></select></div>
         <div class="srow"><div class="srow-label"><label>🇺🇦 Українська</label><small>z.B. Lesya</small></div><select id="vuk" onchange="VP.uk=this.value;saveVP()"></select></div>
-        <div class="srow"><div class="srow-label"><label>Stimmen neu laden</label></div><button class="btn btn-s" onclick="reloadVoices()">↻ Neu laden</button></div>
-        <div class="srow"><div class="srow-label"><label>Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reload">Stimmen neu laden</label></div><button class="btn btn-s" onclick="reloadVoices()" data-i18n-btn="btn_reload">↻ Neu laden</button></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reset">Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
       </div>
 
       <div class="ssec">
         <h3>Lernziel & Streak</h3>
-        <div class="srow"><div class="srow-label"><label>Heute</label></div><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
-        <div class="srow"><div class="srow-label"><label>Gesamt</label></div><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
-        <div class="srow"><div class="srow-label"><label>Tagesziel</label><small>Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
-        <div class="srow"><div class="srow-label"><label>Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
       </div>
 
       <div class="ssec">
         <h3>Daten</h3>
-        <div class="srow"><div class="srow-label"><label>Karteistatistik löschen</label><small>Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
+      </div>
+
+      <div class="ssec" id="ssec-lang">
+        <h3 data-i18n="sec_lang">Sprache / Мова / Language</h3>
+        <div style="display:flex;gap:8px;padding:4px 0">
+          <button class="btn ui-lang-btn active" data-lang="de" onclick="setUiLang('de')" style="flex:1;font-size:13px">🇩🇪 Deutsch</button>
+          <button class="btn ui-lang-btn" data-lang="uk" onclick="setUiLang('uk')" style="flex:1;font-size:13px">🇺🇦 Українська</button>
+          <button class="btn ui-lang-btn" data-lang="en" onclick="setUiLang('en')" style="flex:1;font-size:13px">🇬🇧 English</button>
+        </div>
       </div>
 
       <!-- Версія додатку -->
@@ -661,6 +672,148 @@ body{
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
 const APP_VERSION = '1.2.6';
+
+// ── I18N ─────────────────────────────────────────────────────
+const I18N = {
+  de: {
+    nav_vocab:'Vokabeln', nav_favs:'Favoriten', nav_settings:'Einstellungen',
+    tab_card:'🃏 Karte', tab_all:'📋 Alle',
+    favs_empty:'Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.',
+    settings_title:'⚙️ Einstellungen',
+    sec_playback:'Wiedergabe',
+    lbl_repeats:'Wiederholungen', sub_repeats:'Zyklen pro Karte',
+    lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
+    lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
+    lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
+    lbl_pause:'Pause', sub_pause:'Zwischen Begriffen',
+    lbl_readpause:'Lesepause', sub_readpause:'Nach dem Umdrehen',
+    lbl_trate:'Sprechrate', sub_trate:'Manuelles Vorlesen',
+    btn_slow:'🐢 Langsam', btn_normal:'▶ Normal',
+    sec_voices:'TTS Stimmen',
+    lbl_voices_reload:'Stimmen neu laden', btn_reload:'↻ Neu laden',
+    lbl_voices_reset:'Zurücksetzen', btn_reset:'🗑 Reset',
+    sec_streak:'Lernziel & Streak',
+    lbl_today:'Heute', lbl_total:'Gesamt',
+    lbl_goal:'Tagesziel', sub_goal:'Karten pro Tag',
+    lbl_streak_reset:'Streak zurücksetzen',
+    sec_data:'Daten',
+    lbl_data_reset:'Karteistatistik löschen', sub_data_reset:'Play-Zähler zurücksetzen',
+    sec_lang:'Sprache / Мова / Language',
+    stop_btn:'⏹ Stop',
+    hint_front:'↕ Tippen · ← → Wischen',
+    hint_srs:'↑ Nicht kennen · ↓ Kennen · ← Weiter',
+    srs_new:'✨ neue Karte', srs_today:'📅 heute',
+  },
+  uk: {
+    nav_vocab:'Словник', nav_favs:'Закладки', nav_settings:'Налаштування',
+    tab_card:'🃏 Картка', tab_all:'📋 Всі',
+    favs_empty:'Ще немає закладок.<br>Натисни ☆ на картці.',
+    settings_title:'⚙️ Налаштування',
+    sec_playback:'Відтворення',
+    lbl_repeats:'Повторення', sub_repeats:'Циклів на картку',
+    lbl_tempo_de:'🇩🇪 Швидкість', sub_tempo_de:'Deutsch',
+    lbl_tempo_en:'🇬🇧 Швидкість', sub_tempo_en:'English',
+    lbl_tempo_uk:'🇺🇦 Швидкість', sub_tempo_uk:'Українська',
+    lbl_pause:'Пауза', sub_pause:'Між поняттями',
+    lbl_readpause:'Пауза читання', sub_readpause:'Після перевертання',
+    lbl_trate:'Швидкість мовлення', sub_trate:'Ручне відтворення',
+    btn_slow:'🐢 Повільно', btn_normal:'▶ Нормально',
+    sec_voices:'Голоси TTS',
+    lbl_voices_reload:'Перезавантажити голоси', btn_reload:'↻ Оновити',
+    lbl_voices_reset:'Скинути', btn_reset:'🗑 Скинути',
+    sec_streak:'Ціль і серія',
+    lbl_today:'Сьогодні', lbl_total:'Всього',
+    lbl_goal:'Денна ціль', sub_goal:'Карток на день',
+    lbl_streak_reset:'Скинути серію',
+    sec_data:'Дані',
+    lbl_data_reset:'Очистити статистику', sub_data_reset:'Скинути лічильник',
+    sec_lang:'Sprache / Мова / Language',
+    stop_btn:'⏹ Стоп',
+    hint_front:'↕ Натисни · ← → Свайп',
+    hint_srs:'↑ Не знаю · ↓ Знаю · ← Далі',
+    srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
+  },
+  en: {
+    nav_vocab:'Vocabulary', nav_favs:'Favorites', nav_settings:'Settings',
+    tab_card:'🃏 Card', tab_all:'📋 All',
+    favs_empty:'No favorites yet.<br>Tap ☆ on a card.',
+    settings_title:'⚙️ Settings',
+    sec_playback:'Playback',
+    lbl_repeats:'Repetitions', sub_repeats:'Cycles per card',
+    lbl_tempo_de:'🇩🇪 Speed', sub_tempo_de:'Deutsch',
+    lbl_tempo_en:'🇬🇧 Speed', sub_tempo_en:'English',
+    lbl_tempo_uk:'🇺🇦 Speed', sub_tempo_uk:'Ukrainian',
+    lbl_pause:'Pause', sub_pause:'Between terms',
+    lbl_readpause:'Reading pause', sub_readpause:'After flip',
+    lbl_trate:'Speech rate', sub_trate:'Manual playback',
+    btn_slow:'🐢 Slow', btn_normal:'▶ Normal',
+    sec_voices:'TTS Voices',
+    lbl_voices_reload:'Reload voices', btn_reload:'↻ Reload',
+    lbl_voices_reset:'Reset', btn_reset:'🗑 Reset',
+    sec_streak:'Goal & Streak',
+    lbl_today:'Today', lbl_total:'Total',
+    lbl_goal:'Daily goal', sub_goal:'Cards per day',
+    lbl_streak_reset:'Reset streak',
+    sec_data:'Data',
+    lbl_data_reset:'Clear card stats', sub_data_reset:'Reset play counter',
+    sec_lang:'Sprache / Мова / Language',
+    stop_btn:'⏹ Stop',
+    hint_front:'↕ Tap · ← → Swipe',
+    hint_srs:'↑ Don\'t know · ↓ Know · ← Next',
+    srs_new:'✨ new card', srs_today:'📅 today',
+  },
+};
+
+// Поточна мова інтерфейсу
+let uiLang = localStorage.getItem('mova_ui_lang') || 'de';
+function t(key){ return (I18N[uiLang]||I18N.de)[key] || key; }
+
+function setUiLang(lang){
+  uiLang = lang;
+  localStorage.setItem('mova_ui_lang', lang);
+  applyI18n();
+}
+
+function applyI18n(){
+  // Bottom nav
+  const qsel = (id) => document.getElementById(id);
+  // Bottom nav — знаходимо текстові span (не іконки і не бейджі)
+  document.querySelectorAll('#bottom-nav [data-view]').forEach(btn=>{
+    const view = btn.dataset.view;
+    const key  = {vocab:'nav_vocab', favs:'nav_favs', settings:'nav_settings'}[view];
+    if(!key) return;
+    // Останній span що містить текст (не клас bn-icon і не bn-badge)
+    const spans = btn.querySelectorAll('span:not(.bn-icon):not(.bn-badge):not(.bn-fire)');
+    spans.forEach(s => { s.textContent = t(key); });
+  });
+  // Tabs
+  const tabs = document.querySelectorAll('#vocab-tabs .vtab');
+  if(tabs[0]) tabs[0].innerHTML = t('tab_card');
+  if(tabs[1]) tabs[1].innerHTML = t('tab_all');
+  // Stop button
+  const stopb = qsel('stopbtn'); if(stopb) stopb.textContent = t('stop_btn');
+  // Favorites empty
+  const fe = qsel('fav-empty'); if(fe) fe.innerHTML = t('favs_empty');
+  // Settings heading
+  const sh = document.querySelector('#view-settings .sh h2'); if(sh) sh.textContent = t('settings_title');
+  // Section headers
+  const secs = document.querySelectorAll('#view-settings .ssec h3');
+  const secKeys = ['sec_playback','sec_voices','sec_streak','sec_data','sec_lang'];
+  secs.forEach((el,i)=>{ if(secKeys[i]) el.textContent=t(secKeys[i]); });
+  // Labels by data-i18n attribute
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    el.textContent = t(el.dataset.i18n);
+  });
+  // Speed buttons
+  document.querySelectorAll('.sp-btn[data-val="080"]').forEach(el=>el.textContent=t('btn_slow'));
+  document.querySelectorAll('.sp-btn[data-val="100"]').forEach(el=>el.textContent=t('btn_normal'));
+  // Lang selector highlight
+  document.querySelectorAll('.ui-lang-btn').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang===uiLang);
+  });
+}
+
+
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
@@ -793,7 +946,7 @@ async function init(){
   const lp=document.getElementById('vreadpause');if(lp){lp.value=V.readPause/1000;document.getElementById('vrpv').textContent=(V.readPause/1000).toFixed(1).replace('.',',')+'s';}
   // Синхронізуємо кнопку режиму
   const sb=document.getElementById('vshuffle-btn');
-  if(sb){sb.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'}}[V.mode];sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
+  if(sb){sb.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
   initVoiceSelects();
   initVocab();
   initVocabChips();
@@ -1190,11 +1343,15 @@ function srsSwipe(q){
   // Показуємо фідбек
   const days = result.interval;
   const emoji = q===1 ? '🔄' : q===3 ? '🤔' : '✅';
+  const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
+  const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
+  const _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
+  const _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
   const label = q===1
-    ? 'Повторимо завтра'
+    ? _rep
     : q===3
-    ? `Знову через ${days} дн.`
-    : days===1 ? 'Завтра' : `Через ${days} дн.`;
+    ? _in+days+_day
+    : days===1 ? _tmr : _in+days+_day;
   showSrsHint(emoji, label, q);
 
   if(q === 5){
@@ -1366,7 +1523,7 @@ function cycleVocabMode(){
     const arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
     const dueCount=arr.filter(v=>srsDue(v.id)).length;
     const newCount=arr.filter(v=>!srsLoad(v.id).dueDate).length;
-    notify(`🔬 SM-2: ${dueCount} сьогодні · ${newCount} нових`);
+    notify('🔬 SM-2: '+dueCount+' '+t('srs_today').replace('📅 ','')+' · '+newCount+' '+t('srs_new').replace('✨ ',''));
   }
   saveSettings();resetVocabQ();
 }
@@ -1512,9 +1669,9 @@ function setVocabCat(id,btn){
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{
-  // Показуємо версію у налаштуваннях
   const el = document.getElementById('app-ver');
   if(el) el.textContent = APP_VERSION;
+  applyI18n(); // застосовуємо мову до того як init() рендерить контент
   init();
 });
 
