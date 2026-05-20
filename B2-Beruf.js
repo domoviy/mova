@@ -37,6 +37,1861 @@ const F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪'};
 const LN = {en:'English', uk:'Українська', de:'Deutsch'};
 
 // ── КАРТКИ ───────────────────────────────────────────────────
+const LESSONS = [
+  {
+    "id": "k1m1",
+    "chapter": 1,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Mein Beruf",
+      "uk": "Моя професія",
+      "en": "My Job"
+    },
+    "title": {
+      "de": "Pendeln oder umziehen?",
+      "uk": "Їздити чи переїхати?",
+      "en": "Commute or relocate?"
+    },
+    "skills": [
+      "Lesen",
+      "Schreiben"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "mbr_001",
+      "mbr_002",
+      "mbr_003",
+      "mbr_004",
+      "mbr_005",
+      "mbr_006",
+      "mbr_007",
+      "mbr_008",
+      "mbr_009",
+      "mbr_010",
+      "mbr_011",
+      "mbr_012",
+      "mbr_013",
+      "mbr_014",
+      "mbr_015",
+      "mbr_016",
+      "mbr_017",
+      "mbr_018",
+      "mbr_019",
+      "mbr_020",
+      "mbr_021",
+      "mbr_022",
+      "mbr_023",
+      "mbr_024",
+      "mbr_025",
+      "nvv_001",
+      "nvv_002",
+      "nvv_003",
+      "nvv_004",
+      "nvv_005",
+      "nvv_006"
+    ],
+    "unlockAfter": null
+  },
+  {
+    "id": "k1m2",
+    "chapter": 1,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Mein Beruf",
+      "uk": "Моя професія",
+      "en": "My Job"
+    },
+    "title": {
+      "de": "Bei der Agentur für Arbeit",
+      "uk": "В агентстві зайнятості",
+      "en": "At the employment agency"
+    },
+    "skills": [
+      "Hören",
+      "Sprechen"
+    ],
+    "grammar": "Negation",
+    "cardIds": [
+      "mbr_026",
+      "mbr_027",
+      "mbr_028",
+      "mbr_029",
+      "mbr_030",
+      "mbr_031",
+      "mbr_032",
+      "mbr_033",
+      "mbr_034",
+      "mbr_035",
+      "mbr_036",
+      "mbr_037",
+      "mbr_038",
+      "mbr_039",
+      "mbr_040",
+      "mbr_041",
+      "mbr_042",
+      "mbr_043",
+      "mbr_044",
+      "mbr_045",
+      "mbr_046",
+      "mbr_047",
+      "mbr_048",
+      "mbr_049",
+      "mbr_050",
+      "tel_001",
+      "tel_002",
+      "tel_003",
+      "tel_004",
+      "tel_005",
+      "tel_006",
+      "tel_007",
+      "tel_008",
+      "tel_009",
+      "tel_010",
+      "nvv_007",
+      "nvv_008",
+      "nvv_009",
+      "nvv_010",
+      "nvv_011",
+      "nvv_012"
+    ],
+    "unlockAfter": "k1m1"
+  },
+  {
+    "id": "k1m3",
+    "chapter": 1,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Mein Beruf",
+      "uk": "Моя професія",
+      "en": "My Job"
+    },
+    "title": {
+      "de": "Das kann ich gut – Schlüsselqualifikationen",
+      "uk": "Це я вмію – ключові навички",
+      "en": "My key skills"
+    },
+    "skills": [
+      "Sprechen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "ssk_001",
+      "ssk_002",
+      "ssk_003",
+      "ssk_004",
+      "ssk_005",
+      "ssk_006",
+      "ssk_007",
+      "ssk_008",
+      "ssk_009",
+      "ssk_010",
+      "ssk_011",
+      "ssk_012",
+      "ssk_013",
+      "ssk_014",
+      "ssk_015",
+      "ssk_016",
+      "ssk_017",
+      "ssk_018",
+      "ssk_019",
+      "ssk_020",
+      "ssk_021",
+      "ssk_022",
+      "ssk_023",
+      "ssk_024",
+      "ssk_025",
+      "hsk_001",
+      "hsk_002",
+      "hsk_003",
+      "hsk_004",
+      "hsk_005",
+      "hsk_006",
+      "hsk_007",
+      "hsk_008",
+      "hsk_009",
+      "hsk_010",
+      "hsk_011",
+      "hsk_012",
+      "hsk_013",
+      "hsk_014",
+      "hsk_015",
+      "hsk_016",
+      "hsk_017",
+      "hsk_018",
+      "hsk_019",
+      "hsk_020"
+    ],
+    "unlockAfter": "k1m2"
+  },
+  {
+    "id": "k1m4",
+    "chapter": 1,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Mein Beruf",
+      "uk": "Моя професія",
+      "en": "My Job"
+    },
+    "title": {
+      "de": "Mein Abschluss – Anerkennung",
+      "uk": "Моя кваліфікація – визнання",
+      "en": "Diploma recognition"
+    },
+    "skills": [
+      "Lesen",
+      "Sprechen",
+      "Schreiben"
+    ],
+    "grammar": "Wortstellung im Satz",
+    "cardIds": [
+      "mbr_051",
+      "mbr_052",
+      "mbr_053",
+      "mbr_054",
+      "mbr_055",
+      "mbr_056",
+      "mbr_057",
+      "mbr_058",
+      "mbr_059",
+      "mbr_060",
+      "mbr_061",
+      "mbr_062",
+      "mbr_063",
+      "mbr_064",
+      "mbr_065",
+      "mbr_066",
+      "mbr_067",
+      "mbr_068",
+      "mbr_069",
+      "mbr_070",
+      "mbr_071",
+      "mbr_072",
+      "mbr_073",
+      "mbr_074",
+      "mbr_075",
+      "nvv_013",
+      "nvv_014",
+      "nvv_015",
+      "nvv_016",
+      "nvv_017",
+      "nvv_018"
+    ],
+    "unlockAfter": "k1m3"
+  },
+  {
+    "id": "k2m1",
+    "chapter": 2,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Mein Weg in den Beruf",
+      "uk": "Мій шлях у професії",
+      "en": "My career path"
+    },
+    "title": {
+      "de": "Auf Jobsuche",
+      "uk": "У пошуках роботи",
+      "en": "Job hunting"
+    },
+    "skills": [
+      "Lesen",
+      "Hören"
+    ],
+    "grammar": "Zweiteilige Konnektoren",
+    "cardIds": [
+      "mwb_001",
+      "mwb_002",
+      "mwb_003",
+      "mwb_004",
+      "mwb_005",
+      "mwb_006",
+      "mwb_007",
+      "mwb_008",
+      "mwb_009",
+      "mwb_010",
+      "mwb_011",
+      "mwb_012",
+      "mwb_013",
+      "mwb_014",
+      "mwb_015",
+      "mwb_016",
+      "mwb_017",
+      "mwb_018",
+      "mwb_019",
+      "mwb_020",
+      "mwb_021",
+      "mwb_022",
+      "mwb_023",
+      "mwb_024",
+      "mwb_025",
+      "nvv_019",
+      "nvv_020",
+      "nvv_021",
+      "nvv_022",
+      "nvv_023",
+      "nvv_024"
+    ],
+    "unlockAfter": "k1m4"
+  },
+  {
+    "id": "k2m2",
+    "chapter": 2,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Mein Weg in den Beruf",
+      "uk": "Мій шлях у професії",
+      "en": "My career path"
+    },
+    "title": {
+      "de": "Ein Lebenslauf",
+      "uk": "Резюме",
+      "en": "A curriculum vitae"
+    },
+    "skills": [
+      "Schreiben"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "mwb_026",
+      "mwb_027",
+      "mwb_028",
+      "mwb_029",
+      "mwb_030",
+      "mwb_031",
+      "mwb_032",
+      "mwb_033",
+      "mwb_034",
+      "mwb_035",
+      "mwb_036",
+      "mwb_037",
+      "mwb_038",
+      "mwb_039",
+      "mwb_040",
+      "mwb_041",
+      "mwb_042",
+      "mwb_043",
+      "mwb_044",
+      "mwb_045",
+      "mwb_046",
+      "mwb_047",
+      "mwb_048",
+      "mwb_049",
+      "mwb_050",
+      "nvv_025",
+      "nvv_026",
+      "nvv_027",
+      "nvv_028",
+      "nvv_029",
+      "nvv_030"
+    ],
+    "unlockAfter": "k2m1"
+  },
+  {
+    "id": "k2m3",
+    "chapter": 2,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Mein Weg in den Beruf",
+      "uk": "Мій шлях у професії",
+      "en": "My career path"
+    },
+    "title": {
+      "de": "Schule – Betrieb – Uni?",
+      "uk": "Школа – підприємство – університет?",
+      "en": "School, apprenticeship or university?"
+    },
+    "skills": [
+      "Sprechen"
+    ],
+    "grammar": "Konnektoren um zu / ohne zu",
+    "cardIds": [
+      "mwb_051",
+      "mwb_052",
+      "mwb_053",
+      "mwb_054",
+      "mwb_055",
+      "mwb_056",
+      "mwb_057",
+      "mwb_058",
+      "mwb_059",
+      "mwb_060",
+      "mwb_061",
+      "mwb_062",
+      "mwb_063",
+      "mwb_064",
+      "mwb_065",
+      "mwb_066",
+      "mwb_067",
+      "mwb_068",
+      "mwb_069",
+      "mwb_070",
+      "mwb_071",
+      "mwb_072",
+      "mwb_073",
+      "mwb_074",
+      "mwb_075",
+      "nvv_031",
+      "nvv_032",
+      "nvv_033",
+      "nvv_034",
+      "nvv_035",
+      "nvv_036"
+    ],
+    "unlockAfter": "k2m2"
+  },
+  {
+    "id": "k2m4",
+    "chapter": 2,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Mein Weg in den Beruf",
+      "uk": "Мій шлях у професії",
+      "en": "My career path"
+    },
+    "title": {
+      "de": "Werben Sie für sich! – Bewerbung",
+      "uk": "Рекламуйте себе! – Заявка",
+      "en": "Sell yourself! – Application"
+    },
+    "skills": [
+      "Schreiben",
+      "Sprechen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "mwb_076",
+      "mwb_077",
+      "mwb_078",
+      "mwb_079",
+      "mwb_080",
+      "mwb_081",
+      "mwb_082",
+      "mwb_083",
+      "mwb_084",
+      "mwb_085",
+      "mwb_086",
+      "mwb_087",
+      "mwb_088",
+      "mwb_089",
+      "mwb_090",
+      "mwb_091",
+      "mwb_092",
+      "mwb_093",
+      "mwb_094",
+      "mwb_095",
+      "mwb_096",
+      "mwb_097",
+      "mwb_098",
+      "mwb_099",
+      "mwb_100",
+      "nvv_037",
+      "nvv_038",
+      "nvv_039",
+      "nvv_040",
+      "nvv_041",
+      "nvv_042"
+    ],
+    "unlockAfter": "k2m3"
+  },
+  {
+    "id": "k3m1",
+    "chapter": 3,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Neu in der Firma",
+      "uk": "Новий у компанії",
+      "en": "New at the company"
+    },
+    "title": {
+      "de": "Der erste Arbeitstag – Formalitäten",
+      "uk": "Перший робочий день – формальності",
+      "en": "First day – formalities"
+    },
+    "skills": [
+      "Lesen",
+      "Hören"
+    ],
+    "grammar": "Vergleichssätze mit als / wie",
+    "cardIds": [
+      "eat_001",
+      "eat_002",
+      "eat_003",
+      "eat_004",
+      "eat_005",
+      "eat_006",
+      "eat_007",
+      "eat_008",
+      "eat_009",
+      "eat_010",
+      "eat_011",
+      "eat_012",
+      "eat_013",
+      "eat_014",
+      "eat_015",
+      "eat_016",
+      "eat_017",
+      "eat_018",
+      "eat_019",
+      "eat_020",
+      "nvv_043",
+      "nvv_044",
+      "nvv_045",
+      "nvv_046",
+      "nvv_047",
+      "nvv_048"
+    ],
+    "unlockAfter": "k2m4"
+  },
+  {
+    "id": "k3m2",
+    "chapter": 3,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Neu in der Firma",
+      "uk": "Новий у компанії",
+      "en": "New at the company"
+    },
+    "title": {
+      "de": "Herzlich willkommen – Small Talk",
+      "uk": "Ласкаво просимо – Small Talk",
+      "en": "Welcome – Small Talk"
+    },
+    "skills": [
+      "Sprechen"
+    ],
+    "grammar": "Das Wort 'es'",
+    "cardIds": [
+      "eat_021",
+      "eat_022",
+      "eat_023",
+      "eat_024",
+      "eat_025",
+      "eat_026",
+      "eat_027",
+      "eat_028",
+      "eat_029",
+      "eat_030",
+      "eat_031",
+      "eat_032",
+      "eat_033",
+      "eat_034",
+      "eat_035",
+      "nvv_049",
+      "nvv_050",
+      "nvv_051",
+      "nvv_052",
+      "nvv_053",
+      "nvv_054"
+    ],
+    "unlockAfter": "k3m1"
+  },
+  {
+    "id": "k3m3",
+    "chapter": 3,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Neu in der Firma",
+      "uk": "Новий у компанії",
+      "en": "New at the company"
+    },
+    "title": {
+      "de": "Das muss gemacht werden – Arbeitsaufträge",
+      "uk": "Це треба зробити – завдання",
+      "en": "Tasks and instructions"
+    },
+    "skills": [
+      "Hören",
+      "Sprechen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "eat_036",
+      "eat_037",
+      "eat_038",
+      "eat_039",
+      "eat_040",
+      "eat_041",
+      "eat_042",
+      "eat_043",
+      "eat_044",
+      "eat_045",
+      "eat_046",
+      "eat_047",
+      "eat_048",
+      "eat_049",
+      "eat_050",
+      "nvv_055",
+      "nvv_056",
+      "nvv_057",
+      "nvv_058",
+      "nvv_059",
+      "nvv_060"
+    ],
+    "unlockAfter": "k3m2"
+  },
+  {
+    "id": "k3m4",
+    "chapter": 3,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Neu in der Firma",
+      "uk": "Новий у компанії",
+      "en": "New at the company"
+    },
+    "title": {
+      "de": "Hard Skills – technische Fähigkeiten",
+      "uk": "Технічні навички",
+      "en": "Hard Skills"
+    },
+    "skills": [
+      "Sprechen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "hsk_021",
+      "hsk_022",
+      "hsk_023",
+      "hsk_024",
+      "hsk_025",
+      "hsk_026",
+      "hsk_027",
+      "hsk_028",
+      "hsk_029",
+      "hsk_030",
+      "hsk_031",
+      "hsk_032",
+      "hsk_033",
+      "hsk_034",
+      "hsk_035",
+      "hsk_036",
+      "hsk_037",
+      "hsk_038",
+      "hsk_039",
+      "hsk_040",
+      "hsk_041",
+      "hsk_042",
+      "hsk_043",
+      "hsk_044",
+      "hsk_045",
+      "hsk_046",
+      "hsk_047",
+      "hsk_048",
+      "hsk_049",
+      "hsk_050",
+      "hsk_051",
+      "hsk_052",
+      "hsk_053",
+      "hsk_054",
+      "hsk_055",
+      "hsk_056",
+      "hsk_057",
+      "hsk_058",
+      "hsk_059",
+      "nvv_061",
+      "nvv_062",
+      "nvv_063",
+      "nvv_064",
+      "nvv_065",
+      "nvv_066"
+    ],
+    "unlockAfter": "k3m3"
+  },
+  {
+    "id": "k4m1",
+    "chapter": 4,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Zusammenarbeiten",
+      "uk": "Працюємо разом",
+      "en": "Working together"
+    },
+    "title": {
+      "de": "Im Meeting – Meetingregeln",
+      "uk": "На нараді – правила",
+      "en": "In a meeting"
+    },
+    "skills": [
+      "Lesen",
+      "Sprechen"
+    ],
+    "grammar": "Relativsätze mit 'wer'",
+    "cardIds": [
+      "zar_001",
+      "zar_002",
+      "zar_003",
+      "zar_004",
+      "zar_005",
+      "zar_006",
+      "zar_007",
+      "zar_008",
+      "zar_009",
+      "zar_010",
+      "zar_011",
+      "zar_012",
+      "zar_013",
+      "zar_014",
+      "zar_015",
+      "nvv_067",
+      "nvv_068",
+      "nvv_069",
+      "nvv_070",
+      "nvv_071",
+      "nvv_072"
+    ],
+    "unlockAfter": "k3m4"
+  },
+  {
+    "id": "k4m2",
+    "chapter": 4,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Zusammenarbeiten",
+      "uk": "Працюємо разом",
+      "en": "Working together"
+    },
+    "title": {
+      "de": "Konflikte am Arbeitsplatz",
+      "uk": "Конфлікти на робочому місці",
+      "en": "Workplace conflicts"
+    },
+    "skills": [
+      "Sprechen",
+      "Hören"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "zar_016",
+      "zar_017",
+      "zar_018",
+      "zar_019",
+      "zar_020",
+      "zar_021",
+      "zar_022",
+      "zar_023",
+      "zar_024",
+      "zar_025",
+      "zar_026",
+      "zar_027",
+      "zar_028",
+      "zar_029",
+      "zar_030",
+      "nvv_073",
+      "nvv_074",
+      "nvv_075",
+      "nvv_076",
+      "nvv_077",
+      "nvv_078"
+    ],
+    "unlockAfter": "k4m1"
+  },
+  {
+    "id": "k4m3",
+    "chapter": 4,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Zusammenarbeiten",
+      "uk": "Працюємо разом",
+      "en": "Working together"
+    },
+    "title": {
+      "de": "Was ist zu tun? – Übergaben",
+      "uk": "Що треба зробити? – передача справ",
+      "en": "Handovers"
+    },
+    "skills": [
+      "Sprechen"
+    ],
+    "grammar": "Nomen-Verb-Verbindungen",
+    "cardIds": [
+      "zar_031",
+      "zar_032",
+      "zar_033",
+      "zar_034",
+      "zar_035",
+      "zar_036",
+      "zar_037",
+      "zar_038",
+      "zar_039",
+      "zar_040",
+      "nvv_079",
+      "nvv_080",
+      "nvv_081",
+      "nvv_082",
+      "nvv_083",
+      "nvv_084",
+      "nvv_085",
+      "nvv_086",
+      "nvv_087",
+      "nvv_088",
+      "nvv_089",
+      "nvv_090"
+    ],
+    "unlockAfter": "k4m2"
+  },
+  {
+    "id": "k4m4",
+    "chapter": 4,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Zusammenarbeiten",
+      "uk": "Працюємо разом",
+      "en": "Working together"
+    },
+    "title": {
+      "de": "Fürs Protokoll – Mails positiv formulieren",
+      "uk": "Для протоколу – позитивні листи",
+      "en": "Minutes and positive emails"
+    },
+    "skills": [
+      "Schreiben",
+      "Lesen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "zar_041",
+      "zar_042",
+      "zar_043",
+      "zar_044",
+      "zar_045",
+      "zar_046",
+      "zar_047",
+      "zar_048",
+      "zar_049",
+      "zar_050",
+      "nvv_091",
+      "nvv_092",
+      "nvv_093",
+      "nvv_094",
+      "nvv_095",
+      "nvv_096"
+    ],
+    "unlockAfter": "k4m3"
+  },
+  {
+    "id": "k5m1",
+    "chapter": 5,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Kennen Sie schon …?",
+      "uk": "Чи вже знаєте…?",
+      "en": "Did you know…?"
+    },
+    "title": {
+      "de": "Über uns – Firmenporträt",
+      "uk": "Про нас – портрет компанії",
+      "en": "About us – company profile"
+    },
+    "skills": [
+      "Lesen",
+      "Schreiben"
+    ],
+    "grammar": "Passiv und Passiversatzformen",
+    "cardIds": [
+      "uns_001",
+      "uns_002",
+      "uns_003",
+      "uns_004",
+      "uns_005",
+      "uns_006",
+      "uns_007",
+      "uns_008",
+      "uns_009",
+      "uns_010",
+      "uns_011",
+      "uns_012",
+      "uns_013",
+      "uns_014",
+      "uns_015",
+      "uns_016",
+      "uns_017",
+      "uns_018",
+      "uns_019",
+      "uns_020",
+      "abk_001",
+      "abk_002",
+      "abk_003",
+      "abk_004",
+      "abk_005",
+      "abk_006",
+      "abk_007",
+      "abk_008",
+      "abk_009",
+      "abk_010"
+    ],
+    "unlockAfter": "k4m4"
+  },
+  {
+    "id": "k5m2",
+    "chapter": 5,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Kennen Sie schon …?",
+      "uk": "Чи вже знаєте…?",
+      "en": "Did you know…?"
+    },
+    "title": {
+      "de": "Auf der Messe – Kunden beraten",
+      "uk": "На виставці – консультуємо клієнтів",
+      "en": "At the trade fair"
+    },
+    "skills": [
+      "Sprechen",
+      "Hören"
+    ],
+    "grammar": "Indefinitpronomen",
+    "cardIds": [
+      "mes_001",
+      "mes_002",
+      "mes_003",
+      "mes_004",
+      "mes_005",
+      "mes_006",
+      "mes_007",
+      "mes_008",
+      "mes_009",
+      "mes_010",
+      "mes_011",
+      "mes_012",
+      "mes_013",
+      "mes_014",
+      "mes_015",
+      "uns_021",
+      "uns_022",
+      "uns_023",
+      "uns_024",
+      "uns_025",
+      "uns_026",
+      "uns_027",
+      "uns_028",
+      "uns_029",
+      "uns_030",
+      "uns_031",
+      "uns_032",
+      "uns_033",
+      "uns_034",
+      "uns_035"
+    ],
+    "unlockAfter": "k5m1"
+  },
+  {
+    "id": "k5m3",
+    "chapter": 5,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Kennen Sie schon …?",
+      "uk": "Чи вже знаєте…?",
+      "en": "Did you know…?"
+    },
+    "title": {
+      "de": "Geschäftlich unterwegs – Durchsagen",
+      "uk": "У відрядженні – оголошення",
+      "en": "Business travel – announcements"
+    },
+    "skills": [
+      "Hören"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "mes_016",
+      "mes_017",
+      "mes_018",
+      "mes_019",
+      "mes_020",
+      "mes_021",
+      "mes_022",
+      "mes_023",
+      "mes_024",
+      "mes_025",
+      "abk_011",
+      "abk_012",
+      "abk_013",
+      "abk_014",
+      "abk_015",
+      "abk_016",
+      "abk_017",
+      "abk_018",
+      "abk_019",
+      "abk_020"
+    ],
+    "unlockAfter": "k5m2"
+  },
+  {
+    "id": "k5m4",
+    "chapter": 5,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Kennen Sie schon …?",
+      "uk": "Чи вже знаєте…?",
+      "en": "Did you know…?"
+    },
+    "title": {
+      "de": "Unser neues Produkt – Präsentation",
+      "uk": "Наш новий продукт – презентація",
+      "en": "Product presentation"
+    },
+    "skills": [
+      "Sprechen",
+      "Schreiben"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "uns_036",
+      "uns_037",
+      "uns_038",
+      "uns_039",
+      "uns_040",
+      "uns_041",
+      "uns_042",
+      "uns_043",
+      "uns_044",
+      "uns_045",
+      "uns_046",
+      "uns_047",
+      "uns_048",
+      "uns_049",
+      "uns_050",
+      "nvv_097",
+      "nvv_098",
+      "nvv_099",
+      "nvv_100",
+      "nvv_101",
+      "nvv_102"
+    ],
+    "unlockAfter": "k5m3"
+  },
+  {
+    "id": "k6m1",
+    "chapter": 6,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Kommunikation ist alles",
+      "uk": "Спілкування – це все",
+      "en": "Communication is everything"
+    },
+    "title": {
+      "de": "Sind Sie teamfähig? – Tipps für Kollegen",
+      "uk": "Чи вмієте ви працювати в команді?",
+      "en": "Are you a team player?"
+    },
+    "skills": [
+      "Lesen",
+      "Sprechen"
+    ],
+    "grammar": "Vergleichssätze mit als ob / als wenn (Konjunktiv II)",
+    "cardIds": [
+      "kia_001",
+      "kia_002",
+      "kia_003",
+      "kia_004",
+      "kia_005",
+      "kia_006",
+      "kia_007",
+      "kia_008",
+      "kia_009",
+      "kia_010",
+      "kia_011",
+      "kia_012",
+      "kia_013",
+      "kia_014",
+      "kia_015",
+      "nvv_103",
+      "nvv_104",
+      "nvv_105",
+      "nvv_106",
+      "nvv_107",
+      "nvv_108"
+    ],
+    "unlockAfter": "k5m4"
+  },
+  {
+    "id": "k6m2",
+    "chapter": 6,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Kommunikation ist alles",
+      "uk": "Спілкування – це все",
+      "en": "Communication is everything"
+    },
+    "title": {
+      "de": "Guten Tag, Sie sprechen mit … – Telefon",
+      "uk": "Телефонні розмови",
+      "en": "Business phone calls"
+    },
+    "skills": [
+      "Hören",
+      "Sprechen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "tel_011",
+      "tel_012",
+      "tel_013",
+      "tel_014",
+      "tel_015",
+      "tel_016",
+      "tel_017",
+      "tel_018",
+      "tel_019",
+      "tel_020",
+      "tel_021",
+      "tel_022",
+      "tel_023",
+      "tel_024",
+      "tel_025",
+      "tel_026",
+      "tel_027",
+      "tel_028",
+      "tel_029",
+      "tel_030",
+      "kia_016",
+      "kia_017",
+      "kia_018",
+      "kia_019",
+      "kia_020",
+      "kia_021",
+      "kia_022",
+      "kia_023",
+      "kia_024",
+      "kia_025"
+    ],
+    "unlockAfter": "k6m1"
+  },
+  {
+    "id": "k6m3",
+    "chapter": 6,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Kommunikation ist alles",
+      "uk": "Спілкування – це все",
+      "en": "Communication is everything"
+    },
+    "title": {
+      "de": "Teamgeist – Meinungen äußern",
+      "uk": "Командний дух – висловлення думок",
+      "en": "Team spirit – expressing opinions"
+    },
+    "skills": [
+      "Sprechen",
+      "Hören"
+    ],
+    "grammar": "Passiv mit sein",
+    "cardIds": [
+      "kia_026",
+      "kia_027",
+      "kia_028",
+      "kia_029",
+      "kia_030",
+      "kia_031",
+      "kia_032",
+      "kia_033",
+      "kia_034",
+      "kia_035",
+      "kia_036",
+      "kia_037",
+      "kia_038",
+      "nvv_109",
+      "nvv_110",
+      "nvv_111",
+      "nvv_112",
+      "nvv_113",
+      "nvv_114"
+    ],
+    "unlockAfter": "k6m2"
+  },
+  {
+    "id": "k6m4",
+    "chapter": 6,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Kommunikation ist alles",
+      "uk": "Спілкування – це все",
+      "en": "Communication is everything"
+    },
+    "title": {
+      "de": "Online-Konferenzen – technische Probleme",
+      "uk": "Онлайн-конференції – технічні проблеми",
+      "en": "Online conferences"
+    },
+    "skills": [
+      "Sprechen",
+      "Hören"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "kia_039",
+      "kia_040",
+      "kia_041",
+      "kia_042",
+      "kia_043",
+      "kia_044",
+      "kia_045",
+      "kia_046",
+      "kia_047",
+      "kia_048",
+      "kia_049",
+      "kia_050",
+      "nvv_115",
+      "nvv_116",
+      "nvv_117",
+      "nvv_118",
+      "nvv_119",
+      "nvv_120"
+    ],
+    "unlockAfter": "k6m3"
+  },
+  {
+    "id": "k7m1",
+    "chapter": 7,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Was kann ich für Sie tun?",
+      "uk": "Чим можу допомогти?",
+      "en": "How can I help you?"
+    },
+    "title": {
+      "de": "Mit freundlichen Grüßen – E-Mail-Korrespondenz",
+      "uk": "З повагою – ділове листування",
+      "en": "Business email correspondence"
+    },
+    "skills": [
+      "Lesen",
+      "Schreiben"
+    ],
+    "grammar": "Textzusammenhang",
+    "cardIds": [
+      "mbr_076",
+      "mbr_077",
+      "mbr_078",
+      "mbr_079",
+      "mbr_080",
+      "mbr_081",
+      "mbr_082",
+      "mbr_083",
+      "mbr_084",
+      "mbr_085",
+      "mbr_086",
+      "mbr_087",
+      "mbr_088",
+      "mbr_089",
+      "mbr_090"
+    ],
+    "unlockAfter": "k6m4"
+  },
+  {
+    "id": "k7m2",
+    "chapter": 7,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Was kann ich für Sie tun?",
+      "uk": "Чим можу допомогти?",
+      "en": "How can I help you?"
+    },
+    "title": {
+      "de": "Das ist unser Angebot – Angebote weitergeben",
+      "uk": "Ось наша пропозиція",
+      "en": "Our offer"
+    },
+    "skills": [
+      "Sprechen",
+      "Lesen"
+    ],
+    "grammar": "Modalsätze mit dadurch dass / indem",
+    "cardIds": [
+      "mbr_091",
+      "mbr_092",
+      "mbr_093",
+      "mbr_094",
+      "mbr_095",
+      "mbr_096",
+      "mbr_097",
+      "mbr_098",
+      "mbr_099",
+      "mbr_100"
+    ],
+    "unlockAfter": "k7m1"
+  },
+  {
+    "id": "k7m3",
+    "chapter": 7,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Was kann ich für Sie tun?",
+      "uk": "Чим можу допомогти?",
+      "en": "How can I help you?"
+    },
+    "title": {
+      "de": "Die Bestellung – schriftlich aufgeben",
+      "uk": "Замовлення – письмово",
+      "en": "Placing orders"
+    },
+    "skills": [
+      "Schreiben"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "mwb_001",
+      "mwb_002",
+      "mwb_003",
+      "mwb_004",
+      "mwb_005",
+      "mwb_006",
+      "mwb_007",
+      "mwb_008",
+      "mwb_009",
+      "mwb_010",
+      "mwb_011",
+      "mwb_012",
+      "mwb_013",
+      "mwb_014",
+      "mwb_015"
+    ],
+    "unlockAfter": "k7m2"
+  },
+  {
+    "id": "k7m4",
+    "chapter": 7,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Was kann ich für Sie tun?",
+      "uk": "Чим можу допомогти?",
+      "en": "How can I help you?"
+    },
+    "title": {
+      "de": "Ich möchte reklamieren – Beschwerden",
+      "uk": "Я хочу поскаржитися – рекламації",
+      "en": "Complaints and complaints handling"
+    },
+    "skills": [
+      "Sprechen",
+      "Schreiben"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "zar_001",
+      "zar_002",
+      "zar_003",
+      "zar_004",
+      "zar_005",
+      "zar_006",
+      "zar_007",
+      "zar_008",
+      "zar_009",
+      "zar_010",
+      "zar_011",
+      "zar_012",
+      "zar_013",
+      "zar_014",
+      "zar_015"
+    ],
+    "unlockAfter": "k7m3"
+  },
+  {
+    "id": "k8m1",
+    "chapter": 8,
+    "module": 1,
+    "chapterTitle": {
+      "de": "So geht's!",
+      "uk": "Ось як це робиться!",
+      "en": "Here's how!"
+    },
+    "title": {
+      "de": "Zeit für die Familie – Elterngeld",
+      "uk": "Час для сім'ї – допомога по догляду",
+      "en": "Family time – parental benefits"
+    },
+    "skills": [
+      "Lesen",
+      "Sprechen"
+    ],
+    "grammar": "Nomen/Verben/Adjektive mit Präposition",
+    "cardIds": [
+      "hsk_001",
+      "hsk_002",
+      "hsk_003",
+      "hsk_004",
+      "hsk_005",
+      "hsk_006",
+      "hsk_007",
+      "hsk_008",
+      "hsk_009",
+      "hsk_010",
+      "hsk_011",
+      "hsk_012",
+      "hsk_013",
+      "hsk_014",
+      "hsk_015",
+      "hsk_016",
+      "hsk_017",
+      "hsk_018",
+      "hsk_019",
+      "hsk_020"
+    ],
+    "unlockAfter": "k7m4"
+  },
+  {
+    "id": "k8m2",
+    "chapter": 8,
+    "module": 2,
+    "chapterTitle": {
+      "de": "So geht's!",
+      "uk": "Ось як це робиться!",
+      "en": "Here's how!"
+    },
+    "title": {
+      "de": "Wozu verwendet man das? – Geräte erklären",
+      "uk": "Для чого це? – пояснення пристроїв",
+      "en": "Explaining devices"
+    },
+    "skills": [
+      "Sprechen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "hsk_020",
+      "hsk_021",
+      "hsk_022",
+      "hsk_023",
+      "hsk_024",
+      "hsk_025",
+      "hsk_026",
+      "hsk_027",
+      "hsk_028",
+      "hsk_029",
+      "hsk_030",
+      "hsk_031",
+      "hsk_032",
+      "hsk_033",
+      "hsk_034",
+      "hsk_035",
+      "hsk_036",
+      "hsk_037",
+      "hsk_038",
+      "hsk_039",
+      "hsk_040"
+    ],
+    "unlockAfter": "k8m1"
+  },
+  {
+    "id": "k8m3",
+    "chapter": 8,
+    "module": 3,
+    "chapterTitle": {
+      "de": "So geht's!",
+      "uk": "Ось як це робиться!",
+      "en": "Here's how!"
+    },
+    "title": {
+      "de": "Qualität ist uns wichtig – Qualitätssicherung",
+      "uk": "Якість для нас важлива",
+      "en": "Quality assurance"
+    },
+    "skills": [
+      "Lesen",
+      "Sprechen"
+    ],
+    "grammar": "Indirekte Rede mit Konjunktiv I",
+    "cardIds": [
+      "hsk_041",
+      "hsk_042",
+      "hsk_043",
+      "hsk_044",
+      "hsk_045",
+      "hsk_046",
+      "hsk_047",
+      "hsk_048",
+      "hsk_049",
+      "hsk_050",
+      "hsk_051",
+      "hsk_052",
+      "hsk_053",
+      "hsk_054",
+      "hsk_055",
+      "hsk_056",
+      "hsk_057",
+      "hsk_058",
+      "hsk_059"
+    ],
+    "unlockAfter": "k8m2"
+  },
+  {
+    "id": "k8m4",
+    "chapter": 8,
+    "module": 4,
+    "chapterTitle": {
+      "de": "So geht's!",
+      "uk": "Ось як це робиться!",
+      "en": "Here's how!"
+    },
+    "title": {
+      "de": "Wer kann einspringen? – Dienstplan",
+      "uk": "Хто може підмінити? – графік",
+      "en": "Shift schedule and labour law"
+    },
+    "skills": [
+      "Sprechen",
+      "Lesen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "eat_001",
+      "eat_002",
+      "eat_003",
+      "eat_004",
+      "eat_005",
+      "eat_006",
+      "eat_007",
+      "eat_008",
+      "eat_009",
+      "eat_010",
+      "eat_011",
+      "eat_012",
+      "eat_013",
+      "eat_014",
+      "eat_015",
+      "eat_016",
+      "eat_017",
+      "eat_018",
+      "eat_019",
+      "eat_020"
+    ],
+    "unlockAfter": "k8m3"
+  },
+  {
+    "id": "k9m1",
+    "chapter": 9,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Wie fühlst du dich?",
+      "uk": "Як ти себе почуваєш?",
+      "en": "How do you feel?"
+    },
+    "title": {
+      "de": "Gesünder geht immer – betriebliche Gesundheit",
+      "uk": "Здоров'я на роботі",
+      "en": "Workplace health"
+    },
+    "skills": [
+      "Schreiben",
+      "Lesen"
+    ],
+    "grammar": "Nominalisierung von Verben",
+    "cardIds": [
+      "ssk_001",
+      "ssk_002",
+      "ssk_003",
+      "ssk_004",
+      "ssk_005",
+      "ssk_006",
+      "ssk_007",
+      "ssk_008",
+      "ssk_009",
+      "ssk_010",
+      "ssk_011",
+      "ssk_012",
+      "ssk_013",
+      "ssk_014",
+      "ssk_015"
+    ],
+    "unlockAfter": "k8m4"
+  },
+  {
+    "id": "k9m2",
+    "chapter": 9,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Wie fühlst du dich?",
+      "uk": "Як ти себе почуваєш?",
+      "en": "How do you feel?"
+    },
+    "title": {
+      "de": "Das ist mir wichtig – Kurzvortrag",
+      "uk": "Це для мене важливо – коротка доповідь",
+      "en": "A short presentation"
+    },
+    "skills": [
+      "Sprechen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "ssk_016",
+      "ssk_017",
+      "ssk_018",
+      "ssk_019",
+      "ssk_020",
+      "ssk_021",
+      "ssk_022",
+      "ssk_023",
+      "ssk_024",
+      "ssk_025"
+    ],
+    "unlockAfter": "k9m1"
+  },
+  {
+    "id": "k9m3",
+    "chapter": 9,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Wie fühlst du dich?",
+      "uk": "Як ти себе почуваєш?",
+      "en": "How do you feel?"
+    },
+    "title": {
+      "de": "Wie sagt man das? – Modalpartikeln",
+      "uk": "Як це сказати? – модальні частки",
+      "en": "Modal particles"
+    },
+    "skills": [
+      "Sprechen",
+      "Hören"
+    ],
+    "grammar": "Modalpartikeln",
+    "cardIds": [
+      "kia_026",
+      "kia_027",
+      "kia_028",
+      "kia_029",
+      "kia_030",
+      "kia_031",
+      "kia_032",
+      "kia_033",
+      "kia_034",
+      "kia_035",
+      "kia_036",
+      "kia_037",
+      "kia_038",
+      "kia_039",
+      "kia_040"
+    ],
+    "unlockAfter": "k9m2"
+  },
+  {
+    "id": "k9m4",
+    "chapter": 9,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Wie fühlst du dich?",
+      "uk": "Як ти себе почуваєш?",
+      "en": "How do you feel?"
+    },
+    "title": {
+      "de": "Es passt nicht – Mitarbeitergespräch",
+      "uk": "Щось не так – розмова з керівником",
+      "en": "Performance review"
+    },
+    "skills": [
+      "Sprechen",
+      "Schreiben"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "zar_030",
+      "zar_031",
+      "zar_032",
+      "zar_033",
+      "zar_034",
+      "zar_035",
+      "zar_036",
+      "zar_037",
+      "zar_038",
+      "zar_039",
+      "zar_040",
+      "zar_041",
+      "zar_042",
+      "zar_043",
+      "zar_044",
+      "zar_045",
+      "zar_046",
+      "zar_047",
+      "zar_048",
+      "zar_049",
+      "zar_050"
+    ],
+    "unlockAfter": "k9m3"
+  },
+  {
+    "id": "k10m1",
+    "chapter": 10,
+    "module": 1,
+    "chapterTitle": {
+      "de": "Wie geht's weiter?",
+      "uk": "Що далі?",
+      "en": "What's next?"
+    },
+    "title": {
+      "de": "Roboterwelt – Nutzen von Robotern",
+      "uk": "Світ роботів – користь автоматизації",
+      "en": "The robot world"
+    },
+    "skills": [
+      "Sprechen",
+      "Hören"
+    ],
+    "grammar": "Partizipien als Adjektive",
+    "cardIds": [
+      "mbr_080",
+      "mbr_081",
+      "mbr_082",
+      "mbr_083",
+      "mbr_084",
+      "mbr_085",
+      "mbr_086",
+      "mbr_087",
+      "mbr_088",
+      "mbr_089",
+      "mbr_090",
+      "mbr_091",
+      "mbr_092",
+      "mbr_093",
+      "mbr_094",
+      "mbr_095",
+      "mbr_096",
+      "mbr_097",
+      "mbr_098",
+      "mbr_099",
+      "mbr_100"
+    ],
+    "unlockAfter": "k9m4"
+  },
+  {
+    "id": "k10m2",
+    "chapter": 10,
+    "module": 2,
+    "chapterTitle": {
+      "de": "Wie geht's weiter?",
+      "uk": "Що далі?",
+      "en": "What's next?"
+    },
+    "title": {
+      "de": "Ich mache mich selbstständig – Bescheide",
+      "uk": "Я відкриваю власну справу",
+      "en": "Going self-employed"
+    },
+    "skills": [
+      "Lesen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "mwb_080",
+      "mwb_081",
+      "mwb_082",
+      "mwb_083",
+      "mwb_084",
+      "mwb_085",
+      "mwb_086",
+      "mwb_087",
+      "mwb_088",
+      "mwb_089",
+      "mwb_090",
+      "mwb_091",
+      "mwb_092",
+      "mwb_093",
+      "mwb_094",
+      "mwb_095",
+      "mwb_096",
+      "mwb_097",
+      "mwb_098",
+      "mwb_099",
+      "mwb_100"
+    ],
+    "unlockAfter": "k10m1"
+  },
+  {
+    "id": "k10m3",
+    "chapter": 10,
+    "module": 3,
+    "chapterTitle": {
+      "de": "Wie geht's weiter?",
+      "uk": "Що далі?",
+      "en": "What's next?"
+    },
+    "title": {
+      "de": "Berufe der Zukunft – Interview",
+      "uk": "Професії майбутнього – інтерв'ю",
+      "en": "Jobs of the future"
+    },
+    "skills": [
+      "Lesen",
+      "Sprechen"
+    ],
+    "grammar": "Konnektor während / Genitiv-Präpositionen",
+    "cardIds": [
+      "mbr_001",
+      "mbr_002",
+      "mbr_003",
+      "mbr_004",
+      "mbr_005",
+      "mbr_006",
+      "mbr_007",
+      "mbr_008",
+      "mbr_009",
+      "mbr_010",
+      "mbr_011",
+      "mbr_012",
+      "mbr_013",
+      "mbr_014",
+      "mbr_015",
+      "mbr_016",
+      "mbr_017",
+      "mbr_018",
+      "mbr_019",
+      "mbr_020"
+    ],
+    "unlockAfter": "k10m2"
+  },
+  {
+    "id": "k10m4",
+    "chapter": 10,
+    "module": 4,
+    "chapterTitle": {
+      "de": "Wie geht's weiter?",
+      "uk": "Що далі?",
+      "en": "What's next?"
+    },
+    "title": {
+      "de": "Man lernt nie aus – Fort- und Weiterbildung",
+      "uk": "Вчитися ніколи не пізно",
+      "en": "Lifelong learning"
+    },
+    "skills": [
+      "Lesen",
+      "Sprechen"
+    ],
+    "grammar": null,
+    "cardIds": [
+      "hsk_001",
+      "hsk_002",
+      "hsk_003",
+      "hsk_004",
+      "hsk_005",
+      "hsk_006",
+      "hsk_007",
+      "hsk_008",
+      "hsk_009",
+      "hsk_010",
+      "hsk_011",
+      "hsk_012",
+      "hsk_013",
+      "hsk_014",
+      "hsk_015",
+      "hsk_016",
+      "hsk_017",
+      "hsk_018",
+      "hsk_019",
+      "hsk_020",
+      "hsk_021",
+      "hsk_022",
+      "hsk_023",
+      "hsk_024",
+      "hsk_025",
+      "hsk_026",
+      "hsk_027",
+      "hsk_028",
+      "hsk_029",
+      "hsk_030"
+    ],
+    "unlockAfter": "k10m3"
+  }
+];
+
 const VOCAB = [
 
 // ── Nomen-Verb-Verbindungen ────────────────────────────
