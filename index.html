@@ -313,6 +313,95 @@ body{
 .fc-flag{font-size:20px;flex-shrink:0}
 .fc-term{font-size:19px;font-weight:700;color:#fff;line-height:1.25}
 .fc-short{font-size:13px;color:rgba(255,255,255,.42);margin-top:1px}
+
+/* ══ MATCHING GAME ══ */
+#vocab-panel-match{
+  flex:1;min-height:0;display:flex;flex-direction:column;
+  padding:12px 14px 106px 14px;
+}
+.match-header{
+  text-align:center;margin-bottom:16px;
+}
+.match-header h3{
+  font-size:15px;font-weight:700;color:var(--ink);margin:0 0 4px;
+}
+.match-header small{
+  font-size:12px;color:var(--muted);
+}
+.match-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  grid-auto-rows:min-content;
+  gap:8px;
+  flex:1;
+  align-content:start;
+}
+/* Лівий стовпець — терміни */
+.match-btn.side-term { grid-column:1; }
+/* Правий стовпець — пояснення */
+.match-btn.side-short{ grid-column:2; }
+.match-btn{
+  padding:12px 10px;
+  border-radius:12px;
+  border:1.5px solid var(--border);
+  background:var(--card);
+  color:var(--ink);
+  font-family:'Figtree',sans-serif;
+  font-size:13px;
+  font-weight:500;
+  line-height:1.3;
+  cursor:pointer;
+  text-align:center;
+  transition:border-color .15s, background .15s, opacity .3s;
+  min-height:56px;
+  display:flex;align-items:center;justify-content:center;
+  word-break:break-word;
+  hyphens:auto;
+  -webkit-hyphens:auto;
+  user-select:none;
+  -webkit-user-select:none;
+}
+.match-btn.selected{
+  border-color:var(--gold);
+  background:rgba(201,168,76,.15);
+  color:var(--gold);
+  font-weight:700;
+}
+.match-btn.matched{
+  border-color:var(--border);
+  background:var(--cream);
+  color:var(--muted);
+  opacity:.55;
+  cursor:default;
+}
+.match-btn.error{
+  border-color:#e74c3c;
+  background:rgba(231,76,60,.1);
+  animation:matchShake .4s ease;
+}
+@keyframes matchShake{
+  0%,100%{transform:translateX(0)}
+  20%{transform:translateX(-6px)}
+  40%{transform:translateX(6px)}
+  60%{transform:translateX(-4px)}
+  80%{transform:translateX(4px)}
+}
+.match-btn.matched-flash{
+  border-color:#2ecc71;
+  background:rgba(46,204,113,.12);
+  color:#27ae60;
+}
+.match-result{
+  text-align:center;padding:20px;margin-top:12px;
+  border-radius:16px;background:var(--card);
+  border:1px solid var(--border);
+}
+.match-result .score{
+  font-size:32px;font-weight:800;color:var(--gold);
+  font-family:'Syne',sans-serif;
+}
+.match-result p{font-size:13px;color:var(--muted);margin:4px 0 12px;}
+
 .fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
 .fc-srs-badge{display:block;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 0;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
@@ -548,6 +637,7 @@ body{
         <div class="vtab-bar" id="vocab-tabs">
           <button class="vtab active" onclick="switchVocabTab(0)">🃏 Karte</button>
           <button class="vtab" onclick="switchVocabTab(1)">📋 Alle</button>
+          <button class="vtab" onclick="switchVocabTab(2)">🔗 Match</button>
         </div>
       </div>
       <div id="vocab-panel-card">
@@ -560,6 +650,19 @@ body{
         <div class="vprogrow">
           <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);white-space:nowrap" id="vprgtxt">1 / 0</span>
           <div class="vpb"><div class="vpbf" id="vpbf" style="width:0%"></div></div>
+        </div>
+      </div>
+      <div id="vocab-panel-match" style="display:none">
+        <div class="match-header">
+          <h3 id="match-title">🔗 Matching</h3>
+          <small id="match-subtitle">Verbinde den Begriff mit der Erklärung</small>
+        </div>
+        <div class="match-grid" id="match-grid"></div>
+        <div class="match-result" id="match-result" style="display:none">
+          <div class="score" id="match-score"></div>
+          <p id="match-result-text"></p>
+          <button class="btn" onclick="startMatching()" style="margin-right:8px">🔄 Nochmal</button>
+          <button class="btn" onclick="switchVocabTab(0)">📖 Karten</button>
         </div>
       </div>
       <div id="vocab-panel-browse" style="display:none">
@@ -1568,6 +1671,182 @@ function renderCourseList(){
     </button>
   `).join('');
 }
+
+// ── MATCHING GAME ─────────────────────────────────────────────
+const MATCH_SIZE = 5; // карток за один раунд
+let matchState = {
+  cards:     [],   // вибрані картки [{card, q}]
+  selected:  null, // поточно вибраний елемент {el, cardId, side}
+  matched:   0,    // кількість знайдених пар
+  firstTry:  new Set(), // id карток що підібрані з першої спроби
+};
+
+function startMatching(){
+  const result = document.getElementById('match-result');
+  const grid   = document.getElementById('match-grid');
+  if(result) result.style.display = 'none';
+
+  // Вибираємо картки через SM-2 пріоритет (слабкі вперше)
+  const cf  = document.getElementById('vf-cat')?.value || 'all';
+  // Використовуємо глобальний VOCAB (завантажений динамічно)
+  const vocabAll = typeof VOCAB !== 'undefined' ? VOCAB : [];
+  let pool = vocabAll.filter(v => (cf==='all' || v.cat===cf) && v.term?.de && v.short?.de);
+
+  if(pool.length < MATCH_SIZE){
+    grid.innerHTML = `<p style="text-align:center;color:var(--muted);padding:32px 16px;grid-column:1/-1">
+      ${pool.length === 0
+        ? (uiLang==='uk' ? '⚠️ Немає карток у цій категорії' : uiLang==='en' ? '⚠️ No cards in this category' : '⚠️ Keine Karten in dieser Kategorie')
+        : (uiLang==='uk' ? `Лише ${pool.length} карток — потрібно мінімум ${MATCH_SIZE}` : uiLang==='en' ? `Only ${pool.length} cards — need at least ${MATCH_SIZE}` : `Nur ${pool.length} Karten — mindestens ${MATCH_SIZE} nötig`)
+      }</p>`;
+    return;
+  }
+
+  // Сортуємо: нові і слабкі вперше (вищий srsPriority = більш терміново)
+  pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
+  // Додаємо трохи випадковості серед карток з однаковим пріоритетом
+  const chosen = pool.slice(0, Math.min(MATCH_SIZE * 3, pool.length))
+                     .sort(() => Math.random() - .5)
+                     .slice(0, MATCH_SIZE);
+
+  matchState = {
+    cards:    chosen.map(c => ({card:c, q:5})), // q=5 за замовчуванням
+    selected: null,
+    matched:  0,
+    firstTry: new Set(chosen.map(c => c.id)),
+  };
+
+  // Дві колонки — ліва: терміни, права: пояснення (перемішані окремо)
+  const terms  = [...chosen].sort(() => Math.random() - .5);
+  const shorts = [...chosen].sort(() => Math.random() - .5);
+
+  grid.innerHTML = '';
+  // Чергуємо term/short щоб рядки грід були на одному рівні
+  // grid-column:1 і grid-column:2 розміщують їх у правильних стовпцях
+  const maxLen = Math.max(terms.length, shorts.length);
+  for(let i=0; i<maxLen; i++){
+    if(terms[i])  grid.appendChild(matchMakeBtn(terms[i].id,  'term',  terms[i].term.de));
+    if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id, 'short', shorts[i].short.de));
+  }
+
+  // Заголовок
+  const titleEl = document.getElementById('match-title');
+  const subEl   = document.getElementById('match-subtitle');
+  if(titleEl) titleEl.textContent = '🔗 Matching · '+MATCH_SIZE+' Paare';
+  if(subEl)   subEl.textContent   = uiLang==='uk'
+    ? 'Поєднай термін з поясненням'
+    : uiLang==='en'
+    ? 'Match the term with its explanation'
+    : 'Verbinde den Begriff mit der Erklärung';
+}
+
+function matchMakeBtn(cardId, side, text){
+  const btn = document.createElement('button');
+  btn.className = 'match-btn side-'+side;  // side-term або side-short → grid-column
+  btn.dataset.cardId = cardId;
+  btn.dataset.side   = side;
+  btn.textContent    = text;
+  btn.addEventListener('click', () => matchHandleClick(btn));
+  return btn;
+}
+
+function matchHandleClick(btn){
+  if(btn.classList.contains('matched')) return;
+  if(btn.classList.contains('error'))   return;
+
+  const sel = matchState.selected;
+
+  // Якщо натиснули на вже виділений — знімаємо виділення
+  if(sel && sel.el === btn){
+    btn.classList.remove('selected');
+    matchState.selected = null;
+    return;
+  }
+
+  // Якщо ніщо не вибрано — виділяємо
+  if(!sel){
+    btn.classList.add('selected');
+    matchState.selected = { el:btn, cardId:btn.dataset.cardId, side:btn.dataset.side };
+    return;
+  }
+
+  // Є вибраний і натискаємо другий
+  // Перевіряємо: різні сторони (term і short) і однаковий cardId
+  if(sel.side === btn.dataset.side){
+    // Та сама сторона — перемикаємо вибір
+    sel.el.classList.remove('selected');
+    btn.classList.add('selected');
+    matchState.selected = { el:btn, cardId:btn.dataset.cardId, side:btn.dataset.side };
+    return;
+  }
+
+  const correct = sel.cardId === btn.dataset.cardId;
+  sel.el.classList.remove('selected');
+
+  if(correct){
+    // ✅ Правильно — сіріємо обидва
+    [sel.el, btn].forEach(el => {
+      el.classList.add('matched-flash');
+      setTimeout(() => {
+        el.classList.remove('matched-flash');
+        el.classList.add('matched');
+      }, 400);
+    });
+    matchState.matched++;
+    haptic.success();
+
+    // Якщо ця картка вже мала помилку — знижуємо оцінку
+    if(!matchState.firstTry.has(sel.cardId)){
+      const mc = matchState.cards.find(c => c.card.id === sel.cardId);
+      if(mc) mc.q = 3; // невпевнений
+    }
+
+    matchState.selected = null;
+
+    // Всі пари знайдені?
+    if(matchState.matched === MATCH_SIZE){
+      setTimeout(matchShowResult, 600);
+    }
+  } else {
+    // ❌ Неправильно — тремтіння
+    [sel.el, btn].forEach(el => {
+      el.classList.add('error');
+      setTimeout(() => el.classList.remove('error'), 400);
+    });
+    haptic.error();
+    matchState.selected = null;
+
+    // Знижуємо оцінку для обох карток
+    [sel.cardId, btn.dataset.cardId].forEach(id => {
+      matchState.firstTry.delete(id); // помилилися — не "з першої спроби"
+      const mc = matchState.cards.find(c => c.card.id === id);
+      if(mc) mc.q = Math.min(mc.q, 1); // не знаю
+    });
+  }
+}
+
+function matchShowResult(){
+  // Зберігаємо SM-2 рейтинги
+  matchState.cards.forEach(({card, q}) => {
+    srsRate(card.id, q);
+    saveCardPlay(card.id);
+  });
+
+  const perfect = matchState.cards.every(({q}) => q === 5);
+  const good    = matchState.cards.filter(({q}) => q >= 3).length;
+
+  const scoreEl = document.getElementById('match-score');
+  const textEl  = document.getElementById('match-result-text');
+  const result  = document.getElementById('match-result');
+
+  if(scoreEl) scoreEl.textContent = good + '/' + MATCH_SIZE + ' ✓';
+  if(textEl){
+    textEl.textContent = perfect
+      ? (uiLang==='uk' ? 'Ідеально! Всі з першої спроби 🎉' : uiLang==='en' ? 'Perfect! All on first try 🎉' : 'Perfekt! Alle beim ersten Versuch 🎉')
+      : (uiLang==='uk' ? 'Непогано! Продовжуй повторювати.' : uiLang==='en' ? 'Good job! Keep reviewing.' : 'Gut gemacht! Weiter üben.');
+  }
+  if(result) result.style.display = 'block';
+}
+
 // ── AUTOPLAY ──────────────────────────────────────────────────
 function toggleVocab(){
   if(!V.playing){
@@ -1799,9 +2078,11 @@ function resetStreak(){if(!confirm('Streak zurücksetzen?'))return;localStorage.
 // ── BROWSE ────────────────────────────────────────────────────
 function switchVocabTab(tab){
   document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
-  document.getElementById('vocab-panel-card').style.display=tab===0?'':'none';
-  document.getElementById('vocab-panel-browse').style.display=tab===1?'':'none';
-  if(tab===1)renderVocabBrowse();
+  document.getElementById('vocab-panel-card').style.display  = tab===0?'flex':'none';
+  document.getElementById('vocab-panel-browse').style.display= tab===1?'block':'none';
+  document.getElementById('vocab-panel-match').style.display = tab===2?'flex':'none';
+  if(tab===1) renderVocabBrowse();
+  if(tab===2) startMatching();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
