@@ -1,14 +1,14 @@
 // ── MOVA Service Worker ───────────────────────────────────────
 // Щоб примусово оновити кеш — змінюй тільки CACHE_VERSION нижче.
 // index.html більше не передає ?v= — версія контролюється тут.
-const CACHE_VERSION = '16-202b4ca';
+const CACHE_VERSION = '1.3.5';
 const CACHE_NAME    = `mova-v${CACHE_VERSION}`;
 
 // Файли що кешуються при першій установці (app shell)
 const PRECACHE = [
   './',
   './index.html',
-  './vocab-data.js',
+  // Курси завантажуються динамічно — не в precache
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
