@@ -1483,6 +1483,8 @@ async function fetchAudioBlob(url, timeoutMs=8000){
   if(audioBlobCache.has(url)) return audioBlobCache.get(url);
   // Знаємо що файл не існує — не йдемо в мережу
   if(audioExistsCache.get(url) === false) return null;
+  // file:// протокол — fetch заблокований CORS, одразу null → WebSpeech
+  if(location.protocol === 'file:') return null;
 
   const ctrl = new AbortController();
   const timer = setTimeout(()=>ctrl.abort(), timeoutMs);
@@ -1809,7 +1811,7 @@ function initSwipe(){
   // Touch events (passive:true для start/move — не блокуємо скрол)
   area.addEventListener('touchstart', e=>onStart(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
   area.addEventListener('touchmove',  e=>onMove(e.touches[0].clientX,e.touches[0].clientY), {passive:true});
-  area.addEventListener('touchend',   e=>{ e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
+  area.addEventListener('touchend',   e=>{ if(e.cancelable) e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
 
   // Mouse fallback (для браузера/емулятора)
   let mouseDown=false;
