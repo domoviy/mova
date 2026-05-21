@@ -1521,53 +1521,67 @@ async function fetchAudioBlob(url, timeoutMs=8000){
 
 async function playAzureAudio(url, onEnd, gen){
   if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  const fname = url.split('/').slice(-1)[0];
   const blobUrl = await fetchAudioBlob(url);
-  if(playGen !== gen){ onEnd && onEnd(); return; } // скасовано поки завантажували
-  if(!blobUrl){ onEnd && onEnd(); return; }        // файл не знайдено → fallback
+
+  // Скасовано поки завантажували — тихо виходимо
+  if(playGen !== gen){ logErr('audio:gen','cancelled during fetch',fname); return; }
+  // Файл не знайдено — повертаємо null щоб speak() міг зробити webSpeech fallback
+  if(!blobUrl){ return; }
 
   const a = new Audio(blobUrl);
   currentAudio = a;
   let _done = false;
-  const finish = ()=>{
+  const finish = (src)=>{
     if(_done) return; _done = true;
+    clearTimeout(wdog);
     if(currentAudio === a) currentAudio = null;
+    if(src==='error') logErr('audio:onerror','Audio element error',fname);
+    if(src==='catch') logErr('audio:play()','play() rejected',fname);
     if(playGen === gen) onEnd && onEnd();
   };
-  a.onended = finish;
-  a.onerror = finish;
-  // iOS: якщо play() не стартує за 15с — вважаємо зависанням
-  const wdog = setTimeout(()=>{ logErr('playAzureAudio','watchdog 15s timeout',url.split('/').slice(-1)[0]); finish(); }, 15000);
-  a.onended = ()=>{ clearTimeout(wdog); finish(); };
-  a.onerror = ()=>{ clearTimeout(wdog); finish(); };
-  a.play().catch(()=>{ clearTimeout(wdog); finish(); });
+  const wdog = setTimeout(()=>{ logErr('audio:watchdog','15s no onended',fname); finish('wdog'); }, 15000);
+  a.onended = ()=>finish('ended');
+  a.onerror = ()=>finish('error');
+  a.play().catch(e=>{ logErr('audio:play()',e?.message||e,fname); finish('catch'); });
+}
+
+// Повертає true якщо Azure blob відтворено, false якщо треба fallback
+async function tryAzureThenSpeech(text, lang, safeEnd, url, gen){
+  const fname = url.split('/').slice(-1)[0];
+  logErr('audio:try','→ Azure',fname);
+  await new Promise(resolve => {
+    playAzureAudio(url, resolve, gen);
+  });
+  if(playGen !== gen){ logErr('audio:gen','cancelled after Azure',fname); return; }
+  // Якщо blob закешовано — Azure спрацював успішно
+  if(audioBlobCache.has(url)){
+    logErr('audio:ok','Azure OK',fname);
+    safeEnd();
+  } else {
+    // Azure не спрацював → WebSpeech fallback
+    logErr('audio:fallback','→ WebSpeech',fname);
+    webSpeech(text, lang, safeEnd);
+  }
 }
 
 function speak(text, lang, onEnd, cardId, field){
   stopTTS();
   const gen = playGen;
-  // one-shot: onEnd викликається рівно один раз
   let _ended = false;
   const safeEnd = ()=>{
-    if(_ended) return; _ended = true;
+    if(_ended){ logErr('speak:safeEnd','called twice!',cardId+'_'+field+'_'+lang); return; }
+    _ended = true;
     if(playGen === gen) onEnd && onEnd();
   };
 
   if(cardId && field){
     const url = getAudioUrl(cardId, field, lang);
     if(audioExistsCache.get(url) === false){
-      // Знаємо що файл відсутній — одразу WebSpeech
+      logErr('audio:cached404','WebSpeech direct',url.split('/').slice(-1)[0]);
       webSpeech(text, lang, safeEnd); return;
     }
-    // Спробуємо Azure (fetchAudioBlob вже містить кеш-логіку)
-    playAzureAudio(url, ()=>{
-      if(playGen !== gen) return;
-      // playAzureAudio повернув onEnd без відтворення → fallback
-      if(!audioBlobCache.has(url)){
-        webSpeech(text, lang, safeEnd);
-      } else {
-        safeEnd();
-      }
-    }, gen);
+    tryAzureThenSpeech(text, lang, safeEnd, url, gen);
     return;
   }
   webSpeech(text, lang, safeEnd);
@@ -1577,12 +1591,20 @@ function webSpeech(text, lang, onEnd){
   const u = new SpeechSynthesisUtterance(text);
   u.lang  = LC[lang].code;
   if(vs[lang]) u.voice = vs[lang];
-  // Кнопки 🐢/▶ задають швидкість для WebSpeech fallback (коли файл недоступний)
-  // '080' → 0.8, '100' → 1.0, не задано → 1.0 (а не значення слайдера)
   const spd = V.langSpeed?.[lang] ?? '100';
   u.rate = spd === '080' ? 0.8 : 1.0;
-  u.onend = onEnd||null;
-  u.onerror=(e)=>{ if(e.error!=='interrupted'&&e.error!=='canceled'&&onEnd)onEnd(); };
+  const t0 = Date.now();
+  logErr('webSpeech:start', lang, text.slice(0,40));
+  u.onend = ()=>{
+    const elapsed = Date.now()-t0;
+    if(elapsed < 300) logErr('webSpeech:instant','onend in '+elapsed+'ms — iOS bug?',lang+' '+text.slice(0,30));
+    else logErr('webSpeech:ok', elapsed+'ms', lang);
+    if(onEnd) onEnd();
+  };
+  u.onerror=(e)=>{
+    logErr('webSpeech:error',e.error,lang+' '+text.slice(0,30));
+    if(e.error!=='interrupted'&&e.error!=='canceled'&&onEnd) onEnd();
+  };
   speechSynthesis.speak(u);
 }
 
@@ -1598,6 +1620,7 @@ function stopTTS(){
 // і позначаємо що треба відновити. При поверненні — починаємо картку знову.
 let _wasPlayingBeforeHidden = false;
 document.addEventListener('visibilitychange', ()=>{
+  logErr('visibility',document.visibilityState,'playing='+V.playing+' paused='+V.paused);
   if(document.visibilityState === 'hidden'){
     _wasPlayingBeforeHidden = V.playing && !V.paused;
     if(_wasPlayingBeforeHidden){
@@ -2345,6 +2368,7 @@ function toggleVocab(){
 function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);cardGen++;stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
 function playVocabNext(){
   if(!V.playing||V.paused)return;
+  logErr('card:next','idx='+V.idx+' qlen='+V.queue.length+' cgen='+cardGen);
   // cardGen захищає від двох паралельних "ниток" карток
   // (не чіпає playGen щоб не конфліктувати з аудіо-колбеками)
   const ticket = ++cardGen;
