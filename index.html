@@ -1056,6 +1056,8 @@ const I18N = {
     hint_front:'↕ Tippen · ← → Wischen',
     hint_srs:'↑ Nicht kennen · ↓ Kennen · ← Weiter · → Zurück',
     srs_new:'✨ neue Karte', srs_today:'📅 heute',
+    card_new:'✨ Neue Karte',
+    update_available:'🔄 Neue Version verfügbar – App neu laden',
     match_title:'🔗 Matching', match_sub:'Verbinde den Begriff mit der Erklärung',
     match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
     match_good:'Gut gemacht! Weiter üben.',
@@ -1103,6 +1105,8 @@ const I18N = {
     hint_front:'↕ Натисни · ← → Свайп',
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далі · → Назад',
     srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
+    card_new:'✨ Нова картка',
+    update_available:'🔄 Доступна нова версія — перезавантажте додаток',
     match_title:'🔗 Matching', match_sub:'Поєднай термін з поясненням',
     match_perfect:'Ідеально! Всі з першої спроби 🎉',
     match_good:'Непогано! Продовжуй повторювати.',
@@ -1150,6 +1154,8 @@ const I18N = {
     hint_front:'↕ Tap · ← → Swipe',
     hint_srs:'↑ Don\'t know · ↓ Know · ← Next · → Back',
     srs_new:'✨ new card', srs_today:'📅 today',
+    card_new:'✨ New card',
+    update_available:'🔄 New version available – reload the app',
     match_title:'🔗 Matching', match_sub:'Match the term with its explanation',
     match_perfect:'Perfect! All on first try 🎉',
     match_good:'Good job! Keep reviewing.',
@@ -1692,7 +1698,7 @@ function renderVocabCard(){
   if(V.mode==='srs'){
     const sd=srsLoad(v.id);
     if(!sd.dueDate){
-      srsBadgeHtml='<div class="fc-srs-badge fc-srs-new">✨ нова картка</div>';
+      srsBadgeHtml='<div class="fc-srs-badge fc-srs-new">'+t('card_new')+'</div>';
     } else {
       const sdays=srsDaysUntil(v.id);
       const sef=(sd.ef||SRS_DEFAULT_EF).toFixed(1);
@@ -2086,7 +2092,7 @@ function lessonProgress(lesson){
   lesson.cardIds.forEach(id=>{
     try{
       const saved = JSON.parse(localStorage.getItem('mova_'+id)||'{}');
-      if((saved.playCount||0) > 0) done++;
+      if((saved.totalPlays||0) > 0) done++;
     }catch(e){}
   });
   const total = lesson.cardIds.length;
@@ -2397,7 +2403,18 @@ function openFavCard(vocabIdx){
 }
 
 // ── STATS ─────────────────────────────────────────────────────
-function saveCardPlay(id){const key='mova_'+id;let d={};try{d=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}d.totalPlays=(d.totalPlays||0)+1;d.lastSeen=Date.now();localStorage.setItem(key,JSON.stringify(d));}
+function saveCardPlay(id){
+  const key='mova_'+id;
+  let d={};
+  try{d=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+  d.totalPlays=(d.totalPlays||0)+1;
+  d.lastSeen=Date.now();
+  localStorage.setItem(key,JSON.stringify(d));
+  // Оновлюємо Lernpfad прогрес якщо він відкритий
+  if(document.getElementById('view-lernpfad')?.classList.contains('active')){
+    renderLernpfad();
+  }
+}
 
 // ── STREAK ────────────────────────────────────────────────────
 function todayStr(){return new Date().toISOString().slice(0,10);}
@@ -2515,7 +2532,9 @@ if('serviceWorker' in navigator){
       reg.update();
       // SW сам викликає skipWaiting() в install → ми лише перезавантажуємось
       navigator.serviceWorker.addEventListener('controllerchange', ()=>{
-        window.location.reload();
+        // Коротка пауза щоб notify встиг показатись перед reload
+        notify(typeof t==='function' ? t('update_available') : '🔄 Neue Version – App neu laden');
+        setTimeout(()=>window.location.reload(), 1200);
       });
     }).catch(e=>console.warn('SW:',e));
   });
