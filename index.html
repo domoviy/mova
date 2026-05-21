@@ -893,6 +893,14 @@ body{
         </div>
       </div>
 
+      <div class="ssec">
+        <h3>🛠 Debug</h3>
+        <div class="srow">
+          <div class="srow-label"><label>Error Log</label><small>Переглянути помилки аудіо та JS</small></div>
+          <button class="btn btn-s" onclick="showErrorLog()">📋 Log</button>
+        </div>
+      </div>
+
       <!-- Версія додатку -->
       <div style="text-align:center;padding:20px 0 8px;opacity:.45;font-size:12px;
                   font-family:'JetBrains Mono',monospace;letter-spacing:.5px">
@@ -1493,11 +1501,12 @@ async function fetchAudioBlob(url, timeoutMs=8000){
   if(location.protocol === 'file:') return null;
 
   const ctrl = new AbortController();
-  const timer = setTimeout(()=>ctrl.abort(), timeoutMs);
+  const fname = url.split('/').slice(-1)[0];
+  const timer = setTimeout(()=>{ ctrl.abort(); logErr('audio:timeout','8s',fname); }, timeoutMs);
   try{
     const resp = await fetch(url, {signal: ctrl.signal});
     clearTimeout(timer);
-    if(!resp.ok){ audioExistsCache.set(url, false); return null; }
+    if(!resp.ok){ audioExistsCache.set(url, false); logErr('audio:http',resp.status,fname); return null; }
     const blob = await resp.blob();
     const blobUrl = URL.createObjectURL(blob);
     audioBlobCache.set(url, blobUrl);
@@ -1505,9 +1514,7 @@ async function fetchAudioBlob(url, timeoutMs=8000){
     return blobUrl;
   }catch(e){
     clearTimeout(timer);
-    // AbortError = таймаут; NetworkError = офлайн
-    // Не кешуємо як false — спробуємо наступного разу
-    if(e.name !== 'AbortError') audioExistsCache.set(url, false);
+    if(e.name !== 'AbortError'){ audioExistsCache.set(url, false); logErr('audio:'+e.name,e.message,fname); }
     return null;
   }
 }
@@ -1529,7 +1536,7 @@ async function playAzureAudio(url, onEnd, gen){
   a.onended = finish;
   a.onerror = finish;
   // iOS: якщо play() не стартує за 15с — вважаємо зависанням
-  const wdog = setTimeout(finish, 15000);
+  const wdog = setTimeout(()=>{ logErr('playAzureAudio','watchdog 15s timeout',url.split('/').slice(-1)[0]); finish(); }, 15000);
   a.onended = ()=>{ clearTimeout(wdog); finish(); };
   a.onerror = ()=>{ clearTimeout(wdog); finish(); };
   a.play().catch(()=>{ clearTimeout(wdog); finish(); });
@@ -1707,10 +1714,10 @@ function renderVocabCard(){
         : '<div class="fc-srs-badge">📅 +'+sdays+'д · EF '+sef+'</div>';
     }
   }
-  const srsHintText = V.mode==='srs' ? '↑ Не знаю · ↓ Знаю · ← Далі' : '↕ Tippen · ← → Wischen';
+  const srsHintText = V.mode==='srs' ? t('hint_srs') : t('hint_front');
   document.getElementById('fc-front-inner').innerHTML=`
     <div class="fc-header">
-      <button class="fc-fav ${fav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${v.id}')">${fav?'★':'☆'}</button>
+      <button class="fc-fav ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-front">${fav?'★':'☆'}</button>
       <span class="fc-cat">${cat?cat.e+' '+cat.de:v.cat}</span>
     </div>
     <div class="fc-body">${termRows}</div>
@@ -1718,7 +1725,7 @@ function renderVocabCard(){
     ${srsBadgeHtml}`;
   document.getElementById('fc-back-inner').innerHTML=`
     <div class="fc-back-header">
-      <button class="fc-fav-back ${fav?'active':''}" onclick="event.stopPropagation();toggleFavorite('${v.id}')">${fav?'★':'☆'}</button>
+      <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${fav?'★':'☆'}</button>
       <span class="fc-flag" style="font-size:15px">🇩🇪</span>
       <span class="fc-back-term">${v.term.de}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
@@ -1727,6 +1734,17 @@ function renderVocabCard(){
     <div class="fc-hint-back">↕ Zurück zur Vorderseite</div>`;
   document.getElementById('vpbf').style.width=((V.idx/Math.max(1,V.queue.length))*100)+'%';
   document.getElementById('vprgtxt').textContent=(V.idx+1)+' / '+V.queue.length;
+  // Reinit fav кнопок після кожного рендеру
+  setTimeout(()=>{
+    ['fc-fav-front','fc-fav-back'].forEach(id=>{
+      const btn=document.getElementById(id);
+      if(!btn||btn._favInited) return;
+      btn._favInited=true;
+      const stopAndToggle=e=>{ e.stopPropagation(); if(e.cancelable) e.preventDefault(); const fid=btn.dataset.favId; if(fid) toggleFavorite(fid); };
+      btn.addEventListener('touchend', stopAndToggle, {passive:false});
+      btn.addEventListener('click', e=>{ e.stopPropagation(); const fid=btn.dataset.favId; if(fid) toggleFavorite(fid); });
+    });
+  }, 0);
 }
 function swipeCard(dir, action){
   const area=document.getElementById('fc-area');
@@ -1825,6 +1843,28 @@ function initSwipe(){
   area.addEventListener('mousemove',e=>{ if(mouseDown) onMove(e.clientX,e.clientY); });
   area.addEventListener('mouseup',  e=>{ if(mouseDown){mouseDown=false; onEnd(e.clientX,e.clientY);} });
   area.addEventListener('mouseleave',()=>{ mouseDown=false; });
+
+  // Fav кнопки — окремі touch listeners щоб не конфліктувати зі swipe
+  function initFavBtn(id){
+    const btn = document.getElementById(id);
+    if(!btn) return;
+    btn.addEventListener('touchstart', e=>{
+      e.stopPropagation();
+    }, {passive:true});
+    btn.addEventListener('touchend', e=>{
+      e.stopPropagation();
+      if(e.cancelable) e.preventDefault();
+      const favId = btn.dataset.favId;
+      if(favId) toggleFavorite(favId);
+    }, {passive:false});
+    btn.addEventListener('click', e=>{
+      e.stopPropagation();
+      const favId = btn.dataset.favId;
+      if(favId) toggleFavorite(favId);
+    });
+  }
+  // Ініціалізуємо після рендеру картки
+  setTimeout(()=>{ initFavBtn('fc-fav-front'); initFavBtn('fc-fav-back'); }, 0);
 }
 
 
@@ -2227,6 +2267,44 @@ function startLesson(lessonId){
   showView('vocab');
   renderVocabCard();
   notify('📚 '+( lesson.title[uiLang]||lesson.title.de));
+}
+
+
+// ── ERROR LOG ─────────────────────────────────────────────────
+const ERR_LOG = [];
+const MAX_ERR_LOG = 100;
+
+function logErr(source, msg, detail=''){
+  const entry = {
+    t: new Date().toISOString().slice(11,23), // HH:MM:SS.mmm
+    src: source,
+    msg: String(msg).slice(0,200),
+    detail: String(detail).slice(0,300),
+  };
+  ERR_LOG.unshift(entry);
+  if(ERR_LOG.length > MAX_ERR_LOG) ERR_LOG.pop();
+  console.warn('[MOVA]', source, msg, detail);
+}
+
+// Перехоплюємо глобальні помилки
+window.addEventListener('error', e=>{
+  logErr('window.onerror', e.message, e.filename+'@'+e.lineno);
+});
+window.addEventListener('unhandledrejection', e=>{
+  logErr('unhandledrejection', String(e.reason).slice(0,200));
+});
+
+function showErrorLog(){
+  if(!ERR_LOG.length){ notify('✓ No errors logged'); return; }
+  const txt = ERR_LOG.map(e=>`[${e.t}] ${e.src}\n  ${e.msg}${e.detail?'\n  '+e.detail:''}`).join('\n\n');
+  // Показуємо в alert (простий але доступний)
+  const win = window.open('','_blank','width=700,height=500');
+  if(win){
+    win.document.write('<pre style="font:12px monospace;padding:16px;white-space:pre-wrap">'+txt.replace(/</g,'&lt;')+'</pre>');
+  } else {
+    // fallback — копіюємо в буфер
+    navigator.clipboard?.writeText(txt).then(()=>notify('📋 Log copied!'));
+  }
 }
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
