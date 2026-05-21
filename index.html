@@ -289,15 +289,20 @@ body{
 }
 .fc-header{padding:14px 16px 0;display:flex;align-items:center;gap:8px}
 .fc-fav{
-  width:34px;height:34px;border-radius:50%;border:none;
+  width:44px;height:44px;border-radius:50%;border:none;
   background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);
-  font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  /* Розширена зона дотику — мінімум 44×44px (Apple HIG) */
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
 .fc-fav:active{transform:scale(1.2)}.fc-fav.active{background:rgba(201,168,76,.25);color:var(--gold-lt)}
 .fc-fav-back{
-  width:34px;height:34px;border-radius:50%;
+  width:44px;height:44px;border-radius:50%;
   border:1.5px solid var(--border);background:var(--soft);color:var(--muted);
-  font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
 .fc-fav-back:active{border-color:var(--gold);transform:scale(1.2)}
 .fc-fav-back.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
@@ -782,15 +787,15 @@ body{
       </div>
       <div id="vocab-panel-match" style="display:none">
         <div class="match-header">
-          <h3 id="match-title">🔗 Matching</h3>
-          <small id="match-subtitle">Verbinde den Begriff mit der Erklärung</small>
+          <h3 id="match-title"></h3>
+          <small id="match-subtitle"></small>
         </div>
         <div class="match-grid" id="match-grid"></div>
         <div class="match-result" id="match-result" style="display:none">
           <div class="score" id="match-score"></div>
           <p id="match-result-text"></p>
-          <button class="btn" onclick="startMatching()" style="margin-right:8px">🔄 Nochmal</button>
-          <button class="btn" onclick="switchVocabTab(0)">📖 Karten</button>
+          <button class="btn" id="match-btn-again" onclick="startMatching()" style="margin-right:8px">🔄 Nochmal</button>
+          <button class="btn" id="match-btn-cards" onclick="switchVocabTab(0)">📖 Karten</button>
         </div>
       </div>
       <div id="vocab-panel-browse" style="display:none">
@@ -809,7 +814,7 @@ body{
     <div id="view-lernpfad" class="view">
       <div class="lp-header">
         <h2>🗺 Lernpfad</h2>
-        <small id="lp-overall-text">Lädt…</small>
+        <small id="lp-overall-text"></small>
         <div class="lp-progress-bar">
           <div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div>
         </div>
@@ -1049,8 +1054,22 @@ const I18N = {
     lp_cards:'Karten', lp_of:'von',
     lp_grammar:'Grammatik:',
     hint_front:'↕ Tippen · ← → Wischen',
-    hint_srs:'↑ Nicht kennen · ↓ Kennen · ← Weiter',
+    hint_srs:'↑ Nicht kennen · ↓ Kennen · ← Weiter · → Zurück',
     srs_new:'✨ neue Karte', srs_today:'📅 heute',
+    match_title:'🔗 Matching', match_sub:'Verbinde den Begriff mit der Erklärung',
+    match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
+    match_good:'Gut gemacht! Weiter üben.',
+    match_again:'🔄 Nochmal', match_cards:'📖 Karten',
+    match_empty:'Keine Karten in dieser Kategorie',
+    match_few:'Zu wenige Karten — mindestens',
+    match_needed:'nötig',
+    lp_title:'🗺 Lernpfad',
+    lp_overall_loading:'Lädt…',
+    lp_no_lessons:'Keine Lektionen verfügbar',
+    lp_module_prefix:'Modul',
+    lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
+    srs_notify_today:'heute', srs_notify_new:'neue',
+    nav_lernpfad:'Lernpfad',
   },
   uk: {
     nav_vocab:'Словник', nav_favs:'Закладки', nav_settings:'Налаштування',
@@ -1082,8 +1101,22 @@ const I18N = {
     lp_cards:'карток', lp_of:'з',
     lp_grammar:'Граматика:',
     hint_front:'↕ Натисни · ← → Свайп',
-    hint_srs:'↑ Не знаю · ↓ Знаю · ← Далі',
+    hint_srs:'↑ Не знаю · ↓ Знаю · ← Далі · → Назад',
     srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
+    match_title:'🔗 Matching', match_sub:'Поєднай термін з поясненням',
+    match_perfect:'Ідеально! Всі з першої спроби 🎉',
+    match_good:'Непогано! Продовжуй повторювати.',
+    match_again:'🔄 Ще раз', match_cards:'📖 Картки',
+    match_empty:'Немає карток у цій категорії',
+    match_few:'Замало карток — потрібно мінімум',
+    match_needed:'',
+    lp_title:'🗺 Навчальний шлях',
+    lp_overall_loading:'Завантаження…',
+    lp_no_lessons:'Уроки недоступні',
+    lp_module_prefix:'Модуль',
+    lp_unlock_hint:'Завершіть 80% попереднього уроку',
+    srs_notify_today:'сьогодні', srs_notify_new:'нових',
+    nav_lernpfad:'Шлях',
   },
   en: {
     nav_vocab:'Vocabulary', nav_favs:'Favorites', nav_settings:'Settings',
@@ -1115,8 +1148,22 @@ const I18N = {
     lp_cards:'Karten', lp_of:'von',
     lp_grammar:'Grammatik:',
     hint_front:'↕ Tap · ← → Swipe',
-    hint_srs:'↑ Don\'t know · ↓ Know · ← Next',
+    hint_srs:'↑ Don\'t know · ↓ Know · ← Next · → Back',
     srs_new:'✨ new card', srs_today:'📅 today',
+    match_title:'🔗 Matching', match_sub:'Match the term with its explanation',
+    match_perfect:'Perfect! All on first try 🎉',
+    match_good:'Good job! Keep reviewing.',
+    match_again:'🔄 Again', match_cards:'📖 Cards',
+    match_empty:'No cards in this category',
+    match_few:'Too few cards — need at least',
+    match_needed:'',
+    lp_title:'🗺 Learning Path',
+    lp_overall_loading:'Loading…',
+    lp_no_lessons:'No lessons available',
+    lp_module_prefix:'Module',
+    lp_unlock_hint:'Complete 80% of the previous lesson',
+    srs_notify_today:'today', srs_notify_new:'new',
+    nav_lernpfad:'Path',
   },
 };
 
@@ -1167,6 +1214,21 @@ function applyI18n(){
   document.querySelectorAll('.ui-lang-btn').forEach(b=>{
     b.classList.toggle('active', b.dataset.lang===uiLang);
   });
+  // Matching
+  const mTitle = document.getElementById('match-title');
+  if(mTitle && !mTitle.textContent) mTitle.textContent = t('match_title');
+  const mSub = document.getElementById('match-subtitle');
+  if(mSub) mSub.textContent = t('match_sub');
+  const mAgain = document.getElementById('match-btn-again');
+  if(mAgain) mAgain.textContent = t('match_again');
+  const mCards = document.getElementById('match-btn-cards');
+  if(mCards) mCards.textContent = t('match_cards');
+  // Lernpfad nav label
+  const lpNav = document.getElementById('lp-nav-label');
+  if(lpNav) lpNav.textContent = t('nav_lernpfad');
+  // Lernpfad header
+  const lpLoad = document.getElementById('lp-overall-text');
+  if(lpLoad && lpLoad.textContent === 'Lädt…') lpLoad.textContent = t('lp_overall_loading');
 }
 
 
@@ -1867,10 +1929,8 @@ function startMatching(){
 
   if(pool.length < MATCH_SIZE){
     grid.innerHTML = `<p style="text-align:center;color:var(--muted);padding:32px 16px;grid-column:1/-1">
-      ${pool.length === 0
-        ? (uiLang==='uk' ? '⚠️ Немає карток у цій категорії' : uiLang==='en' ? '⚠️ No cards in this category' : '⚠️ Keine Karten in dieser Kategorie')
-        : (uiLang==='uk' ? `Лише ${pool.length} карток — потрібно мінімум ${MATCH_SIZE}` : uiLang==='en' ? `Only ${pool.length} cards — need at least ${MATCH_SIZE}` : `Nur ${pool.length} Karten — mindestens ${MATCH_SIZE} nötig`)
-      }</p>`;
+      ⚠️ ${pool.length === 0 ? t('match_empty') : pool.length+' — '+t('match_few')+' '+MATCH_SIZE+' '+t('match_needed')}
+    </p>`;
     return;
   }
 
@@ -1904,12 +1964,8 @@ function startMatching(){
   // Заголовок
   const titleEl = document.getElementById('match-title');
   const subEl   = document.getElementById('match-subtitle');
-  if(titleEl) titleEl.textContent = '🔗 Matching · '+MATCH_SIZE+' Paare';
-  if(subEl)   subEl.textContent   = uiLang==='uk'
-    ? 'Поєднай термін з поясненням'
-    : uiLang==='en'
-    ? 'Match the term with its explanation'
-    : 'Verbinde den Begriff mit der Erklärung';
+  if(titleEl) titleEl.textContent = t('match_title')+' · '+MATCH_SIZE+' '+t('lp_cards');
+  if(subEl)   subEl.textContent   = t('match_sub');
 }
 
 function matchMakeBtn(cardId, side, text){
@@ -2012,11 +2068,7 @@ function matchShowResult(){
   const result  = document.getElementById('match-result');
 
   if(scoreEl) scoreEl.textContent = good + '/' + MATCH_SIZE + ' ✓';
-  if(textEl){
-    textEl.textContent = perfect
-      ? (uiLang==='uk' ? 'Ідеально! Всі з першої спроби 🎉' : uiLang==='en' ? 'Perfect! All on first try 🎉' : 'Perfekt! Alle beim ersten Versuch 🎉')
-      : (uiLang==='uk' ? 'Непогано! Продовжуй повторювати.' : uiLang==='en' ? 'Good job! Keep reviewing.' : 'Gut gemacht! Weiter üben.');
-  }
+  if(textEl) textEl.textContent = perfect ? t('match_perfect') : t('match_good');
   if(result) result.style.display = 'block';
 }
 
@@ -2052,7 +2104,7 @@ function renderLernpfad(){
   const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
   if(!lessons.length){
     document.getElementById('lp-chapters').innerHTML =
-      '<p style="text-align:center;padding:40px;color:var(--muted)">Keine Lektionen verfügbar</p>';
+      '<p style="text-align:center;padding:40px;color:var(--muted)">'+t('lp_no_lessons')+'</p>';
     return;
   }
 
@@ -2123,7 +2175,7 @@ function renderModuleCard(lesson){
     ${lesson.grammar?`<div class="lp-module-grammar">G</div>`:''}
     <div class="lp-module-icon">${icon}</div>
     <div class="lp-module-body">
-      <div class="lp-module-title">Modul ${lesson.module} · ${lesson.title[uiLang]||lesson.title.de}</div>
+      <div class="lp-module-title">${t('lp_module_prefix')} ${lesson.module} · ${lesson.title[uiLang]||lesson.title.de}</div>
       <div class="lp-module-meta">
         ${!unlocked
           ? t('lp_locked')
