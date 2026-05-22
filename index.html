@@ -608,21 +608,22 @@ body{
   padding:12px 14px 106px;overflow-y:auto;
 }
 .mc-question{
-  background:var(--forest);border-radius:16px;
-  padding:20px 18px;margin-bottom:16px;text-align:center;
+  background:var(--forest);border-radius:14px;
+  padding:12px 14px;margin-bottom:12px;
 }
-.mc-q-label{font-size:11px;color:rgba(255,255,255,.45);
-  letter-spacing:.5px;margin-bottom:8px;}
-.mc-q-term{font-size:20px;font-weight:700;color:var(--gold);
+.mc-q-label{font-size:10px;color:rgba(255,255,255,.4);
+  letter-spacing:.5px;margin-bottom:5px;}
+.mc-q-row{display:flex;align-items:center;gap:8px;justify-content:center;}
+.mc-q-term{font-size:18px;font-weight:700;color:var(--gold);
   font-family:'Syne',sans-serif;line-height:1.3;}
-.mc-q-audio{margin-top:10px;background:none;border:none;
-  color:rgba(255,255,255,.6);font-size:22px;cursor:pointer;
-  padding:4px 10px;border-radius:8px;
+.mc-q-audio{background:none;border:none;
+  color:rgba(255,255,255,.55);font-size:18px;cursor:pointer;
+  padding:4px 6px;border-radius:8px;flex-shrink:0;
   transition:color .15s;-webkit-tap-highlight-color:transparent;}
 .mc-q-audio:active{color:var(--gold);}
-.mc-options{display:flex;flex-direction:column;gap:10px;}
+.mc-options{display:flex;flex-direction:column;gap:8px;}
 .mc-opt{
-  padding:14px 18px;border-radius:14px;
+  padding:11px 14px;border-radius:12px;
   border:1.5px solid var(--border);
   background:var(--card);color:var(--ink);
   font-size:14px;font-weight:500;
@@ -636,7 +637,7 @@ body{
 .mc-opt.wrong  {border-color:#e74c3c;background:rgba(231,76,60,.1); color:#c0392b;}
 .mc-opt.reveal {border-color:#2ecc71;background:rgba(46,204,113,.06);}
 .mc-progress{
-  display:flex;gap:4px;margin-bottom:14px;
+  display:flex;gap:4px;margin-bottom:10px;
 }
 .mc-dot{
   flex:1;height:4px;border-radius:2px;
@@ -1003,8 +1004,10 @@ body{
         <div class="mc-progress" id="mc-progress"></div>
         <div class="mc-question" id="mc-question">
           <div class="mc-q-label" id="mc-q-label">Begriff</div>
-          <div class="mc-q-term" id="mc-q-term"></div>
-          <button class="mc-q-audio" id="mc-q-audio" onclick="mcPlayAudio()">🔊</button>
+          <div class="mc-q-row">
+            <div class="mc-q-term" id="mc-q-term"></div>
+            <button class="mc-q-audio" id="mc-q-audio" onclick="mcPlayAudio()">🔊</button>
+          </div>
         </div>
         <div class="mc-options" id="mc-options"></div>
       </div>
