@@ -535,6 +535,72 @@ body{
 }
 .lp-bottom-gap{height:16px;}
 
+
+/* ══ ONBOARDING ══ */
+#onboarding{
+  position:fixed;inset:0;z-index:9998;
+  background:var(--forest);
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:24px 20px;
+  gap:0;
+}
+.ob-logo{
+  display:flex;align-items:center;gap:10px;
+  margin-bottom:32px;
+}
+.ob-logo svg{ height:36px;width:auto;display:block; }
+.ob-logo-text{
+  font-family:'Syne',sans-serif;font-weight:800;
+  font-size:32px;color:var(--gold);letter-spacing:3px;
+}
+.ob-subtitle{
+  font-size:14px;color:rgba(255,255,255,.5);
+  text-align:center;margin-bottom:36px;
+  line-height:1.5;
+}
+.ob-cards{
+  display:flex;flex-direction:column;
+  gap:12px;width:100%;max-width:360px;
+}
+.ob-card{
+  display:flex;align-items:center;gap:16px;
+  padding:18px 20px;
+  border-radius:18px;
+  border:1.5px solid rgba(201,168,76,.25);
+  background:rgba(255,255,255,.05);
+  cursor:pointer;
+  transition:border-color .2s, background .2s, transform .15s;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+}
+.ob-card:active{
+  transform:scale(.97);
+  border-color:var(--gold);
+  background:rgba(201,168,76,.12);
+}
+.ob-card-flag{
+  font-size:36px;flex-shrink:0;
+  width:48px;text-align:center;
+}
+.ob-card-text{
+  flex:1;
+}
+.ob-card-lang{
+  font-size:16px;font-weight:700;
+  color:var(--gold);
+  font-family:'Syne',sans-serif;
+  letter-spacing:.5px;
+}
+.ob-card-desc{
+  font-size:12px;color:rgba(255,255,255,.5);
+  margin-top:2px;line-height:1.4;
+}
+.ob-card-arrow{
+  font-size:18px;color:rgba(201,168,76,.5);
+  flex-shrink:0;
+}
+
 .fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
 .fc-srs-badge{display:block;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 0;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
@@ -696,6 +762,49 @@ body{
 
 
 <!-- Курс завантажується динамічно через loadCourse() -->
+
+<!-- ══ ONBOARDING — показується тільки при першому запуску ══ -->
+<div id="onboarding" style="display:none">
+  <div class="ob-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 80">
+      <path d="M 5,75 L 33,36 C 41,45 50,55 54,51
+               S 65,22 68,26 C 72,33 79,49 82,46
+               C 86,39 109,8 125,5"
+        fill="none" stroke="#c9a84c" stroke-width="9"
+        stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <span class="ob-logo-text">MOVA</span>
+  </div>
+  <p class="ob-subtitle">Wählen Sie Ihre Sprache<br>Оберіть вашу мову · Choose your language</p>
+  <div class="ob-cards">
+    <div class="ob-card" onclick="selectOnboardLang('de')">
+      <div class="ob-card-flag">🇩🇪</div>
+      <div class="ob-card-text">
+        <div class="ob-card-lang">Deutsch</div>
+        <div class="ob-card-desc">Ich möchte den Kurs auf Deutsch absolvieren</div>
+      </div>
+      <div class="ob-card-arrow">›</div>
+    </div>
+    <div class="ob-card" onclick="selectOnboardLang('uk')">
+      <div class="ob-card-flag">🇺🇦</div>
+      <div class="ob-card-text">
+        <div class="ob-card-lang">Українська</div>
+        <div class="ob-card-desc">Я хочу проходити курс українською мовою</div>
+      </div>
+      <div class="ob-card-arrow">›</div>
+    </div>
+    <div class="ob-card" onclick="selectOnboardLang('en')">
+      <div class="ob-card-flag">🇬🇧</div>
+      <div class="ob-card-text">
+        <div class="ob-card-lang">English</div>
+        <div class="ob-card-desc">I want to take the course in English</div>
+      </div>
+      <div class="ob-card-arrow">›</div>
+    </div>
+  </div>
+</div>
+
+
 
 <!-- ══ MAIN COL ══ -->
 <div id="main-col">
@@ -1182,7 +1291,7 @@ const I18N = {
 };
 
 // Поточна мова інтерфейсу
-let uiLang = localStorage.getItem('mova_ui_lang') || 'de';
+let uiLang = localStorage.getItem('mova_ui_lang') || 'de'; // дефолт 'de' для існуючих юзерів; нові побачать onboarding
 function t(key){ return (I18N[uiLang]||I18N.de)[key] || key; }
 
 function setUiLang(lang){
@@ -2330,6 +2439,27 @@ function showErrorLog(){
   }
 }
 
+
+// ── ONBOARDING ────────────────────────────────────────────────
+function checkOnboarding(){
+  // Показуємо onboarding тільки якщо мова ще не обрана
+  if(!localStorage.getItem('mova_ui_lang')){
+    const ob = document.getElementById('onboarding');
+    if(ob) ob.style.display = 'flex';
+  }
+}
+
+function selectOnboardLang(lang){
+  // Зберігаємо вибір і ховаємо onboarding з анімацією
+  setUiLang(lang);
+  const ob = document.getElementById('onboarding');
+  if(ob){
+    ob.style.transition = 'opacity .35s ease';
+    ob.style.opacity = '0';
+    setTimeout(()=>{ ob.style.display='none'; }, 380);
+  }
+}
+
 // ── AUTOPLAY ──────────────────────────────────────────────────
 function toggleVocab(){
   if(!V.playing){
@@ -2619,7 +2749,8 @@ function setVocabCat(id,btn){
 window.addEventListener('DOMContentLoaded', ()=>{
   const el = document.getElementById('app-ver');
   if(el) el.textContent = APP_VERSION;
-  applyI18n(); // застосовуємо мову до того як init() рендерить контент
+  checkOnboarding();   // показуємо вибір мови якщо перший запуск
+  applyI18n();
   renderCourseList();
   init();
 });
