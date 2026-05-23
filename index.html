@@ -1163,7 +1163,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '26-4e5b928';
+const APP_VERSION = '1.2.6';
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
 // Список доступних курсів. Додавати нові — тільки тут.
@@ -1786,6 +1786,9 @@ async function playAzureAudio(url, onEnd, gen){
   const wdog = setTimeout(()=>{ logErr('audio:watchdog','15s no onended',fname); finish('wdog'); }, 15000);
   a.onended = ()=>finish('ended');
   a.onerror = ()=>finish('error');
+  // Переконуємось що audio розблоковано перед відтворенням
+  await unlockAudio();
+  if(playGen !== gen){ finish('gen-before-play'); return; }
   a.play().catch(e=>{ logErr('audio:play()',e?.message||e,fname); finish('catch'); });
 }
 
@@ -2563,16 +2566,45 @@ window.addEventListener('unhandledrejection', e=>{
 });
 
 function showErrorLog(){
+  // Видаляємо старий overlay якщо є
+  document.getElementById('err-log-overlay')?.remove();
+
   if(!ERR_LOG.length){ notify('✓ No errors logged'); return; }
+
   const txt = ERR_LOG.map(e=>`[${e.t}] ${e.src}\n  ${e.msg}${e.detail?'\n  '+e.detail:''}`).join('\n\n');
-  // Показуємо в alert (простий але доступний)
-  const win = window.open('','_blank','width=700,height=500');
-  if(win){
-    win.document.write('<pre style="font:12px monospace;padding:16px;white-space:pre-wrap">'+txt.replace(/</g,'&lt;')+'</pre>');
-  } else {
-    // fallback — копіюємо в буфер
-    navigator.clipboard?.writeText(txt).then(()=>notify('📋 Log copied!'));
-  }
+
+  const overlay = document.createElement('div');
+  overlay.id = 'err-log-overlay';
+  overlay.style.cssText = `position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.85);
+    display:flex;flex-direction:column;padding:16px;box-sizing:border-box;`;
+
+  const toolbar = document.createElement('div');
+  toolbar.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-shrink:0;';
+  toolbar.innerHTML = `
+    <span style="color:var(--gold);font-weight:700;font-family:'Syne',sans-serif">📋 Error Log (${ERR_LOG.length})</span>
+    <div style="display:flex;gap:8px">
+      <button onclick="navigator.clipboard?.writeText(document.getElementById('err-log-pre').textContent).then(()=>notify('📋 Copied!'))"
+        style="background:rgba(201,168,76,.2);border:1px solid var(--gold);color:var(--gold);padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px">
+        📋 Copy
+      </button>
+      <button onclick="ERR_LOG.length=0;notify('Log cleared');document.getElementById('err-log-overlay').remove();"
+        style="background:rgba(231,76,60,.15);border:1px solid #e74c3c;color:#e74c3c;padding:6px 10px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px">
+        🗑
+      </button>
+      <button onclick="document.getElementById('err-log-overlay').remove();"
+        style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700">
+        ✕
+      </button>
+    </div>`;
+
+  const pre = document.createElement('pre');
+  pre.id = 'err-log-pre';
+  pre.style.cssText = 'flex:1;overflow-y:auto;font:11px/1.5 monospace;color:#ccc;white-space:pre-wrap;word-break:break-all;margin:0;';
+  pre.textContent = txt;
+
+  overlay.appendChild(toolbar);
+  overlay.appendChild(pre);
+  document.body.appendChild(overlay);
 }
 
 
@@ -2861,6 +2893,41 @@ function tilesShowResult(){
       <button class="btn" onclick="startTiles()" style="margin-right:8px">🔄 ${t('match_again').replace('🔄 ','')}</button>
       <button class="btn" onclick="switchVocabTab(0)">📖 ${t('match_cards').replace('📖 ','')}</button>
     </div>`;
+}
+
+
+// ── iOS AUDIO UNLOCK ──────────────────────────────────────────
+// iOS блокує Audio.play() якщо не було жесту користувача.
+// Вирішення: при першому дотику відтворюємо тихий звук — це
+// "розблоковує" audio context для всіх подальших викликів.
+let _audioUnlocked = false;
+
+async function unlockAudio(){
+  if(_audioUnlocked) return;
+  _audioUnlocked = true;
+  try{
+    // Створюємо мінімальний WAV (44 байти тиші) як data URI
+    const silentWav = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAA' +
+      'EAAQAAwAAAAAAAAAAAAgAIAGRhdGEAAAAA';
+    const a = new Audio(silentWav);
+    a.volume = 0;
+    await a.play();
+    a.pause();
+    logErr('audio:unlock','iOS audio unlocked ✓','');
+  }catch(e){
+    logErr('audio:unlock','unlock failed: '+e.message,'');
+  }
+}
+
+// Вішаємо на перший будь-який дотик/клік
+function initAudioUnlock(){
+  const unlock = ()=>{
+    unlockAudio();
+    document.removeEventListener('touchstart', unlock, {capture:true});
+    document.removeEventListener('mousedown',  unlock, {capture:true});
+  };
+  document.addEventListener('touchstart', unlock, {capture:true, passive:true});
+  document.addEventListener('mousedown',  unlock, {capture:true});
 }
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
@@ -3156,7 +3223,8 @@ function setVocabCat(id,btn){
 window.addEventListener('DOMContentLoaded', ()=>{
   const el = document.getElementById('app-ver');
   if(el) el.textContent = APP_VERSION;
-  checkOnboarding();   // показуємо вибір мови якщо перший запуск
+  initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
+  checkOnboarding();
   applyI18n();
   renderCourseList();
   init();
