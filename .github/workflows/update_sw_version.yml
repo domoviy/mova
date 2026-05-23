@@ -25,29 +25,32 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Bump CACHE_VERSION in sw.js
+      - name: Bump versions
         run: |
-          # Версія = дата + короткий SHA коміту: напр. 20260518-a1b2c3d
+          # Версія = номер запуску + короткий SHA: напр. 142-a1b2c3d
           NEW_VERSION="${{ github.run_number }}-$(echo ${{ github.sha }} | cut -c1-7)"
-          echo "Нова версія SW: $NEW_VERSION"
+          echo "Нова версія: $NEW_VERSION"
 
-          # Замінюємо рядок CACHE_VERSION у sw.js
+          # sw.js — CACHE_VERSION
           sed -i "s|const CACHE_VERSION = '.*';|const CACHE_VERSION = '${NEW_VERSION}';|" sw.js
 
-          echo "Результат:"
-          grep "CACHE_VERSION" sw.js
+          # index.html — APP_VERSION
+          sed -i "s|const APP_VERSION = '.*';|const APP_VERSION = '${NEW_VERSION}';|" index.html
+
+          echo "sw.js:"; grep "CACHE_VERSION" sw.js
+          echo "index.html:"; grep "APP_VERSION" index.html
 
       - name: Configure Git Bot
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Commit updated sw.js
+      - name: Commit updated versions
         run: |
-          git add sw.js
+          git add sw.js index.html
           if git diff --staged --quiet; then
-            echo "sw.js не змінився — пропускаємо коміт"
+            echo "Версії не змінились — пропускаємо коміт"
           else
-            git commit -m "⚙️ SW cache version bump [skip ci]"
+            git commit -m "⚙️ Version bump to ${NEW_VERSION} [skip ci]"
             git push
           fi
