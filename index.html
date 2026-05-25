@@ -1163,7 +1163,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '29-4cd255d';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -1801,7 +1801,7 @@ async function tryAzureThenSpeech(text, lang, safeEnd, url, gen){
   }
 }
 
-function speak(text, lang, onEnd, cardId, field){
+async function speak(text, lang, onEnd, cardId, field){
   stopTTS();
   const gen = playGen;
   let _ended = false;
@@ -1814,7 +1814,8 @@ function speak(text, lang, onEnd, cardId, field){
   if(cardId && field){
     const url = getAudioUrl(cardId, field, lang);
     const fname = url.split('/').slice(-1)[0];
-    // Blob вже є → відтворюємо Azure (вже завантажено)
+
+    // Blob вже є → одразу Azure (без затримки)
     if(audioBlobCache.has(url)){
       logErr('speak','cached → Azure',fname);
       tryAzureThenSpeech(text, lang, safeEnd, url, gen);
@@ -1825,10 +1826,28 @@ function speak(text, lang, onEnd, cardId, field){
       logErr('speak','404 → WebSpeech',fname);
       webSpeech(text, lang, safeEnd); return;
     }
-    // Перший раз: WebSpeech зараз + prefetch у фоні для наступного разу
-    logErr('speak','prefetch+WebSpeech',fname);
-    fetchBlobUrl(url).catch(()=>{});
-    webSpeech(text, lang, safeEnd);
+    // Перший раз: чекаємо 350ms на blob → якщо прийшов → Azure
+    //             якщо ні → WebSpeech (blob продовжує кешуватись)
+    logErr('speak','waiting for blob',fname);
+    const fetchPromise = fetchBlobUrl(url);
+    const raceResult = await Promise.race([
+      fetchPromise,
+      new Promise(res => setTimeout(()=>res(null), 350))
+    ]);
+
+    if(playGen !== gen) return; // скасовано поки чекали
+
+    if(raceResult){
+      // Blob прийшов вчасно → Azure
+      logErr('speak','blob→ Azure',fname);
+      tryAzureThenSpeech(text, lang, safeEnd, url, gen);
+    } else {
+      // Timeout → WebSpeech + blob кешується у фоні
+      logErr('speak','timeout→ WebSpeech',fname);
+      webSpeech(text, lang, safeEnd);
+      // Blob продовжує завантажуватись — наступного разу буде Azure
+      fetchPromise.catch(()=>{});
+    }
     return;
   }
   webSpeech(text, lang, safeEnd);
