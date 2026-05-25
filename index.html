@@ -1163,7 +1163,8 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '28-9a40b08';
+const APP_VERSION = '1.2.6';
+const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
 // Список доступних курсів. Додавати нові — тільки тут.
@@ -1223,6 +1224,7 @@ function loadCourseScript(courseId){
 async function switchCourse(courseId){
   if(activeCourse?.id === courseId) return; // вже активний
   saveCourseId(courseId);
+  audioBufferCache.clear();
   audioBlobCache.clear();
   audioExistsCache.clear();
 
@@ -1492,6 +1494,7 @@ function applyI18n(){
 
 let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
 let vs={};
+// LC визначено в файлі курсу (B2-Beruf.js тощо)
 
 // Відновлюємо всі збережені налаштування
 const _s=JSON.parse(localStorage.getItem('mova_settings')||'{}');
@@ -1708,7 +1711,7 @@ async function loadVoices(){
       ['de','en','uk'].forEach(l=>{
         if(VP[l]){const f=all.find(v=>v.name===VP[l]);if(f){vs[l]=f;return;}}
         let found=null;
-        for(const ms of LC[l].ms){found=all.find(v=>v.name.includes(ms));if(found)break;}
+        if(typeof LC==='undefined'||!LC[l]){return;} for(const ms of LC[l].ms){found=all.find(v=>v.name.includes(ms));if(found)break;}
         if(!found)found=all.find(v=>v.lang.startsWith(LC[l].code.split('-')[0]));
         vs[l]=found||null;
       });res();
@@ -1718,12 +1721,12 @@ async function loadVoices(){
   });
 }
 // ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
-let currentAudio = null;
+let currentAudio = null; // HTML Audio fallback
 let playGen = 0;  // інкрементується при кожному stop → скасовує усі in-flight колбеки
 let cardGen  = 0;  // окремий лічильник для карток — не конфліктує з аудіо playGen
 
 // Кеш: url → blob URL (уникає повторного завантаження того самого файлу)
-const audioBlobCache = new Map();
+// audioBlobCache замінено на audioBufferCache (Web Audio API)
 // Кеш: url → true/false (чи існує файл на сервері)
 const audioExistsCache = new Map();
 
@@ -1734,78 +1737,65 @@ function getAudioUrl(cardId, field, lang){
   return `audio/${course}/${lang}/${speed}/${cat}/${cardId}_${field}_${lang}_${speed}.mp3`;
 }
 
-// Завантажує blob з таймаутом — повертає blobUrl або null
-async function fetchAudioBlob(url, timeoutMs=8000){
-  // Вже в кеші — одразу
-  if(audioBlobCache.has(url)) return audioBlobCache.get(url);
-  // Знаємо що файл не існує — не йдемо в мережу
-  if(audioExistsCache.get(url) === false) return null;
-  // file:// протокол — fetch заблокований CORS, одразу null → WebSpeech
-  if(location.protocol === 'file:') return null;
-
-  const ctrl = new AbortController();
-  const fname = url.split('/').slice(-1)[0];
-  const timer = setTimeout(()=>{ ctrl.abort(); logErr('audio:timeout','8s',fname); }, timeoutMs);
-  try{
-    const resp = await fetch(url, {signal: ctrl.signal});
-    clearTimeout(timer);
-    if(!resp.ok){ audioExistsCache.set(url, false); logErr('audio:http',resp.status,fname); return null; }
-    const blob = await resp.blob();
-    const blobUrl = URL.createObjectURL(blob);
-    audioBlobCache.set(url, blobUrl);
-    audioExistsCache.set(url, true);
-    return blobUrl;
-  }catch(e){
-    clearTimeout(timer);
-    if(e.name !== 'AbortError'){ audioExistsCache.set(url, false); logErr('audio:'+e.name,e.message,fname); }
-    return null;
-  }
-}
+// fetchAudioBlob → замінено на fetchAudioBuffer (Web Audio API)
 
 async function playAzureAudio(url, onEnd, gen){
-  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  // Зупиняємо попереднє відтворення
+  const a = getSharedAudio();
+  a.pause();
+  if(currentAudio && currentAudio !== a){ currentAudio.pause(); }
+  currentAudio = null;
+
   const fname = url.split('/').slice(-1)[0];
-  const blobUrl = await fetchAudioBlob(url);
+  logErr('audio:try','→ Azure',fname);
 
-  // Скасовано поки завантажували — тихо виходимо
-  if(playGen !== gen){ logErr('audio:gen','cancelled during fetch',fname); return; }
-  // Файл не знайдено — повертаємо null щоб speak() міг зробити webSpeech fallback
-  if(!blobUrl){ return; }
+  const blobUrl = await fetchBlobUrl(url);
 
-  const a = new Audio(blobUrl);
-  currentAudio = a;
+  if(playGen !== gen){ logErr('audio:gen','cancelled',fname); return; }
+  if(!blobUrl){ return; } // немає файлу → webSpeech fallback
+
   let _done = false;
   const finish = (src)=>{
     if(_done) return; _done = true;
     clearTimeout(wdog);
     if(currentAudio === a) currentAudio = null;
-    if(src==='error') logErr('audio:onerror','Audio element error',fname);
-    if(src==='catch') logErr('audio:play()','play() rejected',fname);
+    logErr('audio:ok', src, fname);
     if(playGen === gen) onEnd && onEnd();
   };
-  const wdog = setTimeout(()=>{ logErr('audio:watchdog','15s no onended',fname); finish('wdog'); }, 15000);
-  a.onended = ()=>finish('ended');
-  a.onerror = ()=>finish('error');
-  // Переконуємось що audio розблоковано перед відтворенням
-  await unlockAudio();
-  if(playGen !== gen){ finish('gen-before-play'); return; }
-  a.play().catch(e=>{ logErr('audio:play()',e?.message||e,fname); finish('catch'); });
+  const wdog = setTimeout(()=>{ logErr('audio:watchdog','15s',fname); finish('wdog'); }, 15000);
+
+  // Використовуємо спільний активований елемент
+  a.src     = blobUrl;
+  a.onended = ()=>finish('ok');
+  a.onerror = e=>{ logErr('audio:onerror',a.error?.message||'',fname); finish('err'); };
+  currentAudio = a;
+
+  const playP = a.play();
+  if(playP){
+    playP.then(()=>{ logErr('audio:playing','▶',fname); })
+         .catch(e=>{
+           logErr('audio:play()',e.message,fname);
+           // Fallback: окремий елемент
+           const fallback = new Audio(blobUrl);
+           fallback.onended = ()=>finish('fb-ok');
+           fallback.onerror = ()=>finish('fb-err');
+           currentAudio = fallback;
+           fallback.play().catch(e2=>{
+             logErr('audio:fb-play',e2.message,fname);
+             finish('fb-play-err');
+           });
+         });
+  }
 }
 
-// Повертає true якщо Azure blob відтворено, false якщо треба fallback
 async function tryAzureThenSpeech(text, lang, safeEnd, url, gen){
   const fname = url.split('/').slice(-1)[0];
-  logErr('audio:try','→ Azure',fname);
-  await new Promise(resolve => {
-    playAzureAudio(url, resolve, gen);
-  });
-  if(playGen !== gen){ logErr('audio:gen','cancelled after Azure',fname); return; }
-  // Якщо blob закешовано — Azure спрацював успішно
+  await new Promise(resolve => { playAzureAudio(url, resolve, gen); });
+  if(playGen !== gen){ logErr('audio:gen','skip fallback',fname); return; }
   if(audioBlobCache.has(url)){
-    logErr('audio:ok','Azure OK',fname);
+    logErr('audio:done','Azure ok',fname);
     safeEnd();
   } else {
-    // Azure не спрацював → WebSpeech fallback
     logErr('audio:fallback','→ WebSpeech',fname);
     webSpeech(text, lang, safeEnd);
   }
@@ -1823,41 +1813,88 @@ function speak(text, lang, onEnd, cardId, field){
 
   if(cardId && field){
     const url = getAudioUrl(cardId, field, lang);
-    if(audioExistsCache.get(url) === false){
-      logErr('audio:cached404','WebSpeech direct',url.split('/').slice(-1)[0]);
+    const fname = url.split('/').slice(-1)[0];
+    // Blob вже є → відтворюємо Azure (вже завантажено)
+    if(audioBlobCache.has(url)){
+      logErr('speak','cached → Azure',fname);
+      tryAzureThenSpeech(text, lang, safeEnd, url, gen);
+      return;
+    }
+    // Файл точно 404 → одразу WebSpeech
+    if(audioExistsCache.get(url) === '404'){
+      logErr('speak','404 → WebSpeech',fname);
       webSpeech(text, lang, safeEnd); return;
     }
-    tryAzureThenSpeech(text, lang, safeEnd, url, gen);
+    // Перший раз: WebSpeech зараз + prefetch у фоні для наступного разу
+    logErr('speak','prefetch+WebSpeech',fname);
+    fetchBlobUrl(url).catch(()=>{});
+    webSpeech(text, lang, safeEnd);
     return;
   }
   webSpeech(text, lang, safeEnd);
 }
 
+// Chrome bug: speechSynthesis іноді зависає і не викликає onend.
+// Fix: keepAlive resume() кожні 5с поки говоримо.
+let _wsKeepAlive = null;
+function startWsKeepAlive(){
+  stopWsKeepAlive();
+  _wsKeepAlive = setInterval(()=>{
+    if(speechSynthesis.paused){
+      speechSynthesis.resume();
+      logErr('webSpeech:resume','Chrome pause fix','');
+    }
+  }, 5000);
+}
+function stopWsKeepAlive(){ clearInterval(_wsKeepAlive); _wsKeepAlive=null; }
+
 function webSpeech(text, lang, onEnd){
   const u = new SpeechSynthesisUtterance(text);
-  u.lang  = LC[lang].code;
+  u.lang = (typeof LC!=='undefined' ? LC[lang]?.code : null) || {de:'de-DE',en:'en-US',uk:'uk-UA'}[lang] || 'de-DE';
   if(vs[lang]) u.voice = vs[lang];
   const spd = V.langSpeed?.[lang] ?? '100';
   u.rate = spd === '080' ? 0.8 : 1.0;
   const t0 = Date.now();
   logErr('webSpeech:start', lang, text.slice(0,40));
-  u.onend = ()=>{
+  let _wsEnded = false;
+  // Watchdog: якщо onend не спрацьовує за 15с → рухаємося далі
+  // НЕ викликаємо cancel() — це вбиває поточний utterance!
+  const wdog = setTimeout(()=>{
+    if(_wsEnded) return; _wsEnded = true;
+    logErr('webSpeech:wdog','15s no onend → skip',lang);
+    stopWsKeepAlive();
+    if(onEnd) onEnd();
+  }, 15000);
+  const wsEnd = (src)=>{
+    if(_wsEnded) return; _wsEnded = true;
+    clearTimeout(wdog);
+    stopWsKeepAlive();
     const elapsed = Date.now()-t0;
-    if(elapsed < 300) logErr('webSpeech:instant','onend in '+elapsed+'ms — iOS bug?',lang+' '+text.slice(0,30));
-    else logErr('webSpeech:ok', elapsed+'ms', lang);
+    if(elapsed < 200) logErr('webSpeech:instant',elapsed+'ms',lang);
+    else logErr('webSpeech:ok', elapsed+'ms '+src, lang);
     if(onEnd) onEnd();
   };
+  u.onend  = ()=>wsEnd('onend');
   u.onerror=(e)=>{
     logErr('webSpeech:error',e.error,lang+' '+text.slice(0,30));
-    if(e.error!=='interrupted'&&e.error!=='canceled'&&onEnd) onEnd();
+    // interrupted/canceled = нормально (stopTTS або новий speak)
+    if(e.error!=='interrupted'&&e.error!=='canceled') wsEnd('onerror');
+    else{ clearTimeout(wdog); stopWsKeepAlive(); _wsEnded=true; }
   };
+  startWsKeepAlive();
+  // Перевіряємо чи synthesis не stuck
+  if(speechSynthesis.paused) speechSynthesis.resume();
   speechSynthesis.speak(u);
 }
 
 function stopTTS(){
-  playGen++;  // скасовує всі in-flight async колбеки
+  playGen++;
+  stopWsKeepAlive();
   speechSynthesis.cancel();
-  if(currentAudio){ currentAudio.pause(); currentAudio=null; }
+  const a = getSharedAudio();
+  a.pause();
+  if(currentAudio && currentAudio !== a){ currentAudio.pause(); }
+  currentAudio = null;
   document.getElementById('stopbtn').classList.remove('show');
 }
 
@@ -1876,6 +1913,7 @@ document.addEventListener('visibilitychange', ()=>{
       if(currentAudio){ currentAudio.pause(); currentAudio = null; }
     }
   } else if(document.visibilityState === 'visible'){
+
     if(_wasPlayingBeforeHidden && V.playing && !V.paused){
       _wasPlayingBeforeHidden = false;
       // Невелика затримка щоб браузер повністю повернувся
@@ -1899,6 +1937,13 @@ function showView(id){
 }
 
 // ── SETTINGS ──────────────────────────────────────────────────
+function ensureVoicesLoaded(){
+  // Chrome іноді повертає порожній список до події voiceschanged
+  if(!speechSynthesis.getVoices().length){
+    speechSynthesis.addEventListener('voiceschanged', ()=>{ loadVoices(); }, {once:true});
+  }
+}
+
 function initVoiceSelects(){
   const all=speechSynthesis.getVoices();
   if(all.length===0){setTimeout(initVoiceSelects,500);return;}
@@ -1921,10 +1966,12 @@ function notify(msg){const e=document.getElementById('notif');e.textContent=msg;
 // ── VOCAB ─────────────────────────────────────────────────────
 function initVocab(){initVocabFilters();applyVocabLangUI();if(V.queue.length===0)V.queue=buildVocabQueue();renderVocabCard();}
 function initVocabFilters(){
+  if(typeof CATS === 'undefined') return; // курс ще не завантажено
   const sel=document.getElementById('vf-cat');if(!sel||sel.options.length>1)return;
   CATS.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.e+' '+c.de;sel.appendChild(o);});
 }
 function buildVocabQueue(){
+  if(typeof VOCAB === 'undefined' || !VOCAB?.length) return [];
   // Якщо активний урок — використовуємо його картки
   if(V.lessonId && V.lessonCards?.length){
     let arr=[...V.lessonCards];
@@ -2104,7 +2151,7 @@ function initSwipe(){
   // Touch events (passive:true для start/move — не блокуємо скрол)
   area.addEventListener('touchstart', e=>onStart(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
   area.addEventListener('touchmove',  e=>onMove(e.touches[0].clientX,e.touches[0].clientY), {passive:true});
-  area.addEventListener('touchend',   e=>{ if(e.cancelable) e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
+  area.addEventListener('touchend',   e=>{ unlockAudioCtx(); if(e.cancelable) e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
 
   // Mouse fallback (для браузера/емулятора)
   let mouseDown=false;
@@ -2543,7 +2590,7 @@ function startLesson(lessonId){
 
 // ── ERROR LOG ─────────────────────────────────────────────────
 const ERR_LOG = [];
-const MAX_ERR_LOG = 100;
+const MAX_ERR_LOG = 200;
 
 function logErr(source, msg, detail=''){
   const entry = {
@@ -2576,7 +2623,9 @@ function showErrorLog(){
   const overlay = document.createElement('div');
   overlay.id = 'err-log-overlay';
   overlay.style.cssText = `position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.85);
-    display:flex;flex-direction:column;padding:16px;box-sizing:border-box;`;
+    display:flex;flex-direction:column;
+    padding:calc(16px + env(safe-area-inset-top,0px)) 16px 16px;
+    box-sizing:border-box;`;
 
   const toolbar = document.createElement('div');
   toolbar.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-shrink:0;';
@@ -2617,7 +2666,7 @@ function checkOnboarding(){
   }
 }
 
-function selectOnboardLang(lang){
+function selectOnboardLang(lang){ unlockAudioCtx();
   // Зберігаємо вибір і ховаємо onboarding з анімацією
   setUiLang(lang);
   const ob = document.getElementById('onboarding');
@@ -2896,42 +2945,99 @@ function tilesShowResult(){
 }
 
 
-// ── iOS AUDIO UNLOCK ──────────────────────────────────────────
-// iOS блокує Audio.play() якщо не було жесту користувача.
-// Вирішення: при першому дотику відтворюємо тихий звук — це
-// "розблоковує" audio context для всіх подальших викликів.
-let _audioUnlocked = false;
+// ── AUDIO ENGINE (Single Element approach) ────────────────────
+// Один спільний Audio елемент активується при першому жесті.
+// iOS дозволяє зміну src + play() на вже активованому елементі
+// з будь-якого async контексту — це найнадійніший підхід для PWA.
 
-async function unlockAudio(){
-  if(_audioUnlocked) return;
-  _audioUnlocked = true;
+let _sharedAudio   = null;   // спільний Audio елемент
+let _audioReady    = false;  // чи активований
+let currentSource  = null;   // не використовується, для сумісності
+
+// Кеш blob URLs: url → blobURL
+const audioBlobCache  = new Map();
+// audioBufferCache не потрібен, але залишаємо для tryAzureThenSpeech
+const audioBufferCache = new Map();
+
+function getSharedAudio(){
+  if(!_sharedAudio){
+    _sharedAudio = new Audio();
+    _sharedAudio.preload = 'none';
+  }
+  return _sharedAudio;
+}
+
+// Активуємо Audio елемент синхронно з жесту.
+// ВАЖЛИВО: навіть FAILED play() активує елемент на iOS —
+// після цього .src=url + .play() працює з async контексту.
+function unlockAudioCtx(){
+  if(_audioReady) return;
+  _audioReady = true; // встановлюємо ОДРАЗУ, до play()
   try{
-    // Створюємо мінімальний WAV (44 байти тиші) як data URI
-    const silentWav = 'data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAA' +
-      'EAAQAAwAAAAAAAAAAAAgAIAGRhdGEAAAAA';
-    const a = new Audio(silentWav);
-    a.volume = 0;
-    await a.play();
-    a.pause();
-    logErr('audio:unlock','iOS audio unlocked ✓','');
+    const a = getSharedAudio();
+    a.play().catch(()=>{}); // помилка очікується і ігнорується
+    logErr('audio:unlock','activated','');
   }catch(e){
-    logErr('audio:unlock','unlock failed: '+e.message,'');
+    logErr('audio:unlock','ex: '+e.message,'');
+  }
+}
+function unlockAudio(){ unlockAudioCtx(); }
+function initAudioUnlock(){
+  // Видаляємо listener після першої активації
+  const handler = ()=>{
+    unlockAudioCtx();
+    if(_audioReady){
+      document.removeEventListener('touchstart', handler, {capture:true});
+      document.removeEventListener('mousedown',  handler, {capture:true});
+    }
+  };
+  document.addEventListener('touchstart', handler, {capture:true, passive:true});
+  document.addEventListener('mousedown',  handler, {capture:true, passive:true});
+}
+
+// Завантажує і кешує blob URL з детальним логуванням
+async function fetchBlobUrl(url, timeoutMs=8000){
+  if(audioBlobCache.has(url)) return audioBlobCache.get(url);
+  // Кешуємо тільки справжні 404, не timeout/network
+  if(audioExistsCache.get(url) === '404') return null;
+  if(location.protocol === 'file:') return null;
+
+  const fname = url.split('/').slice(-1)[0];
+  const ctrl  = new AbortController();
+  const timer = setTimeout(()=>{ ctrl.abort(); logErr('audio:timeout','8s',fname); }, timeoutMs);
+  try{
+    logErr('audio:fetch→','',fname);
+    const resp = await fetch(url, {signal: ctrl.signal});
+    logErr('audio:fetch←',resp.status,fname);
+    clearTimeout(timer);
+    if(!resp.ok){
+      if(resp.status===404) audioExistsCache.set(url,'404'); // тільки 404 кешуємо
+      logErr('audio:http', resp.status, fname);
+      return null;
+    }
+    logErr('audio:blob→','',fname);
+    const blob = await Promise.race([
+      resp.blob(),
+      new Promise((_,rej)=>setTimeout(()=>rej(new Error('blob-timeout')),5000))
+    ]);
+    clearTimeout(timer);
+    logErr('audio:blob←', blob?.size||0, fname);
+    const blobUrl = URL.createObjectURL(blob);
+    audioBlobCache.set(url, blobUrl);
+    audioExistsCache.set(url, true);
+    logErr('audio:fetched','✓',fname);
+    return blobUrl;
+  }catch(e){
+    clearTimeout(timer);
+    // AbortError = timeout, NetworkError = офлайн — НЕ кешуємо, спробуємо пізніше
+    logErr('audio:err', e.name+' '+e.message, fname);
+    return null;
   }
 }
 
-// Вішаємо на перший будь-який дотик/клік
-function initAudioUnlock(){
-  const unlock = ()=>{
-    unlockAudio();
-    document.removeEventListener('touchstart', unlock, {capture:true});
-    document.removeEventListener('mousedown',  unlock, {capture:true});
-  };
-  document.addEventListener('touchstart', unlock, {capture:true, passive:true});
-  document.addEventListener('mousedown',  unlock, {capture:true});
-}
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
-function toggleVocab(){
+function toggleVocab(){ unlockAudioCtx();
   if(!V.playing){
     if(!V.queue.length)V.queue=buildVocabQueue();
     V.playing=true;V.paused=false;
@@ -3038,8 +3144,10 @@ function toggleVocabLang(l){
   V.langs[l]=!V.langs[l];
   if(!Object.values(V.langs).some(x=>x)){V.langs[l]=true;notify('Mindestens eine Sprache muss aktiv sein');return;}
   localStorage.setItem('mova_langs',JSON.stringify(V.langs));
-  applyVocabLangUI();V.flipped=false;renderVocabCard();
-  if(V.playing){stopVocab();setTimeout(toggleVocab,200);}
+  applyVocabLangUI();
+  renderVocabCard();
+  // Не перезапускаємо поточну картку — зміна мови застосується з наступної
+  // Просто оновлюємо UI без переривання аудіо
 }
 function applyVocabLangUI(){['en','uk','de'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
 function cycleVocabMode(){
@@ -3224,6 +3332,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   const el = document.getElementById('app-ver');
   if(el) el.textContent = APP_VERSION;
   initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
+  ensureVoicesLoaded(); // Chrome: голоси можуть не завантажитись одразу
   checkOnboarding();
   applyI18n();
   renderCourseList();
