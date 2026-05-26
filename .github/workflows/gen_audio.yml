@@ -1,10 +1,10 @@
 name: Generate TTS Audio
 
-# Запускається при зміні vocab-data.js або вручну
+# Запускається при зміні B2-Beruf.js або вручну
 on:
   push:
     paths:
-      - 'vocab-data.js'
+      - 'B2-Beruf.js'
   workflow_dispatch:   # ← Дві незалежні кнопки-перемикачі для ручного запуску
     inputs:
       run_turbo:
