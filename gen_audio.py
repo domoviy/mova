@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 MOVA · Azure TTS Audio Generator  v2.3 (Dynamic Auto-Save)
-Читає vocab-data.json (або конвертує з vocab-data.js)
+Читає B2-Beruf.json (або конвертує з B2-Beruf.js)
 Генерує MP3 з Azure Neural TTS та порціями зберігає прогрес в Git (3 для F0 / 15 для S0)
 """
 
@@ -41,23 +41,23 @@ NEW_FILES_COUNT = 0
 
 # ── Завантаження бази (JSON або JS) ───────────────────────────
 def load_vocab():
-    """Пробує vocab-data.json, потім парсить vocab-data.js regex."""
-    jp = pathlib.Path('vocab-data.json')
+    """Пробує B2-Beruf.json, потім парсить B2-Beruf.js regex."""
+    jp = pathlib.Path('B2-Beruf.json')
     if jp.exists():
-        print('  ← vocab-data.json')
+        print('  ← B2-Beruf.json')
         data = json.loads(jp.read_text('utf-8'))
         return data['VOCAB']
 
-    jsp = pathlib.Path('vocab-data.js')
+    jsp = pathlib.Path('B2-Beruf.js')
     if not jsp.exists():
-        raise FileNotFoundError('Не знайдено vocab-data.json або vocab-data.js!')
+        raise FileNotFoundError('Не знайдено B2-Beruf.json або B2-Beruf.js!')
 
-    print('  ← vocab-data.js (regex parse)')
+    print('  ← B2-Beruf.js (regex parse)')
     src = jsp.read_text('utf-8')
 
     m = re.search(r'const\s+VOCAB\s*=\s*(\[[\s\S]*?\]);', src)
     if not m:
-        raise ValueError('Не знайдено масив VOCAB у vocab-data.js')
+        raise ValueError('Не знайдено масив VOCAB у B2-Beruf.js')
 
     arr_js = m.group(1)
 
