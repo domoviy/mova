@@ -1163,7 +1163,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '32-f2c2288';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3058,30 +3058,45 @@ async function fetchBlobUrl(url, timeoutMs=8000){
 
 
 // ── AUDIO PREFETCH ────────────────────────────────────────────
-// Завантажує всі аудіо файли для картки у фоні
-function prefetchCard(card, offset){
-  if(!card) return;
-  const langs = getActiveLangs();
+// Послідовне завантаження: term → short → def → потім наступна картка
+// Тільки активні мови і поточна швидкість
+
+async function prefetchCardSequential(card, afterDone){
+  if(!card || !V.playing) return;
+
+  const langs  = getActiveLangs(); // тільки активні мови
   const fields = ['term','short','def'];
-  const speeds = Object.entries(V.langSpeed||{});
 
-  // Якщо langSpeed не налаштований — беремо '100' для кожної мови
-  const langSpeedMap = {};
-  langs.forEach(l => langSpeedMap[l] = V.langSpeed?.[l] || '100');
-
-  langs.forEach(lang => {
-    const speed = langSpeedMap[lang];
-    fields.forEach(field => {
+  for(const field of fields){
+    if(!V.playing) return; // зупинились — не качаємо більше
+    // Завантажуємо всі мови для поточного поля паралельно (вони короткі)
+    await Promise.all(langs.map(lang => {
       const url = getAudioUrl(card.id, field, lang);
-      // Завантажуємо тільки якщо ще не в кеші і файл не 404
-      if(!audioBlobCache.has(url) && audioExistsCache.get(url) !== '404'){
-        // Невелика затримка щоб не конкурувати з поточним аудіо
-        setTimeout(()=>{
-          fetchBlobUrl(url).catch(()=>{});
-        }, offset * 200 + langs.indexOf(lang) * 50 + fields.indexOf(field) * 30);
+      if(audioBlobCache.has(url) || audioExistsCache.get(url) === '404')
+        return Promise.resolve(); // вже є або 404 — пропускаємо
+      return fetchBlobUrl(url).catch(()=>{});
+    }));
+  }
+
+  // Поле завантажено — якщо ще грає, переходимо до наступної картки
+  if(V.playing && afterDone) afterDone();
+}
+
+// Запускає ланцюжок prefetch: +1 картка → після завершення → +2 картка
+function startPrefetchChain(fromIdx){
+  const next1 = V.queue[fromIdx + 1];
+  const next2 = V.queue[fromIdx + 2];
+  if(!next1) return;
+
+  // Невелика затримка щоб не конкурувати з поточним аудіо при старті
+  setTimeout(()=>{
+    prefetchCardSequential(next1, ()=>{
+      // +1 завантажено → починаємо +2
+      if(V.playing && next2){
+        prefetchCardSequential(next2, null);
       }
     });
-  });
+  }, 500);
 }
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
@@ -3134,9 +3149,8 @@ function playVocabNext(){
   const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;playVocabNext();return;}
   const al=getActiveLangs();
 
-  // Prefetch наступних карток у фоні поки грає поточна
-  prefetchCard(V.queue[V.idx+1], 1); // наступна → через 200ms
-  prefetchCard(V.queue[V.idx+2], 2); // через одну → через 400ms
+  // Prefetch: term→short→def картки +1, потім +2 (послідовно, тільки активні мови)
+  startPrefetchChain(V.idx);
 
   speakVocabTerms(v,al,0,()=>{
     if(!guard()||!V.playing||V.paused)return;
