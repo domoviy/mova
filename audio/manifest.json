@@ -12436,5 +12436,8 @@
   "B2-Beruf/en/100/uns/uns_053_def_en_100": true,
   "B2-Beruf/de/100/eat/eat_029_short_de_100": true,
   "B2-Beruf/de/080/eat/eat_029_short_de_080": true,
-  "B2-Beruf/en/100/eat/eat_029_short_en_100": true
+  "B2-Beruf/en/100/eat/eat_029_short_en_100": true,
+  "B2-Beruf/en/080/eat/eat_029_short_en_080": true,
+  "B2-Beruf/de/080/uns/uns_053_def_de_080": true,
+  "B2-Beruf/en/080/uns/uns_053_def_en_080": true
 }
