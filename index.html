@@ -1163,7 +1163,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '37-201698c';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2479,11 +2479,19 @@ function lessonProgress(lesson){
 
 // Чи розблокований урок
 function lessonUnlocked(lesson){
-  if(!lesson.unlockAfter) return true;
-  const prev = (typeof LESSONS!=='undefined'?LESSONS:[]).find(l=>l.id===lesson.unlockAfter);
+  if(!lesson.unlockAfter) return true; // перший урок розділу — завжди відкритий
+
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const prev = lessons.find(l=>l.id===lesson.unlockAfter);
   if(!prev) return true;
+
+  // Якщо попередній урок з ІНШОГО розділу — перший урок нового розділу відкритий
+  // (дозволяємо проходити категорії незалежно)
+  if(prev.chapter !== lesson.chapter) return true;
+
+  // В межах одного розділу — треба 80%+ попереднього уроку
   const {pct} = lessonProgress(prev);
-  return pct >= 80; // 80%+ попереднього уроку = відкривається наступний
+  return pct >= 80;
 }
 
 function renderLernpfad(){
@@ -2583,7 +2591,6 @@ function startLesson(lessonId){
   const lesson  = lessons.find(l=>l.id===lessonId);
   if(!lesson) return;
 
-  // Фільтруємо VOCAB по cardIds уроку
   const vocab   = typeof VOCAB!=='undefined' ? VOCAB : [];
   const cardSet = new Set(lesson.cardIds);
   const filtered= vocab.filter(v=>cardSet.has(v.id));
@@ -2593,7 +2600,9 @@ function startLesson(lessonId){
     return;
   }
 
-  // Переходимо до Vokabeln з фільтром уроку
+  // Зупиняємо поточне аудіо ОДРАЗУ — не чекаємо кінця картки
+  stopVocab();
+
   V.lessonId    = lessonId;
   V.lessonCards = filtered;
   V.queue       = [...filtered].sort(()=>Math.random()-.5);
@@ -2601,10 +2610,9 @@ function startLesson(lessonId){
   V.repeatCount = 0;
   V.flipped     = false;
 
-  // Показуємо Vocab view і стартуємо
   showView('vocab');
   renderVocabCard();
-  notify('📚 '+( lesson.title[uiLang]||lesson.title.de));
+  notify('📚 '+(lesson.title[uiLang]||lesson.title.de));
 }
 
 
