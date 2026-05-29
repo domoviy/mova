@@ -12454,5 +12454,8 @@
   "B2-Beruf/en/100/abk/abk_020_def_en_100": true,
   "B2-Beruf/en/080/abk/abk_020_def_en_080": true,
   "B2-Beruf/uk/100/abk/abk_020_def_uk_100": true,
-  "B2-Beruf/uk/080/abk/abk_020_def_uk_080": true
+  "B2-Beruf/uk/080/abk/abk_020_def_uk_080": true,
+  "B2-Beruf/en/080/hsk/hsk_012_term_en_080": true,
+  "B2-Beruf/de/100/hsk/hsk_020_term_de_100": true,
+  "B2-Beruf/de/080/hsk/hsk_020_term_de_080": true
 }
