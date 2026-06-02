@@ -60,6 +60,11 @@ if(location.protocol === 'https:'){
   --gap:10px;     /* однаковий відступ між всіма блоками */
   --safe-t:env(safe-area-inset-top,0px);
   --safe-b:env(safe-area-inset-bottom,0px);
+  /* Простір елементів що ховаються у режимі уроку.
+     JS обнуляє ці змінні через lfSetLessonMode(). */
+  --lm-chips:calc(40px + var(--gap));   /* vchips */
+  --lm-tabs: calc(38px + var(--gap));   /* vocab-tabs */
+  --lm-nav:  var(--nav-h);              /* bottom-nav */
 }
 
 /* ══ BASE ══ */
@@ -251,18 +256,17 @@ body{
 .fc-area{
   perspective:1400px;
   user-select:none;
-  /* Весь вільний простір між контентом вгорі і vprogrow внизу */
+  /* Весь вільний простір між контентом вгорі і vprogrow внизу.
+     У режимі уроку --lm-* обнуляються через CSS-змінні → картка росте. */
   height:calc(
     100dvh
     - var(--hdr-h) - var(--safe-t)  /* header */
     - 75px                            /* vplayer */
     - var(--gap)
-    - 40px                            /* chips */
-    - var(--gap)
-    - 38px                            /* tabs */
-    - var(--gap)
+    - var(--lm-chips)                 /* chips (0 у режимі уроку) */
+    - var(--lm-tabs)                  /* tabs  (0 у режимі уроку) */
     - var(--prog-h) - var(--gap)      /* vprogrow + gap під нею */
-    - var(--nav-h)                    /* bottom-nav */
+    - var(--lm-nav)                   /* bottom-nav (0 у режимі уроку) */
     - env(safe-area-inset-bottom,0px)
   );
   margin-bottom:var(--gap);
@@ -683,9 +687,38 @@ body{
 .tile.answer-tile{
   border-color:var(--ink);background:var(--card);color:var(--ink);
   cursor:grab;
+  transition:opacity .15s, box-shadow .15s;
+  position:relative; /* потрібно для z-index при drag */
 }
-.tile.answer-tile:active{transform:scale(.95);cursor:grabbing;}
-.tile.answer-tile.dragging{opacity:.5;transform:scale(1.05);}
+.tile.answer-tile:active{cursor:grabbing;}
+.tile.answer-tile.drag-src{
+  opacity:.35;
+  box-shadow:none;
+  pointer-events:none; /* не перехоплює події під час drag */
+}
+/* Ghost — клон що летить за пальцем */
+.tile.drag-ghost{
+  position:fixed;
+  z-index:9999;
+  pointer-events:none;
+  opacity:.92;
+  transform:scale(1.08);
+  box-shadow:0 8px 24px rgba(0,0,0,.22);
+  transition:none !important;
+  border-color:var(--gold);
+  background:rgba(201,168,76,.15);
+  color:var(--gold);
+}
+/* Drop-indicator — лінія між tiles куди впаде елемент */
+.tiles-drop-indicator{
+  width:3px;
+  min-height:36px;
+  background:var(--gold);
+  border-radius:2px;
+  flex-shrink:0;
+  pointer-events:none;
+  align-self:center;
+}
 .tiles-bank{display:flex;flex-wrap:wrap;gap:10px;padding:4px 0;}
 .tiles-feedback{
   text-align:center;font-size:14px;font-weight:600;
@@ -825,7 +858,7 @@ body{
 .fc-area.swipe-in-right  .flashcard{animation:slideInRight  .22s ease forwards}
 .vprogrow{
   position:fixed;
-  bottom:calc(var(--nav-h) + var(--safe-b) + 8px);
+  bottom:calc(var(--lm-nav) + var(--safe-b) + 8px);
   left:14px;right:14px;z-index:15;
   background:var(--paper);border-radius:10px;border:1px solid var(--border);
   padding:9px 14px;display:flex;align-items:center;gap:10px;
@@ -1294,7 +1327,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '49-819f0b2';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3039,17 +3072,23 @@ function tilesShowCard(){
   tilesState.answer = [];
   tilesState.checked = false;
 
-  // Питання — показуємо UA/EN (рідна мова) і те, що треба скласти
-  const native = uiLang==='de'
-    ? (card.term?.uk || card.term?.en || card.short?.de || '')
-    : nativeText(card);
+  // Питання у tiles-q-text:
+  // - uiLang === 'de' → показуємо short.de (те, що треба скласти з частин — контекст для DE мови)
+  // - uiLang === 'uk' → показуємо term.uk (переклад терміну українською)
+  // - uiLang === 'en' → показуємо term.en (переклад терміну англійською)
+  let qText;
+  if(uiLang === 'de'){
+    qText = card.short?.de || card.term?.de || '';
+  } else {
+    qText = card.term?.[uiLang] || card.term?.uk || card.term?.en || card.short?.de || '';
+  }
   const qLabel = uiLang==='uk'
     ? 'Склади речення/вираз:'
     : uiLang==='en' ? 'Build the sentence:'
     : 'Bilde den Ausdruck:';
 
   document.getElementById('tiles-q-label').textContent = qLabel;
-  document.getElementById('tiles-q-text').textContent = native || card.short?.de || '';
+  document.getElementById('tiles-q-text').textContent = qText;
 
   // Відповідь — завжди short.de
   const correctStr = card.short?.de || '';
@@ -3104,69 +3143,178 @@ function tilesPickWord(tile){
 }
 
 function tilesRemoveWord(aTile, srcTile){
+  if(_dragState) return; // не видаляємо під час drag
   aTile.remove();
   srcTile?.classList.remove('used');
-  // Перераховуємо answer з DOM
-  tilesState.answer = Array.from(document.getElementById('tiles-answer').querySelectorAll('.answer-tile'))
-    .map(t=>t.textContent);
+  // Перераховуємо answer з DOM (без ghost і без indicator)
+  tilesState.answer = _getAnswerTilesClean().map(t=>t.textContent);
   const checkBtn = document.getElementById('tiles-check-btn');
   if(checkBtn) checkBtn.style.display = tilesState.answer.length > 0 ? 'block' : 'none';
 }
 
-// ── DRAG-AND-DROP для answer-tile ─────────────────────────────
-function tilesInitDrag(aTile){
-  let startX, startY, clone, origIdx;
+// Чисті answer-tiles без ghost та drop-indicator
+function _getAnswerTilesClean(){
+  return Array.from(document.getElementById('tiles-answer')
+    .querySelectorAll('.answer-tile:not(.drag-ghost):not(.drag-src)'));
+}
 
-  function getAnswerTiles(){
-    return Array.from(document.getElementById('tiles-answer').querySelectorAll('.answer-tile'));
+// ── DRAG-AND-DROP для answer-tile ─────────────────────────────
+// Ghost-clone підхід:
+// 1. touchstart → запам'ятовуємо offset всередині тайлу
+// 2. touchmove  → ghost летить за пальцем, показуємо drop-indicator між тайлами
+// 3. touchend   → вставляємо оригінал у потрібну позицію, видаляємо ghost
+
+let _dragState = null; // { tile, ghost, offsetX, offsetY, insertBefore }
+
+function tilesInitDrag(aTile){
+  aTile.addEventListener('touchstart', _onDragStart, {passive:true});
+}
+
+function _getAnswerTiles(){
+  return _getAnswerTilesClean();
+}
+
+function _removeDropIndicator(){
+  document.querySelectorAll('.tiles-drop-indicator').forEach(el=>el.remove());
+}
+
+function _onDragStart(e){
+  if(tilesState.checked) return;
+  if(e.touches.length !== 1) return;
+
+  const aTile = e.currentTarget;
+  const t0    = e.touches[0];
+  const rect  = aTile.getBoundingClientRect();
+
+  // offset всередині тайлу (щоб ghost не стрибав до лівого верхнього кута)
+  const offsetX = t0.clientX - rect.left;
+  const offsetY = t0.clientY - rect.top;
+
+  // Клон-ghost
+  const ghost = aTile.cloneNode(true);
+  ghost.classList.add('drag-ghost');
+  ghost.style.width  = rect.width  + 'px';
+  ghost.style.height = rect.height + 'px';
+  ghost.style.left   = (t0.clientX - offsetX) + 'px';
+  ghost.style.top    = (t0.clientY - offsetY) + 'px';
+  document.body.appendChild(ghost);
+
+  // Оригінал стає напівпрозорим
+  aTile.classList.add('drag-src');
+
+  _dragState = { tile: aTile, ghost, offsetX, offsetY, insertBefore: null };
+
+  // Підписуємо глобальні обробники (один раз)
+  document.addEventListener('touchmove',  _onDragMove,  {passive:false});
+  document.addEventListener('touchend',   _onDragEnd,   {passive:true});
+  document.addEventListener('touchcancel',_onDragCancel,{passive:true});
+
+  haptic.light();
+}
+
+function _onDragMove(e){
+  if(!_dragState) return;
+  e.preventDefault(); // блокуємо scroll під час drag
+
+  const t0 = e.touches[0];
+  const {ghost, offsetX, offsetY} = _dragState;
+
+  // Переміщуємо ghost
+  ghost.style.left = (t0.clientX - offsetX) + 'px';
+  ghost.style.top  = (t0.clientY - offsetY) + 'px';
+
+  // Визначаємо позицію вставки серед tiles
+  _updateDropIndicator(t0.clientX, t0.clientY);
+}
+
+function _onDragEnd(e){
+  if(!_dragState) return;
+
+  const {tile, ghost, insertBefore: targetRef} = _dragState;
+  const answerEl = document.getElementById('tiles-answer');
+
+  // Вставляємо в нову позицію
+  _removeDropIndicator();
+  tile.classList.remove('drag-src');
+
+  if(targetRef === 'end'){
+    answerEl.appendChild(tile);
+  } else if(targetRef && targetRef !== tile){
+    answerEl.insertBefore(tile, targetRef);
+  }
+  // якщо targetRef === null → залишаємо на місці (не рухаємо)
+
+  ghost.remove();
+  _dragState = null;
+
+  document.removeEventListener('touchmove',  _onDragMove);
+  document.removeEventListener('touchend',   _onDragEnd);
+  document.removeEventListener('touchcancel',_onDragCancel);
+
+  // Оновлюємо масив відповіді (drag-src вже знято, ghost видалено)
+  tilesState.answer = _getAnswerTilesClean().map(t=>t.textContent);
+  haptic.light();
+}
+
+function _onDragCancel(){
+  if(!_dragState) return;
+  const {tile, ghost} = _dragState;
+  tile.classList.remove('drag-src');
+  ghost.remove();
+  _removeDropIndicator();
+  _dragState = null;
+  document.removeEventListener('touchmove',  _onDragMove);
+  document.removeEventListener('touchend',   _onDragEnd);
+  document.removeEventListener('touchcancel',_onDragCancel);
+}
+
+function _updateDropIndicator(clientX, clientY){
+  if(!_dragState) return;
+  const answerEl = document.getElementById('tiles-answer');
+  const tiles = _getAnswerTiles().filter(t=>t !== _dragState.tile);
+
+  _removeDropIndicator();
+
+  if(!tiles.length){
+    // Єдиний тайл — індикатор не потрібен
+    _dragState.insertBefore = 'end';
+    return;
   }
 
-  aTile.addEventListener('touchstart', e=>{
-    if(tilesState.checked) return;
-    if(e.touches.length !== 1) return;
-    const t0 = e.touches[0];
-    startX = t0.clientX; startY = t0.clientY;
-    origIdx = getAnswerTiles().indexOf(aTile);
-    // Довге натискання (>300ms) активує drag
-    aTile._dragTimer = setTimeout(()=>{
-      aTile.classList.add('dragging');
-      haptic.medium();
-    }, 300);
-  }, {passive:true});
+  // Знаходимо найближчий gap між тайлами (або перед першим / після останнього)
+  // Визначаємо: якщо clientX лівіше центру тайлу → вставляємо ПЕРЕД ним
+  //              якщо правіше центру → вставляємо ПІСЛЯ (тобто перед наступним)
+  let best = null;       // { el | 'end', dist }
+  let bestDist = Infinity;
 
-  aTile.addEventListener('touchmove', e=>{
-    clearTimeout(aTile._dragTimer);
-    if(!aTile.classList.contains('dragging')) return;
-    e.preventDefault();
-    const t0 = e.touches[0];
-    const dx = t0.clientX - startX;
-    const dy = t0.clientY - startY;
-    aTile.style.transform = `translate(${dx}px,${dy}px) scale(1.05)`;
-  }, {passive:false});
+  // Перед першим тайлом
+  const first = tiles[0].getBoundingClientRect();
+  const dFirst = Math.abs(clientX - first.left) + Math.abs(clientY - (first.top + first.height/2));
+  if(dFirst < bestDist){ bestDist = dFirst; best = { ref: tiles[0] }; }
 
-  aTile.addEventListener('touchend', e=>{
-    clearTimeout(aTile._dragTimer);
-    if(!aTile.classList.contains('dragging')){ aTile.style.transform=''; return; }
-    aTile.classList.remove('dragging');
-    aTile.style.transform='';
-    // Визначаємо над яким елементом відпустили
-    const t0 = e.changedTouches[0];
-    const answerEl = document.getElementById('tiles-answer');
-    const tiles = getAnswerTiles().filter(t=>t!==aTile);
-    let target = null;
-    for(const t of tiles){
-      const r = t.getBoundingClientRect();
-      if(t0.clientX >= r.left && t0.clientX <= r.right && t0.clientY >= r.top && t0.clientY <= r.bottom){
-        target = t; break;
-      }
+  for(let i=0; i<tiles.length; i++){
+    const r = tiles[i].getBoundingClientRect();
+    const cx = r.left + r.width;
+    const cy = r.top  + r.height/2;
+    const d  = Math.abs(clientX - cx) + Math.abs(clientY - cy);
+    if(d < bestDist){
+      bestDist = d;
+      best = { ref: i+1 < tiles.length ? tiles[i+1] : 'end' };
     }
-    if(target){
-      // Вставляємо перед target
-      answerEl.insertBefore(aTile, target);
-    }
-    // Оновлюємо answer
-    tilesState.answer = getAnswerTiles().map(t=>t.textContent);
-  }, {passive:true});
+  }
+
+  if(!best) return;
+  _dragState.insertBefore = best.ref;
+
+  // Малюємо drop-indicator
+  const indicator = document.createElement('div');
+  indicator.className = 'tiles-drop-indicator';
+
+  if(best.ref === 'end'){
+    answerEl.appendChild(indicator);
+  } else {
+    answerEl.insertBefore(indicator, best.ref);
+  }
 }
 
 // Кнопка "Перевірити"
@@ -3490,10 +3638,22 @@ function lfRenderBar(){
 }
 
 function lfSetLessonMode(active){
-  // Приховуємо distraction-елементи під час уроку
-  const vchips   = document.getElementById('vchips');
-  const vtabs    = document.getElementById('vocab-tabs');
-  const bottomNav= document.getElementById('bottom-nav');
+  const root = document.documentElement;
+  if(active){
+    // Обнуляємо простір схованих елементів → fc-area та vprogrow автоматично розширюються
+    root.style.setProperty('--lm-chips', '0px');
+    root.style.setProperty('--lm-tabs',  '0px');
+    root.style.setProperty('--lm-nav',   '0px');
+  } else {
+    // Відновлюємо оригінальні значення
+    root.style.setProperty('--lm-chips', 'calc(40px + var(--gap))');
+    root.style.setProperty('--lm-tabs',  'calc(38px + var(--gap))');
+    root.style.setProperty('--lm-nav',   'var(--nav-h)');
+  }
+  // Фізичне приховування елементів (для вивільнення місця у flex-потоці)
+  const vchips    = document.getElementById('vchips');
+  const vtabs     = document.getElementById('vocab-tabs');
+  const bottomNav = document.getElementById('bottom-nav');
   if(vchips)    vchips.style.display    = active ? 'none' : '';
   if(vtabs)     vtabs.style.display     = active ? 'none' : '';
   if(bottomNav) bottomNav.style.display = active ? 'none' : '';
