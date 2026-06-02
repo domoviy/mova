@@ -1327,7 +1327,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '50-facf887';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2962,16 +2962,6 @@ function mcShowCard(){
     btn.addEventListener('click', ()=>mcAnswer(btn, opt, correct, card));
     optBox.appendChild(btn);
   });
-
-  // Автоматично відтворюємо DE аудіо
-  setTimeout(()=>{ speak(card.term.de, 'de', null, card.id, 'term'); }, 100);
-
-  // Prefetch аудіо наступної картки
-  const nextCard = mcState.cards[mcState.idx + 1];
-  if(nextCard){
-    const nextUrl = getAudioUrl(nextCard.id, 'term', 'de');
-    if(!audioBlobCache.has(nextUrl)) fetchBlobUrl(nextUrl).catch(()=>{});
-  }
 }
 
 function mcAnswer(btn, chosen, correct, card){
@@ -3041,7 +3031,7 @@ let tilesState = { cards:[], idx:0, current:null, answer:[], words:[] };
 function getVocabPool(){
   const cf = document.getElementById('vf-cat')?.value||'all';
   return (typeof VOCAB!=='undefined'?VOCAB:[])
-    .filter(v=>(cf==='all'||v.cat===cf) && v.short?.de && v.short.de.split(' ').length>=2);
+    .filter(v=>(cf==='all'||v.cat===cf) && v.term?.de && v.term.de.split(' ').length>=2);
 }
 
 function startTiles(){
@@ -3090,16 +3080,16 @@ function tilesShowCard(){
   document.getElementById('tiles-q-label').textContent = qLabel;
   document.getElementById('tiles-q-text').textContent = qText;
 
-  // Відповідь — завжди short.de
-  const correctStr = card.short?.de || '';
+  // Слова для складання — завжди term.de (розбиваємо на слова)
+  const correctStr = card.term?.de || '';
   const words = correctStr.split(' ').filter(Boolean);
   tilesState.words = words;
 
-  // Дистрактори
+  // Дистрактори — слова з term.de інших карток
   const pool = getVocabPool();
   const distWords = pool
     .filter(v=>v.id!==card.id)
-    .flatMap(v=>(v.short?.de||'').split(' '))
+    .flatMap(v=>(v.term?.de||'').split(' '))
     .filter(w=>!words.includes(w) && w.length>2)
     .sort(()=>Math.random()-.5)
     .slice(0, Math.min(3, words.length));
@@ -3580,7 +3570,7 @@ function startLessonFlow(lessonId){
   const flowCards = sorted.slice(0, Math.min(8, sorted.length));
 
   // Визначаємо доступні кроки (tiles тільки якщо є картки з 2+ словами)
-  const hasTiles = flowCards.some(c=>(c.short?.de||'').split(' ').length >= 2);
+  const hasTiles = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
   const steps = ['cards','matching','choice'];
   if(hasTiles) steps.push('tiles');
   steps.push('result');
@@ -3759,7 +3749,7 @@ function lfStartChoice(){
 
 function lfStartTiles(){
   if(!LF) return;
-  const pool = LF.cards.filter(c=>(c.short?.de||'').split(' ').length>=2);
+  const pool = LF.cards.filter(c=>(c.term?.de||'').split(' ').length>=2);
   const chosen = pool.slice(0,Math.min(3,pool.length));
   if(!chosen.length){ lfStepDone('tiles',1); return; }
   tilesState = { cards: chosen, idx: 0, current: null, answer: [], words: [], _lfMode: true };
