@@ -668,28 +668,65 @@ body{
 .tiles-answer.correct{border-color:#2ecc71;border-style:solid;background:rgba(46,204,113,.06);}
 .tiles-answer.wrong  {border-color:#e74c3c;border-style:solid;background:rgba(231,76,60,.06);}
 .tile{
-  padding:7px 12px;border-radius:8px;
+  padding:9px 16px;border-radius:8px;
   border:1.5px solid var(--gold);
   background:rgba(201,168,76,.1);color:var(--gold);
-  font-size:13px;font-weight:600;
+  font-size:15px;font-weight:600;
   cursor:pointer;font-family:inherit;
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
   transition:opacity .15s,transform .1s;
+  min-height:44px;display:inline-flex;align-items:center;
 }
 .tile:active{transform:scale(.95);}
 .tile.used{opacity:.3;pointer-events:none;}
 .tile.answer-tile{
   border-color:var(--ink);background:var(--card);color:var(--ink);
+  cursor:grab;
 }
-.tile.answer-tile:active{transform:scale(.95);}
-.tiles-bank{display:flex;flex-wrap:wrap;gap:8px;padding:4px 0;}
+.tile.answer-tile:active{transform:scale(.95);cursor:grabbing;}
+.tile.answer-tile.dragging{opacity:.5;transform:scale(1.05);}
+.tiles-bank{display:flex;flex-wrap:wrap;gap:10px;padding:4px 0;}
 .tiles-feedback{
   text-align:center;font-size:14px;font-weight:600;
   padding:10px;border-radius:10px;margin-bottom:10px;
 }
 .tiles-feedback.ok {color:#27ae60;background:rgba(46,204,113,.1);}
 .tiles-feedback.err{color:#c0392b;background:rgba(231,76,60,.1);}
+.tiles-check-btn{
+  width:100%;padding:14px;border-radius:14px;border:none;
+  background:linear-gradient(135deg,var(--gold),#b8873a);
+  color:var(--forest);font-size:16px;font-weight:700;
+  font-family:inherit;cursor:pointer;margin-top:12px;
+  box-shadow:0 3px 12px rgba(201,168,76,.3);
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity .15s,transform .1s;
+}
+.tiles-check-btn:active{transform:scale(.97);opacity:.9;}
+.tiles-result-overlay{
+  position:fixed;inset:0;z-index:200;
+  background:rgba(0,0,0,.6);
+  display:flex;align-items:flex-end;
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+.tiles-result-sheet{
+  width:100%;background:var(--paper);
+  border-radius:24px 24px 0 0;
+  padding:24px 20px 28px;
+  display:flex;flex-direction:column;align-items:center;gap:12px;
+}
+.tiles-result-icon{font-size:44px;line-height:1;}
+.tiles-result-label{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
+.tiles-result-correct{font-size:16px;font-weight:700;color:var(--ink);text-align:center;line-height:1.4;}
+.tiles-result-btn{
+  width:100%;max-width:320px;padding:15px;border-radius:14px;border:none;
+  font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;
+  transition:opacity .15s;
+}
+.tiles-result-btn.ok{background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);}
+.tiles-result-btn.nok{background:var(--soft);color:var(--warm);border:1px solid var(--border);}
+.tiles-result-btn:active{opacity:.85;}
 
 
 /* ══ LESSON FLOW ══ */
@@ -1094,11 +1131,10 @@ body{
       <!-- Multiple Choice -->
       <div id="vocab-panel-choice" style="display:none">
         <div class="mc-progress" id="mc-progress"></div>
-        <div class="mc-question" id="mc-question">
+        <div class="mc-question" id="mc-question" style="cursor:pointer" onclick="mcPlayAudio()">
           <div class="mc-q-label" id="mc-q-label">Begriff</div>
           <div class="mc-q-row">
             <div class="mc-q-term" id="mc-q-term"></div>
-            <button class="mc-q-audio" id="mc-q-audio" onclick="mcPlayAudio()">🔊</button>
           </div>
         </div>
         <div class="mc-options" id="mc-options"></div>
@@ -1113,6 +1149,9 @@ body{
         <div class="tiles-answer" id="tiles-answer"></div>
         <div class="tiles-feedback" id="tiles-feedback" style="display:none"></div>
         <div class="tiles-bank" id="tiles-bank"></div>
+        <button class="tiles-check-btn" id="tiles-check-btn" onclick="tilesCheck()" style="display:none">
+          ✓ Перевірити · Prüfen · Check
+        </button>
       </div>
 
       <div id="vocab-panel-browse" style="display:none">
@@ -1255,7 +1294,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '47-eca1130';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2025,8 +2064,9 @@ document.addEventListener('visibilitychange', ()=>{
       if(currentAudio){ currentAudio.pause(); currentAudio = null; }
     }
   } else if(document.visibilityState === 'visible'){
-
-    if(_wasPlayingBeforeHidden && V.playing && !V.paused){
+    // Відновлюємо тільки якщо були на вкладці карток (tab 0), не на matching/choice/tiles
+    const isCardTab = document.getElementById('vocab-panel-card')?.style.display !== 'none';
+    if(_wasPlayingBeforeHidden && V.playing && !V.paused && isCardTab){
       _wasPlayingBeforeHidden = false;
       // Невелика затримка щоб браузер повністю повернувся
       setTimeout(()=>{ if(V.playing && !V.paused) playVocabNext(); }, 400);
@@ -2444,6 +2484,9 @@ function startMatching(){
   const subEl   = document.getElementById('match-subtitle');
   if(titleEl) titleEl.textContent = t('match_title')+' · '+MATCH_SIZE+' '+t('lp_cards');
   if(subEl)   subEl.textContent   = t('match_sub');
+
+  // Prefetch аудіо всіх 5 DE слів одразу при відкритті
+  matchPrefetchAudio(chosen);
 }
 
 function matchMakeBtn(cardId, side, text){
@@ -2453,7 +2496,26 @@ function matchMakeBtn(cardId, side, text){
   btn.dataset.side   = side;
   btn.textContent    = text;
   btn.addEventListener('click', () => matchHandleClick(btn));
+  // Відтворюємо DE аудіо при кліці на терміни (ліва колонка)
+  if(side === 'term'){
+    btn.addEventListener('click', () => {
+      const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===cardId);
+      if(card && !btn.classList.contains('matched')){
+        speak(card.term.de, 'de', null, card.id, 'term');
+      }
+    });
+  }
   return btn;
+}
+
+// Prefetch audio for all DE words in current matching round
+function matchPrefetchAudio(cards){
+  cards.forEach(c => {
+    const url = getAudioUrl(c.id, 'term', 'de');
+    if(!audioBlobCache.has(url) && audioExistsCache.get(url) !== '404'){
+      fetchBlobUrl(url).catch(()=>{});
+    }
+  });
 }
 
 function matchHandleClick(btn){
@@ -2500,6 +2562,8 @@ function matchHandleClick(btn){
     });
     matchState.matched++;
     haptic.success();
+    // Знижуємо важливість одразу (як свайп вниз)
+    srsRate(sel.cardId, 5);
 
     // Якщо ця картка вже мала помилку — знижуємо оцінку
     if(!matchState.firstTry.has(sel.cardId)){
@@ -2522,8 +2586,9 @@ function matchHandleClick(btn){
     haptic.error();
     matchState.selected = null;
 
-    // Знижуємо оцінку для обох карток
+    // Підвищуємо важливість обох карток одразу (як свайп вгору)
     [sel.cardId, btn.dataset.cardId].forEach(id => {
+      srsRate(id, 1);
       matchState.firstTry.delete(id); // помилилися — не "з першої спроби"
       const mc = matchState.cards.find(c => c.card.id === id);
       if(mc) mc.q = Math.min(mc.q, 1); // не знаю
@@ -2864,6 +2929,16 @@ function mcShowCard(){
     btn.addEventListener('click', ()=>mcAnswer(btn, opt, correct, card));
     optBox.appendChild(btn);
   });
+
+  // Автоматично відтворюємо DE аудіо
+  setTimeout(()=>{ speak(card.term.de, 'de', null, card.id, 'term'); }, 100);
+
+  // Prefetch аудіо наступної картки
+  const nextCard = mcState.cards[mcState.idx + 1];
+  if(nextCard){
+    const nextUrl = getAudioUrl(nextCard.id, 'term', 'de');
+    if(!audioBlobCache.has(nextUrl)) fetchBlobUrl(nextUrl).catch(()=>{});
+  }
 }
 
 function mcAnswer(btn, chosen, correct, card){
@@ -2954,28 +3029,34 @@ function tilesShowCard(){
   if(fb){ fb.style.display='none'; fb.textContent=''; }
   document.getElementById('tiles-answer').className='tiles-answer';
   document.getElementById('tiles-answer').innerHTML='';
+  // Приховуємо кнопку перевірки до вибору слів
+  const checkBtn = document.getElementById('tiles-check-btn');
+  if(checkBtn) checkBtn.style.display='none';
 
   const card = tilesState.cards[tilesState.idx];
   if(!card){ tilesShowResult(); return; }
   tilesState.current = card;
   tilesState.answer = [];
+  tilesState.checked = false;
 
-  // Питання — рідна мова (або short.de для de-інтерфейсу показуємо term.de)
-  const qText = uiLang==='de' ? card.term?.de : nativeText(card);
-  const qLabel = uiLang==='de'
-    ? 'Wie lautet die Kurzform?'
-    : uiLang==='uk' ? 'Склади речення/вираз:'
-    : 'Build the expression:';
+  // Питання — показуємо UA/EN (рідна мова) і те, що треба скласти
+  const native = uiLang==='de'
+    ? (card.term?.uk || card.term?.en || card.short?.de || '')
+    : nativeText(card);
+  const qLabel = uiLang==='uk'
+    ? 'Склади речення/вираз:'
+    : uiLang==='en' ? 'Build the sentence:'
+    : 'Bilde den Ausdruck:';
 
   document.getElementById('tiles-q-label').textContent = qLabel;
-  document.getElementById('tiles-q-text').textContent = qText || '';
+  document.getElementById('tiles-q-text').textContent = native || card.short?.de || '';
 
-  // Відповідь — завжди short.de (розбиваємо на слова)
+  // Відповідь — завжди short.de
   const correctStr = card.short?.de || '';
   const words = correctStr.split(' ').filter(Boolean);
   tilesState.words = words;
 
-  // Дистрактори — 2-3 зайвих слова з інших карток
+  // Дистрактори
   const pool = getVocabPool();
   const distWords = pool
     .filter(v=>v.id!==card.id)
@@ -3001,67 +3082,162 @@ function tilesShowCard(){
 
 function tilesPickWord(tile){
   if(tile.classList.contains('used')) return;
+  if(tilesState.checked) return;
   const answerEl = document.getElementById('tiles-answer');
   // Ставимо слово у зону відповіді
   const aTile = document.createElement('button');
   aTile.className = 'tile answer-tile';
   aTile.textContent = tile.dataset.word;
   aTile.dataset.srcIdx = tile.dataset.idx;
-  aTile.addEventListener('click', ()=>tilesRemoveWord(aTile, tile));
+  aTile.dataset.bankWord = tile.dataset.word;
+  // Клік — видаляємо з відповіді
+  aTile.addEventListener('click', ()=>{ if(!tilesState.checked) tilesRemoveWord(aTile, tile); });
+  // Drag-and-drop для переміщення
+  tilesInitDrag(aTile);
   answerEl.appendChild(aTile);
   tile.classList.add('used');
   tilesState.answer.push(tile.dataset.word);
   haptic.light();
-  tilesCheckAuto();
+  // Показуємо кнопку "Перевірити" як тільки є хоч одне слово
+  const checkBtn = document.getElementById('tiles-check-btn');
+  if(checkBtn) checkBtn.style.display = tilesState.answer.length > 0 ? 'block' : 'none';
 }
 
 function tilesRemoveWord(aTile, srcTile){
   aTile.remove();
   srcTile?.classList.remove('used');
-  tilesState.answer = tilesState.answer.filter((_,i)=>i!==
-    Array.from(document.getElementById('tiles-answer').children).indexOf(aTile));
   // Перераховуємо answer з DOM
   tilesState.answer = Array.from(document.getElementById('tiles-answer').querySelectorAll('.answer-tile'))
     .map(t=>t.textContent);
-  tilesCheckAuto();
+  const checkBtn = document.getElementById('tiles-check-btn');
+  if(checkBtn) checkBtn.style.display = tilesState.answer.length > 0 ? 'block' : 'none';
+}
+
+// ── DRAG-AND-DROP для answer-tile ─────────────────────────────
+function tilesInitDrag(aTile){
+  let startX, startY, clone, origIdx;
+
+  function getAnswerTiles(){
+    return Array.from(document.getElementById('tiles-answer').querySelectorAll('.answer-tile'));
+  }
+
+  aTile.addEventListener('touchstart', e=>{
+    if(tilesState.checked) return;
+    if(e.touches.length !== 1) return;
+    const t0 = e.touches[0];
+    startX = t0.clientX; startY = t0.clientY;
+    origIdx = getAnswerTiles().indexOf(aTile);
+    // Довге натискання (>300ms) активує drag
+    aTile._dragTimer = setTimeout(()=>{
+      aTile.classList.add('dragging');
+      haptic.medium();
+    }, 300);
+  }, {passive:true});
+
+  aTile.addEventListener('touchmove', e=>{
+    clearTimeout(aTile._dragTimer);
+    if(!aTile.classList.contains('dragging')) return;
+    e.preventDefault();
+    const t0 = e.touches[0];
+    const dx = t0.clientX - startX;
+    const dy = t0.clientY - startY;
+    aTile.style.transform = `translate(${dx}px,${dy}px) scale(1.05)`;
+  }, {passive:false});
+
+  aTile.addEventListener('touchend', e=>{
+    clearTimeout(aTile._dragTimer);
+    if(!aTile.classList.contains('dragging')){ aTile.style.transform=''; return; }
+    aTile.classList.remove('dragging');
+    aTile.style.transform='';
+    // Визначаємо над яким елементом відпустили
+    const t0 = e.changedTouches[0];
+    const answerEl = document.getElementById('tiles-answer');
+    const tiles = getAnswerTiles().filter(t=>t!==aTile);
+    let target = null;
+    for(const t of tiles){
+      const r = t.getBoundingClientRect();
+      if(t0.clientX >= r.left && t0.clientX <= r.right && t0.clientY >= r.top && t0.clientY <= r.bottom){
+        target = t; break;
+      }
+    }
+    if(target){
+      // Вставляємо перед target
+      answerEl.insertBefore(aTile, target);
+    }
+    // Оновлюємо answer
+    tilesState.answer = getAnswerTiles().map(t=>t.textContent);
+  }, {passive:true});
+}
+
+// Кнопка "Перевірити"
+function tilesCheck(){
+  if(tilesState.checked) return;
+  const correct = tilesState.words;
+  const given   = tilesState.answer;
+  const isOk = given.join(' ') === correct.join(' ');
+  tilesState.checked = true;
+
+  const ansEl = document.getElementById('tiles-answer');
+  ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
+  srsRate(tilesState.current.id, isOk ? 5 : 1);
+  saveCardPlay(tilesState.current.id);
+  haptic[isOk?'success':'error']();
+
+  // Показуємо модальний результат
+  tilesShowResultModal(isOk, correct.join(' '));
+}
+
+function tilesShowResultModal(isOk, correctStr){
+  // Видаляємо старий overlay якщо є
+  document.getElementById('tiles-result-overlay')?.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'tiles-result-overlay';
+  overlay.className = 'tiles-result-overlay';
+
+  // Позитивний гендерно-нейтральний напис для правильної відповіді
+  const greatLabels = {
+    uk: '🎉 Чудово! Так тримати!',
+    de: '🎉 Super! Weiter so!',
+    en: '🎉 Excellent! Keep it up!'
+  };
+
+  const btnLabel = isOk
+    ? (greatLabels[uiLang] || greatLabels.de)
+    : (uiLang==='uk' ? '✓ Зрозуміло' : uiLang==='en' ? '✓ Got it' : '✓ Verstanden');
+
+  overlay.innerHTML = `
+    <div class="tiles-result-sheet">
+      <div class="tiles-result-icon">${isOk ? '✅' : '❌'}</div>
+      <div class="tiles-result-label">${isOk
+        ? (uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!')
+        : (uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')
+      }</div>
+      <div class="tiles-result-correct">${correctStr}</div>
+      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action">
+        ${btnLabel}
+      </button>
+    </div>`;
+
+  document.body.appendChild(overlay);
+
+  document.getElementById('tiles-result-action').addEventListener('click', ()=>{
+    overlay.remove();
+    tilesState.idx++;
+    tilesShowCard();
+  });
 }
 
 function tilesCheckAuto(){
-  const correct = tilesState.words;
-  const given   = tilesState.answer;
-  if(given.length < correct.length) return; // ще не всі слова
-
-  const isOk = given.join(' ') === correct.join(' ');
-  const ansEl = document.getElementById('tiles-answer');
-  const fb    = document.getElementById('tiles-feedback');
-  ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
-
-  if(fb){
-    fb.style.display='block';
-    if(isOk){
-      fb.className='tiles-feedback ok';
-      fb.textContent = '✅ '+(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!');
-      srsRate(tilesState.current.id, 5);
-    } else {
-      fb.className='tiles-feedback err';
-      fb.textContent = '✗ '+correct.join(' ');
-      srsRate(tilesState.current.id, 1);
-    }
-    saveCardPlay(tilesState.current.id);
-    haptic[isOk?'success':'error']();
-  }
-
-  // Автоперехід
-  setTimeout(()=>{
-    tilesState.idx++;
-    tilesShowCard();
-  }, isOk ? 1000 : 2000);
+  // Застаріла функція — більше не використовується (перевірка тільки по кнопці)
 }
 
 function tilesShowResult(){
   document.getElementById('tiles-q-text').textContent='';
   document.getElementById('tiles-q-label').textContent='';
   document.getElementById('tiles-answer').innerHTML='';
+  const checkBtn = document.getElementById('tiles-check-btn');
+  if(checkBtn) checkBtn.style.display='none';
   const bankEl = document.getElementById('tiles-bank');
   if(LF && tilesState._lfMode){
     if(bankEl) bankEl.innerHTML=`
@@ -3313,6 +3489,16 @@ function lfRenderBar(){
   }
 }
 
+function lfSetLessonMode(active){
+  // Приховуємо distraction-елементи під час уроку
+  const vchips   = document.getElementById('vchips');
+  const vtabs    = document.getElementById('vocab-tabs');
+  const bottomNav= document.getElementById('bottom-nav');
+  if(vchips)    vchips.style.display    = active ? 'none' : '';
+  if(vtabs)     vtabs.style.display     = active ? 'none' : '';
+  if(bottomNav) bottomNav.style.display = active ? 'none' : '';
+}
+
 function lfGoStep(stepIdx){
   if(!LF) return;
   LF.step = stepIdx;
@@ -3326,6 +3512,9 @@ function lfGoStep(stepIdx){
   // Ховаємо/показуємо vocab-top
   const vocabTop = document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display = step === 'result' ? 'none' : '';
+
+  // Режим уроку — ховаємо зайві елементи
+  lfSetLessonMode(step !== 'result');
 
   if(step === 'cards'){
     switchVocabTab(0);
@@ -3393,6 +3582,8 @@ function lfStartMatching(){
   const subEl=document.getElementById('match-subtitle');
   if(titleEl) titleEl.textContent=t('match_title')+' · '+chosen.length+' '+t('lp_cards');
   if(subEl)   subEl.textContent=t('match_sub');
+  // Prefetch аудіо всіх DE слів одразу при відкритті
+  matchPrefetchAudio(chosen);
 }
 
 function lfStartChoice(){
@@ -3480,6 +3671,7 @@ function exitLessonFlow(){
   if(resultEl) resultEl.classList.remove('show');
   const vocabTop=document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display='';
+  lfSetLessonMode(false);
   switchVocabTab(0);
   showView('lernpfad');
 }
