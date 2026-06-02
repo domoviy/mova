@@ -128,16 +128,18 @@ body{
 .h-logo-icon{height:26px;width:46px;flex-shrink:0}
 .h-logo-icon svg{width:46px;height:26px;display:block}
 .h-logo-text{font-family:'Syne',sans-serif;font-weight:800;font-size:21px;color:var(--gold);letter-spacing:1px;line-height:1}
-#stopbtn{
-  display:flex;align-items:center;gap:5px;
-  padding:6px 12px;border-radius:8px;
-  border:1px solid rgba(192,57,43,.4);background:rgba(192,57,43,.12);
-  font-size:14px;font-weight:600;cursor:pointer;color:#ff8a80;
-  font-family:inherit;margin-left:auto;flex-shrink:0;
-  opacity:0;pointer-events:none;
-  transition:opacity .2s ease;
+/* Кнопки хедера (вогонь + налаштування) */
+.h-right-btns{
+  display:flex;align-items:center;gap:4px;margin-left:auto;flex-shrink:0;
 }
-#stopbtn.show{opacity:1;pointer-events:auto}
+.h-icon-btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:1px;width:44px;height:44px;border-radius:12px;border:none;
+  background:none;cursor:pointer;font-size:20px;
+  -webkit-tap-highlight-color:transparent;
+  transition:background .15s;
+}
+.h-icon-btn:active{background:var(--soft);}
 
 /* ══ BOTTOM NAV ══ */
 .bn-item{
@@ -643,6 +645,76 @@ body{
 .mc-progress{
   display:flex;gap:4px;margin-bottom:10px;
 }
+
+/* ── QUIZ PANEL ─────────────────────────────────────────────── */
+#vocab-panel-quiz{
+  flex:1;min-height:0;display:flex;flex-direction:column;
+  padding:12px 14px 140px;overflow-y:auto;
+}
+.quiz-progress{display:flex;gap:4px;margin-bottom:12px;}
+.quiz-dot{
+  flex:1;height:4px;border-radius:2px;background:var(--border);
+  transition:background .3s;
+}
+.quiz-dot.done   {background:var(--gold);}
+.quiz-dot.current{background:rgba(201,168,76,.5);}
+
+.quiz-question{
+  background:var(--forest);border-radius:16px;
+  padding:16px 16px 14px;margin-bottom:14px;
+  position:relative;
+}
+.quiz-q-num{
+  font-size:10px;font-weight:700;letter-spacing:.6px;
+  color:rgba(255,255,255,.35);margin-bottom:6px;text-transform:uppercase;
+}
+.quiz-q-text{
+  font-size:17px;font-weight:700;color:var(--gold);
+  font-family:'Syne',sans-serif;line-height:1.4;
+}
+.quiz-options{display:flex;flex-direction:column;gap:10px;}
+.quiz-opt{
+  padding:13px 16px;border-radius:14px;
+  border:1.5px solid var(--border);
+  background:var(--card);color:var(--ink);
+  font-size:14px;font-weight:500;
+  text-align:left;cursor:pointer;font-family:inherit;
+  transition:border-color .15s,background .15s,transform .1s;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  display:flex;align-items:center;gap:10px;
+}
+.quiz-opt-letter{
+  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  background:var(--soft);color:var(--muted);
+  font-size:12px;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+  transition:background .15s,color .15s;
+}
+.quiz-opt:active{transform:scale(.98);border-color:var(--gold);}
+.quiz-opt.correct .quiz-opt-letter{background:#2ecc71;color:#fff;}
+.quiz-opt.wrong   .quiz-opt-letter{background:#e74c3c;color:#fff;}
+.quiz-opt.reveal  .quiz-opt-letter{background:rgba(46,204,113,.3);color:#2ecc71;}
+.quiz-opt.correct{border-color:#2ecc71;background:rgba(46,204,113,.08);color:#27ae60;font-weight:600;}
+.quiz-opt.wrong  {border-color:#e74c3c;background:rgba(231,76,60,.08); color:#c0392b;}
+.quiz-opt.reveal {border-color:rgba(46,204,113,.4);}
+
+/* Результат квізу */
+.quiz-result-wrap{
+  display:flex;flex-direction:column;align-items:center;
+  padding:20px 0;gap:16px;
+}
+.quiz-score-circle{
+  width:100px;height:100px;border-radius:50%;
+  border:4px solid var(--gold);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  background:rgba(201,168,76,.07);
+}
+.quiz-score-num{font-size:28px;font-weight:800;color:var(--gold);font-family:'Syne',sans-serif;}
+.quiz-score-of {font-size:11px;color:var(--muted);font-weight:600;}
+.quiz-result-title{font-size:20px;font-weight:800;color:var(--ink);font-family:'Syne',sans-serif;}
+.quiz-result-sub  {font-size:13px;color:var(--muted);text-align:center;line-height:1.5;}
+.quiz-result-btns {display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px;}
 .mc-dot{
   flex:1;height:4px;border-radius:2px;
   background:var(--border);transition:background .3s;
@@ -1119,7 +1191,14 @@ body{
           stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
       </svg>
     </div>
-    <button id="stopbtn" onclick="stopTTS()">⏹ Stop</button>
+    <!-- Вогонь і Налаштування у хедері замість stopbtn -->
+    <div class="h-right-btns">
+      <button class="h-icon-btn" onclick="showStreakInfo()" title="Streak">
+        <span class="bn-fire" id="h-fire">🔥</span>
+        <span id="h-streak-count" style="font-size:12px;font-weight:700;color:var(--gold)">0</span>
+      </button>
+      <button class="h-icon-btn" onclick="showView('settings')" title="Settings">⚙️</button>
+    </div>
   </div>
 
   <!-- CONTENT -->
@@ -1166,6 +1245,7 @@ body{
           <button class="vtab" onclick="switchVocabTab(2)">🔗</button>
           <button class="vtab" onclick="switchVocabTab(3)">🎯</button>
           <button class="vtab" onclick="switchVocabTab(4)">🧩</button>
+          <button class="vtab" onclick="switchVocabTab(5)">❓</button>
         </div>
       </div>
       <div id="vocab-panel-card">
@@ -1219,6 +1299,16 @@ body{
 
       <div id="vocab-panel-browse" style="display:none">
         <div class="vocab-grid" id="vocab-browse-grid"></div>
+      </div>
+
+      <!-- Quiz Panel -->
+      <div id="vocab-panel-quiz" style="display:none">
+        <div class="quiz-progress" id="quiz-progress"></div>
+        <div class="quiz-question" id="quiz-question" style="display:none">
+          <div class="quiz-q-num" id="quiz-q-num"></div>
+          <div class="quiz-q-text" id="quiz-q-text"></div>
+        </div>
+        <div class="quiz-options" id="quiz-options"></div>
       </div>
     </div>
 
@@ -1332,23 +1422,15 @@ body{
 
 <!-- BOTTOM NAV -->
 <div id="bottom-nav">
-  <button class="bn-item active" onclick="showView('vocab')" data-view="vocab">
-    <span class="bn-icon">📖</span><span>Vokabeln</span>
-  </button>
-  <button class="bn-item" onclick="showView('favs')" data-view="favs">
-    <span class="bn-icon">★</span><span>Favoriten</span>
-    <span class="bn-badge" id="nb-favs">0</span>
-  </button>
   <button class="bn-item" onclick="showView('lernpfad')" data-view="lernpfad">
     <span class="bn-icon">🗺</span><span id="lp-nav-label">Lernpfad</span>
   </button>
-  <button class="bn-item bn-streak" id="bn-streak" onclick="showStreakInfo()">
-    <span class="bn-icon bn-fire" id="bn-fire">🔥</span>
-    <span id="bn-streak-count">0</span>
-    <div class="bn-streak-bar"><div class="bn-streak-pbf" id="bn-streak-pbf" style="width:0%"></div></div>
+  <button class="bn-item" onclick="showView('favs')" data-view="favs">
+    <span class="bn-icon">★</span><span id="bn-favs-label">Закладки</span>
+    <span class="bn-badge" id="nb-favs">0</span>
   </button>
-  <button class="bn-item" onclick="showView('settings')" data-view="settings">
-    <span class="bn-icon">⚙️</span><span>Einstellungen</span>
+  <button class="bn-item" onclick="showView('vocab')" data-view="vocab">
+    <span class="bn-icon">📖</span><span id="bn-vocab-label">Словник</span>
   </button>
 </div>
 
@@ -1357,7 +1439,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '52-5dc4cef';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -1452,6 +1534,8 @@ const I18N = {
   de: {
     nav_vocab:'Vokabeln', nav_favs:'Favoriten', nav_settings:'Einstellungen',
     tab_card:'🃏 Karte', tab_all:'📋 Alle',
+    fav_added:'★ Zu Lesezeichen hinzugefügt',
+    fav_removed:'☆ Aus Lesezeichen entfernt',
     favs_empty:'Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.',
     settings_title:'⚙️ Einstellungen',
     sec_playback:'Wiedergabe',
@@ -1473,7 +1557,6 @@ const I18N = {
     sec_data:'Daten',
     lbl_data_reset:'Karteistatistik löschen', sub_data_reset:'Play-Zähler zurücksetzen',
     sec_lang:'Sprache / Мова / Language',
-    stop_btn:'⏹ Stop',
     nav_lernpfad:'Path',
     lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
     lp_cards:'cards', lp_of:'of',
@@ -1504,10 +1587,22 @@ const I18N = {
     btn_next_lesson:'▶ Nächste Lektion',
     btn_to_lessons:'🗺 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
+    quiz_title:'❓ Quiz',
+    quiz_question:'Frage',
+    quiz_of:'von',
+    quiz_no_data:'Keine Quiz-Fragen verfügbar. Füge QUIZ-Daten zur Kursdatei hinzu.',
+    quiz_result_perfect:'Perfekt! Alle richtig! 🏆',
+    quiz_result_good:'Gut gemacht! Weiter so.',
+    quiz_result_try:'Noch üben — du schaffst das!',
+    quiz_again:'🔄 Nochmal',
+    quiz_to_cards:'📖 Karten',
+    quiz_score:'Ergebnis',
   },
   uk: {
     nav_vocab:'Словник', nav_favs:'Закладки', nav_settings:'Налаштування',
     tab_card:'🃏 Картка', tab_all:'📋 Всі',
+    fav_added:'★ Додано в закладки',
+    fav_removed:'☆ Видалено із закладок',
     favs_empty:'Ще немає закладок.<br>Натисни ☆ на картці.',
     settings_title:'⚙️ Налаштування',
     sec_playback:'Відтворення',
@@ -1529,7 +1624,6 @@ const I18N = {
     sec_data:'Дані',
     lbl_data_reset:'Очистити статистику', sub_data_reset:'Скинути лічильник',
     sec_lang:'Sprache / Мова / Language',
-    stop_btn:'⏹ Стоп',
     nav_lernpfad:'Шлях',
     lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
     lp_cards:'карток', lp_of:'з',
@@ -1556,10 +1650,22 @@ const I18N = {
     btn_next_lesson:'▶ Наступний урок',
     btn_to_lessons:'🗺 До списку уроків',
     btn_check:'✓ Перевірити',
+    quiz_title:'❓ Квіз',
+    quiz_question:'Запитання',
+    quiz_of:'з',
+    quiz_no_data:'Немає питань квізу. Додай QUIZ до файлу курсу.',
+    quiz_result_perfect:'Ідеально! Всі правильно! 🏆',
+    quiz_result_good:'Добре! Продовжуй!',
+    quiz_result_try:'Варто повторити — ти впораєшся!',
+    quiz_again:'🔄 Ще раз',
+    quiz_to_cards:'📖 Картки',
+    quiz_score:'Результат',
   },
   en: {
     nav_vocab:'Vocabulary', nav_favs:'Favorites', nav_settings:'Settings',
     tab_card:'🃏 Card', tab_all:'📋 All',
+    fav_added:'★ Added to bookmarks',
+    fav_removed:'☆ Removed from bookmarks',
     favs_empty:'No favorites yet.<br>Tap ☆ on a card.',
     settings_title:'⚙️ Settings',
     sec_playback:'Playback',
@@ -1581,7 +1687,6 @@ const I18N = {
     sec_data:'Data',
     lbl_data_reset:'Clear card stats', sub_data_reset:'Reset play counter',
     sec_lang:'Sprache / Мова / Language',
-    stop_btn:'⏹ Stop',
     nav_lernpfad:'Lernpfad',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
@@ -1608,6 +1713,16 @@ const I18N = {
     btn_next_lesson:'▶ Next Lesson',
     btn_to_lessons:'🗺 Lesson List',
     btn_check:'✓ Check',
+    quiz_title:'❓ Quiz',
+    quiz_question:'Question',
+    quiz_of:'of',
+    quiz_no_data:'No quiz questions available. Add QUIZ data to the course file.',
+    quiz_result_perfect:'Perfect! All correct! 🏆',
+    quiz_result_good:'Good job! Keep going.',
+    quiz_result_try:'Keep practising — you\'ve got this!',
+    quiz_again:'🔄 Again',
+    quiz_to_cards:'📖 Cards',
+    quiz_score:'Score',
   },
 };
 
@@ -1638,7 +1753,7 @@ function applyI18n(){
   // Bottom nav — знаходимо текстові span (не іконки і не бейджі)
   document.querySelectorAll('#bottom-nav [data-view]').forEach(btn=>{
     const view = btn.dataset.view;
-    const key  = {vocab:'nav_vocab', favs:'nav_favs', settings:'nav_settings'}[view];
+    const key  = {vocab:'nav_vocab', favs:'nav_favs', lernpfad:'nav_lernpfad', settings:'nav_settings'}[view];
     if(!key) return;
     // Останній span що містить текст (не клас bn-icon і не bn-badge)
     const spans = btn.querySelectorAll('span:not(.bn-icon):not(.bn-badge):not(.bn-fire)');
@@ -1653,10 +1768,9 @@ function applyI18n(){
     {emoji:'🔗', key:'tab_match_short'},
     {emoji:'🎯', key:'tab_choice_short'},
     {emoji:'🧩', key:'tab_tiles_short'},
+    {emoji:'❓', key:'quiz_title'},
   ];
   tabs.forEach((tab,i)=>{ if(tabDefs[i]) tab.textContent=tabDefs[i].emoji; });
-  // Stop button
-  const stopb = qsel('stopbtn'); if(stopb) stopb.textContent = t('stop_btn');
   // Favorites empty
   const fe = qsel('fav-empty'); if(fe) fe.innerHTML = t('favs_empty');
   // Settings heading
@@ -1854,6 +1968,8 @@ async function init(){
   renderStreakUI();
   syncSpeedButtons();
   initSwipe();
+  // Відкриваємо Lernpfad за замовчуванням
+  showView('lernpfad');
   // PWA portrait lock via API (працює тільки в installed PWA)
   try{await screen.orientation?.lock?.('portrait');}catch(e){}
 }
@@ -2126,7 +2242,6 @@ function stopTTS(){
   a.pause();
   if(currentAudio && currentAudio !== a){ currentAudio.pause(); }
   currentAudio = null;
-  document.getElementById('stopbtn').classList.remove('show');
 }
 
 // ── BACKGROUND/FOREGROUND handling ────────────────────────────
@@ -2791,6 +2906,28 @@ function renderLernpfad(){
   // Оновлюємо label навбару
   const navLabel = document.getElementById('lp-nav-label');
   if(navLabel) navLabel.textContent = t('nav_lernpfad');
+
+  // Скролимо до останнього уроку після рендеру
+  requestAnimationFrame(()=> lernpfadScrollToLastLesson());
+}
+
+function lernpfadScrollToLastLesson(){
+  try{
+    const lastId = localStorage.getItem('mova_last_lesson');
+    if(!lastId) return;
+    // Шукаємо елемент уроку — він рендериться через onclick з lessonId
+    const el = document.querySelector(`#lp-chapters [onclick*="${lastId}"]`);
+    if(!el) return;
+    // Переконуємось що розділ відкритий
+    const chapter = el.closest('.lp-chapter');
+    if(chapter && !chapter.classList.contains('open')){
+      chapter.classList.add('open');
+    }
+    // Скролимо з невеликим відступом зверху
+    setTimeout(()=>{
+      el.scrollIntoView({ behavior:'smooth', block:'center' });
+    }, 80);
+  }catch(e){}
 }
 
 function renderModuleCard(lesson){
@@ -3625,14 +3762,16 @@ const LF_STEP_ICONS = {
   matching:'🔗',
   choice:  '🎯',
   tiles:   '🧩',
+  quiz:    '❓',
   result:  '🏁',
 };
 
 const LF_STEP_LABELS = {
-  cards:    {de:'Karten',    uk:'Картки',  en:'Cards'},
-  matching: {de:'Paare',     uk:'Пари',    en:'Pairs'},
-  choice:   {de:'Auswahl',   uk:'Вибір',   en:'Choice'},
-  tiles:    {de:'Sätze',     uk:'Речення', en:'Sentences'},
+  cards:    {de:'Karten',    uk:'Картки',   en:'Cards'},
+  matching: {de:'Paare',     uk:'Пари',     en:'Pairs'},
+  choice:   {de:'Auswahl',   uk:'Вибір',    en:'Choice'},
+  tiles:    {de:'Sätze',     uk:'Речення',  en:'Sentences'},
+  quiz:     {de:'Quiz',      uk:'Квіз',     en:'Quiz'},
   result:   {de:'Ergebnis',  uk:'Результат',en:'Result'},
 };
 
@@ -3640,6 +3779,8 @@ function startLessonFlow(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson  = lessons.find(l=>l.id===lessonId);
   if(!lesson) return;
+  // Запам'ятовуємо останній запущений урок для scroll у Lernpfad
+  try{ localStorage.setItem("mova_last_lesson", lessonId); }catch(e){}
 
   const vocab   = typeof VOCAB!=='undefined' ? VOCAB : [];
   const cardSet = new Set(lesson.cardIds);
@@ -3653,10 +3794,14 @@ function startLessonFlow(lessonId){
   const sorted = [...cards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
   const flowCards = sorted.slice(0, Math.min(8, sorted.length));
 
-  // Визначаємо доступні кроки (tiles тільки якщо є картки з 2+ словами)
+  // Визначаємо доступні кроки
   const hasTiles = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
+  const quizPool = typeof QUIZ !== 'undefined'
+    ? QUIZ.filter(q => !q.lessonId || q.lessonId === lessonId)
+    : [];
   const steps = ['cards','matching','choice'];
   if(hasTiles) steps.push('tiles');
+  if(quizPool.length >= 2) steps.push('quiz');
   steps.push('result');
 
   LF = {
@@ -3774,6 +3919,9 @@ function lfGoStep(stepIdx){
   } else if(step === 'tiles'){
     switchVocabTab(4);
     lfStartTiles();
+  } else if(step === 'quiz'){
+    switchVocabTab(5);
+    lfStartQuiz();
   } else if(step === 'result'){
     lfShowResult();
   }
@@ -3859,7 +4007,7 @@ function lfShowResult(){
 
   // Ховаємо всі панелі, показуємо result
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse'].forEach(id=>{
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.style.display='none';
   });
@@ -3912,10 +4060,243 @@ function lfShowResult(){
   if(btnList) btnList.textContent = t('btn_to_lessons');
 }
 
+// ══════════════════════════════════════════════════════════════
+// ── QUIZ ENGINE ───────────────────────────────────────────────
+// ══════════════════════════════════════════════════════════════
+const QUIZ_COUNT = 7; // питань за одну сесію
+
+let quizState = null;
+
+// Повертає пул питань: у lesson-режимі — тільки по lessonId,
+// у вільному режимі — всі питання з QUIZ
+function quizGetPool(lessonId){
+  const all = typeof QUIZ !== 'undefined' ? QUIZ : [];
+  if(!all.length) return [];
+  return lessonId
+    ? all.filter(q => !q.lessonId || q.lessonId === lessonId)
+    : all;
+}
+
+// Точка входу з вкладки (вільний режим)
+function startQuiz(){
+  if(quizState?._lfMode) return; // не перезапускаємо якщо йде lesson
+  const pool = quizGetPool(null);
+  if(!pool.length){
+    _quizShowEmpty();
+    return;
+  }
+  // Сортуємо за SRS-пріоритетом (слабкіші cardId — вище)
+  const sorted = [...pool].sort((a,b)=>{
+    const pa = a.cardId ? srsPriority(a.cardId) : 0;
+    const pb = b.cardId ? srsPriority(b.cardId) : 0;
+    return pb - pa;
+  });
+  const chosen = sorted
+    .slice(0, Math.min(QUIZ_COUNT * 2, sorted.length))
+    .sort(()=>Math.random()-.5)
+    .slice(0, Math.min(QUIZ_COUNT, sorted.length));
+
+  quizState = {
+    questions: chosen,
+    idx: 0,
+    correct: 0,
+    answered: false,
+    _lfMode: false,
+  };
+  _quizRenderProgress();
+  _quizShowCard();
+}
+
+// Точка входу з lesson flow
+function lfStartQuiz(){
+  if(!LF) return;
+  const lessonId = LF.lessonId;
+  const pool = quizGetPool(lessonId);
+  if(!pool.length){
+    // Немає питань — пропускаємо крок
+    lfStepDone('quiz', 1);
+    return;
+  }
+  const sorted = [...pool].sort((a,b)=>{
+    const pa = a.cardId ? srsPriority(a.cardId) : 0;
+    const pb = b.cardId ? srsPriority(b.cardId) : 0;
+    return pb - pa;
+  });
+  const chosen = sorted
+    .slice(0, Math.min(QUIZ_COUNT, sorted.length))
+    .sort(()=>Math.random()-.5);
+
+  quizState = {
+    questions: chosen,
+    idx: 0,
+    correct: 0,
+    answered: false,
+    _lfMode: true,
+  };
+  _quizRenderProgress();
+  _quizShowCard();
+}
+
+function _quizShowEmpty(){
+  const optBox = document.getElementById('quiz-options');
+  const qBox   = document.getElementById('quiz-question');
+  if(qBox) qBox.style.display = 'none';
+  if(optBox) optBox.innerHTML = `
+    <div style="text-align:center;padding:40px 20px;color:var(--muted)">
+      <div style="font-size:40px;margin-bottom:12px">❓</div>
+      <p style="font-size:14px;line-height:1.6">${t('quiz_no_data')}</p>
+      <pre style="font-size:11px;text-align:left;margin-top:16px;padding:12px;
+        background:var(--card);border-radius:10px;overflow:auto;color:var(--muted);
+        border:1px solid var(--border)">const QUIZ = [
+  {
+    id: 'q001',
+    cardId: 'v001',   // опційно
+    lessonId: 'l01',  // опційно
+    q: {
+      de: 'Was ist ...?',
+      uk: 'Що таке ...?',
+      en: 'What is ...?'
+    },
+    answers: [
+      { de:'...', uk:'...', en:'...', correct:true },
+      { de:'...', uk:'...', en:'...' },
+      { de:'...', uk:'...', en:'...' },
+      { de:'...', uk:'...', en:'...' },
+    ]
+  }
+];</pre>
+    </div>`;
+}
+
+function _quizRenderProgress(){
+  const bar = document.getElementById('quiz-progress');
+  if(!bar || !quizState) return;
+  bar.innerHTML = quizState.questions.map((_,i)=>{
+    const cls = i < quizState.idx ? 'done' : i === quizState.idx ? 'current' : '';
+    return `<div class="quiz-dot ${cls}"></div>`;
+  }).join('');
+}
+
+function _quizShowCard(){
+  const q = quizState?.questions[quizState.idx];
+  if(!q){ _quizShowResult(); return; }
+  quizState.answered = false;
+
+  // Показуємо блок питання
+  const qBox = document.getElementById('quiz-question');
+  if(qBox) qBox.style.display = '';
+
+  // Номер питання
+  const numEl = document.getElementById('quiz-q-num');
+  if(numEl) numEl.textContent =
+    `${t('quiz_question')} ${quizState.idx + 1} ${t('quiz_of')} ${quizState.questions.length}`;
+
+  // Текст питання в актуальній мові
+  const qTextEl = document.getElementById('quiz-q-text');
+  if(qTextEl) qTextEl.textContent =
+    q.q?.[uiLang] || q.q?.de || q.q?.uk || q.q?.en || '';
+
+  // Варіанти відповідей — перемішуємо, але запам'ятовуємо correct
+  const answers = [...(q.answers || [])].sort(()=>Math.random()-.5);
+  const letters = ['A','B','C','D'];
+
+  const optBox = document.getElementById('quiz-options');
+  optBox.innerHTML = '';
+  answers.forEach((ans, i)=>{
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.innerHTML = `
+      <span class="quiz-opt-letter">${letters[i]}</span>
+      <span>${ans[uiLang] || ans.de || ans.uk || ans.en || ''}</span>`;
+    btn.addEventListener('click', ()=> _quizAnswer(btn, ans, answers, q));
+    optBox.appendChild(btn);
+  });
+}
+
+function _quizAnswer(btn, chosen, answers, q){
+  if(quizState.answered) return;
+  quizState.answered = true;
+
+  const isCorrect = !!chosen.correct;
+  if(isCorrect) quizState.correct++;
+
+  // SRS: оновлюємо картку якщо є cardId
+  if(q.cardId){
+    srsRate(q.cardId, isCorrect ? 5 : 1);
+    saveCardPlay(q.cardId);
+  }
+
+  // Підсвічуємо варіанти
+  const allBtns = document.querySelectorAll('.quiz-opt');
+  allBtns.forEach((b, i)=>{
+    const ans = answers[i];
+    b.style.pointerEvents = 'none';
+    if(ans.correct){
+      b.classList.add(isCorrect && b === btn ? 'correct' : 'reveal');
+    } else if(b === btn){
+      b.classList.add('wrong');
+    }
+  });
+
+  haptic[isCorrect ? 'success' : 'error']();
+
+  // Автоперехід через 1.4с
+  setTimeout(()=>{
+    quizState.idx++;
+    _quizRenderProgress();
+    if(quizState.idx >= quizState.questions.length){
+      _quizShowResult();
+    } else {
+      _quizShowCard();
+    }
+  }, 1400);
+}
+
+function _quizShowResult(){
+  const total   = quizState?.questions.length || 0;
+  const correct = quizState?.correct || 0;
+  const pct     = total ? Math.round(correct / total * 100) : 0;
+
+  const resultLabel = pct === 100 ? t('quiz_result_perfect')
+    : pct >= 70   ? t('quiz_result_good')
+    : t('quiz_result_try');
+
+  const qBox = document.getElementById('quiz-question');
+  if(qBox) qBox.style.display = 'none';
+
+  const optBox = document.getElementById('quiz-options');
+  optBox.innerHTML = `
+    <div class="quiz-result-wrap">
+      <div class="quiz-score-circle">
+        <span class="quiz-score-num">${correct}/${total}</span>
+        <span class="quiz-score-of">${pct}%</span>
+      </div>
+      <div class="quiz-result-title">${t('quiz_score')}</div>
+      <div class="quiz-result-sub">${resultLabel}</div>
+      <div class="quiz-result-btns">
+        ${quizState._lfMode ? `
+          <button class="lr-btn-primary" onclick="lfNextStep()">
+            ▶ ${uiLang==='uk'?'Далі до результату':uiLang==='en'?'Continue':'Weiter'}
+          </button>` : `
+          <button class="lr-btn-primary" onclick="startQuiz()">
+            ${t('quiz_again')}
+          </button>
+          <button class="lr-btn-secondary" onclick="switchVocabTab(0)">
+            ${t('quiz_to_cards')}
+          </button>`}
+      </div>
+    </div>`;
+
+  if(quizState._lfMode){
+    lfStepDone('quiz', correct / (total || 1));
+  }
+}
+
 function exitLessonFlow(){
   LF = null;
   V.lessonId = null; V.lessonCards = [];
   V.queue = []; V.idx = 0;
+  quizState = null;
   const bar=document.getElementById('lesson-flow-bar');
   if(bar) bar.classList.remove('active');
   const resultEl=document.getElementById('lesson-result');
@@ -4115,7 +4496,7 @@ function toggleFavorite(id){
     btn.textContent=fav?'★':'☆';
     btn.classList.toggle('active',fav);
   });
-  notify(fav?'★ Favorit hinzugefügt':'☆ Aus Favoriten entfernt');
+  notify(fav ? t('fav_added') : t('fav_removed'));
   window.mlog?.('favorite_changed',{action:fav?'add':'remove'});
   updateFavBadge();
   // Якщо активний режим Favoriten і картку прибрали — перебудовуємо чергу
@@ -4197,6 +4578,9 @@ function renderStreakUI(pulse=false){
   if(bnS){bnS.classList.toggle('done',done);if(pulse){bnS.classList.add('pulse');setTimeout(()=>bnS.classList.remove('pulse'),500);}}
   const bc=document.getElementById('bn-streak-count');if(bc)bc.textContent=streak;
   const bp=document.getElementById('bn-streak-pbf');if(bp)bp.style.width=pct+'%';
+  // Хедер
+  const hc=document.getElementById('h-streak-count');if(hc)hc.textContent=streak;
+  const hf=document.getElementById('h-fire');if(hf)hf.style.filter=done?'':'grayscale(1) opacity(.4)';
   const st=document.getElementById('st-today');if(st)st.textContent=todayN;
   const stot=document.getElementById('st-total');if(stot)stot.textContent=totalN;
   const sl=document.getElementById('daily-goal');if(sl){sl.value=goal;document.getElementById('daily-goal-v').textContent=goal;}
@@ -4216,10 +4600,12 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-match').style.display  = tab===2?'flex':'none';
   document.getElementById('vocab-panel-choice').style.display = tab===3?'flex':'none';
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
+  document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   if(tab===1) renderVocabBrowse();
   if(tab===2) startMatching();
   if(tab===3) startMultipleChoice();
   if(tab===4) startTiles();
+  if(tab===5) startQuiz();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
