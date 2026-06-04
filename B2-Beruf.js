@@ -2721,15 +2721,15 @@ const QUIZ = [
 // ════════════════════════════════════════════════════════════════
 
 const sbs_CATS = [
-  { id:"argument_intro",   de:"Argument einleiten",    uk:"Початок аргументу",   e:"🟦" },
-  { id:"counter_argument", de:"Gegenargument",         uk:"Контраргумент",       e:"🟥" },
-  { id:"opinion",          de:"Meinung äußern",        uk:"Висловлення думки",   e:"🟨" },
-  { id:"letter_opening",   de:"Brieferöffnung",        uk:"Початок листа",       e:"🟩" },
-  { id:"letter_closing",   de:"Briefschluss",          uk:"Кінець листа",        e:"🟪" },
-  { id:"business",         de:"Geschäftsausdruck",     uk:"Діловий вираз",       e:"🔶" },
-  { id:"concession",       de:"Einräumung",            uk:"Поступка",            e:"🔷" },
-  { id:"comparison",       de:"Vergleich",             uk:"Порівняння",          e:"⬛" },
-  { id:"consequence",      de:"Folge / Schluss",       uk:"Наслідок / Висновок", e:"🔸" },
+  { id:'argument_intro',   de:'Argument einleiten',    uk:'Початок аргументу',   e:'🟦' },
+  { id:'counter_argument', de:'Gegenargument',         uk:'Контраргумент',       e:'🟥' },
+  { id:'opinion',          de:'Meinung äußern',        uk:'Висловлення думки',   e:'🟨' },
+  { id:'letter_opening',   de:'Brieferöffnung',        uk:'Початок листа',       e:'🟩' },
+  { id:'letter_closing',   de:'Briefschluss',          uk:'Кінець листа',        e:'🟪' },
+  { id:'business',         de:'Geschäftsausdruck',     uk:'Діловий вираз',       e:'🔶' },
+  { id:'concession',       de:'Einräumung',            uk:'Поступка',            e:'🔷' },
+  { id:'comparison',       de:'Vergleich',             uk:'Порівняння',          e:'⬛' },
+  { id:'consequence',      de:'Folge / Schluss',       uk:'Наслідок / Висновок', e:'🔸' },
 ];
 
 const SPRACHBAUSTEINE = [

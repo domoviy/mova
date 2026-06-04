@@ -1035,315 +1035,110 @@ body{
   transition:transform .7s cubic-bezier(.4,0,.2,1), opacity .25s ease .45s;
 }
 
-/* ══ SPRACHBAUSTEINE ══════════════════════════════════════════ */
-#view-sb.active{
-  display:flex;flex-direction:column;padding:0;
-  height:100%;overflow:hidden;
-}
-.sb-header{
-  background:var(--forest);
-  padding:12px 14px 0;
-  flex-shrink:0;
-  background-image:radial-gradient(ellipse at 80% 50%,rgba(201,168,76,.1) 0%,transparent 60%);
-}
-.sb-title-row{
-  display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;
-}
-.sb-title-text{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--gold);letter-spacing:.5px;
-}
-.sb-progress-badge{
-  background:rgba(201,168,76,.18);color:var(--gold-lt);
-  font-size:12px;font-weight:700;padding:3px 10px;border-radius:20px;
-  font-family:'JetBrains Mono',monospace;
-}
-.sb-tab-bar{
-  display:flex;border-bottom:2px solid rgba(255,255,255,.08);
-}
-.sb-tab{
-  flex:1;padding:10px 4px;border:none;background:none;
-  font-size:13px;font-weight:600;cursor:pointer;color:rgba(255,255,255,.45);
-  font-family:inherit;border-bottom:2px solid transparent;margin-bottom:-2px;
-}
-.sb-tab.active{color:var(--gold);border-bottom-color:var(--gold);}
-.sb-cat-chips{
-  display:flex;gap:7px;padding:10px 14px 4px;overflow-x:auto;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;
-}
-.sb-cat-chips::-webkit-scrollbar{display:none}
-.sb-cat-chip{
-  padding:5px 11px;border-radius:20px;border:1.5px solid var(--border);
-  background:var(--paper);font-size:12px;cursor:pointer;color:var(--muted);
-  font-weight:600;font-family:inherit;white-space:nowrap;flex-shrink:0;
-}
-.sb-cat-chip.active{background:var(--gold);color:var(--forest);border-color:var(--gold);}
+/* ══ SPRACHBAUSTEINE ════════════════════════════════════════════
+   Перевикористовуємо: fc-area, flashcard, fc-face, fc-front, fc-back,
+   fc-header, fc-fav, fc-fav-back, fc-cat, fc-num, fc-body, fc-hint,
+   fc-hint-back, fc-back-header, fc-back-term, fc-def-block, fc-def,
+   vplayer, vplay, vstop, vseq, vlang-btn, vchips, chip, vtab-bar, vtab,
+   vprogrow, vpb, vpbf, mc-progress, mc-question, mc-options, btn, score
+   ════════════════════════════════════════════════════════════════ */
 
-/* ── Learn ── */
-.sb-player-bar{
-  display:flex;align-items:center;gap:8px;
-  padding:8px 14px;flex-shrink:0;
-  border-bottom:1px solid var(--border);background:var(--paper);
-}
-.sb-play-btn{
-  background:var(--forest);color:var(--gold-lt);border:none;
-  border-radius:10px;padding:7px 14px;font-size:16px;cursor:pointer;
-}
-.sb-play-btn.pause{background:var(--leaf);}
-.sb-fav-btn{
-  background:none;border:1.5px solid var(--border);border-radius:10px;
-  padding:6px 10px;font-size:18px;cursor:pointer;color:var(--muted);
-  transition:color .2s,border-color .2s;
-}
-.sb-fav-btn.active{color:var(--gold);border-color:var(--gold);}
-/* Multilang sentence/expl blocks */
-.sb-lang-block{margin-bottom:10px;}
-.sb-lang-block:last-child{margin-bottom:0;}
-.sb-lang-label{
-  font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
-  color:rgba(255,255,255,.35);margin-bottom:4px;
-}
-.sb-lang-label-back{color:var(--muted);}
-.sb-lang-sentence{
-  font-size:16px;font-weight:600;color:#fff;line-height:1.5;
-}
-.sb-lang-sentence b,.sb-lang-sentence strong{color:var(--gold-lt);font-weight:800;}
-.sb-lang-expl{font-size:13px;color:var(--warm);line-height:1.65;}
-.sb-lang-expl strong{color:var(--ink);font-weight:700;}
-.sb-lang-divider{height:1px;background:rgba(255,255,255,.08);margin:8px 0;}
-.sb-lang-divider-back{background:var(--border);}
+/* fc-area height у вигляді SB (є vprogrow = fixed внизу) */
+#view-sb.active { display:flex; flex-direction:column; padding:0; overflow:hidden; }
+#view-sb .vocab-top { flex-shrink:0; padding:10px 14px 0; }
+#view-sb .vchips { margin-bottom:8px; }
 
-#sb-panel-learn{
-  flex:1;min-height:0;display:flex;flex-direction:column;
-  overflow:hidden;
-  padding-bottom:0;
+/* Learn panel — flex column, fc-area fills space */
+#sb-panel-learn {
+  flex:1; min-height:0; display:flex; flex-direction:column;
+  padding:0 14px;
 }
-.sb-learn-card{
-  flex:1;min-height:0;border-radius:0;
-  position:relative;overflow:hidden;touch-action:none;user-select:none;
-  margin:0;
-}
-.sb-learn-front,.sb-learn-back{
-  position:absolute;inset:0;padding:14px 16px;
-  display:flex;flex-direction:column;
-}
-.sb-learn-front{border-radius:0;}
-.sb-learn-back{border-radius:0;}
-.sb-learn-front{
-  background:linear-gradient(145deg,var(--forest),var(--leaf));
-  box-shadow:0 6px 24px rgba(13,43,26,.22);
-  background-image:radial-gradient(ellipse at 10% 10%,rgba(201,168,76,.12) 0%,transparent 50%),linear-gradient(145deg,var(--forest),var(--leaf));
-}
-.sb-learn-back{
-  background:var(--paper);border:1.5px solid var(--border);
-  box-shadow:0 3px 14px rgba(0,0,0,.06);
-}
-.sb-learn-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-shrink:0;}
-.sb-learn-cat-badge{
-  font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px;
-  background:rgba(255,255,255,.14);color:rgba(255,255,255,.9);text-transform:uppercase;letter-spacing:.3px;
-}
-.sb-learn-cat-badge-back{background:var(--gold-dim);color:var(--warm);}
-.sb-learn-counter{font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,.3);}
-.sb-learn-counter-back{color:var(--muted);}
-.sb-learn-sentence{
-  flex:1;display:flex;align-items:center;overflow:hidden;
-  font-size:17px;font-weight:600;color:#fff;line-height:1.45;
-}
-.sb-learn-sentence strong,.sb-learn-sentence b{color:var(--gold-lt);font-weight:800;}
-.sb-learn-expl{
-  flex:1;font-size:14px;color:var(--warm);line-height:1.65;overflow-y:auto;
-}
-.sb-learn-expl strong{color:var(--ink);font-weight:700;}
-.sb-learn-footer{
-  display:flex;align-items:center;justify-content:space-between;
-  flex-shrink:0;margin-top:10px;gap:8px;
-  padding-bottom:calc(64px + env(safe-area-inset-bottom,0px));
-}
-.sb-learn-footer-back{justify-content:center;}
-.sb-learn-hint{font-size:11px;color:rgba(255,255,255,.28);text-align:center;}
-.sb-tts-btn{
-  background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.2);
-  color:#fff;border-radius:10px;padding:6px 12px;font-size:16px;
-  cursor:pointer;flex-shrink:0;transition:background .15s;
-}
-.sb-tts-btn:active{background:rgba(255,255,255,.25);}
-.sb-tts-btn.playing{background:rgba(201,168,76,.3);border-color:var(--gold);}
-.sb-swipe-hints{display:flex;gap:16px;}
-.sb-swipe-hint{font-size:12px;font-weight:700;padding:4px 12px;border-radius:8px;}
-.sb-swipe-hard{background:rgba(192,57,43,.15);color:var(--red);}
-.sb-swipe-easy{background:rgba(46,204,113,.12);color:#27ae60;}
-/* Swipe overlay hints */
-.sb-swipe-overlay{
-  position:absolute;inset:0;border-radius:16px;
-  display:flex;align-items:center;justify-content:center;
-  font-size:28px;font-weight:800;pointer-events:none;
-  opacity:0;transition:opacity .1s;z-index:10;
-}
-.sb-overlay-hard{background:rgba(192,57,43,.18);color:var(--red);}
-.sb-overlay-easy{background:rgba(46,204,113,.14);color:#1a7a44;}
-.sb-overlay-prev{background:rgba(100,100,100,.15);color:var(--ink);}
-.sb-overlay-next{background:rgba(100,100,100,.15);color:var(--ink);}
-/* Card slide animations */
-@keyframes sbSlideOutLeft{to{transform:translateX(-110%);opacity:0}}
-@keyframes sbSlideOutRight{to{transform:translateX(110%);opacity:0}}
-@keyframes sbSlideInLeft{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
-@keyframes sbSlideInRight{from{transform:translateX(-110%);opacity:0}to{transform:translateX(0);opacity:1}}
-@keyframes sbBounceUp{to{transform:translateY(-30px);opacity:0}}
-@keyframes sbBounceDown{to{transform:translateY(30px);opacity:0}}
-.sb-card-out-left{animation:sbSlideOutLeft .2s ease forwards}
-.sb-card-out-right{animation:sbSlideOutRight .2s ease forwards}
-.sb-card-in-left{animation:sbSlideInLeft .22s ease forwards}
-.sb-card-in-right{animation:sbSlideInRight .22s ease forwards}
-.sb-card-out-up{animation:sbBounceUp .18s ease forwards}
-.sb-card-out-down{animation:sbBounceDown .18s ease forwards}
-
-/* ── Practice ── */
-#sb-panel-practice{
-  flex:1;min-height:0;display:flex;flex-direction:column;
-  padding:10px 14px;gap:10px;overflow-y:auto;
-  padding-bottom:calc(64px + env(safe-area-inset-bottom,0px) + 16px);
-}
-.sb-prac-header{display:flex;align-items:center;justify-content:space-between;}
-.sb-prac-cat-badge{
-  font-size:12px;font-weight:700;padding:3px 10px;border-radius:6px;
-  background:var(--gold-dim);color:var(--warm);text-transform:uppercase;letter-spacing:.3px;
-}
-.sb-prac-counter{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);}
-.sb-prac-dots{display:flex;gap:5px;justify-content:center;padding:4px 0;}
-.sb-prac-dot{
-  width:8px;height:8px;border-radius:50%;background:var(--border);transition:background .3s;
-}
-.sb-prac-dot.correct{background:#27ae60;}
-.sb-prac-dot.wrong{background:var(--red);}
-.sb-prac-dot.current{background:var(--gold);}
-.sb-prac-sentence{
-  background:var(--paper);border-radius:14px;border:1px solid var(--border);
-  padding:16px;font-size:16px;color:var(--ink);line-height:1.55;font-weight:500;
-  box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-.sb-prac-blank,.sb-learn-blank{
-  display:inline-block;min-width:80px;padding:2px 8px;
-  background:var(--soft);border-bottom:2.5px solid var(--gold);
-  border-radius:4px 4px 0 0;color:var(--muted);font-style:italic;
-}
-.sb-learn-blank{background:rgba(255,255,255,.15);color:rgba(255,255,255,.5);border-bottom-color:var(--gold-lt);}
-.sb-prac-options{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
-.sb-opt-btn{
-  padding:12px 10px;border-radius:12px;border:1.5px solid var(--border);
-  background:var(--paper);font-size:14px;font-weight:600;cursor:pointer;
-  font-family:inherit;color:var(--ink);text-align:center;line-height:1.3;
-  transition:border-color .15s,background .15s;
-}
-.sb-opt-btn:active{opacity:.8;}
-.sb-opt-btn.correct{background:rgba(46,204,113,.12);border-color:#27ae60;color:#1a7a44;}
-.sb-opt-btn.wrong{background:rgba(192,57,43,.1);border-color:var(--red);color:var(--red);}
-.sb-opt-btn.disabled{pointer-events:none;opacity:.5;}
-.sb-prac-feedback{
-  background:var(--paper);border-radius:14px;border:1px solid var(--border);
-  padding:14px 16px;
-}
-.sb-prac-feedback-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;}
-.sb-prac-feedback-icon{font-size:22px;}
-.sb-prac-feedback-title{font-size:16px;font-weight:700;color:var(--ink);}
-.sb-prac-feedback-expl{font-size:13px;color:var(--warm);line-height:1.6;margin-bottom:12px;}
-.sb-prac-result{
-  text-align:center;padding:24px 16px;
-  background:var(--paper);border-radius:16px;border:1px solid var(--border);
-}
-.sb-result-circle{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:42px;color:var(--gold);
-  margin-bottom:8px;
-}
-.sb-result-label{font-size:15px;color:var(--warm);}
-
-/* ── Exam ── */
-#sb-panel-exam{
-  flex:1;min-height:0;display:flex;flex-direction:column;
-  padding:10px 14px;gap:10px;overflow-y:auto;
-  padding-bottom:calc(64px + env(safe-area-inset-bottom,0px) + 16px);
-}
-.sb-exam-header{
-  display:flex;align-items:center;justify-content:space-between;
-  background:linear-gradient(135deg,var(--forest),var(--leaf));
-  padding:12px 16px;border-radius:14px;
-}
-.sb-exam-title{font-size:15px;font-weight:700;color:var(--gold-lt);}
-.sb-exam-timer{
-  font-family:'JetBrains Mono',monospace;font-size:20px;font-weight:700;
-  color:#fff;background:rgba(0,0,0,.25);padding:4px 12px;border-radius:8px;
-}
-.sb-exam-timer.urgent{color:#ff6b6b;animation:timerPulse .7s ease-in-out infinite;}
-@keyframes timerPulse{0%,100%{opacity:1}50%{opacity:.6}}
-.sb-exam-dots{display:flex;gap:6px;justify-content:center;padding:4px 0;}
-.sb-exam-dot{
-  width:10px;height:10px;border-radius:50%;background:var(--border);
-  transition:background .3s;
-}
-.sb-exam-dot.answered{background:var(--gold);}
-.sb-exam-dot.current{background:var(--gold);box-shadow:0 0 0 3px rgba(201,168,76,.3);}
-.sb-exam-task{
-  background:var(--paper);border-radius:16px;border:1px solid var(--border);
-  padding:16px;box-shadow:0 2px 8px rgba(0,0,0,.04);
-}
-.sb-exam-q-num{font-size:12px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;}
-.sb-exam-sentence{font-size:16px;color:var(--ink);line-height:1.55;font-weight:500;margin-bottom:14px;}
-.sb-exam-options{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
-.sb-exam-opt{
-  padding:10px 8px;border-radius:10px;border:1.5px solid var(--border);
-  background:var(--soft);font-size:13px;font-weight:600;cursor:pointer;
-  font-family:inherit;color:var(--ink);text-align:center;line-height:1.3;
-}
-.sb-exam-opt.selected{background:var(--gold-dim);border-color:var(--gold);color:var(--warm);}
-.sb-exam-opt.disabled{pointer-events:none;}
-.sb-exam-result{
-  background:var(--paper);border-radius:16px;border:1px solid var(--border);padding:20px 16px;
-  text-align:center;
-}
-.sb-exam-score-num{
-  font-family:'Syne',sans-serif;font-weight:800;font-size:48px;margin-bottom:4px;
-}
-.sb-exam-score-num.great{color:#27ae60;}
-.sb-exam-score-num.ok{color:var(--gold);}
-.sb-exam-score-num.bad{color:var(--red);}
-.sb-exam-score-label{font-size:14px;color:var(--warm);margin-bottom:16px;}
-.sb-exam-review{text-align:left;border-top:1px solid var(--border);padding-top:14px;margin-top:10px;}
-.sb-review-item{
-  padding:10px 0;border-bottom:1px solid var(--soft);font-size:13px;
-}
-.sb-review-item:last-child{border-bottom:none;}
-.sb-review-sentence{color:var(--ink);line-height:1.45;margin-bottom:4px;}
-.sb-review-answers{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:4px;}
-.sb-review-given{
-  padding:2px 8px;border-radius:6px;font-size:12px;font-weight:700;
-}
-.sb-review-given.ok{background:rgba(46,204,113,.15);color:#1a7a44;}
-.sb-review-given.nok{background:rgba(192,57,43,.1);color:var(--red);}
-.sb-review-correct{
-  padding:2px 8px;border-radius:6px;font-size:12px;font-weight:700;
-  background:rgba(201,168,76,.15);color:var(--warm);
-}
-.sb-review-expl{font-size:12px;color:var(--muted);line-height:1.5;}
-.sb-exam-submit{
-  position:sticky;bottom:calc(64px + env(safe-area-inset-bottom,0px) + 8px);
-  width:100%;padding:14px;border-radius:14px;border:none;
-  background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);
-  font-size:16px;font-weight:800;cursor:pointer;font-family:inherit;
-  box-shadow:0 4px 16px rgba(201,168,76,.4);
-  flex-shrink:0;
+#sb-panel-learn .fc-area {
+  /* Override vocab height calc — simpler for SB context */
+  height:calc(
+    100dvh
+    - var(--hdr-h) - var(--safe-t)
+    - 75px          /* vplayer */
+    - var(--gap)
+    - 40px          /* vchips */
+    - var(--gap)
+    - 38px          /* vtabs */
+    - var(--prog-h) - var(--gap)
+    - var(--lm-nav)
+    - env(safe-area-inset-bottom,0px)
+    - 20px
+  );
+  margin-bottom:var(--gap);
 }
 
-/* ── Shared buttons ── */
-.sb-btn-next{
-  width:100%;padding:12px;border-radius:12px;border:none;
-  background:var(--forest);color:var(--gold-lt);font-size:15px;font-weight:700;
-  cursor:pointer;font-family:inherit;
+/* Practice panel */
+#sb-panel-practice {
+  flex:1; display:flex; flex-direction:column;
+  padding:0 14px;
+  padding-bottom:calc(var(--lm-nav) + env(safe-area-inset-bottom,0px) + var(--prog-h) + 24px);
+  overflow-y:auto;
 }
-.sb-btn-primary{
-  padding:13px 28px;border-radius:12px;border:none;
-  background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);
-  font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;
-  box-shadow:0 3px 12px rgba(201,168,76,.35);
+#sb-panel-practice .vprogrow { position:fixed; }
+
+/* Exam panel */
+#sb-panel-exam {
+  flex:1; display:flex; flex-direction:column;
+  padding:10px 14px;
+  padding-bottom:calc(var(--lm-nav) + env(safe-area-inset-bottom,0px) + 16px);
+  overflow-y:auto;
 }
+.sb-exam-result { text-align:center; padding:20px 0; }
+.sb-exam-review { text-align:left; border-top:1px solid var(--border); padding-top:14px; margin-top:10px; }
+.sb-review-item { padding:10px 0; border-bottom:1px solid var(--soft); font-size:13px; }
+.sb-review-item:last-child { border-bottom:none; }
+.sb-review-sentence { color:var(--ink); line-height:1.45; margin-bottom:4px; }
+.sb-review-answers { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:4px; }
+.sb-review-given { padding:2px 8px; border-radius:6px; font-size:12px; font-weight:700; }
+.sb-review-given.ok  { background:rgba(46,204,113,.15); color:#1a7a44; }
+.sb-review-given.nok { background:rgba(192,57,43,.1); color:var(--red); }
+.sb-review-correct   { padding:2px 8px; border-radius:6px; font-size:12px; font-weight:700; background:rgba(201,168,76,.15); color:var(--warm); }
+
+/* Sentence with blank — matches mc-q-term style */
+.sb-sentence { font-size:16px; color:var(--ink); line-height:1.55; font-weight:500; }
+.sb-blank { display:inline-block; min-width:70px; border-bottom:2.5px solid var(--gold); padding:0 4px; color:var(--muted); font-style:italic; }
+
+/* Feedback block */
+.sb-prac-feedback { background:var(--paper); border-radius:14px; border:1px solid var(--border); padding:14px 16px; margin-top:10px; }
+.sb-prac-feedback-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
+.sb-prac-feedback-icon { font-size:20px; }
+.sb-prac-feedback-title { font-size:15px; font-weight:700; color:var(--ink); }
+.sb-prac-feedback-expl { font-size:13px; color:var(--warm); line-height:1.6; }
+.sb-prac-result { text-align:center; padding:24px 0; }
+
+/* Exam timer urgent */
+.sb-timer-urgent { color:var(--red) !important; animation:timerPulse .7s ease-in-out infinite; }
+@keyframes timerPulse { 0%,100%{opacity:1}50%{opacity:.5} }
+
+/* mc-options used in practice/exam: make buttons work as answer tiles */
+#sb-prac-options .mc-opt, #sb-exam-options .mc-opt {
+  cursor:pointer; transition:border-color .15s, background .15s;
+}
+#sb-prac-options .mc-opt.correct { background:rgba(46,204,113,.12); border-color:#27ae60; color:#1a7a44; }
+#sb-prac-options .mc-opt.wrong   { background:rgba(192,57,43,.10);  border-color:var(--red); color:var(--red); }
+#sb-prac-options .mc-opt.disabled,
+#sb-exam-options .mc-opt.disabled { pointer-events:none; opacity:.5; }
+#sb-exam-options .mc-opt.selected { background:var(--gold-dim); border-color:var(--gold); color:var(--warm); }
+
+/* Front: sentence lines per lang */
+.sb-front-lang { margin-bottom:8px; }
+.sb-front-lang:last-child { margin-bottom:0; }
+.sb-front-lang-label { font-size:11px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:3px; }
+.sb-front-sentence { font-size:16px; font-weight:600; color:#fff; line-height:1.5; }
+.sb-front-sentence b { color:var(--gold-lt); font-weight:800; }
+.sb-front-divider { height:1px; background:rgba(255,255,255,.08); margin:8px 0; }
+
+/* Back: expl per lang (reuse fc-def-block / fc-def patterns) */
+.sb-back-divider { height:1px; background:var(--border); margin:8px 0; }
+
+/* seq btn modes */
+#sb-seq-btn.learn    { border-color:var(--gold); background:var(--gold); color:var(--forest); }
+#sb-seq-btn.practice { border-color:var(--gold); background:var(--gold-dim); color:var(--warm); }
+#sb-seq-btn.exam     { border-color:var(--red);  background:rgba(192,57,43,.1); color:var(--red); }
 
 
 </style>
@@ -1646,110 +1441,110 @@ body{
 
     <!-- SPRACHBAUSTEINE TRAINER -->
     <div id="view-sb" class="view">
-      <div class="sb-header">
-        <div class="sb-title-row">
-          <span class="sb-title-text">Sprachbausteine</span>
-          <div class="sb-progress-badge" id="sb-progress-badge">0 / 48</div>
-        </div>
-        <div class="sb-tab-bar">
-          <button class="sb-tab active" id="sbt-learn" onclick="sbSetMode('learn')">📖 Lernen</button>
-          <button class="sb-tab" id="sbt-practice" onclick="sbSetMode('practice')">🎯 Üben</button>
-          <button class="sb-tab" id="sbt-exam" onclick="sbSetMode('exam')">📝 Prüfung</button>
-        </div>
-      </div>
-      <div class="sb-cat-chips" id="sb-cat-chips"></div>
-      <!-- LEARN MODE -->
-      <div id="sb-panel-learn">
-        <!-- Player bar (mirrors vocab player) -->
-        <div class="sb-player-bar">
-          <button class="vplay sb-play-btn" id="sb-play-btn" onclick="sbTogglePlay()">▶</button>
-          <button class="vstop" onclick="sbStopPlay()" style="font-size:14px;padding:6px 10px">⏹</button>
-          <div class="vlang-grp" style="margin-left:auto">
-            <button class="vlang-btn on" id="sblang-de" onclick="sbToggleLang('de')">🇩🇪 DE</button>
-            <button class="vlang-btn on" id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn on" id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
-          </div>
-          <button class="sb-fav-btn" id="sb-fav-btn" onclick="sbToggleFav()">☆</button>
-        </div>
 
-        <div class="sb-learn-card" id="sb-learn-card">
-          <div class="sb-learn-front" id="sb-learn-front">
-            <div class="sb-learn-header">
-              <div class="sb-learn-cat-badge" id="sb-learn-cat"></div>
-              <div class="sb-learn-counter" id="sb-learn-counter">1 / 48</div>
-            </div>
-            <div class="sb-learn-sentences" id="sb-learn-sentences"></div>
-            <div class="sb-learn-footer">
-              <div class="sb-learn-hint">↕ перевернути · ← → навігація</div>
-            </div>
+      <!-- ── TOP: vplayer + vchips + vtabs (mirror of vocab) ── -->
+      <div class="vocab-top" id="sb-vocab-top">
+        <div class="vplayer">
+          <button class="vplay" id="sb-play-btn" onclick="sbTogglePlay()">▶</button>
+          <button class="vstop" onclick="sbStopPlay()">⏹</button>
+          <button class="vseq" id="sb-seq-btn" onclick="sbCycleMode()" title="Modus">📖</button>
+          <div class="vlang-grp">
+            <button class="vlang-btn on" id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
+            <button class="vlang-btn on" id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
+            <button class="vlang-btn on" id="sblang-de" onclick="sbToggleLang('de')">🇩🇪 DE</button>
           </div>
-          <div class="sb-learn-back" id="sb-learn-back" style="display:none">
-            <div class="sb-learn-header">
-              <div class="sb-learn-cat-badge sb-learn-cat-badge-back" id="sb-learn-cat-back"></div>
-              <div class="sb-learn-counter sb-learn-counter-back" id="sb-learn-counter-back">1 / 48</div>
-            </div>
-            <div class="sb-learn-expls" id="sb-learn-expls"></div>
-            <div class="sb-learn-footer sb-learn-footer-back">
-              <div class="sb-swipe-hints">
-                <span class="sb-swipe-hint sb-swipe-hard">↑ Важко</span>
-                <span class="sb-swipe-hint sb-swipe-easy">↓ Легко</span>
-              </div>
-            </div>
-          </div>
-          <div class="sb-swipe-overlay sb-overlay-hard" id="sb-overlay-hard">😅 Важко</div>
-          <div class="sb-swipe-overlay sb-overlay-easy" id="sb-overlay-easy">✨ Легко</div>
-          <div class="sb-swipe-overlay sb-overlay-prev" id="sb-overlay-prev">← Назад</div>
-          <div class="sb-swipe-overlay sb-overlay-next" id="sb-overlay-next">Далі →</div>
+        </div>
+        <div class="vchips" id="sb-cat-chips"></div>
+        <div class="vtab-bar">
+          <button class="vtab active" id="sbt-learn"    onclick="sbSetMode('learn')">📖 Lernen</button>
+          <button class="vtab"        id="sbt-practice" onclick="sbSetMode('practice')">🎯 Üben</button>
+          <button class="vtab"        id="sbt-exam"     onclick="sbSetMode('exam')">📝 Prüfung</button>
         </div>
       </div>
-      <!-- PRACTICE MODE -->
-      <div id="sb-panel-practice" style="display:none">
-        <div class="sb-prac-header">
-          <div class="sb-prac-cat-badge" id="sb-prac-cat"></div>
-          <div class="sb-prac-counter" id="sb-prac-counter">1 / 10</div>
+
+      <!-- ── LEARN MODE ── -->
+      <div id="sb-panel-learn" style="display:none">
+        <div class="fc-area" id="sb-fc-area">
+          <div class="flashcard" id="sb-flashcard">
+            <!-- FRONT -->
+            <div class="fc-face fc-front">
+              <div class="fc-header">
+                <button class="fc-fav" id="sb-fav-front" onclick="sbToggleFav(event)">☆</button>
+                <div class="fc-cat" id="sb-fc-cat"></div>
+                <div class="fc-num" id="sb-fc-num">1 / 48</div>
+              </div>
+              <div class="fc-body" id="sb-front-body"></div>
+              <div class="fc-hint" id="sb-front-hint">↕ перевернути · ← → навігація</div>
+            </div>
+            <!-- BACK -->
+            <div class="fc-face fc-back">
+              <div class="fc-back-header">
+                <button class="fc-fav-back" id="sb-fav-back" onclick="sbToggleFav(event)">☆</button>
+                <div class="fc-back-term" id="sb-back-answer"></div>
+                <div class="fc-num-back" id="sb-fc-num-back">1 / 48</div>
+              </div>
+              <div class="fc-body" id="sb-back-body" style="overflow-y:auto"></div>
+              <div class="fc-hint-back">↑ Важко · ↓ Легко · ← → навігація</div>
+            </div>
+          </div>
+          <!-- Swipe overlays reuse fc-area animation classes -->
         </div>
-        <div class="sb-prac-dots" id="sb-prac-dots"></div>
-        <div class="sb-prac-sentence" id="sb-prac-sentence"></div>
-        <div class="sb-prac-options" id="sb-prac-options"></div>
+        <div class="vprogrow" id="sb-vprogrow">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);white-space:nowrap" id="sb-prgtxt">1 / 48</span>
+          <div class="vpb"><div class="vpbf" id="sb-vpbf" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- ── PRACTICE MODE ── -->
+      <div id="sb-panel-practice" style="display:none">
+        <div class="mc-progress" id="sb-prac-dots"></div>
+        <div class="mc-question" id="sb-prac-question">
+          <div class="mc-q-label" id="sb-prac-cat"></div>
+          <div class="mc-q-row"><div class="mc-q-term" id="sb-prac-sentence"></div></div>
+        </div>
+        <div class="mc-options" id="sb-prac-options"></div>
         <div class="sb-prac-feedback" id="sb-prac-feedback" style="display:none">
           <div class="sb-prac-feedback-row">
             <span class="sb-prac-feedback-icon" id="sb-prac-fb-icon"></span>
             <span class="sb-prac-feedback-title" id="sb-prac-fb-title"></span>
           </div>
           <div class="sb-prac-feedback-expl" id="sb-prac-fb-expl"></div>
-          <button class="sb-btn-next" id="sb-prac-next" onclick="sbPracNext()">Weiter →</button>
+          <button class="btn" style="width:100%;margin-top:10px" onclick="sbPracNext()">Weiter →</button>
         </div>
         <div class="sb-prac-result" id="sb-prac-result" style="display:none">
-          <div class="sb-result-circle" id="sb-result-score"></div>
-          <div class="sb-result-label" id="sb-result-label"></div>
-          <button class="sb-btn-primary" style="margin-top:16px" onclick="sbStartPractice()">🔄 Nochmal üben</button>
+          <div class="score" id="sb-result-score"></div>
+          <p id="sb-result-label"></p>
+          <button class="btn" onclick="sbStartPractice()">🔄 Nochmal üben</button>
+        </div>
+        <div class="vprogrow" id="sb-prac-progrow">
+          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted)" id="sb-prac-counter">1 / 10</span>
+          <div class="vpb"><div class="vpbf" id="sb-prac-vpbf" style="width:0%"></div></div>
         </div>
       </div>
-      <!-- EXAM SIM MODE -->
+
+      <!-- ── EXAM SIM MODE ── -->
       <div id="sb-panel-exam" style="display:none">
-        <div class="sb-exam-header">
-          <div class="sb-exam-title">📝 Prüfungssimulation</div>
-          <div class="sb-exam-timer" id="sb-exam-timer">5:00</div>
+        <div class="vplayer" style="margin-bottom:8px">
+          <div style="font-weight:700;color:var(--gold);font-size:14px">📝 Prüfungssimulation</div>
+          <div class="fc-num" style="margin-left:auto;font-size:16px;font-weight:800;color:var(--ink)" id="sb-exam-timer">5:00</div>
         </div>
-        <div class="sb-exam-dots" id="sb-exam-dots"></div>
-        <div class="sb-exam-task" id="sb-exam-task">
-          <div class="sb-exam-q-num" id="sb-exam-q-num">Aufgabe 1 von 6</div>
-          <div class="sb-exam-sentence" id="sb-exam-sentence"></div>
-          <div class="sb-exam-options" id="sb-exam-options"></div>
+        <div class="mc-progress" id="sb-exam-dots"></div>
+        <div class="mc-question" id="sb-exam-task">
+          <div class="mc-q-label" id="sb-exam-q-num">Aufgabe 1 von 6</div>
+          <div class="mc-q-row"><div class="mc-q-term" id="sb-exam-sentence"></div></div>
         </div>
+        <div class="mc-options" id="sb-exam-options"></div>
+        <button class="btn" id="sb-exam-submit" onclick="sbExamSubmit()" style="display:none;width:100%;margin-top:8px">Auswertung →</button>
         <div class="sb-exam-result" id="sb-exam-result" style="display:none">
-          <div class="sb-exam-score-wrap">
-            <div class="sb-exam-score-num" id="sb-exam-score-num">0/6</div>
-            <div class="sb-exam-score-label" id="sb-exam-score-label"></div>
-          </div>
+          <div class="score" id="sb-exam-score-num">0/6</div>
+          <p id="sb-exam-score-label"></p>
           <div class="sb-exam-review" id="sb-exam-review"></div>
-          <button class="sb-btn-primary" style="margin-top:20px" onclick="sbStartExam()">🔄 Nochmal</button>
+          <button class="btn" style="width:100%;margin-top:12px" onclick="sbStartExam()">🔄 Nochmal</button>
         </div>
-        <button class="sb-exam-submit" id="sb-exam-submit" onclick="sbExamSubmit()" style="display:none">Auswertung →</button>
       </div>
     </div>
 
-    <div id="view-settings" class="view">
+        <div id="view-settings" class="view">
       <div class="sh"><h2>⚙️ Einstellungen</h2></div>
 
       <div class="ssec">
@@ -1859,7 +1654,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '57-c3e61c6';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5136,24 +4931,9 @@ function sbMarkLearned(id) {
   sbUpdateProgressBadge();
 }
 function sbIsLearned(id) { return (sbLoadState().learned || []).includes(id); }
-function sbUpdateProgressBadge() {
-  var total = typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE.length : 48;
-  var learned = (sbLoadState().learned || []).length;
-  var el = document.getElementById('sb-progress-badge');
-  if (el) el.textContent = learned + ' / ' + total;
-}
-
-// ── Helper: get active card lang (mirrors vocab card lang setting) ──
-function sbCardLang() {
-  // Use first active lang from V.langs in priority de > uk > en
-  if (typeof V !== 'undefined' && V.langs) {
-    if (V.langs.de) return 'de';
-    if (V.langs.uk) return 'uk';
-    if (V.langs.en) return 'en';
-  }
-  return 'de';
-}
-function sbExplLang() { return typeof uiLang !== 'undefined' ? uiLang : 'de'; }
+// ── Helper: card/expl lang (legacy stubs, now replaced by SB.langs) ──
+function sbCardLang() { return SB.langs.de?'de':SB.langs.uk?'uk':'en'; }
+function sbExplLang() { return SB.langs.de?'de':SB.langs.uk?'uk':'en'; }
 
 // Helper: get localised string from multilingual field (obj or string)
 function sbL(field, lang) {
@@ -5169,16 +4949,13 @@ var SB = {
   learnIdx: 0,
   learnFlipped: false,
   learnQueue: [],
-  // SB-specific lang settings (independent from V.langs)
-  langs: (function(){ try{ return JSON.parse(localStorage.getItem('mova_sb_langs')||'null') || {de:true,uk:true,en:true}; }catch(e){ return {de:true,uk:true,en:true}; } })(),
+  langs: (function(){ try{ return JSON.parse(localStorage.getItem('mova_sb_langs')||'null') || {en:true,uk:true,de:true}; }catch(e){ return {en:true,uk:true,de:true}; } })(),
   playing: false,
   playCardGen: 0,
-
   pracQueue: [],
   pracIdx: 0,
   pracAnswered: false,
   pracResults: [],
-
   examCards: [],
   examIdx: 0,
   examAnswers: [],
@@ -5187,27 +4964,29 @@ var SB = {
   examDone: false,
 };
 
-function sbSaveLangs() {
-  try { localStorage.setItem('mova_sb_langs', JSON.stringify(SB.langs)); } catch(e) {}
-}
-function sbGetActiveLangs() {
-  var order = ['de','uk','en'];
-  return order.filter(function(l) { return SB.langs[l]; });
-}
+function sbSaveLangs() { try{ localStorage.setItem('mova_sb_langs', JSON.stringify(SB.langs)); }catch(e){} }
+function sbGetActiveLangs() { return ['en','uk','de'].filter(function(l){ return SB.langs[l]; }); }
 
-// ── INIT ──
+// ── INIT ──────────────────────────────────────────────────────
 function initSB() {
   if (typeof SPRACHBAUSTEINE === 'undefined') return;
   sbUpdateProgressBadge();
   sbApplyLangUI();
   sbRenderCatChips();
-  // Always rebuild queue in case data just loaded
   sbBuildLearnQueue();
   sbSetMode(SB.mode || 'learn');
 }
 
+function sbUpdateProgressBadge() {
+  var total   = typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE.length : 48;
+  var learned = (sbLoadState().learned || []).length;
+  // reuse prgtxt if visible, else just store
+  var el = document.getElementById('sb-prgtxt');
+  if (el) el.textContent = learned + ' / ' + total;
+}
+
 function sbApplyLangUI() {
-  ['de','uk','en'].forEach(function(l) {
+  ['en','uk','de'].forEach(function(l) {
     var btn = document.getElementById('sblang-' + l);
     if (!btn) return;
     btn.classList.toggle('on',  SB.langs[l]);
@@ -5217,610 +4996,530 @@ function sbApplyLangUI() {
 
 function sbToggleLang(l) {
   var active = sbGetActiveLangs();
-  if (active.length === 1 && active[0] === l) return; // keep at least one
+  if (active.length === 1 && active[0] === l) return;
   SB.langs[l] = !SB.langs[l];
   sbSaveLangs();
   sbApplyLangUI();
   sbStopPlay();
-  sbRenderLearn();
+  if (SB.mode === 'learn') sbRenderLearn();
 }
 
 function sbRenderCatChips() {
   var el = document.getElementById('sb-cat-chips');
   if (!el || typeof SB_CATS === 'undefined') return;
   el.innerHTML = '';
-  var items = [{ id: 'all', label: 'Alle' }].concat(SB_CATS.map(function(c) {
-    return { id: c.id, label: c.e + '\u00a0' + c.de };
-  }));
-  items.forEach(function(item, i) {
-    var b = document.createElement('button');
-    b.className = 'sb-cat-chip' + (SB.catFilter === item.id ? ' active' : '');
-    b.textContent = item.label;
-    b.onclick = (function(id) { return function() { sbSetCat(id, b); }; })(item.id);
-    el.appendChild(b);
-  });
+  [{ id:'all', label:'Alle' }].concat(SB_CATS.map(function(c){ return { id:c.id, label:c.e+'\u00a0'+c.de }; }))
+    .forEach(function(item) {
+      var b = document.createElement('button');
+      b.className = 'chip' + (SB.catFilter === item.id ? ' active' : '');
+      b.textContent = item.label;
+      b.onclick = (function(id){ return function(){ sbSetCat(id, b); }; })(item.id);
+      el.appendChild(b);
+    });
 }
 
 function sbSetCat(id, btn) {
   SB.catFilter = id;
-  document.querySelectorAll('.sb-cat-chip').forEach(function(b) { b.classList.remove('active'); });
+  document.querySelectorAll('#sb-cat-chips .chip').forEach(function(b){ b.classList.remove('active'); });
   if (btn) btn.classList.add('active');
   sbStopPlay();
-  if (SB.mode === 'learn') { SB.learnIdx = 0; SB.learnFlipped = false; sbBuildLearnQueue(); sbRenderLearn(); }
+  if (SB.mode === 'learn') { SB.learnIdx=0; SB.learnFlipped=false; sbBuildLearnQueue(); sbRenderLearn(); }
   if (SB.mode === 'practice') sbStartPractice();
 }
 
 function sbSetMode(mode) {
   SB.mode = mode;
   ['learn','practice','exam'].forEach(function(m) {
-    var p = document.getElementById('sb-panel-' + m);
-    if (p) { p.style.display = m === mode ? 'flex' : 'none'; p.style.flexDirection = 'column'; }
-    var t = document.getElementById('sbt-' + m);
-    if (t) t.classList.toggle('active', m === mode);
+    var p = document.getElementById('sb-panel-'+m);
+    if (p) p.style.display = m===mode ? 'flex' : 'none';
+    var t = document.getElementById('sbt-'+m);
+    if (t) { t.classList.toggle('active', m===mode); }
   });
-  var chips = document.getElementById('sb-cat-chips');
-  if (chips) chips.style.display = mode === 'exam' ? 'none' : 'flex';
-  var playerBar = document.querySelector('.sb-player-bar');
-  if (playerBar) playerBar.style.display = mode === 'learn' ? 'flex' : 'none';
-
+  // seq btn icon
+  var seq = document.getElementById('sb-seq-btn');
+  var icons = { learn:'📖', practice:'🎯', exam:'📝' };
+  if (seq) { seq.textContent = icons[mode]||'📖'; seq.className='vseq '+mode; }
   sbStopPlay();
-  if (mode === 'learn') {
-    sbBuildLearnQueue();
-    sbRenderLearn();
-    // defer swipe init so DOM is painted after display:flex
-    setTimeout(function() { sbInitLearnSwipe(); }, 50);
-  }
-  if (mode === 'practice') sbStartPractice();
-  if (mode === 'exam')     sbStartExam();
+  if (mode==='learn')    { sbBuildLearnQueue(); sbRenderLearn(); setTimeout(sbInitLearnSwipe,50); }
+  if (mode==='practice') sbStartPractice();
+  if (mode==='exam')     sbStartExam();
 }
 
-// ── LEARN MODE ──
+function sbCycleMode() {
+  var modes = ['learn','practice','exam'];
+  var next = modes[(modes.indexOf(SB.mode)+1) % modes.length];
+  sbSetMode(next);
+}
+
+// ── LEARN ─────────────────────────────────────────────────────
 function sbBuildLearnQueue() {
   if (typeof SPRACHBAUSTEINE === 'undefined') return;
-  SB.learnQueue = SB.catFilter === 'all'
+  SB.learnQueue = SB.catFilter==='all'
     ? SPRACHBAUSTEINE.slice()
-    : SPRACHBAUSTEINE.filter(function(c) { return c.cat === SB.catFilter; });
+    : SPRACHBAUSTEINE.filter(function(c){ return c.cat===SB.catFilter; });
+}
+
+function sbUpdateLearnProgress() {
+  var total = SB.learnQueue.length || 1;
+  var idx   = SB.learnIdx;
+  var pct   = Math.round((idx / total) * 100);
+  var txt   = (idx+1) + ' / ' + total;
+  var el    = document.getElementById('sb-prgtxt');     if(el) el.textContent = txt;
+  var num   = document.getElementById('sb-fc-num');     if(num) num.textContent = txt;
+  var numB  = document.getElementById('sb-fc-num-back');if(numB) numB.textContent = txt;
+  var bar   = document.getElementById('sb-vpbf');       if(bar) bar.style.width = pct+'%';
 }
 
 function sbRenderLearn() {
-  if (!SB.learnQueue.length) sbBuildLearnQueue();
+  if (!SB.learnQueue.length) return;
   var card = SB.learnQueue[SB.learnIdx];
   if (!card) return;
 
-  var langs  = sbGetActiveLangs();
-  var cat    = (typeof SB_CATS !== 'undefined' ? SB_CATS : []).find(function(c) { return c.id === card.cat; });
-  var catLabel = cat ? cat.e + ' ' + cat.de : card.cat;
-  var counter  = (SB.learnIdx + 1) + ' / ' + SB.learnQueue.length;
+  var langs = sbGetActiveLangs();  // order: en, uk, de
+  var cat   = (typeof SB_CATS!=='undefined' ? SB_CATS : []).find(function(c){ return c.id===card.cat; });
+  var catLabel = cat ? cat.e+' '+cat.de : card.cat;
 
-  document.getElementById('sb-learn-cat').textContent          = catLabel;
-  document.getElementById('sb-learn-counter').textContent      = counter;
-  document.getElementById('sb-learn-cat-back').textContent     = catLabel;
-  document.getElementById('sb-learn-counter-back').textContent = counter;
+  // cat badge
+  var catEl = document.getElementById('sb-fc-cat');
+  if (catEl) catEl.textContent = catLabel;
 
-  // FRONT: one block per active lang, each showing sentence with inline blank/answer
-  var frontEl = document.getElementById('sb-learn-sentences');
+  sbUpdateLearnProgress();
+
+  // ── FRONT: sentence per active lang, order en→uk→de ──
+  var frontEl = document.getElementById('sb-front-body');
   if (frontEl) {
-    var langLabels = { de:'🇩🇪 Deutsch', uk:'🇺🇦 Українська', en:'🇬🇧 English' };
+    var langLabels = { en:'🇬🇧 English', uk:'🇺🇦 Українська', de:'🇩🇪 Deutsch' };
     frontEl.innerHTML = langs.map(function(l, i) {
       var raw  = sbL(card.sentence, l);
       var html = SB.learnFlipped
-        ? raw.replace('{{BLANK}}', '<b>' + card.answer + '</b>')
-        : raw.replace('{{BLANK}}', '<span class="sb-prac-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
-      return (i > 0 ? '<div class="sb-lang-divider"></div>' : '')
-        + (langs.length > 1 ? '<div class="sb-lang-label">' + langLabels[l] + '</div>' : '')
-        + '<div class="sb-lang-sentence">' + html + '</div>';
+        ? raw.replace('{{BLANK}}', '<b>'+card.answer+'</b>')
+        : raw.replace('{{BLANK}}', '<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+      return (i>0 ? '<div class="sb-front-divider"></div>' : '')
+        + (langs.length>1 ? '<div class="sb-front-lang-label">'+langLabels[l]+'</div>' : '')
+        + '<div class="sb-front-sentence">'+html+'</div>';
     }).join('');
   }
 
-  // BACK: answer + explanation per active lang
-  var backEl = document.getElementById('sb-learn-expls');
+  // ── BACK: answer + explanation per lang ──
+  var answer = document.getElementById('sb-back-answer');
+  if (answer) answer.textContent = card.answer;
+
+  var backEl = document.getElementById('sb-back-body');
   if (backEl) {
-    var langLabels = { de:'🇩🇪 Erklärung', uk:'🇺🇦 Пояснення', en:'🇬🇧 Explanation' };
-    backEl.innerHTML = '<div style="margin-bottom:10px;font-size:18px;font-weight:800;color:var(--gold)">' + card.answer + '</div>'
-      + langs.map(function(l, i) {
-        var expl = sbL(card.explanation, l).replace(/„([^"]+)"/g, '<strong>„$1"</strong>');
-        return (i > 0 ? '<div class="sb-lang-divider sb-lang-divider-back"></div>' : '')
-          + (langs.length > 1 ? '<div class="sb-lang-label sb-lang-label-back">' + langLabels[l] + '</div>' : '')
-          + '<div class="sb-lang-expl">' + expl + '</div>';
-      }).join('');
+    var langLabels2 = { en:'🇬🇧 Explanation', uk:'🇺🇦 Пояснення', de:'🇩🇪 Erklärung' };
+    backEl.innerHTML = langs.map(function(l, i) {
+      var expl = sbL(card.explanation, l).replace(/„([^"]+)"/g, '<strong>„$1"</strong>');
+      return (i>0 ? '<div class="sb-back-divider"></div>' : '')
+        + (langs.length>1 ? '<div class="fc-def-lang-label">'+langLabels2[l]+'</div>' : '')
+        + '<div class="fc-def">'+expl+'</div>';
+    }).join('');
   }
 
-  var front = document.getElementById('sb-learn-front');
-  var back  = document.getElementById('sb-learn-back');
-  if (front) front.style.display = SB.learnFlipped ? 'none' : 'flex';
-  if (back)  back.style.display  = SB.learnFlipped ? 'flex' : 'none';
+  // fav buttons
+  sbUpdateFavBtns(card.id);
 
-  // Fav button
-  sbUpdateFavBtn(card.id);
+  // flip state — use flashcard CSS class
+  var fc = document.getElementById('sb-flashcard');
+  if (fc) fc.classList.toggle('flipped', SB.learnFlipped);
+}
+
+// ── SWIPE on fc-area (mirror vocab swipe) ──
+function sbInitLearnSwipe() {
+  var area = document.getElementById('sb-fc-area');
+  if (!area || area._sbSwipeInit) return;
+  area._sbSwipeInit = true;
+
+  var sx=0, sy=0, moved=false;
+  function onStart(cx,cy){ sx=cx; sy=cy; moved=false; }
+  function onMove(cx,cy) { if(Math.abs(cx-sx)>8||Math.abs(cy-sy)>8) moved=true; }
+  function onEnd(cx,cy) {
+    var dx=cx-sx, dy=cy-sy, adx=Math.abs(dx), ady=Math.abs(dy);
+    if(!moved||(adx<12&&ady<12)){ sbLearnFlip(); return; }
+    if(adx>ady&&adx>40){ if(dx<0) sbLearnNext(); else sbLearnPrev(); }
+    else if(ady>adx&&ady>40){
+      if(!SB.learnFlipped){ sbLearnFlip(); return; }
+      if(dy<0) sbLearnSwipeHard(); else sbLearnSwipeEasy();
+    }
+  }
+  area.addEventListener('touchstart',function(e){ onStart(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
+  area.addEventListener('touchmove', function(e){ onMove(e.touches[0].clientX,e.touches[0].clientY); }, {passive:true});
+  area.addEventListener('touchend',  function(e){ if(e.cancelable)e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
+  var md=false;
+  area.addEventListener('mousedown',function(e){ md=true; onStart(e.clientX,e.clientY); });
+  area.addEventListener('mousemove',function(e){ if(md) onMove(e.clientX,e.clientY); });
+  area.addEventListener('mouseup',  function(e){ if(md){ md=false; onEnd(e.clientX,e.clientY); } });
 }
 
 function sbLearnFlip() {
   SB.learnFlipped = !SB.learnFlipped;
   sbRenderLearn();
-  if (typeof haptic !== 'undefined') haptic.light();
+  if(typeof haptic!=='undefined') haptic.light();
 }
 
-function sbAnimateCard(dir, callback) {
-  var card = document.getElementById('sb-learn-card');
-  if (!card) { callback(); return; }
-  var outMap = { left:'sb-card-out-left', right:'sb-card-out-right', up:'sb-card-out-up', down:'sb-card-out-down' };
-  var inMap  = { left:'sb-card-in-left', right:'sb-card-in-right' };
-  card.classList.add(outMap[dir]);
-  setTimeout(function() {
-    card.classList.remove(outMap[dir]);
-    callback();
-    if (inMap[dir]) {
-      card.classList.add(inMap[dir]);
-      setTimeout(function() { card.classList.remove(inMap[dir]); }, 240);
-    }
-  }, 180);
+function sbAnimCard(dir, cb) {
+  var area = document.getElementById('sb-fc-area');
+  if (!area) { cb(); return; }
+  var cls = { left:'swipe-out-left', right:'swipe-out-right' };
+  var inCls = dir==='left' ? 'swipe-in-left' : dir==='right' ? 'swipe-in-right' : null;
+  area.classList.add(cls[dir]||'');
+  setTimeout(function(){
+    area.classList.remove(cls[dir]||'');
+    cb();
+    if(inCls){ area.classList.add(inCls); setTimeout(function(){ area.classList.remove(inCls); },240); }
+  },200);
 }
 
 function sbLearnNext() {
-  if (!SB.learnQueue.length) return;
+  if(!SB.learnQueue.length) return;
   sbStopPlay();
-  sbAnimateCard('left', function() {
-    SB.learnIdx = (SB.learnIdx + 1) % SB.learnQueue.length;
-    SB.learnFlipped = false;
-    sbRenderLearn();
-    if (SB.playing) sbAutoPlay();
+  sbAnimCard('left',function(){
+    SB.learnIdx=(SB.learnIdx+1)%SB.learnQueue.length;
+    SB.learnFlipped=false; sbRenderLearn();
+    if(SB.playing) sbAutoPlay();
   });
-  if (typeof haptic !== 'undefined') haptic.medium();
+  if(typeof haptic!=='undefined') haptic.medium();
 }
 
 function sbLearnPrev() {
-  if (!SB.learnQueue.length) return;
+  if(!SB.learnQueue.length) return;
   sbStopPlay();
-  sbAnimateCard('right', function() {
-    SB.learnIdx = (SB.learnIdx - 1 + SB.learnQueue.length) % SB.learnQueue.length;
-    SB.learnFlipped = false;
-    sbRenderLearn();
-    if (SB.playing) sbAutoPlay();
+  sbAnimCard('right',function(){
+    SB.learnIdx=(SB.learnIdx-1+SB.learnQueue.length)%SB.learnQueue.length;
+    SB.learnFlipped=false; sbRenderLearn();
+    if(SB.playing) sbAutoPlay();
   });
-  if (typeof haptic !== 'undefined') haptic.medium();
+  if(typeof haptic!=='undefined') haptic.medium();
 }
 
 function sbLearnSwipeHard() {
-  var card = SB.learnQueue[SB.learnIdx];
-  if (!card) return;
-  var iv = sbGetIntervals(); sbSetInterval(card.id, Math.max(1, Math.floor((iv[card.id]||2)/2)));
-  if (typeof haptic !== 'undefined') haptic.error();
-  sbShowOverlay('hard');
-  sbAnimateCard('up', function() {
-    SB.learnQueue.splice(SB.learnIdx, 1);
-    SB.learnQueue.splice(Math.min(SB.learnIdx+3, SB.learnQueue.length), 0, card);
-    if (SB.learnIdx >= SB.learnQueue.length) SB.learnIdx = 0;
-    SB.learnFlipped = false;
-    sbRenderLearn();
-    if (SB.playing) sbAutoPlay();
-  });
+  var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
+  var iv=sbGetIntervals(); sbSetInterval(card.id,Math.max(1,Math.floor((iv[card.id]||2)/2)));
+  if(typeof haptic!=='undefined') haptic.error();
+  var area=document.getElementById('sb-fc-area');
+  if(area){ area.style.background='rgba(192,57,43,.08)'; setTimeout(function(){ area.style.background=''; },300); }
+  SB.learnQueue.splice(SB.learnIdx,1);
+  SB.learnQueue.splice(Math.min(SB.learnIdx+3,SB.learnQueue.length),0,card);
+  if(SB.learnIdx>=SB.learnQueue.length) SB.learnIdx=0;
+  SB.learnFlipped=false; sbRenderLearn();
+  if(SB.playing) sbAutoPlay();
 }
 
 function sbLearnSwipeEasy() {
-  var card = SB.learnQueue[SB.learnIdx];
-  if (!card) return;
-  var iv = sbGetIntervals(); sbSetInterval(card.id, (iv[card.id]||1)*2);
+  var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
+  var iv=sbGetIntervals(); sbSetInterval(card.id,(iv[card.id]||1)*2);
   sbMarkLearned(card.id);
-  if (typeof haptic !== 'undefined') haptic.success();
-  sbShowOverlay('easy');
-  sbAnimateCard('down', function() {
-    SB.learnIdx = SB.learnIdx % SB.learnQueue.length;
-    SB.learnFlipped = false;
-    sbRenderLearn();
-    if (SB.playing) sbAutoPlay();
-  });
+  if(typeof haptic!=='undefined') haptic.success();
+  var area=document.getElementById('sb-fc-area');
+  if(area){ area.style.background='rgba(46,204,113,.08)'; setTimeout(function(){ area.style.background=''; },300); }
+  SB.learnIdx=SB.learnIdx%SB.learnQueue.length;
+  SB.learnFlipped=false; sbRenderLearn();
+  if(SB.playing) sbAutoPlay();
 }
 
-function sbShowOverlay(type) {
-  var el = document.getElementById('sb-overlay-' + type);
-  if (!el) return;
-  el.style.opacity = '1';
-  setTimeout(function() { el.style.opacity = '0'; }, 500);
-}
-
-// ── SWIPE INIT for Learn card ──
-function sbInitLearnSwipe() {
-  var card = document.getElementById('sb-learn-card');
-  if (!card || card._sbSwipeInit) return;
-  card._sbSwipeInit = true;
-
-  var sx = 0, sy = 0, moved = false;
-  function onStart(cx, cy) { sx = cx; sy = cy; moved = false; }
-  function onMove(cx, cy) { if (Math.abs(cx-sx) > 8 || Math.abs(cy-sy) > 8) moved = true; }
-  function onEnd(cx, cy) {
-    var dx = cx-sx, dy = cy-sy, adx = Math.abs(dx), ady = Math.abs(dy);
-    if (!moved || (adx < 12 && ady < 12)) { sbLearnFlip(); return; }
-    if (adx > ady && adx > 40) { if (dx < 0) sbLearnNext(); else sbLearnPrev(); }
-    else if (ady > adx && ady > 40) {
-      if (!SB.learnFlipped) { sbLearnFlip(); return; }
-      if (dy < 0) sbLearnSwipeHard(); else sbLearnSwipeEasy();
-    }
-  }
-  card.addEventListener('touchstart', function(e){ onStart(e.touches[0].clientX, e.touches[0].clientY); }, {passive:true});
-  card.addEventListener('touchmove',  function(e){ onMove(e.touches[0].clientX, e.touches[0].clientY); },  {passive:true});
-  card.addEventListener('touchend',   function(e){ if(e.cancelable)e.preventDefault(); onEnd(e.changedTouches[0].clientX, e.changedTouches[0].clientY); }, {passive:false});
-  var md = false;
-  card.addEventListener('mousedown', function(e){ md=true; onStart(e.clientX,e.clientY); });
-  card.addEventListener('mousemove', function(e){ if(md) onMove(e.clientX,e.clientY); });
-  card.addEventListener('mouseup',   function(e){ if(md){ md=false; onEnd(e.clientX,e.clientY); } });
-}
-
-// ── PLAYER (autoplay all active langs) ──
+// ── PLAYER ────────────────────────────────────────────────────
 function sbTogglePlay() {
-  if (typeof unlockAudioCtx === 'function') unlockAudioCtx();
-  SB.playing = !SB.playing;
-  var btn = document.getElementById('sb-play-btn');
-  if (btn) { btn.textContent = SB.playing ? '⏸' : '▶'; btn.classList.toggle('pause', SB.playing); }
-  if (SB.playing) sbAutoPlay();
-  else { SB.playCardGen++; stopTTS(); }
+  if(typeof unlockAudioCtx==='function') unlockAudioCtx();
+  SB.playing=!SB.playing;
+  var btn=document.getElementById('sb-play-btn');
+  if(btn){ btn.textContent=SB.playing?'⏸':'▶'; btn.classList.toggle('pause',SB.playing); }
+  if(SB.playing) sbAutoPlay();
+  else { SB.playCardGen++; if(typeof stopTTS==='function') stopTTS(); }
 }
 
 function sbStopPlay() {
-  SB.playing = false;
-  SB.playCardGen++;
-  if (typeof stopTTS === 'function') stopTTS();
-  var btn = document.getElementById('sb-play-btn');
-  if (btn) { btn.textContent = '▶'; btn.classList.remove('pause'); }
+  SB.playing=false; SB.playCardGen++;
+  if(typeof stopTTS==='function') stopTTS();
+  var btn=document.getElementById('sb-play-btn');
+  if(btn){ btn.textContent='▶'; btn.classList.remove('pause'); }
 }
 
 function sbAutoPlay() {
-  var card = SB.learnQueue[SB.learnIdx];
-  if (!card || !SB.playing) return;
-  var langs  = sbGetActiveLangs();
-  var gen    = ++SB.playCardGen;
-  var speed  = (typeof V !== 'undefined' && V.langSpeed) ? V.langSpeed : {de:'100',en:'100',uk:'100'};
+  var card=SB.learnQueue[SB.learnIdx];
+  if(!card||!SB.playing) return;
+  var langs=sbGetActiveLangs();
+  var gen=++SB.playCardGen;
+  var speed=(typeof V!=='undefined'&&V.langSpeed)?V.langSpeed:{de:'100',en:'100',uk:'100'};
 
-  // speak sentence for each active lang in sequence, then flip and speak explanation
-  function speakSentences(li) {
-    if (!SB.playing || SB.playCardGen !== gen) return;
-    if (li >= langs.length) {
-      // after all sentences → flip card
-      SB.learnFlipped = true;
-      sbRenderLearn();
-      setTimeout(function() { speakExpls(0); }, 300);
-      return;
-    }
-    var l    = langs[li];
-    var text = sbL(card.sentence, l).replace('{{BLANK}}', card.answer);
-    var spd  = parseFloat(speed[l] || '100') / 100;
-    speak(text, l, function() {
-      if (!SB.playing || SB.playCardGen !== gen) return;
-      setTimeout(function() { speakSentences(li + 1); }, 400);
-    }, card.id, 'sentence_' + l);
+  function speakSentences(li){
+    if(!SB.playing||SB.playCardGen!==gen) return;
+    if(li>=langs.length){ SB.learnFlipped=true; sbRenderLearn(); setTimeout(function(){ speakExpls(0); },300); return; }
+    var l=langs[li];
+    var text=sbL(card.sentence,l).replace('{{BLANK}}',card.answer);
+    speak(text,l,function(){ if(!SB.playing||SB.playCardGen!==gen) return; setTimeout(function(){ speakSentences(li+1); },400); },card.id,'sentence');
   }
-
-  function speakExpls(li) {
-    if (!SB.playing || SB.playCardGen !== gen) return;
-    if (li >= langs.length) {
-      // all done → pause, advance to next card after readPause
-      var pause = (typeof V !== 'undefined' && V.readPause) ? V.readPause : 800;
-      setTimeout(function() {
-        if (!SB.playing || SB.playCardGen !== gen) return;
-        SB.learnIdx = (SB.learnIdx + 1) % SB.learnQueue.length;
-        SB.learnFlipped = false;
-        sbAnimateCard('left', function() {
+  function speakExpls(li){
+    if(!SB.playing||SB.playCardGen!==gen) return;
+    if(li>=langs.length){
+      var pause=(typeof V!=='undefined'&&V.readPause)?V.readPause:800;
+      setTimeout(function(){
+        if(!SB.playing||SB.playCardGen!==gen) return;
+        SB.learnIdx=(SB.learnIdx+1)%SB.learnQueue.length;
+        SB.learnFlipped=false;
+        sbAnimCard('left',function(){
           sbRenderLearn();
-          setTimeout(function() {
-            if (SB.playing && SB.playCardGen === gen) { gen = ++SB.playCardGen; speakSentences(0); }
-          }, 150);
+          setTimeout(function(){ if(SB.playing&&SB.playCardGen===gen){ gen=++SB.playCardGen; speakSentences(0); } },150);
         });
-      }, pause);
+      },pause);
       return;
     }
-    var l    = langs[li];
-    var expl = sbL(card.explanation, l);
-    speak(expl, l, function() {
-      if (!SB.playing || SB.playCardGen !== gen) return;
-      setTimeout(function() { speakExpls(li + 1); }, 400);
-    }, card.id, 'expl_' + l);
+    var l=langs[li];
+    speak(sbL(card.explanation,l),l,function(){ if(!SB.playing||SB.playCardGen!==gen) return; setTimeout(function(){ speakExpls(li+1); },400); },card.id,'expl');
   }
-
   speakSentences(0);
 }
 
-// ── FAVORITES for SB ──
-function sbIsFav(cardId) {
-  try { return JSON.parse(localStorage.getItem('mova_sb_fav_' + cardId) || '{}').fav === true; } catch(e) { return false; }
+// ── FAVORITES ─────────────────────────────────────────────────
+function sbIsFav(id){ try{ return JSON.parse(localStorage.getItem('mova_sb_fav_'+id)||'{}').fav===true; }catch(e){ return false; } }
+function sbSetFav(id,val){ try{ localStorage.setItem('mova_sb_fav_'+id,JSON.stringify({fav:val})); }catch(e){} }
+function sbToggleFav(e) {
+  if(e) e.stopPropagation();
+  var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
+  var now=!sbIsFav(card.id);
+  sbSetFav(card.id,now);
+  sbUpdateFavBtns(card.id);
+  if(typeof haptic!=='undefined') haptic.light();
+  if(typeof notify==='function') notify(now?'★ Збережено':'☆ Видалено');
 }
-function sbSetFav(cardId, val) {
-  try { localStorage.setItem('mova_sb_fav_' + cardId, JSON.stringify({fav: val})); } catch(e) {}
-}
-function sbToggleFav() {
-  var card = SB.learnQueue[SB.learnIdx];
-  if (!card) return;
-  var now = !sbIsFav(card.id);
-  sbSetFav(card.id, now);
-  sbUpdateFavBtn(card.id);
-  if (typeof haptic !== 'undefined') haptic.light();
-  if (typeof notify === 'function') notify(now ? '★ Збережено' : '☆ Видалено');
-}
-function sbUpdateFavBtn(cardId) {
-  var btn = document.getElementById('sb-fav-btn');
-  if (!btn) return;
-  var fav = sbIsFav(cardId);
-  btn.textContent = fav ? '★' : '☆';
-  btn.classList.toggle('active', fav);
+function sbUpdateFavBtns(id) {
+  var fav=sbIsFav(id);
+  var f=document.getElementById('sb-fav-front'); if(f){ f.textContent=fav?'★':'☆'; f.classList.toggle('active',fav); }
+  var b=document.getElementById('sb-fav-back');  if(b){ b.textContent=fav?'★':'☆'; b.classList.toggle('active',fav); }
 }
 
-// ── PRACTICE MODE ──
-var SB_PRAC_COUNT = 10;
+// ── PRACTICE ──────────────────────────────────────────────────
+var SB_PRAC_COUNT=10;
 
 function sbStartPractice() {
-  if (typeof SPRACHBAUSTEINE === 'undefined') return;
-  var pool = SB.catFilter === 'all'
-    ? SPRACHBAUSTEINE.slice()
-    : SPRACHBAUSTEINE.filter(function(c) { return c.cat === SB.catFilter; });
-
-  if (pool.length < 2) {
-    var el = document.getElementById('sb-prac-sentence');
-    if (el) el.textContent = 'Keine Karten in dieser Kategorie.';
-    return;
-  }
-
-  var intervals = sbGetIntervals();
-  var sorted = pool.slice().sort(function(a, b) { return (intervals[a.id] || 0) - (intervals[b.id] || 0); });
-  SB.pracQueue = sorted.slice(0, Math.min(SB_PRAC_COUNT, sorted.length)).sort(function() { return Math.random() - .5; });
-  SB.pracIdx = 0; SB.pracAnswered = false; SB.pracResults = [];
-
-  document.getElementById('sb-prac-result').style.display = 'none';
-  document.getElementById('sb-prac-feedback').style.display = 'none';
+  if(typeof SPRACHBAUSTEINE==='undefined') return;
+  var pool=SB.catFilter==='all'?SPRACHBAUSTEINE.slice():SPRACHBAUSTEINE.filter(function(c){ return c.cat===SB.catFilter; });
+  if(pool.length<2){ var el=document.getElementById('sb-prac-sentence'); if(el) el.textContent='Keine Karten.'; return; }
+  var iv=sbGetIntervals();
+  SB.pracQueue=pool.slice().sort(function(a,b){ return (iv[a.id]||0)-(iv[b.id]||0); })
+    .slice(0,Math.min(SB_PRAC_COUNT,pool.length)).sort(function(){ return Math.random()-.5; });
+  SB.pracIdx=0; SB.pracAnswered=false; SB.pracResults=[];
+  document.getElementById('sb-prac-result').style.display='none';
+  document.getElementById('sb-prac-feedback').style.display='none';
   sbRenderPrac();
 }
 
 function sbRenderPrac() {
-  var card = SB.pracQueue[SB.pracIdx];
-  if (!card) { sbShowPracResult(); return; }
-  SB.pracAnswered = false;
+  var card=SB.pracQueue[SB.pracIdx]; if(!card){ sbShowPracResult(); return; }
+  SB.pracAnswered=false;
+  var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
+  var cat=(typeof SB_CATS!=='undefined'?SB_CATS:[]).find(function(c){ return c.id===card.cat; });
 
-  var lang = sbCardLang();
-  var cat  = (typeof SB_CATS !== 'undefined' ? SB_CATS : []).find(function(c) { return c.id === card.cat; });
-  document.getElementById('sb-prac-cat').textContent     = cat ? cat.e + ' ' + cat.de : card.cat;
-  document.getElementById('sb-prac-counter').textContent = (SB.pracIdx + 1) + ' / ' + SB.pracQueue.length;
+  // progress bar
+  var pct=Math.round((SB.pracIdx/SB.pracQueue.length)*100);
+  var ctr=document.getElementById('sb-prac-counter'); if(ctr) ctr.textContent=(SB.pracIdx+1)+' / '+SB.pracQueue.length;
+  var bar=document.getElementById('sb-prac-vpbf'); if(bar) bar.style.width=pct+'%';
 
-  var dotsEl = document.getElementById('sb-prac-dots');
-  dotsEl.innerHTML = SB.pracQueue.map(function(_, i) {
-    var cls = i < SB.pracIdx ? (SB.pracResults[i] ? 'correct' : 'wrong') : i === SB.pracIdx ? 'current' : '';
-    return '<div class="sb-prac-dot ' + cls + '"></div>';
+  // dots (mc-progress style)
+  var dotsEl=document.getElementById('sb-prac-dots');
+  if(dotsEl) dotsEl.innerHTML=SB.pracQueue.map(function(_,i){
+    var cls='mc-dot'+(i<SB.pracIdx?' done':i===SB.pracIdx?' current':'');
+    return '<div class="'+cls+'"></div>';
   }).join('');
 
-  var sentHtml = sbL(card.sentence, lang).replace('{{BLANK}}', '<span class="sb-prac-blank">_____</span>');
-  document.getElementById('sb-prac-sentence').innerHTML = sentHtml;
+  // category label
+  var catEl=document.getElementById('sb-prac-cat'); if(catEl) catEl.textContent=cat?cat.e+' '+cat.de:card.cat;
 
-  var distPool = card.distractors.slice();
-  SPRACHBAUSTEINE.forEach(function(c) { if (c.id !== card.id && !distPool.includes(c.answer)) distPool.push(c.answer); });
-  distPool = distPool.filter(function(d) { return d !== card.answer; }).sort(function() { return Math.random() - .5; }).slice(0, 3);
-  var options = [card.answer].concat(distPool).sort(function() { return Math.random() - .5; });
+  // sentence
+  var sentEl=document.getElementById('sb-prac-sentence');
+  if(sentEl) sentEl.innerHTML='<span class="sb-sentence">'+sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')+'</span>';
 
-  var optEl = document.getElementById('sb-prac-options');
-  optEl.innerHTML = '';
-  options.forEach(function(opt) {
-    var b = document.createElement('button');
-    b.className = 'sb-opt-btn';
-    b.textContent = opt;
-    b.onclick = (function(o) { return function() { sbPracAnswer(b, o, card.id); }; })(opt);
-    optEl.appendChild(b);
-  });
+  // options
+  var distPool=card.distractors.slice();
+  SPRACHBAUSTEINE.forEach(function(c){ if(c.id!==card.id&&!distPool.includes(c.answer)) distPool.push(c.answer); });
+  var opts=[card.answer].concat(distPool.filter(function(d){ return d!==card.answer; }).sort(function(){ return Math.random()-.5; }).slice(0,3)).sort(function(){ return Math.random()-.5; });
 
-  document.getElementById('sb-prac-feedback').style.display = 'none';
+  var optEl=document.getElementById('sb-prac-options');
+  if(optEl){
+    optEl.innerHTML='';
+    opts.forEach(function(opt){
+      var b=document.createElement('button');
+      b.className='mc-opt';
+      b.textContent=opt;
+      b.onclick=(function(o){ return function(){ sbPracAnswer(b,o,card.id); }; })(opt);
+      optEl.appendChild(b);
+    });
+  }
+  document.getElementById('sb-prac-feedback').style.display='none';
 }
 
-function sbPracAnswer(btn, chosen, cardId) {
-  if (SB.pracAnswered) return;
-  SB.pracAnswered = true;
-  var card = SB.pracQueue[SB.pracIdx];
-  if (!card || card.id !== cardId) return;
-  var isCorrect = chosen === card.answer;
-  if (typeof haptic !== 'undefined') isCorrect ? haptic.success() : haptic.error();
+function sbPracAnswer(btn,chosen,cardId) {
+  if(SB.pracAnswered) return;
+  SB.pracAnswered=true;
+  var card=SB.pracQueue[SB.pracIdx]; if(!card||card.id!==cardId) return;
+  var ok=chosen===card.answer;
+  if(typeof haptic!=='undefined') ok?haptic.success():haptic.error();
 
-  document.querySelectorAll('.sb-opt-btn').forEach(function(b) {
+  document.querySelectorAll('#sb-prac-options .mc-opt').forEach(function(b){
     b.classList.add('disabled');
-    if (b.textContent === card.answer) b.classList.add('correct');
-    else if (b === btn && !isCorrect) b.classList.add('wrong');
+    if(b.textContent===card.answer) b.classList.add('correct');
+    else if(b===btn&&!ok) b.classList.add('wrong');
   });
 
-  var intervals = sbGetIntervals();
-  var cur = intervals[card.id] || 1;
-  if (isCorrect) {
-    sbSetInterval(card.id, cur * 2);
-    sbMarkLearned(card.id);
-  } else {
-    sbSetInterval(card.id, Math.max(1, Math.floor(cur / 2)));
-    var later = Math.min(SB.pracIdx + 3, SB.pracQueue.length);
-    SB.pracQueue.splice(later, 0, card);
-  }
-  SB.pracResults[SB.pracIdx] = isCorrect;
+  var iv=sbGetIntervals(),cur=iv[card.id]||1;
+  if(ok){ sbSetInterval(card.id,cur*2); sbMarkLearned(card.id); }
+  else { sbSetInterval(card.id,Math.max(1,Math.floor(cur/2))); SB.pracQueue.splice(Math.min(SB.pracIdx+3,SB.pracQueue.length),0,card); }
+  SB.pracResults[SB.pracIdx]=ok;
 
-  var elang = sbExplLang();
-  var explHtml = sbL(card.explanation, elang).replace(/„([^"]+)"/g, '<strong>„$1"</strong>');
-  var fb = document.getElementById('sb-prac-feedback');
-  document.getElementById('sb-prac-fb-icon').textContent  = isCorrect ? '✅' : '❌';
-  var titleEl = fb.querySelector('.sb-prac-feedback-title');
-  if (titleEl) titleEl.textContent = isCorrect ? 'Richtig!' : 'Falsch — richtig wäre: ' + card.answer;
-  document.getElementById('sb-prac-fb-expl').innerHTML = explHtml;
-  fb.style.display = 'block';
+  var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
+  var expl=sbL(card.explanation,lang).replace(/„([^"]+)"/g,'<strong>„$1"</strong>');
+  var fb=document.getElementById('sb-prac-feedback');
+  document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
+  document.getElementById('sb-prac-fb-title').textContent=ok?'Richtig!':'Falsch — richtig: '+card.answer;
+  document.getElementById('sb-prac-fb-expl').innerHTML=expl;
+  fb.style.display='block';
 
-  if (isCorrect) setTimeout(sbPracNext, 1200);
+  if(ok) setTimeout(sbPracNext,1200);
 }
 
 function sbPracNext() {
   SB.pracIdx++;
-  if (SB.pracIdx >= Math.min(SB.pracQueue.length, SB_PRAC_COUNT + 5)) { sbShowPracResult(); return; }
-  document.getElementById('sb-prac-feedback').style.display = 'none';
+  if(SB.pracIdx>=Math.min(SB.pracQueue.length,SB_PRAC_COUNT+5)){ sbShowPracResult(); return; }
+  document.getElementById('sb-prac-feedback').style.display='none';
   sbRenderPrac();
 }
 
 function sbShowPracResult() {
-  var results = SB.pracResults.slice(0, SB_PRAC_COUNT);
-  var correct = results.filter(Boolean).length;
-  var total   = results.length;
-  document.getElementById('sb-prac-sentence').innerHTML = '';
-  document.getElementById('sb-prac-options').innerHTML  = '';
-  document.getElementById('sb-prac-feedback').style.display = 'none';
-  document.getElementById('sb-prac-dots').innerHTML     = '';
-  document.getElementById('sb-prac-counter').textContent= '';
-  document.getElementById('sb-prac-cat').textContent    = '';
-  var label = correct === SB_PRAC_COUNT ? '🏆 Perfekt! Alle richtig!' : correct >= 7 ? '👍 Gut! Weiter üben.' : '📚 Noch Übungsbedarf.';
-  document.getElementById('sb-result-score').textContent = correct + '/' + total;
-  document.getElementById('sb-result-label').textContent = label;
-  document.getElementById('sb-prac-result').style.display = 'block';
+  var results=SB.pracResults.slice(0,SB_PRAC_COUNT);
+  var correct=results.filter(Boolean).length,total=results.length;
+  ['sb-prac-sentence','sb-prac-options','sb-prac-dots'].forEach(function(id){ var e=document.getElementById(id); if(e) e.innerHTML=''; });
+  document.getElementById('sb-prac-feedback').style.display='none';
+  document.getElementById('sb-result-score').textContent=correct+'/'+total;
+  document.getElementById('sb-result-label').textContent=correct===total?'🏆 Perfekt!':correct>=7?'👍 Gut!':'📚 Mehr Übung.';
+  document.getElementById('sb-prac-result').style.display='block';
   sbUpdateProgressBadge();
 }
 
-// ── EXAM SIM ──
+// ── EXAM SIM ──────────────────────────────────────────────────
 function sbStartExam() {
-  if (typeof SPRACHBAUSTEINE === 'undefined') return;
-  sbStopExamTimer();
-  SB.examDone = false;
-  var pool = SPRACHBAUSTEINE.slice().sort(function() { return Math.random() - .5; });
-  SB.examCards   = pool.slice(0, 6);
-  SB.examIdx     = 0;
-  SB.examAnswers = SB.examCards.map(function(c) { return { cardId: c.id, given: null, correct: c.answer }; });
-  SB.examSecs    = 300;
-  document.getElementById('sb-exam-result').style.display = 'none';
-  document.getElementById('sb-exam-task').style.display   = 'block';
-  document.getElementById('sb-exam-submit').style.display = 'block';
+  if(typeof SPRACHBAUSTEINE==='undefined') return;
+  sbStopExamTimer(); SB.examDone=false;
+  SB.examCards=SPRACHBAUSTEINE.slice().sort(function(){ return Math.random()-.5; }).slice(0,6);
+  SB.examIdx=0;
+  SB.examAnswers=SB.examCards.map(function(c){ return {cardId:c.id,given:null,correct:c.answer}; });
+  SB.examSecs=300;
+  document.getElementById('sb-exam-result').style.display='none';
+  document.getElementById('sb-exam-task').style.display='block';
+  document.getElementById('sb-exam-submit').style.display='block';
   sbRenderExamQ();
   sbStartExamTimer();
 }
 
 function sbRenderExamQ() {
-  var card = SB.examCards[SB.examIdx];
-  if (!card) return;
-  var lang = sbCardLang();
-  document.getElementById('sb-exam-q-num').textContent = 'Aufgabe ' + (SB.examIdx + 1) + ' von ' + SB.examCards.length;
-  document.getElementById('sb-exam-sentence').innerHTML = sbL(card.sentence, lang).replace('{{BLANK}}', '<span class="sb-prac-blank">_____</span>');
+  var card=SB.examCards[SB.examIdx]; if(!card) return;
+  var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
+  document.getElementById('sb-exam-q-num').textContent='Aufgabe '+(SB.examIdx+1)+' von '+SB.examCards.length;
+  document.getElementById('sb-exam-sentence').innerHTML='<span class="sb-sentence">'+sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')+'</span>';
 
-  var correctAnswers = SB.examCards.map(function(c) { return c.answer; });
-  var extras = SPRACHBAUSTEINE
-    .filter(function(c) { return !SB.examCards.find(function(ec) { return ec.id === c.id; }); })
-    .map(function(c) { return c.answer; })
-    .filter(function(a) { return !correctAnswers.includes(a); })
-    .sort(function() { return Math.random() - .5; }).slice(0, 2);
-  var allOptions = Array.from(new Set(correctAnswers.concat(extras))).sort(function() { return Math.random() - .5; });
-  var saved = SB.examAnswers[SB.examIdx] ? SB.examAnswers[SB.examIdx].given : null;
+  var correct=SB.examCards.map(function(c){ return c.answer; });
+  var extras=SPRACHBAUSTEINE.filter(function(c){ return !SB.examCards.find(function(ec){ return ec.id===c.id; }); })
+    .map(function(c){ return c.answer; }).filter(function(a){ return !correct.includes(a); })
+    .sort(function(){ return Math.random()-.5; }).slice(0,2);
+  var opts=Array.from(new Set(correct.concat(extras))).sort(function(){ return Math.random()-.5; });
+  var saved=SB.examAnswers[SB.examIdx]?SB.examAnswers[SB.examIdx].given:null;
 
-  var dotsEl = document.getElementById('sb-exam-dots');
-  dotsEl.innerHTML = SB.examCards.map(function(_, i) {
-    var answered = SB.examAnswers[i] && SB.examAnswers[i].given !== null;
-    var cls = answered ? 'answered' : '';
-    if (i === SB.examIdx) cls = 'current';
-    return '<div class="sb-exam-dot ' + cls + '" onclick="sbExamGoTo(' + i + ')"></div>';
+  var dotsEl=document.getElementById('sb-exam-dots');
+  if(dotsEl) dotsEl.innerHTML=SB.examCards.map(function(_,i){
+    var answered=SB.examAnswers[i]&&SB.examAnswers[i].given!==null;
+    var cls='mc-dot'+(answered?' done':'')+(i===SB.examIdx?' current':'');
+    return '<div class="'+cls+'" onclick="sbExamGoTo('+i+')"></div>';
   }).join('');
 
-  var optEl = document.getElementById('sb-exam-options');
-  optEl.innerHTML = '';
-  allOptions.forEach(function(opt) {
-    var b = document.createElement('button');
-    b.className = 'sb-exam-opt' + (saved === opt ? ' selected' : '');
-    b.textContent = opt;
-    b.onclick = (function(o, idx) { return function() { sbExamSelect(b, o, idx); }; })(opt, SB.examIdx);
+  var optEl=document.getElementById('sb-exam-options'); if(!optEl) return;
+  optEl.innerHTML='';
+  opts.forEach(function(opt){
+    var b=document.createElement('button');
+    b.className='mc-opt'+(saved===opt?' selected':'');
+    b.textContent=opt;
+    b.onclick=(function(o,idx){ return function(){ sbExamSelect(b,o,idx); }; })(opt,SB.examIdx);
     optEl.appendChild(b);
   });
 }
 
-function sbExamSelect(btn, opt, qIdx) {
-  SB.examAnswers[qIdx].given = opt;
-  document.querySelectorAll('.sb-exam-opt').forEach(function(b) { b.classList.remove('selected'); });
+function sbExamSelect(btn,opt,qIdx) {
+  SB.examAnswers[qIdx].given=opt;
+  document.querySelectorAll('#sb-exam-options .mc-opt').forEach(function(b){ b.classList.remove('selected'); });
   btn.classList.add('selected');
   sbRenderExamDots();
-  if (typeof haptic !== 'undefined') haptic.light();
-  var nextUnanswered = SB.examAnswers.findIndex(function(a, i) { return i > qIdx && a.given === null; });
-  if (nextUnanswered !== -1) setTimeout(function() { sbExamGoTo(nextUnanswered); }, 500);
+  if(typeof haptic!=='undefined') haptic.light();
+  var next=SB.examAnswers.findIndex(function(a,i){ return i>qIdx&&a.given===null; });
+  if(next!==-1) setTimeout(function(){ sbExamGoTo(next); },500);
 }
 
 function sbRenderExamDots() {
-  var dotsEl = document.getElementById('sb-exam-dots');
-  if (!dotsEl) return;
-  dotsEl.innerHTML = SB.examCards.map(function(_, i) {
-    var answered = SB.examAnswers[i] && SB.examAnswers[i].given !== null;
-    var cls = (answered ? 'answered' : '') + (i === SB.examIdx ? ' current' : '');
-    return '<div class="sb-exam-dot ' + cls.trim() + '" onclick="sbExamGoTo(' + i + ')"></div>';
+  var el=document.getElementById('sb-exam-dots'); if(!el) return;
+  el.innerHTML=SB.examCards.map(function(_,i){
+    var answered=SB.examAnswers[i]&&SB.examAnswers[i].given!==null;
+    var cls='mc-dot'+(answered?' done':'')+(i===SB.examIdx?' current':'');
+    return '<div class="'+cls+'" onclick="sbExamGoTo('+i+')"></div>';
   }).join('');
 }
 
-function sbExamGoTo(idx) { SB.examIdx = idx; sbRenderExamQ(); }
+function sbExamGoTo(idx){ SB.examIdx=idx; sbRenderExamQ(); }
 
 function sbStartExamTimer() {
-  var el = document.getElementById('sb-exam-timer');
-  var tick = function() {
-    if (SB.examDone) return;
+  var el=document.getElementById('sb-exam-timer');
+  var tick=function(){
+    if(SB.examDone) return;
     SB.examSecs--;
-    var m = Math.floor(SB.examSecs / 60), s = SB.examSecs % 60;
-    if (el) { el.textContent = m + ':' + (s < 10 ? '0' : '') + s; el.classList.toggle('urgent', SB.examSecs <= 30); }
-    if (SB.examSecs <= 0) sbExamSubmit();
-    else SB.examTimer = setTimeout(tick, 1000);
+    var m=Math.floor(SB.examSecs/60),s=SB.examSecs%60;
+    if(el){ el.textContent=m+':'+(s<10?'0':'')+s; el.classList.toggle('sb-timer-urgent',SB.examSecs<=30); }
+    if(SB.examSecs<=0) sbExamSubmit();
+    else SB.examTimer=setTimeout(tick,1000);
   };
-  SB.examTimer = setTimeout(tick, 1000);
+  SB.examTimer=setTimeout(tick,1000);
 }
 
-function sbStopExamTimer() {
-  if (SB.examTimer) { clearTimeout(SB.examTimer); SB.examTimer = null; }
-}
+function sbStopExamTimer(){ if(SB.examTimer){ clearTimeout(SB.examTimer); SB.examTimer=null; } }
 
-document.addEventListener('visibilitychange', function() {
-  if (SB.mode !== 'exam' || SB.examDone) return;
-  if (document.visibilityState === 'hidden') sbStopExamTimer();
-  else sbStartExamTimer();
+document.addEventListener('visibilitychange',function(){
+  if(SB.mode!=='exam'||SB.examDone) return;
+  if(document.visibilityState==='hidden') sbStopExamTimer(); else sbStartExamTimer();
 });
 
 function sbExamSubmit() {
-  sbStopExamTimer();
-  SB.examDone = true;
-  document.getElementById('sb-exam-task').style.display   = 'none';
-  document.getElementById('sb-exam-submit').style.display = 'none';
+  sbStopExamTimer(); SB.examDone=true;
+  document.getElementById('sb-exam-task').style.display='none';
+  document.getElementById('sb-exam-submit').style.display='none';
+  var correct=SB.examAnswers.filter(function(a){ return a.given===a.correct; }).length;
+  var total=SB.examAnswers.length, pct=correct/total;
+  var scoreEl=document.getElementById('sb-exam-score-num');
+  scoreEl.textContent=correct+'/'+total;
+  scoreEl.style.color=pct>=0.83?'#27ae60':pct>=0.5?'var(--gold)':'var(--red)';
+  document.getElementById('sb-exam-score-label').textContent=
+    pct>=0.83?'✅ Bereit für die Prüfung!':pct>=0.5?'🟡 Fast! Noch üben.':'🔴 Mehr Übung nötig.';
 
-  var correct = SB.examAnswers.filter(function(a) { return a.given === a.correct; }).length;
-  var total   = SB.examAnswers.length;
-  var pct     = correct / total;
-  var scoreEl = document.getElementById('sb-exam-score-num');
-  scoreEl.textContent = correct + '/' + total;
-  scoreEl.className   = 'sb-exam-score-num ' + (pct >= 0.83 ? 'great' : pct >= 0.5 ? 'ok' : 'bad');
-  document.getElementById('sb-exam-score-label').textContent =
-    pct >= 0.83 ? '✅ Bereit für die Prüfung!' : pct >= 0.5 ? '🟡 Fast! Noch ein bisschen üben.' : '🔴 Mehr Übung nötig — weiter so!';
-
-  var s = sbLoadState();
-  if (!s.examResults) s.examResults = [];
-  s.examResults.push({ date: new Date().toISOString().slice(0,10), score: correct, total: total });
-  if (s.examResults.length > 10) s.examResults = s.examResults.slice(-10);
+  var s=sbLoadState(); if(!s.examResults) s.examResults=[];
+  s.examResults.push({date:new Date().toISOString().slice(0,10),score:correct,total:total});
+  if(s.examResults.length>10) s.examResults=s.examResults.slice(-10);
   sbSaveState(s);
 
-  var lang  = sbCardLang();
-  var elang = sbExplLang();
-  var reviewEl = document.getElementById('sb-exam-review');
-  reviewEl.innerHTML = SB.examAnswers.map(function(a, i) {
-    var card    = SB.examCards[i];
-    var ok      = a.given === a.correct;
-    var sentFull= sbL(card.sentence, lang).replace('{{BLANK}}', '<b>' + a.correct + '</b>');
-    var given   = a.given || '(keine Antwort)';
-    var expl    = sbL(card.explanation, elang).slice(0, 120) + '…';
+  var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
+  document.getElementById('sb-exam-review').innerHTML=SB.examAnswers.map(function(a,i){
+    var card=SB.examCards[i],ok=a.given===a.correct;
+    var sentFull=sbL(card.sentence,lang).replace('{{BLANK}}','<b>'+a.correct+'</b>');
+    var given=a.given||'(keine Antwort)';
     return '<div class="sb-review-item">'
-      + '<div class="sb-review-sentence">' + sentFull + '</div>'
-      + '<div class="sb-review-answers">'
-      + (ok ? '<span class="sb-review-given ok">✓ ' + given + '</span>'
-             : '<span class="sb-review-given nok">✗ ' + given + '</span><span class="sb-review-correct">→ ' + a.correct + '</span>')
-      + '</div>'
-      + '<div class="sb-review-expl">' + expl + '</div>'
-      + '</div>';
+      +'<div class="sb-review-sentence">'+sentFull+'</div>'
+      +'<div class="sb-review-answers">'+(ok?'<span class="sb-review-given ok">✓ '+given+'</span>':'<span class="sb-review-given nok">✗ '+given+'</span><span class="sb-review-correct">→ '+a.correct+'</span>')+'</div>'
+      +'<div class="sb-review-expl">'+sbL(card.explanation,lang).slice(0,120)+'…</div></div>';
   }).join('');
-
-  document.getElementById('sb-exam-result').style.display = 'block';
+  document.getElementById('sb-exam-result').style.display='block';
   sbUpdateProgressBadge();
 }
 
-// ── Hook into showView ──
-(function() {
-  var _orig = showView;
-  showView = function(id) {
+// ── showView hook ──────────────────────────────────────────────
+(function(){
+  var _orig=showView;
+  showView=function(id){
     _orig(id);
-    if (id === 'sb') {
+    if(id==='sb'){
       sbStopPlay();
-      if (typeof SPRACHBAUSTEINE !== 'undefined') {
-        initSB();
-      } else {
-        var w = setInterval(function() {
-          if (typeof SPRACHBAUSTEINE !== 'undefined') { clearInterval(w); initSB(); }
-        }, 200);
-      }
+      if(typeof SPRACHBAUSTEINE!=='undefined'){ initSB(); }
+      else { var w=setInterval(function(){ if(typeof SPRACHBAUSTEINE!=='undefined'){ clearInterval(w); initSB(); } },200); }
     }
   };
 })();
