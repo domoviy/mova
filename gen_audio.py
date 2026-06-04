@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.4 (VOCAB + SPRACHBAUSTEINE)
+MOVA · Azure TTS Audio Generator  v2.5 (VOCAB + SPRACHBAUSTEINE with Blank Fill)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE.
-Порціями зберігає прогрес в Git (3 для F0 / 15 для S0)
+Для SPRACHBAUSTEINE sentence підставляє answer замість {{BLANK}} та генерує лише de @ 100.
 """
 
 import os, sys, json, time, pathlib, re
@@ -65,11 +65,6 @@ def load_data():
     print('  ← B2-Beruf.js (regex parse)')
     src = jsp.read_text('utf-8')
 
-    # Шукаємо експорт об'єкта або окремих констант. Перевіримо спочатку загальний об'єкт:
-    # Якщо структура в JS записана як const DATA = { VOCAB: [...], SPRACHBAUSTEINE: [...] }
-    m_full = re.search(r'const\s+(?:DATA|DATABASE)\s*=\s*(\{[\s\S]*?\});', src)
-    
-    # Але для надійності розпарсимо окремо масиви, якщо вони оголошені окремо:
     data = {}
     for block_type in ['VOCAB', 'SPRACHBAUSTEINE']:
         m = re.search(rf'const\s+{block_type}\s*=\s*(\[[\s\S]*?\]);', src)
@@ -95,17 +90,8 @@ def load_data():
                 end = min(len(arr_js), pos + 40)
                 print(f'  Контекст помилки: ... {arr_js[start:pos]}🔴[ПОМИЛКА ТУТ] {arr_js[pos:end]} ...')
                 raise
-        else:
-            # Спробуємо знайти всередині загального об'єкта, якщо окремо констант немає
-            if 'm_full' in locals() and m_full:
-                pass # Якщо буде потреба складної логіки
             
     if not data.get('VOCAB') and not data.get('SPRACHBAUSTEINE'):
-        # Фолбек на старий варіант пошуку тільки VOCAB
-        m = re.search(r'const\s+VOCAB\s*=\s*(\[[\s\S]*?\]);', src)
-        if m:
-            # ... (код парсингу аналогічний)
-            pass
         raise ValueError('Не знайдено масиви VOCAB або SPRACHBAUSTEINE у файлі.')
 
     return data
@@ -158,7 +144,6 @@ def synthesize(ssml, retries=3):
                 return data
         except urllib.error.HTTPError as e:
             if e.code == 429:
-                # АВТО-ГАЛЬМУВАННЯ: скидаємо швидкість та змінюємо ліміт комітів на 3
                 if WORKERS > 1 or DELAY_SEC < 0.6:
                     with lock:
                         if WORKERS > 1 or DELAY_SEC < 0.6:
@@ -183,19 +168,32 @@ def process(task, manifest):
     global NEW_FILES_COUNT
     block_type, card, field, lang, speed = task
     cid  = card['id']
+    
+    # Отримуємо текст для озвучки
     text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
+
+    # Специфічна логіка для SPRACHBAUSTEINE -> sentence
+    if block_type == 'SPRACHBAUSTEINE' and field == 'sentence':
+        # 1. Дозволяємо генерувати тільки для німецької мови та швидкості 100
+        if lang != 'de' or speed != '100':
+            return 'skip', f'{cid}_{field}_{lang}_{speed} (filtered: only de @ 100 for sbs sentence)'
+        
+        # 2. Замінюємо {{BLANK}} на значення answer + пробіл
+        answer_text = card.get('answer', '')
+        if '{{BLANK}}' in text and answer_text:
+            text = text.replace('{{BLANK}}', f'{answer_text} ')
 
     if not text or not text.strip():
         return 'skip', f'{cid}_{field}_{lang}_{speed}'
 
-    # Визначення папки категорії (для SPRACHBAUSTEINE це завжди sbs, для VOCAB – префікс id типу mbr)
+    # Визначення папки категорії
     if block_type == 'SPRACHBAUSTEINE':
         cat = 'sbs'
     else:
-        cat = cid.split('_')[0]                              # 'mbr' з 'mbr_056'
+        cat = cid.split('_')[0]
         
-    fname = f'{cid}_{field}_{lang}_{speed}'                # sbs_001_sentence_de_100 / mbr_056_short_en_080
-    mkey  = f'{COURSE}/{lang}/{speed}/{cat}/{fname}'       # B2-Beruf/de/100/sbs/sbs_001_sentence_de_100
+    fname = f'{cid}_{field}_{lang}_{speed}'
+    mkey  = f'{COURSE}/{lang}/{speed}/{cat}/{fname}'
     fpath = AUDIO_BASE / lang / speed / cat / f'{fname}.mp3'
 
     with lock:
@@ -227,7 +225,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.4 (VOCAB + SPRACHBAUSTEINE)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.5 (VOCAB + SPRACHBAUSTEINE with Blank Fill)', flush=True)
     print(f'    Region: {AZURE_REGION} | Course: {COURSE}', flush=True)
     print(f'    Начальні Потоки (Workers): {WORKERS} | Пауза: {DELAY_SEC}s | Автосейв кожні: {COMMIT_EVERY_X_FILES} файлів', flush=True)
 
@@ -254,7 +252,6 @@ def main():
 
     manifest = load_manifest()
     
-    # Динамічне збирання завдань для обох таблиць
     tasks = []
     status_info = []
     
@@ -266,13 +263,15 @@ def main():
             for field in config['fields']:
                 for lang in config['languages']:
                     for speed in SPEEDS:
+                        # Відсікаємо непотрібні комбінації для 'sentence' з SPRACHBAUSTEINE ще на етапі створення завдань (необов'язково, але зменшить total)
+                        if block_type == 'SPRACHBAUSTEINE' and field == 'sentence' and (lang != 'de' or speed != '100'):
+                            continue
                         tasks.append((block_type, card, field, lang, speed))
 
     print(f'   ✓ Завантажено картки -> {" | ".join(status_info)} | В маніфесті: {len(manifest)}', flush=True)
 
     total = len(tasks)
     
-    # Рахуємо, скільки файлів вже реально згенеровано на диску та є в маніфесті
     already = 0
     for block_type, c, f, l, s in tasks:
         cat = 'sbs' if block_type == 'SPRACHBAUSTEINE' else c['id'].split('_')[0]
