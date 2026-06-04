@@ -734,6 +734,7 @@ body{
 .tiles-q-label{font-size:11px;color:rgba(255,255,255,.45);
   letter-spacing:.5px;margin-bottom:6px;}
 .tiles-q-text{font-size:15px;color:#fff;line-height:1.5;}
+.tiles-q-text.mc-q-term{color:var(--gold-lt);font-weight:600;}
 .tiles-answer{
   min-height:64px;border-radius:14px;
   border:1.5px dashed var(--border);
@@ -1654,7 +1655,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '60-eb63267';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3487,7 +3488,20 @@ function tilesShowCard(){
     : 'Bilde den Ausdruck:';
 
   document.getElementById('tiles-q-label').textContent = qLabel;
-  document.getElementById('tiles-q-text').textContent = qText;
+  // Use mc-q-term style (gold color) for the question text
+  const qTextEl = document.getElementById('tiles-q-text');
+  qTextEl.className = 'tiles-q-text mc-q-term';
+  qTextEl.textContent = qText;
+
+  // Prefetch DE audio for this card sentence
+  try {
+    const audioUrl = getAudioUrl(card.id, 'sentence', 'de');
+    const xhr2 = new XMLHttpRequest();
+    xhr2.open('GET', audioUrl, true);
+    xhr2.responseType = 'arraybuffer';
+    xhr2.onload = function(){};
+    xhr2.send();
+  } catch(e) {}
 
   // Слова для складання — завжди term.de (розбиваємо на слова)
   const correctStr = card.term?.de || '';
@@ -3773,6 +3787,11 @@ function tilesCheck(){
   srsRate(tilesState.current.id, isOk ? 5 : 1);
   saveCardPlay(tilesState.current.id);
   haptic[isOk?'success':'error']();
+
+  // Play DE sentence audio after check
+  try {
+    speak(tilesState.current.term?.de || '', 'de', null, tilesState.current.id, 'sentence');
+  } catch(e) {}
 
   // Показуємо модальний результат
   tilesShowResultModal(isOk, correct.join(' '));
@@ -5091,9 +5110,8 @@ function sbRenderLearn() {
     var langLabels = { en:'🇬🇧 English', uk:'🇺🇦 Українська', de:'🇩🇪 Deutsch' };
     frontEl.innerHTML = langs.map(function(l, i) {
       var raw  = sbL(card.sentence, l);
-      var html = SB.learnFlipped
-        ? raw.replace('{{BLANK}}', '<b>'+card.answer+'</b>')
-        : raw.replace('{{BLANK}}', '<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+      // Always show answer inline (bold gold) — brain learns visually
+      var html = raw.replace('{{BLANK}}', '<b>'+card.answer+'</b>');
       return (i>0 ? '<div class="sb-front-divider"></div>' : '')
         + (langs.length>1 ? '<div class="sb-front-lang-label">'+langLabels[l]+'</div>' : '')
         + '<div class="sb-front-sentence">'+html+'</div>';
@@ -5234,36 +5252,56 @@ function sbStopPlay() {
 }
 
 function sbAutoPlay() {
-  var card=SB.learnQueue[SB.learnIdx];
-  if(!card||!SB.playing) return;
-  var langs=sbGetActiveLangs();
-  var gen=++SB.playCardGen;
-  var speed=(typeof V!=='undefined'&&V.langSpeed)?V.langSpeed:{de:'100',en:'100',uk:'100'};
+  if(!SB.playing) return;
+  // Capture card + gen at THIS moment — after index is already updated
+  var card = SB.learnQueue[SB.learnIdx];
+  if(!card) return;
+  var langs = sbGetActiveLangs();
+  // Only speak DE (audio only generated for DE)
+  var audioLangs = langs.filter(function(l){ return l==='de'; });
+  if(!audioLangs.length) audioLangs = ['de']; // fallback
+  var gen = ++SB.playCardGen;
 
   function speakSentences(li){
     if(!SB.playing||SB.playCardGen!==gen) return;
-    if(li>=langs.length){ SB.learnFlipped=true; sbRenderLearn(); setTimeout(function(){ speakExpls(0); },300); return; }
-    var l=langs[li];
-    var text=sbL(card.sentence,l).replace('{{BLANK}}',card.answer);
-    speak(text,l,function(){ if(!SB.playing||SB.playCardGen!==gen) return; setTimeout(function(){ speakSentences(li+1); },400); },card.id,'sentence');
+    if(li>=audioLangs.length){
+      // flip card, then speak explanation
+      SB.learnFlipped=true; sbRenderLearn();
+      setTimeout(function(){ speakExpls(0); },300);
+      return;
+    }
+    var l = audioLangs[li];
+    var text = sbL(card.sentence,l).replace('{{BLANK}}',card.answer);
+    speak(text,l,function(){
+      if(!SB.playing||SB.playCardGen!==gen) return;
+      setTimeout(function(){ speakSentences(li+1); },400);
+    },card.id,'sentence');
   }
+
   function speakExpls(li){
     if(!SB.playing||SB.playCardGen!==gen) return;
-    if(li>=langs.length){
+    if(li>=audioLangs.length){
       var pause=(typeof V!=='undefined'&&V.readPause)?V.readPause:800;
       setTimeout(function(){
         if(!SB.playing||SB.playCardGen!==gen) return;
+        // Advance index FIRST, then animate, then start new autoplay cycle
         SB.learnIdx=(SB.learnIdx+1)%SB.learnQueue.length;
         SB.learnFlipped=false;
         sbAnimCard('left',function(){
           sbRenderLearn();
-          setTimeout(function(){ if(SB.playing&&SB.playCardGen===gen){ gen=++SB.playCardGen; speakSentences(0); } },150);
+          // Start fresh cycle — sbAutoPlay captures new card by index
+          setTimeout(function(){
+            if(SB.playing) sbAutoPlay();
+          },150);
         });
       },pause);
       return;
     }
-    var l=langs[li];
-    speak(sbL(card.explanation,l),l,function(){ if(!SB.playing||SB.playCardGen!==gen) return; setTimeout(function(){ speakExpls(li+1); },400); },card.id,'expl');
+    var l=audioLangs[li];
+    speak(sbL(card.explanation,l),l,function(){
+      if(!SB.playing||SB.playCardGen!==gen) return;
+      setTimeout(function(){ speakExpls(li+1); },400);
+    },card.id,'expl');
   }
   speakSentences(0);
 }
@@ -5305,7 +5343,7 @@ function sbStartPractice() {
 function sbRenderPrac() {
   var card=SB.pracQueue[SB.pracIdx]; if(!card){ sbShowPracResult(); return; }
   SB.pracAnswered=false;
-  var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
+  var lang='de'; // audio only for DE
   var cat=(typeof SB_CATS!=='undefined'?SB_CATS:[]).find(function(c){ return c.id===card.cat; });
 
   // progress bar
@@ -5313,40 +5351,59 @@ function sbRenderPrac() {
   var ctr=document.getElementById('sb-prac-counter'); if(ctr) ctr.textContent=(SB.pracIdx+1)+' / '+SB.pracQueue.length;
   var bar=document.getElementById('sb-prac-vpbf'); if(bar) bar.style.width=pct+'%';
 
-  // dots (mc-progress style)
+  // dots
   var dotsEl=document.getElementById('sb-prac-dots');
   if(dotsEl) dotsEl.innerHTML=SB.pracQueue.map(function(_,i){
     var cls='mc-dot'+(i<SB.pracIdx?' done':i===SB.pracIdx?' current':'');
     return '<div class="'+cls+'"></div>';
   }).join('');
 
-  // category label
+  // category
   var catEl=document.getElementById('sb-prac-cat'); if(catEl) catEl.textContent=cat?cat.e+' '+cat.de:card.cat;
 
-  // sentence
+  // sentence — gold color via mc-q-term class
   var sentEl=document.getElementById('sb-prac-sentence');
-  if(sentEl) sentEl.innerHTML='<span class="sb-sentence">'+sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')+'</span>';
+  if(sentEl) sentEl.innerHTML='<div class="mc-q-term">'+
+    sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')
+    +'</div>';
 
-  // options
-  var distPool=card.distractors.slice();
-  SPRACHBAUSTEINE.forEach(function(c){ if(c.id!==card.id&&!distPool.includes(c.answer)) distPool.push(c.answer); });
-  var opts=[card.answer].concat(distPool.filter(function(d){ return d!==card.answer; }).sort(function(){ return Math.random()-.5; }).slice(0,3)).sort(function(){ return Math.random()-.5; });
+  // Options: correct answer from card.answer + exactly card.distractors (up to 3)
+  var distractors = card.distractors.slice(0,3);
+  var opts = [card.answer].concat(distractors).sort(function(){ return Math.random()-.5; });
 
   var optEl=document.getElementById('sb-prac-options');
   if(optEl){
     optEl.innerHTML='';
-    opts.forEach(function(opt){
+    opts.forEach(function(opt, i){
       var b=document.createElement('button');
       b.className='mc-opt';
       b.textContent=opt;
-      b.onclick=(function(o){ return function(){ sbPracAnswer(b,o,card.id); }; })(opt);
+      // Prefetch audio for this distractor option
+      var fieldName = opt===card.answer ? 'answer' : 'distractors_de_100_'+(i+1);
+      sbPrefetchAudio(card.id, fieldName);
+      b.onclick=(function(o, fn){ return function(){ sbPracAnswer(b,o,card.id,fn); }; })(opt, fieldName);
       optEl.appendChild(b);
     });
   }
   document.getElementById('sb-prac-feedback').style.display='none';
+
+  // Prefetch sentence audio
+  sbPrefetchAudio(card.id, 'sentence');
 }
 
-function sbPracAnswer(btn,chosen,cardId) {
+function sbPrefetchAudio(cardId, field) {
+  try {
+    var url = getAudioUrl(cardId, field, 'de');
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', url, true);
+    xhr.responseType = 'arraybuffer';
+    xhr.onload = function(){};
+    xhr.onerror = function(){};
+    xhr.send();
+  } catch(e) {}
+}
+
+function sbPracAnswer(btn,chosen,cardId,audioField) {
   if(SB.pracAnswered) return;
   SB.pracAnswered=true;
   var card=SB.pracQueue[SB.pracIdx]; if(!card||card.id!==cardId) return;
@@ -5359,12 +5416,16 @@ function sbPracAnswer(btn,chosen,cardId) {
     else if(b===btn&&!ok) b.classList.add('wrong');
   });
 
+  // Play audio for the chosen option
+  var field = audioField || (ok ? 'answer' : 'sentence');
+  speak(chosen, 'de', null, card.id, field);
+
   var iv=sbGetIntervals(),cur=iv[card.id]||1;
   if(ok){ sbSetInterval(card.id,cur*2); sbMarkLearned(card.id); }
   else { sbSetInterval(card.id,Math.max(1,Math.floor(cur/2))); SB.pracQueue.splice(Math.min(SB.pracIdx+3,SB.pracQueue.length),0,card); }
   SB.pracResults[SB.pracIdx]=ok;
 
-  var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
+  var lang='de';
   var expl=sbL(card.explanation,lang).replace(/„([^"]+)"/g,'<strong>„$1"</strong>');
   var fb=document.getElementById('sb-prac-feedback');
   document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
