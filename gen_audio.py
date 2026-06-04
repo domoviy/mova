@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.3 (Dynamic Auto-Save)
+MOVA · Azure TTS Audio Generator  v2.4 (VOCAB + SPRACHBAUSTEINE)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js)
-Генерує MP3 з Azure Neural TTS та порціями зберігає прогрес в Git (3 для F0 / 15 для S0)
+Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE.
+Порціями зберігає прогрес в Git (3 для F0 / 15 для S0)
 """
 
 import os, sys, json, time, pathlib, re
@@ -24,7 +25,17 @@ WORKERS   = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
 COMMIT_EVERY_X_FILES = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))  # 3 для Free, 15 для Turbo
 
-FIELDS    = ['term', 'short', 'def']
+# Конфігурація полів для різних типів даних
+CONFIG_BY_TYPE = {
+    'VOCAB': {
+        'fields': ['term', 'short', 'def'],
+        'languages': ['de', 'en', 'uk']
+    },
+    'SPRACHBAUSTEINE': {
+        'fields': ['sentence', 'expl'],
+        'languages': ['de', 'en', 'uk']
+    }
+}
 
 VOICES = {
     'de': 'de-DE-KatjaNeural',
@@ -40,13 +51,12 @@ lock = threading.Lock()
 NEW_FILES_COUNT = 0
 
 # ── Завантаження бази (JSON або JS) ───────────────────────────
-def load_vocab():
-    """Пробує B2-Beruf.json, потім парсить B2-Beruf.js regex."""
+def load_data():
+    """Пробує B2-Beruf.json, потім парсить B2-Beruf.js regex. Повертає весь об'єкт."""
     jp = pathlib.Path('B2-Beruf.json')
     if jp.exists():
         print('  ← B2-Beruf.json')
-        data = json.loads(jp.read_text('utf-8'))
-        return data['VOCAB']
+        return json.loads(jp.read_text('utf-8'))
 
     jsp = pathlib.Path('B2-Beruf.js')
     if not jsp.exists():
@@ -55,34 +65,50 @@ def load_vocab():
     print('  ← B2-Beruf.js (regex parse)')
     src = jsp.read_text('utf-8')
 
-    m = re.search(r'const\s+VOCAB\s*=\s*(\[[\s\S]*?\]);', src)
-    if not m:
-        raise ValueError('Не знайдено масив VOCAB у B2-Beruf.js')
+    # Шукаємо експорт об'єкта або окремих констант. Перевіримо спочатку загальний об'єкт:
+    # Якщо структура в JS записана як const DATA = { VOCAB: [...], SPRACHBAUSTEINE: [...] }
+    m_full = re.search(r'const\s+(?:DATA|DATABASE)\s*=\s*(\{[\s\S]*?\});', src)
+    
+    # Але для надійності розпарсимо окремо масиви, якщо вони оголошені окремо:
+    data = {}
+    for block_type in ['VOCAB', 'SPRACHBAUSTEINE']:
+        m = re.search(rf'const\s+{block_type}\s*=\s*(\[[\s\S]*?\]);', src)
+        if m:
+            arr_js = m.group(1)
+            # Автокорекція апострофів
+            arr_js = re.sub(r'([а-яА-ЯёЁіІїЇєЄґҐ])"([а-яА-ЯёЁіІїЇєЄґҐ])', r'\1’\2', arr_js)
+            arr_js = re.sub(r"([а-яА-ЯёЁіІїЇєЄґҐ])'([а-яА-ЯёЁіІїЇєЄґҐ])", r'\1’\2', arr_js)
+            arr_js = re.sub(r"([a-zA-Z])'([a-zA-Z])", r'\1’\2', arr_js)
 
-    arr_js = m.group(1)
+            arr_js = re.sub(r'//[^\n]*', '', arr_js)
+            arr_js = arr_js.replace('\\"', '"')
+            arr_js = re.sub(r"'([^']*)'", lambda m: json.dumps(m.group(1).replace('"', '\\"')), arr_js)
+            arr_js = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', arr_js)
+            arr_js = re.sub(r',\s*([}\]])', r'\1', arr_js)
 
-    # Автокорекція апострофів
-    arr_js = re.sub(r'([а-яА-ЯёЁіІїЇєЄґҐ])"([а-яА-ЯёЁіІїЇєЄґҐ])', r'\1’\2', arr_js)
-    arr_js = re.sub(r"([а-яА-ЯёЁіІїЇєЄґҐ])'([а-яА-ЯёЁіІїЇєЄґҐ])", r'\1’\2', arr_js)
-    arr_js = re.sub(r"([a-zA-Z])'([a-zA-Z])", r'\1’\2', arr_js)
+            try:
+                data[block_type] = json.loads(arr_js)
+            except json.JSONDecodeError as e:
+                print(f'  ✗ JSON parse error у блоці {block_type}: {e}')
+                pos = e.pos
+                start = max(0, pos - 40)
+                end = min(len(arr_js), pos + 40)
+                print(f'  Контекст помилки: ... {arr_js[start:pos]}🔴[ПОМИЛКА ТУТ] {arr_js[pos:end]} ...')
+                raise
+        else:
+            # Спробуємо знайти всередині загального об'єкта, якщо окремо констант немає
+            if 'm_full' in locals() and m_full:
+                pass # Якщо буде потреба складної логіки
+            
+    if not data.get('VOCAB') and not data.get('SPRACHBAUSTEINE'):
+        # Фолбек на старий варіант пошуку тільки VOCAB
+        m = re.search(r'const\s+VOCAB\s*=\s*(\[[\s\S]*?\]);', src)
+        if m:
+            # ... (код парсингу аналогічний)
+            pass
+        raise ValueError('Не знайдено масиви VOCAB або SPRACHBAUSTEINE у файлі.')
 
-    arr_js = re.sub(r'//[^\n]*', '', arr_js)
-    arr_js = arr_js.replace('\\"', '"')
-    arr_js = re.sub(r"'([^']*)'", lambda m: json.dumps(m.group(1).replace('"', '\\"')), arr_js)
-    arr_js = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', arr_js)
-    arr_js = re.sub(r',\s*([}\]])', r'\1', arr_js)
-
-    try:
-        vocab = json.loads(arr_js)
-    except json.JSONDecodeError as e:
-        print(f'  ✗ JSON parse error: {e}')
-        pos = e.pos
-        start = max(0, pos - 40)
-        end = min(len(arr_js), pos + 40)
-        print(f'  Контекст помилки: ... {arr_js[start:pos]}🔴[ПОМИЛКА ТУТ] {arr_js[pos:end]} ...')
-        raise
-
-    return vocab
+    return data
 
 # ── Маніфест ─────────────────────────────────────────────────
 def load_manifest():
@@ -155,16 +181,21 @@ def synthesize(ssml, retries=3):
 # ── Завдання ─────────────────────────────────────────────────
 def process(task, manifest):
     global NEW_FILES_COUNT
-    card, field, lang, speed = task
+    block_type, card, field, lang, speed = task
     cid  = card['id']
     text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
 
-    if not text.strip():
+    if not text or not text.strip():
         return 'skip', f'{cid}_{field}_{lang}_{speed}'
 
-    cat   = cid.split('_')[0]                              # 'mbr' з 'mbr_056'
-    fname = f'{cid}_{field}_{lang}_{speed}'                # mbr_056_short_en_080
-    mkey  = f'{COURSE}/{lang}/{speed}/{cat}/{fname}'       # B2-Beruf/en/080/mbr/mbr_056_short_en_080
+    # Визначення папки категорії (для SPRACHBAUSTEINE це завжди sbs, для VOCAB – префікс id типу mbr)
+    if block_type == 'SPRACHBAUSTEINE':
+        cat = 'sbs'
+    else:
+        cat = cid.split('_')[0]                              # 'mbr' з 'mbr_056'
+        
+    fname = f'{cid}_{field}_{lang}_{speed}'                # sbs_001_sentence_de_100 / mbr_056_short_en_080
+    mkey  = f'{COURSE}/{lang}/{speed}/{cat}/{fname}'       # B2-Beruf/de/100/sbs/sbs_001_sentence_de_100
     fpath = AUDIO_BASE / lang / speed / cat / f'{fname}.mp3'
 
     with lock:
@@ -196,7 +227,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.3 (Dynamic Auto-Save)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.4 (VOCAB + SPRACHBAUSTEINE)', flush=True)
     print(f'    Region: {AZURE_REGION} | Course: {COURSE}', flush=True)
     print(f'    Начальні Потоки (Workers): {WORKERS} | Пауза: {DELAY_SEC}s | Автосейв кожні: {COMMIT_EVERY_X_FILES} файлів', flush=True)
 
@@ -216,26 +247,40 @@ def main():
 
     print('\n📖 Завантаження бази...', flush=True)
     try:
-        vocab = load_vocab()
+        db_data = load_data()
     except Exception as e:
         print(f'   ✗ Помилка завантаження бази: {e}', flush=True)
         return 1
 
     manifest = load_manifest()
-    print(f'   ✓ Карток: {len(vocab)} | В маніфесті: {len(manifest)}', flush=True)
+    
+    # Динамічне збирання завдань для обох таблиць
+    tasks = []
+    status_info = []
+    
+    for block_type, config in CONFIG_BY_TYPE.items():
+        vocab_list = db_data.get(block_type, [])
+        status_info.append(f'{block_type}: {len(vocab_list)}')
+        
+        for card in vocab_list:
+            for field in config['fields']:
+                for lang in config['languages']:
+                    for speed in SPEEDS:
+                        tasks.append((block_type, card, field, lang, speed))
 
-    tasks = [
-        (card, field, lang, speed)
-        for card  in vocab
-        for field in FIELDS
-        for lang  in VOICES
-        for speed in SPEEDS
-    ]
+    print(f'   ✓ Завантажено картки -> {" | ".join(status_info)} | В маніфесті: {len(manifest)}', flush=True)
 
-    total   = len(tasks)
-    already = sum(1 for c,f,l,s in tasks
-                  if f'{COURSE}/{c["id"]}_{f}_{l}_{s}' in manifest
-                  and (AUDIO_BASE / l / s / c['id'].split('_')[0] / f'{c["id"]}_{f}_{l}_{s}.mp3').exists())
+    total = len(tasks)
+    
+    # Рахуємо, скільки файлів вже реально згенеровано на диску та є в маніфесті
+    already = 0
+    for block_type, c, f, l, s in tasks:
+        cat = 'sbs' if block_type == 'SPRACHBAUSTEINE' else c['id'].split('_')[0]
+        fname = f'{c["id"]}_{f}_{l}_{s}'
+        mkey = f'{COURSE}/{l}/{s}/{cat}/{fname}'
+        fpath = AUDIO_BASE / l / s / cat / f'{fname}.mp3'
+        if mkey in manifest and fpath.exists():
+            already += 1
 
     print(f'\n🎯 Завдань: {total} | Вже є: {already} | Нових: {total-already}', flush=True)
 
