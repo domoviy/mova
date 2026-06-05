@@ -1448,7 +1448,7 @@ body{
         <div class="vplayer">
           <button class="vplay" id="sb-play-btn" onclick="sbTogglePlay()">▶</button>
           <button class="vstop" onclick="sbStopPlay()">⏹</button>
-          <button class="vseq" id="sb-seq-btn" onclick="sbCycleMode()" title="Modus">📖</button>
+          <button class="vshuffle-btn" id="sb-shuffle-btn" onclick="sbShuffle()" title="Mischen">🔀</button>
           <div class="vlang-grp">
             <button class="vlang-btn on" id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
             <button class="vlang-btn on" id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
@@ -1470,9 +1470,8 @@ body{
             <!-- FRONT -->
             <div class="fc-face fc-front">
               <div class="fc-header">
-                <button class="fc-fav" id="sb-fav-front" onclick="sbToggleFav(event)">☆</button>
+                <button class="fc-fav" id="sb-fav-front">☆</button>
                 <div class="fc-cat" id="sb-fc-cat"></div>
-                <div class="fc-num" id="sb-fc-num">1 / 48</div>
               </div>
               <div class="fc-body" id="sb-front-body"></div>
               <div class="fc-hint" id="sb-front-hint">↕ перевернути · ← → навігація</div>
@@ -1480,9 +1479,8 @@ body{
             <!-- BACK -->
             <div class="fc-face fc-back">
               <div class="fc-back-header">
-                <button class="fc-fav-back" id="sb-fav-back" onclick="sbToggleFav(event)">☆</button>
+                <button class="fc-fav-back" id="sb-fav-back">☆</button>
                 <div class="fc-back-term" id="sb-back-answer"></div>
-                <div class="fc-num-back" id="sb-fc-num-back">1 / 48</div>
               </div>
               <div class="fc-body" id="sb-back-body" style="overflow-y:auto"></div>
               <div class="fc-hint-back">↑ Важко · ↓ Легко · ← → навігація</div>
@@ -1655,7 +1653,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '61-2c5fc19';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5054,20 +5052,24 @@ function sbSetMode(mode) {
     var t = document.getElementById('sbt-'+m);
     if (t) { t.classList.toggle('active', m===mode); }
   });
-  // seq btn icon
-  var seq = document.getElementById('sb-seq-btn');
-  var icons = { learn:'📖', practice:'🎯', exam:'📝' };
-  if (seq) { seq.textContent = icons[mode]||'📖'; seq.className='vseq '+mode; }
+  // shuffle btn — no mode-specific styling needed
   sbStopPlay();
   if (mode==='learn')    { sbBuildLearnQueue(); sbRenderLearn(); setTimeout(sbInitLearnSwipe,50); }
   if (mode==='practice') sbStartPractice();
   if (mode==='exam')     sbStartExam();
 }
 
-function sbCycleMode() {
-  var modes = ['learn','practice','exam'];
-  var next = modes[(modes.indexOf(SB.mode)+1) % modes.length];
-  sbSetMode(next);
+function sbShuffle() {
+  sbBuildLearnQueue();
+  // Fisher-Yates shuffle
+  for(var i=SB.learnQueue.length-1;i>0;i--){
+    var j=Math.floor(Math.random()*(i+1));
+    var tmp=SB.learnQueue[i]; SB.learnQueue[i]=SB.learnQueue[j]; SB.learnQueue[j]=tmp;
+  }
+  SB.learnIdx=0; SB.learnFlipped=false;
+  sbStopPlay(); sbRenderLearn();
+  if(typeof haptic!=='undefined') haptic.medium();
+  if(typeof notify==='function') notify('🔀 Gemischt');
 }
 
 // ── LEARN ─────────────────────────────────────────────────────
@@ -5081,12 +5083,10 @@ function sbBuildLearnQueue() {
 function sbUpdateLearnProgress() {
   var total = SB.learnQueue.length || 1;
   var idx   = SB.learnIdx;
-  var pct   = Math.round((idx / total) * 100);
+  var pct   = Math.round(((idx+1) / total) * 100);
   var txt   = (idx+1) + ' / ' + total;
-  var el    = document.getElementById('sb-prgtxt');     if(el) el.textContent = txt;
-  var num   = document.getElementById('sb-fc-num');     if(num) num.textContent = txt;
-  var numB  = document.getElementById('sb-fc-num-back');if(numB) numB.textContent = txt;
-  var bar   = document.getElementById('sb-vpbf');       if(bar) bar.style.width = pct+'%';
+  var el    = document.getElementById('sb-prgtxt'); if(el) el.textContent = txt;
+  var bar   = document.getElementById('sb-vpbf');   if(bar) bar.style.width = pct+'%';
 }
 
 function sbRenderLearn() {
@@ -5110,8 +5110,10 @@ function sbRenderLearn() {
     var langLabels = { en:'🇬🇧 English', uk:'🇺🇦 Українська', de:'🇩🇪 Deutsch' };
     frontEl.innerHTML = langs.map(function(l, i) {
       var raw  = sbL(card.sentence, l);
-      // Always show answer inline (bold gold) — brain learns visually
-      var html = raw.replace('{{BLANK}}', '<b>'+card.answer+'</b>');
+      // DE: show answer bold (visual learning). UK/EN: keep blank (answer is German word)
+      var html = l === 'de'
+        ? raw.replace('{{BLANK}}', '<b>'+card.answer+'</b>')
+        : raw.replace('{{BLANK}}', '<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
       return (i>0 ? '<div class="sb-front-divider"></div>' : '')
         + (langs.length>1 ? '<div class="sb-front-lang-label">'+langLabels[l]+'</div>' : '')
         + '<div class="sb-front-sentence">'+html+'</div>';
@@ -5133,8 +5135,9 @@ function sbRenderLearn() {
     }).join('');
   }
 
-  // fav buttons
+  // fav buttons — update state + re-init touch handlers
   sbUpdateFavBtns(card.id);
+  setTimeout(function(){ sbInitFavBtns(card.id); }, 0);
 
   // flip state — use flashcard CSS class
   var fc = document.getElementById('sb-flashcard');
@@ -5307,21 +5310,44 @@ function sbAutoPlay() {
 }
 
 // ── FAVORITES ─────────────────────────────────────────────────
-function sbIsFav(id){ try{ return JSON.parse(localStorage.getItem('mova_sb_fav_'+id)||'{}').fav===true; }catch(e){ return false; } }
-function sbSetFav(id,val){ try{ localStorage.setItem('mova_sb_fav_'+id,JSON.stringify({fav:val})); }catch(e){} }
+// Use same storage key as vocab toggleFavorite: 'mova_' + id
+function sbIsFav(id){ try{ return JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite===true; }catch(e){ return false; } }
 function sbToggleFav(e) {
-  if(e) e.stopPropagation();
+  if(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); }
   var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
-  var now=!sbIsFav(card.id);
-  sbSetFav(card.id,now);
-  sbUpdateFavBtns(card.id);
-  if(typeof haptic!=='undefined') haptic.light();
-  if(typeof notify==='function') notify(now?'★ Збережено':'☆ Видалено');
+  // Delegate to the same toggleFavorite used by vocab
+  if(typeof toggleFavorite==='function'){
+    toggleFavorite(card.id);
+  }
+  // Also update SB-specific buttons
+  setTimeout(function(){ sbUpdateFavBtns(card.id); }, 0);
 }
 function sbUpdateFavBtns(id) {
   var fav=sbIsFav(id);
   var f=document.getElementById('sb-fav-front'); if(f){ f.textContent=fav?'★':'☆'; f.classList.toggle('active',fav); }
   var b=document.getElementById('sb-fav-back');  if(b){ b.textContent=fav?'★':'☆'; b.classList.toggle('active',fav); }
+}
+function sbInitFavBtns(cardId) {
+  ['sb-fav-front','sb-fav-back'].forEach(function(btnId) {
+    var btn = document.getElementById(btnId);
+    if(!btn) return;
+    // Reset so listener gets re-attached when card changes
+    btn._sbFavInited = false;
+    if(btn._sbFavInited) return;
+    btn._sbFavInited = true;
+    btn.dataset.favId = cardId;
+    var handler = function(e) {
+      e.stopPropagation();
+      if(e.cancelable) e.preventDefault();
+      sbToggleFav(e);
+    };
+    btn.removeEventListener('touchend', btn._sbFavHandler);
+    btn.removeEventListener('click', btn._sbFavClickHandler);
+    btn._sbFavHandler = handler;
+    btn._sbFavClickHandler = function(e){ e.stopPropagation(); sbToggleFav(e); };
+    btn.addEventListener('touchend', btn._sbFavHandler, {passive:false});
+    btn.addEventListener('click', btn._sbFavClickHandler);
+  });
 }
 
 // ── PRACTICE ──────────────────────────────────────────────────
@@ -5367,8 +5393,8 @@ function sbRenderPrac() {
     sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')
     +'</div>';
 
-  // Options: correct answer from card.answer + exactly card.distractors (up to 3)
-  var distractors = card.distractors.slice(0,3);
+  // Options: correct answer + all 4 distractors = 5 options total
+  var distractors = card.distractors.slice(0,4);
   var opts = [card.answer].concat(distractors).sort(function(){ return Math.random()-.5; });
 
   var optEl=document.getElementById('sb-prac-options');
