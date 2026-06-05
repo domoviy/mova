@@ -96,7 +96,8 @@ const LESSONS = [
       "nvv_005",
       "nvv_006"
     ],
-    "unlockAfter": null
+    "unlockAfter": null,
+    "sbCards": ["sbs_001", "sbs_007"]
   },
   {
     "id": "k1m2",
@@ -160,7 +161,8 @@ const LESSONS = [
       "nvv_011",
       "nvv_012"
     ],
-    "unlockAfter": "k1m1"
+    "unlockAfter": "k1m1",
+    "sbCards": ["sbs_017", "sbs_022"]
   },
   {
     "id": "k1m3",
@@ -227,7 +229,8 @@ const LESSONS = [
       "hsk_019",
       "hsk_020"
     ],
-    "unlockAfter": "k1m2"
+    "unlockAfter": "k1m2",
+    "sbCards": ["sbs_013", "sbs_015"]
   },
   {
     "id": "k1m4",
@@ -282,7 +285,8 @@ const LESSONS = [
       "nvv_017",
       "nvv_018"
     ],
-    "unlockAfter": "k1m3"
+    "unlockAfter": "k1m3",
+    "sbCards": ["sbs_018", "sbs_023"]
   },
   {
     "id": "k2m1",
@@ -336,7 +340,8 @@ const LESSONS = [
       "nvv_023",
       "nvv_024"
     ],
-    "unlockAfter": "k1m4"
+    "unlockAfter": "k1m4",
+    "sbCards": ["sbs_002", "sbs_008"]
   },
   {
     "id": "k2m2",
@@ -389,7 +394,8 @@ const LESSONS = [
       "nvv_029",
       "nvv_030"
     ],
-    "unlockAfter": "k2m1"
+    "unlockAfter": "k2m1",
+    "sbCards": ["sbs_017", "sbs_044"]
   },
   {
     "id": "k2m3",
@@ -443,7 +449,8 @@ const LESSONS = [
       "nvv_035",
       "nvv_036"
     ],
-    "unlockAfter": "k2m2"
+    "unlockAfter": "k2m2",
+    "sbCards": ["sbs_033", "sbs_046"]
   },
   {
     "id": "k2m4",
@@ -497,7 +504,8 @@ const LESSONS = [
       "nvv_041",
       "nvv_042"
     ],
-    "unlockAfter": "k2m3"
+    "unlockAfter": "k2m3",
+    "sbCards": ["sbs_018", "sbs_019"]
   },
   {
     "id": "k3m1",
@@ -553,7 +561,8 @@ const LESSONS = [
       "nvv_047",
       "nvv_048"
     ],
-    "unlockAfter": "k2m4"
+    "unlockAfter": "k2m4",
+    "sbCards": ["sbs_036", "sbs_037"]
   },
   {
     "id": "k3m2",
@@ -601,7 +610,8 @@ const LESSONS = [
       "nvv_053",
       "nvv_054"
     ],
-    "unlockAfter": "k3m1"
+    "unlockAfter": "k3m1",
+    "sbCards": ["sbs_013", "sbs_014"]
   },
   {
     "id": "k3m3",
@@ -646,7 +656,8 @@ const LESSONS = [
       "nvv_059",
       "nvv_060"
     ],
-    "unlockAfter": "k3m2"
+    "unlockAfter": "k3m2",
+    "sbCards": ["sbs_027", "sbs_028"]
   },
   {
     "id": "k3m4",
@@ -713,7 +724,8 @@ const LESSONS = [
       "nvv_065",
       "nvv_066"
     ],
-    "unlockAfter": "k3m3"
+    "unlockAfter": "k3m3",
+    "sbCards": ["sbs_003", "sbs_009"]
   },
   {
     "id": "k4m1",
@@ -757,7 +769,8 @@ const LESSONS = [
       "nvv_071",
       "nvv_072"
     ],
-    "unlockAfter": "k3m4"
+    "unlockAfter": "k3m4",
+    "sbCards": ["sbs_004", "sbs_010"]
   },
   {
     "id": "k4m2",
@@ -803,7 +816,8 @@ const LESSONS = [
       "nvv_077",
       "nvv_078"
     ],
-    "unlockAfter": "k4m1"
+    "unlockAfter": "k4m1",
+    "sbCards": ["sbs_009", "sbs_035"]
   },
   {
     "id": "k4m3",
@@ -849,7 +863,8 @@ const LESSONS = [
       "nvv_089",
       "nvv_090"
     ],
-    "unlockAfter": "k4m2"
+    "unlockAfter": "k4m2",
+    "sbCards": ["sbs_030", "sbs_047"]
   },
   {
     "id": "k4m4",
@@ -889,7 +904,8 @@ const LESSONS = [
       "nvv_095",
       "nvv_096"
     ],
-    "unlockAfter": "k4m3"
+    "unlockAfter": "k4m3",
+    "sbCards": ["sbs_020", "sbs_022"]
   },
   {
     "id": "k5m1",
@@ -945,7 +961,8 @@ const LESSONS = [
       "abk_009",
       "abk_010"
     ],
-    "unlockAfter": "k4m4"
+    "unlockAfter": "k4m4",
+    "sbCards": ["sbs_038", "sbs_039"]
   },
   {
     "id": "k5m2",
@@ -998,7 +1015,8 @@ const LESSONS = [
       "uns_034",
       "uns_035"
     ],
-    "unlockAfter": "k5m1"
+    "unlockAfter": "k5m1",
+    "sbCards": ["sbs_029", "sbs_031"]
   },
   {
     "id": "k5m3",
@@ -1040,7 +1058,8 @@ const LESSONS = [
       "abk_019",
       "abk_020"
     ],
-    "unlockAfter": "k5m2"
+    "unlockAfter": "k5m2",
+    "sbCards": ["sbs_027", "sbs_032"]
   },
   {
     "id": "k5m4",
@@ -1084,7 +1103,8 @@ const LESSONS = [
       "nvv_101",
       "nvv_102"
     ],
-    "unlockAfter": "k5m3"
+    "unlockAfter": "k5m3",
+    "sbCards": ["sbs_005", "sbs_015"]
   },
   {
     "id": "k6m1",
@@ -1128,7 +1148,8 @@ const LESSONS = [
       "nvv_107",
       "nvv_108"
     ],
-    "unlockAfter": "k5m4"
+    "unlockAfter": "k5m4",
+    "sbCards": ["sbs_011", "sbs_033"]
   },
   {
     "id": "k6m2",
@@ -1181,7 +1202,8 @@ const LESSONS = [
       "kia_024",
       "kia_025"
     ],
-    "unlockAfter": "k6m1"
+    "unlockAfter": "k6m1",
+    "sbCards": ["sbs_021", "sbs_025"]
   },
   {
     "id": "k6m3",
@@ -1223,7 +1245,8 @@ const LESSONS = [
       "nvv_113",
       "nvv_114"
     ],
-    "unlockAfter": "k6m2"
+    "unlockAfter": "k6m2",
+    "sbCards": ["sbs_013", "sbs_016"]
   },
   {
     "id": "k6m4",
@@ -1264,7 +1287,8 @@ const LESSONS = [
       "nvv_119",
       "nvv_120"
     ],
-    "unlockAfter": "k6m3"
+    "unlockAfter": "k6m3",
+    "sbCards": ["sbs_006", "sbs_040"]
   },
   {
     "id": "k7m1",
@@ -1302,7 +1326,8 @@ const LESSONS = [
       "mbr_089",
       "mbr_090"
     ],
-    "unlockAfter": "k6m4"
+    "unlockAfter": "k6m4",
+    "sbCards": ["sbs_019", "sbs_024"]
   },
   {
     "id": "k7m2",
@@ -1335,7 +1360,8 @@ const LESSONS = [
       "mbr_099",
       "mbr_100"
     ],
-    "unlockAfter": "k7m1"
+    "unlockAfter": "k7m1",
+    "sbCards": ["sbs_028", "sbs_030"]
   },
   {
     "id": "k7m3",
@@ -1372,7 +1398,8 @@ const LESSONS = [
       "mwb_014",
       "mwb_015"
     ],
-    "unlockAfter": "k7m2"
+    "unlockAfter": "k7m2",
+    "sbCards": ["sbs_026", "sbs_031"]
   },
   {
     "id": "k7m4",
@@ -1410,7 +1437,8 @@ const LESSONS = [
       "zar_014",
       "zar_015"
     ],
-    "unlockAfter": "k7m3"
+    "unlockAfter": "k7m3",
+    "sbCards": ["sbs_020", "sbs_023"]
   },
   {
     "id": "k8m1",
@@ -1453,7 +1481,8 @@ const LESSONS = [
       "hsk_019",
       "hsk_020"
     ],
-    "unlockAfter": "k7m4"
+    "unlockAfter": "k7m4",
+    "sbCards": ["sbs_034", "sbs_041"]
   },
   {
     "id": "k8m2",
@@ -1496,7 +1525,8 @@ const LESSONS = [
       "hsk_039",
       "hsk_040"
     ],
-    "unlockAfter": "k8m1"
+    "unlockAfter": "k8m1",
+    "sbCards": ["sbs_042", "sbs_040"]
   },
   {
     "id": "k8m3",
@@ -1538,7 +1568,8 @@ const LESSONS = [
       "hsk_058",
       "hsk_059"
     ],
-    "unlockAfter": "k8m2"
+    "unlockAfter": "k8m2",
+    "sbCards": ["sbs_001", "sbs_038"]
   },
   {
     "id": "k8m4",
@@ -1588,7 +1619,8 @@ const LESSONS = [
       "eat_019",
       "eat_020"
     ],
-    "unlockAfter": "k8m3"
+    "unlockAfter": "k8m3",
+    "sbCards": ["sbs_032", "sbs_047"]
   },
   {
     "id": "k9m1",
@@ -1626,7 +1658,8 @@ const LESSONS = [
       "ssk_014",
       "ssk_015"
     ],
-    "unlockAfter": "k8m4"
+    "unlockAfter": "k8m4",
+    "sbCards": ["sbs_005", "sbs_039"]
   },
   {
     "id": "k9m2",
@@ -1658,7 +1691,8 @@ const LESSONS = [
       "ssk_024",
       "ssk_025"
     ],
-    "unlockAfter": "k9m1"
+    "unlockAfter": "k9m1",
+    "sbCards": ["sbs_015", "sbs_048"]
   },
   {
     "id": "k9m3",
@@ -1696,7 +1730,8 @@ const LESSONS = [
       "kia_039",
       "kia_040"
     ],
-    "unlockAfter": "k9m2"
+    "unlockAfter": "k9m2",
+    "sbCards": ["sbs_006", "sbs_012"]
   },
   {
     "id": "k9m4",
@@ -1743,7 +1778,8 @@ const LESSONS = [
       "zar_049",
       "zar_050"
     ],
-    "unlockAfter": "k9m3"
+    "unlockAfter": "k9m3",
+    "sbCards": ["sbs_016", "sbs_045"]
   },
   {
     "id": "k10m1",
@@ -1787,7 +1823,8 @@ const LESSONS = [
       "mbr_099",
       "mbr_100"
     ],
-    "unlockAfter": "k9m4"
+    "unlockAfter": "k9m4",
+    "sbCards": ["sbs_007", "sbs_036"]
   },
   {
     "id": "k10m2",
@@ -1830,7 +1867,8 @@ const LESSONS = [
       "mwb_099",
       "mwb_100"
     ],
-    "unlockAfter": "k10m1"
+    "unlockAfter": "k10m1",
+    "sbCards": ["sbs_017", "sbs_025"]
   },
   {
     "id": "k10m3",
@@ -1873,7 +1911,8 @@ const LESSONS = [
       "mbr_019",
       "mbr_020"
     ],
-    "unlockAfter": "k10m2"
+    "unlockAfter": "k10m2",
+    "sbCards": ["sbs_043", "sbs_037"]
   },
   {
     "id": "k10m4",
@@ -1926,7 +1965,8 @@ const LESSONS = [
       "hsk_029",
       "hsk_030"
     ],
-    "unlockAfter": "k10m3"
+    "unlockAfter": "k10m3",
+    "sbCards": ["sbs_002", "sbs_048"]
   }
 ];
 
@@ -2720,16 +2760,16 @@ const QUIZ = [
 //  SPRACHBAUSTEINE DATABASE  ·  DTB B2 Prüfungsvorbereitung
 // ════════════════════════════════════════════════════════════════
 
-const sbs_CATS = [
-  { id:'argument_intro',   de:'Argument einleiten',    uk:'Початок аргументу',   e:'🟦' },
-  { id:'counter_argument', de:'Gegenargument',         uk:'Контраргумент',       e:'🟥' },
-  { id:'opinion',          de:'Meinung äußern',        uk:'Висловлення думки',   e:'🟨' },
-  { id:'letter_opening',   de:'Brieferöffnung',        uk:'Початок листа',       e:'🟩' },
-  { id:'letter_closing',   de:'Briefschluss',          uk:'Кінець листа',        e:'🟪' },
-  { id:'business',         de:'Geschäftsausdruck',     uk:'Діловий вираз',       e:'🔶' },
-  { id:'concession',       de:'Einräumung',            uk:'Поступка',            e:'🔷' },
-  { id:'comparison',       de:'Vergleich',             uk:'Порівняння',          e:'⬛' },
-  { id:'consequence',      de:'Folge / Schluss',       uk:'Наслідок / Висновок', e:'🔸' },
+const SB_CATS = [
+  { id:"argument_intro",   de:"Argument einleiten",    uk:"Початок аргументу",   e:"🟦" },
+  { id:"counter_argument", de:"Gegenargument",         uk:"Контраргумент",       e:"🟥" },
+  { id:"opinion",          de:"Meinung äußern",        uk:"Висловлення думки",   e:"🟨" },
+  { id:"letter_opening",   de:"Brieferöffnung",        uk:"Початок листа",       e:"🟩" },
+  { id:"letter_closing",   de:"Briefschluss",          uk:"Кінець листа",        e:"🟪" },
+  { id:"business",         de:"Geschäftsausdruck",     uk:"Діловий вираз",       e:"🔶" },
+  { id:"concession",       de:"Einräumung",            uk:"Поступка",            e:"🔷" },
+  { id:"comparison",       de:"Vergleich",             uk:"Порівняння",          e:"⬛" },
+  { id:"consequence",      de:"Folge / Schluss",       uk:"Наслідок / Висновок", e:"🔸" },
 ];
 
 const SPRACHBAUSTEINE = [
@@ -2737,36 +2777,48 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_001", cat:"argument_intro",
     sentence:{ de:"{{BLANK}} halte ich es für eine gute Idee, mehr Homeoffice-Tage einzuführen.", uk:"{{BLANK}} вважаю впровадження більшої кількості домашніх днів гарною ідеєю.", en:"{{BLANK}} I think introducing more home-office days is a good idea." },
     answer:"Einerseits",
+    answer_uk:"З одного боку",
+    answer_en:"On the one hand",
     distractors:["Außerdem","Deshalb","Trotzdem","Jedoch","Meiner Ansicht nach"],
     explanation:{ de:"„Einerseits“ eröffnet eine zweiseitige Argumentation (Einerseits … Andererseits). „Außerdem“ ergänzt nur, bereitet kein Gegenargument vor. „Deshalb“ drückt eine Folge aus, kein Abwägen.", uk:"„Einerseits“ відкриває двосторонню аргументацію (Einerseits … Andererseits). „Außerdem“ лише додає, але не готує контраргумент. „Deshalb“ виражає наслідок, а не зважування.", en:"„Einerseits“ opens a two-sided argument (Einerseits … Andererseits). „Außerdem“ only adds information, it does not prepare a counterargument. „Deshalb“ expresses a consequence, not a weighing." }
   },
   { id:"sbs_002", cat:"argument_intro",
     sentence:{ de:"{{BLANK}} bin ich der Meinung, dass flexible Arbeitszeiten die Produktivität steigern.", uk:"{{BLANK}} я вважаю, що гнучкий робочий час підвищує продуктивність.", en:"{{BLANK}} I am of the opinion that flexible working hours increase productivity." },
     answer:"Grundsätzlich",
+    answer_uk:"В принципі",
+    answer_en:"In principle",
     distractors:["Einerseits","Im Großen und Ganzen","Trotz allem","Nichtsdestotrotz"],
     explanation:{ de:"„Grundsätzlich“ signalisiert eine allgemeine, grundlegende Position. „Einerseits“ erwartet ein „Andererseits“. „Im Großen und Ganzen“ fasst bereits Gesagtes zusammen.", uk:"„Grundsätzlich“ сигналізує загальну, принципову позицію. „Einerseits“ очікує „Andererseits“. „Im Großen und Ganzen“ підсумовує вже сказане.", en:"„Grundsätzlich“ signals a general, fundamental position. „Einerseits“ expects an „Andererseits“. „Im Großen und Ganzen“ summarises what has already been said." }
   },
   { id:"sbs_003", cat:"argument_intro",
     sentence:{ de:"{{BLANK}} spreche ich mich für eine Verlängerung der Elternzeit aus.", uk:"{{BLANK}} я виступаю за продовження відпустки по догляду за дитиною.", en:"{{BLANK}} I advocate for an extension of parental leave." },
     answer:"Ausdrücklich",
+    answer_uk:"Виразно",
+    answer_en:"Explicitly",
     distractors:["Selbstverständlich","Grundsätzlich","Im Übrigen","Dennoch"],
     explanation:{ de:"„Ausdrücklich“ betont Deutlichkeit und Entschlossenheit. „Selbstverständlich“ klingt zu selbstverständlich. „Im Übrigen“ leitet einen zusätzlichen Punkt ein, keine Positionierung.", uk:"„Ausdrücklich“ підкреслює чіткість і рішучість. „Selbstverständlich“ звучить занадто само собою зрозуміло. „Im Übrigen“ вводить додатковий пункт, а не позицію.", en:"„Ausdrücklich“ emphasises clarity and determination. „Selbstverständlich“ sounds too self-evident. „Im Übrigen“ introduces an additional point, not a stance." }
   },
   { id:"sbs_004", cat:"argument_intro",
     sentence:{ de:"{{BLANK}} den gestiegenen Energiekosten sind viele Haushalte stark belastet.", uk:"{{BLANK}} зростання витрат на енергію багато домогосподарств зазнає значного навантаження.", en:"{{BLANK}} rising energy costs, many households are heavily burdened." },
     answer:"Aufgrund",
+    answer_uk:"На підставі",
+    answer_en:"Due to",
     distractors:["Wegen","Trotz","Angesichts","Infolge"],
     explanation:{ de:"„Aufgrund + Genitiv“ ist im förmlichen Schriftdeutsch am gebräuchlichsten. Im Prüfungskontext wird es gegenüber dem umgangssprachlicheren „Wegen“ bevorzugt.", uk:"„Aufgrund + Genitiv“ є найпоширенішим у офіційному письмовому мовленні. На іспиті воно перевагує перед розмовнішим „Wegen“.", en:"„Aufgrund + Genitiv“ is most common in formal written German. In exam contexts it is preferred over the more colloquial „Wegen“." }
   },
   { id:"sbs_005", cat:"argument_intro",
     sentence:{ de:"{{BLANK}} möchte ich betonen, dass Weiterbildung ein wichtiger Faktor ist.", uk:"{{BLANK}} хочу наголосити, що підвищення кваліфікації є важливим чинником.", en:"{{BLANK}} I would like to emphasise that further training is an important factor." },
     answer:"In diesem Zusammenhang",
+    answer_uk:"У цьому контексті",
+    answer_en:"In this context",
     distractors:["In diesem Sinne","An dieser Stelle","Darüber hinaus","Dabei"],
     explanation:{ de:"„In diesem Zusammenhang“ verweist auf den thematischen Kontext des Vorherigen. „An dieser Stelle“ ist räumlich/zeitlich. „Darüber hinaus“ fügt hinzu, knüpft aber nicht an den Kontext an.", uk:"„In diesem Zusammenhang“ посилається на тематичний контекст попереднього. „An dieser Stelle“ є просторовим/часовим. „Darüber hinaus“ додає, але не прив'язується до контексту.", en:"„In diesem Zusammenhang“ refers to the thematic context of what preceded. „An dieser Stelle“ is spatial/temporal. „Darüber hinaus“ adds information but does not link to the context." }
   },
   { id:"sbs_006", cat:"argument_intro",
     sentence:{ de:"{{BLANK}} der aktuellen Entwicklungen ist Handlungsbedarf gegeben.", uk:"{{BLANK}} поточних подій існує необхідність вжити заходів.", en:"{{BLANK}} current developments, action is required." },
     answer:"Angesichts",
+    answer_uk:"Зважаючи на",
+    answer_en:"In view of",
     distractors:["Aufgrund","Wegen","Infolge","Hinsichtlich"],
     explanation:{ de:"„Angesichts + Genitiv“ bedeutet „in Anbetracht, im Blick auf“. „Aufgrund“ wäre kausal. „Hinsichtlich“ bedeutet „was X betrifft“ — thematisch, nicht bewertend.", uk:"„Angesichts + Genitiv“ означає „з огляду на, беручи до уваги“. „Aufgrund“ було б причинним. „Hinsichtlich“ означає „що стосується X“ — тематично, не оцінювально.", en:"„Angesichts + Genitiv“ means „in view of, considering“. „Aufgrund“ would be causal. „Hinsichtlich“ means „regarding X“ — thematic, not evaluative." }
   },
@@ -2774,36 +2826,48 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_007", cat:"counter_argument",
     sentence:{ de:"{{BLANK}} gibt es auch Menschen, die Online-Meetings als weniger effektiv empfinden.", uk:"{{BLANK}} є й люди, які вважають онлайн-наради менш ефективними.", en:"{{BLANK}} there are also people who find online meetings less effective." },
     answer:"Andererseits",
+    answer_uk:"З іншого боку",
+    answer_en:"On the other hand",
     distractors:["Einerseits","Außerdem","Daher","Folglich"],
     explanation:{ de:"„Andererseits“ ist das klassische Gegenstück zu „Einerseits“ und leitet das Gegenargument ein. „Außerdem“ würde nur ergänzen. „Daher / Folglich“ sind Folge-Konnektoren.", uk:"„Andererseits“ є класичним протиставленням до „Einerseits“ і вводить контраргумент. „Außerdem“ лише доповнює. „Daher / Folglich“ — сполучники наслідку.", en:"„Andererseits“ is the classic counterpart to „Einerseits“ introducing the counterargument. „Außerdem“ would only add. „Daher / Folglich“ are consequence connectors." }
   },
   { id:"sbs_008", cat:"counter_argument",
     sentence:{ de:"{{BLANK}} der Vorteile bleibt die hohe Kostenbelastung ein ernstes Problem.", uk:"{{BLANK}} переваг, висока фінансова навантаженість залишається серйозною проблемою.", en:"{{BLANK}} the advantages, the high financial burden remains a serious problem." },
     answer:"Trotz",
+    answer_uk:"Незважаючи на",
+    answer_en:"Despite",
     distractors:["Wegen","Aufgrund","Angesichts","Infolge"],
     explanation:{ de:"„Trotz + Genitiv“ drückt Konzession aus. „Wegen / Aufgrund“ sind kausal. „Angesichts“ bezieht sich auf Betrachtung, nicht Kontrast.", uk:"„Trotz + Genitiv“ виражає поступку. „Wegen / Aufgrund“ є причинними. „Angesichts“ стосується розгляду, а не контрасту.", en:"„Trotz + Genitiv“ expresses concession. „Wegen / Aufgrund“ are causal. „Angesichts“ relates to consideration, not contrast." }
   },
   { id:"sbs_009", cat:"counter_argument",
     sentence:{ de:"{{BLANK}} ist nicht zu leugnen, dass die Reform auch Risiken birgt.", uk:"{{BLANK}} не можна заперечити, що реформа також несе ризики.", en:"{{BLANK}} it cannot be denied that the reform also carries risks." },
     answer:"Dennoch",
+    answer_uk:"Проте",
+    answer_en:"Nevertheless",
     distractors:["Trotzdem","Nichtsdestotrotz","Allerdings","Jedoch"],
     explanation:{ de:"„Dennoch“ leitet eine konzessive Aussage ein. „Trotzdem“ ist umgangssprachlicher. „Allerdings“ schränkt ein, aber ohne so starken Kontrast.", uk:"„Dennoch“ вводить поступальне твердження. „Trotzdem“ є розмовнішим. „Allerdings“ обмежує, але без такого сильного контрасту.", en:"„Dennoch“ introduces a concessive statement. „Trotzdem“ is more colloquial. „Allerdings“ restricts but without as strong a contrast." }
   },
   { id:"sbs_010", cat:"counter_argument",
     sentence:{ de:"{{BLANK}} ist die Maßnahme umstritten, weil sie zu mehr Bürokratie führen kann.", uk:"{{BLANK}} захід викликає суперечки, оскільки може призвести до більшої бюрократії.", en:"{{BLANK}} the measure is controversial because it may lead to more bureaucracy." },
     answer:"Allerdings",
+    answer_uk:"Однак",
+    answer_en:"However",
     distractors:["Dennoch","Hingegen","Jedoch","Gleichwohl"],
     explanation:{ de:"„Allerdings“ schränkt eine vorherige positive Aussage ein. „Hingegen“ stellt zwei Sachen direkt gegenüber. „Allerdings“ klingt abwägender und ist im Prüfungsdeutsch gängiger.", uk:"„Allerdings“ обмежує попереднє позитивне твердження. „Hingegen“ прямо протиставляє дві речі. „Allerdings“ звучить зваженіше і є більш поширеним у мові іспитів.", en:"„Allerdings“ restricts a previous positive statement. „Hingegen“ directly contrasts two things. „Allerdings“ sounds more balanced and is more common in exam German." }
   },
   { id:"sbs_011", cat:"counter_argument",
     sentence:{ de:"Manche befürworten die Maßnahme — {{BLANK}} sehen darin eine Einschränkung.", uk:"Одні підтримують захід — {{BLANK}} вбачають у ньому обмеження.", en:"Some support the measure — {{BLANK}} see it as a restriction." },
     answer:"andere hingegen",
+    answer_uk:"інші натомість",
+    answer_en:"others however",
     distractors:["andere jedoch","andere wiederum","einige trotzdem","manche dagegen"],
     explanation:{ de:"„andere hingegen“ ist die feste Paarformel: Manche … andere hingegen. „andere jedoch“ ist grammatisch richtig, aber weniger idiomatisch.", uk:"„andere hingegen“ є усталеною парною формулою: Manche … andere hingegen. „andere jedoch“ є граматично правильним, але менш ідіоматичним.", en:"„andere hingegen“ is the set paired formula: Manche … andere hingegen. „andere jedoch“ is grammatically correct but less idiomatic." }
   },
   { id:"sbs_012", cat:"counter_argument",
     sentence:{ de:"{{BLANK}} den positiven Aspekten darf man die Nachteile nicht außer Acht lassen.", uk:"{{BLANK}} позитивних аспектів не можна ігнорувати недоліки.", en:"{{BLANK}} the positive aspects, the disadvantages must not be ignored." },
     answer:"Neben",
+    answer_uk:"Поряд з",
+    answer_en:"Alongside",
     distractors:["Trotz","Außer","Zusätzlich zu","Angesichts"],
     explanation:{ de:"„Neben + Dativ“ bedeutet „zusätzlich zu“. „Trotz“ drückt Konzession aus. „Außer“ bedeutet Ausschluss.", uk:"„Neben + Dativ“ означає „на додачу до“. „Trotz“ виражає поступку. „Außer“ означає виключення.", en:"„Neben + Dativ“ means „in addition to“. „Trotz“ expresses concession. „Außer“ means exclusion." }
   },
@@ -2811,24 +2875,32 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_013", cat:"opinion",
     sentence:{ de:"{{BLANK}} ist es wichtig, dass Unternehmen mehr in Nachhaltigkeit investieren.", uk:"{{BLANK}} важливо, щоб підприємства більше інвестували в сталий розвиток.", en:"{{BLANK}} it is important that companies invest more in sustainability." },
     answer:"Meiner Meinung nach",
+    answer_uk:"На мою думку",
+    answer_en:"In my opinion",
     distractors:["Meiner Ansicht nach","Aus meiner Sicht","Meines Erachtens","Ich denke, dass"],
     explanation:{ de:"Alle vier drücken persönliche Meinung aus. Im DTB B2 sind „Meiner Meinung nach“ und „Meiner Ansicht nach“ am häufigsten getestet. Achten Sie auf korrekte Wortstellung.", uk:"Усі чотири виражають особисту думку. На іспиті DTB B2 найчастіше перевіряються „Meiner Meinung nach“ і „Meiner Ansicht nach“. Зверніть увагу на правильний порядок слів.", en:"All four express personal opinion. In DTB B2, „Meiner Meinung nach“ and „Meiner Ansicht nach“ are tested most often. Pay attention to correct word order." }
   },
   { id:"sbs_014", cat:"opinion",
     sentence:{ de:"{{BLANK}} überzeugt mich das Argument, weil es auf Fakten basiert.", uk:"{{BLANK}} цей аргумент переконує мене, оскільки він ґрунтується на фактах.", en:"{{BLANK}} this argument convinces me because it is based on facts." },
     answer:"Persönlich",
+    answer_uk:"Особисто",
+    answer_en:"Personally",
     distractors:["Grundsätzlich","Eigentlich","Ehrlich gesagt","Im Wesentlichen"],
     explanation:{ de:"„Persönlich“ betont die individuelle Haltung. „Grundsätzlich“ ist zu allgemein. „Eigentlich“ hätte eine konzessive Nuance. „Ehrlich gesagt“ ist umgangssprachlicher.", uk:"„Persönlich“ підкреслює індивідуальну позицію. „Grundsätzlich“ є занадто загальним. „Eigentlich“ мало б поступальний відтінок. „Ehrlich gesagt“ є розмовнішим.", en:"„Persönlich“ emphasises the individual stance. „Grundsätzlich“ is too general. „Eigentlich“ would have a concessive nuance. „Ehrlich gesagt“ is more colloquial." }
   },
   { id:"sbs_015", cat:"opinion",
     sentence:{ de:"{{BLANK}} halte ich die vorgeschlagene Lösung für sinnvoll.", uk:"{{BLANK}} вважаю запропоноване рішення доцільним.", en:"{{BLANK}} I consider the proposed solution to be sensible." },
     answer:"Insgesamt",
+    answer_uk:"Загалом",
+    answer_en:"Overall",
     distractors:["Grundsätzlich","Im Großen und Ganzen","Letztendlich","Prinzipiell"],
     explanation:{ de:"„Insgesamt“ fasst eine abwägende Betrachtung zusammen. „Im Großen und Ganzen“ ist sehr ähnlich, aber länger. „Letztendlich“ fokussiert auf das Ergebnis.", uk:"„Insgesamt“ підсумовує зважений розгляд. „Im Großen und Ganzen“ дуже схоже, але довше. „Letztendlich“ фокусується на результаті.", en:"„Insgesamt“ sums up a balanced consideration. „Im Großen und Ganzen“ is very similar but longer. „Letztendlich“ focuses on the outcome." }
   },
   { id:"sbs_016", cat:"opinion",
     sentence:{ de:"{{BLANK}} bin ich zu dem Schluss gekommen, dass digitale Bildung zukunftsweisend ist.", uk:"{{BLANK}} я дійшов(-ла) висновку, що цифрова освіта є перспективною.", en:"{{BLANK}} I have come to the conclusion that digital education is forward-looking." },
     answer:"Letztendlich",
+    answer_uk:"Зрештою",
+    answer_en:"Ultimately",
     distractors:["Schließlich","Am Ende","Insgesamt","Zusammenfassend"],
     explanation:{ de:"„Letztendlich“ drückt ein endgültiges persönliches Urteil aus. „Schließlich“ kann zeitlich sein. „Insgesamt“ fasst zusammen, schließt aber kein persönliches Urteil ab.", uk:"„Letztendlich“ виражає остаточне особисте судження. „Schließlich“ може бути часовим. „Insgesamt“ підсумовує, але не завершує особистою оцінкою.", en:"„Letztendlich“ expresses a final personal judgement. „Schließlich“ can be temporal. „Insgesamt“ summarises but does not conclude with a personal verdict." }
   },
@@ -2836,30 +2908,40 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_017", cat:"letter_opening",
     sentence:{ de:"{{BLANK}} Ihre Stellenausschreibung vom 15. März bewerbe ich mich hiermit um die ausgeschriebene Stelle.", uk:"{{BLANK}} Вашого оголошення про вакансію від 15 березня цим листом подаю заявку на вказану посаду.", en:"{{BLANK}} your job advertisement of 15 March I hereby apply for the advertised position." },
     answer:"Auf",
+    answer_uk:"На",
+    answer_en:"In response to",
     distractors:["Bezüglich","Hinsichtlich","Mit Blick auf","Im Hinblick auf"],
     explanation:{ de:"„Auf + Akk.“ ist die feste Formulierung für Bewerbungen: „Auf Ihre Ausschreibung …“. „Bezüglich / Hinsichtlich“ sind korrekt, aber für Anschreiben weniger idiomatisch.", uk:"„Auf + Akk.“ є усталеним формулюванням для заяв: „Auf Ihre Ausschreibung …“. „Bezüglich / Hinsichtlich“ правильні, але менш ідіоматичні для супровідних листів.", en:"„Auf + Akk.“ is the set phrasing for applications: „Auf Ihre Ausschreibung …“. „Bezüglich / Hinsichtlich“ are correct but less idiomatic for cover letters." }
   },
   { id:"sbs_018", cat:"letter_opening",
     sentence:{ de:"{{BLANK}} Ihrer Anzeige in der Süddeutschen Zeitung wende ich mich an Sie.", uk:"{{BLANK}} Вашого оголошення в Süddeutsche Zeitung звертаюся до Вас.", en:"{{BLANK}} your advertisement in the Süddeutsche Zeitung I am writing to you." },
     answer:"Bezugnehmend auf",
+    answer_uk:"Посилаючись на",
+    answer_en:"With reference to",
     distractors:["Mit Bezug auf","In Bezug auf","Im Zusammenhang mit","Hinsichtlich"],
     explanation:{ de:"„Bezugnehmend auf“ ist die klassische Einleitung für formelle Korrespondenz. „In Bezug auf“ ist äquivalent, aber am Briefanfang weniger elegant.", uk:"„Bezugnehmend auf“ є класичним початком ділового листування. „In Bezug auf“ є еквівалентом, але менш елегантним на початку листа.", en:"„Bezugnehmend auf“ is the classic opening for formal correspondence. „In Bezug auf“ is equivalent but less elegant at the start of a letter." }
   },
   { id:"sbs_019", cat:"letter_opening",
     sentence:{ de:"{{BLANK}} Ihr Schreiben vom 3. März teile ich Ihnen mit, dass wir Ihr Angebot annehmen.", uk:"{{BLANK}} Ваш лист від 3 березня повідомляю, що ми приймаємо Вашу пропозицію.", en:"{{BLANK}} your letter of 3 March I inform you that we accept your offer." },
     answer:"In Antwort auf",
+    answer_uk:"У відповідь на",
+    answer_en:"In reply to",
     distractors:["Als Antwort auf","Betreffend","Zu","Hiermit"],
     explanation:{ de:"„In Antwort auf“ ist die förmliche Briefformel für Antwortschreiben. „Als Antwort auf“ ist umgangssprachlicher. „Betreffend“ leitet ein Thema ein, keine Antwort.", uk:"„In Antwort auf“ є офіційною формулою для відповідного листа. „Als Antwort auf“ є розмовнішим. „Betreffend“ вводить тему, а не відповідь.", en:"„In Antwort auf“ is the formal letter formula for a reply. „Als Antwort auf“ is more colloquial. „Betreffend“ introduces a topic, not a reply." }
   },
   { id:"sbs_020", cat:"letter_opening",
     sentence:{ de:"{{BLANK}} habe ich Ihr Angebot sorgfältig geprüft und möchte Ihnen nun antworten.", uk:"{{BLANK}} я уважно розглянув(-ла) Вашу пропозицію і тепер хотів(-ла) б Вам відповісти.", en:"{{BLANK}} I have carefully reviewed your offer and would now like to respond." },
     answer:"Mit großem Interesse",
+    answer_uk:"З великим інтересом",
+    answer_en:"With great interest",
     distractors:["Mit Interesse","Mit Freude","Mit Sorgfalt","Sehr gerne"],
     explanation:{ de:"„Mit großem Interesse“ ist eine feste Formel für positive Geschäftskorrespondenz. „Mit Interesse“ ist kürzer aber weniger emphatisch. „Mit Freude“ klingt zu persönlich.", uk:"„Mit großem Interesse“ є усталеною формулою для позитивного ділового листування. „Mit Interesse“ коротше, але менш емфатичне. „Mit Freude“ звучить занадто особисто.", en:"„Mit großem Interesse“ is a set formula for positive business correspondence. „Mit Interesse“ is shorter but less emphatic. „Mit Freude“ sounds too personal." }
   },
   { id:"sbs_021", cat:"letter_opening",
     sentence:{ de:"{{BLANK}} nehme ich Bezug auf unser Telefonat vom gestrigen Tag.", uk:"{{BLANK}} посилаюся на нашу телефонну розмову вчорашнього дня.", en:"{{BLANK}} I refer to our telephone conversation of yesterday." },
     answer:"Hiermit",
+    answer_uk:"Цим листом",
+    answer_en:"Hereby",
     distractors:["Somit","Damit","Deshalb","Demnach"],
     explanation:{ de:"„Hiermit“ ist ein typisches Eröffnungswort in deutschen Geschäftsbriefen — es verweist auf den aktuellen Schreibakt. „Somit / Damit / Deshalb“ sind Folge-Konnektoren.", uk:"„Hiermit“ є типовим вступним словом у німецьких ділових листах — воно вказує на поточний акт написання. „Somit / Damit / Deshalb“ є сполучниками наслідку.", en:"„Hiermit“ is a typical opening word in German business letters — it refers to the current act of writing. „Somit / Damit / Deshalb“ are consequence connectors." }
   },
@@ -2867,30 +2949,40 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_022", cat:"letter_closing",
     sentence:{ de:"{{BLANK}} stehe ich Ihnen für Rückfragen gerne zur Verfügung.", uk:"{{BLANK}} я радо відповім на Ваші запитання.", en:"{{BLANK}} I am happy to be available for any queries." },
     answer:"Bei Bedarf",
+    answer_uk:"За потреби",
+    answer_en:"If needed",
     distractors:["Falls nötig","Wenn Sie möchten","Im Bedarfsfall","Sofern gewünscht"],
     explanation:{ de:"„Bei Bedarf“ ist die idiomatische Briefformel. „Im Bedarfsfall“ ist ein leichtes Synonym, aber seltener. Im Prüfungskontext ist „Bei Bedarf“ am sichersten.", uk:"„Bei Bedarf“ є ідіоматичною формулою листа. „Im Bedarfsfall“ є незначним синонімом, але рідшим. На іспиті „Bei Bedarf“ є найбезпечнішим.", en:"„Bei Bedarf“ is the idiomatic letter formula. „Im Bedarfsfall“ is a slight synonym but rarer. In an exam context „Bei Bedarf“ is the safest choice." }
   },
   { id:"sbs_023", cat:"letter_closing",
     sentence:{ de:"Ich {{BLANK}} Sie bitten, mir die Unterlagen baldmöglichst zuzusenden.", uk:"Я {{BLANK}} Вас попросити надіслати мені документи якнайшвидше.", en:"I {{BLANK}} ask you to send me the documents as soon as possible." },
     answer:"würde",
+    answer_uk:"хотів(-ла) б",
+    answer_en:"would",
     distractors:["möchte","werde","darf","kann"],
     explanation:{ de:"„Ich würde Sie bitten“ ist der förmliche Konjunktiv II für höfliche Bitten. „Ich möchte bitten“ ist umgangssprachlicher. Konjunktiv II signalisiert Höflichkeit.", uk:"„Ich würde Sie bitten“ — це офіційний Кон'юнктив II для ввічливих прохань. „Ich möchte bitten“ є розмовнішим. Кон'юнктив II сигналізує ввічливість.", en:"„Ich würde Sie bitten“ is the formal Konjunktiv II for polite requests. „Ich möchte bitten“ is more colloquial. Konjunktiv II signals politeness." }
   },
   { id:"sbs_024", cat:"letter_closing",
     sentence:{ de:"Für Rückfragen {{BLANK}} ich Ihnen gerne zur Verfügung.", uk:"Для запитань я охоче {{BLANK}} Вам до послуг.", en:"For any queries I am happy to {{BLANK}} at your disposal." },
     answer:"stehe",
+    answer_uk:"перебуваю",
+    answer_en:"am available",
     distractors:["bin","halte","bleibe","befinde"],
     explanation:{ de:"„Zur Verfügung stehen“ ist die feste Redewendung für Hilfsbereitschaft. „Zur Verfügung sein“ existiert nicht. „Zur Verfügung halten“ bedeutet etwas bereithalten.", uk:"„Zur Verfügung stehen“ є усталеним виразом для готовності допомогти. „Zur Verfügung sein“ не існує. „Zur Verfügung halten“ означає тримати щось готовим.", en:"„Zur Verfügung stehen“ is the set phrase for readiness to help. „Zur Verfügung sein“ does not exist. „Zur Verfügung halten“ means to keep something ready." }
   },
   { id:"sbs_025", cat:"letter_closing",
     sentence:{ de:"Wir {{BLANK}} uns, Ihnen unser neues Angebot vorzustellen.", uk:"Ми {{BLANK}} собі представити Вам нашу нову пропозицію.", en:"We {{BLANK}} to present our new offer to you." },
     answer:"erlauben uns",
+    answer_uk:"дозволяємо собі",
+    answer_en:"take the liberty to",
     distractors:["gestatten uns","gönnen uns","nehmen uns die Freiheit","wagen es"],
     explanation:{ de:"„Wir erlauben uns“ ist eine standardisierte höfliche Formel. „Wir gestatten uns“ ist ein Synonym, aber seltener in modernem Geschäftsdeutsch.", uk:"„Wir erlauben uns“ є стандартизованою ввічливою формулою. „Wir gestatten uns“ є синонімом, але рідшим у сучасній діловій мові.", en:"„Wir erlauben uns“ is a standardised polite formula. „Wir gestatten uns“ is a synonym but rarer in modern business German." }
   },
   { id:"sbs_026", cat:"letter_closing",
     sentence:{ de:"{{BLANK}} Ihren positiven Bescheid freuen wir uns sehr.", uk:"{{BLANK}} Вашу позитивну відповідь ми дуже радіємо.", en:"{{BLANK}} your positive response we are very pleased." },
     answer:"Über",
+    answer_uk:"З",
+    answer_en:"Over",
     distractors:["Auf","Für","Mit","An"],
     explanation:{ de:"„Sich freuen + über + Akk.“ ist die korrekte Präpositionalrektion. „Sich freuen + auf + Akk.“ wäre für zukünftige Ereignisse. Hier bezieht es sich auf das Ergebnis.", uk:"„Sich freuen + über + Akk.“ є правильним керуванням. „Sich freuen + auf + Akk.“ було б для майбутніх подій. Тут мається на увазі результат.", en:"„Sich freuen + über + Akk.“ is the correct prepositional government. „Sich freuen + auf + Akk.“ would be for future events. Here it refers to the result." }
   },
@@ -2898,36 +2990,48 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_027", cat:"business",
     sentence:{ de:"Wir teilen Ihnen {{BLANK}} mit, dass Ihre Bestellung eingegangen ist.", uk:"Ми {{BLANK}} повідомляємо Вас, що Ваше замовлення отримано.", en:"We {{BLANK}} inform you that your order has been received." },
     answer:"hiermit",
+    answer_uk:"цим",
+    answer_en:"hereby",
     distractors:["somit","demnach","folglich","daher"],
     explanation:{ de:"„Hiermit“ verweist auf den Akt des Schreibens selbst. „Somit / Folglich“ sind Schlussfolgerungen. „Demnach“ bedeutet „dem zufolge“.", uk:"„Hiermit“ вказує на сам акт написання. „Somit / Folglich“ є умовиводами. „Demnach“ означає „відповідно до цього“.", en:"„Hiermit“ refers to the act of writing itself. „Somit / Folglich“ are logical conclusions. „Demnach“ means „accordingly“." }
   },
   { id:"sbs_028", cat:"business",
     sentence:{ de:"Wir {{BLANK}} Sie, die Rechnung innerhalb von 14 Tagen zu begleichen.", uk:"Ми {{BLANK}} Вас оплатити рахунок протягом 14 днів.", en:"We {{BLANK}} you to settle the invoice within 14 days." },
     answer:"bitten",
+    answer_uk:"просимо",
+    answer_en:"ask",
     distractors:["fordern","verlangen","ersuchen","auffordern"],
     explanation:{ de:"„Wir bitten Sie“ ist die standardmäßig höfliche Formulierung. „Ersuchen“ ist förmlicher, häufiger in Behördensprache. „Fordern / Verlangen“ klingen zu autoritär.", uk:"„Wir bitten Sie“ є стандартним ввічливим формулюванням. „Ersuchen“ є офіційнішим, частіше у мові держорганів. „Fordern / Verlangen“ звучать занадто владно.", en:"„Wir bitten Sie“ is the standard polite phrasing. „Ersuchen“ is more formal, common in official language. „Fordern / Verlangen“ sound too authoritative." }
   },
   { id:"sbs_029", cat:"business",
     sentence:{ de:"{{BLANK}} unserer bisherigen Zusammenarbeit freuen wir uns auf eine weitere Kooperation.", uk:"{{BLANK}} нашої попередньої співпраці ми раді продовжити кооперацію.", en:"{{BLANK}} our previous cooperation we look forward to further collaboration." },
     answer:"Aufgrund",
+    answer_uk:"На підставі",
+    answer_en:"Due to",
     distractors:["Angesichts","Infolge","Wegen","Dank"],
     explanation:{ de:"„Aufgrund“ drückt Kausalität aus. „Dank“ wäre auch positiv und möglich. „Angesichts“ ist eher für kritische Situationen. „Infolge“ betont Folgen, nicht Motivationen.", uk:"„Aufgrund“ виражає причинність. „Dank“ також було б позитивним і можливим. „Angesichts“ скоріше для критичних ситуацій. „Infolge“ підкреслює наслідки, а не мотиви.", en:"„Aufgrund“ expresses causality. „Dank“ would also be positive and possible. „Angesichts“ is more for critical situations. „Infolge“ emphasises consequences, not motivations." }
   },
   { id:"sbs_030", cat:"business",
     sentence:{ de:"Wir sind {{BLANK}}, Ihnen ein Sonderangebot zu unterbreiten.", uk:"Ми {{BLANK}}, запропонувати Вам спеціальну пропозицію.", en:"We are {{BLANK}} to present you with a special offer." },
     answer:"in der Lage",
+    answer_uk:"в змозі",
+    answer_en:"able",
     distractors:["imstande","fähig","bereit","in der Position"],
     explanation:{ de:"„In der Lage sein“ ist der förmliche Ausdruck für Fähigkeit. „Imstande sein“ ist ein direktes Synonym, aber „in der Lage“ ist im Schriftdeutsch häufiger.", uk:"„In der Lage sein“ є офіційним виразом здатності. „Imstande sein“ є прямим синонімом, але „in der Lage“ є частішим у письмовій мові.", en:"„In der Lage sein“ is the formal expression for ability. „Imstande sein“ is a direct synonym but „in der Lage“ is more frequent in written German." }
   },
   { id:"sbs_031", cat:"business",
     sentence:{ de:"Bitte teilen Sie uns {{BLANK}} mit, ob Sie an unserem Angebot interessiert sind.", uk:"Будь ласка, повідомте нас {{BLANK}}, чи зацікавлені Ви нашою пропозицією.", en:"Please let us know {{BLANK}} whether you are interested in our offer." },
     answer:"baldmöglichst",
+    answer_uk:"якнайшвидше",
+    answer_en:"as soon as possible",
     distractors:["schnellstmöglich","so bald wie möglich","zeitnah","umgehend"],
     explanation:{ de:"„Baldmöglichst“ ist der klassische Ausdruck im Geschäftsdeutsch. „Zeitnah“ ist modern und akzeptabel. „Umgehend“ klingt dringlicher.", uk:"„Baldmöglichst“ є класичним виразом у діловій мові. „Zeitnah“ є сучасним і прийнятним. „Umgehend“ звучить більш терміново.", en:"„Baldmöglichst“ is the classic expression in business German. „Zeitnah“ is modern and acceptable. „Umgehend“ sounds more urgent." }
   },
   { id:"sbs_032", cat:"business",
     sentence:{ de:"Wir {{BLANK}} uns über eine Bestätigung Ihrerseits.", uk:"Ми {{BLANK}} отримати підтвердження з Вашого боку.", en:"We {{BLANK}} a confirmation from your side." },
     answer:"würden uns freuen",
+    answer_uk:"були б раді",
+    answer_en:"would be pleased",
     distractors:["freuen uns","werden uns freuen","hätten uns gefreut","erfreuen uns"],
     explanation:{ de:"„Würden uns freuen“ (Konjunktiv II) ist die höfliche Briefformel. „Freuen uns“ wäre Indikativ — zu direkt. Konjunktiv II signalisiert Höflichkeit.", uk:"„Würden uns freuen“ (Кон'юнктив II) є ввічливою формулою листа. „Freuen uns“ було б Індикативом — занадто прямо. Кон'юнктив II сигналізує ввічливість.", en:"„Würden uns freuen“ (Konjunktiv II) is the polite letter formula. „Freuen uns“ would be Indicative — too direct. Konjunktiv II signals politeness." }
   },
@@ -2935,24 +3039,32 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_033", cat:"concession",
     sentence:{ de:"{{BLANK}} die Kosten hoch sind, lohnt sich die Investition langfristig.", uk:"{{BLANK}} витрати високі, інвестиція окупається в довгостроковій перспективі.", en:"{{BLANK}} the costs are high, the investment pays off in the long term." },
     answer:"Obwohl",
+    answer_uk:"Хоча",
+    answer_en:"Although",
     distractors:["Obgleich","Wenngleich","Auch wenn","Selbst wenn"],
     explanation:{ de:"Alle vier sind konzessiv. „Obwohl“ + Nebensatz ist am gebräuchlichsten. „Obgleich / Wenngleich“ sind veraltet. Im DTB B2 ist „Obwohl“ die sicherste Wahl.", uk:"Всі чотири є поступальними. „Obwohl“ + підрядне речення є найпоширенішим. „Obgleich / Wenngleich“ є застарілими. На DTB B2 „Obwohl“ є найбезпечнішим вибором.", en:"All four are concessive. „Obwohl“ + subordinate clause is most common. „Obgleich / Wenngleich“ are archaic. In DTB B2 „Obwohl“ is the safest choice." }
   },
   { id:"sbs_034", cat:"concession",
     sentence:{ de:"{{BLANK}} aller Kritik hat sich das Projekt als Erfolg erwiesen.", uk:"{{BLANK}} всієї критики проект виявився успішним.", en:"{{BLANK}} all criticism, the project proved to be a success." },
     answer:"Trotz",
+    answer_uk:"Незважаючи на",
+    answer_en:"Despite",
     distractors:["Wegen","Aufgrund","Angesichts","Durch"],
     explanation:{ de:"„Trotz + Genitiv“ drückt Konzession aus: obwohl Kritik vorhanden war. „Wegen / Aufgrund“ sind kausal. „Angesichts“ ist für Konfrontation, weniger für positives Ergebnis.", uk:"„Trotz + Genitiv“ виражає поступку: хоча критика була наявна. „Wegen / Aufgrund“ є причинними. „Angesichts“ для конфронтації, менше для позитивного результату.", en:"„Trotz + Genitiv“ expresses concession: despite the criticism being present. „Wegen / Aufgrund“ are causal. „Angesichts“ is for confrontation, less for a positive result." }
   },
   { id:"sbs_035", cat:"concession",
     sentence:{ de:"Ich verstehe Ihre Bedenken, {{BLANK}} möchte ich dennoch für meine Position werben.", uk:"Я розумію Ваші сумніви, {{BLANK}} хотів(-ла) б відстояти свою позицію.", en:"I understand your concerns, {{BLANK}} I would still like to advocate for my position." },
     answer:"jedoch",
+    answer_uk:"проте",
+    answer_en:"however",
     distractors:["dennoch","trotzdem","allerdings","gleichwohl"],
     explanation:{ de:"„Jedoch“ leitet den Kontrastsatz ein ohne so stark zu sein wie „Dennoch“. „Trotzdem“ ist umgangssprachlicher. „Allerdings“ schränkt die vorherige Aussage ein.", uk:"„Jedoch“ вводить контрастне речення, не будучи таким сильним, як „Dennoch“. „Trotzdem“ є розмовнішим. „Allerdings“ обмежує попереднє твердження.", en:"„Jedoch“ introduces the contrasting clause without being as strong as „Dennoch“. „Trotzdem“ is more colloquial. „Allerdings“ restricts the previous statement." }
   },
   { id:"sbs_046", cat:"concession",
     sentence:{ de:"{{BLANK}} ich die Kritik verstehe, teile ich sie nicht vollständig.", uk:"{{BLANK}} я розумію критику, я не поділяю її повністю.", en:"{{BLANK}} I understand the criticism, I do not share it entirely." },
     answer:"Auch wenn",
+    answer_uk:"Навіть якщо",
+    answer_en:"Even if",
     distractors:["Obwohl","Obgleich","Wenngleich","Selbst wenn"],
     explanation:{ de:"„Auch wenn“ + Indikativ ist hier korrekt — man räumt ein, versteht die Kritik, teilt sie aber nicht. Im Prüfungskontext: prüfen Sie ob Konjunktiv oder Indikativ folgt.", uk:"„Auch wenn“ + Індикатив тут правильний — визнаєш, розумієш критику, але не поділяєш її. На іспиті перевіряйте, чи слідує Кон'юнктив чи Індикатив.", en:"„Auch wenn“ + Indicative is correct here — one concedes understanding the criticism but does not share it. In exam contexts check whether Konjunktiv or Indicative follows." }
   },
@@ -2960,12 +3072,16 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_036", cat:"comparison",
     sentence:{ de:"{{BLANK}} dem Vorjahr hat sich der Umsatz verdoppelt.", uk:"{{BLANK}} попереднім роком обсяг продажів подвоївся.", en:"{{BLANK}} the previous year, turnover has doubled." },
     answer:"Im Vergleich zu",
+    answer_uk:"Порівняно з",
+    answer_en:"Compared to",
     distractors:["Gegenüber","Anders als","Im Gegensatz zu","Verglichen mit"],
     explanation:{ de:"„Im Vergleich zu“ ist der neutralste Vergleichsausdruck. „Im Gegensatz zu“ betont stärker den Widerspruch. „Gegenüber“ ist kürzer und auch korrekt.", uk:"„Im Vergleich zu“ є найнейтральнішим порівняльним виразом. „Im Gegensatz zu“ більше підкреслює протиріччя. „Gegenüber“ коротше і теж правильне.", en:"„Im Vergleich zu“ is the most neutral comparative expression. „Im Gegensatz zu“ emphasises the contrast more. „Gegenüber“ is shorter and also correct." }
   },
   { id:"sbs_037", cat:"comparison",
     sentence:{ de:"{{BLANK}} der alten Methode ist die neue deutlich effizienter.", uk:"{{BLANK}} старого методу новий є значно ефективнішим.", en:"{{BLANK}} the old method, the new one is significantly more efficient." },
     answer:"Im Gegensatz zu",
+    answer_uk:"На відміну від",
+    answer_en:"In contrast to",
     distractors:["Im Vergleich zu","Gegenüber","Anders als","Statt"],
     explanation:{ de:"„Im Gegensatz zu“ betont den Widerspruch/Kontrast. „Im Vergleich zu“ ist neutraler. „Statt“ bedeutet Ersatz, kein Kontrast.", uk:"„Im Gegensatz zu“ підкреслює протиріччя/контраст. „Im Vergleich zu“ є нейтральнішим. „Statt“ означає заміну, а не контраст.", en:"„Im Gegensatz zu“ emphasises the contradiction/contrast. „Im Vergleich zu“ is more neutral. „Statt“ means replacement, not contrast." }
   },
@@ -2973,30 +3089,40 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_038", cat:"consequence",
     sentence:{ de:"{{BLANK}} lässt sich sagen, dass die Maßnahme erfolgreich war.", uk:"{{BLANK}} можна сказати, що захід виявився успішним.", en:"{{BLANK}} it can be said that the measure was successful." },
     answer:"Zusammenfassend",
+    answer_uk:"Підсумовуючи",
+    answer_en:"In summary",
     distractors:["Insgesamt","Abschließend","Resümierend","Letztendlich"],
     explanation:{ de:"„Zusammenfassend“ leitet eine Schlussfolgerung ein. „Abschließend“ bezieht sich auf den Abschluss der Rede. „Insgesamt“ ist Fazit-Wort, aber kein typischer Satzeinleiter.", uk:"„Zusammenfassend“ вводить висновок. „Abschließend“ стосується завершення промови. „Insgesamt“ є словом-підсумком, але не типовим початком речення.", en:"„Zusammenfassend“ introduces a conclusion. „Abschließend“ relates to the close of a speech. „Insgesamt“ is a summary word but not a typical sentence opener." }
   },
   { id:"sbs_039", cat:"consequence",
     sentence:{ de:"{{BLANK}} können wir festhalten, dass die Nachfrage gestiegen ist.", uk:"{{BLANK}} можемо констатувати, що попит зріс.", en:"{{BLANK}} we can note that demand has increased." },
     answer:"Abschließend",
+    answer_uk:"На завершення",
+    answer_en:"In conclusion",
     distractors:["Zusammenfassend","Insgesamt","Daher","Folglich"],
     explanation:{ de:"„Abschließend“ signalisiert den letzten Punkt in einer Argumentation. „Zusammenfassend“ fasst mehrere Punkte zusammen. „Daher / Folglich“ drücken Kausalfolge aus.", uk:"„Abschließend“ сигналізує останній пункт в аргументації. „Zusammenfassend“ підсумовує кілька пунктів. „Daher / Folglich“ виражають причинно-наслідковий зв'язок.", en:"„Abschließend“ signals the last point in an argument. „Zusammenfassend“ summarises several points. „Daher / Folglich“ express causal consequence." }
   },
   { id:"sbs_040", cat:"consequence",
     sentence:{ de:"Der Lärmpegel ist zu hoch, {{BLANK}} sollten wir Maßnahmen ergreifen.", uk:"Рівень шуму є занадто високим, {{BLANK}} нам слід вжити заходів.", en:"The noise level is too high, {{BLANK}} we should take action." },
     answer:"daher",
+    answer_uk:"тому",
+    answer_en:"therefore",
     distractors:["folglich","somit","deshalb","infolgedessen"],
     explanation:{ de:"Alle fünf drücken Konsequenz aus. „Daher“ ist formeller als „deshalb / deswegen“. Im DTB B2 sind „Daher“ und „Folglich“ die bevorzugten Formen.", uk:"Всі п'ять виражають наслідок. „Daher“ є офіційнішим ніж „deshalb / deswegen“. На DTB B2 „Daher“ і „Folglich“ є переважними формами.", en:"All five express consequence. „Daher“ is more formal than „deshalb / deswegen“. In DTB B2 „Daher“ and „Folglich“ are the preferred forms." }
   },
   { id:"sbs_041", cat:"consequence",
     sentence:{ de:"Das Projekt ist gescheitert, {{BLANK}} müssen wir neue Wege suchen.", uk:"Проект зазнав невдачі, {{BLANK}} нам потрібно шукати нові шляхи.", en:"The project has failed, {{BLANK}} we must seek new approaches." },
     answer:"folglich",
+    answer_uk:"отже",
+    answer_en:"consequently",
     distractors:["daher","somit","deshalb","infolgedessen"],
     explanation:{ de:"„Folglich“ betont die logische Schlussfolgerung. „Infolgedessen“ ist korrekt aber formeller und länger. „Daher“ ist ein direktes Synonym; beide sind prüfungstauglich.", uk:"„Folglich“ підкреслює логічний висновок. „Infolgedessen“ правильне, але офіційніше і довше. „Daher“ є прямим синонімом; обидва підходять для іспиту.", en:"„Folglich“ emphasises the logical conclusion. „Infolgedessen“ is correct but more formal and longer. „Daher“ is a direct synonym; both are suitable for the exam." }
   },
   { id:"sbs_042", cat:"consequence",
     sentence:{ de:"{{BLANK}} der steigenden Nachfrage hat das Unternehmen seine Produktion ausgeweitet.", uk:"{{BLANK}} зростаючого попиту підприємство розширило своє виробництво.", en:"{{BLANK}} rising demand the company has expanded its production." },
     answer:"Infolge",
+    answer_uk:"Внаслідок",
+    answer_en:"As a result of",
     distractors:["Aufgrund","Wegen","Dank","Angesichts"],
     explanation:{ de:"„Infolge + Genitiv“ drückt direkte Folge-Kausalität aus. „Aufgrund“ ist ähnlich, aber allgemeiner. „Dank“ hat positive Konnotation. „Angesichts“ ist für Konfrontation.", uk:"„Infolge + Genitiv“ виражає пряму причинно-наслідкову каузальність. „Aufgrund“ схоже, але загальніше. „Dank“ має позитивне конотацію. „Angesichts“ для конфронтації.", en:"„Infolge + Genitiv“ expresses direct consequential causality. „Aufgrund“ is similar but more general. „Dank“ has a positive connotation. „Angesichts“ is for confrontation." }
   },
@@ -3004,30 +3130,40 @@ const SPRACHBAUSTEINE = [
   { id:"sbs_043", cat:"argument_intro",
     sentence:{ de:"Die Umfrage zeigt, dass es {{BLANK}} ist, die Digitalisierung voranzutreiben.", uk:"Опитування показує, що {{BLANK}} просувати цифровізацію вперед.", en:"The survey shows that it is {{BLANK}} to drive digitalisation forward." },
     answer:"dringend erforderlich",
+    answer_uk:"вкрай необхідно",
+    answer_en:"urgently necessary",
     distractors:["unbedingt nötig","absolut wichtig","sehr sinnvoll","äußerst hilfreich"],
     explanation:{ de:"„Dringend erforderlich“ ist der standardisierte Ausdruck im Geschäftsdeutsch für notwendige Maßnahmen. Die anderen Varianten sind stilistisch weniger präzise.", uk:"„Dringend erforderlich“ є стандартизованим виразом у діловій мові для необхідних заходів. Інші варіанти є стилістично менш точними.", en:"„Dringend erforderlich“ is the standardised expression in business German for necessary measures. The other variants are stylistically less precise." }
   },
   { id:"sbs_044", cat:"letter_opening",
     sentence:{ de:"{{BLANK}} Ihrer Stellenausschreibung vom 1. April bewerbe ich mich um die Position.", uk:"{{BLANK}} Вашого оголошення про вакансію від 1 квітня подаю заявку на посаду.", en:"{{BLANK}} your job advertisement of 1 April I apply for the position." },
     answer:"Bezugnehmend auf",
+    answer_uk:"Посилаючись на",
+    answer_en:"With reference to",
     distractors:["Auf","In Bezug auf","Hinsichtlich","Mit Bezug auf"],
     explanation:{ de:"„Bezugnehmend auf“ ist die klassische förmliche Einleitung für Bewerbungsschreiben. „Auf“ ist kürzer und auch idiomatisch. Beide sind im Prüfungskontext akzeptiert.", uk:"„Bezugnehmend auf“ є класичним офіційним вступом для заяв. „Auf“ коротше і теж ідіоматичне. Обидва прийняті в контексті іспиту.", en:"„Bezugnehmend auf“ is the classic formal opening for job applications. „Auf“ is shorter and also idiomatic. Both are accepted in exam contexts." }
   },
   { id:"sbs_045", cat:"counter_argument",
     sentence:{ de:"{{BLANK}} zugegeben werden muss, dass die alten Lösungen Grenzen haben.", uk:"{{BLANK}} треба визнати, що старі рішення мають обмеження.", en:"{{BLANK}} it must be admitted that the old solutions have limitations." },
     answer:"Auch wenn",
+    answer_uk:"Навіть якщо",
+    answer_en:"Even if",
     distractors:["Obwohl","Selbst wenn","Wenngleich","Trotzdem"],
     explanation:{ de:"„Auch wenn“ drückt konzessive Hypothesen aus. „Obwohl“ braucht keinen Konjunktiv. „Selbst wenn“ ist emphatischer. „Trotzdem“ ist ein Satzadverb, kein Subjunktor.", uk:"„Auch wenn“ виражає поступальні гіпотези. „Obwohl“ не потребує Кон'юнктива. „Selbst wenn“ є емфатичнішим. „Trotzdem“ є прислівником, а не підрядним сполучником.", en:"„Auch wenn“ expresses concessive hypotheses. „Obwohl“ does not require Konjunktiv. „Selbst wenn“ is more emphatic. „Trotzdem“ is a sentence adverb, not a subjunctor." }
   },
   { id:"sbs_047", cat:"business",
     sentence:{ de:"Wir {{BLANK}} Ihrer Antwort bis zum 30. Juni entgegen.", uk:"Ми з нетерпінням {{BLANK}} Вашої відповіді до 30 червня.", en:"We {{BLANK}} your reply by 30 June." },
     answer:"sehen",
+    answer_uk:"очікуємо",
+    answer_en:"look forward to",
     distractors:["schauen","warten","erhoffen","erwarten"],
     explanation:{ de:"„Entgegensehen“ (+ Dativ) ist die feste Formel: „Wir sehen Ihrer Antwort entgegen.“ „Erwarten“ wäre auch grammatisch, aber weniger förmlich-idiomatisch in Briefschlüssen.", uk:"„Entgegensehen“ (+ Dativ) є усталеною формулою: „Wir sehen Ihrer Antwort entgegen.“ „Erwarten“ було б граматично правильним, але менш ідіоматичним у кінцівках листів.", en:"„Entgegensehen“ (+ Dative) is the set formula: „Wir sehen Ihrer Antwort entgegen.“ „Erwarten“ would also be grammatical but less formally idiomatic in letter closings." }
   },
   { id:"sbs_048", cat:"opinion",
     sentence:{ de:"{{BLANK}} teile ich die Ansicht, dass mehr Investitionen nötig sind.", uk:"{{BLANK}} поділяю думку, що необхідні більші інвестиції.", en:"{{BLANK}} I share the view that more investment is needed." },
     answer:"Vollständig",
+    answer_uk:"Повністю",
+    answer_en:"Completely",
     distractors:["Grundsätzlich","Weitgehend","Ausdrücklich","Insgesamt"],
     explanation:{ de:"„Vollständig teile ich“ bedeutet vollkommene Übereinstimmung. „Weitgehend“ wäre eine teilweise Zustimmung. „Grundsätzlich“ ist korrekt, aber schwächer.", uk:"„Vollständig teile ich“ означає повну згоду. „Weitgehend“ було б частковою згодою. „Grundsätzlich“ правильне, але слабше.", en:"„Vollständig teile ich“ means complete agreement. „Weitgehend“ would be partial agreement. „Grundsätzlich“ is correct but weaker." }
   },

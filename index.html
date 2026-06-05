@@ -1115,6 +1115,21 @@ body{
 .sb-timer-urgent { color:var(--red) !important; animation:timerPulse .7s ease-in-out infinite; }
 @keyframes timerPulse { 0%,100%{opacity:1}50%{opacity:.5} }
 
+.btn-lesson-sb-next{
+  position:fixed;
+  bottom:calc(env(safe-area-inset-bottom,0px) + var(--nav-h) + 12px);
+  left:16px;right:16px;
+  padding:16px;
+  font-size:17px;font-weight:800;
+  background:linear-gradient(135deg,var(--gold),#b8873a);
+  color:var(--forest);border:none;border-radius:16px;
+  box-shadow:0 4px 20px rgba(201,168,76,.45);
+  cursor:pointer;font-family:inherit;
+  z-index:200;
+  letter-spacing:.3px;
+}
+.btn-lesson-sb-next:active{opacity:.85;transform:scale(.98);}
+
 /* mc-options used in practice/exam: make buttons work as answer tiles */
 #sb-prac-options .mc-opt, #sb-exam-options .mc-opt {
   cursor:pointer; transition:border-color .15s, background .15s;
@@ -1448,7 +1463,7 @@ body{
         <div class="vplayer">
           <button class="vplay" id="sb-play-btn" onclick="sbTogglePlay()">▶</button>
           <button class="vstop" onclick="sbStopPlay()">⏹</button>
-          <button class="vshuffle-btn" id="sb-shuffle-btn" onclick="sbShuffle()" title="Mischen">🔀</button>
+          <button class="vseq smart" id="sb-vshuffle-btn" onclick="sbCycleSort()" title="Sortiermodus">🧠</button>
           <div class="vlang-grp">
             <button class="vlang-btn on" id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
             <button class="vlang-btn on" id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
@@ -1508,7 +1523,7 @@ body{
             <span class="sb-prac-feedback-title" id="sb-prac-fb-title"></span>
           </div>
           <div class="sb-prac-feedback-expl" id="sb-prac-fb-expl"></div>
-          <button class="btn" style="width:100%;margin-top:10px" onclick="sbPracNext()">Weiter →</button>
+          <button class="btn" style="width:100%;margin-top:10px" id="sb-prac-next-btn" onclick="sbPracNext()"></button>
         </div>
         <div class="sb-prac-result" id="sb-prac-result" style="display:none">
           <div class="score" id="sb-result-score"></div>
@@ -1653,7 +1668,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '62-6416889';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -1799,6 +1814,7 @@ const I18N = {
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernpfad',
     btn_next_lesson:'▶ Nächste Lektion',
+    btn_sb_weiter:'Weiter →',
     btn_to_lessons:'🗺 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
     quiz_title:'❓ Quiz',
@@ -1862,6 +1878,7 @@ const I18N = {
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Шлях',
     btn_next_lesson:'▶ Наступний урок',
+    btn_sb_weiter:'Далі →',
     btn_to_lessons:'🗺 До списку уроків',
     btn_check:'✓ Перевірити',
     quiz_title:'❓ Квіз',
@@ -1925,6 +1942,7 @@ const I18N = {
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Path',
     btn_next_lesson:'▶ Next Lesson',
+    btn_sb_weiter:'Next →',
     btn_to_lessons:'🗺 Lesson List',
     btn_check:'✓ Check',
     quiz_title:'❓ Quiz',
@@ -4007,21 +4025,25 @@ function startPrefetchChain(fromIdx){
 let LF = null;
 
 const LF_STEP_ICONS = {
-  cards:   '🃏',
-  matching:'🔗',
-  choice:  '🎯',
-  tiles:   '🧩',
-  quiz:    '❓',
-  result:  '🏁',
+  cards:    '🃏',
+  matching: '🔗',
+  choice:   '🎯',
+  tiles:    '🧩',
+  quiz:     '❓',
+  sb_learn: '📖',
+  sb_prac:  '🎯',
+  result:   '🏁',
 };
 
 const LF_STEP_LABELS = {
-  cards:    {de:'Karten',    uk:'Картки',   en:'Cards'},
-  matching: {de:'Paare',     uk:'Пари',     en:'Pairs'},
-  choice:   {de:'Auswahl',   uk:'Вибір',    en:'Choice'},
-  tiles:    {de:'Sätze',     uk:'Речення',  en:'Sentences'},
-  quiz:     {de:'Quiz',      uk:'Квіз',     en:'Quiz'},
-  result:   {de:'Ergebnis',  uk:'Результат',en:'Result'},
+  cards:    {de:'Karten',         uk:'Картки',        en:'Cards'},
+  matching: {de:'Paare',          uk:'Пари',           en:'Pairs'},
+  choice:   {de:'Auswahl',        uk:'Вибір',          en:'Choice'},
+  tiles:    {de:'Sätze',          uk:'Речення',        en:'Sentences'},
+  quiz:     {de:'Quiz',           uk:'Квіз',           en:'Quiz'},
+  sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція', en:'Language Pattern'},
+  sb_prac:  {de:'SB Übung',       uk:'Вправа',         en:'SB Practice'},
+  result:   {de:'Ergebnis',       uk:'Результат',      en:'Result'},
 };
 
 function startLessonFlow(lessonId){
@@ -4039,18 +4061,24 @@ function startLessonFlow(lessonId){
   // Зупиняємо поточне відтворення
   stopVocab();
 
-  // SM-2: вибираємо до 8 найслабших карток
+  // SM-2: вибираємо до 5 найслабших карток (менше когнітивного навантаження)
   const sorted = [...cards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
-  const flowCards = sorted.slice(0, Math.min(8, sorted.length));
+  const flowCards = sorted.slice(0, Math.min(5, sorted.length));
 
-  // Визначаємо доступні кроки
+  // SB картки для цього уроку
+  const sbCardIds = lesson.sbCards || [];
+  const allSB = typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE : [];
+  const lessonSBCards = sbCardIds.length > 0
+    ? allSB.filter(s => sbCardIds.includes(s.id))
+    : allSB.slice(0, 1); // fallback: перша картка
+
+  // Послідовність: картки → пари → SB Lernen → речення → SB Üben → результат
   const hasTiles = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
-  const quizPool = typeof QUIZ !== 'undefined'
-    ? QUIZ.filter(q => !q.lessonId || q.lessonId === lessonId)
-    : [];
-  const steps = ['cards','matching','choice'];
+  const hasSB = lessonSBCards.length > 0;
+  const steps = ['cards','matching'];
+  if(hasSB) steps.push('sb_learn');
   if(hasTiles) steps.push('tiles');
-  if(quizPool.length >= 2) steps.push('quiz');
+  if(hasSB) steps.push('sb_prac');
   steps.push('result');
 
   LF = {
@@ -4058,9 +4086,11 @@ function startLessonFlow(lessonId){
     lesson,
     cards: flowCards,
     allCards: cards,
+    sbCards: lessonSBCards,
+    sbIdx: 0,
     steps,
     step: 0,
-    results: {}, // {step: score}
+    results: {},
     startTime: Date.now(),
   };
 
@@ -4160,7 +4190,6 @@ function lfGoStep(stepIdx){
     renderVocabCard();
   } else if(step === 'matching'){
     switchVocabTab(2);
-    // Передаємо картки уроку в matching
     lfStartMatching();
   } else if(step === 'choice'){
     switchVocabTab(3);
@@ -4171,6 +4200,10 @@ function lfGoStep(stepIdx){
   } else if(step === 'quiz'){
     switchVocabTab(5);
     lfStartQuiz();
+  } else if(step === 'sb_learn'){
+    lfStartSBLearn();
+  } else if(step === 'sb_prac'){
+    lfStartSBPrac();
   } else if(step === 'result'){
     lfShowResult();
   }
@@ -4249,6 +4282,110 @@ function lfStartTiles(){
 }
 
 // ── РЕЗУЛЬТАТ ─────────────────────────────────────────────────
+// ── SB LERNEN step in lesson flow ──────────────────────────────
+function lfStartSBLearn(){
+  if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
+
+  const vocabTop = document.querySelector('.vocab-top');
+  if(vocabTop) vocabTop.style.display = 'none';
+
+  showView('sb');
+
+  // Hide tab bar in lesson mode — prevents user from changing lesson sequence
+  var sbVocabTop = document.getElementById('sb-vocab-top');
+  if(sbVocabTop){
+    // Hide only the vtab-bar, keep player and chips
+    var vtabBar = sbVocabTop.querySelector('.vtab-bar');
+    if(vtabBar) vtabBar.style.display = 'none';
+  }
+
+  SB.learnQueue = LF.sbCards.slice();
+  SB.learnIdx   = 0;
+  SB.learnFlipped = false;
+  SB.mode = 'learn';
+  sbApplyLangUI();
+  sbRenderLearn();
+  setTimeout(sbInitLearnSwipe, 50);
+
+  _lfInjectSBNextBtn(function(){ _lfSBLearnDone(); });
+}
+
+function _lfSBLearnDone(){
+  LF.sbIdx = 0;
+  // Restore vtab-bar for normal SB usage
+  var sbVocabTop = document.getElementById('sb-vocab-top');
+  if(sbVocabTop){
+    var vtabBar = sbVocabTop.querySelector('.vtab-bar');
+    if(vtabBar) vtabBar.style.display = '';
+  }
+  showView('vocab');
+  lfRenderBar();
+  lfNextStep();
+}
+
+function lfStartSBPrac(){
+  if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
+
+  const vocabTop = document.querySelector('.vocab-top');
+  if(vocabTop) vocabTop.style.display = 'none';
+
+  showView('sb');
+
+  // Hide tab bar — lesson mode, user must not change flow
+  var sbVocabTop2 = document.getElementById('sb-vocab-top');
+  if(sbVocabTop2){
+    var vtabBar2 = sbVocabTop2.querySelector('.vtab-bar');
+    if(vtabBar2) vtabBar2.style.display = 'none';
+  }
+
+  SB.mode = 'practice';
+  SB.pracQueue = LF.sbCards.slice().sort(function(){ return Math.random()-.5; });
+  SB.pracIdx = 0; SB.pracAnswered = false; SB.pracResults = [];
+  document.getElementById('sb-panel-learn').style.display    = 'none';
+  document.getElementById('sb-panel-practice').style.display = 'flex';
+  document.getElementById('sb-panel-practice').style.flexDirection = 'column';
+  document.getElementById('sb-panel-exam').style.display     = 'none';
+  ['sbt-learn','sbt-practice','sbt-exam'].forEach(function(id){
+    var t=document.getElementById(id); if(t) t.classList.remove('active');
+  });
+  var pt=document.getElementById('sbt-practice'); if(pt) pt.classList.add('active');
+  document.getElementById('sb-prac-result').style.display = 'none';
+  document.getElementById('sb-prac-feedback').style.display = 'none';
+  sbRenderPrac();
+
+  // "Weiter" after practice result
+  _lfInjectSBNextBtn(function(){ _lfSBPracDone(); });
+}
+
+function _lfSBPracDone(){
+  // Restore vtab-bar
+  var sbVocabTop = document.getElementById('sb-vocab-top');
+  if(sbVocabTop){
+    var vtabBar = sbVocabTop.querySelector('.vtab-bar');
+    if(vtabBar) vtabBar.style.display = '';
+  }
+  showView('vocab');
+  lfRenderBar();
+  lfNextStep();
+}
+
+function _lfInjectSBNextBtn(onNext){
+  // Remove existing
+  var existing = document.getElementById('lf-sb-next-btn');
+  if(existing) existing.remove();
+
+  var btn = document.createElement('button');
+  btn.id = 'lf-sb-next-btn';
+  // Use app design: primary action button, fixed above bottom nav
+  btn.className = 'btn btn-lesson-sb-next';
+  btn.textContent = t('btn_sb_weiter');
+  btn.onclick = function(){
+    btn.remove();
+    onNext();
+  };
+  document.body.appendChild(btn);
+}
+
 function lfShowResult(){
   if(!LF) return;
   const bar = document.getElementById('lesson-flow-bar');
@@ -4542,10 +4679,16 @@ function _quizShowResult(){
 }
 
 function exitLessonFlow(){
+  // Stop all audio immediately
+  stopVocab();
+  sbStopPlay();
   LF = null;
   V.lessonId = null; V.lessonCards = [];
   V.queue = []; V.idx = 0;
   quizState = null;
+  // Clean up SB next button if present
+  var sbBtn = document.getElementById('lf-sb-next-btn');
+  if(sbBtn) sbBtn.remove();
   const bar=document.getElementById('lesson-flow-bar');
   if(bar) bar.classList.remove('active');
   const resultEl=document.getElementById('lesson-result');
@@ -4990,8 +5133,17 @@ function initSB() {
   sbUpdateProgressBadge();
   sbApplyLangUI();
   sbRenderCatChips();
+  sbApplyShuffleBtnUI();
   sbBuildLearnQueue();
   sbSetMode(SB.mode || 'learn');
+}
+
+function sbApplyShuffleBtnUI() {
+  var btn = document.getElementById('sb-vshuffle-btn');
+  if(!btn) return;
+  btn.classList.remove('smart','shuffle');
+  if(SB.sortMode === 'smart'){ btn.textContent='🧠'; btn.classList.add('smart'); }
+  else { btn.textContent='➡'; }
 }
 
 function sbUpdateProgressBadge() {
@@ -5059,17 +5211,49 @@ function sbSetMode(mode) {
   if (mode==='exam')     sbStartExam();
 }
 
-function sbShuffle() {
-  sbBuildLearnQueue();
-  // Fisher-Yates shuffle
-  for(var i=SB.learnQueue.length-1;i>0;i--){
-    var j=Math.floor(Math.random()*(i+1));
-    var tmp=SB.learnQueue[i]; SB.learnQueue[i]=SB.learnQueue[j]; SB.learnQueue[j]=tmp;
+// SB sort modes: 'smart' (SM-2 priority) | 'seq' (sequential)
+SB.sortMode = SB.sortMode || 'smart';
+
+function sbCycleSort() {
+  SB.sortMode = SB.sortMode === 'smart' ? 'seq' : 'smart';
+  var btn = document.getElementById('sb-vshuffle-btn');
+  if(btn){
+    btn.classList.remove('smart','shuffle');
+    if(SB.sortMode === 'smart'){ btn.textContent='🧠'; btn.classList.add('smart'); }
+    else { btn.textContent='➡'; }
   }
+  sbBuildLearnQueue();
+  sbApplySortMode();
   SB.learnIdx=0; SB.learnFlipped=false;
   sbStopPlay(); sbRenderLearn();
   if(typeof haptic!=='undefined') haptic.medium();
-  if(typeof notify==='function') notify('🔀 Gemischt');
+  var label = SB.sortMode==='smart' ? '🧠 SM-2 Reihenfolge' : '➡ Sequenziell';
+  if(typeof notify==='function') notify(label);
+}
+
+function sbApplySortMode() {
+  if(!SB.learnQueue.length) return;
+  if(SB.sortMode === 'smart'){
+    // SM-2 priority: new cards first (no interval), then overdue, then by due date
+    SB.learnQueue.sort(function(a, b){
+      var da = sbGetIntervals()[a.id] || 0;
+      var db = sbGetIntervals()[b.id] || 0;
+      // Use same srsPriority logic: no interval = new = highest priority
+      var sa = sbSmPriority(a.id);
+      var sb2 = sbSmPriority(b.id);
+      return sb2 - sa; // descending: highest priority first
+    });
+  }
+  // seq: keep natural SPRACHBAUSTEINE order (already built by sbBuildLearnQueue)
+}
+
+function sbSmPriority(id) {
+  // Mirror srsPriority but uses SB intervals from mova_sb_progress
+  var iv = sbGetIntervals();
+  var interval = iv[id] || 0;
+  if(!interval) return 999; // new card — highest priority
+  // Cards with small intervals (reviewed recently and struggled) come first
+  return -interval; // lower interval = higher priority number
 }
 
 // ── LEARN ─────────────────────────────────────────────────────
@@ -5078,6 +5262,7 @@ function sbBuildLearnQueue() {
   SB.learnQueue = SB.catFilter==='all'
     ? SPRACHBAUSTEINE.slice()
     : SPRACHBAUSTEINE.filter(function(c){ return c.cat===SB.catFilter; });
+  sbApplySortMode();
 }
 
 function sbUpdateLearnProgress() {
@@ -5110,10 +5295,11 @@ function sbRenderLearn() {
     var langLabels = { en:'🇬🇧 English', uk:'🇺🇦 Українська', de:'🇩🇪 Deutsch' };
     frontEl.innerHTML = langs.map(function(l, i) {
       var raw  = sbL(card.sentence, l);
-      // DE: show answer bold (visual learning). UK/EN: keep blank (answer is German word)
-      var html = l === 'de'
-        ? raw.replace('{{BLANK}}', '<b>'+card.answer+'</b>')
-        : raw.replace('{{BLANK}}', '<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>');
+      // DE: German answer bold; UK: answer_uk bold; EN: answer_en bold
+      var answerForLang = l==='de' ? card.answer
+        : l==='uk' ? (card.answer_uk || card.answer)
+        : (card.answer_en || card.answer);
+      var html = raw.replace('{{BLANK}}', '<b>'+answerForLang+'</b>');
       return (i>0 ? '<div class="sb-front-divider"></div>' : '')
         + (langs.length>1 ? '<div class="sb-front-lang-label">'+langLabels[l]+'</div>' : '')
         + '<div class="sb-front-sentence">'+html+'</div>';
@@ -5451,15 +5637,25 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   else { sbSetInterval(card.id,Math.max(1,Math.floor(cur/2))); SB.pracQueue.splice(Math.min(SB.pracIdx+3,SB.pracQueue.length),0,card); }
   SB.pracResults[SB.pracIdx]=ok;
 
-  var lang='de';
-  var expl=sbL(card.explanation,lang).replace(/„([^"]+)"/g,'<strong>„$1"</strong>');
+  // Explanation always in UI language; result label in UI language
+  var explLang = typeof uiLang !== 'undefined' ? uiLang : 'de';
+  var expl=sbL(card.explanation, explLang).replace(/„([^"]+)"/g,'<strong>„$1"</strong>');
+  var resultOk  = explLang==='uk'?'Правильно!':explLang==='en'?'Correct!':'Richtig!';
+  var resultFail= explLang==='uk'?'Неправильно — правильно: ':explLang==='en'?'Wrong — correct: ':'Falsch — richtig: ';
   var fb=document.getElementById('sb-prac-feedback');
   document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
-  document.getElementById('sb-prac-fb-title').textContent=ok?'Richtig!':'Falsch — richtig: '+card.answer;
+  document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+card.answer;
   document.getElementById('sb-prac-fb-expl').innerHTML=expl;
   fb.style.display='block';
+  // Update inner next button label + visibility
+  var innerNext=document.getElementById('sb-prac-next-btn');
+  if(innerNext){
+    innerNext.textContent=typeof t==='function'?t('btn_sb_weiter'):'Weiter →';
+    // In lesson mode, Далі golden button handles navigation — hide inner btn
+    innerNext.style.display=LF?'none':'block';
+  }
 
-  if(ok) setTimeout(sbPracNext,1200);
+  // Always wait for "Далі" button — no auto-advance
 }
 
 function sbPracNext() {
