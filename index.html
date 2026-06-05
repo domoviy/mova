@@ -620,8 +620,8 @@ body{
 .mc-q-label{font-size:10px;color:rgba(255,255,255,.4);
   letter-spacing:.5px;margin-bottom:5px;}
 .mc-q-row{display:flex;align-items:center;gap:8px;justify-content:center;}
-.mc-q-term{font-size:18px;font-weight:700;color:var(--gold);
-  font-family:'Syne',sans-serif;line-height:1.3;}
+.mc-q-term{font-size:17px;font-weight:700;color:var(--gold);
+  font-family:'Figtree',sans-serif;line-height:1.45;}
 .mc-q-audio{background:none;border:none;
   color:rgba(255,255,255,.55);font-size:18px;cursor:pointer;
   padding:4px 6px;border-radius:8px;flex-shrink:0;
@@ -733,7 +733,7 @@ body{
 }
 .tiles-q-label{font-size:11px;color:rgba(255,255,255,.45);
   letter-spacing:.5px;margin-bottom:6px;}
-.tiles-q-text{font-size:15px;color:#fff;line-height:1.5;}
+.tiles-q-text{font-size:15px;color:#fff;line-height:1.5;font-family:'Figtree',sans-serif;}
 .tiles-q-text.mc-q-term{color:var(--gold-lt);font-weight:600;}
 .tiles-answer{
   min-height:64px;border-radius:14px;
@@ -939,7 +939,7 @@ body{
 .lr-btn-secondary:active{transform:scale(.97);border-color:var(--gold);}
 
 .fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
-.fc-srs-badge{display:block;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 0;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
+.fc-srs-badge{display:block;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 8px;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
 .ui-lang-btn{border:1px solid var(--border);background:var(--card);color:var(--ink);padding:7px 4px;border-radius:10px;cursor:pointer;transition:all .2s;font-family:inherit}
 .ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
@@ -1100,7 +1100,7 @@ body{
 .sb-review-correct   { padding:2px 8px; border-radius:6px; font-size:12px; font-weight:700; background:rgba(201,168,76,.15); color:var(--warm); }
 
 /* Sentence with blank — matches mc-q-term style */
-.sb-sentence { font-size:16px; color:var(--ink); line-height:1.55; font-weight:500; }
+.sb-sentence { font-size:16px; color:var(--ink); line-height:1.55; font-weight:500; font-family:'Figtree',sans-serif; }
 .sb-blank { display:inline-block; min-width:70px; border-bottom:2.5px solid var(--gold); padding:0 4px; color:var(--muted); font-style:italic; }
 
 /* Feedback block */
@@ -1129,6 +1129,42 @@ body{
   letter-spacing:.3px;
 }
 .btn-lesson-sb-next:active{opacity:.85;transform:scale(.98);}
+
+.sb-prac-feedback-modal{
+  position:fixed;inset:0;z-index:300;
+  display:flex;align-items:flex-end;
+  padding:0;
+}
+.sb-prac-feedback-modal-backdrop{
+  position:absolute;inset:0;background:rgba(0,0,0,.4);
+}
+.sb-prac-feedback-modal-sheet{
+  position:relative;z-index:1;
+  width:100%;background:var(--paper);
+  border-radius:20px 20px 0 0;
+  padding:20px 20px calc(env(safe-area-inset-bottom,0px) + 16px);
+  box-shadow:0 -4px 32px rgba(0,0,0,.18);
+}
+.sb-prac-feedback-modal-row{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+}
+.sb-prac-feedback-modal-icon{font-size:24px;}
+.sb-prac-feedback-modal-title{font-size:17px;font-weight:800;color:var(--ink);}
+.sb-prac-feedback-modal-expl{
+  font-size:14px;color:var(--warm);line-height:1.65;margin-bottom:16px;
+}
+.sb-prac-feedback-modal-next{
+  width:100%;padding:15px;border-radius:14px;border:none;
+  background:linear-gradient(135deg,var(--gold),#b8873a);
+  color:var(--forest);font-size:16px;font-weight:800;
+  cursor:pointer;font-family:inherit;letter-spacing:.2px;
+}
+.sb-prac-feedback-modal.correct .sb-prac-feedback-modal-sheet{
+  border-top:3px solid #27ae60;
+}
+.sb-prac-feedback-modal.wrong .sb-prac-feedback-modal-sheet{
+  border-top:3px solid var(--red);
+}
 
 /* mc-options used in practice/exam: make buttons work as answer tiles */
 #sb-prac-options .mc-opt, #sb-exam-options .mc-opt {
@@ -1668,7 +1704,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '63-4dd4964';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3036,9 +3072,8 @@ function matchShowResult(){
   if(scoreEl) scoreEl.textContent = good + '/' + matchState.cards.length + ' ✓';
   if(textEl) textEl.textContent = perfect ? t('match_perfect') : t('match_good');
 
-  // Якщо в lesson flow → переходимо до наступного кроку
+  // Якщо в lesson flow → переходимо одразу без показу результату
   if(LF && matchState._lfMode){
-    if(result) result.style.display='block';
     lfStepDone('matching', good/matchState.cards.length);
   } else {
     if(result) result.style.display='block';
@@ -4331,15 +4366,23 @@ function lfStartSBPrac(){
 
   showView('sb');
 
-  // Hide tab bar — lesson mode, user must not change flow
+  // Lesson mode: hide vtab-bar, player, chips, bottom progress strip
   var sbVocabTop2 = document.getElementById('sb-vocab-top');
   if(sbVocabTop2){
     var vtabBar2 = sbVocabTop2.querySelector('.vtab-bar');
     if(vtabBar2) vtabBar2.style.display = 'none';
+    var playerBar2 = sbVocabTop2.querySelector('.vplayer');
+    if(playerBar2) playerBar2.style.display = 'none';
+    var chips2 = document.getElementById('sb-cat-chips');
+    if(chips2) chips2.style.display = 'none';
   }
+  // Hide bottom progress row (vprogrow in practice panel)
+  var pracProgrow = document.getElementById('sb-prac-progrow');
+  if(pracProgrow) pracProgrow.style.display = 'none';
 
   SB.mode = 'practice';
-  SB.pracQueue = LF.sbCards.slice().sort(function(){ return Math.random()-.5; });
+  // Max 3 cards in lesson mode
+  SB.pracQueue = LF.sbCards.slice().sort(function(){ return Math.random()-.5; }).slice(0,3);
   SB.pracIdx = 0; SB.pracAnswered = false; SB.pracResults = [];
   document.getElementById('sb-panel-learn').style.display    = 'none';
   document.getElementById('sb-panel-practice').style.display = 'flex';
@@ -4358,12 +4401,18 @@ function lfStartSBPrac(){
 }
 
 function _lfSBPracDone(){
-  // Restore vtab-bar
+  // Restore all hidden elements
   var sbVocabTop = document.getElementById('sb-vocab-top');
   if(sbVocabTop){
     var vtabBar = sbVocabTop.querySelector('.vtab-bar');
     if(vtabBar) vtabBar.style.display = '';
+    var playerBar = sbVocabTop.querySelector('.vplayer');
+    if(playerBar) playerBar.style.display = '';
+    var chips = document.getElementById('sb-cat-chips');
+    if(chips) chips.style.display = '';
   }
+  var pracProgrow = document.getElementById('sb-prac-progrow');
+  if(pracProgrow) pracProgrow.style.display = '';
   showView('vocab');
   lfRenderBar();
   lfNextStep();
@@ -4686,9 +4735,10 @@ function exitLessonFlow(){
   V.lessonId = null; V.lessonCards = [];
   V.queue = []; V.idx = 0;
   quizState = null;
-  // Clean up SB next button if present
+  // Clean up SB UI elements
   var sbBtn = document.getElementById('lf-sb-next-btn');
   if(sbBtn) sbBtn.remove();
+  sbHideFeedbackModal();
   const bar=document.getElementById('lesson-flow-bar');
   if(bar) bar.classList.remove('active');
   const resultEl=document.getElementById('lesson-result');
@@ -5497,6 +5547,52 @@ function sbAutoPlay() {
 
 // ── FAVORITES ─────────────────────────────────────────────────
 // Use same storage key as vocab toggleFavorite: 'mova_' + id
+// ── SB Feedback Modal (bottom sheet) ──────────────────────────
+function sbShowFeedbackModal(ok, title, expl, onNext) {
+  // Remove existing
+  var existing = document.getElementById('sb-feedback-modal');
+  if(existing) existing.remove();
+
+  var modal = document.createElement('div');
+  modal.id = 'sb-feedback-modal';
+  modal.className = 'sb-prac-feedback-modal ' + (ok ? 'correct' : 'wrong');
+  modal.innerHTML =
+    '<div class="sb-prac-feedback-modal-backdrop"></div>' +
+    '<div class="sb-prac-feedback-modal-sheet">' +
+      '<div class="sb-prac-feedback-modal-row">' +
+        '<span class="sb-prac-feedback-modal-icon">'+(ok?'✅':'❌')+'</span>' +
+        '<span class="sb-prac-feedback-modal-title">'+title+'</span>' +
+      '</div>' +
+      '<div class="sb-prac-feedback-modal-expl">'+expl+'</div>' +
+      '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn">'+(typeof t==='function'?t('btn_sb_weiter'):'Далі →')+'</button>' +
+    '</div>';
+
+  document.body.appendChild(modal);
+  // Animate in
+  var sheet = modal.querySelector('.sb-prac-feedback-modal-sheet');
+  sheet.style.transform = 'translateY(100%)';
+  sheet.style.transition = 'transform .25s ease';
+  requestAnimationFrame(function(){
+    requestAnimationFrame(function(){
+      sheet.style.transform = 'translateY(0)';
+    });
+  });
+
+  document.getElementById('sb-modal-next-btn').onclick = onNext;
+}
+
+function sbHideFeedbackModal() {
+  var modal = document.getElementById('sb-feedback-modal');
+  if(!modal) return;
+  var sheet = modal.querySelector('.sb-prac-feedback-modal-sheet');
+  if(sheet){
+    sheet.style.transform = 'translateY(100%)';
+    setTimeout(function(){ modal.remove(); }, 250);
+  } else {
+    modal.remove();
+  }
+}
+
 function sbIsFav(id){ try{ return JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite===true; }catch(e){ return false; } }
 function sbToggleFav(e) {
   if(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); }
@@ -5642,17 +5738,24 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   var expl=sbL(card.explanation, explLang).replace(/„([^"]+)"/g,'<strong>„$1"</strong>');
   var resultOk  = explLang==='uk'?'Правильно!':explLang==='en'?'Correct!':'Richtig!';
   var resultFail= explLang==='uk'?'Неправильно — правильно: ':explLang==='en'?'Wrong — correct: ':'Falsch — richtig: ';
-  var fb=document.getElementById('sb-prac-feedback');
-  document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
-  document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+card.answer;
-  document.getElementById('sb-prac-fb-expl').innerHTML=expl;
-  fb.style.display='block';
-  // Update inner next button label + visibility
-  var innerNext=document.getElementById('sb-prac-next-btn');
-  if(innerNext){
-    innerNext.textContent=typeof t==='function'?t('btn_sb_weiter'):'Weiter →';
-    // In lesson mode, Далі golden button handles navigation — hide inner btn
-    innerNext.style.display=LF?'none':'block';
+  if(LF) {
+    // Lesson mode: show bottom sheet modal
+    sbShowFeedbackModal(ok, ok ? resultOk : resultFail+card.answer, expl, function(){
+      sbHideFeedbackModal();
+      sbPracNext();
+    });
+  } else {
+    // Standalone mode: inline feedback block
+    var fb=document.getElementById('sb-prac-feedback');
+    document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
+    document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+card.answer;
+    document.getElementById('sb-prac-fb-expl').innerHTML=expl;
+    fb.style.display='block';
+    var innerNext=document.getElementById('sb-prac-next-btn');
+    if(innerNext){
+      innerNext.textContent=typeof t==='function'?t('btn_sb_weiter'):'Weiter →';
+      innerNext.style.display='block';
+    }
   }
 
   // Always wait for "Далі" button — no auto-advance
@@ -5660,7 +5763,12 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
 
 function sbPracNext() {
   SB.pracIdx++;
-  if(SB.pracIdx>=Math.min(SB.pracQueue.length,SB_PRAC_COUNT+5)){ sbShowPracResult(); return; }
+  var maxCards = LF ? 3 : SB_PRAC_COUNT + 5;
+  if(SB.pracIdx >= Math.min(SB.pracQueue.length, maxCards)){
+    if(LF){ _lfSBPracDone(); return; }
+    sbShowPracResult();
+    return;
+  }
   document.getElementById('sb-prac-feedback').style.display='none';
   sbRenderPrac();
 }
