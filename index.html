@@ -725,7 +725,7 @@ body{
 /* ══ SENTENCE TILES ══ */
 #vocab-panel-tiles{
   flex:1;min-height:0;display:flex;flex-direction:column;
-  padding:12px 14px 140px;overflow-y:auto;
+  padding:12px 14px;overflow:hidden;
 }
 .tiles-question{
   background:var(--forest);border-radius:16px;
@@ -736,13 +736,12 @@ body{
 .tiles-q-text{font-size:15px;color:#fff;line-height:1.5;font-family:'Figtree',sans-serif;}
 .tiles-q-text.mc-q-term{color:var(--gold-lt);font-weight:600;}
 .tiles-answer{
-  min-height:64px;border-radius:14px;
+  flex:1;min-height:64px;border-radius:14px;
   border:1.5px dashed var(--border);
   background:rgba(201,168,76,.04);
-  padding:12px 14px;margin-bottom:12px;
+  padding:12px 14px;margin-bottom:8px;
   display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;
-  /* Росте разом з контентом */
-  height:auto;
+  overflow-y:auto;
 }
 .tiles-answer.correct{border-color:#2ecc71;border-style:solid;background:rgba(46,204,113,.06);}
 .tiles-answer.wrong  {border-color:#e74c3c;border-style:solid;background:rgba(231,76,60,.06);}
@@ -794,7 +793,14 @@ body{
   pointer-events:none;
   align-self:center;
 }
-.tiles-bank{display:flex;flex-wrap:wrap;gap:10px;padding:4px 0;}
+.tiles-bank{
+  flex:1;min-height:64px;
+  display:flex;flex-wrap:wrap;gap:10px;padding:8px 0;
+  align-content:flex-start;overflow-y:auto;
+}
+.tiles-check-row{
+  flex-shrink:0;padding:8px 0 calc(var(--lm-nav)+env(safe-area-inset-bottom,0px)+8px);
+}
 .tiles-feedback{
   text-align:center;font-size:14px;font-weight:600;
   padding:10px;border-radius:10px;margin-bottom:10px;
@@ -848,8 +854,17 @@ body{
   background:var(--forest);
   padding:8px 14px 6px;
   flex-shrink:0;
+  /* In lesson mode becomes fixed so it survives view switches */
 }
 #lesson-flow-bar.active{ display:block; }
+#lesson-flow-bar.lf-fixed{
+  position:fixed;
+  top:var(--hdr-h);
+  left:0;right:0;
+  z-index:120;
+  display:block !important; /* override display:none even when not in active view */
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
 .lf-header{
   display:flex;align-items:center;justify-content:space-between;
   margin-bottom:6px;
@@ -1049,28 +1064,19 @@ body{
 #view-sb .vocab-top { flex-shrink:0; padding:10px 14px 0; }
 #view-sb .vchips { margin-bottom:8px; }
 
-/* Learn panel — flex column, fc-area fills space */
+/* Learn panel — flex column, fc-area fills all available space */
 #sb-panel-learn {
   flex:1; min-height:0; display:flex; flex-direction:column;
   padding:0 14px;
+  padding-bottom:calc(var(--prog-h) + var(--lm-nav) + env(safe-area-inset-bottom,0px) + 8px);
 }
 #sb-panel-learn .fc-area {
-  /* Override vocab height calc — simpler for SB context */
-  height:calc(
-    100dvh
-    - var(--hdr-h) - var(--safe-t)
-    - 75px          /* vplayer */
-    - var(--gap)
-    - 40px          /* vchips */
-    - var(--gap)
-    - 38px          /* vtabs */
-    - var(--prog-h) - var(--gap)
-    - var(--lm-nav)
-    - env(safe-area-inset-bottom,0px)
-    - 20px
-  );
+  /* Fill all remaining space — let flexbox do the math */
+  flex:1; min-height:0;
+  height:auto;
   margin-bottom:var(--gap);
 }
+#sb-panel-learn .flashcard { height:100%; }
 
 /* Practice panel */
 #sb-panel-practice {
@@ -1450,9 +1456,11 @@ body{
           <div class="tiles-q-text" id="tiles-q-text"></div>
         </div>
         <div class="tiles-answer" id="tiles-answer"></div>
-        <div class="tiles-feedback" id="tiles-feedback" style="display:none"></div>
         <div class="tiles-bank" id="tiles-bank"></div>
-        <button class="tiles-check-btn" id="tiles-check-btn" onclick="tilesCheck()"></button>
+        <div class="tiles-check-row">
+          <div class="tiles-feedback" id="tiles-feedback" style="display:none"></div>
+          <button class="tiles-check-btn" id="tiles-check-btn" onclick="tilesCheck()"></button>
+        </div>
       </div>
 
       <div id="vocab-panel-browse" style="display:none">
@@ -1704,7 +1712,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '65-18b36fb';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2397,6 +2405,10 @@ async function tryAzureThenSpeech(text, lang, safeEnd, url, gen){
 }
 
 async function speak(text, lang, onEnd, cardId, field){
+  // Strip special characters that cause TTS artifacts
+  text = (text||'').replace(/[„"‟"«»]/g,'"').replace(/[''‚‛]/g,"'")
+    .replace(/[–—]/g,' ').replace(/­/g,'') // soft hyphen
+    .replace(/[★☆✓✗✅❌🔀🧠📖🎯📝➡]/g,'').trim();
   stopTTS();
   const gen = playGen;
   let _ended = false;
@@ -2695,6 +2707,7 @@ function flipCard(){
   if(V.flipped) window.mlog?.('card_flipped');
 }
 function vocabPrev(){
+  if(LF && LF.steps[LF.step]==='cards') return; // заблоковано в уроці
   haptic.medium();
   const wasPlaying=V.playing;
   stopVocab();
@@ -2735,7 +2748,8 @@ function initSwipe(){
     if(!moved||adx<8&&ady<8){ flipCard(); return; }
 
     if(adx>ady&&adx>48){
-      // ← → горизонтальний свайп
+      // ← → горизонтальний свайп — заблокувати у режимі уроку (крок 'cards')
+      if(LF && LF.steps[LF.step]==='cards') return;
       const wp=V.playing;
       haptic.medium(); stopVocab();
       if(dx<0){
@@ -3901,12 +3915,7 @@ function tilesShowResult(){
   if(checkBtn) checkBtn.style.display='none';
   const bankEl = document.getElementById('tiles-bank');
   if(LF && tilesState._lfMode){
-    if(bankEl) bankEl.innerHTML=`
-      <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
-        <div style="font-size:36px">🎉</div>
-        <p style="color:var(--muted);font-size:13px;margin:8px 0 16px">${t('match_perfect')}</p>
-        <button class="btn" onclick="lfNextStep()" style="width:100%">▶ ${uiLang==='uk'?'Далі':uiLang==='en'?'Next':'Weiter'}</button>
-      </div>`;
+    // In lesson mode: skip result screen, advance immediately
     lfStepDone('tiles', 1);
   } else {
     if(bankEl) bankEl.innerHTML=`
@@ -4318,20 +4327,62 @@ function lfStartTiles(){
 
 // ── РЕЗУЛЬТАТ ─────────────────────────────────────────────────
 // ── SB LERNEN step in lesson flow ──────────────────────────────
+// ── SB Lesson: autoplay all active langs, then flip card ──────
+function sbLessonAutoPlayThenFlip(onDone) {
+  var card = SB.learnQueue[SB.learnIdx];
+  if(!card){ onDone(); return; }
+  var langs = sbGetActiveLangs();
+  var gen = ++SB.playCardGen;
+  SB.playing = true;
+
+  // Update play btn UI
+  var btn = document.getElementById('sb-play-btn');
+  if(btn){ btn.textContent='⏸'; btn.classList.add('pause'); }
+
+  function speakLang(li){
+    if(SB.playCardGen !== gen){ onDone(); return; }
+    if(li >= langs.length){
+      // All langs spoken — flip card
+      SB.playing = false;
+      if(btn){ btn.textContent='▶'; btn.classList.remove('pause'); }
+      SB.learnFlipped = true;
+      sbRenderLearn();
+      onDone();
+      return;
+    }
+    var l = langs[li];
+    var text = sbL(card.sentence, l).replace('{{BLANK}}', card.answer);
+    speak(text, l, function(){
+      if(SB.playCardGen !== gen) return;
+      setTimeout(function(){ speakLang(li+1); }, 400);
+    }, card.id, 'sentence');
+  }
+  speakLang(0);
+}
+
 function lfStartSBLearn(){
   if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
 
   const vocabTop = document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display = 'none';
 
+  // Make lesson bar fixed so it survives view switch
+  var lfBar = document.getElementById('lesson-flow-bar');
+  if(lfBar) lfBar.classList.add('lf-fixed');
+
   showView('sb');
 
-  // Hide tab bar in lesson mode — prevents user from changing lesson sequence
+  // Compensate for fixed bar height in sb view
+  var sbView = document.getElementById('view-sb');
+  if(sbView && lfBar) sbView.style.paddingTop = lfBar.offsetHeight + 'px';
+
+  // Hide vtab-bar and chips in lesson mode
   var sbVocabTop = document.getElementById('sb-vocab-top');
   if(sbVocabTop){
-    // Hide only the vtab-bar, keep player and chips
     var vtabBar = sbVocabTop.querySelector('.vtab-bar');
     if(vtabBar) vtabBar.style.display = 'none';
+    var chips = document.getElementById('sb-cat-chips');
+    if(chips) chips.style.display = 'none';
   }
 
   SB.learnQueue = LF.sbCards.slice();
@@ -4342,17 +4393,45 @@ function lfStartSBLearn(){
   sbRenderLearn();
   setTimeout(sbInitLearnSwipe, 50);
 
-  _lfInjectSBNextBtn(function(){ _lfSBLearnDone(); });
+  // Ensure bar renders correctly after view switch
+  lfRenderBar();
+
+  // Auto-play audio for all active langs, then flip card, then show Далі
+  sbLessonAutoPlayThenFlip(function(){
+    // After flip: show Далі button to proceed
+    _lfInjectSBNextBtn(function(){
+      // If more SB cards remain, show next; else done
+      if(SB.learnIdx + 1 < SB.learnQueue.length){
+        SB.learnIdx++;
+        SB.learnFlipped = false;
+        sbRenderLearn();
+        var daliBtnEl = document.getElementById('lf-sb-next-btn');
+        if(daliBtnEl) daliBtnEl.remove();
+        sbLessonAutoPlayThenFlip(function(){
+          _lfInjectSBNextBtn(function(){ _lfSBLearnDone(); });
+        });
+      } else {
+        _lfSBLearnDone();
+      }
+    });
+  });
 }
 
 function _lfSBLearnDone(){
   LF.sbIdx = 0;
-  // Restore vtab-bar for normal SB usage
+  // Restore vtab-bar and chips
   var sbVocabTop = document.getElementById('sb-vocab-top');
   if(sbVocabTop){
     var vtabBar = sbVocabTop.querySelector('.vtab-bar');
     if(vtabBar) vtabBar.style.display = '';
+    var chips = document.getElementById('sb-cat-chips');
+    if(chips) chips.style.display = '';
   }
+  // Un-fix lesson bar and reset sb view padding
+  var lfBar = document.getElementById('lesson-flow-bar');
+  if(lfBar) lfBar.classList.remove('lf-fixed');
+  var sbView = document.getElementById('view-sb');
+  if(sbView) sbView.style.paddingTop = '';
   showView('vocab');
   lfRenderBar();
   lfNextStep();
@@ -4364,7 +4443,15 @@ function lfStartSBPrac(){
   const vocabTop = document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display = 'none';
 
+  // Make lesson bar fixed so it survives view switch
+  var lfBar2 = document.getElementById('lesson-flow-bar');
+  if(lfBar2) lfBar2.classList.add('lf-fixed');
+
   showView('sb');
+
+  // Compensate for fixed bar height
+  var sbView2 = document.getElementById('view-sb');
+  if(sbView2 && lfBar2) sbView2.style.paddingTop = lfBar2.offsetHeight + 'px';
 
   // Lesson mode: hide vtab-bar, player, chips, bottom progress strip
   var sbVocabTop2 = document.getElementById('sb-vocab-top');
@@ -4395,9 +4482,9 @@ function lfStartSBPrac(){
   document.getElementById('sb-prac-result').style.display = 'none';
   document.getElementById('sb-prac-feedback').style.display = 'none';
   sbRenderPrac();
-
-  // "Weiter" after practice result
-  _lfInjectSBNextBtn(function(){ _lfSBPracDone(); });
+  // Ensure bar renders correctly after view switch
+  lfRenderBar();
+  // No Далі button here — modal feedback handles progression after each answer
 }
 
 function _lfSBPracDone(){
@@ -4413,6 +4500,11 @@ function _lfSBPracDone(){
   }
   var pracProgrow = document.getElementById('sb-prac-progrow');
   if(pracProgrow) pracProgrow.style.display = '';
+  // Un-fix lesson bar and reset sb view padding
+  var lfBar = document.getElementById('lesson-flow-bar');
+  if(lfBar) lfBar.classList.remove('lf-fixed');
+  var sbView = document.getElementById('view-sb');
+  if(sbView) sbView.style.paddingTop = '';
   showView('vocab');
   lfRenderBar();
   lfNextStep();
@@ -4740,7 +4832,9 @@ function exitLessonFlow(){
   if(sbBtn) sbBtn.remove();
   sbHideFeedbackModal();
   const bar=document.getElementById('lesson-flow-bar');
-  if(bar) bar.classList.remove('active');
+  if(bar){ bar.classList.remove('active'); bar.classList.remove('lf-fixed'); }
+  var sbView = document.getElementById('view-sb');
+  if(sbView) sbView.style.paddingTop = '';
   const resultEl=document.getElementById('lesson-result');
   if(resultEl) resultEl.classList.remove('show');
   const vocabTop=document.querySelector('.vocab-top');
@@ -5724,9 +5818,15 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     else if(b===btn&&!ok) b.classList.add('wrong');
   });
 
-  // Play audio for the chosen option
-  var field = audioField || (ok ? 'answer' : 'sentence');
-  speak(chosen, 'de', null, card.id, field);
+  // Play chosen option audio, then play full correct sentence
+  var field = audioField || (ok ? 'answer' : 'distractors_de_100_1');
+  var sentenceText = sbL(card.sentence, 'de').replace('{{BLANK}}', card.answer);
+  speak(chosen, 'de', function() {
+    // After answer audio ends → play full sentence
+    setTimeout(function() {
+      speak(sentenceText, 'de', null, card.id, 'sentence');
+    }, 300);
+  }, card.id, field);
 
   var iv=sbGetIntervals(),cur=iv[card.id]||1;
   if(ok){ sbSetInterval(card.id,cur*2); sbMarkLearned(card.id); }
