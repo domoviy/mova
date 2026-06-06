@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.8.3 (Dynamic AUDIO_CONFIG with Br Pauses & Bold Emphasis)
+MOVA · Azure TTS Audio Generator  v2.8.4 (Dynamic AUDIO_CONFIG with Detailed Error Reporting)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const AUDIO_CONFIG)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
-Підтримує мови: de, en, uk, ru. Конвертує <b> в SSML <emphasis> для наголосу голосом.
+Підтримує мови: de, en, uk, ru. Виводить детальний звіт про помилки в кінці генерації.
 """
 
 import os, sys, json, time, pathlib, re
@@ -61,18 +61,13 @@ def clean_text(text):
     if not text:
         return ""
     
-    # 1. Замінюємо HTML-теги <br> на звичайний перенос рядка
     text = re.sub(r'<br\s*/?>', '\n', text, flags=re.IGNORECASE)
-    
-    # 2. Уніфікуємо теги жирного тексту (щоб не зважати на регістр букв)
     text = re.sub(r'<b\s*>', '<bold>', text, flags=re.IGNORECASE)
     text = re.sub(r'</\s*b\s*>', '</bold>', text, flags=re.IGNORECASE)
     
-    # 3. Розбиваємо текст по рядках, щоб почистити зайві пробіли всередині кожного абзацу
     lines = text.split('\n')
     cleaned_lines = []
     for line in lines:
-        # Замінюємо кілька пробілів/табуляцій підряд на один звичайний пробіл
         line_cleaned = re.sub(r'[ \t]+', ' ', line).strip()
         if line_cleaned:  
             cleaned_lines.append(line_cleaned)
@@ -151,11 +146,8 @@ def build_ssml(text, lang, speed_key):
     rate  = cfg['rate']
     pm    = cfg['pause_ms']
 
-    # Перетворюємо наші маркери <bold> на офіційні SSML-теги наголосу Azure TTS
-    # Рівень "moderate" дає відчутне виділення інтонацією без зайвого крику
     ssml_body = text.replace('<bold>', '<emphasis level="moderate">').replace('</bold>', '</emphasis>')
 
-    # Якщо активована додаткова пауза швидкості (080), розбиваємо слова.
     if pm > 0:
         ssml_body = f'<break time="{pm}ms"/>'.join(ssml_body.split(' '))
 
@@ -197,10 +189,12 @@ def synthesize(ssml, retries=3):
                 wait = int(e.headers.get('Retry-After', 10))
                 time.sleep(wait)
             else:
-                return None
-        except Exception:
+                return f"HTTP {e.code}: {e.reason}"
+        except Exception as e:
             time.sleep(3)
-    return None
+            if attempt == retries - 1:
+                return str(e)
+    return "Unknown Network Error"
 
 # ── Завдання ─────────────────────────────────────────────────
 def process(task, manifest):
@@ -212,7 +206,7 @@ def process(task, manifest):
 
     if block_type == 'SPRACHBAUSTEINE' and field == 'sentence':
         if lang != 'de' or speed != '100':
-            return 'skip', f'{cid}_{field}_{lang}_{speed}'
+            return 'skip', f'{cid}_{field}_{lang}_{speed}', None
         
         answer_text = (card.get('answer') or {}).get('de', '')
         if '{{BLANK}}' in text and answer_text:
@@ -221,7 +215,7 @@ def process(task, manifest):
     text = clean_text(text)
 
     if not text or not text.strip():
-        return 'skip', f'{cid}_{field}_{lang}_{speed}'
+        return 'skip', f'{cid}_{field}_{lang}_{speed}', None
 
     cat = 'sbs' if block_type == 'SPRACHBAUSTEINE' else cid.split('_')[0]
     fname = f'{cid}_{field}_{lang}_{speed}'
@@ -230,14 +224,19 @@ def process(task, manifest):
 
     with lock:
         if mkey in manifest and fpath.exists():
-            return 'skip', mkey
+            return 'skip', mkey, None
 
-    audio = synthesize(build_ssml(text, lang, speed))
-    if not audio:
-        return 'err', mkey
+    result = synthesize(build_ssml(text, lang, speed))
+    
+    # Якщо повернувся рядок (опис помилки), а не bytes з аудіо:
+    if isinstance(result, str):
+        return 'err', mkey, result
+
+    if not result:
+        return 'err', mkey, "Empty response from server"
 
     fpath.parent.mkdir(parents=True, exist_ok=True)
-    fpath.write_bytes(audio)
+    fpath.write_bytes(result)
     
     with lock:
         manifest[mkey] = True
@@ -252,11 +251,11 @@ def process(task, manifest):
                 os.system('git push')
             NEW_FILES_COUNT = 0
 
-    return 'ok', mkey
+    return 'ok', mkey, None
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.8.3 (Dynamic AUDIO_CONFIG with Br Pauses & Bold Emphasis)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.8.4 (Dynamic AUDIO_CONFIG with Detailed Error Reporting)', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
@@ -315,18 +314,38 @@ def main():
     if total == already:
         print('\n✅ Все синхронізовано згідно з AUDIO_CONFIG!', flush=True); return 0
 
-    done = skipped = errors = generated = 0
+    done = skipped = errors_count = generated = 0
+    error_details = []  # Список для збереження описів помилок
+
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = {pool.submit(process, t, manifest): t for t in tasks}
         for fut in as_completed(futures):
             done += 1
-            status, mkey = fut.result()
-            if   status == 'ok':   generated += 1; print(f'  ✓ [{done}/{total}] {mkey}', flush=True)
-            elif status == 'skip': skipped   += 1; print(f'  · [{done}/{total}] skip {mkey}', flush=True)
-            else:                  errors    += 1; print(f'  ✗ [{done}/{total}] ERROR {mkey}', flush=True)
+            status, mkey, err_msg = fut.result()
+            if   status == 'ok':   
+                generated += 1
+                print(f'  ✓ [{done}/{total}] {mkey}', flush=True)
+            elif status == 'skip': 
+                skipped += 1
+                print(f'  · [{done}/{total}] skip {mkey}', flush=True)
+            else:                  
+                errors_count += 1
+                error_details.append((mkey, err_msg))
+                print(f'  ✗ [{done}/{total}] ERROR {mkey} -> {err_msg}', flush=True)
 
-    print(f'\nГотово: +{generated} нових, {skipped} пропущено, {errors} помилок', flush=True)
-    return 0 if errors == 0 else 1
+    # Фінальний звіт
+    print(f'\n==================================================', flush=True)
+    print(f'Готово: +{generated} нових, {skipped} пропущено, {errors_count} помилок', flush=True)
+    
+    if error_details:
+        print(f'\n🚨 ДЕТАЛІ ОПИСУ ПОМИЛОК:', flush=True)
+        for idx, (mkey, err_msg) in enumerate(error_details, 1):
+            print(f'  {idx}. Файл: {mkey}\n     Суть помилки: {err_msg}\n', flush=True)
+        print(f'==================================================', flush=True)
+        return 1
+        
+    print(f'==================================================', flush=True)
+    return 0
 
 if __name__ == '__main__':
     sys.exit(main())
