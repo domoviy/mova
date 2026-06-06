@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.8.1 (Dynamic AUDIO_CONFIG with Comment Stripping)
+MOVA · Azure TTS Audio Generator  v2.8.3 (Dynamic AUDIO_CONFIG with Br Pauses & Bold Emphasis)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const AUDIO_CONFIG)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
-Підтримує мови: de, en, uk, ru. Автоматично чистить коментарі в AUDIO_CONFIG.
+Підтримує мови: de, en, uk, ru. Конвертує <b> в SSML <emphasis> для наголосу голосом.
 """
 
 import os, sys, json, time, pathlib, re
@@ -54,13 +54,30 @@ NEW_FILES_COUNT = 0
 
 # ── Допоміжні функції ─────────────────────────────────────────
 def clean_text(text):
-    """Видаляє HTML-теги форматування <br>, <b>, </b> та нормалізує пробіли."""
+    """
+    Замінює <br> на справжні ентери (\\n), нормалізує пробіли,
+    а теги <b> перетворює на тимчасові маркерні теги <bold> для подальшого SSML-наголосу.
+    """
     if not text:
         return ""
-    text = re.sub(r'<br\s*/?>', ' ', text, flags=re.IGNORECASE)
-    text = re.sub(r'</?b>', '', text, flags=re.IGNORECASE)
-    text = re.sub(r'\s+', ' ', text)
-    return text.strip()
+    
+    # 1. Замінюємо HTML-теги <br> на звичайний перенос рядка
+    text = re.sub(r'<br\s*/?>', '\n', text, flags=re.IGNORECASE)
+    
+    # 2. Уніфікуємо теги жирного тексту (щоб не зважати на регістр букв)
+    text = re.sub(r'<b\s*>', '<bold>', text, flags=re.IGNORECASE)
+    text = re.sub(r'</\s*b\s*>', '</bold>', text, flags=re.IGNORECASE)
+    
+    # 3. Розбиваємо текст по рядках, щоб почистити зайві пробіли всередині кожного абзацу
+    lines = text.split('\n')
+    cleaned_lines = []
+    for line in lines:
+        # Замінюємо кілька пробілів/табуляцій підряд на один звичайний пробіл
+        line_cleaned = re.sub(r'[ \t]+', ' ', line).strip()
+        if line_cleaned:  
+            cleaned_lines.append(line_cleaned)
+            
+    return '\n'.join(cleaned_lines)
 
 # ── Завантаження бази (JSON або JS) ───────────────────────────
 def load_data():
@@ -72,20 +89,17 @@ def load_data():
 
     jsp = pathlib.Path('B2-Beruf.js')
     if not jsp.exists():
-        raise FileNotFoundError('Не значено B2-Beruf.json або B2-Beruf.js!')
+        raise FileNotFoundError('Не знайдено B2-Beruf.json або B2-Beruf.js!')
 
     print('  ← B2-Beruf.js (regex parse)')
     src = jsp.read_text('utf-8')
 
     data = {}
     
-    # Парсимо AUDIO_CONFIG з JS файлу, якщо він там є
     m_cfg = re.search(r'const\s+AUDIO_CONFIG\s*=\s*(\{[\s\S]*?\});', src)
     if m_cfg:
         cfg_js = m_cfg.group(1)
-        # Очищення коментарів виду // коментар всередині об'єкта конфігу
         cfg_js = re.sub(r'//[^\n]*', '', cfg_js)
-        # Базове очищення для перетворення JS в JSON
         cfg_js = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', cfg_js)
         cfg_js = cfg_js.replace("'", '"')
         try:
@@ -137,11 +151,17 @@ def build_ssml(text, lang, speed_key):
     rate  = cfg['rate']
     pm    = cfg['pause_ms']
 
-    body = f'<break time="{pm}ms"/>'.join(text.split(' ')) if pm > 0 else text
+    # Перетворюємо наші маркери <bold> на офіційні SSML-теги наголосу Azure TTS
+    # Рівень "moderate" дає відчутне виділення інтонацією без зайвого крику
+    ssml_body = text.replace('<bold>', '<emphasis level="moderate">').replace('</bold>', '</emphasis>')
+
+    # Якщо активована додаткова пауза швидкості (080), розбиваємо слова.
+    if pm > 0:
+        ssml_body = f'<break time="{pm}ms"/>'.join(ssml_body.split(' '))
 
     return (
         f'<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="{lang}">'
-        f'<voice name="{voice}"><prosody rate="{rate}">{body}</prosody></voice></speak>'
+        f'<voice name="{voice}"><prosody rate="{rate}">{ssml_body}</prosody></voice></speak>'
     )
 
 # ── Azure запит ───────────────────────────────────────────────
@@ -188,7 +208,6 @@ def process(task, manifest):
     block_type, card, field, lang, speed = task
     cid  = card['id']
     
-    # Шукаємо відповідну мову в картці, якщо немає — відкат на de
     text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
 
     if block_type == 'SPRACHBAUSTEINE' and field == 'sentence':
@@ -237,7 +256,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.8.1 (Dynamic AUDIO_CONFIG with Comment Stripping)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.8.3 (Dynamic AUDIO_CONFIG with Br Pauses & Bold Emphasis)', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
@@ -251,7 +270,6 @@ def main():
 
     manifest = load_manifest()
     
-    # Отримуємо конфігурацію швидкостей з бази
     audio_config = db_data.get('AUDIO_CONFIG', {})
     if not audio_config:
         print('  ⚠️ AUDIO_CONFIG не знайдено в базі. Використовую дефолт: 100 для всіх мов.')
@@ -267,7 +285,6 @@ def main():
             for field in config['fields']:
                 for lang in config['languages']:
                     
-                    # Якщо мова не активована в AUDIO_CONFIG, пропускаємо її повністю
                     if lang not in audio_config:
                         continue
                         
