@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.8 (Dynamic AUDIO_CONFIG with Multi-lang support)
+MOVA · Azure TTS Audio Generator  v2.8.1 (Dynamic AUDIO_CONFIG with Comment Stripping)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const AUDIO_CONFIG)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
-Підтримує мови: de, en, uk, ru.
+Підтримує мови: de, en, uk, ru. Автоматично чистить коментарі в AUDIO_CONFIG.
 """
 
 import os, sys, json, time, pathlib, re
@@ -72,7 +72,7 @@ def load_data():
 
     jsp = pathlib.Path('B2-Beruf.js')
     if not jsp.exists():
-        raise FileNotFoundError('Не знайдено B2-Beruf.json або B2-Beruf.js!')
+        raise FileNotFoundError('Не значено B2-Beruf.json або B2-Beruf.js!')
 
     print('  ← B2-Beruf.js (regex parse)')
     src = jsp.read_text('utf-8')
@@ -83,6 +83,9 @@ def load_data():
     m_cfg = re.search(r'const\s+AUDIO_CONFIG\s*=\s*(\{[\s\S]*?\});', src)
     if m_cfg:
         cfg_js = m_cfg.group(1)
+        # Очищення коментарів виду // коментар всередині об'єкта конфігу
+        cfg_js = re.sub(r'//[^\n]*', '', cfg_js)
+        # Базове очищення для перетворення JS в JSON
         cfg_js = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', cfg_js)
         cfg_js = cfg_js.replace("'", '"')
         try:
@@ -234,7 +237,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.8 (Dynamic AUDIO_CONFIG with Multi-lang support)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.8.1 (Dynamic AUDIO_CONFIG with Comment Stripping)', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
