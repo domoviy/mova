@@ -1059,7 +1059,7 @@ body{
    vprogrow, vpb, vpbf, mc-progress, mc-question, mc-options, btn, score
    ════════════════════════════════════════════════════════════════ */
 
-/* fc-area in SB view inherits flex:1 from base .fc-area — no override needed */
+/* SB view: mirror of vocab layout — flex column, no scroll */
 #view-sb.active { display:flex; flex-direction:column; padding:0; overflow:hidden; }
 #view-sb .vocab-top { flex-shrink:0; padding:10px 14px 0; }
 #view-sb .vchips { margin-bottom:8px; }
@@ -1067,10 +1067,31 @@ body{
 /* Learn panel — flex column, fc-area fills all available space */
 #sb-panel-learn {
   flex:1; min-height:0; display:flex; flex-direction:column;
-  padding:10px 14px;
-  /* Bottom padding accounts for vprogrow + bottom nav safe area */
-  padding-bottom:calc(var(--prog-h) + var(--lm-nav) + env(safe-area-inset-bottom,0px) + 16px);
+  padding:0 14px;
+  /* padding-bottom: reserved space for vprogrow + bottom-nav safe area */
+  padding-bottom:calc(var(--prog-h) + var(--gap) + var(--lm-nav) + env(safe-area-inset-bottom,0px) + 8px);
 }
+
+/* SB fc-area: same explicit height calc as #view-vocab .fc-area
+   so the card never collapses when container height is ambiguous.
+   --lm-chips / --lm-tabs are 0 in lesson mode (same as vocab). */
+#sb-panel-learn .fc-area {
+  height:calc(
+    100dvh
+    - var(--hdr-h) - var(--safe-t)
+    - var(--lf-bar-h, 0px)
+    - 75px                         /* vplayer */
+    - var(--gap)
+    - var(--lm-chips)              /* chips row */
+    - var(--lm-tabs)               /* tab bar */
+    - var(--prog-h) - var(--gap)   /* vprogrow + gap */
+    - var(--lm-nav)
+    - env(safe-area-inset-bottom,0px)
+  );
+  flex:none;
+  margin-bottom:var(--gap);
+}
+
 /* flashcard fills the fc-area completely */
 #sb-panel-learn .flashcard { width:100%; height:100%; }
 #sb-panel-learn .fc-face {
@@ -1398,6 +1419,7 @@ body{
             <button class="vlang-btn on" id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
             <button class="vlang-btn on" id="vlcard-uk" onclick="toggleVocabLang('uk')">🇺🇦 UK</button>
             <button class="vlang-btn on" id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
+            <button class="vlang-btn off" id="vlcard-ru" onclick="toggleVocabLang('ru')">🇷🇺 RU</button>
           </div>
           <select id="vf-cat" onchange="resetVocabQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
@@ -1629,6 +1651,13 @@ body{
             <button onclick="setLangSpeed('uk','100')" class="sp-btn active" data-lang="uk" data-val="100">▶ Normal</button>
           </div>
         </div>
+        <div class="srow">
+          <div class="srow-label"><label>🇷🇺 Tempo</label><small>Русский</small></div>
+          <div class="speed-toggle" id="speed-ru">
+            <button onclick="setLangSpeed('ru','080')" class="sp-btn" data-lang="ru" data-val="080">🐢 Langsam</button>
+            <button onclick="setLangSpeed('ru','100')" class="sp-btn active" data-lang="ru" data-val="100">▶ Normal</button>
+          </div>
+        </div>
         <div class="srow"><div class="srow-label"><label data-i18n="lbl_pause">Pause</label><small data-i18n="sub_pause">Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
         <div class="srow"><div class="srow-label"><label data-i18n="lbl_readpause">Lesepause</label><small data-i18n="sub_readpause">Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
         <div class="srow"><div class="srow-label"><label data-i18n="lbl_trate">Sprechrate</label><small data-i18n="sub_trate">Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
@@ -1639,6 +1668,7 @@ body{
         <div class="srow"><div class="srow-label"><label>🇩🇪 Deutsch</label><small>z.B. Anna</small></div><select id="vde" onchange="VP.de=this.value;saveVP()"></select></div>
         <div class="srow"><div class="srow-label"><label>🇬🇧 English</label><small>z.B. Ava, Siri</small></div><select id="ven" onchange="VP.en=this.value;saveVP()"></select></div>
         <div class="srow"><div class="srow-label"><label>🇺🇦 Українська</label><small>z.B. Lesya</small></div><select id="vuk" onchange="VP.uk=this.value;saveVP()"></select></div>
+        <div class="srow"><div class="srow-label"><label>🇷🇺 Русский</label><small>z.B. Irina</small></div><select id="vru" onchange="VP.ru=this.value;saveVP()"></select></div>
         <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reload">Stimmen neu laden</label></div><button class="btn btn-s" onclick="reloadVoices()" data-i18n-btn="btn_reload">↻ Neu laden</button></div>
         <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reset">Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
       </div>
@@ -1712,7 +1742,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '84-068b05f';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2105,8 +2135,8 @@ const savedLangSpeeds=JSON.parse(localStorage.getItem('mova_lang_speed')||'null'
 let V={
   playing:false,paused:false,idx:0,queue:[],flipped:false,timer:null,
   repeatCount:0,
-  langs:    savedLangs||{en:true,uk:true,de:true},
-  langSpeed:savedLangSpeeds||{de:'100',en:'100',uk:'100'},
+  langs:    savedLangs||{en:true,uk:true,de:true,ru:false},
+  langSpeed:savedLangSpeeds||{de:'100',en:'100',uk:'100',ru:'100'},
   speed:    _s.speed   ??1.0,
   repeats:  _s.repeats ??1,
   pause:    _s.pause   ??300,
@@ -2127,7 +2157,7 @@ function setLangSpeed(lang,val){
 }
 
 function syncSpeedButtons(){
-  ['de','en','uk'].forEach(lang=>{
+  ['de','en','uk','ru'].forEach(lang=>{
     const val=V.langSpeed[lang]||'100';
     document.querySelectorAll(`.sp-btn[data-lang="${lang}"]`).forEach(b=>{
       b.classList.toggle('active',b.dataset.val===val);
@@ -2311,7 +2341,7 @@ async function loadVoices(){
   return new Promise(res=>{
     const load=()=>{
       const all=speechSynthesis.getVoices();
-      ['de','en','uk'].forEach(l=>{
+      ['de','en','uk','ru'].forEach(l=>{
         if(VP[l]){const f=all.find(v=>v.name===VP[l]);if(f){vs[l]=f;return;}}
         let found=null;
         if(typeof LC==='undefined'||!LC[l]){return;} for(const ms of LC[l].ms){found=all.find(v=>v.name.includes(ms));if(found)break;}
@@ -2406,7 +2436,9 @@ async function tryAzureThenSpeech(text, lang, safeEnd, url, gen){
 
 async function speak(text, lang, onEnd, cardId, field){
   // Strip special characters that cause TTS artifacts
-  text = (text||'').replace(/[„"‟"«»]/g,'"').replace(/[''‚‛]/g,"'")
+  // Strip HTML: replace <br> with space, remove all other tags
+  text = (text||'').replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'')
+    .replace(/[„"‟"«»]/g,'"').replace(/[''‚‛]/g,"'")
     .replace(/[–—]/g,' ').replace(/­/g,'') // soft hyphen
     .replace(/[★☆✓✗✅❌🔀🧠📖🎯📝➡]/g,'').trim();
   stopTTS();
@@ -2477,7 +2509,7 @@ function stopWsKeepAlive(){ clearInterval(_wsKeepAlive); _wsKeepAlive=null; }
 
 function webSpeech(text, lang, onEnd){
   const u = new SpeechSynthesisUtterance(text);
-  u.lang = (typeof LC!=='undefined' ? LC[lang]?.code : null) || {de:'de-DE',en:'en-US',uk:'uk-UA'}[lang] || 'de-DE';
+  u.lang = (typeof LC!=='undefined' ? LC[lang]?.code : null) || {de:'de-DE',en:'en-US',uk:'uk-UA',ru:'ru-RU'}[lang] || 'de-DE';
   if(vs[lang]) u.voice = vs[lang];
   const spd = V.langSpeed?.[lang] ?? '100';
   u.rate = spd === '080' ? 0.8 : 1.0;
@@ -2574,8 +2606,8 @@ function ensureVoicesLoaded(){
 function initVoiceSelects(){
   const all=speechSynthesis.getVoices();
   if(all.length===0){setTimeout(initVoiceSelects,500);return;}
-  const pfx={de:['de'],en:['en'],uk:['uk']};
-  ['de','en','uk'].forEach(l=>{
+  const pfx={de:['de'],en:['en'],uk:['uk'],ru:['ru']};
+  ['de','en','uk','ru'].forEach(l=>{
     const sel=document.getElementById('v'+l);if(!sel)return;
     const voices=all.filter(v=>pfx[l].some(p=>v.lang.toLowerCase().startsWith(p)));
     const saved=VP[l]||vs[l]?.name||'';
@@ -2767,13 +2799,9 @@ function initSwipe(){
         });
       }
     } else if(ady>adx&&ady>48){
-      // ↑ ↓ вертикальний свайп
-      if(V.mode==='srs'){
-        if(dy<0){ haptic.error();  srsSwipe(1); }  // вгору = Не знаю
-        else     { haptic.success();srsSwipe(5); }  // вниз  = Знаю
-      } else {
-        flipCard();
-      }
+      // ↑ ↓ вертикальний свайп — завжди: вгору = важлива, вниз = менш важлива
+      if(dy<0){ haptic.error();  srsSwipe(1); }  // вгору = Не знаю / Важлива
+      else     { haptic.success();srsSwipe(5); }  // вниз  = Знаю / Менш важлива
     }
   }
 
@@ -4986,7 +5014,7 @@ function speakVocabDefs(v,langs,i,done){
 }
 
 // ── LANG ──────────────────────────────────────────────────────
-function getActiveLangs(){return['en','uk','de'].filter(l=>V.langs[l]);}
+function getActiveLangs(){return['en','uk','de','ru'].filter(l=>V.langs[l]);}
 function toggleVocabLang(l){
   V.langs[l]=!V.langs[l];
   if(!Object.values(V.langs).some(x=>x)){V.langs[l]=true;notify('Mindestens eine Sprache muss aktiv sein');return;}
@@ -4996,7 +5024,7 @@ function toggleVocabLang(l){
   // Не перезапускаємо поточну картку — зміна мови застосується з наступної
   // Просто оновлюємо UI без переривання аудіо
 }
-function applyVocabLangUI(){['en','uk','de'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
+function applyVocabLangUI(){['en','uk','de','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
 function cycleVocabMode(){
   const modes=['smart','seq','random','srs'];
   V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
@@ -5270,7 +5298,7 @@ var SB = {
 };
 
 function sbSaveLangs() { try{ localStorage.setItem('mova_sb_langs', JSON.stringify(SB.langs)); }catch(e){} }
-function sbGetActiveLangs() { return ['en','uk','de'].filter(function(l){ return SB.langs[l]; }); }
+function sbGetActiveLangs() { return ['en','uk','de','ru'].filter(function(l){ return SB.langs[l]; }); }
 
 // ── INIT ──────────────────────────────────────────────────────
 function initSB() {
@@ -5314,8 +5342,8 @@ function sbToggleLang(l) {
   if (active.length === 1 && active[0] === l) return;
   SB.langs[l] = !SB.langs[l];
   sbSaveLangs();
-  // Sync to V.langs (shared settings with vocab, except RU)
-  if (typeof V !== 'undefined' && V.langs && l !== 'ru') {
+  // Sync to V.langs (shared settings with vocab)
+  if (typeof V !== 'undefined' && V.langs) {
     V.langs[l] = SB.langs[l];
     try { localStorage.setItem('mova_langs', JSON.stringify(V.langs)); } catch(e) {}
     applyVocabLangUI && applyVocabLangUI();
@@ -5328,7 +5356,7 @@ function sbToggleLang(l) {
 function sbSyncLangsFromVocab() {
   // Sync SB.langs from V.langs when opening SB view
   if (typeof V !== 'undefined' && V.langs) {
-    ['de','uk','en'].forEach(function(l) {
+    ['de','uk','en','ru'].forEach(function(l) {
       SB.langs[l] = V.langs[l] !== undefined ? V.langs[l] : SB.langs[l];
     });
     sbSaveLangs();
@@ -5494,24 +5522,26 @@ function sbInitLearnSwipe() {
   if (!area || area._sbSwipeInit) return;
   area._sbSwipeInit = true;
 
-  var sx=0, sy=0, moved=false;
-  function onStart(cx,cy){ sx=cx; sy=cy; moved=false; }
-  function onMove(cx,cy) { if(Math.abs(cx-sx)>8||Math.abs(cy-sy)>8) moved=true; }
+  var sx=0, sy=0, st=0;
+  function onStart(cx,cy){ sx=cx; sy=cy; st=Date.now(); }
   function onEnd(cx,cy) {
     var dx=cx-sx, dy=cy-sy, adx=Math.abs(dx), ady=Math.abs(dy);
-    if(!moved||(adx<12&&ady<12)){ sbLearnFlip(); return; }
-    if(adx>ady&&adx>40){ if(dx<0) sbLearnNext(); else sbLearnPrev(); }
-    else if(ady>adx&&ady>40){
-      if(!SB.learnFlipped){ sbLearnFlip(); return; }
-      if(dy<0) sbLearnSwipeHard(); else sbLearnSwipeEasy();
-    }
+    var dt=Date.now()-st;
+    // Tap: tiny movement + short time → flip
+    if(adx<12&&ady<12){ sbLearnFlip(); return; }
+    // Horizontal swipe → navigate
+    if(adx>ady&&adx>36){ if(dx<0) sbLearnNext(); else sbLearnPrev(); return; }
+    // Vertical swipe → hard/easy (no flip-state requirement, no moved flag)
+    if(ady>adx&&ady>36){ if(dy<0) sbLearnSwipeHard(); else sbLearnSwipeEasy(); return; }
+    // Small ambiguous movement → flip
+    sbLearnFlip();
   }
   area.addEventListener('touchstart',function(e){ onStart(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
-  area.addEventListener('touchmove', function(e){ onMove(e.touches[0].clientX,e.touches[0].clientY); }, {passive:true});
+  area.addEventListener('touchmove', function(e){ /* track nothing — onEnd uses final coords */ }, {passive:true});
   area.addEventListener('touchend',  function(e){ if(e.cancelable)e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
-  var md=false;
-  area.addEventListener('mousedown',function(e){ md=true; onStart(e.clientX,e.clientY); });
-  area.addEventListener('mousemove',function(e){ if(md) onMove(e.clientX,e.clientY); });
+  var md=false, msx=0, msy=0;
+  area.addEventListener('mousedown',function(e){ md=true; msx=e.clientX; msy=e.clientY; onStart(e.clientX,e.clientY); });
+  area.addEventListener('mousemove',function(e){ if(md && (Math.abs(e.clientX-msx)>8||Math.abs(e.clientY-msy)>8)) {} });
   area.addEventListener('mouseup',  function(e){ if(md){ md=false; onEnd(e.clientX,e.clientY); } });
 }
 
