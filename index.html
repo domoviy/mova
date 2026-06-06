@@ -109,7 +109,7 @@ body{
 #view-vocab.active{display:flex;flex-direction:column;height:100%}
 #view-vocab .vocab-top{padding:12px 14px 0;flex-shrink:0}
 #vocab-panel-card{flex:1;min-height:0;display:flex;flex-direction:column;padding:0px 14px 106px 14px}
-.fc-area{perspective:1400px;user-select:none;flex:1;min-height:120px;margin-bottom:8px}
+.fc-area{perspective:1400px;user-select:none;}
 #bottom-nav{
   position:fixed;bottom:0;left:0;right:0;z-index:20;
   background:var(--paper);border-top:1px solid var(--border);
@@ -257,23 +257,29 @@ body{
 .vtab.active{color:var(--ink);border-bottom-color:var(--gold)}
 
 /* ══ FLASHCARD ══ */
+/* Base: shared perspective + flex-fill for SB and any future panel */
 .fc-area{
   perspective:1400px;
   user-select:none;
-  /* Весь вільний простір між контентом вгорі і vprogrow внизу.
-     У режимі уроку --lm-* обнуляються через CSS-змінні → картка росте. */
+  flex:1; min-height:80px;
+  margin-bottom:0;
+}
+/* Vokabeln only: explicit height calc (player + chips + tabs always in DOM).
+   --lm-* vars are zeroed in lesson mode so the card expands automatically. */
+#view-vocab .fc-area{
   height:calc(
     100dvh
     - var(--hdr-h) - var(--safe-t)  /* header */
-    - var(--lf-bar-h, 0px)           /* lesson-flow-bar (0 коли не активний) */
+    - var(--lf-bar-h, 0px)           /* lesson-flow-bar (0 when inactive) */
     - 75px                            /* vplayer */
     - var(--gap)
-    - var(--lm-chips)                 /* chips (0 у режимі уроку) */
-    - var(--lm-tabs)                  /* tabs  (0 у режимі уроку) */
-    - var(--prog-h) - var(--gap)      /* vprogrow + gap під нею */
-    - var(--lm-nav)                   /* bottom-nav (0 у режимі уроку) */
+    - var(--lm-chips)                 /* chips (0 in lesson mode) */
+    - var(--lm-tabs)                  /* tabs  (0 in lesson mode) */
+    - var(--prog-h) - var(--gap)      /* vprogrow + gap */
+    - var(--lm-nav)                   /* bottom-nav (0 in lesson mode) */
     - env(safe-area-inset-bottom,0px)
   );
+  flex:none;
   margin-bottom:var(--gap);
 }
 .flashcard{
@@ -1053,7 +1059,7 @@ body{
    vprogrow, vpb, vpbf, mc-progress, mc-question, mc-options, btn, score
    ════════════════════════════════════════════════════════════════ */
 
-/* fc-area height у вигляді SB (є vprogrow = fixed внизу) */
+/* fc-area in SB view inherits flex:1 from base .fc-area — no override needed */
 #view-sb.active { display:flex; flex-direction:column; padding:0; overflow:hidden; }
 #view-sb .vocab-top { flex-shrink:0; padding:10px 14px 0; }
 #view-sb .vchips { margin-bottom:8px; }
@@ -1064,12 +1070,6 @@ body{
   padding:10px 14px;
   /* Bottom padding accounts for vprogrow + bottom nav safe area */
   padding-bottom:calc(var(--prog-h) + var(--lm-nav) + env(safe-area-inset-bottom,0px) + 16px);
-}
-#sb-panel-learn .fc-area {
-  /* Override vocab calc — fill remaining flex space */
-  height:0 !important;
-  flex:1; min-height:80px;
-  margin-bottom:0;
 }
 /* flashcard fills the fc-area completely */
 #sb-panel-learn .flashcard { width:100%; height:100%; }
@@ -1712,7 +1712,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '69-e2d5b0f';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
