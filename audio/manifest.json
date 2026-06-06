@@ -12599,5 +12599,8 @@
   "B2-Beruf/uk/080/nvv/nvv_113_def_uk_080": true,
   "B2-Beruf/de/100/mwb/mwb_019_term_de_100": true,
   "B2-Beruf/de/080/mwb/mwb_019_term_de_080": true,
-  "B2-Beruf/de/100/tel/tel_010_term_de_100": true
+  "B2-Beruf/de/100/tel/tel_010_term_de_100": true,
+  "B2-Beruf/de/080/tel/tel_010_term_de_080": true,
+  "B2-Beruf/en/100/tel/tel_010_term_en_100": true,
+  "B2-Beruf/uk/100/tel/tel_010_term_uk_100": true
 }
