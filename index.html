@@ -60,6 +60,7 @@ if(location.protocol === 'https:'){
   --gap:10px;     /* однаковий відступ між всіма блоками */
   --safe-t:env(safe-area-inset-top,0px);
   --safe-b:env(safe-area-inset-bottom,0px);
+  --lf-bar-h:0px; /* set by JS when lesson bar is active */
   /* Простір елементів що ховаються у режимі уроку.
      JS обнуляє ці змінні через lfSetLessonMode(). */
   --lm-chips:calc(40px + var(--gap));   /* vchips */
@@ -77,6 +78,7 @@ body{
   height:100dvh;overflow:hidden;
   overscroll-behavior:none;
 }
+/* lesson-flow-bar is in flow — no padding-top needed on views */
 
 /* ══ PORTRAIT LOCK ══ */
 @media(orientation:landscape){
@@ -263,6 +265,7 @@ body{
   height:calc(
     100dvh
     - var(--hdr-h) - var(--safe-t)  /* header */
+    - var(--lf-bar-h, 0px)           /* lesson-flow-bar (0 коли не активний) */
     - 75px                            /* vplayer */
     - var(--gap)
     - var(--lm-chips)                 /* chips (0 у режимі уроку) */
@@ -854,17 +857,8 @@ body{
   background:var(--forest);
   padding:8px 14px 6px;
   flex-shrink:0;
-  /* In lesson mode becomes fixed so it survives view switches */
 }
 #lesson-flow-bar.active{ display:block; }
-#lesson-flow-bar.lf-fixed{
-  position:fixed;
-  top:var(--hdr-h);
-  left:0;right:0;
-  z-index:120;
-  display:block !important; /* override display:none even when not in active view */
-  box-shadow:0 2px 8px rgba(0,0,0,.2);
-}
 .lf-header{
   display:flex;align-items:center;justify-content:space-between;
   margin-bottom:6px;
@@ -1067,16 +1061,22 @@ body{
 /* Learn panel — flex column, fc-area fills all available space */
 #sb-panel-learn {
   flex:1; min-height:0; display:flex; flex-direction:column;
-  padding:0 14px;
-  padding-bottom:calc(var(--prog-h) + var(--lm-nav) + env(safe-area-inset-bottom,0px) + 8px);
+  padding:10px 14px;
+  /* Bottom padding accounts for vprogrow + bottom nav safe area */
+  padding-bottom:calc(var(--prog-h) + var(--lm-nav) + env(safe-area-inset-bottom,0px) + 16px);
 }
 #sb-panel-learn .fc-area {
-  /* Fill all remaining space — let flexbox do the math */
-  flex:1; min-height:0;
-  height:auto;
-  margin-bottom:var(--gap);
+  /* Override vocab calc — fill remaining flex space */
+  height:0 !important;
+  flex:1; min-height:80px;
+  margin-bottom:0;
 }
-#sb-panel-learn .flashcard { height:100%; }
+/* flashcard fills the fc-area completely */
+#sb-panel-learn .flashcard { width:100%; height:100%; }
+#sb-panel-learn .fc-face {
+  grid-area:1/1;
+  backface-visibility:hidden;-webkit-backface-visibility:hidden;
+}
 
 /* Practice panel */
 #sb-panel-practice {
@@ -1366,20 +1366,19 @@ body{
   </div>
 
   <!-- CONTENT -->
-  <div id="content">
+  
+<div id="lesson-flow-bar">
+  <div class="lf-header">
+    <div class="lf-title" id="lf-title"></div>
+    <button class="lf-exit" onclick="exitLessonFlow()" title="Урок завершити">✕</button>
+  </div>
+  <div class="lf-steps" id="lf-steps"></div>
+  <div class="lf-step-label"><span id="lf-step-name"></span></div>
+</div>
+<div id="content">
 
     <!-- VOKABELN -->
     <div id="view-vocab" class="view active">
-      <!-- Lesson Flow прогрес-бар -->
-      <div id="lesson-flow-bar">
-        <div class="lf-header">
-          <div class="lf-title" id="lf-title"></div>
-          <button class="lf-exit" onclick="exitLessonFlow()" title="Урок завершити">✕</button>
-        </div>
-        <div class="lf-steps" id="lf-steps"></div>
-        <div class="lf-step-label"><span id="lf-step-name"></span></div>
-      </div>
-
       <!-- Результат уроку -->
       <div id="lesson-result">
         <div class="lr-emoji" id="lr-emoji">🎉</div>
@@ -1512,6 +1511,7 @@ body{
             <button class="vlang-btn on" id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
             <button class="vlang-btn on" id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
             <button class="vlang-btn on" id="sblang-de" onclick="sbToggleLang('de')">🇩🇪 DE</button>
+            <button class="vlang-btn off" id="sblang-ru" onclick="sbToggleLang('ru')">🇷🇺 RU</button>
           </div>
         </div>
         <div class="vchips" id="sb-cat-chips"></div>
@@ -1712,7 +1712,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '68-ee8fc86';
+const APP_VERSION = '1.2.6';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4167,6 +4167,12 @@ function lfRenderBar(){
   const bar = document.getElementById('lesson-flow-bar');
   if(!bar) return;
   bar.classList.add('active');
+  // Measure bar and set CSS var so fc-area calc can subtract it
+  requestAnimationFrame(()=>{
+    const h = bar.offsetHeight;
+    document.documentElement.style.setProperty('--lf-bar-h', h + 'px');
+  });
+
 
   // Заголовок
   const titleEl = document.getElementById('lf-title');
@@ -4351,7 +4357,7 @@ function sbLessonAutoPlayThenFlip(onDone) {
       return;
     }
     var l = langs[li];
-    var text = sbL(card.sentence, l).replace('{{BLANK}}', card.answer);
+    var text = sbL(card.sentence, l).replace('{{BLANK}}', sbA(card, l));
     speak(text, l, function(){
       if(SB.playCardGen !== gen) return;
       setTimeout(function(){ speakLang(li+1); }, 400);
@@ -4366,15 +4372,9 @@ function lfStartSBLearn(){
   const vocabTop = document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display = 'none';
 
-  // Make lesson bar fixed so it survives view switch
-  var lfBar = document.getElementById('lesson-flow-bar');
-  if(lfBar) lfBar.classList.add('lf-fixed');
-
   showView('sb');
-
-  // Compensate for fixed bar height in sb view
-  var sbView = document.getElementById('view-sb');
-  if(sbView && lfBar) sbView.style.paddingTop = lfBar.offsetHeight + 'px';
+  // Bar is globally fixed — just re-render to ensure it's visible
+  lfRenderBar();
 
   // Hide vtab-bar and chips in lesson mode
   var sbVocabTop = document.getElementById('sb-vocab-top');
@@ -4427,11 +4427,7 @@ function _lfSBLearnDone(){
     var chips = document.getElementById('sb-cat-chips');
     if(chips) chips.style.display = '';
   }
-  // Un-fix lesson bar and reset sb view padding
-  var lfBar = document.getElementById('lesson-flow-bar');
-  if(lfBar) lfBar.classList.remove('lf-fixed');
-  var sbView = document.getElementById('view-sb');
-  if(sbView) sbView.style.paddingTop = '';
+  // Bar is in flow — nothing to restore here
   showView('vocab');
   lfRenderBar();
   lfNextStep();
@@ -4443,15 +4439,9 @@ function lfStartSBPrac(){
   const vocabTop = document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display = 'none';
 
-  // Make lesson bar fixed so it survives view switch
-  var lfBar2 = document.getElementById('lesson-flow-bar');
-  if(lfBar2) lfBar2.classList.add('lf-fixed');
-
   showView('sb');
-
-  // Compensate for fixed bar height
-  var sbView2 = document.getElementById('view-sb');
-  if(sbView2 && lfBar2) sbView2.style.paddingTop = lfBar2.offsetHeight + 'px';
+  // Bar is globally fixed — just re-render to ensure it's visible
+  lfRenderBar();
 
   // Lesson mode: hide vtab-bar, player, chips, bottom progress strip
   var sbVocabTop2 = document.getElementById('sb-vocab-top');
@@ -4500,11 +4490,7 @@ function _lfSBPracDone(){
   }
   var pracProgrow = document.getElementById('sb-prac-progrow');
   if(pracProgrow) pracProgrow.style.display = '';
-  // Un-fix lesson bar and reset sb view padding
-  var lfBar = document.getElementById('lesson-flow-bar');
-  if(lfBar) lfBar.classList.remove('lf-fixed');
-  var sbView = document.getElementById('view-sb');
-  if(sbView) sbView.style.paddingTop = '';
+  // Bar is in flow — nothing to restore here
   showView('vocab');
   lfRenderBar();
   lfNextStep();
@@ -4531,6 +4517,7 @@ function lfShowResult(){
   if(!LF) return;
   const bar = document.getElementById('lesson-flow-bar');
   if(bar) bar.classList.remove('active');
+  document.documentElement.style.setProperty('--lf-bar-h','0px');
 
   // Ховаємо всі панелі, показуємо result
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
@@ -4832,9 +4819,9 @@ function exitLessonFlow(){
   if(sbBtn) sbBtn.remove();
   sbHideFeedbackModal();
   const bar=document.getElementById('lesson-flow-bar');
-  if(bar){ bar.classList.remove('active'); bar.classList.remove('lf-fixed'); }
-  var sbView = document.getElementById('view-sb');
-  if(sbView) sbView.style.paddingTop = '';
+  if(bar){ bar.classList.remove('active'); }
+  document.documentElement.style.setProperty('--lf-bar-h','0px');
+
   const resultEl=document.getElementById('lesson-result');
   if(resultEl) resultEl.classList.remove('show');
   const vocabTop=document.querySelector('.vocab-top');
@@ -5246,6 +5233,20 @@ function sbL(field, lang) {
   return field[lang] || field['de'] || '';
 }
 
+// Helper: get localised answer for a card
+// answer is now {de, uk, en, ru} — always use lang-specific version
+function sbA(card, lang) {
+  if (!card || !card.answer) return '';
+  if (typeof card.answer === 'string') return card.answer; // legacy
+  return card.answer[lang] || card.answer['de'] || '';
+}
+
+// Helper: get active UI lang for SB answer (same as interface lang for non-DE)
+function sbAnswerLang(cardLang) {
+  // DE answer is always German; for other langs use that lang
+  return cardLang;
+}
+
 // ── STATE ──
 var SB = {
   mode: 'learn',
@@ -5253,7 +5254,7 @@ var SB = {
   learnIdx: 0,
   learnFlipped: false,
   learnQueue: [],
-  langs: (function(){ try{ return JSON.parse(localStorage.getItem('mova_sb_langs')||'null') || {en:true,uk:true,de:true}; }catch(e){ return {en:true,uk:true,de:true}; } })(),
+  langs: (function(){ try{ return JSON.parse(localStorage.getItem('mova_sb_langs')||'null') || {en:true,uk:true,de:true,ru:false}; }catch(e){ return {en:true,uk:true,de:true,ru:false}; } })(),
   playing: false,
   playCardGen: 0,
   pracQueue: [],
@@ -5274,6 +5275,7 @@ function sbGetActiveLangs() { return ['en','uk','de'].filter(function(l){ return
 // ── INIT ──────────────────────────────────────────────────────
 function initSB() {
   if (typeof SPRACHBAUSTEINE === 'undefined') return;
+  sbSyncLangsFromVocab(); // sync with vocab lang settings
   sbUpdateProgressBadge();
   sbApplyLangUI();
   sbRenderCatChips();
@@ -5299,7 +5301,7 @@ function sbUpdateProgressBadge() {
 }
 
 function sbApplyLangUI() {
-  ['en','uk','de'].forEach(function(l) {
+  ['en','uk','de','ru'].forEach(function(l) {
     var btn = document.getElementById('sblang-' + l);
     if (!btn) return;
     btn.classList.toggle('on',  SB.langs[l]);
@@ -5312,9 +5314,25 @@ function sbToggleLang(l) {
   if (active.length === 1 && active[0] === l) return;
   SB.langs[l] = !SB.langs[l];
   sbSaveLangs();
+  // Sync to V.langs (shared settings with vocab, except RU)
+  if (typeof V !== 'undefined' && V.langs && l !== 'ru') {
+    V.langs[l] = SB.langs[l];
+    try { localStorage.setItem('mova_langs', JSON.stringify(V.langs)); } catch(e) {}
+    applyVocabLangUI && applyVocabLangUI();
+  }
   sbApplyLangUI();
   sbStopPlay();
   if (SB.mode === 'learn') sbRenderLearn();
+}
+
+function sbSyncLangsFromVocab() {
+  // Sync SB.langs from V.langs when opening SB view
+  if (typeof V !== 'undefined' && V.langs) {
+    ['de','uk','en'].forEach(function(l) {
+      SB.langs[l] = V.langs[l] !== undefined ? V.langs[l] : SB.langs[l];
+    });
+    sbSaveLangs();
+  }
 }
 
 function sbRenderCatChips() {
@@ -5436,14 +5454,10 @@ function sbRenderLearn() {
   // ── FRONT: sentence per active lang, order en→uk→de ──
   var frontEl = document.getElementById('sb-front-body');
   if (frontEl) {
-    var langLabels = { en:'🇬🇧 English', uk:'🇺🇦 Українська', de:'🇩🇪 Deutsch' };
+    var langLabels = { en:'🇬🇧 English', uk:'🇺🇦 Українська', de:'🇩🇪 Deutsch', ru:'🇷🇺 Русский' };
     frontEl.innerHTML = langs.map(function(l, i) {
       var raw  = sbL(card.sentence, l);
-      // DE: German answer bold; UK: answer_uk bold; EN: answer_en bold
-      var answerForLang = l==='de' ? card.answer
-        : l==='uk' ? (card.answer_uk || card.answer)
-        : (card.answer_en || card.answer);
-      var html = raw.replace('{{BLANK}}', '<b>'+answerForLang+'</b>');
+      var html = raw.replace('{{BLANK}}', '<b>'+sbA(card, l)+'</b>');
       return (i>0 ? '<div class="sb-front-divider"></div>' : '')
         + (langs.length>1 ? '<div class="sb-front-lang-label">'+langLabels[l]+'</div>' : '')
         + '<div class="sb-front-sentence">'+html+'</div>';
@@ -5452,11 +5466,11 @@ function sbRenderLearn() {
 
   // ── BACK: answer + explanation per lang ──
   var answer = document.getElementById('sb-back-answer');
-  if (answer) answer.textContent = card.answer;
+  if (answer) answer.textContent = sbA(card, 'de'); // always show DE as primary term
 
   var backEl = document.getElementById('sb-back-body');
   if (backEl) {
-    var langLabels2 = { en:'🇬🇧 Explanation', uk:'🇺🇦 Пояснення', de:'🇩🇪 Erklärung' };
+    var langLabels2 = { en:'🇬🇧 Explanation', uk:'🇺🇦 Пояснення', de:'🇩🇪 Erklärung', ru:'🇷🇺 Объяснение' };
     backEl.innerHTML = langs.map(function(l, i) {
       var expl = sbL(card.explanation, l).replace(/„([^"]+)"/g, '<strong>„$1"</strong>');
       return (i>0 ? '<div class="sb-back-divider"></div>' : '')
@@ -5771,7 +5785,7 @@ function sbRenderPrac() {
 
   // Options: correct answer + all 4 distractors = 5 options total
   var distractors = card.distractors.slice(0,4);
-  var opts = [card.answer].concat(distractors).sort(function(){ return Math.random()-.5; });
+  var opts = [sbA(card,'de')].concat(distractors).sort(function(){ return Math.random()-.5; });
 
   var optEl=document.getElementById('sb-prac-options');
   if(optEl){
@@ -5781,7 +5795,7 @@ function sbRenderPrac() {
       b.className='mc-opt';
       b.textContent=opt;
       // Prefetch audio for this distractor option
-      var fieldName = opt===card.answer ? 'answer' : 'distractors_de_100_'+(i+1);
+      var fieldName = opt===sbA(card,'de') ? 'answer' : 'distractors_de_100_'+(i+1);
       sbPrefetchAudio(card.id, fieldName);
       b.onclick=(function(o, fn){ return function(){ sbPracAnswer(b,o,card.id,fn); }; })(opt, fieldName);
       optEl.appendChild(b);
@@ -5809,18 +5823,18 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   if(SB.pracAnswered) return;
   SB.pracAnswered=true;
   var card=SB.pracQueue[SB.pracIdx]; if(!card||card.id!==cardId) return;
-  var ok=chosen===card.answer;
+  var ok=chosen===sbA(card,'de'); // distractors are always DE
   if(typeof haptic!=='undefined') ok?haptic.success():haptic.error();
 
   document.querySelectorAll('#sb-prac-options .mc-opt').forEach(function(b){
     b.classList.add('disabled');
-    if(b.textContent===card.answer) b.classList.add('correct');
+    if(b.textContent===sbA(card,'de')) b.classList.add('correct');
     else if(b===btn&&!ok) b.classList.add('wrong');
   });
 
   // Play chosen option audio, then play full correct sentence
   var field = audioField || (ok ? 'answer' : 'distractors_de_100_1');
-  var sentenceText = sbL(card.sentence, 'de').replace('{{BLANK}}', card.answer);
+  var sentenceText = sbL(card.sentence, 'de').replace('{{BLANK}}', sbA(card,'de'));
   speak(chosen, 'de', function() {
     // After answer audio ends → play full sentence
     setTimeout(function() {
@@ -5840,7 +5854,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   var resultFail= explLang==='uk'?'Неправильно — правильно: ':explLang==='en'?'Wrong — correct: ':'Falsch — richtig: ';
   if(LF) {
     // Lesson mode: show bottom sheet modal
-    sbShowFeedbackModal(ok, ok ? resultOk : resultFail+card.answer, expl, function(){
+    sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,'de'), expl, function(){
       sbHideFeedbackModal();
       sbPracNext();
     });
@@ -5848,7 +5862,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     // Standalone mode: inline feedback block
     var fb=document.getElementById('sb-prac-feedback');
     document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
-    document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+card.answer;
+    document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+sbA(card,'de');
     document.getElementById('sb-prac-fb-expl').innerHTML=expl;
     fb.style.display='block';
     var innerNext=document.getElementById('sb-prac-next-btn');
@@ -5890,7 +5904,7 @@ function sbStartExam() {
   sbStopExamTimer(); SB.examDone=false;
   SB.examCards=SPRACHBAUSTEINE.slice().sort(function(){ return Math.random()-.5; }).slice(0,6);
   SB.examIdx=0;
-  SB.examAnswers=SB.examCards.map(function(c){ return {cardId:c.id,given:null,correct:c.answer}; });
+  SB.examAnswers=SB.examCards.map(function(c){ return {cardId:c.id,given:null,correct:sbA(c,'de')}; });
   SB.examSecs=300;
   document.getElementById('sb-exam-result').style.display='none';
   document.getElementById('sb-exam-task').style.display='block';
@@ -5905,7 +5919,7 @@ function sbRenderExamQ() {
   document.getElementById('sb-exam-q-num').textContent='Aufgabe '+(SB.examIdx+1)+' von '+SB.examCards.length;
   document.getElementById('sb-exam-sentence').innerHTML='<span class="sb-sentence">'+sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')+'</span>';
 
-  var correct=SB.examCards.map(function(c){ return c.answer; });
+  var correct=SB.examCards.map(function(c){ return sbA(c,'de'); });
   var extras=SPRACHBAUSTEINE.filter(function(c){ return !SB.examCards.find(function(ec){ return ec.id===c.id; }); })
     .map(function(c){ return c.answer; }).filter(function(a){ return !correct.includes(a); })
     .sort(function(){ return Math.random()-.5; }).slice(0,2);
@@ -5991,7 +6005,7 @@ function sbExamSubmit() {
   var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
   document.getElementById('sb-exam-review').innerHTML=SB.examAnswers.map(function(a,i){
     var card=SB.examCards[i],ok=a.given===a.correct;
-    var sentFull=sbL(card.sentence,lang).replace('{{BLANK}}','<b>'+a.correct+'</b>');
+    var lang2=lang; var sentFull=sbL(card.sentence,lang2).replace('{{BLANK}}','<b>'+(lang2==='de'?a.correct:sbA(card,lang2))+'</b>');
     var given=a.given||'(keine Antwort)';
     return '<div class="sb-review-item">'
       +'<div class="sb-review-sentence">'+sentFull+'</div>'
