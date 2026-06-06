@@ -2,7 +2,7 @@ const AUDIO_CONFIG = {
   "de": ["100", "080"], //аудіо генерується зі швидкістю 80% і 100%
   "en": ["100"],        //аудіо генерується зі швидкістю 100%
   "uk": ["100"],
-  "ru": ["100"]  
+  "ru": ["100"]
 };
 
 
@@ -47,10 +47,11 @@ const CATS = [
 const LC = {
   de: {code:'de-DE', ms:['Katja','Hedda','Stefan','Conrad']},
   en: {code:'en-US', ms:['Aria','Jenny','Guy','Zira','David']},
-  uk: {code:'uk-UA', ms:['Ostap','Polina']}
+  uk: {code:'uk-UA', ms:['Ostap','Polina']},
+  ru: {code:'ru-RU', ms:['Irina','Pavel','Dmitry']}
 };
-const F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪'};
-const LN = {en:'English', uk:'Українська', de:'Deutsch'};
+const F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪', ru:'🇷🇺'};
+const LN = {en:'English', uk:'Українська', de:'Deutsch', ru:'Русский'};
 
 // ── КАРТКИ ───────────────────────────────────────────────────
 const LESSONS = [
@@ -2556,7 +2557,7 @@ const VOCAB = [
 {"id":"hsk_017","cat":"Hard Skills","term":{"de":"Break-Even-Analyse","en":"Break-Even Analysis","uk":"Аналіз беззвитковості","ru":"Анализ безубыточности"},"short":{"de":"Gewinnschwelle berechnen","en":"Calculating break-even point","uk":"Розрахунок точки беззбитковості","ru":"Расчет точки безубыточности"},"def":{"de":"Mit einer <b>Break-Even-Analyse</b> untersuchen wir, ab welchem Verkaufsvolumen unsere Produktpalette rentabel wird.","en":"With a <b>Break-Even Analysis</b>, we investigate from which sales volume our product range becomes profitable.","uk":"За допомогою <b>аналізу беззвитковості</b> ми досліджуємо, за якого обсягу продажів наш асортимент продукції стає рентабельним.","ru":"С помощью <b>анализа безубыточности</b> мы исследуем, при каком объеме продаж наш ассортимент продукции становится рентабельным."}},
 {"id":"hsk_018","cat":"Hard Skills","term":{"de":"Auditing","en":"Auditing","uk":"Аудит","ru":"Аудит"},"short":{"de":"Rechnungsprüfung","en":"Financial audit","uk":"Перевірка звітності","ru":"Проверка отчетности"},"def":{"de":"Ein regelmäßiges externes <b>Auditing</b> bestätigt, dass die Buchhaltung allen gesetzlichen Standards entspricht.","en":"A regular external <b>Auditing</b> confirms that the accounting complies with all legal standards.","uk":"Регулярний зовнішній <b>аудит</b> підтверджує, що бухгалтерський облік відповідає всім законодавчим стандартам.","ru":"Регулярный внешний <b>аудит</b> подтверждает, что бухгалтерский учет соответствует всем законодательным стандартам."}},
 {"id":"hsk_019","cat":"Hard Skills","term":{"de":"Compliance","en":"Compliance","uk":"Комплаєнс","ru":"Комплаенс"},"short":{"de":"Regelkonformität","en":"Regulatory compliance","uk":"Дотримання нормативних вимог","ru":"Соблюдение нормативных требований"},"def":{"de":"Um Strafen zu vermeiden, achtet der Bereich <b>Compliance</b> strikt auf die Einhaltung aller neuen Richtlinien.","en":"To avoid penalties, the <b>Compliance</b> department strictly monitors adherence to all new guidelines.","uk":"Щоб уникнути штрафів, відділ <b>комплаєнсу</b> суворо стежить за дотриманням усіх нових інструкцій.","ru":"Чтобы избежать штрафов, отдел <b>комплаенса</b> строго следит за соблюдением всех новых инструкций."}},
-{"id":"hsk_020","cat":"Hard Skills","term":{"de":"Mergers und Acquisitions (M&A)","en":"Mergers and Acquisitions (M&A)","uk":"Злиття та поглинання","ru":"Слияния и поглощения"},"short":{"de":"Unternehmenskäufe","en":"Company acquisitions","uk":"Купівля компаній","ru":"Покупка компаний"},"def":{"de":"Durch erfolgreiche <b>Mergers und Acquisitions (M&A)</b> konnte unser Weltkonzern wichtige Mitbewerber übernehmen.","en":"Through successful <b>Mergers and Acquisitions (M&A)</b>, our global corporation was able to take over important competitors.","uk":"Завдяки успішним <b>злиттям та поглинанням (M&A)</b> наш світовий концерн зміг перейняти важливих конкурентів.","ru":"Благодаря успешным <b>слияниям и поглощениям (M&A)</b> наш мировой концерн смог перенять важных конкурентов."}},
+{"id":"hsk_020","cat":"Hard Skills","term":{"de":"Mergers und Acquisitions (M&A)","en":"Mergers and Acquisitions (M&A)","uk":"Злиття та поглинання","ru":"Слияния и поглощения"},"short":{"de":"Unternehmenskäufe","en":"Company acquisitions","uk":"Купівля компаній","ru":"Покупка компаний"},"def":{"de":"Durch erfolgreiche <b>Mergers und Acquisitions (M&A)</b> konnte unser Weltkonzern wichtige Mitbewerber übernehmen.","en":"Through successful <b>Mergers and Acquisitions (M&A)</b>, our global corporation was able to take over important competitors.","uk":"Завдяки успішним <b>злиттям та поглинанням</b> наш світовий концерн зміг перейняти важливих конкурентів.","ru":"Благодаря успешным <b>слияниям и поглощениям</b> наш мировой концерн смог перенять важных конкурентов."}},
 
 // ── Hard Skills ─ Daten und Technologie (Дані та технології)
 {"id":"hsk_021","cat":"Hard Skills","term":{"de":"Datenanalyse","en":"Data Analysis","uk":"Аналіз даних","ru":"Анализ данных"},"short":{"de":"Daten interpretieren","en":"Interpreting data","uk":"Інтерпретація даних","ru":"Интерпретация данных"},"def":{"de":"Eine präzise <b>Datenanalyse</b> hilft uns dabei, den Erfolg und das Nutzerverhalten innerhalb unserer neuen Anwendung genau auszuwerten.","en":"A precise <b>Data Analysis</b> helps us to accurately evaluate success and user behavior within our new application.","uk":"Точний <b>аналіз даних</b> допомагає нам чітко оцінювати успіх та поведінку користувачів у нашому новому додатку.","ru":"Точный <b>анализ данных</b> помогает нам четко оценивать успех и поведение пользователей в нашем новом приложении."}},
