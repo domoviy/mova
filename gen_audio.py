@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.8.4 (Dynamic AUDIO_CONFIG with Detailed Error Reporting)
+MOVA · Azure TTS Audio Generator  v2.8.5 (Dynamic AUDIO_CONFIG with Safe SSML Tags)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const AUDIO_CONFIG)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
-Підтримує мови: de, en, uk, ru. Виводить детальний звіт про помилки в кінці генерації.
+Підтримує мови: de, en, uk, ru. Безпечно комбінує <br> паузи та <b> наголоси без руйнування XML.
 """
 
 import os, sys, json, time, pathlib, re
@@ -45,8 +45,8 @@ VOICES = {
     'ru': 'ru-RU-SvetlanaNeural',
 }
 SPEEDS = {
-    '100': {'rate': '1.0', 'pause_ms': 0},
-    '080': {'rate': '0.8', 'pause_ms': 300},
+    '100': {'rate': '1.0'},
+    '080': {'rate': '0.8'},
 }
 
 lock = threading.Lock()
@@ -144,13 +144,12 @@ def build_ssml(text, lang, speed_key):
     voice = VOICES[lang]
     cfg   = SPEEDS[speed_key]
     rate  = cfg['rate']
-    pm    = cfg['pause_ms']
 
+    # Перетворюємо наші маркери <bold> на офіційні SSML-теги наголосу Azure TTS
     ssml_body = text.replace('<bold>', '<emphasis level="moderate">').replace('</bold>', '</emphasis>')
 
-    if pm > 0:
-        ssml_body = f'<break time="{pm}ms"/>'.join(ssml_body.split(' '))
-
+    # ВИПРАВЛЕНО у v2.8.5: Більше немає деструктивного розділення по пробілах (.split(' ')),
+    # яке руйнувало теги <emphasis> та викликало помилку HTTP 400 на словах з літерою "a" (app, Verpackung).
     return (
         f'<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="{lang}">'
         f'<voice name="{voice}"><prosody rate="{rate}">{ssml_body}</prosody></voice></speak>'
@@ -228,7 +227,6 @@ def process(task, manifest):
 
     result = synthesize(build_ssml(text, lang, speed))
     
-    # Якщо повернувся рядок (опис помилки), а не bytes з аудіо:
     if isinstance(result, str):
         return 'err', mkey, result
 
@@ -255,7 +253,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.8.4 (Dynamic AUDIO_CONFIG with Detailed Error Reporting)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.8.5 (Dynamic AUDIO_CONFIG with Safe SSML Tags)', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
@@ -315,7 +313,7 @@ def main():
         print('\n✅ Все синхронізовано згідно з AUDIO_CONFIG!', flush=True); return 0
 
     done = skipped = errors_count = generated = 0
-    error_details = []  # Список для збереження описів помилок
+    error_details = []
 
     with ThreadPoolExecutor(max_workers=WORKERS) as pool:
         futures = {pool.submit(process, t, manifest): t for t in tasks}
