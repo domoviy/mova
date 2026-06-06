@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.5 (VOCAB + SPRACHBAUSTEINE with Blank Fill)
+MOVA · Azure TTS Audio Generator  v2.6 (VOCAB + SPRACHBAUSTEINE with HTML Clean & Blank Fill)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE.
-Для SPRACHBAUSTEINE sentence підставляє answer замість {{BLANK}} та генерує лише de @ 100.
+Для SPRACHBAUSTEINE sentence підставляє answer.de замість {{BLANK}}, видаляє HTML і генерує лише de @ 100.
 """
 
 import os, sys, json, time, pathlib, re
@@ -50,6 +50,19 @@ SPEEDS = {
 lock = threading.Lock()
 NEW_FILES_COUNT = 0
 
+# ── Допоміжні функції ─────────────────────────────────────────
+def clean_text(text):
+    """Видаляє HTML-теги форматування <br>, <b>, </b> та нормалізує пробіли."""
+    if not text:
+        return ""
+    # Видаляємо <br>, <br/>, <br >
+    text = re.sub(r'<br\s*/?>', ' ', text, flags=re.IGNORECASE)
+    # Видаляємо <b> та </b>
+    text = re.sub(r'</?b>', '', text, flags=re.IGNORECASE)
+    # Замінюємо множинні пробіли на один
+    text = re.sub(r'\s+', ' ', text)
+    return text.strip()
+
 # ── Завантаження бази (JSON або JS) ───────────────────────────
 def load_data():
     """Пробує B2-Beruf.json, потім парсить B2-Beruf.js regex. Повертає весь об'єкт."""
@@ -60,7 +73,7 @@ def load_data():
 
     jsp = pathlib.Path('B2-Beruf.js')
     if not jsp.exists():
-        raise FileNotFoundError('Не знайдено B2-Beruf.json або B2-Beruf.js!')
+        raise FileNotFoundError('Не знажено B2-Beruf.json або B2-Beruf.js!')
 
     print('  ← B2-Beruf.js (regex parse)')
     src = jsp.read_text('utf-8')
@@ -178,10 +191,14 @@ def process(task, manifest):
         if lang != 'de' or speed != '100':
             return 'skip', f'{cid}_{field}_{lang}_{speed} (filtered: only de @ 100 for sbs sentence)'
         
-        # 2. Замінюємо {{BLANK}} на значення answer + пробіл
-        answer_text = card.get('answer', '')
+        # 2. Нова структура: отримуємо німецьку відповідь з об'єкта answer
+        answer_text = (card.get('answer') or {}).get('de', '')
         if '{{BLANK}}' in text and answer_text:
+            # Підставляємо відповідь з пробілом наприкінці для пауз
             text = text.replace('{{BLANK}}', f'{answer_text} ')
+
+    # Очищаємо текст від HTML-тегів (<br>, <b>, </b>) для обох типів даних (VOCAB та SPRACHBAUSTEINE)
+    text = clean_text(text)
 
     if not text or not text.strip():
         return 'skip', f'{cid}_{field}_{lang}_{speed}'
@@ -225,7 +242,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.5 (VOCAB + SPRACHBAUSTEINE with Blank Fill)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.6 (VOCAB + SPRACHBAUSTEINE with HTML Clean & Blank Fill)', flush=True)
     print(f'    Region: {AZURE_REGION} | Course: {COURSE}', flush=True)
     print(f'    Начальні Потоки (Workers): {WORKERS} | Пауза: {DELAY_SEC}s | Автосейв кожні: {COMMIT_EVERY_X_FILES} файлів', flush=True)
 
@@ -263,7 +280,7 @@ def main():
             for field in config['fields']:
                 for lang in config['languages']:
                     for speed in SPEEDS:
-                        # Відсікаємо непотрібні комбінації для 'sentence' з SPRACHBAUSTEINE ще на етапі створення завдань (необов'язково, але зменшить total)
+                        # Відсікаємо непотрібні комбінації для 'sentence' з SPRACHBAUSTEINE ще на етапі створення завдань
                         if block_type == 'SPRACHBAUSTEINE' and field == 'sentence' and (lang != 'de' or speed != '100'):
                             continue
                         tasks.append((block_type, card, field, lang, speed))
