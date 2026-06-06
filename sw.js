@@ -1,7 +1,7 @@
 // ── MOVA Service Worker ───────────────────────────────────────
 // Щоб примусово оновити кеш — змінюй тільки CACHE_VERSION нижче.
 // index.html більше не передає ?v= — версія контролюється тут.
-const CACHE_VERSION = '78-5bc6884';
+const CACHE_VERSION = '79-eb9d37d';
 const CACHE_NAME    = `mova-v${CACHE_VERSION}`;
 
 // Файли що кешуються при першій установці (app shell)
