@@ -13006,5 +13006,8 @@
   "B2-Beruf/uk/100/sbs/sbs_016_sentence_uk_100": true,
   "B2-Beruf/de/100/sbs/sbs_016_explanation_de_100": true,
   "B2-Beruf/en/100/sbs/sbs_016_explanation_en_100": true,
-  "B2-Beruf/uk/100/sbs/sbs_016_explanation_uk_100": true
+  "B2-Beruf/uk/100/sbs/sbs_016_explanation_uk_100": true,
+  "B2-Beruf/de/100/sbs/sbs_016_answer_de_100": true,
+  "B2-Beruf/de/100/sbs/sbs_016_distractors_de_100_1": true,
+  "B2-Beruf/de/100/sbs/sbs_016_distractors_de_100_2": true
 }
