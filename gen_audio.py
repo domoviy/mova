@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.8.5 (Dynamic AUDIO_CONFIG with Safe SSML Tags)
+MOVA · Azure TTS Audio Generator  v2.9.1 (Strict Array Distractors & Correct Explanation Field)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const AUDIO_CONFIG)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
-Підтримує мови: de, en, uk, ru. Безпечно комбінує <br> паузи та <b> наголоси без руйнування XML.
+Підтримує мови: de, en, uk, ru. Корректно обробляє масив distractors та поле explanation.
 """
 
 import os, sys, json, time, pathlib, re
@@ -20,7 +20,7 @@ COURSE     = 'B2-Beruf'
 AUDIO_BASE = pathlib.Path('audio') / COURSE   # audio/B2-Beruf/
 MANIFEST   = pathlib.Path('audio') / 'manifest.json'
 
-# ДИНАМІЧНІ ЛІМІТИ (читаються з GitHub Actions)
+# ДИНАМІЧНІ LІМІТИ (читаються з GitHub Actions)
 WORKERS   = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
 COMMIT_EVERY_X_FILES = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
@@ -32,7 +32,8 @@ CONFIG_BY_TYPE = {
         'languages': ['de', 'en', 'uk', 'ru']
     },
     'SPRACHBAUSTEINE': {
-        'fields': ['sentence', 'expl'],
+        # Поле тотожне назві explanation у базі даних tвого додатку
+        'fields': ['sentence', 'explanation', 'answer', 'distractors'],
         'languages': ['de', 'en', 'uk', 'ru']
     }
 }
@@ -145,11 +146,8 @@ def build_ssml(text, lang, speed_key):
     cfg   = SPEEDS[speed_key]
     rate  = cfg['rate']
 
-    # Перетворюємо наші маркери <bold> на офіційні SSML-теги наголосу Azure TTS
     ssml_body = text.replace('<bold>', '<emphasis level="moderate">').replace('</bold>', '</emphasis>')
 
-    # ВИПРАВЛЕНО у v2.8.5: Більше немає деструктивного розділення по пробілах (.split(' ')),
-    # яке руйнувало теги <emphasis> та викликало помилку HTTP 400 на словах з літерою "a" (app, Verpackung).
     return (
         f'<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="{lang}">'
         f'<voice name="{voice}"><prosody rate="{rate}">{ssml_body}</prosody></voice></speak>'
@@ -198,32 +196,43 @@ def synthesize(ssml, retries=3):
 # ── Завдання ─────────────────────────────────────────────────
 def process(task, manifest):
     global NEW_FILES_COUNT
-    block_type, card, field, lang, speed = task
+    block_type, card, field, lang, speed, idx = task
     cid  = card['id']
     
-    text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
-
-    if block_type == 'SPRACHBAUSTEINE' and field == 'sentence':
-        if lang != 'de' or speed != '100':
-            return 'skip', f'{cid}_{field}_{lang}_{speed}', None
-        
-        answer_text = (card.get('answer') or {}).get('de', '')
-        if '{{BLANK}}' in text and answer_text:
-            text = text.replace('{{BLANK}}', f'{answer_text} ')
-
-    text = clean_text(text)
-
-    if not text or not text.strip():
-        return 'skip', f'{cid}_{field}_{lang}_{speed}', None
-
     cat = 'sbs' if block_type == 'SPRACHBAUSTEINE' else cid.split('_')[0]
     fname = f'{cid}_{field}_{lang}_{speed}'
+    if idx is not None:
+        fname = f'{fname}_{idx}'
+        
     mkey  = f'{COURSE}/{lang}/{speed}/{cat}/{fname}'
     fpath = AUDIO_BASE / lang / speed / cat / f'{fname}.mp3'
 
     with lock:
         if mkey in manifest and fpath.exists():
             return 'skip', mkey, None
+
+    # Отримуємо та готуємо текст для генерації
+    if block_type == 'SPRACHBAUSTEINE' and field == 'sentence':
+        text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
+        # Підстановка правильної відповіді у пропуск відповідно до мови речення
+        answer_text = (card.get('answer') or {}).get(lang) or (card.get('answer') or {}).get('de', '')
+        if '{{BLANK}}' in text and answer_text:
+            text = text.replace('{{BLANK}}', f' {answer_text} ')
+            
+    elif block_type == 'SPRACHBAUSTEINE' and field == 'distractors':
+        # Дистрактори — це масив рядків прямо в картці (без мовних ключів)
+        distractors_list = card.get(field, [])
+        if not distractors_list or idx is None or (idx - 1) >= len(distractors_list):
+            return 'skip', mkey, None
+        text = distractors_list[idx - 1]
+        
+    else:
+        text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
+
+    text = clean_text(text)
+
+    if not text or not text.strip():
+        return 'skip', mkey, None
 
     result = synthesize(build_ssml(text, lang, speed))
     
@@ -253,7 +262,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.8.5 (Dynamic AUDIO_CONFIG with Safe SSML Tags)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.9.1 (Strict Array Distractors & Correct Explanation Field)', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
@@ -290,18 +299,34 @@ def main():
                     for speed in allowed_speeds:
                         if speed not in SPEEDS:
                             continue
-                        if block_type == 'SPRACHBAUSTEINE' and field == 'sentence' and (lang != 'de' or speed != '100'):
-                            continue
                             
-                        tasks.append((block_type, card, field, lang, speed))
+                        if block_type == 'SPRACHBAUSTEINE':
+                            # Речення (sentence) та пояснення (explanation) генеруються тільки на швидкості 100
+                            if field in ['sentence', 'explanation'] and speed != '100':
+                                continue
+                            
+                            # Поля answer та distractors генеруються тільки німецькою (de) і на швидкості 100
+                            if field in ['answer', 'distractors']:
+                                if lang != 'de' or speed != '100':
+                                    continue
+                        
+                        if field == 'distractors':
+                            # Читаємо distractors як прямий масив рядків із картки
+                            distractors_list = card.get(field, [])
+                            for idx_0, _ in enumerate(distractors_list):
+                                tasks.append((block_type, card, field, lang, speed, idx_0 + 1))
+                        else:
+                            tasks.append((block_type, card, field, lang, speed, None))
 
     print(f'   ✓ Завантажено картки -> {" | ".join(status_info)} | В маніфесті: {len(manifest)}', flush=True)
 
     total = len(tasks)
     already = 0
-    for block_type, c, f, l, s in tasks:
+    for block_type, c, f, l, s, idx in tasks:
         cat = 'sbs' if block_type == 'SPRACHBAUSTEINE' else c['id'].split('_')[0]
         fname = f'{c["id"]}_{f}_{l}_{s}'
+        if idx is not None:
+            fname = f'{fname}_{idx}'
         mkey = f'{COURSE}/{l}/{s}/{cat}/{fname}'
         fpath = AUDIO_BASE / l / s / cat / f'{fname}.mp3'
         if mkey in manifest and fpath.exists():
