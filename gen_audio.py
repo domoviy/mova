@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.9.3 (Slash to Space Cleanup & Flexible Variable Declarations)
+MOVA · Azure TTS Audio Generator  v2.9.4 (Strict Tag Stripping & Safe Slash Replacement)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const/var/let AUDIO_CONFIG)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
-Підтримує мови: de, en, uk, ru. Безпечно замінює слеші на пробіли для запобігання їх озвучування.
+Підтримує мови: de, en, uk, ru. Безпечно видаляє HTML-теги і замінює слеші на пробіли.
 """
 
 import os, sys, json, time, pathlib, re
@@ -55,19 +55,23 @@ NEW_FILES_COUNT = 0
 # ── Допоміжні функції ─────────────────────────────────────────
 def clean_text(text):
     """
-    Замінює <br> на справжні ентери, слеші на пробіли (щоб уникнути озвучування слова 'слеш'),
-    нормалізує пробіли, а теги <b> перетворює на маркерні теги <bold> для SSML.
+    Повністю очищає текст від HTML-тегів b/i/u для стабільності Azure TTS,
+    конвертує <br> в переноси, міняє слеші на пробіли та нормалізує пробіли.
     """
     if not text:
         return ""
     
-    # ВИПРАВЛЕНО у v2.9.3: Замінюємо прямий та зворотний слеші на пробіли для підстраховки в усіх мовах
+    # 1. Спочатку обробляємо переноси рядків
+    text = re.sub(r'<br\s*/?>', '\n', text, flags=re.IGNORECASE)
+    
+    # 2. Повністю ВИДАЛЯЄМО теги <b>, </b> та інші можливі парні теги форматування,
+    # щоб вони не ламалися при заміні слешів і не викликали HTTP 400
+    text = re.sub(r'</?\s*[b|i|u|B|I|U]\s*>', '', text)
+    
+    # 3. Тільки ПІСЛЯ видалення тегів безпечно замінюємо слеші на пробіли
     text = text.replace('/', ' ').replace('\\', ' ')
     
-    text = re.sub(r'<br\s*/?>', '\n', text, flags=re.IGNORECASE)
-    text = re.sub(r'<b\s*>', '<bold>', text, flags=re.IGNORECASE)
-    text = re.sub(r'</\s*b\s*>', '</bold>', text, flags=re.IGNORECASE)
-    
+    # 4. Нормалізуємо пробіли по рядках
     lines = text.split('\n')
     cleaned_lines = []
     for line in lines:
@@ -148,11 +152,10 @@ def build_ssml(text, lang, speed_key):
     cfg   = SPEEDS[speed_key]
     rate  = cfg['rate']
 
-    ssml_body = text.replace('<bold>', '<emphasis level="moderate">').replace('</bold>', '</emphasis>')
-
+    # Текст вже гарантовано чистий від ламаних HTML-тегів завдяки clean_text
     return (
         f'<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="{lang}">'
-        f'<voice name="{voice}"><prosody rate="{rate}">{ssml_body}</prosody></voice></speak>'
+        f'<voice name="{voice}"><prosody rate="{rate}">{text}</prosody></voice></speak>'
     )
 
 # ── Azure запит ───────────────────────────────────────────────
@@ -262,7 +265,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.9.3 (Slash to Space Cleanup & Flexible Variable Declarations)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.9.4 (Strict Tag Stripping & Safe Slash Replacement)', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
