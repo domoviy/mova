@@ -9583,5 +9583,20 @@
   "B2-Beruf/de/100/tel/tel_014_term_de_100": true,
   "B2-Beruf/en/100/tel/tel_014_term_en_100": true,
   "B2-Beruf/uk/100/tel/tel_013_def_uk_100": true,
-  "B2-Beruf/en/100/tel/tel_014_short_en_100": true
+  "B2-Beruf/en/100/tel/tel_014_short_en_100": true,
+  "B2-Beruf/en/100/tel/tel_015_term_en_100": true,
+  "B2-Beruf/de/100/tel/tel_015_short_de_100": true,
+  "B2-Beruf/de/080/tel/tel_015_short_de_080": true,
+  "B2-Beruf/de/080/tel/tel_015_term_de_080": true,
+  "B2-Beruf/de/100/tel/tel_015_term_de_100": true,
+  "B2-Beruf/uk/100/tel/tel_015_term_uk_100": true,
+  "B2-Beruf/ru/100/tel/tel_014_def_ru_100": true,
+  "B2-Beruf/de/100/tel/tel_014_def_de_100": true,
+  "B2-Beruf/ru/100/tel/tel_015_term_ru_100": true,
+  "B2-Beruf/uk/100/tel/tel_014_def_uk_100": true,
+  "B2-Beruf/ru/100/tel/tel_014_short_ru_100": true,
+  "B2-Beruf/uk/100/tel/tel_014_short_uk_100": true,
+  "B2-Beruf/de/080/tel/tel_014_def_de_080": true,
+  "B2-Beruf/en/100/tel/tel_014_def_en_100": true,
+  "B2-Beruf/en/100/tel/tel_015_short_en_100": true
 }
