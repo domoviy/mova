@@ -11143,5 +11143,20 @@
   "B2-Beruf/uk/100/sbs/sbs_031_explanation_uk_100": true,
   "B2-Beruf/uk/100/sbs/sbs_032_explanation_uk_100": true,
   "B2-Beruf/de/100/sbs/sbs_032_distractors_de_100_1": true,
-  "B2-Beruf/de/100/sbs/sbs_032_answer_de_100": true
+  "B2-Beruf/de/100/sbs/sbs_032_answer_de_100": true,
+  "B2-Beruf/de/100/sbs/sbs_032_distractors_de_100_2": true,
+  "B2-Beruf/de/100/sbs/sbs_032_distractors_de_100_4": true,
+  "B2-Beruf/en/100/sbs/sbs_033_sentence_en_100": true,
+  "B2-Beruf/uk/100/sbs/sbs_033_sentence_uk_100": true,
+  "B2-Beruf/de/100/sbs/sbs_033_sentence_de_100": true,
+  "B2-Beruf/de/100/sbs/sbs_033_distractors_de_100_1": true,
+  "B2-Beruf/en/100/sbs/sbs_033_explanation_en_100": true,
+  "B2-Beruf/ru/100/sbs/sbs_032_explanation_ru_100": true,
+  "B2-Beruf/de/100/sbs/sbs_033_distractors_de_100_3": true,
+  "B2-Beruf/de/100/sbs/sbs_032_distractors_de_100_3": true,
+  "B2-Beruf/de/100/sbs/sbs_034_sentence_de_100": true,
+  "B2-Beruf/de/100/sbs/sbs_033_answer_de_100": true,
+  "B2-Beruf/ru/100/sbs/sbs_033_sentence_ru_100": true,
+  "B2-Beruf/de/100/sbs/sbs_033_distractors_de_100_4": true,
+  "B2-Beruf/ru/100/sbs/sbs_033_explanation_ru_100": true
 }
