@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.9.2 (Flexible Variable Declarations & Strict Array Distractors)
+MOVA · Azure TTS Audio Generator  v2.9.3 (Slash to Space Cleanup & Flexible Variable Declarations)
 Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const/var/let AUDIO_CONFIG)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
-Підтримує мови: de, en, uk, ru. Корректно обробляє масив distractors та поле explanation.
+Підтримує мови: de, en, uk, ru. Безпечно замінює слеші на пробіли для запобігання їх озвучування.
 """
 
 import os, sys, json, time, pathlib, re
@@ -55,11 +55,14 @@ NEW_FILES_COUNT = 0
 # ── Допоміжні функції ─────────────────────────────────────────
 def clean_text(text):
     """
-    Замінює <br> на справжні ентери (\\n), нормалізує пробіли,
-    а теги <b> перетворює на тимчасові маркерні теги <bold> для подальшого SSML-наголосу.
+    Замінює <br> на справжні ентери, слеші на пробіли (щоб уникнути озвучування слова 'слеш'),
+    нормалізує пробіли, а теги <b> перетворює на маркерні теги <bold> для SSML.
     """
     if not text:
         return ""
+    
+    # ВИПРАВЛЕНО у v2.9.3: Замінюємо прямий та зворотний слеші на пробіли для підстраховки в усіх мовах
+    text = text.replace('/', ' ').replace('\\', ' ')
     
     text = re.sub(r'<br\s*/?>', '\n', text, flags=re.IGNORECASE)
     text = re.sub(r'<b\s*>', '<bold>', text, flags=re.IGNORECASE)
@@ -91,7 +94,6 @@ def load_data():
 
     data = {}
     
-    # Регулярний вираз підтримує оголошення через const, var або let
     m_cfg = re.search(r'(?:const|var|let)\s+AUDIO_CONFIG\s*=\s*(\{[\s\S]*?\});', src)
     if m_cfg:
         cfg_js = m_cfg.group(1)
@@ -105,7 +107,6 @@ def load_data():
             print(f'  ⚠️ Не вдалося розпарсити AUDIO_CONFIG: {e}')
 
     for block_type in ['VOCAB', 'SPRACHBAUSTEINE']:
-        # Шукаємо масиви незалежно від того, оголошені вони через const, var чи let
         m = re.search(rf'(?:const|var|let)\s+{block_type}\s*=\s*(\[[\s\S]*?\]);', src)
         if m:
             arr_js = m.group(1)
@@ -155,7 +156,7 @@ def build_ssml(text, lang, speed_key):
     )
 
 # ── Azure запит ───────────────────────────────────────────────
-def synthesize(ssml, retries=5):  # Збільшено кількість спроб до 5 для стабільності при мережевих збоях
+def synthesize(ssml, retries=5):
     global WORKERS, DELAY_SEC, COMMIT_EVERY_X_FILES
     
     for attempt in range(retries):
@@ -215,13 +216,11 @@ def process(task, manifest):
     # Отримуємо та готуємо текст для генерації
     if block_type == 'SPRACHBAUSTEINE' and field == 'sentence':
         text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
-        # Підстановка правильної відповіді у пропуск відповідно до мови речення
         answer_text = (card.get('answer') or {}).get(lang) or (card.get('answer') or {}).get('de', '')
         if '{{BLANK}}' in text and answer_text:
             text = text.replace('{{BLANK}}', f' {answer_text} ')
             
     elif block_type == 'SPRACHBAUSTEINE' and field == 'distractors':
-        # Дистрактори — це масив рядків прямо в картці (без мовних ключів)
         distractors_list = card.get(field, [])
         if not distractors_list or idx is None or (idx - 1) >= len(distractors_list):
             return 'skip', mkey, None
@@ -263,7 +262,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.9.2 (Flexible Variable Declarations & Strict Array Distractors)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.9.3 (Slash to Space Cleanup & Flexible Variable Declarations)', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
@@ -302,17 +301,13 @@ def main():
                             continue
                             
                         if block_type == 'SPRACHBAUSTEINE':
-                            # Речення (sentence) та пояснення (explanation) генеруються тільки на швидкості 100
                             if field in ['sentence', 'explanation'] and speed != '100':
                                 continue
-                            
-                            # Поля answer та distractors генеруються тільки німецькою (de) і на швидкості 100
                             if field in ['answer', 'distractors']:
                                 if lang != 'de' or speed != '100':
                                     continue
                         
                         if field == 'distractors':
-                            # Читаємо distractors як прямий масив рядків із картки
                             distractors_list = card.get(field, [])
                             for idx_0, _ in enumerate(distractors_list):
                                 tasks.append((block_type, card, field, lang, speed, idx_0 + 1))
