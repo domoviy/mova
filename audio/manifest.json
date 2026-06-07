@@ -15377,5 +15377,20 @@
   "B2-Beruf/ru/100/mes/mes_025_def_ru_100": true,
   "B2-Beruf/ru/100/mes/mes_023_def_ru_100": true,
   "B2-Beruf/ru/100/abk/abk_001_def_ru_100": true,
-  "B2-Beruf/ru/100/abk/abk_007_term_ru_100": true
+  "B2-Beruf/ru/100/abk/abk_007_term_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_005_term_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_004_term_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_003_short_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_006_short_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_003_term_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_006_term_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_004_short_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_005_short_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_003_def_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_007_short_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_004_def_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_006_def_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_002_def_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_005_def_ru_100": true,
+  "B2-Beruf/ru/100/abk/abk_008_short_ru_100": true
 }
