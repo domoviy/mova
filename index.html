@@ -1221,6 +1221,58 @@ body{
 
 
 </style>
+<style>
+/* ══ SHARED CARD VIEW — спільні правила для #view-vocab і #view-sb ══ */
+
+/* Обидва view: flex-колонка без скролу */
+.card-view { padding:0 !important; }
+.card-view.active { display:flex !important; flex-direction:column; height:100%; overflow:hidden; }
+
+/* vocab-top (player + chips + tabs) — не стискається */
+.card-view .vocab-top { flex-shrink:0; padding:10px 14px 0; }
+.card-view .vchips    { margin-bottom:8px; }
+
+/* Панель з карткою — flex-колонка, заповнює простір */
+.card-panel {
+  flex:1; min-height:0; display:flex; flex-direction:column;
+  padding:0 14px;
+  padding-bottom:calc(
+    var(--prog-h) + var(--gap)
+    + var(--lm-nav)
+    + env(safe-area-inset-bottom,0px)
+    + 8px
+  );
+}
+
+/* fc-area: одна формула для обох вкладок */
+.card-panel .fc-area {
+  height:calc(
+    100dvh
+    - var(--hdr-h) - var(--safe-t)
+    - var(--lf-bar-h,0px)
+    - 75px
+    - var(--gap)
+    - var(--lm-chips)
+    - var(--lm-tabs)
+    - var(--prog-h) - var(--gap)
+    - var(--lm-nav)
+    - env(safe-area-inset-bottom,0px)
+  );
+  flex:none;
+  margin-bottom:var(--gap);
+}
+.card-panel .flashcard { width:100%; height:100%; }
+.card-panel .fc-face {
+  grid-area:1/1;
+  backface-visibility:hidden; -webkit-backface-visibility:hidden;
+}
+
+/* Прибираємо дублюючі правила що були окремо для SB */
+#view-sb.active { display:flex; flex-direction:column; overflow:hidden; }
+#view-sb .vocab-top { flex-shrink:0; padding:10px 14px 0; }
+#sb-panel-learn { flex:1; min-height:0; display:flex; flex-direction:column; padding:0; }
+#sb-panel-learn .fc-area { height:unset; flex:none; margin-bottom:var(--gap); }
+</style>
 </head>
 <body>
 
@@ -1399,7 +1451,9 @@ body{
 <div id="content">
 
     <!-- VOKABELN -->
-    <div id="view-vocab" class="view active">
+
+    <!-- VOKABELN -->
+    <div id="view-vocab" class="view active card-view">
       <!-- Результат уроку -->
       <div id="lesson-result">
         <div class="lr-emoji" id="lr-emoji">🎉</div>
@@ -1416,9 +1470,9 @@ body{
           <button class="vstop" onclick="stopVocab()">⏹</button>
           <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()">🧠</button>
           <div class="vlang-grp">
-            <button class="vlang-btn on" id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
-            <button class="vlang-btn on" id="vlcard-uk" onclick="toggleVocabLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn on" id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
+            <button class="vlang-btn on"  id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
+            <button class="vlang-btn on"  id="vlcard-uk" onclick="toggleVocabLang('uk')">🇺🇦 UK</button>
+            <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn off" id="vlcard-ru" onclick="toggleVocabLang('ru')">🇷🇺 RU</button>
           </div>
           <select id="vf-cat" onchange="resetVocabQ()" style="display:none"><option value="all">Alle</option></select>
@@ -1433,7 +1487,9 @@ body{
           <button class="vtab" onclick="switchVocabTab(5)">❓</button>
         </div>
       </div>
-      <div id="vocab-panel-card">
+
+      <!-- Картка + прогрес — спільний .card-panel -->
+      <div id="vocab-panel-card" class="card-panel">
         <div class="fc-area" id="fc-area">
           <div class="flashcard" id="flashcard">
             <div class="fc-face fc-front"><div id="fc-front-inner" style="display:flex;flex-direction:column;flex:1"></div></div>
@@ -1445,11 +1501,9 @@ body{
           <div class="vpb"><div class="vpbf" id="vpbf" style="width:0%"></div></div>
         </div>
       </div>
+
       <div id="vocab-panel-match" style="display:none">
-        <div class="match-header">
-          <h3 id="match-title"></h3>
-          <small id="match-subtitle"></small>
-        </div>
+        <div class="match-header"><h3 id="match-title"></h3><small id="match-subtitle"></small></div>
         <div class="match-grid" id="match-grid"></div>
         <div class="match-result" id="match-result" style="display:none">
           <div class="score" id="match-score"></div>
@@ -1458,19 +1512,16 @@ body{
           <button class="btn" id="match-btn-cards" onclick="switchVocabTab(0)">📖 Karten</button>
         </div>
       </div>
-      <!-- Multiple Choice -->
+
       <div id="vocab-panel-choice" style="display:none">
         <div class="mc-progress" id="mc-progress"></div>
         <div class="mc-question" id="mc-question" style="cursor:pointer" onclick="mcPlayAudio()">
           <div class="mc-q-label" id="mc-q-label">Begriff</div>
-          <div class="mc-q-row">
-            <div class="mc-q-term" id="mc-q-term"></div>
-          </div>
+          <div class="mc-q-row"><div class="mc-q-term" id="mc-q-term"></div></div>
         </div>
         <div class="mc-options" id="mc-options"></div>
       </div>
 
-      <!-- Sentence Tiles -->
       <div id="vocab-panel-tiles" style="display:none">
         <div class="tiles-question">
           <div class="tiles-q-label" id="tiles-q-label">Переклади</div>
@@ -1488,7 +1539,6 @@ body{
         <div class="vocab-grid" id="vocab-browse-grid"></div>
       </div>
 
-      <!-- Quiz Panel -->
       <div id="vocab-panel-quiz" style="display:none">
         <div class="quiz-progress" id="quiz-progress"></div>
         <div class="quiz-question" id="quiz-question" style="display:none">
@@ -1506,33 +1556,29 @@ body{
       <p id="fav-empty" style="text-align:center;color:var(--muted);padding:48px 0;display:none">Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.</p>
     </div>
 
-    <!-- EINSTELLUNGEN -->
+    <!-- LERNPFAD -->
     <div id="view-lernpfad" class="view">
       <div class="lp-header">
         <h2>🗺 Lernpfad</h2>
         <small id="lp-overall-text"></small>
-        <div class="lp-progress-bar">
-          <div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div>
-        </div>
+        <div class="lp-progress-bar"><div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div></div>
       </div>
       <div id="lp-chapters"></div>
       <div class="lp-bottom-gap"></div>
     </div>
 
+    <!-- SPRACHBAUSTEINE — card-view для однакового layout -->
+    <div id="view-sb" class="view card-view">
 
-    <!-- SPRACHBAUSTEINE TRAINER -->
-    <div id="view-sb" class="view">
-
-      <!-- ── TOP: vplayer + vchips + vtabs (mirror of vocab) ── -->
       <div class="vocab-top" id="sb-vocab-top">
         <div class="vplayer">
           <button class="vplay" id="sb-play-btn" onclick="sbTogglePlay()">▶</button>
           <button class="vstop" onclick="sbStopPlay()">⏹</button>
           <button class="vseq smart" id="sb-vshuffle-btn" onclick="sbCycleSort()" title="Sortiermodus">🧠</button>
           <div class="vlang-grp">
-            <button class="vlang-btn on" id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
-            <button class="vlang-btn on" id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn on" id="sblang-de" onclick="sbToggleLang('de')">🇩🇪 DE</button>
+            <button class="vlang-btn on"  id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
+            <button class="vlang-btn on"  id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
+            <button class="vlang-btn on"  id="sblang-de" onclick="sbToggleLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn off" id="sblang-ru" onclick="sbToggleLang('ru')">🇷🇺 RU</button>
           </div>
         </div>
@@ -1544,11 +1590,10 @@ body{
         </div>
       </div>
 
-      <!-- ── LEARN MODE ── -->
-      <div id="sb-panel-learn" style="display:none">
+      <!-- Learn — card-panel для ідентичного layout з vocab -->
+      <div id="sb-panel-learn" class="card-panel" style="display:none">
         <div class="fc-area" id="sb-fc-area">
           <div class="flashcard" id="sb-flashcard">
-            <!-- FRONT -->
             <div class="fc-face fc-front">
               <div class="fc-header">
                 <button class="fc-fav" id="sb-fav-front">☆</button>
@@ -1557,7 +1602,6 @@ body{
               <div class="fc-body" id="sb-front-body"></div>
               <div class="fc-hint" id="sb-front-hint">↕ перевернути · ← → навігація</div>
             </div>
-            <!-- BACK -->
             <div class="fc-face fc-back">
               <div class="fc-back-header">
                 <button class="fc-fav-back" id="sb-fav-back">☆</button>
@@ -1567,7 +1611,6 @@ body{
               <div class="fc-hint-back">↑ Важко · ↓ Легко · ← → навігація</div>
             </div>
           </div>
-          <!-- Swipe overlays reuse fc-area animation classes -->
         </div>
         <div class="vprogrow" id="sb-vprogrow">
           <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);white-space:nowrap" id="sb-prgtxt">1 / 48</span>
@@ -1575,7 +1618,7 @@ body{
         </div>
       </div>
 
-      <!-- ── PRACTICE MODE ── -->
+      <!-- Practice -->
       <div id="sb-panel-practice" style="display:none">
         <div class="mc-progress" id="sb-prac-dots"></div>
         <div class="mc-question" id="sb-prac-question">
@@ -1602,7 +1645,7 @@ body{
         </div>
       </div>
 
-      <!-- ── EXAM SIM MODE ── -->
+      <!-- Exam -->
       <div id="sb-panel-exam" style="display:none">
         <div class="vplayer" style="margin-bottom:8px">
           <div style="font-weight:700;color:var(--gold);font-size:14px">📝 Prüfungssimulation</div>
@@ -1742,7 +1785,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '86-8364f09';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2621,7 +2664,6 @@ function saveVP(){localStorage.setItem('sap_vp',JSON.stringify(VP));}
 function resetVoicePrefs(){if(!confirm('Stimmenpräferenzen zurücksetzen?'))return;localStorage.removeItem('sap_vp');VP={};loadVoices().then(()=>initVoiceSelects());notify('Zurückgesetzt ✓');}
 function resetCardStats(){if(!confirm('Alle Kartenstatistiken löschen?'))return;VOCAB.forEach(v=>{const key='mova_'+v.id;try{const d=JSON.parse(localStorage.getItem(key)||'{}');d.totalPlays=0;d.lastSeen=0;localStorage.setItem(key,JSON.stringify(d));}catch(e){}});notify('Statistik gelöscht ✓');}
 function notify(msg){const e=document.getElementById('notif');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
-
 // ── VOCAB ─────────────────────────────────────────────────────
 function initVocab(){initVocabFilters();applyVocabLangUI();if(V.queue.length===0)V.queue=buildVocabQueue();renderVocabCard();}
 function initVocabFilters(){
@@ -2768,62 +2810,44 @@ function resetVocabQ(){const wp=V.playing;stopVocab();V.queue=buildVocabQueue();
 
 // ── SWIPE ─────────────────────────────────────────────────────
 function initSwipe(){
-  const area=document.getElementById('fc-area');if(!area)return;
-  let sx=0,sy=0,moved=false;
+  const area = document.getElementById('fc-area');
+  if (!area) return;
 
-  function onStart(cx,cy){ sx=cx; sy=cy; moved=false; }
-  function onMove(cx,cy){ if(Math.abs(cx-sx)>8||Math.abs(cy-sy)>8) moved=true; }
-  function onEnd(cx,cy){
-    const dx=cx-sx, dy=cy-sy;
-    const adx=Math.abs(dx), ady=Math.abs(dy);
+  SwipeManager.init(area, {
+    onTap: () => { unlockAudioCtx(); flipCard(); },
 
-    if(!moved||adx<8&&ady<8){ flipCard(); return; }
-
-    if(adx>ady&&adx>48){
-      // ← → горизонтальний свайп — заблокувати у режимі уроку (крок 'cards')
-      if(LF && LF.steps[LF.step]==='cards') return;
-      const wp=V.playing;
+    onLeft: () => {
+      if (LF && LF.steps[LF.step]==='cards') return;
+      const wp = V.playing;
       haptic.medium(); stopVocab();
-      if(dx<0){
-        swipeCard('left',()=>{
-          V.idx++; if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}
-          V.flipped=false;V.repeatCount=0;renderVocabCard();
-          if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
-        });
-      }else{
-        if(!V.queue.length)return;
-        swipeCard('right',()=>{
-          V.idx=(V.idx-1+V.queue.length)%V.queue.length;
-          V.flipped=false;V.repeatCount=0;renderVocabCard();
-          if(wp)setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
-        });
-      }
-    } else if(ady>adx&&ady>48){
-      // ↑ ↓ вертикальний свайп — завжди: вгору = важлива, вниз = менш важлива
-      if(dy<0){ haptic.error();  srsSwipe(1); }  // вгору = Не знаю / Важлива
-      else     { haptic.success();srsSwipe(5); }  // вниз  = Знаю / Менш важлива
-    }
-  }
+      swipeCard('left', () => {
+        V.idx++; if(V.idx>=V.queue.length){V.queue=buildVocabQueue();V.idx=0;}
+        V.flipped=false; V.repeatCount=0; renderVocabCard();
+        if(wp) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+      });
+    },
 
-  // Touch events (passive:true для start/move — не блокуємо скрол)
-  area.addEventListener('touchstart', e=>onStart(e.touches[0].clientX,e.touches[0].clientY),{passive:true});
-  area.addEventListener('touchmove',  e=>onMove(e.touches[0].clientX,e.touches[0].clientY), {passive:true});
-  area.addEventListener('touchend',   e=>{ unlockAudioCtx(); if(e.cancelable) e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
+    onRight: () => {
+      if (LF && LF.steps[LF.step]==='cards') return;
+      if (!V.queue.length) return;
+      const wp = V.playing;
+      haptic.medium(); stopVocab();
+      swipeCard('right', () => {
+        V.idx=(V.idx-1+V.queue.length)%V.queue.length;
+        V.flipped=false; V.repeatCount=0; renderVocabCard();
+        if(wp) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+      });
+    },
 
-  // Mouse fallback (для браузера/емулятора)
-  let mouseDown=false;
-  area.addEventListener('mousedown',e=>{ mouseDown=true; onStart(e.clientX,e.clientY); });
-  area.addEventListener('mousemove',e=>{ if(mouseDown) onMove(e.clientX,e.clientY); });
-  area.addEventListener('mouseup',  e=>{ if(mouseDown){mouseDown=false; onEnd(e.clientX,e.clientY);} });
-  area.addEventListener('mouseleave',()=>{ mouseDown=false; });
+    onUp:   () => { haptic.error();   srsSwipe(1); },
+    onDown: () => { haptic.success(); srsSwipe(5); },
+  });
 
   // Fav кнопки — окремі touch listeners щоб не конфліктувати зі swipe
   function initFavBtn(id){
     const btn = document.getElementById(id);
     if(!btn) return;
-    btn.addEventListener('touchstart', e=>{
-      e.stopPropagation();
-    }, {passive:true});
+    btn.addEventListener('touchstart', e=>{ e.stopPropagation(); }, {passive:true});
     btn.addEventListener('touchend', e=>{
       e.stopPropagation();
       if(e.cancelable) e.preventDefault();
@@ -2836,10 +2860,244 @@ function initSwipe(){
       if(favId) toggleFavorite(favId);
     });
   }
-  // Ініціалізуємо після рендеру картки
   setTimeout(()=>{ initFavBtn('fc-fav-front'); initFavBtn('fc-fav-back'); }, 0);
 }
 
+
+// ── SRS SWIPE HANDLER ─────────────────────────────────────────
+function srsSwipe(q){
+  const v = V.queue[V.idx];
+  if(!v) return;
+
+  V.srsRating = q;
+  const result = srsRate(v.id, q);
+
+  // Показуємо фідбек
+  const days = result.interval;
+  const emoji = q===1 ? '🔄' : q===3 ? '🤔' : '✅';
+  const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
+  const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
+  const _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
+  const _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+  const label = q===1
+    ? _rep
+    : q===3
+    ? _in+days+_day
+    : days===1 ? _tmr : _in+days+_day;
+  showSrsHint(emoji, label, q);
+
+  if(q === 5){
+    // Знаю → одразу наступна картка (зупиняємо аудіо)
+    playGen++;
+    speechSynthesis.cancel();
+    if(currentAudio){ currentAudio.pause(); currentAudio=null; }
+    V.repeatCount=0; V.idx++;
+    const ticket = ++cardGen;
+    setTimeout(()=>{
+      if(V.playing && !V.paused && cardGen===ticket) playVocabNext();
+    }, 600); // пауза щоб показати хінт
+  }
+  // q===1 (Не знаю) → аудіо грає до кінця, playVocabNext спрацює сам
+  // Після завершення saveCardPlay вже збережеться, srsRate вже викликано
+}
+
+// Показує інформаційний хінт з результатом SRS
+function showSrsHint(emoji, label, q){
+  let hint = document.getElementById('srs-hint');
+  if(!hint){
+    hint = document.createElement('div');
+    hint.id = 'srs-hint';
+    hint.style.cssText = `
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      background:rgba(13,43,26,.92);
+      border:1px solid rgba(201,168,76,.35);
+      border-radius:16px;padding:14px 24px;
+      font-size:15px;font-weight:600;
+      color:var(--gold);text-align:center;
+      pointer-events:none;z-index:100;
+      backdrop-filter:blur(8px);
+      transition:opacity .3s ease;
+      white-space:nowrap;
+    `;
+    document.getElementById('fc-area')?.appendChild(hint);
+  }
+  hint.innerHTML = emoji+'<br><span style="font-size:12px;opacity:.8">'+label+'</span>';
+  hint.style.opacity = '1';
+  clearTimeout(hint._t);
+  hint._t = setTimeout(()=>{ hint.style.opacity='0'; }, 1200);
+}
+
+
+function renderCourseList(){
+  const container = document.getElementById('course-list');
+  if(!container) return;
+  container.innerHTML = COURSES.map(c=>`
+    <button class="course-btn ${c.id===activeCourse?.id?'active':''}"
+            data-course="${c.id}"
+            onclick="switchCourse('${c.id}')"
+            style="display:flex;align-items:center;gap:12px;padding:10px 14px;
+                   border-radius:12px;border:1px solid var(--border);
+                   background:var(--card);font-family:inherit;cursor:pointer;
+                   text-align:left;transition:all .2s;width:100%">
+      <span style="font-size:24px">${c.emoji}</span>
+      <span style="flex:1">
+        <span style="display:block;font-weight:700;font-size:14px;color:var(--ink)">${c.title}</span>
+        <span style="display:block;font-size:11px;color:var(--muted);margin-top:1px">${c.desc[uiLang]||c.desc.de}</span>
+      </span>
+      <span style="font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;
+                   background:rgba(201,168,76,.12);color:var(--gold)">${c.level}</span>
+    </button>
+  `).join('');
+}
+
+
+// ══════════════════════════════════════════════════════════════
+// ── SWIPE MANAGER — єдиний обробник жестів для vocab і SB ────
+// ══════════════════════════════════════════════════════════════
+//
+// Використання:
+//   SwipeManager.init(element, { onTap, onLeft, onRight, onUp, onDown })
+//   SwipeManager.destroy(element)   // прибирає listeners (напр. при зміні вкладки)
+//
+// Стратегія passive:
+//   touchstart — {passive:false} → дозволяє preventDefault щоб заблокувати
+//                                   page-scroll під час горизонтального свайпу
+//   touchmove  — {passive:false} → потрібен для preventDefault щоб не скролило
+//   touchend   — {passive:true}  → результат вже відомий, preventDefault не треба
+//
+// Пороги:
+//   < TAP_MAX  → tap (flip)
+//   > SWIPE_MIN і горизонталь домінує → left/right
+//   > SWIPE_MIN і вертикаль домінує   → up/down
+//
+const SwipeManager = (function(){
+  const TAP_MAX   = 8;   // px — менше = tap
+  const SWIPE_MIN = 40;  // px — більше = swipe
+
+  // Зберігаємо посилання на listeners для можливості destroy()
+  const _handlers = new WeakMap();
+
+  function init(el, cfg) {
+    if (!el) return;
+    destroy(el);
+
+    let sx = 0, sy = 0, tracking = false, cx = 0, cy = 0, direction = null;
+
+    function onStart(e) {
+      const t = e.touches ? e.touches[0] : e;
+      sx = cx = t.clientX;
+      sy = cy = t.clientY;
+      tracking = true;
+      direction = null;
+    }
+
+    function onMove(e) {
+      if (!tracking) return;
+      const t = e.touches ? e.touches[0] : e;
+      cx = t.clientX; cy = t.clientY;
+      const adx = Math.abs(cx - sx), ady = Math.abs(cy - sy);
+
+      // Визначаємо напрямок один раз — після 8px руху
+      if (!direction && (adx > 8 || ady > 8)) {
+        direction = adx > ady ? 'h' : 'v';
+      }
+      // Блокуємо scroll браузера як тільки напрямок визначено
+      if (direction && e.cancelable) {
+        e.preventDefault();
+      }
+    }
+
+    function onEnd(e) {
+      if (!tracking) return;
+      tracking = false;
+      direction = null;
+      const t = e.changedTouches ? e.changedTouches[0] : e;
+      const ex = t.clientX, ey = t.clientY;
+      const dx = ex - sx, dy = ey - sy;
+      const adx = Math.abs(dx), ady = Math.abs(dy);
+
+      if (adx < TAP_MAX && ady < TAP_MAX) {
+        cfg.onTap && cfg.onTap(); return;
+      }
+      if (adx >= SWIPE_MIN && adx > ady * 1.2) {
+        if (dx < 0) cfg.onLeft  && cfg.onLeft();
+        else        cfg.onRight && cfg.onRight();
+        return;
+      }
+      if (ady >= SWIPE_MIN && ady > adx * 1.2) {
+        if (dy < 0) cfg.onUp   && cfg.onUp();
+        else        cfg.onDown && cfg.onDown();
+        return;
+      }
+      cfg.onTap && cfg.onTap();
+    }
+
+    // Touch — passive:false тільки у touchmove для можливості блокування горизонталі
+    el.addEventListener('touchstart', onStart, { passive: true });
+    el.addEventListener('touchmove',  onMove,  { passive: false });
+    el.addEventListener('touchend',   onEnd,   { passive: true });
+    el.addEventListener('touchcancel',() => { tracking = false; direction = null; }, { passive: true });
+
+    // Mouse — окрема логіка, без preventDefault
+    let md = false;
+    function onMD(e) { md = true; tracking = false; onStart(e); }
+    function onMM(e) { if (md) { cx = e.clientX; cy = e.clientY; } }
+    function onMU(e) {
+      if (!md) return; md = false;
+      const dx = e.clientX - sx, dy = e.clientY - sy;
+      const adx = Math.abs(dx), ady = Math.abs(dy);
+      if (adx < TAP_MAX && ady < TAP_MAX) { cfg.onTap && cfg.onTap(); return; }
+      if (adx >= SWIPE_MIN && adx > ady * 1.2) {
+        if (dx < 0) cfg.onLeft && cfg.onLeft(); else cfg.onRight && cfg.onRight(); return;
+      }
+      if (ady >= SWIPE_MIN && ady > adx * 1.2) {
+        if (dy < 0) cfg.onUp && cfg.onUp(); else cfg.onDown && cfg.onDown(); return;
+      }
+      cfg.onTap && cfg.onTap();
+    }
+    el.addEventListener('mousedown',  onMD);
+    el.addEventListener('mousemove',  onMM);
+    el.addEventListener('mouseup',    onMU);
+    el.addEventListener('mouseleave', () => { md = false; });
+
+    _handlers.set(el, { onStart, onMove, onEnd, onMD, onMM, onMU });
+  }
+
+  function destroy(el) {
+    if (!el || !_handlers.has(el)) return;
+    const h = _handlers.get(el);
+    el.removeEventListener('touchstart', h.onStart);
+    el.removeEventListener('touchmove',  h.onMove);
+    el.removeEventListener('touchend',   h.onEnd);
+    el.removeEventListener('mousedown',  h.onMD);
+    el.removeEventListener('mousemove',  h.onMM);
+    el.removeEventListener('mouseup',    h.onMU);
+    _handlers.delete(el);
+  }
+
+  return { init, destroy };
+})();
+
+// ── SB Learn swipe — використовує SwipeManager ───────────────
+function sbInitLearnSwipe() {
+  const el = document.getElementById('sb-fc-area');
+  if (!el) return;
+
+  // Прибираємо старий scroll-block якщо є
+  if (el._sbScrollBlock) {
+    el.removeEventListener('touchmove', el._sbScrollBlock);
+    el._sbScrollBlock = null;
+  }
+
+  SwipeManager.init(el, {
+    onTap:   () => { sbLearnFlip(); },
+    onLeft:  () => { sbLearnNext(); },
+    onRight: () => { sbLearnPrev(); },
+    onUp:    () => { sbLearnSwipeHard(); },
+    onDown:  () => { sbLearnSwipeEasy(); },
+  });
+}
 
 // ── SRS SWIPE HANDLER ─────────────────────────────────────────
 function srsSwipe(q){
@@ -5220,7 +5478,323 @@ window.addEventListener('DOMContentLoaded', ()=>{
   init();
 });
 
-// ── SERVICE WORKER ────────────────────────────────────────────
+// ── AUTOPLAY ──────────────────────────────────────────────────
+function toggleVocab(){ unlockAudioCtx();
+  if(!V.playing){
+    if(!V.queue.length)V.queue=buildVocabQueue();
+    V.playing=true;V.paused=false;
+    document.getElementById('vplaybtn').textContent='⏸';
+    document.getElementById('vplaybtn').classList.add('pause');
+    window.mlog?.('autoplay_started',{mode:V.mode,queue_size:V.queue.length});
+    playVocabNext();
+  } else if(!V.paused){
+    V.paused=true;
+    speechSynthesis.cancel();
+    clearTimeout(V.timer);
+    document.getElementById('vplaybtn').textContent='▶';
+    document.getElementById('vplaybtn').classList.remove('pause');
+    window.mlog?.('autoplay_paused');
+  } else {
+    V.paused=false;
+    document.getElementById('vplaybtn').textContent='⏸';
+    document.getElementById('vplaybtn').classList.add('pause');
+    window.mlog?.('autoplay_resumed');
+    const v=V.queue[V.idx];
+    const al=getActiveLangs();
+    if(v&&V.flipped){
+      speakVocabDefs(v,al,0,()=>{
+        if(!V.playing||V.paused)return;
+        saveCardPlay(v.id);V.repeatCount++;
+        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+      });
+    } else {
+      playVocabNext();
+    }
+  }
+}
+function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);cardGen++;stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
+function playVocabNext(){
+  if(!V.playing||V.paused)return;
+  logErr('card:next','idx='+V.idx+' qlen='+V.queue.length+' cgen='+cardGen);
+  // cardGen захищає від двох паралельних "ниток" карток
+  // (не чіпає playGen щоб не конфліктувати з аудіо-колбеками)
+  const ticket = ++cardGen;
+  const guard  = ()=> V.playing && !V.paused && cardGen===ticket;
+
+  if(V.idx>=V.queue.length){
+    // Якщо lesson flow і крок 'cards' — переходимо до наступного кроку
+    if(LF && LF.steps[LF.step]==='cards'){
+      lfStepDone('cards',1); return;
+    }
+    V.queue=buildVocabQueue();V.idx=0;V.repeatCount=0;
+  }
+  if(V.repeatCount===0){V.flipped=false;renderVocabCard();}
+  else{V.flipped=false;document.getElementById('flashcard').classList.remove('flipped');}
+  const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;playVocabNext();return;}
+  const al=getActiveLangs();
+
+  // Prefetch: term→short→def картки +1, потім +2 (послідовно, тільки активні мови)
+  startPrefetchChain(V.idx);
+
+  speakVocabTerms(v,al,0,()=>{
+    if(!guard()||!V.playing||V.paused)return;
+    speakVocabShort(v,al,()=>{
+      if(!guard()||!V.playing||V.paused)return;
+      V.flipped=true;document.getElementById('flashcard').classList.add('flipped');
+      speakVocabDefs(v,al,0,()=>{
+        if(!guard())return;
+        saveCardPlay(v.id);V.repeatCount++;
+        if(V.repeatCount<V.repeats){
+          V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
+        } else {
+          V.repeatCount=0;V.idx++;
+          V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
+        }
+      });
+    });
+  });
+}
+function speakVocabTerms(v,langs,i,done){
+  if(!V.playing||V.paused){return;}
+  if(i>=langs.length){done&&done();return;}
+  let _c=false;
+  speak(v.term[langs[i]]||v.term.de, langs[i],
+    ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause); },
+    v.id,'term');
+}
+function speakVocabShort(v,langs,done){
+  if(!V.playing||V.paused){return;}
+  // Перевіряємо чи є хоч один short текст
+  const hasShort=langs.some(l=>v.short?.[l]||v.short?.de);
+  if(!hasShort){done&&done();return;}
+  setTimeout(()=>speakVocabShortLang(v,langs,0,done),V.pause);
+}
+function speakVocabShortLang(v,langs,i,done){
+  if(!V.playing||V.paused){return;}
+  if(i>=langs.length){done&&done();return;}
+  const text=v.short?.[langs[i]]||v.short?.de;
+  if(!text){speakVocabShortLang(v,langs,i+1,done);return;}
+  let _c=false;
+  speak(text,langs[i],
+    ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabShortLang(v,langs,i+1,done),V.pause); },
+    v.id,'short');
+}
+function speakVocabDefs(v,langs,i,done){
+  if(!V.playing||V.paused){return;}
+  if(i>=langs.length){done&&done();return;}
+  let _c=false;
+  speak(v.def[langs[i]]||v.def.de, langs[i],
+    ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause); },
+    v.id,'def');
+}
+
+// ── LANG ──────────────────────────────────────────────────────
+function getActiveLangs(){return['en','uk','de','ru'].filter(l=>V.langs[l]);}
+function toggleVocabLang(l){
+  V.langs[l]=!V.langs[l];
+  if(!Object.values(V.langs).some(x=>x)){V.langs[l]=true;notify('Mindestens eine Sprache muss aktiv sein');return;}
+  localStorage.setItem('mova_langs',JSON.stringify(V.langs));
+  applyVocabLangUI();
+  renderVocabCard();
+  // Не перезапускаємо поточну картку — зміна мови застосується з наступної
+  // Просто оновлюємо UI без переривання аудіо
+}
+function applyVocabLangUI(){['en','uk','de','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
+function cycleVocabMode(){
+  const modes=['smart','seq','random','srs'];
+  V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
+  const btn=document.getElementById('vshuffle-btn');
+  const cfg={
+    smart: {icon:'🧠',cls:'smart'},
+    seq:   {icon:'➡', cls:''},
+    random:{icon:'🔀',cls:'shuffle'},
+    srs:   {icon:'🔬',cls:'smart'},
+  }[V.mode];
+  if(btn){btn.classList.remove('smart','shuffle');btn.textContent=cfg.icon;if(cfg.cls)btn.classList.add(cfg.cls);}
+  if(V.mode==='srs'){
+    const cf=document.getElementById('vf-cat')?.value||'all';
+    const arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
+    const dueCount=arr.filter(v=>srsDue(v.id)).length;
+    const newCount=arr.filter(v=>!srsLoad(v.id).dueDate).length;
+    notify('🔬 SM-2: '+dueCount+' '+t('srs_today').replace('📅 ','')+' · '+newCount+' '+t('srs_new').replace('✨ ',''));
+  }
+  saveSettings();resetVocabQ();
+}
+
+// ── FAVORITES ─────────────────────────────────────────────────
+function isFavorite(id){try{return!!JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite;}catch(e){return false;}}
+function toggleFavorite(id){
+  haptic.light();
+  const key='mova_'+id;let data={};
+  try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+  data.favorite=!data.favorite;
+  localStorage.setItem(key,JSON.stringify(data));
+  const fav=data.favorite;
+  // Оновлюємо лише кнопки — не перерендеримо картку, не чіпаємо V.flipped
+  document.querySelectorAll('.fc-fav,.fc-fav-back').forEach(btn=>{
+    btn.textContent=fav?'★':'☆';
+    btn.classList.toggle('active',fav);
+  });
+  notify(fav ? t('fav_added') : t('fav_removed'));
+  window.mlog?.('favorite_changed',{action:fav?'add':'remove'});
+  updateFavBadge();
+  // Якщо активний режим Favoriten і картку прибрали — перебудовуємо чергу
+  if(!fav && V.queue===VOCAB.filter(v=>isFavorite(v.id))) resetVocabQ();
+}
+function updateFavBadge(){const count=VOCAB.filter(v=>isFavorite(v.id)).length;const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
+function renderFavGrid(){
+  const dl=getActiveLangs()[0]||'de';const favs=VOCAB.filter(v=>isFavorite(v.id));
+  const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
+  if(favs.length===0){grid.innerHTML='';if(empty)empty.style.display='';return;}
+  if(empty)empty.style.display='none';
+  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term[dl]||v.term.de}</div><div class="vmc-short">${v.short[dl]||v.short.de}</div></div>`;}).join('');
+}
+function openFavCard(vocabIdx){
+  const card=VOCAB[vocabIdx];if(!card)return;
+  // Черга — тільки обрані картки
+  const favQueue=VOCAB.filter(v=>isFavorite(v.id));
+  V.queue=favQueue;
+  // Знаходимо позицію картки в черзі обраних
+  const qIdx=favQueue.findIndex(v=>v.id===card.id);
+  V.idx=qIdx!==-1?qIdx:0;
+  V.flipped=false;
+  showView('vocab');
+  setTimeout(()=>renderVocabCard(),50);
+}
+
+// ── STATS ─────────────────────────────────────────────────────
+function saveCardPlay(id){
+  const key='mova_'+id;
+  let d={};
+  try{d=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+  d.totalPlays=(d.totalPlays||0)+1;
+  d.lastSeen=Date.now();
+  localStorage.setItem(key,JSON.stringify(d));
+  // Оновлюємо Lernpfad прогрес якщо він відкритий
+  if(document.getElementById('view-lernpfad')?.classList.contains('active')){
+    renderLernpfad();
+  }
+}
+
+// ── STREAK ────────────────────────────────────────────────────
+function todayStr(){return new Date().toISOString().slice(0,10);}
+function loadProgress(){try{const r=localStorage.getItem('mova_progress');if(!r)return{};const p=JSON.parse(r);return(p&&typeof p==='object')?p:{};}catch(e){return{};}}
+function saveProgress(p){try{localStorage.setItem('mova_progress',JSON.stringify(p));}catch(e){}}
+function getGoal(){return parseInt(localStorage.getItem('mova_goal')||'10');}
+function setDailyGoal(n){try{localStorage.setItem('mova_goal',n);}catch(e){}document.getElementById('daily-goal-v').textContent=n;const sl=document.getElementById('daily-goal');if(sl)sl.value=n;renderStreakUI();}
+function trackCardToday(id){
+  try{
+    const today=todayStr();let p=loadProgress();
+    if(p.todayDate!==today){p.todayDate=today;p.todayCards=0;p.todayIds=[];}
+    if(!Array.isArray(p.todayIds))p.todayIds=[];
+    if(p.todayIds.includes(id))return;
+    p.todayIds.push(id);p.todayCards=(p.todayCards||0)+1;p.totalCards=(p.totalCards||0)+1;
+    const goal=getGoal(),justReached=p.todayCards===goal;
+    if(justReached){
+      const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);
+      const two=new Date(Date.now()-2*86400000).toISOString().slice(0,10);
+      if(p.lastDate===today){}
+      else if(!p.lastDate||p.lastDate===yesterday){p.streak=(p.streak||0)+1;p.bestStreak=Math.max(p.streak,p.bestStreak||0);p.lastDate=today;p.graceUsed=false;}
+      else if(!p.graceUsed&&p.lastDate===two){p.graceUsed=true;p.lastDate=today;}
+      else{p.streak=1;p.lastDate=today;p.graceUsed=false;}
+      if(!p.weekHistory)p.weekHistory={};
+      p.weekHistory[today]=true;
+      const keys=Object.keys(p.weekHistory).sort();
+      if(keys.length>30)keys.slice(0,keys.length-30).forEach(k=>delete p.weekHistory[k]);
+      saveProgress(p);renderStreakUI(true);haptic.success();
+      window.mlog?.('streak_completed',{streak:p.streak,total_cards:p.totalCards,goal:goal});
+      return;
+    }
+    saveProgress(p);renderStreakUI();
+  }catch(e){}
+}
+function renderStreakUI(pulse=false){
+  const today=todayStr();let p=loadProgress();
+  if(p.todayDate!==today){p.todayDate=today;p.todayCards=0;p.todayIds=[];}
+  const goal=getGoal(),todayN=p.todayCards||0,totalN=p.totalCards||0,streak=p.streak||0;
+  const pct=Math.min(100,(todayN/goal)*100),done=todayN>=goal;
+  const bnS=document.getElementById('bn-streak');
+  if(bnS){bnS.classList.toggle('done',done);if(pulse){bnS.classList.add('pulse');setTimeout(()=>bnS.classList.remove('pulse'),500);}}
+  const bc=document.getElementById('bn-streak-count');if(bc)bc.textContent=streak;
+  const bp=document.getElementById('bn-streak-pbf');if(bp)bp.style.width=pct+'%';
+  // Хедер
+  const hc=document.getElementById('h-streak-count');if(hc)hc.textContent=streak;
+  const hf=document.getElementById('h-fire');if(hf)hf.style.filter=done?'':'grayscale(1) opacity(.4)';
+  const st=document.getElementById('st-today');if(st)st.textContent=todayN;
+  const stot=document.getElementById('st-total');if(stot)stot.textContent=totalN;
+  const sl=document.getElementById('daily-goal');if(sl){sl.value=goal;document.getElementById('daily-goal-v').textContent=goal;}
+}
+function showStreakInfo(){
+  const p=loadProgress();const today=todayStr();
+  const todayN=(p.todayDate===today?p.todayCards:0)||0;
+  notify(`🔥 ${p.streak||0} Tage · ${todayN}/${getGoal()} heute · ${p.totalCards||0} gesamt`);
+}
+function resetStreak(){if(!confirm('Streak zurücksetzen?'))return;localStorage.removeItem('mova_progress');renderStreakUI();notify('Streak zurückgesetzt');}
+
+// ── BROWSE ────────────────────────────────────────────────────
+function switchVocabTab(tab){
+  document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
+  document.getElementById('vocab-panel-card').style.display   = tab===0?'flex':'none';
+  document.getElementById('vocab-panel-browse').style.display = tab===1?'block':'none';
+  document.getElementById('vocab-panel-match').style.display  = tab===2?'flex':'none';
+  document.getElementById('vocab-panel-choice').style.display = tab===3?'flex':'none';
+  document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
+  document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
+  if(tab===1) renderVocabBrowse();
+  if(tab===2) startMatching();
+  if(tab===3) startMultipleChoice();
+  if(tab===4) startTiles();
+  if(tab===5) startQuiz();
+}
+function renderVocabBrowse(){
+  const cf=document.getElementById('vf-cat')?.value||'all';
+  const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||'de';
+  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term[dl]||v.term.de}</div><div class="vmc-short">${v.short[dl]||v.short.de}</div></div>`;}).join('');
+}
+function openVocabCard(vocabIdx){
+  const card=VOCAB[vocabIdx];if(!card)return;
+  if(!V.queue.length)V.queue=buildVocabQueue();
+  // Знаходимо картку у черзі за id
+  const qIdx=V.queue.findIndex(c=>c.id===card.id);
+  if(qIdx!==-1){V.idx=qIdx;}
+  else{V.queue.unshift(card);V.idx=0;} // якщо не в черзі — ставимо першою
+  V.flipped=false;
+  renderVocabCard();
+  document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===0));
+  document.getElementById('vocab-panel-card').style.display='';
+  document.getElementById('vocab-panel-browse').style.display='none';
+}
+
+// ── CHIPS ─────────────────────────────────────────────────────
+function initVocabChips(){
+  const div=document.getElementById('vchips');if(!div)return;
+  if(typeof CATS==='undefined')return;
+  div.innerHTML='<button class="chip active" onclick="setVocabCat(\'all\',this)">Alle</button>';
+  CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+c.de;btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
+}
+function setVocabCat(id,btn){
+  haptic.light();
+  const sel=document.getElementById('vf-cat');if(sel)sel.value=id;
+  document.querySelectorAll('#vchips .chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.mlog?.('category_selected',{cat:id});
+  resetVocabQ();
+  // Якщо відкрита вкладка "Alle" — оновлюємо browse-грід одразу
+  const browse=document.getElementById('vocab-panel-browse');
+  if(browse && browse.style.display!=='none') renderVocabBrowse();
+}
+
+window.addEventListener('DOMContentLoaded', ()=>{
+  const el = document.getElementById('app-ver');
+  if(el) el.textContent = APP_VERSION;
+  initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
+  ensureVoicesLoaded(); // Chrome: голоси можуть не завантажитись одразу
+  checkOnboarding();
+  applyI18n();
+  renderCourseList();
+  init();
+});
 
 // ════════════════════════════════════════════════════════════════
 // ════════════════════════════════════════════════════════════════
@@ -5516,34 +6090,7 @@ function sbRenderLearn() {
   if (fc) fc.classList.toggle('flipped', SB.learnFlipped);
 }
 
-// ── SWIPE on fc-area (mirror vocab swipe) ──
-function sbInitLearnSwipe() {
-  var area = document.getElementById('sb-fc-area');
-  if (!area || area._sbSwipeInit) return;
-  area._sbSwipeInit = true;
-
-  var sx=0, sy=0, st=0;
-  function onStart(cx,cy){ sx=cx; sy=cy; st=Date.now(); }
-  function onEnd(cx,cy) {
-    var dx=cx-sx, dy=cy-sy, adx=Math.abs(dx), ady=Math.abs(dy);
-    var dt=Date.now()-st;
-    // Tap: tiny movement + short time → flip
-    if(adx<12&&ady<12){ sbLearnFlip(); return; }
-    // Horizontal swipe → navigate
-    if(adx>ady&&adx>36){ if(dx<0) sbLearnNext(); else sbLearnPrev(); return; }
-    // Vertical swipe → hard/easy (no flip-state requirement, no moved flag)
-    if(ady>adx&&ady>36){ if(dy<0) sbLearnSwipeHard(); else sbLearnSwipeEasy(); return; }
-    // Small ambiguous movement → flip
-    sbLearnFlip();
-  }
-  area.addEventListener('touchstart',function(e){ onStart(e.touches[0].clientX,e.touches[0].clientY); },{passive:true});
-  area.addEventListener('touchmove', function(e){ /* track nothing — onEnd uses final coords */ }, {passive:true});
-  area.addEventListener('touchend',  function(e){ if(e.cancelable)e.preventDefault(); onEnd(e.changedTouches[0].clientX,e.changedTouches[0].clientY); },{passive:false});
-  var md=false, msx=0, msy=0;
-  area.addEventListener('mousedown',function(e){ md=true; msx=e.clientX; msy=e.clientY; onStart(e.clientX,e.clientY); });
-  area.addEventListener('mousemove',function(e){ if(md && (Math.abs(e.clientX-msx)>8||Math.abs(e.clientY-msy)>8)) {} });
-  area.addEventListener('mouseup',  function(e){ if(md){ md=false; onEnd(e.clientX,e.clientY); } });
-}
+// sbInitLearnSwipe — визначена вище в SwipeManager секції
 
 function sbLearnFlip() {
   SB.learnFlipped = !SB.learnFlipped;
@@ -5648,7 +6195,7 @@ function sbAutoPlay() {
       return;
     }
     var l = audioLangs[li];
-    var text = sbL(card.sentence,l).replace('{{BLANK}}',card.answer);
+    var text = sbL(card.sentence,l).replace('{{BLANK}}', sbA(card,l));
     speak(text,l,function(){
       if(!SB.playing||SB.playCardGen!==gen) return;
       setTimeout(function(){ speakSentences(li+1); },400);
@@ -5751,18 +6298,15 @@ function sbInitFavBtns(cardId) {
   ['sb-fav-front','sb-fav-back'].forEach(function(btnId) {
     var btn = document.getElementById(btnId);
     if(!btn) return;
-    // Reset so listener gets re-attached when card changes
-    btn._sbFavInited = false;
-    if(btn._sbFavInited) return;
-    btn._sbFavInited = true;
     btn.dataset.favId = cardId;
+    // Знімаємо старі listeners перед повторною ініціалізацією
+    if(btn._sbFavHandler)      btn.removeEventListener('touchend', btn._sbFavHandler);
+    if(btn._sbFavClickHandler) btn.removeEventListener('click',    btn._sbFavClickHandler);
     var handler = function(e) {
       e.stopPropagation();
       if(e.cancelable) e.preventDefault();
       sbToggleFav(e);
     };
-    btn.removeEventListener('touchend', btn._sbFavHandler);
-    btn.removeEventListener('click', btn._sbFavClickHandler);
     btn._sbFavHandler = handler;
     btn._sbFavClickHandler = function(e){ e.stopPropagation(); sbToggleFav(e); };
     btn.addEventListener('touchend', btn._sbFavHandler, {passive:false});

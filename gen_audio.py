@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.9.1 (Strict Array Distractors & Correct Explanation Field)
-Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const AUDIO_CONFIG)
+MOVA · Azure TTS Audio Generator  v2.9.2 (Flexible Variable Declarations & Strict Array Distractors)
+Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const/var/let AUDIO_CONFIG)
 Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
 Підтримує мови: de, en, uk, ru. Корректно обробляє масив distractors та поле explanation.
 """
@@ -32,7 +32,6 @@ CONFIG_BY_TYPE = {
         'languages': ['de', 'en', 'uk', 'ru']
     },
     'SPRACHBAUSTEINE': {
-        # Поле тотожне назві explanation у базі даних tвого додатку
         'fields': ['sentence', 'explanation', 'answer', 'distractors'],
         'languages': ['de', 'en', 'uk', 'ru']
     }
@@ -77,7 +76,7 @@ def clean_text(text):
 
 # ── Завантаження бази (JSON або JS) ───────────────────────────
 def load_data():
-    """Пробує B2-Beruf.json, потім парсить B2-Beruf.js regex. Повертає весь об'єкт."""
+    """Пробує B2-Beruf.json, потім парсить B2-Beruf.js за допомогою regex (підтримує const, var, let)."""
     jp = pathlib.Path('B2-Beruf.json')
     if jp.exists():
         print('  ← B2-Beruf.json')
@@ -92,7 +91,8 @@ def load_data():
 
     data = {}
     
-    m_cfg = re.search(r'const\s+AUDIO_CONFIG\s*=\s*(\{[\s\S]*?\});', src)
+    # Регулярний вираз підтримує оголошення через const, var або let
+    m_cfg = re.search(r'(?:const|var|let)\s+AUDIO_CONFIG\s*=\s*(\{[\s\S]*?\});', src)
     if m_cfg:
         cfg_js = m_cfg.group(1)
         cfg_js = re.sub(r'//[^\n]*', '', cfg_js)
@@ -105,7 +105,8 @@ def load_data():
             print(f'  ⚠️ Не вдалося розпарсити AUDIO_CONFIG: {e}')
 
     for block_type in ['VOCAB', 'SPRACHBAUSTEINE']:
-        m = re.search(rf'const\s+{block_type}\s*=\s*(\[[\s\S]*?\]);', src)
+        # Шукаємо масиви незалежно від того, оголошені вони через const, var чи let
+        m = re.search(rf'(?:const|var|let)\s+{block_type}\s*=\s*(\[[\s\S]*?\]);', src)
         if m:
             arr_js = m.group(1)
             arr_js = re.sub(r'([а-яА-ЯёЁіІїЇєЄґҐ])"([а-яА-ЯёЁіІїЇєЄґҐ])', r'\1’\2', arr_js)
@@ -154,7 +155,7 @@ def build_ssml(text, lang, speed_key):
     )
 
 # ── Azure запит ───────────────────────────────────────────────
-def synthesize(ssml, retries=3):
+def synthesize(ssml, retries=5):  # Збільшено кількість спроб до 5 для стабільності при мережевих збоях
     global WORKERS, DELAY_SEC, COMMIT_EVERY_X_FILES
     
     for attempt in range(retries):
@@ -262,7 +263,7 @@ def process(task, manifest):
 
 # ── Main ─────────────────────────────────────────────────────
 def main():
-    print(f'\n🎙  MOVA TTS Generator v2.9.1 (Strict Array Distractors & Correct Explanation Field)', flush=True)
+    print(f'\n🎙  MOVA TTS Generator v2.9.2 (Flexible Variable Declarations & Strict Array Distractors)', flush=True)
 
     if not AZURE_KEY:
         print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
