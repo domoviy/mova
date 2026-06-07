@@ -13937,5 +13937,20 @@
   "B2-Beruf/ru/100/mbr/mbr_079_def_ru_100": true,
   "B2-Beruf/ru/100/mbr/mbr_081_term_ru_100": true,
   "B2-Beruf/ru/100/mbr/mbr_081_def_ru_100": true,
-  "B2-Beruf/ru/100/mbr/mbr_086_term_ru_100": true
+  "B2-Beruf/ru/100/mbr/mbr_086_term_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_085_term_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_086_short_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_083_def_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_087_term_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_084_term_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_086_def_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_084_short_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_083_short_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_083_term_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_085_short_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_087_short_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_085_def_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_084_def_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_082_def_ru_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_090_term_ru_100": true
 }
