@@ -1220,6 +1220,11 @@ body{
 #sb-seq-btn.exam     { border-color:var(--red);  background:rgba(192,57,43,.1); color:var(--red); }
 
 
+.lp-review-card{cursor:pointer;transition:background .15s;}
+.lp-review-card:active{background:var(--soft);}
+.lp-review-card.locked{opacity:.55;cursor:default;}
+.lp-review-card.done .lpm-icon{color:var(--leaf);}
+
 /* ══ SMART REVIEW ══ */
 .sr-profile-card{background:var(--forest);border-radius:16px;padding:16px;margin-bottom:12px;color:#fff;position:relative;overflow:hidden}
 .sr-profile-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,168,76,.18) 0%,transparent 70%);pointer-events:none}
@@ -1878,7 +1883,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '93-4e3ece1';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2545,16 +2550,20 @@ function srRenderDailyPlan(){
 
   // Breakdown rows
   const partOrder = ['Sprachbausteine','Lesen','Schreiben','Hören','Sprechen','General'];
+  const cardLbl = {'de':'Karten','uk':'карток','en':'cards','ru':'карточек'}[uiLang]||'Karten';
+  const dueLbl  = {'de':'Wiederholung','uk':'повторення','en':'review','ru':'повторение'}[uiLang]||'review';
+  const newLbl  = {'de':'neu','uk':'нові','en':'new','ru':'новые'}[uiLang]||'new';
   const breakdownRows = partOrder
     .filter(p => plan.breakdown[p])
     .map(p => {
       const color = SR_PART_COLOR[p]||'#78716c';
+      const n = plan.breakdown[p];
       return `<div class="sr-plan-row">
         <div class="sr-plan-part">
           <div class="sr-plan-dot" style="background:${color}"></div>
           ${p}
         </div>
-        <span class="sr-plan-count">${plan.breakdown[p]} ${ {'de':'Karten','uk':'карток','en':'cards','ru':'карточек'}[uiLang]||'Karten' }</span>
+        <span class="sr-plan-count">${n} ${cardLbl}</span>
       </div>`;
     }).join('');
 
@@ -2563,6 +2572,11 @@ function srRenderDailyPlan(){
   const startLabel = {'de':'Sitzung starten →','uk':'Почати сесію →','en':'Start session →','ru':'Начать сессию →'}[uiLang]||'Starten →';
   const planTitle = {'de':'Dein Plan heute','uk':'Твій план сьогодні','en':'Today\'s plan','ru':'Твой план на сегодня'}[uiLang]||'Plan';
   const examLbl = {'de':'Prüfungstermin','uk':'Дата іспиту','en':'Exam date','ru':'Дата экзамена'}[uiLang]||'Prüfungstermin';
+  // Рахуємо due vs new
+  const today2 = srToISO(new Date());
+  const srState2 = srLoadState();
+  const dueCount = allCards.filter(c=>{ const cs=srState2.cards[c.id]; return cs?.nextReview && cs.nextReview<=today2 && cs.repetitions>0; }).length;
+  const newCount = plan.plan.length - Math.min(dueCount, plan.plan.length);
   const saveLbl = {'de':'Speichern','uk':'Зберегти','en':'Save','ru':'Сохранить'}[uiLang]||'Speichern';
 
   el.innerHTML = `
@@ -2571,8 +2585,9 @@ function srRenderDailyPlan(){
     <div class="sr-plan-header">
       <span class="sr-plan-title">${planTitle}</span>
       <div class="sr-plan-meta">
-        <span>⏱ ${plan.estimatedMinutes} ${minLabel}</span>
-        <span>${um.emoji}</span>
+        ${dueCount>0?`<span style="color:var(--gold)">↩ ${dueCount} ${dueLbl}</span>`:''}
+        ${newCount>0?`<span style="color:var(--leaf)">✦ ${newCount} ${newLbl}</span>`:''}
+        <span>${um.emoji} ~${plan.estimatedMinutes} ${minLabel}</span>
       </div>
     </div>
     ${breakdownRows}
@@ -2693,13 +2708,17 @@ function srShowPlanBar(total){
 // Оновлює прогрес plan-bar після кожної картки
 function srUpdatePlanBar(){
   if(!_srPlanCardIds) return;
-  const total = Math.min(V.queue.length, 20);
+  const total = V.queue.length;
   const done  = Math.min(V.idx, total);
+  // Кружечки — макс 20
+  const dots = Math.min(total, 20);
+  const dotsDone = Math.min(done, dots);
   document.querySelectorAll('[data-sr-step]').forEach((el,i)=>{
-    el.className = 'lf-step' + (i<done?' done':i===done?' active':'');
+    el.className = 'lf-step' + (i<dotsDone?' done':i===dotsDone?' active':'');
   });
+  // Лічильник
   const nameEl = document.getElementById('lf-step-name');
-  if(nameEl) nameEl.textContent = `${V.idx+1} / ${V.queue.length}`;
+  if(nameEl) nameEl.textContent = `${Math.min(done+1, total)} / ${total}`;
 }
 
 // Завершення plan-сесії
@@ -3489,12 +3508,29 @@ function srsSwipe(q){
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     V.repeatCount=0; V.idx++;
     const ticket = ++cardGen;
+    // Plan-сесія: перевіряємо чи черга вичерпана
+    if(_srPlanCardIds && V.idx >= V.queue.length){ stopVocab(); return; }
     setTimeout(()=>{
       if(V.playing && !V.paused && cardGen===ticket) playVocabNext();
-    }, 600); // пауза щоб показати хінт
+    }, 600);
+  } else if(q === 1 && _srPlanCardIds){
+    // Plan-сесія "не знаю" → переміщаємо в кінець черги і переходимо далі
+    playGen++;
+    speechSynthesis.cancel();
+    if(currentAudio){ currentAudio.pause(); currentAudio=null; }
+    const card = V.queue.splice(V.idx, 1)[0];
+    V.queue.push(card);
+    // V.idx не змінюємо — наступна картка стала на місце поточної
+    if(V.idx >= V.queue.length) V.idx = 0;
+    V.repeatCount=0;
+    const ticket2 = ++cardGen;
+    if(V.playing && !V.paused){
+      setTimeout(()=>{ if(V.playing && !V.paused && cardGen===ticket2) playVocabNext(); }, 600);
+    } else {
+      renderVocabCard();
+    }
   }
-  // q===1 (Не знаю) → аудіо грає до кінця, playVocabNext спрацює сам
-  // Після завершення saveCardPlay вже збережеться, srsRate вже викликано
+  // q===1 звичайний → аудіо грає до кінця, playVocabNext спрацює сам
 }
 
 // Показує інформаційний хінт з результатом SRS
@@ -3950,6 +3986,130 @@ function lessonUnlocked(lesson){
   return pct >= 80;
 }
 
+
+// ── ПОВТОРЕННЯ (Review Lessons) ───────────────────────────────────
+// Збирає всі cardId з вказаних розділів і запускає SRS-урок
+function startReviewLesson(chapterNums, labelKey){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const vocab   = typeof VOCAB!=='undefined'   ? VOCAB   : [];
+  // Всі cardId з зазначених розділів
+  const cardIds = new Set();
+  lessons.filter(l=>chapterNums.includes(l.chapter)).forEach(l=>{
+    (l.cardIds||[]).forEach(id=>cardIds.add(id));
+  });
+  if(!cardIds.size){ notify('⚠️ Немає карток для повторення'); return; }
+  const allCards = vocab.filter(v=>cardIds.has(v.id));
+  // Вибираємо до 12 найслабших за SM-2
+  const sorted = [...allCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
+  const flowCards = sorted.slice(0, Math.min(12, sorted.length));
+  // Синтетичний урок
+  const label = {
+    de: labelKey==='course'?'📖 Kurswiederholung':'📖 Modulwiederholung',
+    uk: labelKey==='course'?'📖 Повторення курсу':'📖 Повторення модулів',
+    en: labelKey==='course'?'📖 Course review':'📖 Module review',
+    ru: labelKey==='course'?'📖 Повторение курса':'📖 Повторение модулей',
+  };
+  stopVocab();
+  // SB: найслабші з Sprachbausteine тих же розділів
+  const sbCardIds = new Set();
+  lessons.filter(l=>chapterNums.includes(l.chapter)).forEach(l=>{
+    (l.sbCards||[]).forEach(id=>sbCardIds.add(id));
+  });
+  const allSB = typeof SPRACHBAUSTEINE!=='undefined' ? SPRACHBAUSTEINE : [];
+  const reviewSB = allSB.filter(s=>sbCardIds.has(s.id)).slice(0, 5);
+  const hasTiles = flowCards.some(c=>(c.term?.de||'').split(' ').length>=2);
+  const hasSB = reviewSB.length>0;
+  const steps = ['cards','matching'];
+  if(hasSB) steps.push('sb_learn');
+  if(hasTiles) steps.push('tiles');
+  if(hasSB) steps.push('sb_prac');
+  steps.push('result');
+  LF = {
+    lessonId: '_review_'+chapterNums.join('_'),
+    lesson: { id:'_review', title:label, cardIds:[], unlockAfter:null },
+    cards: flowCards,
+    allCards: allCards,
+    sbCards: reviewSB,
+    sbIdx: 0,
+    steps,
+    step: 0,
+    results: {},
+    startTime: Date.now(),
+    _isReview: true,
+    _chapterNums: chapterNums,
+  };
+  V.lessonId    = LF.lessonId;
+  V.lessonCards = allCards;
+  V.queue       = [...flowCards];
+  V.idx         = 0;
+  V.repeatCount = 0;
+  V.flipped     = false;
+  showView('vocab');
+  lfRenderBar();
+  lfGoStep(0);
+  setTimeout(()=>{
+    if(LF && LF.steps[LF.step]==='cards' && !V.playing){
+      V.playing=true; V.paused=false;
+      const pb=document.getElementById('vplaybtn');
+      if(pb){pb.textContent='⏸';pb.classList.add('pause');}
+      playVocabNext();
+    }
+  }, 400);
+}
+
+// Прогрес повторення — % карток з chapterNums що мають repetitions>0
+function reviewProgress(chapterNums){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const vocab   = typeof VOCAB!=='undefined'   ? VOCAB   : [];
+  const cardIds = new Set();
+  lessons.filter(l=>chapterNums.includes(l.chapter)).forEach(l=>{
+    (l.cardIds||[]).forEach(id=>cardIds.add(id));
+  });
+  const cards = vocab.filter(v=>cardIds.has(v.id));
+  if(!cards.length) return {pct:0,done:0,total:0};
+  const srState = srLoadState();
+  const done = cards.filter(c=>(srState.cards[c.id]?.repetitions||0)>0).length;
+  return {pct:Math.round(done/cards.length*100), done, total:cards.length};
+}
+
+// Рендер картки "Повторення" для Lernpfad
+function renderReviewCard(chapterNums, labelKey, isUnlocked){
+  const {pct,done,total} = reviewProgress(chapterNums);
+  const label = {
+    de: labelKey==='course'?'🔁 Kurswiederholung':'🔁 Modulwiederholung',
+    uk: labelKey==='course'?'🔁 Повторення курсу':'🔁 Повторення модулів',
+    en: labelKey==='course'?'🔁 Course review':'🔁 Module review',
+    ru: labelKey==='course'?'🔁 Повторение курса':'🔁 Повторение модулей',
+  };
+  const sub = {
+    de: labelKey==='course'?'Alle Kapitel · SRS-basiert':'Kapitel '+chapterNums.join('–')+' · SRS-basiert',
+    uk: labelKey==='course'?'Всі розділи · SRS-підхід':'Розділи '+chapterNums.join('–')+' · SRS-підхід',
+    en: labelKey==='course'?'All chapters · SRS-based':'Chapters '+chapterNums.join('–')+' · SRS-based',
+    ru: labelKey==='course'?'Все разделы · на основе SRS':'Разделы '+chapterNums.join('–')+' · SRS-подход',
+  };
+  const btnLabel = pct>=80
+    ? (uiLang==='uk'?'Повторити ↻':uiLang==='ru'?'Повторить ↻':uiLang==='en'?'Review ↻':'Wiederholen ↻')
+    : (uiLang==='uk'?'Почати →':uiLang==='ru'?'Начать →':uiLang==='en'?'Start →':'Starten →');
+  const stateClass = !isUnlocked?'locked':pct>=80?'done':'';
+  const clickFn = isUnlocked ? `startReviewLesson([${chapterNums.join(',')}],'${labelKey}')` : '';
+  return `
+  <div class="lp-module ${stateClass} lp-review-card" ${clickFn?`onclick="${clickFn}"`:''}
+    style="border-left:3px solid var(--gold);margin-top:6px">
+    <div class="lpm-icon">${pct>=80?'✅':'🔁'}</div>
+    <div class="lpm-body">
+      <div class="lpm-title">${label[uiLang]||label.de}</div>
+      <div class="lpm-sub">${sub[uiLang]||sub.de}</div>
+    </div>
+    <div class="lpm-right">
+      ${isUnlocked
+        ? `<div class="lpm-pct">${pct}%</div>
+           <button class="lpm-btn" onclick="event.stopPropagation();${clickFn}">${btnLabel}</button>`
+        : `<div class="lpm-pct" style="color:var(--muted);font-size:11px">${uiLang==='uk'?'Спочатку пройди розділи':uiLang==='ru'?'Сначала пройди разделы':uiLang==='en'?'Complete chapters first':'Erst Kapitel abschließen'}</div>`
+      }
+    </div>
+  </div>`;
+}
+
 function renderLernpfad(){
   // Smart Review: рендеримо Daily Plan
   try{ srRenderDailyPlan(); }catch(e){ console.warn('[SR] renderDailyPlan:', e); }
@@ -3983,7 +4143,11 @@ function renderLernpfad(){
   const container = document.getElementById('lp-chapters');
   container.innerHTML = '';
 
-  Object.values(chapters).forEach(ch=>{
+  const chapterList = Object.values(chapters);
+  const REVIEW_EVERY = 4; // Повторення після кожних N розділів
+  let reviewGroupNums = []; // accumulate chapter.num for current review group
+
+  chapterList.forEach((ch, idx)=>{
     const allDone = ch.modules.every(m=>lessonProgress(m).pct>=80);
     const anyDone = ch.modules.some(m=>lessonProgress(m).pct>0);
 
@@ -4004,6 +4168,26 @@ function renderLernpfad(){
         ${ch.modules.map(m=>renderModuleCard(m)).join('')}
       </div>`;
     container.appendChild(chEl);
+
+    reviewGroupNums.push(ch.num);
+
+    // Після кожних REVIEW_EVERY розділів — вставляємо "Повторення"
+    const isLastChapter = idx === chapterList.length - 1;
+    const isReviewPoint = (reviewGroupNums.length >= REVIEW_EVERY) || isLastChapter;
+
+    if(isReviewPoint && reviewGroupNums.length > 0){
+      const groupNums = [...reviewGroupNums];
+      const labelKey = isLastChapter && idx >= chapterList.length - 1 ? 'course' : 'module';
+      // Розблоковано якщо всі розділи групи пройдені ≥50%
+      const groupUnlocked = groupNums.every(n=>{
+        const c = chapterList.find(x=>x.num===n);
+        return c && c.modules.some(m=>lessonProgress(m).pct>=50);
+      });
+      const revEl = document.createElement('div');
+      revEl.innerHTML = renderReviewCard(groupNums, labelKey, groupUnlocked);
+      container.appendChild(revEl.firstElementChild);
+      reviewGroupNums = [];
+    }
   });
 
   // Оновлюємо label навбару
@@ -6061,10 +6245,10 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   if(tab===1) renderVocabBrowse();
-  if(tab===2) startMatching();
-  if(tab===3) startMultipleChoice();
-  if(tab===4) startTiles();
-  if(tab===5) startQuiz();
+  if(tab===2 && !(LF && LF.steps[LF.step]==='matching')) startMatching();
+  if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
+  if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
+  if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
@@ -6152,53 +6336,7 @@ function toggleVocab(){ unlockAudioCtx();
     }
   }
 }
-function stopVocab(){V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);cardGen++;stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
-function playVocabNext(){
-  if(!V.playing||V.paused)return;
-  logErr('card:next','idx='+V.idx+' qlen='+V.queue.length+' cgen='+cardGen);
-  // cardGen захищає від двох паралельних "ниток" карток
-  // (не чіпає playGen щоб не конфліктувати з аудіо-колбеками)
-  const ticket = ++cardGen;
-  const guard  = ()=> V.playing && !V.paused && cardGen===ticket;
-
-  if(V.idx>=V.queue.length){
-    // Якщо lesson flow і крок 'cards' — переходимо до наступного кроку
-    if(LF && LF.steps[LF.step]==='cards'){
-      lfStepDone('cards',1); return;
-    }
-    // Smart Review plan-сесія закінчилась — зупиняємо, не перезапускаємо чергу
-    if(_srPlanCardIds){
-      stopVocab();
-      return;
-    }
-    V.queue=buildVocabQueue();V.idx=0;V.repeatCount=0;
-  }
-  if(V.repeatCount===0){V.flipped=false;renderVocabCard();}
-  else{V.flipped=false;document.getElementById('flashcard').classList.remove('flipped');}
-  const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;playVocabNext();return;}
-  const al=getActiveLangs();
-
-  // Prefetch: term→short→def картки +1, потім +2 (послідовно, тільки активні мови)
-  startPrefetchChain(V.idx);
-
-  speakVocabTerms(v,al,0,()=>{
-    if(!guard()||!V.playing||V.paused)return;
-    speakVocabShort(v,al,()=>{
-      if(!guard()||!V.playing||V.paused)return;
-      V.flipped=true;document.getElementById('flashcard').classList.add('flipped');
-      speakVocabDefs(v,al,0,()=>{
-        if(!guard())return;
-        saveCardPlay(v.id);V.repeatCount++;
-        if(V.repeatCount<V.repeats){
-          V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
-        } else {
-          V.repeatCount=0;V.idx++;
-          V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
-        }
-      });
-    });
-  });
-}
+// [duplicate stopVocab/playVocabNext removed — see SR-aware version above]
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
@@ -6386,10 +6524,10 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   if(tab===1) renderVocabBrowse();
-  if(tab===2) startMatching();
-  if(tab===3) startMultipleChoice();
-  if(tab===4) startTiles();
-  if(tab===5) startQuiz();
+  if(tab===2 && !(LF && LF.steps[LF.step]==='matching')) startMatching();
+  if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
+  if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
+  if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
