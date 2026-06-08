@@ -2799,6 +2799,24 @@ var QUIZ = [
       { de: "SD", en: "SD", uk: "SD", ru: "SD" },
       { de: "HR", en: "HR", uk: "HR", ru: "HR" },
     ]
+  },
+  {
+    id: "qiz002",
+    cardId: "v023",
+    lessonId: "l02",
+    cat: "modul",
+    question: {
+      de: "Welches Modul ...?",
+      uk: "Який модуль ...?",
+      en: "Which module ...?",
+      ru: "Какой модуль ...?"
+    },
+    answers: [
+      { de: "MM", en: "MM", uk: "MM", ru: "MM", correct: true },
+      { de: "FI", en: "FI", uk: "FI", ru: "FI" },
+      { de: "SD", en: "SD", uk: "SD", ru: "SD" },
+      { de: "HR", en: "HR", uk: "HR", ru: "HR" },
+    ]
   }
 ];
 
@@ -2963,7 +2981,7 @@ var SPRACHBAUSTEINE = [
     explanation:{ de:"<b>„Ich würde Sie bitten“</b> ist der förmliche Konjunktiv II für höfliche Bitten.<br><b>„Ich möchte bitten“</b> ist umgangssprachlicher. Konjunktiv II signalisiert Höflichkeit.", en:"<b>„Ich würde Sie bitten“</b> is the formal Konjunktiv II for polite requests.<br><b>„Ich möchte bitten“</b> is more colloquial. Konjunktiv II signals politeness.", uk:"<b>„Ich würde Sie bitten“</b> — це офіційний Кон'юнктив II для ввічливих прохань.<br><b>„Ich möchte bitten“</b> є розмовнішим. Кон'юнктив II сигналізує ввічливість.", ru:"Фраза <b>„Ich würde Sie bitten“</b> — это официальное сослагательное наклонение (Konjunktiv II) для вежливых просьб.<br>Выражение <b>„Ich möchte bitten“</b> более разговорное. Конъюнктив II подчеркивает вежливость." }
   },
   { id:"sbs_024", cat:"letter_closing",
-    sentence:{ de:"Für Rückfragen {{BLANK}} ich Ihnen gerne zur Verfügung.", en:"For any queries I am happy to {{BLANK}} at your disposal.", uk:"Für запитань я охоче {{BLANK}} до Ваших послуг.", ru:"Для вопросов я охотно {{BLANK}} к Вашим услугам." },
+    sentence:{ de:"Für Rückfragen {{BLANK}} ich Ihnen gerne zur Verfügung.", en:"For any queries I am happy to {{BLANK}} at your disposal.", uk:"Для запитань я охоче {{BLANK}} до Ваших послуг.", ru:"Для вопросов я охотно {{BLANK}} к Вашим услугам." },
     answer:{ de:"stehe", en:"am available", uk:"перебуваю", ru:"нахожусь" },
     distractors:["bin","halte","bleibe","befinde"],
     explanation:{ de:"<b>„Zur Verfügung stehen“</b> ist die feste Redewendung für Hilfsbereitschaft.<br><b>„Zur Verfügung sein“</b> existiert nicht.<br><b>„Zur Verfügung halten“</b> bedeutet etwas bereithalten.", en:"<b>„Zur Verfügung stehen“</b> is the set phrase for readiness to help.<br><b>„Zur Verfügung sein“</b> does not exist.<br><b>„Zur Verfügung halten“</b> means to keep something ready.", uk:"<b>„Zur Verfügung stehen“</b> є усталеним виразом для готовності допомогти.<br><b>„Zur Verfügung sein“</b> не існує.<br><b>„Zur Verfügung halten“</b> означає тримати щось готовим.", ru:"<b>„Zur Verfügung stehen“</b> — это устойчивое выражение, означающее готовность помочь.<br>Варианта <b>„Zur Verfügung sein“</b> не существует.<br><b>„Zur Verfügung halten“</b> означает держать что-либо наготове." }
