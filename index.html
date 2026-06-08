@@ -1750,6 +1750,113 @@ body{
         <div id="view-settings" class="view">
       <div class="sh"><h2>⚙️ Einstellungen</h2></div>
 
+      <!-- Smart Review: Exam Date у Settings -->
+      <div class="ssec" id="ssec-sr-examdate">
+        <h3>🎯 Smart Review</h3>
+        <div class="srow">
+          <div class="srow-label"><label id="sr-settings-date-lbl">Prüfungstermin</label><small id="sr-settings-mode-lbl"></small></div>
+          <input type="date" id="sr-settings-date-input" class="sr-date-input" style="background:var(--soft);border-color:var(--border);color:var(--ink);min-width:0;width:140px" onchange="srOnDateChange(this.value)">
+        </div>
+      </div>
+
+      <!-- Smart Review: Exam Dashboard -->
+      <div class="sr-dashboard-ssec" id="ssec-sr-dashboard">
+        <div class="sr-dash-title">🎯 Prüfungsbereitschaft / Готовність</div>
+        <div id="sr-dashboard-rows">
+          <div class="sr-plan-empty">Noch keine Daten. Beginne mit dem Lernen.</div>
+        </div>
+        <div class="sr-dash-learned" id="sr-dash-learned-txt"></div>
+      </div>
+
+      <div class="ssec">
+        <h3>Wiedergabe</h3>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
+        <div class="srow">
+          <div class="srow-label"><label data-i18n="lbl_tempo_de">🇩🇪 Tempo</label><small data-i18n="sub_tempo_de">Deutsch</small></div>
+          <div class="speed-toggle" id="speed-de">
+            <button onclick="setLangSpeed('de','080')" class="sp-btn" data-lang="de" data-val="080">🐢 Langsam</button>
+            <button onclick="setLangSpeed('de','100')" class="sp-btn active" data-lang="de" data-val="100">▶ Normal</button>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="srow-label"><label data-i18n="lbl_tempo_en">🇬🇧 Tempo</label><small>English</small></div>
+          <div class="speed-toggle" id="speed-en">
+            <button onclick="setLangSpeed('en','080')" class="sp-btn" data-lang="en" data-val="080">🐢 Langsam</button>
+            <button onclick="setLangSpeed('en','100')" class="sp-btn active" data-lang="en" data-val="100">▶ Normal</button>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="srow-label"><label data-i18n="lbl_tempo_uk">🇺🇦 Tempo</label><small>Українська</small></div>
+          <div class="speed-toggle" id="speed-uk">
+            <button onclick="setLangSpeed('uk','080')" class="sp-btn" data-lang="uk" data-val="080">🐢 Langsam</button>
+            <button onclick="setLangSpeed('uk','100')" class="sp-btn active" data-lang="uk" data-val="100">▶ Normal</button>
+          </div>
+        </div>
+        <div class="srow">
+          <div class="srow-label"><label>🇷🇺 Tempo</label><small>Русский</small></div>
+          <div class="speed-toggle" id="speed-ru">
+            <button onclick="setLangSpeed('ru','080')" class="sp-btn" data-lang="ru" data-val="080">🐢 Langsam</button>
+            <button onclick="setLangSpeed('ru','100')" class="sp-btn active" data-lang="ru" data-val="100">▶ Normal</button>
+          </div>
+        </div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_pause">Pause</label><small data-i18n="sub_pause">Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_readpause">Lesepause</label><small data-i18n="sub_readpause">Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_trate">Sprechrate</label><small data-i18n="sub_trate">Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
+      </div>
+
+      <div class="ssec">
+        <h3>TTS Stimmen</h3>
+        <div class="srow"><div class="srow-label"><label>🇩🇪 Deutsch</label><small>z.B. Anna</small></div><select id="vde" onchange="VP.de=this.value;saveVP()"></select></div>
+        <div class="srow"><div class="srow-label"><label>🇬🇧 English</label><small>z.B. Ava, Siri</small></div><select id="ven" onchange="VP.en=this.value;saveVP()"></select></div>
+        <div class="srow"><div class="srow-label"><label>🇺🇦 Українська</label><small>z.B. Lesya</small></div><select id="vuk" onchange="VP.uk=this.value;saveVP()"></select></div>
+        <div class="srow"><div class="srow-label"><label>🇷🇺 Русский</label><small>z.B. Irina</small></div><select id="vru" onchange="VP.ru=this.value;saveVP()"></select></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reload">Stimmen neu laden</label></div><button class="btn btn-s" onclick="reloadVoices()" data-i18n-btn="btn_reload">↻ Neu laden</button></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reset">Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
+      </div>
+
+      <div class="ssec">
+        <h3>Lernziel & Streak</h3>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'JetBrains Mono',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
+      </div>
+
+      <div class="ssec">
+        <h3>Daten</h3>
+        <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
+      </div>
+
+      <div class="ssec" id="ssec-course">
+        <h3>📚 Kurs / Курс / Course</h3>
+        <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
+          <!-- Рендериться через renderCourseList() при ініті -->
+        </div>
+      </div>
+
+            <div class="ssec" id="ssec-lang">
+        <h3 data-i18n="sec_lang">Sprache / Мова / Language</h3>
+        <div style="display:flex;gap:8px;padding:4px 0">
+          <button class="btn ui-lang-btn active" data-lang="de" onclick="setUiLang('de')" style="flex:1;font-size:13px">🇩🇪 Deutsch</button>
+          <button class="btn ui-lang-btn" data-lang="uk" onclick="setUiLang('uk')" style="flex:1;font-size:13px">🇺🇦 Українська</button>
+          <button class="btn ui-lang-btn" data-lang="en" onclick="setUiLang('en')" style="flex:1;font-size:13px">🇬🇧 English</button>
+        </div>
+      </div>
+
+      <div class="ssec">
+        <h3>🛠 Debug</h3>
+        <div class="srow">
+          <div class="srow-label"><label>Error Log</label><small>Переглянути помилки аудіо та JS</small></div>
+          <button class="btn btn-s" onclick="showErrorLog()">📋 Log</button>
+        </div>
+      </div>
+
+      <!-- Версія додатку -->
+      <div style="text-align:center;padding:20px 0 8px;opacity:.45;font-size:12px;
+                  font-family:'JetBrains Mono',monospace;letter-spacing:.5px">
+        MOVA v<span id="app-ver"></span>
+      </div>
+    </div>
       <div class="ssec">
         <h3>Wiedergabe</h3>
         <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
@@ -1857,6 +1964,8 @@ body{
         MOVA v<span id="app-ver"></span>
       </div>
     </div>
+    </div>
+    </div>
 
   </div><!-- #content -->
 </div><!-- #main-col -->
@@ -1883,7 +1992,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '94-2f8b514';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2057,9 +2166,9 @@ const I18N = {
     settings_title:'⚙️ Налаштування',
     sec_playback:'Відтворення',
     lbl_repeats:'Повторення', sub_repeats:'Циклів на картку',
-    lbl_tempo_de:'🇩🇪 Швидкість', sub_tempo_de:'Deutsch',
-    lbl_tempo_en:'🇬🇧 Швидкість', sub_tempo_en:'English',
-    lbl_tempo_uk:'🇺🇦 Швидкість', sub_tempo_uk:'Українська',
+    lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
+    lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
+    lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
     lbl_pause:'Пауза', sub_pause:'Між поняттями',
     lbl_readpause:'Пауза читання', sub_readpause:'Після перевертання',
     lbl_trate:'Швидкість мовлення', sub_trate:'Ручне відтворення',
@@ -4144,12 +4253,15 @@ function renderLernpfad(){
   container.innerHTML = '';
 
   const chapterList = Object.values(chapters);
-  const REVIEW_EVERY = 4; // Повторення після кожних N розділів
-  let reviewGroupNums = []; // accumulate chapter.num for current review group
 
-  chapterList.forEach((ch, idx)=>{
+  chapterList.forEach((ch)=>{
     const allDone = ch.modules.every(m=>lessonProgress(m).pct>=80);
     const anyDone = ch.modules.some(m=>lessonProgress(m).pct>0);
+
+    // Розблоковано якщо хоч один модуль пройдено ≥50%
+    const reviewUnlocked = ch.modules.some(m=>lessonProgress(m).pct>=50);
+    // Рендер картки повторення всередині глави
+    const reviewHtml = renderReviewCard([ch.num], 'module', reviewUnlocked);
 
     const chEl = document.createElement('div');
     chEl.className = 'lp-chapter'+(anyDone?' open':'');
@@ -4158,7 +4270,7 @@ function renderLernpfad(){
         <div class="lp-chapter-num ${allDone?'done':''}">${ch.num}</div>
         <div class="lp-chapter-info">
           <div class="lp-chapter-title">${ch.title[uiLang]||ch.title.de}</div>
-          <div class="lp-chapter-sub">${ch.modules.length} Module · ${
+          <div class="lp-chapter-sub">${ch.modules.length} ${t('lp_module_prefix')} · ${
             ch.modules.filter(m=>lessonProgress(m).pct>=80).length
           }/${ch.modules.length} ${t('lp_done').toLowerCase()}</div>
         </div>
@@ -4166,29 +4278,38 @@ function renderLernpfad(){
       </div>
       <div class="lp-modules">
         ${ch.modules.map(m=>renderModuleCard(m)).join('')}
+        ${reviewHtml}
       </div>`;
     container.appendChild(chEl);
-
-    reviewGroupNums.push(ch.num);
-
-    // Після кожних REVIEW_EVERY розділів — вставляємо "Повторення"
-    const isLastChapter = idx === chapterList.length - 1;
-    const isReviewPoint = (reviewGroupNums.length >= REVIEW_EVERY) || isLastChapter;
-
-    if(isReviewPoint && reviewGroupNums.length > 0){
-      const groupNums = [...reviewGroupNums];
-      const labelKey = isLastChapter && idx >= chapterList.length - 1 ? 'course' : 'module';
-      // Розблоковано якщо всі розділи групи пройдені ≥50%
-      const groupUnlocked = groupNums.every(n=>{
-        const c = chapterList.find(x=>x.num===n);
-        return c && c.modules.some(m=>lessonProgress(m).pct>=50);
-      });
-      const revEl = document.createElement('div');
-      revEl.innerHTML = renderReviewCard(groupNums, labelKey, groupUnlocked);
-      container.appendChild(revEl.firstElementChild);
-      reviewGroupNums = [];
-    }
   });
+
+  // Повторення всього курсу — як окрема "глава" в кінці
+  const allChapterNums = chapterList.map(c=>c.num);
+  const courseUnlocked = chapterList.length > 0 &&
+    chapterList.some(c=>c.modules.some(m=>lessonProgress(m).pct>=50));
+  const courseReviewEl = document.createElement('div');
+  courseReviewEl.className = 'lp-chapter open';
+  const courseRevCard = renderReviewCard(allChapterNums, 'course', courseUnlocked);
+  const courseChTitle = {
+    de:'🔁 Kurswiederholung', uk:'🔁 Повторення курсу',
+    en:'🔁 Course Review', ru:'🔁 Повторение курса'
+  }[uiLang]||'🔁 Kurswiederholung';
+  const courseChSub = {
+    de:'Alle Kapitel · SRS-basiert', uk:'Всі розділи · SRS-підхід',
+    en:'All chapters · SRS-based', ru:'Все разделы · SRS-подход'
+  }[uiLang]||'Alle Kapitel · SRS-basiert';
+  const {pct:cPct,done:cDone,total:cTotal} = reviewProgress(allChapterNums);
+  courseReviewEl.innerHTML = `
+    <div class="lp-chapter-head ${cPct>=80?'done':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
+      <div class="lp-chapter-num" style="background:var(--gold);color:var(--forest);font-size:14px">🔁</div>
+      <div class="lp-chapter-info">
+        <div class="lp-chapter-title">${courseChTitle}</div>
+        <div class="lp-chapter-sub">${courseChSub}</div>
+      </div>
+      <div class="lp-chapter-arrow">▼</div>
+    </div>
+    <div class="lp-modules">${courseRevCard}</div>`;
+  container.appendChild(courseReviewEl);
 
   // Оновлюємо label навбару
   const navLabel = document.getElementById('lp-nav-label');
@@ -5800,7 +5921,7 @@ function _quizShowCard(){
   // Текст питання в актуальній мові
   const qTextEl = document.getElementById('quiz-q-text');
   if(qTextEl) qTextEl.textContent =
-    q.q?.[uiLang] || q.q?.de || q.q?.uk || q.q?.en || '';
+    q.question?.[uiLang] || q.question?.de || q.question?.uk || q.question?.en || q.q?.[uiLang] || q.q?.de || '';
 
   // Варіанти відповідей — перемішуємо, але запам'ятовуємо correct
   const answers = [...(q.answers || [])].sort(()=>Math.random()-.5);
