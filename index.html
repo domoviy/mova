@@ -1898,7 +1898,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '98-d7013ac';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5492,11 +5492,18 @@ function lfSBLearnShowCard(){
   // Граємо тільки передню сторону (sentence) — без expl/задньої сторони
   lfSBLearnPlayFront(function(){
     // Після аудіо — перегортаємо і показуємо Далі
-    _lfSB.played = true;
-    _lfSB.flipped = true;
-    SB.learnFlipped = true;
-    sbRenderLearn();
-    lfSBLearnShowNext();
+    // setTimeout щоб уникнути синхронного стеку якщо speak() завершується миттєво
+    setTimeout(function(){
+      if(!LF) return; // урок міг бути завершений
+      _lfSB.played = true;
+      // Перегортаємо тільки якщо ще не перегорнуто вручну
+      if(!_lfSB.flipped){
+        _lfSB.flipped = true;
+        SB.learnFlipped = true;
+        sbRenderLearn();
+      }
+      lfSBLearnShowNext();
+    }, 100);
   });
 }
 
@@ -5571,15 +5578,20 @@ function sbLessonAutoPlayThenFlip(onDone) {
 
 function _lfSBLearnDone(){
   LF.sbIdx = 0;
-  // Restore vtab-bar and chips
-  var sbVocabTop = document.getElementById('sb-vocab-top');
-  if(sbVocabTop){
-    var vtabBar = sbVocabTop.querySelector('.vtab-bar');
-    if(vtabBar) vtabBar.style.display = '';
-    var chips = document.getElementById('sb-cat-chips');
-    if(chips) chips.style.display = '';
+  SB.playCardGen++; // зупиняємо будь-яке аудіо
+  SB.playing = false;
+  // Відновлюємо vtab-bar, chips, player
+  var sbVT = document.getElementById('sb-vocab-top');
+  if(sbVT){
+    var tb = sbVT.querySelector('.vtab-bar'); if(tb) tb.style.display='';
+    var ch = document.getElementById('sb-cat-chips'); if(ch) ch.style.display='';
+    var pl = sbVT.querySelector('.vplayer'); if(pl) pl.style.display='';
   }
-  // Bar is in flow — nothing to restore here
+  // Знімаємо кнопку Далі якщо залишилась
+  var btn = document.getElementById('lf-sb-next-btn');
+  if(btn) btn.remove();
+  // Відновлюємо swipe у вільному режимі
+  setTimeout(sbInitLearnSwipe, 50);
   showView('vocab');
   lfRenderBar();
   lfNextStep();
@@ -6026,6 +6038,15 @@ function exitLessonFlow(){
   V.lessonId = null; V.lessonCards = [];
   V.queue = []; V.idx = 0;
   quizState = null;
+  // Скидаємо SB lesson state
+  _lfSB = { idx:0, total:0, flipped:false, played:false };
+  // Відновлюємо SB UI якщо були в SB lesson
+  var sbVT = document.getElementById('sb-vocab-top');
+  if(sbVT){
+    var tb = sbVT.querySelector('.vtab-bar'); if(tb) tb.style.display='';
+    var ch = document.getElementById('sb-cat-chips'); if(ch) ch.style.display='';
+    var pl = sbVT.querySelector('.vplayer'); if(pl) pl.style.display='';
+  }
   // Clean up SB UI elements
   var sbBtn = document.getElementById('lf-sb-next-btn');
   if(sbBtn) sbBtn.remove();
@@ -7099,6 +7120,8 @@ function sbStopPlay() {
 
 function sbAutoPlay() {
   if(!SB.playing) return;
+  // Не запускаємо autoPlay в lesson mode — там своя логіка
+  if(LF && LF.steps && (LF.steps[LF.step]==='sb_learn' || LF.steps[LF.step]==='sb_prac')) return;
   // Capture card + gen at THIS moment — after index is already updated
   var card = SB.learnQueue[SB.learnIdx];
   if(!card) return;
