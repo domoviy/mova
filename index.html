@@ -1898,7 +1898,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '97-022ac1e';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3675,13 +3675,26 @@ const SwipeManager = (function(){
 function sbInitLearnSwipe() {
   const el = document.getElementById('sb-fc-area');
   if (!el) return;
-  SwipeManager.init(el, {
-    onTap:   () => sbLearnFlip(),
-    onLeft:  () => sbLearnNext(),
-    onRight: () => sbLearnPrev(),
-    onUp:    () => sbLearnSwipeHard(),
-    onDown:  () => sbLearnSwipeEasy(),
-  });
+  // Визначаємо жести залежно від контексту (урок чи вільний режим)
+  if(LF && LF.steps && LF.steps[LF.step] === 'sb_learn'){
+    // В уроці — тільки тап (flip), без вгору/вниз (є кнопка Далі)
+    SwipeManager.init(el, {
+      onTap:   () => lfSBLearnFlipCard(),
+      onLeft:  () => {},
+      onRight: () => {},
+      onUp:    () => {},
+      onDown:  () => {},
+    });
+  } else {
+    // Вільний режим — повний набір жестів
+    SwipeManager.init(el, {
+      onTap:   () => sbLearnFlip(),
+      onLeft:  () => sbLearnNext(),
+      onRight: () => sbLearnPrev(),
+      onUp:    () => sbLearnSwipeHard(),
+      onDown:  () => sbLearnSwipeEasy(),
+    });
+  }
 }
 
 // ── SRS SWIPE HANDLER ─────────────────────────────────────────
@@ -5408,37 +5421,14 @@ function lfStartTiles(){
 // ── РЕЗУЛЬТАТ ─────────────────────────────────────────────────
 // ── SB LERNEN step in lesson flow ──────────────────────────────
 // ── SB Lesson: autoplay all active langs, then flip card ──────
-function sbLessonAutoPlayThenFlip(onDone) {
-  var card = SB.learnQueue[SB.learnIdx];
-  if(!card){ onDone(); return; }
-  var langs = sbGetActiveLangs();
-  var gen = ++SB.playCardGen;
-  SB.playing = true;
-
-  // Update play btn UI
-  var btn = document.getElementById('sb-play-btn');
-  if(btn){ btn.textContent='⏸'; btn.classList.add('pause'); }
-
-  function speakLang(li){
-    if(SB.playCardGen !== gen){ onDone(); return; }
-    if(li >= langs.length){
-      // All langs spoken — flip card
-      SB.playing = false;
-      if(btn){ btn.textContent='▶'; btn.classList.remove('pause'); }
-      SB.learnFlipped = true;
-      sbRenderLearn();
-      onDone();
-      return;
-    }
-    var l = langs[li];
-    var text = sbL(card.sentence, l).replace('{{BLANK}}', sbA(card, l));
-    speak(text, l, function(){
-      if(SB.playCardGen !== gen) return;
-      setTimeout(function(){ speakLang(li+1); }, 400);
-    }, card.id, 'sentence');
-  }
-  speakLang(0);
-}
+// ── SB Lesson Learn: проста лінійна state-машина ─────────────
+// Стан уроку SB
+var _lfSB = {
+  idx: 0,        // поточна картка
+  total: 0,      // всього карток
+  flipped: false, // чи перегорнута
+  played: false,  // чи зіграло аудіо
+};
 
 function lfStartSBLearn(){
   if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
@@ -5447,47 +5437,135 @@ function lfStartSBLearn(){
   if(vocabTop) vocabTop.style.display = 'none';
 
   showView('sb');
-  // Bar is globally fixed — just re-render to ensure it's visible
   lfRenderBar();
 
-  // Hide vtab-bar and chips in lesson mode
-  var sbVocabTop = document.getElementById('sb-vocab-top');
-  if(sbVocabTop){
-    var vtabBar = sbVocabTop.querySelector('.vtab-bar');
-    if(vtabBar) vtabBar.style.display = 'none';
-    var chips = document.getElementById('sb-cat-chips');
-    if(chips) chips.style.display = 'none';
+  // Ховаємо vtab-bar, chips, player в режимі уроку
+  var sbVT = document.getElementById('sb-vocab-top');
+  if(sbVT){
+    var tb = sbVT.querySelector('.vtab-bar'); if(tb) tb.style.display='none';
+    var ch = document.getElementById('sb-cat-chips'); if(ch) ch.style.display='none';
+    var pl = sbVT.querySelector('.vplayer'); if(pl) pl.style.display='none';
   }
 
   SB.learnQueue = LF.sbCards.slice();
   SB.learnIdx   = 0;
   SB.learnFlipped = false;
   SB.mode = 'learn';
+  _lfSB = { idx: 0, total: SB.learnQueue.length, flipped: false, played: false };
+
   sbApplyLangUI();
   sbRenderLearn();
-  setTimeout(sbInitLearnSwipe, 50);
-
-  // Ensure bar renders correctly after view switch
-  lfRenderBar();
-
-  // Auto-play audio for all active langs, then flip card, then show Далі
-  sbLessonAutoPlayThenFlip(function(){
-    // After flip: show Далі button to proceed
-    _lfInjectSBNextBtn(function(){
-      // If more SB cards remain, show next; else done
-      if(SB.learnIdx + 1 < SB.learnQueue.length){
-        SB.learnIdx++;
-        SB.learnFlipped = false;
-        sbRenderLearn();
-        var daliBtnEl = document.getElementById('lf-sb-next-btn');
-        if(daliBtnEl) daliBtnEl.remove();
-        sbLessonAutoPlayThenFlip(function(){
-          _lfInjectSBNextBtn(function(){ _lfSBLearnDone(); });
-        });
-      } else {
-        _lfSBLearnDone();
-      }
+  // Swipe: тільки лівий/правий — вгору/вниз заборонено в lesson mode
+  // щоб не конфліктувати з кнопкою Далі
+  setTimeout(function(){
+    var el = document.getElementById('sb-fc-area');
+    if(!el) return;
+    SwipeManager.init(el, {
+      onTap:   function(){ lfSBLearnFlipCard(); },
+      onLeft:  function(){ /* заблоковано в уроці */ },
+      onRight: function(){ /* заблоковано в уроці */ },
+      onUp:    function(){ /* заблоковано в уроці — кнопка Далі */ },
+      onDown:  function(){ /* заблоковано в уроці */ },
     });
+  }, 50);
+
+  lfRenderBar();
+  // Починаємо з першої картки
+  lfSBLearnShowCard();
+}
+
+function lfSBLearnShowCard(){
+  if(!LF) return;
+  var card = SB.learnQueue[_lfSB.idx];
+  if(!card){ _lfSBLearnDone(); return; }
+
+  _lfSB.flipped = false;
+  _lfSB.played  = false;
+  SB.learnFlipped = false;
+  SB.learnIdx = _lfSB.idx;
+  sbRenderLearn();
+
+  // Прибираємо стару кнопку Далі
+  var old = document.getElementById('lf-sb-next-btn');
+  if(old) old.remove();
+
+  // Граємо тільки передню сторону (sentence) — без expl/задньої сторони
+  lfSBLearnPlayFront(function(){
+    // Після аудіо — перегортаємо і показуємо Далі
+    _lfSB.played = true;
+    _lfSB.flipped = true;
+    SB.learnFlipped = true;
+    sbRenderLearn();
+    lfSBLearnShowNext();
+  });
+}
+
+function lfSBLearnFlipCard(){
+  // Тап — перегортаємо вручну
+  _lfSB.flipped = !_lfSB.flipped;
+  SB.learnFlipped = _lfSB.flipped;
+  sbRenderLearn();
+  // Якщо перегорнуто і аудіо вже відіграло — показуємо Далі
+  if(_lfSB.flipped && _lfSB.played){
+    lfSBLearnShowNext();
+  }
+}
+
+function lfSBLearnPlayFront(onDone){
+  var card = SB.learnQueue[_lfSB.idx];
+  if(!card){ onDone(); return; }
+  var langs = sbGetActiveLangs();
+  var gen = ++SB.playCardGen;
+  SB.playing = true;
+
+  function speakNext(li){
+    if(SB.playCardGen !== gen){ SB.playing=false; onDone(); return; }
+    if(li >= langs.length){
+      SB.playing = false;
+      onDone();
+      return;
+    }
+    var l = langs[li];
+    // Тільки передня сторона: sentence з підставленою відповіддю
+    var text = sbL(card.sentence, l).replace('{{BLANK}}', sbA(card, l));
+    speak(text, l, function(){
+      if(SB.playCardGen !== gen){ SB.playing=false; return; }
+      setTimeout(function(){ speakNext(li+1); }, 300);
+    }, card.id, 'sentence');
+  }
+  speakNext(0);
+}
+
+function lfSBLearnShowNext(){
+  // Показуємо кнопку "Далі" (або завершуємо якщо остання)
+  var old = document.getElementById('lf-sb-next-btn');
+  if(old) return; // вже показана
+
+  var isLast = (_lfSB.idx + 1 >= _lfSB.total);
+  var label = isLast
+    ? (uiLang==='uk'?'Завершити ✓':uiLang==='ru'?'Завершить ✓':uiLang==='en'?'Finish ✓':'Fertig ✓')
+    : (typeof t==='function' ? t('btn_sb_weiter') : 'Далі →');
+
+  _lfInjectSBNextBtn(function(){
+    SB.playCardGen++; // зупиняємо поточне аудіо
+    SB.playing = false;
+    if(isLast){
+      _lfSBLearnDone();
+    } else {
+      _lfSB.idx++;
+      lfSBLearnShowCard();
+    }
+  }, label);
+}
+
+// Стара функція — більше не використовується в lesson mode
+// (залишаємо для сумісності з sbAutoPlay у вільному режимі)
+function sbLessonAutoPlayThenFlip(onDone) {
+  // Legacy stub — використовується тільки якщо викликається напряму
+  lfSBLearnPlayFront(function(){
+    SB.learnFlipped = true;
+    sbRenderLearn();
+    onDone();
   });
 }
 
@@ -5572,16 +5650,14 @@ function _lfSBPracDone(){
   lfNextStep();
 }
 
-function _lfInjectSBNextBtn(onNext){
-  // Remove existing
+function _lfInjectSBNextBtn(onNext, labelOverride){
   var existing = document.getElementById('lf-sb-next-btn');
   if(existing) existing.remove();
 
   var btn = document.createElement('button');
   btn.id = 'lf-sb-next-btn';
-  // Use app design: primary action button, fixed above bottom nav
   btn.className = 'btn btn-lesson-sb-next';
-  btn.textContent = t('btn_sb_weiter');
+  btn.textContent = labelOverride || (typeof t==='function' ? t('btn_sb_weiter') : 'Далі →');
   btn.onclick = function(){
     btn.remove();
     onNext();
@@ -6798,7 +6874,21 @@ function sbSetMode(mode) {
   });
   // shuffle btn — no mode-specific styling needed
   sbStopPlay();
-  if (mode==='learn')    { sbBuildLearnQueue(); sbRenderLearn(); setTimeout(sbInitLearnSwipe,50); }
+  if (mode==='learn'){
+    sbBuildLearnQueue(); sbRenderLearn();
+    // Відновлюємо повний swipe (вгору/вниз) у вільному режимі
+    setTimeout(function(){
+      var el = document.getElementById('sb-fc-area');
+      if(!el) return;
+      SwipeManager.init(el, {
+        onTap:   function(){ sbLearnFlip(); },
+        onLeft:  function(){ sbLearnNext(); },
+        onRight: function(){ sbLearnPrev(); },
+        onUp:    function(){ sbLearnSwipeHard(); },
+        onDown:  function(){ sbLearnSwipeEasy(); },
+      });
+    }, 50);
+  }
   if (mode==='practice') sbStartPractice();
   if (mode==='exam')     sbStartExam();
 }
@@ -7021,9 +7111,7 @@ function sbAutoPlay() {
   function speakSentences(li){
     if(!SB.playing||SB.playCardGen!==gen) return;
     if(li>=audioLangs.length){
-      // flip card, then speak explanation
-      SB.learnFlipped=true; sbRenderLearn();
-      setTimeout(function(){ speakExpls(0); },300);
+      afterSentences();
       return;
     }
     var l = audioLangs[li];
@@ -7034,30 +7122,22 @@ function sbAutoPlay() {
     },card.id,'sentence');
   }
 
-  function speakExpls(li){
+  function afterSentences(){
     if(!SB.playing||SB.playCardGen!==gen) return;
-    if(li>=audioLangs.length){
-      var pause=(typeof V!=='undefined'&&V.readPause)?V.readPause:800;
-      setTimeout(function(){
-        if(!SB.playing||SB.playCardGen!==gen) return;
-        // Advance index FIRST, then animate, then start new autoplay cycle
-        SB.learnIdx=(SB.learnIdx+1)%SB.learnQueue.length;
-        SB.learnFlipped=false;
-        sbAnimCard('left',function(){
-          sbRenderLearn();
-          // Start fresh cycle — sbAutoPlay captures new card by index
-          setTimeout(function(){
-            if(SB.playing) sbAutoPlay();
-          },150);
-        });
-      },pause);
-      return;
-    }
-    var l=audioLangs[li];
-    speak(sbL(card.explanation,l),l,function(){
+    // Перегортаємо — показуємо задню сторону (без звуку)
+    SB.learnFlipped=true; sbRenderLearn();
+    var pause=(typeof V!=='undefined'&&V.readPause)?V.readPause:1200;
+    setTimeout(function(){
       if(!SB.playing||SB.playCardGen!==gen) return;
-      setTimeout(function(){ speakExpls(li+1); },400);
-    },card.id,'expl');
+      SB.learnIdx=(SB.learnIdx+1)%SB.learnQueue.length;
+      SB.learnFlipped=false;
+      sbAnimCard('left',function(){
+        sbRenderLearn();
+        setTimeout(function(){
+          if(SB.playing) sbAutoPlay();
+        },150);
+      });
+    },pause);
   }
   speakSentences(0);
 }
