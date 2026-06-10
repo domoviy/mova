@@ -1898,7 +1898,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '99-9626cc4';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4030,17 +4030,11 @@ function startReviewLesson(chapterNums, labelKey){
   });
 
   const allCards = vocab.filter(v=>cardIds.has(v.id));
-  if(!allCards.length){ notify('⚠️ ' + (uiLang==='uk'?'Немає карток':uiLang==='ru'?'Нет карточек':'Keine Karten')); return; }
+  if(!allCards.length){
+    notify('⚠️ ' + (uiLang==='uk'?'Немає карток':uiLang==='ru'?'Нет карточек':'Keine Karten'));
+    return;
+  }
 
-  // SM-2: до 10 найслабших карток (як у звичайному уроці, але більше)
-  const sorted    = [...allCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
-  const flowCards = sorted.slice(0, Math.min(10, sorted.length));
-
-  // SB картки
-  const allSB    = typeof SPRACHBAUSTEINE!=='undefined' ? SPRACHBAUSTEINE : [];
-  const reviewSB = allSB.filter(s=>sbIdList.includes(s.id)).slice(0, 5);
-
-  // Назва повторення
   const titleMap = {
     de: labelKey==='course'?'Kurswiederholung':'Wiederholung',
     uk: labelKey==='course'?'Повторення курсу':'Повторення',
@@ -4048,34 +4042,53 @@ function startReviewLesson(chapterNums, labelKey){
     ru: labelKey==='course'?'Повторение курса':'Повторение',
   };
 
-  // Кроки — ідентично до startLessonFlow
-  const hasTiles = flowCards.some(c=>(c.term?.de||'').split(' ').length>=2);
-  const hasSB    = reviewSB.length>0;
-  const steps = ['cards','matching'];
-  if(hasSB)    steps.push('sb_learn');
-  if(hasTiles) steps.push('tiles');
-  if(hasSB)    steps.push('sb_prac');
-  steps.push('result');
-
-  stopVocab();
-
-  // Синтетичний lesson-об'єкт — сумісний з lfRenderBar / lfGoStep / lfShowResult
+  // Синтетичний lesson-об'єкт — повністю сумісний зі startLessonFlow
   const syntheticLesson = {
     id:          '_review_'+chapterNums.join('_'),
     title:       titleMap,
-    cardIds:     [...cardIds],
-    sbCards:     sbIdList,
+    cardIds:     [...cardIds],   // всі картки розділів
+    sbCards:     sbIdList,       // всі SB картки розділів
     unlockAfter: null,
     _isReview:   true,
     _chapterNums: chapterNums,
   };
 
+  // Додаємо в LESSONS тимчасово щоб startLessonFlow знайшов урок,
+  // або запускаємо напряму з тими самими кроками що й startLessonFlow
+  _runLessonFlow(syntheticLesson, allCards);
+}
+
+// Внутрішня функція: запускає lesson flow з довільним набором карток
+// (використовується і startLessonFlow і startReviewLesson)
+function _runLessonFlow(lesson, allCards){
+  if(!allCards.length){ notify('⚠️ Keine Karten'); return; }
+  stopVocab();
+
+  // SM-2: вибираємо до 5 найслабших карток
+  const sorted    = [...allCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
+  const flowCards = sorted.slice(0, Math.min(5, sorted.length));
+
+  // SB картки
+  const sbCardIds = lesson.sbCards || [];
+  const allSB = typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE : [];
+  const lessonSBCards = sbCardIds.length > 0
+    ? allSB.filter(s => sbCardIds.includes(s.id)).slice(0, 5)
+    : [];
+
+  const hasTiles = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
+  const hasSB    = lessonSBCards.length > 0;
+  const steps = ['cards','matching'];
+  if(hasSB) steps.push('sb_learn');
+  if(hasTiles) steps.push('tiles');
+  if(hasSB) steps.push('sb_prac');
+  steps.push('result');
+
   LF = {
-    lessonId:  syntheticLesson.id,
-    lesson:    syntheticLesson,
+    lessonId:  lesson.id,
+    lesson,
     cards:     flowCards,
-    allCards:  allCards,
-    sbCards:   reviewSB,
+    allCards,
+    sbCards:   lessonSBCards,
     sbIdx:     0,
     steps,
     step:      0,
@@ -4083,7 +4096,7 @@ function startReviewLesson(chapterNums, labelKey){
     startTime: Date.now(),
   };
 
-  V.lessonId    = LF.lessonId;
+  V.lessonId    = lesson.id;
   V.lessonCards = allCards;
   V.queue       = [...flowCards];
   V.idx         = 0;
@@ -4091,13 +4104,13 @@ function startReviewLesson(chapterNums, labelKey){
   V.flipped     = false;
 
   showView('vocab');
-  lfRenderBar();   // показує bar з кроками — ідентично до звичайного уроку
+  lfRenderBar();
   lfGoStep(0);
 
   setTimeout(()=>{
     if(LF && LF.steps[LF.step]==='cards' && !V.playing){
-      V.playing=true; V.paused=false;
-      const pb=document.getElementById('vplaybtn');
+      V.playing = true; V.paused = false;
+      const pb = document.getElementById('vplaybtn');
       if(pb){ pb.textContent='⏸'; pb.classList.add('pause'); }
       playVocabNext();
     }
@@ -5173,7 +5186,6 @@ function startLessonFlow(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson  = lessons.find(l=>l.id===lessonId);
   if(!lesson) return;
-  // Запам'ятовуємо останній запущений урок для scroll у Lernpfad
   try{ localStorage.setItem("mova_last_lesson", lessonId); }catch(e){}
 
   const vocab   = typeof VOCAB!=='undefined' ? VOCAB : [];
@@ -5181,64 +5193,7 @@ function startLessonFlow(lessonId){
   const cards   = vocab.filter(v=>cardSet.has(v.id));
   if(!cards.length){ notify('⚠️ Keine Karten'); return; }
 
-  // Зупиняємо поточне відтворення
-  stopVocab();
-
-  // SM-2: вибираємо до 5 найслабших карток (менше когнітивного навантаження)
-  const sorted = [...cards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
-  const flowCards = sorted.slice(0, Math.min(5, sorted.length));
-
-  // SB картки для цього уроку
-  const sbCardIds = lesson.sbCards || [];
-  const allSB = typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE : [];
-  const lessonSBCards = sbCardIds.length > 0
-    ? allSB.filter(s => sbCardIds.includes(s.id))
-    : allSB.slice(0, 1); // fallback: перша картка
-
-  // Послідовність: картки → пари → SB Lernen → речення → SB Üben → результат
-  const hasTiles = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
-  const hasSB = lessonSBCards.length > 0;
-  const steps = ['cards','matching'];
-  if(hasSB) steps.push('sb_learn');
-  if(hasTiles) steps.push('tiles');
-  if(hasSB) steps.push('sb_prac');
-  steps.push('result');
-
-  LF = {
-    lessonId,
-    lesson,
-    cards: flowCards,
-    allCards: cards,
-    sbCards: lessonSBCards,
-    sbIdx: 0,
-    steps,
-    step: 0,
-    results: {},
-    startTime: Date.now(),
-  };
-
-  // Встановлюємо картки уроку
-  V.lessonId    = lessonId;
-  V.lessonCards = cards;
-  V.queue       = [...flowCards];
-  V.idx         = 0;
-  V.repeatCount = 0;
-  V.flipped     = false;
-
-  showView('vocab');
-  lfRenderBar();
-  lfGoStep(0);
-
-  // Автоматично починаємо відтворення карток після невеликої затримки
-  // (потрібен час щоб DOM оновився і аудіо-контекст розблокувався)
-  setTimeout(()=>{
-    if(LF && LF.steps[LF.step]==='cards' && !V.playing){
-      V.playing = true; V.paused = false;
-      const pb = document.getElementById('vplaybtn');
-      if(pb){ pb.textContent='⏸'; pb.classList.add('pause'); }
-      playVocabNext();
-    }
-  }, 400);
+  _runLessonFlow(lesson, cards);
 }
 
 function lfRenderBar(){
@@ -5289,9 +5244,11 @@ function lfSetLessonMode(active){
   const vchips    = document.getElementById('vchips');
   const vtabs     = document.getElementById('vocab-tabs');
   const bottomNav = document.getElementById('bottom-nav');
+  const sortBtn   = document.getElementById('vshuffle-btn');
   if(vchips)    vchips.style.display    = active ? 'none' : '';
   if(vtabs)     vtabs.style.display     = active ? 'none' : '';
   if(bottomNav) bottomNav.style.display = active ? 'none' : '';
+  if(sortBtn)   sortBtn.style.display   = active ? 'none' : '';
   // Ховаємо ⚙️ і 🔥 під час уроку — щоб не можна було вийти випадково
   document.querySelectorAll('.h-icon-btn').forEach(btn => {
     btn.style.display = active ? 'none' : '';
@@ -5305,6 +5262,9 @@ function lfGoStep(stepIdx){
 
   // Ховаємо lesson-result
   document.getElementById('lesson-result').classList.remove('show');
+  // Видаляємо залишкову кнопку Далі від SB кроків
+  const _sbNext = document.getElementById('lf-sb-next-btn');
+  if(_sbNext) _sbNext.remove();
 
   const step = LF.steps[stepIdx];
 
@@ -5414,6 +5374,9 @@ function lfStartTiles(){
   // Ховаємо player під час tiles — речення займають місце
   const vplayer = document.querySelector('#view-vocab .vplayer');
   if(vplayer) vplayer.style.display='none';
+  // Видаляємо кнопку "Далі" від попереднього кроку (SB Lernen)
+  const sbNext = document.getElementById('lf-sb-next-btn');
+  if(sbNext) sbNext.remove();
   tilesState = { cards: chosen, idx: 0, current: null, answer: [], words: [], _lfMode: true };
   tilesShowCard();
 }
@@ -5644,6 +5607,9 @@ function lfStartSBPrac(){
 }
 
 function _lfSBPracDone(){
+  // Скидаємо стан practice щоб не повторювались
+  SB.pracIdx = 0; SB.pracAnswered = false; SB.pracResults = [];
+  SB.pracQueue = [];
   // Restore all hidden elements
   var sbVocabTop = document.getElementById('sb-vocab-top');
   if(sbVocabTop){
@@ -7168,10 +7134,33 @@ function sbAutoPlay() {
 // ── FAVORITES ─────────────────────────────────────────────────
 // Use same storage key as vocab toggleFavorite: 'mova_' + id
 // ── SB Feedback Modal (bottom sheet) ──────────────────────────
-function sbShowFeedbackModal(ok, title, expl, onNext) {
-  // Remove existing
+function sbShowFeedbackModal(ok, title, expl, onNext, card) {
   var existing = document.getElementById('sb-feedback-modal');
   if(existing) existing.remove();
+
+  // Будуємо рядки речення: 1) DE з виділеною відповіддю, 2) мова інтерфейсу (якщо не DE)
+  var sentenceHtml = '';
+  if(card){
+    var langFlags = {de:'🇩🇪',uk:'🇺🇦',en:'🇬🇧',ru:'🇷🇺'};
+    var answerColor = ok ? '#27ae60' : 'var(--red)';
+    var rows = [];
+    // Завжди показуємо DE речення
+    var deRaw = sbL(card.sentence, 'de');
+    var deAns = sbA(card, 'de');
+    var deFilled = deRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+deAns+'</strong>');
+    rows.push('<div style="font-size:14px;line-height:1.5">'+deFilled+'</div>');
+    // Якщо мова інтерфейсу не DE — додаємо переклад
+    var ifLang = typeof uiLang !== 'undefined' ? uiLang : 'de';
+    if(ifLang !== 'de'){
+      var ifRaw = sbL(card.sentence, ifLang);
+      var ifAns = sbA(card, ifLang);
+      if(ifRaw && ifRaw !== deRaw){
+        var ifFilled = ifRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+ifAns+'</strong>');
+        rows.push('<div style="font-size:13px;color:var(--muted);line-height:1.5;margin-top:4px">'+langFlags[ifLang]+' '+ifFilled+'</div>');
+      }
+    }
+    sentenceHtml = '<div style="margin:10px 0;padding:10px 12px;background:var(--soft);border-radius:10px;display:flex;flex-direction:column;gap:2px">'+rows.join('')+'</div>';
+  }
 
   var modal = document.createElement('div');
   modal.id = 'sb-feedback-modal';
@@ -7183,6 +7172,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext) {
         '<span class="sb-prac-feedback-modal-icon">'+(ok?'✅':'❌')+'</span>' +
         '<span class="sb-prac-feedback-modal-title">'+title+'</span>' +
       '</div>' +
+      sentenceHtml +
       '<div class="sb-prac-feedback-modal-expl">'+expl+'</div>' +
       '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn">'+(typeof t==='function'?t('btn_sb_weiter'):'Далі →')+'</button>' +
     '</div>';
@@ -7275,13 +7265,16 @@ function sbRenderPrac() {
   var cat=(typeof SB_CATS!=='undefined'?SB_CATS:[]).find(function(c){ return c.id===card.cat; });
 
   // progress bar
-  var pct=Math.round((SB.pracIdx/SB.pracQueue.length)*100);
-  var ctr=document.getElementById('sb-prac-counter'); if(ctr) ctr.textContent=(SB.pracIdx+1)+' / '+SB.pracQueue.length;
+  var _lessonMax = LF ? 2 : SB_PRAC_COUNT;
+  var _total = LF ? _lessonMax : SB.pracQueue.length;
+  var pct=Math.round((SB.pracIdx/_total)*100);
+  var ctr=document.getElementById('sb-prac-counter'); if(ctr) ctr.textContent=(SB.pracIdx+1)+' / '+_total;
   var bar=document.getElementById('sb-prac-vpbf'); if(bar) bar.style.width=pct+'%';
 
   // dots
+  var _dotsTotal = LF ? 2 : SB.pracQueue.length;
   var dotsEl=document.getElementById('sb-prac-dots');
-  if(dotsEl) dotsEl.innerHTML=SB.pracQueue.map(function(_,i){
+  if(dotsEl) dotsEl.innerHTML=Array.from({length:_dotsTotal}).map(function(_,i){
     var cls='mc-dot'+(i<SB.pracIdx?' done':i===SB.pracIdx?' current':'');
     return '<div class="'+cls+'"></div>';
   }).join('');
@@ -7353,7 +7346,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
 
   var iv=sbGetIntervals(),cur=iv[card.id]||1;
   if(ok){ sbSetInterval(card.id,cur*2); sbMarkLearned(card.id); }
-  else { sbSetInterval(card.id,Math.max(1,Math.floor(cur/2))); SB.pracQueue.splice(Math.min(SB.pracIdx+3,SB.pracQueue.length),0,card); }
+  else { sbSetInterval(card.id,Math.max(1,Math.floor(cur/2))); if(!LF) SB.pracQueue.splice(Math.min(SB.pracIdx+3,SB.pracQueue.length),0,card); }
   SB.pracResults[SB.pracIdx]=ok;
 
   // Explanation always in UI language; result label in UI language
@@ -7366,7 +7359,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,'de'), expl, function(){
       sbHideFeedbackModal();
       sbPracNext();
-    });
+    }, card);
   } else {
     // Standalone mode: inline feedback block
     var fb=document.getElementById('sb-prac-feedback');
@@ -7386,7 +7379,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
 
 function sbPracNext() {
   SB.pracIdx++;
-  var maxCards = LF ? 3 : SB_PRAC_COUNT + 5;
+  var maxCards = LF ? 2 : SB_PRAC_COUNT + 5;
   if(SB.pracIdx >= Math.min(SB.pracQueue.length, maxCards)){
     if(LF){ _lfSBPracDone(); return; }
     sbShowPracResult();
@@ -7426,7 +7419,7 @@ function sbRenderExamQ() {
   var card=SB.examCards[SB.examIdx]; if(!card) return;
   var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
   document.getElementById('sb-exam-q-num').textContent='Aufgabe '+(SB.examIdx+1)+' von '+SB.examCards.length;
-  document.getElementById('sb-exam-sentence').innerHTML='<span class="sb-sentence">'+sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')+'</span>';
+  document.getElementById('sb-exam-sentence').innerHTML='<div class="mc-q-row"><div class="mc-q-term">'+sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')+'</div></div>';
 
   var correct=SB.examCards.map(function(c){ return sbA(c,'de'); });
   var extras=SPRACHBAUSTEINE.filter(function(c){ return !SB.examCards.find(function(ec){ return ec.id===c.id; }); })
