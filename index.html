@@ -160,7 +160,7 @@ body{
 .bn-item{
   flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
   gap:3px;cursor:pointer;border:none;background:none;
-  color:var(--muted);font-family:inherit;font-size:13px;font-weight:500;
+  color:var(--muted);font-family:inherit;font-size:14px;font-weight:500;
   padding:8px 4px;position:relative;
 }
 .bn-item:active{opacity:.7}
@@ -175,7 +175,7 @@ body{
 .bn-badge{
   position:absolute;top:6px;right:calc(50% - 20px);
   background:var(--gold);color:var(--forest);
-  font-size:11px;font-weight:700;min-width:17px;height:17px;
+  font-size:14px;font-weight:700;min-width:17px;height:17px;
   border-radius:9px;padding:0 4px;
   display:flex;align-items:center;justify-content:center;
 }
@@ -186,7 +186,7 @@ body{
 .bn-streak.done .bn-fire{filter:none}
 .bn-streak.pulse .bn-fire{animation:firePop .4s ease}
 @keyframes firePop{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
-#bn-streak-count{font-size:13px;font-weight:700;color:var(--muted);line-height:1}
+#bn-streak-count{font-size:14px;font-weight:700;color:var(--muted);line-height:1}
 .bn-streak.done #bn-streak-count{color:var(--forest)}
 .bn-streak-bar{width:28px;height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:1px}
 .bn-streak-pbf{height:100%;background:var(--gold);border-radius:2px;transition:width .5s}
@@ -238,7 +238,7 @@ body{
 .vlang-btn{
   min-width:48px;padding:7px 3px;border-radius:8px;
   border:1.5px solid var(--border);background:var(--paper);
-  font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;
+  font-size:14px;font-weight:700;cursor:pointer;font-family:inherit;
   color:var(--muted);display:flex;align-items:center;justify-content:center;gap:2px;
 }
 .vlang-btn.on{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
@@ -253,7 +253,7 @@ body{
 .vchips::-webkit-scrollbar{display:none}
 .chip{
   padding:6px 13px;border-radius:20px;border:1.5px solid var(--border);
-  background:var(--paper);font-size:13px;cursor:pointer;
+  background:var(--paper);font-size:14px;cursor:pointer;
   color:var(--muted);font-weight:500;font-family:inherit;white-space:nowrap;flex-shrink:0;
 }
 .chip:active{opacity:.7}
@@ -335,17 +335,17 @@ body{
 .fc-fav-back:active{border-color:var(--gold);transform:scale(1.2)}
 .fc-fav-back.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
 .fc-cat{
-  font-size:12px;font-weight:700;
+  font-size:14px;font-weight:700;
   background:rgba(255,255,255,.13);color:rgba(255,255,255,.85);
   padding:3px 9px;border-radius:5px;text-transform:uppercase;letter-spacing:.3px;
 }
-.fc-num{font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,.28);margin-left:auto}
-.fc-num-back{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);margin-left:auto}
+.fc-num{font-family:'JetBrains Mono',monospace;font-size:14px;color:rgba(255,255,255,.28);margin-left:auto}
+.fc-num-back{font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--muted);margin-left:auto}
 .fc-body{padding:14px 16px 0;display:flex;flex-direction:column;gap:7px;flex:1;overflow:hidden}
 .fc-lang-row{display:flex;align-items:baseline;gap:9px;margin-bottom:5px}
 .fc-flag{font-size:20px;flex-shrink:0}
 .fc-term{font-size:19px;font-weight:700;color:#fff;line-height:1.25}
-.fc-short{font-size:13px;color:rgba(255,255,255,.42);margin-top:1px}
+.fc-short{font-size:14px;color:rgba(255,255,255,.42);margin-top:1px}
 
 /* ══ MATCHING GAME ══ */
 #vocab-panel-match{
@@ -359,7 +359,7 @@ body{
   font-size:15px;font-weight:700;color:var(--ink);margin:0 0 4px;
 }
 .match-header small{
-  font-size:12px;color:var(--muted);
+  font-size:14px;color:var(--muted);
 }
 .match-grid{
   display:grid;
@@ -380,7 +380,7 @@ body{
   background:var(--card);
   color:var(--ink);
   font-family:'Figtree',sans-serif;
-  font-size:13px;
+  font-size:16px;
   font-weight:500;
   line-height:1.3;
   cursor:pointer;
@@ -393,6 +393,8 @@ body{
   -webkit-hyphens:auto;
   user-select:none;
   -webkit-user-select:none;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
 .match-btn.selected{
   border-color:var(--gold);
@@ -433,7 +435,7 @@ body{
   font-size:32px;font-weight:800;color:var(--gold);
   font-family:'Syne',sans-serif;
 }
-.match-result p{font-size:13px;color:var(--muted);margin:4px 0 12px;}
+.match-result p{font-size:14px;color:var(--muted);margin:4px 0 12px;}
 
 
 /* ══ LERNPFAD ══ */
@@ -453,7 +455,7 @@ body{
   font-size:19px;color:var(--gold);margin:0 0 2px;
 }
 .lp-header small{
-  font-size:12px;color:rgba(255,255,255,.55);
+  font-size:14px;color:rgba(255,255,255,.55);
 }
 .lp-progress-bar{
   height:3px;background:rgba(255,255,255,.15);
@@ -484,7 +486,7 @@ body{
 .lp-chapter-num{
   width:28px;height:28px;border-radius:50%;
   background:var(--forest);color:var(--gold);
-  font-size:12px;font-weight:800;
+  font-size:14px;font-weight:800;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;font-family:'Syne',sans-serif;
 }
@@ -497,10 +499,10 @@ body{
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .lp-chapter-sub{
-  font-size:11px;color:var(--muted);margin-top:1px;
+  font-size:14px;color:var(--muted);margin-top:1px;
 }
 .lp-chapter-arrow{
-  font-size:12px;color:var(--muted);
+  font-size:14px;color:var(--muted);
   transition:transform .25s;flex-shrink:0;
 }
 .lp-chapter.open .lp-chapter-arrow{transform:rotate(180deg);}
@@ -541,11 +543,11 @@ body{
 .lp-module.done   .lp-module-icon{background:var(--gold);}
 .lp-module-body{flex:1;min-width:0;}
 .lp-module-title{
-  font-size:13px;font-weight:600;color:var(--ink);
+  font-size:14px;font-weight:600;color:var(--ink);
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
 }
 .lp-module-meta{
-  font-size:11px;color:var(--muted);margin-top:2px;
+  font-size:14px;color:var(--muted);margin-top:2px;
 }
 .lp-module-prog{
   height:3px;background:var(--border);border-radius:2px;margin-top:5px;
@@ -556,7 +558,7 @@ body{
 }
 .lp-module-grammar{
   position:absolute;top:7px;right:8px;
-  font-size:9px;font-weight:700;
+  font-size:14px;font-weight:700;
   padding:1px 5px;border-radius:4px;
   background:rgba(201,168,76,.15);color:var(--gold);
   letter-spacing:.3px;
@@ -621,7 +623,7 @@ body{
   letter-spacing:.5px;
 }
 .ob-card-desc{
-  font-size:12px;color:rgba(255,255,255,.5);
+  font-size:14px;color:rgba(255,255,255,.5);
   margin-top:2px;line-height:1.4;
 }
 .ob-card-arrow{
@@ -639,7 +641,7 @@ body{
   background:var(--forest);border-radius:14px;
   padding:12px 14px;margin-bottom:12px;
 }
-.mc-q-label{font-size:10px;color:rgba(255,255,255,.4);
+.mc-q-label{font-size:14px;color:rgba(255,255,255,.4);
   letter-spacing:.5px;margin-bottom:5px;}
 .mc-q-row{display:flex;align-items:center;gap:8px;justify-content:center;}
 .mc-q-term{font-size:17px;font-weight:700;color:var(--gold);
@@ -687,7 +689,7 @@ body{
   position:relative;
 }
 .quiz-q-num{
-  font-size:10px;font-weight:700;letter-spacing:.6px;
+  font-size:14px;font-weight:700;letter-spacing:.6px;
   color:rgba(255,255,255,.35);margin-bottom:6px;text-transform:uppercase;
 }
 .quiz-q-text{
@@ -709,7 +711,7 @@ body{
 .quiz-opt-letter{
   width:26px;height:26px;border-radius:50%;flex-shrink:0;
   background:var(--soft);color:var(--muted);
-  font-size:12px;font-weight:700;
+  font-size:14px;font-weight:700;
   display:flex;align-items:center;justify-content:center;
   transition:background .15s,color .15s;
 }
@@ -733,9 +735,9 @@ body{
   background:rgba(201,168,76,.07);
 }
 .quiz-score-num{font-size:28px;font-weight:800;color:var(--gold);font-family:'Syne',sans-serif;}
-.quiz-score-of {font-size:11px;color:var(--muted);font-weight:600;}
+.quiz-score-of {font-size:14px;color:var(--muted);font-weight:600;}
 .quiz-result-title{font-size:20px;font-weight:800;color:var(--ink);font-family:'Syne',sans-serif;}
-.quiz-result-sub  {font-size:13px;color:var(--muted);text-align:center;line-height:1.5;}
+.quiz-result-sub  {font-size:14px;color:var(--muted);text-align:center;line-height:1.5;}
 .quiz-result-btns {display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px;}
 .mc-dot{
   flex:1;height:4px;border-radius:2px;
@@ -753,7 +755,7 @@ body{
   background:var(--forest);border-radius:16px;
   padding:18px;margin-bottom:14px;
 }
-.tiles-q-label{font-size:11px;color:rgba(255,255,255,.45);
+.tiles-q-label{font-size:14px;color:rgba(255,255,255,.45);
   letter-spacing:.5px;margin-bottom:6px;}
 .tiles-q-text{font-size:15px;color:#fff;line-height:1.5;font-family:'Figtree',sans-serif;}
 .tiles-q-text.mc-q-term{color:var(--gold-lt);font-weight:600;}
@@ -857,7 +859,7 @@ body{
   display:flex;flex-direction:column;align-items:center;gap:12px;
 }
 .tiles-result-icon{font-size:44px;line-height:1;}
-.tiles-result-label{font-size:13px;font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
+.tiles-result-label{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
 .tiles-result-correct{font-size:16px;font-weight:700;color:var(--ink);text-align:center;line-height:1.4;}
 .tiles-result-btn{
   width:100%;max-width:320px;padding:15px;border-radius:14px;border:none;
@@ -883,13 +885,13 @@ body{
   margin-bottom:6px;
 }
 .lf-title{
-  font-size:12px;font-weight:700;color:var(--gold);
+  font-size:14px;font-weight:700;color:var(--gold);
   letter-spacing:.3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   max-width:70%;
 }
 .lf-exit{
   background:none;border:none;color:rgba(255,255,255,.5);
-  font-size:13px;cursor:pointer;padding:2px 6px;border-radius:6px;
+  font-size:14px;cursor:pointer;padding:2px 6px;border-radius:6px;
   font-family:inherit;
 }
 .lf-exit:active{color:#fff;}
@@ -911,7 +913,7 @@ body{
 }
 .lf-step-label{
   display:flex;align-items:center;gap:8px;
-  font-size:11px;color:rgba(255,255,255,.45);margin-top:4px;
+  font-size:14px;color:rgba(255,255,255,.45);margin-top:4px;
 }
 .lf-step-label span{ font-weight:600;color:rgba(255,255,255,.7); }
 
@@ -934,7 +936,7 @@ body{
 }
 .lr-stat-row{
   display:flex;justify-content:space-between;align-items:center;
-  padding:6px 0;border-bottom:1px solid var(--border);font-size:13px;
+  padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;
 }
 .lr-stat-row:last-child{border-bottom:none;}
 .lr-stat-val{ font-weight:700;color:var(--gold); }
@@ -966,21 +968,21 @@ body{
 }
 .lr-btn-secondary:active{transform:scale(.97);border-color:var(--gold);}
 
-.fc-hint{text-align:center;font-size:13px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
-.fc-srs-badge{display:block;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 8px;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
+.fc-hint{text-align:center;font-size:14px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
+.fc-srs-badge{display:block;font-size:14px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 8px;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
 .ui-lang-btn{border:1px solid var(--border);background:var(--card);color:var(--ink);padding:7px 4px;border-radius:10px;cursor:pointer;transition:all .2s;font-family:inherit}
 .ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
 .course-btn.active{border-color:var(--gold)!important;background:rgba(201,168,76,.08)!important;}
 .fc-srs-due{background:rgba(201,168,76,.2);color:var(--gold);border-color:rgba(201,168,76,.5)}
-.fc-hint-back{text-align:center;font-size:13px;color:var(--muted);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
+.fc-hint-back{text-align:center;font-size:14px;color:var(--muted);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
 .fc-back-header{
   padding:13px 16px 10px;display:flex;align-items:center;
   gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--soft);
 }
 .fc-back-term{font-size:15px;font-weight:700;color:var(--ink);flex:1;min-width:0;word-break:break-word}
 .fc-def-block{margin-bottom:9px}
-.fc-def-lang-label{font-size:13px;font-weight:700;color:var(--gold);margin-bottom:2px}
+.fc-def-lang-label{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:2px}
 .fc-def{font-size:14px;line-height:1.6;color:var(--warm)}
 
 @keyframes slideOutLeft {from{transform:translateX(0);opacity:1}to{transform:translateX(-110%);opacity:0}}
@@ -1006,23 +1008,23 @@ body{
 .vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
 .vocab-mini-card{background:var(--paper);border-radius:10px;border:1px solid var(--border);padding:11px;cursor:pointer}
 .vocab-mini-card:active{border-color:var(--gold);transform:scale(.98)}
-.vmc-cat{font-size:12px;font-weight:700;color:var(--gold);background:var(--gold-dim);padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:5px}
-.vmc-term{font-size:13px;font-weight:700;color:var(--ink);margin-bottom:2px}
-.vmc-short{font-size:13px;color:var(--muted)}
+.vmc-cat{font-size:14px;font-weight:700;color:var(--gold);background:var(--gold-dim);padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:5px}
+.vmc-term{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:2px}
+.vmc-short{font-size:14px;color:var(--muted)}
 
 /* ══ SETTINGS ══ */
 .ssec{background:var(--paper);border-radius:13px;border:1px solid var(--border);padding:14px;margin-bottom:12px}
-.ssec h3{font-size:13px;font-weight:700;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:.8px}
+.ssec h3{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:.8px}
 .srow{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--soft);gap:10px}
 .srow:last-child{border-bottom:none}
 .srow-label label{font-size:14px;font-weight:600}
-.srow-label small{font-size:13px;color:var(--muted);display:block;margin-top:1px}
-.srow select{border:1px solid var(--border);border-radius:8px;padding:6px 8px;font-size:13px;font-family:inherit;background:var(--soft);color:var(--ink);max-width:150px}
+.srow-label small{font-size:14px;color:var(--muted);display:block;margin-top:1px}
+.srow select{border:1px solid var(--border);border-radius:8px;padding:6px 8px;font-size:14px;font-family:inherit;background:var(--soft);color:var(--ink);max-width:150px}
 .srow-ctrl{display:flex;gap:7px;align-items:center;flex-shrink:0}
 .srow-ctrl input[type=range]{width:85px;accent-color:var(--gold)}
-.srow-ctrl span{font-size:13px;font-family:'JetBrains Mono',monospace;color:var(--gold);min-width:34px;text-align:right}
+.srow-ctrl span{font-size:14px;font-family:'JetBrains Mono',monospace;color:var(--gold);min-width:34px;text-align:right}
 .speed-toggle{display:flex;gap:6px}
-.sp-btn{padding:6px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--soft);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.15s}
+.sp-btn{padding:6px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--soft);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.15s}
 .sp-btn.active{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
 .sp-btn:active{opacity:.7}
 .btn-s{background:var(--soft);color:var(--warm);border:1px solid var(--border)}
@@ -1115,7 +1117,7 @@ body.lesson-active .vocab-top{
 }
 
 /* flashcard fills the fc-area completely */
-#sb-panel-learn .flashcard { width:100%; height:100%; }
+#sb-panel-learn .flashcard { width:100%; height:100%; user-select:none; -webkit-user-select:none; touch-action:none; }
 #sb-panel-learn .fc-face {
   grid-area:1/1;
   backface-visibility:hidden;-webkit-backface-visibility:hidden;
@@ -1139,14 +1141,14 @@ body.lesson-active .vocab-top{
 }
 .sb-exam-result { text-align:center; padding:20px 0; }
 .sb-exam-review { text-align:left; border-top:1px solid var(--border); padding-top:14px; margin-top:10px; }
-.sb-review-item { padding:10px 0; border-bottom:1px solid var(--soft); font-size:13px; }
+.sb-review-item { padding:10px 0; border-bottom:1px solid var(--soft); font-size:14px; }
 .sb-review-item:last-child { border-bottom:none; }
 .sb-review-sentence { color:var(--ink); line-height:1.45; margin-bottom:4px; }
 .sb-review-answers { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:4px; }
-.sb-review-given { padding:2px 8px; border-radius:6px; font-size:12px; font-weight:700; }
+.sb-review-given { padding:2px 8px; border-radius:6px; font-size:14px; font-weight:700; }
 .sb-review-given.ok  { background:rgba(46,204,113,.15); color:#1a7a44; }
 .sb-review-given.nok { background:rgba(192,57,43,.1); color:var(--red); }
-.sb-review-correct   { padding:2px 8px; border-radius:6px; font-size:12px; font-weight:700; background:rgba(201,168,76,.15); color:var(--warm); }
+.sb-review-correct   { padding:2px 8px; border-radius:6px; font-size:14px; font-weight:700; background:rgba(201,168,76,.15); color:var(--warm); }
 
 /* Sentence with blank — matches mc-q-term style */
 .sb-sentence { font-size:16px; color:var(--ink); line-height:1.55; font-weight:500; font-family:'Figtree',sans-serif; }
@@ -1157,7 +1159,7 @@ body.lesson-active .vocab-top{
 .sb-prac-feedback-row { display:flex; align-items:center; gap:8px; margin-bottom:8px; }
 .sb-prac-feedback-icon { font-size:20px; }
 .sb-prac-feedback-title { font-size:15px; font-weight:700; color:var(--ink); }
-.sb-prac-feedback-expl { font-size:13px; color:var(--warm); line-height:1.6; }
+.sb-prac-feedback-expl { font-size:14px; color:var(--warm); line-height:1.6; }
 .sb-prac-result { text-align:center; padding:24px 0; }
 
 /* Exam timer urgent */
@@ -1228,7 +1230,7 @@ body.lesson-active .vocab-top{
 /* Front: sentence lines per lang */
 .sb-front-lang { margin-bottom:8px; }
 .sb-front-lang:last-child { margin-bottom:0; }
-.sb-front-lang-label { font-size:11px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:3px; }
+.sb-front-lang-label { font-size:14px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:3px; }
 .sb-front-sentence { font-size:16px; font-weight:600; color:#fff; line-height:1.5; }
 .sb-front-sentence b { color:var(--gold-lt); font-weight:800; }
 .sb-front-divider { height:1px; background:rgba(255,255,255,.08); margin:8px 0; }
@@ -1245,45 +1247,45 @@ body.lesson-active .vocab-top{
 /* ══ SMART REVIEW ══ */
 .sr-profile-card{background:var(--forest);border-radius:16px;padding:16px;margin-bottom:12px;color:#fff;position:relative;overflow:hidden}
 .sr-profile-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,168,76,.18) 0%,transparent 70%);pointer-events:none}
-.sr-profile-title{font-size:12px;font-weight:700;color:var(--gold);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
+.sr-profile-title{font-size:14px;font-weight:700;color:var(--gold);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
 .sr-profile-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
-.sr-profile-label{font-size:13px;color:rgba(255,255,255,.65);white-space:nowrap}
+.sr-profile-label{font-size:14px;color:rgba(255,255,255,.65);white-space:nowrap}
 .sr-profile-val{font-size:14px;font-weight:700;color:#fff}
-.sr-date-input{background:rgba(255,255,255,.1);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:6px 10px;color:#fff;font-size:13px;font-family:inherit;outline:none;cursor:pointer;min-width:140px;text-align:right;colorscheme:dark}
+.sr-date-input{background:rgba(255,255,255,.1);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:6px 10px;color:#fff;font-size:14px;font-family:inherit;outline:none;cursor:pointer;min-width:140px;text-align:right;colorscheme:dark}
 .sr-date-input:focus{border-color:var(--gold)}
-.sr-mode-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:700;background:rgba(201,168,76,.2);color:var(--gold-lt);border:1px solid rgba(201,168,76,.3)}
-.sr-days-left{font-size:12px;color:rgba(255,255,255,.5)}
+.sr-mode-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:14px;font-weight:700;background:rgba(201,168,76,.2);color:var(--gold-lt);border:1px solid rgba(201,168,76,.3)}
+.sr-days-left{font-size:14px;color:rgba(255,255,255,.5)}
 
 /* Daily Plan */
 .sr-plan-card{background:var(--paper);border-radius:14px;border:1px solid var(--border);padding:14px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
 .sr-plan-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
 .sr-plan-title{font-size:15px;font-weight:700;color:var(--ink)}
-.sr-plan-meta{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px}
+.sr-plan-meta{font-size:14px;color:var(--muted);display:flex;align-items:center;gap:6px}
 .sr-plan-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--soft)}
 .sr-plan-row:last-child{border-bottom:none}
-.sr-plan-part{display:flex;align-items:center;gap:7px;font-size:13px;font-weight:600;color:var(--ink)}
+.sr-plan-part{display:flex;align-items:center;gap:7px;font-size:14px;font-weight:600;color:var(--ink)}
 .sr-plan-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.sr-plan-count{font-size:12px;font-weight:700;color:var(--muted);font-family:'JetBrains Mono',monospace}
+.sr-plan-count{font-size:14px;font-weight:700;color:var(--muted);font-family:'JetBrains Mono',monospace}
 .sr-plan-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid var(--soft)}
-.sr-plan-streak{font-size:12px;color:var(--muted)}
+.sr-plan-streak{font-size:14px;color:var(--muted)}
 .sr-plan-start{background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);border:none;border-radius:10px;padding:10px 18px;font-size:14px;font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px}
 .sr-plan-start:active{transform:scale(.97)}
-.sr-plan-empty{text-align:center;padding:20px;color:var(--muted);font-size:13px}
+.sr-plan-empty{text-align:center;padding:20px;color:var(--muted);font-size:14px}
 
 /* Exam Dashboard */
 .sr-dashboard-ssec{background:var(--paper);border-radius:13px;border:1px solid var(--border);padding:14px;margin-bottom:12px}
-.sr-dash-title{font-size:13px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
+.sr-dash-title{font-size:14px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
 .sr-dash-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--soft)}
 .sr-dash-row:last-child{border-bottom:none}
-.sr-dash-part{font-size:13px;font-weight:600;color:var(--ink);min-width:120px;flex-shrink:0}
+.sr-dash-part{font-size:14px;font-weight:600;color:var(--ink);min-width:120px;flex-shrink:0}
 .sr-dash-bar-wrap{flex:1;height:7px;background:var(--soft);border-radius:4px;overflow:hidden}
 .sr-dash-bar{height:100%;border-radius:4px;transition:width .5s cubic-bezier(.4,0,.2,1)}
 .sr-dash-bar.green{background:var(--leaf)}
 .sr-dash-bar.yellow{background:var(--gold)}
 .sr-dash-bar.red{background:var(--red)}
-.sr-dash-pct{font-size:12px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--muted);min-width:36px;text-align:right}
-.sr-dash-warn{font-size:12px;color:var(--red);margin-left:2px}
-.sr-dash-learned{text-align:center;padding:10px 0 0;font-size:12px;color:var(--muted)}
+.sr-dash-pct{font-size:14px;font-weight:700;font-family:'JetBrains Mono',monospace;color:var(--muted);min-width:36px;text-align:right}
+.sr-dash-warn{font-size:14px;color:var(--red);margin-left:2px}
+.sr-dash-learned{text-align:center;padding:10px 0 0;font-size:14px;color:var(--muted)}
 .sr-dash-learned span{color:var(--gold);font-weight:700;font-family:'JetBrains Mono',monospace}
 
 </style>
@@ -1414,7 +1416,7 @@ body.lesson-active .vocab-top{
     </svg>
     <span class="ob-logo-text">MOVA</span>
   </div>
-  <p class="ob-subtitle">Wählen Sie Ihre Sprache<br>Оберіть вашу мову · Choose your language</p>
+  <p class="ob-subtitle">Wählen Sie Ihre Sprache<br>Оберіть вашу мову · Choose your language · Выберите язык</p>
   <div class="ob-cards">
     <div class="ob-card" onclick="selectOnboardLang('de')">
       <div class="ob-card-flag">🇩🇪</div>
@@ -1437,6 +1439,14 @@ body.lesson-active .vocab-top{
       <div class="ob-card-text">
         <div class="ob-card-lang">English</div>
         <div class="ob-card-desc">I want to take the course in English</div>
+      </div>
+      <div class="ob-card-arrow">›</div>
+    </div>
+    <div class="ob-card" onclick="selectOnboardLang('ru')">
+      <div class="ob-card-flag">🇷🇺</div>
+      <div class="ob-card-text">
+        <div class="ob-card-lang">Русский</div>
+        <div class="ob-card-desc">Я хочу проходить курс на русском языке</div>
       </div>
       <div class="ob-card-arrow">›</div>
     </div>
@@ -1465,7 +1475,7 @@ body.lesson-active .vocab-top{
       Зберегти →
     </button>
     <button onclick="skipExamDateOnboarding()"
-      style="background:none;border:none;color:var(--muted);font-size:13px;font-family:inherit;cursor:pointer;padding:4px" id="sr-ob-skip">
+      style="background:none;border:none;color:var(--muted);font-size:14px;font-family:inherit;cursor:pointer;padding:4px" id="sr-ob-skip">
       Пропустити
     </button>
   </div>
@@ -1522,12 +1532,12 @@ body.lesson-active .vocab-top{
       </svg>
     </div>
     <!-- Лічильник днів до іспиту -->
-    <div id="sr-days-chip" style="display:none;align-items:center;gap:3px;padding:3px 8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:20px;font-size:11px;font-weight:700;color:var(--gold);cursor:pointer;flex-shrink:0" onclick="showView('settings')"></div>
+    <div id="sr-days-chip" style="display:none;align-items:center;gap:3px;padding:3px 8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:20px;font-size:14px;font-weight:700;color:var(--gold);cursor:pointer;flex-shrink:0" onclick="showView('settings')"></div>
     <!-- Вогонь і Налаштування у хедері замість stopbtn -->
     <div class="h-right-btns">
       <button class="h-icon-btn" onclick="showStreakInfo()" title="Streak">
         <span class="bn-fire" id="h-fire">🔥</span>
-        <span id="h-streak-count" style="font-size:12px;font-weight:700;color:var(--gold)">0</span>
+        <span id="h-streak-count" style="font-size:14px;font-weight:700;color:var(--gold)">0</span>
       </button>
       <button class="h-icon-btn" onclick="showView('settings')" title="Settings">⚙️</button>
     </div>
@@ -1592,7 +1602,7 @@ body.lesson-active .vocab-top{
           </div>
         </div>
         <div class="vprogrow">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);white-space:nowrap" id="vprgtxt">1 / 0</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="vprgtxt">1 / 0</span>
           <div class="vpb"><div class="vpbf" id="vpbf" style="width:0%"></div></div>
         </div>
       </div>
@@ -1710,7 +1720,7 @@ body.lesson-active .vocab-top{
           </div>
         </div>
         <div class="vprogrow" id="sb-vprogrow">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted);white-space:nowrap" id="sb-prgtxt">1 / 48</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="sb-prgtxt">1 / 48</span>
           <div class="vpb"><div class="vpbf" id="sb-vpbf" style="width:0%"></div></div>
         </div>
       </div>
@@ -1737,7 +1747,7 @@ body.lesson-active .vocab-top{
           <button class="btn" onclick="sbStartPractice()">🔄 Nochmal üben</button>
         </div>
         <div class="vprogrow" id="sb-prac-progrow">
-          <span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--muted)" id="sb-prac-counter">1 / 10</span>
+          <span style="font-family:'JetBrains Mono',monospace;font-size:14px;color:var(--muted)" id="sb-prac-counter">1 / 10</span>
           <div class="vpb"><div class="vpbf" id="sb-prac-vpbf" style="width:0%"></div></div>
         </div>
       </div>
@@ -1852,10 +1862,11 @@ body.lesson-active .vocab-top{
 
         <div class="ssec" id="ssec-lang">
     <h3 data-i18n="sec_lang">Sprache / Мова / Language</h3>
-    <div style="display:flex;gap:8px;padding:4px 0">
-      <button class="btn ui-lang-btn active" data-lang="de" onclick="setUiLang('de')" style="flex:1;font-size:13px">🇩🇪 Deutsch</button>
-      <button class="btn ui-lang-btn" data-lang="uk" onclick="setUiLang('uk')" style="flex:1;font-size:13px">🇺🇦 Українська</button>
-      <button class="btn ui-lang-btn" data-lang="en" onclick="setUiLang('en')" style="flex:1;font-size:13px">🇬🇧 English</button>
+    <div style="display:flex;gap:6px;padding:4px 0;flex-wrap:wrap">
+      <button class="btn ui-lang-btn active" data-lang="de" onclick="setUiLang('de')" style="flex:1;font-size:14px;min-width:80px">🇩🇪 Deutsch</button>
+      <button class="btn ui-lang-btn" data-lang="uk" onclick="setUiLang('uk')" style="flex:1;font-size:14px;min-width:80px">🇺🇦 Українська</button>
+      <button class="btn ui-lang-btn" data-lang="en" onclick="setUiLang('en')" style="flex:1;font-size:14px;min-width:80px">🇬🇧 English</button>
+      <button class="btn ui-lang-btn" data-lang="ru" onclick="setUiLang('ru')" style="flex:1;font-size:14px;min-width:80px">🇷🇺 Русский</button>
     </div>
     </div>
 
@@ -1868,7 +1879,7 @@ body.lesson-active .vocab-top{
     </div>
 
     <!-- Версія додатку -->
-    <div style="text-align:center;padding:20px 0 8px;opacity:.45;font-size:12px;
+    <div style="text-align:center;padding:20px 0 8px;opacity:.45;font-size:14px;
               font-family:'JetBrains Mono',monospace;letter-spacing:.5px">
     MOVA v<span id="app-ver"></span>
     </div>
@@ -1898,7 +1909,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '102-22bff99';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2190,6 +2201,69 @@ const I18N = {
     quiz_again:'🔄 Again',
     quiz_to_cards:'📖 Cards',
     quiz_score:'Score',
+  },
+  ru: {
+    nav_vocab:'Словарь', nav_favs:'Закладки', nav_settings:'Настройки',
+    tab_card:'🃏 Карточка', tab_all:'📋 Все',
+    fav_added:'★ Добавлено в закладки',
+    fav_removed:'☆ Удалено из закладок',
+    favs_empty:'Нет закладок.<br>Нажми ☆ на карточке.',
+    settings_title:'⚙️ Настройки',
+    sec_playback:'Воспроизведение',
+    lbl_repeats:'Повторения', sub_repeats:'Циклов на карточку',
+    lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
+    lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
+    lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
+    lbl_pause:'Пауза', sub_pause:'Между понятиями',
+    lbl_readpause:'Пауза чтения', sub_readpause:'После переворота',
+    lbl_trate:'Скорость речи', sub_trate:'Ручное воспроизведение',
+    btn_slow:'🐢 Медленно', btn_normal:'▶ Нормально',
+    sec_voices:'Голоса TTS',
+    lbl_voices_reload:'Перезагрузить голоса', btn_reload:'↻ Обновить',
+    lbl_voices_reset:'Сбросить', btn_reset:'🗑 Сбросить',
+    sec_streak:'Цель и серия',
+    lbl_today:'Сегодня', lbl_total:'Всего',
+    lbl_goal:'Дневная цель', sub_goal:'Карточек в день',
+    lbl_streak_reset:'Сбросить серию',
+    sec_data:'Данные',
+    lbl_data_reset:'Очистить статистику', sub_data_reset:'Сбросить счётчик',
+    sec_lang:'Sprache / Мова / Language / Язык',
+    nav_lernpfad:'Путь',
+    lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
+    lp_cards:'карточек', lp_of:'из',
+    lp_grammar:'Грамматика:',
+    hint_front:'↕ Нажми · ← → Свайп',
+    hint_srs:'↑ Не знаю · ↓ Знаю · ← Далее · → Назад',
+    srs_new:'✨ новая карточка', srs_today:'📅 сегодня',
+    card_new:'✨ Новая карточка',
+    update_available:'🔄 Доступна новая версия — перезагрузите приложение',
+    match_title:'🔗 Matching', match_sub:'Соедини термин с объяснением',
+    match_perfect:'Идеально! Все с первой попытки 🎉',
+    match_good:'Неплохо! Продолжай повторять.',
+    match_again:'🔄 Ещё раз', match_cards:'📖 Карточки',
+    match_empty:'Нет карточек в этой категории',
+    match_few:'Слишком мало карточек — нужно минимум',
+    match_needed:'',
+    lp_title:'🗺 Учебный путь',
+    lp_overall_loading:'Загрузка…',
+    lp_no_lessons:'Уроки недоступны',
+    lp_module_prefix:'Модуль',
+    lp_unlock_hint:'Завершите 80% предыдущего урока',
+    srs_notify_today:'сегодня', srs_notify_new:'новых',
+    btn_next_lesson:'▶ Следующий урок',
+    btn_sb_weiter:'Далее →',
+    btn_to_lessons:'🗺 К списку уроков',
+    btn_check:'✓ Проверить',
+    quiz_title:'❓ Квиз',
+    quiz_question:'Вопрос',
+    quiz_of:'из',
+    quiz_no_data:'Нет вопросов квиза.',
+    quiz_result_perfect:'Идеально! Все правильно! 🏆',
+    quiz_result_good:'Хорошо! Продолжай!',
+    quiz_result_try:'Стоит повторить — ты справишься!',
+    quiz_again:'🔄 Ещё раз',
+    quiz_to_cards:'📖 Карточки',
+    quiz_score:'Результат',
   },
 };
 
@@ -3635,13 +3709,15 @@ const SwipeManager = (function(){
     if (!el) return;
     destroy(el);
 
-    // touch-action:none на елементі (CSS) гарантує що браузер не перехоплює
-    // touch events для scroll — тому всі listeners можуть бути passive:true
     let sx = 0, sy = 0, on = false;
-    const ts = e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; on = true; };
+    const ts = e => {
+      sx = e.touches[0].clientX; sy = e.touches[0].clientY; on = true;
+      // Блокуємо text selection / context menu під час свайпу
+      if(e.cancelable) e.preventDefault();
+    };
     const te = e => { if (!on) return; on = false; decide(e.changedTouches[0].clientX - sx, e.changedTouches[0].clientY - sy, cfg); };
     const tc = () => { on = false; };
-    el.addEventListener('touchstart',  ts, { passive: true });
+    el.addEventListener('touchstart',  ts, { passive: false });
     el.addEventListener('touchend',    te, { passive: true });
     el.addEventListener('touchcancel', tc, { passive: true });
 
@@ -3675,9 +3751,11 @@ const SwipeManager = (function(){
 function sbInitLearnSwipe() {
   const el = document.getElementById('sb-fc-area');
   if (!el) return;
+  // Блокуємо text selection на всій площі картки
+  el.style.userSelect = 'none';
+  el.style.webkitUserSelect = 'none';
   // Визначаємо жести залежно від контексту (урок чи вільний режим)
   if(LF && LF.steps && LF.steps[LF.step] === 'sb_learn'){
-    // В уроці — тільки тап (flip), без вгору/вниз (є кнопка Далі)
     SwipeManager.init(el, {
       onTap:   () => lfSBLearnFlipCard(),
       onLeft:  () => {},
@@ -3686,7 +3764,6 @@ function sbInitLearnSwipe() {
       onDown:  () => {},
     });
   } else {
-    // Вільний режим — повний набір жестів
     SwipeManager.init(el, {
       onTap:   () => sbLearnFlip(),
       onLeft:  () => sbLearnNext(),
@@ -3852,20 +3929,27 @@ function startMatching(){
 
 function matchMakeBtn(cardId, side, text){
   const btn = document.createElement('button');
-  btn.className = 'match-btn side-'+side;  // side-term або side-short → grid-column
+  btn.className = 'match-btn side-'+side;
   btn.dataset.cardId = cardId;
   btn.dataset.side   = side;
   btn.textContent    = text;
-  btn.addEventListener('click', () => matchHandleClick(btn));
-  // Відтворюємо DE аудіо при кліці на терміни (ліва колонка)
-  if(side === 'term'){
-    btn.addEventListener('click', () => {
+  // touchend для iOS надійності (click іноді не спрацьовує на першому дотику)
+  let _touchMoved = false;
+  btn.addEventListener('touchstart', ()=>{ _touchMoved=false; }, {passive:true});
+  btn.addEventListener('touchmove',  ()=>{ _touchMoved=true;  }, {passive:true});
+  btn.addEventListener('touchend', (e)=>{
+    if(_touchMoved) return;
+    e.preventDefault();
+    matchHandleClick(btn);
+    if(side === 'term'){
       const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===cardId);
       if(card && !btn.classList.contains('matched')){
         speak(card.term.de, 'de', null, card.id, 'term');
       }
-    });
-  }
+    }
+  }, {passive:false});
+  // click для desktop
+  btn.addEventListener('click', ()=> matchHandleClick(btn));
   return btn;
 }
 
@@ -5277,6 +5361,9 @@ function lfGoStep(stepIdx){
 
   if(step === 'cards'){
     V.flipped = false;
+    // Завжди відновлюємо vocab-top (player міг бути схований попереднім кроком)
+    const vocabTopEl = document.querySelector('.vocab-top');
+    if(vocabTopEl) vocabTopEl.style.display = '';
     switchVocabTab(0);
     renderVocabCard();
   } else if(step === 'matching'){
@@ -7148,7 +7235,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card) {
     var deRaw = sbL(card.sentence, 'de');
     var deAns = sbA(card, 'de');
     var deFilled = deRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+deAns+'</strong>');
-    rows.push('<div style="font-size:14px;line-height:1.5">'+deFilled+'</div>');
+    rows.push('<div style="font-size:14px;line-height:1.5">🇩🇪 '+deFilled+'</div>');
     // Якщо мова інтерфейсу не DE — додаємо переклад
     var ifLang = typeof uiLang !== 'undefined' ? uiLang : 'de';
     if(ifLang !== 'de'){
@@ -7525,6 +7612,8 @@ function sbExamSubmit() {
     _orig(id);
     if(id==='sb'){
       sbStopPlay();
+      // В lesson mode НЕ ініціалізуємо SB — lesson flow керує ним сам
+      if(LF && LF.steps) return;
       if(typeof SPRACHBAUSTEINE!=='undefined'){ initSB(); }
       else { var w=setInterval(function(){ if(typeof SPRACHBAUSTEINE!=='undefined'){ clearInterval(w); initSB(); } },200); }
     }
