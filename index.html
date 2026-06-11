@@ -1909,7 +1909,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '103-fcaba93';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3933,13 +3933,15 @@ function matchMakeBtn(cardId, side, text){
   btn.dataset.cardId = cardId;
   btn.dataset.side   = side;
   btn.textContent    = text;
-  // touchend для iOS надійності (click іноді не спрацьовує на першому дотику)
+  // Єдиний обробник для touch і mouse — без дублювання
+  let _handled = false;
   let _touchMoved = false;
-  btn.addEventListener('touchstart', ()=>{ _touchMoved=false; }, {passive:true});
-  btn.addEventListener('touchmove',  ()=>{ _touchMoved=true;  }, {passive:true});
+  btn.addEventListener('touchstart', ()=>{ _touchMoved=false; _handled=false; }, {passive:true});
+  btn.addEventListener('touchmove',  ()=>{ _touchMoved=true; },  {passive:true});
   btn.addEventListener('touchend', (e)=>{
     if(_touchMoved) return;
-    e.preventDefault();
+    _handled = true;
+    e.preventDefault(); // блокує наступний click
     matchHandleClick(btn);
     if(side === 'term'){
       const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===cardId);
@@ -3948,8 +3950,11 @@ function matchMakeBtn(cardId, side, text){
       }
     }
   }, {passive:false});
-  // click для desktop
-  btn.addEventListener('click', ()=> matchHandleClick(btn));
+  // click — тільки якщо НЕ було touchend (desktop)
+  btn.addEventListener('click', (e)=>{
+    if(_handled){ _handled=false; return; }
+    matchHandleClick(btn);
+  });
   return btn;
 }
 
@@ -3969,15 +3974,22 @@ function matchHandleClick(btn){
 
   const sel = matchState.selected;
 
+  // Якщо попередній вибір вже matched (гонка станів) — скидаємо
+  if(sel && sel.el.classList.contains('matched')){
+    matchState.selected = null;
+  }
+
+  const selNow = matchState.selected;
+
   // Якщо натиснули на вже виділений — знімаємо виділення
-  if(sel && sel.el === btn){
+  if(selNow && selNow.el === btn){
     btn.classList.remove('selected');
     matchState.selected = null;
     return;
   }
 
   // Якщо ніщо не вибрано — виділяємо
-  if(!sel){
+  if(!selNow){
     btn.classList.add('selected');
     matchState.selected = { el:btn, cardId:btn.dataset.cardId, side:btn.dataset.side };
     return;
@@ -3985,20 +3997,20 @@ function matchHandleClick(btn){
 
   // Є вибраний і натискаємо другий
   // Перевіряємо: різні сторони (term і short) і однаковий cardId
-  if(sel.side === btn.dataset.side){
+  if(selNow.side === btn.dataset.side){
     // Та сама сторона — перемикаємо вибір
-    sel.el.classList.remove('selected');
+    selNow.el.classList.remove('selected');
     btn.classList.add('selected');
     matchState.selected = { el:btn, cardId:btn.dataset.cardId, side:btn.dataset.side };
     return;
   }
 
-  const correct = sel.cardId === btn.dataset.cardId;
-  sel.el.classList.remove('selected');
+  const correct = selNow.cardId === btn.dataset.cardId;
+  selNow.el.classList.remove('selected');
 
   if(correct){
     // ✅ Правильно — сіріємо обидва
-    [sel.el, btn].forEach(el => {
+    [selNow.el, btn].forEach(el => {
       el.classList.add('matched-flash');
       setTimeout(() => {
         el.classList.remove('matched-flash');
@@ -4024,7 +4036,7 @@ function matchHandleClick(btn){
     }
   } else {
     // ❌ Неправильно — тремтіння
-    [sel.el, btn].forEach(el => {
+    [selNow.el, btn].forEach(el => {
       el.classList.add('error');
       setTimeout(() => el.classList.remove('error'), 400);
     });
@@ -4032,7 +4044,7 @@ function matchHandleClick(btn){
     matchState.selected = null;
 
     // Підвищуємо важливість обох карток одразу (як свайп вгору)
-    [sel.cardId, btn.dataset.cardId].forEach(id => {
+    [selNow.cardId, btn.dataset.cardId].forEach(id => {
       srsRate(id, 1);
       matchState.firstTry.delete(id); // помилилися — не "з першої спроби"
       const mc = matchState.cards.find(c => c.card.id === id);
@@ -5029,7 +5041,7 @@ function tilesCheck(){
   saveCardPlay(tilesState.current.id);
   haptic[isOk?'success':'error']();
 
-  // Play DE sentence audio after check
+  // Play DE sentence audio after check (mp3 якщо є, інакше WebSpeech)
   try {
     speak(tilesState.current.term?.de || '', 'de', null, tilesState.current.id, 'sentence');
   } catch(e) {}
@@ -5333,6 +5345,11 @@ function lfSetLessonMode(active){
   if(vtabs)     vtabs.style.display     = active ? 'none' : '';
   if(bottomNav) bottomNav.style.display = active ? 'none' : '';
   if(sortBtn)   sortBtn.style.display   = active ? 'none' : '';
+  // При виході з уроку — відновлюємо vocab-top (player)
+  if(!active){
+    const vocabTopRestore = document.querySelector('#view-vocab .vocab-top');
+    if(vocabTopRestore) vocabTopRestore.style.display = '';
+  }
   // Ховаємо ⚙️ і 🔥 під час уроку — щоб не можна було вийти випадково
   document.querySelectorAll('.h-icon-btn').forEach(btn => {
     btn.style.display = active ? 'none' : '';
@@ -5502,6 +5519,15 @@ function lfStartSBLearn(){
   SB.learnFlipped = false;
   SB.mode = 'learn';
   _lfSB = { idx: 0, total: SB.learnQueue.length, flipped: false, played: false };
+
+  // Явно показуємо панель learn і ховаємо practice/exam
+  // (після попереднього уроку панелі можуть бути в неправильному стані)
+  const _lpLearn = document.getElementById('sb-panel-learn');
+  const _lpPrac  = document.getElementById('sb-panel-practice');
+  const _lpExam  = document.getElementById('sb-panel-exam');
+  if(_lpLearn) _lpLearn.style.display = 'flex';
+  if(_lpPrac)  _lpPrac.style.display  = 'none';
+  if(_lpExam)  _lpExam.style.display  = 'none';
 
   sbApplyLangUI();
   sbRenderLearn();
@@ -7611,9 +7637,9 @@ function sbExamSubmit() {
   showView=function(id){
     _orig(id);
     if(id==='sb'){
+      // В lesson mode НЕ ініціалізуємо SB і не зупиняємо плей
+      if(LF && LF.steps && LF.steps.length > 0) return;
       sbStopPlay();
-      // В lesson mode НЕ ініціалізуємо SB — lesson flow керує ним сам
-      if(LF && LF.steps) return;
       if(typeof SPRACHBAUSTEINE!=='undefined'){ initSB(); }
       else { var w=setInterval(function(){ if(typeof SPRACHBAUSTEINE!=='undefined'){ clearInterval(w); initSB(); } },200); }
     }
