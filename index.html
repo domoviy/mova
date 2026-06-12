@@ -751,6 +751,89 @@ body{
   flex:1;min-height:0;display:flex;flex-direction:column;
   padding:12px 14px;overflow:hidden;
 }
+#vocab-panel-def{
+  flex:1;min-height:0;display:flex;flex-direction:column;
+  padding:12px 14px;overflow:hidden;
+}
+
+/* Inline слот у реченні */
+.def-slot {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:64px;
+  height:32px;
+  border-bottom:2.5px solid rgba(201,168,76,.6);
+  padding:0 6px;
+  margin:0 2px;
+  vertical-align:middle;
+  border-radius:6px 6px 0 0;
+  transition:background .15s, border-color .15s;
+  cursor:default;
+  position:relative;
+}
+/* Порожній слот — пульсуючий підкреслення */
+.def-slot.empty {
+  min-width:64px;
+  background:rgba(201,168,76,.06);
+  border-bottom-color:rgba(201,168,76,.5);
+}
+/* Заповнений слот — стає кнопкою */
+.def-slot.filled {
+  background:rgba(201,168,76,.18);
+  border-bottom-color:var(--gold);
+  cursor:pointer;
+  color:var(--gold-lt);
+  font-weight:700;
+  font-size:15px;
+  font-family:'Figtree',sans-serif;
+  -webkit-tap-highlight-color:transparent;
+  touch-action:manipulation;
+  user-select:none;
+  -webkit-user-select:none;
+  border-radius:6px;
+  border:1.5px solid rgba(201,168,76,.5);
+  padding:2px 8px;
+}
+.def-slot.filled:active { opacity:.75; transform:scale(.96); }
+
+/* Drag-ghost для слота */
+.def-slot-ghost {
+  position:fixed;
+  z-index:9999;
+  pointer-events:none;
+  opacity:.88;
+  transform:scale(1.1);
+  box-shadow:0 8px 24px rgba(0,0,0,.28);
+  transition:none !important;
+  background:rgba(201,168,76,.3);
+  border:1.5px solid var(--gold);
+  color:var(--gold-lt);
+  font-weight:700;
+  font-size:15px;
+  font-family:'Figtree',sans-serif;
+  border-radius:6px;
+  padding:4px 10px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+/* Слот-підсвітка під час drag */
+.def-slot.drag-over {
+  background:rgba(201,168,76,.28);
+  border-color:var(--gold);
+}
+/* Після перевірки */
+.def-slot.slot-correct {
+  background:rgba(46,204,113,.18);
+  border-color:#2ecc71;
+  color:#27ae60;
+}
+.def-slot.slot-wrong {
+  background:rgba(231,76,60,.14);
+  border-color:#e74c3c;
+  color:#c0392b;
+}
 .tiles-question{
   background:var(--forest);border-radius:16px;
   padding:18px;margin-bottom:14px;
@@ -1590,6 +1673,7 @@ body.lesson-active .vocab-top{
           <button class="vtab" onclick="switchVocabTab(3)">🎯</button>
           <button class="vtab" onclick="switchVocabTab(4)">🧩</button>
           <button class="vtab" onclick="switchVocabTab(5)">❓</button>
+          <button class="vtab" onclick="switchVocabTab(6)">🔍</button>
         </div>
       </div>
 
@@ -1651,6 +1735,19 @@ body.lesson-active .vocab-top{
           <div class="quiz-q-text" id="quiz-q-text"></div>
         </div>
         <div class="quiz-options" id="quiz-options"></div>
+      </div>
+
+      <!-- DEF FILL-IN (tab 6) -->
+      <div id="vocab-panel-def" style="display:none">
+        <div class="tiles-question" id="def-question-block">
+          <div class="tiles-q-label" id="def-q-label">Доповни речення</div>
+          <div class="tiles-q-text" id="def-q-text" style="font-size:16px;color:#fff;line-height:1.9"></div>
+        </div>
+        <div class="tiles-bank" id="def-bank"></div>
+        <div class="tiles-check-row">
+          <div class="tiles-feedback" id="def-feedback" style="display:none"></div>
+          <button class="tiles-check-btn" id="def-check-btn" onclick="defCheck()"></button>
+        </div>
       </div>
     </div>
 
@@ -1909,7 +2006,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '104-b3effe1';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5095,6 +5192,355 @@ function tilesCheckAuto(){
   // Застаріла функція — більше не використовується (перевірка тільки по кнопці)
 }
 
+// ── DEF FILL-IN (tab 6) ───────────────────────────────────────
+// Показує речення з def.de з пропуском замість слів у <b>...</b>
+// Знизу — тайли з цих слів + кілька дистракторів
+
+let defState = {
+  cards:[], idx:0, current:null,
+  words:[],        // правильні слова по порядку
+  slots:[],        // [{slotEl, word|null}] — поточний стан слотів
+  fullSentence:''
+};
+
+function defGetDisplayLang(){ return 'de'; }
+
+function defGetPool(){
+  const cf = document.getElementById('vf-cat')?.value || 'all';
+  const lang = defGetDisplayLang();
+  return (typeof VOCAB !== 'undefined' ? VOCAB : [])
+    .filter(v => (cf === 'all' || v.cat === cf) && v.def?.[lang] && v.def[lang].includes('<b>'));
+}
+
+function startDefFill(){
+  let pool = defGetPool();
+  if(pool.length < 1){
+    document.getElementById('def-bank').innerHTML =
+      '<p style="color:var(--muted);padding:16px">' + (typeof t === 'function' ? t('match_empty') : 'Keine Karten verfügbar') + '</p>';
+    document.getElementById('def-q-text').innerHTML = '';
+    document.getElementById('def-q-label').textContent = '';
+    return;
+  }
+  pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
+  const chosen = pool.slice(0, Math.min(21, pool.length)).sort(() => Math.random() - .5).slice(0, 7);
+  defState = { cards: chosen, idx: 0, current: null, words: [], slots: [], fullSentence: '' };
+  defShowCard();
+}
+
+function defShowCard(){
+  const checkBtn = document.getElementById('def-check-btn');
+  if(checkBtn) checkBtn.style.display = 'none';
+
+  const card = defState.cards[defState.idx];
+  if(!card){ defShowResult(); return; }
+  defState.current = card;
+  defState.words = [];
+  defState.slots = [];
+  defState.checked = false;
+
+  const lang = defGetDisplayLang();
+  const defHtml = card.def?.[lang] || '';
+
+  const bMatches = [...defHtml.matchAll(/<b>(.*?)<\/b>/gi)];
+  if(!bMatches.length){ defState.idx++; defShowCard(); return; }
+
+  // Всі слова з усіх <b>-блоків по порядку
+  const correctWords = bMatches.flatMap(m => m[1].split(' ').filter(Boolean));
+  defState.words = correctWords;
+  defState.fullSentence = defHtml.replace(/<b>(.*?)<\/b>/gi, '$1').replace(/<[^>]+>/g, '').trim();
+
+  // Будуємо речення: кожне слово з <b> → окремий іменований слот
+  // Зберігаємо порядок слотів для збору відповіді
+  let slotIdx = 0;
+  let sentenceHtml = defHtml;
+  bMatches.forEach(m => {
+    const words = m[1].split(' ').filter(Boolean);
+    const slotsHtml = words.map(() => {
+      const id = 'def-slot-' + slotIdx++;
+      return `<span class="def-slot empty" id="${id}" data-slot-pos="${slotIdx-1}"></span>`;
+    }).join(' ');
+    sentenceHtml = sentenceHtml.replace(m[0], slotsHtml);
+  });
+  sentenceHtml = sentenceHtml.replace(/<(?!span|\/span)[^>]+>/gi, '');
+
+  const qLabel = uiLang === 'uk' ? 'Доповни речення (DE):' : uiLang === 'en' ? 'Complete the sentence (DE):' : 'Ergänze den Satz:';
+  document.getElementById('def-q-label').textContent = qLabel;
+  const qTextEl = document.getElementById('def-q-text');
+  qTextEl.innerHTML = sentenceHtml;
+
+  // Збираємо DOM-посилання на слоти
+  defState.slots = Array.from({length: slotIdx}, (_, i) => ({
+    el: document.getElementById('def-slot-' + i),
+    word: null
+  }));
+
+  // Вішаємо обробники на слоти
+  defState.slots.forEach((s, i) => {
+    if(!s.el) return;
+    s.el.addEventListener('click', () => defSlotClick(i));
+    s.el.addEventListener('touchstart', _defDragStart, {passive:true});
+  });
+
+  // Дистрактори
+  const pool = defGetPool();
+  const distWords = pool
+    .filter(v => v.id !== card.id)
+    .flatMap(v => {
+      const dHtml = v.def?.[lang] || '';
+      return [...dHtml.matchAll(/<b>(.*?)<\/b>/gi)].flatMap(m => m[1].split(' ').filter(Boolean));
+    })
+    .filter(w => !correctWords.includes(w) && w.length > 2)
+    .sort(() => Math.random() - .5)
+    .slice(0, Math.min(4, correctWords.length + 2));
+
+  const allTiles = [...correctWords, ...distWords].sort(() => Math.random() - .5);
+
+  const bank = document.getElementById('def-bank');
+  bank.innerHTML = '';
+  allTiles.forEach((w, i) => {
+    const tile = document.createElement('button');
+    tile.className = 'tile';
+    tile.textContent = w;
+    tile.dataset.word = w;
+    tile.dataset.idx = i;
+    tile.addEventListener('click', () => defBankTileClick(tile));
+    bank.appendChild(tile);
+  });
+}
+
+// Клік на тайл у банку → заповнює перший вільний слот
+function defBankTileClick(tile){
+  if(tile.classList.contains('used')) return;
+  if(defState.checked) return;
+  const freeSlot = defState.slots.find(s => s.word === null);
+  if(!freeSlot) return; // всі слоти заповнені
+  defFillSlot(freeSlot, tile.dataset.word, tile);
+  haptic.light();
+  defUpdateCheckBtn();
+}
+
+// Клік на заповнений слот → повертає слово в банк
+function defSlotClick(slotIdx){
+  if(defState.checked) return;
+  const slot = defState.slots[slotIdx];
+  if(!slot || slot.word === null) return;
+  defClearSlot(slot);
+  defUpdateCheckBtn();
+  haptic.light();
+}
+
+function defFillSlot(slot, word, bankTile){
+  slot.word = word;
+  slot.bankTile = bankTile;
+  bankTile.classList.add('used');
+  slot.el.textContent = word;
+  slot.el.className = 'def-slot filled';
+}
+
+function defClearSlot(slot){
+  if(!slot.word) return;
+  // Повертаємо bank-тайл
+  if(slot.bankTile) slot.bankTile.classList.remove('used');
+  slot.word = null;
+  slot.bankTile = null;
+  slot.el.textContent = '';
+  slot.el.className = 'def-slot empty';
+}
+
+function defUpdateCheckBtn(){
+  const allFilled = defState.slots.every(s => s.word !== null);
+  const checkBtn = document.getElementById('def-check-btn');
+  if(!checkBtn) return;
+  if(allFilled){
+    checkBtn.textContent = typeof t === 'function' ? t('btn_check') : 'Überprüfen';
+    checkBtn.style.display = 'block';
+  } else {
+    // Показуємо як тільки хоч один слот заповнений
+    const anyFilled = defState.slots.some(s => s.word !== null);
+    checkBtn.textContent = typeof t === 'function' ? t('btn_check') : 'Überprüfen';
+    checkBtn.style.display = anyFilled ? 'block' : 'none';
+  }
+}
+
+function defCheck(){
+  if(defState.checked) return;
+  const correct = defState.words;
+  const given   = defState.slots.map(s => s.word || '');
+  const isOk = given.join(' ') === correct.join(' ');
+  defState.checked = true;
+
+  // Підсвічуємо кожен слот
+  defState.slots.forEach((s, i) => {
+    if(!s.el) return;
+    if(s.word === null){ s.el.className = 'def-slot slot-wrong'; return; }
+    s.el.className = 'def-slot filled ' + (s.word === correct[i] ? 'slot-correct' : 'slot-wrong');
+  });
+
+  srsRate(defState.current.id, isOk ? 5 : 1);
+  saveCardPlay(defState.current.id);
+  haptic[isOk ? 'success' : 'error']();
+
+  try {
+    const savedRate = V.langSpeed?.de;
+    if(V.langSpeed) V.langSpeed.de = '100';
+    speak(defState.fullSentence, 'de', () => {
+      if(V.langSpeed && savedRate !== undefined) V.langSpeed.de = savedRate;
+    }, defState.current.id, 'def');
+  } catch(e) {}
+
+  defShowResultModal(isOk, defState.fullSentence);
+}
+
+function defShowResultModal(isOk, fullSentence){
+  document.getElementById('tiles-result-overlay')?.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'tiles-result-overlay';
+  overlay.className = 'tiles-result-overlay';
+  const greatLabels = { uk:'🎉 Чудово! Так тримати!', de:'🎉 Super! Weiter so!', en:'🎉 Excellent! Keep it up!' };
+  const btnLabel = isOk
+    ? (greatLabels[uiLang] || greatLabels.de)
+    : (uiLang==='uk'?'✓ Зрозуміло':uiLang==='en'?'✓ Got it':'✓ Verstanden');
+  // Повне речення з виділенням правильних слів золотим
+  const lang = defGetDisplayLang();
+  const rawHtml = defState.current?.def?.[lang] || fullSentence;
+  let highlighted = rawHtml
+    .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
+    .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
+  overlay.innerHTML = `
+    <div class="tiles-result-sheet">
+      <div class="tiles-result-icon">${isOk?'✅':'❌'}</div>
+      <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
+      <div class="tiles-result-correct" style="font-size:16px;line-height:1.55;text-align:center">${highlighted}</div>
+      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action">${btnLabel}</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('tiles-result-action').addEventListener('click', () => {
+    overlay.remove();
+    defState.idx++;
+    defShowCard();
+  });
+}
+
+function defShowResult(){
+  document.getElementById('def-q-text').innerHTML = '';
+  document.getElementById('def-q-label').textContent = '';
+  const checkBtn = document.getElementById('def-check-btn');
+  if(checkBtn) checkBtn.style.display = 'none';
+  const bankEl = document.getElementById('def-bank');
+  if(bankEl) bankEl.innerHTML = `
+    <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
+      <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Syne',sans-serif">🎉</div>
+      <p style="color:var(--muted);font-size:13px;margin:8px 0 16px">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
+      <button class="btn" onclick="startDefFill()" style="margin-right:8px">🔄 Nochmal</button>
+      <button class="btn" onclick="switchVocabTab(0)">📖 Karten</button>
+    </div>`;
+}
+
+// ── DRAG між слотами у def-fill ────────────────────────────────
+let _defDrag = null; // { slotIdx, ghost, offsetX, offsetY }
+
+function _defDragStart(e){
+  if(defState.checked) return;
+  const el = e.currentTarget;
+  const slotIdx = parseInt(el.dataset.slotPos);
+  const slot = defState.slots[slotIdx];
+  if(!slot || slot.word === null) return;
+  if(e.touches.length !== 1) return;
+
+  const t0 = e.touches[0];
+  const rect = el.getBoundingClientRect();
+  const offsetX = t0.clientX - rect.left;
+  const offsetY = t0.clientY - rect.top;
+
+  const ghost = document.createElement('div');
+  ghost.className = 'def-slot-ghost';
+  ghost.textContent = slot.word;
+  ghost.style.width  = rect.width  + 'px';
+  ghost.style.height = rect.height + 'px';
+  ghost.style.left   = (t0.clientX - offsetX) + 'px';
+  ghost.style.top    = (t0.clientY - offsetY) + 'px';
+  document.body.appendChild(ghost);
+
+  // Позначаємо слот як "тягнеться"
+  el.style.opacity = '0.3';
+
+  _defDrag = { slotIdx, ghost, offsetX, offsetY, fromWord: slot.word, fromBankTile: slot.bankTile };
+
+  document.addEventListener('touchmove',  _defDragMove,  {passive:false});
+  document.addEventListener('touchend',   _defDragEnd,   {passive:true});
+  document.addEventListener('touchcancel',_defDragCancel,{passive:true});
+  haptic.light();
+}
+
+function _defDragMove(e){
+  if(!_defDrag) return;
+  e.preventDefault();
+  const t0 = e.touches[0];
+  _defDrag.ghost.style.left = (t0.clientX - _defDrag.offsetX) + 'px';
+  _defDrag.ghost.style.top  = (t0.clientY - _defDrag.offsetY) + 'px';
+  // Підсвічуємо слот під пальцем
+  defState.slots.forEach(s => s.el && s.el.classList.remove('drag-over'));
+  const target = _defFindSlotAt(t0.clientX, t0.clientY);
+  if(target !== null && target !== _defDrag.slotIdx){
+    defState.slots[target]?.el?.classList.add('drag-over');
+  }
+}
+
+function _defDragEnd(e){
+  if(!_defDrag) return;
+  const t0 = e.changedTouches[0];
+  const targetIdx = _defFindSlotAt(t0.clientX, t0.clientY);
+
+  defState.slots.forEach(s => { if(s.el) s.el.classList.remove('drag-over'); });
+  defState.slots[_defDrag.slotIdx].el.style.opacity = '';
+
+  if(targetIdx !== null && targetIdx !== _defDrag.slotIdx){
+    const src  = defState.slots[_defDrag.slotIdx];
+    const dest = defState.slots[targetIdx];
+    // Міняємо місцями
+    const tmpWord = dest.word;
+    const tmpBank = dest.bankTile;
+    // Заповнюємо dest словом з src
+    if(tmpWord !== null){
+      defFillSlot(dest, src.word, src.bankTile);
+      defFillSlot(src, tmpWord, tmpBank);
+    } else {
+      defFillSlot(dest, src.word, src.bankTile);
+      src.word = null; src.bankTile = null;
+      src.el.textContent = '';
+      src.el.className = 'def-slot empty';
+    }
+    haptic.light();
+  }
+
+  _defDrag.ghost.remove();
+  _defDrag = null;
+  document.removeEventListener('touchmove',  _defDragMove);
+  document.removeEventListener('touchend',   _defDragEnd);
+  document.removeEventListener('touchcancel',_defDragCancel);
+  defUpdateCheckBtn();
+}
+
+function _defDragCancel(){
+  if(!_defDrag) return;
+  defState.slots[_defDrag.slotIdx].el.style.opacity = '';
+  _defDrag.ghost.remove();
+  _defDrag = null;
+  document.removeEventListener('touchmove',  _defDragMove);
+  document.removeEventListener('touchend',   _defDragEnd);
+  document.removeEventListener('touchcancel',_defDragCancel);
+}
+
+function _defFindSlotAt(x, y){
+  for(let i = 0; i < defState.slots.length; i++){
+    const el = defState.slots[i]?.el;
+    if(!el) continue;
+    const r = el.getBoundingClientRect();
+    if(x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) return i;
+  }
+  return null;
+}
+
 function tilesShowResult(){
   document.getElementById('tiles-q-text').textContent='';
   document.getElementById('tiles-q-label').textContent='';
@@ -5764,7 +6210,7 @@ function lfShowResult(){
 
   // Ховаємо всі панелі, показуємо result
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz'].forEach(id=>{
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.style.display='none';
   });
@@ -6466,11 +6912,13 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-choice').style.display = tab===3?'flex':'none';
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
+  document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   if(tab===1) renderVocabBrowse();
   if(tab===2 && !(LF && LF.steps[LF.step]==='matching')) startMatching();
   if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
   if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
   if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
+  if(tab===6) startDefFill();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
@@ -6745,11 +7193,13 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-choice').style.display = tab===3?'flex':'none';
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
+  document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   if(tab===1) renderVocabBrowse();
   if(tab===2 && !(LF && LF.steps[LF.step]==='matching')) startMatching();
   if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
   if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
   if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
+  if(tab===6) startDefFill();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
