@@ -843,12 +843,13 @@ body{
 .tiles-q-text{font-size:15px;color:#fff;line-height:1.5;font-family:'Figtree',sans-serif;}
 .tiles-q-text.mc-q-term{color:var(--gold-lt);font-weight:600;}
 .tiles-answer{
-  flex:1;min-height:64px;border-radius:14px;
+  flex:0 0 auto;min-height:64px;max-height:35vh;border-radius:14px;
   border:1.5px dashed var(--border);
   background:rgba(201,168,76,.04);
   padding:12px 14px;margin-bottom:8px;
   display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;
   overflow-y:auto;
+  box-sizing:border-box;
 }
 .tiles-answer.correct{border-color:#2ecc71;border-style:solid;background:rgba(46,204,113,.06);}
 .tiles-answer.wrong  {border-color:#e74c3c;border-style:solid;background:rgba(231,76,60,.06);}
@@ -904,6 +905,9 @@ body{
   flex:1;min-height:64px;
   display:flex;flex-wrap:wrap;gap:10px;padding:8px 0;
   align-content:flex-start;overflow-y:auto;
+  /* відступ знизу щоб плитки не ховались під fixed кнопкою Перевірити */
+  padding-bottom:calc(72px + var(--lm-nav, 0px) + env(safe-area-inset-bottom, 0px) + 8px);
+  box-sizing:border-box;
 }
 .tiles-check-row{
   flex-shrink:0;padding:8px 0 calc(var(--lm-nav)+env(safe-area-inset-bottom,0px)+8px);
@@ -2006,7 +2010,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '106-91bc1d9';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5268,6 +5272,9 @@ function defShowCard(){
     }).join(' ');
     sentenceHtml = sentenceHtml.replace(m[0], slotsHtml);
   });
+  // Розділові знаки відразу після слота — виносимо у окремий inline-span
+  // щоб браузер міг переносити рядок між слотом і комою/крапкою
+  sentenceHtml = sentenceHtml.replace(/(<\/span>)([,;:.!?])/g, '$1<span style="display:inline">$2</span>');
   sentenceHtml = sentenceHtml.replace(/<(?!span|\/span)[^>]+>/gi, '');
 
   const qLabel = t('lbl_def_fill');
@@ -7734,7 +7741,7 @@ function sbAutoPlay() {
 // ── FAVORITES ─────────────────────────────────────────────────
 // Use same storage key as vocab toggleFavorite: 'mova_' + id
 // ── SB Feedback Modal (bottom sheet) ──────────────────────────
-function sbShowFeedbackModal(ok, title, expl, onNext, card) {
+function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
   var existing = document.getElementById('sb-feedback-modal');
   if(existing) existing.remove();
 
@@ -7774,7 +7781,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card) {
       '</div>' +
       sentenceHtml +
       '<div class="sb-prac-feedback-modal-expl">'+expl+'</div>' +
-      '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn">'+(typeof t==='function'?t('btn_sb_weiter'):'Далі →')+'</button>' +
+      '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
     '</div>';
 
   document.body.appendChild(modal);
@@ -7956,10 +7963,15 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   var resultFail= explLang==='uk'?'Неправильно — правильно: ':explLang==='en'?'Wrong — correct: ':'Falsch — richtig: ';
   if(LF) {
     // Lesson mode: show bottom sheet modal
+    var maxCards = 2;
+    var isLastPrac = (SB.pracIdx + 1 >= Math.min(SB.pracQueue.length, maxCards));
+    var nextBtnLabel = isLastPrac
+      ? (uiLang==='uk'?'Завершити ✓':uiLang==='ru'?'Завершить ✓':uiLang==='en'?'Finish ✓':'Fertig ✓')
+      : (typeof t==='function' ? t('btn_sb_weiter') : 'Далі →');
     sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,'de'), expl, function(){
       sbHideFeedbackModal();
       sbPracNext();
-    }, card);
+    }, card, nextBtnLabel);
   } else {
     // Standalone mode: inline feedback block
     var fb=document.getElementById('sb-prac-feedback');
