@@ -2006,7 +2006,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '105-ba82804';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2160,6 +2160,7 @@ const I18N = {
     btn_sb_weiter:'Weiter →',
     btn_to_lessons:'🗺 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
+    lbl_def_fill:'Ergänze den Satz',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -2224,6 +2225,7 @@ const I18N = {
     btn_sb_weiter:'Далі →',
     btn_to_lessons:'🗺 До списку уроків',
     btn_check:'✓ Перевірити',
+    lbl_def_fill:'Доповни речення',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -2288,6 +2290,7 @@ const I18N = {
     btn_sb_weiter:'Next →',
     btn_to_lessons:'🗺 Lesson List',
     btn_check:'✓ Check',
+    lbl_def_fill:'Complete the sentence',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -2351,6 +2354,7 @@ const I18N = {
     btn_sb_weiter:'Далее →',
     btn_to_lessons:'🗺 К списку уроков',
     btn_check:'✓ Проверить',
+    lbl_def_fill:'Дополни предложение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -4268,9 +4272,12 @@ function _runLessonFlow(lesson, allCards){
     ? allSB.filter(s => sbCardIds.includes(s.id)).slice(0, 5)
     : [];
 
-  const hasTiles = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
-  const hasSB    = lessonSBCards.length > 0;
-  const steps = ['cards','matching'];
+  const hasTiles  = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
+  const hasSB     = lessonSBCards.length > 0;
+  const hasDefFill = flowCards.some(c => c.def?.de && c.def.de.includes('<b>'));
+  const steps = ['cards'];
+  if(hasDefFill) steps.push('def');
+  steps.push('matching');
   if(hasSB) steps.push('sb_learn');
   if(hasTiles) steps.push('tiles');
   if(hasSB) steps.push('sb_prac');
@@ -5263,7 +5270,7 @@ function defShowCard(){
   });
   sentenceHtml = sentenceHtml.replace(/<(?!span|\/span)[^>]+>/gi, '');
 
-  const qLabel = uiLang === 'uk' ? 'Доповни речення (DE):' : uiLang === 'en' ? 'Complete the sentence (DE):' : 'Ergänze den Satz:';
+  const qLabel = t('lbl_def_fill');
   document.getElementById('def-q-label').textContent = qLabel;
   const qTextEl = document.getElementById('def-q-text');
   qTextEl.innerHTML = sentenceHtml;
@@ -5426,6 +5433,12 @@ function defShowResult(){
   document.getElementById('def-q-label').textContent = '';
   const checkBtn = document.getElementById('def-check-btn');
   if(checkBtn) checkBtn.style.display = 'none';
+
+  if(LF && defState._lfMode){
+    lfStepDone('def', 1);
+    return;
+  }
+
   const bankEl = document.getElementById('def-bank');
   if(bankEl) bankEl.innerHTML = `
     <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
@@ -5704,6 +5717,7 @@ let LF = null;
 
 const LF_STEP_ICONS = {
   cards:    '🃏',
+  def:      '🔍',
   matching: '🔗',
   choice:   '🎯',
   tiles:    '🧩',
@@ -5714,14 +5728,15 @@ const LF_STEP_ICONS = {
 };
 
 const LF_STEP_LABELS = {
-  cards:    {de:'Karten',         uk:'Картки',        en:'Cards'},
-  matching: {de:'Paare',          uk:'Пари',           en:'Pairs'},
-  choice:   {de:'Auswahl',        uk:'Вибір',          en:'Choice'},
-  tiles:    {de:'Sätze',          uk:'Речення',        en:'Sentences'},
-  quiz:     {de:'Quiz',           uk:'Квіз',           en:'Quiz'},
-  sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція', en:'Language Pattern'},
-  sb_prac:  {de:'SB Übung',       uk:'Вправа',         en:'SB Practice'},
-  result:   {de:'Ergebnis',       uk:'Результат',      en:'Result'},
+  cards:    {de:'Karten',         uk:'Картки',             en:'Cards'},
+  def:      {de:'Lückentext',     uk:'Доповни речення',    en:'Fill-in'},
+  matching: {de:'Paare',          uk:'Пари',               en:'Pairs'},
+  choice:   {de:'Auswahl',        uk:'Вибір',              en:'Choice'},
+  tiles:    {de:'Sätze',          uk:'Речення',            en:'Sentences'},
+  quiz:     {de:'Quiz',           uk:'Квіз',               en:'Quiz'},
+  sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція',  en:'Language Pattern'},
+  sb_prac:  {de:'SB Übung',       uk:'Вправа',             en:'SB Practice'},
+  result:   {de:'Ergebnis',       uk:'Результат',          en:'Result'},
 };
 
 function startLessonFlow(lessonId){
@@ -5791,10 +5806,12 @@ function lfSetLessonMode(active){
   if(vtabs)     vtabs.style.display     = active ? 'none' : '';
   if(bottomNav) bottomNav.style.display = active ? 'none' : '';
   if(sortBtn)   sortBtn.style.display   = active ? 'none' : '';
-  // При виході з уроку — відновлюємо vocab-top (player)
+  // При виході з уроку — відновлюємо vocab-top і vplayer
   if(!active){
     const vocabTopRestore = document.querySelector('#view-vocab .vocab-top');
     if(vocabTopRestore) vocabTopRestore.style.display = '';
+    const vplayerRestore = document.querySelector('#view-vocab .vplayer');
+    if(vplayerRestore) vplayerRestore.style.display = '';
   }
   // Ховаємо ⚙️ і 🔥 під час уроку — щоб не можна було вийти випадково
   document.querySelectorAll('.h-icon-btn').forEach(btn => {
@@ -5829,7 +5846,13 @@ function lfGoStep(stepIdx){
     if(vocabTopEl) vocabTopEl.style.display = '';
     switchVocabTab(0);
     renderVocabCard();
+  } else if(step === 'def'){
+    switchVocabTab(6);
+    lfStartDef();
   } else if(step === 'matching'){
+    // Відновлюємо player якщо він був схований кроком def або tiles
+    const vpM = document.querySelector('#view-vocab .vplayer');
+    if(vpM) vpM.style.display = '';
     switchVocabTab(2);
     lfStartMatching();
   } else if(step === 'choice'){
@@ -5929,6 +5952,20 @@ function lfStartTiles(){
   if(sbNext) sbNext.remove();
   tilesState = { cards: chosen, idx: 0, current: null, answer: [], words: [], _lfMode: true };
   tilesShowCard();
+}
+
+function lfStartDef(){
+  if(!LF) return;
+  // Беремо з тих самих 5 карток уроку (LF.cards) — закріплення щойно вивченого
+  const pool = LF.cards.filter(c => c.def?.de && c.def.de.includes('<b>'));
+  if(!pool.length){ lfStepDone('def', 1); return; }
+  // Випадкова одна картка з пулу
+  const chosen = [pool[Math.floor(Math.random() * pool.length)]];
+  // Ховаємо player
+  const vplayer = document.querySelector('#view-vocab .vplayer');
+  if(vplayer) vplayer.style.display = 'none';
+  defState = { cards: chosen, idx: 0, current: null, words: [], slots: [], fullSentence: '', _lfMode: true };
+  defShowCard();
 }
 
 // ── РЕЗУЛЬТАТ ─────────────────────────────────────────────────
@@ -6918,7 +6955,7 @@ function switchVocabTab(tab){
   if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
   if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
   if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
-  if(tab===6) startDefFill();
+  if(tab===6 && !(LF && LF.steps[LF.step]==='def')) startDefFill();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
@@ -7199,7 +7236,7 @@ function switchVocabTab(tab){
   if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
   if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
   if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
-  if(tab===6) startDefFill();
+  if(tab===6 && !(LF && LF.steps[LF.step]==='def')) startDefFill();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
