@@ -1498,16 +1498,23 @@ body.lesson-active .vocab-top{
 <!-- ══ ONBOARDING — показується тільки при першому запуску ══ -->
 <div id="onboarding" style="display:none">
   <div class="ob-logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 80">
-      <path d="M 5,75 L 33,36 C 41,45 50,55 54,51
-               S 65,22 68,26 C 72,33 79,49 82,46
-               C 86,39 109,8 125,5"
-        fill="none" stroke="#c9a84c" stroke-width="9"
-        stroke-linecap="round" stroke-linejoin="round"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" style="height:110px;width:110px">
+      <path d="M 50,385 L 194,212 C 231,252 277,296 297,280 S 355,152 370,168
+               C 388,200 424,272 441,258 C 460,228 577,90 658,76"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 50,660 L 50,460 L 99,560 L 148,460 L 148,660"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 297,477.5 A 59.5,82.5 0 0 1 356.5,560 A 59.5,82.5 0 0 1 297,642.5
+               A 59.5,82.5 0 0 1 237.5,560 A 59.5,82.5 0 0 1 297,477.5"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 421.5,460 L 470.5,660 L 519.5,460"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 560,660 L 609,460 L 658,660"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="580.8" y1="575" x2="637.2" y2="575" stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
     </svg>
-    <span class="ob-logo-text">MOVA</span>
   </div>
-  <p class="ob-subtitle">Wählen Sie Ihre Sprache<br>Оберіть вашу мову · Choose your language · Выберите язык</p>
+  <p class="ob-subtitle">Wählen Sie Ihre Sprache<br>Оберіть вашу мову<br>Choose your language<br>Выберите язык</p>
   <div class="ob-cards">
     <div class="ob-card" onclick="selectOnboardLang('de')">
       <div class="ob-card-flag">🇩🇪</div>
@@ -1545,30 +1552,42 @@ body.lesson-active .vocab-top{
 </div>
 
 <!-- ══ EXAM DATE ONBOARDING — після мовного onboarding ══ -->
-<div id="sr-exam-onboarding" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--bg);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
+<div id="sr-exam-onboarding" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
   <div class="ob-logo">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 130 80">
-      <path d="M 5,75 L 33,36 C 41,45 50,55 54,51 S 65,22 68,26 C 72,33 79,49 82,46 C 86,39 109,8 125,5"
-        fill="none" stroke="#c9a84c" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" style="height:110px;width:110px">
+      <path d="M 50,385 L 194,212 C 231,252 277,296 297,280 S 355,152 370,168
+               C 388,200 424,272 441,258 C 460,228 577,90 658,76"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 50,660 L 50,460 L 99,560 L 148,460 L 148,660"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 297,477.5 A 59.5,82.5 0 0 1 356.5,560 A 59.5,82.5 0 0 1 297,642.5
+               A 59.5,82.5 0 0 1 237.5,560 A 59.5,82.5 0 0 1 297,477.5"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 421.5,460 L 470.5,660 L 519.5,460"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 560,660 L 609,460 L 658,660"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="580.8" y1="575" x2="637.2" y2="575" stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
     </svg>
-    <span class="ob-logo-text">MOVA</span>
   </div>
-  <div style="text-align:center;max-width:320px">
-    <div style="font-size:32px;margin-bottom:8px">📅</div>
-    <h2 style="font-size:20px;font-weight:800;color:var(--ink);margin-bottom:8px" id="sr-ob-title">Коли твій іспит?</h2>
-    <p style="font-size:14px;color:var(--muted);line-height:1.5" id="sr-ob-sub">Вкажи дату іспиту — MOVA адаптує план і нагадає скільки часу залишилось</p>
-  </div>
-  <div style="width:100%;max-width:320px;display:flex;flex-direction:column;gap:12px">
-    <input type="date" id="sr-ob-date-input"
-      style="width:100%;box-sizing:border-box;background:var(--paper);border:1.5px solid var(--gold);border-radius:12px;padding:14px 16px;font-size:16px;font-family:inherit;color:var(--ink);text-align:center;outline:none">
-    <button onclick="selectOnboardExamDate()"
-      style="width:100%;background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);border:none;border-radius:12px;padding:14px;font-size:15px;font-weight:700;font-family:inherit;cursor:pointer" id="sr-ob-btn">
-      Зберегти →
-    </button>
-    <button onclick="skipExamDateOnboarding()"
-      style="background:none;border:none;color:var(--muted);font-size:14px;font-family:inherit;cursor:pointer;padding:4px" id="sr-ob-skip">
-      Пропустити
-    </button>
+  <div style="width:100%;max-width:340px;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:24px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:20px">
+    <div style="text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">📅</div>
+      <h2 style="font-size:22px;font-weight:800;color:var(--gold);margin-bottom:8px;letter-spacing:-.3px" id="sr-ob-title">Коли твій іспит?</h2>
+      <p style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.55" id="sr-ob-sub">Вкажи дату іспиту — MOVA адаптує план і нагадає скільки часу залишилось</p>
+    </div>
+    <div style="width:100%;display:flex;flex-direction:column;gap:10px">
+      <input type="date" id="sr-ob-date-input"
+        style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.1);border:1.5px solid rgba(201,168,76,.6);border-radius:12px;padding:14px 16px;font-size:16px;font-family:inherit;color:#fff;text-align:center;outline:none;-webkit-appearance:none">
+      <button onclick="selectOnboardExamDate()"
+        style="width:100%;background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;letter-spacing:.3px" id="sr-ob-btn">
+        Зберегти →
+      </button>
+      <button onclick="skipExamDateOnboarding()"
+        style="background:none;border:none;color:rgba(255,255,255,.4);font-size:14px;font-family:inherit;cursor:pointer;padding:6px;text-align:center" id="sr-ob-skip">
+        Пропустити
+      </button>
+    </div>
   </div>
 </div>
 
@@ -1879,28 +1898,50 @@ body.lesson-active .vocab-top{
       </div>
     </div>
     <div id="view-settings" class="view">
-    <div class="sh"><h2>⚙️ Einstellungen</h2></div>
+    <div class="sh"><h2>⚙️ <span data-i18n="sec_settings">Einstellungen</span></h2></div>
 
-    <!-- Smart Review: Exam Date у Settings -->
+    <!-- 1. Дата іспиту -->
     <div class="ssec" id="ssec-sr-examdate">
-    <h3>🎯 Smart Review</h3>
+    <h3>📅 <span data-i18n="sec_examdate">Prüfungsdatum</span></h3>
     <div class="srow">
       <div class="srow-label"><label id="sr-settings-date-lbl">Prüfungstermin</label><small id="sr-settings-mode-lbl"></small></div>
       <input type="date" id="sr-settings-date-input" class="sr-date-input" style="background:var(--soft);border-color:var(--border);color:var(--ink);min-width:0;width:140px" onchange="srOnDateChange(this.value)">
     </div>
     </div>
 
-    <!-- Smart Review: Exam Dashboard -->
+    <!-- 2. Готовність до іспиту -->
     <div class="sr-dashboard-ssec" id="ssec-sr-dashboard">
-    <div class="sr-dash-title">🎯 Prüfungsbereitschaft / Готовність</div>
+    <div class="sr-dash-title">🎯 <span data-i18n="sec_readiness">Prüfungsbereitschaft</span></div>
     <div id="sr-dashboard-rows">
       <div class="sr-plan-empty">Noch keine Daten. Beginne mit dem Lernen.</div>
     </div>
     <div class="sr-dash-learned" id="sr-dash-learned-txt"></div>
     </div>
 
+    <!-- 3. Ціль і дані -->
     <div class="ssec">
-    <h3>Wiedergabe</h3>
+    <h3>📊 <span data-i18n="sec_goal_data">Lernziel & Daten</span></h3>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
+    </div>
+
+    <!-- 4. Мова інтерфейсу -->
+    <div class="ssec" id="ssec-lang">
+    <h3>🌐 <span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
+    <div style="display:flex;gap:8px;padding:4px 0;flex-direction:column">
+      <button class="btn ui-lang-btn active" data-lang="de" onclick="setUiLang('de')" style="font-size:15px;text-align:left;padding:14px 18px">🇩🇪 Deutsch</button>
+      <button class="btn ui-lang-btn" data-lang="uk" onclick="setUiLang('uk')" style="font-size:15px;text-align:left;padding:14px 18px">🇺🇦 Українська</button>
+      <button class="btn ui-lang-btn" data-lang="en" onclick="setUiLang('en')" style="font-size:15px;text-align:left;padding:14px 18px">🇬🇧 English</button>
+      <button class="btn ui-lang-btn" data-lang="ru" onclick="setUiLang('ru')" style="font-size:15px;text-align:left;padding:14px 18px">🇷🇺 Русский</button>
+    </div>
+    </div>
+
+    <!-- 5. Налаштування озвучування -->
+    <div class="ssec">
+    <h3>🔊 <span data-i18n="sec_playback">Wiedergabe</span></h3>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
     <div class="srow">
       <div class="srow-label"><label data-i18n="lbl_tempo_de">🇩🇪 Tempo</label><small data-i18n="sub_tempo_de">Deutsch</small></div>
@@ -1935,8 +1976,17 @@ body.lesson-active .vocab-top{
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_trate">Sprechrate</label><small data-i18n="sub_trate">Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
     </div>
 
+    <!-- 6. Курс -->
+    <div class="ssec" id="ssec-course">
+    <h3>📚 <span data-i18n="sec_course">Kurs</span></h3>
+    <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
+      <!-- Рендериться через renderCourseList() при ініті -->
+    </div>
+    </div>
+
+    <!-- 7. Голоси -->
     <div class="ssec">
-    <h3>TTS Stimmen</h3>
+    <h3>🎙 <span data-i18n="sec_voices">TTS Stimmen</span></h3>
     <div class="srow"><div class="srow-label"><label>🇩🇪 Deutsch</label><small>z.B. Anna</small></div><select id="vde" onchange="VP.de=this.value;saveVP()"></select></div>
     <div class="srow"><div class="srow-label"><label>🇬🇧 English</label><small>z.B. Ava, Siri</small></div><select id="ven" onchange="VP.en=this.value;saveVP()"></select></div>
     <div class="srow"><div class="srow-label"><label>🇺🇦 Українська</label><small>z.B. Lesya</small></div><select id="vuk" onchange="VP.uk=this.value;saveVP()"></select></div>
@@ -1945,38 +1995,9 @@ body.lesson-active .vocab-top{
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reset">Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
     </div>
 
+    <!-- 8. Налагодження -->
     <div class="ssec">
-    <h3>Lernziel & Streak</h3>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
-    </div>
-
-    <div class="ssec">
-    <h3>Daten</h3>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
-    </div>
-
-    <div class="ssec" id="ssec-course">
-    <h3>📚 Kurs / Курс / Course</h3>
-    <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
-      <!-- Рендериться через renderCourseList() при ініті -->
-    </div>
-    </div>
-
-        <div class="ssec" id="ssec-lang">
-    <h3 data-i18n="sec_lang">Sprache / Мова / Language</h3>
-    <div style="display:flex;gap:6px;padding:4px 0;flex-wrap:wrap">
-      <button class="btn ui-lang-btn active" data-lang="de" onclick="setUiLang('de')" style="flex:1;font-size:14px;min-width:80px">🇩🇪 Deutsch</button>
-      <button class="btn ui-lang-btn" data-lang="uk" onclick="setUiLang('uk')" style="flex:1;font-size:14px;min-width:80px">🇺🇦 Українська</button>
-      <button class="btn ui-lang-btn" data-lang="en" onclick="setUiLang('en')" style="flex:1;font-size:14px;min-width:80px">🇬🇧 English</button>
-      <button class="btn ui-lang-btn" data-lang="ru" onclick="setUiLang('ru')" style="flex:1;font-size:14px;min-width:80px">🇷🇺 Русский</button>
-    </div>
-    </div>
-
-    <div class="ssec">
-    <h3>🛠 Debug</h3>
+    <h3>🛠 <span data-i18n="sec_debug">Debug</span></h3>
     <div class="srow">
       <div class="srow-label"><label>Error Log</label><small>Переглянути помилки аудіо та JS</small></div>
       <button class="btn btn-s" onclick="showErrorLog()">📋 Log</button>
@@ -2136,7 +2157,9 @@ const I18N = {
     lbl_streak_reset:'Streak zurücksetzen',
     sec_data:'Daten',
     lbl_data_reset:'Karteistatistik löschen', sub_data_reset:'Play-Zähler zurücksetzen',
-    sec_lang:'Sprache / Мова / Language',
+    sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
+    sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
+    sec_voices:'Stimmen', sec_debug:'Fehlersuche', sec_lang:'Sprache',
     nav_lernpfad:'Path',
     lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
     lp_cards:'cards', lp_of:'of',
@@ -2168,7 +2191,7 @@ const I18N = {
     btn_sb_weiter:'Weiter →',
     btn_to_lessons:'🗺 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
-    lbl_def_fill:'Ergänze den Satz',
+    lbl_def_fill:'Ergänze den Satz', tab_def_short:'Lückentext',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -2205,7 +2228,9 @@ const I18N = {
     lbl_streak_reset:'Скинути серію',
     sec_data:'Дані',
     lbl_data_reset:'Очистити статистику', sub_data_reset:'Скинути лічильник',
-    sec_lang:'Sprache / Мова / Language',
+    sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
+    sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
+    sec_voices:'Голоси', sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
     nav_lernpfad:'Шлях',
     lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
     lp_cards:'карток', lp_of:'з',
@@ -2233,7 +2258,7 @@ const I18N = {
     btn_sb_weiter:'Далі →',
     btn_to_lessons:'🗺 До списку уроків',
     btn_check:'✓ Перевірити',
-    lbl_def_fill:'Доповни речення',
+    lbl_def_fill:'Доповни речення', tab_def_short:'Заповни',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -2270,7 +2295,9 @@ const I18N = {
     lbl_streak_reset:'Reset streak',
     sec_data:'Data',
     lbl_data_reset:'Clear card stats', sub_data_reset:'Reset play counter',
-    sec_lang:'Sprache / Мова / Language',
+    sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
+    sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
+    sec_voices:'Voices', sec_debug:'Debug', sec_lang:'Interface Language',
     nav_lernpfad:'Lernpfad',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
@@ -2298,7 +2325,7 @@ const I18N = {
     btn_sb_weiter:'Next →',
     btn_to_lessons:'🗺 Lesson List',
     btn_check:'✓ Check',
-    lbl_def_fill:'Complete the sentence',
+    lbl_def_fill:'Complete the sentence', tab_def_short:'Fill-in',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -2335,7 +2362,9 @@ const I18N = {
     lbl_streak_reset:'Сбросить серию',
     sec_data:'Данные',
     lbl_data_reset:'Очистить статистику', sub_data_reset:'Сбросить счётчик',
-    sec_lang:'Sprache / Мова / Language / Язык',
+    sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
+    sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
+    sec_voices:'Голоса', sec_debug:'Отладка', sec_lang:'Язык интерфейса',
     nav_lernpfad:'Путь',
     lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
     lp_cards:'карточек', lp_of:'из',
@@ -2362,7 +2391,7 @@ const I18N = {
     btn_sb_weiter:'Далее →',
     btn_to_lessons:'🗺 К списку уроков',
     btn_check:'✓ Проверить',
-    lbl_def_fill:'Дополни предложение',
+    lbl_def_fill:'Дополни предложение', tab_def_short:'Вставь',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -2410,7 +2439,6 @@ function applyI18n(){
     spans.forEach(s => { s.textContent = t(key); });
   });
   // Tabs
-  // Таби — emoji + назва для активної
   const tabs = document.querySelectorAll('#vocab-tabs .vtab');
   const tabDefs = [
     {emoji:'🃏', key:'tab_card'},
@@ -2419,17 +2447,13 @@ function applyI18n(){
     {emoji:'🎯', key:'tab_choice_short'},
     {emoji:'🧩', key:'tab_tiles_short'},
     {emoji:'❓', key:'quiz_title'},
+    {emoji:'🔍', key:'tab_def_short'},
   ];
   tabs.forEach((tab,i)=>{ if(tabDefs[i]) tab.textContent=tabDefs[i].emoji; });
   // Favorites empty
   const fe = qsel('fav-empty'); if(fe) fe.innerHTML = t('favs_empty');
-  // Settings heading
-  const sh = document.querySelector('#view-settings .sh h2'); if(sh) sh.textContent = t('settings_title');
-  // Section headers
-  const secs = document.querySelectorAll('#view-settings .ssec h3');
-  const secKeys = ['sec_playback','sec_voices','sec_streak','sec_data','sec_lang'];
-  secs.forEach((el,i)=>{ if(secKeys[i]) el.textContent=t(secKeys[i]); });
-  // Labels by data-i18n attribute
+  // Settings heading — через data-i18n span, не перезаписуємо вручну
+  // Labels by data-i18n attribute (підхоплює і h3 span, і все інше)
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     el.textContent = t(el.dataset.i18n);
   });
