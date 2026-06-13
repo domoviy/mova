@@ -79,18 +79,22 @@ body{
   font-family:'Inter',sans-serif;
   background:var(--cream);color:var(--ink);font-size:14px;
   display:flex;flex-direction:column;
-  height:100dvh;overflow:hidden;
+  height:100dvh;height:calc(var(--real-vh, 100dvh));overflow:hidden;
   overscroll-behavior:none;
 }
 /* lesson-flow-bar is in flow — no padding-top needed on views */
 
-/* ══ PORTRAIT LOCK ══ */
+/* ══ PORTRAIT LOCK — CSS fallback для iOS Safari/PWA ══
+   screen.orientation.lock() не працює в iOS Safari.
+   При landscape повертаємо весь body на 90° щоб виглядав як portrait. */
 @media(orientation:landscape){
   body{
+    position:fixed;
+    top:0;left:0;
     width:100vh;
     height:100vw;
-    transform-origin:top left;
-    transform:rotate(90deg) translateY(-100%);
+    transform-origin:0 0;
+    transform:rotate(90deg) translateX(0) translateY(-100%);
     overflow:hidden;
   }
 }
@@ -285,7 +289,7 @@ body{
    --lm-* vars are zeroed in lesson mode so the card expands automatically. */
 #view-vocab .fc-area{
   height:calc(
-    100dvh
+    var(--real-vh, 100dvh)
     - var(--hdr-h) - var(--safe-t)  /* header */
     - var(--lf-bar-h, 0px)           /* lesson-flow-bar (0 when inactive) */
     - 75px                            /* vplayer */
@@ -1130,7 +1134,7 @@ body{
   padding-bottom:env(safe-area-inset-bottom, 0px);
   /* Розтягуємо на весь viewport включно з notch/dynamic island */
   margin-top:calc(-1 * env(safe-area-inset-top, 0px));
-  min-height:100dvh;
+  min-height:var(--real-vh, 100dvh);
   z-index:9999;
   background:var(--forest);
   background-image:
@@ -1192,7 +1196,7 @@ body.lesson-active .vocab-top{
    --lm-chips / --lm-tabs are 0 in lesson mode (same as vocab). */
 #sb-panel-learn .fc-area {
   height:calc(
-    100dvh
+    var(--real-vh, 100dvh)
     - var(--hdr-h) - var(--safe-t)
     - var(--lf-bar-h, 0px)
     - 75px                         /* vplayer */
@@ -1406,7 +1410,7 @@ body.lesson-active .vocab-top{
 /* fc-area: одна формула для обох вкладок */
 .card-panel .fc-area {
   height:calc(
-    100dvh
+    var(--real-vh, 100dvh)
     - var(--hdr-h) - var(--safe-t)
     - var(--lf-bar-h,0px)
     - 75px
@@ -1432,6 +1436,28 @@ body.lesson-active .vocab-top{
 #sb-panel-learn { flex:1; min-height:0; display:flex; flex-direction:column; padding:0 14px; }
 #sb-panel-learn .fc-area { height:unset; flex:none; margin-bottom:var(--gap); }
 </style>
+<!-- Real viewport height fix для iOS PWA (полоска знизу) -->
+<script>
+(function(){
+  function setRealVh(){
+    // window.innerHeight — реальна висота без браузерного chrome на iOS
+    var h = window.innerHeight;
+    document.documentElement.style.setProperty('--real-vh', h + 'px');
+  }
+  setRealVh();
+  window.addEventListener('resize', setRealVh);
+  // Додатково: після завантаження і після зміни орієнтації
+  window.addEventListener('orientationchange', function(){
+    // Затримка бо iOS повідомляє до завершення анімації
+    setTimeout(setRealVh, 200);
+    setTimeout(setRealVh, 500);
+  });
+  // Візуальний viewport API — найточніший на мобільних
+  if(window.visualViewport){
+    window.visualViewport.addEventListener('resize', setRealVh);
+  }
+})();
+</script>
 </head>
 <body>
 
@@ -1790,7 +1816,7 @@ body.lesson-active .vocab-top{
       <!-- Smart Review: Daily Plan + Profile -->
       <div id="sr-daily-plan"></div>
       <div class="lp-header">
-        <h2>🗺 Lernpfad</h2>
+        <h2>🗺 <span data-i18n="nav_lernpfad">Lernpfad</span></h2>
         <small id="lp-overall-text"></small>
         <div class="lp-progress-bar"><div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div></div>
       </div>
@@ -2180,7 +2206,7 @@ const I18N = {
     match_empty:'Keine Karten in dieser Kategorie',
     match_few:'Zu wenige Karten — mindestens',
     match_needed:'nötig',
-    lp_title:'🗺 Lernpfad',
+    lp_title:'🗺',
     lp_overall_loading:'Lädt…',
     lp_no_lessons:'Keine Lektionen verfügbar',
     lp_module_prefix:'Modul',
@@ -3147,8 +3173,9 @@ async function init(){
   initSwipe();
   // Відкриваємо Lernpfad за замовчуванням
   showView('lernpfad');
-  // PWA portrait lock via API (працює тільки в installed PWA)
-  try{await screen.orientation?.lock?.('portrait');}catch(e){}
+  // PWA portrait lock — маніфест робить це автоматично для встановленого PWA
+  // JS API як додатковий fallback (не працює в Safari, але є CSS @media landscape)
+  try{ screen.orientation?.lock?.('portrait').catch(()=>{}); }catch(e){}
 }
 
 // ── SPLASH — запускається одразу, незалежно від init() ───────
@@ -4472,9 +4499,9 @@ function renderLernpfad(){
   courseReviewEl.className = 'lp-chapter open';
   const courseRevCard = renderReviewCard(allChapterNums, 'course', courseUnlocked);
   const courseChTitle = {
-    de:'🔁 Kurswiederholung', uk:'🔁 Повторення курсу',
-    en:'🔁 Course Review', ru:'🔁 Повторение курса'
-  }[uiLang]||'🔁 Kurswiederholung';
+    de:'Kurswiederholung', uk:'Повторення курсу',
+    en:'Course Review', ru:'Повторение курса'
+  }[uiLang]||'Kurswiederholung';
   const courseChSub = {
     de:'Alle Kapitel · SRS-basiert', uk:'Всі розділи · SRS-підхід',
     en:'All chapters · SRS-based', ru:'Все разделы · SRS-подход'
