@@ -5828,88 +5828,73 @@ function spStartRecord(){
   haptic.light();
 
   // Затримка щоб браузер гарантовано закрив попередній аудіо-сеанс
-  // (особливо важливо після першого слова — onend може ще не спрацювати)
   setTimeout(() => {
-    const rec = new SR();
-    rec.lang = 'de-DE';
-    rec.continuous = false;
-    rec.interimResults = true;
-    rec.maxAlternatives = 1;
-    spState.recognition = rec;
-
-    let _finalReceived = false;
-
-    rec.onresult = (e) => {
-      let interimTranscript = '';
-      let finalTranscript = '';
-      for(let i = e.resultIndex; i < e.results.length; i++){
-        const txt = e.results[i][0]?.transcript || '';
-        if(e.results[i].isFinal){ finalTranscript += txt; }
-        else { interimTranscript += txt; }
-      }
-      if(interimTranscript) spHighlightLive(interimTranscript);
-      if(finalTranscript && !_finalReceived){
-        _finalReceived = true;
-        spState.recognition = null;
-        spState.recording = false;
-        spShowResult(finalTranscript, spState.cards[spState.idx]);
-      }
-    };
-
-    rec.onerror = (e) => {
-      spState.recording = false;
-      spState.recognition = null;
-      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-      if(e.error === 'aborted') return;
-      const msg = e.error === 'no-speech'
-        ? (ul==='uk'?'Нічого не почуто — спробуй ще':ul==='en'?'No speech detected':'Nichts gehört')
-        : e.error === 'not-allowed'
-        ? (ul==='uk'?'Немає доступу до мікрофона':ul==='en'?'Microphone access denied':'Mikrofon gesperrt')
-        : (ul==='uk'?'Помилка: '+e.error:'Fehler: '+e.error);
-      if(lbl) lbl.textContent = msg;
-    };
-
-    rec.onend = () => {
-      spState.recording = false;
-      if(mb && mb.classList.contains('recording')){
-        mb.classList.remove('recording');
-        mb.textContent = '🎤';
-      }
-    };
-
-    try {
-      rec.start();
-    } catch(e){
-      // InvalidStateError — браузер ще не готовий, повторюємо через 300мс
-      if(e.name === 'InvalidStateError'){
-        spState.recognition = null;
-        setTimeout(() => {
-          if(!spState.recording) return;
-          const rec2 = new SR();
-          rec2.lang = 'de-DE';
-          rec2.continuous = false;
-          rec2.interimResults = true;
-          rec2.maxAlternatives = 1;
-          spState.recognition = rec2;
-          // Копіюємо ті самі обробники
-          rec2.onresult = rec.onresult;
-          rec2.onerror  = rec.onerror;
-          rec2.onend    = rec.onend;
-          try { rec2.start(); } catch(e2){
-            spState.recording = false;
-            spState.recognition = null;
-            if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-            if(lbl) lbl.textContent = ul==='uk'?'Спробуй ще раз':'Try again';
-          }
-        }, 300);
-      } else {
-        spState.recording = false;
-        spState.recognition = null;
-        if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-        if(lbl) lbl.textContent = ul==='uk'?'Помилка запуску':'Start error';
-      }
-    }
+    spTryStart(SR, mb, lbl, ul, 0);
   }, 150);
+}
+
+function spTryStart(SR, mb, lbl, ul, attempt){
+  if(!spState.recording) return; // скасовано поки чекали
+
+  const rec = new SR();
+  rec.lang = 'de-DE';
+  rec.continuous = false;
+  rec.interimResults = true;
+  rec.maxAlternatives = 1;
+  spState.recognition = rec;
+
+  let _done = false;
+
+  rec.onresult = (e) => {
+    let interim = '', final = '';
+    for(let i = e.resultIndex; i < e.results.length; i++){
+      const txt = e.results[i][0]?.transcript || '';
+      if(e.results[i].isFinal) final += txt;
+      else interim += txt;
+    }
+    if(interim) spHighlightLive(interim);
+    if(final && !_done){
+      _done = true;
+      spState.recognition = null;
+      spState.recording = false;
+      spShowResult(final, spState.cards[spState.idx]);
+    }
+  };
+
+  rec.onerror = (e) => {
+    if(e.error === 'aborted') return;
+    spState.recording = false;
+    spState.recognition = null;
+    if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+    const msg = e.error === 'no-speech'
+      ? (ul==='uk'?'Нічого не почуто — спробуй ще':ul==='en'?'No speech detected':'Nichts gehört')
+      : e.error === 'not-allowed'
+      ? (ul==='uk'?'Немає доступу до мікрофона':ul==='en'?'Microphone access denied':'Mikrofon gesperrt')
+      : (ul==='uk'?'Помилка: '+e.error:'Fehler: '+e.error);
+    if(lbl) lbl.textContent = msg;
+  };
+
+  rec.onend = () => {
+    spState.recording = false;
+    if(mb && mb.classList.contains('recording')){
+      mb.classList.remove('recording');
+      mb.textContent = '🎤';
+    }
+  };
+
+  try {
+    rec.start();
+  } catch(e){
+    spState.recognition = null;
+    if(e.name === 'InvalidStateError' && attempt < 3){
+      // Браузер ще зайнятий — повторюємо
+      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 300);
+    } else {
+      spState.recording = false;
+      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+      if(lbl) lbl.textContent = ul==='uk'?'Спробуй ще раз':'Try again';
+    }
+  }
 }
 
 function spNormalize(str){
