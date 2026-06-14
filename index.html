@@ -2093,6 +2093,10 @@ body.lesson-active .vocab-top{
       <div class="srow-label"><label>Error Log</label><small>Переглянути помилки аудіо та JS</small></div>
       <button class="btn btn-s" onclick="showErrorLog()">📋 Log</button>
     </div>
+    <div class="srow">
+      <div class="srow-label"><label>🎤 Speech Log</label><small>Лог розпізнавання мови</small></div>
+      <button class="btn btn-s" onclick="showSpeechLog()">📋 Log</button>
+    </div>
     </div>
 
     <!-- Версія додатку -->
@@ -4738,6 +4742,29 @@ window.addEventListener('unhandledrejection', e=>{
   logErr('unhandledrejection', String(e.reason).slice(0,200));
 });
 
+function showSpeechLog(){
+  document.getElementById('err-log-overlay')?.remove();
+  const txt = spLog.length ? spLog.join('\n') : '(empty — no speech attempts yet)';
+  const overlay = document.createElement('div');
+  overlay.id = 'err-log-overlay';
+  overlay.style.cssText = `position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.9);
+    display:flex;flex-direction:column;padding:calc(16px + env(safe-area-inset-top,0px)) 16px 16px;box-sizing:border-box;`;
+  overlay.innerHTML = `
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
+      <span style="color:#c9a84c;font-weight:700;font-size:15px">🎤 Speech Log</span>
+      <div style="display:flex;gap:8px">
+        <button onclick="spLog.length&&navigator.clipboard?.writeText(spLog.join('\\n')).then(()=>notify('Copied!'))"
+          style="background:#333;border:none;color:#fff;padding:6px 12px;border-radius:8px;font-family:inherit;font-size:13px;cursor:pointer">Copy</button>
+        <button onclick="spLog.length=0;document.getElementById('err-log-overlay').remove();notify('Cleared')"
+          style="background:#333;border:none;color:#fff;padding:6px 12px;border-radius:8px;font-family:inherit;font-size:13px;cursor:pointer">Clear</button>
+        <button onclick="document.getElementById('err-log-overlay').remove()"
+          style="background:#c9a84c;border:none;color:#0d2b1a;padding:6px 12px;border-radius:8px;font-weight:700;font-family:inherit;font-size:13px;cursor:pointer">✕</button>
+      </div>
+    </div>
+    <pre style="flex:1;overflow:auto;color:#7fff7f;font-size:11px;line-height:1.6;white-space:pre-wrap;word-break:break-all;font-family:monospace;background:#111;padding:12px;border-radius:8px;margin:0">${txt}</pre>`;
+  document.body.appendChild(overlay);
+}
+
 function showErrorLog(){
   // Видаляємо старий overlay якщо є
   document.getElementById('err-log-overlay')?.remove();
@@ -5827,14 +5854,31 @@ function spStartRecord(){
     ul === 'ru' ? 'Слушаю… говорите сейчас' : 'Höre zu… sprechen Sie jetzt';
   haptic.light();
 
-  // Затримка щоб браузер гарантовано закрив попередній аудіо-сеанс
-  setTimeout(() => {
-    spTryStart(SR, mb, lbl, ul, 0);
-  }, 150);
+  // iOS PWA: rec.start() має викликатись без setTimeout (user gesture chain)
+  // Але abort попереднього потребує мікро-затримки
+  const delay = spState.recognition ? 200 : 0;
+  setTimeout(() => spTryStart(SR, mb, lbl, ul, 0), delay);
+}
+
+const spLog = []; // лог для діагностики
+function spL(msg){ 
+  const entry = `[${new Date().toISOString().slice(11,23)}] ${msg}`;
+  spLog.push(entry); 
+  console.log('[SP]', msg);
+  // Показуємо лог у мітці якщо є помилка
+  if(msg.includes('ERROR') || msg.includes('err')){
+    const lbl = document.getElementById('sp-mic-label');
+    if(lbl) lbl.textContent = msg;
+  }
 }
 
 function spTryStart(SR, mb, lbl, ul, attempt){
-  if(!spState.recording) return; // скасовано поки чекали
+  if(!spState.recording){
+    spL(`cancelled before start (attempt ${attempt})`);
+    return;
+  }
+
+  spL(`start attempt ${attempt}`);
 
   const rec = new SR();
   rec.lang = 'de-DE';
@@ -5852,9 +5896,10 @@ function spTryStart(SR, mb, lbl, ul, attempt){
       if(e.results[i].isFinal) final += txt;
       else interim += txt;
     }
-    if(interim) spHighlightLive(interim);
+    if(interim) { spL(`interim: "${interim}"`); spHighlightLive(interim); }
     if(final && !_done){
       _done = true;
+      spL(`final: "${final}"`);
       spState.recognition = null;
       spState.recording = false;
       spShowResult(final, spState.cards[spState.idx]);
@@ -5862,6 +5907,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
   };
 
   rec.onerror = (e) => {
+    spL(`ERROR: ${e.error} (attempt ${attempt})`);
     if(e.error === 'aborted') return;
     spState.recording = false;
     spState.recognition = null;
@@ -5875,6 +5921,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
   };
 
   rec.onend = () => {
+    spL(`onend (done=${_done}, attempt=${attempt})`);
     spState.recording = false;
     if(mb && mb.classList.contains('recording')){
       mb.classList.remove('recording');
@@ -5884,11 +5931,14 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 
   try {
     rec.start();
+    spL(`rec.start() OK`);
   } catch(e){
+    spL(`rec.start() threw: ${e.name} — ${e.message} (attempt ${attempt})`);
     spState.recognition = null;
-    if(e.name === 'InvalidStateError' && attempt < 3){
-      // Браузер ще зайнятий — повторюємо
-      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 300);
+    if(e.name === 'InvalidStateError' && attempt < 4){
+      const retryDelay = 200 * (attempt + 1);
+      spL(`retry in ${retryDelay}ms`);
+      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), retryDelay);
     } else {
       spState.recording = false;
       if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
