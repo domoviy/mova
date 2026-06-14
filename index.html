@@ -1834,7 +1834,6 @@ body.lesson-active .vocab-top{
           <div id="sp-term-label" style="font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.8px;text-transform:uppercase">Begriff</div>
           <div id="sp-term" style="font-size:22px;font-weight:800;color:#fff;line-height:1.4;word-break:break-word"></div>
           <div id="sp-transl" style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px"></div>
-          <div id="sp-tap-hint" style="font-size:11px;color:rgba(255,255,255,.3);margin-top:4px">🔊</div>
         </div>
 
         <!-- Кнопка запису -->
@@ -5828,7 +5827,8 @@ function spStartRecord(){
     ul === 'ru' ? 'Слушаю… говорите сейчас' : 'Höre zu… sprechen Sie jetzt';
   haptic.light();
 
-  // Невелика затримка щоб браузер встиг закрити попередній аудіо-сеанс
+  // Затримка щоб браузер гарантовано закрив попередній аудіо-сеанс
+  // (особливо важливо після першого слова — onend може ще не спрацювати)
   setTimeout(() => {
     const rec = new SR();
     rec.lang = 'de-DE';
@@ -5860,7 +5860,7 @@ function spStartRecord(){
       spState.recording = false;
       spState.recognition = null;
       if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-      if(e.error === 'aborted') return; // тихо ігноруємо
+      if(e.error === 'aborted') return;
       const msg = e.error === 'no-speech'
         ? (ul==='uk'?'Нічого не почуто — спробуй ще':ul==='en'?'No speech detected':'Nichts gehört')
         : e.error === 'not-allowed'
@@ -5880,12 +5880,36 @@ function spStartRecord(){
     try {
       rec.start();
     } catch(e){
-      spState.recording = false;
-      spState.recognition = null;
-      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-      if(lbl) lbl.textContent = ul==='uk'?'Помилка запуску':'Start error';
+      // InvalidStateError — браузер ще не готовий, повторюємо через 300мс
+      if(e.name === 'InvalidStateError'){
+        spState.recognition = null;
+        setTimeout(() => {
+          if(!spState.recording) return;
+          const rec2 = new SR();
+          rec2.lang = 'de-DE';
+          rec2.continuous = false;
+          rec2.interimResults = true;
+          rec2.maxAlternatives = 1;
+          spState.recognition = rec2;
+          // Копіюємо ті самі обробники
+          rec2.onresult = rec.onresult;
+          rec2.onerror  = rec.onerror;
+          rec2.onend    = rec.onend;
+          try { rec2.start(); } catch(e2){
+            spState.recording = false;
+            spState.recognition = null;
+            if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+            if(lbl) lbl.textContent = ul==='uk'?'Спробуй ще раз':'Try again';
+          }
+        }, 300);
+      } else {
+        spState.recording = false;
+        spState.recognition = null;
+        if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+        if(lbl) lbl.textContent = ul==='uk'?'Помилка запуску':'Start error';
+      }
     }
-  }, 80);
+  }, 150);
 }
 
 function spNormalize(str){
