@@ -5787,6 +5787,9 @@ function spSpeakTerm(){
   const lbl = document.getElementById('sp-mic-label');
   const ul  = typeof uiLang !== 'undefined' ? uiLang : 'uk';
 
+  // Зупиняємо будь-яке поточне аудіо
+  try{ getSharedAudio()?.pause(); }catch(e){}
+
   // Блокуємо мікрофон поки грає аудіо
   if(mb){ mb.style.opacity = '0.4'; mb.style.pointerEvents = 'none'; }
   if(lbl) lbl.textContent = ul==='uk'?'Слухай уважно…':ul==='en'?'Listen carefully…':'Hör zu…';
@@ -5795,12 +5798,12 @@ function spSpeakTerm(){
   const gen = ++playGen;
 
   playAzureAudio(url, () => {
-    // mp3 завершив — чекаємо 300мс і розблоковуємо мікрофон
+    // mp3 завершив — чекаємо 800мс щоб iOS повністю звільнив аудіо-сесію
     setTimeout(() => {
       if(mb){ mb.style.opacity = ''; mb.style.pointerEvents = ''; }
       if(lbl) lbl.textContent =
         ul==='uk'?'Натисни щоб говорити':ul==='en'?'Tap to speak':'Tippe zum Sprechen';
-    }, 300);
+    }, 800);
   }, gen);
 }
 
@@ -5857,6 +5860,13 @@ function spStartRecord(){
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const mb = document.getElementById('sp-mic-btn');
   const lbl = document.getElementById('sp-mic-label');
+
+  // Зупиняємо аудіо перед SR — iOS не може одночасно
+  try{
+    const a = getSharedAudio();
+    if(a && !a.paused){ a.pause(); a.currentTime = 0; }
+    playGen++; // скасовуємо будь-яке поточне відтворення
+  }catch(e){}
 
   // Встановлюємо UI і стан ОДРАЗУ (до setTimeout)
   spState.recording = true;
@@ -5958,9 +5968,9 @@ function spTryStart(SR, mb, lbl, ul, attempt){
     // iOS: якщо onend спрацював дуже швидко і нічого не розпізнано —
     // це конфлікт з TTS або системний блок. Повторюємо автоматично.
     if(!_done && elapsed < 500 && attempt < 3){
-      spL(`quick-end detected, auto-retry in 600ms`);
-      spState.recording = true; // тримаємо UI в стані запису
-      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 600);
+      spL(`quick-end detected, auto-retry in 900ms`);
+      spState.recording = true;
+      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 900);
       return;
     }
 
