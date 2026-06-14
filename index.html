@@ -764,6 +764,22 @@ body{
   padding:12px 14px;overflow:hidden;
 }
 
+/* ── SPEECH PRACTICE ─────────────────────────────────────────── */
+#vocab-panel-speech{flex:1;min-height:0;overflow-y:auto;flex-direction:column;gap:12px;padding:12px 14px}
+#sp-mic-btn.recording{
+  background:rgba(231,76,60,.15);border-color:#e74c3c;
+  animation:sp-pulse 1.2s ease-in-out infinite;
+}
+@keyframes sp-pulse{
+  0%,100%{box-shadow:0 0 0 0 rgba(231,76,60,.4)}
+  50%{box-shadow:0 0 0 14px rgba(231,76,60,0)}
+}
+#sp-mic-btn.success{border-color:#2ecc71;background:rgba(46,204,113,.12)}
+#sp-mic-btn.fail   {border-color:#e74c3c;background:rgba(231,76,60,.10)}
+.sp-word-ok {color:#27ae60;font-weight:700}
+.sp-word-meh{color:#e67e22;font-weight:600}
+.sp-word-bad{color:#e74c3c;font-weight:600;text-decoration:underline dotted}
+
 /* Inline слот у реченні */
 .def-slot {
   display:inline-flex;
@@ -1727,6 +1743,7 @@ body.lesson-active .vocab-top{
           <button class="vtab" onclick="switchVocabTab(4)">🧩</button>
           <button class="vtab" onclick="switchVocabTab(5)">❓</button>
           <button class="vtab" onclick="switchVocabTab(6)">🔍</button>
+          <button class="vtab" onclick="switchVocabTab(7)">🎤</button>
         </div>
       </div>
 
@@ -1801,6 +1818,55 @@ body.lesson-active .vocab-top{
           <div class="tiles-feedback" id="def-feedback" style="display:none"></div>
           <button class="tiles-check-btn" id="def-check-btn" onclick="defCheck()"></button>
         </div>
+      </div>
+
+      <!-- SPEECH PRACTICE (tab 7) -->
+      <div id="vocab-panel-speech" style="display:none">
+
+        <!-- Прогрес -->
+        <div id="sp-progress" style="display:flex;justify-content:space-between;align-items:center">
+          <span id="sp-counter" style="font-size:13px;color:var(--muted)">1 / 7</span>
+          <span id="sp-score-chip" style="font-size:13px;font-weight:700;color:var(--gold)"></span>
+        </div>
+
+        <!-- Картка з терміном -->
+        <div id="sp-card" style="background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">
+          <div id="sp-term-label" style="font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.8px;text-transform:uppercase">Begriff</div>
+          <div id="sp-term" style="font-size:22px;font-weight:800;color:#fff;line-height:1.3"></div>
+          <div id="sp-transl" style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px"></div>
+          <button id="sp-listen-btn" onclick="spListen()" style="margin-top:6px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);color:var(--gold);border-radius:10px;padding:6px 14px;font-size:13px;font-family:inherit;cursor:pointer">🔊 Послухати</button>
+        </div>
+
+        <!-- Кнопка запису -->
+        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+          <button id="sp-mic-btn" onclick="spToggleRecord()"
+            style="width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent">
+            🎤
+          </button>
+          <div id="sp-mic-label" style="font-size:13px;color:var(--muted);text-align:center" data-i18n="sp_tap_to_speak">Натисни щоб говорити</div>
+        </div>
+
+        <!-- Результат розпізнавання -->
+        <div id="sp-result-box" style="display:none;background:var(--soft);border-radius:16px;padding:16px;border:1.5px solid var(--border)">
+          <div style="font-size:11px;color:var(--muted);letter-spacing:.5px;margin-bottom:6px" data-i18n="sp_you_said">Ви сказали:</div>
+          <div id="sp-heard" style="font-size:16px;font-weight:600;color:var(--ink);margin-bottom:12px;line-height:1.4"></div>
+          <!-- Шкала точності -->
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
+            <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden">
+              <div id="sp-accuracy-bar" style="height:100%;border-radius:4px;transition:width .5s ease;width:0%"></div>
+            </div>
+            <span id="sp-accuracy-pct" style="font-size:16px;font-weight:800;min-width:44px;text-align:right"></span>
+          </div>
+          <!-- Порівняння слово-за-словом -->
+          <div id="sp-word-diff" style="font-size:15px;line-height:1.8;letter-spacing:.3px"></div>
+        </div>
+
+        <!-- Кнопки дій -->
+        <div id="sp-actions" style="display:none;display:flex;flex-direction:column;gap:8px">
+          <button id="sp-next-btn" onclick="spNext()" class="tiles-check-btn" style="display:none"></button>
+          <button onclick="spRetry()" style="background:none;border:1px solid var(--border);border-radius:12px;padding:11px;font-size:14px;color:var(--muted);font-family:inherit;cursor:pointer" id="sp-retry-btn" data-i18n="sp_try_again">Спробувати ще раз</button>
+        </div>
+
       </div>
     </div>
 
@@ -2217,7 +2283,7 @@ const I18N = {
     btn_sb_weiter:'Weiter →',
     btn_to_lessons:'🗺 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
-    lbl_def_fill:'Ergänze den Satz', tab_def_short:'Lückentext',
+    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -2284,7 +2350,7 @@ const I18N = {
     btn_sb_weiter:'Далі →',
     btn_to_lessons:'🗺 До списку уроків',
     btn_check:'✓ Перевірити',
-    lbl_def_fill:'Доповни речення', tab_def_short:'Заповни',
+    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -2351,7 +2417,7 @@ const I18N = {
     btn_sb_weiter:'Next →',
     btn_to_lessons:'🗺 Lesson List',
     btn_check:'✓ Check',
-    lbl_def_fill:'Complete the sentence', tab_def_short:'Fill-in',
+    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -2417,7 +2483,7 @@ const I18N = {
     btn_sb_weiter:'Далее →',
     btn_to_lessons:'🗺 К списку уроков',
     btn_check:'✓ Проверить',
-    lbl_def_fill:'Дополни предложение', tab_def_short:'Вставь',
+    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -2474,6 +2540,7 @@ function applyI18n(){
     {emoji:'🧩', key:'tab_tiles_short'},
     {emoji:'❓', key:'quiz_title'},
     {emoji:'🔍', key:'tab_def_short'},
+    {emoji:'🎤', key:'tab_speech'},
   ];
   tabs.forEach((tab,i)=>{ if(tabDefs[i]) tab.textContent=tabDefs[i].emoji; });
   // Favorites empty
@@ -5545,6 +5612,268 @@ function defShowResult(){
     </div>`;
 }
 
+// ── SPEECH PRACTICE (tab 7) ───────────────────────────────────────
+// Web Speech API: SpeechRecognition → нечітке порівняння → % точності
+
+let spState = {
+  cards: [], idx: 0, recognition: null, recording: false,
+  correctCount: 0, totalCount: 0
+};
+
+function startSpeech(){
+  const cf = document.getElementById('vf-cat')?.value || 'all';
+  let pool = (typeof VOCAB !== 'undefined' ? VOCAB : [])
+    .filter(v => cf === 'all' || v.cat === cf);
+  pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
+  const cards = pool.slice(0, Math.min(21, pool.length))
+    .sort(() => Math.random() - .5).slice(0, 7);
+  spState = { cards, idx: 0, recognition: null, recording: false, correctCount: 0, totalCount: 0 };
+  spReset();
+  spShowCard();
+}
+
+function spShowCard(){
+  const card = spState.cards[spState.idx];
+  if(!card){ spShowFinish(); return; }
+
+  // Прогрес
+  document.getElementById('sp-counter').textContent =
+    `${spState.idx + 1} / ${spState.cards.length}`;
+  document.getElementById('sp-score-chip').textContent =
+    spState.totalCount ? `✓ ${spState.correctCount}/${spState.totalCount}` : '';
+
+  // Термін
+  document.getElementById('sp-term').textContent = card.term?.de || '';
+  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  document.getElementById('sp-transl').textContent = card.term?.[ul] || card.term?.uk || '';
+  document.getElementById('sp-term-label').textContent =
+    ul === 'uk' ? 'Термін' : ul === 'en' ? 'Term' : ul === 'ru' ? 'Термин' : 'Begriff';
+
+  // Reset UI
+  spReset();
+}
+
+function spReset(){
+  const rb = document.getElementById('sp-result-box');
+  const ab = document.getElementById('sp-actions');
+  const nb = document.getElementById('sp-next-btn');
+  const mb = document.getElementById('sp-mic-btn');
+  if(rb) rb.style.display = 'none';
+  if(ab) { ab.style.display = 'none'; }
+  if(nb) nb.style.display = 'none';
+  if(mb) { mb.className = ''; mb.textContent = '🎤'; }
+  const lbl = document.getElementById('sp-mic-label');
+  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  if(lbl) lbl.textContent =
+    ul === 'uk' ? 'Натисни щоб говорити' :
+    ul === 'en' ? 'Tap to speak' :
+    ul === 'ru' ? 'Нажмите чтобы говорить' : 'Tippe zum Sprechen';
+}
+
+function spListen(){
+  const card = spState.cards[spState.idx];
+  if(!card) return;
+  try { speak(card.term?.de || '', 'de', null, card.id, 'speech'); } catch(e){}
+}
+
+function spToggleRecord(){
+  if(spState.recording){ spStopRecord(); return; }
+  spStartRecord();
+}
+
+function spStartRecord(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if(!SR){
+    alert(typeof uiLang !== 'undefined' && uiLang === 'uk'
+      ? 'Розпізнавання мовлення не підтримується у вашому браузері'
+      : 'Speech recognition not supported in this browser');
+    return;
+  }
+
+  const card = spState.cards[spState.idx];
+  if(!card) return;
+
+  const rec = new SR();
+  rec.lang = 'de-DE';
+  rec.continuous = false;
+  rec.interimResults = false;
+  rec.maxAlternatives = 3;
+  spState.recognition = rec;
+  spState.recording = true;
+
+  const mb = document.getElementById('sp-mic-btn');
+  const lbl = document.getElementById('sp-mic-label');
+  if(mb){ mb.classList.add('recording'); mb.textContent = '⏹'; }
+  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  if(lbl) lbl.textContent =
+    ul === 'uk' ? 'Слухаю… говоріть зараз' :
+    ul === 'en' ? 'Listening… speak now' :
+    ul === 'ru' ? 'Слушаю… говорите сейчас' : 'Höre zu… sprechen Sie jetzt';
+
+  haptic.light();
+
+  rec.onresult = (e) => {
+    // Беремо найкращий результат з усіх альтернатив
+    let bestText = '';
+    let bestScore = 0;
+    const target = spNormalize(card.term?.de || '');
+    for(let i = 0; i < e.results[0].length; i++){
+      const alt = spNormalize(e.results[0][i].transcript);
+      const score = spSimilarity(target, alt);
+      if(score > bestScore){ bestScore = score; bestText = e.results[0][i].transcript; }
+    }
+    spShowResult(bestText, card);
+  };
+
+  rec.onerror = (e) => {
+    spState.recording = false;
+    const mb = document.getElementById('sp-mic-btn');
+    if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+    const lbl = document.getElementById('sp-mic-label');
+    const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+    const msg = e.error === 'no-speech'
+      ? (ul==='uk'?'Нічого не почуто — спробуй ще':ul==='en'?'No speech detected — try again':'Nichts gehört — nochmal versuchen')
+      : (ul==='uk'?'Помилка мікрофону: '+e.error:'Mikrofon-Fehler: '+e.error);
+    if(lbl) lbl.textContent = msg;
+  };
+
+  rec.onend = () => {
+    spState.recording = false;
+    const mb = document.getElementById('sp-mic-btn');
+    if(mb && mb.classList.contains('recording')){
+      mb.classList.remove('recording');
+      mb.textContent = '🎤';
+    }
+  };
+
+  try { rec.start(); } catch(e){ spState.recording = false; }
+}
+
+function spStopRecord(){
+  if(spState.recognition){ try{ spState.recognition.stop(); }catch(e){} }
+  spState.recording = false;
+}
+
+function spNormalize(str){
+  return str.toLowerCase()
+    .replace(/[äÄ]/g,'ae').replace(/[öÖ]/g,'oe').replace(/[üÜ]/g,'ue').replace(/ß/g,'ss')
+    .replace(/[^a-z0-9\s]/g,'').replace(/\s+/g,' ').trim();
+}
+
+// Levenshtein-based similarity: 0..1
+function spSimilarity(a, b){
+  if(a === b) return 1;
+  if(!a || !b) return 0;
+  const m = a.length, n = b.length;
+  const dp = Array.from({length:m+1}, (_,i) => Array.from({length:n+1}, (_,j) => i===0?j:j===0?i:0));
+  for(let i=1;i<=m;i++) for(let j=1;j<=n;j++)
+    dp[i][j] = a[i-1]===b[j-1] ? dp[i-1][j-1] : 1+Math.min(dp[i-1][j],dp[i][j-1],dp[i-1][j-1]);
+  return 1 - dp[m][n] / Math.max(m, n);
+}
+
+// Порівняння слово-за-словом
+function spWordDiff(target, heard){
+  const tw = spNormalize(target).split(' ');
+  const hw = spNormalize(heard).split(' ');
+  return tw.map(tw_word => {
+    // Шукаємо найближче слово у почутому
+    let best = 0;
+    hw.forEach(hw_word => {
+      const s = spSimilarity(tw_word, hw_word);
+      if(s > best) best = s;
+    });
+    const cls = best >= 0.85 ? 'sp-word-ok' : best >= 0.5 ? 'sp-word-meh' : 'sp-word-bad';
+    return `<span class="${cls}">${target.split(' ').find(w=>spNormalize(w)===tw_word)||tw_word}</span>`;
+  }).join(' ');
+}
+
+function spShowResult(heardText, card){
+  const target = card.term?.de || '';
+  const pct = Math.round(spSimilarity(spNormalize(target), spNormalize(heardText)) * 100);
+  const isOk = pct >= 80;
+
+  spState.totalCount++;
+  if(isOk) spState.correctCount++;
+
+  // Оновлюємо лічильник
+  document.getElementById('sp-score-chip').textContent =
+    `✓ ${spState.correctCount}/${spState.totalCount}`;
+
+  // Мікрофон — результат
+  const mb = document.getElementById('sp-mic-btn');
+  if(mb){ mb.classList.remove('recording'); mb.className = isOk ? 'success' : 'fail'; mb.textContent = isOk ? '✅' : '❌'; }
+
+  // Що почули
+  const rb = document.getElementById('sp-result-box');
+  if(rb) rb.style.display = 'block';
+  document.getElementById('sp-heard').textContent = heardText || '—';
+
+  // Шкала
+  const bar = document.getElementById('sp-accuracy-bar');
+  const pctEl = document.getElementById('sp-accuracy-pct');
+  const color = pct >= 80 ? '#2ecc71' : pct >= 55 ? '#e67e22' : '#e74c3c';
+  if(bar){ bar.style.width = pct + '%'; bar.style.background = color; }
+  if(pctEl){ pctEl.textContent = pct + '%'; pctEl.style.color = color; }
+
+  // Word diff
+  document.getElementById('sp-word-diff').innerHTML = spWordDiff(target, heardText);
+
+  // Кнопки
+  const ab = document.getElementById('sp-actions');
+  const nb = document.getElementById('sp-next-btn');
+  if(ab) ab.style.display = 'flex';
+  if(nb){
+    nb.style.display = 'block';
+    const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+    const isLast = spState.idx + 1 >= spState.cards.length;
+    nb.textContent = isLast
+      ? (ul==='uk'?'Завершити ✓':ul==='en'?'Finish ✓':'Fertig ✓')
+      : (ul==='uk'?'Далі →':ul==='en'?'Next →':'Weiter →');
+  }
+
+  // SRS
+  srsRate(card.id, isOk ? 4 : 2);
+  saveCardPlay(card.id);
+  haptic[isOk ? 'success' : 'error']();
+}
+
+function spNext(){
+  spState.idx++;
+  spShowCard();
+}
+
+function spRetry(){
+  spReset();
+  // Перемальовуємо картку (без зміни idx)
+  spShowCard();
+  // Але не скидаємо рахунок — retry не рахується
+  spState.totalCount = Math.max(0, spState.totalCount - (spState.totalCount > 0 ? 0 : 0));
+}
+
+function spShowFinish(){
+  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  const pct = spState.totalCount ? Math.round(spState.correctCount / spState.totalCount * 100) : 0;
+  const panel = document.getElementById('vocab-panel-speech');
+  if(!panel) return;
+  panel.innerHTML = `
+    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center">
+      <div style="font-size:56px">${pct>=80?'🏆':pct>=55?'💪':'🔄'}</div>
+      <div style="font-size:22px;font-weight:800;color:var(--gold)">${
+        ul==='uk'?'Практика завершена!':ul==='en'?'Practice done!':'Fertig!'}</div>
+      <div style="background:var(--soft);border-radius:16px;padding:16px 24px;width:100%;box-sizing:border-box">
+        <div style="font-size:36px;font-weight:800;color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">${
+          ul==='uk'?`Правильно: ${spState.correctCount} з ${spState.totalCount}`:
+          ul==='en'?`Correct: ${spState.correctCount} of ${spState.totalCount}`:
+          `Richtig: ${spState.correctCount} von ${spState.totalCount}`}</div>
+      </div>
+      <button class="btn" onclick="startSpeech()" style="width:100%">🔄 ${
+        ul==='uk'?'Ще раз':ul==='en'?'Again':'Nochmal'}</button>
+      <button class="btn" onclick="switchVocabTab(0)" style="width:100%;background:var(--soft);color:var(--ink);border:1px solid var(--border)">📖 ${
+        ul==='uk'?'Картки':ul==='en'?'Cards':'Karten'}</button>
+    </div>`;
+}
+
 // ── DRAG між слотами у def-fill ────────────────────────────────
 let _defDrag = null; // { slotIdx, ghost, offsetX, offsetY }
 
@@ -6350,7 +6679,7 @@ function lfShowResult(){
 
   // Ховаємо всі панелі, показуємо result
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def'].forEach(id=>{
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-speech'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.style.display='none';
   });
@@ -7045,6 +7374,8 @@ function resetStreak(){if(!confirm('Streak zurücksetzen?'))return;localStorage.
 
 // ── BROWSE ────────────────────────────────────────────────────
 function switchVocabTab(tab){
+  // Зупиняємо запис при переключенні
+  if(typeof spState!=='undefined' && spState.recording) spStopRecord();
   document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
   document.getElementById('vocab-panel-card').style.display   = tab===0?'flex':'none';
   document.getElementById('vocab-panel-browse').style.display = tab===1?'block':'none';
@@ -7053,12 +7384,14 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
+  document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
   if(tab===1) renderVocabBrowse();
   if(tab===2 && !(LF && LF.steps[LF.step]==='matching')) startMatching();
   if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
   if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
   if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
   if(tab===6 && !(LF && LF.steps[LF.step]==='def')) startDefFill();
+  if(tab===7) startSpeech();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
@@ -7326,6 +7659,8 @@ function resetStreak(){if(!confirm('Streak zurücksetzen?'))return;localStorage.
 
 // ── BROWSE ────────────────────────────────────────────────────
 function switchVocabTab(tab){
+  // Зупиняємо запис при переключенні
+  if(typeof spState!=='undefined' && spState.recording) spStopRecord();
   document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
   document.getElementById('vocab-panel-card').style.display   = tab===0?'flex':'none';
   document.getElementById('vocab-panel-browse').style.display = tab===1?'block':'none';
@@ -7334,12 +7669,14 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
+  document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
   if(tab===1) renderVocabBrowse();
   if(tab===2 && !(LF && LF.steps[LF.step]==='matching')) startMatching();
   if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
   if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
   if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
   if(tab===6 && !(LF && LF.steps[LF.step]==='def')) startDefFill();
+  if(tab===7) startSpeech();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
