@@ -5902,6 +5902,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 
   let _done = false;
   const _startTime = Date.now();
+  let _lastInterim = ''; // зберігаємо останній interim для iOS aborted fallback
 
   rec.onresult = (e) => {
     let interim = '', final = '';
@@ -5910,9 +5911,14 @@ function spTryStart(SR, mb, lbl, ul, attempt){
       if(e.results[i].isFinal) final += txt;
       else interim += txt;
     }
-    if(interim) { spL(`interim: "${interim}"`); spHighlightLive(interim); }
+    if(interim) {
+      _lastInterim = interim;
+      spL(`interim: "${interim}"`);
+      spHighlightLive(interim);
+    }
     if(final && !_done){
       _done = true;
+      _lastInterim = '';
       spL(`final: "${final}"`);
       spState.recognition = null;
       spState.recording = false;
@@ -5922,7 +5928,17 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 
   rec.onerror = (e) => {
     spL(`ERROR: ${e.error} (attempt ${attempt})`);
-    if(e.error === 'aborted') return;
+    if(e.error === 'aborted'){
+      // iOS: якщо є interim результат — використовуємо його як фінальний
+      if(_lastInterim && !_done){
+        _done = true;
+        spL(`using last interim as final: "${_lastInterim}"`);
+        spState.recognition = null;
+        spState.recording = false;
+        spShowResult(_lastInterim, spState.cards[spState.idx]);
+      }
+      return;
+    }
     spState.recording = false;
     spState.recognition = null;
     if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
