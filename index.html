@@ -5782,13 +5782,26 @@ function spReset(){
 function spSpeakTerm(){
   const card = spState.cards[spState.idx];
   if(!card) return;
-  const savedRate = V.langSpeed?.de;
-  if(V.langSpeed) V.langSpeed.de = '100';
-  try {
-    speak(card.term?.de || '', 'de', ()=>{
-      if(V.langSpeed && savedRate !== undefined) V.langSpeed.de = savedRate;
-    }, card.id, 'term');
-  } catch(e){}
+
+  const mb  = document.getElementById('sp-mic-btn');
+  const lbl = document.getElementById('sp-mic-label');
+  const ul  = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+
+  // Блокуємо мікрофон поки грає аудіо
+  if(mb){ mb.style.opacity = '0.4'; mb.style.pointerEvents = 'none'; }
+  if(lbl) lbl.textContent = ul==='uk'?'Слухай уважно…':ul==='en'?'Listen carefully…':'Hör zu…';
+
+  const url = getAudioUrl(card.id, 'term', 'de');
+  const gen = ++playGen;
+
+  playAzureAudio(url, () => {
+    // mp3 завершив — чекаємо 300мс і розблоковуємо мікрофон
+    setTimeout(() => {
+      if(mb){ mb.style.opacity = ''; mb.style.pointerEvents = ''; }
+      if(lbl) lbl.textContent =
+        ul==='uk'?'Натисни щоб говорити':ul==='en'?'Tap to speak':'Tippe zum Sprechen';
+    }, 300);
+  }, gen);
 }
 
 function spRenderTermWords(card){
@@ -5888,6 +5901,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
   spState.recognition = rec;
 
   let _done = false;
+  const _startTime = Date.now();
 
   rec.onresult = (e) => {
     let interim = '', final = '';
@@ -5921,8 +5935,19 @@ function spTryStart(SR, mb, lbl, ul, attempt){
   };
 
   rec.onend = () => {
-    spL(`onend (done=${_done}, attempt=${attempt})`);
+    const elapsed = Date.now() - _startTime;
+    spL(`onend (done=${_done}, attempt=${attempt}, elapsed=${elapsed}ms)`);
     spState.recording = false;
+
+    // iOS: якщо onend спрацював дуже швидко і нічого не розпізнано —
+    // це конфлікт з TTS або системний блок. Повторюємо автоматично.
+    if(!_done && elapsed < 500 && attempt < 3){
+      spL(`quick-end detected, auto-retry in 600ms`);
+      spState.recording = true; // тримаємо UI в стані запису
+      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 600);
+      return;
+    }
+
     if(mb && mb.classList.contains('recording')){
       mb.classList.remove('recording');
       mb.textContent = '🎤';
