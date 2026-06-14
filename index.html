@@ -2802,8 +2802,47 @@ function srGetDashStats(allCards){
   const weakProfile = srBuildWeaknessProfile(subtestStats);
   const today = srToISO(new Date());
   const learned = Object.values(cs).filter(c=>(c.repetitions??0)>0).length;
+
+  // Рахуємо readiness по кожній частині на основі SRS-даних карток
+  // Логіка: для кожної частини іспиту рахуємо % карток що "вивчені добре"
+  // (repetitions >= 2 і nextReview > today — тобто не потребують повторення сьогодні)
+  const partCards = {};
+  const parts = ['Sprachbausteine','Lesen','Schreiben','Hören','Sprechen','General'];
+  parts.forEach(p => { partCards[p] = {total:0, good:0, seen:0}; });
+
+  allCards.forEach(card => {
+    const part = card.examPart || 'General';
+    const bucket = partCards[part] || partCards['General'];
+    bucket.total++;
+    const c = cs[card.id];
+    if(!c) return;
+    if((c.repetitions??0) > 0) bucket.seen++;
+    // "Добре вивчена" = мінімум 2 повторення І наступне повторення не сьогодні/не прострочено
+    if((c.repetitions??0) >= 2 && c.nextReview && c.nextReview > today) bucket.good++;
+  });
+
   const readiness = {};
-  for(const [p,st] of Object.entries(subtestStats)) readiness[p]=Math.round((st.accuracy??0)*100);
+  parts.forEach(p => {
+    const b = partCards[p];
+    if(!b || b.total === 0){ readiness[p] = 0; return; }
+    // Якщо є subtestStats.accuracy — комбінуємо з SRS (50/50)
+    const srsScore = Math.round(b.good / b.total * 100);
+    const accScore = subtestStats[p]?.accuracy != null
+      ? Math.round(subtestStats[p].accuracy * 100) : null;
+    readiness[p] = accScore != null
+      ? Math.round((srsScore * 0.6 + accScore * 0.4))
+      : srsScore;
+  });
+
+  // General картки розподіляємо у Lesen (найближча за змістом)
+  if(partCards['General'].total > 0){
+    const genSrs = Math.round(partCards['General'].good / partCards['General'].total * 100);
+    readiness['Lesen'] = Math.round(
+      (readiness['Lesen'] * partCards['Lesen'].total + genSrs * partCards['General'].total) /
+      (partCards['Lesen'].total + partCards['General'].total || 1)
+    );
+  }
+
   const dueToday = allCards.filter(card=>{ const c=cs[card.id]; return !c?.nextReview||c.nextReview<=today; }).length;
   return {urgency, streak, totalCards:allCards.length, learnedCards:learned, learnedPct:Math.round(learned/allCards.length*100), dueToday, readiness, weakProfile};
 }
@@ -5767,82 +5806,86 @@ function spStartRecord(){
 
   const card = spState.cards[spState.idx];
   if(!card) return;
+  if(spState.recording) return; // вже записуємо
 
-  // Якщо попередній recognition ще є — зупиняємо
-  if(spState.recognition){ try{ spState.recognition.abort(); }catch(e){} }
+  // Прибираємо залишковий об'єкт
+  if(spState.recognition){
+    const old = spState.recognition;
+    spState.recognition = null;
+    try{ old.abort(); }catch(e){}
+  }
 
-  const rec = new SR();
-  rec.lang = 'de-DE';
-  rec.continuous = false;
-  rec.interimResults = true;
-  rec.maxAlternatives = 3;
-  spState.recognition = rec;
-  spState.recording = true;
-
+  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const mb = document.getElementById('sp-mic-btn');
   const lbl = document.getElementById('sp-mic-label');
+
+  // Встановлюємо UI і стан ОДРАЗУ (до setTimeout)
+  spState.recording = true;
   if(mb){ mb.classList.add('recording'); mb.textContent = '⏹'; }
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   if(lbl) lbl.textContent =
     ul === 'uk' ? 'Слухаю… говоріть зараз' :
     ul === 'en' ? 'Listening… speak now' :
     ul === 'ru' ? 'Слушаю… говорите сейчас' : 'Höre zu… sprechen Sie jetzt';
-
   haptic.light();
 
-  rec.onresult = (e) => {
-    let interimTranscript = '';
-    let finalTranscript = '';
-    for(let i = e.resultIndex; i < e.results.length; i++){
-      const t0 = e.results[i][0].transcript;
-      if(e.results[i].isFinal){ finalTranscript += t0; }
-      else { interimTranscript += t0; }
-    }
-    if(interimTranscript) spHighlightLive(interimTranscript);
-    if(finalTranscript){
-      const target = spNormalize(spState.cards[spState.idx]?.term?.de || '');
-      let bestText = finalTranscript;
-      let bestScore = spSimilarity(target, spNormalize(finalTranscript));
-      const lastResult = e.results[e.results.length - 1];
-      for(let i = 0; i < lastResult.length; i++){
-        const alt = lastResult[i].transcript;
-        const score = spSimilarity(target, spNormalize(alt));
-        if(score > bestScore){ bestScore = score; bestText = alt; }
+  // Невелика затримка щоб браузер встиг закрити попередній аудіо-сеанс
+  setTimeout(() => {
+    const rec = new SR();
+    rec.lang = 'de-DE';
+    rec.continuous = false;
+    rec.interimResults = true;
+    rec.maxAlternatives = 1;
+    spState.recognition = rec;
+
+    let _finalReceived = false;
+
+    rec.onresult = (e) => {
+      let interimTranscript = '';
+      let finalTranscript = '';
+      for(let i = e.resultIndex; i < e.results.length; i++){
+        const txt = e.results[i][0]?.transcript || '';
+        if(e.results[i].isFinal){ finalTranscript += txt; }
+        else { interimTranscript += txt; }
       }
-      spState.recognition = null;
+      if(interimTranscript) spHighlightLive(interimTranscript);
+      if(finalTranscript && !_finalReceived){
+        _finalReceived = true;
+        spState.recognition = null;
+        spState.recording = false;
+        spShowResult(finalTranscript, spState.cards[spState.idx]);
+      }
+    };
+
+    rec.onerror = (e) => {
       spState.recording = false;
-      spShowResult(bestText, spState.cards[spState.idx]);
+      spState.recognition = null;
+      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+      if(e.error === 'aborted') return; // тихо ігноруємо
+      const msg = e.error === 'no-speech'
+        ? (ul==='uk'?'Нічого не почуто — спробуй ще':ul==='en'?'No speech detected':'Nichts gehört')
+        : e.error === 'not-allowed'
+        ? (ul==='uk'?'Немає доступу до мікрофона':ul==='en'?'Microphone access denied':'Mikrofon gesperrt')
+        : (ul==='uk'?'Помилка: '+e.error:'Fehler: '+e.error);
+      if(lbl) lbl.textContent = msg;
+    };
+
+    rec.onend = () => {
+      spState.recording = false;
+      if(mb && mb.classList.contains('recording')){
+        mb.classList.remove('recording');
+        mb.textContent = '🎤';
+      }
+    };
+
+    try {
+      rec.start();
+    } catch(e){
+      spState.recording = false;
+      spState.recognition = null;
+      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+      if(lbl) lbl.textContent = ul==='uk'?'Помилка запуску':'Start error';
     }
-  };
-
-  rec.onerror = (e) => {
-    spState.recording = false;
-    spState.recognition = null;
-    const mb = document.getElementById('sp-mic-btn');
-    if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-    const lbl = document.getElementById('sp-mic-label');
-    const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-    const msg = e.error === 'no-speech'
-      ? (ul==='uk'?'Нічого не почуто — спробуй ще':ul==='en'?'No speech detected':'Nichts gehört')
-      : e.error === 'not-allowed'
-      ? (ul==='uk'?'Немає доступу до мікрофона':ul==='en'?'Microphone access denied':'Mikrofon gesperrt')
-      : (ul==='uk'?'Помилка: '+e.error:'Fehler: '+e.error);
-    if(lbl) lbl.textContent = msg;
-  };
-
-  rec.onend = () => {
-    spState.recording = false;
-    const mb = document.getElementById('sp-mic-btn');
-    if(mb && mb.classList.contains('recording')){
-      mb.classList.remove('recording');
-      mb.textContent = '🎤';
-    }
-  };
-
-  try { rec.start(); } catch(e){
-    spState.recording = false;
-    spState.recognition = null;
-  }
+  }, 80);
 }
 
 function spNormalize(str){
@@ -6820,34 +6863,52 @@ function lfShowResult(){
 // Smart Review: тегування VOCAB карток полем examPart за категорією
 function srTagVocab(){
   if(typeof VOCAB==='undefined'||!VOCAB?.length) return;
+
+  // Пряме маппування cat → examPart (пріоритет над ключовими словами)
+  const DIRECT = {
+    'NVV':'Lesen',      // Nomen-Verb-Verbindungen → Leseverstehen / Wortschatz
+    'SS':'Sprechen',    // Soft Skills / Sprechen
+    'SB':'Sprachbausteine',
+    'GRAM':'Sprachbausteine',
+    'HV':'Hören',
+    'LV':'Lesen',
+    'SA':'Schreiben',   // Schriftlicher Ausdruck
+  };
+
   const MAP = {
     // Schreiben
     'bewerbung':'Schreiben','lebenslauf':'Schreiben','anschreiben':'Schreiben',
     'reklamation':'Schreiben','beschwerde':'Schreiben','formular':'Schreiben',
-    'email':'Schreiben','brief':'Schreiben',
+    'email':'Schreiben','brief':'Schreiben','schreiben':'Schreiben',
     // Sprechen
     'besprechung':'Sprechen','smalltalk':'Sprechen','praesentation':'Sprechen',
     'praesentieren':'Sprechen','vortrag':'Sprechen','diskussion':'Sprechen',
-    'meeting':'Sprechen','gespraech':'Sprechen', 'gespräch':'Sprechen',
+    'meeting':'Sprechen','gespraech':'Sprechen','gespräch':'Sprechen',
+    'softskill':'Sprechen','soft':'Sprechen',
     // Hören
     'telefon':'Hören','telefonieren':'Hören','nachricht':'Hören',
     'ansage':'Hören','radio':'Hören','hoeren':'Hören','hören':'Hören',
     // Sprachbausteine
     'grammatik':'Sprachbausteine','konnektor':'Sprachbausteine','konnektoren':'Sprachbausteine',
     'sprachbausteine':'Sprachbausteine','modalverb':'Sprachbausteine',
-    'konjunktiv':'Sprachbausteine','passiv':'Sprachbausteine',
-    // Lesen (default für Wortschatz)
+    'konjunktiv':'Sprachbausteine','passiv':'Sprachbausteine','nomen-verb':'Lesen',
+    // Lesen (default для Wortschatz / NVV)
     'wortschatz':'Lesen','lesen':'Lesen','text':'Lesen','artikel':'Lesen',
-    'vokabular':'Lesen','vokabel':'Lesen',
+    'vokabular':'Lesen','vokabel':'Lesen','nomen':'Lesen','verb':'Lesen',
   };
+
   VOCAB.forEach(card=>{
     if(card.examPart) return; // вже є — не перезаписуємо
-    const cat = (card.cat||'').toLowerCase().replace(/\s+/g,'').replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue');
-    let found = 'General';
+    const cat = (card.cat||'').toUpperCase();
+    // Спочатку пряме маппування по cat
+    if(DIRECT[cat]){ card.examPart = DIRECT[cat]; return; }
+    // Потім пошук по ключових словах у cat
+    const catLower = cat.toLowerCase().replace(/\s+/g,'').replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue');
+    let found = null;
     for(const [key,part] of Object.entries(MAP)){
-      if(cat.includes(key)){ found=part; break; }
+      if(catLower.includes(key)){ found=part; break; }
     }
-    card.examPart = found;
+    card.examPart = found || 'Lesen'; // fallback: Lesen (Wortschatz)
   });
   console.log('[SR] Tagged', VOCAB.length, 'cards with examPart');
 }
