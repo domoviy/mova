@@ -3392,13 +3392,19 @@ async function playAzureAudio(url, onEnd, gen){
   const blobUrl = await fetchBlobUrl(url);
 
   if(playGen !== gen){ logErr('audio:gen','cancelled',fname); return; }
-  if(!blobUrl){ return; } // немає файлу → webSpeech fallback
+  if(!blobUrl){
+    logErr('audio:nobloburl','no file',fname);
+    onEnd && onEnd(); // важливо: викликаємо onEnd навіть якщо файлу немає
+    return;
+  }
 
   let _done = false;
   const finish = (src)=>{
     if(_done) return; _done = true;
     clearTimeout(wdog);
     if(currentAudio === a) currentAudio = null;
+    // iOS: очищаємо src щоб звільнити аудіо-сесію
+    try{ a.pause(); a.removeAttribute('src'); a.load(); }catch(e){}
     logErr('audio:ok', src, fname);
     if(playGen === gen) onEnd && onEnd();
   };
@@ -5864,7 +5870,7 @@ function spStartRecord(){
   // Зупиняємо аудіо перед SR — iOS не може одночасно
   try{
     const a = getSharedAudio();
-    if(a && !a.paused){ a.pause(); a.currentTime = 0; }
+    if(a){ a.pause(); a.removeAttribute('src'); a.load(); }
     playGen++; // скасовуємо будь-яке поточне відтворення
   }catch(e){}
 
