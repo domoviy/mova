@@ -1135,7 +1135,7 @@ body{
 .srow-ctrl input[type=range]{width:85px;accent-color:var(--gold)}
 .srow-ctrl span{font-size:14px;font-family:'Inter',monospace;color:var(--gold);min-width:34px;text-align:right}
 .speed-toggle{display:flex;gap:6px}
-.sp-btn{padding:6px 12px;border-radius:8px;border:1.5px solid var(--border);background:var(--soft);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.15s}
+.sp-btn{flex:1;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border);background:var(--soft);font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.15s;white-space:nowrap;text-align:center}
 .sp-btn.active{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
 .sp-btn:active{opacity:.7}
 .btn-s{background:var(--soft);color:var(--warm);border:1px solid var(--border)}
@@ -2115,7 +2115,7 @@ body.lesson-active .vocab-top{
     <span class="bn-icon">📖</span><span id="bn-vocab-label">Словник</span>
   </button>
   <button class="bn-item" onclick="showView('sb')" data-view="sb">
-    <span class="bn-icon">🧩</span><span>Sprachbau</span>
+    <span class="bn-icon">🧩</span><span data-i18n="nav_sb">Sprachbau</span>
   </button>
 </div>
 
@@ -2249,11 +2249,11 @@ const I18N = {
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
     sec_voices:'Stimmen', sec_debug:'Fehlersuche', sec_lang:'Sprache',
-    nav_lernpfad:'Path',
+    nav_lernpfad:'Path', nav_sb:'Sprachbau',
     lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
     lp_cards:'cards', lp_of:'of',
     lp_grammar:'Grammar:',
-    nav_lernpfad:'Lernpfad',
+    nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
     lp_grammar:'Grammatik:',
@@ -2320,7 +2320,7 @@ const I18N = {
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
     sec_voices:'Голоси', sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
-    nav_lernpfad:'Шлях',
+    nav_lernpfad:'Шлях', nav_sb:'Sprachbau',
     lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
     lp_cards:'карток', lp_of:'з',
     lp_grammar:'Граматика:',
@@ -2370,7 +2370,7 @@ const I18N = {
     lbl_repeats:'Repetitions', sub_repeats:'Cycles per card',
     lbl_tempo_de:'🇩🇪 Speed', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Speed', sub_tempo_en:'English',
-    lbl_tempo_uk:'🇺🇦 Speed', sub_tempo_uk:'Ukrainian',
+    lbl_tempo_uk:'🇺🇦 Швидкість', sub_tempo_uk:'Українська',
     lbl_pause:'Pause', sub_pause:'Between terms',
     lbl_readpause:'Reading pause', sub_readpause:'After flip',
     lbl_trate:'Speech rate', sub_trate:'Manual playback',
@@ -2387,7 +2387,7 @@ const I18N = {
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
     sec_voices:'Voices', sec_debug:'Debug', sec_lang:'Interface Language',
-    nav_lernpfad:'Lernpfad',
+    nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
     lp_grammar:'Grammatik:',
@@ -2454,7 +2454,7 @@ const I18N = {
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
     sec_voices:'Голоса', sec_debug:'Отладка', sec_lang:'Язык интерфейса',
-    nav_lernpfad:'Путь',
+    nav_lernpfad:'Путь', nav_sb:'Sprachbau',
     lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
     lp_cards:'карточек', lp_of:'из',
     lp_grammar:'Грамматика:',
@@ -2566,6 +2566,7 @@ function applyI18n(){
   // Lernpfad nav label
   const lpNav = document.getElementById('lp-nav-label');
   if(lpNav) lpNav.textContent = t('nav_lernpfad');
+  // Labels by data-i18n attribute (підхоплює nav_sb через span)
   // Lernpfad header
   const lpLoad = document.getElementById('lp-overall-text');
   if(lpLoad && lpLoad.textContent === 'Lädt…') lpLoad.textContent = t('lp_overall_loading');
@@ -8209,9 +8210,7 @@ function sbAutoPlay() {
   // Capture card + gen at THIS moment — after index is already updated
   var card = SB.learnQueue[SB.learnIdx];
   if(!card) return;
-  var langs = sbGetActiveLangs();
-  // Only speak DE (audio only generated for DE)
-  var audioLangs = langs.filter(function(l){ return l==='de'; });
+  var audioLangs = sbGetActiveLangs();
   if(!audioLangs.length) audioLangs = ['de']; // fallback
   var gen = ++SB.playCardGen;
 
@@ -8225,7 +8224,7 @@ function sbAutoPlay() {
     var text = sbL(card.sentence,l).replace('{{BLANK}}', sbA(card,l));
     speak(text,l,function(){
       if(!SB.playing||SB.playCardGen!==gen) return;
-      setTimeout(function(){ speakSentences(li+1); },400);
+      setTimeout(function(){ speakSentences(li+1); },300);
     },card.id,'sentence');
   }
 
