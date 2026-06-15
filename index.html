@@ -1823,26 +1823,20 @@ body.lesson-active .vocab-top{
       <!-- SPEECH PRACTICE (tab 7) -->
       <div id="vocab-panel-speech" style="display:none">
 
-        <!-- Прогрес -->
-        <div id="sp-progress" style="display:flex;justify-content:space-between;align-items:center">
-          <span id="sp-counter" style="font-size:13px;color:var(--muted)">1 / 7</span>
-          <span id="sp-score-chip" style="font-size:13px;font-weight:700;color:var(--gold)"></span>
-        </div>
-
         <!-- Картка з терміном -->
-        <div id="sp-card" onclick="spSpeakTerm()" style="background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center;cursor:pointer;-webkit-tap-highlight-color:transparent">
+        <div id="sp-card" style="background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">
           <div id="sp-term-label" style="font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.8px;text-transform:uppercase">Begriff</div>
           <div id="sp-term" style="font-size:22px;font-weight:800;color:#fff;line-height:1.4;word-break:break-word"></div>
           <div id="sp-transl" style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px"></div>
         </div>
 
-        <!-- Кнопка запису -->
+        <!-- Статус мікрофону -->
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <button id="sp-mic-btn" onclick="spToggleRecord()"
-            style="width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent">
+          <div id="sp-mic-btn"
+            style="width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;display:flex;align-items:center;justify-content:center">
             🎤
-          </button>
-          <div id="sp-mic-label" style="font-size:13px;color:var(--muted);text-align:center" data-i18n="sp_tap_to_speak">Натисни щоб говорити</div>
+          </div>
+          <div id="sp-mic-label" style="font-size:13px;color:var(--muted);text-align:center">…</div>
         </div>
 
         <!-- Результат розпізнавання -->
@@ -5689,319 +5683,154 @@ function defShowResult(){
 // ── SPEECH PRACTICE (tab 7) ───────────────────────────────────────
 
 let spState = {
-  cards: [], idx: 0, recognition: null, recording: false,
-  correctCount: 0, totalCount: 0
+  card: null, recognition: null, recording: false,
+  correctCount: 0, totalCount: 0, SR: null
 };
 
 function startSpeech(){
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  spState.SR = SR || null;
   const cf = document.getElementById('vf-cat')?.value || 'all';
   let pool = (typeof VOCAB !== 'undefined' ? VOCAB : [])
     .filter(v => cf === 'all' || v.cat === cf);
   pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
-  const cards = pool.slice(0, Math.min(21, pool.length))
-    .sort(() => Math.random() - .5).slice(0, 7);
-  spState = { cards, idx: 0, recognition: null, recording: false, correctCount: 0, totalCount: 0 };
-  spReset();
-  spShowCard();
+  const top = pool.slice(0, Math.min(7, pool.length));
+  const card = top[Math.floor(Math.random() * top.length)];
+  if(!card){ return; }
+  spState = { ...spState, card, recognition: null, recording: false };
+  spRenderCard(card);
+  spSpeakAndListen(card);
 }
 
-// Зупиняємо запис і звільняємо ресурси
-function spStopRecord(){
-  if(spState.recognition){
-    try{ spState.recognition.abort(); }catch(e){}
-    spState.recognition = null;
-  }
-  spState.recording = false;
-  const mb = document.getElementById('sp-mic-btn');
-  if(mb && mb.classList.contains('recording')){
-    mb.classList.remove('recording');
-    mb.textContent = '🎤';
-  }
-}
-
-// Повністю зупиняємо все (при виході з табу, blur, visibility)
-function spCleanup(){
-  spStopRecord();
-}
-
-// Слухаємо visibility change — блокування телефону / свайп в інший додаток
-document.addEventListener('visibilitychange', () => {
-  if(document.visibilityState === 'hidden') spCleanup();
-});
-window.addEventListener('pagehide', spCleanup);
-window.addEventListener('blur', () => {
-  // blur спрацьовує при свайпі в інший додаток на iOS
-  if(typeof spState !== 'undefined' && spState.recording) spCleanup();
-});
-
-function spShowCard(){
-  // Якщо innerHTML панелі було перезаписано (spShowFinish) — відновлюємо структуру
-  const panel = document.getElementById('vocab-panel-speech');
-  if(panel && !document.getElementById('sp-card')){
-    // Перезапускаємо через startSpeech щоб відновити DOM
-    // Але зберігаємо поточний стан карток
-    const saved = { cards: spState.cards, idx: spState.idx,
-                    correctCount: spState.correctCount, totalCount: spState.totalCount };
-    switchVocabTab(7);
-    Object.assign(spState, saved);
-    return;
-  }
-
-  const card = spState.cards[spState.idx];
-  if(!card){ spShowFinish(); return; }
-
-  document.getElementById('sp-counter').textContent =
-    `${spState.idx + 1} / ${spState.cards.length}`;
-  document.getElementById('sp-score-chip').textContent =
-    spState.totalCount ? `✓ ${spState.correctCount}/${spState.totalCount}` : '';
-
+function spRenderCard(card){
   spRenderTermWords(card);
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  document.getElementById('sp-transl').textContent = card.term?.[ul] || card.term?.uk || '';
-  document.getElementById('sp-term-label').textContent =
-    ul === 'uk' ? 'Термін' : ul === 'en' ? 'Term' : ul === 'ru' ? 'Термин' : 'Begriff';
-
-  spReset();
-  setTimeout(() => spSpeakTerm(), 200);
-}
-
-function spReset(){
+  const transl = document.getElementById('sp-transl');
+  const label  = document.getElementById('sp-term-label');
+  if(transl) transl.textContent = card.term?.[ul] || card.term?.uk || '';
+  if(label)  label.textContent  = ul==='uk'?'Термін':ul==='en'?'Term':ul==='ru'?'Термин':'Begriff';
+  spSetMic('idle');
   const rb = document.getElementById('sp-result-box');
   const ab = document.getElementById('sp-actions');
-  const nb = document.getElementById('sp-next-btn');
-  const mb = document.getElementById('sp-mic-btn');
   if(rb) rb.style.display = 'none';
   if(ab) ab.style.display = 'none';
-  if(nb) nb.style.display = 'none';
-  if(mb){ mb.className = ''; mb.textContent = '🎤'; }
-  document.querySelectorAll('#sp-term .sp-tw').forEach(s => {
-    s.style.color = '#fff'; s.style.opacity = '1';
-  });
-  const lbl = document.getElementById('sp-mic-label');
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  if(lbl) lbl.textContent =
-    ul === 'uk' ? 'Натисни щоб говорити' :
-    ul === 'en' ? 'Tap to speak' :
-    ul === 'ru' ? 'Нажмите чтобы говорить' : 'Tippe zum Sprechen';
+  document.querySelectorAll('#sp-term .sp-tw').forEach(s => { s.style.color = '#fff'; });
 }
 
-function spSpeakTerm(){
-  const card = spState.cards[spState.idx];
-  if(!card) return;
-
+function spSetMic(state, text){
   const mb  = document.getElementById('sp-mic-btn');
   const lbl = document.getElementById('sp-mic-label');
   const ul  = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  if(!mb) return;
+  mb.className = '';
+  if(state === 'idle'){
+    mb.textContent = '🎤';
+    mb.style.cssText = 'width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;display:flex;align-items:center;justify-content:center;opacity:1';
+    if(lbl) lbl.textContent = text || (ul==='uk'?'Зараз відтворюється…':ul==='en'?'Playing…':'Wird abgespielt…');
+  } else if(state === 'listening'){
+    mb.textContent = '⏹';
+    mb.style.cssText = 'width:80px;height:80px;border-radius:50%;border:3px solid #e74c3c;background:rgba(231,76,60,.1);font-size:32px;display:flex;align-items:center;justify-content:center;animation:sp-pulse 1.2s ease-in-out infinite';
+    if(lbl) lbl.textContent = ul==='uk'?'Слухаю… говоріть':ul==='en'?'Listening… speak now':'Sprechen Sie jetzt…';
+  } else if(state === 'done'){
+    mb.textContent = text || '✅';
+    mb.style.cssText = 'width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;display:flex;align-items:center;justify-content:center';
+    if(lbl) lbl.textContent = '';
+  }
+}
 
-  // Зупиняємо будь-яке поточне аудіо
-  try{ getSharedAudio()?.pause(); }catch(e){}
-
-  // Блокуємо мікрофон поки грає аудіо
-  if(mb){ mb.style.opacity = '0.4'; mb.style.pointerEvents = 'none'; }
-  if(lbl) lbl.textContent = ul==='uk'?'Слухай уважно…':ul==='en'?'Listen carefully…':'Hör zu…';
-
+function spSpeakAndListen(card){
+  spL(`spSpeakAndListen: ${card.id}`);
+  try{ const a = getSharedAudio(); if(a){ a.pause(); a.src=''; } playGen++; }catch(e){}
   const url = getAudioUrl(card.id, 'term', 'de');
   const gen = ++playGen;
-
   playAzureAudio(url, () => {
-    // mp3 завершив — чекаємо 800мс щоб iOS повністю звільнив аудіо-сесію
-    setTimeout(() => {
-      if(mb){ mb.style.opacity = ''; mb.style.pointerEvents = ''; }
-      if(lbl) lbl.textContent =
-        ul==='uk'?'Натисни щоб говорити':ul==='en'?'Tap to speak':'Tippe zum Sprechen';
-    }, 800);
+    spL(`mp3 ended, starting SR in 600ms`);
+    setTimeout(() => spAutoStart(), 600);
   }, gen);
 }
 
-function spRenderTermWords(card){
-  const termEl = document.getElementById('sp-term');
-  if(!termEl) return;
-  const words = (card.term?.de || '').split(' ');
-  termEl.innerHTML = words.map((w,i) =>
-    `<span class="sp-tw" data-idx="${i}" style="transition:color .25s,opacity .25s">${w}</span>`
-  ).join(' ');
-}
-
-function spHighlightLive(transcript){
-  const card = spState.cards[spState.idx];
-  if(!card) return;
-  const targetWords = (card.term?.de || '').split(' ').map(w => spNormalize(w));
-  const heardWords  = spNormalize(transcript).split(' ');
-  document.querySelectorAll('#sp-term .sp-tw').forEach((span, i) => {
-    const tw = targetWords[i];
-    if(!tw) return;
-    const best = heardWords.reduce((acc, hw) => Math.max(acc, spSimilarity(tw, hw)), 0);
-    if(best >= 0.82)      { span.style.color = '#2ecc71'; }
-    else if(best >= 0.5)  { span.style.color = '#e67e22'; }
-    else                  { span.style.color = 'rgba(255,255,255,.35)'; }
-  });
-}
-
-function spToggleRecord(){
-  if(spState.recording){ spStopRecord(); return; }
-  spStartRecord();
-}
-
-function spStartRecord(){
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SR){
-    const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-    alert(ul === 'uk'
-      ? 'Розпізнавання мовлення не підтримується у вашому браузері'
-      : 'Speech recognition not supported in this browser');
-    return;
-  }
-
-  const card = spState.cards[spState.idx];
-  if(!card) return;
-  if(spState.recording) return; // вже записуємо
-
-  // Прибираємо залишковий об'єкт
-  if(spState.recognition){
-    const old = spState.recognition;
-    spState.recognition = null;
-    try{ old.abort(); }catch(e){}
-  }
-
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  const mb = document.getElementById('sp-mic-btn');
-  const lbl = document.getElementById('sp-mic-label');
-
-  // Зупиняємо аудіо перед SR — iOS не може одночасно
-  try{
-    const a = getSharedAudio();
-    if(a){ a.pause(); a.removeAttribute('src'); a.load(); }
-    playGen++; // скасовуємо будь-яке поточне відтворення
-  }catch(e){}
-
-  // Встановлюємо UI і стан ОДРАЗУ (до setTimeout)
+function spAutoStart(){
+  if(!spState.SR){ spSetMic('idle', '❌ SR not supported'); return; }
+  if(spState.recording) return;
+  spL(`autoStart SR`);
   spState.recording = true;
-  if(mb){ mb.classList.add('recording'); mb.textContent = '⏹'; }
-  if(lbl) lbl.textContent =
-    ul === 'uk' ? 'Слухаю… говоріть зараз' :
-    ul === 'en' ? 'Listening… speak now' :
-    ul === 'ru' ? 'Слушаю… говорите сейчас' : 'Höre zu… sprechen Sie jetzt';
-  haptic.light();
-
-  // iOS PWA: rec.start() має викликатись без setTimeout (user gesture chain)
-  // Але abort попереднього потребує мікро-затримки
-  const delay = spState.recognition ? 200 : 0;
-  setTimeout(() => spTryStart(SR, mb, lbl, ul, 0), delay);
-}
-
-const spLog = []; // лог для діагностики
-function spL(msg){ 
-  const entry = `[${new Date().toISOString().slice(11,23)}] ${msg}`;
-  spLog.push(entry); 
-  console.log('[SP]', msg);
-  // Показуємо лог у мітці якщо є помилка
-  if(msg.includes('ERROR') || msg.includes('err')){
-    const lbl = document.getElementById('sp-mic-label');
-    if(lbl) lbl.textContent = msg;
-  }
-}
-
-function spTryStart(SR, mb, lbl, ul, attempt){
-  if(!spState.recording){
-    spL(`cancelled before start (attempt ${attempt})`);
-    return;
-  }
-
-  spL(`start attempt ${attempt}`);
-
-  const rec = new SR();
+  spSetMic('listening');
+  const rec = new spState.SR();
   rec.lang = 'de-DE';
   rec.continuous = false;
   rec.interimResults = true;
   rec.maxAlternatives = 1;
   spState.recognition = rec;
-
-  let _done = false;
   const _startTime = Date.now();
-  let _lastInterim = ''; // зберігаємо останній interim для iOS aborted fallback
-
+  let _done = false;
+  let _lastInterim = '';
   rec.onresult = (e) => {
     let interim = '', final = '';
     for(let i = e.resultIndex; i < e.results.length; i++){
       const txt = e.results[i][0]?.transcript || '';
-      if(e.results[i].isFinal) final += txt;
-      else interim += txt;
+      if(e.results[i].isFinal) final += txt; else interim += txt;
     }
-    if(interim) {
-      _lastInterim = interim;
-      spL(`interim: "${interim}"`);
-      spHighlightLive(interim);
-    }
+    if(interim){ _lastInterim = interim; spL(`interim: "${interim}"`); spHighlightLive(interim); }
     if(final && !_done){
       _done = true;
-      _lastInterim = '';
       spL(`final: "${final}"`);
       spState.recognition = null;
       spState.recording = false;
-      spShowResult(final, spState.cards[spState.idx]);
+      spShowResult(final, spState.card);
     }
   };
-
   rec.onerror = (e) => {
-    spL(`ERROR: ${e.error} (attempt ${attempt})`);
-    if(e.error === 'aborted'){
-      // iOS: якщо є interim результат — використовуємо його як фінальний
-      if(_lastInterim && !_done){
-        _done = true;
-        spL(`using last interim as final: "${_lastInterim}"`);
-        spState.recognition = null;
-        spState.recording = false;
-        spShowResult(_lastInterim, spState.cards[spState.idx]);
-      }
+    spL(`ERROR: ${e.error} elapsed=${Date.now()-_startTime}ms`);
+    if(e.error === 'aborted' && _lastInterim && !_done){
+      _done = true;
+      spL(`using lastInterim: "${_lastInterim}"`);
+      spState.recognition = null;
+      spState.recording = false;
+      spShowResult(_lastInterim, spState.card);
       return;
     }
+    if(e.error === 'aborted') return;
     spState.recording = false;
     spState.recognition = null;
-    if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-    const msg = e.error === 'no-speech'
-      ? (ul==='uk'?'Нічого не почуто — спробуй ще':ul==='en'?'No speech detected':'Nichts gehört')
-      : e.error === 'not-allowed'
-      ? (ul==='uk'?'Немає доступу до мікрофона':ul==='en'?'Microphone access denied':'Mikrofon gesperrt')
-      : (ul==='uk'?'Помилка: '+e.error:'Fehler: '+e.error);
-    if(lbl) lbl.textContent = msg;
+    spSetMic('idle', e.error === 'not-allowed' ? '🔒 Мікрофон заблоковано' : `❌ ${e.error}`);
   };
-
   rec.onend = () => {
     const elapsed = Date.now() - _startTime;
-    spL(`onend (done=${_done}, attempt=${attempt}, elapsed=${elapsed}ms)`);
+    spL(`onend done=${_done} elapsed=${elapsed}ms`);
     spState.recording = false;
-
-    // iOS: якщо onend спрацював дуже швидко і нічого не розпізнано —
-    // це конфлікт з TTS або системний блок. Повторюємо автоматично.
-    if(!_done && elapsed < 500 && attempt < 3){
-      spL(`quick-end detected, auto-retry in 900ms`);
-      spState.recording = true;
-      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 900);
-      return;
-    }
-
-    if(mb && mb.classList.contains('recording')){
-      mb.classList.remove('recording');
-      mb.textContent = '🎤';
+    if(!_done){
+      if(elapsed < 800){
+        spL(`quick-end, retry in 1000ms`);
+        spState.recording = true;
+        setTimeout(() => spAutoStart(), 1000);
+      } else {
+        spSetMic('idle', typeof uiLang!=='undefined'&&uiLang==='uk'?'Спробуй ще раз':'Try again');
+      }
     }
   };
-
-  try {
-    rec.start();
-    spL(`rec.start() OK`);
-  } catch(e){
-    spL(`rec.start() threw: ${e.name} — ${e.message} (attempt ${attempt})`);
+  try{ rec.start(); spL(`rec.start() OK`); }
+  catch(ex){
+    spL(`rec.start() error: ${ex.name}`);
+    spState.recording = false;
     spState.recognition = null;
-    if(e.name === 'InvalidStateError' && attempt < 4){
-      const retryDelay = 200 * (attempt + 1);
-      spL(`retry in ${retryDelay}ms`);
-      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), retryDelay);
-    } else {
-      spState.recording = false;
-      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-      if(lbl) lbl.textContent = ul==='uk'?'Спробуй ще раз':'Try again';
-    }
+    spSetMic('idle', 'Спробуй ще раз');
   }
+}
+
+function spToggleRecord(){ }  // більше не використовується
+function spStopRecord(){
+  if(spState.recognition){ try{ spState.recognition.abort(); }catch(e){} spState.recognition = null; }
+  spState.recording = false;
+}
+function spCleanup(){ spStopRecord(); }
+document.addEventListener('visibilitychange', () => { if(document.visibilityState==='hidden') spCleanup(); });
+window.addEventListener('pagehide', spCleanup);
+
+const spLog = [];
+function spL(msg){
+  const entry = `[${new Date().toISOString().slice(11,23)}] ${msg}`;
+  spLog.push(entry);
+  console.log('[SP]', msg);
 }
 
 function spNormalize(str){
@@ -6041,11 +5870,7 @@ function spShowResult(heardText, card){
   spState.totalCount++;
   if(isOk) spState.correctCount++;
 
-  document.getElementById('sp-score-chip').textContent =
-    `✓ ${spState.correctCount}/${spState.totalCount}`;
-
-  const mb = document.getElementById('sp-mic-btn');
-  if(mb){ mb.classList.remove('recording'); mb.className = isOk ? 'success' : 'fail'; mb.textContent = isOk ? '✅' : '❌'; }
+  spSetMic('done', isOk ? '✅' : '❌');
 
   const rb = document.getElementById('sp-result-box');
   if(rb) rb.style.display = 'block';
@@ -6063,14 +5888,11 @@ function spShowResult(heardText, card){
 
   const ab = document.getElementById('sp-actions');
   const nb = document.getElementById('sp-next-btn');
+  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   if(ab) ab.style.display = 'flex';
   if(nb){
     nb.style.display = 'block';
-    const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-    const isLast = spState.idx + 1 >= spState.cards.length;
-    nb.textContent = isLast
-      ? (ul==='uk'?'Завершити ✓':ul==='en'?'Finish ✓':'Fertig ✓')
-      : (ul==='uk'?'Далі →':ul==='en'?'Next →':'Weiter →');
+    nb.textContent = ul==='uk'?'Далі →':ul==='en'?'Next →':'Weiter →';
   }
 
   srsRate(card.id, isOk ? 4 : 2);
@@ -6080,50 +5902,35 @@ function spShowResult(heardText, card){
 
 function spNext(){
   spStopRecord();
-  spState.idx++;
-  spShowCard();
+  // Одна картка — після результату показуємо фінал
+  spShowFinish();
 }
 
 function spRetry(){
   spStopRecord();
-  // Скасовуємо останній запис у рахунку
-  if(spState.totalCount > 0){
-    spState.totalCount--;
-    if(spState.correctCount > 0 && spState.idx < spState.cards.length){
-      // Перевіряємо чи остання відповідь була правильною (не можемо точно знати — просто не чіпаємо)
-    }
-  }
-  spRenderTermWords(spState.cards[spState.idx]);
-  spReset();
-  setTimeout(() => spSpeakTerm(), 150);
+  // Скасовуємо рахунок останньої спроби і повторюємо ту саму картку
+  if(spState.totalCount > 0) spState.totalCount--;
+  if(spState.correctCount > 0) spState.correctCount--;
+  spRenderCard(spState.card);
+  spSpeakAndListen(spState.card);
 }
 
 function spShowFinish(){
   spCleanup();
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  const pct = spState.totalCount ? Math.round(spState.correctCount / spState.totalCount * 100) : 0;
+  const isOk = spState.correctCount > 0;
   const panel = document.getElementById('vocab-panel-speech');
   if(!panel) return;
-  // Зберігаємо saved state для кнопки "Ще раз"
-  const savedCards = spState.cards;
   panel.innerHTML = `
     <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center">
-      <div style="font-size:56px">${pct>=80?'🏆':pct>=55?'💪':'🔄'}</div>
-      <div style="font-size:22px;font-weight:800;color:var(--gold)">${
+      <div style="font-size:56px">${isOk?'🏆':'🔄'}</div>
+      <div style="font-size:20px;font-weight:800;color:var(--gold)">${
         ul==='uk'?'Практика завершена!':ul==='en'?'Practice done!':'Fertig!'}</div>
-      <div style="background:var(--soft);border-radius:16px;padding:16px 24px;width:100%;box-sizing:border-box">
-        <div style="font-size:36px;font-weight:800;color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:4px">${
-          ul==='uk'?`Правильно: ${spState.correctCount} з ${spState.totalCount}`:
-          ul==='en'?`Correct: ${spState.correctCount} of ${spState.totalCount}`:
-          `Richtig: ${spState.correctCount} von ${spState.totalCount}`}</div>
-      </div>
       <button class="btn" id="sp-again-btn" style="width:100%">🔄 ${
-        ul==='uk'?'Ще раз':ul==='en'?'Again':'Nochmal'}</button>
+        ul==='uk'?'Нова картка':ul==='en'?'New card':'Nächste'}</button>
       <button class="btn" onclick="switchVocabTab(0)" style="width:100%;background:var(--soft);color:var(--ink);border:1px solid var(--border)">📖 ${
         ul==='uk'?'Картки':ul==='en'?'Cards':'Karten'}</button>
     </div>`;
-  // Прив'язуємо "Ще раз" через addEventListener (не onclick щоб уникнути проблем з innerHTML)
   document.getElementById('sp-again-btn')?.addEventListener('click', () => startSpeech());
 }
 
