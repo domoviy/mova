@@ -1,6 +1,6 @@
 // sw.js — Service Worker для MOVA PWA
 // Збільш CACHE_NAME при кожному деплої щоб інвалідувати старий кеш
-const CACHE_NAME = 'mova-v6';
+const CACHE_NAME = 'mova-v7';
 
 const PRECACHE = [
   '/',
