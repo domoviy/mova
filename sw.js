@@ -1,6 +1,7 @@
 // sw.js — Service Worker для MOVA PWA
-// Збільш CACHE_NAME при кожному деплої щоб інвалідувати старий кеш
-const CACHE_NAME = 'mova-v7';
+// CACHE_VERSION оновлюється автоматично GitHub Actions при кожному деплої
+const CACHE_VERSION = 'mova-v7';
+const CACHE_NAME = `mova-${CACHE_VERSION}`;
 
 const PRECACHE = [
   '/',
