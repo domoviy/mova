@@ -1849,19 +1849,17 @@ body.lesson-active .vocab-top{
         <div id="sp-result-box" style="display:none;background:var(--soft);border-radius:16px;padding:16px;border:1.5px solid var(--border)">
           <div style="font-size:11px;color:var(--muted);letter-spacing:.5px;margin-bottom:6px" data-i18n="sp_you_said">Ви сказали:</div>
           <div id="sp-heard" style="font-size:16px;font-weight:600;color:var(--ink);margin-bottom:12px;line-height:1.4"></div>
-          <!-- Шкала точності -->
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
             <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden">
               <div id="sp-accuracy-bar" style="height:100%;border-radius:4px;transition:width .5s ease;width:0%"></div>
             </div>
             <span id="sp-accuracy-pct" style="font-size:16px;font-weight:800;min-width:44px;text-align:right"></span>
           </div>
-          <!-- Порівняння слово-за-словом -->
           <div id="sp-word-diff" style="font-size:15px;line-height:1.8;letter-spacing:.3px"></div>
         </div>
 
         <!-- Кнопки дій -->
-        <div id="sp-actions" style="display:none;display:flex;flex-direction:column;gap:8px">
+        <div id="sp-actions" style="display:none;flex-direction:column;gap:8px">
           <button id="sp-next-btn" onclick="spNext()" class="tiles-check-btn" style="display:none"></button>
           <button onclick="spRetry()" style="background:none;border:1px solid var(--border);border-radius:12px;padding:11px;font-size:14px;color:var(--muted);font-family:inherit;cursor:pointer" id="sp-retry-btn" data-i18n="sp_try_again">Спробувати ще раз</button>
         </div>
@@ -2130,7 +2128,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '128-27c6abc';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5709,13 +5707,31 @@ function startSpeech(){
   spShowCard();
 }
 
-function spShowCard(){
-  // Якщо innerHTML панелі було перезаписано — відновлюємо через switchVocabTab
-  if(!document.getElementById('sp-mic-btn')){
-    switchVocabTab(7);
-    return;
-  }
+function spRenderTermWords(card){
+  const termEl = document.getElementById('sp-term');
+  if(!termEl) return;
+  const words = (card.term?.de || '').split(' ');
+  termEl.innerHTML = words.map((w,i) =>
+    `<span class="sp-tw" data-idx="${i}" style="transition:color .25s">${w}</span>`
+  ).join(' ');
+}
 
+function spHighlightLive(transcript){
+  const card = spState.cards[spState.idx];
+  if(!card) return;
+  const targetWords = (card.term?.de || '').split(' ').map(w => spNormalize(w));
+  const heardWords  = spNormalize(transcript).split(' ');
+  document.querySelectorAll('#sp-term .sp-tw').forEach((span, i) => {
+    const tw = targetWords[i];
+    if(!tw) return;
+    const best = heardWords.reduce((acc, hw) => Math.max(acc, spSimilarity(tw, hw)), 0);
+    if(best >= 0.82)     span.style.color = '#2ecc71';
+    else if(best >= 0.5) span.style.color = '#e67e22';
+    else                 span.style.color = 'rgba(255,255,255,.35)';
+  });
+}
+
+function spShowCard(){
   const card = spState.cards[spState.idx];
   if(!card){ spShowFinish(); return; }
 
@@ -5734,10 +5750,9 @@ function spShowCard(){
 
   spReset();
 
-  // Відтворюємо mp3 після показу картки
+  // mp3
   const url = getAudioUrl(card.id, 'term', 'de');
-  const gen = ++playGen;
-  playAzureAudio(url, null, gen);
+  playAzureAudio(url, null, ++playGen);
 }
 
 function spReset(){
@@ -5928,7 +5943,19 @@ function spShowResult(heardText, card){
   spState.totalCount++;
   if(isOk) spState.correctCount++;
 
-  spSetMic('done', isOk ? '✅' : '❌');
+  // Оновлюємо кнопку мікрофону напряму (без spSetMic)
+  const mb = document.getElementById('sp-mic-btn');
+  if(mb){
+    mb.className = isOk ? 'success' : 'fail';
+    mb.textContent = isOk ? '✅' : '❌';
+    mb.style.cssText = `width:80px;height:80px;border-radius:50%;border:3px solid ${isOk?'#2ecc71':'#e74c3c'};background:${isOk?'rgba(46,204,113,.12)':'rgba(231,76,60,.10)'};font-size:32px;display:flex;align-items:center;justify-content:center`;
+  }
+  const lbl = document.getElementById('sp-mic-label');
+  if(lbl) lbl.textContent = '';
+
+  // Прогрес
+  const chip = document.getElementById('sp-score-chip');
+  if(chip) chip.textContent = `✓ ${spState.correctCount}/${spState.totalCount}`;
 
   const rb = document.getElementById('sp-result-box');
   if(rb) rb.style.display = 'block';
@@ -5978,20 +6005,27 @@ function spShowFinish(){
   spCleanup();
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const pct = spState.totalCount ? Math.round(spState.correctCount / spState.totalCount * 100) : 0;
-  const panel = document.getElementById('vocab-panel-speech');
-  if(!panel) return;
-  panel.innerHTML = `
-    <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:24px;text-align:center">
+  // Показуємо overlay поверх панелі — не перезаписуємо innerHTML (інакше губляться id елементів)
+  document.getElementById('tiles-result-overlay')?.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'tiles-result-overlay';
+  overlay.className = 'tiles-result-overlay';
+  overlay.innerHTML = `
+    <div class="tiles-result-sheet" style="gap:16px">
       <div style="font-size:56px">${pct>=80?'🏆':pct>=55?'💪':'🔄'}</div>
-      <div style="font-size:22px;font-weight:800;color:var(--gold)">${ul==='uk'?'Практика завершена!':ul==='en'?'Practice done!':'Fertig!'}</div>
-      <div style="background:var(--soft);border-radius:16px;padding:16px 24px;width:100%;box-sizing:border-box">
+      <div style="font-size:20px;font-weight:800;color:var(--gold)">${ul==='uk'?'Практика завершена!':ul==='en'?'Practice done!':'Fertig!'}</div>
+      <div style="background:var(--soft);border-radius:16px;padding:12px 20px;width:100%;box-sizing:border-box;text-align:center">
         <div style="font-size:36px;font-weight:800;color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:4px">${ul==='uk'?`Правильно: ${spState.correctCount} з ${spState.totalCount}`:ul==='en'?`Correct: ${spState.correctCount} of ${spState.totalCount}`:`Richtig: ${spState.correctCount} von ${spState.totalCount}`}</div>
+        <div style="font-size:13px;color:var(--muted);margin-top:4px">${ul==='uk'?`${spState.correctCount} з ${spState.totalCount}`:ul==='en'?`${spState.correctCount} of ${spState.totalCount}`:`${spState.correctCount} von ${spState.totalCount}`}</div>
       </div>
-      <button class="btn" id="sp-again-btn" style="width:100%">🔄 ${ul==='uk'?'Ще раз':ul==='en'?'Again':'Nochmal'}</button>
-      <button class="btn" onclick="switchVocabTab(0)" style="width:100%;background:var(--soft);color:var(--ink);border:1px solid var(--border)">📖 ${ul==='uk'?'Картки':ul==='en'?'Cards':'Karten'}</button>
+      <button class="tiles-result-btn ok" id="sp-again-btn">🔄 ${ul==='uk'?'Ще раз':ul==='en'?'Again':'Nochmal'}</button>
+      <button class="tiles-result-btn nok" onclick="switchVocabTab(0);document.getElementById('tiles-result-overlay')?.remove()">📖 ${ul==='uk'?'Картки':ul==='en'?'Cards':'Karten'}</button>
     </div>`;
-  document.getElementById('sp-again-btn')?.addEventListener('click', () => startSpeech());
+  document.body.appendChild(overlay);
+  document.getElementById('sp-again-btn')?.addEventListener('click', () => {
+    overlay.remove();
+    startSpeech();
+  });
 }
 
 // ── DRAG між слотами у def-fill ────────────────────────────────
