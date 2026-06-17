@@ -2038,5 +2038,8 @@
   "B2-Beruf/de/080/ssk/ssk_025_def_de_080": true,
   "B2-Beruf/en/100/ssk/ssk_025_def_en_100": true,
   "B2-Beruf/uk/100/ssk/ssk_025_def_uk_100": true,
-  "B2-Beruf/ru/100/ssk/ssk_025_def_ru_100": true
+  "B2-Beruf/ru/100/ssk/ssk_025_def_ru_100": true,
+  "B2-Beruf/de/100/ssk/ssk_026_term_de_100": true,
+  "B2-Beruf/de/080/ssk/ssk_026_term_de_080": true,
+  "B2-Beruf/en/100/ssk/ssk_026_term_en_100": true
 }
