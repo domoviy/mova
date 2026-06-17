@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
 MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
-Шляхи, імена файлів та ключі маніфесту СТРОГО скопійовані з оригінального gen_audio-azure.py
+Логіка шляхів, імен файлів та маніфесту на 100% скопійована з gen_audio-azure.py v2.9.4
 Шаблон шляху: audio/B2-Beruf/{lang}/{rate}/{cat_lower}/{id}_{field}_{lang}_{rate}.mp3
-Шаблон ключа v1: B2-Beruf/{lang}/{rate}/{cat_lower}/{id}_{field}_{lang}_{rate}
 """
 
 import os
@@ -29,6 +28,9 @@ WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
 COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
 
+# Перемикач версії маніфесту строго з вашого оригінального файлу
+MANIFEST_V2 = False  # Поставте True, якщо хочете лінійний формат ключів
+
 AZURE_KEY = os.environ.get('AZURE_SPEECH_KEY', '')
 AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION', '')
 TTS_URL = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1'
@@ -37,7 +39,7 @@ COURSE = 'B2-Beruf'
 AUDIO_BASE = pathlib.Path('audio') / COURSE   # audio/B2-Beruf/
 MANIFEST = pathlib.Path('audio') / 'manifest.json'
 
-# ── Мапінг голосів згідно з вашою специфікацією ─────────────────
+# ── Мапінг голосів ────────────────────────────────────────────
 VOICE_MAPPING = {
     "vocab": {
         "term":  {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-AriaNeural",        "ru": "ru-RU-SvetlanaNeural"},
@@ -161,10 +163,23 @@ def git_commit_and_push(count):
     except Exception as e:
         print(f"Git commit error: {e}", flush=True)
 
+# ── Запис у маніфест ──────────────────────────────────────────
+def update_manifest_file(updates):
+    if not updates:
+        return
+    current_manifest = {}
+    if MANIFEST.exists():
+        try:
+            with open(MANIFEST, 'r', encoding='utf-8') as f:
+                current_manifest = json.load(f)
+        except: pass
+    current_manifest.update(updates)
+    with open(MANIFEST, 'w', encoding='utf-8') as f:
+        json.dump(current_manifest, f, ensure_ascii=False, indent=2)
+
 # ── Основний асинхронний пайплайн ─────────────────────────────
 async def worker_task(task, semaphore, stats):
-    # ТОЧНА ОРИГІНАЛЬНА ЛОГІКА СТВОРЕННЯ ПАПОК ІЗ ВАШОГО AZURE СКРИПТА:
-    # file_dir = audio / B2-Beruf / lang / rate / cat_lower
+    # СТРОГО ОРИГІНАЛЬНА СТРУКТУРА ПАПОК: audio / COURSE / lang / rate / cat_lower
     file_dir = AUDIO_BASE / task["lang"] / task["rate"] / task["cat_lower"]
     file_dir.mkdir(parents=True, exist_ok=True)
     file_path = file_dir / task["filename"]
@@ -185,9 +200,8 @@ async def worker_task(task, semaphore, stats):
                 
             stats["generated"] += 1
             
-            # ТОЧНИЙ ФОРМАТ ЗАПИСУ З ОРИГІНАЛЬНОГО СКРИПТА:
-            # Для нових ключів v1 значенням у маніфесті є просто True
-            stats["manifest_updates"][task["mkey"]] = True
+            # Строгий запис типу значення (True або назва файлу) залежно від MANIFEST_V2
+            stats["manifest_updates"][task["mkey"]] = (task["filename"] if MANIFEST_V2 else True)
             
             if DELAY_SEC > 0:
                 await asyncio.sleep(DELAY_SEC)
@@ -201,19 +215,6 @@ async def worker_task(task, semaphore, stats):
             print(f"❌ Помилка генерації для {task['mkey']}: {e}", flush=True)
             if file_path.exists():
                 file_path.unlink()
-
-def update_manifest_file(updates):
-    if not updates:
-        return
-    current_manifest = {}
-    if MANIFEST.exists():
-        try:
-            with open(MANIFEST, 'r', encoding='utf-8') as f:
-                current_manifest = json.load(f)
-        except: pass
-    current_manifest.update(updates)
-    with open(MANIFEST, 'w', encoding='utf-8') as f:
-        json.dump(current_manifest, f, ensure_ascii=False, indent=2)
 
 async def main():
     print(f"Запуск генератора MOVA TTS. Обраний двигун: {TTS_ENGINE.upper()}", flush=True)
@@ -237,16 +238,13 @@ async def main():
     for item in raw_items:
         item_id = item["id"]
         
-        # Визначаємо внутрішню категорію для мапінгу голосів
         internal_cat = "vocab"
         if item_id.startswith("sbs_"):
             internal_cat = "sprachbau"
         elif item_id.startswith("dlg_"):
             internal_cat = "redemittel"
             
-        # Строго оригінальне визначення категорії cat_lower з azure-скрипта
         cat_lower = str(item.get("cat", item["_fallback_var"])).lower()
-            
         fields = fields_map[internal_cat]
         
         for field in fields:
@@ -257,15 +255,16 @@ async def main():
                     rates = audio_config.get(lang, ["100"])
                     for rate in rates:
                         
-                        # ТОЧНЕ ОРИГІНАЛЬНЕ ФОРМУВАННЯ КЛЮЧА ТА ІМЕНІ З ВАШОГО СКРИПТА v2.9.4:
-                        # Шлях у маніфесті: COURSE/lang/rate/cat_lower/id_field_lang_rate
-                        mkey = f"{COURSE}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
+                        # СТРОГЕ КОПІЮВАННЯ ФОРМУВАННЯ КЛЮЧІВ ІЗ ВАШОГО ОРИГІНАЛЬНОГО ФАЙЛУ v2.9.4:
                         filename = f"{item_id}_{field}_{lang}_{rate}.mp3"
                         
-                        # Перевірка наявності як v1, так і v2 форматів ключів у маніфесті
-                        mkey_alt = f"{COURSE}/{item_id}_{cat_lower}_{field}_{lang}_{rate}"
+                        if MANIFEST_V2:
+                            mkey = f"{COURSE}/{item_id}_{cat_lower}_{field}_{lang}_{rate}"
+                        else:
+                            mkey = f"{COURSE}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
                         
-                        if mkey not in manifest_data and mkey_alt not in manifest_data:
+                        # Захист: якщо ключ вже є в маніфесті, пропускаємо завдання
+                        if mkey not in manifest_data:
                             tasks.append({
                                 "id": item_id, 
                                 "internal_cat": internal_cat, 
@@ -280,7 +279,7 @@ async def main():
 
     print(f"Знайдено нових завдань для генерації: {len(tasks)}", flush=True)
     if not tasks:
-        print("Всі файли синхронізовані з маніфестом.", flush=True)
+        print("Всі файли синхронізовані з manifest.json.", flush=True)
         return
 
     semaphore = asyncio.Semaphore(WORKERS)
