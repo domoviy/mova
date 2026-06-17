@@ -11561,5 +11561,8 @@
   "B2-Beruf/de/080/mein beruf/mbr_008_def_de_080": true,
   "B2-Beruf/en/100/hsk/hsk_012_term_en_100": true,
   "B2-Beruf/en/100/hsk/hsk_012_def_en_100": true,
-  "B2-Beruf/de/100/hsk/hsk_020_term_de_100": true
+  "B2-Beruf/de/100/hsk/hsk_020_term_de_100": true,
+  "B2-Beruf/de/080/hsk/hsk_020_term_de_080": true,
+  "B2-Beruf/en/100/hsk/hsk_020_term_en_100": true,
+  "B2-Beruf/de/100/hsk/hsk_020_def_de_100": true
 }
