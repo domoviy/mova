@@ -46,7 +46,7 @@ VOICE_MAPPING = {
     },
     "sprachbau": {
         "sentence":    {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
-        "answer":      {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-SUP-SvetlanaNeural"},
+        "answer":      {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
         "explanation": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
     },
     "redemittel": {
@@ -77,17 +77,13 @@ def clean_text(text):
 
 def load_js_database(file_path):
     """
-    Універсальний динамічний парсер: зчитує будь-які об'єкти з JS-файлу,
-    автоматично перетворюючи змінні на JSON-структуру та сортуючи за префіксом ID.
+    Ізольовано витягує кожен масив з JS-файлу за допомогою regex, 
+    що гарантує стійкість до будь-яких зовнішніх коментарів та оформлення.
     """
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 1. Видаляємо коментарі
-    content = re.sub(r'//.*', '', content)
-    content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
-
-    # 2. Витягуємо AUDIO_CONFIG
+    # 1. Витягуємо конфіг швидкості AUDIO_CONFIG
     config = {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
     config_match = re.search(r'AUDIO_CONFIG\s*=\s*(\{.*?\})', content, re.DOTALL)
     if config_match:
@@ -95,39 +91,42 @@ def load_js_database(file_path):
             config = json.loads(config_match.group(1).replace("'", '"'))
         except: pass
 
-    # 3. Перетворюємо всі var/let/const оголошення на ключі єдиного JSON-об'єкта
-    clean = re.sub(r'(?:var|let|const|export)\s+(\w+)\s*=\s*', r'"\1": ', content)
-    clean = "{" + clean + "}"
-    clean = re.sub(r';\s*(?=\})', '', clean)
-    clean = re.sub(r',\s*([\]\}])', r'\1', clean) # Очищення trailing commas
-
     db_data = {"vocab": [], "sprachbau": [], "redemittel": []}
+
+    # 2. Шукаємо всі оголошення змінних типу `var НАЗВА = [ ... ]`
+    # Забираємо тільки вміст у квадратних дужках, ігноруючи все інше у файлі
+    blocks = re.findall(r'(?:var|let|const|export)\s+(\w+)\s*=\s*(\[.*?\])\s*(;|\n\n|var|let|const|export|$)', content, re.DOTALL)
     
-    try:
-        parsed_all = json.loads(clean)
+    for var_name, array_content, _ in blocks:
+        # Очищаємо знайдений масив від однорядкових коментарів всередині нього
+        clean_array = re.sub(r'//.*', '', array_content)
+        clean_array = re.sub(r'/\*.*?\*/', '', clean_array, flags=re.DOTALL)
         
-        # Проходимо по всіх зчитаних масивах (CATS, LESSONS чи будь-яких інших)
-        for key, items in parsed_all.items():
+        # Видаляємо trailing commas перед закриттям дужок, щоб json.loads не падав
+        clean_array = re.sub(r',\s*([\]\}])', r'\1', clean_array)
+        
+        try:
+            items = json.loads(clean_array)
             if not isinstance(items, list):
                 continue
-            
+                
             for item in items:
                 if not isinstance(item, dict) or "id" not in item:
                     continue
                 
                 item_id = item["id"]
                 
-                # Розподіл за першими літерами префіксу ID картки
-                if item_id.startswith("vcb_") or item_id.startswith("nvv_") or item_id.startswith("mbr_") or item_id.startswith("ssk_") or item_id.startswith("hsk_") or item_id.startswith("eat_") or item_id.startswith("ges_") or item_id.startswith("geh_"):
+                # Розподіл об'єктів за префіксами ID
+                if any(item_id.startswith(p) for p in ["vcb_", "nvv_", "mbr_", "ssk_", "hsk_", "eat_", "ges_", "geh_"]):
                     db_data["vocab"].append(item)
                 elif item_id.startswith("sbs_"):
                     db_data["sprachbau"].append(item)
                 elif item_id.startswith("dlg_"):
                     db_data["redemittel"].append(item)
-                    
-    except Exception as e:
-        print(f"🚨 Помилка парсингу JSON структури файлу: {e}", flush=True)
-        
+        except Exception as e:
+            # Якщо якийсь технічний масив (наприклад, CATS) не є чистим списком карток, він просто пропуститься без падіння всього скрипту
+            pass
+            
     return config, db_data
 
 # ── Двигуни генерації ─────────────────────────────────────────
@@ -258,7 +257,6 @@ async def main():
             
             for field in fields:
                 field_obj = item.get(field)
-                # Перевіряємо, чи підполе є саме мовним об'єктом (захист від масивів distractor)
                 if isinstance(field_obj, dict):
                     for lang, text in field_obj.items():
                         if not text: continue
