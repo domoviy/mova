@@ -3322,5 +3322,8 @@
   "B2-Beruf/de/100/mbr/mbr_036_short_de_100": true,
   "B2-Beruf/de/080/mbr/mbr_036_short_de_080": true,
   "B2-Beruf/en/100/mbr/mbr_036_short_en_100": true,
-  "B2-Beruf/uk/100/mbr/mbr_036_short_uk_100": true
+  "B2-Beruf/uk/100/mbr/mbr_036_short_uk_100": true,
+  "B2-Beruf/de/100/mbr/mbr_036_def_de_100": true,
+  "B2-Beruf/de/080/mbr/mbr_036_def_de_080": true,
+  "B2-Beruf/en/100/mbr/mbr_036_def_en_100": true
 }
