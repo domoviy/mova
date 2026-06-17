@@ -32,7 +32,7 @@ COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
 
 AZURE_KEY = os.environ.get('AZURE_SPEECH_KEY', '')
 AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION', '')
-TTS_URL = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1'
+TTS_URL = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognervices/v1'
 
 COURSE = 'B2-Beruf'
 AUDIO_BASE = pathlib.Path('audio') / COURSE
@@ -46,9 +46,9 @@ VOICE_MAPPING = {
         "def":   {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
     },
     "sprachbau": {
-        "correct_sentence": {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
-        "correct_answer":   {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
-        "wrong_answers":    {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
+        "sentence":    {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
+        "answer":      {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
+        "explanation": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
     },
     "redemittel": {
         "question": {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
@@ -77,11 +77,15 @@ def clean_text(text):
     return re.sub(r'\s+', ' ', text).strip()
 
 def parse_audio_config(content):
-    """Шукає AUDIO_CONFIG у JS файлі"""
     match = re.search(r'var\s+AUDIO_CONFIG\s*=\s*(\{.*?\});', content, re.DOTALL)
     if match:
         try:
-            return json.loads(re.sub(r'//.*', '', match.group(1)))
+            # Валідація JSON структури конфігу
+            js_box = match.group(1)
+            js_box = re.sub(r'//.*', '', js_box)
+            js_box = re.sub(r'(\w+)\s*:', r'"\1":', js_box)
+            js_box = js_box.replace("'", '"')
+            return json.loads(js_box)
         except:
             pass
     return {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
@@ -92,28 +96,70 @@ def load_js_database(file_path):
     
     config = parse_audio_config(content)
     
-    # Конвертуємо JS об'єкт у валідний JSON
-    js_clean = re.sub(r'var\s+AUDIO_CONFIG\s*=.*?;', '', content, flags=re.DOTALL)
-    js_clean = re.sub(r'export\s+const\s+\w+\s*=\s*', '', js_clean)
+    # Видаляємо змінні та коментарі, щоб залишити лише чистий експортний об'єкт
+    js_clean = re.sub(r'//.*', '', content) # Видаляємо однорядкові коментарі
+    js_clean = re.sub(r'var\s+AUDIO_CONFIG\s*=.*?;', '', js_clean, flags=re.DOTALL)
     js_clean = re.sub(r'var\s+CATS\s*=.*?;', '', js_clean, flags=re.DOTALL)
+    js_clean = re.sub(r'export\s+const\s+\w+\s*=\s*', '', js_clean)
     js_clean = js_clean.strip()
     if js_clean.endswith(';'):
         js_clean = js_clean[:-1]
         
-    try:
-        data = json.loads(js_clean)
-    except:
-        data = {}
-        for cat in ["vocab", "sprachbau", "redemittel"]:
-            match = re.search(rf'"{cat}"\s*:\s*(\[.*?\])', js_clean, re.DOTALL)
-            if match:
-                try: data[cat] = json.loads(match.group(1))
-                except: data[cat] = []
-    return config, data
+    # Перетворюємо JS-літерал об'єкта на валідний JSON
+    # Додаємо лапки до ключів
+    js_clean = re.sub(r'(\s*)(\w+)\s*:', r'\1"\2":', js_clean)
+    # Замінюємо одинарні лапки навколо рядків на подвійні (якщо вони не екрановані)
+    # Але оскільки в базі всередині тексту можуть бути подвійні лапки, надійніше витягти масиви через regex
+    data = {}
+    for cat in ["vocab", "sprachbau", "redemittel"]:
+        # Шукаємо блоки категорій
+        match = re.search(rf'"{cat}"\s*:\s*(\[.*?\])\s*(?=\s*,\s*"\w+"\s*:|\s*|\s*\}})', js_clean, re.DOTALL)
+        if match:
+            block = match.group(1)
+            # Базове виправлення синтаксису для перетворення масиву об'єктів на json
+            block = re.sub(r',\s*\]', ']', block)
+            block = re.sub(r',\s*\}', '}', block)
+            try:
+                data[cat] = json.loads(block)
+            except:
+                # Якщо json.loads падає через внутрішні лапки, розпарсимо за допомогою регулярних виразів об'єкти {}
+                data[cat] = []
+                items = re.findall(r'\{\s*id\s*:\s*["\'](.*?)["\'].*?\}', content, re.DOTALL)
+                # Для гарантії безпеки прочитаємо об'єкти регулярками нижче
+    
+    # Прямий надійний fallback-парсинг об'єктів через регулярні вирази, якщо JSON-літерал занадто специфічний
+    fallback_data = {"vocab": [], "sprachbau": [], "redemittel": []}
+    
+    # Шукаємо взагалі всі об'єкти з id
+    object_blocks = re.findall(r'\{\s*id\s*:\s*["\']([^"\']+)["\'](.*?)\}', content, re.DOTALL)
+    for i_id, block in object_blocks:
+        # Визначаємо категорію за префіксом ID або наявністю полів
+        if "term" in block:
+            cat = "vocab"
+        elif "sentence" in block or "distractors" in block:
+            cat = "sprachbau"
+        elif "question" in block:
+            cat = "redemittel"
+        else:
+            continue
+            
+        item = {"id": i_id}
+        # Витягуємо під-об'єкти мов (наприклад term: {de: "...", uk: "..."})
+        for field in ["term", "short", "def", "sentence", "answer", "explanation", "question"]:
+            f_match = re.search(rf'{field}\s*:\s*\{{(.*?)\}}', block, re.DOTALL)
+            if f_match:
+                item[field] = {}
+                inner = f_match.group(1)
+                for lang in ["de", "uk", "en", "ru"]:
+                    l_match = re.search(rf'{lang}\s*:\s*["\'](.*?)["\'](?=\s*,\s*\w+\s*:|\s*|\s*$)', inner, re.DOTALL)
+                    if l_match:
+                        item[field][lang] = l_match.group(1)
+        fallback_data[cat].append(item)
+
+    return config, fallback_data
 
 # ── Двигуни генерації ─────────────────────────────────────────
 async def tts_edge(text, voice, rate_str, output_path):
-    """Генерація через Edge TTS з підтримкою швидкості мовлення"""
     if not edge_tts:
         raise RuntimeError("Пакет 'edge-tts' не встановлено.")
     rate_val = int(rate_str)
@@ -125,13 +171,10 @@ async def tts_edge(text, voice, rate_str, output_path):
     await communicate.save(output_path)
 
 def tts_azure_rest(text, voice, rate_str, output_path):
-    """Генерація через прямі HTTP REST-запити до Azure API з SSML"""
     if not AZURE_KEY or not AZURE_REGION:
         raise ValueError("Відсутні ключі AZURE_SPEECH_KEY або AZURE_SPEECH_REGION!")
     
     rate_float = float(rate_str) / 100.0
-    
-    # Екранування XML символів у тексті
     ssml_text = text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
     
     ssml = f"""<speak version='1.0' xml:lang='de-DE'>
@@ -143,8 +186,6 @@ def tts_azure_rest(text, voice, rate_str, output_path):
     headers = {
         'Ocp-Apim-Subscription-Key': AZURE_KEY,
         'Content-Type': 'application/ssml+xml',
-        'X-Search-AppId': '0724d16c52914023bcaf4b99876e6950',
-        'X-Search-ClientID': '1f2e3d4c5b6a7f8e9d0c1b2a3f4e5d6c',
         'User-Agent': 'MOVA_TTS_Bot',
         'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3'
     }
@@ -174,8 +215,6 @@ def git_commit_and_push(count):
 # ── Основний асинхронний пайплайн ─────────────────────────────
 async def worker_task(task, semaphore, stats):
     file_path = AUDIO_BASE / task["filename"]
-    
-    # ПЕРЕВІРКУ НА ДИСКУ ВИДАЛЕНО — СКРИПТ ОРІЄНТУЄТЬСЯ ТІЛЬКИ НА МАНІФЕСТ
     voice = get_voice_id(task["cat"], task["sub"], task["lang"])
     cleaned = clean_text(task["text"])
     if not cleaned:
@@ -183,7 +222,7 @@ async def worker_task(task, semaphore, stats):
 
     async with semaphore:
         try:
-            print(f"[{TTS_ENGINE.upper()}] -> {task['filename']} ({task['rate']}%)", flush=True)
+            print(f"[{TTS_ENGINE.upper()}] -> {task['filename']} ({task['rate']}%) -> '{cleaned[:20]}...'", flush=True)
             
             if TTS_ENGINE == "edge":
                 await tts_edge(cleaned, voice, task["rate"], file_path)
@@ -235,7 +274,7 @@ async def main():
     tasks = []
     fields_map = {
         "vocab": ["term", "short", "def"],
-        "sprachbau": ["correct_sentence", "correct_answer", "wrong_answers"],
+        "sprachbau": ["sentence", "answer", "explanation"],
         "redemittel": ["question", "answer"]
     }
     
@@ -246,7 +285,7 @@ async def main():
             if not item_id: continue
             
             for field in fields:
-                field_obj = item.get(field) or item.get(f"{field}_de")
+                field_obj = item.get(field)
                 if isinstance(field_obj, dict):
                     for lang, text in field_obj.items():
                         if not text: continue
@@ -254,18 +293,6 @@ async def main():
                         for rate in rates:
                             mkey = f"{COURSE}/{item_id}_{cat}_{field}_{lang}_{rate}"
                             filename = f"{item_id}_{cat}_{field}_{lang}_{rate}.mp3"
-                            # ФІЛЬТРАЦІЯ ОРІЄНТОВАНА СУТО НА МАНІФЕСТ
-                            if mkey not in manifest_data:
-                                tasks.append({"id": item_id, "cat": cat, "sub": field, "lang": lang, "rate": rate, "text": text, "filename": filename, "mkey": mkey})
-                else:
-                    for lang in ["de", "uk", "en", "ru"]:
-                        text = item.get(f"{field}_{lang}")
-                        if not text: continue
-                        rates = audio_config.get(lang, ["100"])
-                        for rate in rates:
-                            mkey = f"{COURSE}/{item_id}_{cat}_{field}_{lang}_{rate}"
-                            filename = f"{item_id}_{cat}_{field}_{lang}_{rate}.mp3"
-                            # ФІЛЬТРАЦІЯ ОРІЄНТОВАНА СУТО НА МАНІФЕСТ
                             if mkey not in manifest_data:
                                 tasks.append({"id": item_id, "cat": cat, "sub": field, "lang": lang, "rate": rate, "text": text, "filename": filename, "mkey": mkey})
 
