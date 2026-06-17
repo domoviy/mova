@@ -3,8 +3,7 @@
 MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
 Автоматично читає B2-Beruf.js, враховує AUDIO_CONFIG швидкості,
 очищує HTML-теги, використовує маніфест і мапить голоси згідно з таблицею.
-За замовчуванням використовує Edge TTS, але підтримує Azure REST API через перемикач.
-Генерація орієнтується ВИКЛЮЧНО на manifest.json (дозволяє перезапис при видаленні з маніфесту).
+Генерація орієнтується ВИКЛЮЧНО на manifest.json.
 """
 
 import os
@@ -47,7 +46,7 @@ VOICE_MAPPING = {
     },
     "sprachbau": {
         "sentence":    {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
-        "answer":      {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
+        "answer":      {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-SUP-SvetlanaNeural"},
         "explanation": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
     },
     "redemittel": {
@@ -76,104 +75,60 @@ def clean_text(text):
     text = text.replace('/', ' ')
     return re.sub(r'\s+', ' ', text).strip()
 
-def js_to_json_cleaner(js_text):
-    """Перетворює сирий текст JS-об'єкта/масиву на валідну JSON-структуру"""
-    # Видаляємо коментарі
-    text = re.sub(r'//.*', '', js_text)
-    text = re.sub(r'/\*.*?\*/', '', text, flags=re.DOTALL)
-    
-    # Забезпечуємо лапки навколо ключів об'єктів (напр. id: -> "id":)
-    text = re.sub(r'(\s*)(\w+)\s*:', r'\1"\2":', text)
-    
-    # Замінюємо одинарні лапки навколо значень на подвійні, але обережно з внутрішніми лапками
-    # Найнадійніший варіант — тимчасово зафіксувати внутрішні екранування
-    text = re.sub(r",\s*([\]\}])", r"\1", text) # Видаляємо trailing commas
-    return text
-
-def parse_audio_config(content):
-    match = re.search(r'AUDIO_CONFIG\s*=\s*(\{.*?\});', content, re.DOTALL)
-    if match:
-        try:
-            cleaned = js_to_json_cleaner(match.group(1))
-            cleaned = cleaned.replace("'", '"')
-            return json.loads(cleaned)
-        except:
-            pass
-    return {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
-
-def extract_json_array_by_key(content, key):
-    """Шукає масив за ключем у JS файлі, балансуючи квадратні дужки []"""
-    idx = content.find(f'"{key}"')
-    if idx == -1:
-        idx = content.find(f"'{key}'")
-    if idx == -1:
-        idx = content.find(f"{key}:")
-        
-    if idx == -1:
-        return []
-        
-    start_bracket = content.find('[', idx)
-    if start_bracket == -1:
-        return []
-        
-    # Балансування дужок для збору всього масиву
-    bracket_count = 0
-    end_bracket = -1
-    for i in range(start_bracket, len(content)):
-        if content[i] == '[':
-            bracket_count += 1
-        elif content[i] == ']':
-            bracket_count -= 1
-            if bracket_count == 0:
-                end_bracket = i
-                break
-                
-    if end_bracket == -1:
-        return []
-        
-    raw_array = content[start_bracket:end_bracket+1]
-    cleaned_array = js_to_json_cleaner(raw_array)
-    
-    # Фікс одинарних лапок у JSON
-    # Оскільки у файлі дані можуть містити складні рядки, перетворимо одинарні лапки на подвійні там, де це межі рядків
-    cleaned_array = re.sub(r"'\s*,\s*'", '", "', cleaned_array)
-    cleaned_array = re.sub(r"'\s*\]", '" ]', cleaned_array)
-    cleaned_array = re.sub(r"\[\s*'", '[ "', cleaned_array)
-    cleaned_array = re.sub(r"\"\s*:\s*'", '": "', cleaned_array)
-    cleaned_array = re.sub(r"'\s*([,\}])", r'"\1', cleaned_array)
-    
-    try:
-        return json.loads(cleaned_array)
-    except:
-        # Резервний витяг елементів через regex на випадок збою синтаксису JSON
-        items = []
-        obj_blocks = re.findall(r'\{\s*id\s*:\s*["\']([^"\']+)["\'](.*?)\}', raw_array, re.DOTALL)
-        for i_id, block in obj_blocks:
-            item = {"id": i_id}
-            for field in ["term", "short", "def", "sentence", "answer", "explanation", "question"]:
-                f_match = re.search(rf'{field}\s*:\s*\{{(.*?)\}}', block, re.DOTALL)
-                if f_match:
-                    item[field] = {}
-                    inner = f_match.group(1)
-                    for lang in ["de", "uk", "en", "ru"]:
-                        l_match = re.search(rf'{lang}\s*:\s*["\'](.*?)["\']', inner, re.DOTALL)
-                        if l_match:
-                            item[field][lang] = l_match.group(1)
-            items.append(item)
-        return items
-
 def load_js_database(file_path):
+    """
+    Універсальний динамічний парсер: зчитує будь-які об'єкти з JS-файлу,
+    автоматично перетворюючи змінні на JSON-структуру та сортуючи за префіксом ID.
+    """
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
+
+    # 1. Видаляємо коментарі
+    content = re.sub(r'//.*', '', content)
+    content = re.sub(r'/\*.*?\*/', '', content, flags=re.DOTALL)
+
+    # 2. Витягуємо AUDIO_CONFIG
+    config = {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
+    config_match = re.search(r'AUDIO_CONFIG\s*=\s*(\{.*?\})', content, re.DOTALL)
+    if config_match:
+        try:
+            config = json.loads(config_match.group(1).replace("'", '"'))
+        except: pass
+
+    # 3. Перетворюємо всі var/let/const оголошення на ключі єдиного JSON-об'єкта
+    clean = re.sub(r'(?:var|let|const|export)\s+(\w+)\s*=\s*', r'"\1": ', content)
+    clean = "{" + clean + "}"
+    clean = re.sub(r';\s*(?=\})', '', clean)
+    clean = re.sub(r',\s*([\]\}])', r'\1', clean) # Очищення trailing commas
+
+    db_data = {"vocab": [], "sprachbau": [], "redemittel": []}
     
-    config = parse_audio_config(content)
-    
-    data = {}
-    data["vocab"] = extract_json_array_by_key(content, "vocab")
-    data["sprachbau"] = extract_json_array_by_key(content, "sprachbau")
-    data["redemittel"] = extract_json_array_by_key(content, "redemittel")
-    
-    return config, data
+    try:
+        parsed_all = json.loads(clean)
+        
+        # Проходимо по всіх зчитаних масивах (CATS, LESSONS чи будь-яких інших)
+        for key, items in parsed_all.items():
+            if not isinstance(items, list):
+                continue
+            
+            for item in items:
+                if not isinstance(item, dict) or "id" not in item:
+                    continue
+                
+                item_id = item["id"]
+                
+                # Розподіл за першими літерами префіксу ID картки
+                if item_id.startswith("vcb_") or item_id.startswith("nvv_") or item_id.startswith("mbr_") or item_id.startswith("ssk_") or item_id.startswith("hsk_") or item_id.startswith("eat_") or item_id.startswith("ges_") or item_id.startswith("geh_"):
+                    db_data["vocab"].append(item)
+                elif item_id.startswith("sbs_"):
+                    db_data["sprachbau"].append(item)
+                elif item_id.startswith("dlg_"):
+                    db_data["redemittel"].append(item)
+                    
+    except Exception as e:
+        print(f"🚨 Помилка парсингу JSON структури файлу: {e}", flush=True)
+        
+    return config, db_data
 
 # ── Двигуни генерації ─────────────────────────────────────────
 async def tts_edge(text, voice, rate_str, output_path):
@@ -239,7 +194,7 @@ async def worker_task(task, semaphore, stats):
 
     async with semaphore:
         try:
-            print(f"[{TTS_ENGINE.upper()}] -> {task['filename']} ({task['rate']}%) -> '{cleaned[:20]}...'", flush=True)
+            print(f"[{TTS_ENGINE.upper()}] -> {task['filename']} ({task['rate']}%) -> '{cleaned[:30]}...'", flush=True)
             
             if TTS_ENGINE == "edge":
                 await tts_edge(cleaned, voice, task["rate"], file_path)
@@ -303,6 +258,7 @@ async def main():
             
             for field in fields:
                 field_obj = item.get(field)
+                # Перевіряємо, чи підполе є саме мовним об'єктом (захист від масивів distractor)
                 if isinstance(field_obj, dict):
                     for lang, text in field_obj.items():
                         if not text: continue
