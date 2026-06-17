@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
-Автоматично читає B2-Beruf.js, враховує AUDIO_CONFIG швидкості,
-очищує HTML-теги, використовує маніфест і мапить голоси згідно з таблицею.
-Генерація орієнтується ВИКЛЮЧНО на manifest.json.
+Повністю синхронізовано зі структурою manifest.json:
+Шаблон ключа/шляху: COURSE/lang/rate/cat_lower/id_field_lang_rate
+Значення в маніфесті: true
 """
 
 import os
@@ -37,7 +37,7 @@ COURSE = 'B2-Beruf'
 AUDIO_BASE = pathlib.Path('audio') / COURSE
 MANIFEST = pathlib.Path('audio') / 'manifest.json'
 
-# ── Мапінг голосів згідно з таблицею ──────────────────────────
+# ── Мапінг голосів згідно з вашою специфікацією ─────────────────
 VOICE_MAPPING = {
     "vocab": {
         "term":  {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-AriaNeural",        "ru": "ru-RU-SvetlanaNeural"},
@@ -51,7 +51,7 @@ VOICE_MAPPING = {
     },
     "redemittel": {
         "question": {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
-        "answer":   {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
+        "answer":   {"de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
     }
 }
 
@@ -68,22 +68,15 @@ def clean_text(text):
         return ""
     if isinstance(text, list):
         text = ", ".join(text)
-    # Видаляємо HTML теги
     text = re.sub(r'<[^>]+>', ' ', text)
-    # Замінюємо символи перенесення та зайві пробіли
     text = text.replace('\n', ' ').replace('\r', ' ')
     text = text.replace('/', ' ')
     return re.sub(r'\s+', ' ', text).strip()
 
 def load_js_database(file_path):
-    """
-    Ізольовано витягує кожен масив з JS-файлу за допомогою regex, 
-    що гарантує стійкість до будь-яких зовнішніх коментарів та оформлення.
-    """
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
-    # 1. Витягуємо конфіг швидкості AUDIO_CONFIG
     config = {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
     config_match = re.search(r'AUDIO_CONFIG\s*=\s*(\{.*?\})', content, re.DOTALL)
     if config_match:
@@ -91,43 +84,28 @@ def load_js_database(file_path):
             config = json.loads(config_match.group(1).replace("'", '"'))
         except: pass
 
-    db_data = {"vocab": [], "sprachbau": [], "redemittel": []}
-
-    # 2. Шукаємо всі оголошення змінних типу `var НАЗВА = [ ... ]`
-    # Забираємо тільки вміст у квадратних дужках, ігноруючи все інше у файлі
+    raw_items = []
     blocks = re.findall(r'(?:var|let|const|export)\s+(\w+)\s*=\s*(\[.*?\])\s*(;|\n\n|var|let|const|export|$)', content, re.DOTALL)
     
     for var_name, array_content, _ in blocks:
-        # Очищаємо знайдений масив від однорядкових коментарів всередині нього
+        if var_name in ["CATS", "LESSONS"]:
+            continue
+
         clean_array = re.sub(r'//.*', '', array_content)
         clean_array = re.sub(r'/\*.*?\*/', '', clean_array, flags=re.DOTALL)
-        
-        # Видаляємо trailing commas перед закриттям дужок, щоб json.loads не падав
         clean_array = re.sub(r',\s*([\]\}])', r'\1', clean_array)
         
         try:
             items = json.loads(clean_array)
-            if not isinstance(items, list):
-                continue
-                
-            for item in items:
-                if not isinstance(item, dict) or "id" not in item:
-                    continue
-                
-                item_id = item["id"]
-                
-                # Розподіл об'єктів за префіксами ID
-                if any(item_id.startswith(p) for p in ["vcb_", "nvv_", "mbr_", "ssk_", "hsk_", "eat_", "ges_", "geh_"]):
-                    db_data["vocab"].append(item)
-                elif item_id.startswith("sbs_"):
-                    db_data["sprachbau"].append(item)
-                elif item_id.startswith("dlg_"):
-                    db_data["redemittel"].append(item)
-        except Exception as e:
-            # Якщо якийсь технічний масив (наприклад, CATS) не є чистим списком карток, він просто пропуститься без падіння всього скрипту
+            if isinstance(items, list):
+                for item in items:
+                    if isinstance(item, dict) and "id" in item:
+                        item["_fallback_var"] = var_name
+                        raw_items.append(item)
+        except:
             pass
             
-    return config, db_data
+    return config, raw_items
 
 # ── Двигуни генерації ─────────────────────────────────────────
 async def tts_edge(text, voice, rate_str, output_path):
@@ -185,15 +163,19 @@ def git_commit_and_push(count):
 
 # ── Основний асинхронний пайплайн ─────────────────────────────
 async def worker_task(task, semaphore, stats):
-    file_path = AUDIO_BASE / task["filename"]
-    voice = get_voice_id(task["cat"], task["sub"], task["lang"])
+    # Шлях створення файлу: audio/B2-Beruf/lang/rate/cat_lower/filename
+    file_dir = AUDIO_BASE / task["lang"] / task["rate"] / task["cat_folder"]
+    file_dir.mkdir(parents=True, exist_ok=True)
+    file_path = file_dir / task["filename"]
+    
+    voice = get_voice_id(task["internal_cat"], task["sub"], task["lang"])
     cleaned = clean_text(task["text"])
     if not cleaned:
         return
 
     async with semaphore:
         try:
-            print(f"[{TTS_ENGINE.upper()}] -> {task['filename']} ({task['rate']}%) -> '{cleaned[:30]}...'", flush=True)
+            print(f"[{TTS_ENGINE.upper()}] -> {task['mkey']} -> Голос: {voice} -> '{cleaned[:30]}...'", flush=True)
             
             if TTS_ENGINE == "edge":
                 await tts_edge(cleaned, voice, task["rate"], file_path)
@@ -201,7 +183,7 @@ async def worker_task(task, semaphore, stats):
                 await asyncio.to_thread(tts_azure_rest, cleaned, voice, task["rate"], file_path)
                 
             stats["generated"] += 1
-            stats["manifest_updates"][task["mkey"]] = task["filename"]
+            stats["manifest_updates"][task["mkey"]] = True
             
             if DELAY_SEC > 0:
                 await asyncio.sleep(DELAY_SEC)
@@ -212,7 +194,7 @@ async def worker_task(task, semaphore, stats):
                 stats["manifest_updates"].clear()
                 
         except Exception as e:
-            print(f"❌ Помилка файлу {task['filename']}: {e}", flush=True)
+            print(f"❌ Помилка генерації для {task['mkey']}: {e}", flush=True)
             if file_path.exists():
                 file_path.unlink()
 
@@ -230,7 +212,6 @@ def update_manifest_file(updates):
         json.dump(current_manifest, f, ensure_ascii=False, indent=2)
 
 async def main():
-    AUDIO_BASE.mkdir(parents=True, exist_ok=True)
     print(f"Запуск генератора MOVA TTS. Обраний двигун: {TTS_ENGINE.upper()}", flush=True)
     
     manifest_data = {}
@@ -240,7 +221,7 @@ async def main():
                 manifest_data = json.load(f)
         except: pass
 
-    audio_config, db_data = load_js_database("B2-Beruf.js")
+    audio_config, raw_items = load_js_database("B2-Beruf.js")
     
     tasks = []
     fields_map = {
@@ -249,27 +230,48 @@ async def main():
         "redemittel": ["question", "answer"]
     }
     
-    for cat, fields in fields_map.items():
-        if cat not in db_data or not db_data[cat]: continue
-        for item in db_data[cat]:
-            item_id = item.get("id")
-            if not item_id: continue
+    for item in raw_items:
+        item_id = item["id"]
+        
+        # 1. Визначаємо внутрішню категорію для мапінгу голосів
+        internal_cat = "vocab"
+        if item_id.startswith("sbs_"):
+            internal_cat = "sprachbau"
+        elif item_id.startswith("dlg_"):
+            internal_cat = "redemittel"
             
-            for field in fields:
-                field_obj = item.get(field)
-                if isinstance(field_obj, dict):
-                    for lang, text in field_obj.items():
-                        if not text: continue
-                        rates = audio_config.get(lang, ["100"])
-                        for rate in rates:
-                            mkey = f"{COURSE}/{item_id}_{cat}_{field}_{lang}_{rate}"
-                            filename = f"{item_id}_{cat}_{field}_{lang}_{rate}.mp3"
-                            if mkey not in manifest_data:
-                                tasks.append({"id": item_id, "cat": cat, "sub": field, "lang": lang, "rate": rate, "text": text, "filename": filename, "mkey": mkey})
+        # 2. Отримуємо папку категорії (мала літера з поля 'cat', наприклад: 'nvv', 'opinion')
+        manifest_cat_folder = str(item.get("cat", item["_fallback_var"])).lower()
+            
+        fields = fields_map[internal_cat]
+        
+        for field in fields:
+            field_obj = item.get(field)
+            if isinstance(field_obj, dict):
+                for lang, text in field_obj.items():
+                    if not text: continue
+                    rates = audio_config.get(lang, ["100"])
+                    for rate in rates:
+                        # Структура з маніфесту: B2-Beruf/lang/rate/cat/id_field_lang_rate
+                        mkey = f"{COURSE}/{lang}/{rate}/{manifest_cat_folder}/{item_id}_{field}_{lang}_{rate}"
+                        filename = f"{item_id}_{field}_{lang}_{rate}.mp3"
+                        
+                        if mkey not in manifest_data:
+                            tasks.append({
+                                "id": item_id, 
+                                "internal_cat": internal_cat, 
+                                "cat_folder": manifest_cat_folder,
+                                "sub": field, 
+                                "lang": lang, 
+                                "rate": rate, 
+                                "text": text, 
+                                "filename": filename, 
+                                "mkey": mkey
+                            })
 
     print(f"Знайдено нових завдань для генерації: {len(tasks)}", flush=True)
     if not tasks:
-        print("Всі файли синхронізовані.", flush=True)
+        print("Всі файли синхронізовані з manifest.json.", flush=True)
         return
 
     semaphore = asyncio.Semaphore(WORKERS)
@@ -280,7 +282,7 @@ async def main():
     
     if stats["manifest_updates"]:
         update_manifest_file(stats["manifest_updates"])
-    print(f"🎉 Роботу завершено! Згенеровано: {stats['generated']} файлів.", flush=True)
+    print(f"🎉 Роботу завершено! Згенеровано: {stats['generated']} нових файлів.", flush=True)
 
 if __name__ == "__main__":
     if sys.platform == 'win32':
