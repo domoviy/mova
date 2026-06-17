@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
-- Категорія (cat_lower) строго визначається за префіксом ID: mbr, nvv, sbs тощо.
-- Якщо поле порожнє або після очищення стає порожнім, воно повністю пропускається
-  (аудіо не генерується, запис у маніфест не йде).
+- Категорія (cat_lower) строго визначається за префіксом ID.
+- Якщо поле порожнє, воно ігнорується (без генерації та без запису).
+- Гарантований та залізобетонний запис кожного згенерованого файлу в маніфест.
 """
 
 import os
@@ -17,14 +17,13 @@ import subprocess
 import urllib.request
 import urllib.error
 
-# Спроба імпортувати edge-tts
 try:
     import edge_tts
 except ImportError:
     edge_tts = None
 
 # ── Конфігурація ──────────────────────────────────────────────
-TTS_ENGINE = os.environ.get("TTS_ENGINE", "edge").lower()  # 'edge' або 'azure'
+TTS_ENGINE = os.environ.get("TTS_ENGINE", "edge").lower()
 WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
 COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
@@ -36,7 +35,7 @@ AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION', '')
 TTS_URL = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1'
 
 COURSE = 'B2-Beruf'
-AUDIO_BASE = pathlib.Path('audio') / COURSE   # audio/B2-Beruf/
+AUDIO_BASE = pathlib.Path('audio') / COURSE
 MANIFEST = pathlib.Path('audio') / 'manifest.json'
 
 # ── Мапінг голосів ────────────────────────────────────────────
@@ -64,7 +63,6 @@ def get_voice_id(category, sub_type, lang):
         fallbacks = {"de": "de-DE-KatjaNeural", "uk": "uk-UA-PolinaNeural", "en": "en-US-AriaNeural", "ru": "ru-RU-SvetlanaNeural"}
         return fallbacks.get(lang, "de-DE-KatjaNeural")
 
-# ── Утиліти очищення тексту ───────────────────────────────────
 def clean_text(text):
     if not text:
         return ""
@@ -109,7 +107,6 @@ def load_js_database(file_path):
             
     return config, raw_items
 
-# ── Двигуни генерації ─────────────────────────────────────────
 async def tts_edge(text, voice, rate_str, output_path):
     if not edge_tts:
         raise RuntimeError("Пакет 'edge-tts' не встановлено.")
@@ -150,7 +147,6 @@ def tts_azure_rest(text, voice, rate_str, output_path):
         err_body = e.read().decode('utf-8', errors='ignore')
         raise RuntimeError(f"Azure HTTP Error {e.code}: {err_body}")
 
-# ── Git автоматизація ─────────────────────────────────────────
 def git_commit_and_push(count):
     try:
         subprocess.run(["git", "add", "audio/"], check=True)
@@ -159,37 +155,36 @@ def git_commit_and_push(count):
             msg = f"🎙 TTS Audio Update: +{count} files [skip ci]"
             subprocess.run(["git", "commit", "-m", msg], check=True)
             subprocess.run(["git", "push"], check=True)
-            print(f"--- [Git Bot] Збережено проміжну пачку з {count} файлів ---", flush=True)
+            print(f"--- [Git Bot] Збережено пачку з {count} файлів ---", flush=True)
     except Exception as e:
         print(f"Git commit error: {e}", flush=True)
 
-# ── Запис у маніфест ──────────────────────────────────────────
-def update_manifest_file(updates):
-    if not updates:
-        return
+# Оновлена функція: записує зміни в файл миттєво
+def write_to_manifest_file(mkey, value):
     current_manifest = {}
     if MANIFEST.exists():
         try:
             with open(MANIFEST, 'r', encoding='utf-8') as f:
                 current_manifest = json.load(f)
         except: pass
-    current_manifest.update(updates)
+    
+    current_manifest[mkey] = value
+    
+    # Створюємо директорію audio, якщо її немає
+    MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     with open(MANIFEST, 'w', encoding='utf-8') as f:
         json.dump(current_manifest, f, ensure_ascii=False, indent=2)
 
-# ── Основний асинхронний пайплайн ─────────────────────────────
-async def worker_task(task, semaphore, stats):
-    # Шлях формується строго за префіксом ID: audio/B2-Beruf/lang/rate/mbr/...
+# ── Основний асинхронний воркер ─────────────────────────────────
+async def worker_task(task, semaphore, stats, lock):
     file_dir = AUDIO_BASE / task["lang"] / task["rate"] / task["cat_lower"]
     file_dir.mkdir(parents=True, exist_ok=True)
     file_path = file_dir / task["filename"]
     
     voice = get_voice_id(task["internal_cat"], task["sub"], task["lang"])
-    
-    # Текст очищується безпосередньо перед генерацією
     cleaned = clean_text(task["text"])
+    
     if not cleaned:
-        # Якщо після очищення поле пусте — повний ігнор запису, файлу та маніфесту
         return
 
     async with semaphore:
@@ -201,16 +196,21 @@ async def worker_task(task, semaphore, stats):
             else:
                 await asyncio.to_thread(tts_azure_rest, cleaned, voice, task["rate"], file_path)
                 
-            stats["generated"] += 1
-            stats["manifest_updates"][task["mkey"]] = (task["filename"] if MANIFEST_V2 else True)
+            # Блокуємо доступ для безпечного запису в маніфест з різних потоків
+            async with lock:
+                value_to_save = task["filename"] if MANIFEST_V2 else True
+                write_to_manifest_file(task["mkey"], value_to_save)
+                
+                stats["generated"] += 1
+                stats["batch_counter"] += 1
+                
+                # Робимо Git commit строго за лімітом
+                if stats["batch_counter"] >= COMMIT_LIMIT:
+                    git_commit_and_push(stats["batch_counter"])
+                    stats["batch_counter"] = 0
             
             if DELAY_SEC > 0:
                 await asyncio.sleep(DELAY_SEC)
-                
-            if stats["generated"] > 0 and stats["generated"] % COMMIT_LIMIT == 0:
-                update_manifest_file(stats["manifest_updates"])
-                git_commit_and_push(COMMIT_LIMIT)
-                stats["manifest_updates"].clear()
                 
         except Exception as e:
             print(f"❌ Помилка генерації для {task['mkey']}: {e}", flush=True)
@@ -245,7 +245,6 @@ async def main():
         elif item_id.startswith("dlg_"):
             internal_cat = "redemittel"
             
-        # Строга фіксація: беремо префікс від ID (nvv, mbr, sbs), як у вашому оригінальному скрипті
         cat_lower = item_id.split('_')[0].lower()
         fields = fields_map[internal_cat]
         
@@ -253,21 +252,17 @@ async def main():
             field_obj = item.get(field)
             if isinstance(field_obj, dict):
                 for lang, text in field_obj.items():
-                    # Попередня базова перевірка на пусте поле у самому об'єкті бази
                     if text is None: continue
                     if isinstance(text, str) and not text.strip(): continue
                     if isinstance(text, list) and not text: continue
                     
                     rates = audio_config.get(lang, ["100"])
                     for rate in rates:
-                        
-                        # Шаблон назви файлу: id_field_lang_rate.mp3
                         filename = f"{item_id}_{field}_{lang}_{rate}.mp3"
                         
                         if MANIFEST_V2:
                             mkey = f"{COURSE}/{item_id}_{cat_lower}_{field}_{lang}_{rate}"
                         else:
-                            # Точний ключ для маніфесту: B2-Beruf/de/080/mbr/id_field_lang_rate
                             mkey = f"{COURSE}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
                         
                         if mkey not in manifest_data:
@@ -289,14 +284,17 @@ async def main():
         return
 
     semaphore = asyncio.Semaphore(WORKERS)
-    stats = {"generated": 0, "manifest_updates": {}}
+    lock = asyncio.Lock()  # Асинхронний замок для безпечного запису в один файл
+    stats = {"generated": 0, "batch_counter": 0}
     
-    pool = [worker_task(t, semaphore, stats) for t in tasks]
+    pool = [worker_task(t, semaphore, stats, lock) for t in tasks]
     await asyncio.gather(*pool)
     
-    if stats["manifest_updates"]:
-        update_manifest_file(stats["manifest_updates"])
-    print(f"🎉 Роботу завершено! Згенеровано: {stats['generated']} нових файлів.", flush=True)
+    # Фінальний пуш залишку файлів, які не увійшли в повну пачку COMMIT_LIMIT
+    if stats["batch_counter"] > 0:
+        git_commit_and_push(stats["batch_counter"])
+        
+    print(f"🎉 Роботу завершено! Згенеровано та внесено в маніфест: {stats['generated']} файлів.", flush=True)
 
 if __name__ == "__main__":
     if sys.platform == 'win32':
