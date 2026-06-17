@@ -4,6 +4,7 @@ MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
 Автоматично читає B2-Beruf.js, враховує AUDIO_CONFIG швидкості,
 очищує HTML-теги, використовує маніфест і мапить голоси згідно з таблицею.
 За замовчуванням використовує Edge TTS, але підтримує Azure REST API через перемикач.
+Генерація орієнтується ВИКЛЮЧНО на manifest.json (дозволяє перезапис при видаленні з маніфесту).
 """
 
 import os
@@ -124,7 +125,7 @@ async def tts_edge(text, voice, rate_str, output_path):
     await communicate.save(output_path)
 
 def tts_azure_rest(text, voice, rate_str, output_path):
-    """Оригінальна генерація через прямі HTTP REST-запити до Azure API з SSML"""
+    """Генерація через прямі HTTP REST-запити до Azure API з SSML"""
     if not AZURE_KEY or not AZURE_REGION:
         raise ValueError("Відсутні ключі AZURE_SPEECH_KEY або AZURE_SPEECH_REGION!")
     
@@ -173,9 +174,8 @@ def git_commit_and_push(count):
 # ── Основний асинхронний пайплайн ─────────────────────────────
 async def worker_task(task, semaphore, stats):
     file_path = AUDIO_BASE / task["filename"]
-    if file_path.exists() and file_path.stat().st_size > 0:
-        return
-
+    
+    # ПЕРЕВІРКУ НА ДИСКУ ВИДАЛЕНО — СКРИПТ ОРІЄНТУЄТЬСЯ ТІЛЬКИ НА МАНІФЕСТ
     voice = get_voice_id(task["cat"], task["sub"], task["lang"])
     cleaned = clean_text(task["text"])
     if not cleaned:
@@ -188,7 +188,6 @@ async def worker_task(task, semaphore, stats):
             if TTS_ENGINE == "edge":
                 await tts_edge(cleaned, voice, task["rate"], file_path)
             else:
-                # Синхронну функцію REST загортаємо у потік, щоб не блокувати асинхронний loop
                 await asyncio.to_thread(tts_azure_rest, cleaned, voice, task["rate"], file_path)
                 
             stats["generated"] += 1
@@ -255,7 +254,8 @@ async def main():
                         for rate in rates:
                             mkey = f"{COURSE}/{item_id}_{cat}_{field}_{lang}_{rate}"
                             filename = f"{item_id}_{cat}_{field}_{lang}_{rate}.mp3"
-                            if mkey not in manifest_data or not (AUDIO_BASE / filename).exists():
+                            # ФІЛЬТРАЦІЯ ОРІЄНТОВАНА СУТО НА МАНІФЕСТ
+                            if mkey not in manifest_data:
                                 tasks.append({"id": item_id, "cat": cat, "sub": field, "lang": lang, "rate": rate, "text": text, "filename": filename, "mkey": mkey})
                 else:
                     for lang in ["de", "uk", "en", "ru"]:
@@ -265,7 +265,8 @@ async def main():
                         for rate in rates:
                             mkey = f"{COURSE}/{item_id}_{cat}_{field}_{lang}_{rate}"
                             filename = f"{item_id}_{cat}_{field}_{lang}_{rate}.mp3"
-                            if mkey not in manifest_data or not (AUDIO_BASE / filename).exists():
+                            # ФІЛЬТРАЦІЯ ОРІЄНТОВАНА СУТО НА МАНІФЕСТ
+                            if mkey not in manifest_data:
                                 tasks.append({"id": item_id, "cat": cat, "sub": field, "lang": lang, "rate": rate, "text": text, "filename": filename, "mkey": mkey})
 
     print(f"Знайдено нових завдань для генерації: {len(tasks)}", flush=True)
