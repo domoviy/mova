@@ -11324,5 +11324,8 @@
   "B2-Beruf/en/100/sbs/sbs_048_explanation_en_100": true,
   "B2-Beruf/de/100/hsk/hsk_023_term_de_100": true,
   "B2-Beruf/ru/100/hsk/hsk_023_term_ru_100": true,
-  "B2-Beruf/de/080/hsk/hsk_023_short_de_080": true
+  "B2-Beruf/de/080/hsk/hsk_023_short_de_080": true,
+  "B2-Beruf/nvv_001_vocab_term_de_100": "nvv_001_vocab_term_de_100.mp3",
+  "B2-Beruf/nvv_001_vocab_term_de_080": "nvv_001_vocab_term_de_080.mp3",
+  "B2-Beruf/nvv_001_vocab_term_en_100": "nvv_001_vocab_term_en_100.mp3"
 }
