@@ -32,7 +32,7 @@ COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
 
 AZURE_KEY = os.environ.get('AZURE_SPEECH_KEY', '')
 AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION', '')
-TTS_URL = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognervices/v1'
+TTS_URL = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1'
 
 COURSE = 'B2-Beruf'
 AUDIO_BASE = pathlib.Path('audio') / COURSE
@@ -76,19 +76,91 @@ def clean_text(text):
     text = text.replace('/', ' ')
     return re.sub(r'\s+', ' ', text).strip()
 
+def js_to_json_cleaner(js_text):
+    """Перетворює сирий текст JS-об'єкта/масиву на валідну JSON-структуру"""
+    # Видаляємо коментарі
+    text = re.sub(r'//.*', '', js_text)
+    text = re.sub(r'/\*.*?\*/', '', text, flags=re.DOTALL)
+    
+    # Забезпечуємо лапки навколо ключів об'єктів (напр. id: -> "id":)
+    text = re.sub(r'(\s*)(\w+)\s*:', r'\1"\2":', text)
+    
+    # Замінюємо одинарні лапки навколо значень на подвійні, але обережно з внутрішніми лапками
+    # Найнадійніший варіант — тимчасово зафіксувати внутрішні екранування
+    text = re.sub(r",\s*([\]\}])", r"\1", text) # Видаляємо trailing commas
+    return text
+
 def parse_audio_config(content):
-    match = re.search(r'var\s+AUDIO_CONFIG\s*=\s*(\{.*?\});', content, re.DOTALL)
+    match = re.search(r'AUDIO_CONFIG\s*=\s*(\{.*?\});', content, re.DOTALL)
     if match:
         try:
-            # Валідація JSON структури конфігу
-            js_box = match.group(1)
-            js_box = re.sub(r'//.*', '', js_box)
-            js_box = re.sub(r'(\w+)\s*:', r'"\1":', js_box)
-            js_box = js_box.replace("'", '"')
-            return json.loads(js_box)
+            cleaned = js_to_json_cleaner(match.group(1))
+            cleaned = cleaned.replace("'", '"')
+            return json.loads(cleaned)
         except:
             pass
     return {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
+
+def extract_json_array_by_key(content, key):
+    """Шукає масив за ключем у JS файлі, балансуючи квадратні дужки []"""
+    idx = content.find(f'"{key}"')
+    if idx == -1:
+        idx = content.find(f"'{key}'")
+    if idx == -1:
+        idx = content.find(f"{key}:")
+        
+    if idx == -1:
+        return []
+        
+    start_bracket = content.find('[', idx)
+    if start_bracket == -1:
+        return []
+        
+    # Балансування дужок для збору всього масиву
+    bracket_count = 0
+    end_bracket = -1
+    for i in range(start_bracket, len(content)):
+        if content[i] == '[':
+            bracket_count += 1
+        elif content[i] == ']':
+            bracket_count -= 1
+            if bracket_count == 0:
+                end_bracket = i
+                break
+                
+    if end_bracket == -1:
+        return []
+        
+    raw_array = content[start_bracket:end_bracket+1]
+    cleaned_array = js_to_json_cleaner(raw_array)
+    
+    # Фікс одинарних лапок у JSON
+    # Оскільки у файлі дані можуть містити складні рядки, перетворимо одинарні лапки на подвійні там, де це межі рядків
+    cleaned_array = re.sub(r"'\s*,\s*'", '", "', cleaned_array)
+    cleaned_array = re.sub(r"'\s*\]", '" ]', cleaned_array)
+    cleaned_array = re.sub(r"\[\s*'", '[ "', cleaned_array)
+    cleaned_array = re.sub(r"\"\s*:\s*'", '": "', cleaned_array)
+    cleaned_array = re.sub(r"'\s*([,\}])", r'"\1', cleaned_array)
+    
+    try:
+        return json.loads(cleaned_array)
+    except:
+        # Резервний витяг елементів через regex на випадок збою синтаксису JSON
+        items = []
+        obj_blocks = re.findall(r'\{\s*id\s*:\s*["\']([^"\']+)["\'](.*?)\}', raw_array, re.DOTALL)
+        for i_id, block in obj_blocks:
+            item = {"id": i_id}
+            for field in ["term", "short", "def", "sentence", "answer", "explanation", "question"]:
+                f_match = re.search(rf'{field}\s*:\s*\{{(.*?)\}}', block, re.DOTALL)
+                if f_match:
+                    item[field] = {}
+                    inner = f_match.group(1)
+                    for lang in ["de", "uk", "en", "ru"]:
+                        l_match = re.search(rf'{lang}\s*:\s*["\'](.*?)["\']', inner, re.DOTALL)
+                        if l_match:
+                            item[field][lang] = l_match.group(1)
+            items.append(item)
+        return items
 
 def load_js_database(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -96,67 +168,12 @@ def load_js_database(file_path):
     
     config = parse_audio_config(content)
     
-    # Видаляємо змінні та коментарі, щоб залишити лише чистий експортний об'єкт
-    js_clean = re.sub(r'//.*', '', content) # Видаляємо однорядкові коментарі
-    js_clean = re.sub(r'var\s+AUDIO_CONFIG\s*=.*?;', '', js_clean, flags=re.DOTALL)
-    js_clean = re.sub(r'var\s+CATS\s*=.*?;', '', js_clean, flags=re.DOTALL)
-    js_clean = re.sub(r'export\s+const\s+\w+\s*=\s*', '', js_clean)
-    js_clean = js_clean.strip()
-    if js_clean.endswith(';'):
-        js_clean = js_clean[:-1]
-        
-    # Перетворюємо JS-літерал об'єкта на валідний JSON
-    # Додаємо лапки до ключів
-    js_clean = re.sub(r'(\s*)(\w+)\s*:', r'\1"\2":', js_clean)
-    # Замінюємо одинарні лапки навколо рядків на подвійні (якщо вони не екрановані)
-    # Але оскільки в базі всередині тексту можуть бути подвійні лапки, надійніше витягти масиви через regex
     data = {}
-    for cat in ["vocab", "sprachbau", "redemittel"]:
-        # Шукаємо блоки категорій
-        match = re.search(rf'"{cat}"\s*:\s*(\[.*?\])\s*(?=\s*,\s*"\w+"\s*:|\s*|\s*\}})', js_clean, re.DOTALL)
-        if match:
-            block = match.group(1)
-            # Базове виправлення синтаксису для перетворення масиву об'єктів на json
-            block = re.sub(r',\s*\]', ']', block)
-            block = re.sub(r',\s*\}', '}', block)
-            try:
-                data[cat] = json.loads(block)
-            except:
-                # Якщо json.loads падає через внутрішні лапки, розпарсимо за допомогою регулярних виразів об'єкти {}
-                data[cat] = []
-                items = re.findall(r'\{\s*id\s*:\s*["\'](.*?)["\'].*?\}', content, re.DOTALL)
-                # Для гарантії безпеки прочитаємо об'єкти регулярками нижче
+    data["vocab"] = extract_json_array_by_key(content, "vocab")
+    data["sprachbau"] = extract_json_array_by_key(content, "sprachbau")
+    data["redemittel"] = extract_json_array_by_key(content, "redemittel")
     
-    # Прямий надійний fallback-парсинг об'єктів через регулярні вирази, якщо JSON-літерал занадто специфічний
-    fallback_data = {"vocab": [], "sprachbau": [], "redemittel": []}
-    
-    # Шукаємо взагалі всі об'єкти з id
-    object_blocks = re.findall(r'\{\s*id\s*:\s*["\']([^"\']+)["\'](.*?)\}', content, re.DOTALL)
-    for i_id, block in object_blocks:
-        # Визначаємо категорію за префіксом ID або наявністю полів
-        if "term" in block:
-            cat = "vocab"
-        elif "sentence" in block or "distractors" in block:
-            cat = "sprachbau"
-        elif "question" in block:
-            cat = "redemittel"
-        else:
-            continue
-            
-        item = {"id": i_id}
-        # Витягуємо під-об'єкти мов (наприклад term: {de: "...", uk: "..."})
-        for field in ["term", "short", "def", "sentence", "answer", "explanation", "question"]:
-            f_match = re.search(rf'{field}\s*:\s*\{{(.*?)\}}', block, re.DOTALL)
-            if f_match:
-                item[field] = {}
-                inner = f_match.group(1)
-                for lang in ["de", "uk", "en", "ru"]:
-                    l_match = re.search(rf'{lang}\s*:\s*["\'](.*?)["\'](?=\s*,\s*\w+\s*:|\s*|\s*$)', inner, re.DOTALL)
-                    if l_match:
-                        item[field][lang] = l_match.group(1)
-        fallback_data[cat].append(item)
-
-    return config, fallback_data
+    return config, data
 
 # ── Двигуни генерації ─────────────────────────────────────────
 async def tts_edge(text, voice, rate_str, output_path):
@@ -279,7 +296,7 @@ async def main():
     }
     
     for cat, fields in fields_map.items():
-        if cat not in db_data: continue
+        if cat not in db_data or not db_data[cat]: continue
         for item in db_data[cat]:
             item_id = item.get("id")
             if not item_id: continue
