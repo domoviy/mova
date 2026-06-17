@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
 MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
-Логіка шляхів, імен файлів та маніфесту на 100% скопійована з gen_audio-azure.py v2.9.4
-Шаблон шляху: audio/B2-Beruf/{lang}/{rate}/{cat_lower}/{id}_{field}_{lang}_{rate}.mp3
+- Категорія (cat_lower) строго визначається за префіксом ID: mbr, nvv, sbs тощо.
+- Якщо поле порожнє або після очищення стає порожнім, воно повністю пропускається
+  (аудіо не генерується, запис у маніфест не йде).
 """
 
 import os
@@ -28,8 +29,7 @@ WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
 COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
 
-# Перемикач версії маніфесту строго з вашого оригінального файлу
-MANIFEST_V2 = False  # Поставте True, якщо хочете лінійний формат ключів
+MANIFEST_V2 = False  # Строго False для формату ключів як у manifest.json
 
 AZURE_KEY = os.environ.get('AZURE_SPEECH_KEY', '')
 AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION', '')
@@ -179,14 +179,17 @@ def update_manifest_file(updates):
 
 # ── Основний асинхронний пайплайн ─────────────────────────────
 async def worker_task(task, semaphore, stats):
-    # СТРОГО ОРИГІНАЛЬНА СТРУКТУРА ПАПОК: audio / COURSE / lang / rate / cat_lower
+    # Шлях формується строго за префіксом ID: audio/B2-Beruf/lang/rate/mbr/...
     file_dir = AUDIO_BASE / task["lang"] / task["rate"] / task["cat_lower"]
     file_dir.mkdir(parents=True, exist_ok=True)
     file_path = file_dir / task["filename"]
     
     voice = get_voice_id(task["internal_cat"], task["sub"], task["lang"])
+    
+    # Текст очищується безпосередньо перед генерацією
     cleaned = clean_text(task["text"])
     if not cleaned:
+        # Якщо після очищення поле пусте — повний ігнор запису, файлу та маніфесту
         return
 
     async with semaphore:
@@ -199,8 +202,6 @@ async def worker_task(task, semaphore, stats):
                 await asyncio.to_thread(tts_azure_rest, cleaned, voice, task["rate"], file_path)
                 
             stats["generated"] += 1
-            
-            # Строгий запис типу значення (True або назва файлу) залежно від MANIFEST_V2
             stats["manifest_updates"][task["mkey"]] = (task["filename"] if MANIFEST_V2 else True)
             
             if DELAY_SEC > 0:
@@ -244,26 +245,31 @@ async def main():
         elif item_id.startswith("dlg_"):
             internal_cat = "redemittel"
             
-        cat_lower = str(item.get("cat", item["_fallback_var"])).lower()
+        # Строга фіксація: беремо префікс від ID (nvv, mbr, sbs), як у вашому оригінальному скрипті
+        cat_lower = item_id.split('_')[0].lower()
         fields = fields_map[internal_cat]
         
         for field in fields:
             field_obj = item.get(field)
             if isinstance(field_obj, dict):
                 for lang, text in field_obj.items():
-                    if not text: continue
+                    # Попередня базова перевірка на пусте поле у самому об'єкті бази
+                    if text is None: continue
+                    if isinstance(text, str) and not text.strip(): continue
+                    if isinstance(text, list) and not text: continue
+                    
                     rates = audio_config.get(lang, ["100"])
                     for rate in rates:
                         
-                        # СТРОГЕ КОПІЮВАННЯ ФОРМУВАННЯ КЛЮЧІВ ІЗ ВАШОГО ОРИГІНАЛЬНОГО ФАЙЛУ v2.9.4:
+                        # Шаблон назви файлу: id_field_lang_rate.mp3
                         filename = f"{item_id}_{field}_{lang}_{rate}.mp3"
                         
                         if MANIFEST_V2:
                             mkey = f"{COURSE}/{item_id}_{cat_lower}_{field}_{lang}_{rate}"
                         else:
+                            # Точний ключ для маніфесту: B2-Beruf/de/080/mbr/id_field_lang_rate
                             mkey = f"{COURSE}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
                         
-                        # Захист: якщо ключ вже є в маніфесті, пропускаємо завдання
                         if mkey not in manifest_data:
                             tasks.append({
                                 "id": item_id, 
