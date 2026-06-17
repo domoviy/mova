@@ -2,8 +2,9 @@
 """
 MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
 - Категорія (cat_lower) строго визначається за префіксом ID.
-- Якщо поле порожнє, воно ігнорується (без генерації та без запису).
-- Гарантований та залізобетонний запис кожного згенерованого файлу в маніфест.
+- Порожні поля повністю ігноруються.
+- Миттєвий запис у маніфест за допомогою асинхронного Lock.
+- Додано відображення реального прогресу виконання завдань: [поточний / всього].
 """
 
 import os
@@ -159,7 +160,6 @@ def git_commit_and_push(count):
     except Exception as e:
         print(f"Git commit error: {e}", flush=True)
 
-# Оновлена функція: записує зміни в файл миттєво
 def write_to_manifest_file(mkey, value):
     current_manifest = {}
     if MANIFEST.exists():
@@ -169,14 +169,12 @@ def write_to_manifest_file(mkey, value):
         except: pass
     
     current_manifest[mkey] = value
-    
-    # Створюємо директорію audio, якщо її немає
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     with open(MANIFEST, 'w', encoding='utf-8') as f:
         json.dump(current_manifest, f, ensure_ascii=False, indent=2)
 
 # ── Основний асинхронний воркер ─────────────────────────────────
-async def worker_task(task, semaphore, stats, lock):
+async def worker_task(task, semaphore, stats, lock, total_tasks):
     file_dir = AUDIO_BASE / task["lang"] / task["rate"] / task["cat_lower"]
     file_dir.mkdir(parents=True, exist_ok=True)
     file_path = file_dir / task["filename"]
@@ -185,18 +183,25 @@ async def worker_task(task, semaphore, stats, lock):
     cleaned = clean_text(task["text"])
     
     if not cleaned:
+        async with lock:
+            stats["processed_tasks"] += 1
         return
 
     async with semaphore:
         try:
-            print(f"[{TTS_ENGINE.upper()}] -> {task['mkey']} -> Голос: {voice} -> '{cleaned[:30]}...'", flush=True)
+            # Збільшуємо лічильник прогресу під замком для атомарності
+            async with lock:
+                stats["processed_tasks"] += 1
+                current_num = stats["processed_tasks"]
+            
+            # Лог тепер включає гарний лічильник [231/12843]
+            print(f"[{TTS_ENGINE.upper()}] [{current_num}/{total_tasks}] -> {task['mkey']} -> Голос: {voice} -> '{cleaned[:30]}...'", flush=True)
             
             if TTS_ENGINE == "edge":
                 await tts_edge(cleaned, voice, task["rate"], file_path)
             else:
                 await asyncio.to_thread(tts_azure_rest, cleaned, voice, task["rate"], file_path)
                 
-            # Блокуємо доступ для безпечного запису в маніфест з різних потоків
             async with lock:
                 value_to_save = task["filename"] if MANIFEST_V2 else True
                 write_to_manifest_file(task["mkey"], value_to_save)
@@ -204,7 +209,6 @@ async def worker_task(task, semaphore, stats, lock):
                 stats["generated"] += 1
                 stats["batch_counter"] += 1
                 
-                # Робимо Git commit строго за лімітом
                 if stats["batch_counter"] >= COMMIT_LIMIT:
                     git_commit_and_push(stats["batch_counter"])
                     stats["batch_counter"] = 0
@@ -278,19 +282,20 @@ async def main():
                                 "mkey": mkey
                             })
 
-    print(f"Знайдено нових завдань для генерації: {len(tasks)}", flush=True)
+    total_tasks = len(tasks)
+    print(f"Знайдено нових завдань для генерації: {total_tasks}", flush=True)
     if not tasks:
         print("Всі файли синхронізовані з manifest.json.", flush=True)
         return
 
     semaphore = asyncio.Semaphore(WORKERS)
-    lock = asyncio.Lock()  # Асинхронний замок для безпечного запису в один файл
-    stats = {"generated": 0, "batch_counter": 0}
+    lock = asyncio.Lock()
+    # processed_tasks рахує кожне оброблене завдання для логу прогресу
+    stats = {"generated": 0, "batch_counter": 0, "processed_tasks": 0}
     
-    pool = [worker_task(t, semaphore, stats, lock) for t in tasks]
+    pool = [worker_task(t, semaphore, stats, lock, total_tasks) for t in tasks]
     await asyncio.gather(*pool)
     
-    # Фінальний пуш залишку файлів, які не увійшли в повну пачку COMMIT_LIMIT
     if stats["batch_counter"] > 0:
         git_commit_and_push(stats["batch_counter"])
         
