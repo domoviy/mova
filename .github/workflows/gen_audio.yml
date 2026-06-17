@@ -1,19 +1,27 @@
 name: Generate TTS Audio
 
-# Запускається при зміні B2-Beruf.js або вручну
+# Запускається автоматично при зміні B2-Beruf.js або вручну
 on:
   push:
     paths:
       - 'B2-Beruf.js'
-  workflow_dispatch:   # ← Дві незалежні кнопки-перемикачі для ручного запуску
+  workflow_dispatch:   # Ручне керування з вибором двигуна та режимів
     inputs:
+      tts_engine:
+        description: 'Оберіть двигун генерації (за замовчуванням Edge TTS)'
+        required: true
+        default: 'edge'
+        type: choice
+        options:
+          - 'edge'
+          - 'azure'
       run_turbo:
-        description: 'Увімкнути режим TURBO (для тарифу S0 Standard)'
+        description: 'Увімкнути режим TURBO (для тарифу Azure S0 або швидкого Edge)'
         required: false
         default: false
         type: boolean
       run_free:
-        description: 'Увімкнути режим FREE (повільний потік для F0)'
+        description: 'Увімкнути режим FREE (повільний потік)'
         required: false
         default: false
         type: boolean
@@ -27,7 +35,7 @@ jobs:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write   # потрібно щоб комітити аудіо файли
+      contents: write   # Потрібно для коміту аудіофайлів назад у репозиторій
 
     steps:
       - name: Checkout repository
@@ -38,14 +46,19 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24'   # Оновлено версію Node для самого середовища виконання
+          node-version: '24'
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # НАЛАШТУВАННЯ GIT: Потрібно заздалегідь, щоб Python міг робити авто-сейви
+      # ВСТАНОВЛЕННЯ ЗАЛЕЖНОСТЕЙ: Додано бібліотеку edge-tts
+      - name: Install Dependencies
+        run: |
+          pip install edge-tts azure-cognitiveservices-speech
+
+      # НАЛАШТУВАННЯ GIT: Потрібно заздалегідь для авто-сейвів скрипту
       - name: Configure Git Bot
         run: |
           git config user.name  "github-actions[bot]"
@@ -56,11 +69,13 @@ jobs:
         env:
           AZURE_SPEECH_KEY:    ${{ secrets.AZURE_SPEECH_KEY }}
           AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+          # Якщо це автоматичний push, github.event.inputs.tts_engine порожній, тому піде 'edge'
+          TTS_ENGINE:          ${{ github.event.inputs.tts_engine || 'edge' }}
           # Якщо активовано 'run_turbo' — ставимо 15 потоків, інакше — 1 потік
           TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
           # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше — 1.2 сек
           TTS_DELAY:   ${{ github.event.inputs.run_turbo == 'true' && '0.05' || '1.2' }}
-          # 15 для турбо, 3 для безкоштовного режиму
+          # Кількість файлів у пачці для проміжного коміту (15 для турбо, 3 для звичайного)
           TTS_COMMIT_LIMIT: ${{ github.event.inputs.run_turbo == 'true' && '15' || '3' }}
         run: python gen_audio.py
 
