@@ -11426,5 +11426,8 @@
   "B2-Beruf/nvv_007_vocab_short_uk_100": "nvv_007_vocab_short_uk_100.mp3",
   "B2-Beruf/nvv_007_vocab_short_ru_100": "nvv_007_vocab_short_ru_100.mp3",
   "B2-Beruf/nvv_007_vocab_def_de_100": "nvv_007_vocab_def_de_100.mp3",
-  "B2-Beruf/nvv_007_vocab_def_de_080": "nvv_007_vocab_def_de_080.mp3"
+  "B2-Beruf/nvv_007_vocab_def_de_080": "nvv_007_vocab_def_de_080.mp3",
+  "B2-Beruf/de/100/nvv/nvv_001_term_de_100": true,
+  "B2-Beruf/de/080/nvv/nvv_001_term_de_080": true,
+  "B2-Beruf/en/100/nvv/nvv_001_term_en_100": true
 }
