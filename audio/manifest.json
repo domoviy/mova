@@ -4093,5 +4093,8 @@
   "B2-Beruf/de/080/mbr/mbr_089_term_de_080": true,
   "B2-Beruf/en/100/mbr/mbr_089_term_en_100": true,
   "B2-Beruf/uk/100/mbr/mbr_089_term_uk_100": true,
-  "B2-Beruf/ru/100/mbr/mbr_089_term_ru_100": true
+  "B2-Beruf/ru/100/mbr/mbr_089_term_ru_100": true,
+  "B2-Beruf/de/100/mbr/mbr_089_short_de_100": true,
+  "B2-Beruf/de/080/mbr/mbr_089_short_de_080": true,
+  "B2-Beruf/en/100/mbr/mbr_089_short_en_100": true
 }
