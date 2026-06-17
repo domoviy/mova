@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
-Повністю синхронізовано зі структурою manifest.json:
-Шаблон ключа/шляху: COURSE/lang/rate/cat_lower/id_field_lang_rate
-Значення в маніфесті: true
+Шляхи, імена файлів та ключі маніфесту СТРОГО скопійовані з оригінального gen_audio-azure.py
+Шаблон шляху: audio/B2-Beruf/{lang}/{rate}/{cat_lower}/{id}_{field}_{lang}_{rate}.mp3
+Шаблон ключа v1: B2-Beruf/{lang}/{rate}/{cat_lower}/{id}_{field}_{lang}_{rate}
 """
 
 import os
@@ -34,7 +34,7 @@ AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION', '')
 TTS_URL = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1'
 
 COURSE = 'B2-Beruf'
-AUDIO_BASE = pathlib.Path('audio') / COURSE
+AUDIO_BASE = pathlib.Path('audio') / COURSE   # audio/B2-Beruf/
 MANIFEST = pathlib.Path('audio') / 'manifest.json'
 
 # ── Мапінг голосів згідно з вашою специфікацією ─────────────────
@@ -163,8 +163,9 @@ def git_commit_and_push(count):
 
 # ── Основний асинхронний пайплайн ─────────────────────────────
 async def worker_task(task, semaphore, stats):
-    # Шлях створення файлу: audio/B2-Beruf/lang/rate/cat_lower/filename
-    file_dir = AUDIO_BASE / task["lang"] / task["rate"] / task["cat_folder"]
+    # ТОЧНА ОРИГІНАЛЬНА ЛОГІКА СТВОРЕННЯ ПАПОК ІЗ ВАШОГО AZURE СКРИПТА:
+    # file_dir = audio / B2-Beruf / lang / rate / cat_lower
+    file_dir = AUDIO_BASE / task["lang"] / task["rate"] / task["cat_lower"]
     file_dir.mkdir(parents=True, exist_ok=True)
     file_path = file_dir / task["filename"]
     
@@ -183,6 +184,9 @@ async def worker_task(task, semaphore, stats):
                 await asyncio.to_thread(tts_azure_rest, cleaned, voice, task["rate"], file_path)
                 
             stats["generated"] += 1
+            
+            # ТОЧНИЙ ФОРМАТ ЗАПИСУ З ОРИГІНАЛЬНОГО СКРИПТА:
+            # Для нових ключів v1 значенням у маніфесті є просто True
             stats["manifest_updates"][task["mkey"]] = True
             
             if DELAY_SEC > 0:
@@ -233,15 +237,15 @@ async def main():
     for item in raw_items:
         item_id = item["id"]
         
-        # 1. Визначаємо внутрішню категорію для мапінгу голосів
+        # Визначаємо внутрішню категорію для мапінгу голосів
         internal_cat = "vocab"
         if item_id.startswith("sbs_"):
             internal_cat = "sprachbau"
         elif item_id.startswith("dlg_"):
             internal_cat = "redemittel"
             
-        # 2. Отримуємо папку категорії (мала літера з поля 'cat', наприклад: 'nvv', 'opinion')
-        manifest_cat_folder = str(item.get("cat", item["_fallback_var"])).lower()
+        # Строго оригінальне визначення категорії cat_lower з azure-скрипта
+        cat_lower = str(item.get("cat", item["_fallback_var"])).lower()
             
         fields = fields_map[internal_cat]
         
@@ -252,15 +256,20 @@ async def main():
                     if not text: continue
                     rates = audio_config.get(lang, ["100"])
                     for rate in rates:
-                        # Структура з маніфесту: B2-Beruf/lang/rate/cat/id_field_lang_rate
-                        mkey = f"{COURSE}/{lang}/{rate}/{manifest_cat_folder}/{item_id}_{field}_{lang}_{rate}"
+                        
+                        # ТОЧНЕ ОРИГІНАЛЬНЕ ФОРМУВАННЯ КЛЮЧА ТА ІМЕНІ З ВАШОГО СКРИПТА v2.9.4:
+                        # Шлях у маніфесті: COURSE/lang/rate/cat_lower/id_field_lang_rate
+                        mkey = f"{COURSE}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
                         filename = f"{item_id}_{field}_{lang}_{rate}.mp3"
                         
-                        if mkey not in manifest_data:
+                        # Перевірка наявності як v1, так і v2 форматів ключів у маніфесті
+                        mkey_alt = f"{COURSE}/{item_id}_{cat_lower}_{field}_{lang}_{rate}"
+                        
+                        if mkey not in manifest_data and mkey_alt not in manifest_data:
                             tasks.append({
                                 "id": item_id, 
                                 "internal_cat": internal_cat, 
-                                "cat_folder": manifest_cat_folder,
+                                "cat_lower": cat_lower,
                                 "sub": field, 
                                 "lang": lang, 
                                 "rate": rate, 
@@ -271,7 +280,7 @@ async def main():
 
     print(f"Знайдено нових завдань для генерації: {len(tasks)}", flush=True)
     if not tasks:
-        print("Всі файли синхронізовані з manifest.json.", flush=True)
+        print("Всі файли синхронізовані з маніфестом.", flush=True)
         return
 
     semaphore = asyncio.Semaphore(WORKERS)
