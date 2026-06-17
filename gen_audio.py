@@ -1,373 +1,289 @@
 #!/usr/bin/env python3
 """
-MOVA · Azure TTS Audio Generator  v2.9.4 (Strict Tag Stripping & Safe Slash Replacement)
-Читає B2-Beruf.json (або конвертує з B2-Beruf.js з підтримкою const/var/let AUDIO_CONFIG)
-Генерує MP3 з Azure Neural TTS для VOCAB та SPRACHBAUSTEINE відповідно до конфігу швидкостей мов.
-Підтримує мови: de, en, uk, ru. Безпечно видаляє HTML-теги і замінює слеші на пробіли.
+MOVA · TTS Audio Generator (Edge TTS & Azure REST Dual Engine)
+Автоматично читає B2-Beruf.js, враховує AUDIO_CONFIG швидкості,
+очищує HTML-теги, використовує маніфест і мапить голоси згідно з таблицею.
+За замовчуванням використовує Edge TTS, але підтримує Azure REST API через перемикач.
 """
 
-import os, sys, json, time, pathlib, re
-import urllib.request, urllib.error
-from concurrent.futures import ThreadPoolExecutor, as_completed
-import threading
+import os
+import sys
+import json
+import time
+import pathlib
+import re
+import asyncio
+import subprocess
+import urllib.request
+import urllib.error
+
+# Спроба імпортувати edge-tts
+try:
+    import edge_tts
+except ImportError:
+    edge_tts = None
 
 # ── Конфігурація ──────────────────────────────────────────────
-AZURE_KEY    = os.environ.get('AZURE_SPEECH_KEY','')
-AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION','')  # Повністю секретний параметр без дефолтів
-TTS_URL      = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1'
-
-COURSE     = 'B2-Beruf'
-AUDIO_BASE = pathlib.Path('audio') / COURSE   # audio/B2-Beruf/
-MANIFEST   = pathlib.Path('audio') / 'manifest.json'
-
-# ДИНАМІЧНІ LІМІТИ (читаються з GitHub Actions)
-WORKERS   = int(os.environ.get('TTS_WORKERS', '1'))
+TTS_ENGINE = os.environ.get("TTS_ENGINE", "edge").lower()  # 'edge' або 'azure'
+WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
-COMMIT_EVERY_X_FILES = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
+COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
 
-# Конфігурація полів для різних типів даних
-CONFIG_BY_TYPE = {
-    'VOCAB': {
-        'fields': ['term', 'short', 'def'],
-        'languages': ['de', 'en', 'uk', 'ru']
+AZURE_KEY = os.environ.get('AZURE_SPEECH_KEY', '')
+AZURE_REGION = os.environ.get('AZURE_SPEECH_REGION', '')
+TTS_URL = f'https://{AZURE_REGION}.tts.speech.microsoft.com/cognitiveservices/v1'
+
+COURSE = 'B2-Beruf'
+AUDIO_BASE = pathlib.Path('audio') / COURSE
+MANIFEST = pathlib.Path('audio') / 'manifest.json'
+
+# ── Мапінг голосів згідно з таблицею ──────────────────────────
+VOICE_MAPPING = {
+    "vocab": {
+        "term":  {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-AriaNeural",        "ru": "ru-RU-SvetlanaNeural"},
+        "short": {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-GB-RyanNeural",        "ru": "ru-RU-DmitryNeural"},
+        "def":   {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
     },
-    'SPRACHBAUSTEINE': {
-        'fields': ['sentence', 'explanation', 'answer', 'distractors'],
-        'languages': ['de', 'en', 'uk', 'ru']
+    "sprachbau": {
+        "correct_sentence": {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
+        "correct_answer":   {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
+        "wrong_answers":    {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
+    },
+    "redemittel": {
+        "question": {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
+        "answer":   {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
     }
 }
 
-# Словник голосів з підтримкою ru-RU
-VOICES = {
-    'de': 'de-DE-KatjaNeural',
-    'en': 'en-US-AriaNeural',
-    'uk': 'uk-UA-PolinaNeural',
-    'ru': 'ru-RU-SvetlanaNeural',
-}
-SPEEDS = {
-    '100': {'rate': '1.0'},
-    '080': {'rate': '0.8'},
-}
+def get_voice_id(category, sub_type, lang):
+    try:
+        return VOICE_MAPPING[category][sub_type][lang]
+    except KeyError:
+        fallbacks = {"de": "de-DE-KatjaNeural", "uk": "uk-UA-PolinaNeural", "en": "en-US-AriaNeural", "ru": "ru-RU-SvetlanaNeural"}
+        return fallbacks.get(lang, "de-DE-KatjaNeural")
 
-lock = threading.Lock()
-NEW_FILES_COUNT = 0
-
-# ── Допоміжні функції ─────────────────────────────────────────
+# ── Утиліти очищення тексту ───────────────────────────────────
 def clean_text(text):
-    """
-    Повністю очищає текст від HTML-тегів b/i/u для стабільності Azure TTS,
-    конвертує <br> в переноси, міняє слеші на пробіли та нормалізує пробіли.
-    """
     if not text:
         return ""
-    
-    # 1. Спочатку обробляємо переноси рядків
-    text = re.sub(r'<br\s*/?>', '\n', text, flags=re.IGNORECASE)
-    
-    # 2. Повністю ВИДАЛЯЄМО теги <b>, </b> та інші можливі парні теги форматування,
-    # щоб вони не ламалися при заміні слешів і не викликали HTTP 400
-    text = re.sub(r'</?\s*[b|i|u|B|I|U]\s*>', '', text)
-    
-    # 3. Тільки ПІСЛЯ видалення тегів безпечно замінюємо слеші на пробіли
-    text = text.replace('/', ' ').replace('\\', ' ')
-    
-    # 4. Нормалізуємо пробіли по рядках
-    lines = text.split('\n')
-    cleaned_lines = []
-    for line in lines:
-        line_cleaned = re.sub(r'[ \t]+', ' ', line).strip()
-        if line_cleaned:  
-            cleaned_lines.append(line_cleaned)
-            
-    return '\n'.join(cleaned_lines)
+    if isinstance(text, list):
+        text = ", ".join(text)
+    # Видаляємо HTML теги
+    text = re.sub(r'<[^>]+>', ' ', text)
+    # Замінюємо символи перенесення та зайві пробіли
+    text = text.replace('\n', ' ').replace('\r', ' ')
+    text = text.replace('/', ' ')
+    return re.sub(r'\s+', ' ', text).strip()
 
-# ── Завантаження бази (JSON або JS) ───────────────────────────
-def load_data():
-    """Пробує B2-Beruf.json, потім парсить B2-Beruf.js за допомогою regex (підтримує const, var, let)."""
-    jp = pathlib.Path('B2-Beruf.json')
-    if jp.exists():
-        print('  ← B2-Beruf.json')
-        return json.loads(jp.read_text('utf-8'))
-
-    jsp = pathlib.Path('B2-Beruf.js')
-    if not jsp.exists():
-        raise FileNotFoundError('Не знайдено B2-Beruf.json або B2-Beruf.js!')
-
-    print('  ← B2-Beruf.js (regex parse)')
-    src = jsp.read_text('utf-8')
-
-    data = {}
-    
-    m_cfg = re.search(r'(?:const|var|let)\s+AUDIO_CONFIG\s*=\s*(\{[\s\S]*?\});', src)
-    if m_cfg:
-        cfg_js = m_cfg.group(1)
-        cfg_js = re.sub(r'//[^\n]*', '', cfg_js)
-        cfg_js = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', cfg_js)
-        cfg_js = cfg_js.replace("'", '"')
+def parse_audio_config(content):
+    """Шукає AUDIO_CONFIG у JS файлі"""
+    match = re.search(r'var\s+AUDIO_CONFIG\s*=\s*(\{.*?\});', content, re.DOTALL)
+    if match:
         try:
-            data['AUDIO_CONFIG'] = json.loads(cfg_js)
-            print('  ✓ Успішно завантажено AUDIO_CONFIG з JS')
-        except Exception as e:
-            print(f'  ⚠️ Не вдалося розпарсити AUDIO_CONFIG: {e}')
+            return json.loads(re.sub(r'//.*', '', match.group(1)))
+        except:
+            pass
+    return {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
 
-    for block_type in ['VOCAB', 'SPRACHBAUSTEINE']:
-        m = re.search(rf'(?:const|var|let)\s+{block_type}\s*=\s*(\[[\s\S]*?\]);', src)
-        if m:
-            arr_js = m.group(1)
-            arr_js = re.sub(r'([а-яА-ЯёЁіІїЇєЄґҐ])"([а-яА-ЯёЁіІїЇєЄґҐ])', r'\1’\2', arr_js)
-            arr_js = re.sub(r"([а-яА-ЯёЁіІїЇєЄґҐ])'([а-яА-ЯёЁіІїЇєЄґҐ])", r'\1’\2', arr_js)
-            arr_js = re.sub(r"([a-zA-Z])'([a-zA-Z])", r'\1’\2', arr_js)
-
-            arr_js = re.sub(r'//[^\n]*', '', arr_js)
-            arr_js = arr_js.replace('\\"', '"')
-            arr_js = re.sub(r"'([^']*)'", lambda m: json.dumps(m.group(1).replace('"', '\\"')), arr_js)
-            arr_js = re.sub(r'([{,]\s*)([a-zA-Z_][a-zA-Z0-9_]*)\s*:', r'\1"\2":', arr_js)
-            arr_js = re.sub(r',\s*([}\]])', r'\1', arr_js)
-
-            try:
-                data[block_type] = json.loads(arr_js)
-            except json.JSONDecodeError as e:
-                print(f'  ✗ JSON parse error у блоці {block_type}: {e}')
-                raise
-            
-    if not data.get('VOCAB') and not data.get('SPRACHBAUSTEINE'):
-        raise ValueError('Не знайдено масиви VOCAB або SPRACHBAUSTEINE у файлі.')
-
-    return data
-
-# ── Маніфест ─────────────────────────────────────────────────
-def load_manifest():
-    if MANIFEST.exists():
-        try: return json.loads(MANIFEST.read_text('utf-8'))
-        except: pass
-    return {}
-
-def save_manifest(m):
-    MANIFEST.parent.mkdir(parents=True, exist_ok=True)
-    MANIFEST.write_text(json.dumps(m, ensure_ascii=False, indent=2))
-
-# ── SSML ─────────────────────────────────────────────────────
-def build_ssml(text, lang, speed_key):
-    voice = VOICES[lang]
-    cfg   = SPEEDS[speed_key]
-    rate  = cfg['rate']
-
-    # Текст вже гарантовано чистий від ламаних HTML-тегів завдяки clean_text
-    return (
-        f'<speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="{lang}">'
-        f'<voice name="{voice}"><prosody rate="{rate}">{text}</prosody></voice></speak>'
-    )
-
-# ── Azure запит ───────────────────────────────────────────────
-def synthesize(ssml, retries=5):
-    global WORKERS, DELAY_SEC, COMMIT_EVERY_X_FILES
+def load_js_database(file_path):
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
     
-    for attempt in range(retries):
-        req = urllib.request.Request(
-            TTS_URL,
-            data=ssml.encode('utf-8'),
-            headers={
-                'Ocp-Apim-Subscription-Key': AZURE_KEY,
-                'Content-Type': 'application/ssml+xml',
-                'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3',
-                'User-Agent': 'MOVA/2.0',
-            },
-            method='POST'
-        )
-        try:
-            with urllib.request.urlopen(req, timeout=90) as r:
-                data = r.read()
-                time.sleep(DELAY_SEC)
-                return data
-        except urllib.error.HTTPError as e:
-            if e.code == 429:
-                if WORKERS > 1 or DELAY_SEC < 0.6:
-                    with lock:
-                        if WORKERS > 1 or DELAY_SEC < 0.6:
-                            print('\n  ⚠️ [Azure F0] Перехід на повільний режим...', flush=True)
-                            WORKERS = 1
-                            DELAY_SEC = 1.2
-                            COMMIT_EVERY_X_FILES = 3
-                wait = int(e.headers.get('Retry-After', 10))
-                time.sleep(wait)
-            else:
-                return f"HTTP {e.code}: {e.reason}"
-        except Exception as e:
-            time.sleep(3)
-            if attempt == retries - 1:
-                return str(e)
-    return "Unknown Network Error"
-
-# ── Завдання ─────────────────────────────────────────────────
-def process(task, manifest):
-    global NEW_FILES_COUNT
-    block_type, card, field, lang, speed, idx = task
-    cid  = card['id']
+    config = parse_audio_config(content)
     
-    cat = 'sbs' if block_type == 'SPRACHBAUSTEINE' else cid.split('_')[0]
-    fname = f'{cid}_{field}_{lang}_{speed}'
-    if idx is not None:
-        fname = f'{fname}_{idx}'
+    # Конвертуємо JS об'єкт у валідний JSON
+    js_clean = re.sub(r'var\s+AUDIO_CONFIG\s*=.*?;', '', content, flags=re.DOTALL)
+    js_clean = re.sub(r'export\s+const\s+\w+\s*=\s*', '', js_clean)
+    js_clean = re.sub(r'var\s+CATS\s*=.*?;', '', js_clean, flags=re.DOTALL)
+    js_clean = js_clean.strip()
+    if js_clean.endswith(';'):
+        js_clean = js_clean[:-1]
         
-    mkey  = f'{COURSE}/{lang}/{speed}/{cat}/{fname}'
-    fpath = AUDIO_BASE / lang / speed / cat / f'{fname}.mp3'
-
-    with lock:
-        if mkey in manifest and fpath.exists():
-            return 'skip', mkey, None
-
-    # Отримуємо та готуємо текст для генерації
-    if block_type == 'SPRACHBAUSTEINE' and field == 'sentence':
-        text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
-        answer_text = (card.get('answer') or {}).get(lang) or (card.get('answer') or {}).get('de', '')
-        if '{{BLANK}}' in text and answer_text:
-            text = text.replace('{{BLANK}}', f' {answer_text} ')
-            
-    elif block_type == 'SPRACHBAUSTEINE' and field == 'distractors':
-        distractors_list = card.get(field, [])
-        if not distractors_list or idx is None or (idx - 1) >= len(distractors_list):
-            return 'skip', mkey, None
-        text = distractors_list[idx - 1]
-        
-    else:
-        text = (card.get(field) or {}).get(lang) or (card.get(field) or {}).get('de','')
-
-    text = clean_text(text)
-
-    if not text or not text.strip():
-        return 'skip', mkey, None
-
-    result = synthesize(build_ssml(text, lang, speed))
-    
-    if isinstance(result, str):
-        return 'err', mkey, result
-
-    if not result:
-        return 'err', mkey, "Empty response from server"
-
-    fpath.parent.mkdir(parents=True, exist_ok=True)
-    fpath.write_bytes(result)
-    
-    with lock:
-        manifest[mkey] = True
-        save_manifest(manifest)
-        NEW_FILES_COUNT += 1
-        
-        if NEW_FILES_COUNT >= COMMIT_EVERY_X_FILES:
-            print(f'\n📦 [Auto-Sync] Накопичилося {NEW_FILES_COUNT} нових файлів. Фіксуємо у Git...', flush=True)
-            os.system('git add audio/')
-            if os.system('git diff --staged --quiet') != 0:
-                os.system(f'git commit -m "🎙 TTS Auto-Save: збереження пакету з {NEW_FILES_COUNT} файлів [skip ci]"')
-                os.system('git push')
-            NEW_FILES_COUNT = 0
-
-    return 'ok', mkey, None
-
-# ── Main ─────────────────────────────────────────────────────
-def main():
-    print(f'\n🎙  MOVA TTS Generator v2.9.4 (Strict Tag Stripping & Safe Slash Replacement)', flush=True)
-
-    if not AZURE_KEY:
-        print('✗ AZURE_SPEECH_KEY не встановлений!', flush=True); return 1
-    if not AZURE_REGION:
-        print('✗ AZURE_SPEECH_REGION не встановлений!', flush=True); return 1
-
     try:
-        db_data = load_data()
+        data = json.loads(js_clean)
+    except:
+        data = {}
+        for cat in ["vocab", "sprachbau", "redemittel"]:
+            match = re.search(rf'"{cat}"\s*:\s*(\[.*?\])', js_clean, re.DOTALL)
+            if match:
+                try: data[cat] = json.loads(match.group(1))
+                except: data[cat] = []
+    return config, data
+
+# ── Двигуни генерації ─────────────────────────────────────────
+async def tts_edge(text, voice, rate_str, output_path):
+    """Генерація через Edge TTS з підтримкою швидкості мовлення"""
+    if not edge_tts:
+        raise RuntimeError("Пакет 'edge-tts' не встановлено.")
+    rate_val = int(rate_str)
+    sign = "+" if rate_val >= 100 else "-"
+    diff = abs(rate_val - 100)
+    edge_rate = f"{sign}{diff}%"
+    
+    communicate = edge_tts.Communicate(text, voice, rate=edge_rate)
+    await communicate.save(output_path)
+
+def tts_azure_rest(text, voice, rate_str, output_path):
+    """Оригінальна генерація через прямі HTTP REST-запити до Azure API з SSML"""
+    if not AZURE_KEY or not AZURE_REGION:
+        raise ValueError("Відсутні ключі AZURE_SPEECH_KEY або AZURE_SPEECH_REGION!")
+    
+    rate_float = float(rate_str) / 100.0
+    
+    # Екранування XML символів у тексті
+    ssml_text = text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
+    
+    ssml = f"""<speak version='1.0' xml:lang='de-DE'>
+        <voice name='{voice}'>
+            <prosody rate='{rate_float:.2f}'>{ssml_text}</prosody>
+        </voice>
+    </speak>"""
+    
+    headers = {
+        'Ocp-Apim-Subscription-Key': AZURE_KEY,
+        'Content-Type': 'application/ssml+xml',
+        'X-Search-AppId': '0724d16c52914023bcaf4b99876e6950',
+        'X-Search-ClientID': '1f2e3d4c5b6a7f8e9d0c1b2a3f4e5d6c',
+        'User-Agent': 'MOVA_TTS_Bot',
+        'X-Microsoft-OutputFormat': 'audio-16khz-128kbitrate-mono-mp3'
+    }
+    
+    req = urllib.request.Request(TTS_URL, data=ssml.encode('utf-8'), headers=headers, method='POST')
+    try:
+        with urllib.request.urlopen(req) as response:
+            with open(output_path, 'wb') as f:
+                f.write(response.read())
+    except urllib.error.HTTPError as e:
+        err_body = e.read().decode('utf-8', errors='ignore')
+        raise RuntimeError(f"Azure HTTP Error {e.code}: {err_body}")
+
+# ── Git автоматизація ─────────────────────────────────────────
+def git_commit_and_push(count):
+    try:
+        subprocess.run(["git", "add", "audio/"], check=True)
+        status = subprocess.run(["git", "diff", "--staged", "--quiet"])
+        if status.returncode != 0:
+            msg = f"🎙 TTS Audio Update: +{count} files [skip ci]"
+            subprocess.run(["git", "commit", "-m", msg], check=True)
+            subprocess.run(["git", "push"], check=True)
+            print(f"--- [Git Bot] Збережено проміжну пачку з {count} файлів ---", flush=True)
     except Exception as e:
-        print(f'   ✗ Помилка завантаження бази: {e}', flush=True); return 1
+        print(f"Git commit error: {e}", flush=True)
 
-    manifest = load_manifest()
+# ── Основний асинхронний пайплайн ─────────────────────────────
+async def worker_task(task, semaphore, stats):
+    file_path = AUDIO_BASE / task["filename"]
+    if file_path.exists() and file_path.stat().st_size > 0:
+        return
+
+    voice = get_voice_id(task["cat"], task["sub"], task["lang"])
+    cleaned = clean_text(task["text"])
+    if not cleaned:
+        return
+
+    async with semaphore:
+        try:
+            print(f"[{TTS_ENGINE.upper()}] -> {task['filename']} ({task['rate']}%)", flush=True)
+            
+            if TTS_ENGINE == "edge":
+                await tts_edge(cleaned, voice, task["rate"], file_path)
+            else:
+                # Синхронну функцію REST загортаємо у потік, щоб не блокувати асинхронний loop
+                await asyncio.to_thread(tts_azure_rest, cleaned, voice, task["rate"], file_path)
+                
+            stats["generated"] += 1
+            stats["manifest_updates"][task["mkey"]] = task["filename"]
+            
+            if DELAY_SEC > 0:
+                await asyncio.sleep(DELAY_SEC)
+                
+            if stats["generated"] > 0 and stats["generated"] % COMMIT_LIMIT == 0:
+                update_manifest_file(stats["manifest_updates"])
+                git_commit_and_push(COMMIT_LIMIT)
+                stats["manifest_updates"].clear()
+                
+        except Exception as e:
+            print(f"❌ Помилка файлу {task['filename']}: {e}", flush=True)
+            if file_path.exists():
+                file_path.unlink()
+
+def update_manifest_file(updates):
+    if not updates:
+        return
+    current_manifest = {}
+    if MANIFEST.exists():
+        try:
+            with open(MANIFEST, 'r', encoding='utf-8') as f:
+                current_manifest = json.load(f)
+        except: pass
+    current_manifest.update(updates)
+    with open(MANIFEST, 'w', encoding='utf-8') as f:
+        json.dump(current_manifest, f, ensure_ascii=False, indent=2)
+
+async def main():
+    AUDIO_BASE.mkdir(parents=True, exist_ok=True)
+    print(f"Запуск генератора MOVA TTS. Обраний двигун: {TTS_ENGINE.upper()}", flush=True)
     
-    audio_config = db_data.get('AUDIO_CONFIG', {})
-    if not audio_config:
-        print('  ⚠️ AUDIO_CONFIG не знайдено в базі. Використовую дефолт: 100 для всіх мов.')
+    manifest_data = {}
+    if MANIFEST.exists():
+        try:
+            with open(MANIFEST, 'r', encoding='utf-8') as f:
+                manifest_data = json.load(f)
+        except: pass
 
+    audio_config, db_data = load_js_database("B2-Beruf.js")
+    
     tasks = []
-    status_info = []
+    fields_map = {
+        "vocab": ["term", "short", "def"],
+        "sprachbau": ["correct_sentence", "correct_answer", "wrong_answers"],
+        "redemittel": ["question", "answer"]
+    }
     
-    for block_type, config in CONFIG_BY_TYPE.items():
-        vocab_list = db_data.get(block_type, [])
-        status_info.append(f'{block_type}: {len(vocab_list)}')
-        
-        for card in vocab_list:
-            for field in config['fields']:
-                for lang in config['languages']:
-                    
-                    if lang not in audio_config:
-                        continue
-                        
-                    allowed_speeds = audio_config[lang]
-                    
-                    for speed in allowed_speeds:
-                        if speed not in SPEEDS:
-                            continue
-                            
-                        if block_type == 'SPRACHBAUSTEINE':
-                            if field in ['sentence', 'explanation'] and speed != '100':
-                                continue
-                            if field in ['answer', 'distractors']:
-                                if lang != 'de' or speed != '100':
-                                    continue
-                        
-                        if field == 'distractors':
-                            distractors_list = card.get(field, [])
-                            for idx_0, _ in enumerate(distractors_list):
-                                tasks.append((block_type, card, field, lang, speed, idx_0 + 1))
-                        else:
-                            tasks.append((block_type, card, field, lang, speed, None))
+    for cat, fields in fields_map.items():
+        if cat not in db_data: continue
+        for item in db_data[cat]:
+            item_id = item.get("id")
+            if not item_id: continue
+            
+            for field in fields:
+                field_obj = item.get(field) or item.get(f"{field}_de")
+                if isinstance(field_obj, dict):
+                    for lang, text in field_obj.items():
+                        if not text: continue
+                        rates = audio_config.get(lang, ["100"])
+                        for rate in rates:
+                            mkey = f"{COURSE}/{item_id}_{cat}_{field}_{lang}_{rate}"
+                            filename = f"{item_id}_{cat}_{field}_{lang}_{rate}.mp3"
+                            if mkey not in manifest_data or not (AUDIO_BASE / filename).exists():
+                                tasks.append({"id": item_id, "cat": cat, "sub": field, "lang": lang, "rate": rate, "text": text, "filename": filename, "mkey": mkey})
+                else:
+                    for lang in ["de", "uk", "en", "ru"]:
+                        text = item.get(f"{field}_{lang}")
+                        if not text: continue
+                        rates = audio_config.get(lang, ["100"])
+                        for rate in rates:
+                            mkey = f"{COURSE}/{item_id}_{cat}_{field}_{lang}_{rate}"
+                            filename = f"{item_id}_{cat}_{field}_{lang}_{rate}.mp3"
+                            if mkey not in manifest_data or not (AUDIO_BASE / filename).exists():
+                                tasks.append({"id": item_id, "cat": cat, "sub": field, "lang": lang, "rate": rate, "text": text, "filename": filename, "mkey": mkey})
 
-    print(f'   ✓ Завантажено картки -> {" | ".join(status_info)} | В маніфесті: {len(manifest)}', flush=True)
+    print(f"Знайдено нових завдань для генерації: {len(tasks)}", flush=True)
+    if not tasks:
+        print("Всі файли синхронізовані.", flush=True)
+        return
 
-    total = len(tasks)
-    already = 0
-    for block_type, c, f, l, s, idx in tasks:
-        cat = 'sbs' if block_type == 'SPRACHBAUSTEINE' else c['id'].split('_')[0]
-        fname = f'{c["id"]}_{f}_{l}_{s}'
-        if idx is not None:
-            fname = f'{fname}_{idx}'
-        mkey = f'{COURSE}/{l}/{s}/{cat}/{fname}'
-        fpath = AUDIO_BASE / l / s / cat / f'{fname}.mp3'
-        if mkey in manifest and fpath.exists():
-            already += 1
-
-    print(f'\n🎯 Завдань за поточним конфігом: {total} | Вже є: {already} | Необхідно згенерувати: {total-already}', flush=True)
-
-    if total == already:
-        print('\n✅ Все синхронізовано згідно з AUDIO_CONFIG!', flush=True); return 0
-
-    done = skipped = errors_count = generated = 0
-    error_details = []
-
-    with ThreadPoolExecutor(max_workers=WORKERS) as pool:
-        futures = {pool.submit(process, t, manifest): t for t in tasks}
-        for fut in as_completed(futures):
-            done += 1
-            status, mkey, err_msg = fut.result()
-            if   status == 'ok':   
-                generated += 1
-                print(f'  ✓ [{done}/{total}] {mkey}', flush=True)
-            elif status == 'skip': 
-                skipped += 1
-                print(f'  · [{done}/{total}] skip {mkey}', flush=True)
-            else:                  
-                errors_count += 1
-                error_details.append((mkey, err_msg))
-                print(f'  ✗ [{done}/{total}] ERROR {mkey} -> {err_msg}', flush=True)
-
-    # Фінальний звіт
-    print(f'\n==================================================', flush=True)
-    print(f'Готово: +{generated} нових, {skipped} пропущено, {errors_count} помилок', flush=True)
+    semaphore = asyncio.Semaphore(WORKERS)
+    stats = {"generated": 0, "manifest_updates": {}}
     
-    if error_details:
-        print(f'\n🚨 ДЕТАЛІ ОПИСУ ПОМИЛОК:', flush=True)
-        for idx, (mkey, err_msg) in enumerate(error_details, 1):
-            print(f'  {idx}. Файл: {mkey}\n     Суть помилки: {err_msg}\n', flush=True)
-        print(f'==================================================', flush=True)
-        return 1
-        
-    print(f'==================================================', flush=True)
-    return 0
+    pool = [worker_task(t, semaphore, stats) for t in tasks]
+    await asyncio.gather(*pool)
+    
+    if stats["manifest_updates"]:
+        update_manifest_file(stats["manifest_updates"])
+    print(f"🎉 Роботу завершено! Згенеровано: {stats['generated']} файлів.", flush=True)
 
-if __name__ == '__main__':
-    sys.exit(main())
+if __name__ == "__main__":
+    if sys.platform == 'win32':
+        asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(main())
