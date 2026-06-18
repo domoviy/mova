@@ -1986,6 +1986,50 @@ body.lesson-active .vocab-top{
         </div>
       </div>
     </div>
+
+    <!-- DIALOGUE -->
+    <div id="view-dialogue" class="view card-view">
+
+      <div class="vocab-top">
+        <div class="vplayer">
+          <button class="vplay" id="dlgplaybtn" onclick="toggleDialogue()">▶</button>
+          <button class="vstop" onclick="stopDialogue()">⏹</button>
+          <button class="vseq smart" id="dlgshuffle-btn" onclick="cycleDialogueMode()">🧠</button>
+          <div class="vlang-grp">
+            <button class="vlang-btn on"  id="dlglang-en" onclick="toggleDialogueLang('en')">🇬🇧 EN</button>
+            <button class="vlang-btn on"  id="dlglang-uk" onclick="toggleDialogueLang('uk')">🇺🇦 UK</button>
+            <button class="vlang-btn on"  id="dlglang-de" onclick="toggleDialogueLang('de')">🇩🇪 DE</button>
+            <button class="vlang-btn off" id="dlglang-ru" onclick="toggleDialogueLang('ru')">🇷🇺 RU</button>
+          </div>
+          <select id="dlgf-cat" onchange="resetDialogueQ()" style="display:none"><option value="all">Alle</option></select>
+        </div>
+        <div class="vchips" id="dlgchips"></div>
+        <div class="vtab-bar" id="dialogue-tabs">
+          <button class="vtab active" onclick="switchDialogueTab(0)">🃏</button>
+          <button class="vtab" onclick="switchDialogueTab(1)">📋</button>
+        </div>
+      </div>
+
+      <!-- Картка + прогрес -->
+      <div id="dlg-panel-card" class="card-panel">
+        <div class="fc-area" id="dlg-fc-area">
+          <div class="flashcard" id="dlg-flashcard">
+            <div class="fc-face fc-front"><div id="dlg-fc-front-inner" style="display:flex;flex-direction:column;flex:1"></div></div>
+            <div class="fc-face fc-back"><div id="dlg-fc-back-inner" style="display:flex;flex-direction:column;flex:1"></div></div>
+          </div>
+        </div>
+        <div class="vprogrow">
+          <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="dlgprgtxt">1 / 0</span>
+          <div class="vpb"><div class="vpbf" id="dlgpbf" style="width:0%"></div></div>
+        </div>
+      </div>
+
+      <!-- Список -->
+      <div id="dlg-panel-browse" style="display:none">
+        <div class="vocab-grid" id="dlg-browse-grid"></div>
+      </div>
+    </div>
+
     <div id="view-settings" class="view">
     <div class="sh"><h2>⚙️ <span data-i18n="sec_settings">Einstellungen</span></h2></div>
 
@@ -2121,6 +2165,9 @@ body.lesson-active .vocab-top{
   <button class="bn-item" onclick="showView('sb')" data-view="sb">
     <span class="bn-icon">🧩</span><span data-i18n="nav_sb">Sprachbau</span>
   </button>
+  <button class="bn-item" onclick="showView('dialogue')" data-view="dialogue">
+    <span class="bn-icon">💬</span><span>Dialogue</span>
+  </button>
 </div>
 
 <div class="notif" id="notif"></div>
@@ -2128,7 +2175,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '144-ef73abb';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3272,13 +3319,18 @@ async function init(){
   // Синхронізуємо кнопку режиму
   const sb=document.getElementById('vshuffle-btn');
   if(sb){sb.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
+  const dsb=document.getElementById('dlgshuffle-btn');
+  if(dsb){dsb.classList.remove('smart','shuffle');const dcfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[D.mode]||{icon:'🧠',cls:'smart'};dsb.textContent=dcfg.icon;if(dcfg.cls)dsb.classList.add(dcfg.cls);}
   initVoiceSelects();
   initVocab();
   initVocabChips();
+  initDialogue();
+  initDialogueChips();
   updateFavBadge();
   renderStreakUI();
   syncSpeedButtons();
   initSwipe();
+  initDialogueSwipe();
   // Відкриваємо Lernpfad за замовчуванням
   showView('lernpfad');
   // PWA portrait lock — маніфест робить це автоматично для встановленого PWA
@@ -3572,11 +3624,13 @@ function stopTTS(){
 // Коли додаток іде у background під час відтворення — зупиняємо аудіо
 // і позначаємо що треба відновити. При поверненні — починаємо картку знову.
 let _wasPlayingBeforeHidden = false;
+let _wasDlgPlayingBeforeHidden = false;
 document.addEventListener('visibilitychange', ()=>{
   logErr('visibility',document.visibilityState,'playing='+V.playing+' paused='+V.paused);
   if(document.visibilityState === 'hidden'){
     _wasPlayingBeforeHidden = V.playing && !V.paused;
-    if(_wasPlayingBeforeHidden){
+    _wasDlgPlayingBeforeHidden = D.playing && !D.paused;
+    if(_wasPlayingBeforeHidden || _wasDlgPlayingBeforeHidden){
       // Зупиняємо поточне аудіо без переходу на наступну картку
       playGen++;
       speechSynthesis.cancel();
@@ -3590,7 +3644,13 @@ document.addEventListener('visibilitychange', ()=>{
       // Невелика затримка щоб браузер повністю повернувся
       setTimeout(()=>{ if(V.playing && !V.paused) playVocabNext(); }, 400);
     }
+    const isDlgCardTab = document.getElementById('dlg-panel-card')?.style.display !== 'none';
+    if(_wasDlgPlayingBeforeHidden && D.playing && !D.paused && isDlgCardTab){
+      _wasDlgPlayingBeforeHidden = false;
+      setTimeout(()=>{ if(D.playing && !D.paused) playDialogueNext(); }, 400);
+    }
     _wasPlayingBeforeHidden = false;
+    _wasDlgPlayingBeforeHidden = false;
   }
 });
 
@@ -3601,6 +3661,7 @@ function showView(id){
   document.getElementById('view-'+id).classList.add('active');
   const btn=document.querySelector('[data-view="'+id+'"]');if(btn)btn.classList.add('active');
   if(id==='vocab'){initVocab();initVocabChips();}
+  if(id==='dialogue'){initDialogue();initDialogueChips();}
   if(id==='favs')renderFavGrid();
   if(id==='settings'){initVoiceSelects();renderStreakUI();syncSpeedButtons();try{srRenderDashboard();}catch(e){}}
   if(id==='lernpfad'){renderLernpfad();}
@@ -3741,8 +3802,8 @@ function renderVocabCard(){
     });
   }, 0);
 }
-function swipeCard(dir, action){
-  const area=document.getElementById('fc-area');
+function swipeCard(dir, action, areaId='fc-area'){
+  const area=document.getElementById(areaId);
   const outCls=dir==='left'?'swipe-out-left':'swipe-out-right';
   const inCls =dir==='left'?'swipe-in-left':'swipe-in-right';
   area.classList.add(outCls);
@@ -3897,7 +3958,7 @@ function srsSwipe(q){
 }
 
 // Показує інформаційний хінт з результатом SRS
-function showSrsHint(emoji, label, q){
+function showSrsHint(emoji, label, q, areaId='fc-area'){
   let hint = document.getElementById('srs-hint');
   if(!hint){
     hint = document.createElement('div');
@@ -3915,8 +3976,10 @@ function showSrsHint(emoji, label, q){
       transition:opacity .3s ease;
       white-space:nowrap;
     `;
-    document.getElementById('fc-area')?.appendChild(hint);
   }
+  // Прикріплюємо хінт до тієї карткової зони, що зараз активна (vocab / dialogue)
+  const area = document.getElementById(areaId);
+  if(area && hint.parentElement !== area) area.appendChild(hint);
   hint.innerHTML = emoji+'<br><span style="font-size:12px;opacity:.8">'+label+'</span>';
   hint.style.opacity = '1';
   clearTimeout(hint._t);
@@ -4086,7 +4149,7 @@ function srsSwipe(q){
 }
 
 // Показує інформаційний хінт з результатом SRS
-function showSrsHint(emoji, label, q){
+function showSrsHint(emoji, label, q, areaId='fc-area'){
   let hint = document.getElementById('srs-hint');
   if(!hint){
     hint = document.createElement('div');
@@ -4104,8 +4167,10 @@ function showSrsHint(emoji, label, q){
       transition:opacity .3s ease;
       white-space:nowrap;
     `;
-    document.getElementById('fc-area')?.appendChild(hint);
   }
+  // Прикріплюємо хінт до тієї карткової зони, що зараз активна (vocab / dialogue)
+  const area = document.getElementById(areaId);
+  if(area && hint.parentElement !== area) area.appendChild(hint);
   hint.innerHTML = emoji+'<br><span style="font-size:12px;opacity:.8">'+label+'</span>';
   hint.style.opacity = '1';
   clearTimeout(hint._t);
@@ -7601,6 +7666,373 @@ function setVocabCat(id,btn){
   // Якщо відкрита вкладка "Alle" — оновлюємо browse-грід одразу
   const browse=document.getElementById('vocab-panel-browse');
   if(browse && browse.style.display!=='none') renderVocabBrowse();
+}
+
+// ═══════════════════════════════════════════════════════════════════
+// DIALOGUE — картки на основі DIALOGE (питання/відповідь), за зразком
+// функціоналу Vocab: 🃏 картки + 📋 список, SM-2, swipe-навігація,
+// закладки, аудіо-плеєр. Дані ніколи не змінюють VOCAB/SPRACHBAUSTEINE.
+// ═══════════════════════════════════════════════════════════════════
+let D = {
+  playing:false, paused:false, idx:0, queue:[], flipped:false, timer:null,
+  repeatCount:0,
+  mode:(function(){ try{ return localStorage.getItem('mova_dlg_mode')||'smart'; }catch(e){ return 'smart'; } })(),
+  langs:(function(){ try{ return JSON.parse(localStorage.getItem('mova_dlg_langs')||'null') || {en:true,uk:true,de:true,ru:false}; }catch(e){ return {en:true,uk:true,de:true,ru:false}; } })(),
+};
+
+// ── СТАН / НАЛАШТУВАННЯ ──────────────────────────────────────────
+function dlgSaveLangs(){ try{ localStorage.setItem('mova_dlg_langs', JSON.stringify(D.langs)); }catch(e){} }
+function getActiveDialogueLangs(){ return ['en','uk','de','ru'].filter(l=>D.langs[l]); }
+function toggleDialogueLang(l){
+  D.langs[l]=!D.langs[l];
+  if(!Object.values(D.langs).some(x=>x)){ D.langs[l]=true; notify('Mindestens eine Sprache muss aktiv sein'); return; }
+  dlgSaveLangs();
+  applyDialogueLangUI();
+  renderDialogueCard();
+}
+function applyDialogueLangUI(){
+  ['en','uk','de','ru'].forEach(l=>{
+    const b=document.getElementById('dlglang-'+l);
+    if(b){ b.classList.toggle('on',!!D.langs[l]); b.classList.toggle('off',!D.langs[l]); }
+  });
+}
+function cycleDialogueMode(){
+  const modes=['smart','seq','random','srs'];
+  D.mode=modes[(modes.indexOf(D.mode)+1)%modes.length];
+  const btn=document.getElementById('dlgshuffle-btn');
+  const cfg={
+    smart: {icon:'🧠',cls:'smart'},
+    seq:   {icon:'➡', cls:''},
+    random:{icon:'🔀',cls:'shuffle'},
+    srs:   {icon:'🔬',cls:'smart'},
+  }[D.mode];
+  if(btn){ btn.classList.remove('smart','shuffle'); btn.textContent=cfg.icon; if(cfg.cls) btn.classList.add(cfg.cls); }
+  if(D.mode==='srs' && typeof DIALOGE!=='undefined'){
+    const cf=document.getElementById('dlgf-cat')?.value||'all';
+    const arr=DIALOGE.filter(d=>cf==='all'||d.cat===cf);
+    const dueCount=arr.filter(d=>srsDue(d.id)).length;
+    const newCount=arr.filter(d=>!srsLoad(d.id).dueDate).length;
+    notify('🔬 SM-2: '+dueCount+' '+t('srs_today').replace('📅 ','')+' · '+newCount+' '+t('srs_new').replace('✨ ',''));
+  }
+  try{ localStorage.setItem('mova_dlg_mode', D.mode); }catch(e){}
+  resetDialogueQ();
+}
+
+// ── ЧЕРГА ─────────────────────────────────────────────────────
+function buildDialogueQueue(){
+  if(typeof DIALOGE==='undefined' || !DIALOGE?.length) return [];
+  const cf=document.getElementById('dlgf-cat')?.value||'all';
+  let arr=DIALOGE.filter(d=>cf==='all'||d.cat===cf);
+  if(D.mode==='random'){
+    arr=arr.sort(()=>Math.random()-.5);
+  } else if(D.mode==='smart'){
+    arr=arr.sort((a,b)=>cardScore(b)-cardScore(a));
+  } else if(D.mode==='srs'){
+    const due   = arr.filter(d=>srsDue(d.id)).sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
+    const notDue= arr.filter(d=>!srsDue(d.id));
+    arr = [...due, ...notDue];
+  }
+  return arr;
+}
+function resetDialogueQ(){
+  const wp=D.playing; stopDialogue();
+  D.queue=buildDialogueQueue(); D.idx=0; D.flipped=false; D.repeatCount=0;
+  renderDialogueCard();
+  if(wp) setTimeout(toggleDialogue,200);
+}
+
+// ── INIT ──────────────────────────────────────────────────────
+function initDialogue(){
+  initDialogueFilters();
+  applyDialogueLangUI();
+  if(D.queue.length===0) D.queue=buildDialogueQueue();
+  renderDialogueCard();
+}
+function initDialogueFilters(){
+  if(typeof DIALOGE==='undefined' || typeof CATS==='undefined') return;
+  const sel=document.getElementById('dlgf-cat'); if(!sel||sel.options.length>1) return;
+  const usedCats=[...new Set(DIALOGE.map(d=>d.cat))];
+  usedCats.forEach(catId=>{
+    const c=CATS.find(x=>x.id===catId);
+    const o=document.createElement('option');
+    o.value=catId; o.textContent=c?(c.e+' '+c.de):catId;
+    sel.appendChild(o);
+  });
+}
+
+// ── РЕНДЕР КАРТКИ ─────────────────────────────────────────────
+function renderDialogueCard(){
+  if(D.queue.length===0) D.queue=buildDialogueQueue();
+  if(D.idx>=D.queue.length) D.idx=0;
+  const d=D.queue[D.idx]; if(!d) return;
+  const cat=CATS.find(c=>c.id===d.cat);
+  const al=getActiveDialogueLangs();
+  if(!D.flipped){ trackCardToday(d.id); window.mlog?.('dialogue_card_viewed',{cat:d.cat,mode:D.mode}); }
+  const qRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${d.q[l]||d.q.de}</div></div></div>`).join('');
+  const aRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${d.a[l]||d.a.de}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
+  const card=document.getElementById('dlg-flashcard'); if(!card) return;
+  card.classList.toggle('flipped', D.flipped);
+  const fav=isFavorite(d.id);
+  let srsBadgeHtml='';
+  if(D.mode==='srs'){
+    const sd=srsLoad(d.id);
+    if(!sd.dueDate){
+      srsBadgeHtml='<div class="fc-srs-badge fc-srs-new">'+t('card_new')+'</div>';
+    } else {
+      const sdays=srsDaysUntil(d.id);
+      const sef=(sd.ef||SRS_DEFAULT_EF).toFixed(1);
+      srsBadgeHtml = sdays===0
+        ? '<div class="fc-srs-badge fc-srs-due">📅 сьогодні · EF '+sef+'</div>'
+        : '<div class="fc-srs-badge">📅 +'+sdays+'д · EF '+sef+'</div>';
+    }
+  }
+  const srsHintText = D.mode==='srs' ? t('hint_srs') : t('hint_front');
+  document.getElementById('dlg-fc-front-inner').innerHTML=`
+    <div class="fc-header">
+      <button class="fc-fav ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-front">${fav?'★':'☆'}</button>
+      <span class="fc-cat">${cat?cat.e+' '+cat.de:d.cat}</span>
+    </div>
+    <div class="fc-body">${qRows}</div>
+    <div class="fc-hint">${srsHintText}</div>
+    ${srsBadgeHtml}`;
+  document.getElementById('dlg-fc-back-inner').innerHTML=`
+    <div class="fc-back-header">
+      <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-back">${fav?'★':'☆'}</button>
+      <span class="fc-flag" style="font-size:15px">🇩🇪</span>
+      <span class="fc-back-term">${d.q.de.length>40?d.q.de.slice(0,40)+'…':d.q.de}</span>
+      <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
+    </div>
+    <div class="fc-body" style="padding-top:12px">${aRows}</div>
+    <div class="fc-hint">${srsHintText}</div>`;
+  document.getElementById('dlgpbf').style.width=((D.idx/Math.max(1,D.queue.length))*100)+'%';
+  document.getElementById('dlgprgtxt').textContent=(D.idx+1)+' / '+D.queue.length;
+  // Reinit fav кнопок після кожного рендеру (окремий обробник — без перетину з Vocab)
+  setTimeout(()=>{
+    ['dlg-fc-fav-front','dlg-fc-fav-back'].forEach(id=>{
+      const btn=document.getElementById(id);
+      if(!btn||btn._favInited) return;
+      btn._favInited=true;
+      btn.addEventListener('touchstart', e=>{ e.stopPropagation(); }, {passive:true});
+      btn.addEventListener('touchend', e=>{
+        e.stopPropagation(); if(e.cancelable) e.preventDefault();
+        const fid=btn.dataset.favId; if(fid) toggleDialogueFavorite(fid);
+      }, {passive:false});
+      btn.addEventListener('click', e=>{
+        e.stopPropagation();
+        const fid=btn.dataset.favId; if(fid) toggleDialogueFavorite(fid);
+      });
+    });
+  }, 0);
+}
+
+// ── ЗАКЛАДКИ (★) ──────────────────────────────────────────────
+// Використовує той самий формат даних 'mova_'+id, що й isFavorite() у Vocab,
+// але оновлює лише власні кнопки Dialogue — без впливу на картки Словника.
+function toggleDialogueFavorite(id){
+  haptic.light();
+  const key='mova_'+id; let data={};
+  try{ data=JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){}
+  data.favorite=!data.favorite;
+  localStorage.setItem(key, JSON.stringify(data));
+  const fav=data.favorite;
+  ['dlg-fc-fav-front','dlg-fc-fav-back'].forEach(elId=>{
+    const btn=document.getElementById(elId);
+    if(btn){ btn.textContent=fav?'★':'☆'; btn.classList.toggle('active',fav); }
+  });
+  notify(fav?t('fav_added'):t('fav_removed'));
+  window.mlog?.('dialogue_favorite_changed',{action:fav?'add':'remove'});
+}
+
+// ── ПЕРЕГОРТАННЯ / SWIPE-НАВІГАЦІЯ ──────────────────────────────
+function flipDialogueCard(){
+  haptic.light(); D.flipped=!D.flipped;
+  document.getElementById('dlg-flashcard').classList.toggle('flipped', D.flipped);
+  if(D.flipped) window.mlog?.('dialogue_card_flipped');
+}
+function initDialogueSwipe(){
+  const area=document.getElementById('dlg-fc-area');
+  if(!area) return;
+  SwipeManager.init(area, {
+    onTap: ()=>{ unlockAudioCtx(); flipDialogueCard(); },
+    onLeft: ()=>{
+      if(!D.queue.length) return;
+      const wp=D.playing; haptic.medium(); stopDialogue();
+      swipeCard('left', ()=>{
+        D.idx++; if(D.idx>=D.queue.length){ D.queue=buildDialogueQueue(); D.idx=0; }
+        D.flipped=false; D.repeatCount=0; renderDialogueCard();
+        if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').textContent='⏸'; document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
+      }, 'dlg-fc-area');
+    },
+    onRight: ()=>{
+      if(!D.queue.length) return;
+      const wp=D.playing; haptic.medium(); stopDialogue();
+      swipeCard('right', ()=>{
+        D.idx=(D.idx-1+D.queue.length)%D.queue.length;
+        D.flipped=false; D.repeatCount=0; renderDialogueCard();
+        if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').textContent='⏸'; document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
+      }, 'dlg-fc-area');
+    },
+    onUp:   ()=>{ haptic.error();   dlgSrsSwipe(1); },
+    onDown: ()=>{ haptic.success(); dlgSrsSwipe(5); },
+  });
+}
+
+// ── SM-2 SWIPE HANDLER (↑ не знаю · ↓ знаю) ────────────────────
+function dlgSrsSwipe(q){
+  const d=D.queue[D.idx]; if(!d) return;
+  const result=srsRate(d.id, q);
+  const days=result.interval;
+  const emoji = q===1 ? '🔄' : q===3 ? '🤔' : '✅';
+  const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
+  const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
+  const _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
+  const _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+  const label = q===1 ? _rep : q===3 ? _in+days+_day : (days===1 ? _tmr : _in+days+_day);
+  showSrsHint(emoji, label, q, 'dlg-fc-area');
+
+  if(q===5){
+    playGen++; speechSynthesis.cancel();
+    if(currentAudio){ currentAudio.pause(); currentAudio=null; }
+    D.repeatCount=0; D.idx++;
+    const ticket=++cardGen;
+    setTimeout(()=>{ if(D.playing && !D.paused && cardGen===ticket) playDialogueNext(); }, 600);
+  }
+  // q===1 → аудіо дограє до кінця, playDialogueNext спрацює сам
+}
+
+// ── АУДІО-ПЛЕЄР ──────────────────────────────────────────────
+function toggleDialogue(){ unlockAudioCtx();
+  if(!D.playing){
+    if(!D.queue.length) D.queue=buildDialogueQueue();
+    D.playing=true; D.paused=false;
+    document.getElementById('dlgplaybtn').textContent='⏸';
+    document.getElementById('dlgplaybtn').classList.add('pause');
+    window.mlog?.('dialogue_autoplay_started',{mode:D.mode,queue_size:D.queue.length});
+    playDialogueNext();
+  } else if(!D.paused){
+    D.paused=true; speechSynthesis.cancel(); clearTimeout(D.timer);
+    document.getElementById('dlgplaybtn').textContent='▶';
+    document.getElementById('dlgplaybtn').classList.remove('pause');
+    window.mlog?.('dialogue_autoplay_paused');
+  } else {
+    D.paused=false;
+    document.getElementById('dlgplaybtn').textContent='⏸';
+    document.getElementById('dlgplaybtn').classList.add('pause');
+    window.mlog?.('dialogue_autoplay_resumed');
+    const d=D.queue[D.idx]; const al=getActiveDialogueLangs();
+    if(d && D.flipped){
+      speakDialogueA(d,al,0,()=>{
+        if(!D.playing||D.paused) return;
+        saveCardPlay(d.id); D.repeatCount++;
+        if(D.repeatCount<V.repeats){ D.timer=setTimeout(()=>{ if(D.playing&&!D.paused) playDialogueNext(); },V.readPause); }
+        else{ D.repeatCount=0; D.idx++; D.timer=setTimeout(()=>{ if(D.playing&&!D.paused) playDialogueNext(); },V.readPause); }
+      });
+    } else {
+      playDialogueNext();
+    }
+  }
+}
+function stopDialogue(){
+  D.playing=false; D.paused=false; D.repeatCount=0; clearTimeout(D.timer); cardGen++; stopTTS();
+  const btn=document.getElementById('dlgplaybtn'); if(btn){ btn.textContent='▶'; btn.classList.remove('pause'); }
+}
+function playDialogueNext(){
+  if(!D.playing||D.paused) return;
+  const ticket=++cardGen;
+  const guard=()=>D.playing && !D.paused && cardGen===ticket;
+
+  if(D.idx>=D.queue.length){ D.queue=buildDialogueQueue(); D.idx=0; D.repeatCount=0; }
+  if(D.repeatCount===0){ D.flipped=false; renderDialogueCard(); }
+  else{ D.flipped=false; document.getElementById('dlg-flashcard').classList.remove('flipped'); }
+  const d=D.queue[D.idx]; if(!d){ D.idx++; D.repeatCount=0; playDialogueNext(); return; }
+  const al=getActiveDialogueLangs();
+
+  speakDialogueQ(d,al,0,()=>{
+    if(!guard()||!D.playing||D.paused) return;
+    D.flipped=true; document.getElementById('dlg-flashcard').classList.add('flipped');
+    speakDialogueA(d,al,0,()=>{
+      if(!guard()) return;
+      saveCardPlay(d.id); D.repeatCount++;
+      if(D.repeatCount<V.repeats){
+        D.timer=setTimeout(()=>{ if(guard()) playDialogueNext(); }, V.readPause);
+      } else {
+        D.repeatCount=0; D.idx++;
+        D.timer=setTimeout(()=>{ if(guard()) playDialogueNext(); }, V.readPause);
+      }
+    });
+  });
+}
+function speakDialogueQ(d,langs,i,done){
+  if(!D.playing||D.paused){ return; }
+  if(i>=langs.length){ done&&done(); return; }
+  let _c=false;
+  speak(d.q[langs[i]]||d.q.de, langs[i],
+    ()=>{ if(_c)return; _c=true; setTimeout(()=>speakDialogueQ(d,langs,i+1,done), V.pause); },
+    d.id, 'q');
+}
+function speakDialogueA(d,langs,i,done){
+  if(!D.playing||D.paused){ return; }
+  if(i>=langs.length){ done&&done(); return; }
+  let _c=false;
+  speak(d.a[langs[i]]||d.a.de, langs[i],
+    ()=>{ if(_c)return; _c=true; setTimeout(()=>speakDialogueA(d,langs,i+1,done), V.pause); },
+    d.id, 'a');
+}
+
+// ── ВКЛАДКИ (🃏 картки / 📋 список) ─────────────────────────────
+function switchDialogueTab(tab){
+  document.querySelectorAll('#dialogue-tabs .vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
+  document.getElementById('dlg-panel-card').style.display   = tab===0?'flex':'none';
+  document.getElementById('dlg-panel-browse').style.display = tab===1?'block':'none';
+  if(tab===1) renderDialogueBrowse();
+}
+function renderDialogueBrowse(){
+  if(typeof DIALOGE==='undefined') return;
+  const cf=document.getElementById('dlgf-cat')?.value||'all';
+  const items=DIALOGE.filter(d=>cf==='all'||d.cat===cf);
+  const dl=getActiveDialogueLangs()[0]||'de';
+  document.getElementById('dlg-browse-grid').innerHTML=items.map(d=>{
+    const cat=CATS.find(c=>c.id===d.cat);
+    return `<div class="vocab-mini-card" onclick="openDialogueCard(${DIALOGE.indexOf(d)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:d.cat}</div><div class="vmc-term">${d.q[dl]||d.q.de}</div><div class="vmc-short">${d.a[dl]||d.a.de}</div></div>`;
+  }).join('');
+}
+function openDialogueCard(dlgIdx){
+  const card=DIALOGE[dlgIdx]; if(!card) return;
+  if(!D.queue.length) D.queue=buildDialogueQueue();
+  const qIdx=D.queue.findIndex(c=>c.id===card.id);
+  if(qIdx!==-1){ D.idx=qIdx; }
+  else{ D.queue.unshift(card); D.idx=0; }
+  D.flipped=false;
+  renderDialogueCard();
+  document.querySelectorAll('#dialogue-tabs .vtab').forEach((t,i)=>t.classList.toggle('active',i===0));
+  document.getElementById('dlg-panel-card').style.display='';
+  document.getElementById('dlg-panel-browse').style.display='none';
+}
+
+// ── ЧІПИ КАТЕГОРІЙ ───────────────────────────────────────────
+function initDialogueChips(){
+  const div=document.getElementById('dlgchips'); if(!div) return;
+  if(typeof DIALOGE==='undefined' || typeof CATS==='undefined') return;
+  const usedCats=[...new Set(DIALOGE.map(d=>d.cat))];
+  div.innerHTML='<button class="chip active" onclick="setDialogueCat(\'all\',this)">Alle</button>';
+  usedCats.forEach(catId=>{
+    const c=CATS.find(x=>x.id===catId);
+    const btn=document.createElement('button');
+    btn.className='chip';
+    btn.textContent=c?(c.e+' '+c.de):catId;
+    btn.onclick=()=>setDialogueCat(catId,btn);
+    div.appendChild(btn);
+  });
+}
+function setDialogueCat(id,btn){
+  haptic.light();
+  const sel=document.getElementById('dlgf-cat'); if(sel) sel.value=id;
+  document.querySelectorAll('#dlgchips .chip').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  window.mlog?.('dialogue_category_selected',{cat:id});
+  resetDialogueQ();
+  const browse=document.getElementById('dlg-panel-browse');
+  if(browse && browse.style.display!=='none') renderDialogueBrowse();
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{
