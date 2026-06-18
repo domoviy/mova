@@ -11134,5 +11134,8 @@
   "B2-Beruf/de/080/mbr/mbr_160_def_de_080": true,
   "B2-Beruf/en/100/mbr/mbr_160_def_en_100": true,
   "B2-Beruf/uk/100/mbr/mbr_160_def_uk_100": true,
-  "B2-Beruf/ru/100/mbr/mbr_160_def_ru_100": true
+  "B2-Beruf/ru/100/mbr/mbr_160_def_ru_100": true,
+  "B2-Beruf/en/100/mbr/mbr_161_term_en_100": true,
+  "B2-Beruf/ru/100/mbr/mbr_161_term_ru_100": true,
+  "B2-Beruf/en/100/mbr/mbr_161_short_en_100": true
 }
