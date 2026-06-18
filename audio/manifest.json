@@ -15232,5 +15232,8 @@
   "B2-Beruf/de/080/ges/ges_006_def_de_080": true,
   "B2-Beruf/uk/100/ges/ges_006_def_uk_100": true,
   "B2-Beruf/en/100/ges/ges_006_def_en_100": true,
-  "B2-Beruf/de/100/ges/ges_007_term_de_100": true
+  "B2-Beruf/de/100/ges/ges_007_term_de_100": true,
+  "B2-Beruf/de/080/ges/ges_007_term_de_080": true,
+  "B2-Beruf/uk/100/ges/ges_007_term_uk_100": true,
+  "B2-Beruf/en/100/ges/ges_007_term_en_100": true
 }
