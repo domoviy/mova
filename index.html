@@ -2179,7 +2179,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '149-cd06366';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2346,6 +2346,13 @@ const I18N = {
     quiz_again:'🔄 Nochmal',
     quiz_to_cards:'📖 Karten',
     quiz_score:'Ergebnis',
+    sr_days_prefix:'Noch ', sr_days_suffix:' Tage',
+    sr_no_date_plan:'Kein Datum',
+    sr_chip_days_suffix:' Tage',
+    sr_days_label_suffix:'Tage',
+    sr_no_date_dashboard:'Kein Termin gesetzt',
+    sr_mode_cruise:'Entspannt', sr_mode_active:'Aktiv', sr_mode_intensive:'Intensiv',
+    sr_mode_exam_sprint:'Prüfungssprint', sr_mode_last_week:'Letzte Woche', sr_mode_done:'Geschafft',
   },
   uk: {
     nav_vocab:'Словник', nav_favs:'Закладки', nav_settings:'Налаштування',
@@ -2413,6 +2420,13 @@ const I18N = {
     quiz_again:'🔄 Ще раз',
     quiz_to_cards:'📖 Картки',
     quiz_score:'Результат',
+    sr_days_prefix:'Ще ', sr_days_suffix:' днів',
+    sr_no_date_plan:'Дату не вказано',
+    sr_chip_days_suffix:' днів',
+    sr_days_label_suffix:'днів',
+    sr_no_date_dashboard:'Дату не вказано',
+    sr_mode_cruise:'Спокійний темп', sr_mode_active:'Активний', sr_mode_intensive:'Інтенсивний',
+    sr_mode_exam_sprint:'Фінальний спринт', sr_mode_last_week:'Останній тиждень', sr_mode_done:'Завершено',
   },
   en: {
     nav_vocab:'Vocabulary', nav_favs:'Favorites', nav_settings:'Settings',
@@ -2480,6 +2494,13 @@ const I18N = {
     quiz_again:'🔄 Again',
     quiz_to_cards:'📖 Cards',
     quiz_score:'Score',
+    sr_days_prefix:'', sr_days_suffix:' days left',
+    sr_no_date_plan:'No date set',
+    sr_chip_days_suffix:'d',
+    sr_days_label_suffix:'days',
+    sr_no_date_dashboard:'No date set',
+    sr_mode_cruise:'Cruise', sr_mode_active:'Active', sr_mode_intensive:'Intensive',
+    sr_mode_exam_sprint:'Exam Sprint', sr_mode_last_week:'Last Week', sr_mode_done:'Done',
   },
   ru: {
     nav_vocab:'Словарь', nav_favs:'Закладки', nav_settings:'Настройки',
@@ -2546,6 +2567,13 @@ const I18N = {
     quiz_again:'🔄 Ещё раз',
     quiz_to_cards:'📖 Карточки',
     quiz_score:'Результат',
+    sr_days_prefix:'Ещё ', sr_days_suffix:' дней',
+    sr_no_date_plan:'Дата не указана',
+    sr_chip_days_suffix:' дн',
+    sr_days_label_suffix:'дней',
+    sr_no_date_dashboard:'Дата не указана',
+    sr_mode_cruise:'Спокойный темп', sr_mode_active:'Активный', sr_mode_intensive:'Интенсивный',
+    sr_mode_exam_sprint:'Финальный спринт', sr_mode_last_week:'Последняя неделя', sr_mode_done:'Завершено',
   },
 };
 
@@ -2701,11 +2729,11 @@ const SR_PART_COLOR = {
   Hören:'#9b59b6', Sprechen:'#e67e22', General:'#78716c',
 };
 const SR_URGENCY_MODES = {
-  CRUISE:      {label:'Cruise',      emoji:'🟢', maxDays:Infinity, factor:1.0},
-  ACTIVE:      {label:'Active',      emoji:'🟡', maxDays:60,       factor:0.8},
-  INTENSIVE:   {label:'Intensive',   emoji:'🔥', maxDays:30,       factor:0.6},
-  EXAM_SPRINT: {label:'Exam Sprint', emoji:'🚨', maxDays:14,       factor:0.4},
-  LAST_WEEK:   {label:'Last Week',   emoji:'💥', maxDays:7,        factor:0.3},
+  CRUISE:      {id:'cruise',      label:'Cruise',      emoji:'🟢', maxDays:Infinity, factor:1.0},
+  ACTIVE:      {id:'active',      label:'Active',      emoji:'🟡', maxDays:60,       factor:0.8},
+  INTENSIVE:   {id:'intensive',   label:'Intensive',   emoji:'🔥', maxDays:30,       factor:0.6},
+  EXAM_SPRINT: {id:'exam_sprint', label:'Exam Sprint', emoji:'🚨', maxDays:14,       factor:0.4},
+  LAST_WEEK:   {id:'last_week',   label:'Last Week',   emoji:'💥', maxDays:7,        factor:0.3},
 };
 const SR_WEAKNESS_THRESHOLD = 0.60;
 const SR_WEAKNESS_MULTIPLIER = 2.0;
@@ -2733,11 +2761,11 @@ function srSm2(cs, rating){
 }
 
 function srGetUrgency(examDate){
-  if(!examDate) return {mode:'Cruise',emoji:'🟢',factor:1.0,daysLeft:null};
+  if(!examDate) return {...SR_URGENCY_MODES.CRUISE, daysLeft:null};
   const today = srStartOfDay(new Date());
   const exam  = srStartOfDay(new Date(examDate));
   const daysLeft = Math.ceil((exam-today)/86400000);
-  if(daysLeft<=0)  return {mode:'Done',      emoji:'🎓',factor:0.3, daysLeft:0};
+  if(daysLeft<=0)  return {id:'done', label:'Done', emoji:'🎓', factor:0.3, daysLeft:0};
   if(daysLeft<=7)  return {...SR_URGENCY_MODES.LAST_WEEK,   daysLeft};
   if(daysLeft<=14) return {...SR_URGENCY_MODES.EXAM_SPRINT, daysLeft};
   if(daysLeft<=30) return {...SR_URGENCY_MODES.INTENSIVE,   daysLeft};
@@ -2810,7 +2838,7 @@ function srBuildDailyPlan(allCards){
   const combined = [...due,...newCards].slice(0, maxCards);
 
   // Exam Sprint/Last Week — гарантуємо Sprachbausteine
-  if(['Exam Sprint','Last Week'].includes(urgency.mode)){
+  if(['exam_sprint','last_week'].includes(urgency.id)){
     const hasSB = combined.some(x=>(x.card.examPart||'General')==='Sprachbausteine');
     if(!hasSB){
       const sbCard = scored.find(x=>(x.card.examPart||'General')==='Sprachbausteine');
@@ -2952,8 +2980,8 @@ function srRenderDailyPlan(){
 
   const examDateVal = state.examDate || '';
   const daysLeftStr = um.daysLeft !== null
-    ? (({'de':'Noch ','uk':'Ще ','en':'','ru':'Ещё '}[uiLang]||'') + um.daysLeft + ({'de':' Tage','uk':' днів','en':' days left','ru':' дней'}[uiLang]||' Tage'))
-    : ({'de':'Kein Datum','uk':'Дату не вказано','en':'No date set','ru':'Дата не указана'}[uiLang]||'');
+    ? (t('sr_days_prefix') + um.daysLeft + t('sr_days_suffix'))
+    : t('sr_no_date_plan');
 
   // Breakdown rows
   const partOrder = ['Sprachbausteine','Lesen','Schreiben','Hören','Sprechen','General'];
@@ -3022,7 +3050,7 @@ function srUpdateHeaderChip(){
     return;
   }
   chip.style.display = 'flex';
-  chip.textContent = um.emoji + ' ' + um.daysLeft + ({'de':' Tage','uk':' днів','en':'d','ru':' дн'}[uiLang]||'d');
+  chip.textContent = um.emoji + ' ' + um.daysLeft + t('sr_chip_days_suffix');
 }
 
 // Onboarding для дати іспиту — показуємо після вибору мови якщо дата не встановлена
@@ -3174,8 +3202,8 @@ function srRenderDashboard(){
     const mode = srGetUrgency(_st.examDate);
     const mlbl = document.getElementById('sr-settings-mode-lbl');
     if(mlbl) mlbl.textContent = mode.daysLeft!==null
-      ? `${mode.emoji} ${mode.mode} · ${mode.daysLeft} ${ {'de':'Tage','uk':'днів','en':'days','ru':'дней'}[uiLang]||'days' }`
-      : {'de':'Kein Termin gesetzt','uk':'Дату не вказано','en':'No date set','ru':'Дата не указана'}[uiLang]||'';
+      ? `${mode.emoji} ${t('sr_mode_'+mode.id)} · ${mode.daysLeft} ${t('sr_days_label_suffix')}`
+      : t('sr_no_date_dashboard');
   }catch(e){}
   const rowsEl = document.getElementById('sr-dashboard-rows');
   const learnedEl = document.getElementById('sr-dash-learned-txt');
@@ -7505,7 +7533,7 @@ function speakVocabDefs(v,langs,i,done){
 }
 
 // ── LANG ──────────────────────────────────────────────────────
-function getActiveLangs(){return['en','uk','de','ru'].filter(l=>V.langs[l]);}
+function getActiveLangs(){return['de','en','uk','ru'].filter(l=>V.langs[l]);}
 function toggleVocabLang(l){
   V.langs[l]=!V.langs[l];
   if(!Object.values(V.langs).some(x=>x)){V.langs[l]=true;notify('Mindestens eine Sprache muss aktiv sein');return;}
@@ -7515,7 +7543,7 @@ function toggleVocabLang(l){
   // Не перезапускаємо поточну картку — зміна мови застосується з наступної
   // Просто оновлюємо UI без переривання аудіо
 }
-function applyVocabLangUI(){['en','uk','de','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
+function applyVocabLangUI(){['de','en','uk','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
 function cycleVocabMode(){
   const modes=['smart','seq','random','srs'];
   V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
@@ -7720,7 +7748,7 @@ let D = {
 
 // ── СТАН / НАЛАШТУВАННЯ ──────────────────────────────────────────
 function dlgSaveLangs(){ try{ localStorage.setItem('mova_dlg_langs', JSON.stringify(D.langs)); }catch(e){} }
-function getActiveDialogueLangs(){ return ['en','uk','de','ru'].filter(l=>D.langs[l]); }
+function getActiveDialogueLangs(){ return ['de','en','uk','ru'].filter(l=>D.langs[l]); }
 function toggleDialogueLang(l){
   D.langs[l]=!D.langs[l];
   if(!Object.values(D.langs).some(x=>x)){ D.langs[l]=true; notify('Mindestens eine Sprache muss aktiv sein'); return; }
@@ -7729,7 +7757,7 @@ function toggleDialogueLang(l){
   renderDialogueCard();
 }
 function applyDialogueLangUI(){
-  ['en','uk','de','ru'].forEach(l=>{
+  ['de','en','uk','ru'].forEach(l=>{
     const b=document.getElementById('dlglang-'+l);
     if(b){ b.classList.toggle('on',!!D.langs[l]); b.classList.toggle('off',!D.langs[l]); }
   });
@@ -8157,7 +8185,7 @@ function speakVocabDefs(v,langs,i,done){
 }
 
 // ── LANG ──────────────────────────────────────────────────────
-function getActiveLangs(){return['en','uk','de','ru'].filter(l=>V.langs[l]);}
+function getActiveLangs(){return['de','en','uk','ru'].filter(l=>V.langs[l]);}
 function toggleVocabLang(l){
   V.langs[l]=!V.langs[l];
   if(!Object.values(V.langs).some(x=>x)){V.langs[l]=true;notify('Mindestens eine Sprache muss aktiv sein');return;}
@@ -8167,7 +8195,7 @@ function toggleVocabLang(l){
   // Не перезапускаємо поточну картку — зміна мови застосується з наступної
   // Просто оновлюємо UI без переривання аудіо
 }
-function applyVocabLangUI(){['en','uk','de','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
+function applyVocabLangUI(){['de','en','uk','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
 function cycleVocabMode(){
   const modes=['smart','seq','random','srs'];
   V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
@@ -8445,7 +8473,7 @@ var SB = {
 };
 
 function sbSaveLangs() { try{ localStorage.setItem('mova_sb_langs', JSON.stringify(SB.langs)); }catch(e){} }
-function sbGetActiveLangs() { return ['en','uk','de','ru'].filter(function(l){ return SB.langs[l]; }); }
+function sbGetActiveLangs() { return ['de','en','uk','ru'].filter(function(l){ return SB.langs[l]; }); }
 
 // ── INIT ──────────────────────────────────────────────────────
 function initSB() {
@@ -8476,7 +8504,7 @@ function sbUpdateProgressBadge() {
 }
 
 function sbApplyLangUI() {
-  ['en','uk','de','ru'].forEach(function(l) {
+  ['de','en','uk','ru'].forEach(function(l) {
     var btn = document.getElementById('sblang-' + l);
     if (!btn) return;
     btn.classList.toggle('on',  SB.langs[l]);
@@ -8630,7 +8658,7 @@ function sbRenderLearn() {
   var card = SB.learnQueue[SB.learnIdx];
   if (!card) return;
 
-  var langs = sbGetActiveLangs();  // order: en, uk, de
+  var langs = sbGetActiveLangs();  // порядок: de → en → uk → ru
   var cat   = (typeof SB_CATS!=='undefined' ? SB_CATS : []).find(function(c){ return c.id===card.cat; });
   var catLabel = cat ? cat.e+' '+cat.de : card.cat;
 
@@ -8640,7 +8668,7 @@ function sbRenderLearn() {
 
   sbUpdateLearnProgress();
 
-  // ── FRONT: sentence per active lang, order en→uk→de ──
+  // ── FRONT: sentence per active lang, order de→en→uk→ru ──
   var frontEl = document.getElementById('sb-front-body');
   if (frontEl) {
     var langLabels = { en:'🇬🇧 English', uk:'🇺🇦 Українська', de:'🇩🇪 Deutsch', ru:'🇷🇺 Русский' };
