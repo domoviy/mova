@@ -12901,5 +12901,8 @@
   "B2-Beruf/uk/100/tel/tel_047_term_uk_100": true,
   "B2-Beruf/en/100/tel/tel_047_term_en_100": true,
   "B2-Beruf/de/100/tel/tel_047_def_de_100": true,
-  "B2-Beruf/de/080/tel/tel_047_def_de_080": true
+  "B2-Beruf/de/080/tel/tel_047_def_de_080": true,
+  "B2-Beruf/uk/100/tel/tel_047_def_uk_100": true,
+  "B2-Beruf/en/100/tel/tel_047_def_en_100": true,
+  "B2-Beruf/de/100/tel/tel_048_term_de_100": true
 }
