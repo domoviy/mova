@@ -4492,5 +4492,8 @@
   "B2-Beruf/en/100/mbr/mbr_131_term_en_100": true,
   "B2-Beruf/de/100/mbr/mbr_131_def_de_100": true,
   "B2-Beruf/de/080/mbr/mbr_131_def_de_080": true,
-  "B2-Beruf/uk/100/mbr/mbr_131_def_uk_100": true
+  "B2-Beruf/uk/100/mbr/mbr_131_def_uk_100": true,
+  "B2-Beruf/en/100/mbr/mbr_131_def_en_100": true,
+  "B2-Beruf/de/100/mbr/mbr_132_term_de_100": true,
+  "B2-Beruf/de/080/mbr/mbr_132_term_de_080": true
 }
