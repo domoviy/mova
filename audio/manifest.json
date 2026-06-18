@@ -4603,5 +4603,8 @@
   "B2-Beruf/uk/100/mbr/mbr_146_term_uk_100": true,
   "B2-Beruf/en/100/mbr/mbr_146_term_en_100": true,
   "B2-Beruf/de/100/mbr/mbr_146_def_de_100": true,
-  "B2-Beruf/de/080/mbr/mbr_146_def_de_080": true
+  "B2-Beruf/de/080/mbr/mbr_146_def_de_080": true,
+  "B2-Beruf/uk/100/mbr/mbr_146_def_uk_100": true,
+  "B2-Beruf/en/100/mbr/mbr_146_def_en_100": true,
+  "B2-Beruf/de/100/mbr/mbr_147_term_de_100": true
 }
