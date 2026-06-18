@@ -2139,6 +2139,10 @@ body.lesson-active .vocab-top{
       <div class="srow-label"><label>🎤 Speech Log</label><small>Лог розпізнавання мови</small></div>
       <button class="btn btn-s" onclick="showSpeechLog()">📋 Log</button>
     </div>
+    <div class="srow">
+      <div class="srow-label"><label>🔊 Аудіо-кеш</label><small>Видалити всі завантажені аудіофайли</small></div>
+      <button class="btn btn-s" onclick="clearAudioCache()">🗑 Очистити кеш аудіо</button>
+    </div>
     </div>
 
     <!-- Версія додатку -->
@@ -2175,7 +2179,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '148-7c8d32a';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6308,6 +6312,40 @@ async function fetchBlobUrl(url, timeoutMs=8000){
     logErr('audio:err', e.name+' '+e.message, fname);
     return null;
   }
+}
+
+// ── ОЧИЩЕННЯ КЕШУ АУДІО (Налаштування → Налагодження) ──────────
+// Чистимо як інпам'ятні Maps (blob URL-и, статус 404, буфери),
+// так і персистентний Cache Storage сервіс-воркера — але видаляємо
+// ТІЛЬКИ записи з шляхом /audio/, не чіпаючи кеш самого app-shell.
+async function clearAudioCache(){
+  if(!confirm('Очистити весь кеш аудіофайлів? Доведеться завантажити їх знову.')) return;
+  // 1. Звільняємо blob URL-и, щоб уникнути memory leak, і чистимо in-memory кеші
+  audioBlobCache.forEach(blobUrl=>{ try{ URL.revokeObjectURL(blobUrl); }catch(e){} });
+  audioBlobCache.clear();
+  audioBufferCache.clear();
+  audioExistsCache.clear();
+
+  // 2. Чистимо персистентний Cache Storage (якщо є service worker)
+  let deleted = 0;
+  try{
+    if('caches' in window){
+      const cacheNames = await caches.keys();
+      for(const name of cacheNames){
+        const cache = await caches.open(name);
+        const requests = await cache.keys();
+        for(const req of requests){
+          if(req.url.includes('/audio/')){
+            await cache.delete(req);
+            deleted++;
+          }
+        }
+      }
+    }
+  }catch(e){ logErr('cache:clear', e.message, ''); }
+
+  notify('🗑 Кеш аудіо очищено'+(deleted?' ('+deleted+' файлів)':''));
+  window.mlog?.('audio_cache_cleared', {deleted_entries: deleted});
 }
 
 
