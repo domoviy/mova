@@ -5434,5 +5434,8 @@
   "B2-Beruf/de/100/zar/zar_035_term_de_100": true,
   "B2-Beruf/de/080/zar/zar_035_term_de_080": true,
   "B2-Beruf/en/100/zar/zar_035_term_en_100": true,
-  "B2-Beruf/uk/100/zar/zar_035_term_uk_100": true
+  "B2-Beruf/uk/100/zar/zar_035_term_uk_100": true,
+  "B2-Beruf/ru/100/zar/zar_035_term_ru_100": true,
+  "B2-Beruf/de/100/zar/zar_035_short_de_100": true,
+  "B2-Beruf/de/080/zar/zar_035_short_de_080": true
 }
