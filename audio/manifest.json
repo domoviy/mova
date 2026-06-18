@@ -13174,5 +13174,8 @@
   "B2-Beruf/en/100/mes/mes_028_term_en_100": true,
   "B2-Beruf/de/100/mes/mes_028_def_de_100": true,
   "B2-Beruf/de/080/mes/mes_028_def_de_080": true,
-  "B2-Beruf/uk/100/mes/mes_028_def_uk_100": true
+  "B2-Beruf/uk/100/mes/mes_028_def_uk_100": true,
+  "B2-Beruf/en/100/mes/mes_028_def_en_100": true,
+  "B2-Beruf/de/100/mes/mes_029_term_de_100": true,
+  "B2-Beruf/de/080/mes/mes_029_term_de_080": true
 }
