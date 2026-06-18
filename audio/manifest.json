@@ -20107,5 +20107,8 @@
   "B2-Beruf/uk/100/gfw/gfw_001_term_uk_100": true,
   "B2-Beruf/en/100/gfw/gfw_001_term_en_100": true,
   "B2-Beruf/de/100/gfw/gfw_001_def_de_100": true,
-  "B2-Beruf/de/080/gfw/gfw_001_def_de_080": true
+  "B2-Beruf/de/080/gfw/gfw_001_def_de_080": true,
+  "B2-Beruf/uk/100/gfw/gfw_001_def_uk_100": true,
+  "B2-Beruf/en/100/gfw/gfw_001_def_en_100": true,
+  "B2-Beruf/de/100/gfw/gfw_002_term_de_100": true
 }
