@@ -1446,11 +1446,6 @@ body.lesson-active .vocab-top{
   backface-visibility:hidden; -webkit-backface-visibility:hidden;
 }
 
-/* Прибираємо дублюючі правила що були окремо для SB */
-#view-sb.active { display:flex; flex-direction:column; overflow:hidden; }
-#view-sb .vocab-top { flex-shrink:0; padding:10px 14px 0; }
-#sb-panel-learn { flex:1; min-height:0; display:flex; flex-direction:column; padding:0 14px; }
-#sb-panel-learn .fc-area { height:unset; flex:none; margin-bottom:var(--gap); }
 </style>
 <!-- Real viewport height fix для iOS PWA (полоска знизу) -->
 <script>
@@ -2179,7 +2174,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '155-c5f872a';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4545,10 +4540,18 @@ function _runLessonFlow(lesson, allCards){
   const hasTiles  = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
   const hasSB     = lessonSBCards.length > 0;
   const hasDefFill = flowCards.some(c => c.def?.de && c.def.de.includes('<b>'));
+
+  // Вибираємо 1 картку Dialogue для уроку — через SM-2 пріоритет
+  const allDlg = typeof DIALOGE !== 'undefined' ? DIALOGE : [];
+  const dlgCard = allDlg.length > 0
+    ? [...allDlg].sort((a,b) => srsPriority(b.id) - srsPriority(a.id))[0]
+    : null;
+
   const steps = ['cards'];
   if(hasDefFill) steps.push('def');
   steps.push('matching');
   if(hasSB) steps.push('sb_learn');
+  if(dlgCard) steps.push('dlg_learn');
   if(hasTiles) steps.push('tiles');
   if(hasSB) steps.push('sb_prac');
   steps.push('result');
@@ -4560,6 +4563,7 @@ function _runLessonFlow(lesson, allCards){
     allCards,
     sbCards:   lessonSBCards,
     sbIdx:     0,
+    dlgCard,
     steps,
     step:      0,
     results:   {},
@@ -6433,6 +6437,7 @@ const LF_STEP_ICONS = {
   tiles:    '🧩',
   quiz:     '❓',
   sb_learn: '📖',
+  dlg_learn:'💬',
   sb_prac:  '🎯',
   result:   '🏁',
 };
@@ -6445,6 +6450,7 @@ const LF_STEP_LABELS = {
   tiles:    {de:'Sätze',          uk:'Речення',            en:'Sentences'},
   quiz:     {de:'Quiz',           uk:'Квіз',               en:'Quiz'},
   sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція',  en:'Language Pattern'},
+  dlg_learn:{de:'Dialogue',       uk:'Dialogue',           en:'Dialogue'},
   sb_prac:  {de:'SB Übung',       uk:'Вправа',             en:'SB Practice'},
   result:   {de:'Ergebnis',       uk:'Результат',          en:'Result'},
 };
@@ -6588,6 +6594,8 @@ function lfGoStep(stepIdx){
     const vp = document.querySelector('#view-vocab .vplayer');
     if(vp) vp.style.display='';
     lfStartSBLearn();
+  } else if(step === 'dlg_learn'){
+    lfStartDlgLearn();
   } else if(step === 'sb_prac'){
     lfStartSBPrac();
   } else if(step === 'result'){
@@ -6701,6 +6709,10 @@ var _lfSB = {
 
 function lfStartSBLearn(){
   if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
+
+  // Синхронізуємо мови SB з поточними мовами Словника
+  // (могли змінитися з моменту останнього відкриття вкладки SB)
+  sbSyncLangsFromVocab();
 
   const vocabTop = document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display = 'none';
@@ -6868,6 +6880,110 @@ function _lfSBLearnDone(){
   if(btn) btn.remove();
   // Відновлюємо swipe у вільному режимі
   setTimeout(sbInitLearnSwipe, 50);
+  showView('vocab');
+  lfRenderBar();
+  lfNextStep();
+}
+
+// ── DIALOGUE step in lesson flow ─────────────────────────────────
+// 1 картка Dialogue: фронт (питання) → тап → бек (відповідь) → кнопка «Далі»
+// Аудіо: автовідтворення питання, потім відповіді — через speak() як у SB.
+// SM-2: srsRate(id, 5) — Dialogue-картка зарахована після перегляду.
+
+var _lfDlg = { flipped: false, played: false };
+
+function lfStartDlgLearn(){
+  if(!LF || !LF.dlgCard){ lfNextStep(); return; }
+
+  // Переходимо на view-dialogue, але ховаємо всі UI-елементи керування
+  showView('dialogue');
+  lfRenderBar();
+
+  var dlgTop = document.querySelector('#view-dialogue .vocab-top');
+  if(dlgTop) dlgTop.style.display = 'none';
+
+  _lfDlg = { flipped: false, played: false };
+
+  // Рендеримо картку вручну — мінімальний HTML, без SRS-badge і без режим-чіпів
+  D.queue   = [LF.dlgCard];
+  D.idx     = 0;
+  D.flipped = false;
+  renderDialogueCard();
+
+  // SwipeManager: тільки тап (перегорнути), всі свайпи заблоковані
+  setTimeout(function(){
+    var area = document.getElementById('dlg-fc-area');
+    if(!area) return;
+    SwipeManager.init(area, {
+      onTap:   function(){ lfDlgLearnFlipCard(); },
+      onLeft:  function(){},
+      onRight: function(){},
+      onUp:    function(){},
+      onDown:  function(){},
+    });
+  }, 50);
+
+  // Автовідтворення питання
+  lfDlgLearnPlayFront(function(){
+    if(!LF) return;
+    if(!_lfDlg.flipped){
+      _lfDlg.flipped = true;
+      D.flipped = true;
+      document.getElementById('dlg-flashcard').classList.add('flipped');
+    }
+    // Показуємо «Далі» якщо ще не показана (захист `if(old) return` всередині)
+    lfDlgLearnShowNext();
+  });
+}
+
+function lfDlgLearnFlipCard(){
+  _lfDlg.flipped = !_lfDlg.flipped;
+  D.flipped = _lfDlg.flipped;
+  document.getElementById('dlg-flashcard').classList.toggle('flipped', _lfDlg.flipped);
+  // Показуємо «Далі» одразу після перегортання — незалежно від стану аудіо
+  // (аудіо-колбек теж викличе lfDlgLearnShowNext, але з захистом `if(old) return`)
+  if(_lfDlg.flipped) lfDlgLearnShowNext();
+}
+
+function lfDlgLearnPlayFront(onDone){
+  if(!LF || !LF.dlgCard) return;
+  var card = LF.dlgCard;
+  var langs = getActiveDialogueLangs();
+  var gen = ++playGen;
+  var i = 0;
+  function next(){
+    if(playGen !== gen) return; // скасовано
+    if(i >= langs.length){ onDone && onDone(); return; }
+    var l = langs[i++];
+    speak(card.q[l] || card.q.de, l, function(){ setTimeout(next, V.pause); }, card.id, 'q');
+  }
+  next();
+}
+
+function lfDlgLearnShowNext(){
+  var old = document.getElementById('lf-sb-next-btn');
+  if(old) return; // вже показана
+  _lfInjectSBNextBtn(function(){
+    playGen++; speechSynthesis.cancel();
+    if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+    // Зараховуємо SM-2 (q=5 — переглянута)
+    if(LF && LF.dlgCard) srsRate(LF.dlgCard.id, 5);
+    _lfDlgLearnDone();
+  }, typeof t === 'function' ? t('btn_sb_weiter') : 'Далі →');
+}
+
+function _lfDlgLearnDone(){
+  playGen++;
+  speechSynthesis.cancel();
+  // Знімаємо кнопку Далі
+  var btn = document.getElementById('lf-sb-next-btn');
+  if(btn) btn.remove();
+  // Відновлюємо Dialogue-UI для вільного режиму
+  var dlgTop = document.querySelector('#view-dialogue .vocab-top');
+  if(dlgTop) dlgTop.style.display = '';
+  // Відновлюємо swipe для Dialogue у вільному режимі
+  setTimeout(initDialogueSwipe, 50);
+  // Повертаємось у vocab (tiles/sb_prac/result чекають там)
   showView('vocab');
   lfRenderBar();
   lfNextStep();
