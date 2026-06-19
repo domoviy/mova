@@ -70,6 +70,10 @@ if(location.protocol === 'https:'){
   --lm-chips:calc(40px + var(--gap));   /* vchips */
   --lm-tabs: calc(38px + var(--gap));   /* vocab-tabs */
   --lm-nav:  var(--nav-h);              /* bottom-nav */
+
+  /* ── Розмір шрифтів (керується слайдером у Налаштуваннях) ──── */
+  --fs-card: 20px;   /* fc-term, fc-def, tiles, match-btn, mc-opt, sb-front-sentence… */
+  --fs-short: 18px;  /* fc-short — підпис під терміном на фронті */
 }
 
 /* ══ BASE ══ */
@@ -352,8 +356,8 @@ body{
 .fc-body{padding:14px 16px 0;display:flex;flex-direction:column;gap:7px;flex:1;overflow:hidden}
 .fc-lang-row{display:flex;align-items:baseline;gap:9px;margin-bottom:5px}
 .fc-flag{font-size:20px;flex-shrink:0}
-.fc-term{font-size:19px;font-weight:700;color:#fff;line-height:1.25}
-.fc-short{font-size:14px;color:rgba(255,255,255,.42);margin-top:1px}
+.fc-term{font-size:var(--fs-card);font-weight:700;color:#fff;line-height:1.25}
+.fc-short{font-size:var(--fs-short);color:rgba(255,255,255,.42);margin-top:1px}
 
 /* ══ MATCHING GAME ══ */
 #vocab-panel-match{
@@ -388,7 +392,7 @@ body{
   background:var(--card);
   color:var(--ink);
   font-family:'Inter',sans-serif;
-  font-size:16px;
+  font-size:var(--fs-card);
   font-weight:500;
   line-height:1.3;
   cursor:pointer;
@@ -652,7 +656,7 @@ body{
 .mc-q-label{font-size:14px;color:rgba(255,255,255,.4);
   letter-spacing:.5px;margin-bottom:5px;}
 .mc-q-row{display:flex;align-items:center;gap:8px;justify-content:center;}
-.mc-q-term{font-size:17px;font-weight:700;color:var(--gold);
+.mc-q-term{font-size:var(--fs-card);font-weight:700;color:var(--gold);
   font-family:'Inter',sans-serif;line-height:1.45;}
 .mc-q-audio{background:none;border:none;
   color:rgba(255,255,255,.55);font-size:18px;cursor:pointer;
@@ -664,7 +668,7 @@ body{
   padding:11px 14px;border-radius:12px;
   border:1.5px solid var(--border);
   background:var(--card);color:var(--ink);
-  font-size:14px;font-weight:500;
+  font-size:var(--fs-card);font-weight:500;
   text-align:left;cursor:pointer;font-family:inherit;
   transition:border-color .15s,background .15s;
   -webkit-tap-highlight-color:transparent;
@@ -809,7 +813,7 @@ body{
   cursor:pointer;
   color:var(--gold-lt);
   font-weight:700;
-  font-size:15px;
+  font-size:var(--fs-card);
   font-family:'Inter',sans-serif;
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
@@ -864,7 +868,7 @@ body{
 }
 .tiles-q-label{font-size:14px;color:rgba(255,255,255,.45);
   letter-spacing:.5px;margin-bottom:6px;}
-.tiles-q-text{font-size:15px;color:#fff;line-height:1.5;font-family:'Inter',sans-serif;}
+.tiles-q-text{font-size:var(--fs-card);color:#fff;line-height:1.5;font-family:'Inter',sans-serif;}
 .tiles-q-text.mc-q-term{color:var(--gold-lt);font-weight:600;}
 .tiles-answer{
   flex:0 0 auto;min-height:64px;max-height:35vh;border-radius:14px;
@@ -881,7 +885,7 @@ body{
   padding:9px 16px;border-radius:8px;
   border:1.5px solid var(--gold);
   background:rgba(201,168,76,.1);color:var(--gold);
-  font-size:15px;font-weight:600;
+  font-size:var(--fs-card);font-weight:600;
   cursor:pointer;font-family:inherit;
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
@@ -948,7 +952,7 @@ body{
   left:14px;right:14px;
   padding:16px;border-radius:16px;border:none;
   background:linear-gradient(135deg,var(--gold),#b8873a);
-  color:var(--forest);font-size:16px;font-weight:700;
+  color:var(--forest);font-size:var(--fs-card);font-weight:700;
   font-family:inherit;cursor:pointer;
   box-shadow:0 4px 16px rgba(201,168,76,.4);
   -webkit-tap-highlight-color:transparent;
@@ -971,10 +975,10 @@ body{
 }
 .tiles-result-icon{font-size:44px;line-height:1;}
 .tiles-result-label{font-size:14px;font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
-.tiles-result-correct{font-size:16px;font-weight:700;color:var(--ink);text-align:center;line-height:1.4;}
+.tiles-result-correct{font-size:var(--fs-card);font-weight:700;color:var(--ink);text-align:center;line-height:1.4;}
 .tiles-result-btn{
   width:100%;max-width:320px;padding:15px;border-radius:14px;border:none;
-  font-size:16px;font-weight:700;font-family:inherit;cursor:pointer;
+  font-size:var(--fs-card);font-weight:700;font-family:inherit;cursor:pointer;
   -webkit-tap-highlight-color:transparent;
   transition:opacity .15s;
 }
@@ -1091,10 +1095,10 @@ body{
   padding:13px 16px 10px;display:flex;align-items:center;
   gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--soft);
 }
-.fc-back-term{font-size:15px;font-weight:700;color:var(--ink);flex:1;min-width:0;word-break:break-word}
+.fc-back-term{font-size:var(--fs-card);font-weight:700;color:var(--ink);flex:1;min-width:0;word-break:break-word}
 .fc-def-block{margin-bottom:9px}
 .fc-def-lang-label{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:2px}
-.fc-def{font-size:14px;line-height:1.6;color:var(--warm)}
+.fc-def{font-size:var(--fs-card);line-height:1.6;color:var(--warm)}
 
 @keyframes slideOutLeft {from{transform:translateX(0);opacity:1}to{transform:translateX(-110%);opacity:0}}
 @keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(110%);opacity:0}}
@@ -1342,7 +1346,7 @@ body.lesson-active .vocab-top{
 .sb-front-lang { margin-bottom:8px; }
 .sb-front-lang:last-child { margin-bottom:0; }
 .sb-front-lang-label { font-size:14px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:3px; }
-.sb-front-sentence { font-size:16px; font-weight:600; color:#fff; line-height:1.5; }
+.sb-front-sentence { font-size:var(--fs-card); font-weight:600; color:#fff; line-height:1.5; }
 .sb-front-sentence b { color:var(--gold-lt); font-weight:800; }
 .sb-front-divider { height:1px; background:rgba(255,255,255,.08); margin:8px 0; }
 
@@ -2123,6 +2127,23 @@ body.lesson-active .vocab-top{
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reset">Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
     </div>
 
+    <!-- 7b. Розмір шрифтів -->
+    <div class="ssec">
+    <h3>🔤 <span data-i18n="sec_fontsize">Schriftgröße</span></h3>
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="srow-label" style="margin:0"><label data-i18n="lbl_fontsize_card">Kartengröße</label><small data-i18n="lbl_fontsize_card_sub">Begriff, Definition, Sätze, Kacheln</small></div>
+        <span id="fs-card-val" style="font-weight:700;font-size:15px;color:var(--gold);min-width:36px;text-align:right">20px</span>
+      </div>
+      <input type="range" id="fs-card-slider" min="14" max="28" step="1" value="20"
+        style="width:100%;accent-color:var(--gold)"
+        oninput="applyFontSize(+this.value)" onchange="saveFontSize()">
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px">
+        <span>14px</span><span>21px</span><span>28px</span>
+      </div>
+    </div>
+    </div>
+
     <!-- 8. Налагодження -->
     <div class="ssec">
     <h3>🛠 <span data-i18n="sec_debug">Debug</span></h3>
@@ -2174,7 +2195,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '156-84b250f';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2340,6 +2361,9 @@ const I18N = {
     quiz_result_try:'Noch üben — du schaffst das!',
     quiz_again:'🔄 Nochmal',
     quiz_to_cards:'📖 Karten',
+    sec_fontsize:'Schriftgröße',
+    lbl_fontsize_card:'Kartengröße',
+    lbl_fontsize_card_sub:'Begriff, Definition, Sätze, Kacheln',
     quiz_score:'Ergebnis',
     sr_days_prefix:'Noch ', sr_days_suffix:' Tage',
     sr_no_date_plan:'Kein Datum',
@@ -2414,8 +2438,10 @@ const I18N = {
     quiz_result_try:'Варто повторити — ти впораєшся!',
     quiz_again:'🔄 Ще раз',
     quiz_to_cards:'📖 Картки',
-    quiz_score:'Результат',
-    sr_days_prefix:'Ще ', sr_days_suffix:' днів',
+    sec_fontsize:'Розмір шрифту',
+    lbl_fontsize_card:'Розмір карток',
+    lbl_fontsize_card_sub:'Термін, визначення, речення, плитки',
+    quiz_score:'Результат', sr_days_suffix:' днів',
     sr_no_date_plan:'Дату не вказано',
     sr_chip_days_suffix:' днів',
     sr_days_label_suffix:'днів',
@@ -2489,6 +2515,9 @@ const I18N = {
     quiz_again:'🔄 Again',
     quiz_to_cards:'📖 Cards',
     quiz_score:'Score',
+    sec_fontsize:'Font Size',
+    lbl_fontsize_card:'Card size',
+    lbl_fontsize_card_sub:'Term, definition, sentences, tiles',
     sr_days_prefix:'', sr_days_suffix:' days left',
     sr_no_date_plan:'No date set',
     sr_chip_days_suffix:'d',
@@ -2562,6 +2591,9 @@ const I18N = {
     quiz_again:'🔄 Ещё раз',
     quiz_to_cards:'📖 Карточки',
     quiz_score:'Результат',
+    sec_fontsize:'Размер шрифта',
+    lbl_fontsize_card:'Размер карточек',
+    lbl_fontsize_card_sub:'Термин, определение, предложения, плитки',
     sr_days_prefix:'Ещё ', sr_days_suffix:' дней',
     sr_no_date_plan:'Дата не указана',
     sr_chip_days_suffix:' дн',
@@ -2700,6 +2732,44 @@ function syncSpeedButtons(){
       b.classList.toggle('active',b.dataset.val===val);
     });
   });
+}
+
+// ── РОЗМІР ШРИФТІВ ────────────────────────────────────────────
+const FS_DEFAULT = 20;
+const FS_MIN = 14;
+const FS_MAX = 28;
+
+function applyFontSize(px){
+  px = Math.max(FS_MIN, Math.min(FS_MAX, px));
+  document.documentElement.style.setProperty('--fs-card', px+'px');
+  // fc-short = завжди на 2px менше за fs-card (але не менше 12px)
+  const fsShort = Math.max(12, px - 2);
+  document.documentElement.style.setProperty('--fs-short', fsShort+'px');
+  // Оновлюємо UI слайдера (якщо відкриті Налаштування)
+  const slider = document.getElementById('fs-card-slider');
+  if(slider) slider.value = px;
+  const lbl = document.getElementById('fs-card-val');
+  if(lbl) lbl.textContent = px+'px';
+}
+
+function saveFontSize(){
+  const px = parseInt(document.documentElement.style.getPropertyValue('--fs-card')) || FS_DEFAULT;
+  try{ localStorage.setItem('mova_fs_card', px); }catch(e){}
+}
+
+function loadFontSize(){
+  try{
+    const saved = parseInt(localStorage.getItem('mova_fs_card'));
+    applyFontSize(isNaN(saved) ? FS_DEFAULT : saved);
+  }catch(e){ applyFontSize(FS_DEFAULT); }
+}
+
+function syncFontSizeSlider(){
+  const px = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--fs-card')) || FS_DEFAULT;
+  const slider = document.getElementById('fs-card-slider');
+  if(slider) slider.value = px;
+  const lbl = document.getElementById('fs-card-val');
+  if(lbl) lbl.textContent = px+'px';
 }
 
 function saveSettings(){
@@ -3349,6 +3419,7 @@ async function init(){
   const dsb=document.getElementById('dlgshuffle-btn');
   if(dsb){dsb.classList.remove('smart','shuffle');const dcfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[D.mode]||{icon:'🧠',cls:'smart'};dsb.textContent=dcfg.icon;if(dcfg.cls)dsb.classList.add(dcfg.cls);}
   initVoiceSelects();
+  loadFontSize();
   initVocab();
   initVocabChips();
   initDialogue();
@@ -3690,6 +3761,7 @@ function showView(id){
   if(id==='vocab'){initVocab();initVocabChips();}
   if(id==='dialogue'){initDialogue();initDialogueChips();}
   if(id==='favs')renderFavGrid();
+  if(id==='settings')syncFontSizeSlider();
   if(id==='settings'){initVoiceSelects();renderStreakUI();syncSpeedButtons();try{srRenderDashboard();}catch(e){}}
   if(id==='lernpfad'){renderLernpfad();}
   // Якщо переходимо не в урок — прибираємо артефакти lesson-result і lf-sb-next-btn
