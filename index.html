@@ -1100,6 +1100,20 @@ body{
 .fc-def-lang-label{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:2px}
 .fc-def{font-size:var(--fs-card);line-height:1.6;color:var(--warm)}
 
+/* ── Граматична підказка <g>…</g> — виділення у всіх видах карток ── */
+.fc-front g, .fc-back g,
+.sb-front-sentence g, .sb-back-sentence g,
+.mc-q-term g, .mc-opt g,
+.tiles-q-text g, .tiles-result-correct g,
+.def-slot g, .match-btn g {
+  display:inline;
+  color:#7ecfff;               /* холодний блакитний — контрастний на темному і світлому */
+  font-style:italic;
+  font-weight:600;
+  letter-spacing:.01em;
+  border-bottom:1.5px dashed rgba(126,207,255,.45);
+}
+
 @keyframes slideOutLeft {from{transform:translateX(0);opacity:1}to{transform:translateX(-110%);opacity:0}}
 @keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(110%);opacity:0}}
 @keyframes slideInLeft {from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
@@ -2159,6 +2173,10 @@ body.lesson-active .vocab-top{
       <div class="srow-label"><label>🔊 Аудіо-кеш</label><small>Видалити всі завантажені аудіофайли</small></div>
       <button class="btn btn-s" onclick="clearAudioCache()">🗑 Очистити кеш аудіо</button>
     </div>
+    <div class="srow">
+      <div class="srow-label"><label>🔄 Оновити додаток</label><small>Скинути Service Worker і перезавантажити. Виправляє помилку «усі картки в уроці»</small></div>
+      <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
+    </div>
     </div>
 
     <!-- Версія додатку -->
@@ -2195,7 +2213,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '158-c1c5301';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3809,17 +3827,10 @@ function initVocabFilters(){
 }
 function buildVocabQueue(){
   if(typeof VOCAB === 'undefined' || !VOCAB?.length) return [];
-  // Якщо активний урок — використовуємо його картки
-  if(V.lessonId && V.lessonCards?.length){
-    let arr=[...V.lessonCards];
-    if(V.mode==='random') arr=arr.sort(()=>Math.random()-.5);
-    else if(V.mode==='srs'){
-      const due=arr.filter(v=>srsDue(v.id)).sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
-      const notDue=arr.filter(v=>!srsDue(v.id));
-      arr=[...due,...notDue];
-    }
-    return arr;
-  }
+  // Примітка: в режимі уроку (V.lessonId set) черга НЕ будується тут —
+  // її формує _runLessonFlow і захищає resetVocabQ-guard.
+  // Стара гілка (V.lessonId && V.lessonCards) видалена: вона повертала
+  // всі картки уроку без обмеження 5-ти і ламала lesson flow.
   const cf=document.getElementById('vf-cat')?.value||'all';
   let arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
   if(V.mode==='random'){
@@ -3944,7 +3955,13 @@ function vocabNext(){
   });
   window.mlog?.('card_nav',{direction:'next'});
 }
-function resetVocabQ(){const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);}
+function resetVocabQ(){
+  // В режимі уроку чергу не перебудовуємо — нею керує LF/lfGoStep.
+  // Це захищає від випадкового скидання при кліку на чіп категорії
+  // або перемиканні режиму (🧠) під час відтворення уроку.
+  if(V.lessonId && typeof LF !== 'undefined' && LF) return;
+  const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);
+}
 
 // ── SWIPE ─────────────────────────────────────────────────────
 function initSwipe(){
@@ -6422,6 +6439,26 @@ async function fetchBlobUrl(url, timeoutMs=8000){
 // Чистимо як інпам'ятні Maps (blob URL-и, статус 404, буфери),
 // так і персистентний Cache Storage сервіс-воркера — але видаляємо
 // ТІЛЬКИ записи з шляхом /audio/, не чіпаючи кеш самого app-shell.
+// ── СКИДАННЯ SERVICE WORKER (Налаштування → Налагодження) ──────
+// Видаляє застарілий SW-кеш і перезавантажує додаток.
+// Виправляє ситуацію, коли SW роздає старий JS з функцією startLesson
+// (без ліміту 5 карток) замість актуальної startLessonFlow.
+async function resetServiceWorker(){
+  if(!confirm('Скинути Service Worker і перезавантажити додаток?\nЦе виправить помилку "всі картки в уроці".')) return;
+  try{
+    if('serviceWorker' in navigator){
+      const regs = await navigator.serviceWorker.getRegistrations();
+      for(const reg of regs) await reg.unregister();
+    }
+    if('caches' in window){
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k=>caches.delete(k)));
+    }
+  }catch(e){ logErr('sw:reset', e.message); }
+  notify('♻️ SW скинуто — перезавантаження...');
+  setTimeout(()=>location.reload(true), 800);
+}
+
 async function clearAudioCache(){
   if(!confirm('Очистити весь кеш аудіофайлів? Доведеться завантажити їх знову.')) return;
   // 1. Звільняємо blob URL-и, щоб уникнути memory leak, і чистимо in-memory кеші
