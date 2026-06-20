@@ -288,6 +288,7 @@ body{
   user-select:none;
   flex:1; min-height:80px;
   margin-bottom:0;
+  position:relative;
 }
 /* Vokabeln only: fc-area fills remaining flex space inside #vocab-panel-card.
    .vprogrow-flow (flow element, see below) takes its own natural height
@@ -2199,7 +2200,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '169-f611473';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9087,10 +9088,15 @@ function sbLearnSwipeHard() {
   var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
   // Smart Review: записуємо оцінку "не знаю" (це і визначає пріоритет
   // картки далі — sbSmPriority читає саме цей централізований стейт)
-  try{ srRecordAnswer(card.id, 1, 'Sprachbausteine'); }catch(e){}
+  var days = 1;
+  try{ days = srRecordAnswer(card.id, 1, 'Sprachbausteine'); }catch(e){}
   if(typeof haptic!=='undefined') haptic.error();
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(192,57,43,.08)'; setTimeout(function(){ area.style.background=''; },300); }
+  if(typeof showSrsHint==='function'){
+    var _rep={'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow','ru':'Повторим завтра'}[uiLang]||'Morgen wiederholen';
+    showSrsHint('🔄', _rep, 1, 'sb-fc-area');
+  }
   SB.learnQueue.splice(SB.learnIdx,1);
   SB.learnQueue.splice(Math.min(SB.learnIdx+3,SB.learnQueue.length),0,card);
   if(SB.learnIdx>=SB.learnQueue.length) SB.learnIdx=0;
@@ -9103,10 +9109,18 @@ function sbLearnSwipeEasy() {
   sbMarkLearned(card.id);
   // Smart Review: записуємо оцінку "знаю" (визначає пріоритет далі —
   // sbSmPriority читає саме цей централізований стейт)
-  try{ srRecordAnswer(card.id, 5, 'Sprachbausteine'); }catch(e){}
+  var days = 1;
+  try{ days = srRecordAnswer(card.id, 5, 'Sprachbausteine'); }catch(e){}
   if(typeof haptic!=='undefined') haptic.success();
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(46,204,113,.08)'; setTimeout(function(){ area.style.background=''; },300); }
+  if(typeof showSrsHint==='function'){
+    var _tmr={'de':'Morgen','uk':'Завтра','en':'Tomorrow','ru':'Завтра'}[uiLang]||'Morgen';
+    var _in ={'de':'In ','uk':'Через ','en':'In ','ru':'Через '}[uiLang]||'In ';
+    var _day={'de':' Tg.','uk':' дн.','en':' d.','ru':' дн.'}[uiLang]||' Tg.';
+    var label = days===1 ? _tmr : _in+days+_day;
+    showSrsHint('✅', label, 5, 'sb-fc-area');
+  }
   // Переходимо на наступну картку — інакше UI виглядає так, ніби свайп
   // нічого не зробив (попри те, що оцінка вже записана)
   SB.learnQueue.splice(SB.learnIdx,1);
