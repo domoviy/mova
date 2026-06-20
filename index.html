@@ -8943,26 +8943,31 @@ function sbCycleSort() {
 function sbApplySortMode() {
   if(!SB.learnQueue.length) return;
   if(SB.sortMode === 'smart'){
-    // SM-2 priority: new cards first (no interval), then overdue, then by due date
+    // SM-2 priority: читаємо з централізованого Smart Review стейту
+    // (той самий, куди srRecordAnswer пише після кожного свайпу),
+    // а не з локального sbGetIntervals — щоб пріоритет коректно
+    // оновлювався при кожній оцінці, а не "застрягав" після першого разу.
     SB.learnQueue.sort(function(a, b){
-      var da = sbGetIntervals()[a.id] || 0;
-      var db = sbGetIntervals()[b.id] || 0;
-      // Use same srsPriority logic: no interval = new = highest priority
-      var sa = sbSmPriority(a.id);
-      var sb2 = sbSmPriority(b.id);
-      return sb2 - sa; // descending: highest priority first
+      return sbSmPriority(b.id) - sbSmPriority(a.id); // descending: highest priority first
     });
   }
   // seq: keep natural SPRACHBAUSTEINE order (already built by sbBuildLearnQueue)
 }
 
 function sbSmPriority(id) {
-  // Mirror srsPriority but uses SB intervals from mova_sb_progress
-  var iv = sbGetIntervals();
-  var interval = iv[id] || 0;
-  if(!interval) return 999; // new card — highest priority
-  // Cards with small intervals (reviewed recently and struggled) come first
-  return -interval; // lower interval = higher priority number
+  // Читаємо з централізованого Smart Review стейту (srLoadState),
+  // куди srRecordAnswer записує після кожного свайпу вгору/вниз.
+  const state = (typeof srLoadState === 'function') ? srLoadState() : null;
+  const cs = state?.cards?.[id];
+  if(!cs || !cs.nextReview) return 999; // нова картка — найвищий пріоритет
+  const today = (typeof srToISO === 'function') ? srToISO(new Date()) : new Date().toISOString().slice(0,10);
+  if(cs.nextReview <= today){
+    // Прострочена картка — пріоритет за тим, наскільки давно мала повторитись
+    const overdueDays = (new Date(today) - new Date(cs.nextReview)) / 86400000;
+    return 500 + overdueDays;
+  }
+  // Ще не настав час повторення — нижчий пріоритет, тим нижчий, чим довший інтервал
+  return -(cs.interval || 1);
 }
 
 // ── LEARN ─────────────────────────────────────────────────────
@@ -9080,8 +9085,8 @@ function sbLearnPrev() {
 
 function sbLearnSwipeHard() {
   var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
-  var iv=sbGetIntervals(); sbSetInterval(card.id,Math.max(1,Math.floor((iv[card.id]||2)/2)));
-  // Smart Review: записуємо оцінку "не знаю"
+  // Smart Review: записуємо оцінку "не знаю" (це і визначає пріоритет
+  // картки далі — sbSmPriority читає саме цей централізований стейт)
   try{ srRecordAnswer(card.id, 1, 'Sprachbausteine'); }catch(e){}
   if(typeof haptic!=='undefined') haptic.error();
   var area=document.getElementById('sb-fc-area');
@@ -9095,14 +9100,21 @@ function sbLearnSwipeHard() {
 
 function sbLearnSwipeEasy() {
   var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
-  var iv=sbGetIntervals(); sbSetInterval(card.id,(iv[card.id]||1)*2);
   sbMarkLearned(card.id);
-  // Smart Review: записуємо оцінку "знаю"
+  // Smart Review: записуємо оцінку "знаю" (визначає пріоритет далі —
+  // sbSmPriority читає саме цей централізований стейт)
   try{ srRecordAnswer(card.id, 5, 'Sprachbausteine'); }catch(e){}
   if(typeof haptic!=='undefined') haptic.success();
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(46,204,113,.08)'; setTimeout(function(){ area.style.background=''; },300); }
-  SB.learnIdx=SB.learnIdx%SB.learnQueue.length;
+  // Переходимо на наступну картку — інакше UI виглядає так, ніби свайп
+  // нічого не зробив (попри те, що оцінка вже записана)
+  SB.learnQueue.splice(SB.learnIdx,1);
+  if(SB.learnQueue.length){
+    SB.learnIdx=SB.learnIdx%SB.learnQueue.length;
+  } else {
+    SB.learnIdx=0;
+  }
   SB.learnFlipped=false; sbRenderLearn();
   if(SB.playing) sbAutoPlay();
 }
@@ -9287,8 +9299,8 @@ function sbStartPractice() {
   if(typeof SPRACHBAUSTEINE==='undefined') return;
   var pool=SB.catFilter==='all'?SPRACHBAUSTEINE.slice():SPRACHBAUSTEINE.filter(function(c){ return c.cat===SB.catFilter; });
   if(pool.length<2){ var el=document.getElementById('sb-prac-sentence'); if(el) el.textContent='Keine Karten.'; return; }
-  var iv=sbGetIntervals();
-  SB.pracQueue=pool.slice().sort(function(a,b){ return (iv[a.id]||0)-(iv[b.id]||0); })
+  // Найслабші картки (найвищий sbSmPriority) — пріоритет з централізованого SM-2 стейту
+  SB.pracQueue=pool.slice().sort(function(a,b){ return sbSmPriority(b.id)-sbSmPriority(a.id); })
     .slice(0,Math.min(SB_PRAC_COUNT,pool.length)).sort(function(){ return Math.random()-.5; });
   SB.pracIdx=0; SB.pracAnswered=false; SB.pracResults=[];
   document.getElementById('sb-prac-result').style.display='none';
@@ -9385,6 +9397,10 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   var iv=sbGetIntervals(),cur=iv[card.id]||1;
   if(ok){ sbSetInterval(card.id,cur*2); sbMarkLearned(card.id); }
   else { sbSetInterval(card.id,Math.max(1,Math.floor(cur/2))); if(!LF) SB.pracQueue.splice(Math.min(SB.pracIdx+3,SB.pracQueue.length),0,card); }
+  // Smart Review: записуємо результат у централізований стейт теж —
+  // інакше Practice-результати не впливають на пріоритет картки
+  // у Learn-режимі (sbSmPriority читає лише srLoadState).
+  try{ srRecordAnswer(card.id, ok ? 5 : 1, 'Sprachbausteine'); }catch(e){}
   SB.pracResults[SB.pracIdx]=ok;
 
   // Explanation always in UI language; result label in UI language
