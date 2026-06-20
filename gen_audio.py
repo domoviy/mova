@@ -159,6 +159,8 @@ def git_commit_and_push(count):
         if status.returncode != 0:
             msg = f"🎙 TTS Audio Update: +{count} files [skip ci]"
             subprocess.run(["git", "commit", "-m", msg], check=True)
+            # Підтягуємо свіжі зміни перед відправкою, щоб уникнути конфліктів [rejected]
+            subprocess.run(["git", "pull", "--rebase"], check=True)
             subprocess.run(["git", "push"], check=True)
             print(f"--- [Git Bot] Збережено пачку з {count} файлів ---", flush=True)
     except Exception as e:
