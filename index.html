@@ -1740,9 +1740,9 @@ body.lesson-active .vocab-top{
           <button class="vstop" onclick="stopVocab()">⏹</button>
           <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()">🧠</button>
           <div class="vlang-grp">
+            <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn on"  id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
             <button class="vlang-btn on"  id="vlcard-uk" onclick="toggleVocabLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn off" id="vlcard-ru" onclick="toggleVocabLang('ru')">🇷🇺 RU</button>
           </div>
           <select id="vf-cat" onchange="resetVocabQ()" style="display:none"><option value="all">Alle</option></select>
@@ -1909,9 +1909,9 @@ body.lesson-active .vocab-top{
           <button class="vstop" onclick="sbStopPlay()">⏹</button>
           <button class="vseq smart" id="sb-vshuffle-btn" onclick="sbCycleSort()" title="Sortiermodus">🧠</button>
           <div class="vlang-grp">
+            <button class="vlang-btn on"  id="sblang-de" onclick="sbToggleLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn on"  id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
             <button class="vlang-btn on"  id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn on"  id="sblang-de" onclick="sbToggleLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn off" id="sblang-ru" onclick="sbToggleLang('ru')">🇷🇺 RU</button>
           </div>
         </div>
@@ -2009,9 +2009,9 @@ body.lesson-active .vocab-top{
           <button class="vstop" onclick="stopDialogue()">⏹</button>
           <button class="vseq smart" id="dlgshuffle-btn" onclick="cycleDialogueMode()">🧠</button>
           <div class="vlang-grp">
+            <button class="vlang-btn on"  id="dlglang-de" onclick="toggleDialogueLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn on"  id="dlglang-en" onclick="toggleDialogueLang('en')">🇬🇧 EN</button>
             <button class="vlang-btn on"  id="dlglang-uk" onclick="toggleDialogueLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn on"  id="dlglang-de" onclick="toggleDialogueLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn off" id="dlglang-ru" onclick="toggleDialogueLang('ru')">🇷🇺 RU</button>
           </div>
           <select id="dlgf-cat" onchange="resetDialogueQ()" style="display:none"><option value="all">Alle</option></select>
@@ -2213,7 +2213,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '161-0f4c11f';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2626,6 +2626,29 @@ const I18N = {
 let uiLang = localStorage.getItem('mova_ui_lang') || 'de'; // дефолт 'de' для існуючих юзерів; нові побачать onboarding
 function t(key){ return (I18N[uiLang]||I18N.de)[key] || key; }
 
+// Основна мова контенту курсу (мова, яку вчить користувач), напр. "de" для B2-Beruf.
+// Визначається в файлі курсу (B2-Beruf.js); 'de' — фолбек для курсів, де поле відсутнє.
+function primaryLang(){ return (typeof PRIMARY_LANG !== 'undefined' && PRIMARY_LANG) || 'de'; }
+
+// Мови, кнопки яких мають бути видимі в плеєрах: мова інтерфейсу + основна мова курсу.
+// Якщо вони збігаються — повертається лише одна мова.
+function visibleLangs(){
+  const set = new Set([uiLang, primaryLang()]);
+  return ['de','en','uk','ru'].filter(l=>set.has(l));
+}
+
+// Примусово вимикає в V/D/SB.langs усі мови, що не входять у visibleLangs(),
+// щоб TTS і завантаження аудіо ніколи не зверталися до прихованих мов.
+function syncLangsToVisible(){
+  const vis = visibleLangs();
+  [V?.langs, (typeof D!=='undefined'?D.langs:null), (typeof SB!=='undefined'?SB.langs:null)].forEach(langs=>{
+    if(!langs) return;
+    ['de','en','uk','ru'].forEach(l=>{ if(!vis.includes(l)) langs[l]=false; });
+    // Гарантуємо що хоч одна мова активна (основна мова курсу)
+    if(!Object.values(langs).some(Boolean)) langs[primaryLang()]=true;
+  });
+}
+
 // Мова перекладу для активностей (рідна мова користувача)
 // de → показуємо short.de (монолінгвально)
 // uk → показуємо term.uk
@@ -2635,12 +2658,16 @@ function nativeText(card){
   if(uiLang === 'de') return card.short?.de || card.term?.de || '';
   return card.term?.[uiLang] || card.term?.de || '';
 }
-function targetText(card){ return card.term?.de || ''; }
+function targetText(card){ return card.term?.[primaryLang()] || card.term?.de || ''; }
 
 function setUiLang(lang){
   uiLang = lang;
   localStorage.setItem('mova_ui_lang', lang);
+  syncLangsToVisible();
   applyI18n();
+  applyVocabLangUI();
+  applyDialogueLangUI();
+  if(typeof sbApplyLangUI === 'function') sbApplyLangUI();
 }
 
 function applyI18n(){
@@ -3424,6 +3451,9 @@ async function init(){
     console.warn('init: course load failed, trying B2-Beruf:', e);
     try{ await loadCourseScript('B2-Beruf'); }catch(e2){ console.error(e2); }
   }
+  // PRIMARY_LANG тепер відома (з файлу курсу) — синхронізуємо видимі мови
+  // у плеєрах ще до першого рендеру UI
+  syncLangsToVisible();
 
   await loadVoices();
   // Синхронізуємо слайдери із збереженими значеннями
@@ -7778,7 +7808,7 @@ function toggleVocabLang(l){
   // Не перезапускаємо поточну картку — зміна мови застосується з наступної
   // Просто оновлюємо UI без переривання аудіо
 }
-function applyVocabLangUI(){['de','en','uk','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
+function applyVocabLangUI(){const vis=visibleLangs();['de','en','uk','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.style.display=vis.includes(l)?'':'none';b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
 function cycleVocabMode(){
   const modes=['smart','seq','random','srs'];
   V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
@@ -7992,9 +8022,10 @@ function toggleDialogueLang(l){
   renderDialogueCard();
 }
 function applyDialogueLangUI(){
+  const vis=visibleLangs();
   ['de','en','uk','ru'].forEach(l=>{
     const b=document.getElementById('dlglang-'+l);
-    if(b){ b.classList.toggle('on',!!D.langs[l]); b.classList.toggle('off',!D.langs[l]); }
+    if(b){ b.style.display=vis.includes(l)?'':'none'; b.classList.toggle('on',!!D.langs[l]); b.classList.toggle('off',!D.langs[l]); }
   });
 }
 function cycleDialogueMode(){
@@ -8438,7 +8469,7 @@ function toggleVocabLang(l){
   // Не перезапускаємо поточну картку — зміна мови застосується з наступної
   // Просто оновлюємо UI без переривання аудіо
 }
-function applyVocabLangUI(){['de','en','uk','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
+function applyVocabLangUI(){const vis=visibleLangs();['de','en','uk','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.style.display=vis.includes(l)?'':'none';b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
 function cycleVocabMode(){
   const modes=['smart','seq','random','srs'];
   V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
@@ -8747,9 +8778,11 @@ function sbUpdateProgressBadge() {
 }
 
 function sbApplyLangUI() {
+  var vis = visibleLangs();
   ['de','en','uk','ru'].forEach(function(l) {
     var btn = document.getElementById('sblang-' + l);
     if (!btn) return;
+    btn.style.display = vis.includes(l) ? '' : 'none';
     btn.classList.toggle('on',  SB.langs[l]);
     btn.classList.toggle('off', !SB.langs[l]);
   });
@@ -8774,7 +8807,7 @@ function sbToggleLang(l) {
 function sbSyncLangsFromVocab() {
   // Sync SB.langs from V.langs when opening SB view
   if (typeof V !== 'undefined' && V.langs) {
-    ['de','uk','en','ru'].forEach(function(l) {
+    ['de','en','uk','ru'].forEach(function(l) {
       SB.langs[l] = V.langs[l] !== undefined ? V.langs[l] : SB.langs[l];
     });
     sbSaveLangs();
