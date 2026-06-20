@@ -2213,7 +2213,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '159-94bcc09';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3861,8 +3861,8 @@ function renderVocabCard(){
   const cat=CATS.find(c=>c.id===v.cat);
   const al=getActiveLangs();
   if(!V.flipped){trackCardToday(v.id);window.mlog?.('card_viewed',{cat:v.cat,mode:V.mode});}
-  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${v.term[l]||v.term.de}</div><div class="fc-short">${v.short[l]||v.short.de}</div></div></div>`).join('');
-  const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${v.def[l]||v.def.de}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
+  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${v.term?.[l]||v.term?.de||''}</div><div class="fc-short">${v.short?.[l]||v.short?.de||''}</div></div></div>`).join('');
+  const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${v.def?.[l]||v.def?.de||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('flashcard');if(!card)return;
   card.classList.toggle('flipped',V.flipped);
   const fav=isFavorite(v.id);
@@ -3893,7 +3893,7 @@ function renderVocabCard(){
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${fav?'★':'☆'}</button>
       <span class="fc-flag" style="font-size:15px">🇩🇪</span>
-      <span class="fc-back-term">${v.term.de}</span>
+      <span class="fc-back-term">${v.term?.de||''}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
     </div>
     <div class="fc-body" style="padding-top:12px">${defRows}</div>
@@ -4401,7 +4401,7 @@ function matchMakeBtn(cardId, side, text){
     if(side === 'term'){
       const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===cardId);
       if(card && !btn.classList.contains('matched')){
-        speak(card.term.de, 'de', null, card.id, 'term');
+        if(card.term?.de) speak(card.term.de, 'de', null, card.id, 'term');
       }
     }
   }, {passive:false});
@@ -4616,7 +4616,11 @@ function _runLessonFlow(lesson, allCards){
   stopVocab();
 
   // SM-2: вибираємо до 5 найслабших карток
-  const sorted    = [...allCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
+  // Фільтруємо картки без обов'язкових полів (term/short) — захист від
+  // TypeError у renderVocabCard, якщо в базі трапиться неповна картка
+  const validCards = allCards.filter(c=>c.term?.de && c.short?.de);
+  if(!validCards.length){ notify('⚠️ Keine gültigen Karten'); return; }
+  const sorted    = [...validCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
   const flowCards = sorted.slice(0, Math.min(5, sorted.length));
 
   // SB картки
@@ -5109,7 +5113,7 @@ function mcShowCard(){
   });
 
   // Автоматично відтворюємо DE аудіо при появі нового питання
-  setTimeout(()=>{ speak(card.term.de, 'de', null, card.id, 'term'); }, 150);
+  setTimeout(()=>{ if(card.term?.de) speak(card.term.de, 'de', null, card.id, 'term'); }, 150);
 
   // Prefetch аудіо наступної картки у фоні
   const nextCard = mcState.cards[mcState.idx + 1];
@@ -5152,7 +5156,7 @@ function mcAnswer(btn, chosen, correct, card){
 function mcPlayAudio(){
   const card = mcState.currentCard;
   if(!card) return;
-  speak(card.term.de, 'de', null, card.id, 'term');
+  if(card.term?.de) speak(card.term.de, 'de', null, card.id, 'term');
 }
 
 function mcShowResult(){
@@ -7064,7 +7068,9 @@ function lfDlgLearnPlayFront(onDone){
     if(playGen !== gen) return; // скасовано
     if(i >= langs.length){ onDone && onDone(); return; }
     var l = langs[i++];
-    speak(card.q[l] || card.q.de, l, function(){ setTimeout(next, V.pause); }, card.id, 'q');
+    var text = card.q?.[l] || card.q?.de;
+    if(!text){ next(); return; }
+    speak(text, l, function(){ setTimeout(next, V.pause); }, card.id, 'q');
   }
   next();
 }
@@ -7726,8 +7732,10 @@ function playVocabNext(){
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
+  const text=v.term?.[langs[i]]||v.term?.de;
+  if(!text){speakVocabTerms(v,langs,i+1,done);return;}
   let _c=false;
-  speak(v.term[langs[i]]||v.term.de, langs[i],
+  speak(text, langs[i],
     ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause); },
     v.id,'term');
 }
@@ -7751,8 +7759,10 @@ function speakVocabShortLang(v,langs,i,done){
 function speakVocabDefs(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
+  const text=v.def?.[langs[i]]||v.def?.de;
+  if(!text){speakVocabDefs(v,langs,i+1,done);return;}
   let _c=false;
-  speak(v.def[langs[i]]||v.def.de, langs[i],
+  speak(text, langs[i],
     ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause); },
     v.id,'def');
 }
@@ -7816,7 +7826,7 @@ function renderFavGrid(){
   const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
   if(favs.length===0){grid.innerHTML='';if(empty)empty.style.display='';return;}
   if(empty)empty.style.display='none';
-  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term[dl]||v.term.de}</div><div class="vmc-short">${v.short[dl]||v.short.de}</div></div>`;}).join('');
+  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.de||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.de||''}</div></div>`;}).join('');
 }
 function openFavCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -7924,7 +7934,7 @@ function switchVocabTab(tab){
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
   const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||'de';
-  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term[dl]||v.term.de}</div><div class="vmc-short">${v.short[dl]||v.short.de}</div></div>`;}).join('');
+  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.de||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.de||''}</div></div>`;}).join('');
 }
 function openVocabCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -8059,8 +8069,8 @@ function renderDialogueCard(){
   const cat=CATS.find(c=>c.id===d.cat);
   const al=getActiveDialogueLangs();
   if(!D.flipped){ trackCardToday(d.id); window.mlog?.('dialogue_card_viewed',{cat:d.cat,mode:D.mode}); }
-  const qRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${d.q[l]||d.q.de}</div></div></div>`).join('');
-  const aRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${d.a[l]||d.a.de}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
+  const qRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${d.q?.[l]||d.q?.de||''}</div></div></div>`).join('');
+  const aRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${d.a?.[l]||d.a?.de||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('dlg-flashcard'); if(!card) return;
   card.classList.toggle('flipped', D.flipped);
   const fav=isFavorite(d.id);
@@ -8090,7 +8100,7 @@ function renderDialogueCard(){
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-back">${fav?'★':'☆'}</button>
       <span class="fc-flag" style="font-size:15px">🇩🇪</span>
-      <span class="fc-back-term">${d.q.de.length>40?d.q.de.slice(0,40)+'…':d.q.de}</span>
+      <span class="fc-back-term">${(d.q?.de||'').length>40?(d.q?.de||'').slice(0,40)+'…':(d.q?.de||'')}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
     </div>
     <div class="fc-body" style="padding-top:12px">${aRows}</div>
@@ -8256,16 +8266,20 @@ function playDialogueNext(){
 function speakDialogueQ(d,langs,i,done){
   if(!D.playing||D.paused){ return; }
   if(i>=langs.length){ done&&done(); return; }
+  const text=d.q?.[langs[i]]||d.q?.de;
+  if(!text){ speakDialogueQ(d,langs,i+1,done); return; }
   let _c=false;
-  speak(d.q[langs[i]]||d.q.de, langs[i],
+  speak(text, langs[i],
     ()=>{ if(_c)return; _c=true; setTimeout(()=>speakDialogueQ(d,langs,i+1,done), V.pause); },
     d.id, 'q');
 }
 function speakDialogueA(d,langs,i,done){
   if(!D.playing||D.paused){ return; }
   if(i>=langs.length){ done&&done(); return; }
+  const text=d.a?.[langs[i]]||d.a?.de;
+  if(!text){ speakDialogueA(d,langs,i+1,done); return; }
   let _c=false;
-  speak(d.a[langs[i]]||d.a.de, langs[i],
+  speak(text, langs[i],
     ()=>{ if(_c)return; _c=true; setTimeout(()=>speakDialogueA(d,langs,i+1,done), V.pause); },
     d.id, 'a');
 }
@@ -8284,7 +8298,7 @@ function renderDialogueBrowse(){
   const dl=getActiveDialogueLangs()[0]||'de';
   document.getElementById('dlg-browse-grid').innerHTML=items.map(d=>{
     const cat=CATS.find(c=>c.id===d.cat);
-    return `<div class="vocab-mini-card" onclick="openDialogueCard(${DIALOGE.indexOf(d)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:d.cat}</div><div class="vmc-term">${d.q[dl]||d.q.de}</div><div class="vmc-short">${d.a[dl]||d.a.de}</div></div>`;
+    return `<div class="vocab-mini-card" onclick="openDialogueCard(${DIALOGE.indexOf(d)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:d.cat}</div><div class="vmc-term">${d.q?.[dl]||d.q?.de||''}</div><div class="vmc-short">${d.a?.[dl]||d.a?.de||''}</div></div>`;
   }).join('');
 }
 function openDialogueCard(dlgIdx){
@@ -8378,8 +8392,10 @@ function toggleVocab(){ unlockAudioCtx();
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
+  const text=v.term?.[langs[i]]||v.term?.de;
+  if(!text){speakVocabTerms(v,langs,i+1,done);return;}
   let _c=false;
-  speak(v.term[langs[i]]||v.term.de, langs[i],
+  speak(text, langs[i],
     ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause); },
     v.id,'term');
 }
@@ -8403,8 +8419,10 @@ function speakVocabShortLang(v,langs,i,done){
 function speakVocabDefs(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
+  const text=v.def?.[langs[i]]||v.def?.de;
+  if(!text){speakVocabDefs(v,langs,i+1,done);return;}
   let _c=false;
-  speak(v.def[langs[i]]||v.def.de, langs[i],
+  speak(text, langs[i],
     ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause); },
     v.id,'def');
 }
@@ -8468,7 +8486,7 @@ function renderFavGrid(){
   const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
   if(favs.length===0){grid.innerHTML='';if(empty)empty.style.display='';return;}
   if(empty)empty.style.display='none';
-  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term[dl]||v.term.de}</div><div class="vmc-short">${v.short[dl]||v.short.de}</div></div>`;}).join('');
+  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.de||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.de||''}</div></div>`;}).join('');
 }
 function openFavCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -8576,7 +8594,7 @@ function switchVocabTab(tab){
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
   const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||'de';
-  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term[dl]||v.term.de}</div><div class="vmc-short">${v.short[dl]||v.short.de}</div></div>`;}).join('');
+  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.de||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.de||''}</div></div>`;}).join('');
 }
 function openVocabCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
