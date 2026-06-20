@@ -72,8 +72,8 @@ if(location.protocol === 'https:'){
   --lm-nav:  var(--nav-h);              /* bottom-nav */
 
   /* ── Розмір шрифтів (керується слайдером у Налаштуваннях) ──── */
-  --fs-card: 20px;   /* fc-term, fc-def, tiles, match-btn, mc-opt, sb-front-sentence… */
-  --fs-short: 18px;  /* fc-short — підпис під терміном на фронті */
+  --fs-card: 18px;   /* fc-term, fc-def, tiles, match-btn, mc-opt, sb-front-sentence… */
+  --fs-short: 16px;  /* fc-short — підпис під терміном на фронті */
 }
 
 /* ══ BASE ══ */
@@ -1920,7 +1920,7 @@ body.lesson-active .vocab-top{
                 <div class="fc-cat" id="sb-fc-cat"></div>
               </div>
               <div class="fc-body" id="sb-front-body"></div>
-              <div class="fc-hint" id="sb-front-hint">↕ перевернути · ← → навігація</div>
+              <div class="fc-hint" id="sb-front-hint"></div>
             </div>
             <div class="fc-face fc-back">
               <div class="fc-back-header">
@@ -1928,7 +1928,7 @@ body.lesson-active .vocab-top{
                 <div class="fc-back-term" id="sb-back-answer"></div>
               </div>
               <div class="fc-body" id="sb-back-body" style="overflow-y:auto"></div>
-              <div class="fc-hint-back">↑ Важко · ↓ Легко · ← → навігація</div>
+              <div class="fc-hint-back" id="sb-back-hint"></div>
             </div>
           </div>
         </div>
@@ -2061,7 +2061,24 @@ body.lesson-active .vocab-top{
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
     </div>
 
-    <!-- 4. Мова інтерфейсу -->
+    <!-- 4. Розмір шрифту -->
+    <div class="ssec" id="ssec-fontsize">
+    <h3>🔤 <span data-i18n="sec_fontsize">Schriftgröße</span></h3>
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:10px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="srow-label" style="margin:0"><label data-i18n="lbl_fontsize_card">Kartengröße</label><small data-i18n="lbl_fontsize_card_sub">Begriff, Definition, Sätze, Kacheln</small></div>
+        <span id="fs-card-val" style="font-weight:700;font-size:15px;color:var(--gold);min-width:36px;text-align:right">18px</span>
+      </div>
+      <input type="range" id="fs-card-slider" min="14" max="28" step="1" value="18"
+        style="width:100%;accent-color:var(--gold)"
+        oninput="applyFontSize(+this.value)" onchange="saveFontSize()">
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px">
+        <span>14px</span><span>21px</span><span>28px</span>
+      </div>
+    </div>
+    </div>
+
+    <!-- 5. Мова інтерфейсу -->
     <div class="ssec" id="ssec-lang">
     <h3>🌐 <span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
     <div style="display:flex;gap:8px;padding:4px 0;flex-direction:column">
@@ -2072,7 +2089,7 @@ body.lesson-active .vocab-top{
     </div>
     </div>
 
-    <!-- 5. Налаштування озвучування -->
+    <!-- 6. Налаштування озвучування -->
     <div class="ssec">
     <h3>🔊 <span data-i18n="sec_playback">Wiedergabe</span></h3>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
@@ -2109,7 +2126,7 @@ body.lesson-active .vocab-top{
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_trate">Sprechrate</label><small data-i18n="sub_trate">Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
     </div>
 
-    <!-- 6. Курс -->
+    <!-- 7. Курс -->
     <div class="ssec" id="ssec-course">
     <h3>📚 <span data-i18n="sec_course">Kurs</span></h3>
     <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
@@ -2117,7 +2134,7 @@ body.lesson-active .vocab-top{
     </div>
     </div>
 
-    <!-- 7. Голоси -->
+    <!-- 8. Голоси -->
     <div class="ssec">
     <h3>🎙 <span data-i18n="sec_voices">TTS Stimmen</span></h3>
     <div class="srow"><div class="srow-label"><label>🇩🇪 Deutsch</label><small>z.B. Anna</small></div><select id="vde" onchange="VP.de=this.value;saveVP()"></select></div>
@@ -2128,24 +2145,7 @@ body.lesson-active .vocab-top{
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reset">Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
     </div>
 
-    <!-- 7b. Розмір шрифтів -->
-    <div class="ssec">
-    <h3>🔤 <span data-i18n="sec_fontsize">Schriftgröße</span></h3>
-    <div class="srow" style="flex-direction:column;align-items:stretch;gap:10px">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div class="srow-label" style="margin:0"><label data-i18n="lbl_fontsize_card">Kartengröße</label><small data-i18n="lbl_fontsize_card_sub">Begriff, Definition, Sätze, Kacheln</small></div>
-        <span id="fs-card-val" style="font-weight:700;font-size:15px;color:var(--gold);min-width:36px;text-align:right">20px</span>
-      </div>
-      <input type="range" id="fs-card-slider" min="14" max="28" step="1" value="20"
-        style="width:100%;accent-color:var(--gold)"
-        oninput="applyFontSize(+this.value)" onchange="saveFontSize()">
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px">
-        <span>14px</span><span>21px</span><span>28px</span>
-      </div>
-    </div>
-    </div>
-
-    <!-- 8. Налагодження -->
+    <!-- 9. Налагодження -->
     <div class="ssec">
     <h3>🛠 <span data-i18n="sec_debug">Debug</span></h3>
     <div class="srow">
@@ -2200,7 +2200,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '171-68af9cf';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2767,7 +2767,7 @@ function syncSpeedButtons(){
 }
 
 // ── РОЗМІР ШРИФТІВ ────────────────────────────────────────────
-const FS_DEFAULT = 20;
+const FS_DEFAULT = 18;
 const FS_MIN = 14;
 const FS_MAX = 28;
 
@@ -2885,8 +2885,11 @@ function srDefaultState(){
 }
 
 // Основна функція: оновити стан після оцінки картки
+// examPart може бути рядком ('Sprachbausteine') або масивом (['Lesen','Hören'])
+// — картка словника/діалогу тренує одночасно читання і слухання, тож рахуємо в обидва.
 function srRecordAnswer(cardId, rating, examPart){
-  examPart = examPart || 'General';
+  const parts = (Array.isArray(examPart) ? examPart : [examPart || 'General']).filter(Boolean);
+  if(!parts.length) parts.push('General');
   const state = srLoadState();
   const urgency = srGetUrgency(state.examDate);
   const cs = state.cards[cardId] ?? {};
@@ -2896,11 +2899,13 @@ function srRecordAnswer(cardId, rating, examPart){
   updated.nextReview = srToISO(srAddDays(new Date(), updated.interval));
   updated.history = [...(cs.history??[]), rating].slice(-10);
   state.cards[cardId] = updated;
-  // Статистика субтесту
-  const sub = state.subtestStats[examPart] ?? {correct:0, total:0};
-  const newCorrect = sub.correct + (rating>=3?1:0);
-  const newTotal   = sub.total + 1;
-  state.subtestStats[examPart] = {correct:newCorrect, total:newTotal, accuracy:newCorrect/newTotal};
+  // Статистика субтесту — пишемо в КОЖЕН переданий examPart
+  parts.forEach(part=>{
+    const sub = state.subtestStats[part] ?? {correct:0, total:0};
+    const newCorrect = sub.correct + (rating>=3?1:0);
+    const newTotal   = sub.total + 1;
+    state.subtestStats[part] = {correct:newCorrect, total:newTotal, accuracy:newCorrect/newTotal};
+  });
   srSaveState(state);
   return updated.interval; // повертаємо інтервал для UI-фідбеку
 }
@@ -2922,9 +2927,12 @@ function srBuildDailyPlan(allCards){
     const tod = srStartOfDay(new Date());
     const overdue = Math.ceil((tod-nr)/86400000);
     let priority = overdue>=0 ? 10+overdue : overdue;
-    const part = card.examPart || 'General';
-    priority *= SR_EXAM_WEIGHT[part] ?? 1.0;
-    const acc = weakProfile[part] ?? 1.0;
+    // card.examPart може бути масивом (наприклад DIALOGE: ['Hören','Sprechen']) —
+    // для пріоритезації беремо найслабшу (найвищий пріоритет повторення) з частин.
+    const cardPartsArr = Array.isArray(card.examPart) ? card.examPart : [card.examPart || 'General'];
+    const weight = Math.max(...cardPartsArr.map(p=>SR_EXAM_WEIGHT[p] ?? 1.0));
+    const acc = Math.min(...cardPartsArr.map(p=>weakProfile[p] ?? 1.0));
+    priority *= weight;
     if(acc < SR_WEAKNESS_THRESHOLD) priority *= SR_WEAKNESS_MULTIPLIER;
     if(overdue>0) priority *= (2-urgency.factor);
     return {card, priority, isDue, cstate};
@@ -2935,17 +2943,24 @@ function srBuildDailyPlan(allCards){
   const combined = [...due,...newCards].slice(0, maxCards);
 
   // Exam Sprint/Last Week — гарантуємо Sprachbausteine
+  const isSBPart = (card)=>{
+    const p = Array.isArray(card.examPart) ? card.examPart : [card.examPart||'General'];
+    return p.includes('Sprachbausteine');
+  };
   if(['exam_sprint','last_week'].includes(urgency.id)){
-    const hasSB = combined.some(x=>(x.card.examPart||'General')==='Sprachbausteine');
+    const hasSB = combined.some(x=>isSBPart(x.card));
     if(!hasSB){
-      const sbCard = scored.find(x=>(x.card.examPart||'General')==='Sprachbausteine');
+      const sbCard = scored.find(x=>isSBPart(x.card));
       if(sbCard) combined.unshift(sbCard);
     }
   }
 
   const plan = combined.map(x=>x.card.id);
   const breakdown = {};
-  combined.forEach(({card})=>{ const p=card.examPart||'General'; breakdown[p]=(breakdown[p]??0)+1; });
+  combined.forEach(({card})=>{
+    const p = Array.isArray(card.examPart) ? card.examPart : [card.examPart || 'General'];
+    p.forEach(part=>{ breakdown[part]=(breakdown[part]??0)+1; });
+  });
 
   const result = {plan, estimatedMinutes:Math.round(plan.length*SR_SEC_PER_CARD/60), urgencyMode:urgency, breakdown, generatedAt:today};
   // Зберігаємо план у стан
@@ -2989,14 +3004,29 @@ function srGetDashStats(allCards){
   parts.forEach(p => { partCards[p] = {total:0, good:0, seen:0}; });
 
   allCards.forEach(card => {
-    const part = card.examPart || 'General';
-    const bucket = partCards[part] || partCards['General'];
-    bucket.total++;
     const c = cs[card.id];
-    if(!c) return;
-    if((c.repetitions??0) > 0) bucket.seen++;
-    // "Добре вивчена" = мінімум 2 повторення І наступне повторення не сьогодні/не прострочено
-    if((c.repetitions??0) >= 2 && c.nextReview && c.nextReview > today) bucket.good++;
+    const wasSeen = c && (c.repetitions??0) > 0;
+    const wasGood = c && (c.repetitions??0) >= 2 && c.nextReview && c.nextReview > today;
+    const addTo = (part)=>{
+      const bucket = partCards[part] || partCards['General'];
+      bucket.total++;
+      if(wasSeen) bucket.seen++;
+      if(wasGood)  bucket.good++;
+    };
+    if(card._isSB || card._isDialogue){
+      // Sprachbausteine — одна категорія. Dialoge — Hören+Sprechen, обидві повною вагою:
+      // це окремий усвідомлений навик (слухання діалогу + відтворення фрази), а не «розподіл».
+      const cardParts = Array.isArray(card.examPart) ? card.examPart : [card.examPart || 'General'];
+      cardParts.forEach(addTo);
+    } else {
+      // VOCAB: перегляд+прослуховування картки = Lesen + Hören завжди, повною вагою.
+      addTo('Lesen');
+      addTo('Hören');
+      // Додатково — повною вагою у власну тематичну категорію картки, якщо вона
+      // відрізняється (напр. «Bewerbung» додатково рахується в Schreiben).
+      const theme = card.examPart;
+      if(theme && theme !== 'Lesen' && theme !== 'Hören') addTo(theme);
+    }
   });
 
   const readiness = {};
@@ -3341,28 +3371,46 @@ function srsSave(id,data){
 }
 
 // q: 1=Не знаю, 3=Невпевнений, 5=Знаю
-// Smart Review: getExamPartForCard — читає examPart з картки VOCAB або 'General'
+// Smart Review: getExamPartForCard — повертає examPart(и) картки.
+// Кожна картка словника/діалогу опрацьовується і на слух (аудіо), і візуально (текст) —
+// тож запис у статистику йде одночасно у кілька субтестів, а не в один.
 function srGetExamPart(cardId){
-  // Шукаємо в VOCAB
+  // VOCAB: читання картки = Lesen, прослуховування озвучення = Hören, плюс
+  // власна тематична категорія картки (Schreiben/Sprechen/…), якщо вона відрізняється.
   if(typeof VOCAB!=='undefined'&&VOCAB?.length){
     const c = VOCAB.find(v=>v.id===cardId);
-    if(c) return c.examPart || 'General';
+    if(c){
+      const parts = ['Lesen','Hören'];
+      if(c.examPart && c.examPart!=='Lesen' && c.examPart!=='Hören') parts.push(c.examPart);
+      return parts;
+    }
   }
-  // Шукаємо в SPRACHBAUSTEINE
+  // SPRACHBAUSTEINE: окремий модуль граматики/конструкцій
   if(typeof SPRACHBAUSTEINE!=='undefined'&&SPRACHBAUSTEINE?.length){
     const c = SPRACHBAUSTEINE.find(v=>v.id===cardId);
     if(c) return 'Sprachbausteine';
   }
+  // DIALOGE (Redemittel): діалог — це і сприйняття на слух (Hören), і відтворення фрази
+  // (Sprechen) — рахуємо повною вагою в обидва, бо це два різні навики однієї дії.
+  if(typeof DIALOGE!=='undefined'&&DIALOGE?.length){
+    const c = DIALOGE.find(d=>d.id===cardId);
+    if(c) return ['Hören','Sprechen'];
+  }
   return 'General';
 }
 
-// Повертає всі картки (VOCAB + SPRACHBAUSTEINE) для SR планування
+// Повертає всі картки (VOCAB + SPRACHBAUSTEINE + DIALOGE) для SR планування й dashboard
 function srGetAllCards(){
   const vocab = (typeof VOCAB!=='undefined'&&VOCAB?.length) ? VOCAB : [];
   const sb = (typeof SPRACHBAUSTEINE!=='undefined'&&SPRACHBAUSTEINE?.length)
     ? SPRACHBAUSTEINE.map(c=>({...c, examPart:'Sprachbausteine', _isSB:true}))
     : [];
-  return [...vocab, ...sb];
+  // Діалоги (Redemittel) — тренують і Hören (слухання), і Sprechen (відтворення фрази),
+  // тож рахуються в dashboard у обох частинах одразу, повною вагою в кожній.
+  const dlg = (typeof DIALOGE!=='undefined'&&DIALOGE?.length)
+    ? DIALOGE.map(c=>({...c, examPart:['Hören','Sprechen'], _isDialogue:true}))
+    : [];
+  return [...vocab, ...sb, ...dlg];
 }
 
 function srsRate(id, q){
@@ -3922,15 +3970,15 @@ function renderVocabCard(){
         : '<div class="fc-srs-badge">📅 +'+sdays+'д · EF '+sef+'</div>';
     }
   }
-  const srsHintText = V.mode==='srs' ? t('hint_srs') : t('hint_front');
+  const srsHintText = t('hint_srs');
   document.getElementById('fc-front-inner').innerHTML=`
     <div class="fc-header">
       <button class="fc-fav ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-front">${fav?'★':'☆'}</button>
       <span class="fc-cat">${cat?cat.e+' '+cat.de:v.cat}</span>
     </div>
     <div class="fc-body">${termRows}</div>
-    <div class="fc-hint">${srsHintText}</div>
-    ${srsBadgeHtml}`;
+    ${srsBadgeHtml}
+    <div class="fc-hint">${srsHintText}</div>`;
   document.getElementById('fc-back-inner').innerHTML=`
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${fav?'★':'☆'}</button>
@@ -4068,6 +4116,9 @@ function srsSwipe(q){
 
   V.srsRating = q;
   const result = srsRate(v.id, q);
+
+  // Бейдж «нова картка» вже невірний одразу після оцінки — ховаємо без очікування ререндеру
+  document.querySelectorAll('#fc-area .fc-srs-new').forEach(el=>el.remove());
 
   // Показуємо фідбек
   const days = result.interval;
@@ -4276,6 +4327,9 @@ function srsSwipe(q){
 
   V.srsRating = q;
   const result = srsRate(v.id, q);
+
+  // Бейдж «нова картка» вже невірний одразу після оцінки — ховаємо без очікування ререндеру
+  document.querySelectorAll('#fc-area .fc-srs-new').forEach(el=>el.remove());
 
   // Показуємо фідбек
   const days = result.interval;
@@ -7362,11 +7416,12 @@ function srRecordLesson(lf){
   if(!lf) return;
   try{
     srUpdateStreak();
-    // Картки уроку — беремо оцінку з SM-2 (lastQ)
+    // Картки уроку — беремо оцінку з SM-2 (lastQ). Узгоджено з srsRate: кожна картка
+    // словника тренує одночасно Lesen (читання) і Hören (прослуховування), плюс власну тему.
     (lf.cards||[]).forEach(c=>{
       const d = srsLoad(c.id);
       const q = d.lastQ || 3;
-      srRecordAnswer(c.id, q, c.examPart || 'General');
+      srRecordAnswer(c.id, q, srGetExamPart(c.id));
     });
     // SB картки з matching/sb_learn — рахуємо як Sprachbausteine (середня оцінка)
     (lf.sbCards||[]).forEach(c=>{
@@ -8173,15 +8228,15 @@ function renderDialogueCard(){
         : '<div class="fc-srs-badge">📅 +'+sdays+'д · EF '+sef+'</div>';
     }
   }
-  const srsHintText = D.mode==='srs' ? t('hint_srs') : t('hint_front');
+  const srsHintText = t('hint_srs');
   document.getElementById('dlg-fc-front-inner').innerHTML=`
     <div class="fc-header">
       <button class="fc-fav ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-front">${fav?'★':'☆'}</button>
       <span class="fc-cat">${cat?cat.e+' '+cat.de:d.cat}</span>
     </div>
     <div class="fc-body">${qRows}</div>
-    <div class="fc-hint">${srsHintText}</div>
-    ${srsBadgeHtml}`;
+    ${srsBadgeHtml}
+    <div class="fc-hint">${srsHintText}</div>`;
   document.getElementById('dlg-fc-back-inner').innerHTML=`
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-back">${fav?'★':'☆'}</button>
@@ -8268,6 +8323,10 @@ function initDialogueSwipe(){
 function dlgSrsSwipe(q){
   const d=D.queue[D.idx]; if(!d) return;
   const result=srsRate(d.id, q);
+
+  // Бейдж «нова картка» вже невірний одразу після оцінки — ховаємо без очікування ререндеру
+  document.querySelectorAll('#dlg-fc-area .fc-srs-new').forEach(el=>el.remove());
+
   const days=result.interval;
   const emoji = q===1 ? '🔄' : q===3 ? '🤔' : '✅';
   const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
@@ -9035,6 +9094,12 @@ function sbRenderLearn() {
   // fav buttons — update state + re-init touch handlers
   sbUpdateFavBtns(card.id);
   setTimeout(function(){ sbInitFavBtns(card.id); }, 0);
+
+  // hint — однаковий елемент з vocab/dialogue, мовозалежний
+  var sbHintFront = document.getElementById('sb-front-hint');
+  if (sbHintFront) sbHintFront.textContent = t('hint_srs');
+  var sbHintBack = document.getElementById('sb-back-hint');
+  if (sbHintBack) sbHintBack.textContent = t('hint_srs');
 
   // flip state — use flashcard CSS class
   var fc = document.getElementById('sb-flashcard');
