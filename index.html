@@ -1073,14 +1073,14 @@ body{
 }
 .lr-btn-secondary:active{transform:scale(.97);border-color:var(--gold);}
 
-.fc-hint{text-align:center;font-size:14px;color:rgba(255,255,255,.18);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
-.fc-srs-badge{display:block;font-size:14px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 8px;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
+.fc-hint{text-align:center;font-size:14px;color:rgba(255,255,255,.18);padding:6px 0 14px;flex-shrink:0}
+.fc-srs-badge{display:block;font-size:14px;font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 0;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
 .ui-lang-btn{border:1px solid var(--border);background:var(--card);color:var(--ink);padding:7px 4px;border-radius:10px;cursor:pointer;transition:all .2s;font-family:inherit}
 .ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
 .course-btn.active{border-color:var(--gold)!important;background:rgba(201,168,76,.08)!important;}
 .fc-srs-due{background:rgba(201,168,76,.2);color:var(--gold);border-color:rgba(201,168,76,.5)}
-.fc-hint-back{text-align:center;font-size:14px;color:var(--muted);padding:8px 0 14px;margin-top:auto;flex-shrink:0}
+.fc-hint-back{text-align:center;font-size:14px;color:var(--muted);padding:6px 0 14px;flex-shrink:0}
 .fc-back-header{
   padding:13px 16px 10px;display:flex;align-items:center;
   gap:8px;flex-wrap:wrap;border-bottom:1px solid var(--soft);
@@ -1762,7 +1762,7 @@ body.lesson-active .vocab-top{
       </div>
 
       <div id="vocab-panel-match" style="display:none">
-        <div class="match-header"><h3 id="match-title"></h3><small id="match-subtitle"></small></div>
+        <div class="match-header"><h3 id="match-title"></h3></div>
         <div class="match-grid" id="match-grid"></div>
         <div class="match-result" id="match-result" style="display:none">
           <div class="score" id="match-score"></div>
@@ -2200,7 +2200,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '172-246551a';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2338,7 +2338,7 @@ const I18N = {
     srs_new:'✨ neue Karte', srs_today:'📅 heute',
     card_new:'✨ Neue Karte',
     update_available:'🔄 Neue Version verfügbar – App neu laden',
-    match_title:'🔗 Matching', match_sub:'Verbinde den Begriff mit der Erklärung',
+    match_title:'🔗 Begriff mit Erklärung verbinden', match_sub:'Verbinde den Begriff mit der Erklärung',
     match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
     match_good:'Gut gemacht! Weiter üben.',
     match_again:'🔄 Nochmal', match_cards:'📖 Karten',
@@ -2415,7 +2415,7 @@ const I18N = {
     srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
     card_new:'✨ Нова картка',
     update_available:'🔄 Доступна нова версія — перезавантажте додаток',
-    match_title:'🔗 Matching', match_sub:'Поєднай термін з поясненням',
+    match_title:'🔗 Поєднай термін з поясненням', match_sub:'Поєднай термін з поясненням',
     match_perfect:'Ідеально! Всі з першої спроби 🎉',
     match_good:'Непогано! Продовжуй повторювати.',
     match_again:'🔄 Ще раз', match_cards:'📖 Картки',
@@ -2491,7 +2491,7 @@ const I18N = {
     srs_new:'✨ new card', srs_today:'📅 today',
     card_new:'✨ New card',
     update_available:'🔄 New version available – reload the app',
-    match_title:'🔗 Matching', match_sub:'Match the term with its explanation',
+    match_title:'🔗 Match the term with its explanation', match_sub:'Match the term with its explanation',
     match_perfect:'Perfect! All on first try 🎉',
     match_good:'Good job! Keep reviewing.',
     match_again:'🔄 Again', match_cards:'📖 Cards',
@@ -2568,7 +2568,7 @@ const I18N = {
     srs_new:'✨ новая карточка', srs_today:'📅 сегодня',
     card_new:'✨ Новая карточка',
     update_available:'🔄 Доступна новая версия — перезагрузите приложение',
-    match_title:'🔗 Matching', match_sub:'Соедини термин с объяснением',
+    match_title:'🔗 Соедини термин с объяснением', match_sub:'Соедини термин с объяснением',
     match_perfect:'Идеально! Все с первой попытки 🎉',
     match_good:'Неплохо! Продолжай повторять.',
     match_again:'🔄 Ещё раз', match_cards:'📖 Карточки',
@@ -2699,8 +2699,6 @@ function applyI18n(){
   // Matching
   const mTitle = document.getElementById('match-title');
   if(mTitle && !mTitle.textContent) mTitle.textContent = t('match_title');
-  const mSub = document.getElementById('match-subtitle');
-  if(mSub) mSub.textContent = t('match_sub');
   const mAgain = document.getElementById('match-btn-again');
   if(mAgain) mAgain.textContent = t('match_again');
   const mCards = document.getElementById('match-btn-cards');
@@ -4470,9 +4468,7 @@ function startMatching(){
 
   // Заголовок
   const titleEl = document.getElementById('match-title');
-  const subEl   = document.getElementById('match-subtitle');
-  if(titleEl) titleEl.textContent = t('match_title')+' · '+MATCH_SIZE+' '+t('lp_cards');
-  if(subEl)   subEl.textContent   = t('match_sub');
+  if(titleEl) titleEl.textContent = t('match_title');
 
   // Prefetch аудіо всіх 5 DE слів одразу при відкритті
   matchPrefetchAudio(chosen);
@@ -4716,8 +4712,30 @@ function _runLessonFlow(lesson, allCards){
   // TypeError у renderVocabCard, якщо в базі трапиться неповна картка
   const validCards = allCards.filter(c=>c.term?.de && c.short?.de);
   if(!validCards.length){ notify('⚠️ Keine gültigen Karten'); return; }
-  const sorted    = [...validCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
-  const flowCards = sorted.slice(0, Math.min(5, sorted.length));
+  const sorted = [...validCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
+
+  // Якщо урок того ж дня вже відкривався — уникаємо показу тих самих карток знову.
+  // Інакше при повторному заході через кілька хвилин/годин після того ж уроку
+  // отримуємо однакові dueDate у щойно оцінених карток → стабільне сортування
+  // повертає той самий топ-5, і це нецікаво (особливо коли в уроці 50 карток).
+  const seenKey   = 'mova_lesson_seen_' + (lesson.id || 'x');
+  const today     = new Date().toDateString();
+  let seenToday   = [];
+  try{
+    const raw = JSON.parse(localStorage.getItem(seenKey) || 'null');
+    if(raw && raw.date === today) seenToday = raw.ids || [];
+  }catch(e){}
+
+  const fresh = sorted.filter(c => !seenToday.includes(c.id));
+  // Беремо нові (ще не бачені сьогодні в цьому уроці), якщо їх достатньо;
+  // якщо пул вичерпано — довивчуємо рештою (весь урок вже пройдено сьогодні).
+  const flowCards = (fresh.length >= Math.min(5, sorted.length) ? fresh : sorted)
+    .slice(0, Math.min(5, sorted.length));
+
+  try{
+    const updatedIds = Array.from(new Set([...seenToday, ...flowCards.map(c=>c.id)]));
+    localStorage.setItem(seenKey, JSON.stringify({date: today, ids: updatedIds}));
+  }catch(e){}
 
   // SB картки
   const sbCardIds = lesson.sbCards || [];
@@ -6800,9 +6818,6 @@ function lfGoStep(stepIdx){
     switchVocabTab(6);
     lfStartDef();
   } else if(step === 'matching'){
-    // Відновлюємо player якщо він був схований кроком def або tiles
-    const vpM = document.querySelector('#view-vocab .vplayer');
-    if(vpM) vpM.style.display = '';
     switchVocabTab(2);
     lfStartMatching();
   } else if(step === 'choice'){
@@ -6845,6 +6860,9 @@ function lfStepDone(step, score){
 // ── КРОКИ ─────────────────────────────────────────────────────
 function lfStartMatching(){
   if(!LF) return;
+  // Ховаємо player під час matching — картки матчингу не озвучуються плеєром
+  const vplayer = document.querySelector('#view-vocab .vplayer');
+  if(vplayer) vplayer.style.display='none';
   // Підміняємо пул matching картками уроку (5 найслабших)
   const pool = LF.cards.filter(c=>c.term?.de && c.short?.de);
   const chosen = pool.slice(0, Math.min(5, pool.length));
@@ -6873,9 +6891,7 @@ function lfStartMatching(){
     }
   }
   const titleEl=document.getElementById('match-title');
-  const subEl=document.getElementById('match-subtitle');
-  if(titleEl) titleEl.textContent=t('match_title')+' · '+chosen.length+' '+t('lp_cards');
-  if(subEl)   subEl.textContent=t('match_sub');
+  if(titleEl) titleEl.textContent=t('match_title');
   // Prefetch аудіо всіх DE слів одразу при відкритті
   matchPrefetchAudio(chosen);
 }
@@ -7175,14 +7191,19 @@ function lfDlgLearnFlipCard(){
   if(_lfDlg.flipped) lfDlgLearnShowNext();
 }
 
+var _lfDlgPlayToken = 0;
 function lfDlgLearnPlayFront(onDone){
   if(!LF || !LF.dlgCard) return;
   var card = LF.dlgCard;
   var langs = getActiveDialogueLangs();
-  var gen = ++playGen;
+  // Власний токен генерації — НЕ playGen! speak() сама викликає stopTTS()
+  // (playGen++) на кожному виклику, тож порівняння з playGen тут завжди
+  // false вже після першої фрази й рекурсія обривається передчасно.
+  var myToken = ++_lfDlgPlayToken;
   var i = 0;
   function next(){
-    if(playGen !== gen) return; // скасовано
+    if(myToken !== _lfDlgPlayToken) return; // скасовано новішим запуском
+    if(!LF || !LF.dlgCard || LF.dlgCard.id !== card.id) return; // крок змінився
     if(i >= langs.length){ onDone && onDone(); return; }
     var l = langs[i++];
     var text = card.q?.[l] || card.q?.de;
@@ -7196,7 +7217,7 @@ function lfDlgLearnShowNext(){
   var old = document.getElementById('lf-sb-next-btn');
   if(old) return; // вже показана
   _lfInjectSBNextBtn(function(){
-    playGen++; speechSynthesis.cancel();
+    _lfDlgPlayToken++; playGen++; speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio = null; }
     // Зараховуємо SM-2 (q=5 — переглянута)
     if(LF && LF.dlgCard) srsRate(LF.dlgCard.id, 5);
@@ -7205,6 +7226,7 @@ function lfDlgLearnShowNext(){
 }
 
 function _lfDlgLearnDone(){
+  _lfDlgPlayToken++;
   playGen++;
   speechSynthesis.cancel();
   // Знімаємо кнопку Далі
