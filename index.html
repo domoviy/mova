@@ -133,7 +133,7 @@ body{
 #view-vocab{padding:0 !important}
 #view-vocab.active{display:flex;flex-direction:column;overflow:hidden}
 #view-vocab .vocab-top{padding:12px 14px 0;flex-shrink:0}
-#vocab-panel-card{flex:1;min-height:0;display:flex;flex-direction:column;padding:0px 14px 106px 14px}
+#vocab-panel-card{flex:1;min-height:0;display:flex;flex-direction:column;padding:0px 14px calc(var(--lm-nav) + env(safe-area-inset-bottom,0px) + 8px) 14px}
 .fc-area{perspective:1400px;user-select:none;touch-action:none;}
 #bottom-nav{
   position:fixed;bottom:0;left:0;right:0;z-index:20;
@@ -289,23 +289,12 @@ body{
   flex:1; min-height:80px;
   margin-bottom:0;
 }
-/* Vokabeln only: explicit height calc (player + chips + tabs always in DOM).
-   --lm-* vars are zeroed in lesson mode so the card expands automatically. */
+/* Vokabeln only: fc-area fills remaining flex space inside #vocab-panel-card.
+   .vprogrow-flow (flow element, see below) takes its own natural height
+   below it — no more magic-number height calc needed for the card. */
 #view-vocab .fc-area{
-  height:calc(
-    var(--real-vh, 100dvh)
-    - var(--hdr-h) - var(--safe-t)  /* header */
-    - var(--lf-bar-h, 0px)           /* lesson-flow-bar (0 when inactive) */
-    - 75px                            /* vplayer */
-    - var(--gap)
-    - var(--lm-chips)                 /* chips (0 in lesson mode) */
-    - var(--lm-tabs)                  /* tabs  (0 in lesson mode) */
-    - var(--prog-h) - var(--gap)      /* vprogrow + gap */
-    - var(--lm-nav)                   /* bottom-nav (0 in lesson mode) */
-    - env(safe-area-inset-bottom,0px)
-  );
-  flex:none;
-  margin-bottom:var(--gap);
+  flex:1; min-height:0;
+  margin-bottom:0;
 }
 .flashcard{
   width:100%;height:100%;position:relative;
@@ -1130,6 +1119,18 @@ body{
   padding:9px 14px;display:flex;align-items:center;gap:10px;
   box-shadow:0 2px 8px rgba(0,0,0,.07);
 }
+/* Flow-варіант: звичайний block-елемент одразу під .fc-area замість
+   position:fixed. Усуває розсинхронізацію між реальною висотою прогрес-бару
+   і магічною змінною --prog-h, яка використовувалась у calc() висоти
+   картки — звідси й бувала відсутність видимого зазору між карткою
+   і прогрес-баром. flex-shrink:0 — щоб картка (.fc-area, flex:1) не
+   стискала прогрес-бар. */
+.vprogrow-flow{
+  position:relative;flex-shrink:0;margin-top:var(--gap);
+  background:var(--paper);border-radius:10px;border:1px solid var(--border);
+  padding:9px 14px;display:flex;align-items:center;gap:10px;
+  box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
 .vpb{flex:1;background:var(--soft);border-radius:4px;height:4px;overflow:hidden}
 .vpbf{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transition:width .4s;border-radius:4px}
 
@@ -1221,28 +1222,16 @@ body.lesson-active .vocab-top{
 #sb-panel-learn {
   flex:1; min-height:0; display:flex; flex-direction:column;
   padding:0 14px;
-  /* padding-bottom: reserved space for vprogrow + bottom-nav safe area */
-  padding-bottom:calc(var(--prog-h) + var(--gap) + var(--lm-nav) + env(safe-area-inset-bottom,0px) + 8px);
+  /* padding-bottom: reserved space for bottom-nav safe area only —
+     vprogrow is now a flow element (.vprogrow-flow), not position:fixed */
+  padding-bottom:calc(var(--lm-nav) + env(safe-area-inset-bottom,0px) + 8px);
 }
 
-/* SB fc-area: same explicit height calc as #view-vocab .fc-area
-   so the card never collapses when container height is ambiguous.
-   --lm-chips / --lm-tabs are 0 in lesson mode (same as vocab). */
+/* SB fc-area: fills remaining flex space; vprogrow-flow below takes its
+   own natural height, so no magic-number height calc is needed anymore. */
 #sb-panel-learn .fc-area {
-  height:calc(
-    var(--real-vh, 100dvh)
-    - var(--hdr-h) - var(--safe-t)
-    - var(--lf-bar-h, 0px)
-    - 75px                         /* vplayer */
-    - var(--gap)
-    - var(--lm-chips)              /* chips row */
-    - var(--lm-tabs)               /* tab bar */
-    - var(--prog-h) - var(--gap)   /* vprogrow + gap */
-    - var(--lm-nav)
-    - env(safe-area-inset-bottom,0px)
-  );
-  flex:none;
-  margin-bottom:var(--gap);
+  flex:1; min-height:0;
+  margin-bottom:0;
 }
 
 /* flashcard fills the fc-area completely */
@@ -1434,29 +1423,21 @@ body.lesson-active .vocab-top{
   flex:1; min-height:0; display:flex; flex-direction:column;
   padding:0 14px;
   padding-bottom:calc(
-    var(--prog-h) + var(--gap)
-    + var(--lm-nav)
+    var(--lm-nav)
     + env(safe-area-inset-bottom,0px)
     + 8px
   );
 }
 
-/* fc-area: одна формула для обох вкладок */
+/* fc-area: одна формула для обох вкладок.
+   --prog-h більше не віднімається тут — .vprogrow-flow тепер звичайний
+   flow-елемент (margin-top:var(--gap) створює відступ природньо),
+   а не position:fixed-блок, чию висоту треба було вгадувати окремою
+   CSS-змінною. Це усуває розсинхронізацію (картка торкалась прогрес-бару
+   впритул, якщо реальна висота .vprogrow відрізнялась від --prog-h). */
 .card-panel .fc-area {
-  height:calc(
-    var(--real-vh, 100dvh)
-    - var(--hdr-h) - var(--safe-t)
-    - var(--lf-bar-h,0px)
-    - 75px
-    - var(--gap)
-    - var(--lm-chips)
-    - var(--lm-tabs)
-    - var(--prog-h) - var(--gap)
-    - var(--lm-nav)
-    - env(safe-area-inset-bottom,0px)
-  );
-  flex:none;
-  margin-bottom:var(--gap);
+  flex:1; min-height:0;
+  margin-bottom:0;
 }
 .card-panel .flashcard { width:100%; height:100%; }
 .card-panel .fc-face {
@@ -1768,7 +1749,7 @@ body.lesson-active .vocab-top{
             <div class="fc-face fc-back"><div id="fc-back-inner" style="display:flex;flex-direction:column;flex:1"></div></div>
           </div>
         </div>
-        <div class="vprogrow">
+        <div class="vprogrow-flow">
           <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="vprgtxt">1 / 0</span>
           <div class="vpb"><div class="vpbf" id="vpbf" style="width:0%"></div></div>
         </div>
@@ -1945,7 +1926,7 @@ body.lesson-active .vocab-top{
             </div>
           </div>
         </div>
-        <div class="vprogrow" id="sb-vprogrow">
+        <div class="vprogrow-flow" id="sb-vprogrow">
           <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="sb-prgtxt">1 / 48</span>
           <div class="vpb"><div class="vpbf" id="sb-vpbf" style="width:0%"></div></div>
         </div>
@@ -2031,7 +2012,7 @@ body.lesson-active .vocab-top{
             <div class="fc-face fc-back"><div id="dlg-fc-back-inner" style="display:flex;flex-direction:column;flex:1"></div></div>
           </div>
         </div>
-        <div class="vprogrow">
+        <div class="vprogrow-flow">
           <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="dlgprgtxt">1 / 0</span>
           <div class="vpb"><div class="vpbf" id="dlgpbf" style="width:0%"></div></div>
         </div>
@@ -2213,7 +2194,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '162-606565b';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3644,6 +3625,21 @@ async function tryAzureThenSpeech(text, lang, safeEnd, url, gen){
   }
 }
 
+// Лічильник активних "пріоритетних" завантажень (поточне аудіо картки, що зараз
+// озвучується). Поки > 0, фонові prefetch-запити чекають, щоб не конкурувати
+// за мережу з файлом, який користувач слухає прямо зараз.
+let _priorityFetchActive = 0;
+function _waitForPriorityClear(){
+  return new Promise(resolve=>{
+    if(_priorityFetchActive<=0){ resolve(); return; }
+    const check=()=>{
+      if(_priorityFetchActive<=0) resolve();
+      else setTimeout(check,150);
+    };
+    check();
+  });
+}
+
 async function speak(text, lang, onEnd, cardId, field){
   // Strip special characters that cause TTS artifacts
   // Strip HTML: replace <br> with space, remove all other tags
@@ -3678,7 +3674,8 @@ async function speak(text, lang, onEnd, cardId, field){
     // Перший раз: чекаємо blob до 800ms → якщо прийшов → Azure
     //             якщо ні → WebSpeech паралельно поки blob кешується
     logErr('speak','waiting for blob',fname);
-    const fetchPromise = fetchBlobUrl(url);
+    _priorityFetchActive++;
+    const fetchPromise = fetchBlobUrl(url).finally(()=>{ _priorityFetchActive--; });
     const raceResult = await Promise.race([
       fetchPromise,
       new Promise(res => setTimeout(()=>res(null), 800))
@@ -4699,6 +4696,18 @@ function _runLessonFlow(lesson, allCards){
   V.idx         = 0;
   V.repeatCount = 0;
   V.flipped     = false;
+  // В уроці завжди має бути активний SM-2 режим — інакше не показується
+  // підказка "свайпни ↑/↓" і картки залишаються неоціненими (повертаються
+  // знову з найвищим пріоритетом 999 у наступному уроці).
+  // Запам'ятовуємо попередній режим словника лише при ВХОДІ в lesson flow
+  // (не при переході на наступний урок поспіль), щоб коректно відновити
+  // його в exitLessonFlow().
+  if(typeof _preLessonVocabMode === 'undefined' || _preLessonVocabMode === null){
+    window._preLessonVocabMode = V.mode;
+  }
+  V.mode        = 'srs';
+  const _vshBtn = document.getElementById('vshuffle-btn');
+  if(_vshBtn){ _vshBtn.classList.remove('shuffle'); _vshBtn.classList.add('smart'); _vshBtn.textContent='🔬'; }
 
   showView('vocab');
   lfRenderBar();
@@ -6537,6 +6546,10 @@ async function prefetchCardSequential(card, afterDone){
 
   for(const field of fields){
     if(!V.playing) return; // зупинились — не качаємо більше
+    // Чекаємо поки звільниться пріоритетний канал (поточна картка вже завантажує
+    // свій файл) — інакше prefetch забиває мережу і затримує активне аудіо
+    await _waitForPriorityClear();
+    if(!V.playing) return;
     // Завантажуємо всі мови для поточного поля паралельно (вони короткі)
     await Promise.all(langs.map(lang => {
       const url = getAudioUrl(card.id, field, lang);
@@ -7596,6 +7609,18 @@ function exitLessonFlow(){
   V.lessonId = null; V.lessonCards = [];
   V.queue = []; V.idx = 0;
   quizState = null;
+  // Відновлюємо режим словника, який був до входу в урок (SM-2 в уроці — примусовий)
+  if(typeof window._preLessonVocabMode !== 'undefined' && window._preLessonVocabMode !== null){
+    V.mode = window._preLessonVocabMode;
+    window._preLessonVocabMode = null;
+    const _vshBtn = document.getElementById('vshuffle-btn');
+    if(_vshBtn){
+      const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};
+      _vshBtn.classList.remove('smart','shuffle');
+      _vshBtn.textContent=cfg.icon;
+      if(cfg.cls) _vshBtn.classList.add(cfg.cls);
+    }
+  }
   // Скидаємо SB lesson state
   _lfSB = { idx:0, total:0, flipped:false, played:false };
   // Відновлюємо SB UI якщо були в SB lesson
