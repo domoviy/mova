@@ -1444,6 +1444,11 @@ body.lesson-active .vocab-top{
   grid-area:1/1;
   backface-visibility:hidden; -webkit-backface-visibility:hidden;
 }
+/* Lesson-flow dlg_learn/sb_learn: коли .vocab-top (плеєр+чіпи+таби)
+   приховано, картка явно займає весь звільнений простір замість
+   покладання лише на побічний ефект flex:1 батька. */
+.card-panel.lesson-fullcard { padding-top:14px; }
+.card-panel.lesson-fullcard .fc-area { flex:1 1 100%; }
 
 </style>
 <!-- Real viewport height fix для iOS PWA (полоска знизу) -->
@@ -2194,7 +2199,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '167-ddd84d1';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3580,11 +3585,20 @@ async function playAzureAudio(url, onEnd, gen){
   const finish = (src)=>{
     if(_done) return; _done = true;
     clearTimeout(wdog);
+    // Якщо це вже не активне відтворення (скасоване через stopTTS/новий
+    // виклик speak() для іншої картки/поля) — НЕ торкаємось спільного
+    // <audio> елемента. Інакше застарілий watchdog (15с) міг через
+    // a.removeAttribute('src') перервати ВЖЕ ІНШЕ, актуальне відтворення,
+    // яке встигло стартувати на тому ж спільному елементі.
+    if(playGen !== gen){
+      logErr('audio:stale','ignored '+src,fname);
+      return;
+    }
     if(currentAudio === a) currentAudio = null;
     // iOS: очищаємо src щоб звільнити аудіо-сесію
     try{ a.pause(); a.removeAttribute('src'); a.load(); }catch(e){}
     logErr('audio:ok', src, fname);
-    if(playGen === gen) onEnd && onEnd();
+    onEnd && onEnd();
   };
   const wdog = setTimeout(()=>{ logErr('audio:watchdog','15s',fname); finish('wdog'); }, 15000);
 
@@ -6898,6 +6912,7 @@ function lfStartSBLearn(){
   if(_lpLearn) _lpLearn.style.display = 'flex';
   if(_lpPrac)  _lpPrac.style.display  = 'none';
   if(_lpExam)  _lpExam.style.display  = 'none';
+  if(_lpLearn) _lpLearn.classList.add('lesson-fullcard');
 
   sbApplyLangUI();
   sbRenderLearn();
@@ -7031,6 +7046,8 @@ function _lfSBLearnDone(){
     var ch = document.getElementById('sb-cat-chips'); if(ch) ch.style.display='';
     var pl = sbVT.querySelector('.vplayer'); if(pl) pl.style.display='';
   }
+  var _lpLearn = document.getElementById('sb-panel-learn');
+  if(_lpLearn) _lpLearn.classList.remove('lesson-fullcard');
   // Знімаємо кнопку Далі якщо залишилась
   var btn = document.getElementById('lf-sb-next-btn');
   if(btn) btn.remove();
@@ -7057,6 +7074,8 @@ function lfStartDlgLearn(){
 
   var dlgTop = document.querySelector('#view-dialogue .vocab-top');
   if(dlgTop) dlgTop.style.display = 'none';
+  var dlgPanel = document.getElementById('dlg-panel-card');
+  if(dlgPanel) dlgPanel.classList.add('lesson-fullcard');
 
   _lfDlg = { flipped: false, played: false };
 
@@ -7139,6 +7158,8 @@ function _lfDlgLearnDone(){
   // Відновлюємо Dialogue-UI для вільного режиму
   var dlgTop = document.querySelector('#view-dialogue .vocab-top');
   if(dlgTop) dlgTop.style.display = '';
+  var dlgPanel = document.getElementById('dlg-panel-card');
+  if(dlgPanel) dlgPanel.classList.remove('lesson-fullcard');
   // Відновлюємо swipe для Dialogue у вільному режимі
   setTimeout(initDialogueSwipe, 50);
   // Повертаємось у vocab (tiles/sb_prac/result чекають там)
@@ -7642,6 +7663,14 @@ function exitLessonFlow(){
   if(resultEl) resultEl.classList.remove('show');
   const vocabTop=document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display='';
+  // Dialogue-вкладка ховається окремим селектором (#view-dialogue .vocab-top) —
+  // відновлюємо її теж, на випадок виходу з уроку прямо на dlg_learn кроці
+  const dlgTop = document.querySelector('#view-dialogue .vocab-top');
+  if(dlgTop) dlgTop.style.display='';
+  // Прибираємо явне розширення картки (lesson-fullcard), якщо вихід стався
+  // прямо під час dlg_learn/sb_learn кроку, не через штатне завершення
+  document.getElementById('dlg-panel-card')?.classList.remove('lesson-fullcard');
+  document.getElementById('sb-panel-learn')?.classList.remove('lesson-fullcard');
   lfSetLessonMode(false);
   switchVocabTab(0);
   showView('lernpfad');
