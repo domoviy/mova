@@ -69,6 +69,10 @@ def clean_text(text):
         return ""
     if isinstance(text, list):
         text = ", ".join(text)
+    
+    # Видаляємо лише самі теги <g> та </g>, залишаючи вміст
+    text = text.replace('<g>', '').replace('</g>', '')
+    
     text = re.sub(r'<[^>]+>', ' ', text)
     text = text.replace('\n', ' ').replace('\r', ' ')
     text = text.replace('/', ' ')
