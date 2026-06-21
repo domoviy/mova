@@ -2200,7 +2200,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '173-febebb7';
+const APP_VERSION = '1.2.7';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3439,6 +3439,34 @@ function srsRate(id, q){
   srsSave(id, {ef, interval, dueDate, lastRated: now, lastQ: q});
   // Smart Review: паралельний запис (не блокує старий SM-2)
   try{ srRecordAnswer(id, q, srGetExamPart(id)); }catch(e){}
+  return {ef, interval, dueDate};
+}
+
+// Пасивне прослуховування картки (авто-плей, без свайпу-оцінки користувача).
+// Дає м'який позитивний SM-2-прогрес — слабший за активне «Знаю» (q=5):
+// EF рахуємо як q≈4 (трохи менший приріст легкості), а інтервал додатково
+// демпфуємо ×0.85, щоб картка «спливла» на повторення трохи раніше, ніж
+// після свідомої оцінки. lastQ/history НЕ записуємо — це не явна відповідь,
+// тож в SRS-бейджі/дашборді це не повинно виглядати як «оцінена картка».
+function srsRatePassive(id){
+  const d = srsLoad(id);
+  let ef       = d.ef       ?? SRS_DEFAULT_EF;
+  let interval = d.interval ?? 0;
+  const now    = Date.now();
+  const PASSIVE_Q = 4; // між «невпевнений» (3) і «знаю» (5)
+
+  ef = ef + (0.1 - (5-PASSIVE_Q) * (0.08 + (5-PASSIVE_Q) * 0.02));
+  if(ef < SRS_MIN_EF) ef = SRS_MIN_EF;
+  if(ef > 2.5)        ef = 2.5;
+
+  if(interval === 0)      interval = 1;
+  else if(interval === 1) interval = 4;
+  else                    interval = Math.round(interval * ef);
+
+  interval = Math.max(1, Math.round(interval * 0.85)); // демпфер — слабший прогрес ніж активне «Знаю»
+
+  const dueDate = now + interval * 86400000;
+  srsSave(id, {...d, ef, interval, dueDate, lastRated: now}); // lastQ свідомо не оновлюємо
   return {ef, interval, dueDate};
 }
 
@@ -7827,7 +7855,10 @@ function toggleVocab(){ unlockAudioCtx();
         if(!V.playing||V.paused)return;
         saveCardPlay(v.id);V.repeatCount++;
         if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
-        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+        else{
+          if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
+          V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);
+        }
       });
     } else {
       playVocabNext();
@@ -7865,7 +7896,7 @@ function playVocabNext(){
     }
     V.queue=buildVocabQueue();V.idx=0;V.repeatCount=0;
   }
-  if(V.repeatCount===0){V.flipped=false;renderVocabCard();}
+  if(V.repeatCount===0){V.flipped=false;V.srsRating=null;renderVocabCard();}
   else{V.flipped=false;document.getElementById('flashcard').classList.remove('flipped');}
   const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;playVocabNext();return;}
   const al=getActiveLangs();
@@ -7884,6 +7915,9 @@ function playVocabNext(){
         if(V.repeatCount<V.repeats){
           V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
         } else {
+          // Картку повністю прослухано і жодного свайпу-оцінки не було —
+          // м'який пасивний SRS-прогрес (слабший за активне «Знаю»).
+          if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
           V.repeatCount=0;V.idx++;
           V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
         }
@@ -8344,6 +8378,7 @@ function initDialogueSwipe(){
 // ── SM-2 SWIPE HANDLER (↑ не знаю · ↓ знаю) ────────────────────
 function dlgSrsSwipe(q){
   const d=D.queue[D.idx]; if(!d) return;
+  D.srsRating = q;
   const result=srsRate(d.id, q);
 
   // Бейдж «нова картка» вже невірний одразу після оцінки — ховаємо без очікування ререндеру
@@ -8393,7 +8428,10 @@ function toggleDialogue(){ unlockAudioCtx();
         if(!D.playing||D.paused) return;
         saveCardPlay(d.id); D.repeatCount++;
         if(D.repeatCount<V.repeats){ D.timer=setTimeout(()=>{ if(D.playing&&!D.paused) playDialogueNext(); },V.readPause); }
-        else{ D.repeatCount=0; D.idx++; D.timer=setTimeout(()=>{ if(D.playing&&!D.paused) playDialogueNext(); },V.readPause); }
+        else{
+          if(D.srsRating==null && srsDue(d.id)){ try{ srsRatePassive(d.id); }catch(e){} }
+          D.repeatCount=0; D.idx++; D.timer=setTimeout(()=>{ if(D.playing&&!D.paused) playDialogueNext(); },V.readPause);
+        }
       });
     } else {
       playDialogueNext();
@@ -8410,7 +8448,7 @@ function playDialogueNext(){
   const guard=()=>D.playing && !D.paused && cardGen===ticket;
 
   if(D.idx>=D.queue.length){ D.queue=buildDialogueQueue(); D.idx=0; D.repeatCount=0; }
-  if(D.repeatCount===0){ D.flipped=false; renderDialogueCard(); }
+  if(D.repeatCount===0){ D.flipped=false; D.srsRating=null; renderDialogueCard(); }
   else{ D.flipped=false; document.getElementById('dlg-flashcard').classList.remove('flipped'); }
   const d=D.queue[D.idx]; if(!d){ D.idx++; D.repeatCount=0; playDialogueNext(); return; }
   const al=getActiveDialogueLangs();
@@ -8424,6 +8462,8 @@ function playDialogueNext(){
       if(D.repeatCount<V.repeats){
         D.timer=setTimeout(()=>{ if(guard()) playDialogueNext(); }, V.readPause);
       } else {
+        // Картку повністю прослухано без свайпу-оцінки — м'який пасивний прогрес
+        if(D.srsRating==null && srsDue(d.id)){ try{ srsRatePassive(d.id); }catch(e){} }
         D.repeatCount=0; D.idx++;
         D.timer=setTimeout(()=>{ if(guard()) playDialogueNext(); }, V.readPause);
       }
@@ -8548,7 +8588,10 @@ function toggleVocab(){ unlockAudioCtx();
         if(!V.playing||V.paused)return;
         saveCardPlay(v.id);V.repeatCount++;
         if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
-        else{V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
+        else{
+          if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
+          V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);
+        }
       });
     } else {
       playVocabNext();
