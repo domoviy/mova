@@ -2200,7 +2200,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '178-153922a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3516,7 +3516,11 @@ async function init(){
   // у плеєрах ще до першого рендеру UI
   syncLangsToVisible();
 
-  await loadVoices();
+  // Маніфест аудіо-хешів вантажимо паралельно з голосами Web Speech —
+  // обидва незалежні мережеві/системні операції, немає сенсу чекати
+  // одне на інше. Якщо мережі немає — loadAudioManifest() сама впаде
+  // у фолбек на Cache Storage і не заблокує запуск додатку.
+  await Promise.all([ loadVoices(), loadAudioManifest() ]);
   // Синхронізуємо слайдери із збереженими значеннями
   const sp=document.getElementById('vspeed');if(sp){sp.value=V.speed;document.getElementById('vspv').textContent=V.speed.toFixed(1)+'×';}
   const rp=document.getElementById('vrepeats');if(rp){rp.value=V.repeats;document.getElementById('vrpv2').textContent=V.repeats+'×';}
@@ -3618,7 +3622,7 @@ async function loadVoices(){
     else{speechSynthesis.onvoiceschanged=load;setTimeout(load,1200);}
   });
 }
-// ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
+// ── AUDIO: Pre-generated (TTS) + Web Speech fallback ──────────
 let currentAudio = null; // HTML Audio fallback
 let playGen = 0;  // інкрементується при кожному stop → скасовує усі in-flight колбеки
 let cardGen  = 0;  // окремий лічильник для карток — не конфліктує з аудіо playGen
@@ -3635,9 +3639,17 @@ function getAudioUrl(cardId, field, lang){
   return `audio/${course}/${lang}/${speed}/${cat}/${cardId}_${field}_${lang}_${speed}.mp3`;
 }
 
+// mkey з gen_audio.py: {course}/{lang}/{rate}/{cat}/{id}_{field}_{lang}_{rate}
+// — це точно той самий шлях, що в getAudioUrl(), без префіксу "audio/"
+// і без розширення ".mp3". Похідна функція, а не окремий розрахунок,
+// щоб формат не міг розійтись між сервером і клієнтом.
+function urlToAudioMkey(url){
+  return url.replace(/^audio\//, '').replace(/\.mp3$/, '');
+}
+
 // fetchAudioBlob → замінено на fetchAudioBuffer (Web Audio API)
 
-async function playAzureAudio(url, onEnd, gen){
+async function playPregenAudio(url, onEnd, gen){
   // Зупиняємо попереднє відтворення
   const a = getSharedAudio();
   a.pause();
@@ -3645,9 +3657,10 @@ async function playAzureAudio(url, onEnd, gen){
   currentAudio = null;
 
   const fname = url.split('/').slice(-1)[0];
-  logErr('audio:try','→ Azure',fname);
+  logErr('audio:try','→ pregen',fname);
 
-  const blobUrl = await fetchBlobUrl(url);
+  const mkey = urlToAudioMkey(url);
+  const blobUrl = await fetchBlobUrl(url, 8000, mkey);
 
   if(playGen !== gen){ logErr('audio:gen','cancelled',fname); return; }
   if(!blobUrl){
@@ -3701,12 +3714,12 @@ async function playAzureAudio(url, onEnd, gen){
   }
 }
 
-async function tryAzureThenSpeech(text, lang, safeEnd, url, gen){
+async function tryPregenThenSpeech(text, lang, safeEnd, url, gen){
   const fname = url.split('/').slice(-1)[0];
-  await new Promise(resolve => { playAzureAudio(url, resolve, gen); });
+  await new Promise(resolve => { playPregenAudio(url, resolve, gen); });
   if(playGen !== gen){ logErr('audio:gen','skip fallback',fname); return; }
   if(audioBlobCache.has(url)){
-    logErr('audio:done','Azure ok',fname);
+    logErr('audio:done','pregen ok',fname);
     safeEnd();
   } else {
     logErr('audio:fallback','→ WebSpeech',fname);
@@ -3747,12 +3760,16 @@ async function speak(text, lang, onEnd, cardId, field){
 
   if(cardId && field){
     const url = getAudioUrl(cardId, field, lang);
+    const mkey = urlToAudioMkey(url);
     const fname = url.split('/').slice(-1)[0];
 
-    // Blob вже є → одразу Azure (без затримки)
-    if(audioBlobCache.has(url)){
-      logErr('speak','cached → Azure',fname);
-      tryAzureThenSpeech(text, lang, safeEnd, url, gen);
+    // Blob вже є, але хеш застарів → не довіряємо "cached", йдемо в fetch-шлях нижче
+    const cachedAndValid = audioBlobCache.has(url) && isAudioCacheValid(url, mkey);
+
+    // Blob вже є → одразу pregen-аудіо (без затримки)
+    if(cachedAndValid){
+      logErr('speak','cached → pregen',fname);
+      tryPregenThenSpeech(text, lang, safeEnd, url, gen);
       return;
     }
     // Файл точно 404 → одразу WebSpeech
@@ -3760,11 +3777,11 @@ async function speak(text, lang, onEnd, cardId, field){
       logErr('speak','404 → WebSpeech',fname);
       webSpeech(text, lang, safeEnd); return;
     }
-    // Перший раз: чекаємо blob до 800ms → якщо прийшов → Azure
+    // Перший раз: чекаємо blob до 800ms → якщо прийшов → pregen-аудіо
     //             якщо ні → WebSpeech паралельно поки blob кешується
     logErr('speak','waiting for blob',fname);
     _priorityFetchActive++;
-    const fetchPromise = fetchBlobUrl(url).finally(()=>{ _priorityFetchActive--; });
+    const fetchPromise = fetchBlobUrl(url, 8000, mkey).finally(()=>{ _priorityFetchActive--; });
     const raceResult = await Promise.race([
       fetchPromise,
       new Promise(res => setTimeout(()=>res(null), 800))
@@ -3773,14 +3790,14 @@ async function speak(text, lang, onEnd, cardId, field){
     if(playGen !== gen) return; // скасовано поки чекали
 
     if(raceResult){
-      // Blob прийшов за <800ms → Azure
-      logErr('speak','blob→ Azure',fname);
-      tryAzureThenSpeech(text, lang, safeEnd, url, gen);
+      // Blob прийшов за <800ms → pregen-аудіо
+      logErr('speak','blob→ pregen',fname);
+      tryPregenThenSpeech(text, lang, safeEnd, url, gen);
     } else {
       // >800ms → WebSpeech, але продовжуємо чекати blob ще 4200ms
       logErr('speak','timeout→ WebSpeech',fname);
       // Якщо blob прийде поки WebSpeech ще говорить — нічого,
-      // наступного разу цей файл буде з кешу → Azure
+      // наступного разу цей файл буде з кешу → pregen-аудіо
       fetchPromise.catch(()=>{});
       webSpeech(text, lang, safeEnd);
     }
@@ -4537,8 +4554,11 @@ function matchMakeBtn(cardId, side, text){
 function matchPrefetchAudio(cards){
   cards.forEach(c => {
     const url = getAudioUrl(c.id, 'term', 'de');
-    if(!audioBlobCache.has(url) && audioExistsCache.get(url) !== '404'){
-      fetchBlobUrl(url).catch(()=>{});
+    const mkey = urlToAudioMkey(url);
+    // Якщо вже закешовано і хеш валідний — нічого не робимо (нуль трафіку).
+    // Якщо хеш застарів — fetchBlobUrl сам інвалідує і перезапросить.
+    if((!audioBlobCache.has(url) || !isAudioCacheValid(url, mkey)) && audioExistsCache.get(url) !== '404'){
+      fetchBlobUrl(url, 8000, mkey).catch(()=>{});
     }
   });
 }
@@ -5273,7 +5293,8 @@ function mcShowCard(){
   const nextCard = mcState.cards[mcState.idx + 1];
   if(nextCard){
     const nextUrl = getAudioUrl(nextCard.id, 'term', 'de');
-    if(!audioBlobCache.has(nextUrl)) fetchBlobUrl(nextUrl).catch(()=>{});
+    const nextMkey = urlToAudioMkey(nextUrl);
+    if(!audioBlobCache.has(nextUrl) || !isAudioCacheValid(nextUrl, nextMkey)) fetchBlobUrl(nextUrl, 8000, nextMkey).catch(()=>{});
   }
 }
 
@@ -5399,8 +5420,9 @@ function tilesShowCard(){
   // Prefetch DE audio for this card sentence into blob cache
   try {
     const audioUrl = getAudioUrl(card.id, 'sentence', 'de');
-    if(!audioBlobCache.has(audioUrl) && audioExistsCache.get(audioUrl) !== '404'){
-      fetchBlobUrl(audioUrl).catch(()=>{});
+    const audioMkey = urlToAudioMkey(audioUrl);
+    if((!audioBlobCache.has(audioUrl) || !isAudioCacheValid(audioUrl, audioMkey)) && audioExistsCache.get(audioUrl) !== '404'){
+      fetchBlobUrl(audioUrl, 8000, audioMkey).catch(()=>{});
     }
   } catch(e) {}
 
@@ -6100,7 +6122,7 @@ function spShowCard(){
 
   // mp3
   const url = getAudioUrl(card.id, 'term', 'de');
-  playAzureAudio(url, null, ++playGen);
+  playPregenAudio(url, null, ++playGen);
 }
 
 function spReset(){
@@ -6346,7 +6368,7 @@ function spRetry(){
   spRenderTermWords(spState.cards[spState.idx]);
   spReset();
   const url = getAudioUrl(spState.cards[spState.idx].id, 'term', 'de');
-  playAzureAudio(url, null, ++playGen);
+  playPregenAudio(url, null, ++playGen);
 }
 
 function spShowFinish(){
@@ -6514,8 +6536,102 @@ let currentSource  = null;   // не використовується, для с
 
 // Кеш blob URLs: url → blobURL
 const audioBlobCache  = new Map();
-// audioBufferCache не потрібен, але залишаємо для tryAzureThenSpeech
+// audioBufferCache не потрібен, але залишаємо для tryPregenThenSpeech
 const audioBufferCache = new Map();
+
+// ── AUDIO MANIFEST: хеш-перевірка актуальності кешованих файлів ──
+// audioManifest: {mkey: hash} — завантажується ОДИН РАЗ при старті
+// (network-first, з фолбеком на Cache Storage при офлайні) і живе
+// в пам'яті всю сесію. Якщо завантажити не вдалось (немає мережі і
+// немає кешованої копії) — лишається null, і вся перевірка хешів
+// просто пропускається (довіряємо тому, що вже закешовано — це
+// збігається зі звичною офлайн-поведінкою додатку).
+let audioManifest = null;
+
+// Локальний реєстр {mkey: hash} того, що реально підтверджено як
+// закешоване з ЦИМ САМЕ хешем. На відміну від audioBlobCache (живе
+// тільки в пам'яті сторінки), цей реєстр лежить у localStorage і
+// переживає перезавантаження — інакше довелось би звіряти кожен файл
+// з мережею повторно після кожного refresh.
+const AUDIO_HASH_REGISTRY_KEY = 'mova_audio_hash_registry';
+let audioHashRegistry = null;
+
+function loadAudioHashRegistry(){
+  if(audioHashRegistry) return audioHashRegistry;
+  try{
+    audioHashRegistry = JSON.parse(localStorage.getItem(AUDIO_HASH_REGISTRY_KEY) || '{}');
+  }catch(e){
+    audioHashRegistry = {};
+  }
+  return audioHashRegistry;
+}
+
+function saveAudioHashRegistryEntry(mkey, hash){
+  const reg = loadAudioHashRegistry();
+  reg[mkey] = hash;
+  try{ localStorage.setItem(AUDIO_HASH_REGISTRY_KEY, JSON.stringify(reg)); }catch(e){}
+}
+
+// Завантажує audio/manifest.json. Викликається один раз з init().
+async function loadAudioManifest(){
+  try{
+    const resp = await fetch('audio/manifest.json', {cache:'no-store'});
+    if(resp.ok){
+      audioManifest = await resp.json();
+      logErr('audio:manifest','loaded '+Object.keys(audioManifest).length+' keys','');
+      pruneAudioHashRegistry();
+    }
+  }catch(e){
+    logErr('audio:manifest','fetch failed: '+e.message,'');
+    // Немає мережі при старті — пробуємо взяти те, що SW вже міг
+    // закешувати раніше (network-first з фолбеком саме для цього).
+    try{
+      const cached = await caches.match('audio/manifest.json');
+      if(cached){ audioManifest = await cached.json(); }
+    }catch(e2){}
+  }
+}
+
+// Прибирає з локального реєстру записи, яких більше немає в маніфесті
+// (картку видалили з бази) — щоб localStorage не накопичував сміття
+// після кожного редагування B2-Beruf.js.
+function pruneAudioHashRegistry(){
+  if(!audioManifest) return;
+  const reg = loadAudioHashRegistry();
+  let changed = false;
+  for(const mkey of Object.keys(reg)){
+    if(!(mkey in audioManifest)){ delete reg[mkey]; changed = true; }
+  }
+  if(changed){
+    try{ localStorage.setItem(AUDIO_HASH_REGISTRY_KEY, JSON.stringify(reg)); }catch(e){}
+  }
+}
+
+// Перевіряє, чи закешована версія файлу (url) досі актуальна за хешем
+// з маніфесту. true  → можна довіряти кешу як є, фетч не потрібен.
+// false → кеш застарів (або немає інформації) — caller має примусово
+// перезапросити файл з мережі.
+// Якщо маніфест взагалі не завантажився — повертає true (не блокуємо
+// офлайн-роботу додатку перевіркою, якої не можемо виконати).
+function isAudioCacheValid(url, mkey){
+  if(!audioManifest) return true;
+  const currentHash = audioManifest[mkey];
+  if(!currentHash) return true; // ключа нема в маніфесті — не наша справа тут
+  const reg = loadAudioHashRegistry();
+  return reg[mkey] === currentHash;
+}
+
+// Примусово видаляє застарілий запис із persistent Cache Storage,
+// щоб наступний fetch() у sw.js (правило cache-first для mp3) реально
+// пішов у мережу, а не повернув те, що вже там лежить.
+async function invalidateAudioCacheEntry(url){
+  try{
+    if('caches' in window){
+      const keys = await caches.keys();
+      await Promise.all(keys.map(k => caches.open(k).then(c => c.delete(url))));
+    }
+  }catch(e){}
+}
 
 function getSharedAudio(){
   if(!_sharedAudio){
@@ -6553,8 +6669,21 @@ function initAudioUnlock(){
   document.addEventListener('mousedown',  handler, {capture:true, passive:true});
 }
 
-// Завантажує і кешує blob URL з детальним логуванням
-async function fetchBlobUrl(url, timeoutMs=8000){
+// Завантажує і кешує blob URL з детальним логуванням.
+// mkey (опціонально) — ключ з audio/manifest.json для перевірки хешу:
+// якщо закешована версія застаріла, in-memory кеш і persistent Cache
+// Storage примусово інвалідуються ПЕРЕД фетчем, щоб мережа дала нову
+// версію файлу одразу, а не "на наступний раз".
+async function fetchBlobUrl(url, timeoutMs=8000, mkey=null){
+  if(mkey && audioBlobCache.has(url) && !isAudioCacheValid(url, mkey)){
+    logErr('audio:stale-hash','invalidating',url.split('/').slice(-1)[0]);
+    const oldBlobUrl = audioBlobCache.get(url);
+    try{ URL.revokeObjectURL(oldBlobUrl); }catch(e){}
+    audioBlobCache.delete(url);
+    audioExistsCache.delete(url);
+    await invalidateAudioCacheEntry(url);
+  }
+
   if(audioBlobCache.has(url)) return audioBlobCache.get(url);
   // Кешуємо тільки справжні 404, не timeout/network
   if(audioExistsCache.get(url) === '404') return null;
@@ -6583,6 +6712,9 @@ async function fetchBlobUrl(url, timeoutMs=8000){
     const blobUrl = URL.createObjectURL(blob);
     audioBlobCache.set(url, blobUrl);
     audioExistsCache.set(url, true);
+    if(mkey && audioManifest && audioManifest[mkey]){
+      saveAudioHashRegistryEntry(mkey, audioManifest[mkey]);
+    }
     logErr('audio:fetched','✓',fname);
     return blobUrl;
   }catch(e){
@@ -6668,9 +6800,10 @@ async function prefetchCardSequential(card, afterDone){
     // Завантажуємо всі мови для поточного поля паралельно (вони короткі)
     await Promise.all(langs.map(lang => {
       const url = getAudioUrl(card.id, field, lang);
-      if(audioBlobCache.has(url) || audioExistsCache.get(url) === '404')
-        return Promise.resolve(); // вже є або 404 — пропускаємо
-      return fetchBlobUrl(url).catch(()=>{});
+      const mkey = urlToAudioMkey(url);
+      if((audioBlobCache.has(url) && isAudioCacheValid(url, mkey)) || audioExistsCache.get(url) === '404')
+        return Promise.resolve(); // вже є й актуальне, або 404 — пропускаємо
+      return fetchBlobUrl(url, 8000, mkey).catch(()=>{});
     }));
   }
 
@@ -9509,8 +9642,9 @@ function sbRenderPrac() {
 function sbPrefetchAudio(cardId, field) {
   try {
     const url = getAudioUrl(cardId, field, 'de');
-    if (!audioBlobCache.has(url) && audioExistsCache.get(url) !== '404') {
-      fetchBlobUrl(url).catch(()=>{});
+    const mkey = urlToAudioMkey(url);
+    if ((!audioBlobCache.has(url) || !isAudioCacheValid(url, mkey)) && audioExistsCache.get(url) !== '404') {
+      fetchBlobUrl(url, 8000, mkey).catch(()=>{});
     }
   } catch(e) {}
 }

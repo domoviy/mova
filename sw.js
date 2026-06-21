@@ -1,6 +1,6 @@
 // sw.js — Service Worker для MOVA PWA
 // CACHE_VERSION оновлюється автоматично GitHub Actions при кожному деплої
-const CACHE_VERSION = '178-153922a';
+const CACHE_VERSION = '177-52a5d5f';
 const CACHE_NAME = `mova-${CACHE_VERSION}`;
 
 const PRECACHE = [
@@ -63,6 +63,44 @@ self.addEventListener('fetch', event => {
           return res;
         })
         .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Network First: audio/manifest.json — джерело правди для хешів аудіо.
+  // Застаріла відповідь тут означає неправильне рішення "кеш чи мережа"
+  // для самих mp3-файлів, тому, на відміну від звичайних ресурсів,
+  // ми НЕ показуємо стару версію поки паралельно йде оновлення —
+  // чекаємо мережу і лише при її відсутності падаємо в кеш (офлайн).
+  if (url.pathname.endsWith('/audio/manifest.json')) {
+    event.respondWith(
+      fetch(event.request)
+        .then(res => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
+          return res;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // Cache First: audio/*.mp3 — самі аудіофайли не інвалідуються тут.
+  // Актуальність перевіряється на клієнті через хеш з manifest.json
+  // (index.html сам вирішує, коли обійти цей кеш і перезапросити файл
+  // з мережі при зміні хешу). SW лише віддає те, що просять, і кешує
+  // нові завантаження — це мінімізує трафік для тисяч mp3-файлів.
+  if (url.pathname.includes('/audio/') && url.pathname.endsWith('.mp3')) {
+    event.respondWith(
+      caches.match(event.request).then(cached =>
+        cached || fetch(event.request).then(res => {
+          if (res.ok) {
+            const clone = res.clone();
+            caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
+          }
+          return res;
+        })
+      )
     );
     return;
   }
