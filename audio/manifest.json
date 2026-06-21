@@ -24175,5 +24175,8 @@
   "B2-Beruf/de/080/kor/kor_001_short_de_080": true,
   "B2-Beruf/en/100/kor/kor_001_short_en_100": true,
   "B2-Beruf/uk/100/kor/kor_001_short_uk_100": true,
-  "B2-Beruf/ru/100/kor/kor_001_short_ru_100": true
+  "B2-Beruf/ru/100/kor/kor_001_short_ru_100": true,
+  "B2-Beruf/ru/100/kor/kor_001_def_ru_100": true,
+  "B2-Beruf/ru/100/kor/kor_002_term_ru_100": true,
+  "B2-Beruf/de/100/kor/kor_002_short_de_100": true
 }
