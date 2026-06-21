@@ -2134,17 +2134,6 @@ body.lesson-active .vocab-top{
     </div>
     </div>
 
-    <!-- 8. Голоси -->
-    <div class="ssec">
-    <h3>🎙 <span data-i18n="sec_voices">TTS Stimmen</span></h3>
-    <div class="srow"><div class="srow-label"><label>🇩🇪 Deutsch</label><small>z.B. Anna</small></div><select id="vde" onchange="VP.de=this.value;saveVP()"></select></div>
-    <div class="srow"><div class="srow-label"><label>🇬🇧 English</label><small>z.B. Ava, Siri</small></div><select id="ven" onchange="VP.en=this.value;saveVP()"></select></div>
-    <div class="srow"><div class="srow-label"><label>🇺🇦 Українська</label><small>z.B. Lesya</small></div><select id="vuk" onchange="VP.uk=this.value;saveVP()"></select></div>
-    <div class="srow"><div class="srow-label"><label>🇷🇺 Русский</label><small>z.B. Irina</small></div><select id="vru" onchange="VP.ru=this.value;saveVP()"></select></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reload">Stimmen neu laden</label></div><button class="btn btn-s" onclick="reloadVoices()" data-i18n-btn="btn_reload">↻ Neu laden</button></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reset">Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
-    </div>
-
     <!-- 9. Налагодження -->
     <div class="ssec">
     <h3>🛠 <span data-i18n="sec_debug">Debug</span></h3>
@@ -2200,7 +2189,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '181-bb03708';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2305,6 +2294,7 @@ const I18N = {
     favs_empty:'Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.',
     settings_title:'⚙️ Einstellungen',
     sec_playback:'Wiedergabe',
+    audio_unavailable:'Audio nicht verfügbar — bitte selbst lesen',
     lbl_repeats:'Wiederholungen', sub_repeats:'Zyklen pro Karte',
     lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
@@ -2313,9 +2303,6 @@ const I18N = {
     lbl_readpause:'Lesepause', sub_readpause:'Nach dem Umdrehen',
     lbl_trate:'Sprechrate', sub_trate:'Manuelles Vorlesen',
     btn_slow:'🐢 Langsam', btn_normal:'▶ Normal',
-    sec_voices:'TTS Stimmen',
-    lbl_voices_reload:'Stimmen neu laden', btn_reload:'↻ Neu laden',
-    lbl_voices_reset:'Zurücksetzen', btn_reset:'🗑 Reset',
     sec_streak:'Lernziel & Streak',
     lbl_today:'Heute', lbl_total:'Gesamt',
     lbl_goal:'Tagesziel', sub_goal:'Karten pro Tag',
@@ -2324,7 +2311,7 @@ const I18N = {
     lbl_data_reset:'Karteistatistik löschen', sub_data_reset:'Play-Zähler zurücksetzen',
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
-    sec_voices:'Stimmen', sec_debug:'Fehlersuche', sec_lang:'Sprache',
+    sec_debug:'Fehlersuche', sec_lang:'Sprache',
     nav_lernpfad:'Path', nav_sb:'Sprachbau',
     lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
     lp_cards:'cards', lp_of:'of',
@@ -2386,6 +2373,7 @@ const I18N = {
     favs_empty:'Ще немає закладок.<br>Натисни ☆ на картці.',
     settings_title:'⚙️ Налаштування',
     sec_playback:'Відтворення',
+    audio_unavailable:'Аудіо недоступне — прочитайте самостійно',
     lbl_repeats:'Повторення', sub_repeats:'Циклів на картку',
     lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
@@ -2394,9 +2382,6 @@ const I18N = {
     lbl_readpause:'Пауза читання', sub_readpause:'Після перевертання',
     lbl_trate:'Швидкість мовлення', sub_trate:'Ручне відтворення',
     btn_slow:'🐢 Повільно', btn_normal:'▶ Нормально',
-    sec_voices:'Голоси TTS',
-    lbl_voices_reload:'Перезавантажити голоси', btn_reload:'↻ Оновити',
-    lbl_voices_reset:'Скинути', btn_reset:'🗑 Скинути',
     sec_streak:'Ціль і серія',
     lbl_today:'Сьогодні', lbl_total:'Всього',
     lbl_goal:'Денна ціль', sub_goal:'Карток на день',
@@ -2405,7 +2390,7 @@ const I18N = {
     lbl_data_reset:'Очистити статистику', sub_data_reset:'Скинути лічильник',
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
-    sec_voices:'Голоси', sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
+    sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
     nav_lernpfad:'Шлях', nav_sb:'Sprachbau',
     lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
     lp_cards:'карток', lp_of:'з',
@@ -2462,6 +2447,7 @@ const I18N = {
     favs_empty:'No favorites yet.<br>Tap ☆ on a card.',
     settings_title:'⚙️ Settings',
     sec_playback:'Playback',
+    audio_unavailable:'Audio unavailable — please read it yourself',
     lbl_repeats:'Repetitions', sub_repeats:'Cycles per card',
     lbl_tempo_de:'🇩🇪 Speed', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Speed', sub_tempo_en:'English',
@@ -2470,9 +2456,6 @@ const I18N = {
     lbl_readpause:'Reading pause', sub_readpause:'After flip',
     lbl_trate:'Speech rate', sub_trate:'Manual playback',
     btn_slow:'🐢 Slow', btn_normal:'▶ Normal',
-    sec_voices:'TTS Voices',
-    lbl_voices_reload:'Reload voices', btn_reload:'↻ Reload',
-    lbl_voices_reset:'Reset', btn_reset:'🗑 Reset',
     sec_streak:'Goal & Streak',
     lbl_today:'Today', lbl_total:'Total',
     lbl_goal:'Daily goal', sub_goal:'Cards per day',
@@ -2481,7 +2464,7 @@ const I18N = {
     lbl_data_reset:'Clear card stats', sub_data_reset:'Reset play counter',
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
-    sec_voices:'Voices', sec_debug:'Debug', sec_lang:'Interface Language',
+    sec_debug:'Debug', sec_lang:'Interface Language',
     nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
@@ -2539,6 +2522,7 @@ const I18N = {
     favs_empty:'Нет закладок.<br>Нажми ☆ на карточке.',
     settings_title:'⚙️ Настройки',
     sec_playback:'Воспроизведение',
+    audio_unavailable:'Аудио недоступно — прочитайте самостоятельно',
     lbl_repeats:'Повторения', sub_repeats:'Циклов на карточку',
     lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
@@ -2547,9 +2531,6 @@ const I18N = {
     lbl_readpause:'Пауза чтения', sub_readpause:'После переворота',
     lbl_trate:'Скорость речи', sub_trate:'Ручное воспроизведение',
     btn_slow:'🐢 Медленно', btn_normal:'▶ Нормально',
-    sec_voices:'Голоса TTS',
-    lbl_voices_reload:'Перезагрузить голоса', btn_reload:'↻ Обновить',
-    lbl_voices_reset:'Сбросить', btn_reset:'🗑 Сбросить',
     sec_streak:'Цель и серия',
     lbl_today:'Сегодня', lbl_total:'Всего',
     lbl_goal:'Дневная цель', sub_goal:'Карточек в день',
@@ -2558,7 +2539,7 @@ const I18N = {
     lbl_data_reset:'Очистить статистику', sub_data_reset:'Сбросить счётчик',
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
-    sec_voices:'Голоса', sec_debug:'Отладка', sec_lang:'Язык интерфейса',
+    sec_debug:'Отладка', sec_lang:'Язык интерфейса',
     nav_lernpfad:'Путь', nav_sb:'Sprachbau',
     lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
     lp_cards:'карточек', lp_of:'из',
@@ -2722,8 +2703,6 @@ function applyI18n(){
 
 
 
-let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
-let vs={};
 // LC визначено в файлі курсу (B2-Beruf.js тощо)
 
 // Відновлюємо всі збережені налаштування
@@ -3516,11 +3495,11 @@ async function init(){
   // у плеєрах ще до першого рендеру UI
   syncLangsToVisible();
 
-  // Маніфест аудіо-хешів вантажимо паралельно з голосами Web Speech —
-  // обидва незалежні мережеві/системні операції, немає сенсу чекати
-  // одне на інше. Якщо мережі немає — loadAudioManifest() сама впаде
-  // у фолбек на Cache Storage і не заблокує запуск додатку.
-  await Promise.all([ loadVoices(), loadAudioManifest() ]);
+  // Маніфест аудіо-хешів вантажимо одразу при старті — джерело правди
+  // для вирішення "кеш чи мережа" для кожного pregen-аудіофайлу.
+  // Якщо мережі немає — loadAudioManifest() сама впаде у фолбек на
+  // Cache Storage і не заблокує запуск додатку.
+  await loadAudioManifest();
   // Синхронізуємо слайдери із збереженими значеннями
   const sp=document.getElementById('vspeed');if(sp){sp.value=V.speed;document.getElementById('vspv').textContent=V.speed.toFixed(1)+'×';}
   const rp=document.getElementById('vrepeats');if(rp){rp.value=V.repeats;document.getElementById('vrpv2').textContent=V.repeats+'×';}
@@ -3531,7 +3510,6 @@ async function init(){
   if(sb){sb.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
   const dsb=document.getElementById('dlgshuffle-btn');
   if(dsb){dsb.classList.remove('smart','shuffle');const dcfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[D.mode]||{icon:'🧠',cls:'smart'};dsb.textContent=dcfg.icon;if(dcfg.cls)dsb.classList.add(dcfg.cls);}
-  initVoiceSelects();
   loadFontSize();
   initVocab();
   initVocabChips();
@@ -3605,24 +3583,7 @@ async function init(){
 
 
 
-// ── TTS ───────────────────────────────────────────────────────
-async function loadVoices(){
-  return new Promise(res=>{
-    const load=()=>{
-      const all=speechSynthesis.getVoices();
-      ['de','en','uk','ru'].forEach(l=>{
-        if(VP[l]){const f=all.find(v=>v.name===VP[l]);if(f){vs[l]=f;return;}}
-        let found=null;
-        if(typeof LC==='undefined'||!LC[l]){return;} for(const ms of LC[l].ms){found=all.find(v=>v.name.includes(ms));if(found)break;}
-        if(!found)found=all.find(v=>v.lang.startsWith(LC[l].code.split('-')[0]));
-        vs[l]=found||null;
-      });res();
-    };
-    if(speechSynthesis.getVoices().length>0)load();
-    else{speechSynthesis.onvoiceschanged=load;setTimeout(load,1200);}
-  });
-}
-// ── AUDIO: Pre-generated (TTS) + Web Speech fallback ──────────
+// ── AUDIO: Pre-generated (TTS) only — fallback is "read it yourself" ──
 let currentAudio = null; // HTML Audio fallback
 let playGen = 0;  // інкрементується при кожному stop → скасовує усі in-flight колбеки
 let cardGen  = 0;  // окремий лічильник для карток — не конфліктує з аудіо playGen
@@ -3714,19 +3675,6 @@ async function playPregenAudio(url, onEnd, gen){
   }
 }
 
-async function tryPregenThenSpeech(text, lang, safeEnd, url, gen){
-  const fname = url.split('/').slice(-1)[0];
-  await new Promise(resolve => { playPregenAudio(url, resolve, gen); });
-  if(playGen !== gen){ logErr('audio:gen','skip fallback',fname); return; }
-  if(audioBlobCache.has(url)){
-    logErr('audio:done','pregen ok',fname);
-    safeEnd();
-  } else {
-    logErr('audio:fallback','→ WebSpeech',fname);
-    webSpeech(text, lang, safeEnd);
-  }
-}
-
 // Лічильник активних "пріоритетних" завантажень (поточне аудіо картки, що зараз
 // озвучується). Поки > 0, фонові prefetch-запити чекають, щоб не конкурувати
 // за мережу з файлом, який користувач слухає прямо зараз.
@@ -3743,12 +3691,6 @@ function _waitForPriorityClear(){
 }
 
 async function speak(text, lang, onEnd, cardId, field){
-  // Strip special characters that cause TTS artifacts
-  // Strip HTML: replace <br> with space, remove all other tags
-  text = (text||'').replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'')
-    .replace(/[„"‟"«»]/g,'"').replace(/[''‚‛]/g,"'")
-    .replace(/[–—]/g,' ').replace(/­/g,'') // soft hyphen
-    .replace(/[★☆✓✗✅❌🔀🧠📖🎯📝➡]/g,'').trim();
   stopTTS();
   const gen = playGen;
   let _ended = false;
@@ -3758,111 +3700,64 @@ async function speak(text, lang, onEnd, cardId, field){
     if(playGen === gen) onEnd && onEnd();
   };
 
-  if(cardId && field){
-    const url = getAudioUrl(cardId, field, lang);
-    const mkey = urlToAudioMkey(url);
-    const fname = url.split('/').slice(-1)[0];
-
-    // Blob вже є, але хеш застарів → не довіряємо "cached", йдемо в fetch-шлях нижче
-    const cachedAndValid = audioBlobCache.has(url) && isAudioCacheValid(url, mkey);
-
-    // Blob вже є → одразу pregen-аудіо (без затримки)
-    if(cachedAndValid){
-      logErr('speak','cached → pregen',fname);
-      tryPregenThenSpeech(text, lang, safeEnd, url, gen);
-      return;
-    }
-    // Файл точно 404 → одразу WebSpeech
-    if(audioExistsCache.get(url) === '404'){
-      logErr('speak','404 → WebSpeech',fname);
-      webSpeech(text, lang, safeEnd); return;
-    }
-    // Перший раз: чекаємо blob до 800ms → якщо прийшов → pregen-аудіо
-    //             якщо ні → WebSpeech паралельно поки blob кешується
-    logErr('speak','waiting for blob',fname);
-    _priorityFetchActive++;
-    const fetchPromise = fetchBlobUrl(url, 8000, mkey).finally(()=>{ _priorityFetchActive--; });
-    const raceResult = await Promise.race([
-      fetchPromise,
-      new Promise(res => setTimeout(()=>res(null), 800))
-    ]);
-
-    if(playGen !== gen) return; // скасовано поки чекали
-
-    if(raceResult){
-      // Blob прийшов за <800ms → pregen-аудіо
-      logErr('speak','blob→ pregen',fname);
-      tryPregenThenSpeech(text, lang, safeEnd, url, gen);
-    } else {
-      // >800ms → WebSpeech, але продовжуємо чекати blob ще 4200ms
-      logErr('speak','timeout→ WebSpeech',fname);
-      // Якщо blob прийде поки WebSpeech ще говорить — нічого,
-      // наступного разу цей файл буде з кешу → pregen-аудіо
-      fetchPromise.catch(()=>{});
-      webSpeech(text, lang, safeEnd);
-    }
+  if(!cardId || !field){
+    // Без cardId/field немає шляху до pregen-файлу взагалі — нічого
+    // озвучити не можна, повідомляємо і рухаємось далі.
+    notify(t('audio_unavailable'));
+    safeEnd();
     return;
   }
-  webSpeech(text, lang, safeEnd);
+
+  const url = getAudioUrl(cardId, field, lang);
+  const mkey = urlToAudioMkey(url);
+  const fname = url.split('/').slice(-1)[0];
+
+  // Blob вже є, але хеш застарів → не довіряємо "cached", йдемо у фетч нижче
+  const cachedAndValid = audioBlobCache.has(url) && isAudioCacheValid(url, mkey);
+
+  if(cachedAndValid){
+    logErr('speak','cached → pregen',fname);
+    playPregenAudio(url, safeEnd, gen);
+    return;
+  }
+
+  if(audioExistsCache.get(url) === '404'){
+    logErr('speak','404 → no audio',fname);
+    notify(t('audio_unavailable'));
+    safeEnd();
+    return;
+  }
+
+  logErr('speak','waiting for blob',fname);
+  _priorityFetchActive++;
+  const blobUrl = await fetchBlobUrl(url, 8000, mkey).finally(()=>{ _priorityFetchActive--; });
+
+  if(playGen !== gen) return; // скасовано поки чекали
+
+  if(blobUrl){
+    logErr('speak','blob→ pregen',fname);
+    playPregenAudio(url, safeEnd, gen);
+  } else {
+    logErr('speak','fetch failed → no audio',fname);
+    notify(t('audio_unavailable'));
+    safeEnd();
+  }
 }
 
-// Chrome bug: speechSynthesis іноді зависає і не викликає onend.
-// Fix: keepAlive resume() кожні 5с поки говоримо.
-let _wsKeepAlive = null;
-function startWsKeepAlive(){
-  stopWsKeepAlive();
-  _wsKeepAlive = setInterval(()=>{
-    if(speechSynthesis.paused){
-      speechSynthesis.resume();
-      logErr('webSpeech:resume','Chrome pause fix','');
-    }
-  }, 5000);
-}
-function stopWsKeepAlive(){ clearInterval(_wsKeepAlive); _wsKeepAlive=null; }
-
-function webSpeech(text, lang, onEnd){
-  const u = new SpeechSynthesisUtterance(text);
-  u.lang = (typeof LC!=='undefined' ? LC[lang]?.code : null) || {de:'de-DE',en:'en-US',uk:'uk-UA',ru:'ru-RU'}[lang] || 'de-DE';
-  if(vs[lang]) u.voice = vs[lang];
-  const spd = V.langSpeed?.[lang] ?? '100';
-  u.rate = spd === '080' ? 0.8 : 1.0;
-  const t0 = Date.now();
-  logErr('webSpeech:start', lang, text.slice(0,40));
-  let _wsEnded = false;
-  // Watchdog: якщо onend не спрацьовує за 15с → рухаємося далі
-  // НЕ викликаємо cancel() — це вбиває поточний utterance!
-  const wdog = setTimeout(()=>{
-    if(_wsEnded) return; _wsEnded = true;
-    logErr('webSpeech:wdog','15s no onend → skip',lang);
-    stopWsKeepAlive();
-    if(onEnd) onEnd();
-  }, 15000);
-  const wsEnd = (src)=>{
-    if(_wsEnded) return; _wsEnded = true;
-    clearTimeout(wdog);
-    stopWsKeepAlive();
-    const elapsed = Date.now()-t0;
-    if(elapsed < 200) logErr('webSpeech:instant',elapsed+'ms',lang);
-    else logErr('webSpeech:ok', elapsed+'ms '+src, lang);
-    if(onEnd) onEnd();
-  };
-  u.onend  = ()=>wsEnd('onend');
-  u.onerror=(e)=>{
-    logErr('webSpeech:error',e.error,lang+' '+text.slice(0,30));
-    // interrupted/canceled = нормально (stopTTS або новий speak)
-    if(e.error!=='interrupted'&&e.error!=='canceled') wsEnd('onerror');
-    else{ clearTimeout(wdog); stopWsKeepAlive(); _wsEnded=true; }
-  };
-  startWsKeepAlive();
-  // Перевіряємо чи synthesis не stuck
-  if(speechSynthesis.paused) speechSynthesis.resume();
-  speechSynthesis.speak(u);
+// Захисний виклик скасування Web Speech-черги, лишений тільки в
+// stopTTS() — головній точці зупинки будь-якого аудіо. Web Speech API
+// (vs/VP/webSpeech()) сам по собі більше не використовується в додатку;
+// це — нешкідливий no-op cancel() про всяк випадок, якщо системний
+// TTS активувався поза контролем застосунку (наприклад розширення
+// доступності браузера). Решта 14 точок зупинки плеєрів по коду вже
+// не звертаються до speechSynthesis взагалі — перевірено вручну.
+function cancelSpeechSynthesis(){
+  if(typeof speechSynthesis !== 'undefined') speechSynthesis.cancel();
 }
 
 function stopTTS(){
   playGen++;
-  stopWsKeepAlive();
-  speechSynthesis.cancel();
+  cancelSpeechSynthesis();
   const a = getSharedAudio();
   a.pause();
   if(currentAudio && currentAudio !== a){ currentAudio.pause(); }
@@ -3882,7 +3777,6 @@ document.addEventListener('visibilitychange', ()=>{
     if(_wasPlayingBeforeHidden || _wasDlgPlayingBeforeHidden){
       // Зупиняємо поточне аудіо без переходу на наступну картку
       playGen++;
-      speechSynthesis.cancel();
       if(currentAudio){ currentAudio.pause(); currentAudio = null; }
     }
   } else if(document.visibilityState === 'visible'){
@@ -3913,7 +3807,7 @@ function showView(id){
   if(id==='dialogue'){initDialogue();initDialogueChips();}
   if(id==='favs')renderFavGrid();
   if(id==='settings')syncFontSizeSlider();
-  if(id==='settings'){initVoiceSelects();renderStreakUI();syncSpeedButtons();try{srRenderDashboard();}catch(e){}}
+  if(id==='settings'){renderStreakUI();syncSpeedButtons();try{srRenderDashboard();}catch(e){}}
   if(id==='lernpfad'){renderLernpfad();}
   // Якщо переходимо не в урок — прибираємо артефакти lesson-result і lf-sb-next-btn
   if(!LF){
@@ -3926,29 +3820,6 @@ function showView(id){
 }
 
 // ── SETTINGS ──────────────────────────────────────────────────
-function ensureVoicesLoaded(){
-  // Chrome іноді повертає порожній список до події voiceschanged
-  if(!speechSynthesis.getVoices().length){
-    speechSynthesis.addEventListener('voiceschanged', ()=>{ loadVoices(); }, {once:true});
-  }
-}
-
-function initVoiceSelects(){
-  const all=speechSynthesis.getVoices();
-  if(all.length===0){setTimeout(initVoiceSelects,500);return;}
-  const pfx={de:['de'],en:['en'],uk:['uk'],ru:['ru']};
-  ['de','en','uk','ru'].forEach(l=>{
-    const sel=document.getElementById('v'+l);if(!sel)return;
-    const voices=all.filter(v=>pfx[l].some(p=>v.lang.toLowerCase().startsWith(p)));
-    const saved=VP[l]||vs[l]?.name||'';
-    sel.innerHTML=voices.length
-      ? voices.map(v=>`<option value="${v.name}" ${v.name===saved?'selected':''}>${v.name}</option>`).join('')
-      : '<option value="">– keine –</option>';
-  });
-}
-function reloadVoices(){speechSynthesis.cancel();vs={};loadVoices().then(()=>{initVoiceSelects();notify('Stimmen aktualisiert ✓');});}
-function saveVP(){localStorage.setItem('sap_vp',JSON.stringify(VP));}
-function resetVoicePrefs(){if(!confirm('Stimmenpräferenzen zurücksetzen?'))return;localStorage.removeItem('sap_vp');VP={};loadVoices().then(()=>initVoiceSelects());notify('Zurückgesetzt ✓');}
 function resetCardStats(){if(!confirm('Alle Kartenstatistiken löschen?'))return;VOCAB.forEach(v=>{const key='mova_'+v.id;try{const d=JSON.parse(localStorage.getItem(key)||'{}');d.totalPlays=0;d.lastSeen=0;localStorage.setItem(key,JSON.stringify(d));}catch(e){}});notify('Statistik gelöscht ✓');}
 function notify(msg){const e=document.getElementById('notif');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
 // ── VOCAB ─────────────────────────────────────────────────────
@@ -4180,7 +4051,6 @@ function srsSwipe(q){
   if(q === 5){
     // Знаю → одразу наступна картка (зупиняємо аудіо)
     playGen++;
-    speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     V.repeatCount=0; V.idx++;
     const ticket = ++cardGen;
@@ -4192,7 +4062,6 @@ function srsSwipe(q){
   } else if(q === 1 && _srPlanCardIds){
     // Plan-сесія "не знаю" → переміщаємо в кінець черги і переходимо далі
     playGen++;
-    speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     const card = V.queue.splice(V.idx, 1)[0];
     V.queue.push(card);
@@ -4391,7 +4260,6 @@ function srsSwipe(q){
   if(q === 5){
     // Знаю → одразу наступна картка (зупиняємо аудіо)
     playGen++;
-    speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     V.repeatCount=0; V.idx++;
     const ticket = ++cardGen;
@@ -6536,7 +6404,7 @@ let currentSource  = null;   // не використовується, для с
 
 // Кеш blob URLs: url → blobURL
 const audioBlobCache  = new Map();
-// audioBufferCache не потрібен, але залишаємо для tryPregenThenSpeech
+// audioBufferCache не використовується активно, залишено для сумісності
 const audioBufferCache = new Map();
 
 // ── AUDIO MANIFEST: хеш-перевірка актуальності кешованих файлів ──
@@ -7378,7 +7246,7 @@ function lfDlgLearnShowNext(){
   var old = document.getElementById('lf-sb-next-btn');
   if(old) return; // вже показана
   _lfInjectSBNextBtn(function(){
-    _lfDlgPlayToken++; playGen++; speechSynthesis.cancel();
+    _lfDlgPlayToken++; playGen++;
     if(currentAudio){ currentAudio.pause(); currentAudio = null; }
     // Зараховуємо SM-2 (q=5 — переглянута)
     if(LF && LF.dlgCard) srsRate(LF.dlgCard.id, 5);
@@ -7389,7 +7257,6 @@ function lfDlgLearnShowNext(){
 function _lfDlgLearnDone(){
   _lfDlgPlayToken++;
   playGen++;
-  speechSynthesis.cancel();
   // Знімаємо кнопку Далі
   var btn = document.getElementById('lf-sb-next-btn');
   if(btn) btn.remove();
@@ -7971,7 +7838,6 @@ function toggleVocab(){ unlockAudioCtx();
     playVocabNext();
   } else if(!V.paused){
     V.paused=true;
-    speechSynthesis.cancel();
     clearTimeout(V.timer);
     document.getElementById('vplaybtn').textContent='▶';
     document.getElementById('vplaybtn').classList.remove('pause');
@@ -8527,7 +8393,7 @@ function dlgSrsSwipe(q){
   showSrsHint(emoji, label, q, 'dlg-fc-area');
 
   if(q===5){
-    playGen++; speechSynthesis.cancel();
+    playGen++;
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     D.repeatCount=0; D.idx++;
     const ticket=++cardGen;
@@ -8546,7 +8412,7 @@ function toggleDialogue(){ unlockAudioCtx();
     window.mlog?.('dialogue_autoplay_started',{mode:D.mode,queue_size:D.queue.length});
     playDialogueNext();
   } else if(!D.paused){
-    D.paused=true; speechSynthesis.cancel(); clearTimeout(D.timer);
+    D.paused=true; clearTimeout(D.timer);
     document.getElementById('dlgplaybtn').textContent='▶';
     document.getElementById('dlgplaybtn').classList.remove('pause');
     window.mlog?.('dialogue_autoplay_paused');
@@ -8686,7 +8552,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
   srMigrateOldState(); // Smart Review: міграція зі старого SM-2
   srUpdateHeaderChip(); // Chip з кількістю днів у хедері
   initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
-  ensureVoicesLoaded(); // Chrome: голоси можуть не завантажитись одразу
   checkOnboarding();
   applyI18n();
   renderCourseList();
@@ -8704,7 +8569,6 @@ function toggleVocab(){ unlockAudioCtx();
     playVocabNext();
   } else if(!V.paused){
     V.paused=true;
-    speechSynthesis.cancel();
     clearTimeout(V.timer);
     document.getElementById('vplaybtn').textContent='▶';
     document.getElementById('vplaybtn').classList.remove('pause');
@@ -8976,7 +8840,6 @@ window.addEventListener('DOMContentLoaded', ()=>{
   const el = document.getElementById('app-ver');
   if(el) el.textContent = APP_VERSION;
   initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
-  ensureVoicesLoaded(); // Chrome: голоси можуть не завантажитись одразу
   checkOnboarding();
   applyI18n();
   renderCourseList();
