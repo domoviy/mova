@@ -5,18 +5,10 @@ on:
   push:
     paths:
       - 'B2-Beruf.js'
-  workflow_dispatch:   # Ручне керування з вибором двигуна та режимів
+  workflow_dispatch:   # Ручне керування режимами швидкості
     inputs:
-      tts_engine:
-        description: 'Оберіть двигун генерації (за замовчуванням Edge TTS)'
-        required: true
-        default: 'edge'
-        type: choice
-        options:
-          - 'edge'
-          - 'azure'
       run_turbo:
-        description: 'Увімкнути режим TURBO (для тарифу Azure S0 або швидкого Edge)'
+        description: 'Увімкнути режим TURBO (швидкий потік)'
         required: false
         default: false
         type: boolean
@@ -25,10 +17,6 @@ on:
         required: false
         default: false
         type: boolean
-
-# Глобальні налаштування для всього Workflow
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: 'true'   # Виправляє депрекацію Node.js 20 і вмикає Node 24
 
 jobs:
   generate:
@@ -40,23 +28,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '24'
+        # Дефолтний неглибокий checkout (fetch-depth: 1) — повна історія
+        # git тут не використовується, тож тягнути її не потрібно.
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
 
-      # ВСТАНОВЛЕННЯ ЗАЛЕЖНОСТЕЙ: Додано бібліотеку edge-tts
       - name: Install Dependencies
         run: |
-          pip install edge-tts azure-cognitiveservices-speech
+          pip install edge-tts
 
       # НАЛАШТУВАННЯ GIT: Потрібно заздалегідь для авто-сейвів скрипту
       - name: Configure Git Bot
@@ -67,10 +49,6 @@ jobs:
       # Виставляємо параметри швидкості та ліміти збереження залежно від типу запуску
       - name: Generate audio files
         env:
-          AZURE_SPEECH_KEY:    ${{ secrets.AZURE_SPEECH_KEY }}
-          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
-          # Якщо це автоматичний push, github.event.inputs.tts_engine порожній, тому піде 'edge'
-          TTS_ENGINE:          ${{ github.event.inputs.tts_engine || 'edge' }}
           # Якщо активовано 'run_turbo' — ставимо 15 потоків, інакше — 1 потік
           TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
           # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше — 1.2 сек
