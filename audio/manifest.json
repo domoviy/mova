@@ -20694,8 +20694,8 @@
   "B2-Beruf/en/100/onk/onk_032_term_en_100": "7ac5641d20",
   "B2-Beruf/de/100/onk/onk_032_def_de_100": "bde2b792b7",
   "B2-Beruf/de/080/onk/onk_032_def_de_080": "2445bd7225",
-  "B2-Beruf/uk/100/onk/onk_032_def_uk_100": true,
-  "B2-Beruf/en/100/onk/onk_032_def_en_100": true,
+  "B2-Beruf/uk/100/onk/onk_032_def_uk_100": "ed4d8f48db",
+  "B2-Beruf/en/100/onk/onk_032_def_en_100": "a70447798f",
   "B2-Beruf/de/100/eat/eat_145_def_de_100": "f7a7215551",
   "B2-Beruf/de/080/eat/eat_145_def_de_080": "6355047fd5",
   "B2-Beruf/en/100/eat/eat_145_def_en_100": "72d7cba3ca",
@@ -25282,5 +25282,6 @@
   "B2-Beruf/en/100/ges/ges_120_short_en_100": "cfa885a8e6",
   "B2-Beruf/uk/100/ges/ges_120_short_uk_100": "da7b716b48",
   "B2-Beruf/ru/100/ges/ges_120_short_ru_100": "44ea583d3e",
-  "B2-Beruf/ru/100/ges/ges_120_def_ru_100": "00a64a3bfe"
+  "B2-Beruf/ru/100/ges/ges_120_def_ru_100": "00a64a3bfe",
+  "B2-Beruf/de/100/dlg/dlg_001_q_de_100": "5b013752a0"
 }
