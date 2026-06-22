@@ -25239,5 +25239,8 @@
   "B2-Beruf/de/080/ges/ges_114_short_de_080": "793207ee8d",
   "B2-Beruf/en/100/ges/ges_114_short_en_100": "05e78bb7bd",
   "B2-Beruf/uk/100/ges/ges_114_short_uk_100": "09312a46cd",
-  "B2-Beruf/ru/100/ges/ges_114_short_ru_100": "25ca3232aa"
+  "B2-Beruf/ru/100/ges/ges_114_short_ru_100": "25ca3232aa",
+  "B2-Beruf/ru/100/ges/ges_114_def_ru_100": "311cfbe56b",
+  "B2-Beruf/ru/100/ges/ges_115_term_ru_100": "ed86b91262",
+  "B2-Beruf/de/100/ges/ges_115_short_de_100": "5ebc24323e"
 }
