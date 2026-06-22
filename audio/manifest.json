@@ -15852,7 +15852,7 @@
   "B2-Beruf/de/080/ges/ges_084_term_de_080": "3857d48585",
   "B2-Beruf/uk/100/ges/ges_084_term_uk_100": "d9024879cc",
   "B2-Beruf/en/100/ges/ges_084_term_en_100": "1d6934e4bb",
-  "B2-Beruf/de/100/ges/ges_084_def_de_100": "0f57fc5eaf",
+  "B2-Beruf/de/100/ges/ges_084_def_de_100": "5276e5fa18",
   "B2-Beruf/de/080/ges/ges_084_def_de_080": "9c6d216498",
   "B2-Beruf/uk/100/ges/ges_084_def_uk_100": "cdf3733a59",
   "B2-Beruf/en/100/ges/ges_084_def_en_100": "077ab5fdfd",
@@ -25027,5 +25027,7 @@
   "B2-Beruf/ru/100/ges/ges_084_term_ru_100": "64d34c512c",
   "B2-Beruf/de/100/ges/ges_084_short_de_100": "a036a2b69d",
   "B2-Beruf/de/080/ges/ges_084_short_de_080": "af099b5545",
-  "B2-Beruf/en/100/ges/ges_084_short_en_100": "640801c243"
+  "B2-Beruf/en/100/ges/ges_084_short_en_100": "640801c243",
+  "B2-Beruf/uk/100/ges/ges_084_short_uk_100": "14a7e0d1b9",
+  "B2-Beruf/ru/100/ges/ges_084_short_ru_100": "dae4b79ddb"
 }
