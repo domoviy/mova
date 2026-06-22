@@ -25283,5 +25283,8 @@
   "B2-Beruf/uk/100/ges/ges_120_short_uk_100": "da7b716b48",
   "B2-Beruf/ru/100/ges/ges_120_short_ru_100": "44ea583d3e",
   "B2-Beruf/ru/100/ges/ges_120_def_ru_100": "00a64a3bfe",
-  "B2-Beruf/de/100/dlg/dlg_001_q_de_100": "5b013752a0"
+  "B2-Beruf/de/100/dlg/dlg_001_q_de_100": "5b013752a0",
+  "B2-Beruf/de/080/dlg/dlg_001_q_de_080": "5724714997",
+  "B2-Beruf/en/100/dlg/dlg_001_q_en_100": "94e3c0d0eb",
+  "B2-Beruf/uk/100/dlg/dlg_001_q_uk_100": "d992a40bce"
 }
