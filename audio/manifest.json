@@ -16026,7 +16026,7 @@
   "B2-Beruf/en/100/ges/ges_105_def_en_100": "a85745ffca",
   "B2-Beruf/de/100/ges/ges_106_term_de_100": "9397c06546",
   "B2-Beruf/de/080/ges/ges_106_term_de_080": "2675333e4c",
-  "B2-Beruf/uk/100/ges/ges_106_term_uk_100": "bfdb8fca57",
+  "B2-Beruf/uk/100/ges/ges_106_term_uk_100": "2080214c47",
   "B2-Beruf/en/100/ges/ges_106_term_en_100": "e7c95b58b6",
   "B2-Beruf/de/100/ges/ges_106_def_de_100": "23daf9878d",
   "B2-Beruf/de/080/ges/ges_106_def_de_080": "c18fe3f545",
@@ -25177,5 +25177,7 @@
   "B2-Beruf/en/100/ges/ges_105_short_en_100": "15ea3b3af6",
   "B2-Beruf/uk/100/ges/ges_105_short_uk_100": "ee0d110fa4",
   "B2-Beruf/ru/100/ges/ges_105_short_ru_100": "ad8d8d65f1",
-  "B2-Beruf/ru/100/ges/ges_105_def_ru_100": "e5e4029e48"
+  "B2-Beruf/ru/100/ges/ges_105_def_ru_100": "e5e4029e48",
+  "B2-Beruf/ru/100/ges/ges_106_term_ru_100": "6744d5ea66",
+  "B2-Beruf/de/100/ges/ges_106_short_de_100": "79c370f46c"
 }
