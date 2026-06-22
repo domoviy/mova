@@ -1419,6 +1419,8 @@ body.lesson-active .vocab-top{
 /* Exam Dashboard */
 .sr-dashboard-ssec{background:var(--paper);border-radius:13px;border:1px solid var(--border);padding:14px;margin-bottom:12px}
 .sr-dash-title{font-size:14px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
+.sr-info-icon{cursor:pointer;font-size:13px;opacity:.55;text-transform:none;letter-spacing:0;font-weight:400;-webkit-tap-highlight-color:transparent}
+.sr-info-icon:active{opacity:1}
 .sr-dash-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--soft)}
 .sr-dash-row:last-child{border-bottom:none}
 .sr-dash-part{font-size:14px;font-weight:600;color:var(--ink);min-width:120px;flex-shrink:0}
@@ -2069,7 +2071,7 @@ body.lesson-active .vocab-top{
 
     <!-- 2. Готовність до іспиту -->
     <div class="sr-dashboard-ssec" id="ssec-sr-dashboard">
-    <div class="sr-dash-title">🎯 <span data-i18n="sec_readiness">Prüfungsbereitschaft</span></div>
+    <div class="sr-dash-title">🎯 <span data-i18n="sec_readiness">Prüfungsbereitschaft</span> <span class="sr-info-icon" onclick="notify(t('sr_readiness_info'))" title="">ⓘ</span></div>
     <div id="sr-dashboard-rows">
       <div class="sr-plan-empty">Noch keine Daten. Beginne mit dem Lernen.</div>
     </div>
@@ -2220,7 +2222,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '184-545312a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2341,6 +2343,7 @@ const I18N = {
     sec_data:'Daten',
     lbl_data_reset:'Karteistatistik löschen', sub_data_reset:'Play-Zähler zurücksetzen',
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
+    sr_readiness_info:'Zeigt, wie gut Karten verankert sind (≥2 richtige Wiederholungen, noch nicht fällig) — nicht nur ob sie schon gesehen wurden.',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
     nav_lernpfad:'Path', nav_sb:'Sprachbau',
@@ -2420,6 +2423,7 @@ const I18N = {
     sec_data:'Дані',
     lbl_data_reset:'Очистити статистику', sub_data_reset:'Скинути лічильник',
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
+    sr_readiness_info:'Показує, наскільки добре закріплені картки (≥2 правильні повторення, ще не due) — а не просто факт, що їх переглянули.',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
     nav_lernpfad:'Шлях', nav_sb:'Sprachbau',
@@ -2494,6 +2498,7 @@ const I18N = {
     sec_data:'Data',
     lbl_data_reset:'Clear card stats', sub_data_reset:'Reset play counter',
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
+    sr_readiness_info:'Shows how well cards are retained (≥2 correct repetitions, not due yet) — not just whether you have seen them.',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
     sec_debug:'Debug', sec_lang:'Interface Language',
     nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
@@ -2569,6 +2574,7 @@ const I18N = {
     sec_data:'Данные',
     lbl_data_reset:'Очистить статистику', sub_data_reset:'Сбросить счётчик',
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
+    sr_readiness_info:'Показывает, насколько хорошо закреплены карточки (≥2 правильных повторения, ещё не due) — а не просто факт, что их просмотрели.',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
     nav_lernpfad:'Путь', nav_sb:'Sprachbau',
@@ -2846,28 +2852,76 @@ const SR_MAX_MINUTES = 30;
 const SR_SEC_PER_CARD = 35;
 
 // ── ЄДИНА ТАБЛИЦЯ ВАГ ПОДІЙ ─────────────────────────────────────
-// Кожна дія користувача (свайп, активне завдання, пасивне прослуховування)
-// конвертується тут в один SM-2 rating (1=не знаю, 3=невпевнений, 5=знаю).
-// Це ЄДИНЕ місце, де можна експериментувати з вагою кожного типу події —
-// не шукати по коду розкидані магічні числа.
+// Шкала 0-10, де 10 = 100% довіри до сигналу ("точно знає"), 0 = 0%
+// ("точно не знає"). Кожне число тут кратне 10% (тобто кратне 1) —
+// свідомо, щоб таблицю можна було читати як відсотки без перерахунку.
+// srRecordAnswer() ділить це число на 2 перед тим, як віддати в
+// srSm2() — стара формула SM-2 написана на класичній шкалі 1-5
+// (1=не знаю, 3=невпевнений, 5=знаю), і ділення на 2 дає математично
+// ТОТОЖНИЙ результат старій шкалі для цілих 2/6/10, плюс дозволяє
+// проміжні значення (1,4,5,7,8 тощо) для подій, де сигнал слабший.
+//
+// Це ЄДИНЕ місце, де можна експериментувати з вагою кожного типу
+// події — не шукати по коду розкидані магічні числа.
 const SR_EVENT_WEIGHTS = {
-  // Активні явні оцінки — користувач сам свайпнув картку
-  swipe_dontknow: 1,
-  swipe_unsure:   3,
-  swipe_know:     5,
-  // Активні завдання з надійним бінарним сигналом правильно/неправильно
-  // (вибір варіанту, зіставлення пар, складання речення зі складів)
-  task_correct: 5,
-  task_wrong:   1,
-  // Розпізнавання мовлення — сигнал менш надійний технічно (шум, акцент,
-  // мікрофон можуть спотворити правильну вимову чи пропустити помилку),
-  // тож вага свідомо м'якша за звичайні активні завдання.
-  speech_correct: 4,
-  speech_wrong:   2,
-  // Пасивне прослуховування без явної оцінки — це теж вивчення, але
-  // слабший сигнал за активну дію користувача.
-  passive_listen: 4,
+  // ── АКТИВНІ ЯВНІ ОЦІНКИ (користувач сам свайпнув картку) ──────
+  // Найвища довіра — це пряма, усвідомлена самооцінка людини.
+  swipe_dontknow: 2,   // 20% — свайп "не знаю" вгору
+  swipe_unsure:   6,   // 60% — свайп "невпевнений" (нейтральний, але з ухилом у плюс)
+  swipe_know:     10,  // 100% — свайп "знаю" вниз
+
+  // ── АКТИВНІ ЗАВДАННЯ З БІНАРНИМ СИГНАЛОМ ──────────────────────
+  // Вибір варіанту (MC-quiz), складання речення (Tiles), вставка слів
+  // (Def-game) — надійний сигнал: правильно/неправильно тут технічна
+  // похибка майже неможлива (це текстовий вибір, не розпізнавання).
+  task_correct: 10,    // 100% — відповідь правильна
+  task_wrong:   2,     // 20% — відповідь неправильна
+
+  // ── РОЗПІЗНАВАННЯ МОВЛЕННЯ (Sprechen) ─────────────────────────
+  // Сигнал технічно менш надійний: шум, акцент, якість мікрофона
+  // можуть і "проковтнути" помилку, і неправильно розпізнати правильну
+  // вимову. Тому обидва бали м'якші за task_correct/task_wrong.
+  speech_correct: 8,   // 80% — розпізнано як правильну вимову
+  speech_wrong:   4,   // 40% — розпізнано як неправильну вимову
+
+  // ── ПАСИВНІ ПОДІЇ БЕЗ ЯКОЇСЬ ЯВНОЇ ДІЇ КОРИСТУВАЧА ────────────
+  // Картка просто показана/прослухана автоплеєм, користувач не
+  // свайпнув і не виконав завдання. Це теж вивчення (повторна
+  // експозиція допомагає запам'ятати), але набагато слабший сигнал,
+  // ніж будь-яка свідома відповідь — тож і Hören, і Lesen тут нижче
+  // за все активне в таблиці.
+  passive_listen_implicit: 7,  // 70% Hören — картка прослухана автоплеєм без свайпу
+  passive_read_implicit:   4,  // 40% Lesen — та сама картка переглянута як текст без свайпу
+
+  // ── TILES-GAME: озвучка/текст ПРАВИЛЬНОЇ ВІДПОВІДІ після перевірки ──
+  // Після того як склали речення, гра показує/озвучує правильний
+  // варіант. Контенту тут менше, ніж у повноцінній картці (це коротка
+  // фраза), тож вага явно нижча за task_correct/task_wrong вище —
+  // ці бали NOT замінюють основну оцінку гри, а лише додають
+  // незначний внесок у відповідну навичку (Hören/Lesen).
+  tiles_audio_after_check: 1,  // 10% Hören — озвучка короткої фрази після перевірки
+  tiles_text_after_check:  5,  // 50% Lesen — текст тієї ж фрази користувач точно прочитав
+
+  // ── MATCHING-GAME: дотик до тексту/звуку під час підбору пари ───
+  // Найслабший сигнал з усіх — основна оцінка картки в цій грі йде
+  // через task_correct/task_wrong (за факт правильного/неправильного
+  // підбору), а сам текст/звук варіанту відповіді — побічний, дуже
+  // короткий контакт з матеріалом. Округлено вгору до 1 (10%), щоб не
+  // порушувати правило "кратно 10%" для рідкісного дробового випадку.
+  matching_touch: 1,           // 10% Lesen і/або Hören — побіжний контакт при підборі пари
 };
+
+// Події, що НЕ є доведенням пам'яті (механічна експозиція без активної
+// перевірки) — для них recordCardEvent() пише через srRecordPassiveSignal()
+// замість srRecordAnswer(), тобто SM-2 (repetitions/interval/nextReview)
+// лишається незмінним. Лише ці типи зараз кваліфікуються як "пасивні";
+// усе інше (свайпи, активні завдання, мовлення) — доведення пам'яті,
+// тож рухає розклад повторень як завжди.
+const SR_PASSIVE_EVENTS = new Set([
+  'passive_listen_implicit', 'passive_read_implicit',
+  'tiles_audio_after_check', 'tiles_text_after_check',
+  'matching_touch',
+]);
 
 function srStartOfDay(d){ const x=new Date(d); x.setHours(0,0,0,0); return x; }
 function srToISO(d){ return d.toISOString().split('T')[0]; }
@@ -3016,6 +3070,16 @@ function srRecordAnswer(cardId, rating, examPart){
   // (localStorage 'mova_'+id), щоб усі підрахунки жили в одній структурі.
   updated.totalPlays = (cs.totalPlays ?? 0) + 1;
   updated.lastSeen = Date.now();
+  // partHistory: окрема коротка історія оцінок ПО КОЖНІЙ examPart-частині
+  // цієї картки (на відміну від плаского history вище, який змішує всі
+  // частини в одну стрічку). Потрібна для srStabilityScore() — метрики
+  // "Готовності", що НЕ обнуляється однією невдалою спробою, на відміну
+  // від repetitions/interval у SM-2 (ті лишаються незмінними — вони
+  // відповідають за ПЛАНУВАННЯ повторень, а не за відображення прогресу).
+  updated.partHistory = {...(cs.partHistory??{})};
+  parts.forEach(part=>{
+    updated.partHistory[part] = [...(cs.partHistory?.[part]??[]), rating].slice(-10);
+  });
   state.cards[cardId] = updated;
   // Статистика субтесту — пишемо в КОЖЕН переданий examPart
   parts.forEach(part=>{
@@ -3032,18 +3096,97 @@ function srRecordAnswer(cardId, rating, examPart){
   return updated.interval; // повертаємо інтервал для UI-фідбеку
 }
 
+// Пасивний сигнал (механічна експозиція без доведення пам'яті — автоплей
+// прослуховування/перегляд без свайпу, побіжний контакт у Tiles/Matching).
+// На відміну від srRecordAnswer(), СВІДОМО НЕ торкається SM-2
+// (repetitions/interval/nextReview/history) — пасивна експозиція не
+// доводить, що людина запам'ятала картку, тож не повинна рухати
+// розклад "коли перевірити знову". Пише лише partHistory (для
+// srStabilityScore — окремої метрики накопиченого прогресу) і
+// subtestStats/totalPlays/lastSeen.
+function srRecordPassiveSignal(cardId, rating, examPart){
+  const parts = (Array.isArray(examPart) ? examPart : [examPart || 'General']).filter(Boolean);
+  if(!parts.length) parts.push('General');
+  const state = srLoadState();
+  const cs = state.cards[cardId] ?? {};
+  const updated = {...cs}; // SM-2 поля (repetitions/interval/nextReview) лишаються як були
+  updated.totalPlays = (cs.totalPlays ?? 0) + 1;
+  updated.lastSeen = Date.now();
+  updated.partHistory = {...(cs.partHistory??{})};
+  parts.forEach(part=>{
+    updated.partHistory[part] = [...(cs.partHistory?.[part]??[]), rating].slice(-10);
+  });
+  state.cards[cardId] = updated;
+  parts.forEach(part=>{
+    const sub = state.subtestStats[part] ?? {correct:0, total:0};
+    const newCorrect = sub.correct + (rating>=3?1:0);
+    const newTotal   = sub.total + 1;
+    state.subtestStats[part] = {correct:newCorrect, total:newTotal, accuracy:newCorrect/newTotal};
+  });
+  srSaveState(state);
+  if(typeof document!=='undefined' && document.getElementById('view-lernpfad')?.classList.contains('active')){
+    try{ renderLernpfad(); }catch(e){}
+  }
+}
+
+// ── СТАБІЛЬНІСТЬ КАРТКИ ДЛЯ ПРОГРЕСУ КУРСУ/ГОТОВНОСТІ ────────────
+// На відміну від SM-2 (repetitions/interval/nextReview), які ВІРНО
+// обнуляються однією невдалою спробою — бо їхня мета лише "коли
+// показати картку знову", ця метрика відповідає на ІНШЕ питання:
+// "наскільки добре в цілому ця картка закріплена за весь час".
+// Картка, яку бачили 10 разів з 9 хорошими оцінками і однією свіжою
+// помилкою, НЕ повинна виглядати в Dashboard так само, як зовсім нова
+// картка — хоча для SM2-планування repetitions=0 в обох випадках
+// правильно (показати завтра знову).
+//
+// Формула: середнє з останніх до 10 оцінок цієї examPart-частини,
+// з лінійно зростаючою вагою для свіжіших оцінок (остання важить
+// вдвічі більше за найдавнішу в хвості) — це дає перевагу нещодавній
+// поведінці, але не обнуляє накопичений досвід однією подією.
+// Повертає число 1-5 (та сама шкала, що rating у srSm2).
+function srStabilityScore(cardState, part){
+  const hist = cardState?.partHistory?.[part];
+  if(!hist || !hist.length) return 0; // картку в цій частині ще не торкались
+  let weightedSum = 0, weightTotal = 0;
+  hist.forEach((rating, i)=>{
+    const weight = 1 + i / Math.max(1, hist.length-1); // 1.0 → 2.0 від старого до нового
+    weightedSum += rating * weight;
+    weightTotal += weight;
+  });
+  return weightedSum / weightTotal;
+}
+
+// "Добре закріплена" для відображення прогресу — м'якший і чесніший
+// критерій, ніж repetitions>=2 (який обнуляється однією помилкою).
+// Картка вважається добре закріпленою, якщо стабільність >= 3.5
+// (тобто в середньому, з урахуванням свіжості оцінок, ближче до
+// "знаю", ніж до "невпевнений") — НЕЗАЛЕЖНО від поточного repetitions.
+function srIsWellRetained(cardState, part){
+  return srStabilityScore(cardState, part) >= 3.5;
+}
+
 // ── ЄДИНА ТОЧКА ЗАПИСУ ПОДІЇ КАРТКИ ──────────────────────────────
 // Всі плеєри (Vocab, Dialogue, MC-quiz, Tiles, Def-game, Sprachbausteine,
 // Sprechen) викликають ЦЮ функцію замість прямого srsRate()/srRecordAnswer().
 // eventType — ключ з SR_EVENT_WEIGHTS, конвертується в rating тут, в одному
 // місці, а не магічним числом в кожному виклику.
 function recordCardEvent(cardId, eventType, examPart){
-  const rating = SR_EVENT_WEIGHTS[eventType];
-  if(rating === undefined){
+  const weight10 = SR_EVENT_WEIGHTS[eventType];
+  if(weight10 === undefined){
     console.warn('recordCardEvent: unknown eventType', eventType);
     return null;
   }
+  // Конвертація 0-10 → класична шкала SM-2 1-5 (ділення на 2).
+  // Тотожно старим значенням для цілих 2/6/10 (=1/3/5), і коректно
+  // математично для будь-яких проміжних значень (1,4,5,7,8 тощо).
+  const rating = weight10 / 2;
   const part = examPart ?? (typeof srGetExamPart==='function' ? srGetExamPart(cardId) : 'General');
+  if(SR_PASSIVE_EVENTS.has(eventType)){
+    // Пасивна подія — НЕ рухаємо SM-2-розклад, лише накопичуємо
+    // partHistory/subtestStats для метрики стабільності.
+    srRecordPassiveSignal(cardId, rating, part);
+    return null;
+  }
   return srRecordAnswer(cardId, rating, part);
 }
 
@@ -3131,36 +3274,46 @@ function srGetDashStats(allCards){
   const urgency = srGetUrgency(examDate);
   const weakProfile = srBuildWeaknessProfile(subtestStats);
   const today = srToISO(new Date());
-  const learned = Object.values(cs).filter(c=>(c.repetitions??0)>0).length;
+  const learned = Object.values(cs).filter(c=>(c.totalPlays??0)>0).length;
 
-  // Рахуємо readiness по кожній частині на основі SRS-даних карток
-  // Логіка: для кожної частини іспиту рахуємо % карток що "вивчені добре"
-  // (repetitions >= 2 і nextReview > today — тобто не потребують повторення сьогодні)
+  // Рахуємо readiness по кожній частині на основі НАКОПИЧЕНОЇ стабільності
+  // (srIsWellRetained — середнє з історії з вагою на свіжість), а НЕ на
+  // поточному SM2 repetitions/interval. Це свідомо: SM2-стан (repetitions,
+  // nextReview) відповідає лише за ПЛАНУВАННЯ наступного повторення і
+  // ВІРНО скидається однією невдалою спробою — але для відображення
+  // "наскільки добре закріплено за весь час" таке скидання спотворює
+  // картину (картка з 9 хорошими і 1 свіжою поганою оцінкою не повинна
+  // виглядати так само, як картка, яку взагалі не бачили).
   const partCards = {};
   const parts = ['Sprachbausteine','Lesen','Schreiben','Hören','Sprechen','General'];
   parts.forEach(p => { partCards[p] = {total:0, good:0, seen:0}; });
 
   allCards.forEach(card => {
     const c = cs[card.id];
-    const wasSeen = c && (c.repetitions??0) > 0;
-    const wasGood = c && (c.repetitions??0) >= 2 && c.nextReview && c.nextReview > today;
     const addTo = (part)=>{
       const bucket = partCards[part] || partCards['General'];
       bucket.total++;
-      if(wasSeen) bucket.seen++;
-      if(wasGood)  bucket.good++;
+      // "seen" і "good" дивляться РЕАЛЬНУ історію саме цієї частини —
+      // якщо аудіо для картки ніколи не грало, в Hören.partHistory не
+      // буде записів, і картка коректно НЕ зарахується в Hören взагалі
+      // (на відміну від старої логіки, що завжди додавала в обидва).
+      const partHist = c?.partHistory?.[part];
+      if(partHist && partHist.length){
+        bucket.seen++;
+        if(srIsWellRetained(c, part)) bucket.good++;
+      }
     };
     if(card._isSB || card._isDialogue){
-      // Sprachbausteine — одна категорія. Dialoge — Hören+Sprechen, обидві повною вагою:
-      // це окремий усвідомлений навик (слухання діалогу + відтворення фрази), а не «розподіл».
+      // Sprachbausteine — одна категорія. Dialoge — Sprechen завжди,
+      // Hören лише якщо для картки реально записана ця частина.
       const cardParts = Array.isArray(card.examPart) ? card.examPart : [card.examPart || 'General'];
       cardParts.forEach(addTo);
     } else {
-      // VOCAB: перегляд+прослуховування картки = Lesen + Hören завжди, повною вагою.
+      // VOCAB: Lesen і Hören — ОБИДВА в знаменнику (теоретично кожна
+      // картка може тренувати обидві навички), але в чисельник кожен
+      // потрапляє лише якщо реально є історія саме для цієї частини.
       addTo('Lesen');
       addTo('Hören');
-      // Додатково — повною вагою у власну тематичну категорію картки, якщо вона
-      // відрізняється (напр. «Bewerbung» додатково рахується в Schreiben).
       const theme = card.examPart;
       if(theme && theme !== 'Lesen' && theme !== 'Hören') addTo(theme);
     }
@@ -3491,7 +3644,7 @@ function srRenderDashboard(){
   }).join('');
 
   rowsEl.innerHTML = rows || '<div class="sr-plan-empty">Noch keine Daten</div>';
-  if(learnedEl) learnedEl.innerHTML = `<span>${stats.learnedCards}</span> / <span>${stats.totalCards}</span> ${ {'de':'Karten gelernt','uk':'карток вивчено','en':'cards learned','ru':'карточек изучено'}[uiLang]||'Karten gelernt' }`;
+  if(learnedEl) learnedEl.innerHTML = `<span>${stats.learnedCards}</span> / <span>${stats.totalCards}</span> ${ {'de':'Karten insgesamt begonnen','uk':'карток загалом розпочато','en':'cards touched overall','ru':'карточек всего начато'}[uiLang]||'Karten insgesamt begonnen' }`;
 }
 
 // Спрощений SM-2: зберігає interval, easiness, dueDate для кожної картки
@@ -3526,13 +3679,18 @@ function srsSave(id,data){ /* intentionally no-op — see srRecordAnswer */ }
 // Smart Review: getExamPartForCard — повертає examPart(и) картки.
 // Кожна картка словника/діалогу опрацьовується і на слух (аудіо), і візуально (текст) —
 // тож запис у статистику йде одночасно у кілька субтестів, а не в один.
-function srGetExamPart(cardId){
-  // VOCAB: читання картки = Lesen, прослуховування озвучення = Hören, плюс
-  // власна тематична категорія картки (Schreiben/Sprechen/…), якщо вона відрізняється.
+// audioPlayed: чи реально прозвучало аудіо для цієї дії (а не просто
+// теоретична можливість). Якщо звук не грав (наприклад "аудіо недоступне",
+// чи дія була чисто текстовою) — Hören НЕ додається, і це не
+// дублюючий запис під двома назвами тієї самої дії.
+function srGetExamPart(cardId, audioPlayed){
+  // VOCAB: читання картки = Lesen завжди; Hören — лише якщо аудіо реально
+  // прозвучало для цієї дії, плюс власна тематична категорія картки.
   if(typeof VOCAB!=='undefined'&&VOCAB?.length){
     const c = VOCAB.find(v=>v.id===cardId);
     if(c){
-      const parts = ['Lesen','Hören'];
+      const parts = ['Lesen'];
+      if(audioPlayed) parts.push('Hören');
       if(c.examPart && c.examPart!=='Lesen' && c.examPart!=='Hören') parts.push(c.examPart);
       return parts;
     }
@@ -3542,11 +3700,16 @@ function srGetExamPart(cardId){
     const c = SPRACHBAUSTEINE.find(v=>v.id===cardId);
     if(c) return 'Sprachbausteine';
   }
-  // DIALOGE (Redemittel): діалог — це і сприйняття на слух (Hören), і відтворення фрази
-  // (Sprechen) — рахуємо повною вагою в обидва, бо це два різні навики однієї дії.
+  // DIALOGE (Redemittel): Hören — лише якщо звук реально грав; Sprechen —
+  // окрема навичка відтворення фрази, рахується завжди (читання репліки
+  // вголос самим студентом — частина призначення цієї картки).
   if(typeof DIALOGE!=='undefined'&&DIALOGE?.length){
     const c = DIALOGE.find(d=>d.id===cardId);
-    if(c) return ['Hören','Sprechen'];
+    if(c){
+      const parts = ['Sprechen'];
+      if(audioPlayed) parts.push('Hören');
+      return parts;
+    }
   }
   return 'General';
 }
@@ -3571,17 +3734,28 @@ function srGetAllCards(){
 // запис відбуваються один раз, в srRecordAnswer/srSm2.
 function srsRate(id, q){
   const eventType = q>=5 ? 'swipe_know' : q>=3 ? 'swipe_unsure' : 'swipe_dontknow';
-  recordCardEvent(id, eventType, srGetExamPart(id));
+  recordCardEvent(id, eventType, srGetExamPart(id, wasAudioPlayedForCard(id)));
   const d = srsLoad(id); // перечитуємо щойно записаний стан для зворотної сумісності повернення
   return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
 }
 
 // Пасивне прослуховування картки (авто-плей, без свайпу-оцінки користувача).
-// Дає м'який позитивний прогрес — слабший за активне «Знаю»: вага
-// passive_listen (SR_EVENT_WEIGHTS) трохи нижча за swipe_know. Це теж
-// вивчення, просто слабший сигнал за свідому дію користувача.
+// Hören і Lesen отримують РІЗНІ ваги, тому записуються двома окремими
+// викликами recordCardEvent — одна подія не може дати два різні rating
+// одним викликом srRecordAnswer (та приймає лише одне число на всі
+// передані examPart одразу).
+// Hören 70% — картка реально прослухана автоплеєм, це і є основна дія.
+// Lesen 40% — текст картки теж був на екрані, але без активної уваги
+// читання (увага швидше на слуханні) — слабший сигнал, ніж Hören тут.
 function srsRatePassive(id){
-  recordCardEvent(id, 'passive_listen', srGetExamPart(id));
+  recordCardEvent(id, 'passive_listen_implicit', 'Hören');
+  recordCardEvent(id, 'passive_read_implicit', 'Lesen');
+  // Додатково — власна тематична категорія картки (Schreiben тощо), якщо є,
+  // тим самим м'яким Lesen-сигналом (текст теми так само просто був видимий).
+  const theme = (typeof VOCAB!=='undefined') ? VOCAB.find(v=>v.id===id)?.examPart : null;
+  if(theme && theme!=='Lesen' && theme!=='Hören'){
+    recordCardEvent(id, 'passive_read_implicit', theme);
+  }
   const d = srsLoad(id);
   return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
 }
@@ -3844,7 +4018,7 @@ async function speak(text, lang, onEnd, cardId, field){
   if(!cardId || !field){
     // Без cardId/field немає шляху до pregen-файлу взагалі — нічого
     // озвучити не можна, чекаємо підтвердження користувача і рухаємось далі.
-    showAudioUnavailableModal(safeEnd);
+    showAudioUnavailableModal(safeEnd, cardId);
     return;
   }
 
@@ -3857,13 +4031,14 @@ async function speak(text, lang, onEnd, cardId, field){
 
   if(cachedAndValid){
     logErr('speak','cached → pregen',fname);
+    markAudioPlayedForCard(cardId);
     playPregenAudio(url, safeEnd, gen);
     return;
   }
 
   if(audioExistsCache.get(url) === '404'){
     logErr('speak','404 → no audio',fname);
-    showAudioUnavailableModal(safeEnd);
+    showAudioUnavailableModal(safeEnd, cardId);
     return;
   }
 
@@ -3875,10 +4050,11 @@ async function speak(text, lang, onEnd, cardId, field){
 
   if(blobUrl){
     logErr('speak','blob→ pregen',fname);
+    markAudioPlayedForCard(cardId);
     playPregenAudio(url, safeEnd, gen);
   } else {
     logErr('speak','fetch failed → no audio',fname);
-    showAudioUnavailableModal(safeEnd);
+    showAudioUnavailableModal(safeEnd, cardId);
   }
 }
 
@@ -3969,11 +4145,37 @@ function notify(msg){const e=document.getElementById('notif');e.textContent=msg;
 // не зникає сама за таймером — користувач сам читає текст картки і
 // натискає кнопку, коли готовий рухатись далі. onConfirm викликається
 // рівно один раз, після натискання.
-function showAudioUnavailableModal(onConfirm){
+// Якщо одна картка має кілька полів для озвучення (term/short/def),
+// кожне невдале поле раніше показувало СВОЮ модалку — на одній картці
+// користувач міг побачити "аудіо недоступне" 2-3 рази підряд. Тепер
+// модалка показується ОДИН РАЗ за картку (cardId), решта невдалих
+// полів цієї ж картки пропускаються мовчки.
+let _audioUnavailShownForCard = null;
+
+// Чи реально прозвучало аудіо для поточної картки (хоч би для одного
+// поля). Використовується srGetExamPart(), щоб Hören рахувався лише
+// тоді, коли звук дійсно грав, а не теоретично "мав би" — інакше
+// Hören і Lesen завжди дублюють одне й те саме число.
+let _audioPlayedForCard = null;
+
+function markAudioPlayedForCard(cardId){
+  if(cardId) _audioPlayedForCard = cardId;
+}
+function wasAudioPlayedForCard(cardId){
+  return !!cardId && _audioPlayedForCard === cardId;
+}
+
+function showAudioUnavailableModal(onConfirm, cardId){
+  if(cardId && _audioUnavailShownForCard === cardId){
+    // Вже показували для цієї картки — не дублюємо, просто рухаємось далі.
+    onConfirm && onConfirm();
+    return;
+  }
   const overlay = document.getElementById('audio-unavail-overlay');
   const textEl  = document.getElementById('audio-unavail-text');
   const btnEl   = document.getElementById('audio-unavail-btn');
   if(!overlay || !textEl || !btnEl){ onConfirm && onConfirm(); return; } // захист якщо розмітки нема
+  if(cardId) _audioUnavailShownForCard = cardId;
   textEl.textContent = t('audio_unavailable');
   btnEl.textContent  = t('btn_audio_unavailable_ok');
   overlay.classList.add('show');
@@ -4620,6 +4822,9 @@ function matchHandleClick(btn){
   if(!selNow){
     btn.classList.add('selected');
     matchState.selected = { el:btn, cardId:btn.dataset.cardId, side:btn.dataset.side };
+    // Побіжний контакт з текстом цієї картки — найслабший сигнал з усіх,
+    // основна оцінка йде далі через task_correct/task_wrong при підборі.
+    recordCardEvent(btn.dataset.cardId, 'matching_touch', 'Lesen');
     return;
   }
 
@@ -5452,9 +5657,11 @@ function tilesShowCard(){
   qTextEl.className = 'tiles-q-text mc-q-term';
   qTextEl.textContent = qText;
 
-  // Prefetch DE audio for this card sentence into blob cache
+  // Prefetch DE audio для цієї картки — поле 'term' (саме term.de
+  // розбивається на слова для гри, 'sentence' для VOCAB не існує в
+  // аудіо-системі взагалі — раніше через це завжди виходило "недоступне").
   try {
-    const audioUrl = getAudioUrl(card.id, 'sentence', 'de');
+    const audioUrl = getAudioUrl(card.id, 'term', 'de');
     const audioMkey = urlToAudioMkey(audioUrl);
     if((!audioBlobCache.has(audioUrl) || !isAudioCacheValid(audioUrl, audioMkey)) && audioExistsCache.get(audioUrl) !== '404'){
       fetchBlobUrl(audioUrl, 8000, audioMkey).catch(()=>{});
@@ -5769,9 +5976,13 @@ function tilesCheck(){
   recordCardEvent(tilesState.current.id, isOk ? 'task_correct' : 'task_wrong');
   haptic[isOk?'success':'error']();
 
-  // Play DE sentence audio after check (mp3 якщо є, інакше WebSpeech)
+  // Озвучуємо правильне речення (term.de) після перевірки відповіді.
+  // Текст і озвучку зараховуємо ОКРЕМИМИ слабкими сигналами в Lesen/Hören
+  // (10%/50% — контенту тут менше, ніж у повноцінній картці з прикладом).
+  recordCardEvent(tilesState.current.id, 'tiles_audio_after_check', 'Hören');
+  recordCardEvent(tilesState.current.id, 'tiles_text_after_check', 'Lesen');
   try {
-    speak(tilesState.current.term?.de || '', 'de', null, tilesState.current.id, 'sentence');
+    speak(tilesState.current.term?.de || '', 'de', null, tilesState.current.id, 'term');
   } catch(e) {}
 
   // Показуємо модальний результат
@@ -7665,7 +7876,7 @@ function srRecordLesson(lf){
       if(alreadyRatedThisLesson) return;
       const d = srsLoad(c.id);
       const q = d.lastQ || 3;
-      srRecordAnswer(c.id, q, srGetExamPart(c.id));
+      srRecordAnswer(c.id, q, srGetExamPart(c.id, wasAudioPlayedForCard(c.id)));
     });
     // SB картки з matching/sb_learn — той самий принцип: рахуємо лише ті,
     // що не отримали оцінки протягом уроку.
