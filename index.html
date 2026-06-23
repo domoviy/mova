@@ -216,31 +216,6 @@ body{
 }
 .notif.show{transform:translateX(-50%) translateY(0);opacity:1}
 
-/* Модальне підтвердження "аудіо недоступне" — на відміну від .notif,
-   не зникає сама: користувач сам натискає "Добре", коли прочитав. */
-.audio-unavail-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.45);
-  display:flex;align-items:flex-end;justify-content:center;
-  z-index:900;opacity:0;pointer-events:none;transition:opacity .2s;
-}
-.audio-unavail-overlay.show{opacity:1;pointer-events:auto}
-.audio-unavail-card{
-  background:var(--paper);color:var(--ink);
-  border-radius:16px 16px 0 0;
-  padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));
-  width:100%;max-width:480px;
-  box-shadow:0 -4px 20px rgba(0,0,0,.2);
-  transform:translateY(100%);transition:transform .25s ease;
-}
-.audio-unavail-overlay.show .audio-unavail-card{transform:translateY(0)}
-.audio-unavail-text{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.audio-unavail-btn{
-  width:100%;background:var(--gold);color:var(--forest);
-  border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;
-  cursor:pointer;
-}
-.audio-unavail-btn:active{opacity:.85;transform:scale(.98)}
-
 #view-favs.active,#view-settings.active,#view-lernpfad.active{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px) + 16px)}
 .vplayer{
   background:var(--paper);border-radius:14px;border:1px solid var(--border);
@@ -1419,8 +1394,6 @@ body.lesson-active .vocab-top{
 /* Exam Dashboard */
 .sr-dashboard-ssec{background:var(--paper);border-radius:13px;border:1px solid var(--border);padding:14px;margin-bottom:12px}
 .sr-dash-title{font-size:14px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
-.sr-info-icon{cursor:pointer;font-size:13px;opacity:.55;text-transform:none;letter-spacing:0;font-weight:400;-webkit-tap-highlight-color:transparent}
-.sr-info-icon:active{opacity:1}
 .sr-dash-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--soft)}
 .sr-dash-row:last-child{border-bottom:none}
 .sr-dash-part{font-size:14px;font-weight:600;color:var(--ink);min-width:120px;flex-shrink:0}
@@ -2071,7 +2044,7 @@ body.lesson-active .vocab-top{
 
     <!-- 2. Готовність до іспиту -->
     <div class="sr-dashboard-ssec" id="ssec-sr-dashboard">
-    <div class="sr-dash-title">🎯 <span data-i18n="sec_readiness">Prüfungsbereitschaft</span> <span class="sr-info-icon" onclick="notify(t('sr_readiness_info'))" title="">ⓘ</span></div>
+    <div class="sr-dash-title">🎯 <span data-i18n="sec_readiness">Prüfungsbereitschaft</span></div>
     <div id="sr-dashboard-rows">
       <div class="sr-plan-empty">Noch keine Daten. Beginne mit dem Lernen.</div>
     </div>
@@ -2150,6 +2123,7 @@ body.lesson-active .vocab-top{
     </div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_pause">Pause</label><small data-i18n="sub_pause">Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_readpause">Lesepause</label><small data-i18n="sub_readpause">Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_trate">Sprechrate</label><small data-i18n="sub_trate">Manuelles Vorlesen</small></div><div class="srow-ctrl"><input type="range" min="0.5" max="2" step="0.1" value="1" id="trate" oninput="document.getElementById('tratev').textContent=(+this.value).toFixed(1)+'×'"><span id="tratev">1.0×</span></div></div>
     </div>
 
     <!-- 7. Курс -->
@@ -2158,6 +2132,17 @@ body.lesson-active .vocab-top{
     <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
       <!-- Рендериться через renderCourseList() при ініті -->
     </div>
+    </div>
+
+    <!-- 8. Голоси -->
+    <div class="ssec">
+    <h3>🎙 <span data-i18n="sec_voices">TTS Stimmen</span></h3>
+    <div class="srow"><div class="srow-label"><label>🇩🇪 Deutsch</label><small>z.B. Anna</small></div><select id="vde" onchange="VP.de=this.value;saveVP()"></select></div>
+    <div class="srow"><div class="srow-label"><label>🇬🇧 English</label><small>z.B. Ava, Siri</small></div><select id="ven" onchange="VP.en=this.value;saveVP()"></select></div>
+    <div class="srow"><div class="srow-label"><label>🇺🇦 Українська</label><small>z.B. Lesya</small></div><select id="vuk" onchange="VP.uk=this.value;saveVP()"></select></div>
+    <div class="srow"><div class="srow-label"><label>🇷🇺 Русский</label><small>z.B. Irina</small></div><select id="vru" onchange="VP.ru=this.value;saveVP()"></select></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reload">Stimmen neu laden</label></div><button class="btn btn-s" onclick="reloadVoices()" data-i18n-btn="btn_reload">↻ Neu laden</button></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_voices_reset">Zurücksetzen</label></div><button class="btn btn-s" onclick="resetVoicePrefs()">🗑 Reset</button></div>
     </div>
 
     <!-- 9. Налагодження -->
@@ -2212,17 +2197,10 @@ body.lesson-active .vocab-top{
 
 <div class="notif" id="notif"></div>
 
-<div class="audio-unavail-overlay" id="audio-unavail-overlay">
-  <div class="audio-unavail-card">
-    <div class="audio-unavail-text">🔇 <span id="audio-unavail-text"></span></div>
-    <button class="audio-unavail-btn" id="audio-unavail-btn"></button>
-  </div>
-</div>
-
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '190-a684bf4';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2327,15 +2305,17 @@ const I18N = {
     favs_empty:'Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.',
     settings_title:'⚙️ Einstellungen',
     sec_playback:'Wiedergabe',
-    audio_unavailable:'Audio nicht verfügbar — bitte selbst lesen',
-    btn_audio_unavailable_ok:'Gut, weiter',
     lbl_repeats:'Wiederholungen', sub_repeats:'Zyklen pro Karte',
     lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
     lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
     lbl_pause:'Pause', sub_pause:'Zwischen Begriffen',
     lbl_readpause:'Lesepause', sub_readpause:'Nach dem Umdrehen',
+    lbl_trate:'Sprechrate', sub_trate:'Manuelles Vorlesen',
     btn_slow:'🐢 Langsam', btn_normal:'▶ Normal',
+    sec_voices:'TTS Stimmen',
+    lbl_voices_reload:'Stimmen neu laden', btn_reload:'↻ Neu laden',
+    lbl_voices_reset:'Zurücksetzen', btn_reset:'🗑 Reset',
     sec_streak:'Lernziel & Streak',
     lbl_today:'Heute', lbl_total:'Gesamt',
     lbl_goal:'Tagesziel', sub_goal:'Karten pro Tag',
@@ -2343,9 +2323,8 @@ const I18N = {
     sec_data:'Daten',
     lbl_data_reset:'Karteistatistik löschen', sub_data_reset:'Play-Zähler zurücksetzen',
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
-    sr_readiness_info:'Zeigt, wie gut Karten verankert sind (≥2 richtige Wiederholungen, noch nicht fällig) — nicht nur ob sie schon gesehen wurden.',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
-    sec_debug:'Fehlersuche', sec_lang:'Sprache',
+    sec_voices:'Stimmen', sec_debug:'Fehlersuche', sec_lang:'Sprache',
     nav_lernpfad:'Path', nav_sb:'Sprachbau',
     lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
     lp_cards:'cards', lp_of:'of',
@@ -2407,15 +2386,17 @@ const I18N = {
     favs_empty:'Ще немає закладок.<br>Натисни ☆ на картці.',
     settings_title:'⚙️ Налаштування',
     sec_playback:'Відтворення',
-    audio_unavailable:'Аудіо недоступне — прочитайте самостійно',
-    btn_audio_unavailable_ok:'Добре, далі',
     lbl_repeats:'Повторення', sub_repeats:'Циклів на картку',
     lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
     lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
     lbl_pause:'Пауза', sub_pause:'Між поняттями',
     lbl_readpause:'Пауза читання', sub_readpause:'Після перевертання',
+    lbl_trate:'Швидкість мовлення', sub_trate:'Ручне відтворення',
     btn_slow:'🐢 Повільно', btn_normal:'▶ Нормально',
+    sec_voices:'Голоси TTS',
+    lbl_voices_reload:'Перезавантажити голоси', btn_reload:'↻ Оновити',
+    lbl_voices_reset:'Скинути', btn_reset:'🗑 Скинути',
     sec_streak:'Ціль і серія',
     lbl_today:'Сьогодні', lbl_total:'Всього',
     lbl_goal:'Денна ціль', sub_goal:'Карток на день',
@@ -2423,9 +2404,8 @@ const I18N = {
     sec_data:'Дані',
     lbl_data_reset:'Очистити статистику', sub_data_reset:'Скинути лічильник',
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
-    sr_readiness_info:'Показує, наскільки добре закріплені картки (≥2 правильні повторення, ще не due) — а не просто факт, що їх переглянули.',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
-    sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
+    sec_voices:'Голоси', sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
     nav_lernpfad:'Шлях', nav_sb:'Sprachbau',
     lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
     lp_cards:'карток', lp_of:'з',
@@ -2482,15 +2462,17 @@ const I18N = {
     favs_empty:'No favorites yet.<br>Tap ☆ on a card.',
     settings_title:'⚙️ Settings',
     sec_playback:'Playback',
-    audio_unavailable:'Audio unavailable — please read it yourself',
-    btn_audio_unavailable_ok:'Got it, continue',
     lbl_repeats:'Repetitions', sub_repeats:'Cycles per card',
     lbl_tempo_de:'🇩🇪 Speed', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Speed', sub_tempo_en:'English',
     lbl_tempo_uk:'🇺🇦 Швидкість', sub_tempo_uk:'Українська',
     lbl_pause:'Pause', sub_pause:'Between terms',
     lbl_readpause:'Reading pause', sub_readpause:'After flip',
+    lbl_trate:'Speech rate', sub_trate:'Manual playback',
     btn_slow:'🐢 Slow', btn_normal:'▶ Normal',
+    sec_voices:'TTS Voices',
+    lbl_voices_reload:'Reload voices', btn_reload:'↻ Reload',
+    lbl_voices_reset:'Reset', btn_reset:'🗑 Reset',
     sec_streak:'Goal & Streak',
     lbl_today:'Today', lbl_total:'Total',
     lbl_goal:'Daily goal', sub_goal:'Cards per day',
@@ -2498,9 +2480,8 @@ const I18N = {
     sec_data:'Data',
     lbl_data_reset:'Clear card stats', sub_data_reset:'Reset play counter',
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
-    sr_readiness_info:'Shows how well cards are retained (≥2 correct repetitions, not due yet) — not just whether you have seen them.',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
-    sec_debug:'Debug', sec_lang:'Interface Language',
+    sec_voices:'Voices', sec_debug:'Debug', sec_lang:'Interface Language',
     nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
@@ -2558,15 +2539,17 @@ const I18N = {
     favs_empty:'Нет закладок.<br>Нажми ☆ на карточке.',
     settings_title:'⚙️ Настройки',
     sec_playback:'Воспроизведение',
-    audio_unavailable:'Аудио недоступно — прочитайте самостоятельно',
-    btn_audio_unavailable_ok:'Хорошо, далее',
     lbl_repeats:'Повторения', sub_repeats:'Циклов на карточку',
     lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
     lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
     lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
     lbl_pause:'Пауза', sub_pause:'Между понятиями',
     lbl_readpause:'Пауза чтения', sub_readpause:'После переворота',
+    lbl_trate:'Скорость речи', sub_trate:'Ручное воспроизведение',
     btn_slow:'🐢 Медленно', btn_normal:'▶ Нормально',
+    sec_voices:'Голоса TTS',
+    lbl_voices_reload:'Перезагрузить голоса', btn_reload:'↻ Обновить',
+    lbl_voices_reset:'Сбросить', btn_reset:'🗑 Сбросить',
     sec_streak:'Цель и серия',
     lbl_today:'Сегодня', lbl_total:'Всего',
     lbl_goal:'Дневная цель', sub_goal:'Карточек в день',
@@ -2574,9 +2557,8 @@ const I18N = {
     sec_data:'Данные',
     lbl_data_reset:'Очистить статистику', sub_data_reset:'Сбросить счётчик',
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
-    sr_readiness_info:'Показывает, насколько хорошо закреплены карточки (≥2 правильных повторения, ещё не due) — а не просто факт, что их просмотрели.',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
-    sec_debug:'Отладка', sec_lang:'Язык интерфейса',
+    sec_voices:'Голоса', sec_debug:'Отладка', sec_lang:'Язык интерфейса',
     nav_lernpfad:'Путь', nav_sb:'Sprachbau',
     lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
     lp_cards:'карточек', lp_of:'из',
@@ -2740,6 +2722,8 @@ function applyI18n(){
 
 
 
+let VP=JSON.parse(localStorage.getItem('sap_vp')||'{}');
+let vs={};
 // LC визначено в файлі курсу (B2-Beruf.js тощо)
 
 // Відновлюємо всі збережені налаштування
@@ -2851,78 +2835,6 @@ const SR_WEAKNESS_MULTIPLIER = 2.0;
 const SR_MAX_MINUTES = 30;
 const SR_SEC_PER_CARD = 35;
 
-// ── ЄДИНА ТАБЛИЦЯ ВАГ ПОДІЙ ─────────────────────────────────────
-// Шкала 0-10, де 10 = 100% довіри до сигналу ("точно знає"), 0 = 0%
-// ("точно не знає"). Кожне число тут кратне 10% (тобто кратне 1) —
-// свідомо, щоб таблицю можна було читати як відсотки без перерахунку.
-// srRecordAnswer() ділить це число на 2 перед тим, як віддати в
-// srSm2() — стара формула SM-2 написана на класичній шкалі 1-5
-// (1=не знаю, 3=невпевнений, 5=знаю), і ділення на 2 дає математично
-// ТОТОЖНИЙ результат старій шкалі для цілих 2/6/10, плюс дозволяє
-// проміжні значення (1,4,5,7,8 тощо) для подій, де сигнал слабший.
-//
-// Це ЄДИНЕ місце, де можна експериментувати з вагою кожного типу
-// події — не шукати по коду розкидані магічні числа.
-const SR_EVENT_WEIGHTS = {
-  // ── АКТИВНІ ЯВНІ ОЦІНКИ (користувач сам свайпнув картку) ──────
-  // Найвища довіра — це пряма, усвідомлена самооцінка людини.
-  swipe_dontknow: 2,   // 20% — свайп "не знаю" вгору
-  swipe_unsure:   6,   // 60% — свайп "невпевнений" (нейтральний, але з ухилом у плюс)
-  swipe_know:     10,  // 100% — свайп "знаю" вниз
-
-  // ── АКТИВНІ ЗАВДАННЯ З БІНАРНИМ СИГНАЛОМ ──────────────────────
-  // Вибір варіанту (MC-quiz), складання речення (Tiles), вставка слів
-  // (Def-game) — надійний сигнал: правильно/неправильно тут технічна
-  // похибка майже неможлива (це текстовий вибір, не розпізнавання).
-  task_correct: 10,    // 100% — відповідь правильна
-  task_wrong:   2,     // 20% — відповідь неправильна
-
-  // ── РОЗПІЗНАВАННЯ МОВЛЕННЯ (Sprechen) ─────────────────────────
-  // Сигнал технічно менш надійний: шум, акцент, якість мікрофона
-  // можуть і "проковтнути" помилку, і неправильно розпізнати правильну
-  // вимову. Тому обидва бали м'якші за task_correct/task_wrong.
-  speech_correct: 8,   // 80% — розпізнано як правильну вимову
-  speech_wrong:   4,   // 40% — розпізнано як неправильну вимову
-
-  // ── ПАСИВНІ ПОДІЇ БЕЗ ЯКОЇСЬ ЯВНОЇ ДІЇ КОРИСТУВАЧА ────────────
-  // Картка просто показана/прослухана автоплеєм, користувач не
-  // свайпнув і не виконав завдання. Це теж вивчення (повторна
-  // експозиція допомагає запам'ятати), але набагато слабший сигнал,
-  // ніж будь-яка свідома відповідь — тож і Hören, і Lesen тут нижче
-  // за все активне в таблиці.
-  passive_listen_implicit: 7,  // 70% Hören — картка прослухана автоплеєм без свайпу
-  passive_read_implicit:   4,  // 40% Lesen — та сама картка переглянута як текст без свайпу
-
-  // ── TILES-GAME: озвучка/текст ПРАВИЛЬНОЇ ВІДПОВІДІ після перевірки ──
-  // Після того як склали речення, гра показує/озвучує правильний
-  // варіант. Контенту тут менше, ніж у повноцінній картці (це коротка
-  // фраза), тож вага явно нижча за task_correct/task_wrong вище —
-  // ці бали NOT замінюють основну оцінку гри, а лише додають
-  // незначний внесок у відповідну навичку (Hören/Lesen).
-  tiles_audio_after_check: 1,  // 10% Hören — озвучка короткої фрази після перевірки
-  tiles_text_after_check:  5,  // 50% Lesen — текст тієї ж фрази користувач точно прочитав
-
-  // ── MATCHING-GAME: дотик до тексту/звуку під час підбору пари ───
-  // Найслабший сигнал з усіх — основна оцінка картки в цій грі йде
-  // через task_correct/task_wrong (за факт правильного/неправильного
-  // підбору), а сам текст/звук варіанту відповіді — побічний, дуже
-  // короткий контакт з матеріалом. Округлено вгору до 1 (10%), щоб не
-  // порушувати правило "кратно 10%" для рідкісного дробового випадку.
-  matching_touch: 1,           // 10% Lesen і/або Hören — побіжний контакт при підборі пари
-};
-
-// Події, що НЕ є доведенням пам'яті (механічна експозиція без активної
-// перевірки) — для них recordCardEvent() пише через srRecordPassiveSignal()
-// замість srRecordAnswer(), тобто SM-2 (repetitions/interval/nextReview)
-// лишається незмінним. Лише ці типи зараз кваліфікуються як "пасивні";
-// усе інше (свайпи, активні завдання, мовлення) — доведення пам'яті,
-// тож рухає розклад повторень як завжди.
-const SR_PASSIVE_EVENTS = new Set([
-  'passive_listen_implicit', 'passive_read_implicit',
-  'tiles_audio_after_check', 'tiles_text_after_check',
-  'matching_touch',
-]);
-
 function srStartOfDay(d){ const x=new Date(d); x.setHours(0,0,0,0); return x; }
 function srToISO(d){ return d.toISOString().split('T')[0]; }
 function srAddDays(d,n){ const x=new Date(d); x.setDate(x.getDate()+n); return x; }
@@ -2935,17 +2847,11 @@ function srSm2(cs, rating){
     else if(repetitions===1) interval=6;
     else                     interval=Math.round(interval*easeFactor);
     repetitions++;
-    easeFactor = easeFactor+0.1-(5-rating)*(0.08+(5-rating)*0.02);
+    easeFactor = Math.max(1.3, easeFactor+0.1-(5-rating)*(0.08+(5-rating)*0.02));
   } else {
     repetitions=0; interval=1;
-    easeFactor = easeFactor-0.2;
+    easeFactor = Math.max(1.3, easeFactor-0.2);
   }
-  // Стандартні межі SM-2: EF ніколи не виходить за [1.3, 2.5].
-  // Без верхньої межі EF необмежено росте з кожною позитивною оцінкою,
-  // а interval=Math.round(interval*easeFactor) накопичує це експоненціально
-  // (8 підряд "знаю" вже дають interval у тисячі днів — картка стає
-  // практично недосяжною для повторного показу).
-  easeFactor = Math.max(1.3, Math.min(2.5, easeFactor));
   return {interval, easeFactor, repetitions};
 }
 
@@ -2976,138 +2882,6 @@ function srDefaultState(){
   return {examDate:null, examType:'telc_DTB_B2', cards:{}, subtestStats:{}, lastSessionDate:null, streak:0, dailyPlan:null, examHistory:[]};
 }
 
-// ── ОДНОРАЗОВА МІГРАЦІЯ СТАРИХ СИСТЕМ ОБЛІКУ В ЄДИНУ ─────────────
-// До цього моменту прогрес картки міг бути розкиданий по ТРЬОХ окремих
-// джерелах: стара SM-2 ('srs_'+id: ef/interval/dueDate/lastQ), Smart
-// Review (SR_STORAGE_KEY: ef/interval/nextReview/history) і Lernpfad
-// ('mova_'+id: totalPlays/lastSeen). Версія схеми в окремому ключі
-// гарантує, що цей прохід виконається РІВНО ОДИН РАЗ на пристрої —
-// для нового користувача (без старих ключів) цикл нижче миттєво
-// пройде по порожньому списку й нічого не зробить.
-const PROGRESS_SCHEMA_VERSION = 2;
-const PROGRESS_SCHEMA_KEY = 'mova_progress_schema_v';
-
-// ── ОДНОРАЗОВЕ ВИПРАВЛЕННЯ: easeFactor без верхньої межі (баг) ──────
-// До цього фіксу srSm2() не обмежував easeFactor зверху (мало бути
-// max 2.5, як у класичному SM-2) — кожна повторна позитивна оцінка
-// неконтрольовано піднімала EF, і interval=Math.round(interval*EF)
-// накопичував це експоненціально (8 підряд "знаю" → інтервал у тисячі
-// днів, картка фактично ніколи не повертається на повторення). Цей
-// прохід один раз перераховує всі вже зіпсовані картки: обмежує EF до
-// [1.3, 2.5] і перебудовує interval/nextReview заново на основі
-// repetitions — так, наче картка щойно отримала свою останню оцінку
-// з уже коректним EF, а не з накопиченим зіпсованим значенням.
-const EF_REPAIR_VERSION = 1;
-const EF_REPAIR_KEY = 'mova_ef_repair_v';
-
-function repairCorruptedEaseFactors(){
-  const currentVersion = +localStorage.getItem(EF_REPAIR_KEY) || 0;
-  if(currentVersion >= EF_REPAIR_VERSION) return;
-
-  try{
-    const state = srLoadState();
-    let repairedCount = 0;
-    Object.keys(state.cards || {}).forEach(id=>{
-      const cs = state.cards[id];
-      if(!cs || typeof cs.easeFactor !== 'number') return;
-      if(cs.easeFactor <= 2.5 && cs.easeFactor >= 1.3) return; // вже в межах — нічого робити
-
-      // Перебудовуємо картку, ПОВТОРНО ПРОГРАВШИ srSm2() стільки разів,
-      // скільки в неї repetitions — це точно відтворює, де мав би бути
-      // interval, якби EF завжди коректно обмежувався з першої оцінки,
-      // замість підбору формулою (яка через ту саму експоненту все одно
-      // дає астрономічні числа для repetitions=7-8).
-      let replay = {};
-      const reps = Math.max(0, cs.repetitions || 0);
-      for(let i=0; i<reps; i++) replay = srSm2(replay, 5); // 5 = "знаю", бо це й привело до високого repetitions
-
-      cs.easeFactor = replay.easeFactor;
-      cs.interval = replay.interval;
-      cs.nextReview = srToISO(srAddDays(new Date(), replay.interval));
-      repairedCount++;
-    });
-    if(repairedCount > 0){
-      srSaveState(state);
-      console.log('[ef-repair] Виправлено карток з неконтрольованим EF:', repairedCount);
-    }
-  }catch(e){
-    console.warn('[ef-repair] Помилка виправлення:', e);
-  }
-
-  localStorage.setItem(EF_REPAIR_KEY, String(EF_REPAIR_VERSION));
-}
-
-function migrateLegacyProgressToUnifiedStore(){
-  const currentVersion = +localStorage.getItem(PROGRESS_SCHEMA_KEY) || 1;
-  if(currentVersion >= PROGRESS_SCHEMA_VERSION) return;
-
-  try{
-    const state = srLoadState();
-    let migratedCount = 0;
-
-    // Збираємо всі id карток, для яких є хоч якісь старі дані —
-    // проходимо ключі localStorage один раз.
-    const legacyIds = new Set();
-    for(let i=0; i<localStorage.length; i++){
-      const key = localStorage.key(i);
-      if(!key) continue;
-      if(key.startsWith('srs_'))  legacyIds.add(key.slice(4));
-      else if(key.startsWith('mova_') && !key.startsWith('mova_smart_review') &&
-              !key.startsWith('mova_progress') && !key.startsWith('mova_goal') &&
-              !key.startsWith('mova_schema') && !key.startsWith('mova_progress_schema')){
-        legacyIds.add(key.slice(5));
-      }
-    }
-
-    legacyIds.forEach(id=>{
-      // Якщо в Smart Review для цієї картки вже є повноцінний запис
-      // (репетиції відбувались) — він найповніший, старі дані для НЕЇ
-      // вже не потрібні; пропускаємо.
-      if(state.cards[id] && (state.cards[id].repetitions ?? 0) > 0) return;
-
-      let oldSm2 = null, oldPlays = null;
-      try{ oldSm2 = JSON.parse(localStorage.getItem('srs_'+id) || 'null'); }catch(e){}
-      try{ oldPlays = JSON.parse(localStorage.getItem('mova_'+id) || 'null'); }catch(e){}
-
-      if(oldSm2 && oldSm2.dueDate){
-        // Стара SM-2 має реальні дані оцінки — переносимо як основу.
-        const nextReview = srToISO(new Date(oldSm2.dueDate));
-        const repetitions = oldSm2.lastQ >= 3 ? 1 : 0; // точна кількість повторень невідома зі старого формату
-        state.cards[id] = {
-          interval: oldSm2.interval ?? 1,
-          easeFactor: oldSm2.ef ?? SRS_DEFAULT_EF,
-          repetitions,
-          nextReview,
-          history: oldSm2.lastQ ? [oldSm2.lastQ] : [],
-          totalPlays: oldPlays?.totalPlays ?? 1,
-          lastSeen: oldSm2.lastRated ?? oldPlays?.lastSeen ?? Date.now(),
-        };
-        migratedCount++;
-      } else if(oldPlays && (oldPlays.totalPlays ?? 0) > 0){
-        // Жодної явної оцінки не було — лише пасивні перегляди
-        // (totalPlays з Lernpfad). Конвертуємо як один passive_listen,
-        // щоб картка не виглядала зовсім "невідомою".
-        const updated = srSm2({}, SR_EVENT_WEIGHTS.passive_listen);
-        state.cards[id] = {
-          ...updated,
-          nextReview: srToISO(new Date()),
-          history: [],
-          totalPlays: oldPlays.totalPlays,
-          lastSeen: oldPlays.lastSeen ?? Date.now(),
-        };
-        migratedCount++;
-      }
-    });
-
-    srSaveState(state);
-    console.log('[migration] Перенесено карток у єдину систему:', migratedCount);
-  }catch(e){
-    console.warn('[migration] Помилка міграції прогресу:', e);
-  }
-
-  localStorage.setItem(PROGRESS_SCHEMA_KEY, String(PROGRESS_SCHEMA_VERSION));
-}
-
 // Основна функція: оновити стан після оцінки картки
 // examPart може бути рядком ('Sprachbausteine') або масивом (['Lesen','Hören'])
 // — картка словника/діалогу тренує одночасно читання і слухання, тож рахуємо в обидва.
@@ -3122,20 +2896,6 @@ function srRecordAnswer(cardId, rating, examPart){
   updated.interval = Math.max(1, Math.round(updated.interval * urgency.factor));
   updated.nextReview = srToISO(srAddDays(new Date(), updated.interval));
   updated.history = [...(cs.history??[]), rating].slice(-10);
-  // totalPlays/lastSeen — перенесено сюди зі старої окремої системи
-  // (localStorage 'mova_'+id), щоб усі підрахунки жили в одній структурі.
-  updated.totalPlays = (cs.totalPlays ?? 0) + 1;
-  updated.lastSeen = Date.now();
-  // partHistory: окрема коротка історія оцінок ПО КОЖНІЙ examPart-частині
-  // цієї картки (на відміну від плаского history вище, який змішує всі
-  // частини в одну стрічку). Потрібна для srStabilityScore() — метрики
-  // "Готовності", що НЕ обнуляється однією невдалою спробою, на відміну
-  // від repetitions/interval у SM-2 (ті лишаються незмінними — вони
-  // відповідають за ПЛАНУВАННЯ повторень, а не за відображення прогресу).
-  updated.partHistory = {...(cs.partHistory??{})};
-  parts.forEach(part=>{
-    updated.partHistory[part] = [...(cs.partHistory?.[part]??[]), rating].slice(-10);
-  });
   state.cards[cardId] = updated;
   // Статистика субтесту — пишемо в КОЖЕН переданий examPart
   parts.forEach(part=>{
@@ -3145,105 +2905,7 @@ function srRecordAnswer(cardId, rating, examPart){
     state.subtestStats[part] = {correct:newCorrect, total:newTotal, accuracy:newCorrect/newTotal};
   });
   srSaveState(state);
-  // Lernpfad показує прогрес модуля в реальному часі — оновлюємо, якщо відкритий
-  if(typeof document!=='undefined' && document.getElementById('view-lernpfad')?.classList.contains('active')){
-    try{ renderLernpfad(); }catch(e){}
-  }
   return updated.interval; // повертаємо інтервал для UI-фідбеку
-}
-
-// Пасивний сигнал (механічна експозиція без доведення пам'яті — автоплей
-// прослуховування/перегляд без свайпу, побіжний контакт у Tiles/Matching).
-// На відміну від srRecordAnswer(), СВІДОМО НЕ торкається SM-2
-// (repetitions/interval/nextReview/history) — пасивна експозиція не
-// доводить, що людина запам'ятала картку, тож не повинна рухати
-// розклад "коли перевірити знову". Пише лише partHistory (для
-// srStabilityScore — окремої метрики накопиченого прогресу) і
-// subtestStats/totalPlays/lastSeen.
-function srRecordPassiveSignal(cardId, rating, examPart){
-  const parts = (Array.isArray(examPart) ? examPart : [examPart || 'General']).filter(Boolean);
-  if(!parts.length) parts.push('General');
-  const state = srLoadState();
-  const cs = state.cards[cardId] ?? {};
-  const updated = {...cs}; // SM-2 поля (repetitions/interval/nextReview) лишаються як були
-  updated.totalPlays = (cs.totalPlays ?? 0) + 1;
-  updated.lastSeen = Date.now();
-  updated.partHistory = {...(cs.partHistory??{})};
-  parts.forEach(part=>{
-    updated.partHistory[part] = [...(cs.partHistory?.[part]??[]), rating].slice(-10);
-  });
-  state.cards[cardId] = updated;
-  parts.forEach(part=>{
-    const sub = state.subtestStats[part] ?? {correct:0, total:0};
-    const newCorrect = sub.correct + (rating>=3?1:0);
-    const newTotal   = sub.total + 1;
-    state.subtestStats[part] = {correct:newCorrect, total:newTotal, accuracy:newCorrect/newTotal};
-  });
-  srSaveState(state);
-  if(typeof document!=='undefined' && document.getElementById('view-lernpfad')?.classList.contains('active')){
-    try{ renderLernpfad(); }catch(e){}
-  }
-}
-
-// ── СТАБІЛЬНІСТЬ КАРТКИ ДЛЯ ПРОГРЕСУ КУРСУ/ГОТОВНОСТІ ────────────
-// На відміну від SM-2 (repetitions/interval/nextReview), які ВІРНО
-// обнуляються однією невдалою спробою — бо їхня мета лише "коли
-// показати картку знову", ця метрика відповідає на ІНШЕ питання:
-// "наскільки добре в цілому ця картка закріплена за весь час".
-// Картка, яку бачили 10 разів з 9 хорошими оцінками і однією свіжою
-// помилкою, НЕ повинна виглядати в Dashboard так само, як зовсім нова
-// картка — хоча для SM2-планування repetitions=0 в обох випадках
-// правильно (показати завтра знову).
-//
-// Формула: середнє з останніх до 10 оцінок цієї examPart-частини,
-// з лінійно зростаючою вагою для свіжіших оцінок (остання важить
-// вдвічі більше за найдавнішу в хвості) — це дає перевагу нещодавній
-// поведінці, але не обнуляє накопичений досвід однією подією.
-// Повертає число 1-5 (та сама шкала, що rating у srSm2).
-function srStabilityScore(cardState, part){
-  const hist = cardState?.partHistory?.[part];
-  if(!hist || !hist.length) return 0; // картку в цій частині ще не торкались
-  let weightedSum = 0, weightTotal = 0;
-  hist.forEach((rating, i)=>{
-    const weight = 1 + i / Math.max(1, hist.length-1); // 1.0 → 2.0 від старого до нового
-    weightedSum += rating * weight;
-    weightTotal += weight;
-  });
-  return weightedSum / weightTotal;
-}
-
-// "Добре закріплена" для відображення прогресу — м'якший і чесніший
-// критерій, ніж repetitions>=2 (який обнуляється однією помилкою).
-// Картка вважається добре закріпленою, якщо стабільність >= 3.5
-// (тобто в середньому, з урахуванням свіжості оцінок, ближче до
-// "знаю", ніж до "невпевнений") — НЕЗАЛЕЖНО від поточного repetitions.
-function srIsWellRetained(cardState, part){
-  return srStabilityScore(cardState, part) >= 3.5;
-}
-
-// ── ЄДИНА ТОЧКА ЗАПИСУ ПОДІЇ КАРТКИ ──────────────────────────────
-// Всі плеєри (Vocab, Dialogue, MC-quiz, Tiles, Def-game, Sprachbausteine,
-// Sprechen) викликають ЦЮ функцію замість прямого srsRate()/srRecordAnswer().
-// eventType — ключ з SR_EVENT_WEIGHTS, конвертується в rating тут, в одному
-// місці, а не магічним числом в кожному виклику.
-function recordCardEvent(cardId, eventType, examPart){
-  const weight10 = SR_EVENT_WEIGHTS[eventType];
-  if(weight10 === undefined){
-    console.warn('recordCardEvent: unknown eventType', eventType);
-    return null;
-  }
-  // Конвертація 0-10 → класична шкала SM-2 1-5 (ділення на 2).
-  // Тотожно старим значенням для цілих 2/6/10 (=1/3/5), і коректно
-  // математично для будь-яких проміжних значень (1,4,5,7,8 тощо).
-  const rating = weight10 / 2;
-  const part = examPart ?? (typeof srGetExamPart==='function' ? srGetExamPart(cardId) : 'General');
-  if(SR_PASSIVE_EVENTS.has(eventType)){
-    // Пасивна подія — НЕ рухаємо SM-2-розклад, лише накопичуємо
-    // partHistory/subtestStats для метрики стабільності.
-    srRecordPassiveSignal(cardId, rating, part);
-    return null;
-  }
-  return srRecordAnswer(cardId, rating, part);
 }
 
 // Будуємо щоденний план
@@ -3330,46 +2992,36 @@ function srGetDashStats(allCards){
   const urgency = srGetUrgency(examDate);
   const weakProfile = srBuildWeaknessProfile(subtestStats);
   const today = srToISO(new Date());
-  const learned = Object.values(cs).filter(c=>(c.totalPlays??0)>0).length;
+  const learned = Object.values(cs).filter(c=>(c.repetitions??0)>0).length;
 
-  // Рахуємо readiness по кожній частині на основі НАКОПИЧЕНОЇ стабільності
-  // (srIsWellRetained — середнє з історії з вагою на свіжість), а НЕ на
-  // поточному SM2 repetitions/interval. Це свідомо: SM2-стан (repetitions,
-  // nextReview) відповідає лише за ПЛАНУВАННЯ наступного повторення і
-  // ВІРНО скидається однією невдалою спробою — але для відображення
-  // "наскільки добре закріплено за весь час" таке скидання спотворює
-  // картину (картка з 9 хорошими і 1 свіжою поганою оцінкою не повинна
-  // виглядати так само, як картка, яку взагалі не бачили).
+  // Рахуємо readiness по кожній частині на основі SRS-даних карток
+  // Логіка: для кожної частини іспиту рахуємо % карток що "вивчені добре"
+  // (repetitions >= 2 і nextReview > today — тобто не потребують повторення сьогодні)
   const partCards = {};
   const parts = ['Sprachbausteine','Lesen','Schreiben','Hören','Sprechen','General'];
   parts.forEach(p => { partCards[p] = {total:0, good:0, seen:0}; });
 
   allCards.forEach(card => {
     const c = cs[card.id];
+    const wasSeen = c && (c.repetitions??0) > 0;
+    const wasGood = c && (c.repetitions??0) >= 2 && c.nextReview && c.nextReview > today;
     const addTo = (part)=>{
       const bucket = partCards[part] || partCards['General'];
       bucket.total++;
-      // "seen" і "good" дивляться РЕАЛЬНУ історію саме цієї частини —
-      // якщо аудіо для картки ніколи не грало, в Hören.partHistory не
-      // буде записів, і картка коректно НЕ зарахується в Hören взагалі
-      // (на відміну від старої логіки, що завжди додавала в обидва).
-      const partHist = c?.partHistory?.[part];
-      if(partHist && partHist.length){
-        bucket.seen++;
-        if(srIsWellRetained(c, part)) bucket.good++;
-      }
+      if(wasSeen) bucket.seen++;
+      if(wasGood)  bucket.good++;
     };
     if(card._isSB || card._isDialogue){
-      // Sprachbausteine — одна категорія. Dialoge — Sprechen завжди,
-      // Hören лише якщо для картки реально записана ця частина.
+      // Sprachbausteine — одна категорія. Dialoge — Hören+Sprechen, обидві повною вагою:
+      // це окремий усвідомлений навик (слухання діалогу + відтворення фрази), а не «розподіл».
       const cardParts = Array.isArray(card.examPart) ? card.examPart : [card.examPart || 'General'];
       cardParts.forEach(addTo);
     } else {
-      // VOCAB: Lesen і Hören — ОБИДВА в знаменнику (теоретично кожна
-      // картка може тренувати обидві навички), але в чисельник кожен
-      // потрапляє лише якщо реально є історія саме для цієї частини.
+      // VOCAB: перегляд+прослуховування картки = Lesen + Hören завжди, повною вагою.
       addTo('Lesen');
       addTo('Hören');
+      // Додатково — повною вагою у власну тематичну категорію картки, якщо вона
+      // відрізняється (напр. «Bewerbung» додатково рахується в Schreiben).
       const theme = card.examPart;
       if(theme && theme !== 'Lesen' && theme !== 'Hören') addTo(theme);
     }
@@ -3700,7 +3352,7 @@ function srRenderDashboard(){
   }).join('');
 
   rowsEl.innerHTML = rows || '<div class="sr-plan-empty">Noch keine Daten</div>';
-  if(learnedEl) learnedEl.innerHTML = `<span>${stats.learnedCards}</span> / <span>${stats.totalCards}</span> ${ {'de':'Karten insgesamt begonnen','uk':'карток загалом розпочато','en':'cards touched overall','ru':'карточек всего начато'}[uiLang]||'Karten insgesamt begonnen' }`;
+  if(learnedEl) learnedEl.innerHTML = `<span>${stats.learnedCards}</span> / <span>${stats.totalCards}</span> ${ {'de':'Karten gelernt','uk':'карток вивчено','en':'cards learned','ru':'карточек изучено'}[uiLang]||'Karten gelernt' }`;
 }
 
 // Спрощений SM-2: зберігає interval, easiness, dueDate для кожної картки
@@ -3709,44 +3361,24 @@ function srRenderDashboard(){
 const SRS_MIN_EF = 1.3;   // мінімальний коефіцієнт легкості
 const SRS_DEFAULT_EF = 2.5;
 
-// srsLoad повертає дані картки у СТАРОМУ форматі полів (ef/interval/
-// dueDate/lastQ) для зворотної сумісності з усім кодом сортування/
-// прогрес-індикаторів нижче, але РЕАЛЬНО читає з ЄДИНОЇ структури
-// Smart Review (state.cards[id]) — друге, окреме сховище 'srs_'+id
-// більше не використовується для нових записів (srsSave стала no-op,
-// весь запис іде через recordCardEvent → srRecordAnswer).
 function srsLoad(id){
-  const state = srLoadState();
-  const cs = state.cards?.[id];
-  if(!cs) return {};
-  const dueDate = cs.nextReview ? srStartOfDay(new Date(cs.nextReview)).getTime() : undefined;
-  const lastQ = cs.history?.length ? cs.history[cs.history.length-1] : undefined;
-  return {
-    ef: cs.easeFactor, interval: cs.interval, dueDate, lastQ,
-    lastRated: cs.lastSeen, totalPlays: cs.totalPlays,
-  };
+  try{ return JSON.parse(localStorage.getItem('srs_'+id)||'{}'); }catch(e){ return {}; }
 }
-// no-op: запис тепер відбувається виключно через srRecordAnswer()
-// (єдина структура). Лишено як заглушку, щоб не шукати й не правити
-// кожен старий викликаючий код, що міг ще десь лишитись.
-function srsSave(id,data){ /* intentionally no-op — see srRecordAnswer */ }
+function srsSave(id,data){
+  localStorage.setItem('srs_'+id, JSON.stringify(data));
+}
 
 // q: 1=Не знаю, 3=Невпевнений, 5=Знаю
 // Smart Review: getExamPartForCard — повертає examPart(и) картки.
 // Кожна картка словника/діалогу опрацьовується і на слух (аудіо), і візуально (текст) —
 // тож запис у статистику йде одночасно у кілька субтестів, а не в один.
-// audioPlayed: чи реально прозвучало аудіо для цієї дії (а не просто
-// теоретична можливість). Якщо звук не грав (наприклад "аудіо недоступне",
-// чи дія була чисто текстовою) — Hören НЕ додається, і це не
-// дублюючий запис під двома назвами тієї самої дії.
-function srGetExamPart(cardId, audioPlayed){
-  // VOCAB: читання картки = Lesen завжди; Hören — лише якщо аудіо реально
-  // прозвучало для цієї дії, плюс власна тематична категорія картки.
+function srGetExamPart(cardId){
+  // VOCAB: читання картки = Lesen, прослуховування озвучення = Hören, плюс
+  // власна тематична категорія картки (Schreiben/Sprechen/…), якщо вона відрізняється.
   if(typeof VOCAB!=='undefined'&&VOCAB?.length){
     const c = VOCAB.find(v=>v.id===cardId);
     if(c){
-      const parts = ['Lesen'];
-      if(audioPlayed) parts.push('Hören');
+      const parts = ['Lesen','Hören'];
       if(c.examPart && c.examPart!=='Lesen' && c.examPart!=='Hören') parts.push(c.examPart);
       return parts;
     }
@@ -3756,16 +3388,11 @@ function srGetExamPart(cardId, audioPlayed){
     const c = SPRACHBAUSTEINE.find(v=>v.id===cardId);
     if(c) return 'Sprachbausteine';
   }
-  // DIALOGE (Redemittel): Hören — лише якщо звук реально грав; Sprechen —
-  // окрема навичка відтворення фрази, рахується завжди (читання репліки
-  // вголос самим студентом — частина призначення цієї картки).
+  // DIALOGE (Redemittel): діалог — це і сприйняття на слух (Hören), і відтворення фрази
+  // (Sprechen) — рахуємо повною вагою в обидва, бо це два різні навики однієї дії.
   if(typeof DIALOGE!=='undefined'&&DIALOGE?.length){
     const c = DIALOGE.find(d=>d.id===cardId);
-    if(c){
-      const parts = ['Sprechen'];
-      if(audioPlayed) parts.push('Hören');
-      return parts;
-    }
+    if(c) return ['Hören','Sprechen'];
   }
   return 'General';
 }
@@ -3784,36 +3411,63 @@ function srGetAllCards(){
   return [...vocab, ...sb, ...dlg];
 }
 
-// srsRate — тонка обгортка над єдиною системою (srRecordAnswer).
-// q: 1=Не знаю, 3=Невпевнений, 5=Знаю. Раніше ця функція сама рахувала
-// SM-2 і писала в окрему структуру 'srs_'+id — тепер вся арифметика й
-// запис відбуваються один раз, в srRecordAnswer/srSm2.
 function srsRate(id, q){
-  const eventType = q>=5 ? 'swipe_know' : q>=3 ? 'swipe_unsure' : 'swipe_dontknow';
-  recordCardEvent(id, eventType, srGetExamPart(id, wasAudioPlayedForCard(id)));
-  const d = srsLoad(id); // перечитуємо щойно записаний стан для зворотної сумісності повернення
-  return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
+  const d = srsLoad(id);
+  let ef       = d.ef       ?? SRS_DEFAULT_EF;
+  let interval = d.interval ?? 0;
+  const now    = Date.now();
+
+  // Оновлення коефіцієнту легкості (формула SM-2)
+  ef = ef + (0.1 - (5-q) * (0.08 + (5-q) * 0.02));
+  if(ef < SRS_MIN_EF) ef = SRS_MIN_EF;
+  if(ef > 2.5)        ef = 2.5;
+
+  // Інтервал
+  if(q === 1){
+    interval = 1;                           // не знаю → завтра
+  } else if(q === 3){
+    interval = Math.max(1, Math.round(interval * 1.2)); // невпевнений → +20%
+  } else {
+    // знаю → SM-2 прогресія
+    if(interval === 0)      interval = 1;
+    else if(interval === 1) interval = 4;
+    else                    interval = Math.round(interval * ef);
+  }
+
+  const dueDate = now + interval * 86400000; // ms до наступного показу
+
+  srsSave(id, {ef, interval, dueDate, lastRated: now, lastQ: q});
+  // Smart Review: паралельний запис (не блокує старий SM-2)
+  try{ srRecordAnswer(id, q, srGetExamPart(id)); }catch(e){}
+  return {ef, interval, dueDate};
 }
 
 // Пасивне прослуховування картки (авто-плей, без свайпу-оцінки користувача).
-// Hören і Lesen отримують РІЗНІ ваги, тому записуються двома окремими
-// викликами recordCardEvent — одна подія не може дати два різні rating
-// одним викликом srRecordAnswer (та приймає лише одне число на всі
-// передані examPart одразу).
-// Hören 70% — картка реально прослухана автоплеєм, це і є основна дія.
-// Lesen 40% — текст картки теж був на екрані, але без активної уваги
-// читання (увага швидше на слуханні) — слабший сигнал, ніж Hören тут.
+// Дає м'який позитивний SM-2-прогрес — слабший за активне «Знаю» (q=5):
+// EF рахуємо як q≈4 (трохи менший приріст легкості), а інтервал додатково
+// демпфуємо ×0.85, щоб картка «спливла» на повторення трохи раніше, ніж
+// після свідомої оцінки. lastQ/history НЕ записуємо — це не явна відповідь,
+// тож в SRS-бейджі/дашборді це не повинно виглядати як «оцінена картка».
 function srsRatePassive(id){
-  recordCardEvent(id, 'passive_listen_implicit', 'Hören');
-  recordCardEvent(id, 'passive_read_implicit', 'Lesen');
-  // Додатково — власна тематична категорія картки (Schreiben тощо), якщо є,
-  // тим самим м'яким Lesen-сигналом (текст теми так само просто був видимий).
-  const theme = (typeof VOCAB!=='undefined') ? VOCAB.find(v=>v.id===id)?.examPart : null;
-  if(theme && theme!=='Lesen' && theme!=='Hören'){
-    recordCardEvent(id, 'passive_read_implicit', theme);
-  }
   const d = srsLoad(id);
-  return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
+  let ef       = d.ef       ?? SRS_DEFAULT_EF;
+  let interval = d.interval ?? 0;
+  const now    = Date.now();
+  const PASSIVE_Q = 4; // між «невпевнений» (3) і «знаю» (5)
+
+  ef = ef + (0.1 - (5-PASSIVE_Q) * (0.08 + (5-PASSIVE_Q) * 0.02));
+  if(ef < SRS_MIN_EF) ef = SRS_MIN_EF;
+  if(ef > 2.5)        ef = 2.5;
+
+  if(interval === 0)      interval = 1;
+  else if(interval === 1) interval = 4;
+  else                    interval = Math.round(interval * ef);
+
+  interval = Math.max(1, Math.round(interval * 0.85)); // демпфер — слабший прогрес ніж активне «Знаю»
+
+  const dueDate = now + interval * 86400000;
+  srsSave(id, {...d, ef, interval, dueDate, lastRated: now}); // lastQ свідомо не оновлюємо
+  return {ef, interval, dueDate};
 }
 
 function srsDue(id){
@@ -3850,13 +3504,6 @@ const haptic = {
 };
 
 async function init(){
-  // Одноразова міграція старих систем обліку прогресу — має відбутись
-  // ПЕРШОЮ, до будь-якого читання srsLoad/srLoadState іншим кодом.
-  migrateLegacyProgressToUnifiedStore();
-  // Виправлення карток із неконтрольованим easeFactor (баг до фіксу
-  // верхньої межі в srSm2) — теж до будь-якого читання прогресу.
-  repairCorruptedEaseFactors();
-
   // Завантажуємо активний курс
   const courseId = getSavedCourseId();
   try{
@@ -3869,11 +3516,7 @@ async function init(){
   // у плеєрах ще до першого рендеру UI
   syncLangsToVisible();
 
-  // Маніфест аудіо-хешів вантажимо одразу при старті — джерело правди
-  // для вирішення "кеш чи мережа" для кожного pregen-аудіофайлу.
-  // Якщо мережі немає — loadAudioManifest() сама впаде у фолбек на
-  // Cache Storage і не заблокує запуск додатку.
-  await loadAudioManifest();
+  await loadVoices();
   // Синхронізуємо слайдери із збереженими значеннями
   const sp=document.getElementById('vspeed');if(sp){sp.value=V.speed;document.getElementById('vspv').textContent=V.speed.toFixed(1)+'×';}
   const rp=document.getElementById('vrepeats');if(rp){rp.value=V.repeats;document.getElementById('vrpv2').textContent=V.repeats+'×';}
@@ -3884,6 +3527,7 @@ async function init(){
   if(sb){sb.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
   const dsb=document.getElementById('dlgshuffle-btn');
   if(dsb){dsb.classList.remove('smart','shuffle');const dcfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[D.mode]||{icon:'🧠',cls:'smart'};dsb.textContent=dcfg.icon;if(dcfg.cls)dsb.classList.add(dcfg.cls);}
+  initVoiceSelects();
   loadFontSize();
   initVocab();
   initVocabChips();
@@ -3957,7 +3601,24 @@ async function init(){
 
 
 
-// ── AUDIO: Pre-generated (TTS) only — fallback is "read it yourself" ──
+// ── TTS ───────────────────────────────────────────────────────
+async function loadVoices(){
+  return new Promise(res=>{
+    const load=()=>{
+      const all=speechSynthesis.getVoices();
+      ['de','en','uk','ru'].forEach(l=>{
+        if(VP[l]){const f=all.find(v=>v.name===VP[l]);if(f){vs[l]=f;return;}}
+        let found=null;
+        if(typeof LC==='undefined'||!LC[l]){return;} for(const ms of LC[l].ms){found=all.find(v=>v.name.includes(ms));if(found)break;}
+        if(!found)found=all.find(v=>v.lang.startsWith(LC[l].code.split('-')[0]));
+        vs[l]=found||null;
+      });res();
+    };
+    if(speechSynthesis.getVoices().length>0)load();
+    else{speechSynthesis.onvoiceschanged=load;setTimeout(load,1200);}
+  });
+}
+// ── AUDIO: Azure pre-generated + Web Speech fallback ─────────
 let currentAudio = null; // HTML Audio fallback
 let playGen = 0;  // інкрементується при кожному stop → скасовує усі in-flight колбеки
 let cardGen  = 0;  // окремий лічильник для карток — не конфліктує з аудіо playGen
@@ -3974,17 +3635,9 @@ function getAudioUrl(cardId, field, lang){
   return `audio/${course}/${lang}/${speed}/${cat}/${cardId}_${field}_${lang}_${speed}.mp3`;
 }
 
-// mkey з gen_audio.py: {course}/{lang}/{rate}/{cat}/{id}_{field}_{lang}_{rate}
-// — це точно той самий шлях, що в getAudioUrl(), без префіксу "audio/"
-// і без розширення ".mp3". Похідна функція, а не окремий розрахунок,
-// щоб формат не міг розійтись між сервером і клієнтом.
-function urlToAudioMkey(url){
-  return url.replace(/^audio\//, '').replace(/\.mp3$/, '');
-}
-
 // fetchAudioBlob → замінено на fetchAudioBuffer (Web Audio API)
 
-async function playPregenAudio(url, onEnd, gen){
+async function playAzureAudio(url, onEnd, gen){
   // Зупиняємо попереднє відтворення
   const a = getSharedAudio();
   a.pause();
@@ -3992,10 +3645,9 @@ async function playPregenAudio(url, onEnd, gen){
   currentAudio = null;
 
   const fname = url.split('/').slice(-1)[0];
-  logErr('audio:try','→ pregen',fname);
+  logErr('audio:try','→ Azure',fname);
 
-  const mkey = urlToAudioMkey(url);
-  const blobUrl = await fetchBlobUrl(url, 8000, mkey);
+  const blobUrl = await fetchBlobUrl(url);
 
   if(playGen !== gen){ logErr('audio:gen','cancelled',fname); return; }
   if(!blobUrl){
@@ -4049,6 +3701,19 @@ async function playPregenAudio(url, onEnd, gen){
   }
 }
 
+async function tryAzureThenSpeech(text, lang, safeEnd, url, gen){
+  const fname = url.split('/').slice(-1)[0];
+  await new Promise(resolve => { playAzureAudio(url, resolve, gen); });
+  if(playGen !== gen){ logErr('audio:gen','skip fallback',fname); return; }
+  if(audioBlobCache.has(url)){
+    logErr('audio:done','Azure ok',fname);
+    safeEnd();
+  } else {
+    logErr('audio:fallback','→ WebSpeech',fname);
+    webSpeech(text, lang, safeEnd);
+  }
+}
+
 // Лічильник активних "пріоритетних" завантажень (поточне аудіо картки, що зараз
 // озвучується). Поки > 0, фонові prefetch-запити чекають, щоб не конкурувати
 // за мережу з файлом, який користувач слухає прямо зараз.
@@ -4065,6 +3730,12 @@ function _waitForPriorityClear(){
 }
 
 async function speak(text, lang, onEnd, cardId, field){
+  // Strip special characters that cause TTS artifacts
+  // Strip HTML: replace <br> with space, remove all other tags
+  text = (text||'').replace(/<br\s*\/?>/gi,' ').replace(/<[^>]+>/g,'')
+    .replace(/[„"‟"«»]/g,'"').replace(/[''‚‛]/g,"'")
+    .replace(/[–—]/g,' ').replace(/­/g,'') // soft hyphen
+    .replace(/[★☆✓✗✅❌🔀🧠📖🎯📝➡]/g,'').trim();
   stopTTS();
   const gen = playGen;
   let _ended = false;
@@ -4074,71 +3745,111 @@ async function speak(text, lang, onEnd, cardId, field){
     if(playGen === gen) onEnd && onEnd();
   };
 
-  if(!cardId || !field){
-    // Без cardId/field немає шляху до pregen-файлу взагалі — нічого
-    // озвучити не можна, чекаємо підтвердження користувача і рухаємось далі.
-    showAudioUnavailableModal(safeEnd, cardId);
+  if(cardId && field){
+    const url = getAudioUrl(cardId, field, lang);
+    const fname = url.split('/').slice(-1)[0];
+
+    // Blob вже є → одразу Azure (без затримки)
+    if(audioBlobCache.has(url)){
+      logErr('speak','cached → Azure',fname);
+      tryAzureThenSpeech(text, lang, safeEnd, url, gen);
+      return;
+    }
+    // Файл точно 404 → одразу WebSpeech
+    if(audioExistsCache.get(url) === '404'){
+      logErr('speak','404 → WebSpeech',fname);
+      webSpeech(text, lang, safeEnd); return;
+    }
+    // Перший раз: чекаємо blob до 800ms → якщо прийшов → Azure
+    //             якщо ні → WebSpeech паралельно поки blob кешується
+    logErr('speak','waiting for blob',fname);
+    _priorityFetchActive++;
+    const fetchPromise = fetchBlobUrl(url).finally(()=>{ _priorityFetchActive--; });
+    const raceResult = await Promise.race([
+      fetchPromise,
+      new Promise(res => setTimeout(()=>res(null), 800))
+    ]);
+
+    if(playGen !== gen) return; // скасовано поки чекали
+
+    if(raceResult){
+      // Blob прийшов за <800ms → Azure
+      logErr('speak','blob→ Azure',fname);
+      tryAzureThenSpeech(text, lang, safeEnd, url, gen);
+    } else {
+      // >800ms → WebSpeech, але продовжуємо чекати blob ще 4200ms
+      logErr('speak','timeout→ WebSpeech',fname);
+      // Якщо blob прийде поки WebSpeech ще говорить — нічого,
+      // наступного разу цей файл буде з кешу → Azure
+      fetchPromise.catch(()=>{});
+      webSpeech(text, lang, safeEnd);
+    }
     return;
   }
-
-  const url = getAudioUrl(cardId, field, lang);
-  const mkey = urlToAudioMkey(url);
-  const fname = url.split('/').slice(-1)[0];
-
-  // Blob вже є, але хеш застарів → не довіряємо "cached", йдемо у фетч нижче
-  const cachedAndValid = audioBlobCache.has(url) && isAudioCacheValid(url, mkey);
-
-  if(cachedAndValid){
-    logErr('speak','cached → pregen',fname);
-    markAudioPlayedForCard(cardId);
-    playPregenAudio(url, safeEnd, gen);
-    return;
-  }
-
-  if(audioExistsCache.get(url) === '404'){
-    logErr('speak','404 → no audio',fname);
-    showAudioUnavailableModal(safeEnd, cardId);
-    return;
-  }
-
-  logErr('speak','waiting for blob',fname);
-  _priorityFetchActive++;
-  const blobUrl = await fetchBlobUrl(url, 8000, mkey).finally(()=>{ _priorityFetchActive--; });
-
-  if(playGen !== gen) return; // скасовано поки чекали
-
-  if(blobUrl){
-    logErr('speak','blob→ pregen',fname);
-    markAudioPlayedForCard(cardId);
-    playPregenAudio(url, safeEnd, gen);
-  } else {
-    logErr('speak','fetch failed → no audio',fname);
-    showAudioUnavailableModal(safeEnd, cardId);
-  }
+  webSpeech(text, lang, safeEnd);
 }
 
-// Захисний виклик скасування Web Speech-черги, лишений тільки в
-// stopTTS() — головній точці зупинки будь-якого аудіо. Web Speech API
-// (vs/VP/webSpeech()) сам по собі більше не використовується в додатку;
-// це — нешкідливий no-op cancel() про всяк випадок, якщо системний
-// TTS активувався поза контролем застосунку (наприклад розширення
-// доступності браузера). Решта 14 точок зупинки плеєрів по коду вже
-// не звертаються до speechSynthesis взагалі — перевірено вручну.
-function cancelSpeechSynthesis(){
-  if(typeof speechSynthesis !== 'undefined') speechSynthesis.cancel();
+// Chrome bug: speechSynthesis іноді зависає і не викликає onend.
+// Fix: keepAlive resume() кожні 5с поки говоримо.
+let _wsKeepAlive = null;
+function startWsKeepAlive(){
+  stopWsKeepAlive();
+  _wsKeepAlive = setInterval(()=>{
+    if(speechSynthesis.paused){
+      speechSynthesis.resume();
+      logErr('webSpeech:resume','Chrome pause fix','');
+    }
+  }, 5000);
+}
+function stopWsKeepAlive(){ clearInterval(_wsKeepAlive); _wsKeepAlive=null; }
+
+function webSpeech(text, lang, onEnd){
+  const u = new SpeechSynthesisUtterance(text);
+  u.lang = (typeof LC!=='undefined' ? LC[lang]?.code : null) || {de:'de-DE',en:'en-US',uk:'uk-UA',ru:'ru-RU'}[lang] || 'de-DE';
+  if(vs[lang]) u.voice = vs[lang];
+  const spd = V.langSpeed?.[lang] ?? '100';
+  u.rate = spd === '080' ? 0.8 : 1.0;
+  const t0 = Date.now();
+  logErr('webSpeech:start', lang, text.slice(0,40));
+  let _wsEnded = false;
+  // Watchdog: якщо onend не спрацьовує за 15с → рухаємося далі
+  // НЕ викликаємо cancel() — це вбиває поточний utterance!
+  const wdog = setTimeout(()=>{
+    if(_wsEnded) return; _wsEnded = true;
+    logErr('webSpeech:wdog','15s no onend → skip',lang);
+    stopWsKeepAlive();
+    if(onEnd) onEnd();
+  }, 15000);
+  const wsEnd = (src)=>{
+    if(_wsEnded) return; _wsEnded = true;
+    clearTimeout(wdog);
+    stopWsKeepAlive();
+    const elapsed = Date.now()-t0;
+    if(elapsed < 200) logErr('webSpeech:instant',elapsed+'ms',lang);
+    else logErr('webSpeech:ok', elapsed+'ms '+src, lang);
+    if(onEnd) onEnd();
+  };
+  u.onend  = ()=>wsEnd('onend');
+  u.onerror=(e)=>{
+    logErr('webSpeech:error',e.error,lang+' '+text.slice(0,30));
+    // interrupted/canceled = нормально (stopTTS або новий speak)
+    if(e.error!=='interrupted'&&e.error!=='canceled') wsEnd('onerror');
+    else{ clearTimeout(wdog); stopWsKeepAlive(); _wsEnded=true; }
+  };
+  startWsKeepAlive();
+  // Перевіряємо чи synthesis не stuck
+  if(speechSynthesis.paused) speechSynthesis.resume();
+  speechSynthesis.speak(u);
 }
 
 function stopTTS(){
   playGen++;
-  cancelSpeechSynthesis();
+  stopWsKeepAlive();
+  speechSynthesis.cancel();
   const a = getSharedAudio();
   a.pause();
   if(currentAudio && currentAudio !== a){ currentAudio.pause(); }
   currentAudio = null;
-  // Якщо модалка "аудіо недоступне" від попередньої картки досі видима —
-  // прибираємо її без виклику onConfirm (його колбек прив'язаний до
-  // вже неактуального playGen і нічого корисного не зробить).
-  document.getElementById('audio-unavail-overlay')?.classList.remove('show');
 }
 
 // ── BACKGROUND/FOREGROUND handling ────────────────────────────
@@ -4154,6 +3865,7 @@ document.addEventListener('visibilitychange', ()=>{
     if(_wasPlayingBeforeHidden || _wasDlgPlayingBeforeHidden){
       // Зупиняємо поточне аудіо без переходу на наступну картку
       playGen++;
+      speechSynthesis.cancel();
       if(currentAudio){ currentAudio.pause(); currentAudio = null; }
     }
   } else if(document.visibilityState === 'visible'){
@@ -4184,7 +3896,7 @@ function showView(id){
   if(id==='dialogue'){initDialogue();initDialogueChips();}
   if(id==='favs')renderFavGrid();
   if(id==='settings')syncFontSizeSlider();
-  if(id==='settings'){renderStreakUI();syncSpeedButtons();try{srRenderDashboard();}catch(e){}}
+  if(id==='settings'){initVoiceSelects();renderStreakUI();syncSpeedButtons();try{srRenderDashboard();}catch(e){}}
   if(id==='lernpfad'){renderLernpfad();}
   // Якщо переходимо не в урок — прибираємо артефакти lesson-result і lf-sb-next-btn
   if(!LF){
@@ -4197,67 +3909,31 @@ function showView(id){
 }
 
 // ── SETTINGS ──────────────────────────────────────────────────
-function resetCardStats(){
-  if(!confirm('Alle Kartenstatistiken löschen?'))return;
-  // totalPlays/lastSeen тепер живуть у єдиній структурі Smart Review,
-  // не в окремих ключах 'mova_'+id (та система видалена при об'єднанні).
-  const state = srLoadState();
-  Object.keys(state.cards||{}).forEach(id=>{
-    if(state.cards[id]){ state.cards[id].totalPlays = 0; state.cards[id].lastSeen = 0; }
-  });
-  srSaveState(state);
-  notify('Statistik gelöscht ✓');
-}
-function notify(msg){const e=document.getElementById('notif');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
-
-// Модальне підтвердження "аудіо недоступне". На відміну від notify(),
-// не зникає сама за таймером — користувач сам читає текст картки і
-// натискає кнопку, коли готовий рухатись далі. onConfirm викликається
-// рівно один раз, після натискання.
-// Якщо одна картка має кілька полів для озвучення (term/short/def),
-// кожне невдале поле раніше показувало СВОЮ модалку — на одній картці
-// користувач міг побачити "аудіо недоступне" 2-3 рази підряд. Тепер
-// модалка показується ОДИН РАЗ за картку (cardId), решта невдалих
-// полів цієї ж картки пропускаються мовчки.
-let _audioUnavailShownForCard = null;
-
-// Чи реально прозвучало аудіо для поточної картки (хоч би для одного
-// поля). Використовується srGetExamPart(), щоб Hören рахувався лише
-// тоді, коли звук дійсно грав, а не теоретично "мав би" — інакше
-// Hören і Lesen завжди дублюють одне й те саме число.
-let _audioPlayedForCard = null;
-
-function markAudioPlayedForCard(cardId){
-  if(cardId) _audioPlayedForCard = cardId;
-}
-function wasAudioPlayedForCard(cardId){
-  return !!cardId && _audioPlayedForCard === cardId;
-}
-
-function showAudioUnavailableModal(onConfirm, cardId){
-  if(cardId && _audioUnavailShownForCard === cardId){
-    // Вже показували для цієї картки — не дублюємо, просто рухаємось далі.
-    onConfirm && onConfirm();
-    return;
+function ensureVoicesLoaded(){
+  // Chrome іноді повертає порожній список до події voiceschanged
+  if(!speechSynthesis.getVoices().length){
+    speechSynthesis.addEventListener('voiceschanged', ()=>{ loadVoices(); }, {once:true});
   }
-  const overlay = document.getElementById('audio-unavail-overlay');
-  const textEl  = document.getElementById('audio-unavail-text');
-  const btnEl   = document.getElementById('audio-unavail-btn');
-  if(!overlay || !textEl || !btnEl){ onConfirm && onConfirm(); return; } // захист якщо розмітки нема
-  if(cardId) _audioUnavailShownForCard = cardId;
-  textEl.textContent = t('audio_unavailable');
-  btnEl.textContent  = t('btn_audio_unavailable_ok');
-  overlay.classList.add('show');
-  let _done = false;
-  const finish = ()=>{
-    if(_done) return; _done = true;
-    overlay.classList.remove('show');
-    btnEl.removeEventListener('click', finish);
-    onConfirm && onConfirm();
-  };
-  btnEl.addEventListener('click', finish, {once:true});
 }
 
+function initVoiceSelects(){
+  const all=speechSynthesis.getVoices();
+  if(all.length===0){setTimeout(initVoiceSelects,500);return;}
+  const pfx={de:['de'],en:['en'],uk:['uk'],ru:['ru']};
+  ['de','en','uk','ru'].forEach(l=>{
+    const sel=document.getElementById('v'+l);if(!sel)return;
+    const voices=all.filter(v=>pfx[l].some(p=>v.lang.toLowerCase().startsWith(p)));
+    const saved=VP[l]||vs[l]?.name||'';
+    sel.innerHTML=voices.length
+      ? voices.map(v=>`<option value="${v.name}" ${v.name===saved?'selected':''}>${v.name}</option>`).join('')
+      : '<option value="">– keine –</option>';
+  });
+}
+function reloadVoices(){speechSynthesis.cancel();vs={};loadVoices().then(()=>{initVoiceSelects();notify('Stimmen aktualisiert ✓');});}
+function saveVP(){localStorage.setItem('sap_vp',JSON.stringify(VP));}
+function resetVoicePrefs(){if(!confirm('Stimmenpräferenzen zurücksetzen?'))return;localStorage.removeItem('sap_vp');VP={};loadVoices().then(()=>initVoiceSelects());notify('Zurückgesetzt ✓');}
+function resetCardStats(){if(!confirm('Alle Kartenstatistiken löschen?'))return;VOCAB.forEach(v=>{const key='mova_'+v.id;try{const d=JSON.parse(localStorage.getItem(key)||'{}');d.totalPlays=0;d.lastSeen=0;localStorage.setItem(key,JSON.stringify(d));}catch(e){}});notify('Statistik gelöscht ✓');}
+function notify(msg){const e=document.getElementById('notif');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
 // ── VOCAB ─────────────────────────────────────────────────────
 function initVocab(){initVocabFilters();applyVocabLangUI();if(V.queue.length===0)V.queue=buildVocabQueue();renderVocabCard();}
 function initVocabFilters(){
@@ -4487,6 +4163,7 @@ function srsSwipe(q){
   if(q === 5){
     // Знаю → одразу наступна картка (зупиняємо аудіо)
     playGen++;
+    speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     V.repeatCount=0; V.idx++;
     const ticket = ++cardGen;
@@ -4498,6 +4175,7 @@ function srsSwipe(q){
   } else if(q === 1 && _srPlanCardIds){
     // Plan-сесія "не знаю" → переміщаємо в кінець черги і переходимо далі
     playGen++;
+    speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     const card = V.queue.splice(V.idx, 1)[0];
     V.queue.push(card);
@@ -4696,6 +4374,7 @@ function srsSwipe(q){
   if(q === 5){
     // Знаю → одразу наступна картка (зупиняємо аудіо)
     playGen++;
+    speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     V.repeatCount=0; V.idx++;
     const ticket = ++cardGen;
@@ -4703,8 +4382,8 @@ function srsSwipe(q){
       if(V.playing && !V.paused && cardGen===ticket) playVocabNext();
     }, 600); // пауза щоб показати хінт
   }
-  // q===1 (Не знаю) → аудіо грає до кінця, playVocabNext спрацює сам.
-  // srsRate вже викликано (записує totalPlays теж — єдина точка запису).
+  // q===1 (Не знаю) → аудіо грає до кінця, playVocabNext спрацює сам
+  // Після завершення saveCardPlay вже збережеться, srsRate вже викликано
 }
 
 // Показує інформаційний хінт з результатом SRS
@@ -4858,11 +4537,8 @@ function matchMakeBtn(cardId, side, text){
 function matchPrefetchAudio(cards){
   cards.forEach(c => {
     const url = getAudioUrl(c.id, 'term', 'de');
-    const mkey = urlToAudioMkey(url);
-    // Якщо вже закешовано і хеш валідний — нічого не робимо (нуль трафіку).
-    // Якщо хеш застарів — fetchBlobUrl сам інвалідує і перезапросить.
-    if((!audioBlobCache.has(url) || !isAudioCacheValid(url, mkey)) && audioExistsCache.get(url) !== '404'){
-      fetchBlobUrl(url, 8000, mkey).catch(()=>{});
+    if(!audioBlobCache.has(url) && audioExistsCache.get(url) !== '404'){
+      fetchBlobUrl(url).catch(()=>{});
     }
   });
 }
@@ -4891,9 +4567,6 @@ function matchHandleClick(btn){
   if(!selNow){
     btn.classList.add('selected');
     matchState.selected = { el:btn, cardId:btn.dataset.cardId, side:btn.dataset.side };
-    // Побіжний контакт з текстом цієї картки — найслабший сигнал з усіх,
-    // основна оцінка йде далі через task_correct/task_wrong при підборі.
-    recordCardEvent(btn.dataset.cardId, 'matching_touch', 'Lesen');
     return;
   }
 
@@ -4919,18 +4592,14 @@ function matchHandleClick(btn){
         el.classList.add('matched');
       }, 400);
     });
-    // Остання пара в раунді — це і є matched===MATCH_SIZE-1 ДО інкременту,
-    // бо коли лишається один варіант з кожної сторони, вибору вже нема:
-    // правильність тут — артефакт структури гри, не доказ знання картки.
-    const isLastPairNoChoice = matchState.matched === MATCH_SIZE - 1;
     matchState.matched++;
     haptic.success();
+    // Знижуємо важливість одразу (як свайп вниз)
+    srsRate(sel.cardId, 5);
 
-    const mc = matchState.cards.find(c => c.card.id === sel.cardId);
-    if(isLastPairNoChoice){
-      if(mc) mc.q = 3; // невпевнений — вибору не було, сигнал недостовірний
-    } else if(!matchState.firstTry.has(sel.cardId)){
-      // Якщо ця картка вже мала помилку — знижуємо оцінку
+    // Якщо ця картка вже мала помилку — знижуємо оцінку
+    if(!matchState.firstTry.has(sel.cardId)){
+      const mc = matchState.cards.find(c => c.card.id === sel.cardId);
       if(mc) mc.q = 3; // невпевнений
     }
 
@@ -4949,13 +4618,12 @@ function matchHandleClick(btn){
     haptic.error();
     matchState.selected = null;
 
-    // Помилка з обома картками — позначаємо для підсумкового запису
-    // (matchShowResult врахує це через mc.q, з м'якшим штрафом за
-    // ризик механічного промаху при підборі пар)
+    // Підвищуємо важливість обох карток одразу (як свайп вгору)
     [selNow.cardId, btn.dataset.cardId].forEach(id => {
+      srsRate(id, 1);
       matchState.firstTry.delete(id); // помилилися — не "з першої спроби"
       const mc = matchState.cards.find(c => c.card.id === id);
-      if(mc) mc.q = Math.min(mc.q, 3); // невпевнений, не "не знаю" — можливий промах
+      if(mc) mc.q = Math.min(mc.q, 1); // не знаю
     });
   }
 }
@@ -4963,6 +4631,7 @@ function matchHandleClick(btn){
 function matchShowResult(){
   matchState.cards.forEach(({card, q}) => {
     srsRate(card.id, q);
+    saveCardPlay(card.id);
   });
   const perfect = matchState.cards.every(({q}) => q === 5);
   const good    = matchState.cards.filter(({q}) => q >= 3).length;
@@ -4986,16 +4655,14 @@ function matchShowResult(){
 // Прогрес уроку: скільки карток пройдено (playCount > 0) з cardIds
 function lessonProgress(lesson){
   if(!lesson?.cardIds?.length) return {done:0, total:0, pct:0};
-  // totalPlays тепер живе в єдиній структурі Smart Review (state.cards[id]),
-  // а не в окремих ключах 'mova_'+id — та стара система була видалена при
-  // об'єднанні систем обліку прогресу. Без цього фіксу прогрес уроку
-  // завжди показував лише залишкові дані з ДО об'єднання, ігноруючи всі
-  // картки, оцінені новою системою.
-  const state = srLoadState();
+  const vocab = typeof VOCAB !== 'undefined' ? VOCAB : [];
+  const vocabMap = new Map(vocab.map(v=>[v.id,v]));
   let done = 0;
   lesson.cardIds.forEach(id=>{
-    const cs = state.cards?.[id];
-    if(cs && (cs.totalPlays||0) > 0) done++;
+    try{
+      const saved = JSON.parse(localStorage.getItem('mova_'+id)||'{}');
+      if((saved.totalPlays||0) > 0) done++;
+    }catch(e){}
   });
   const total = lesson.cardIds.length;
   return {done, total, pct: total ? Math.round(done/total*100) : 0};
@@ -5068,34 +4735,17 @@ function _runLessonFlow(lesson, allCards){
   if(!allCards.length){ notify('⚠️ Keine Karten'); return; }
   stopVocab();
 
-  // Фільтруємо картки без обов'язкових полів (term/short) — захист від
-  // TypeError у renderVocabCard, якщо в базі трапиться неповна картка
-  const validCards = allCards.filter(c=>c.term?.de && c.short?.de);
+  // SM-2: вибираємо до 5 найслабших карток
+  // Фільтруємо картки без обов'язкового поля term.de — захист від
+  // TypeError у renderVocabCard, якщо в базі трапиться неповна картка.
+  // short.de НЕ вимагаємо: це лише декоративний підрядок на картці,
+  // renderVocabCard() вже толерантна до його відсутності (просто порожній
+  // рядок), а 517 карток бази (geh_/dig_/kor_/mtg_ тощо) мають порожній
+  // short.de, але повноцінний term.de — раніше вони штучно ставали
+  // "невалідними" і повністю випадали з вибору картки уроку.
+  const validCards = allCards.filter(c=>c.term?.de);
   if(!validCards.length){ notify('⚠️ Keine gültigen Karten'); return; }
-
-  // Чи в модулі ще лишились картки, що реально ПОТРЕБУЮТЬ повторення
-  // сьогодні (нові або due)? Якщо так — звичний шлях: SM2-пріоритет
-  // (найпрострочені й нові — першими).
-  //
-  // Якщо НІ (увесь модуль уже вивчено, у всіх далекий nextReview) —
-  // srsPriority() для них усіх дає глибоко негативні числа і просто
-  // повертає ту саму "найменш далеку" п'ятірку щоразу, що на практиці
-  // виглядає як "застрягання" на одних і тих самих добре відомих
-  // картках — модуль неможливо "пройти" повторно змістовно. У цьому
-  // випадку перемикаємось на srStabilityScore(): шукаємо 5 card
-  // НАЙСЛАБШИХ за накопиченою стабільністю (Lesen), навіть якщо
-  // формально всі "знає" — це дає змістовне повторення найслабших
-  // місць модуля замість випадкового зависання на одній п'ятірці.
-  const anyDueOrNew = validCards.some(c => srsPriority(c.id) >= 0); // >=0: due або прострочено
-  const state = srLoadState();
-
-  const sorted = anyDueOrNew
-    ? [...validCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id))
-    : [...validCards].sort((a,b)=>{
-        const sa = srStabilityScore(state.cards[a.id], 'Lesen');
-        const sb = srStabilityScore(state.cards[b.id], 'Lesen');
-        return sa - sb; // найслабша стабільність — першою
-      });
+  const sorted = [...validCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
 
   // Якщо урок того ж дня вже відкривався — уникаємо показу тих самих карток знову.
   // Інакше при повторному заході через кілька хвилин/годин після того ж уроку
@@ -5628,8 +5278,7 @@ function mcShowCard(){
   const nextCard = mcState.cards[mcState.idx + 1];
   if(nextCard){
     const nextUrl = getAudioUrl(nextCard.id, 'term', 'de');
-    const nextMkey = urlToAudioMkey(nextUrl);
-    if(!audioBlobCache.has(nextUrl) || !isAudioCacheValid(nextUrl, nextMkey)) fetchBlobUrl(nextUrl, 8000, nextMkey).catch(()=>{});
+    if(!audioBlobCache.has(nextUrl)) fetchBlobUrl(nextUrl).catch(()=>{});
   }
 }
 
@@ -5638,7 +5287,9 @@ function mcAnswer(btn, chosen, correct, card){
   mcState.answered = true;
 
   const isCorrect = chosen === correct;
-  recordCardEvent(card.id, isCorrect ? 'task_correct' : 'task_wrong');
+  const q = isCorrect ? 5 : 1;
+  srsRate(card.id, q);
+  saveCardPlay(card.id);
 
   // Підсвічуємо варіанти
   document.querySelectorAll('.mc-opt').forEach(b=>{
@@ -5750,14 +5401,11 @@ function tilesShowCard(){
   qTextEl.className = 'tiles-q-text mc-q-term';
   qTextEl.textContent = qText;
 
-  // Prefetch DE audio для цієї картки — поле 'term' (саме term.de
-  // розбивається на слова для гри, 'sentence' для VOCAB не існує в
-  // аудіо-системі взагалі — раніше через це завжди виходило "недоступне").
+  // Prefetch DE audio for this card sentence into blob cache
   try {
-    const audioUrl = getAudioUrl(card.id, 'term', 'de');
-    const audioMkey = urlToAudioMkey(audioUrl);
-    if((!audioBlobCache.has(audioUrl) || !isAudioCacheValid(audioUrl, audioMkey)) && audioExistsCache.get(audioUrl) !== '404'){
-      fetchBlobUrl(audioUrl, 8000, audioMkey).catch(()=>{});
+    const audioUrl = getAudioUrl(card.id, 'sentence', 'de');
+    if(!audioBlobCache.has(audioUrl) && audioExistsCache.get(audioUrl) !== '404'){
+      fetchBlobUrl(audioUrl).catch(()=>{});
     }
   } catch(e) {}
 
@@ -6066,16 +5714,13 @@ function tilesCheck(){
 
   const ansEl = document.getElementById('tiles-answer');
   ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
-  recordCardEvent(tilesState.current.id, isOk ? 'task_correct' : 'task_wrong');
+  srsRate(tilesState.current.id, isOk ? 5 : 1);
+  saveCardPlay(tilesState.current.id);
   haptic[isOk?'success':'error']();
 
-  // Озвучуємо правильне речення (term.de) після перевірки відповіді.
-  // Текст і озвучку зараховуємо ОКРЕМИМИ слабкими сигналами в Lesen/Hören
-  // (10%/50% — контенту тут менше, ніж у повноцінній картці з прикладом).
-  recordCardEvent(tilesState.current.id, 'tiles_audio_after_check', 'Hören');
-  recordCardEvent(tilesState.current.id, 'tiles_text_after_check', 'Lesen');
+  // Play DE sentence audio after check (mp3 якщо є, інакше WebSpeech)
   try {
-    speak(tilesState.current.term?.de || '', 'de', null, tilesState.current.id, 'term');
+    speak(tilesState.current.term?.de || '', 'de', null, tilesState.current.id, 'sentence');
   } catch(e) {}
 
   // Показуємо модальний результат
@@ -6314,7 +5959,8 @@ function defCheck(){
     s.el.className = 'def-slot filled ' + (s.word === correct[i] ? 'slot-correct' : 'slot-wrong');
   });
 
-  recordCardEvent(defState.current.id, isOk ? 'task_correct' : 'task_wrong');
+  srsRate(defState.current.id, isOk ? 5 : 1);
+  saveCardPlay(defState.current.id);
   haptic[isOk ? 'success' : 'error']();
 
   try {
@@ -6459,7 +6105,7 @@ function spShowCard(){
 
   // mp3
   const url = getAudioUrl(card.id, 'term', 'de');
-  playPregenAudio(url, null, ++playGen);
+  playAzureAudio(url, null, ++playGen);
 }
 
 function spReset(){
@@ -6687,7 +6333,8 @@ function spShowResult(heardText, card){
     nb.textContent = ul==='uk'?'Далі →':ul==='en'?'Next →':'Weiter →';
   }
 
-  recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
+  srsRate(card.id, isOk ? 4 : 2);
+  saveCardPlay(card.id);
   haptic[isOk ? 'success' : 'error']();
 }
 
@@ -6704,7 +6351,7 @@ function spRetry(){
   spRenderTermWords(spState.cards[spState.idx]);
   spReset();
   const url = getAudioUrl(spState.cards[spState.idx].id, 'term', 'de');
-  playPregenAudio(url, null, ++playGen);
+  playAzureAudio(url, null, ++playGen);
 }
 
 function spShowFinish(){
@@ -6872,102 +6519,8 @@ let currentSource  = null;   // не використовується, для с
 
 // Кеш blob URLs: url → blobURL
 const audioBlobCache  = new Map();
-// audioBufferCache не використовується активно, залишено для сумісності
+// audioBufferCache не потрібен, але залишаємо для tryAzureThenSpeech
 const audioBufferCache = new Map();
-
-// ── AUDIO MANIFEST: хеш-перевірка актуальності кешованих файлів ──
-// audioManifest: {mkey: hash} — завантажується ОДИН РАЗ при старті
-// (network-first, з фолбеком на Cache Storage при офлайні) і живе
-// в пам'яті всю сесію. Якщо завантажити не вдалось (немає мережі і
-// немає кешованої копії) — лишається null, і вся перевірка хешів
-// просто пропускається (довіряємо тому, що вже закешовано — це
-// збігається зі звичною офлайн-поведінкою додатку).
-let audioManifest = null;
-
-// Локальний реєстр {mkey: hash} того, що реально підтверджено як
-// закешоване з ЦИМ САМЕ хешем. На відміну від audioBlobCache (живе
-// тільки в пам'яті сторінки), цей реєстр лежить у localStorage і
-// переживає перезавантаження — інакше довелось би звіряти кожен файл
-// з мережею повторно після кожного refresh.
-const AUDIO_HASH_REGISTRY_KEY = 'mova_audio_hash_registry';
-let audioHashRegistry = null;
-
-function loadAudioHashRegistry(){
-  if(audioHashRegistry) return audioHashRegistry;
-  try{
-    audioHashRegistry = JSON.parse(localStorage.getItem(AUDIO_HASH_REGISTRY_KEY) || '{}');
-  }catch(e){
-    audioHashRegistry = {};
-  }
-  return audioHashRegistry;
-}
-
-function saveAudioHashRegistryEntry(mkey, hash){
-  const reg = loadAudioHashRegistry();
-  reg[mkey] = hash;
-  try{ localStorage.setItem(AUDIO_HASH_REGISTRY_KEY, JSON.stringify(reg)); }catch(e){}
-}
-
-// Завантажує audio/manifest.json. Викликається один раз з init().
-async function loadAudioManifest(){
-  try{
-    const resp = await fetch('audio/manifest.json', {cache:'no-store'});
-    if(resp.ok){
-      audioManifest = await resp.json();
-      logErr('audio:manifest','loaded '+Object.keys(audioManifest).length+' keys','');
-      pruneAudioHashRegistry();
-    }
-  }catch(e){
-    logErr('audio:manifest','fetch failed: '+e.message,'');
-    // Немає мережі при старті — пробуємо взяти те, що SW вже міг
-    // закешувати раніше (network-first з фолбеком саме для цього).
-    try{
-      const cached = await caches.match('audio/manifest.json');
-      if(cached){ audioManifest = await cached.json(); }
-    }catch(e2){}
-  }
-}
-
-// Прибирає з локального реєстру записи, яких більше немає в маніфесті
-// (картку видалили з бази) — щоб localStorage не накопичував сміття
-// після кожного редагування B2-Beruf.js.
-function pruneAudioHashRegistry(){
-  if(!audioManifest) return;
-  const reg = loadAudioHashRegistry();
-  let changed = false;
-  for(const mkey of Object.keys(reg)){
-    if(!(mkey in audioManifest)){ delete reg[mkey]; changed = true; }
-  }
-  if(changed){
-    try{ localStorage.setItem(AUDIO_HASH_REGISTRY_KEY, JSON.stringify(reg)); }catch(e){}
-  }
-}
-
-// Перевіряє, чи закешована версія файлу (url) досі актуальна за хешем
-// з маніфесту. true  → можна довіряти кешу як є, фетч не потрібен.
-// false → кеш застарів (або немає інформації) — caller має примусово
-// перезапросити файл з мережі.
-// Якщо маніфест взагалі не завантажився — повертає true (не блокуємо
-// офлайн-роботу додатку перевіркою, якої не можемо виконати).
-function isAudioCacheValid(url, mkey){
-  if(!audioManifest) return true;
-  const currentHash = audioManifest[mkey];
-  if(!currentHash) return true; // ключа нема в маніфесті — не наша справа тут
-  const reg = loadAudioHashRegistry();
-  return reg[mkey] === currentHash;
-}
-
-// Примусово видаляє застарілий запис із persistent Cache Storage,
-// щоб наступний fetch() у sw.js (правило cache-first для mp3) реально
-// пішов у мережу, а не повернув те, що вже там лежить.
-async function invalidateAudioCacheEntry(url){
-  try{
-    if('caches' in window){
-      const keys = await caches.keys();
-      await Promise.all(keys.map(k => caches.open(k).then(c => c.delete(url))));
-    }
-  }catch(e){}
-}
 
 function getSharedAudio(){
   if(!_sharedAudio){
@@ -7005,49 +6558,13 @@ function initAudioUnlock(){
   document.addEventListener('mousedown',  handler, {capture:true, passive:true});
 }
 
-// Завантажує і кешує blob URL з детальним логуванням.
-// mkey (опціонально) — ключ з audio/manifest.json для перевірки хешу:
-// якщо закешована версія застаріла, in-memory кеш і persistent Cache
-// Storage примусово інвалідуються ПЕРЕД фетчем, щоб мережа дала нову
-// версію файлу одразу, а не "на наступний раз".
-// Дедублікація одночасних запитів на той самий файл: якщо prefetch
-// наступної картки і speak() поточної картки звертаються до одного URL
-// майже одночасно, другий виклик чекає на ПЕРШИЙ in-flight запит,
-// замість того щоб стартувати власний паралельний fetch. Без цього
-// повільніший з двох запитів міг повернути null (і показати
-// "аудіо недоступне"), хоча другий запит тим часом таки завершувався
-// успішно — звідси "недоступне, але потім все ж зіграло".
-const _inFlightFetches = new Map();
-
-async function fetchBlobUrl(url, timeoutMs=8000, mkey=null){
-  if(mkey && audioBlobCache.has(url) && !isAudioCacheValid(url, mkey)){
-    logErr('audio:stale-hash','invalidating',url.split('/').slice(-1)[0]);
-    const oldBlobUrl = audioBlobCache.get(url);
-    try{ URL.revokeObjectURL(oldBlobUrl); }catch(e){}
-    audioBlobCache.delete(url);
-    audioExistsCache.delete(url);
-    await invalidateAudioCacheEntry(url);
-  }
-
+// Завантажує і кешує blob URL з детальним логуванням
+async function fetchBlobUrl(url, timeoutMs=8000){
   if(audioBlobCache.has(url)) return audioBlobCache.get(url);
   // Кешуємо тільки справжні 404, не timeout/network
   if(audioExistsCache.get(url) === '404') return null;
   if(location.protocol === 'file:') return null;
 
-  // Якщо запит на цей URL вже триває — приєднуємось до нього замість
-  // дублювання мережевого фетчу.
-  if(_inFlightFetches.has(url)) return _inFlightFetches.get(url);
-
-  const fetchPromise = _doFetchBlobUrl(url, timeoutMs, mkey);
-  _inFlightFetches.set(url, fetchPromise);
-  try{
-    return await fetchPromise;
-  } finally {
-    _inFlightFetches.delete(url);
-  }
-}
-
-async function _doFetchBlobUrl(url, timeoutMs, mkey){
   const fname = url.split('/').slice(-1)[0];
   const ctrl  = new AbortController();
   const timer = setTimeout(()=>{ ctrl.abort(); logErr('audio:timeout','8s',fname); }, timeoutMs);
@@ -7071,9 +6588,6 @@ async function _doFetchBlobUrl(url, timeoutMs, mkey){
     const blobUrl = URL.createObjectURL(blob);
     audioBlobCache.set(url, blobUrl);
     audioExistsCache.set(url, true);
-    if(mkey && audioManifest && audioManifest[mkey]){
-      saveAudioHashRegistryEntry(mkey, audioManifest[mkey]);
-    }
     logErr('audio:fetched','✓',fname);
     return blobUrl;
   }catch(e){
@@ -7159,10 +6673,9 @@ async function prefetchCardSequential(card, afterDone){
     // Завантажуємо всі мови для поточного поля паралельно (вони короткі)
     await Promise.all(langs.map(lang => {
       const url = getAudioUrl(card.id, field, lang);
-      const mkey = urlToAudioMkey(url);
-      if((audioBlobCache.has(url) && isAudioCacheValid(url, mkey)) || audioExistsCache.get(url) === '404')
-        return Promise.resolve(); // вже є й актуальне, або 404 — пропускаємо
-      return fetchBlobUrl(url, 8000, mkey).catch(()=>{});
+      if(audioBlobCache.has(url) || audioExistsCache.get(url) === '404')
+        return Promise.resolve(); // вже є або 404 — пропускаємо
+      return fetchBlobUrl(url).catch(()=>{});
     }));
   }
 
@@ -7737,7 +7250,7 @@ function lfDlgLearnShowNext(){
   var old = document.getElementById('lf-sb-next-btn');
   if(old) return; // вже показана
   _lfInjectSBNextBtn(function(){
-    _lfDlgPlayToken++; playGen++;
+    _lfDlgPlayToken++; playGen++; speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio = null; }
     // Зараховуємо SM-2 (q=5 — переглянута)
     if(LF && LF.dlgCard) srsRate(LF.dlgCard.id, 5);
@@ -7748,6 +7261,7 @@ function lfDlgLearnShowNext(){
 function _lfDlgLearnDone(){
   _lfDlgPlayToken++;
   playGen++;
+  speechSynthesis.cancel();
   // Знімаємо кнопку Далі
   var btn = document.getElementById('lf-sb-next-btn');
   if(btn) btn.remove();
@@ -7957,30 +7471,19 @@ function srRecordLesson(lf){
   if(!lf) return;
   try{
     srUpdateStreak();
-    const lessonStart = lf.startTime || Date.now();
-    const state0 = srLoadState();
-    // Картки уроку — записуємо ТІЛЬКИ ті, що ще не отримали явної оцінки
-    // протягом цього уроку (lastSeen < lessonStart означає "не оцінена
-    // зараз" — інакше srsRate() під час свайпу вже зробив повний запис,
-    // і повторний запис тут лише задублював би subtestStats).
+    // Картки уроку — беремо оцінку з SM-2 (lastQ). Узгоджено з srsRate: кожна картка
+    // словника тренує одночасно Lesen (читання) і Hören (прослуховування), плюс власну тему.
     (lf.cards||[]).forEach(c=>{
-      const cs = state0.cards?.[c.id];
-      const alreadyRatedThisLesson = cs?.lastSeen && cs.lastSeen >= lessonStart;
-      if(alreadyRatedThisLesson) return;
       const d = srsLoad(c.id);
       const q = d.lastQ || 3;
-      srRecordAnswer(c.id, q, srGetExamPart(c.id, wasAudioPlayedForCard(c.id)));
+      srRecordAnswer(c.id, q, srGetExamPart(c.id));
     });
-    // SB картки з matching/sb_learn — той самий принцип: рахуємо лише ті,
-    // що не отримали оцінки протягом уроку.
+    // SB картки з matching/sb_learn — рахуємо як Sprachbausteine (середня оцінка)
     (lf.sbCards||[]).forEach(c=>{
-      const cs = state0.cards?.[c.id];
-      const alreadyRatedThisLesson = cs?.lastSeen && cs.lastSeen >= lessonStart;
-      if(alreadyRatedThisLesson) return;
       srRecordAnswer(c.id, 3, 'Sprachbausteine');
     });
     // Записуємо витрачений час
-    const mins = Math.round((Date.now() - lessonStart) / 60000);
+    const mins = Math.round((Date.now() - (lf.startTime||Date.now())) / 60000);
     const s2 = srLoadState();
     s2.todayMinutes = (s2.todayMinutes||0) + mins;
     srSaveState(s2);
@@ -8160,7 +7663,8 @@ function _quizAnswer(btn, chosen, answers, q){
 
   // SRS: оновлюємо картку якщо є cardId
   if(q.cardId){
-    recordCardEvent(q.cardId, isCorrect ? 'task_correct' : 'task_wrong');
+    srsRate(q.cardId, isCorrect ? 5 : 1);
+    saveCardPlay(q.cardId);
   }
 
   // Підсвічуємо варіанти
@@ -8339,6 +7843,7 @@ function toggleVocab(){ unlockAudioCtx();
     playVocabNext();
   } else if(!V.paused){
     V.paused=true;
+    speechSynthesis.cancel();
     clearTimeout(V.timer);
     document.getElementById('vplaybtn').textContent='▶';
     document.getElementById('vplaybtn').classList.remove('pause');
@@ -8353,7 +7858,7 @@ function toggleVocab(){ unlockAudioCtx();
     if(v&&V.flipped){
       speakVocabDefs(v,al,0,()=>{
         if(!V.playing||V.paused)return;
-        V.repeatCount++;
+        saveCardPlay(v.id);V.repeatCount++;
         if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
         else{
           if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
@@ -8411,13 +7916,12 @@ function playVocabNext(){
       V.flipped=true;document.getElementById('flashcard').classList.add('flipped');
       speakVocabDefs(v,al,0,()=>{
         if(!guard())return;
-        V.repeatCount++;
+        saveCardPlay(v.id);V.repeatCount++;
         if(V.repeatCount<V.repeats){
           V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
         } else {
           // Картку повністю прослухано і жодного свайпу-оцінки не було —
           // м'який пасивний SRS-прогрес (слабший за активне «Знаю»).
-          // recordCardEvent тут же оновлює totalPlays/lastSeen — одна точка запису.
           if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
           V.repeatCount=0;V.idx++;
           V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
@@ -8539,9 +8043,18 @@ function openFavCard(vocabIdx){
 }
 
 // ── STATS ─────────────────────────────────────────────────────
-// saveCardPlay() видалено — totalPlays/lastSeen тепер пишуться
-// всередині srRecordAnswer() (єдина точка запису), яка теж сама
-// оновлює Lernpfad UI за потреби.
+function saveCardPlay(id){
+  const key='mova_'+id;
+  let d={};
+  try{d=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+  d.totalPlays=(d.totalPlays||0)+1;
+  d.lastSeen=Date.now();
+  localStorage.setItem(key,JSON.stringify(d));
+  // Оновлюємо Lernpfad прогрес якщо він відкритий
+  if(document.getElementById('view-lernpfad')?.classList.contains('active')){
+    renderLernpfad();
+  }
+}
 
 // ── STREAK ────────────────────────────────────────────────────
 function todayStr(){return new Date().toISOString().slice(0,10);}
@@ -8886,7 +8399,7 @@ function dlgSrsSwipe(q){
   showSrsHint(emoji, label, q, 'dlg-fc-area');
 
   if(q===5){
-    playGen++;
+    playGen++; speechSynthesis.cancel();
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     D.repeatCount=0; D.idx++;
     const ticket=++cardGen;
@@ -8905,7 +8418,7 @@ function toggleDialogue(){ unlockAudioCtx();
     window.mlog?.('dialogue_autoplay_started',{mode:D.mode,queue_size:D.queue.length});
     playDialogueNext();
   } else if(!D.paused){
-    D.paused=true; clearTimeout(D.timer);
+    D.paused=true; speechSynthesis.cancel(); clearTimeout(D.timer);
     document.getElementById('dlgplaybtn').textContent='▶';
     document.getElementById('dlgplaybtn').classList.remove('pause');
     window.mlog?.('dialogue_autoplay_paused');
@@ -8918,7 +8431,7 @@ function toggleDialogue(){ unlockAudioCtx();
     if(d && D.flipped){
       speakDialogueA(d,al,0,()=>{
         if(!D.playing||D.paused) return;
-        D.repeatCount++;
+        saveCardPlay(d.id); D.repeatCount++;
         if(D.repeatCount<V.repeats){ D.timer=setTimeout(()=>{ if(D.playing&&!D.paused) playDialogueNext(); },V.readPause); }
         else{
           if(D.srsRating==null && srsDue(d.id)){ try{ srsRatePassive(d.id); }catch(e){} }
@@ -8950,7 +8463,7 @@ function playDialogueNext(){
     D.flipped=true; document.getElementById('dlg-flashcard').classList.add('flipped');
     speakDialogueA(d,al,0,()=>{
       if(!guard()) return;
-      D.repeatCount++;
+      saveCardPlay(d.id); D.repeatCount++;
       if(D.repeatCount<V.repeats){
         D.timer=setTimeout(()=>{ if(guard()) playDialogueNext(); }, V.readPause);
       } else {
@@ -9045,6 +8558,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   srMigrateOldState(); // Smart Review: міграція зі старого SM-2
   srUpdateHeaderChip(); // Chip з кількістю днів у хедері
   initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
+  ensureVoicesLoaded(); // Chrome: голоси можуть не завантажитись одразу
   checkOnboarding();
   applyI18n();
   renderCourseList();
@@ -9062,6 +8576,7 @@ function toggleVocab(){ unlockAudioCtx();
     playVocabNext();
   } else if(!V.paused){
     V.paused=true;
+    speechSynthesis.cancel();
     clearTimeout(V.timer);
     document.getElementById('vplaybtn').textContent='▶';
     document.getElementById('vplaybtn').classList.remove('pause');
@@ -9076,7 +8591,7 @@ function toggleVocab(){ unlockAudioCtx();
     if(v&&V.flipped){
       speakVocabDefs(v,al,0,()=>{
         if(!V.playing||V.paused)return;
-        V.repeatCount++;
+        saveCardPlay(v.id);V.repeatCount++;
         if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
         else{
           if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
@@ -9202,9 +8717,18 @@ function openFavCard(vocabIdx){
 }
 
 // ── STATS ─────────────────────────────────────────────────────
-// saveCardPlay() видалено — totalPlays/lastSeen тепер пишуться
-// всередині srRecordAnswer() (єдина точка запису), яка теж сама
-// оновлює Lernpfad UI за потреби.
+function saveCardPlay(id){
+  const key='mova_'+id;
+  let d={};
+  try{d=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
+  d.totalPlays=(d.totalPlays||0)+1;
+  d.lastSeen=Date.now();
+  localStorage.setItem(key,JSON.stringify(d));
+  // Оновлюємо Lernpfad прогрес якщо він відкритий
+  if(document.getElementById('view-lernpfad')?.classList.contains('active')){
+    renderLernpfad();
+  }
+}
 
 // ── STREAK ────────────────────────────────────────────────────
 function todayStr(){return new Date().toISOString().slice(0,10);}
@@ -9324,6 +8848,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   const el = document.getElementById('app-ver');
   if(el) el.textContent = APP_VERSION;
   initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
+  ensureVoicesLoaded(); // Chrome: голоси можуть не завантажитись одразу
   checkOnboarding();
   applyI18n();
   renderCourseList();
@@ -9699,7 +9224,7 @@ function sbLearnSwipeHard() {
   // Smart Review: записуємо оцінку "не знаю" (це і визначає пріоритет
   // картки далі — sbSmPriority читає саме цей централізований стейт)
   var days = 1;
-  try{ days = recordCardEvent(card.id, 'swipe_dontknow', 'Sprachbausteine'); }catch(e){}
+  try{ days = srRecordAnswer(card.id, 1, 'Sprachbausteine'); }catch(e){}
   if(typeof haptic!=='undefined') haptic.error();
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(192,57,43,.08)'; setTimeout(function(){ area.style.background=''; },300); }
@@ -9720,7 +9245,7 @@ function sbLearnSwipeEasy() {
   // Smart Review: записуємо оцінку "знаю" (визначає пріоритет далі —
   // sbSmPriority читає саме цей централізований стейт)
   var days = 1;
-  try{ days = recordCardEvent(card.id, 'swipe_know', 'Sprachbausteine'); }catch(e){}
+  try{ days = srRecordAnswer(card.id, 5, 'Sprachbausteine'); }catch(e){}
   if(typeof haptic!=='undefined') haptic.success();
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(46,204,113,.08)'; setTimeout(function(){ area.style.background=''; },300); }
@@ -9974,7 +9499,7 @@ function sbRenderPrac() {
       b.className='mc-opt';
       b.textContent=opt;
       // Prefetch audio for this distractor option
-      var fieldName = opt===sbA(card,'de') ? 'answer' : 'distractors_'+(i+1);
+      var fieldName = opt===sbA(card,'de') ? 'answer' : 'distractors_de_100_'+(i+1);
       sbPrefetchAudio(card.id, fieldName);
       b.onclick=(function(o, fn){ return function(){ sbPracAnswer(b,o,card.id,fn); }; })(opt, fieldName);
       optEl.appendChild(b);
@@ -9989,9 +9514,8 @@ function sbRenderPrac() {
 function sbPrefetchAudio(cardId, field) {
   try {
     const url = getAudioUrl(cardId, field, 'de');
-    const mkey = urlToAudioMkey(url);
-    if ((!audioBlobCache.has(url) || !isAudioCacheValid(url, mkey)) && audioExistsCache.get(url) !== '404') {
-      fetchBlobUrl(url, 8000, mkey).catch(()=>{});
+    if (!audioBlobCache.has(url) && audioExistsCache.get(url) !== '404') {
+      fetchBlobUrl(url).catch(()=>{});
     }
   } catch(e) {}
 }
@@ -10010,7 +9534,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   });
 
   // Play chosen option audio, then play full correct sentence
-  var field = audioField || (ok ? 'answer' : 'distractors_1');
+  var field = audioField || (ok ? 'answer' : 'distractors_de_100_1');
   var sentenceText = sbL(card.sentence, 'de').replace('{{BLANK}}', sbA(card,'de'));
   speak(chosen, 'de', function() {
     // After answer audio ends → play full sentence
@@ -10025,7 +9549,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   // Smart Review: записуємо результат у централізований стейт теж —
   // інакше Practice-результати не впливають на пріоритет картки
   // у Learn-режимі (sbSmPriority читає лише srLoadState).
-  try{ recordCardEvent(card.id, ok ? 'task_correct' : 'task_wrong', 'Sprachbausteine'); }catch(e){}
+  try{ srRecordAnswer(card.id, ok ? 5 : 1, 'Sprachbausteine'); }catch(e){}
   SB.pracResults[SB.pracIdx]=ok;
 
   // Explanation always in UI language; result label in UI language
