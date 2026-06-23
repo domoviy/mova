@@ -22296,8 +22296,8 @@
   "B2-Beruf/en/100/mtg/mtg_147_def_en_100": "3e55e26ded",
   "B2-Beruf/uk/100/mtg/mtg_147_def_uk_100": "fcec88117f",
   "B2-Beruf/ru/100/mtg/mtg_147_def_ru_100": "8992714823",
-  "B2-Beruf/de/100/ges/ges_140_def_de_100": "0534f309ab",
-  "B2-Beruf/de/080/ges/ges_140_def_de_080": "37dab1b802",
+  "B2-Beruf/de/100/ges/ges_140_def_de_100": "8736abfb56",
+  "B2-Beruf/de/080/ges/ges_140_def_de_080": "738e9219ce",
   "B2-Beruf/en/100/ges/ges_140_def_en_100": "f7933e8d5b",
   "B2-Beruf/uk/100/ges/ges_140_def_uk_100": "cff17fca3e",
   "B2-Beruf/ru/100/ges/ges_140_def_ru_100": "dede601eae",
@@ -26723,5 +26723,6 @@
   "B2-Beruf/ru/100/ges/ges_136_def_ru_100": "d0bba314a9",
   "B2-Beruf/en/100/ges/ges_140_term_en_100": "d561c64474",
   "B2-Beruf/ru/100/ges/ges_140_term_ru_100": "f5ec49011a",
-  "B2-Beruf/en/100/ges/ges_140_short_en_100": "034c8650cf"
+  "B2-Beruf/en/100/ges/ges_140_short_en_100": "034c8650cf",
+  "B2-Beruf/ru/100/ges/ges_140_short_ru_100": "3da428ddbf"
 }
