@@ -26186,5 +26186,8 @@
   "B2-Beruf/de/080/sbs/sbs_030_explanation_de_080": "05b524cfe4",
   "B2-Beruf/en/100/sbs/sbs_030_explanation_en_100": "0dbdd0ab82",
   "B2-Beruf/uk/100/sbs/sbs_030_explanation_uk_100": "879f5d0392",
-  "B2-Beruf/ru/100/sbs/sbs_030_explanation_ru_100": "50847c9923"
+  "B2-Beruf/ru/100/sbs/sbs_030_explanation_ru_100": "50847c9923",
+  "B2-Beruf/de/100/sbs/sbs_030_distractors_1_de_100": "e627557796",
+  "B2-Beruf/de/080/sbs/sbs_030_distractors_1_de_080": "6793d8fbf9",
+  "B2-Beruf/de/100/sbs/sbs_030_distractors_2_de_100": "431fb23bb6"
 }
