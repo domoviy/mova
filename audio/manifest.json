@@ -25772,5 +25772,8 @@
   "B2-Beruf/de/080/sbs/sbs_012_explanation_de_080": "97deb04d4f",
   "B2-Beruf/en/100/sbs/sbs_012_explanation_en_100": "1151ad4424",
   "B2-Beruf/uk/100/sbs/sbs_012_explanation_uk_100": "25b5dcf41f",
-  "B2-Beruf/ru/100/sbs/sbs_012_explanation_ru_100": "d798213677"
+  "B2-Beruf/ru/100/sbs/sbs_012_explanation_ru_100": "d798213677",
+  "B2-Beruf/de/100/sbs/sbs_012_distractors_1_de_100": "6c47b67de0",
+  "B2-Beruf/de/080/sbs/sbs_012_distractors_1_de_080": "bbde76566d",
+  "B2-Beruf/de/100/sbs/sbs_012_distractors_2_de_100": "40fb826ac2"
 }
