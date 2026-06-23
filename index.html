@@ -2222,7 +2222,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '185-307a9da';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4997,12 +4997,34 @@ function _runLessonFlow(lesson, allCards){
   if(!allCards.length){ notify('⚠️ Keine Karten'); return; }
   stopVocab();
 
-  // SM-2: вибираємо до 5 найслабших карток
   // Фільтруємо картки без обов'язкових полів (term/short) — захист від
   // TypeError у renderVocabCard, якщо в базі трапиться неповна картка
   const validCards = allCards.filter(c=>c.term?.de && c.short?.de);
   if(!validCards.length){ notify('⚠️ Keine gültigen Karten'); return; }
-  const sorted = [...validCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
+
+  // Чи в модулі ще лишились картки, що реально ПОТРЕБУЮТЬ повторення
+  // сьогодні (нові або due)? Якщо так — звичний шлях: SM2-пріоритет
+  // (найпрострочені й нові — першими).
+  //
+  // Якщо НІ (увесь модуль уже вивчено, у всіх далекий nextReview) —
+  // srsPriority() для них усіх дає глибоко негативні числа і просто
+  // повертає ту саму "найменш далеку" п'ятірку щоразу, що на практиці
+  // виглядає як "застрягання" на одних і тих самих добре відомих
+  // картках — модуль неможливо "пройти" повторно змістовно. У цьому
+  // випадку перемикаємось на srStabilityScore(): шукаємо 5 card
+  // НАЙСЛАБШИХ за накопиченою стабільністю (Lesen), навіть якщо
+  // формально всі "знає" — це дає змістовне повторення найслабших
+  // місць модуля замість випадкового зависання на одній п'ятірці.
+  const anyDueOrNew = validCards.some(c => srsPriority(c.id) >= 0); // >=0: due або прострочено
+  const state = srLoadState();
+
+  const sorted = anyDueOrNew
+    ? [...validCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id))
+    : [...validCards].sort((a,b)=>{
+        const sa = srStabilityScore(state.cards[a.id], 'Lesen');
+        const sb = srStabilityScore(state.cards[b.id], 'Lesen');
+        return sa - sb; // найслабша стабільність — першою
+      });
 
   // Якщо урок того ж дня вже відкривався — уникаємо показу тих самих карток знову.
   // Інакше при повторному заході через кілька хвилин/годин після того ж уроку
@@ -9881,7 +9903,7 @@ function sbRenderPrac() {
       b.className='mc-opt';
       b.textContent=opt;
       // Prefetch audio for this distractor option
-      var fieldName = opt===sbA(card,'de') ? 'answer' : 'distractors_de_100_'+(i+1);
+      var fieldName = opt===sbA(card,'de') ? 'answer' : 'distractors_'+(i+1);
       sbPrefetchAudio(card.id, fieldName);
       b.onclick=(function(o, fn){ return function(){ sbPracAnswer(b,o,card.id,fn); }; })(opt, fieldName);
       optEl.appendChild(b);
@@ -9917,7 +9939,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   });
 
   // Play chosen option audio, then play full correct sentence
-  var field = audioField || (ok ? 'answer' : 'distractors_de_100_1');
+  var field = audioField || (ok ? 'answer' : 'distractors_1');
   var sentenceText = sbL(card.sentence, 'de').replace('{{BLANK}}', sbA(card,'de'));
   speak(chosen, 'de', function() {
     // After answer audio ends → play full sentence

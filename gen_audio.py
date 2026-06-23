@@ -43,7 +43,10 @@ VOICE_MAPPING = {
     "sprachbau": {
         "sentence":    {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
         "answer":      {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
-        "explanation": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
+        "explanation": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
+        # Дистрактори — варіанти відповіді того ж завдання, що й answer,
+        # тож той самий голос (справедливе порівняння "звучання" варіантів).
+        "distractors": {"de": "de-DE-AmalaNeural"}
     },
     "redemittel": {
         "q": {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
@@ -121,8 +124,26 @@ def load_js_database(file_path):
                     if isinstance(item, dict) and "id" in item:
                         item["_fallback_var"] = var_name
                         raw_items.append(item)
-        except:
-            pass
+        except json.JSONDecodeError:
+            # Деякі масиви (наприклад SPRACHBAUSTEINE) написані в "людяному"
+            # JS-стилі з нелапкованими ключами об'єкта ({id:"x"} замість
+            # {"id":"x"}) — валідний JS, але невалідний JSON. Застосовуємо
+            # нормалізацію ЛИШЕ як fallback, коли строгий парсинг провалився:
+            # масиви з текстом, що містить двокрапки всередині рядкових
+            # значень (DIALOGE тощо), уже парсяться строгим json.loads()
+            # вище і НІКОЛИ не доходять до цього regex — він і не повинен
+            # їх торкатись, бо може неправильно зрозуміти ":" у тексті
+            # як межу ключа.
+            try:
+                normalized = re.sub(r'([{,]\s*)([a-zA-Z_]\w*)\s*:', r'\1"\2":', clean_array)
+                items = json.loads(normalized)
+                if isinstance(items, list):
+                    for item in items:
+                        if isinstance(item, dict) and "id" in item:
+                            item["_fallback_var"] = var_name
+                            raw_items.append(item)
+            except Exception:
+                pass
 
     return config, raw_items
 
@@ -268,6 +289,44 @@ async def main():
                                 "cat_lower": cat_lower,
                                 "sub": field,
                                 "lang": lang,
+                                "rate": rate,
+                                "cleaned": cleaned,
+                                "voice": voice,
+                                "filename": filename,
+                                "mkey": mkey,
+                                "content_hash": content_hash
+                            })
+
+        # distractors — окрема гілка: на відміну від полів вище це ПРОСТИЙ
+        # список рядків (завжди німецькою, без мовного dict), бо це варіанти
+        # відповіді на вправу із заповненням пропуску в німецькому реченні.
+        # Кожен елемент індексується окремо (distractors_1, distractors_2...)
+        # замість мовного коду — лічильник у назві поля грає ту саму роль,
+        # яку для інших полів грає lang.
+        if internal_cat == "sprachbau":
+            distractor_list = item.get("distractors")
+            if isinstance(distractor_list, list):
+                voice = get_voice_id(internal_cat, "distractors", "de")
+                rates = audio_config.get("de", ["100"])
+                for idx, raw_text in enumerate(distractor_list, start=1):
+                    cleaned = clean_text(raw_text)
+                    if not cleaned:
+                        continue
+                    field = f"distractors_{idx}"
+                    for rate in rates:
+                        filename = f"{item_id}_{field}_de_{rate}.mp3"
+                        mkey = f"{COURSE}/de/{rate}/{cat_lower}/{item_id}_{field}_de_{rate}"
+
+                        content_hash = compute_content_hash(cleaned, voice, rate)
+                        existing_hash = manifest_data.get(mkey)
+
+                        if existing_hash != content_hash:
+                            tasks.append({
+                                "id": item_id,
+                                "internal_cat": internal_cat,
+                                "cat_lower": cat_lower,
+                                "sub": field,
+                                "lang": "de",
                                 "rate": rate,
                                 "cleaned": cleaned,
                                 "voice": voice,
