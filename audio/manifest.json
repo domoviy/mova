@@ -22356,8 +22356,8 @@
   "B2-Beruf/en/100/ges/ges_157_def_en_100": "e0a7a64c0e",
   "B2-Beruf/uk/100/ges/ges_157_def_uk_100": "c8a04e0c90",
   "B2-Beruf/ru/100/ges/ges_157_def_ru_100": "df18e6dbe5",
-  "B2-Beruf/de/100/ges/ges_158_def_de_100": "65ccb1ee64",
-  "B2-Beruf/de/080/ges/ges_158_def_de_080": "f16492e7ea",
+  "B2-Beruf/de/100/ges/ges_158_def_de_100": "5afb8a4740",
+  "B2-Beruf/de/080/ges/ges_158_def_de_080": "2b182d1193",
   "B2-Beruf/en/100/ges/ges_158_def_en_100": "203b9936ce",
   "B2-Beruf/uk/100/ges/ges_158_def_uk_100": "f1ed603939",
   "B2-Beruf/ru/100/ges/ges_158_def_ru_100": "e1961ad911",
@@ -26771,5 +26771,6 @@
   "B2-Beruf/ru/100/ges/ges_157_short_ru_100": "fed2d19881",
   "B2-Beruf/en/100/ges/ges_158_term_en_100": "c305f7b042",
   "B2-Beruf/ru/100/ges/ges_158_term_ru_100": "f66fa1d797",
-  "B2-Beruf/en/100/ges/ges_158_short_en_100": "b07692702e"
+  "B2-Beruf/en/100/ges/ges_158_short_en_100": "b07692702e",
+  "B2-Beruf/ru/100/ges/ges_158_short_ru_100": "ddff192250"
 }
