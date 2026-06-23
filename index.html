@@ -2222,7 +2222,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '187-7c0021d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2935,11 +2935,17 @@ function srSm2(cs, rating){
     else if(repetitions===1) interval=6;
     else                     interval=Math.round(interval*easeFactor);
     repetitions++;
-    easeFactor = Math.max(1.3, easeFactor+0.1-(5-rating)*(0.08+(5-rating)*0.02));
+    easeFactor = easeFactor+0.1-(5-rating)*(0.08+(5-rating)*0.02);
   } else {
     repetitions=0; interval=1;
-    easeFactor = Math.max(1.3, easeFactor-0.2);
+    easeFactor = easeFactor-0.2;
   }
+  // Стандартні межі SM-2: EF ніколи не виходить за [1.3, 2.5].
+  // Без верхньої межі EF необмежено росте з кожною позитивною оцінкою,
+  // а interval=Math.round(interval*easeFactor) накопичує це експоненціально
+  // (8 підряд "знаю" вже дають interval у тисячі днів — картка стає
+  // практично недосяжною для повторного показу).
+  easeFactor = Math.max(1.3, Math.min(2.5, easeFactor));
   return {interval, easeFactor, repetitions};
 }
 
@@ -2980,6 +2986,56 @@ function srDefaultState(){
 // пройде по порожньому списку й нічого не зробить.
 const PROGRESS_SCHEMA_VERSION = 2;
 const PROGRESS_SCHEMA_KEY = 'mova_progress_schema_v';
+
+// ── ОДНОРАЗОВЕ ВИПРАВЛЕННЯ: easeFactor без верхньої межі (баг) ──────
+// До цього фіксу srSm2() не обмежував easeFactor зверху (мало бути
+// max 2.5, як у класичному SM-2) — кожна повторна позитивна оцінка
+// неконтрольовано піднімала EF, і interval=Math.round(interval*EF)
+// накопичував це експоненціально (8 підряд "знаю" → інтервал у тисячі
+// днів, картка фактично ніколи не повертається на повторення). Цей
+// прохід один раз перераховує всі вже зіпсовані картки: обмежує EF до
+// [1.3, 2.5] і перебудовує interval/nextReview заново на основі
+// repetitions — так, наче картка щойно отримала свою останню оцінку
+// з уже коректним EF, а не з накопиченим зіпсованим значенням.
+const EF_REPAIR_VERSION = 1;
+const EF_REPAIR_KEY = 'mova_ef_repair_v';
+
+function repairCorruptedEaseFactors(){
+  const currentVersion = +localStorage.getItem(EF_REPAIR_KEY) || 0;
+  if(currentVersion >= EF_REPAIR_VERSION) return;
+
+  try{
+    const state = srLoadState();
+    let repairedCount = 0;
+    Object.keys(state.cards || {}).forEach(id=>{
+      const cs = state.cards[id];
+      if(!cs || typeof cs.easeFactor !== 'number') return;
+      if(cs.easeFactor <= 2.5 && cs.easeFactor >= 1.3) return; // вже в межах — нічого робити
+
+      // Перебудовуємо картку, ПОВТОРНО ПРОГРАВШИ srSm2() стільки разів,
+      // скільки в неї repetitions — це точно відтворює, де мав би бути
+      // interval, якби EF завжди коректно обмежувався з першої оцінки,
+      // замість підбору формулою (яка через ту саму експоненту все одно
+      // дає астрономічні числа для repetitions=7-8).
+      let replay = {};
+      const reps = Math.max(0, cs.repetitions || 0);
+      for(let i=0; i<reps; i++) replay = srSm2(replay, 5); // 5 = "знаю", бо це й привело до високого repetitions
+
+      cs.easeFactor = replay.easeFactor;
+      cs.interval = replay.interval;
+      cs.nextReview = srToISO(srAddDays(new Date(), replay.interval));
+      repairedCount++;
+    });
+    if(repairedCount > 0){
+      srSaveState(state);
+      console.log('[ef-repair] Виправлено карток з неконтрольованим EF:', repairedCount);
+    }
+  }catch(e){
+    console.warn('[ef-repair] Помилка виправлення:', e);
+  }
+
+  localStorage.setItem(EF_REPAIR_KEY, String(EF_REPAIR_VERSION));
+}
 
 function migrateLegacyProgressToUnifiedStore(){
   const currentVersion = +localStorage.getItem(PROGRESS_SCHEMA_KEY) || 1;
@@ -3797,6 +3853,9 @@ async function init(){
   // Одноразова міграція старих систем обліку прогресу — має відбутись
   // ПЕРШОЮ, до будь-якого читання srsLoad/srLoadState іншим кодом.
   migrateLegacyProgressToUnifiedStore();
+  // Виправлення карток із неконтрольованим easeFactor (баг до фіксу
+  // верхньої межі в srSm2) — теж до будь-якого читання прогресу.
+  repairCorruptedEaseFactors();
 
   // Завантажуємо активний курс
   const courseId = getSavedCourseId();
