@@ -2222,7 +2222,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '188-2eab767';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4197,7 +4197,17 @@ function showView(id){
 }
 
 // ── SETTINGS ──────────────────────────────────────────────────
-function resetCardStats(){if(!confirm('Alle Kartenstatistiken löschen?'))return;VOCAB.forEach(v=>{const key='mova_'+v.id;try{const d=JSON.parse(localStorage.getItem(key)||'{}');d.totalPlays=0;d.lastSeen=0;localStorage.setItem(key,JSON.stringify(d));}catch(e){}});notify('Statistik gelöscht ✓');}
+function resetCardStats(){
+  if(!confirm('Alle Kartenstatistiken löschen?'))return;
+  // totalPlays/lastSeen тепер живуть у єдиній структурі Smart Review,
+  // не в окремих ключах 'mova_'+id (та система видалена при об'єднанні).
+  const state = srLoadState();
+  Object.keys(state.cards||{}).forEach(id=>{
+    if(state.cards[id]){ state.cards[id].totalPlays = 0; state.cards[id].lastSeen = 0; }
+  });
+  srSaveState(state);
+  notify('Statistik gelöscht ✓');
+}
 function notify(msg){const e=document.getElementById('notif');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
 
 // Модальне підтвердження "аудіо недоступне". На відміну від notify(),
@@ -4976,14 +4986,16 @@ function matchShowResult(){
 // Прогрес уроку: скільки карток пройдено (playCount > 0) з cardIds
 function lessonProgress(lesson){
   if(!lesson?.cardIds?.length) return {done:0, total:0, pct:0};
-  const vocab = typeof VOCAB !== 'undefined' ? VOCAB : [];
-  const vocabMap = new Map(vocab.map(v=>[v.id,v]));
+  // totalPlays тепер живе в єдиній структурі Smart Review (state.cards[id]),
+  // а не в окремих ключах 'mova_'+id — та стара система була видалена при
+  // об'єднанні систем обліку прогресу. Без цього фіксу прогрес уроку
+  // завжди показував лише залишкові дані з ДО об'єднання, ігноруючи всі
+  // картки, оцінені новою системою.
+  const state = srLoadState();
   let done = 0;
   lesson.cardIds.forEach(id=>{
-    try{
-      const saved = JSON.parse(localStorage.getItem('mova_'+id)||'{}');
-      if((saved.totalPlays||0) > 0) done++;
-    }catch(e){}
+    const cs = state.cards?.[id];
+    if(cs && (cs.totalPlays||0) > 0) done++;
   });
   const total = lesson.cardIds.length;
   return {done, total, pct: total ? Math.round(done/total*100) : 0};
