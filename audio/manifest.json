@@ -25586,5 +25586,8 @@
   "B2-Beruf/ru/100/sbs/sbs_004_answer_ru_100": "28a8829d45",
   "B2-Beruf/de/100/sbs/sbs_004_explanation_de_100": "0b2e010856",
   "B2-Beruf/de/080/sbs/sbs_004_explanation_de_080": "72efff7c48",
-  "B2-Beruf/en/100/sbs/sbs_004_explanation_en_100": "7adc7cf8ad"
+  "B2-Beruf/en/100/sbs/sbs_004_explanation_en_100": "7adc7cf8ad",
+  "B2-Beruf/uk/100/sbs/sbs_004_explanation_uk_100": "331e159aeb",
+  "B2-Beruf/ru/100/sbs/sbs_004_explanation_ru_100": "f48c39bba6",
+  "B2-Beruf/de/100/sbs/sbs_004_distractors_1_de_100": "b644f974dc"
 }
