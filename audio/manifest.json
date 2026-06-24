@@ -20444,7 +20444,7 @@
   "B2-Beruf/de/080/onk/onk_001_term_de_080": "621ee65e9b",
   "B2-Beruf/uk/100/onk/onk_001_term_uk_100": "d0022ccb5e",
   "B2-Beruf/en/100/onk/onk_001_term_en_100": "c0ee049420",
-  "B2-Beruf/de/100/onk/onk_001_def_de_100": "2e6c69258c",
+  "B2-Beruf/de/100/onk/onk_001_def_de_100": "e6df2802c5",
   "B2-Beruf/de/080/onk/onk_001_def_de_080": "3378931088",
   "B2-Beruf/uk/100/onk/onk_001_def_uk_100": "8e5536c944",
   "B2-Beruf/en/100/onk/onk_001_def_en_100": "174bbb3953",
@@ -26938,5 +26938,7 @@
   "B2-Beruf/ru/100/onk/onk_001_term_ru_100": "56c59caacf",
   "B2-Beruf/de/100/onk/onk_001_short_de_100": "4b9fab3fb0",
   "B2-Beruf/de/080/onk/onk_001_short_de_080": "a539a47d7f",
-  "B2-Beruf/en/100/onk/onk_001_short_en_100": "778169ad56"
+  "B2-Beruf/en/100/onk/onk_001_short_en_100": "778169ad56",
+  "B2-Beruf/uk/100/onk/onk_001_short_uk_100": "d8f47e9df3",
+  "B2-Beruf/ru/100/onk/onk_001_short_ru_100": "b4be4cb09b"
 }
