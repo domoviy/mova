@@ -27528,5 +27528,8 @@
   "B2-Beruf/de/080/geh/geh_033_short_de_080": "655fdd4273",
   "B2-Beruf/en/100/geh/geh_033_short_en_100": "cee9cafee4",
   "B2-Beruf/uk/100/geh/geh_033_short_uk_100": "cba4f1b03f",
-  "B2-Beruf/ru/100/geh/geh_033_short_ru_100": "2329d4517d"
+  "B2-Beruf/ru/100/geh/geh_033_short_ru_100": "2329d4517d",
+  "B2-Beruf/ru/100/geh/geh_033_def_ru_100": "3ddcf96016",
+  "B2-Beruf/ru/100/geh/geh_034_term_ru_100": "e69e676a27",
+  "B2-Beruf/de/100/geh/geh_034_short_de_100": "bb2798ecf3"
 }
