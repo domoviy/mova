@@ -2200,7 +2200,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '192-819f99d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9487,9 +9487,11 @@ function sbRenderPrac() {
     sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')
     +'</div>';
 
-  // Options: correct answer + all 4 distractors = 5 options total
+  // Options: correct answer + all 4 distractors = 5 options total.
+  // Дистрактори і правильна відповідь у Sprachbau завжди PRIMARY_LANG (через primaryLang())
+  // (зараз 'de', але беремо з бази для універсальності на майбутнє).
   var distractors = card.distractors.slice(0,4);
-  var opts = [sbA(card,'de')].concat(distractors).sort(function(){ return Math.random()-.5; });
+  var opts = [sbA(card,primaryLang())].concat(distractors).sort(function(){ return Math.random()-.5; });
 
   var optEl=document.getElementById('sb-prac-options');
   if(optEl){
@@ -9499,7 +9501,7 @@ function sbRenderPrac() {
       b.className='mc-opt';
       b.textContent=opt;
       // Prefetch audio for this distractor option
-      var fieldName = opt===sbA(card,'de') ? 'answer' : 'distractors_de_100_'+(i+1);
+      var fieldName = opt===sbA(card,primaryLang()) ? 'answer' : 'distractors_'+(i+1);
       sbPrefetchAudio(card.id, fieldName);
       b.onclick=(function(o, fn){ return function(){ sbPracAnswer(b,o,card.id,fn); }; })(opt, fieldName);
       optEl.appendChild(b);
@@ -9513,7 +9515,7 @@ function sbRenderPrac() {
 
 function sbPrefetchAudio(cardId, field) {
   try {
-    const url = getAudioUrl(cardId, field, 'de');
+    const url = getAudioUrl(cardId, field, primaryLang());
     if (!audioBlobCache.has(url) && audioExistsCache.get(url) !== '404') {
       fetchBlobUrl(url).catch(()=>{});
     }
@@ -9524,22 +9526,22 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   if(SB.pracAnswered) return;
   SB.pracAnswered=true;
   var card=SB.pracQueue[SB.pracIdx]; if(!card||card.id!==cardId) return;
-  var ok=chosen===sbA(card,'de'); // distractors are always DE
+  var ok=chosen===sbA(card,primaryLang()); // дистрактори завжди PRIMARY_LANG (через primaryLang())
   if(typeof haptic!=='undefined') ok?haptic.success():haptic.error();
 
   document.querySelectorAll('#sb-prac-options .mc-opt').forEach(function(b){
     b.classList.add('disabled');
-    if(b.textContent===sbA(card,'de')) b.classList.add('correct');
+    if(b.textContent===sbA(card,primaryLang())) b.classList.add('correct');
     else if(b===btn&&!ok) b.classList.add('wrong');
   });
 
   // Play chosen option audio, then play full correct sentence
-  var field = audioField || (ok ? 'answer' : 'distractors_de_100_1');
-  var sentenceText = sbL(card.sentence, 'de').replace('{{BLANK}}', sbA(card,'de'));
-  speak(chosen, 'de', function() {
+  var field = audioField || (ok ? 'answer' : 'distractors_1');
+  var sentenceText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
+  speak(chosen, primaryLang(), function() {
     // After answer audio ends → play full sentence
     setTimeout(function() {
-      speak(sentenceText, 'de', null, card.id, 'sentence');
+      speak(sentenceText, primaryLang(), null, card.id, 'sentence');
     }, 300);
   }, card.id, field);
 
@@ -9562,7 +9564,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     var maxCards = 2;
     var isLastPrac = (SB.pracIdx + 1 >= Math.min(SB.pracQueue.length, maxCards));
     var nextBtnLabel = typeof t==='function' ? t('btn_sb_weiter') : 'Далі →';
-    sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,'de'), expl, function(){
+    sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,primaryLang()), expl, function(){
       sbHideFeedbackModal();
       sbPracNext();
     }, card, nextBtnLabel);
@@ -9570,7 +9572,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     // Standalone mode: inline feedback block
     var fb=document.getElementById('sb-prac-feedback');
     document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
-    document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+sbA(card,'de');
+    document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+sbA(card,primaryLang());
     document.getElementById('sb-prac-fb-expl').innerHTML=expl;
     fb.style.display='block';
     var innerNext=document.getElementById('sb-prac-next-btn');

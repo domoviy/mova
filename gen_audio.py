@@ -45,8 +45,11 @@ VOICE_MAPPING = {
         "answer":      {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
         "explanation": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
         # Дистрактори — варіанти відповіді того ж завдання, що й answer,
-        # тож той самий голос (справедливе порівняння "звучання" варіантів).
-        "distractors": {"de": "de-DE-AmalaNeural"}
+        # тож той самий голос на кожній мові (справедливе порівняння
+        # "звучання" варіантів). Озвучуються лише мовою PRIMARY_LANG, але
+        # таблиця має всі 4 голоси — якщо PRIMARY_LANG колись зміниться,
+        # код не впаде через відсутній ключ.
+        "distractors": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
     },
     "redemittel": {
         "q": {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
@@ -99,6 +102,15 @@ def load_js_database(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
 
+    # PRIMARY_LANG — мова, якою завжди озвучуються дистрактори та сирий
+    # 'answer' Sprachbau-картки (зараз 'de', але читаємо з бази, а не
+    # хардкодимо — узгоджено з тим самим принципом на клієнті, де
+    # index.html бере PRIMARY_LANG, а не літеральне 'de').
+    primary_lang = "de"
+    primary_match = re.search(r'PRIMARY_LANG\s*=\s*["\']([a-z]{2})["\']', content)
+    if primary_match:
+        primary_lang = primary_match.group(1)
+
     config = {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
     config_match = re.search(r'AUDIO_CONFIG\s*=\s*(\{.*?\})', content, re.DOTALL)
     if config_match:
@@ -145,7 +157,7 @@ def load_js_database(file_path):
             except Exception:
                 pass
 
-    return config, raw_items
+    return config, raw_items, primary_lang
 
 async def synthesize_speech(text, voice, rate_str, output_path):
     """Генерація аудіо через Edge TTS."""
@@ -237,7 +249,7 @@ async def main():
                 manifest_data = json.load(f)
         except: pass
 
-    audio_config, raw_items = load_js_database("B2-Beruf.js")
+    audio_config, raw_items, primary_lang = load_js_database("B2-Beruf.js")
 
     tasks = []
     fields_map = {
@@ -265,6 +277,17 @@ async def main():
                     if text is None: continue
                     if isinstance(text, str) and not text.strip(): continue
                     if isinstance(text, list) and not text: continue
+
+                    # Sprachbau 'sentence' містить буквальний плейсхолдер
+                    # {{BLANK}} замість пропуску — клієнт (index.html)
+                    # підставляє туди правильну відповідь ТІЄЇ Ж мови перед
+                    # озвученням (sbA(card, lang)). Без цієї підстановки
+                    # TTS буквально прочитав би слово "BLANK" замість
+                    # речення з відповіддю.
+                    if internal_cat == "sprachbau" and field == "sentence" and "{{BLANK}}" in text:
+                        answer_obj = item.get("answer") or {}
+                        answer_text = answer_obj.get(lang) or answer_obj.get(primary_lang) or ""
+                        text = text.replace("{{BLANK}}", answer_text)
 
                     cleaned = clean_text(text)
                     if not cleaned:
@@ -298,24 +321,24 @@ async def main():
                             })
 
         # distractors — окрема гілка: на відміну від полів вище це ПРОСТИЙ
-        # список рядків (завжди німецькою, без мовного dict), бо це варіанти
-        # відповіді на вправу із заповненням пропуску в німецькому реченні.
-        # Кожен елемент індексується окремо (distractors_1, distractors_2...)
-        # замість мовного коду — лічильник у назві поля грає ту саму роль,
-        # яку для інших полів грає lang.
+        # список рядків (завжди PRIMARY_LANG, без мовного dict), бо це
+        # варіанти відповіді на вправу із заповненням пропуску в реченні
+        # PRIMARY_LANG. Кожен елемент індексується окремо (distractors_1,
+        # distractors_2...) замість мовного коду — лічильник у назві поля
+        # грає ту саму роль, яку для інших полів грає lang.
         if internal_cat == "sprachbau":
             distractor_list = item.get("distractors")
             if isinstance(distractor_list, list):
-                voice = get_voice_id(internal_cat, "distractors", "de")
-                rates = audio_config.get("de", ["100"])
+                voice = get_voice_id(internal_cat, "distractors", primary_lang)
+                rates = audio_config.get(primary_lang, ["100"])
                 for idx, raw_text in enumerate(distractor_list, start=1):
                     cleaned = clean_text(raw_text)
                     if not cleaned:
                         continue
                     field = f"distractors_{idx}"
                     for rate in rates:
-                        filename = f"{item_id}_{field}_de_{rate}.mp3"
-                        mkey = f"{COURSE}/de/{rate}/{cat_lower}/{item_id}_{field}_de_{rate}"
+                        filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
+                        mkey = f"{COURSE}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
                         existing_hash = manifest_data.get(mkey)
@@ -326,7 +349,7 @@ async def main():
                                 "internal_cat": internal_cat,
                                 "cat_lower": cat_lower,
                                 "sub": field,
-                                "lang": "de",
+                                "lang": primary_lang,
                                 "rate": rate,
                                 "cleaned": cleaned,
                                 "voice": voice,
