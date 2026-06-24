@@ -2222,7 +2222,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '198-1fed529';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4777,7 +4777,7 @@ function startMatching(){
   const cf  = document.getElementById('vf-cat')?.value || 'all';
   // Використовуємо глобальний VOCAB (завантажений динамічно)
   const vocabAll = typeof VOCAB !== 'undefined' ? VOCAB : [];
-  let pool = vocabAll.filter(v => (cf==='all' || v.cat===cf) && v.term?.de && v.short?.de);
+  let pool = vocabAll.filter(v => (cf==='all' || v.cat===cf) && v.term?.[primaryLang()] && v.term?.[uiLang] && (uiLang!==primaryLang() || v.short?.[primaryLang()]));
 
   if(pool.length < MATCH_SIZE){
     grid.innerHTML = `<p style="text-align:center;color:var(--muted);padding:32px 16px;grid-column:1/-1">
@@ -7389,7 +7389,7 @@ function lfStartMatching(){
   const vplayer = document.querySelector('#view-vocab .vplayer');
   if(vplayer) vplayer.style.display='none';
   // Підміняємо пул matching картками уроку (5 найслабших)
-  const pool = LF.cards.filter(c=>c.term?.de && c.short?.de);
+  const pool = LF.cards.filter(c=>c.term?.[primaryLang()] && c.term?.[uiLang] && (uiLang!==primaryLang() || c.short?.[primaryLang()]));
   const chosen = pool.slice(0, Math.min(5, pool.length));
   if(chosen.length < 2){
     lfStepDone('matching', 1); return;
@@ -7694,26 +7694,37 @@ function lfStartDlgLearn(){
     });
   }, 50);
 
-  // Автовідтворення питання
+  // Автовідтворення питання, потім — перегортання й автовідтворення відповіді
   lfDlgLearnPlayFront(function(){
     if(!LF) return;
-    if(!_lfDlg.flipped){
-      _lfDlg.flipped = true;
-      D.flipped = true;
-      document.getElementById('dlg-flashcard').classList.add('flipped');
-    }
-    // Показуємо «Далі» якщо ще не показана (захист `if(old) return` всередині)
-    lfDlgLearnShowNext();
+    _lfDlgFlipToBack();
+    lfDlgLearnPlayBack(function(){
+      // Показуємо «Далі» якщо ще не показана (захист `if(old) return` всередині)
+      lfDlgLearnShowNext();
+    });
   });
 }
 
+// Перегортає картку на бек (якщо ще не перегорнута) без запуску озвучення
+function _lfDlgFlipToBack(){
+  if(_lfDlg.flipped) return;
+  _lfDlg.flipped = true;
+  D.flipped = true;
+  document.getElementById('dlg-flashcard').classList.add('flipped');
+}
+
 function lfDlgLearnFlipCard(){
+  var wasFlipped = _lfDlg.flipped;
   _lfDlg.flipped = !_lfDlg.flipped;
   D.flipped = _lfDlg.flipped;
   document.getElementById('dlg-flashcard').classList.toggle('flipped', _lfDlg.flipped);
-  // Показуємо «Далі» одразу після перегортання — незалежно від стану аудіо
-  // (аудіо-колбек теж викличе lfDlgLearnShowNext, але з захистом `if(old) return`)
-  if(_lfDlg.flipped) lfDlgLearnShowNext();
+  if(!_lfDlg.flipped) return; // перегорнули назад на фронт — нічого не граємо й не показуємо «Далі»
+  if(wasFlipped) return; // вже був на беку (захист від повторного запуску)
+  // Тап перериває Q (lfDlgLearnPlayBack інкрементує _lfDlgPlayToken, чим скасовує
+  // поточний next() у lfDlgLearnPlayFront) і одразу починає грати відповідь (A)
+  lfDlgLearnPlayBack(function(){
+    lfDlgLearnShowNext();
+  });
 }
 
 var _lfDlgPlayToken = 0;
@@ -7734,6 +7745,26 @@ function lfDlgLearnPlayFront(onDone){
     var text = card.q?.[l] || card.q?.de;
     if(!text){ next(); return; }
     speak(text, l, function(){ setTimeout(next, V.pause); }, card.id, 'q');
+  }
+  next();
+}
+
+// Озвучення зворотної сторони картки (відповіді) — за тим самим принципом,
+// що й lfDlgLearnPlayFront, але читає card.a (тег 'a') замість card.q ('q').
+function lfDlgLearnPlayBack(onDone){
+  if(!LF || !LF.dlgCard) return;
+  var card = LF.dlgCard;
+  var langs = getActiveDialogueLangs();
+  var myToken = ++_lfDlgPlayToken;
+  var i = 0;
+  function next(){
+    if(myToken !== _lfDlgPlayToken) return; // скасовано новішим запуском
+    if(!LF || !LF.dlgCard || LF.dlgCard.id !== card.id) return; // крок змінився
+    if(i >= langs.length){ onDone && onDone(); return; }
+    var l = langs[i++];
+    var text = card.a?.[l] || card.a?.de;
+    if(!text){ next(); return; }
+    speak(text, l, function(){ setTimeout(next, V.pause); }, card.id, 'a');
   }
   next();
 }
