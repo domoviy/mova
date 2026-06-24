@@ -16682,7 +16682,7 @@
   "B2-Beruf/en/100/geh/geh_035_term_en_100": "a36354fefb",
   "B2-Beruf/de/100/geh/geh_035_def_de_100": "835320ef7f",
   "B2-Beruf/de/080/geh/geh_035_def_de_080": "2d938fb00e",
-  "B2-Beruf/uk/100/geh/geh_035_def_uk_100": "d235306ec9",
+  "B2-Beruf/uk/100/geh/geh_035_def_uk_100": "2e945607ee",
   "B2-Beruf/en/100/geh/geh_035_def_en_100": "c0ac735bf6",
   "B2-Beruf/de/100/geh/geh_036_term_de_100": "b7987716d1",
   "B2-Beruf/de/080/geh/geh_036_term_de_080": "30d7de6a05",
@@ -27542,5 +27542,7 @@
   "B2-Beruf/de/080/geh/geh_035_short_de_080": "1be85efa59",
   "B2-Beruf/en/100/geh/geh_035_short_en_100": "c9058c3590",
   "B2-Beruf/uk/100/geh/geh_035_short_uk_100": "c25ba419e4",
-  "B2-Beruf/ru/100/geh/geh_035_short_ru_100": "46580987e7"
+  "B2-Beruf/ru/100/geh/geh_035_short_ru_100": "46580987e7",
+  "B2-Beruf/ru/100/geh/geh_035_def_ru_100": "c606edbce7",
+  "B2-Beruf/ru/100/geh/geh_036_term_ru_100": "63df1c8fdf"
 }
