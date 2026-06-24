@@ -26935,5 +26935,8 @@
   "B2-Beruf/uk/100/geh/geh_060_short_uk_100": "78553d57f7",
   "B2-Beruf/ru/100/geh/geh_060_short_ru_100": "d4a767a95f",
   "B2-Beruf/ru/100/geh/geh_060_def_ru_100": "df4ffc6f53",
-  "B2-Beruf/ru/100/onk/onk_001_term_ru_100": "56c59caacf"
+  "B2-Beruf/ru/100/onk/onk_001_term_ru_100": "56c59caacf",
+  "B2-Beruf/de/100/onk/onk_001_short_de_100": "4b9fab3fb0",
+  "B2-Beruf/de/080/onk/onk_001_short_de_080": "a539a47d7f",
+  "B2-Beruf/en/100/onk/onk_001_short_en_100": "778169ad56"
 }
