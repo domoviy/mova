@@ -27284,5 +27284,8 @@
   "B2-Beruf/en/100/geh/geh_079_short_en_100": "e016d379c6",
   "B2-Beruf/uk/100/geh/geh_079_short_uk_100": "c1d5fd6f2e",
   "B2-Beruf/ru/100/geh/geh_079_short_ru_100": "015f05418a",
-  "B2-Beruf/ru/100/geh/geh_079_def_ru_100": "2033a14651"
+  "B2-Beruf/ru/100/geh/geh_079_def_ru_100": "2033a14651",
+  "B2-Beruf/ru/100/unp/unp_017_term_ru_100": "cf7dba38b4",
+  "B2-Beruf/de/100/unp/unp_017_short_de_100": "3e73431679",
+  "B2-Beruf/de/080/unp/unp_017_short_de_080": "e69c8bbe9e"
 }
