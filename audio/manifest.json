@@ -17884,7 +17884,7 @@
   "B2-Beruf/en/100/kor/kor_048_term_en_100": "bd8ae22c38",
   "B2-Beruf/de/100/kor/kor_048_def_de_100": "f2c53a8ea9",
   "B2-Beruf/de/080/kor/kor_048_def_de_080": "d89eac93cf",
-  "B2-Beruf/uk/100/kor/kor_048_def_uk_100": "4826566997",
+  "B2-Beruf/uk/100/kor/kor_048_def_uk_100": "99ea7914e9",
   "B2-Beruf/en/100/kor/kor_048_def_en_100": "90ac9743a8",
   "B2-Beruf/de/100/kor/kor_049_term_de_100": "52e010067f",
   "B2-Beruf/de/080/kor/kor_049_term_de_080": "ab71f0dcff",
@@ -27633,5 +27633,7 @@
   "B2-Beruf/de/080/kor/kor_048_short_de_080": "de9548319d",
   "B2-Beruf/en/100/kor/kor_048_short_en_100": "142bd72141",
   "B2-Beruf/uk/100/kor/kor_048_short_uk_100": "1f9ff0bc4a",
-  "B2-Beruf/ru/100/kor/kor_048_short_ru_100": "47522c8ad5"
+  "B2-Beruf/ru/100/kor/kor_048_short_ru_100": "47522c8ad5",
+  "B2-Beruf/ru/100/kor/kor_048_def_ru_100": "b845c254ce",
+  "B2-Beruf/ru/100/kor/kor_049_term_ru_100": "156f00462d"
 }
