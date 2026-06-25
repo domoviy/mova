@@ -1352,12 +1352,17 @@ body.lesson-active .vocab-top{
 }
 .lf-unit-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .lf-unit-fav{
-  background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);
-  padding:2px 4px;line-height:1;
+  width:44px;height:44px;border-radius:50%;
+  border:1.5px solid var(--border);background:var(--soft);color:var(--muted);
+  font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+  touch-action:manipulation;
+  -webkit-tap-highlight-color:transparent;
 }
-.lf-unit-fav.active{color:var(--gold)}
+.lf-unit-fav:active{border-color:var(--gold);transform:scale(1.2)}
+.lf-unit-fav.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
 .lf-unit-cat{font-size:13px;font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:8px}
 .lf-unit-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto}
+.lf-unit-hint{text-align:center;font-size:13px;color:var(--muted);padding:14px 0 2px;flex-shrink:0}
 .lf-unit-main-row{display:flex;align-items:baseline;gap:9px}
 .lf-unit-main-row + .lf-unit-main-row{
   margin-top:8px;padding-top:14px;border-top:1px solid var(--soft);
@@ -1837,6 +1842,7 @@ body.lesson-active .vocab-top{
             <span class="lf-unit-cat" id="lf-unit-cat"></span>
           </div>
           <div class="lf-unit-body" id="lf-unit-body"></div>
+          <div class="lf-unit-hint" id="lf-unit-hint"></div>
         </div>
       </div>
 
@@ -2274,7 +2280,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '205-3d2ff0b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2408,6 +2414,7 @@ const I18N = {
     lp_grammar:'Grammatik:',
     hint_front:'↕ Tippen · ← → Wischen',
     hint_srs:'↑ Nicht kennen · ↓ Kennen · ← Weiter · → Zurück',
+    hint_srs_lesson:'↑ Nicht kennen · ↓ Kennen',
     srs_new:'✨ neue Karte', srs_today:'📅 heute',
     card_new:'✨ Neue Karte',
     update_available:'🔄 Neue Version verfügbar – App neu laden',
@@ -2484,6 +2491,7 @@ const I18N = {
     lp_grammar:'Граматика:',
     hint_front:'↕ Натисни · ← → Свайп',
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далі · → Назад',
+    hint_srs_lesson:'↑ Не знаю · ↓ Знаю',
     srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
     card_new:'✨ Нова картка',
     update_available:'🔄 Доступна нова версія — перезавантажте додаток',
@@ -2559,6 +2567,7 @@ const I18N = {
     lp_grammar:'Grammatik:',
     hint_front:'↕ Tap · ← → Swipe',
     hint_srs:'↑ Don\'t know · ↓ Know · ← Next · → Back',
+    hint_srs_lesson:'↑ Don\'t know · ↓ Know',
     srs_new:'✨ new card', srs_today:'📅 today',
     card_new:'✨ New card',
     update_available:'🔄 New version available – reload the app',
@@ -2635,6 +2644,7 @@ const I18N = {
     lp_grammar:'Грамматика:',
     hint_front:'↕ Нажми · ← → Свайп',
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далее · → Назад',
+    hint_srs_lesson:'↑ Не знаю · ↓ Знаю',
     srs_new:'✨ новая карточка', srs_today:'📅 сегодня',
     card_new:'✨ Новая карточка',
     update_available:'🔄 Доступна новая версия — перезагрузите приложение',
@@ -8071,6 +8081,9 @@ var _lfVocabHandlers = {
     var catEl = document.getElementById('lf-unit-cat');
     if(catEl) catEl.textContent = cat ? cat.e+' '+cat.de : card.cat;
 
+    var hintEl = document.getElementById('lf-unit-hint');
+    if(hintEl) hintEl.textContent = typeof t==='function' ? t('hint_srs_lesson') : '↑ Не знаю · ↓ Знаю';
+
     var body = document.getElementById('lf-unit-body');
     if(!body) return;
 
@@ -8659,6 +8672,20 @@ function exitLessonFlow(){
   V.lessonId = null; V.lessonCards = [];
   V.queue = []; V.idx = 0;
   quizState = null;
+  // Прибираємо vocab unit-step UI (lfRunUnitStep) — на випадок виходу з
+  // уроку прямо під час cards-кроку, не через штатне завершення кроку
+  _lfUnitPlayToken++;
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  document.getElementById('lf-next-row')?.remove();
+  SwipeManager.destroy(document.getElementById('lf-unit-card'));
+  const unitCard = document.getElementById('lf-unit-card');
+  if(unitCard) unitCard.style.display = 'none';
+  const fcArea = document.getElementById('fc-area');
+  if(fcArea) fcArea.style.display = '';
+  const vprogrowFlow = document.querySelector('#vocab-panel-card .vprogrow-flow');
+  if(vprogrowFlow) vprogrowFlow.style.display = '';
+  _lfUnit = { units: [], idx: 0, handlers: null, onAllDone: null };
   // Відновлюємо режим словника, який був до входу в урок (SM-2 в уроці — примусовий)
   if(typeof window._preLessonVocabMode !== 'undefined' && window._preLessonVocabMode !== null){
     V.mode = window._preLessonVocabMode;
