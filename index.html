@@ -1026,20 +1026,17 @@ body{
 }
 .lf-exit:active{color:#fff;}
 .lf-steps{
-  display:flex;gap:4px;
+  display:flex;
 }
-.lf-step{
-  flex:1;height:4px;border-radius:2px;
+.lf-pb{
+  flex:1;height:5px;border-radius:3px;
   background:rgba(255,255,255,.15);
-  transition:background .3s;
-  position:relative;overflow:hidden;
+  overflow:hidden;
 }
-.lf-step.done{ background:var(--gold); }
-.lf-step.active{ background:rgba(201,168,76,.4); }
-.lf-step.active::after{
-  content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;
+.lf-pbf{
+  height:100%;border-radius:3px;
   background:var(--gold);
-  animation:lf-progress 0s linear forwards;
+  transition:width .4s ease;
 }
 .lf-step-label{
   display:flex;align-items:center;gap:8px;
@@ -1324,6 +1321,51 @@ body.lesson-active .vocab-top{
   letter-spacing:.3px;
 }
 .btn-lesson-sb-next:active{opacity:.85;transform:scale(.98);}
+
+/* Рядок «Далі» + «Повторити» (квадратна іконка-кнопка зліва) —
+   використовується в lfRunUnitStep (універсальна оболонка-крок уроку) */
+.lf-next-row{
+  position:fixed;
+  bottom:calc(env(safe-area-inset-bottom,0px) + var(--nav-h) + 12px);
+  left:16px;right:16px;
+  display:flex;gap:10px;
+  z-index:200;
+}
+.lf-next-row .btn-lesson-sb-next{ position:static; flex:1; }
+.lf-repeat-btn{
+  flex-shrink:0;width:54px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--paper);border:1px solid var(--border);border-radius:16px;
+  font-size:20px;cursor:pointer;font-family:inherit;color:var(--ink);
+}
+.lf-repeat-btn:active{opacity:.8;transform:scale(.96);background:var(--soft);}
+
+/* ── Універсальна картка-юніт уроку (без 3D-обертання — фронт/бек —
+   це послідовні рендери одного контейнера, "різні картки") ── */
+.lf-unit-card{
+  background:var(--paper);border-radius:18px;border:1px solid var(--border);
+  box-shadow:0 4px 18px rgba(0,0,0,.08);
+  padding:18px 18px 22px;
+  display:flex;flex-direction:column;flex:1;min-height:0;
+  position:relative;
+  user-select:none;-webkit-user-select:none;touch-action:none;
+}
+.lf-unit-header{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.lf-unit-fav{
+  background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);
+  padding:2px 4px;line-height:1;
+}
+.lf-unit-fav.active{color:var(--gold)}
+.lf-unit-cat{font-size:13px;font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:8px}
+.lf-unit-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto}
+.lf-unit-main-row{display:flex;align-items:baseline;gap:9px}
+.lf-unit-flag{font-size:20px;flex-shrink:0}
+.lf-unit-term{font-size:var(--fs-card);font-weight:700;color:var(--ink);line-height:1.3}
+.lf-unit-short{font-size:var(--fs-short);color:var(--muted);margin-top:2px}
+.lf-unit-translation{
+  margin-top:10px;padding-top:10px;border-top:1px solid var(--soft);
+  font-size:var(--fs-short);color:var(--muted);
+}
 
 .sb-prac-feedback-modal{
   position:fixed;inset:0;z-index:300;
@@ -1786,6 +1828,17 @@ body.lesson-active .vocab-top{
           <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="vprgtxt">1 / 0</span>
           <div class="vpb"><div class="vpbf" id="vpbf" style="width:0%"></div></div>
         </div>
+
+        <!-- Універсальна картка-юніт уроку (lfRunUnitStep) — без 3D-обертання,
+             фронт/бек/будь-яка грань — послідовні рендери цього ж контейнера.
+             Прихована за замовчуванням; показується лише в lesson-flow cards-кроці. -->
+        <div class="lf-unit-card" id="lf-unit-card" style="display:none">
+          <div class="lf-unit-header">
+            <button class="lf-unit-fav" id="lf-unit-fav"></button>
+            <span class="lf-unit-cat" id="lf-unit-cat"></span>
+          </div>
+          <div class="lf-unit-body" id="lf-unit-body"></div>
+        </div>
       </div>
 
       <div id="vocab-panel-match" style="display:none">
@@ -2222,7 +2275,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '201-03ce78f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3111,33 +3164,56 @@ function migrateLegacyProgressToUnifiedStore(){
 // Основна функція: оновити стан після оцінки картки
 // examPart може бути рядком ('Sprachbausteine') або масивом (['Lesen','Hören'])
 // — картка словника/діалогу тренує одночасно читання і слухання, тож рахуємо в обидва.
-function srRecordAnswer(cardId, rating, examPart){
+// side: опціональний ідентифікатор "грані" картки (наприклад 'def').
+// undefined/'term' → SM-2-розклад (ef/interval/repetitions/nextReview/history)
+// читається/пишеться в кореневі поля state.cards[cardId] (як і раніше,
+// повна зворотна сумісність). Будь-який інший рядок → окремий розклад
+// у state.cards[cardId].sides[side] — узагальнена схема "багатогранності"
+// картки (term — основна грань за замовчуванням, def/def2/... — додаткові,
+// кожна зі своїм незалежним SM-2). partHistory/subtestStats лишаються
+// СПІЛЬНИМИ для картки незалежно від грані — вони відображають загальне
+// опанування теми, а не розклад конкретної грані.
+function srRecordAnswer(cardId, rating, examPart, side){
   const parts = (Array.isArray(examPart) ? examPart : [examPart || 'General']).filter(Boolean);
   if(!parts.length) parts.push('General');
   const state = srLoadState();
   const urgency = srGetUrgency(state.examDate);
-  const cs = state.cards[cardId] ?? {};
+  const root = state.cards[cardId] ?? {};
+  const isMainSide = !side || side === 'term';
+  const cs = isMainSide ? root : (root.sides?.[side] ?? {});
   const updated = srSm2(cs, rating);
   // Urgency: стискаємо інтервал
   updated.interval = Math.max(1, Math.round(updated.interval * urgency.factor));
   updated.nextReview = srToISO(srAddDays(new Date(), updated.interval));
   updated.history = [...(cs.history??[]), rating].slice(-10);
-  // totalPlays/lastSeen — перенесено сюди зі старої окремої системи
-  // (localStorage 'mova_'+id), щоб усі підрахунки жили в одній структурі.
-  updated.totalPlays = (cs.totalPlays ?? 0) + 1;
-  updated.lastSeen = Date.now();
-  // partHistory: окрема коротка історія оцінок ПО КОЖНІЙ examPart-частині
-  // цієї картки (на відміну від плаского history вище, який змішує всі
-  // частини в одну стрічку). Потрібна для srStabilityScore() — метрики
-  // "Готовності", що НЕ обнуляється однією невдалою спробою, на відміну
-  // від repetitions/interval у SM-2 (ті лишаються незмінними — вони
-  // відповідають за ПЛАНУВАННЯ повторень, а не за відображення прогресу).
-  updated.partHistory = {...(cs.partHistory??{})};
-  parts.forEach(part=>{
-    updated.partHistory[part] = [...(cs.partHistory?.[part]??[]), rating].slice(-10);
-  });
-  state.cards[cardId] = updated;
-  // Статистика субтесту — пишемо в КОЖЕН переданий examPart
+
+  if(isMainSide){
+    // totalPlays/lastSeen/partHistory лишаються на кореневому рівні —
+    // перенесено сюди зі старої окремої системи (localStorage 'mova_'+id),
+    // щоб усі підрахунки жили в одній структурі.
+    updated.totalPlays = (root.totalPlays ?? 0) + 1;
+    updated.lastSeen = Date.now();
+    updated.partHistory = {...(root.partHistory??{})};
+    parts.forEach(part=>{
+      updated.partHistory[part] = [...(root.partHistory?.[part]??[]), rating].slice(-10);
+    });
+    updated.sides = root.sides; // зберігаємо інші грані незмінними
+    state.cards[cardId] = updated;
+  } else {
+    // Грань (def/...) має ТІЛЬКИ свій SM-2-розклад; totalPlays/lastSeen/
+    // partHistory — спільні, оновлюються на кореневому рівні так само.
+    const newRoot = {...root};
+    newRoot.totalPlays = (root.totalPlays ?? 0) + 1;
+    newRoot.lastSeen = Date.now();
+    newRoot.partHistory = {...(root.partHistory??{})};
+    parts.forEach(part=>{
+      newRoot.partHistory[part] = [...(root.partHistory?.[part]??[]), rating].slice(-10);
+    });
+    newRoot.sides = {...(root.sides??{}), [side]: updated};
+    state.cards[cardId] = newRoot;
+  }
+
+  // Статистика субтесту — пишемо в КОЖЕН переданий examPart (спільна для картки)
   parts.forEach(part=>{
     const sub = state.subtestStats[part] ?? {correct:0, total:0};
     const newCorrect = sub.correct + (rating>=3?1:0);
@@ -3226,7 +3302,7 @@ function srIsWellRetained(cardState, part){
 // Sprechen) викликають ЦЮ функцію замість прямого srsRate()/srRecordAnswer().
 // eventType — ключ з SR_EVENT_WEIGHTS, конвертується в rating тут, в одному
 // місці, а не магічним числом в кожному виклику.
-function recordCardEvent(cardId, eventType, examPart){
+function recordCardEvent(cardId, eventType, examPart, side){
   const weight10 = SR_EVENT_WEIGHTS[eventType];
   if(weight10 === undefined){
     console.warn('recordCardEvent: unknown eventType', eventType);
@@ -3243,7 +3319,7 @@ function recordCardEvent(cardId, eventType, examPart){
     srRecordPassiveSignal(cardId, rating, part);
     return null;
   }
-  return srRecordAnswer(cardId, rating, part);
+  return srRecordAnswer(cardId, rating, part, side);
 }
 
 // Будуємо щоденний план
@@ -3715,15 +3791,17 @@ const SRS_DEFAULT_EF = 2.5;
 // Smart Review (state.cards[id]) — друге, окреме сховище 'srs_'+id
 // більше не використовується для нових записів (srsSave стала no-op,
 // весь запис іде через recordCardEvent → srRecordAnswer).
-function srsLoad(id){
+function srsLoad(id, side){
   const state = srLoadState();
-  const cs = state.cards?.[id];
+  const root = state.cards?.[id];
+  if(!root) return {};
+  const cs = (!side || side==='term') ? root : root.sides?.[side];
   if(!cs) return {};
   const dueDate = cs.nextReview ? srStartOfDay(new Date(cs.nextReview)).getTime() : undefined;
   const lastQ = cs.history?.length ? cs.history[cs.history.length-1] : undefined;
   return {
     ef: cs.easeFactor, interval: cs.interval, dueDate, lastQ,
-    lastRated: cs.lastSeen, totalPlays: cs.totalPlays,
+    lastRated: root.lastSeen, totalPlays: root.totalPlays,
   };
 }
 // no-op: запис тепер відбувається виключно через srRecordAnswer()
@@ -3788,10 +3866,12 @@ function srGetAllCards(){
 // q: 1=Не знаю, 3=Невпевнений, 5=Знаю. Раніше ця функція сама рахувала
 // SM-2 і писала в окрему структуру 'srs_'+id — тепер вся арифметика й
 // запис відбуваються один раз, в srRecordAnswer/srSm2.
-function srsRate(id, q){
+// side: опціональна грань картки (undefined/'term' — основна; будь-який
+// інший рядок, напр. 'def' — окремий SM-2-розклад, див. srRecordAnswer).
+function srsRate(id, q, side){
   const eventType = q>=5 ? 'swipe_know' : q>=3 ? 'swipe_unsure' : 'swipe_dontknow';
-  recordCardEvent(id, eventType, srGetExamPart(id, wasAudioPlayedForCard(id)));
-  const d = srsLoad(id); // перечитуємо щойно записаний стан для зворотної сумісності повернення
+  recordCardEvent(id, eventType, srGetExamPart(id, wasAudioPlayedForCard(id)), side);
+  const d = srsLoad(id, side); // перечитуємо щойно записаний стан для зворотної сумісності повернення
   return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
 }
 
@@ -3816,21 +3896,21 @@ function srsRatePassive(id){
   return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
 }
 
-function srsDue(id){
-  const d = srsLoad(id);
+function srsDue(id, side){
+  const d = srsLoad(id, side);
   if(!d.dueDate) return true; // нова картка — завжди показуємо
   return Date.now() >= d.dueDate;
 }
 
-function srsDaysUntil(id){
-  const d = srsLoad(id);
+function srsDaysUntil(id, side){
+  const d = srsLoad(id, side);
   if(!d.dueDate || Date.now() >= d.dueDate) return 0;
   return Math.ceil((d.dueDate - Date.now()) / 86400000);
 }
 
 // Рейтинг картки для сортування черги SM-2
-function srsPriority(id){
-  const d = srsLoad(id);
+function srsPriority(id, side){
+  const d = srsLoad(id, side);
   if(!d.dueDate) return 999;           // нові — першими
   const overdue = Date.now() - d.dueDate;
   return overdue / 86400000;           // більше прострочено → вище
@@ -5187,15 +5267,6 @@ function _runLessonFlow(lesson, allCards){
   showView('vocab');
   lfRenderBar();
   lfGoStep(0);
-
-  setTimeout(()=>{
-    if(LF && LF.steps[LF.step]==='cards' && !V.playing){
-      V.playing = true; V.paused = false;
-      const pb = document.getElementById('vplaybtn');
-      if(pb){ pb.textContent='⏸'; pb.classList.add('pause'); }
-      playVocabNext();
-    }
-  }, 400);
 }
 
 // Прогрес повторення — % карток з chapterNums що мають repetitions>0
@@ -7254,12 +7325,20 @@ function lfRenderBar(){
   if(titleEl) titleEl.textContent =
     '📚 '+(LF.lesson.title[uiLang]||LF.lesson.title.de);
 
-  // Кроки
+  // Цільна смуга прогресу всього уроку: завершені кроки + частковий
+  // прогрес поточного кроку (для unit-кроків типу vocab — частка
+  // виконаних юнітів; для решти кроків — 0 поки крок не завершено).
   const stepsEl = document.getElementById('lf-steps');
   if(stepsEl){
-    stepsEl.innerHTML = LF.steps.filter(s=>s!=='result').map((s,i)=>
-      `<div class="lf-step ${i<LF.step?'done':i===LF.step?'active':''}"></div>`
-    ).join('');
+    const totalSteps = LF.steps.filter(s=>s!=='result').length;
+    const curFrac = (LF.unitProgress && LF.unitProgress.total > 0)
+      ? Math.min(1, LF.unitProgress.done / LF.unitProgress.total)
+      : 0;
+    const pct = totalSteps > 0
+      ? Math.round(((LF.step + curFrac) / totalSteps) * 100)
+      : 0;
+    stepsEl.innerHTML =
+      '<div class="lf-pb"><div class="lf-pbf" id="lf-pbf" style="width:'+pct+'%"></div></div>';
   }
 
   // Назва поточного кроку
@@ -7306,6 +7385,7 @@ function lfSetLessonMode(active){
 function lfGoStep(stepIdx){
   if(!LF) return;
   LF.step = stepIdx;
+  LF.unitProgress = null; // скидаємо — кожен крок сам встановлює, якщо unit-based (напр. vocab)
   lfRenderBar();
 
   // Ховаємо lesson-result
@@ -7333,12 +7413,7 @@ function lfGoStep(stepIdx){
   }
 
   if(step === 'cards'){
-    V.flipped = false;
-    // Завжди відновлюємо vocab-top (player міг бути схований попереднім кроком)
-    const vocabTopEl = document.querySelector('.vocab-top');
-    if(vocabTopEl) vocabTopEl.style.display = '';
-    switchVocabTab(0);
-    renderVocabCard();
+    lfStartVocabLearn();
   } else if(step === 'def'){
     switchVocabTab(6);
     lfStartDef();
@@ -7796,6 +7871,306 @@ function _lfDlgLearnDone(){
   setTimeout(initDialogueSwipe, 50);
   // Повертаємось у vocab (tiles/sb_prac/result чекають там)
   showView('vocab');
+  lfRenderBar();
+  lfNextStep();
+}
+
+// ── УНІВЕРСАЛЬНА ОБОЛОНКА UNIT-КРОКУ УРОКУ ───────────────────────────
+// Контракт (узгоджено заздалегідь під vocab/SB/Dialogue, реалізовано
+// зараз лише для vocab — SB/Dialogue лишаються на старій логіці,
+// перенесення на цю оболонку — окреме завдання):
+//
+//   unit = { kind, cardId, side, ...довільні поля для handler'а }
+//   handlers = {
+//     render(unit)         → малює юніт у #lf-unit-card (заголовок/тіло)
+//     getAudioText(unit)    → масив рядків primaryLang для послідовного speak()
+//     onSwipeUp(unit)       → SM-2 "не знаю" для unit (не чіпає UI/аудіо)
+//     onSwipeDown(unit)     → SM-2 "знаю" для unit (не чіпає UI/аудіо)
+//     onNext(unit)          → побічні ефекти при переході (опційно)
+//   }
+//
+// Оболонка сама керує: показ юніта → озвучення primaryLang → кнопка
+// «Далі» (+ «🔊 Повторити») лише після завершення аудіо (або після
+// "Аудіо недоступне" → OK) → перехід до наступного юніту → завершення
+// кроку. Свайп вгору/вниз працює завжди, незалежно від стану аудіо,
+// і ніяк не змінює UI/навігацію — лише фідбек (showSrsHint) + SM-2.
+
+var _lfUnit = { units: [], idx: 0, handlers: null, onAllDone: null };
+
+function lfRunUnitStep(units, handlers, onAllDone){
+  if(!LF || !units || !units.length){ onAllDone ? onAllDone() : lfNextStep(); return; }
+  _lfUnit = { units: units, idx: 0, handlers: handlers, onAllDone: onAllDone };
+  LF.unitProgress = { done: 0, total: units.length };
+  lfRenderBar();
+
+  setTimeout(function(){
+    var el = document.getElementById('lf-unit-card');
+    if(!el) return;
+    SwipeManager.init(el, {
+      onTap:   function(){ /* заблоковано — навігація лише через "Далі" */ },
+      onLeft:  function(){ /* заблоковано */ },
+      onRight: function(){ /* заблоковано */ },
+      onUp:    function(){ haptic.error();   _lfUnitSwipe('up'); },
+      onDown:  function(){ haptic.success(); _lfUnitSwipe('down'); },
+    });
+  }, 50);
+
+  _lfUnitShow();
+}
+
+function _lfUnitSwipe(dir){
+  var unit = _lfUnit.units[_lfUnit.idx];
+  if(!unit || !_lfUnit.handlers) return;
+  // Свайп завжди впливає на SM-2 (фідбек showSrsHint вже всередині
+  // onSwipeUp/onSwipeDown через srsSwipe-аналог) — аудіо/UI не змінюємо.
+  if(dir === 'up')   _lfUnit.handlers.onSwipeUp(unit);
+  else               _lfUnit.handlers.onSwipeDown(unit);
+}
+
+function _lfUnitShow(){
+  if(!LF) return;
+  var unit = _lfUnit.units[_lfUnit.idx];
+  if(!unit){ _lfUnitStepDone(); return; }
+
+  var old = document.getElementById('lf-next-row');
+  if(old) old.remove();
+
+  _lfUnit.handlers.render(unit);
+
+  var items = _lfUnit.handlers.getAudioText(unit) || [];
+  _lfUnitPlay(items, function(){
+    _lfUnitShowNextBtn();
+  });
+}
+
+var _lfUnitPlayToken = 0;
+function _lfUnitPlay(items, onDone){
+  // ВАЖЛИВО: власний токен, НЕ playGen! speak() сама викликає stopTTS()
+  // (playGen++) на кожному виклику, тож порівняння з playGen тут було б
+  // завжди false вже після першої фрази — рекурсія обривалась передчасно
+  // (той самий баг-паттерн, що й у lfDlgLearnPlayFront — див. коментар там).
+  var myToken = ++_lfUnitPlayToken;
+  var i = 0;
+  function next(){
+    if(myToken !== _lfUnitPlayToken){ return; } // скасовано новішим запуском
+    if(i >= items.length){ onDone(); return; }
+    var item = items[i++];
+    if(!item || !item.text){ next(); return; }
+    speak(item.text, primaryLang(), function(){
+      if(myToken !== _lfUnitPlayToken) return;
+      setTimeout(next, V.pause);
+    }, _lfUnit.units[_lfUnit.idx].cardId, item.field);
+  }
+  next();
+}
+
+function _lfUnitShowNextBtn(){
+  if(document.getElementById('lf-next-row')) return; // вже показана
+
+  var row = document.createElement('div');
+  row.id = 'lf-next-row';
+  row.className = 'lf-next-row';
+
+  var repeatBtn = document.createElement('button');
+  repeatBtn.className = 'lf-repeat-btn';
+  repeatBtn.textContent = '🔊';
+  repeatBtn.onclick = function(){
+    var unit = _lfUnit.units[_lfUnit.idx];
+    if(!unit) return;
+    var items = _lfUnit.handlers.getAudioText(unit) || [];
+    _lfUnitPlay(items, function(){}); // повтор — кнопка "Далі" вже показана, не чіпаємо її
+  };
+
+  var nextBtn = document.createElement('button');
+  nextBtn.className = 'btn btn-lesson-sb-next';
+  nextBtn.textContent = typeof t === 'function' ? t('btn_sb_weiter') : 'Далі →';
+  nextBtn.onclick = function(){
+    var unit = _lfUnit.units[_lfUnit.idx];
+    row.remove();
+    if(unit && _lfUnit.handlers.onNext) _lfUnit.handlers.onNext(unit);
+    _lfUnit.idx++;
+    LF.unitProgress = { done: _lfUnit.idx, total: _lfUnit.units.length };
+    lfRenderBar();
+    _lfUnitShow();
+  };
+
+  row.appendChild(repeatBtn);
+  row.appendChild(nextBtn);
+  document.body.appendChild(row);
+}
+
+function _lfUnitStepDone(){
+  _lfUnitPlayToken++;
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  var row = document.getElementById('lf-next-row');
+  if(row) row.remove();
+  SwipeManager.destroy(document.getElementById('lf-unit-card'));
+  var card = document.getElementById('lf-unit-card');
+  if(card) card.style.display = 'none';
+  var onAllDone = _lfUnit.onAllDone;
+  _lfUnit = { units: [], idx: 0, handlers: null, onAllDone: null };
+  if(onAllDone) onAllDone();
+  else lfNextStep();
+}
+
+// ── VOCAB CARD step (lesson flow) — реалізація на базі lfRunUnitStep ──
+// Юніти будуються по 2 на картку: {side:'term'} і {side:'def'} —
+// term: term[primaryLang]+short[primaryLang] озвучено, term[uiLang]
+// показано як переклад (не озвучено). def: аналогічно з def-полем.
+// SM-2: term пише в кореневі поля state.cards[id] (зворотна сумісність
+// зі старим прогресом), def — у власну грань sides.def (srsRate(id,q,'def')).
+// ★ обране — на рівні картки (cardId), однакове для обох граней.
+
+function _lfVocabBuildUnits(){
+  var cards = V.queue || [];
+  var units = [];
+  cards.forEach(function(card){
+    units.push({ kind:'vocab', cardId: card.id, side:'term', card: card });
+    units.push({ kind:'vocab', cardId: card.id, side:'def',  card: card });
+  });
+  return units;
+}
+
+var _lfVocabHandlers = {
+  render: function(unit){
+    var card = unit.card;
+    var pl = primaryLang();
+    var ul = uiLang;
+    var cat = CATS.find(function(c){ return c.id === card.cat; });
+    var fav = isFavorite(card.id);
+
+    var favBtn = document.getElementById('lf-unit-fav');
+    if(favBtn){
+      var setFavVisual = function(isFav){
+        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.classList.toggle('active', isFav);
+      };
+      setFavVisual(fav);
+      var doToggle = function(){
+        toggleFavorite(card.id);
+        setFavVisual(isFavorite(card.id));
+      };
+      // Окремі touch listeners (як fc-fav-front/back) — інакше .lf-unit-card
+      // touch-action:none (потрібен для SwipeManager) блокує звичайний клік
+      // на мобільних. Прибираємо попередні listeners перед новими (render
+      // викликається на кожен юніт), щоб не накопичувати дублікати.
+      var prevHandlers = favBtn._lfFavHandlers;
+      if(prevHandlers){
+        favBtn.removeEventListener('touchstart', prevHandlers.ts);
+        favBtn.removeEventListener('touchend', prevHandlers.te);
+        favBtn.removeEventListener('click', prevHandlers.cl);
+      }
+      var ts = function(e){ e.stopPropagation(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
+      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      favBtn.addEventListener('touchstart', ts, {passive:true});
+      favBtn.addEventListener('touchend', te, {passive:false});
+      favBtn.addEventListener('click', cl);
+      favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
+    }
+    var catEl = document.getElementById('lf-unit-cat');
+    if(catEl) catEl.textContent = cat ? cat.e+' '+cat.de : card.cat;
+
+    var body = document.getElementById('lf-unit-body');
+    if(!body) return;
+
+    if(unit.side === 'term'){
+      var term = card.term?.[pl] || card.term?.de || '';
+      var short = card.short?.[pl] || card.short?.de || '';
+      var translation = ul !== pl ? (card.term?.[ul] || '') : '';
+      body.innerHTML =
+        '<div class="lf-unit-main-row">'+
+          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
+          '<div><div class="lf-unit-term">'+term+'</div>'+
+          (short ? '<div class="lf-unit-short">'+short+'</div>' : '')+'</div>'+
+        '</div>'+
+        (translation ? '<div class="lf-unit-translation">'+(F[ul]||'')+' '+translation+'</div>' : '');
+    } else { // def
+      var def = card.def?.[pl] || card.def?.de || '';
+      var defTranslation = ul !== pl ? (card.def?.[ul] || '') : '';
+      body.innerHTML =
+        '<div class="lf-unit-main-row">'+
+          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
+          '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+def+'</div>'+
+        '</div>'+
+        (defTranslation ? '<div class="lf-unit-translation">'+(F[ul]||'')+' '+defTranslation+'</div>' : '');
+    }
+
+    var cardEl = document.getElementById('lf-unit-card');
+    if(cardEl) cardEl.style.display = 'flex';
+  },
+
+  getAudioText: function(unit){
+    var card = unit.card;
+    var pl = primaryLang();
+    if(unit.side === 'term'){
+      return [
+        { text: card.term?.[pl]||card.term?.de||'', field: 'term' },
+        { text: card.short?.[pl]||card.short?.de||'', field: 'short' },
+      ];
+    }
+    return [
+      { text: card.def?.[pl]||card.def?.de||'', field: 'def' },
+    ];
+  },
+
+  onSwipeUp: function(unit){
+    var side = unit.side === 'term' ? undefined : unit.side;
+    srsRate(unit.cardId, 1, side);
+    var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
+    showSrsHint('🔄', _rep, 1, 'lf-unit-card');
+  },
+
+  onSwipeDown: function(unit){
+    var side = unit.side === 'term' ? undefined : unit.side;
+    srsRate(unit.cardId, 5, side);
+    var d = srsLoad(unit.cardId, side);
+    var days = d.interval || 1;
+    var _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
+    var _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
+    var _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+    var label = days===1 ? _tmr : _in+days+_day;
+    showSrsHint('✅', label, 5, 'lf-unit-card');
+  },
+
+  onNext: function(unit){
+    trackCardToday(unit.cardId);
+  },
+};
+
+function lfStartVocabLearn(){
+  if(!LF || !V.queue || !V.queue.length){ lfNextStep(); return; }
+
+  // Старий плеєр не потрібен у режимі уроку — ховаємо
+  var vplayer = document.querySelector('#view-vocab .vplayer');
+  if(vplayer) vplayer.style.display = 'none';
+  // Ховаємо весь старий .fc-area (не лише .flashcard всередині) — інакше
+  // порожній .fc-area (flex:1) забере увесь простір і виштовхне
+  // #lf-unit-card поза видиму область. У lesson-flow використовуємо новий
+  // #lf-unit-card без 3D-обертання замість .fc-area/.flashcard.
+  var fcArea = document.getElementById('fc-area');
+  if(fcArea) fcArea.style.display = 'none';
+  var vprogrow = document.querySelector('#vocab-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = 'none';
+
+  switchVocabTab(0);
+
+  var units = _lfVocabBuildUnits();
+  lfRunUnitStep(units, _lfVocabHandlers, _lfVocabLearnDone);
+}
+
+function _lfVocabLearnDone(){
+  // Відновлюємо стандартний UI словника для вільного режиму
+  var fcArea = document.getElementById('fc-area');
+  if(fcArea) fcArea.style.display = '';
+  var vprogrow = document.querySelector('#vocab-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = '';
+  var unitCard = document.getElementById('lf-unit-card');
+  if(unitCard) unitCard.style.display = 'none';
+  var vplayer = document.querySelector('#view-vocab .vplayer');
+  if(vplayer) vplayer.style.display = '';
+  setTimeout(initSwipe, 50);
   lfRenderBar();
   lfNextStep();
 }
