@@ -29007,5 +29007,8 @@
   "B2-Beruf/en/100/tel/tel_048_short_en_100": "ce0fef0d13",
   "B2-Beruf/uk/100/tel/tel_048_short_uk_100": "abd69e6245",
   "B2-Beruf/ru/100/tel/tel_048_short_ru_100": "95a573d3c4",
-  "B2-Beruf/ru/100/tel/tel_048_def_ru_100": "7ed7cf9020"
+  "B2-Beruf/ru/100/tel/tel_048_def_ru_100": "7ed7cf9020",
+  "B2-Beruf/ru/100/tel/tel_049_term_ru_100": "09fe7c0110",
+  "B2-Beruf/de/100/tel/tel_049_short_de_100": "df9bcad3c6",
+  "B2-Beruf/de/080/tel/tel_049_short_de_080": "34c180ce0c"
 }
