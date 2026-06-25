@@ -28541,5 +28541,8 @@
   "B2-Beruf/en/100/kor/kor_210_term_en_100": "3045834a8f",
   "B2-Beruf/ru/100/kor/kor_210_term_ru_100": "f75b8646f0",
   "B2-Beruf/en/100/kor/kor_210_short_en_100": "e5e513b5ef",
-  "B2-Beruf/ru/100/kor/kor_210_short_ru_100": "8715a9632b"
+  "B2-Beruf/ru/100/kor/kor_210_short_ru_100": "8715a9632b",
+  "B2-Beruf/ru/100/geh/geh_081_term_ru_100": "c9337a8937",
+  "B2-Beruf/de/100/geh/geh_081_short_de_100": "2918f1ace2",
+  "B2-Beruf/de/080/geh/geh_081_short_de_080": "3ca4a34294"
 }
