@@ -1327,7 +1327,7 @@ body.lesson-active .vocab-top{
 .lf-next-row{
   position:fixed;
   bottom:calc(env(safe-area-inset-bottom,0px) + var(--nav-h) + 12px);
-  left:16px;right:16px;
+  left:24px;right:24px;
   display:flex;gap:10px;
   z-index:200;
 }
@@ -1359,13 +1359,12 @@ body.lesson-active .vocab-top{
 .lf-unit-cat{font-size:13px;font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:8px}
 .lf-unit-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto}
 .lf-unit-main-row{display:flex;align-items:baseline;gap:9px}
+.lf-unit-main-row + .lf-unit-main-row{
+  margin-top:8px;padding-top:14px;border-top:1px solid var(--soft);
+}
 .lf-unit-flag{font-size:20px;flex-shrink:0}
 .lf-unit-term{font-size:var(--fs-card);font-weight:700;color:var(--ink);line-height:1.3}
 .lf-unit-short{font-size:var(--fs-short);color:var(--muted);margin-top:2px}
-.lf-unit-translation{
-  margin-top:10px;padding-top:10px;border-top:1px solid var(--soft);
-  font-size:var(--fs-short);color:var(--muted);
-}
 
 .sb-prac-feedback-modal{
   position:fixed;inset:0;z-index:300;
@@ -2275,7 +2274,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '203-fd73c52';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8078,14 +8077,21 @@ var _lfVocabHandlers = {
     if(unit.side === 'term'){
       var term = card.term?.[pl] || card.term?.de || '';
       var short = card.short?.[pl] || card.short?.de || '';
-      var translation = ul !== pl ? (card.term?.[ul] || '') : '';
+      var termTranslation = ul !== pl ? (card.term?.[ul] || '') : '';
+      var shortTranslation = ul !== pl ? (card.short?.[ul] || '') : '';
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
           '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
           '<div><div class="lf-unit-term">'+term+'</div>'+
           (short ? '<div class="lf-unit-short">'+short+'</div>' : '')+'</div>'+
         '</div>'+
-        (translation ? '<div class="lf-unit-translation">'+(F[ul]||'')+' '+translation+'</div>' : '');
+        (termTranslation ?
+          '<div class="lf-unit-main-row">'+
+            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
+            '<div><div class="lf-unit-term">'+termTranslation+'</div>'+
+            (shortTranslation ? '<div class="lf-unit-short">'+shortTranslation+'</div>' : '')+'</div>'+
+          '</div>'
+        : '');
     } else { // def
       var def = card.def?.[pl] || card.def?.de || '';
       var defTranslation = ul !== pl ? (card.def?.[ul] || '') : '';
@@ -8094,7 +8100,12 @@ var _lfVocabHandlers = {
           '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
           '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+def+'</div>'+
         '</div>'+
-        (defTranslation ? '<div class="lf-unit-translation">'+(F[ul]||'')+' '+defTranslation+'</div>' : '');
+        (defTranslation ?
+          '<div class="lf-unit-main-row">'+
+            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
+            '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+defTranslation+'</div>'+
+          '</div>'
+        : '');
     }
 
     var cardEl = document.getElementById('lf-unit-card');
