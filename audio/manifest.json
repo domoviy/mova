@@ -12894,8 +12894,8 @@
   "B2-Beruf/en/100/tel/tel_046_term_en_100": "ff9fef6c83",
   "B2-Beruf/de/100/tel/tel_046_def_de_100": "23c066d246",
   "B2-Beruf/de/080/tel/tel_046_def_de_080": "7ed9b8ecc0",
-  "B2-Beruf/uk/100/tel/tel_046_def_uk_100": "47a9f53ad3",
-  "B2-Beruf/en/100/tel/tel_046_def_en_100": "a81db7c7ff",
+  "B2-Beruf/uk/100/tel/tel_046_def_uk_100": "f6c591fd49",
+  "B2-Beruf/en/100/tel/tel_046_def_en_100": "abfad40b84",
   "B2-Beruf/de/100/tel/tel_047_term_de_100": "c2ede76dcc",
   "B2-Beruf/de/080/tel/tel_047_term_de_080": "3125de6cf7",
   "B2-Beruf/uk/100/tel/tel_047_term_uk_100": "a104ed2e94",
@@ -28992,5 +28992,6 @@
   "B2-Beruf/de/080/tel/tel_046_short_de_080": "5367625746",
   "B2-Beruf/en/100/tel/tel_046_short_en_100": "866da1b6a0",
   "B2-Beruf/uk/100/tel/tel_046_short_uk_100": "7efe91f20e",
-  "B2-Beruf/ru/100/tel/tel_046_short_ru_100": "9e6bf21a9a"
+  "B2-Beruf/ru/100/tel/tel_046_short_ru_100": "9e6bf21a9a",
+  "B2-Beruf/ru/100/tel/tel_046_def_ru_100": "8060cdfb8a"
 }
