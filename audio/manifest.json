@@ -29061,5 +29061,8 @@
   "B2-Beruf/en/100/tel/tel_067_term_en_100": "2c3762f127",
   "B2-Beruf/ru/100/tel/tel_067_term_ru_100": "f378d89974",
   "B2-Beruf/en/100/tel/tel_067_short_en_100": "92dafc33f6",
-  "B2-Beruf/ru/100/tel/tel_067_short_ru_100": "022deb3345"
+  "B2-Beruf/ru/100/tel/tel_067_short_ru_100": "022deb3345",
+  "B2-Beruf/ru/100/mtg/mtg_001_term_ru_100": "7c58e3d0fd",
+  "B2-Beruf/de/100/mtg/mtg_001_short_de_100": "db063d90f1",
+  "B2-Beruf/de/080/mtg/mtg_001_short_de_080": "f80cf528aa"
 }
