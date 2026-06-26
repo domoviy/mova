@@ -15079,8 +15079,8 @@
   "B2-Beruf/de/100/mtg/mtg_128_term_de_100": "00601c8320",
   "B2-Beruf/de/080/mtg/mtg_128_term_de_080": "9dfe7d62cc",
   "B2-Beruf/uk/100/mtg/mtg_128_term_uk_100": "515b892558",
-  "B2-Beruf/de/100/mtg/mtg_128_short_de_100": "0bf7963f30",
-  "B2-Beruf/de/080/mtg/mtg_128_short_de_080": "07692da7bd",
+  "B2-Beruf/de/100/mtg/mtg_128_short_de_100": "71fa25c322",
+  "B2-Beruf/de/080/mtg/mtg_128_short_de_080": "431a48884f",
   "B2-Beruf/uk/100/mtg/mtg_128_short_uk_100": "5fd48a6440",
   "B2-Beruf/de/100/mtg/mtg_129_term_de_100": "9a1f5d8547",
   "B2-Beruf/de/080/mtg/mtg_129_term_de_080": "af5e3efc4e",
@@ -29926,5 +29926,6 @@
   "B2-Beruf/en/100/mtg/mtg_127_short_en_100": "49337ce4b7",
   "B2-Beruf/ru/100/mtg/mtg_127_short_ru_100": "59a7baeece",
   "B2-Beruf/en/100/mtg/mtg_128_term_en_100": "2b3944687f",
-  "B2-Beruf/ru/100/mtg/mtg_128_term_ru_100": "7868302ab4"
+  "B2-Beruf/ru/100/mtg/mtg_128_term_ru_100": "7868302ab4",
+  "B2-Beruf/en/100/mtg/mtg_128_short_en_100": "adf26cc5b2"
 }
