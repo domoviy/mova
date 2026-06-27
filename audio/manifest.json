@@ -20148,12 +20148,12 @@
   "B2-Beruf/en/100/gfw/gfw_006_term_en_100": "030b4d0301",
   "B2-Beruf/de/100/gfw/gfw_006_def_de_100": "a46e207d6a",
   "B2-Beruf/de/080/gfw/gfw_006_def_de_080": "f21bee1ee3",
-  "B2-Beruf/uk/100/gfw/gfw_006_def_uk_100": "0ac4bc22d2",
+  "B2-Beruf/uk/100/gfw/gfw_006_def_uk_100": "b4e5453a68",
   "B2-Beruf/en/100/gfw/gfw_006_def_en_100": "b7f0aa0ef4",
   "B2-Beruf/de/100/gfw/gfw_007_term_de_100": "cf12712fe1",
   "B2-Beruf/de/080/gfw/gfw_007_term_de_080": "470494b59f",
   "B2-Beruf/uk/100/gfw/gfw_007_term_uk_100": "1fa8aa8eae",
-  "B2-Beruf/en/100/gfw/gfw_007_term_en_100": "b72e69b754",
+  "B2-Beruf/en/100/gfw/gfw_007_term_en_100": "8ce67eae54",
   "B2-Beruf/de/100/gfw/gfw_007_def_de_100": "08c71e5ae3",
   "B2-Beruf/de/080/gfw/gfw_007_def_de_080": "eb568bf220",
   "B2-Beruf/uk/100/gfw/gfw_007_def_uk_100": "b105d19285",
@@ -30555,5 +30555,6 @@
   "B2-Beruf/de/080/gfw/gfw_006_short_de_080": "5423924307",
   "B2-Beruf/en/100/gfw/gfw_006_short_en_100": "5286788851",
   "B2-Beruf/uk/100/gfw/gfw_006_short_uk_100": "e281970a27",
-  "B2-Beruf/ru/100/gfw/gfw_006_short_ru_100": "2cbf8c28f2"
+  "B2-Beruf/ru/100/gfw/gfw_006_short_ru_100": "2cbf8c28f2",
+  "B2-Beruf/ru/100/gfw/gfw_006_def_ru_100": "501c8f5886"
 }
