@@ -23115,7 +23115,7 @@
   "B2-Beruf/de/080/gfw/gfw_039_def_de_080": "c137394579",
   "B2-Beruf/en/100/gfw/gfw_039_def_en_100": "72bde17f77",
   "B2-Beruf/uk/100/gfw/gfw_039_def_uk_100": "33cb6c010a",
-  "B2-Beruf/ru/100/gfw/gfw_039_def_ru_100": "158af79c08",
+  "B2-Beruf/ru/100/gfw/gfw_039_def_ru_100": "84a9d47679",
   "B2-Beruf/de/100/gfw/gfw_040_def_de_100": "e442c26ef8",
   "B2-Beruf/de/080/gfw/gfw_040_def_de_080": "533e6860ac",
   "B2-Beruf/en/100/gfw/gfw_040_def_en_100": "120679b765",
@@ -30738,5 +30738,7 @@
   "B2-Beruf/en/100/gfw/gfw_039_term_en_100": "31c70a7efc",
   "B2-Beruf/ru/100/gfw/gfw_039_term_ru_100": "e69f754510",
   "B2-Beruf/en/100/gfw/gfw_039_short_en_100": "07bfbf7a51",
-  "B2-Beruf/ru/100/gfw/gfw_039_short_ru_100": "8278d0db84"
+  "B2-Beruf/ru/100/gfw/gfw_039_short_ru_100": "8278d0db84",
+  "B2-Beruf/en/100/gfw/gfw_040_term_en_100": "788bfa1329",
+  "B2-Beruf/ru/100/gfw/gfw_040_term_ru_100": "6d2e1ef921"
 }
