@@ -13757,7 +13757,7 @@
   "B2-Beruf/uk/100/unp/unp_038_term_uk_100": "e3e6608af2",
   "B2-Beruf/de/100/unp/unp_038_short_de_100": "53811ad75b",
   "B2-Beruf/de/080/unp/unp_038_short_de_080": "e338f2709d",
-  "B2-Beruf/uk/100/unp/unp_038_short_uk_100": "1d60e655af",
+  "B2-Beruf/uk/100/unp/unp_038_short_uk_100": "97950d6f73",
   "B2-Beruf/de/100/unp/unp_039_term_de_100": "ddb3227a22",
   "B2-Beruf/de/080/unp/unp_039_term_de_080": "6b0a9b1784",
   "B2-Beruf/uk/100/unp/unp_039_term_uk_100": "ad3ae4b302",
@@ -30187,5 +30187,7 @@
   "B2-Beruf/ru/100/unp/unp_037_term_ru_100": "2b5492b4b5",
   "B2-Beruf/en/100/unp/unp_037_short_en_100": "a7e09c22b4",
   "B2-Beruf/ru/100/unp/unp_037_short_ru_100": "9e3b5d8fa7",
-  "B2-Beruf/ru/100/unp/unp_038_term_ru_100": "2d56d86f54"
+  "B2-Beruf/ru/100/unp/unp_038_term_ru_100": "2d56d86f54",
+  "B2-Beruf/en/100/unp/unp_038_short_en_100": "d821e928cf",
+  "B2-Beruf/ru/100/unp/unp_038_short_ru_100": "b14f5f602b"
 }
