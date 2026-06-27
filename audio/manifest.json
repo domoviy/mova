@@ -13620,8 +13620,8 @@
   "B2-Beruf/de/080/unp/unp_019_term_de_080": "f8597536a2",
   "B2-Beruf/uk/100/unp/unp_019_term_uk_100": "d1ee347f7d",
   "B2-Beruf/en/100/unp/unp_019_term_en_100": "b6f2968ede",
-  "B2-Beruf/de/100/unp/unp_019_def_de_100": "cc060562c1",
-  "B2-Beruf/de/080/unp/unp_019_def_de_080": "3b44882f2e",
+  "B2-Beruf/de/100/unp/unp_019_def_de_100": "8f17f2e433",
+  "B2-Beruf/de/080/unp/unp_019_def_de_080": "edf3b8634b",
   "B2-Beruf/uk/100/unp/unp_019_def_uk_100": "c49e11c046",
   "B2-Beruf/en/100/unp/unp_019_def_en_100": "6666fba10b",
   "B2-Beruf/de/100/unp/unp_020_term_de_100": "7591933325",
@@ -30137,5 +30137,6 @@
   "B2-Beruf/ru/100/mtg/mtg_147_term_ru_100": "9d232372db",
   "B2-Beruf/en/100/mtg/mtg_147_short_en_100": "7b105363b5",
   "B2-Beruf/ru/100/mtg/mtg_147_short_ru_100": "ac297aec99",
-  "B2-Beruf/ru/100/unp/unp_018_term_ru_100": "4d97b9ce42"
+  "B2-Beruf/ru/100/unp/unp_018_term_ru_100": "4d97b9ce42",
+  "B2-Beruf/ru/100/unp/unp_019_term_ru_100": "4e9e3f221e"
 }
