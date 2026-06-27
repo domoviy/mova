@@ -20934,8 +20934,8 @@
   "B2-Beruf/de/100/kia/kia_068_def_de_100": "40ed56b5e9",
   "B2-Beruf/de/080/kia/kia_068_def_de_080": "13fe71ecf1",
   "B2-Beruf/en/100/kia/kia_068_def_en_100": "ce04b2d122",
-  "B2-Beruf/uk/100/kia/kia_068_def_uk_100": "ac4adf6a8c",
-  "B2-Beruf/ru/100/kia/kia_068_def_ru_100": "e8fbd2f854",
+  "B2-Beruf/uk/100/kia/kia_068_def_uk_100": "95023adbd2",
+  "B2-Beruf/ru/100/kia/kia_068_def_ru_100": "39474f9142",
   "B2-Beruf/de/100/kia/kia_069_def_de_100": "bcd6c28921",
   "B2-Beruf/de/080/kia/kia_069_def_de_080": "69377d647a",
   "B2-Beruf/en/100/kia/kia_069_def_en_100": "deac471dcf",
@@ -30962,5 +30962,6 @@
   "B2-Beruf/en/100/kia/kia_068_term_en_100": "d4e85df72c",
   "B2-Beruf/ru/100/kia/kia_068_term_ru_100": "a35d3460fb",
   "B2-Beruf/en/100/kia/kia_068_short_en_100": "d57d953bf9",
-  "B2-Beruf/ru/100/kia/kia_068_short_ru_100": "30f0d52919"
+  "B2-Beruf/ru/100/kia/kia_068_short_ru_100": "30f0d52919",
+  "B2-Beruf/en/100/kia/kia_069_term_en_100": "babaae04d6"
 }
