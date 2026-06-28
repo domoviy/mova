@@ -2308,7 +2308,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '223-1b96629';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5246,7 +5246,22 @@ function _runLessonFlow(lesson, allCards){
     ? allSB.filter(s => sbCardIds.includes(s.id)).slice(0, 1)
     : [];
 
-  const hasTiles  = flowCards.some(c=>(c.term?.de||'').split(' ').length >= 2);
+  // Окремий пул для вправи "Склади речення" (tiles) — 2 картки з term
+  // (з дистракторами, як завжди) + 1 картка з def (без дистракторів,
+  // лише слова самого речення) — узгоджено окремо, незалежно від 4
+  // карток vocab-кроку (як і matchCards/dlgCard вище — sorted-пул модуля).
+  const tilesTermPool = sorted.filter(c=>(c.term?.de||'').split(' ').length>=2);
+  const tilesDefPool  = sorted.filter(c=>c.def?.de && c.def.de.includes('<b>'));
+  const tilesTermCards = tilesTermPool.slice(0, Math.min(2, tilesTermPool.length));
+  // Def-картка — уникаємо повтору картки, що вже потрапила в term-вибірку
+  const tilesDefCandidate = tilesDefPool.find(c => !tilesTermCards.some(t=>t.id===c.id));
+  const tilesDefCards = tilesDefCandidate ? [tilesDefCandidate] : [];
+  const tilesCards = [
+    ...tilesTermCards.map(c => ({ card: c, mode: 'term' })),
+    ...tilesDefCards.map(c => ({ card: c, mode: 'def' })),
+  ];
+
+  const hasTiles  = tilesCards.length > 0;
   const hasSB     = lessonSBCards.length > 0;
   const hasDefFill = flowCards.some(c => c.def?.de && c.def.de.includes('<b>'));
 
@@ -5278,6 +5293,7 @@ function _runLessonFlow(lesson, allCards){
     lesson,
     cards:     flowCards,
     matchCards,
+    tilesCards,
     allCards,
     sbCards:   lessonSBCards,
     sbIdx:     0,
@@ -5828,7 +5844,8 @@ function startTiles(){
     return;
   }
   pool.sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
-  const chosen = pool.slice(0, Math.min(21, pool.length)).sort(()=>Math.random()-.5).slice(0,7);
+  const chosen = pool.slice(0, Math.min(21, pool.length)).sort(()=>Math.random()-.5).slice(0,7)
+    .map(card => ({ card, mode: 'term' }));
   tilesState = {cards:chosen, idx:0, current:null, answer:[], words:[]};
   tilesShowCard();
 }
@@ -5842,11 +5859,56 @@ function tilesShowCard(){
   const checkBtn = document.getElementById('tiles-check-btn');
   if(checkBtn) checkBtn.style.display='none';
 
-  const card = tilesState.cards[tilesState.idx];
-  if(!card){ tilesShowResult(); return; }
+  const entry = tilesState.cards[tilesState.idx];
+  if(!entry){ tilesShowResult(); return; }
+  const card = entry.card;
+  const mode = entry.mode || 'term';
   tilesState.current = card;
+  tilesState.currentMode = mode;
   tilesState.answer = [];
   tilesState.checked = false;
+
+  if(mode === 'def'){
+    // Def-режим: складаємо ВСЕ речення з def.de (без HTML-тегів),
+    // дистракторів немає взагалі — лише слова самого речення.
+    const stripTags = s => (s||'').replace(/<[^>]+>/g, '');
+    const defHint = stripTags(card.def?.[uiLang] || card.def?.de || '');
+    const qLabel = uiLang==='uk'
+      ? 'Склади речення:'
+      : uiLang==='en' ? 'Build the sentence:'
+      : 'Bilde den Satz:';
+    document.getElementById('tiles-q-label').textContent = qLabel;
+    const qTextEl = document.getElementById('tiles-q-text');
+    qTextEl.className = 'tiles-q-text mc-q-term';
+    qTextEl.textContent = defHint;
+
+    // Prefetch DE audio — поле 'def'
+    try {
+      const audioUrl = getAudioUrl(card.id, 'def', 'de');
+      const audioMkey = urlToAudioMkey(audioUrl);
+      if((!audioBlobCache.has(audioUrl) || !isAudioCacheValid(audioUrl, audioMkey)) && audioExistsCache.get(audioUrl) !== '404'){
+        fetchBlobUrl(audioUrl, 8000, audioMkey).catch(()=>{});
+      }
+    } catch(e) {}
+
+    const correctStr = stripTags(card.def?.de || '');
+    const words = correctStr.split(' ').filter(Boolean);
+    tilesState.words = words;
+
+    const allTiles = words.slice().sort(()=>Math.random()-.5);
+    const bank = document.getElementById('tiles-bank');
+    bank.innerHTML='';
+    allTiles.forEach((w,i)=>{
+      const tile = document.createElement('button');
+      tile.className = 'tile';
+      tile.textContent = w;
+      tile.dataset.word = w;
+      tile.dataset.idx = i;
+      tile.addEventListener('click', ()=>tilesPickWord(tile));
+      bank.appendChild(tile);
+    });
+    return;
+  }
 
   // Питання у tiles-q-text:
   // - uiLang === 'de' → показуємо short.de (те, що треба скласти з частин — контекст для DE мови)
@@ -6182,19 +6244,25 @@ function tilesCheck(){
   const given   = tilesState.answer;
   const isOk = given.join(' ') === correct.join(' ');
   tilesState.checked = true;
+  const mode = tilesState.currentMode || 'term';
 
   const ansEl = document.getElementById('tiles-answer');
   ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
   recordCardEvent(tilesState.current.id, isOk ? 'task_correct' : 'task_wrong');
   haptic[isOk?'success':'error']();
 
-  // Озвучуємо правильне речення (term.de) після перевірки відповіді.
+  // Озвучуємо правильне речення після перевірки відповіді — поле
+  // залежить від режиму (term/def), бо це різні pregen-аудіофайли.
   // Текст і озвучку зараховуємо ОКРЕМИМИ слабкими сигналами в Lesen/Hören
   // (10%/50% — контенту тут менше, ніж у повноцінній картці з прикладом).
   recordCardEvent(tilesState.current.id, 'tiles_audio_after_check', 'Hören');
   recordCardEvent(tilesState.current.id, 'tiles_text_after_check', 'Lesen');
   try {
-    speak(tilesState.current.term?.de || '', 'de', null, tilesState.current.id, 'term');
+    const field = mode === 'def' ? 'def' : 'term';
+    const text = mode === 'def'
+      ? (tilesState.current.def?.de || '').replace(/<[^>]+>/g, '')
+      : (tilesState.current.term?.de || '');
+    speak(text, 'de', null, tilesState.current.id, field);
   } catch(e) {}
 
   // Показуємо модальний результат
@@ -7558,8 +7626,7 @@ function lfStartChoice(){
 
 function lfStartTiles(){
   if(!LF) return;
-  const pool = LF.cards.filter(c=>(c.term?.de||'').split(' ').length>=2);
-  const chosen = pool.slice(0,Math.min(3,pool.length));
+  const chosen = (LF.tilesCards||[]).slice();
   if(!chosen.length){ lfStepDone('tiles',1); return; }
   // Ховаємо player під час tiles — речення займають місце
   const vplayer = document.querySelector('#view-vocab .vplayer');
