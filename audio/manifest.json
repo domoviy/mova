@@ -21058,8 +21058,8 @@
   "B2-Beruf/ru/100/mes/mes_052_def_ru_100": "f00921da47",
   "B2-Beruf/de/100/mes/mes_053_def_de_100": "7278c598be",
   "B2-Beruf/de/080/mes/mes_053_def_de_080": "9b743bbf45",
-  "B2-Beruf/en/100/mes/mes_053_def_en_100": "d0c6868b08",
-  "B2-Beruf/uk/100/mes/mes_053_def_uk_100": "fe89b42919",
+  "B2-Beruf/en/100/mes/mes_053_def_en_100": "c6fe20e4fa",
+  "B2-Beruf/uk/100/mes/mes_053_def_uk_100": "e6ffc94230",
   "B2-Beruf/ru/100/mes/mes_053_def_ru_100": "8266dfe5ab",
   "B2-Beruf/de/100/unp/unp_030_def_de_100": "afe47bc2dc",
   "B2-Beruf/de/080/unp/unp_030_def_de_080": "012b1eec20",
@@ -31182,5 +31182,6 @@
   "B2-Beruf/ru/100/mes/mes_052_short_ru_100": "82c01ef251",
   "B2-Beruf/en/100/mes/mes_053_term_en_100": "ab1bd14a73",
   "B2-Beruf/ru/100/mes/mes_053_term_ru_100": "280e16e003",
-  "B2-Beruf/en/100/mes/mes_053_short_en_100": "f848c09f99"
+  "B2-Beruf/en/100/mes/mes_053_short_en_100": "f848c09f99",
+  "B2-Beruf/ru/100/mes/mes_053_short_ru_100": "d2018d7fd1"
 }
