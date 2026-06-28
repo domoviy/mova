@@ -2298,7 +2298,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '221-a61b09b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7677,14 +7677,23 @@ var _lfSBHandlers = {
     return [{ text: text, field: 'sentence' }];
   },
 
-  getSecondaryButton: function(unit){
-    return {
-      icon: '💡',
-      onClick: function(){
-        unit.explShown = true;
-        _lfSBHandlers.render(unit);
-      }
-    };
+  getSecondaryButtons: function(unit){
+    return [
+      {
+        icon: '🔊',
+        onClick: function(){
+          var items = _lfSBHandlers.getAudioText(unit) || [];
+          _lfUnitPlay(items, function(){});
+        }
+      },
+      {
+        icon: '💡',
+        onClick: function(){
+          unit.explShown = true;
+          _lfSBHandlers.render(unit);
+        }
+      },
+    ];
   },
 
   onSwipeUp: function(unit){
@@ -8017,29 +8026,37 @@ function _lfUnitShowNextBtn(){
   row.id = 'lf-next-row';
   row.className = 'lf-next-row';
 
-  // Друга (ліва, квадратна) кнопка — за замовчуванням «🔊 Повторити»
-  // (vocab/dialogue-патерн). Handler може перевизначити через
-  // getSecondaryButton(unit) → {icon, onClick} | null — наприклад SB
-  // замінює на «💡 Показати пояснення» (explanation не озвучується),
-  // null прибирає кнопку взагалі.
-  var secondary = _lfUnit.handlers.getSecondaryButton
-    ? _lfUnit.handlers.getSecondaryButton(unit)
-    : {
-        icon: '🔊',
-        onClick: function(){
-          if(!unit) return;
-          var items = _lfUnit.handlers.getAudioText(unit) || [];
-          _lfUnitPlay(items, function(){});
-        }
-      };
+  // Другорядні (ліві, квадратні) кнопки — за замовчуванням одна «🔊
+  // Повторити» (vocab/dialogue-патерн). Handler може перевизначити через:
+  //  - getSecondaryButtons(unit) → [{icon, onClick}, ...] — довільна
+  //    кількість кнопок (напр. SB: 🔊 Повторити + 💡 Пояснення разом);
+  //  - getSecondaryButton(unit) → {icon, onClick} | null — одна кнопка
+  //    або відсутність кнопки (Dialogue: null, бо повтор аудіо там не
+  //    потрібен — Q/A відтворюються автоматично при кожному кроці).
+  var secondaries;
+  if(_lfUnit.handlers.getSecondaryButtons){
+    secondaries = _lfUnit.handlers.getSecondaryButtons(unit) || [];
+  } else {
+    var single = _lfUnit.handlers.getSecondaryButton
+      ? _lfUnit.handlers.getSecondaryButton(unit)
+      : {
+          icon: '🔊',
+          onClick: function(){
+            if(!unit) return;
+            var items = _lfUnit.handlers.getAudioText(unit) || [];
+            _lfUnitPlay(items, function(){});
+          }
+        };
+    secondaries = single ? [single] : [];
+  }
 
-  if(secondary){
+  secondaries.forEach(function(secondary){
     var secondaryBtn = document.createElement('button');
     secondaryBtn.className = 'lf-repeat-btn';
     secondaryBtn.textContent = secondary.icon;
     secondaryBtn.onclick = secondary.onClick;
     row.appendChild(secondaryBtn);
-  }
+  });
 
   var nextBtn = document.createElement('button');
   nextBtn.className = 'btn btn-lesson-sb-next';
