@@ -58,6 +58,8 @@ if(location.protocol === 'https:'){
   --cream:#f8f5ee;  --paper:#fff;
   --ink:#1c1917;    --warm:#44403c; --muted:#78716c;
   --border:#e7e3dc; --soft:#f5f2eb; --red:#c0392b;
+  --g-accent:#a8503f; /* теплий цегляний акцент для <g> (граматичні маркери в def) —
+                          відмінний від --red, щоб не читався як "помилка" */
   --nav-h:64px;
   --hdr-h:56px;
   --prog-h:44px;  /* висота vprogrow */
@@ -79,6 +81,14 @@ if(location.protocol === 'https:'){
 /* ══ BASE ══ */
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 html{height:100%}
+
+/* Граматичний маркер у прикладах (def): сполучник/дієслово, що
+   демонструє конструкцію речення (weil/obwohl + узгоджене дієслово),
+   на відміну від <b> — самого словникового терміна. Глобальне правило,
+   бо <g> зустрічається в кількох різних контейнерах (.fc-def,
+   .lf-unit-term, .lf-unit-short, тощо) по всьому додатку. */
+g{font-weight:700;color:var(--g-accent)}
+
 body{
   font-family:'Inter',sans-serif;
   background:var(--cream);color:var(--ink);font-size:14px;
@@ -2298,7 +2308,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '222-5f9cc85';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
