@@ -13096,10 +13096,10 @@
   "B2-Beruf/de/100/mes/mes_022_term_de_100": "c0688802da",
   "B2-Beruf/de/080/mes/mes_022_term_de_080": "cece539ac3",
   "B2-Beruf/en/100/mes/mes_022_term_en_100": "0ab125583a",
-  "B2-Beruf/uk/100/mes/mes_022_term_uk_100": "cb263ef9f4",
+  "B2-Beruf/uk/100/mes/mes_022_term_uk_100": "f320d4c3b5",
   "B2-Beruf/de/100/mes/mes_022_short_de_100": "b8c799f845",
   "B2-Beruf/de/080/mes/mes_022_short_de_080": "babc23a2cb",
-  "B2-Beruf/en/100/mes/mes_022_short_en_100": "7484c2495d",
+  "B2-Beruf/en/100/mes/mes_022_short_en_100": "9166dc7494",
   "B2-Beruf/uk/100/mes/mes_022_short_uk_100": "cabb8e4451",
   "B2-Beruf/ru/100/mes/mes_022_short_ru_100": "601f2ef5b4",
   "B2-Beruf/de/100/mes/mes_022_def_de_100": "a9c06f61b3",
@@ -31130,5 +31130,6 @@
   "B2-Beruf/en/100/dig/dig_100_short_en_100": "0d04ccf389",
   "B2-Beruf/uk/100/dig/dig_100_short_uk_100": "3197db9328",
   "B2-Beruf/ru/100/dig/dig_100_short_ru_100": "59e215ee44",
-  "B2-Beruf/ru/100/dig/dig_100_def_ru_100": "4f7cad4551"
+  "B2-Beruf/ru/100/dig/dig_100_def_ru_100": "4f7cad4551",
+  "B2-Beruf/ru/100/mes/mes_022_term_ru_100": "00d30826cd"
 }
