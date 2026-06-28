@@ -6296,7 +6296,7 @@
   "B2-Beruf/uk/100/zar/zar_142_term_uk_100": "c38d114a8d",
   "B2-Beruf/de/100/zar/zar_142_short_de_100": "8762c0105e",
   "B2-Beruf/de/080/zar/zar_142_short_de_080": "cd05c88053",
-  "B2-Beruf/uk/100/zar/zar_142_short_uk_100": "a27b3ade22",
+  "B2-Beruf/uk/100/zar/zar_142_short_uk_100": "fc37f9bab4",
   "B2-Beruf/de/100/zar/zar_143_term_de_100": "936d230983",
   "B2-Beruf/de/080/zar/zar_143_term_de_080": "f0c2b83eb9",
   "B2-Beruf/uk/100/zar/zar_143_term_uk_100": "d5e44caae3",
@@ -31245,5 +31245,7 @@
   "B2-Beruf/en/100/zar/zar_141_short_en_100": "c07f12b5b2",
   "B2-Beruf/ru/100/zar/zar_141_short_ru_100": "4ec7de4cc7",
   "B2-Beruf/en/100/zar/zar_142_term_en_100": "7555e1ffaa",
-  "B2-Beruf/ru/100/zar/zar_142_term_ru_100": "827f6c9ec8"
+  "B2-Beruf/ru/100/zar/zar_142_term_ru_100": "827f6c9ec8",
+  "B2-Beruf/en/100/zar/zar_142_short_en_100": "3643720044",
+  "B2-Beruf/ru/100/zar/zar_142_short_ru_100": "bde2d524b5"
 }
