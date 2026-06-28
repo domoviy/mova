@@ -11355,8 +11355,8 @@
   "B2-Beruf/ru/100/mbr/mbr_190_def_ru_100": "09cf35c3f0",
   "B2-Beruf/de/100/mbr/mbr_191_def_de_100": "8acff96b3a",
   "B2-Beruf/de/080/mbr/mbr_191_def_de_080": "84765d968d",
-  "B2-Beruf/en/100/mbr/mbr_191_def_en_100": "8e4c56f3bd",
-  "B2-Beruf/uk/100/mbr/mbr_191_def_uk_100": "3b329bf3d5",
+  "B2-Beruf/en/100/mbr/mbr_191_def_en_100": "69c06ccd56",
+  "B2-Beruf/uk/100/mbr/mbr_191_def_uk_100": "d74028fd66",
   "B2-Beruf/ru/100/mbr/mbr_191_def_ru_100": "523d28b373",
   "B2-Beruf/en/100/mbr/mbr_192_term_en_100": "1fabd8a82a",
   "B2-Beruf/ru/100/mbr/mbr_192_term_ru_100": "fe5058e4b3",
@@ -31491,5 +31491,6 @@
   "B2-Beruf/ru/100/mbr/mbr_190_short_ru_100": "f6ed673b68",
   "B2-Beruf/en/100/mbr/mbr_191_term_en_100": "dc4ae66675",
   "B2-Beruf/ru/100/mbr/mbr_191_term_ru_100": "6ba19dc99a",
-  "B2-Beruf/en/100/mbr/mbr_191_short_en_100": "f86a5c9b57"
+  "B2-Beruf/en/100/mbr/mbr_191_short_en_100": "f86a5c9b57",
+  "B2-Beruf/ru/100/mbr/mbr_191_short_ru_100": "6b85460115"
 }
