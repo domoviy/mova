@@ -2280,7 +2280,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '213-dd1f939';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7448,6 +7448,11 @@ function lfGoStep(stepIdx){
     // Відновлюємо player якщо він був схований tiles
     const vp = document.querySelector('#view-vocab .vplayer');
     if(vp) vp.style.display='';
+    // ВАЖЛИВО: #lf-unit-card живе всередині vocab-panel-card (tab 0),
+    // а попередній крок (matching/tiles/choice/...) міг лишити активною
+    // іншу вкладку — без цього перемикання картка SB Lernen рендериться
+    // в DOM, але невидима (попередня вкладка приховує vocab-panel-card).
+    switchVocabTab(0);
     lfStartSBLearn();
   } else if(step === 'dlg_learn'){
     lfStartDlgLearn();
@@ -7587,8 +7592,11 @@ var _lfSBHandlers = {
       };
       setFavVisual(fav);
       var doToggle = function(){
-        toggleFavorite(card.id);
-        setFavVisual(isFavorite(card.id));
+        toggleFavorite(card.id, true);
+        var nowFav = isFavorite(card.id);
+        setFavVisual(nowFav);
+        var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в закладки') : (typeof t==='function'?t('fav_removed'):'☆ Видалено із закладок');
+        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
       };
       var prevHandlers = favBtn._lfFavHandlers;
       if(prevHandlers){
@@ -7631,19 +7639,11 @@ var _lfSBHandlers = {
       : '');
 
     if(unit.explShown){
-      var expl = sbL(card.explanation, pl);
-      var explTr = ul !== pl ? sbL(card.explanation, ul) : '';
+      var expl = sbL(card.explanation, ul);
       html +=
         '<div class="lf-unit-main-row">'+
-          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
           '<div class="lf-unit-short" style="margin-top:0">'+expl+'</div>'+
-        '</div>'+
-        (explTr ?
-          '<div class="lf-unit-main-row">'+
-            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-            '<div class="lf-unit-short" style="margin-top:0">'+explTr+'</div>'+
-          '</div>'
-        : '');
+        '</div>';
     }
 
     body.innerHTML = html;
@@ -8068,8 +8068,11 @@ var _lfVocabHandlers = {
       };
       setFavVisual(fav);
       var doToggle = function(){
-        toggleFavorite(card.id);
-        setFavVisual(isFavorite(card.id));
+        toggleFavorite(card.id, true);
+        var nowFav = isFavorite(card.id);
+        setFavVisual(nowFav);
+        var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в закладки') : (typeof t==='function'?t('fav_removed'):'☆ Видалено із закладок');
+        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
       };
       // Окремі touch listeners (як fc-fav-front/back) — інакше .lf-unit-card
       // touch-action:none (потрібен для SwipeManager) блокує звичайний клік
@@ -8977,7 +8980,7 @@ function cycleVocabMode(){
 
 // ── FAVORITES ─────────────────────────────────────────────────
 function isFavorite(id){try{return!!JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite;}catch(e){return false;}}
-function toggleFavorite(id){
+function toggleFavorite(id, silent){
   haptic.light();
   const key='mova_'+id;let data={};
   try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
@@ -8989,7 +8992,7 @@ function toggleFavorite(id){
     btn.textContent=fav?'★':'☆';
     btn.classList.toggle('active',fav);
   });
-  notify(fav ? t('fav_added') : t('fav_removed'));
+  if(!silent) notify(fav ? t('fav_added') : t('fav_removed'));
   window.mlog?.('favorite_changed',{action:fav?'add':'remove'});
   updateFavBadge();
   // Якщо активний режим Favoriten і картку прибрали — перебудовуємо чергу
@@ -9640,7 +9643,7 @@ function cycleVocabMode(){
 
 // ── FAVORITES ─────────────────────────────────────────────────
 function isFavorite(id){try{return!!JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite;}catch(e){return false;}}
-function toggleFavorite(id){
+function toggleFavorite(id, silent){
   haptic.light();
   const key='mova_'+id;let data={};
   try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
@@ -9652,7 +9655,7 @@ function toggleFavorite(id){
     btn.textContent=fav?'★':'☆';
     btn.classList.toggle('active',fav);
   });
-  notify(fav ? t('fav_added') : t('fav_removed'));
+  if(!silent) notify(fav ? t('fav_added') : t('fav_removed'));
   window.mlog?.('favorite_changed',{action:fav?'add':'remove'});
   updateFavBadge();
   // Якщо активний режим Favoriten і картку прибрали — перебудовуємо чергу
