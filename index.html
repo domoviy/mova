@@ -1371,6 +1371,24 @@ body.lesson-active .vocab-top{
 .lf-unit-term{font-size:var(--fs-card);font-weight:700;color:var(--ink);line-height:1.3}
 .lf-unit-short{font-size:var(--fs-short);color:var(--muted);margin-top:2px}
 
+/* Dialogue: бульбашки повідомлень — питання зліва, відповідь справа */
+.lf-dlg-bubble{
+  max-width:88%;border-radius:16px;padding:12px 14px;
+}
+.lf-dlg-bubble .lf-unit-main-row + .lf-unit-main-row{
+  margin-top:6px;padding-top:0;border-top:none;
+}
+.lf-dlg-bubble-q{
+  background:var(--soft);border:1px solid var(--border);
+  margin-right:auto;
+  border-bottom-left-radius:4px;
+}
+.lf-dlg-bubble-a{
+  background:var(--gold-dim);border:1px solid rgba(201,168,76,.25);
+  margin-left:auto;
+  border-bottom-right-radius:4px;
+}
+
 .sb-prac-feedback-modal{
   position:fixed;inset:0;z-index:300;
   display:flex;align-items:flex-end;
@@ -2280,7 +2298,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '220-282664d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7725,153 +7743,173 @@ function _lfSBLearnDone(){
   lfNextStep();
 }
 
-// ── DIALOGUE step in lesson flow ─────────────────────────────────
-// 1 картка Dialogue: фронт (питання) → тап → бек (відповідь) → кнопка «Далі»
-// Аудіо: автовідтворення питання, потім відповіді — через speak() як у SB.
-// SM-2: srsRate(id, 5) — Dialogue-картка зарахована після перегляду.
+// ── DIALOGUE step (lesson flow) — реалізація на базі lfRunUnitStep ──
+// 1 юніт на картку: питання (Q) primaryLang озвучено → кнопка «Далі» →
+// відповідь (A) primaryLang озвучено, показана під питанням → кнопка
+// «Далі» завершує юніт. Питання+відповідь завжди йдуть послідовно в
+// уроці (узгоджено окремо — на відміну від SB-пояснення, тут немає
+// "опціонального" розкриття). Переклад uiLang показано текстом під
+// кожною реплікою (без озвучення). Без обертання картки.
+// SM-2: одна оцінка на картку (як і SB) — узгоджено симетрично.
 
-var _lfDlg = { flipped: false, played: false };
+function _lfDlgBuildUnits(){
+  if(!LF || !LF.dlgCard) return [];
+  return [{ kind:'dlg', cardId: LF.dlgCard.id, side:'main', card: LF.dlgCard, aShown: false }];
+}
+
+var _lfDlgHandlers = {
+  render: function(unit){
+    var card = unit.card;
+    var pl = primaryLang();
+    var ul = uiLang;
+    var cat = CATS.find(function(c){ return c.id === card.cat; });
+    var fav = isFavorite(card.id);
+
+    var favBtn = document.getElementById('lf-unit-fav');
+    if(favBtn){
+      var setFavVisual = function(isFav){
+        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.classList.toggle('active', isFav);
+      };
+      setFavVisual(fav);
+      var doToggle = function(){
+        toggleFavorite(card.id, true);
+        var nowFav = isFavorite(card.id);
+        setFavVisual(nowFav);
+        var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в закладки') : (typeof t==='function'?t('fav_removed'):'☆ Видалено із закладок');
+        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+      };
+      var prevHandlers = favBtn._lfFavHandlers;
+      if(prevHandlers){
+        favBtn.removeEventListener('touchstart', prevHandlers.ts);
+        favBtn.removeEventListener('touchend', prevHandlers.te);
+        favBtn.removeEventListener('click', prevHandlers.cl);
+      }
+      var ts = function(e){ e.stopPropagation(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
+      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      favBtn.addEventListener('touchstart', ts, {passive:true});
+      favBtn.addEventListener('touchend', te, {passive:false});
+      favBtn.addEventListener('click', cl);
+      favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
+    }
+    var catEl = document.getElementById('lf-unit-cat');
+    if(catEl) catEl.textContent = cat ? cat.e+' '+cat.de : card.cat;
+
+    var hintEl = document.getElementById('lf-unit-hint');
+    if(hintEl) hintEl.textContent = typeof t==='function' ? t('hint_srs_lesson') : '↑ Не знаю · ↓ Знаю';
+
+    var body = document.getElementById('lf-unit-body');
+    if(!body) return;
+
+    var q = card.q?.[pl] || card.q?.de || '';
+    var qTr = ul !== pl ? (card.q?.[ul] || '') : '';
+
+    var html =
+      '<div class="lf-dlg-bubble lf-dlg-bubble-q">'+
+        '<div class="lf-unit-main-row">'+
+          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
+          '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+q+'</div>'+
+        '</div>'+
+        (qTr ?
+          '<div class="lf-unit-main-row">'+
+            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
+            '<div class="lf-unit-short" style="margin-top:0">'+qTr+'</div>'+
+          '</div>'
+        : '')+
+      '</div>';
+
+    if(unit.aShown){
+      var a = card.a?.[pl] || card.a?.de || '';
+      var aTr = ul !== pl ? (card.a?.[ul] || '') : '';
+      html +=
+        '<div class="lf-dlg-bubble lf-dlg-bubble-a">'+
+          '<div class="lf-unit-main-row">'+
+            '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
+            '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+a+'</div>'+
+          '</div>'+
+          (aTr ?
+            '<div class="lf-unit-main-row">'+
+              '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
+              '<div class="lf-unit-short" style="margin-top:0">'+aTr+'</div>'+
+            '</div>'
+          : '')+
+        '</div>';
+    }
+
+    body.innerHTML = html;
+
+    var cardEl = document.getElementById('lf-unit-card');
+    if(cardEl) cardEl.style.display = 'flex';
+  },
+
+  getAudioText: function(unit){
+    var card = unit.card;
+    var pl = primaryLang();
+    if(!unit.aShown){
+      return [{ text: card.q?.[pl]||card.q?.de||'', field: 'q' }];
+    }
+    return [{ text: card.a?.[pl]||card.a?.de||'', field: 'a' }];
+  },
+
+  getSecondaryButton: function(){ return null; }, // Q+A завжди послідовно, без опціональної кнопки
+
+  onSwipeUp: function(unit){
+    srsRate(unit.cardId, 1);
+    var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
+    showSrsHint('🔄', _rep, 1, 'lf-unit-card');
+  },
+
+  onSwipeDown: function(unit){
+    srsRate(unit.cardId, 5);
+    var d = srsLoad(unit.cardId);
+    var days = d.interval || 1;
+    var _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
+    var _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
+    var _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+    var label = days===1 ? _tmr : _in+days+_day;
+    showSrsHint('✅', label, 5, 'lf-unit-card');
+  },
+
+  onNext: function(unit){
+    trackCardToday(unit.cardId);
+    // Перший «Далі» (питання дограло) — розкриваємо відповідь і
+    // повідомляємо оболонці не завершувати юніт (Q+A завжди послідовно).
+    if(!unit.aShown){
+      unit.aShown = true;
+      return true; // "юніт не завершено" — оболонка перерендерить його ж
+    }
+  },
+};
 
 function lfStartDlgLearn(){
   if(!LF || !LF.dlgCard){ lfNextStep(); return; }
 
-  // Переходимо на view-dialogue, але ховаємо всі UI-елементи керування
-  showView('dialogue');
-  lfRenderBar();
+  // Відновлюємо player на випадок якщо попередній крок його сховав
+  var vp = document.querySelector('#view-vocab .vplayer');
+  if(vp) vp.style.display='';
 
-  var dlgTop = document.querySelector('#view-dialogue .vocab-top');
-  if(dlgTop) dlgTop.style.display = 'none';
-  var dlgPanel = document.getElementById('dlg-panel-card');
-  if(dlgPanel) dlgPanel.classList.add('lesson-fullcard');
+  switchVocabTab(0);
 
-  _lfDlg = { flipped: false, played: false };
-
-  // Рендеримо картку вручну — мінімальний HTML, без SRS-badge і без режим-чіпів
-  D.queue   = [LF.dlgCard];
-  D.idx     = 0;
-  D.flipped = false;
-  renderDialogueCard();
-
-  // SwipeManager: тільки тап (перегорнути), всі свайпи заблоковані
-  setTimeout(function(){
-    var area = document.getElementById('dlg-fc-area');
-    if(!area) return;
-    SwipeManager.init(area, {
-      onTap:   function(){ lfDlgLearnFlipCard(); },
-      onLeft:  function(){},
-      onRight: function(){},
-      onUp:    function(){},
-      onDown:  function(){},
-    });
-  }, 50);
-
-  // Автовідтворення питання, потім — перегортання й автовідтворення відповіді
-  lfDlgLearnPlayFront(function(){
-    if(!LF) return;
-    _lfDlgFlipToBack();
-    lfDlgLearnPlayBack(function(){
-      // Показуємо «Далі» якщо ще не показана (захист `if(old) return` всередині)
-      lfDlgLearnShowNext();
-    });
-  });
-}
-
-// Перегортає картку на бек (якщо ще не перегорнута) без запуску озвучення
-function _lfDlgFlipToBack(){
-  if(_lfDlg.flipped) return;
-  _lfDlg.flipped = true;
-  D.flipped = true;
-  document.getElementById('dlg-flashcard').classList.add('flipped');
-}
-
-function lfDlgLearnFlipCard(){
-  var wasFlipped = _lfDlg.flipped;
-  _lfDlg.flipped = !_lfDlg.flipped;
-  D.flipped = _lfDlg.flipped;
-  document.getElementById('dlg-flashcard').classList.toggle('flipped', _lfDlg.flipped);
-  if(!_lfDlg.flipped) return; // перегорнули назад на фронт — нічого не граємо й не показуємо «Далі»
-  if(wasFlipped) return; // вже був на беку (захист від повторного запуску)
-  // Тап перериває Q (lfDlgLearnPlayBack інкрементує _lfDlgPlayToken, чим скасовує
-  // поточний next() у lfDlgLearnPlayFront) і одразу починає грати відповідь (A)
-  lfDlgLearnPlayBack(function(){
-    lfDlgLearnShowNext();
-  });
-}
-
-var _lfDlgPlayToken = 0;
-function lfDlgLearnPlayFront(onDone){
-  if(!LF || !LF.dlgCard) return;
-  var card = LF.dlgCard;
-  var langs = getActiveDialogueLangs();
-  // Власний токен генерації — НЕ playGen! speak() сама викликає stopTTS()
-  // (playGen++) на кожному виклику, тож порівняння з playGen тут завжди
-  // false вже після першої фрази й рекурсія обривається передчасно.
-  var myToken = ++_lfDlgPlayToken;
-  var i = 0;
-  function next(){
-    if(myToken !== _lfDlgPlayToken) return; // скасовано новішим запуском
-    if(!LF || !LF.dlgCard || LF.dlgCard.id !== card.id) return; // крок змінився
-    if(i >= langs.length){ onDone && onDone(); return; }
-    var l = langs[i++];
-    var text = card.q?.[l] || card.q?.de;
-    if(!text){ next(); return; }
-    speak(text, l, function(){ setTimeout(next, V.pause); }, card.id, 'q');
-  }
-  next();
-}
-
-// Озвучення зворотної сторони картки (відповіді) — за тим самим принципом,
-// що й lfDlgLearnPlayFront, але читає card.a (тег 'a') замість card.q ('q').
-function lfDlgLearnPlayBack(onDone){
-  if(!LF || !LF.dlgCard) return;
-  var card = LF.dlgCard;
-  var langs = getActiveDialogueLangs();
-  var myToken = ++_lfDlgPlayToken;
-  var i = 0;
-  function next(){
-    if(myToken !== _lfDlgPlayToken) return; // скасовано новішим запуском
-    if(!LF || !LF.dlgCard || LF.dlgCard.id !== card.id) return; // крок змінився
-    if(i >= langs.length){ onDone && onDone(); return; }
-    var l = langs[i++];
-    var text = card.a?.[l] || card.a?.de;
-    if(!text){ next(); return; }
-    speak(text, l, function(){ setTimeout(next, V.pause); }, card.id, 'a');
-  }
-  next();
-}
-
-function lfDlgLearnShowNext(){
-  var old = document.getElementById('lf-sb-next-btn');
-  if(old) return; // вже показана
-  _lfInjectSBNextBtn(function(){
-    _lfDlgPlayToken++; playGen++;
-    if(currentAudio){ currentAudio.pause(); currentAudio = null; }
-    // Зараховуємо SM-2 (q=5 — переглянута)
-    if(LF && LF.dlgCard) srsRate(LF.dlgCard.id, 5);
-    _lfDlgLearnDone();
-  }, typeof t === 'function' ? t('btn_sb_weiter') : 'Далі →');
+  var units = _lfDlgBuildUnits();
+  lfRunUnitStep(units, _lfDlgHandlers, _lfDlgLearnDone);
 }
 
 function _lfDlgLearnDone(){
-  _lfDlgPlayToken++;
-  playGen++;
-  // Знімаємо кнопку Далі
-  var btn = document.getElementById('lf-sb-next-btn');
-  if(btn) btn.remove();
-  // Відновлюємо Dialogue-UI для вільного режиму
-  var dlgTop = document.querySelector('#view-dialogue .vocab-top');
-  if(dlgTop) dlgTop.style.display = '';
-  var dlgPanel = document.getElementById('dlg-panel-card');
-  if(dlgPanel) dlgPanel.classList.remove('lesson-fullcard');
-  // Відновлюємо swipe для Dialogue у вільному режимі
-  setTimeout(initDialogueSwipe, 50);
-  // Повертаємось у vocab (tiles/sb_prac/result чекають там)
-  showView('vocab');
+  var fcArea = document.getElementById('fc-area');
+  if(fcArea) fcArea.style.display = '';
+  var vprogrow = document.querySelector('#vocab-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = '';
+  var unitCard = document.getElementById('lf-unit-card');
+  if(unitCard) unitCard.style.display = 'none';
+  var vplayer = document.querySelector('#view-vocab .vplayer');
+  if(vplayer) vplayer.style.display = '';
+  setTimeout(initSwipe, 50);
   lfRenderBar();
   lfNextStep();
 }
 
-// ── УНІВЕРСАЛЬНА ОБОЛОНКА UNIT-КРОКУ УРОКУ ───────────────────────────
+
 // Контракт (узгоджено заздалегідь під vocab/SB/Dialogue, реалізовано
 // зараз лише для vocab — SB/Dialogue лишаються на старій логіці,
 // перенесення на цю оболонку — окреме завдання):
@@ -8008,7 +8046,15 @@ function _lfUnitShowNextBtn(){
   nextBtn.textContent = typeof t === 'function' ? t('btn_sb_weiter') : 'Далі →';
   nextBtn.onclick = function(){
     row.remove();
-    if(unit && _lfUnit.handlers.onNext) _lfUnit.handlers.onNext(unit);
+    // onNext може повернути true, якщо юніт ще не завершено (напр.
+    // Dialogue: питання дограло → «Далі» розкриває відповідь, а не
+    // переходить до наступної картки) — тоді не зрушуємо idx/прогрес,
+    // просто перерендерюємо той самий юніт.
+    var notDone = unit && _lfUnit.handlers.onNext && _lfUnit.handlers.onNext(unit);
+    if(notDone){
+      _lfUnitShow();
+      return;
+    }
     _lfUnit.idx++;
     LF.unitProgress = { done: _lfUnit.idx, total: _lfUnit.units.length };
     lfRenderBar();
