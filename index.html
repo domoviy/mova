@@ -73,9 +73,22 @@ if(location.protocol === 'https:'){
   --lm-tabs: calc(38px + var(--gap));   /* vocab-tabs */
   --lm-nav:  var(--nav-h);              /* bottom-nav */
 
-  /* ── Розмір шрифтів (керується слайдером у Налаштуваннях) ──── */
-  --fs-card: 18px;   /* fc-term, fc-def, tiles, match-btn, mc-opt, sb-front-sentence… */
-  --fs-short: 16px;  /* fc-short — підпис під терміном на фронті */
+  /* ── Розмір шрифтів (керується слайдером у Налаштуваннях) ────
+     4 рівні важливості, завжди відносні до --fs-card (база):
+       --fs-card      (0)   — прямий навчальний контент: речення, слова,
+                              варіанти відповіді, кнопки дій
+       --fs-secondary (-2)  — переклад/допоміжний текст, що теж читають
+       --fs-tertiary  (-4)  — підказки-заголовки, категорії, системні
+                              повідомлення (контекст, не сам контент)
+       --fs-utility   (-6)  — орієнтаційні елементи, що не "читають"
+                              (символи ↑↓, лічильники прогресу)
+     Floor-значення (13/12/11px) гарантують читабельність навіть на
+     мінімумі слайдера (14px) — applyFontSize() рахує це в JS. */
+  --fs-card: 18px;       /* fc-term, fc-def, tiles, match-btn, mc-opt, sb-front-sentence… */
+  --fs-secondary: 16px;  /* fc-short, переклад під основним терміном */
+  --fs-tertiary: 14px;   /* q-label, lf-unit-cat, audio-unavail-text */
+  --fs-utility: 12px;    /* lf-unit-hint, прогрес-лічильник */
+  --fs-short: var(--fs-secondary); /* зворотна сумісність зі старими правилами */
 }
 
 /* ══ BASE ══ */
@@ -243,7 +256,7 @@ body{
   transform:translateY(100%);transition:transform .25s ease;
 }
 .audio-unavail-overlay.show .audio-unavail-card{transform:translateY(0)}
-.audio-unavail-text{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.audio-unavail-text{font-size:var(--fs-tertiary);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .audio-unavail-btn{
   width:100%;background:var(--gold);color:var(--forest);
   border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;
@@ -678,7 +691,7 @@ body{
   background:var(--forest);border-radius:14px;
   padding:12px 14px;margin-bottom:12px;
 }
-.mc-q-label{font-size:14px;color:rgba(255,255,255,.4);
+.mc-q-label{font-size:var(--fs-tertiary);color:rgba(255,255,255,.4);
   letter-spacing:.5px;margin-bottom:5px;}
 .mc-q-row{display:flex;align-items:center;gap:8px;justify-content:center;}
 .mc-q-term{font-size:var(--fs-card);font-weight:700;color:var(--gold);
@@ -891,7 +904,7 @@ body{
   background:var(--forest);border-radius:16px;
   padding:18px;margin-bottom:14px;
 }
-.tiles-q-label{font-size:14px;color:rgba(255,255,255,.45);
+.tiles-q-label{font-size:var(--fs-tertiary);color:rgba(255,255,255,.45);
   letter-spacing:.5px;margin-bottom:6px;}
 .tiles-q-text{font-size:var(--fs-card);color:#fff;line-height:1.5;font-family:'Inter',sans-serif;}
 .tiles-q-text.mc-q-term{color:var(--gold-lt);font-weight:600;}
@@ -1119,7 +1132,7 @@ body{
 }
 .fc-back-term{font-size:var(--fs-card);font-weight:700;color:var(--ink);flex:1;min-width:0;word-break:break-word}
 .fc-def-block{margin-bottom:9px}
-.fc-def-lang-label{font-size:14px;font-weight:700;color:var(--gold);margin-bottom:2px}
+.fc-def-lang-label{font-size:var(--fs-tertiary);font-weight:700;color:var(--gold);margin-bottom:2px}
 .fc-def{font-size:var(--fs-card);line-height:1.6;color:var(--warm)}
 
 /* ── Граматична підказка <g>…</g> — виділення у всіх видах карток ── */
@@ -1322,7 +1335,7 @@ body.lesson-active .vocab-top{
   bottom:calc(env(safe-area-inset-bottom,0px) + var(--nav-h) + 12px);
   left:16px;right:16px;
   padding:16px;
-  font-size:17px;font-weight:800;
+  font-size:var(--fs-card);font-weight:800;
   background:linear-gradient(135deg,var(--gold),#b8873a);
   color:var(--forest);border:none;border-radius:16px;
   box-shadow:0 4px 20px rgba(201,168,76,.45);
@@ -1370,9 +1383,9 @@ body.lesson-active .vocab-top{
 }
 .lf-unit-fav:active{border-color:var(--gold);transform:scale(1.2)}
 .lf-unit-fav.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
-.lf-unit-cat{font-size:13px;font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:8px}
+.lf-unit-cat{font-size:var(--fs-tertiary);font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:8px}
 .lf-unit-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto}
-.lf-unit-hint{text-align:center;font-size:13px;color:var(--muted);padding:14px 0 2px;flex-shrink:0}
+.lf-unit-hint{text-align:center;font-size:var(--fs-utility);color:var(--muted);padding:14px 0 2px;flex-shrink:0}
 .lf-unit-main-row{display:flex;align-items:baseline;gap:9px}
 .lf-unit-main-row + .lf-unit-main-row{
   margin-top:8px;padding-top:14px;border-top:1px solid var(--soft);
@@ -1857,7 +1870,7 @@ body.lesson-active .vocab-top{
           </div>
         </div>
         <div class="vprogrow-flow">
-          <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="vprgtxt">1 / 0</span>
+          <span style="font-family:'Inter',monospace;font-size:var(--fs-utility);color:var(--muted);white-space:nowrap" id="vprgtxt">1 / 0</span>
           <div class="vpb"><div class="vpbf" id="vpbf" style="width:0%"></div></div>
         </div>
 
@@ -2308,7 +2321,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '225-fa90743';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2877,10 +2890,14 @@ const FS_MAX = 28;
 
 function applyFontSize(px){
   px = Math.max(FS_MIN, Math.min(FS_MAX, px));
-  document.documentElement.style.setProperty('--fs-card', px+'px');
-  // fc-short = завжди на 2px менше за fs-card (але не менше 12px)
-  const fsShort = Math.max(12, px - 2);
-  document.documentElement.style.setProperty('--fs-short', fsShort+'px');
+  const root = document.documentElement.style;
+  root.setProperty('--fs-card', px+'px');
+  // 4 рівні важливості — завжди відносні до базового розміру, з floor-
+  // значеннями, що гарантують читабельність навіть на мінімумі слайдера
+  // (детальніше — коментар біля визначення змінних у :root).
+  root.setProperty('--fs-secondary', Math.max(13, px - 2)+'px');
+  root.setProperty('--fs-tertiary',  Math.max(12, px - 4)+'px');
+  root.setProperty('--fs-utility',   Math.max(11, px - 6)+'px');
   // Оновлюємо UI слайдера (якщо відкриті Налаштування)
   const slider = document.getElementById('fs-card-slider');
   if(slider) slider.value = px;
@@ -7724,12 +7741,12 @@ var _lfSBHandlers = {
     var html =
       '<div class="lf-unit-main-row">'+
         '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-        '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+sentence+'</div>'+
+        '<div class="lf-unit-term" style="font-size:var(--fs-card);font-weight:400;line-height:1.6">'+sentence+'</div>'+
       '</div>'+
       (sentenceTr ?
         '<div class="lf-unit-main-row">'+
           '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-          '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+sentenceTr+'</div>'+
+          '<div class="lf-unit-term" style="font-size:var(--fs-secondary);font-weight:400;line-height:1.6">'+sentenceTr+'</div>'+
         '</div>'
       : '');
 
@@ -7737,7 +7754,7 @@ var _lfSBHandlers = {
       var expl = sbL(card.explanation, ul);
       html +=
         '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-short" style="margin-top:0">'+expl+'</div>'+
+          '<div class="lf-unit-term" style="font-weight:400;line-height:1.6">'+expl+'</div>'+
         '</div>';
     }
 
@@ -7895,7 +7912,7 @@ var _lfDlgHandlers = {
       '<div class="lf-dlg-bubble lf-dlg-bubble-q">'+
         '<div class="lf-unit-main-row">'+
           '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-          '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+q+'</div>'+
+          '<div class="lf-unit-term" style="font-size:var(--fs-card);font-weight:400;line-height:1.6">'+q+'</div>'+
         '</div>'+
         (qTr ?
           '<div class="lf-unit-main-row">'+
@@ -7912,7 +7929,7 @@ var _lfDlgHandlers = {
         '<div class="lf-dlg-bubble lf-dlg-bubble-a">'+
           '<div class="lf-unit-main-row">'+
             '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-            '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+a+'</div>'+
+            '<div class="lf-unit-term" style="font-size:var(--fs-card);font-weight:400;line-height:1.6">'+a+'</div>'+
           '</div>'+
           (aTr ?
             '<div class="lf-unit-main-row">'+
@@ -8265,12 +8282,12 @@ var _lfVocabHandlers = {
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
           '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-          '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+def+'</div>'+
+          '<div class="lf-unit-term" style="font-size:var(--fs-card);font-weight:400;line-height:1.6">'+def+'</div>'+
         '</div>'+
         (defTranslation ?
           '<div class="lf-unit-main-row">'+
             '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-            '<div class="lf-unit-term" style="font-size:var(--fs-short);font-weight:400;line-height:1.6">'+defTranslation+'</div>'+
+            '<div class="lf-unit-term" style="font-size:var(--fs-secondary);font-weight:400;line-height:1.6">'+defTranslation+'</div>'+
           '</div>'
         : '');
     }
