@@ -31800,5 +31800,8 @@
   "B2-Beruf/en/100/eat/eat_157_term_en_100": "1423503a39",
   "B2-Beruf/ru/100/eat/eat_157_term_ru_100": "b13b5121a0",
   "B2-Beruf/en/100/eat/eat_157_short_en_100": "f937d7b7eb",
-  "B2-Beruf/ru/100/eat/eat_157_short_ru_100": "c225d0bef1"
+  "B2-Beruf/ru/100/eat/eat_157_short_ru_100": "c225d0bef1",
+  "B2-Beruf/ru/100/dig/dig_101_term_ru_100": "10d3cf32a8",
+  "B2-Beruf/de/100/dig/dig_101_short_de_100": "7d56c1c683",
+  "B2-Beruf/de/080/dig/dig_101_short_de_080": "9275642f61"
 }
