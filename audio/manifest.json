@@ -20068,7 +20068,7 @@
   "B2-Beruf/uk/100/dig/dig_148_short_uk_100": "22dc69c9d6",
   "B2-Beruf/de/100/dig/dig_149_term_de_100": "57b27f62de",
   "B2-Beruf/de/080/dig/dig_149_term_de_080": "5423552e87",
-  "B2-Beruf/uk/100/dig/dig_149_term_uk_100": "4e5812712e",
+  "B2-Beruf/uk/100/dig/dig_149_term_uk_100": "ce9ac127a0",
   "B2-Beruf/de/100/dig/dig_149_short_de_100": "10262bf5c2",
   "B2-Beruf/de/080/dig/dig_149_short_de_080": "241a368be1",
   "B2-Beruf/uk/100/dig/dig_149_short_uk_100": "90c22043cd",
@@ -31984,5 +31984,7 @@
   "B2-Beruf/en/100/dig/dig_148_term_en_100": "d6342ea86c",
   "B2-Beruf/ru/100/dig/dig_148_term_ru_100": "dfd09fed1e",
   "B2-Beruf/en/100/dig/dig_148_short_en_100": "dff84f52a6",
-  "B2-Beruf/ru/100/dig/dig_148_short_ru_100": "207c2ebeed"
+  "B2-Beruf/ru/100/dig/dig_148_short_ru_100": "207c2ebeed",
+  "B2-Beruf/en/100/dig/dig_149_term_en_100": "45993c0368",
+  "B2-Beruf/ru/100/dig/dig_149_term_ru_100": "ef1ac6ddc1"
 }
