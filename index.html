@@ -2368,7 +2368,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '240-6da94da';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2449,6 +2449,10 @@ async function switchCourse(courseId){
 
   try{
     await loadCourseScript(courseId);
+    // PRIMARY_LANG нового курсу вже відома — синхронізуємо видимі мови
+    // у плеєрах (V.langs/D.langs/SB.langs), інакше вони лишаться зі
+    // старого курсу (див. init(), де це робиться при холодному старті).
+    syncLangsToVisible();
     document.querySelectorAll('.course-btn').forEach(b=>{
       b.classList.toggle('active', b.dataset.course===courseId);
     });
@@ -2463,6 +2467,10 @@ async function switchCourse(courseId){
     V.queue=[]; V.idx=0; V.repeatCount=0; V.playing=false; V.paused=false;
     stopTTS();
     initVocab();
+    // Дата іспиту (і весь стан Smart Review) тепер прив'язана до курсу —
+    // чіп "N днів" у хедері мав показувати дані попереднього курсу аж до
+    // наступного відкриття Settings/Dashboard. Оновлюємо одразу.
+    try{ srUpdateHeaderChip(); }catch(e){}
     notify((activeCourse?.emoji||'📚')+' '+activeCourse?.title);
   }catch(e){
     console.error('switchCourse error:', e);
@@ -2992,7 +3000,16 @@ function saveSettings(){
 // ═══════════════════════════════════════════════════════════════════
 // SMART REVIEW — інлайн версія smart_review.js (без ES Modules)
 // ═══════════════════════════════════════════════════════════════════
-const SR_STORAGE_KEY = "mova_smart_review";
+// Дата іспиту, subtestStats, streak, daily plan — усе це релевантне лише
+// для конкретного курсу (напр. telc DTB B2 має сенс для B2-Beruf, але не
+// для Financial-Accounting-Foundations) → стан Smart Review зберігається
+// ОКРЕМО для кожного курсу, під ключем mova_smart_review_<courseId>.
+const SR_STORAGE_KEY_LEGACY = "mova_smart_review"; // єдиний спільний стан до multi-course
+const SR_STORAGE_PREFIX = "mova_smart_review_";
+function srStorageKey(){
+  const courseId = (typeof activeCourse !== 'undefined' && activeCourse?.id) || getSavedCourseId();
+  return SR_STORAGE_PREFIX + courseId;
+}
 
 const SR_EXAM_WEIGHT = {
   Sprachbausteine:1.5, Lesen:1.2, Schreiben:1.2,
@@ -3132,9 +3149,9 @@ function srBuildWeaknessProfile(subtestStats){
 }
 
 function srLoadState(){
-  try{ const r=localStorage.getItem(SR_STORAGE_KEY); return r?JSON.parse(r):srDefaultState(); }catch{ return srDefaultState(); }
+  try{ const r=localStorage.getItem(srStorageKey()); return r?JSON.parse(r):srDefaultState(); }catch{ return srDefaultState(); }
 }
-function srSaveState(s){ try{ localStorage.setItem(SR_STORAGE_KEY, JSON.stringify(s)); }catch(e){} }
+function srSaveState(s){ try{ localStorage.setItem(srStorageKey(), JSON.stringify(s)); }catch(e){} }
 function srDefaultState(){
   return {examDate:null, examType:'telc_DTB_B2', cards:{}, subtestStats:{}, lastSessionDate:null, streak:0, dailyPlan:null, examHistory:[]};
 }
@@ -3142,7 +3159,7 @@ function srDefaultState(){
 // ── ОДНОРАЗОВА МІГРАЦІЯ СТАРИХ СИСТЕМ ОБЛІКУ В ЄДИНУ ─────────────
 // До цього моменту прогрес картки міг бути розкиданий по ТРЬОХ окремих
 // джерелах: стара SM-2 ('srs_'+id: ef/interval/dueDate/lastQ), Smart
-// Review (SR_STORAGE_KEY: ef/interval/nextReview/history) і Lernpfad
+// Review (srStorageKey(): ef/interval/nextReview/history) і Lernpfad
 // ('mova_'+id: totalPlays/lastSeen). Версія схеми в окремому ключі
 // гарантує, що цей прохід виконається РІВНО ОДИН РАЗ на пристрої —
 // для нового користувача (без старих ключів) цикл нижче миттєво
@@ -3594,9 +3611,29 @@ function srSetExamDate(date){
   srSaveState(s);
 }
 
-// Міграція старого SM-2 (ключ 'srs_'+id → mova_smart_review)
+// Міграція старого стану на нову per-course схему зберігання.
+// Два кроки, обидва одноразові й ідемпотентні:
+//  1) Старий спільний блоб 'mova_smart_review' (до multi-course, коли
+//     існував лише B2-Beruf) → 'mova_smart_review_B2-Beruf'.
+//  2) Зовсім старий per-card SM-2 ('srs_'+id, до появи Smart Review
+//     взагалі) → теж у 'mova_smart_review_B2-Beruf' (ці ключі так само
+//     з'явились до multi-course, тобто стосуються лише B2-Beruf).
 function srMigrateOldState(){
-  if(localStorage.getItem(SR_STORAGE_KEY)) return; // вже є новий стан
+  const b2Key = SR_STORAGE_PREFIX + 'B2-Beruf';
+
+  // Крок 1: legacy спільний блоб → B2-Beruf
+  if(!localStorage.getItem(b2Key)){
+    const legacy = localStorage.getItem(SR_STORAGE_KEY_LEGACY);
+    if(legacy){
+      try{
+        localStorage.setItem(b2Key, legacy);
+        console.log('[mova] Smart Review: мігровано спільний стан → B2-Beruf');
+      }catch(e){}
+    }
+  }
+
+  // Крок 2: дуже старий per-card SM-2 → B2-Beruf (лише якщо там ще нічого нема)
+  if(localStorage.getItem(b2Key)) return; // вже є стан для B2-Beruf
   const s = srDefaultState();
   let migrated = 0;
   for(let i=0;i<localStorage.length;i++){
@@ -3619,7 +3656,7 @@ function srMigrateOldState(){
     }catch(e){}
   }
   if(migrated>0){
-    srSaveState(s);
+    try{ localStorage.setItem(b2Key, JSON.stringify(s)); }catch(e){}
     console.log('[mova] Smart Review: мігровано', migrated, 'карток зі старого SM-2');
   }
 }
@@ -3732,8 +3769,10 @@ function selectOnboardExamDate(){
 function skipExamDateOnboarding(){
   const ob = document.getElementById('sr-exam-onboarding');
   if(ob){ ob.style.transition='opacity .3s'; ob.style.opacity='0'; setTimeout(()=>ob.style.display='none',320); }
-  // Запам'ятовуємо що пропустили (не питаємо знову)
-  try{ localStorage.setItem('mova_sr_ob_skipped','1'); }catch(e){}
+  // Запам'ятовуємо що пропустили для ЦЬОГО курсу (не питаємо знову для
+  // нього), але для іншого курсу онбординг дати іспиту повинен зʼявитись
+  // знову — дата іспиту тепер прив'язана до курсу.
+  try{ localStorage.setItem('mova_sr_ob_skipped_'+(activeCourse?.id||getSavedCourseId()),'1'); }catch(e){}
 }
 
 function srStartPlanSession(){
@@ -5717,7 +5756,7 @@ function selectOnboardLang(lang){ unlockAudioCtx();
     setTimeout(()=>{
       ob.style.display='none';
       // Після мовного onboarding — показуємо exam date onboarding (якщо не пропускали)
-      if(!localStorage.getItem('mova_sr_ob_skipped') && !srLoadState().examDate){
+      if(!localStorage.getItem('mova_sr_ob_skipped_'+(activeCourse?.id||getSavedCourseId())) && !srLoadState().examDate){
         srApplyExamObI18n();
         const eob = document.getElementById('sr-exam-onboarding');
         if(eob) eob.style.display='flex';
