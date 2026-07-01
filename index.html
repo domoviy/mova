@@ -541,7 +541,7 @@ body{
 .lp-chapter-num{
   width:28px;height:28px;border-radius:50%;
   background:var(--forest);color:var(--gold);
-  font-size:14px;font-weight:800;
+  font-size:var(--fs-utility);font-weight:800;
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;font-family:'Inter',sans-serif;
 }
@@ -1019,6 +1019,40 @@ body{
 .tiles-result-icon{font-size:44px;line-height:1;}
 .tiles-result-label{font-size:var(--fs-tertiary);font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
 .tiles-result-correct{font-size:var(--fs-card);font-weight:700;color:var(--ink);text-align:center;line-height:1.4;}
+.tiles-result-translation{font-size:var(--fs-secondary);color:var(--muted);line-height:1.5;text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
+.course-emoji{font-size:24px}
+.course-title{display:block;font-weight:700;font-size:var(--fs-tertiary);color:var(--ink)}
+.course-desc{display:block;font-size:var(--fs-utility);color:var(--muted);margin-top:1px}
+.course-level-badge{font-size:var(--fs-utility);font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(201,168,76,.12);color:var(--gold)}
+.sr-ob-title-text{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold);margin-bottom:8px;letter-spacing:-.3px}
+.sr-ob-sub-text{font-size:var(--fs-tertiary);color:rgba(255,255,255,.65);line-height:1.55}
+.sr-ob-date-input{font-size:var(--fs-card)}
+.sr-ob-btn-main{font-size:var(--fs-card)}
+.sr-ob-btn-skip{font-size:var(--fs-tertiary)}
+.h-chip-counter{font-size:var(--fs-utility);font-weight:700;color:var(--gold)}
+.srs-hint-badge{
+  position:absolute;top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  background:rgba(13,43,26,.92);
+  border:1px solid rgba(201,168,76,.35);
+  border-radius:16px;padding:14px 24px;
+  font-size:var(--fs-card);font-weight:600;
+  color:var(--gold);text-align:center;
+  pointer-events:none;z-index:100;
+  backdrop-filter:blur(8px);
+  transition:opacity .3s ease;
+  white-space:nowrap;
+}
+.srs-hint-label{font-size:var(--fs-secondary);opacity:.8}
+.mc-result-score{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold);font-family:'Inter',sans-serif}
+.mc-result-praise{color:var(--muted);font-size:var(--fs-tertiary);margin:8px 0 16px}
+.sp-result-title{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold)}
+.sp-result-pct{font-size:var(--fs-emphasis);font-weight:800}
+.sp-result-count{font-size:var(--fs-tertiary);color:var(--muted);margin-top:4px}
+.app-footer-version{text-align:center;padding:20px 0 8px;opacity:.45;font-size:var(--fs-tertiary);font-family:'Inter',monospace;letter-spacing:.5px}
+.quiz-no-data-text{font-size:var(--fs-tertiary);line-height:1.6}
+.sb-prac-result-de{font-size:var(--fs-card);line-height:1.5}
+.sb-prac-result-translation{font-size:var(--fs-secondary);color:var(--muted);line-height:1.5;margin-top:4px}
 .tiles-result-btn{
   width:100%;max-width:320px;padding:15px;border-radius:14px;border:none;
   font-size:var(--fs-card);font-weight:700;font-family:inherit;cursor:pointer;
@@ -1127,7 +1161,15 @@ body{
 .fc-srs-badge{display:block;font-size:var(--fs-utility);font-weight:600;padding:2px 10px;border-radius:20px;margin:4px auto 0;width:fit-content;background:rgba(201,168,76,.12);color:var(--gold);border:1px solid rgba(201,168,76,.25);letter-spacing:.3px}
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
 .ui-lang-btn{border:1px solid var(--border);background:var(--card);color:var(--ink);padding:7px 4px;border-radius:10px;cursor:pointer;transition:all .2s;font-family:inherit}
+.ui-lang-btn.ssec-btn{font-size:var(--fs-tertiary);text-align:left;padding:14px 18px}
 .ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
+.fs-setting-val{font-weight:700;font-size:var(--fs-tertiary);color:var(--gold);min-width:36px;text-align:right}
+.fs-setting-scale{display:flex;justify-content:space-between;font-size:var(--fs-utility);color:var(--muted);margin-top:-4px}
+.sp-meta{font-size:var(--fs-utility);color:var(--muted)}
+.sp-label{font-size:var(--fs-tertiary);letter-spacing:.8px;text-transform:uppercase}
+.sp-term-main{font-size:var(--fs-card);font-weight:800;line-height:1.4;word-break:break-word}
+.sp-secondary{font-size:var(--fs-secondary)}
+.sp-accuracy-pct{font-size:var(--fs-card);font-weight:800;min-width:44px;text-align:right}
 .course-btn.active{border-color:var(--gold)!important;background:rgba(201,168,76,.08)!important;}
 .fc-srs-due{background:rgba(201,168,76,.2);color:var(--gold);border-color:rgba(201,168,76,.5)}
 .fc-hint-back{text-align:center;font-size:var(--fs-utility);color:var(--muted);padding:6px 0 14px;flex-shrink:0}
@@ -1391,6 +1433,7 @@ body.lesson-active .vocab-top{
 .lf-unit-cat{font-size:var(--fs-tertiary);font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:8px}
 .lf-unit-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto}
 .lf-unit-hint{text-align:center;font-size:var(--fs-utility);color:var(--muted);padding:14px 0 2px;flex-shrink:0}
+.lf-progress-counter{font-family:'Inter',monospace;font-size:var(--fs-utility);color:var(--muted);white-space:nowrap}
 .lf-unit-main-row{display:flex;align-items:baseline;gap:9px}
 .lf-unit-main-row + .lf-unit-main-row{
   margin-top:8px;padding-top:14px;border-top:1px solid var(--soft);
@@ -1733,19 +1776,19 @@ body.lesson-active .vocab-top{
   </div>
   <div style="width:100%;max-width:340px;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:24px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:20px">
     <div style="text-align:center">
-      <div style="font-size:36px;margin-bottom:10px">📅</div>
-      <h2 style="font-size:22px;font-weight:800;color:var(--gold);margin-bottom:8px;letter-spacing:-.3px" id="sr-ob-title">Коли твій іспит?</h2>
-      <p style="font-size:14px;color:rgba(255,255,255,.65);line-height:1.55" id="sr-ob-sub">Вкажи дату іспиту — MOVA адаптує план і нагадає скільки часу залишилось</p>
+      <div style="font-size:36px;margin-bottom:10px">🗓️</div>
+      <h2 class="sr-ob-title-text" id="sr-ob-title">Коли твій іспит?</h2>
+      <p class="sr-ob-sub-text" id="sr-ob-sub">Вкажи дату іспиту — MOVA адаптує план і нагадає скільки часу залишилось</p>
     </div>
     <div style="width:100%;display:flex;flex-direction:column;gap:10px">
-      <input type="date" id="sr-ob-date-input"
-        style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.1);border:1.5px solid rgba(201,168,76,.6);border-radius:12px;padding:14px 16px;font-size:16px;font-family:inherit;color:#fff;text-align:center;outline:none;-webkit-appearance:none">
-      <button onclick="selectOnboardExamDate()"
-        style="width:100%;background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:800;font-family:inherit;cursor:pointer;letter-spacing:.3px" id="sr-ob-btn">
+      <input type="date" id="sr-ob-date-input" class="sr-ob-date-input"
+        style="width:100%;box-sizing:border-box;background:rgba(255,255,255,.1);border:1.5px solid rgba(201,168,76,.6);border-radius:12px;padding:14px 16px;font-family:inherit;color:#fff;text-align:center;outline:none;-webkit-appearance:none">
+      <button onclick="selectOnboardExamDate()" class="sr-ob-btn-main"
+        style="width:100%;background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);border:none;border-radius:12px;padding:15px;font-weight:800;font-family:inherit;cursor:pointer;letter-spacing:.3px" id="sr-ob-btn">
         Зберегти →
       </button>
-      <button onclick="skipExamDateOnboarding()"
-        style="background:none;border:none;color:rgba(255,255,255,.4);font-size:14px;font-family:inherit;cursor:pointer;padding:6px;text-align:center" id="sr-ob-skip">
+      <button onclick="skipExamDateOnboarding()" class="sr-ob-btn-skip"
+        style="background:none;border:none;color:rgba(255,255,255,.4);font-family:inherit;cursor:pointer;padding:6px;text-align:center" id="sr-ob-skip">
         Пропустити
       </button>
     </div>
@@ -1803,12 +1846,12 @@ body.lesson-active .vocab-top{
       </svg>
     </div>
     <!-- Лічильник днів до іспиту -->
-    <div id="sr-days-chip" style="display:none;align-items:center;gap:3px;padding:3px 8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:20px;font-size:14px;font-weight:700;color:var(--gold);cursor:pointer;flex-shrink:0" onclick="showView('settings')"></div>
+    <div id="sr-days-chip" class="h-chip-counter" style="display:none;align-items:center;gap:3px;padding:3px 8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:20px;color:var(--gold);cursor:pointer;flex-shrink:0" onclick="showView('settings')"></div>
     <!-- Вогонь і Налаштування у хедері замість stopbtn -->
     <div class="h-right-btns">
       <button class="h-icon-btn" onclick="showStreakInfo()" title="Streak">
         <span class="bn-fire" id="h-fire">🔥</span>
-        <span id="h-streak-count" style="font-size:14px;font-weight:700;color:var(--gold)">0</span>
+        <span id="h-streak-count" class="h-chip-counter">0</span>
       </button>
       <button class="h-icon-btn" onclick="showView('settings')" title="Settings">⚙️</button>
     </div>
@@ -1875,7 +1918,7 @@ body.lesson-active .vocab-top{
           </div>
         </div>
         <div class="vprogrow-flow">
-          <span style="font-family:'Inter',monospace;font-size:var(--fs-utility);color:var(--muted);white-space:nowrap" id="vprgtxt">1 / 0</span>
+          <span class="lf-progress-counter" id="vprgtxt">1 / 0</span>
           <div class="vpb"><div class="vpbf" id="vpbf" style="width:0%"></div></div>
         </div>
 
@@ -1942,7 +1985,7 @@ body.lesson-active .vocab-top{
       <div id="vocab-panel-def" style="display:none">
         <div class="tiles-question" id="def-question-block">
           <div class="tiles-q-label" id="def-q-label">Доповни речення</div>
-          <div class="tiles-q-text" id="def-q-text" style="font-size:16px;color:#fff;line-height:1.9"></div>
+          <div class="tiles-q-text" id="def-q-text" style="color:#fff;line-height:1.9"></div>
         </div>
         <div class="tiles-bank" id="def-bank"></div>
         <div class="tiles-check-row">
@@ -1956,15 +1999,15 @@ body.lesson-active .vocab-top{
 
         <!-- Прогрес -->
         <div id="sp-progress" style="display:flex;justify-content:space-between;align-items:center">
-          <span id="sp-counter" style="font-size:13px;color:var(--muted)">1 / 7</span>
-          <span id="sp-score-chip" style="font-size:13px;font-weight:700;color:var(--gold)"></span>
+          <span id="sp-counter" class="sp-meta">1 / 7</span>
+          <span id="sp-score-chip" class="sp-meta" style="font-weight:700;color:var(--gold)"></span>
         </div>
 
         <!-- Картка з терміном -->
         <div id="sp-card" style="background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">
-          <div id="sp-term-label" style="font-size:11px;color:rgba(255,255,255,.45);letter-spacing:.8px;text-transform:uppercase">Begriff</div>
-          <div id="sp-term" style="font-size:22px;font-weight:800;color:#fff;line-height:1.4;word-break:break-word"></div>
-          <div id="sp-transl" style="font-size:13px;color:rgba(255,255,255,.5);margin-top:2px"></div>
+          <div id="sp-term-label" class="sp-label" style="color:rgba(255,255,255,.45)">Begriff</div>
+          <div id="sp-term" class="sp-term-main" style="color:#fff"></div>
+          <div id="sp-transl" class="sp-secondary" style="color:rgba(255,255,255,.5);margin-top:2px"></div>
         </div>
 
         <!-- Кнопка запису -->
@@ -1973,26 +2016,26 @@ body.lesson-active .vocab-top{
             style="width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent">
             🎤
           </button>
-          <div id="sp-mic-label" style="font-size:13px;color:var(--muted);text-align:center">Натисни щоб говорити</div>
+          <div id="sp-mic-label" class="sp-label" style="text-align:center">Натисни щоб говорити</div>
         </div>
 
         <!-- Результат розпізнавання -->
         <div id="sp-result-box" style="display:none;background:var(--soft);border-radius:16px;padding:16px;border:1.5px solid var(--border)">
-          <div style="font-size:11px;color:var(--muted);letter-spacing:.5px;margin-bottom:6px" data-i18n="sp_you_said">Ви сказали:</div>
-          <div id="sp-heard" style="font-size:16px;font-weight:600;color:var(--ink);margin-bottom:12px;line-height:1.4"></div>
+          <div class="sp-label" style="margin-bottom:6px" data-i18n="sp_you_said">Ви сказали:</div>
+          <div id="sp-heard" class="sp-term-main" style="color:var(--ink);font-weight:600;margin-bottom:12px"></div>
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
             <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden">
               <div id="sp-accuracy-bar" style="height:100%;border-radius:4px;transition:width .5s ease;width:0%"></div>
             </div>
-            <span id="sp-accuracy-pct" style="font-size:16px;font-weight:800;min-width:44px;text-align:right"></span>
+            <span id="sp-accuracy-pct" class="sp-accuracy-pct"></span>
           </div>
-          <div id="sp-word-diff" style="font-size:15px;line-height:1.8;letter-spacing:.3px"></div>
+          <div id="sp-word-diff" class="sp-term-main" style="font-weight:400;line-height:1.8;letter-spacing:.3px"></div>
         </div>
 
         <!-- Кнопки дій -->
         <div id="sp-actions" style="display:none;flex-direction:column;gap:8px">
           <button id="sp-next-btn" onclick="spNext()" class="tiles-check-btn" style="display:none"></button>
-          <button onclick="spRetry()" style="background:none;border:1px solid var(--border);border-radius:12px;padding:11px;font-size:14px;color:var(--muted);font-family:inherit;cursor:pointer" id="sp-retry-btn" data-i18n="sp_try_again">Спробувати ще раз</button>
+          <button onclick="spRetry()" style="background:none;border:1px solid var(--border);border-radius:12px;padding:11px;font-size:var(--fs-card);color:var(--muted);font-family:inherit;cursor:pointer" id="sp-retry-btn" data-i18n="sp_try_again">Спробувати ще раз</button>
         </div>
 
       </div>
@@ -2064,7 +2107,7 @@ body.lesson-active .vocab-top{
           </div>
         </div>
         <div class="vprogrow-flow" id="sb-vprogrow">
-          <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="sb-prgtxt">1 / 48</span>
+          <span class="lf-progress-counter" id="sb-prgtxt">1 / 48</span>
           <div class="vpb"><div class="vpbf" id="sb-vpbf" style="width:0%"></div></div>
         </div>
       </div>
@@ -2091,7 +2134,7 @@ body.lesson-active .vocab-top{
           <button class="btn" onclick="sbStartPractice()">🔄 Nochmal üben</button>
         </div>
         <div class="vprogrow" id="sb-prac-progrow">
-          <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted)" id="sb-prac-counter">1 / 10</span>
+          <span class="lf-progress-counter" id="sb-prac-counter">1 / 10</span>
           <div class="vpb"><div class="vpbf" id="sb-prac-vpbf" style="width:0%"></div></div>
         </div>
       </div>
@@ -2099,8 +2142,8 @@ body.lesson-active .vocab-top{
       <!-- Exam -->
       <div id="sb-panel-exam" style="display:none">
         <div class="vplayer" style="margin-bottom:8px">
-          <div style="font-weight:700;color:var(--gold);font-size:14px">📝 Prüfungssimulation</div>
-          <div class="fc-num" style="margin-left:auto;font-size:16px;font-weight:800;color:var(--ink)" id="sb-exam-timer">5:00</div>
+          <div style="font-weight:700;color:var(--gold);font-size:var(--fs-tertiary)">📝 Prüfungssimulation</div>
+          <div class="fc-num" style="margin-left:auto;font-size:var(--fs-tertiary);font-weight:800;color:var(--ink)" id="sb-exam-timer">5:00</div>
         </div>
         <div class="mc-progress" id="sb-exam-dots"></div>
         <div class="mc-question" id="sb-exam-task">
@@ -2150,7 +2193,7 @@ body.lesson-active .vocab-top{
           </div>
         </div>
         <div class="vprogrow-flow">
-          <span style="font-family:'Inter',monospace;font-size:14px;color:var(--muted);white-space:nowrap" id="dlgprgtxt">1 / 0</span>
+          <span class="lf-progress-counter" id="dlgprgtxt">1 / 0</span>
           <div class="vpb"><div class="vpbf" id="dlgpbf" style="width:0%"></div></div>
         </div>
       </div>
@@ -2166,7 +2209,7 @@ body.lesson-active .vocab-top{
 
     <!-- 1. Дата іспиту -->
     <div class="ssec" id="ssec-sr-examdate">
-    <h3>📅 <span data-i18n="sec_examdate">Prüfungsdatum</span></h3>
+    <h3>🗓️ <span data-i18n="sec_examdate">Prüfungsdatum</span></h3>
     <div class="srow">
       <div class="srow-label"><label id="sr-settings-date-lbl">Prüfungstermin</label><small id="sr-settings-mode-lbl"></small></div>
       <input type="date" id="sr-settings-date-input" class="sr-date-input" style="background:var(--soft);border-color:var(--border);color:var(--ink);min-width:0;width:140px" onchange="srOnDateChange(this.value)">
@@ -2198,12 +2241,12 @@ body.lesson-active .vocab-top{
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:10px">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <div class="srow-label" style="margin:0"><label data-i18n="lbl_fontsize_card">Kartengröße</label><small data-i18n="lbl_fontsize_card_sub">Begriff, Definition, Sätze, Kacheln</small></div>
-        <span id="fs-card-val" style="font-weight:700;font-size:15px;color:var(--gold);min-width:36px;text-align:right">18px</span>
+        <span id="fs-card-val" class="fs-setting-val">18px</span>
       </div>
       <input type="range" id="fs-card-slider" min="14" max="28" step="1" value="18"
         style="width:100%;accent-color:var(--gold)"
         oninput="applyFontSize(+this.value)" onchange="saveFontSize()">
-      <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:-4px">
+      <div class="fs-setting-scale">
         <span>14px</span><span>21px</span><span>28px</span>
       </div>
     </div>
@@ -2213,10 +2256,10 @@ body.lesson-active .vocab-top{
     <div class="ssec" id="ssec-lang">
     <h3>🌐 <span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
     <div style="display:flex;gap:8px;padding:4px 0;flex-direction:column">
-      <button class="btn ui-lang-btn active" data-lang="de" onclick="setUiLang('de')" style="font-size:15px;text-align:left;padding:14px 18px">🇩🇪 Deutsch</button>
-      <button class="btn ui-lang-btn" data-lang="uk" onclick="setUiLang('uk')" style="font-size:15px;text-align:left;padding:14px 18px">🇺🇦 Українська</button>
-      <button class="btn ui-lang-btn" data-lang="en" onclick="setUiLang('en')" style="font-size:15px;text-align:left;padding:14px 18px">🇬🇧 English</button>
-      <button class="btn ui-lang-btn" data-lang="ru" onclick="setUiLang('ru')" style="font-size:15px;text-align:left;padding:14px 18px">🇷🇺 Русский</button>
+      <button class="btn ui-lang-btn ssec-btn active" data-lang="de" onclick="setUiLang('de')">🇩🇪 Deutsch</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="uk" onclick="setUiLang('uk')">🇺🇦 Українська</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="en" onclick="setUiLang('en')">🇬🇧 English</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="ru" onclick="setUiLang('ru')">🇷🇺 Русский</button>
     </div>
     </div>
 
@@ -2286,8 +2329,7 @@ body.lesson-active .vocab-top{
     </div>
 
     <!-- Версія додатку -->
-    <div style="text-align:center;padding:20px 0 8px;opacity:.45;font-size:14px;
-              font-family:'Inter',monospace;letter-spacing:.5px">
+    <div class="app-footer-version">
     MOVA v<span id="app-ver"></span>
     </div>
     </div>
@@ -2326,7 +2368,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '239-9b6aa86';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2340,6 +2382,15 @@ const COURSES = [
     level:    'B2',
     langs:    ['de','uk','en'],
     desc:     { de:'Deutsch für den Beruf', uk:'Німецька для роботи', en:'German for Work' },
+  },
+  {
+    id:       'Financial-Accounting-Foundations',
+    file:     'Financial-Accounting-Foundations.js',
+    title:    'Financial Accounting: Foundations',
+    emoji:    '💰',
+    level:    'Foundations',
+    langs:    ['en','uk'],
+    desc:     { de:'Grundlagen der Finanzbuchhaltung', uk:'Основи фінансового обліку', en:'Financial accounting fundamentals' },
   },
   // Приклад як додати новий курс:
   // {
@@ -2763,15 +2814,15 @@ function syncLangsToVisible(){
 }
 
 // Мова перекладу для активностей (рідна мова користувача)
-// de → показуємо short.de (монолінгвально)
-// uk → показуємо term.uk
-// en → показуємо term.en
+// uiLang === primaryLang() → показуємо short[primaryLang()] (монолінгвально,
+// бо term у цьому випадку — це те саме слово, що вивчається, а не переклад)
+// інакше → показуємо term[uiLang] (переклад рідною мовою)
 function nativeLang(){ return uiLang; }
 function nativeText(card){
-  if(uiLang === 'de') return card.short?.de || card.term?.de || '';
-  return card.term?.[uiLang] || card.term?.de || '';
+  if(uiLang === primaryLang()) return card.short?.[primaryLang()] || card.term?.[primaryLang()] || '';
+  return card.term?.[uiLang] || '';
 }
-function targetText(card){ return card.term?.[primaryLang()] || card.term?.de || ''; }
+function targetText(card){ return card.term?.[primaryLang()] || ''; }
 
 function setUiLang(lang){
   uiLang = lang;
@@ -4407,7 +4458,7 @@ function initVocab(){initVocabFilters();applyVocabLangUI();if(V.queue.length===0
 function initVocabFilters(){
   if(typeof CATS === 'undefined') return; // курс ще не завантажено
   const sel=document.getElementById('vf-cat');if(!sel||sel.options.length>1)return;
-  CATS.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.e+' '+c.de;sel.appendChild(o);});
+  CATS.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.e+' '+(c[uiLang]||c.en||c.de);sel.appendChild(o);});
 }
 function buildVocabQueue(){
   if(typeof VOCAB === 'undefined' || !VOCAB?.length) return [];
@@ -4445,8 +4496,8 @@ function renderVocabCard(){
   const cat=CATS.find(c=>c.id===v.cat);
   const al=getActiveLangs();
   if(!V.flipped){trackCardToday(v.id);window.mlog?.('card_viewed',{cat:v.cat,mode:V.mode});}
-  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${v.term?.[l]||v.term?.de||''}</div><div class="fc-short">${v.short?.[l]||v.short?.de||''}</div></div></div>`).join('');
-  const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${v.def?.[l]||v.def?.de||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
+  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${v.term?.[l]||''}</div><div class="fc-short">${v.short?.[l]||''}</div></div></div>`).join('');
+  const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${v.def?.[l]||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('flashcard');if(!card)return;
   card.classList.toggle('flipped',V.flipped);
   const fav=isFavorite(v.id);
@@ -4468,7 +4519,7 @@ function renderVocabCard(){
   document.getElementById('fc-front-inner').innerHTML=`
     <div class="fc-header">
       <button class="fc-fav ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-front">${fav?'★':'☆'}</button>
-      <span class="fc-cat">${cat?cat.e+' '+cat.de:v.cat}</span>
+      <span class="fc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</span>
     </div>
     <div class="fc-body">${termRows}</div>
     ${srsBadgeHtml}
@@ -4476,8 +4527,8 @@ function renderVocabCard(){
   document.getElementById('fc-back-inner').innerHTML=`
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${fav?'★':'☆'}</button>
-      <span class="fc-flag" style="font-size:15px">🇩🇪</span>
-      <span class="fc-back-term">${v.term?.de||''}</span>
+      <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||'🇩🇪'}</span>
+      <span class="fc-back-term">${v.term?.[primaryLang()]||''}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
     </div>
     <div class="fc-body" style="padding-top:12px">${defRows}</div>
@@ -4664,24 +4715,12 @@ function showSrsHint(emoji, label, q, areaId='fc-area'){
   if(!hint){
     hint = document.createElement('div');
     hint.id = 'srs-hint';
-    hint.style.cssText = `
-      position:absolute;top:50%;left:50%;
-      transform:translate(-50%,-50%);
-      background:rgba(13,43,26,.92);
-      border:1px solid rgba(201,168,76,.35);
-      border-radius:16px;padding:14px 24px;
-      font-size:15px;font-weight:600;
-      color:var(--gold);text-align:center;
-      pointer-events:none;z-index:100;
-      backdrop-filter:blur(8px);
-      transition:opacity .3s ease;
-      white-space:nowrap;
-    `;
+    hint.className = 'srs-hint-badge';
   }
   // Прикріплюємо хінт до тієї карткової зони, що зараз активна (vocab / dialogue)
   const area = document.getElementById(areaId);
   if(area && hint.parentElement !== area) area.appendChild(hint);
-  hint.innerHTML = emoji+'<br><span style="font-size:12px;opacity:.8">'+label+'</span>';
+  hint.innerHTML = emoji+'<br><span class="srs-hint-label">'+label+'</span>';
   hint.style.opacity = '1';
   clearTimeout(hint._t);
   hint._t = setTimeout(()=>{ hint.style.opacity='0'; }, 1200);
@@ -4699,13 +4738,12 @@ function renderCourseList(){
                    border-radius:12px;border:1px solid var(--border);
                    background:var(--card);font-family:inherit;cursor:pointer;
                    text-align:left;transition:all .2s;width:100%">
-      <span style="font-size:24px">${c.emoji}</span>
+      <span class="course-emoji">${c.emoji}</span>
       <span style="flex:1">
-        <span style="display:block;font-weight:700;font-size:14px;color:var(--ink)">${c.title}</span>
-        <span style="display:block;font-size:11px;color:var(--muted);margin-top:1px">${c.desc[uiLang]||c.desc.de}</span>
+        <span class="course-title">${c.title}</span>
+        <span class="course-desc">${c.desc[uiLang]||c.desc.en||c.desc.de}</span>
       </span>
-      <span style="font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;
-                   background:rgba(201,168,76,.12);color:var(--gold)">${c.level}</span>
+      <span class="course-level-badge">${c.level}</span>
     </button>
   `).join('');
 }
@@ -4848,24 +4886,12 @@ function showSrsHint(emoji, label, q, areaId='fc-area'){
   if(!hint){
     hint = document.createElement('div');
     hint.id = 'srs-hint';
-    hint.style.cssText = `
-      position:absolute;top:50%;left:50%;
-      transform:translate(-50%,-50%);
-      background:rgba(13,43,26,.92);
-      border:1px solid rgba(201,168,76,.35);
-      border-radius:16px;padding:14px 24px;
-      font-size:15px;font-weight:600;
-      color:var(--gold);text-align:center;
-      pointer-events:none;z-index:100;
-      backdrop-filter:blur(8px);
-      transition:opacity .3s ease;
-      white-space:nowrap;
-    `;
+    hint.className = 'srs-hint-badge';
   }
   // Прикріплюємо хінт до тієї карткової зони, що зараз активна (vocab / dialogue)
   const area = document.getElementById(areaId);
   if(area && hint.parentElement !== area) area.appendChild(hint);
-  hint.innerHTML = emoji+'<br><span style="font-size:12px;opacity:.8">'+label+'</span>';
+  hint.innerHTML = emoji+'<br><span class="srs-hint-label">'+label+'</span>';
   hint.style.opacity = '1';
   clearTimeout(hint._t);
   hint._t = setTimeout(()=>{ hint.style.opacity='0'; }, 1200);
@@ -4883,13 +4909,12 @@ function renderCourseList(){
                    border-radius:12px;border:1px solid var(--border);
                    background:var(--card);font-family:inherit;cursor:pointer;
                    text-align:left;transition:all .2s;width:100%">
-      <span style="font-size:24px">${c.emoji}</span>
+      <span class="course-emoji">${c.emoji}</span>
       <span style="flex:1">
-        <span style="display:block;font-weight:700;font-size:14px;color:var(--ink)">${c.title}</span>
-        <span style="display:block;font-size:11px;color:var(--muted);margin-top:1px">${c.desc[uiLang]||c.desc.de}</span>
+        <span class="course-title">${c.title}</span>
+        <span class="course-desc">${c.desc[uiLang]||c.desc.en||c.desc.de}</span>
       </span>
-      <span style="font-size:11px;font-weight:700;padding:2px 7px;border-radius:6px;
-                   background:rgba(201,168,76,.12);color:var(--gold)">${c.level}</span>
+      <span class="course-level-badge">${c.level}</span>
     </button>
   `).join('');
 }
@@ -4944,9 +4969,9 @@ function startMatching(){
   // grid-column:1 і grid-column:2 розміщують їх у правильних стовпцях
   const maxLen = Math.max(terms.length, shorts.length);
   for(let i=0; i<maxLen; i++){
-    // Ліворуч завжди term.de (що вивчаємо)
+    // Ліворуч завжди targetText() = term[primaryLang()] (що вивчаємо)
     if(terms[i])  grid.appendChild(matchMakeBtn(terms[i].id,  'term',  targetText(terms[i])));
-    // Праворуч — рідна мова або short.de для de-інтерфейсу
+    // Праворуч — рідна мова або short[primaryLang()] для монолінгвального інтерфейсу
     if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id, 'short', nativeText(shorts[i])));
   }
 
@@ -4977,7 +5002,7 @@ function matchMakeBtn(cardId, side, text){
     if(side === 'term'){
       const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===cardId);
       if(card && !btn.classList.contains('matched')){
-        if(card.term?.de) speak(card.term.de, 'de', null, card.id, 'term', true);
+        if(card.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term', true);
       }
     }
   }, {passive:false});
@@ -5204,14 +5229,13 @@ function _runLessonFlow(lesson, allCards){
   if(!allCards.length){ notify('⚠️ Keine Karten'); return; }
   stopVocab();
 
-  // Фільтруємо картки без обов'язкового поля term.de — захист від
-  // TypeError у renderVocabCard, якщо в базі трапиться неповна картка.
-  // short.de НЕ вимагаємо: це лише декоративний підрядок на картці,
-  // renderVocabCard() вже толерантна до його відсутності (просто порожній
-  // рядок), а 517 карток бази (geh_/dig_/kor_/mtg_ тощо) мають порожній
-  // short.de, але повноцінний term.de — раніше вони штучно ставали
-  // "невалідними" і повністю випадали з вибору картки уроку.
-  const validCards = allCards.filter(c=>c.term?.de);
+  // Фільтруємо картки без обов'язкового поля term[primaryLang()] — захист
+  // від TypeError у renderVocabCard, якщо в базі трапиться неповна картка.
+  // short[primaryLang()] НЕ вимагаємо: це лише декоративний підрядок на
+  // картці, renderVocabCard() вже толерантна до його відсутності (просто
+  // порожній рядок).
+  const pLang = primaryLang();
+  const validCards = allCards.filter(c=>c.term?.[pLang]);
   if(!validCards.length){ notify('⚠️ Keine gültigen Karten'); return; }
 
   // Чи в модулі ще лишились картки, що реально ПОТРЕБУЮТЬ повторення
@@ -5272,8 +5296,8 @@ function _runLessonFlow(lesson, allCards){
   // (з дистракторами, як завжди) + 1 картка з def (без дистракторів,
   // лише слова самого речення) — узгоджено окремо, незалежно від 4
   // карток vocab-кроку (як і matchCards/dlgCard вище — sorted-пул модуля).
-  const tilesTermPool = sorted.filter(c=>(c.term?.de||'').split(' ').length>=2);
-  const tilesDefPool  = sorted.filter(c=>c.def?.de && c.def.de.includes('<b>'));
+  const tilesTermPool = sorted.filter(c=>(c.term?.[pLang]||'').split(' ').length>=2);
+  const tilesDefPool  = sorted.filter(c=>c.def?.[pLang] && c.def[pLang].includes('<b>'));
   const tilesTermCards = tilesTermPool.slice(0, Math.min(2, tilesTermPool.length));
   // Def-картка — уникаємо повтору картки, що вже потрапила в term-вибірку
   const tilesDefCandidate = tilesDefPool.find(c => !tilesTermCards.some(t=>t.id===c.id));
@@ -5285,7 +5309,7 @@ function _runLessonFlow(lesson, allCards){
 
   const hasTiles  = tilesCards.length > 0;
   const hasSB     = lessonSBCards.length > 0;
-  const hasDefFill = flowCards.some(c => c.def?.de && c.def.de.includes('<b>'));
+  const hasDefFill = flowCards.some(c => c.def?.[pLang] && c.def[pLang].includes('<b>'));
 
   // Окремий пул для вправи "Знайди пару" — завжди до 5 карток за SM-2
   // пріоритетом з усього модуля (НЕ ті самі 4, що в vocab-кроці; matching
@@ -5451,7 +5475,7 @@ function renderLernpfad(){
       <div class="lp-chapter-head ${allDone?'done':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
         <div class="lp-chapter-num ${allDone?'done':''}">${ch.num}</div>
         <div class="lp-chapter-info">
-          <div class="lp-chapter-title">${ch.title[uiLang]||ch.title.de}</div>
+          <div class="lp-chapter-title">${ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de}</div>
           <div class="lp-chapter-sub">${ch.modules.length} ${t('lp_module_prefix')} · ${
             ch.modules.filter(m=>lessonProgress(m).pct>=80).length
           }/${ch.modules.length} ${t('lp_done').toLowerCase()}</div>
@@ -5483,7 +5507,7 @@ function renderLernpfad(){
   const {pct:cPct,done:cDone,total:cTotal} = reviewProgress(allChapterNums);
   courseReviewEl.innerHTML = `
     <div class="lp-chapter-head ${cPct>=80?'done':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
-      <div class="lp-chapter-num" style="background:var(--gold);color:var(--forest);font-size:14px">🔁</div>
+      <div class="lp-chapter-num" style="background:var(--gold);color:var(--forest)">🔁</div>
       <div class="lp-chapter-info">
         <div class="lp-chapter-title">${courseChTitle}</div>
         <div class="lp-chapter-sub">${courseChSub}</div>
@@ -5536,7 +5560,7 @@ function renderModuleCard(lesson){
     ${lesson.grammar?`<div class="lp-module-grammar">G</div>`:''}
     <div class="lp-module-icon">${icon}</div>
     <div class="lp-module-body">
-      <div class="lp-module-title">${t('lp_module_prefix')} ${lesson.module} · ${lesson.title[uiLang]||lesson.title.de}</div>
+      <div class="lp-module-title">${t('lp_module_prefix')} ${lesson.module} · ${lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de}</div>
       <div class="lp-module-meta">
         ${!unlocked
           ? t('lp_locked')
@@ -5579,7 +5603,7 @@ function startLesson(lessonId){
 
   showView('vocab');
   renderVocabCard();
-  notify('📚 '+(lesson.title[uiLang]||lesson.title.de));
+  notify('📚 '+(lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de));
 }
 
 
@@ -5721,7 +5745,7 @@ let mcState = { cards:[], idx:0, answered:false, currentCard:null };
 function startMultipleChoice(){
   const cf = document.getElementById('vf-cat')?.value || 'all';
   const vocabAll = typeof VOCAB !== 'undefined' ? VOCAB : [];
-  let pool = vocabAll.filter(v => (cf==='all'||v.cat===cf) && v.term?.de);
+  let pool = vocabAll.filter(v => (cf==='all'||v.cat===cf) && v.term?.[primaryLang()]);
 
   if(pool.length < 4){
     document.getElementById('mc-options').innerHTML =
@@ -5753,7 +5777,7 @@ function mcShowCard(){
   mcState.currentCard = card;
   mcState.answered = false;
 
-  // Питання — завжди term.de (що вивчаємо)
+  // Питання — завжди targetText() = term[primaryLang()] (що вивчаємо)
   document.getElementById('mc-q-term').textContent = targetText(card);
   document.getElementById('mc-q-label').textContent =
     uiLang==='de' ? 'Was bedeutet das?' : uiLang==='uk' ? 'Що це означає?' : 'What does this mean?';
@@ -5778,13 +5802,13 @@ function mcShowCard(){
     optBox.appendChild(btn);
   });
 
-  // Автоматично відтворюємо DE аудіо при появі нового питання
-  setTimeout(()=>{ if(card.term?.de) speak(card.term.de, 'de', null, card.id, 'term'); }, 150);
+  // Автоматично відтворюємо аудіо основної мови курсу при появі нового питання
+  setTimeout(()=>{ if(card.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term'); }, 150);
 
   // Prefetch аудіо наступної картки у фоні
   const nextCard = mcState.cards[mcState.idx + 1];
   if(nextCard){
-    const nextUrl = getAudioUrl(nextCard.id, 'term', 'de');
+    const nextUrl = getAudioUrl(nextCard.id, 'term', primaryLang());
     const nextMkey = urlToAudioMkey(nextUrl);
     if(!audioBlobCache.has(nextUrl) || !isAudioCacheValid(nextUrl, nextMkey)) fetchBlobUrl(nextUrl, 8000, nextMkey).catch(()=>{});
   }
@@ -5821,7 +5845,7 @@ function mcAnswer(btn, chosen, correct, card){
 function mcPlayAudio(){
   const card = mcState.currentCard;
   if(!card) return;
-  if(card.term?.de) speak(card.term.de, 'de', null, card.id, 'term');
+  if(card.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term');
 }
 
 function mcShowResult(){
@@ -5833,8 +5857,8 @@ function mcShowResult(){
   }).length;
   optBox.innerHTML = `
     <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border)">
-      <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Inter',sans-serif">${doneCount}/${mcState.cards.length} ✓</div>
-      <p style="color:var(--muted);font-size:13px;margin:8px 0 16px">
+      <div class="mc-result-score">${doneCount}/${mcState.cards.length} ✓</div>
+      <p class="mc-result-praise">
         ${doneCount===mcState.cards.length ? t('match_perfect') : t('match_good')}
       </p>
       ${LF && mcState._lfMode
@@ -5855,7 +5879,7 @@ let tilesState = { cards:[], idx:0, current:null, answer:[], words:[] };
 function getVocabPool(){
   const cf = document.getElementById('vf-cat')?.value||'all';
   return (typeof VOCAB!=='undefined'?VOCAB:[])
-    .filter(v=>(cf==='all'||v.cat===cf) && v.term?.de && v.term.de.split(' ').length>=2);
+    .filter(v=>(cf==='all'||v.cat===cf) && v.term?.[primaryLang()] && v.term[primaryLang()].split(' ').length>=2);
 }
 
 function startTiles(){
@@ -5891,10 +5915,11 @@ function tilesShowCard(){
   tilesState.checked = false;
 
   if(mode === 'def'){
-    // Def-режим: складаємо ВСЕ речення з def.de (без HTML-тегів),
+    // Def-режим: складаємо ВСЕ речення з def[primaryLang()] (без HTML-тегів),
     // дистракторів немає взагалі — лише слова самого речення.
     const stripTags = s => (s||'').replace(/<[^>]+>/g, '');
-    const defHint = stripTags(card.def?.[uiLang] || card.def?.de || '');
+    const pLang = primaryLang();
+    const defHint = stripTags(card.def?.[uiLang] || card.def?.[pLang] || '');
     const qLabel = uiLang==='uk'
       ? 'Склади речення:'
       : uiLang==='en' ? 'Build the sentence:'
@@ -5904,16 +5929,16 @@ function tilesShowCard(){
     qTextEl.className = 'tiles-q-text mc-q-term';
     qTextEl.textContent = defHint;
 
-    // Prefetch DE audio — поле 'def'
+    // Prefetch аудіо основної мови курсу — поле 'def'
     try {
-      const audioUrl = getAudioUrl(card.id, 'def', 'de');
+      const audioUrl = getAudioUrl(card.id, 'def', pLang);
       const audioMkey = urlToAudioMkey(audioUrl);
       if((!audioBlobCache.has(audioUrl) || !isAudioCacheValid(audioUrl, audioMkey)) && audioExistsCache.get(audioUrl) !== '404'){
         fetchBlobUrl(audioUrl, 8000, audioMkey).catch(()=>{});
       }
     } catch(e) {}
 
-    const correctStr = stripTags(card.def?.de || '');
+    const correctStr = stripTags(card.def?.[pLang] || '');
     const words = correctStr.split(' ').filter(Boolean);
     tilesState.words = words;
 
@@ -5933,14 +5958,15 @@ function tilesShowCard(){
   }
 
   // Питання у tiles-q-text:
-  // - uiLang === 'de' → показуємо short.de (те, що треба скласти з частин — контекст для DE мови)
-  // - uiLang === 'uk' → показуємо term.uk (переклад терміну українською)
-  // - uiLang === 'en' → показуємо term.en (переклад терміну англійською)
+  // - uiLang === primaryLang() → показуємо short[primaryLang()] (те, що
+  //   треба скласти з частин — контекст мовою, яку вивчаємо)
+  // - інакше → показуємо term[uiLang] (переклад терміну рідною мовою)
+  const pLang = primaryLang();
   let qText;
-  if(uiLang === 'de'){
-    qText = card.short?.de || card.term?.de || '';
+  if(uiLang === pLang){
+    qText = card.short?.[pLang] || card.term?.[pLang] || '';
   } else {
-    qText = card.term?.[uiLang] || card.term?.uk || card.term?.en || card.short?.de || '';
+    qText = card.term?.[uiLang] || card.term?.uk || card.term?.en || card.short?.[pLang] || '';
   }
   const qLabel = uiLang==='uk'
     ? 'Склади речення/вираз:'
@@ -5953,27 +5979,28 @@ function tilesShowCard(){
   qTextEl.className = 'tiles-q-text mc-q-term';
   qTextEl.textContent = qText;
 
-  // Prefetch DE audio для цієї картки — поле 'term' (саме term.de
-  // розбивається на слова для гри, 'sentence' для VOCAB не існує в
-  // аудіо-системі взагалі — раніше через це завжди виходило "недоступне").
+  // Prefetch аудіо основної мови курсу для цієї картки — поле 'term' (саме
+  // term[primaryLang()] розбивається на слова для гри, 'sentence' для
+  // VOCAB не існує в аудіо-системі взагалі — раніше через це завжди
+  // виходило "недоступне").
   try {
-    const audioUrl = getAudioUrl(card.id, 'term', 'de');
+    const audioUrl = getAudioUrl(card.id, 'term', pLang);
     const audioMkey = urlToAudioMkey(audioUrl);
     if((!audioBlobCache.has(audioUrl) || !isAudioCacheValid(audioUrl, audioMkey)) && audioExistsCache.get(audioUrl) !== '404'){
       fetchBlobUrl(audioUrl, 8000, audioMkey).catch(()=>{});
     }
   } catch(e) {}
 
-  // Слова для складання — завжди term.de (розбиваємо на слова)
-  const correctStr = card.term?.de || '';
+  // Слова для складання — завжди term[primaryLang()] (розбиваємо на слова)
+  const correctStr = card.term?.[pLang] || '';
   const words = correctStr.split(' ').filter(Boolean);
   tilesState.words = words;
 
-  // Дистрактори — слова з term.de інших карток
+  // Дистрактори — слова з term[primaryLang()] інших карток
   const pool = getVocabPool();
 
-  // Якщо речення містить артикль і картка вже не нова → додаємо всі 3 артиклі як дистрактори
-  const ARTICLES = ['der','die','das'];
+  // Артиклі der/die/das — граматична особливість лише німецької мови
+  const ARTICLES = pLang==='de' ? ['der','die','das'] : [];
   const presentArticle = words.find(w => ARTICLES.includes(w.toLowerCase()));
   const cardIsKnown = (() => {
     try {
@@ -5989,7 +6016,7 @@ function tilesShowCard(){
   } else {
     distWords = pool
       .filter(v=>v.id!==card.id)
-      .flatMap(v=>(v.term?.de||'').split(' '))
+      .flatMap(v=>(v.term?.[pLang]||'').split(' '))
       .filter(w=>!words.includes(w) && w.length>2)
       .sort(()=>Math.random()-.5)
       .slice(0, Math.min(3, words.length));
@@ -6281,10 +6308,11 @@ function tilesCheck(){
   recordCardEvent(tilesState.current.id, 'tiles_text_after_check', 'Lesen');
   try {
     const field = mode === 'def' ? 'def' : 'term';
+    const pLang = primaryLang();
     const text = mode === 'def'
-      ? (tilesState.current.def?.de || '').replace(/<[^>]+>/g, '')
-      : (tilesState.current.term?.de || '');
-    speak(text, 'de', null, tilesState.current.id, field);
+      ? (tilesState.current.def?.[pLang] || '').replace(/<[^>]+>/g, '')
+      : (tilesState.current.term?.[pLang] || '');
+    speak(text, pLang, null, tilesState.current.id, field);
   } catch(e) {}
 
   // Показуємо модальний результат
@@ -6307,7 +6335,7 @@ function tilesShowResultModal(isOk, correctStr){
   };
 
   const btnLabel = isOk
-    ? (greatLabels[uiLang] || greatLabels.de)
+    ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
     : (uiLang==='uk' ? '✓ Зрозуміло' : uiLang==='en' ? '✓ Got it' : '✓ Verstanden');
 
   overlay.innerHTML = `
@@ -6337,7 +6365,7 @@ function tilesCheckAuto(){
 }
 
 // ── DEF FILL-IN (tab 6) ───────────────────────────────────────
-// Показує речення з def.de з пропуском замість слів у <b>...</b>
+// Показує речення з def[primaryLang()] з пропуском замість слів у <b>...</b>
 // Знизу — тайли з цих слів + кілька дистракторів
 
 let defState = {
@@ -6347,7 +6375,7 @@ let defState = {
   fullSentence:''
 };
 
-function defGetDisplayLang(){ return 'de'; }
+function defGetDisplayLang(){ return primaryLang(); }
 
 function defGetPool(){
   const cf = document.getElementById('vf-cat')?.value || 'all';
@@ -6527,10 +6555,11 @@ function defCheck(){
   haptic[isOk ? 'success' : 'error']();
 
   try {
-    const savedRate = V.langSpeed?.de;
-    if(V.langSpeed) V.langSpeed.de = '100';
-    speak(defState.fullSentence, 'de', () => {
-      if(V.langSpeed && savedRate !== undefined) V.langSpeed.de = savedRate;
+    const pLang = primaryLang();
+    const savedRate = V.langSpeed?.[pLang];
+    if(V.langSpeed) V.langSpeed[pLang] = '100';
+    speak(defState.fullSentence, pLang, () => {
+      if(V.langSpeed && savedRate !== undefined) V.langSpeed[pLang] = savedRate;
     }, defState.current.id, 'def');
   } catch(e) {}
 
@@ -6544,7 +6573,7 @@ function defShowResultModal(isOk, fullSentence){
   overlay.className = 'tiles-result-overlay';
   const greatLabels = { uk:'🎉 Чудово! Так тримати!', de:'🎉 Super! Weiter so!', en:'🎉 Excellent! Keep it up!' };
   const btnLabel = isOk
-    ? (greatLabels[uiLang] || greatLabels.de)
+    ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
     : (uiLang==='uk'?'✓ Зрозуміло':uiLang==='en'?'✓ Got it':'✓ Verstanden');
   // Повне речення з виділенням правильних слів золотим
   const lang = defGetDisplayLang();
@@ -6559,14 +6588,14 @@ function defShowResultModal(isOk, fullSentence){
     const tr = defState.current.def[uiLang]
       .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
       .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
-    translationHtml = `<div style="font-size:13px;color:var(--muted);line-height:1.5;text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)">${tr}</div>`;
+    translationHtml = `<div class="tiles-result-translation">${tr}</div>`;
   }
 
   overlay.innerHTML = `
     <div class="tiles-result-sheet">
       <div class="tiles-result-icon">${isOk?'✅':'❌'}</div>
       <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
-      <div class="tiles-result-correct" style="font-size:16px;line-height:1.55;text-align:center">${highlighted}${translationHtml}</div>
+      <div class="tiles-result-correct" style="line-height:1.55;text-align:center">${highlighted}${translationHtml}</div>
       <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action">${btnLabel}</button>
     </div>`;
   document.body.appendChild(overlay);
@@ -6592,7 +6621,7 @@ function defShowResult(){
   if(bankEl) bankEl.innerHTML = `
     <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
       <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Inter',sans-serif">🎉</div>
-      <p style="color:var(--muted);font-size:13px;margin:8px 0 16px">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
+      <p class="mc-result-praise">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
       <button class="btn" onclick="startDefFill()" style="margin-right:8px">🔄 Nochmal</button>
       <button class="btn" onclick="switchVocabTab(0)">📖 Karten</button>
     </div>`;
@@ -6626,7 +6655,7 @@ function startSpeech(){
 function spRenderTermWords(card){
   const termEl = document.getElementById('sp-term');
   if(!termEl) return;
-  const words = (card.term?.de || '').split(' ');
+  const words = (card.term?.[primaryLang()] || '').split(' ');
   termEl.innerHTML = words.map((w,i) =>
     `<span class="sp-tw" data-idx="${i}" style="transition:color .25s">${w}</span>`
   ).join(' ');
@@ -6635,7 +6664,7 @@ function spRenderTermWords(card){
 function spHighlightLive(transcript){
   const card = spState.cards[spState.idx];
   if(!card) return;
-  const targetWords = (card.term?.de || '').split(' ').map(w => spNormalize(w));
+  const targetWords = (card.term?.[primaryLang()] || '').split(' ').map(w => spNormalize(w));
   const heardWords  = spNormalize(transcript).split(' ');
   document.querySelectorAll('#sp-term .sp-tw').forEach((span, i) => {
     const tw = targetWords[i];
@@ -6730,7 +6759,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
   }
 
   const rec = new SR();
-  rec.lang = 'de-DE';
+  rec.lang = LC[primaryLang()]?.code || 'de-DE';
   rec.continuous = false;
   rec.interimResults = true;
   rec.maxAlternatives = 1;
@@ -6852,7 +6881,7 @@ function spWordDiff(target, heard){
 
 function spShowResult(heardText, card){
   if(!card) return;
-  const target = card.term?.de || '';
+  const target = card.term?.[primaryLang()] || '';
   const pct = Math.round(spSimilarity(spNormalize(target), spNormalize(heardText)) * 100);
   const isOk = pct >= 80;
 
@@ -6928,10 +6957,10 @@ function spShowFinish(){
   overlay.innerHTML = `
     <div class="tiles-result-sheet" style="gap:16px">
       <div style="font-size:56px">${pct>=80?'🏆':pct>=55?'💪':'🔄'}</div>
-      <div style="font-size:20px;font-weight:800;color:var(--gold)">${ul==='uk'?'Практика завершена!':ul==='en'?'Practice done!':'Fertig!'}</div>
+      <div class="sp-result-title">${ul==='uk'?'Практика завершена!':ul==='en'?'Practice done!':'Fertig!'}</div>
       <div style="background:var(--soft);border-radius:16px;padding:12px 20px;width:100%;box-sizing:border-box;text-align:center">
-        <div style="font-size:36px;font-weight:800;color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
-        <div style="font-size:13px;color:var(--muted);margin-top:4px">${ul==='uk'?`${spState.correctCount} з ${spState.totalCount}`:ul==='en'?`${spState.correctCount} of ${spState.totalCount}`:`${spState.correctCount} von ${spState.totalCount}`}</div>
+        <div class="sp-result-pct" style="color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
+        <div class="sp-result-count">${ul==='uk'?`${spState.correctCount} з ${spState.totalCount}`:ul==='en'?`${spState.correctCount} of ${spState.totalCount}`:`${spState.correctCount} von ${spState.totalCount}`}</div>
       </div>
       <button class="tiles-result-btn ok" id="sp-again-btn">🔄 ${ul==='uk'?'Ще раз':ul==='en'?'Again':'Nochmal'}</button>
       <button class="tiles-result-btn nok" onclick="switchVocabTab(0);document.getElementById('tiles-result-overlay')?.remove()">📖 ${ul==='uk'?'Картки':ul==='en'?'Cards':'Karten'}</button>
@@ -7062,7 +7091,7 @@ function tilesShowResult(){
     if(bankEl) bankEl.innerHTML=`
       <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
         <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Inter',sans-serif">🎉</div>
-        <p style="color:var(--muted);font-size:13px;margin:8px 0 16px">${t('match_perfect')}</p>
+        <p class="mc-result-praise">${t('match_perfect')}</p>
         <button class="btn" onclick="startTiles()" style="margin-right:8px">🔄 ${t('match_again').replace('🔄 ','')}</button>
         <button class="btn" onclick="switchVocabTab(0)">📖 ${t('match_cards').replace('📖 ','')}</button>
       </div>`;
@@ -7456,7 +7485,7 @@ function lfRenderBar(){
   // Заголовок
   const titleEl = document.getElementById('lf-title');
   if(titleEl) titleEl.textContent =
-    '📚 '+(LF.lesson.title[uiLang]||LF.lesson.title.de);
+    '📚 '+(LF.lesson.title[uiLang]||LF.lesson.title[primaryLang()]||LF.lesson.title.en||LF.lesson.title.de);
 
   // Цільна смуга прогресу всього уроку: завершені кроки + частковий
   // прогрес поточного кроку (для unit-кроків типу vocab — частка
@@ -7637,7 +7666,7 @@ function lfStartMatching(){
 
 function lfStartChoice(){
   if(!LF) return;
-  const pool = LF.cards.filter(c=>c.term?.de);
+  const pool = LF.cards.filter(c=>c.term?.[primaryLang()]);
   const chosen = pool.slice(0, Math.min(5, pool.length));
   if(!chosen.length){ lfStepDone('choice',1); return; }
   // Запускаємо MC з картками уроку
@@ -7663,7 +7692,7 @@ function lfStartTiles(){
 function lfStartDef(){
   if(!LF) return;
   // Беремо з тих самих 5 карток уроку (LF.cards) — закріплення щойно вивченого
-  const pool = LF.cards.filter(c => c.def?.de && c.def.de.includes('<b>'));
+  const pool = LF.cards.filter(c => c.def?.[primaryLang()] && c.def[primaryLang()].includes('<b>'));
   if(!pool.length){ lfStepDone('def', 1); return; }
   // Випадкова одна картка з пулу
   const chosen = [pool[Math.floor(Math.random() * pool.length)]];
@@ -7730,7 +7759,7 @@ var _lfSBHandlers = {
       favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
     }
     var catEl = document.getElementById('lf-unit-cat');
-    if(catEl) catEl.textContent = cat ? cat.e+' '+cat.de : card.cat;
+    if(catEl) catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
 
     var hintEl = document.getElementById('lf-unit-hint');
     if(hintEl) hintEl.textContent = typeof t==='function' ? t('hint_srs_lesson') : '↑ Не знаю · ↓ Знаю';
@@ -7902,7 +7931,7 @@ var _lfDlgHandlers = {
       favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
     }
     var catEl = document.getElementById('lf-unit-cat');
-    if(catEl) catEl.textContent = cat ? cat.e+' '+cat.de : card.cat;
+    if(catEl) catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
 
     var hintEl = document.getElementById('lf-unit-hint');
     if(hintEl) hintEl.textContent = typeof t==='function' ? t('hint_srs_lesson') : '↑ Не знаю · ↓ Знаю';
@@ -7910,7 +7939,7 @@ var _lfDlgHandlers = {
     var body = document.getElementById('lf-unit-body');
     if(!body) return;
 
-    var q = card.q?.[pl] || card.q?.de || '';
+    var q = card.q?.[pl] || '';
     var qTr = ul !== pl ? (card.q?.[ul] || '') : '';
 
     var html =
@@ -7928,7 +7957,7 @@ var _lfDlgHandlers = {
       '</div>';
 
     if(unit.aShown){
-      var a = card.a?.[pl] || card.a?.de || '';
+      var a = card.a?.[pl] || '';
       var aTr = ul !== pl ? (card.a?.[ul] || '') : '';
       html +=
         '<div class="lf-dlg-bubble lf-dlg-bubble-a">'+
@@ -7955,9 +7984,9 @@ var _lfDlgHandlers = {
     var card = unit.card;
     var pl = primaryLang();
     if(!unit.aShown){
-      return [{ text: card.q?.[pl]||card.q?.de||'', field: 'q' }];
+      return [{ text: card.q?.[pl]||'', field: 'q' }];
     }
-    return [{ text: card.a?.[pl]||card.a?.de||'', field: 'a' }];
+    return [{ text: card.a?.[pl]||'', field: 'a' }];
   },
 
   getSecondaryButton: function(){ return null; }, // Q+A завжди послідовно, без опціональної кнопки
@@ -8207,9 +8236,15 @@ function _lfUnitStepDone(){
 function _lfVocabBuildUnits(){
   var cards = V.queue || [];
   var units = [];
+  var pl = primaryLang();
   cards.forEach(function(card){
     units.push({ kind:'vocab', cardId: card.id, side:'term', card: card });
-    units.push({ kind:'vocab', cardId: card.id, side:'def',  card: card });
+    // Грань 'def' має сенс лише якщо у картки є реальний текст
+    // def[primaryLang()] — інакше показувати нічого і крок стає
+    // порожнім/зламаним. Пропускаємо його повністю для таких карток.
+    if(card.def && card.def[pl]) {
+      units.push({ kind:'vocab', cardId: card.id, side:'def',  card: card });
+    }
   });
   return units;
 }
@@ -8255,7 +8290,7 @@ var _lfVocabHandlers = {
       favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
     }
     var catEl = document.getElementById('lf-unit-cat');
-    if(catEl) catEl.textContent = cat ? cat.e+' '+cat.de : card.cat;
+    if(catEl) catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
 
     var hintEl = document.getElementById('lf-unit-hint');
     if(hintEl) hintEl.textContent = typeof t==='function' ? t('hint_srs_lesson') : '↑ Не знаю · ↓ Знаю';
@@ -8264,8 +8299,8 @@ var _lfVocabHandlers = {
     if(!body) return;
 
     if(unit.side === 'term'){
-      var term = card.term?.[pl] || card.term?.de || '';
-      var short = card.short?.[pl] || card.short?.de || '';
+      var term = card.term?.[pl] || '';
+      var short = card.short?.[pl] || '';
       var termTranslation = ul !== pl ? (card.term?.[ul] || '') : '';
       var shortTranslation = ul !== pl ? (card.short?.[ul] || '') : '';
       body.innerHTML =
@@ -8282,7 +8317,7 @@ var _lfVocabHandlers = {
           '</div>'
         : '');
     } else { // def
-      var def = card.def?.[pl] || card.def?.de || '';
+      var def = card.def?.[pl] || '';
       var defTranslation = ul !== pl ? (card.def?.[ul] || '') : '';
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
@@ -8306,12 +8341,12 @@ var _lfVocabHandlers = {
     var pl = primaryLang();
     if(unit.side === 'term'){
       return [
-        { text: card.term?.[pl]||card.term?.de||'', field: 'term' },
-        { text: card.short?.[pl]||card.short?.de||'', field: 'short' },
+        { text: card.term?.[pl]||'', field: 'term' },
+        { text: card.short?.[pl]||'', field: 'short' },
       ];
     }
     return [
-      { text: card.def?.[pl]||card.def?.de||'', field: 'def' },
+      { text: card.def?.[pl]||'', field: 'def' },
     ];
   },
 
@@ -8484,7 +8519,7 @@ function lfShowResult(){
     pct>=50 ? (uiLang==='uk'?'Добре!':uiLang==='en'?'Good job!':'Gut gemacht!') :
               (uiLang==='uk'?'Продовжуй!':uiLang==='en'?'Keep going!':'Weiter so!');
   document.getElementById('lr-sub').textContent =
-    LF.lesson.title[uiLang]||LF.lesson.title.de;
+    LF.lesson.title[uiLang]||LF.lesson.title[primaryLang()]||LF.lesson.title.en||LF.lesson.title.de;
 
   const statsEl = document.getElementById('lr-stats');
   if(statsEl){
@@ -8682,7 +8717,7 @@ function _quizShowEmpty(){
   if(optBox) optBox.innerHTML = `
     <div style="text-align:center;padding:40px 20px;color:var(--muted)">
       <div style="font-size:40px;margin-bottom:12px">❓</div>
-      <p style="font-size:14px;line-height:1.6">${t('quiz_no_data')}</p>
+      <p class="quiz-no-data-text">${t('quiz_no_data')}</p>
       <pre style="font-size:11px;text-align:left;margin-top:16px;padding:12px;
         background:var(--card);border-radius:10px;overflow:auto;color:var(--muted);
         border:1px solid var(--border)">const QUIZ = [
@@ -8732,7 +8767,8 @@ function _quizShowCard(){
   // Текст питання в актуальній мові
   const qTextEl = document.getElementById('quiz-q-text');
   if(qTextEl) qTextEl.textContent =
-    q.question?.[uiLang] || q.question?.de || q.question?.uk || q.question?.en || q.q?.[uiLang] || q.q?.de || '';
+    q.question?.[uiLang] || q.question?.[primaryLang()] || q.question?.en || q.question?.uk || q.question?.de ||
+    q.q?.[uiLang] || q.q?.[primaryLang()] || q.q?.en || q.q?.uk || q.q?.de || '';
 
   // Варіанти відповідей — перемішуємо, але запам'ятовуємо correct
   const answers = [...(q.answers || [])].sort(()=>Math.random()-.5);
@@ -8745,7 +8781,7 @@ function _quizShowCard(){
     btn.className = 'quiz-opt';
     btn.innerHTML = `
       <span class="quiz-opt-letter">${letters[i]}</span>
-      <span>${ans[uiLang] || ans.de || ans.uk || ans.en || ''}</span>`;
+      <span>${ans[uiLang] || ans[primaryLang()] || ans.en || ans.uk || ans.de || ''}</span>`;
     btn.addEventListener('click', ()=> _quizAnswer(btn, ans, answers, q));
     optBox.appendChild(btn);
   });
@@ -9072,7 +9108,7 @@ function playVocabNext(){
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
-  const text=v.term?.[langs[i]]||v.term?.de;
+  const text=v.term?.[langs[i]];
   if(!text){speakVocabTerms(v,langs,i+1,done);return;}
   let _c=false;
   speak(text, langs[i],
@@ -9082,14 +9118,14 @@ function speakVocabTerms(v,langs,i,done){
 function speakVocabShort(v,langs,done){
   if(!V.playing||V.paused){return;}
   // Перевіряємо чи є хоч один short текст
-  const hasShort=langs.some(l=>v.short?.[l]||v.short?.de);
+  const hasShort=langs.some(l=>v.short?.[l]);
   if(!hasShort){done&&done();return;}
   setTimeout(()=>speakVocabShortLang(v,langs,0,done),V.pause);
 }
 function speakVocabShortLang(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
-  const text=v.short?.[langs[i]]||v.short?.de;
+  const text=v.short?.[langs[i]];
   if(!text){speakVocabShortLang(v,langs,i+1,done);return;}
   let _c=false;
   speak(text,langs[i],
@@ -9099,7 +9135,7 @@ function speakVocabShortLang(v,langs,i,done){
 function speakVocabDefs(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
-  const text=v.def?.[langs[i]]||v.def?.de;
+  const text=v.def?.[langs[i]];
   if(!text){speakVocabDefs(v,langs,i+1,done);return;}
   let _c=false;
   speak(text, langs[i],
@@ -9162,11 +9198,11 @@ function toggleFavorite(id, silent){
 }
 function updateFavBadge(){const count=VOCAB.filter(v=>isFavorite(v.id)).length;const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
 function renderFavGrid(){
-  const dl=getActiveLangs()[0]||'de';const favs=VOCAB.filter(v=>isFavorite(v.id));
+  const dl=getActiveLangs()[0]||primaryLang();const favs=VOCAB.filter(v=>isFavorite(v.id));
   const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
   if(favs.length===0){grid.innerHTML='';if(empty)empty.style.display='';return;}
   if(empty)empty.style.display='none';
-  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.de||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.de||''}</div></div>`;}).join('');
+  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.[primaryLang()]||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.[primaryLang()]||''}</div></div>`;}).join('');
 }
 function openFavCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -9264,8 +9300,8 @@ function switchVocabTab(tab){
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
-  const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||'de';
-  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.de||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.de||''}</div></div>`;}).join('');
+  const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||primaryLang();
+  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.[primaryLang()]||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.[primaryLang()]||''}</div></div>`;}).join('');
 }
 function openVocabCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -9286,7 +9322,7 @@ function initVocabChips(){
   const div=document.getElementById('vchips');if(!div)return;
   if(typeof CATS==='undefined')return;
   div.innerHTML='<button class="chip active" onclick="setVocabCat(\'all\',this)">Alle</button>';
-  CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+c.de;btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
+  CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+(c[uiLang]||c.en||c.de);btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
 }
 function setVocabCat(id,btn){
   haptic.light();
@@ -9388,7 +9424,7 @@ function initDialogueFilters(){
   usedCats.forEach(catId=>{
     const c=CATS.find(x=>x.id===catId);
     const o=document.createElement('option');
-    o.value=catId; o.textContent=c?(c.e+' '+c.de):catId;
+    o.value=catId; o.textContent=c?(c.e+' '+(c[uiLang]||c.en||c.de)):catId;
     sel.appendChild(o);
   });
 }
@@ -9401,8 +9437,8 @@ function renderDialogueCard(){
   const cat=CATS.find(c=>c.id===d.cat);
   const al=getActiveDialogueLangs();
   if(!D.flipped){ trackCardToday(d.id); window.mlog?.('dialogue_card_viewed',{cat:d.cat,mode:D.mode}); }
-  const qRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${d.q?.[l]||d.q?.de||''}</div></div></div>`).join('');
-  const aRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${d.a?.[l]||d.a?.de||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
+  const qRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${d.q?.[l]||''}</div></div></div>`).join('');
+  const aRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${d.a?.[l]||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('dlg-flashcard'); if(!card) return;
   card.classList.toggle('flipped', D.flipped);
   const fav=isFavorite(d.id);
@@ -9423,7 +9459,7 @@ function renderDialogueCard(){
   document.getElementById('dlg-fc-front-inner').innerHTML=`
     <div class="fc-header">
       <button class="fc-fav ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-front">${fav?'★':'☆'}</button>
-      <span class="fc-cat">${cat?cat.e+' '+cat.de:d.cat}</span>
+      <span class="fc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):d.cat}</span>
     </div>
     <div class="fc-body">${qRows}</div>
     ${srsBadgeHtml}
@@ -9431,8 +9467,8 @@ function renderDialogueCard(){
   document.getElementById('dlg-fc-back-inner').innerHTML=`
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-back">${fav?'★':'☆'}</button>
-      <span class="fc-flag" style="font-size:15px">🇩🇪</span>
-      <span class="fc-back-term">${(d.q?.de||'').length>40?(d.q?.de||'').slice(0,40)+'…':(d.q?.de||'')}</span>
+      <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||'🇩🇪'}</span>
+      <span class="fc-back-term">${(d.q?.[primaryLang()]||'').length>40?(d.q?.[primaryLang()]||'').slice(0,40)+'…':(d.q?.[primaryLang()]||'')}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
     </div>
     <div class="fc-body" style="padding-top:12px">${aRows}</div>
@@ -9608,7 +9644,7 @@ function playDialogueNext(){
 function speakDialogueQ(d,langs,i,done){
   if(!D.playing||D.paused){ return; }
   if(i>=langs.length){ done&&done(); return; }
-  const text=d.q?.[langs[i]]||d.q?.de;
+  const text=d.q?.[langs[i]];
   if(!text){ speakDialogueQ(d,langs,i+1,done); return; }
   let _c=false;
   speak(text, langs[i],
@@ -9618,7 +9654,7 @@ function speakDialogueQ(d,langs,i,done){
 function speakDialogueA(d,langs,i,done){
   if(!D.playing||D.paused){ return; }
   if(i>=langs.length){ done&&done(); return; }
-  const text=d.a?.[langs[i]]||d.a?.de;
+  const text=d.a?.[langs[i]];
   if(!text){ speakDialogueA(d,langs,i+1,done); return; }
   let _c=false;
   speak(text, langs[i],
@@ -9637,10 +9673,10 @@ function renderDialogueBrowse(){
   if(typeof DIALOGE==='undefined') return;
   const cf=document.getElementById('dlgf-cat')?.value||'all';
   const items=DIALOGE.filter(d=>cf==='all'||d.cat===cf);
-  const dl=getActiveDialogueLangs()[0]||'de';
+  const dl=getActiveDialogueLangs()[0]||primaryLang();
   document.getElementById('dlg-browse-grid').innerHTML=items.map(d=>{
     const cat=CATS.find(c=>c.id===d.cat);
-    return `<div class="vocab-mini-card" onclick="openDialogueCard(${DIALOGE.indexOf(d)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:d.cat}</div><div class="vmc-term">${d.q?.[dl]||d.q?.de||''}</div><div class="vmc-short">${d.a?.[dl]||d.a?.de||''}</div></div>`;
+    return `<div class="vocab-mini-card" onclick="openDialogueCard(${DIALOGE.indexOf(d)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):d.cat}</div><div class="vmc-term">${d.q?.[dl]||d.q?.[primaryLang()]||''}</div><div class="vmc-short">${d.a?.[dl]||d.a?.[primaryLang()]||''}</div></div>`;
   }).join('');
 }
 function openDialogueCard(dlgIdx){
@@ -9666,7 +9702,7 @@ function initDialogueChips(){
     const c=CATS.find(x=>x.id===catId);
     const btn=document.createElement('button');
     btn.className='chip';
-    btn.textContent=c?(c.e+' '+c.de):catId;
+    btn.textContent=c?(c.e+' '+(c[uiLang]||c.en||c.de)):catId;
     btn.onclick=()=>setDialogueCat(catId,btn);
     div.appendChild(btn);
   });
@@ -9735,7 +9771,7 @@ function toggleVocab(){ unlockAudioCtx();
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
-  const text=v.term?.[langs[i]]||v.term?.de;
+  const text=v.term?.[langs[i]];
   if(!text){speakVocabTerms(v,langs,i+1,done);return;}
   let _c=false;
   speak(text, langs[i],
@@ -9745,14 +9781,14 @@ function speakVocabTerms(v,langs,i,done){
 function speakVocabShort(v,langs,done){
   if(!V.playing||V.paused){return;}
   // Перевіряємо чи є хоч один short текст
-  const hasShort=langs.some(l=>v.short?.[l]||v.short?.de);
+  const hasShort=langs.some(l=>v.short?.[l]);
   if(!hasShort){done&&done();return;}
   setTimeout(()=>speakVocabShortLang(v,langs,0,done),V.pause);
 }
 function speakVocabShortLang(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
-  const text=v.short?.[langs[i]]||v.short?.de;
+  const text=v.short?.[langs[i]];
   if(!text){speakVocabShortLang(v,langs,i+1,done);return;}
   let _c=false;
   speak(text,langs[i],
@@ -9762,7 +9798,7 @@ function speakVocabShortLang(v,langs,i,done){
 function speakVocabDefs(v,langs,i,done){
   if(!V.playing||V.paused){return;}
   if(i>=langs.length){done&&done();return;}
-  const text=v.def?.[langs[i]]||v.def?.de;
+  const text=v.def?.[langs[i]];
   if(!text){speakVocabDefs(v,langs,i+1,done);return;}
   let _c=false;
   speak(text, langs[i],
@@ -9825,11 +9861,11 @@ function toggleFavorite(id, silent){
 }
 function updateFavBadge(){const count=VOCAB.filter(v=>isFavorite(v.id)).length;const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
 function renderFavGrid(){
-  const dl=getActiveLangs()[0]||'de';const favs=VOCAB.filter(v=>isFavorite(v.id));
+  const dl=getActiveLangs()[0]||primaryLang();const favs=VOCAB.filter(v=>isFavorite(v.id));
   const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
   if(favs.length===0){grid.innerHTML='';if(empty)empty.style.display='';return;}
   if(empty)empty.style.display='none';
-  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.de||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.de||''}</div></div>`;}).join('');
+  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.[primaryLang()]||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.[primaryLang()]||''}</div></div>`;}).join('');
 }
 function openFavCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -9927,8 +9963,8 @@ function switchVocabTab(tab){
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
-  const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||'de';
-  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+cat.de:v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.de||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.de||''}</div></div>`;}).join('');
+  const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||primaryLang();
+  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.[primaryLang()]||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.[primaryLang()]||''}</div></div>`;}).join('');
 }
 function openVocabCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -9949,7 +9985,7 @@ function initVocabChips(){
   const div=document.getElementById('vchips');if(!div)return;
   if(typeof CATS==='undefined')return;
   div.innerHTML='<button class="chip active" onclick="setVocabCat(\'all\',this)">Alle</button>';
-  CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+c.de;btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
+  CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+(c[uiLang]||c.en||c.de);btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
 }
 function setVocabCat(id,btn){
   haptic.light();
@@ -10002,8 +10038,8 @@ function sbMarkLearned(id) {
 }
 function sbIsLearned(id) { return (sbLoadState().learned || []).includes(id); }
 // ── Helper: card/expl lang (legacy stubs, now replaced by SB.langs) ──
-function sbCardLang() { return SB.langs.de?'de':SB.langs.uk?'uk':'en'; }
-function sbExplLang() { return SB.langs.de?'de':SB.langs.uk?'uk':'en'; }
+function sbCardLang() { return SB.langs[primaryLang()]?primaryLang():SB.langs.uk?'uk':'en'; }
+function sbExplLang() { return SB.langs[primaryLang()]?primaryLang():SB.langs.uk?'uk':'en'; }
 
 // Helper: get localised string from multilingual field (obj or string)
 function sbL(field, lang) {
@@ -10120,7 +10156,7 @@ function sbRenderCatChips() {
   var el = document.getElementById('sb-cat-chips');
   if (!el || typeof SB_CATS === 'undefined') return;
   el.innerHTML = '';
-  [{ id:'all', label:'Alle' }].concat(SB_CATS.map(function(c){ return { id:c.id, label:c.e+'\u00a0'+c.de }; }))
+  [{ id:'all', label:'Alle' }].concat(SB_CATS.map(function(c){ return { id:c.id, label:c.e+'\u00a0'+(c[uiLang]||c.en||c.de) }; }))
     .forEach(function(item) {
       var b = document.createElement('button');
       b.className = 'chip' + (SB.catFilter === item.id ? ' active' : '');
@@ -10243,7 +10279,7 @@ function sbRenderLearn() {
 
   var langs = sbGetActiveLangs();  // порядок: de → en → uk → ru
   var cat   = (typeof SB_CATS!=='undefined' ? SB_CATS : []).find(function(c){ return c.id===card.cat; });
-  var catLabel = cat ? cat.e+' '+cat.de : card.cat;
+  var catLabel = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
 
   // cat badge
   var catEl = document.getElementById('sb-fc-cat');
@@ -10266,7 +10302,7 @@ function sbRenderLearn() {
 
   // ── BACK: answer + explanation per lang ──
   var answer = document.getElementById('sb-back-answer');
-  if (answer) answer.textContent = sbA(card, 'de'); // always show DE as primary term
+  if (answer) answer.textContent = sbA(card, primaryLang()); // завжди показуємо primaryLang() як основний термін
 
   var backEl = document.getElementById('sb-back-body');
   if (backEl) {
@@ -10463,9 +10499,9 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
     var rows = [];
     // Завжди показуємо DE речення
     var deRaw = sbL(card.sentence, 'de');
-    var deAns = sbA(card, 'de');
+    var deAns = sbA(card, primaryLang());
     var deFilled = deRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+deAns+'</strong>');
-    rows.push('<div style="font-size:14px;line-height:1.5">🇩🇪 '+deFilled+'</div>');
+    rows.push('<div class="sb-prac-result-de">🇩🇪 '+deFilled+'</div>');
     // Якщо мова інтерфейсу не DE — додаємо переклад
     var ifLang = typeof uiLang !== 'undefined' ? uiLang : 'de';
     if(ifLang !== 'de'){
@@ -10473,7 +10509,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
       var ifAns = sbA(card, ifLang);
       if(ifRaw && ifRaw !== deRaw){
         var ifFilled = ifRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+ifAns+'</strong>');
-        rows.push('<div style="font-size:13px;color:var(--muted);line-height:1.5;margin-top:4px">'+langFlags[ifLang]+' '+ifFilled+'</div>');
+        rows.push('<div class="sb-prac-result-translation">'+langFlags[ifLang]+' '+ifFilled+'</div>');
       }
     }
     sentenceHtml = '<div style="margin:10px 0;padding:10px 12px;background:var(--soft);border-radius:10px;display:flex;flex-direction:column;gap:2px">'+rows.join('')+'</div>';
@@ -10597,7 +10633,7 @@ function sbRenderPrac() {
   }).join('');
 
   // category
-  var catEl=document.getElementById('sb-prac-cat'); if(catEl) catEl.textContent=cat?cat.e+' '+cat.de:card.cat;
+  var catEl=document.getElementById('sb-prac-cat'); if(catEl) catEl.textContent=cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):card.cat;
 
   // sentence — gold color via mc-q-term class
   var sentEl=document.getElementById('sb-prac-sentence');
@@ -10734,7 +10770,7 @@ function sbStartExam() {
   sbStopExamTimer(); SB.examDone=false;
   SB.examCards=SPRACHBAUSTEINE.slice().sort(function(){ return Math.random()-.5; }).slice(0,6);
   SB.examIdx=0;
-  SB.examAnswers=SB.examCards.map(function(c){ return {cardId:c.id,given:null,correct:sbA(c,'de')}; });
+  SB.examAnswers=SB.examCards.map(function(c){ return {cardId:c.id,given:null,correct:sbA(c,primaryLang())}; });
   SB.examSecs=300;
   document.getElementById('sb-exam-result').style.display='none';
   document.getElementById('sb-exam-task').style.display='block';
@@ -10745,11 +10781,11 @@ function sbStartExam() {
 
 function sbRenderExamQ() {
   var card=SB.examCards[SB.examIdx]; if(!card) return;
-  var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
+  var lang=SB.langs[primaryLang()]?primaryLang():SB.langs.uk?'uk':'en';
   document.getElementById('sb-exam-q-num').textContent='Aufgabe '+(SB.examIdx+1)+' von '+SB.examCards.length;
   document.getElementById('sb-exam-sentence').innerHTML='<div class="mc-q-row"><div class="mc-q-term">'+sbL(card.sentence,lang).replace('{{BLANK}}','<span class="sb-blank">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>')+'</div></div>';
 
-  var correct=SB.examCards.map(function(c){ return sbA(c,'de'); });
+  var correct=SB.examCards.map(function(c){ return sbA(c,primaryLang()); });
   var extras=SPRACHBAUSTEINE.filter(function(c){ return !SB.examCards.find(function(ec){ return ec.id===c.id; }); })
     .map(function(c){ return c.answer; }).filter(function(a){ return !correct.includes(a); })
     .sort(function(){ return Math.random()-.5; }).slice(0,2);
@@ -10832,7 +10868,7 @@ function sbExamSubmit() {
   if(s.examResults.length>10) s.examResults=s.examResults.slice(-10);
   sbSaveState(s);
 
-  var lang=SB.langs.de?'de':SB.langs.uk?'uk':'en';
+  var lang=SB.langs[primaryLang()]?primaryLang():SB.langs.uk?'uk':'en';
   document.getElementById('sb-exam-review').innerHTML=SB.examAnswers.map(function(a,i){
     var card=SB.examCards[i],ok=a.given===a.correct;
     var lang2=lang; var sentFull=sbL(card.sentence,lang2).replace('{{BLANK}}','<b>'+(lang2==='de'?a.correct:sbA(card,lang2))+'</b>');
