@@ -1,10 +1,16 @@
 name: Generate TTS Audio
 
-# Запускається автоматично при зміні B2-Beruf.js або вручну
+# Запускається автоматично ПІСЛЯ успішного завершення workflow деплою
+# (щоб генерація аудіо не конкурувала за ресурси з перевіркою/деплоєм
+# файлів баз B2-Beruf.js та Financial-Accounting-Foundations.js),
+# або вручну.
 on:
-  push:
-    paths:
-      - 'B2-Beruf.js'
+  workflow_run:
+    # ⚠️ ЗАМІНІТЬ на точну назву (поле `name:` на початку yml-файлу
+    # вашого workflow деплою) — назва файлу тут не підходить.
+    workflows: ['YOUR_DEPLOY_WORKFLOW_NAME']
+    types:
+      - completed
   workflow_dispatch:   # Ручне керування режимами швидкості
     inputs:
       run_turbo:
@@ -21,6 +27,11 @@ on:
 jobs:
   generate:
     runs-on: ubuntu-latest
+    # Запускаємо, якщо це ручний запуск АБО деплой завершився успішно
+    # (при провалі деплою генерацію аудіо пропускаємо).
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
 
     permissions:
       contents: write   # Потрібно для коміту аудіофайлів назад у репозиторій
@@ -28,6 +39,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # Для workflow_run обов'язково беремо саме той коміт, що був
+          # задеплоєний, а не дефолтну гілку (інакше можна підхопити
+          # застарілу версію баз).
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
         # Дефолтний неглибокий checkout (fetch-depth: 1) — повна історія
         # git тут не використовується, тож тягнути її не потрібно.
 
@@ -53,8 +69,8 @@ jobs:
           TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
           # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше — 1.2 сек
           TTS_DELAY:   ${{ github.event.inputs.run_turbo == 'true' && '0.05' || '1.2' }}
-          # Кількість файлів у пачці для проміжного коміту (15 для турбо, 3 для звичайного)
-          TTS_COMMIT_LIMIT: ${{ github.event.inputs.run_turbo == 'true' && '15' || '3' }}
+          # Кількість файлів у пачці для проміжного коміту (15 для турбо, 50 для звичайного)
+          TTS_COMMIT_LIMIT: ${{ github.event.inputs.run_turbo == 'true' && '15' || '50' }}
         run: python gen_audio.py
 
       # ФІНАЛЬНИЙ КОМІТ: Дозаписує залишки файлів, які не ввійшли в останню пачку
