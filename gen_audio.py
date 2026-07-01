@@ -27,10 +27,14 @@ except ImportError:
 # ── Конфігурація ──────────────────────────────────────────────
 WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
-COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '3'))
+COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '50'))
 
-COURSE = 'B2-Beruf'
-AUDIO_BASE = pathlib.Path('audio') / COURSE
+# Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
+# у тій самій директорії, що й цей скрипт, а аудіо генерується в
+# audio/<COURSE>/... (назва папки аудіо == назва файлу бази без .js).
+COURSES = ['B2-Beruf', 'Financial-Accounting-Foundations']
+
+AUDIO_ROOT = pathlib.Path('audio')
 MANIFEST = pathlib.Path('audio') / 'manifest.json'
 
 # ── Мапінг голосів ────────────────────────────────────────────
@@ -207,7 +211,7 @@ def write_to_manifest_file(mkey, content_hash):
 
 # ── Основний асинхронний воркер ─────────────────────────────────
 async def worker_task(task, semaphore, stats, lock, total_tasks):
-    file_dir = AUDIO_BASE / task["lang"] / task["rate"] / task["cat_lower"]
+    file_dir = task["audio_base"] / task["lang"] / task["rate"] / task["cat_lower"]
     file_dir.mkdir(parents=True, exist_ok=True)
     file_path = file_dir / task["filename"]
 
@@ -249,8 +253,6 @@ async def main():
                 manifest_data = json.load(f)
         except: pass
 
-    audio_config, raw_items, primary_lang = load_js_database("B2-Beruf.js")
-
     tasks = []
     fields_map = {
         "vocab": ["term", "short", "def"],
@@ -258,7 +260,12 @@ async def main():
         "redemittel": ["q", "a"]
     }
 
-    for item in raw_items:
+    for course in COURSES:
+      audio_config, raw_items, primary_lang = load_js_database(f"{course}.js")
+      audio_base = AUDIO_ROOT / course
+      print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази.", flush=True)
+
+      for item in raw_items:
         item_id = item["id"]
 
         internal_cat = "vocab"
@@ -298,7 +305,7 @@ async def main():
 
                     for rate in rates:
                         filename = f"{item_id}_{field}_{lang}_{rate}.mp3"
-                        mkey = f"{COURSE}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
+                        mkey = f"{course}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
                         existing_hash = manifest_data.get(mkey)
@@ -308,6 +315,8 @@ async def main():
                         if existing_hash != content_hash:
                             tasks.append({
                                 "id": item_id,
+                                "course": course,
+                                "audio_base": audio_base,
                                 "internal_cat": internal_cat,
                                 "cat_lower": cat_lower,
                                 "sub": field,
@@ -338,7 +347,7 @@ async def main():
                     field = f"distractors_{idx}"
                     for rate in rates:
                         filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
-                        mkey = f"{COURSE}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
+                        mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
                         existing_hash = manifest_data.get(mkey)
@@ -346,6 +355,8 @@ async def main():
                         if existing_hash != content_hash:
                             tasks.append({
                                 "id": item_id,
+                                "course": course,
+                                "audio_base": audio_base,
                                 "internal_cat": internal_cat,
                                 "cat_lower": cat_lower,
                                 "sub": field,
