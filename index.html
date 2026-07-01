@@ -2368,7 +2368,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '242-00617c8';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5053,10 +5053,11 @@ function matchMakeBtn(cardId, side, text){
   return btn;
 }
 
-// Prefetch audio for all DE words in current matching round
+// Prefetch аудіо основної мови курсу для всіх слів у поточному раунді matching
 function matchPrefetchAudio(cards){
+  const pLang = primaryLang();
   cards.forEach(c => {
-    const url = getAudioUrl(c.id, 'term', 'de');
+    const url = getAudioUrl(c.id, 'term', pLang);
     const mkey = urlToAudioMkey(url);
     // Якщо вже закешовано і хеш валідний — нічого не робимо (нуль трафіку).
     // Якщо хеш застарів — fetchBlobUrl сам інвалідує і перезапросить.
@@ -6621,9 +6622,9 @@ function defShowResultModal(isOk, fullSentence){
     .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
     .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
 
-  // Переклад речення мовою інтерфейсу (якщо відрізняється від DE)
+  // Переклад речення мовою інтерфейсу (якщо відрізняється від мови курсу)
   let translationHtml = '';
-  if(uiLang && uiLang !== 'de' && defState.current?.def?.[uiLang]){
+  if(uiLang && uiLang !== lang && defState.current?.def?.[uiLang]){
     const tr = defState.current.def[uiLang]
       .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
       .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
@@ -6735,7 +6736,7 @@ function spShowCard(){
   spReset();
 
   // mp3
-  const url = getAudioUrl(card.id, 'term', 'de');
+  const url = getAudioUrl(card.id, 'term', primaryLang());
   playPregenAudio(url, null, ++playGen);
 }
 
@@ -6980,7 +6981,7 @@ function spRetry(){
   if(spState.correctCount > 0) spState.correctCount--;
   spRenderTermWords(spState.cards[spState.idx]);
   spReset();
-  const url = getAudioUrl(spState.cards[spState.idx].id, 'term', 'de');
+  const url = getAudioUrl(spState.cards[spState.idx].id, 'term', primaryLang());
   playPregenAudio(url, null, ++playGen);
 }
 
@@ -10084,15 +10085,15 @@ function sbExplLang() { return SB.langs[primaryLang()]?primaryLang():SB.langs.uk
 function sbL(field, lang) {
   if (!field) return '';
   if (typeof field === 'string') return field;
-  return field[lang] || field['de'] || '';
+  return field[lang] || '';
 }
 
 // Helper: get localised answer for a card
-// answer is now {de, uk, en, ru} — always use lang-specific version
+// answer is {de, uk, en, ru} — always use lang-specific version
 function sbA(card, lang) {
   if (!card || !card.answer) return '';
   if (typeof card.answer === 'string') return card.answer; // legacy
-  return card.answer[lang] || card.answer['de'] || '';
+  return card.answer[lang] || '';
 }
 
 // Helper: get active UI lang for SB answer (same as interface lang for non-DE)
@@ -10486,7 +10487,7 @@ function sbAutoPlay() {
   var card = SB.learnQueue[SB.learnIdx];
   if(!card) return;
   var audioLangs = sbGetActiveLangs();
-  if(!audioLangs.length) audioLangs = ['de']; // fallback
+  if(!audioLangs.length) audioLangs = [primaryLang()]; // fallback
   var gen = ++SB.playCardGen;
 
   function speakSentences(li){
@@ -10530,20 +10531,22 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
   var existing = document.getElementById('sb-feedback-modal');
   if(existing) existing.remove();
 
-  // Будуємо рядки речення: 1) DE з виділеною відповіддю, 2) мова інтерфейсу (якщо не DE)
+  // Будуємо рядки речення: 1) мова курсу (primaryLang) з виділеною
+  // відповіддю, 2) мова інтерфейсу (якщо відрізняється від мови курсу)
   var sentenceHtml = '';
   if(card){
     var langFlags = {de:'🇩🇪',uk:'🇺🇦',en:'🇬🇧',ru:'🇷🇺'};
     var answerColor = ok ? '#27ae60' : 'var(--red)';
     var rows = [];
-    // Завжди показуємо DE речення
-    var deRaw = sbL(card.sentence, 'de');
-    var deAns = sbA(card, primaryLang());
+    var pLang = primaryLang();
+    // Завжди показуємо речення мовою курсу
+    var deRaw = sbL(card.sentence, pLang);
+    var deAns = sbA(card, pLang);
     var deFilled = deRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+deAns+'</strong>');
-    rows.push('<div class="sb-prac-result-de">🇩🇪 '+deFilled+'</div>');
-    // Якщо мова інтерфейсу не DE — додаємо переклад
-    var ifLang = typeof uiLang !== 'undefined' ? uiLang : 'de';
-    if(ifLang !== 'de'){
+    rows.push('<div class="sb-prac-result-de">'+(langFlags[pLang]||'🇩🇪')+' '+deFilled+'</div>');
+    // Якщо мова інтерфейсу відрізняється від мови курсу — додаємо переклад
+    var ifLang = typeof uiLang !== 'undefined' ? uiLang : pLang;
+    if(ifLang !== pLang){
       var ifRaw = sbL(card.sentence, ifLang);
       var ifAns = sbA(card, ifLang);
       if(ifRaw && ifRaw !== deRaw){
@@ -10653,7 +10656,7 @@ function sbStartPractice() {
 function sbRenderPrac() {
   var card=SB.pracQueue[SB.pracIdx]; if(!card){ sbShowPracResult(); return; }
   SB.pracAnswered=false;
-  var lang='de'; // audio only for DE
+  var lang=primaryLang(); // речення Sprachbausteine завжди основною мовою курсу
   var cat=(typeof SB_CATS!=='undefined'?SB_CATS:[]).find(function(c){ return c.id===card.cat; });
 
   // progress bar
@@ -10681,9 +10684,7 @@ function sbRenderPrac() {
     +'</div>';
 
   // Options: correct answer + all 4 distractors = 5 options total.
-  // Дистрактори і правильна відповідь у Sprachbau завжди PRIMARY_LANG
-  // (зараз 'de', але беремо з бази через primaryLang() для універсальності
-  // на майбутнє).
+  // Дистрактори і правильна відповідь у Sprachbau завжди мовою курсу (primaryLang()).
   var distractors = card.distractors.slice(0,4);
   var opts = [sbA(card,primaryLang())].concat(distractors).sort(function(){ return Math.random()-.5; });
 
@@ -10910,7 +10911,7 @@ function sbExamSubmit() {
   var lang=SB.langs[primaryLang()]?primaryLang():SB.langs.uk?'uk':'en';
   document.getElementById('sb-exam-review').innerHTML=SB.examAnswers.map(function(a,i){
     var card=SB.examCards[i],ok=a.given===a.correct;
-    var lang2=lang; var sentFull=sbL(card.sentence,lang2).replace('{{BLANK}}','<b>'+(lang2==='de'?a.correct:sbA(card,lang2))+'</b>');
+    var lang2=lang; var sentFull=sbL(card.sentence,lang2).replace('{{BLANK}}','<b>'+(lang2===primaryLang()?a.correct:sbA(card,lang2))+'</b>');
     var given=a.given||'(keine Antwort)';
     return '<div class="sb-review-item">'
       +'<div class="sb-review-sentence">'+sentFull+'</div>'
