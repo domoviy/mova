@@ -962,6 +962,25 @@ body{
   background:rgba(201,168,76,.15);
   color:var(--gold);
 }
+/* Ghost для анімації "перельоту" тайла банк↔відповідь при виборі/скасуванні
+   (окремо від drag-ghost вище, бо тут анімуються left/top/width/height,
+   а не transform — елемент реально переміщується між двома flex-контейнерами
+   різної форми, тому інтерполяція по transform давала б викривлення) */
+.tiles-fly-ghost{
+  position:fixed;
+  z-index:9999;
+  pointer-events:none;
+  box-sizing:border-box;
+  display:flex;align-items:center;justify-content:center;
+  padding:9px 16px;border-radius:8px;
+  border:1.5px solid var(--gold);
+  background:rgba(201,168,76,.15);
+  color:var(--gold);
+  font-size:var(--fs-card);font-weight:600;
+  font-family:inherit;
+  box-shadow:0 8px 24px rgba(0,0,0,.22);
+  margin:0;
+}
 /* Drop-indicator — лінія між tiles куди впаде елемент */
 .tiles-drop-indicator{
   width:3px;
@@ -2342,7 +2361,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '245-f001508';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2882,7 +2901,24 @@ function applyI18n(){
 
 
 
-// LC визначено в файлі курсу (B2-Beruf.js тощо)
+// LC/F/LN — прапори, назви мов і мова розпізнавання/TTS для 4 підтримуваних
+// мов (de/en/uk/ru). Це НЕ курсовий контент — однакове для всіх курсів,
+// тому визначено тут, у рушії, а не дублюється в кожному файлі курсу.
+// var (не const!) навмисно: якщо файл курсу (B2-Beruf.js,
+// Financial-Accounting-Foundations.js тощо) досі містить власне
+// `var LC/F/LN = {...}` — це не SyntaxError (var можна перевизначати),
+// просто безшкідливо перезапише тими самими значеннями. Раніше ці змінні
+// існували ЛИШЕ у файлах курсів — якщо новий курс забув скопіювати цей
+// блок, ламався і перегляд картки (fc-flag), і сам урок (lf-unit-flag),
+// і розпізнавання мовлення (rec.lang) з ReferenceError.
+var LC = {
+  de: {code:'de-DE', ms:['Katja','Hedda','Stefan','Conrad']},
+  en: {code:'en-US', ms:['Aria','Jenny','Guy','Zira','David']},
+  uk: {code:'uk-UA', ms:['Ostap','Polina']},
+  ru: {code:'ru-RU', ms:['Irina','Pavel','Dmitry']}
+};
+var F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪', ru:'🇷🇺'};
+var LN = {en:'English', uk:'Українська', de:'Deutsch', ru:'Русский'};
 
 // Відновлюємо всі збережені налаштування
 const _s=JSON.parse(localStorage.getItem('mova_settings')||'{}');
@@ -6092,10 +6128,52 @@ function tilesShowCard(){
   });
 }
 
+// ── АНІМАЦІЯ ПЕРЕЛЬОТУ ТАЙЛА (банк ↔ відповідь) ─────────────────
+// Летючий ghost-клон (position:fixed) від стартового прямокутника до
+// кінцевого; справжній елемент (bank-тайл або answer-тайл) увесь цей час
+// невидимий (opacity:0) на своєму фінальному місці і плавно проявляється,
+// коли ghost долітає — так порожнє місце в банку звільняється МИТТЄВО
+// (немає "дірки", що повільно стискається), а сам рух слова видно чітко.
+function tilesFly(fromRect, toRect, text, onDone){
+  if(!fromRect || !toRect || (fromRect.width===0 && fromRect.height===0)){
+    onDone && onDone();
+    return;
+  }
+  const ghost = document.createElement('div');
+  ghost.className = 'tiles-fly-ghost';
+  ghost.textContent = text;
+  ghost.style.left   = fromRect.left+'px';
+  ghost.style.top    = fromRect.top+'px';
+  ghost.style.width  = fromRect.width+'px';
+  ghost.style.height = fromRect.height+'px';
+  ghost.style.transition = 'none';
+  document.body.appendChild(ghost);
+  void ghost.offsetWidth; // force reflow — щоб стартова позиція встигла застосуватись
+  requestAnimationFrame(()=>{
+    ghost.style.transition =
+      'left .26s cubic-bezier(.22,1,.36,1), top .26s cubic-bezier(.22,1,.36,1), ' +
+      'width .26s cubic-bezier(.22,1,.36,1), height .26s cubic-bezier(.22,1,.36,1)';
+    ghost.style.left   = toRect.left+'px';
+    ghost.style.top    = toRect.top+'px';
+    ghost.style.width  = toRect.width+'px';
+    ghost.style.height = toRect.height+'px';
+  });
+  let done = false;
+  const cleanup = ()=>{
+    if(done) return; done = true;
+    ghost.removeEventListener('transitionend', cleanup);
+    ghost.remove();
+    onDone && onDone();
+  };
+  ghost.addEventListener('transitionend', cleanup);
+  setTimeout(cleanup, 400); // захист, якщо transitionend не спрацював (напр. елемент 0×0)
+}
+
 function tilesPickWord(tile){
   if(tile.classList.contains('used')) return;
   if(tilesState.checked) return;
   const answerEl = document.getElementById('tiles-answer');
+  const fromRect = tile.getBoundingClientRect();
   // Ставимо слово у зону відповіді
   const aTile = document.createElement('button');
   aTile.className = 'tile answer-tile';
@@ -6115,8 +6193,20 @@ function tilesPickWord(tile){
   });
   // Drag-and-drop для переміщення
   tilesInitDrag(aTile);
+  aTile.style.opacity = '0'; // з'явиться, коли ghost долетить
   answerEl.appendChild(aTile);
+
+  // Прибираємо bank-тайл з потоку ОДРАЗУ — банк звільняє місце негайно,
+  // решта слів у банку відразу підтягуються на його місце (без цього при
+  // довгому реченні + великому шрифті банк розростався вниз під фіксовану
+  // кнопку "Перевірити" і частина слів ставала недосяжною).
   tile.classList.add('used');
+  tile.style.display = 'none';
+
+  const toRect = aTile.getBoundingClientRect();
+  aTile.style.transition = 'opacity .15s';
+  tilesFly(fromRect, toRect, tile.dataset.word, ()=>{ aTile.style.opacity=''; });
+
   tilesState.answer.push(tile.dataset.word);
   haptic.light();
   // Показуємо кнопку "Перевірити" як тільки є хоч одне слово
@@ -6137,8 +6227,19 @@ function t_removeAnswerTile(aTile, bankTile){
       .querySelectorAll('.tile'))
       .find(t => t.dataset.word === word && t.classList.contains('used'));
   }
+  const fromRect = aTile.getBoundingClientRect();
   aTile.remove();
-  if(bankTile) bankTile.classList.remove('used');
+  if(bankTile){
+    // Повертаємо bank-тайл у потік банку — він одразу займає своє місце
+    // (порядок серед bank-тайлів зберігається, бо DOM-вузол ніколи не
+    // видалявся, лише мав display:none).
+    bankTile.classList.remove('used');
+    bankTile.style.display = '';
+    const toRect = bankTile.getBoundingClientRect();
+    bankTile.style.opacity = '0';
+    bankTile.style.transition = 'opacity .15s';
+    tilesFly(fromRect, toRect, word, ()=>{ bankTile.style.opacity=''; });
+  }
   tilesState.answer = _getAnswerTilesClean().map(t=>t.textContent);
   const checkBtn = document.getElementById('tiles-check-btn');
   if(checkBtn){
