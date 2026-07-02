@@ -62,6 +62,213 @@ var LC = {
 var F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪', ru:'🇷🇺'};
 var LN = {en:'English', uk:'Українська', de:'Deutsch', ru:'Русский'};
 
+// ── ГРАМАТИКА ────────────────────────────────────────────────
+// Кожне правило: id (стабільний, на нього посилаються LESSONS.grammar
+// і card.gram у VOCAB/DIALOGE/SPRACHBAUSTEINE) + title/explanation
+// багатомовно. explanation підтримує <g>/<b> для підсвітки прикладів.
+var GRAMMAR = [
+  {
+    id: 'wortstellung',
+    title: {de:'Wortstellung im Satz', en:'Word order', uk:'Порядок слів у реченні', ru:'Порядок слов в предложении'},
+    explanation: {
+      de: 'Im deutschen Hauptsatz steht das konjugierte Verb an Position 2. In Nebensätzen (nach dass, weil, wenn usw.) steht das konjugierte Verb am Satzende. Beispiel: <g>Weil</g> er krank <g>ist</g>, bleibt er zu Hause.',
+      en: 'In a German main clause, the conjugated verb is always in position 2. In subordinate clauses (after dass, weil, wenn, etc.), the conjugated verb moves to the end. Example: <g>Weil</g> er krank <g>ist</g>, bleibt er zu Hause (Because he is sick, he stays home).',
+      uk: 'У німецькому головному реченні дієслово завжди стоїть на другій позиції. У підрядних реченнях (після dass, weil, wenn тощо) дієслово переміщується в кінець речення. Приклад: <g>Weil</g> er krank <g>ist</g>, bleibt er zu Hause (Оскільки він хворий, він лишається вдома).',
+      ru: 'В главном немецком предложении спрягаемый глагол всегда стоит на второй позиции. В придаточных предложениях (после dass, weil, wenn и т.д.) спрягаемый глагол уходит в конец. Пример: <g>Weil</g> er krank <g>ist</g>, bleibt er zu Hause (Так как он болен, он остаётся дома).',
+    }
+  },
+  {
+    id: 'negation',
+    title: {de:'Negation', en:'Negation', uk:'Заперечення', ru:'Отрицание'},
+    explanation: {
+      de: '„Nicht" verneint meist ein bestimmtes Satzglied oder steht am Satzende, wenn der ganze Satz verneint wird. „Kein" verneint Nomen mit unbestimmtem Artikel oder ohne Artikel. Beispiel: Ich habe <g>keine</g> Zeit. Er kommt heute <g>nicht</g>.',
+      en: '"Nicht" usually negates a specific sentence part or stands at the end when negating the whole sentence. "Kein" negates nouns with an indefinite or no article. Example: Ich habe <g>keine</g> Zeit (I have no time). Er kommt heute <g>nicht</g> (He isn\'t coming today).',
+      uk: '„Nicht" зазвичай заперечує конкретний член речення або стоїть у кінці, якщо заперечується все речення. „Kein" заперечує іменники з неозначеним артиклем або без артикля. Приклад: Ich habe <g>keine</g> Zeit (У мене немає часу). Er kommt heute <g>nicht</g> (Він сьогодні не прийде).',
+      ru: '„Nicht" обычно отрицает конкретный член предложения или стоит в конце, если отрицается всё предложение. „Kein" отрицает существительные с неопределённым артиклем или без артикля. Пример: Ich habe <g>keine</g> Zeit (У меня нет времени). Er kommt heute <g>nicht</g> (Он сегодня не придёт).',
+    }
+  },
+  {
+    id: 'konnektoren_zweiteilig',
+    title: {de:'Zweiteilige Konnektoren', en:'Two-part connectors', uk:'Двочастинні сполучники', ru:'Двухчастные союзы'},
+    explanation: {
+      de: 'Zweiteilige Konnektoren wie „entweder...oder", „sowohl...als auch", „weder...noch", „nicht nur...sondern auch", „zwar...aber" verbinden zwei gleichrangige Satzteile oder Sätze.',
+      en: 'Two-part connectors like "entweder...oder" (either...or), "sowohl...als auch" (both...and), "weder...noch" (neither...nor), "nicht nur...sondern auch" (not only...but also), "zwar...aber" (indeed...but) link two equal parts of a sentence.',
+      uk: 'Двочастинні сполучники, як-от „entweder...oder" (або...або), „sowohl...als auch" (як..., так і), „weder...noch" (ні..., ні), „nicht nur...sondern auch" (не тільки..., а й), „zwar...aber" (хоча..., але) з\'єднують дві рівноправні частини речення.',
+      ru: 'Двухчастные союзы, такие как „entweder...oder" (либо...либо), „sowohl...als auch" (как..., так и), „weder...noch" (ни..., ни), „nicht nur...sondern auch" (не только..., но и), „zwar...aber" (хотя..., но) соединяют две равноправные части предложения.',
+    }
+  },
+  {
+    id: 'konnektoren_infinitiv',
+    title: {de:'um zu / ohne zu / (an)statt zu + Infinitiv', en:'um zu / ohne zu / (an)statt zu + infinitive', uk:'um zu / ohne zu / (an)statt zu + інфінітив', ru:'um zu / ohne zu / (an)statt zu + инфинитив'},
+    explanation: {
+      de: '„Um...zu" nennt ein Ziel/einen Zweck, „ohne...zu" einen fehlenden Begleitumstand, „(an)statt...zu" eine Alternative. Diese Konstruktionen funktionieren nur, wenn Haupt- und Nebensatz dasselbe Subjekt haben; sonst braucht man „damit", „ohne dass", „anstatt dass".',
+      en: '"Um...zu" expresses purpose, "ohne...zu" a missing accompanying circumstance, "(an)statt...zu" an alternative. These only work when the main and subordinate clause share the same subject; otherwise use "damit", "ohne dass", "anstatt dass".',
+      uk: '„Um...zu" виражає мету, „ohne...zu" — відсутню супровідну обставину, „(an)statt...zu" — альтернативу. Ці конструкції працюють лише тоді, коли головне й підрядне речення мають той самий підмет; інакше потрібні „damit", „ohne dass", „anstatt dass".',
+      ru: '„Um...zu" выражает цель, „ohne...zu" — отсутствующее сопутствующее обстоятельство, „(an)statt...zu" — альтернативу. Эти конструкции работают только тогда, когда главное и придаточное предложение имеют одно и то же подлежащее; иначе нужны „damit", „ohne dass", „anstatt dass".',
+    }
+  },
+  {
+    id: 'vergleichssaetze_als_wie_je_desto',
+    title: {de:'Vergleichssätze: als, wie, je…desto/umso', en:'Comparative clauses: als, wie, je…desto/umso', uk:'Порівняльні речення: als, wie, je…desto/umso', ru:'Сравнительные предложения: als, wie, je…desto/umso'},
+    explanation: {
+      de: '„Wie" vergleicht Gleiches (so groß wie), „als" vergleicht Ungleiches beim Komparativ (größer als). „Je...desto/umso" + Komparativ drückt eine proportionale Steigerung aus: <g>Je</g> mehr er übt, <g>desto</g> besser wird er.',
+      en: '"Wie" compares equal things (as big as), "als" compares unequal things with a comparative (bigger than). "Je...desto/umso" + comparative expresses a proportional increase: <g>Je</g> mehr er übt, <g>desto</g> besser wird er (the more he practices, the better he gets).',
+      uk: '„Wie" порівнює однакове (такий великий, як), „als" порівнює неоднакове при компаративі (більший, ніж). „Je...desto/umso" + компаратив виражає пропорційне зростання: <g>Je</g> mehr er übt, <g>desto</g> besser wird er (чим більше він тренується, тим кращим стає).',
+      ru: '„Wie" сравнивает одинаковое (такой же большой, как), „als" сравнивает неодинаковое при компаративе (больше, чем). „Je...desto/umso" + компаратив выражает пропорциональное возрастание: <g>Je</g> mehr er übt, <g>desto</g> besser wird er (чем больше он тренируется, тем лучше становится).',
+    }
+  },
+  {
+    id: 'es_pronomen',
+    title: {de:'Das Wort „es"', en:'The word "es"', uk:'Слово „es"', ru:'Слово „es"'},
+    explanation: {
+      de: '„Es" kann als unpersönliches Pronomen (Es regnet), als Platzhalter für ein nachgestelltes Subjekt/Objekt (Es freut mich, dass...) oder als Korrelat vor Nebensätzen stehen. Es hat oft keine eigene Bedeutung, sondern erfüllt eine grammatische Funktion.',
+      en: '"Es" can be an impersonal pronoun (Es regnet — it\'s raining), a placeholder for a postponed subject/object (Es freut mich, dass... — I\'m glad that...), or a correlate before subordinate clauses. It often carries no meaning of its own, just a grammatical function.',
+      uk: '„Es" може бути безособовим займенником (Es regnet — іде дощ), заповнювачем місця для підмета/додатка, що йде далі (Es freut mich, dass... — Мені приємно, що...), або корелятом перед підрядними реченнями. Часто не має власного значення, лише граматичну функцію.',
+      ru: '„Es" может быть безличным местоимением (Es regnet — идёт дождь), заполнителем места для подлежащего/дополнения, следующего далее (Es freut mich, dass... — Мне приятно, что...), или коррелятом перед придаточными предложениями. Часто не имеет собственного значения, только грамматическую функцию.',
+    }
+  },
+  {
+    id: 'relativsatz_wer',
+    title: {de:'Relativsätze mit „wer"', en:'Relative clauses with "wer"', uk:'Відносні речення з „wer"', ru:'Относительные предложения с „wer"'},
+    explanation: {
+      de: '„Wer" leitet einen verallgemeinernden Relativsatz ohne Bezugswort ein (= „derjenige, der..."): <g>Wer</g> zu spät kommt, verpasst den Zug. Der Hauptsatz beginnt oft mit „der/den/dem" als Korrelat.',
+      en: '"Wer" introduces a generalizing relative clause without a reference noun (= "whoever..."): <g>Wer</g> zu spät kommt, verpasst den Zug (Whoever comes late misses the train). The main clause often starts with "der/den/dem" as a correlate.',
+      uk: '„Wer" вводить узагальнювальне відносне речення без опорного слова (= „той, хто..."): <g>Wer</g> zu spät kommt, verpasst den Zug (Хто спізнюється, той пропускає потяг). Головне речення часто починається з „der/den/dem" як корелята.',
+      ru: '„Wer" вводит обобщающее относительное предложение без опорного слова (= „тот, кто..."): <g>Wer</g> zu spät kommt, verpasst den Zug (Кто опаздывает, тот пропускает поезд). Главное предложение часто начинается с „der/den/dem" как коррелята.',
+    }
+  },
+  {
+    id: 'nomen_verb_verbindungen',
+    title: {de:'Nomen-Verb-Verbindungen', en:'Noun-verb collocations', uk:'Іменниково-дієслівні сполучення', ru:'Именно-глагольные сочетания'},
+    explanation: {
+      de: 'Feste Kombinationen aus Verb + Nomen, die zusammen eine Bedeutung wie ein einfaches Verb haben, z. B. „in Kraft <g>treten</g>" (= gelten), „Anwendung <g>finden</g>" (= angewendet werden), „zur Verfügung <g>stehen</g>" (= verfügbar sein). Typisch für formelle/berufliche Texte.',
+      en: 'Fixed combinations of verb + noun that together mean roughly the same as a simple verb, e.g. „in Kraft <g>treten</g>" (= to take effect), „Anwendung <g>finden</g>" (= to be applied), „zur Verfügung <g>stehen</g>" (= to be available). Typical of formal/professional texts.',
+      uk: 'Стійкі сполучення дієслова з іменником, що разом мають значення, подібне до простого дієслова, напр. „in Kraft <g>treten</g>" (= набувати чинності), „Anwendung <g>finden</g>" (= застосовуватися), „zur Verfügung <g>stehen</g>" (= бути в розпорядженні). Типово для офіційних/ділових текстів.',
+      ru: 'Устойчивые сочетания глагола с существительным, которые вместе имеют значение, подобное простому глаголу, напр. „in Kraft <g>treten</g>" (= вступать в силу), „Anwendung <g>finden</g>" (= применяться), „zur Verfügung <g>stehen</g>" (= быть в распоряжении). Типично для официальных/деловых текстов.',
+    }
+  },
+  {
+    id: 'passiv_passiversatz',
+    title: {de:'Passiv und Passiversatzformen', en:'Passive and passive substitutes', uk:'Пасив і замінники пасиву', ru:'Пассив и заменители пассива'},
+    explanation: {
+      de: 'Das Passiv (<g>werden</g> + Partizip II) rückt die Handlung statt des Handelnden in den Fokus. Passiversatzformen: „sich lassen + Infinitiv" (Das lässt sich machen), „sein + zu + Infinitiv" (Das ist zu machen), oder man-Konstruktionen.',
+      en: 'The passive voice (<g>werden</g> + past participle) shifts the focus to the action rather than the agent. Passive substitutes: "sich lassen + infinitive" (it can be done), "sein + zu + infinitive" (it is to be done), or man-constructions.',
+      uk: 'Пасив (<g>werden</g> + Partizip II) переносить фокус на дію, а не на виконавця. Замінники пасиву: „sich lassen + інфінітив" (це можна зробити), „sein + zu + інфінітив" (це слід зробити), або конструкції з „man".',
+      ru: 'Пассив (<g>werden</g> + Partizip II) переносит фокус на действие, а не на исполнителя. Заменители пассива: „sich lassen + инфинитив" (это можно сделать), „sein + zu + инфинитив" (это следует сделать), или конструкции с „man".',
+    }
+  },
+  {
+    id: 'indefinitpronomen',
+    title: {de:'Indefinitpronomen', en:'Indefinite pronouns', uk:'Неозначені займенники', ru:'Неопределённые местоимения'},
+    explanation: {
+      de: 'Indefinitpronomen wie „man, jemand, niemand, etwas, nichts, einige, manche, alle, jeder" bezeichnen unbestimmte Personen oder Mengen. Sie werden je nach Funktion im Satz dekliniert.',
+      en: 'Indefinite pronouns like "man, jemand, niemand, etwas, nichts, einige, manche, alle, jeder" refer to unspecified people or quantities. They are declined according to their function in the sentence.',
+      uk: 'Неозначені займенники, як-от „man, jemand, niemand, etwas, nichts, einige, manche, alle, jeder", позначають неозначених осіб або кількість. Відмінюються залежно від функції в реченні.',
+      ru: 'Неопределённые местоимения, такие как „man, jemand, niemand, etwas, nichts, einige, manche, alle, jeder", обозначают неопределённых лиц или количество. Склоняются в зависимости от функции в предложении.',
+    }
+  },
+  {
+    id: 'konjunktiv2_als_ob',
+    title: {de:'als ob / als wenn + Konjunktiv II', en:'als ob / als wenn + Konjunktiv II', uk:'als ob / als wenn + Konjunktiv II', ru:'als ob / als wenn + Konjunktiv II'},
+    explanation: {
+      de: '„Als ob" / „als wenn" leiten einen irrealen Vergleichssatz ein, das Verb steht im Konjunktiv II: Er tut, als ob er alles <g>wüsste</g>. Bei „als" allein (ohne ob/wenn) folgt Inversion: Er tut, als <g>wüsste</g> er alles.',
+      en: '"Als ob" / "als wenn" introduce an unreal comparative clause, the verb is in Konjunktiv II: He acts as if he knew everything. With "als" alone (without ob/wenn), inversion follows: Er tut, als <g>wüsste</g> er alles.',
+      uk: '„Als ob" / „als wenn" вводять нереальне порівняльне речення, дієслово стоїть у Konjunktiv II: Він поводиться так, ніби все знає. Із самим „als" (без ob/wenn) відбувається інверсія: Er tut, als <g>wüsste</g> er alles.',
+      ru: '„Als ob" / „als wenn" вводят нереальное сравнительное предложение, глагол стоит в Konjunktiv II: Он ведёт себя, будто всё знает. С одним „als" (без ob/wenn) следует инверсия: Er tut, als <g>wüsste</g> er alles.',
+    }
+  },
+  {
+    id: 'passiv_mit_sein',
+    title: {de:'Passiv mit sein (Zustandspassiv)', en:'Stative passive (sein + participle)', uk:'Статальний пасив (sein + дієприкметник)', ru:'Статальный пассив (sein + причастие)'},
+    explanation: {
+      de: 'Das Zustandspassiv (<g>sein</g> + Partizip II) beschreibt das Ergebnis/den Zustand nach einer abgeschlossenen Handlung, nicht den Vorgang selbst: Die Tür <g>ist</g> geöffnet (Zustand) vs. Die Tür wird geöffnet (Vorgang).',
+      en: 'The stative passive (<g>sein</g> + past participle) describes the result/state after a completed action, not the process itself: Die Tür <g>ist</g> geöffnet (state) vs. Die Tür wird geöffnet (process).',
+      uk: 'Статальний пасив (<g>sein</g> + Partizip II) описує результат/стан після завершеної дії, а не сам процес: Die Tür <g>ist</g> geöffnet (стан) проти Die Tür wird geöffnet (процес).',
+      ru: 'Статальный пассив (<g>sein</g> + Partizip II) описывает результат/состояние после завершённого действия, а не сам процесс: Die Tür <g>ist</g> geöffnet (состояние) против Die Tür wird geöffnet (процесс).',
+    }
+  },
+  {
+    id: 'textzusammenhang',
+    title: {de:'Textzusammenhang', en:'Text cohesion', uk:'Зв\'язність тексту', ru:'Связность текста'},
+    explanation: {
+      de: 'Texte werden durch Konnektoren, Pronomen, Synonyme und Wiederaufnahme von Begriffen zusammengehalten. Wichtig sind z. B. „dabei, dadurch, dazu, davon, damit" als Verweiswörter auf vorher Genanntes.',
+      en: 'Texts are held together by connectors, pronouns, synonyms and repeated reference to concepts. Words like "dabei, dadurch, dazu, davon, damit" are important as references back to something mentioned earlier.',
+      uk: 'Тексти утримуються разом завдяки сполучникам, займенникам, синонімам і повторному зверненню до понять. Важливі слова, як-от „dabei, dadurch, dazu, davon, damit", що вказують на щось сказане раніше.',
+      ru: 'Тексты удерживаются вместе благодаря союзам, местоимениям, синонимам и повторному обращению к понятиям. Важны слова „dabei, dadurch, dazu, davon, damit" как отсылки к сказанному ранее.',
+    }
+  },
+  {
+    id: 'modalsatz_dadurch_indem',
+    title: {de:'Modalsätze: dadurch, dass / indem', en:'Modal clauses: dadurch, dass / indem', uk:'Модальні речення: dadurch, dass / indem', ru:'Модальные предложения: dadurch, dass / indem'},
+    explanation: {
+      de: '„Dadurch, dass" und „indem" leiten einen Modalsatz ein, der Mittel oder Art und Weise ausdrückt: Er lernte die Sprache, <g>indem</g> er viel las.',
+      en: '"Dadurch, dass" and "indem" introduce a modal clause expressing means or manner: He learned the language by reading a lot (Er lernte die Sprache, <g>indem</g> er viel las).',
+      uk: '„Dadurch, dass" і „indem" вводять модальне речення, що виражає засіб або спосіб дії: Він вивчив мову, багато читаючи (Er lernte die Sprache, <g>indem</g> er viel las).',
+      ru: '„Dadurch, dass" и „indem" вводят модальное предложение, выражающее средство или способ действия: Он выучил язык, много читая (Er lernte die Sprache, <g>indem</g> er viel las).',
+    }
+  },
+  {
+    id: 'praepositionen_nomen_verb_adjektiv',
+    title: {de:'Nomen/Verben/Adjektive mit Präposition', en:'Fixed prepositions with nouns/verbs/adjectives', uk:'Фіксовані прийменники з іменниками/дієсловами/прикметниками', ru:'Фиксированные предлоги с существительными/глаголами/прилагательными'},
+    explanation: {
+      de: 'Viele Nomen, Verben und Adjektive verlangen eine feste Präposition mit bestimmtem Kasus, z. B. „sich interessieren <g>für</g> + Akk.", „stolz sein <g>auf</g> + Akk.", „Angst <g>vor</g> + Dat.". Diese Kombinationen muss man auswendig lernen.',
+      en: 'Many nouns, verbs and adjectives require a fixed preposition with a specific case, e.g. „sich interessieren <g>für</g> + Akk." (to be interested in), „stolz sein <g>auf</g> + Akk." (proud of), „Angst <g>vor</g> + Dat." (afraid of). These combinations must be memorized.',
+      uk: 'Багато іменників, дієслів і прикметників вимагають фіксованого прийменника з певним відмінком, напр. „sich interessieren <g>für</g> + Akk." (цікавитися), „stolz sein <g>auf</g> + Akk." (пишатися), „Angst <g>vor</g> + Dat." (боятися). Ці сполучення потрібно заучувати напам\'ять.',
+      ru: 'Многие существительные, глаголы и прилагательные требуют фиксированного предлога с определённым падежом, напр. „sich interessieren <g>für</g> + Akk." (интересоваться), „stolz sein <g>auf</g> + Akk." (гордиться), „Angst <g>vor</g> + Dat." (бояться). Эти сочетания нужно заучивать наизусть.',
+    }
+  },
+  {
+    id: 'indirekte_rede_konjunktiv1',
+    title: {de:'Indirekte Rede mit Konjunktiv I', en:'Indirect speech with Konjunktiv I', uk:'Непряма мова з Konjunktiv I', ru:'Косвенная речь с Konjunktiv I'},
+    explanation: {
+      de: 'In der indirekten Rede (v. a. in Berichten, Nachrichten) wird oft der Konjunktiv I verwendet, um Distanz zur Aussage zu markieren: Er sagte, er <g>sei</g> krank (statt „ist"). Wenn Konjunktiv I mit dem Indikativ identisch ist, weicht man auf Konjunktiv II aus.',
+      en: 'In indirect (reported) speech, especially in news reports, Konjunktiv I is often used to signal distance from the statement: He said he <g>was</g> ill (sei instead of ist). When Konjunktiv I is identical to the indicative, Konjunktiv II is used instead.',
+      uk: 'У непрямій мові (особливо в новинах) часто вживають Konjunktiv I, щоб показати дистанцію від висловлювання: Він сказав, що <g>хворий</g> (sei замість ist). Якщо Konjunktiv I збігається з індикативом, використовують Konjunktiv II.',
+      ru: 'В косвенной речи (особенно в новостях) часто используют Konjunktiv I, чтобы показать дистанцию от высказывания: Он сказал, что <g>болен</g> (sei вместо ist). Если Konjunktiv I совпадает с индикативом, используют Konjunktiv II.',
+    }
+  },
+  {
+    id: 'nominalisierung',
+    title: {de:'Nominalisierung von Verben', en:'Nominalization of verbs', uk:'Субстантивація дієслів', ru:'Субстантивация глаголов'},
+    explanation: {
+      de: 'Verben lassen sich in Nomen umwandeln, oft mit den Endungen „-ung, -heit, -keit" oder als substantivierter Infinitiv: „prüfen" → „die <g>Prüfung</g>", „das <g>Prüfen</g>". Typisch für einen nominalen, formellen Stil.',
+      en: 'Verbs can be turned into nouns, often with the endings "-ung, -heit, -keit" or as a nominalized infinitive: "prüfen" (to check) → „die <g>Prüfung</g>" (the exam), „das <g>Prüfen</g>" (the checking). Typical of a nominal, formal style.',
+      uk: 'Дієслова можна перетворити на іменники, часто із суфіксами „-ung, -heit, -keit" або як субстантивований інфінітив: „prüfen" (перевіряти) → „die <g>Prüfung</g>" (перевірка/іспит), „das <g>Prüfen</g>" (перевіряння). Типово для номінального, офіційного стилю.',
+      ru: 'Глаголы можно превратить в существительные, часто с суффиксами „-ung, -heit, -keit" или как субстантивированный инфинитив: „prüfen" (проверять) → „die <g>Prüfung</g>" (проверка/экзамен), „das <g>Prüfen</g>" (проверка). Типично для номинального, официального стиля.',
+    }
+  },
+  {
+    id: 'modalpartikeln',
+    title: {de:'Modalpartikeln', en:'Modal particles', uk:'Модальні частки', ru:'Модальные частицы'},
+    explanation: {
+      de: 'Modalpartikeln wie „doch, ja, mal, eben, halt, denn, schon" verändern die Aussage nicht inhaltlich, sondern drücken eine Einstellung, Betonung oder Stimmung des Sprechers aus. Typisch für gesprochene Sprache.',
+      en: 'Modal particles like "doch, ja, mal, eben, halt, denn, schon" don\'t change the factual content but express the speaker\'s attitude, emphasis or mood. They are typical of spoken language.',
+      uk: 'Модальні частки, як-от „doch, ja, mal, eben, halt, denn, schon", не змінюють змісту висловлювання, а виражають ставлення, наголос чи настрій мовця. Типові для розмовної мови.',
+      ru: 'Модальные частицы, такие как „doch, ja, mal, eben, halt, denn, schon", не меняют содержания высказывания, а выражают отношение, акцент или настроение говорящего. Типичны для разговорной речи.',
+    }
+  },
+  {
+    id: 'partizipien_als_adjektive',
+    title: {de:'Partizipien als Adjektive', en:'Participles as adjectives', uk:'Дієприкметники як прикметники', ru:'Причастия как прилагательные'},
+    explanation: {
+      de: 'Partizip I (aktiv, -end: „das <g>lachende</g> Kind" = ein Kind, das lacht) und Partizip II (meist passiv/abgeschlossen: „das <g>gebackene</g> Brot" = Brot, das gebacken wurde) können wie Adjektive vor einem Nomen dekliniert werden.',
+      en: 'Participle I (active, -end: „das <g>lachende</g> Kind" = a child who is laughing) and Participle II (mostly passive/completed: „das <g>gebackene</g> Brot" = bread that was baked) can be declined like adjectives before a noun.',
+      uk: 'Дієприкметник I (активний, -end: „das <g>lachende</g> Kind" = дитина, яка сміється) і Дієприкметник II (переважно пасивний/завершений: „das <g>gebackene</g> Brot" = хліб, який спекли) можуть відмінюватися як прикметники перед іменником.',
+      ru: 'Причастие I (активное, -end: „das <g>lachende</g> Kind" = ребёнок, который смеётся) и Причастие II (в основном пассивное/завершённое: „das <g>gebackene</g> Brot" = хлеб, который испекли) могут склоняться как прилагательные перед существительным.',
+    }
+  },
+  {
+    id: 'waehrend_genitiv_praeposition',
+    title: {de:'während / Genitiv-Präpositionen', en:'während / genitive prepositions', uk:'während / прийменники родового відмінка', ru:'während / предлоги родительного падежа'},
+    explanation: {
+      de: '„Während" kann ein temporaler Konnektor sein („Während er arbeitet, hört er Musik") oder eine Genitiv-Präposition („<g>während</g> des Meetings"). Weitere Genitiv-Präpositionen: „wegen, trotz, aufgrund, innerhalb, außerhalb".',
+      en: '"Während" can be a temporal connector ("Während er arbeitet, hört er Musik" — while he works, he listens to music) or a genitive preposition ("<g>während</g> des Meetings" — during the meeting). Other genitive prepositions: "wegen, trotz, aufgrund, innerhalb, außerhalb".',
+      uk: '„Während" може бути часовим сполучником („Während er arbeitet, hört er Musik" — поки він працює, слухає музику) або прийменником родового відмінка („<g>während</g> des Meetings" — під час зустрічі). Інші прийменники родового відмінка: „wegen, trotz, aufgrund, innerhalb, außerhalb".',
+      ru: '„Während" может быть временным союзом („Während er arbeitet, hört er Musik" — пока он работает, слушает музыку) или предлогом родительного падежа („<g>während</g> des Meetings" — во время встречи). Другие предлоги родительного падежа: „wegen, trotz, aufgrund, innerhalb, außerhalb".',
+    }
+  },
+];
+
 // ── КАРТКИ ───────────────────────────────────────────────────
 var LESSONS = [
   {
@@ -84,7 +291,7 @@ var LESSONS = [
       "Lesen",
       "Schreiben"
     ],
-    "grammar": "Wortstellung im Satz",
+    "grammar": "wortstellung",
     "cardIds": [
       "mbr_001",
       "mbr_002",
@@ -237,7 +444,7 @@ var LESSONS = [
     "skills": [
       "Sprechen"
     ],
-    "grammar": "Negation",
+    "grammar": "negation",
     "cardIds": [
       "ssk_001",
       "ssk_002",
@@ -432,7 +639,7 @@ var LESSONS = [
       "Lesen",
       "Hören"
     ],
-    "grammar": "Zweiteilige Konnektoren",
+    "grammar": "konnektoren_zweiteilig",
     "cardIds": [
       "mwb_001",
       "mwb_002",
@@ -585,7 +792,7 @@ var LESSONS = [
     "skills": [
       "Sprechen"
     ],
-    "grammar": "Konnektoren um zu, ohne zu, (an)statt zu + Infinitiv und Alternativen",
+    "grammar": "konnektoren_infinitiv",
     "cardIds": [
       "mwb_051",
       "mwb_053",
@@ -753,7 +960,7 @@ var LESSONS = [
       "Lesen",
       "Hören"
     ],
-    "grammar": "Vergleichssätze mit als, wie und je …, desto/umso",
+    "grammar": "vergleichssaetze_als_wie_je_desto",
     "cardIds": [
       "eat_001",
       "eat_002",
@@ -836,7 +1043,7 @@ var LESSONS = [
     "skills": [
       "Sprechen"
     ],
-    "grammar": "Das Wort 'es'",
+    "grammar": "es_pronomen",
     "cardIds": [
       "eat_021",
       "eat_058",
@@ -1066,7 +1273,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Relativsätze mit 'wer'",
+    "grammar": "relativsatz_wer",
     "cardIds": [
       "zar_001",
       "zar_002",
@@ -1230,7 +1437,7 @@ var LESSONS = [
     "skills": [
       "Sprechen"
     ],
-    "grammar": "Nomen-Verb-Verbindungen",
+    "grammar": "nomen_verb_verbindungen",
     "cardIds": [
       "zar_031",
       "zar_032",
@@ -1411,7 +1618,7 @@ var LESSONS = [
       "Lesen",
       "Schreiben"
     ],
-    "grammar": "Passiv und Passiversatzformen",
+    "grammar": "passiv_passiversatz",
     "cardIds": [
       "uns_002",
       "uns_051",
@@ -1578,7 +1785,7 @@ var LESSONS = [
     "skills": [
       "Hören"
     ],
-    "grammar": "Indefinitpronomen",
+    "grammar": "indefinitpronomen",
     "cardIds": [
       "mes_016",
       "mes_019",
@@ -1795,7 +2002,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Vergleichssätze mit als ob / als wenn (Konjunktiv II)",
+    "grammar": "konjunktiv2_als_ob",
     "cardIds": [
       "kia_002",
       "kia_003",
@@ -1956,7 +2163,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Passiv mit sein",
+    "grammar": "passiv_mit_sein",
     "cardIds": [
       "kia_026",
       "kia_027",
@@ -2133,7 +2340,7 @@ var LESSONS = [
       "Lesen",
       "Schreiben"
     ],
-    "grammar": "Textzusammenhang",
+    "grammar": "textzusammenhang",
     "cardIds": [
       "mbr_076",
       "mbr_077",
@@ -2298,7 +2505,7 @@ var LESSONS = [
     "skills": [
       "Schreiben"
     ],
-    "grammar": "Modalsätze mit dadurch, dass / indem",
+    "grammar": "modalsatz_dadurch_indem",
     "cardIds": [
       "mwb_001",
       "mwb_002",
@@ -2566,7 +2773,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Nomen / Verben / Adjektive mit Präposition",
+    "grammar": "praepositionen_nomen_verb_adjektiv",
     "cardIds": [
       "hsk_001",
       "hsk_003",
@@ -2692,7 +2899,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Indirekte Rede mit Konjunktiv I",
+    "grammar": "indirekte_rede_konjunktiv1",
     "cardIds": [
       "hsk_041",
       "hsk_042",
@@ -2879,7 +3086,7 @@ var LESSONS = [
       "Schreiben",
       "Lesen"
     ],
-    "grammar": "Nominalisierung von Verben",
+    "grammar": "nominalisierung",
     "cardIds": [
       "ssk_001",
       "ssk_002",
@@ -3036,7 +3243,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Modalpartikeln",
+    "grammar": "modalpartikeln",
     "cardIds": [
       "kia_026",
       "kia_027",
@@ -3213,7 +3420,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Partizipien als Adjektive",
+    "grammar": "partizipien_als_adjektive",
     "cardIds": [
       "mbr_080",
       "mbr_081",
@@ -3360,7 +3567,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Konnektor während / Genitiv-Präpositionen",
+    "grammar": "waehrend_genitiv_praeposition",
     "cardIds": [
       "mbr_001",
       "mbr_002",

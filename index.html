@@ -1516,6 +1516,38 @@ body.lesson-active .vocab-top{
   border-top:3px solid var(--red);
 }
 
+/* Модалка граматичного правила (📖-кнопка в уроці, VOCAB/SB/Dialogue) —
+   той самий bottom-sheet патерн, що й sb-prac-feedback-modal, окремий
+   клас лише тому, що немає correct/wrong стану й іншого набору кнопок. */
+.grammar-modal-overlay{
+  position:fixed;inset:0;z-index:300;
+  display:flex;align-items:flex-end;
+  padding:0;background:rgba(0,0,0,.4);
+}
+.grammar-modal{
+  position:relative;z-index:1;
+  width:100%;background:var(--paper);
+  border-radius:20px 20px 0 0;
+  padding:20px 20px calc(env(safe-area-inset-bottom,0px) + 16px);
+  box-shadow:0 -4px 32px rgba(0,0,0,.18);
+  border-top:3px solid var(--gold);
+  max-height:70vh;overflow-y:auto;
+}
+.grammar-modal-header{
+  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+}
+.grammar-modal-icon{font-size:24px;}
+.grammar-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);flex:1}
+.grammar-modal-close{
+  background:none;border:none;color:var(--muted);font-size:20px;
+  cursor:pointer;padding:4px;line-height:1;font-family:inherit;
+}
+.grammar-modal-body{
+  font-size:15px;color:var(--warm);line-height:1.3;
+}
+.grammar-modal-body g{font-weight:700;color:var(--g-accent)}
+.grammar-modal-body b{color:var(--ink)}
+
 /* mc-options used in practice/exam: make buttons work as answer tiles */
 #sb-prac-options .mc-opt, #sb-exam-options .mc-opt {
   cursor:pointer; transition:border-color .15s, background .15s;
@@ -2361,7 +2393,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '247-8675126';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5659,6 +5691,14 @@ function renderModuleCard(lesson){
   const icon   = isDone ? '✅' : !unlocked ? '🔒' : skills||'📚';
   const statusClass = isDone?'done':!unlocked?'locked':'';
 
+  // lesson.grammar: спочатку пробуємо як id у таблиці GRAMMAR (нові
+  // курси) — показуємо локалізовану назву й робимо клікабельним.
+  // Якщо id не знайдено (старі курси з вільним текстом типу "Passiv") —
+  // просто показуємо як є, без кліку, нічого не ламаючи.
+  const gramRule  = lesson.grammar ? getGrammarRule(lesson.grammar) : null;
+  const gramText  = gramRule ? grammarLabel(gramRule) : (lesson.grammar||'');
+  const gramClick = gramRule ? ` style="text-decoration:underline;cursor:pointer" onclick="event.stopPropagation();showGrammarModal('${lesson.grammar}')"` : '';
+
   return `<div class="lp-module ${statusClass}"
     onclick="${unlocked?`startLessonFlow('${lesson.id}')`:''}"
     style="${unlocked?'':'pointer-events:none'}">
@@ -5673,7 +5713,7 @@ function renderModuleCard(lesson){
             ? '✅ '+t('lp_done')+' · '+done+'/'+total
             : done+' '+t('lp_of')+' '+total+' '+t('lp_cards')
         }
-        ${lesson.grammar?` · ${t('lp_grammar')} ${lesson.grammar}`:''}
+        ${gramText?` · ${t('lp_grammar')} <span${gramClick}>${gramText}</span>`:''}
       </div>
       ${unlocked?`<div class="lp-module-prog">
         <div class="lp-module-prog-fill" style="width:${pct}%"></div>
@@ -7976,7 +8016,7 @@ var _lfSBHandlers = {
   },
 
   getSecondaryButtons: function(unit){
-    return [
+    var buttons = [
       {
         icon: '🔊',
         onClick: function(){
@@ -7992,6 +8032,9 @@ var _lfSBHandlers = {
         }
       },
     ];
+    var gramBtn = _lfGrammarButton(unit.card);
+    if(gramBtn) buttons.push(gramBtn);
+    return buttons;
   },
 
   onSwipeUp: function(unit){
@@ -8159,7 +8202,13 @@ var _lfDlgHandlers = {
     return [{ text: card.a?.[pl]||'', field: 'a' }];
   },
 
-  getSecondaryButton: function(){ return null; }, // Q+A завжди послідовно, без опціональної кнопки
+  // Q+A завжди послідовно, без 🔊-кнопки повтору (аудіо й так грає
+  // автоматично на кожному кроці) — але 📖-кнопка граматики додається,
+  // якщо у картки є посилання (unit.card.gram).
+  getSecondaryButtons: function(unit){
+    var gramBtn = _lfGrammarButton(unit.card);
+    return gramBtn ? [gramBtn] : [];
+  },
 
   onSwipeUp: function(unit){
     srsRate(unit.cardId, 1);
@@ -8237,6 +8286,65 @@ function _lfDlgLearnDone(){
 // і ніяк не змінює UI/навігацію — лише фідбек (showSrsHint) + SM-2.
 
 var _lfUnit = { units: [], idx: 0, handlers: null, onAllDone: null };
+
+// ── ГРАМАТИЧНІ ПРАВИЛА (GRAMMAR) ────────────────────────────────
+// Опціональна таблиця курсу (як DIALOGE/SPRACHBAUSTEINE — не кожен курс
+// її має): var GRAMMAR = [{id, title:{de,en,uk,ru}, explanation:{de,en,uk,ru}}, ...]
+// Картки VOCAB/DIALOGE/SPRACHBAUSTEINE посилаються на правило через
+// поле `gram` (id, напр. gram:'wortstellung'). Єдине джерело правди —
+// саме це поле (а не наявність <g> у тексті: <g> — суто візуальний
+// маркер конструкції в реченні, повністю незалежний від посилання на
+// правило, щоб текст і дані ніколи не мали розходитись).
+function getGrammarRule(id){
+  if(!id || typeof GRAMMAR === 'undefined') return null;
+  return GRAMMAR.find(function(g){ return g.id === id; }) || null;
+}
+
+// Локалізована назва правила: uiLang → primaryLang → en → de → сам id
+// (якщо навіть title порожній — краще показати id, ніж порожній рядок)
+function grammarLabel(rule){
+  if(!rule) return '';
+  var t = rule.title || {};
+  return t[uiLang] || t[primaryLang()] || t.en || t.de || rule.id;
+}
+
+function showGrammarModal(id){
+  var rule = getGrammarRule(id);
+  if(!rule) return;
+  closeGrammarModal();
+  var overlay = document.createElement('div');
+  overlay.id = 'grammar-modal-overlay';
+  overlay.className = 'grammar-modal-overlay';
+  overlay.onclick = function(e){ if(e.target === overlay) closeGrammarModal(); };
+  var expl = rule.explanation || {};
+  var explText = expl[uiLang] || expl[primaryLang()] || expl.en || expl.de || '';
+  overlay.innerHTML =
+    '<div class="grammar-modal">' +
+      '<div class="grammar-modal-header">' +
+        '<span class="grammar-modal-icon">📖</span>' +
+        '<span class="grammar-modal-title">'+grammarLabel(rule)+'</span>' +
+        '<button class="grammar-modal-close" onclick="closeGrammarModal()">✕</button>' +
+      '</div>' +
+      '<div class="grammar-modal-body">'+explText+'</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  haptic.light();
+}
+
+function closeGrammarModal(){
+  var el = document.getElementById('grammar-modal-overlay');
+  if(el) el.remove();
+}
+
+// Спільний білдер для 📖-кнопки, яку додають getSecondaryButtons()
+// обробники VOCAB/SB/Dialogue. card.gram — id у таблиці GRAMMAR; якщо
+// поле порожнє, курс не має таблиці GRAMMAR, або id не знайдено —
+// повертає null (кнопка просто не додається, нічого не ламається).
+function _lfGrammarButton(card){
+  if(!card || !card.gram) return null;
+  if(!getGrammarRule(card.gram)) return null; // id є, а правила нема — тихо ігноруємо
+  return { icon: '📖', onClick: function(){ showGrammarModal(card.gram); } };
+}
 
 function lfRunUnitStep(units, handlers, onAllDone){
   if(!LF || !units || !units.length){ onAllDone ? onAllDone() : lfNextStep(); return; }
@@ -8518,6 +8626,24 @@ var _lfVocabHandlers = {
     return [
       { text: card.def?.[pl]||'', field: 'def' },
     ];
+  },
+
+  // За замовчуванням lfRunUnitStep сам додав би одну 🔊-кнопку (без
+  // явного getSecondaryButtons) — але тут потрібна ще й опціональна
+  // 📖, тож перевизначаємо явно.
+  getSecondaryButtons: function(unit){
+    var buttons = [
+      {
+        icon: '🔊',
+        onClick: function(){
+          var items = _lfVocabHandlers.getAudioText(unit) || [];
+          _lfUnitPlay(items, function(){});
+        }
+      },
+    ];
+    var gramBtn = _lfGrammarButton(unit.card);
+    if(gramBtn) buttons.push(gramBtn);
+    return buttons;
   },
 
   onSwipeUp: function(unit){
