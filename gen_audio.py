@@ -32,7 +32,7 @@ COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '50'))
 # Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
 # у тій самій директорії, що й цей скрипт, а аудіо генерується в
 # audio/<COURSE>/... (назва папки аудіо == назва файлу бази без .js).
-COURSES = ['B2-Beruf', 'Financial-Accounting-Foundations']
+COURSES = ['B2-Beruf', 'Financial-Accounting-Foundations','A2.1-Deutsch']
 
 AUDIO_ROOT = pathlib.Path('audio')
 MANIFEST = pathlib.Path('audio') / 'manifest.json'
