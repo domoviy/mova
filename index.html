@@ -55,7 +55,7 @@ if(location.protocol === 'https:'){
 :root{
   --forest:#0d2b1a; --leaf:#1e4a2c;
   --gold:#c9a84c;   --gold-lt:#e8c96a; --gold-dim:rgba(201,168,76,.13);
-  --cream:#f8f5ee;  --paper:#fff;
+  --cream:#f8f5ee;  --paper:#fff;     --card:#fff;
   --ink:#1c1917;    --warm:#44403c; --muted:#78716c;
   --border:#e7e3dc; --soft:#f5f2eb; --red:#c0392b;
   --g-accent:#a8503f; /* теплий цегляний акцент для <g> (граматичні маркери в def) —
@@ -504,13 +504,14 @@ body{
   padding:16px 16px 14px;
   position:sticky;top:0;z-index:10;
   flex-shrink:0;
+  border-radius:0 0 20px 20px;
 }
 .lp-header h2{
   font-family:'Inter',sans-serif;font-weight:800;
-  font-size:19px;color:var(--gold);margin:0 0 2px;
+  font-size:var(--fs-card);color:var(--gold);margin:0 0 2px;
 }
 .lp-header small{
-  font-size:14px;color:rgba(255,255,255,.55);
+  font-size:var(--fs-tertiary);color:rgba(255,255,255,.55);
 }
 .lp-progress-bar{
   height:3px;background:rgba(255,255,255,.15);
@@ -521,7 +522,7 @@ body{
   border-radius:2px;transition:width .4s ease;
 }
 .lp-chapter{
-  margin:12px 12px 0;
+  margin:10px 0 0;
   border-radius:16px;
   overflow:hidden;
   border:1px solid var(--border);
@@ -550,11 +551,12 @@ body{
 }
 .lp-chapter-info{flex:1;min-width:0}
 .lp-chapter-title{
-  font-size:14px;font-weight:700;color:var(--ink);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-size:var(--fs-tertiary);font-weight:700;color:var(--ink);
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;
+  overflow:hidden;line-height:1.25;
 }
 .lp-chapter-sub{
-  font-size:14px;color:var(--muted);margin-top:1px;
+  font-size:var(--fs-tertiary);color:var(--muted);margin-top:1px;
 }
 .lp-chapter-arrow{
   font-size:14px;color:var(--muted);
@@ -564,6 +566,7 @@ body{
 .lp-modules{
   display:none;padding:10px;
   flex-direction:column;gap:8px;
+  background:var(--soft);
 }
 .lp-chapter.open .lp-modules{display:flex;}
 
@@ -573,7 +576,8 @@ body{
   padding:11px 12px;
   border-radius:12px;
   border:1.5px solid var(--border);
-  background:var(--cream);
+  background:var(--card);
+  box-shadow:0 1px 3px rgba(13,43,26,.05);
   cursor:pointer;
   transition:border-color .2s, background .2s;
   position:relative;
@@ -598,11 +602,12 @@ body{
 .lp-module.done   .lp-module-icon{background:var(--gold);}
 .lp-module-body{flex:1;min-width:0;}
 .lp-module-title{
-  font-size:14px;font-weight:600;color:var(--ink);
-  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  font-size:var(--fs-tertiary);font-weight:600;color:var(--ink);
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;
+  overflow:hidden;line-height:1.25;
 }
 .lp-module-meta{
-  font-size:14px;color:var(--muted);margin-top:2px;
+  font-size:var(--fs-tertiary);color:var(--muted);margin-top:2px;
 }
 .lp-module-prog{
   height:3px;background:var(--border);border-radius:2px;margin-top:5px;
@@ -623,7 +628,7 @@ body{
   letter-spacing:.3px;
 }
 .lp-module-gram-text{
-  font-size:13px;color:var(--muted);
+  font-size:var(--fs-utility);color:var(--muted);
 }
 .lp-bottom-gap{height:16px;}
 
@@ -1466,8 +1471,17 @@ body.lesson-active .vocab-top{
   margin-top:8px;padding-top:14px;border-top:1px solid var(--soft);
 }
 .lf-unit-flag{font-size:20px;flex-shrink:0}
-.lf-unit-term{font-size:var(--fs-card);font-weight:400;line-height:1.3;color:var(--ink)}
+.lf-unit-term{font-size:var(--fs-card);font-weight:700;line-height:1.3;color:var(--ink)}
 .lf-unit-short{font-size:var(--fs-card);font-weight:400;color:var(--muted);margin-top:2px}
+/* Довгий текст (приклад-речення: Vocab def, SB sentence/переклад/пояснення,
+   Dialogue q/a/переклади) — звичайна вага, щоб не зливатись у суцільний
+   жирний блок; сам термін лишається жирним (.lf-unit-term вище — тільки
+   для Vocab term/переклад терміну, короткий текст). */
+.lf-unit-sentence{font-size:var(--fs-card);font-weight:400;line-height:1.3;color:var(--ink)}
+/* Виділений термін/ключове слово <b> підсвічується кольором-акцентом
+   (для <g> — граматичної конструкції — глобальне правило вже є вище
+   у файлі: g{font-weight:700;color:var(--g-accent)}) */
+.lf-unit-body b{font-weight:700;color:var(--gold)}
 
 /* Dialogue: бульбашки повідомлень — питання зліва, відповідь справа */
 .lf-dlg-bubble{
@@ -2400,7 +2414,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '255-41c4195';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2545,9 +2559,7 @@ const I18N = {
     audio_unavailable:'Audio nicht verfügbar — bitte selbst lesen',
     btn_audio_unavailable_ok:'Gut, weiter',
     lbl_repeats:'Wiederholungen', sub_repeats:'Zyklen pro Karte',
-    lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
-    lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
-    lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
+    lbl_tempo:'Geschwindigkeit',
     lbl_pause:'Pause', sub_pause:'Zwischen Begriffen',
     lbl_readpause:'Lesepause', sub_readpause:'Nach dem Umdrehen',
     btn_slow:'🐢 Langsam', btn_normal:'▶ Normal',
@@ -2626,9 +2638,7 @@ const I18N = {
     audio_unavailable:'Аудіо недоступне — прочитайте самостійно',
     btn_audio_unavailable_ok:'Добре, далі',
     lbl_repeats:'Повторення', sub_repeats:'Циклів на картку',
-    lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
-    lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
-    lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
+    lbl_tempo:'Швидкість',
     lbl_pause:'Пауза', sub_pause:'Між поняттями',
     lbl_readpause:'Пауза читання', sub_readpause:'Після перевертання',
     btn_slow:'🐢 Повільно', btn_normal:'▶ Нормально',
@@ -2702,9 +2712,7 @@ const I18N = {
     audio_unavailable:'Audio unavailable — please read it yourself',
     btn_audio_unavailable_ok:'Got it, continue',
     lbl_repeats:'Repetitions', sub_repeats:'Cycles per card',
-    lbl_tempo_de:'🇩🇪 Speed', sub_tempo_de:'Deutsch',
-    lbl_tempo_en:'🇬🇧 Speed', sub_tempo_en:'English',
-    lbl_tempo_uk:'🇺🇦 Швидкість', sub_tempo_uk:'Українська',
+    lbl_tempo:'Speed',
     lbl_pause:'Pause', sub_pause:'Between terms',
     lbl_readpause:'Reading pause', sub_readpause:'After flip',
     btn_slow:'🐢 Slow', btn_normal:'▶ Normal',
@@ -2779,9 +2787,7 @@ const I18N = {
     audio_unavailable:'Аудио недоступно — прочитайте самостоятельно',
     btn_audio_unavailable_ok:'Хорошо, далее',
     lbl_repeats:'Повторения', sub_repeats:'Циклов на карточку',
-    lbl_tempo_de:'🇩🇪 Tempo', sub_tempo_de:'Deutsch',
-    lbl_tempo_en:'🇬🇧 Tempo', sub_tempo_en:'English',
-    lbl_tempo_uk:'🇺🇦 Tempo', sub_tempo_uk:'Українська',
+    lbl_tempo:'Скорость',
     lbl_pause:'Пауза', sub_pause:'Между понятиями',
     lbl_readpause:'Пауза чтения', sub_readpause:'После переворота',
     btn_slow:'🐢 Медленно', btn_normal:'▶ Нормально',
@@ -2927,8 +2933,7 @@ function applyI18n(){
     el.textContent = t(el.dataset.i18n);
   });
   // Speed buttons
-  document.querySelectorAll('.sp-btn[data-val="080"]').forEach(el=>el.textContent=t('btn_slow'));
-  document.querySelectorAll('.sp-btn[data-val="100"]').forEach(el=>el.textContent=t('btn_normal'));
+  renderTempoRow(); // data-val тепер динамічний (з AUDIO_CONFIG курсу), а не завжди "080"/"100" — перебудовуємо рядок цілком, а не шукаємо кнопки по старому фіксованому значенню
   // Lang selector highlight
   document.querySelectorAll('.ui-lang-btn').forEach(b=>{
     b.classList.toggle('active', b.dataset.lang===uiLang);
@@ -2998,21 +3003,20 @@ let V={
   lessonCards: [],   // картки активного уроку
 };
 
-// Прапори/назви мов для рядка Tempo (лише мова курсу тепер регулюється)
-const TEMPO_FLAG = {de:'🇩🇪',en:'🇬🇧',uk:'🇺🇦',ru:'🇷🇺'};
-const TEMPO_NAME = {de:'Deutsch',en:'English',uk:'Українська',ru:'Русский'};
-
-// Чи є в базі поточного курсу уповільнене аудіо (080) для primaryLang().
-// AUDIO_CONFIG визначається у файлі курсу, напр.:
-//   var AUDIO_CONFIG = { "de": ["100","080"], "en": ["100"], ... };
-// Якщо для мови курсу згенеровано лише "100" — повільна кнопка недоступна,
-// бо файлу 080 просто не існує на диску (буде 404).
-function tempoHasSlowVariant(){
+// Повертає {normal, slow} — рядки-відсотки з AUDIO_CONFIG[primaryLang()],
+// або null, якщо курс не визначив AUDIO_CONFIG для цієї мови.
+// "Нормально" = найбільше значення (100% — оригінальний темп запису),
+// "Повільно" = найменше. Так само працює навіть якщо колись з'явиться
+// курс із лише одним повільним записом (напр. A1 з ["070"]) — тоді
+// це єдине значення саме й стає "нормальним" для нього (getSpeedPair
+// поверне slow:null — кнопка "Повільно" просто не з'явиться).
+function getSpeedPair(){
   const pl = primaryLang();
   try{
-    return typeof AUDIO_CONFIG !== 'undefined' &&
-      Array.isArray(AUDIO_CONFIG[pl]) && AUDIO_CONFIG[pl].includes('080');
-  }catch(e){ return false; }
+    if(typeof AUDIO_CONFIG === 'undefined' || !Array.isArray(AUDIO_CONFIG[pl]) || !AUDIO_CONFIG[pl].length) return null;
+    const nums = [...new Set(AUDIO_CONFIG[pl])].sort((a,b)=>parseInt(b,10)-parseInt(a,10));
+    return { normal: nums[0], slow: nums.length>1 ? nums[nums.length-1] : null };
+  }catch(e){ return null; }
 }
 
 function setLangSpeed(lang,val){
@@ -3024,33 +3028,34 @@ function setLangSpeed(lang,val){
 // (en/uk/ru тощо) завжди озвучуються нормальним темпом, для них зазвичай
 // і не генерується уповільнена версія (AUDIO_CONFIG).
 function setPrimaryLangSpeed(val){
-  if(val==='080' && !tempoHasSlowVariant()) return; // немає такого файлу — ігноруємо клік
+  if(!getSpeedPair()) return;
   setLangSpeed(primaryLang(), val);
 }
 
-// Перебудовує єдиний рядок Tempo під поточний курс (прапор/назва/доступність 080)
+// Перебудовує єдиний рядок швидкості під поточний курс
 function renderTempoRow(){
   const row = document.getElementById('tempo-row');
   if(!row) return;
-  const pl = primaryLang();
-  const hasSlow = tempoHasSlowVariant();
+  const pair = getSpeedPair();
+  if(!pair){ row.innerHTML = ''; return; } // курс не визначив AUDIO_CONFIG — ховаємо рядок повністю
   row.innerHTML = `
-    <div class="srow-label"><label>${TEMPO_FLAG[pl]||''} Tempo</label><small>${TEMPO_NAME[pl]||pl}</small></div>
+    <div class="srow-label"><label>${t('lbl_tempo')}</label></div>
     <div class="speed-toggle" id="speed-primary">
-      <button onclick="setPrimaryLangSpeed('080')" class="sp-btn${hasSlow?'':' sp-btn-unavailable'}" data-val="080"${hasSlow?'':' disabled'}>${t('btn_slow')}</button>
-      <button onclick="setPrimaryLangSpeed('100')" class="sp-btn" data-val="100">${t('btn_normal')}</button>
+      <button onclick="setPrimaryLangSpeed('${pair.slow||pair.normal}')" class="sp-btn${pair.slow?'':' sp-btn-unavailable'}" data-val="${pair.slow||pair.normal}"${pair.slow?'':' disabled'}>${t('btn_slow')}</button>
+      <button onclick="setPrimaryLangSpeed('${pair.normal}')" class="sp-btn" data-val="${pair.normal}">${t('btn_normal')}</button>
     </div>`;
   syncSpeedButtons();
 }
 
 function syncSpeedButtons(){
   const pl = primaryLang();
-  const hasSlow = tempoHasSlowVariant();
-  // Якщо повільної версії нема, а в збережених налаштуваннях чомусь стоїть
-  // '080' (напр. лишилось із попереднього курсу, де вона була) — відкатуємо
-  // на '100', інакше кнопка "Нормально" ніколи не підсвітиться.
-  let val = V.langSpeed[pl] || '100';
-  if(val==='080' && !hasSlow){ val='100'; V.langSpeed[pl]='100'; }
+  const pair = getSpeedPair();
+  if(!pair) return;
+  // Якщо в збережених налаштуваннях стоїть значення, якого в цьому курсі
+  // вже нема (напр. лишилось '080' від попереднього курсу) — відкочуємо
+  // на нормальний темп, інакше жодна кнопка не підсвітиться.
+  let val = V.langSpeed[pl] || pair.normal;
+  if(val!==pair.normal && val!==pair.slow){ val=pair.normal; V.langSpeed[pl]=pair.normal; }
   document.querySelectorAll(`.sp-btn[data-val]`).forEach(b=>{
     b.classList.toggle('active', b.dataset.val===val);
   });
@@ -8007,12 +8012,12 @@ var _lfSBHandlers = {
     var html =
       '<div class="lf-unit-main-row">'+
         '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-        '<div class="lf-unit-term">'+sentence+'</div>'+
+        '<div class="lf-unit-sentence">'+sentence+'</div>'+
       '</div>'+
       (sentenceTr ?
         '<div class="lf-unit-main-row">'+
           '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-          '<div class="lf-unit-term">'+sentenceTr+'</div>'+
+          '<div class="lf-unit-sentence">'+sentenceTr+'</div>'+
         '</div>'
       : '');
 
@@ -8020,7 +8025,7 @@ var _lfSBHandlers = {
       var expl = sbL(card.explanation, ul);
       html +=
         '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-term">'+expl+'</div>'+
+          '<div class="lf-unit-sentence">'+expl+'</div>'+
         '</div>';
     }
 
@@ -8181,12 +8186,12 @@ var _lfDlgHandlers = {
       '<div class="lf-dlg-bubble lf-dlg-bubble-q">'+
         '<div class="lf-unit-main-row">'+
           '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-          '<div class="lf-unit-term">'+q+'</div>'+
+          '<div class="lf-unit-sentence">'+q+'</div>'+
         '</div>'+
         (qTr ?
           '<div class="lf-unit-main-row">'+
             '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-            '<div class="lf-unit-term">'+qTr+'</div>'+
+            '<div class="lf-unit-sentence">'+qTr+'</div>'+
           '</div>'
         : '')+
       '</div>';
@@ -8198,12 +8203,12 @@ var _lfDlgHandlers = {
         '<div class="lf-dlg-bubble lf-dlg-bubble-a">'+
           '<div class="lf-unit-main-row">'+
             '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-            '<div class="lf-unit-term">'+a+'</div>'+
+            '<div class="lf-unit-sentence">'+a+'</div>'+
           '</div>'+
           (aTr ?
             '<div class="lf-unit-main-row">'+
               '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-              '<div class="lf-unit-term">'+aTr+'</div>'+
+              '<div class="lf-unit-sentence">'+aTr+'</div>'+
             '</div>'
           : '')+
         '</div>';
@@ -8622,12 +8627,12 @@ var _lfVocabHandlers = {
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
           '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-          '<div class="lf-unit-term">'+def+'</div>'+
+          '<div class="lf-unit-sentence">'+def+'</div>'+
         '</div>'+
         (defTranslation ?
           '<div class="lf-unit-main-row">'+
             '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-            '<div class="lf-unit-term">'+defTranslation+'</div>'+
+            '<div class="lf-unit-sentence">'+defTranslation+'</div>'+
           '</div>'
         : '');
     }
@@ -8663,7 +8668,10 @@ var _lfVocabHandlers = {
         }
       },
     ];
-    var gramBtn = _lfGrammarButton(unit.card);
+    // 📖 показуємо лише на стороні def — саме там речення-приклад
+    // демонструє граматичну конструкцію (<g> у def). На стороні term/short
+    // це просто окреме слово чи його переклад, граматики там немає.
+    var gramBtn = unit.side === 'def' ? _lfGrammarButton(unit.card) : null;
     if(gramBtn) buttons.push(gramBtn);
     return buttons;
   },
