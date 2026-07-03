@@ -2400,12 +2400,30 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '254-7364f64';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
 // Список доступних курсів. Додавати нові — тільки тут.
 const COURSES = [
+  {
+    id:       'A2.1-Deutsch',
+    file:     'A2.1-Deutsch.js',
+    title:    'A2.1 Deutsch',
+    emoji:    '🏠',
+    level:    'A2.1',
+    langs:    ['de','uk','en'],
+    desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
+  },
+  {
+    id:       'A2.2-Deutsch',
+    file:     'A2.2-Deutsch.js',
+    title:    'A2.2 Deutsch',
+    emoji:    '🏡',
+    level:    'A2.2',
+    langs:    ['de','uk','en'],
+    desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
+  },
   {
     id:       'B2-Beruf',
     file:     'B2-Beruf.js',    // JS файл бази (перейменований з vocab-data.js)
@@ -2423,15 +2441,6 @@ const COURSES = [
     level:    'Foundations',
     langs:    ['en','uk'],
     desc:     { de:'Grundlagen der Finanzbuchhaltung', uk:'Основи фінансового обліку', en:'Financial accounting fundamentals' },
-  },
-  {
-    id:       'A2.1-Deutsch',
-    file:     'A2.1-Deutsch.js',
-    title:    'A2.1 Deutsch',
-    emoji:    '🏠',
-    level:    'A2.1',
-    langs:    ['de','uk','en'],
-    desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
   },
   // Приклад як додати новий курс:
   // {
