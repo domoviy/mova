@@ -1463,7 +1463,13 @@ body.lesson-active .vocab-top{
 .lf-unit-fav:active{border-color:var(--gold);transform:scale(1.2)}
 .lf-unit-fav.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
 .lf-unit-cat{font-size:var(--fs-tertiary);font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:8px}
-.lf-unit-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto}
+/* Знизу картки плаває фіксована кнопка "Далі" (.lf-next-row, position:fixed,
+   поза потоком картки) — резервуємо під неї місце тут, інакше контент, що
+   "прилипає" до низу (месенджер-ефект у Dialogue) або просто довгий текст
+   опиняється ПІД кнопкою, а не над нею. Розмір рахуємо як реальну висоту
+   кнопки (padding 32px + line-height ~1.2×шрифт) + відступи, а не
+   довільним числом — щоб не розʼїжджалось при зміні розміру шрифту. */
+.lf-unit-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto;padding-bottom:calc(56px + var(--fs-card) * 1.2)}
 .lf-unit-hint{text-align:center;font-size:var(--fs-utility);color:var(--muted);padding:14px 0 2px;flex-shrink:0}
 .lf-progress-counter{font-family:'Inter',monospace;font-size:var(--fs-utility);color:var(--muted);white-space:nowrap}
 .lf-unit-main-row{display:flex;align-items:baseline;gap:9px}
@@ -1500,6 +1506,21 @@ body.lesson-active .vocab-top{
   margin-left:auto;
   border-bottom-right-radius:4px;
 }
+/* Месенджер-ефект: контейнер поводиться як звичайний потік зверху вниз
+   (стабільний overflow/scroll), але поки повідомлень мало — весь простір
+   "з'їдає" псевдоелемент-розпірка (margin-top:auto), тож єдине повідомлення
+   осідає внизу, ближче до кнопки "Далі", а не липне до верху картки. Коли
+   повідомлень стає більше і вони вже не влазять — розпірка природно
+   стискається до 0, і починається звичайний скрол (без відомого багу
+   flex overflow+justify-content:flex-end, коли верх обрізається). */
+.lf-unit-body.lf-dlg-mode::before{content:'';margin-top:auto;order:-1}
+/* Нове повідомлення "влітає" знизу — швидко, з невеликим підйомом і
+   плавним гальмуванням в кінці (характерний рух чат-бульбашки) */
+@keyframes lfBubbleIn{
+  from{ transform:translateY(28px); opacity:0; }
+  to{ transform:translateY(0); opacity:1; }
+}
+.lf-bubble-in{ animation:lfBubbleIn .32s cubic-bezier(.22,1,.36,1); }
 
 .sb-prac-feedback-modal{
   position:fixed;inset:0;z-index:300;
@@ -2414,27 +2435,18 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '260-5e0d201';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
 // Список доступних курсів. Додавати нові — тільки тут.
 const COURSES = [
   {
-    id:       'A2.1-Deutsch',
-    file:     'A2.1-Deutsch.js',
-    title:    'A2.1 Deutsch',
+    id:       'A2-Deutsch',
+    file:     'A2-Deutsch.js',
+    title:    'A2 Deutsch',
     emoji:    '🏠',
-    level:    'A2.1',
-    langs:    ['de','uk','en'],
-    desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
-  },
-  {
-    id:       'A2.2-Deutsch',
-    file:     'A2.2-Deutsch.js',
-    title:    'A2.2 Deutsch',
-    emoji:    '🏡',
-    level:    'A2.2',
+    level:    'A2',
     langs:    ['de','uk','en'],
     desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
   },
@@ -2530,6 +2542,16 @@ async function switchCourse(courseId){
       if(todayEl) todayEl.textContent='0';
     }
     V.queue=[]; V.idx=0; V.repeatCount=0; V.playing=false; V.paused=false;
+    // D.queue/SB.*Queue кешуються і перебудовуються лише "ліниво" (якщо
+    // порожні) — без явного скидання тут картки СТАРОГО курсу лишались
+    // би в пам'яті аж до перезавантаження додатку (саме той баг із
+    // Dialogue, який лишався непоміченим).
+    D.queue=[]; D.idx=0; D.repeatCount=0; D.playing=false; D.paused=false; D.flipped=false;
+    SB.learnQueue=[]; SB.learnIdx=0; SB.learnFlipped=false;
+    SB.pracQueue=[]; SB.pracIdx=0; SB.pracAnswered=false; SB.pracResults=[];
+    SB.examCards=[]; SB.examIdx=0; SB.examAnswers=[]; SB.examDone=false;
+    if(SB.examTimer){ clearInterval(SB.examTimer); SB.examTimer=null; }
+    SB.playing=false;
     stopTTS();
     initVocab();
     // Дата іспиту (і весь стан Smart Review) тепер прив'язана до курсу —
@@ -8003,6 +8025,7 @@ var _lfSBHandlers = {
 
     var body = document.getElementById('lf-unit-body');
     if(!body) return;
+    body.classList.remove('lf-dlg-mode');
 
     var sentenceRaw = sbL(card.sentence, pl);
     var sentence = sentenceRaw.replace('{{BLANK}}', '<b>'+sbA(card, pl)+'</b>');
@@ -8178,43 +8201,54 @@ var _lfDlgHandlers = {
 
     var body = document.getElementById('lf-unit-body');
     if(!body) return;
+    body.classList.add('lf-dlg-mode');
 
     var q = card.q?.[pl] || '';
     var qTr = ul !== pl ? (card.q?.[ul] || '') : '';
 
-    var html =
-      '<div class="lf-dlg-bubble lf-dlg-bubble-q">'+
+    function buildBubble(cls, mainText, mainLang, trText, trLang){
+      return '<div class="lf-dlg-bubble '+cls+' lf-bubble-in">'+
         '<div class="lf-unit-main-row">'+
-          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-          '<div class="lf-unit-sentence">'+q+'</div>'+
+          '<span class="lf-unit-flag">'+(F[mainLang]||'')+'</span>'+
+          '<div class="lf-unit-sentence">'+mainText+'</div>'+
         '</div>'+
-        (qTr ?
+        (trText ?
           '<div class="lf-unit-main-row">'+
-            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-            '<div class="lf-unit-sentence">'+qTr+'</div>'+
+            '<span class="lf-unit-flag">'+(F[trLang]||'')+'</span>'+
+            '<div class="lf-unit-sentence">'+trText+'</div>'+
           '</div>'
         : '')+
       '</div>';
-
-    if(unit.aShown){
-      var a = card.a?.[pl] || '';
-      var aTr = ul !== pl ? (card.a?.[ul] || '') : '';
-      html +=
-        '<div class="lf-dlg-bubble lf-dlg-bubble-a">'+
-          '<div class="lf-unit-main-row">'+
-            '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-            '<div class="lf-unit-sentence">'+a+'</div>'+
-          '</div>'+
-          (aTr ?
-            '<div class="lf-unit-main-row">'+
-              '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-              '<div class="lf-unit-sentence">'+aTr+'</div>'+
-            '</div>'
-          : '')+
-        '</div>';
     }
 
-    body.innerHTML = html;
+    var existingQ = body.querySelector('.lf-dlg-bubble-q');
+    var existingA = body.querySelector('.lf-dlg-bubble-a');
+
+    if(unit.aShown && existingQ && !existingA){
+      // Питання вже на екрані (і вже "приземлилось") — лише додаємо
+      // бульбашку відповіді, не чіпаючи й не переанімовуючи питання.
+      existingQ.classList.remove('lf-bubble-in');
+      var a = card.a?.[pl] || '';
+      var aTr = ul !== pl ? (card.a?.[ul] || '') : '';
+      body.insertAdjacentHTML('beforeend', buildBubble('lf-dlg-bubble-a', a, pl, aTr, ul));
+    } else {
+      // Нова картка (або перший рендер) — питання (і відповідь, якщо вже
+      // мала бути показана) влітають знизу тією самою анімацією.
+      var html = buildBubble('lf-dlg-bubble-q', q, pl, qTr, ul);
+      if(unit.aShown){
+        var a2 = card.a?.[pl] || '';
+        var aTr2 = ul !== pl ? (card.a?.[ul] || '') : '';
+        html += buildBubble('lf-dlg-bubble-a', a2, pl, aTr2, ul);
+      }
+      body.innerHTML = html;
+    }
+
+    // Прокручуємо до низу, щоб щойно додане повідомлення було видно
+    // повністю, а не обрізане краєм картки — саме та проблема, з якої
+    // все почалось (довге питання/відповідь чи великий шрифт).
+    requestAnimationFrame(function(){
+      body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+    });
 
     var cardEl = document.getElementById('lf-unit-card');
     if(cardEl) cardEl.style.display = 'flex';
@@ -8602,6 +8636,7 @@ var _lfVocabHandlers = {
 
     var body = document.getElementById('lf-unit-body');
     if(!body) return;
+    body.classList.remove('lf-dlg-mode');
 
     if(unit.side === 'term'){
       var term = card.term?.[pl] || '';
