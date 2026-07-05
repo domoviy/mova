@@ -47,6 +47,25 @@ jobs:
         # Дефолтний неглибокий checkout (fetch-depth: 1) — повна історія
         # git тут не використовується, тож тягнути її не потрібно.
 
+      # ⚠️ КРИТИЧНО: checkout конкретного SHA (а не назви гілки) завжди
+      # лишає репозиторій у detached HEAD — git взагалі не знає, ЯКУ
+      # гілку оновлювати. Саме це й було причиною
+      # "fatal: You are not currently on a branch" при git push (і
+      # чому pull --rebase у gen_audio.py теж не рятував — він так само
+      # вимагає бути на гілці з налаштованим upstream). Тут створюємо
+      # локальну гілку з тим самим іменем, що й у задеплоєної гілки,
+      # і одразу прив'язуємо її до origin — сам коміт, з якого
+      # стартуємо, лишається саме тим, що задеплоївся, але git
+      # push/pull (без аргументів, як у gen_audio.py) починають
+      # працювати як зазвичай.
+      - name: Exit detached HEAD state
+        run: |
+          BRANCH="${{ github.event.workflow_run.head_branch || github.ref_name }}"
+          echo "Гілка: $BRANCH"
+          git fetch origin "$BRANCH"
+          git checkout -B "$BRANCH"
+          git branch --set-upstream-to="origin/$BRANCH" "$BRANCH"
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
