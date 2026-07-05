@@ -2435,15 +2435,26 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '268-858a3ca';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
 // Список доступних курсів. Додавати нові — тільки тут.
+//
+// ⚠️ У A2-Deutsch і B2-Beruf `id` НЕ збігається з `file` — це навмисно,
+// не помилка. Файли бази перейменували (Deutsch-A2.js/Deutsch-B2-Beruf.js)
+// для логічнішого сортування, але `id` лишили старим, бо саме `id`
+// (не назва файлу!) визначає: назву папки з аудіо (audio/<id>/...),
+// ключі в audio/manifest.json (кожен ключ починається саме з id), і
+// localStorage-ключі кожного користувача (обраний курс, дата іспиту,
+// прогрес Smart Review — усе прив'язане до id). Зміна id вимагала б
+// перейменування папки audio/ на диску (недоступно через веб-інтерфейс
+// без git) і міграції вже накопичених даних браузера. Перейменування
+// самого лише .js-файлу цього не зачіпає.
 const COURSES = [
   {
     id:       'A2-Deutsch',
-    file:     'A2-Deutsch.js',
+    file:     'Deutsch-A2.js',
     title:    'A2 Deutsch',
     emoji:    '🏠',
     level:    'A2',
@@ -2452,7 +2463,7 @@ const COURSES = [
   },
   {
     id:       'B2-Beruf',
-    file:     'B2-Beruf.js',    // JS файл бази (перейменований з vocab-data.js)
+    file:     'Deutsch-B2-Beruf.js',
     title:    'B2 Beruf',
     emoji:    '💼',
     level:    'B2',
@@ -2878,8 +2889,8 @@ const I18N = {
 let uiLang = localStorage.getItem('mova_ui_lang') || 'de'; // дефолт 'de' для існуючих юзерів; нові побачать onboarding
 function t(key){ return (I18N[uiLang]||I18N.de)[key] || key; }
 
-// Основна мова контенту курсу (мова, яку вчить користувач), напр. "de" для B2-Beruf.
-// Визначається в файлі курсу (B2-Beruf.js); 'de' — фолбек для курсів, де поле відсутнє.
+// Основна мова контенту курсу (мова, яку вчить користувач), напр. "de" для Deutsch-B2-Beruf.
+// Визначається в файлі курсу (Deutsch-B2-Beruf.js); 'de' — фолбек для курсів, де поле відсутнє.
 function primaryLang(){ return (typeof PRIMARY_LANG !== 'undefined' && PRIMARY_LANG) || 'de'; }
 
 // Мови, кнопки яких мають бути видимі в плеєрах: мова інтерфейсу + основна мова курсу.
@@ -2989,7 +3000,7 @@ function applyI18n(){
 // LC/F/LN — прапори, назви мов і мова розпізнавання/TTS для 4 підтримуваних
 // мов (de/en/uk/ru). Це НЕ курсовий контент — однакове для всіх курсів,
 // тому визначено тут, у рушії, а не дублюється в кожному файлі курсу.
-// var (не const!) навмисно: якщо файл курсу (B2-Beruf.js,
+// var (не const!) навмисно: якщо файл курсу (Deutsch-B2-Beruf.js,
 // Financial-Accounting-Foundations.js тощо) досі містить власне
 // `var LC/F/LN = {...}` — це не SyntaxError (var можна перевизначати),
 // просто безшкідливо перезапише тими самими значеннями. Раніше ці змінні
@@ -7427,7 +7438,7 @@ async function loadAudioManifest(){
 
 // Прибирає з локального реєстру записи, яких більше немає в маніфесті
 // (картку видалили з бази) — щоб localStorage не накопичував сміття
-// після кожного редагування B2-Beruf.js.
+// після кожного редагування Deutsch-B2-Beruf.js.
 function pruneAudioHashRegistry(){
   if(!audioManifest) return;
   const reg = loadAudioHashRegistry();
