@@ -2435,7 +2435,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '276-17ca0bf';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6826,8 +6826,11 @@ function defCheck(){
 
   try {
     const pLang = primaryLang();
+    const pair = getSpeedPair();
     const savedRate = V.langSpeed?.[pLang];
-    if(V.langSpeed) V.langSpeed[pLang] = '100';
+    // Було: хардкод '100' — ламалось для курсів без 100%-аудіо (напр. A2 з 080/095).
+    // Тепер: найвища швидкість, яку курс реально згенерував.
+    if(V.langSpeed && pair) V.langSpeed[pLang] = pair.normal;
     speak(defState.fullSentence, pLang, () => {
       if(V.langSpeed && savedRate !== undefined) V.langSpeed[pLang] = savedRate;
     }, defState.current.id, 'def');
