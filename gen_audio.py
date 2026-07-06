@@ -306,6 +306,15 @@ async def main():
             field_obj = item.get(field)
             if isinstance(field_obj, dict):
                 for lang, text in field_obj.items():
+                    # AUDIO_CONFIG визначає, ЯКІ мови курс озвучує взагалі —
+                    # не лише на яких швидкостях. Раніше цей чек був відсутній:
+                    # цикл проходив по мовних КЛЮЧАХ САМОЇ КАРТКИ (term/short/def
+                    # завжди мають усі 4 мови як ключі, навіть якщо курс
+                    # свідомо озвучує лише частину), а не по AUDIO_CONFIG —
+                    # тож будь-яка мова з непорожнім текстом у картці
+                    # озвучувалась, незалежно від того, що написано в
+                    # AUDIO_CONFIG.
+                    if lang not in audio_config: continue
                     if text is None: continue
                     if isinstance(text, str) and not text.strip(): continue
                     if isinstance(text, list) and not text: continue
@@ -362,7 +371,7 @@ async def main():
         # грає ту саму роль, яку для інших полів грає lang.
         if internal_cat == "sprachbau":
             distractor_list = item.get("distractors")
-            if isinstance(distractor_list, list):
+            if isinstance(distractor_list, list) and primary_lang in audio_config:
                 voice = get_voice_id(internal_cat, "distractors", primary_lang)
                 rates = audio_config.get(primary_lang, ["100"])
                 for idx, raw_text in enumerate(distractor_list, start=1):
