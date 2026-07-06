@@ -130,8 +130,22 @@ def load_js_database(file_path):
     config_match = re.search(r'AUDIO_CONFIG\s*=\s*(\{.*?\})', content, re.DOTALL)
     if config_match:
         try:
-            config = json.loads(config_match.group(1).replace("'", '"'))
-        except: pass
+            # AUDIO_CONFIG у файлах курсів пишеться з коментарями
+            # (закоментовані мови/пояснення праворуч від значень) — це
+            # валідний JS, але невалідний JSON. Без цієї очистки
+            # json.loads() ЗАВЖДИ падав на будь-якому "//"-коментарі
+            # всередині об'єкта, виняток тихо ковтався (голий except),
+            # і функція мовчки відкочувалась на дефолт (усі 4 мови,
+            # 100+080) — навіть якщо курс явно закоментував/прибрав
+            # частину мов. Саме це сталось із
+            # Financial-Accounting-Foundations.js: de/ru закоментовані,
+            # а фактично генерувались усі мови на обох швидкостях.
+            clean_config = re.sub(r'//.*', '', config_match.group(1))
+            clean_config = re.sub(r'/\*.*?\*/', '', clean_config, flags=re.DOTALL)
+            clean_config = re.sub(r',\s*([\]\}])', r'\1', clean_config)
+            config = json.loads(clean_config.replace("'", '"'))
+        except Exception as e:
+            print(f"⚠ Не вдалося розпарсити AUDIO_CONFIG у {file_path}, використовую дефолт (усі мови, 100+080): {e}", flush=True)
 
     raw_items = []
     blocks = re.findall(r'(?:var|let|const|export)\s+(\w+)\s*=\s*(\[.*?\])\s*(;|\n\n|var|let|const|export|$)', content, re.DOTALL)
