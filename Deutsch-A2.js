@@ -144,7 +144,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Wiederholung: Perfekt",
+    "grammar": "perfekt",
     "cardIds": [
       "k1_001",
       "k1_002",
@@ -177,7 +177,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Nebensatz mit weil",
+    "grammar": "weil_satz",
     "cardIds": [
       "k1_008",
       "k1_009",
@@ -211,7 +211,7 @@ var LESSONS = [
       "Hören",
       "Lesen"
     ],
-    "grammar": "Verben mit Dativ; Verben mit Dativ und Akkusativ",
+    "grammar": "dativ_verben",
     "cardIds": [
       "k1_015",
       "k1_016",
@@ -274,7 +274,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Wiederholung: Perfekt",
+    "grammar": "perfekt",
     "cardIds": [
       "k2_001",
       "k2_002",
@@ -306,7 +306,7 @@ var LESSONS = [
       "Hören",
       "Sprechen"
     ],
-    "grammar": "Wechselpräpositionen",
+    "grammar": "wechselpraepositionen",
     "cardIds": [
       "k2_007",
       "k2_008",
@@ -338,7 +338,7 @@ var LESSONS = [
       "Schreiben",
       "Sprechen"
     ],
-    "grammar": "Nebensatz mit weil (Perfekt und Modalverben)",
+    "grammar": "weil_satz",
     "cardIds": [
       "k2_013",
       "k2_014",
@@ -401,7 +401,7 @@ var LESSONS = [
     "skills": [
       "Sprechen"
     ],
-    "grammar": "Wiederholung: Artikel im Dativ, Modalverben",
+    "grammar": "dativ_akkusativ_verben",
     "cardIds": [
       "k3_001",
       "k3_002",
@@ -432,7 +432,7 @@ var LESSONS = [
       "Hören",
       "Sprechen"
     ],
-    "grammar": "Nebensatz mit dass",
+    "grammar": "dass_satz",
     "cardIds": [
       "k3_006",
       "k3_007",
@@ -463,7 +463,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Modalverben im Präteritum",
+    "grammar": "modalverben_praeteritum",
     "cardIds": [
       "k3_011",
       "k3_012",
@@ -525,7 +525,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Wiederholung: Verben mit Dativ, Personalpronomen",
+    "grammar": "dativ_verben",
     "cardIds": [
       "k4_001",
       "k4_002",
@@ -557,7 +557,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Adjektive nach unbestimmtem Artikel/Possessivartikel: Nominativ",
+    "grammar": "adjektivendungen",
     "cardIds": [
       "k4_007",
       "k4_008",
@@ -589,7 +589,7 @@ var LESSONS = [
       "Sprechen",
       "Schreiben"
     ],
-    "grammar": "Adjektive: Akkusativ und Dativ; Fragewort Was für ein ...?",
+    "grammar": "adjektivendungen",
     "cardIds": [
       "k4_013",
       "k4_014",
@@ -652,7 +652,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Nebensatz mit wenn",
+    "grammar": "wenn_satz",
     "cardIds": [
       "k5_001",
       "k5_002",
@@ -683,7 +683,7 @@ var LESSONS = [
       "Hören",
       "Sprechen"
     ],
-    "grammar": "Wiederholung: Nebensatz mit weil und dass",
+    "grammar": "weil_satz",
     "cardIds": [
       "k5_006",
       "k5_007",
@@ -714,7 +714,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Komparativ; Vergleiche mit als, (nicht) so ... wie",
+    "grammar": "komparativ",
     "cardIds": [
       "k5_011",
       "k5_012",
@@ -745,7 +745,7 @@ var LESSONS = [
       "Lesen",
       "Schreiben"
     ],
-    "grammar": "Superlativ",
+    "grammar": "superlativ",
     "cardIds": [
       "k5_016",
       "k5_017",
@@ -775,7 +775,7 @@ var LESSONS = [
     "skills": [
       "Sprechen"
     ],
-    "grammar": "Wiederholung: Modalverben im Präsens und Präteritum",
+    "grammar": "modalverben",
     "cardIds": [
       "k6_001",
       "k6_002",
@@ -806,7 +806,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "temporale Präpositionen",
+    "grammar": "temporale_praepositionen",
     "cardIds": [
       "k6_006",
       "k6_007",
@@ -837,7 +837,7 @@ var LESSONS = [
       "Sprechen",
       "Schreiben"
     ],
-    "grammar": "Nebensätze mit als oder wenn; schon oder erst",
+    "grammar": "als_wenn_schon_erst",
     "cardIds": [
       "k6_011",
       "k6_012",
@@ -897,7 +897,7 @@ var LESSONS = [
     "skills": [
       "Sprechen"
     ],
-    "grammar": "Wiederholung: Nebensatz mit wenn",
+    "grammar": "wenn_satz",
     "cardIds": [
       "k7_001",
       "k7_002",
@@ -928,7 +928,7 @@ var LESSONS = [
       "Hören",
       "Sprechen"
     ],
-    "grammar": "Demonstrativartikel dieser, diese, dieses",
+    "grammar": "demonstrativartikel",
     "cardIds": [
       "k7_006",
       "k7_007",
@@ -959,7 +959,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Präteritum",
+    "grammar": "praeteritum",
     "cardIds": [
       "k7_011",
       "k7_012",
@@ -1019,7 +1019,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Wiederholung: lokale Präpositionen",
+    "grammar": "lokale_praepositionen",
     "cardIds": [
       "k8_001",
       "k8_002",
@@ -1050,7 +1050,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "lokale Präpositionen; Wegbeschreibung",
+    "grammar": "lokale_praepositionen",
     "cardIds": [
       "k8_006",
       "k8_007",
@@ -1080,7 +1080,7 @@ var LESSONS = [
     "skills": [
       "Sprechen"
     ],
-    "grammar": "Adjektive nach unbestimmtem Artikel und Possessivartikel",
+    "grammar": "adjektivendungen",
     "cardIds": [
       "k8_011",
       "k8_012",
@@ -1140,7 +1140,7 @@ var LESSONS = [
       "Hören",
       "Lesen"
     ],
-    "grammar": "Wiederholung: Perfekt und Präteritum",
+    "grammar": "perfekt",
     "cardIds": [
       "k9_001",
       "k9_002",
@@ -1174,7 +1174,7 @@ var LESSONS = [
       "Hören",
       "Schreiben"
     ],
-    "grammar": "Reflexivpronomen im Akkusativ · Verben mit Präpositionen",
+    "grammar": "praepositionalverben",
     "cardIds": [
       "k9_008",
       "k9_009",
@@ -1207,7 +1207,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "",
+    "grammar": null,
     "cardIds": [
       "k9_015",
       "k9_016",
@@ -1266,7 +1266,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Satz mit deshalb",
+    "grammar": "satz_mit_deshalb",
     "cardIds": [
       "k10_001",
       "k10_002",
@@ -1298,7 +1298,7 @@ var LESSONS = [
       "Sprechen",
       "Schreiben"
     ],
-    "grammar": "Konjunktiv II: höflich fragen und bitten · Wiederholung: Personalpronomen",
+    "grammar": "hoeflichkeit_konjunktiv_a22",
     "cardIds": [
       "k10_007",
       "k10_008",
@@ -1330,7 +1330,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "",
+    "grammar": null,
     "cardIds": [
       "k10_013",
       "k10_014",
@@ -1390,7 +1390,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Adjektive nach dem bestimmten Artikel im Nominativ und Akkusativ",
+    "grammar": "adjektiv_bestimmter_artikel",
     "cardIds": [
       "k11_001",
       "k11_002",
@@ -1422,7 +1422,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Adjektive nach dem bestimmten Artikel im Dativ",
+    "grammar": "adjektiv_bestimmter_artikel",
     "cardIds": [
       "k11_007",
       "k11_008",
@@ -1454,7 +1454,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Wiederholung: Adjektive nach dem unbestimmten Artikel",
+    "grammar": "adjektiv_unbestimmter_artikel_wdh",
     "cardIds": [
       "k11_013",
       "k11_014",
@@ -1514,7 +1514,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Relativsatz mit Relativpronomen im Nominativ",
+    "grammar": "relativsatz_nominativ",
     "cardIds": [
       "k12_001",
       "k12_002",
@@ -1546,7 +1546,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Wiederholung: Adjektive nach dem bestimmten und unbestimmten Artikel",
+    "grammar": "adjektiv_bestimmter_artikel",
     "cardIds": [
       "k12_007",
       "k12_008",
@@ -1578,7 +1578,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "Präpositionen mit Dativ",
+    "grammar": "praepositionen_akkusativ_dativ",
     "cardIds": [
       "k12_013",
       "k12_014",
@@ -1638,7 +1638,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Das Verb werden",
+    "grammar": "verb_werden",
     "cardIds": [
       "k13_001",
       "k13_002",
@@ -1670,7 +1670,7 @@ var LESSONS = [
       "Hören",
       "Sprechen"
     ],
-    "grammar": "Konjunktiv II: Tipps und Ratschläge geben",
+    "grammar": "hoeflichkeit_konjunktiv_a22",
     "cardIds": [
       "k13_007",
       "k13_008",
@@ -1702,7 +1702,7 @@ var LESSONS = [
       "Schreiben",
       "Lesen"
     ],
-    "grammar": "Nebensatz mit dass",
+    "grammar": "dass_satz_wdh",
     "cardIds": [
       "k13_013",
       "k13_014",
@@ -1762,7 +1762,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Wiederholung: Personalpronomen",
+    "grammar": "personalpronomen_wdh",
     "cardIds": [
       "k14_001",
       "k14_002",
@@ -1794,7 +1794,7 @@ var LESSONS = [
       "Hören",
       "Sprechen"
     ],
-    "grammar": "Nebensatz mit damit · das Verb lassen",
+    "grammar": "nebensatz_mit_damit",
     "cardIds": [
       "k14_007",
       "k14_008",
@@ -1826,7 +1826,7 @@ var LESSONS = [
       "Lesen",
       "Sprechen"
     ],
-    "grammar": "",
+    "grammar": null,
     "cardIds": [
       "k14_013",
       "k14_014",
@@ -1886,7 +1886,7 @@ var LESSONS = [
       "Sprechen",
       "Lesen"
     ],
-    "grammar": "Indirekter Fragesatz mit Fragewort",
+    "grammar": "indirekter_fragesatz_fragewort",
     "cardIds": [
       "k15_001",
       "k15_002",
@@ -1918,7 +1918,7 @@ var LESSONS = [
       "Hören",
       "Lesen"
     ],
-    "grammar": "Indirekter Fragesatz mit ob",
+    "grammar": "indirekter_fragesatz_ob",
     "cardIds": [
       "k15_007",
       "k15_008",
@@ -1950,7 +1950,7 @@ var LESSONS = [
       "Lesen",
       "Schreiben"
     ],
-    "grammar": "Wiederholung: Fragen",
+    "grammar": "indirekter_fragesatz_fragewort",
     "cardIds": [
       "k15_013",
       "k15_014",
@@ -2010,7 +2010,7 @@ var LESSONS = [
       "Sprechen",
       "Hören"
     ],
-    "grammar": "Wiederholung: Nebensätze und Konnektoren",
+    "grammar": "nebensaetze_konnektoren_wdh",
     "cardIds": [
       "k16_001",
       "k16_002",
@@ -2042,7 +2042,7 @@ var LESSONS = [
       "Schreiben",
       "Lesen"
     ],
-    "grammar": "",
+    "grammar": null,
     "cardIds": [
       "k16_007",
       "k16_008",
@@ -2074,7 +2074,7 @@ var LESSONS = [
       "Hören",
       "Sprechen"
     ],
-    "grammar": "",
+    "grammar": null,
     "cardIds": [
       "k16_013",
       "k16_014",
@@ -2146,7 +2146,7 @@ var VOCAB = [
   {"id":"k2_002","cat":"k2","term":{"de":"umziehen","en":"to move (house)","uk":"переїжджати","ru":"переезжать"},"short":{"de":"In eine neue Wohnung gehen und dort wohnen.","en":"To go to a new apartment and live there.","uk":"Переходити в нову квартиру і жити там.","ru":"Переходить в новую квартиру и жить там."},"def":{"de":"Laura <g>ist</g> letzten Monat in eine Wohngemeinschaft <g><b>umgezogen</b></g>.","en":"Laura <g>has</g> <g><b>moved</b></g> into a shared flat last month.","uk":"Лаура минулого місяця <b>переїхала</b> у квартиру на кількох мешканців.","ru":"Лаура в прошлом месяце <b>переехала</b> в квартиру с соседями."},"gram":"perfekt"},
   {"id":"k2_003","cat":"k2","term":{"de":"die Wohnung","en":"apartment","uk":"квартира","ru":"квартира"},"short":{"de":"Räume, in denen jemand wohnt, z. B. mit Küche und Bad.","en":"Rooms where someone lives, e.g. with a kitchen and bathroom.","uk":"Приміщення, де хтось живе, напр. з кухнею і ванною.","ru":"Помещения, где кто-то живёт, напр. с кухней и ванной."},"def":{"de":"Sie <g>hat</g> die neue <b>Wohnung</b> schon vor drei Wochen <g><b>gefunden</b></g>.","en":"She <g>has</g> already <g><b>found</b></g> the new <b>apartment</b> three weeks ago.","uk":"Вона вже три тижні тому <b>знайшла</b> нову <b>квартиру</b>.","ru":"Она уже три недели назад <b>нашла</b> новую <b>квартиру</b>."},"gram":"perfekt"},
   {"id":"k2_004","cat":"k2","term":{"de":"das Zimmer","en":"room","uk":"кімната","ru":"комната"},"short":{"de":"Ein Raum in einer Wohnung, z. B. ein Schlafzimmer.","en":"A room in an apartment, e.g. a bedroom.","uk":"Кімната у квартирі, напр. спальня.","ru":"Комната в квартире, напр. спальня."},"def":{"de":"Er <g>hat</g> sein neues <b>Zimmer</b> schon fertig <g><b>eingerichtet</b></g>.","en":"He <g>has</g> already <g><b>furnished</b></g> his new <b>room</b> completely.","uk":"Він уже повністю <b>облаштував</b> свою нову <b>кімнату</b>.","ru":"Он уже полностью <b>обустроил</b> свою новую <b>комнату</b>."},"gram":"perfekt"},
-  {"id":"k2_005","cat":"k2","term":{"de":"die Möbel (Pl.)","en":"furniture","uk":"меблі","ru":"мебель"},"short":{"de":"Dinge in einer Wohnung wie Tisch, Stuhl oder Schrank.","en":"Things in an apartment like a table, chair or cupboard.","uk":"Речі у квартирі, як-от стіл, стілець чи шафа.","ru":"Вещи в квартире, такие как стол, стул или шкаф."},"def":{"de":"Sie <g>haben</g> die alten <b>Möbel</b> zu ihren Freunden <g><b>gebracht</b></g>.","en":"They <g>have</g> <g><b>brought</b></g> the old <b>furniture</b> to their friends.","uk":"Вони <b>відвезли</b> старі <b>меблі</b> до своїх друзів.","ru":"Они <b>отвезли</b> старую <b>мебель</b> к своим друзьям."},"gram":"perfekt"},
+  {"id":"k2_005","cat":"k2","term":{"de":"die Möbel","en":"furniture","uk":"меблі","ru":"мебель"},"short":{"de":"Dinge in einer Wohnung wie Tisch, Stuhl oder Schrank.","en":"Things in an apartment like a table, chair or cupboard.","uk":"Речі у квартирі, як-от стіл, стілець чи шафа.","ru":"Вещи в квартире, такие как стол, стул или шкаф."},"def":{"de":"Sie <g>haben</g> die alten <b>Möbel</b> zu ihren Freunden <g><b>gebracht</b></g>.","en":"They <g>have</g> <g><b>brought</b></g> the old <b>furniture</b> to their friends.","uk":"Вони <b>відвезли</b> старі <b>меблі</b> до своїх друзів.","ru":"Они <b>отвезли</b> старую <b>мебель</b> к своим друзьям."},"gram":"perfekt"},
   {"id":"k2_006","cat":"k2","term":{"de":"der Schrank","en":"cupboard / wardrobe","uk":"шафа","ru":"шкаф"},"short":{"de":"Ein Möbelstück, in dem man Kleidung oder andere Dinge aufbewahrt.","en":"A piece of furniture where you keep clothes or other things.","uk":"Меблі, у яких зберігають одяг чи інші речі.","ru":"Мебель, в которой хранят одежду или другие вещи."},"def":{"de":"Die Männer <g>haben</g> den schweren <b>Schrank</b> ins Zimmer <g><b>getragen</b></g>.","en":"The men <g>have</g> <g><b>carried</b></g> the heavy <b>cupboard</b> into the room.","uk":"Чоловіки <b>занесли</b> важку <b>шафу</b> у кімнату.","ru":"Мужчины <b>занесли</b> тяжёлый <b>шкаф</b> в комнату."},"gram":"perfekt"},
   {"id":"k2_007","cat":"k2","term":{"de":"das Bett","en":"bed","uk":"ліжко","ru":"кровать"},"short":{"de":"Ein Möbelstück, in dem man schläft.","en":"A piece of furniture where you sleep.","uk":"Меблі, у яких спиш.","ru":"Мебель, в которой спят."},"def":{"de":"Er stellt das <b>Bett</b> <g>an das Fenster</g>, weil es dort ruhiger ist.","en":"He puts the <b>bed</b> <g>by the window</g> because it is quieter there.","uk":"Він ставить <b>ліжко</b> <g>біля вікна</g>, бо там тихіше.","ru":"Он ставит <b>кровать</b> <g>у окна</g>, потому что там тише."},"gram":"wechselpraepositionen"},
   {"id":"k2_008","cat":"k2","term":{"de":"der Tisch","en":"table","uk":"стіл","ru":"стол"},"short":{"de":"Ein Möbelstück mit vier Beinen, an dem man isst oder arbeitet.","en":"A piece of furniture with four legs where you eat or work.","uk":"Меблі на чотирьох ніжках, за якими їси чи працюєш.","ru":"Мебель на четырёх ножках, за которой ешь или работаешь."},"def":{"de":"Die Lampe steht jetzt <g>auf dem <b>Tisch</b></g> in der Ecke.","en":"The lamp is now standing <g>on the <b>table</b></g> in the corner.","uk":"Лампа тепер стоїть <g>на <b>столі</b></g> у кутку.","ru":"Лампа теперь стоит <g>на <b>столе</b></g> в углу."},"gram":"wechselpraepositionen"},
@@ -2193,7 +2193,7 @@ var VOCAB = [
   {"id":"k4_005","cat":"k4","term":{"de":"die Jacke","en":"jacket","uk":"куртка","ru":"куртка"},"short":{"de":"Ein Kleidungsstück, das man über anderer Kleidung trägt, oft draußen.","en":"A piece of clothing worn over other clothes, often outside.","uk":"Предмет одягу, який носять поверх іншого одягу, часто надворі.","ru":"Предмет одежды, который носят поверх другой одежды, часто на улице."},"def":{"de":"Diese grüne <b>Jacke</b> steht <g>ihr</g> wirklich sehr gut.","en":"This green <b>jacket</b> really suits <g>her</g> very well.","uk":"Ця зелена <b>куртка</b> дуже їй пасує.","ru":"Эта зелёная <b>куртка</b> ей очень идёт."},"gram":"dativ_verben"},
   {"id":"k4_006","cat":"k4","term":{"de":"das Kleid","en":"dress","uk":"сукня","ru":"платье"},"short":{"de":"Ein Kleidungsstück für Frauen, das oben und unten zusammen ist.","en":"A piece of clothing for women that is joined at the top and bottom.","uk":"Жіночий предмет одягу, що поєднує верх і низ в одне ціле.","ru":"Женский предмет одежды, соединяющий верх и низ в одно целое."},"def":{"de":"Sie kauft <g>ihrer Tochter</g> ein rotes <b>Kleid</b> für das Fest.","en":"She buys <g>her daughter</g> a red <b>dress</b> for the party.","uk":"Вона купує <g>своїй доньці</g> червону <b>сукню</b> на свято.","ru":"Она покупает <g>своей дочери</g> красное <b>платье</b> на праздник."},"gram":"dativ_akkusativ_verben"},
   {"id":"k4_007","cat":"k4","term":{"de":"der Rock","en":"skirt","uk":"спідниця","ru":"юбка"},"short":{"de":"Ein Kleidungsstück für Frauen, das unten am Körper offen ist.","en":"A piece of clothing for women that is open at the bottom.","uk":"Жіночий предмет одягу, відкритий знизу.","ru":"Женский предмет одежды, открытый снизу."},"def":{"de":"Im Schaufenster hängt <g>ein schöner</g> <b>Rock</b> in Blau.","en":"In the shop window hangs <g>a beautiful</g> blue <b>skirt</b>.","uk":"У вітрині висить <g>гарна</g> синя <b>спідниця</b>.","ru":"В витрине висит <g>красивая</g> синяя <b>юбка</b>."},"gram":"adjektivendungen"},
-  {"id":"k4_008","cat":"k4","term":{"de":"die Schuhe (Pl.)","en":"shoes","uk":"взуття","ru":"обувь"},"short":{"de":"Kleidung für die Füße, zum Laufen.","en":"Clothing for the feet, for walking.","uk":"Одяг для ніг, для ходьби.","ru":"Одежда для ног, для ходьбы."},"def":{"de":"Hier stehen <g>meine neuen</g> <b>Schuhe</b> für die Arbeit.","en":"Here stand <g>my new</g> <b>shoes</b> for work.","uk":"Тут стоять <g>мої нові</g> <b>черевики</b> для роботи.","ru":"Здесь стоят <g>мои новые</g> <b>туфли</b> для работы."},"gram":"adjektivendungen"},
+  {"id":"k4_008","cat":"k4","term":{"de":"der Schuh, -e","en":"shoes","uk":"взуття","ru":"обувь"},"short":{"de":"Kleidung für die Füße, zum Laufen.","en":"Clothing for the feet, for walking.","uk":"Одяг для ніг, для ходьби.","ru":"Одежда для ног, для ходьбы."},"def":{"de":"Hier stehen <g>meine neuen</g> <b>Schuhe</b> für die Arbeit.","en":"Here stand <g>my new</g> <b>shoes</b> for work.","uk":"Тут стоять <g>мої нові</g> <b>черевики</b> для роботи.","ru":"Здесь стоят <g>мои новые</g> <b>туфли</b> для работы."},"gram":"adjektivendungen"},
   {"id":"k4_009","cat":"k4","term":{"de":"die Socke","en":"sock","uk":"шкарпетка","ru":"носок"},"short":{"de":"Ein kleines, weiches Kleidungsstück für den Fuß, unter dem Schuh.","en":"A small, soft piece of clothing for the foot, under the shoe.","uk":"Маленький, мʼякий предмет одягу для ноги, під взуттям.","ru":"Маленький, мягкий предмет одежды для ноги, под обувью."},"def":{"de":"Auf dem Boden liegt <g>eine gelbe</g> <b>Socke</b> von Mischa.","en":"On the floor lies <g>a yellow</g> <b>sock</b> belonging to Mischa.","uk":"На підлозі лежить <g>жовта</g> <b>шкарпетка</b> Міші.","ru":"На полу лежит <g>жёлтый</g> <b>носок</b> Миши."},"gram":"adjektivendungen"},
   {"id":"k4_010","cat":"k4","term":{"de":"anprobieren","en":"to try on","uk":"приміряти","ru":"примерять"},"short":{"de":"Kleidung im Geschäft testen, ob sie passt.","en":"To test clothes in a shop to see if they fit.","uk":"Приміряти одяг у магазині, щоб перевірити, чи він підходить.","ru":"Примерять одежду в магазине, чтобы проверить, подходит ли она."},"def":{"de":"Zuerst muss <g>ein neues</g> Kleid <b>anprobiert</b> werden, bevor sie es kauft.","en":"First <g>a new</g> dress must be <b>tried on</b> before she buys it.","uk":"Спочатку треба <b>приміряти</b> <g>нову</g> сукню, перш ніж вона її купить.","ru":"Сначала нужно <b>примерить</b> <g>новое</g> платье, прежде чем она его купит."},"gram":"adjektivendungen"},
   {"id":"k4_011","cat":"k4","term":{"de":"die Größe","en":"size","uk":"розмір","ru":"размер"},"short":{"de":"Die Zahl, die zeigt, ob ein Kleidungsstück zu einem passt.","en":"The number that shows if a piece of clothing fits you.","uk":"Число, яке показує, чи підходить тобі одяг.","ru":"Число, которое показывает, подходит ли тебе одежда."},"def":{"de":"Für die Hose braucht sie <g>eine größere</g> <b>Größe</b> als sonst.","en":"For the trousers she needs <g>a bigger</g> <b>size</b> than usual.","uk":"Для цих штанів їй потрібен <g>більший</g> <b>розмір</b>, ніж зазвичай.","ru":"Для этих брюк ей нужен <g>больший</g> <b>размер</b>, чем обычно."},"gram":"adjektivendungen"},
@@ -2230,9 +2230,9 @@ var VOCAB = [
   {"id":"k5_019","cat":"k5","term":{"de":"schnell","en":"fast","uk":"швидкий","ru":"быстрый"},"short":{"de":"So, dass es nicht viel Zeit braucht.","en":"In a way that does not take much time.","uk":"Так, що не потребує багато часу.","ru":"Так, что не требует много времени."},"def":{"de":"Von allen Verkehrsmitteln ist die U-Bahn <g>am <b>schnellsten</b></g>.","en":"Of all the means of transport, the subway is <g>the <b>fastest</b></g>.","uk":"З-поміж усіх транспортних засобів метро <g><b>найшвидше</b></g>.","ru":"Из всех транспортных средств метро <g><b>быстрее всего</b></g>."},"gram":"superlativ"},
   {"id":"k5_020","cat":"k5","term":{"de":"langsam","en":"slow","uk":"повільний","ru":"медленный"},"short":{"de":"So, dass es viel Zeit braucht.","en":"In a way that takes a lot of time.","uk":"Так, що потребує багато часу.","ru":"Так, что требует много времени."},"def":{"de":"Bei viel Verkehr fährt der Bus <g>am <b>langsamsten</b></g> von allen.","en":"In heavy traffic, the bus drives <g>the <b>slowest</b></g> of all.","uk":"У щільному русі автобус їде <g><b>найповільніше</b></g> з-поміж усіх.","ru":"В плотном движении автобус едет <g><b>медленнее всего</b></g> из всех."},"gram":"superlativ"},
   {"id":"k6_001","cat":"k6","term":{"de":"die Verwandtschaft","en":"relatives / family relations","uk":"родичі","ru":"родственники"},"short":{"de":"Alle Personen, die zur Familie gehören.","en":"All the people who belong to the family.","uk":"Усі люди, які належать до родини.","ru":"Все люди, которые принадлежат к семье."},"def":{"de":"Sie <g>möchte</g> ihre ganze <b>Verwandtschaft</b> zur Feier einladen.","en":"She <g>wants</g> to invite her whole <b>family</b> to the celebration.","uk":"Вона <g>хоче</g> запросити всіх своїх <b>родичів</b> на святкування.","ru":"Она <g>хочет</g> пригласить всех своих <b>родственников</b> на праздник."},"gram":"modalverben"},
-  {"id":"k6_002","cat":"k6","term":{"de":"die Eltern (Pl.)","en":"parents","uk":"батьки","ru":"родители"},"short":{"de":"Vater und Mutter.","en":"Father and mother.","uk":"Батько і мати.","ru":"Отец и мать."},"def":{"de":"Als Kind <g>durfte</g> sie oft mit ihren <b>Eltern</b> verreisen.","en":"As a child she <g>was allowed</g> to travel often with her <b>parents</b>.","uk":"У дитинстві їй <g>дозволялося</g> часто подорожувати зі своїми <b>батьками</b>.","ru":"В детстве ей <g>разрешалось</g> часто путешествовать со своими <b>родителями</b>."},"gram":"modalverben_praeteritum"},
-  {"id":"k6_003","cat":"k6","term":{"de":"die Großeltern (Pl.)","en":"grandparents","uk":"бабуся й дідусь","ru":"бабушка и дедушка"},"short":{"de":"Die Eltern von Vater oder Mutter.","en":"The parents of the father or mother.","uk":"Батьки батька чи матері.","ru":"Родители отца или матери."},"def":{"de":"Er <g>musste</g> als Kind jeden Sommer bei seinen <b>Großeltern</b> bleiben.","en":"As a child, he <g>had to</g> stay with his <b>grandparents</b> every summer.","uk":"У дитинстві йому <g>доводилося</g> щоліта залишатися у своїх <b>бабусі й дідуся</b>.","ru":"В детстве ему <g>приходилось</g> каждое лето оставаться у своих <b>бабушки и дедушки</b>."},"gram":"modalverben_praeteritum"},
-  {"id":"k6_004","cat":"k6","term":{"de":"die Geschwister (Pl.)","en":"siblings","uk":"брати і сестри","ru":"братья и сёстры"},"short":{"de":"Bruder und Schwester zusammen.","en":"Brother and sister together.","uk":"Брат і сестра разом.","ru":"Брат и сестра вместе."},"def":{"de":"Sie <g>kann</g> sich mit ihren <b>Geschwistern</b> immer gut verstehen.","en":"She <g>can</g> always get along well with her <b>siblings</b>.","uk":"Вона завжди <g>може</g> добре порозумітися зі своїми <b>братами і сестрами</b>.","ru":"Она всегда <g>может</g> хорошо ладить со своими <b>братьями и сёстрами</b>."},"gram":"modalverben"},
+  {"id":"k6_002","cat":"k6","term":{"de":"die Eltern","en":"parents","uk":"батьки","ru":"родители"},"short":{"de":"Vater und Mutter.","en":"Father and mother.","uk":"Батько і мати.","ru":"Отец и мать."},"def":{"de":"Als Kind <g>durfte</g> sie oft mit ihren <b>Eltern</b> verreisen.","en":"As a child she <g>was allowed</g> to travel often with her <b>parents</b>.","uk":"У дитинстві їй <g>дозволялося</g> часто подорожувати зі своїми <b>батьками</b>.","ru":"В детстве ей <g>разрешалось</g> часто путешествовать со своими <b>родителями</b>."},"gram":"modalverben_praeteritum"},
+  {"id":"k6_003","cat":"k6","term":{"de":"die Großeltern","en":"grandparents","uk":"бабуся й дідусь","ru":"бабушка и дедушка"},"short":{"de":"Die Eltern von Vater oder Mutter.","en":"The parents of the father or mother.","uk":"Батьки батька чи матері.","ru":"Родители отца или матери."},"def":{"de":"Er <g>musste</g> als Kind jeden Sommer bei seinen <b>Großeltern</b> bleiben.","en":"As a child, he <g>had to</g> stay with his <b>grandparents</b> every summer.","uk":"У дитинстві йому <g>доводилося</g> щоліта залишатися у своїх <b>бабусі й дідуся</b>.","ru":"В детстве ему <g>приходилось</g> каждое лето оставаться у своих <b>бабушки и дедушки</b>."},"gram":"modalverben_praeteritum"},
+  {"id":"k6_004","cat":"k6","term":{"de":"die Geschwister","en":"siblings","uk":"брати і сестри","ru":"братья и сёстры"},"short":{"de":"Bruder und Schwester zusammen.","en":"Brother and sister together.","uk":"Брат і сестра разом.","ru":"Брат и сестра вместе."},"def":{"de":"Sie <g>kann</g> sich mit ihren <b>Geschwistern</b> immer gut verstehen.","en":"She <g>can</g> always get along well with her <b>siblings</b>.","uk":"Вона завжди <g>може</g> добре порозумітися зі своїми <b>братами і сестрами</b>.","ru":"Она всегда <g>может</g> хорошо ладить со своими <b>братьями и сёстрами</b>."},"gram":"modalverben"},
   {"id":"k6_005","cat":"k6","term":{"de":"die Hochzeit","en":"wedding","uk":"весілля","ru":"свадьба"},"short":{"de":"Das Fest, wenn zwei Menschen heiraten.","en":"The celebration when two people get married.","uk":"Свято, коли двоє людей одружуються.","ru":"Праздник, когда двое людей женятся."},"def":{"de":"Alle <g>wollen</g> zur <b>Hochzeit</b> von Anna und Tom kommen.","en":"Everyone <g>wants</g> to come to Anna and Tomʼs <b>wedding</b>.","uk":"Усі <g>хочуть</g> прийти на <b>весілля</b> Анни і Тома.","ru":"Все <g>хотят</g> прийти на <b>свадьбу</b> Анны и Тома."},"gram":"modalverben"},
   {"id":"k6_006","cat":"k6","term":{"de":"heiraten","en":"to marry","uk":"одружуватися","ru":"жениться / выходить замуж"},"short":{"de":"Offiziell Mann und Frau (oder Partner) werden.","en":"To officially become husband and wife (or partners).","uk":"Офіційно ставати чоловіком і дружиною (чи партнерами).","ru":"Официально становиться мужем и женой (или партнёрами)."},"def":{"de":"Sie <b>heiraten</b> <g>im nächsten Sommer</g> in einer kleinen Kirche.","en":"They are getting <b>married</b> <g>next summer</g> in a small church.","uk":"Вони <b>одружуються</b> <g>наступного літа</g> у маленькій церкві.","ru":"Они <b>женятся</b> <g>следующим летом</g> в маленькой церкви."},"gram":"temporale_praepositionen"},
   {"id":"k6_007","cat":"k6","term":{"de":"die Migration","en":"migration","uk":"міграція","ru":"миграция"},"short":{"de":"Wenn Menschen in ein anderes Land ziehen, um dort zu leben.","en":"When people move to another country to live there.","uk":"Коли люди переїжджають в іншу країну, щоб там жити.","ru":"Когда люди переезжают в другую страну, чтобы там жить."},"def":{"de":"<g>Seit vielen Jahren</g> spielt <b>Migration</b> eine wichtige Rolle in Deutschland.","en":"<b>Migration</b> has played an important role in Germany <g>for many years</g>.","uk":"<g>Багато років</g> <b>міграція</b> відіграє важливу роль у Німеччині.","ru":"<g>Много лет</g> <b>миграция</b> играет важную роль в Германии."},"gram":"temporale_praepositionen"},
@@ -2247,7 +2247,7 @@ var VOCAB = [
   {"id":"k6_016","cat":"k6","term":{"de":"sich verändern","en":"to change","uk":"змінюватися","ru":"меняться"},"short":{"de":"Anders werden als vorher.","en":"To become different from before.","uk":"Ставати іншим, ніж раніше.","ru":"Становиться другим, чем раньше."},"def":{"de":"Ihr Leben hat sich <g>schon</g> nach kurzer Zeit stark <b>verändert</b>.","en":"Her life had <b>changed</b> a lot <g>already</g> after a short time.","uk":"Її життя <b>змінилося</b> сильно <g>вже</g> через короткий час.","ru":"Её жизнь <b>изменилась</b> сильно <g>уже</g> через короткое время."},"gram":"als_wenn_schon_erst"},
   {"id":"k6_017","cat":"k6","term":{"de":"das Leben","en":"life","uk":"життя","ru":"жизнь"},"short":{"de":"Alles, was ein Mensch erlebt, von der Geburt bis heute.","en":"Everything a person experiences from birth until today.","uk":"Все, що людина переживає від народження і до сьогодні.","ru":"Всё, что человек переживает от рождения до сегодняшнего дня."},"def":{"de":"<g>Als</g> sie nach Deutschland kam, begann für sie ein neues <b>Leben</b>.","en":"<g>When</g> she came to Germany, a new <b>life</b> began for her.","uk":"<g>Коли</g> вона приїхала до Німеччини, для неї почалося нове <b>життя</b>.","ru":"<g>Когда</g> она приехала в Германию, для неё началась новая <b>жизнь</b>."},"gram":"als_wenn_schon_erst"},
   {"id":"k6_018","cat":"k6","term":{"de":"der Smalltalk","en":"small talk","uk":"світська бесіда","ru":"светская беседа"},"short":{"de":"Ein kurzes, freundliches Gespräch über einfache Themen.","en":"A short, friendly conversation about simple topics.","uk":"Коротка, дружня розмова на прості теми.","ru":"Короткий, дружеский разговор на простые темы."},"def":{"de":"<g>Erst</g> nach ein paar Monaten konnte sie beim <b>Smalltalk</b> gut mitreden.","en":"<g>Only</g> after a few months could she take part in <b>small talk</b> well.","uk":"<g>Лише</g> через кілька місяців вона змогла добре підтримувати <b>світську бесіду</b>.","ru":"<g>Только</g> через несколько месяцев она смогла хорошо поддерживать <b>светскую беседу</b>."},"gram":"als_wenn_schon_erst"},
-  {"id":"k6_019","cat":"k6","term":{"de":"die Enkelkinder (Pl.)","en":"grandchildren","uk":"онуки","ru":"внуки"},"short":{"de":"Die Kinder der eigenen Kinder.","en":"The children of your own children.","uk":"Діти власних дітей.","ru":"Дети собственных детей."},"def":{"de":"<g>Wenn</g> die <b>Enkelkinder</b> zu Besuch kommen, freut sich die ganze Familie.","en":"<g>When</g> the <b>grandchildren</b> come to visit, the whole family is happy.","uk":"<g>Коли</g> <b>онуки</b> приїжджають у гості, радіє вся родина.","ru":"<g>Когда</g> <b>внуки</b> приезжают в гости, радуется вся семья."},"gram":"als_wenn_schon_erst"},
+  {"id":"k6_019","cat":"k6","term":{"de":"das Enkelkind, -er","en":"grandchildren","uk":"онуки","ru":"внуки"},"short":{"de":"Die Kinder der eigenen Kinder.","en":"The children of your own children.","uk":"Діти власних дітей.","ru":"Дети собственных детей."},"def":{"de":"<g>Wenn</g> die <b>Enkelkinder</b> zu Besuch kommen, freut sich die ganze Familie.","en":"<g>When</g> the <b>grandchildren</b> come to visit, the whole family is happy.","uk":"<g>Коли</g> <b>онуки</b> приїжджають у гості, радіє вся родина.","ru":"<g>Когда</g> <b>внуки</b> приезжают в гости, радуется вся семья."},"gram":"als_wenn_schon_erst"},
   {"id":"k7_001","cat":"k7","term":{"de":"der Ausflug","en":"outing / trip","uk":"екскурсія","ru":"поездка"},"short":{"de":"Eine kurze Reise, oft für einen Tag, um etwas zu sehen oder zu erleben.","en":"A short trip, often for a day, to see or experience something.","uk":"Коротка поїздка, часто на день, щоб щось побачити чи пережити.","ru":"Короткая поездка, часто на день, чтобы что-то увидеть или пережить."},"def":{"de":"<g>Wenn</g> das Wetter schön ist, machen sie am Wochenende einen <b>Ausflug</b>.","en":"<g>When</g> the weather is nice, they go on a <b>trip</b> at the weekend.","uk":"<g>Коли</g> гарна погода, вони на вихідних вирушають на <b>екскурсію</b>.","ru":"<g>Когда</g> хорошая погода, они на выходных отправляются на <b>экскурсию</b>."},"gram":"wenn_satz"},
   {"id":"k7_002","cat":"k7","term":{"de":"der Vorschlag","en":"suggestion","uk":"пропозиція","ru":"предложение"},"short":{"de":"Eine Idee, die man anderen sagt.","en":"An idea you tell others.","uk":"Ідея, яку ти пропонуєш іншим.","ru":"Идея, которую ты предлагаешь другим."},"def":{"de":"<g>Wenn</g> jemand einen guten <b>Vorschlag</b> hat, freut sich das ganze Team.","en":"<g>When</g> someone has a good <b>suggestion</b>, the whole team is happy.","uk":"<g>Коли</g> хтось має гарну <b>пропозицію</b>, радіє вся команда.","ru":"<g>Когда</g> у кого-то есть хорошее <b>предложение</b>, радуется вся команда."},"gram":"wenn_satz"},
   {"id":"k7_003","cat":"k7","term":{"de":"vorschlagen","en":"to suggest","uk":"пропонувати","ru":"предлагать"},"short":{"de":"Eine Idee sagen, was man zusammen machen könnte.","en":"To say an idea about what you could do together.","uk":"Висловлювати ідею, що можна зробити разом.","ru":"Высказывать идею, что можно сделать вместе."},"def":{"de":"<g>Wenn</g> niemand eine Idee hat, <b>schlägt</b> sie meistens einen Zoobesuch <b>vor</b>.","en":"<g>When</g> no one has an idea, she usually <b>suggests</b> a visit to the zoo.","uk":"<g>Коли</g> ні в кого немає ідеї, вона зазвичай <b>пропонує</b> відвідати зоопарк.","ru":"<g>Когда</g> ни у кого нет идеи, она обычно <b>предлагает</b> посетить зоопарк."},"gram":"wenn_satz"},
@@ -2327,8 +2327,8 @@ var VOCAB = [
   {"id":"k11_001","cat":"k11","term":{"de":"die Mediennutzung","en":"media use","uk":"використання медіа","ru":"использование медиа"},"short":{"de":"Wie und wie oft man Handy, Computer, Fernsehen usw. benutzt.","en":"How and how often you use phone, computer, TV etc.","uk":"Як і як часто користуєшся телефоном, компʼютером, телевізором тощо.","ru":"Как и как часто пользуешься телефоном, компьютером, телевизором и т.д."},"def":{"de":"<g>Die</g> <g><b>tägliche</b></g> <b>Mediennutzung</b> der Jugendlichen ist ein wichtiges Thema.","en":"<g>The</g> <g><b>daily</b></g> <b>media use</b> of young people is an important topic.","uk":"<b>Щоденне</b> використання <b>медіа</b> підлітками — важлива тема.","ru":"<b>Ежедневное</b> использование <b>медиа</b> подростками — важная тема."},"gram":"adjektiv_bestimmter_artikel"},
   {"id":"k11_002","cat":"k11","term":{"de":"das Gerät","en":"device","uk":"пристрій","ru":"устройство"},"short":{"de":"Eine Maschine, meistens elektronisch, zum Beispiel ein Handy oder ein Drucker.","en":"A machine, usually electronic, for example a phone or a printer.","uk":"Прилад, зазвичай електронний, наприклад телефон або принтер.","ru":"Прибор, обычно электронный, например телефон или принтер."},"def":{"de":"<g>Das</g> <g><b>neue</b></g> <b>Gerät</b> von Frau Petrova funktioniert einwandfrei.","en":"<g>The</g> <g><b>new</b></g> <b>device</b> of Mrs Petrova works perfectly.","uk":"<b>Новий</b> прилад пані Петрової працює бездоганно.","ru":"<b>Новый</b> прибор госпожи Петровой работает безупречно."},"gram":"adjektiv_bestimmter_artikel"},
   {"id":"k11_003","cat":"k11","term":{"de":"nützlich","en":"useful","uk":"корисний","ru":"полезный"},"short":{"de":"So, dass man es gut gebrauchen kann; hilfreich.","en":"So that you can use it well; helpful.","uk":"Таким, що можна добре застосувати; корисний.","ru":"Таким, что можно хорошо применить; полезный."},"def":{"de":"<g>Die</g> <g><b>nützliche</b></g> App hilft beim Deutschlernen.","en":"<g>The</g> <g><b>useful</b></g> app helps with learning German.","uk":"<b>Корисний</b> застосунок допомагає у вивченні німецької.","ru":"<b>Полезное</b> приложение помогает в изучении немецкого."},"gram":"adjektiv_bestimmter_artikel"},
-  {"id":"k11_004","cat":"k11","term":{"de":"die Abkürzung","en":"abbreviation","uk":"скорочення","ru":"сокращение"},"short":{"de":"Ein kurz geschriebenes Wort, das für ein längeres Wort steht, z. B. „usw.“","en":"A short written word that stands for a longer word, e.g. \"etc.\"","uk":"Скорочене слово, яке позначає довше слово, напр. „і т. д.“","ru":"Сокращённое слово, которое обозначает более длинное слово, напр. „и т. д.“"},"def":{"de":"<g>Die</g> <g><b>bekannte</b></g> <b>Abkürzung</b> „WLAN“ kennt fast jeder.","en":"Almost everyone knows <g>the</g> <g><b>well-known</b></g> <b>abbreviation</b> \"WLAN\".","uk":"<b>Відоме</b> скорочення „WLAN“ знає майже кожен.","ru":"<b>Известное</b> сокращение „WLAN“ знает почти каждый."},"gram":"adjektiv_bestimmter_artikel"},
-  {"id":"k11_005","cat":"k11","term":{"de":"das Fremdwort","en":"foreign word, loanword","uk":"запозичене слово","ru":"заимствованное слово"},"short":{"de":"Ein Wort aus einer anderen Sprache, das man auch auf Deutsch benutzt.","en":"A word from another language that is also used in German.","uk":"Слово з іншої мови, яке також вживають у німецькій.","ru":"Слово из другого языка, которое также употребляют в немецком."},"def":{"de":"<g>Das</g> <g><b>englische</b></g> <b>Fremdwort</b> „Update“ benutzen viele Deutsche.","en":"Many Germans use <g>the</g> <g><b>English</b></g> <b>loanword</b> \"update\".","uk":"Багато німців вживають <b>англійське</b> запозичене слово „update“.","ru":"Многие немцы употребляют <b>английское</b> заимствованное слово „update“."},"gram":"adjektiv_bestimmter_artikel"},
+  {"id":"k11_004","cat":"k11","term":{"de":"die Abkürzung","en":"abbreviation","uk":"скорочення","ru":"сокращение"},"short":{"de":"Ein kurz geschriebenes Wort, das für ein längeres Wort steht, z. B. „usw.“","en":"A short written word that stands for a longer word, e.g. „etc.“","uk":"Скорочене слово, яке позначає довше слово, напр. „і т. д.“","ru":"Сокращённое слово, которое обозначает более длинное слово, напр. „и т. д.“"},"def":{"de":"<g>Die</g> <g><b>bekannte</b></g> <b>Abkürzung</b> „WLAN“ kennt fast jeder.","en":"Almost everyone knows <g>the</g> <g><b>well-known</b></g> <b>abbreviation</b> „WLAN“.","uk":"<b>Відоме</b> скорочення „WLAN“ знає майже кожен.","ru":"<b>Известное</b> сокращение „WLAN“ знает почти каждый."},"gram":"adjektiv_bestimmter_artikel"},
+  {"id":"k11_005","cat":"k11","term":{"de":"das Fremdwort","en":"foreign word, loanword","uk":"запозичене слово","ru":"заимствованное слово"},"short":{"de":"Ein Wort aus einer anderen Sprache, das man auch auf Deutsch benutzt.","en":"A word from another language that is also used in German.","uk":"Слово з іншої мови, яке також вживають у німецькій.","ru":"Слово из другого языка, которое также употребляют в немецком."},"def":{"de":"<g>Das</g> <g><b>englische</b></g> <b>Fremdwort</b> „Update“ benutzen viele Deutsche.","en":"Many Germans use <g>the</g> <g><b>English</b></g> <b>loanword</b> „update“.","uk":"Багато німців вживають <b>англійське</b> запозичене слово „update“.","ru":"Многие немцы употребляют <b>английское</b> заимствованное слово „update“."},"gram":"adjektiv_bestimmter_artikel"},
   {"id":"k11_006","cat":"k11","term":{"de":"die Meinung","en":"opinion","uk":"думка","ru":"мнение"},"short":{"de":"Was jemand über etwas denkt.","en":"What someone thinks about something.","uk":"Що людина думає про щось.","ru":"Что человек думает о чём-то."},"def":{"de":"<g>Die</g> <g><b>persönliche</b></g> <b>Meinung</b> von Selin ist im Forum sehr beliebt.","en":"Selin's <g><b>personal</b></g> <b>opinion</b> is very popular in the forum.","uk":"<b>Особиста</b> думка Селін дуже популярна на форумі.","ru":"<b>Личное</b> мнение Селин очень популярно на форуме."},"gram":"adjektiv_bestimmter_artikel"},
   {"id":"k11_007","cat":"k11","term":{"de":"kaputt","en":"broken","uk":"зламаний","ru":"сломанный"},"short":{"de":"Wenn ein Gerät nicht mehr funktioniert.","en":"When a device no longer works.","uk":"Коли прилад більше не працює.","ru":"Когда прибор больше не работает."},"def":{"de":"Mit <g>dem</g> <g><b>kaputten</b></g> <b>Drucker</b> kann Herr Baraka nichts mehr ausdrucken.","en":"With <g>the</g> <g><b>broken</b></g> printer, Mr Baraka can no longer print anything.","uk":"Із <b>зламаним</b> принтером пан Барака більше нічого не може роздрукувати.","ru":"Со <b>сломанным</b> принтером господин Барака больше ничего не может распечатать."},"gram":"adjektiv_bestimmter_artikel"},
   {"id":"k11_008","cat":"k11","term":{"de":"funktionieren","en":"to function, to work","uk":"функціонувати","ru":"функционировать"},"short":{"de":"Richtig arbeiten, ohne Probleme.","en":"To work correctly, without problems.","uk":"Правильно працювати, без проблем.","ru":"Правильно работать, без проблем."},"def":{"de":"Mit <g>dem</g> <g><b>neuen</b></g> Akku <b>funktioniert</b> das Handy wieder normal.","en":"With <g>the</g> <g><b>new</b></g> battery, the phone <b>works</b> normally again.","uk":"З <b>новим</b> акумулятором телефон знову <b>працює</b> нормально.","ru":"С <b>новым</b> аккумулятором телефон снова <b>работает</b> нормально."},"gram":"adjektiv_bestimmter_artikel"},
