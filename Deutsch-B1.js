@@ -7887,7 +7887,7 @@ var VOCAB = [
     "id": "k14_005",
     "cat": "k14",
     "term": {
-      "de": "die Nebenkosten (Pl.)",
+      "de": "die Nebenkosten",
       "en": "utility costs",
       "uk": "комунальні витрати",
       "ru": "коммунальные расходы"
@@ -8462,7 +8462,7 @@ var VOCAB = [
     "id": "k15_014",
     "cat": "k15",
     "term": {
-      "de": "die Deutschkenntnisse (Pl.)",
+      "de": "die Deutschkenntnisse",
       "en": "German language skills",
       "uk": "знання німецької мови",
       "ru": "знание немецкого языка"
