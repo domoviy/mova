@@ -43,6 +43,7 @@ COURSES = [
     ('Deutsch-B2-Beruf', 'B2-Beruf'),
     ('Financial-Accounting-Foundations', 'Financial-Accounting-Foundations'),
     ('Deutsch-A2', 'A2-Deutsch'),
+    ('Deutsch-B1', 'B1-Deutsch'),
 ]
 
 AUDIO_ROOT = pathlib.Path('audio')
