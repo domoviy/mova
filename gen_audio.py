@@ -151,6 +151,20 @@ def load_js_database(file_path):
     raw_items = []
     blocks = re.findall(r'(?:var|let|const|export)\s+(\w+)\s*=\s*(\[.*?\])\s*(;|\n\n|var|let|const|export|$)', content, re.DOTALL)
 
+    if not blocks:
+        print(f"⚠ У файлі {file_path} regex не знайшов жодного блоку виду "
+              f"'var/let/const/export NAME = [...]'. Файл або порожній, "
+              f"або має нестандартну структуру — перевір вручну.", flush=True)
+
+    def _error_snippet(text, pos, context=80):
+        """Фрагмент тексту навколо позиції помилки json.loads (pos —
+        символьний офсет від початку рядка, що передавався в json.loads)."""
+        start = max(0, pos - context)
+        end = min(len(text), pos + context)
+        snippet = text[start:end].replace('\n', '⏎')
+        marker_pos = pos - start
+        return f"{snippet}\n{' ' * marker_pos}^-- тут"
+
     for var_name, array_content, _ in blocks:
         if var_name in ["CATS", "LESSONS"]:
             continue
@@ -166,7 +180,7 @@ def load_js_database(file_path):
                     if isinstance(item, dict) and "id" in item:
                         item["_fallback_var"] = var_name
                         raw_items.append(item)
-        except json.JSONDecodeError:
+        except json.JSONDecodeError as e_strict:
             # Деякі масиви (наприклад SPRACHBAUSTEINE) написані в "людяному"
             # JS-стилі з нелапкованими ключами об'єкта ({id:"x"} замість
             # {"id":"x"}) — валідний JS, але невалідний JSON. Застосовуємо
@@ -184,8 +198,15 @@ def load_js_database(file_path):
                         if isinstance(item, dict) and "id" in item:
                             item["_fallback_var"] = var_name
                             raw_items.append(item)
-            except Exception:
-                pass
+            except json.JSONDecodeError as e_fallback:
+                print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}.", flush=True)
+                print(f"   Строгий парсинг:   {e_strict.msg} (рядок {e_strict.lineno}, колонка {e_strict.colno})", flush=True)
+                print(f"   Fallback-парсинг:  {e_fallback.msg} (рядок {e_fallback.lineno}, колонка {e_fallback.colno})", flush=True)
+                print(f"   Фрагмент навколо помилки fallback-парсингу:", flush=True)
+                print(f"   ...{_error_snippet(normalized, e_fallback.pos)}...\n", flush=True)
+            except Exception as e_fallback:
+                print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}: "
+                      f"{type(e_fallback).__name__}: {e_fallback}\n", flush=True)
 
     return config, raw_items, primary_lang
 
