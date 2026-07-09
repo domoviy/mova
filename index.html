@@ -634,7 +634,7 @@ body{
 
 
 /* ══ ONBOARDING ══ */
-#onboarding{
+#onboarding, #course-onboarding{
   position:fixed;inset:0;z-index:9998;
   background:var(--forest);
   display:flex;flex-direction:column;
@@ -1849,6 +1849,31 @@ body.lesson-active .vocab-top{
   </div>
 </div>
 
+<!-- ══ COURSE ONBOARDING — вибір курсу, показується одразу після вибору мови ══ -->
+<div id="course-onboarding" style="display:none">
+  <div class="ob-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" style="height:110px;width:110px">
+      <path d="M 50,385 L 194,212 C 231,252 277,296 297,280 S 355,152 370,168
+               C 388,200 424,272 441,258 C 460,228 577,90 658,76"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 50,660 L 50,460 L 99,560 L 148,460 L 148,660"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 297,477.5 A 59.5,82.5 0 0 1 356.5,560 A 59.5,82.5 0 0 1 297,642.5
+               A 59.5,82.5 0 0 1 237.5,560 A 59.5,82.5 0 0 1 297,477.5"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 421.5,460 L 470.5,660 L 519.5,460"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 560,660 L 609,460 L 658,660"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="580.8" y1="575" x2="637.2" y2="575" stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <p class="ob-subtitle" id="course-ob-subtitle">Який курс хочете проходити?</p>
+  <div class="ob-cards" id="course-ob-cards">
+    <!-- Рендериться через renderCourseOnboardingCards() -->
+  </div>
+</div>
+
 <!-- ══ EXAM DATE ONBOARDING — після мовного onboarding ══ -->
 <div id="sr-exam-onboarding" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
   <div class="ob-logo">
@@ -2439,7 +2464,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '280-c429e94';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2464,6 +2489,15 @@ const COURSES = [
     level:    'A2',
     langs:    ['de','uk','en'],
     desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
+  },
+  {
+    id:       'B1-Deutsch',
+    file:     'Deutsch-B1.js',
+    title:    'B1 Deutsch',
+    emoji:    '💬',
+    level:    'B1',
+    langs:    ['de','uk','en'],
+    desc:     { de:'Deutsch für Fortgeschrittene', uk:'Німецька для середнього рівня', en:'German for intermediate learners' },
   },
   {
     id:       'B2-Beruf',
@@ -5929,7 +5963,54 @@ function selectOnboardLang(lang){ unlockAudioCtx();
     ob.style.opacity = '0';
     setTimeout(()=>{
       ob.style.display='none';
-      // Після мовного onboarding — показуємо exam date onboarding (якщо не пропускали)
+      // Після мовного onboarding — показуємо вибір курсу
+      renderCourseOnboardingCards();
+      const cob = document.getElementById('course-onboarding');
+      if(cob){
+        cob.style.opacity = '1';
+        cob.style.display = 'flex';
+      }
+    }, 380);
+  }
+}
+
+// Підписи екрану вибору курсу різними мовами інтерфейсу
+const COURSE_OB_SUBTITLE = {
+  de:'Welchen Kurs möchtest du lernen?',
+  uk:'Який курс хочете проходити?',
+  en:'Which course would you like to take?',
+  ru:'Какой курс хотите проходить?',
+};
+
+function renderCourseOnboardingCards(){
+  const container = document.getElementById('course-ob-cards');
+  if(!container) return;
+  container.innerHTML = COURSES.map(c=>`
+    <div class="ob-card" onclick="selectOnboardCourse('${c.id}')">
+      <div class="ob-card-flag">${c.emoji}</div>
+      <div class="ob-card-text">
+        <div class="ob-card-lang">${c.title}</div>
+        <div class="ob-card-desc">${c.desc[uiLang]||c.desc.en||c.desc.de}</div>
+      </div>
+      <div class="ob-card-arrow">›</div>
+    </div>
+  `).join('');
+  const sub = document.getElementById('course-ob-subtitle');
+  if(sub) sub.textContent = COURSE_OB_SUBTITLE[uiLang] || COURSE_OB_SUBTITLE.en;
+}
+
+async function selectOnboardCourse(courseId){ unlockAudioCtx();
+  saveCourseId(courseId);
+  if(activeCourse?.id !== courseId){
+    try{ await switchCourse(courseId); }catch(e){ console.error('selectOnboardCourse:', e); }
+  }
+  const cob = document.getElementById('course-onboarding');
+  if(cob){
+    cob.style.transition = 'opacity .35s ease';
+    cob.style.opacity = '0';
+    setTimeout(()=>{
+      cob.style.display='none';
+      // Після вибору курсу — показуємо exam date onboarding (якщо не пропускали)
       if(!localStorage.getItem('mova_sr_ob_skipped_'+(activeCourse?.id||getSavedCourseId())) && !srLoadState().examDate){
         srApplyExamObI18n();
         const eob = document.getElementById('sr-exam-onboarding');
