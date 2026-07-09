@@ -2170,6 +2170,10 @@ body.lesson-active .vocab-top{
             <button class="vlang-btn off" id="sblang-ru" onclick="sbToggleLang('ru')">🇷🇺 RU</button>
           </div>
         </div>
+        <div class="vlang-grp" id="sb-src-toggle" style="margin-top:6px">
+          <button class="vlang-btn on"  data-src="sb"   onclick="sbSetDataSource('sb')">🔤 Sprachbausteine</button>
+          <button class="vlang-btn off" data-src="gram" onclick="sbSetDataSource('gram')">📘 Grammatik</button>
+        </div>
         <div class="vchips" id="sb-cat-chips"></div>
         <div class="vtab-bar">
           <button class="vtab active" id="sbt-learn"    onclick="sbSetMode('learn')">📖 Lernen</button>
@@ -2435,7 +2439,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '279-757fade';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2519,6 +2523,10 @@ function loadCourseScript(courseId){
       activeCourse = course;
       // Smart Review: додаємо examPart до карток якщо ще не є
       try{ srTagVocab(); }catch(e){}
+      // Grammatik-Trainer: перебудовуємо похідний пул карток під новий курс.
+      // Для курсів без GRAMMAR/gram (напр. Financial-Accounting) поверне [] —
+      // вкладку "Grammatik" тоді просто не показуємо (див. sbApplyDataSourceUI).
+      try{ GRAM_CARDS = buildGramCards(); GRAM_CATS = buildGramCats(); }catch(e){ GRAM_CARDS=[]; GRAM_CATS=[]; }
       resolve(course);
     };
     s.onerror = ()=>reject(new Error('Failed to load: '+course.file));
@@ -10386,6 +10394,95 @@ window.addEventListener('DOMContentLoaded', ()=>{
 
 // ════════════════════════════════════════════════════════════════
 // ════════════════════════════════════════════════════════════════
+//  GRAMMATIK-TRAINER · похідні картки з VOCAB (gram + <g>)
+// ════════════════════════════════════════════════════════════════
+// На відміну від SPRACHBAUSTEINE (риторичні конектори, вручну авторовані
+// картки з власними dictractors/explanation), ці картки генеруються
+// АВТОМАТИЧНО з речень словника (VOCAB), де граматична конструкція вже
+// позначена тегом <g>. Пояснення береться напряму з GRAMMAR[gram.id] —
+// нічого нового писати не треба, ця база вже існує для граматичних
+// модалок (showGrammarModal).
+//
+// Дистрактори генеруються лише для "закритого класу" тем (фіксований,
+// невеликий список маркерів — сполучники, займенники, прийменники).
+// Для "відкритого класу" тем (Passiv, Nominalisierung, Partizipien,
+// NVV, indirekte Rede, Modalpartikeln) дистрактор мусить узгоджуватись
+// із формою слова в конкретному реченні — авто-генерація тут дала б
+// низькоякісні вправи. Ці теми чекають ручного авторства (Фаза E) і
+// поки що НЕ з'являються в Grammatik-Trainer.
+//
+// Формат картки — навмисно ідентичний до SPRACHBAUSTEINE (той самий
+// sentence/answer/distractors/explanation/gram), щоб практичний рушій
+// sbRenderPrac/sbPracAnswer міг обробляти обидва джерела без дублювання
+// коду — див. sbPool()/sbCatsList() нижче.
+
+const GRAM_DISTRACTOR_POOL = {
+  wortstellung:                       ["weil","obwohl","wenn","während","nachdem","bevor","sobald","da"],
+  negation:                            ["nicht","kein","keine","nie","niemand","nichts","ohne"],
+  konnektoren_zweiteilig:              ["sowohl","weder","zwar","je","entweder"],
+  es_pronomen:                         ["das","dies","man","sie"],
+  indefinitpronomen:                   ["jemand","niemand","jeder","etwas","nichts","einige","alle","manche"],
+  relativsatz_wer:                     ["wen","wem","wessen","wie"],
+  konnektoren_infinitiv:               ["ohne","anstatt","statt","um"],
+  waehrend_genitiv_praeposition:       ["während","aufgrund","trotz","angesichts","infolge","wegen","bezüglich","unterhalb"],
+  vergleichssaetze_als_wie_je_desto:   ["als","wie","je","obwohl","weil","während","bevor"],
+  textzusammenhang:                    ["allerdings","dennoch","jedoch","trotzdem","daher","deshalb","folglich","außerdem"],
+  praepositionen_nomen_verb_adjektiv:  ["an","auf","bei","für","mit","nach","über","um","von","vor","zu"],
+};
+
+// Будує пул тренувальних карток з поточного VOCAB курсу. Викликається
+// заново при кожному switchCourse() — для курсів без GRAMMAR/gram
+// (напр. Financial-Accounting) просто поверне порожній масив, і вкладка
+// "Grammatik" в UI сама сховається (updateBottomNavVisibility-подібна
+// логіка — див. sbApplyDataSourceUI).
+function buildGramCards(){
+  if(typeof VOCAB==='undefined' || !VOCAB.length || typeof GRAMMAR==='undefined') return [];
+  var out=[];
+  VOCAB.forEach(function(c){
+    if(!c.gram) return;
+    var pool = GRAM_DISTRACTOR_POOL[c.gram];
+    if(!pool) return; // відкрита тема — ще без готових дистракторів
+    var m = c.def && c.def.de ? c.def.de.match(/<g>(.*?)<\/g>/) : null;
+    if(!m) return;
+    var answerDe = m[1].replace(/<\/?b>/g,'').trim();
+    if(answerDe.split(/\s+/).length>1) return; // MVP: лише однослівні маркери (форма = форма дистракторів)
+    var distractors = pool.filter(function(w){ return w.toLowerCase()!==answerDe.toLowerCase(); })
+      .sort(function(){ return Math.random()-.5; }).slice(0,4);
+    if(distractors.length<3) return;
+    // прибираємо ПЕРШИЙ <g>…</g> → {{BLANK}}; будь-які ІНШІ <g> в тому ж
+    // реченні лишаємо як звичайний текст (не тестуємо кілька пропусків
+    // одразу); <b> (словниковий термін) навмисно НЕ чіпаємо — рендериться
+    // жирним, як і всюди в застосунку.
+    var sentenceDe = c.def.de.replace(/<g>.*?<\/g>/, '{{BLANK}}').replace(/<\/?g>/g,'');
+    var gram = GRAMMAR.find(function(g){ return g.id===c.gram; });
+    out.push({
+      id: 'gram_'+c.id,
+      cat: c.gram,
+      sentence: { de: sentenceDe, en: sentenceDe, uk: sentenceDe, ru: sentenceDe },
+      answer: { de: answerDe, en: answerDe, uk: answerDe, ru: answerDe },
+      distractors: distractors,
+      explanation: gram ? gram.explanation : {de:'',en:'',uk:'',ru:''},
+      gram: c.gram,
+      _srcId: c.id,
+    });
+  });
+  return out;
+}
+
+// Категорії для чіпів-фільтрів у режимі Grammatik — по одній на кожну
+// тему GRAMMAR, що реально має хоч одну готову картку в GRAM_CARDS.
+function buildGramCats(){
+  if(typeof GRAMMAR==='undefined') return [];
+  return GRAMMAR
+    .map(function(g){ return { id:g.id, e:'📘', de:g.title.de, en:g.title.en, uk:g.title.uk, ru:g.title.ru }; })
+    .filter(function(cat){ return GRAM_CARDS.some(function(c){ return c.cat===cat.id; }); });
+}
+
+var GRAM_CARDS = [];
+var GRAM_CATS = [];
+
+// ════════════════════════════════════════════════════════════════
+// ════════════════════════════════════════════════════════════════
 //  SPRACHBAUSTEINE TRAINER  ·  DTB B2 Prüfungsvorbereitung
 // ════════════════════════════════════════════════════════════════
 
@@ -10440,6 +10537,7 @@ function sbAnswerLang(cardLang) {
 // ── STATE ──
 var SB = {
   mode: 'learn',
+  dataSource: 'sb', // 'sb' = Sprachbausteine (конектори), 'gram' = Grammatik-Trainer (VOCAB+<g>)
   catFilter: 'all',
   learnIdx: 0,
   learnFlipped: false,
@@ -10462,6 +10560,40 @@ var SB = {
 function sbSaveLangs() { try{ localStorage.setItem('mova_sb_langs', JSON.stringify(SB.langs)); }catch(e){} }
 function sbGetActiveLangs() { return ['de','en','uk','ru'].filter(function(l){ return SB.langs[l]; }); }
 
+// ── Data-source abstraction: Sprachbausteine vs Grammatik-Trainer ──
+// Обидва джерела мають ІДЕНТИЧНУ форму картки (sentence/answer/
+// distractors/explanation/gram), тому весь рушій Practice (sbStartPractice
+// → sbRenderPrac → sbPracAnswer) працює з обома без дублювання коду —
+// достатньо читати активний пул через ці два хелпери, а не звертатись
+// до SPRACHBAUSTEINE/SB_CATS напряму.
+function sbPool(){
+  return SB.dataSource==='gram'
+    ? (typeof GRAM_CARDS!=='undefined' ? GRAM_CARDS : [])
+    : (typeof SPRACHBAUSTEINE!=='undefined' ? SPRACHBAUSTEINE : []);
+}
+function sbCatsList(){
+  return SB.dataSource==='gram'
+    ? (typeof GRAM_CATS!=='undefined' ? GRAM_CATS : [])
+    : (typeof SB_CATS!=='undefined' ? SB_CATS : []);
+}
+function sbSetDataSource(src){
+  if(SB.dataSource===src) return;
+  SB.dataSource = src;
+  SB.catFilter = 'all';
+  SB.pracQueue=[]; SB.pracIdx=0; SB.pracAnswered=false; SB.pracResults=[];
+  document.querySelectorAll('#sb-src-toggle .vlang-btn').forEach(function(b){
+    b.classList.toggle('on', b.dataset.src===src);
+    b.classList.toggle('off', b.dataset.src!==src);
+  });
+  // Grammatik-Trainer поки що працює лише в режимі Üben (Learn/Prüfung
+  // розраховані на pregen-аудіо й структуру SPRACHBAUSTEINE, не адаптовані).
+  var learnTab=document.getElementById('sbt-learn'), examTab=document.getElementById('sbt-exam');
+  if(learnTab) learnTab.style.display = src==='gram' ? 'none' : '';
+  if(examTab)  examTab.style.display  = src==='gram' ? 'none' : '';
+  sbRenderCatChips();
+  sbSetMode('practice');
+}
+
 // ── INIT ──────────────────────────────────────────────────────
 function initSB() {
   if (typeof SPRACHBAUSTEINE === 'undefined') return;
@@ -10483,7 +10615,7 @@ function sbApplyShuffleBtnUI() {
 }
 
 function sbUpdateProgressBadge() {
-  var total   = typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE.length : 48;
+  var total   = sbPool().length || 48;
   var learned = (sbLoadState().learned || []).length;
   // reuse prgtxt if visible, else just store
   var el = document.getElementById('sb-prgtxt');
@@ -10529,9 +10661,10 @@ function sbSyncLangsFromVocab() {
 
 function sbRenderCatChips() {
   var el = document.getElementById('sb-cat-chips');
-  if (!el || typeof SB_CATS === 'undefined') return;
+  var cats = sbCatsList();
+  if (!el) return;
   el.innerHTML = '';
-  [{ id:'all', label:'Alle' }].concat(SB_CATS.map(function(c){ return { id:c.id, label:c.e+'\u00a0'+(c[uiLang]||c.en||c.de) }; }))
+  [{ id:'all', label:'Alle' }].concat(cats.map(function(c){ return { id:c.id, label:c.e+'\u00a0'+(c[uiLang]||c.en||c.de) }; }))
     .forEach(function(item) {
       var b = document.createElement('button');
       b.className = 'chip' + (SB.catFilter === item.id ? ' active' : '');
@@ -10631,10 +10764,11 @@ function sbSmPriority(id) {
 
 // ── LEARN ─────────────────────────────────────────────────────
 function sbBuildLearnQueue() {
-  if (typeof SPRACHBAUSTEINE === 'undefined') return;
+  var pool = sbPool();
+  if (!pool.length) return;
   SB.learnQueue = SB.catFilter==='all'
-    ? SPRACHBAUSTEINE.slice()
-    : SPRACHBAUSTEINE.filter(function(c){ return c.cat===SB.catFilter; });
+    ? pool.slice()
+    : pool.filter(function(c){ return c.cat===SB.catFilter; });
   sbApplySortMode();
 }
 
@@ -10976,8 +11110,9 @@ function sbInitFavBtns(cardId) {
 var SB_PRAC_COUNT = 6; // standalone mode — кількість питань
 
 function sbStartPractice() {
-  if(typeof SPRACHBAUSTEINE==='undefined') return;
-  var pool=SB.catFilter==='all'?SPRACHBAUSTEINE.slice():SPRACHBAUSTEINE.filter(function(c){ return c.cat===SB.catFilter; });
+  var full=sbPool();
+  if(!full.length) return;
+  var pool=SB.catFilter==='all'?full.slice():full.filter(function(c){ return c.cat===SB.catFilter; });
   if(pool.length<2){ var el=document.getElementById('sb-prac-sentence'); if(el) el.textContent='Keine Karten.'; return; }
   // Найслабші картки (найвищий sbSmPriority) — пріоритет з централізованого SM-2 стейту
   SB.pracQueue=pool.slice().sort(function(a,b){ return sbSmPriority(b.id)-sbSmPriority(a.id); })
@@ -10992,7 +11127,7 @@ function sbRenderPrac() {
   var card=SB.pracQueue[SB.pracIdx]; if(!card){ sbShowPracResult(); return; }
   SB.pracAnswered=false;
   var lang=primaryLang(); // речення Sprachbausteine завжди основною мовою курсу
-  var cat=(typeof SB_CATS!=='undefined'?SB_CATS:[]).find(function(c){ return c.id===card.cat; });
+  var cat=sbCatsList().find(function(c){ return c.id===card.cat; });
 
   // progress bar
   var _lessonMax = LF ? SB.pracQueue.length : SB_PRAC_COUNT;
@@ -11030,9 +11165,10 @@ function sbRenderPrac() {
       var b=document.createElement('button');
       b.className='mc-opt';
       b.textContent=opt;
-      // Prefetch audio for this distractor option
+      // Prefetch audio for this distractor option — Grammatik-Trainer картки
+      // синтетичні (gram_*), для них pregen-аудіо не існує, тож не намагаємось.
       var fieldName = opt===sbA(card,primaryLang()) ? 'answer' : 'distractors_'+(i+1);
-      sbPrefetchAudio(card.id, fieldName);
+      if(SB.dataSource!=='gram') sbPrefetchAudio(card.id, fieldName);
       b.onclick=(function(o, fn){ return function(){ sbPracAnswer(b,o,card.id,fn); }; })(opt, fieldName);
       optEl.appendChild(b);
     });
@@ -11040,7 +11176,7 @@ function sbRenderPrac() {
   document.getElementById('sb-prac-feedback').style.display='none';
 
   // Prefetch sentence audio
-  sbPrefetchAudio(card.id, 'sentence');
+  if(SB.dataSource!=='gram') sbPrefetchAudio(card.id, 'sentence');
 }
 
 function sbPrefetchAudio(cardId, field) {
@@ -11066,23 +11202,31 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     else if(b===btn&&!ok) b.classList.add('wrong');
   });
 
-  // Play chosen option audio, then play full correct sentence
-  var field = audioField || (ok ? 'answer' : 'distractors_1');
-  var sentenceText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
-  speak(chosen, primaryLang(), function() {
-    // After answer audio ends → play full sentence
-    setTimeout(function() {
-      speak(sentenceText, primaryLang(), null, card.id, 'sentence');
-    }, 300);
-  }, card.id, field);
+  // Play chosen option audio, then play full correct sentence — лише для
+  // SPRACHBAUSTEINE (є pregen-аудіо). Grammatik-Trainer картки синтетичні,
+  // pregen-файлів немає, тож не намагаємось (уникаємо зайвих 404 і
+  // повторюваної модалки "аудіо недоступне" на кожній відповіді).
+  if(SB.dataSource!=='gram'){
+    var field = audioField || (ok ? 'answer' : 'distractors_1');
+    var sentenceText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
+    speak(chosen, primaryLang(), function() {
+      // After answer audio ends → play full sentence
+      setTimeout(function() {
+        speak(sentenceText, primaryLang(), null, card.id, 'sentence');
+      }, 300);
+    }, card.id, field);
+  }
 
   var iv=sbGetIntervals(),cur=iv[card.id]||1;
   if(ok){ sbSetInterval(card.id,cur*2); sbMarkLearned(card.id); }
   else { sbSetInterval(card.id,Math.max(1,Math.floor(cur/2))); if(!LF) SB.pracQueue.splice(Math.min(SB.pracIdx+3,SB.pracQueue.length),0,card); }
   // Smart Review: записуємо результат у централізований стейт теж —
   // інакше Practice-результати не впливають на пріоритет картки
-  // у Learn-режимі (sbSmPriority читає лише srLoadState).
-  try{ recordCardEvent(card.id, ok ? 'task_correct' : 'task_wrong', 'Sprachbausteine'); }catch(e){}
+  // у Learn-режимі (sbSmPriority читає лише srLoadState). Для
+  // Grammatik-Trainer картки мають синтетичний id (gram_<cardId>) —
+  // окремий від справжньої VOCAB-картки, тож дублювання/конфлікту
+  // статистики з основним словником немає.
+  try{ recordCardEvent(card.id, ok ? 'task_correct' : 'task_wrong', SB.dataSource==='gram' ? 'Grammatik' : 'Sprachbausteine'); }catch(e){}
   SB.pracResults[SB.pracIdx]=ok;
 
   // Explanation always in UI language; result label in UI language
