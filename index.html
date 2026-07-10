@@ -1570,6 +1570,27 @@ body.lesson-active .vocab-top{
 /* Модалка граматичного правила (📖-кнопка в уроці, VOCAB/SB/Dialogue) —
    той самий bottom-sheet патерн, що й sb-prac-feedback-modal, окремий
    клас лише тому, що немає correct/wrong стану й іншого набору кнопок. */
+/* ══ COURSE SWITCH MODAL ══ */
+#course-switch-modal{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,.6);
+  display:flex;align-items:center;justify-content:center;
+  padding:24px;
+}
+.cs-modal-box{
+  background:var(--paper);border-radius:22px;
+  padding:40px 28px;max-width:340px;width:100%;
+  text-align:center;
+  box-shadow:0 16px 56px rgba(0,0,0,.4);
+  border-top:3px solid var(--gold);
+}
+.cs-modal-icon{font-size:48px;margin-bottom:16px;line-height:1;}
+.cs-modal-icon.spin{animation:csModalSpin 1s linear infinite;}
+@keyframes csModalSpin{ to{ transform:rotate(360deg); } }
+.cs-modal-icon.pop{animation:csModalPop .4s cubic-bezier(.34,1.56,.64,1);}
+@keyframes csModalPop{ 0%{transform:scale(.4);opacity:0;} 100%{transform:scale(1);opacity:1;} }
+.cs-modal-title{font-size:17px;font-weight:800;color:var(--ink);line-height:1.35;}
+
 .grammar-modal-overlay{
   position:fixed;inset:0;z-index:300;
   display:flex;align-items:flex-end;
@@ -2460,6 +2481,14 @@ body.lesson-active .vocab-top{
 
 <div class="notif" id="notif"></div>
 
+<!-- ══ COURSE SWITCH MODAL — показує прогрес завантаження курсу ══ -->
+<div id="course-switch-modal" style="display:none">
+  <div class="cs-modal-box">
+    <div class="cs-modal-icon" id="cs-modal-icon">⏳</div>
+    <div class="cs-modal-title" id="cs-modal-title"></div>
+  </div>
+</div>
+
 <div class="audio-unavail-overlay" id="audio-unavail-overlay">
   <div class="audio-unavail-card">
     <div class="audio-unavail-text">🔇 <span id="audio-unavail-text"></span></div>
@@ -2470,7 +2499,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '290-4b2be84';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2574,9 +2603,40 @@ function loadCourseScript(courseId){
   });
 }
 
+// Модалка прогресу завантаження курсу — показує "Завантажуємо курс: X",
+// потім "Курс X активний" (декілька секунд), щоб користувач не тицяв повторно.
+function csShowModal(state, course){
+  const modal = document.getElementById('course-switch-modal');
+  const icon  = document.getElementById('cs-modal-icon');
+  const title = document.getElementById('cs-modal-title');
+  if(!modal || !icon || !title) return;
+  const name = course?.title || '';
+  icon.classList.remove('spin','pop');
+  if(state === 'loading'){
+    icon.textContent = course?.emoji || '📚';
+    icon.classList.add('spin');
+    title.textContent = t('course_loading').replace('{course}', name);
+  } else if(state === 'done'){
+    icon.textContent = '✅';
+    icon.classList.add('pop');
+    title.textContent = t('course_active').replace('{course}', name);
+  } else if(state === 'error'){
+    icon.textContent = '⚠️';
+    icon.classList.add('pop');
+    title.textContent = t('course_error') || 'Помилка завантаження курсу';
+  }
+  modal.style.display = 'flex';
+}
+function csHideModal(){
+  const modal = document.getElementById('course-switch-modal');
+  if(modal) modal.style.display = 'none';
+}
+
 // Завантажує курс і перезапускає vocab UI
 async function switchCourse(courseId){
   if(activeCourse?.id === courseId) return; // вже активний
+  const targetCourse = COURSES.find(c=>c.id===courseId);
+  csShowModal('loading', targetCourse);
   saveCourseId(courseId);
   audioBufferCache.clear();
   audioBlobCache.clear();
@@ -2619,9 +2679,13 @@ async function switchCourse(courseId){
     try{ srUpdateHeaderChip(); }catch(e){}
     try{ renderTempoRow(); }catch(e){}
     notify((activeCourse?.emoji||'📚')+' '+activeCourse?.title);
+    csShowModal('done', activeCourse);
+    setTimeout(csHideModal, 1400);
   }catch(e){
     console.error('switchCourse error:', e);
     notify('⚠️ Курс не вдалося завантажити');
+    csShowModal('error', targetCourse);
+    setTimeout(csHideModal, 1800);
   }
 }
 
@@ -2653,6 +2717,7 @@ const I18N = {
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
     sr_readiness_info:'Zeigt, wie gut Karten verankert sind (≥2 richtige Wiederholungen, noch nicht fällig) — nicht nur ob sie schon gesehen wurden.',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
+    course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
     nav_lernpfad:'Path', nav_sb:'Sprachbau',
     lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
@@ -2732,6 +2797,7 @@ const I18N = {
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
     sr_readiness_info:'Показує, наскільки добре закріплені картки (≥2 правильні повторення, ще не due) — а не просто факт, що їх переглянули.',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
+    course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
     nav_lernpfad:'Шлях', nav_sb:'Sprachbau',
     lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
@@ -2806,6 +2872,7 @@ const I18N = {
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
     sr_readiness_info:'Shows how well cards are retained (≥2 correct repetitions, not due yet) — not just whether you have seen them.',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
+    course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
     nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
@@ -2881,6 +2948,7 @@ const I18N = {
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
     sr_readiness_info:'Показывает, насколько хорошо закреплены карточки (≥2 правильных повторения, ещё не due) — а не просто факт, что их просмотрели.',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
+    course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
     nav_lernpfad:'Путь', nav_sb:'Sprachbau',
     lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
