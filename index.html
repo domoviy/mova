@@ -2467,7 +2467,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '297-4f18cad';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4327,6 +4327,11 @@ async function init(){
     console.warn('init: course load failed, trying B2-Beruf:', e);
     try{ await loadCourseScript('B2-Beruf'); }catch(e2){ console.error(e2); }
   }
+  // activeCourse тепер відомий (щойно встановлений у loadCourseScript) —
+  // перерендерюємо список курсів у налаштуваннях, інакше при холодному
+  // старті жоден курс не підсвічується як активний (renderCourseList()
+  // вище в DOMContentLoaded викликався ще до того, як activeCourse !== null).
+  renderCourseList();
   // PRIMARY_LANG тепер відома (з файлу курсу) — синхронізуємо видимі мови
   // у плеєрах ще до першого рендеру UI
   syncLangsToVisible();
