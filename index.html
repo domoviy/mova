@@ -90,7 +90,7 @@ if(location.protocol === 'https:'){
      зростає разом з базою, додаткового JS не потребує. */
   --fs-card: 18px;       /* fc-term, fc-def, tiles, match-btn, mc-opt, sb-front-sentence… */
   --fs-secondary: 16px;  /* fc-short, переклад під основним терміном */
-  --fs-tertiary: 14px;   /* q-label, lf-unit-cat, audio-unavail-text */
+  --fs-tertiary: 14px;   /* q-label, lf-unit-cat */
   --fs-utility: 12px;    /* lf-unit-hint, прогрес-лічильник */
   --fs-emphasis: calc(var(--fs-card) * 1.5); /* quiz-score-num — великий підсумковий результат */
   --fs-short: var(--fs-secondary); /* зворотна сумісність зі старими правилами */
@@ -243,31 +243,6 @@ body{
   border:1px solid rgba(201,168,76,.3);white-space:nowrap;
 }
 .notif.show{transform:translateX(-50%) translateY(0);opacity:1}
-
-/* Модальне підтвердження "аудіо недоступне" — на відміну від .notif,
-   не зникає сама: користувач сам натискає "Добре", коли прочитав. */
-.audio-unavail-overlay{
-  position:fixed;inset:0;background:rgba(0,0,0,.45);
-  display:flex;align-items:flex-end;justify-content:center;
-  z-index:900;opacity:0;pointer-events:none;transition:opacity .2s;
-}
-.audio-unavail-overlay.show{opacity:1;pointer-events:auto}
-.audio-unavail-card{
-  background:var(--paper);color:var(--ink);
-  border-radius:16px 16px 0 0;
-  padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));
-  width:100%;max-width:480px;
-  box-shadow:0 -4px 20px rgba(0,0,0,.2);
-  transform:translateY(100%);transition:transform .25s ease;
-}
-.audio-unavail-overlay.show .audio-unavail-card{transform:translateY(0)}
-.audio-unavail-text{font-size:var(--fs-tertiary);font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
-.audio-unavail-btn{
-  width:100%;background:var(--gold);color:var(--forest);
-  border:none;border-radius:10px;padding:13px;font-size:15px;font-weight:700;
-  cursor:pointer;
-}
-.audio-unavail-btn:active{opacity:.85;transform:scale(.98)}
 
 #view-favs.active,#view-settings.active,#view-lernpfad.active{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px) + 16px)}
 .vplayer{
@@ -2489,17 +2464,10 @@ body.lesson-active .vocab-top{
   </div>
 </div>
 
-<div class="audio-unavail-overlay" id="audio-unavail-overlay">
-  <div class="audio-unavail-card">
-    <div class="audio-unavail-text">🔇 <span id="audio-unavail-text"></span></div>
-    <button class="audio-unavail-btn" id="audio-unavail-btn"></button>
-  </div>
-</div>
-
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '296-ea056ba';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2701,8 +2669,6 @@ const I18N = {
     favs_empty:'Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.',
     settings_title:'⚙️ Einstellungen',
     sec_playback:'Wiedergabe',
-    audio_unavailable:'Audio nicht verfügbar — bitte selbst lesen',
-    btn_audio_unavailable_ok:'Gut, weiter',
     lbl_repeats:'Wiederholungen', sub_repeats:'Zyklen pro Karte',
     lbl_tempo:'Geschwindigkeit',
     lbl_pause:'Pause', sub_pause:'Zwischen Begriffen',
@@ -2781,8 +2747,6 @@ const I18N = {
     favs_empty:'Ще немає закладок.<br>Натисни ☆ на картці.',
     settings_title:'⚙️ Налаштування',
     sec_playback:'Відтворення',
-    audio_unavailable:'Аудіо недоступне — прочитайте самостійно',
-    btn_audio_unavailable_ok:'Добре, далі',
     lbl_repeats:'Повторення', sub_repeats:'Циклів на картку',
     lbl_tempo:'Швидкість',
     lbl_pause:'Пауза', sub_pause:'Між поняттями',
@@ -2856,8 +2820,6 @@ const I18N = {
     favs_empty:'No favorites yet.<br>Tap ☆ on a card.',
     settings_title:'⚙️ Settings',
     sec_playback:'Playback',
-    audio_unavailable:'Audio unavailable — please read it yourself',
-    btn_audio_unavailable_ok:'Got it, continue',
     lbl_repeats:'Repetitions', sub_repeats:'Cycles per card',
     lbl_tempo:'Speed',
     lbl_pause:'Pause', sub_pause:'Between terms',
@@ -2932,8 +2894,6 @@ const I18N = {
     favs_empty:'Нет закладок.<br>Нажми ☆ на карточке.',
     settings_title:'⚙️ Настройки',
     sec_playback:'Воспроизведение',
-    audio_unavailable:'Аудио недоступно — прочитайте самостоятельно',
-    btn_audio_unavailable_ok:'Хорошо, далее',
     lbl_repeats:'Повторения', sub_repeats:'Циклов на карточку',
     lbl_tempo:'Скорость',
     lbl_pause:'Пауза', sub_pause:'Между понятиями',
@@ -4576,11 +4536,10 @@ async function speak(text, lang, onEnd, cardId, field, silent){
     _ended = true;
     if(playGen === gen) onEnd && onEnd();
   };
-  // silent=true: ніколи не показуємо модалку "Аудіо недоступне" — просто
-  // мовчки переходимо далі (onEnd викликається без жодного UI-переривання).
-  // Використовується вправою "Знайди пару", де модалка зайве переривала би
-  // швидкий ігровий темп.
-  const failSilently = ()=>{ if(silent){ safeEnd(); } else { showAudioUnavailableModal(safeEnd, cardId); } };
+  // Якщо pregen-аудіо недоступне (404 / фетч не вдався) — раніше показували
+  // модалку "Аудіо недоступне" з кнопкою підтвердження; тепер просто одразу
+  // рухаємось далі, ніби користувач уже натиснув "Добре" — без переривання.
+  const failSilently = ()=>{ safeEnd(); };
 
   if(!cardId || !field){
     // Без cardId/field немає шляху до pregen-файлу взагалі — нічого
@@ -4643,10 +4602,6 @@ function stopTTS(){
   a.pause();
   if(currentAudio && currentAudio !== a){ currentAudio.pause(); }
   currentAudio = null;
-  // Якщо модалка "аудіо недоступне" від попередньої картки досі видима —
-  // прибираємо її без виклику onConfirm (його колбек прив'язаний до
-  // вже неактуального playGen і нічого корисного не зробить).
-  document.getElementById('audio-unavail-overlay')?.classList.remove('show');
 }
 
 // ── BACKGROUND/FOREGROUND handling ────────────────────────────
@@ -4718,17 +4673,6 @@ function resetCardStats(){
 }
 function notify(msg){const e=document.getElementById('notif');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
 
-// Модальне підтвердження "аудіо недоступне". На відміну від notify(),
-// не зникає сама за таймером — користувач сам читає текст картки і
-// натискає кнопку, коли готовий рухатись далі. onConfirm викликається
-// рівно один раз, після натискання.
-// Якщо одна картка має кілька полів для озвучення (term/short/def),
-// кожне невдале поле раніше показувало СВОЮ модалку — на одній картці
-// користувач міг побачити "аудіо недоступне" 2-3 рази підряд. Тепер
-// модалка показується ОДИН РАЗ за картку (cardId), решта невдалих
-// полів цієї ж картки пропускаються мовчки.
-let _audioUnavailShownForCard = null;
-
 // Чи реально прозвучало аудіо для поточної картки (хоч би для одного
 // поля). Використовується srGetExamPart(), щоб Hören рахувався лише
 // тоді, коли звук дійсно грав, а не теоретично "мав би" — інакше
@@ -4740,30 +4684,6 @@ function markAudioPlayedForCard(cardId){
 }
 function wasAudioPlayedForCard(cardId){
   return !!cardId && _audioPlayedForCard === cardId;
-}
-
-function showAudioUnavailableModal(onConfirm, cardId){
-  if(cardId && _audioUnavailShownForCard === cardId){
-    // Вже показували для цієї картки — не дублюємо, просто рухаємось далі.
-    onConfirm && onConfirm();
-    return;
-  }
-  const overlay = document.getElementById('audio-unavail-overlay');
-  const textEl  = document.getElementById('audio-unavail-text');
-  const btnEl   = document.getElementById('audio-unavail-btn');
-  if(!overlay || !textEl || !btnEl){ onConfirm && onConfirm(); return; } // захист якщо розмітки нема
-  if(cardId) _audioUnavailShownForCard = cardId;
-  textEl.textContent = t('audio_unavailable');
-  btnEl.textContent  = t('btn_audio_unavailable_ok');
-  overlay.classList.add('show');
-  let _done = false;
-  const finish = ()=>{
-    if(_done) return; _done = true;
-    overlay.classList.remove('show');
-    btnEl.removeEventListener('click', finish);
-    onConfirm && onConfirm();
-  };
-  btnEl.addEventListener('click', finish, {once:true});
 }
 
 // ── VOCAB ─────────────────────────────────────────────────────
