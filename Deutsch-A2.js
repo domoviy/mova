@@ -13,43 +13,369 @@ var AUDIO_CONFIG = {
 // ════════════════════════════════════════════════════════════════
 
 var GRAMMAR = [
-  {"id":"perfekt","de":"Perfekt","en":"Present perfect (Perfekt)","uk":"Перфект","ru":"Перфект"},
-  {"id":"praeteritum","de":"Präteritum","en":"Simple past (Präteritum)","uk":"Претерит","ru":"Претерит"},
-  {"id":"modalverben","de":"Modalverben (Präsens)","en":"Modal verbs (present)","uk":"Модальні дієслова (теперішній час)","ru":"Модальные глаголы (настоящее время)"},
-  {"id":"modalverben_praeteritum","de":"Modalverben im Präteritum","en":"Modal verbs in the simple past","uk":"Модальні дієслова у претериті","ru":"Модальные глаголы в претерите"},
-  {"id":"weil_satz","de":"Nebensatz mit weil","en":"Subordinate clause with weil (because)","uk":"Підрядне речення з weil (тому що)","ru":"Придаточное предложение с weil (потому что)"},
-  {"id":"dass_satz","de":"Nebensatz mit dass","en":"Subordinate clause with dass (that)","uk":"Підрядне речення з dass (що)","ru":"Придаточное предложение с dass (что)"},
-  {"id":"wenn_satz","de":"Nebensatz mit wenn","en":"Subordinate clause with wenn (if/when)","uk":"Підрядне речення з wenn (якщо/коли)","ru":"Придаточное предложение с wenn (если/когда)"},
-  {"id":"als_wenn_schon_erst","de":"als/wenn (Vergangenheit) und schon/erst","en":"als/wenn (past) and schon/erst (already/only)","uk":"als/wenn (минулий час) і schon/erst (вже/лише)","ru":"als/wenn (прошедшее время) и schon/erst (уже/только)"},
-  {"id":"dativ_verben","de":"Verben mit Dativ","en":"Verbs with dative","uk":"Дієслова з давальним відмінком","ru":"Глаголы с дательным падежом"},
-  {"id":"dativ_akkusativ_verben","de":"Verben mit Dativ und Akkusativ","en":"Verbs with dative and accusative","uk":"Дієслова з давальним і знахідним відмінками","ru":"Глаголы с дательным и винительным падежами"},
-  {"id":"wechselpraepositionen","de":"Wechselpräpositionen (Akkusativ/Dativ)","en":"Two-way prepositions (accusative/dative)","uk":"Прийменники подвійного керування (знахідний/давальний)","ru":"Предлоги двойного управления (винительный/дательный)"},
-  {"id":"lokale_praepositionen","de":"Lokale Präpositionen und Wegbeschreibung","en":"Prepositions of place and directions","uk":"Прийменники місця та опис маршруту","ru":"Предлоги места и описание маршрута"},
-  {"id":"temporale_praepositionen","de":"Temporale Präpositionen","en":"Prepositions of time","uk":"Прийменники часу","ru":"Предлоги времени"},
-  {"id":"adjektivendungen","de":"Adjektivendungen nach unbestimmtem Artikel/Possessivartikel","en":"Adjective endings after the indefinite/possessive article","uk":"Закінчення прикметників після неозначеного/присвійного артикля","ru":"Окончания прилагательных после неопределённого/притяжательного артикля"},
-  {"id":"was_fuer_ein","de":"Fragewort „Was für ein …?“","en":"Question word „What kind of …?“","uk":"Питальне слово «Який саме …?»","ru":"Вопросительное слово «Какой именно …?»"},
-  {"id":"komparativ","de":"Komparativ und Vergleiche (als, (nicht) so … wie)","en":"Comparative and comparisons (than, as … as)","uk":"Компаратив і порівняння (ніж, такий самий … як)","ru":"Компаратив и сравнения (чем, такой же … как)"},
-  {"id":"superlativ","de":"Superlativ","en":"Superlative","uk":"Суперлатив","ru":"Суперлатив"},
-  {"id":"demonstrativartikel","de":"Demonstrativartikel dieser, diese, dieses","en":"Demonstrative article dieser, diese, dieses (this)","uk":"Вказівний артикль dieser, diese, dieses (цей)","ru":"Указательный артикль dieser, diese, dieses (этот)"},
-  {"id":"hoeflichkeit_konjunktiv","de":"Höfliche Bitten (Konjunktiv II)","en":"Polite requests (subjunctive II)","uk":"Ввічливі прохання (кон'юнктив II)","ru":"Вежливые просьбы (конъюнктив II)"},
-  {"id":"personalpronomen","de":"Personalpronomen (Nominativ/Akkusativ/Dativ)","en":"Personal pronouns (nominative/accusative/dative)","uk":"Особові займенники (називний/знахідний/давальний)","ru":"Личные местоимения (именительный/винительный/дательный)"},
-  {"id":"reflexivpronomen_akkusativ","de":"Reflexivpronomen im Akkusativ","en":"Reflexive pronouns in the accusative","uk":"Зворотні займенники у знахідному відмінку","ru":"Возвратные местоимения в винительном падеже"},
-  {"id":"praepositionalverben","de":"Verben mit Präpositionen","en":"Verbs with prepositions","uk":"Дієслова з прийменниками","ru":"Глаголы с предлогами"},
-  {"id":"satz_mit_deshalb","de":"Satz mit deshalb","en":"Clause with deshalb (therefore)","uk":"Речення з deshalb (тому)","ru":"Предложение с deshalb (поэтому)"},
-  {"id":"hoeflichkeit_konjunktiv_a22","de":"Konjunktiv II: höflich fragen, bitten und Ratschläge geben","en":"Subjunctive II: asking, requesting and giving advice politely","uk":"Конʼюнктив II: ввічливо питати, просити й давати поради","ru":"Конъюнктив II: вежливо спрашивать, просить и давать советы"},
-  {"id":"adjektiv_bestimmter_artikel","de":"Adjektivendungen nach dem bestimmten Artikel","en":"Adjective endings after the definite article","uk":"Закінчення прикметників після означеного артикля","ru":"Окончания прилагательных после определённого артикля"},
-  {"id":"relativsatz_nominativ","de":"Relativsatz mit Relativpronomen im Nominativ","en":"Relative clause with relative pronoun in the nominative","uk":"Означальне речення із займенником у називному відмінку","ru":"Определительное придаточное с местоимением в именительном падеже"},
-  {"id":"verb_werden","de":"Das Verb werden","en":"The verb werden (to become)","uk":"Дієслово werden (ставати)","ru":"Глагол werden (становиться)"},
-  {"id":"verb_lassen","de":"Das Verb lassen","en":"The verb lassen (to let / have something done)","uk":"Дієслово lassen (дозволяти / доручати)","ru":"Глагол lassen (позволять / поручать)"},
-  {"id":"nebensatz_mit_damit","de":"Nebensatz mit damit","en":"Subordinate clause with damit (so that)","uk":"Підрядне речення з damit (щоб)","ru":"Придаточное предложение с damit (чтобы)"},
-  {"id":"indirekter_fragesatz_fragewort","de":"Indirekter Fragesatz mit Fragewort","en":"Indirect question with a question word","uk":"Непряме питання з питальним словом","ru":"Косвенный вопрос с вопросительным словом"},
-  {"id":"indirekter_fragesatz_ob","de":"Indirekter Fragesatz mit ob","en":"Indirect question with ob (whether)","uk":"Непряме питання з ob (чи)","ru":"Косвенный вопрос с ob (ли)"},
-  {"id":"praepositionen_akkusativ_dativ","de":"Wiederholung: Präpositionen mit Akkusativ und Dativ","en":"Review: prepositions with accusative and dative","uk":"Повторення: прийменники зі знахідним і давальним відмінками","ru":"Повторение: предлоги с винительным и дательным падежами"},
-  {"id":"personalpronomen_wdh","de":"Wiederholung: Personalpronomen","en":"Review: personal pronouns","uk":"Повторення: особові займенники","ru":"Повторение: личные местоимения"},
-  {"id":"nebensaetze_konnektoren_wdh","de":"Wiederholung: Nebensätze und Konnektoren","en":"Review: subordinate clauses and connectors","uk":"Повторення: підрядні речення та конектори","ru":"Повторение: придаточные предложения и коннекторы"},
-  {"id":"adjektiv_unbestimmter_artikel_wdh","de":"Wiederholung: Adjektivendungen nach dem unbestimmten Artikel","en":"Review: adjective endings after the indefinite article","uk":"Повторення: закінчення прикметників після неозначеного артикля","ru":"Повторение: окончания прилагательных после неопределённого артикля"},
-  {"id":"dass_satz_wdh","de":"Wiederholung: Nebensatz mit dass","en":"Review: subordinate clause with dass","uk":"Повторення: підрядне речення з dass","ru":"Повторение: придаточное предложение с dass"}
+  {
+    "id": "perfekt",
+    "title": {"de": "Perfekt", "en": "Present perfect (Perfekt)", "uk": "Перфект", "ru": "Перфект"},
+    "explanation": {
+      "de": "Das Perfekt nutzen wir für Aktionen in der Vergangenheit. Es besteht aus <g>haben</g> oder <g>sein</g> на Position 2 und dem <g>Partizip II</g> am Ende des Satzes.<br>Beispiel: Ich <g>habe</g> Deutsch <g>gelernt</g>. Er <g>ist</g> nach Berlin <g>geflogen</g>.",
+      "en": "We use Perfekt to talk about past actions. It is formed using <g>haben</g> or <g>sein</g> in the 2nd position and the <g>Partizip II</g> at the very end of the sentence.<br>Example: Ich <g>habe</g> Deutsch <g>gelernt</g>. Er <g>ist</g> nach Berlin <g>geflogen</g>.",
+      "uk": "Перфект використовується для опису дій у минулому. Він складається з допоміжного дієслова <g>haben</g> або <g>sein</g> на другому місці та основного дієслова у формі <g>Partizip II</g> в самому кінці речення.<br>Приклад: Ich <g>habe</g> Deutsch <g>gelernt</g>. Er <g>ist</g> nach Berlin <g>geflogen</g>.",
+      "ru": "Перфект используется для описания действий в прошлом. Он состоит из вспомогательного глагола <g>haben</g> или <g>sein</g> на втором месте и основного глагола в форме <g>Partizip II</g> в самом конце предложения.<br>Пример: Ich <g>habe</g> Deutsch <g>gelernt</g>. Er <g>ist</g> nach Berlin <g>geflogen</g>."
+    }
+  },
+  {
+    "id": "praeteritum",
+    "title": {"de": "Präteritum", "en": "Simple past (Präteritum)", "uk": "Претерит", "ru": "Претерит"},
+    "explanation": {
+      "de": "Das Präteritum ist eine andere Vergangenheitsform. Auf A2-Niveau benutzen wir es meistens nur für <g>war</g> (sein) und <g>hatte</g> (haben).<br>Beispiel: Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit.",
+      "en": "Präteritum is another past tense. At the A2 level, we mostly use it only for <g>war</g> (to be) and <g>hatte</g> (to have).<br>Example: Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit.",
+      "uk": "Претерит — це ще одна форма минулого часу. На рівні А2 ми зазвичай використовуємо його лише для дієслів <g>war</g> (був/була) та <g>hatte</g> (мав/мала).<br>Приклад: Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit.",
+      "ru": "Претерит — это еще одна форма прошедшего времени. На уровне А2 мы обычно используем его только для глаголов <g>war</g> (был/была) и <g>hatte</g> (имел/имела).<br>Пример: Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit."
+    }
+  },
+  {
+    "id": "modalverben",
+    "title": {"de": "Modalverben (Präsens)", "en": "Modal verbs (present)", "uk": "Модальні дієслова (теперішній час)", "ru": "Модальные глаголы (настоящее время)"},
+    "explanation": {
+      "de": "Modalverben (<g>können, müssen, wollen, dürfen, sollen, mögen</g>) stehen auf Position 2. Das zweite Verb steht im Infinitiv ganz am Ende.<br>Achtung: Die Formen für 'ich' und 'er/sie/es' sind gleich (ich <g>kann</g>, er <g>kann</g>).",
+      "en": "Modal verbs (<g>können, müssen, wollen, dürfen, sollen, mögen</g>) change their form and sit in the 2nd position. The main verb goes to the end of the sentence in its infinitive form.<br>Note: 'ich' and 'er/sie/es' forms are identical (ich <g>kann</g>, er <g>kann</g>).",
+      "uk": "Модальні дієслова (<g>können, müssen, wollen, dürfen, sollen, mögen</g>) стоять на другому місці у реченні. Друге (основне) дієслово стоїть у початковій формі (інфінітив) в самому кінці.<br>Увага: форми для 'ich' та 'er/sie/es' збігаються (ich <g>kann</g>, er <g>kann</g>).",
+      "ru": "Модальные глаголы (<g>können, müssen, wollen, dürfen, sollen, mögen</g>) стоят на втором месте в предложении. Второй (основной) глагол стоит в начальной форме (инфинитив) в самом конце.<br>Внимание: формы для 'ich' и 'er/sie/es' совпадают (ich <g>kann</g>, er <g>kann</g>)."
+    }
+  },
+  {
+    "id": "modalverben_praeteritum",
+    "title": {"de": "Modalverben im Präteritum", "en": "Modal verbs in the simple past", "uk": "Модальні дієслова у претериті", "ru": "Модальные глаголы в претерите"},
+    "explanation": {
+      "de": "In der Vergangenheit verlieren Modalverben ihren Umlaut (ä, ö, ü) und bekommen ein '-te-'.<br>Beispiel: können -> ich <g>konnte</g>, müssen -> ich <g>musste</g>, wollen -> ich <g>wollte</g>.",
+      "en": "In the past tense, modal verbs lose their umlauts (ä, ö, ü) and add '-te-'.<br>Example: können -> ich <g>konnte</g>, müssen -> ich <g>musste</g>, wollen -> ich <g>wollte</g>.",
+      "uk": "У минулому часі модальні дієслова втрачають умлаут (ä, ö, ü) та отримують суфікс '-te-'.<br>Приклад: können -> ich <g>konnte</g>, müssen -> ich <g>musste</g>, wollen -> ich <g>wollte</g>.",
+      "ru": "В прошедшем времени модальные глаголы теряют умлаут (ä, ö, ü) и получают суффикс '-te-'.<br>Пример: können -> ich <g>konnte</g>, müssen -> ich <g>musste</g>, wollen -> ich <g>wollte</g>."
+    }
+  },
+  {
+    "id": "weil_satz",
+    "title": {"de": "Nebensatz mit weil", "en": "Subordinate clause with weil (because)", "uk": "Підрядне речення з weil (тому що)", "ru": "Придаточное предложение с weil (поэтому что)"},
+    "explanation": {
+      "de": "Der Konnektor <g>weil</g> antwortet auf die Frage 'Warum?'. Nach <g>weil</g> steht das konjugierte Verb ganz am Ende des Satzes.<br>Beispiel: Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>.",
+      "en": "The conjunction <g>weil</g> answers the question 'Why?'. In a <g>weil</g>-clause, the conjugated verb moves to the very end of the sentence.<br>Example: Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>.",
+      "uk": "Сполучник <g>weil</g> відповідає на питання 'Чому?'. У підрядному реченні після <g>weil</g> змінюване дієслово йде на самий кінець речення.<br>Приклад: Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>.",
+      "ru": "Союз <g>weil</g> отвечает на вопрос 'Почему?'. В придаточном предложении после <g>weil</g> спрягаемый глагол уходит в самый конец предложения.<br>Пример: Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>."
+    }
+  },
+  {
+    "id": "dass_satz",
+    "title": {"de": "Nebensatz mit dass", "en": "Subordinate clause with dass (that)", "uk": "Підрядне речення з dass (що)", "ru": "Придаточное предложение с dass (что)"},
+    "explanation": {
+      "de": "Der Konnektor <g>dass</g> verbindet Sätze nach Verben des Denkens, Sagens oder Fühlens (glauben, sagen, wissen). Das konjugierte Verb steht am Ende.<br>Beispiel: Ich weiß, <g>dass</g> du recht <g>hast</g>.",
+      "en": "The conjunction <g>dass</g> connects clauses after verbs of thinking, saying, or feeling (glauben, sagen, wissen). The conjugated verb goes to the end.<br>Example: Ich weiß, <g>dass</g> du recht <g>hast</g>.",
+      "uk": "Сполучник <g>dass</g> з'єднує речення після дієслів думки, мовлення або відчуття (glauben, sagen, wissen). Змінюване дієслово стоїть у кінці.<br>Приклад: Ich weiß, <g>dass</g> du recht <g>hast</g>.",
+      "ru": "Союз <g>dass</g> соединяет предложения после глаголов мысли, речи или чувства (glauben, sagen, wissen). Спрягаемый глагол стоит в конце.<br>Пример: Ich weiß, <g>dass</g> du recht <g>hast</g>."
+    }
+  },
+  {
+    "id": "wenn_satz",
+    "title": {"de": "Nebensatz mit wenn", "en": "Subordinate clause with wenn (if / when)", "uk": "Підрядне речення з wenn (якщо / коли)", "ru": "Придаточное предложение с wenn (если/когда)"},
+    "explanation": {
+      "de": "Wir benutzen <g>wenn</g> für Bedingungen (Wenn...) або für wiederholte Aktionen in der Gegenwart/Vergangenheit. Das Verb steht am Ende.<br>Beispiel: <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause.",
+      "en": "We use <g>wenn</g> for conditions (If...) or repeated actions in the present/past. The verb goes to the end.<br>Example: <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause.",
+      "uk": "Ми використовуємо <g>wenn</g> для умов (Якщо...) або для повторюваних дій у теперішньому чи минулому часі (Коли...). Дієслово йде на кінець.<br>Приклад: <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause.",
+      "ru": "Мы используем <g>wenn</g> для условий (Если...) или для повторяющихся действий в настоящем или прошлом (Когда...). Глагол уходит на конец.<br>Пример: <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause."
+    }
+  },
+  {
+    "id": "als_wenn_schon_erst",
+    "title": {"de": "als/wenn (Vergangenheit) und schon/erst", "en": "als/wenn (past) and schon/erst (already/only)", "uk": "als/wenn (минулий час) і schon/erst (вже/лише)", "ru": "als/wenn (прошедшее время) и schon/erst (уже/только)"},
+    "explanation": {
+      "de": "Für einmalige Aktionen in der Vergangenheit nutzen wir <g>als</g>, für wiederholte nutzen wir <g>wenn</g>. <g>Schon</g> bedeutet früher/mehr als erwartet, <g>erst</g> bedeutet später/weniger.<br>Beispiel: <g>Als</g> ich Kind war, war ich <g>erst</g> einmal in Berlin.",
+      "en": "For single past events we use <g>als</g>, for repeated past events we use <g>wenn</g>. <g>Schon</g> means already (sooner/more than expected), <g>erst</g> means only/not until (later/less).<br>Example: <g>Als</g> ich Kind war, war ich <g>erst</g> einmal in Berlin.",
+      "uk": "Для одноразових подій у минулому використовуємо <g>als</g>, для повторюваних — <g>wenn</g>. Слово <g>schon</g> означає 'вже' (раніше, ніж очікувалось), а <g>erst</g> — 'лише / тільки' (пізніше або менше).<br>Приклад: <g>Als</g> ich Kind war, war ich <g>erst</g> einmal in Berlin.",
+      "ru": "Для однократных событий в прошлом используем <g>als</g>, для повторяющихся — <g>wenn</g>. Слово <g>schon</g> означает 'уже' (раньше, чем ожидалось), а <g>erst</g> — 'только / всего лишь' (позже или меньше).<br>Пример: <g>Als</g> ich Kind war, war ich <g>erst</g> einmal in Berlin."
+    }
+  },
+  {
+    "id": "dativ_verben",
+    "title": {"de": "Verben mit Dativ", "en": "Verbs with dative", "uk": "Дієслова з давальним відмінком", "ru": "Глаголы с дательным падежом"},
+    "explanation": {
+      "de": "Einige Verben brauchen immer ein Objekt im Dativ (Frage: Wem?). Wichtige Verben: <g>helfen, danken, gefallen, gehören, schmecken</g>.<br>Beispiel: Ich helfe <g>dem</g> Mann (Maskulin: der -> dem).",
+      "en": "Some verbs always require an object in the dative case (Question: To whom?). Key verbs: <g>helfen, danken, gefallen, gehören, schmecken</g>.<br>Example: Ich helfe <g>dem</g> Mann (Masculine: der -> dem).",
+      "uk": "Деякі дієслова завжди вимагають після себе давального відмінка (Питання: Кому?). Важливі дієслова: <g>helfen, danken, gefallen, gehören, schmecken</g>.<br>Приклад: Ich helfe <g>dem</g> Mann (Чоловічий рід: der -> dem).",
+      "ru": "Некоторые глаголы всегда требуют после себя дательного падежа (Вопрос: Кому?). Важные глаголы: <g>helfen, danken, gefallen, gehören, schmecken</g>.<br>Пример: Ich helfe <g>dem</g> Mann (Мужской род: der -> dem)."
+    }
+  },
+  {
+    "id": "dativ_akkusativ_verben",
+    "title": {"de": "Verben mit Dativ und Akkusativ", "en": "Verbs with dative and accusative", "uk": "Дієслова з давальним і знахідним відмінками", "ru": "Глаголы с дательным и винительным падежами"},
+    "explanation": {
+      "de": "Verben wie <g>geben, zeigen, schenken, bringen</g> haben zwei Objekte: Die Person steht im <g>Dativ</g> (Wem?), die Sache steht im <g>Akkusativ</g> (Was?).<br>Beispiel: Ich gebe <g>dem Kind</g> (Dativ) <g>einen Ball</g> (Akkusativ).",
+      "en": "Verbs like <g>geben, zeigen, schenken, bringen</g> have two objects: the person is in the <g>dative</g> (To whom?), and the thing is in the <g>accusative</g> (What?).<br>Example: Ich gebe <g>dem Kind</g> (Dative) <g>einen Ball</g> (Accusative).",
+      "uk": "Дієслова на кшталт <g>geben, zeigen, schenken, bringen</g> мають два додатки: особа завжди стоїть у <g>давальному</g> відмінку (Кому?), а річ — у <g>знахідному</g> (Що?).<br>Приклад: Ich gebe <g>dem Kind</g> (Давальний) <g>einen Ball</g> (Знахідний).",
+      "ru": "Глаголы вроде <g>geben, zeigen, schenken, bringen</g> имеют два дополнения: лицо всегда стоит в <g>дательном</g> падеже (Кому?), а вещь — в <g>винительном</g> (Что?).<br>Пример: Ich gebe <g>dem Kind</g> (Дательный) <g>einen Ball</g> (Винительный)."
+    }
+  },
+  {
+    "id": "wechselpraepositionen",
+    "title": {"de": "Wechselpräpositionen (Akkusativ/Dativ)", "en": "Two-way prepositions (accusative/dative)", "uk": "Прийменники подвійного керування (знахідний/давальний)", "ru": "Предлоги двойного управления (винительный/дательный)"},
+    "explanation": {
+      "de": "Neun Präpositionen (z.B. <g>in, auf, an, unter</g>) wechseln den Kasus: Wohin? (Aktion/Bewegung) -> <g>Akkusativ</g>. Wo? (Position/Ruhe) -> <g>Dativ</g>.<br>Beispiel: Ich hänge das Bild <g>an die</g> Wand (Akk.). Das Bild hängt <g>an der</g> Wand (Dat.).",
+      "en": "Nine prepositions (e.g., <g>in, auf, an, unter</g>) change case: Where to? (movement/action) -> <g>Accusative</g>. Where? (location/rest) -> <g>Dative</g>.<br>Example: Ich hänge das Bild <g>an die</g> Wand (Acc.). Das Bild hängt <g>an der</g> Wand (Dat.).",
+      "uk": "Дев'ять прийменників (напр., <g>in, auf, an, unter</g>) змінюють відмінок: Куди? (рух/дія) -> <g>Знахідний</g>. Де? (статичне місце) -> <g>Давальний</g>.<br>Приклад: Ich hänge das Bild <g>an die</g> Wand (Знахідний). Das Bild hängt <g>an der</g> Wand (Давальний).",
+      "ru": "Девять предлогов (напр., <g>in, auf, an, unter</g>) меняют падеж: Куда? (движение/действие) -> <g>Винительный</g>. Где? (положение/покой) -> <g>Дательный</g>.<br>Пример: Ich hänge das Bild <g>an die</g> Wand (Вин.). Das Bild hängt <g>an der</g> Wand (Дат.)."
+    }
+  },
+  {
+    "id": "lokale_praepositionen",
+    "title": {"de": "Lokale Präpositionen und Wegbeschreibung", "en": "Prepositions of place and directions", "uk": "Прийменники місця та опис маршруту", "ru": "Предлоги места и описание маршрута"},
+    "explanation": {
+      "de": "Wir nutzen Präpositionen wie <g>zu, nach, in, an, über</g> für Richtungen. <g>Zu</g> steht oft bei Personen/Geschäften (Dativ), <g>nach</g> bei Städten/Ländern ohne Artikel.<br>Beispiel: Ich gehe <g>zum</g> Arzt. Ich fliege <g>nach</g> Paris.",
+      "en": "We use prepositions like <g>zu, nach, in, an, über</g> to describe directions. <g>Zu</g> is used for people or businesses (+ Dative), <g>nach</g> for cities and countries without articles.<br>Example: Ich gehe <g>zum</g> Arzt. Ich fliege <g>nach</g> Paris.",
+      "uk": "Ми використовуємо прийменники <g>zu, nach, in, an, über</g> для вказівки напрямку. Напрямок <g>zu</g> вживаємо до людей або установ (+ Давальний), а <g>nach</g> — до міст і країн без артикля.<br>Приклад: Ich gehe <g>zum</g> Arzt. Ich fliege <g>nach</g> Paris.",
+      "ru": "Мы используем предлоги <g>zu, nach, in, an, über</g> для указания направления. Направление <g>zu</g> используется к людям или учреждениям (+ Дательный), а <g>nach</g> — к городам и странам без артикля.<br>Пример: Ich gehe <g>zum</g> Arzt. Ich fliege <g>nach</g> Paris."
+    }
+  },
+  {
+    "id": "temporale_praepositionen",
+    "title": {"de": "Temporale Präpositionen", "en": "Prepositions of time", "uk": "Прийменники часу", "ru": "Предлоги времени"},
+    "explanation": {
+      "de": "Präpositionen für Zeitpunkte und Dauer: <g>vor</g> (Vergangenheit), <g>nach</g> (Zukunft/Ablauf), <g>seit</g> (startete in Vergangenheit, dauert an), <g>für</g> (+ Akkusativ, Dauer).<br>Beispiel: <g>Seit einem</g> Jahr lerne ich Deutsch <g>für einen</g> Monat.",
+      "en": "Prepositions for points in time or duration: <g>vor</g> (past event), <g>nach</g> (after an event), <g>seit</g> (started in the past, still ongoing + Dative), <g>für</g> (for a duration + Accusative).<br>Example: <g>Seit einem</g> Jahr lerne ich Deutsch <g>für einen</g> Monat.",
+      "uk": "Прийменники для позначення часу та тривалості: <g>vor</g> (до/тому назад), <g>nach</g> (після), <g>seit</g> (з певного часу в минулому і триває досі + Давальний), <g>für</g> (на якийсь час + Знахідний).<br>Приклад: <g>Seit einem</g> Jahr lerne ich Deutsch <g>für einen</g> Monat.",
+      "ru": "Предлоги для обозначения времени и длительности: <g>vor</g> (до/назад), <g>nach</g> (после), <g>seit</g> (с какого-то времени в прошлом и продолжается сейчас + Дательный), <g>für</g> (на какое-то время + Винительный).<br>Пример: <g>Seit einem</g> Jahr lerne ich Deutsch <g>für einen</g> Monat."
+    }
+  },
+  {
+    "id": "adjektivendungen",
+    "title": {"de": "Adjektivendungen nach unbestimmtem Artikel/Possessivartikel", "en": "Adjective endings after the indefinite/possessive article", "uk": "Закінчення прикметників після неозначеного/присвійного артикля", "ru": "Окончания прилагательных после неопределённого/притятяжательного артикля"},
+    "explanation": {
+      "de": "Wenn vor dem Adjektiv ein Wort wie 'ein' oder 'mein' steht, zeigt das Adjektiv im Nominativ das Signal des Nomens: maskulin (<g>-er</g>), neutral (<g>-es</g>), feminin (<g>-e</g>). Im Akkusativ Maskulin ist es immer <g>-en</g>.<br>Beispiel: Das ist ein <g>guter</g> Mann. Ich habe ein <g>schönes</g> Auto.",
+      "en": "When a word like 'ein' or 'mein' comes before an adjective, the adjective in the nominative takes the gender signal: masculine (<g>-er</g>), neutral (<g>-es</g>), feminine (<g>-e</g>). In the accusative masculine, it is always <g>-en</g>.<br>Example: Das ist ein <g>guter</g> Mann. Ich habe ein <g>schönes</g> Auto.",
+      "uk": "Якщо перед прикметником стоїть слово 'ein' або 'mein', прикметник у називному відмінку переймає закінчення роду: чоловічий (<g>-er</g>), середній (<g>-es</g>), жіночий (<g>-e</g>). У знахідному відмінку чол. роду завжди буде <g>-en</g>.<br>Приклад: Das ist ein <g>guter</g> Mann. Ich habe ein <g>schönes</g> Auto.",
+      "ru": "Если перед прилагательным стоит слово 'ein' или 'mein', прилагательное в именительном падеже принимает окончание рода: мужской (<g>-er</g>), средний (<g>-es</g>), женский (<g>-e</g>). В винительном падеже муж. рода всегда будет <g>-en</g>.<br>Пример: Das ist ein <g>guter</g> Mann. Ich habe ein <g>schönes</g> Auto."
+    }
+  },
+  {
+    "id": "was_fuer_ein",
+    "title": {"de": "Fragewort „Was für ein …?“", "en": "Question word „What kind of …?“", "uk": "Питальне слово «Який саме …?»", "ru": "Вопросительное слово «Какой именно …?»"},
+    "explanation": {
+      "de": "Mit <g>Was für ein...</g> fragt man nach Eigenschaften oder einer Auswahl. Das Wort 'ein' ändert sich nach Kasus und Numerus.<br>Beispiel: <g>Was für ein</g> Auto hast du? (Neutral, Akkusativ).",
+      "en": "We use <g>Was für ein...</g> to ask about characteristics or options (What kind of...?). The word 'ein' changes based on case and gender.<br>Example: <g>Was für ein</g> Auto hast du? (Neutral, Accusative).",
+      "uk": "За допомогою <g>Was für ein...</g> запитують про якість або вибір речі (Що це за...? Який саме...?). Слово 'ein' змінюється залежно від відмінка та роду.<br>Приклад: <g>Was für ein</g> Auto hast du? (Середній рід, Знахідний відмінок).",
+      "ru": "С помощью <g>Was für ein...</g> спрашивают о качестве или выборе вещи (Что за...? Какой именно...?). Слово 'ein' меняется в зависимости от падежа и рода.<br>Пример: <g>Was für ein</g> Auto hast du? (Средний род, Винительный падеж)."
+    }
+  },
+  {
+    "id": "komparativ",
+    "title": {"de": "Komparativ und Vergleiche (als, (nicht) so … wie)", "en": "Comparative and comparisons (than, as … as)", "uk": "Компаратив і порівняння (ніж, такий самий … як)", "ru": "Компаратив и сравнения (чем, такой же … как)"},
+    "explanation": {
+      "de": "Der Komparativ bekommt ein <g>-er</g> (oft mit Umlaut: alt -> älter). Für Gleichheit nutzen wir <g>so ... wie</g>. Für Unterschiede nutzen wir den Komparativ + <g>als</g>.<br>Beispiel: Er ist <g>so groß wie</g> ich. Вона працює <g>mehr als</g> er.",
+      "en": "The comparative form adds <g>-er</g> (often with an umlaut: alt -> älter). To show equality, use <g>so ... wie</g>. For differences, use the comparative + <g>als</g>.<br>Example: Er ist <g>so groß wie</g> ich. Er ist <g>älter als</g> ich.",
+      "uk": "Вищий ступінь прикметників (компаратив) отримує закінчення <g>-er</g> (часто з умлаутом: alt -> älter). Для порівняння однакових речей використовуємо <g>so ... wie</g> (такий же ... як), для різних — компаратив + <g>als</g> (ніж).<br>Приклад: Er ist <g>so groß wie</g> ich. Er ist <g>älter als</g> ich.",
+      "ru": "Сравнительная степень прилагательных (компаратив) получает окончание <g>-er</g> (часто с умлаутом: alt -> älter). Для сравнения одинаковых вещей используем <g>so ... wie</g> (такой же ... как), для разных — компаратив + <g>als</g> (чем).<br>Пример: Er ist <g>so groß wie</g> ich. Er ist <g>älter als</g> ich."
+    }
+  },
+  {
+    "id": "superlativ",
+    "title": {"de": "Superlativ", "en": "Superlative", "uk": "Суперлатив", "ru": "Суперлатив"},
+    "explanation": {
+      "de": "Der Superlativ ist die höchste Stufe. Nach Verben nutzen wir meistens <g>am ...-sten</g>. Vor Nomen nutzen wir den bestimmten Artikel + <g>-ste</g>.<br>Beispiel: Kaffee schmeckt mir <g>am besten</g>. Das є das <g>schönste</g> Haus.",
+      "en": "The superlative is the highest form. After verbs, we usually use <g>am ...-sten</g>. Before nouns, we use the definite article + <g>-ste</g> with correct adjective ending.<br>Example: Kaffee schmeckt mir <g>am besten</g>. Das ist das <g>schönste</g> Haus.",
+      "uk": "Найвищий ступінь прикметників (суперлатив) виражає найвищу якість. Після дієслів зазвичай використовуємо форму <g>am ...-sten</g>. Перед іменниками — означений артикль + закінчення <g>-ste</g>.<br>Приклад: Kaffee schmeckt mir <g>am besten</g>. Das ist das <g>schönste</g> Haus.",
+      "ru": "Превосходная степень прилагательных (суперлатив) выражает наивысшее качество. После глаголов обычно используем форму <g>am ...-sten</g>. Перед существительными — определенный артикль + окончание <g>-ste</g>.<br>Пример: Kaffee schmeckt mir <g>am besten</g>. Das ist das <g>schönste</g> Haus."
+    }
+  },
+  {
+    "id": "demonstrativartikel",
+    "title": {"de": "Demonstrativartikel dieser, diese, dieses", "en": "Demonstrative article dieser, diese, dieses (this)", "uk": "Вказівний артикль dieser, diese, dieses (цей)", "ru": "Указательный артикль dieser, diese, dieses (этот)"},
+    "explanation": {
+      "de": "Mit <g>dieser, diese, dieses</g> zeigt man auf eine konkrete Person oder Sache. Sie deklarieren sich genau wie der bestimmte Artikel (der, die, das).<br>Beispiel: Mir gefällt <g>dieses</g> Buch (Buch ist neutral -> dieses).",
+      "en": "We use <g>dieser, diese, dieses</g> to point out a specific person or object (this). They decline exactly like definite articles (der, die, das).<br>Example: Mir gefällt <g>dieses</g> Buch (Buch is neutral -> dieses).",
+      "uk": "Вказівні артиклі <g>dieser, diese, dieses</g> вказують на конкретну особу чи річ (цей, ця, це). Вони відмінюються точно так само, як і означені артиклі (der, die, das).<br>Приклад: Mir gefällt <g>dieses</g> Buch (нейтральний рід -> dieses).",
+      "ru": "Указательные артикли <g>dieser, diese, dieses</g> указывают на конкретное лицо или вещь (этот, эта, это). Они склоняются точно так же, как и определенные артикли (der, die, das).<br>Пример: Mir gefällt <g>dieses</g> Buch (средний род -> dieses)."
+    }
+  },
+  {
+    "id": "hoeflichkeit_konjunktiv",
+    "title": {"de": "Höfliche Bitten (Konjunktiv II)", "en": "Polite requests (subjunctive II)", "uk": "Ввічливі прохання (кон'юнктив II)", "ru": "Вежливые просьбы (конъюнктив II)"},
+    "explanation": {
+      "de": "Für extra höfliche Bitten benutzen wir den Konjunktiv II. Meistens benutzen wir <g>hätte</g>, <g>wäre</g> oder die Kombination <g>würde</g> + Infinitiv am Ende.<br>Beispiel: Ich <g>hätte</g> gern einen Kaffee. <g>Würden</g> Sie mir bitte <g>helfen</g>?",
+      "en": "For extra polite requests, we use Subjunctive II. Mostly we use <g>hätte</g>, <g>wäre</g> or the combination <g>würde</g> + infinitive at the end.<br>Example: Ich <g>hätte</g> gern einen Kaffee. <g>Würden</g> Sie mir bitte <g>helfen</g>?",
+      "uk": "Для дуже ввічливих прохань використовується сослагательний спосіб (Кон'юнктив ІІ). Найчастіше ми вживаємо форми <g>hätte</g>, <g>wäre</g> або комбінацію <g>würde</g> + інфінітив у кінці речення.<br>Приклад: Ich <g>hätte</g> gern einen Kaffee. <g>Würden</g> Sie mir bitte <g>helfen</g>?",
+      "ru": "Для очень вежливых просьб используется сослагательное наклонение (Конъюнктив II). Чаще всего мы используем формы <g>hätte</g>, <g>wäre</g> или комбинацию <g>würde</g> + инфинитив в конце предложения.<br>Пример: Ich <g>hätte</g> gern einen Kaffee. <g>Würden</g> Sie mir bitte <g>helfen</g>?"
+    }
+  },
+  {
+    "id": "personalpronomen",
+    "title": {"de": "Personalpronomen (Nominativ/Akkusativ/Dativ)", "en": "Personal pronouns (nominative/accusative/dative)", "uk": "Особові займенники (називний/знахідний/давальний)", "ru": "Личные местоимения (именительный/винительный/дательный)"},
+    "explanation": {
+      "de": "Personalpronomen ändern sich je nach Kasus. Nominativ (ich/du), Akkusativ (mich/dich) und Dativ (mir/dir).<br>Beispiel: Hilfst du <g>mir</g> (Dativ)? Ich liebe <g>dich</g> (Akkusativ).",
+      "en": "Personal pronouns change depending on the case: Nominative (ich/du), Accusative (mich/dich), and Dative (mir/dir).<br>Example: Hilfst du <g>mir</g> (Dative)? Ich liebe <g>dich</g> (Accusative).",
+      "uk": "Особові займенники змінюють свою форму залежно від відмінка: Називний (ich/du), Знахідний (mich/dich) та Давальний (mir/dir).<br>Приклад: Hilfst du <g>mir</g> (Давальний)? Ich liebe <g>dich</g> (Знахідний).",
+      "ru": "Личные местоимения изменяют свою форму в зависимости от падежа: Именительный (ich/du), Винительный (mich/dich) и Дательный (mir/dir).<br>Пример: Hilfst du <g>mir</g> (Дательный)? Ich liebe <g>dich</g> (Винительный)."
+    }
+  },
+  {
+    "id": "reflexivpronomen_akkusativ",
+    "title": {"de": "Reflexivpronomen im Akkusativ", "en": "Reflexive pronouns in the accusative", "uk": "Зворотні займенники у знахідному відмінку", "ru": "Возвратные местоимения в винительном падеже"},
+    "explanation": {
+      "de": "Reflexive Verben brauchen ein Reflexivpronomen (z.B. <g>mich, dich, sich</g>). Es zeigt, dass die Aktion zurück zum Subjekt geht.<br>Beispiel: Ich wasche <g>mich</g>. Er freut <g>sich</g>.",
+      "en": "Reflexive verbs require a reflexive pronoun (e.g., <g>mich, dich, sich</g>). It shows that the action reflects back to the subject.<br>Example: Ich wasche <g>mich</g>. Er freut <g>sich</g>.",
+      "uk": "Зворотні дієслова потребують зворотного займенника (напр., <g>mich, dich, sich</g>), який є аналогом часточки '-ся'. Він показує, що дія спрямована на самого себе.<br>Приклад: Ich wasche <g>mich</g> (Я миюся). Er freut <g>sich</g> (Він радіє).",
+      "ru": "Возвратные глаголы требуют возвратного местоимения (напр., <g>mich, dich, sich</g>), которое является аналогом частицы '-ся'. Оно показывает, что действие направлено на самого себя.<br>Пример: Ich wasche <g>mich</g> (Я моюсь). Er freut <g>sich</g> (Он радуется)."
+    }
+  },
+  {
+    "id": "praepositionalverben",
+    "title": {"de": "Verben mit Präpositionen", "en": "Verbs with prepositions", "uk": "Дієслова з прийменниками", "ru": "Глаголы с предлогами"},
+    "explanation": {
+      "de": "Viele Verben haben eine feste Präposition + einen festen Kasus. Man muss sie zusammen lernen. Wichtig: <g>warten auf</g> (+ Akkusativ), <g>sprechen mit</g> (+ Dativ).<br>Beispiel: Ich warte <g>auf den</g> Bus.",
+      "en": "Many verbs have a fixed preposition and a fixed case. You have to memorize them together. Key examples: <g>warten auf</g> (+ Accusative), <g>sprechen mit</g> (+ Dative).<br>Example: Ich warte <g>auf den</g> Bus.",
+      "uk": "Багато дієслів мають сталий прийменник та вимагають конкретного відмінка. Їх потрібно вчити разом. Важливо: <g>warten auf</g> (+ Знахідний), <g>sprechen mit</g> (+ Давальний).<br>Приклад: Ich warte <g>auf den</g> Bus.",
+      "ru": "Многие глаголы имеют фиксированный предлог и требуют конкретного падежа. Их нужно учить вместе. Важно: <g>warten auf</g> (+ Винительный), <g>sprechen mit</g> (+ Дательный).<br>Пример: Ich warte <g>auf den</g> Bus."
+    }
+  },
+  {
+    "id": "satz_mit_deshalb",
+    "title": {"de": "Satz mit deshalb", "en": "Clause with deshalb (therefore)", "uk": "Речення з deshalb (тому)", "ru": "Предложение с deshalb (поэтому)"},
+    "explanation": {
+      "de": "<g>Deshalb</g> zeigt eine Konsequenz (Deswegen/Darum). Wichtig: <g>deshalb</g> steht auf Position 1 im Hauptsatz, direkt danach kommt das konjugierte Verb!<br>Beispiel: Ich bin krank, <g>deshalb bleibe</g> ich im Bett.",
+      "en": "<g>Deshalb</g> expresses a consequence (therefore / that's why). Note: <g>deshalb</g> takes the 1st position in the main clause, followed immediately by the conjugated verb!<br>Example: Ich bin krank, <g>deshalb bleibe</g> ich im Bett.",
+      "uk": "Слово <g>deshalb</g> виражає наслідок (тому / через це). Важливо: <g>deshalb</g> займає 1-шу позицію в головному реченні, тому одразу після нього стоїть дієслово!<br>Приклад: Ich bin krank, <g>deshalb bleibe</g> ich im Bett.",
+      "ru": "Слово <g>deshalb</g> выражает следствие (поэтому / из-за этого). Важно: <g>deshalb</g> занимает 1-ю позицию в главном предложении, поэтому сразу после него стоит глагол!<br>Пример: Ich bin krank, <g>deshalb bleibe</g> ich im Bett."
+    }
+  },
+  {
+    "id": "hoeflichkeit_konjunktiv_a22",
+    "title": {"de": "Konjunktiv II: höflich fragen, bitten und Ratschläge geben", "en": "Subjunctive II: asking, requesting and giving advice politely", "uk": "Конʼюнктив II: ввічливо питати, просити й давати поради", "ru": "Конъюнктив II: вежливо спрашивать, просить и давать советы"},
+    "explanation": {
+      "de": "Im Modul A2.2 erweitern wir den Konjunktiv II. Mit <g>sollte</g> geben wir Ratschläge, mit <g>könnte</g> fragen wir sehr höflich.<br>Beispiel: Du <g>solltest</g> zum Arzt gehen. <g>Könnten</g> Sie das Fenster schließen?",
+      "en": "In module A2.2 we expand Subjunctive II. We use <g>sollte</g> to give advice and <g>könnte</g> to ask very politely.<br>Example: Du <g>solltest</g> zum Arzt gehen. <g>Könnten</g> Sie das Fenster schließen?",
+      "uk": "У модулі А2.2 ми розширюємо використання Кон'юнктиву ІІ. Форму <g>sollte</g> використовують для порад (тобі слід було б), а <g>könnte</g> — для дуже ввічливих питань.<br>Приклад: Du <g>solltest</g> zum Arzt gehen. <g>Könnten</g> Sie das Fenster schließen?",
+      "ru": "В модуле А2.2 мы расширяем использование Конъюнктива II. Форму <g>sollte</g> используют для советов (тебе следовало бы), а <g>könnte</g> — для очень вежливых вопросов.<br>Пример: Du <g>solltest</g> zum Arzt gehen. <g>Könnten</g> Sie das Fenster schließen?"
+    }
+  },
+  {
+    "id": "adjektiv_bestimmter_artikel",
+    "title": {"de": "Adjektivendungen nach dem bestimmten Artikel", "en": "Adjective endings after the definite article", "uk": "Закінчення прикметників після означеного артикля", "ru": "Окончания прилагательных после определённого артикля"},
+    "explanation": {
+      "de": "Nach dem bestimmten Artikel (der, die, das) haben Adjektive im Nominativ immer die Endung <g>-e</g>. Im Plural und in anderen Kasus (Dativ, Akkusativ maskulin) ist die Endung meistens <g>-en</g>.<br>Beispiel: Der <g>neue</g> Kollege ist nett. Ich helfe dem <g>alten</g> Mann.",
+      "en": "After the definite article (der, die, das), adjectives in the nominative always end in <g>-e</g>. In the plural and other cases (Dative, Accusative masculine), the ending is mostly <g>-en</g>.<br>Example: Der <g>neue</g> Kollege ist nett. Ich helfe dem <g>alten</g> Mann.",
+      "uk": "Після означеного артикля (der, die, das) прикметники в називному відмінку завжди мають закінчення <g>-e</g>. У множині та інших відмінках (Давальний, Знахідний чол. роду) закінчення зазвичай змінюється на <g>-en</g>.<br>Приклад: Der <g>neue</g> Kollege ist nett. Ich helfe dem <g>alten</g> Mann.",
+      "ru": "После определенного артикля (der, die, das) прилагательные в именительном падеже всегда имеют окончание <g>-e</g>. Во множественном числе и других падежах (Дательный, Винительный муж. рода) окончание обычно меняется на <g>-en</g>.<br>Пример: Der <g>neue</g> Kollege ist nett. Ich helfe dem <g>alten</g> Mann."
+    }
+  },
+  {
+    "id": "relativsatz_nominativ",
+    "title": {"de": "Relativsatz mit Relativpronomen im Nominativ", "en": "Relative clause with relative pronoun in the nominative", "uk": "Означальне речення із займенником у називному відмінку", "ru": "Определительное придаточное с местоимением в именительном падеже"},
+    "explanation": {
+      "de": "Ein Relativsatz beschreibt ein Nomen näher. Im Nominativ entspricht das Relativpronomen dem Artikel des Nomens (<g>der, die, das, die</g>). Das Verb steht am Ende.<br>Beispiel: Das ist der Mann, <g>der</g> hier <g>wohnt</g>.",
+      "en": "A relative clause describes a noun in more detail. In the nominative, the relative pronoun looks exactly like the definite article (<g>der, die, das, die</g>). The verb goes to the end.<br>Example: Das ist der Mann, <g>der</g> hier <g>wohnt</g>.",
+      "uk": "Підрядне означальне речення детальніше описує іменник. У називному відмінку відносний займенник збігається з артиклем іменника (<g>der, die, das, die</g>). Дієслово стоїть у кінці.<br>Приклад: Das ist der Mann, <g>der</g> hier <g>wohnt</g>.",
+      "ru": "Придаточное определительное предложение подробнее описывает существительное. В именительном падеже относительное местоимение совпадает с артиклем существительного (<g>der, die, das, die</g>). Глагол стоит в конце.<br>Пример: Das ist der Mann, <g>der</g> hier <g>wohnt</g>."
+    }
+  },
+  {
+    "id": "verb_werden",
+    "title": {"de": "Das Verb werden", "en": "The verb werden (to become)", "uk": "Дієслово werden (ставати)", "ru": "Глагол werden (становиться)"},
+    "explanation": {
+      "de": "Das Verb <g>werden</g> bedeutet eine Veränderung oder Zukunft. Es ist unregelmäßig: ich werde, du <g>wirst</g>, er/sie/es <g>wird</g>.<br>Beispiel: Mein Sohn <g>wird</g> bald Arzt. Es <g>wird</g> kalt.",
+      "en": "The verb <g>werden</g> means a change or development (to become). It is irregular: ich werde, du <g>wirst</g>, er/sie/es <g>wird</g>.<br>Example: Mein Sohn <g>wird</g> bald Arzt. Es <g>wird</g> kalt.",
+      "uk": "Дієслово <g>werden</g> означає зміну стану, розвиток або майбутній час (ставати чимось/кимось). Воно неправильне: ich werde, du <g>wirst</g>, er/sie/es <g>wird</g>.<br>Приклад: Mein Sohn <g>wird</g> bald Arzt. Es <g>wird</g> kalt.",
+      "ru": "Глагол <g>werden</g> означает изменение состояния, развитие или будущее время (становиться чем-то/кем-то). Он неправильный: ich werde, du <g>wirst</g>, er/sie/es <g>wird</g>.<br>Пример: Mein Sohn <g>wird</g> bald Arzt. Es <g>wird</g> kalt."
+    }
+  },
+  {
+    "id": "verb_lassen",
+    "title": {"de": "Das Verb lassen", "en": "The verb lassen (to let / have something done)", "uk": "Дієслово lassen (дозволяти / доручати)", "ru": "Глагол lassen (позволять / поручать)"},
+    "explanation": {
+      "de": "Das Verb <g>lassen</g> hat zwei Hauptbedeutungen: Etwas nicht mitnehmen (etwas dalassen) oder eine Aktion nicht selbst machen (etwas machen lassen). Es steht auf Position 2, das Hauptverb am Ende.<br>Beispiel: Ich <g>lasse</g> mein Auto <g>reparieren</g> (Der Mechaniker macht es).",
+      "en": "The verb <g>lassen</g> has two main meanings: to leave something somewhere, or to have something done by someone else. <g>Lassen</g> is in position 2, the main verb is at the end.<br>Example: Ich <g>lasse</g> mein Auto <g>reparieren</g> (The mechanic does it).",
+      "uk": "Дієслово <g>lassen</g> має два головних значення: залишати щось десь, або доручати комусь зробити щось замість вас. <g>Lassen</g> стоїть на 2-му місці, основне дієслово — в кінці.<br>Приклад: Ich <g>lasse</g> mein Auto <g>reparieren</g> (Авто ремонтую не я, а механік).",
+      "ru": "Глагол <g>lassen</g> имеет два главных значения: оставлять что-то где-то, или поручать кому-то сделать что-то вместо вас. <g>Lassen</g> стоит на 2-м месте, основной глагол — в конце.<br>Пример: Ich <g>lasse</g> mein Auto <g>reparieren</g> (Авто ремонтирую не я, а механик)."
+    }
+  },
+  {
+    "id": "nebensatz_mit_damit",
+    "title": {"de": "Nebensatz mit damit", "en": "Subordinate clause with damit (so that)", "uk": "Підрядне речення з damit (щоб)", "ru": "Придаточное предложение с damit (чтобы)"},
+    "explanation": {
+      "de": "Wir nutzen <g>damit</g> für ein Ziel oder eine Absicht (Frage: Wozu?). Das konjugierte Verb steht am Ende. Wichtig: Das Subjekt im Haupt- und Nebensatz ist meistens unterschiedlich.<br>Beispiel: Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>.",
+      "en": "We use <g>damit</g> to express a purpose or goal (What for?). The conjugated verb goes to the end. Note: The subjects in the main and subordinate clause are usually different.<br>Example: Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>.",
+      "uk": "Ми використовуємо <g>damit</g> для вираження мети (Для чого? З якою метою?). Дієслово йде на кінець речення. Важливо: підмет у головному та підрядному реченнях зазвичай різний.<br>Приклад: Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>.",
+      "ru": "Мы используем <g>damit</g> для выражения цели (Для чего? С какой целью?). Глагол уходит в конец предложения. Важно: подлежащее в главном и придаточном предложениях обычно разное.<br>Пример: Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>."
+    }
+  },
+  {
+    "id": "indirekter_fragesatz_fragewort",
+    "title": {"de": "Indirekter Fragesatz mit Fragewort", "en": "Indirect question with a question word", "uk": "Непряме питання з питальним словом", "ru": "Косвенный вопрос с вопросительным словом"},
+    "explanation": {
+      "de": "Eine indirekte Frage ist höflicher. Wir beginnen mit einer Phrase wie 'Können Sie mir sagen...' und nutzen dann das Fragewort (<g>wann, wo, wie</g>). Das Verb steht am Ende.<br>Beispiel: Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>?",
+      "en": "An indirect question is more polite. We start with a phrase like 'Können Sie mir sagen...' and connect it with the question word (<g>wann, wo, wie</g>). The verb goes to the end.<br>Example: Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>?",
+      "uk": "Непряме питання є більш ввічливим варіантом звичайного питання. Ми починаємо з фрази на кшталт 'Können Sie mir sagen...' і далі використовуємо питальне слово (<g>wann, wo, wie</g>). Дієслово йде на кінець.<br>Приклад: Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>?",
+      "ru": "Косвенный вопрос является более вежливым вариантом обычного вопроса. Мы начинаем с фразы вроде 'Können Sie mir sagen...' и далее используем вопросительное слово (<g>wann, wo, wie</g>). Глагол идет в конец.<br>Пример: Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>?"
+    }
+  },
+  {
+    "id": "indirekter_fragesatz_ob",
+    "title": {"de": "Indirekter Fragesatz mit ob", "en": "Indirect question with ob (whether)", "uk": "Непряме питання з ob (чи)", "ru": "Косвенный вопрос с ob (ли)"},
+    "explanation": {
+      "de": "Wenn eine direkte Frage kein Fragewort hat (Ja/Nein-Frage), nutzen wir für die indirekte Frage den Konnektor <g>ob</g>. Das Verb steht am Ende.<br>Beispiel: Ich weiß nicht, <g>ob</g> er heute <g>kommt</g>.",
+      "en": "If a direct question is a Yes/No question (no question word), we use <g>ob</g> (whether/if) to form the indirect question. The verb moves to the end.<br>Example: Ich weiß nicht, <g>ob</g> er heute <g>kommt</g>.",
+      "uk": "Якщо пряме питання є загальним (відповідь Так/Ні, без питального слова), то в непрямому питанні ми використовуємо сполучник <g>ob</g> (чи). Дієслово стоїть у кінці.<br>Приклад: Ich weiß nicht, <g>ob</g> er heute <g>kommt</g>.",
+      "ru": "Если прямой вопрос является общим (ответ Да/Нет, без вопросительного слова), то в косвенном вопросе мы используем союз <g>ob</g> (ли). Глагол стоит в конце.<br>Пример: Ich weiß nicht, <g>ob</g> er heute <g>kommt</g>."
+    }
+  },
+  {
+    "id": "praepositionen_akkusativ_dativ",
+    "title": {"de": "Wiederholung: Präpositionen mit Akkusativ und Dativ", "en": "Review: prepositions with accusative and dative", "uk": "Повторення: прийменники зі знахідним і давальним відмінками", "ru": "Повторение: предлоги с винительным и дательным падежами"},
+    "explanation": {
+      "de": "Wiederholung der Wechselpräpositionen: Bewegung/Richtung braucht den <g>Akkusativ</g> (Wohin?), Position/Ort braucht den <g>Dativ</g> (Wo?).<br>Beispiel: Stell das Glas <g>auf den</g> Tisch (Akk.). Das Glas steht <g>auf dem</g> Tisch (Dat.).",
+      "en": "Review of two-way prepositions: movement/direction requires the <g>Accusative</g> (Where to?), while fixed location/rest requires the <g>Dative</g> (Where?).<br>Example: Stell das Glas <g>auf den</g> Tisch (Acc.). Das Glas steht <g>auf dem</g> Tisch (Dat.).",
+      "uk": "Повторення прийменників подвійного керування: рух/напрямок вимагає <g>Знахідного</g> відмінка (Куди?), а статичне місцезнаходження — <g>Давального</g> (Де?).<br>Приклад: Stell das Glas <g>auf den</g> Tisch (Знахідний). Das Glas steht <g>auf dem</g> Tisch (Давальний).",
+      "ru": "Повторение предлогов двойного управления: движение/направление требует <g>Винительного</g> падежа (Куда?), а статичное местонахождение — <g>Дательного</g> (Где?).<br>Пример: Stell das Glas <g>auf den</g> Tisch (Вин.). Das Glas steht <g>auf dem</g> Tisch (Дат.)."
+    }
+  },
+  {
+    "id": "personalpronomen_wdh",
+    "title": {"de": "Wiederholung: Personalpronomen", "en": "Review: personal pronouns", "uk": "Повторення: особові займенники", "ru": "Повторение: личные местоимения"},
+    "explanation": {
+      "de": "Wiederholung der Pronomen für Personen. Akkusativ (Wen/Was? -> <g>mich, dich, ihn, sie, es, uns, euch, sie/Sie</g>) und Dativ (Wem? -> <g>mir, dir, ihm, ihr, ihm, uns, euch, ihnen/Ihnen</g>).",
+      "en": "Review of pronouns for people. Accusative (Who/What? -> <g>mich, dich, ihn...</g>) and Dative (To whom? -> <g>mir, dir, ihm...</g>).",
+      "uk": "Повторення займенників, що заміняють людей. Знахідний відмінок (Кого/Що? -> <g>mich, dich, ihn...</g>) та Давальний відмінок (Кому? -> <g>mir, dir, ihm...</g>).",
+      "ru": "Повторение местоимений, заменяющих людей. Винительный падеж (Кого/Что? -> <g>mich, dich, ihn...</g>) и Дательный падеж (Кому? -> <g>mir, dir, ihm...</g>)."
+    }
+  },
+  {
+    "id": "nebensaetze_konnektoren_wdh",
+    "title": {"de": "Wiederholung: Nebensätze und Konnektoren", "en": "Review: subordinate clauses and connectors", "uk": "Повторення: підрядні речення та конектори", "ru": "Повторение: придаточные предложения и коннекторы"},
+    "explanation": {
+      "de": "Wiederholung der Satzstruktur: Bei Nebensätzen mit <g>weil, dass, wenn</g> steht das konjugierte Verb immer am Satzende.<br>Beispiel: Ich denke, <g>dass</g> das wichtig <g>ist</g>.",
+      "en": "Review of sentence structure: In subordinate clauses with connectors like <g>weil, dass, wenn</g>, the conjugated verb always moves to the very end of the clause.<br>Example: Ich denke, <g>dass</g> das wichtig <g>ist</g>.",
+      "uk": "Повторення структури речення: у підрядних реченнях зі сполучниками <g>weil, dass, wenn</g> змінюване дієслово завжди стоїть у самому кінці.<br>Приклад: Ich denke, <g>dass</g> das wichtig <g>ist</g>.",
+      "ru": "Повторение структуры предложения: в придаточных предложениях с союзами <g>weil, dass, wenn</g> спрягаемый глагол всегда стоит в самом конце.<br>Пример: Ich denke, <g>dass</g> das wichtig <g>ist</g>."
+    }
+  },
+  {
+    "id": "adjektiv_unbestimmter_artikel_wdh",
+    "title": {"de": "Wiederholung: Adjektivendungen nach dem unbestimmten Artikel", "en": "Review: adjective endings after the indefinite article", "uk": "Повторення: закінчення прикметників після неозначеного артикля", "ru": "Повторение: окончания прилагательных после неопределённого артикля"},
+    "explanation": {
+      "de": "Wiederholung: Nach 'ein/mein' zeigt das Adjektiv im Nominativ das Signal des Genus: <g>-er</g> (maskulin), <g>-es</g> (neutral), <g>-e</g> (feminin). Im Akkusativ maskulin nutzen wir <g>-en</g>.<br>Beispiel: ein <g>alter</g> Freund.",
+      "en": "Review: After 'ein/mein', the adjective in the nominative carries the gender signal: <g>-er</g> (masc.), <g>-es</g> (neutral), <g>-e</g> (fem.). In the accusative masculine, it takes <g>-en</g>.<br>Example: ein <g>alter</g> Freund.",
+      "uk": "Повторення: після 'ein/mein' прикметник у називному відмінку показує рід іменника: <g>-er</g> (чоловічий), <g>-es</g> (середній), <g>-e</g> (жіночий). У знахідному відмінку чол. роду додаємо <g>-en</g>.<br>Приклад: ein <g>alter</g> Freund.",
+      "ru": "Повторение: после 'ein/mein' прилагательное в именительном падеже показывает род существительного: <g>-er</g> (мужской), <g>-es</g> (средний), <g>-e</g> (женский). В винительном падеже муж. рода добавляем <g>-en</g>.<br>Пример: ein <g>alter</g> Freund."
+    }
+  },
+  {
+    "id": "dass_satz_wdh",
+    "title": {"de": "Wiederholung: Nebensatz mit dass", "en": "Review: subordinate clause with dass", "uk": "Повторення: підрядне речення з dass", "ru": "Повторение: придаточное предложение с dass"},
+    "explanation": {
+      "de": "Wiederholung: Der Konnektor <g>dass</g> leitet einen Objektsatz ein. Das Verb steht am Satzende. Oft nach Ausdrücken wie: Ich finde, <g>dass</g>... / Es ist gut, <g>dass</g>...<br>Beispiel: Es ist gut, <g>dass</g> du hier <g>bist</g>.",
+      "en": "Review: The conjunction <g>dass</g> introduces a subordinate object clause. The verb goes to the end. Often used after expressions like: Ich finde, <g>dass</g>... / Es ist gut, <g>dass</g>...<br>Example: Es ist gut, <g>dass</g> du hier <g>bist</g>.",
+      "uk": "Повторення: сполучник <g>dass</g> вводить підрядне з'ясувальне речення. Дієслово стоїть у самому кінці. Часто вживається після виразів: Ich finde, <g>dass</g>... / Es ist gut, <g>dass</g>...<br>Приклад: Es ist gut, <g>dass</g> du hier <g>bist</g>.",
+      "ru": "Повторение: союз <g>dass</g> вводит придаточное изъяснительное предложение. Глагол стоит в самом конце. Часто употребляется после выражений: Ich finde, <g>dass</g>... / Es ist gut, <g>dass</g>...<br>Пример: Es ist gut, <g>dass</g> du hier <g>bist</g>."
+    }
+  }
 ];
+
+
 
 var CATS = [
   {"id":"k1","de":"Sind Sie neu hier?","en":"Are you new here?","uk":"Ви тут новенький?","ru":"Вы здесь новенький?","e":"👋"},
