@@ -2499,7 +2499,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '293-1ef2520';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8918,6 +8918,49 @@ function _lfVocabLearnDone(){
   lfNextStep();
 }
 
+// Чи картка вже вивчалась раніше і SM-2 інтервал підійшов сьогодні —
+// на відміну від srBuildDailyPlan().isDue, НЕ вважає нову (ще не бачену)
+// картку "due": тут ідеться саме про ПОВТОРЕННЯ, а не первинне вивчення.
+function srIsRepeatDueToday(cardId){
+  try{
+    var cs = (srLoadState().cards || {})[cardId];
+    if(!cs || !cs.repetitions) return false;
+    var today = srToISO(new Date());
+    return !cs.nextReview || cs.nextReview <= today;
+  }catch(e){ return false; }
+}
+
+// Будує чергу для кроку уроку "sb_prac" — рівно 4 картки:
+// 1) до 2 карток Sprachbausteine, якщо вони реально на повторення сьогодні
+//    (з усього пулу SPRACHBAUSTEINE, за пріоритетом прострочення);
+// 2) решту слотів — картки Grammatik-Trainer, прив'язані до слів цього
+//    уроку (GRAM_CARDS._srcId ∈ LF.cards), а якщо їх не вистачає —
+//    добираються будь-якими іншими доступними картками граматики.
+// Якщо на сьогодні немає SB-повторень — усі 4 картки граматики.
+function _lfBuildSBPracQueue(){
+  var TARGET = 4;
+  var allSB = typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE : [];
+  var dueSB = allSB
+    .filter(function(c){ return srIsRepeatDueToday(c.id); })
+    .sort(function(a,b){ return srsPriority(b.id) - srsPriority(a.id); })
+    .slice(0, 2)
+    .map(function(c){ return Object.assign({}, c, {_isGram:false}); });
+
+  var gramSlots = TARGET - dueSB.length;
+  var lessonIds = (LF.cards || []).map(function(c){ return c.id; });
+  var allGram   = typeof GRAM_CARDS !== 'undefined' ? GRAM_CARDS : [];
+  var lessonGram = allGram.filter(function(g){ return lessonIds.includes(g._srcId); });
+  var otherGram  = allGram
+    .filter(function(g){ return !lessonIds.includes(g._srcId); })
+    .sort(function(a,b){ return srsPriority(b.id) - srsPriority(a.id); });
+
+  var gramCards = lessonGram.concat(otherGram)
+    .slice(0, gramSlots)
+    .map(function(c){ return Object.assign({}, c, {_isGram:true}); });
+
+  return dueSB.concat(gramCards);
+}
+
 function lfStartSBPrac(){
   if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
 
@@ -8928,26 +8971,34 @@ function lfStartSBPrac(){
   // Bar is globally fixed — just re-render to ensure it's visible
   lfRenderBar();
 
-  // Lesson mode: hide vtab-bar, player, chips, bottom progress strip
+  // Lesson mode: hide vtab-bar, player, source chips, category chips,
+  // bottom progress strip — користувач НЕ обирає джерело/категорію на
+  // цьому кроці, черга вже сформована автоматично (4 картки).
   var sbVocabTop2 = document.getElementById('sb-vocab-top');
   if(sbVocabTop2){
     var vtabBar2 = sbVocabTop2.querySelector('.vtab-bar');
     if(vtabBar2) vtabBar2.style.display = 'none';
     var playerBar2 = sbVocabTop2.querySelector('.vplayer');
     if(playerBar2) playerBar2.style.display = 'none';
+    var srcToggle2 = document.getElementById('sb-src-toggle');
+    if(srcToggle2) srcToggle2.style.display = 'none';
     var chips2 = document.getElementById('sb-cat-chips');
     if(chips2) chips2.style.display = 'none';
   }
-  // Hide bottom progress row (vprogrow in practice panel)
+  // Hide bottom progress row і крапки прогресу (vprogrow/dots у practice-панелі) —
+  // загальний прогрес уроку вже показує lf-progress-bar зверху.
   var pracProgrow = document.getElementById('sb-prac-progrow');
   if(pracProgrow) pracProgrow.style.display = 'none';
+  var pracDots = document.getElementById('sb-prac-dots');
+  if(pracDots) pracDots.style.display = 'none';
 
   SB.mode = 'practice';
   // Знищуємо swipe з fc-area щоб не спрацьовував під час practice
   SwipeManager.destroy(document.getElementById('sb-fc-area'));
-  // Max 1 картка в уроці (узгоджено: урок став занадто довгим з 3,
-  // а карток SB у базі менше ніж vocab — 1 sb_learn + 1 sb_prac)
-  SB.pracQueue = LF.sbCards.slice().sort(function(){ return Math.random()-.5; }).slice(0,1);
+  // Фіксована черга з 4 карток: до 2 Sprachbausteine на повторення сьогодні
+  // (якщо є) + решта — Grammatik-Trainer картки цього уроку (докладніше —
+  // див. _lfBuildSBPracQueue вище).
+  SB.pracQueue = _lfBuildSBPracQueue();
   SB.pracIdx = 0; SB.pracAnswered = false; SB.pracResults = [];
   document.getElementById('sb-panel-learn').style.display    = 'none';
   document.getElementById('sb-panel-practice').style.display = 'flex';
@@ -8976,11 +9027,15 @@ function _lfSBPracDone(){
     if(vtabBar) vtabBar.style.display = '';
     var playerBar = sbVocabTop.querySelector('.vplayer');
     if(playerBar) playerBar.style.display = '';
+    var srcToggle = document.getElementById('sb-src-toggle');
+    if(srcToggle) srcToggle.style.display = '';
     var chips = document.getElementById('sb-cat-chips');
     if(chips) chips.style.display = '';
   }
   var pracProgrow = document.getElementById('sb-prac-progrow');
   if(pracProgrow) pracProgrow.style.display = '';
+  var pracDots = document.getElementById('sb-prac-dots');
+  if(pracDots) pracDots.style.display = '';
   // Bar is in flow — nothing to restore here
   showView('vocab');
   lfRenderBar();
@@ -10601,6 +10656,7 @@ function buildGramCards(){
       explanation: gram ? gram.explanation : {de:'',en:'',uk:'',ru:''},
       gram: c.gram,
       _srcId: c.id,
+      _isGram: true,
     });
   });
   return out;
@@ -10710,6 +10766,14 @@ function sbPool(){
 }
 function sbCatsList(){
   return SB.dataSource==='gram'
+    ? (typeof GRAM_CATS!=='undefined' ? GRAM_CATS : [])
+    : (typeof SB_CATS!=='undefined' ? SB_CATS : []);
+}
+// Як sbCatsList(), але визначає джерело ПО КАРТЦІ (card._isGram), а не по
+// глобальному SB.dataSource — потрібно для змішаних черг (напр. крок уроку
+// sb_prac, де в одній черзі є і Sprachbausteine, і Grammatik-Trainer картки).
+function sbCatsListFor(card){
+  return card && card._isGram
     ? (typeof GRAM_CATS!=='undefined' ? GRAM_CATS : [])
     : (typeof SB_CATS!=='undefined' ? SB_CATS : []);
 }
@@ -11264,7 +11328,7 @@ function sbRenderPrac() {
   var card=SB.pracQueue[SB.pracIdx]; if(!card){ sbShowPracResult(); return; }
   SB.pracAnswered=false;
   var lang=primaryLang(); // речення Sprachbausteine завжди основною мовою курсу
-  var cat=sbCatsList().find(function(c){ return c.id===card.cat; });
+  var cat=sbCatsListFor(card).find(function(c){ return c.id===card.cat; });
 
   // progress bar
   var _lessonMax = LF ? SB.pracQueue.length : SB_PRAC_COUNT;
@@ -11309,7 +11373,7 @@ function sbRenderPrac() {
       b.textContent=o.text;
       // Prefetch audio for this distractor option — Grammatik-Trainer картки
       // синтетичні (gram_*), для них pregen-аудіо не існує, тож не намагаємось.
-      if(SB.dataSource!=='gram') sbPrefetchAudio(card.id, o.field);
+      if(!card._isGram) sbPrefetchAudio(card.id, o.field);
       b.onclick=(function(opt, fn){ return function(){ sbPracAnswer(b,opt,card.id,fn); }; })(o.text, o.field);
       optEl.appendChild(b);
     });
@@ -11317,7 +11381,7 @@ function sbRenderPrac() {
   document.getElementById('sb-prac-feedback').style.display='none';
 
   // Prefetch sentence audio
-  if(SB.dataSource!=='gram') sbPrefetchAudio(card.id, 'sentence');
+  if(!card._isGram) sbPrefetchAudio(card.id, 'sentence');
 }
 
 function sbPrefetchAudio(cardId, field) {
@@ -11347,7 +11411,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   // SPRACHBAUSTEINE (є pregen-аудіо). Grammatik-Trainer картки синтетичні,
   // pregen-файлів немає, тож не намагаємось (уникаємо зайвих 404 і
   // повторюваної модалки "аудіо недоступне" на кожній відповіді).
-  if(SB.dataSource!=='gram'){
+  if(!card._isGram){
     var field = audioField || (ok ? 'answer' : 'distractors_1');
     var sentenceText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
     speak(chosen, primaryLang(), function() {
@@ -11367,7 +11431,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   // Grammatik-Trainer картки мають синтетичний id (gram_<cardId>) —
   // окремий від справжньої VOCAB-картки, тож дублювання/конфлікту
   // статистики з основним словником немає.
-  try{ recordCardEvent(card.id, ok ? 'task_correct' : 'task_wrong', SB.dataSource==='gram' ? 'Grammatik' : 'Sprachbausteine'); }catch(e){}
+  try{ recordCardEvent(card.id, ok ? 'task_correct' : 'task_wrong', card._isGram ? 'Grammatik' : 'Sprachbausteine'); }catch(e){}
   SB.pracResults[SB.pracIdx]=ok;
 
   // Explanation always in UI language; result label in UI language
