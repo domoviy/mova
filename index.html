@@ -2499,7 +2499,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '291-c6f56c2';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11292,21 +11292,25 @@ function sbRenderPrac() {
 
   // Options: correct answer + all 4 distractors = 5 options total.
   // Дистрактори і правильна відповідь у Sprachbau завжди мовою курсу (primaryLang()).
+  // Поле аудіо ('answer'/'distractors_N') прив'язуємо ДО перемішування,
+  // інакше після sort() індекс i вказує на позицію в перемішаному масиві,
+  // а не на реальний номер дистрактора — і клік по кнопці програє чуже аудіо.
   var distractors = card.distractors.slice(0,4);
-  var opts = [sbA(card,primaryLang())].concat(distractors).sort(function(){ return Math.random()-.5; });
+  var opts = [{text: sbA(card,primaryLang()), field:'answer'}]
+    .concat(distractors.map(function(d,idx){ return {text:d, field:'distractors_'+(idx+1)}; }))
+    .sort(function(){ return Math.random()-.5; });
 
   var optEl=document.getElementById('sb-prac-options');
   if(optEl){
     optEl.innerHTML='';
-    opts.forEach(function(opt, i){
+    opts.forEach(function(o){
       var b=document.createElement('button');
       b.className='mc-opt';
-      b.textContent=opt;
+      b.textContent=o.text;
       // Prefetch audio for this distractor option — Grammatik-Trainer картки
       // синтетичні (gram_*), для них pregen-аудіо не існує, тож не намагаємось.
-      var fieldName = opt===sbA(card,primaryLang()) ? 'answer' : 'distractors_'+(i+1);
-      if(SB.dataSource!=='gram') sbPrefetchAudio(card.id, fieldName);
-      b.onclick=(function(o, fn){ return function(){ sbPracAnswer(b,o,card.id,fn); }; })(opt, fieldName);
+      if(SB.dataSource!=='gram') sbPrefetchAudio(card.id, o.field);
+      b.onclick=(function(opt, fn){ return function(){ sbPracAnswer(b,opt,card.id,fn); }; })(o.text, o.field);
       optEl.appendChild(b);
     });
   }
