@@ -3201,10 +3201,10 @@ var VOCAB = [
       "ru": "соседство"
     },
     "short": {
-      "de": "Die Menschen und Häuser in der Nähe von deiner Wohnung.",
-      "en": "The people and houses near your home.",
-      "uk": "Люди та будинки поблизу твого житла.",
-      "ru": "Люди и дома рядом с твоим жильём."
+      "de": "die Menschen und Häuser in der Nähe von deiner Wohnung",
+      "en": "the people and houses near your home",
+      "uk": "люди та будинки поблизу твого житла",
+      "ru": "люди и дома рядом с твоим жильём"
     },
     "def": {
       "de": "Wir sind letzte Woche <g>in die</g> neue <b>Nachbarschaft</b> gezogen.",
@@ -3224,10 +3224,10 @@ var VOCAB = [
       "ru": "сосед / соседка"
     },
     "short": {
-      "de": "Eine Person, die direkt neben dir oder in deinem Haus wohnt.",
-      "en": "A person who lives right next to you or in your building.",
-      "uk": "Людина, яка живе поруч з тобою або в твоєму будинку.",
-      "ru": "Человек, который живёт рядом с тобой или в твоём доме."
+      "de": "eine Person, die direkt neben dir oder in deinem Haus wohnt",
+      "en": "a person who lives right next to you or in your building",
+      "uk": "людина, яка живе поруч з тобою або в твоєму будинку",
+      "ru": "человек, который живёт рядом с тобой или в твоём доме"
     },
     "def": {
       "de": "Unser neuer <b>Nachbar</b> wohnt schon seit zehn Jahren <g>in dem</g> Haus gegenüber.",
@@ -3247,10 +3247,10 @@ var VOCAB = [
       "ru": "многоквартирный дом"
     },
     "short": {
-      "de": "Ein Haus, in dem mehrere Familien oder Personen in verschiedenen Wohnungen leben.",
-      "en": "A building where several families or people live in different flats.",
-      "uk": "Будинок, у якому кілька сімей чи людей живуть у різних квартирах.",
-      "ru": "Дом, в котором несколько семей или людей живут в разных квартирах."
+      "de": "ein Haus, in dem mehrere Familien oder Personen in verschiedenen Wohnungen leben",
+      "en": "a building where several families or people live in different flats",
+      "uk": "будинок, у якому кілька сімей чи людей живуть у різних квартирах",
+      "ru": "дом, в котором несколько семей или людей живут в разных квартирах"
     },
     "def": {
       "de": "In unserem <b>Mehrfamilienhaus</b> leben insgesamt zwölf Familien.",
@@ -3270,10 +3270,10 @@ var VOCAB = [
       "ru": "правила дома"
     },
     "short": {
-      "de": "Die Regeln, die für alle Bewohner in einem Haus gelten.",
-      "en": "The rules that apply to all residents in a building.",
-      "uk": "Правила, які діють для всіх мешканців будинку.",
-      "ru": "Правила, которые действуют для всех жителей дома."
+      "de": "die Regeln, die für alle Bewohner in einem Haus gelten",
+      "en": "the rules that apply to all residents in a building",
+      "uk": "правила, які діють для всіх мешканців будинку",
+      "ru": "правила, которые действуют для всех жителей дома"
     },
     "def": {
       "de": "In der <b>Hausordnung</b> steht, dass man nach 22 Uhr keine laute Musik <g>hören darf</g>.",
@@ -3293,10 +3293,10 @@ var VOCAB = [
       "ru": "тихий час"
     },
     "short": {
-      "de": "Die Zeit, in der man im Haus leise sein muss.",
-      "en": "The time when you have to be quiet in the building.",
-      "uk": "Час, коли в будинку потрібно бути тихим.",
-      "ru": "Время, когда в доме нужно вести себя тихо."
+      "de": "die Zeit, in der man im Haus leise sein muss",
+      "en": "the time when you have to be quiet in the building",
+      "uk": "час, коли в будинку потрібно бути тихим",
+      "ru": "время, когда в доме нужно вести себя тихо"
     },
     "def": {
       "de": "Während der <b>Ruhezeit</b> am Mittag <g>darf</g> man nicht bohren oder laut Musik hören.",
@@ -3316,10 +3316,10 @@ var VOCAB = [
       "ru": "внимательность"
     },
     "short": {
-      "de": "Wenn man an die anderen Menschen denkt und sie nicht stört.",
-      "en": "When you think of other people and don't disturb them.",
-      "uk": "Коли ти думаєш про інших людей і не заважаєш їм.",
-      "ru": "Когда ты думаешь о других людях и не мешаешь им."
+      "de": "wenn man an die anderen Menschen denkt und sie nicht stört",
+      "en": "when you think of other people and don't disturb them",
+      "uk": "коли ти думаєш про інших людей і не заважаєш їм",
+      "ru": "когда ты думаешь о других людях и не мешаешь им"
     },
     "def": {
       "de": "Es ist sehr wichtig, auf die anderen Hausbewohner <b>Rücksicht</b> <g>zu nehmen</g>.",
@@ -3339,10 +3339,10 @@ var VOCAB = [
       "ru": "подъезд, лестничная клетка"
     },
     "short": {
-      "de": "Der Teil des Hauses mit der Treppe, durch den man zu den Wohnungen geht.",
-      "en": "The part of the building with the stairs that leads to the flats.",
-      "uk": "Частина будинку зі сходами, через яку проходиш до квартир.",
-      "ru": "Часть дома с лестницей, через которую проходишь к квартирам."
+      "de": "der Teil des Hauses mit der Treppe, durch den man zu den Wohnungen geht",
+      "en": "the part of the building with the stairs that leads to the flats",
+      "uk": "частина будинку зі сходами, через яку проходиш до квартир",
+      "ru": "часть дома с лестницей, через которую проходишь к квартирам"
     },
     "def": {
       "de": "Im <b>Treppenhaus</b> <g>darf man keine Fahrräder oder Kartons abstellen</g>.",
@@ -3362,10 +3362,10 @@ var VOCAB = [
       "ru": "детская коляска"
     },
     "short": {
-      "de": "Ein kleines Fahrzeug mit Rädern, in dem ein Baby liegt oder sitzt.",
-      "en": "A small vehicle with wheels in which a baby lies or sits.",
-      "uk": "Маленький засіб на колесах, у якому лежить або сидить малюк.",
-      "ru": "Маленькое средство на колёсах, в котором лежит или сидит малыш."
+      "de": "ein kleines Fahrzeug mit Rädern, in dem ein Baby liegt oder sitzt",
+      "en": "a small vehicle with wheels in which a baby lies or sits",
+      "uk": "маленький засіб на колесах, у якому лежить або сидить малюк",
+      "ru": "маленькое средство на колёсах, в котором лежит или сидит малыш"
     },
     "def": {
       "de": "Frau Berger stellt ihren <b>Kinderwagen</b> immer <g>neben die Treppe</g>.",
@@ -3385,10 +3385,10 @@ var VOCAB = [
       "ru": "путь эвакуации"
     },
     "short": {
-      "de": "Der Weg, den man im Notfall nehmen muss, um schnell aus dem Haus zu kommen.",
-      "en": "The route you must take in an emergency to get out of the building quickly.",
-      "uk": "Шлях, яким потрібно йти в разі надзвичайної ситуації, щоб швидко вийти з будинку.",
-      "ru": "Путь, по которому нужно идти в экстренной ситуации, чтобы быстро выйти из дома."
+      "de": "der Weg, den man im Notfall nehmen muss, um schnell aus dem Haus zu kommen",
+      "en": "the route you must take in an emergency to get out of the building quickly",
+      "uk": "шлях, яким потрібно йти в разі надзвичайної ситуації, щоб швидко вийти з будинку",
+      "ru": "путь, по которому нужно идти в экстренной ситуации, чтобы быстро выйти из дома"
     },
     "def": {
       "de": "Den <b>Fluchtweg</b> <g>darf</g> man niemals mit Möbeln oder Kartons blockieren.",
@@ -3408,10 +3408,10 @@ var VOCAB = [
       "ru": "жаловаться"
     },
     "short": {
-      "de": "Sagen, dass man mit etwas nicht zufrieden ist.",
-      "en": "To say that you are not satisfied with something.",
-      "uk": "Казати, що ти чимось незадоволений.",
-      "ru": "Говорить, что ты чем-то недоволен."
+      "de": "Sagen, dass man mit etwas nicht zufrieden ist",
+      "en": "to say that you are not satisfied with something",
+      "uk": "казати, що ти чимось незадоволений",
+      "ru": "говорить, что ты чем-то недоволен"
     },
     "def": {
       "de": "Herr Koch <g>hat sich weder</g> beim Vermieter <g>noch</g> bei den Nachbarn über den Lärm <b>beschwert</b>.",
@@ -3431,10 +3431,10 @@ var VOCAB = [
       "ru": "извиняться"
     },
     "short": {
-      "de": "„Es tut mir leid“ sagen, wenn man einen Fehler gemacht hat.",
-      "en": "To say „I'm sorry“ when you have made a mistake.",
-      "uk": "Казати «мені шкода», коли ти зробив помилку.",
-      "ru": "Говорить «мне жаль», когда ты совершил ошибку."
+      "de": "„es tut mir leid“ sagen, wenn man einen Fehler gemacht hat",
+      "en": "to say „I'm sorry“ when you have made a mistake",
+      "uk": "казати «мені шкода», коли ти зробив помилку",
+      "ru": "говорить «мне жаль», когда ты совершил ошибку"
     },
     "def": {
       "de": "Der junge Mann <g>hat sich sowohl</g> bei der Nachbarin <g>als auch</g> beim Hausmeister <b>entschuldigt</b>.",
@@ -3454,10 +3454,10 @@ var VOCAB = [
       "ru": "разрешать"
     },
     "short": {
-      "de": "Sagen, dass jemand etwas machen darf.",
-      "en": "To say that someone is allowed to do something.",
-      "uk": "Казати, що комусь можна щось робити.",
-      "ru": "Говорить, что кому-то можно что-то делать."
+      "de": "Sagen, dass jemand etwas machen darf",
+      "en": "to say that someone is allowed to do something",
+      "uk": "казати, що комусь можна щось робити",
+      "ru": "говорить, что кому-то можно что-то делать"
     },
     "def": {
       "de": "<g>Würden Sie</g> mir <b>erlauben</b>, meinen Kinderwagen kurz im Flur stehen zu lassen?",
@@ -3477,10 +3477,10 @@ var VOCAB = [
       "ru": "мешать"
     },
     "short": {
-      "de": "Jemanden bei etwas unterbrechen oder ihm Lärm machen.",
-      "en": "To interrupt someone or make noise that bothers them.",
-      "uk": "Перебивати комусь щось або створювати шум, який заважає.",
-      "ru": "Прерывать кого-то или создавать шум, который мешает."
+      "de": "jemanden bei etwas unterbrechen oder ihm Lärm machen",
+      "en": "to interrupt someone or make noise that bothers them",
+      "uk": "перебивати комусь щось або створювати шум, який заважає",
+      "ru": "прерывать кого-то или создавать шум, который мешает"
     },
     "def": {
       "de": "<g>Könnten Sie</g> bitte leiser sein? Die Musik <b>stört</b> unser Baby beim Schlafen.",
@@ -3500,10 +3500,10 @@ var VOCAB = [
       "ru": "переезд"
     },
     "short": {
-      "de": "Wenn man mit allen Möbeln in eine andere Wohnung zieht.",
-      "en": "When you move with all your furniture to another flat.",
-      "uk": "Коли ти переїжджаєш з усіма меблями в іншу квартиру.",
-      "ru": "Когда ты переезжаешь со всей мебелью в другую квартиру."
+      "de": "wenn man mit allen Möbeln in eine andere Wohnung zieht",
+      "en": "when you move with all your furniture to another flat",
+      "uk": "коли ти переїжджаєш з усіма меблями в іншу квартиру",
+      "ru": "когда ты переезжаешь со всей мебелью в другую квартиру"
     },
     "def": {
       "de": "Beim <b>Umzug</b> haben uns <g>sowohl</g> die Nachbarn <g>als auch</g> unsere Freunde geholfen.",
@@ -3523,10 +3523,10 @@ var VOCAB = [
       "ru": "арендатор / арендатора"
     },
     "short": {
-      "de": "Eine Person, die eine Wohnung mietet und darin wohnt.",
-      "en": "A person who rents a flat and lives in it.",
-      "uk": "Людина, яка орендує квартиру і живе в ній.",
-      "ru": "Человек, который снимает квартиру и живёт в ней."
+      "de": "eine Person, die eine Wohnung mietet und darin wohnt",
+      "en": "a person who rents a flat and lives in it",
+      "uk": "людина, яка орендує квартиру і живе в ній",
+      "ru": "человек, который снимает квартиру и живёт в ней"
     },
     "def": {
       "de": "Jeder neue <b>Mieter</b> bekommt die Aufgabe, die Hausordnung <g>zu unterschreiben</g>.",
@@ -3546,10 +3546,10 @@ var VOCAB = [
       "ru": "рекламация, претензия"
     },
     "short": {
-      "de": "Wenn man einer Firma sagt, dass eine Ware oder ein Service nicht in Ordnung ist.",
-      "en": "When you tell a company that a product or service is not okay.",
-      "uk": "Коли ти повідомляєш фірмі, що товар чи послуга не в порядку.",
-      "ru": "Когда ты сообщаешь фирме, что товар или услуга не в порядке."
+      "de": "wenn man einer Firma sagt, dass eine Ware oder ein Service nicht in Ordnung ist",
+      "en": "when you tell a company that a product or service is not okay",
+      "uk": "коли ти повідомляєш фірмі, що товар чи послуга не в порядку",
+      "ru": "когда ты сообщаешь фирме, что товар или услуга не в порядке"
     },
     "def": {
       "de": "Das war keine normale Bestellung, <g>sondern</g> eine <b>Reklamation</b>, <g>die</g> sofort bearbeitet werden musste.",
@@ -3569,10 +3569,10 @@ var VOCAB = [
       "ru": "подавать претензию"
     },
     "short": {
-      "de": "Einer Firma sagen, dass man mit einer Ware oder einem Service nicht zufrieden ist.",
-      "en": "To tell a company that you are not satisfied with a product or service.",
-      "uk": "Повідомити фірмі, що ти незадоволений товаром чи послугою.",
-      "ru": "Сообщить фирме, что ты недоволен товаром или услугой."
+      "de": "einer Firma sagen, dass man mit einer Ware oder einem Service nicht zufrieden ist",
+      "en": "to tell a company that you are not satisfied with a product or service",
+      "uk": "повідомити фірмі, що ти незадоволений товаром чи послугою",
+      "ru": "сообщить фирме, что ты недоволен товаром или услугой"
     },
     "def": {
       "de": "Frau Yilmaz wollte nicht schreiben, <g>sondern</g> direkt beim Kundenservice <b>reklamieren</b>, <g>der</g> ihr sofort half.",
@@ -3592,10 +3592,10 @@ var VOCAB = [
       "ru": "напоминание об оплате"
     },
     "short": {
-      "de": "Ein Brief oder eine E-Mail, die daran erinnert, dass man noch bezahlen muss.",
-      "en": "A letter or email that reminds you that you still have to pay.",
-      "uk": "Лист, який нагадує, що ще потрібно оплатити.",
-      "ru": "Письмо, которое напоминает, что ещё нужно оплатить."
+      "de": "ein Brief oder eine E-Mail, die daran erinnert, dass man noch bezahlen muss",
+      "en": "a letter or email that reminds you that you still have to pay",
+      "uk": "лист, який нагадує, що ще потрібно оплатити",
+      "ru": "письмо, которое напоминает, что ещё нужно оплатить"
     },
     "def": {
       "de": "Die <b>Zahlungserinnerung</b>, <g>die</g> ich gestern bekommen habe, war eigentlich ein Fehler.",
@@ -3615,10 +3615,10 @@ var VOCAB = [
       "ru": "официальное напоминание"
     },
     "short": {
-      "de": "Ein offizieller Brief, der sagt, dass man eine Rechnung noch nicht bezahlt hat.",
-      "en": "An official letter that says you haven't paid an invoice yet.",
-      "uk": "Офіційний лист, який повідомляє, що ти ще не оплатив рахунок.",
-      "ru": "Официальное письмо, которое сообщает, что ты ещё не оплатил счёт."
+      "de": "ein offizieller Brief, der sagt, dass man eine Rechnung noch nicht bezahlt hat",
+      "en": "an official letter that says you haven't paid an invoice yet",
+      "uk": "офіційний лист, який повідомляє, що ти ще не оплатив рахунок",
+      "ru": "официальное письмо, которое сообщает, что ты ещё не оплатил счёт"
     },
     "def": {
       "de": "Die <b>Mahnung</b>, <g>die</g> Herr Bach bekommen hat, war schon die zweite.",
@@ -3638,10 +3638,10 @@ var VOCAB = [
       "ru": "счёт (к оплате)"
     },
     "short": {
-      "de": "Ein Dokument, auf dem steht, wie viel Geld man für etwas bezahlen muss.",
-      "en": "A document that shows how much money you have to pay for something.",
-      "uk": "Документ, у якому написано, скільки грошей потрібно заплатити за щось.",
-      "ru": "Документ, в котором написано, сколько денег нужно заплатить за что-то."
+      "de": "ein Dokument, auf dem steht, wie viel Geld man für etwas bezahlen muss",
+      "en": "a document that shows how much money you have to pay for something",
+      "uk": "документ, у якому написано, скільки грошей потрібно заплатити за щось",
+      "ru": "документ, в котором написано, сколько денег нужно заплатить за что-то"
     },
     "def": {
       "de": "Die <b>Rechnung</b>, <g>die</g> wir letzte Woche bekommen haben, war leider falsch.",
@@ -3661,10 +3661,10 @@ var VOCAB = [
       "ru": "квитанция"
     },
     "short": {
-      "de": "Ein Papier, das zeigt, dass man für etwas schon bezahlt hat.",
-      "en": "A piece of paper that shows you have already paid for something.",
-      "uk": "Папір, який показує, що ти вже заплатив за щось.",
-      "ru": "Бумага, которая показывает, что ты уже заплатил за что-то."
+      "de": "ein Papier, das zeigt, dass man für etwas schon bezahlt hat",
+      "en": "a piece of paper that shows you have already paid for something",
+      "uk": "папір, який показує, що ти вже заплатив за щось",
+      "ru": "бумага, которая показывает, что ты уже заплатил за что-то"
     },
     "def": {
       "de": "Ohne die <b>Quittung</b>, <g>die</g> ich leider verloren habe, kann ich die Hose nicht umtauschen.",
@@ -3684,10 +3684,10 @@ var VOCAB = [
       "ru": "обменивать (товар)"
     },
     "short": {
-      "de": "Eine Ware gegen eine andere Ware im Geschäft tauschen.",
-      "en": "To exchange one product for another in a shop.",
-      "uk": "Обмінювати товар на інший у магазині.",
-      "ru": "Обменивать товар на другой в магазине."
+      "de": "eine Ware gegen eine andere Ware im Geschäft tauschen",
+      "en": "to exchange one product for another in a shop",
+      "uk": "обмінювати товар на інший у магазині",
+      "ru": "обменивать товар на другой в магазине"
     },
     "def": {
       "de": "Das Kleid, <g>das</g> ich <b>umtauschen</b> möchte, ist leider zu klein.",
@@ -3707,10 +3707,10 @@ var VOCAB = [
       "ru": "служба поддержки клиентов"
     },
     "short": {
-      "de": "Die Abteilung einer Firma, die Kunden bei Fragen und Problemen hilft.",
-      "en": "The department of a company that helps customers with questions and problems.",
-      "uk": "Відділ фірми, який допомагає клієнтам із питаннями та проблемами.",
-      "ru": "Отдел фирмы, который помогает клиентам с вопросами и проблемами."
+      "de": "die Abteilung einer Firma, die Kunden bei Fragen und Problemen hilft",
+      "en": "the department of a company that helps customers with questions and problems",
+      "uk": "відділ фірми, який допомагає клієнтам із питаннями та проблемами",
+      "ru": "отдел фирмы, который помогает клиентам с вопросами и проблемами"
     },
     "def": {
       "de": "Der <b>Kundenservice</b> war <g>weder</g> telefonisch <g>noch</g> per E-Mail zu erreichen.",
@@ -3730,10 +3730,10 @@ var VOCAB = [
       "ru": "доставлять"
     },
     "short": {
-      "de": "Eine Ware zum Kunden bringen.",
-      "en": "To bring goods to the customer.",
-      "uk": "Привозити товар клієнту.",
-      "ru": "Привозить товар клиенту."
+      "de": "eine Ware zum Kunden bringen",
+      "en": "to bring goods to the customer",
+      "uk": "привозити товар клієнту",
+      "ru": "привозить товар клиенту"
     },
     "def": {
       "de": "Der Onlineshop <b>liefert</b> die Ware meistens innerhalb der <g>Lieferzeit</g> von zwei Tagen.",
@@ -3753,10 +3753,10 @@ var VOCAB = [
       "ru": "неисправный, бракованный"
     },
     "short": {
-      "de": "Wenn eine Ware nicht richtig funktioniert oder kaputt ist.",
-      "en": "When a product doesn't work properly or is broken.",
-      "uk": "Коли товар не працює правильно або зламаний.",
-      "ru": "Когда товар не работает правильно или сломан."
+      "de": "wenn eine Ware nicht richtig funktioniert oder kaputt ist",
+      "en": "when a product doesn't work properly or is broken",
+      "uk": "коли товар не працює правильно або зламаний",
+      "ru": "когда товар не работает правильно или сломан"
     },
     "def": {
       "de": "Das war kein normales Problem, <g>sondern</g> ein <b>fehlerhaftes</b> Gerät, <g>das</g> sofort ausgetauscht wurde.",
@@ -3776,10 +3776,10 @@ var VOCAB = [
       "ru": "скидка"
     },
     "short": {
-      "de": "Ein niedrigerer Preis, den man für eine Ware bezahlt.",
-      "en": "A lower price that you pay for a product.",
-      "uk": "Нижча ціна, яку ти платиш за товар.",
-      "ru": "Более низкая цена, которую ты платишь за товар."
+      "de": "ein niedrigerer Preis, den man für eine Ware bezahlt",
+      "en": "a lower price that you pay for a product",
+      "uk": "нижча ціна, яку ти платиш за товар",
+      "ru": "более низкая цена, которую ты платишь за товар"
     },
     "def": {
       "de": "Der <b>Rabatt</b>, <g>den</g> wir letzte Woche bekommen haben, war zwanzig Prozent.",
@@ -3799,10 +3799,10 @@ var VOCAB = [
       "ru": "заказывать"
     },
     "short": {
-      "de": "Sagen, dass man etwas in einem Geschäft oder online kaufen möchte.",
-      "en": "To say that you want to buy something in a shop or online.",
-      "uk": "Казати, що хочеш купити щось у магазині чи онлайн.",
-      "ru": "Говорить, что хочешь купить что-то в магазине или онлайн."
+      "de": "Sagen, dass man etwas in einem Geschäft oder online kaufen möchte",
+      "en": "to say that you want to buy something in a shop or online",
+      "uk": "казати, що хочеш купити щось у магазині чи онлайн",
+      "ru": "говорить, что хочешь купить что-то в магазине или онлайн"
     },
     "def": {
       "de": "Ich habe <g>mir</g> ein neues Handy <b>bestellt</b>.",
@@ -3822,10 +3822,10 @@ var VOCAB = [
       "ru": "заказ"
     },
     "short": {
-      "de": "Ein Auftrag, mit dem man etwas in einem Geschäft oder online kauft.",
-      "en": "A request with which you buy something in a shop or online.",
-      "uk": "Замовлення, яким ти купуєш щось у магазині або онлайн.",
-      "ru": "Заказ, с помощью которого ты покупаешь что-то в магазине или онлайн."
+      "de": "ein Auftrag, mit dem man etwas in einem Geschäft oder online kauft",
+      "en": "a request with which you buy something in a shop or online",
+      "uk": "замовлення, яким ти купуєш щось у магазині або онлайн",
+      "ru": "заказ, с помощью которого ты покупаешь что-то в магазине или онлайн"
     },
     "def": {
       "de": "Ich habe <g>mich</g> heute über meine neue <b>Bestellung</b> sehr gefreut.",
@@ -3845,10 +3845,10 @@ var VOCAB = [
       "ru": "кассовый чек"
     },
     "short": {
-      "de": "Ein kleines Papier von der Kasse, das zeigt, was man gekauft hat.",
-      "en": "A small piece of paper from the till that shows what you bought.",
-      "uk": "Маленький папір з каси, який показує, що ти купив.",
-      "ru": "Маленькая бумага из кассы, которая показывает, что ты купил."
+      "de": "ein kleines Papier von der Kasse, das zeigt, was man gekauft hat",
+      "en": "a small piece of paper from the till that shows what you bought",
+      "uk": "маленький папір з каси, який показує, що ти купив",
+      "ru": "маленькая бумага из кассы, которая показывает, что ты купил"
     },
     "def": {
       "de": "Ohne den <g><b>Kassenbon</b></g> kann das Geschäft die Ware nicht umtauschen.",
@@ -3868,10 +3868,10 @@ var VOCAB = [
       "ru": "часы работы"
     },
     "short": {
-      "de": "Die Zeiten, in denen ein Geschäft geöffnet ist.",
-      "en": "The times when a shop is open.",
-      "uk": "Час, коли магазин відчинений.",
-      "ru": "Время, когда магазин открыт."
+      "de": "die Zeiten, in denen ein Geschäft geöffnet ist",
+      "en": "the times when a shop is open",
+      "uk": "час, коли магазин відчинений",
+      "ru": "время, когда магазин открыт"
     },
     "def": {
       "de": "Der Supermarkt hat <g>sowohl</g> am Samstag <g>als auch</g> am Sonntag lange <b>Öffnungszeiten</b>.",
@@ -3891,10 +3891,10 @@ var VOCAB = [
       "ru": "текущий счёт"
     },
     "short": {
-      "de": "Ein Bankkonto, mit dem man normalerweise bezahlt und Geld bekommt.",
-      "en": "A bank account that you normally use to pay and receive money.",
-      "uk": "Банківський рахунок, яким зазвичай платять і отримують гроші.",
-      "ru": "Банковский счёт, которым обычно платят и получают деньги."
+      "de": "ein Bankkonto, mit dem man normalerweise bezahlt und Geld bekommt",
+      "en": "a bank account that you normally use to pay and receive money",
+      "uk": "банківський рахунок, яким зазвичай платять і отримують гроші",
+      "ru": "банковский счёт, которым обычно платят и получают деньги"
     },
     "def": {
       "de": "Ohne <b>Girokonto</b> dürfte es schwierig sein, das Gehalt zu bekommen.",
@@ -3914,10 +3914,10 @@ var VOCAB = [
       "ru": "открывать (счёт)"
     },
     "short": {
-      "de": "Etwas Neues bei einer Bank oder Firma starten, zum Beispiel ein Konto.",
-      "en": "To start something new at a bank or company, for example an account.",
-      "uk": "Розпочати щось нове в банку чи фірмі, наприклад рахунок.",
-      "ru": "Начать что-то новое в банке или компании, например счёт."
+      "de": "etwas Neues bei einer Bank oder Firma starten, zum Beispiel ein Konto",
+      "en": "to start something new at a bank or company, for example an account",
+      "uk": "розпочати щось нове в банку чи фірмі, наприклад рахунок",
+      "ru": "начать что-то новое в банке или компании, например счёт"
     },
     "def": {
       "de": "Herr Demir müsste sein neues Konto schon <b>eröffnet</b> haben.",
@@ -3937,10 +3937,10 @@ var VOCAB = [
       "ru": "страхование, страховка"
     },
     "short": {
-      "de": "Ein Vertrag, der bei einem Problem oder Schaden Geld bezahlt.",
-      "en": "A contract that pays money in case of a problem or damage.",
-      "uk": "Договір, за яким сплачують гроші у разі проблеми чи шкоди.",
-      "ru": "Договор, по которому платят деньги в случае проблемы или ущерба."
+      "de": "ein Vertrag, der bei einem Problem oder Schaden Geld bezahlt",
+      "en": "a contract that pays money in case of a problem or damage",
+      "uk": "договір, за яким сплачують гроші у разі проблеми чи шкоди",
+      "ru": "договор, по которому платят деньги в случае проблемы или ущерба"
     },
     "def": {
       "de": "Die Kosten <g>der</g> <b>Versicherung</b> sind in diesem Jahr leider gestiegen.",
@@ -3960,10 +3960,10 @@ var VOCAB = [
       "ru": "страхование гражданской ответственности"
     },
     "short": {
-      "de": "Eine Versicherung, die bezahlt, wenn man aus Versehen einen Schaden bei jemand anderem verursacht.",
-      "en": "An insurance that pays when you accidentally cause damage to someone else.",
-      "uk": "Страхування, яке платить, коли ти випадково завдав шкоди іншій людині.",
-      "ru": "Страхование, которое платит, когда ты случайно нанёс ущерб другому человеку."
+      "de": "eine Versicherung, die bezahlt, wenn man aus Versehen einen Schaden bei jemand anderem verursacht",
+      "en": "an insurance that pays when you accidentally cause damage to someone else",
+      "uk": "страхування, яке платить, коли ти випадково завдав шкоди іншій людині",
+      "ru": "страхование, которое платит, когда ты случайно нанёс ущерб другому человеку"
     },
     "def": {
       "de": "Der Preis <g>der</g> <b>Haftpflichtversicherung</b> hängt vom Alter des Fahrers ab.",
@@ -3983,10 +3983,10 @@ var VOCAB = [
       "ru": "горячая линия для блокировки карты"
     },
     "short": {
-      "de": "Eine Telefonnummer, die man anruft, wenn eine Bankkarte gestohlen wurde oder verloren ist.",
-      "en": "A phone number you call when a bank card has been stolen or lost.",
-      "uk": "Телефонний номер, на який дзвониш, якщо банківську картку вкрадено чи втрачено.",
-      "ru": "Номер телефона, на который звонишь, если банковская карта украдена или потеряна."
+      "de": "eine Telefonnummer, die man anruft, wenn eine Bankkarte gestohlen wurde oder verloren ist",
+      "en": "a phone number you call when a bank card has been stolen or lost",
+      "uk": "телефонний номер, на який дзвониш, якщо банківську картку вкрадено чи втрачено",
+      "ru": "номер телефона, на который звонишь, если банковская карта украдена или потеряна"
     },
     "def": {
       "de": "Die Nummer <g>des</g> <b>Sperrnotrufs</b> steht auf der Rückseite der Bankkarte.",
@@ -4006,10 +4006,10 @@ var VOCAB = [
       "ru": "блокировать"
     },
     "short": {
-      "de": "Etwas so machen, dass man es nicht mehr benutzen kann.",
-      "en": "To make something unable to be used anymore.",
-      "uk": "Робити так, щоб чимось більше не можна було користуватися.",
-      "ru": "Делать так, чтобы чем-то больше нельзя было пользоваться."
+      "de": "etwas so machen, dass man es nicht mehr benutzen kann",
+      "en": "to make something unable to be used anymore",
+      "uk": "робити так, щоб чимось більше не можна було користуватися",
+      "ru": "делать так, чтобы чем-то больше нельзя было пользоваться"
     },
     "def": {
       "de": "Wegen des Diebstahls <g>der</g> Handtasche musste sie ihre Bankkarte sofort <b>sperren</b> lassen.",
@@ -4029,10 +4029,10 @@ var VOCAB = [
       "ru": "расторгать (договор)"
     },
     "short": {
-      "de": "Einen Vertrag offiziell beenden.",
-      "en": "To officially end a contract.",
-      "uk": "Офіційно завершити договір.",
-      "ru": "Официально завершить договор."
+      "de": "einen Vertrag offiziell beenden",
+      "en": "to officially end a contract",
+      "uk": "офіційно завершити договір",
+      "ru": "официально завершить договор"
     },
     "def": {
       "de": "Er hat den Vertrag <b>gekündigt</b>, <g>obwohl</g> die Versicherung eigentlich sehr günstig war.",
@@ -4052,10 +4052,10 @@ var VOCAB = [
       "ru": "расторжение договора"
     },
     "short": {
-      "de": "Der offizielle Brief oder Vorgang, mit dem man einen Vertrag beendet.",
-      "en": "The official letter or process with which you end a contract.",
-      "uk": "Офіційний лист або процес, яким завершують договір.",
-      "ru": "Официальное письмо или процесс, которым завершают договор."
+      "de": "der offizielle Brief oder Vorgang, mit dem man einen Vertrag beendet",
+      "en": "the official letter or process with which you end a contract",
+      "uk": "офіційний лист або процес, яким завершують договір",
+      "ru": "официальное письмо или процесс, которым завершают договор"
     },
     "def": {
       "de": "Die <b>Kündigung</b> kam an, <g>obwohl</g> Frau Krause den Brief nie abgeschickt hatte.",
@@ -4075,10 +4075,10 @@ var VOCAB = [
       "ru": "центр защиты прав потребителей"
     },
     "short": {
-      "de": "Eine Organisation, die Verbrauchern bei Problemen mit Firmen hilft.",
-      "en": "An organisation that helps consumers with problems with companies.",
-      "uk": "Організація, яка допомагає споживачам із проблемами з фірмами.",
-      "ru": "Организация, которая помогает потребителям с проблемами с компаниями."
+      "de": "eine Organisation, die Verbrauchern bei Problemen mit Firmen hilft",
+      "en": "an organisation that helps consumers with problems with companies",
+      "uk": "організація, яка допомагає споживачам із проблемами з фірмами",
+      "ru": "организация, которая помогает потребителям с проблемами с компаниями"
     },
     "def": {
       "de": "Die <b>Verbraucherzentrale</b> hilft oft beim Schreiben eines <g>Kündigungsschreibens</g>.",
@@ -4098,10 +4098,10 @@ var VOCAB = [
       "ru": "договор"
     },
     "short": {
-      "de": "Ein offizielles Dokument, das die Regeln zwischen zwei Seiten festlegt.",
-      "en": "An official document that sets the rules between two parties.",
-      "uk": "Офіційний документ, який визначає правила між двома сторонами.",
-      "ru": "Официальный документ, который устанавливает правила между двумя сторонами."
+      "de": "ein offizielles Dokument, das die Regeln zwischen zwei Seiten festlegt",
+      "en": "an official document that sets the rules between two parties",
+      "uk": "офіційний документ, який визначає правила між двома сторонами",
+      "ru": "официальный документ, который устанавливает правила между двумя сторонами"
     },
     "def": {
       "de": "Bevor man einen <b>Vertrag</b> unterschreibt, sollte man die <g>Kündigungsfrist</g> genau lesen.",
@@ -4121,10 +4121,10 @@ var VOCAB = [
       "ru": "заключать (договор)"
     },
     "short": {
-      "de": "Einen Vertrag offiziell unterschreiben und damit beginnen.",
-      "en": "To officially sign a contract and start it.",
-      "uk": "Офіційно підписати договір і розпочати його дію.",
-      "ru": "Официально подписать договор и начать его действие."
+      "de": "einen Vertrag offiziell unterschreiben und damit beginnen",
+      "en": "to officially sign a contract and start it",
+      "uk": "офіційно підписати договір і розпочати його дію",
+      "ru": "официально подписать договор и начать его действие"
     },
     "def": {
       "de": "Wir haben die neue Versicherung <b>abgeschlossen</b>, nachdem wir ein langes <g>Beratungsgespräch</g> hatten.",
@@ -4144,10 +4144,10 @@ var VOCAB = [
       "ru": "плата, сбор"
     },
     "short": {
-      "de": "Geld, das man für einen Service oder eine Leistung bezahlen muss.",
-      "en": "Money that you have to pay for a service.",
-      "uk": "Гроші, які потрібно платити за послугу.",
-      "ru": "Деньги, которые нужно платить за услугу."
+      "de": "Geld, das man für einen Service oder eine Leistung bezahlen muss",
+      "en": "money that you have to pay for a service",
+      "uk": "гроші, які потрібно платити за послугу",
+      "ru": "деньги, которые нужно платить за услугу"
     },
     "def": {
       "de": "Die Bank verlangt eine <b>Gebühr</b>, <g>obwohl</g> das Konto eigentlich kostenlos sein sollte.",
@@ -4167,10 +4167,10 @@ var VOCAB = [
       "ru": "банковский перевод"
     },
     "short": {
-      "de": "Wenn man Geld von seinem Konto auf ein anderes Konto schickt.",
-      "en": "When you send money from your account to another account.",
-      "uk": "Коли ти переказуєш гроші з свого рахунку на інший рахунок.",
-      "ru": "Когда ты переводишь деньги со своего счёта на другой счёт."
+      "de": "wenn man Geld von seinem Konto auf ein anderes Konto schickt",
+      "en": "when you send money from your account to another account",
+      "uk": "коли ти переказуєш гроші з свого рахунку на інший рахунок",
+      "ru": "когда ты переводишь деньги со своего счёта на другой счёт"
     },
     "def": {
       "de": "Die <b>Überweisung</b> ist noch nicht angekommen, <g>deshalb</g> rufe ich heute bei der Bank an.",
@@ -4190,10 +4190,10 @@ var VOCAB = [
       "ru": "ущерб"
     },
     "short": {
-      "de": "Wenn etwas kaputt oder zerstört wird.",
-      "en": "When something gets broken or destroyed.",
-      "uk": "Коли щось стає зламаним чи знищеним.",
-      "ru": "Когда что-то становится сломанным или уничтоженным."
+      "de": "wenn etwas kaputt oder zerstört wird",
+      "en": "when something gets broken or destroyed",
+      "uk": "коли щось стає зламаним чи знищеним",
+      "ru": "когда что-то становится сломанным или уничтоженным"
     },
     "def": {
       "de": "Der <b>Schaden</b> am Auto war klein, <g>trotzdem</g> musste sie die Versicherung informieren.",
@@ -4213,10 +4213,10 @@ var VOCAB = [
       "ru": "сообщение об ущербе"
     },
     "short": {
-      "de": "Ein Formular oder Brief, mit dem man der Versicherung einen Schaden meldet.",
-      "en": "A form or letter with which you report damage to the insurance company.",
-      "uk": "Формуляр або лист, яким повідомляєш страховій про шкоду.",
-      "ru": "Формуляр или письмо, которым сообщаешь страховой об ущербе."
+      "de": "ein Formular oder Brief, mit dem man der Versicherung einen Schaden meldet",
+      "en": "a form or letter with which you report damage to the insurance company",
+      "uk": "формуляр або лист, яким повідомляєш страховій про шкоду",
+      "ru": "формуляр или письмо, которым сообщаешь страховой об ущербе"
     },
     "def": {
       "de": "Ich habe die <b>Schadensmeldung</b> sofort geschickt, <g>damit</g> die Versicherung schnell reagieren kann.",
@@ -4236,10 +4236,10 @@ var VOCAB = [
       "ru": "привычка питания"
     },
     "short": {
-      "de": "Wie und was man normalerweise isst.",
-      "en": "How and what you normally eat.",
-      "uk": "Як і що ти зазвичай їси.",
-      "ru": "Как и что ты обычно ешь."
+      "de": "wie und was man normalerweise isst",
+      "en": "how and what you normally eat",
+      "uk": "як і що ти зазвичай їси",
+      "ru": "как и что ты обычно ешь"
     },
     "def": {
       "de": "Meine <b>Essgewohnheiten</b> haben sich verändert, <g>seit</g> ich in Deutschland lebe.",
@@ -4259,10 +4259,10 @@ var VOCAB = [
       "ru": "питаться"
     },
     "short": {
-      "de": "Essen, um zu leben und gesund zu bleiben.",
-      "en": "To eat in order to live and stay healthy.",
-      "uk": "Їсти, щоб жити й залишатися здоровим.",
-      "ru": "Есть, чтобы жить и оставаться здоровым."
+      "de": "Essen, um zu leben und gesund zu bleiben",
+      "en": "to eat in order to live and stay healthy",
+      "uk": "їсти, щоб жити й залишатися здоровим",
+      "ru": "есть, чтобы жить и оставаться здоровым"
     },
     "def": {
       "de": "Früher <b>ernährte</b> ich <b>mich</b> nur von Fast Food, heute koche ich selbst.",
@@ -4282,10 +4282,10 @@ var VOCAB = [
       "ru": "питание"
     },
     "short": {
-      "de": "Das Essen, das man regelmäßig zu sich nimmt.",
-      "en": "The food that you regularly eat.",
-      "uk": "Їжа, яку ти регулярно споживаєш.",
-      "ru": "Еда, которую ты регулярно потребляешь."
+      "de": "das Essen, das man regelmäßig zu sich nimmt",
+      "en": "the food that you regularly eat",
+      "uk": "їжа, яку ти регулярно споживаєш",
+      "ru": "еда, которую ты регулярно потребляешь"
     },
     "def": {
       "de": "Seine <b>Ernährung</b> <g>bestand</g> früher fast nur aus Brot und Wurst.",
@@ -4305,10 +4305,10 @@ var VOCAB = [
       "ru": "торговый автомат"
     },
     "short": {
-      "de": "Eine Maschine, aus der man Essen, Getränke oder Tickets kaufen kann.",
-      "en": "A machine from which you can buy food, drinks or tickets.",
-      "uk": "Автомат, з якого можна купити їжу, напої чи квитки.",
-      "ru": "Автомат, из которого можно купить еду, напитки или билеты."
+      "de": "eine Maschine, aus der man Essen, Getränke oder Tickets kaufen kann",
+      "en": "a machine from which you can buy food, drinks or tickets",
+      "uk": "автомат, з якого можна купити їжу, напої чи квитки",
+      "ru": "автомат, из которого можно купить еду, напитки или билеты"
     },
     "def": {
       "de": "Der <b>Automat</b> war leider kaputt, <g>deshalb</g> konnte ich keinen Kaffee kaufen.",
@@ -4328,10 +4328,10 @@ var VOCAB = [
       "ru": "ингредиент"
     },
     "short": {
-      "de": "Ein Lebensmittel, das man für ein Rezept braucht.",
-      "en": "A food item that you need for a recipe.",
-      "uk": "Продукт, який потрібен для рецепту.",
-      "ru": "Продукт, который нужен для рецепта."
+      "de": "ein Lebensmittel, das man für ein Rezept braucht",
+      "en": "a food item that you need for a recipe",
+      "uk": "продукт, який потрібен для рецепту",
+      "ru": "продукт, который нужен для рецепта"
     },
     "def": {
       "de": "Für den Kuchen fehlt noch eine <b>Zutat</b>: das <g>Eiweiß</g>.",
@@ -4351,10 +4351,10 @@ var VOCAB = [
       "ru": "вкус"
     },
     "short": {
-      "de": "Wie etwas schmeckt, zum Beispiel süß oder salzig.",
-      "en": "How something tastes, for example sweet or salty.",
-      "uk": "Який смак у чогось, наприклад солодкий чи солоний.",
-      "ru": "Какой вкус у чего-то, например сладкий или солёный."
+      "de": "wie etwas schmeckt, zum Beispiel süß oder salzig",
+      "en": "how something tastes, for example sweet or salty",
+      "uk": "який смак у чогось, наприклад солодкий чи солоний",
+      "ru": "какой вкус у чего-то, например сладкий или солёный"
     },
     "def": {
       "de": "Der <b>Geschmack</b> der Suppe war besser, seit wir <g>Gewürzmischungen</g> benutzt haben.",
@@ -4374,10 +4374,10 @@ var VOCAB = [
       "ru": "пробовать"
     },
     "short": {
-      "de": "Etwas zum ersten Mal essen oder trinken, um es kennenzulernen.",
-      "en": "To eat or drink something for the first time to get to know it.",
-      "uk": "Скуштувати щось уперше, щоб пізнати смак.",
-      "ru": "Попробовать что-то в первый раз, чтобы узнать вкус."
+      "de": "etwas zum ersten Mal essen oder trinken, um es kennenzulernen",
+      "en": "to eat or drink something for the first time to get to know it",
+      "uk": "скуштувати щось уперше, щоб пізнати смак",
+      "ru": "попробовать что-то в первый раз, чтобы узнать вкус"
     },
     "def": {
       "de": "Wir haben beim <g>Länderabend</g> viele neue Gerichte <b>probiert</b>.",
@@ -4397,10 +4397,10 @@ var VOCAB = [
       "ru": "опрос"
     },
     "short": {
-      "de": "Wenn man vielen Menschen die gleichen Fragen stellt, um ihre Meinung zu erfahren.",
-      "en": "When you ask many people the same questions to find out their opinion.",
-      "uk": "Коли багатьом людям задають одні й ті самі питання, щоб дізнатися їхню думку.",
-      "ru": "Когда многим людям задают одни и те же вопросы, чтобы узнать их мнение."
+      "de": "wenn man vielen Menschen die gleichen Fragen stellt, um ihre Meinung zu erfahren",
+      "en": "when you ask many people the same questions to find out their opinion",
+      "uk": "коли багатьом людям задають одні й ті самі питання, щоб дізнатися їхню думку",
+      "ru": "когда многим людям задают одни и те же вопросы, чтобы узнать их мнение"
     },
     "def": {
       "de": "Die Ergebnisse <g>von der</g> <b>Umfrage</b> waren wirklich überraschend.",
@@ -4420,10 +4420,10 @@ var VOCAB = [
       "ru": "здоровый / нездоровый"
     },
     "short": {
-      "de": "Gut oder schlecht für den Körper und das Wohlbefinden.",
-      "en": "Good or bad for the body and well-being.",
-      "uk": "Добре чи погано для тіла та самопочуття.",
-      "ru": "Хорошо или плохо для тела и самочувствия."
+      "de": "gut oder schlecht für den Körper und das Wohlbefinden",
+      "en": "good or bad for the body and well-being",
+      "uk": "добре чи погано для тіла та самопочуття",
+      "ru": "хорошо или плохо для тела и самочувствия"
     },
     "def": {
       "de": "Die Ernährung <g>von den</g> meisten Jugendlichen ist leider nicht sehr <b>gesund</b>.",
@@ -4443,10 +4443,10 @@ var VOCAB = [
       "ru": "снек, лёгкая закуска"
     },
     "short": {
-      "de": "Eine kleine Mahlzeit zwischen den Hauptmahlzeiten.",
-      "en": "A small meal between main meals.",
-      "uk": "Невеликий прийом їжі між основними прийомами їжі.",
-      "ru": "Небольшой приём еды между основными приёмами еды."
+      "de": "eine kleine Mahlzeit zwischen den Hauptmahlzeiten",
+      "en": "a small meal between main meals",
+      "uk": "невеликий прийом їжі між основними прийомами їжі",
+      "ru": "небольшой приём еды между основными приёмами еды"
     },
     "def": {
       "de": "Der Preis <g>von dem</g> <b>Snack</b> am Bahnhof war viel zu hoch.",
@@ -4466,10 +4466,10 @@ var VOCAB = [
       "ru": "порция"
     },
     "short": {
-      "de": "Die Menge Essen, die man auf einmal isst.",
-      "en": "The amount of food you eat at once.",
-      "uk": "Кількість їжі, яку ти їси за один раз.",
-      "ru": "Количество еды, которое ты ешь за один раз."
+      "de": "die Menge Essen, die man auf einmal isst",
+      "en": "the amount of food you eat at once",
+      "uk": "кількість їжі, яку ти їси за один раз",
+      "ru": "количество еды, которое ты ешь за один раз"
     },
     "def": {
       "de": "Die Größe <g>von der</g> <b>Portion</b> war für mich viel zu groß.",
@@ -4489,10 +4489,10 @@ var VOCAB = [
       "ru": "изменять"
     },
     "short": {
-      "de": "Anders machen als vorher.",
-      "en": "To make something different from before.",
-      "uk": "Робити щось інакшим, ніж раніше.",
-      "ru": "Делать что-то иным, чем раньше."
+      "de": "anders machen als vorher",
+      "en": "to make something different from before",
+      "uk": "робити щось інакшим, ніж раніше",
+      "ru": "делать что-то иным, чем раньше"
     },
     "def": {
       "de": "Wir haben unsere Essgewohnheiten stark <b>verändert</b>, <g>deswegen</g> fühlen wir uns viel fitter.",
@@ -4512,10 +4512,10 @@ var VOCAB = [
       "ru": "регулярно"
     },
     "short": {
-      "de": "Immer wieder zur gleichen Zeit oder auf die gleiche Art.",
-      "en": "Again and again at the same time or in the same way.",
-      "uk": "Знову і знову в той самий час чи так само.",
-      "ru": "Снова и снова в то же время или так же."
+      "de": "immer wieder zur gleichen Zeit oder auf die gleiche Art",
+      "en": "again and again at the same time or in the same way",
+      "uk": "знову і знову в той самий час чи так само",
+      "ru": "снова и снова в то же время или так же"
     },
     "def": {
       "de": "Er isst nicht <b>regelmäßig</b>, <g>trotzdem</g> ist er sehr gesund.",
@@ -4535,10 +4535,10 @@ var VOCAB = [
       "ru": "контейнер для хранения еды"
     },
     "short": {
-      "de": "Ein Behälter, in dem man Essen frisch aufbewahrt.",
-      "en": "A container in which you keep food fresh.",
-      "uk": "Контейнер, у якому зберігають їжу свіжою.",
-      "ru": "Контейнер, в котором хранят еду свежей."
+      "de": "ein Behälter, in dem man Essen frisch aufbewahrt",
+      "en": "a container in which you keep food fresh",
+      "uk": "контейнер, у якому зберігають їжу свіжою",
+      "ru": "контейнер, в котором хранят еду свежей"
     },
     "def": {
       "de": "Der Deckel <g>von der</g> <b>Frischhaltedose</b> ist leider kaputt.",
@@ -4558,10 +4558,10 @@ var VOCAB = [
       "ru": "разнообразный"
     },
     "short": {
-      "de": "Mit vielen verschiedenen Dingen, nicht immer gleich.",
-      "en": "With many different things, not always the same.",
-      "uk": "З багатьма різними речами, не завжди однаково.",
-      "ru": "С множеством разных вещей, не всегда одинаково."
+      "de": "mit vielen verschiedenen Dingen, nicht immer gleich",
+      "en": "with many different things, not always the same",
+      "uk": "з багатьма різними речами, не завжди однаково",
+      "ru": "с множеством разных вещей, не всегда одинаково"
     },
     "def": {
       "de": "Der Speiseplan <g>von der</g> Kantine ist diese Woche sehr <b>abwechslungsreich</b>.",
@@ -4581,10 +4581,10 @@ var VOCAB = [
       "ru": "различие"
     },
     "short": {
-      "de": "Wie zwei Dinge oder Personen nicht gleich sind.",
-      "en": "How two things or people are not the same.",
-      "uk": "Як дві речі чи особи не є однаковими.",
-      "ru": "Как две вещи или человека не одинаковы."
+      "de": "wie zwei Dinge oder Personen nicht gleich sind",
+      "en": "how two things or people are not the same",
+      "uk": "як дві речі чи особи не є однаковими",
+      "ru": "как две вещи или человека не одинаковы"
     },
     "def": {
       "de": "Ich sehe die kulturellen <b>Unterschiede</b> viel klarer, <g>seit</g> ich hier lebe.",
@@ -4604,10 +4604,10 @@ var VOCAB = [
       "ru": "удивлять"
     },
     "short": {
-      "de": "Etwas Unerwartetes erleben, das man vorher nicht wusste.",
-      "en": "To experience something unexpected that you didn't know before.",
-      "uk": "Переживати щось несподіване, про що раніше не знав.",
-      "ru": "Переживать что-то неожиданное, о чём раньше не знал."
+      "de": "etwas Unerwartetes erleben, das man vorher nicht wusste",
+      "en": "to experience something unexpected that you didn't know before",
+      "uk": "переживати щось несподіване, про що раніше не знав",
+      "ru": "переживать что-то неожиданное, о чём раньше не знал"
     },
     "def": {
       "de": "Vieles hat mich <b>überrascht</b>, <g>seitdem</g> ich in Deutschland arbeite.",
@@ -4627,10 +4627,10 @@ var VOCAB = [
       "ru": "сердиться, раздражаться"
     },
     "short": {
-      "de": "Ein schlechtes Gefühl haben, weil etwas nicht so ist, wie man möchte.",
-      "en": "To feel bad because something is not the way you want it.",
-      "uk": "Мати погане почуття, бо щось не так, як хочеться.",
-      "ru": "Испытывать плохое чувство, потому что что-то не так, как хочется."
+      "de": "ein schlechtes Gefühl haben, weil etwas nicht so ist, wie man möchte",
+      "en": "to feel bad because something is not the way you want it",
+      "uk": "мати погане почуття, бо щось не так, як хочеться",
+      "ru": "испытывать плохое чувство, потому что что-то не так, как хочется"
     },
     "def": {
       "de": "<g>Worüber</g> hast du <b>dich</b> gestern so <b>geärgert</b>?",
@@ -4650,10 +4650,10 @@ var VOCAB = [
       "ru": "успокаивать"
     },
     "short": {
-      "de": "Jemandem helfen, ruhiger und weniger nervös zu werden.",
-      "en": "To help someone become calmer and less nervous.",
-      "uk": "Допомогти комусь стати спокійнішим і менш нервовим.",
-      "ru": "Помочь кому-то стать спокойнее и менее нервным."
+      "de": "jemandem helfen, ruhiger und weniger nervös zu werden",
+      "en": "to help someone become calmer and less nervous",
+      "uk": "допомогти комусь стати спокійнішим і менш нервовим",
+      "ru": "помочь кому-то стать спокойнее и менее нервным"
     },
     "def": {
       "de": "<g>Darüber</g> musst du dir keine Sorgen machen — ich kann dich <b>beruhigen</b>: alles wird gut.",
@@ -4673,10 +4673,10 @@ var VOCAB = [
       "ru": "табу"
     },
     "short": {
-      "de": "Ein Thema, über das man in einer Kultur nicht offen spricht.",
-      "en": "A topic that people in a culture do not talk about openly.",
-      "uk": "Тема, про яку в певній культурі не говорять відкрито.",
-      "ru": "Тема, о которой в определённой культуре не говорят открыто."
+      "de": "ein Thema, über das man in einer Kultur nicht offen spricht",
+      "en": "a topic that people in a culture do not talk about openly",
+      "uk": "тема, про яку в певній культурі не говорять відкрито",
+      "ru": "тема, о которой в определённой культуре не говорят открыто"
     },
     "def": {
       "de": "Über Geld zu sprechen ist bei uns ein <b>Tabu</b>, <g>darüber</g> reden wir fast nie.",
@@ -4696,10 +4696,10 @@ var VOCAB = [
       "ru": "непринуждённая беседа"
     },
     "short": {
-      "de": "Ein kurzes, freundliches Gespräch über ein einfaches Thema.",
-      "en": "A short, friendly conversation about a simple topic.",
-      "uk": "Коротка, приязна розмова на просту тему.",
-      "ru": "Короткий, приятный разговор на простую тему."
+      "de": "ein kurzes, freundliches Gespräch über ein einfaches Thema",
+      "en": "a short, friendly conversation about a simple topic",
+      "uk": "коротка, приязна розмова на просту тему",
+      "ru": "короткий, приятный разговор на простую тему"
     },
     "def": {
       "de": "Beim <b>Smalltalk</b> spricht man meist über das Wetter — <g>darüber</g> kann man immer reden.",
@@ -4719,10 +4719,10 @@ var VOCAB = [
       "ru": "языковая биография"
     },
     "short": {
-      "de": "Die persönliche Geschichte, wie man eine oder mehrere Sprachen gelernt hat.",
-      "en": "The personal story of how you learned one or more languages.",
-      "uk": "Особиста історія того, як ти вивчив одну чи кілька мов.",
-      "ru": "Личная история того, как ты выучил один или несколько языков."
+      "de": "die persönliche Geschichte, wie man eine oder mehrere Sprachen gelernt hat",
+      "en": "the personal story of how you learned one or more languages",
+      "uk": "особиста історія того, як ти вивчив одну чи кілька мов",
+      "ru": "личная история того, как ты выучил один или несколько языков"
     },
     "def": {
       "de": "<g>Worüber</g> handelt deine <b>Sprachbiografie</b> eigentlich?",
@@ -4742,10 +4742,10 @@ var VOCAB = [
       "ru": "недопонимание"
     },
     "short": {
-      "de": "Wenn zwei Personen etwas anders verstehen und das ein Problem macht.",
-      "en": "When two people understand something differently and it causes a problem.",
-      "uk": "Коли двоє людей розуміють щось по-різному, і це створює проблему.",
-      "ru": "Когда два человека понимают что-то по-разному, и это создаёт проблему."
+      "de": "wenn zwei Personen etwas anders verstehen und das ein Problem macht",
+      "en": "when two people understand something differently and it causes a problem",
+      "uk": "коли двоє людей розуміють щось по-різному, і це створює проблему",
+      "ru": "когда два человека понимают что-то по-разному, и это создаёт проблему"
     },
     "def": {
       "de": "Es gab ein großes <b>Missverständnis</b>, aber <g>darüber</g> haben wir inzwischen gesprochen.",
@@ -4765,10 +4765,10 @@ var VOCAB = [
       "ru": "опыт"
     },
     "short": {
-      "de": "Das, was man im Leben schon erlebt und gelernt hat.",
-      "en": "What you have already experienced and learned in life.",
-      "uk": "Те, що ти вже пережив і чого навчився в житті.",
-      "ru": "То, что ты уже пережил и чему научился в жизни."
+      "de": "das, was man im Leben schon erlebt und gelernt hat",
+      "en": "what you have already experienced and learned in life",
+      "uk": "те, що ти вже пережив і чого навчився в житті",
+      "ru": "то, что ты уже пережил и чему научился в жизни"
     },
     "def": {
       "de": "Ich habe gewartet, <g>bis</g> ich genug <b>Erfahrung</b> für den neuen Job hatte.",
@@ -4788,10 +4788,10 @@ var VOCAB = [
       "ru": "повседневная жизнь"
     },
     "short": {
-      "de": "Das normale Leben mit den gewöhnlichen Aufgaben jeden Tag.",
-      "en": "Normal life with the usual tasks every day.",
-      "uk": "Звичайне життя зі звичайними справами щодня.",
-      "ru": "Обычная жизнь с обычными делами каждый день."
+      "de": "das normale Leben mit den gewöhnlichen Aufgaben jeden Tag",
+      "en": "normal life with the usual tasks every day",
+      "uk": "звичайне життя зі звичайними справами щодня",
+      "ru": "обычная жизнь с обычными делами каждый день"
     },
     "def": {
       "de": "<g>Das Einkaufen</g> und Kochen gehören fest zu meinem <b>Alltag</b>.",
@@ -4811,10 +4811,10 @@ var VOCAB = [
       "ru": "интегрироваться"
     },
     "short": {
-      "de": "Ein Teil einer neuen Gesellschaft oder Gruppe werden.",
-      "en": "To become part of a new society or group.",
-      "uk": "Стати частиною нового суспільства чи групи.",
-      "ru": "Стать частью нового общества или группы."
+      "de": "ein Teil einer neuen Gesellschaft oder Gruppe werden",
+      "en": "to become part of a new society or group",
+      "uk": "стати частиною нового суспільства чи групи",
+      "ru": "стать частью нового общества или группы"
     },
     "def": {
       "de": "Viele Sprachkurse helfen den Menschen, sich schneller zu <b>integrieren</b>; <g>das Lernen</g> der Sprache ist dabei der wichtigste Schritt.",
@@ -4834,10 +4834,10 @@ var VOCAB = [
       "ru": "родной язык"
     },
     "short": {
-      "de": "Die erste Sprache, die man als Kind gelernt hat.",
-      "en": "The first language you learned as a child.",
-      "uk": "Перша мова, яку ти вивчив у дитинстві.",
-      "ru": "Первый язык, который ты выучил в детстве."
+      "de": "die erste Sprache, die man als Kind gelernt hat",
+      "en": "the first language you learned as a child",
+      "uk": "перша мова, яку ти вивчив у дитинстві",
+      "ru": "первый язык, который ты выучил в детстве"
     },
     "def": {
       "de": "<g>Mit wem</g> sprichst du eigentlich deine <b>Muttersprache</b>?",
@@ -4857,10 +4857,10 @@ var VOCAB = [
       "ru": "выделяться, бросаться в глаза"
     },
     "short": {
-      "de": "Bemerkt werden, weil etwas anders oder besonders ist.",
-      "en": "To be noticed because something is different or special.",
-      "uk": "Бути помітним, бо щось відрізняється чи особливе.",
-      "ru": "Быть заметным, потому что что-то отличается или особенное."
+      "de": "Bemerkt werden, weil etwas anders oder besonders ist",
+      "en": "to be noticed because something is different or special",
+      "uk": "бути помітним, бо щось відрізняється чи особливе",
+      "ru": "быть заметным, потому что что-то отличается или особенное"
     },
     "def": {
       "de": "Der Fehler ist niemandem <b>aufgefallen</b>, <g>bis</g> der Chef die Liste noch einmal gelesen hat.",
@@ -4880,10 +4880,10 @@ var VOCAB = [
       "ru": "вежливость"
     },
     "short": {
-      "de": "Ein freundliches und respektvolles Verhalten gegenüber anderen Menschen.",
-      "en": "Friendly and respectful behaviour towards other people.",
-      "uk": "Приязна і шаноблива поведінка стосовно інших людей.",
-      "ru": "Приятное и уважительное поведение по отношению к другим людям."
+      "de": "ein freundliches und respektvolles Verhalten gegenüber anderen Menschen",
+      "en": "friendly and respectful behaviour towards other people",
+      "uk": "приязна і шаноблива поведінка стосовно інших людей",
+      "ru": "приятное и уважительное поведение по отношению к другим людям"
     },
     "def": {
       "de": "In manchen Ländern zeigt man <b>Höflichkeit</b> anders — <g>darüber</g> haben wir im Kurs gesprochen.",
@@ -4903,10 +4903,10 @@ var VOCAB = [
       "ru": "привыкать"
     },
     "short": {
-      "de": "Nach einiger Zeit etwas Neues normal finden.",
-      "en": "After some time, to find something new normal.",
-      "uk": "Через деякий час почати вважати щось нове звичним.",
-      "ru": "Через некоторое время начать считать что-то новое обычным."
+      "de": "nach einiger Zeit etwas Neues normal finden",
+      "en": "after some time, to find something new normal",
+      "uk": "через деякий час почати вважати щось нове звичним",
+      "ru": "через некоторое время начать считать что-то новое обычным"
     },
     "def": {
       "de": "Am Anfang war das Wetter hier komisch für mich, aber <g>daran</g> habe ich <b>mich</b> schnell <b>gewöhnt</b>.",
@@ -4926,10 +4926,10 @@ var VOCAB = [
       "ru": "приёмный покой"
     },
     "short": {
-      "de": "Die Abteilung im Krankenhaus für plötzliche, schwere Probleme.",
-      "en": "The department in a hospital for sudden, serious problems.",
-      "uk": "Відділення в лікарні для раптових, серйозних проблем.",
-      "ru": "Отделение в больнице для внезапных, серьёзных проблем."
+      "de": "die Abteilung im Krankenhaus für plötzliche, schwere Probleme",
+      "en": "the department in a hospital for sudden, serious problems",
+      "uk": "відділення в лікарні для раптових, серйозних проблем",
+      "ru": "отделение в больнице для внезапных, серьёзных проблем"
     },
     "def": {
       "de": "Er musste sofort in die <b>Notaufnahme</b>, und <g>darüber</g> haben wir uns große Sorgen gemacht.",
@@ -4949,10 +4949,10 @@ var VOCAB = [
       "ru": "экстренный случай"
     },
     "short": {
-      "de": "Eine plötzliche, gefährliche Situation, in der man schnell helfen muss.",
-      "en": "A sudden, dangerous situation where you have to help quickly.",
-      "uk": "Раптова, небезпечна ситуація, у якій потрібно швидко допомогти.",
-      "ru": "Внезапная, опасная ситуация, в которой нужно быстро помочь."
+      "de": "eine plötzliche, gefährliche Situation, in der man schnell helfen muss",
+      "en": "a sudden, dangerous situation where you have to help quickly",
+      "uk": "раптова, небезпечна ситуація, у якій потрібно швидко допомогти",
+      "ru": "внезапная, опасная ситуация, в которой нужно быстро помочь"
     },
     "def": {
       "de": "Bei einem <b>Notfall</b> muss man <g>nicht nur</g> ruhig bleiben, <g>sondern auch</g> schnell die 112 anrufen.",
@@ -4972,10 +4972,10 @@ var VOCAB = [
       "ru": "скорая помощь (машина)"
     },
     "short": {
-      "de": "Ein besonderes Auto, das kranke oder verletzte Menschen ins Krankenhaus bringt.",
-      "en": "A special vehicle that takes sick or injured people to the hospital.",
-      "uk": "Особливий автомобіль, який відвозить хворих чи травмованих людей до лікарні.",
-      "ru": "Особый автомобиль, который отвозит больных или травмированных людей в больницу."
+      "de": "ein besonderes Auto, das kranke oder verletzte Menschen ins Krankenhaus bringt",
+      "en": "a special vehicle that takes sick or injured people to the hospital",
+      "uk": "особливий автомобіль, який відвозить хворих чи травмованих людей до лікарні",
+      "ru": "особый автомобиль, который отвозит больных или травмированных людей в больницу"
     },
     "def": {
       "de": "Der <b>Krankenwagen</b> kam sehr schnell, <g>darüber</g> waren wir alle sehr erleichtert.",
@@ -4995,10 +4995,10 @@ var VOCAB = [
       "ru": "бинт, повязка"
     },
     "short": {
-      "de": "Ein Stück Stoff, das man um eine Wunde legt.",
-      "en": "A piece of cloth that you put around a wound.",
-      "uk": "Шматок тканини, який накладають на рану.",
-      "ru": "Кусок ткани, который накладывают на рану."
+      "de": "ein Stück Stoff, das man um eine Wunde legt",
+      "en": "a piece of cloth that you put around a wound",
+      "uk": "шматок тканини, який накладають на рану",
+      "ru": "кусок ткани, который накладывают на рану"
     },
     "def": {
       "de": "Die Schwester legte einen <b>Verband</b> an, <g>um</g> die Wunde <g>zu</g> schützen.",
@@ -5018,10 +5018,10 @@ var VOCAB = [
       "ru": "обследование"
     },
     "short": {
-      "de": "Wenn ein Arzt genau prüft, was mit dem Körper los ist.",
-      "en": "When a doctor carefully checks what is wrong with the body.",
-      "uk": "Коли лікар уважно перевіряє, що з тілом.",
-      "ru": "Когда врач внимательно проверяет, что с телом."
+      "de": "wenn ein Arzt genau prüft, was mit dem Körper los ist",
+      "en": "when a doctor carefully checks what is wrong with the body",
+      "uk": "коли лікар уважно перевіряє, що з тілом",
+      "ru": "когда врач внимательно проверяет, что с телом"
     },
     "def": {
       "de": "Die <b>Untersuchung</b> <g>wird</g> morgen früh <g>stattfinden</g>.",
@@ -5041,10 +5041,10 @@ var VOCAB = [
       "ru": "оперировать"
     },
     "short": {
-      "de": "Einen Körperteil im Krankenhaus mit einer Operation behandeln.",
-      "en": "To treat a body part in the hospital with an operation.",
-      "uk": "Лікувати частину тіла в лікарні за допомогою операції.",
-      "ru": "Лечить часть тела в больнице с помощью операции."
+      "de": "einen Körperteil im Krankenhaus mit einer Operation behandeln",
+      "en": "to treat a body part in the hospital with an operation",
+      "uk": "лікувати частину тіла в лікарні за допомогою операції",
+      "ru": "лечить часть тела в больнице с помощью операции"
     },
     "def": {
       "de": "Die Ärztin muss ihn heute noch <b>operieren</b>, <g>damit</g> sich der Zustand nicht verschlechtert.",
@@ -5064,10 +5064,10 @@ var VOCAB = [
       "ru": "лечение"
     },
     "short": {
-      "de": "Alles, was ein Arzt macht, um eine Krankheit zu heilen.",
-      "en": "Everything a doctor does to cure an illness.",
-      "uk": "Усе, що робить лікар, щоб вилікувати хворобу.",
-      "ru": "Всё, что делает врач, чтобы вылечить болезнь."
+      "de": "alles, was ein Arzt macht, um eine Krankheit zu heilen",
+      "en": "everything a doctor does to cure an illness",
+      "uk": "усе, що робить лікар, щоб вилікувати хворобу",
+      "ru": "всё, что делает врач, чтобы вылечить болезнь"
     },
     "def": {
       "de": "Die <b>Behandlung</b> war erfolgreich, und die <g>Gesundheit</g> des Patienten hat sich schnell verbessert.",
@@ -5087,10 +5087,10 @@ var VOCAB = [
       "ru": "отделение (больницы)"
     },
     "short": {
-      "de": "Ein Bereich im Krankenhaus für eine bestimmte Art von Patienten.",
-      "en": "An area in a hospital for a certain type of patient.",
-      "uk": "Відділення в лікарні для певного типу пацієнтів.",
-      "ru": "Отделение в больнице для определённого типа пациентов."
+      "de": "ein Bereich im Krankenhaus für eine bestimmte Art von Patienten",
+      "en": "an area in a hospital for a certain type of patient",
+      "uk": "відділення в лікарні для певного типу пацієнтів",
+      "ru": "отделение в больнице для определённого типа пациентов"
     },
     "def": {
       "de": "Der Patient <g>wird</g> morgen auf eine andere <b>Station</b> <g>verlegt</g>.",
@@ -5110,10 +5110,10 @@ var VOCAB = [
       "ru": "травмироваться"
     },
     "short": {
-      "de": "Sich beim Unfall oder aus Versehen selbst wehtun.",
-      "en": "To hurt yourself accidentally or in an accident.",
-      "uk": "Завдати собі шкоди випадково чи під час аварії.",
-      "ru": "Причинить себе вред случайно или во время аварии."
+      "de": "sich beim Unfall oder aus Versehen selbst wehtun",
+      "en": "to hurt yourself accidentally or in an accident",
+      "uk": "завдати собі шкоди випадково чи під час аварії",
+      "ru": "причинить себе вред случайно или во время аварии"
     },
     "def": {
       "de": "Er hat sich beim Sturz <g>nicht nur</g> am Arm <g>sondern auch</g> am Kopf <b>verletzt</b>.",
@@ -5133,10 +5133,10 @@ var VOCAB = [
       "ru": "формуляр, бланк"
     },
     "short": {
-      "de": "Ein Papier mit Feldern, die man ausfüllen muss.",
-      "en": "A piece of paper with fields that you have to fill in.",
-      "uk": "Папір з полями, які потрібно заповнити.",
-      "ru": "Бумага с полями, которые нужно заполнить."
+      "de": "ein Papier mit Feldern, die man ausfüllen muss",
+      "en": "a piece of paper with fields that you have to fill in",
+      "uk": "папір з полями, які потрібно заповнити",
+      "ru": "бумага с полями, которые нужно заполнить"
     },
     "def": {
       "de": "Sie füllte das <b>Formular</b> sehr sorgfältig aus, <g>um</g> keine Fehler <g>zu</g> machen.",
@@ -5156,10 +5156,10 @@ var VOCAB = [
       "ru": "прогноз"
     },
     "short": {
-      "de": "Was ein Arzt über die Zukunft einer Krankheit sagt.",
-      "en": "What a doctor says about the future course of an illness.",
-      "uk": "Те, що лікар говорить про майбутнє перебігу хвороби.",
-      "ru": "То, что врач говорит о будущем течении болезни."
+      "de": "was ein Arzt über die Zukunft einer Krankheit sagt",
+      "en": "what a doctor says about the future course of an illness",
+      "uk": "те, що лікар говорить про майбутнє перебігу хвороби",
+      "ru": "то, что врач говорит о будущем течении болезни"
     },
     "def": {
       "de": "Der Arzt erklärte die <b>Prognose</b> sehr genau, <g>damit</g> die Familie alles versteht.",
@@ -5179,10 +5179,10 @@ var VOCAB = [
       "ru": "медикамент, лекарство"
     },
     "short": {
-      "de": "Etwas, das man gegen eine Krankheit nimmt, um gesund zu werden.",
-      "en": "Something you take against an illness to become healthy.",
-      "uk": "Те, що приймають проти хвороби, щоб стати здоровим.",
-      "ru": "То, что принимают против болезни, чтобы стать здоровым."
+      "de": "etwas, das man gegen eine Krankheit nimmt, um gesund zu werden",
+      "en": "something you take against an illness to become healthy",
+      "uk": "те, що приймають проти хвороби, щоб стати здоровим",
+      "ru": "то, что принимают против болезни, чтобы стать здоровым"
     },
     "def": {
       "de": "Dieses <b>Medikament</b> hilft schnell gegen die <g>Müdigkeit</g> nach der Operation.",
@@ -5202,10 +5202,10 @@ var VOCAB = [
       "ru": "авария, несчастный случай"
     },
     "short": {
-      "de": "Ein plötzliches, unerwartetes Ereignis, bei dem jemand verletzt wird.",
-      "en": "A sudden, unexpected event in which someone gets hurt.",
-      "uk": "Раптова, несподівана подія, під час якої хтось травмується.",
-      "ru": "Внезапное, неожиданное событие, во время которого кто-то получает травму."
+      "de": "ein plötzliches, unerwartetes Ereignis, bei dem jemand verletzt wird",
+      "en": "a sudden, unexpected event in which someone gets hurt",
+      "uk": "раптова, несподівана подія, під час якої хтось травмується",
+      "ru": "внезапное, неожиданное событие, во время которого кто-то получает травму"
     },
     "def": {
       "de": "Bei dem <b>Unfall</b> wurden <g>nicht nur</g> die Fahrer <g>sondern auch</g> zwei Fußgänger verletzt.",
@@ -5225,10 +5225,10 @@ var VOCAB = [
       "ru": "медбрат / медсестра"
     },
     "short": {
-      "de": "Eine Person, die im Krankenhaus Patienten pflegt und ihnen hilft.",
-      "en": "A person who takes care of patients in a hospital and helps them.",
-      "uk": "Людина, яка в лікарні доглядає пацієнтів і допомагає їм.",
-      "ru": "Человек, который в больнице ухаживает за пациентами и помогает им."
+      "de": "eine Person, die im Krankenhaus Patienten pflegt und ihnen hilft",
+      "en": "a person who takes care of patients in a hospital and helps them",
+      "uk": "людина, яка в лікарні доглядає пацієнтів і допомагає їм",
+      "ru": "человек, который в больнице ухаживает за пациентами и помогает им"
     },
     "def": {
       "de": "Die <b>Krankenpflegerin</b> zeigte trotz der Müdigkeit große <g>Freundlichkeit</g> zu jedem Patienten.",
@@ -5248,10 +5248,10 @@ var VOCAB = [
       "ru": "роды, рождение"
     },
     "short": {
-      "de": "Der Moment, in dem ein Baby zur Welt kommt.",
-      "en": "The moment when a baby comes into the world.",
-      "uk": "Момент, коли дитина зʼявляється на світ.",
-      "ru": "Момент, когда ребёнок появляется на свет."
+      "de": "der Moment, in dem ein Baby zur Welt kommt",
+      "en": "the moment when a baby comes into the world",
+      "uk": "момент, коли дитина зʼявляється на світ",
+      "ru": "момент, когда ребёнок появляется на свет"
     },
     "def": {
       "de": "Nach der <b>Geburt</b> war die ganze Familie voller <g>Dankbarkeit</g> und Freude.",
@@ -5271,10 +5271,10 @@ var VOCAB = [
       "ru": "окружающая среда"
     },
     "short": {
-      "de": "Die Natur und alles um uns herum: Luft, Wasser, Pflanzen und Tiere.",
-      "en": "Nature and everything around us: air, water, plants and animals.",
-      "uk": "Природа і все навколо нас: повітря, вода, рослини й тварини.",
-      "ru": "Природа и всё вокруг нас: воздух, вода, растения и животные."
+      "de": "die Natur und alles um uns herum: Luft, Wasser, Pflanzen und Tiere",
+      "en": "nature and everything around us: air, water, plants and animals",
+      "uk": "природа і все навколо нас: повітря, вода, рослини й тварини",
+      "ru": "природа и всё вокруг нас: воздух, вода, растения и животные"
     },
     "def": {
       "de": "Der Schutz der <b>Umwelt</b> braucht viel <g>Aufmerksamkeit</g> von uns allen.",
@@ -5294,10 +5294,10 @@ var VOCAB = [
       "ru": "климатический кризис"
     },
     "short": {
-      "de": "Das große, gefährliche Problem, dass sich das Klima der Erde zu schnell verändert.",
-      "en": "The big, dangerous problem that the earth's climate is changing too fast.",
-      "uk": "Велика, небезпечна проблема, що клімат Землі змінюється надто швидко.",
-      "ru": "Большая, опасная проблема, что климат Земли меняется слишком быстро."
+      "de": "das große, gefährliche Problem, dass sich das Klima der Erde zu schnell verändert",
+      "en": "the big, dangerous problem that the earth's climate is changing too fast",
+      "uk": "велика, небезпечна проблема, що клімат Землі змінюється надто швидко",
+      "ru": "большая, опасная проблема, что климат Земли меняется слишком быстро"
     },
     "def": {
       "de": "Über die <b>Klimakrise</b> <g>wird</g> heute in fast jeder Zeitung <g>berichtet</g>.",
@@ -5317,10 +5317,10 @@ var VOCAB = [
       "ru": "отходы"
     },
     "short": {
-      "de": "Dinge, die man nicht mehr braucht und wegwirft.",
-      "en": "Things you no longer need and throw away.",
-      "uk": "Речі, які більше не потрібні і які викидають.",
-      "ru": "Вещи, которые больше не нужны и которые выбрасывают."
+      "de": "Dinge, die man nicht mehr braucht und wegwirft",
+      "en": "things you no longer need and throw away",
+      "uk": "речі, які більше не потрібні і які викидають",
+      "ru": "вещи, которые больше не нужны и которые выбрасывают"
     },
     "def": {
       "de": "Die richtige Trennung von <b>Abfall</b> zeigt viel <g>Verantwortlichkeit</g> für die Umwelt.",
@@ -5340,10 +5340,10 @@ var VOCAB = [
       "ru": "сортировать (мусор)"
     },
     "short": {
-      "de": "Abfall in verschiedene Gruppen sortieren, zum Beispiel Papier und Glas.",
-      "en": "To sort waste into different groups, for example paper and glass.",
-      "uk": "Сортувати сміття на різні групи, наприклад папір і скло.",
-      "ru": "Сортировать мусор на разные группы, например бумагу и стекло."
+      "de": "Abfall in verschiedene Gruppen sortieren, zum Beispiel Papier und Glas",
+      "en": "to sort waste into different groups, for example paper and glass",
+      "uk": "сортувати сміття на різні групи, наприклад папір і скло",
+      "ru": "сортировать мусор на разные группы, например бумагу и стекло"
     },
     "def": {
       "de": "In Deutschland <g>wird</g> der Abfall sehr genau <g><b>getrennt</b></g>.",
@@ -5363,10 +5363,10 @@ var VOCAB = [
       "ru": "переработка"
     },
     "short": {
-      "de": "Wenn man alte Materialien wieder zu neuen Produkten macht.",
-      "en": "When old materials are turned into new products again.",
-      "uk": "Коли зі старих матеріалів знову роблять нові продукти.",
-      "ru": "Когда из старых материалов снова делают новые продукты."
+      "de": "wenn man alte Materialien wieder zu neuen Produkten macht",
+      "en": "when old materials are turned into new products again",
+      "uk": "коли зі старих матеріалів знову роблять нові продукти",
+      "ru": "когда из старых материалов снова делают новые продукты"
     },
     "def": {
       "de": "Beim <b>Recycling</b> <g>werden</g> alte Flaschen zu neuem Glas <g>verarbeitet</g>.",
@@ -5386,10 +5386,10 @@ var VOCAB = [
       "ru": "бутылка с депозитом"
     },
     "short": {
-      "de": "Eine Flasche, für die man beim Kauf extra Geld bezahlt und beim Zurückbringen wiederbekommt.",
-      "en": "A bottle for which you pay extra money when buying it and get it back when you return it.",
-      "uk": "Бутилка, за яку при покупці платять додаткові гроші і отримують назад при поверненні.",
-      "ru": "Бутылка, за которую при покупке платят дополнительные деньги и получают назад при возврате."
+      "de": "eine Flasche, für die man beim Kauf extra Geld bezahlt und beim Zurückbringen wiederbekommt",
+      "en": "a bottle for which you pay extra money when buying it and get it back when you return it",
+      "uk": "бутилка, за яку при покупці платять додаткові гроші і отримують назад при поверненні",
+      "ru": "бутылка, за которую при покупке платят дополнительные деньги и получают назад при возврате"
     },
     "def": {
       "de": "Die <b>Pfandflasche</b> <g>wird</g> im Supermarkt <g>zurückgenommen</g> und man bekommt das Geld zurück.",
@@ -5409,10 +5409,10 @@ var VOCAB = [
       "ru": "устойчивый, экологичный"
     },
     "short": {
-      "de": "So, dass es der Umwelt für lange Zeit nicht schadet.",
-      "en": "In a way that does not harm the environment for a long time.",
-      "uk": "Так, що це не шкодить довкіллю протягом тривалого часу.",
-      "ru": "Так, что это не вредит окружающей среде долгое время."
+      "de": "so, dass es der Umwelt für lange Zeit nicht schadet",
+      "en": "in a way that does not harm the environment for a long time",
+      "uk": "так, що це не шкодить довкіллю протягом тривалого часу",
+      "ru": "так, что это не вредит окружающей среде долгое время"
     },
     "def": {
       "de": "Auf diesem Hof <g>wird</g> sehr <b>nachhaltig</b> <g>gearbeitet</g>.",
@@ -5432,10 +5432,10 @@ var VOCAB = [
       "ru": "органическая ферма"
     },
     "short": {
-      "de": "Ein Bauernhof, auf dem man ohne Chemie und umweltfreundlich arbeitet.",
-      "en": "A farm where people work without chemicals and in an environmentally friendly way.",
-      "uk": "Ферма, на якій працюють без хімії та екологічно чисто.",
-      "ru": "Ферма, на которой работают без химии и экологически чисто."
+      "de": "ein Bauernhof, auf dem man ohne Chemie und umweltfreundlich arbeitet",
+      "en": "a farm where people work without chemicals and in an environmentally friendly way",
+      "uk": "ферма, на якій працюють без хімії та екологічно чисто",
+      "ru": "ферма, на которой работают без химии и экологически чисто"
     },
     "def": {
       "de": "Der <b>Ökohof</b> bietet jedes Jahr eine spannende <g>Führung</g> für Besucher an.",
@@ -5455,10 +5455,10 @@ var VOCAB = [
       "ru": "сезонный"
     },
     "short": {
-      "de": "So, dass etwas nur zu einer bestimmten Jahreszeit vorhanden ist.",
-      "en": "So that something is only available at a certain time of year.",
-      "uk": "Так, що щось є лише в певну пору року.",
-      "ru": "Так, что что-то есть только в определённое время года."
+      "de": "so, dass etwas nur zu einer bestimmten Jahreszeit vorhanden ist",
+      "en": "so that something is only available at a certain time of year",
+      "uk": "так, що щось є лише в певну пору року",
+      "ru": "так, что что-то есть только в определённое время года"
     },
     "def": {
       "de": "Der Hof verkauft nur <b>saisonales</b> Obst — dazu gibt es auch eine gute <g>Beratung</g>.",
@@ -5478,10 +5478,10 @@ var VOCAB = [
       "ru": "энергопотребление"
     },
     "short": {
-      "de": "Wie viel Energie eine Person, ein Haus oder eine Maschine braucht.",
-      "en": "How much energy a person, house or machine needs.",
-      "uk": "Скільки енергії потребує людина, будинок чи машина.",
-      "ru": "Сколько энергии требуется человеку, дому или машине."
+      "de": "wie viel Energie eine Person, ein Haus oder eine Maschine braucht",
+      "en": "how much energy a person, house or machine needs",
+      "uk": "скільки енергії потребує людина, будинок чи машина",
+      "ru": "сколько энергии требуется человеку, дому или машине"
     },
     "def": {
       "de": "Der <b>Energieverbrauch</b> <g>wird</g> in unserem Haus jetzt genau <g>kontrolliert</g>.",
@@ -5501,10 +5501,10 @@ var VOCAB = [
       "ru": "экономить энергию"
     },
     "short": {
-      "de": "Weniger Strom oder Gas benutzen als vorher.",
-      "en": "To use less electricity or gas than before.",
-      "uk": "Використовувати менше електроенергії чи газу, ніж раніше.",
-      "ru": "Использовать меньше электроэнергии или газа, чем раньше."
+      "de": "weniger Strom oder Gas benutzen als vorher",
+      "en": "to use less electricity or gas than before",
+      "uk": "використовувати менше електроенергії чи газу, ніж раніше",
+      "ru": "использовать меньше электроэнергии или газа, чем раньше"
     },
     "def": {
       "de": "In unserem Büro <g>wird</g> jetzt an vielen Stellen <b>Energie</b> <g>gespart</g>.",
@@ -5524,10 +5524,10 @@ var VOCAB = [
       "ru": "экологически чистый"
     },
     "short": {
-      "de": "So, dass es der Umwelt nicht schadet.",
-      "en": "In a way that does not harm the environment.",
-      "uk": "Так, що це не шкодить довкіллю.",
-      "ru": "Так, что это не вредит окружающей среде."
+      "de": "so, dass es der Umwelt nicht schadet",
+      "en": "in a way that does not harm the environment",
+      "uk": "так, що це не шкодить довкіллю",
+      "ru": "так, что это не вредит окружающей среде"
     },
     "def": {
       "de": "Wir <g>haben</g> unser Auto verkauft und <g>sind</g> auf ein <b>umweltfreundliches</b> Fahrrad <g>umgestiegen</g>.",
@@ -5547,10 +5547,10 @@ var VOCAB = [
       "ru": "электроэнергия"
     },
     "short": {
-      "de": "Die Energie, mit der Lampen, Computer und andere Geräte funktionieren.",
-      "en": "The energy that makes lamps, computers and other devices work.",
-      "uk": "Енергія, завдяки якій працюють лампи, компʼютери та інші прилади.",
-      "ru": "Энергия, благодаря которой работают лампы, компьютеры и другие приборы."
+      "de": "die Energie, mit der Lampen, Computer und andere Geräte funktionieren",
+      "en": "the energy that makes lamps, computers and other devices work",
+      "uk": "енергія, завдяки якій працюють лампи, компʼютери та інші прилади",
+      "ru": "энергия, благодаря которой работают лампы, компьютеры и другие приборы"
     },
     "def": {
       "de": "Der <b>Strom</b> <g>wird</g> in diesem Dorf komplett aus Sonnenenergie <g>gewonnen</g>.",
@@ -5570,10 +5570,10 @@ var VOCAB = [
       "ru": "избегать"
     },
     "short": {
-      "de": "Etwas Schlechtes nicht passieren lassen.",
-      "en": "To not let something bad happen.",
-      "uk": "Не дозволити чомусь поганому статися.",
-      "ru": "Не дать чему-то плохому произойти."
+      "de": "etwas Schlechtes nicht passieren lassen",
+      "en": "to not let something bad happen",
+      "uk": "не дозволити чомусь поганому статися",
+      "ru": "не дать чему-то плохому произойти"
     },
     "def": {
       "de": "Wir <g>haben</g> in diesem Jahr viel Plastikmüll <g><b>vermieden</b></g>.",
@@ -5593,10 +5593,10 @@ var VOCAB = [
       "ru": "осознание"
     },
     "short": {
-      "de": "Wenn man ein Problem klar versteht und daran denkt.",
-      "en": "When you clearly understand a problem and think about it.",
-      "uk": "Коли ти чітко розумієш проблему і думаєш про неї.",
-      "ru": "Когда ты чётко понимаешь проблему и думаешь о ней."
+      "de": "wenn man ein Problem klar versteht und daran denkt",
+      "en": "when you clearly understand a problem and think about it",
+      "uk": "коли ти чітко розумієш проблему і думаєш про неї",
+      "ru": "когда ты чётко понимаешь проблему и думаешь о ней"
     },
     "def": {
       "de": "Das <b>Bewusstsein</b> für Umweltprobleme <g>wird</g> in den Schulen jetzt stärker <g>gefördert</g>.",
@@ -5616,10 +5616,10 @@ var VOCAB = [
       "ru": "мероприятие"
     },
     "short": {
-      "de": "Ein organisiertes Ereignis, zum Beispiel ein Konzert oder Festival.",
-      "en": "An organised event, for example a concert or festival.",
-      "uk": "Організована подія, наприклад концерт чи фестиваль.",
-      "ru": "Организованное событие, например концерт или фестиваль."
+      "de": "ein organisiertes Ereignis, zum Beispiel ein Konzert oder Festival",
+      "en": "an organised event, for example a concert or festival",
+      "uk": "організована подія, наприклад концерт чи фестиваль",
+      "ru": "организованное событие, например концерт или фестиваль"
     },
     "def": {
       "de": "Diese <b>Veranstaltung</b> <g>wird</g> dieses Jahr im Park <g>organisiert</g>.",
@@ -5639,10 +5639,10 @@ var VOCAB = [
       "ru": "фестиваль"
     },
     "short": {
-      "de": "Ein großes Fest mit Musik, Kunst oder Filmen, oft über mehrere Tage.",
-      "en": "A big celebration with music, art or films, often over several days.",
-      "uk": "Велике свято з музикою, мистецтвом чи фільмами, часто протягом кількох днів.",
-      "ru": "Большой праздник с музыкой, искусством или фильмами, часто на протяжении нескольких дней."
+      "de": "ein großes Fest mit Musik, Kunst oder Filmen, oft über mehrere Tage",
+      "en": "a big celebration with music, art or films, often over several days",
+      "uk": "велике свято з музикою, мистецтвом чи фільмами, часто протягом кількох днів",
+      "ru": "большой праздник с музыкой, искусством или фильмами, часто на протяжении нескольких дней"
     },
     "def": {
       "de": "Ich freue mich schon sehr <g>auf</g> das <b>Festival</b> nächste Woche.",
@@ -5662,10 +5662,10 @@ var VOCAB = [
       "ru": "отзыв, оценка"
     },
     "short": {
-      "de": "Eine persönliche Meinung darüber, ob etwas gut oder schlecht war.",
-      "en": "A personal opinion about whether something was good or bad.",
-      "uk": "Особиста думка про те, чи щось було хорошим чи поганим.",
-      "ru": "Личное мнение о том, было ли что-то хорошим или плохим."
+      "de": "eine persönliche Meinung darüber, ob etwas gut oder schlecht war",
+      "en": "a personal opinion about whether something was good or bad",
+      "uk": "особиста думка про те, чи щось було хорошим чи поганим",
+      "ru": "личное мнение о том, было ли что-то хорошим или плохим"
     },
     "def": {
       "de": "<g>Worauf</g> bezieht sich deine <b>Bewertung</b> genau — auf die Musik oder auf das Essen?",
@@ -5685,10 +5685,10 @@ var VOCAB = [
       "ru": "библиотека"
     },
     "short": {
-      "de": "Ein Ort, an dem man Bücher ausleihen und lesen kann.",
-      "en": "A place where you can borrow and read books.",
-      "uk": "Місце, де можна позичити й почитати книжки.",
-      "ru": "Место, где можно взять и почитать книги."
+      "de": "ein Ort, an dem man Bücher ausleihen und lesen kann",
+      "en": "a place where you can borrow and read books",
+      "uk": "місце, де можна позичити й почитати книжки",
+      "ru": "место, где можно взять и почитать книги"
     },
     "def": {
       "de": "<g>Worüber</g> hat die E-Mail von der <b>Bibliothek</b> eigentlich informiert?",
@@ -5708,10 +5708,10 @@ var VOCAB = [
       "ru": "экскурсия (с гидом)"
     },
     "short": {
-      "de": "Ein geführter Rundgang, bei dem man etwas über einen Ort erklärt bekommt.",
-      "en": "A guided walk where someone explains things about a place.",
-      "uk": "Екскурсія з гідом, під час якої тобі пояснюють про якесь місце.",
-      "ru": "Экскурсия с гидом, во время которой тебе объясняют о каком-то месте."
+      "de": "ein geführter Rundgang, bei dem man etwas über einen Ort erklärt bekommt",
+      "en": "a guided walk where someone explains things about a place",
+      "uk": "екскурсія з гідом, під час якої тобі пояснюють про якесь місце",
+      "ru": "экскурсия с гидом, во время которой тебе объясняют о каком-то месте"
     },
     "def": {
       "de": "Wie lange dauert die <b>Führung</b> <g>denn</g> genau?",
@@ -5731,10 +5731,10 @@ var VOCAB = [
       "ru": "графити"
     },
     "short": {
-      "de": "Ein Bild oder Schriftzug, der mit Farbe an eine Wand oder Mauer gemacht wird.",
-      "en": "A picture or text made with paint on a wall.",
-      "uk": "Малюнок чи напис, зроблений фарбою на стіні.",
-      "ru": "Рисунок или надпись, сделанная краской на стене."
+      "de": "ein Bild oder Schriftzug, der mit Farbe an eine Wand oder Mauer gemacht wird",
+      "en": "a picture or text made with paint on a wall",
+      "uk": "малюнок чи напис, зроблений фарбою на стіні",
+      "ru": "рисунок или надпись, сделанная краской на стене"
     },
     "def": {
       "de": "Manche Menschen finden <b>Graffiti</b> schön, andere finden es <g>unpassend</g>.",
@@ -5754,10 +5754,10 @@ var VOCAB = [
       "ru": "обмениваться мнениями"
     },
     "short": {
-      "de": "Miteinander sprechen und Meinungen oder Ideen teilen.",
-      "en": "To talk with each other and share opinions or ideas.",
-      "uk": "Розмовляти одне з одним і ділитися думками чи ідеями.",
-      "ru": "Разговаривать друг с другом и делиться мнениями или идеями."
+      "de": "miteinander sprechen und Meinungen oder Ideen teilen",
+      "en": "to talk with each other and share opinions or ideas",
+      "uk": "розмовляти одне з одним і ділитися думками чи ідеями",
+      "ru": "разговаривать друг с другом и делиться мнениями или идеями"
     },
     "def": {
       "de": "Die Nachbarn <b>tauschen sich</b> oft über <g>unbekannte</g> Künstler und ihre Werke <b>aus</b>.",
@@ -5777,10 +5777,10 @@ var VOCAB = [
       "ru": "планировать"
     },
     "short": {
-      "de": "Im Voraus überlegen, was, wann und wie man etwas machen möchte.",
-      "en": "To think in advance about what, when and how you want to do something.",
-      "uk": "Наперед обмірковувати, що, коли і як хочеш зробити.",
-      "ru": "Заранее обдумывать, что, когда и как хочешь сделать."
+      "de": "im Voraus überlegen, was, wann und wie man etwas machen möchte",
+      "en": "to think in advance about what, when and how you want to do something",
+      "uk": "наперед обмірковувати, що, коли і як хочеш зробити",
+      "ru": "заранее обдумывать, что, когда и как хочешь сделать"
     },
     "def": {
       "de": "Wir <b>planen</b> den Ausflug schon lange und freuen uns sehr <g>auf</g> das Festival.",
@@ -5800,10 +5800,10 @@ var VOCAB = [
       "ru": "выставка"
     },
     "short": {
-      "de": "Ein Ort oder Ereignis, bei dem Kunst oder Objekte gezeigt werden.",
-      "en": "A place or event where art or objects are shown.",
-      "uk": "Місце чи подія, де показують мистецтво чи предмети.",
-      "ru": "Место или событие, где показывают искусство или предметы."
+      "de": "ein Ort oder Ereignis, bei dem Kunst oder Objekte gezeigt werden",
+      "en": "a place or event where art or objects are shown",
+      "uk": "місце чи подія, де показують мистецтво чи предмети",
+      "ru": "место или событие, где показывают искусство или предметы"
     },
     "def": {
       "de": "Die neue <b>Ausstellung</b> zeigt auch einige <g>ungewöhnliche</g> Fotografien.",
@@ -5823,10 +5823,10 @@ var VOCAB = [
       "ru": "принимать участие"
     },
     "short": {
-      "de": "Bei etwas mitmachen, zum Beispiel bei einer Veranstaltung.",
-      "en": "To take part in something, for example an event.",
-      "uk": "Брати участь у чомусь, наприклад у заході.",
-      "ru": "Принимать участие в чём-то, например в мероприятии."
+      "de": "bei etwas mitmachen, zum Beispiel bei einer Veranstaltung",
+      "en": "to take part in something, for example an event",
+      "uk": "брати участь у чомусь, наприклад у заході",
+      "ru": "принимать участие в чём-то, например в мероприятии"
     },
     "def": {
       "de": "Trotz des <g>unsicheren</g> Wetters wollten viele Leute an der Führung <b>teilnehmen</b>.",
@@ -5846,10 +5846,10 @@ var VOCAB = [
       "ru": "искусство"
     },
     "short": {
-      "de": "Bilder, Musik, Filme oder andere Werke, die Menschen mit Fantasie schaffen.",
-      "en": "Pictures, music, films or other works that people create with imagination.",
-      "uk": "Картини, музика, фільми чи інші твори, які люди створюють за допомогою фантазії.",
-      "ru": "Картины, музыка, фильмы или другие произведения, которые люди создают с помощью фантазии."
+      "de": "Bilder, Musik, Filme oder andere Werke, die Menschen mit Fantasie schaffen",
+      "en": "pictures, music, films or other works that people create with imagination",
+      "uk": "картини, музика, фільми чи інші твори, які люди створюють за допомогою фантазії",
+      "ru": "картины, музыка, фильмы или другие произведения, которые люди создают с помощью фантазии"
     },
     "def": {
       "de": "Moderne <b>Kunst</b> <g>wird</g> in diesem Museum sehr modern <g>präsentiert</g>.",
@@ -5869,10 +5869,10 @@ var VOCAB = [
       "ru": "восторженный, увлечённый"
     },
     "short": {
-      "de": "Sehr glücklich und voller Interesse wegen etwas.",
-      "en": "Very happy and full of interest because of something.",
-      "uk": "Дуже щасливий і сповнений інтересу через щось.",
-      "ru": "Очень счастливый и полный интереса из-за чего-то."
+      "de": "sehr glücklich und voller Interesse wegen etwas",
+      "en": "very happy and full of interest because of something",
+      "uk": "дуже щасливий і сповнений інтересу через щось",
+      "ru": "очень счастливый и полный интереса из-за чего-то"
     },
     "def": {
       "de": "<g>Wovon</g> warst du beim Festival am meisten <b>begeistert</b>?",
@@ -5892,10 +5892,10 @@ var VOCAB = [
       "ru": "вход (плата за вход)"
     },
     "short": {
-      "de": "Das Geld, das man bezahlt, um in eine Veranstaltung zu gehen.",
-      "en": "The money you pay to go into an event.",
-      "uk": "Гроші, які платять, щоб потрапити на подію.",
-      "ru": "Деньги, которые платят, чтобы попасть на мероприятие."
+      "de": "das Geld, das man bezahlt, um in eine Veranstaltung zu gehen",
+      "en": "the money you pay to go into an event",
+      "uk": "гроші, які платять, щоб потрапити на подію",
+      "ru": "деньги, которые платят, чтобы попасть на мероприятие"
     },
     "def": {
       "de": "Wie viel kostet der <b>Eintritt</b> <g>eigentlich</g> für die Bibliotheksführung?",
@@ -5915,10 +5915,10 @@ var VOCAB = [
       "ru": "рекомендовать"
     },
     "short": {
-      "de": "Jemandem sagen, dass etwas gut ist und man es machen oder kaufen sollte.",
-      "en": "To tell someone that something is good and they should do or buy it.",
-      "uk": "Казати комусь, що щось хорошe і варто це зробити чи купити.",
-      "ru": "Говорить кому-то, что что-то хорошее и стоит это сделать или купить."
+      "de": "jemandem sagen, dass etwas gut ist und man es machen oder kaufen sollte",
+      "en": "to tell someone that something is good and they should do or buy it",
+      "uk": "казати комусь, що щось хорошe і варто це зробити чи купити",
+      "ru": "говорить кому-то, что что-то хорошее и стоит это сделать или купить"
     },
     "def": {
       "de": "Ich kann das Festival <g>uneingeschränkt</g> <b>empfehlen</b>.",
@@ -5938,10 +5938,10 @@ var VOCAB = [
       "ru": "предложение, программа"
     },
     "short": {
-      "de": "Etwas, das eine Firma oder Organisation den Menschen anbietet.",
-      "en": "Something that a company or organisation offers to people.",
-      "uk": "Те, що фірма чи організація пропонує людям.",
-      "ru": "То, что фирма или организация предлагает людям."
+      "de": "etwas, das eine Firma oder Organisation den Menschen anbietet",
+      "en": "something that a company or organisation offers to people",
+      "uk": "те, що фірма чи організація пропонує людям",
+      "ru": "то, что фирма или организация предлагает людям"
     },
     "def": {
       "de": "<g>Worauf</g> bezieht sich das neue <b>Angebot</b> der Bibliothek genau?",
@@ -5961,10 +5961,10 @@ var VOCAB = [
       "ru": "заявление о приёме на работу"
     },
     "short": {
-      "de": "Ein Brief oder Formular, mit dem man sich für eine Stelle bewirbt.",
-      "en": "A letter or form that you use to apply for a job.",
-      "uk": "Лист або форма, за допомогою яких людина подає заявку на посаду.",
-      "ru": "Письмо или форма, с помощью которых человек подаёт заявку на должность."
+      "de": "ein Brief oder Formular, mit dem man sich für eine Stelle bewirbt",
+      "en": "a letter or form that you use to apply for a job",
+      "uk": "лист або форма, за допомогою яких людина подає заявку на посаду",
+      "ru": "письмо или форма, с помощью которых человек подаёт заявку на должность"
     },
     "def": {
       "de": "<g>Ich hätte gern</g> eine Rückmeldung zu meiner <b>Bewerbung</b>, denn ich warte schon zwei Wochen.",
@@ -5984,10 +5984,10 @@ var VOCAB = [
       "ru": "сопроводительное письмо"
     },
     "short": {
-      "de": "Ein persönlicher Brief, der zu einer Bewerbung gehört.",
-      "en": "A personal letter that is part of a job application.",
-      "uk": "Особистий лист, який є частиною заяви про прийом на роботу.",
-      "ru": "Личное письмо, которое является частью заявления о приёме на работу."
+      "de": "ein persönlicher Brief, der zu einer Bewerbung gehört",
+      "en": "a personal letter that is part of a job application",
+      "uk": "особистий лист, який є частиною заяви про прийом на роботу",
+      "ru": "личное письмо, которое является частью заявления о приёме на работу"
     },
     "def": {
       "de": "<g>Ich hätte gern</g> Ihre Meinung zu meinem <b>Anschreiben</b>, bevor ich es endgültig verschicke.",
@@ -6007,10 +6007,10 @@ var VOCAB = [
       "ru": "объявление о вакансии"
     },
     "short": {
-      "de": "Eine Anzeige, in der eine Firma eine freie Stelle sucht.",
-      "en": "An advertisement in which a company is looking to fill a position.",
-      "uk": "Оголошення, у якому фірма шукає працівника на вакантну посаду.",
-      "ru": "Объявление, в котором фирма ищет работника на вакантную должность."
+      "de": "eine Anzeige, in der eine Firma eine freie Stelle sucht",
+      "en": "an advertisement in which a company is looking to fill a position",
+      "uk": "оголошення, у якому фірма шукає працівника на вакантну посаду",
+      "ru": "объявление, в котором фирма ищет работника на вакантную должность"
     },
     "def": {
       "de": "<g>Wenn</g> die <b>Stellenanzeige</b> nicht so interessant <g>wäre</g>, würde ich mich gar nicht erst bewerben.",
@@ -6030,10 +6030,10 @@ var VOCAB = [
       "ru": "собеседование"
     },
     "short": {
-      "de": "Ein Gespräch zwischen einer Firma und einem Bewerber vor der Einstellung.",
-      "en": "A conversation between a company and an applicant before hiring.",
-      "uk": "Розмова між фірмою та кандидатом перед прийомом на роботу.",
-      "ru": "Разговор между фирмой и кандидатом перед приёмом на работу."
+      "de": "ein Gespräch zwischen einer Firma und einem Bewerber vor der Einstellung",
+      "en": "a conversation between a company and an applicant before hiring",
+      "uk": "розмова між фірмою та кандидатом перед прийомом на роботу",
+      "ru": "разговор между фирмой и кандидатом перед приёмом на работу"
     },
     "def": {
       "de": "Ich freue mich <g>darauf, dass</g> ich morgen zu einem <b>Vorstellungsgespräch</b> eingeladen wurde.",
@@ -6053,10 +6053,10 @@ var VOCAB = [
       "ru": "увольнение"
     },
     "short": {
-      "de": "Die schriftliche Erklärung, dass ein Arbeitsverhältnis endet.",
-      "en": "The written statement that an employment relationship is ending.",
-      "uk": "Письмове повідомлення про припинення трудових відносин.",
-      "ru": "Письменное уведомление о прекращении трудовых отношений."
+      "de": "die schriftliche Erklärung, dass ein Arbeitsverhältnis endet",
+      "en": "the written statement that an employment relationship is ending",
+      "uk": "письмове повідомлення про припинення трудових відносин",
+      "ru": "письменное уведомление о прекращении трудовых отношений"
     },
     "def": {
       "de": "Ich habe mich <g>darüber gewundert, dass</g> die <b>Kündigung</b> so plötzlich kam.",
@@ -6076,10 +6076,10 @@ var VOCAB = [
       "ru": "заработная плата"
     },
     "short": {
-      "de": "Das Geld, das man für seine Arbeit bekommt.",
-      "en": "The money you receive for your work.",
-      "uk": "Гроші, які людина отримує за свою роботу.",
-      "ru": "Деньги, которые человек получает за свою работу."
+      "de": "das Geld, das man für seine Arbeit bekommt",
+      "en": "the money you receive for your work",
+      "uk": "гроші, які людина отримує за свою роботу",
+      "ru": "деньги, которые человек получает за свою работу"
     },
     "def": {
       "de": "Der <b>Lohn</b> für diese <g>anstrengende</g> Arbeit ist leider nicht besonders hoch.",
@@ -6099,10 +6099,10 @@ var VOCAB = [
       "ru": "сверхурочный час"
     },
     "short": {
-      "de": "Eine Stunde, die man zusätzlich zur normalen Arbeitszeit arbeitet.",
-      "en": "An hour that you work in addition to your normal working time.",
-      "uk": "Година, яку відпрацьовують понад звичайний робочий час.",
-      "ru": "Час, отработанный сверх обычного рабочего времени."
+      "de": "eine Stunde, die man zusätzlich zur normalen Arbeitszeit arbeitet",
+      "en": "an hour that you work in addition to your normal working time",
+      "uk": "година, яку відпрацьовують понад звичайний робочий час",
+      "ru": "час, отработанный сверх обычного рабочего времени"
     },
     "def": {
       "de": "<g>Ich hätte gern</g> weniger <b>Überstunden</b>, damit ich mehr Zeit für meine Familie habe.",
@@ -6122,10 +6122,10 @@ var VOCAB = [
       "ru": "неполная занятость"
     },
     "short": {
-      "de": "Eine Arbeitsform, bei der man weniger Stunden als in Vollzeit arbeitet.",
-      "en": "A form of work where you work fewer hours than full-time.",
-      "uk": "Форма зайнятості, за якої працюють менше годин, ніж повний робочий день.",
-      "ru": "Форма занятости, при которой работают меньше часов, чем полный рабочий день."
+      "de": "eine Arbeitsform, bei der man weniger Stunden als in Vollzeit arbeitet",
+      "en": "a form of work where you work fewer hours than full-time",
+      "uk": "форма зайнятості, за якої працюють менше годин, ніж повний робочий день",
+      "ru": "форма занятости, при которой работают меньше часов, чем полный рабочий день"
     },
     "def": {
       "de": "<g>Wenn</g> ich in <b>Teilzeit</b> arbeiten <g>würde</g>, hätte ich mehr Zeit für mein Studium.",
@@ -6145,10 +6145,10 @@ var VOCAB = [
       "ru": "домашний офис / удалённая работа"
     },
     "short": {
-      "de": "Ein Arbeitsplatz zu Hause statt im Büro.",
-      "en": "A workplace at home instead of in the office.",
-      "uk": "Робоче місце вдома замість офісу.",
-      "ru": "Рабочее место дома вместо офиса."
+      "de": "ein Arbeitsplatz zu Hause statt im Büro",
+      "en": "a workplace at home instead of in the office",
+      "uk": "робоче місце вдома замість офісу",
+      "ru": "рабочее место дома вместо офиса"
     },
     "def": {
       "de": "Mein Chef besteht <g>darauf, dass</g> wir mindestens zwei Tage pro Woche im <b>Homeoffice</b> arbeiten.",
@@ -6168,10 +6168,10 @@ var VOCAB = [
       "ru": "повышение квалификации"
     },
     "short": {
-      "de": "Ein Kurs oder ein Training, mit dem man neue berufliche Kenntnisse lernt.",
-      "en": "A course or training in which you learn new professional skills.",
-      "uk": "Курс або тренінг, під час якого людина здобуває нові професійні знання.",
-      "ru": "Курс или тренинг, в ходе которого человек получает новые профессиональные знания."
+      "de": "ein Kurs oder ein Training, mit dem man neue berufliche Kenntnisse lernt",
+      "en": "a course or training in which you learn new professional skills",
+      "uk": "курс або тренінг, під час якого людина здобуває нові професійні знання",
+      "ru": "курс или тренинг, в ходе которого человек получает новые профессиональные знания"
     },
     "def": {
       "de": "Für diese <g>berufliche</g> <b>Weiterbildung</b> braucht man keine Vorkenntnisse.",
@@ -6191,10 +6191,10 @@ var VOCAB = [
       "ru": "служащий / служащая"
     },
     "short": {
-      "de": "Eine Person, die für eine Firma arbeitet und dafür Geld bekommt.",
-      "en": "A person who works for a company and is paid for it.",
-      "uk": "Особа, яка працює на фірму і отримує за це гроші.",
-      "ru": "Лицо, которое работает на фирму и получает за это деньги."
+      "de": "eine Person, die für eine Firma arbeitet und dafür Geld bekommt",
+      "en": "a person who works for a company and is paid for it",
+      "uk": "особа, яка працює на фірму і отримує за це гроші",
+      "ru": "лицо, которое работает на фирму и получает за это деньги"
     },
     "def": {
       "de": "Als <g>langjährige</g> <b>Angestellte</b> kennt sie die Firma besser als jeder andere.",
@@ -6214,10 +6214,10 @@ var VOCAB = [
       "ru": "повышать свою квалификацию"
     },
     "short": {
-      "de": "Neue berufliche Kenntnisse lernen, um besser zu werden.",
-      "en": "To learn new professional skills in order to improve.",
-      "uk": "Здобувати нові професійні знання, щоб стати кращим фахівцем.",
-      "ru": "Получать новые профессиональные знания, чтобы стать лучше как специалист."
+      "de": "neue berufliche Kenntnisse lernen, um besser zu werden",
+      "en": "to learn new professional skills in order to improve",
+      "uk": "здобувати нові професійні знання, щоб стати кращим фахівцем",
+      "ru": "получать новые профессиональные знания, чтобы стать лучше как специалист"
     },
     "def": {
       "de": "Er möchte <b>sich</b> <g>beruflich</g> <b>weiterbilden</b>, um bessere Chancen auf dem Arbeitsmarkt zu haben.",
@@ -6237,10 +6237,10 @@ var VOCAB = [
       "ru": "работать (в должности)"
     },
     "short": {
-      "de": "In einem bestimmten Beruf oder Bereich arbeiten.",
-      "en": "To work in a certain profession or field.",
-      "uk": "Працювати в певній професії або сфері.",
-      "ru": "Работать в определённой профессии или сфере."
+      "de": "in einem bestimmten Beruf oder Bereich arbeiten",
+      "en": "to work in a certain profession or field",
+      "uk": "працювати в певній професії або сфері",
+      "ru": "работать в определённой профессии или сфере"
     },
     "def": {
       "de": "Sie <b>ist</b> seit fünf Jahren in einer <g>technischen</g> Abteilung <b>tätig</b>.",
@@ -6260,10 +6260,10 @@ var VOCAB = [
       "ru": "ответственность"
     },
     "short": {
-      "de": "Die Pflicht, für eine Aufgabe oder eine Person zu sorgen.",
-      "en": "The duty to take care of a task or a person.",
-      "uk": "Обовʼязок дбати про завдання чи людину.",
-      "ru": "Обязанность заботиться о задаче или человеке."
+      "de": "die Pflicht, für eine Aufgabe oder eine Person zu sorgen",
+      "en": "the duty to take care of a task or a person",
+      "uk": "обовʼязок дбати про завдання чи людину",
+      "ru": "обязанность заботиться о задаче или человеке"
     },
     "def": {
       "de": "In dieser <g>leitenden</g> Position trägt man eine große <b>Verantwortung</b>.",
@@ -6283,10 +6283,10 @@ var VOCAB = [
       "ru": "желание"
     },
     "short": {
-      "de": "Etwas, das man gern hätte oder gern tun möchte.",
-      "en": "Something that you would like to have or do.",
-      "uk": "Те, що людина хотіла б мати чи зробити.",
-      "ru": "То, что человек хотел бы иметь или сделать."
+      "de": "etwas, das man gern hätte oder gern tun möchte",
+      "en": "something that you would like to have or do",
+      "uk": "те, що людина хотіла б мати чи зробити",
+      "ru": "то, что человек хотел бы иметь или сделать"
     },
     "def": {
       "de": "Ihr größter <g>beruflicher</g> <b>Wunsch</b> ist eine Führungsposition.",
@@ -6306,10 +6306,10 @@ var VOCAB = [
       "ru": "действительность"
     },
     "short": {
-      "de": "Das, was wirklich passiert, im Gegensatz zu Träumen oder Plänen.",
-      "en": "What really happens, as opposed to dreams or plans.",
-      "uk": "Те, що відбувається насправді, на відміну від мрій чи планів.",
-      "ru": "То, что происходит на самом деле, в отличие от мечтаний или планов."
+      "de": "das, was wirklich passiert, im Gegensatz zu Träumen oder Plänen",
+      "en": "what really happens, as opposed to dreams or plans",
+      "uk": "те, що відбувається насправді, на відміну від мрій чи планів",
+      "ru": "то, что происходит на самом деле, в отличие от мечтаний или планов"
     },
     "def": {
       "de": "Die <g>wirtschaftliche</g> <b>Wirklichkeit</b> sieht für viele Berufseinsteiger anders aus als erwartet.",
@@ -6329,10 +6329,10 @@ var VOCAB = [
       "ru": "двигаться"
     },
     "short": {
-      "de": "Den Körper aktiv benutzen, zum Beispiel beim Sport.",
-      "en": "To use the body actively, for example during sport.",
-      "uk": "Активно рухати тілом, наприклад під час спорту.",
-      "ru": "Активно двигать телом, например во время спорта."
+      "de": "den Körper aktiv benutzen, zum Beispiel beim Sport",
+      "en": "to use the body actively, for example during sport",
+      "uk": "активно рухати тілом, наприклад під час спорту",
+      "ru": "активно двигать телом, например во время спорта"
     },
     "def": {
       "de": "Man sollte sich gut aufwärmen, <g>bevor</g> man <b>sich</b> beim Sport intensiv <b>bewegt</b>.",
@@ -6352,10 +6352,10 @@ var VOCAB = [
       "ru": "прилагать усилия"
     },
     "short": {
-      "de": "Viel Kraft oder Energie für etwas einsetzen.",
-      "en": "To put a lot of strength or energy into something.",
-      "uk": "Докладати багато сили чи енергії до чогось.",
-      "ru": "Прилагать много сил или энергии к чему-либо."
+      "de": "viel Kraft oder Energie für etwas einsetzen",
+      "en": "to put a lot of strength or energy into something",
+      "uk": "докладати багато сили чи енергії до чогось",
+      "ru": "прилагать много сил или энергии к чему-либо"
     },
     "def": {
       "de": "<g>Bevor</g> du <b>dich</b> im Wettkampf <b>anstrengst</b>, solltest du genug schlafen.",
@@ -6375,10 +6375,10 @@ var VOCAB = [
       "ru": "тренировка"
     },
     "short": {
-      "de": "Ein intensives sportliches Training.",
-      "en": "An intensive sports training session.",
-      "uk": "Інтенсивне спортивне тренування.",
-      "ru": "Интенсивная спортивная тренировка."
+      "de": "ein intensives sportliches Training",
+      "en": "an intensive sports training session",
+      "uk": "інтенсивне спортивне тренування",
+      "ru": "интенсивная спортивная тренировка"
     },
     "def": {
       "de": "Das <g>intensive</g> <b>Workout</b> hat mich total erschöpft.",
@@ -6398,10 +6398,10 @@ var VOCAB = [
       "ru": "мышца"
     },
     "short": {
-      "de": "Ein Teil des Körpers, mit dem man sich bewegt.",
-      "en": "A part of the body that you use to move.",
-      "uk": "Частина тіла, за допомогою якої людина рухається.",
-      "ru": "Часть тела, с помощью которой человек двигается."
+      "de": "ein Teil des Körpers, mit dem man sich bewegt",
+      "en": "a part of the body that you use to move",
+      "uk": "частина тіла, за допомогою якої людина рухається",
+      "ru": "часть тела, с помощью которой человек двигается"
     },
     "def": {
       "de": "Nach dem Training tut mir jeder <g>einzelne</g> <b>Muskel</b> weh.",
@@ -6421,10 +6421,10 @@ var VOCAB = [
       "ru": "соревнование"
     },
     "short": {
-      "de": "Ein Ereignis, bei dem Sportler gegeneinander antreten.",
-      "en": "An event in which athletes compete against each other.",
-      "uk": "Подія, під час якої спортсмени змагаються один з одним.",
-      "ru": "Событие, во время которого спортсмены соревнуются друг с другом."
+      "de": "ein Ereignis, bei dem Sportler gegeneinander antreten",
+      "en": "an event in which athletes compete against each other",
+      "uk": "подія, під час якої спортсмени змагаються один з одним",
+      "ru": "событие, во время которого спортсмены соревнуются друг с другом"
     },
     "def": {
       "de": "<g>Bevor</g> der <b>Wettkampf</b> beginnt, müssen sich alle Sportler aufwärmen.",
@@ -6444,10 +6444,10 @@ var VOCAB = [
       "ru": "принимать участие в соревновании"
     },
     "short": {
-      "de": "Bei einem sportlichen Wettbewerb mitmachen.",
-      "en": "To take part in a sports competition.",
-      "uk": "Брати участь у спортивному змаганні.",
-      "ru": "Принимать участие в спортивном соревновании."
+      "de": "bei einem sportlichen Wettbewerb mitmachen",
+      "en": "to take part in a sports competition",
+      "uk": "брати участь у спортивному змаганні",
+      "ru": "принимать участие в спортивном соревновании"
     },
     "def": {
       "de": "Nur die <g>besten</g> Athleten dürfen <b>an</b> diesem <b>Wettkampf</b> <b>teilnehmen</b>.",
@@ -6467,10 +6467,10 @@ var VOCAB = [
       "ru": "чемпионат"
     },
     "short": {
-      "de": "Ein großer Wettbewerb, bei dem der beste Sportler oder das beste Team gesucht wird.",
-      "en": "A major competition to find the best athlete or team.",
-      "uk": "Великі змагання, у яких визначають найкращого спортсмена чи команду.",
-      "ru": "Крупное соревнование, в котором определяют лучшего спортсмена или команду."
+      "de": "ein großer Wettbewerb, bei dem der beste Sportler oder das beste Team gesucht wird",
+      "en": "a major competition to find the best athlete or team",
+      "uk": "великі змагання, у яких визначають найкращого спортсмена чи команду",
+      "ru": "крупное соревнование, в котором определяют лучшего спортсмена или команду"
     },
     "def": {
       "de": "Diese <g>größte</g> <b>Meisterschaft</b> des Jahres findet in München statt.",
@@ -6490,10 +6490,10 @@ var VOCAB = [
       "ru": "победа"
     },
     "short": {
-      "de": "Das Gewinnen in einem Wettkampf oder Spiel.",
-      "en": "Winning in a competition or game.",
-      "uk": "Перемога у змаганні чи грі.",
-      "ru": "Победа в соревновании или игре."
+      "de": "das Gewinnen in einem Wettkampf oder Spiel",
+      "en": "winning in a competition or game",
+      "uk": "перемога у змаганні чи грі",
+      "ru": "победа в соревновании или игре"
     },
     "def": {
       "de": "<g>Das Beste</g> an diesem <b>Sieg</b> war die Freude der ganzen Mannschaft.",
@@ -6513,10 +6513,10 @@ var VOCAB = [
       "ru": "забить гол"
     },
     "short": {
-      "de": "Beim Fußball den Ball ins Tor bringen und einen Punkt machen.",
-      "en": "To kick the ball into the goal in football and score a point.",
-      "uk": "У футболі забити мʼяч у ворота й здобути очко.",
-      "ru": "В футболе забить мяч в ворота и набрать очко."
+      "de": "beim Fußball den Ball ins Tor bringen und einen Punkt machen",
+      "en": "to kick the ball into the goal in football and score a point",
+      "uk": "у футболі забити мʼяч у ворота й здобути очко",
+      "ru": "в футболе забить мяч в ворота и набрать очко"
     },
     "def": {
       "de": "<g>Etwas Besonderes</g> passierte, als der jüngste Spieler <b>ein Tor</b> <b>schoss</b>.",
@@ -6536,10 +6536,10 @@ var VOCAB = [
       "ru": "вид спорта"
     },
     "short": {
-      "de": "Eine bestimmte Art von Sport, zum Beispiel Fußball oder Schwimmen.",
-      "en": "A particular type of sport, for example football or swimming.",
-      "uk": "Певний вид спорту, наприклад футбол чи плавання.",
-      "ru": "Определённый вид спорта, например футбол или плавание."
+      "de": "eine bestimmte Art von Sport, zum Beispiel Fußball oder Schwimmen",
+      "en": "a particular type of sport, for example football or swimming",
+      "uk": "певний вид спорту, наприклад футбол чи плавання",
+      "ru": "определённый вид спорта, например футбол или плавание"
     },
     "def": {
       "de": "<g>Nichts Neues</g> gab es bei dieser <b>Sportart</b>, die Regeln bleiben immer gleich.",
@@ -6559,10 +6559,10 @@ var VOCAB = [
       "ru": "убеждать"
     },
     "short": {
-      "de": "Jemandem so gute Gründe geben, dass er seine Meinung ändert.",
-      "en": "To give someone such good reasons that they change their opinion.",
-      "uk": "Наводити комусь такі вагомі аргументи, що людина змінює свою думку.",
-      "ru": "Приводить кому-либо такие веские аргументы, что человек меняет своё мнение."
+      "de": "jemandem so gute Gründe geben, dass er seine Meinung ändert",
+      "en": "to give someone such good reasons that they change their opinion",
+      "uk": "наводити комусь такі вагомі аргументи, що людина змінює свою думку",
+      "ru": "приводить кому-либо такие веские аргументы, что человек меняет своё мнение"
     },
     "def": {
       "de": "Der Trainer konnte die Mannschaft von <g>etwas Wichtigem</g> <b>überzeugen</b>: dass sie gewinnen können.",
@@ -6582,10 +6582,10 @@ var VOCAB = [
       "ru": "уговаривать"
     },
     "short": {
-      "de": "Jemanden so lange bitten, bis er etwas tut, was er zuerst nicht wollte.",
-      "en": "To keep asking someone until they do something they didn't want to do at first.",
-      "uk": "Умовляти когось так довго, поки він не зробить те, чого спочатку не хотів.",
-      "ru": "Уговаривать кого-либо так долго, пока он не сделает то, чего сначала не хотел."
+      "de": "jemanden so lange bitten, bis er etwas tut, was er zuerst nicht wollte",
+      "en": "to keep asking someone until they do something they didn't want to do at first",
+      "uk": "умовляти когось так довго, поки він не зробить те, чого спочатку не хотів",
+      "ru": "уговаривать кого-либо так долго, пока он не сделает то, чего сначала не хотел"
     },
     "def": {
       "de": "Nach langem Reden konnte sie ihn zu <g>etwas Verrücktem</g> <b>überreden</b> — einem Marathon.",
@@ -6605,10 +6605,10 @@ var VOCAB = [
       "ru": "улучшать физическую форму"
     },
     "short": {
-      "de": "Die eigene körperliche Kondition verbessern.",
-      "en": "To improve one's own physical fitness.",
-      "uk": "Покращувати власну фізичну форму.",
-      "ru": "Улучшать собственную физическую форму."
+      "de": "die eigene körperliche Kondition verbessern",
+      "en": "to improve one's own physical fitness",
+      "uk": "покращувати власну фізичну форму",
+      "ru": "улучшать собственную физическую форму"
     },
     "def": {
       "de": "<g>Nichts Besseres</g> gibt es, um die eigene <b>Fitness</b> <b>zu steigern</b>, als regelmäßiges Training.",
@@ -6628,10 +6628,10 @@ var VOCAB = [
       "ru": "благотворительный забег"
     },
     "short": {
-      "de": "Ein Lauf, bei dem die Teilnehmer für einen guten Zweck Geld sammeln.",
-      "en": "A run in which participants collect money for a good cause.",
-      "uk": "Забіг, під час якого учасники збирають гроші на добру справу.",
-      "ru": "Забег, во время которого участники собирают деньги на доброе дело."
+      "de": "ein Lauf, bei dem die Teilnehmer für einen guten Zweck Geld sammeln",
+      "en": "a run in which participants collect money for a good cause",
+      "uk": "забіг, під час якого учасники збирають гроші на добру справу",
+      "ru": "забег, во время которого участники собирают деньги на доброе дело"
     },
     "def": {
       "de": "<g>Das Schönste</g> an diesem <b>Spendenlauf</b> war, wie viele Menschen mitgemacht haben.",
@@ -6651,10 +6651,10 @@ var VOCAB = [
       "ru": "организовывать (мероприятие)"
     },
     "short": {
-      "de": "Etwas organisieren, zum Beispiel eine Veranstaltung oder ein Fest.",
-      "en": "To organise something, for example an event or a party.",
-      "uk": "Організовувати щось, наприклад захід чи свято.",
-      "ru": "Организовывать что-либо, например мероприятие или праздник."
+      "de": "etwas organisieren, zum Beispiel eine Veranstaltung oder ein Fest",
+      "en": "to organise something, for example an event or a party",
+      "uk": "організовувати щось, наприклад захід чи свято",
+      "ru": "организовывать что-либо, например мероприятие или праздник"
     },
     "def": {
       "de": "Der Verein möchte <g>etwas Großes</g> <b>veranstalten</b>, um mehr Mitglieder zu gewinnen.",
@@ -6674,10 +6674,10 @@ var VOCAB = [
       "ru": "рекорд"
     },
     "short": {
-      "de": "Das beste Ergebnis, das bisher in einer Disziplin erreicht wurde.",
-      "en": "The best result achieved so far in a discipline.",
-      "uk": "Найкращий результат, досягнутий у певній дисципліні.",
-      "ru": "Лучший результат, достигнутый в какой-либо дисциплине."
+      "de": "das beste Ergebnis, das bisher in einer Disziplin erreicht wurde",
+      "en": "the best result achieved so far in a discipline",
+      "uk": "найкращий результат, досягнутий у певній дисципліні",
+      "ru": "лучший результат, достигнутый в какой-либо дисциплине"
     },
     "def": {
       "de": "<g>Nichts Vergleichbares</g> gab es bisher — dieser <b>Rekord</b> ist wirklich einzigartig.",
@@ -6697,10 +6697,10 @@ var VOCAB = [
       "ru": "беременность"
     },
     "short": {
-      "de": "Die Zeit, in der eine Frau ein Kind erwartet.",
-      "en": "The period during which a woman is expecting a child.",
-      "uk": "Період, коли жінка чекає на дитину.",
-      "ru": "Период, когда женщина ждёт ребёнка."
+      "de": "die Zeit, in der eine Frau ein Kind erwartet",
+      "en": "the period during which a woman is expecting a child",
+      "uk": "період, коли жінка чекає на дитину",
+      "ru": "период, когда женщина ждёт ребёнка"
     },
     "def": {
       "de": "<g>Nichts Besonderes</g> hat sie während ihrer <b>Schwangerschaft</b> gespürt, bis zum achten Monat.",
@@ -6720,10 +6720,10 @@ var VOCAB = [
       "ru": "готовиться к"
     },
     "short": {
-      "de": "Sich rechtzeitig auf etwas einstellen, das noch kommt.",
-      "en": "To get ready in time for something that is still to come.",
-      "uk": "Завчасно готуватися до чогось, що ще має статися.",
-      "ru": "Заранее готовиться к чему-то, что ещё должно произойти."
+      "de": "sich rechtzeitig auf etwas einstellen, das noch kommt",
+      "en": "to get ready in time for something that is still to come",
+      "uk": "завчасно готуватися до чогось, що ще має статися",
+      "ru": "заранее готовиться к чему-то, что ещё должно произойти"
     },
     "def": {
       "de": "<g>Während</g> sie <b>sich</b> auf die Geburt <b>vorbereitet</b>, kümmert sich ihr Mann um die Wohnung.",
@@ -6743,10 +6743,10 @@ var VOCAB = [
       "ru": "подгузник"
     },
     "short": {
-      "de": "Ein saugfähiges Kleidungsstück für kleine Kinder, die noch nicht zur Toilette gehen.",
-      "en": "An absorbent item of clothing for small children who cannot use the toilet yet.",
-      "uk": "Гігієнічний виріб для маленьких дітей, які ще не ходять у туалет.",
-      "ru": "Гигиеническое изделие для маленьких детей, которые ещё не ходят в туалет."
+      "de": "ein saugfähiges Kleidungsstück für kleine Kinder, die noch nicht zur Toilette gehen",
+      "en": "an absorbent item of clothing for small children who cannot use the toilet yet",
+      "uk": "гігієнічний виріб для маленьких дітей, які ще не ходять у туалет",
+      "ru": "гигиеническое изделие для маленьких детей, которые ещё не ходят в туалет"
     },
     "def": {
       "de": "Du <g>brauchst</g> die <b>Windel</b> <g>nicht</g> jede Stunde <g>zu</g> wechseln, alle drei Stunden reicht.",
@@ -6766,10 +6766,10 @@ var VOCAB = [
       "ru": "принимать"
     },
     "short": {
-      "de": "Etwas so annehmen, wie es ist, auch wenn man es nicht ändern kann.",
-      "en": "To accept something as it is, even if you cannot change it.",
-      "uk": "Приймати щось таким, яким воно є, навіть якщо це не можна змінити.",
-      "ru": "Принимать что-либо таким, какое оно есть, даже если это нельзя изменить."
+      "de": "etwas so annehmen, wie es ist, auch wenn man es nicht ändern kann",
+      "en": "to accept something as it is, even if you cannot change it",
+      "uk": "приймати щось таким, яким воно є, навіть якщо це не можна змінити",
+      "ru": "принимать что-либо таким, какое оно есть, даже если это нельзя изменить"
     },
     "def": {
       "de": "<g>Jeder</g> muss die Entscheidung der Familie <b>akzeptieren</b>, auch wenn er anderer Meinung ist.",
@@ -6789,10 +6789,10 @@ var VOCAB = [
       "ru": "женская роль"
     },
     "short": {
-      "de": "Die Aufgaben und Erwartungen, die die Gesellschaft mit Frauen verbindet.",
-      "en": "The tasks and expectations that society associates with women.",
-      "uk": "Обовʼязки та очікування, які суспільство повʼязує з жінками.",
-      "ru": "Обязанности и ожидания, которые общество связывает с женщинами."
+      "de": "die Aufgaben und Erwartungen, die die Gesellschaft mit Frauen verbindet",
+      "en": "the tasks and expectations that society associates with women",
+      "uk": "обовʼязки та очікування, які суспільство повʼязує з жінками",
+      "ru": "обязанности и ожидания, которые общество связывает с женщинами"
     },
     "def": {
       "de": "<g>Manche</g> Menschen denken noch immer traditionell über die <b>Frauenrolle</b>.",
@@ -6812,10 +6812,10 @@ var VOCAB = [
       "ru": "мужская роль"
     },
     "short": {
-      "de": "Die Aufgaben und Erwartungen, die die Gesellschaft mit Männern verbindet.",
-      "en": "The tasks and expectations that society associates with men.",
-      "uk": "Обовʼязки та очікування, які суспільство повʼязує з чоловіками.",
-      "ru": "Обязанности и ожидания, которые общество связывает с мужчинами."
+      "de": "die Aufgaben und Erwartungen, die die Gesellschaft mit Männern verbindet",
+      "en": "the tasks and expectations that society associates with men",
+      "uk": "обовʼязки та очікування, які суспільство повʼязує з чоловіками",
+      "ru": "обязанности и ожидания, которые общество связывает с мужчинами"
     },
     "def": {
       "de": "<g>Während</g> sich die <b>Männerrolle</b> in den letzten Jahren stark verändert hat, bleibt vieles in der Gesellschaft noch traditionell.",
@@ -6835,10 +6835,10 @@ var VOCAB = [
       "ru": "воспитывающий ребёнка в одиночку"
     },
     "short": {
-      "de": "Ohne Partner ein oder mehrere Kinder großziehen.",
-      "en": "Raising one or more children without a partner.",
-      "uk": "Виховувати одну або кілька дітей без партнера.",
-      "ru": "Воспитывать одного или нескольких детей без партнёра."
+      "de": "ohne Partner ein oder mehrere Kinder großziehen",
+      "en": "raising one or more children without a partner",
+      "uk": "виховувати одну або кілька дітей без партнера",
+      "ru": "воспитывать одного или нескольких детей без партнёра"
     },
     "def": {
       "de": "Sie ist <b>alleinerziehend</b>, aber sie <g>braucht</g> <g>nicht</g> alles allein <g>zu</g> schaffen — ihre Schwester hilft ihr oft.",
@@ -6858,10 +6858,10 @@ var VOCAB = [
       "ru": "детский сад"
     },
     "short": {
-      "de": "Eine Einrichtung, in der kleine Kinder tagsüber betreut werden.",
-      "en": "A facility where small children are looked after during the day.",
-      "uk": "Заклад, де маленьких дітей доглядають протягом дня.",
-      "ru": "Учреждение, где за маленькими детьми присматривают в течение дня."
+      "de": "eine Einrichtung, in der kleine Kinder tagsüber betreut werden",
+      "en": "a facility where small children are looked after during the day",
+      "uk": "заклад, де маленьких дітей доглядають протягом дня",
+      "ru": "учреждение, где за маленькими детьми присматривают в течение дня"
     },
     "def": {
       "de": "<g>Unsere</g> <b>Kindertagesstätte</b> hat leider keinen freien Platz mehr.",
@@ -6881,10 +6881,10 @@ var VOCAB = [
       "ru": "место в детском саду"
     },
     "short": {
-      "de": "Ein freier Platz für ein Kind in einer Kindertagesstätte.",
-      "en": "An available place for a child in a daycare centre.",
-      "uk": "Вільне місце для дитини в дитячому садку.",
-      "ru": "Свободное место для ребёнка в детском саду."
+      "de": "ein freier Platz für ein Kind in einer Kindertagesstätte",
+      "en": "an available place for a child in a daycare centre",
+      "uk": "вільне місце для дитини в дитячому садку",
+      "ru": "свободное место для ребёнка в детском саду"
     },
     "def": {
       "de": "<g>Etwas Gutes</g> ist passiert: Wir haben endlich einen <b>Kita-Platz</b> bekommen!",
@@ -6904,10 +6904,10 @@ var VOCAB = [
       "ru": "охрана материнства"
     },
     "short": {
-      "de": "Der gesetzliche Schutz für Frauen kurz vor und nach der Geburt.",
-      "en": "The legal protection for women shortly before and after giving birth.",
-      "uk": "Законодавчий захист жінок незадовго до та після пологів.",
-      "ru": "Законодательная защита женщин незадолго до и после родов."
+      "de": "der gesetzliche Schutz für Frauen kurz vor und nach der Geburt",
+      "en": "the legal protection for women shortly before and after giving birth",
+      "uk": "законодавчий захист жінок незадовго до та після пологів",
+      "ru": "законодательная защита женщин незадолго до и после родов"
     },
     "def": {
       "de": "<g>Das Wichtigste</g> beim <b>Mutterschutz</b> ist, dass die Gesundheit von Mutter und Kind geschützt wird.",
@@ -6927,10 +6927,10 @@ var VOCAB = [
       "ru": "разводиться"
     },
     "short": {
-      "de": "Eine Ehe offiziell beenden.",
-      "en": "To officially end a marriage.",
-      "uk": "Офіційно припинити шлюб.",
-      "ru": "Официально прекратить брак."
+      "de": "eine Ehe offiziell beenden",
+      "en": "to officially end a marriage",
+      "uk": "офіційно припинити шлюб",
+      "ru": "официально прекратить брак"
     },
     "def": {
       "de": "Nachdem sie ihrem <g>Kätzchen</g> ein neues Zuhause gefunden hatte, <b>ließ</b> sie <b>sich</b> endlich <b>scheiden</b>.",
@@ -6950,10 +6950,10 @@ var VOCAB = [
       "ru": "разочарование"
     },
     "short": {
-      "de": "Das Gefühl, wenn etwas nicht so kommt, wie man es erwartet hat.",
-      "en": "The feeling when something does not turn out as expected.",
-      "uk": "Почуття, коли щось відбувається не так, як очікувалося.",
-      "ru": "Чувство, когда что-то происходит не так, как ожидалось."
+      "de": "das Gefühl, wenn etwas nicht so kommt, wie man es erwartet hat",
+      "en": "the feeling when something does not turn out as expected",
+      "uk": "почуття, коли щось відбувається не так, як очікувалося",
+      "ru": "чувство, когда что-то происходит не так, как ожидалось"
     },
     "def": {
       "de": "Das kleine <g>Mädchen</g> spürte die <b>Enttäuschung</b> ihrer Eltern nach der Scheidung.",
@@ -6973,10 +6973,10 @@ var VOCAB = [
       "ru": "смешанная семья"
     },
     "short": {
-      "de": "Eine Familie, in der Kinder aus verschiedenen früheren Beziehungen zusammenleben.",
-      "en": "A family in which children from different previous relationships live together.",
-      "uk": "Сімʼя, у якій разом живуть діти з різних попередніх стосунків.",
-      "ru": "Семья, в которой вместе живут дети от разных предыдущих отношений."
+      "de": "eine Familie, in der Kinder aus verschiedenen früheren Beziehungen zusammenleben",
+      "en": "a family in which children from different previous relationships live together",
+      "uk": "сімʼя, у якій разом живуть діти з різних попередніх стосунків",
+      "ru": "семья, в которой вместе живут дети от разных предыдущих отношений"
     },
     "def": {
       "de": "In unserer <b>Patchworkfamilie</b> gibt es auch ein kleines <g>Brüderchen</g> aus der zweiten Ehe.",
@@ -6996,10 +6996,10 @@ var VOCAB = [
       "ru": "брак"
     },
     "short": {
-      "de": "Die offizielle Verbindung zwischen zwei Menschen, die heiraten.",
-      "en": "The official union between two people who get married.",
-      "uk": "Офіційний союз між двома людьми, які одружуються.",
-      "ru": "Официальный союз между двумя людьми, которые вступают в брак."
+      "de": "die offizielle Verbindung zwischen zwei Menschen, die heiraten",
+      "en": "the official union between two people who get married",
+      "uk": "офіційний союз між двома людьми, які одружуються",
+      "ru": "официальный союз между двумя людьми, которые вступают в брак"
     },
     "def": {
       "de": "Nach zwanzig Jahren <b>Ehe</b> kauften sie sich ein kleines <g>Häuschen</g> auf dem Land.",
@@ -7019,10 +7019,10 @@ var VOCAB = [
       "ru": "расставаться (как пара)"
     },
     "short": {
-      "de": "Als Paar nicht mehr zusammen sein.",
-      "en": "To no longer be together as a couple.",
-      "uk": "Більше не бути разом як пара.",
-      "ru": "Больше не быть вместе как пара."
+      "de": "als Paar nicht mehr zusammen sein",
+      "en": "to no longer be together as a couple",
+      "uk": "більше не бути разом як пара",
+      "ru": "больше не быть вместе как пара"
     },
     "def": {
       "de": "Das junge <g>Pärchen</g> <b>trennte</b> <b>sich</b> nach nur einem Jahr.",
@@ -7042,10 +7042,10 @@ var VOCAB = [
       "ru": "изменять"
     },
     "short": {
-      "de": "Einem Partner gegenüber nicht treu sein.",
-      "en": "To be unfaithful to a partner.",
-      "uk": "Бути невірним партнеру чи партнерці.",
-      "ru": "Быть неверным партнёру или партнёрше."
+      "de": "einem Partner gegenüber nicht treu sein",
+      "en": "to be unfaithful to a partner",
+      "uk": "бути невірним партнеру чи партнерці",
+      "ru": "быть неверным партнёру или партнёрше"
     },
     "def": {
       "de": "Es war ein kleines <g>Geheimnis</g>, das aufflog, als er seine Frau <b>betrog</b>.",
@@ -7065,10 +7065,10 @@ var VOCAB = [
       "ru": "признание (квалификации)"
     },
     "short": {
-      "de": "Die offizielle Bestätigung, dass eine ausländische Qualifikation gültig ist.",
-      "en": "The official confirmation that a foreign qualification is valid.",
-      "uk": "Офіційне підтвердження чинності іноземної кваліфікації.",
-      "ru": "Официальное подтверждение действительности иностранной квалификации."
+      "de": "die offizielle Bestätigung, dass eine ausländische Qualifikation gültig ist",
+      "en": "the official confirmation that a foreign qualification is valid",
+      "uk": "офіційне підтвердження чинності іноземної кваліфікації",
+      "ru": "официальное подтверждение действительности иностранной квалификации"
     },
     "def": {
       "de": "<g>Nachdem</g> sie die <b>Anerkennung</b> ihres Diploms beantragt hatte, musste sie drei Monate warten.",
@@ -7088,10 +7088,10 @@ var VOCAB = [
       "ru": "признавать (квалификацию)"
     },
     "short": {
-      "de": "Offiziell bestätigen, dass etwas gültig oder richtig ist.",
-      "en": "To officially confirm that something is valid or correct.",
-      "uk": "Офіційно підтверджувати чинність або правильність чогось.",
-      "ru": "Официально подтверждать действительность или правильность чего-либо."
+      "de": "offiziell bestätigen, dass etwas gültig oder richtig ist",
+      "en": "to officially confirm that something is valid or correct",
+      "uk": "офіційно підтверджувати чинність або правильність чогось",
+      "ru": "официально подтверждать действительность или правильность чего-либо"
     },
     "def": {
       "de": "<g>Nachdem</g> die Behörde sein Zeugnis <b>anerkannt</b> hatte, konnte er endlich als Ingenieur arbeiten.",
@@ -7111,10 +7111,10 @@ var VOCAB = [
       "ru": "рынок труда"
     },
     "short": {
-      "de": "Der Bereich, in dem Menschen Arbeit suchen und Firmen Mitarbeiter suchen.",
-      "en": "The area in which people look for work and companies look for employees.",
-      "uk": "Сфера, у якій люди шукають роботу, а фірми шукають працівників.",
-      "ru": "Сфера, в которой люди ищут работу, а фирмы ищут сотрудников."
+      "de": "der Bereich, in dem Menschen Arbeit suchen und Firmen Mitarbeiter suchen",
+      "en": "the area in which people look for work and companies look for employees",
+      "uk": "сфера, у якій люди шукають роботу, а фірми шукають працівників",
+      "ru": "сфера, в которой люди ищут работу, а фирмы ищут сотрудников"
     },
     "def": {
       "de": "Bevor sie nach Deutschland kam, <g>hatte</g> sie den deutschen <b>Arbeitsmarkt</b> genau <g>untersucht</g>.",
@@ -7134,10 +7134,10 @@ var VOCAB = [
       "ru": "резюме"
     },
     "short": {
-      "de": "Ein Dokument mit Informationen über die eigene Ausbildung und Berufserfahrung.",
-      "en": "A document with information about one's own education and work experience.",
-      "uk": "Документ з інформацією про власну освіту та досвід роботи.",
-      "ru": "Документ с информацией о собственном образовании и опыте работы."
+      "de": "ein Dokument mit Informationen über die eigene Ausbildung und Berufserfahrung",
+      "en": "a document with information about one's own education and work experience",
+      "uk": "документ з інформацією про власну освіту та досвід роботи",
+      "ru": "документ с информацией о собственном образовании и опыте работы"
     },
     "def": {
       "de": "Er <g>hatte</g> seinen <b>Lebenslauf</b> schon <g>aktualisiert</g>, bevor die Stellenanzeige veröffentlicht wurde.",
@@ -7157,10 +7157,10 @@ var VOCAB = [
       "ru": "профессиональное обучение"
     },
     "short": {
-      "de": "Eine praktische und theoretische Vorbereitung auf einen Beruf.",
-      "en": "Practical and theoretical preparation for a profession.",
-      "uk": "Практична й теоретична підготовка до професії.",
-      "ru": "Практическая и теоретическая подготовка к профессии."
+      "de": "eine praktische und theoretische Vorbereitung auf einen Beruf",
+      "en": "practical and theoretical preparation for a profession",
+      "uk": "практична й теоретична підготовка до професії",
+      "ru": "практическая и теоретическая подготовка к профессии"
     },
     "def": {
       "de": "<g>Das Lernen</g> neuer Fähigkeiten gehört fest zu jeder guten <b>Ausbildung</b>.",
@@ -7180,10 +7180,10 @@ var VOCAB = [
       "ru": "школьный аттестат"
     },
     "short": {
-      "de": "Das Zeugnis, das man am Ende der Schulzeit bekommt.",
-      "en": "The certificate you receive at the end of your school years.",
-      "uk": "Атестат, який отримують після завершення навчання в школі.",
-      "ru": "Аттестат, который получают по окончании школы."
+      "de": "das Zeugnis, das man am Ende der Schulzeit bekommt",
+      "en": "the certificate you receive at the end of your school years",
+      "uk": "атестат, який отримують після завершення навчання в школі",
+      "ru": "аттестат, который получают по окончании школы"
     },
     "def": {
       "de": "Ohne <g>brauchbaren</g> <b>Schulabschluss</b> ist es schwer, eine Ausbildung zu finden.",
@@ -7203,10 +7203,10 @@ var VOCAB = [
       "ru": "ученическая практика"
     },
     "short": {
-      "de": "Eine kurze praktische Arbeit in einer Firma während der Schulzeit.",
-      "en": "A short period of practical work at a company during school years.",
-      "uk": "Коротка практична робота у фірмі під час навчання в школі.",
-      "ru": "Короткая практическая работа на фирме во время учёбы в школе."
+      "de": "eine kurze praktische Arbeit in einer Firma während der Schulzeit",
+      "en": "a short period of practical work at a company during school years",
+      "uk": "коротка практична робота у фірмі під час навчання в школі",
+      "ru": "короткая практическая работа на фирме во время учёбы в школе"
     },
     "def": {
       "de": "Das <g>kostenlose</g> <b>Schülerpraktikum</b> half ihr, den richtigen Beruf zu finden.",
@@ -7226,10 +7226,10 @@ var VOCAB = [
       "ru": "наёмный работник / работница"
     },
     "short": {
-      "de": "Eine Person, die bei einer Firma angestellt ist und dafür bezahlt wird.",
-      "en": "A person who is employed by a company and paid for it.",
-      "uk": "Особа, яка працевлаштована на фірмі й отримує за це оплату.",
-      "ru": "Лицо, которое трудоустроено на фирме и получает за это оплату."
+      "de": "eine Person, die bei einer Firma angestellt ist und dafür bezahlt wird",
+      "en": "a person who is employed by a company and paid for it",
+      "uk": "особа, яка працевлаштована на фірмі й отримує за це оплату",
+      "ru": "лицо, которое трудоустроено на фирме и получает за это оплату"
     },
     "def": {
       "de": "Nach zehn Jahren ist dieser <b>Arbeitnehmer</b> praktisch <g>unkündbar</g>.",
@@ -7249,10 +7249,10 @@ var VOCAB = [
       "ru": "профсоюз"
     },
     "short": {
-      "de": "Eine Organisation, die für die Rechte der Arbeitnehmer kämpft.",
-      "en": "An organisation that fights for the rights of employees.",
-      "uk": "Організація, яка бореться за права найманих працівників.",
-      "ru": "Организация, которая борется за права наёмных работников."
+      "de": "eine Organisation, die für die Rechte der Arbeitnehmer kämpft",
+      "en": "an organisation that fights for the rights of employees",
+      "uk": "організація, яка бореться за права найманих працівників",
+      "ru": "организация, которая борется за права наёмных работников"
     },
     "def": {
       "de": "Die <b>Gewerkschaft</b> kämpft für <g>bezahlbaren</g> Urlaub für alle Arbeitnehmer.",
@@ -7272,10 +7272,10 @@ var VOCAB = [
       "ru": "разрешение на работу"
     },
     "short": {
-      "de": "Das offizielle Recht, in einem Land arbeiten zu dürfen.",
-      "en": "The official right to be allowed to work in a country.",
-      "uk": "Офіційне право працювати в певній країні.",
-      "ru": "Официальное право работать в стране."
+      "de": "das offizielle Recht, in einem Land arbeiten zu dürfen",
+      "en": "the official right to be allowed to work in a country",
+      "uk": "офіційне право працювати в певній країні",
+      "ru": "официальное право работать в стране"
     },
     "def": {
       "de": "Ohne gültige <b>Arbeitserlaubnis</b> bleibt man leider oft <g>arbeitslos</g>.",
@@ -7295,10 +7295,10 @@ var VOCAB = [
       "ru": "профиль профессии"
     },
     "short": {
-      "de": "Eine Beschreibung der Aufgaben und Anforderungen eines Berufs.",
-      "en": "A description of the tasks and requirements of a profession.",
-      "uk": "Опис завдань і вимог певної професії.",
-      "ru": "Описание задач и требований определённой профессии."
+      "de": "eine Beschreibung der Aufgaben und Anforderungen eines Berufs",
+      "en": "a description of the tasks and requirements of a profession",
+      "uk": "опис завдань і вимог певної професії",
+      "ru": "описание задач и требований определённой профессии"
     },
     "def": {
       "de": "Ein gut <g>lesbares</g> <b>Berufsprofil</b> hilft dabei, die passende Stelle zu finden.",
@@ -7318,10 +7318,10 @@ var VOCAB = [
       "ru": "производственный совет"
     },
     "short": {
-      "de": "Eine Gruppe von Mitarbeitern, die die Interessen aller Angestellten in einer Firma vertritt.",
-      "en": "A group of employees that represents the interests of all staff in a company.",
-      "uk": "Група працівників, яка представляє інтереси всіх службовців фірми.",
-      "ru": "Группа сотрудников, представляющая интересы всех работников фирмы."
+      "de": "eine Gruppe von Mitarbeitern, die die Interessen aller Angestellten in einer Firma vertritt",
+      "en": "a group of employees that represents the interests of all staff in a company",
+      "uk": "група працівників, яка представляє інтереси всіх службовців фірми",
+      "ru": "группа сотрудников, представляющая интересы всех работников фирмы"
     },
     "def": {
       "de": "<g>Das Verhandeln</g> mit der Geschäftsführung gehört zu den Aufgaben des <b>Betriebsrats</b>.",
@@ -7341,10 +7341,10 @@ var VOCAB = [
       "ru": "удовлетворённость"
     },
     "short": {
-      "de": "Das Gefühl, dass alles so ist, wie man es sich wünscht.",
-      "en": "The feeling that everything is as you wish it to be.",
-      "uk": "Почуття, що все саме так, як хочеться.",
-      "ru": "Чувство, что всё именно так, как хочется."
+      "de": "das Gefühl, dass alles so ist, wie man es sich wünscht",
+      "en": "the feeling that everything is as you wish it to be",
+      "uk": "почуття, що все саме так, як хочеться",
+      "ru": "чувство, что всё именно так, как хочется"
     },
     "def": {
       "de": "<g>Grenzenlose</g> <b>Zufriedenheit</b> empfand sie, als sie endlich ihren Traumjob fand.",
@@ -7364,10 +7364,10 @@ var VOCAB = [
       "ru": "в пределах"
     },
     "short": {
-      "de": "In einem bestimmten Zeitraum oder Bereich, nicht außerhalb davon.",
-      "en": "Within a certain period or area, not outside of it.",
-      "uk": "У межах певного періоду чи сфери, не поза ними.",
-      "ru": "В пределах определённого периода или сферы, не за их пределами."
+      "de": "in einem bestimmten Zeitraum oder Bereich, nicht außerhalb davon",
+      "en": "within a certain period or area, not outside of it",
+      "uk": "у межах певного періоду чи сфери, не поза ними",
+      "ru": "в пределах определённого периода или сферы, не за их пределами"
     },
     "def": {
       "de": "<b>Innerhalb</b> einer <g>zumutbaren</g> Frist muss die Firma antworten.",
@@ -7387,10 +7387,10 @@ var VOCAB = [
       "ru": "за пределами"
     },
     "short": {
-      "de": "Nicht in einem bestimmten Bereich, sondern draußen davon.",
-      "en": "Not within a certain area, but outside of it.",
-      "uk": "Не в межах певної сфери, а поза нею.",
-      "ru": "Не в пределах определённой сферы, а за её пределами."
+      "de": "nicht in einem bestimmten Bereich, sondern draußen davon",
+      "en": "not within a certain area, but outside of it",
+      "uk": "не в межах певної сфери, а поза нею",
+      "ru": "не в пределах определённой сферы, а за её пределами"
     },
     "def": {
       "de": "<b>Außerhalb</b> der Geschäftszeiten ist leider niemand <g>erreichbar</g>.",
@@ -7410,10 +7410,10 @@ var VOCAB = [
       "ru": "успех"
     },
     "short": {
-      "de": "Ein gutes Ergebnis, das man nach viel Mühe erreicht hat.",
-      "en": "A good result achieved after a lot of effort.",
-      "uk": "Хороший результат, досягнутий після значних зусиль.",
-      "ru": "Хороший результат, достигнутый после больших усилий."
+      "de": "ein gutes Ergebnis, das man nach viel Mühe erreicht hat",
+      "en": "a good result achieved after a lot of effort",
+      "uk": "хороший результат, досягнутий після значних зусиль",
+      "ru": "хороший результат, достигнутый после больших усилий"
     },
     "def": {
       "de": "Ihr beruflicher <b>Erfolg</b> kam keineswegs <g>mühelos</g>, sondern durch harte Arbeit.",
@@ -7433,10 +7433,10 @@ var VOCAB = [
       "ru": "общественная (волонтёрская) должность"
     },
     "short": {
-      "de": "Eine Aufgabe, die man ohne Bezahlung freiwillig übernimmt.",
-      "en": "A task that you take on voluntarily without payment.",
-      "uk": "Завдання, яке людина бере на себе добровільно й без оплати.",
-      "ru": "Задача, которую человек берёт на себя добровольно и без оплаты."
+      "de": "eine Aufgabe, die man ohne Bezahlung freiwillig übernimmt",
+      "en": "a task that you take on voluntarily without payment",
+      "uk": "завдання, яке людина бере на себе добровільно й без оплати",
+      "ru": "задача, которую человек берёт на себя добровольно и без оплаты"
     },
     "def": {
       "de": "Ein <b>Ehrenamt</b> <g>kann</g> von jedem Menschen <g>übernommen werden</g>, unabhängig vom Alter.",
@@ -7456,10 +7456,10 @@ var VOCAB = [
       "ru": "общественный, волонтёрский"
     },
     "short": {
-      "de": "Ohne Bezahlung und aus freiem Willen.",
-      "en": "Without payment and of one's own free will.",
-      "uk": "Без оплати і за власним бажанням.",
-      "ru": "Без оплаты и по собственному желанию."
+      "de": "ohne Bezahlung und aus freiem Willen",
+      "en": "without payment and of one's own free will",
+      "uk": "без оплати і за власним бажанням",
+      "ru": "без оплаты и по собственному желанию"
     },
     "def": {
       "de": "Diese Aufgabe <g>muss</g> nicht unbedingt <g>bezahlt werden</g> — viele machen sie <b>ehrenamtlich</b>.",
@@ -7479,10 +7479,10 @@ var VOCAB = [
       "ru": "добровольный"
     },
     "short": {
-      "de": "Aus eigenem Willen, ohne dass jemand es verlangt.",
-      "en": "Of one's own free will, without anyone demanding it.",
-      "uk": "За власним бажанням, без чиєїсь вимоги.",
-      "ru": "По собственному желанию, без чьего-либо требования."
+      "de": "aus eigenem Willen, ohne dass jemand es verlangt",
+      "en": "of one's own free will, without anyone demanding it",
+      "uk": "за власним бажанням, без чиєїсь вимоги",
+      "ru": "по собственному желанию, без чьего-либо требования"
     },
     "def": {
       "de": "<g>Trotz seines</g> vollen Terminkalenders hilft er <b>freiwillig</b> im Altersheim.",
@@ -7502,10 +7502,10 @@ var VOCAB = [
       "ru": "заниматься волонтёрством"
     },
     "short": {
-      "de": "Sich aktiv und mit viel Energie für eine Sache einsetzen.",
-      "en": "To get actively and energetically involved in a cause.",
-      "uk": "Активно й з великою енергією працювати заради якоїсь справи.",
-      "ru": "Активно и с большой энергией работать ради какого-либо дела."
+      "de": "sich aktiv und mit viel Energie für eine Sache einsetzen",
+      "en": "to get actively and energetically involved in a cause",
+      "uk": "активно й з великою енергією працювати заради якоїсь справи",
+      "ru": "активно и с большой энергией работать ради какого-либо дела"
     },
     "def": {
       "de": "<g>Wegen der</g> vielen Flüchtlinge <b>engagieren</b> sich immer mehr Menschen in der Region.",
@@ -7525,10 +7525,10 @@ var VOCAB = [
       "ru": "выступать (за что-то)"
     },
     "short": {
-      "de": "Sich stark für ein Ziel oder eine Person engagieren.",
-      "en": "To strongly commit oneself to a goal or a person.",
-      "uk": "Активно виступати за якусь мету чи людину.",
-      "ru": "Активно выступать за какую-либо цель или человека."
+      "de": "sich stark für ein Ziel oder eine Person engagieren",
+      "en": "to strongly commit oneself to a goal or a person",
+      "uk": "активно виступати за якусь мету чи людину",
+      "ru": "активно выступать за какую-либо цель или человека"
     },
     "def": {
       "de": "Sie <b>setzt</b> <b>sich</b> für die Rechte <g>obdachloser</g> Menschen <b>ein</b>.",
@@ -7548,10 +7548,10 @@ var VOCAB = [
       "ru": "сфера"
     },
     "short": {
-      "de": "Ein bestimmter Teil eines größeren Themas oder Gebiets.",
-      "en": "A certain part of a larger topic or field.",
-      "uk": "Певна частина більшої теми чи галузі.",
-      "ru": "Определённая часть более крупной темы или сферы."
+      "de": "ein bestimmter Teil eines größeren Themas oder Gebiets",
+      "en": "a certain part of a larger topic or field",
+      "uk": "певна частина більшої теми чи галузі",
+      "ru": "определённая часть более крупной темы или сферы"
     },
     "def": {
       "de": "Im sozialen <b>Bereich</b> gibt es viele <g>hilfreiche</g> Projekte für Geflüchtete.",
@@ -7571,10 +7571,10 @@ var VOCAB = [
       "ru": "предложение помощи"
     },
     "short": {
-      "de": "Ein Angebot, mit dem man Menschen in einer schwierigen Lage unterstützt.",
-      "en": "An offer that supports people in a difficult situation.",
-      "uk": "Пропозиція, яка підтримує людей у складній ситуації.",
-      "ru": "Предложение, которое поддерживает людей в трудной ситуации."
+      "de": "ein Angebot, mit dem man Menschen in einer schwierigen Lage unterstützt",
+      "en": "an offer that supports people in a difficult situation",
+      "uk": "пропозиція, яка підтримує людей у складній ситуації",
+      "ru": "предложение, которое поддерживает людей в трудной ситуации"
     },
     "def": {
       "de": "Dieses <g>umfangreiche</g> <b>Hilfsangebot</b> unterstützt Familien in schwierigen Situationen.",
@@ -7594,10 +7594,10 @@ var VOCAB = [
       "ru": "опасность"
     },
     "short": {
-      "de": "Eine Situation, in der etwas Schlimmes passieren kann.",
-      "en": "A situation in which something bad can happen.",
-      "uk": "Ситуація, у якій може статися щось погане.",
-      "ru": "Ситуация, в которой может произойти что-то плохое."
+      "de": "eine Situation, in der etwas Schlimmes passieren kann",
+      "en": "a situation in which something bad can happen",
+      "uk": "ситуація, у якій може статися щось погане",
+      "ru": "ситуация, в которой может произойти что-то плохое"
     },
     "def": {
       "de": "Trotz der <g>zahlreichen</g> <b>Gefahren</b> half er dem verletzten Wanderer.",
@@ -7617,10 +7617,10 @@ var VOCAB = [
       "ru": "спасать"
     },
     "short": {
-      "de": "Jemanden aus einer gefährlichen Situation befreien.",
-      "en": "To free someone from a dangerous situation.",
-      "uk": "Визволяти когось з небезпечної ситуації.",
-      "ru": "Освобождать кого-либо из опасной ситуации."
+      "de": "jemanden aus einer gefährlichen Situation befreien",
+      "en": "to free someone from a dangerous situation",
+      "uk": "визволяти когось з небезпечної ситуації",
+      "ru": "освобождать кого-либо из опасной ситуации"
     },
     "def": {
       "de": "Der Schwimmer <g>musste</g> von der Feuerwehr <g><b>gerettet werden</b></g>, weil die Strömung zu stark war.",
@@ -7640,10 +7640,10 @@ var VOCAB = [
       "ru": "толерантность"
     },
     "short": {
-      "de": "Die Bereitschaft, andere Meinungen und Lebensweisen zu akzeptieren.",
-      "en": "The willingness to accept other opinions and ways of life.",
-      "uk": "Готовність приймати інші думки й способи життя.",
-      "ru": "Готовность принимать другие мнения и образы жизни."
+      "de": "die Bereitschaft, andere Meinungen und Lebensweisen zu akzeptieren",
+      "en": "the willingness to accept other opinions and ways of life",
+      "uk": "готовність приймати інші думки й способи життя",
+      "ru": "готовность принимать другие мнения и образы жизни"
     },
     "def": {
       "de": "Die Erziehung <g>toleranter</g> Kinder beginnt mit der eigenen <b>Toleranz</b> der Eltern.",
@@ -7663,10 +7663,10 @@ var VOCAB = [
       "ru": "эмпатия"
     },
     "short": {
-      "de": "Die Fähigkeit, die Gefühle einer anderen Person zu verstehen.",
-      "en": "The ability to understand another person's feelings.",
-      "uk": "Здатність розуміти почуття іншої людини.",
-      "ru": "Способность понимать чувства другого человека."
+      "de": "die Fähigkeit, die Gefühle einer anderen Person zu verstehen",
+      "en": "the ability to understand another person's feelings",
+      "uk": "здатність розуміти почуття іншої людини",
+      "ru": "способность понимать чувства другого человека"
     },
     "def": {
       "de": "<g>Liebevolle</g> <b>Empathie</b> zeigte die Freiwillige gegenüber jedem Kind im Heim.",
@@ -7686,10 +7686,10 @@ var VOCAB = [
       "ru": "поддержка"
     },
     "short": {
-      "de": "Die Hilfe, die man einer Person gibt.",
-      "en": "The help that you give to a person.",
-      "uk": "Допомога, яку надають людині.",
-      "ru": "Помощь, которую оказывают человеку."
+      "de": "die Hilfe, die man einer Person gibt",
+      "en": "the help that you give to a person",
+      "uk": "допомога, яку надають людині",
+      "ru": "помощь, которую оказывают человеку"
     },
     "def": {
       "de": "Die Familie bekam <g>hilfreiche</g> <b>Unterstützung</b> von der Nachbarschaft.",
@@ -7709,10 +7709,10 @@ var VOCAB = [
       "ru": "поддерживать"
     },
     "short": {
-      "de": "Jemandem helfen, ein Ziel zu erreichen.",
-      "en": "To help someone achieve a goal.",
-      "uk": "Допомагати комусь досягти мети.",
-      "ru": "Помогать кому-либо достичь цели."
+      "de": "jemandem helfen, ein Ziel zu erreichen",
+      "en": "to help someone achieve a goal",
+      "uk": "допомагати комусь досягти мети",
+      "ru": "помогать кому-либо достичь цели"
     },
     "def": {
       "de": "Der <g>erfolgreiche</g> Verein <b>unterstützt</b> viele Familien in der Region.",
@@ -7732,10 +7732,10 @@ var VOCAB = [
       "ru": "круг друзей"
     },
     "short": {
-      "de": "Alle Freunde, die eine Person hat.",
-      "en": "All the friends that a person has.",
-      "uk": "Усі друзі, які є в людини.",
-      "ru": "Все друзья, которые есть у человека."
+      "de": "alle Freunde, die eine Person hat",
+      "en": "all the friends that a person has",
+      "uk": "усі друзі, які є в людини",
+      "ru": "все друзья, которые есть у человека"
     },
     "def": {
       "de": "Ihr <g>zahlreicher</g> <b>Freundeskreis</b> half ihr in der schwierigen Zeit.",
@@ -7755,10 +7755,10 @@ var VOCAB = [
       "ru": "держаться вместе"
     },
     "short": {
-      "de": "Sich gegenseitig helfen und in schwierigen Zeiten füreinander da sein.",
-      "en": "To help each other and be there for each other in difficult times.",
-      "uk": "Допомагати одне одному й підтримувати одне одного у складні часи.",
-      "ru": "Помогать друг другу и поддерживать друг друга в трудные времена."
+      "de": "sich gegenseitig helfen und in schwierigen Zeiten füreinander da sein",
+      "en": "to help each other and be there for each other in difficult times",
+      "uk": "допомагати одне одному й підтримувати одне одного у складні часи",
+      "ru": "помогать друг другу и поддерживать друг друга в трудные времена"
     },
     "def": {
       "de": "Eine <g>hoffnungsvolle</g> Gemeinschaft muss in schweren Zeiten <b>zusammenhalten</b>.",
@@ -7778,10 +7778,10 @@ var VOCAB = [
       "ru": "с одной стороны … с другой стороны"
     },
     "short": {
-      "de": "Ein Ausdruck, mit dem man zwei verschiedene Seiten eines Themas vergleicht.",
-      "en": "An expression used to compare two different sides of a topic.",
-      "uk": "Вислів, яким порівнюють два різні аспекти теми.",
-      "ru": "Выражение, с помощью которого сравнивают два разных аспекта темы."
+      "de": "ein Ausdruck, mit dem man zwei verschiedene Seiten eines Themas vergleicht",
+      "en": "an expression used to compare two different sides of a topic",
+      "uk": "вислів, яким порівнюють два різні аспекти теми",
+      "ru": "выражение, с помощью которого сравнивают два разных аспекта темы"
     },
     "def": {
       "de": "<b>Einerseits</b> ist die Aufgabe <g>anspruchsvoll</g>, <b>andererseits</b> macht sie große Freude.",
@@ -7801,10 +7801,10 @@ var VOCAB = [
       "ru": "многоквартирный дом"
     },
     "short": {
-      "de": "Ein Haus, in dem mehrere Familien in getrennten Wohnungen leben.",
-      "en": "A house in which several families live in separate flats.",
-      "uk": "Будинок, у якому кілька сімей живуть в окремих квартирах.",
-      "ru": "Дом, в котором несколько семей живут в отдельных квартирах."
+      "de": "ein Haus, in dem mehrere Familien in getrennten Wohnungen leben",
+      "en": "a house in which several families live in separate flats",
+      "uk": "будинок, у якому кілька сімей живуть в окремих квартирах",
+      "ru": "дом, в котором несколько семей живут в отдельных квартирах"
     },
     "def": {
       "de": "In unserem <b>Mehrfamilienhaus</b> kenne ich jeden <g>Nachbarn</g> persönlich.",
@@ -7824,10 +7824,10 @@ var VOCAB = [
       "ru": "одноквартирный дом"
     },
     "short": {
-      "de": "Ein Haus, in dem nur eine Familie lebt.",
-      "en": "A house in which only one family lives.",
-      "uk": "Будинок, у якому живе лише одна сімʼя.",
-      "ru": "Дом, в котором живёт только одна семья."
+      "de": "ein Haus, in dem nur eine Familie lebt",
+      "en": "a house in which only one family lives",
+      "uk": "будинок, у якому живе лише одна сімʼя",
+      "ru": "дом, в котором живёт только одна семья"
     },
     "def": {
       "de": "Wir haben unser <b>Einfamilienhaus</b> von einem freundlichen <g>Herrn</g> gekauft.",
@@ -7847,10 +7847,10 @@ var VOCAB = [
       "ru": "аренда без коммунальных услуг"
     },
     "short": {
-      "de": "Die Miete für eine Wohnung ohne die Kosten für Heizung und Wasser.",
-      "en": "The rent for a flat without the costs for heating and water.",
-      "uk": "Орендна плата за квартиру без витрат на опалення й воду.",
-      "ru": "Арендная плата за квартиру без расходов на отопление и воду."
+      "de": "die Miete für eine Wohnung ohne die Kosten für Heizung und Wasser",
+      "en": "the rent for a flat without the costs for heating and water",
+      "uk": "орендна плата за квартиру без витрат на опалення й воду",
+      "ru": "арендная плата за квартиру без расходов на отопление и воду"
     },
     "def": {
       "de": "Die <b>Kaltmiete</b>, <g>über die</g> wir gesprochen haben, ist wirklich günstig.",
@@ -7870,10 +7870,10 @@ var VOCAB = [
       "ru": "аренда с коммунальными услугами"
     },
     "short": {
-      "de": "Die Miete für eine Wohnung inklusive der Kosten für Heizung und Wasser.",
-      "en": "The rent for a flat including the costs for heating and water.",
-      "uk": "Орендна плата за квартиру, що включає витрати на опалення й воду.",
-      "ru": "Арендная плата за квартиру, включающая расходы на отопление и воду."
+      "de": "die Miete für eine Wohnung inklusive der Kosten für Heizung und Wasser",
+      "en": "the rent for a flat including the costs for heating and water",
+      "uk": "орендна плата за квартиру, що включає витрати на опалення й воду",
+      "ru": "арендная плата за квартиру, включающая расходы на отопление и воду"
     },
     "def": {
       "de": "Das ist die Wohnung, <g>für die</g> wir eine <b>Warmmiete</b> von 900 Euro zahlen.",
@@ -7893,10 +7893,10 @@ var VOCAB = [
       "ru": "коммунальные расходы"
     },
     "short": {
-      "de": "Zusätzliche Kosten für eine Wohnung, zum Beispiel für Wasser und Müll.",
-      "en": "Additional costs for a flat, for example for water and waste.",
-      "uk": "Додаткові витрати на квартиру, наприклад на воду й вивезення сміття.",
-      "ru": "Дополнительные расходы на квартиру, например на воду и вывоз мусора."
+      "de": "zusätzliche Kosten für eine Wohnung, zum Beispiel für Wasser und Müll",
+      "en": "additional costs for a flat, for example for water and waste",
+      "uk": "додаткові витрати на квартиру, наприклад на воду й вивезення сміття",
+      "ru": "дополнительные расходы на квартиру, например на воду и вывоз мусора"
     },
     "def": {
       "de": "Wir haben eine Wohnung gefunden, <g>wo</g> die <b>Nebenkosten</b> sehr niedrig sind.",
@@ -7916,10 +7916,10 @@ var VOCAB = [
       "ru": "окраина города"
     },
     "short": {
-      "de": "Der äußere Teil einer Stadt, weit vom Zentrum entfernt.",
-      "en": "The outer part of a city, far from the centre.",
-      "uk": "Зовнішня частина міста, далеко від центру.",
-      "ru": "Внешняя часть города, далеко от центра."
+      "de": "der äußere Teil einer Stadt, weit vom Zentrum entfernt",
+      "en": "the outer part of a city, far from the centre",
+      "uk": "зовнішня частина міста, далеко від центру",
+      "ru": "внешняя часть города, далеко от центра"
     },
     "def": {
       "de": "Das ist der <b>Stadtrand</b>, <g>in dem</g> ich seit zehn Jahren wohne.",
@@ -7939,10 +7939,10 @@ var VOCAB = [
       "ru": "пригород"
     },
     "short": {
-      "de": "Ein kleinerer Ort direkt neben einer großen Stadt.",
-      "en": "A smaller place directly next to a large city.",
-      "uk": "Менше поселення поряд із великим містом.",
-      "ru": "Небольшое поселение рядом с крупным городом."
+      "de": "ein kleinerer Ort direkt neben einer großen Stadt",
+      "en": "a smaller place directly next to a large city",
+      "uk": "менше поселення поряд із великим містом",
+      "ru": "небольшое поселение рядом с крупным городом"
     },
     "def": {
       "de": "Der <b>Vorort</b>, <g>in dem</g> meine Eltern leben, ist sehr ruhig.",
@@ -7962,10 +7962,10 @@ var VOCAB = [
       "ru": "доступный по цене"
     },
     "short": {
-      "de": "So günstig, dass man es sich leisten kann.",
-      "en": "So affordable that you can afford it.",
-      "uk": "Настільки доступний за ціною, що можна собі дозволити.",
-      "ru": "Настолько доступный по цене, что можно себе позволить."
+      "de": "so günstig, dass man es sich leisten kann",
+      "en": "so affordable that you can afford it",
+      "uk": "настільки доступний за ціною, що можна собі дозволити",
+      "ru": "настолько доступный по цене, что можно себе позволить"
     },
     "def": {
       "de": "Diese <b>bezahlbare</b> Wohnung liegt in einer <g>superzentralen</g> Lage.",
@@ -7985,10 +7985,10 @@ var VOCAB = [
       "ru": "дружелюбный к детям"
     },
     "short": {
-      "de": "So gestaltet, dass es gut für Kinder ist.",
-      "en": "Designed in a way that is good for children.",
-      "uk": "Облаштований так, щоб бути зручним для дітей.",
-      "ru": "Обустроенный так, чтобы быть удобным для детей."
+      "de": "so gestaltet, dass es gut für Kinder ist",
+      "en": "designed in a way that is good for children",
+      "uk": "облаштований так, щоб бути зручним для дітей",
+      "ru": "обустроенный так, чтобы быть удобным для детей"
     },
     "def": {
       "de": "Der Spielplatz ist <g>hochmodern</g> und die ganze Siedlung <b>kinderfreundlich</b>.",
@@ -8008,10 +8008,10 @@ var VOCAB = [
       "ru": "соседская взаимопомощь"
     },
     "short": {
-      "de": "Gegenseitige Hilfe zwischen Menschen, die in der gleichen Gegend wohnen.",
-      "en": "Mutual help between people who live in the same area.",
-      "uk": "Взаємодопомога між людьми, які живуть в одному районі.",
-      "ru": "Взаимопомощь между людьми, живущими в одном районе."
+      "de": "gegenseitige Hilfe zwischen Menschen, die in der gleichen Gegend wohnen",
+      "en": "mutual help between people who live in the same area",
+      "uk": "взаємодопомога між людьми, які живуть в одному районі",
+      "ru": "взаимопомощь между людьми, живущими в одном районе"
     },
     "def": {
       "de": "Diese <g>überregionale</g> <b>Nachbarschaftshilfe</b> verbindet mehrere Stadtteile.",
@@ -8031,10 +8031,10 @@ var VOCAB = [
       "ru": "запрос, объявление о поиске"
     },
     "short": {
-      "de": "Eine Anzeige, in der man nach etwas sucht, zum Beispiel nach einer Wohnung.",
-      "en": "An advertisement in which someone is looking for something, for example a flat.",
-      "uk": "Оголошення, у якому людина щось шукає, наприклад квартиру.",
-      "ru": "Объявление, в котором человек что-то ищет, например квартиру."
+      "de": "eine Anzeige, in der man nach etwas sucht, zum Beispiel nach einer Wohnung",
+      "en": "an advertisement in which someone is looking for something, for example a flat",
+      "uk": "оголошення, у якому людина щось шукає, наприклад квартиру",
+      "ru": "объявление, в котором человек что-то ищет, например квартиру"
     },
     "def": {
       "de": "<g>Was</g> in ihrem <b>Gesuch</b> stand, hat mich sofort überzeugt.",
@@ -8054,10 +8054,10 @@ var VOCAB = [
       "ru": "представлять себе что-то"
     },
     "short": {
-      "de": "Ein Bild von etwas im Kopf haben, das noch nicht real ist.",
-      "en": "To have a mental image of something that is not yet real.",
-      "uk": "Мати в уяві образ чогось, що ще не є реальним.",
-      "ru": "Иметь в воображении образ чего-то, что ещё не является реальным."
+      "de": "ein Bild von etwas im Kopf haben, das noch nicht real ist",
+      "en": "to have a mental image of something that is not yet real",
+      "uk": "мати в уяві образ чогось, що ще не є реальним",
+      "ru": "иметь в воображении образ чего-то, что ещё не является реальным"
     },
     "def": {
       "de": "Ich kann <b>mir</b> kaum <b>vorstellen</b>, wie <g>extrateuer</g> diese Wohnung wirklich ist.",
@@ -8077,10 +8077,10 @@ var VOCAB = [
       "ru": "изолированный"
     },
     "short": {
-      "de": "Allein und ohne Kontakt zu anderen Menschen.",
-      "en": "Alone and without contact with other people.",
-      "uk": "Самотній і без контакту з іншими людьми.",
-      "ru": "Одинокий и без контакта с другими людьми."
+      "de": "allein und ohne Kontakt zu anderen Menschen",
+      "en": "alone and without contact with other people",
+      "uk": "самотній і без контакту з іншими людьми",
+      "ru": "одинокий и без контакта с другими людьми"
     },
     "def": {
       "de": "Das <g>hochmoderne</g> Haus ist gut gedämmt, aber die alte Wohnung wirkt völlig <b>isoliert</b> vom Rest des Gebäudes.",
@@ -8100,10 +8100,10 @@ var VOCAB = [
       "ru": "оживлённый"
     },
     "short": {
-      "de": "Voller Leben, Aktivität und Bewegung.",
-      "en": "Full of life, activity and movement.",
-      "uk": "Сповнений життя, активності й руху.",
-      "ru": "Полный жизни, активности и движения."
+      "de": "voller Leben, Aktivität und Bewegung",
+      "en": "full of life, activity and movement",
+      "uk": "сповнений життя, активності й руху",
+      "ru": "полный жизни, активности и движения"
     },
     "def": {
       "de": "Die <g>übergroße</g> Piazza im Zentrum wirkt jeden Abend besonders <b>lebendig</b>.",
@@ -8123,10 +8123,10 @@ var VOCAB = [
       "ru": "жилая площадь"
     },
     "short": {
-      "de": "Die Größe einer Wohnung, gemessen in Quadratmetern.",
-      "en": "The size of a flat, measured in square metres.",
-      "uk": "Розмір квартири, виміряний у квадратних метрах.",
-      "ru": "Размер квартиры, измеренный в квадратных метрах."
+      "de": "die Größe einer Wohnung, gemessen in Quadratmetern",
+      "en": "the size of a flat, measured in square metres",
+      "uk": "розмір квартири, виміряний у квадратних метрах",
+      "ru": "размер квартиры, измеренный в квадратных метрах"
     },
     "def": {
       "de": "Diese Villa hat eine <g>überdurchschnittliche</g> <b>Wohnfläche</b> von 250 Quadratmetern.",
@@ -8146,10 +8146,10 @@ var VOCAB = [
       "ru": "центр города"
     },
     "short": {
-      "de": "Der zentrale Teil einer Stadt.",
-      "en": "The central part of a city.",
-      "uk": "Центральна частина міста.",
-      "ru": "Центральная часть города."
+      "de": "der zentrale Teil einer Stadt",
+      "en": "the central part of a city",
+      "uk": "центральна частина міста",
+      "ru": "центральная часть города"
     },
     "def": {
       "de": "Die <g>hochpreisige</g> <b>Innenstadt</b> zieht vor allem wohlhabende Familien an.",
@@ -8169,10 +8169,10 @@ var VOCAB = [
       "ru": "натурализация"
     },
     "short": {
-      "de": "Der Prozess, mit dem man die Staatsbürgerschaft eines Landes bekommt.",
-      "en": "The process of obtaining the citizenship of a country.",
-      "uk": "Процес отримання громадянства країни.",
-      "ru": "Процесс получения гражданства страны."
+      "de": "der Prozess, mit dem man die Staatsbürgerschaft eines Landes bekommt",
+      "en": "the process of obtaining the citizenship of a country",
+      "uk": "процес отримання громадянства країни",
+      "ru": "процесс получения гражданства страны"
     },
     "def": {
       "de": "Für <g>erfolgreiche</g> <b>Einbürgerung</b> braucht man gute Deutschkenntnisse.",
@@ -8192,10 +8192,10 @@ var VOCAB = [
       "ru": "заявление на натурализацию"
     },
     "short": {
-      "de": "Das Formular, das man für die Einbürgerung ausfüllen muss.",
-      "en": "The form that must be filled out for naturalisation.",
-      "uk": "Форма, яку потрібно заповнити для натуралізації.",
-      "ru": "Форма, которую нужно заполнить для натурализации."
+      "de": "das Formular, das man für die Einbürgerung ausfüllen muss",
+      "en": "the form that must be filled out for naturalisation",
+      "uk": "форма, яку потрібно заповнити для натуралізації",
+      "ru": "форма, которую нужно заполнить для натурализации"
     },
     "def": {
       "de": "<g>Vollständiger</g> <b>Einbürgerungsantrag</b> braucht mehrere wichtige Dokumente.",
@@ -8215,10 +8215,10 @@ var VOCAB = [
       "ru": "гражданство"
     },
     "short": {
-      "de": "Die rechtliche Zugehörigkeit einer Person zu einem Staat.",
-      "en": "The legal membership of a person in a state.",
-      "uk": "Юридична належність особи до певної держави.",
-      "ru": "Юридическая принадлежность человека к определённому государству."
+      "de": "die rechtliche Zugehörigkeit einer Person zu einem Staat",
+      "en": "the legal membership of a person in a state",
+      "uk": "юридична належність особи до певної держави",
+      "ru": "юридическая принадлежность человека к определённому государству"
     },
     "def": {
       "de": "Die <g>wachsende</g> Zahl an Anträgen auf <b>Staatsbürgerschaft</b> zeigt das große Interesse an Deutschland.",
@@ -8238,10 +8238,10 @@ var VOCAB = [
       "ru": "двойное гражданство"
     },
     "short": {
-      "de": "Wenn eine Person gleichzeitig Bürgerin von zwei Staaten ist.",
-      "en": "When a person is a citizen of two states at the same time.",
-      "uk": "Коли особа одночасно є громадянином двох держав.",
-      "ru": "Когда человек одновременно является гражданином двух государств."
+      "de": "wenn eine Person gleichzeitig Bürgerin von zwei Staaten ist",
+      "en": "when a person is a citizen of two states at the same time",
+      "uk": "коли особа одночасно є громадянином двох держав",
+      "ru": "когда человек одновременно является гражданином двух государств"
     },
     "def": {
       "de": "Die <g>gesetzlich erlaubte</g> <b>doppelte Staatsbürgerschaft</b> erleichtert vielen Menschen das Leben.",
@@ -8261,10 +8261,10 @@ var VOCAB = [
       "ru": "интеграционный курс"
     },
     "short": {
-      "de": "Ein Kurs, der beim Erlernen der Sprache und beim Leben in einem neuen Land hilft.",
-      "en": "A course that helps with learning the language and living in a new country.",
-      "uk": "Курс, який допомагає у вивченні мови та адаптації до життя в новій країні.",
-      "ru": "Курс, который помогает в изучении языка и адаптации к жизни в новой стране."
+      "de": "ein Kurs, der beim Erlernen der Sprache und beim Leben in einem neuen Land hilft",
+      "en": "a course that helps with learning the language and living in a new country",
+      "uk": "курс, який допомагає у вивченні мови та адаптації до життя в новій країні",
+      "ru": "курс, который помогает в изучении языка и адаптации к жизни в новой стране"
     },
     "def": {
       "de": "Der <g>erfolgreich abgeschlossene</g> <b>Integrationskurs</b> ist eine wichtige Voraussetzung für die Einbürgerung.",
@@ -8284,10 +8284,10 @@ var VOCAB = [
       "ru": "право на проживание"
     },
     "short": {
-      "de": "Das gesetzliche Recht, in einem Land zu leben.",
-      "en": "The legal right to live in a country.",
-      "uk": "Законне право проживати в країні.",
-      "ru": "Законное право проживать в стране."
+      "de": "das gesetzliche Recht, in einem Land zu leben",
+      "en": "the legal right to live in a country",
+      "uk": "законне право проживати в країні",
+      "ru": "законное право проживать в стране"
     },
     "def": {
       "de": "Man braucht <g>entweder</g> ein gültiges <b>Aufenthaltsrecht</b> <g>oder</g> einen Ausweisungsschutz.",
@@ -8307,10 +8307,10 @@ var VOCAB = [
       "ru": "разрешение на проживание"
     },
     "short": {
-      "de": "Das offizielle Dokument, das den legalen Aufenthalt in einem Land erlaubt.",
-      "en": "The official document that permits legal residence in a country.",
-      "uk": "Офіційний документ, що дозволяє законно проживати в країні.",
-      "ru": "Официальный документ, разрешающий законно проживать в стране."
+      "de": "das offizielle Dokument, das den legalen Aufenthalt in einem Land erlaubt",
+      "en": "the official document that permits legal residence in a country",
+      "uk": "офіційний документ, що дозволяє законно проживати в країні",
+      "ru": "официальный документ, разрешающий законно проживать в стране"
     },
     "def": {
       "de": "Für den Antrag braucht man <g>entweder</g> eine <b>Aufenthaltserlaubnis</b> <g>oder</g> einen anderen gültigen Nachweis.",
@@ -8330,10 +8330,10 @@ var VOCAB = [
       "ru": "основная ценность"
     },
     "short": {
-      "de": "Eine wichtige Idee, auf der eine Gesellschaft aufgebaut ist.",
-      "en": "An important idea on which a society is built.",
-      "uk": "Важлива ідея, на якій побудоване суспільство.",
-      "ru": "Важная идея, на которой построено общество."
+      "de": "eine wichtige Idee, auf der eine Gesellschaft aufgebaut ist",
+      "en": "an important idea on which a society is built",
+      "uk": "важлива ідея, на якій побудоване суспільство",
+      "ru": "важная идея, на которой построено общество"
     },
     "def": {
       "de": "<g>Entweder</g> man respektiert die <b>Grundwerte</b> der Gesellschaft, <g>oder</g> man lebt gegen sie.",
@@ -8353,10 +8353,10 @@ var VOCAB = [
       "ru": "основное право"
     },
     "short": {
-      "de": "Ein Recht, das jedem Menschen laut Gesetz zusteht.",
-      "en": "A right that every person is legally entitled to.",
-      "uk": "Право, яке за законом належить кожній людині.",
-      "ru": "Право, которое по закону принадлежит каждому человеку."
+      "de": "ein Recht, das jedem Menschen laut Gesetz zusteht",
+      "en": "a right that every person is legally entitled to",
+      "uk": "право, яке за законом належить кожній людині",
+      "ru": "право, которое по закону принадлежит каждому человеку"
     },
     "def": {
       "de": "Ein <g>überzeugendes</g> Argument für Demokratie ist der Schutz jedes <b>Grundrechts</b>.",
@@ -8376,10 +8376,10 @@ var VOCAB = [
       "ru": "свобода вероисповедания"
     },
     "short": {
-      "de": "Das Recht, selbst zu entscheiden, was man glaubt.",
-      "en": "The right to decide for yourself what you believe.",
-      "uk": "Право самостійно вирішувати, у що вірити.",
-      "ru": "Право самостоятельно решать, во что верить."
+      "de": "das Recht, selbst zu entscheiden, was man glaubt",
+      "en": "the right to decide for yourself what you believe",
+      "uk": "право самостійно вирішувати, у що вірити",
+      "ru": "право самостоятельно решать, во что верить"
     },
     "def": {
       "de": "Die <g>gesetzlich geschützte</g> <b>Glaubensfreiheit</b> gehört zu den wichtigsten Grundrechten.",
@@ -8399,10 +8399,10 @@ var VOCAB = [
       "ru": "демократия"
     },
     "short": {
-      "de": "Eine Staatsform, in der das Volk durch Wahlen mitbestimmt.",
-      "en": "A form of state in which the people help decide through elections.",
-      "uk": "Форма державного правління, за якої народ бере участь у прийнятті рішень через вибори.",
-      "ru": "Форма государственного правления, при которой народ участвует в принятии решений через выборы."
+      "de": "eine Staatsform, in der das Volk durch Wahlen mitbestimmt",
+      "en": "a form of state in which the people help decide through elections",
+      "uk": "форма державного правління, за якої народ бере участь у прийнятті рішень через вибори",
+      "ru": "форма государственного правления, при которой народ участвует в принятии решений через выборы"
     },
     "def": {
       "de": "<g>Entweder</g> man engagiert sich aktiv für die <b>Demokratie</b>, <g>oder</g> man verliert langsam ihre Vorteile.",
@@ -8422,10 +8422,10 @@ var VOCAB = [
       "ru": "полный, законченный"
     },
     "short": {
-      "de": "Ganz und ohne dass etwas fehlt.",
-      "en": "Complete and with nothing missing.",
-      "uk": "Повний, без нічого відсутнього.",
-      "ru": "Полный, без чего-либо отсутствующего."
+      "de": "ganz und ohne dass etwas fehlt",
+      "en": "complete and with nothing missing",
+      "uk": "повний, без нічого відсутнього",
+      "ru": "полный, без чего-либо отсутствующего"
     },
     "def": {
       "de": "Der Antrag muss <g>entweder</g> <b>vollständig</b> ausgefüllt <g>oder</g> gar nicht eingereicht werden.",
@@ -8445,10 +8445,10 @@ var VOCAB = [
       "ru": "доказывать, подтверждать документально"
     },
     "short": {
-      "de": "Mit Dokumenten zeigen, dass etwas wahr ist.",
-      "en": "To show with documents that something is true.",
-      "uk": "Документально підтверджувати, що щось є правдою.",
-      "ru": "Документально подтверждать, что что-то является правдой."
+      "de": "mit Dokumenten zeigen, dass etwas wahr ist",
+      "en": "to show with documents that something is true",
+      "uk": "документально підтверджувати, що щось є правдою",
+      "ru": "документально подтверждать, что что-то является правдой"
     },
     "def": {
       "de": "Man muss <g>entweder</g> gute Sprachkenntnisse <b>nachweisen</b> <g>oder</g> einen Kurs besuchen.",
@@ -8468,10 +8468,10 @@ var VOCAB = [
       "ru": "знание немецкого языка"
     },
     "short": {
-      "de": "Das Wissen und die Fähigkeiten, die man in der deutschen Sprache hat.",
-      "en": "The knowledge and skills you have in the German language.",
-      "uk": "Знання та навички з німецької мови.",
-      "ru": "Знания и навыки в немецком языке."
+      "de": "das Wissen und die Fähigkeiten, die man in der deutschen Sprache hat",
+      "en": "the knowledge and skills you have in the German language",
+      "uk": "знання та навички з німецької мови",
+      "ru": "знания и навыки в немецком языке"
     },
     "def": {
       "de": "<g>Entweder</g> reichen die <b>Deutschkenntnisse</b> für den Test, <g>oder</g> man muss ihn wiederholen.",
@@ -8491,10 +8491,10 @@ var VOCAB = [
       "ru": "вносить вклад (во что-то)"
     },
     "short": {
-      "de": "Einen Teil dazu geben, dass etwas gelingt.",
-      "en": "To contribute a part to making something succeed.",
-      "uk": "Робити свій внесок у те, щоб щось вдалося.",
-      "ru": "Вносить свой вклад в то, чтобы что-то удалось."
+      "de": "einen Teil dazu geben, dass etwas gelingt",
+      "en": "to contribute a part to making something succeed",
+      "uk": "робити свій внесок у те, щоб щось вдалося",
+      "ru": "вносить свой вклад в то, чтобы что-то удалось"
     },
     "def": {
       "de": "Jeder kann <g>entweder</g> finanziell <b>zum</b> Projekt <b>beitragen</b> <g>oder</g> mit seiner Zeit helfen.",
@@ -8514,10 +8514,10 @@ var VOCAB = [
       "ru": "бюрократия"
     },
     "short": {
-      "de": "Viele offizielle Regeln und Formulare bei Behörden.",
-      "en": "Many official rules and forms at government offices.",
-      "uk": "Багато офіційних правил і форм у державних установах.",
-      "ru": "Много официальных правил и форм в государственных учреждениях."
+      "de": "viele offizielle Regeln und Formulare bei Behörden",
+      "en": "many official rules and forms at government offices",
+      "uk": "багато офіційних правил і форм у державних установах",
+      "ru": "много официальных правил и форм в государственных учреждениях"
     },
     "def": {
       "de": "<g>Entweder</g> man akzeptiert die <b>Bürokratie</b> in Deutschland, <g>oder</g> man verzweifelt schnell daran.",
@@ -8537,10 +8537,10 @@ var VOCAB = [
       "ru": "испытывать стресс"
     },
     "short": {
-      "de": "Sich unter Druck fühlen und wenig Ruhe haben.",
-      "en": "To feel under pressure and have little rest.",
-      "uk": "Відчувати тиск і мати мало спокою.",
-      "ru": "Чувствовать давление и иметь мало покоя."
+      "de": "sich unter Druck fühlen und wenig Ruhe haben",
+      "en": "to feel under pressure and have little rest",
+      "uk": "відчувати тиск і мати мало спокою",
+      "ru": "чувствовать давление и иметь мало покоя"
     },
     "def": {
       "de": "Sie <b>hat</b> viel <b>Stress</b>, <g>weil</g> sie zu viele Aufgaben gleichzeitig erledigen muss.",
@@ -8560,10 +8560,10 @@ var VOCAB = [
       "ru": "быть измотанным"
     },
     "short": {
-      "de": "Sehr müde sein, weil man viel Kraft verbraucht hat.",
-      "en": "To be very tired because you have used up a lot of energy.",
-      "uk": "Бути дуже втомленим через витрачені сили.",
-      "ru": "Быть очень уставшим из-за потраченных сил."
+      "de": "sehr müde sein, weil man viel Kraft verbraucht hat",
+      "en": "to be very tired because you have used up a lot of energy",
+      "uk": "бути дуже втомленим через витрачені сили",
+      "ru": "быть очень уставшим из-за потраченных сил"
     },
     "def": {
       "de": "Er <b>ist</b> total <b>erschöpft</b>, <g>trotzdem</g> geht er heute noch joggen.",
@@ -8583,10 +8583,10 @@ var VOCAB = [
       "ru": "радоваться (чему-то)"
     },
     "short": {
-      "de": "Ein positives Gefühl haben, weil etwas Schönes passiert oder passieren wird.",
-      "en": "To have a positive feeling because something nice is happening or will happen.",
-      "uk": "Відчувати позитивні емоції через щось приємне, що відбувається чи відбудеться.",
-      "ru": "Испытывать положительные эмоции из-за чего-то приятного, что происходит или произойдёт."
+      "de": "ein positives Gefühl haben, weil etwas Schönes passiert oder passieren wird",
+      "en": "to have a positive feeling because something nice is happening or will happen",
+      "uk": "відчувати позитивні емоції через щось приємне, що відбувається чи відбудеться",
+      "ru": "испытывать положительные эмоции из-за чего-то приятного, что происходит или произойдёт"
     },
     "def": {
       "de": "Ich <b>freue</b> <b>mich</b> total <b>auf</b> den Urlaub, <g>und</g> ich habe schon alles gepackt.",
@@ -8606,10 +8606,10 @@ var VOCAB = [
       "ru": "отправляться в путешествие"
     },
     "short": {
-      "de": "Für eine Zeit an einen anderen Ort fahren, meistens im Urlaub.",
-      "en": "To travel to another place for a while, usually on holiday.",
-      "uk": "Виїжджати на певний час в інше місце, зазвичай у відпустку.",
-      "ru": "Уезжать на некоторое время в другое место, обычно в отпуск."
+      "de": "für eine Zeit an einen anderen Ort fahren, meistens im Urlaub",
+      "en": "to travel to another place for a while, usually on holiday",
+      "uk": "виїжджати на певний час в інше місце, зазвичай у відпустку",
+      "ru": "уезжать на некоторое время в другое место, обычно в отпуск"
     },
     "def": {
       "de": "Bevor wir <b>verreisen</b>, <g>nehme</g> ich meine Kamera unbedingt <g>mit</g>.",
@@ -8629,10 +8629,10 @@ var VOCAB = [
       "ru": "ночевать"
     },
     "short": {
-      "de": "Die Nacht an einem bestimmten Ort verbringen, oft nicht zu Hause.",
-      "en": "To spend the night in a certain place, often not at home.",
-      "uk": "Проводити ніч у певному місці, часто не вдома.",
-      "ru": "Проводить ночь в определённом месте, часто не дома."
+      "de": "die Nacht an einem bestimmten Ort verbringen, oft nicht zu Hause",
+      "en": "to spend the night in a certain place, often not at home",
+      "uk": "проводити ніч у певному місці, часто не вдома",
+      "ru": "проводить ночь в определённом месте, часто не дома"
     },
     "def": {
       "de": "Wir <b>übernachten</b> im Hotel, aber morgen <g>fahren</g> wir schon <g>weiter</g> zur nächsten Stadt.",
@@ -8652,10 +8652,10 @@ var VOCAB = [
       "ru": "молодёжное общежитие (хостел)"
     },
     "short": {
-      "de": "Ein günstiges Hotel, meistens für junge Leute oder Gruppen.",
-      "en": "An affordable hotel, usually for young people or groups.",
-      "uk": "Недороге помешкання, зазвичай для молоді чи груп.",
-      "ru": "Недорогое жильё, обычно для молодёжи или групп."
+      "de": "ein günstiges Hotel, meistens für junge Leute oder Gruppen",
+      "en": "an affordable hotel, usually for young people or groups",
+      "uk": "недороге помешкання, зазвичай для молоді чи груп",
+      "ru": "недорогое жильё, обычно для молодёжи или групп"
     },
     "def": {
       "de": "In der <b>Jugendherberge</b> <g>räumen</g> alle Gäste am Morgen <g>zusammen</g> auf.",
@@ -8675,10 +8675,10 @@ var VOCAB = [
       "ru": "памятник"
     },
     "short": {
-      "de": "Ein Bauwerk, das an eine wichtige Person oder ein wichtiges Ereignis erinnert.",
-      "en": "A structure that commemorates an important person or event.",
-      "uk": "Споруда, яка нагадує про важливу людину чи подію.",
-      "ru": "Сооружение, которое напоминает о важном человеке или событии."
+      "de": "ein Bauwerk, das an eine wichtige Person oder ein wichtiges Ereignis erinnert",
+      "en": "a structure that commemorates an important person or event",
+      "uk": "споруда, яка нагадує про важливу людину чи подію",
+      "ru": "сооружение, которое напоминает о важном человеке или событии"
     },
     "def": {
       "de": "Am <b>Denkmal</b> <g>kommen</g> wir morgen wieder <g>zurück</g>, um Fotos zu machen.",
@@ -8698,10 +8698,10 @@ var VOCAB = [
       "ru": "обеспечивать безопасность"
     },
     "short": {
-      "de": "Dafür sorgen, dass Menschen sicher und geschützt sind.",
-      "en": "To make sure that people are safe and protected.",
-      "uk": "Дбати про те, щоб люди були в безпеці й захищені.",
-      "ru": "Заботиться о том, чтобы люди были в безопасности и защищены."
+      "de": "dafür sorgen, dass Menschen sicher und geschützt sind",
+      "en": "to make sure that people are safe and protected",
+      "uk": "дбати про те, щоб люди були в безпеці й захищені",
+      "ru": "заботиться о том, чтобы люди были в безопасности и защищены"
     },
     "def": {
       "de": "Die Polizei <b>sorgt</b> <b>für</b> <b>Sicherheit</b>, und die Sanitäter <g>bringen</g> den Verletzten sofort <g>weg</g>.",
@@ -8721,10 +8721,10 @@ var VOCAB = [
       "ru": "грабитель / грабительница"
     },
     "short": {
-      "de": "Eine Person, die illegal in ein Haus geht, um dort etwas zu stehlen.",
-      "en": "A person who illegally enters a house to steal something.",
-      "uk": "Особа, яка незаконно проникає в будинок, щоб щось украсти.",
-      "ru": "Человек, который незаконно проникает в дом, чтобы что-то украсть."
+      "de": "eine Person, die illegal in ein Haus geht, um dort etwas zu stehlen",
+      "en": "a person who illegally enters a house to steal something",
+      "uk": "особа, яка незаконно проникає в будинок, щоб щось украсти",
+      "ru": "человек, который незаконно проникает в дом, чтобы что-то украсть"
     },
     "def": {
       "de": "Der <b>Einbrecher</b> wollte fliehen, aber ein Nachbar <g>nahm</g> ihn kurzerhand <g>mit</g> zur Polizei.",
@@ -8744,10 +8744,10 @@ var VOCAB = [
       "ru": "красть"
     },
     "short": {
-      "de": "Etwas nehmen, das einer anderen Person gehört, ohne zu fragen.",
-      "en": "To take something that belongs to another person without asking.",
-      "uk": "Брати щось, що належить іншій людині, без дозволу.",
-      "ru": "Брать что-то, принадлежащее другому человеку, без разрешения."
+      "de": "etwas nehmen, das einer anderen Person gehört, ohne zu fragen",
+      "en": "to take something that belongs to another person without asking",
+      "uk": "брати щось, що належить іншій людині, без дозволу",
+      "ru": "брать что-то, принадлежащее другому человеку, без разрешения"
     },
     "def": {
       "de": "Der Dieb <g>nahm</g> das Fahrrad <g>mit</g>, nachdem er es <b>gestohlen</b> hatte.",
@@ -8767,10 +8767,10 @@ var VOCAB = [
       "ru": "арестовывать"
     },
     "short": {
-      "de": "Eine Person, die etwas Verbotenes getan hat, offiziell festhalten.",
-      "en": "To officially detain a person who has done something forbidden.",
-      "uk": "Офіційно затримувати особу, яка вчинила щось заборонене.",
-      "ru": "Официально задерживать человека, совершившего что-то запрещённое."
+      "de": "eine Person, die etwas Verbotenes getan hat, offiziell festhalten",
+      "en": "to officially detain a person who has done something forbidden",
+      "uk": "офіційно затримувати особу, яка вчинила щось заборонене",
+      "ru": "официально задерживать человека, совершившего что-то запрещённое"
     },
     "def": {
       "de": "Die Polizei <b>verhaftete</b> den Mann und <g>brachte</g> ihn <g>weg</g>.",
@@ -8790,10 +8790,10 @@ var VOCAB = [
       "ru": "задерживать"
     },
     "short": {
-      "de": "Eine Person durch die Polizei kurzzeitig festhalten.",
-      "en": "To be briefly detained by the police.",
-      "uk": "Короткочасно затримувати особу поліцією.",
-      "ru": "Кратковременно задерживать человека полицией."
+      "de": "eine Person durch die Polizei kurzzeitig festhalten",
+      "en": "to be briefly detained by the police",
+      "uk": "короткочасно затримувати особу поліцією",
+      "ru": "кратковременно задерживать человека полицией"
     },
     "def": {
       "de": "Die Polizei <b>nahm</b> den Verdächtigen <b>fest</b> und <g>brachte</g> ihn sofort <g>mit</g> zur Wache.",
@@ -8813,10 +8813,10 @@ var VOCAB = [
       "ru": "убегать"
     },
     "short": {
-      "de": "Schnell weglaufen, um einer Gefahr zu entkommen.",
-      "en": "To run away quickly to escape a danger.",
-      "uk": "Швидко тікати, щоб уникнути небезпеки.",
-      "ru": "Быстро убегать, чтобы избежать опасности."
+      "de": "schnell weglaufen, um einer Gefahr zu entkommen",
+      "en": "to run away quickly to escape a danger",
+      "uk": "швидко тікати, щоб уникнути небезпеки",
+      "ru": "быстро убегать, чтобы избежать опасности"
     },
     "def": {
       "de": "Der Täter versuchte zu <b>fliehen</b>, aber die Polizei <g>brachte</g> ihn schnell <g>zurück</g> in die Zelle.",
@@ -8836,10 +8836,10 @@ var VOCAB = [
       "ru": "приговор, судебное решение"
     },
     "short": {
-      "de": "Die offizielle Entscheidung eines Gerichts.",
-      "en": "The official decision of a court.",
-      "uk": "Офіційне рішення суду.",
-      "ru": "Официальное решение суда."
+      "de": "die offizielle Entscheidung eines Gerichts",
+      "en": "the official decision of a court",
+      "uk": "офіційне рішення суду",
+      "ru": "официальное решение суда"
     },
     "def": {
       "de": "Nach dem <b>Urteil</b> <g>nahm</g> der Anwalt seine Akten <g>mit</g>.",
@@ -8859,10 +8859,10 @@ var VOCAB = [
       "ru": "достопримечательность"
     },
     "short": {
-      "de": "Ein bekanntes Gebäude oder Symbol, das typisch für eine Stadt ist.",
-      "en": "A well-known building or symbol that is typical of a city.",
-      "uk": "Відома будівля чи символ, характерні для міста.",
-      "ru": "Известное здание или символ, типичный для города."
+      "de": "ein bekanntes Gebäude oder Symbol, das typisch für eine Stadt ist",
+      "en": "a well-known building or symbol that is typical of a city",
+      "uk": "відома будівля чи символ, характерні для міста",
+      "ru": "известное здание или символ, типичный для города"
     },
     "def": {
       "de": "Touristen <g>kommen</g> jedes Jahr <g>zurück</g>, um das berühmte <b>Wahrzeichen</b> der Stadt zu sehen.",
@@ -8882,10 +8882,10 @@ var VOCAB = [
       "ru": "архитектура"
     },
     "short": {
-      "de": "Die Kunst und Wissenschaft, Gebäude zu planen und zu bauen.",
-      "en": "The art and science of planning and constructing buildings.",
-      "uk": "Мистецтво і наука проєктування та будівництва споруд.",
-      "ru": "Искусство и наука проектирования и строительства зданий."
+      "de": "die Kunst und Wissenschaft, Gebäude zu planen und zu bauen",
+      "en": "the art and science of planning and constructing buildings",
+      "uk": "мистецтво і наука проєктування та будівництва споруд",
+      "ru": "искусство и наука проектирования и строительства зданий"
     },
     "def": {
       "de": "Die moderne <b>Architektur</b> der Stadt und die alten Gebäude <g>passen</g> überraschend gut <g>zusammen</g>.",
