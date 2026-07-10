@@ -1,6 +1,6 @@
 // sw.js — Service Worker для MOVA PWA
 // CACHE_VERSION оновлюється автоматично GitHub Actions при кожному деплої
-const CACHE_VERSION = '295-29d4c64';
+const CACHE_VERSION = '296-ea056ba';
 const CACHE_NAME = `mova-${CACHE_VERSION}`;
 
 const PRECACHE = [
