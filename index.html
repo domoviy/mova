@@ -422,7 +422,7 @@ body{
   grid-auto-rows:min-content;
   gap:8px;
   flex:1;
-  align-content:start;
+  align-content:center;
 }
 /* Лівий стовпець — терміни */
 .match-btn.side-term { grid-column:1; }
@@ -711,7 +711,7 @@ body{
 .mc-q-label{font-size:var(--fs-tertiary);color:rgba(255,255,255,.4);
   letter-spacing:.5px;margin-bottom:5px;}
 .mc-q-row{display:flex;align-items:center;gap:8px;justify-content:center;}
-.mc-q-term{font-size:var(--fs-card);font-weight:700;color:var(--gold);
+.mc-q-term{font-size:var(--fs-card);font-weight:400;color:#fff;
   font-family:'Inter',sans-serif;line-height:1.3;}
 .mc-q-audio{background:none;border:none;
   color:rgba(255,255,255,.55);font-size:18px;cursor:pointer;
@@ -921,10 +921,8 @@ body{
   background:var(--forest);border-radius:16px;
   padding:18px;margin-bottom:14px;
 }
-.tiles-q-label{font-size:var(--fs-tertiary);color:rgba(255,255,255,.45);
-  letter-spacing:.5px;margin-bottom:6px;}
 .tiles-q-text{font-size:var(--fs-card);color:#fff;line-height:1.3;font-family:'Inter',sans-serif;}
-.tiles-q-text.mc-q-term{color:var(--gold-lt);font-weight:600;}
+.tiles-q-text.mc-q-term{color:#fff;font-weight:400;}
 .tiles-answer{
   flex:0 0 auto;min-height:64px;max-height:35vh;border-radius:14px;
   border:1.5px dashed var(--border);
@@ -1175,6 +1173,17 @@ body{
   transition:opacity .15s,transform .1s;
 }
 .lr-btn-primary:active{transform:scale(.97);opacity:.9;}
+/* Приваблива пульсація кнопки "Наступний урок" — стимулює клікнути */
+#lr-btn-next{
+  animation:lrNextPulse 1.6s ease-in-out infinite;
+}
+#lr-btn-next:active{
+  animation-play-state:paused;
+}
+@keyframes lrNextPulse{
+  0%,100%{ transform:scale(1);   box-shadow:0 4px 18px rgba(201,168,76,.38); }
+  50%    { transform:scale(1.035); box-shadow:0 6px 28px rgba(201,168,76,.62); }
+}
 .lr-btn-secondary{
   display:block;width:100%;max-width:320px;
   padding:15px 20px;border-radius:16px;
@@ -2055,7 +2064,6 @@ body.lesson-active .vocab-top{
       </div>
 
       <div id="vocab-panel-match" style="display:none">
-        <div class="match-header"><h3 id="match-title"></h3></div>
         <div class="match-grid" id="match-grid"></div>
         <div class="match-result" id="match-result" style="display:none">
           <div class="score" id="match-score"></div>
@@ -2076,7 +2084,6 @@ body.lesson-active .vocab-top{
 
       <div id="vocab-panel-tiles" style="display:none">
         <div class="tiles-question">
-          <div class="tiles-q-label" id="tiles-q-label">Переклади</div>
           <div class="tiles-q-text" id="tiles-q-text"></div>
         </div>
         <div class="tiles-answer" id="tiles-answer"></div>
@@ -2103,7 +2110,6 @@ body.lesson-active .vocab-top{
       <!-- DEF FILL-IN (tab 6) -->
       <div id="vocab-panel-def" style="display:none">
         <div class="tiles-question" id="def-question-block">
-          <div class="tiles-q-label" id="def-q-label">Доповни речення</div>
           <div class="tiles-q-text" id="def-q-text" style="color:#fff;line-height:1.3"></div>
         </div>
         <div class="tiles-bank" id="def-bank"></div>
@@ -2464,7 +2470,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '288-d0e0910';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3014,8 +3020,6 @@ function applyI18n(){
     b.classList.toggle('active', b.dataset.lang===uiLang);
   });
   // Matching
-  const mTitle = document.getElementById('match-title');
-  if(mTitle && !mTitle.textContent) mTitle.textContent = t('match_title');
   const mAgain = document.getElementById('match-btn-again');
   if(mAgain) mAgain.textContent = t('match_again');
   const mCards = document.getElementById('match-btn-cards');
@@ -5211,22 +5215,19 @@ function startMatching(){
   const maxLen = Math.max(terms.length, shorts.length);
   for(let i=0; i<maxLen; i++){
     // Ліворуч завжди targetText() = term[primaryLang()] (що вивчаємо)
-    if(terms[i])  grid.appendChild(matchMakeBtn(terms[i].id,  'term',  targetText(terms[i])));
+    if(terms[i])  grid.appendChild(matchMakeBtn(terms[i].id,  'term',  targetText(terms[i]), primaryLang()));
     // Праворуч — рідна мова або short[primaryLang()] для монолінгвального інтерфейсу
-    if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id, 'short', nativeText(shorts[i])));
+    if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id, 'short', nativeText(shorts[i]), uiLang===primaryLang() ? primaryLang() : uiLang));
   }
-
-  // Заголовок
-  const titleEl = document.getElementById('match-title');
-  if(titleEl) titleEl.textContent = t('match_title');
 
   // Prefetch аудіо всіх 5 DE слів одразу при відкритті
   matchPrefetchAudio(chosen);
 }
 
-function matchMakeBtn(cardId, side, text){
+function matchMakeBtn(cardId, side, text, lang){
   const btn = document.createElement('button');
   btn.className = 'match-btn side-'+side;
+  btn.lang = lang || 'de';
   btn.dataset.cardId = cardId;
   btn.dataset.side   = side;
   btn.textContent    = text;
@@ -6214,11 +6215,6 @@ function tilesShowCard(){
     const stripTags = s => (s||'').replace(/<[^>]+>/g, '');
     const pLang = primaryLang();
     const defHint = stripTags(card.def?.[uiLang] || card.def?.[pLang] || '');
-    const qLabel = uiLang==='uk'
-      ? 'Склади речення:'
-      : uiLang==='en' ? 'Build the sentence:'
-      : 'Bilde den Satz:';
-    document.getElementById('tiles-q-label').textContent = qLabel;
     const qTextEl = document.getElementById('tiles-q-text');
     qTextEl.className = 'tiles-q-text mc-q-term';
     qTextEl.textContent = defHint;
@@ -6262,12 +6258,6 @@ function tilesShowCard(){
   } else {
     qText = card.term?.[uiLang] || card.term?.uk || card.term?.en || card.short?.[pLang] || '';
   }
-  const qLabel = uiLang==='uk'
-    ? 'Склади речення/вираз:'
-    : uiLang==='en' ? 'Build the sentence:'
-    : 'Bilde den Ausdruck:';
-
-  document.getElementById('tiles-q-label').textContent = qLabel;
   // Use mc-q-term style (gold color) for the question text
   const qTextEl = document.getElementById('tiles-q-text');
   qTextEl.className = 'tiles-q-text mc-q-term';
@@ -6749,7 +6739,6 @@ function startDefFill(){
     document.getElementById('def-bank').innerHTML =
       '<p style="color:var(--muted);padding:16px">' + (typeof t === 'function' ? t('match_empty') : 'Keine Karten verfügbar') + '</p>';
     document.getElementById('def-q-text').innerHTML = '';
-    document.getElementById('def-q-label').textContent = '';
     return;
   }
   pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
@@ -6797,8 +6786,6 @@ function defShowCard(){
   sentenceHtml = sentenceHtml.replace(/(<\/span>)([,;:.!?])/g, '$1<span style="display:inline">$2</span>');
   sentenceHtml = sentenceHtml.replace(/<(?!span|\/span)[^>]+>/gi, '');
 
-  const qLabel = t('lbl_def_fill');
-  document.getElementById('def-q-label').textContent = qLabel;
   const qTextEl = document.getElementById('def-q-text');
   qTextEl.innerHTML = sentenceHtml;
 
@@ -6970,7 +6957,6 @@ function defShowResultModal(isOk, fullSentence){
 
 function defShowResult(){
   document.getElementById('def-q-text').innerHTML = '';
-  document.getElementById('def-q-label').textContent = '';
   const checkBtn = document.getElementById('def-check-btn');
   if(checkBtn) checkBtn.style.display = 'none';
 
@@ -7441,7 +7427,6 @@ function _defFindSlotAt(x, y){
 
 function tilesShowResult(){
   document.getElementById('tiles-q-text').textContent='';
-  document.getElementById('tiles-q-label').textContent='';
   document.getElementById('tiles-answer').innerHTML='';
   const checkBtn = document.getElementById('tiles-check-btn');
   if(checkBtn) checkBtn.style.display='none';
@@ -7810,7 +7795,7 @@ const LF_STEP_LABELS = {
   def:      {de:'Lückentext',     uk:'Доповни речення',    en:'Fill-in'},
   matching: {de:'Paare',          uk:'Пари',               en:'Pairs'},
   choice:   {de:'Auswahl',        uk:'Вибір',              en:'Choice'},
-  tiles:    {de:'Sätze',          uk:'Речення',            en:'Sentences'},
+  tiles:    {de:'Bilde Satz / Ausdruck', uk:'Склади речення / вираз', en:'Build sentence / phrase'},
   quiz:     {de:'Quiz',           uk:'Квіз',               en:'Quiz'},
   sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція',  en:'Language Pattern'},
   dlg_learn:{de:'Dialogue',       uk:'Dialogue',           en:'Dialogue'},
@@ -7869,8 +7854,13 @@ function lfRenderBar(){
   const nameEl = document.getElementById('lf-step-name');
   if(nameEl){
     const cur = LF.steps[LF.step];
-    nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' +
-      (LF_STEP_LABELS[cur]?.[uiLang] || LF_STEP_LABELS[cur]?.de || cur);
+    if(cur === 'matching'){
+      // Повний заголовок вправи (раніше дублювався окремим match-title)
+      nameEl.textContent = t('match_title');
+    } else {
+      nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' +
+        (LF_STEP_LABELS[cur]?.[uiLang] || LF_STEP_LABELS[cur]?.de || cur);
+    }
   }
 }
 
@@ -8016,12 +8006,10 @@ function lfStartMatching(){
     grid.innerHTML = '';
     const maxLen = Math.max(terms.length, shorts.length);
     for(let i=0;i<maxLen;i++){
-      if(terms[i])  grid.appendChild(matchMakeBtn(terms[i].id,'term', targetText(terms[i])));
-      if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id,'short',nativeText(shorts[i])));
+      if(terms[i])  grid.appendChild(matchMakeBtn(terms[i].id,'term', targetText(terms[i]), primaryLang()));
+      if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id,'short',nativeText(shorts[i]), uiLang===primaryLang() ? primaryLang() : uiLang));
     }
   }
-  const titleEl=document.getElementById('match-title');
-  if(titleEl) titleEl.textContent=t('match_title');
   // Prefetch аудіо всіх DE слів одразу при відкритті
   matchPrefetchAudio(chosen);
 }
