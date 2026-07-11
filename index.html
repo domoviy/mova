@@ -2467,7 +2467,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '302-0fd6a65';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -10563,8 +10563,17 @@ function buildGramCards(){
     if(!m) return;
     var answerDe = m[1].replace(/<\/?b>/g,'').trim();
     if(answerDe.split(/\s+/).length>1) return; // MVP: лише однослівні маркери (форма = форма дистракторів)
-    var distractors = pool.filter(function(w){ return w.toLowerCase()!==answerDe.toLowerCase(); })
-      .sort(function(){ return Math.random()-.5; }).slice(0,4);
+    // Дистрактори — ДЕТЕРМІНОВАНИЙ вибір (без Math.random!): перші 4 слова
+    // пулу теми (у порядку GRAM_DISTRACTOR_POOL), крім самої відповіді.
+    // Це навмисно — так само, як card.distractors у SPRACHBAUSTEINE є
+    // фіксованим авторським масивом у базі, і тому 'distractors_1'..'_4'
+    // завжди відповідає тому самому слову для картки. Порядок КНОПОК на
+    // екрані все одно перемішується випадково в sbRenderPrac (то вже
+    // суто відображення, не дані) — але САМІ дистрактори мають бути
+    // стабільними між сесіями, інакше pregen-аудіо gram_<id>_distractors_N
+    // не збігалося б із тим, що показує клієнт. gen_audio.py відтворює
+    // цей самий алгоритм — якщо міняєте його тут, змініть і там.
+    var distractors = pool.filter(function(w){ return w.toLowerCase()!==answerDe.toLowerCase(); }).slice(0,4);
     if(distractors.length<3) return;
     // прибираємо ПЕРШИЙ <g>…</g> → {{BLANK}}; будь-які ІНШІ <g> в тому ж
     // реченні лишаємо як звичайний текст (не тестуємо кілька пропусків
@@ -11296,17 +11305,22 @@ function sbRenderPrac() {
       var b=document.createElement('button');
       b.className='mc-opt';
       b.textContent=o.text;
-      // Prefetch audio for this distractor option — Grammatik-Trainer картки
-      // синтетичні (gram_*), для них pregen-аудіо не існує, тож не намагаємось.
-      if(!card._isGram) sbPrefetchAudio(card.id, o.field);
+      // Prefetch audio — той самий механізм для Sprachbausteine і
+      // Grammatik-Trainer: card.id+field (для gram, card.id='gram_'+vocId,
+      // field='answer'/'distractors_N' — стабільно, бо дистрактори
+      // тепер детерміновані, див. buildGramCards()).
+      sbPrefetchAudio(card.id, o.field);
       b.onclick=(function(opt, fn){ return function(){ sbPracAnswer(b,opt,card.id,fn); }; })(o.text, o.field);
       optEl.appendChild(b);
     });
   }
   document.getElementById('sb-prac-feedback').style.display='none';
 
-  // Prefetch sentence audio
-  if(!card._isGram) sbPrefetchAudio(card.id, 'sentence');
+  // Prefetch sentence audio — для Grammatik-Trainer це вже готове
+  // pregen-аудіо ОРИГІНАЛЬНОЇ VOCAB-картки (поле 'def', card._srcId),
+  // а не синтетичного gram_* id.
+  if(card._isGram) sbPrefetchAudio(card._srcId, 'def');
+  else sbPrefetchAudio(card.id, 'sentence');
 }
 
 function sbPrefetchAudio(cardId, field) {
@@ -11332,12 +11346,22 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     else if(b===btn&&!ok) b.classList.add('wrong');
   });
 
-  // Play chosen option audio, then play full correct sentence — лише для
-  // SPRACHBAUSTEINE (є pregen-аудіо). Grammatik-Trainer картки синтетичні,
-  // pregen-файлів немає, тож не намагаємось (уникаємо зайвих 404 і
-  // повторюваної модалки "аудіо недоступне" на кожній відповіді).
-  if(!card._isGram){
-    var field = audioField || (ok ? 'answer' : 'distractors_1');
+  // Play chosen option audio, then play full correct sentence — той самий
+  // механізм для SPRACHBAUSTEINE і Grammatik-Trainer: card.id+field
+  // (для gram card.id='gram_'+vocId, дистрактори тепер детерміновані —
+  // див. buildGramCards() — тож field='answer'/'distractors_N' стабільно
+  // відповідає тому самому слову). Різниться лише джерело аудіо ЦІЛОГО
+  // РЕЧЕННЯ: для Grammatik-Trainer це вже готове pregen-аудіо
+  // ОРИГІНАЛЬНОЇ VOCAB-картки (card._srcId, поле 'def'), а не синтетичне
+  // 'sentence' під gram_* id.
+  var field = audioField || (ok ? 'answer' : 'distractors_1');
+  if(card._isGram){
+    speak(chosen, primaryLang(), function() {
+      setTimeout(function() {
+        speak(null, primaryLang(), null, card._srcId, 'def');
+      }, 300);
+    }, card.id, field);
+  } else {
     var sentenceText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
     speak(chosen, primaryLang(), function() {
       // After answer audio ends → play full sentence

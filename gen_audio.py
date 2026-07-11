@@ -102,58 +102,53 @@ GRAM_DISTRACTOR_POOL = {
 GRAM_ANSWER_RE = re.compile(r'<g>(.*?)</g>')
 
 
-def collect_gram_words(raw_items, primary_lang):
-    """Слова, що зʼявляються на кнопках Grammatik-Trainer (правильна
-    відповідь + дистрактори) — відтворює логіку buildGramCards() з
-    index.html: для кожної VOCAB-картки з полем "gram" бере ПЕРШИЙ
-    <g>...</g> з def[primary_lang] як відповідь і пул дистракторів теми
-    з GRAM_DISTRACTOR_POOL; картки "відкритого класу" (тем без пулу) та
-    багатослівні маркери клієнт не показує — так само пропускаємо тут.
+GRAM_ANSWER_RE = re.compile(r'<g>(.*?)</g>')
 
-    ВАЖЛИВО: на клієнті порядок дистракторів на кнопках рандомізується
-    (Math.random()) щоразу заново при switchCourse(), тож прив'язувати
-    аудіофайл до конкретної картки+позиції кнопки (як для sprachbau
-    distractors_N) ненадійно — той самий файл довелось би шукати під
-    різними іменами в різних сесіях. Тому озвучуємо КОЖНЕ слово пулу
-    ОДИН РАЗ (файл називається за самим словом, не за карткою/позицією);
-    клієнту достатньо знайти аудіо за текстом слова, що випало на кнопці.
+
+def build_gram_card(item, primary_lang):
+    """Відтворює buildGramCards() з index.html: правильна відповідь +
+    ДЕТЕРМІНОВАНИЙ (без Math.random) вибір до 4 дистракторів — перші
+    слова пулу теми (GRAM_DISTRACTOR_POOL), крім самої відповіді, у
+    порядку, в якому їх записано в пулі. Це навмисно збігається з
+    JS-версією: card.distractors там більше не рандомізується щосесії,
+    тож 'gram_<id>_answer' / 'gram_<id>_distractors_N' стабільно
+    відповідають тим самим словам — так само, як card.id+field у
+    SPRACHBAUSTEINE. Якщо міняєте цю логіку тут — змініть і в
+    buildGramCards() в index.html, інакше pregen-аудіо розійдеться
+    з тим, що показує клієнт.
+
+    Повертає {"card_id","answer","distractors"} або None, якщо клієнт
+    таку картку не будує (відкритий клас теми / багатослівний маркер /
+    <3 дистракторів).
     """
-    words = set()
-    for item in raw_items:
-        gram_topic = item.get("gram")
-        if not gram_topic:
-            continue
-        pool = GRAM_DISTRACTOR_POOL.get(gram_topic)
-        if not pool:
-            continue  # тема "відкритого класу" — Grammatik-Trainer її не показує
+    gram_topic = item.get("gram")
+    if not gram_topic:
+        return None
+    pool = GRAM_DISTRACTOR_POOL.get(gram_topic)
+    if not pool:
+        return None  # тема "відкритого класу" — Grammatik-Trainer її не показує
 
-        def_field = item.get("def")
-        text = def_field.get(primary_lang) if isinstance(def_field, dict) else None
-        if not text:
-            continue
+    def_field = item.get("def")
+    text = def_field.get(primary_lang) if isinstance(def_field, dict) else None
+    if not text:
+        return None
 
-        m = GRAM_ANSWER_RE.search(text)
-        if not m:
-            continue
-        answer_word = re.sub(r'</?b>', '', m.group(1)).strip()
-        if not answer_word or len(answer_word.split()) > 1:
-            continue  # MVP: лише однослівні маркери
+    m = GRAM_ANSWER_RE.search(text)
+    if not m:
+        return None
+    answer_word = re.sub(r'</?b>', '', m.group(1)).strip()
+    if not answer_word or len(answer_word.split()) > 1:
+        return None  # MVP: лише однослівні маркери
 
-        distractors = [w for w in pool if w.lower() != answer_word.lower()]
-        if len(distractors) < 3:
-            continue  # недостатньо дистракторів — картка не будується клієнтом
+    distractors = [w for w in pool if w.lower() != answer_word.lower()][:4]
+    if len(distractors) < 3:
+        return None  # недостатньо дистракторів — картка не будується клієнтом
 
-        words.add(answer_word)
-        words.update(pool)
-    return words
-
-
-def slugify_word(word):
-    """Файлобезпечний, читабельний ідентифікатор слова для імені файлу."""
-    slug = word.strip().lower()
-    slug = re.sub(r'[^a-zäöüßа-яіїєёʼ0-9]+', '_', slug, flags=re.IGNORECASE)
-    slug = slug.strip('_')
-    return slug or hashlib.sha256(word.encode('utf-8')).hexdigest()[:8]
+    return {
+        "card_id": f"gram_{item['id']}",
+        "answer": answer_word,
+        "distractors": distractors,
+    }
 
 def get_voice_id(category, sub_type, lang):
     try:
@@ -517,34 +512,47 @@ async def main():
                                 "primary_lang": primary_lang
                             })
 
-      # Grammatik-Trainer — слова на кнопках (правильна відповідь + пул
-      # дистракторів теми). Один запис на унікальне слово курсу/мови/
-      # швидкості (а не на картку) — див. collect_gram_words().
+      # Grammatik-Trainer — картка-за-карткою, поле 'answer' +
+      # 'distractors_1'..'_N', ЯК У SPRACHBAUSTEINE. Дистрактори тепер
+      # детерміновані (build_gram_card = точний відповідник
+      # buildGramCards() без Math.random), тож можна прив'язувати
+      # аудіофайл до gram_<vocId>+field, а не до тексту слова.
       if primary_lang in audio_config:
-          gram_words = collect_gram_words(raw_items, primary_lang)
-          if gram_words:
-              voice = get_voice_id("gram", "word", primary_lang)
-              rates = audio_config.get(primary_lang, ["100"])
-              for raw_word in sorted(gram_words):
-                  cleaned = clean_text(raw_word)
+          voice = get_voice_id("gram", "word", primary_lang)
+          rates = audio_config.get(primary_lang, ["100"])
+          gram_card_count = 0
+          for item in raw_items:
+              gram_card = build_gram_card(item, primary_lang)
+              if not gram_card:
+                  continue
+              gram_card_count += 1
+              card_id = gram_card["card_id"]
+
+              button_texts = [("answer", gram_card["answer"])]
+              button_texts += [
+                  (f"distractors_{i}", w)
+                  for i, w in enumerate(gram_card["distractors"], start=1)
+              ]
+
+              for field, raw_text in button_texts:
+                  cleaned = clean_text(raw_text)
                   if not cleaned:
                       continue
-                  slug = slugify_word(cleaned)
                   for rate in rates:
-                      filename = f"gram_word_{slug}_{primary_lang}_{rate}.mp3"
-                      mkey = f"{course}/{primary_lang}/{rate}/gram/gram_word_{slug}_{primary_lang}_{rate}"
+                      filename = f"{card_id}_{field}_{primary_lang}_{rate}.mp3"
+                      mkey = f"{course}/{primary_lang}/{rate}/gram/{card_id}_{field}_{primary_lang}_{rate}"
 
                       content_hash = compute_content_hash(cleaned, voice, rate)
                       existing_hash = manifest_data.get(mkey)
 
                       if existing_hash != content_hash:
                           tasks.append({
-                              "id": f"gram_word_{slug}",
+                              "id": card_id,
                               "course": course,
                               "audio_base": audio_base,
                               "internal_cat": "gram",
                               "cat_lower": "gram",
-                              "sub": "word",
+                              "sub": field,
                               "lang": primary_lang,
                               "rate": rate,
                               "cleaned": cleaned,
@@ -554,7 +562,8 @@ async def main():
                               "content_hash": content_hash,
                               "primary_lang": primary_lang
                           })
-              print(f"  · Grammatik-Trainer: {len(gram_words)} унікальних слів на кнопках.", flush=True)
+          if gram_card_count:
+              print(f"  · Grammatik-Trainer: {gram_card_count} карток (answer + дистрактори).", flush=True)
 
     # ── Порядок генерації ────────────────────────────────────────
     # 1) Уся мова PRIMARY_LANG курсу — від найбільшої швидкості з
