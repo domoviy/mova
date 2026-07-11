@@ -1096,7 +1096,15 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k2_015",
-      "k2_008"
+      "k2_008",
+      "k2_016",
+      "k2_017",
+      "k2_018",
+      "k2_019",
+      "k2_020",
+      "k2_021",
+      "k2_022",
+      "k2_023"
     ],
     "unlockAfter": null,
     "sbCards": []
@@ -1124,7 +1132,15 @@ var LESSONS = [
     "grammar": "reflexivpronomen_akkusativ_wdh_b1",
     "cardIds": [
       "k2_012",
-      "k2_013"
+      "k2_013",
+      "k2_024",
+      "k2_025",
+      "k2_026",
+      "k2_027",
+      "k2_028",
+      "k2_029",
+      "k2_030",
+      "k2_031"
     ],
     "unlockAfter": "k2m1",
     "sbCards": []
@@ -1153,7 +1169,14 @@ var LESSONS = [
     "cardIds": [
       "k2_001",
       "k2_002",
-      "k2_010"
+      "k2_010",
+      "k2_032",
+      "k2_033",
+      "k2_034",
+      "k2_035",
+      "k2_036",
+      "k2_037",
+      "k2_038"
     ],
     "unlockAfter": "k2m2",
     "sbCards": []
@@ -1181,7 +1204,15 @@ var LESSONS = [
     "grammar": "komposita_nomen_nomen",
     "cardIds": [
       "k2_009",
-      "k2_014"
+      "k2_014",
+      "k2_039",
+      "k2_040",
+      "k2_041",
+      "k2_042",
+      "k2_043",
+      "k2_044",
+      "k2_045",
+      "k2_046"
     ],
     "unlockAfter": "k2m3",
     "sbCards": []
@@ -1210,7 +1241,14 @@ var LESSONS = [
     "cardIds": [
       "k2_003",
       "k2_004",
-      "k2_005"
+      "k2_005",
+      "k2_047",
+      "k2_048",
+      "k2_049",
+      "k2_050",
+      "k2_051",
+      "k2_052",
+      "k2_053"
     ],
     "unlockAfter": "k2m4",
     "sbCards": []
@@ -1239,7 +1277,14 @@ var LESSONS = [
     "cardIds": [
       "k2_006",
       "k2_007",
-      "k2_011"
+      "k2_011",
+      "k2_054",
+      "k2_055",
+      "k2_056",
+      "k2_057",
+      "k2_058",
+      "k2_059",
+      "k2_060"
     ],
     "unlockAfter": "k2m5",
     "sbCards": []
@@ -1266,7 +1311,15 @@ var LESSONS = [
     "grammar": "modalverben_vermutung",
     "cardIds": [
       "k3_001",
-      "k3_002"
+      "k3_002",
+      "k3_016",
+      "k3_017",
+      "k3_018",
+      "k3_019",
+      "k3_020",
+      "k3_021",
+      "k3_022",
+      "k3_023"
     ],
     "unlockAfter": null,
     "sbCards": []
@@ -1294,7 +1347,15 @@ var LESSONS = [
     "grammar": "genitiv",
     "cardIds": [
       "k3_003",
-      "k3_004"
+      "k3_004",
+      "k3_024",
+      "k3_025",
+      "k3_026",
+      "k3_027",
+      "k3_028",
+      "k3_029",
+      "k3_030",
+      "k3_031"
     ],
     "unlockAfter": "k3m1",
     "sbCards": []
@@ -1322,7 +1383,15 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k3_005",
-      "k3_006"
+      "k3_006",
+      "k3_032",
+      "k3_033",
+      "k3_034",
+      "k3_035",
+      "k3_036",
+      "k3_037",
+      "k3_038",
+      "k3_039"
     ],
     "unlockAfter": "k3m2",
     "sbCards": []
@@ -1350,7 +1419,15 @@ var LESSONS = [
     "grammar": "nebensatz_mit_obwohl",
     "cardIds": [
       "k3_007",
-      "k3_008"
+      "k3_008",
+      "k3_040",
+      "k3_041",
+      "k3_042",
+      "k3_043",
+      "k3_044",
+      "k3_045",
+      "k3_046",
+      "k3_047"
     ],
     "unlockAfter": "k3m3",
     "sbCards": []
@@ -1379,7 +1456,14 @@ var LESSONS = [
     "cardIds": [
       "k3_009",
       "k3_010",
-      "k3_011"
+      "k3_011",
+      "k3_048",
+      "k3_049",
+      "k3_050",
+      "k3_051",
+      "k3_052",
+      "k3_053",
+      "k3_054"
     ],
     "unlockAfter": "k3m4",
     "sbCards": []
@@ -1409,7 +1493,13 @@ var LESSONS = [
       "k3_012",
       "k3_013",
       "k3_014",
-      "k3_015"
+      "k3_015",
+      "k3_055",
+      "k3_056",
+      "k3_057",
+      "k3_058",
+      "k3_059",
+      "k3_060"
     ],
     "unlockAfter": "k3m5",
     "sbCards": []
@@ -1436,7 +1526,15 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k4_001",
-      "k4_004"
+      "k4_004",
+      "k4_016",
+      "k4_017",
+      "k4_018",
+      "k4_019",
+      "k4_020",
+      "k4_021",
+      "k4_022",
+      "k4_023"
     ],
     "unlockAfter": null,
     "sbCards": []
@@ -1464,7 +1562,15 @@ var LESSONS = [
     "grammar": "praeteritum_wdh_b1",
     "cardIds": [
       "k4_002",
-      "k4_003"
+      "k4_003",
+      "k4_024",
+      "k4_025",
+      "k4_026",
+      "k4_027",
+      "k4_028",
+      "k4_029",
+      "k4_030",
+      "k4_031"
     ],
     "unlockAfter": "k4m1",
     "sbCards": []
@@ -1492,7 +1598,15 @@ var LESSONS = [
     "grammar": "deshalb_deswegen_trotzdem",
     "cardIds": [
       "k4_012",
-      "k4_013"
+      "k4_013",
+      "k4_032",
+      "k4_033",
+      "k4_034",
+      "k4_035",
+      "k4_036",
+      "k4_037",
+      "k4_038",
+      "k4_039"
     ],
     "unlockAfter": "k4m2",
     "sbCards": []
@@ -1521,7 +1635,14 @@ var LESSONS = [
     "cardIds": [
       "k4_005",
       "k4_006",
-      "k4_007"
+      "k4_007",
+      "k4_040",
+      "k4_041",
+      "k4_042",
+      "k4_043",
+      "k4_044",
+      "k4_045",
+      "k4_046"
     ],
     "unlockAfter": "k4m3",
     "sbCards": []
@@ -1547,7 +1668,16 @@ var LESSONS = [
     ],
     "grammar": "genitiv_alternativen",
     "cardIds": [
-      "k4_008"
+      "k4_008",
+      "k4_047",
+      "k4_048",
+      "k4_049",
+      "k4_050",
+      "k4_051",
+      "k4_052",
+      "k4_053",
+      "k4_054",
+      "k4_055"
     ],
     "unlockAfter": "k4m4",
     "sbCards": []
@@ -1578,7 +1708,12 @@ var LESSONS = [
       "k4_010",
       "k4_011",
       "k4_014",
-      "k4_015"
+      "k4_015",
+      "k4_056",
+      "k4_057",
+      "k4_058",
+      "k4_059",
+      "k4_060"
     ],
     "unlockAfter": "k4m5",
     "sbCards": []
@@ -5160,6 +5295,1041 @@ var VOCAB = [
     "gram": "sowohl_als_auch_weder_noch"
   },
   {
+    "id": "k2_016",
+    "cat": "k2",
+    "term": {
+      "de": "die Einkaufsliste",
+      "en": "shopping list",
+      "uk": "список покупок",
+      "ru": "список покупок"
+    },
+    "short": {
+      "de": "ein Zettel, auf dem steht, was man im Geschäft kaufen möchte",
+      "en": "a note that shows what you want to buy in the shop",
+      "uk": "список, у якому написано, що потрібно купити в магазині",
+      "ru": "список, в котором написано, что нужно купить в магазине"
+    },
+    "def": {
+      "de": "Auf meiner <b>Einkaufsliste</b> stehen <g>sowohl</g> Obst <g>als auch</g> Gemüse.",
+      "en": "My <b>shopping list</b> has <g>both</g> fruit <g>and</g> vegetables on it.",
+      "uk": "У моєму <b>списку покупок</b> є <g>як</g> фрукти, <g>так і</g> овочі.",
+      "ru": "В моём <b>списке покупок</b> есть <g>как</g> фрукты, <g>так и</g> овощи."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k2_017",
+    "cat": "k2",
+    "term": {
+      "de": "das Angebot",
+      "en": "offer, deal",
+      "uk": "пропозиція, акція",
+      "ru": "предложение, акция"
+    },
+    "short": {
+      "de": "ein günstiger Preis oder eine besondere Aktion in einem Geschäft",
+      "en": "a good price or a special promotion in a shop",
+      "uk": "вигідна ціна чи особлива акція в магазині",
+      "ru": "выгодная цена или особая акция в магазине"
+    },
+    "def": {
+      "de": "Das <b>Angebot</b> gilt <g>weder</g> heute <g>noch</g> morgen, sondern erst ab Montag.",
+      "en": "The <b>offer</b> is valid <g>neither</g> today <g>nor</g> tomorrow, but only from Monday.",
+      "uk": "<b>Пропозиція</b> діє <g>ні</g> сьогодні, <g>ні</g> завтра, а лише з понеділка.",
+      "ru": "<b>Предложение</b> действует <g>ни</g> сегодня, <g>ни</g> завтра, а только с понедельника."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k2_018",
+    "cat": "k2",
+    "term": {
+      "de": "der Vorrat",
+      "en": "stock, supply",
+      "uk": "запас",
+      "ru": "запас"
+    },
+    "short": {
+      "de": "eine Menge von etwas, die man zu Hause aufbewahrt, um es später zu benutzen",
+      "en": "a quantity of something you keep at home to use later",
+      "uk": "запас чогось, що зберігаєш вдома, щоб використати пізніше",
+      "ru": "запас чего-то, что хранишь дома, чтобы использовать позже"
+    },
+    "def": {
+      "de": "Wir haben <g>sowohl</g> einen großen <b>Vorrat</b> an Reis <g>als auch</g> an Nudeln zu Hause.",
+      "en": "We have <g>both</g> a large <b>supply</b> of rice <g>and</g> of pasta at home.",
+      "uk": "У нас вдома є <g>як</g> великий <b>запас</b> рису, <g>так і</g> макаронів.",
+      "ru": "У нас дома есть <g>как</g> большой <b>запас</b> риса, <g>так и</g> макарон."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k2_019",
+    "cat": "k2",
+    "term": {
+      "de": "frisch",
+      "en": "fresh",
+      "uk": "свіжий",
+      "ru": "свежий"
+    },
+    "short": {
+      "de": "wenn ein Lebensmittel noch neu und nicht alt ist",
+      "en": "when food is still new and not old",
+      "uk": "коли продукт ще новий і не старий",
+      "ru": "когда продукт ещё новый и не старый"
+    },
+    "def": {
+      "de": "Der Fisch auf dem Markt ist <g>weder</g> billig <g>noch</g> immer <b>frisch</b>.",
+      "en": "The fish at the market is <g>neither</g> cheap <g>nor</g> always <b>fresh</b>.",
+      "uk": "Риба на ринку <g>ні</g> дешева, <g>ні</g> завжди <b>свіжа</b>.",
+      "ru": "Рыба на рынке <g>ни</g> дешёвая, <g>ни</g> всегда <b>свежая</b>."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k2_020",
+    "cat": "k2",
+    "term": {
+      "de": "günstig",
+      "en": "cheap, good value",
+      "uk": "вигідний (за ціною)",
+      "ru": "выгодный (по цене)"
+    },
+    "short": {
+      "de": "wenn ein Preis niedrig und fair ist",
+      "en": "when a price is low and fair",
+      "uk": "коли ціна низька і справедлива",
+      "ru": "когда цена низкая и справедливая"
+    },
+    "def": {
+      "de": "Dieser Laden ist <g>sowohl</g> <b>günstig</b> <g>als auch</g> sehr freundlich zu den Kunden.",
+      "en": "This shop is <g>both</g> <b>affordable</b> <g>and</g> very friendly to its customers.",
+      "uk": "Цей магазин <g>як</g> <b>вигідний</b> за цінами, <g>так і</g> дуже привітний до клієнтів.",
+      "ru": "Этот магазин <g>как</g> <b>выгодный</b> по ценам, <g>так и</g> очень дружелюбный к клиентам."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k2_021",
+    "cat": "k2",
+    "term": {
+      "de": "die Kasse",
+      "en": "checkout, till",
+      "uk": "каса",
+      "ru": "касса"
+    },
+    "short": {
+      "de": "der Ort im Geschäft, wo man für die Ware bezahlt",
+      "en": "the place in a shop where you pay for the goods",
+      "uk": "місце в магазині, де оплачуєш товар",
+      "ru": "место в магазине, где оплачиваешь товар"
+    },
+    "def": {
+      "de": "An der <b>Kasse</b> gab es <g>weder</g> eine lange Schlange <g>noch</g> Probleme mit der Karte.",
+      "en": "At the <b>checkout</b>, there was <g>neither</g> a long queue <g>nor</g> any problems with the card.",
+      "uk": "На <b>касі</b> не було <g>ні</g> довгої черги, <g>ні</g> проблем із карткою.",
+      "ru": "На <b>кассе</b> не было <g>ни</g> длинной очереди, <g>ни</g> проблем с картой."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k2_022",
+    "cat": "k2",
+    "term": {
+      "de": "das Sonderangebot",
+      "en": "special offer",
+      "uk": "спеціальна пропозиція",
+      "ru": "специальное предложение"
+    },
+    "short": {
+      "de": "eine Ware, die für kurze Zeit besonders billig verkauft wird",
+      "en": "a product sold especially cheaply for a short time",
+      "uk": "товар, який на короткий час продається особливо дешево",
+      "ru": "товар, который на короткое время продаётся особенно дёшево"
+    },
+    "def": {
+      "de": "Das <b>Sonderangebot</b> gilt <g>sowohl</g> im Geschäft <g>als auch</g> im Onlineshop.",
+      "en": "The <b>special offer</b> is valid <g>both</g> in the shop <g>and</g> in the online store.",
+      "uk": "<b>Спеціальна пропозиція</b> діє <g>як</g> у магазині, <g>так і</g> в інтернет-магазині.",
+      "ru": "<b>Специальное предложение</b> действует <g>как</g> в магазине, <g>так и</g> в интернет-магазине."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k2_023",
+    "cat": "k2",
+    "term": {
+      "de": "die Marke",
+      "en": "brand",
+      "uk": "марка (бренд)",
+      "ru": "марка (бренд)"
+    },
+    "short": {
+      "de": "der Name einer Firma, der auf einem Produkt steht",
+      "en": "the name of a company that appears on a product",
+      "uk": "назва фірми, яка вказана на товарі",
+      "ru": "название фирмы, которое указано на товаре"
+    },
+    "def": {
+      "de": "Meine Tochter kauft <g>weder</g> diese <b>Marke</b> <g>noch</g> andere teure Marken.",
+      "en": "My daughter buys <g>neither</g> this <b>brand</b> <g>nor</g> other expensive brands.",
+      "uk": "Моя донька не купує <g>ні</g> цю <b>марку</b>, <g>ні</g> інші дорогі марки.",
+      "ru": "Моя дочь не покупает <g>ни</g> эту <b>марку</b>, <g>ни</g> другие дорогие марки."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k2_024",
+    "cat": "k2",
+    "term": {
+      "de": "sich entscheiden (für)",
+      "en": "to decide (on)",
+      "uk": "вирішувати, обирати",
+      "ru": "решать, выбирать"
+    },
+    "short": {
+      "de": "nach dem Nachdenken eine Wahl treffen",
+      "en": "to make a choice after thinking about it",
+      "uk": "робити вибір після роздумів",
+      "ru": "делать выбор после раздумий"
+    },
+    "def": {
+      "de": "Ich habe <g>mich</g> endlich für das rote Kleid <b>entschieden</b>.",
+      "en": "I have finally <b>decided</b> on the red dress.",
+      "uk": "Я нарешті <b>вирішив(-ла)</b> взяти червону сукню.",
+      "ru": "Я наконец <b>решил(-а)</b> взять красное платье."
+    },
+    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+  },
+  {
+    "id": "k2_025",
+    "cat": "k2",
+    "term": {
+      "de": "sich beeilen",
+      "en": "to hurry",
+      "uk": "поспішати",
+      "ru": "торопиться"
+    },
+    "short": {
+      "de": "schnell machen, weil man wenig Zeit hat",
+      "en": "to do something quickly because you have little time",
+      "uk": "робити щось швидко, бо мало часу",
+      "ru": "делать что-то быстро, потому что мало времени"
+    },
+    "def": {
+      "de": "Wir müssen <g>uns</g> <b>beeilen</b>, das Geschäft schließt in zehn Minuten.",
+      "en": "We have to <b>hurry</b>, the shop closes in ten minutes.",
+      "uk": "Нам треба <b>поспішити</b>, магазин зачиняється через десять хвилин.",
+      "ru": "Нам нужно <b>поторопиться</b>, магазин закрывается через десять минут."
+    },
+    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+  },
+  {
+    "id": "k2_026",
+    "cat": "k2",
+    "term": {
+      "de": "sich informieren (über)",
+      "en": "to find out (about)",
+      "uk": "дізнаватися (про)",
+      "ru": "узнавать (о)"
+    },
+    "short": {
+      "de": "Informationen über etwas suchen und lesen",
+      "en": "to look for and read information about something",
+      "uk": "шукати й читати інформацію про щось",
+      "ru": "искать и читать информацию о чём-то"
+    },
+    "def": {
+      "de": "Vor dem Kauf hat sie <g>sich</g> gut über das Produkt <b>informiert</b>.",
+      "en": "Before buying, she <b>informed</b> herself well about the product.",
+      "uk": "Перед покупкою вона добре <b>дізналася</b> про товар.",
+      "ru": "Перед покупкой она хорошо <b>разузнала</b> о товаре."
+    },
+    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+  },
+  {
+    "id": "k2_027",
+    "cat": "k2",
+    "term": {
+      "de": "sich ärgern (über)",
+      "en": "to get annoyed (about)",
+      "uk": "сердитися, дратуватися (через)",
+      "ru": "сердиться, раздражаться (из-за)"
+    },
+    "short": {
+      "de": "negative Gefühle haben, weil etwas nicht gut gelaufen ist",
+      "en": "to feel negative because something didn't go well",
+      "uk": "відчувати негативні емоції через те, що щось пішло не так",
+      "ru": "испытывать негативные эмоции из-за того, что что-то пошло не так"
+    },
+    "def": {
+      "de": "Er hat <g>sich</g> sehr über die hohen Preise <b>geärgert</b>.",
+      "en": "He got very <b>annoyed</b> about the high prices.",
+      "uk": "Він дуже <b>розсердився</b> через високі ціни.",
+      "ru": "Он очень <b>рассердился</b> из-за высоких цен."
+    },
+    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+  },
+  {
+    "id": "k2_028",
+    "cat": "k2",
+    "term": {
+      "de": "sich interessieren (für)",
+      "en": "to be interested (in)",
+      "uk": "цікавитися",
+      "ru": "интересоваться"
+    },
+    "short": {
+      "de": "etwas spannend finden und mehr darüber wissen wollen",
+      "en": "to find something exciting and want to know more about it",
+      "uk": "вважати щось цікавим і хотіти більше про це дізнатися",
+      "ru": "считать что-то интересным и хотеть больше об этом узнать"
+    },
+    "def": {
+      "de": "Meine Schwester <g>interessiert sich</g> sehr für nachhaltige Mode.",
+      "en": "My sister is very <b>interested</b> in sustainable fashion.",
+      "uk": "Моя сестра дуже <b>цікавиться</b> сталою модою.",
+      "ru": "Моя сестра очень <b>интересуется</b> устойчивой модой."
+    },
+    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+  },
+  {
+    "id": "k2_029",
+    "cat": "k2",
+    "term": {
+      "de": "sich freuen (auf)",
+      "en": "to look forward (to)",
+      "uk": "чекати (з радістю), тішитися",
+      "ru": "с радостью ждать, радоваться"
+    },
+    "short": {
+      "de": "eine positive, glückliche Erwartung von etwas haben, das noch kommt",
+      "en": "to feel positive and happy about something that is still to come",
+      "uk": "відчувати позитивне очікування чогось, що ще має статися",
+      "ru": "испытывать позитивное ожидание чего-то, что ещё должно произойти"
+    },
+    "def": {
+      "de": "Die Kinder <g>freuen sich</g> schon sehr auf das neue Spielzeug.",
+      "en": "The children are already really <b>looking forward</b> to the new toy.",
+      "uk": "Діти вже дуже <b>чекають</b> на нову іграшку.",
+      "ru": "Дети уже очень <b>ждут</b> новую игрушку."
+    },
+    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+  },
+  {
+    "id": "k2_030",
+    "cat": "k2",
+    "term": {
+      "de": "sich vorstellen",
+      "en": "to introduce oneself",
+      "uk": "представлятися",
+      "ru": "представляться"
+    },
+    "short": {
+      "de": "seinen eigenen Namen sagen, wenn man jemanden zum ersten Mal trifft",
+      "en": "to say your own name when you meet someone for the first time",
+      "uk": "називати своє імʼя, коли зустрічаєш когось вперше",
+      "ru": "называть своё имя, когда встречаешь кого-то впервые"
+    },
+    "def": {
+      "de": "Der neue Verkäufer hat <g>sich</g> allen Kollegen freundlich <b>vorgestellt</b>.",
+      "en": "The new salesperson <b>introduced</b> himself to all his colleagues in a friendly way.",
+      "uk": "Новий продавець привітно <b>представився</b> всім колегам.",
+      "ru": "Новый продавец дружелюбно <b>представился</b> всем коллегам."
+    },
+    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+  },
+  {
+    "id": "k2_031",
+    "cat": "k2",
+    "term": {
+      "de": "sich verabreden (mit)",
+      "en": "to arrange to meet",
+      "uk": "домовлятися про зустріч",
+      "ru": "договариваться о встрече"
+    },
+    "short": {
+      "de": "mit jemandem einen Termin ausmachen, um sich zu treffen",
+      "en": "to arrange a time with someone to meet",
+      "uk": "домовлятися з кимось про зустріч",
+      "ru": "договариваться с кем-то о встрече"
+    },
+    "def": {
+      "de": "Ich habe <g>mich</g> mit meiner Freundin zum Einkaufen <b>verabredet</b>.",
+      "en": "I have <b>arranged</b> to meet my friend to go shopping.",
+      "uk": "Я <b>домовився(-лась)</b> з подругою піти за покупками.",
+      "ru": "Я <b>договорился(-лась)</b> с подругой пойти по магазинам."
+    },
+    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+  },
+  {
+    "id": "k2_032",
+    "cat": "k2",
+    "term": {
+      "de": "der Irrtum",
+      "en": "mistake, error",
+      "uk": "помилка, непорозуміння",
+      "ru": "ошибка, недоразумение"
+    },
+    "short": {
+      "de": "wenn man etwas falsch verstanden oder falsch gemacht hat",
+      "en": "when you have misunderstood or done something wrong",
+      "uk": "коли ти щось неправильно зрозумів чи зробив",
+      "ru": "когда ты что-то неправильно понял или сделал"
+    },
+    "def": {
+      "de": "Das war kein Betrug, <g>sondern</g> ein einfacher <b>Irrtum</b>, <g>der</g> schnell aufgeklärt wurde.",
+      "en": "That was not fraud <g>but</g> a simple <b>mistake</b> <g>that</g> was quickly cleared up.",
+      "uk": "Це було не шахрайство, <g>а</g> проста <b>помилка</b>, <g>яка</g> швидко зʼясувалася.",
+      "ru": "Это было не мошенничество, <g>а</g> простая <b>ошибка</b>, <g>которая</g> быстро прояснилась."
+    },
+    "gram": "relativsatz_nominativ_sondern"
+  },
+  {
+    "id": "k2_033",
+    "cat": "k2",
+    "term": {
+      "de": "die Verwechslung",
+      "en": "mix-up, confusion",
+      "uk": "плутанина",
+      "ru": "путаница"
+    },
+    "short": {
+      "de": "wenn man zwei Dinge oder Personen versehentlich für dasselbe hält",
+      "en": "when you accidentally mistake two things or people for one another",
+      "uk": "коли ти випадково сплутав дві речі чи людини",
+      "ru": "когда ты случайно перепутал две вещи или человека"
+    },
+    "def": {
+      "de": "Es war kein Diebstahl, <g>sondern</g> nur eine <b>Verwechslung</b>, <g>die</g> sich schnell klären ließ.",
+      "en": "It was not theft <g>but</g> just a <b>mix-up</b> <g>that</g> could be quickly resolved.",
+      "uk": "Це була не крадіжка, <g>а</g> лише <b>плутанина</b>, <g>яка</g> швидко вирішилася.",
+      "ru": "Это была не кража, <g>а</g> лишь <b>путаница</b>, <g>которая</g> быстро разрешилась."
+    },
+    "gram": "relativsatz_nominativ_sondern"
+  },
+  {
+    "id": "k2_034",
+    "cat": "k2",
+    "term": {
+      "de": "beschädigt",
+      "en": "damaged",
+      "uk": "пошкоджений",
+      "ru": "повреждённый"
+    },
+    "short": {
+      "de": "wenn etwas kaputt oder nicht mehr ganz ist",
+      "en": "when something is broken or no longer whole",
+      "uk": "коли щось зламане або вже не ціле",
+      "ru": "когда что-то сломано или уже не целое"
+    },
+    "def": {
+      "de": "Es war kein normales Paket, <g>sondern</g> ein <b>beschädigtes</b> Paket, <g>das</g> sofort zurückgeschickt wurde.",
+      "en": "It was not a normal package <g>but</g> a <b>damaged</b> one <g>that</g> was sent back immediately.",
+      "uk": "Це була не звичайна посилка, <g>а</g> <b>пошкоджена</b> посилка, <g>яка</g> була одразу відправлена назад.",
+      "ru": "Это была не обычная посылка, <g>а</g> <b>повреждённая</b> посылка, <g>которая</g> была сразу отправлена обратно."
+    },
+    "gram": "relativsatz_nominativ_sondern"
+  },
+  {
+    "id": "k2_035",
+    "cat": "k2",
+    "term": {
+      "de": "der Ersatz",
+      "en": "replacement",
+      "uk": "заміна",
+      "ru": "замена"
+    },
+    "short": {
+      "de": "eine neue Sache, die man anstelle einer kaputten oder verlorenen Sache bekommt",
+      "en": "a new item you get instead of a broken or lost one",
+      "uk": "нова річ, яку отримуєш замість зламаної чи втраченої",
+      "ru": "новая вещь, которую получаешь вместо сломанной или утраченной"
+    },
+    "def": {
+      "de": "Das war kein Geschenk, <g>sondern</g> ein kostenloser <b>Ersatz</b>, <g>der</g> uns sofort zugeschickt wurde.",
+      "en": "That was not a gift <g>but</g> a free <b>replacement</b> <g>that</g> was sent to us immediately.",
+      "uk": "Це був не подарунок, <g>а</g> безкоштовна <b>заміна</b>, <g>яка</g> була нам одразу надіслана.",
+      "ru": "Это был не подарок, <g>а</g> бесплатная <b>замена</b>, <g>которая</g> была нам сразу отправлена."
+    },
+    "gram": "relativsatz_nominativ_sondern"
+  },
+  {
+    "id": "k2_036",
+    "cat": "k2",
+    "term": {
+      "de": "zurückschicken",
+      "en": "to send back",
+      "uk": "відправляти назад",
+      "ru": "отправлять обратно"
+    },
+    "short": {
+      "de": "eine Ware wieder an den Verkäufer schicken",
+      "en": "to send a product back to the seller",
+      "uk": "відправляти товар назад продавцю",
+      "ru": "отправлять товар обратно продавцу"
+    },
+    "def": {
+      "de": "Ich wollte die Schuhe, <g>die</g> leider zu klein waren, nicht behalten, <g>sondern</g> <b>zurückschicken</b>.",
+      "en": "I didn't want to keep the shoes, <g>which</g> were unfortunately too small, <g>but</g> <b>send</b> them <b>back</b>.",
+      "uk": "Я не хотів(-ла) залишати собі туфлі, <g>які</g>, на жаль, були замалі, <g>а</g> <b>відправити</b> їх назад.",
+      "ru": "Я не хотел(-а) оставлять себе туфли, <g>которые</g>, к сожалению, были малы, <g>а</g> <b>отправить</b> их обратно."
+    },
+    "gram": "relativsatz_nominativ_sondern"
+  },
+  {
+    "id": "k2_037",
+    "cat": "k2",
+    "term": {
+      "de": "reagieren (auf)",
+      "en": "to react (to)",
+      "uk": "реагувати (на)",
+      "ru": "реагировать (на)"
+    },
+    "short": {
+      "de": "auf etwas mit einer Handlung oder einem Gefühl antworten",
+      "en": "to respond to something with an action or a feeling",
+      "uk": "відповідати на щось дією чи почуттям",
+      "ru": "отвечать на что-то действием или чувством"
+    },
+    "def": {
+      "de": "Das war keine schnelle Antwort, <g>sondern</g> ein Kundenservice, <g>der</g> erst nach drei Tagen <b>reagiert</b> hat.",
+      "en": "That was not a quick reply <g>but</g> a customer service <g>that</g> only <b>reacted</b> after three days.",
+      "uk": "Це була не швидка відповідь, <g>а</g> служба підтримки, <g>яка</g> <b>відреагувала</b> лише через три дні.",
+      "ru": "Это был не быстрый ответ, <g>а</g> служба поддержки, <g>которая</g> <b>отреагировала</b> лишь через три дня."
+    },
+    "gram": "relativsatz_nominativ_sondern"
+  },
+  {
+    "id": "k2_038",
+    "cat": "k2",
+    "term": {
+      "de": "fehlen",
+      "en": "to be missing",
+      "uk": "бракувати, бути відсутнім",
+      "ru": "не хватать, отсутствовать"
+    },
+    "short": {
+      "de": "nicht da sein, obwohl es da sein sollte",
+      "en": "to not be there, although it should be",
+      "uk": "бути відсутнім, хоча має бути",
+      "ru": "отсутствовать, хотя должно быть"
+    },
+    "def": {
+      "de": "Das war kein normales Zubehör, <g>sondern</g> ein wichtiges Teil, <g>das</g> in der Packung <b>fehlte</b>.",
+      "en": "That was not just an accessory <g>but</g> an important part <g>that</g> was <b>missing</b> from the package.",
+      "uk": "Це був не просто аксесуар, <g>а</g> важлива деталь, <g>яка</g> <b>була відсутня</b> в упаковці.",
+      "ru": "Это был не просто аксессуар, <g>а</g> важная деталь, <g>которая</g> <b>отсутствовала</b> в упаковке."
+    },
+    "gram": "relativsatz_nominativ_sondern"
+  },
+  {
+    "id": "k2_039",
+    "cat": "k2",
+    "term": {
+      "de": "der Warenkorb",
+      "en": "shopping cart, basket",
+      "uk": "кошик (для покупок)",
+      "ru": "корзина (для покупок)"
+    },
+    "short": {
+      "de": "der Ort in einem Onlineshop, wo die ausgewählten Produkte gesammelt werden",
+      "en": "the place in an online shop where the selected products are collected",
+      "uk": "місце в інтернет-магазині, де збираються обрані товари",
+      "ru": "место в интернет-магазине, где собираются выбранные товары"
+    },
+    "def": {
+      "de": "Bevor du bezahlst, findest du alle Produkte in deinem <g><b>Warenkorb</b></g>.",
+      "en": "Before you pay, you will find all products in your <b>shopping cart</b>.",
+      "uk": "Перед оплатою всі товари можна знайти у своєму <b>кошику</b>.",
+      "ru": "Перед оплатой все товары можно найти в своей <b>корзине</b>."
+    },
+    "gram": "komposita_nomen_nomen"
+  },
+  {
+    "id": "k2_040",
+    "cat": "k2",
+    "term": {
+      "de": "die Versandkosten",
+      "en": "shipping costs",
+      "uk": "вартість доставки",
+      "ru": "стоимость доставки"
+    },
+    "short": {
+      "de": "das Geld, das man zusätzlich für den Versand einer Bestellung bezahlt",
+      "en": "the extra money you pay for shipping an order",
+      "uk": "додаткові гроші, які платиш за доставку замовлення",
+      "ru": "дополнительные деньги, которые платишь за доставку заказа"
+    },
+    "def": {
+      "de": "Ab einem Einkauf von fünfzig Euro sind die <g><b>Versandkosten</b></g> kostenlos.",
+      "en": "From a purchase of fifty euros, <b>shipping costs</b> are free.",
+      "uk": "Від суми покупки у пʼятдесят євро <b>вартість доставки</b> безкоштовна.",
+      "ru": "От суммы покупки в пятьдесят евро <b>стоимость доставки</b> бесплатна."
+    },
+    "gram": "komposita_nomen_nomen"
+  },
+  {
+    "id": "k2_041",
+    "cat": "k2",
+    "term": {
+      "de": "das Rückgaberecht",
+      "en": "right of return",
+      "uk": "право повернення",
+      "ru": "право возврата"
+    },
+    "short": {
+      "de": "das Recht, eine gekaufte Ware innerhalb einer bestimmten Zeit zurückzugeben",
+      "en": "the right to return a purchased item within a certain time",
+      "uk": "право повернути куплений товар протягом певного часу",
+      "ru": "право вернуть купленный товар в течение определённого времени"
+    },
+    "def": {
+      "de": "Das <g><b>Rückgaberecht</b></g> gilt für vierzehn Tage nach dem Kauf.",
+      "en": "The <b>right of return</b> applies for fourteen days after purchase.",
+      "uk": "<b>Право повернення</b> діє протягом чотирнадцяти днів після покупки.",
+      "ru": "<b>Право возврата</b> действует в течение четырнадцати дней после покупки."
+    },
+    "gram": "komposita_nomen_nomen"
+  },
+  {
+    "id": "k2_042",
+    "cat": "k2",
+    "term": {
+      "de": "die Bestellnummer",
+      "en": "order number",
+      "uk": "номер замовлення",
+      "ru": "номер заказа"
+    },
+    "short": {
+      "de": "eine Nummer, mit der man eine bestimmte Bestellung wiederfindet",
+      "en": "a number used to find a specific order again",
+      "uk": "номер, за яким можна знайти конкретне замовлення",
+      "ru": "номер, по которому можно найти конкретный заказ"
+    },
+    "def": {
+      "de": "Bitte geben Sie bei Fragen immer Ihre <g><b>Bestellnummer</b></g> an.",
+      "en": "Please always provide your <b>order number</b> when you have questions.",
+      "uk": "Будь ласка, завжди вказуйте свій <b>номер замовлення</b>, якщо маєте питання.",
+      "ru": "Пожалуйста, всегда указывайте свой <b>номер заказа</b>, если есть вопросы."
+    },
+    "gram": "komposita_nomen_nomen"
+  },
+  {
+    "id": "k2_043",
+    "cat": "k2",
+    "term": {
+      "de": "der Lieferschein",
+      "en": "delivery note",
+      "uk": "накладна",
+      "ru": "накладная"
+    },
+    "short": {
+      "de": "ein Papier, das mit der Ware kommt und zeigt, was geliefert wurde",
+      "en": "a piece of paper that comes with the goods and shows what was delivered",
+      "uk": "документ, який приходить разом із товаром і показує, що доставлено",
+      "ru": "документ, который приходит вместе с товаром и показывает, что доставлено"
+    },
+    "def": {
+      "de": "Auf dem <g><b>Lieferschein</b></g> stehen alle bestellten Artikel.",
+      "en": "All ordered items are listed on the <b>delivery note</b>.",
+      "uk": "У <b>накладній</b> вказані всі замовлені товари.",
+      "ru": "В <b>накладной</b> указаны все заказанные товары."
+    },
+    "gram": "komposita_nomen_nomen"
+  },
+  {
+    "id": "k2_044",
+    "cat": "k2",
+    "term": {
+      "de": "die Zahlungsart",
+      "en": "payment method",
+      "uk": "спосіб оплати",
+      "ru": "способ оплаты"
+    },
+    "short": {
+      "de": "die Art, wie man für etwas bezahlt, zum Beispiel mit Karte oder bar",
+      "en": "the way you pay for something, for example by card or cash",
+      "uk": "спосіб, яким платиш за щось, наприклад карткою чи готівкою",
+      "ru": "способ, которым платишь за что-то, например картой или наличными"
+    },
+    "def": {
+      "de": "Als <g><b>Zahlungsart</b></g> habe ich Kreditkarte gewählt.",
+      "en": "I chose credit card as my <b>payment method</b>.",
+      "uk": "Як <b>спосіб оплати</b> я обрав(-ла) кредитну картку.",
+      "ru": "В качестве <b>способа оплаты</b> я выбрал(-а) кредитную карту."
+    },
+    "gram": "komposita_nomen_nomen"
+  },
+  {
+    "id": "k2_045",
+    "cat": "k2",
+    "term": {
+      "de": "die Lieferzeit",
+      "en": "delivery time",
+      "uk": "термін доставки",
+      "ru": "срок доставки"
+    },
+    "short": {
+      "de": "die Zeit, die eine Bestellung braucht, um beim Kunden anzukommen",
+      "en": "the time an order needs to reach the customer",
+      "uk": "час, який потрібен замовленню, щоб дійти до клієнта",
+      "ru": "время, которое нужно заказу, чтобы дойти до клиента"
+    },
+    "def": {
+      "de": "Die <g><b>Lieferzeit</b></g> beträgt in diesem Onlineshop meistens drei bis fünf Tage.",
+      "en": "The <b>delivery time</b> in this online shop is usually three to five days.",
+      "uk": "<b>Термін доставки</b> в цьому інтернет-магазині зазвичай складає від трьох до пʼяти днів.",
+      "ru": "<b>Срок доставки</b> в этом интернет-магазине обычно составляет от трёх до пяти дней."
+    },
+    "gram": "komposita_nomen_nomen"
+  },
+  {
+    "id": "k2_046",
+    "cat": "k2",
+    "term": {
+      "de": "die Versandadresse",
+      "en": "shipping address",
+      "uk": "адреса доставки",
+      "ru": "адрес доставки"
+    },
+    "short": {
+      "de": "die Adresse, an die eine Bestellung geschickt werden soll",
+      "en": "the address to which an order should be sent",
+      "uk": "адреса, на яку має бути надіслане замовлення",
+      "ru": "адрес, на который должен быть отправлен заказ"
+    },
+    "def": {
+      "de": "Bitte überprüfen Sie Ihre <g><b>Versandadresse</b></g>, bevor Sie die Bestellung abschicken.",
+      "en": "Please check your <b>shipping address</b> before you submit the order.",
+      "uk": "Будь ласка, перевірте свою <b>адресу доставки</b>, перш ніж підтвердити замовлення.",
+      "ru": "Пожалуйста, проверьте свой <b>адрес доставки</b>, прежде чем подтвердить заказ."
+    },
+    "gram": "komposita_nomen_nomen"
+  },
+  {
+    "id": "k2_047",
+    "cat": "k2",
+    "term": {
+      "de": "die Frist",
+      "en": "deadline",
+      "uk": "термін, дедлайн",
+      "ru": "срок, дедлайн"
+    },
+    "short": {
+      "de": "der letzte Tag, an dem man etwas erledigen muss",
+      "en": "the last day by which you have to do something",
+      "uk": "останній день, коли потрібно щось зробити",
+      "ru": "последний день, когда нужно что-то сделать"
+    },
+    "def": {
+      "de": "Die <b>Frist</b>, <g>die</g> uns die Firma gegeben hat, ist schon nächste Woche.",
+      "en": "The <b>deadline</b> <g>that</g> the company gave us is already next week.",
+      "uk": "<b>Термін</b>, <g>який</g> дала нам компанія, вже наступного тижня.",
+      "ru": "<b>Срок</b>, <g>который</g> дала нам компания, уже на следующей неделе."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_048",
+    "cat": "k2",
+    "term": {
+      "de": "der Betrag",
+      "en": "amount, sum",
+      "uk": "сума",
+      "ru": "сумма"
+    },
+    "short": {
+      "de": "eine Menge Geld, zum Beispiel auf einer Rechnung",
+      "en": "an amount of money, for example on an invoice",
+      "uk": "кількість грошей, наприклад у рахунку",
+      "ru": "количество денег, например в счёте"
+    },
+    "def": {
+      "de": "Den <b>Betrag</b>, <g>den</g> ich überwiesen habe, hat die Firma leider noch nicht bekommen.",
+      "en": "The <b>amount</b> <g>that</g> I transferred has unfortunately not yet reached the company.",
+      "uk": "<b>Суму</b>, <g>яку</g> я перерахував(-ла), компанія, на жаль, ще не отримала.",
+      "ru": "<b>Сумму</b>, <g>которую</g> я перевёл(-а), компания, к сожалению, ещё не получила."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_049",
+    "cat": "k2",
+    "term": {
+      "de": "die Überweisung",
+      "en": "bank transfer",
+      "uk": "банківський переказ",
+      "ru": "банковский перевод"
+    },
+    "short": {
+      "de": "wenn man Geld von einem Bankkonto auf ein anderes schickt",
+      "en": "when you send money from one bank account to another",
+      "uk": "коли переказуєш гроші з одного банківського рахунку на інший",
+      "ru": "когда переводишь деньги с одного банковского счёта на другой"
+    },
+    "def": {
+      "de": "Die <b>Überweisung</b>, <g>die</g> ich gestern gemacht habe, dauert meistens zwei Tage.",
+      "en": "The <b>bank transfer</b> <g>that</g> I made yesterday usually takes two days.",
+      "uk": "<b>Банківський переказ</b>, <g>який</g> я зробив(-ла) вчора, зазвичай триває два дні.",
+      "ru": "<b>Банковский перевод</b>, <g>который</g> я сделал(-а) вчера, обычно занимает два дня."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_050",
+    "cat": "k2",
+    "term": {
+      "de": "das Konto",
+      "en": "account",
+      "uk": "рахунок (банківський)",
+      "ru": "счёт (банковский)"
+    },
+    "short": {
+      "de": "der Ort bei einer Bank, wo man sein Geld aufbewahrt",
+      "en": "the place at a bank where you keep your money",
+      "uk": "місце в банку, де зберігаються твої гроші",
+      "ru": "место в банке, где хранятся твои деньги"
+    },
+    "def": {
+      "de": "Das <b>Konto</b>, <g>das</g> ich vor einem Jahr eröffnet habe, nutze ich fast jeden Tag.",
+      "en": "The <b>account</b> <g>that</g> I opened a year ago, I use almost every day.",
+      "uk": "<b>Рахунок</b>, <g>який</g> я відкрив(-ла) рік тому, я використовую майже щодня.",
+      "ru": "<b>Счёт</b>, <g>который</g> я открыл(-а) год назад, я использую почти каждый день."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_051",
+    "cat": "k2",
+    "term": {
+      "de": "die Gebühr",
+      "en": "fee",
+      "uk": "комісія, збір",
+      "ru": "комиссия, сбор"
+    },
+    "short": {
+      "de": "ein Geldbetrag, den man für eine Leistung bezahlen muss",
+      "en": "an amount of money you have to pay for a service",
+      "uk": "сума грошей, яку потрібно заплатити за послугу",
+      "ru": "сумма денег, которую нужно заплатить за услугу"
+    },
+    "def": {
+      "de": "Die <b>Gebühr</b>, <g>die</g> die Bank für die Überweisung verlangt, finde ich sehr hoch.",
+      "en": "I find the <b>fee</b> <g>that</g> the bank charges for the transfer very high.",
+      "uk": "<b>Комісія</b>, <g>яку</g> вимагає банк за переказ, здається мені дуже високою.",
+      "ru": "<b>Комиссия</b>, <g>которую</g> требует банк за перевод, кажется мне очень высокой."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_052",
+    "cat": "k2",
+    "term": {
+      "de": "der Vertrag",
+      "en": "contract",
+      "uk": "договір",
+      "ru": "договор"
+    },
+    "short": {
+      "de": "ein offizielles Dokument, das zeigt, was zwei Seiten vereinbart haben",
+      "en": "an official document that shows what two parties have agreed on",
+      "uk": "офіційний документ, який показує, про що домовилися дві сторони",
+      "ru": "официальный документ, который показывает, о чём договорились две стороны"
+    },
+    "def": {
+      "de": "Den <b>Vertrag</b>, <g>den</g> ich letzte Woche unterschrieben habe, muss ich noch einmal genau lesen.",
+      "en": "I still need to read the <b>contract</b> <g>that</g> I signed last week very carefully again.",
+      "uk": "<b>Договір</b>, <g>який</g> я підписав(-ла) минулого тижня, мені треба ще раз уважно прочитати.",
+      "ru": "<b>Договор</b>, <g>который</g> я подписал(-а) на прошлой неделе, мне нужно ещё раз внимательно прочитать."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_053",
+    "cat": "k2",
+    "term": {
+      "de": "erinnern (an)",
+      "en": "to remind (of)",
+      "uk": "нагадувати (про)",
+      "ru": "напоминать (о)"
+    },
+    "short": {
+      "de": "jemandem sagen, dass er/sie an etwas denken soll",
+      "en": "to tell someone to think of something",
+      "uk": "казати комусь, щоб він/вона про щось не забув(-ла)",
+      "ru": "говорить кому-то, чтобы он/она не забыл(-а) о чём-то"
+    },
+    "def": {
+      "de": "Die E-Mail, <g>die</g> ich heute Morgen bekommen habe, hat mich an die Zahlung <b>erinnert</b>.",
+      "en": "The email <g>that</g> I received this morning <b>reminded</b> me of the payment.",
+      "uk": "Лист, <g>який</g> я отримав(-ла) сьогодні вранці, <b>нагадав</b> мені про оплату.",
+      "ru": "Письмо, <g>которое</g> я получил(-а) сегодня утром, <b>напомнило</b> мне об оплате."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_054",
+    "cat": "k2",
+    "term": {
+      "de": "der Preisvergleich",
+      "en": "price comparison",
+      "uk": "порівняння цін",
+      "ru": "сравнение цен"
+    },
+    "short": {
+      "de": "wenn man die Preise von verschiedenen Geschäften vergleicht",
+      "en": "when you compare the prices of different shops",
+      "uk": "коли порівнюєш ціни різних магазинів",
+      "ru": "когда сравниваешь цены разных магазинов"
+    },
+    "def": {
+      "de": "Den <b>Preisvergleich</b>, <g>den</g> ich online gemacht habe, hat mir viel Geld gespart.",
+      "en": "The <b>price comparison</b> <g>that</g> I did online saved me a lot of money.",
+      "uk": "<b>Порівняння цін</b>, <g>яке</g> я зробив(-ла) онлайн, заощадило мені багато грошей.",
+      "ru": "<b>Сравнение цен</b>, <g>которое</g> я сделал(-а) онлайн, сэкономило мне много денег."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_055",
+    "cat": "k2",
+    "term": {
+      "de": "sparen",
+      "en": "to save (money)",
+      "uk": "економити",
+      "ru": "экономить"
+    },
+    "short": {
+      "de": "weniger Geld ausgeben oder Geld für später aufbewahren",
+      "en": "to spend less money or keep money for later",
+      "uk": "витрачати менше грошей або відкладати гроші на потім",
+      "ru": "тратить меньше денег или откладывать деньги на потом"
+    },
+    "def": {
+      "de": "Das Geld, <g>das</g> wir durch den Rabatt <b>gespart</b> haben, legen wir zur Seite.",
+      "en": "We put aside the money <g>that</g> we <b>saved</b> through the discount.",
+      "uk": "Гроші, <g>які</g> ми <b>заощадили</b> завдяки знижці, ми відкладаємо.",
+      "ru": "Деньги, <g>которые</g> мы <b>сэкономили</b> благодаря скидке, мы откладываем."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_056",
+    "cat": "k2",
+    "term": {
+      "de": "die Qualität",
+      "en": "quality",
+      "uk": "якість",
+      "ru": "качество"
+    },
+    "short": {
+      "de": "wie gut oder schlecht ein Produkt gemacht ist",
+      "en": "how well or badly a product is made",
+      "uk": "наскільки добре чи погано зроблений товар",
+      "ru": "насколько хорошо или плохо сделан товар"
+    },
+    "def": {
+      "de": "Die <b>Qualität</b>, <g>die</g> wir bei diesem Produkt erwartet haben, haben wir leider nicht bekommen.",
+      "en": "We unfortunately didn't get the <b>quality</b> <g>that</g> we expected from this product.",
+      "uk": "<b>Якість</b>, <g>яку</g> ми очікували від цього товару, ми, на жаль, не отримали.",
+      "ru": "<b>Качество</b>, <g>которое</g> мы ожидали от этого товара, мы, к сожалению, не получили."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_057",
+    "cat": "k2",
+    "term": {
+      "de": "vergleichen",
+      "en": "to compare",
+      "uk": "порівнювати",
+      "ru": "сравнивать"
+    },
+    "short": {
+      "de": "zwei oder mehr Dinge nebeneinanderstellen, um Unterschiede zu sehen",
+      "en": "to put two or more things side by side to see the differences",
+      "uk": "ставити поряд дві чи більше речей, щоб побачити різницю",
+      "ru": "ставить рядом две или более вещи, чтобы увидеть разницу"
+    },
+    "def": {
+      "de": "Die zwei Angebote, <g>die</g> ich <b>verglichen</b> habe, waren fast gleich teuer.",
+      "en": "The two offers <g>that</g> I <b>compared</b> were almost equally expensive.",
+      "uk": "Дві пропозиції, <g>які</g> я <b>порівняв(-ла)</b>, коштували майже однаково.",
+      "ru": "Два предложения, <g>которые</g> я <b>сравнил(-а)</b>, стоили почти одинаково."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_058",
+    "cat": "k2",
+    "term": {
+      "de": "der Testbericht",
+      "en": "test report, review",
+      "uk": "тестовий звіт, огляд",
+      "ru": "тестовый отчёт, обзор"
+    },
+    "short": {
+      "de": "ein Text, der zeigt, wie gut ein Produkt in einem Test war",
+      "en": "a text that shows how well a product performed in a test",
+      "uk": "текст, який показує, наскільки добре товар показав себе в тесті",
+      "ru": "текст, который показывает, насколько хорошо товар показал себя в тесте"
+    },
+    "def": {
+      "de": "Den <b>Testbericht</b>, <g>den</g> ich gelesen habe, fand ich sehr hilfreich.",
+      "en": "I found the <b>test report</b> <g>that</g> I read very helpful.",
+      "uk": "<b>Тестовий звіт</b>, <g>який</g> я прочитав(-ла), здався мені дуже корисним.",
+      "ru": "<b>Тестовый отчёт</b>, <g>который</g> я прочитал(-а), показался мне очень полезным."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_059",
+    "cat": "k2",
+    "term": {
+      "de": "reduziert",
+      "en": "reduced, discounted",
+      "uk": "уцінений, зі знижкою",
+      "ru": "уценённый, со скидкой"
+    },
+    "short": {
+      "de": "wenn ein Preis niedriger als normal ist",
+      "en": "when a price is lower than usual",
+      "uk": "коли ціна нижча за звичайну",
+      "ru": "когда цена ниже обычной"
+    },
+    "def": {
+      "de": "Die Jacke, <g>die</g> ich gekauft habe, war stark <b>reduziert</b>.",
+      "en": "The jacket <g>that</g> I bought was heavily <b>discounted</b>.",
+      "uk": "Куртка, <g>яку</g> я купив(-ла), була значно <b>уцінена</b>.",
+      "ru": "Куртка, <g>которую</g> я купил(-а), была значительно <b>уценена</b>."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
+    "id": "k2_060",
+    "cat": "k2",
+    "term": {
+      "de": "sich lohnen",
+      "en": "to be worth it",
+      "uk": "бути вартим, окупатися",
+      "ru": "стоить того, окупаться"
+    },
+    "short": {
+      "de": "wenn der Nutzen von etwas größer ist als der Aufwand oder die Kosten",
+      "en": "when the benefit of something is greater than the effort or cost",
+      "uk": "коли користь від чогось більша, ніж витрати чи зусилля",
+      "ru": "когда польза от чего-то больше, чем затраты или усилия"
+    },
+    "def": {
+      "de": "Der Preisvergleich, <g>den</g> ich gemacht habe, hat sich wirklich <b>gelohnt</b>.",
+      "en": "The price comparison <g>that</g> I did was really <b>worth it</b>.",
+      "uk": "Порівняння цін, <g>яке</g> я зробив(-ла), справді <b>окупилося</b>.",
+      "ru": "Сравнение цен, <g>которое</g> я сделал(-а), действительно <b>окупилось</b>."
+    },
+    "gram": "relativsatz_akkusativ_b1"
+  },
+  {
     "id": "k3_001",
     "cat": "k3",
     "term": {
@@ -5505,6 +6675,1041 @@ var VOCAB = [
     "gram": "konnektoren_wdh_b1"
   },
   {
+    "id": "k3_016",
+    "cat": "k3",
+    "term": {
+      "de": "die Kontonummer",
+      "en": "account number",
+      "uk": "номер рахунку",
+      "ru": "номер счёта"
+    },
+    "short": {
+      "de": "eine Zahl, die ein Bankkonto eindeutig identifiziert",
+      "en": "a number that uniquely identifies a bank account",
+      "uk": "число, яке однозначно ідентифікує банківський рахунок",
+      "ru": "число, которое однозначно идентифицирует банковский счёт"
+    },
+    "def": {
+      "de": "Die <b>Kontonummer</b> <g>müsste</g> auf der Rückseite der Karte stehen.",
+      "en": "The <b>account number</b> <g>should</g> be on the back of the card.",
+      "uk": "<b>Номер рахунку</b>, <g>мабуть</g>, вказаний на звороті картки.",
+      "ru": "<b>Номер счёта</b>, <g>наверное</g>, указан на обратной стороне карты."
+    },
+    "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "k3_017",
+    "cat": "k3",
+    "term": {
+      "de": "der Kontostand",
+      "en": "account balance",
+      "uk": "баланс рахунку",
+      "ru": "баланс счёта"
+    },
+    "short": {
+      "de": "die Menge Geld, die gerade auf einem Konto ist",
+      "en": "the amount of money currently in an account",
+      "uk": "кількість грошей, яка зараз є на рахунку",
+      "ru": "количество денег, которое сейчас есть на счёте"
+    },
+    "def": {
+      "de": "Der <b>Kontostand</b> <g>dürfte</g> nach dem Einkauf ziemlich niedrig sein.",
+      "en": "The <b>account balance</b> is <g>probably</g> quite low after the shopping trip.",
+      "uk": "<b>Баланс рахунку</b>, <g>ймовірно</g>, досить низький після покупок.",
+      "ru": "<b>Баланс счёта</b>, <g>вероятно</g>, довольно низкий после покупок."
+    },
+    "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "k3_018",
+    "cat": "k3",
+    "term": {
+      "de": "abheben (Geld)",
+      "en": "to withdraw (money)",
+      "uk": "знімати (гроші)",
+      "ru": "снимать (деньги)"
+    },
+    "short": {
+      "de": "Geld vom eigenen Bankkonto nehmen, zum Beispiel am Automaten",
+      "en": "to take money out of your own bank account, for example at a machine",
+      "uk": "знімати гроші зі свого банківського рахунку, наприклад у банкоматі",
+      "ru": "снимать деньги со своего банковского счёта, например в банкомате"
+    },
+    "def": {
+      "de": "Er <g>könnte</g> schon Geld am Automaten <b>abgehoben</b> haben.",
+      "en": "He <g>could</g> have already <b>withdrawn</b> money at the cash machine.",
+      "uk": "Він, <g>можливо</g>, уже <b>зняв</b> гроші в банкоматі.",
+      "ru": "Он, <g>возможно</g>, уже <b>снял</b> деньги в банкомате."
+    },
+    "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "k3_019",
+    "cat": "k3",
+    "term": {
+      "de": "einzahlen",
+      "en": "to deposit",
+      "uk": "вносити (гроші)",
+      "ru": "вносить (деньги)"
+    },
+    "short": {
+      "de": "Geld auf ein Bankkonto bringen",
+      "en": "to put money into a bank account",
+      "uk": "класти гроші на банківський рахунок",
+      "ru": "класть деньги на банковский счёт"
+    },
+    "def": {
+      "de": "Frau Nowak <g>müsste</g> das Geld schon <b>eingezahlt</b> haben, sie war heute Morgen bei der Bank.",
+      "en": "Mrs Nowak <g>must</g> have already <b>deposited</b> the money, she was at the bank this morning.",
+      "uk": "Пані Новак, <g>напевно</g>, уже <b>внесла</b> гроші, вона сьогодні вранці була в банку.",
+      "ru": "Госпожа Новак, <g>наверное</g>, уже <b>внесла</b> деньги, она сегодня утром была в банке."
+    },
+    "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "k3_020",
+    "cat": "k3",
+    "term": {
+      "de": "die Bankfiliale",
+      "en": "bank branch",
+      "uk": "відділення банку",
+      "ru": "отделение банка"
+    },
+    "short": {
+      "de": "ein Gebäude einer Bank, in das man persönlich gehen kann",
+      "en": "a building of a bank that you can visit in person",
+      "uk": "приміщення банку, куди можна прийти особисто",
+      "ru": "помещение банка, куда можно прийти лично"
+    },
+    "def": {
+      "de": "Die <b>Bankfiliale</b> in der Innenstadt <g>dürfte</g> um achtzehn Uhr schließen.",
+      "en": "The <b>bank branch</b> in the city centre <g>probably</g> closes at six p.m.",
+      "uk": "<b>Відділення банку</b> в центрі міста, <g>ймовірно</g>, зачиняється о шостій вечора.",
+      "ru": "<b>Отделение банка</b> в центре города, <g>вероятно</g>, закрывается в шесть вечера."
+    },
+    "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "k3_021",
+    "cat": "k3",
+    "term": {
+      "de": "das Online-Banking",
+      "en": "online banking",
+      "uk": "онлайн-банкінг",
+      "ru": "онлайн-банкинг"
+    },
+    "short": {
+      "de": "wenn man seine Bankgeschäfte über das Internet erledigt",
+      "en": "when you do your banking over the internet",
+      "uk": "коли банківські операції виконуєш через інтернет",
+      "ru": "когда банковские операции выполняешь через интернет"
+    },
+    "def": {
+      "de": "Mit <b>Online-Banking</b> <g>könnte</g> das Ganze viel schneller gehen.",
+      "en": "With <b>online banking</b>, the whole thing <g>could</g> go much faster.",
+      "uk": "З <b>онлайн-банкінгом</b> усе, <g>можливо</g>, пройде набагато швидше.",
+      "ru": "С <b>онлайн-банкингом</b> всё, <g>возможно</g>, пройдёт намного быстрее."
+    },
+    "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "k3_022",
+    "cat": "k3",
+    "term": {
+      "de": "die Geheimzahl",
+      "en": "PIN",
+      "uk": "PIN-код",
+      "ru": "ПИН-код"
+    },
+    "short": {
+      "de": "eine geheime Zahl, mit der man am Automaten Geld bekommt",
+      "en": "a secret number you use to get money at a cash machine",
+      "uk": "секретний код, за яким отримуєш гроші в банкоматі",
+      "ru": "секретный код, по которому получаешь деньги в банкомате"
+    },
+    "def": {
+      "de": "Er <g>müsste</g> seine <b>Geheimzahl</b> vergessen haben, er versucht es schon zum dritten Mal.",
+      "en": "He <g>must</g> have forgotten his <b>PIN</b>, he's already trying for the third time.",
+      "uk": "Він, <g>напевно</g>, забув свій <b>PIN-код</b>, він уже втретє намагається його ввести.",
+      "ru": "Он, <g>наверное</g>, забыл свой <b>ПИН-код</b>, он уже в третий раз пытается его ввести."
+    },
+    "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "k3_023",
+    "cat": "k3",
+    "term": {
+      "de": "gültig",
+      "en": "valid",
+      "uk": "дійсний, чинний",
+      "ru": "действительный"
+    },
+    "short": {
+      "de": "wenn ein Dokument oder eine Karte noch benutzt werden darf",
+      "en": "when a document or card may still be used",
+      "uk": "коли документ чи картка ще можуть використовуватися",
+      "ru": "когда документ или карта ещё могут использоваться"
+    },
+    "def": {
+      "de": "Die alte Karte <g>dürfte</g> nicht mehr <b>gültig</b> sein.",
+      "en": "The old card is <g>probably</g> no longer <b>valid</b>.",
+      "uk": "Стара картка, <g>ймовірно</g>, уже не <b>дійсна</b>.",
+      "ru": "Старая карта, <g>вероятно</g>, уже не <b>действительна</b>."
+    },
+    "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "k3_024",
+    "cat": "k3",
+    "term": {
+      "de": "der Kontoauszug",
+      "en": "bank statement",
+      "uk": "виписка з рахунку",
+      "ru": "выписка со счёта"
+    },
+    "short": {
+      "de": "ein Papier oder eine Datei, die alle Bewegungen auf einem Konto zeigt",
+      "en": "a document that shows all transactions on an account",
+      "uk": "документ, який показує всі рухи коштів на рахунку",
+      "ru": "документ, который показывает все движения средств на счёте"
+    },
+    "def": {
+      "de": "Die letzte Seite <g>des</g> <b>Kontoauszugs</b> zeigt den aktuellen Kontostand.",
+      "en": "The last page <g>of the</g> <b>bank statement</b> shows the current balance.",
+      "uk": "Остання сторінка <b>виписки з рахунку</b> показує актуальний баланс.",
+      "ru": "Последняя страница <b>выписки со счёта</b> показывает актуальный баланс."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_025",
+    "cat": "k3",
+    "term": {
+      "de": "der Kunde / die Kundin",
+      "en": "customer",
+      "uk": "клієнт / клієнтка",
+      "ru": "клиент / клиентка"
+    },
+    "short": {
+      "de": "eine Person, die bei einer Firma etwas kauft oder einen Service nutzt",
+      "en": "a person who buys something or uses a service from a company",
+      "uk": "людина, яка купує щось або користується послугою фірми",
+      "ru": "человек, который покупает что-то или пользуется услугой фирмы"
+    },
+    "def": {
+      "de": "Die Zufriedenheit <g>des</g> <b>Kunden</b> ist der Bank sehr wichtig.",
+      "en": "The satisfaction <g>of the</g> <b>customer</b> is very important to the bank.",
+      "uk": "Задоволеність <b>клієнта</b> дуже важлива для банку.",
+      "ru": "Удовлетворённость <b>клиента</b> очень важна для банка."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_026",
+    "cat": "k3",
+    "term": {
+      "de": "der Dispokredit",
+      "en": "overdraft facility",
+      "uk": "кредитний ліміт",
+      "ru": "кредитный лимит"
+    },
+    "short": {
+      "de": "ein kleiner Kredit, der erlaubt, mehr Geld auszugeben, als auf dem Konto ist",
+      "en": "a small loan that allows you to spend more money than is in your account",
+      "uk": "невеликий кредит, який дозволяє витрачати більше грошей, ніж є на рахунку",
+      "ru": "небольшой кредит, который позволяет тратить больше денег, чем есть на счёте"
+    },
+    "def": {
+      "de": "Die Zinsen <g>des</g> <b>Dispokredits</b> sind bei dieser Bank leider sehr hoch.",
+      "en": "The interest <g>of the</g> <b>overdraft facility</b> is unfortunately very high at this bank.",
+      "uk": "Відсотки за <b>кредитним лімітом</b> у цьому банку, на жаль, дуже високі.",
+      "ru": "Проценты по <b>кредитному лимиту</b> в этом банке, к сожалению, очень высокие."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_027",
+    "cat": "k3",
+    "term": {
+      "de": "die Zinsen",
+      "en": "interest",
+      "uk": "відсотки",
+      "ru": "проценты"
+    },
+    "short": {
+      "de": "das zusätzliche Geld, das man für gespartes oder geliehenes Geld bekommt oder bezahlt",
+      "en": "the extra money you receive or pay for money saved or borrowed",
+      "uk": "додаткові гроші, які отримуєш чи платиш за заощаджені чи позичені гроші",
+      "ru": "дополнительные деньги, которые получаешь или платишь за сбережённые или занятые деньги"
+    },
+    "def": {
+      "de": "Die Höhe <g>der</g> <b>Zinsen</b> hängt von der Bank und der Kontoart ab.",
+      "en": "The level <g>of the</g> <b>interest</b> depends on the bank and the type of account.",
+      "uk": "Розмір <b>відсотків</b> залежить від банку та типу рахунку.",
+      "ru": "Размер <b>процентов</b> зависит от банка и типа счёта."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_028",
+    "cat": "k3",
+    "term": {
+      "de": "das Sparbuch",
+      "en": "savings book",
+      "uk": "ощадна книжка",
+      "ru": "сберегательная книжка"
+    },
+    "short": {
+      "de": "ein kleines Buch oder Konto, mit dem man Geld spart",
+      "en": "a small book or account you use to save money",
+      "uk": "невелика книжка чи рахунок, на якому заощаджуєш гроші",
+      "ru": "небольшая книжка или счёт, на котором сберегаешь деньги"
+    },
+    "def": {
+      "de": "Der Wert <g>des</g> <b>Sparbuchs</b> ist in den letzten Jahren nur langsam gestiegen.",
+      "en": "The value <g>of the</g> <b>savings book</b> has only risen slowly in recent years.",
+      "uk": "Вартість <b>ощадної книжки</b> за останні роки зростала лише повільно.",
+      "ru": "Стоимость <b>сберегательной книжки</b> за последние годы росла лишь медленно."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_029",
+    "cat": "k3",
+    "term": {
+      "de": "die Kreditkarte",
+      "en": "credit card",
+      "uk": "кредитна картка",
+      "ru": "кредитная карта"
+    },
+    "short": {
+      "de": "eine Karte, mit der man bezahlen kann, ohne sofort Geld vom Konto zu nehmen",
+      "en": "a card you can use to pay without immediately taking money from your account",
+      "uk": "картка, якою можна платити, не знімаючи одразу гроші з рахунку",
+      "ru": "карта, которой можно платить, не снимая сразу деньги со счёта"
+    },
+    "def": {
+      "de": "Die Gültigkeit <g>der</g> <b>Kreditkarte</b> endet in zwei Monaten.",
+      "en": "The validity <g>of the</g> <b>credit card</b> ends in two months.",
+      "uk": "Термін дії <b>кредитної картки</b> закінчується через два місяці.",
+      "ru": "Срок действия <b>кредитной карты</b> заканчивается через два месяца."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_030",
+    "cat": "k3",
+    "term": {
+      "de": "die Bankkarte",
+      "en": "bank card, debit card",
+      "uk": "банківська картка",
+      "ru": "банковская карта"
+    },
+    "short": {
+      "de": "eine Karte von der eigenen Bank, mit der man bezahlt und Geld abhebt",
+      "en": "a card from your own bank that you use to pay and withdraw money",
+      "uk": "картка власного банку, якою платиш і знімаєш гроші",
+      "ru": "карта своего банка, которой платишь и снимаешь деньги"
+    },
+    "def": {
+      "de": "Die Rückseite <g>der</g> <b>Bankkarte</b> zeigt die Nummer für den Sperrnotruf.",
+      "en": "The back <g>of the</g> <b>bank card</b> shows the number for the emergency blocking hotline.",
+      "uk": "На звороті <b>банківської картки</b> вказаний номер гарячої лінії для блокування.",
+      "ru": "На обратной стороне <b>банковской карты</b> указан номер горячей линии для блокировки."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_031",
+    "cat": "k3",
+    "term": {
+      "de": "die Kontogebühr",
+      "en": "account fee",
+      "uk": "плата за рахунок",
+      "ru": "плата за счёт"
+    },
+    "short": {
+      "de": "das Geld, das man der Bank für die Nutzung des Kontos bezahlt",
+      "en": "the money you pay the bank for using the account",
+      "uk": "гроші, які платиш банку за користування рахунком",
+      "ru": "деньги, которые платишь банку за пользование счётом"
+    },
+    "def": {
+      "de": "Die Höhe <g>der</g> <b>Kontogebühr</b> ist von Bank zu Bank sehr unterschiedlich.",
+      "en": "The amount <g>of the</g> <b>account fee</b> varies a lot from bank to bank.",
+      "uk": "Розмір <b>плати за рахунок</b> дуже відрізняється від банку до банку.",
+      "ru": "Размер <b>платы за счёт</b> сильно отличается от банка к банку."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_032",
+    "cat": "k3",
+    "term": {
+      "de": "der Diebstahl",
+      "en": "theft",
+      "uk": "крадіжка",
+      "ru": "кража"
+    },
+    "short": {
+      "de": "wenn jemand etwas nimmt, das ihm nicht gehört",
+      "en": "when someone takes something that doesn't belong to them",
+      "uk": "коли хтось бере щось, що йому не належить",
+      "ru": "когда кто-то берёт что-то, что ему не принадлежит"
+    },
+    "def": {
+      "de": "Der Verdacht <g>des</g> <b>Diebstahls</b> hat sich zum Glück nicht bestätigt.",
+      "en": "The suspicion <g>of</g> <b>theft</b> luckily was not confirmed.",
+      "uk": "Підозра у <b>крадіжці</b>, на щастя, не підтвердилася.",
+      "ru": "Подозрение в <b>краже</b>, к счастью, не подтвердилось."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_033",
+    "cat": "k3",
+    "term": {
+      "de": "verlieren",
+      "en": "to lose",
+      "uk": "губити, втрачати",
+      "ru": "терять"
+    },
+    "short": {
+      "de": "etwas nicht mehr finden können, weil man nicht weiß, wo es ist",
+      "en": "to no longer be able to find something because you don't know where it is",
+      "uk": "не могти знайти щось, бо не знаєш, де воно",
+      "ru": "не мочь найти что-то, потому что не знаешь, где оно"
+    },
+    "def": {
+      "de": "Der Ärger <g>des</g> <b>Verlierens</b> der Karte war groß, aber die Bank half schnell.",
+      "en": "The frustration <g>of</g> <b>losing</b> the card was big, but the bank helped quickly.",
+      "uk": "Прикрість через <b>втрату</b> картки була великою, але банк швидко допоміг.",
+      "ru": "Досада из-за <b>потери</b> карты была большой, но банк быстро помог."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_034",
+    "cat": "k3",
+    "term": {
+      "de": "stehlen",
+      "en": "to steal",
+      "uk": "красти",
+      "ru": "красть"
+    },
+    "short": {
+      "de": "etwas nehmen, das einer anderen Person gehört, ohne zu fragen",
+      "en": "to take something that belongs to another person without asking",
+      "uk": "брати щось, що належить іншій людині, без дозволу",
+      "ru": "брать что-то, что принадлежит другому человеку, без разрешения"
+    },
+    "def": {
+      "de": "Die Folgen <g>des</g> <b>Stehlens</b> der Karte spürte sie erst am nächsten Tag.",
+      "en": "She only felt the consequences <g>of</g> the card being <b>stolen</b> the next day.",
+      "uk": "Наслідки <b>крадіжки</b> картки вона відчула лише наступного дня.",
+      "ru": "Последствия <b>кражи</b> карты она почувствовала только на следующий день."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_035",
+    "cat": "k3",
+    "term": {
+      "de": "die Anzeige",
+      "en": "police report",
+      "uk": "заява (в поліцію)",
+      "ru": "заявление (в полицию)"
+    },
+    "short": {
+      "de": "eine offizielle Meldung bei der Polizei über ein Verbrechen",
+      "en": "an official report to the police about a crime",
+      "uk": "офіційне повідомлення поліції про злочин",
+      "ru": "официальное сообщение в полицию о преступлении"
+    },
+    "def": {
+      "de": "Der Text <g>der</g> <b>Anzeige</b> musste sehr genau geschrieben werden.",
+      "en": "The text <g>of the</g> police <b>report</b> had to be written very precisely.",
+      "uk": "Текст <b>заяви</b> в поліцію потрібно було написати дуже точно.",
+      "ru": "Текст <b>заявления</b> в полицию нужно было написать очень точно."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_036",
+    "cat": "k3",
+    "term": {
+      "de": "die Polizei",
+      "en": "police",
+      "uk": "поліція",
+      "ru": "полиция"
+    },
+    "short": {
+      "de": "die Organisation, die für Sicherheit sorgt und Verbrechen untersucht",
+      "en": "the organisation that provides security and investigates crimes",
+      "uk": "організація, яка забезпечує безпеку та розслідує злочини",
+      "ru": "организация, которая обеспечивает безопасность и расследует преступления"
+    },
+    "def": {
+      "de": "Die Nummer <g>der</g> <b>Polizei</b> hatte sie zum Glück im Handy gespeichert.",
+      "en": "Luckily, she had the <b>police</b>'s number saved in her phone.",
+      "uk": "Номер <b>поліції</b> вона, на щастя, зберегла у телефоні.",
+      "ru": "Номер <b>полиции</b> она, к счастью, сохранила в телефоне."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_037",
+    "cat": "k3",
+    "term": {
+      "de": "ersetzen",
+      "en": "to replace",
+      "uk": "замінювати",
+      "ru": "заменять"
+    },
+    "short": {
+      "de": "etwas Neues anstelle von etwas Kaputtem oder Verlorenem geben",
+      "en": "to give something new instead of something broken or lost",
+      "uk": "давати щось нове замість зламаного чи втраченого",
+      "ru": "давать что-то новое вместо сломанного или утраченного"
+    },
+    "def": {
+      "de": "Die Kosten <g>des</g> <b>Ersetzens</b> der Karte trägt normalerweise die Bank.",
+      "en": "The costs <g>of</g> <b>replacing</b> the card are usually covered by the bank.",
+      "uk": "Витрати на <b>заміну</b> картки зазвичай несе банк.",
+      "ru": "Расходы на <b>замену</b> карты обычно несёт банк."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_038",
+    "cat": "k3",
+    "term": {
+      "de": "die Ersatzkarte",
+      "en": "replacement card",
+      "uk": "нова картка (замість втраченої)",
+      "ru": "новая карта (взамен утраченной)"
+    },
+    "short": {
+      "de": "eine neue Karte, die man anstelle einer verlorenen oder gestohlenen Karte bekommt",
+      "en": "a new card you get instead of a lost or stolen one",
+      "uk": "нова картка, яку отримуєш замість втраченої чи вкраденої",
+      "ru": "новая карта, которую получаешь вместо утраченной или украденной"
+    },
+    "def": {
+      "de": "Die Lieferzeit <g>der</g> <b>Ersatzkarte</b> beträgt meistens etwa eine Woche.",
+      "en": "The delivery time <g>of the</g> <b>replacement card</b> is usually about a week.",
+      "uk": "Час доставки <b>нової картки</b> зазвичай становить близько тижня.",
+      "ru": "Срок доставки <b>новой карты</b> обычно составляет около недели."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_039",
+    "cat": "k3",
+    "term": {
+      "de": "melden",
+      "en": "to report",
+      "uk": "повідомляти",
+      "ru": "сообщать"
+    },
+    "short": {
+      "de": "einer offiziellen Stelle sagen, dass etwas passiert ist",
+      "en": "to tell an official body that something has happened",
+      "uk": "повідомляти офіційній інстанції, що щось сталося",
+      "ru": "сообщать официальной инстанции, что что-то произошло"
+    },
+    "def": {
+      "de": "Die Wichtigkeit <g>des</g> schnellen <b>Meldens</b> wurde ihr am Telefon erklärt.",
+      "en": "The importance <g>of</g> <b>reporting</b> quickly was explained to her on the phone.",
+      "uk": "Важливість швидкого <b>повідомлення</b> їй пояснили по телефону.",
+      "ru": "Важность быстрого <b>сообщения</b> ей объяснили по телефону."
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "k3_040",
+    "cat": "k3",
+    "term": {
+      "de": "die Hausratversicherung",
+      "en": "home contents insurance",
+      "uk": "страхування майна",
+      "ru": "страхование имущества"
+    },
+    "short": {
+      "de": "eine Versicherung, die bei Schäden an den Sachen in der Wohnung bezahlt",
+      "en": "an insurance that pays for damage to the belongings in your home",
+      "uk": "страхування, яке платить у разі шкоди речам у квартирі",
+      "ru": "страхование, которое платит при ущербе вещам в квартире"
+    },
+    "def": {
+      "de": "Wir haben keine <b>Hausratversicherung</b>, <g>obwohl</g> unsere Nachbarn uns das oft empfohlen haben.",
+      "en": "We don't have <b>home contents insurance</b> <g>although</g> our neighbours have often recommended it to us.",
+      "uk": "У нас немає <b>страхування майна</b>, <g>хоча</g> наші сусіди часто нам це радили.",
+      "ru": "У нас нет <b>страхования имущества</b>, <g>хотя</g> наши соседи часто нам это советовали."
+    },
+    "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "k3_041",
+    "cat": "k3",
+    "term": {
+      "de": "die Kfz-Versicherung",
+      "en": "car insurance",
+      "uk": "автострахування",
+      "ru": "автострахование"
+    },
+    "short": {
+      "de": "eine Versicherung für ein Auto oder ein anderes Fahrzeug",
+      "en": "an insurance for a car or another vehicle",
+      "uk": "страхування автомобіля чи іншого транспортного засобу",
+      "ru": "страхование автомобиля или другого транспортного средства"
+    },
+    "def": {
+      "de": "Herr Petrov hat die <b>Kfz-Versicherung</b> gewechselt, <g>obwohl</g> der alte Vertrag noch ein Jahr lief.",
+      "en": "Mr Petrov switched his <b>car insurance</b> <g>although</g> the old contract still had a year left.",
+      "uk": "Пан Петров змінив <b>автостраховку</b>, <g>хоча</g> старий договір діяв ще рік.",
+      "ru": "Господин Петров сменил <b>автостраховку</b>, <g>хотя</g> старый договор действовал ещё год."
+    },
+    "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "k3_042",
+    "cat": "k3",
+    "term": {
+      "de": "der Versicherungsschutz",
+      "en": "insurance coverage",
+      "uk": "страховий захист",
+      "ru": "страховая защита"
+    },
+    "short": {
+      "de": "das, was eine Versicherung im Schadensfall genau bezahlt",
+      "en": "what an insurance exactly pays in the case of damage",
+      "uk": "те, що страхування точно оплачує у разі шкоди",
+      "ru": "то, что страхование точно оплачивает в случае ущерба"
+    },
+    "def": {
+      "de": "Der <b>Versicherungsschutz</b> war sehr gut, <g>obwohl</g> der Preis eigentlich niedrig war.",
+      "en": "The <b>insurance coverage</b> was very good <g>although</g> the price was actually low.",
+      "uk": "<b>Страховий захист</b> був дуже добрим, <g>хоча</g> ціна насправді була низькою.",
+      "ru": "<b>Страховая защита</b> была очень хорошей, <g>хотя</g> цена на самом деле была низкой."
+    },
+    "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "k3_043",
+    "cat": "k3",
+    "term": {
+      "de": "die Selbstbeteiligung",
+      "en": "deductible, excess",
+      "uk": "франшиза",
+      "ru": "франшиза"
+    },
+    "short": {
+      "de": "der Teil der Kosten, den man bei einem Schaden selbst bezahlen muss",
+      "en": "the part of the costs you have to pay yourself in case of damage",
+      "uk": "частина витрат, яку сам сплачуєш у разі шкоди",
+      "ru": "часть расходов, которую сам платишь в случае ущерба"
+    },
+    "def": {
+      "de": "Die <b>Selbstbeteiligung</b> war hoch, <g>obwohl</g> die monatlichen Kosten der Versicherung niedrig waren.",
+      "en": "The <b>deductible</b> was high <g>although</g> the monthly cost of the insurance was low.",
+      "uk": "<b>Франшиза</b> була високою, <g>хоча</g> щомісячна вартість страхування була низькою.",
+      "ru": "<b>Франшиза</b> была высокой, <g>хотя</g> ежемесячная стоимость страхования была низкой."
+    },
+    "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "k3_044",
+    "cat": "k3",
+    "term": {
+      "de": "der Versicherungsfall",
+      "en": "insured event, claim situation",
+      "uk": "страховий випадок",
+      "ru": "страховой случай"
+    },
+    "short": {
+      "de": "eine Situation, in der die Versicherung tatsächlich zahlen muss",
+      "en": "a situation in which the insurance actually has to pay",
+      "uk": "ситуація, в якій страхова дійсно повинна платити",
+      "ru": "ситуация, в которой страховая действительно должна платить"
+    },
+    "def": {
+      "de": "Im <b>Versicherungsfall</b> half die Firma sofort, <g>obwohl</g> es Wochenende war.",
+      "en": "In the case of a claim, the company helped immediately <g>although</g> it was the weekend.",
+      "uk": "У <b>страховому випадку</b> фірма допомогла одразу, <g>хоча</g> були вихідні.",
+      "ru": "В <b>страховом случае</b> фирма помогла сразу, <g>хотя</g> были выходные."
+    },
+    "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "k3_045",
+    "cat": "k3",
+    "term": {
+      "de": "freiwillig",
+      "en": "voluntary",
+      "uk": "добровільний",
+      "ru": "добровольный"
+    },
+    "short": {
+      "de": "wenn man etwas selbst und ohne Pflicht macht",
+      "en": "when you do something yourself, without being obliged to",
+      "uk": "коли робиш щось сам, без обовʼязку",
+      "ru": "когда делаешь что-то сам, без обязанности"
+    },
+    "def": {
+      "de": "Diese Versicherung ist <b>freiwillig</b>, <g>obwohl</g> viele Leute sie trotzdem abschließen.",
+      "en": "This insurance is <b>voluntary</b>, <g>although</g> many people take it out anyway.",
+      "uk": "Це страхування <b>добровільне</b>, <g>хоча</g> багато людей все одно його оформлюють.",
+      "ru": "Это страхование <b>добровольное</b>, <g>хотя</g> многие люди всё равно его оформляют."
+    },
+    "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "k3_046",
+    "cat": "k3",
+    "term": {
+      "de": "notwendig",
+      "en": "necessary",
+      "uk": "необхідний",
+      "ru": "необходимый"
+    },
+    "short": {
+      "de": "wenn man etwas wirklich braucht",
+      "en": "when you really need something",
+      "uk": "коли щось справді потрібне",
+      "ru": "когда что-то действительно нужно"
+    },
+    "def": {
+      "de": "Eine Haftpflichtversicherung ist wirklich <b>notwendig</b>, <g>obwohl</g> viele junge Leute das unterschätzen.",
+      "en": "Liability insurance is really <b>necessary</b>, <g>although</g> many young people underestimate this.",
+      "uk": "Страхування цивільної відповідальності справді <b>необхідне</b>, <g>хоча</g> багато молодих людей це недооцінюють.",
+      "ru": "Страхование гражданской ответственности действительно <b>необходимо</b>, <g>хотя</g> многие молодые люди это недооценивают."
+    },
+    "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "k3_047",
+    "cat": "k3",
+    "term": {
+      "de": "sinnvoll",
+      "en": "sensible, worthwhile",
+      "uk": "доцільний",
+      "ru": "целесообразный"
+    },
+    "short": {
+      "de": "wenn etwas eine gute und logische Idee ist",
+      "en": "when something is a good and logical idea",
+      "uk": "коли щось є хорошою і логічною ідеєю",
+      "ru": "когда что-то является хорошей и логичной идеей"
+    },
+    "def": {
+      "de": "Eine Rechtsschutzversicherung ist oft <b>sinnvoll</b>, <g>obwohl</g> sie zusätzliche Kosten bedeutet.",
+      "en": "Legal expenses insurance is often <b>worthwhile</b>, <g>although</g> it means extra costs.",
+      "uk": "Страхування юридичних витрат часто <b>доцільне</b>, <g>хоча</g> це означає додаткові витрати.",
+      "ru": "Страхование юридических расходов часто <b>целесообразно</b>, <g>хотя</g> это означает дополнительные расходы."
+    },
+    "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "k3_048",
+    "cat": "k3",
+    "term": {
+      "de": "das Kündigungsschreiben",
+      "en": "letter of termination",
+      "uk": "лист про розірвання договору",
+      "ru": "письмо о расторжении договора"
+    },
+    "short": {
+      "de": "ein Brief, mit dem man offiziell einen Vertrag beendet",
+      "en": "a letter with which you officially end a contract",
+      "uk": "лист, яким офіційно завершуєш договір",
+      "ru": "письмо, которым официально завершаешь договор"
+    },
+    "def": {
+      "de": "Ohne ein schriftliches <g><b>Kündigungsschreiben</b></g> akzeptiert die Versicherung die Kündigung oft nicht.",
+      "en": "Without a written <b>letter of termination</b>, the insurance often does not accept the cancellation.",
+      "uk": "Без письмового <b>листа про розірвання договору</b> страхова часто не приймає розірвання.",
+      "ru": "Без письменного <b>письма о расторжении договора</b> страховая часто не принимает расторжение."
+    },
+    "gram": "komposita_verb_nomen"
+  },
+  {
+    "id": "k3_049",
+    "cat": "k3",
+    "term": {
+      "de": "die Kündigungsfrist",
+      "en": "notice period",
+      "uk": "термін розірвання",
+      "ru": "срок расторжения"
+    },
+    "short": {
+      "de": "die Zeit, die man vor der Kündigung eines Vertrags einhalten muss",
+      "en": "the time you must observe before terminating a contract",
+      "uk": "термін, який потрібно дотримати перед розірванням договору",
+      "ru": "срок, который нужно соблюсти перед расторжением договора"
+    },
+    "def": {
+      "de": "Die <g><b>Kündigungsfrist</b></g> beträgt bei den meisten Versicherungen einen Monat.",
+      "en": "The <b>notice period</b> is one month for most insurance policies.",
+      "uk": "<b>Термін розірвання</b> у більшості страхових компаній становить один місяць.",
+      "ru": "<b>Срок расторжения</b> в большинстве страховых компаний составляет один месяц."
+    },
+    "gram": "komposita_verb_nomen"
+  },
+  {
+    "id": "k3_050",
+    "cat": "k3",
+    "term": {
+      "de": "der Zahlungstermin",
+      "en": "payment date",
+      "uk": "дата платежу",
+      "ru": "дата платежа"
+    },
+    "short": {
+      "de": "der Tag, an dem eine Zahlung gemacht werden muss",
+      "en": "the day on which a payment has to be made",
+      "uk": "день, коли потрібно здійснити оплату",
+      "ru": "день, когда нужно осуществить оплату"
+    },
+    "def": {
+      "de": "Der <g><b>Zahlungstermin</b></g> für die Versicherung ist immer der erste Tag des Monats.",
+      "en": "The <b>payment date</b> for the insurance is always the first day of the month.",
+      "uk": "<b>Дата платежу</b> за страховку завжди перший день місяця.",
+      "ru": "<b>Дата платежа</b> за страховку всегда первый день месяца."
+    },
+    "gram": "komposita_verb_nomen"
+  },
+  {
+    "id": "k3_051",
+    "cat": "k3",
+    "term": {
+      "de": "die Reiseversicherung",
+      "en": "travel insurance",
+      "uk": "туристична страховка",
+      "ru": "туристическая страховка"
+    },
+    "short": {
+      "de": "eine Versicherung, die während einer Reise bei Problemen hilft",
+      "en": "an insurance that helps with problems during a trip",
+      "uk": "страхування, яке допомагає у разі проблем під час подорожі",
+      "ru": "страхование, которое помогает при проблемах во время путешествия"
+    },
+    "def": {
+      "de": "Vor dem Urlaub hat sie schnell eine <g><b>Reiseversicherung</b></g> abgeschlossen.",
+      "en": "Before the holiday, she quickly took out <b>travel insurance</b>.",
+      "uk": "Перед відпусткою вона швидко оформила <b>туристичну страховку</b>.",
+      "ru": "Перед отпуском она быстро оформила <b>туристическую страховку</b>."
+    },
+    "gram": "komposita_verb_nomen"
+  },
+  {
+    "id": "k3_052",
+    "cat": "k3",
+    "term": {
+      "de": "das Beratungsgespräch",
+      "en": "consultation",
+      "uk": "консультаційна бесіда",
+      "ru": "консультационная беседа"
+    },
+    "short": {
+      "de": "ein Gespräch, in dem man Informationen und Rat zu einem Thema bekommt",
+      "en": "a conversation in which you get information and advice on a topic",
+      "uk": "розмова, під час якої отримуєш інформацію та поради щодо теми",
+      "ru": "разговор, во время которого получаешь информацию и советы по теме"
+    },
+    "def": {
+      "de": "Beim <g><b>Beratungsgespräch</b></g> hat die Vertreterin alle Fragen genau beantwortet.",
+      "en": "During the <b>consultation</b>, the representative answered all questions precisely.",
+      "uk": "Під час <b>консультаційної бесіди</b> представниця точно відповіла на всі запитання.",
+      "ru": "Во время <b>консультационной беседы</b> представитель точно ответил на все вопросы."
+    },
+    "gram": "komposita_verb_nomen"
+  },
+  {
+    "id": "k3_053",
+    "cat": "k3",
+    "term": {
+      "de": "die Fahrerlaubnis",
+      "en": "driving licence, permit",
+      "uk": "посвідчення водія",
+      "ru": "водительские права"
+    },
+    "short": {
+      "de": "das offizielle Recht, ein Auto oder ein anderes Fahrzeug zu fahren",
+      "en": "the official right to drive a car or another vehicle",
+      "uk": "офіційне право керувати автомобілем чи іншим транспортним засобом",
+      "ru": "официальное право управлять автомобилем или другим транспортным средством"
+    },
+    "def": {
+      "de": "Ohne gültige <g><b>Fahrerlaubnis</b></g> bezahlt die Versicherung im Schadensfall nichts.",
+      "en": "Without a valid <b>driving licence</b>, the insurance pays nothing in case of damage.",
+      "uk": "Без дійсного <b>посвідчення водія</b> страхова нічого не платить у разі шкоди.",
+      "ru": "Без действительных <b>водительских прав</b> страховая ничего не платит в случае ущерба."
+    },
+    "gram": "komposita_verb_nomen"
+  },
+  {
+    "id": "k3_054",
+    "cat": "k3",
+    "term": {
+      "de": "der Sparplan",
+      "en": "savings plan",
+      "uk": "ощадний план",
+      "ru": "сберегательный план"
+    },
+    "short": {
+      "de": "ein Plan, mit dem man regelmäßig einen festen Betrag spart",
+      "en": "a plan with which you regularly save a fixed amount",
+      "uk": "план, за яким регулярно заощаджуєш фіксовану суму",
+      "ru": "план, по которому регулярно сберегаешь фиксированную сумму"
+    },
+    "def": {
+      "de": "Mit einem <g><b>Sparplan</b></g> legt man jeden Monat automatisch etwas Geld zur Seite.",
+      "en": "With a <b>savings plan</b>, you automatically set aside some money every month.",
+      "uk": "За допомогою <b>ощадного плану</b> щомісяця автоматично відкладаєш трохи грошей.",
+      "ru": "С помощью <b>сберегательного плана</b> ежемесячно автоматически откладываешь немного денег."
+    },
+    "gram": "komposita_verb_nomen"
+  },
+  {
+    "id": "k3_055",
+    "cat": "k3",
+    "term": {
+      "de": "bestätigen",
+      "en": "to confirm",
+      "uk": "підтверджувати",
+      "ru": "подтверждать"
+    },
+    "short": {
+      "de": "sagen oder zeigen, dass etwas sicher richtig oder wahr ist",
+      "en": "to say or show that something is definitely correct or true",
+      "uk": "казати чи показувати, що щось точно правильне чи правдиве",
+      "ru": "говорить или показывать, что что-то точно верное или правдивое"
+    },
+    "def": {
+      "de": "Die Firma hat mir geschrieben, <g>dass</g> sie die Kündigung <b>bestätigt</b>.",
+      "en": "The company wrote to me <g>that</g> they <b>confirm</b> the termination.",
+      "uk": "Фірма написала мені, <g>що</g> вона <b>підтверджує</b> розірвання договору.",
+      "ru": "Фирма написала мне, <g>что</g> она <b>подтверждает</b> расторжение договора."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k3_056",
+    "cat": "k3",
+    "term": {
+      "de": "rechtzeitig",
+      "en": "in time, punctually",
+      "uk": "вчасно",
+      "ru": "вовремя"
+    },
+    "short": {
+      "de": "nicht zu spät, sondern genau zur richtigen Zeit",
+      "en": "not too late, but exactly at the right time",
+      "uk": "не запізно, а саме вчасно",
+      "ru": "не поздно, а точно вовремя"
+    },
+    "def": {
+      "de": "Ich habe die Kündigung geschickt, <g>weil</g> ich sie <b>rechtzeitig</b> abschicken wollte.",
+      "en": "I sent the termination <g>because</g> I wanted to send it in <b>time</b>.",
+      "uk": "Я надіслав розірвання договору, <g>тому що</g> хотів зробити це <b>вчасно</b>.",
+      "ru": "Я отправил расторжение договора, <g>потому что</g> хотел сделать это <b>вовремя</b>."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k3_057",
+    "cat": "k3",
+    "term": {
+      "de": "einhalten",
+      "en": "to keep, to meet (a deadline)",
+      "uk": "дотримувати (терміну)",
+      "ru": "соблюдать (срок)"
+    },
+    "short": {
+      "de": "genau das machen, was eine Regel oder Frist verlangt",
+      "en": "to do exactly what a rule or deadline requires",
+      "uk": "робити точно так, як вимагає правило чи термін",
+      "ru": "делать точно так, как требует правило или срок"
+    },
+    "def": {
+      "de": "<g>Wenn</g> man die Kündigungsfrist nicht <b>einhält</b>, verlängert sich der Vertrag automatisch.",
+      "en": "<g>If</g> you don't <b>meet</b> the notice period, the contract is automatically extended.",
+      "uk": "<g>Якщо</g> не <b>дотримати</b> терміну розірвання, договір автоматично продовжується.",
+      "ru": "<g>Если</g> не <b>соблюсти</b> срок расторжения, договор автоматически продлевается."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k3_058",
+    "cat": "k3",
+    "term": {
+      "de": "der Nachweis",
+      "en": "proof",
+      "uk": "доказ",
+      "ru": "доказательство"
+    },
+    "short": {
+      "de": "ein Dokument, das zeigt, dass etwas wirklich passiert ist",
+      "en": "a document that shows that something has really happened",
+      "uk": "документ, який показує, що щось справді відбулося",
+      "ru": "документ, который показывает, что что-то действительно произошло"
+    },
+    "def": {
+      "de": "Ich brauche einen <b>Nachweis</b>, <g>denn</g> die Bank glaubt mir sonst nicht.",
+      "en": "I need <b>proof</b>, <g>because</g> otherwise the bank won't believe me.",
+      "uk": "Мені потрібен <b>доказ</b>, <g>бо</g> інакше банк мені не повірить.",
+      "ru": "Мне нужно <b>доказательство</b>, <g>потому что</g> иначе банк мне не поверит."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k3_059",
+    "cat": "k3",
+    "term": {
+      "de": "die Bestätigung",
+      "en": "confirmation",
+      "uk": "підтвердження",
+      "ru": "подтверждение"
+    },
+    "short": {
+      "de": "ein Brief, eine E-Mail oder ein Wort, das zeigt, dass etwas sicher ist",
+      "en": "a letter, email, or word that shows that something is certain",
+      "uk": "лист, електронний лист або слово, яке показує, що щось точно так",
+      "ru": "письмо, электронное письмо или слово, которое показывает, что что-то точно так"
+    },
+    "def": {
+      "de": "Ich habe die <b>Bestätigung</b> noch nicht bekommen, <g>aber</g> ich mache mir keine Sorgen.",
+      "en": "I haven't received the <b>confirmation</b> yet, <g>but</g> I'm not worried.",
+      "uk": "Я ще не отримав <b>підтвердження</b>, <g>але</g> не хвилююся.",
+      "ru": "Я ещё не получил <b>подтверждение</b>, <g>но</g> не волнуюсь."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k3_060",
+    "cat": "k3",
+    "term": {
+      "de": "widerrufen",
+      "en": "to revoke, to cancel",
+      "uk": "скасовувати, відкликати",
+      "ru": "отменять, отзывать"
+    },
+    "short": {
+      "de": "eine Entscheidung oder einen Vertrag innerhalb einer bestimmten Zeit rückgängig machen",
+      "en": "to reverse a decision or contract within a certain time",
+      "uk": "скасовувати рішення чи договір протягом певного часу",
+      "ru": "отменять решение или договор в течение определённого времени"
+    },
+    "def": {
+      "de": "Sie kann den Vertrag <b>widerrufen</b>, <g>oder</g> sie behält ihn einfach wie geplant.",
+      "en": "She can <b>revoke</b> the contract, <g>or</g> she can simply keep it as planned.",
+      "uk": "Вона може <b>скасувати</b> договір, <g>або</g> просто залишити його, як планувалося.",
+      "ru": "Она может <b>отозвать</b> договор, <g>или</g> просто оставить его, как планировалось."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
     "id": "k4_001",
     "cat": "k4",
     "term": {
@@ -5846,6 +8051,1041 @@ var VOCAB = [
       "en": "The menu <g>of the</g> canteen is very <b>varied</b> this week.",
       "uk": "Меню їдальні цього тижня дуже <b>різноманітне</b>.",
       "ru": "Меню столовой на этой неделе очень <b>разнообразное</b>."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_016",
+    "cat": "k4",
+    "term": {
+      "de": "das Frühstück",
+      "en": "breakfast",
+      "uk": "сніданок",
+      "ru": "завтрак"
+    },
+    "short": {
+      "de": "die erste Mahlzeit am Morgen",
+      "en": "the first meal in the morning",
+      "uk": "перший прийом їжі вранці",
+      "ru": "первый приём пищи утром"
+    },
+    "def": {
+      "de": "Ich esse selten <b>Frühstück</b>, <g>weil</g> ich morgens keinen Hunger habe.",
+      "en": "I rarely eat <b>breakfast</b> <g>because</g> I'm not hungry in the morning.",
+      "uk": "Я рідко їм <b>сніданок</b>, <g>тому що</g> вранці не відчуваю голоду.",
+      "ru": "Я редко ем <b>завтрак</b>, <g>потому что</g> утром не чувствую голода."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k4_017",
+    "cat": "k4",
+    "term": {
+      "de": "der Hunger",
+      "en": "hunger",
+      "uk": "голод",
+      "ru": "голод"
+    },
+    "short": {
+      "de": "das Gefühl, dass man essen möchte",
+      "en": "the feeling that you want to eat",
+      "uk": "відчуття, що хочеш їсти",
+      "ru": "ощущение, что хочешь есть"
+    },
+    "def": {
+      "de": "Ich merke, <g>dass</g> ich großen <b>Hunger</b> habe.",
+      "en": "I notice <g>that</g> I'm very <b>hungry</b>.",
+      "uk": "Я помічаю, <g>що</g> дуже <b>голодний(-а)</b>.",
+      "ru": "Я замечаю, <g>что</g> очень <b>голоден/голодна</b>."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k4_018",
+    "cat": "k4",
+    "term": {
+      "de": "der Appetit",
+      "en": "appetite",
+      "uk": "апетит",
+      "ru": "аппетит"
+    },
+    "short": {
+      "de": "die Lust, etwas zu essen",
+      "en": "the desire to eat something",
+      "uk": "бажання щось поїсти",
+      "ru": "желание что-то поесть"
+    },
+    "def": {
+      "de": "<g>Wenn</g> ich Stress habe, verliere ich meistens meinen <b>Appetit</b>.",
+      "en": "<g>When</g> I'm stressed, I usually lose my <b>appetite</b>.",
+      "uk": "<g>Коли</g> я в стресі, я зазвичай втрачаю <b>апетит</b>.",
+      "ru": "<g>Когда</g> я в стрессе, я обычно теряю <b>аппетит</b>."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k4_019",
+    "cat": "k4",
+    "term": {
+      "de": "süß",
+      "en": "sweet",
+      "uk": "солодкий",
+      "ru": "сладкий"
+    },
+    "short": {
+      "de": "wie Zucker oder Honig schmeckt",
+      "en": "tastes like sugar or honey",
+      "uk": "смакує як цукор чи мед",
+      "ru": "на вкус как сахар или мёд"
+    },
+    "def": {
+      "de": "Der Kuchen war sehr <b>süß</b>, <g>obwohl</g> wir kaum Zucker benutzt haben.",
+      "en": "The cake was very <b>sweet</b>, <g>although</g> we hardly used any sugar.",
+      "uk": "Торт був дуже <b>солодким</b>, <g>хоча</g> ми майже не використовували цукор.",
+      "ru": "Торт был очень <b>сладким</b>, <g>хотя</g> мы почти не использовали сахар."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k4_020",
+    "cat": "k4",
+    "term": {
+      "de": "salzig",
+      "en": "salty",
+      "uk": "солоний",
+      "ru": "солёный"
+    },
+    "short": {
+      "de": "wie Salz schmeckt",
+      "en": "tastes like salt",
+      "uk": "смакує як сіль",
+      "ru": "на вкус как соль"
+    },
+    "def": {
+      "de": "Die Suppe war <b>salzig</b>, <g>aber</g> trotzdem sehr lecker.",
+      "en": "The soup was <b>salty</b>, <g>but</g> still very tasty.",
+      "uk": "Суп був <b>солоним</b>, <g>але</g> все одно дуже смачним.",
+      "ru": "Суп был <b>солёным</b>, <g>но</g> всё равно очень вкусным."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k4_021",
+    "cat": "k4",
+    "term": {
+      "de": "vegetarisch",
+      "en": "vegetarian",
+      "uk": "вегетаріанський",
+      "ru": "вегетарианский"
+    },
+    "short": {
+      "de": "ohne Fleisch und Fisch",
+      "en": "without meat and fish",
+      "uk": "без мʼяса та риби",
+      "ru": "без мяса и рыбы"
+    },
+    "def": {
+      "de": "Wir essen jetzt meistens <b>vegetarisch</b>, <g>denn</g> das ist gesünder für uns.",
+      "en": "We now mostly eat <b>vegetarian</b>, <g>as</g> it's healthier for us.",
+      "uk": "Тепер ми переважно їмо <b>вегетаріанську</b> їжу, <g>бо</g> це для нас здоровіше.",
+      "ru": "Теперь мы в основном едим <b>вегетарианскую</b> пищу, <g>потому что</g> это для нас полезнее."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k4_022",
+    "cat": "k4",
+    "term": {
+      "de": "satt",
+      "en": "full, satisfied",
+      "uk": "ситий",
+      "ru": "сытый"
+    },
+    "short": {
+      "de": "wenn man genug gegessen hat und keinen Hunger mehr hat",
+      "en": "when you have eaten enough and are no longer hungry",
+      "uk": "коли ти достатньо поїв і більше не голодний",
+      "ru": "когда ты достаточно поел и больше не голоден"
+    },
+    "def": {
+      "de": "Möchtest du noch etwas essen, <g>oder</g> bist du schon <b>satt</b>?",
+      "en": "Would you like to eat something else, <g>or</g> are you already <b>full</b>?",
+      "uk": "Хочеш ще щось поїсти, <g>чи</g> ти вже <b>ситий(-а)</b>?",
+      "ru": "Хочешь ещё что-то поесть, <g>или</g> ты уже <b>сыт(а)</b>?"
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k4_023",
+    "cat": "k4",
+    "term": {
+      "de": "kalorienarm",
+      "en": "low-calorie",
+      "uk": "низькокалорійний",
+      "ru": "низкокалорийный"
+    },
+    "short": {
+      "de": "mit wenig Kalorien",
+      "en": "with few calories",
+      "uk": "з невеликою кількістю калорій",
+      "ru": "с небольшим количеством калорий"
+    },
+    "def": {
+      "de": "Der Salat ist <b>kalorienarm</b>, <g>deshalb</g> esse ich ihn oft zum Abendessen.",
+      "en": "The salad is <b>low-calorie</b>, <g>therefore</g> I often eat it for dinner.",
+      "uk": "Салат <b>низькокалорійний</b>, <g>тому</g> я часто їм його на вечерю.",
+      "ru": "Салат <b>низкокалорийный</b>, <g>поэтому</g> я часто ем его на ужин."
+    },
+    "gram": "konnektoren_wdh_b1"
+  },
+  {
+    "id": "k4_024",
+    "cat": "k4",
+    "term": {
+      "de": "kochen",
+      "en": "to cook",
+      "uk": "готувати (їжу)",
+      "ru": "готовить (еду)"
+    },
+    "short": {
+      "de": "Essen mit Hitze zubereiten",
+      "en": "to prepare food using heat",
+      "uk": "готувати їжу за допомогою тепла",
+      "ru": "готовить еду с помощью тепла"
+    },
+    "def": {
+      "de": "Meine Oma <b>kochte</b> jeden Sonntag ein großes Mittagessen.",
+      "en": "My grandma <b>cooked</b> a big lunch every Sunday.",
+      "uk": "Моя бабуся <b>готувала</b> велику обідню страву щонеділі.",
+      "ru": "Моя бабушка <b>готовила</b> большой обед каждое воскресенье."
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "k4_025",
+    "cat": "k4",
+    "term": {
+      "de": "backen",
+      "en": "to bake",
+      "uk": "пекти",
+      "ru": "печь"
+    },
+    "short": {
+      "de": "Brot, Kuchen oder Ähnliches im Ofen zubereiten",
+      "en": "to prepare bread, cake or similar in the oven",
+      "uk": "готувати хліб, пиріг тощо в духовці",
+      "ru": "готовить хлеб, пирог и подобное в духовке"
+    },
+    "def": {
+      "de": "Als Kind <b>backte</b> ich mit meiner Mutter jedes Weihnachten Plätzchen.",
+      "en": "As a child, I <b>baked</b> cookies with my mother every Christmas.",
+      "uk": "У дитинстві я <b>пекла (пік)</b> з мамою печиво щороку на Різдво.",
+      "ru": "В детстве я <b>пёк(-ла)</b> с мамой печенье каждое Рождество."
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "k4_026",
+    "cat": "k4",
+    "term": {
+      "de": "schmecken",
+      "en": "to taste",
+      "uk": "мати смак",
+      "ru": "иметь вкус"
+    },
+    "short": {
+      "de": "einen bestimmten Geschmack haben",
+      "en": "to have a certain taste",
+      "uk": "мати певний смак",
+      "ru": "иметь определённый вкус"
+    },
+    "def": {
+      "de": "Das Essen bei meiner Großmutter <b>schmeckte</b> immer besonders gut.",
+      "en": "The food at my grandmother's always <b>tasted</b> especially good.",
+      "uk": "Їжа в моєї бабусі завжди <b>смакувала</b> особливо добре.",
+      "ru": "Еда у моей бабушки всегда <b>была на вкус</b> особенно хороша."
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "k4_027",
+    "cat": "k4",
+    "term": {
+      "de": "essen",
+      "en": "to eat",
+      "uk": "їсти",
+      "ru": "есть"
+    },
+    "short": {
+      "de": "Nahrung zu sich nehmen",
+      "en": "to consume food",
+      "uk": "споживати їжу",
+      "ru": "потреблять еду"
+    },
+    "def": {
+      "de": "Wir <b>aßen</b> als Kinder fast jeden Freitag Fisch.",
+      "en": "As children, we <b>ate</b> fish almost every Friday.",
+      "uk": "У дитинстві ми <b>їли</b> рибу майже щопʼятниці.",
+      "ru": "В детстве мы <b>ели</b> рыбу почти каждую пятницу."
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "k4_028",
+    "cat": "k4",
+    "term": {
+      "de": "trinken",
+      "en": "to drink",
+      "uk": "пити",
+      "ru": "пить"
+    },
+    "short": {
+      "de": "eine Flüssigkeit zu sich nehmen",
+      "en": "to consume a liquid",
+      "uk": "споживати рідину",
+      "ru": "потреблять жидкость"
+    },
+    "def": {
+      "de": "Zum Frühstück <b>trank</b> ich früher immer heißen Kakao.",
+      "en": "For breakfast, I always used to <b>drink</b> hot cocoa.",
+      "uk": "На сніданок я раніше завжди <b>пив (пила)</b> гарячий какао.",
+      "ru": "На завтрак я раньше всегда <b>пил(-а)</b> горячее какао."
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "k4_029",
+    "cat": "k4",
+    "term": {
+      "de": "mögen",
+      "en": "to like",
+      "uk": "любити",
+      "ru": "любить"
+    },
+    "short": {
+      "de": "etwas gern haben",
+      "en": "to be fond of something",
+      "uk": "щось любити",
+      "ru": "что-то любить"
+    },
+    "def": {
+      "de": "Als Kind <b>mochte</b> ich kein Gemüse, heute esse ich es sehr gern.",
+      "en": "As a child, I did not <b>like</b> vegetables; today I like eating them very much.",
+      "uk": "У дитинстві я не <b>любив(-ла)</b> овочі, сьогодні я їх дуже люблю.",
+      "ru": "В детстве я не <b>любил(-а)</b> овощи, сегодня я их очень люблю."
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "k4_030",
+    "cat": "k4",
+    "term": {
+      "de": "holen",
+      "en": "to get, to fetch",
+      "uk": "приносити, забирати",
+      "ru": "приносить, забирать"
+    },
+    "short": {
+      "de": "irgendwohin gehen, um etwas zu bekommen und zurückzubringen",
+      "en": "to go somewhere to get something and bring it back",
+      "uk": "йти кудись, щоб взяти щось і принести назад",
+      "ru": "идти куда-то, чтобы взять что-то и принести обратно"
+    },
+    "def": {
+      "de": "Mein Vater <b>holte</b> samstags immer frische Brötchen vom Bäcker.",
+      "en": "My father always <b>got</b> fresh rolls from the bakery on Saturdays.",
+      "uk": "Мій тато щосуботи завжди <b>приносив</b> свіжі булочки з пекарні.",
+      "ru": "Мой отец каждую субботу всегда <b>приносил</b> свежие булочки из пекарни."
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "k4_031",
+    "cat": "k4",
+    "term": {
+      "de": "verbringen",
+      "en": "to spend (time)",
+      "uk": "проводити (час)",
+      "ru": "проводить (время)"
+    },
+    "short": {
+      "de": "Zeit an einem bestimmten Ort oder mit einer Tätigkeit nutzen",
+      "en": "to use time at a certain place or with an activity",
+      "uk": "проводити час у певному місці чи з певним заняттям",
+      "ru": "проводить время в определённом месте или с определённым занятием"
+    },
+    "def": {
+      "de": "Wir <b>verbrachten</b> als Familie viel Zeit gemeinsam in der Küche.",
+      "en": "As a family, we <b>spent</b> a lot of time together in the kitchen.",
+      "uk": "Ми як родина <b>проводили</b> багато часу разом на кухні.",
+      "ru": "Мы как семья <b>проводили</b> много времени вместе на кухне."
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "k4_032",
+    "cat": "k4",
+    "term": {
+      "de": "früher",
+      "en": "formerly, in the past",
+      "uk": "раніше",
+      "ru": "раньше"
+    },
+    "short": {
+      "de": "in einer vergangenen Zeit, nicht heute",
+      "en": "in a past time, not today",
+      "uk": "у минулому, не сьогодні",
+      "ru": "в прошлом, не сегодня"
+    },
+    "def": {
+      "de": "<b>Früher</b> war Fleisch sehr teuer, <g>trotzdem</g> aßen viele Familien es jeden Sonntag.",
+      "en": "In the <b>past</b>, meat was very expensive; <g>nevertheless</g>, many families ate it every Sunday.",
+      "uk": "<b>Раніше</b> мʼясо було дуже дорогим, <g>проте</g> багато сімей їли його щонеділі.",
+      "ru": "<b>Раньше</b> мясо было очень дорогим, <g>однако</g> многие семьи ели его каждое воскресенье."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k4_033",
+    "cat": "k4",
+    "term": {
+      "de": "sich verbessern",
+      "en": "to improve",
+      "uk": "покращуватися",
+      "ru": "улучшаться"
+    },
+    "short": {
+      "de": "besser werden",
+      "en": "to become better",
+      "uk": "ставати кращим",
+      "ru": "становиться лучше"
+    },
+    "def": {
+      "de": "Unsere Küche hat sich stark <b>verbessert</b>, <g>deshalb</g> kochen wir jetzt viel öfter zu Hause.",
+      "en": "Our cooking has <b>improved</b> a lot, <g>therefore</g> we cook at home much more often now.",
+      "uk": "Наше кулінарне мистецтво сильно <b>покращилося</b>, <g>тому</g> ми тепер набагато частіше готуємо вдома.",
+      "ru": "Наше кулинарное мастерство сильно <b>улучшилось</b>, <g>поэтому</g> мы теперь намного чаще готовим дома."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k4_034",
+    "cat": "k4",
+    "term": {
+      "de": "zunehmen",
+      "en": "to gain weight",
+      "uk": "набирати вагу",
+      "ru": "набирать вес"
+    },
+    "short": {
+      "de": "schwerer werden, mehr Gewicht bekommen",
+      "en": "to become heavier, to gain weight",
+      "uk": "важчати, набирати вагу",
+      "ru": "тяжелеть, набирать вес"
+    },
+    "def": {
+      "de": "Im Urlaub habe ich stark <b>zugenommen</b>, <g>trotzdem</g> fühle ich mich sehr wohl.",
+      "en": "I <b>gained</b> a lot of weight on holiday; <g>nevertheless</g>, I feel very good.",
+      "uk": "У відпустці я сильно <b>набрав(-ла)</b> вагу, <g>проте</g> почуваюся дуже добре.",
+      "ru": "В отпуске я сильно <b>набрал(-а)</b> вес, <g>однако</g> чувствую себя очень хорошо."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k4_035",
+    "cat": "k4",
+    "term": {
+      "de": "abnehmen",
+      "en": "to lose weight",
+      "uk": "худнути",
+      "ru": "худеть"
+    },
+    "short": {
+      "de": "leichter werden, weniger Gewicht haben",
+      "en": "to become lighter, to lose weight",
+      "uk": "легшати, втрачати вагу",
+      "ru": "легчать, терять вес"
+    },
+    "def": {
+      "de": "Er hat drei Kilo <b>abgenommen</b>, <g>deswegen</g> passt ihm die alte Hose wieder.",
+      "en": "He has <b>lost</b> three kilos; <g>that's why</g> his old trousers fit him again.",
+      "uk": "Він <b>схуд</b> на три кілограми, <g>тому</g> старі штани знову йому пасують.",
+      "ru": "Он <b>похудел</b> на три килограмма, <g>поэтому</g> старые штаны снова ему подходят."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k4_036",
+    "cat": "k4",
+    "term": {
+      "de": "der Fortschritt",
+      "en": "progress",
+      "uk": "прогрес",
+      "ru": "прогресс"
+    },
+    "short": {
+      "de": "eine positive Entwicklung Schritt für Schritt",
+      "en": "a positive step-by-step development",
+      "uk": "позитивний розвиток крок за кроком",
+      "ru": "позитивное развитие шаг за шагом"
+    },
+    "def": {
+      "de": "Beim gesunden Kochen haben wir große <b>Fortschritte</b> gemacht, <g>deshalb</g> fühlen wir uns viel energiegeladener.",
+      "en": "We have made great <b>progress</b> with healthy cooking, <g>therefore</g> we feel much more energetic.",
+      "uk": "Ми зробили великий <b>прогрес</b> у здоровому приготуванні їжі, <g>тому</g> почуваємося набагато енергійнішими.",
+      "ru": "Мы сделали большой <b>прогресс</b> в здоровом приготовлении пищи, <g>поэтому</g> чувствуем себя намного энергичнее."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k4_037",
+    "cat": "k4",
+    "term": {
+      "de": "die Veränderung",
+      "en": "change",
+      "uk": "зміна",
+      "ru": "изменение"
+    },
+    "short": {
+      "de": "wenn etwas anders wird als vorher",
+      "en": "when something becomes different from before",
+      "uk": "коли щось стає іншим, ніж раніше",
+      "ru": "когда что-то становится иным, чем раньше"
+    },
+    "def": {
+      "de": "Die <b>Veränderung</b> unserer Essgewohnheiten war nicht leicht, <g>trotzdem</g> haben wir durchgehalten.",
+      "en": "The <b>change</b> in our eating habits was not easy; <g>nevertheless</g>, we kept it up.",
+      "uk": "<b>Зміна</b> наших харчових звичок далася нелегко, <g>проте</g> ми не здалися.",
+      "ru": "<b>Изменение</b> наших пищевых привычек далось нелегко, <g>однако</g> мы не сдались."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k4_038",
+    "cat": "k4",
+    "term": {
+      "de": "bewusst",
+      "en": "conscious, mindful",
+      "uk": "усвідомлений",
+      "ru": "осознанный"
+    },
+    "short": {
+      "de": "wenn man genau nachdenkt und aufmerksam entscheidet",
+      "en": "when you think carefully and decide attentively",
+      "uk": "коли ретельно обдумуєш і уважно вирішуєш",
+      "ru": "когда тщательно обдумываешь и внимательно решаешь"
+    },
+    "def": {
+      "de": "Wir essen jetzt viel <b>bewusster</b>, <g>deswegen</g> haben wir mehr Energie im Alltag.",
+      "en": "We now eat much more <b>consciously</b>, <g>that's why</g> we have more energy in everyday life.",
+      "uk": "Тепер ми їмо набагато <b>усвідомленіше</b>, <g>тому</g> маємо більше енергії в повсякденному житті.",
+      "ru": "Теперь мы едим намного <b>осознаннее</b>, <g>поэтому</g> у нас больше энергии в повседневной жизни."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k4_039",
+    "cat": "k4",
+    "term": {
+      "de": "weiterhin",
+      "en": "still, continuing",
+      "uk": "і надалі",
+      "ru": "по-прежнему"
+    },
+    "short": {
+      "de": "auch in Zukunft, ohne Unterbrechung",
+      "en": "also in the future, without interruption",
+      "uk": "і надалі, без перерви",
+      "ru": "и далее, без перерыва"
+    },
+    "def": {
+      "de": "Die Ernährung war früher ungesund, <g>trotzdem</g> isst die Familie <b>weiterhin</b> viel Fast Food.",
+      "en": "The diet used to be unhealthy; <g>nevertheless</g>, the family <b>continues</b> to eat a lot of fast food.",
+      "uk": "Харчування раніше було нездоровим, <g>проте</g> сімʼя <b>і надалі</b> їсть багато фаст-фуду.",
+      "ru": "Питание раньше было нездоровым, <g>однако</g> семья <b>по-прежнему</b> ест много фастфуда."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k4_040",
+    "cat": "k4",
+    "term": {
+      "de": "die Lebensmittel",
+      "en": "food, groceries",
+      "uk": "продукти харчування",
+      "ru": "продукты питания"
+    },
+    "short": {
+      "de": "alles, was man kaufen und essen kann, zum Beispiel Brot, Obst oder Fleisch",
+      "en": "everything you can buy and eat, for example bread, fruit or meat",
+      "uk": "усе, що можна купити й зʼїсти, наприклад хліб, фрукти чи мʼясо",
+      "ru": "всё, что можно купить и съесть, например хлеб, фрукты или мясо"
+    },
+    "def": {
+      "de": "Wir kaufen unsere <g><b>Lebensmittel</b></g> meistens auf dem Wochenmarkt.",
+      "en": "We usually buy our <b>groceries</b> at the weekly market.",
+      "uk": "Ми зазвичай купуємо свої <b>продукти</b> на щотижневому ринку.",
+      "ru": "Мы обычно покупаем свои <b>продукты</b> на еженедельном рынке."
+    },
+    "gram": "komposita_fugenelemente"
+  },
+  {
+    "id": "k4_041",
+    "cat": "k4",
+    "term": {
+      "de": "der Küchenschrank",
+      "en": "kitchen cabinet",
+      "uk": "кухонна шафа",
+      "ru": "кухонный шкаф"
+    },
+    "short": {
+      "de": "ein Möbelstück in der Küche, in dem man Geschirr oder Lebensmittel aufbewahrt",
+      "en": "a piece of furniture in the kitchen where you keep dishes or food",
+      "uk": "меблі на кухні, де зберігають посуд чи продукти",
+      "ru": "мебель на кухне, где хранят посуду или продукты"
+    },
+    "def": {
+      "de": "Die Gläser stehen im obersten Fach vom <g><b>Küchenschrank</b></g>.",
+      "en": "The glasses are on the top shelf of the <b>kitchen cabinet</b>.",
+      "uk": "Склянки стоять на верхній полиці <b>кухонної шафи</b>.",
+      "ru": "Стаканы стоят на верхней полке <b>кухонного шкафа</b>."
+    },
+    "gram": "komposita_fugenelemente"
+  },
+  {
+    "id": "k4_042",
+    "cat": "k4",
+    "term": {
+      "de": "die Geburtstagstorte",
+      "en": "birthday cake",
+      "uk": "торт на день народження",
+      "ru": "торт на день рождения"
+    },
+    "short": {
+      "de": "ein Kuchen, den man an einem Geburtstag isst",
+      "en": "a cake that you eat on a birthday",
+      "uk": "торт, який їдять на день народження",
+      "ru": "торт, который едят на день рождения"
+    },
+    "def": {
+      "de": "Meine Mutter backt jedes Jahr eine wunderschöne <g><b>Geburtstagstorte</b></g>.",
+      "en": "Every year, my mother bakes a beautiful <b>birthday cake</b>.",
+      "uk": "Щороку моя мама пече чудовий <b>торт на день народження</b>.",
+      "ru": "Каждый год моя мама печёт прекрасный <b>торт на день рождения</b>."
+    },
+    "gram": "komposita_fugenelemente"
+  },
+  {
+    "id": "k4_043",
+    "cat": "k4",
+    "term": {
+      "de": "das Familienrezept",
+      "en": "family recipe",
+      "uk": "сімейний рецепт",
+      "ru": "семейный рецепт"
+    },
+    "short": {
+      "de": "ein Rezept, das seit Generationen in einer Familie weitergegeben wird",
+      "en": "a recipe that has been passed down in a family for generations",
+      "uk": "рецепт, який передається в родині з покоління в покоління",
+      "ru": "рецепт, который передаётся в семье из поколения в поколение"
+    },
+    "def": {
+      "de": "Dieses <g><b>Familienrezept</b></g> stammt noch von meiner Urgroßmutter.",
+      "en": "This <b>family recipe</b> comes from my great-grandmother.",
+      "uk": "Цей <b>сімейний рецепт</b> походить ще від моєї прабабусі.",
+      "ru": "Этот <b>семейный рецепт</b> достался ещё от моей прабабушки."
+    },
+    "gram": "komposita_fugenelemente"
+  },
+  {
+    "id": "k4_044",
+    "cat": "k4",
+    "term": {
+      "de": "die Essensreste",
+      "en": "leftovers",
+      "uk": "залишки їжі",
+      "ru": "остатки еды"
+    },
+    "short": {
+      "de": "das Essen, das nach einer Mahlzeit noch übrig ist",
+      "en": "the food that is left over after a meal",
+      "uk": "їжа, яка залишається після прийому їжі",
+      "ru": "еда, которая остаётся после приёма пищи"
+    },
+    "def": {
+      "de": "Wir frieren die <g><b>Essensreste</b></g> immer ein, damit nichts weggeworfen wird.",
+      "en": "We always freeze the <b>leftovers</b> so that nothing is thrown away.",
+      "uk": "Ми завжди заморожуємо <b>залишки їжі</b>, щоб нічого не викидати.",
+      "ru": "Мы всегда замораживаем <b>остатки еды</b>, чтобы ничего не выбрасывать."
+    },
+    "gram": "komposita_fugenelemente"
+  },
+  {
+    "id": "k4_045",
+    "cat": "k4",
+    "term": {
+      "de": "die Portionengröße",
+      "en": "portion size",
+      "uk": "розмір порції",
+      "ru": "размер порции"
+    },
+    "short": {
+      "de": "wie groß eine einzelne Menge Essen ist",
+      "en": "how big a single amount of food is",
+      "uk": "наскільки великою є одна порція їжі",
+      "ru": "насколько большая одна порция еды"
+    },
+    "def": {
+      "de": "In diesem Restaurant ist die <g><b>Portionengröße</b></g> wirklich großzügig.",
+      "en": "In this restaurant, the <b>portion size</b> is really generous.",
+      "uk": "У цьому ресторані <b>розмір порції</b> справді щедрий.",
+      "ru": "В этом ресторане <b>размер порции</b> действительно щедрый."
+    },
+    "gram": "komposita_fugenelemente"
+  },
+  {
+    "id": "k4_046",
+    "cat": "k4",
+    "term": {
+      "de": "der Gästetisch",
+      "en": "guest table",
+      "uk": "стіл для гостей",
+      "ru": "стол для гостей"
+    },
+    "short": {
+      "de": "ein Tisch, an dem Gäste zusammen essen können",
+      "en": "a table where guests can eat together",
+      "uk": "стіл, за яким гості можуть разом їсти",
+      "ru": "стол, за которым гости могут вместе есть"
+    },
+    "def": {
+      "de": "Für das Fest haben wir einen langen <g><b>Gästetisch</b></g> im Garten aufgebaut.",
+      "en": "For the party, we set up a long <b>guest table</b> in the garden.",
+      "uk": "Для свята ми поставили довгий <b>стіл для гостей</b> у саду.",
+      "ru": "Для праздника мы поставили длинный <b>стол для гостей</b> в саду."
+    },
+    "gram": "komposita_fugenelemente"
+  },
+  {
+    "id": "k4_047",
+    "cat": "k4",
+    "term": {
+      "de": "das Ergebnis",
+      "en": "result",
+      "uk": "результат",
+      "ru": "результат"
+    },
+    "short": {
+      "de": "das, was am Ende von etwas herauskommt",
+      "en": "what comes out at the end of something",
+      "uk": "те, що виходить у результаті чогось",
+      "ru": "то, что получается в итоге чего-то"
+    },
+    "def": {
+      "de": "Das <b>Ergebnis</b> <g>von der</g> Umfrage hat uns alle überrascht.",
+      "en": "The <b>result</b> <g>of the</g> survey surprised us all.",
+      "uk": "<b>Результат</b> опитування здивував нас усіх.",
+      "ru": "<b>Результат</b> опроса удивил нас всех."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_048",
+    "cat": "k4",
+    "term": {
+      "de": "die Mehrheit",
+      "en": "majority",
+      "uk": "більшість",
+      "ru": "большинство"
+    },
+    "short": {
+      "de": "mehr als die Hälfte einer Gruppe",
+      "en": "more than half of a group",
+      "uk": "більше половини групи",
+      "ru": "больше половины группы"
+    },
+    "def": {
+      "de": "Die <b>Mehrheit</b> <g>von den</g> Befragten isst mindestens dreimal am Tag.",
+      "en": "The <b>majority</b> <g>of the</g> respondents eat at least three times a day.",
+      "uk": "<b>Більшість</b> опитаних їдять щонайменше тричі на день.",
+      "ru": "<b>Большинство</b> опрошенных едят минимум три раза в день."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_049",
+    "cat": "k4",
+    "term": {
+      "de": "die Meinung",
+      "en": "opinion",
+      "uk": "думка",
+      "ru": "мнение"
+    },
+    "short": {
+      "de": "das, was man persönlich über etwas denkt",
+      "en": "what you personally think about something",
+      "uk": "те, що ти особисто думаєш про щось",
+      "ru": "то, что ты лично думаешь о чём-то"
+    },
+    "def": {
+      "de": "Die <b>Meinung</b> <g>von den</g> Kunden war der Firma sehr wichtig.",
+      "en": "The <b>opinion</b> <g>of the</g> customers was very important to the company.",
+      "uk": "<b>Думка</b> клієнтів була дуже важливою для компанії.",
+      "ru": "<b>Мнение</b> клиентов было очень важно для компании."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_050",
+    "cat": "k4",
+    "term": {
+      "de": "der Teilnehmer / die Teilnehmerin",
+      "en": "participant",
+      "uk": "учасник / учасниця",
+      "ru": "участник / участница"
+    },
+    "short": {
+      "de": "eine Person, die bei einer Aktivität, einer Studie oder einer Umfrage mitmacht",
+      "en": "a person who takes part in an activity, study or survey",
+      "uk": "людина, яка бере участь у діяльності, дослідженні чи опитуванні",
+      "ru": "человек, который участвует в деятельности, исследовании или опросе"
+    },
+    "def": {
+      "de": "Das Alter <g>von den</g> <b>Teilnehmern</b> lag zwischen zwanzig und vierzig Jahren.",
+      "en": "The age <g>of the</g> <b>participants</b> ranged between twenty and forty years.",
+      "uk": "Вік <b>учасників</b> становив від двадцяти до сорока років.",
+      "ru": "Возраст <b>участников</b> составлял от двадцати до сорока лет."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_051",
+    "cat": "k4",
+    "term": {
+      "de": "die Statistik",
+      "en": "statistics",
+      "uk": "статистика",
+      "ru": "статистика"
+    },
+    "short": {
+      "de": "Zahlen und Daten, die eine Information genau zeigen",
+      "en": "numbers and data that show information precisely",
+      "uk": "цифри та дані, які точно показують інформацію",
+      "ru": "цифры и данные, которые точно показывают информацию"
+    },
+    "def": {
+      "de": "Die <b>Statistik</b> <g>von der</g> Stadt zeigt, dass immer mehr Menschen vegetarisch essen.",
+      "en": "The city's <b>statistics</b> show that more and more people are eating vegetarian.",
+      "uk": "<b>Статистика</b> міста показує, що дедалі більше людей їдять вегетаріанську їжу.",
+      "ru": "<b>Статистика</b> города показывает, что всё больше людей едят вегетарианскую пищу."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_052",
+    "cat": "k4",
+    "term": {
+      "de": "der Durchschnitt",
+      "en": "average",
+      "uk": "середнє значення",
+      "ru": "среднее значение"
+    },
+    "short": {
+      "de": "der mittlere Wert, den man aus mehreren Zahlen berechnet",
+      "en": "the middle value that you calculate from several numbers",
+      "uk": "середнє значення, яке обчислюється з кількох чисел",
+      "ru": "среднее значение, вычисляемое из нескольких чисел"
+    },
+    "def": {
+      "de": "Der <b>Durchschnitt</b> <g>von den</g> Antworten lag bei etwa drei Mahlzeiten pro Tag.",
+      "en": "The <b>average</b> <g>of the</g> answers was about three meals per day.",
+      "uk": "<b>Середнє значення</b> відповідей становило приблизно три прийоми їжі на день.",
+      "ru": "<b>Среднее значение</b> ответов составило около трёх приёмов пищи в день."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_053",
+    "cat": "k4",
+    "term": {
+      "de": "die Antwort",
+      "en": "answer",
+      "uk": "відповідь",
+      "ru": "ответ"
+    },
+    "short": {
+      "de": "das, was man sagt oder schreibt, wenn man auf eine Frage reagiert",
+      "en": "what you say or write when you respond to a question",
+      "uk": "те, що кажеш чи пишеш у відповідь на запитання",
+      "ru": "то, что говоришь или пишешь в ответ на вопрос"
+    },
+    "def": {
+      "de": "Die <b>Antwort</b> <g>von der</g> Mehrheit war eindeutig: Frühstück ist wichtig.",
+      "en": "The <b>answer</b> <g>of the</g> majority was clear: breakfast is important.",
+      "uk": "<b>Відповідь</b> більшості була однозначною: сніданок важливий.",
+      "ru": "<b>Ответ</b> большинства был однозначным: завтрак важен."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_054",
+    "cat": "k4",
+    "term": {
+      "de": "befragen",
+      "en": "to survey, to question",
+      "uk": "опитувати",
+      "ru": "опрашивать"
+    },
+    "short": {
+      "de": "jemandem Fragen stellen, um Informationen zu bekommen",
+      "en": "to ask someone questions to get information",
+      "uk": "ставити комусь запитання, щоб отримати інформацію",
+      "ru": "задавать кому-то вопросы, чтобы получить информацию"
+    },
+    "def": {
+      "de": "Die Studenten haben hundert Personen <g>von der</g> Universität zum Thema Essgewohnheiten <b>befragt</b>.",
+      "en": "The students <b>surveyed</b> a hundred people from the university on the topic of eating habits.",
+      "uk": "Студенти <b>опитали</b> сто осіб з університету на тему харчових звичок.",
+      "ru": "Студенты <b>опросили</b> сто человек из университета на тему пищевых привычек."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_055",
+    "cat": "k4",
+    "term": {
+      "de": "die Tendenz",
+      "en": "trend",
+      "uk": "тенденція",
+      "ru": "тенденция"
+    },
+    "short": {
+      "de": "eine Richtung oder Entwicklung, die man erkennen kann",
+      "en": "a direction or development that you can recognize",
+      "uk": "напрямок чи тенденція розвитку, яку можна помітити",
+      "ru": "направление или тенденция развития, которую можно заметить"
+    },
+    "def": {
+      "de": "Die <b>Tendenz</b> <g>von den</g> letzten Jahren zeigt: Immer mehr Leute kochen wieder selbst.",
+      "en": "The <b>trend</b> <g>of the</g> last few years shows: more and more people are cooking for themselves again.",
+      "uk": "<b>Тенденція</b> останніх років показує: дедалі більше людей знову готують самі.",
+      "ru": "<b>Тенденция</b> последних лет показывает: всё больше людей снова готовят сами."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_056",
+    "cat": "k4",
+    "term": {
+      "de": "der Nährstoff",
+      "en": "nutrient",
+      "uk": "поживна речовина",
+      "ru": "питательное вещество"
+    },
+    "short": {
+      "de": "ein Stoff im Essen, den der Körper zum Leben braucht",
+      "en": "a substance in food that the body needs to live",
+      "uk": "речовина в їжі, яка потрібна організму для життя",
+      "ru": "вещество в еде, необходимое организму для жизни"
+    },
+    "def": {
+      "de": "Die wichtigsten <b>Nährstoffe</b> <g>von</g> diesem Gericht sind Eiweiß und Vitamine.",
+      "en": "The most important <b>nutrients</b> <g>of</g> this dish are protein and vitamins.",
+      "uk": "Найважливіші <b>поживні речовини</b> цієї страви — це білок та вітаміни.",
+      "ru": "Самые важные <b>питательные вещества</b> этого блюда — это белок и витамины."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_057",
+    "cat": "k4",
+    "term": {
+      "de": "die Vitamine",
+      "en": "vitamins",
+      "uk": "вітаміни",
+      "ru": "витамины"
+    },
+    "short": {
+      "de": "wichtige Stoffe im Essen, die der Körper in kleinen Mengen braucht",
+      "en": "important substances in food that the body needs in small amounts",
+      "uk": "важливі речовини в їжі, які організм потребує в невеликих кількостях",
+      "ru": "важные вещества в еде, которые нужны организму в небольших количествах"
+    },
+    "def": {
+      "de": "Die <b>Vitamine</b> <g>von</g> Zitrusfrüchten sind bekannt für ihre Wirkung gegen Erkältungen.",
+      "en": "The <b>vitamins</b> <g>of</g> citrus fruits are known for their effect against colds.",
+      "uk": "<b>Вітаміни</b> цитрусових відомі своєю дією проти застуди.",
+      "ru": "<b>Витамины</b> цитрусовых известны своим действием против простуды."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_058",
+    "cat": "k4",
+    "term": {
+      "de": "ausgewogen",
+      "en": "balanced",
+      "uk": "збалансований",
+      "ru": "сбалансированный"
+    },
+    "short": {
+      "de": "mit einer guten Mischung aus verschiedenen, gesunden Dingen",
+      "en": "with a good mix of different, healthy things",
+      "uk": "з гарним поєднанням різних, здорових речей",
+      "ru": "с хорошим сочетанием разных, полезных вещей"
+    },
+    "def": {
+      "de": "Der Speiseplan <g>von</g> der Schule ist wirklich <b>ausgewogen</b>.",
+      "en": "The menu <g>of</g> the school is really <b>balanced</b>.",
+      "uk": "Меню школи справді <b>збалансоване</b>.",
+      "ru": "Меню школы действительно <b>сбалансировано</b>."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_059",
+    "cat": "k4",
+    "term": {
+      "de": "der Ballaststoff",
+      "en": "dietary fibre",
+      "uk": "клітковина",
+      "ru": "клетчатка"
+    },
+    "short": {
+      "de": "ein Stoff in Pflanzen, der gut für die Verdauung ist",
+      "en": "a substance in plants that is good for digestion",
+      "uk": "речовина в рослинах, корисна для травлення",
+      "ru": "вещество в растениях, полезное для пищеварения"
+    },
+    "def": {
+      "de": "Die <b>Ballaststoffe</b> <g>von</g> Vollkornprodukten sind sehr gut für die Verdauung.",
+      "en": "The <b>dietary fibre</b> <g>of</g> wholegrain products is very good for digestion.",
+      "uk": "<b>Клітковина</b> цільнозернових продуктів дуже корисна для травлення.",
+      "ru": "<b>Клетчатка</b> цельнозерновых продуктов очень полезна для пищеварения."
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "k4_060",
+    "cat": "k4",
+    "term": {
+      "de": "die Kalorie",
+      "en": "calorie",
+      "uk": "калорія",
+      "ru": "калория"
+    },
+    "short": {
+      "de": "eine Einheit, mit der man die Energie im Essen misst",
+      "en": "a unit used to measure the energy in food",
+      "uk": "одиниця, якою вимірюють енергію в їжі",
+      "ru": "единица, которой измеряют энергию в еде"
+    },
+    "def": {
+      "de": "Die Anzahl <g>von</g> <b>Kalorien</b> in diesem Gericht ist überraschend niedrig.",
+      "en": "The number <g>of</g> <b>calories</b> in this dish is surprisingly low.",
+      "uk": "Кількість <b>калорій</b> у цій страві на диво низька.",
+      "ru": "Количество <b>калорий</b> в этом блюде на удивление низкое."
     },
     "gram": "genitiv_alternativen"
   },
