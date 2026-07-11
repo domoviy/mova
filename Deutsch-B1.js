@@ -1741,7 +1741,15 @@ var LESSONS = [
     "grammar": "nebensatz_seit_seitdem",
     "cardIds": [
       "k5_001",
-      "k5_002"
+      "k5_002",
+      "k5_016",
+      "k5_017",
+      "k5_018",
+      "k5_019",
+      "k5_020",
+      "k5_021",
+      "k5_022",
+      "k5_023"
     ],
     "unlockAfter": null,
     "sbCards": []
@@ -1769,7 +1777,15 @@ var LESSONS = [
     "grammar": "verben_praep_personen_sachen",
     "cardIds": [
       "k5_007",
-      "k5_012"
+      "k5_012",
+      "k5_024",
+      "k5_025",
+      "k5_026",
+      "k5_027",
+      "k5_028",
+      "k5_029",
+      "k5_030",
+      "k5_031"
     ],
     "unlockAfter": "k5m1",
     "sbCards": []
@@ -1797,7 +1813,15 @@ var LESSONS = [
     "grammar": "nebensatz_mit_bis",
     "cardIds": [
       "k5_009",
-      "k5_013"
+      "k5_013",
+      "k5_032",
+      "k5_033",
+      "k5_034",
+      "k5_035",
+      "k5_036",
+      "k5_037",
+      "k5_038",
+      "k5_039"
     ],
     "unlockAfter": "k5m2",
     "sbCards": []
@@ -1825,7 +1849,15 @@ var LESSONS = [
     "grammar": "verben_als_nomen",
     "cardIds": [
       "k5_010",
-      "k5_011"
+      "k5_011",
+      "k5_040",
+      "k5_041",
+      "k5_042",
+      "k5_043",
+      "k5_044",
+      "k5_045",
+      "k5_046",
+      "k5_047"
     ],
     "unlockAfter": "k5m3",
     "sbCards": []
@@ -1853,7 +1885,15 @@ var LESSONS = [
     "grammar": "praepositionaladverbien_b1",
     "cardIds": [
       "k5_003",
-      "k5_008"
+      "k5_008",
+      "k5_048",
+      "k5_049",
+      "k5_050",
+      "k5_051",
+      "k5_052",
+      "k5_053",
+      "k5_054",
+      "k5_055"
     ],
     "unlockAfter": "k5m4",
     "sbCards": []
@@ -1884,7 +1924,12 @@ var LESSONS = [
       "k5_005",
       "k5_006",
       "k5_014",
-      "k5_015"
+      "k5_015",
+      "k5_056",
+      "k5_057",
+      "k5_058",
+      "k5_059",
+      "k5_060"
     ],
     "unlockAfter": "k5m5",
     "sbCards": []
@@ -9431,6 +9476,1041 @@ var VOCAB = [
       "en": "At first the weather here was strange for me, but I quickly <b>got used</b> <g>to it</g>.",
       "uk": "Спочатку погода тут була для мене дивною, але <g>до цього</g> я швидко <b>звик</b>.",
       "ru": "Сначала погода здесь была для меня странной, но <g>к этому</g> я быстро <b>привык</b>."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_016",
+    "cat": "k5",
+    "term": {
+      "de": "die Gewohnheit",
+      "en": "habit",
+      "uk": "звичка",
+      "ru": "привычка"
+    },
+    "short": {
+      "de": "etwas, das man regelmäßig und automatisch macht",
+      "en": "something you do regularly and automatically",
+      "uk": "те, що робиш регулярно й автоматично",
+      "ru": "то, что делаешь регулярно и автоматически"
+    },
+    "def": {
+      "de": "Ich habe viele neue <b>Gewohnheiten</b>, <g>seit</g> ich in einem anderen Land lebe.",
+      "en": "I have many new <b>habits</b> <g>since</g> I have been living in a different country.",
+      "uk": "У мене багато нових <b>звичок</b>, <g>відколи</g> я живу в іншій країні.",
+      "ru": "У меня много новых <b>привычек</b>, <g>с тех пор как</g> я живу в другой стране."
+    },
+    "gram": "nebensatz_seit_seitdem"
+  },
+  {
+    "id": "k5_017",
+    "cat": "k5",
+    "term": {
+      "de": "das Verhalten",
+      "en": "behaviour",
+      "uk": "поведінка",
+      "ru": "поведение"
+    },
+    "short": {
+      "de": "wie sich eine Person in bestimmten Situationen zeigt",
+      "en": "how a person behaves in certain situations",
+      "uk": "як людина поводиться в певних ситуаціях",
+      "ru": "как человек ведёт себя в определённых ситуациях"
+    },
+    "def": {
+      "de": "Ich verstehe das <b>Verhalten</b> der Menschen hier viel besser, <g>seitdem</g> ich die Kultur kenne.",
+      "en": "I understand people's <b>behaviour</b> here much better <g>since</g> I have gotten to know the culture.",
+      "uk": "Я набагато краще розумію <b>поведінку</b> людей тут, <g>відколи</g> знаю культуру.",
+      "ru": "Я намного лучше понимаю <b>поведение</b> людей здесь, <g>с тех пор как</g> знаю культуру."
+    },
+    "gram": "nebensatz_seit_seitdem"
+  },
+  {
+    "id": "k5_018",
+    "cat": "k5",
+    "term": {
+      "de": "die Kultur",
+      "en": "culture",
+      "uk": "культура",
+      "ru": "культура"
+    },
+    "short": {
+      "de": "die Werte, Gewohnheiten und Traditionen einer Gruppe von Menschen",
+      "en": "the values, habits and traditions of a group of people",
+      "uk": "цінності, звички та традиції групи людей",
+      "ru": "ценности, привычки и традиции группы людей"
+    },
+    "def": {
+      "de": "Ich interessiere mich viel mehr für andere <b>Kulturen</b>, <g>seit</g> ich im Ausland wohne.",
+      "en": "I am much more interested in other <b>cultures</b> <g>since</g> I have been living abroad.",
+      "uk": "Мене набагато більше цікавлять інші <b>культури</b>, <g>відколи</g> я живу за кордоном.",
+      "ru": "Меня намного больше интересуют другие <b>культуры</b>, <g>с тех пор как</g> я живу за границей."
+    },
+    "gram": "nebensatz_seit_seitdem"
+  },
+  {
+    "id": "k5_019",
+    "cat": "k5",
+    "term": {
+      "de": "fremd",
+      "en": "foreign, strange",
+      "uk": "чужий, незнайомий",
+      "ru": "чужой, незнакомый"
+    },
+    "short": {
+      "de": "unbekannt oder ungewohnt, aus einem anderen Land oder einer anderen Kultur",
+      "en": "unknown or unfamiliar, from another country or culture",
+      "uk": "невідомий чи незвичний, з іншої країни чи культури",
+      "ru": "неизвестный или непривычный, из другой страны или культуры"
+    },
+    "def": {
+      "de": "Vieles fühlt sich nicht mehr <b>fremd</b> an, <g>seitdem</g> ich hier wohne.",
+      "en": "Many things no longer feel <b>foreign</b> <g>since</g> I have been living here.",
+      "uk": "Багато чого вже не здається <b>чужим</b>, <g>відколи</g> я тут живу.",
+      "ru": "Многое уже не кажется <b>чужим</b>, <g>с тех пор как</g> я здесь живу."
+    },
+    "gram": "nebensatz_seit_seitdem"
+  },
+  {
+    "id": "k5_020",
+    "cat": "k5",
+    "term": {
+      "de": "vertraut",
+      "en": "familiar",
+      "uk": "знайомий, звичний",
+      "ru": "знакомый, привычный"
+    },
+    "short": {
+      "de": "gut bekannt, wie etwas, das man schon oft erlebt hat",
+      "en": "well known, like something you have already experienced often",
+      "uk": "добре знайомий, як щось, що вже часто переживав",
+      "ru": "хорошо знакомый, как что-то, что уже часто переживал"
+    },
+    "def": {
+      "de": "Die Stadt ist mir sehr <b>vertraut</b> geworden, <g>seit</g> ich hier arbeite.",
+      "en": "The city has become very <b>familiar</b> to me <g>since</g> I have been working here.",
+      "uk": "Місто стало мені дуже <b>знайомим</b>, <g>відколи</g> я тут працюю.",
+      "ru": "Город стал мне очень <b>знакомым</b>, <g>с тех пор как</g> я здесь работаю."
+    },
+    "gram": "nebensatz_seit_seitdem"
+  },
+  {
+    "id": "k5_021",
+    "cat": "k5",
+    "term": {
+      "de": "die Regel",
+      "en": "rule",
+      "uk": "правило",
+      "ru": "правило"
+    },
+    "short": {
+      "de": "eine Vorschrift, die zeigt, was man tun soll oder darf",
+      "en": "a rule that shows what you should or may do",
+      "uk": "правило, яке показує, що варто чи можна робити",
+      "ru": "правило, которое показывает, что следует или можно делать"
+    },
+    "def": {
+      "de": "Ich kenne die wichtigsten <b>Regeln</b> im Alltag viel besser, <g>seitdem</g> ich einen Sprachkurs besuche.",
+      "en": "I know the most important everyday <b>rules</b> much better <g>since</g> I have been attending a language course.",
+      "uk": "Я набагато краще знаю найважливіші <b>правила</b> повсякденного життя, <g>відколи</g> відвідую мовний курс.",
+      "ru": "Я намного лучше знаю самые важные <b>правила</b> повседневной жизни, <g>с тех пор как</g> посещаю языковой курс."
+    },
+    "gram": "nebensatz_seit_seitdem"
+  },
+  {
+    "id": "k5_022",
+    "cat": "k5",
+    "term": {
+      "de": "sich entwickeln",
+      "en": "to develop",
+      "uk": "розвиватися",
+      "ru": "развиваться"
+    },
+    "short": {
+      "de": "sich mit der Zeit verändern und besser werden",
+      "en": "to change over time and become better",
+      "uk": "з часом змінюватися та ставати кращим",
+      "ru": "со временем меняться и становиться лучше"
+    },
+    "def": {
+      "de": "Meine Deutschkenntnisse haben sich stark <b>entwickelt</b>, <g>seit</g> ich hier lebe.",
+      "en": "My German skills have <b>developed</b> a lot <g>since</g> I have been living here.",
+      "uk": "Мої знання німецької значно <b>розвинулися</b>, <g>відколи</g> я тут живу.",
+      "ru": "Мои знания немецкого сильно <b>развились</b>, <g>с тех пор как</g> я здесь живу."
+    },
+    "gram": "nebensatz_seit_seitdem"
+  },
+  {
+    "id": "k5_023",
+    "cat": "k5",
+    "term": {
+      "de": "die Erwartung",
+      "en": "expectation",
+      "uk": "очікування",
+      "ru": "ожидание"
+    },
+    "short": {
+      "de": "das, was man von einer Situation oder Person erhofft oder denkt",
+      "en": "what you hope for or think about a situation or person",
+      "uk": "те, чого сподіваєшся чи думаєш про ситуацію чи людину",
+      "ru": "то, что ожидаешь или думаешь о ситуации или человеке"
+    },
+    "def": {
+      "de": "Meine <b>Erwartungen</b> an das Leben hier haben sich stark verändert, <g>seitdem</g> ich angekommen bin.",
+      "en": "My <b>expectations</b> about life here have changed a lot <g>since</g> I arrived.",
+      "uk": "Мої <b>очікування</b> від життя тут сильно змінилися, <g>відколи</g> я приїхав(-ла).",
+      "ru": "Мои <b>ожидания</b> от жизни здесь сильно изменились, <g>с тех пор как</g> я приехал(-а)."
+    },
+    "gram": "nebensatz_seit_seitdem"
+  },
+  {
+    "id": "k5_024",
+    "cat": "k5",
+    "term": {
+      "de": "warten (auf)",
+      "en": "to wait (for)",
+      "uk": "чекати (на)",
+      "ru": "ждать"
+    },
+    "short": {
+      "de": "bleiben und erwarten, dass jemand kommt oder etwas passiert",
+      "en": "to stay and expect someone to come or something to happen",
+      "uk": "залишатися й чекати, що хтось прийде чи щось станеться",
+      "ru": "оставаться и ждать, что кто-то придёт или что-то произойдёт"
+    },
+    "def": {
+      "de": "<g>Worauf</g> <b>wartest</b> du eigentlich noch?",
+      "en": "What are you actually still <b>waiting</b> <g>for</g>?",
+      "uk": "<g>Чого</g> ти взагалі ще <b>чекаєш</b>?",
+      "ru": "<g>Чего</g> ты вообще ещё <b>ждёшь</b>?"
+    },
+    "gram": "verben_praep_personen_sachen"
+  },
+  {
+    "id": "k5_025",
+    "cat": "k5",
+    "term": {
+      "de": "denken (an)",
+      "en": "to think (of)",
+      "uk": "думати (про)",
+      "ru": "думать (о)"
+    },
+    "short": {
+      "de": "an eine Person oder Sache in Gedanken sein",
+      "en": "to have someone or something in your thoughts",
+      "uk": "думати про людину чи річ",
+      "ru": "думать о человеке или вещи"
+    },
+    "def": {
+      "de": "<g>An wen</g> <b>denkst</b> du gerade?",
+      "en": "<g>Who</g> are you <b>thinking</b> of right now?",
+      "uk": "<g>Про кого</g> ти зараз <b>думаєш</b>?",
+      "ru": "<g>О ком</g> ты сейчас <b>думаешь</b>?"
+    },
+    "gram": "verben_praep_personen_sachen"
+  },
+  {
+    "id": "k5_026",
+    "cat": "k5",
+    "term": {
+      "de": "sich erinnern (an)",
+      "en": "to remember",
+      "uk": "згадувати",
+      "ru": "вспоминать"
+    },
+    "short": {
+      "de": "sich an etwas aus der Vergangenheit zurückerinnern",
+      "en": "to recall something from the past",
+      "uk": "згадувати щось із минулого",
+      "ru": "вспоминать что-то из прошлого"
+    },
+    "def": {
+      "de": "<g>Woran</g> <b>erinnerst</b> du <b>dich</b> noch aus deiner Kindheit?",
+      "en": "What do you still <b>remember</b> from your childhood?",
+      "uk": "<g>Що</g> ти ще <b>памʼятаєш</b> зі свого дитинства?",
+      "ru": "<g>Что</g> ты ещё <b>помнишь</b> из своего детства?"
+    },
+    "gram": "verben_praep_personen_sachen"
+  },
+  {
+    "id": "k5_027",
+    "cat": "k5",
+    "term": {
+      "de": "träumen (von)",
+      "en": "to dream (of)",
+      "uk": "мріяти, бачити уві сні",
+      "ru": "мечтать, видеть во сне"
+    },
+    "short": {
+      "de": "im Schlaf oder in Gedanken etwas erleben, das man sich wünscht",
+      "en": "to experience something you wish for, either in sleep or in your thoughts",
+      "uk": "переживати уві сні чи в думках те, чого бажаєш",
+      "ru": "переживать во сне или в мыслях то, чего желаешь"
+    },
+    "def": {
+      "de": "<g>Wovon</g> hast du letzte Nacht <b>geträumt</b>?",
+      "en": "What did you <b>dream</b> <g>of</g> last night?",
+      "uk": "<g>Про що</g> тобі снилося вчора вночі?",
+      "ru": "<g>О чём</g> тебе снилось вчера ночью?"
+    },
+    "gram": "verben_praep_personen_sachen"
+  },
+  {
+    "id": "k5_028",
+    "cat": "k5",
+    "term": {
+      "de": "sprechen (über)",
+      "en": "to talk (about)",
+      "uk": "говорити (про)",
+      "ru": "говорить (о)"
+    },
+    "short": {
+      "de": "sich mit jemandem über ein Thema unterhalten",
+      "en": "to converse with someone about a topic",
+      "uk": "розмовляти з кимось на певну тему",
+      "ru": "разговаривать с кем-то на определённую тему"
+    },
+    "def": {
+      "de": "<g>Worüber</g> habt ihr gestern so lange <b>gesprochen</b>?",
+      "en": "What did you <b>talk</b> <g>about</g> for so long yesterday?",
+      "uk": "<g>Про що</g> ви вчора так довго <b>говорили</b>?",
+      "ru": "<g>О чём</g> вы вчера так долго <b>говорили</b>?"
+    },
+    "gram": "verben_praep_personen_sachen"
+  },
+  {
+    "id": "k5_029",
+    "cat": "k5",
+    "term": {
+      "de": "diskutieren (über)",
+      "en": "to discuss",
+      "uk": "дискутувати (про)",
+      "ru": "дискутировать (о)"
+    },
+    "short": {
+      "de": "über ein Thema sprechen und verschiedene Meinungen austauschen",
+      "en": "to talk about a topic and exchange different opinions",
+      "uk": "говорити про тему та обмінюватися різними думками",
+      "ru": "говорить о теме и обмениваться разными мнениями"
+    },
+    "def": {
+      "de": "<g>Über wen</g> habt ihr im Kurs <b>diskutiert</b>?",
+      "en": "<g>Who</g> did you <b>discuss</b> in the course?",
+      "uk": "<g>Про кого</g> ви <b>дискутували</b> на курсі?",
+      "ru": "<g>О ком</g> вы <b>дискутировали</b> на курсе?"
+    },
+    "gram": "verben_praep_personen_sachen"
+  },
+  {
+    "id": "k5_030",
+    "cat": "k5",
+    "term": {
+      "de": "sich beschäftigen (mit)",
+      "en": "to deal (with), to engage (with)",
+      "uk": "займатися (чимось)",
+      "ru": "заниматься (чем-то)"
+    },
+    "short": {
+      "de": "sich mit einem Thema oder einer Aufgabe intensiv befassen",
+      "en": "to deal intensively with a topic or task",
+      "uk": "інтенсивно займатися темою чи завданням",
+      "ru": "интенсивно заниматься темой или задачей"
+    },
+    "def": {
+      "de": "<g>Womit</g> <b>beschäftigst</b> du <b>dich</b> gerade in deiner Freizeit?",
+      "en": "What are you currently <b>occupying</b> yourself <g>with</g> in your free time?",
+      "uk": "<g>Чим</g> ти зараз <b>займаєшся</b> у вільний час?",
+      "ru": "<g>Чем</g> ты сейчас <b>занимаешься</b> в свободное время?"
+    },
+    "gram": "verben_praep_personen_sachen"
+  },
+  {
+    "id": "k5_031",
+    "cat": "k5",
+    "term": {
+      "de": "achten (auf)",
+      "en": "to pay attention (to)",
+      "uk": "звертати увагу (на)",
+      "ru": "обращать внимание (на)"
+    },
+    "short": {
+      "de": "auf etwas genau aufpassen oder etwas beachten",
+      "en": "to pay close attention to or observe something",
+      "uk": "уважно стежити за чимось чи враховувати щось",
+      "ru": "внимательно следить за чем-то или учитывать что-то"
+    },
+    "def": {
+      "de": "<g>Worauf</g> muss man in diesem Kurs besonders <b>achten</b>?",
+      "en": "What do you especially need to <b>pay attention</b> <g>to</g> in this course?",
+      "uk": "<g>На що</g> потрібно особливо <b>звертати увагу</b> на цьому курсі?",
+      "ru": "<g>На что</g> нужно особенно <b>обращать внимание</b> на этом курсе?"
+    },
+    "gram": "verben_praep_personen_sachen"
+  },
+  {
+    "id": "k5_032",
+    "cat": "k5",
+    "term": {
+      "de": "das Abenteuer",
+      "en": "adventure",
+      "uk": "пригода",
+      "ru": "приключение"
+    },
+    "short": {
+      "de": "ein aufregendes und ungewöhnliches Erlebnis",
+      "en": "an exciting and unusual experience",
+      "uk": "захопливий і незвичайний досвід",
+      "ru": "захватывающий и необычный опыт"
+    },
+    "def": {
+      "de": "Das <b>Abenteuer</b> war wunderschön, <g>bis</g> wir den Rückweg nicht mehr fanden.",
+      "en": "The <b>adventure</b> was wonderful <g>until</g> we could no longer find the way back.",
+      "uk": "<b>Пригода</b> була чудовою, <g>доки</g> ми не перестали знаходити дорогу назад.",
+      "ru": "<b>Приключение</b> было прекрасным, <g>пока</g> мы не перестали находить дорогу назад."
+    },
+    "gram": "nebensatz_mit_bis"
+  },
+  {
+    "id": "k5_033",
+    "cat": "k5",
+    "term": {
+      "de": "unvergesslich",
+      "en": "unforgettable",
+      "uk": "незабутній",
+      "ru": "незабываемый"
+    },
+    "short": {
+      "de": "so besonders, dass man es nie vergisst",
+      "en": "so special that you never forget it",
+      "uk": "настільки особливий, що ніколи не забудеш",
+      "ru": "настолько особенный, что никогда не забудешь"
+    },
+    "def": {
+      "de": "Die Reise war <b>unvergesslich</b>, <g>bis</g> wir am Flughafen unser Gepäck verloren.",
+      "en": "The trip was <b>unforgettable</b>, <g>until</g> we lost our luggage at the airport.",
+      "uk": "Подорож була <b>незабутньою</b>, <g>доки</g> ми не загубили багаж в аеропорту.",
+      "ru": "Поездка была <b>незабываемой</b>, <g>пока</g> мы не потеряли багаж в аэропорту."
+    },
+    "gram": "nebensatz_mit_bis"
+  },
+  {
+    "id": "k5_034",
+    "cat": "k5",
+    "term": {
+      "de": "die Herausforderung",
+      "en": "challenge",
+      "uk": "виклик",
+      "ru": "вызов"
+    },
+    "short": {
+      "de": "eine schwierige Aufgabe, die man mit viel Mühe lösen muss",
+      "en": "a difficult task that requires a lot of effort to solve",
+      "uk": "складне завдання, яке потребує значних зусиль для вирішення",
+      "ru": "сложная задача, требующая значительных усилий для решения"
+    },
+    "def": {
+      "de": "Die <b>Herausforderung</b> war groß, <g>bis</g> ich endlich eine Lösung fand.",
+      "en": "The <b>challenge</b> was big <g>until</g> I finally found a solution.",
+      "uk": "<b>Виклик</b> був великим, <g>доки</g> я нарешті не знайшов(-ла) рішення.",
+      "ru": "<b>Вызов</b> был большим, <g>пока</g> я наконец не нашёл(-ла) решение."
+    },
+    "gram": "nebensatz_mit_bis"
+  },
+  {
+    "id": "k5_035",
+    "cat": "k5",
+    "term": {
+      "de": "meistern",
+      "en": "to master, to cope with",
+      "uk": "опановувати, долати",
+      "ru": "осваивать, преодолевать"
+    },
+    "short": {
+      "de": "eine schwierige Aufgabe erfolgreich lösen",
+      "en": "to successfully solve a difficult task",
+      "uk": "успішно вирішити складне завдання",
+      "ru": "успешно решить сложную задачу"
+    },
+    "def": {
+      "de": "Wir haben lange geübt, <g>bis</g> wir die neue Sprache endlich <b>meisterten</b>.",
+      "en": "We practised for a long time <g>until</g> we finally <b>mastered</b> the new language.",
+      "uk": "Ми довго тренувалися, <g>доки</g> нарешті не <b>опанували</b> нову мову.",
+      "ru": "Мы долго тренировались, <g>пока</g> наконец не <b>освоили</b> новый язык."
+    },
+    "gram": "nebensatz_mit_bis"
+  },
+  {
+    "id": "k5_036",
+    "cat": "k5",
+    "term": {
+      "de": "das Ziel",
+      "en": "goal",
+      "uk": "мета",
+      "ru": "цель"
+    },
+    "short": {
+      "de": "das, was man erreichen möchte",
+      "en": "what you want to achieve",
+      "uk": "те, чого хочеш досягти",
+      "ru": "то, чего хочешь достичь"
+    },
+    "def": {
+      "de": "Ich habe hart gearbeitet, <g>bis</g> ich mein <b>Ziel</b> endlich erreicht habe.",
+      "en": "I worked hard <g>until</g> I finally achieved my <b>goal</b>.",
+      "uk": "Я тяжко працював(-ла), <g>доки</g> нарешті не досяг(-ла) своєї <b>мети</b>.",
+      "ru": "Я усердно работал(-а), <g>пока</g> наконец не достиг(-ла) своей <b>цели</b>."
+    },
+    "gram": "nebensatz_mit_bis"
+  },
+  {
+    "id": "k5_037",
+    "cat": "k5",
+    "term": {
+      "de": "erreichen",
+      "en": "to reach, to achieve",
+      "uk": "досягати, встигати",
+      "ru": "достигать, успевать"
+    },
+    "short": {
+      "de": "etwas schaffen oder ankommen, was man sich vorgenommen hat",
+      "en": "to manage or arrive at something you set out to do",
+      "uk": "досягти чогось запланованого чи прибути туди",
+      "ru": "достичь чего-то запланированного или прибыть туда"
+    },
+    "def": {
+      "de": "Wir sind schnell gelaufen, <g>bis</g> wir den Bahnhof gerade noch <b>erreicht</b> haben.",
+      "en": "We ran fast <g>until</g> we just managed to <b>reach</b> the station.",
+      "uk": "Ми швидко бігли, <g>доки</g> ледь-ледь не <b>дісталися</b> вокзалу.",
+      "ru": "Мы быстро бежали, <g>пока</g> едва не <b>добрались</b> до вокзала."
+    },
+    "gram": "nebensatz_mit_bis"
+  },
+  {
+    "id": "k5_038",
+    "cat": "k5",
+    "term": {
+      "de": "durchhalten",
+      "en": "to persevere, to hold out",
+      "uk": "витримувати, не здаватися",
+      "ru": "выдерживать, не сдаваться"
+    },
+    "short": {
+      "de": "trotz Schwierigkeiten nicht aufgeben und weitermachen",
+      "en": "not giving up despite difficulties and continuing",
+      "uk": "не здаватися попри труднощі та продовжувати",
+      "ru": "не сдаваться, несмотря на трудности, и продолжать"
+    },
+    "def": {
+      "de": "Der Kurs war anstrengend, aber ich habe <b>durchgehalten</b>, <g>bis</g> ich die Prüfung bestanden habe.",
+      "en": "The course was exhausting, but I <b>held out</b> <g>until</g> I passed the exam.",
+      "uk": "Курс був виснажливим, але я <b>витримав(-ла)</b>, <g>доки</g> не склав(-ла) іспит.",
+      "ru": "Курс был изнурительным, но я <b>выдержал(-а)</b>, <g>пока</g> не сдал(-а) экзамен."
+    },
+    "gram": "nebensatz_mit_bis"
+  },
+  {
+    "id": "k5_039",
+    "cat": "k5",
+    "term": {
+      "de": "stolz",
+      "en": "proud",
+      "uk": "гордий",
+      "ru": "гордый"
+    },
+    "short": {
+      "de": "ein gutes Gefühl haben, weil man etwas Schwieriges geschafft hat",
+      "en": "to feel good because you have accomplished something difficult",
+      "uk": "мати гарне відчуття, бо досяг чогось складного",
+      "ru": "испытывать хорошее чувство, потому что достиг чего-то сложного"
+    },
+    "def": {
+      "de": "Ich war nicht <b>stolz</b> auf mich, <g>bis</g> ich das Zertifikat endlich in der Hand hielt.",
+      "en": "I was not <b>proud</b> of myself <g>until</g> I finally held the certificate in my hand.",
+      "uk": "Я не пишався(-лася) собою, <g>доки</g> нарешті не тримав(-ла) сертифікат у руках.",
+      "ru": "Я не гордился(-лась) собой, <g>пока</g> наконец не держал(-а) сертификат в руках."
+    },
+    "gram": "nebensatz_mit_bis"
+  },
+  {
+    "id": "k5_040",
+    "cat": "k5",
+    "term": {
+      "de": "das Aufstehen",
+      "en": "getting up",
+      "uk": "вставання",
+      "ru": "вставание"
+    },
+    "short": {
+      "de": "das Verlassen des Bettes am Morgen",
+      "en": "leaving the bed in the morning",
+      "uk": "вставання з ліжка вранці",
+      "ru": "вставание с постели утром"
+    },
+    "def": {
+      "de": "<b>Das Aufstehen</b> fällt mir im Winter besonders schwer.",
+      "en": "<b>Getting up</b> is especially hard for me in winter.",
+      "uk": "<b>Вставати</b> взимку мені особливо важко.",
+      "ru": "<b>Вставать</b> зимой мне особенно тяжело."
+    },
+    "gram": "verben_als_nomen"
+  },
+  {
+    "id": "k5_041",
+    "cat": "k5",
+    "term": {
+      "de": "das Pendeln",
+      "en": "commuting",
+      "uk": "регулярні поїздки (на роботу)",
+      "ru": "регулярные поездки (на работу)"
+    },
+    "short": {
+      "de": "regelmäßig zwischen zwei Orten hin- und herfahren, zum Beispiel zur Arbeit",
+      "en": "regularly travelling back and forth between two places, for example to work",
+      "uk": "регулярно їздити туди-сюди між двома місцями, наприклад на роботу",
+      "ru": "регулярно ездить туда-сюда между двумя местами, например на работу"
+    },
+    "def": {
+      "de": "<b>Das Pendeln</b> zur Arbeit dauert bei mir fast eine Stunde.",
+      "en": "<b>Commuting</b> to work takes me almost an hour.",
+      "uk": "<b>Дорога</b> на роботу займає в мене майже годину.",
+      "ru": "<b>Дорога</b> на работу занимает у меня почти час."
+    },
+    "gram": "verben_als_nomen"
+  },
+  {
+    "id": "k5_042",
+    "cat": "k5",
+    "term": {
+      "de": "das Arbeiten",
+      "en": "working",
+      "uk": "робота (як процес)",
+      "ru": "работа (как процесс)"
+    },
+    "short": {
+      "de": "eine berufliche Tätigkeit ausüben",
+      "en": "carrying out a professional activity",
+      "uk": "виконувати професійну діяльність",
+      "ru": "выполнять профессиональную деятельность"
+    },
+    "def": {
+      "de": "<b>Das Arbeiten</b> in einem internationalen Team macht mir sehr viel Spaß.",
+      "en": "<b>Working</b> in an international team is a lot of fun for me.",
+      "uk": "<b>Робота</b> в міжнародній команді приносить мені багато задоволення.",
+      "ru": "<b>Работа</b> в международной команде приносит мне много удовольствия."
+    },
+    "gram": "verben_als_nomen"
+  },
+  {
+    "id": "k5_043",
+    "cat": "k5",
+    "term": {
+      "de": "das Reisen",
+      "en": "traveling",
+      "uk": "подорожування",
+      "ru": "путешествия"
+    },
+    "short": {
+      "de": "an verschiedene Orte fahren, um sie kennenzulernen",
+      "en": "going to different places to get to know them",
+      "uk": "їздити в різні місця, щоб пізнати їх",
+      "ru": "ездить в разные места, чтобы узнать их"
+    },
+    "def": {
+      "de": "<b>Das Reisen</b> hat mir geholfen, viele neue Kulturen kennenzulernen.",
+      "en": "<b>Traveling</b> has helped me get to know many new cultures.",
+      "uk": "<b>Подорожі</b> допомогли мені пізнати багато нових культур.",
+      "ru": "<b>Путешествия</b> помогли мне узнать много новых культур."
+    },
+    "gram": "verben_als_nomen"
+  },
+  {
+    "id": "k5_044",
+    "cat": "k5",
+    "term": {
+      "de": "das Zusammenleben",
+      "en": "living together",
+      "uk": "спільне життя",
+      "ru": "совместная жизнь"
+    },
+    "short": {
+      "de": "mit anderen Menschen im selben Haushalt oder in derselben Gesellschaft leben",
+      "en": "living with other people in the same household or society",
+      "uk": "жити з іншими людьми в одному домогосподарстві чи суспільстві",
+      "ru": "жить с другими людьми в одном домохозяйстве или обществе"
+    },
+    "def": {
+      "de": "<b>Das Zusammenleben</b> mit Menschen aus verschiedenen Ländern ist sehr spannend.",
+      "en": "<b>Living together</b> with people from different countries is very exciting.",
+      "uk": "<b>Спільне життя</b> з людьми з різних країн дуже цікаве.",
+      "ru": "<b>Совместная жизнь</b> с людьми из разных стран очень интересна."
+    },
+    "gram": "verben_als_nomen"
+  },
+  {
+    "id": "k5_045",
+    "cat": "k5",
+    "term": {
+      "de": "das Verstehen",
+      "en": "understanding",
+      "uk": "розуміння",
+      "ru": "понимание"
+    },
+    "short": {
+      "de": "eine Sache oder Person richtig begreifen",
+      "en": "correctly comprehending something or someone",
+      "uk": "правильно осягати щось чи когось",
+      "ru": "правильно понимать что-то или кого-то"
+    },
+    "def": {
+      "de": "<b>Das Verstehen</b> der Grammatik dauert bei mir immer etwas länger.",
+      "en": "<b>Understanding</b> the grammar always takes me a bit longer.",
+      "uk": "<b>Розуміння</b> граматики завжди займає в мене трохи більше часу.",
+      "ru": "<b>Понимание</b> грамматики всегда занимает у меня чуть больше времени."
+    },
+    "gram": "verben_als_nomen"
+  },
+  {
+    "id": "k5_046",
+    "cat": "k5",
+    "term": {
+      "de": "das Kennenlernen",
+      "en": "getting to know",
+      "uk": "знайомство",
+      "ru": "знакомство"
+    },
+    "short": {
+      "de": "eine Person oder Sache zum ersten Mal erleben und Informationen darüber sammeln",
+      "en": "experiencing a person or thing for the first time and gathering information about it",
+      "uk": "вперше пізнавати людину чи річ і збирати про це інформацію",
+      "ru": "впервые узнавать человека или вещь и собирать об этом информацию"
+    },
+    "def": {
+      "de": "<b>Das Kennenlernen</b> neuer Kollegen war am Anfang etwas schwierig.",
+      "en": "<b>Getting to know</b> new colleagues was a bit difficult at first.",
+      "uk": "<b>Знайомство</b> з новими колегами спочатку було трохи складним.",
+      "ru": "<b>Знакомство</b> с новыми коллегами сначала было немного трудным."
+    },
+    "gram": "verben_als_nomen"
+  },
+  {
+    "id": "k5_047",
+    "cat": "k5",
+    "term": {
+      "de": "das Zurechtfinden",
+      "en": "finding one's way, getting oriented",
+      "uk": "орієнтація (в новому місці)",
+      "ru": "ориентация (в новом месте)"
+    },
+    "short": {
+      "de": "sich in einer neuen Umgebung oder Situation orientieren können",
+      "en": "being able to find your way in a new environment or situation",
+      "uk": "уміти орієнтуватися в новому середовищі чи ситуації",
+      "ru": "уметь ориентироваться в новой среде или ситуации"
+    },
+    "def": {
+      "de": "<b>Das Zurechtfinden</b> im neuen Land war für mich am Anfang die größte Herausforderung.",
+      "en": "<b>Finding my way</b> in the new country was the biggest challenge for me at first.",
+      "uk": "<b>Орієнтація</b> в новій країні спочатку була для мене найбільшим викликом.",
+      "ru": "<b>Ориентация</b> в новой стране сначала была для меня самым большим вызовом."
+    },
+    "gram": "verben_als_nomen"
+  },
+  {
+    "id": "k5_048",
+    "cat": "k5",
+    "term": {
+      "de": "sich freuen (auf)",
+      "en": "to look forward (to)",
+      "uk": "чекати (з радістю)",
+      "ru": "с радостью ждать"
+    },
+    "short": {
+      "de": "eine positive Erwartung von etwas haben, das noch kommt",
+      "en": "to have a positive expectation of something that is still to come",
+      "uk": "мати позитивне очікування чогось, що ще станеться",
+      "ru": "иметь позитивное ожидание чего-то, что ещё произойдёт"
+    },
+    "def": {
+      "de": "<g>Worauf</g> <b>freust</b> du <b>dich</b> am meisten, wenn du an den Urlaub denkst?",
+      "en": "What are you looking forward to the most when you think about the holiday?",
+      "uk": "<g>Чого</g> ти найбільше <b>очікуєш</b>, коли думаєш про відпустку?",
+      "ru": "<g>Чего</g> ты больше всего <b>ждёшь</b>, когда думаешь об отпуске?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_049",
+    "cat": "k5",
+    "term": {
+      "de": "sich beschweren (über)",
+      "en": "to complain (about)",
+      "uk": "скаржитися (на)",
+      "ru": "жаловаться (на)"
+    },
+    "short": {
+      "de": "sagen, dass man mit etwas nicht zufrieden ist",
+      "en": "to say that you are not satisfied with something",
+      "uk": "казати, що ти чимось незадоволений",
+      "ru": "говорить, что ты чем-то недоволен"
+    },
+    "def": {
+      "de": "<g>Worüber</g> hat sich der Nachbar diesmal <b>beschwert</b>?",
+      "en": "What did the neighbour <b>complain</b> <g>about</g> this time?",
+      "uk": "<g>На що</g> цього разу <b>поскаржився</b> сусід?",
+      "ru": "<g>На что</g> на этот раз <b>пожаловался</b> сосед?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_050",
+    "cat": "k5",
+    "term": {
+      "de": "nachdenken (über)",
+      "en": "to think over, to reflect (on)",
+      "uk": "роздумувати (над)",
+      "ru": "размышлять (над)"
+    },
+    "short": {
+      "de": "über etwas gründlich und lange nachdenken",
+      "en": "to think about something thoroughly and for a long time",
+      "uk": "довго й ретельно роздумувати над чимось",
+      "ru": "долго и тщательно размышлять о чём-то"
+    },
+    "def": {
+      "de": "<g>Worüber</g> hast du so lange <b>nachgedacht</b>?",
+      "en": "What did you <b>think</b> <g>over</g> for so long?",
+      "uk": "<g>Над чим</g> ти так довго <b>роздумував(-ла)</b>?",
+      "ru": "<g>Над чем</g> ты так долго <b>размышлял(-а)</b>?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_051",
+    "cat": "k5",
+    "term": {
+      "de": "sich wundern (über)",
+      "en": "to be surprised (about)",
+      "uk": "дивуватися",
+      "ru": "удивляться"
+    },
+    "short": {
+      "de": "über etwas erstaunt oder verwundert sein",
+      "en": "to be astonished or puzzled about something",
+      "uk": "дивуватися чомусь",
+      "ru": "удивляться чему-то"
+    },
+    "def": {
+      "de": "<g>Worüber</g> hast du <b>dich</b> <b>gewundert</b>, als du in Deutschland angekommen bist?",
+      "en": "What were you <b>surprised</b> <g>about</g> when you arrived in Germany?",
+      "uk": "<g>Чому</g> ти <b>здивувався(-лась)</b>, коли приїхав(-ла) до Німеччини?",
+      "ru": "<g>Чему</g> ты <b>удивился(-лась)</b>, когда приехал(-а) в Германию?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_052",
+    "cat": "k5",
+    "term": {
+      "de": "Angst haben (vor)",
+      "en": "to be afraid (of)",
+      "uk": "боятися",
+      "ru": "бояться"
+    },
+    "short": {
+      "de": "sich vor etwas fürchten",
+      "en": "to fear something",
+      "uk": "боятися чогось",
+      "ru": "бояться чего-то"
+    },
+    "def": {
+      "de": "<g>Wovor</g> hattest du <b>Angst</b>, bevor du in ein neues Land gezogen bist?",
+      "en": "What were you <b>afraid</b> <g>of</g> before you moved to a new country?",
+      "uk": "<g>Чого</g> ти <b>боявся(-лась)</b>, перш ніж переїхати в нову країну?",
+      "ru": "<g>Чего</g> ты <b>боялся(-лась)</b>, прежде чем переехать в новую страну?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_053",
+    "cat": "k5",
+    "term": {
+      "de": "stolz sein (auf)",
+      "en": "to be proud (of)",
+      "uk": "пишатися",
+      "ru": "гордиться"
+    },
+    "short": {
+      "de": "ein gutes Gefühl über eine eigene Leistung haben",
+      "en": "to feel good about your own achievement",
+      "uk": "мати гарне відчуття щодо власного досягнення",
+      "ru": "испытывать хорошее чувство по поводу собственного достижения"
+    },
+    "def": {
+      "de": "<g>Worauf</g> bist du in deinem neuen Leben besonders <b>stolz</b>?",
+      "en": "What are you especially <b>proud</b> <g>of</g> in your new life?",
+      "uk": "<g>Чим</g> ти особливо <b>пишаєшся</b> у своєму новому житті?",
+      "ru": "<g>Чем</g> ты особенно <b>гордишься</b> в своей новой жизни?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_054",
+    "cat": "k5",
+    "term": {
+      "de": "sich vorbereiten (auf)",
+      "en": "to prepare (for)",
+      "uk": "готуватися (до)",
+      "ru": "готовиться (к)"
+    },
+    "short": {
+      "de": "sich rechtzeitig auf etwas Zukünftiges einstellen",
+      "en": "to get ready in time for something in the future",
+      "uk": "завчасно готуватися до чогось майбутнього",
+      "ru": "заблаговременно готовиться к чему-то будущему"
+    },
+    "def": {
+      "de": "<g>Worauf</g> musst du dich für die Prüfung noch <b>vorbereiten</b>?",
+      "en": "What else do you still need to <b>prepare</b> <g>for</g> the exam?",
+      "uk": "<g>До чого</g> тобі ще треба <b>підготуватися</b> для іспиту?",
+      "ru": "<g>К чему</g> тебе ещё нужно <b>подготовиться</b> к экзамену?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_055",
+    "cat": "k5",
+    "term": {
+      "de": "warnen (vor)",
+      "en": "to warn (about)",
+      "uk": "попереджати (про)",
+      "ru": "предупреждать (о)"
+    },
+    "short": {
+      "de": "jemandem sagen, dass eine Gefahr besteht",
+      "en": "to tell someone that there is a danger",
+      "uk": "казати комусь, що існує небезпека",
+      "ru": "говорить кому-то, что существует опасность"
+    },
+    "def": {
+      "de": "<g>Wovor</g> hat dich dein Freund <b>gewarnt</b>, bevor du hierher gezogen bist?",
+      "en": "What did your friend <b>warn</b> you <g>about</g> before you moved here?",
+      "uk": "<g>Про що</g> тебе <b>попередив</b> твій друг, перш ніж ти сюди переїхав(-ла)?",
+      "ru": "<g>О чём</g> тебя <b>предупредил</b> твой друг, прежде чем ты сюда переехал(-а)?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_056",
+    "cat": "k5",
+    "term": {
+      "de": "die Sitte",
+      "en": "custom",
+      "uk": "звичай",
+      "ru": "обычай"
+    },
+    "short": {
+      "de": "eine traditionelle Verhaltensweise in einer Kultur",
+      "en": "a traditional way of behaving in a culture",
+      "uk": "традиційна манера поведінки в культурі",
+      "ru": "традиционная манера поведения в культуре"
+    },
+    "def": {
+      "de": "Über die lokale <b>Sitte</b> beim Grüßen haben wir uns lange unterhalten — <g>darüber</g> wusste ich vorher nichts.",
+      "en": "We talked for a long time about the local <b>custom</b> of greeting — I knew nothing <g>about it</g> before.",
+      "uk": "Ми довго розмовляли про місцевий <b>звичай</b> вітання — про це я раніше нічого не знав(-ла).",
+      "ru": "Мы долго разговаривали о местном <b>обычае</b> приветствия — об этом я раньше ничего не знал(-а)."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_057",
+    "cat": "k5",
+    "term": {
+      "de": "der Brauch",
+      "en": "tradition, custom",
+      "uk": "звичай, традиція",
+      "ru": "обычай, традиция"
+    },
+    "short": {
+      "de": "eine Handlung, die in einer Gruppe oder Region seit Langem so gemacht wird",
+      "en": "an action that has been done that way in a group or region for a long time",
+      "uk": "дія, яку виконують у групі чи регіоні здавна",
+      "ru": "действие, которое выполняют в группе или регионе издавна"
+    },
+    "def": {
+      "de": "Der <b>Brauch</b> mit dem Weihnachtsbaum hat mich sehr fasziniert — <g>daran</g> denke ich noch oft.",
+      "en": "The <b>custom</b> of the Christmas tree fascinated me a lot — I still often think <g>about it</g>.",
+      "uk": "<b>Звичай</b> з різдвяною ялинкою мене дуже зачарував — я часто про це думаю.",
+      "ru": "<b>Обычай</b> с рождественской ёлкой меня очень восхитил — я часто об этом думаю."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_058",
+    "cat": "k5",
+    "term": {
+      "de": "begrüßen",
+      "en": "to greet",
+      "uk": "вітати",
+      "ru": "приветствовать"
+    },
+    "short": {
+      "de": "jemanden freundlich willkommen heißen, wenn man ihn trifft",
+      "en": "to welcome someone in a friendly way when you meet them",
+      "uk": "приязно вітати когось при зустрічі",
+      "ru": "приветливо приветствовать кого-то при встрече"
+    },
+    "def": {
+      "de": "Wie man Kollegen richtig <b>begrüßt</b>, war für mich am Anfang nicht klar — <g>darüber</g> habe ich viele Fragen gestellt.",
+      "en": "How to properly <b>greet</b> colleagues wasn't clear to me at first — I asked a lot of questions <g>about it</g>.",
+      "uk": "Як правильно <b>вітати</b> колег, спочатку мені було незрозуміло — я поставив(-ла) багато запитань про це.",
+      "ru": "Как правильно <b>приветствовать</b> коллег, сначала мне было непонятно — я задал(-а) много вопросов об этом."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_059",
+    "cat": "k5",
+    "term": {
+      "de": "die Etikette",
+      "en": "etiquette",
+      "uk": "етикет",
+      "ru": "этикет"
+    },
+    "short": {
+      "de": "die Regeln für höfliches und korrektes Verhalten",
+      "en": "the rules for polite and correct behaviour",
+      "uk": "правила ввічливої та коректної поведінки",
+      "ru": "правила вежливого и корректного поведения"
+    },
+    "def": {
+      "de": "Über die <b>Etikette</b> bei Tisch habe ich vorher nicht viel gewusst — <g>darüber</g> hat mir eine Kollegin geholfen.",
+      "en": "I didn't know much about table <b>etiquette</b> before — a colleague helped me <g>with it</g>.",
+      "uk": "Про застольний <b>етикет</b> я раніше мало знав(-ла) — з цим мені допомогла колега.",
+      "ru": "О застольном <b>этикете</b> я раньше мало знал(-а) — с этим мне помогла коллега."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k5_060",
+    "cat": "k5",
+    "term": {
+      "de": "verzichten (auf)",
+      "en": "to do without",
+      "uk": "відмовлятися (від)",
+      "ru": "отказываться (от)"
+    },
+    "short": {
+      "de": "bewusst auf etwas nicht mehr bestehen oder etwas nicht mehr nutzen",
+      "en": "to consciously give up insisting on or using something",
+      "uk": "свідомо відмовлятися від чогось",
+      "ru": "сознательно отказываться от чего-то"
+    },
+    "def": {
+      "de": "<g>Worauf</g> muss man hier bei einem offiziellen Termin unbedingt <b>verzichten</b>?",
+      "en": "What absolutely must you <b>do without</b> at an official appointment here?",
+      "uk": "<g>Від чого</g> тут обовʼязково потрібно <b>відмовитися</b> на офіційній зустрічі?",
+      "ru": "<g>От чего</g> здесь обязательно нужно <b>отказаться</b> на официальной встрече?"
     },
     "gram": "praepositionaladverbien_b1"
   },
