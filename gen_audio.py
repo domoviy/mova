@@ -27,7 +27,7 @@ except ImportError:
 # ── Конфігурація ──────────────────────────────────────────────
 WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
-COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '50'))
+COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '20'))
 
 # Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
 # у тій самій директорії, що й цей скрипт, а аудіо генерується в
@@ -70,8 +70,90 @@ VOICE_MAPPING = {
     "redemittel": {
         "q": {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
         "a": {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
+    },
+    # Grammatik-Trainer (gram_* картки) — слова, що показуються на кнопках
+    # відповіді (правильний варіант + дистрактори). Той самий голос для
+    # всіх слів (справедливе порівняння звучання варіантів), як і в
+    # sprachbau.distractors — озвучуються лише мовою PRIMARY_LANG.
+    "gram": {
+        "word": {"de": "de-DE-AmalaNeural", "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
     }
 }
+
+# Пул дистракторів Grammatik-Trainer — ТОЧНА копія GRAM_DISTRACTOR_POOL
+# з index.html (buildGramCards). Тримати синхронізовано вручну: якщо
+# в index.html зʼявляється нова тема "закритого класу" або міняється
+# список слів теми — треба продублювати зміну і тут, інакше для нових
+# слів аудіо просто не згенерується.
+GRAM_DISTRACTOR_POOL = {
+    "wortstellung":                      ["weil", "obwohl", "wenn", "während", "nachdem", "bevor", "sobald", "da"],
+    "negation":                          ["nicht", "kein", "keine", "nie", "niemand", "nichts", "ohne"],
+    "konnektoren_zweiteilig":            ["sowohl", "weder", "zwar", "je", "entweder"],
+    "es_pronomen":                       ["das", "dies", "man", "sie"],
+    "indefinitpronomen":                 ["jemand", "niemand", "jeder", "etwas", "nichts", "einige", "alle", "manche"],
+    "relativsatz_wer":                   ["wen", "wem", "wessen", "wie"],
+    "konnektoren_infinitiv":             ["ohne", "anstatt", "statt", "um"],
+    "waehrend_genitiv_praeposition":     ["während", "aufgrund", "trotz", "angesichts", "infolge", "wegen", "bezüglich", "unterhalb"],
+    "vergleichssaetze_als_wie_je_desto": ["als", "wie", "je", "obwohl", "weil", "während", "bevor"],
+    "textzusammenhang":                  ["allerdings", "dennoch", "jedoch", "trotzdem", "daher", "deshalb", "folglich", "außerdem"],
+    "praepositionen_nomen_verb_adjektiv": ["an", "auf", "bei", "für", "mit", "nach", "über", "um", "von", "vor", "zu"],
+}
+
+GRAM_ANSWER_RE = re.compile(r'<g>(.*?)</g>')
+
+
+def collect_gram_words(raw_items, primary_lang):
+    """Слова, що зʼявляються на кнопках Grammatik-Trainer (правильна
+    відповідь + дистрактори) — відтворює логіку buildGramCards() з
+    index.html: для кожної VOCAB-картки з полем "gram" бере ПЕРШИЙ
+    <g>...</g> з def[primary_lang] як відповідь і пул дистракторів теми
+    з GRAM_DISTRACTOR_POOL; картки "відкритого класу" (тем без пулу) та
+    багатослівні маркери клієнт не показує — так само пропускаємо тут.
+
+    ВАЖЛИВО: на клієнті порядок дистракторів на кнопках рандомізується
+    (Math.random()) щоразу заново при switchCourse(), тож прив'язувати
+    аудіофайл до конкретної картки+позиції кнопки (як для sprachbau
+    distractors_N) ненадійно — той самий файл довелось би шукати під
+    різними іменами в різних сесіях. Тому озвучуємо КОЖНЕ слово пулу
+    ОДИН РАЗ (файл називається за самим словом, не за карткою/позицією);
+    клієнту достатньо знайти аудіо за текстом слова, що випало на кнопці.
+    """
+    words = set()
+    for item in raw_items:
+        gram_topic = item.get("gram")
+        if not gram_topic:
+            continue
+        pool = GRAM_DISTRACTOR_POOL.get(gram_topic)
+        if not pool:
+            continue  # тема "відкритого класу" — Grammatik-Trainer її не показує
+
+        def_field = item.get("def")
+        text = def_field.get(primary_lang) if isinstance(def_field, dict) else None
+        if not text:
+            continue
+
+        m = GRAM_ANSWER_RE.search(text)
+        if not m:
+            continue
+        answer_word = re.sub(r'</?b>', '', m.group(1)).strip()
+        if not answer_word or len(answer_word.split()) > 1:
+            continue  # MVP: лише однослівні маркери
+
+        distractors = [w for w in pool if w.lower() != answer_word.lower()]
+        if len(distractors) < 3:
+            continue  # недостатньо дистракторів — картка не будується клієнтом
+
+        words.add(answer_word)
+        words.update(pool)
+    return words
+
+
+def slugify_word(word):
+    """Файлобезпечний, читабельний ідентифікатор слова для імені файлу."""
+    slug = word.strip().lower()
+    slug = re.sub(r'[^a-zäöüßа-яіїєёʼ0-9]+', '_', slug, flags=re.IGNORECASE)
+    slug = slug.strip('_')
+    return slug or hashlib.sha256(word.encode('utf-8')).hexdigest()[:8]
 
 def get_voice_id(category, sub_type, lang):
     try:
@@ -307,9 +389,17 @@ async def main():
         "redemittel": ["q", "a"]
     }
 
+    # Порядок мов для кожного курсу — PRIMARY_LANG першою, решта в порядку
+    # AUDIO_CONFIG. Рахуємо ОДРАЗУ тут (а не пізніше скануванням tasks),
+    # бо list.sort(key=...) у CPython на час виконання ключа тимчасово
+    # "спорожняє" сам список, що сортується — якщо key-функція звертається
+    # до tasks, вона бачить порожній список і завжди повертає дефолт.
+    course_lang_order = {}
+
     for file_stem, course in COURSES:
       audio_config, raw_items, primary_lang = load_js_database(f"{file_stem}.js")
       audio_base = AUDIO_ROOT / course
+      course_lang_order[course] = [primary_lang] + [l for l in audio_config.keys() if l != primary_lang]
       print(f"— Курс '{course}' (файл {file_stem}.js): знайдено {len(raw_items)} елементів бази.", flush=True)
 
       for item in raw_items:
@@ -382,7 +472,8 @@ async def main():
                                 "voice": voice,
                                 "filename": filename,
                                 "mkey": mkey,
-                                "content_hash": content_hash
+                                "content_hash": content_hash,
+                                "primary_lang": primary_lang
                             })
 
         # distractors — окрема гілка: на відміну від полів вище це ПРОСТИЙ
@@ -422,8 +513,71 @@ async def main():
                                 "voice": voice,
                                 "filename": filename,
                                 "mkey": mkey,
-                                "content_hash": content_hash
+                                "content_hash": content_hash,
+                                "primary_lang": primary_lang
                             })
+
+      # Grammatik-Trainer — слова на кнопках (правильна відповідь + пул
+      # дистракторів теми). Один запис на унікальне слово курсу/мови/
+      # швидкості (а не на картку) — див. collect_gram_words().
+      if primary_lang in audio_config:
+          gram_words = collect_gram_words(raw_items, primary_lang)
+          if gram_words:
+              voice = get_voice_id("gram", "word", primary_lang)
+              rates = audio_config.get(primary_lang, ["100"])
+              for raw_word in sorted(gram_words):
+                  cleaned = clean_text(raw_word)
+                  if not cleaned:
+                      continue
+                  slug = slugify_word(cleaned)
+                  for rate in rates:
+                      filename = f"gram_word_{slug}_{primary_lang}_{rate}.mp3"
+                      mkey = f"{course}/{primary_lang}/{rate}/gram/gram_word_{slug}_{primary_lang}_{rate}"
+
+                      content_hash = compute_content_hash(cleaned, voice, rate)
+                      existing_hash = manifest_data.get(mkey)
+
+                      if existing_hash != content_hash:
+                          tasks.append({
+                              "id": f"gram_word_{slug}",
+                              "course": course,
+                              "audio_base": audio_base,
+                              "internal_cat": "gram",
+                              "cat_lower": "gram",
+                              "sub": "word",
+                              "lang": primary_lang,
+                              "rate": rate,
+                              "cleaned": cleaned,
+                              "voice": voice,
+                              "filename": filename,
+                              "mkey": mkey,
+                              "content_hash": content_hash,
+                              "primary_lang": primary_lang
+                          })
+              print(f"  · Grammatik-Trainer: {len(gram_words)} унікальних слів на кнопках.", flush=True)
+
+    # ── Порядок генерації ────────────────────────────────────────
+    # 1) Уся мова PRIMARY_LANG курсу — від найбільшої швидкості з
+    #    AUDIO_CONFIG до найменшої (якщо задано кілька швидкостей).
+    # 2) Потім решта мов курсу — за тим самим принципом (кожна мова:
+    #    від найбільшої швидкості до найменшої).
+    # 3) Курси йдуть у порядку списку COURSES (як і раніше — порядок
+    #    курсів природно зберігається, бо сортування стабільне).
+    course_order = {course: idx for idx, (_, course) in enumerate(COURSES)}
+    lang_rank_by_course = {
+        course: {lang: i for i, lang in enumerate(order)}
+        for course, order in course_lang_order.items()
+    }
+
+    def sort_key(t):
+        rank_map = lang_rank_by_course.get(t["course"], {})
+        return (
+            course_order.get(t["course"], 999),
+            rank_map.get(t["lang"], 999),
+            -int(t["rate"])
+        )
+
+    tasks.sort(key=sort_key)
 
     total_tasks = len(tasks)
     print(f"Знайдено нових/змінених завдань для генерації: {total_tasks}", flush=True)
