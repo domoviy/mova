@@ -881,7 +881,14 @@ var LESSONS = [
     "cardIds": [
       "k1_003",
       "k1_007",
-      "k1_008"
+      "k1_008",
+      "k1_016",
+      "k1_017",
+      "k1_018",
+      "k1_019",
+      "k1_020",
+      "k1_021",
+      "k1_022"
     ],
     "unlockAfter": null,
     "sbCards": []
@@ -909,7 +916,15 @@ var LESSONS = [
     "grammar": "wechselpraepositionen_wdh_b1",
     "cardIds": [
       "k1_001",
-      "k1_002"
+      "k1_002",
+      "k1_023",
+      "k1_024",
+      "k1_025",
+      "k1_026",
+      "k1_027",
+      "k1_028",
+      "k1_029",
+      "k1_030"
     ],
     "unlockAfter": "k1m1",
     "sbCards": []
@@ -937,7 +952,15 @@ var LESSONS = [
     "grammar": "hoefliche_bitten_konjunktiv_b1",
     "cardIds": [
       "k1_012",
-      "k1_013"
+      "k1_013",
+      "k1_031",
+      "k1_032",
+      "k1_033",
+      "k1_034",
+      "k1_035",
+      "k1_036",
+      "k1_037",
+      "k1_038"
     ],
     "unlockAfter": "k1m2",
     "sbCards": []
@@ -965,7 +988,15 @@ var LESSONS = [
     "grammar": "infinitiv_mit_zu",
     "cardIds": [
       "k1_006",
-      "k1_015"
+      "k1_015",
+      "k1_039",
+      "k1_040",
+      "k1_041",
+      "k1_042",
+      "k1_043",
+      "k1_044",
+      "k1_045",
+      "k1_046"
     ],
     "unlockAfter": "k1m3",
     "sbCards": []
@@ -994,7 +1025,14 @@ var LESSONS = [
     "cardIds": [
       "k1_004",
       "k1_005",
-      "k1_009"
+      "k1_009",
+      "k1_047",
+      "k1_048",
+      "k1_049",
+      "k1_050",
+      "k1_051",
+      "k1_052",
+      "k1_053"
     ],
     "unlockAfter": "k1m4",
     "sbCards": []
@@ -1023,7 +1061,14 @@ var LESSONS = [
     "cardIds": [
       "k1_010",
       "k1_011",
-      "k1_014"
+      "k1_014",
+      "k1_054",
+      "k1_055",
+      "k1_056",
+      "k1_057",
+      "k1_058",
+      "k1_059",
+      "k1_060"
     ],
     "unlockAfter": "k1m5",
     "sbCards": []
@@ -3733,6 +3778,1041 @@ var VOCAB = [
       "ru": "Каждый новый <b>арендатор</b> получает задание подписать правила дома."
     },
     "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_016",
+    "cat": "k1",
+    "term": {
+      "de": "der Vermieter / die Vermieterin",
+      "en": "landlord / landlady",
+      "uk": "орендодавець / орендодавиця",
+      "ru": "арендодатель / арендодательница"
+    },
+    "short": {
+      "de": "die Person, die eine Wohnung an andere Menschen vermietet",
+      "en": "the person who rents out a flat to other people",
+      "uk": "людина, яка здає квартиру іншим людям в оренду",
+      "ru": "человек, который сдаёт квартиру другим людям в аренду"
+    },
+    "def": {
+      "de": "Wenn die Heizung kaputt ist, muss man sofort den <b>Vermieter</b> informieren.",
+      "en": "If the heating breaks down, you have to inform the <b>landlord</b> immediately.",
+      "uk": "Якщо опалення зламалося, потрібно одразу повідомити <b>орендодавця</b>.",
+      "ru": "Если отопление сломалось, нужно сразу сообщить <b>арендодателю</b>."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k1_017",
+    "cat": "k1",
+    "term": {
+      "de": "die Miete",
+      "en": "rent",
+      "uk": "орендна плата",
+      "ru": "арендная плата"
+    },
+    "short": {
+      "de": "das Geld, das man jeden Monat für die Wohnung bezahlt",
+      "en": "the money you pay every month for the flat",
+      "uk": "гроші, які щомісяця платиш за квартиру",
+      "ru": "деньги, которые ежемесячно платишь за квартиру"
+    },
+    "def": {
+      "de": "Die <b>Miete</b> für unsere Wohnung steigt jedes Jahr ein bisschen.",
+      "en": "The <b>rent</b> for our flat goes up a little every year.",
+      "uk": "<b>Орендна плата</b> за нашу квартиру щороку трохи зростає.",
+      "ru": "<b>Арендная плата</b> за нашу квартиру каждый год немного растёт."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k1_018",
+    "cat": "k1",
+    "term": {
+      "de": "der Aufzug",
+      "en": "elevator, lift",
+      "uk": "ліфт",
+      "ru": "лифт"
+    },
+    "short": {
+      "de": "eine Maschine, die Menschen zwischen den Stockwerken nach oben und unten bringt",
+      "en": "a machine that takes people up and down between floors",
+      "uk": "пристрій, який піднімає та спускає людей між поверхами",
+      "ru": "устройство, которое поднимает и спускает людей между этажами"
+    },
+    "def": {
+      "de": "Der <b>Aufzug</b> in unserem Haus ist leider schon seit zwei Wochen kaputt.",
+      "en": "Unfortunately, the <b>elevator</b> in our building has been broken for two weeks.",
+      "uk": "На жаль, <b>ліфт</b> у нашому будинку вже два тижні не працює.",
+      "ru": "К сожалению, <b>лифт</b> в нашем доме уже две недели не работает."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k1_019",
+    "cat": "k1",
+    "term": {
+      "de": "der Keller",
+      "en": "basement, cellar",
+      "uk": "підвал",
+      "ru": "подвал"
+    },
+    "short": {
+      "de": "der Raum unter dem Haus, in dem man zum Beispiel alte Sachen aufbewahrt",
+      "en": "the room under the building where you keep, for example, old things",
+      "uk": "приміщення під будинком, де зберігають, наприклад, старі речі",
+      "ru": "помещение под домом, где хранят, например, старые вещи"
+    },
+    "def": {
+      "de": "Jede Wohnung hat einen eigenen <b>Keller</b> für Fahrräder und Koffer.",
+      "en": "Every flat has its own <b>basement</b> for bikes and suitcases.",
+      "uk": "Кожна квартира має власний <b>підвал</b> для велосипедів і валіз.",
+      "ru": "У каждой квартиры есть собственный <b>подвал</b> для велосипедов и чемоданов."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k1_020",
+    "cat": "k1",
+    "term": {
+      "de": "der Balkon",
+      "en": "balcony",
+      "uk": "балкон",
+      "ru": "балкон"
+    },
+    "short": {
+      "de": "ein kleiner Platz an der Wohnung, wo man draußen sitzen kann",
+      "en": "a small space attached to the flat where you can sit outside",
+      "uk": "невеликий простір біля квартири, де можна сидіти надворі",
+      "ru": "небольшое пространство рядом с квартирой, где можно сидеть на улице"
+    },
+    "def": {
+      "de": "Unser <b>Balkon</b> ist klein, aber wir sitzen dort sehr gern.",
+      "en": "Our <b>balcony</b> is small, but we really like sitting there.",
+      "uk": "Наш <b>балкон</b> маленький, але ми дуже любимо там сидіти.",
+      "ru": "Наш <b>балкон</b> маленький, но мы очень любим там сидеть."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k1_021",
+    "cat": "k1",
+    "term": {
+      "de": "das Stockwerk",
+      "en": "floor, storey",
+      "uk": "поверх",
+      "ru": "этаж"
+    },
+    "short": {
+      "de": "eine Ebene in einem Haus, zum Beispiel das erste oder zweite Stockwerk",
+      "en": "a level in a building, for example the first or second floor",
+      "uk": "рівень у будинку, наприклад перший чи другий поверх",
+      "ru": "уровень в доме, например первый или второй этаж"
+    },
+    "def": {
+      "de": "Unsere neue Wohnung liegt im dritten <b>Stockwerk</b>.",
+      "en": "Our new flat is on the third <b>floor</b>.",
+      "uk": "Наша нова квартира знаходиться на третьому <b>поверсі</b>.",
+      "ru": "Наша новая квартира находится на третьем <b>этаже</b>."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k1_022",
+    "cat": "k1",
+    "term": {
+      "de": "der Briefkasten",
+      "en": "mailbox, letterbox",
+      "uk": "поштова скринька",
+      "ru": "почтовый ящик"
+    },
+    "short": {
+      "de": "eine kleine Box am Haus, in die die Post gelegt wird",
+      "en": "a small box on the building where post is put",
+      "uk": "невелика скринька біля будинку, куди кладуть пошту",
+      "ru": "небольшой ящик у дома, куда кладут почту"
+    },
+    "def": {
+      "de": "Bitte schau regelmäßig in deinen <b>Briefkasten</b>, dort liegt oft wichtige Post.",
+      "en": "Please check your <b>mailbox</b> regularly, important post is often in there.",
+      "uk": "Будь ласка, регулярно перевіряй свою <b>поштову скриньку</b>, там часто лежить важлива пошта.",
+      "ru": "Пожалуйста, регулярно проверяй свой <b>почтовый ящик</b>, там часто лежит важная почта."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k1_023",
+    "cat": "k1",
+    "term": {
+      "de": "der Flur",
+      "en": "hallway",
+      "uk": "коридор",
+      "ru": "коридор"
+    },
+    "short": {
+      "de": "der Gang in einer Wohnung oder in einem Haus, der zu den anderen Räumen führt",
+      "en": "the passage in a flat or building that leads to the other rooms",
+      "uk": "прохід у квартирі чи будинку, який веде до інших кімнат",
+      "ru": "проход в квартире или доме, который ведёт к другим комнатам"
+    },
+    "def": {
+      "de": "Die Kinder haben ihre Schuhe <g>in den</g> <b>Flur</b> gestellt.",
+      "en": "The children put their shoes in the <b>hallway</b>.",
+      "uk": "Діти поставили своє взуття в <b>коридор</b>.",
+      "ru": "Дети поставили свою обувь в <b>коридор</b>."
+    },
+    "gram": "wechselpraepositionen_wdh_b1"
+  },
+  {
+    "id": "k1_024",
+    "cat": "k1",
+    "term": {
+      "de": "die Garage",
+      "en": "garage",
+      "uk": "гараж",
+      "ru": "гараж"
+    },
+    "short": {
+      "de": "ein Raum oder Gebäude, in dem man das Auto parkt",
+      "en": "a room or building where you park the car",
+      "uk": "приміщення чи будівля, де паркують машину",
+      "ru": "помещение или здание, где паркуют машину"
+    },
+    "def": {
+      "de": "Herr Schmidt stellt sein Auto jeden Abend <g>in die</g> <b>Garage</b>.",
+      "en": "Mr Schmidt parks his car in the <b>garage</b> every evening.",
+      "uk": "Пан Шмідт щовечора ставить свою машину в <b>гараж</b>.",
+      "ru": "Господин Шмидт каждый вечер ставит свою машину в <b>гараж</b>."
+    },
+    "gram": "wechselpraepositionen_wdh_b1"
+  },
+  {
+    "id": "k1_025",
+    "cat": "k1",
+    "term": {
+      "de": "der Garten",
+      "en": "garden",
+      "uk": "сад",
+      "ru": "сад"
+    },
+    "short": {
+      "de": "ein Stück Land bei einem Haus, wo Blumen, Gemüse oder Bäume wachsen",
+      "en": "a piece of land by a building where flowers, vegetables or trees grow",
+      "uk": "ділянка землі біля будинку, де ростуть квіти, овочі чи дерева",
+      "ru": "участок земли рядом с домом, где растут цветы, овощи или деревья"
+    },
+    "def": {
+      "de": "Die Kinder spielen den ganzen Nachmittag <g>im</g> <b>Garten</b>.",
+      "en": "The children play in the <b>garden</b> the whole afternoon.",
+      "uk": "Діти цілий день грають у <b>саду</b>.",
+      "ru": "Дети целый день играют в <b>саду</b>."
+    },
+    "gram": "wechselpraepositionen_wdh_b1"
+  },
+  {
+    "id": "k1_026",
+    "cat": "k1",
+    "term": {
+      "de": "der Hof",
+      "en": "courtyard, yard",
+      "uk": "двір",
+      "ru": "двор"
+    },
+    "short": {
+      "de": "der freie Platz zwischen den Häusern, oft mit Bäumen oder Spielgeräten",
+      "en": "the open space between buildings, often with trees or play equipment",
+      "uk": "відкритий простір між будинками, часто з деревами чи гральним обладнанням",
+      "ru": "открытое пространство между домами, часто с деревьями или игровым оборудованием"
+    },
+    "def": {
+      "de": "Am Wochenende treffen sich viele Nachbarn <g>im</g> <b>Hof</b>.",
+      "en": "On weekends, many neighbours meet in the <b>courtyard</b>.",
+      "uk": "На вихідних багато сусідів зустрічаються у <b>дворі</b>.",
+      "ru": "На выходных многие соседи встречаются во <b>дворе</b>."
+    },
+    "gram": "wechselpraepositionen_wdh_b1"
+  },
+  {
+    "id": "k1_027",
+    "cat": "k1",
+    "term": {
+      "de": "das Erdgeschoss",
+      "en": "ground floor",
+      "uk": "перший поверх",
+      "ru": "первый этаж"
+    },
+    "short": {
+      "de": "das Stockwerk direkt auf der Höhe der Straße, ohne Treppen nach oben",
+      "en": "the floor at street level, without stairs going up",
+      "uk": "поверх на рівні вулиці, без сходів вгору",
+      "ru": "этаж на уровне улицы, без лестниц наверх"
+    },
+    "def": {
+      "de": "Familie Yilmaz wohnt <g>im</g> <b>Erdgeschoss</b>, direkt neben dem Eingang.",
+      "en": "The Yilmaz family lives on the <b>ground floor</b>, right next to the entrance.",
+      "uk": "Родина Їлмаз живе на <b>першому поверсі</b>, прямо біля входу.",
+      "ru": "Семья Йылмаз живёт на <b>первом этаже</b>, прямо у входа."
+    },
+    "gram": "wechselpraepositionen_wdh_b1"
+  },
+  {
+    "id": "k1_028",
+    "cat": "k1",
+    "term": {
+      "de": "der Dachboden",
+      "en": "attic",
+      "uk": "горище",
+      "ru": "чердак"
+    },
+    "short": {
+      "de": "der Raum ganz oben im Haus, direkt unter dem Dach",
+      "en": "the room right at the top of the building, just under the roof",
+      "uk": "приміщення на самому верху будинку, прямо під дахом",
+      "ru": "помещение на самом верху дома, прямо под крышей"
+    },
+    "def": {
+      "de": "Wir haben unsere alten Möbel <g>auf den</g> <b>Dachboden</b> gebracht.",
+      "en": "We took our old furniture up to the <b>attic</b>.",
+      "uk": "Ми занесли наші старі меблі на <b>горище</b>.",
+      "ru": "Мы отнесли нашу старую мебель на <b>чердак</b>."
+    },
+    "gram": "wechselpraepositionen_wdh_b1"
+  },
+  {
+    "id": "k1_029",
+    "cat": "k1",
+    "term": {
+      "de": "der Spielplatz",
+      "en": "playground",
+      "uk": "дитячий майданчик",
+      "ru": "детская площадка"
+    },
+    "short": {
+      "de": "ein Ort mit Schaukeln und Rutschen, wo Kinder draußen spielen",
+      "en": "a place with swings and slides where children play outside",
+      "uk": "місце з гойдалками та гірками, де діти граються надворі",
+      "ru": "место с качелями и горками, где дети играют на улице"
+    },
+    "def": {
+      "de": "Am Nachmittag gehen die Kinder gern <g>auf den</g> <b>Spielplatz</b>.",
+      "en": "In the afternoon, the children like to go to the <b>playground</b>.",
+      "uk": "Пополудні діти люблять ходити на <b>дитячий майданчик</b>.",
+      "ru": "После обеда дети любят ходить на <b>детскую площадку</b>."
+    },
+    "gram": "wechselpraepositionen_wdh_b1"
+  },
+  {
+    "id": "k1_030",
+    "cat": "k1",
+    "term": {
+      "de": "der Parkplatz",
+      "en": "parking spot, car park",
+      "uk": "парковка, паркувальне місце",
+      "ru": "парковка, парковочное место"
+    },
+    "short": {
+      "de": "ein Platz, wo man das Auto abstellen kann",
+      "en": "a place where you can leave the car",
+      "uk": "місце, де можна залишити машину",
+      "ru": "место, где можно оставить машину"
+    },
+    "def": {
+      "de": "Wir stellen unser Auto jeden Tag <g>auf den</g> <b>Parkplatz</b> Nummer sieben.",
+      "en": "We park our car in <b>parking spot</b> number seven every day.",
+      "uk": "Ми щодня ставимо машину на <b>парковочне місце</b> номер сім.",
+      "ru": "Мы каждый день ставим машину на <b>парковочное место</b> номер семь."
+    },
+    "gram": "wechselpraepositionen_wdh_b1"
+  },
+  {
+    "id": "k1_031",
+    "cat": "k1",
+    "term": {
+      "de": "sich (etwas) ausleihen",
+      "en": "to borrow (something)",
+      "uk": "позичати (щось) собі",
+      "ru": "одалживать (что-то) себе"
+    },
+    "short": {
+      "de": "sich für kurze Zeit etwas von jemandem geben lassen",
+      "en": "to get something from someone for a short time",
+      "uk": "брати щось у когось на короткий час",
+      "ru": "брать что-то у кого-то на короткое время"
+    },
+    "def": {
+      "de": "<g>Könnten Sie</g> mir bitte Ihre Leiter <b>ausleihen</b>? Ich bringe sie morgen zurück.",
+      "en": "<g>Could you</g> please <b>lend</b> me your ladder? I'll bring it back tomorrow.",
+      "uk": "<g>Могли б Ви</g>, будь ласка, <b>позичити</b> мені свою драбину? Я поверну її завтра.",
+      "ru": "<g>Могли бы Вы</g>, пожалуйста, <b>одолжить</b> мне свою лестницу? Я верну её завтра."
+    },
+    "gram": "hoefliche_bitten_konjunktiv_b1"
+  },
+  {
+    "id": "k1_032",
+    "cat": "k1",
+    "term": {
+      "de": "der Gefallen",
+      "en": "favour",
+      "uk": "послуга",
+      "ru": "услуга, одолжение"
+    },
+    "short": {
+      "de": "eine kleine Hilfe, um die man jemanden bittet",
+      "en": "a small favour you ask someone for",
+      "uk": "маленька послуга, про яку просиш когось",
+      "ru": "маленькая услуга, о которой просишь кого-то"
+    },
+    "def": {
+      "de": "<g>Würden Sie</g> mir einen <b>Gefallen</b> tun und meine Post annehmen, während ich im Urlaub bin?",
+      "en": "<g>Would you</g> do me a <b>favour</b> and take in my post while I'm on holiday?",
+      "uk": "<g>Могли б Ви</g> зробити мені <b>послугу</b> і забирати мою пошту, поки я у відпустці?",
+      "ru": "<g>Могли бы Вы</g> сделать мне <b>одолжение</b> и забирать мою почту, пока я в отпуске?"
+    },
+    "gram": "hoefliche_bitten_konjunktiv_b1"
+  },
+  {
+    "id": "k1_033",
+    "cat": "k1",
+    "term": {
+      "de": "das Werkzeug",
+      "en": "tool",
+      "uk": "інструмент",
+      "ru": "инструмент"
+    },
+    "short": {
+      "de": "ein Gegenstand, mit dem man zum Beispiel etwas reparieren oder bauen kann",
+      "en": "an object used, for example, to repair or build something",
+      "uk": "предмет, за допомогою якого можна щось ремонтувати чи будувати",
+      "ru": "предмет, с помощью которого можно что-то ремонтировать или строить"
+    },
+    "def": {
+      "de": "<g>Könnten Sie</g> mir Ihr <b>Werkzeug</b> für eine halbe Stunde leihen? Ich muss ein Regal aufbauen.",
+      "en": "<g>Could you</g> lend me your <b>tools</b> for half an hour? I need to put up a shelf.",
+      "uk": "<g>Могли б Ви</g> позичити мені свій <b>інструмент</b> на півгодини? Мені треба зібрати полицю.",
+      "ru": "<g>Могли бы Вы</g> одолжить мне свой <b>инструмент</b> на полчаса? Мне нужно собрать полку."
+    },
+    "gram": "hoefliche_bitten_konjunktiv_b1"
+  },
+  {
+    "id": "k1_034",
+    "cat": "k1",
+    "term": {
+      "de": "reichen",
+      "en": "to pass, to hand",
+      "uk": "подавати, простягати",
+      "ru": "подавать, протягивать"
+    },
+    "short": {
+      "de": "jemandem etwas geben, indem man es ihm hinhält",
+      "en": "to give something to someone by holding it out to them",
+      "uk": "давати щось комусь, простягаючи це",
+      "ru": "давать что-то кому-то, протягивая это"
+    },
+    "def": {
+      "de": "<g>Würden Sie</g> mir bitte kurz das Paket <b>reichen</b>? Ich kann es nicht erreichen.",
+      "en": "<g>Would you</g> please <b>pass</b> me the package? I can't reach it.",
+      "uk": "<g>Могли б Ви</g>, будь ласка, <b>подати</b> мені пакунок? Я не можу дотягнутися.",
+      "ru": "<g>Могли бы Вы</g>, пожалуйста, <b>подать</b> мне посылку? Я не могу дотянуться."
+    },
+    "gram": "hoefliche_bitten_konjunktiv_b1"
+  },
+  {
+    "id": "k1_035",
+    "cat": "k1",
+    "term": {
+      "de": "mitbringen",
+      "en": "to bring along",
+      "uk": "приносити (з собою)",
+      "ru": "приносить (с собой)"
+    },
+    "short": {
+      "de": "etwas von zu Hause zu einem anderen Ort bringen",
+      "en": "to bring something from home to another place",
+      "uk": "приносити щось з дому в інше місце",
+      "ru": "приносить что-то из дома в другое место"
+    },
+    "def": {
+      "de": "<g>Könnten Sie</g> morgen bitte den Ersatzschlüssel <b>mitbringen</b>?",
+      "en": "<g>Could you</g> please <b>bring</b> the spare key tomorrow?",
+      "uk": "<g>Могли б Ви</g>, будь ласка, завтра <b>принести</b> запасний ключ?",
+      "ru": "<g>Могли бы Вы</g>, пожалуйста, завтра <b>принести</b> запасной ключ?"
+    },
+    "gram": "hoefliche_bitten_konjunktiv_b1"
+  },
+  {
+    "id": "k1_036",
+    "cat": "k1",
+    "term": {
+      "de": "Bescheid geben",
+      "en": "to let someone know",
+      "uk": "повідомляти когось",
+      "ru": "сообщать кому-то"
+    },
+    "short": {
+      "de": "jemandem kurz sagen, dass etwas passiert oder passiert ist",
+      "en": "to briefly tell someone that something is happening or has happened",
+      "uk": "коротко повідомити комусь, що щось відбувається",
+      "ru": "коротко сообщить кому-то, что что-то происходит"
+    },
+    "def": {
+      "de": "<g>Würden Sie</g> mir bitte <b>Bescheid geben</b>, wenn das Paket ankommt?",
+      "en": "<g>Would you</g> please <b>let me know</b> when the package arrives?",
+      "uk": "<g>Могли б Ви</g>, будь ласка, <b>повідомити мене</b>, коли прийде посилка?",
+      "ru": "<g>Могли бы Вы</g>, пожалуйста, <b>сообщить мне</b>, когда придёт посылка?"
+    },
+    "gram": "hoefliche_bitten_konjunktiv_b1"
+  },
+  {
+    "id": "k1_037",
+    "cat": "k1",
+    "term": {
+      "de": "aufpassen (auf)",
+      "en": "to keep an eye on, to watch",
+      "uk": "пильнувати (за)",
+      "ru": "присматривать (за)"
+    },
+    "short": {
+      "de": "auf jemanden oder etwas achten, damit nichts passiert",
+      "en": "to pay attention to someone or something so that nothing happens",
+      "uk": "стежити за кимось чи чимось, щоб нічого не сталося",
+      "ru": "следить за кем-то или чем-то, чтобы ничего не случилось"
+    },
+    "def": {
+      "de": "<g>Könnten Sie</g> heute Abend kurz auf meine Katze <b>aufpassen</b>?",
+      "en": "<g>Could you</g> please <b>keep an eye on</b> my cat tonight?",
+      "uk": "<g>Могли б Ви</g> сьогодні ввечері трохи <b>попильнувати</b> за моєю кішкою?",
+      "ru": "<g>Могли бы Вы</g> сегодня вечером немного <b>присмотреть</b> за моей кошкой?"
+    },
+    "gram": "hoefliche_bitten_konjunktiv_b1"
+  },
+  {
+    "id": "k1_038",
+    "cat": "k1",
+    "term": {
+      "de": "abholen",
+      "en": "to pick up, to collect",
+      "uk": "забирати (когось/щось)",
+      "ru": "забирать (кого-то/что-то)"
+    },
+    "short": {
+      "de": "irgendwohin gehen, um jemanden oder etwas von dort mitzunehmen",
+      "en": "to go somewhere to collect someone or something",
+      "uk": "прийти кудись, щоб забрати когось або щось звідти",
+      "ru": "прийти куда-то, чтобы забрать кого-то или что-то оттуда"
+    },
+    "def": {
+      "de": "<g>Würden Sie</g> meinen Sohn bitte von der Schule <b>abholen</b>? Ich habe heute keine Zeit.",
+      "en": "<g>Would you</g> please <b>pick up</b> my son from school? I have no time today.",
+      "uk": "<g>Могли б Ви</g>, будь ласка, <b>забрати</b> мого сина зі школи? У мене сьогодні немає часу.",
+      "ru": "<g>Могли бы Вы</g>, пожалуйста, <b>забрать</b> моего сына из школы? У меня сегодня нет времени."
+    },
+    "gram": "hoefliche_bitten_konjunktiv_b1"
+  },
+  {
+    "id": "k1_039",
+    "cat": "k1",
+    "term": {
+      "de": "die Gemeinschaft",
+      "en": "community",
+      "uk": "спільнота",
+      "ru": "сообщество"
+    },
+    "short": {
+      "de": "eine Gruppe von Menschen, die zusammenleben oder etwas gemeinsam haben",
+      "en": "a group of people who live together or share something",
+      "uk": "група людей, які живуть разом або мають щось спільне",
+      "ru": "группа людей, которые живут вместе или имеют что-то общее"
+    },
+    "def": {
+      "de": "Es ist schön, Teil einer so freundlichen <b>Gemeinschaft</b> <g>zu sein</g>.",
+      "en": "It's nice <g>to be</g> part of such a friendly <b>community</b>.",
+      "uk": "Приємно бути частиною такої дружньої <b>спільноти</b>.",
+      "ru": "Приятно быть частью такого дружного <b>сообщества</b>."
+    },
+    "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_040",
+    "cat": "k1",
+    "term": {
+      "de": "sich kümmern (um)",
+      "en": "to take care (of)",
+      "uk": "піклуватися (про)",
+      "ru": "заботиться (о)"
+    },
+    "short": {
+      "de": "sich um jemanden oder etwas kümmern, damit es ihm/ihr gut geht",
+      "en": "to look after someone or something so that they are okay",
+      "uk": "піклуватися про когось чи щось",
+      "ru": "заботиться о ком-то или чём-то"
+    },
+    "def": {
+      "de": "Es ist nicht immer leicht, sich um den gemeinsamen Garten <g><b>zu kümmern</b></g>.",
+      "en": "It's not always easy <g><b>to take care of</b></g> the shared garden.",
+      "uk": "Не завжди легко <b>піклуватися</b> про спільний сад.",
+      "ru": "Не всегда легко <b>заботиться</b> об общем саде."
+    },
+    "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_041",
+    "cat": "k1",
+    "term": {
+      "de": "vermeiden",
+      "en": "to avoid",
+      "uk": "уникати",
+      "ru": "избегать"
+    },
+    "short": {
+      "de": "dafür sorgen, dass etwas Negatives nicht passiert",
+      "en": "to make sure that something negative doesn't happen",
+      "uk": "робити так, щоб щось негативне не сталося",
+      "ru": "делать так, чтобы что-то негативное не случилось"
+    },
+    "def": {
+      "de": "Es ist wichtig, Streit mit den Nachbarn <g><b>zu vermeiden</b></g>.",
+      "en": "It's important <g><b>to avoid</b></g> arguments with the neighbours.",
+      "uk": "Важливо <b>уникати</b> сварок із сусідами.",
+      "ru": "Важно <b>избегать</b> ссор с соседями."
+    },
+    "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_042",
+    "cat": "k1",
+    "term": {
+      "de": "sich gewöhnen (an)",
+      "en": "to get used (to)",
+      "uk": "звикати (до)",
+      "ru": "привыкать (к)"
+    },
+    "short": {
+      "de": "sich langsam an etwas Neues anpassen",
+      "en": "to slowly adapt to something new",
+      "uk": "поступово звикати до чогось нового",
+      "ru": "постепенно привыкать к чему-то новому"
+    },
+    "def": {
+      "de": "Es dauert oft ein paar Wochen, sich an die neue Nachbarschaft <g><b>zu gewöhnen</b></g>.",
+      "en": "It often takes a few weeks <g><b>to get used to</b></g> the new neighbourhood.",
+      "uk": "Часто потрібно кілька тижнів, щоб <b>звикнути</b> до нового сусідства.",
+      "ru": "Часто нужно несколько недель, чтобы <b>привыкнуть</b> к новому соседству."
+    },
+    "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_043",
+    "cat": "k1",
+    "term": {
+      "de": "gelingen",
+      "en": "to succeed, to manage",
+      "uk": "вдаватися (успішно зробити)",
+      "ru": "удаваться (успешно сделать)"
+    },
+    "short": {
+      "de": "etwas erfolgreich schaffen",
+      "en": "to succeed in doing something",
+      "uk": "успішно щось здійснити",
+      "ru": "успешно что-то осуществить"
+    },
+    "def": {
+      "de": "Endlich ist es uns <b>gelungen</b>, eine Lösung für das Parkplatzproblem <g>zu finden</g>.",
+      "en": "We <b>finally managed</b> <g>to find</g> a solution to the parking problem.",
+      "uk": "Нам нарешті <b>вдалося</b> знайти рішення проблеми з парковкою.",
+      "ru": "Нам наконец <b>удалось</b> найти решение проблемы с парковкой."
+    },
+    "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_044",
+    "cat": "k1",
+    "term": {
+      "de": "vorschlagen",
+      "en": "to suggest, to propose",
+      "uk": "пропонувати",
+      "ru": "предлагать"
+    },
+    "short": {
+      "de": "eine Idee sagen, die andere Menschen dann entscheiden können",
+      "en": "to say an idea that other people can then decide on",
+      "uk": "висловлювати ідею, яку потім можуть обрати інші",
+      "ru": "высказывать идею, которую потом могут выбрать другие"
+    },
+    "def": {
+      "de": "Herr Ali hat <b>vorgeschlagen</b>, im Sommer ein Nachbarschaftsfest <g>zu organisieren</g>.",
+      "en": "Mr Ali <b>suggested</b> <g>organizing</g> a neighbourhood party in summer.",
+      "uk": "Пан Алі <b>запропонував</b> організувати влітку сусідське свято.",
+      "ru": "Господин Али <b>предложил</b> организовать летом соседский праздник."
+    },
+    "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_045",
+    "cat": "k1",
+    "term": {
+      "de": "sich einigen",
+      "en": "to agree, to reach an agreement",
+      "uk": "домовлятися",
+      "ru": "договариваться"
+    },
+    "short": {
+      "de": "nach einer Diskussion zusammen eine Entscheidung treffen",
+      "en": "to reach a joint decision after a discussion",
+      "uk": "після обговорення разом прийти до спільного рішення",
+      "ru": "после обсуждения вместе прийти к общему решению"
+    },
+    "def": {
+      "de": "Es hat lange gedauert, sich auf eine neue Hausordnung <g><b>zu einigen</b></g>.",
+      "en": "It took a long time <g><b>to agree</b></g> on new house rules.",
+      "uk": "Знадобилося багато часу, щоб <b>домовитися</b> про нові правила будинку.",
+      "ru": "Понадобилось много времени, чтобы <b>договориться</b> о новых правилах дома."
+    },
+    "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_046",
+    "cat": "k1",
+    "term": {
+      "de": "teilen",
+      "en": "to share",
+      "uk": "ділити, спільно користуватися",
+      "ru": "делить, совместно пользоваться"
+    },
+    "short": {
+      "de": "etwas mit einer anderen Person zusammen benutzen oder aufteilen",
+      "en": "to use or divide something together with another person",
+      "uk": "спільно користуватися чимось з іншою людиною або ділити це",
+      "ru": "совместно пользоваться чем-то с другим человеком или делить это"
+    },
+    "def": {
+      "de": "Es macht Spaß, den Garten mit den Nachbarn <g><b>zu teilen</b></g>.",
+      "en": "It's fun <g><b>to share</b></g> the garden with the neighbours.",
+      "uk": "Приємно <b>ділити</b> сад із сусідами.",
+      "ru": "Приятно <b>делить</b> сад с соседями."
+    },
+    "gram": "infinitiv_mit_zu"
+  },
+  {
+    "id": "k1_047",
+    "cat": "k1",
+    "term": {
+      "de": "die Mülltrennung",
+      "en": "waste separation",
+      "uk": "сортування сміття",
+      "ru": "сортировка мусора"
+    },
+    "short": {
+      "de": "das Sortieren von Müll in verschiedene Tonnen, z. B. Papier, Glas, Restmüll",
+      "en": "sorting rubbish into different bins, e.g. paper, glass, general waste",
+      "uk": "сортування сміття в різні контейнери, напр. папір, скло, змішані відходи",
+      "ru": "сортировка мусора по разным контейнерам, напр. бумага, стекло, смешанные отходы"
+    },
+    "def": {
+      "de": "In unserem Haus <g>muss</g> man die <b>Mülltrennung</b> genau beachten.",
+      "en": "In our building, you <g>have to</g> follow the rules of <b>waste separation</b> carefully.",
+      "uk": "У нашому будинку <g>потрібно</g> ретельно дотримуватися <b>сортування сміття</b>.",
+      "ru": "В нашем доме <g>нужно</g> тщательно соблюдать <b>сортировку мусора</b>."
+    },
+    "gram": "modalverben_wdh_b1"
+  },
+  {
+    "id": "k1_048",
+    "cat": "k1",
+    "term": {
+      "de": "grillen",
+      "en": "to grill, to barbecue",
+      "uk": "смажити на грилі",
+      "ru": "жарить на гриле"
+    },
+    "short": {
+      "de": "Fleisch oder Gemüse draußen über dem Feuer kochen",
+      "en": "to cook meat or vegetables outside over a fire",
+      "uk": "готувати мʼясо чи овочі надворі на вогні",
+      "ru": "готовить мясо или овощи на улице на огне"
+    },
+    "def": {
+      "de": "Auf dem Balkon <g>darf</g> man leider nicht <b>grillen</b>.",
+      "en": "Unfortunately, you <g>are not allowed to</g> <b>grill</b> on the balcony.",
+      "uk": "На балконі, на жаль, <g>не можна</g> <b>смажити на грилі</b>.",
+      "ru": "На балконе, к сожалению, <g>нельзя</g> <b>жарить на гриле</b>."
+    },
+    "gram": "modalverben_wdh_b1"
+  },
+  {
+    "id": "k1_049",
+    "cat": "k1",
+    "term": {
+      "de": "der Rasen",
+      "en": "lawn",
+      "uk": "газон",
+      "ru": "газон"
+    },
+    "short": {
+      "de": "eine Fläche mit kurzem, grünem Gras",
+      "en": "an area covered with short, green grass",
+      "uk": "ділянка з коротенькою зеленою травою",
+      "ru": "участок с короткой зелёной травой"
+    },
+    "def": {
+      "de": "Kinder <g>dürfen</g> auf dem <b>Rasen</b> vor dem Haus spielen.",
+      "en": "Children <g>are allowed to</g> play on the <b>lawn</b> in front of the building.",
+      "uk": "Дітям <g>можна</g> гратися на <b>газоні</b> перед будинком.",
+      "ru": "Детям <g>можно</g> играть на <b>газоне</b> перед домом."
+    },
+    "gram": "modalverben_wdh_b1"
+  },
+  {
+    "id": "k1_050",
+    "cat": "k1",
+    "term": {
+      "de": "lüften",
+      "en": "to air out, to ventilate",
+      "uk": "провітрювати",
+      "ru": "проветривать"
+    },
+    "short": {
+      "de": "das Fenster öffnen, damit frische Luft ins Zimmer kommt",
+      "en": "to open the window so that fresh air comes into the room",
+      "uk": "відчиняти вікно, щоб у кімнату потрапило свіже повітря",
+      "ru": "открывать окно, чтобы в комнату попал свежий воздух"
+    },
+    "def": {
+      "de": "Man <g>sollte</g> jeden Morgen kurz <b>lüften</b>, das steht auch in der Hausordnung.",
+      "en": "You <g>should</g> <b>air out</b> the room briefly every morning, that's also in the house rules.",
+      "uk": "<g>Слід</g> щоранку недовго <b>провітрювати</b>, про це також написано в правилах будинку.",
+      "ru": "<g>Следует</g> каждое утро недолго <b>проветривать</b>, об этом также написано в правилах дома."
+    },
+    "gram": "modalverben_wdh_b1"
+  },
+  {
+    "id": "k1_051",
+    "cat": "k1",
+    "term": {
+      "de": "putzen",
+      "en": "to clean",
+      "uk": "прибирати",
+      "ru": "убирать"
+    },
+    "short": {
+      "de": "einen Ort mit Wasser, Seife oder einem Tuch sauber machen",
+      "en": "to make a place clean with water, soap or a cloth",
+      "uk": "робити місце чистим за допомогою води, мила чи ганчірки",
+      "ru": "делать место чистым с помощью воды, мыла или тряпки"
+    },
+    "def": {
+      "de": "Jeder Mieter <g>muss</g> einmal im Monat das Treppenhaus <b>putzen</b>.",
+      "en": "Every tenant <g>has to</g> <b>clean</b> the stairwell once a month.",
+      "uk": "Кожен орендар <g>повинен</g> раз на місяць <b>прибирати</b> підʼїзд.",
+      "ru": "Каждый арендатор <g>должен</g> раз в месяц <b>убирать</b> подъезд."
+    },
+    "gram": "modalverben_wdh_b1"
+  },
+  {
+    "id": "k1_052",
+    "cat": "k1",
+    "term": {
+      "de": "parken",
+      "en": "to park",
+      "uk": "паркуватися",
+      "ru": "парковаться"
+    },
+    "short": {
+      "de": "das Auto irgendwo abstellen",
+      "en": "to leave the car somewhere",
+      "uk": "залишати машину десь",
+      "ru": "оставлять машину где-то"
+    },
+    "def": {
+      "de": "Vor der Garageneinfahrt <g>darf</g> man nicht <b>parken</b>.",
+      "en": "You <g>are not allowed to</g> <b>park</b> in front of the garage entrance.",
+      "uk": "Перед вʼїздом до гаража <g>не можна</g> <b>паркуватися</b>.",
+      "ru": "Перед въездом в гараж <g>нельзя</g> <b>парковаться</b>."
+    },
+    "gram": "modalverben_wdh_b1"
+  },
+  {
+    "id": "k1_053",
+    "cat": "k1",
+    "term": {
+      "de": "die Gemeinschaftsräume",
+      "en": "common rooms, shared rooms",
+      "uk": "спільні приміщення",
+      "ru": "общие помещения"
+    },
+    "short": {
+      "de": "Räume im Haus, die alle Bewohner gemeinsam benutzen dürfen",
+      "en": "rooms in the building that all residents may use together",
+      "uk": "приміщення в будинку, якими можуть спільно користуватися всі мешканці",
+      "ru": "помещения в доме, которыми могут совместно пользоваться все жильцы"
+    },
+    "def": {
+      "de": "Die <b>Gemeinschaftsräume</b> <g>dürfen</g> alle Mieter kostenlos nutzen.",
+      "en": "All tenants <g>are allowed to</g> use the <b>common rooms</b> free of charge.",
+      "uk": "Усі орендарі <g>можуть</g> безкоштовно користуватися <b>спільними приміщеннями</b>.",
+      "ru": "Все арендаторы <g>могут</g> бесплатно пользоваться <b>общими помещениями</b>."
+    },
+    "gram": "modalverben_wdh_b1"
+  },
+  {
+    "id": "k1_054",
+    "cat": "k1",
+    "term": {
+      "de": "der Lärm",
+      "en": "noise",
+      "uk": "шум",
+      "ru": "шум"
+    },
+    "short": {
+      "de": "laute, störende Geräusche",
+      "en": "loud, disturbing sounds",
+      "uk": "гучні, набридливі звуки",
+      "ru": "громкие, надоедливые звуки"
+    },
+    "def": {
+      "de": "Der <b>Lärm</b> kam <g>weder</g> von der Baustelle <g>noch</g> von der Straße, sondern von der Party nebenan.",
+      "en": "The <b>noise</b> came <g>neither</g> from the construction site <g>nor</g> from the street, but from the party next door.",
+      "uk": "<b>Шум</b> ішов <g>ні</g> з будівництва, <g>ні</g> з вулиці, а з вечірки по сусідству.",
+      "ru": "<b>Шум</b> исходил <g>ни</g> со стройки, <g>ни</g> с улицы, а с вечеринки по соседству."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k1_055",
+    "cat": "k1",
+    "term": {
+      "de": "sich streiten",
+      "en": "to argue, to quarrel",
+      "uk": "сваритися",
+      "ru": "ссориться"
+    },
+    "short": {
+      "de": "laut und mit negativen Gefühlen über etwas diskutieren",
+      "en": "to discuss something loudly and with negative feelings",
+      "uk": "голосно й з негативними емоціями сперечатися про щось",
+      "ru": "громко и с негативными эмоциями спорить о чём-то"
+    },
+    "def": {
+      "de": "Die beiden Nachbarn <g>haben sich sowohl</g> wegen des Gartens <g>als auch</g> wegen des Parkplatzes <b>gestritten</b>.",
+      "en": "The two neighbours <g>have both</g> <b>argued</b> about the garden <g>and</g> about the parking spot.",
+      "uk": "Обидва сусіди <g>як</g> через сад, <g>так і</g> через парковку <b>посварилися</b>.",
+      "ru": "Оба соседа <g>как</g> из-за сада, <g>так и</g> из-за парковки <b>поссорились</b>."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k1_056",
+    "cat": "k1",
+    "term": {
+      "de": "die Beschwerde",
+      "en": "complaint",
+      "uk": "скарга",
+      "ru": "жалоба"
+    },
+    "short": {
+      "de": "das, was man sagt oder schreibt, wenn man mit etwas nicht zufrieden ist",
+      "en": "what you say or write when you are not satisfied with something",
+      "uk": "те, що ти кажеш чи пишеш, коли чимось незадоволений",
+      "ru": "то, что ты говоришь или пишешь, когда чем-то недоволен"
+    },
+    "def": {
+      "de": "Die <b>Beschwerde</b> kam <g>weder</g> vom Hausmeister <g>noch</g> vom Vermieter, sondern direkt von den Nachbarn.",
+      "en": "The <b>complaint</b> came <g>neither</g> from the caretaker <g>nor</g> from the landlord, but directly from the neighbours.",
+      "uk": "<b>Скарга</b> надійшла <g>ні</g> від двірника, <g>ні</g> від орендодавця, а безпосередньо від сусідів.",
+      "ru": "<b>Жалоба</b> поступила <g>ни</g> от дворника, <g>ни</g> от арендодателя, а напрямую от соседей."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k1_057",
+    "cat": "k1",
+    "term": {
+      "de": "rücksichtslos",
+      "en": "inconsiderate, reckless",
+      "uk": "нетактовний, безцеремонний",
+      "ru": "бестактный, бесцеремонный"
+    },
+    "short": {
+      "de": "wenn man nicht an die anderen Menschen denkt",
+      "en": "when you don't think of other people",
+      "uk": "коли ти не думаєш про інших людей",
+      "ru": "когда ты не думаешь о других людях"
+    },
+    "def": {
+      "de": "Der neue Mieter ist <g>sowohl</g> laut <g>als auch</g> ziemlich <b>rücksichtslos</b>.",
+      "en": "The new tenant is <g>both</g> loud <g>and</g> quite <b>inconsiderate</b>.",
+      "uk": "Новий орендар <g>як</g> гучний, <g>так і</g> досить <b>нетактовний</b>.",
+      "ru": "Новый арендатор <g>как</g> громкий, <g>так и</g> довольно <b>бестактный</b>."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k1_058",
+    "cat": "k1",
+    "term": {
+      "de": "der Kompromiss",
+      "en": "compromise",
+      "uk": "компроміс",
+      "ru": "компромисс"
+    },
+    "short": {
+      "de": "eine Lösung, bei der beide Seiten ein bisschen nachgeben",
+      "en": "a solution where both sides give in a little",
+      "uk": "рішення, при якому обидві сторони трохи поступаються",
+      "ru": "решение, при котором обе стороны немного уступают"
+    },
+    "def": {
+      "de": "Am Ende haben <g>sowohl</g> wir <g>als auch</g> die Nachbarn einem <b>Kompromiss</b> zugestimmt.",
+      "en": "In the end, <g>both</g> we <g>and</g> the neighbours agreed to a <b>compromise</b>.",
+      "uk": "Зрештою <g>як</g> ми, <g>так і</g> сусіди погодилися на <b>компроміс</b>.",
+      "ru": "В итоге <g>как</g> мы, <g>так и</g> соседи согласились на <b>компромисс</b>."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k1_059",
+    "cat": "k1",
+    "term": {
+      "de": "nervig",
+      "en": "annoying",
+      "uk": "дратівливий",
+      "ru": "раздражающий"
+    },
+    "short": {
+      "de": "wenn etwas oder jemand einen stört und man es nicht mehr hören/sehen möchte",
+      "en": "when something or someone bothers you and you don't want to hear/see it anymore",
+      "uk": "коли щось чи хтось дратує і ти більше не хочеш це чути/бачити",
+      "ru": "когда что-то или кто-то раздражает и ты больше не хочешь это слышать/видеть"
+    },
+    "def": {
+      "de": "Der Lärm vom Nachbarn ist <g>weder</g> laut <g>noch</g> gefährlich, aber trotzdem sehr <b>nervig</b>.",
+      "en": "The neighbour's noise is <g>neither</g> loud <g>nor</g> dangerous, but still very <b>annoying</b>.",
+      "uk": "Шум від сусіда <g>ні</g> гучний, <g>ні</g> небезпечний, але все одно дуже <b>дратівливий</b>.",
+      "ru": "Шум от соседа <g>ни</g> громкий, <g>ни</g> опасный, но всё равно очень <b>раздражающий</b>."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
+  },
+  {
+    "id": "k1_060",
+    "cat": "k1",
+    "term": {
+      "de": "ignorieren",
+      "en": "to ignore",
+      "uk": "ігнорувати",
+      "ru": "игнорировать"
+    },
+    "short": {
+      "de": "so tun, als ob man etwas oder jemanden nicht bemerkt",
+      "en": "to act as if you don't notice something or someone",
+      "uk": "поводитися так, ніби ти щось або когось не помічаєш",
+      "ru": "вести себя так, будто ты чего-то или кого-то не замечаешь"
+    },
+    "def": {
+      "de": "Frau König hat die Beschwerde <g>weder</g> gelesen <g>noch</g> beantwortet — sie hat sie einfach <b>ignoriert</b>.",
+      "en": "Mrs König <g>neither</g> read <g>nor</g> answered the complaint — she simply <b>ignored</b> it.",
+      "uk": "Пані Кеніг <g>ні</g> не прочитала, <g>ні</g> не відповіла на скаргу — вона просто її <b>проігнорувала</b>.",
+      "ru": "Госпожа Кёниг <g>ни</g> не прочитала, <g>ни</g> не ответила на жалобу — она просто её <b>проигнорировала</b>."
+    },
+    "gram": "sowohl_als_auch_weder_noch"
   },
   {
     "id": "k2_001",
