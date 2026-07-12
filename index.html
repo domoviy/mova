@@ -2353,35 +2353,15 @@ body.lesson-active .vocab-top{
     <div id="view-settings" class="view">
     <div class="sh"><h2>⚙️ <span data-i18n="sec_settings">Einstellungen</span></h2></div>
 
-    <!-- 1. Дата іспиту -->
-    <div class="ssec" id="ssec-sr-examdate">
-    <h3>🗓️ <span data-i18n="sec_examdate">Prüfungsdatum</span></h3>
-    <div class="srow">
-      <div class="srow-label"><label id="sr-settings-date-lbl">Prüfungstermin</label><small id="sr-settings-mode-lbl"></small></div>
-      <input type="date" id="sr-settings-date-input" class="sr-date-input" style="background:var(--soft);border-color:var(--border);color:var(--ink);min-width:0;width:140px" onchange="srOnDateChange(this.value)">
+    <!-- 1. Курс -->
+    <div class="ssec" id="ssec-course">
+    <h3>📚 <span data-i18n="sec_course">Kurs</span></h3>
+    <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
+      <!-- Рендериться через renderCourseList() при ініті -->
     </div>
     </div>
 
-    <!-- 2. Готовність до іспиту -->
-    <div class="sr-dashboard-ssec" id="ssec-sr-dashboard">
-    <div class="sr-dash-title">🎯 <span data-i18n="sec_readiness">Prüfungsbereitschaft</span> <span class="sr-info-icon" onclick="notify(t('sr_readiness_info'))" title="">ⓘ</span></div>
-    <div id="sr-dashboard-rows">
-      <div class="sr-plan-empty">Noch keine Daten. Beginne mit dem Lernen.</div>
-    </div>
-    <div class="sr-dash-learned" id="sr-dash-learned-txt"></div>
-    </div>
-
-    <!-- 3. Ціль і дані -->
-    <div class="ssec">
-    <h3>📊 <span data-i18n="sec_goal_data">Lernziel & Daten</span></h3>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
-    </div>
-
-    <!-- 4. Розмір шрифту -->
+    <!-- 2. Розмір шрифту -->
     <div class="ssec" id="ssec-fontsize">
     <h3>🔤 <span data-i18n="sec_fontsize">Schriftgröße</span></h3>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:10px">
@@ -2398,7 +2378,7 @@ body.lesson-active .vocab-top{
     </div>
     </div>
 
-    <!-- 5. Мова інтерфейсу -->
+    <!-- 3. Мова інтерфейсу -->
     <div class="ssec" id="ssec-lang">
     <h3>🌐 <span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
     <div style="display:flex;gap:8px;padding:4px 0;flex-direction:column">
@@ -2409,26 +2389,50 @@ body.lesson-active .vocab-top{
     </div>
     </div>
 
-    <!-- 6. Налаштування озвучування -->
+    <!-- 4. Готовність до іспиту -->
+    <div class="sr-dashboard-ssec" id="ssec-sr-dashboard">
+    <div class="sr-dash-title">🎯 <span data-i18n="sec_readiness">Prüfungsbereitschaft</span> <span class="sr-info-icon" onclick="notify(t('sr_readiness_info'))" title="">ⓘ</span></div>
+    <div id="sr-dashboard-rows">
+      <div class="sr-plan-empty">Noch keine Daten. Beginne mit dem Lernen.</div>
+    </div>
+    <div class="sr-dash-learned" id="sr-dash-learned-txt"></div>
+    </div>
+
+    <!-- 5. Дата іспиту -->
+    <div class="ssec" id="ssec-sr-examdate">
+    <h3>🗓️ <span data-i18n="sec_examdate">Prüfungsdatum</span></h3>
+    <div class="srow">
+      <div class="srow-label"><label id="sr-settings-date-lbl">Prüfungstermin</label><small id="sr-settings-mode-lbl"></small></div>
+      <input type="date" id="sr-settings-date-input" class="sr-date-input" style="background:var(--soft);border-color:var(--border);color:var(--ink);min-width:0;width:140px" onchange="srOnDateChange(this.value)">
+    </div>
+    </div>
+
+    <!-- 6. Ціль і дані -->
+    <div class="ssec">
+    <h3>📊 <span data-i18n="sec_goal_data">Lernziel & Daten</span></h3>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
+    </div>
+
+    <!-- 7. Налаштування озвучування (Швидкість — перший пункт) -->
     <div class="ssec">
     <h3>🔊 <span data-i18n="sec_playback">Wiedergabe</span></h3>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
     <div class="srow" id="tempo-row"></div>
+    <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_pause">Pause</label><small data-i18n="sub_pause">Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_readpause">Lesepause</label><small data-i18n="sub_readpause">Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
     </div>
 
-    <!-- 7. Курс -->
-    <div class="ssec" id="ssec-course">
-    <h3>📚 <span data-i18n="sec_course">Kurs</span></h3>
-    <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
-      <!-- Рендериться через renderCourseList() при ініті -->
-    </div>
-    </div>
-
-    <!-- 9. Налагодження -->
+    <!-- 8. Налагодження — згорнуто за замовчуванням, клік по заголовку розгортає -->
     <div class="ssec">
-    <h3>🛠 <span data-i18n="sec_debug">Debug</span></h3>
+    <h3 onclick="toggleDebugSection(this)" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-bottom:0">
+      <span>🛠 <span data-i18n="sec_debug">Debug</span></span>
+      <span class="ssec-chevron" style="font-size:12px;transition:transform .2s">▸</span>
+    </h3>
+    <div id="debug-section-content" style="display:none;margin-top:12px">
     <div class="srow">
       <div class="srow-label"><label>Error Log</label><small>Переглянути помилки аудіо та JS</small></div>
       <button class="btn btn-s" onclick="showErrorLog()">📋 Log</button>
@@ -2448,6 +2452,7 @@ body.lesson-active .vocab-top{
     <div class="srow">
       <div class="srow-label"><label>🔄 Оновити додаток</label><small>Скинути Service Worker і перезавантажити. Виправляє помилку «усі картки в уроці»</small></div>
       <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
+    </div>
     </div>
     </div>
 
@@ -2492,7 +2497,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '311-1e3e206';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5971,6 +5976,16 @@ function startLesson(lessonId){
 // ── ERROR LOG ─────────────────────────────────────────────────
 const ERR_LOG = [];
 const MAX_ERR_LOG = 200;
+
+// ── Згортання секції Debug у Settings ────────────────────────────
+function toggleDebugSection(headerEl){
+  const content = document.getElementById('debug-section-content');
+  if(!content) return;
+  const isOpen = content.style.display !== 'none';
+  content.style.display = isOpen ? 'none' : '';
+  const chevron = headerEl?.querySelector('.ssec-chevron');
+  if(chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+}
 
 function logErr(source, msg, detail=''){
   const entry = {
