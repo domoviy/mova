@@ -1956,7 +1956,15 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k6_001",
-      "k6_003"
+      "k6_003",
+      "k6_016",
+      "k6_017",
+      "k6_018",
+      "k6_019",
+      "k6_020",
+      "k6_021",
+      "k6_022",
+      "k6_023"
     ],
     "unlockAfter": null,
     "sbCards": []
@@ -1984,7 +1992,15 @@ var LESSONS = [
     "grammar": "futur_werden",
     "cardIds": [
       "k6_005",
-      "k6_008"
+      "k6_008",
+      "k6_024",
+      "k6_025",
+      "k6_026",
+      "k6_027",
+      "k6_028",
+      "k6_029",
+      "k6_030",
+      "k6_031"
     ],
     "unlockAfter": "k6m1",
     "sbCards": []
@@ -2013,7 +2029,14 @@ var LESSONS = [
     "cardIds": [
       "k6_002",
       "k6_013",
-      "k6_009"
+      "k6_009",
+      "k6_032",
+      "k6_033",
+      "k6_034",
+      "k6_035",
+      "k6_036",
+      "k6_037",
+      "k6_038"
     ],
     "unlockAfter": "k6m2",
     "sbCards": []
@@ -2041,7 +2064,15 @@ var LESSONS = [
     "grammar": "satz_mit_um_zu",
     "cardIds": [
       "k6_010",
-      "k6_004"
+      "k6_004",
+      "k6_039",
+      "k6_040",
+      "k6_041",
+      "k6_042",
+      "k6_043",
+      "k6_044",
+      "k6_045",
+      "k6_046"
     ],
     "unlockAfter": "k6m3",
     "sbCards": []
@@ -2069,7 +2100,15 @@ var LESSONS = [
     "grammar": "nebensatz_mit_damit_wdh_b1",
     "cardIds": [
       "k6_006",
-      "k6_011"
+      "k6_011",
+      "k6_047",
+      "k6_048",
+      "k6_049",
+      "k6_050",
+      "k6_051",
+      "k6_052",
+      "k6_053",
+      "k6_054"
     ],
     "unlockAfter": "k6m4",
     "sbCards": []
@@ -2099,7 +2138,13 @@ var LESSONS = [
       "k6_007",
       "k6_012",
       "k6_014",
-      "k6_015"
+      "k6_015",
+      "k6_055",
+      "k6_056",
+      "k6_057",
+      "k6_058",
+      "k6_059",
+      "k6_060"
     ],
     "unlockAfter": "k6m5",
     "sbCards": []
@@ -2126,7 +2171,15 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k7_001",
-      "k7_003"
+      "k7_003",
+      "k7_016",
+      "k7_017",
+      "k7_018",
+      "k7_019",
+      "k7_020",
+      "k7_021",
+      "k7_022",
+      "k7_023"
     ],
     "unlockAfter": null,
     "sbCards": []
@@ -2155,7 +2208,14 @@ var LESSONS = [
     "cardIds": [
       "k7_010",
       "k7_011",
-      "k7_013"
+      "k7_013",
+      "k7_024",
+      "k7_025",
+      "k7_026",
+      "k7_027",
+      "k7_028",
+      "k7_029",
+      "k7_030"
     ],
     "unlockAfter": "k7m1",
     "sbCards": []
@@ -2183,7 +2243,15 @@ var LESSONS = [
     "grammar": "perfekt_wdh_b1",
     "cardIds": [
       "k7_012",
-      "k7_014"
+      "k7_014",
+      "k7_031",
+      "k7_032",
+      "k7_033",
+      "k7_034",
+      "k7_035",
+      "k7_036",
+      "k7_037",
+      "k7_038"
     ],
     "unlockAfter": "k7m2",
     "sbCards": []
@@ -2211,7 +2279,15 @@ var LESSONS = [
     "grammar": "nomen_auf_ung",
     "cardIds": [
       "k7_008",
-      "k7_009"
+      "k7_009",
+      "k7_039",
+      "k7_040",
+      "k7_041",
+      "k7_042",
+      "k7_043",
+      "k7_044",
+      "k7_045",
+      "k7_046"
     ],
     "unlockAfter": "k7m3",
     "sbCards": []
@@ -2239,7 +2315,14 @@ var LESSONS = [
     "cardIds": [
       "k7_004",
       "k7_005",
-      "k7_006"
+      "k7_006",
+      "k7_047",
+      "k7_048",
+      "k7_049",
+      "k7_050",
+      "k7_051",
+      "k7_052",
+      "k7_053"
     ],
     "unlockAfter": "k7m4",
     "sbCards": []
@@ -2268,7 +2351,14 @@ var LESSONS = [
     "cardIds": [
       "k7_002",
       "k7_007",
-      "k7_015"
+      "k7_015",
+      "k7_054",
+      "k7_055",
+      "k7_056",
+      "k7_057",
+      "k7_058",
+      "k7_059",
+      "k7_060"
     ],
     "unlockAfter": "k7m5",
     "sbCards": []
@@ -10860,6 +10950,1041 @@ var VOCAB = [
     "gram": "nomen_auf_heit_keit"
   },
   {
+    "id": "k6_016",
+    "cat": "k6",
+    "term": {
+      "de": "der Patient / die Patientin",
+      "en": "patient",
+      "uk": "пацієнт / пацієнтка",
+      "ru": "пациент / пациентка"
+    },
+    "short": {
+      "de": "eine Person, die im Krankenhaus oder beim Arzt behandelt wird",
+      "en": "a person who is treated in a hospital or by a doctor",
+      "uk": "людина, яку лікують у лікарні чи в лікаря",
+      "ru": "человек, которого лечат в больнице или у врача"
+    },
+    "def": {
+      "de": "Über den neuen <b>Patienten</b> haben die Ärzte lange gesprochen — <g>darüber</g> gab es viele Fragen.",
+      "en": "The doctors talked for a long time about the new <b>patient</b> — there were many questions <g>about it</g>.",
+      "uk": "Про нового <b>пацієнта</b> лікарі довго розмовляли — щодо цього було багато запитань.",
+      "ru": "О новом <b>пациенте</b> врачи долго разговаривали — по этому поводу было много вопросов."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k6_017",
+    "cat": "k6",
+    "term": {
+      "de": "der Arzt / die Ärztin",
+      "en": "doctor",
+      "uk": "лікар / лікарка",
+      "ru": "врач"
+    },
+    "short": {
+      "de": "eine Person, die Menschen medizinisch behandelt",
+      "en": "a person who treats people medically",
+      "uk": "людина, яка медично лікує людей",
+      "ru": "человек, который медицински лечит людей"
+    },
+    "def": {
+      "de": "Über den <b>Arzt</b> haben wir nur Gutes gehört — <g>darüber</g> waren wir sehr froh.",
+      "en": "We only heard good things about the <b>doctor</b> — we were very happy <g>about that</g>.",
+      "uk": "Про <b>лікаря</b> ми чули лише хороше — цьому ми були дуже раді.",
+      "ru": "О <b>враче</b> мы слышали только хорошее — этому мы были очень рады."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k6_018",
+    "cat": "k6",
+    "term": {
+      "de": "besuchen",
+      "en": "to visit",
+      "uk": "відвідувати",
+      "ru": "навещать"
+    },
+    "short": {
+      "de": "zu jemandem gehen, um bei ihm zu sein, zum Beispiel im Krankenhaus",
+      "en": "to go to someone to be with them, for example in a hospital",
+      "uk": "приходити до когось, щоб побути з ним, наприклад у лікарні",
+      "ru": "приходить к кому-то, чтобы побыть с ним, например в больнице"
+    },
+    "def": {
+      "de": "<g>Worüber</g> habt ihr gesprochen, als ihr eure Oma im Krankenhaus <b>besucht</b> habt?",
+      "en": "What did you talk about when you <b>visited</b> your grandma in the hospital?",
+      "uk": "<g>Про що</g> ви говорили, коли <b>відвідували</b> бабусю в лікарні?",
+      "ru": "<g>О чём</g> вы говорили, когда <b>навещали</b> бабушку в больнице?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k6_019",
+    "cat": "k6",
+    "term": {
+      "de": "sich Sorgen machen (um)",
+      "en": "to worry (about)",
+      "uk": "хвилюватися (за)",
+      "ru": "переживать (за)"
+    },
+    "short": {
+      "de": "ängstlich an jemanden oder etwas denken",
+      "en": "to think anxiously about someone or something",
+      "uk": "тривожно думати про когось чи щось",
+      "ru": "тревожно думать о ком-то или чём-то"
+    },
+    "def": {
+      "de": "<g>Worüber</g> hast du dir am meisten <b>Sorgen gemacht</b>, als er im Krankenhaus war?",
+      "en": "What did you <b>worry</b> <g>about</g> the most when he was in the hospital?",
+      "uk": "<g>Про що</g> ти найбільше <b>хвилювався(-лась)</b>, коли він був у лікарні?",
+      "ru": "<g>О чём</g> ты больше всего <b>переживал(-а)</b>, когда он был в больнице?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k6_020",
+    "cat": "k6",
+    "term": {
+      "de": "die Aufnahme",
+      "en": "admission",
+      "uk": "прийом (у лікарню)",
+      "ru": "приём (в больницу)"
+    },
+    "short": {
+      "de": "wenn ein Patient offiziell im Krankenhaus registriert wird",
+      "en": "when a patient is officially registered at a hospital",
+      "uk": "коли пацієнта офіційно реєструють у лікарні",
+      "ru": "когда пациента официально регистрируют в больнице"
+    },
+    "def": {
+      "de": "Über die schnelle <b>Aufnahme</b> waren die Angehörigen sehr erleichtert — <g>darüber</g> haben sie sich bei allen bedankt.",
+      "en": "The relatives were very relieved about the fast <b>admission</b> — they thanked everyone <g>for it</g>.",
+      "uk": "Родичі дуже зраділи швидкому <b>прийому</b> — за це вони всіх подякували.",
+      "ru": "Родственники очень обрадовались быстрому <b>приёму</b> — за это они всех поблагодарили."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k6_021",
+    "cat": "k6",
+    "term": {
+      "de": "entlassen",
+      "en": "to discharge",
+      "uk": "виписувати (з лікарні)",
+      "ru": "выписывать (из больницы)"
+    },
+    "short": {
+      "de": "einen Patienten offiziell aus dem Krankenhaus nach Hause schicken",
+      "en": "to officially send a patient home from the hospital",
+      "uk": "офіційно відпустити пацієнта з лікарні додому",
+      "ru": "официально отпустить пациента из больницы домой"
+    },
+    "def": {
+      "de": "<g>Worüber</g> habt ihr euch gefreut, als er endlich <b>entlassen</b> wurde?",
+      "en": "What were you happy <g>about</g> when he was finally <b>discharged</b>?",
+      "uk": "<g>Чому</g> ви зраділи, коли його нарешті <b>виписали</b>?",
+      "ru": "<g>Чему</g> вы обрадовались, когда его наконец <b>выписали</b>?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k6_022",
+    "cat": "k6",
+    "term": {
+      "de": "der Besuch",
+      "en": "visit",
+      "uk": "візит",
+      "ru": "визит"
+    },
+    "short": {
+      "de": "wenn man zu jemandem geht, um ihn zu sehen",
+      "en": "when you go to see someone",
+      "uk": "коли приходиш до когось, щоб побачитися",
+      "ru": "когда приходишь к кому-то, чтобы увидеться"
+    },
+    "def": {
+      "de": "Über den kurzen <b>Besuch</b> bei ihr im Krankenhaus haben wir uns alle sehr gefreut — <g>darüber</g> reden wir noch oft.",
+      "en": "We were all very happy about the short <b>visit</b> to her in the hospital — we still talk <g>about it</g> often.",
+      "uk": "Ми всі дуже зраділи короткому <b>візиту</b> до неї в лікарні — <g>про це</g> ми досі часто говоримо.",
+      "ru": "Мы все очень обрадовались короткому <b>визиту</b> к ней в больницу — <g>об этом</g> мы до сих пор часто говорим."
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k6_023",
+    "cat": "k6",
+    "term": {
+      "de": "betreuen",
+      "en": "to look after, to care for",
+      "uk": "доглядати",
+      "ru": "ухаживать"
+    },
+    "short": {
+      "de": "sich regelmäßig um jemanden kümmern, der Hilfe braucht",
+      "en": "to regularly take care of someone who needs help",
+      "uk": "регулярно піклуватися про когось, хто потребує допомоги",
+      "ru": "регулярно заботиться о ком-то, кто нуждается в помощи"
+    },
+    "def": {
+      "de": "<g>Worüber</g> hat sich die Krankenschwester gefreut, als sie den Patienten <b>betreute</b>?",
+      "en": "What was the nurse happy <g>about</g> while she was <b>looking after</b> the patient?",
+      "uk": "<g>Чому</g> зраділа медсестра, коли <b>доглядала</b> пацієнта?",
+      "ru": "<g>Чему</g> обрадовалась медсестра, когда <b>ухаживала</b> за пациентом?"
+    },
+    "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "k6_024",
+    "cat": "k6",
+    "term": {
+      "de": "die Diagnose",
+      "en": "diagnosis",
+      "uk": "діагноз",
+      "ru": "диагноз"
+    },
+    "short": {
+      "de": "die Feststellung eines Arztes, welche Krankheit ein Patient hat",
+      "en": "a doctor's determination of what illness a patient has",
+      "uk": "визначення лікарем, яка хвороба є у пацієнта",
+      "ru": "определение врачом, какая болезнь есть у пациента"
+    },
+    "def": {
+      "de": "Die <b>Diagnose</b> <g>wird</g> erst nach den Testergebnissen <g>feststehen</g>.",
+      "en": "The <b>diagnosis</b> <g>will</g> only <g>be confirmed</g> after the test results.",
+      "uk": "<b>Діагноз</b> буде відомий лише після результатів аналізів.",
+      "ru": "<b>Диагноз</b> будет известен только после результатов анализов."
+    },
+    "gram": "futur_werden"
+  },
+  {
+    "id": "k6_025",
+    "cat": "k6",
+    "term": {
+      "de": "heilen",
+      "en": "to heal, to cure",
+      "uk": "загоюватися, лікувати",
+      "ru": "заживать, лечить"
+    },
+    "short": {
+      "de": "eine Krankheit oder Wunde vollständig beseitigen",
+      "en": "to completely get rid of an illness or wound",
+      "uk": "повністю позбавитися хвороби чи рани",
+      "ru": "полностью избавиться от болезни или раны"
+    },
+    "def": {
+      "de": "Diese Wunde <g>wird</g> mit der richtigen Behandlung schnell <g>heilen</g>.",
+      "en": "This wound <g>will</g> <g>heal</g> quickly with the right treatment.",
+      "uk": "Ця рана швидко загоїться з правильним лікуванням.",
+      "ru": "Эта рана быстро заживёт при правильном лечении."
+    },
+    "gram": "futur_werden"
+  },
+  {
+    "id": "k6_026",
+    "cat": "k6",
+    "term": {
+      "de": "sich erholen",
+      "en": "to recover",
+      "uk": "одужувати",
+      "ru": "выздоравливать"
+    },
+    "short": {
+      "de": "nach einer Krankheit oder Anstrengung wieder gesund und stark werden",
+      "en": "to become healthy and strong again after an illness or exertion",
+      "uk": "знову стати здоровим і сильним після хвороби чи навантаження",
+      "ru": "снова стать здоровым и сильным после болезни или нагрузки"
+    },
+    "def": {
+      "de": "Der Patient <g>wird</g> sich in den nächsten Wochen vollständig <g>erholen</g>.",
+      "en": "The patient <g>will</g> <g>recover</g> fully in the coming weeks.",
+      "uk": "Пацієнт повністю одужає протягом наступних тижнів.",
+      "ru": "Пациент полностью выздоровеет в течение следующих недель."
+    },
+    "gram": "futur_werden"
+  },
+  {
+    "id": "k6_027",
+    "cat": "k6",
+    "term": {
+      "de": "der Befund",
+      "en": "findings, result",
+      "uk": "результат обстеження",
+      "ru": "результат обследования"
+    },
+    "short": {
+      "de": "das Ergebnis einer medizinischen Untersuchung",
+      "en": "the result of a medical examination",
+      "uk": "результат медичного обстеження",
+      "ru": "результат медицинского обследования"
+    },
+    "def": {
+      "de": "Der <b>Befund</b> <g>wird</g> morgen früh <g>vorliegen</g>.",
+      "en": "The <b>findings</b> <g>will</g> <g>be available</g> tomorrow morning.",
+      "uk": "<b>Результат</b> обстеження буде готовий завтра вранці.",
+      "ru": "<b>Результат</b> обследования будет готов завтра утром."
+    },
+    "gram": "futur_werden"
+  },
+  {
+    "id": "k6_028",
+    "cat": "k6",
+    "term": {
+      "de": "die Therapie",
+      "en": "therapy",
+      "uk": "терапія",
+      "ru": "терапия"
+    },
+    "short": {
+      "de": "eine regelmäßige Behandlung, um eine Krankheit zu heilen oder zu verbessern",
+      "en": "a regular treatment to cure or improve an illness",
+      "uk": "регулярне лікування, щоб вилікувати чи покращити хворобу",
+      "ru": "регулярное лечение, чтобы вылечить или улучшить болезнь"
+    },
+    "def": {
+      "de": "Die <b>Therapie</b> <g>wird</g> mindestens sechs Wochen <g>dauern</g>.",
+      "en": "The <b>therapy</b> <g>will</g> <g>last</g> at least six weeks.",
+      "uk": "<b>Терапія</b> триватиме щонайменше шість тижнів.",
+      "ru": "<b>Терапия</b> продлится минимум шесть недель."
+    },
+    "gram": "futur_werden"
+  },
+  {
+    "id": "k6_029",
+    "cat": "k6",
+    "term": {
+      "de": "verschreiben",
+      "en": "to prescribe",
+      "uk": "призначати (ліки)",
+      "ru": "назначать (лекарство)"
+    },
+    "short": {
+      "de": "als Arzt ein Medikament für einen Patienten aufschreiben",
+      "en": "as a doctor, to write a medication for a patient",
+      "uk": "як лікар, призначати ліки пацієнту",
+      "ru": "как врач, назначать лекарство пациенту"
+    },
+    "def": {
+      "de": "Der Arzt <g>wird</g> ihr ein neues Medikament <g>verschreiben</g>.",
+      "en": "The doctor <g>will</g> <g>prescribe</g> her a new medication.",
+      "uk": "Лікар призначить їй нові ліки.",
+      "ru": "Врач назначит ей новое лекарство."
+    },
+    "gram": "futur_werden"
+  },
+  {
+    "id": "k6_030",
+    "cat": "k6",
+    "term": {
+      "de": "abklingen",
+      "en": "to subside, to wear off",
+      "uk": "вщухати",
+      "ru": "утихать"
+    },
+    "short": {
+      "de": "langsam schwächer werden und verschwinden, zum Beispiel Schmerzen",
+      "en": "to slowly become weaker and disappear, for example pain",
+      "uk": "поступово слабшати і зникати, наприклад про біль",
+      "ru": "постепенно слабеть и исчезать, например о боли"
+    },
+    "def": {
+      "de": "Die Schmerzen <g>werden</g> in ein paar Tagen sicher <g>abklingen</g>.",
+      "en": "The pain <g>will</g> definitely <g>subside</g> in a few days.",
+      "uk": "Біль точно вщухне за кілька днів.",
+      "ru": "Боль точно утихнет через несколько дней."
+    },
+    "gram": "futur_werden"
+  },
+  {
+    "id": "k6_031",
+    "cat": "k6",
+    "term": {
+      "de": "die Genesung",
+      "en": "recovery",
+      "uk": "одужання",
+      "ru": "выздоровление"
+    },
+    "short": {
+      "de": "der Prozess, wieder gesund zu werden",
+      "en": "the process of becoming healthy again",
+      "uk": "процес одужання",
+      "ru": "процесс выздоровления"
+    },
+    "def": {
+      "de": "Die <b>Genesung</b> <g>wird</g> mit viel Ruhe schneller <g>gehen</g>.",
+      "en": "The <b>recovery</b> <g>will</g> <g>go</g> faster with plenty of rest.",
+      "uk": "Одужання пройде швидше за достатнього відпочинку.",
+      "ru": "Выздоровление пройдёт быстрее при достаточном отдыхе."
+    },
+    "gram": "futur_werden"
+  },
+  {
+    "id": "k6_032",
+    "cat": "k6",
+    "term": {
+      "de": "die Erste Hilfe",
+      "en": "first aid",
+      "uk": "перша допомога",
+      "ru": "первая помощь"
+    },
+    "short": {
+      "de": "die sofortige Hilfe direkt nach einem Unfall, bevor der Arzt kommt",
+      "en": "the immediate help right after an accident, before the doctor arrives",
+      "uk": "негайна допомога одразу після нещасного випадку, до приходу лікаря",
+      "ru": "немедленная помощь сразу после несчастного случая, до прихода врача"
+    },
+    "def": {
+      "de": "Bei diesem Kurs lernt man <g>nicht nur</g> die Theorie, <g>sondern auch</g> die praktische <b>Erste Hilfe</b>.",
+      "en": "In this course, you learn <g>not only</g> the theory <g>but also</g> practical <b>first aid</b>.",
+      "uk": "На цьому курсі вивчають <g>не тільки</g> теорію, <g>а й</g> практичну <b>першу допомогу</b>.",
+      "ru": "На этом курсе изучают <g>не только</g> теорию, <g>но и</g> практическую <b>первую помощь</b>."
+    },
+    "gram": "nicht_nur_sondern_auch"
+  },
+  {
+    "id": "k6_033",
+    "cat": "k6",
+    "term": {
+      "de": "retten",
+      "en": "to rescue, to save",
+      "uk": "рятувати",
+      "ru": "спасать"
+    },
+    "short": {
+      "de": "jemanden aus einer gefährlichen Situation befreien",
+      "en": "to free someone from a dangerous situation",
+      "uk": "рятувати когось із небезпечної ситуації",
+      "ru": "спасать кого-то из опасной ситуации"
+    },
+    "def": {
+      "de": "Der Rettungsdienst hat <g>nicht nur</g> das Kind, <g>sondern auch</g> den Hund <b>gerettet</b>.",
+      "en": "The rescue service <g>not only</g> <b>saved</b> the child <g>but also</g> the dog.",
+      "uk": "Рятувальна служба <g>не тільки</g> <b>врятувала</b> дитину, <g>а й</g> собаку.",
+      "ru": "Спасательная служба <g>не только</g> <b>спасла</b> ребёнка, <g>но и</g> собаку."
+    },
+    "gram": "nicht_nur_sondern_auch"
+  },
+  {
+    "id": "k6_034",
+    "cat": "k6",
+    "term": {
+      "de": "bewusstlos",
+      "en": "unconscious",
+      "uk": "непритомний",
+      "ru": "без сознания"
+    },
+    "short": {
+      "de": "wenn man das Bewusstsein verloren hat und nicht reagiert",
+      "en": "when you have lost consciousness and do not react",
+      "uk": "коли втратив свідомість і не реагуєш",
+      "ru": "когда потерял сознание и не реагируешь"
+    },
+    "def": {
+      "de": "Der Mann war <g>nicht nur</g> <b>bewusstlos</b>, <g>sondern auch</g> sehr schwach.",
+      "en": "The man was <g>not only</g> <b>unconscious</b> <g>but also</g> very weak.",
+      "uk": "Чоловік був <g>не тільки</g> <b>непритомним</b>, <g>а й</g> дуже слабким.",
+      "ru": "Мужчина был <g>не только</g> <b>без сознания</b>, <g>но и</g> очень слабым."
+    },
+    "gram": "nicht_nur_sondern_auch"
+  },
+  {
+    "id": "k6_035",
+    "cat": "k6",
+    "term": {
+      "de": "bluten",
+      "en": "to bleed",
+      "uk": "кровоточити",
+      "ru": "кровоточить"
+    },
+    "short": {
+      "de": "wenn Blut aus dem Körper austritt, zum Beispiel bei einer Wunde",
+      "en": "when blood comes out of the body, for example from a wound",
+      "uk": "коли кров виходить з тіла, наприклад з рани",
+      "ru": "когда кровь выходит из тела, например из раны"
+    },
+    "def": {
+      "de": "Die Wunde hat <g>nicht nur</g> stark <b>geblutet</b>, <g>sondern auch</g> sehr wehgetan.",
+      "en": "The wound <g>not only</g> <b>bled</b> heavily <g>but also</g> hurt a lot.",
+      "uk": "Рана <g>не тільки</g> сильно <b>кровоточила</b>, <g>а й</g> дуже боліла.",
+      "ru": "Рана <g>не только</g> сильно <b>кровоточила</b>, <g>но и</g> очень болела."
+    },
+    "gram": "nicht_nur_sondern_auch"
+  },
+  {
+    "id": "k6_036",
+    "cat": "k6",
+    "term": {
+      "de": "die Wunde",
+      "en": "wound",
+      "uk": "рана",
+      "ru": "рана"
+    },
+    "short": {
+      "de": "eine Verletzung der Haut, zum Beispiel durch einen Schnitt",
+      "en": "an injury to the skin, for example from a cut",
+      "uk": "пошкодження шкіри, наприклад від порізу",
+      "ru": "повреждение кожи, например от пореза"
+    },
+    "def": {
+      "de": "Die <b>Wunde</b> war <g>nicht nur</g> tief, <g>sondern auch</g> schmutzig.",
+      "en": "The <b>wound</b> was <g>not only</g> deep <g>but also</g> dirty.",
+      "uk": "<b>Рана</b> була <g>не тільки</g> глибокою, <g>а й</g> брудною.",
+      "ru": "<b>Рана</b> была <g>не только</g> глубокой, <g>но и</g> грязной."
+    },
+    "gram": "nicht_nur_sondern_auch"
+  },
+  {
+    "id": "k6_037",
+    "cat": "k6",
+    "term": {
+      "de": "der Schock",
+      "en": "shock",
+      "uk": "шок",
+      "ru": "шок"
+    },
+    "short": {
+      "de": "ein plötzlicher, starker körperlicher oder seelischer Zustand nach etwas Schrecklichem",
+      "en": "a sudden, strong physical or emotional state after something terrible",
+      "uk": "раптовий, сильний фізичний чи емоційний стан після чогось жахливого",
+      "ru": "внезапное, сильное физическое или эмоциональное состояние после чего-то ужасного"
+    },
+    "def": {
+      "de": "Sie stand <g>nicht nur</g> unter <b>Schock</b>, <g>sondern auch</g> unter starkem Stress.",
+      "en": "She was <g>not only</g> in <b>shock</b> <g>but also</g> under a lot of stress.",
+      "uk": "Вона перебувала <g>не тільки</g> в стані <b>шоку</b>, <g>а й</g> під сильним стресом.",
+      "ru": "Она находилась <g>не только</g> в состоянии <b>шока</b>, <g>но и</g> под сильным стрессом."
+    },
+    "gram": "nicht_nur_sondern_auch"
+  },
+  {
+    "id": "k6_038",
+    "cat": "k6",
+    "term": {
+      "de": "alarmieren",
+      "en": "to alert",
+      "uk": "сповіщати",
+      "ru": "оповещать"
+    },
+    "short": {
+      "de": "schnell informieren, dass ein Notfall besteht",
+      "en": "to quickly inform someone that there is an emergency",
+      "uk": "швидко повідомляти про надзвичайну ситуацію",
+      "ru": "быстро сообщать о чрезвычайной ситуации"
+    },
+    "def": {
+      "de": "Der Nachbar hat <g>nicht nur</g> die Feuerwehr, <g>sondern auch</g> die Polizei <b>alarmiert</b>.",
+      "en": "The neighbour <g>not only</g> <b>alerted</b> the fire department <g>but also</g> the police.",
+      "uk": "Сусід <g>не тільки</g> <b>сповістив</b> пожежну службу, <g>а й</g> поліцію.",
+      "ru": "Сосед <g>не только</g> <b>оповестил</b> пожарную службу, <g>но и</g> полицию."
+    },
+    "gram": "nicht_nur_sondern_auch"
+  },
+  {
+    "id": "k6_039",
+    "cat": "k6",
+    "term": {
+      "de": "die Versicherungskarte",
+      "en": "insurance card",
+      "uk": "страхова картка",
+      "ru": "страховая карта"
+    },
+    "short": {
+      "de": "eine Karte, die zeigt, dass man krankenversichert ist",
+      "en": "a card that shows you have health insurance",
+      "uk": "картка, яка підтверджує наявність медичного страхування",
+      "ru": "карта, подтверждающая наличие медицинской страховки"
+    },
+    "def": {
+      "de": "Sie zeigte ihre <b>Versicherungskarte</b>, <g>um</g> sich schneller <g>anzumelden</g>.",
+      "en": "She showed her <b>insurance card</b> <g>in order to</g> <g>register</g> faster.",
+      "uk": "Вона показала свою <b>страхову картку</b>, <g>щоб</g> швидше зареєструватися.",
+      "ru": "Она показала свою <b>страховую карту</b>, <g>чтобы</g> быстрее зарегистрироваться."
+    },
+    "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "k6_040",
+    "cat": "k6",
+    "term": {
+      "de": "sich anmelden",
+      "en": "to register",
+      "uk": "реєструватися",
+      "ru": "регистрироваться"
+    },
+    "short": {
+      "de": "seinen Namen und seine Daten offiziell angeben, bevor man behandelt wird",
+      "en": "to officially give your name and details before being treated",
+      "uk": "офіційно надати своє імʼя та дані перед лікуванням",
+      "ru": "официально предоставить своё имя и данные перед лечением"
+    },
+    "def": {
+      "de": "Er ging zum Schalter, <g>um</g> sich <g>anzumelden</g>.",
+      "en": "He went to the counter <g>in order to</g> <g>register</g>.",
+      "uk": "Він пішов до стійки, <g>щоб</g> зареєструватися.",
+      "ru": "Он подошёл к стойке, <g>чтобы</g> зарегистрироваться."
+    },
+    "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "k6_041",
+    "cat": "k6",
+    "term": {
+      "de": "die Wartezeit",
+      "en": "waiting time",
+      "uk": "час очікування",
+      "ru": "время ожидания"
+    },
+    "short": {
+      "de": "die Zeit, die man warten muss, bis man an der Reihe ist",
+      "en": "the time you have to wait until it is your turn",
+      "uk": "час, який потрібно чекати, доки настане твоя черга",
+      "ru": "время, которое нужно ждать, пока не наступит твоя очередь"
+    },
+    "def": {
+      "de": "Sie brachte ein Buch mit, <g>um</g> die <b>Wartezeit</b> sinnvoll <g>zu nutzen</g>.",
+      "en": "She brought a book <g>in order to</g> use the <b>waiting time</b> wisely.",
+      "uk": "Вона взяла з собою книжку, <g>щоб</g> корисно провести час очікування.",
+      "ru": "Она взяла с собой книгу, <g>чтобы</g> с пользой провести время ожидания."
+    },
+    "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "k6_042",
+    "cat": "k6",
+    "term": {
+      "de": "vorlegen",
+      "en": "to present, to submit",
+      "uk": "подавати (документ)",
+      "ru": "подавать (документ)"
+    },
+    "short": {
+      "de": "ein Dokument zeigen oder abgeben",
+      "en": "to show or hand in a document",
+      "uk": "показати чи подати документ",
+      "ru": "показать или подать документ"
+    },
+    "def": {
+      "de": "Er kam früh, <g>um</g> alle Unterlagen rechtzeitig <g>vorzulegen</g>.",
+      "en": "He came early <g>in order to</g> <g>submit</g> all the documents on time.",
+      "uk": "Він прийшов рано, <g>щоб</g> вчасно подати всі документи.",
+      "ru": "Он пришёл рано, <g>чтобы</g> вовремя подать все документы."
+    },
+    "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "k6_043",
+    "cat": "k6",
+    "term": {
+      "de": "die Priorität",
+      "en": "priority",
+      "uk": "пріоритет",
+      "ru": "приоритет"
+    },
+    "short": {
+      "de": "was zuerst und am wichtigsten behandelt wird",
+      "en": "what is dealt with first and is most important",
+      "uk": "те, чим займаються насамперед і що найважливіше",
+      "ru": "то, чем занимаются в первую очередь и что важнее всего"
+    },
+    "def": {
+      "de": "Die Ärztin sortierte die Patienten nach <b>Priorität</b>, <g>um</g> den Schwerverletzten sofort <g>zu helfen</g>.",
+      "en": "The doctor sorted the patients by <b>priority</b> <g>in order to</g> help the severely injured immediately.",
+      "uk": "Лікарка розсортувала пацієнтів за <b>пріоритетом</b>, <g>щоб</g> одразу допомогти тяжкопораненим.",
+      "ru": "Врач рассортировала пациентов по <b>приоритету</b>, <g>чтобы</g> сразу помочь тяжелораненым."
+    },
+    "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "k6_044",
+    "cat": "k6",
+    "term": {
+      "de": "dringend",
+      "en": "urgent",
+      "uk": "терміновий",
+      "ru": "срочный"
+    },
+    "short": {
+      "de": "wenn etwas sehr schnell gemacht werden muss",
+      "en": "when something has to be done very quickly",
+      "uk": "коли щось потрібно зробити дуже швидко",
+      "ru": "когда что-то нужно сделать очень быстро"
+    },
+    "def": {
+      "de": "Sie rief laut nach dem Arzt, <g>um</g> auf den <b>dringenden</b> Fall <g>aufmerksam zu machen</g>.",
+      "en": "She called loudly for the doctor <g>in order to</g> draw attention to the <b>urgent</b> case.",
+      "uk": "Вона голосно покликала лікаря, <g>щоб</g> звернути увагу на <b>терміновий</b> випадок.",
+      "ru": "Она громко позвала врача, <g>чтобы</g> обратить внимание на <b>срочный</b> случай."
+    },
+    "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "k6_045",
+    "cat": "k6",
+    "term": {
+      "de": "unterschreiben",
+      "en": "to sign",
+      "uk": "підписувати",
+      "ru": "подписывать"
+    },
+    "short": {
+      "de": "seinen Namen unter ein Dokument schreiben",
+      "en": "to write your name under a document",
+      "uk": "писати своє імʼя під документом",
+      "ru": "писать своё имя под документом"
+    },
+    "def": {
+      "de": "Sie las das Formular genau, <g>um</g> es dann korrekt <g>zu unterschreiben</g>.",
+      "en": "She read the form carefully <g>in order to</g> then <g>sign</g> it correctly.",
+      "uk": "Вона уважно прочитала формуляр, <g>щоб</g> потім правильно його підписати.",
+      "ru": "Она внимательно прочитала формуляр, <g>чтобы</g> потом правильно его подписать."
+    },
+    "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "k6_046",
+    "cat": "k6",
+    "term": {
+      "de": "abgeben",
+      "en": "to hand in",
+      "uk": "здавати (документ)",
+      "ru": "сдавать (документ)"
+    },
+    "short": {
+      "de": "etwas offiziell an eine zuständige Stelle geben",
+      "en": "to officially give something to the responsible office",
+      "uk": "офіційно передати щось відповідальній інстанції",
+      "ru": "официально передать что-то ответственной инстанции"
+    },
+    "def": {
+      "de": "Er beeilte sich, <g>um</g> das Formular noch vor Mittag <g>abzugeben</g>.",
+      "en": "He hurried <g>in order to</g> <g>hand in</g> the form before noon.",
+      "uk": "Він поспішав, <g>щоб</g> здати формуляр ще до обіду.",
+      "ru": "Он торопился, <g>чтобы</g> сдать формуляр ещё до обеда."
+    },
+    "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "k6_047",
+    "cat": "k6",
+    "term": {
+      "de": "die Narkose",
+      "en": "anaesthesia",
+      "uk": "наркоз",
+      "ru": "наркоз"
+    },
+    "short": {
+      "de": "ein Medikament, das den Körper vor einer Operation schläfrig oder gefühllos macht",
+      "en": "a medication that makes the body sleepy or numb before an operation",
+      "uk": "препарат, який робить тіло сонним чи нечутливим перед операцією",
+      "ru": "препарат, который делает тело сонным или бесчувственным перед операцией"
+    },
+    "def": {
+      "de": "Der Anästhesist erklärte die <b>Narkose</b> genau, <g>damit</g> der Patient keine Angst <g>hat</g>.",
+      "en": "The anaesthetist explained the <b>anaesthesia</b> precisely <g>so that</g> the patient <g>would not be</g> afraid.",
+      "uk": "Анестезіолог детально пояснив <b>наркоз</b>, <g>щоб</g> пацієнт не боявся.",
+      "ru": "Анестезиолог подробно объяснил <b>наркоз</b>, <g>чтобы</g> пациент не боялся."
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "k6_048",
+    "cat": "k6",
+    "term": {
+      "de": "der Chirurg / die Chirurgin",
+      "en": "surgeon",
+      "uk": "хірург / хірургиня",
+      "ru": "хирург"
+    },
+    "short": {
+      "de": "ein Arzt, der Operationen macht",
+      "en": "a doctor who performs operations",
+      "uk": "лікар, який робить операції",
+      "ru": "врач, который делает операции"
+    },
+    "def": {
+      "de": "Die <b>Chirurgin</b> sprach ruhig mit der Familie, <g>damit</g> sie sich weniger <g>sorgt</g>.",
+      "en": "The <b>surgeon</b> spoke calmly with the family <g>so that</g> they <g>would worry</g> less.",
+      "uk": "<b>Хірургиня</b> спокійно поговорила з родиною, <g>щоб</g> вони менше хвилювалися.",
+      "ru": "<b>Хирург</b> спокойно поговорила с семьёй, <g>чтобы</g> они меньше волновались."
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "k6_049",
+    "cat": "k6",
+    "term": {
+      "de": "aufklären",
+      "en": "to inform, to brief (a patient)",
+      "uk": "інформувати (пацієнта)",
+      "ru": "информировать (пациента)"
+    },
+    "short": {
+      "de": "einem Patienten genau erklären, was bei einer Behandlung passiert",
+      "en": "to explain precisely to a patient what happens during a treatment",
+      "uk": "детально пояснити пацієнту, що відбувається під час лікування",
+      "ru": "подробно объяснить пациенту, что происходит во время лечения"
+    },
+    "def": {
+      "de": "Der Arzt musste den Patienten genau <b>aufklären</b>, <g>damit</g> er der Operation <g>zustimmt</g>.",
+      "en": "The doctor had to <b>inform</b> the patient precisely <g>so that</g> he <g>would agree</g> to the operation.",
+      "uk": "Лікар мав детально <b>проінформувати</b> пацієнта, <g>щоб</g> той погодився на операцію.",
+      "ru": "Врач должен был подробно <b>проинформировать</b> пациента, <g>чтобы</g> тот согласился на операцию."
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "k6_050",
+    "cat": "k6",
+    "term": {
+      "de": "zustimmen",
+      "en": "to agree, to consent",
+      "uk": "погоджуватися",
+      "ru": "соглашаться"
+    },
+    "short": {
+      "de": "sagen, dass man mit etwas einverstanden ist",
+      "en": "to say that you agree with something",
+      "uk": "казати, що ти з чимось погоджуєшся",
+      "ru": "говорить, что ты с чем-то согласен"
+    },
+    "def": {
+      "de": "Die Familie musste schnell <b>zustimmen</b>, <g>damit</g> die Ärzte sofort <g>operieren</g>.",
+      "en": "The family had to <b>agree</b> quickly <g>so that</g> the doctors <g>could operate</g> immediately.",
+      "uk": "Родина мала швидко <b>погодитися</b>, <g>щоб</g> лікарі одразу прооперували.",
+      "ru": "Семья должна была быстро <b>согласиться</b>, <g>чтобы</g> врачи сразу прооперировали."
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "k6_051",
+    "cat": "k6",
+    "term": {
+      "de": "das Risiko",
+      "en": "risk",
+      "uk": "ризик",
+      "ru": "риск"
+    },
+    "short": {
+      "de": "die Möglichkeit, dass etwas Negatives passiert",
+      "en": "the possibility that something negative happens",
+      "uk": "можливість того, що станеться щось негативне",
+      "ru": "возможность того, что произойдёт что-то негативное"
+    },
+    "def": {
+      "de": "Der Arzt erklärte das <b>Risiko</b> ausführlich, <g>damit</g> der Patient eine informierte Entscheidung <g>trifft</g>.",
+      "en": "The doctor explained the <b>risk</b> in detail <g>so that</g> the patient <g>could make</g> an informed decision.",
+      "uk": "Лікар детально пояснив <b>ризик</b>, <g>щоб</g> пацієнт прийняв усвідомлене рішення.",
+      "ru": "Врач подробно объяснил <b>риск</b>, <g>чтобы</g> пациент принял осознанное решение."
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "k6_052",
+    "cat": "k6",
+    "term": {
+      "de": "betäuben",
+      "en": "to anaesthetize, to numb",
+      "uk": "знеболювати",
+      "ru": "обезболивать"
+    },
+    "short": {
+      "de": "einen Körperteil oder den ganzen Körper gefühllos machen",
+      "en": "to make a body part or the whole body numb",
+      "uk": "робити частину тіла чи все тіло нечутливим",
+      "ru": "делать часть тела или всё тело бесчувственным"
+    },
+    "def": {
+      "de": "Die Ärztin musste den Arm zuerst <b>betäuben</b>, <g>damit</g> der Patient nichts <g>spürt</g>.",
+      "en": "The doctor had to <b>numb</b> the arm first <g>so that</g> the patient <g>would not feel</g> anything.",
+      "uk": "Лікарка спочатку мала <b>знеболити</b> руку, <g>щоб</g> пацієнт нічого не відчував.",
+      "ru": "Врач сначала должна была <b>обезболить</b> руку, <g>чтобы</g> пациент ничего не чувствовал."
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "k6_053",
+    "cat": "k6",
+    "term": {
+      "de": "überwachen",
+      "en": "to monitor",
+      "uk": "наглядати",
+      "ru": "наблюдать"
+    },
+    "short": {
+      "de": "regelmäßig kontrollieren, ob alles in Ordnung ist",
+      "en": "to regularly check that everything is fine",
+      "uk": "регулярно перевіряти, чи все гаразд",
+      "ru": "регулярно проверять, всё ли в порядке"
+    },
+    "def": {
+      "de": "Die Pflegerin musste den Patienten die ganze Nacht <b>überwachen</b>, <g>damit</g> nichts <g>passiert</g>.",
+      "en": "The nurse had to <b>monitor</b> the patient all night <g>so that</g> nothing <g>would happen</g>.",
+      "uk": "Медсестра мала цілу ніч <b>наглядати</b> за пацієнтом, <g>щоб</g> нічого не сталося.",
+      "ru": "Медсестра должна была всю ночь <b>наблюдать</b> за пациентом, <g>чтобы</g> ничего не случилось."
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "k6_054",
+    "cat": "k6",
+    "term": {
+      "de": "informieren",
+      "en": "to inform",
+      "uk": "повідомляти",
+      "ru": "сообщать"
+    },
+    "short": {
+      "de": "jemandem wichtige Informationen geben",
+      "en": "to give someone important information",
+      "uk": "давати комусь важливу інформацію",
+      "ru": "давать кому-то важную информацию"
+    },
+    "def": {
+      "de": "Die Schwester musste die Familie sofort <b>informieren</b>, <g>damit</g> sie ins Krankenhaus <g>kommt</g>.",
+      "en": "The nurse had to <b>inform</b> the family immediately <g>so that</g> they <g>would come</g> to the hospital.",
+      "uk": "Медсестра мала одразу <b>повідомити</b> родину, <g>щоб</g> вони приїхали до лікарні.",
+      "ru": "Медсестра должна была сразу <b>сообщить</b> семье, <g>чтобы</g> они приехали в больницу."
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "k6_055",
+    "cat": "k6",
+    "term": {
+      "de": "die Gesundheit",
+      "en": "health",
+      "uk": "здоровʼя",
+      "ru": "здоровье"
+    },
+    "short": {
+      "de": "der Zustand, wenn der Körper und der Geist gut funktionieren",
+      "en": "the state when the body and mind function well",
+      "uk": "стан, коли тіло й розум добре функціонують",
+      "ru": "состояние, когда тело и разум хорошо функционируют"
+    },
+    "def": {
+      "de": "Die <g><b>Gesundheit</b></g> der Patienten hat für dieses Krankenhaus höchste Priorität.",
+      "en": "The <b>health</b> of the patients has the highest priority for this hospital.",
+      "uk": "<b>Здоровʼя</b> пацієнтів — найвищий пріоритет для цієї лікарні.",
+      "ru": "<b>Здоровье</b> пациентов — высший приоритет для этой больницы."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k6_056",
+    "cat": "k6",
+    "term": {
+      "de": "die Sicherheit",
+      "en": "safety",
+      "uk": "безпека",
+      "ru": "безопасность"
+    },
+    "short": {
+      "de": "der Zustand, wenn keine Gefahr besteht",
+      "en": "the state when there is no danger",
+      "uk": "стан, коли немає небезпеки",
+      "ru": "состояние, когда нет опасности"
+    },
+    "def": {
+      "de": "Die <g><b>Sicherheit</b></g> der Patienten steht bei jeder Operation an erster Stelle.",
+      "en": "Patient <b>safety</b> comes first in every operation.",
+      "uk": "<b>Безпека</b> пацієнтів на першому місці під час кожної операції.",
+      "ru": "<b>Безопасность</b> пациентов на первом месте во время каждой операции."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k6_057",
+    "cat": "k6",
+    "term": {
+      "de": "die Möglichkeit",
+      "en": "possibility",
+      "uk": "можливість",
+      "ru": "возможность"
+    },
+    "short": {
+      "de": "eine Chance oder ein Weg, etwas zu tun",
+      "en": "a chance or way to do something",
+      "uk": "шанс чи спосіб щось зробити",
+      "ru": "шанс или способ что-то сделать"
+    },
+    "def": {
+      "de": "Es gibt heute mehr <g><b>Möglichkeiten</b></g> für eine erfolgreiche Behandlung als früher.",
+      "en": "Today there are more <b>possibilities</b> for successful treatment than before.",
+      "uk": "Сьогодні є більше <b>можливостей</b> для успішного лікування, ніж раніше.",
+      "ru": "Сегодня существует больше <b>возможностей</b> для успешного лечения, чем раньше."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k6_058",
+    "cat": "k6",
+    "term": {
+      "de": "die Schwierigkeit",
+      "en": "difficulty",
+      "uk": "труднощі",
+      "ru": "трудность"
+    },
+    "short": {
+      "de": "ein Problem, das eine Aufgabe schwer macht",
+      "en": "a problem that makes a task hard",
+      "uk": "проблема, яка ускладнює завдання",
+      "ru": "проблема, которая усложняет задачу"
+    },
+    "def": {
+      "de": "Trotz einiger <g><b>Schwierigkeiten</b></g> verlief die Operation ohne größere Probleme.",
+      "en": "Despite some <b>difficulties</b>, the operation went without major problems.",
+      "uk": "Попри деякі <b>труднощі</b>, операція пройшла без серйозних проблем.",
+      "ru": "Несмотря на некоторые <b>трудности</b>, операция прошла без серьёзных проблем."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k6_059",
+    "cat": "k6",
+    "term": {
+      "de": "die Sauberkeit",
+      "en": "cleanliness",
+      "uk": "чистота",
+      "ru": "чистота"
+    },
+    "short": {
+      "de": "der Zustand, wenn etwas sauber und hygienisch ist",
+      "en": "the state when something is clean and hygienic",
+      "uk": "стан, коли щось чисте й гігієнічне",
+      "ru": "состояние, когда что-то чистое и гигиеничное"
+    },
+    "def": {
+      "de": "Im Operationssaal wird auf absolute <g><b>Sauberkeit</b></g> besonders geachtet.",
+      "en": "Absolute <b>cleanliness</b> is paid special attention to in the operating room.",
+      "uk": "В операційній особливо стежать за абсолютною <b>чистотою</b>.",
+      "ru": "В операционной особенно следят за абсолютной <b>чистотой</b>."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k6_060",
+    "cat": "k6",
+    "term": {
+      "de": "die Wichtigkeit",
+      "en": "importance",
+      "uk": "важливість",
+      "ru": "важность"
+    },
+    "short": {
+      "de": "wie bedeutend oder relevant etwas ist",
+      "en": "how significant or relevant something is",
+      "uk": "наскільки значуще чи важливе щось",
+      "ru": "насколько значимо или важно что-то"
+    },
+    "def": {
+      "de": "Der Arzt erklärte den Patienten die <g><b>Wichtigkeit</b></g> einer gesunden Ernährung nach der Operation.",
+      "en": "The doctor explained to the patients the <b>importance</b> of a healthy diet after the operation.",
+      "uk": "Лікар пояснив пацієнтам <b>важливість</b> здорового харчування після операції.",
+      "ru": "Врач объяснил пациентам <b>важность</b> здорового питания после операции."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
     "id": "k7_001",
     "cat": "k7",
     "term": {
@@ -11201,6 +12326,1041 @@ var VOCAB = [
       "en": "<b>Awareness</b> of environmental problems <g>is</g> now more strongly <g>promoted</g> in schools.",
       "uk": "<b>Усвідомлення</b> екологічних проблем зараз активніше розвивають у школах.",
       "ru": "<b>Осознание</b> экологических проблем сейчас активнее развивают в школах."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_016",
+    "cat": "k7",
+    "term": {
+      "de": "die Nachhaltigkeit",
+      "en": "sustainability",
+      "uk": "сталість",
+      "ru": "устойчивость"
+    },
+    "short": {
+      "de": "wenn man so lebt oder wirtschaftet, dass die Umwelt für die Zukunft geschützt bleibt",
+      "en": "living or doing business in a way that protects the environment for the future",
+      "uk": "коли живеш чи господарюєш так, щоб довкілля залишалося захищеним для майбутнього",
+      "ru": "когда живёшь или хозяйствуешь так, чтобы окружающая среда оставалась защищённой для будущего"
+    },
+    "def": {
+      "de": "Die <g><b>Nachhaltigkeit</b></g> spielt bei diesem Unternehmen eine sehr große Rolle.",
+      "en": "<b>Sustainability</b> plays a very big role at this company.",
+      "uk": "<b>Сталість</b> відіграє дуже велику роль у цій компанії.",
+      "ru": "<b>Устойчивость</b> играет очень большую роль в этой компании."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k7_017",
+    "cat": "k7",
+    "term": {
+      "de": "die Verantwortlichkeit",
+      "en": "responsibility",
+      "uk": "відповідальність",
+      "ru": "ответственность"
+    },
+    "short": {
+      "de": "die Pflicht, sich um etwas zu kümmern und dafür einzustehen",
+      "en": "the duty to take care of something and be accountable for it",
+      "uk": "обовʼязок піклуватися про щось і відповідати за це",
+      "ru": "обязанность заботиться о чём-то и отвечать за это"
+    },
+    "def": {
+      "de": "Jeder von uns trägt eine gewisse <g><b>Verantwortlichkeit</b></g> für den Klimaschutz.",
+      "en": "Each of us bears a certain <b>responsibility</b> for climate protection.",
+      "uk": "Кожен із нас несе певну <b>відповідальність</b> за захист клімату.",
+      "ru": "Каждый из нас несёт определённую <b>ответственность</b> за защиту климата."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k7_018",
+    "cat": "k7",
+    "term": {
+      "de": "die Aufmerksamkeit",
+      "en": "attention",
+      "uk": "увага",
+      "ru": "внимание"
+    },
+    "short": {
+      "de": "wenn man etwas genau beobachtet oder sich darauf konzentriert",
+      "en": "when you observe something closely or focus on it",
+      "uk": "коли уважно спостерігаєш за чимось або зосереджуєшся на цьому",
+      "ru": "когда внимательно наблюдаешь за чем-то или сосредотачиваешься на этом"
+    },
+    "def": {
+      "de": "Umweltthemen bekommen in den Medien immer mehr <g><b>Aufmerksamkeit</b></g>.",
+      "en": "Environmental topics are getting more and more <b>attention</b> in the media.",
+      "uk": "Екологічні теми отримують дедалі більше <b>уваги</b> в медіа.",
+      "ru": "Экологические темы получают всё больше <b>внимания</b> в СМИ."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k7_019",
+    "cat": "k7",
+    "term": {
+      "de": "die Knappheit",
+      "en": "scarcity",
+      "uk": "дефіцит",
+      "ru": "дефицит"
+    },
+    "short": {
+      "de": "wenn von etwas zu wenig vorhanden ist",
+      "en": "when there is too little of something available",
+      "uk": "коли чогось надто мало",
+      "ru": "когда чего-то слишком мало"
+    },
+    "def": {
+      "de": "Die <g><b>Knappheit</b></g> von sauberem Trinkwasser ist in vielen Ländern ein großes Problem.",
+      "en": "The <b>scarcity</b> of clean drinking water is a big problem in many countries.",
+      "uk": "<b>Дефіцит</b> чистої питної води — велика проблема в багатьох країнах.",
+      "ru": "<b>Дефицит</b> чистой питьевой воды — большая проблема во многих странах."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k7_020",
+    "cat": "k7",
+    "term": {
+      "de": "die Achtsamkeit",
+      "en": "mindfulness",
+      "uk": "усвідомленість",
+      "ru": "осознанность"
+    },
+    "short": {
+      "de": "wenn man bewusst und aufmerksam mit etwas umgeht",
+      "en": "when you handle something consciously and attentively",
+      "uk": "коли ти свідомо й уважно ставишся до чогось",
+      "ru": "когда ты сознательно и внимательно относишься к чему-то"
+    },
+    "def": {
+      "de": "Mit mehr <g><b>Achtsamkeit</b></g> im Alltag können wir viel Müll vermeiden.",
+      "en": "With more <b>mindfulness</b> in everyday life, we can avoid a lot of waste.",
+      "uk": "З більшою <b>усвідомленістю</b> в повсякденному житті ми можемо уникнути багато сміття.",
+      "ru": "С большей <b>осознанностью</b> в повседневной жизни мы можем избежать много мусора."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k7_021",
+    "cat": "k7",
+    "term": {
+      "de": "die Umweltfreundlichkeit",
+      "en": "environmental friendliness",
+      "uk": "екологічність",
+      "ru": "экологичность"
+    },
+    "short": {
+      "de": "wenn ein Produkt oder eine Handlung die Umwelt nicht belastet",
+      "en": "when a product or action does not harm the environment",
+      "uk": "коли товар чи дія не шкодять довкіллю",
+      "ru": "когда товар или действие не вредят окружающей среде"
+    },
+    "def": {
+      "de": "Beim Kauf neuer Produkte achten wir jetzt viel mehr auf <g><b>Umweltfreundlichkeit</b></g>.",
+      "en": "When buying new products, we now pay much more attention to <b>environmental friendliness</b>.",
+      "uk": "Купуючи нові товари, ми тепер набагато більше звертаємо увагу на <b>екологічність</b>.",
+      "ru": "Покупая новые товары, мы теперь намного больше обращаем внимание на <b>экологичность</b>."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k7_022",
+    "cat": "k7",
+    "term": {
+      "de": "die Häufigkeit",
+      "en": "frequency",
+      "uk": "частота",
+      "ru": "частота"
+    },
+    "short": {
+      "de": "wie oft etwas passiert",
+      "en": "how often something happens",
+      "uk": "як часто щось відбувається",
+      "ru": "как часто что-то происходит"
+    },
+    "def": {
+      "de": "Die <g><b>Häufigkeit</b></g> von Extremwetter hat in den letzten Jahren deutlich zugenommen.",
+      "en": "The <b>frequency</b> of extreme weather has increased significantly in recent years.",
+      "uk": "<b>Частота</b> екстремальних погодних явищ значно зросла за останні роки.",
+      "ru": "<b>Частота</b> экстремальных погодных явлений значительно возросла за последние годы."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k7_023",
+    "cat": "k7",
+    "term": {
+      "de": "die Wirklichkeit",
+      "en": "reality",
+      "uk": "дійсність",
+      "ru": "действительность"
+    },
+    "short": {
+      "de": "wie die Welt tatsächlich ist, im Gegensatz zu einer Idee oder Vorstellung",
+      "en": "how the world actually is, as opposed to an idea or notion",
+      "uk": "як світ насправді є, на відміну від ідеї чи уявлення",
+      "ru": "как мир на самом деле есть, в отличие от идеи или представления"
+    },
+    "def": {
+      "de": "In der <g><b>Wirklichkeit</b></g> ist Klimaschutz oft schwieriger, als viele Menschen denken.",
+      "en": "In <b>reality</b>, climate protection is often more difficult than many people think.",
+      "uk": "У <b>дійсності</b> захист клімату часто складніший, ніж думають багато людей.",
+      "ru": "В <b>действительности</b> защита климата часто сложнее, чем думают многие люди."
+    },
+    "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k7_024",
+    "cat": "k7",
+    "term": {
+      "de": "heizen",
+      "en": "to heat",
+      "uk": "опалювати",
+      "ru": "отапливать"
+    },
+    "short": {
+      "de": "einen Raum warm machen",
+      "en": "to make a room warm",
+      "uk": "робити приміщення теплим",
+      "ru": "делать помещение тёплым"
+    },
+    "def": {
+      "de": "In diesem Haus <g>wird</g> nur mit erneuerbarer Energie <g>geheizt</g>.",
+      "en": "This house <g>is</g> <g>heated</g> only with renewable energy.",
+      "uk": "У цьому будинку опалюють лише відновлюваною енергією.",
+      "ru": "В этом доме отапливают только возобновляемой энергией."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_025",
+    "cat": "k7",
+    "term": {
+      "de": "die Solaranlage",
+      "en": "solar panel system",
+      "uk": "сонячна установка",
+      "ru": "солнечная установка"
+    },
+    "short": {
+      "de": "eine technische Anlage, die Sonnenlicht in Strom umwandelt",
+      "en": "a technical system that converts sunlight into electricity",
+      "uk": "технічна установка, яка перетворює сонячне світло на електроенергію",
+      "ru": "техническая установка, которая преобразует солнечный свет в электроэнергию"
+    },
+    "def": {
+      "de": "Die <b>Solaranlage</b> auf dem Dach <g>wird</g> einmal im Jahr <g>überprüft</g>.",
+      "en": "The <b>solar panel system</b> on the roof <g>is</g> <g>checked</g> once a year.",
+      "uk": "<b>Сонячну установку</b> на даху перевіряють раз на рік.",
+      "ru": "<b>Солнечную установку</b> на крыше проверяют раз в год."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_026",
+    "cat": "k7",
+    "term": {
+      "de": "isolieren",
+      "en": "to insulate",
+      "uk": "утеплювати",
+      "ru": "утеплять"
+    },
+    "short": {
+      "de": "ein Haus so bauen, dass wenig Wärme nach draußen verloren geht",
+      "en": "to build a house so that little heat is lost to the outside",
+      "uk": "будувати будинок так, щоб мало тепла втрачалося назовні",
+      "ru": "строить дом так, чтобы мало тепла терялось наружу"
+    },
+    "def": {
+      "de": "Das ganze Dach <g>wird</g> im Sommer neu <g>isoliert</g>.",
+      "en": "The whole roof <g>will be</g> newly <g>insulated</g> in summer.",
+      "uk": "Весь дах влітку заново утеплюють.",
+      "ru": "Всю крышу летом заново утепляют."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_027",
+    "cat": "k7",
+    "term": {
+      "de": "ausschalten",
+      "en": "to switch off",
+      "uk": "вимикати",
+      "ru": "выключать"
+    },
+    "short": {
+      "de": "ein Gerät ausmachen, damit es keinen Strom mehr verbraucht",
+      "en": "to turn off a device so that it no longer uses electricity",
+      "uk": "вимикати пристрій, щоб він більше не споживав електроенергію",
+      "ru": "выключать прибор, чтобы он больше не потреблял электроэнергию"
+    },
+    "def": {
+      "de": "Am Ende des Arbeitstages <g>wird</g> jeder Computer im Büro <g>ausgeschaltet</g>.",
+      "en": "At the end of the workday, every computer in the office <g>is</g> <g>switched off</g>.",
+      "uk": "Наприкінці робочого дня в офісі вимикають кожен компʼютер.",
+      "ru": "В конце рабочего дня в офисе выключают каждый компьютер."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_028",
+    "cat": "k7",
+    "term": {
+      "de": "erneuerbar",
+      "en": "renewable",
+      "uk": "відновлюваний",
+      "ru": "возобновляемый"
+    },
+    "short": {
+      "de": "eine Energiequelle, die nie zu Ende geht, zum Beispiel Sonne oder Wind",
+      "en": "an energy source that never runs out, for example sun or wind",
+      "uk": "джерело енергії, яке ніколи не закінчується, наприклад сонце чи вітер",
+      "ru": "источник энергии, который никогда не заканчивается, например солнце или ветер"
+    },
+    "def": {
+      "de": "In diesem Dorf <g>wird</g> nur noch <b>erneuerbare</b> Energie <g>genutzt</g>.",
+      "en": "In this village, only <b>renewable</b> energy <g>is</g> <g>used</g> now.",
+      "uk": "У цьому селі тепер використовують лише <b>відновлювану</b> енергію.",
+      "ru": "В этой деревне теперь используют только <b>возобновляемую</b> энергию."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_029",
+    "cat": "k7",
+    "term": {
+      "de": "die Energiequelle",
+      "en": "energy source",
+      "uk": "джерело енергії",
+      "ru": "источник энергии"
+    },
+    "short": {
+      "de": "der Ursprung von Energie, zum Beispiel Kohle, Wind oder Sonne",
+      "en": "the origin of energy, for example coal, wind or sun",
+      "uk": "джерело енергії, наприклад вугілля, вітер чи сонце",
+      "ru": "источник энергии, например уголь, ветер или солнце"
+    },
+    "def": {
+      "de": "Jede <b>Energiequelle</b> <g>wird</g> in dieser Studie genau <g>untersucht</g>.",
+      "en": "Every <b>energy source</b> <g>is</g> <g>examined</g> closely in this study.",
+      "uk": "Кожне <b>джерело енергії</b> детально досліджують у цьому дослідженні.",
+      "ru": "Каждый <b>источник энергии</b> подробно исследуют в этом исследовании."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_030",
+    "cat": "k7",
+    "term": {
+      "de": "verschwenden",
+      "en": "to waste",
+      "uk": "витрачати даремно",
+      "ru": "тратить впустую"
+    },
+    "short": {
+      "de": "etwas unnötig und ohne Grund verbrauchen",
+      "en": "to use something unnecessarily and without reason",
+      "uk": "витрачати щось непотрібно і без причини",
+      "ru": "тратить что-то без необходимости и без причины"
+    },
+    "def": {
+      "de": "In diesem Haushalt <g>wird</g> kaum noch Wasser <g>verschwendet</g>.",
+      "en": "In this household, hardly any water <g>is</g> <g>wasted</g> anymore.",
+      "uk": "У цьому домогосподарстві майже не витрачають воду даремно.",
+      "ru": "В этом домохозяйстве почти не тратят воду впустую."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_031",
+    "cat": "k7",
+    "term": {
+      "de": "überzeugen",
+      "en": "to convince",
+      "uk": "переконувати",
+      "ru": "убеждать"
+    },
+    "short": {
+      "de": "jemanden mit guten Argumenten dazu bringen, etwas zu glauben oder zu tun",
+      "en": "to get someone to believe or do something with good arguments",
+      "uk": "переконати когось хорошими аргументами повірити чи зробити щось",
+      "ru": "убедить кого-то хорошими аргументами поверить или сделать что-то"
+    },
+    "def": {
+      "de": "Der Vortrag <g>hat</g> mich völlig <b>überzeugt</b>.",
+      "en": "The presentation <g>has</g> completely <b>convinced</b> me.",
+      "uk": "Виступ мене повністю переконав.",
+      "ru": "Выступление меня полностью убедило."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_032",
+    "cat": "k7",
+    "term": {
+      "de": "sich engagieren",
+      "en": "to get involved, to commit",
+      "uk": "займатися (активно)",
+      "ru": "заниматься (активно)"
+    },
+    "short": {
+      "de": "sich aktiv und mit Energie für ein Thema einsetzen",
+      "en": "to actively and energetically commit to a cause",
+      "uk": "активно й енергійно займатися темою",
+      "ru": "активно и энергично заниматься темой"
+    },
+    "def": {
+      "de": "Sie <g>hat</g> sich schon seit ihrer Jugend für den Umweltschutz <b>engagiert</b>.",
+      "en": "She <g>has</g> <b>been involved</b> in environmental protection since her youth.",
+      "uk": "Вона займається захистом довкілля ще з юності.",
+      "ru": "Она занимается защитой окружающей среды ещё с юности."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_033",
+    "cat": "k7",
+    "term": {
+      "de": "reduzieren",
+      "en": "to reduce",
+      "uk": "скорочувати",
+      "ru": "сокращать"
+    },
+    "short": {
+      "de": "die Menge von etwas kleiner machen",
+      "en": "to make the amount of something smaller",
+      "uk": "зменшувати кількість чогось",
+      "ru": "уменьшать количество чего-то"
+    },
+    "def": {
+      "de": "Wir <g>haben</g> unseren Plastikverbrauch stark <b>reduziert</b>.",
+      "en": "We <g>have</g> significantly <b>reduced</b> our plastic consumption.",
+      "uk": "Ми значно скоротили використання пластику.",
+      "ru": "Мы значительно сократили использование пластика."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_034",
+    "cat": "k7",
+    "term": {
+      "de": "sich einsetzen (für)",
+      "en": "to advocate (for), to stand up (for)",
+      "uk": "відстоювати",
+      "ru": "отстаивать"
+    },
+    "short": {
+      "de": "sich aktiv für ein Ziel oder eine Idee bemühen",
+      "en": "to actively work for a goal or idea",
+      "uk": "активно докладати зусиль для мети чи ідеї",
+      "ru": "активно прилагать усилия для цели или идеи"
+    },
+    "def": {
+      "de": "Der Verein <g>hat</g> sich lange für saubere Flüsse <b>eingesetzt</b>.",
+      "en": "The association <g>has</g> <b>advocated</b> for clean rivers for a long time.",
+      "uk": "Організація довго відстоювала чисті річки.",
+      "ru": "Организация долго отстаивала чистые реки."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_035",
+    "cat": "k7",
+    "term": {
+      "de": "steigen",
+      "en": "to rise, to increase",
+      "uk": "зростати",
+      "ru": "расти"
+    },
+    "short": {
+      "de": "größer oder höher werden",
+      "en": "to become bigger or higher",
+      "uk": "ставати більшим чи вищим",
+      "ru": "становиться больше или выше"
+    },
+    "def": {
+      "de": "Die Temperatur <g>ist</g> in diesem Sommer stark <b>gestiegen</b>.",
+      "en": "The temperature <g>has</g> <b>risen</b> a lot this summer.",
+      "uk": "Температура цього літа сильно зросла.",
+      "ru": "Температура этим летом сильно выросла."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_036",
+    "cat": "k7",
+    "term": {
+      "de": "sinken",
+      "en": "to fall, to decrease",
+      "uk": "знижуватися",
+      "ru": "снижаться"
+    },
+    "short": {
+      "de": "kleiner oder niedriger werden",
+      "en": "to become smaller or lower",
+      "uk": "ставати меншим чи нижчим",
+      "ru": "становиться меньше или ниже"
+    },
+    "def": {
+      "de": "Der Wasserstand des Flusses <g>ist</g> in diesem Jahr deutlich <b>gesunken</b>.",
+      "en": "The water level of the river <g>has</g> <b>fallen</b> significantly this year.",
+      "uk": "Рівень води в річці цього року значно знизився.",
+      "ru": "Уровень воды в реке в этом году значительно снизился."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_037",
+    "cat": "k7",
+    "term": {
+      "de": "wechseln",
+      "en": "to switch, to change",
+      "uk": "змінювати, переходити",
+      "ru": "менять, переходить"
+    },
+    "short": {
+      "de": "etwas gegen etwas anderes tauschen, zum Beispiel den Stromanbieter",
+      "en": "to exchange something for something else, for example the electricity provider",
+      "uk": "міняти щось на інше, наприклад постачальника електроенергії",
+      "ru": "менять что-то на другое, например поставщика электроэнергии"
+    },
+    "def": {
+      "de": "Wir <g>sind</g> letztes Jahr zu einem grünen Stromanbieter <b>gewechselt</b>.",
+      "en": "We <g>have</g> <b>switched</b> to a green electricity provider last year.",
+      "uk": "Ми минулого року перейшли на екологічного постачальника електроенергії.",
+      "ru": "Мы в прошлом году перешли на экологичного поставщика электроэнергии."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_038",
+    "cat": "k7",
+    "term": {
+      "de": "erkennen",
+      "en": "to recognize",
+      "uk": "визнавати, розпізнавати",
+      "ru": "признавать, распознавать"
+    },
+    "short": {
+      "de": "etwas klar verstehen oder bemerken",
+      "en": "to clearly understand or notice something",
+      "uk": "чітко розуміти чи помічати щось",
+      "ru": "чётко понимать или замечать что-то"
+    },
+    "def": {
+      "de": "Viele Menschen <g>haben</g> die Gefahr des Klimawandels erst spät <b>erkannt</b>.",
+      "en": "Many people <g>have</g> only <b>recognized</b> the danger of climate change late.",
+      "uk": "Багато людей визнали небезпеку зміни клімату лише пізно.",
+      "ru": "Многие люди признали опасность изменения климата лишь поздно."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_039",
+    "cat": "k7",
+    "term": {
+      "de": "die Pflanzung",
+      "en": "planting",
+      "uk": "садіння",
+      "ru": "посадка"
+    },
+    "short": {
+      "de": "wenn man Pflanzen oder Bäume in die Erde setzt",
+      "en": "when you put plants or trees into the ground",
+      "uk": "коли саджають рослини чи дерева в землю",
+      "ru": "когда сажают растения или деревья в землю"
+    },
+    "def": {
+      "de": "Die <g><b>Pflanzung</b></g> neuer Bäume findet jedes Jahr im Frühling statt.",
+      "en": "The <b>planting</b> of new trees takes place every spring.",
+      "uk": "<b>Садіння</b> нових дерев відбувається щовесни.",
+      "ru": "<b>Посадка</b> новых деревьев проходит каждую весну."
+    },
+    "gram": "nomen_auf_ung"
+  },
+  {
+    "id": "k7_040",
+    "cat": "k7",
+    "term": {
+      "de": "die Düngung",
+      "en": "fertilizing",
+      "uk": "удобрення",
+      "ru": "удобрение"
+    },
+    "short": {
+      "de": "wenn man dem Boden zusätzliche Nährstoffe für die Pflanzen gibt",
+      "en": "when you give the soil extra nutrients for the plants",
+      "uk": "коли додають ґрунту додаткові поживні речовини для рослин",
+      "ru": "когда добавляют почве дополнительные питательные вещества для растений"
+    },
+    "def": {
+      "de": "Auf diesem Hof erfolgt die <g><b>Düngung</b></g> der Felder komplett ohne Chemie.",
+      "en": "On this farm, the <b>fertilizing</b> of the fields is done completely without chemicals.",
+      "uk": "На цій фермі <b>удобрення</b> полів відбувається повністю без хімії.",
+      "ru": "На этой ферме <b>удобрение</b> полей происходит полностью без химии."
+    },
+    "gram": "nomen_auf_ung"
+  },
+  {
+    "id": "k7_041",
+    "cat": "k7",
+    "term": {
+      "de": "die Bewässerung",
+      "en": "irrigation",
+      "uk": "полив",
+      "ru": "полив"
+    },
+    "short": {
+      "de": "wenn man den Pflanzen regelmäßig Wasser gibt",
+      "en": "when you regularly give the plants water",
+      "uk": "коли рослинам регулярно дають воду",
+      "ru": "когда растениям регулярно дают воду"
+    },
+    "def": {
+      "de": "Die <g><b>Bewässerung</b></g> des Gemüsegartens läuft heute automatisch.",
+      "en": "The <b>irrigation</b> of the vegetable garden now runs automatically.",
+      "uk": "<b>Полив</b> городу тепер відбувається автоматично.",
+      "ru": "<b>Полив</b> огорода теперь происходит автоматически."
+    },
+    "gram": "nomen_auf_ung"
+  },
+  {
+    "id": "k7_042",
+    "cat": "k7",
+    "term": {
+      "de": "die Fütterung",
+      "en": "feeding (of animals)",
+      "uk": "годування",
+      "ru": "кормление"
+    },
+    "short": {
+      "de": "wenn man Tieren regelmäßig Futter gibt",
+      "en": "when you regularly give animals food",
+      "uk": "коли тваринам регулярно дають корм",
+      "ru": "когда животным регулярно дают корм"
+    },
+    "def": {
+      "de": "Die <g><b>Fütterung</b></g> der Kühe findet immer zur gleichen Uhrzeit statt.",
+      "en": "The <b>feeding</b> of the cows always takes place at the same time.",
+      "uk": "<b>Годування</b> корів завжди відбувається в один і той самий час.",
+      "ru": "<b>Кормление</b> коров всегда происходит в одно и то же время."
+    },
+    "gram": "nomen_auf_ung"
+  },
+  {
+    "id": "k7_043",
+    "cat": "k7",
+    "term": {
+      "de": "die Vermarktung",
+      "en": "marketing",
+      "uk": "маркетинг",
+      "ru": "маркетинг"
+    },
+    "short": {
+      "de": "wenn man Produkte bekannt macht und verkauft",
+      "en": "when you make products known and sell them",
+      "uk": "коли продукти роблять відомими та продають",
+      "ru": "когда продукты делают известными и продают"
+    },
+    "def": {
+      "de": "Die <g><b>Vermarktung</b></g> der eigenen Produkte übernimmt der Hof selbst.",
+      "en": "The farm handles the <b>marketing</b> of its own products itself.",
+      "uk": "<b>Маркетинг</b> власних продуктів ферма здійснює самостійно.",
+      "ru": "<b>Маркетинг</b> собственных продуктов ферма осуществляет самостоятельно."
+    },
+    "gram": "nomen_auf_ung"
+  },
+  {
+    "id": "k7_044",
+    "cat": "k7",
+    "term": {
+      "de": "die Lieferung",
+      "en": "delivery",
+      "uk": "доставка",
+      "ru": "доставка"
+    },
+    "short": {
+      "de": "wenn eine Ware zu einem Kunden gebracht wird",
+      "en": "when goods are brought to a customer",
+      "uk": "коли товар доставляють клієнту",
+      "ru": "когда товар доставляют клиенту"
+    },
+    "def": {
+      "de": "Die <g><b>Lieferung</b></g> von frischem Gemüse erfolgt zweimal pro Woche.",
+      "en": "The <b>delivery</b> of fresh vegetables happens twice a week.",
+      "uk": "<b>Доставка</b> свіжих овочів здійснюється двічі на тиждень.",
+      "ru": "<b>Доставка</b> свежих овощей осуществляется дважды в неделю."
+    },
+    "gram": "nomen_auf_ung"
+  },
+  {
+    "id": "k7_045",
+    "cat": "k7",
+    "term": {
+      "de": "die Verpackung",
+      "en": "packaging",
+      "uk": "упаковка",
+      "ru": "упаковка"
+    },
+    "short": {
+      "de": "das Material, in das eine Ware zum Schutz oder Transport eingepackt wird",
+      "en": "the material a product is wrapped in for protection or transport",
+      "uk": "матеріал, у який упаковують товар для захисту чи транспортування",
+      "ru": "материал, в который упаковывают товар для защиты или транспортировки"
+    },
+    "def": {
+      "de": "Die <g><b>Verpackung</b></g> der Eier besteht komplett aus recyceltem Karton.",
+      "en": "The <b>packaging</b> of the eggs is made entirely of recycled cardboard.",
+      "uk": "<b>Упаковка</b> яєць повністю виготовлена з переробленого картону.",
+      "ru": "<b>Упаковка</b> яиц полностью изготовлена из переработанного картона."
+    },
+    "gram": "nomen_auf_ung"
+  },
+  {
+    "id": "k7_046",
+    "cat": "k7",
+    "term": {
+      "de": "die Züchtung",
+      "en": "breeding",
+      "uk": "виведення (порід/сортів)",
+      "ru": "выведение (пород/сортов)"
+    },
+    "short": {
+      "de": "wenn man Tiere oder Pflanzen gezielt vermehrt, um bestimmte Eigenschaften zu bekommen",
+      "en": "when you deliberately breed animals or plants to get certain characteristics",
+      "uk": "коли цілеспрямовано розводять тварин чи рослини для отримання певних характеристик",
+      "ru": "когда целенаправленно разводят животных или растения для получения определённых характеристик"
+    },
+    "def": {
+      "de": "Die <g><b>Züchtung</b></g> robuster Getreidesorten ist auf diesem Hof besonders wichtig.",
+      "en": "The <b>breeding</b> of robust grain varieties is especially important on this farm.",
+      "uk": "<b>Виведення</b> стійких сортів зерна на цій фермі особливо важливе.",
+      "ru": "<b>Выведение</b> устойчивых сортов зерна на этой ферме особенно важно."
+    },
+    "gram": "nomen_auf_ung"
+  },
+  {
+    "id": "k7_047",
+    "cat": "k7",
+    "term": {
+      "de": "melken",
+      "en": "to milk",
+      "uk": "доїти",
+      "ru": "доить"
+    },
+    "short": {
+      "de": "die Milch von einer Kuh oder Ziege holen",
+      "en": "to get milk from a cow or goat",
+      "uk": "здобувати молоко в корови чи кози",
+      "ru": "получать молоко у коровы или козы"
+    },
+    "def": {
+      "de": "Die Kühe <g>werden</g> auf diesem Hof zweimal täglich <g>gemolken</g>.",
+      "en": "The cows on this farm <g>are</g> <g>milked</g> twice a day.",
+      "uk": "Корів на цій фермі доять двічі на день.",
+      "ru": "Коров на этой ферме доят дважды в день."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_048",
+    "cat": "k7",
+    "term": {
+      "de": "pflücken",
+      "en": "to pick, to harvest by hand",
+      "uk": "збирати (руками)",
+      "ru": "собирать (руками)"
+    },
+    "short": {
+      "de": "Obst oder Beeren mit der Hand von der Pflanze nehmen",
+      "en": "to take fruit or berries from the plant by hand",
+      "uk": "збирати фрукти чи ягоди руками з рослини",
+      "ru": "собирать фрукты или ягоды руками с растения"
+    },
+    "def": {
+      "de": "Die Äpfel <g>werden</g> im Herbst von den Mitarbeitern von Hand <g>gepflückt</g>.",
+      "en": "The apples <g>are</g> <g>picked</g> by hand by the workers in autumn.",
+      "uk": "Восени яблука вручну збирають працівники.",
+      "ru": "Осенью яблоки вручную собирают работники."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_049",
+    "cat": "k7",
+    "term": {
+      "de": "säen",
+      "en": "to sow",
+      "uk": "сіяти",
+      "ru": "сеять"
+    },
+    "short": {
+      "de": "Samen in die Erde bringen, damit sie wachsen können",
+      "en": "to put seeds into the ground so that they can grow",
+      "uk": "класти насіння в землю, щоб воно росло",
+      "ru": "класть семена в землю, чтобы они росли"
+    },
+    "def": {
+      "de": "Das Getreide <g>wird</g> jedes Jahr im Frühjahr <g>gesät</g>.",
+      "en": "The grain <g>is</g> <g>sown</g> every spring.",
+      "uk": "Зерно сіють щовесни.",
+      "ru": "Зерно сеют каждую весну."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_050",
+    "cat": "k7",
+    "term": {
+      "de": "ernten",
+      "en": "to harvest",
+      "uk": "збирати врожай",
+      "ru": "собирать урожай"
+    },
+    "short": {
+      "de": "reife Früchte, Gemüse oder Getreide von den Pflanzen sammeln",
+      "en": "to collect ripe fruit, vegetables or grain from the plants",
+      "uk": "збирати стиглі фрукти, овочі чи зерно з рослин",
+      "ru": "собирать спелые фрукты, овощи или зерно с растений"
+    },
+    "def": {
+      "de": "Die Kartoffeln <g>werden</g> jetzt im September <g>geerntet</g>.",
+      "en": "The potatoes <g>are</g> now <g>harvested</g> in September.",
+      "uk": "Картоплю тепер збирають у вересні.",
+      "ru": "Картофель теперь собирают в сентябре."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_051",
+    "cat": "k7",
+    "term": {
+      "de": "mähen",
+      "en": "to mow",
+      "uk": "косити",
+      "ru": "косить"
+    },
+    "short": {
+      "de": "Gras oder Getreide mit einer Maschine oder einem Werkzeug abschneiden",
+      "en": "to cut grass or grain with a machine or tool",
+      "uk": "зрізати траву чи зерно машиною чи інструментом",
+      "ru": "срезать траву или зерно машиной или инструментом"
+    },
+    "def": {
+      "de": "Die Wiesen <g>werden</g> auf diesem Hof nur zweimal im Jahr <g>gemäht</g>.",
+      "en": "The meadows on this farm <g>are</g> <g>mowed</g> only twice a year.",
+      "uk": "Луки на цій фермі косять лише двічі на рік.",
+      "ru": "Луга на этой ферме косят только дважды в год."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_052",
+    "cat": "k7",
+    "term": {
+      "de": "kontrollieren",
+      "en": "to check, to inspect",
+      "uk": "перевіряти",
+      "ru": "проверять"
+    },
+    "short": {
+      "de": "genau prüfen, ob alles richtig oder in Ordnung ist",
+      "en": "to check carefully whether everything is correct or fine",
+      "uk": "уважно перевіряти, чи все правильно чи гаразд",
+      "ru": "внимательно проверять, всё ли правильно или в порядке"
+    },
+    "def": {
+      "de": "Die Qualität der Eier <g>wird</g> jeden Tag genau <g>kontrolliert</g>.",
+      "en": "The quality of the eggs <g>is</g> checked carefully every day.",
+      "uk": "Якість яєць щодня ретельно перевіряють.",
+      "ru": "Качество яиц ежедневно тщательно проверяют."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_053",
+    "cat": "k7",
+    "term": {
+      "de": "sortieren",
+      "en": "to sort",
+      "uk": "сортувати",
+      "ru": "сортировать"
+    },
+    "short": {
+      "de": "Dinge nach bestimmten Kriterien in Gruppen ordnen",
+      "en": "to arrange things into groups according to certain criteria",
+      "uk": "розподіляти речі на групи за певними критеріями",
+      "ru": "распределять вещи по группам по определённым критериям"
+    },
+    "def": {
+      "de": "Die Kartoffeln <g>werden</g> nach der Ernte automatisch nach Größe <g>sortiert</g>.",
+      "en": "The potatoes <g>are</g> automatically <g>sorted</g> by size after the harvest.",
+      "uk": "Картоплю після збору автоматично сортують за розміром.",
+      "ru": "Картофель после сбора автоматически сортируют по размеру."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_054",
+    "cat": "k7",
+    "term": {
+      "de": "der Klimawandel",
+      "en": "climate change",
+      "uk": "зміна клімату",
+      "ru": "изменение климата"
+    },
+    "short": {
+      "de": "die langfristige Veränderung des Klimas auf der Erde",
+      "en": "the long-term change of the earth's climate",
+      "uk": "довготривала зміна клімату на Землі",
+      "ru": "долгосрочное изменение климата на Земле"
+    },
+    "def": {
+      "de": "Über den <b>Klimawandel</b> <g>wird</g> heute weltweit intensiv <g>diskutiert</g>.",
+      "en": "<b>Climate change</b> <g>is</g> <g>discussed</g> intensively worldwide today.",
+      "uk": "Про <b>зміну клімату</b> сьогодні активно дискутують у всьому світі.",
+      "ru": "Об <b>изменении климата</b> сегодня активно дискутируют во всём мире."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_055",
+    "cat": "k7",
+    "term": {
+      "de": "die Erderwärmung",
+      "en": "global warming",
+      "uk": "глобальне потепління",
+      "ru": "глобальное потепление"
+    },
+    "short": {
+      "de": "wenn die Durchschnittstemperatur der Erde immer weiter steigt",
+      "en": "when the average temperature of the earth keeps rising",
+      "uk": "коли середня температура Землі постійно зростає",
+      "ru": "когда средняя температура Земли постоянно растёт"
+    },
+    "def": {
+      "de": "Die <b>Erderwärmung</b> <g>wird</g> von den meisten Wissenschaftlern als sehr ernst <g>eingeschätzt</g>.",
+      "en": "<b>Global warming</b> <g>is</g> <g>assessed</g> as very serious by most scientists.",
+      "uk": "<b>Глобальне потепління</b> вважається дуже серйозним більшістю науковців.",
+      "ru": "<b>Глобальное потепление</b> оценивается как очень серьёзное большинством учёных."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_056",
+    "cat": "k7",
+    "term": {
+      "de": "der CO2-Ausstoß",
+      "en": "CO2 emissions",
+      "uk": "викиди CO2",
+      "ru": "выбросы CO2"
+    },
+    "short": {
+      "de": "die Menge an Kohlendioxid, die zum Beispiel ein Auto oder eine Fabrik produziert",
+      "en": "the amount of carbon dioxide produced, for example, by a car or factory",
+      "uk": "кількість вуглекислого газу, яку виробляє, наприклад, автомобіль чи фабрика",
+      "ru": "количество углекислого газа, которое производит, например, автомобиль или фабрика"
+    },
+    "def": {
+      "de": "Der <b>CO2-Ausstoß</b> <g>wird</g> in vielen Ländern jetzt genau <g>gemessen</g>.",
+      "en": "<b>CO2 emissions</b> <g>are</g> now <g>measured</g> precisely in many countries.",
+      "uk": "<b>Викиди CO2</b> тепер точно вимірюють у багатьох країнах.",
+      "ru": "<b>Выбросы CO2</b> теперь точно измеряют во многих странах."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_057",
+    "cat": "k7",
+    "term": {
+      "de": "schützen",
+      "en": "to protect",
+      "uk": "захищати",
+      "ru": "защищать"
+    },
+    "short": {
+      "de": "dafür sorgen, dass jemandem oder etwas nichts Schlechtes passiert",
+      "en": "to make sure that nothing bad happens to someone or something",
+      "uk": "робити так, щоб з кимось або чимось не сталося нічого поганого",
+      "ru": "делать так, чтобы с кем-то или чем-то не случилось ничего плохого"
+    },
+    "def": {
+      "de": "Die Wälder <g>werden</g> in diesem Nationalpark streng <g>geschützt</g>.",
+      "en": "The forests in this national park <g>are</g> strictly <g>protected</g>.",
+      "uk": "Ліси в цьому національному парку суворо охороняють.",
+      "ru": "Леса в этом национальном парке строго охраняют."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_058",
+    "cat": "k7",
+    "term": {
+      "de": "verursachen",
+      "en": "to cause",
+      "uk": "спричиняти",
+      "ru": "вызывать"
+    },
+    "short": {
+      "de": "der Grund dafür sein, dass etwas passiert",
+      "en": "to be the reason that something happens",
+      "uk": "бути причиною того, що щось відбувається",
+      "ru": "быть причиной того, что что-то происходит"
+    },
+    "def": {
+      "de": "Ein großer Teil der Emissionen <g>wird</g> vom Verkehr <g>verursacht</g>.",
+      "en": "A large part of the emissions <g>is</g> <g>caused</g> by traffic.",
+      "uk": "Велику частину викидів спричиняє транспорт.",
+      "ru": "Значительную часть выбросов вызывает транспорт."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_059",
+    "cat": "k7",
+    "term": {
+      "de": "beeinflussen",
+      "en": "to influence",
+      "uk": "впливати",
+      "ru": "влиять"
+    },
+    "short": {
+      "de": "eine Wirkung auf etwas oder jemanden haben und es verändern",
+      "en": "to have an effect on something or someone and change it",
+      "uk": "мати вплив на щось чи когось і змінювати це",
+      "ru": "иметь влияние на что-то или кого-то и изменять это"
+    },
+    "def": {
+      "de": "Das Klima der ganzen Region <g>wird</g> vom Meer stark <g>beeinflusst</g>.",
+      "en": "The climate of the whole region <g>is</g> strongly <g>influenced</g> by the sea.",
+      "uk": "На клімат усього регіону сильно впливає море.",
+      "ru": "На климат всего региона сильно влияет море."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k7_060",
+    "cat": "k7",
+    "term": {
+      "de": "die Auswirkung",
+      "en": "effect, impact",
+      "uk": "наслідок",
+      "ru": "последствие"
+    },
+    "short": {
+      "de": "die Folge, die eine Handlung oder ein Ereignis hat",
+      "en": "the consequence that an action or event has",
+      "uk": "наслідок, який має дія чи подія",
+      "ru": "последствие, которое имеет действие или событие"
+    },
+    "def": {
+      "de": "Die <b>Auswirkungen</b> des Klimawandels <g>werden</g> in dieser Region schon deutlich <g>gespürt</g>.",
+      "en": "The <b>effects</b> of climate change <g>are</g> already clearly <g>felt</g> in this region.",
+      "uk": "<b>Наслідки</b> зміни клімату вже помітно відчуваються в цьому регіоні.",
+      "ru": "<b>Последствия</b> изменения климата уже заметно ощущаются в этом регионе."
     },
     "gram": "passiv_praesens_b1"
   },

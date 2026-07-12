@@ -2488,7 +2488,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '307-2169bc0';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2574,10 +2574,23 @@ function loadCourseScript(courseId){
     const course = COURSES.find(c=>c.id===courseId);
     if(!course){ reject(new Error('Course not found: '+courseId)); return; }
 
+    // ТИМЧАСОВЕ ІНСТРУМЕНТУВАННЯ — прибрати після діагностики.
+    const _srcUrl = course.file + '?v=' + APP_VERSION;
+    const _t0 = performance.now();
+
     const s = document.createElement('script');
     s.id  = 'course-script';
-    s.src = course.file + '?v=' + APP_VERSION;
+    s.src = _srcUrl;
     s.onload  = ()=>{
+      // Resource Timing API: transferSize===0 і encodedBodySize>0 →
+      // файл узятий з диск/HTTP-кешу браузера, не з мережі.
+      try{
+        const entries = performance.getEntriesByName(_srcUrl);
+        const entry = entries[entries.length-1];
+        const fromCache = entry && entry.transferSize === 0 && entry.encodedBodySize > 0;
+        console.log(`⏱ [splash-perf] course-script "${course.file}": ${(performance.now()-_t0).toFixed(0)}ms (fetch+onload) · ${fromCache ? 'З КЕШУ' : 'З МЕРЕЖІ'}` + (entry ? ` · encodedBodySize=${entry.encodedBodySize}B` : ''));
+      }catch(e){ console.log('⏱ [splash-perf] course-script timing недоступний:', e); }
+
       activeCourse = course;
       // Smart Review: додаємо examPart до карток якщо ще не є
       try{ srTagVocab(); }catch(e){}
@@ -2585,6 +2598,7 @@ function loadCourseScript(courseId){
       // Для курсів без GRAMMAR/gram (напр. Financial-Accounting) поверне [] —
       // вкладку "Grammatik" тоді просто не показуємо (див. sbApplyDataSourceUI).
       try{ GRAM_CARDS = buildGramCards(); GRAM_CATS = buildGramCats(); }catch(e){ GRAM_CARDS=[]; GRAM_CATS=[]; }
+      console.log(`⏱ [splash-perf] course-script "${course.file}": +${(performance.now()-_t0).toFixed(0)}ms повний onload (з парсингом VOCAB/GRAMMAR/SPRACHBAUSTEINE + buildGramCards)`);
       resolve(course);
     };
     s.onerror = ()=>reject(new Error('Failed to load: '+course.file));
@@ -4333,12 +4347,19 @@ function updateBottomNavVisibility(){
 }
 
 async function init(){
+  // ── ТИМЧАСОВЕ ІНСТРУМЕНТУВАННЯ ──────────────────────────────
+  // Заміри реального часу кожного етапу — щоб побачити ЦИФРИ, а не
+  // гадати далі. Прибрати після діагностики (шукайте "ТИМЧАСОВЕ").
+  const _t0 = performance.now();
+  const _tm = (label) => console.log(`⏱ [splash-perf] ${label}: ${(performance.now()-_t0).toFixed(0)}ms від старту init()`);
+
   // Одноразова міграція старих систем обліку прогресу — має відбутись
   // ПЕРШОЮ, до будь-якого читання srsLoad/srLoadState іншим кодом.
   migrateLegacyProgressToUnifiedStore();
   // Виправлення карток із неконтрольованим easeFactor (баг до фіксу
   // верхньої межі в srSm2) — теж до будь-якого читання прогресу.
   repairCorruptedEaseFactors();
+  _tm('міграції прогресу завершено');
 
   // Завантажуємо активний курс
   const courseId = getSavedCourseId();
@@ -4348,6 +4369,7 @@ async function init(){
     console.warn('init: course load failed, trying B2-Beruf:', e);
     try{ await loadCourseScript('B2-Beruf'); }catch(e2){ console.error(e2); }
   }
+  _tm('loadCourseScript() завершено (мережа+парсинг бази курсу)');
   // activeCourse тепер відомий (щойно встановлений у loadCourseScript) —
   // перерендерюємо список курсів у налаштуваннях, інакше при холодному
   // старті жоден курс не підсвічується як активний (renderCourseList()
@@ -4363,6 +4385,7 @@ async function init(){
   // Якщо мережі немає — loadAudioManifest() сама впаде у фолбек на
   // Cache Storage і не заблокує запуск додатку.
   await loadAudioManifest();
+  _tm('loadAudioManifest() завершено');
   // Синхронізуємо слайдери із збереженими значеннями
   const sp=document.getElementById('vspeed');if(sp){sp.value=V.speed;document.getElementById('vspv').textContent=V.speed.toFixed(1)+'×';}
   const rp=document.getElementById('vrepeats');if(rp){rp.value=V.repeats;document.getElementById('vrpv2').textContent=V.repeats+'×';}
@@ -4375,16 +4398,20 @@ async function init(){
   if(dsb){dsb.classList.remove('smart','shuffle');const dcfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[D.mode]||{icon:'🧠',cls:'smart'};dsb.textContent=dcfg.icon;if(dcfg.cls)dsb.classList.add(dcfg.cls);}
   loadFontSize();
   initVocab();
+  _tm('initVocab() завершено');
   initVocabChips();
   initDialogue();
+  _tm('initDialogue() завершено');
   initDialogueChips();
   updateFavBadge();
   renderStreakUI();
   renderTempoRow();
   initSwipe();
   initDialogueSwipe();
+  _tm('initSwipe()+initDialogueSwipe() завершено');
   // Відкриваємо Lernpfad за замовчуванням
   showView('lernpfad');
+  _tm('showView(\'lernpfad\') завершено — init() повністю готовий');
   // PWA portrait lock — маніфест робить це автоматично для встановленого PWA
   // JS API як додатковий fallback (не працює в Safari, але є CSS @media landscape)
   try{ screen.orientation?.lock?.('portrait').catch(()=>{}); }catch(e){}
