@@ -2497,7 +2497,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '316-ac0ef78';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2784,6 +2784,8 @@ const I18N = {
     sr_no_date_dashboard:'Kein Termin gesetzt',
     sr_mode_cruise:'Entspannt', sr_mode_active:'Aktiv', sr_mode_intensive:'Intensiv',
     sr_mode_exam_sprint:'Prüfungssprint', sr_mode_last_week:'Letzte Woche', sr_mode_done:'Geschafft',
+    sr_start_lesson:'▶ Los geht\'s!',
+    sr_all_done:'🎉 Alles geschafft! Auf zur Wiederholung.',
   },
   uk: {
     nav_vocab:'Словник', nav_favs:'Закладки', nav_settings:'Налаштування',
@@ -2857,6 +2859,8 @@ const I18N = {
     sr_no_date_dashboard:'Дату не вказано',
     sr_mode_cruise:'Спокійний темп', sr_mode_active:'Активний', sr_mode_intensive:'Інтенсивний',
     sr_mode_exam_sprint:'Фінальний спринт', sr_mode_last_week:'Останній тиждень', sr_mode_done:'Завершено',
+    sr_start_lesson:'▶ Почнімо урок',
+    sr_all_done:'🎉 Усі уроки пройдено! Давай повторимо.',
   },
   en: {
     nav_vocab:'Vocabulary', nav_favs:'Favorites', nav_settings:'Settings',
@@ -2931,6 +2935,8 @@ const I18N = {
     sr_no_date_dashboard:'No date set',
     sr_mode_cruise:'Cruise', sr_mode_active:'Active', sr_mode_intensive:'Intensive',
     sr_mode_exam_sprint:'Exam Sprint', sr_mode_last_week:'Last Week', sr_mode_done:'Done',
+    sr_start_lesson:'▶ Let\'s start!',
+    sr_all_done:'🎉 All lessons done! Let\'s review.',
   },
   ru: {
     nav_vocab:'Словарь', nav_favs:'Закладки', nav_settings:'Настройки',
@@ -3004,6 +3010,8 @@ const I18N = {
     sr_no_date_dashboard:'Дата не указана',
     sr_mode_cruise:'Спокойный темп', sr_mode_active:'Активный', sr_mode_intensive:'Интенсивный',
     sr_mode_exam_sprint:'Финальный спринт', sr_mode_last_week:'Последняя неделя', sr_mode_done:'Завершено',
+    sr_start_lesson:'▶ Начнём урок',
+    sr_all_done:'🎉 Все уроки пройдены! Давай повторим.',
   },
 };
 
@@ -3955,69 +3963,69 @@ function srMigrateOldState(){
 let _srPlanCardIds = null; // null = вся черга, Array = план сесії
 
 function srRenderDailyPlan(){
+  // ПЕРЕПРИЗНАЧЕНО: раніше тут був "план на сьогодні" (srBuildDailyPlan/
+  // srStartPlanSession) — той функціонал ще не доведений до пуття. Замість
+  // нього — проста й чесна картка "Продовжити навчання", яка спирається
+  // лише на перевірені, вже робочі частини застосунку: стрік
+  // (srUpdateStreak/srRecordLesson), прогрес уроків (lessonProgress) і сам
+  // запуск уроку (startLessonFlow/startReviewLesson) — той самий шлях, що
+  // й звичайні картки уроків на Lernpfad і кнопка "Наступний урок" на
+  // екрані результату. Функцію-назву лишив як є (srRenderDailyPlan) —
+  // викликається з 5 місць по коду, перейменування додало б ризику без
+  // користі.
   const el = document.getElementById('sr-daily-plan');
   if(!el) return;
-  const allCards = srGetAllCards();
-  if(!allCards.length){ el.innerHTML=''; return; }
 
-  const plan = srBuildDailyPlan(allCards);
-  const state = srLoadState();
-  const um = plan.urgencyMode;
+  const state  = srLoadState();
+  const streak = state.streak || 0;
+  const streakLbl = {'de':'Tage in Folge','uk':'днів поспіль','en':'day streak','ru':'дней подряд'}[uiLang] || 'days';
+  const streakHtml = streak > 0
+    ? `<div class="sr-plan-streak" style="margin-bottom:10px;font-size:var(--fs-utility)">🔥 ${streak} ${streakLbl}</div>`
+    : '';
 
-  const examDateVal = state.examDate || '';
-  const daysLeftStr = um.daysLeft !== null
-    ? (t('sr_days_prefix') + um.daysLeft + t('sr_days_suffix'))
-    : t('sr_no_date_plan');
+  const nextLesson = _srFindNextLesson();
 
-  // Breakdown rows
-  const partOrder = ['Sprachbausteine','Lesen','Schreiben','Hören','Sprechen','General'];
-  const cardLbl = {'de':'Karten','uk':'карток','en':'cards','ru':'карточек'}[uiLang]||'Karten';
-  const dueLbl  = {'de':'Wiederholung','uk':'повторення','en':'review','ru':'повторение'}[uiLang]||'review';
-  const newLbl  = {'de':'neu','uk':'нові','en':'new','ru':'новые'}[uiLang]||'new';
-  const breakdownRows = partOrder
-    .filter(p => plan.breakdown[p])
-    .map(p => {
-      const color = SR_PART_COLOR[p]||'#78716c';
-      const n = plan.breakdown[p];
-      return `<div class="sr-plan-row">
-        <div class="sr-plan-part">
-          <div class="sr-plan-dot" style="background:${color}"></div>
-          ${p}
-        </div>
-        <span class="sr-plan-count">${n} ${cardLbl}</span>
+  if(nextLesson){
+    const title = nextLesson.title?.[uiLang] || nextLesson.title?.[primaryLang()] || nextLesson.title?.en || nextLesson.title?.de || '';
+    const chLabel = {'de':'Kapitel','uk':'Глава','en':'Chapter','ru':'Глава'}[uiLang] || 'Kapitel';
+    el.innerHTML = `
+      <div class="sr-plan-card">
+        ${streakHtml}
+        <div class="sr-plan-meta" style="margin-bottom:10px">${chLabel} ${nextLesson.chapter} · ${title}</div>
+        <button class="sr-plan-start" style="width:100%" onclick="startLessonFlow('${nextLesson.id}')">
+          ${typeof t==='function'?t('sr_start_lesson'):'▶ Start'}
+        </button>
       </div>`;
-    }).join('');
+  } else {
+    // Усі уроки пройдено — пропонуємо запустити той самий "Повторити курс",
+    // що вже є в кінці Lernpfad (renderReviewCard(allChapterNums,'course')).
+    el.innerHTML = `
+      <div class="sr-plan-card">
+        ${streakHtml}
+        <button class="sr-plan-start" style="width:100%" onclick="_srStartCourseReview()">
+          ${typeof t==='function'?t('sr_all_done'):'🎉 Done!'}
+        </button>
+      </div>`;
+  }
+}
 
-  const minLabel = {'de':'Min','uk':'хв','en':'min','ru':'мин'}[uiLang]||'Min';
-  const streakLabel = `🔥 ${state.streak??0}`;
-  const startLabel = {'de':'Sitzung starten →','uk':'Почати сесію →','en':'Start session →','ru':'Начать сессию →'}[uiLang]||'Starten →';
-  const planTitle = {'de':'Dein Plan heute','uk':'Твій план сьогодні','en':'Today\'s plan','ru':'Твой план на сегодня'}[uiLang]||'Plan';
-  const examLbl = {'de':'Prüfungstermin','uk':'Дата іспиту','en':'Exam date','ru':'Дата экзамена'}[uiLang]||'Prüfungstermin';
-  // Рахуємо due vs new
-  const today2 = srToISO(new Date());
-  const srState2 = srLoadState();
-  const dueCount = allCards.filter(c=>{ const cs=srState2.cards[c.id]; return cs?.nextReview && cs.nextReview<=today2 && cs.repetitions>0; }).length;
-  const newCount = plan.plan.length - Math.min(dueCount, plan.plan.length);
-  const saveLbl = {'de':'Speichern','uk':'Зберегти','en':'Save','ru':'Сохранить'}[uiLang]||'Speichern';
+// Перший урок (за порядком глава→модуль), що ще не пройдено на ≥80% —
+// та сама логіка "що далі", що вже використовує startNextLesson() (case
+// "pct<80"), тільки застосована з нуля (не відносно поточного LF).
+function _srFindNextLesson(){
+  const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
+  if(!lessons.length) return null;
+  const sorted = [...lessons].sort((a,b) => (a.chapter-b.chapter) || (a.module-b.module));
+  return sorted.find(l => lessonProgress(l).pct < 80) || null;
+}
 
-  el.innerHTML = `
-  ${breakdownRows ? `
-  <div class="sr-plan-card">
-    <div class="sr-plan-header">
-      <span class="sr-plan-title">${planTitle}</span>
-      <div class="sr-plan-meta">
-        ${dueCount>0?`<span style="color:var(--gold)">↩ ${dueCount} ${dueLbl}</span>`:''}
-        ${newCount>0?`<span style="color:var(--leaf)">✦ ${newCount} ${newLbl}</span>`:''}
-        <span>${um.emoji} ~${plan.estimatedMinutes} ${minLabel}</span>
-      </div>
-    </div>
-    ${breakdownRows}
-    <div class="sr-plan-footer">
-      <span class="sr-plan-streak">${streakLabel}</span>
-      <button class="sr-plan-start" onclick="srStartPlanSession()">▶ ${startLabel}</button>
-    </div>
-  </div>` : `<div class="sr-plan-card"><div class="sr-plan-empty">${ {'de':'Alle Karten aktuell! ✅','uk':'Всі картки актуальні! ✅','en':'All cards up to date! ✅','ru':'Все карточки актуальны! ✅'}[uiLang]||'✅' }</div></div>`}
-  `;
+// Запускає "Повторити курс" — синтетичний урок з усіх глав, той самий
+// виклик, що стоїть за карткою курсового повторення в кінці Lernpfad.
+function _srStartCourseReview(){
+  const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
+  if(!lessons.length) return;
+  const allChapterNums = [...new Set(lessons.map(l=>l.chapter))];
+  startReviewLesson(allChapterNums, 'course');
 }
 
 function srOnDateChange(val){
@@ -8111,11 +8119,18 @@ function lfGoStep(stepIdx){
   // але vocab-top і vplayer ховаємо окремо (вже задано вище)
   lfSetLessonMode(step !== 'result');
 
-  // Після lfSetLessonMode(false) vplayer і vocab-top могли відновитись — ховаємо знову для result
+  // Після lfSetLessonMode(false) vplayer, vocab-top і bottom-nav могли
+  // відновитись — ховаємо знову для result. Нижнє меню ховаємо навмисно:
+  // урок вважається "повністю завершеним" лише після кліку на "Наступний
+  // урок"/"До списку уроків" (саме там рахується день-в-ударі, див.
+  // startNextLesson()/exitLessonFlow()) — клік по нижньому меню в обхід
+  // цих кнопок веде на подання, де стан LF ще не прибраний, і кидає помилку.
   if(step === 'result'){
     const vplayerResult = document.querySelector('#view-vocab .vplayer');
     if(vplayerResult) vplayerResult.style.display = 'none';
     if(vocabTop) vocabTop.style.display = 'none';
+    const bottomNavResult = document.getElementById('bottom-nav');
+    if(bottomNavResult) bottomNavResult.style.display = 'none';
   }
 
   if(step === 'cards'){
@@ -9360,7 +9375,12 @@ function srRecordLesson(lf){
   }catch(e){ console.warn('[SR] srRecordLesson:', e); }
 }
 
-  srRecordLesson(LF);
+  // ВАЖЛИВО: srRecordLesson(LF) (стрік, subtestStats, час) НЕ викликається
+  // тут — лише при явному підтвердженні завершення уроку (клік на
+  // "Наступний урок"/"До списку уроків", див. startNextLesson()/
+  // exitLessonFlow()). Показ екрану результату сам по собі — це ще не
+  // "урок пройдено", інакше день-в-ударі зараховувався б навіть якщо
+  // користувач так і не підтвердив завершення (напр. просто закрив вкладку).
   // Оновлюємо прогрес Lernpfad
   setTimeout(renderLernpfad, 300);
 
@@ -9604,6 +9624,14 @@ function _quizShowResult(){
 }
 
 function exitLessonFlow(){
+  // Зараховуємо урок (стрік, subtestStats, час) РІВНО ОДИН РАЗ — саме тут,
+  // при явному підтвердженні завершення. LF._recorded захищає від
+  // подвійного зарахування, коли startNextLesson() сам викликає цю функцію
+  // (див. нижче) — тоді запис уже стався там, і тут повторно не робимо.
+  if(LF && !LF._recorded){
+    LF._recorded = true;
+    srRecordLesson(LF);
+  }
   // Stop all audio immediately
   stopVocab();
   sbStopPlay();
@@ -9676,6 +9704,14 @@ function restartLessonFlow(){
 
 // Запускає наступний урок у тому самому розділі, або перший незавершений
 function startNextLesson(){
+  // Зараховуємо урок (стрік, subtestStats, час) РІВНО ОДИН РАЗ — див.
+  // коментар в exitLessonFlow(). Тут — бо ця функція теж викликається
+  // напряму з кнопки "Наступний урок", і може сама піти шляхом, що НЕ
+  // викликає exitLessonFlow() (_goToLessonOrExit/startReviewLesson).
+  if(LF && !LF._recorded){
+    LF._recorded = true;
+    srRecordLesson(LF);
+  }
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   if(!lessons.length){ exitLessonFlow(); return; }
 
