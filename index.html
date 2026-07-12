@@ -2434,6 +2434,10 @@ body.lesson-active .vocab-top{
       <button class="btn btn-s" onclick="showErrorLog()">📋 Log</button>
     </div>
     <div class="srow">
+      <div class="srow-label"><label>⏱ Perf Log</label><small>Заміри швидкості завантаження (сплеш-екран)</small></div>
+      <button class="btn btn-s" onclick="showPerfLog()">📋 Log</button>
+    </div>
+    <div class="srow">
       <div class="srow-label"><label>🎤 Speech Log</label><small>Лог розпізнавання мови</small></div>
       <button class="btn btn-s" onclick="showSpeechLog()">📋 Log</button>
     </div>
@@ -2488,7 +2492,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '308-e706834';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2588,7 +2592,8 @@ function loadCourseScript(courseId){
         const entries = performance.getEntriesByName(_srcUrl);
         const entry = entries[entries.length-1];
         const fromCache = entry && entry.transferSize === 0 && entry.encodedBodySize > 0;
-        console.log(`⏱ [splash-perf] course-script "${course.file}": ${(performance.now()-_t0).toFixed(0)}ms (fetch+onload) · ${fromCache ? 'З КЕШУ' : 'З МЕРЕЖІ'}` + (entry ? ` · encodedBodySize=${entry.encodedBodySize}B` : ''));
+        const _msg = `course-script "${course.file}": ${(performance.now()-_t0).toFixed(0)}ms (fetch+onload) · ${fromCache ? 'З КЕШУ' : 'З МЕРЕЖІ'}` + (entry ? ` · encodedBodySize=${entry.encodedBodySize}B` : '');
+        if(typeof logPerf==='function') logPerf(_msg); else console.log('⏱ [splash-perf]', _msg);
       }catch(e){ console.log('⏱ [splash-perf] course-script timing недоступний:', e); }
 
       activeCourse = course;
@@ -2598,7 +2603,8 @@ function loadCourseScript(courseId){
       // Для курсів без GRAMMAR/gram (напр. Financial-Accounting) поверне [] —
       // вкладку "Grammatik" тоді просто не показуємо (див. sbApplyDataSourceUI).
       try{ GRAM_CARDS = buildGramCards(); GRAM_CATS = buildGramCats(); }catch(e){ GRAM_CARDS=[]; GRAM_CATS=[]; }
-      console.log(`⏱ [splash-perf] course-script "${course.file}": +${(performance.now()-_t0).toFixed(0)}ms повний onload (з парсингом VOCAB/GRAMMAR/SPRACHBAUSTEINE + buildGramCards)`);
+      { const _m = `course-script "${course.file}": +${(performance.now()-_t0).toFixed(0)}ms повний onload (з парсингом VOCAB/GRAMMAR/SPRACHBAUSTEINE + buildGramCards)`;
+        if(typeof logPerf==='function') logPerf(_m); else console.log('⏱ [splash-perf]', _m); }
       resolve(course);
     };
     s.onerror = ()=>reject(new Error('Failed to load: '+course.file));
@@ -4351,7 +4357,7 @@ async function init(){
   // Заміри реального часу кожного етапу — щоб побачити ЦИФРИ, а не
   // гадати далі. Прибрати після діагностики (шукайте "ТИМЧАСОВЕ").
   const _t0 = performance.now();
-  const _tm = (label) => console.log(`⏱ [splash-perf] ${label}: ${(performance.now()-_t0).toFixed(0)}ms від старту init()`);
+  const _tm = (label) => { const m = `${label}: ${(performance.now()-_t0).toFixed(0)}ms від старту init()`; if(typeof logPerf==='function') logPerf(m); else console.log('⏱ [splash-perf]', m); };
 
   // Одноразова міграція старих систем обліку прогресу — має відбутись
   // ПЕРШОЮ, до будь-якого читання srsLoad/srLoadState іншим кодом.
@@ -5986,8 +5992,68 @@ function showErrorLog(){
   document.body.appendChild(overlay);
 }
 
+// ── PERF LOG (тимчасове інструментування сплеш-екрану) ──────────
+// Ті самі заміри, що друкуються в консоль через console.log("⏱ [splash-perf] ...")
+// у init()/loadCourseScript() — але й накопичуються тут, щоб їх можна
+// було переглянути прямо в застосунку (Settings → Debug), без
+// підключення Safari remote debugging до iPhone.
+const PERF_LOG = [];
+const MAX_PERF_LOG = 200;
 
-// ── ONBOARDING ────────────────────────────────────────────────
+function logPerf(msg){
+  const entry = {
+    t: new Date().toISOString().slice(11,23), // HH:MM:SS.mmm
+    msg: String(msg),
+  };
+  PERF_LOG.push(entry);
+  if(PERF_LOG.length > MAX_PERF_LOG) PERF_LOG.shift();
+  console.log('⏱ [splash-perf]', msg);
+}
+
+function showPerfLog(){
+  document.getElementById('err-log-overlay')?.remove();
+
+  if(!PERF_LOG.length){ notify('✓ Ще немає замірів — перезавантажте застосунок'); return; }
+
+  const txt = PERF_LOG.map(e=>`[${e.t}] ${e.msg}`).join('\n');
+
+  const overlay = document.createElement('div');
+  overlay.id = 'err-log-overlay';
+  overlay.style.cssText = `position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.85);
+    display:flex;flex-direction:column;
+    padding:calc(16px + env(safe-area-inset-top,0px)) 16px 16px;
+    box-sizing:border-box;`;
+
+  const toolbar = document.createElement('div');
+  toolbar.style.cssText = 'display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;flex-shrink:0;';
+  toolbar.innerHTML = `
+    <span style="color:var(--gold);font-weight:700;font-family:'Inter',sans-serif">⏱ Perf Log (${PERF_LOG.length})</span>
+    <div style="display:flex;gap:8px">
+      <button onclick="navigator.clipboard?.writeText(document.getElementById('perf-log-pre').textContent).then(()=>notify('📋 Copied!'))"
+        style="background:rgba(201,168,76,.2);border:1px solid var(--gold);color:var(--gold);padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px">
+        📋 Copy
+      </button>
+      <button onclick="PERF_LOG.length=0;notify('Log cleared');document.getElementById('err-log-overlay').remove();"
+        style="background:rgba(231,76,60,.15);border:1px solid #e74c3c;color:#e74c3c;padding:6px 10px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:13px">
+        🗑
+      </button>
+      <button onclick="document.getElementById('err-log-overlay').remove();"
+        style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.3);color:#fff;padding:6px 12px;border-radius:8px;cursor:pointer;font-family:inherit;font-size:15px;font-weight:700">
+        ✕
+      </button>
+    </div>`;
+
+  const pre = document.createElement('pre');
+  pre.id = 'perf-log-pre';
+  pre.style.cssText = 'flex:1;overflow-y:auto;font:11px/1.5 monospace;color:#7fff7f;white-space:pre-wrap;word-break:break-all;margin:0;';
+  pre.textContent = txt;
+
+  overlay.appendChild(toolbar);
+  overlay.appendChild(pre);
+  document.body.appendChild(overlay);
+}
+
+
 function checkOnboarding(){
   // Показуємо onboarding тільки якщо мова ще не обрана
   if(!localStorage.getItem('mova_ui_lang')){
