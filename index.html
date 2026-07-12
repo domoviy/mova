@@ -2497,7 +2497,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '312-e59c920';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8508,12 +8508,39 @@ var _lfDlgHandlers = {
     var existingA = body.querySelector('.lf-dlg-bubble-a');
 
     if(unit.aShown && existingQ && !existingA){
-      // Питання вже на екрані (і вже "приземлилось") — лише додаємо
-      // бульбашку відповіді, не чіпаючи й не переанімовуючи питання.
+      // Питання вже на екрані (і вже "приземлилось") — додаємо бульбашку
+      // відповіді. Через розпірку (margin-top:auto — тримає єдине
+      // повідомлення внизу картки, поки їх мало) поява відповіді стискає
+      // розпірку і ЗСУВАЄ питання вгору — раніше це відбувалось миттєво
+      // (звичайний reflow), відчувалось як "стрибок". FLIP-техніка:
+      // міряємо позицію питання ДО вставки відповіді, вставляємо, міряємо
+      // ПІСЛЯ — і плавно анімуємо різницю через transform, замість
+      // миттєвого стрибка. Разом з тим, що відповідь влітає знизу своєю
+      // анімацією (.lf-bubble-in) — виходить ефект месенджера: нове
+      // повідомлення зʼявляється, а попереднє плавно здвигається, щоб
+      // звільнити місце.
       existingQ.classList.remove('lf-bubble-in');
+      var firstRect = existingQ.getBoundingClientRect();
+
       var a = card.a?.[pl] || '';
       var aTr = ul !== pl ? (card.a?.[ul] || '') : '';
       body.insertAdjacentHTML('beforeend', buildBubble('lf-dlg-bubble-a', a, pl, aTr, ul));
+
+      var lastRect = existingQ.getBoundingClientRect();
+      var dy = firstRect.top - lastRect.top;
+      if(Math.abs(dy) > 0.5){
+        existingQ.style.transition = 'none';
+        existingQ.style.transform = 'translateY('+dy+'px)';
+        requestAnimationFrame(function(){
+          existingQ.style.transition = 'transform .32s cubic-bezier(.22,1,.36,1)';
+          existingQ.style.transform = 'translateY(0)';
+        });
+        existingQ.addEventListener('transitionend', function te(){
+          existingQ.style.transition = '';
+          existingQ.style.transform = '';
+          existingQ.removeEventListener('transitionend', te);
+        });
+      }
     } else {
       // Нова картка (або перший рендер) — питання (і відповідь, якщо вже
       // мала бути показана) влітають знизу тією самою анімацією.
