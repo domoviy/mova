@@ -2467,7 +2467,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '303-a809396';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11305,11 +11305,12 @@ function sbRenderPrac() {
       var b=document.createElement('button');
       b.className='mc-opt';
       b.textContent=o.text;
-      // Prefetch audio — той самий механізм для Sprachbausteine і
-      // Grammatik-Trainer: card.id+field (для gram, card.id='gram_'+vocId,
-      // field='answer'/'distractors_N' — стабільно, бо дистрактори
-      // тепер детерміновані, див. buildGramCards()).
-      sbPrefetchAudio(card.id, o.field);
+      // Prefetch audio: для Sprachbausteine — card.id+field (авторський
+      // фіксований масив дистракторів у базі); для Grammatik-Trainer —
+      // за текстом слова (дедуплікація, див. коментар біля
+      // getGramWordAudioUrl вище).
+      if(card._isGram) sbPrefetchGramWordAudio(o.text);
+      else sbPrefetchAudio(card.id, o.field);
       b.onclick=(function(opt, fn){ return function(){ sbPracAnswer(b,opt,card.id,fn); }; })(o.text, o.field);
       optEl.appendChild(b);
     });
@@ -11321,6 +11322,76 @@ function sbRenderPrac() {
   // а не синтетичного gram_* id.
   if(card._isGram) sbPrefetchAudio(card._srcId, 'def');
   else sbPrefetchAudio(card.id, 'sentence');
+}
+
+// ── Grammatik-Trainer: аудіо слів на кнопках ────────────────────
+// Дедуплікація на генерації: пул теми (GRAM_DISTRACTOR_POOL) — лише
+// 4-11 слів, а використовує його КОЖНА VOCAB-картка цієї теми (десятки
+// карток). Якщо озвучувати за card.id+field (як SPRACHBAUSTEINE), те
+// саме слово штампується окремим файлом під кожну картку, де воно
+// зʼявляється — сотні майже ідентичних mp3 замість кількох десятків
+// слів. Тому кнопки Grammatik-Trainer озвучуються за ТЕКСТОМ СЛОВА:
+// audio/<course>/<lang>/<speed>/gram/gram_word_<slug>_<lang>_<speed>.mp3
+// slugifyGramWord() МАЄ давати той самий результат, що й slugify_word()
+// у gen_audio.py — інакше клієнт шукатиме не ту назву файлу.
+function slugifyGramWord(word) {
+  var slug = (word || '').trim().toLowerCase();
+  slug = slug.replace(/[^a-zäöüßа-яіїєё0-9']+/gi, '_');
+  slug = slug.replace(/^_+|_+$/g, '');
+  return slug || 'w';
+}
+
+function getGramWordAudioUrl(word, lang) {
+  const speed  = V.langSpeed?.[lang] || '100';
+  const course = activeCourse?.id || 'B2-Beruf';
+  const slug   = slugifyGramWord(word);
+  return `audio/${course}/${lang}/${speed}/gram/gram_word_${slug}_${lang}_${speed}.mp3`;
+}
+
+// Аналог speak(), але шукає pregen-файл за текстом слова
+// (getGramWordAudioUrl), а не за cardId+field — з причин описаних вище.
+async function speakGramWord(word, lang, onEnd) {
+  stopTTS();
+  const gen = playGen;
+  let _ended = false;
+  const safeEnd = () => { if (_ended) return; _ended = true; if (playGen === gen) onEnd && onEnd(); };
+  const failSilently = () => { safeEnd(); };
+
+  if (!word) { failSilently(); return; }
+
+  const url   = getGramWordAudioUrl(word, lang);
+  const mkey  = urlToAudioMkey(url);
+  const fname = url.split('/').slice(-1)[0];
+
+  const cachedAndValid = audioBlobCache.has(url) && isAudioCacheValid(url, mkey);
+  if (cachedAndValid) {
+    logErr('speak', 'cached → pregen(gram)', fname);
+    playPregenAudio(url, safeEnd, gen);
+    return;
+  }
+  if (audioExistsCache.get(url) === '404') {
+    logErr('speak', '404 → no audio(gram)', fname);
+    failSilently();
+    return;
+  }
+  _priorityFetchActive++;
+  const blobUrl = await fetchBlobUrl(url, 8000, mkey).finally(() => { _priorityFetchActive--; });
+  if (playGen !== gen) return;
+  if (blobUrl) {
+    playPregenAudio(url, safeEnd, gen);
+  } else {
+    failSilently();
+  }
+}
+
+function sbPrefetchGramWordAudio(word) {
+  try {
+    const url = getGramWordAudioUrl(word, primaryLang());
+    const mkey = urlToAudioMkey(url);
+    if ((!audioBlobCache.has(url) || !isAudioCacheValid(url, mkey)) && audioExistsCache.get(url) !== '404') {
+      fetchBlobUrl(url, 8000, mkey).catch(()=>{});
+    }
+  } catch(e) {}
 }
 
 function sbPrefetchAudio(cardId, field) {
@@ -11347,21 +11418,20 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   });
 
   // Play chosen option audio, then play full correct sentence — той самий
-  // механізм для SPRACHBAUSTEINE і Grammatik-Trainer: card.id+field
-  // (для gram card.id='gram_'+vocId, дистрактори тепер детерміновані —
-  // див. buildGramCards() — тож field='answer'/'distractors_N' стабільно
-  // відповідає тому самому слову). Різниться лише джерело аудіо ЦІЛОГО
-  // РЕЧЕННЯ: для Grammatik-Trainer це вже готове pregen-аудіо
-  // ОРИГІНАЛЬНОЇ VOCAB-картки (card._srcId, поле 'def'), а не синтетичне
-  // 'sentence' під gram_* id.
-  var field = audioField || (ok ? 'answer' : 'distractors_1');
+  // порядок для SPRACHBAUSTEINE і Grammatik-Trainer, але ЯК шукається
+  // pregen-файл кнопки різниться: Sprachbausteine — card.id+field
+  // (фіксований авторський масив дистракторів у базі); Grammatik-Trainer
+  // — за текстом слова (speakGramWord, дедуплікація — див. коментар
+  // біля getGramWordAudioUrl). Речення для Grammatik-Trainer завжди бере
+  // готове pregen-аудіо ОРИГІНАЛЬНОЇ VOCAB-картки (card._srcId, 'def').
   if(card._isGram){
-    speak(chosen, primaryLang(), function() {
+    speakGramWord(chosen, primaryLang(), function() {
       setTimeout(function() {
         speak(null, primaryLang(), null, card._srcId, 'def');
       }, 300);
-    }, card.id, field);
+    });
   } else {
+    var field = audioField || (ok ? 'answer' : 'distractors_1');
     var sentenceText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
     speak(chosen, primaryLang(), function() {
       // After answer audio ends → play full sentence
