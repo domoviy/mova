@@ -2492,7 +2492,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '310-1a1162d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3410,10 +3410,33 @@ function srBuildWeaknessProfile(subtestStats){
   return p;
 }
 
+// In-memory кеш для srLoadState() — ІНВАЛІДУЄТЬСЯ автоматично при зміні
+// курсу (ключ залежить від activeCourse.id, звіряємо перед поверненням
+// кешу) і при кожному srSaveState() (оновлюємо кеш тим самим обʼєктом).
+// Безпечно: аудит усіх 25+ місць виклику srLoadState() підтвердив, що
+// КОЖНЕ місце, яке мутує повернутий обʼєкт, одразу викликає
+// srSaveState() тим самим обʼєктом — "мутувати і забути" ніде не
+// трапляється. Без цього кешу srLoadState() робила localStorage.getItem()
+// + JSON.parse() ВСЬОГО стану SRS (з history кожної картки) на КОЖЕН
+// виклик — а викликається вона десятками разів на кожен рендер черги
+// карток (srsDue/srsPriority/sbSmPriority усі йдуть через неї). На iOS
+// Safari/WebKit це вимірювано коштувало секунди на курсах з великою
+// кількістю карток (initVocab(): 11972ms → 691ms після фіксу).
+let _srStateCache = null;
+let _srStateCacheKey = null;
+
 function srLoadState(){
-  try{ const r=localStorage.getItem(srStorageKey()); return r?JSON.parse(r):srDefaultState(); }catch{ return srDefaultState(); }
+  const key = srStorageKey();
+  if(_srStateCache !== null && _srStateCacheKey === key) return _srStateCache;
+  try{ const r=localStorage.getItem(key); _srStateCache = r?JSON.parse(r):srDefaultState(); }catch{ _srStateCache = srDefaultState(); }
+  _srStateCacheKey = key;
+  return _srStateCache;
 }
-function srSaveState(s){ try{ localStorage.setItem(srStorageKey(), JSON.stringify(s)); }catch(e){} }
+function srSaveState(s){
+  _srStateCache = s;
+  _srStateCacheKey = srStorageKey();
+  try{ localStorage.setItem(srStorageKey(), JSON.stringify(s)); }catch(e){}
+}
 function srDefaultState(){
   return {examDate:null, examType:'telc_DTB_B2', cards:{}, subtestStats:{}, lastSessionDate:null, streak:0, dailyPlan:null, examHistory:[]};
 }
@@ -4327,6 +4350,28 @@ function srsPriority(id, side){
   return overdue / 86400000;           // більше прострочено → вище
 }
 
+// ── Batch-варіанти srsDue()/srsPriority() для сортування черг ───
+// srsDue(id)/srsPriority(id) кожні викликають srLoadState(), яка
+// заново читає localStorage + JSON.parse ВЕСЬ стан SRS без кешування.
+// Виклик їх окремо на кожен елемент всередині .filter()/.sort() —
+// O(n) чи O(n log n) повторних парсингів того самого блоба (виміряно:
+// до 11.4с на iPhone на курсі з ~1000+ карток). Ці дві функції беруть
+// УЖЕ завантажений `state` (викликати srLoadState() один раз ЗОВНІ,
+// перед .filter()/.sort()) — та сама формула, що й у srsDue()/
+// srsPriority() (side за замовчуванням = 'term', root=state.cards[id]),
+// просто без повторного читання стану.
+function srDueFromState(state, id){
+  const root = state.cards?.[id];
+  if(!root || !root.nextReview) return true; // нова картка — завжди показуємо
+  return Date.now() >= srStartOfDay(new Date(root.nextReview)).getTime();
+}
+function srPriorityFromState(state, id){
+  const root = state.cards?.[id];
+  if(!root || !root.nextReview) return 999; // нові — першими
+  const dueDate = srStartOfDay(new Date(root.nextReview)).getTime();
+  return (Date.now() - dueDate) / 86400000; // більше прострочено → вище
+}
+
 
 
 // ── HAPTIC FEEDBACK ───────────────────────────────────────────
@@ -4775,32 +4820,20 @@ function buildVocabQueue(){
     //
     // ВИМІРЯНО НА iPhone: цей крок займав до 11.4с на курсі з великою
     // кількістю карток! Причина — srsDue()/srsPriority() кожні
-    // викликають srLoadState(), яка робить localStorage.getItem() +
-    // JSON.parse() ВСЬОГО стану SRS (включно з history кожної картки)
-    // ЗАНОВО, без жодного кешування. Виклик їх окремо на кожну картку
-    // через .filter()/.sort() означає тисячі повторних парсингів того
-    // самого блоба — на iOS Safari/WebKit синхронний localStorage має
-    // відчутний IPC-оверхед на такій кількості викликів.
+    // викликають srLoadState(), яка перечитує й JSON.parse'ить ВЕСЬ
+    // стан SRS (включно з history кожної картки) щоразу заново, без
+    // жодного кешування. Виклик їх окремо на кожну картку через
+    // .filter()/.sort() означає тисячі повторних парсингів того самого
+    // блоба — на iOS Safari/WebKit синхронний localStorage має відчутний
+    // IPC-оверхед на такій кількості викликів.
     //
-    // Фікс: читаємо стан ОДИН раз тут і рахуємо due/priority напряму —
-    // логіка точно повторює srsLoad()/srsDue()/srsPriority() (side за
-    // замовчуванням = 'term', root=state.cards[id]) без зміни поведінки.
-    // Решта коду й далі викликає srsDue()/srsPriority() як раніше —
-    // цей фікс ізольований лише тут, нічого іншого не чіпає.
+    // Фікс: srLoadState() один раз тут, далі — srDueFromState()/
+    // srPriorityFromState() (та сама формула, що й srsDue()/
+    // srsPriority(), без повторного читання). Решта коду й далі
+    // викликає srsDue()/srsPriority() як раніше — цей фікс ізольований.
     const _srState = srLoadState();
-    const _srDue = (id) => {
-      const root = _srState.cards?.[id];
-      if(!root || !root.nextReview) return true; // нова картка — завжди показуємо
-      return Date.now() >= srStartOfDay(new Date(root.nextReview)).getTime();
-    };
-    const _srPriority = (id) => {
-      const root = _srState.cards?.[id];
-      if(!root || !root.nextReview) return 999; // нові — першими
-      const dueDate = srStartOfDay(new Date(root.nextReview)).getTime();
-      return (Date.now() - dueDate) / 86400000; // більше прострочено → вище
-    };
-    const due   = arr.filter(v=>_srDue(v.id)).sort((a,b)=>_srPriority(b.id)-_srPriority(a.id));
-    const notDue= arr.filter(v=>!_srDue(v.id));
+    const due   = arr.filter(v=>srDueFromState(_srState,v.id)).sort((a,b)=>srPriorityFromState(_srState,b.id)-srPriorityFromState(_srState,a.id));
+    const notDue= arr.filter(v=>!srDueFromState(_srState,v.id));
     arr = [...due, ...notDue];
   }
   return arr;
@@ -5272,7 +5305,8 @@ function startMatching(){
   }
 
   // Сортуємо: нові і слабкі вперше (вищий srsPriority = більш терміново)
-  pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
+  const _srState = srLoadState();
+  pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
   // Додаємо трохи випадковості серед карток з однаковим пріоритетом
   const chosen = pool.slice(0, Math.min(MATCH_SIZE * 3, pool.length))
                      .sort(() => Math.random() - .5)
@@ -5574,11 +5608,11 @@ function _runLessonFlow(lesson, allCards){
   // НАЙСЛАБШИХ за накопиченою стабільністю (Lesen), навіть якщо
   // формально всі "знає" — це дає змістовне повторення найслабших
   // місць модуля замість випадкового зависання на одній п'ятірці.
-  const anyDueOrNew = validCards.some(c => srsPriority(c.id) >= 0); // >=0: due або прострочено
   const state = srLoadState();
+  const anyDueOrNew = validCards.some(c => srPriorityFromState(state,c.id) >= 0); // >=0: due або прострочено
 
   const sorted = anyDueOrNew
-    ? [...validCards].sort((a,b)=>srsPriority(b.id)-srsPriority(a.id))
+    ? [...validCards].sort((a,b)=>srPriorityFromState(state,b.id)-srPriorityFromState(state,a.id))
     : [...validCards].sort((a,b)=>{
         const sa = srStabilityScore(state.cards[a.id], 'Lesen');
         const sb = srStabilityScore(state.cards[b.id], 'Lesen');
@@ -5645,7 +5679,7 @@ function _runLessonFlow(lesson, allCards){
   // Вибираємо 1 картку Dialogue для уроку — через SM-2 пріоритет
   const allDlg = typeof DIALOGE !== 'undefined' ? DIALOGE : [];
   const dlgCard = allDlg.length > 0
-    ? [...allDlg].sort((a,b) => srsPriority(b.id) - srsPriority(a.id))[0]
+    ? [...allDlg].sort((a,b) => srPriorityFromState(state,b.id) - srPriorityFromState(state,a.id))[0]
     : null;
 
   const steps = ['cards'];
@@ -6187,7 +6221,8 @@ function startMultipleChoice(){
     return;
   }
 
-  pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
+  const _srState = srLoadState();
+  pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
   const chosen = pool.slice(0, Math.min(MC_COUNT*3, pool.length))
                      .sort(()=>Math.random()-.5)
                      .slice(0, MC_COUNT);
@@ -6323,7 +6358,8 @@ function startTiles(){
       '<p style="color:var(--muted);padding:16px">'+t('match_empty')+'</p>';
     return;
   }
-  pool.sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
+  const _srState = srLoadState();
+  pool.sort((a,b)=>srPriorityFromState(_srState,b.id)-srPriorityFromState(_srState,a.id));
   const chosen = pool.slice(0, Math.min(21, pool.length)).sort(()=>Math.random()-.5).slice(0,7)
     .map(card => ({ card, mode: 'term' }));
   tilesState = {cards:chosen, idx:0, current:null, answer:[], words:[]};
@@ -6880,7 +6916,8 @@ function startDefFill(){
     document.getElementById('def-q-text').innerHTML = '';
     return;
   }
-  pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
+  const _srState = srLoadState();
+  pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
   const chosen = pool.slice(0, Math.min(21, pool.length)).sort(() => Math.random() - .5).slice(0, 7);
   defState = { cards: chosen, idx: 0, current: null, words: [], slots: [], fullSentence: '' };
   defShowCard();
@@ -7131,7 +7168,8 @@ function startSpeech(){
   const cf = document.getElementById('vf-cat')?.value || 'all';
   let pool = (typeof VOCAB !== 'undefined' ? VOCAB : [])
     .filter(v => cf === 'all' || v.cat === cf);
-  pool.sort((a,b) => srsPriority(b.id) - srsPriority(a.id));
+  const _srState = srLoadState();
+  pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
   const cards = pool.slice(0, Math.min(21, pool.length))
     .sort(() => Math.random() - .5).slice(0, 7);
   if(!cards.length){ return; }
@@ -9000,6 +9038,17 @@ function srIsRepeatDueToday(cardId){
     return !cs.nextReview || cs.nextReview <= today;
   }catch(e){ return false; }
 }
+// Batch-варіант — той самий принцип, що й srDueFromState()/srPriorityFromState():
+// приймає вже завантажений `state`, щоб не перечитувати localStorage
+// на кожен елемент всередині .filter().
+function srIsRepeatDueTodayFromState(state, cardId){
+  try{
+    var cs = (state.cards || {})[cardId];
+    if(!cs || !cs.repetitions) return false;
+    var today = srToISO(new Date());
+    return !cs.nextReview || cs.nextReview <= today;
+  }catch(e){ return false; }
+}
 
 // Будує чергу для кроку уроку "sb_prac" — рівно 4 картки:
 // 1) до 2 карток Sprachbausteine, якщо вони реально на повторення сьогодні
@@ -9010,10 +9059,11 @@ function srIsRepeatDueToday(cardId){
 // Якщо на сьогодні немає SB-повторень — усі 4 картки граматики.
 function _lfBuildSBPracQueue(){
   var TARGET = 4;
+  var _srState = srLoadState();
   var allSB = typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE : [];
   var dueSB = allSB
-    .filter(function(c){ return srIsRepeatDueToday(c.id); })
-    .sort(function(a,b){ return srsPriority(b.id) - srsPriority(a.id); })
+    .filter(function(c){ return srIsRepeatDueTodayFromState(_srState, c.id); })
+    .sort(function(a,b){ return srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id); })
     .slice(0, 2)
     .map(function(c){ return Object.assign({}, c, {_isGram:false}); });
 
@@ -9023,7 +9073,7 @@ function _lfBuildSBPracQueue(){
   var lessonGram = allGram.filter(function(g){ return lessonIds.includes(g._srcId); });
   var otherGram  = allGram
     .filter(function(g){ return !lessonIds.includes(g._srcId); })
-    .sort(function(a,b){ return srsPriority(b.id) - srsPriority(a.id); });
+    .sort(function(a,b){ return srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id); });
 
   var gramCards = lessonGram.concat(otherGram)
     .slice(0, gramSlots)
@@ -10048,25 +10098,12 @@ function buildDialogueQueue(){
     arr.forEach(d => scoreCache.set(d.id, cardScore(d)));
     arr = arr.sort((a,b) => scoreCache.get(b.id) - scoreCache.get(a.id));
   } else if(D.mode==='srs'){
-    // Той самий фікс, що й у buildVocabQueue(): srsDue()/srsPriority()
-    // кожні перечитують і JSON.parse'ять УВЕСЬ стан SRS з localStorage
-    // без кешування — читаємо стан один раз замість O(n) повторних
-    // парсингів того самого блоба (на iOS Safari/WebKit це коштує
-    // секунди на великих курсах).
+    // Той самий фікс, що й у buildVocabQueue(): srLoadState() один раз,
+    // далі — srDueFromState()/srPriorityFromState() (без повторних
+    // localStorage.getItem()+JSON.parse() на кожен елемент).
     const _srState = srLoadState();
-    const _srDue = (id) => {
-      const root = _srState.cards?.[id];
-      if(!root || !root.nextReview) return true;
-      return Date.now() >= srStartOfDay(new Date(root.nextReview)).getTime();
-    };
-    const _srPriority = (id) => {
-      const root = _srState.cards?.[id];
-      if(!root || !root.nextReview) return 999;
-      const dueDate = srStartOfDay(new Date(root.nextReview)).getTime();
-      return (Date.now() - dueDate) / 86400000;
-    };
-    const due   = arr.filter(d=>_srDue(d.id)).sort((a,b)=>_srPriority(b.id)-_srPriority(a.id));
-    const notDue= arr.filter(d=>!_srDue(d.id));
+    const due   = arr.filter(d=>srDueFromState(_srState,d.id)).sort((a,b)=>srPriorityFromState(_srState,b.id)-srPriorityFromState(_srState,a.id));
+    const notDue= arr.filter(d=>!srDueFromState(_srState,d.id));
     arr = [...due, ...notDue];
   }
   return arr;
