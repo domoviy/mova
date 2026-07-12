@@ -2492,7 +2492,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '309-10031fd';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4763,11 +4763,44 @@ function buildVocabQueue(){
   if(V.mode==='random'){
     arr=arr.sort(()=>Math.random()-.5);
   } else if(V.mode==='smart'){
-    arr=arr.sort((a,b)=>cardScore(b)-cardScore(a));
+    // Той самий клас проблеми, що й у гілці 'srs' нижче: cardScore()
+    // читає localStorage ПОКАРТКОВО всередині компаратора sort() —
+    // O(n log n) синхронних localStorage-читань замість O(n). Рахуємо
+    // рахунки один раз наперед.
+    const scoreCache = new Map();
+    arr.forEach(v => scoreCache.set(v.id, cardScore(v)));
+    arr = arr.sort((a,b) => scoreCache.get(b.id) - scoreCache.get(a.id));
   } else if(V.mode==='srs'){
-    // SM-2: спочатку прострочені та нові, потім за пріоритетом
-    const due   = arr.filter(v=>srsDue(v.id)).sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
-    const notDue= arr.filter(v=>!srsDue(v.id));
+    // SM-2: спочатку прострочені та нові, потім за пріоритетом.
+    //
+    // ВИМІРЯНО НА iPhone: цей крок займав до 11.4с на курсі з великою
+    // кількістю карток! Причина — srsDue()/srsPriority() кожні
+    // викликають srLoadState(), яка робить localStorage.getItem() +
+    // JSON.parse() ВСЬОГО стану SRS (включно з history кожної картки)
+    // ЗАНОВО, без жодного кешування. Виклик їх окремо на кожну картку
+    // через .filter()/.sort() означає тисячі повторних парсингів того
+    // самого блоба — на iOS Safari/WebKit синхронний localStorage має
+    // відчутний IPC-оверхед на такій кількості викликів.
+    //
+    // Фікс: читаємо стан ОДИН раз тут і рахуємо due/priority напряму —
+    // логіка точно повторює srsLoad()/srsDue()/srsPriority() (side за
+    // замовчуванням = 'term', root=state.cards[id]) без зміни поведінки.
+    // Решта коду й далі викликає srsDue()/srsPriority() як раніше —
+    // цей фікс ізольований лише тут, нічого іншого не чіпає.
+    const _srState = srLoadState();
+    const _srDue = (id) => {
+      const root = _srState.cards?.[id];
+      if(!root || !root.nextReview) return true; // нова картка — завжди показуємо
+      return Date.now() >= srStartOfDay(new Date(root.nextReview)).getTime();
+    };
+    const _srPriority = (id) => {
+      const root = _srState.cards?.[id];
+      if(!root || !root.nextReview) return 999; // нові — першими
+      const dueDate = srStartOfDay(new Date(root.nextReview)).getTime();
+      return (Date.now() - dueDate) / 86400000; // більше прострочено → вище
+    };
+    const due   = arr.filter(v=>_srDue(v.id)).sort((a,b)=>_srPriority(b.id)-_srPriority(a.id));
+    const notDue= arr.filter(v=>!_srDue(v.id));
     arr = [...due, ...notDue];
   }
   return arr;
@@ -10008,10 +10041,32 @@ function buildDialogueQueue(){
   if(D.mode==='random'){
     arr=arr.sort(()=>Math.random()-.5);
   } else if(D.mode==='smart'){
-    arr=arr.sort((a,b)=>cardScore(b)-cardScore(a));
+    // Той самий фікс, що й у buildVocabQueue(): попередньо рахуємо
+    // cardScore() один раз на картку замість O(n log n) викликів
+    // всередині компаратора sort().
+    const scoreCache = new Map();
+    arr.forEach(d => scoreCache.set(d.id, cardScore(d)));
+    arr = arr.sort((a,b) => scoreCache.get(b.id) - scoreCache.get(a.id));
   } else if(D.mode==='srs'){
-    const due   = arr.filter(d=>srsDue(d.id)).sort((a,b)=>srsPriority(b.id)-srsPriority(a.id));
-    const notDue= arr.filter(d=>!srsDue(d.id));
+    // Той самий фікс, що й у buildVocabQueue(): srsDue()/srsPriority()
+    // кожні перечитують і JSON.parse'ять УВЕСЬ стан SRS з localStorage
+    // без кешування — читаємо стан один раз замість O(n) повторних
+    // парсингів того самого блоба (на iOS Safari/WebKit це коштує
+    // секунди на великих курсах).
+    const _srState = srLoadState();
+    const _srDue = (id) => {
+      const root = _srState.cards?.[id];
+      if(!root || !root.nextReview) return true;
+      return Date.now() >= srStartOfDay(new Date(root.nextReview)).getTime();
+    };
+    const _srPriority = (id) => {
+      const root = _srState.cards?.[id];
+      if(!root || !root.nextReview) return 999;
+      const dueDate = srStartOfDay(new Date(root.nextReview)).getTime();
+      return (Date.now() - dueDate) / 86400000;
+    };
+    const due   = arr.filter(d=>_srDue(d.id)).sort((a,b)=>_srPriority(b.id)-_srPriority(a.id));
+    const notDue= arr.filter(d=>!_srDue(d.id));
     arr = [...due, ...notDue];
   }
   return arr;
