@@ -28,6 +28,12 @@ except ImportError:
 WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
 COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '20'))
+# Скільки разів повторити спробу синтезу одного файлу перед тим, як
+# здатись (транзитні збої Edge TTS API/мережі — тимчасовий rate-limit,
+# обрив зʼєднання тощо). RETRY_BASE_DELAY — базова пауза перед повтором,
+# зростає експоненційно (спроба 2 → ×2, спроба 3 → ×4 і т.д.).
+RETRY_ATTEMPTS = int(os.environ.get('TTS_RETRY_ATTEMPTS', '3'))
+RETRY_BASE_DELAY = float(os.environ.get('TTS_RETRY_BASE_DELAY', '2.0'))
 
 # Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
 # у тій самій директорії, що й цей скрипт, а аудіо генерується в
@@ -369,32 +375,53 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
     file_path = file_dir / task["filename"]
 
     async with semaphore:
-        try:
-            async with lock:
-                stats["processed_tasks"] += 1
-                current_num = stats["processed_tasks"]
+        async with lock:
+            stats["processed_tasks"] += 1
+            current_num = stats["processed_tasks"]
 
-            print(f"[{current_num}/{total_tasks}] -> {task['mkey']} -> Голос: {task['voice']} -> '{task['cleaned'][:30]}...'", flush=True)
+        print(f"[{current_num}/{total_tasks}] -> {task['mkey']} -> Голос: {task['voice']} -> '{task['cleaned'][:30]}...'", flush=True)
 
-            await synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path)
+        # Retry з експоненційною паузою — транзитні збої (тимчасовий
+        # rate-limit Edge TTS, обрив мережі) не мають назавжди лишати
+        # діру в аудіо: без retry одна невдала спроба означала, що файл
+        # просто не зʼявиться, і про це дізнаєшся лише постфактум за
+        # 404 у браузерному логі.
+        last_error = None
+        for attempt in range(1, RETRY_ATTEMPTS + 1):
+            try:
+                await synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path)
 
-            async with lock:
-                write_to_manifest_file(task["mkey"], task["content_hash"])
+                async with lock:
+                    write_to_manifest_file(task["mkey"], task["content_hash"])
 
-                stats["generated"] += 1
-                stats["batch_counter"] += 1
+                    stats["generated"] += 1
+                    stats["batch_counter"] += 1
 
-                if stats["batch_counter"] >= COMMIT_LIMIT:
-                    git_commit_and_push(stats["batch_counter"])
-                    stats["batch_counter"] = 0
+                    if stats["batch_counter"] >= COMMIT_LIMIT:
+                        git_commit_and_push(stats["batch_counter"])
+                        stats["batch_counter"] = 0
 
-            if DELAY_SEC > 0:
-                await asyncio.sleep(DELAY_SEC)
+                if DELAY_SEC > 0:
+                    await asyncio.sleep(DELAY_SEC)
 
-        except Exception as e:
-            print(f"❌ Помилка генерації для {task['mkey']}: {e}", flush=True)
-            if file_path.exists():
-                file_path.unlink()
+                return  # успіх — далі не йдемо
+
+            except Exception as e:
+                last_error = e
+                if file_path.exists():
+                    file_path.unlink()
+
+                if attempt < RETRY_ATTEMPTS:
+                    backoff = RETRY_BASE_DELAY * (2 ** (attempt - 1))
+                    print(f"⚠️  Спроба {attempt}/{RETRY_ATTEMPTS} для {task['mkey']} невдала: {e} — повтор через {backoff:.0f}с", flush=True)
+                    await asyncio.sleep(backoff)
+
+        # Усі спроби вичерпано
+        print(f"❌ Помилка генерації для {task['mkey']} після {RETRY_ATTEMPTS} спроб: {last_error}", flush=True)
+        async with lock:
+            stats["failed"] = stats.get("failed", 0) + 1
+            stats["failed_mkeys"] = stats.get("failed_mkeys", [])
+            stats["failed_mkeys"].append(task["mkey"])
 
 async def main():
     print("Запуск генератора MOVA TTS (Edge TTS).", flush=True)
@@ -615,7 +642,7 @@ async def main():
 
     semaphore = asyncio.Semaphore(WORKERS)
     lock = asyncio.Lock()
-    stats = {"generated": 0, "batch_counter": 0, "processed_tasks": 0}
+    stats = {"generated": 0, "batch_counter": 0, "processed_tasks": 0, "failed": 0, "failed_mkeys": []}
 
     pool = [worker_task(t, semaphore, stats, lock, total_tasks) for t in tasks]
     await asyncio.gather(*pool)
@@ -624,6 +651,10 @@ async def main():
         git_commit_and_push(stats["batch_counter"])
 
     print(f"🎉 Роботу завершено! Згенеровано та внесено в маніфест: {stats['generated']} файлів.", flush=True)
+    if stats["failed"] > 0:
+        print(f"⚠️  Не вдалося згенерувати {stats['failed']} файл(ів) навіть після {RETRY_ATTEMPTS} спроб — запустіть скрипт ще раз, він доробить лише їх:", flush=True)
+        for mkey in stats["failed_mkeys"]:
+            print(f"   · {mkey}", flush=True)
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -2467,7 +2467,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '305-67f8a47';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5564,7 +5564,6 @@ function _runLessonFlow(lesson, allCards){
   const steps = ['cards'];
   if(hasDefFill) steps.push('def');
   steps.push('matching');
-  if(hasSB) steps.push('sb_learn');
   if(dlgCard) steps.push('dlg_learn');
   if(hasTiles) steps.push('tiles');
   if(hasSB) steps.push('sb_prac');
@@ -11417,30 +11416,6 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     else if(b===btn&&!ok) b.classList.add('wrong');
   });
 
-  // Play chosen option audio, then play full correct sentence — той самий
-  // порядок для SPRACHBAUSTEINE і Grammatik-Trainer, але ЯК шукається
-  // pregen-файл кнопки різниться: Sprachbausteine — card.id+field
-  // (фіксований авторський масив дистракторів у базі); Grammatik-Trainer
-  // — за текстом слова (speakGramWord, дедуплікація — див. коментар
-  // біля getGramWordAudioUrl). Речення для Grammatik-Trainer завжди бере
-  // готове pregen-аудіо ОРИГІНАЛЬНОЇ VOCAB-картки (card._srcId, 'def').
-  if(card._isGram){
-    speakGramWord(chosen, primaryLang(), function() {
-      setTimeout(function() {
-        speak(null, primaryLang(), null, card._srcId, 'def');
-      }, 300);
-    });
-  } else {
-    var field = audioField || (ok ? 'answer' : 'distractors_1');
-    var sentenceText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
-    speak(chosen, primaryLang(), function() {
-      // After answer audio ends → play full sentence
-      setTimeout(function() {
-        speak(sentenceText, primaryLang(), null, card.id, 'sentence');
-      }, 300);
-    }, card.id, field);
-  }
-
   var iv=sbGetIntervals(),cur=iv[card.id]||1;
   if(ok){ sbSetInterval(card.id,cur*2); sbMarkLearned(card.id); }
   else { sbSetInterval(card.id,Math.max(1,Math.floor(cur/2))); if(!LF) SB.pracQueue.splice(Math.min(SB.pracIdx+3,SB.pracQueue.length),0,card); }
@@ -11458,27 +11433,61 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   var expl=sbL(card.explanation, explLang).replace(/„([^"]+)"/g,'<strong>„$1"</strong>');
   var resultOk  = explLang==='uk'?'Правильно!':explLang==='en'?'Correct!':'Richtig!';
   var resultFail= explLang==='uk'?'Неправильно — правильно: ':explLang==='en'?'Wrong — correct: ':'Falsch — richtig: ';
-  if(LF) {
-    // Lesson mode: show bottom sheet modal
-    var maxCards = SB.pracQueue.length;
-    var isLastPrac = (SB.pracIdx + 1 >= Math.min(SB.pracQueue.length, maxCards));
-    var nextBtnLabel = typeof t==='function' ? t('btn_sb_weiter') : 'Далі →';
-    sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,primaryLang()), expl, function(){
-      sbHideFeedbackModal();
-      sbPracNext();
-    }, card, nextBtnLabel);
-  } else {
-    // Standalone mode: inline feedback block
-    var fb=document.getElementById('sb-prac-feedback');
-    document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
-    document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+sbA(card,primaryLang());
-    document.getElementById('sb-prac-fb-expl').innerHTML=expl;
-    fb.style.display='block';
-    var innerNext=document.getElementById('sb-prac-next-btn');
-    if(innerNext){
-      innerNext.textContent=typeof t==='function'?t('btn_sb_weiter'):'Weiter →';
-      innerNext.style.display='block';
+
+  // Показ фідбеку (модалка в уроці / inline-блок у самостійній практиці)
+  // винесено в окрему функцію — викликається лише ПІСЛЯ того, як дограє
+  // звук натиснутої кнопки (а не одразу по кліку), одночасно з
+  // озвученням правильного речення.
+  function showFeedback(){
+    if(LF) {
+      // Lesson mode: show bottom sheet modal
+      var maxCards = SB.pracQueue.length;
+      var isLastPrac = (SB.pracIdx + 1 >= Math.min(SB.pracQueue.length, maxCards));
+      var nextBtnLabel = typeof t==='function' ? t('btn_sb_weiter') : 'Далі →';
+      sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,primaryLang()), expl, function(){
+        sbHideFeedbackModal();
+        sbPracNext();
+      }, card, nextBtnLabel);
+    } else {
+      // Standalone mode: inline feedback block
+      var fb=document.getElementById('sb-prac-feedback');
+      document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
+      document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+sbA(card,primaryLang());
+      document.getElementById('sb-prac-fb-expl').innerHTML=expl;
+      fb.style.display='block';
+      var innerNext=document.getElementById('sb-prac-next-btn');
+      if(innerNext){
+        innerNext.textContent=typeof t==='function'?t('btn_sb_weiter'):'Weiter →';
+        innerNext.style.display='block';
+      }
     }
+  }
+
+  // Play chosen option audio → щойно вона дограє: показуємо
+  // модалку/фідбек І одночасно озвучуємо правильне речення. Той самий
+  // порядок для SPRACHBAUSTEINE і Grammatik-Trainer, але ЯК шукається
+  // pregen-файл кнопки різниться: Sprachbausteine — card.id+field
+  // (фіксований авторський масив дистракторів у базі); Grammatik-Trainer
+  // — за текстом слова (speakGramWord, дедуплікація — див. коментар
+  // біля getGramWordAudioUrl). Речення для Grammatik-Trainer завжди бере
+  // готове pregen-аудіо ОРИГІНАЛЬНОЇ VOCAB-картки (card._srcId, 'def').
+  if(card._isGram){
+    speakGramWord(chosen, primaryLang(), function() {
+      showFeedback();
+      setTimeout(function() {
+        speak(null, primaryLang(), null, card._srcId, 'def');
+      }, 300);
+    });
+  } else {
+    var field = audioField || (ok ? 'answer' : 'distractors_1');
+    var sentenceText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
+    speak(chosen, primaryLang(), function() {
+      showFeedback();
+      // After answer audio ends → play full sentence
+      setTimeout(function() {
+        speak(sentenceText, primaryLang(), null, card.id, 'sentence');
+      }, 300);
+    }, card.id, field);
   }
 
   // Always wait for "Далі" button — no auto-advance
