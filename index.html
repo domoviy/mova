@@ -1744,14 +1744,27 @@ body.lesson-active .vocab-top{
     <svg id="splash-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700">
     <style>
       @keyframes sp-draw { to { stroke-dashoffset: 0; } }
+      /* Було: анімація filter:drop-shadow — вимагає перерахунку стилів і
+         перемальовування (paint) на КОЖЕН кадр, а не лише compositor-крок.
+         Разом з важким init() на старті (парсинг бази курсу, побудова
+         DOM уроків) це давало помітні пропущені кадри саме на першому
+         сплеші. Тепер анімується лише opacity окремого, вже заздалегідь
+         заблюреного шару під іконкою (#sp-icon-glow) — opacity браузер
+         анімує на composite-потоці, незалежно від того, чим зайнятий
+         головний потік. Сам blur() застосовується один раз (статично),
+         а не на кожен кадр. */
       @keyframes sp-glow {
-        0%,100%{filter:drop-shadow(0 0 0px rgba(201,168,76,0))}
-        50%{filter:drop-shadow(0 0 14px rgba(201,168,76,.65))}
+        0%,100%{opacity:0}
+        50%{opacity:.85}
+      }
+      #sp-icon-glow {
+        filter:blur(10px);
+        opacity:0;
+        animation:sp-glow 2.2s ease-in-out 1.7s infinite;
       }
       #sp-icon {
         stroke-dasharray:1400;stroke-dashoffset:1400;
-        animation:sp-draw 1.6s cubic-bezier(.4,0,.2,1) forwards,
-                  sp-glow 2.2s ease-in-out 1.7s infinite;
+        animation:sp-draw 1.6s cubic-bezier(.4,0,.2,1) forwards;
       }
       #sp-lM {stroke-dasharray:650;stroke-dashoffset:650;animation:sp-draw .5s ease-in-out 1.8s forwards;}
       #sp-lO {stroke-dasharray:470;stroke-dashoffset:470;animation:sp-draw .42s ease-in-out 2.3s forwards;}
@@ -1760,6 +1773,14 @@ body.lesson-active .vocab-top{
       #sp-lAbar{stroke-dasharray:70;stroke-dashoffset:70;animation:sp-draw .13s ease-in-out 3.48s forwards;}
     </style>
 
+    <!-- Glow-шар — точна копія контуру ICON, розміщена ПІД ним (тому йде
+         раніше в розмітці), без stroke-dasharray (завжди "домальована"),
+         статичний blur + анімована лише opacity. -->
+    <path id="sp-icon-glow"
+      d="M 50,385 L 194,212 C 231,252 277,296 297,280 S 355,152 370,168
+         C 388,200 424,272 441,258 C 460,228 577,90 658,76"
+      fill="none" stroke="#c9a84c"
+      stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
     <!-- ICON: хвиляста монолінія -->
     <path id="sp-icon"
       d="M 50,385 L 194,212 C 231,252 277,296 297,280 S 355,152 370,168
@@ -2467,7 +2488,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '306-9b7d502';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -10226,7 +10247,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
   checkOnboarding();
   applyI18n();
   renderCourseList();
-  init();
+  // init() важкий (синхронне завантаження+парсинг файлу бази курсу,
+  // потім рендер усього Lernpfad/Vocab/Dialogue UI) — усе це блокує
+  // головний потік і "зʼїдає" кадри сплеш-анімації, якщо стартує
+  // одночасно з нею. Два вкладені rAF гарантують, що браузер встигне
+  // відмалювати перші кадри сплеша ДО того, як почнеться цей парсинг.
+  requestAnimationFrame(()=> requestAnimationFrame(init));
 });
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
@@ -10498,15 +10524,11 @@ function setVocabCat(id,btn){
   if(browse && browse.style.display!=='none') renderVocabBrowse();
 }
 
-window.addEventListener('DOMContentLoaded', ()=>{
-  const el = document.getElementById('app-ver');
-  if(el) el.textContent = APP_VERSION;
-  initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
-  checkOnboarding();
-  applyI18n();
-  renderCourseList();
-  init();
-});
+// Примітка: другий ідентичний обробник DOMContentLoaded (з повторним
+// викликом init()/checkOnboarding()/applyI18n()/renderCourseList()) був
+// видалений звідси — він дублював перший (вище, ~рядок 10241) і змушував
+// увесь пайплайн старту (мережевий запит + парсинг бази курсу + рендер
+// усього UI) виконуватись ДВІЧІ на кожному холодному запуску.
 
 // ════════════════════════════════════════════════════════════════
 // ════════════════════════════════════════════════════════════════
