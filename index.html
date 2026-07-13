@@ -2497,7 +2497,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '323-14c50be';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4385,6 +4385,17 @@ function srPriorityFromState(state, id){
   return (Date.now() - dueDate) / 86400000; // більше прострочено → вище
 }
 
+// Чи слово взагалі ще ЖОДНОГО разу не показувалось користувачу (totalPlays
+// рахує будь-який показ — пасивний прогляд, флешкарту, оцінку — не лише
+// SM-2-градацію). Використовується, щоб НЕ тестувати граматику/побудову
+// речення на слові, яке людина бачить вперше саме зараз — продукування
+// (tiles) і абстрактне граматичне тестування (Grammatik-Trainer) мають
+// сенс лише після хоча б одного знайомства зі словом.
+function srIsCardNew(state, id){
+  const cs = state.cards?.[id];
+  return !cs || !cs.totalPlays;
+}
+
 
 
 // ── HAPTIC FEEDBACK ───────────────────────────────────────────
@@ -5666,8 +5677,12 @@ function _runLessonFlow(lesson, allCards){
   // (з дистракторами, як завжди) + 1 картка з def (без дистракторів,
   // лише слова самого речення) — узгоджено окремо, незалежно від 4
   // карток vocab-кроку (як і matchCards/dlgCard вище — sorted-пул модуля).
-  const tilesTermPool = sorted.filter(c=>(c.term?.[pLang]||'').split(' ').length>=2);
-  const tilesDefPool  = sorted.filter(c=>c.def?.[pLang] && c.def[pLang].includes('<b>'));
+  // Виключаємо слова, які користувач ще ЖОДНОГО разу не бачив (totalPlays===0,
+  // за станом ДО цього уроку) — складання речення вимагає активного
+  // продукування, а це має сенс лише після хоча б одного знайомства зі
+  // словом, інакше вправа стає "вгадай, чого ще не бачив" замість практики.
+  const tilesTermPool = sorted.filter(c=>(c.term?.[pLang]||'').split(' ').length>=2 && !srIsCardNew(state, c.id));
+  const tilesDefPool  = sorted.filter(c=>c.def?.[pLang] && c.def[pLang].includes('<b>') && !srIsCardNew(state, c.id));
   const tilesTermCards = tilesTermPool.slice(0, Math.min(2, tilesTermPool.length));
   // Def-картка — уникаємо повтору картки, що вже потрапила в term-вибірку
   const tilesDefCandidate = tilesDefPool.find(c => !tilesTermCards.some(t=>t.id===c.id));
@@ -9127,9 +9142,13 @@ function _lfBuildSBPracQueue(){
   var gramSlots = TARGET - dueSB.length;
   var lessonIds = (LF.cards || []).map(function(c){ return c.id; });
   var allGram   = typeof GRAM_CARDS !== 'undefined' ? GRAM_CARDS : [];
-  var lessonGram = allGram.filter(function(g){ return lessonIds.includes(g._srcId); });
+  // Виключаємо граматичні картки, чиє джерельне слово (_srcId) користувач
+  // ще ЖОДНОГО разу не бачив — та сама логіка, що й для tiles: граматичний
+  // дрил на слові, яке людина зустрічає вперше саме зараз, не має сенсу
+  // (вона ще не знає самого слова, тестувати конструкцію з ним зарано).
+  var lessonGram = allGram.filter(function(g){ return lessonIds.includes(g._srcId) && !srIsCardNew(_srState, g._srcId); });
   var otherGram  = allGram
-    .filter(function(g){ return !lessonIds.includes(g._srcId); })
+    .filter(function(g){ return !lessonIds.includes(g._srcId) && !srIsCardNew(_srState, g._srcId); })
     .sort(function(a,b){ return srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id); });
 
   var gramCards = lessonGram.concat(otherGram)
@@ -9141,6 +9160,14 @@ function _lfBuildSBPracQueue(){
 
 function lfStartSBPrac(){
   if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
+
+  // Фіксована черга з 4 карток: до 2 Sprachbausteine на повторення сьогодні
+  // (якщо є) + решта — Grammatik-Trainer картки цього уроку (докладніше —
+  // див. _lfBuildSBPracQueue вище). Будуємо ДО будь-яких змін DOM: якщо
+  // після фільтрації "нових" слів (srIsCardNew) черга порожня — просто
+  // пропускаємо крок, не чіпаючи UI взагалі.
+  SB.pracQueue = _lfBuildSBPracQueue();
+  if(!SB.pracQueue.length){ lfNextStep(); return; }
 
   const vocabTop = document.querySelector('.vocab-top');
   if(vocabTop) vocabTop.style.display = 'none';
@@ -9173,10 +9200,6 @@ function lfStartSBPrac(){
   SB.mode = 'practice';
   // Знищуємо swipe з fc-area щоб не спрацьовував під час practice
   SwipeManager.destroy(document.getElementById('sb-fc-area'));
-  // Фіксована черга з 4 карток: до 2 Sprachbausteine на повторення сьогодні
-  // (якщо є) + решта — Grammatik-Trainer картки цього уроку (докладніше —
-  // див. _lfBuildSBPracQueue вище).
-  SB.pracQueue = _lfBuildSBPracQueue();
   SB.pracIdx = 0; SB.pracAnswered = false; SB.pracResults = [];
   document.getElementById('sb-panel-learn').style.display    = 'none';
   document.getElementById('sb-panel-practice').style.display = 'flex';
