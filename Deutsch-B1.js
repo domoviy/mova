@@ -2782,7 +2782,14 @@ var LESSONS = [
     "cardIds": [
       "k10_001",
       "k10_002",
-      "k10_005"
+      "k10_005",
+      "k10_017",
+      "k10_018",
+      "k10_019",
+      "k10_020",
+      "k10_021",
+      "k10_022",
+      "k10_023"
     ],
     "unlockAfter": "k9m5",
     "sbCards": []
@@ -2810,7 +2817,15 @@ var LESSONS = [
     "grammar": "adjektivdeklination_bestimmter_artikel",
     "cardIds": [
       "k10_003",
-      "k10_004"
+      "k10_004",
+      "k10_024",
+      "k10_025",
+      "k10_026",
+      "k10_027",
+      "k10_028",
+      "k10_029",
+      "k10_030",
+      "k10_031"
     ],
     "unlockAfter": "k10m1",
     "sbCards": []
@@ -2838,7 +2853,15 @@ var LESSONS = [
     "grammar": "komparativ_superlativ_vor_nomen",
     "cardIds": [
       "k10_006",
-      "k10_007"
+      "k10_007",
+      "k10_032",
+      "k10_033",
+      "k10_034",
+      "k10_035",
+      "k10_036",
+      "k10_037",
+      "k10_038",
+      "k10_039"
     ],
     "unlockAfter": "k10m2",
     "sbCards": []
@@ -2867,7 +2890,14 @@ var LESSONS = [
     "cardIds": [
       "k10_008",
       "k10_009",
-      "k10_014"
+      "k10_014",
+      "k10_040",
+      "k10_041",
+      "k10_042",
+      "k10_043",
+      "k10_044",
+      "k10_045",
+      "k10_046"
     ],
     "unlockAfter": "k10m3",
     "sbCards": []
@@ -2899,7 +2929,11 @@ var LESSONS = [
       "k10_012",
       "k10_013",
       "k10_015",
-      "k10_016"
+      "k10_016",
+      "k10_047",
+      "k10_048",
+      "k10_049",
+      "k10_050"
     ],
     "unlockAfter": "k10m4",
     "sbCards": []
@@ -16338,6 +16372,788 @@ var VOCAB = [
       "en": "There has been nothing comparable so far — this <b>record</b> is truly unique.",
       "uk": "Досі не було нічого подібного — цей <b>рекорд</b> справді унікальний.",
       "ru": "До сих пор не было ничего подобного — этот <b>рекорд</b> действительно уникален."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_017",
+    "cat": "k10",
+    "term": {
+      "de": "sich aufwärmen",
+      "en": "to warm up",
+      "uk": "розігріватися",
+      "ru": "разминаться"
+    },
+    "short": {
+      "de": "den Körper vor dem Sport leicht bewegen, um ihn auf die Belastung vorzubereiten",
+      "en": "to move the body gently before sport to prepare it for exertion",
+      "uk": "легко рухати тілом перед спортом, щоб підготувати його до навантаження",
+      "ru": "легко двигать телом перед спортом, чтобы подготовить его к нагрузке"
+    },
+    "def": {
+      "de": "Man sollte <b>sich</b> gut <b>aufwärmen</b>, <g>bevor</g> das Training <g>beginnt</g>.",
+      "en": "You should <b>warm up</b> well <g>before</g> training <g>begins</g>.",
+      "uk": "Слід добре <b>розігрітися</b>, <g>перш ніж</g> тренування <g>почнеться</g>.",
+      "ru": "Следует хорошо <b>размяться</b>, <g>прежде чем</g> тренировка <g>начнётся</g>."
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "k10_018",
+    "cat": "k10",
+    "term": {
+      "de": "sich dehnen",
+      "en": "to stretch",
+      "uk": "розтягуватися",
+      "ru": "растягиваться"
+    },
+    "short": {
+      "de": "die Muskeln vorsichtig strecken, um sie flexibler zu machen",
+      "en": "to carefully stretch the muscles to make them more flexible",
+      "uk": "обережно розтягувати мʼязи, щоб зробити їх гнучкішими",
+      "ru": "осторожно растягивать мышцы, чтобы сделать их более гибкими"
+    },
+    "def": {
+      "de": "<g>Bevor</g> du <g>läufst</g>, solltest du <b>dich</b> gründlich <b>dehnen</b>.",
+      "en": "<g>Before</g> you <g>run</g>, you should <b>stretch</b> thoroughly.",
+      "uk": "<g>Перш ніж</g> <g>бігти</g>, тобі слід ретельно <b>розтягнутися</b>.",
+      "ru": "<g>Прежде чем</g> <g>бежать</g>, тебе следует тщательно <b>растянуться</b>."
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "k10_019",
+    "cat": "k10",
+    "term": {
+      "de": "sich konzentrieren",
+      "en": "to concentrate",
+      "uk": "зосереджуватися",
+      "ru": "сосредоточиваться"
+    },
+    "short": {
+      "de": "die ganze Aufmerksamkeit auf eine Sache richten",
+      "en": "to direct all your attention to one thing",
+      "uk": "спрямовувати всю увагу на одну справу",
+      "ru": "направлять всё внимание на одно дело"
+    },
+    "def": {
+      "de": "<g>Bevor</g> der Wettkampf <g>beginnt</g>, muss ich <b>mich</b> total <b>konzentrieren</b>.",
+      "en": "<g>Before</g> the competition <g>begins</g>, I have to <b>concentrate</b> completely.",
+      "uk": "<g>Перш ніж</g> змагання <g>почнеться</g>, мені треба повністю <b>зосередитися</b>.",
+      "ru": "<g>Прежде чем</g> соревнование <g>начнётся</g>, мне нужно полностью <b>сосредоточиться</b>."
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "k10_020",
+    "cat": "k10",
+    "term": {
+      "de": "die Ausrüstung",
+      "en": "equipment",
+      "uk": "спорядження",
+      "ru": "снаряжение"
+    },
+    "short": {
+      "de": "alle Sachen, die man für eine bestimmte Aktivität braucht",
+      "en": "all the things you need for a certain activity",
+      "uk": "усі речі, потрібні для певної діяльності",
+      "ru": "все вещи, необходимые для определённой деятельности"
+    },
+    "def": {
+      "de": "<g>Bevor</g> du <g>losläufst</g>, solltest du deine <b>Ausrüstung</b> überprüfen.",
+      "en": "<g>Before</g> you <g>set off</g>, you should check your <b>equipment</b>.",
+      "uk": "<g>Перш ніж</g> <g>вирушити</g>, тобі слід перевірити своє <b>спорядження</b>.",
+      "ru": "<g>Прежде чем</g> <g>отправиться</g>, тебе следует проверить своё <b>снаряжение</b>."
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "k10_021",
+    "cat": "k10",
+    "term": {
+      "de": "die Startlinie",
+      "en": "starting line",
+      "uk": "стартова лінія",
+      "ru": "стартовая линия"
+    },
+    "short": {
+      "de": "der Ort, an dem ein Rennen beginnt",
+      "en": "the place where a race begins",
+      "uk": "місце, де починається забіг",
+      "ru": "место, где начинается забег"
+    },
+    "def": {
+      "de": "<g>Bevor</g> die Läufer an der <b>Startlinie</b> <g>stehen</g>, wärmen sie sich noch auf.",
+      "en": "<g>Before</g> the runners <g>stand</g> at the <b>starting line</b>, they warm up a bit more.",
+      "uk": "<g>Перш ніж</g> бігуни <g>стануть</g> на <b>стартовій лінії</b>, вони ще розігріваються.",
+      "ru": "<g>Прежде чем</g> бегуны <g>встанут</g> на <b>стартовую линию</b>, они ещё разминаются."
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "k10_022",
+    "cat": "k10",
+    "term": {
+      "de": "nervös",
+      "en": "nervous",
+      "uk": "нервовий",
+      "ru": "нервный"
+    },
+    "short": {
+      "de": "unruhig und ängstlich, zum Beispiel vor einem wichtigen Ereignis",
+      "en": "restless and anxious, for example before an important event",
+      "uk": "неспокійний і тривожний, наприклад перед важливою подією",
+      "ru": "беспокойный и тревожный, например перед важным событием"
+    },
+    "def": {
+      "de": "<g>Bevor</g> ein wichtiger Wettkampf <g>beginnt</g>, werden viele Sportler <b>nervös</b>.",
+      "en": "<g>Before</g> an important competition <g>begins</g>, many athletes get <b>nervous</b>.",
+      "uk": "<g>Перш ніж</g> важливе змагання <g>почнеться</g>, багато спортсменів стають <b>нервовими</b>.",
+      "ru": "<g>Прежде чем</g> важное соревнование <g>начнётся</g>, многие спортсмены становятся <b>нервными</b>."
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "k10_023",
+    "cat": "k10",
+    "term": {
+      "de": "kontrollieren",
+      "en": "to check",
+      "uk": "перевіряти",
+      "ru": "проверять"
+    },
+    "short": {
+      "de": "genau prüfen, ob etwas richtig oder in Ordnung ist",
+      "en": "to check carefully whether something is correct or in order",
+      "uk": "ретельно перевіряти, чи щось правильне або в порядку",
+      "ru": "тщательно проверять, всё ли правильно или в порядке"
+    },
+    "def": {
+      "de": "<g>Bevor</g> das Rennen <g>beginnt</g>, <b>kontrolliert</b> jeder Athlet noch einmal seine Schuhe.",
+      "en": "<g>Before</g> the race <g>begins</g>, every athlete <b>checks</b> their shoes one more time.",
+      "uk": "<g>Перш ніж</g> забіг <g>почнеться</g>, кожен атлет ще раз <b>перевіряє</b> своє взуття.",
+      "ru": "<g>Прежде чем</g> забег <g>начнётся</g>, каждый атлет ещё раз <b>проверяет</b> свою обувь."
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "k10_024",
+    "cat": "k10",
+    "term": {
+      "de": "der Trainer / die Trainerin",
+      "en": "coach",
+      "uk": "тренер",
+      "ru": "тренер"
+    },
+    "short": {
+      "de": "eine Person, die eine Mannschaft oder einen Sportler professionell trainiert",
+      "en": "a person who professionally trains a team or an athlete",
+      "uk": "особа, яка професійно тренує команду чи спортсмена",
+      "ru": "лицо, профессионально тренирующее команду или спортсмена"
+    },
+    "def": {
+      "de": "<g>Der neue</g> <b>Trainer</b> hat viel Erfahrung mit jungen Athleten.",
+      "en": "The new <b>coach</b> has a lot of experience with young athletes.",
+      "uk": "Новий <b>тренер</b> має великий досвід роботи з юними спортсменами.",
+      "ru": "Новый <b>тренер</b> имеет большой опыт работы с юными спортсменами."
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "k10_025",
+    "cat": "k10",
+    "term": {
+      "de": "die Mannschaft",
+      "en": "team",
+      "uk": "команда",
+      "ru": "команда"
+    },
+    "short": {
+      "de": "eine Gruppe von Sportlern, die zusammen spielt",
+      "en": "a group of athletes who play together",
+      "uk": "група спортсменів, які грають разом",
+      "ru": "группа спортсменов, играющих вместе"
+    },
+    "def": {
+      "de": "<g>Die ganze</g> <b>Mannschaft</b> war von dem Ergebnis begeistert.",
+      "en": "The whole <b>team</b> was thrilled with the result.",
+      "uk": "Уся <b>команда</b> була в захваті від результату.",
+      "ru": "Вся <b>команда</b> была в восторге от результата."
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "k10_026",
+    "cat": "k10",
+    "term": {
+      "de": "der Kapitän / die Kapitänin",
+      "en": "captain",
+      "uk": "капітан",
+      "ru": "капитан"
+    },
+    "short": {
+      "de": "die Person, die eine Mannschaft anführt",
+      "en": "the person who leads a team",
+      "uk": "особа, яка очолює команду",
+      "ru": "лицо, возглавляющее команду"
+    },
+    "def": {
+      "de": "<g>Der junge</g> <b>Kapitän</b> führte das Team zum Sieg.",
+      "en": "The young <b>captain</b> led the team to victory.",
+      "uk": "Молодий <b>капітан</b> привів команду до перемоги.",
+      "ru": "Молодой <b>капитан</b> привёл команду к победе."
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "k10_027",
+    "cat": "k10",
+    "term": {
+      "de": "die Taktik",
+      "en": "tactics",
+      "uk": "тактика",
+      "ru": "тактика"
+    },
+    "short": {
+      "de": "ein durchdachter Plan, wie man ein Ziel im Sport erreichen will",
+      "en": "a well-thought-out plan for achieving a goal in sport",
+      "uk": "продуманий план, як досягти мети у спорті",
+      "ru": "продуманный план, как достичь цели в спорте"
+    },
+    "def": {
+      "de": "<g>Die neue</g> <b>Taktik</b> hat sich als sehr erfolgreich erwiesen.",
+      "en": "The new <b>tactics</b> proved to be very successful.",
+      "uk": "Нова <b>тактика</b> виявилася дуже успішною.",
+      "ru": "Новая <b>тактика</b> оказалась очень успешной."
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "k10_028",
+    "cat": "k10",
+    "term": {
+      "de": "das Talent",
+      "en": "talent",
+      "uk": "талант",
+      "ru": "талант"
+    },
+    "short": {
+      "de": "eine besondere Fähigkeit, die jemand von Natur aus hat",
+      "en": "a special ability that someone naturally has",
+      "uk": "особлива здібність, яку людина має від природи",
+      "ru": "особая способность, которая есть у человека от природы"
+    },
+    "def": {
+      "de": "<g>Das große</g> <b>Talent</b> des Spielers war schon früh zu erkennen.",
+      "en": "The player's great <b>talent</b> was recognisable early on.",
+      "uk": "Великий <b>талант</b> гравця було помітно ще змалку.",
+      "ru": "Большой <b>талант</b> игрока был заметен ещё с ранних лет."
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "k10_029",
+    "cat": "k10",
+    "term": {
+      "de": "die Leistung",
+      "en": "performance",
+      "uk": "досягнення, результат",
+      "ru": "достижение, результат"
+    },
+    "short": {
+      "de": "das Ergebnis, das jemand durch seine Arbeit oder Anstrengung erreicht",
+      "en": "the result someone achieves through work or effort",
+      "uk": "результат, якого людина досягає завдяки праці чи зусиллям",
+      "ru": "результат, которого человек достигает благодаря труду или усилиям"
+    },
+    "def": {
+      "de": "<g>Die sportliche</g> <b>Leistung</b> der Mannschaft hat sich stark verbessert.",
+      "en": "The team's athletic <b>performance</b> has improved greatly.",
+      "uk": "Спортивні <b>досягнення</b> команди значно покращилися.",
+      "ru": "Спортивные <b>достижения</b> команды значительно улучшились."
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "k10_030",
+    "cat": "k10",
+    "term": {
+      "de": "der Erfolg",
+      "en": "success",
+      "uk": "успіх",
+      "ru": "успех"
+    },
+    "short": {
+      "de": "ein positives Ergebnis, das man durch eigene Bemühungen erreicht",
+      "en": "a positive result achieved through one's own efforts",
+      "uk": "позитивний результат, досягнутий власними зусиллями",
+      "ru": "положительный результат, достигнутый собственными усилиями"
+    },
+    "def": {
+      "de": "<g>Der schnelle</g> <b>Erfolg</b> hat das ganze Team überrascht.",
+      "en": "The quick <b>success</b> surprised the whole team.",
+      "uk": "Швидкий <b>успіх</b> здивував усю команду.",
+      "ru": "Быстрый <b>успех</b> удивил всю команду."
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "k10_031",
+    "cat": "k10",
+    "term": {
+      "de": "die Herausforderung",
+      "en": "challenge",
+      "uk": "виклик",
+      "ru": "вызов"
+    },
+    "short": {
+      "de": "eine schwierige Aufgabe, die viel Einsatz verlangt",
+      "en": "a difficult task that requires a lot of effort",
+      "uk": "складне завдання, яке вимагає багато зусиль",
+      "ru": "сложная задача, требующая много усилий"
+    },
+    "def": {
+      "de": "<g>Die schwierige</g> <b>Herausforderung</b> hat das Team zusammengeschweißt.",
+      "en": "The difficult <b>challenge</b> brought the team closer together.",
+      "uk": "Складний <b>виклик</b> згуртував команду.",
+      "ru": "Сложный <b>вызов</b> сплотил команду."
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "k10_032",
+    "cat": "k10",
+    "term": {
+      "de": "der Läufer / die Läuferin",
+      "en": "runner",
+      "uk": "бігун",
+      "ru": "бегун"
+    },
+    "short": {
+      "de": "eine Person, die läuft, besonders bei einem Wettkampf",
+      "en": "a person who runs, especially in a competition",
+      "uk": "особа, яка бігає, особливо у змаганні",
+      "ru": "лицо, которое бегает, особенно в соревновании"
+    },
+    "def": {
+      "de": "<g>Der schnellere</g> <b>Läufer</b> gewann das Rennen nur knapp.",
+      "en": "The <g>faster</g> <b>runner</b> won the race by a narrow margin.",
+      "uk": "<g>Швидший</g> <b>бігун</b> переміг у забігу лише з невеликим відривом.",
+      "ru": "<g>Более быстрый</g> <b>бегун</b> выиграл забег лишь с небольшим отрывом."
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "k10_033",
+    "cat": "k10",
+    "term": {
+      "de": "die Ausdauer",
+      "en": "endurance",
+      "uk": "витривалість",
+      "ru": "выносливость"
+    },
+    "short": {
+      "de": "die Fähigkeit, eine Anstrengung lange durchzuhalten",
+      "en": "the ability to keep up an effort for a long time",
+      "uk": "здатність довго витримувати навантаження",
+      "ru": "способность долго выдерживать нагрузку"
+    },
+    "def": {
+      "de": "Mit <g>einer besseren</g> <b>Ausdauer</b> hätte er noch schneller laufen können.",
+      "en": "With <g>better</g> <b>endurance</b>, he could have run even faster.",
+      "uk": "Із <g>кращою</g> <b>витривалістю</b> він міг би бігти ще швидше.",
+      "ru": "С <g>лучшей</g> <b>выносливостью</b> он мог бы бежать ещё быстрее."
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "k10_034",
+    "cat": "k10",
+    "term": {
+      "de": "schwach",
+      "en": "weak",
+      "uk": "слабкий",
+      "ru": "слабый"
+    },
+    "short": {
+      "de": "ohne viel Kraft oder Können",
+      "en": "without much strength or skill",
+      "uk": "без великої сили чи вміння",
+      "ru": "без большой силы или умения"
+    },
+    "def": {
+      "de": "<g>Der <b>schwächste</b></g> Spieler wurde trotzdem für sein Engagement gelobt.",
+      "en": "The <g><b>weakest</b></g> player was still praised for his commitment.",
+      "uk": "<g><b>Найслабшого</b></g> гравця все одно похвалили за старанність.",
+      "ru": "<g><b>Самого слабого</b></g> игрока всё равно похвалили за старание."
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "k10_035",
+    "cat": "k10",
+    "term": {
+      "de": "die Strecke",
+      "en": "route, distance",
+      "uk": "дистанція, маршрут",
+      "ru": "дистанция, маршрут"
+    },
+    "short": {
+      "de": "der Weg oder die Distanz, die man zurücklegen muss",
+      "en": "the path or distance you have to cover",
+      "uk": "шлях чи відстань, яку треба подолати",
+      "ru": "путь или расстояние, которое нужно преодолеть"
+    },
+    "def": {
+      "de": "<g>Die längere</g> <b>Strecke</b> war für viele Läufer eine echte Herausforderung.",
+      "en": "The <g>longer</g> <b>route</b> was a real challenge for many runners.",
+      "uk": "<g>Довша</g> <b>дистанція</b> стала справжнім викликом для багатьох бігунів.",
+      "ru": "<g>Более длинная</g> <b>дистанция</b> стала настоящим испытанием для многих бегунов."
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "k10_036",
+    "cat": "k10",
+    "term": {
+      "de": "das Tempo",
+      "en": "pace",
+      "uk": "темп",
+      "ru": "темп"
+    },
+    "short": {
+      "de": "die Geschwindigkeit, mit der man sich bewegt",
+      "en": "the speed at which you move",
+      "uk": "швидкість, з якою людина рухається",
+      "ru": "скорость, с которой человек двигается"
+    },
+    "def": {
+      "de": "<g>Ein höheres</g> <b>Tempo</b> half ihr, die Konkurrenz zu überholen.",
+      "en": "A <g>higher</g> <b>pace</b> helped her overtake the competition.",
+      "uk": "<g>Вищий</g> <b>темп</b> допоміг їй обійти суперників.",
+      "ru": "<g>Более высокий</g> <b>темп</b> помог ей обогнать соперников."
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "k10_037",
+    "cat": "k10",
+    "term": {
+      "de": "die Zeit",
+      "en": "time",
+      "uk": "час",
+      "ru": "время"
+    },
+    "short": {
+      "de": "die Dauer, die man für etwas braucht, gemessen zum Beispiel bei einem Rennen",
+      "en": "the duration needed for something, measured for example in a race",
+      "uk": "тривалість, потрібна для чогось, виміряна, наприклад, у забігу",
+      "ru": "продолжительность, необходимая для чего-то, измеренная, например, в забеге"
+    },
+    "def": {
+      "de": "<g>Die schnellste</g> <b>Zeit</b> des Tages wurde von einer 16-Jährigen erzielt.",
+      "en": "The <g>fastest</g> <b>time</b> of the day was set by a 16-year-old.",
+      "uk": "<g>Найкращий</g> <b>час</b> дня показала 16-річна дівчина.",
+      "ru": "<g>Лучшее</g> <b>время</b> дня показала 16-летняя девушка."
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "k10_038",
+    "cat": "k10",
+    "term": {
+      "de": "anstrengend",
+      "en": "strenuous",
+      "uk": "виснажливий",
+      "ru": "изнурительный"
+    },
+    "short": {
+      "de": "so, dass es viel Kraft oder Energie kostet",
+      "en": "requiring a lot of strength or energy",
+      "uk": "такий, що вимагає багато сили чи енергії",
+      "ru": "такой, который требует много сил или энергии"
+    },
+    "def": {
+      "de": "<g>Der <b>anstrengendere</b></g> Teil des Rennens war der letzte Kilometer.",
+      "en": "The <g><b>more strenuous</b></g> part of the race was the last kilometre.",
+      "uk": "<g><b>Виснажливішою</b></g> частиною забігу був останній кілометр.",
+      "ru": "<g><b>Более изнурительной</b></g> частью забега был последний километр."
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "k10_039",
+    "cat": "k10",
+    "term": {
+      "de": "der Gegner / die Gegnerin",
+      "en": "opponent",
+      "uk": "суперник",
+      "ru": "соперник"
+    },
+    "short": {
+      "de": "eine Person oder Mannschaft, gegen die man in einem Wettkampf antritt",
+      "en": "a person or team you compete against in a competition",
+      "uk": "особа чи команда, проти якої змагаєшся",
+      "ru": "лицо или команда, против которых соревнуешься"
+    },
+    "def": {
+      "de": "<g>Der stärkste</g> <b>Gegner</b> kam überraschend aus der eigenen Mannschaft.",
+      "en": "The <g>strongest</g> <b>opponent</b> surprisingly came from their own team.",
+      "uk": "<g>Найсильніший</g> <b>суперник</b> несподівано виявився з власної команди.",
+      "ru": "<g>Самый сильный</g> <b>соперник</b> неожиданно оказался из своей же команды."
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "k10_040",
+    "cat": "k10",
+    "term": {
+      "de": "der Teilnehmer / die Teilnehmerin",
+      "en": "participant",
+      "uk": "учасник",
+      "ru": "участник"
+    },
+    "short": {
+      "de": "eine Person, die bei einer Veranstaltung mitmacht",
+      "en": "a person who takes part in an event",
+      "uk": "особа, яка бере участь у заході",
+      "ru": "лицо, которое участвует в мероприятии"
+    },
+    "def": {
+      "de": "<g>Etwas Erstaunliches</g> geschah, als über tausend <b>Teilnehmer</b> beim Spendenlauf mitmachten.",
+      "en": "Something amazing happened when over a thousand <b>participants</b> joined the charity run.",
+      "uk": "Сталося щось дивовижне, коли понад тисячу <b>учасників</b> взяли участь у благодійному забігу.",
+      "ru": "Произошло нечто удивительное, когда более тысячи <b>участников</b> присоединились к благотворительному забегу."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_041",
+    "cat": "k10",
+    "term": {
+      "de": "spenden",
+      "en": "to donate",
+      "uk": "жертвувати",
+      "ru": "жертвовать"
+    },
+    "short": {
+      "de": "Geld oder Dinge für einen guten Zweck geben",
+      "en": "to give money or things for a good cause",
+      "uk": "давати гроші чи речі на добру справу",
+      "ru": "давать деньги или вещи на доброе дело"
+    },
+    "def": {
+      "de": "<g>Das Wichtigste</g> beim <b>Spenden</b> ist, dass man es aus vollem Herzen tut.",
+      "en": "The most important thing about <b>donating</b> is doing it wholeheartedly.",
+      "uk": "Найважливіше в тому, щоб <b>жертвувати</b>, — робити це від щирого серця.",
+      "ru": "Самое важное в том, чтобы <b>жертвовать</b>, — делать это от чистого сердца."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_042",
+    "cat": "k10",
+    "term": {
+      "de": "der Betrag",
+      "en": "amount",
+      "uk": "сума",
+      "ru": "сумма"
+    },
+    "short": {
+      "de": "eine bestimmte Menge Geld",
+      "en": "a certain amount of money",
+      "uk": "певна кількість грошей",
+      "ru": "определённое количество денег"
+    },
+    "def": {
+      "de": "<g>Nichts Beeindruckenderes</g> gab es als den gesammelten <b>Betrag</b> am Ende des Tages.",
+      "en": "There was nothing more impressive than the <b>amount</b> collected at the end of the day.",
+      "uk": "Не було нічого враженнішого, ніж зібрана <b>сума</b> в кінці дня.",
+      "ru": "Не было ничего более впечатляющего, чем собранная <b>сумма</b> в конце дня."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_043",
+    "cat": "k10",
+    "term": {
+      "de": "die Route",
+      "en": "route",
+      "uk": "маршрут",
+      "ru": "маршрут"
+    },
+    "short": {
+      "de": "der geplante Weg, den man zurücklegt",
+      "en": "the planned path you cover",
+      "uk": "запланований шлях, який долають",
+      "ru": "запланированный путь, который преодолевают"
+    },
+    "def": {
+      "de": "<g>Etwas Neues</g> war in diesem Jahr die <b>Route</b> durch die Innenstadt.",
+      "en": "Something new this year was the <b>route</b> through the city centre.",
+      "uk": "Дещо нове цього року — <b>маршрут</b> через центр міста.",
+      "ru": "Что-то новое в этом году — <b>маршрут</b> через центр города."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_044",
+    "cat": "k10",
+    "term": {
+      "de": "der/die Freiwillige",
+      "en": "volunteer",
+      "uk": "волонтер",
+      "ru": "волонтёр"
+    },
+    "short": {
+      "de": "eine Person, die ohne Bezahlung freiwillig hilft",
+      "en": "a person who helps voluntarily without payment",
+      "uk": "особа, яка добровільно допомагає без оплати",
+      "ru": "лицо, которое добровольно помогает без оплаты"
+    },
+    "def": {
+      "de": "Ohne die vielen <g><b>Freiwilligen</b></g> wäre der Spendenlauf nicht möglich gewesen.",
+      "en": "Without the many <b>volunteers</b>, the charity run would not have been possible.",
+      "uk": "Без багатьох <b>волонтерів</b> благодійний забіг був би неможливим.",
+      "ru": "Без многих <b>волонтёров</b> благотворительный забег был бы невозможен."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_045",
+    "cat": "k10",
+    "term": {
+      "de": "der Erlös",
+      "en": "proceeds",
+      "uk": "виторг",
+      "ru": "выручка"
+    },
+    "short": {
+      "de": "das Geld, das man durch den Verkauf oder eine Aktion einnimmt",
+      "en": "the money earned through a sale or an activity",
+      "uk": "гроші, отримані від продажу чи заходу",
+      "ru": "деньги, полученные от продажи или мероприятия"
+    },
+    "def": {
+      "de": "<g>Nichts Erfreulicheres</g> gab es, als den gesamten <b>Erlös</b> an eine Kinderklinik zu spenden.",
+      "en": "There was nothing more delightful than donating the entire <b>proceeds</b> to a children's hospital.",
+      "uk": "Не було нічого приємнішого, ніж пожертвувати весь <b>виторг</b> дитячій лікарні.",
+      "ru": "Не было ничего более приятного, чем пожертвовать всю <b>выручку</b> детской больнице."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_046",
+    "cat": "k10",
+    "term": {
+      "de": "die Unterstützung",
+      "en": "support",
+      "uk": "підтримка",
+      "ru": "поддержка"
+    },
+    "short": {
+      "de": "die Hilfe, die man von anderen bekommt",
+      "en": "the help you receive from others",
+      "uk": "допомога, яку отримують від інших",
+      "ru": "помощь, которую получают от других"
+    },
+    "def": {
+      "de": "<g>Etwas Wertvolles</g> war die <b>Unterstützung</b> der ganzen Stadt für diesen guten Zweck.",
+      "en": "Something valuable was the whole city's <b>support</b> for this good cause.",
+      "uk": "Дещо цінне — це <b>підтримка</b> усього міста заради доброї справи.",
+      "ru": "Что-то ценное — это <b>поддержка</b> всего города ради доброго дела."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_047",
+    "cat": "k10",
+    "term": {
+      "de": "vorschlagen",
+      "en": "to suggest",
+      "uk": "пропонувати",
+      "ru": "предлагать"
+    },
+    "short": {
+      "de": "eine Idee nennen, über die andere entscheiden sollen",
+      "en": "to name an idea that others should decide on",
+      "uk": "висловлювати ідею, щодо якої мають вирішити інші",
+      "ru": "высказывать идею, по поводу которой должны решить другие"
+    },
+    "def": {
+      "de": "<g>Etwas Interessantes</g> <b>schlug</b> unser Trainer letzte Woche <b>vor</b>: ein Wochenende Wandern.",
+      "en": "Our coach <b>suggested</b> something interesting last week: a weekend of hiking.",
+      "uk": "Наш тренер <b>запропонував</b> дещо цікаве минулого тижня: похідні вихідні.",
+      "ru": "Наш тренер <b>предложил</b> что-то интересное на прошлой неделе: выходные с походом."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_048",
+    "cat": "k10",
+    "term": {
+      "de": "ausprobieren",
+      "en": "to try out",
+      "uk": "пробувати",
+      "ru": "пробовать"
+    },
+    "short": {
+      "de": "etwas zum ersten Mal machen, um zu sehen, ob es einem gefällt",
+      "en": "to do something for the first time to see if you like it",
+      "uk": "робити щось вперше, щоб дізнатися, чи подобається",
+      "ru": "делать что-то впервые, чтобы узнать, нравится ли"
+    },
+    "def": {
+      "de": "<g>Nichts Spannenderes</g> gibt es, als eine neue Sportart <b>auszuprobieren</b>.",
+      "en": "There is nothing more exciting than <b>trying out</b> a new sport.",
+      "uk": "Немає нічого захопливішого, ніж <b>спробувати</b> новий вид спорту.",
+      "ru": "Нет ничего более увлекательного, чем <b>попробовать</b> новый вид спорта."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_049",
+    "cat": "k10",
+    "term": {
+      "de": "der Verein",
+      "en": "club",
+      "uk": "клуб",
+      "ru": "клуб"
+    },
+    "short": {
+      "de": "eine organisierte Gruppe von Menschen mit einem gemeinsamen Interesse",
+      "en": "an organised group of people with a shared interest",
+      "uk": "організована група людей зі спільним інтересом",
+      "ru": "организованная группа людей с общим интересом"
+    },
+    "def": {
+      "de": "<g>Etwas Tolles</g> an unserem <b>Verein</b> ist, dass jeder willkommen ist.",
+      "en": "Something great about our <b>club</b> is that everyone is welcome.",
+      "uk": "Дещо чудове в нашому <b>клубі</b> — те, що всі раді кожному.",
+      "ru": "Что-то замечательное в нашем <b>клубе</b> — то, что каждому рады."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k10_050",
+    "cat": "k10",
+    "term": {
+      "de": "die Bewegung",
+      "en": "exercise, movement",
+      "uk": "рух",
+      "ru": "движение"
+    },
+    "short": {
+      "de": "das aktive Nutzen des Körpers, zum Beispiel beim Sport",
+      "en": "actively using your body, for example during sport",
+      "uk": "активне використання тіла, наприклад під час спорту",
+      "ru": "активное использование тела, например во время спорта"
+    },
+    "def": {
+      "de": "<g>Nichts Gesünderes</g> gibt es als tägliche <b>Bewegung</b> an der frischen Luft.",
+      "en": "There is nothing healthier than daily <b>exercise</b> in the fresh air.",
+      "uk": "Немає нічого кориснішого за щоденний <b>рух</b> на свіжому повітрі.",
+      "ru": "Нет ничего полезнее ежедневного <b>движения</b> на свежем воздухе."
     },
     "gram": "adjektive_als_nomen"
   },
