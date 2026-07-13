@@ -2962,7 +2962,14 @@ var LESSONS = [
     "cardIds": [
       "k11_001",
       "k11_009",
-      "k11_010"
+      "k11_010",
+      "k11_017",
+      "k11_018",
+      "k11_019",
+      "k11_020",
+      "k11_021",
+      "k11_022",
+      "k11_023"
     ],
     "unlockAfter": "k10m5",
     "sbCards": []
@@ -2990,7 +2997,15 @@ var LESSONS = [
     "grammar": "nebensatz_mit_waehrend",
     "cardIds": [
       "k11_002",
-      "k11_006"
+      "k11_006",
+      "k11_024",
+      "k11_025",
+      "k11_026",
+      "k11_027",
+      "k11_028",
+      "k11_029",
+      "k11_030",
+      "k11_031"
     ],
     "unlockAfter": "k11m1",
     "sbCards": []
@@ -3018,7 +3033,15 @@ var LESSONS = [
     "grammar": "nicht_brauchen_zu",
     "cardIds": [
       "k11_003",
-      "k11_007"
+      "k11_007",
+      "k11_032",
+      "k11_033",
+      "k11_034",
+      "k11_035",
+      "k11_036",
+      "k11_037",
+      "k11_038",
+      "k11_039"
     ],
     "unlockAfter": "k11m2",
     "sbCards": []
@@ -3047,7 +3070,14 @@ var LESSONS = [
     "cardIds": [
       "k11_004",
       "k11_005",
-      "k11_008"
+      "k11_008",
+      "k11_040",
+      "k11_041",
+      "k11_042",
+      "k11_043",
+      "k11_044",
+      "k11_045",
+      "k11_046"
     ],
     "unlockAfter": "k11m3",
     "sbCards": []
@@ -3079,7 +3109,11 @@ var LESSONS = [
       "k11_013",
       "k11_014",
       "k11_015",
-      "k11_016"
+      "k11_016",
+      "k11_047",
+      "k11_048",
+      "k11_049",
+      "k11_050"
     ],
     "unlockAfter": "k11m4",
     "sbCards": []
@@ -17522,6 +17556,788 @@ var VOCAB = [
       "en": "It was a small secret that came out when he <b>cheated on</b> his wife.",
       "uk": "Це була маленька таємниця, яка розкрилася, коли він <b>зрадив</b> дружину.",
       "ru": "Это была маленькая тайна, которая раскрылась, когда он <b>изменил</b> жене."
+    },
+    "gram": "nomen_auf_chen"
+  },
+  {
+    "id": "k11_017",
+    "cat": "k11",
+    "term": {
+      "de": "die Geburt",
+      "en": "birth",
+      "uk": "народження",
+      "ru": "рождение"
+    },
+    "short": {
+      "de": "der Moment, in dem ein Kind auf die Welt kommt",
+      "en": "the moment a child comes into the world",
+      "uk": "момент, коли дитина зʼявляється на світ",
+      "ru": "момент, когда ребёнок появляется на свет"
+    },
+    "def": {
+      "de": "<g>Etwas Emotionales</g> war die <b>Geburt</b> ihres ersten Kindes.",
+      "en": "Something emotional was the <b>birth</b> of their first child.",
+      "uk": "Дещо емоційне — <b>народження</b> їхньої першої дитини.",
+      "ru": "Что-то эмоциональное — <b>рождение</b> их первого ребёнка."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k11_018",
+    "cat": "k11",
+    "term": {
+      "de": "der Kinderwagen",
+      "en": "pram, stroller",
+      "uk": "дитяча коляска",
+      "ru": "детская коляска"
+    },
+    "short": {
+      "de": "ein kleines Fahrzeug, in dem man ein Baby herumschiebt",
+      "en": "a small vehicle used to push a baby around",
+      "uk": "невеликий візок, у якому возять немовля",
+      "ru": "небольшая коляска, в которой возят младенца"
+    },
+    "def": {
+      "de": "<g>Nichts Praktischeres</g> gab es als einen guten <b>Kinderwagen</b> für die ersten Monate.",
+      "en": "There was nothing more practical than a good <b>pram</b> for the first months.",
+      "uk": "Не було нічого практичнішого за хорошу <b>дитячу коляску</b> для перших місяців.",
+      "ru": "Не было ничего практичнее хорошей <b>детской коляски</b> для первых месяцев."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k11_019",
+    "cat": "k11",
+    "term": {
+      "de": "stillen",
+      "en": "to breastfeed",
+      "uk": "годувати груддю",
+      "ru": "кормить грудью"
+    },
+    "short": {
+      "de": "einem Baby Milch aus der eigenen Brust geben",
+      "en": "to feed a baby milk from your own breast",
+      "uk": "годувати немовля молоком із власних грудей",
+      "ru": "кормить младенца молоком из собственной груди"
+    },
+    "def": {
+      "de": "<g>Das Wichtigste</g> beim <b>Stillen</b> ist die Ruhe für Mutter und Kind.",
+      "en": "The most important thing about <b>breastfeeding</b> is calm for mother and child.",
+      "uk": "Найважливіше в <b>годуванні груддю</b> — спокій для матері та дитини.",
+      "ru": "Самое важное в <b>грудном вскармливании</b> — спокойствие для матери и ребёнка."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k11_020",
+    "cat": "k11",
+    "term": {
+      "de": "die Hebamme",
+      "en": "midwife",
+      "uk": "акушерка",
+      "ru": "акушерка"
+    },
+    "short": {
+      "de": "eine Fachperson, die Frauen bei der Geburt begleitet",
+      "en": "a specialist who accompanies women during childbirth",
+      "uk": "фахівчиня, яка супроводжує жінок під час пологів",
+      "ru": "специалист, сопровождающий женщин во время родов"
+    },
+    "def": {
+      "de": "<g>Etwas Beruhigendes</g> war die Anwesenheit der erfahrenen <b>Hebamme</b>.",
+      "en": "Something reassuring was the presence of the experienced <b>midwife</b>.",
+      "uk": "Дещо заспокійливе — присутність досвідченої <b>акушерки</b>.",
+      "ru": "Что-то успокаивающее — присутствие опытной <b>акушерки</b>."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k11_021",
+    "cat": "k11",
+    "term": {
+      "de": "der Vaterschaftsurlaub",
+      "en": "paternity leave",
+      "uk": "батьківська відпустка (для татусів)",
+      "ru": "отпуск для отцов"
+    },
+    "short": {
+      "de": "eine freie Zeit von der Arbeit für Väter nach der Geburt eines Kindes",
+      "en": "time off work for fathers after the birth of a child",
+      "uk": "вільний від роботи час для батьків після народження дитини",
+      "ru": "свободное от работы время для отцов после рождения ребёнка"
+    },
+    "def": {
+      "de": "<g>Nichts Selbstverständlicheres</g> gibt es heute als den <b>Vaterschaftsurlaub</b> für junge Väter.",
+      "en": "Nothing is more taken for granted today than <b>paternity leave</b> for young fathers.",
+      "uk": "Немає нічого природнішого сьогодні за <b>батьківську відпустку</b> для молодих татусів.",
+      "ru": "Нет ничего более естественного сегодня, чем <b>отпуск для отцов</b> для молодых пап."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k11_022",
+    "cat": "k11",
+    "term": {
+      "de": "wickeln",
+      "en": "to change a nappy/diaper",
+      "uk": "переодягати підгузок",
+      "ru": "менять подгузник"
+    },
+    "short": {
+      "de": "einem Baby eine frische Windel anziehen",
+      "en": "to put a fresh nappy on a baby",
+      "uk": "одягати немовляті свіжий підгузок",
+      "ru": "надевать младенцу свежий подгузник"
+    },
+    "def": {
+      "de": "<g>Das Anstrengendste</g> am Anfang war das ständige <b>Wickeln</b> in der Nacht.",
+      "en": "The most exhausting thing at the start was constantly <b>changing nappies</b> at night.",
+      "uk": "Найважчим на початку було постійне <b>перевдягання підгузків</b> уночі.",
+      "ru": "Самым трудным в начале была постоянная <b>смена подгузников</b> ночью."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k11_023",
+    "cat": "k11",
+    "term": {
+      "de": "das Neugeborene",
+      "en": "newborn",
+      "uk": "новонароджений",
+      "ru": "новорождённый"
+    },
+    "short": {
+      "de": "ein Baby kurz nach der Geburt",
+      "en": "a baby shortly after birth",
+      "uk": "немовля незабаром після народження",
+      "ru": "младенец вскоре после рождения"
+    },
+    "def": {
+      "de": "<g>Etwas Rührendes</g> war der erste Blick auf das <b>Neugeborene</b>.",
+      "en": "Something touching was the first look at the <b>newborn</b>.",
+      "uk": "Дещо зворушливе — перший погляд на <b>новонародженого</b>.",
+      "ru": "Что-то трогательное — первый взгляд на <b>новорождённого</b>."
+    },
+    "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "k11_024",
+    "cat": "k11",
+    "term": {
+      "de": "der Haushalt",
+      "en": "household",
+      "uk": "домашнє господарство",
+      "ru": "домашнее хозяйство"
+    },
+    "short": {
+      "de": "alle Aufgaben, die man braucht, um eine Wohnung oder ein Haus zu führen",
+      "en": "all the tasks needed to run a flat or house",
+      "uk": "усі справи, потрібні для ведення квартири чи будинку",
+      "ru": "все дела, необходимые для ведения квартиры или дома"
+    },
+    "def": {
+      "de": "<g>Während</g> ich arbeite, kümmert sich mein Mann um den <b>Haushalt</b>.",
+      "en": "<g>While</g> I work, my husband takes care of the <b>household</b>.",
+      "uk": "<g>Поки</g> я працюю, мій чоловік дбає про <b>домашнє господарство</b>.",
+      "ru": "<g>Пока</g> я работаю, мой муж заботится о <b>домашнем хозяйстве</b>."
+    },
+    "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "k11_025",
+    "cat": "k11",
+    "term": {
+      "de": "betreuen",
+      "en": "to look after",
+      "uk": "доглядати",
+      "ru": "присматривать"
+    },
+    "short": {
+      "de": "sich um jemanden kümmern und für ihn sorgen",
+      "en": "to take care of someone and look after them",
+      "uk": "піклуватися про когось і доглядати за ним",
+      "ru": "заботиться о ком-то и присматривать за ним"
+    },
+    "def": {
+      "de": "<g>Während</g> die Großeltern die Kinder <b>betreuen</b>, gehen die Eltern arbeiten.",
+      "en": "<g>While</g> the grandparents <b>look after</b> the children, the parents go to work.",
+      "uk": "<g>Поки</g> бабуся й дідусь <b>доглядають</b> за дітьми, батьки йдуть на роботу.",
+      "ru": "<g>Пока</g> бабушка и дедушка <b>присматривают</b> за детьми, родители идут на работу."
+    },
+    "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "k11_026",
+    "cat": "k11",
+    "term": {
+      "de": "aufpassen (auf +Akk)",
+      "en": "to look after, to watch",
+      "uk": "наглядати (за)",
+      "ru": "присматривать (за)"
+    },
+    "short": {
+      "de": "darauf achten, dass jemandem nichts passiert",
+      "en": "to make sure nothing happens to someone",
+      "uk": "стежити, щоб з кимось нічого не сталося",
+      "ru": "следить, чтобы с кем-то ничего не случилось"
+    },
+    "def": {
+      "de": "<g>Während</g> ich einkaufe, <b>passt</b> meine Schwester auf die Kinder <b>auf</b>.",
+      "en": "<g>While</g> I go shopping, my sister <b>looks after</b> the children.",
+      "uk": "<g>Поки</g> я роблю покупки, моя сестра <b>наглядає</b> за дітьми.",
+      "ru": "<g>Пока</g> я хожу за покупками, моя сестра <b>присматривает</b> за детьми."
+    },
+    "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "k11_027",
+    "cat": "k11",
+    "term": {
+      "de": "die Erziehung",
+      "en": "upbringing",
+      "uk": "виховання",
+      "ru": "воспитание"
+    },
+    "short": {
+      "de": "das Fördern und Anleiten eines Kindes durch die Eltern",
+      "en": "the guiding and nurturing of a child by its parents",
+      "uk": "розвиток і навчання дитини батьками",
+      "ru": "развитие и обучение ребёнка родителями"
+    },
+    "def": {
+      "de": "<g>Während</g> beide Eltern für die <b>Erziehung</b> verantwortlich sind, teilen sie sich auch den Haushalt.",
+      "en": "<g>While</g> both parents are responsible for the <b>upbringing</b>, they also share the housework.",
+      "uk": "<g>Поки</g> обоє батьків відповідають за <b>виховання</b>, вони також ділять домашні обовʼязки.",
+      "ru": "<g>Пока</g> оба родителя отвечают за <b>воспитание</b>, они также делят домашние обязанности."
+    },
+    "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "k11_028",
+    "cat": "k11",
+    "term": {
+      "de": "berufstätig",
+      "en": "employed, working",
+      "uk": "працевлаштований, зайнятий",
+      "ru": "работающий, занятый"
+    },
+    "short": {
+      "de": "eine bezahlte Arbeit oder einen Beruf ausüben",
+      "en": "having a paid job or profession",
+      "uk": "мати оплачувану роботу чи професію",
+      "ru": "иметь оплачиваемую работу или профессию"
+    },
+    "def": {
+      "de": "<g>Während</g> sie <b>berufstätig</b> ist, geht ihr Mann in Elternzeit.",
+      "en": "<g>While</g> she is <b>employed</b>, her husband goes on parental leave.",
+      "uk": "<g>Поки</g> вона <b>працює</b>, її чоловік іде в декретну відпустку.",
+      "ru": "<g>Пока</g> она <b>работает</b>, её муж уходит в декретный отпуск."
+    },
+    "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "k11_029",
+    "cat": "k11",
+    "term": {
+      "de": "die Elternzeit",
+      "en": "parental leave",
+      "uk": "батьківська відпустка",
+      "ru": "отпуск по уходу за ребёнком"
+    },
+    "short": {
+      "de": "eine bezahlte oder unbezahlte Pause von der Arbeit, um sich um ein Kind zu kümmern",
+      "en": "a paid or unpaid break from work to take care of a child",
+      "uk": "оплачувана або неоплачувана перерва в роботі для догляду за дитиною",
+      "ru": "оплачиваемый или неоплачиваемый перерыв в работе для ухода за ребёнком"
+    },
+    "def": {
+      "de": "<g>Während</g> er in <b>Elternzeit</b> ist, arbeitet seine Partnerin Vollzeit.",
+      "en": "<g>While</g> he is on <b>parental leave</b>, his partner works full-time.",
+      "uk": "<g>Поки</g> він у <b>батьківській відпустці</b>, його партнерка працює повний день.",
+      "ru": "<g>Пока</g> он в <b>отпуске по уходу за ребёнком</b>, его партнёрша работает полный день."
+    },
+    "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "k11_030",
+    "cat": "k11",
+    "term": {
+      "de": "die Hausarbeit",
+      "en": "housework",
+      "uk": "хатня робота",
+      "ru": "домашняя работа"
+    },
+    "short": {
+      "de": "die täglichen Aufgaben im Haushalt, zum Beispiel Putzen oder Kochen",
+      "en": "the daily household tasks, for example cleaning or cooking",
+      "uk": "щоденні хатні справи, наприклад прибирання чи готування",
+      "ru": "ежедневные домашние дела, например уборка или готовка"
+    },
+    "def": {
+      "de": "<g>Während</g> er kocht, erledigt sie die <b>Hausarbeit</b> im Bad.",
+      "en": "<g>While</g> he cooks, she does the <b>housework</b> in the bathroom.",
+      "uk": "<g>Поки</g> він готує, вона робить <b>хатню роботу</b> у ванній.",
+      "ru": "<g>Пока</g> он готовит, она делает <b>домашнюю работу</b> в ванной."
+    },
+    "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "k11_031",
+    "cat": "k11",
+    "term": {
+      "de": "sich abwechseln",
+      "en": "to take turns",
+      "uk": "чергуватися",
+      "ru": "чередоваться"
+    },
+    "short": {
+      "de": "eine Aufgabe abwechselnd mit jemand anderem übernehmen",
+      "en": "to take on a task alternately with someone else",
+      "uk": "виконувати завдання по черзі з кимось іншим",
+      "ru": "выполнять задачу по очереди с кем-то ещё"
+    },
+    "def": {
+      "de": "<g>Während</g> die Eltern sich beim Kochen <b>abwechseln</b>, bleibt der Abwasch meistens an den Kindern hängen.",
+      "en": "<g>While</g> the parents <b>take turns</b> cooking, the dishes are usually left to the children.",
+      "uk": "<g>Поки</g> батьки <b>чергуються</b> у приготуванні їжі, миття посуду зазвичай залишається дітям.",
+      "ru": "<g>Пока</g> родители <b>чередуются</b> в готовке, мытьё посуды обычно остаётся детям."
+    },
+    "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "k11_032",
+    "cat": "k11",
+    "term": {
+      "de": "die Hilfe",
+      "en": "help",
+      "uk": "допомога",
+      "ru": "помощь"
+    },
+    "short": {
+      "de": "die Unterstützung, die man von jemandem bekommt",
+      "en": "the support you receive from someone",
+      "uk": "підтримка, яку отримують від когось",
+      "ru": "поддержка, которую получают от кого-то"
+    },
+    "def": {
+      "de": "Du <g>brauchst</g> <g>nicht</g> auf <b>Hilfe</b> <g>zu</g> verzichten, nur weil du selbstständig sein willst.",
+      "en": "You <g>don't need to</g> do without <b>help</b> just because you want to be independent.",
+      "uk": "Тобі <g>не потрібно</g> відмовлятися від <b>допомоги</b> лише тому, що ти хочеш бути самостійним.",
+      "ru": "Тебе <g>не нужно</g> отказываться от <b>помощи</b> только потому, что ты хочешь быть самостоятельным."
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "k11_033",
+    "cat": "k11",
+    "term": {
+      "de": "sich schämen",
+      "en": "to be ashamed",
+      "uk": "соромитися",
+      "ru": "стыдиться"
+    },
+    "short": {
+      "de": "sich unangenehm fühlen wegen etwas, das man getan hat oder ist",
+      "en": "to feel uncomfortable because of something you did or are",
+      "uk": "почуватися ніяково через щось зроблене або через себе самого",
+      "ru": "чувствовать себя неловко из-за чего-то сделанного или из-за самого себя"
+    },
+    "def": {
+      "de": "Du <g>brauchst</g> dich <g>nicht</g> <g>zu</g> <b>schämen</b>, wenn du um Unterstützung bittest.",
+      "en": "You <g>don't need to</g> be <b>ashamed</b> if you ask for support.",
+      "uk": "Тобі <g>не потрібно</g> <b>соромитися</b>, якщо просиш підтримки.",
+      "ru": "Тебе <g>не нужно</g> <b>стыдиться</b>, если просишь поддержки."
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "k11_034",
+    "cat": "k11",
+    "term": {
+      "de": "sich sorgen",
+      "en": "to worry",
+      "uk": "хвилюватися",
+      "ru": "волноваться"
+    },
+    "short": {
+      "de": "sich Gedanken machen, weil man Angst um etwas oder jemanden hat",
+      "en": "to feel anxious because you fear for something or someone",
+      "uk": "переживати через страх за щось або когось",
+      "ru": "переживать из-за страха за что-то или кого-то"
+    },
+    "def": {
+      "de": "Du <g>brauchst</g> dir <g>nicht</g> <g>zu</g> <b>sorgen</b> — wir finden gemeinsam eine Lösung.",
+      "en": "You <g>don't need to</g> <b>worry</b> — we will find a solution together.",
+      "uk": "Тобі <g>не потрібно</g> <b>хвилюватися</b> — ми разом знайдемо рішення.",
+      "ru": "Тебе <g>не нужно</g> <b>волноваться</b> — мы вместе найдём решение."
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "k11_035",
+    "cat": "k11",
+    "term": {
+      "de": "die Verantwortung",
+      "en": "responsibility",
+      "uk": "відповідальність",
+      "ru": "ответственность"
+    },
+    "short": {
+      "de": "die Pflicht, für etwas zu sorgen oder die Folgen zu tragen",
+      "en": "the duty to take care of something or bear the consequences",
+      "uk": "обовʼязок дбати про щось чи нести наслідки",
+      "ru": "обязанность заботиться о чём-то или нести последствия"
+    },
+    "def": {
+      "de": "Du <g>brauchst</g> die ganze <b>Verantwortung</b> <g>nicht</g> allein <g>zu</g> tragen.",
+      "en": "You <g>don't need to</g> carry the entire <b>responsibility</b> alone.",
+      "uk": "Тобі <g>не потрібно</g> нести всю <b>відповідальність</b> самотужки.",
+      "ru": "Тебе <g>не нужно</g> нести всю <b>ответственность</b> в одиночку."
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "k11_036",
+    "cat": "k11",
+    "term": {
+      "de": "bewältigen",
+      "en": "to cope with, to manage",
+      "uk": "долати",
+      "ru": "справляться"
+    },
+    "short": {
+      "de": "eine schwierige Aufgabe oder Situation erfolgreich meistern",
+      "en": "to successfully master a difficult task or situation",
+      "uk": "успішно долати складне завдання чи ситуацію",
+      "ru": "успешно справляться со сложной задачей или ситуацией"
+    },
+    "def": {
+      "de": "Sie <g>braucht</g> die Probleme <g>nicht</g> allein <g>zu</g> <b>bewältigen</b> — ihre Familie steht ihr zur Seite.",
+      "en": "She <g>doesn't need to</g> <b>cope with</b> the problems alone — her family is by her side.",
+      "uk": "Їй <g>не потрібно</g> <b>долати</b> проблеми самій — родина поруч.",
+      "ru": "Ей <g>не нужно</g> <b>справляться</b> с проблемами одной — семья рядом."
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "k11_037",
+    "cat": "k11",
+    "term": {
+      "de": "zögern",
+      "en": "to hesitate",
+      "uk": "вагатися",
+      "ru": "колебаться"
+    },
+    "short": {
+      "de": "nicht sofort handeln, weil man unsicher ist",
+      "en": "to not act immediately because you are unsure",
+      "uk": "не діяти одразу через невпевненість",
+      "ru": "не действовать сразу из-за неуверенности"
+    },
+    "def": {
+      "de": "Du <g>brauchst</g> <g>nicht</g> <g>zu</g> <b>zögern</b>, wenn du Hilfe brauchst — frag einfach.",
+      "en": "You <g>don't need to</g> <b>hesitate</b> when you need help — just ask.",
+      "uk": "Тобі <g>не потрібно</g> <b>вагатися</b>, коли потрібна допомога, — просто попроси.",
+      "ru": "Тебе <g>не нужно</g> <b>колебаться</b>, если нужна помощь, — просто попроси."
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "k11_038",
+    "cat": "k11",
+    "term": {
+      "de": "erledigen",
+      "en": "to get done, to take care of",
+      "uk": "робити, виконувати",
+      "ru": "делать, выполнять"
+    },
+    "short": {
+      "de": "eine Aufgabe fertig machen",
+      "en": "to finish a task",
+      "uk": "завершувати завдання",
+      "ru": "завершать задачу"
+    },
+    "def": {
+      "de": "Wir <g>brauchen</g> <g>nicht</g> alles an einem Tag <g>zu</g> <b>erledigen</b>.",
+      "en": "We <g>don't need to</g> <b>get</b> everything <b>done</b> in one day.",
+      "uk": "Нам <g>не потрібно</g> все <b>зробити</b> за один день.",
+      "ru": "Нам <g>не нужно</g> всё <b>сделать</b> за один день."
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "k11_039",
+    "cat": "k11",
+    "term": {
+      "de": "sich beweisen",
+      "en": "to prove oneself",
+      "uk": "доводити щось (собі/іншим)",
+      "ru": "доказывать что-то (себе/другим)"
+    },
+    "short": {
+      "de": "anderen zeigen, dass man etwas gut kann, um Anerkennung zu bekommen",
+      "en": "to show others you are good at something in order to gain recognition",
+      "uk": "показувати іншим, що вмієш щось добре, щоб отримати визнання",
+      "ru": "показывать другим, что умеешь что-то хорошо, чтобы получить признание"
+    },
+    "def": {
+      "de": "Du <g>brauchst</g> dich <g>nicht</g> <g>zu</g> <b>beweisen</b>.",
+      "en": "You <g>don't need to</g> <b>prove yourself</b>.",
+      "uk": "Тобі <g>не потрібно</g> нічого <b>доводити</b>.",
+      "ru": "Тебе <g>не нужно</g> ничего <b>доказывать</b>."
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "k11_040",
+    "cat": "k11",
+    "term": {
+      "de": "die Gleichberechtigung",
+      "en": "equality",
+      "uk": "рівноправність",
+      "ru": "равноправие"
+    },
+    "short": {
+      "de": "das Recht, unabhängig vom Geschlecht gleich behandelt zu werden",
+      "en": "the right to be treated equally regardless of gender",
+      "uk": "право на однакове ставлення незалежно від статі",
+      "ru": "право на равное отношение независимо от пола"
+    },
+    "def": {
+      "de": "<g>Niemand</g> sollte wegen seines Geschlechts benachteiligt werden — <b>Gleichberechtigung</b> betrifft alle.",
+      "en": "<g>Nobody</g> should be disadvantaged because of their gender — <b>equality</b> concerns everyone.",
+      "uk": "<g>Ніхто</g> не повинен бути обмеженим через свою стать — <b>рівноправність</b> стосується всіх.",
+      "ru": "<g>Никто</g> не должен быть ущемлён из-за своего пола — <b>равноправие</b> касается всех."
+    },
+    "gram": "indefinitpronomen_possessivpronomen"
+  },
+  {
+    "id": "k11_041",
+    "cat": "k11",
+    "term": {
+      "de": "das Klischee",
+      "en": "stereotype, cliché",
+      "uk": "стереотип",
+      "ru": "стереотип"
+    },
+    "short": {
+      "de": "eine vereinfachte, oft nicht ganz richtige Vorstellung über etwas",
+      "en": "a simplified, often not quite accurate idea about something",
+      "uk": "спрощене, часто не зовсім правильне уявлення про щось",
+      "ru": "упрощённое, часто не совсем верное представление о чём-то"
+    },
+    "def": {
+      "de": "<g>Manche</g> <b>Klischees</b> über Frauenrollen halten sich hartnäckig.",
+      "en": "<g>Some</g> <b>stereotypes</b> about women's roles persist stubbornly.",
+      "uk": "<g>Деякі</g> <b>стереотипи</b> про жіночі ролі досі живучі.",
+      "ru": "<g>Некоторые</g> <b>стереотипы</b> о женских ролях всё ещё живучи."
+    },
+    "gram": "indefinitpronomen_possessivpronomen"
+  },
+  {
+    "id": "k11_042",
+    "cat": "k11",
+    "term": {
+      "de": "das Vorurteil",
+      "en": "prejudice",
+      "uk": "упередження",
+      "ru": "предрассудок"
+    },
+    "short": {
+      "de": "eine negative Meinung über jemanden, ohne ihn wirklich zu kennen",
+      "en": "a negative opinion about someone without really knowing them",
+      "uk": "негативна думка про когось без реального знайомства з ним",
+      "ru": "негативное мнение о ком-то без реального знакомства с ним"
+    },
+    "def": {
+      "de": "<g>Jeder</g> hat manchmal <b>Vorurteile</b>, auch wenn er es nicht zugeben will.",
+      "en": "<g>Everyone</g> has <b>prejudices</b> sometimes, even if they don't want to admit it.",
+      "uk": "<g>Кожен</g> іноді має <b>упередження</b>, навіть якщо не хоче цього визнавати.",
+      "ru": "<g>Каждый</g> иногда имеет <b>предрассудки</b>, даже если не хочет этого признавать."
+    },
+    "gram": "indefinitpronomen_possessivpronomen"
+  },
+  {
+    "id": "k11_043",
+    "cat": "k11",
+    "term": {
+      "de": "teilen",
+      "en": "to share",
+      "uk": "ділити",
+      "ru": "делить"
+    },
+    "short": {
+      "de": "etwas mit jemand anderem gemeinsam nutzen oder aufteilen",
+      "en": "to use or divide something together with someone else",
+      "uk": "спільно використовувати або розподіляти щось з кимось",
+      "ru": "совместно использовать или распределять что-то с кем-то"
+    },
+    "def": {
+      "de": "<g>Alles</g> im Haushalt sollte gerecht <b>geteilt</b> werden.",
+      "en": "<g>Everything</g> in the household should be <b>shared</b> fairly.",
+      "uk": "<g>Усе</g> в домашньому господарстві варто чесно <b>ділити</b>.",
+      "ru": "<g>Всё</g> в домашнем хозяйстве стоит честно <b>делить</b>."
+    },
+    "gram": "indefinitpronomen_possessivpronomen"
+  },
+  {
+    "id": "k11_044",
+    "cat": "k11",
+    "term": {
+      "de": "die Aufgabe",
+      "en": "task",
+      "uk": "завдання",
+      "ru": "задание"
+    },
+    "short": {
+      "de": "etwas, das man erledigen soll",
+      "en": "something you are supposed to get done",
+      "uk": "те, що потрібно виконати",
+      "ru": "то, что нужно выполнить"
+    },
+    "def": {
+      "de": "<g>Etwas</g> an dieser <b>Aufgabe</b> war typisch für die alte Rollenverteilung.",
+      "en": "<g>Something</g> about this <b>task</b> was typical of the old division of roles.",
+      "uk": "<g>Дещо</g> в цьому <b>завданні</b> було типовим для старого розподілу ролей.",
+      "ru": "<g>Кое-что</g> в этом <b>задании</b> было типичным для старого распределения ролей."
+    },
+    "gram": "indefinitpronomen_possessivpronomen"
+  },
+  {
+    "id": "k11_045",
+    "cat": "k11",
+    "term": {
+      "de": "der Unterschied",
+      "en": "difference",
+      "uk": "відмінність",
+      "ru": "различие"
+    },
+    "short": {
+      "de": "das, was zwei Dinge oder Personen voneinander unterscheidet",
+      "en": "what distinguishes two things or people from each other",
+      "uk": "те, що відрізняє дві речі чи людей одне від одного",
+      "ru": "то, что отличает две вещи или людей друг от друга"
+    },
+    "def": {
+      "de": "<g>Manche</g> <b>Unterschiede</b> zwischen den Geschlechtern sind gesellschaftlich, nicht biologisch.",
+      "en": "<g>Some</g> <b>differences</b> between the genders are social, not biological.",
+      "uk": "<g>Деякі</g> <b>відмінності</b> між статями є суспільними, а не біологічними.",
+      "ru": "<g>Некоторые</g> <b>различия</b> между полами являются общественными, а не биологическими."
+    },
+    "gram": "indefinitpronomen_possessivpronomen"
+  },
+  {
+    "id": "k11_046",
+    "cat": "k11",
+    "term": {
+      "de": "das Vorbild",
+      "en": "role model",
+      "uk": "взірець",
+      "ru": "образец"
+    },
+    "short": {
+      "de": "eine Person, deren Verhalten andere nachahmen wollen",
+      "en": "a person whose behaviour others want to imitate",
+      "uk": "особа, чию поведінку хочуть наслідувати інші",
+      "ru": "лицо, чьё поведение хотят повторить другие"
+    },
+    "def": {
+      "de": "<g>Jemand</g> wie sie kann ein echtes <b>Vorbild</b> für junge Mädchen sein.",
+      "en": "<g>Someone</g> like her can be a real <b>role model</b> for young girls.",
+      "uk": "<g>Хтось</g> на кшталт неї може бути справжнім <b>взірцем</b> для юних дівчат.",
+      "ru": "<g>Кто-то</g> вроде неё может быть настоящим <b>образцом</b> для юных девушек."
+    },
+    "gram": "indefinitpronomen_possessivpronomen"
+  },
+  {
+    "id": "k11_047",
+    "cat": "k11",
+    "term": {
+      "de": "das Sorgerecht",
+      "en": "custody",
+      "uk": "опіка",
+      "ru": "опека"
+    },
+    "short": {
+      "de": "das gesetzliche Recht, sich um ein Kind zu kümmern und Entscheidungen für es zu treffen",
+      "en": "the legal right to take care of a child and make decisions for them",
+      "uk": "законне право дбати про дитину та приймати рішення за неї",
+      "ru": "законное право заботиться о ребёнке и принимать решения за него"
+    },
+    "def": {
+      "de": "Nachdem sie ihrem Sohn ein kleines <g>Hündchen</g> geschenkt hatte, kümmerte sie sich um das <b>Sorgerecht</b>.",
+      "en": "After giving her son a little puppy, she took care of the <b>custody</b> arrangements.",
+      "uk": "Подарувавши синові маленьке цуценя, вона зайнялася питанням <b>опіки</b>.",
+      "ru": "Подарив сыну маленького щенка, она занялась вопросом <b>опеки</b>."
+    },
+    "gram": "nomen_auf_chen"
+  },
+  {
+    "id": "k11_048",
+    "cat": "k11",
+    "term": {
+      "de": "der Stiefvater",
+      "en": "stepfather",
+      "uk": "вітчим",
+      "ru": "отчим"
+    },
+    "short": {
+      "de": "der neue Ehemann der Mutter, der nicht der leibliche Vater ist",
+      "en": "the mother's new husband, who is not the biological father",
+      "uk": "новий чоловік матері, який не є рідним батьком",
+      "ru": "новый муж матери, который не является родным отцом"
+    },
+    "def": {
+      "de": "Am Wochenende backte der <b>Stiefvater</b> mit den Kindern ein kleines <g>Brötchen</g>.",
+      "en": "At the weekend, the <b>stepfather</b> baked a little bread roll with the children.",
+      "uk": "У вихідні <b>вітчим</b> пік із дітьми маленьку булочку.",
+      "ru": "В выходные <b>отчим</b> пёк с детьми маленькую булочку."
+    },
+    "gram": "nomen_auf_chen"
+  },
+  {
+    "id": "k11_049",
+    "cat": "k11",
+    "term": {
+      "de": "die Großfamilie",
+      "en": "extended family",
+      "uk": "велика родина",
+      "ru": "большая семья"
+    },
+    "short": {
+      "de": "eine Familie, zu der auch Großeltern, Onkel, Tanten oder andere Verwandte gehören",
+      "en": "a family that also includes grandparents, uncles, aunts or other relatives",
+      "uk": "родина, до якої також належать бабусі, дідусі, дядьки, тітки чи інші родичі",
+      "ru": "семья, к которой также относятся бабушки, дедушки, дяди, тёти или другие родственники"
+    },
+    "def": {
+      "de": "In der <b>Großfamilie</b> gab es immer ein kleines <g>Törtchen</g> für jeden Geburtstag.",
+      "en": "In the <b>extended family</b>, there was always a little cake for every birthday.",
+      "uk": "У <b>великій родині</b> завжди був маленький тортик на кожен день народження.",
+      "ru": "В <b>большой семье</b> всегда был маленький тортик на каждый день рождения."
+    },
+    "gram": "nomen_auf_chen"
+  },
+  {
+    "id": "k11_050",
+    "cat": "k11",
+    "term": {
+      "de": "die Regenbogenfamilie",
+      "en": "rainbow family (same-sex parent family)",
+      "uk": "райдужна сімʼя",
+      "ru": "радужная семья"
+    },
+    "short": {
+      "de": "eine Familie, in der die Eltern gleichgeschlechtlich sind",
+      "en": "a family in which the parents are of the same sex",
+      "uk": "родина, у якій батьки однієї статі",
+      "ru": "семья, в которой родители одного пола"
+    },
+    "def": {
+      "de": "Die <b>Regenbogenfamilie</b> zeigte stolz ein kleines <g>Fähnchen</g> vor ihrem Haus.",
+      "en": "The <b>rainbow family</b> proudly displayed a little flag in front of their house.",
+      "uk": "<b>Райдужна сімʼя</b> гордо повісила маленький прапорець перед будинком.",
+      "ru": "<b>Радужная семья</b> гордо повесила маленький флажок перед домом."
     },
     "gram": "nomen_auf_chen"
   },
