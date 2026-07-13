@@ -2602,7 +2602,14 @@ var LESSONS = [
     "cardIds": [
       "k9_001",
       "k9_002",
-      "k9_007"
+      "k9_007",
+      "k9_017",
+      "k9_018",
+      "k9_019",
+      "k9_020",
+      "k9_021",
+      "k9_022",
+      "k9_023"
     ],
     "unlockAfter": "k8m6",
     "sbCards": []
@@ -2630,7 +2637,15 @@ var LESSONS = [
     "grammar": "nebensatz_wenn_konjunktiv2_irreal",
     "cardIds": [
       "k9_003",
-      "k9_008"
+      "k9_008",
+      "k9_024",
+      "k9_025",
+      "k9_026",
+      "k9_027",
+      "k9_028",
+      "k9_029",
+      "k9_030",
+      "k9_031"
     ],
     "unlockAfter": "k9m1",
     "sbCards": []
@@ -2659,7 +2674,14 @@ var LESSONS = [
     "cardIds": [
       "k9_004",
       "k9_005",
-      "k9_009"
+      "k9_009",
+      "k9_032",
+      "k9_033",
+      "k9_034",
+      "k9_035",
+      "k9_036",
+      "k9_037",
+      "k9_038"
     ],
     "unlockAfter": "k9m2",
     "sbCards": []
@@ -2687,7 +2709,15 @@ var LESSONS = [
     "grammar": "adjektive_auf_ig_isch",
     "cardIds": [
       "k9_010",
-      "k9_011"
+      "k9_011",
+      "k9_039",
+      "k9_040",
+      "k9_041",
+      "k9_042",
+      "k9_043",
+      "k9_044",
+      "k9_045",
+      "k9_046"
     ],
     "unlockAfter": "k9m3",
     "sbCards": []
@@ -2719,7 +2749,11 @@ var LESSONS = [
       "k9_013",
       "k9_014",
       "k9_015",
-      "k9_016"
+      "k9_016",
+      "k9_047",
+      "k9_048",
+      "k9_049",
+      "k9_050"
     ],
     "unlockAfter": "k9m4",
     "sbCards": []
@@ -15154,6 +15188,788 @@ var VOCAB = [
       "en": "The economic <b>reality</b> looks different for many career starters than expected.",
       "uk": "Економічна <b>дійсність</b> для багатьох новачків у професії виглядає інакше, ніж очікувалося.",
       "ru": "Экономическая <b>действительность</b> для многих новичков в профессии выглядит иначе, чем ожидалось."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_017",
+    "cat": "k9",
+    "term": {
+      "de": "die Karriere",
+      "en": "career",
+      "uk": "карʼєра",
+      "ru": "карьера"
+    },
+    "short": {
+      "de": "der berufliche Werdegang und die Erfolge, die man im Laufe der Zeit erreicht",
+      "en": "your professional path and the achievements you reach over time",
+      "uk": "професійний шлях і успіхи, яких людина досягає з часом",
+      "ru": "профессиональный путь и успехи, которых человек достигает со временем"
+    },
+    "def": {
+      "de": "<g>Ich hätte gern</g> eine internationale <b>Karriere</b>.",
+      "en": "<g>I would like</g> to have an international <b>career</b>.",
+      "uk": "<g>Я хотів би</g> мати міжнародну <b>карʼєру</b>.",
+      "ru": "<g>Я хотел бы</g> иметь международную <b>карьеру</b>."
+    },
+    "gram": "konjunktiv2_wuensche_b1"
+  },
+  {
+    "id": "k9_018",
+    "cat": "k9",
+    "term": {
+      "de": "der Aufstieg",
+      "en": "promotion, advancement",
+      "uk": "підвищення, карʼєрне зростання",
+      "ru": "повышение, карьерный рост"
+    },
+    "short": {
+      "de": "die berufliche Entwicklung zu einer höheren Position",
+      "en": "professional development to a higher position",
+      "uk": "професійний розвиток до вищої посади",
+      "ru": "профессиональное развитие до более высокой должности"
+    },
+    "def": {
+      "de": "<g>Ich hätte gern</g> die Chance auf einen <b>Aufstieg</b> in dieser Firma.",
+      "en": "<g>I would like</g> the chance of a <b>promotion</b> in this company.",
+      "uk": "<g>Я хотів би</g> мати шанс на <b>підвищення</b> в цій фірмі.",
+      "ru": "<g>Я хотел бы</g> иметь шанс на <b>повышение</b> в этой фирме."
+    },
+    "gram": "konjunktiv2_wuensche_b1"
+  },
+  {
+    "id": "k9_019",
+    "cat": "k9",
+    "term": {
+      "de": "das Gehalt",
+      "en": "salary",
+      "uk": "зарплата",
+      "ru": "зарплата"
+    },
+    "short": {
+      "de": "das Geld, das man monatlich für seine Arbeit bekommt",
+      "en": "the money you receive monthly for your work",
+      "uk": "гроші, які людина отримує щомісяця за свою роботу",
+      "ru": "деньги, которые человек получает ежемесячно за свою работу"
+    },
+    "def": {
+      "de": "<g>Ich hätte gern</g> ein höheres <b>Gehalt</b> für diese Verantwortung.",
+      "en": "<g>I would like</g> a higher <b>salary</b> for this responsibility.",
+      "uk": "<g>Я хотів би</g> мати вищу <b>зарплату</b> за таку відповідальність.",
+      "ru": "<g>Я хотел бы</g> иметь более высокую <b>зарплату</b> за такую ответственность."
+    },
+    "gram": "konjunktiv2_wuensche_b1"
+  },
+  {
+    "id": "k9_020",
+    "cat": "k9",
+    "term": {
+      "de": "die Beförderung",
+      "en": "promotion",
+      "uk": "підвищення (на посаді)",
+      "ru": "повышение (в должности)"
+    },
+    "short": {
+      "de": "der Aufstieg in eine höhere berufliche Position",
+      "en": "advancement to a higher professional position",
+      "uk": "просування на вищу посаду",
+      "ru": "продвижение на более высокую должность"
+    },
+    "def": {
+      "de": "<g>Ich hätte gern</g> eine <b>Beförderung</b> noch in diesem Jahr.",
+      "en": "<g>I would like</g> a <b>promotion</b> this year.",
+      "uk": "<g>Я хотів би</g> отримати <b>підвищення</b> ще цього року.",
+      "ru": "<g>Я хотел бы</g> получить <b>повышение</b> ещё в этом году."
+    },
+    "gram": "konjunktiv2_wuensche_b1"
+  },
+  {
+    "id": "k9_021",
+    "cat": "k9",
+    "term": {
+      "de": "flexibel",
+      "en": "flexible",
+      "uk": "гнучкий",
+      "ru": "гибкий"
+    },
+    "short": {
+      "de": "so, dass man sich leicht an neue Situationen anpassen kann",
+      "en": "able to easily adapt to new situations",
+      "uk": "такий, що легко пристосовується до нових ситуацій",
+      "ru": "такой, который легко приспосабливается к новым ситуациям"
+    },
+    "def": {
+      "de": "<g>Ich hätte gern</g> <b>flexiblere</b> Arbeitszeiten in meinem neuen Job.",
+      "en": "<g>I would like</g> more <b>flexible</b> working hours in my new job.",
+      "uk": "<g>Я хотів би</g> мати <b>гнучкіший</b> робочий графік на новій роботі.",
+      "ru": "<g>Я хотел бы</g> иметь более <b>гибкий</b> график работы на новой работе."
+    },
+    "gram": "konjunktiv2_wuensche_b1"
+  },
+  {
+    "id": "k9_022",
+    "cat": "k9",
+    "term": {
+      "de": "der Kollege / die Kollegin",
+      "en": "colleague",
+      "uk": "колега",
+      "ru": "коллега"
+    },
+    "short": {
+      "de": "eine Person, die an demselben Ort arbeitet wie man selbst",
+      "en": "a person who works at the same place as you",
+      "uk": "особа, яка працює в тому самому місці, що й ти",
+      "ru": "лицо, работающее в том же месте, что и ты"
+    },
+    "def": {
+      "de": "<g>Ich hätte gern</g> nettere <b>Kollegen</b> in meiner neuen Abteilung.",
+      "en": "<g>I would like</g> nicer <b>colleagues</b> in my new department.",
+      "uk": "<g>Я хотів би</g> мати приємніших <b>колег</b> у новому відділі.",
+      "ru": "<g>Я хотел бы</g> иметь более приятных <b>коллег</b> в новом отделе."
+    },
+    "gram": "konjunktiv2_wuensche_b1"
+  },
+  {
+    "id": "k9_023",
+    "cat": "k9",
+    "term": {
+      "de": "wechseln",
+      "en": "to change, to switch",
+      "uk": "змінювати",
+      "ru": "менять"
+    },
+    "short": {
+      "de": "etwas gegen etwas anderes tauschen, zum Beispiel den Job",
+      "en": "to swap something for something else, for example a job",
+      "uk": "міняти щось на щось інше, наприклад роботу",
+      "ru": "менять что-то на что-то другое, например работу"
+    },
+    "def": {
+      "de": "Ich <g>würde</g> gern die Stelle <b>wechseln</b>, wenn ich die passende finden würde.",
+      "en": "I <g>would</g> gladly <b>change</b> jobs if I could find the right one.",
+      "uk": "Я б залюбки <b>змінив</b> роботу, якби знайшов підходящу.",
+      "ru": "Я бы с удовольствием <b>сменил</b> работу, если бы нашёл подходящую."
+    },
+    "gram": "konjunktiv2_wuensche_b1"
+  },
+  {
+    "id": "k9_024",
+    "cat": "k9",
+    "term": {
+      "de": "der Traumjob",
+      "en": "dream job",
+      "uk": "робота мрії",
+      "ru": "работа мечты"
+    },
+    "short": {
+      "de": "der Beruf, den man sich am meisten wünscht",
+      "en": "the job you wish for the most",
+      "uk": "робота, про яку людина мріє найбільше",
+      "ru": "работа, о которой человек мечтает больше всего"
+    },
+    "def": {
+      "de": "<g>Wenn</g> ich meinen <b>Traumjob</b> <g>hätte</g>, <g>würde</g> ich jeden Morgen gern zur Arbeit <g>gehen</g>.",
+      "en": "<g>If</g> I <g>had</g> my <b>dream job</b>, I <g>would</g> happily <g>go</g> to work every morning.",
+      "uk": "<g>Якби</g> в мене була моя <b>робота мрії</b>, я б щоранку <g>ходив</g> на роботу із задоволенням.",
+      "ru": "<g>Если бы</g> у меня была моя <b>работа мечты</b>, я бы каждое утро <g>ходил</g> на работу с удовольствием."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "k9_025",
+    "cat": "k9",
+    "term": {
+      "de": "kündigen",
+      "en": "to quit, to resign",
+      "uk": "звільнятися",
+      "ru": "увольняться"
+    },
+    "short": {
+      "de": "das Arbeitsverhältnis offiziell beenden",
+      "en": "to officially end your employment",
+      "uk": "офіційно припиняти трудові відносини",
+      "ru": "официально прекращать трудовые отношения"
+    },
+    "def": {
+      "de": "<g>Wenn</g> die Arbeit weiterhin so stressig <g>bliebe</g>, <g>würde</g> ich <b>kündigen</b>.",
+      "en": "<g>If</g> the job <g>stayed</g> this stressful, I <g>would</g> <b>quit</b>.",
+      "uk": "<g>Якби</g> робота залишалася такою стресовою, я б <b>звільнився</b>.",
+      "ru": "<g>Если бы</g> работа оставалась такой напряжённой, я бы <b>уволился</b>."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "k9_026",
+    "cat": "k9",
+    "term": {
+      "de": "sich bewerben",
+      "en": "to apply",
+      "uk": "подавати заявку",
+      "ru": "подавать заявку"
+    },
+    "short": {
+      "de": "offiziell um eine Stelle bitten, indem man Unterlagen schickt",
+      "en": "to officially request a position by sending documents",
+      "uk": "офіційно просити посаду, надсилаючи документи",
+      "ru": "официально просить должность, отправляя документы"
+    },
+    "def": {
+      "de": "<g>Wenn</g> diese Stelle noch frei <g>wäre</g>, <g>würde</g> ich <b>mich</b> sofort <b>bewerben</b>.",
+      "en": "<g>If</g> this position <g>were</g> still open, I <g>would</g> <b>apply</b> right away.",
+      "uk": "<g>Якби</g> ця посада все ще була вільною, я б одразу <b>подав заявку</b>.",
+      "ru": "<g>Если бы</g> эта должность всё ещё была свободна, я бы сразу <b>подал заявку</b>."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "k9_027",
+    "cat": "k9",
+    "term": {
+      "de": "die Motivation",
+      "en": "motivation",
+      "uk": "мотивація",
+      "ru": "мотивация"
+    },
+    "short": {
+      "de": "der innere Antrieb, etwas zu tun",
+      "en": "the inner drive to do something",
+      "uk": "внутрішнє прагнення щось робити",
+      "ru": "внутреннее стремление что-то делать"
+    },
+    "def": {
+      "de": "<g>Wenn</g> ich mehr <b>Motivation</b> <g>hätte</g>, <g>würde</g> ich abends noch einen Kurs <g>machen</g>.",
+      "en": "<g>If</g> I <g>had</g> more <b>motivation</b>, I <g>would</g> still <g>take</g> a course in the evening.",
+      "uk": "<g>Якби</g> в мене було більше <b>мотивації</b>, я б увечері ще й ходив на курси.",
+      "ru": "<g>Если бы</g> у меня было больше <b>мотивации</b>, я бы вечером ещё занимался на курсах."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "k9_028",
+    "cat": "k9",
+    "term": {
+      "de": "der Lebenslauf",
+      "en": "CV, résumé",
+      "uk": "резюме",
+      "ru": "резюме"
+    },
+    "short": {
+      "de": "ein Dokument mit den wichtigsten Informationen über die eigene Ausbildung und Arbeit",
+      "en": "a document with the key information about your education and work",
+      "uk": "документ із найважливішою інформацією про освіту й досвід роботи",
+      "ru": "документ с самой важной информацией об образовании и опыте работы"
+    },
+    "def": {
+      "de": "<g>Wenn</g> mein <b>Lebenslauf</b> besser <g>wäre</g>, <g>hätte</g> ich sicher mehr Chancen.",
+      "en": "<g>If</g> my <b>CV</b> <g>were</g> better, I <g>would</g> certainly <g>have</g> more chances.",
+      "uk": "<g>Якби</g> моє <b>резюме</b> було кращим, у мене точно було б більше шансів.",
+      "ru": "<g>Если бы</g> моё <b>резюме</b> было лучше, у меня точно было бы больше шансов."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "k9_029",
+    "cat": "k9",
+    "term": {
+      "de": "die Chance",
+      "en": "chance",
+      "uk": "шанс",
+      "ru": "шанс"
+    },
+    "short": {
+      "de": "eine gute Möglichkeit, etwas zu erreichen",
+      "en": "a good opportunity to achieve something",
+      "uk": "гарна можливість чогось досягти",
+      "ru": "хорошая возможность чего-то достичь"
+    },
+    "def": {
+      "de": "<g>Wenn</g> ich eine bessere <b>Chance</b> <g>bekäme</g>, <g>würde</g> ich sie sofort <g>nutzen</g>.",
+      "en": "<g>If</g> I <g>got</g> a better <b>chance</b>, I <g>would</g> <g>take</g> it immediately.",
+      "uk": "<g>Якби</g> я отримав кращий <b>шанс</b>, я б одразу ним скористався.",
+      "ru": "<g>Если бы</g> я получил лучший <b>шанс</b>, я бы сразу им воспользовался."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "k9_030",
+    "cat": "k9",
+    "term": {
+      "de": "der Arbeitgeber",
+      "en": "employer",
+      "uk": "роботодавець",
+      "ru": "работодатель"
+    },
+    "short": {
+      "de": "eine Firma oder Person, bei der man angestellt ist",
+      "en": "a company or person that employs you",
+      "uk": "фірма чи особа, на яку працює людина",
+      "ru": "фирма или лицо, у которого работает человек"
+    },
+    "def": {
+      "de": "<g>Wenn</g> mein <b>Arbeitgeber</b> flexibler <g>wäre</g>, <g>könnte</g> ich öfter von zu Hause <g>arbeiten</g>.",
+      "en": "<g>If</g> my <b>employer</b> <g>were</g> more flexible, I <g>could</g> <g>work</g> from home more often.",
+      "uk": "<g>Якби</g> мій <b>роботодавець</b> був гнучкішим, я міг би частіше працювати з дому.",
+      "ru": "<g>Если бы</g> мой <b>работодатель</b> был более гибким, я мог бы чаще работать из дома."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "k9_031",
+    "cat": "k9",
+    "term": {
+      "de": "zufrieden",
+      "en": "satisfied",
+      "uk": "задоволений",
+      "ru": "довольный"
+    },
+    "short": {
+      "de": "so, dass man mit etwas glücklich und einverstanden ist",
+      "en": "happy and content with something",
+      "uk": "такий, що почувається щасливим і задоволеним чимось",
+      "ru": "такой, который чувствует себя счастливым и довольным чем-то"
+    },
+    "def": {
+      "de": "<g>Wenn</g> ich mit meinem Job <g><b>zufriedener</b></g> <g>wäre</g>, <g>würde</g> ich nicht ständig ans Kündigen <g>denken</g>.",
+      "en": "<g>If</g> I <g>were</g> more <b>satisfied</b> with my job, I <g>would</g> not constantly <g>think</g> about quitting.",
+      "uk": "<g>Якби</g> я був <b>задоволенішим</b> своєю роботою, я б не думав постійно про звільнення.",
+      "ru": "<g>Если бы</g> я был <b>более довольным</b> своей работой, я бы не думал постоянно об увольнении."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "k9_032",
+    "cat": "k9",
+    "term": {
+      "de": "die Unterlagen (Pl.)",
+      "en": "documents",
+      "uk": "документи",
+      "ru": "документы"
+    },
+    "short": {
+      "de": "die Dokumente, die man für eine Bewerbung braucht",
+      "en": "the documents you need for a job application",
+      "uk": "документи, необхідні для подання заявки на роботу",
+      "ru": "документы, необходимые для подачи заявки на работу"
+    },
+    "def": {
+      "de": "Ich achte genau <g>darauf, dass</g> meine <b>Unterlagen</b> vollständig sind.",
+      "en": "I pay close attention <g>to the fact that</g> my <b>documents</b> are complete.",
+      "uk": "Я уважно стежу за <g>тим, щоб</g> мої <b>документи</b> були повними.",
+      "ru": "Я внимательно слежу за <g>тем, чтобы</g> мои <b>документы</b> были полными."
+    },
+    "gram": "verben_praep_dass_satz"
+  },
+  {
+    "id": "k9_033",
+    "cat": "k9",
+    "term": {
+      "de": "das Zeugnis",
+      "en": "certificate, reference",
+      "uk": "свідоцтво, характеристика",
+      "ru": "справка, характеристика"
+    },
+    "short": {
+      "de": "ein offizielles Dokument, das Leistungen oder Erfahrungen bestätigt",
+      "en": "an official document confirming achievements or experience",
+      "uk": "офіційний документ, що підтверджує досягнення чи досвід",
+      "ru": "официальный документ, подтверждающий достижения или опыт"
+    },
+    "def": {
+      "de": "Der Personalchef besteht <g>darauf, dass</g> ich alle <b>Zeugnisse</b> mitbringe.",
+      "en": "The HR manager insists <g>that</g> I bring all my <b>certificates</b>.",
+      "uk": "Керівник відділу кадрів наполягає на <g>тому, щоб</g> я приніс усі <b>свідоцтва</b>.",
+      "ru": "Начальник отдела кадров настаивает на <g>том, чтобы</g> я принёс все <b>справки</b>."
+    },
+    "gram": "verben_praep_dass_satz"
+  },
+  {
+    "id": "k9_034",
+    "cat": "k9",
+    "term": {
+      "de": "hoffen",
+      "en": "to hope",
+      "uk": "сподіватися",
+      "ru": "надеяться"
+    },
+    "short": {
+      "de": "wünschen, dass etwas Positives passiert",
+      "en": "to wish that something positive happens",
+      "uk": "бажати, щоб сталося щось хороше",
+      "ru": "желать, чтобы произошло что-то хорошее"
+    },
+    "def": {
+      "de": "Ich <b>hoffe</b> <g>darauf, dass</g> ich bald eine Antwort bekomme.",
+      "en": "I <b>hope</b> <g>that</g> I get an answer soon.",
+      "uk": "Я <b>сподіваюся</b> на <g>те, що</g> скоро отримаю відповідь.",
+      "ru": "Я <b>надеюсь</b> на <g>то, что</g> скоро получу ответ."
+    },
+    "gram": "verben_praep_dass_satz"
+  },
+  {
+    "id": "k9_035",
+    "cat": "k9",
+    "term": {
+      "de": "rechnen (mit +Dat)",
+      "en": "to count (on), to expect",
+      "uk": "розраховувати (на)",
+      "ru": "рассчитывать (на)"
+    },
+    "short": {
+      "de": "erwarten, dass etwas passiert",
+      "en": "to expect that something will happen",
+      "uk": "очікувати, що щось станеться",
+      "ru": "ожидать, что что-то произойдёт"
+    },
+    "def": {
+      "de": "Ich <b>rechne</b> fest <g>damit, dass</g> ich zum Gespräch eingeladen werde.",
+      "en": "I firmly <b>count</b> <g>on the fact that</g> I will be invited to the interview.",
+      "uk": "Я твердо <b>розраховую</b> на <g>те, що</g> мене запросять на співбесіду.",
+      "ru": "Я твёрдо <b>рассчитываю</b> на <g>то, что</g> меня пригласят на собеседование."
+    },
+    "gram": "verben_praep_dass_satz"
+  },
+  {
+    "id": "k9_036",
+    "cat": "k9",
+    "term": {
+      "de": "die Rückmeldung",
+      "en": "feedback, reply",
+      "uk": "відповідь, зворотний звʼязок",
+      "ru": "ответ, обратная связь"
+    },
+    "short": {
+      "de": "eine Antwort oder Reaktion auf etwas",
+      "en": "a response or reaction to something",
+      "uk": "відповідь чи реакція на щось",
+      "ru": "ответ или реакция на что-то"
+    },
+    "def": {
+      "de": "Ich freue mich <g>darauf, dass</g> ich bald eine <b>Rückmeldung</b> bekomme.",
+      "en": "I am looking forward <g>to the fact that</g> I will soon get <b>feedback</b>.",
+      "uk": "Я радію <g>тому, що</g> скоро отримаю <b>відповідь</b>.",
+      "ru": "Я рад <g>тому, что</g> скоро получу <b>ответ</b>."
+    },
+    "gram": "verben_praep_dass_satz"
+  },
+  {
+    "id": "k9_037",
+    "cat": "k9",
+    "term": {
+      "de": "der Personalchef / die Personalchefin",
+      "en": "HR manager",
+      "uk": "керівник відділу кадрів",
+      "ru": "начальник отдела кадров"
+    },
+    "short": {
+      "de": "die Person, die in einer Firma für die Einstellung von neuen Mitarbeitern zuständig ist",
+      "en": "the person in a company responsible for hiring new employees",
+      "uk": "особа у фірмі, відповідальна за прийом нових співробітників",
+      "ru": "лицо в фирме, отвечающее за приём новых сотрудников"
+    },
+    "def": {
+      "de": "Der <b>Personalchef</b> besteht <g>darauf, dass</g> jede Bewerbung persönlich unterschrieben ist.",
+      "en": "The <b>HR manager</b> insists <g>that</g> every application is signed personally.",
+      "uk": "<b>Керівник відділу кадрів</b> наполягає на <g>тому, щоб</g> кожна заява була підписана особисто.",
+      "ru": "<b>Начальник отдела кадров</b> настаивает на <g>том, чтобы</g> каждое заявление было подписано лично."
+    },
+    "gram": "verben_praep_dass_satz"
+  },
+  {
+    "id": "k9_038",
+    "cat": "k9",
+    "term": {
+      "de": "überzeugt sein (von +Dat)",
+      "en": "to be convinced (of)",
+      "uk": "бути переконаним (у)",
+      "ru": "быть убеждённым (в)"
+    },
+    "short": {
+      "de": "fest glauben, dass etwas wahr oder richtig ist",
+      "en": "to firmly believe that something is true or correct",
+      "uk": "твердо вірити, що щось правдиве чи правильне",
+      "ru": "твёрдо верить, что что-то правдиво или правильно"
+    },
+    "def": {
+      "de": "Ich bin <g>davon <b>überzeugt</b>, dass</g> ich gut zu dieser Stelle passe.",
+      "en": "I am <g><b>convinced</b> that</g> I am a good fit for this position.",
+      "uk": "Я <g><b>переконаний</b> у тому, що</g> добре підходжу для цієї посади.",
+      "ru": "Я <g><b>убеждён</b> в том, что</g> хорошо подхожу для этой должности."
+    },
+    "gram": "verben_praep_dass_satz"
+  },
+  {
+    "id": "k9_039",
+    "cat": "k9",
+    "term": {
+      "de": "der Bewerber / die Bewerberin",
+      "en": "applicant",
+      "uk": "кандидат",
+      "ru": "кандидат"
+    },
+    "short": {
+      "de": "eine Person, die sich um eine Stelle bewirbt",
+      "en": "a person who applies for a position",
+      "uk": "особа, яка подає заявку на посаду",
+      "ru": "лицо, подающее заявку на должность"
+    },
+    "def": {
+      "de": "Ein guter <b>Bewerber</b> sollte auch <g>selbstständig</g> arbeiten können.",
+      "en": "A good <b>applicant</b> should also be able to work independently.",
+      "uk": "Гарний <b>кандидат</b> має вміти також самостійно працювати.",
+      "ru": "Хороший <b>кандидат</b> должен уметь также самостоятельно работать."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_040",
+    "cat": "k9",
+    "term": {
+      "de": "die Stärke",
+      "en": "strength",
+      "uk": "сильна сторона",
+      "ru": "сильная сторона"
+    },
+    "short": {
+      "de": "eine Fähigkeit oder Eigenschaft, in der man besonders gut ist",
+      "en": "a skill or trait that you are especially good at",
+      "uk": "уміння чи риса, у якій людина особливо добра",
+      "ru": "умение или черта, в которой человек особенно хорош"
+    },
+    "def": {
+      "de": "Im Gespräch sollte man seine <g>wichtigsten</g> <b>Stärken</b> klar nennen.",
+      "en": "In the interview, you should clearly name your most important <b>strengths</b>.",
+      "uk": "На співбесіді варто чітко назвати свої найважливіші <b>сильні сторони</b>.",
+      "ru": "На собеседовании стоит чётко назвать свои самые важные <b>сильные стороны</b>."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_041",
+    "cat": "k9",
+    "term": {
+      "de": "die Schwäche",
+      "en": "weakness",
+      "uk": "слабка сторона",
+      "ru": "слабая сторона"
+    },
+    "short": {
+      "de": "ein Bereich, in dem man nicht so gut ist",
+      "en": "an area where you are not so good",
+      "uk": "сфера, у якій людина не дуже добра",
+      "ru": "область, в которой человек не очень хорош"
+    },
+    "def": {
+      "de": "Eine <g>typische</g> Frage im Gespräch betrifft die eigenen <b>Schwächen</b>.",
+      "en": "A typical question in the interview concerns your own <b>weaknesses</b>.",
+      "uk": "Типове питання на співбесіді стосується власних <b>слабких сторін</b>.",
+      "ru": "Типичный вопрос на собеседовании касается собственных <b>слабых сторон</b>."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_042",
+    "cat": "k9",
+    "term": {
+      "de": "die Frage",
+      "en": "question",
+      "uk": "питання",
+      "ru": "вопрос"
+    },
+    "short": {
+      "de": "das, was man jemandem sagt, um eine Antwort zu bekommen",
+      "en": "something you say to someone to get an answer",
+      "uk": "те, що кажуть комусь, щоб отримати відповідь",
+      "ru": "то, что говорят кому-то, чтобы получить ответ"
+    },
+    "def": {
+      "de": "Der Personalchef stellte eine ziemlich <g>kritische</g> <b>Frage</b>.",
+      "en": "The HR manager asked a rather critical <b>question</b>.",
+      "uk": "Керівник відділу кадрів поставив доволі критичне <b>питання</b>.",
+      "ru": "Начальник отдела кадров задал довольно критичный <b>вопрос</b>."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_043",
+    "cat": "k9",
+    "term": {
+      "de": "die Erwartung",
+      "en": "expectation",
+      "uk": "очікування",
+      "ru": "ожидание"
+    },
+    "short": {
+      "de": "das, was man von etwas oder jemandem erhofft oder erwartet",
+      "en": "what you hope for or expect from something or someone",
+      "uk": "те, на що людина сподівається чи що очікує від чогось або когось",
+      "ru": "то, на что человек надеется или что ожидает от чего-то или кого-то"
+    },
+    "def": {
+      "de": "Ich habe <g>realistische</g> <b>Erwartungen</b> an das Vorstellungsgespräch.",
+      "en": "I have realistic <b>expectations</b> for the job interview.",
+      "uk": "Я маю реалістичні <b>очікування</b> від співбесіди.",
+      "ru": "У меня реалистичные <b>ожидания</b> от собеседования."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_044",
+    "cat": "k9",
+    "term": {
+      "de": "reagieren",
+      "en": "to react",
+      "uk": "реагувати",
+      "ru": "реагировать"
+    },
+    "short": {
+      "de": "auf etwas mit einer bestimmten Handlung oder einem Gefühl antworten",
+      "en": "to respond to something with a certain action or feeling",
+      "uk": "відповідати на щось певною дією чи почуттям",
+      "ru": "отвечать на что-то определённым действием или чувством"
+    },
+    "def": {
+      "de": "Sie hat auf die schwierige Frage sehr <g>ruhig</g> <b>reagiert</b>.",
+      "en": "She <b>reacted</b> very calmly to the difficult question.",
+      "uk": "Вона дуже спокійно <b>відреагувала</b> на складне питання.",
+      "ru": "Она очень спокойно <b>отреагировала</b> на сложный вопрос."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_045",
+    "cat": "k9",
+    "term": {
+      "de": "zuständig",
+      "en": "responsible, in charge",
+      "uk": "відповідальний (за)",
+      "ru": "ответственный (за)"
+    },
+    "short": {
+      "de": "verantwortlich für einen bestimmten Bereich oder eine Aufgabe",
+      "en": "responsible for a certain area or task",
+      "uk": "відповідальний за певну сферу чи завдання",
+      "ru": "ответственный за определённую сферу или задачу"
+    },
+    "def": {
+      "de": "Für die Einstellung neuer Mitarbeiter ist die Personalabteilung <g><b>zuständig</b></g>.",
+      "en": "The HR department is <b>responsible</b> for hiring new employees.",
+      "uk": "За прийом нових співробітників <b>відповідає</b> відділ кадрів.",
+      "ru": "За приём новых сотрудников <b>отвечает</b> отдел кадров."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_046",
+    "cat": "k9",
+    "term": {
+      "de": "das Auftreten",
+      "en": "manner, demeanour",
+      "uk": "манера триматися",
+      "ru": "манера держаться"
+    },
+    "short": {
+      "de": "die Art, wie man sich verhält und wirkt, wenn man mit anderen zu tun hat",
+      "en": "the way you behave and come across when dealing with others",
+      "uk": "спосіб поведінки та враження, яке справляєш у спілкуванні з іншими",
+      "ru": "способ поведения и впечатление, которое производишь в общении с другими"
+    },
+    "def": {
+      "de": "Ein <g>sympathisches</g> <b>Auftreten</b> hinterlässt einen guten ersten Eindruck.",
+      "en": "A likeable <b>manner</b> leaves a good first impression.",
+      "uk": "Приємна <b>манера триматися</b> справляє гарне перше враження.",
+      "ru": "Приятная <b>манера держаться</b> производит хорошее первое впечатление."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_047",
+    "cat": "k9",
+    "term": {
+      "de": "die Pause",
+      "en": "break",
+      "uk": "перерва",
+      "ru": "перерыв"
+    },
+    "short": {
+      "de": "eine kurze Zeit, in der man nicht arbeitet und sich ausruht",
+      "en": "a short time when you don't work and rest",
+      "uk": "короткий час, коли не працюють і відпочивають",
+      "ru": "короткое время, когда не работают и отдыхают"
+    },
+    "def": {
+      "de": "Wir machen <g>regelmäßig</g> eine kurze <b>Pause</b> während der Arbeit.",
+      "en": "We regularly take a short <b>break</b> during work.",
+      "uk": "Ми регулярно робимо коротку <b>перерву</b> під час роботи.",
+      "ru": "Мы регулярно делаем короткий <b>перерыв</b> во время работы."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_048",
+    "cat": "k9",
+    "term": {
+      "de": "der Feierabend",
+      "en": "end of the workday",
+      "uk": "кінець робочого дня",
+      "ru": "конец рабочего дня"
+    },
+    "short": {
+      "de": "das Ende der Arbeitszeit am Tag",
+      "en": "the end of the working day",
+      "uk": "закінчення робочого часу протягом дня",
+      "ru": "окончание рабочего времени в течение дня"
+    },
+    "def": {
+      "de": "Nach einem <g>stressigen</g> Tag freue ich mich sehr auf den <b>Feierabend</b>.",
+      "en": "After a stressful day, I really look forward to the <b>end of the workday</b>.",
+      "uk": "Після напруженого дня я з нетерпінням чекаю <b>кінця робочого дня</b>.",
+      "ru": "После напряжённого дня я с нетерпением жду <b>конца рабочего дня</b>."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_049",
+    "cat": "k9",
+    "term": {
+      "de": "der Arbeitsplatz",
+      "en": "workplace",
+      "uk": "робоче місце",
+      "ru": "рабочее место"
+    },
+    "short": {
+      "de": "der Ort oder die Stelle, an der man arbeitet",
+      "en": "the place or spot where you work",
+      "uk": "місце, де людина працює",
+      "ru": "место, где человек работает"
+    },
+    "def": {
+      "de": "Ein <g>ergonomischer</g> <b>Arbeitsplatz</b> ist wichtig für die Gesundheit.",
+      "en": "An ergonomic <b>workplace</b> is important for your health.",
+      "uk": "Ергономічне <b>робоче місце</b> важливе для здоровʼя.",
+      "ru": "Эргономичное <b>рабочее место</b> важно для здоровья."
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "k9_050",
+    "cat": "k9",
+    "term": {
+      "de": "die Gewohnheit",
+      "en": "habit",
+      "uk": "звичка",
+      "ru": "привычка"
+    },
+    "short": {
+      "de": "etwas, das man regelmäßig und automatisch tut",
+      "en": "something you do regularly and automatically",
+      "uk": "те, що людина робить регулярно й автоматично",
+      "ru": "то, что человек делает регулярно и автоматически"
+    },
+    "def": {
+      "de": "Das ist eine ziemlich <g>typische</g> <b>Gewohnheit</b> unter Büroangestellten.",
+      "en": "That is a fairly typical <b>habit</b> among office employees.",
+      "uk": "Це доволі типова <b>звичка</b> серед офісних працівників.",
+      "ru": "Это довольно типичная <b>привычка</b> среди офисных сотрудников."
     },
     "gram": "adjektive_auf_ig_isch"
   },
