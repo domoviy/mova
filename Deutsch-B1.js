@@ -2385,7 +2385,15 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k8_001",
-      "k8_011"
+      "k8_011",
+      "k8_016",
+      "k8_017",
+      "k8_018",
+      "k8_019",
+      "k8_020",
+      "k8_021",
+      "k8_022",
+      "k8_023"
     ],
     "unlockAfter": null,
     "sbCards": []
@@ -2413,7 +2421,15 @@ var LESSONS = [
     "grammar": "verben_mit_praep_wdh_b1",
     "cardIds": [
       "k8_008",
-      "k8_002"
+      "k8_002",
+      "k8_024",
+      "k8_025",
+      "k8_026",
+      "k8_027",
+      "k8_028",
+      "k8_029",
+      "k8_030",
+      "k8_031"
     ],
     "unlockAfter": "k8m1",
     "sbCards": []
@@ -2441,7 +2457,15 @@ var LESSONS = [
     "grammar": "fragewoerter_wor_dar",
     "cardIds": [
       "k8_003",
-      "k8_012"
+      "k8_012",
+      "k8_032",
+      "k8_033",
+      "k8_034",
+      "k8_035",
+      "k8_036",
+      "k8_037",
+      "k8_038",
+      "k8_039"
     ],
     "unlockAfter": "k8m2",
     "sbCards": []
@@ -2469,7 +2493,15 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k8_004",
-      "k8_015"
+      "k8_015",
+      "k8_040",
+      "k8_041",
+      "k8_042",
+      "k8_043",
+      "k8_044",
+      "k8_045",
+      "k8_046",
+      "k8_047"
     ],
     "unlockAfter": "k8m3",
     "sbCards": []
@@ -2497,7 +2529,15 @@ var LESSONS = [
     "grammar": "interesse_denn_eigentlich",
     "cardIds": [
       "k8_005",
-      "k8_013"
+      "k8_013",
+      "k8_048",
+      "k8_049",
+      "k8_050",
+      "k8_051",
+      "k8_052",
+      "k8_053",
+      "k8_054",
+      "k8_055"
     ],
     "unlockAfter": "k8m4",
     "sbCards": []
@@ -2528,7 +2568,12 @@ var LESSONS = [
       "k8_007",
       "k8_009",
       "k8_010",
-      "k8_014"
+      "k8_014",
+      "k8_056",
+      "k8_057",
+      "k8_058",
+      "k8_059",
+      "k8_060"
     ],
     "unlockAfter": "k8m5",
     "sbCards": []
@@ -13708,6 +13753,1041 @@ var VOCAB = [
       "ru": "К чему именно относится новое <b>предложение</b> библиотеки?"
     },
     "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_016",
+    "cat": "k8",
+    "term": {
+      "de": "die Einladung",
+      "en": "invitation",
+      "uk": "запрошення",
+      "ru": "приглашение"
+    },
+    "short": {
+      "de": "eine Nachricht, mit der man jemanden zu einem Ereignis bittet",
+      "en": "a message that invites someone to an event",
+      "uk": "повідомлення, яким когось запрошують на подію",
+      "ru": "сообщение, которым кого-то приглашают на мероприятие"
+    },
+    "def": {
+      "de": "Die <b>Einladung</b> zum Festival <g>wird</g> heute per E-Mail <g>verschickt</g>.",
+      "en": "The <b>invitation</b> to the festival <g>is</g> <g>sent</g> by email today.",
+      "uk": "<b>Запрошення</b> на фестиваль сьогодні надсилають електронною поштою.",
+      "ru": "<b>Приглашение</b> на фестиваль сегодня отправляют по электронной почте."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k8_017",
+    "cat": "k8",
+    "term": {
+      "de": "einladen",
+      "en": "to invite",
+      "uk": "запрошувати",
+      "ru": "приглашать"
+    },
+    "short": {
+      "de": "jemanden bitten, zu einem Ereignis zu kommen",
+      "en": "to ask someone to come to an event",
+      "uk": "просити когось прийти на подію",
+      "ru": "просить кого-то прийти на мероприятие"
+    },
+    "def": {
+      "de": "Sie <g>wird</g> herzlich zur Party <g><b>eingeladen</b></g>.",
+      "en": "She <g>is</g> warmly <g><b>invited</b></g> to the party.",
+      "uk": "Її щиро <b>запрошують</b> на вечірку.",
+      "ru": "Её тепло <b>приглашают</b> на вечеринку."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k8_018",
+    "cat": "k8",
+    "term": {
+      "de": "stattfinden",
+      "en": "to take place",
+      "uk": "відбуватися",
+      "ru": "проходить, состояться"
+    },
+    "short": {
+      "de": "an einem bestimmten Ort und zu einer bestimmten Zeit passieren",
+      "en": "to happen at a certain place and time",
+      "uk": "відбуватися у певному місці й у певний час",
+      "ru": "происходить в определённом месте и в определённое время"
+    },
+    "def": {
+      "de": "Das Festival <b>findet</b> dieses Jahr wieder im Stadtpark <b>statt</b>.",
+      "en": "The festival <b>takes place</b> in the city park again this year.",
+      "uk": "Фестиваль цього року знову <b>відбудеться</b> в міському парку.",
+      "ru": "Фестиваль в этом году снова <b>пройдёт</b> в городском парке."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k8_019",
+    "cat": "k8",
+    "term": {
+      "de": "der Termin",
+      "en": "appointment, date",
+      "uk": "домовлена дата, зустріч",
+      "ru": "назначенная дата, встреча"
+    },
+    "short": {
+      "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
+      "en": "a certain time when you want to do something or go somewhere",
+      "uk": "конкретний час, коли хочеш щось зробити або кудись піти",
+      "ru": "конкретное время, когда хочешь что-то сделать или куда-то пойти"
+    },
+    "def": {
+      "de": "Der <b>Termin</b> für die Führung <g>wird</g> online <g>vereinbart</g>.",
+      "en": "The <b>appointment</b> for the tour <g>is</g> <g>arranged</g> online.",
+      "uk": "<b>Дату</b> екскурсії узгоджують онлайн.",
+      "ru": "<b>Дата</b> экскурсии согласовывается онлайн."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k8_020",
+    "cat": "k8",
+    "term": {
+      "de": "die Anmeldung",
+      "en": "registration",
+      "uk": "реєстрація",
+      "ru": "регистрация"
+    },
+    "short": {
+      "de": "der Vorgang, bei dem man sich offiziell für etwas einträgt",
+      "en": "the process of officially signing up for something",
+      "uk": "процес, коли людина офіційно записується на щось",
+      "ru": "процесс, когда человек официально записывается на что-то"
+    },
+    "def": {
+      "de": "Die <b>Anmeldung</b> für den Kurs <g>wird</g> ab morgen <g>freigeschaltet</g>.",
+      "en": "<b>Registration</b> for the course <g>is</g> <g>opened</g> from tomorrow.",
+      "uk": "<b>Реєстрацію</b> на курс відкривають із завтрашнього дня.",
+      "ru": "<b>Регистрацию</b> на курс открывают с завтрашнего дня."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k8_021",
+    "cat": "k8",
+    "term": {
+      "de": "sich anmelden",
+      "en": "to register",
+      "uk": "реєструватися",
+      "ru": "регистрироваться"
+    },
+    "short": {
+      "de": "sich offiziell für etwas eintragen, zum Beispiel für einen Kurs",
+      "en": "to officially sign up for something, for example a course",
+      "uk": "офіційно записуватися на щось, наприклад на курс",
+      "ru": "официально записываться на что-то, например на курс"
+    },
+    "def": {
+      "de": "Ich <b>melde</b> mich für die Bibliotheksführung online <b>an</b>.",
+      "en": "I <b>register</b> for the library tour online.",
+      "uk": "Я <b>реєструюся</b> на екскурсію бібліотекою онлайн.",
+      "ru": "Я <b>регистрируюсь</b> на экскурсию по библиотеке онлайн."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k8_022",
+    "cat": "k8",
+    "term": {
+      "de": "die Erlaubnis",
+      "en": "permission",
+      "uk": "дозвіл",
+      "ru": "разрешение"
+    },
+    "short": {
+      "de": "das offizielle Ja dazu, etwas machen zu dürfen",
+      "en": "official approval to be allowed to do something",
+      "uk": "офіційна згода на те, щоб щось робити",
+      "ru": "официальное согласие на то, чтобы что-то делать"
+    },
+    "def": {
+      "de": "Für das Projekt <g>wird</g> vorher extra eine <b>Erlaubnis</b> <g>eingeholt</g>.",
+      "en": "Special <b>permission</b> <g>is</g> <g>obtained</g> for the project beforehand.",
+      "uk": "Для цього проєкту заздалегідь окремо отримують <b>дозвіл</b>.",
+      "ru": "Для этого проекта заранее отдельно получают <b>разрешение</b>."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k8_023",
+    "cat": "k8",
+    "term": {
+      "de": "der Veranstaltungsort",
+      "en": "venue",
+      "uk": "місце проведення",
+      "ru": "место проведения"
+    },
+    "short": {
+      "de": "der Ort, an dem eine Veranstaltung stattfindet",
+      "en": "the place where an event takes place",
+      "uk": "місце, де відбувається захід",
+      "ru": "место, где происходит мероприятие"
+    },
+    "def": {
+      "de": "Der <b>Veranstaltungsort</b> <g>wird</g> den Teilnehmern rechtzeitig <g>mitgeteilt</g>.",
+      "en": "The <b>venue</b> <g>is</g> <g>communicated</g> to participants in good time.",
+      "uk": "<b>Місце проведення</b> заходу вчасно повідомляють учасникам.",
+      "ru": "<b>Место проведения</b> мероприятия вовремя сообщают участникам."
+    },
+    "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "k8_024",
+    "cat": "k8",
+    "term": {
+      "de": "sich vorbereiten (auf +Akk)",
+      "en": "to prepare (for)",
+      "uk": "готуватися (до)",
+      "ru": "готовиться (к)"
+    },
+    "short": {
+      "de": "sich rechtzeitig auf etwas einstellen, das bald passiert",
+      "en": "to get ready in time for something that will happen soon",
+      "uk": "заздалегідь готуватися до того, що незабаром станеться",
+      "ru": "заранее готовиться к тому, что скоро произойдёт"
+    },
+    "def": {
+      "de": "Wir <b>bereiten</b> uns schon seit Tagen <g>auf</g> das Festival <b>vor</b>.",
+      "en": "We have been <b>preparing</b> <g>for</g> the festival for days.",
+      "uk": "Ми вже кілька днів <b>готуємося</b> до фестивалю.",
+      "ru": "Мы уже несколько дней <b>готовимся</b> к фестивалю."
+    },
+    "gram": "verben_mit_praep_wdh_b1"
+  },
+  {
+    "id": "k8_025",
+    "cat": "k8",
+    "term": {
+      "de": "sich kümmern (um +Akk)",
+      "en": "to take care (of)",
+      "uk": "піклуватися (про)",
+      "ru": "заботиться (о)"
+    },
+    "short": {
+      "de": "sich verantwortlich um etwas oder jemanden kümmern",
+      "en": "to take responsibility for something or someone",
+      "uk": "брати на себе відповідальність за щось або когось",
+      "ru": "брать на себя ответственность за что-то или кого-то"
+    },
+    "def": {
+      "de": "In unserer Familie <b>kümmert</b> sich meine Schwester <g>um</g> die Anmeldung fürs Festival.",
+      "en": "In our family, my sister takes <b>care</b> <g>of</g> the festival registration.",
+      "uk": "У нашій родині моя сестра <b>піклується</b> про реєстрацію на фестиваль.",
+      "ru": "В нашей семье моя сестра <b>заботится</b> о регистрации на фестиваль."
+    },
+    "gram": "verben_mit_praep_wdh_b1"
+  },
+  {
+    "id": "k8_026",
+    "cat": "k8",
+    "term": {
+      "de": "sich erinnern (an +Akk)",
+      "en": "to remember",
+      "uk": "памʼятати, згадувати",
+      "ru": "помнить, вспоминать"
+    },
+    "short": {
+      "de": "sich an etwas aus der Vergangenheit zurückdenken",
+      "en": "to think back to something from the past",
+      "uk": "згадувати щось із минулого",
+      "ru": "вспоминать что-то из прошлого"
+    },
+    "def": {
+      "de": "Ich <b>erinnere</b> mich noch gut <g>an</g> das letzte Festival.",
+      "en": "I still <b>remember</b> the last festival well.",
+      "uk": "Я ще добре <b>памʼятаю</b> минулий фестиваль.",
+      "ru": "Я ещё хорошо <b>помню</b> прошлый фестиваль."
+    },
+    "gram": "verben_mit_praep_wdh_b1"
+  },
+  {
+    "id": "k8_027",
+    "cat": "k8",
+    "term": {
+      "de": "denken (an +Akk)",
+      "en": "to think (of)",
+      "uk": "думати (про)",
+      "ru": "думать (о)"
+    },
+    "short": {
+      "de": "an jemanden oder etwas denken, es im Kopf haben",
+      "en": "to have someone or something in your mind",
+      "uk": "тримати когось або щось у думках",
+      "ru": "держать кого-то или что-то в мыслях"
+    },
+    "def": {
+      "de": "Bei diesem Lied <b>denke</b> ich sofort <g>an</g> das Festival letztes Jahr.",
+      "en": "When I hear this song, I immediately <b>think</b> <g>of</g> last year's festival.",
+      "uk": "Почувши цю пісню, я одразу <b>думаю</b> про минулорічний фестиваль.",
+      "ru": "Услышав эту песню, я сразу <b>думаю</b> о прошлогоднем фестивале."
+    },
+    "gram": "verben_mit_praep_wdh_b1"
+  },
+  {
+    "id": "k8_028",
+    "cat": "k8",
+    "term": {
+      "de": "warten (auf +Akk)",
+      "en": "to wait (for)",
+      "uk": "чекати (на)",
+      "ru": "ждать"
+    },
+    "short": {
+      "de": "geduldig bleiben, bis etwas passiert oder jemand kommt",
+      "en": "to stay patient until something happens or someone arrives",
+      "uk": "терпляче чекати, поки щось станеться або хтось прийде",
+      "ru": "терпеливо ждать, пока что-то произойдёт или кто-то придёт"
+    },
+    "def": {
+      "de": "Alle <b>warten</b> schon gespannt <g>auf</g> den Beginn des Festivals.",
+      "en": "Everyone is already eagerly <b>waiting</b> <g>for</g> the start of the festival.",
+      "uk": "Усі вже з нетерпінням <b>чекають</b> на початок фестивалю.",
+      "ru": "Все уже с нетерпением <b>ждут</b> начала фестиваля."
+    },
+    "gram": "verben_mit_praep_wdh_b1"
+  },
+  {
+    "id": "k8_029",
+    "cat": "k8",
+    "term": {
+      "de": "sich verlassen (auf +Akk)",
+      "en": "to rely (on)",
+      "uk": "покладатися (на)",
+      "ru": "полагаться (на)"
+    },
+    "short": {
+      "de": "sicher sein, dass man sich auf jemanden oder etwas stützen kann",
+      "en": "to be sure that you can depend on someone or something",
+      "uk": "бути впевненим, що можеш розраховувати на когось або щось",
+      "ru": "быть уверенным, что можешь рассчитывать на кого-то или что-то"
+    },
+    "def": {
+      "de": "Bei der Organisation <b>verlassen</b> wir uns ganz <g>auf</g> unsere Nachbarn.",
+      "en": "For the organisation, we completely <b>rely</b> <g>on</g> our neighbours.",
+      "uk": "В організації ми повністю <b>покладаємося</b> на своїх сусідів.",
+      "ru": "В организации мы полностью <b>полагаемся</b> на наших соседей."
+    },
+    "gram": "verben_mit_praep_wdh_b1"
+  },
+  {
+    "id": "k8_030",
+    "cat": "k8",
+    "term": {
+      "de": "sich beschäftigen (mit +Dat)",
+      "en": "to occupy oneself (with), to deal (with)",
+      "uk": "займатися (чимось)",
+      "ru": "заниматься (чем-то)"
+    },
+    "short": {
+      "de": "sich mit einem Thema oder einer Aufgabe intensiv befassen",
+      "en": "to work intensively on a topic or task",
+      "uk": "інтенсивно займатися темою чи завданням",
+      "ru": "интенсивно заниматься темой или задачей"
+    },
+    "def": {
+      "de": "Seit Wochen <b>beschäftigt</b> sie sich intensiv <g>mit</g> der Planung des Festivals.",
+      "en": "For weeks, she has been intensively <b>occupied</b> <g>with</g> planning the festival.",
+      "uk": "Уже кілька тижнів вона інтенсивно <b>займається</b> плануванням фестивалю.",
+      "ru": "Уже несколько недель она интенсивно <b>занимается</b> планированием фестиваля."
+    },
+    "gram": "verben_mit_praep_wdh_b1"
+  },
+  {
+    "id": "k8_031",
+    "cat": "k8",
+    "term": {
+      "de": "sich gewöhnen (an +Akk)",
+      "en": "to get used (to)",
+      "uk": "звикати (до)",
+      "ru": "привыкать (к)"
+    },
+    "short": {
+      "de": "etwas Neues normal finden, nachdem man es oft erlebt hat",
+      "en": "to start finding something new normal after experiencing it often",
+      "uk": "починати вважати щось нове звичним після частого досвіду",
+      "ru": "начинать считать что-то новое обычным после частого опыта"
+    },
+    "def": {
+      "de": "Man <b>gewöhnt</b> sich schnell <g>an</g> die tolle Atmosphäre auf dem Festival.",
+      "en": "You quickly <b>get used</b> <g>to</g> the great atmosphere at the festival.",
+      "uk": "До чудової атмосфери на фестивалі швидко <b>звикаєш</b>.",
+      "ru": "К отличной атмосфере на фестивале быстро <b>привыкаешь</b>."
+    },
+    "gram": "verben_mit_praep_wdh_b1"
+  },
+  {
+    "id": "k8_032",
+    "cat": "k8",
+    "term": {
+      "de": "die Erfahrung",
+      "en": "experience",
+      "uk": "досвід",
+      "ru": "опыт"
+    },
+    "short": {
+      "de": "das Wissen oder die Fähigkeit, die man durch etwas Erlebtes bekommt",
+      "en": "the knowledge or skill you gain from something you have experienced",
+      "uk": "знання чи вміння, які отримуєш завдяки пережитому",
+      "ru": "знания или умения, которые получаешь благодаря пережитому"
+    },
+    "def": {
+      "de": "<g>Womit</g> hast du bei der Organisation die meiste <b>Erfahrung</b>?",
+      "en": "What do you have the most <b>experience</b> with when it comes to organising?",
+      "uk": "У чому в тебе найбільше <b>досвіду</b> в організації?",
+      "ru": "В чём у тебя больше всего <b>опыта</b> в организации?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_033",
+    "cat": "k8",
+    "term": {
+      "de": "der Eindruck",
+      "en": "impression",
+      "uk": "враження",
+      "ru": "впечатление"
+    },
+    "short": {
+      "de": "das persönliche Gefühl oder Bild, das man von etwas bekommt",
+      "en": "the personal feeling or picture you get from something",
+      "uk": "особисте відчуття чи уявлення, яке складається про щось",
+      "ru": "личное ощущение или представление, которое складывается о чём-то"
+    },
+    "def": {
+      "de": "<g>Wovon</g> hattest du beim Festival den stärksten <b>Eindruck</b>?",
+      "en": "What gave you the strongest <b>impression</b> at the festival?",
+      "uk": "Від чого в тебе на фестивалі склалося найсильніше <b>враження</b>?",
+      "ru": "От чего у тебя на фестивале сложилось самое сильное <b>впечатление</b>?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_034",
+    "cat": "k8",
+    "term": {
+      "de": "stolz (auf +Akk)",
+      "en": "proud (of)",
+      "uk": "гордий (чимось)",
+      "ru": "гордый (чем-то)"
+    },
+    "short": {
+      "de": "zufrieden und glücklich wegen einer eigenen Leistung",
+      "en": "satisfied and happy because of your own achievement",
+      "uk": "задоволений і щасливий через власне досягнення",
+      "ru": "довольный и счастливый из-за собственного достижения"
+    },
+    "def": {
+      "de": "<g>Worauf</g> bist du bei diesem Projekt am meisten <b>stolz</b>?",
+      "en": "What are you most <b>proud</b> of in this project?",
+      "uk": "Чим ти найбільше <b>пишаєшся</b> в цьому проєкті?",
+      "ru": "Чем ты больше всего <b>гордишься</b> в этом проекте?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_035",
+    "cat": "k8",
+    "term": {
+      "de": "sich beschweren (über +Akk)",
+      "en": "to complain (about)",
+      "uk": "скаржитися (на)",
+      "ru": "жаловаться (на)"
+    },
+    "short": {
+      "de": "seine Unzufriedenheit über etwas offiziell äußern",
+      "en": "to officially express your dissatisfaction about something",
+      "uk": "офіційно висловлювати незадоволення чимось",
+      "ru": "официально выражать недовольство чем-то"
+    },
+    "def": {
+      "de": "<g>Worüber</g> haben sich die Besucher nach dem Festival am meisten <b>beschwert</b>?",
+      "en": "What did visitors <b>complain</b> about most after the festival?",
+      "uk": "На що найбільше <b>скаржилися</b> відвідувачі після фестивалю?",
+      "ru": "На что больше всего <b>жаловались</b> посетители после фестиваля?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_036",
+    "cat": "k8",
+    "term": {
+      "de": "neugierig (auf +Akk)",
+      "en": "curious (about)",
+      "uk": "зацікавлений, допитливий",
+      "ru": "любопытный, заинтересованный"
+    },
+    "short": {
+      "de": "mit großem Interesse etwas Neues erfahren wollen",
+      "en": "wanting to find out something new with great interest",
+      "uk": "з великим інтересом хотіти дізнатися щось нове",
+      "ru": "с большим интересом хотеть узнать что-то новое"
+    },
+    "def": {
+      "de": "<g>Worauf</g> bist du beim nächsten Festival am meisten <b>neugierig</b>?",
+      "en": "What are you most <b>curious</b> about for the next festival?",
+      "uk": "Чим ти найбільше <b>зацікавлений</b> перед наступним фестивалем?",
+      "ru": "Чем ты больше всего <b>заинтересован</b> перед следующим фестивалем?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_037",
+    "cat": "k8",
+    "term": {
+      "de": "die Atmosphäre",
+      "en": "atmosphere",
+      "uk": "атмосфера",
+      "ru": "атмосфера"
+    },
+    "short": {
+      "de": "die besondere Stimmung an einem Ort oder bei einem Ereignis",
+      "en": "the special mood at a place or event",
+      "uk": "особлива атмосфера в певному місці чи на події",
+      "ru": "особая атмосфера в определённом месте или на мероприятии"
+    },
+    "def": {
+      "de": "<g>Wovon</g> war die besondere <b>Atmosphäre</b> auf dem Festival geprägt?",
+      "en": "What shaped the special <b>atmosphere</b> at the festival?",
+      "uk": "Чим була сформована особлива <b>атмосфера</b> на фестивалі?",
+      "ru": "Чем была сформирована особая <b>атмосфера</b> на фестивале?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_038",
+    "cat": "k8",
+    "term": {
+      "de": "enttäuscht (von +Dat)",
+      "en": "disappointed (by)",
+      "uk": "розчарований (чимось)",
+      "ru": "разочарованный (чем-то)"
+    },
+    "short": {
+      "de": "traurig oder unzufrieden, weil etwas nicht so gut war wie erwartet",
+      "en": "sad or unhappy because something was not as good as expected",
+      "uk": "сумний або незадоволений через те, що щось було гіршим, ніж очікувалося",
+      "ru": "грустный или недовольный из-за того, что что-то было хуже, чем ожидалось"
+    },
+    "def": {
+      "de": "<g>Wovon</g> warst du beim Festival am meisten <b>enttäuscht</b>?",
+      "en": "What were you most <b>disappointed</b> by at the festival?",
+      "uk": "Чим ти був найбільше <b>розчарований</b> на фестивалі?",
+      "ru": "Чем ты был больше всего <b>разочарован</b> на фестивале?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_039",
+    "cat": "k8",
+    "term": {
+      "de": "die Stimmung",
+      "en": "mood, atmosphere",
+      "uk": "настрій, атмосфера",
+      "ru": "настроение, атмосфера"
+    },
+    "short": {
+      "de": "das allgemeine Gefühl oder die Laune in einer Gruppe von Menschen",
+      "en": "the general feeling or mood among a group of people",
+      "uk": "загальне відчуття чи настрій у групі людей",
+      "ru": "общее ощущение или настроение в группе людей"
+    },
+    "def": {
+      "de": "<g>Wovon</g> hing die gute <b>Stimmung</b> beim Festival hauptsächlich ab?",
+      "en": "What did the great <b>mood</b> at the festival mainly depend on?",
+      "uk": "Від чого головним чином залежав хороший <b>настрій</b> на фестивалі?",
+      "ru": "От чего в основном зависело хорошее <b>настроение</b> на фестивале?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_040",
+    "cat": "k8",
+    "term": {
+      "de": "die Nachricht",
+      "en": "message",
+      "uk": "повідомлення",
+      "ru": "сообщение"
+    },
+    "short": {
+      "de": "eine kurze Information, die man jemandem schickt",
+      "en": "a short piece of information sent to someone",
+      "uk": "коротка інформація, яку надсилають комусь",
+      "ru": "короткая информация, которую отправляют кому-то"
+    },
+    "def": {
+      "de": "<g>Worüber</g> informierte die <b>Nachricht</b> von der Bibliothek genau?",
+      "en": "What exactly did the <b>message</b> from the library inform you about?",
+      "uk": "Про що саме інформувало <b>повідомлення</b> від бібліотеки?",
+      "ru": "О чём именно информировало <b>сообщение</b> от библиотеки?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_041",
+    "cat": "k8",
+    "term": {
+      "de": "die Frist",
+      "en": "deadline",
+      "uk": "строк, дедлайн",
+      "ru": "срок, дедлайн"
+    },
+    "short": {
+      "de": "der letzte Zeitpunkt, bis zu dem man etwas machen muss",
+      "en": "the last point in time by which you must do something",
+      "uk": "останній момент, до якого треба щось зробити",
+      "ru": "последний момент, до которого нужно что-то сделать"
+    },
+    "def": {
+      "de": "Bis wann läuft die <b>Frist</b> für die Rückgabe der Bücher?",
+      "en": "Until when does the <b>deadline</b> for returning the books run?",
+      "uk": "До якого числа діє <b>строк</b> для повернення книжок?",
+      "ru": "До какого числа действует <b>срок</b> для возврата книг?"
+    },
+    "gram": ""
+  },
+  {
+    "id": "k8_042",
+    "cat": "k8",
+    "term": {
+      "de": "verlängern",
+      "en": "to extend, to renew",
+      "uk": "продовжувати",
+      "ru": "продлевать"
+    },
+    "short": {
+      "de": "die Zeit für etwas länger machen, zum Beispiel eine Leihfrist",
+      "en": "to make the time for something longer, for example a loan period",
+      "uk": "робити час для чогось довшим, наприклад термін позики",
+      "ru": "делать время для чего-то дольше, например срок займа"
+    },
+    "def": {
+      "de": "Ich möchte die Leihfrist für dieses Buch online <b>verlängern</b>.",
+      "en": "I would like to <b>extend</b> the loan period for this book online.",
+      "uk": "Я хочу <b>продовжити</b> термін позики цієї книжки онлайн.",
+      "ru": "Я хочу <b>продлить</b> срок займа этой книги онлайн."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k8_043",
+    "cat": "k8",
+    "term": {
+      "de": "die Gebühr",
+      "en": "fee",
+      "uk": "плата, збір",
+      "ru": "плата, сбор"
+    },
+    "short": {
+      "de": "das Geld, das man für eine bestimmte Leistung bezahlen muss",
+      "en": "the money you must pay for a certain service",
+      "uk": "гроші, які треба заплатити за певну послугу",
+      "ru": "деньги, которые нужно заплатить за определённую услугу"
+    },
+    "def": {
+      "de": "<g>Wofür</g> genau wird bei der Bibliothek eine <b>Gebühr</b> verlangt?",
+      "en": "What exactly does the library charge a <b>fee</b> for?",
+      "uk": "За що саме бібліотека стягує <b>плату</b>?",
+      "ru": "За что именно библиотека взимает <b>плату</b>?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_044",
+    "cat": "k8",
+    "term": {
+      "de": "zurückgeben",
+      "en": "to return, to give back",
+      "uk": "повертати",
+      "ru": "возвращать"
+    },
+    "short": {
+      "de": "etwas, das man ausgeliehen hat, wieder an den Besitzer bringen",
+      "en": "to bring something you borrowed back to its owner",
+      "uk": "приносити назад власнику те, що позичив",
+      "ru": "приносить обратно владельцу то, что одолжил"
+    },
+    "def": {
+      "de": "Ich muss die Bücher bis Freitag in der Bibliothek <b>zurückgeben</b>.",
+      "en": "I have to <b>return</b> the books to the library by Friday.",
+      "uk": "Я маю <b>повернути</b> книжки до бібліотеки до пʼятниці.",
+      "ru": "Я должен <b>вернуть</b> книги в библиотеку до пятницы."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k8_045",
+    "cat": "k8",
+    "term": {
+      "de": "der Ausweis",
+      "en": "card, ID",
+      "uk": "квиток, посвідчення",
+      "ru": "билет, удостоверение"
+    },
+    "short": {
+      "de": "eine Karte, mit der man zeigt, dass man Mitglied oder berechtigt ist",
+      "en": "a card that shows you are a member or entitled to something",
+      "uk": "картка, яка підтверджує, що ти є членом або маєш право на щось",
+      "ru": "карта, подтверждающая, что ты являешься членом или имеешь право на что-то"
+    },
+    "def": {
+      "de": "Ohne Bibliotheks<b>ausweis</b> kann ich leider keine Bücher ausleihen.",
+      "en": "Without a library <b>card</b>, I unfortunately cannot borrow any books.",
+      "uk": "Без бібліотечного <b>квитка</b> я, на жаль, не можу позичати книжки.",
+      "ru": "Без библиотечного <b>билета</b> я, к сожалению, не могу брать книги."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k8_046",
+    "cat": "k8",
+    "term": {
+      "de": "reservieren",
+      "en": "to reserve",
+      "uk": "резервувати",
+      "ru": "резервировать"
+    },
+    "short": {
+      "de": "im Voraus dafür sorgen, dass etwas für einen bereitgehalten wird",
+      "en": "to arrange in advance for something to be kept for you",
+      "uk": "заздалегідь домовлятися, щоб щось залишили для тебе",
+      "ru": "заранее договариваться, чтобы что-то оставили для тебя"
+    },
+    "def": {
+      "de": "Man kann die Bücher jetzt auch bequem online <b>reservieren</b>.",
+      "en": "You can now also conveniently <b>reserve</b> the books online.",
+      "uk": "Тепер книжки можна також зручно <b>резервувати</b> онлайн.",
+      "ru": "Теперь книги можно также удобно <b>резервировать</b> онлайн."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k8_047",
+    "cat": "k8",
+    "term": {
+      "de": "das Mitglied",
+      "en": "member",
+      "uk": "член",
+      "ru": "член"
+    },
+    "short": {
+      "de": "eine Person, die offiziell zu einer Gruppe oder Organisation gehört",
+      "en": "a person who officially belongs to a group or organisation",
+      "uk": "особа, яка офіційно належить до групи чи організації",
+      "ru": "лицо, официально принадлежащее к группе или организации"
+    },
+    "def": {
+      "de": "<g>Wovon</g> profitieren <b>Mitglieder</b> der Bibliothek besonders?",
+      "en": "What do library <b>members</b> particularly benefit from?",
+      "uk": "Від чого особливо виграють <b>члени</b> бібліотеки?",
+      "ru": "От чего особенно выигрывают <b>члены</b> библиотеки?"
+    },
+    "gram": "fragewoerter_wor_dar"
+  },
+  {
+    "id": "k8_048",
+    "cat": "k8",
+    "term": {
+      "de": "die Öffnungszeiten",
+      "en": "opening hours",
+      "uk": "години роботи",
+      "ru": "часы работы"
+    },
+    "short": {
+      "de": "die Zeiten, zu denen ein Ort, zum Beispiel eine Bibliothek, geöffnet ist",
+      "en": "the times when a place, for example a library, is open",
+      "uk": "час, коли якесь місце, наприклад бібліотека, відкрите",
+      "ru": "время, когда какое-то место, например библиотека, открыто"
+    },
+    "def": {
+      "de": "Wie sind die <b>Öffnungszeiten</b> <g>denn</g> am Wochenende?",
+      "en": "So, what <g>actually</g> are the <b>opening hours</b> at the weekend?",
+      "uk": "А які <g>взагалі</g> <b>години роботи</b> у вихідні?",
+      "ru": "А какие <g>вообще</g> <b>часы работы</b> в выходные?"
+    },
+    "gram": "interesse_denn_eigentlich"
+  },
+  {
+    "id": "k8_049",
+    "cat": "k8",
+    "term": {
+      "de": "der Lesesaal",
+      "en": "reading room",
+      "uk": "читальний зал",
+      "ru": "читальный зал"
+    },
+    "short": {
+      "de": "ein ruhiger Raum in der Bibliothek zum Lesen und Lernen",
+      "en": "a quiet room in the library for reading and studying",
+      "uk": "тиха кімната в бібліотеці для читання й навчання",
+      "ru": "тихая комната в библиотеке для чтения и учёбы"
+    },
+    "def": {
+      "de": "Wo ist der <b>Lesesaal</b> <g>eigentlich</g> genau?",
+      "en": "So, where <g>actually</g> is the <b>reading room</b>?",
+      "uk": "А де <g>взагалі</g> знаходиться <b>читальний зал</b>?",
+      "ru": "А где <g>вообще</g> находится <b>читальный зал</b>?"
+    },
+    "gram": "interesse_denn_eigentlich"
+  },
+  {
+    "id": "k8_050",
+    "cat": "k8",
+    "term": {
+      "de": "ausleihen",
+      "en": "to borrow",
+      "uk": "позичати",
+      "ru": "брать (на время)"
+    },
+    "short": {
+      "de": "sich etwas, zum Beispiel ein Buch, für eine bestimmte Zeit geben lassen",
+      "en": "to get something, for example a book, given to you for a certain time",
+      "uk": "отримувати щось, наприклад книжку, на певний час",
+      "ru": "получать что-то, например книгу, на определённое время"
+    },
+    "def": {
+      "de": "Wie viele Bücher darf ich <g>denn</g> gleichzeitig <b>ausleihen</b>?",
+      "en": "So, how many books am I <g>actually</g> allowed to <b>borrow</b> at the same time?",
+      "uk": "А скільки книжок <g>взагалі</g> можна <b>позичити</b> одночасно?",
+      "ru": "А сколько книг <g>вообще</g> можно <b>взять</b> одновременно?"
+    },
+    "gram": "interesse_denn_eigentlich"
+  },
+  {
+    "id": "k8_051",
+    "cat": "k8",
+    "term": {
+      "de": "die Ruhe",
+      "en": "quiet, silence",
+      "uk": "тиша",
+      "ru": "тишина"
+    },
+    "short": {
+      "de": "der Zustand, wenn es still ist und niemand stört",
+      "en": "the state of being quiet, when nobody disturbs you",
+      "uk": "стан тиші, коли ніхто не заважає",
+      "ru": "состояние тишины, когда никто не мешает"
+    },
+    "def": {
+      "de": "Warum ist hier <g>eigentlich</g> so viel <b>Ruhe</b> nötig?",
+      "en": "So, why is so much <b>quiet</b> <g>actually</g> necessary here?",
+      "uk": "А чому тут <g>взагалі</g> потрібна така <b>тиша</b>?",
+      "ru": "А почему тут <g>вообще</g> нужна такая <b>тишина</b>?"
+    },
+    "gram": "interesse_denn_eigentlich"
+  },
+  {
+    "id": "k8_052",
+    "cat": "k8",
+    "term": {
+      "de": "der Bereich",
+      "en": "area, section",
+      "uk": "частина, зона",
+      "ru": "часть, зона"
+    },
+    "short": {
+      "de": "ein bestimmter Teil eines größeren Ortes oder Themas",
+      "en": "a certain part of a larger place or topic",
+      "uk": "певна частина більшого місця чи теми",
+      "ru": "определённая часть большего места или темы"
+    },
+    "def": {
+      "de": "Welcher <b>Bereich</b> ist <g>denn</g> speziell für Kinder gedacht?",
+      "en": "So, which <b>section</b> is <g>actually</g> meant especially for children?",
+      "uk": "А яка <g>взагалі</g> <b>частина</b> призначена спеціально для дітей?",
+      "ru": "А какая <g>вообще</g> <b>часть</b> предназначена специально для детей?"
+    },
+    "gram": "interesse_denn_eigentlich"
+  },
+  {
+    "id": "k8_053",
+    "cat": "k8",
+    "term": {
+      "de": "die Sammlung",
+      "en": "collection",
+      "uk": "колекція",
+      "ru": "коллекция"
+    },
+    "short": {
+      "de": "eine große Anzahl von gesammelten Dingen, zum Beispiel Büchern",
+      "en": "a large number of collected things, for example books",
+      "uk": "велика кількість зібраних речей, наприклад книжок",
+      "ru": "большое количество собранных вещей, например книг"
+    },
+    "def": {
+      "de": "Wie groß ist die <b>Sammlung</b> <g>eigentlich</g> insgesamt?",
+      "en": "So how big is the whole <b>collection</b> <g>actually</g>?",
+      "uk": "А яка <g>взагалі</g> велика ця <b>колекція</b>?",
+      "ru": "А насколько <g>вообще</g> большая эта <b>коллекция</b>?"
+    },
+    "gram": "interesse_denn_eigentlich"
+  },
+  {
+    "id": "k8_054",
+    "cat": "k8",
+    "term": {
+      "de": "der Katalog",
+      "en": "catalogue",
+      "uk": "каталог",
+      "ru": "каталог"
+    },
+    "short": {
+      "de": "eine Liste oder ein System, mit dem man Bücher in der Bibliothek findet",
+      "en": "a list or system used to find books in the library",
+      "uk": "список чи система, за допомогою якої знаходять книжки в бібліотеці",
+      "ru": "список или система, с помощью которой находят книги в библиотеке"
+    },
+    "def": {
+      "de": "Wie funktioniert der <b>Katalog</b> <g>denn</g> genau?",
+      "en": "So, how does the <b>catalogue</b> <g>actually</g> work, exactly?",
+      "uk": "А як <g>взагалі</g> працює цей <b>каталог</b>?",
+      "ru": "А как <g>вообще</g> работает этот <b>каталог</b>?"
+    },
+    "gram": "interesse_denn_eigentlich"
+  },
+  {
+    "id": "k8_055",
+    "cat": "k8",
+    "term": {
+      "de": "der Mitarbeiter",
+      "en": "staff member",
+      "uk": "співробітник",
+      "ru": "сотрудник"
+    },
+    "short": {
+      "de": "eine Person, die an einem Ort, zum Beispiel einer Bibliothek, arbeitet",
+      "en": "a person who works at a place, for example a library",
+      "uk": "особа, яка працює в певному місці, наприклад у бібліотеці",
+      "ru": "лицо, работающее в определённом месте, например в библиотеке"
+    },
+    "def": {
+      "de": "Kann mir hier <g>eigentlich</g> ein <b>Mitarbeiter</b> weiterhelfen?",
+      "en": "So, can a <b>staff member</b> here <g>actually</g> help me?",
+      "uk": "А чи може мені тут <g>взагалі</g> допомогти якийсь <b>співробітник</b>?",
+      "ru": "А может ли мне тут <g>вообще</g> помочь какой-нибудь <b>сотрудник</b>?"
+    },
+    "gram": "interesse_denn_eigentlich"
+  },
+  {
+    "id": "k8_056",
+    "cat": "k8",
+    "term": {
+      "de": "der Künstler",
+      "en": "artist",
+      "uk": "митець",
+      "ru": "художник"
+    },
+    "short": {
+      "de": "eine Person, die Kunst macht, zum Beispiel Bilder oder Musik",
+      "en": "a person who creates art, for example pictures or music",
+      "uk": "особа, яка створює мистецтво, наприклад картини чи музику",
+      "ru": "лицо, создающее искусство, например картины или музыку"
+    },
+    "def": {
+      "de": "Viele finden das Talent dieses <b>Künstlers</b> einfach <g>unglaublich</g>.",
+      "en": "Many people simply find this artist's talent incredible.",
+      "uk": "Багато хто вважає талант цього <b>митця</b> просто неймовірним.",
+      "ru": "Многие считают талант этого <b>художника</b> просто невероятным."
+    },
+    "gram": "adjektive_mit_un"
+  },
+  {
+    "id": "k8_057",
+    "cat": "k8",
+    "term": {
+      "de": "das Kunstwerk",
+      "en": "artwork",
+      "uk": "витвір мистецтва",
+      "ru": "произведение искусства"
+    },
+    "short": {
+      "de": "ein Bild, eine Skulptur oder ein anderes Werk der Kunst",
+      "en": "a picture, sculpture or other piece of art",
+      "uk": "картина, скульптура чи інший твір мистецтва",
+      "ru": "картина, скульптура или другое произведение искусства"
+    },
+    "def": {
+      "de": "Das <b>Kunstwerk</b> wirkt <g>unvollendet</g>, aber genau das macht es interessant.",
+      "en": "The artwork looks unfinished, but that is exactly what makes it interesting.",
+      "uk": "<b>Витвір мистецтва</b> здається незавершеним, і саме це робить його цікавим.",
+      "ru": "<b>Произведение искусства</b> кажется незавершённым, и именно это делает его интересным."
+    },
+    "gram": "adjektive_mit_un"
+  },
+  {
+    "id": "k8_058",
+    "cat": "k8",
+    "term": {
+      "de": "sprühen",
+      "en": "to spray",
+      "uk": "розпилювати (фарбу)",
+      "ru": "распылять (краску)"
+    },
+    "short": {
+      "de": "mit einer Sprühdose Farbe auf eine Fläche auftragen",
+      "en": "to apply paint to a surface using a spray can",
+      "uk": "наносити фарбу на поверхню за допомогою балончика",
+      "ru": "наносить краску на поверхность с помощью баллончика"
+    },
+    "def": {
+      "de": "Einige Sprayer <b>sprühen</b> ihre Bilder auch an <g>unerlaubten</g> Orten.",
+      "en": "Some sprayers also spray their pictures in unauthorised places.",
+      "uk": "Деякі спреєри <b>розпилюють</b> фарбу і в недозволених місцях.",
+      "ru": "Некоторые райтеры <b>распыляют</b> краску и в неразрешённых местах."
+    },
+    "gram": "adjektive_mit_un"
+  },
+  {
+    "id": "k8_059",
+    "cat": "k8",
+    "term": {
+      "de": "die Mauer",
+      "en": "wall",
+      "uk": "стіна",
+      "ru": "стена"
+    },
+    "short": {
+      "de": "eine feste, hohe Wand, zum Beispiel aus Stein oder Beton",
+      "en": "a solid, high wall, for example made of stone or concrete",
+      "uk": "міцна висока стіна, наприклад із каменю чи бетону",
+      "ru": "прочная высокая стена, например из камня или бетона"
+    },
+    "def": {
+      "de": "An dieser <g>ungeschützten</g> <b>Mauer</b> entstehen immer wieder neue Graffiti.",
+      "en": "New graffiti keeps appearing on this unprotected wall.",
+      "uk": "На цій незахищеній <b>стіні</b> постійно зʼявляються нові графіті.",
+      "ru": "На этой незащищённой <b>стене</b> постоянно появляются новые граффити."
+    },
+    "gram": "adjektive_mit_un"
+  },
+  {
+    "id": "k8_060",
+    "cat": "k8",
+    "term": {
+      "de": "der Sprayer",
+      "en": "graffiti sprayer",
+      "uk": "спреєр",
+      "ru": "райтер"
+    },
+    "short": {
+      "de": "eine Person, die mit Sprühfarbe Bilder oder Schriften an Wände malt",
+      "en": "a person who paints pictures or writing on walls with spray paint",
+      "uk": "особа, яка малює балончиком картини чи написи на стінах",
+      "ru": "лицо, рисующее баллончиком картины или надписи на стенах"
+    },
+    "def": {
+      "de": "Manche <b>Sprayer</b> arbeiten sehr <g>unauffällig</g>, damit sie niemand bemerkt.",
+      "en": "Some sprayers work very inconspicuously so that nobody notices them.",
+      "uk": "Деякі <b>спреєри</b> працюють дуже непомітно, щоб їх ніхто не побачив.",
+      "ru": "Некоторые райтеры работают очень незаметно, чтобы их никто не заметил."
+    },
+    "gram": "adjektive_mit_un"
   },
   {
     "id": "k9_001",
