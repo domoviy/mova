@@ -3501,7 +3501,15 @@ var LESSONS = [
     "grammar": "n_deklination",
     "cardIds": [
       "k14_001",
-      "k14_002"
+      "k14_002",
+      "k14_017",
+      "k14_018",
+      "k14_019",
+      "k14_020",
+      "k14_021",
+      "k14_022",
+      "k14_023",
+      "k14_024"
     ],
     "unlockAfter": "k13m5",
     "sbCards": []
@@ -3529,7 +3537,15 @@ var LESSONS = [
     "grammar": "relativsatz_mit_praeposition",
     "cardIds": [
       "k14_003",
-      "k14_004"
+      "k14_004",
+      "k14_025",
+      "k14_026",
+      "k14_027",
+      "k14_028",
+      "k14_029",
+      "k14_030",
+      "k14_031",
+      "k14_032"
     ],
     "unlockAfter": "k14m1",
     "sbCards": []
@@ -3557,7 +3573,15 @@ var LESSONS = [
     "grammar": "relativsatz_wo_was",
     "cardIds": [
       "k14_005",
-      "k14_011"
+      "k14_011",
+      "k14_033",
+      "k14_034",
+      "k14_035",
+      "k14_036",
+      "k14_037",
+      "k14_038",
+      "k14_039",
+      "k14_040"
     ],
     "unlockAfter": "k14m2",
     "sbCards": []
@@ -3585,7 +3609,15 @@ var LESSONS = [
     "grammar": "relativpronomen_dativ_wdh_b1",
     "cardIds": [
       "k14_006",
-      "k14_007"
+      "k14_007",
+      "k14_041",
+      "k14_042",
+      "k14_043",
+      "k14_044",
+      "k14_045",
+      "k14_046",
+      "k14_047",
+      "k14_048"
     ],
     "unlockAfter": "k14m3",
     "sbCards": []
@@ -3614,7 +3646,14 @@ var LESSONS = [
     "cardIds": [
       "k14_008",
       "k14_012",
-      "k14_013"
+      "k14_013",
+      "k14_049",
+      "k14_050",
+      "k14_051",
+      "k14_052",
+      "k14_053",
+      "k14_054",
+      "k14_055"
     ],
     "unlockAfter": "k14m4",
     "sbCards": []
@@ -3645,7 +3684,12 @@ var LESSONS = [
       "k14_010",
       "k14_014",
       "k14_015",
-      "k14_016"
+      "k14_016",
+      "k14_056",
+      "k14_057",
+      "k14_058",
+      "k14_059",
+      "k14_060"
     ],
     "unlockAfter": "k14m5",
     "sbCards": []
@@ -21074,6 +21118,1018 @@ var VOCAB = [
       "en": "The high-priced city centre mainly attracts wealthy families.",
       "uk": "Дороговартісний центр міста приваблює насамперед заможні родини.",
       "ru": "Дорогой центр города привлекает в основном состоятельные семьи."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_017",
+    "cat": "k14",
+    "term": {
+      "de": "der Mensch, -en",
+      "en": "person, human",
+      "uk": "людина",
+      "ru": "человек"
+    },
+    "short": {
+      "de": "eine Person",
+      "en": "a person",
+      "uk": "особа",
+      "ru": "лицо, персона"
+    },
+    "def": {
+      "de": "Ich mag diesen freundlichen <g>Menschen</g> aus der Nachbarschaft sehr.",
+      "en": "I really like this friendly person from the neighbourhood.",
+      "uk": "Мені дуже подобається ця приязна людина із сусідства.",
+      "ru": "Мне очень нравится этот приветливый человек из соседства."
+    },
+    "gram": "n_deklination"
+  },
+  {
+    "id": "k14_018",
+    "cat": "k14",
+    "term": {
+      "de": "der Experte, -n / die Expertin, -nen",
+      "en": "expert",
+      "uk": "експерт",
+      "ru": "эксперт"
+    },
+    "short": {
+      "de": "eine Person mit besonderem Wissen auf einem bestimmten Gebiet",
+      "en": "a person with special knowledge in a certain field",
+      "uk": "особа з особливими знаннями в певній галузі",
+      "ru": "лицо с особыми знаниями в определённой области"
+    },
+    "def": {
+      "de": "Für die Reparatur haben wir einen <g>Experten</g> geholt.",
+      "en": "We called in an expert for the repair.",
+      "uk": "Для ремонту ми викликали експерта.",
+      "ru": "Для ремонта мы вызвали эксперта."
+    },
+    "gram": "n_deklination"
+  },
+  {
+    "id": "k14_019",
+    "cat": "k14",
+    "term": {
+      "de": "der Kunde, -n / die Kundin, -nen",
+      "en": "customer",
+      "uk": "клієнт",
+      "ru": "клиент"
+    },
+    "short": {
+      "de": "eine Person, die etwas kauft oder eine Dienstleistung nutzt",
+      "en": "a person who buys something or uses a service",
+      "uk": "особа, яка щось купує чи користується послугою",
+      "ru": "лицо, которое что-то покупает или пользуется услугой"
+    },
+    "def": {
+      "de": "Der Vermieter behandelt jeden <g>Kunden</g> fair.",
+      "en": "The landlord treats every customer fairly.",
+      "uk": "Орендодавець ставиться до кожного клієнта справедливо.",
+      "ru": "Арендодатель относится к каждому клиенту справедливо."
+    },
+    "gram": "n_deklination"
+  },
+  {
+    "id": "k14_020",
+    "cat": "k14",
+    "term": {
+      "de": "der Architekt, -en / die Architektin, -nen",
+      "en": "architect",
+      "uk": "архітектор",
+      "ru": "архитектор"
+    },
+    "short": {
+      "de": "eine Person, die Häuser und Gebäude plant",
+      "en": "a person who designs houses and buildings",
+      "uk": "особа, яка проєктує будинки й будівлі",
+      "ru": "лицо, проектирующее дома и здания"
+    },
+    "def": {
+      "de": "Das Haus wurde von einem bekannten <g>Architekten</g> entworfen.",
+      "en": "The house was designed by a well-known architect.",
+      "uk": "Будинок спроєктував відомий архітектор.",
+      "ru": "Дом спроектировал известный архитектор."
+    },
+    "gram": "n_deklination"
+  },
+  {
+    "id": "k14_021",
+    "cat": "k14",
+    "term": {
+      "de": "der Student, -en / die Studentin, -nen",
+      "en": "student",
+      "uk": "студент",
+      "ru": "студент"
+    },
+    "short": {
+      "de": "eine Person, die an einer Universität studiert",
+      "en": "a person who studies at a university",
+      "uk": "особа, яка навчається в університеті",
+      "ru": "лицо, обучающееся в университете"
+    },
+    "def": {
+      "de": "Im Erdgeschoss habe ich einen <g>Studenten</g> aus Spanien kennengelernt.",
+      "en": "On the ground floor, I got to know a student from Spain.",
+      "uk": "На першому поверсі я познайомився зі студентом з Іспанії.",
+      "ru": "На первом этаже я познакомился со студентом из Испании."
+    },
+    "gram": "n_deklination"
+  },
+  {
+    "id": "k14_022",
+    "cat": "k14",
+    "term": {
+      "de": "der Polizist, -en / die Polizistin, -nen",
+      "en": "police officer",
+      "uk": "поліцейський",
+      "ru": "полицейский"
+    },
+    "short": {
+      "de": "eine Person, die bei der Polizei arbeitet",
+      "en": "a person who works for the police",
+      "uk": "особа, яка працює в поліції",
+      "ru": "лицо, работающее в полиции"
+    },
+    "def": {
+      "de": "Wir riefen den <g>Polizisten</g>, weil es im Treppenhaus laut war.",
+      "en": "We called the police officer because it was loud in the stairwell.",
+      "uk": "Ми викликали поліцейського, бо у підʼїзді було шумно.",
+      "ru": "Мы вызвали полицейского, потому что в подъезде было шумно."
+    },
+    "gram": "n_deklination"
+  },
+  {
+    "id": "k14_023",
+    "cat": "k14",
+    "term": {
+      "de": "der Praktikant, -en / die Praktikantin, -nen",
+      "en": "intern",
+      "uk": "практикант",
+      "ru": "стажёр"
+    },
+    "short": {
+      "de": "eine Person, die ein Praktikum macht",
+      "en": "a person doing an internship",
+      "uk": "особа, яка проходить практику",
+      "ru": "лицо, проходящее стажировку"
+    },
+    "def": {
+      "de": "Die Hausverwaltung hat dem neuen <g>Praktikanten</g> viele Aufgaben gegeben.",
+      "en": "The building management gave the new intern many tasks.",
+      "uk": "Управління будинком дало новому практиканту багато завдань.",
+      "ru": "Управление домом дало новому стажёру много заданий."
+    },
+    "gram": "n_deklination"
+  },
+  {
+    "id": "k14_024",
+    "cat": "k14",
+    "term": {
+      "de": "der Journalist, -en / die Journalistin, -nen",
+      "en": "journalist",
+      "uk": "журналіст",
+      "ru": "журналист"
+    },
+    "short": {
+      "de": "eine Person, die beruflich Nachrichten oder Berichte schreibt",
+      "en": "a person who professionally writes news or reports",
+      "uk": "особа, яка професійно пише новини чи репортажі",
+      "ru": "лицо, профессионально пишущее новости или репортажи"
+    },
+    "def": {
+      "de": "Die Bewohner sprachen ausführlich mit dem <g>Journalisten</g> über das neue Viertel.",
+      "en": "The residents spoke extensively with the journalist about the new neighbourhood.",
+      "uk": "Мешканці довго розмовляли з журналістом про новий квартал.",
+      "ru": "Жители подробно говорили с журналистом о новом квартале."
+    },
+    "gram": "n_deklination"
+  },
+  {
+    "id": "k14_025",
+    "cat": "k14",
+    "term": {
+      "de": "der Vermieter, - / die Vermieterin, -nen",
+      "en": "landlord, landlady",
+      "uk": "орендодавець",
+      "ru": "арендодатель"
+    },
+    "short": {
+      "de": "eine Person, die eine Wohnung oder ein Haus vermietet",
+      "en": "a person who rents out a flat or house",
+      "uk": "особа, яка здає квартиру чи будинок в оренду",
+      "ru": "лицо, сдающее квартиру или дом в аренду"
+    },
+    "def": {
+      "de": "Das ist der <b>Vermieter</b>, <g>mit dem</g> wir den Vertrag unterschrieben haben.",
+      "en": "That's the landlord <g>with whom</g> we signed the contract.",
+      "uk": "Це орендодавець, <g>з яким</g> ми підписали договір.",
+      "ru": "Это арендодатель, <g>с которым</g> мы подписали договор."
+    },
+    "gram": "relativsatz_mit_praeposition"
+  },
+  {
+    "id": "k14_026",
+    "cat": "k14",
+    "term": {
+      "de": "der Mietvertrag, -verträge",
+      "en": "rental contract",
+      "uk": "договір оренди",
+      "ru": "договор аренды"
+    },
+    "short": {
+      "de": "ein offizielles Dokument, das die Bedingungen einer Miete festlegt",
+      "en": "an official document that sets out the terms of a lease",
+      "uk": "офіційний документ, який встановлює умови оренди",
+      "ru": "официальный документ, устанавливающий условия аренды"
+    },
+    "def": {
+      "de": "Das ist der <b>Mietvertrag</b>, <g>über den</g> wir lange verhandelt haben.",
+      "en": "That's the rental contract <g>about which</g> we negotiated for a long time.",
+      "uk": "Це договір оренди, <g>про який</g> ми довго домовлялися.",
+      "ru": "Это договор аренды, <g>о котором</g> мы долго договаривались."
+    },
+    "gram": "relativsatz_mit_praeposition"
+  },
+  {
+    "id": "k14_027",
+    "cat": "k14",
+    "term": {
+      "de": "die Kaution, -en",
+      "en": "deposit",
+      "uk": "застава",
+      "ru": "залог"
+    },
+    "short": {
+      "de": "eine Summe Geld, die man bei Mietbeginn als Sicherheit zahlt",
+      "en": "a sum of money paid as security at the start of a tenancy",
+      "uk": "сума грошей, яку сплачують як забезпечення на початку оренди",
+      "ru": "сумма денег, выплачиваемая как обеспечение в начале аренды"
+    },
+    "def": {
+      "de": "Die <b>Kaution</b>, <g>auf die</g> wir monatelang gewartet haben, wurde endlich zurücküberwiesen.",
+      "en": "The deposit <g>for which</g> we waited for months was finally transferred back.",
+      "uk": "Заставу, <g>на яку</g> ми чекали місяцями, нарешті повернули.",
+      "ru": "Депозит, <g>которого</g> мы ждали месяцами, наконец вернули."
+    },
+    "gram": "relativsatz_mit_praeposition"
+  },
+  {
+    "id": "k14_028",
+    "cat": "k14",
+    "term": {
+      "de": "die Renovierung, -en",
+      "en": "renovation",
+      "uk": "ремонт",
+      "ru": "ремонт"
+    },
+    "short": {
+      "de": "die Arbeit, mit der man einen Raum oder ein Gebäude erneuert",
+      "en": "the work of renewing a room or building",
+      "uk": "робота з оновлення приміщення чи будівлі",
+      "ru": "работа по обновлению помещения или здания"
+    },
+    "def": {
+      "de": "Das ist die <b>Renovierung</b>, <g>für die</g> wir viel Geld ausgegeben haben.",
+      "en": "That's the renovation <g>for which</g> we spent a lot of money.",
+      "uk": "Це ремонт, <g>на який</g> ми витратили багато грошей.",
+      "ru": "Это ремонт, <g>на который</g> мы потратили много денег."
+    },
+    "gram": "relativsatz_mit_praeposition"
+  },
+  {
+    "id": "k14_029",
+    "cat": "k14",
+    "term": {
+      "de": "der Balkon, -e",
+      "en": "balcony",
+      "uk": "балкон",
+      "ru": "балкон"
+    },
+    "short": {
+      "de": "ein kleiner Bereich außerhalb einer Wohnung, oft mit Geländer",
+      "en": "a small area outside a flat, often with a railing",
+      "uk": "невелика ділянка за межами квартири, часто з поручнями",
+      "ru": "небольшая площадка за пределами квартиры, часто с перилами"
+    },
+    "def": {
+      "de": "Das ist der <b>Balkon</b>, <g>von dem aus</g> man das Meer sehen kann.",
+      "en": "That's the balcony <g>from which</g> you can see the sea.",
+      "uk": "Це балкон, <g>з якого</g> видно море.",
+      "ru": "Это балкон, <g>с которого</g> видно море."
+    },
+    "gram": "relativsatz_mit_praeposition"
+  },
+  {
+    "id": "k14_030",
+    "cat": "k14",
+    "term": {
+      "de": "die Kündigungsfrist, -en",
+      "en": "notice period",
+      "uk": "термін розірвання договору",
+      "ru": "срок расторжения договора"
+    },
+    "short": {
+      "de": "der Zeitraum, den man einhalten muss, bevor ein Vertrag endet",
+      "en": "the period that must be observed before a contract ends",
+      "uk": "проміжок часу, якого треба дотримуватися перед закінченням договору",
+      "ru": "промежуток времени, который нужно соблюдать перед окончанием договора"
+    },
+    "def": {
+      "de": "Die <b>Kündigungsfrist</b>, <g>an die</g> man sich halten muss, beträgt drei Monate.",
+      "en": "The notice period <g>that</g> you have to adhere to is three months.",
+      "uk": "Термін розірвання договору, <g>якого</g> потрібно дотримуватися, становить три місяці.",
+      "ru": "Срок расторжения договора, <g>которого</g> нужно придерживаться, составляет три месяца."
+    },
+    "gram": "relativsatz_mit_praeposition"
+  },
+  {
+    "id": "k14_031",
+    "cat": "k14",
+    "term": {
+      "de": "der Nachmieter, - / die Nachmieterin, -nen",
+      "en": "next tenant",
+      "uk": "наступний орендар",
+      "ru": "следующий арендатор"
+    },
+    "short": {
+      "de": "die Person, die nach einem selbst in dieselbe Wohnung einzieht",
+      "en": "the person who moves into the same flat after you",
+      "uk": "особа, яка вселяється в ту саму квартиру після тебе",
+      "ru": "лицо, заселяющееся в ту же квартиру после тебя"
+    },
+    "def": {
+      "de": "Wir suchen einen <b>Nachmieter</b>, <g>mit dem</g> der Vermieter zufrieden ist.",
+      "en": "We are looking for a next tenant <g>with whom</g> the landlord will be satisfied.",
+      "uk": "Ми шукаємо наступного орендаря, <g>яким</g> буде задоволений орендодавець.",
+      "ru": "Мы ищем следующего арендатора, <g>которым</g> будет доволен арендодатель."
+    },
+    "gram": "relativsatz_mit_praeposition"
+  },
+  {
+    "id": "k14_032",
+    "cat": "k14",
+    "term": {
+      "de": "der Immobilienmakler, - / die Immobilienmaklerin, -nen",
+      "en": "real estate agent",
+      "uk": "маклер з нерухомості",
+      "ru": "риелтор"
+    },
+    "short": {
+      "de": "eine Person, die beruflich beim Kauf, Verkauf oder der Miete von Wohnungen hilft",
+      "en": "a person who professionally helps with buying, selling or renting flats",
+      "uk": "особа, яка професійно допомагає з купівлею, продажем чи орендою житла",
+      "ru": "лицо, профессионально помогающее с покупкой, продажей или арендой жилья"
+    },
+    "def": {
+      "de": "Das ist der <b>Makler</b>, <g>durch den</g> wir die Wohnung gefunden haben.",
+      "en": "That's the agent <g>through whom</g> we found the flat.",
+      "uk": "Це маклер, <g>через якого</g> ми знайшли квартиру.",
+      "ru": "Это маклер, <g>через которого</g> мы нашли квартиру."
+    },
+    "gram": "relativsatz_mit_praeposition"
+  },
+  {
+    "id": "k14_033",
+    "cat": "k14",
+    "term": {
+      "de": "das Viertel, -",
+      "en": "neighbourhood, district",
+      "uk": "квартал",
+      "ru": "квартал"
+    },
+    "short": {
+      "de": "ein bestimmter Teil einer Stadt",
+      "en": "a particular part of a city",
+      "uk": "певна частина міста",
+      "ru": "определённая часть города"
+    },
+    "def": {
+      "de": "Das ist das <b>Viertel</b>, <g>wo</g> ich aufgewachsen bin.",
+      "en": "That's the neighbourhood <g>where</g> I grew up.",
+      "uk": "Це квартал, <g>де</g> я виріс.",
+      "ru": "Это квартал, <g>где</g> я вырос."
+    },
+    "gram": "relativsatz_wo_was"
+  },
+  {
+    "id": "k14_034",
+    "cat": "k14",
+    "term": {
+      "de": "der Garten, Gärten",
+      "en": "garden",
+      "uk": "сад",
+      "ru": "сад"
+    },
+    "short": {
+      "de": "ein Stück Land bei einem Haus, auf dem Pflanzen wachsen",
+      "en": "a piece of land by a house where plants grow",
+      "uk": "ділянка землі біля будинку, де ростуть рослини",
+      "ru": "участок земли у дома, где растут растения"
+    },
+    "def": {
+      "de": "Wir haben einen <b>Garten</b>, <g>wo</g> die Kinder spielen können.",
+      "en": "We have a garden <g>where</g> the children can play.",
+      "uk": "У нас є сад, <g>де</g> можуть гратися діти.",
+      "ru": "У нас есть сад, <g>где</g> могут играть дети."
+    },
+    "gram": "relativsatz_wo_was"
+  },
+  {
+    "id": "k14_035",
+    "cat": "k14",
+    "term": {
+      "de": "das Café, -s",
+      "en": "café",
+      "uk": "кафе",
+      "ru": "кафе"
+    },
+    "short": {
+      "de": "ein Ort, an dem man Kaffee und andere Getränke trinken kann",
+      "en": "a place where you can drink coffee and other beverages",
+      "uk": "місце, де можна пити каву та інші напої",
+      "ru": "место, где можно пить кофе и другие напитки"
+    },
+    "def": {
+      "de": "Das ist das <b>Café</b>, <g>wo</g> wir uns immer treffen.",
+      "en": "That's the café <g>where</g> we always meet.",
+      "uk": "Це кафе, <g>де</g> ми завжди зустрічаємося.",
+      "ru": "Это кафе, <g>где</g> мы всегда встречаемся."
+    },
+    "gram": "relativsatz_wo_was"
+  },
+  {
+    "id": "k14_036",
+    "cat": "k14",
+    "term": {
+      "de": "der Lieblingsplatz, -plätze",
+      "en": "favourite spot",
+      "uk": "улюблене місце",
+      "ru": "любимое место"
+    },
+    "short": {
+      "de": "der Ort, den man am liebsten mag",
+      "en": "the place you like the most",
+      "uk": "місце, яке подобається найбільше",
+      "ru": "место, которое нравится больше всего"
+    },
+    "def": {
+      "de": "Der Park ist mein <b>Lieblingsplatz</b>, <g>wo</g> ich mich entspannen kann.",
+      "en": "The park is my favourite spot <g>where</g> I can relax.",
+      "uk": "Парк — моє улюблене місце, <g>де</g> я можу розслабитися.",
+      "ru": "Парк — моё любимое место, <g>где</g> я могу расслабиться."
+    },
+    "gram": "relativsatz_wo_was"
+  },
+  {
+    "id": "k14_037",
+    "cat": "k14",
+    "term": {
+      "de": "alles",
+      "en": "everything",
+      "uk": "усе",
+      "ru": "всё"
+    },
+    "short": {
+      "de": "die gesamte Menge von etwas, ohne Ausnahme",
+      "en": "the whole amount of something, without exception",
+      "uk": "уся кількість чогось без винятку",
+      "ru": "всё количество чего-то без исключения"
+    },
+    "def": {
+      "de": "<g>Alles</g>, <g>was</g> ich mir für die neue Wohnung gewünscht habe, ist Wirklichkeit geworden.",
+      "en": "Everything <g>that</g> I wished for the new flat came true.",
+      "uk": "Усе, <g>що</g> я хотів для нової квартири, стало реальністю.",
+      "ru": "Всё, <g>что</g> я хотел для новой квартиры, стало реальностью."
+    },
+    "gram": "relativsatz_wo_was"
+  },
+  {
+    "id": "k14_038",
+    "cat": "k14",
+    "term": {
+      "de": "nichts",
+      "en": "nothing",
+      "uk": "нічого",
+      "ru": "ничего"
+    },
+    "short": {
+      "de": "keine einzige Sache",
+      "en": "not a single thing",
+      "uk": "жодної речі",
+      "ru": "ни одной вещи"
+    },
+    "def": {
+      "de": "Es gibt <g>nichts</g>, <g>was</g> mir an dieser Wohnung nicht gefällt.",
+      "en": "There is nothing <g>that</g> I don't like about this flat.",
+      "uk": "Немає нічого, <g>що</g> мені не подобається в цій квартирі.",
+      "ru": "Нет ничего, <g>что</g> мне не нравится в этой квартире."
+    },
+    "gram": "relativsatz_wo_was"
+  },
+  {
+    "id": "k14_039",
+    "cat": "k14",
+    "term": {
+      "de": "das Beste",
+      "en": "the best (thing)",
+      "uk": "найкраще",
+      "ru": "лучшее"
+    },
+    "short": {
+      "de": "die beste Sache oder der beste Teil von etwas",
+      "en": "the best thing or the best part of something",
+      "uk": "найкраща річ чи найкраща частина чогось",
+      "ru": "лучшая вещь или лучшая часть чего-то"
+    },
+    "def": {
+      "de": "Der Ausblick ist <g>das Beste</g>, <g>was</g> diese Wohnung zu bieten hat.",
+      "en": "The view is the best thing <g>that</g> this flat has to offer.",
+      "uk": "Краєвид — це найкраще, <g>що</g> може запропонувати ця квартира.",
+      "ru": "Вид — это лучшее, <g>что</g> может предложить эта квартира."
+    },
+    "gram": "relativsatz_wo_was"
+  },
+  {
+    "id": "k14_040",
+    "cat": "k14",
+    "term": {
+      "de": "etwas",
+      "en": "something",
+      "uk": "щось",
+      "ru": "что-то"
+    },
+    "short": {
+      "de": "eine unbestimmte Sache oder Menge",
+      "en": "an unspecified thing or amount",
+      "uk": "невизначена річ чи кількість",
+      "ru": "неопределённая вещь или количество"
+    },
+    "def": {
+      "de": "Ich suche <g>etwas</g>, <g>was</g> zu meinem Budget passt.",
+      "en": "I'm looking for something <g>that</g> fits my budget.",
+      "uk": "Я шукаю щось, <g>що</g> відповідає моєму бюджету.",
+      "ru": "Я ищу что-то, <g>что</g> подходит моему бюджету."
+    },
+    "gram": "relativsatz_wo_was"
+  },
+  {
+    "id": "k14_041",
+    "cat": "k14",
+    "term": {
+      "de": "die Familie, -n",
+      "en": "family",
+      "uk": "сімʼя",
+      "ru": "семья"
+    },
+    "short": {
+      "de": "eine Gruppe von Menschen, die miteinander verwandt sind, zum Beispiel Eltern und Kinder",
+      "en": "a group of people related to each other, for example parents and children",
+      "uk": "група людей, повʼязаних родинними стосунками, наприклад батьки й діти",
+      "ru": "группа людей, связанных родственными отношениями, например родители и дети"
+    },
+    "def": {
+      "de": "Das ist die <b>Familie</b>, <g>der</g> wir die Wohnung vermietet haben.",
+      "en": "That's the family <g>to whom</g> we rented the flat.",
+      "uk": "Це сімʼя, <g>якій</g> ми здали квартиру в оренду.",
+      "ru": "Это семья, <g>которой</g> мы сдали квартиру в аренду."
+    },
+    "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "k14_042",
+    "cat": "k14",
+    "term": {
+      "de": "das Ehepaar, -e",
+      "en": "married couple",
+      "uk": "подружжя",
+      "ru": "супружеская пара"
+    },
+    "short": {
+      "de": "ein verheiratetes Paar",
+      "en": "a married couple",
+      "uk": "пара людей у шлюбі",
+      "ru": "пара людей в браке"
+    },
+    "def": {
+      "de": "Das ist das <b>Ehepaar</b>, <g>dem</g> das Haus gehört.",
+      "en": "That's the married couple <g>to whom</g> the house belongs.",
+      "uk": "Це подружжя, <g>якому</g> належить будинок.",
+      "ru": "Это супружеская пара, <g>которой</g> принадлежит дом."
+    },
+    "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "k14_043",
+    "cat": "k14",
+    "term": {
+      "de": "die Mieter (Pl.)",
+      "en": "tenants",
+      "uk": "орендарі",
+      "ru": "арендаторы"
+    },
+    "short": {
+      "de": "die Personen, die eine Wohnung oder ein Haus mieten",
+      "en": "the people who rent a flat or house",
+      "uk": "особи, які орендують квартиру чи будинок",
+      "ru": "лица, арендующие квартиру или дом"
+    },
+    "def": {
+      "de": "Das sind die <b>Mieter</b>, <g>denen</g> wir sehr dankbar sind.",
+      "en": "Those are the tenants <g>to whom</g> we are very grateful.",
+      "uk": "Це орендарі, <g>яким</g> ми дуже вдячні.",
+      "ru": "Это арендаторы, <g>которым</g> мы очень благодарны."
+    },
+    "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "k14_044",
+    "cat": "k14",
+    "term": {
+      "de": "der Handwerker, - / die Handwerkerin, -nen",
+      "en": "tradesperson, craftsman",
+      "uk": "майстер",
+      "ru": "мастер"
+    },
+    "short": {
+      "de": "eine Person, die praktische Arbeiten wie Reparaturen professionell ausführt",
+      "en": "a person who professionally does practical work like repairs",
+      "uk": "особа, яка професійно виконує практичну роботу, як-от ремонт",
+      "ru": "лицо, профессионально выполняющее практическую работу, например ремонт"
+    },
+    "def": {
+      "de": "Das ist der <b>Handwerker</b>, <g>dem</g> wir vertrauen.",
+      "en": "That's the tradesman <g>whom</g> we trust.",
+      "uk": "Це майстер, <g>якому</g> ми довіряємо.",
+      "ru": "Это мастер, <g>которому</g> мы доверяем."
+    },
+    "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "k14_045",
+    "cat": "k14",
+    "term": {
+      "de": "die Hausverwaltung, -en",
+      "en": "property management",
+      "uk": "управління будинком",
+      "ru": "управление домом"
+    },
+    "short": {
+      "de": "das Unternehmen oder die Person, die sich um ein Gebäude kümmert",
+      "en": "the company or person that looks after a building",
+      "uk": "компанія чи особа, яка піклується про будівлю",
+      "ru": "компания или лицо, заботящееся о здании"
+    },
+    "def": {
+      "de": "Das ist die <b>Hausverwaltung</b>, <g>der</g> wir jeden Monat die Miete überweisen.",
+      "en": "That's the property management <g>to whom</g> we transfer the rent every month.",
+      "uk": "Це управління будинком, <g>якому</g> ми щомісяця перераховуємо орендну плату.",
+      "ru": "Это управление домом, <g>которому</g> мы ежемесячно переводим арендную плату."
+    },
+    "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "k14_046",
+    "cat": "k14",
+    "term": {
+      "de": "der Eigentümer, - / die Eigentümerin, -nen",
+      "en": "owner",
+      "uk": "власник",
+      "ru": "владелец"
+    },
+    "short": {
+      "de": "die Person, der eine Sache offiziell gehört",
+      "en": "the person to whom something officially belongs",
+      "uk": "особа, якій щось офіційно належить",
+      "ru": "лицо, которому что-то официально принадлежит"
+    },
+    "def": {
+      "de": "Das ist der <b>Eigentümer</b>, <g>dem</g> das ganze Gebäude gehört.",
+      "en": "That's the owner <g>to whom</g> the whole building belongs.",
+      "uk": "Це власник, <g>якому</g> належить уся будівля.",
+      "ru": "Это владелец, <g>которому</g> принадлежит всё здание."
+    },
+    "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "k14_047",
+    "cat": "k14",
+    "term": {
+      "de": "die Kinder (Pl.)",
+      "en": "children",
+      "uk": "діти",
+      "ru": "дети"
+    },
+    "short": {
+      "de": "die jungen Menschen, die noch keine Erwachsenen sind",
+      "en": "young people who are not yet adults",
+      "uk": "молоді люди, які ще не є дорослими",
+      "ru": "молодые люди, которые ещё не являются взрослыми"
+    },
+    "def": {
+      "de": "Das sind die <b>Kinder</b>, <g>denen</g> der Garten besonders gefällt.",
+      "en": "Those are the children <g>who</g> especially like the garden.",
+      "uk": "Це діти, <g>яким</g> особливо подобається сад.",
+      "ru": "Это дети, <g>которым</g> особенно нравится сад."
+    },
+    "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "k14_048",
+    "cat": "k14",
+    "term": {
+      "de": "der Gast, Gäste",
+      "en": "guest",
+      "uk": "гість",
+      "ru": "гость"
+    },
+    "short": {
+      "de": "eine Person, die zu Besuch kommt",
+      "en": "a person who comes to visit",
+      "uk": "особа, яка приходить у гості",
+      "ru": "лицо, приходящее в гости"
+    },
+    "def": {
+      "de": "Das sind die <b>Gäste</b>, <g>denen</g> wir das Gästezimmer anbieten.",
+      "en": "Those are the guests <g>to whom</g> we offer the guest room.",
+      "uk": "Це гості, <g>яким</g> ми пропонуємо гостьову кімнату.",
+      "ru": "Это гости, <g>которым</g> мы предлагаем гостевую комнату."
+    },
+    "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "k14_049",
+    "cat": "k14",
+    "term": {
+      "de": "die Aussicht, -en",
+      "en": "view",
+      "uk": "краєвид",
+      "ru": "вид"
+    },
+    "short": {
+      "de": "das, was man von einem bestimmten Ort aus sehen kann",
+      "en": "what you can see from a certain place",
+      "uk": "те, що видно з певного місця",
+      "ru": "то, что видно из определённого места"
+    },
+    "def": {
+      "de": "Von hier oben hat man eine <g>superschöne</g> <b>Aussicht</b>.",
+      "en": "From up here you have a super beautiful view.",
+      "uk": "Звідси зверху відкривається чудовий краєвид.",
+      "ru": "Отсюда сверху открывается прекрасный вид."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_050",
+    "cat": "k14",
+    "term": {
+      "de": "die Lage, -n",
+      "en": "location",
+      "uk": "місце розташування",
+      "ru": "местоположение"
+    },
+    "short": {
+      "de": "der Ort oder die Position, an dem sich etwas befindet",
+      "en": "the place or position where something is located",
+      "uk": "місце чи позиція, де щось знаходиться",
+      "ru": "место или позиция, где что-то находится"
+    },
+    "def": {
+      "de": "Die Wohnung liegt in einer <g>hochbegehrten</g> <b>Lage</b>.",
+      "en": "The flat is in a highly sought-after location.",
+      "uk": "Квартира розташована в надзвичайно затребуваному місці.",
+      "ru": "Квартира расположена в чрезвычайно востребованном месте."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_051",
+    "cat": "k14",
+    "term": {
+      "de": "die Nachfrage (Sg.)",
+      "en": "demand",
+      "uk": "попит",
+      "ru": "спрос"
+    },
+    "short": {
+      "de": "der Wunsch vieler Menschen, etwas zu kaufen oder zu mieten",
+      "en": "the wish of many people to buy or rent something",
+      "uk": "бажання багатьох людей щось купити чи орендувати",
+      "ru": "желание многих людей что-то купить или арендовать"
+    },
+    "def": {
+      "de": "Die <g>übergroße</g> <b>Nachfrage</b> nach dieser Wohnung hat uns überrascht.",
+      "en": "The overwhelming demand for this flat surprised us.",
+      "uk": "Надзвичайно великий попит на цю квартиру нас здивував.",
+      "ru": "Чрезвычайно большой спрос на эту квартиру нас удивил."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_052",
+    "cat": "k14",
+    "term": {
+      "de": "der Preis, -e",
+      "en": "price",
+      "uk": "ціна",
+      "ru": "цена"
+    },
+    "short": {
+      "de": "die Summe Geld, die man für etwas bezahlen muss",
+      "en": "the sum of money you have to pay for something",
+      "uk": "сума грошей, яку треба заплатити за щось",
+      "ru": "сумма денег, которую нужно заплатить за что-то"
+    },
+    "def": {
+      "de": "Der <b>Preis</b> für diese Wohnung ist <g>superniedrig</g>.",
+      "en": "The price for this flat is super low.",
+      "uk": "Ціна на цю квартиру дуже низька.",
+      "ru": "Цена на эту квартиру очень низкая."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_053",
+    "cat": "k14",
+    "term": {
+      "de": "die Ausstattung (Sg.)",
+      "en": "fittings, furnishings",
+      "uk": "оснащення",
+      "ru": "оснащение"
+    },
+    "short": {
+      "de": "alles, womit ein Raum oder eine Wohnung eingerichtet ist",
+      "en": "everything a room or flat is furnished with",
+      "uk": "усе, чим обладнано приміщення чи квартиру",
+      "ru": "всё, чем оборудовано помещение или квартира"
+    },
+    "def": {
+      "de": "Die <b>Ausstattung</b> der Küche ist <g>extramodern</g>.",
+      "en": "The kitchen fittings are extra modern.",
+      "uk": "Оснащення кухні надсучасне.",
+      "ru": "Оснащение кухни супер-современное."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_054",
+    "cat": "k14",
+    "term": {
+      "de": "ruhig",
+      "en": "quiet",
+      "uk": "тихий",
+      "ru": "тихий"
+    },
+    "short": {
+      "de": "ohne Lärm oder Störung",
+      "en": "without noise or disturbance",
+      "uk": "без шуму чи перешкод",
+      "ru": "без шума или помех"
+    },
+    "def": {
+      "de": "Die Straße vor dem Haus ist <g>superruhig</g>.",
+      "en": "The street in front of the house is super quiet.",
+      "uk": "Вулиця перед будинком дуже тиха.",
+      "ru": "Улица перед домом очень тихая."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_055",
+    "cat": "k14",
+    "term": {
+      "de": "hell",
+      "en": "bright",
+      "uk": "світлий",
+      "ru": "светлый"
+    },
+    "short": {
+      "de": "mit viel Licht",
+      "en": "with a lot of light",
+      "uk": "з великою кількістю світла",
+      "ru": "с большим количеством света"
+    },
+    "def": {
+      "de": "Das Wohnzimmer ist dank der großen Fenster <g>extrahell</g>.",
+      "en": "The living room is extra bright thanks to the large windows.",
+      "uk": "Вітальня дуже світла завдяки великим вікнам.",
+      "ru": "Гостиная очень светлая благодаря большим окнам."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_056",
+    "cat": "k14",
+    "term": {
+      "de": "sich melden",
+      "en": "to answer the phone, to identify oneself",
+      "uk": "відповідати на дзвінок, називати себе",
+      "ru": "отвечать на звонок, называть себя"
+    },
+    "short": {
+      "de": "am Telefon den eigenen Namen sagen, wenn man abhebt",
+      "en": "to say your own name on the phone when you pick up",
+      "uk": "називати своє імʼя по телефону, коли береш слухавку",
+      "ru": "называть своё имя по телефону, когда берёшь трубку"
+    },
+    "def": {
+      "de": "Bei einem <g>hochoffiziellen</g> Anruf sollte man sich immer mit vollem Namen <b>melden</b>.",
+      "en": "For a highly official call, you should always answer with your full name.",
+      "uk": "Під час дуже офіційного дзвінка слід завжди називати повне імʼя.",
+      "ru": "Во время очень официального звонка следует всегда называть полное имя."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_057",
+    "cat": "k14",
+    "term": {
+      "de": "die Durchwahl, -en",
+      "en": "extension number",
+      "uk": "внутрішній номер",
+      "ru": "внутренний номер"
+    },
+    "short": {
+      "de": "eine zusätzliche Nummer, mit der man direkt eine bestimmte Person oder Abteilung erreicht",
+      "en": "an additional number used to reach a specific person or department directly",
+      "uk": "додатковий номер, за яким напряму дзвонять певній особі чи відділу",
+      "ru": "дополнительный номер, по которому напрямую звонят определённому лицу или отделу"
+    },
+    "def": {
+      "de": "Die <b>Durchwahl</b> zur Buchhaltung ist <g>superwichtig</g> für Ihre Anfrage.",
+      "en": "The extension number for accounting is super important for your enquiry.",
+      "uk": "Внутрішній номер бухгалтерії дуже важливий для вашого запиту.",
+      "ru": "Внутренний номер бухгалтерии очень важен для вашего запроса."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_058",
+    "cat": "k14",
+    "term": {
+      "de": "weiterverbinden",
+      "en": "to transfer a call",
+      "uk": "зʼєднувати (з кимось іншим)",
+      "ru": "соединять (с кем-то другим)"
+    },
+    "short": {
+      "de": "einen Anruf an eine andere Person weiterleiten",
+      "en": "to forward a call to another person",
+      "uk": "передавати дзвінок іншій особі",
+      "ru": "передавать звонок другому лицу"
+    },
+    "def": {
+      "de": "Ich verbinde Sie jetzt mit der <g>hochkompetenten</g> Kollegin <b>weiter</b>.",
+      "en": "I'll transfer you now to my highly competent colleague.",
+      "uk": "Зараз я зʼєдную вас із дуже компетентною колегою.",
+      "ru": "Сейчас я соединю вас с очень компетентной коллегой."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_059",
+    "cat": "k14",
+    "term": {
+      "de": "der Anrufbeantworter, -",
+      "en": "answering machine",
+      "uk": "автовідповідач",
+      "ru": "автоответчик"
+    },
+    "short": {
+      "de": "ein Gerät, das Nachrichten aufnimmt, wenn niemand ans Telefon geht",
+      "en": "a device that records messages when nobody answers the phone",
+      "uk": "пристрій, який записує повідомлення, коли ніхто не бере слухавку",
+      "ru": "устройство, записывающее сообщения, когда никто не берёт трубку"
+    },
+    "def": {
+      "de": "Der <b>Anrufbeantworter</b> war leider <g>überlastet</g> und nahm keine Nachrichten mehr an.",
+      "en": "The answering machine was unfortunately overloaded and stopped accepting messages.",
+      "uk": "Автовідповідач був, на жаль, перевантажений і більше не приймав повідомлень.",
+      "ru": "Автоответчик, к сожалению, был перегружен и больше не принимал сообщений."
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "k14_060",
+    "cat": "k14",
+    "term": {
+      "de": "sich verabschieden",
+      "en": "to say goodbye",
+      "uk": "прощатися",
+      "ru": "прощаться"
+    },
+    "short": {
+      "de": "am Ende eines Treffens oder Gesprächs Auf Wiedersehen sagen",
+      "en": "to say goodbye at the end of a meeting or conversation",
+      "uk": "казати до побачення наприкінці зустрічі чи розмови",
+      "ru": "говорить до свидания в конце встречи или разговора"
+    },
+    "def": {
+      "de": "Am Ende des Telefonats sollte man sich stets höflich und <g>extrafreundlich</g> <b>verabschieden</b>.",
+      "en": "At the end of a phone call, you should always say goodbye politely and extra kindly.",
+      "uk": "Наприкінці телефонної розмови слід завжди ввічливо й дуже дружньо прощатися.",
+      "ru": "В конце телефонного разговора следует всегда вежливо и очень дружелюбно прощаться."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },

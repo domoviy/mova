@@ -2497,7 +2497,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '325-db0786a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5037,98 +5037,10 @@ function initSwipe(){
 
 
 // ── SRS SWIPE HANDLER ─────────────────────────────────────────
-function srsSwipe(q){
-  const v = V.queue[V.idx];
-  if(!v) return;
-
-  V.srsRating = q;
-  const result = srsRate(v.id, q);
-
-  // Бейдж «нова картка» вже невірний одразу після оцінки — ховаємо без очікування ререндеру
-  document.querySelectorAll('#fc-area .fc-srs-new').forEach(el=>el.remove());
-
-  // Показуємо фідбек
-  const days = result.interval;
-  const emoji = q===1 ? '🔄' : q===3 ? '🤔' : '✅';
-  const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
-  const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
-  const _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
-  const _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
-  const label = q===1
-    ? _rep
-    : q===3
-    ? _in+days+_day
-    : days===1 ? _tmr : _in+days+_day;
-  showSrsHint(emoji, label, q);
-
-  if(q === 5){
-    // Знаю → одразу наступна картка (зупиняємо аудіо)
-    playGen++;
-    if(currentAudio){ currentAudio.pause(); currentAudio=null; }
-    V.repeatCount=0; V.idx++;
-    const ticket = ++cardGen;
-    // Plan-сесія: перевіряємо чи черга вичерпана
-    if(_srPlanCardIds && V.idx >= V.queue.length){ stopVocab(); return; }
-    setTimeout(()=>{
-      if(V.playing && !V.paused && cardGen===ticket) playVocabNext();
-    }, 600);
-  } else if(q === 1 && _srPlanCardIds){
-    // Plan-сесія "не знаю" → переміщаємо в кінець черги і переходимо далі
-    playGen++;
-    if(currentAudio){ currentAudio.pause(); currentAudio=null; }
-    const card = V.queue.splice(V.idx, 1)[0];
-    V.queue.push(card);
-    // V.idx не змінюємо — наступна картка стала на місце поточної
-    if(V.idx >= V.queue.length) V.idx = 0;
-    V.repeatCount=0;
-    const ticket2 = ++cardGen;
-    if(V.playing && !V.paused){
-      setTimeout(()=>{ if(V.playing && !V.paused && cardGen===ticket2) playVocabNext(); }, 600);
-    } else {
-      renderVocabCard();
-    }
-  }
-  // q===1 звичайний → аудіо грає до кінця, playVocabNext спрацює сам
-}
 
 // Показує інформаційний хінт з результатом SRS
-function showSrsHint(emoji, label, q, areaId='fc-area'){
-  let hint = document.getElementById('srs-hint');
-  if(!hint){
-    hint = document.createElement('div');
-    hint.id = 'srs-hint';
-    hint.className = 'srs-hint-badge';
-  }
-  // Прикріплюємо хінт до тієї карткової зони, що зараз активна (vocab / dialogue)
-  const area = document.getElementById(areaId);
-  if(area && hint.parentElement !== area) area.appendChild(hint);
-  hint.innerHTML = emoji+'<br><span class="srs-hint-label">'+label+'</span>';
-  hint.style.opacity = '1';
-  clearTimeout(hint._t);
-  hint._t = setTimeout(()=>{ hint.style.opacity='0'; }, 1200);
-}
 
 
-function renderCourseList(){
-  const container = document.getElementById('course-list');
-  if(!container) return;
-  container.innerHTML = COURSES.map(c=>`
-    <button class="course-btn ${c.id===activeCourse?.id?'active':''}"
-            data-course="${c.id}"
-            onclick="switchCourse('${c.id}')"
-            style="display:flex;align-items:center;gap:12px;padding:10px 14px;
-                   border-radius:12px;border:1px solid var(--border);
-                   background:var(--card);font-family:inherit;cursor:pointer;
-                   text-align:left;transition:all .2s;width:100%">
-      <span class="course-emoji">${c.emoji}</span>
-      <span style="flex:1">
-        <span class="course-title">${c.title}</span>
-        <span class="course-desc">${c.desc[uiLang]||c.desc.en||c.desc.de}</span>
-      </span>
-      <span class="course-level-badge">${c.level}</span>
-    </button>
-  `).join('');
-}
 
 
 // ══════════════════════════════════════════════════════════════
@@ -5516,7 +5428,7 @@ function matchShowResult(){
 
   // Якщо в lesson flow → переходимо одразу без показу результату
   if(LF && matchState._lfMode){
-    lfStepDone('matching', good/matchState.cards.length);
+    lfStepDone(LF.steps[LF.step], good/matchState.cards.length);
   } else {
     if(result) result.style.display='block';
   }
@@ -5710,12 +5622,40 @@ function _runLessonFlow(lesson, allCards){
     ? [...allDlg].sort((a,b) => srPriorityFromState(state,b.id) - srPriorityFromState(state,a.id))[0]
     : null;
 
+  // Запасний пул для заміни кроків, яких не вистачає (def/dlg_learn/
+  // tiles/sb_prac) — щоб урок не ставав КОРОТШИМ, коли якийсь крок
+  // недоступний, а замінювався на щось інше приблизно тієї ж тривалості.
+  // Найнадійніший кандидат — ще один раунд "Знайди пару": він рідко буває
+  // порожнім (тягне з усього модуля), і сам собою вже гейміфікований.
+  // Кожен запасний раунд отримує СВІЖИЙ шматок карток (не ті самі, що вже
+  // були в основному matching), щоб не повторюватись у межах уроку.
+  const usedInMatch = new Set(matchCards.map(c=>c.id));
+  const extraPool = matchPool.filter(c => !usedInMatch.has(c.id));
+  const extraChunks = [];
+  for(let i=0; i<extraPool.length; i+=5){
+    const chunk = extraPool.slice(i, i+5);
+    if(chunk.length >= 2) extraChunks.push(chunk);
+  }
+  let _extraChunkIdx = 0;
+  const matchExtraPools = {};
+  function _pushStepOrFiller(steps, available, stepName){
+    if(available){ steps.push(stepName); return; }
+    if(_extraChunkIdx < extraChunks.length){
+      const fillerName = 'matching_x' + steps.length;
+      matchExtraPools[fillerName] = extraChunks[_extraChunkIdx++];
+      steps.push(fillerName);
+    }
+    // якщо й запасних карток не лишилось — просто пропускаємо крок
+    // (той самий фолбек, що був раніше), урок стає коротшим лише коли
+    // модуль справді замалий для повноцінної заміни.
+  }
+
   const steps = ['cards'];
-  if(hasDefFill) steps.push('def');
+  _pushStepOrFiller(steps, hasDefFill, 'def');
   steps.push('matching');
-  if(dlgCard) steps.push('dlg_learn');
-  if(hasTiles) steps.push('tiles');
-  if(hasSB) steps.push('sb_prac');
+  _pushStepOrFiller(steps, !!dlgCard, 'dlg_learn');
+  _pushStepOrFiller(steps, hasTiles, 'tiles');
+  _pushStepOrFiller(steps, hasSB, 'sb_prac');
   steps.push('result');
 
   LF = {
@@ -5723,6 +5663,7 @@ function _runLessonFlow(lesson, allCards){
     lesson,
     cards:     flowCards,
     matchCards,
+    matchExtraPools,
     tilesCards,
     allCards,
     sbCards:   lessonSBCards,
@@ -8069,7 +8010,7 @@ function lfRenderBar(){
   const nameEl = document.getElementById('lf-step-name');
   if(nameEl){
     const cur = LF.steps[LF.step];
-    if(cur === 'matching'){
+    if(cur === 'matching' || (cur && cur.startsWith('matching_x'))){
       // Повний заголовок вправи (раніше дублювався окремим match-title)
       nameEl.textContent = t('match_title');
     } else {
@@ -8156,6 +8097,11 @@ function lfGoStep(stepIdx){
   } else if(step === 'matching'){
     switchVocabTab(2);
     lfStartMatching();
+  } else if(step && step.startsWith('matching_x')){
+    // Запасний раунд "Знайди пару" замість недоступного кроку (def/
+    // dlg_learn/tiles/sb_prac) — та сама вправа, свіжий набір карток.
+    switchVocabTab(2);
+    lfStartMatching(LF.matchExtraPools?.[step]);
   } else if(step === 'choice'){
     switchVocabTab(3);
     lfStartChoice();
@@ -8199,17 +8145,19 @@ function lfStepDone(step, score){
 }
 
 // ── КРОКИ ─────────────────────────────────────────────────────
-function lfStartMatching(){
+function lfStartMatching(poolOverride){
   if(!LF) return;
   // Ховаємо player під час matching — картки матчингу не озвучуються плеєром
   const vplayer = document.querySelector('#view-vocab .vplayer');
   if(vplayer) vplayer.style.display='none';
   // Незалежний пул для matching — LF.matchCards (до 5 карток за SM-2
-  // пріоритетом, побудований у _runLessonFlow окремо від V.queue/vocab-кроку)
-  const pool = (LF.matchCards||[]);
+  // пріоритетом, побудований у _runLessonFlow окремо від V.queue/vocab-кроку).
+  // poolOverride — для запасних раундів (matching_x*), коли цей крок
+  // підставлений замість недоступного def/dlg_learn/tiles/sb_prac.
+  const pool = poolOverride || (LF.matchCards||[]);
   const chosen = pool.slice(0, Math.min(5, pool.length));
   if(chosen.length < 2){
-    lfStepDone('matching', 1); return;
+    lfStepDone(LF.steps[LF.step], 1); return;
   }
   // Ін'єктуємо у matchState і рендеримо
   matchState = {
@@ -9805,42 +9753,6 @@ function _goToLessonOrExit(lesson){
 }
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
-function toggleVocab(){ unlockAudioCtx();
-  if(!V.playing){
-    if(!V.queue.length)V.queue=buildVocabQueue();
-    V.playing=true;V.paused=false;
-    document.getElementById('vplaybtn').textContent='⏸';
-    document.getElementById('vplaybtn').classList.add('pause');
-    window.mlog?.('autoplay_started',{mode:V.mode,queue_size:V.queue.length});
-    playVocabNext();
-  } else if(!V.paused){
-    V.paused=true;
-    clearTimeout(V.timer);
-    document.getElementById('vplaybtn').textContent='▶';
-    document.getElementById('vplaybtn').classList.remove('pause');
-    window.mlog?.('autoplay_paused');
-  } else {
-    V.paused=false;
-    document.getElementById('vplaybtn').textContent='⏸';
-    document.getElementById('vplaybtn').classList.add('pause');
-    window.mlog?.('autoplay_resumed');
-    const v=V.queue[V.idx];
-    const al=getActiveLangs();
-    if(v&&V.flipped){
-      speakVocabDefs(v,al,0,()=>{
-        if(!V.playing||V.paused)return;
-        V.repeatCount++;
-        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
-        else{
-          if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
-          V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);
-        }
-      });
-    } else {
-      playVocabNext();
-    }
-  }
-}
 function stopVocab(){
   // Smart Review: якщо була Plan-сесія — скидаємо фільтр і оновлюємо streak
   if(_srPlanCardIds){
@@ -9902,117 +9814,10 @@ function playVocabNext(){
     });
   });
 }
-function speakVocabTerms(v,langs,i,done){
-  if(!V.playing||V.paused){return;}
-  if(i>=langs.length){done&&done();return;}
-  const text=v.term?.[langs[i]];
-  if(!text){speakVocabTerms(v,langs,i+1,done);return;}
-  let _c=false;
-  speak(text, langs[i],
-    ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause); },
-    v.id,'term');
-}
-function speakVocabShort(v,langs,done){
-  if(!V.playing||V.paused){return;}
-  // Перевіряємо чи є хоч один short текст
-  const hasShort=langs.some(l=>v.short?.[l]);
-  if(!hasShort){done&&done();return;}
-  setTimeout(()=>speakVocabShortLang(v,langs,0,done),V.pause);
-}
-function speakVocabShortLang(v,langs,i,done){
-  if(!V.playing||V.paused){return;}
-  if(i>=langs.length){done&&done();return;}
-  const text=v.short?.[langs[i]];
-  if(!text){speakVocabShortLang(v,langs,i+1,done);return;}
-  let _c=false;
-  speak(text,langs[i],
-    ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabShortLang(v,langs,i+1,done),V.pause); },
-    v.id,'short');
-}
-function speakVocabDefs(v,langs,i,done){
-  if(!V.playing||V.paused){return;}
-  if(i>=langs.length){done&&done();return;}
-  const text=v.def?.[langs[i]];
-  if(!text){speakVocabDefs(v,langs,i+1,done);return;}
-  let _c=false;
-  speak(text, langs[i],
-    ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause); },
-    v.id,'def');
-}
 
 // ── LANG ──────────────────────────────────────────────────────
-function getActiveLangs(){return['de','en','uk','ru'].filter(l=>V.langs[l]);}
-function toggleVocabLang(l){
-  V.langs[l]=!V.langs[l];
-  if(!Object.values(V.langs).some(x=>x)){V.langs[l]=true;notify('Mindestens eine Sprache muss aktiv sein');return;}
-  localStorage.setItem('mova_langs',JSON.stringify(V.langs));
-  applyVocabLangUI();
-  renderVocabCard();
-  // Не перезапускаємо поточну картку — зміна мови застосується з наступної
-  // Просто оновлюємо UI без переривання аудіо
-}
-function applyVocabLangUI(){const vis=visibleLangs();['de','en','uk','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.style.display=vis.includes(l)?'':'none';b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
-function cycleVocabMode(){
-  const modes=['smart','seq','random','srs'];
-  V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
-  const btn=document.getElementById('vshuffle-btn');
-  const cfg={
-    smart: {icon:'🧠',cls:'smart'},
-    seq:   {icon:'➡', cls:''},
-    random:{icon:'🔀',cls:'shuffle'},
-    srs:   {icon:'🔬',cls:'smart'},
-  }[V.mode];
-  if(btn){btn.classList.remove('smart','shuffle');btn.textContent=cfg.icon;if(cfg.cls)btn.classList.add(cfg.cls);}
-  if(V.mode==='srs'){
-    const cf=document.getElementById('vf-cat')?.value||'all';
-    const arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
-    const dueCount=arr.filter(v=>srsDue(v.id)).length;
-    const newCount=arr.filter(v=>!srsLoad(v.id).dueDate).length;
-    notify('🔬 SM-2: '+dueCount+' '+t('srs_today').replace('📅 ','')+' · '+newCount+' '+t('srs_new').replace('✨ ',''));
-  }
-  saveSettings();resetVocabQ();
-}
 
 // ── FAVORITES ─────────────────────────────────────────────────
-function isFavorite(id){try{return!!JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite;}catch(e){return false;}}
-function toggleFavorite(id, silent){
-  haptic.light();
-  const key='mova_'+id;let data={};
-  try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
-  data.favorite=!data.favorite;
-  localStorage.setItem(key,JSON.stringify(data));
-  const fav=data.favorite;
-  // Оновлюємо лише кнопки — не перерендеримо картку, не чіпаємо V.flipped
-  document.querySelectorAll('.fc-fav,.fc-fav-back').forEach(btn=>{
-    btn.textContent=fav?'★':'☆';
-    btn.classList.toggle('active',fav);
-  });
-  if(!silent) notify(fav ? t('fav_added') : t('fav_removed'));
-  window.mlog?.('favorite_changed',{action:fav?'add':'remove'});
-  updateFavBadge();
-  // Якщо активний режим Favoriten і картку прибрали — перебудовуємо чергу
-  if(!fav && V.queue===VOCAB.filter(v=>isFavorite(v.id))) resetVocabQ();
-}
-function updateFavBadge(){const count=VOCAB.filter(v=>isFavorite(v.id)).length;const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
-function renderFavGrid(){
-  const dl=getActiveLangs()[0]||primaryLang();const favs=VOCAB.filter(v=>isFavorite(v.id));
-  const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
-  if(favs.length===0){grid.innerHTML='';if(empty)empty.style.display='';return;}
-  if(empty)empty.style.display='none';
-  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.[primaryLang()]||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.[primaryLang()]||''}</div></div>`;}).join('');
-}
-function openFavCard(vocabIdx){
-  const card=VOCAB[vocabIdx];if(!card)return;
-  // Черга — тільки обрані картки
-  const favQueue=VOCAB.filter(v=>isFavorite(v.id));
-  V.queue=favQueue;
-  // Знаходимо позицію картки в черзі обраних
-  const qIdx=favQueue.findIndex(v=>v.id===card.id);
-  V.idx=qIdx!==-1?qIdx:0;
-  V.flipped=false;
-  showView('vocab');
-  setTimeout(()=>renderVocabCard(),50);
-}
 
 // ── STATS ─────────────────────────────────────────────────────
 // saveCardPlay() видалено — totalPlays/lastSeen тепер пишуться
@@ -10020,118 +9825,10 @@ function openFavCard(vocabIdx){
 // оновлює Lernpfad UI за потреби.
 
 // ── STREAK ────────────────────────────────────────────────────
-function todayStr(){return new Date().toISOString().slice(0,10);}
-function loadProgress(){try{const r=localStorage.getItem('mova_progress');if(!r)return{};const p=JSON.parse(r);return(p&&typeof p==='object')?p:{};}catch(e){return{};}}
-function saveProgress(p){try{localStorage.setItem('mova_progress',JSON.stringify(p));}catch(e){}}
-function getGoal(){return parseInt(localStorage.getItem('mova_goal')||'10');}
-function setDailyGoal(n){try{localStorage.setItem('mova_goal',n);}catch(e){}document.getElementById('daily-goal-v').textContent=n;const sl=document.getElementById('daily-goal');if(sl)sl.value=n;renderStreakUI();}
-function trackCardToday(id){
-  try{
-    const today=todayStr();let p=loadProgress();
-    if(p.todayDate!==today){p.todayDate=today;p.todayCards=0;p.todayIds=[];}
-    if(!Array.isArray(p.todayIds))p.todayIds=[];
-    if(p.todayIds.includes(id))return;
-    p.todayIds.push(id);p.todayCards=(p.todayCards||0)+1;p.totalCards=(p.totalCards||0)+1;
-    const goal=getGoal(),justReached=p.todayCards===goal;
-    if(justReached){
-      const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);
-      const two=new Date(Date.now()-2*86400000).toISOString().slice(0,10);
-      if(p.lastDate===today){}
-      else if(!p.lastDate||p.lastDate===yesterday){p.streak=(p.streak||0)+1;p.bestStreak=Math.max(p.streak,p.bestStreak||0);p.lastDate=today;p.graceUsed=false;}
-      else if(!p.graceUsed&&p.lastDate===two){p.graceUsed=true;p.lastDate=today;}
-      else{p.streak=1;p.lastDate=today;p.graceUsed=false;}
-      if(!p.weekHistory)p.weekHistory={};
-      p.weekHistory[today]=true;
-      const keys=Object.keys(p.weekHistory).sort();
-      if(keys.length>30)keys.slice(0,keys.length-30).forEach(k=>delete p.weekHistory[k]);
-      saveProgress(p);renderStreakUI(true);haptic.success();
-      window.mlog?.('streak_completed',{streak:p.streak,total_cards:p.totalCards,goal:goal});
-      return;
-    }
-    saveProgress(p);renderStreakUI();
-  }catch(e){}
-}
-function renderStreakUI(pulse=false){
-  const today=todayStr();let p=loadProgress();
-  if(p.todayDate!==today){p.todayDate=today;p.todayCards=0;p.todayIds=[];}
-  const goal=getGoal(),todayN=p.todayCards||0,totalN=p.totalCards||0,streak=p.streak||0;
-  const pct=Math.min(100,(todayN/goal)*100),done=todayN>=goal;
-  const bnS=document.getElementById('bn-streak');
-  if(bnS){bnS.classList.toggle('done',done);if(pulse){bnS.classList.add('pulse');setTimeout(()=>bnS.classList.remove('pulse'),500);}}
-  const bc=document.getElementById('bn-streak-count');if(bc)bc.textContent=streak;
-  const bp=document.getElementById('bn-streak-pbf');if(bp)bp.style.width=pct+'%';
-  // Хедер
-  const hc=document.getElementById('h-streak-count');if(hc)hc.textContent=streak;
-  const hf=document.getElementById('h-fire');if(hf)hf.style.filter=done?'':'grayscale(1) opacity(.4)';
-  const st=document.getElementById('st-today');if(st)st.textContent=todayN;
-  const stot=document.getElementById('st-total');if(stot)stot.textContent=totalN;
-  const sl=document.getElementById('daily-goal');if(sl){sl.value=goal;document.getElementById('daily-goal-v').textContent=goal;}
-}
-function showStreakInfo(){
-  const p=loadProgress();const today=todayStr();
-  const todayN=(p.todayDate===today?p.todayCards:0)||0;
-  notify(`🔥 ${p.streak||0} Tage · ${todayN}/${getGoal()} heute · ${p.totalCards||0} gesamt`);
-}
-function resetStreak(){if(!confirm('Streak zurücksetzen?'))return;localStorage.removeItem('mova_progress');renderStreakUI();notify('Streak zurückgesetzt');}
 
 // ── BROWSE ────────────────────────────────────────────────────
-function switchVocabTab(tab){
-  // Зупиняємо запис при переключенні
-  if(typeof spState!=='undefined' && spState.recording) spStopRecord();
-  document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
-  document.getElementById('vocab-panel-card').style.display   = tab===0?'flex':'none';
-  document.getElementById('vocab-panel-browse').style.display = tab===1?'block':'none';
-  document.getElementById('vocab-panel-match').style.display  = tab===2?'flex':'none';
-  document.getElementById('vocab-panel-choice').style.display = tab===3?'flex':'none';
-  document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
-  document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
-  document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
-  document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
-  if(tab===1) renderVocabBrowse();
-  if(tab===2 && !(LF && LF.steps[LF.step]==='matching')) startMatching();
-  if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
-  if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
-  if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
-  if(tab===6 && !(LF && LF.steps[LF.step]==='def')) startDefFill();
-  if(tab===7) startSpeech();
-}
-function renderVocabBrowse(){
-  const cf=document.getElementById('vf-cat')?.value||'all';
-  const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||primaryLang();
-  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.[primaryLang()]||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.[primaryLang()]||''}</div></div>`;}).join('');
-}
-function openVocabCard(vocabIdx){
-  const card=VOCAB[vocabIdx];if(!card)return;
-  if(!V.queue.length)V.queue=buildVocabQueue();
-  // Знаходимо картку у черзі за id
-  const qIdx=V.queue.findIndex(c=>c.id===card.id);
-  if(qIdx!==-1){V.idx=qIdx;}
-  else{V.queue.unshift(card);V.idx=0;} // якщо не в черзі — ставимо першою
-  V.flipped=false;
-  renderVocabCard();
-  document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===0));
-  document.getElementById('vocab-panel-card').style.display='';
-  document.getElementById('vocab-panel-browse').style.display='none';
-}
 
 // ── CHIPS ─────────────────────────────────────────────────────
-function initVocabChips(){
-  const div=document.getElementById('vchips');if(!div)return;
-  if(typeof CATS==='undefined')return;
-  div.innerHTML='<button class="chip active" onclick="setVocabCat(\'all\',this)">Alle</button>';
-  CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+(c[uiLang]||c.en||c.de);btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
-}
-function setVocabCat(id,btn){
-  haptic.light();
-  const sel=document.getElementById('vf-cat');if(sel)sel.value=id;
-  document.querySelectorAll('#vchips .chip').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  window.mlog?.('category_selected',{cat:id});
-  resetVocabQ();
-  // Якщо відкрита вкладка "Alle" — оновлюємо browse-грід одразу
-  const browse=document.getElementById('vocab-panel-browse');
-  if(browse && browse.style.display!=='none') renderVocabBrowse();
-}
 
 // ═══════════════════════════════════════════════════════════════════
 // DIALOGUE — картки на основі DIALOGE (питання/відповідь), за зразком
@@ -10765,7 +10462,7 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
   if(tab===1) renderVocabBrowse();
-  if(tab===2 && !(LF && LF.steps[LF.step]==='matching')) startMatching();
+  if(tab===2 && !(LF && (LF.steps[LF.step]==='matching' || LF.steps[LF.step]?.startsWith('matching_x')))) startMatching();
   if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
   if(tab===4 && !(LF && LF.steps[LF.step]==='tiles'))     startTiles();
   if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
