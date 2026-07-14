@@ -1291,12 +1291,24 @@ body{
 .vpbf{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-lt));transition:width .4s;border-radius:4px}
 
 /* ══ BROWSE ══ */
-.vocab-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
-.vocab-mini-card{background:var(--paper);border-radius:10px;border:1px solid var(--border);padding:11px;cursor:pointer}
-.vocab-mini-card:active{border-color:var(--gold);transform:scale(.98)}
+/* Один стовпчик, на всю ширину — рядок-список замість 2-колонкової
+   сітки. Спільний стиль для Закладок/Словника/Діалогу: текст зліва,
+   шеврон справа (стандартний сигнал "тапни, щоб відкрити"). Особливо
+   важливо для Dialogue — там term/short це повні речення (питання+
+   відповідь), які в half-width картці 2-колонкової сітки обрізались би
+   нерівно; на всю ширину вони читаються природно. */
+.vocab-grid{display:flex;flex-direction:column;gap:8px}
+.vocab-mini-card{
+  background:var(--paper);border-radius:12px;border:1px solid var(--border);
+  padding:12px 14px;cursor:pointer;
+  display:flex;align-items:center;gap:10px;
+}
+.vocab-mini-card:active{border-color:var(--gold);transform:scale(.985)}
+.vmc-body{flex:1;min-width:0}
 .vmc-cat{font-size:var(--fs-tertiary);font-weight:700;color:var(--gold);background:var(--gold-dim);padding:2px 7px;border-radius:3px;display:inline-block;margin-bottom:5px}
-.vmc-term{font-size:var(--fs-card);font-weight:700;color:var(--ink);margin-bottom:2px}
-.vmc-short{font-size:var(--fs-secondary);color:var(--muted)}
+.vmc-term{font-size:var(--fs-card);font-weight:700;color:var(--ink);margin-bottom:2px;line-height:1.3}
+.vmc-short{font-size:var(--fs-secondary);color:var(--muted);line-height:1.3}
+.vmc-chevron{color:var(--muted);font-size:18px;flex-shrink:0;line-height:1}
 
 /* ══ SETTINGS ══ */
 .ssec{background:var(--paper);border-radius:13px;border:1px solid var(--border);padding:14px;margin-bottom:12px}
@@ -2562,7 +2574,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '327-c965280';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -10290,15 +10302,32 @@ function switchDialogueTab(tab){
   document.getElementById('dlg-panel-browse').style.display = tab===1?'block':'none';
   if(tab===1) renderDialogueBrowse();
 }
+// Спільний рядок-картка для списків "Усі картки"/Закладки (Vocab,
+// Dialogue, Favorites) — раніше кожен з трьох render*-методів дублював
+// майже ідентичний шаблон розмітки. Один стовпчик, на всю ширину:
+// текст зліва (категорія + основний текст + короткий підпис), шеврон
+// справа. onclickAttr — вже готовий рядок виклику (напр. "openFavCard(3)").
+function renderMiniCardRow(catId, title, sub, onclickAttr){
+  const cat = typeof CATS!=='undefined' ? CATS.find(c=>c.id===catId) : null;
+  const catLabel = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : (catId||'');
+  return `<div class="vocab-mini-card" onclick="${onclickAttr}">`+
+    `<div class="vmc-body">`+
+      `<div class="vmc-cat">${catLabel}</div>`+
+      `<div class="vmc-term">${title||''}</div>`+
+      `<div class="vmc-short">${sub||''}</div>`+
+    `</div>`+
+    `<div class="vmc-chevron">›</div>`+
+  `</div>`;
+}
+
 function renderDialogueBrowse(){
   if(typeof DIALOGE==='undefined') return;
   const cf=document.getElementById('dlgf-cat')?.value||'all';
   const items=DIALOGE.filter(d=>cf==='all'||d.cat===cf);
   const dl=getActiveDialogueLangs()[0]||primaryLang();
-  document.getElementById('dlg-browse-grid').innerHTML=items.map(d=>{
-    const cat=CATS.find(c=>c.id===d.cat);
-    return `<div class="vocab-mini-card" onclick="openDialogueCard(${DIALOGE.indexOf(d)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):d.cat}</div><div class="vmc-term">${d.q?.[dl]||d.q?.[primaryLang()]||''}</div><div class="vmc-short">${d.a?.[dl]||d.a?.[primaryLang()]||''}</div></div>`;
-  }).join('');
+  document.getElementById('dlg-browse-grid').innerHTML=items.map(d=>
+    renderMiniCardRow(d.cat, d.q?.[dl]||d.q?.[primaryLang()]||'', d.a?.[dl]||d.a?.[primaryLang()]||'', `openDialogueCard(${DIALOGE.indexOf(d)})`)
+  ).join('');
 }
 function openDialogueCard(dlgIdx){
   const card=DIALOGE[dlgIdx]; if(!card) return;
@@ -10491,7 +10520,9 @@ function renderFavGrid(){
   const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
   if(favs.length===0){grid.innerHTML='';if(empty)empty.style.display='';return;}
   if(empty)empty.style.display='none';
-  grid.innerHTML=favs.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openFavCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.[primaryLang()]||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.[primaryLang()]||''}</div></div>`;}).join('');
+  grid.innerHTML=favs.map(v=>
+    renderMiniCardRow(v.cat, v.term?.[dl]||v.term?.[primaryLang()]||'', v.short?.[dl]||v.short?.[primaryLang()]||'', `openFavCard(${VOCAB.indexOf(v)})`)
+  ).join('');
 }
 function openFavCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -10615,7 +10646,9 @@ function switchVocabTab(tab){
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
   const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||primaryLang();
-  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>{const cat=CATS.find(c=>c.id===v.cat);return`<div class="vocab-mini-card" onclick="openVocabCard(${VOCAB.indexOf(v)})"><div class="vmc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</div><div class="vmc-term">${v.term?.[dl]||v.term?.[primaryLang()]||''}</div><div class="vmc-short">${v.short?.[dl]||v.short?.[primaryLang()]||''}</div></div>`;}).join('');
+  document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>
+    renderMiniCardRow(v.cat, v.term?.[dl]||v.term?.[primaryLang()]||'', v.short?.[dl]||v.short?.[primaryLang()]||'', `openVocabCard(${VOCAB.indexOf(v)})`)
+  ).join('');
 }
 function openVocabCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -11298,11 +11331,26 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
     // Якщо мова інтерфейсу відрізняється від мови курсу — додаємо переклад
     var ifLang = typeof uiLang !== 'undefined' ? uiLang : pLang;
     if(ifLang !== pLang){
-      var ifRaw = sbL(card.sentence, ifLang);
-      var ifAns = sbA(card, ifLang);
-      if(ifRaw && ifRaw !== deRaw){
-        var ifFilled = ifRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+ifAns+'</strong>');
-        rows.push('<div class="sb-prac-result-translation">'+langFlags[ifLang]+' '+ifFilled+'</div>');
+      if(card._isGram && card._srcId && typeof VOCAB !== 'undefined'){
+        // Grammatik-Trainer: card.sentence має ОДНАКОВИЙ (німецький) текст
+        // під усіма мовними ключами (так побудовано в buildGramCards, щоб
+        // primaryLang-рядок завжди працював) — sbL(card.sentence,ifLang)
+        // повернув би той самий нім. текст замість перекладу. Справжній
+        // переклад беремо з def-поля ОРИГІНАЛЬНОЇ VOCAB-картки (_srcId) —
+        // того самого джерела, що дає й аудіо речення.
+        var srcVocab = VOCAB.find(function(v){ return v.id === card._srcId; });
+        var gramDefRaw = srcVocab && srcVocab.def ? (srcVocab.def[ifLang] || '') : '';
+        var gramDefClean = gramDefRaw.replace(/<\/?[gb]>/g, '');
+        if(gramDefClean){
+          rows.push('<div class="sb-prac-result-translation">'+(langFlags[ifLang]||'')+' '+gramDefClean+'</div>');
+        }
+      } else {
+        var ifRaw = sbL(card.sentence, ifLang);
+        var ifAns = sbA(card, ifLang);
+        if(ifRaw && ifRaw !== deRaw){
+          var ifFilled = ifRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+ifAns+'</strong>');
+          rows.push('<div class="sb-prac-result-translation">'+langFlags[ifLang]+' '+ifFilled+'</div>');
+        }
       }
     }
     sentenceHtml = '<div style="margin:10px 0;padding:10px 12px;background:var(--soft);border-radius:10px;display:flex;flex-direction:column;gap:2px">'+rows.join('')+'</div>';
@@ -11320,7 +11368,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
       '</div>' +
       sentenceHtml +
       '<div class="sb-prac-feedback-modal-expl">'+expl+'</div>' +
-      '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
+      '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn" style="visibility:hidden">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
     '</div>';
 
   document.body.appendChild(modal);
@@ -11335,6 +11383,16 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
   });
 
   document.getElementById('sb-modal-next-btn').onclick = onNext;
+}
+
+// Кнопка "Далі" в модалці ховається до завершення озвучення правильного
+// речення (sbPracAnswer викликає це з onEnd колбека speak()) — а не
+// одразу разом з модалкою. speak() викликає onEnd і в разі успіху, і
+// одразу ж, якщо аудіо недоступне (404/помилка) — тож кнопка все одно
+// не "зависає" назавжди, якщо файлу просто немає.
+function sbRevealFeedbackNextBtn(){
+  var btn = document.getElementById('sb-modal-next-btn');
+  if(btn) btn.style.visibility = 'visible';
 }
 
 function sbHideFeedbackModal() {
@@ -11426,8 +11484,20 @@ function sbRenderPrac() {
     return '<div class="'+cls+'"></div>';
   }).join('');
 
-  // category
-  var catEl=document.getElementById('sb-prac-cat'); if(catEl) catEl.textContent=cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):card.cat;
+  // category — В УРОЦІ показуємо загальний підпис (як у tiles/"Склади
+  // речення" — там теж нема конкретної теми над реченням, лише
+  // загальний step-заголовок вгорі), а не конкретну тему картки: вона й
+  // так дублюється у верхньому progress bar (LF_STEP_LABELS.sb_prac).
+  // У самостійній практиці (не в уроці) лишаємо конкретну категорію —
+  // там людина сама обирала фільтр і бачення теми доречне.
+  var catEl=document.getElementById('sb-prac-cat');
+  if(catEl){
+    if(LF){
+      catEl.textContent = (typeof LF_STEP_LABELS!=='undefined' && LF_STEP_LABELS.sb_prac?.[uiLang]) || LF_STEP_LABELS.sb_prac?.de || 'Übung';
+    } else {
+      catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
+    }
+  }
 
   // sentence — gold color via mc-q-term class
   var sentEl=document.getElementById('sb-prac-sentence');
@@ -11606,8 +11676,24 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
       var innerNext=document.getElementById('sb-prac-next-btn');
       if(innerNext){
         innerNext.textContent=typeof t==='function'?t('btn_sb_weiter'):'Weiter →';
+        // Ховаємо до завершення озвучення речення (reveal — див.
+        // sbRevealFeedbackNextBtn / _sbRevealInlineNextBtn нижче), а не
+        // показуємо одразу разом з фідбеком.
         innerNext.style.display='block';
+        innerNext.style.visibility='hidden';
       }
+    }
+  }
+
+  // Показує кнопку "Далі" — модалку в уроці чи inline-блок у самостійній
+  // практиці — викликається з onEnd озвучення речення (спрацьовує і при
+  // успіху, і одразу ж, якщо аудіо недоступне — див. speak()).
+  function revealNextBtn(){
+    if(LF){
+      sbRevealFeedbackNextBtn();
+    } else {
+      var innerNext=document.getElementById('sb-prac-next-btn');
+      if(innerNext) innerNext.style.visibility='visible';
     }
   }
 
@@ -11619,11 +11705,13 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   // — за текстом слова (speakGramWord, дедуплікація — див. коментар
   // біля getGramWordAudioUrl). Речення для Grammatik-Trainer завжди бере
   // готове pregen-аудіо ОРИГІНАЛЬНОЇ VOCAB-картки (card._srcId, 'def').
+  // Кнопка "Далі" з'являється лише коли ЦЕ (речення) аудіо завершиться
+  // (revealNextBtn) — а не одразу з появою фідбеку.
   if(card._isGram){
     speakGramWord(chosen, primaryLang(), function() {
       showFeedback();
       setTimeout(function() {
-        speak(null, primaryLang(), null, card._srcId, 'def');
+        speak(null, primaryLang(), revealNextBtn, card._srcId, 'def');
       }, 300);
     });
   } else {
@@ -11633,7 +11721,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
       showFeedback();
       // After answer audio ends → play full sentence
       setTimeout(function() {
-        speak(sentenceText, primaryLang(), null, card.id, 'sentence');
+        speak(sentenceText, primaryLang(), revealNextBtn, card.id, 'sentence');
       }, 300);
     }, card.id, field);
   }

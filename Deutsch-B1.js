@@ -3898,7 +3898,14 @@ var LESSONS = [
     "cardIds": [
       "k16_001",
       "k16_002",
-      "k16_003"
+      "k16_003",
+      "k16_017",
+      "k16_018",
+      "k16_019",
+      "k16_020",
+      "k16_021",
+      "k16_022",
+      "k16_023"
     ],
     "unlockAfter": "k15m5",
     "sbCards": []
@@ -3926,7 +3933,15 @@ var LESSONS = [
     "grammar": "trennbare_verben_praefixe_wdh_b1",
     "cardIds": [
       "k16_004",
-      "k16_005"
+      "k16_005",
+      "k16_024",
+      "k16_025",
+      "k16_026",
+      "k16_027",
+      "k16_028",
+      "k16_029",
+      "k16_030",
+      "k16_031"
     ],
     "unlockAfter": "k16m1",
     "sbCards": []
@@ -3956,7 +3971,13 @@ var LESSONS = [
       "k16_009",
       "k16_010",
       "k16_011",
-      "k16_012"
+      "k16_012",
+      "k16_032",
+      "k16_033",
+      "k16_034",
+      "k16_035",
+      "k16_036",
+      "k16_037"
     ],
     "unlockAfter": "k16m2",
     "sbCards": []
@@ -3989,7 +4010,10 @@ var LESSONS = [
       "k16_013",
       "k16_014",
       "k16_015",
-      "k16_016"
+      "k16_016",
+      "k16_038",
+      "k16_039",
+      "k16_040"
     ],
     "unlockAfter": "k16m3",
     "sbCards": []
@@ -23682,6 +23706,558 @@ var VOCAB = [
       "en": "The city's modern architecture and the old buildings surprisingly <g>go</g> <g>well together</g>.",
       "uk": "Сучасна архітектура міста та старі будівлі напрочуд добре поєднуються.",
       "ru": "Современная архитектура города и старые здания на удивление хорошо сочетаются."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_017",
+    "cat": "k16",
+    "term": {
+      "de": "die Feier, -n",
+      "en": "celebration, party",
+      "uk": "свято",
+      "ru": "праздник"
+    },
+    "short": {
+      "de": "eine Veranstaltung, bei der man ein besonderes Ereignis feiert",
+      "en": "an event where you celebrate something special",
+      "uk": "захід, на якому святкують особливу подію",
+      "ru": "мероприятие, на котором празднуют особое событие"
+    },
+    "def": {
+      "de": "Wir organisieren eine große <b>Feier</b>, <g>denn</g> unser Team hat das Projekt erfolgreich abgeschlossen.",
+      "en": "We are organising a big party, <g>because</g> our team successfully completed the project.",
+      "uk": "Ми організовуємо велике свято, <g>бо</g> наша команда успішно завершила проєкт.",
+      "ru": "Мы организуем большой праздник, <g>потому что</g> наша команда успешно завершила проект."
+    },
+    "gram": "satzverbindungen_ueberblick"
+  },
+  {
+    "id": "k16_018",
+    "cat": "k16",
+    "term": {
+      "de": "sich erholen",
+      "en": "to recover, to relax",
+      "uk": "відпочивати",
+      "ru": "отдыхать"
+    },
+    "short": {
+      "de": "nach einer Anstrengung wieder Kraft und Ruhe finden",
+      "en": "to regain strength and calm after exertion",
+      "uk": "знову набиратися сил і спокою після напруження",
+      "ru": "снова набираться сил и покоя после напряжения"
+    },
+    "def": {
+      "de": "Sie war sehr gestresst, <g>deshalb</g> <b>erholt</b> sie sich jetzt am Meer.",
+      "en": "She was very stressed, <g>that's why</g> she is now relaxing by the sea.",
+      "uk": "Вона була дуже виснажена, <g>тому</g> зараз відпочиває на морі.",
+      "ru": "Она была очень измотана, <g>поэтому</g> сейчас отдыхает у моря."
+    },
+    "gram": "satzverbindungen_ueberblick"
+  },
+  {
+    "id": "k16_019",
+    "cat": "k16",
+    "term": {
+      "de": "die Reise, -n",
+      "en": "trip, journey",
+      "uk": "подорож",
+      "ru": "путешествие"
+    },
+    "short": {
+      "de": "eine Fahrt an einen anderen Ort, meistens für längere Zeit",
+      "en": "a trip to another place, usually for a longer time",
+      "uk": "поїздка в інше місце, зазвичай на тривалий час",
+      "ru": "поездка в другое место, обычно на длительное время"
+    },
+    "def": {
+      "de": "Wir machen die <b>Reise</b>, <g>obwohl</g> das Wetter nicht ideal ist.",
+      "en": "We are going on the trip, <g>although</g> the weather isn't ideal.",
+      "uk": "Ми вирушаємо в подорож, <g>хоча</g> погода не ідеальна.",
+      "ru": "Мы отправляемся в путешествие, <g>хотя</g> погода не идеальная."
+    },
+    "gram": "satzverbindungen_ueberblick"
+  },
+  {
+    "id": "k16_020",
+    "cat": "k16",
+    "term": {
+      "de": "planen",
+      "en": "to plan",
+      "uk": "планувати",
+      "ru": "планировать"
+    },
+    "short": {
+      "de": "im Voraus überlegen, wie man etwas machen will",
+      "en": "to think in advance about how you want to do something",
+      "uk": "заздалегідь обдумувати, як щось зробити",
+      "ru": "заранее обдумывать, как что-то сделать"
+    },
+    "def": {
+      "de": "Wir <b>planen</b> die Feier neu, <g>wenn</g> es regnet.",
+      "en": "We will replan the party <g>if</g> it rains.",
+      "uk": "Ми переплануємо свято, <g>якщо</g> піде дощ.",
+      "ru": "Мы перепланируем праздник, <g>если</g> пойдёт дождь."
+    },
+    "gram": "satzverbindungen_ueberblick"
+  },
+  {
+    "id": "k16_021",
+    "cat": "k16",
+    "term": {
+      "de": "das Fest, -e",
+      "en": "festival, party",
+      "uk": "свято, фестиваль",
+      "ru": "праздник, фестиваль"
+    },
+    "short": {
+      "de": "eine große, oft öffentliche Feier",
+      "en": "a large, often public celebration",
+      "uk": "велике, часто публічне святкування",
+      "ru": "большое, часто публичное празднование"
+    },
+    "def": {
+      "de": "<b>Feiern</b> wir das <b>Fest</b> im Garten, <g>oder</g> gehen wir lieber in ein Restaurant?",
+      "en": "Shall we celebrate the party in the garden, <g>or</g> would we rather go to a restaurant?",
+      "uk": "Святкуємо свято в саду, <g>чи</g> краще підемо в ресторан?",
+      "ru": "Празднуем в саду, <g>или</g> лучше пойдём в ресторан?"
+    },
+    "gram": "satzverbindungen_ueberblick"
+  },
+  {
+    "id": "k16_022",
+    "cat": "k16",
+    "term": {
+      "de": "hoffen",
+      "en": "to hope",
+      "uk": "сподіватися",
+      "ru": "надеяться"
+    },
+    "short": {
+      "de": "wünschen, dass etwas Positives passiert",
+      "en": "to wish that something positive happens",
+      "uk": "бажати, щоб сталося щось хороше",
+      "ru": "желать, чтобы произошло что-то хорошее"
+    },
+    "def": {
+      "de": "Ich <b>hoffe</b>, <g>dass</g> das Wetter am Wochenende schön bleibt.",
+      "en": "I hope <g>that</g> the weather stays nice at the weekend.",
+      "uk": "Я сподіваюся, <g>що</g> погода на вихідних залишиться гарною.",
+      "ru": "Я надеюсь, <g>что</g> погода на выходных останется хорошей."
+    },
+    "gram": "satzverbindungen_ueberblick"
+  },
+  {
+    "id": "k16_023",
+    "cat": "k16",
+    "term": {
+      "de": "abreisen",
+      "en": "to depart",
+      "uk": "виїжджати, вирушати",
+      "ru": "уезжать, отправляться"
+    },
+    "short": {
+      "de": "einen Ort verlassen, um eine Reise zu beginnen",
+      "en": "to leave a place to begin a journey",
+      "uk": "залишати місце, щоб вирушити в подорож",
+      "ru": "покидать место, чтобы отправиться в путешествие"
+    },
+    "def": {
+      "de": "Wir wollten früh <b>abreisen</b>, <g>aber</g> der Zug hatte Verspätung.",
+      "en": "We wanted to depart early, <g>but</g> the train was delayed.",
+      "uk": "Ми хотіли виїхати рано, <g>але</g> потяг запізнювався.",
+      "ru": "Мы хотели выехать рано, <g>но</g> поезд опаздывал."
+    },
+    "gram": "satzverbindungen_ueberblick"
+  },
+  {
+    "id": "k16_024",
+    "cat": "k16",
+    "term": {
+      "de": "nachkommen",
+      "en": "to follow, to come later",
+      "uk": "приєднатися пізніше",
+      "ru": "присоединиться позже"
+    },
+    "short": {
+      "de": "später an denselben Ort kommen wie die anderen",
+      "en": "to arrive at the same place later than the others",
+      "uk": "прибувати на те саме місце пізніше за інших",
+      "ru": "прибывать в то же место позже других"
+    },
+    "def": {
+      "de": "Die Kinder <g>kommen</g> morgen <g>nach</g>, wir fahren schon heute los.",
+      "en": "The children will <g>follow</g> tomorrow, we're already leaving today.",
+      "uk": "Діти приєднаються завтра, ми виїжджаємо вже сьогодні.",
+      "ru": "Дети присоединятся завтра, мы уезжаем уже сегодня."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_025",
+    "cat": "k16",
+    "term": {
+      "de": "zurückschicken",
+      "en": "to send back",
+      "uk": "відправляти назад",
+      "ru": "отправлять назад"
+    },
+    "short": {
+      "de": "etwas an den Absender zurückgeben",
+      "en": "to return something to the sender",
+      "uk": "повертати щось відправнику",
+      "ru": "возвращать что-то отправителю"
+    },
+    "def": {
+      "de": "Das Paket war falsch adressiert, deshalb <g>schicken</g> wir es <g>zurück</g>.",
+      "en": "The package was addressed incorrectly, so we are <g>sending</g> it <g>back</g>.",
+      "uk": "Посилка була неправильно адресована, тому ми відправляємо її назад.",
+      "ru": "Посылка была неправильно адресована, поэтому мы отправляем её назад."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_026",
+    "cat": "k16",
+    "term": {
+      "de": "wegwerfen",
+      "en": "to throw away",
+      "uk": "викидати",
+      "ru": "выбрасывать"
+    },
+    "short": {
+      "de": "etwas, das man nicht mehr braucht, in den Müll werfen",
+      "en": "to throw something you no longer need into the bin",
+      "uk": "викидати в смітник те, що більше не потрібне",
+      "ru": "выбрасывать в мусор то, что больше не нужно"
+    },
+    "def": {
+      "de": "Ich <g>werfe</g> die alten Prospekte einfach <g>weg</g>.",
+      "en": "I'm simply <g>throwing</g> the old brochures <g>away</g>.",
+      "uk": "Я просто викидаю старі буклети.",
+      "ru": "Я просто выбрасываю старые буклеты."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_027",
+    "cat": "k16",
+    "term": {
+      "de": "weiterfahren",
+      "en": "to continue driving, to drive on",
+      "uk": "їхати далі",
+      "ru": "ехать дальше"
+    },
+    "short": {
+      "de": "die Fahrt nach einer Pause fortsetzen",
+      "en": "to continue the journey after a break",
+      "uk": "продовжувати їзду після перерви",
+      "ru": "продолжать движение после перерыва"
+    },
+    "def": {
+      "de": "Nach der Pause <g>fahren</g> wir <g>weiter</g> Richtung Süden.",
+      "en": "After the break, we <g>continue driving</g> towards the south.",
+      "uk": "Після перерви ми їдемо далі на південь.",
+      "ru": "После перерыва мы едем дальше на юг."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_028",
+    "cat": "k16",
+    "term": {
+      "de": "mitbringen",
+      "en": "to bring along",
+      "uk": "брати із собою",
+      "ru": "брать с собой"
+    },
+    "short": {
+      "de": "etwas zu einem Ort bringen, wenn man selbst dorthin geht",
+      "en": "to bring something to a place when you go there yourself",
+      "uk": "приносити щось із собою, коли йдеш кудись",
+      "ru": "приносить что-то с собой, когда идёшь куда-то"
+    },
+    "def": {
+      "de": "Ich <g>bringe</g> meinen Reisepass unbedingt <g>mit</g>.",
+      "en": "I definitely <g>bring</g> my passport <g>with me</g>.",
+      "uk": "Я обовʼязково беру із собою паспорт.",
+      "ru": "Я обязательно беру с собой паспорт."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_029",
+    "cat": "k16",
+    "term": {
+      "de": "zurückkommen",
+      "en": "to come back",
+      "uk": "повертатися",
+      "ru": "возвращаться"
+    },
+    "short": {
+      "de": "wieder an den Ort kommen, von dem man weggegangen ist",
+      "en": "to come back to the place you left",
+      "uk": "повертатися туди, звідки поїхав",
+      "ru": "возвращаться туда, откуда уехал"
+    },
+    "def": {
+      "de": "Wann <g>kommst</g> du von der Reise <g>zurück</g>?",
+      "en": "When are you <g>coming</g> <g>back</g> from the trip?",
+      "uk": "Коли ти повертаєшся з подорожі?",
+      "ru": "Когда ты возвращаешься из путешествия?"
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_030",
+    "cat": "k16",
+    "term": {
+      "de": "abholen",
+      "en": "to pick up",
+      "uk": "забирати (когось/щось)",
+      "ru": "забирать (кого-то/что-то)"
+    },
+    "short": {
+      "de": "zu einem Ort gehen oder fahren, um jemanden oder etwas von dort mitzunehmen",
+      "en": "to go or drive somewhere to collect someone or something",
+      "uk": "йти чи їхати кудись, щоб забрати звідти когось або щось",
+      "ru": "идти или ехать куда-то, чтобы забрать оттуда кого-то или что-то"
+    },
+    "def": {
+      "de": "Ich <g>hole</g> dich morgen früh am Bahnhof <g>ab</g>.",
+      "en": "I'll <g>pick</g> you <g>up</g> at the station tomorrow morning.",
+      "uk": "Я заберу тебе завтра вранці з вокзалу.",
+      "ru": "Я заберу тебя завтра утром с вокзала."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_031",
+    "cat": "k16",
+    "term": {
+      "de": "aufräumen",
+      "en": "to tidy up",
+      "uk": "прибирати",
+      "ru": "убирать"
+    },
+    "short": {
+      "de": "Ordnung machen, Dinge an ihren Platz räumen",
+      "en": "to put things in order, to put things back in their place",
+      "uk": "наводити лад, класти речі на місце",
+      "ru": "наводить порядок, класть вещи на место"
+    },
+    "def": {
+      "de": "Nach dem Fest <g>räumen</g> wir gemeinsam <g>auf</g>.",
+      "en": "After the party, we <g>tidy</g> <g>up</g> together.",
+      "uk": "Після свята ми разом прибираємо.",
+      "ru": "После праздника мы вместе убираем."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_032",
+    "cat": "k16",
+    "term": {
+      "de": "der/die Verdächtige, -n",
+      "en": "suspect",
+      "uk": "підозрюваний",
+      "ru": "подозреваемый"
+    },
+    "short": {
+      "de": "eine Person, die möglicherweise etwas Verbotenes getan hat",
+      "en": "a person who may have done something forbidden",
+      "uk": "особа, яка, можливо, вчинила щось заборонене",
+      "ru": "лицо, которое, возможно, совершило что-то запрещённое"
+    },
+    "def": {
+      "de": "Die Polizei <g>nahm</g> den <b>Verdächtigen</b> zur Vernehmung <g>mit</g>.",
+      "en": "The police <g>took</g> the suspect <g>along</g> for questioning.",
+      "uk": "Поліція забрала підозрюваного на допит.",
+      "ru": "Полиция забрала подозреваемого на допрос."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_033",
+    "cat": "k16",
+    "term": {
+      "de": "anzeigen",
+      "en": "to report (a crime)",
+      "uk": "заявляти (про злочин)",
+      "ru": "заявлять (о преступлении)"
+    },
+    "short": {
+      "de": "der Polizei offiziell von einer Straftat berichten",
+      "en": "to officially report a crime to the police",
+      "uk": "офіційно повідомляти поліцію про злочин",
+      "ru": "официально сообщать полиции о преступлении"
+    },
+    "def": {
+      "de": "Die Nachbarin <g>zeigte</g> den Vorfall sofort bei der Polizei <g>an</g>.",
+      "en": "The neighbour immediately <g>reported</g> the incident to the police.",
+      "uk": "Сусідка одразу заявила про інцидент у поліцію.",
+      "ru": "Соседка сразу заявила об инциденте в полицию."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_034",
+    "cat": "k16",
+    "term": {
+      "de": "aussagen",
+      "en": "to testify",
+      "uk": "давати свідчення",
+      "ru": "давать показания"
+    },
+    "short": {
+      "de": "der Polizei oder einem Gericht genau berichten, was man gesehen oder erlebt hat",
+      "en": "to report precisely to the police or a court what you have seen or experienced",
+      "uk": "точно повідомляти поліції чи суду, що бачив або пережив",
+      "ru": "точно сообщать полиции или суду, что видел или пережил"
+    },
+    "def": {
+      "de": "Der Zeuge <g>sagte</g> bei der Polizei alles genau <g>aus</g>.",
+      "en": "The witness <g>testified</g> everything precisely to the police.",
+      "uk": "Свідок точно дав свідчення поліції.",
+      "ru": "Свидетель точно дал показания полиции."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_035",
+    "cat": "k16",
+    "term": {
+      "de": "der Tatort, -e",
+      "en": "crime scene",
+      "uk": "місце злочину",
+      "ru": "место преступления"
+    },
+    "short": {
+      "de": "der Ort, an dem eine Straftat passiert ist",
+      "en": "the place where a crime happened",
+      "uk": "місце, де стався злочин",
+      "ru": "место, где произошло преступление"
+    },
+    "def": {
+      "de": "Die Polizei <g>sperrte</g> den <b>Tatort</b> sofort <g>ab</g>.",
+      "en": "The police immediately <g>sealed</g> <g>off</g> the crime scene.",
+      "uk": "Поліція одразу оточила місце злочину.",
+      "ru": "Полиция сразу оцепила место преступления."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_036",
+    "cat": "k16",
+    "term": {
+      "de": "vorladen",
+      "en": "to summon",
+      "uk": "викликати (офіційно)",
+      "ru": "вызывать (официально)"
+    },
+    "short": {
+      "de": "jemanden offiziell bitten, zu einem bestimmten Termin zu erscheinen",
+      "en": "to officially ask someone to appear at a certain time",
+      "uk": "офіційно просити когось зʼявитися у визначений час",
+      "ru": "официально просить кого-то явиться в определённое время"
+    },
+    "def": {
+      "de": "Die Polizei <g>lädt</g> den Zeugen für morgen <g>vor</g>.",
+      "en": "The police <g>summon</g> the witness for tomorrow.",
+      "uk": "Поліція викликає свідка на завтра.",
+      "ru": "Полиция вызывает свидетеля на завтра."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_037",
+    "cat": "k16",
+    "term": {
+      "de": "der Beweis, -e",
+      "en": "evidence",
+      "uk": "доказ",
+      "ru": "доказательство"
+    },
+    "short": {
+      "de": "etwas, das zeigt, dass eine Aussage wahr ist",
+      "en": "something that shows a statement is true",
+      "uk": "те, що показує, що твердження правдиве",
+      "ru": "то, что показывает, что утверждение верно"
+    },
+    "def": {
+      "de": "Die Polizei <g>stellte</g> alle <b>Beweise</b> am Tatort <g>sicher</g>.",
+      "en": "The police <g>secured</g> all the evidence at the crime scene.",
+      "uk": "Поліція зібрала всі докази на місці злочину.",
+      "ru": "Полиция собрала все доказательства на месте преступления."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_038",
+    "cat": "k16",
+    "term": {
+      "de": "aussteigen",
+      "en": "to get off, to disembark",
+      "uk": "виходити (з транспорту)",
+      "ru": "выходить (из транспорта)"
+    },
+    "short": {
+      "de": "ein Fahrzeug, zum Beispiel einen Bus, verlassen",
+      "en": "to leave a vehicle, for example a bus",
+      "uk": "залишати транспорт, наприклад автобус",
+      "ru": "покидать транспорт, например автобус"
+    },
+    "def": {
+      "de": "An der nächsten Haltestelle <g>steigen</g> wir <g>aus</g>.",
+      "en": "We <g>get</g> <g>off</g> at the next stop.",
+      "uk": "Ми виходимо на наступній зупинці.",
+      "ru": "Мы выходим на следующей остановке."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_039",
+    "cat": "k16",
+    "term": {
+      "de": "einsteigen",
+      "en": "to get on, to board",
+      "uk": "сідати (у транспорт)",
+      "ru": "садиться (в транспорт)"
+    },
+    "short": {
+      "de": "in ein Fahrzeug, zum Beispiel einen Bus, hineingehen",
+      "en": "to get into a vehicle, for example a bus",
+      "uk": "заходити в транспорт, наприклад автобус",
+      "ru": "заходить в транспорт, например автобус"
+    },
+    "def": {
+      "de": "Wir <g>steigen</g> hier in die U-Bahn <g>ein</g>.",
+      "en": "We <g>get</g> <g>on</g> the subway here.",
+      "uk": "Ми сідаємо тут у метро.",
+      "ru": "Мы садимся здесь в метро."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "k16_040",
+    "cat": "k16",
+    "term": {
+      "de": "umsteigen",
+      "en": "to change, to transfer",
+      "uk": "пересідати",
+      "ru": "пересаживаться"
+    },
+    "short": {
+      "de": "von einem Fahrzeug in ein anderes wechseln, um weiterzufahren",
+      "en": "to switch from one vehicle to another to continue your journey",
+      "uk": "переходити з одного транспорту в інший, щоб продовжити поїздку",
+      "ru": "переходить с одного транспорта на другой, чтобы продолжить поездку"
+    },
+    "def": {
+      "de": "Am Hauptbahnhof <g>steigen</g> wir in die andere Linie <g>um</g>.",
+      "en": "At the main station, we <g>change</g> to the other line.",
+      "uk": "На головному вокзалі ми пересідаємо на іншу лінію.",
+      "ru": "На главном вокзале мы пересаживаемся на другую линию."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   }
