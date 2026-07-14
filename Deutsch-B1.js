@@ -3141,7 +3141,15 @@ var LESSONS = [
     "grammar": "nebensatz_mit_nachdem",
     "cardIds": [
       "k12_001",
-      "k12_002"
+      "k12_002",
+      "k12_017",
+      "k12_018",
+      "k12_019",
+      "k12_020",
+      "k12_021",
+      "k12_022",
+      "k12_023",
+      "k12_024"
     ],
     "unlockAfter": "k11m5",
     "sbCards": []
@@ -3169,7 +3177,15 @@ var LESSONS = [
     "grammar": "plusquamperfekt",
     "cardIds": [
       "k12_003",
-      "k12_004"
+      "k12_004",
+      "k12_025",
+      "k12_026",
+      "k12_027",
+      "k12_028",
+      "k12_029",
+      "k12_030",
+      "k12_031",
+      "k12_032"
     ],
     "unlockAfter": "k12m1",
     "sbCards": []
@@ -3197,7 +3213,15 @@ var LESSONS = [
     "grammar": "infinitiv_als_nomen",
     "cardIds": [
       "k12_005",
-      "k12_012"
+      "k12_012",
+      "k12_033",
+      "k12_034",
+      "k12_035",
+      "k12_036",
+      "k12_037",
+      "k12_038",
+      "k12_039",
+      "k12_040"
     ],
     "unlockAfter": "k12m2",
     "sbCards": []
@@ -3226,7 +3250,14 @@ var LESSONS = [
     "cardIds": [
       "k12_006",
       "k12_007",
-      "k12_013"
+      "k12_013",
+      "k12_041",
+      "k12_042",
+      "k12_043",
+      "k12_044",
+      "k12_045",
+      "k12_046",
+      "k12_047"
     ],
     "unlockAfter": "k12m3",
     "sbCards": []
@@ -3259,7 +3290,10 @@ var LESSONS = [
       "k12_011",
       "k12_014",
       "k12_015",
-      "k12_016"
+      "k12_016",
+      "k12_048",
+      "k12_049",
+      "k12_050"
     ],
     "unlockAfter": "k12m4",
     "sbCards": []
@@ -3288,7 +3322,14 @@ var LESSONS = [
     "cardIds": [
       "k13_001",
       "k13_002",
-      "k13_009"
+      "k13_009",
+      "k13_017",
+      "k13_018",
+      "k13_019",
+      "k13_020",
+      "k13_021",
+      "k13_022",
+      "k13_023"
     ],
     "unlockAfter": "k12m5",
     "sbCards": []
@@ -3316,7 +3357,15 @@ var LESSONS = [
     "grammar": "praepositionen_mit_genitiv",
     "cardIds": [
       "k13_003",
-      "k13_004"
+      "k13_004",
+      "k13_024",
+      "k13_025",
+      "k13_026",
+      "k13_027",
+      "k13_028",
+      "k13_029",
+      "k13_030",
+      "k13_031"
     ],
     "unlockAfter": "k13m1",
     "sbCards": []
@@ -3344,7 +3393,15 @@ var LESSONS = [
     "grammar": "adjektivendung_genitiv",
     "cardIds": [
       "k13_005",
-      "k13_010"
+      "k13_010",
+      "k13_032",
+      "k13_033",
+      "k13_034",
+      "k13_035",
+      "k13_036",
+      "k13_037",
+      "k13_038",
+      "k13_039"
     ],
     "unlockAfter": "k13m2",
     "sbCards": []
@@ -3373,7 +3430,14 @@ var LESSONS = [
     "cardIds": [
       "k13_006",
       "k13_007",
-      "k13_011"
+      "k13_011",
+      "k13_040",
+      "k13_041",
+      "k13_042",
+      "k13_043",
+      "k13_044",
+      "k13_045",
+      "k13_046"
     ],
     "unlockAfter": "k13m3",
     "sbCards": []
@@ -3405,7 +3469,11 @@ var LESSONS = [
       "k13_013",
       "k13_014",
       "k13_015",
-      "k13_016"
+      "k13_016",
+      "k13_047",
+      "k13_048",
+      "k13_049",
+      "k13_050"
     ],
     "unlockAfter": "k13m4",
     "sbCards": []
@@ -18710,6 +18778,788 @@ var VOCAB = [
     "gram": "adjektive_auf_bar_los"
   },
   {
+    "id": "k12_017",
+    "cat": "k12",
+    "term": {
+      "de": "sich integrieren",
+      "en": "to integrate",
+      "uk": "інтегруватися",
+      "ru": "интегрироваться"
+    },
+    "short": {
+      "de": "sich in eine neue Gesellschaft oder Gruppe einfügen",
+      "en": "to fit into a new society or group",
+      "uk": "вливатися в нове суспільство чи групу",
+      "ru": "вливаться в новое общество или группу"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> er sich gut <b>integriert</b> <g>hatte</g>, fand er schnell neue Freunde.",
+      "en": "<g>After</g> he <g>had</g> <b>integrated</b> well, he quickly made new friends.",
+      "uk": "<g>Після того як</g> він добре <b>інтегрувався</b>, він швидко знайшов нових друзів.",
+      "ru": "<g>После того как</g> он хорошо <b>интегрировался</b>, он быстро нашёл новых друзей."
+    },
+    "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "k12_018",
+    "cat": "k12",
+    "term": {
+      "de": "der Sprachkurs",
+      "en": "language course",
+      "uk": "мовний курс",
+      "ru": "языковой курс"
+    },
+    "short": {
+      "de": "ein Kurs, in dem man eine Fremdsprache lernt",
+      "en": "a course in which you learn a foreign language",
+      "uk": "курс, на якому вивчають іноземну мову",
+      "ru": "курс, на котором изучают иностранный язык"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> sie den <b>Sprachkurs</b> abgeschlossen <g>hatte</g>, konnte sie sich viel besser verständigen.",
+      "en": "<g>After</g> she <g>had</g> completed the <b>language course</b>, she could communicate much better.",
+      "uk": "<g>Після того як</g> вона завершила <b>мовний курс</b>, вона могла набагато краще спілкуватися.",
+      "ru": "<g>После того как</g> она завершила <b>языковой курс</b>, она могла намного лучше общаться."
+    },
+    "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "k12_019",
+    "cat": "k12",
+    "term": {
+      "de": "sich einleben",
+      "en": "to settle in",
+      "uk": "освоюватися",
+      "ru": "осваиваться"
+    },
+    "short": {
+      "de": "sich an einem neuen Ort langsam wohlfühlen",
+      "en": "to gradually feel comfortable in a new place",
+      "uk": "поступово почуватися комфортно на новому місці",
+      "ru": "постепенно чувствовать себя комфортно на новом месте"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> wir uns <b>eingelebt</b> <g>hatten</g>, fühlten wir uns endlich zu Hause.",
+      "en": "<g>After</g> we <g>had</g> <b>settled in</b>, we finally felt at home.",
+      "uk": "<g>Після того як</g> ми <b>освоїлися</b>, ми нарешті відчули себе як удома.",
+      "ru": "<g>После того как</g> мы <b>освоились</b>, мы наконец почувствовали себя как дома."
+    },
+    "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "k12_020",
+    "cat": "k12",
+    "term": {
+      "de": "die Behörde",
+      "en": "authority, office",
+      "uk": "установа",
+      "ru": "учреждение"
+    },
+    "short": {
+      "de": "eine staatliche Einrichtung, die offizielle Aufgaben erledigt",
+      "en": "a government institution that carries out official tasks",
+      "uk": "державний заклад, який виконує офіційні завдання",
+      "ru": "государственное учреждение, выполняющее официальные задачи"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> er bei der <b>Behörde</b> alle Papiere abgegeben <g>hatte</g>, musste er nur noch warten.",
+      "en": "<g>After</g> he <g>had</g> submitted all the papers at the <b>authority</b>, he only had to wait.",
+      "uk": "<g>Після того як</g> він подав усі документи в <b>установу</b>, йому залишалося лише чекати.",
+      "ru": "<g>После того как</g> он подал все документы в <b>учреждение</b>, ему оставалось только ждать."
+    },
+    "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "k12_021",
+    "cat": "k12",
+    "term": {
+      "de": "der Antrag",
+      "en": "application, request",
+      "uk": "заява",
+      "ru": "заявление"
+    },
+    "short": {
+      "de": "eine offizielle schriftliche Bitte um etwas",
+      "en": "an official written request for something",
+      "uk": "офіційне письмове прохання про щось",
+      "ru": "официальная письменная просьба о чём-либо"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> sie den <b>Antrag</b> gestellt <g>hatte</g>, dauerte es mehrere Wochen bis zur Antwort.",
+      "en": "<g>After</g> she <g>had</g> submitted the <b>application</b>, it took several weeks to get an answer.",
+      "uk": "<g>Після того як</g> вона подала <b>заяву</b>, минуло кілька тижнів до відповіді.",
+      "ru": "<g>После того как</g> она подала <b>заявление</b>, прошло несколько недель до ответа."
+    },
+    "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "k12_022",
+    "cat": "k12",
+    "term": {
+      "de": "übersetzen",
+      "en": "to translate",
+      "uk": "перекладати",
+      "ru": "переводить"
+    },
+    "short": {
+      "de": "einen Text von einer Sprache in eine andere übertragen",
+      "en": "to convert a text from one language into another",
+      "uk": "передавати текст з однієї мови іншою",
+      "ru": "передавать текст с одного языка на другой"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> er seine Dokumente <b>übersetzen</b> lassen <g>hatte</g>, konnte er sie einreichen.",
+      "en": "<g>After</g> he <g>had</g> his documents <b>translated</b>, he could submit them.",
+      "uk": "<g>Після того як</g> він <b>переклав</b> свої документи, він зміг їх подати.",
+      "ru": "<g>После того как</g> он <b>перевёл</b> свои документы, он смог их подать."
+    },
+    "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "k12_023",
+    "cat": "k12",
+    "term": {
+      "de": "sich orientieren",
+      "en": "to get one's bearings",
+      "uk": "зорієнтуватися",
+      "ru": "сориентироваться"
+    },
+    "short": {
+      "de": "sich an einem neuen Ort zurechtfinden",
+      "en": "to find your way around a new place",
+      "uk": "знаходити дорогу в новому місці",
+      "ru": "находить дорогу в новом месте"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> sie sich in der neuen Stadt <b>orientiert</b> <g>hatte</g>, fand sie den Weg zur Arbeit problemlos.",
+      "en": "<g>After</g> she <g>had</g> <b>gotten her bearings</b> in the new city, she found her way to work without any problems.",
+      "uk": "<g>Після того як</g> вона <b>зорієнтувалася</b> в новому місті, вона без проблем знаходила дорогу на роботу.",
+      "ru": "<g>После того как</g> она <b>сориентировалась</b> в новом городе, она без проблем находила дорогу на работу."
+    },
+    "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "k12_024",
+    "cat": "k12",
+    "term": {
+      "de": "die Wohnung",
+      "en": "apartment, flat",
+      "uk": "квартира",
+      "ru": "квартира"
+    },
+    "short": {
+      "de": "mehrere Räume, in denen man wohnt",
+      "en": "several rooms where you live",
+      "uk": "кілька кімнат, у яких живуть",
+      "ru": "несколько комнат, в которых живут"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> sie eine <b>Wohnung</b> gefunden <g>hatten</g>, konnten sie endlich richtig ankommen.",
+      "en": "<g>After</g> they <g>had</g> found an <b>apartment</b>, they could finally really settle in.",
+      "uk": "<g>Після того як</g> вони знайшли <b>квартиру</b>, вони нарешті могли по-справжньому влаштуватися.",
+      "ru": "<g>После того как</g> они нашли <b>квартиру</b>, они наконец могли по-настоящему обосноваться."
+    },
+    "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "k12_025",
+    "cat": "k12",
+    "term": {
+      "de": "die Erfahrung",
+      "en": "experience",
+      "uk": "досвід",
+      "ru": "опыт"
+    },
+    "short": {
+      "de": "das Wissen oder Können, das man durch etwas Erlebtes gewinnt",
+      "en": "the knowledge or skill you gain through something you have experienced",
+      "uk": "знання чи вміння, набуті завдяки пережитому",
+      "ru": "знания или умения, приобретённые благодаря пережитому"
+    },
+    "def": {
+      "de": "Bevor sie nach Deutschland kam, <g>hatte</g> sie schon viel <b>Erfahrung</b> im Verkauf <g>gesammelt</g>.",
+      "en": "Before she came to Germany, she <g>had</g> already <g>gathered</g> a lot of <b>experience</b> in sales.",
+      "uk": "До того як вона приїхала до Німеччини, вона вже мала багато <b>досвіду</b> в продажах.",
+      "ru": "До того как она приехала в Германию, у неё уже было много <b>опыта</b> в продажах."
+    },
+    "gram": "plusquamperfekt"
+  },
+  {
+    "id": "k12_026",
+    "cat": "k12",
+    "term": {
+      "de": "die Firma",
+      "en": "company",
+      "uk": "фірма",
+      "ru": "фирма"
+    },
+    "short": {
+      "de": "ein Unternehmen, das Waren oder Dienstleistungen anbietet",
+      "en": "a business that offers goods or services",
+      "uk": "підприємство, яке пропонує товари чи послуги",
+      "ru": "предприятие, предлагающее товары или услуги"
+    },
+    "def": {
+      "de": "Bevor er hierher zog, <g>hatte</g> er bei einer großen <b>Firma</b> <g>gearbeitet</g>.",
+      "en": "Before he moved here, he <g>had</g> <g>worked</g> at a large <b>company</b>.",
+      "uk": "До того як він переїхав сюди, він уже працював у великій <b>фірмі</b>.",
+      "ru": "До того как он переехал сюда, он уже работал в крупной <b>фирме</b>."
+    },
+    "gram": "plusquamperfekt"
+  },
+  {
+    "id": "k12_027",
+    "cat": "k12",
+    "term": {
+      "de": "leiten",
+      "en": "to manage, to lead",
+      "uk": "керувати",
+      "ru": "руководить"
+    },
+    "short": {
+      "de": "für ein Team oder ein Projekt verantwortlich sein und es führen",
+      "en": "to be responsible for and lead a team or project",
+      "uk": "бути відповідальним за команду чи проєкт і керувати ним",
+      "ru": "быть ответственным за команду или проект и руководить им"
+    },
+    "def": {
+      "de": "Bevor sie auswanderte, <g>hatte</g> sie ein kleines Team <g>geleitet</g>.",
+      "en": "Before she emigrated, she <g>had</g> <g>led</g> a small team.",
+      "uk": "До того як вона емігрувала, вона вже керувала невеликою командою.",
+      "ru": "До того как она эмигрировала, она уже руководила небольшой командой."
+    },
+    "gram": "plusquamperfekt"
+  },
+  {
+    "id": "k12_028",
+    "cat": "k12",
+    "term": {
+      "de": "gründen",
+      "en": "to found",
+      "uk": "засновувати",
+      "ru": "основывать"
+    },
+    "short": {
+      "de": "etwas Neues, zum Beispiel eine Firma, offiziell ins Leben rufen",
+      "en": "to officially establish something new, for example a company",
+      "uk": "офіційно створювати щось нове, наприклад фірму",
+      "ru": "официально создавать что-то новое, например фирму"
+    },
+    "def": {
+      "de": "Bevor er nach Deutschland kam, <g>hatte</g> er ein eigenes Unternehmen <g>gegründet</g>.",
+      "en": "Before he came to Germany, he <g>had</g> <g>founded</g> his own company.",
+      "uk": "До того як він приїхав до Німеччини, він уже заснував власну компанію.",
+      "ru": "До того как он приехал в Германию, он уже основал собственную компанию."
+    },
+    "gram": "plusquamperfekt"
+  },
+  {
+    "id": "k12_029",
+    "cat": "k12",
+    "term": {
+      "de": "der Abschluss",
+      "en": "degree, qualification",
+      "uk": "диплом",
+      "ru": "диплом"
+    },
+    "short": {
+      "de": "ein Zeugnis oder Diplom, das man am Ende einer Ausbildung bekommt",
+      "en": "a certificate or diploma received at the end of training",
+      "uk": "свідоцтво чи диплом, який отримують після завершення навчання",
+      "ru": "свидетельство или диплом, который получают по окончании обучения"
+    },
+    "def": {
+      "de": "Bevor sie sich bewarb, <g>hatte</g> sie ihren <b>Abschluss</b> bereits anerkennen <g>lassen</g>.",
+      "en": "Before she applied, she <g>had</g> already <g>had</g> her <b>degree</b> recognised.",
+      "uk": "До того як вона подала заявку, вона вже визнала свій <b>диплом</b>.",
+      "ru": "До того как она подала заявку, она уже признала свой <b>диплом</b>."
+    },
+    "gram": "plusquamperfekt"
+  },
+  {
+    "id": "k12_030",
+    "cat": "k12",
+    "term": {
+      "de": "studieren",
+      "en": "to study (at university)",
+      "uk": "навчатися (в університеті)",
+      "ru": "учиться (в университете)"
+    },
+    "short": {
+      "de": "an einer Universität oder Hochschule lernen",
+      "en": "to learn at a university or college",
+      "uk": "навчатися в університеті чи виші",
+      "ru": "учиться в университете или вузе"
+    },
+    "def": {
+      "de": "Bevor er auswanderte, <g>hatte</g> er in seinem Heimatland Medizin <g>studiert</g>.",
+      "en": "Before he emigrated, he <g>had</g> <g>studied</g> medicine in his home country.",
+      "uk": "До того як він емігрував, він уже вивчав медицину на батьківщині.",
+      "ru": "До того как он эмигрировал, он уже изучал медицину на родине."
+    },
+    "gram": "plusquamperfekt"
+  },
+  {
+    "id": "k12_031",
+    "cat": "k12",
+    "term": {
+      "de": "die Position",
+      "en": "position",
+      "uk": "посада",
+      "ru": "должность"
+    },
+    "short": {
+      "de": "eine bestimmte Stelle oder Funktion in einer Firma",
+      "en": "a certain post or role in a company",
+      "uk": "певна посада чи функція у фірмі",
+      "ru": "определённая должность или функция в фирме"
+    },
+    "def": {
+      "de": "Bevor sie kündigte, <g>hatte</g> sie eine leitende <b>Position</b> <g>innegehabt</g>.",
+      "en": "Before she resigned, she <g>had</g> <g>held</g> a leading <b>position</b>.",
+      "uk": "До того як вона звільнилася, вона обіймала керівну <b>посаду</b>.",
+      "ru": "До того как она уволилась, она занимала руководящую <b>должность</b>."
+    },
+    "gram": "plusquamperfekt"
+  },
+  {
+    "id": "k12_032",
+    "cat": "k12",
+    "term": {
+      "de": "wechseln",
+      "en": "to change, to switch",
+      "uk": "змінювати",
+      "ru": "менять"
+    },
+    "short": {
+      "de": "etwas gegen etwas anderes tauschen, zum Beispiel den Arbeitsplatz",
+      "en": "to swap something for something else, for example your job",
+      "uk": "міняти щось на щось інше, наприклад роботу",
+      "ru": "менять что-то на что-то другое, например работу"
+    },
+    "def": {
+      "de": "Bevor er diese Stelle fand, <g>hatte</g> er schon dreimal den Job <g>gewechselt</g>.",
+      "en": "Before he found this position, he <g>had</g> already <g>changed</g> jobs three times.",
+      "uk": "До того як він знайшов цю посаду, він уже тричі змінював роботу.",
+      "ru": "До того как он нашёл эту должность, он уже трижды менял работу."
+    },
+    "gram": "plusquamperfekt"
+  },
+  {
+    "id": "k12_033",
+    "cat": "k12",
+    "term": {
+      "de": "organisieren",
+      "en": "to organise",
+      "uk": "організовувати",
+      "ru": "организовывать"
+    },
+    "short": {
+      "de": "dafür sorgen, dass etwas gut geplant und geordnet abläuft",
+      "en": "to ensure that something runs in a well-planned, orderly way",
+      "uk": "забезпечувати, щоб щось відбувалося добре сплановано й упорядковано",
+      "ru": "обеспечивать, чтобы что-то происходило хорошо спланированно и упорядоченно"
+    },
+    "def": {
+      "de": "<g>Das <b>Organisieren</b></g> von Terminen gehört zu meinen täglichen Aufgaben.",
+      "en": "<g><b>Organising</b></g> appointments is one of my daily tasks.",
+      "uk": "<b>Організація</b> зустрічей — одне з моїх щоденних завдань.",
+      "ru": "<b>Организация</b> встреч — одна из моих ежедневных задач."
+    },
+    "gram": "infinitiv_als_nomen"
+  },
+  {
+    "id": "k12_034",
+    "cat": "k12",
+    "term": {
+      "de": "planen",
+      "en": "to plan",
+      "uk": "планувати",
+      "ru": "планировать"
+    },
+    "short": {
+      "de": "im Voraus überlegen, wie man etwas machen will",
+      "en": "to think in advance about how you want to do something",
+      "uk": "заздалегідь обдумувати, як щось зробити",
+      "ru": "заранее обдумывать, как что-то сделать"
+    },
+    "def": {
+      "de": "<g>Das <b>Planen</b></g> neuer Projekte macht ihr besonders viel Spaß.",
+      "en": "<g><b>Planning</b></g> new projects is something she particularly enjoys.",
+      "uk": "<b>Планування</b> нових проєктів приносить їй особливе задоволення.",
+      "ru": "<b>Планирование</b> новых проектов приносит ей особое удовольствие."
+    },
+    "gram": "infinitiv_als_nomen"
+  },
+  {
+    "id": "k12_035",
+    "cat": "k12",
+    "term": {
+      "de": "koordinieren",
+      "en": "to coordinate",
+      "uk": "координувати",
+      "ru": "координировать"
+    },
+    "short": {
+      "de": "verschiedene Aufgaben oder Personen so organisieren, dass sie gut zusammenarbeiten",
+      "en": "to organise different tasks or people so that they work well together",
+      "uk": "організовувати різні завдання чи людей так, щоб вони добре співпрацювали",
+      "ru": "организовывать разные задачи или людей так, чтобы они хорошо взаимодействовали"
+    },
+    "def": {
+      "de": "<g>Das <b>Koordinieren</b></g> der verschiedenen Abteilungen ist nicht immer leicht.",
+      "en": "<g><b>Coordinating</b></g> the different departments is not always easy.",
+      "uk": "<b>Координація</b> різних відділів не завжди легка справа.",
+      "ru": "<b>Координация</b> разных отделов не всегда лёгкое дело."
+    },
+    "gram": "infinitiv_als_nomen"
+  },
+  {
+    "id": "k12_036",
+    "cat": "k12",
+    "term": {
+      "de": "dokumentieren",
+      "en": "to document",
+      "uk": "документувати",
+      "ru": "документировать"
+    },
+    "short": {
+      "de": "etwas schriftlich oder mit Bildern festhalten",
+      "en": "to record something in writing or with images",
+      "uk": "фіксувати щось письмово або за допомогою зображень",
+      "ru": "фиксировать что-то письменно или с помощью изображений"
+    },
+    "def": {
+      "de": "<g>Das <b>Dokumentieren</b></g> aller Arbeitsschritte ist in diesem Beruf sehr wichtig.",
+      "en": "<g><b>Documenting</b></g> every work step is very important in this profession.",
+      "uk": "<b>Документування</b> кожного етапу роботи дуже важливе в цій професії.",
+      "ru": "<b>Документирование</b> каждого этапа работы очень важно в этой профессии."
+    },
+    "gram": "infinitiv_als_nomen"
+  },
+  {
+    "id": "k12_037",
+    "cat": "k12",
+    "term": {
+      "de": "entscheiden",
+      "en": "to decide",
+      "uk": "вирішувати",
+      "ru": "решать"
+    },
+    "short": {
+      "de": "sich zwischen mehreren Möglichkeiten für eine bestimmte Sache festlegen",
+      "en": "to settle on one option among several possibilities",
+      "uk": "обирати одне з кількох можливих рішень",
+      "ru": "выбирать одно из нескольких возможных решений"
+    },
+    "def": {
+      "de": "<g>Das <b>Entscheiden</b></g> unter Zeitdruck gehört zum Alltag einer Führungskraft.",
+      "en": "<g><b>Deciding</b></g> under time pressure is part of everyday life for a manager.",
+      "uk": "<b>Прийняття рішень</b> під тиском часу — звичайна справа для керівника.",
+      "ru": "<b>Принятие решений</b> под давлением времени — обычное дело для руководителя."
+    },
+    "gram": "infinitiv_als_nomen"
+  },
+  {
+    "id": "k12_038",
+    "cat": "k12",
+    "term": {
+      "de": "zuhören",
+      "en": "to listen",
+      "uk": "слухати",
+      "ru": "слушать"
+    },
+    "short": {
+      "de": "aufmerksam auf das achten, was jemand sagt",
+      "en": "to pay close attention to what someone is saying",
+      "uk": "уважно стежити за тим, що хтось каже",
+      "ru": "внимательно следить за тем, что кто-то говорит"
+    },
+    "def": {
+      "de": "<g>Das <b>Zuhören</b></g> ist eine der wichtigsten Fähigkeiten im Kundenservice.",
+      "en": "<g><b>Listening</b></g> is one of the most important skills in customer service.",
+      "uk": "<b>Уміння слухати</b> — одна з найважливіших навичок у роботі з клієнтами.",
+      "ru": "<b>Умение слушать</b> — один из важнейших навыков в работе с клиентами."
+    },
+    "gram": "infinitiv_als_nomen"
+  },
+  {
+    "id": "k12_039",
+    "cat": "k12",
+    "term": {
+      "de": "präsentieren",
+      "en": "to present",
+      "uk": "презентувати",
+      "ru": "презентовать"
+    },
+    "short": {
+      "de": "etwas anderen Menschen anschaulich vorstellen",
+      "en": "to clearly present something to other people",
+      "uk": "наочно представляти щось іншим людям",
+      "ru": "наглядно представлять что-то другим людям"
+    },
+    "def": {
+      "de": "<g>Das <b>Präsentieren</b></g> der Ergebnisse vor dem Team bereitet ihm keine Probleme mehr.",
+      "en": "<g><b>Presenting</b></g> the results to the team no longer poses a problem for him.",
+      "uk": "<b>Презентація</b> результатів перед командою більше не викликає в нього проблем.",
+      "ru": "<b>Презентация</b> результатов перед командой больше не вызывает у него проблем."
+    },
+    "gram": "infinitiv_als_nomen"
+  },
+  {
+    "id": "k12_040",
+    "cat": "k12",
+    "term": {
+      "de": "delegieren",
+      "en": "to delegate",
+      "uk": "делегувати",
+      "ru": "делегировать"
+    },
+    "short": {
+      "de": "Aufgaben an andere Personen abgeben",
+      "en": "to hand over tasks to other people",
+      "uk": "передавати завдання іншим людям",
+      "ru": "передавать задачи другим людям"
+    },
+    "def": {
+      "de": "<g>Das <b>Delegieren</b></g> von Aufgaben fällt ihr manchmal noch schwer.",
+      "en": "<g><b>Delegating</b></g> tasks is still sometimes difficult for her.",
+      "uk": "<b>Делегування</b> завдань іноді все ще дається їй нелегко.",
+      "ru": "<b>Делегирование</b> задач иногда всё ещё даётся ей нелегко."
+    },
+    "gram": "infinitiv_als_nomen"
+  },
+  {
+    "id": "k12_041",
+    "cat": "k12",
+    "term": {
+      "de": "die Weiterbildung",
+      "en": "further training",
+      "uk": "підвищення кваліфікації",
+      "ru": "повышение квалификации"
+    },
+    "short": {
+      "de": "eine zusätzliche Ausbildung, um neue Fähigkeiten zu lernen",
+      "en": "additional training to learn new skills",
+      "uk": "додаткове навчання для здобуття нових навичок",
+      "ru": "дополнительное обучение для получения новых навыков"
+    },
+    "def": {
+      "de": "Die <b>Weiterbildung</b> war für alle Mitarbeiter <g>kostenlos</g>.",
+      "en": "The <b>further training</b> was free for all employees.",
+      "uk": "<b>Підвищення кваліфікації</b> було безкоштовним для всіх співробітників.",
+      "ru": "<b>Повышение квалификации</b> было бесплатным для всех сотрудников."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_042",
+    "cat": "k12",
+    "term": {
+      "de": "der Arbeitsvertrag",
+      "en": "employment contract",
+      "uk": "трудовий договір",
+      "ru": "трудовой договор"
+    },
+    "short": {
+      "de": "ein offizielles Dokument, das die Bedingungen einer Arbeit festlegt",
+      "en": "an official document that sets out the terms of a job",
+      "uk": "офіційний документ, який встановлює умови роботи",
+      "ru": "официальный документ, устанавливающий условия работы"
+    },
+    "def": {
+      "de": "Der <b>Arbeitsvertrag</b> ist nach der Probezeit leichter <g>kündbar</g>.",
+      "en": "The <b>employment contract</b> is easier to terminate after the probationary period.",
+      "uk": "<b>Трудовий договір</b> легше розірвати після випробувального терміну.",
+      "ru": "<b>Трудовой договор</b> легче расторгнуть после испытательного срока."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_043",
+    "cat": "k12",
+    "term": {
+      "de": "die Prüfung",
+      "en": "exam",
+      "uk": "іспит",
+      "ru": "экзамен"
+    },
+    "short": {
+      "de": "ein Test, mit dem man Wissen oder Können überprüft",
+      "en": "a test used to check knowledge or ability",
+      "uk": "тест, яким перевіряють знання чи вміння",
+      "ru": "тест, которым проверяют знания или умения"
+    },
+    "def": {
+      "de": "Die <b>Prüfung</b> ist zum Glück <g>wiederholbar</g>, falls man durchfällt.",
+      "en": "The <b>exam</b> can fortunately be repeated if you fail.",
+      "uk": "<b>Іспит</b>, на щастя, можна перескласти, якщо не здаси.",
+      "ru": "<b>Экзамен</b>, к счастью, можно пересдать, если не сдашь."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_044",
+    "cat": "k12",
+    "term": {
+      "de": "die Aufgabe",
+      "en": "task",
+      "uk": "завдання",
+      "ru": "задание"
+    },
+    "short": {
+      "de": "etwas, das man erledigen oder lösen soll",
+      "en": "something you are supposed to get done or solve",
+      "uk": "те, що потрібно виконати чи розвʼязати",
+      "ru": "то, что нужно выполнить или решить"
+    },
+    "def": {
+      "de": "Diese <b>Aufgabe</b> ist auch für Anfänger gut <g>lösbar</g>.",
+      "en": "This <b>task</b> is easily solvable even for beginners.",
+      "uk": "Це <b>завдання</b> легко вирішити навіть початківцям.",
+      "ru": "Это <b>задание</b> легко решить даже новичкам."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_045",
+    "cat": "k12",
+    "term": {
+      "de": "der Fehler",
+      "en": "mistake",
+      "uk": "помилка",
+      "ru": "ошибка"
+    },
+    "short": {
+      "de": "etwas, das nicht richtig gemacht wurde",
+      "en": "something that was not done correctly",
+      "uk": "те, що зроблено неправильно",
+      "ru": "то, что сделано неправильно"
+    },
+    "def": {
+      "de": "Die meisten <b>Fehler</b> in dieser Arbeit sind leicht <g>vermeidbar</g>.",
+      "en": "Most <b>mistakes</b> in this work are easily avoidable.",
+      "uk": "Більшості <b>помилок</b> у цій роботі легко уникнути.",
+      "ru": "Большинства <b>ошибок</b> в этой работе легко избежать."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_046",
+    "cat": "k12",
+    "term": {
+      "de": "der Ablauf",
+      "en": "process, procedure",
+      "uk": "процес, порядок дій",
+      "ru": "процесс, порядок действий"
+    },
+    "short": {
+      "de": "die Reihenfolge, in der etwas passiert oder gemacht wird",
+      "en": "the order in which something happens or is done",
+      "uk": "послідовність, у якій щось відбувається чи робиться",
+      "ru": "последовательность, в которой что-то происходит или делается"
+    },
+    "def": {
+      "de": "Der <b>Ablauf</b> im Betrieb ist gut <g>nachvollziehbar</g>.",
+      "en": "The <b>process</b> at the company is easy to understand.",
+      "uk": "<b>Процес</b> роботи на підприємстві легко зрозумілий.",
+      "ru": "<b>Процесс</b> работы на предприятии легко понятен."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_047",
+    "cat": "k12",
+    "term": {
+      "de": "der Wechsel",
+      "en": "transition, change",
+      "uk": "перехід",
+      "ru": "переход"
+    },
+    "short": {
+      "de": "der Übergang von einer Sache zu einer anderen",
+      "en": "the move from one thing to another",
+      "uk": "перехід від однієї речі до іншої",
+      "ru": "переход от одной вещи к другой"
+    },
+    "def": {
+      "de": "Der <b>Wechsel</b> in die neue Abteilung verlief völlig <g>problemlos</g>.",
+      "en": "The <b>transition</b> to the new department went completely smoothly.",
+      "uk": "<b>Перехід</b> у новий відділ пройшов зовсім без проблем.",
+      "ru": "<b>Переход</b> в новый отдел прошёл совершенно без проблем."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_048",
+    "cat": "k12",
+    "term": {
+      "de": "der Nachweis",
+      "en": "proof, certificate",
+      "uk": "підтвердження",
+      "ru": "подтверждение"
+    },
+    "short": {
+      "de": "ein Beweis oder Dokument, das etwas bestätigt",
+      "en": "evidence or a document confirming something",
+      "uk": "доказ чи документ, що щось підтверджує",
+      "ru": "доказательство или документ, что-то подтверждающий"
+    },
+    "def": {
+      "de": "Ihre Berufserfahrung war durch einen offiziellen <b>Nachweis</b> gut <g>nachweisbar</g>.",
+      "en": "Her work experience was easily provable through an official <b>certificate</b>.",
+      "uk": "Її досвід роботи легко підтверджувався офіційним <b>підтвердженням</b>.",
+      "ru": "Её опыт работы легко подтверждался официальным <b>подтверждением</b>."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_049",
+    "cat": "k12",
+    "term": {
+      "de": "die Qualifikation",
+      "en": "qualification",
+      "uk": "кваліфікація",
+      "ru": "квалификация"
+    },
+    "short": {
+      "de": "die Fähigkeiten und Kenntnisse, die man für einen Beruf braucht",
+      "en": "the skills and knowledge needed for a profession",
+      "uk": "навички й знання, потрібні для професії",
+      "ru": "навыки и знания, необходимые для профессии"
+    },
+    "def": {
+      "de": "Ihre <b>Qualifikation</b> war mit einem deutschen Abschluss gut <g>vergleichbar</g>.",
+      "en": "Her <b>qualification</b> was easily comparable to a German degree.",
+      "uk": "Її <b>кваліфікація</b> була добре порівнянною з німецьким дипломом.",
+      "ru": "Её <b>квалификация</b> была хорошо сопоставима с немецким дипломом."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
+    "id": "k12_050",
+    "cat": "k12",
+    "term": {
+      "de": "der Titel",
+      "en": "title",
+      "uk": "звання, титул",
+      "ru": "звание, титул"
+    },
+    "short": {
+      "de": "eine offizielle Bezeichnung für einen akademischen Grad oder eine Position",
+      "en": "an official designation for an academic degree or position",
+      "uk": "офіційна назва академічного ступеня чи посади",
+      "ru": "официальное название учёной степени или должности"
+    },
+    "def": {
+      "de": "Akademische <b>Titel</b> sind nicht immer eins zu eins <g>übertragbar</g>.",
+      "en": "Academic <b>titles</b> are not always directly transferable.",
+      "uk": "Академічні <b>звання</b> не завжди можна прямо перенести з однієї країни в іншу.",
+      "ru": "Академические <b>звания</b> не всегда можно напрямую перенести из одной страны в другую."
+    },
+    "gram": "adjektive_auf_bar_los"
+  },
+  {
     "id": "k13_001",
     "cat": "k13",
     "term": {
@@ -19074,6 +19924,788 @@ var VOCAB = [
       "en": "On the one hand, the task is demanding, on the other hand it is very rewarding.",
       "uk": "З одного боку, завдання складне, з іншого боку — воно приносить велике задоволення.",
       "ru": "С одной стороны, задача сложная, с другой стороны — она приносит большое удовольствие."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_017",
+    "cat": "k13",
+    "term": {
+      "de": "reparieren",
+      "en": "to repair",
+      "uk": "ремонтувати",
+      "ru": "ремонтировать"
+    },
+    "short": {
+      "de": "etwas Kaputtes wieder in einen guten Zustand bringen",
+      "en": "to fix something broken so it works again",
+      "uk": "приводити щось зламане знову в робочий стан",
+      "ru": "приводить что-то сломанное снова в рабочее состояние"
+    },
+    "def": {
+      "de": "Die Bank im Park <g>muss</g> dringend <g><b>repariert werden</b></g>.",
+      "en": "The bench in the park <g>must</g> urgently <g><b>be repaired</b></g>.",
+      "uk": "Лавку в парку <g>потрібно</g> терміново <g><b>відремонтувати</b></g>.",
+      "ru": "Скамейку в парке <g>нужно</g> срочно <g><b>отремонтировать</b></g>."
+    },
+    "gram": "passiv_mit_modalverben"
+  },
+  {
+    "id": "k13_018",
+    "cat": "k13",
+    "term": {
+      "de": "das Werkzeug",
+      "en": "tool",
+      "uk": "інструмент",
+      "ru": "инструмент"
+    },
+    "short": {
+      "de": "ein Gerät, mit dem man etwas herstellt oder repariert",
+      "en": "a device used to make or fix something",
+      "uk": "пристрій, яким щось виготовляють або ремонтують",
+      "ru": "устройство, которым что-то изготавливают или ремонтируют"
+    },
+    "def": {
+      "de": "Das <b>Werkzeug</b> <g>sollte</g> nach jedem Einsatz <g>gereinigt werden</g>.",
+      "en": "The <b>tools</b> <g>should be cleaned</g> after each use.",
+      "uk": "<b>Інструмент</b> <g>слід чистити</g> після кожного використання.",
+      "ru": "<b>Инструмент</b> <g>следует чистить</g> после каждого использования."
+    },
+    "gram": "passiv_mit_modalverben"
+  },
+  {
+    "id": "k13_019",
+    "cat": "k13",
+    "term": {
+      "de": "sammeln",
+      "en": "to collect",
+      "uk": "збирати",
+      "ru": "собирать"
+    },
+    "short": {
+      "de": "verschiedene Dinge zusammentragen, zum Beispiel Geld oder Gegenstände",
+      "en": "to gather various things together, for example money or objects",
+      "uk": "збирати разом різні речі, наприклад гроші чи предмети",
+      "ru": "собирать вместе разные вещи, например деньги или предметы"
+    },
+    "def": {
+      "de": "Spenden <g>können</g> auch online <g><b>gesammelt werden</b></g>.",
+      "en": "Donations <g>can</g> also <g><b>be collected</b></g> online.",
+      "uk": "Пожертви <g>можна</g> також <g><b>збирати</b></g> онлайн.",
+      "ru": "Пожертвования <g>можно</g> также <g><b>собирать</b></g> онлайн."
+    },
+    "gram": "passiv_mit_modalverben"
+  },
+  {
+    "id": "k13_020",
+    "cat": "k13",
+    "term": {
+      "de": "planen",
+      "en": "to plan",
+      "uk": "планувати",
+      "ru": "планировать"
+    },
+    "short": {
+      "de": "im Voraus überlegen, wie man etwas machen will",
+      "en": "to think in advance about how you want to do something",
+      "uk": "заздалегідь обдумувати, як щось зробити",
+      "ru": "заранее обдумывать, как что-то сделать"
+    },
+    "def": {
+      "de": "Die Aktion <g>muss</g> sorgfältig <g><b>geplant werden</b></g>.",
+      "en": "The campaign <g>must</g> be carefully <g><b>planned</b></g>.",
+      "uk": "Акцію <g>потрібно</g> ретельно <g><b>спланувати</b></g>.",
+      "ru": "Акцию <g>нужно</g> тщательно <g><b>спланировать</b></g>."
+    },
+    "gram": "passiv_mit_modalverben"
+  },
+  {
+    "id": "k13_021",
+    "cat": "k13",
+    "term": {
+      "de": "verteilen",
+      "en": "to distribute",
+      "uk": "розподіляти",
+      "ru": "распределять"
+    },
+    "short": {
+      "de": "etwas auf mehrere Personen oder Orte aufteilen",
+      "en": "to divide something among several people or places",
+      "uk": "розподіляти щось між кількома людьми чи місцями",
+      "ru": "распределять что-то между несколькими людьми или местами"
+    },
+    "def": {
+      "de": "Die Lebensmittel <g>müssen</g> gerecht <g><b>verteilt werden</b></g>.",
+      "en": "The food <g>must</g> be <g><b>distributed</b></g> fairly.",
+      "uk": "Продукти <g>потрібно</g> справедливо <g><b>розподілити</b></g>.",
+      "ru": "Продукты <g>нужно</g> справедливо <g><b>распределить</b></g>."
+    },
+    "gram": "passiv_mit_modalverben"
+  },
+  {
+    "id": "k13_022",
+    "cat": "k13",
+    "term": {
+      "de": "erledigen",
+      "en": "to get done, to take care of",
+      "uk": "виконувати",
+      "ru": "выполнять"
+    },
+    "short": {
+      "de": "eine Aufgabe fertig machen",
+      "en": "to finish a task",
+      "uk": "завершувати завдання",
+      "ru": "завершать задачу"
+    },
+    "def": {
+      "de": "Diese Aufgabe <g>kann</g> problemlos von Freiwilligen <g><b>erledigt werden</b></g>.",
+      "en": "This task <g>can</g> easily <g><b>be done</b></g> by volunteers.",
+      "uk": "Це завдання <g>можуть</g> без проблем <g><b>виконати</b></g> волонтери.",
+      "ru": "Эту задачу <g>могут</g> без проблем <g><b>выполнить</b></g> волонтёры."
+    },
+    "gram": "passiv_mit_modalverben"
+  },
+  {
+    "id": "k13_023",
+    "cat": "k13",
+    "term": {
+      "de": "beschaffen",
+      "en": "to procure, to obtain",
+      "uk": "придбавати",
+      "ru": "приобретать"
+    },
+    "short": {
+      "de": "sich um etwas kümmern und es besorgen, damit man es hat",
+      "en": "to arrange to get hold of something so you have it",
+      "uk": "дбати про щось і роздобувати це для себе",
+      "ru": "заботиться о чём-то и раздобывать это для себя"
+    },
+    "def": {
+      "de": "Neue Materialien <g>müssen</g> rechtzeitig <g><b>beschafft werden</b></g>.",
+      "en": "New materials <g>must</g> be <g><b>procured</b></g> in time.",
+      "uk": "Нові матеріали <g>потрібно</g> вчасно <g><b>придбати</b></g>.",
+      "ru": "Новые материалы <g>нужно</g> своевременно <g><b>приобрести</b></g>."
+    },
+    "gram": "passiv_mit_modalverben"
+  },
+  {
+    "id": "k13_024",
+    "cat": "k13",
+    "term": {
+      "de": "die Erfahrung",
+      "en": "experience",
+      "uk": "досвід",
+      "ru": "опыт"
+    },
+    "short": {
+      "de": "das Wissen oder Können, das man durch etwas Erlebtes gewinnt",
+      "en": "the knowledge or skill you gain through something you have experienced",
+      "uk": "знання чи вміння, набуті завдяки пережитому",
+      "ru": "знания или умения, приобретённые благодаря пережитому"
+    },
+    "def": {
+      "de": "<g>Trotz jahrelanger</g> <b>Erfahrung</b> fühlte sie sich am ersten Tag nervös.",
+      "en": "<g>Despite years of</g> <b>experience</b>, she felt nervous on the first day.",
+      "uk": "<g>Незважаючи на багаторічний</g> <b>досвід</b>, вона нервувала першого дня.",
+      "ru": "<g>Несмотря на многолетний</g> <b>опыт</b>, она нервничала в первый день."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_025",
+    "cat": "k13",
+    "term": {
+      "de": "die Krankheit",
+      "en": "illness",
+      "uk": "хвороба",
+      "ru": "болезнь"
+    },
+    "short": {
+      "de": "ein Zustand, bei dem der Körper nicht gesund ist",
+      "en": "a condition in which the body is not healthy",
+      "uk": "стан, коли тіло нездорове",
+      "ru": "состояние, при котором тело нездорово"
+    },
+    "def": {
+      "de": "<g>Wegen einer schweren</g> <b>Krankheit</b> konnte er nicht mehr aktiv mitarbeiten.",
+      "en": "<g>Because of a serious</g> <b>illness</b>, he could no longer actively participate.",
+      "uk": "<g>Через тяжку</g> <b>хворобу</b> він більше не міг активно допомагати.",
+      "ru": "<g>Из-за тяжёлой</g> <b>болезни</b> он больше не мог активно участвовать."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_026",
+    "cat": "k13",
+    "term": {
+      "de": "das Wetter",
+      "en": "weather",
+      "uk": "погода",
+      "ru": "погода"
+    },
+    "short": {
+      "de": "der Zustand der Luft draußen, zum Beispiel Regen, Sonne oder Wind",
+      "en": "the condition of the air outside, for example rain, sun or wind",
+      "uk": "стан повітря надворі, наприклад дощ, сонце чи вітер",
+      "ru": "состояние воздуха на улице, например дождь, солнце или ветер"
+    },
+    "def": {
+      "de": "<g>Trotz des schlechten</g> <b>Wetters</b> kamen viele Freiwillige zum Einsatz.",
+      "en": "<g>Despite the bad</g> <b>weather</b>, many volunteers showed up for the mission.",
+      "uk": "<g>Незважаючи на погану</g> <b>погоду</b>, на акцію прийшло багато волонтерів.",
+      "ru": "<g>Несмотря на плохую</g> <b>погоду</b>, на акцию пришло много волонтёров."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_027",
+    "cat": "k13",
+    "term": {
+      "de": "der Termin",
+      "en": "appointment",
+      "uk": "зустріч, домовлена дата",
+      "ru": "встреча, назначенная дата"
+    },
+    "short": {
+      "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
+      "en": "a certain time when you want to do something or go somewhere",
+      "uk": "конкретний час, коли хочеш щось зробити або кудись піти",
+      "ru": "конкретное время, когда хочешь что-то сделать или куда-то пойти"
+    },
+    "def": {
+      "de": "<g>Wegen eines wichtigen</g> <b>Termins</b> musste sie die Sitzung verlassen.",
+      "en": "<g>Because of an important</g> <b>appointment</b>, she had to leave the meeting.",
+      "uk": "<g>Через важливу</g> <b>зустріч</b> їй довелося покинути засідання.",
+      "ru": "<g>Из-за важной</g> <b>встречи</b> ей пришлось покинуть заседание."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_028",
+    "cat": "k13",
+    "term": {
+      "de": "die Pandemie",
+      "en": "pandemic",
+      "uk": "пандемія",
+      "ru": "пандемия"
+    },
+    "short": {
+      "de": "eine ansteckende Krankheit, die sich über die ganze Welt verbreitet",
+      "en": "a contagious disease that spreads across the whole world",
+      "uk": "заразна хвороба, яка поширюється по всьому світу",
+      "ru": "заразная болезнь, распространяющаяся по всему миру"
+    },
+    "def": {
+      "de": "<g>Während der</g> <b>Pandemie</b> halfen viele junge Menschen ihren Nachbarn.",
+      "en": "<g>During the</g> <b>pandemic</b>, many young people helped their neighbours.",
+      "uk": "<g>Під час</g> <b>пандемії</b> багато молодих людей допомагали своїм сусідам.",
+      "ru": "<g>Во время</g> <b>пандемии</b> многие молодые люди помогали своим соседям."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_029",
+    "cat": "k13",
+    "term": {
+      "de": "die Behinderung",
+      "en": "disability",
+      "uk": "інвалідність",
+      "ru": "инвалидность"
+    },
+    "short": {
+      "de": "eine körperliche oder geistige Einschränkung",
+      "en": "a physical or mental limitation",
+      "uk": "фізичне чи розумове обмеження",
+      "ru": "физическое или умственное ограничение"
+    },
+    "def": {
+      "de": "<g>Trotz ihrer</g> <b>Behinderung</b> engagiert sie sich aktiv im Sportverein.",
+      "en": "<g>Despite her</g> <b>disability</b>, she is actively involved in the sports club.",
+      "uk": "<g>Незважаючи на свою</g> <b>інвалідність</b>, вона активно займається у спортивному клубі.",
+      "ru": "<g>Несмотря на свою</g> <b>инвалидность</b>, она активно занимается в спортивном клубе."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_030",
+    "cat": "k13",
+    "term": {
+      "de": "der Mangel (an +Dat)",
+      "en": "shortage, lack",
+      "uk": "нестача",
+      "ru": "нехватка"
+    },
+    "short": {
+      "de": "das Fehlen von etwas, das man eigentlich braucht",
+      "en": "the absence of something you actually need",
+      "uk": "відсутність чогось, що насправді потрібне",
+      "ru": "отсутствие чего-то, что на самом деле нужно"
+    },
+    "def": {
+      "de": "<g>Wegen des</g> <b>Mangels</b> an Freiwilligen musste das Projekt verschoben werden.",
+      "en": "<g>Because of the</g> <b>shortage</b> of volunteers, the project had to be postponed.",
+      "uk": "<g>Через</g> <b>нестачу</b> волонтерів проєкт довелося відкласти.",
+      "ru": "<g>Из-за</g> <b>нехватки</b> волонтёров проект пришлось отложить."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_031",
+    "cat": "k13",
+    "term": {
+      "de": "die Ferien (Pl.)",
+      "en": "holidays",
+      "uk": "канікули",
+      "ru": "каникулы"
+    },
+    "short": {
+      "de": "die freie Zeit ohne Schule oder Arbeit, meist im Sommer",
+      "en": "free time without school or work, usually in summer",
+      "uk": "вільний час без навчання чи роботи, зазвичай улітку",
+      "ru": "свободное время без учёбы или работы, обычно летом"
+    },
+    "def": {
+      "de": "<g>Während der</g> <b>Ferien</b> arbeiten viele Studierende ehrenamtlich.",
+      "en": "<g>During the</g> <b>holidays</b>, many students do voluntary work.",
+      "uk": "<g>Під час</g> <b>канікул</b> багато студентів займаються волонтерством.",
+      "ru": "<g>Во время</g> <b>каникул</b> многие студенты занимаются волонтёрством."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_032",
+    "cat": "k13",
+    "term": {
+      "de": "das Engagement",
+      "en": "commitment, involvement",
+      "uk": "відданість справі, залученість",
+      "ru": "приверженность делу, вовлечённость"
+    },
+    "short": {
+      "de": "der aktive und starke Einsatz für eine Sache",
+      "en": "active and strong commitment to a cause",
+      "uk": "активна й сильна відданість якійсь справі",
+      "ru": "активная и сильная приверженность какому-либо делу"
+    },
+    "def": {
+      "de": "Wegen ihres <g>großen</g> <b>Engagements</b> wurde sie für den Preis vorgeschlagen.",
+      "en": "Because of her great <b>commitment</b>, she was nominated for the award.",
+      "uk": "Через її велику <b>відданість справі</b> її номінували на нагороду.",
+      "ru": "Из-за её большой <b>приверженности делу</b> её номинировали на награду."
+    },
+    "gram": "adjektivendung_genitiv"
+  },
+  {
+    "id": "k13_033",
+    "cat": "k13",
+    "term": {
+      "de": "der Einsatz",
+      "en": "effort",
+      "uk": "зусилля",
+      "ru": "усилия"
+    },
+    "short": {
+      "de": "die Anstrengung oder Arbeit, die man für etwas leistet",
+      "en": "the effort or work you put into something",
+      "uk": "зусилля чи робота, докладені заради чогось",
+      "ru": "усилия или работа, вложенные ради чего-то"
+    },
+    "def": {
+      "de": "Trotz seines <g>langjährigen</g> <b>Einsatzes</b> bekam er nie eine offizielle Anerkennung.",
+      "en": "Despite his many years of <b>effort</b>, he never received official recognition.",
+      "uk": "Незважаючи на його багаторічні <b>зусилля</b>, він так і не отримав офіційного визнання.",
+      "ru": "Несмотря на его многолетние <b>усилия</b>, он так и не получил официального признания."
+    },
+    "gram": "adjektivendung_genitiv"
+  },
+  {
+    "id": "k13_034",
+    "cat": "k13",
+    "term": {
+      "de": "die Spende",
+      "en": "donation",
+      "uk": "пожертвування",
+      "ru": "пожертвование"
+    },
+    "short": {
+      "de": "Geld oder Dinge, die man für einen guten Zweck gibt",
+      "en": "money or things given for a good cause",
+      "uk": "гроші чи речі, віддані на добру справу",
+      "ru": "деньги или вещи, отданные на доброе дело"
+    },
+    "def": {
+      "de": "Wegen der <g>großzügigen</g> <b>Spende</b> konnte das Projekt fortgesetzt werden.",
+      "en": "Because of the generous <b>donation</b>, the project could be continued.",
+      "uk": "Через щедре <b>пожертвування</b> проєкт вдалося продовжити.",
+      "ru": "Из-за щедрого <b>пожертвования</b> проект удалось продолжить."
+    },
+    "gram": "adjektivendung_genitiv"
+  },
+  {
+    "id": "k13_035",
+    "cat": "k13",
+    "term": {
+      "de": "die Initiative",
+      "en": "initiative",
+      "uk": "ініціатива",
+      "ru": "инициатива"
+    },
+    "short": {
+      "de": "eine neue Idee oder Aktion, mit der man etwas in Bewegung bringt",
+      "en": "a new idea or action that gets something moving",
+      "uk": "нова ідея чи дія, яка запускає щось у рух",
+      "ru": "новая идея или действие, приводящее что-то в движение"
+    },
+    "def": {
+      "de": "Trotz ihrer <g>neuen</g> <b>Initiative</b> gab es noch viele Probleme zu lösen.",
+      "en": "Despite her new <b>initiative</b>, there were still many problems to solve.",
+      "uk": "Незважаючи на її нову <b>ініціативу</b>, залишалося ще багато проблем.",
+      "ru": "Несмотря на её новую <b>инициативу</b>, оставалось ещё много проблем."
+    },
+    "gram": "adjektivendung_genitiv"
+  },
+  {
+    "id": "k13_036",
+    "cat": "k13",
+    "term": {
+      "de": "der Beitrag",
+      "en": "contribution",
+      "uk": "внесок",
+      "ru": "вклад"
+    },
+    "short": {
+      "de": "das, was jemand zu einer gemeinsamen Sache beiträgt",
+      "en": "what someone contributes to a shared cause",
+      "uk": "те, що людина додає до спільної справи",
+      "ru": "то, что человек добавляет к общему делу"
+    },
+    "def": {
+      "de": "Wegen seines <g>wertvollen</g> <b>Beitrags</b> wurde er besonders gelobt.",
+      "en": "Because of his valuable <b>contribution</b>, he was especially praised.",
+      "uk": "Через його цінний <b>внесок</b> його особливо похвалили.",
+      "ru": "Из-за его ценного <b>вклада</b> его особенно похвалили."
+    },
+    "gram": "adjektivendung_genitiv"
+  },
+  {
+    "id": "k13_037",
+    "cat": "k13",
+    "term": {
+      "de": "die Organisation",
+      "en": "organisation",
+      "uk": "організація",
+      "ru": "организация"
+    },
+    "short": {
+      "de": "die Planung und Durchführung von etwas",
+      "en": "the planning and carrying out of something",
+      "uk": "планування й здійснення чогось",
+      "ru": "планирование и осуществление чего-то"
+    },
+    "def": {
+      "de": "Trotz der <g>komplizierten</g> <b>Organisation</b> lief die Veranstaltung reibungslos.",
+      "en": "Despite the complicated <b>organisation</b>, the event ran smoothly.",
+      "uk": "Незважаючи на складну <b>організацію</b>, захід пройшов без проблем.",
+      "ru": "Несмотря на сложную <b>организацию</b>, мероприятие прошло без проблем."
+    },
+    "gram": "adjektivendung_genitiv"
+  },
+  {
+    "id": "k13_038",
+    "cat": "k13",
+    "term": {
+      "de": "das Projekt",
+      "en": "project",
+      "uk": "проєкт",
+      "ru": "проект"
+    },
+    "short": {
+      "de": "ein geplantes Vorhaben mit einem bestimmten Ziel",
+      "en": "a planned undertaking with a specific goal",
+      "uk": "заплановане завдання з певною метою",
+      "ru": "запланированное дело с определённой целью"
+    },
+    "def": {
+      "de": "Wegen des <g>erfolgreichen</g> <b>Projekts</b> bekam die Gruppe mehr Fördergelder.",
+      "en": "Because of the successful <b>project</b>, the group received more funding.",
+      "uk": "Через успішний <b>проєкт</b> група отримала більше фінансування.",
+      "ru": "Из-за успешного <b>проекта</b> группа получила больше финансирования."
+    },
+    "gram": "adjektivendung_genitiv"
+  },
+  {
+    "id": "k13_039",
+    "cat": "k13",
+    "term": {
+      "de": "die Hilfe",
+      "en": "help",
+      "uk": "допомога",
+      "ru": "помощь"
+    },
+    "short": {
+      "de": "die Unterstützung, die man jemandem gibt",
+      "en": "the support you give to someone",
+      "uk": "підтримка, яку надають комусь",
+      "ru": "поддержка, которую оказывают кому-то"
+    },
+    "def": {
+      "de": "Trotz der <g>schnellen</g> <b>Hilfe</b> konnte das Haus nicht gerettet werden.",
+      "en": "Despite the quick <b>help</b>, the house could not be saved.",
+      "uk": "Незважаючи на швидку <b>допомогу</b>, будинок не вдалося врятувати.",
+      "ru": "Несмотря на быструю <b>помощь</b>, дом не удалось спасти."
+    },
+    "gram": "adjektivendung_genitiv"
+  },
+  {
+    "id": "k13_040",
+    "cat": "k13",
+    "term": {
+      "de": "der Erfolg",
+      "en": "success",
+      "uk": "успіх",
+      "ru": "успех"
+    },
+    "short": {
+      "de": "ein gutes Ergebnis, das man durch Mühe erreicht hat",
+      "en": "a good result achieved through effort",
+      "uk": "хороший результат, досягнутий завдяки зусиллям",
+      "ru": "хороший результат, достигнутый благодаря усилиям"
+    },
+    "def": {
+      "de": "Ihr Projekt war <g>erfolgreich</g> und half vielen Familien in der Region.",
+      "en": "Their project was successful and helped many families in the region.",
+      "uk": "Їхній проєкт був успішним і допоміг багатьом сімʼям у регіоні.",
+      "ru": "Их проект был успешным и помог многим семьям в регионе."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_041",
+    "cat": "k13",
+    "term": {
+      "de": "der Respekt",
+      "en": "respect",
+      "uk": "повага",
+      "ru": "уважение"
+    },
+    "short": {
+      "de": "die Achtung und Wertschätzung gegenüber anderen Menschen",
+      "en": "esteem and consideration towards other people",
+      "uk": "шана й повага до інших людей",
+      "ru": "почтение и уважение к другим людям"
+    },
+    "def": {
+      "de": "Sie behandelte jeden Menschen <g>respektvoll</g>.",
+      "en": "She treated every person respectfully.",
+      "uk": "Вона ставилася до кожної людини з повагою.",
+      "ru": "Она относилась к каждому человеку с уважением."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_042",
+    "cat": "k13",
+    "term": {
+      "de": "die Liebe",
+      "en": "love",
+      "uk": "любов",
+      "ru": "любовь"
+    },
+    "short": {
+      "de": "ein starkes, warmes Gefühl der Zuneigung",
+      "en": "a strong, warm feeling of affection",
+      "uk": "сильне тепле почуття прихильності",
+      "ru": "сильное тёплое чувство привязанности"
+    },
+    "def": {
+      "de": "Die <g>liebevolle</g> Betreuung der Kinder war beeindruckend.",
+      "en": "The loving care of the children was impressive.",
+      "uk": "Турботливе ставлення до дітей вражало.",
+      "ru": "Заботливое отношение к детям впечатляло."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_043",
+    "cat": "k13",
+    "term": {
+      "de": "der Sinn",
+      "en": "sense, meaning",
+      "uk": "сенс",
+      "ru": "смысл"
+    },
+    "short": {
+      "de": "der tiefere Zweck oder die Bedeutung von etwas",
+      "en": "the deeper purpose or meaning of something",
+      "uk": "глибша мета чи значення чогось",
+      "ru": "более глубокая цель или значение чего-то"
+    },
+    "def": {
+      "de": "Diese ehrenamtliche Arbeit ist besonders <g>sinnvoll</g>.",
+      "en": "This voluntary work is particularly meaningful.",
+      "uk": "Ця волонтерська робота є особливо змістовною.",
+      "ru": "Эта волонтёрская работа особенно осмысленна."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_044",
+    "cat": "k13",
+    "term": {
+      "de": "die Hoffnung",
+      "en": "hope",
+      "uk": "надія",
+      "ru": "надежда"
+    },
+    "short": {
+      "de": "der Wunsch und die Erwartung, dass etwas Gutes passiert",
+      "en": "the wish and expectation that something good will happen",
+      "uk": "бажання і сподівання, що станеться щось хороше",
+      "ru": "желание и ожидание, что произойдёт что-то хорошее"
+    },
+    "def": {
+      "de": "Trotz aller Schwierigkeiten blieb sie <g>hoffnungsvoll</g>.",
+      "en": "Despite all the difficulties, she remained hopeful.",
+      "uk": "Незважаючи на всі труднощі, вона залишалася сповненою надії.",
+      "ru": "Несмотря на все трудности, она оставалась полной надежды."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_045",
+    "cat": "k13",
+    "term": {
+      "de": "die Rücksicht",
+      "en": "consideration",
+      "uk": "делікатність, увага (до когось)",
+      "ru": "деликатность, внимание (к кому-то)"
+    },
+    "short": {
+      "de": "das Verhalten, bei dem man auf die Bedürfnisse anderer achtet",
+      "en": "behaviour that takes other people's needs into account",
+      "uk": "поведінка, коли враховують потреби інших",
+      "ru": "поведение, при котором учитывают потребности других"
+    },
+    "def": {
+      "de": "Er ging sehr <g>rücksichtsvoll</g> mit den älteren Bewohnern um.",
+      "en": "He treated the elderly residents very considerately.",
+      "uk": "Він дуже уважно й делікатно ставився до літніх мешканців.",
+      "ru": "Он очень бережно и деликатно относился к пожилым жителям."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_046",
+    "cat": "k13",
+    "term": {
+      "de": "die Kraft",
+      "en": "strength, energy",
+      "uk": "сила, енергія",
+      "ru": "сила, энергия"
+    },
+    "short": {
+      "de": "die körperliche oder seelische Energie, etwas zu tun",
+      "en": "the physical or mental energy to do something",
+      "uk": "фізична чи душевна енергія для дії",
+      "ru": "физическая или душевная энергия для действия"
+    },
+    "def": {
+      "de": "Mit <g>kraftvollem</g> Einsatz halfen die Freiwilligen beim Wiederaufbau.",
+      "en": "With powerful commitment, the volunteers helped with the reconstruction.",
+      "uk": "З потужною енергією волонтери допомагали у відбудові.",
+      "ru": "С мощной энергией волонтёры помогали в восстановлении."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_047",
+    "cat": "k13",
+    "term": {
+      "de": "das Vertrauen",
+      "en": "trust",
+      "uk": "довіра",
+      "ru": "доверие"
+    },
+    "short": {
+      "de": "der feste Glaube daran, dass jemand ehrlich und zuverlässig ist",
+      "en": "the firm belief that someone is honest and reliable",
+      "uk": "тверда впевненість, що хтось чесний і надійний",
+      "ru": "твёрдая уверенность, что кто-то честен и надёжен"
+    },
+    "def": {
+      "de": "Die Zusammenarbeit mit der Gemeinde verlief <g>vertrauensvoll</g>.",
+      "en": "The cooperation with the community was trusting.",
+      "uk": "Співпраця з громадою проходила з довірою.",
+      "ru": "Сотрудничество с общиной проходило с доверием."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_048",
+    "cat": "k13",
+    "term": {
+      "de": "die Idee",
+      "en": "idea",
+      "uk": "ідея",
+      "ru": "идея"
+    },
+    "short": {
+      "de": "ein neuer Gedanke oder Plan",
+      "en": "a new thought or plan",
+      "uk": "нова думка чи план",
+      "ru": "новая мысль или план"
+    },
+    "def": {
+      "de": "Der <g>ideenreiche</g> Verein hat schon viele erfolgreiche Projekte gestartet.",
+      "en": "The idea-rich club has already launched many successful projects.",
+      "uk": "Клуб, багатий на ідеї, уже запустив чимало успішних проєктів.",
+      "ru": "Клуб, богатый на идеи, уже запустил немало успешных проектов."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_049",
+    "cat": "k13",
+    "term": {
+      "de": "der Tag",
+      "en": "day",
+      "uk": "день",
+      "ru": "день"
+    },
+    "short": {
+      "de": "ein Zeitraum von 24 Stunden",
+      "en": "a period of 24 hours",
+      "uk": "проміжок часу тривалістю 24 години",
+      "ru": "промежуток времени длиной 24 часа"
+    },
+    "def": {
+      "de": "Es war ein <g>ereignisreicher</g> Tag voller neuer Begegnungen.",
+      "en": "It was an eventful day full of new encounters.",
+      "uk": "Це був насичений подіями день, повний нових знайомств.",
+      "ru": "Это был насыщенный событиями день, полный новых знакомств."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_050",
+    "cat": "k13",
+    "term": {
+      "de": "der Wert",
+      "en": "value",
+      "uk": "цінність",
+      "ru": "ценность"
+    },
+    "short": {
+      "de": "die Bedeutung oder Wichtigkeit von etwas",
+      "en": "the significance or importance of something",
+      "uk": "значущість чи важливість чогось",
+      "ru": "значимость или важность чего-то"
+    },
+    "def": {
+      "de": "Ihre Arbeit ist für die ganze Gemeinschaft <g>wertvoll</g>.",
+      "en": "Her work is valuable for the whole community.",
+      "uk": "Її робота є цінною для всієї громади.",
+      "ru": "Её работа ценна для всей общины."
     },
     "gram": "adjektive_auf_voll_reich"
   },
