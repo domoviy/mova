@@ -3717,7 +3717,15 @@ var LESSONS = [
     "grammar": "adjektivdeklination_ohne_artikel",
     "cardIds": [
       "k15_001",
-      "k15_002"
+      "k15_002",
+      "k15_017",
+      "k15_018",
+      "k15_019",
+      "k15_020",
+      "k15_021",
+      "k15_022",
+      "k15_023",
+      "k15_024"
     ],
     "unlockAfter": "k14m6",
     "sbCards": []
@@ -3745,7 +3753,15 @@ var LESSONS = [
     "grammar": "partizip1_als_adjektiv",
     "cardIds": [
       "k15_003",
-      "k15_009"
+      "k15_009",
+      "k15_025",
+      "k15_026",
+      "k15_027",
+      "k15_028",
+      "k15_029",
+      "k15_030",
+      "k15_031",
+      "k15_032"
     ],
     "unlockAfter": "k15m1",
     "sbCards": []
@@ -3774,7 +3790,14 @@ var LESSONS = [
     "cardIds": [
       "k15_004",
       "k15_005",
-      "k15_010"
+      "k15_010",
+      "k15_033",
+      "k15_034",
+      "k15_035",
+      "k15_036",
+      "k15_037",
+      "k15_038",
+      "k15_039"
     ],
     "unlockAfter": "k15m2",
     "sbCards": []
@@ -3802,7 +3825,15 @@ var LESSONS = [
     "grammar": "entweder_oder",
     "cardIds": [
       "k15_006",
-      "k15_011"
+      "k15_011",
+      "k15_040",
+      "k15_041",
+      "k15_042",
+      "k15_043",
+      "k15_044",
+      "k15_045",
+      "k15_046",
+      "k15_047"
     ],
     "unlockAfter": "k15m3",
     "sbCards": []
@@ -3835,7 +3866,10 @@ var LESSONS = [
       "k15_013",
       "k15_014",
       "k15_015",
-      "k15_016"
+      "k15_016",
+      "k15_048",
+      "k15_049",
+      "k15_050"
     ],
     "unlockAfter": "k15m4",
     "sbCards": []
@@ -22498,6 +22532,788 @@ var VOCAB = [
       "en": "<g>Either</g> you accept the <b>bureaucracy</b> in Germany, <g>or</g> you quickly get frustrated by it.",
       "uk": "<g>Або</g> людина приймає <b>бюрократію</b> в Німеччині, <g>або</g> швидко впадає через неї у відчай.",
       "ru": "<g>Либо</g> человек принимает <b>бюрократию</b> в Германии, <g>либо</g> быстро приходит от неё в отчаяние."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_017",
+    "cat": "k15",
+    "term": {
+      "de": "der Pass, Pässe",
+      "en": "passport",
+      "uk": "паспорт",
+      "ru": "паспорт"
+    },
+    "short": {
+      "de": "ein amtliches Dokument, mit dem man sich im Ausland ausweisen kann",
+      "en": "an official document used to identify yourself abroad",
+      "uk": "офіційний документ, яким посвідчують особу за кордоном",
+      "ru": "официальный документ, которым удостоверяют личность за границей"
+    },
+    "def": {
+      "de": "<g>Deutscher</g> <b>Pass</b> bedeutet für viele Menschen ein neues Kapitel im Leben.",
+      "en": "A German passport means a new chapter in life for many people.",
+      "uk": "Німецький паспорт означає для багатьох людей новий розділ у житті.",
+      "ru": "Немецкий паспорт означает для многих людей новую главу в жизни."
+    },
+    "gram": "adjektivdeklination_ohne_artikel"
+  },
+  {
+    "id": "k15_018",
+    "cat": "k15",
+    "term": {
+      "de": "die Arbeit, -en",
+      "en": "work",
+      "uk": "робота",
+      "ru": "работа"
+    },
+    "short": {
+      "de": "die Tätigkeit, die man beruflich ausübt",
+      "en": "the activity you carry out professionally",
+      "uk": "діяльність, яку виконують професійно",
+      "ru": "деятельность, которую выполняют профессионально"
+    },
+    "def": {
+      "de": "<g>Harte</g> <b>Arbeit</b> führt oft zum Erfolg.",
+      "en": "Hard work often leads to success.",
+      "uk": "Важка праця часто веде до успіху.",
+      "ru": "Тяжёлый труд часто ведёт к успеху."
+    },
+    "gram": "adjektivdeklination_ohne_artikel"
+  },
+  {
+    "id": "k15_019",
+    "cat": "k15",
+    "term": {
+      "de": "die Geduld (Sg.)",
+      "en": "patience",
+      "uk": "терпіння",
+      "ru": "терпение"
+    },
+    "short": {
+      "de": "die Fähigkeit, ruhig zu warten, auch wenn es lange dauert",
+      "en": "the ability to wait calmly, even if it takes a long time",
+      "uk": "здатність спокійно чекати, навіть якщо це триває довго",
+      "ru": "способность спокойно ждать, даже если это долго длится"
+    },
+    "def": {
+      "de": "<g>Große</g> <b>Geduld</b> ist bei diesem bürokratischen Prozess notwendig.",
+      "en": "Great patience is necessary in this bureaucratic process.",
+      "uk": "Велике терпіння необхідне в цьому бюрократичному процесі.",
+      "ru": "Большое терпение необходимо в этом бюрократическом процессе."
+    },
+    "gram": "adjektivdeklination_ohne_artikel"
+  },
+  {
+    "id": "k15_020",
+    "cat": "k15",
+    "term": {
+      "de": "der Erfolg, -e",
+      "en": "success",
+      "uk": "успіх",
+      "ru": "успех"
+    },
+    "short": {
+      "de": "ein gutes Ergebnis, das man durch Mühe erreicht hat",
+      "en": "a good result achieved through effort",
+      "uk": "хороший результат, досягнутий завдяки зусиллям",
+      "ru": "хороший результат, достигнутый благодаря усилиям"
+    },
+    "def": {
+      "de": "<g>Beruflicher</g> <b>Erfolg</b> braucht meistens viel Zeit.",
+      "en": "Professional success usually takes a lot of time.",
+      "uk": "Професійний успіх зазвичай потребує багато часу.",
+      "ru": "Профессиональный успех обычно требует много времени."
+    },
+    "gram": "adjektivdeklination_ohne_artikel"
+  },
+  {
+    "id": "k15_021",
+    "cat": "k15",
+    "term": {
+      "de": "das Leben (Sg.)",
+      "en": "life",
+      "uk": "життя",
+      "ru": "жизнь"
+    },
+    "short": {
+      "de": "die Zeit, die ein Mensch lebt, mit allen ihren Erfahrungen",
+      "en": "the time a person lives, with all its experiences",
+      "uk": "час, який людина живе, з усім її досвідом",
+      "ru": "время, которое человек живёт, со всем его опытом"
+    },
+    "def": {
+      "de": "<g>Neues</g> <b>Leben</b> in einem fremden Land beginnt oft mit vielen Herausforderungen.",
+      "en": "A new life in a foreign country often begins with many challenges.",
+      "uk": "Нове життя в чужій країні часто починається з багатьох викликів.",
+      "ru": "Новая жизнь в чужой стране часто начинается со множества трудностей."
+    },
+    "gram": "adjektivdeklination_ohne_artikel"
+  },
+  {
+    "id": "k15_022",
+    "cat": "k15",
+    "term": {
+      "de": "die Hoffnung, -en",
+      "en": "hope",
+      "uk": "надія",
+      "ru": "надежда"
+    },
+    "short": {
+      "de": "der Wunsch und die Erwartung, dass etwas Gutes passiert",
+      "en": "the wish and expectation that something good will happen",
+      "uk": "бажання і сподівання, що станеться щось хороше",
+      "ru": "желание и ожидание, что произойдёт что-то хорошее"
+    },
+    "def": {
+      "de": "<g>Große</g> <b>Hoffnung</b> begleitete sie während des ganzen Verfahrens.",
+      "en": "Great hope accompanied her throughout the whole process.",
+      "uk": "Велика надія супроводжувала її протягом усього процесу.",
+      "ru": "Большая надежда сопровождала её на протяжении всего процесса."
+    },
+    "gram": "adjektivdeklination_ohne_artikel"
+  },
+  {
+    "id": "k15_023",
+    "cat": "k15",
+    "term": {
+      "de": "die Zukunft (Sg.)",
+      "en": "future",
+      "uk": "майбутнє",
+      "ru": "будущее"
+    },
+    "short": {
+      "de": "die Zeit, die noch kommen wird",
+      "en": "the time that is yet to come",
+      "uk": "час, який ще настане",
+      "ru": "время, которое ещё наступит"
+    },
+    "def": {
+      "de": "<g>Sichere</g> <b>Zukunft</b> ist der Wunsch vieler Einwanderer.",
+      "en": "A secure future is the wish of many immigrants.",
+      "uk": "Впевнене майбутнє — бажання багатьох іммігрантів.",
+      "ru": "Уверенное будущее — желание многих иммигрантов."
+    },
+    "gram": "adjektivdeklination_ohne_artikel"
+  },
+  {
+    "id": "k15_024",
+    "cat": "k15",
+    "term": {
+      "de": "die Mühe, -n",
+      "en": "effort",
+      "uk": "зусилля",
+      "ru": "усилие"
+    },
+    "short": {
+      "de": "die Anstrengung, die man für etwas aufbringt",
+      "en": "the effort you put into something",
+      "uk": "напруга, яку докладають заради чогось",
+      "ru": "усилие, которое прикладывают ради чего-то"
+    },
+    "def": {
+      "de": "<g>Viel</g> <b>Mühe</b> steckt in jedem einzelnen Antrag.",
+      "en": "A lot of effort goes into every single application.",
+      "uk": "Багато зусиль вкладено в кожну окрему заяву.",
+      "ru": "Много усилий вложено в каждое отдельное заявление."
+    },
+    "gram": "adjektivdeklination_ohne_artikel"
+  },
+  {
+    "id": "k15_025",
+    "cat": "k15",
+    "term": {
+      "de": "das Kind, -er",
+      "en": "child",
+      "uk": "дитина",
+      "ru": "ребёнок"
+    },
+    "short": {
+      "de": "ein junger Mensch, der noch nicht erwachsen ist",
+      "en": "a young person who is not yet an adult",
+      "uk": "молода людина, яка ще не є дорослою",
+      "ru": "молодой человек, который ещё не является взрослым"
+    },
+    "def": {
+      "de": "Das <g>weinende</g> <b>Kind</b> wurde schnell von seiner Mutter getröstet.",
+      "en": "The crying child was quickly comforted by its mother.",
+      "uk": "Дитину, що плакала, швидко заспокоїла мама.",
+      "ru": "Плачущего ребёнка быстро успокоила мама."
+    },
+    "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "k15_026",
+    "cat": "k15",
+    "term": {
+      "de": "die Menge, -n",
+      "en": "crowd",
+      "uk": "натовп",
+      "ru": "толпа"
+    },
+    "short": {
+      "de": "eine große Anzahl von Menschen an einem Ort",
+      "en": "a large number of people in one place",
+      "uk": "велика кількість людей в одному місці",
+      "ru": "большое количество людей в одном месте"
+    },
+    "def": {
+      "de": "Die <g>wartende</g> <b>Menge</b> stand geduldig vor dem Amt.",
+      "en": "The waiting crowd stood patiently in front of the office.",
+      "uk": "Натовп, що чекав, терпляче стояв перед установою.",
+      "ru": "Ожидающая толпа терпеливо стояла перед учреждением."
+    },
+    "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "k15_027",
+    "cat": "k15",
+    "term": {
+      "de": "die Zahl, -en",
+      "en": "number",
+      "uk": "кількість, число",
+      "ru": "количество, число"
+    },
+    "short": {
+      "de": "eine Menge, die man zählen kann",
+      "en": "an amount that can be counted",
+      "uk": "кількість, яку можна порахувати",
+      "ru": "количество, которое можно посчитать"
+    },
+    "def": {
+      "de": "Die <g>steigende</g> <b>Zahl</b> der Einbürgerungen freut die Behörden.",
+      "en": "The rising number of naturalisations pleases the authorities.",
+      "uk": "Зростаюча кількість натуралізацій радує органи влади.",
+      "ru": "Растущее число натурализаций радует органы власти."
+    },
+    "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "k15_028",
+    "cat": "k15",
+    "term": {
+      "de": "die Bedingung, -en",
+      "en": "condition",
+      "uk": "умова",
+      "ru": "условие"
+    },
+    "short": {
+      "de": "etwas, das erfüllt sein muss, damit etwas anderes passiert",
+      "en": "something that must be fulfilled for something else to happen",
+      "uk": "те, що має бути виконане, щоб сталося щось інше",
+      "ru": "то, что должно быть выполнено, чтобы произошло что-то другое"
+    },
+    "def": {
+      "de": "Die <g>entscheidende</g> <b>Bedingung</b> für die Einbürgerung ist die Sprachprüfung.",
+      "en": "The decisive condition for naturalisation is the language test.",
+      "uk": "Вирішальна умова для натуралізації — мовний іспит.",
+      "ru": "Решающее условие для натурализации — языковой экзамен."
+    },
+    "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "k15_029",
+    "cat": "k15",
+    "term": {
+      "de": "das Problem, -e",
+      "en": "problem",
+      "uk": "проблема",
+      "ru": "проблема"
+    },
+    "short": {
+      "de": "eine schwierige Situation, die gelöst werden muss",
+      "en": "a difficult situation that needs to be solved",
+      "uk": "складна ситуація, яку потрібно вирішити",
+      "ru": "сложная ситуация, которую нужно решить"
+    },
+    "def": {
+      "de": "Das <g>bestehende</g> <b>Problem</b> mit den Unterlagen wurde schnell gelöst.",
+      "en": "The existing problem with the documents was quickly resolved.",
+      "uk": "Наявну проблему з документами швидко вирішили.",
+      "ru": "Существующую проблему с документами быстро решили."
+    },
+    "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "k15_030",
+    "cat": "k15",
+    "term": {
+      "de": "der Mitarbeiter, - / die Mitarbeiterin, -nen",
+      "en": "staff member",
+      "uk": "співробітник",
+      "ru": "сотрудник"
+    },
+    "short": {
+      "de": "eine Person, die an einem Ort, zum Beispiel einer Behörde, arbeitet",
+      "en": "a person who works at a place, for example an office",
+      "uk": "особа, яка працює в певному місці, наприклад в установі",
+      "ru": "лицо, работающее в определённом месте, например в учреждении"
+    },
+    "def": {
+      "de": "Der <g>helfende</g> <b>Mitarbeiter</b> beantwortete geduldig alle Fragen.",
+      "en": "The helpful staff member patiently answered all questions.",
+      "uk": "Співробітник, який допомагав, терпляче відповідав на всі запитання.",
+      "ru": "Сотрудник, который помогал, терпеливо отвечал на все вопросы."
+    },
+    "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "k15_031",
+    "cat": "k15",
+    "term": {
+      "de": "die Erklärung, -en",
+      "en": "explanation",
+      "uk": "пояснення",
+      "ru": "объяснение"
+    },
+    "short": {
+      "de": "Worte, mit denen man etwas verständlich macht",
+      "en": "words used to make something understandable",
+      "uk": "слова, якими щось роблять зрозумілим",
+      "ru": "слова, которыми что-то делают понятным"
+    },
+    "def": {
+      "de": "Die <g>überzeugende</g> <b>Erklärung</b> half ihr, den Antrag richtig auszufüllen.",
+      "en": "The convincing explanation helped her fill out the application correctly.",
+      "uk": "Переконливе пояснення допомогло їй правильно заповнити заяву.",
+      "ru": "Убедительное объяснение помогло ей правильно заполнить заявление."
+    },
+    "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "k15_032",
+    "cat": "k15",
+    "term": {
+      "de": "die Situation, -en",
+      "en": "situation",
+      "uk": "ситуація",
+      "ru": "ситуация"
+    },
+    "short": {
+      "de": "die Umstände, in denen sich jemand gerade befindet",
+      "en": "the circumstances someone currently finds themselves in",
+      "uk": "обставини, у яких зараз перебуває людина",
+      "ru": "обстоятельства, в которых сейчас находится человек"
+    },
+    "def": {
+      "de": "Die <g>belastende</g> <b>Situation</b> dauerte mehrere Monate.",
+      "en": "The stressful situation lasted several months.",
+      "uk": "Обтяжлива ситуація тривала кілька місяців.",
+      "ru": "Тяжёлая ситуация длилась несколько месяцев."
+    },
+    "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "k15_033",
+    "cat": "k15",
+    "term": {
+      "de": "das Dokument, -e",
+      "en": "document",
+      "uk": "документ",
+      "ru": "документ"
+    },
+    "short": {
+      "de": "ein offizielles Schriftstück",
+      "en": "an official piece of writing",
+      "uk": "офіційний письмовий документ",
+      "ru": "официальный письменный документ"
+    },
+    "def": {
+      "de": "Das <g>übersetzte</g> <b>Dokument</b> musste zusätzlich beglaubigt werden.",
+      "en": "The translated document had to be additionally certified.",
+      "uk": "Перекладений документ потрібно було додатково засвідчити.",
+      "ru": "Переведённый документ нужно было дополнительно заверить."
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "k15_034",
+    "cat": "k15",
+    "term": {
+      "de": "der Nachweis, -e",
+      "en": "proof, certificate",
+      "uk": "підтвердження",
+      "ru": "подтверждение"
+    },
+    "short": {
+      "de": "ein Beweis oder Dokument, das etwas bestätigt",
+      "en": "evidence or a document confirming something",
+      "uk": "доказ чи документ, що щось підтверджує",
+      "ru": "доказательство или документ, что-то подтверждающий"
+    },
+    "def": {
+      "de": "Der <g>unterschriebene</g> <b>Nachweis</b> lag bereits bei den Unterlagen.",
+      "en": "The signed certificate was already included with the documents.",
+      "uk": "Підписане підтвердження вже було серед документів.",
+      "ru": "Подписанное подтверждение уже было среди документов."
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "k15_035",
+    "cat": "k15",
+    "term": {
+      "de": "die Prüfung, -en",
+      "en": "exam, test",
+      "uk": "іспит",
+      "ru": "экзамен"
+    },
+    "short": {
+      "de": "ein Test, mit dem man Wissen oder Können überprüft",
+      "en": "a test used to check knowledge or ability",
+      "uk": "тест, яким перевіряють знання чи вміння",
+      "ru": "тест, которым проверяют знания или умения"
+    },
+    "def": {
+      "de": "Die <g>bestandene</g> <b>Prüfung</b> war die letzte Hürde vor der Einbürgerung.",
+      "en": "The passed test was the last hurdle before naturalisation.",
+      "uk": "Складений іспит став останньою перешкодою перед натуралізацією.",
+      "ru": "Сданный экзамен стал последним препятствием перед натурализацией."
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "k15_036",
+    "cat": "k15",
+    "term": {
+      "de": "die Frist, -en",
+      "en": "deadline",
+      "uk": "строк, дедлайн",
+      "ru": "срок, дедлайн"
+    },
+    "short": {
+      "de": "der letzte Zeitpunkt, bis zu dem man etwas machen muss",
+      "en": "the last point in time by which you must do something",
+      "uk": "останній момент, до якого треба щось зробити",
+      "ru": "последний момент, до которого нужно что-то сделать"
+    },
+    "def": {
+      "de": "Die <g>verpasste</g> <b>Frist</b> führte zu einer Verzögerung des Verfahrens.",
+      "en": "The missed deadline led to a delay in the process.",
+      "uk": "Пропущений термін призвів до затримки процесу.",
+      "ru": "Пропущенный срок привёл к задержке процесса."
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "k15_037",
+    "cat": "k15",
+    "term": {
+      "de": "die Anfrage, -n",
+      "en": "inquiry, request",
+      "uk": "запит",
+      "ru": "запрос"
+    },
+    "short": {
+      "de": "eine Frage, die man offiziell an jemanden richtet",
+      "en": "a question officially directed at someone",
+      "uk": "питання, яке офіційно адресують комусь",
+      "ru": "вопрос, который официально адресуют кому-то"
+    },
+    "def": {
+      "de": "Die <g>beantwortete</g> <b>Anfrage</b> brachte endlich Klarheit.",
+      "en": "The answered inquiry finally brought clarity.",
+      "uk": "Питання, на яке відповіли, нарешті внесло ясність.",
+      "ru": "Вопрос, на который ответили, наконец внёс ясность."
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "k15_038",
+    "cat": "k15",
+    "term": {
+      "de": "die Bewerbung, -en",
+      "en": "application",
+      "uk": "заявка",
+      "ru": "заявка"
+    },
+    "short": {
+      "de": "eine offizielle Anfrage um eine Stelle oder einen Platz",
+      "en": "an official request for a job or place",
+      "uk": "офіційний запит на посаду чи місце",
+      "ru": "официальный запрос на должность или место"
+    },
+    "def": {
+      "de": "Die <g>abgelehnte</g> <b>Bewerbung</b> konnte leider nicht mehr korrigiert werden.",
+      "en": "The rejected application could unfortunately no longer be corrected.",
+      "uk": "Відхилену заявку, на жаль, уже не можна було виправити.",
+      "ru": "Отклонённую заявку, к сожалению, уже нельзя было исправить."
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "k15_039",
+    "cat": "k15",
+    "term": {
+      "de": "der Termin, -e",
+      "en": "appointment",
+      "uk": "зустріч, домовлена дата",
+      "ru": "встреча, назначенная дата"
+    },
+    "short": {
+      "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
+      "en": "a certain time when you want to do something or go somewhere",
+      "uk": "конкретний час, коли хочеш щось зробити або кудись піти",
+      "ru": "конкретное время, когда хочешь что-то сделать или куда-то пойти"
+    },
+    "def": {
+      "de": "Der <g>vereinbarte</g> <b>Termin</b> beim Amt musste leider verschoben werden.",
+      "en": "The agreed appointment at the office unfortunately had to be postponed.",
+      "uk": "Домовлену зустріч в установі, на жаль, довелося перенести.",
+      "ru": "Согласованную встречу в учреждении, к сожалению, пришлось перенести."
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "k15_040",
+    "cat": "k15",
+    "term": {
+      "de": "der Wohnsitz, -e",
+      "en": "residence",
+      "uk": "місце проживання",
+      "ru": "место жительства"
+    },
+    "short": {
+      "de": "der Ort, an dem man offiziell gemeldet wohnt",
+      "en": "the place where you are officially registered as living",
+      "uk": "місце, де людина офіційно зареєстрована як така, що проживає",
+      "ru": "место, где человек официально зарегистрирован как проживающий"
+    },
+    "def": {
+      "de": "Man braucht <g>entweder</g> einen festen <b>Wohnsitz</b> <g>oder</g> eine offizielle Meldeadresse.",
+      "en": "You need <g>either</g> a fixed <b>residence</b> <g>or</g> an official registered address.",
+      "uk": "Потрібне <g>або</g> постійне <b>місце проживання</b>, <g>або</g> офіційна адреса реєстрації.",
+      "ru": "Нужно <g>либо</g> постоянное <b>место жительства</b>, <g>либо</g> официальный адрес регистрации."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_041",
+    "cat": "k15",
+    "term": {
+      "de": "der Reisepass, -pässe",
+      "en": "passport",
+      "uk": "закордонний паспорт",
+      "ru": "загранпаспорт"
+    },
+    "short": {
+      "de": "ein Dokument, mit dem man ins Ausland reisen kann",
+      "en": "a document that allows you to travel abroad",
+      "uk": "документ, з яким можна подорожувати за кордон",
+      "ru": "документ, с которым можно путешествовать за границу"
+    },
+    "def": {
+      "de": "Für die Reise braucht man <g>entweder</g> einen gültigen <b>Reisepass</b> <g>oder</g> einen Personalausweis.",
+      "en": "For the trip, you need <g>either</g> a valid <b>passport</b> <g>or</g> an ID card.",
+      "uk": "Для подорожі потрібен <g>або</g> чинний <b>закордонний паспорт</b>, <g>або</g> посвідчення особи.",
+      "ru": "Для поездки нужен <g>либо</g> действующий <b>загранпаспорт</b>, <g>либо</g> удостоверение личности."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_042",
+    "cat": "k15",
+    "term": {
+      "de": "der Zeuge, -n / die Zeugin, -nen",
+      "en": "witness",
+      "uk": "свідок",
+      "ru": "свидетель"
+    },
+    "short": {
+      "de": "eine Person, die bei etwas dabei ist und es bestätigen kann",
+      "en": "a person who is present for something and can confirm it",
+      "uk": "особа, яка присутня при чомусь і може це підтвердити",
+      "ru": "лицо, присутствующее при чём-то и способное это подтвердить"
+    },
+    "def": {
+      "de": "Bei der Zeremonie braucht man <g>entweder</g> zwei <b>Zeugen</b> <g>oder</g> einen offiziellen Vertreter.",
+      "en": "At the ceremony, you need <g>either</g> two <b>witnesses</b> <g>or</g> an official representative.",
+      "uk": "На церемонії потрібні <g>або</g> два <b>свідки</b>, <g>або</g> офіційний представник.",
+      "ru": "На церемонии нужны <g>либо</g> два <b>свидетеля</b>, <g>либо</g> официальный представитель."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_043",
+    "cat": "k15",
+    "term": {
+      "de": "verlängern",
+      "en": "to extend, to renew",
+      "uk": "продовжувати",
+      "ru": "продлевать"
+    },
+    "short": {
+      "de": "die Zeit für etwas länger machen",
+      "en": "to make the time for something longer",
+      "uk": "робити час для чогось довшим",
+      "ru": "делать время для чего-то дольше"
+    },
+    "def": {
+      "de": "Man kann die Aufenthaltserlaubnis <g>entweder</g> <b>verlängern</b> <g>oder</g> neu beantragen.",
+      "en": "You can <g>either</g> <b>extend</b> the residence permit <g>or</g> apply for it again.",
+      "uk": "Дозвіл на проживання можна <g>або</g> <b>продовжити</b>, <g>або</g> подати нову заяву.",
+      "ru": "Разрешение на проживание можно <g>либо</g> <b>продлить</b>, <g>либо</g> подать новое заявление."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_044",
+    "cat": "k15",
+    "term": {
+      "de": "der Ausweis, -e",
+      "en": "ID card",
+      "uk": "посвідчення особи",
+      "ru": "удостоверение личности"
+    },
+    "short": {
+      "de": "eine Karte, mit der man zeigt, wer man ist",
+      "en": "a card used to show who you are",
+      "uk": "картка, якою підтверджують особу",
+      "ru": "карта, которой подтверждают личность"
+    },
+    "def": {
+      "de": "Man zeigt <g>entweder</g> den <b>Ausweis</b> <g>oder</g> den Pass.",
+      "en": "You show <g>either</g> your <b>ID card</b> <g>or</g> your passport.",
+      "uk": "Показують <g>або</g> <b>посвідчення особи</b>, <g>або</g> паспорт.",
+      "ru": "Показывают <g>либо</g> <b>удостоверение личности</b>, <g>либо</g> паспорт."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_045",
+    "cat": "k15",
+    "term": {
+      "de": "die Meldebescheinigung, -en",
+      "en": "registration certificate",
+      "uk": "довідка про реєстрацію",
+      "ru": "справка о регистрации"
+    },
+    "short": {
+      "de": "ein Dokument, das die offizielle Adresse einer Person bestätigt",
+      "en": "a document confirming a person's official address",
+      "uk": "документ, що підтверджує офіційну адресу особи",
+      "ru": "документ, подтверждающий официальный адрес лица"
+    },
+    "def": {
+      "de": "Für den Antrag braucht man <g>entweder</g> eine <b>Meldebescheinigung</b> <g>oder</g> eine andere Adressbestätigung.",
+      "en": "For the application, you need <g>either</g> a <b>registration certificate</b> <g>or</g> another proof of address.",
+      "uk": "Для заяви потрібна <g>або</g> <b>довідка про реєстрацію</b>, <g>або</g> інше підтвердження адреси.",
+      "ru": "Для заявления нужна <g>либо</g> <b>справка о регистрации</b>, <g>либо</g> другое подтверждение адреса."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_046",
+    "cat": "k15",
+    "term": {
+      "de": "persönlich",
+      "en": "in person",
+      "uk": "особисто",
+      "ru": "лично"
+    },
+    "short": {
+      "de": "selbst anwesend, nicht durch eine andere Person",
+      "en": "physically present yourself, not through another person",
+      "uk": "особисто присутній, а не через іншу людину",
+      "ru": "лично присутствующий, а не через другого человека"
+    },
+    "def": {
+      "de": "Den Antrag kann man <g>entweder</g> <b>persönlich</b> abgeben <g>oder</g> per Post schicken.",
+      "en": "You can submit the application <g>either</g> <b>in person</b> <g>or</g> send it by post.",
+      "uk": "Заяву можна подати <g>або</g> <b>особисто</b>, <g>або</g> надіслати поштою.",
+      "ru": "Заявление можно подать <g>либо</g> <b>лично</b>, <g>либо</g> отправить по почте."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_047",
+    "cat": "k15",
+    "term": {
+      "de": "akzeptieren",
+      "en": "to accept",
+      "uk": "приймати",
+      "ru": "принимать"
+    },
+    "short": {
+      "de": "etwas annehmen oder gutheißen",
+      "en": "to accept or approve of something",
+      "uk": "приймати чи схвалювати щось",
+      "ru": "принимать или одобрять что-то"
+    },
+    "def": {
+      "de": "Die Behörde kann den Antrag <g>entweder</g> <b>akzeptieren</b> <g>oder</g> ablehnen.",
+      "en": "The authority can <g>either</g> <b>accept</b> the application <g>or</g> reject it.",
+      "uk": "Установа може <g>або</g> <b>прийняти</b> заяву, <g>або</g> відхилити її.",
+      "ru": "Учреждение может <g>либо</g> <b>принять</b> заявление, <g>либо</g> отклонить его."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_048",
+    "cat": "k15",
+    "term": {
+      "de": "die Gebühr, -en",
+      "en": "fee",
+      "uk": "збір, плата",
+      "ru": "сбор, плата"
+    },
+    "short": {
+      "de": "das Geld, das man für eine bestimmte Leistung bezahlen muss",
+      "en": "the money you must pay for a certain service",
+      "uk": "гроші, які треба заплатити за певну послугу",
+      "ru": "деньги, которые нужно заплатить за определённую услугу"
+    },
+    "def": {
+      "de": "Man zahlt <g>entweder</g> die <b>Gebühr</b> online <g>oder</g> bar am Schalter.",
+      "en": "You pay <g>either</g> the <b>fee</b> online <g>or</g> in cash at the counter.",
+      "uk": "Оплатити <b>збір</b> можна <g>або</g> онлайн, <g>або</g> готівкою в касі.",
+      "ru": "Оплатить <b>сбор</b> можно <g>либо</g> онлайн, <g>либо</g> наличными в кассе."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_049",
+    "cat": "k15",
+    "term": {
+      "de": "das Interview, -s",
+      "en": "interview",
+      "uk": "співбесіда",
+      "ru": "собеседование"
+    },
+    "short": {
+      "de": "ein offizielles Gespräch, in dem man Fragen beantwortet",
+      "en": "an official conversation in which you answer questions",
+      "uk": "офіційна розмова, під час якої відповідають на запитання",
+      "ru": "официальный разговор, во время которого отвечают на вопросы"
+    },
+    "def": {
+      "de": "Man muss <g>entweder</g> zum <b>Interview</b> erscheinen <g>oder</g> einen guten Grund für die Absage nennen.",
+      "en": "You must <g>either</g> attend the <b>interview</b> <g>or</g> give a good reason for cancelling.",
+      "uk": "Потрібно <g>або</g> зʼявитися на <b>співбесіду</b>, <g>або</g> назвати поважну причину відмови.",
+      "ru": "Нужно <g>либо</g> явиться на <b>собеседование</b>, <g>либо</g> назвать уважительную причину отказа."
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "k15_050",
+    "cat": "k15",
+    "term": {
+      "de": "der Sachbearbeiter, - / die Sachbearbeiterin, -nen",
+      "en": "caseworker",
+      "uk": "працівник, відповідальний за справу",
+      "ru": "сотрудник, ответственный за дело"
+    },
+    "short": {
+      "de": "eine Person bei einer Behörde, die für einen bestimmten Fall zuständig ist",
+      "en": "a person at an office responsible for a particular case",
+      "uk": "особа в установі, відповідальна за конкретну справу",
+      "ru": "лицо в учреждении, ответственное за конкретное дело"
+    },
+    "def": {
+      "de": "Man spricht <g>entweder</g> mit dem zuständigen <b>Sachbearbeiter</b> <g>oder</g> wartet auf eine schriftliche Antwort.",
+      "en": "You either speak with the responsible caseworker or wait for a written reply.",
+      "uk": "Можна <g>або</g> поговорити з відповідальним <b>працівником</b>, <g>або</g> почекати на письмову відповідь.",
+      "ru": "Можно <g>либо</g> поговорить с ответственным <b>сотрудником</b>, <g>либо</g> подождать письменного ответа."
     },
     "gram": "entweder_oder"
   },

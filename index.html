@@ -800,6 +800,13 @@ body{
 
 /* ── SPEECH PRACTICE ─────────────────────────────────────────── */
 #vocab-panel-speech{flex:1;min-height:0;overflow-y:auto;flex-direction:column;gap:12px;padding:12px 14px}
+/* "Усі картки" (browse) — той самий рецепт, що й у vocab-panel-speech:
+   .card-view.active вище задає overflow:hidden на весь батьківський
+   flex-контейнер (потрібно для флешкарток, які НЕ повинні скролитись
+   як сторінка) — але без власного overflow-y:auto тут цей список теж
+   ставав нескролюваним. */
+#vocab-panel-browse{flex:1;min-height:0;overflow-y:auto;padding:12px 14px}
+#dlg-panel-browse{flex:1;min-height:0;overflow-y:auto;padding:12px 14px}
 #sp-mic-btn.recording{
   background:rgba(231,76,60,.15);border-color:#e74c3c;
   animation:sp-pulse 1.2s ease-in-out infinite;
@@ -1109,6 +1116,47 @@ body{
   font-size:14px;color:rgba(255,255,255,.45);margin-top:4px;
 }
 .lf-step-label span{ font-weight:600;color:rgba(255,255,255,.7); }
+
+/* Повноекранна анімація збільшення стріку — з'являється при
+   srUpdateStreak(), коли стрік дійсно зріс (не при повторному записі
+   того самого дня). Анімуються лише transform/opacity (composite-потік,
+   не потребує головного потоку) — той самий урок, що й зі сплеш-екраном
+   раніше цієї сесії: filter лишається СТАТИЧНИМ (drop-shadow полум'я не
+   анімується сам по собі, лише transform навколо нього). */
+#streak-celebration{
+  position:fixed;inset:0;z-index:9700;
+  display:none;align-items:center;justify-content:center;
+  background:rgba(20,16,8,.72);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+}
+#streak-celebration.show{ display:flex; }
+#streak-celebration.fade-out{ transition:opacity .35s ease; opacity:0; }
+.streak-cel-inner{
+  text-align:center;
+  animation: streakCelPop .5s cubic-bezier(.34,1.56,.64,1);
+}
+.streak-cel-flame{
+  font-size:96px;line-height:1;
+  filter: drop-shadow(0 0 24px rgba(255,140,0,.55));
+  animation: streakCelBounce 1.1s ease-in-out infinite;
+}
+.streak-cel-num{
+  font-size:64px;font-weight:800;color:#fff;
+  font-family:'Inter',sans-serif;margin-top:4px;
+}
+.streak-cel-label{
+  font-size:18px;color:var(--gold);
+  font-family:'Inter',sans-serif;margin-top:2px;
+}
+@keyframes streakCelPop{
+  0%{ transform:scale(.4); opacity:0; }
+  60%{ transform:scale(1.08); opacity:1; }
+  100%{ transform:scale(1); opacity:1; }
+}
+@keyframes streakCelBounce{
+  0%,100%{ transform:translateY(0) scale(1); }
+  50%{ transform:translateY(-10px) scale(1.06); }
+}
 
 /* Результат уроку */
 #lesson-result{
@@ -1583,14 +1631,22 @@ body.lesson-active .vocab-top{
 .grammar-modal-header{
   display:flex;align-items:center;gap:10px;margin-bottom:12px;
 }
-.grammar-modal-icon{font-size:24px;}
-.grammar-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);flex:1}
+.grammar-modal-icon{
+  /* Висота піктограми = сума двох рядків заголовка (основна назва +
+     переклад), щоб виглядало як "на 2 рядки" незалежно від глобального
+     розміру шрифту — обидві --fs-* змінні вже реагують на слайдер. */
+  font-size:calc(var(--fs-card) + var(--fs-secondary) + 2px);
+  line-height:1;
+}
+.grammar-modal-title-wrap{flex:1;min-width:0}
+.grammar-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink)}
+.grammar-modal-title-sub{font-size:var(--fs-secondary);font-weight:500;color:var(--muted);margin-top:2px}
 .grammar-modal-close{
   background:none;border:none;color:var(--muted);font-size:20px;
   cursor:pointer;padding:4px;line-height:1;font-family:inherit;
 }
 .grammar-modal-body{
-  font-size:15px;color:var(--warm);line-height:1.3;
+  font-size:var(--fs-secondary);color:var(--warm);line-height:1.3;
 }
 .grammar-modal-body g{font-weight:700;color:var(--g-accent)}
 .grammar-modal-body b{color:var(--ink)}
@@ -2018,6 +2074,15 @@ body.lesson-active .vocab-top{
 
     <!-- VOKABELN -->
     <div id="view-vocab" class="view active card-view">
+      <!-- Повноекранна анімація збільшення стріку (див. showStreakCelebration) -->
+      <div id="streak-celebration" onclick="_dismissStreakCelebration()">
+        <div class="streak-cel-inner">
+          <div class="streak-cel-flame">🔥</div>
+          <div class="streak-cel-num" id="streak-cel-num">1</div>
+          <div class="streak-cel-label" id="streak-cel-label"></div>
+        </div>
+      </div>
+
       <!-- Результат уроку -->
       <div id="lesson-result">
         <div class="lr-emoji" id="lr-emoji">🎉</div>
@@ -2497,7 +2562,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '326-075b176';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3807,21 +3872,22 @@ function srBuildDailyPlan(allCards){
   return result;
 }
 
-// Оновити streak після сесії
+// Оновити streak після сесії. Повертає {streak, increased, prevStreak} —
+// increased=true лише якщо число ЗРОСЛО (не при повторному виклику того
+// самого дня). НЕ обнулюється при пропущеному дні — рахує кожен день,
+// коли умову виконано, кумулятивно (тимчасове рішення до того, як
+// зробимо повноцінну гейміфікацію/пояснення механіки стріку).
 function srUpdateStreak(){
   const state = srLoadState();
   const today = srToISO(new Date());
   const last = state.lastSessionDate;
-  if(!last){ state.streak=1; }
-  else{
-    const diff = srDaysBetween(last, today);
-    if(diff===0){}
-    else if(diff===1) state.streak=(state.streak??0)+1;
-    else state.streak=1;
+  const prevStreak = state.streak ?? 0;
+  if(last !== today){
+    state.streak = prevStreak + 1;
   }
   state.lastSessionDate = today;
   srSaveState(state);
-  return state.streak;
+  return { streak: state.streak, increased: state.streak > prevStreak, prevStreak };
 }
 
 // Dashboard stats
@@ -6054,6 +6120,36 @@ function logPerf(msg){
   PERF_LOG.push(entry);
   if(PERF_LOG.length > MAX_PERF_LOG) PERF_LOG.shift();
   console.log('⏱ [splash-perf]', msg);
+}
+
+// ── Повноекранна анімація "стрік зріс" ──────────────────────────
+// Викликається лише коли srUpdateStreak() повернула increased:true
+// (див. srRecordLesson) — тобто рівно один раз на день, при завершенні
+// першого повного уроку. Автоматично зникає через 2.2с, або по тапу.
+function showStreakCelebration(streak){
+  const el = document.getElementById('streak-celebration');
+  if(!el) return;
+  const numEl = document.getElementById('streak-cel-num');
+  const lblEl = document.getElementById('streak-cel-label');
+  if(numEl) numEl.textContent = streak;
+  const lbl = {'de':'Tage in Folge!','uk':'днів поспіль!','en':'day streak!','ru':'дней подряд!'}[uiLang] || 'days!';
+  if(lblEl) lblEl.textContent = lbl;
+
+  el.classList.remove('fade-out');
+  el.classList.add('show');
+
+  clearTimeout(el._autoDismissTimer);
+  el._autoDismissTimer = setTimeout(_dismissStreakCelebration, 2200);
+
+  if(typeof haptic !== 'undefined') haptic.medium?.();
+}
+
+function _dismissStreakCelebration(){
+  const el = document.getElementById('streak-celebration');
+  if(!el || !el.classList.contains('show')) return;
+  clearTimeout(el._autoDismissTimer);
+  el.classList.add('fade-out');
+  setTimeout(()=>{ el.classList.remove('show','fade-out'); }, 350);
 }
 
 function showPerfLog(){
@@ -8657,6 +8753,21 @@ function grammarLabel(rule){
   return t[uiLang] || t[primaryLang()] || t.en || t.de || rule.id;
 }
 
+// Заголовок модалки граматики — ЗАВЖДИ мовою курсу (primary_lang) як
+// основна назва, і окремо — переклад мовою інтерфейсу (uiLang) під нею.
+// На відміну від grammarLabel() (одна назва, для компактних місць типу
+// картки уроку), тут явно розділяємо на дві мовні ролі за вимогою:
+// основна назва — мова курсу, переклад — мова інтерфейсу, і якщо вони
+// збігаються (uiLang===primaryLang) — переклад не дублюємо.
+function grammarTitleParts(rule){
+  if(!rule) return { main:'', sub:'' };
+  var t = rule.title || {};
+  var pl = primaryLang();
+  var main = t[pl] || t.en || t.de || rule.id;
+  var sub = (uiLang !== pl) ? (t[uiLang] || '') : '';
+  return { main: main, sub: sub };
+}
+
 function showGrammarModal(id){
   var rule = getGrammarRule(id);
   if(!rule) return;
@@ -8667,11 +8778,15 @@ function showGrammarModal(id){
   overlay.onclick = function(e){ if(e.target === overlay) closeGrammarModal(); };
   var expl = rule.explanation || {};
   var explText = expl[uiLang] || expl[primaryLang()] || expl.en || expl.de || '';
+  var titles = grammarTitleParts(rule);
   overlay.innerHTML =
     '<div class="grammar-modal">' +
       '<div class="grammar-modal-header">' +
         '<span class="grammar-modal-icon">📖</span>' +
-        '<span class="grammar-modal-title">'+grammarLabel(rule)+'</span>' +
+        '<div class="grammar-modal-title-wrap">' +
+          '<div class="grammar-modal-title">'+titles.main+'</div>' +
+          (titles.sub ? '<div class="grammar-modal-title-sub">'+titles.sub+'</div>' : '') +
+        '</div>' +
         '<button class="grammar-modal-close" onclick="closeGrammarModal()">✕</button>' +
       '</div>' +
       '<div class="grammar-modal-body">'+explText+'</div>' +
@@ -9315,7 +9430,10 @@ function srTagVocab(){
 function srRecordLesson(lf){
   if(!lf) return;
   try{
-    srUpdateStreak();
+    const streakResult = srUpdateStreak();
+    if(streakResult.increased && typeof showStreakCelebration === 'function'){
+      showStreakCelebration(streakResult.streak);
+    }
     const lessonStart = lf.startTime || Date.now();
     const state0 = srLoadState();
     // Картки уроку — записуємо ТІЛЬКИ ті, що ще не отримали явної оцінки
@@ -10410,6 +10528,10 @@ function trackCardToday(id){
     if(justReached){
       const yesterday=new Date(Date.now()-86400000).toISOString().slice(0,10);
       const two=new Date(Date.now()-2*86400000).toISOString().slice(0,10);
+      // ПРИМІТКА: p.streak рахується й далі (внутрішня історія на
+      // майбутнє), АЛЕ більше НІДЕ не показується — єдине джерело
+      // правди для відображення стріку тепер srLoadState().streak
+      // (див. renderStreakUI/showStreakInfo/resetStreak). Не плутати.
       if(p.lastDate===today){}
       else if(!p.lastDate||p.lastDate===yesterday){p.streak=(p.streak||0)+1;p.bestStreak=Math.max(p.streak,p.bestStreak||0);p.lastDate=today;p.graceUsed=false;}
       else if(!p.graceUsed&&p.lastDate===two){p.graceUsed=true;p.lastDate=today;}
@@ -10428,7 +10550,14 @@ function trackCardToday(id){
 function renderStreakUI(pulse=false){
   const today=todayStr();let p=loadProgress();
   if(p.todayDate!==today){p.todayDate=today;p.todayCards=0;p.todayIds=[];}
-  const goal=getGoal(),todayN=p.todayCards||0,totalN=p.totalCards||0,streak=p.streak||0;
+  const goal=getGoal(),todayN=p.todayCards||0,totalN=p.totalCards||0;
+  // Стрік — ЄДИНЕ джерело правди: srLoadState().streak (дні, коли
+  // пройдено повний урок — див. srRecordLesson/srUpdateStreak). Раніше
+  // тут читався ОКРЕМИЙ p.streak (лічильник "днів з N картками сьогодні"
+  // з mova_progress) — хедер і Налаштування показували РІЗНІ числа.
+  // p.streak більше ніде не показується (лишається лише внутрішньо в
+  // mova_progress, про всяк випадок до майбутнього редизайну гейміфікації).
+  const streak = (typeof srLoadState === 'function' ? (srLoadState().streak || 0) : (p.streak||0));
   const pct=Math.min(100,(todayN/goal)*100),done=todayN>=goal;
   const bnS=document.getElementById('bn-streak');
   if(bnS){bnS.classList.toggle('done',done);if(pulse){bnS.classList.add('pulse');setTimeout(()=>bnS.classList.remove('pulse'),500);}}
@@ -10444,9 +10573,23 @@ function renderStreakUI(pulse=false){
 function showStreakInfo(){
   const p=loadProgress();const today=todayStr();
   const todayN=(p.todayDate===today?p.todayCards:0)||0;
-  notify(`🔥 ${p.streak||0} Tage · ${todayN}/${getGoal()} heute · ${p.totalCards||0} gesamt`);
+  const streak = (typeof srLoadState === 'function' ? (srLoadState().streak || 0) : (p.streak||0));
+  notify(`🔥 ${streak} Tage · ${todayN}/${getGoal()} heute · ${p.totalCards||0} gesamt`);
 }
-function resetStreak(){if(!confirm('Streak zurücksetzen?'))return;localStorage.removeItem('mova_progress');renderStreakUI();notify('Streak zurückgesetzt');}
+function resetStreak(){
+  if(!confirm('Streak zurücksetzen?'))return;
+  localStorage.removeItem('mova_progress');
+  // Скидаємо і фактичне джерело правди (state.streak) — інакше кнопка
+  // "Reset" в Налаштуваннях нічого б не змінювала (хедер читає звідти ж).
+  try{
+    const s = srLoadState();
+    s.streak = 0;
+    s.lastSessionDate = null;
+    srSaveState(s);
+  }catch(e){}
+  renderStreakUI();
+  notify('Streak zurückgesetzt');
+}
 
 // ── BROWSE ────────────────────────────────────────────────────
 function switchVocabTab(tab){
