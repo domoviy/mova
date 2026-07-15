@@ -6038,7 +6038,7 @@ var VOCAB = [
       "ru": "считать что-то интересным и хотеть больше об этом узнать"
     },
     "def": {
-      "de": "Meine Schwester <g>interessiert sich</g> sehr für nachhaltige Mode.",
+      "de": "Meine Schwester <g><b>interessiert sich</b></g> sehr für nachhaltige Mode.",
       "en": "My sister is very <b>interested</b> in sustainable fashion.",
       "uk": "Моя сестра дуже <b>цікавиться</b> сталою модою.",
       "ru": "Моя сестра очень <b>интересуется</b> устойчивой модой."
@@ -6061,7 +6061,7 @@ var VOCAB = [
       "ru": "испытывать позитивное ожидание чего-то, что ещё должно произойти"
     },
     "def": {
-      "de": "Die Kinder <g>freuen sich</g> schon sehr auf das neue Spielzeug.",
+      "de": "Die Kinder <g><b>freuen sich</b></g> schon sehr auf das neue Spielzeug.",
       "en": "The children are already really <b>looking forward</b> to the new toy.",
       "uk": "Діти вже дуже <b>чекають</b> на нову іграшку.",
       "ru": "Дети уже очень <b>ждут</b> новую игрушку."
@@ -6797,7 +6797,7 @@ var VOCAB = [
       "ru": "банковский счёт, которым обычно платят и получают деньги"
     },
     "def": {
-      "de": "Ohne <b>Girokonto</b> dürfte es schwierig sein, das Gehalt zu bekommen.",
+      "de": "Ohne <b>Girokonto</b> <g>dürfte</g> es schwierig sein, das Gehalt zu bekommen.",
       "en": "Without a <b>checking account</b>, it might be difficult to receive your salary.",
       "uk": "Без <b>поточного рахунку</b>, ймовірно, важко отримати зарплату.",
       "ru": "Без <b>текущего счёта</b>, вероятно, сложно получить зарплату."
@@ -6820,7 +6820,7 @@ var VOCAB = [
       "ru": "начать что-то новое в банке или компании, например счёт"
     },
     "def": {
-      "de": "Herr Demir müsste sein neues Konto schon <b>eröffnet</b> haben.",
+      "de": "Herr Demir <g>müsste</g> sein neues Konto schon <b>eröffnet</b> haben.",
       "en": "Mr Demir must have already <b>opened</b> his new account.",
       "uk": "Пан Демір, мабуть, уже <b>відкрив</b> свій новий рахунок.",
       "ru": "Господин Демир, наверное, уже <b>открыл</b> свой новый счёт."
@@ -8200,7 +8200,7 @@ var VOCAB = [
       "ru": "есть, чтобы жить и оставаться здоровым"
     },
     "def": {
-      "de": "Früher <b>ernährte</b> ich <b>mich</b> nur von Fast Food, heute koche ich selbst.",
+      "de": "Früher <g><b>ernährte</b></g> ich <b>mich</b> nur von Fast Food, heute koche ich selbst.",
       "en": "In the past, I only <b>ate</b> fast food; today I cook myself.",
       "uk": "Раніше я <b>харчувався</b> лише фаст-фудом, сьогодні я готую сам.",
       "ru": "Раньше я <b>питался</b> только фастфудом, сегодня я готовлю сам."
@@ -8706,7 +8706,7 @@ var VOCAB = [
       "ru": "готовить еду с помощью тепла"
     },
     "def": {
-      "de": "Meine Oma <b>kochte</b> jeden Sonntag ein großes Mittagessen.",
+      "de": "Meine Oma <g><b>kochte</b></g> jeden Sonntag ein großes Mittagessen.",
       "en": "My grandma <b>cooked</b> a big lunch every Sunday.",
       "uk": "Моя бабуся <b>готувала</b> велику обідню страву щонеділі.",
       "ru": "Моя бабушка <b>готовила</b> большой обед каждое воскресенье."
@@ -8729,7 +8729,7 @@ var VOCAB = [
       "ru": "готовить хлеб, пирог и подобное в духовке"
     },
     "def": {
-      "de": "Als Kind <b>backte</b> ich mit meiner Mutter jedes Weihnachten Plätzchen.",
+      "de": "Als Kind <g><b>backte</b></g> ich mit meiner Mutter jedes Weihnachten Plätzchen.",
       "en": "As a child, I <b>baked</b> cookies with my mother every Christmas.",
       "uk": "У дитинстві я <b>пекла (пік)</b> з мамою печиво щороку на Різдво.",
       "ru": "В детстве я <b>пёк(-ла)</b> с мамой печенье каждое Рождество."
@@ -8752,7 +8752,7 @@ var VOCAB = [
       "ru": "иметь определённый вкус"
     },
     "def": {
-      "de": "Das Essen bei meiner Großmutter <b>schmeckte</b> immer besonders gut.",
+      "de": "Das Essen bei meiner Großmutter <g><b>schmeckte</b></g> immer besonders gut.",
       "en": "The food at my grandmother's always <b>tasted</b> especially good.",
       "uk": "Їжа в моєї бабусі завжди <b>смакувала</b> особливо добре.",
       "ru": "Еда у моей бабушки всегда <b>была на вкус</b> особенно хороша."
@@ -8775,7 +8775,7 @@ var VOCAB = [
       "ru": "потреблять еду"
     },
     "def": {
-      "de": "Wir <b>aßen</b> als Kinder fast jeden Freitag Fisch.",
+      "de": "Wir <g><b>aßen</b></g> als Kinder fast jeden Freitag Fisch.",
       "en": "As children, we <b>ate</b> fish almost every Friday.",
       "uk": "У дитинстві ми <b>їли</b> рибу майже щопʼятниці.",
       "ru": "В детстве мы <b>ели</b> рыбу почти каждую пятницу."
@@ -8798,7 +8798,7 @@ var VOCAB = [
       "ru": "потреблять жидкость"
     },
     "def": {
-      "de": "Zum Frühstück <b>trank</b> ich früher immer heißen Kakao.",
+      "de": "Zum Frühstück <g><b>trank</b></g> ich früher immer heißen Kakao.",
       "en": "For breakfast, I always used to <b>drink</b> hot cocoa.",
       "uk": "На сніданок я раніше завжди <b>пив (пила)</b> гарячий какао.",
       "ru": "На завтрак я раньше всегда <b>пил(-а)</b> горячее какао."
@@ -8821,7 +8821,7 @@ var VOCAB = [
       "ru": "что-то любить"
     },
     "def": {
-      "de": "Als Kind <b>mochte</b> ich kein Gemüse, heute esse ich es sehr gern.",
+      "de": "Als Kind <g><b>mochte</b></g> ich kein Gemüse, heute esse ich es sehr gern.",
       "en": "As a child, I did not <b>like</b> vegetables; today I like eating them very much.",
       "uk": "У дитинстві я не <b>любив(-ла)</b> овочі, сьогодні я їх дуже люблю.",
       "ru": "В детстве я не <b>любил(-а)</b> овощи, сегодня я их очень люблю."
@@ -8844,7 +8844,7 @@ var VOCAB = [
       "ru": "идти куда-то, чтобы взять что-то и принести обратно"
     },
     "def": {
-      "de": "Mein Vater <b>holte</b> samstags immer frische Brötchen vom Bäcker.",
+      "de": "Mein Vater <g><b>holte</b></g> samstags immer frische Brötchen vom Bäcker.",
       "en": "My father always <b>got</b> fresh rolls from the bakery on Saturdays.",
       "uk": "Мій тато щосуботи завжди <b>приносив</b> свіжі булочки з пекарні.",
       "ru": "Мой отец каждую субботу всегда <b>приносил</b> свежие булочки из пекарни."
@@ -8867,7 +8867,7 @@ var VOCAB = [
       "ru": "проводить время в определённом месте или с определённым занятием"
     },
     "def": {
-      "de": "Wir <b>verbrachten</b> als Familie viel Zeit gemeinsam in der Küche.",
+      "de": "Wir <g><b>verbrachten</b></g> als Familie viel Zeit gemeinsam in der Küche.",
       "en": "As a family, we <b>spent</b> a lot of time together in the kitchen.",
       "uk": "Ми як родина <b>проводили</b> багато часу разом на кухні.",
       "ru": "Мы как семья <b>проводили</b> много времени вместе на кухне."
@@ -10454,7 +10454,7 @@ var VOCAB = [
       "ru": "вставание с постели утром"
     },
     "def": {
-      "de": "<b>Das Aufstehen</b> fällt mir im Winter besonders schwer.",
+      "de": "<g><b>Das Aufstehen</b></g> fällt mir im Winter besonders schwer.",
       "en": "<b>Getting up</b> is especially hard for me in winter.",
       "uk": "<b>Вставати</b> взимку мені особливо важко.",
       "ru": "<b>Вставать</b> зимой мне особенно тяжело."
@@ -10477,7 +10477,7 @@ var VOCAB = [
       "ru": "регулярно ездить туда-сюда между двумя местами, например на работу"
     },
     "def": {
-      "de": "<b>Das Pendeln</b> zur Arbeit dauert bei mir fast eine Stunde.",
+      "de": "<g><b>Das Pendeln</b></g> zur Arbeit dauert bei mir fast eine Stunde.",
       "en": "<b>Commuting</b> to work takes me almost an hour.",
       "uk": "<b>Дорога</b> на роботу займає в мене майже годину.",
       "ru": "<b>Дорога</b> на работу занимает у меня почти час."
@@ -10500,7 +10500,7 @@ var VOCAB = [
       "ru": "выполнять профессиональную деятельность"
     },
     "def": {
-      "de": "<b>Das Arbeiten</b> in einem internationalen Team macht mir sehr viel Spaß.",
+      "de": "<g><b>Das Arbeiten</b></g> in einem internationalen Team macht mir sehr viel Spaß.",
       "en": "<b>Working</b> in an international team is a lot of fun for me.",
       "uk": "<b>Робота</b> в міжнародній команді приносить мені багато задоволення.",
       "ru": "<b>Работа</b> в международной команде приносит мне много удовольствия."
@@ -10523,7 +10523,7 @@ var VOCAB = [
       "ru": "ездить в разные места, чтобы узнать их"
     },
     "def": {
-      "de": "<b>Das Reisen</b> hat mir geholfen, viele neue Kulturen kennenzulernen.",
+      "de": "<g><b>Das Reisen</b></g> hat mir geholfen, viele neue Kulturen kennenzulernen.",
       "en": "<b>Traveling</b> has helped me get to know many new cultures.",
       "uk": "<b>Подорожі</b> допомогли мені пізнати багато нових культур.",
       "ru": "<b>Путешествия</b> помогли мне узнать много новых культур."
@@ -10546,7 +10546,7 @@ var VOCAB = [
       "ru": "жить с другими людьми в одном домохозяйстве или обществе"
     },
     "def": {
-      "de": "<b>Das Zusammenleben</b> mit Menschen aus verschiedenen Ländern ist sehr spannend.",
+      "de": "<g><b>Das Zusammenleben</b></g> mit Menschen aus verschiedenen Ländern ist sehr spannend.",
       "en": "<b>Living together</b> with people from different countries is very exciting.",
       "uk": "<b>Спільне життя</b> з людьми з різних країн дуже цікаве.",
       "ru": "<b>Совместная жизнь</b> с людьми из разных стран очень интересна."
@@ -10569,7 +10569,7 @@ var VOCAB = [
       "ru": "правильно понимать что-то или кого-то"
     },
     "def": {
-      "de": "<b>Das Verstehen</b> der Grammatik dauert bei mir immer etwas länger.",
+      "de": "<g><b>Das Verstehen</b></g> der Grammatik dauert bei mir immer etwas länger.",
       "en": "<b>Understanding</b> the grammar always takes me a bit longer.",
       "uk": "<b>Розуміння</b> граматики завжди займає в мене трохи більше часу.",
       "ru": "<b>Понимание</b> грамматики всегда занимает у меня чуть больше времени."
@@ -10592,7 +10592,7 @@ var VOCAB = [
       "ru": "впервые узнавать человека или вещь и собирать об этом информацию"
     },
     "def": {
-      "de": "<b>Das Kennenlernen</b> neuer Kollegen war am Anfang etwas schwierig.",
+      "de": "<g><b>Das Kennenlernen</b></g> neuer Kollegen war am Anfang etwas schwierig.",
       "en": "<b>Getting to know</b> new colleagues was a bit difficult at first.",
       "uk": "<b>Знайомство</b> з новими колегами спочатку було трохи складним.",
       "ru": "<b>Знакомство</b> с новыми коллегами сначала было немного трудным."
@@ -10615,7 +10615,7 @@ var VOCAB = [
       "ru": "уметь ориентироваться в новой среде или ситуации"
     },
     "def": {
-      "de": "<b>Das Zurechtfinden</b> im neuen Land war für mich am Anfang die größte Herausforderung.",
+      "de": "<g><b>Das Zurechtfinden</b></g> im neuen Land war für mich am Anfang die größte Herausforderung.",
       "en": "<b>Finding my way</b> in the new country was the biggest challenge for me at first.",
       "uk": "<b>Орієнтація</b> в новій країні спочатку була для мене найбільшим викликом.",
       "ru": "<b>Ориентация</b> в новой стране сначала была для меня самым большим вызовом."
@@ -11489,7 +11489,7 @@ var VOCAB = [
       "ru": "полностью избавиться от болезни или раны"
     },
     "def": {
-      "de": "Diese Wunde <g>wird</g> mit der richtigen Behandlung schnell <g>heilen</g>.",
+      "de": "Diese Wunde <g>wird</g> mit der richtigen Behandlung schnell <g><b>heilen</b></g>.",
       "en": "This wound <g>will</g> <g>heal</g> quickly with the right treatment.",
       "uk": "Ця рана швидко загоїться з правильним лікуванням.",
       "ru": "Эта рана быстро заживёт при правильном лечении."
@@ -11512,7 +11512,7 @@ var VOCAB = [
       "ru": "снова стать здоровым и сильным после болезни или нагрузки"
     },
     "def": {
-      "de": "Der Patient <g>wird</g> sich in den nächsten Wochen vollständig <g>erholen</g>.",
+      "de": "Der Patient <g>wird</g> sich in den nächsten Wochen vollständig <g><b>erholen</b></g>.",
       "en": "The patient <g>will</g> <g>recover</g> fully in the coming weeks.",
       "uk": "Пацієнт повністю одужає протягом наступних тижнів.",
       "ru": "Пациент полностью выздоровеет в течение следующих недель."
@@ -11581,7 +11581,7 @@ var VOCAB = [
       "ru": "как врач, назначать лекарство пациенту"
     },
     "def": {
-      "de": "Der Arzt <g>wird</g> ihr ein neues Medikament <g>verschreiben</g>.",
+      "de": "Der Arzt <g>wird</g> ihr ein neues Medikament <g><b>verschreiben</b></g>.",
       "en": "The doctor <g>will</g> <g>prescribe</g> her a new medication.",
       "uk": "Лікар призначить їй нові ліки.",
       "ru": "Врач назначит ей новое лекарство."
@@ -11604,7 +11604,7 @@ var VOCAB = [
       "ru": "постепенно слабеть и исчезать, например о боли"
     },
     "def": {
-      "de": "Die Schmerzen <g>werden</g> in ein paar Tagen sicher <g>abklingen</g>.",
+      "de": "Die Schmerzen <g>werden</g> in ein paar Tagen sicher <g><b>abklingen</b></g>.",
       "en": "The pain <g>will</g> definitely <g>subside</g> in a few days.",
       "uk": "Біль точно вщухне за кілька днів.",
       "ru": "Боль точно утихнет через несколько дней."
@@ -11834,7 +11834,7 @@ var VOCAB = [
       "ru": "официально предоставить своё имя и данные перед лечением"
     },
     "def": {
-      "de": "Er ging zum Schalter, <g>um</g> sich <g>anzumelden</g>.",
+      "de": "Er ging zum Schalter, <g>um</g> sich <g><b>anzumelden</b></g>.",
       "en": "He went to the counter <g>in order to</g> <g>register</g>.",
       "uk": "Він пішов до стійки, <g>щоб</g> зареєструватися.",
       "ru": "Он подошёл к стойке, <g>чтобы</g> зарегистрироваться."
@@ -11880,7 +11880,7 @@ var VOCAB = [
       "ru": "показать или подать документ"
     },
     "def": {
-      "de": "Er kam früh, <g>um</g> alle Unterlagen rechtzeitig <g>vorzulegen</g>.",
+      "de": "Er kam früh, <g>um</g> alle Unterlagen rechtzeitig <g><b>vorzulegen</b></g>.",
       "en": "He came early <g>in order to</g> <g>submit</g> all the documents on time.",
       "uk": "Він прийшов рано, <g>щоб</g> вчасно подати всі документи.",
       "ru": "Он пришёл рано, <g>чтобы</g> вовремя подать все документы."
@@ -11949,7 +11949,7 @@ var VOCAB = [
       "ru": "писать своё имя под документом"
     },
     "def": {
-      "de": "Sie las das Formular genau, <g>um</g> es dann korrekt <g>zu unterschreiben</g>.",
+      "de": "Sie las das Formular genau, <g>um</g> es dann korrekt <g><b>zu unterschreiben</b></g>.",
       "en": "She read the form carefully <g>in order to</g> then <g>sign</g> it correctly.",
       "uk": "Вона уважно прочитала формуляр, <g>щоб</g> потім правильно його підписати.",
       "ru": "Она внимательно прочитала формуляр, <g>чтобы</g> потом правильно его подписать."
@@ -11972,7 +11972,7 @@ var VOCAB = [
       "ru": "официально передать что-то ответственной инстанции"
     },
     "def": {
-      "de": "Er beeilte sich, <g>um</g> das Formular noch vor Mittag <g>abzugeben</g>.",
+      "de": "Er beeilte sich, <g>um</g> das Formular noch vor Mittag <g><b>abzugeben</b></g>.",
       "en": "He hurried <g>in order to</g> <g>hand in</g> the form before noon.",
       "uk": "Він поспішав, <g>щоб</g> здати формуляр ще до обіду.",
       "ru": "Он торопился, <g>чтобы</g> сдать формуляр ещё до обеда."
@@ -12846,7 +12846,7 @@ var VOCAB = [
       "ru": "делать помещение тёплым"
     },
     "def": {
-      "de": "In diesem Haus <g>wird</g> nur mit erneuerbarer Energie <g>geheizt</g>.",
+      "de": "In diesem Haus <g>wird</g> nur mit erneuerbarer Energie <g><b>geheizt</b></g>.",
       "en": "This house <g>is</g> <g>heated</g> only with renewable energy.",
       "uk": "У цьому будинку опалюють лише відновлюваною енергією.",
       "ru": "В этом доме отапливают только возобновляемой энергией."
@@ -12892,7 +12892,7 @@ var VOCAB = [
       "ru": "строить дом так, чтобы мало тепла терялось наружу"
     },
     "def": {
-      "de": "Das ganze Dach <g>wird</g> im Sommer neu <g>isoliert</g>.",
+      "de": "Das ganze Dach <g>wird</g> im Sommer neu <g><b>isoliert</b></g>.",
       "en": "The whole roof <g>will be</g> newly <g>insulated</g> in summer.",
       "uk": "Весь дах влітку заново утеплюють.",
       "ru": "Всю крышу летом заново утепляют."
@@ -12915,7 +12915,7 @@ var VOCAB = [
       "ru": "выключать прибор, чтобы он больше не потреблял электроэнергию"
     },
     "def": {
-      "de": "Am Ende des Arbeitstages <g>wird</g> jeder Computer im Büro <g>ausgeschaltet</g>.",
+      "de": "Am Ende des Arbeitstages <g>wird</g> jeder Computer im Büro <g><b>ausgeschaltet</b></g>.",
       "en": "At the end of the workday, every computer in the office <g>is</g> <g>switched off</g>.",
       "uk": "Наприкінці робочого дня в офісі вимикають кожен компʼютер.",
       "ru": "В конце рабочего дня в офисе выключают каждый компьютер."
@@ -12984,7 +12984,7 @@ var VOCAB = [
       "ru": "тратить что-то без необходимости и без причины"
     },
     "def": {
-      "de": "In diesem Haushalt <g>wird</g> kaum noch Wasser <g>verschwendet</g>.",
+      "de": "In diesem Haushalt <g>wird</g> kaum noch Wasser <g><b>verschwendet</b></g>.",
       "en": "In this household, hardly any water <g>is</g> <g>wasted</g> anymore.",
       "uk": "У цьому домогосподарстві майже не витрачають воду даремно.",
       "ru": "В этом домохозяйстве почти не тратят воду впустую."
@@ -13375,7 +13375,7 @@ var VOCAB = [
       "ru": "получать молоко у коровы или козы"
     },
     "def": {
-      "de": "Die Kühe <g>werden</g> auf diesem Hof zweimal täglich <g>gemolken</g>.",
+      "de": "Die Kühe <g>werden</g> auf diesem Hof zweimal täglich <g><b>gemolken</b></g>.",
       "en": "The cows on this farm <g>are</g> <g>milked</g> twice a day.",
       "uk": "Корів на цій фермі доять двічі на день.",
       "ru": "Коров на этой ферме доят дважды в день."
@@ -13398,7 +13398,7 @@ var VOCAB = [
       "ru": "собирать фрукты или ягоды руками с растения"
     },
     "def": {
-      "de": "Die Äpfel <g>werden</g> im Herbst von den Mitarbeitern von Hand <g>gepflückt</g>.",
+      "de": "Die Äpfel <g>werden</g> im Herbst von den Mitarbeitern von Hand <g><b>gepflückt</b></g>.",
       "en": "The apples <g>are</g> <g>picked</g> by hand by the workers in autumn.",
       "uk": "Восени яблука вручну збирають працівники.",
       "ru": "Осенью яблоки вручную собирают работники."
@@ -13421,7 +13421,7 @@ var VOCAB = [
       "ru": "класть семена в землю, чтобы они росли"
     },
     "def": {
-      "de": "Das Getreide <g>wird</g> jedes Jahr im Frühjahr <g>gesät</g>.",
+      "de": "Das Getreide <g>wird</g> jedes Jahr im Frühjahr <g><b>gesät</b></g>.",
       "en": "The grain <g>is</g> <g>sown</g> every spring.",
       "uk": "Зерно сіють щовесни.",
       "ru": "Зерно сеют каждую весну."
@@ -13444,7 +13444,7 @@ var VOCAB = [
       "ru": "собирать спелые фрукты, овощи или зерно с растений"
     },
     "def": {
-      "de": "Die Kartoffeln <g>werden</g> jetzt im September <g>geerntet</g>.",
+      "de": "Die Kartoffeln <g>werden</g> jetzt im September <g><b>geerntet</b></g>.",
       "en": "The potatoes <g>are</g> now <g>harvested</g> in September.",
       "uk": "Картоплю тепер збирають у вересні.",
       "ru": "Картофель теперь собирают в сентябре."
@@ -13467,7 +13467,7 @@ var VOCAB = [
       "ru": "срезать траву или зерно машиной или инструментом"
     },
     "def": {
-      "de": "Die Wiesen <g>werden</g> auf diesem Hof nur zweimal im Jahr <g>gemäht</g>.",
+      "de": "Die Wiesen <g>werden</g> auf diesem Hof nur zweimal im Jahr <g><b>gemäht</b></g>.",
       "en": "The meadows on this farm <g>are</g> <g>mowed</g> only twice a year.",
       "uk": "Луки на цій фермі косять лише двічі на рік.",
       "ru": "Луга на этой ферме косят только дважды в год."
@@ -13490,7 +13490,7 @@ var VOCAB = [
       "ru": "внимательно проверять, всё ли правильно или в порядке"
     },
     "def": {
-      "de": "Die Qualität der Eier <g>wird</g> jeden Tag genau <g>kontrolliert</g>.",
+      "de": "Die Qualität der Eier <g>wird</g> jeden Tag genau <g><b>kontrolliert</b></g>.",
       "en": "The quality of the eggs <g>is</g> checked carefully every day.",
       "uk": "Якість яєць щодня ретельно перевіряють.",
       "ru": "Качество яиц ежедневно тщательно проверяют."
@@ -13513,7 +13513,7 @@ var VOCAB = [
       "ru": "распределять вещи по группам по определённым критериям"
     },
     "def": {
-      "de": "Die Kartoffeln <g>werden</g> nach der Ernte automatisch nach Größe <g>sortiert</g>.",
+      "de": "Die Kartoffeln <g>werden</g> nach der Ernte automatisch nach Größe <g><b>sortiert</b></g>.",
       "en": "The potatoes <g>are</g> automatically <g>sorted</g> by size after the harvest.",
       "uk": "Картоплю після збору автоматично сортують за розміром.",
       "ru": "Картофель после сбора автоматически сортируют по размеру."
@@ -13605,7 +13605,7 @@ var VOCAB = [
       "ru": "делать так, чтобы с кем-то или чем-то не случилось ничего плохого"
     },
     "def": {
-      "de": "Die Wälder <g>werden</g> in diesem Nationalpark streng <g>geschützt</g>.",
+      "de": "Die Wälder <g>werden</g> in diesem Nationalpark streng <g><b>geschützt</b></g>.",
       "en": "The forests in this national park <g>are</g> strictly <g>protected</g>.",
       "uk": "Ліси в цьому національному парку суворо охороняють.",
       "ru": "Леса в этом национальном парке строго охраняют."
@@ -13628,7 +13628,7 @@ var VOCAB = [
       "ru": "быть причиной того, что что-то происходит"
     },
     "def": {
-      "de": "Ein großer Teil der Emissionen <g>wird</g> vom Verkehr <g>verursacht</g>.",
+      "de": "Ein großer Teil der Emissionen <g>wird</g> vom Verkehr <g><b>verursacht</b></g>.",
       "en": "A large part of the emissions <g>is</g> <g>caused</g> by traffic.",
       "uk": "Велику частину викидів спричиняє транспорт.",
       "ru": "Значительную часть выбросов вызывает транспорт."
@@ -13651,7 +13651,7 @@ var VOCAB = [
       "ru": "иметь влияние на что-то или кого-то и изменять это"
     },
     "def": {
-      "de": "Das Klima der ganzen Region <g>wird</g> vom Meer stark <g>beeinflusst</g>.",
+      "de": "Das Klima der ganzen Region <g>wird</g> vom Meer stark <g><b>beeinflusst</b></g>.",
       "en": "The climate of the whole region <g>is</g> strongly <g>influenced</g> by the sea.",
       "uk": "На клімат усього регіону сильно впливає море.",
       "ru": "На климат всего региона сильно влияет море."
@@ -19125,7 +19125,7 @@ var VOCAB = [
       "ru": "быть ответственным за команду или проект и руководить им"
     },
     "def": {
-      "de": "Bevor sie auswanderte, <g>hatte</g> sie ein kleines Team <g>geleitet</g>.",
+      "de": "Bevor sie auswanderte, <g>hatte</g> sie ein kleines Team <g><b>geleitet</b></g>.",
       "en": "Before she emigrated, she <g>had</g> <g>led</g> a small team.",
       "uk": "До того як вона емігрувала, вона вже керувала невеликою командою.",
       "ru": "До того как она эмигрировала, она уже руководила небольшой командой."
@@ -19148,7 +19148,7 @@ var VOCAB = [
       "ru": "официально создавать что-то новое, например фирму"
     },
     "def": {
-      "de": "Bevor er nach Deutschland kam, <g>hatte</g> er ein eigenes Unternehmen <g>gegründet</g>.",
+      "de": "Bevor er nach Deutschland kam, <g>hatte</g> er ein eigenes Unternehmen <g><b>gegründet</b></g>.",
       "en": "Before he came to Germany, he <g>had</g> <g>founded</g> his own company.",
       "uk": "До того як він приїхав до Німеччини, він уже заснував власну компанію.",
       "ru": "До того как он приехал в Германию, он уже основал собственную компанию."
@@ -19194,7 +19194,7 @@ var VOCAB = [
       "ru": "учиться в университете или вузе"
     },
     "def": {
-      "de": "Bevor er auswanderte, <g>hatte</g> er in seinem Heimatland Medizin <g>studiert</g>.",
+      "de": "Bevor er auswanderte, <g>hatte</g> er in seinem Heimatland Medizin <g><b>studiert</b></g>.",
       "en": "Before he emigrated, he <g>had</g> <g>studied</g> medicine in his home country.",
       "uk": "До того як він емігрував, він уже вивчав медицину на батьківщині.",
       "ru": "До того как он эмигрировал, он уже изучал медицину на родине."
@@ -19240,7 +19240,7 @@ var VOCAB = [
       "ru": "менять что-то на что-то другое, например работу"
     },
     "def": {
-      "de": "Bevor er diese Stelle fand, <g>hatte</g> er schon dreimal den Job <g>gewechselt</g>.",
+      "de": "Bevor er diese Stelle fand, <g>hatte</g> er schon dreimal den Job <g><b>gewechselt</b></g>.",
       "en": "Before he found this position, he <g>had</g> already <g>changed</g> jobs three times.",
       "uk": "До того як він знайшов цю посаду, він уже тричі змінював роботу.",
       "ru": "До того как он нашёл эту должность, он уже трижды менял работу."
@@ -20574,10 +20574,10 @@ var VOCAB = [
       "ru": "хороший результат, достигнутый благодаря усилиям"
     },
     "def": {
-      "de": "Ihr Projekt war <g>erfolgreich</g> und half vielen Familien in der Region.",
-      "en": "Their project was successful and helped many families in the region.",
-      "uk": "Їхній проєкт був успішним і допоміг багатьом сімʼям у регіоні.",
-      "ru": "Их проект был успешным и помог многим семьям в регионе."
+      "de": "Ihr <b>Erfolg</b> war das Ergebnis <g>zahlreicher</g> Anstrengungen im Verein.",
+      "en": "Her <b>success</b> was the result of <g>numerous</g> efforts in the club.",
+      "uk": "Її <b>успіх</b> став результатом <g>численних</g> зусиль у клубі.",
+      "ru": "Её <b>успех</b> стал результатом <g>многочисленных</g> усилий в клубе."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20597,10 +20597,10 @@ var VOCAB = [
       "ru": "почтение и уважение к другим людям"
     },
     "def": {
-      "de": "Sie behandelte jeden Menschen <g>respektvoll</g>.",
-      "en": "She treated every person respectfully.",
-      "uk": "Вона ставилася до кожної людини з повагою.",
-      "ru": "Она относилась к каждому человеку с уважением."
+      "de": "Der <b>Respekt</b> in der Gruppe wuchs durch eine <g>vertrauensvolle</g> Zusammenarbeit.",
+      "en": "The <b>respect</b> within the group grew through <g>trusting</g> cooperation.",
+      "uk": "<b>Повага</b> в групі зростала завдяки <g>довірливій</g> співпраці.",
+      "ru": "<b>Уважение</b> в группе росло благодаря <g>доверительному</g> сотрудничеству."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20620,10 +20620,10 @@ var VOCAB = [
       "ru": "сильное тёплое чувство привязанности"
     },
     "def": {
-      "de": "Die <g>liebevolle</g> Betreuung der Kinder war beeindruckend.",
-      "en": "The loving care of the children was impressive.",
-      "uk": "Турботливе ставлення до дітей вражало.",
-      "ru": "Заботливое отношение к детям впечатляло."
+      "de": "Ihre <b>Liebe</b> zur Arbeit machte sie zu einer besonders <g>hilfreichen</g> Kollegin.",
+      "en": "Her <b>love</b> for the work made her an especially <g>helpful</g> colleague.",
+      "uk": "Її <b>любов</b> до роботи робила її особливо <g>корисною</g> колегою.",
+      "ru": "Её <b>любовь</b> к работе делала её особенно <g>полезной</g> коллегой."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20643,10 +20643,10 @@ var VOCAB = [
       "ru": "более глубокая цель или значение чего-то"
     },
     "def": {
-      "de": "Diese ehrenamtliche Arbeit ist besonders <g>sinnvoll</g>.",
-      "en": "This voluntary work is particularly meaningful.",
-      "uk": "Ця волонтерська робота є особливо змістовною.",
-      "ru": "Эта волонтёрская работа особенно осмысленна."
+      "de": "Der <b>Sinn</b> ihrer Arbeit zeigte sich in den <g>zahlreichen</g> positiven Rückmeldungen.",
+      "en": "The <b>meaning</b> of her work showed in the <g>numerous</g> positive responses.",
+      "uk": "<b>Сенс</b> її роботи проявився в <g>численних</g> позитивних відгуках.",
+      "ru": "<b>Смысл</b> её работы проявился в <g>многочисленных</g> положительных отзывах."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20666,10 +20666,10 @@ var VOCAB = [
       "ru": "желание и ожидание, что произойдёт что-то хорошее"
     },
     "def": {
-      "de": "Trotz aller Schwierigkeiten blieb sie <g>hoffnungsvoll</g>.",
-      "en": "Despite all the difficulties, she remained hopeful.",
-      "uk": "Незважаючи на всі труднощі, вона залишалася сповненою надії.",
-      "ru": "Несмотря на все трудности, она оставалась полной надежды."
+      "de": "Die <b>Hoffnung</b> der Familie wuchs dank der <g>liebevollen</g> Unterstützung der Nachbarn.",
+      "en": "The family's <b>hope</b> grew thanks to the <g>loving</g> support of the neighbours.",
+      "uk": "<b>Надія</b> родини зростала завдяки <g>турботливій</g> підтримці сусідів.",
+      "ru": "<b>Надежда</b> семьи росла благодаря <g>заботливой</g> поддержке соседей."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20689,10 +20689,10 @@ var VOCAB = [
       "ru": "поведение, при котором учитывают потребности других"
     },
     "def": {
-      "de": "Er ging sehr <g>rücksichtsvoll</g> mit den älteren Bewohnern um.",
-      "en": "He treated the elderly residents very considerately.",
-      "uk": "Він дуже уважно й делікатно ставився до літніх мешканців.",
-      "ru": "Он очень бережно и деликатно относился к пожилым жителям."
+      "de": "Seine <b>Rücksicht</b> zeigte sich in einem <g>respektvollen</g> Umgang mit älteren Menschen.",
+      "en": "His <b>consideration</b> showed in a <g>respectful</g> manner towards older people.",
+      "uk": "Його <b>делікатність</b> проявлялася в <g>шанобливому</g> ставленні до людей похилого віку.",
+      "ru": "Его <b>деликатность</b> проявлялась в <g>уважительном</g> отношении к пожилым людям."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20712,10 +20712,10 @@ var VOCAB = [
       "ru": "физическая или душевная энергия для действия"
     },
     "def": {
-      "de": "Mit <g>kraftvollem</g> Einsatz halfen die Freiwilligen beim Wiederaufbau.",
-      "en": "With powerful commitment, the volunteers helped with the reconstruction.",
-      "uk": "З потужною енергією волонтери допомагали у відбудові.",
-      "ru": "С мощной энергией волонтёры помогали в восстановлении."
+      "de": "Ihre <b>Kraft</b> half ihr, auch in einer <g>anspruchsvollen</g> Situation ruhig zu bleiben.",
+      "en": "Her <b>strength</b> helped her stay calm even in a <g>demanding</g> situation.",
+      "uk": "Її <b>сила</b> допомагала їй залишатися спокійною навіть у <g>вимогливій</g> ситуації.",
+      "ru": "Её <b>сила</b> помогала ей оставаться спокойной даже в <g>требовательной</g> ситуации."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20735,10 +20735,10 @@ var VOCAB = [
       "ru": "твёрдая уверенность, что кто-то честен и надёжен"
     },
     "def": {
-      "de": "Die Zusammenarbeit mit der Gemeinde verlief <g>vertrauensvoll</g>.",
-      "en": "The cooperation with the community was trusting.",
-      "uk": "Співпраця з громадою проходила з довірою.",
-      "ru": "Сотрудничество с общиной проходило с доверием."
+      "de": "Das <b>Vertrauen</b> der Gemeinde wuchs durch eine <g>erfolgreiche</g> Zusammenarbeit.",
+      "en": "The community's <b>trust</b> grew through <g>successful</g> cooperation.",
+      "uk": "<b>Довіра</b> громади зростала завдяки <g>успішній</g> співпраці.",
+      "ru": "<b>Доверие</b> общины росло благодаря <g>успешному</g> сотрудничеству."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20758,10 +20758,10 @@ var VOCAB = [
       "ru": "новая мысль или план"
     },
     "def": {
-      "de": "Der <g>ideenreiche</g> Verein hat schon viele erfolgreiche Projekte gestartet.",
-      "en": "The idea-rich club has already launched many successful projects.",
-      "uk": "Клуб, багатий на ідеї, уже запустив чимало успішних проєктів.",
-      "ru": "Клуб, богатый на идеи, уже запустил немало успешных проектов."
+      "de": "Ihre <b>Idee</b> erwies sich als <g>wertvoll</g> für das ganze Team.",
+      "en": "Her <b>idea</b> turned out to be <g>valuable</g> for the whole team.",
+      "uk": "Її <b>ідея</b> виявилася <g>цінною</g> для всієї команди.",
+      "ru": "Её <b>идея</b> оказалась <g>ценной</g> для всей команды."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20781,10 +20781,10 @@ var VOCAB = [
       "ru": "промежуток времени длиной 24 часа"
     },
     "def": {
-      "de": "Es war ein <g>ereignisreicher</g> Tag voller neuer Begegnungen.",
-      "en": "It was an eventful day full of new encounters.",
-      "uk": "Це був насичений подіями день, повний нових знайомств.",
-      "ru": "Это был насыщенный событиями день, полный новых знакомств."
+      "de": "Es war ein <b>Tag</b> voller <g>hilfreicher</g> Begegnungen und neuer Kontakte.",
+      "en": "It was a <b>day</b> full of <g>helpful</g> encounters and new contacts.",
+      "uk": "Це був <b>день</b>, повний <g>корисних</g> знайомств і нових контактів.",
+      "ru": "Это был <b>день</b>, полный <g>полезных</g> знакомств и новых контактов."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -20804,10 +20804,10 @@ var VOCAB = [
       "ru": "значимость или важность чего-то"
     },
     "def": {
-      "de": "Ihre Arbeit ist für die ganze Gemeinschaft <g>wertvoll</g>.",
-      "en": "Her work is valuable for the whole community.",
-      "uk": "Її робота є цінною для всієї громади.",
-      "ru": "Её работа ценна для всей общины."
+      "de": "Der <b>Wert</b> ihrer Arbeit zeigte sich in einer <g>erfolgreichen</g> Zusammenarbeit mit der ganzen Stadt.",
+      "en": "The <b>value</b> of her work showed in a <g>successful</g> cooperation with the whole city.",
+      "uk": "<b>Цінність</b> її роботи проявилася в <g>успішній</g> співпраці з усім містом.",
+      "ru": "<b>Ценность</b> её работы проявилась в <g>успешном</g> сотрудничестве со всем городом."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -21195,7 +21195,7 @@ var VOCAB = [
       "ru": "лицо, персона"
     },
     "def": {
-      "de": "Ich mag diesen freundlichen <g>Menschen</g> aus der Nachbarschaft sehr.",
+      "de": "Ich mag diesen freundlichen <g><b>Menschen</b></g> aus der Nachbarschaft sehr.",
       "en": "I really like this friendly person from the neighbourhood.",
       "uk": "Мені дуже подобається ця приязна людина із сусідства.",
       "ru": "Мне очень нравится этот приветливый человек из соседства."
@@ -21218,7 +21218,7 @@ var VOCAB = [
       "ru": "лицо с особыми знаниями в определённой области"
     },
     "def": {
-      "de": "Für die Reparatur haben wir einen <g>Experten</g> geholt.",
+      "de": "Für die Reparatur haben wir einen <g><b>Experten</b></g> geholt.",
       "en": "We called in an expert for the repair.",
       "uk": "Для ремонту ми викликали експерта.",
       "ru": "Для ремонта мы вызвали эксперта."
@@ -21241,7 +21241,7 @@ var VOCAB = [
       "ru": "лицо, которое что-то покупает или пользуется услугой"
     },
     "def": {
-      "de": "Der Vermieter behandelt jeden <g>Kunden</g> fair.",
+      "de": "Der Vermieter behandelt jeden <g><b>Kunden</b></g> fair.",
       "en": "The landlord treats every customer fairly.",
       "uk": "Орендодавець ставиться до кожного клієнта справедливо.",
       "ru": "Арендодатель относится к каждому клиенту справедливо."
@@ -21264,7 +21264,7 @@ var VOCAB = [
       "ru": "лицо, проектирующее дома и здания"
     },
     "def": {
-      "de": "Das Haus wurde von einem bekannten <g>Architekten</g> entworfen.",
+      "de": "Das Haus wurde von einem bekannten <g><b>Architekten</b></g> entworfen.",
       "en": "The house was designed by a well-known architect.",
       "uk": "Будинок спроєктував відомий архітектор.",
       "ru": "Дом спроектировал известный архитектор."
@@ -21287,7 +21287,7 @@ var VOCAB = [
       "ru": "лицо, обучающееся в университете"
     },
     "def": {
-      "de": "Im Erdgeschoss habe ich einen <g>Studenten</g> aus Spanien kennengelernt.",
+      "de": "Im Erdgeschoss habe ich einen <g><b>Studenten</b></g> aus Spanien kennengelernt.",
       "en": "On the ground floor, I got to know a student from Spain.",
       "uk": "На першому поверсі я познайомився зі студентом з Іспанії.",
       "ru": "На первом этаже я познакомился со студентом из Испании."
@@ -21310,7 +21310,7 @@ var VOCAB = [
       "ru": "лицо, работающее в полиции"
     },
     "def": {
-      "de": "Wir riefen den <g>Polizisten</g>, weil es im Treppenhaus laut war.",
+      "de": "Wir riefen den <g><b>Polizisten</b></g>, weil es im Treppenhaus laut war.",
       "en": "We called the police officer because it was loud in the stairwell.",
       "uk": "Ми викликали поліцейського, бо у підʼїзді було шумно.",
       "ru": "Мы вызвали полицейского, потому что в подъезде было шумно."
@@ -21333,7 +21333,7 @@ var VOCAB = [
       "ru": "лицо, проходящее стажировку"
     },
     "def": {
-      "de": "Die Hausverwaltung hat dem neuen <g>Praktikanten</g> viele Aufgaben gegeben.",
+      "de": "Die Hausverwaltung hat dem neuen <g><b>Praktikanten</b></g> viele Aufgaben gegeben.",
       "en": "The building management gave the new intern many tasks.",
       "uk": "Управління будинком дало новому практиканту багато завдань.",
       "ru": "Управление домом дало новому стажёру много заданий."
@@ -21356,7 +21356,7 @@ var VOCAB = [
       "ru": "лицо, профессионально пишущее новости или репортажи"
     },
     "def": {
-      "de": "Die Bewohner sprachen ausführlich mit dem <g>Journalisten</g> über das neue Viertel.",
+      "de": "Die Bewohner sprachen ausführlich mit dem <g><b>Journalisten</b></g> über das neue Viertel.",
       "en": "The residents spoke extensively with the journalist about the new neighbourhood.",
       "uk": "Мешканці довго розмовляли з журналістом про новий квартал.",
       "ru": "Жители подробно говорили с журналистом о новом квартале."
@@ -21655,7 +21655,7 @@ var VOCAB = [
       "ru": "всё количество чего-то без исключения"
     },
     "def": {
-      "de": "<g>Alles</g>, <g>was</g> ich mir für die neue Wohnung gewünscht habe, ist Wirklichkeit geworden.",
+      "de": "<g><b>Alles</b></g>, <g>was</g> ich mir für die neue Wohnung gewünscht habe, ist Wirklichkeit geworden.",
       "en": "Everything <g>that</g> I wished for the new flat came true.",
       "uk": "Усе, <g>що</g> я хотів для нової квартири, стало реальністю.",
       "ru": "Всё, <g>что</g> я хотел для новой квартиры, стало реальностью."
@@ -21678,7 +21678,7 @@ var VOCAB = [
       "ru": "ни одной вещи"
     },
     "def": {
-      "de": "Es gibt <g>nichts</g>, <g>was</g> mir an dieser Wohnung nicht gefällt.",
+      "de": "Es gibt <g><b>nichts</b></g>, <g>was</g> mir an dieser Wohnung nicht gefällt.",
       "en": "There is nothing <g>that</g> I don't like about this flat.",
       "uk": "Немає нічого, <g>що</g> мені не подобається в цій квартирі.",
       "ru": "Нет ничего, <g>что</g> мне не нравится в этой квартире."
@@ -21701,7 +21701,7 @@ var VOCAB = [
       "ru": "лучшая вещь или лучшая часть чего-то"
     },
     "def": {
-      "de": "Der Ausblick ist <g>das Beste</g>, <g>was</g> diese Wohnung zu bieten hat.",
+      "de": "Der Ausblick ist <g><b>das Beste</b></g>, <g>was</g> diese Wohnung zu bieten hat.",
       "en": "The view is the best thing <g>that</g> this flat has to offer.",
       "uk": "Краєвид — це найкраще, <g>що</g> може запропонувати ця квартира.",
       "ru": "Вид — это лучшее, <g>что</g> может предложить эта квартира."
@@ -21724,7 +21724,7 @@ var VOCAB = [
       "ru": "неопределённая вещь или количество"
     },
     "def": {
-      "de": "Ich suche <g>etwas</g>, <g>was</g> zu meinem Budget passt.",
+      "de": "Ich suche <g><b>etwas</b></g>, <g>was</g> zu meinem Budget passt.",
       "en": "I'm looking for something <g>that</g> fits my budget.",
       "uk": "Я шукаю щось, <g>що</g> відповідає моєму бюджету.",
       "ru": "Я ищу что-то, <g>что</g> подходит моему бюджету."
@@ -22046,10 +22046,10 @@ var VOCAB = [
       "ru": "без шума или помех"
     },
     "def": {
-      "de": "Die Straße vor dem Haus ist <g>superruhig</g>.",
-      "en": "The street in front of the house is super quiet.",
-      "uk": "Вулиця перед будинком дуже тиха.",
-      "ru": "Улица перед домом очень тихая."
+      "de": "Diese <b>ruhige</b> Straße liegt in einem <g>superzentralen</g> Viertel.",
+      "en": "This <b>quiet</b> street is in a <g>super-central</g> neighbourhood.",
+      "uk": "Ця <b>тиха</b> вулиця розташована в <g>надцентральному</g> районі.",
+      "ru": "Эта <b>тихая</b> улица расположена в <g>сверхцентральном</g> районе."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -22069,10 +22069,10 @@ var VOCAB = [
       "ru": "с большим количеством света"
     },
     "def": {
-      "de": "Das Wohnzimmer ist dank der großen Fenster <g>extrahell</g>.",
-      "en": "The living room is extra bright thanks to the large windows.",
-      "uk": "Вітальня дуже світла завдяки великим вікнам.",
-      "ru": "Гостиная очень светлая благодаря большим окнам."
+      "de": "Das <b>helle</b> Wohnzimmer hat <g>überdurchschnittlich</g> große Fenster.",
+      "en": "The <b>bright</b> living room has <g>above-average</g> large windows.",
+      "uk": "<b>Світла</b> вітальня має <g>більші, ніж зазвичай,</g> вікна.",
+      "ru": "<b>Светлая</b> гостиная имеет <g>больше среднего</g> окна."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -23886,7 +23886,7 @@ var VOCAB = [
       "ru": "прибывать в то же место позже других"
     },
     "def": {
-      "de": "Die Kinder <g>kommen</g> morgen <g>nach</g>, wir fahren schon heute los.",
+      "de": "Die Kinder <g><b>kommen</b></g> morgen <g><b>nach</b></g>, wir fahren schon heute los.",
       "en": "The children will <g>follow</g> tomorrow, we're already leaving today.",
       "uk": "Діти приєднаються завтра, ми виїжджаємо вже сьогодні.",
       "ru": "Дети присоединятся завтра, мы уезжаем уже сегодня."
@@ -23909,7 +23909,7 @@ var VOCAB = [
       "ru": "возвращать что-то отправителю"
     },
     "def": {
-      "de": "Das Paket war falsch adressiert, deshalb <g>schicken</g> wir es <g>zurück</g>.",
+      "de": "Das Paket war falsch adressiert, deshalb <g><b>schicken</b></g> wir es <g><b>zurück</b></g>.",
       "en": "The package was addressed incorrectly, so we are <g>sending</g> it <g>back</g>.",
       "uk": "Посилка була неправильно адресована, тому ми відправляємо її назад.",
       "ru": "Посылка была неправильно адресована, поэтому мы отправляем её назад."
@@ -23932,7 +23932,7 @@ var VOCAB = [
       "ru": "выбрасывать в мусор то, что больше не нужно"
     },
     "def": {
-      "de": "Ich <g>werfe</g> die alten Prospekte einfach <g>weg</g>.",
+      "de": "Ich <g><b>werfe</b></g> die alten Prospekte einfach <g><b>weg</b></g>.",
       "en": "I'm simply <g>throwing</g> the old brochures <g>away</g>.",
       "uk": "Я просто викидаю старі буклети.",
       "ru": "Я просто выбрасываю старые буклеты."
@@ -23955,7 +23955,7 @@ var VOCAB = [
       "ru": "продолжать движение после перерыва"
     },
     "def": {
-      "de": "Nach der Pause <g>fahren</g> wir <g>weiter</g> Richtung Süden.",
+      "de": "Nach der Pause <g><b>fahren</b></g> wir <g><b>weiter</b></g> Richtung Süden.",
       "en": "After the break, we <g>continue driving</g> towards the south.",
       "uk": "Після перерви ми їдемо далі на південь.",
       "ru": "После перерыва мы едем дальше на юг."
@@ -23978,7 +23978,7 @@ var VOCAB = [
       "ru": "приносить что-то с собой, когда идёшь куда-то"
     },
     "def": {
-      "de": "Ich <g>bringe</g> meinen Reisepass unbedingt <g>mit</g>.",
+      "de": "Ich <g><b>bringe</b></g> meinen Reisepass unbedingt <g><b>mit</b></g>.",
       "en": "I definitely <g>bring</g> my passport <g>with me</g>.",
       "uk": "Я обовʼязково беру із собою паспорт.",
       "ru": "Я обязательно беру с собой паспорт."
@@ -24001,7 +24001,7 @@ var VOCAB = [
       "ru": "возвращаться туда, откуда уехал"
     },
     "def": {
-      "de": "Wann <g>kommst</g> du von der Reise <g>zurück</g>?",
+      "de": "Wann <g><b>kommst</b></g> du von der Reise <g><b>zurück</b></g>?",
       "en": "When are you <g>coming</g> <g>back</g> from the trip?",
       "uk": "Коли ти повертаєшся з подорожі?",
       "ru": "Когда ты возвращаешься из путешествия?"
@@ -24024,7 +24024,7 @@ var VOCAB = [
       "ru": "идти или ехать куда-то, чтобы забрать оттуда кого-то или что-то"
     },
     "def": {
-      "de": "Ich <g>hole</g> dich morgen früh am Bahnhof <g>ab</g>.",
+      "de": "Ich <g><b>hole</b></g> dich morgen früh am Bahnhof <g><b>ab</b></g>.",
       "en": "I'll <g>pick</g> you <g>up</g> at the station tomorrow morning.",
       "uk": "Я заберу тебе завтра вранці з вокзалу.",
       "ru": "Я заберу тебя завтра утром с вокзала."
@@ -24047,7 +24047,7 @@ var VOCAB = [
       "ru": "наводить порядок, класть вещи на место"
     },
     "def": {
-      "de": "Nach dem Fest <g>räumen</g> wir gemeinsam <g>auf</g>.",
+      "de": "Nach dem Fest <g><b>räumen</b></g> wir gemeinsam <g><b>auf</b></g>.",
       "en": "After the party, we <g>tidy</g> <g>up</g> together.",
       "uk": "Після свята ми разом прибираємо.",
       "ru": "После праздника мы вместе убираем."
@@ -24093,7 +24093,7 @@ var VOCAB = [
       "ru": "официально сообщать полиции о преступлении"
     },
     "def": {
-      "de": "Die Nachbarin <g>zeigte</g> den Vorfall sofort bei der Polizei <g>an</g>.",
+      "de": "Die Nachbarin <g><b>zeigte</b></g> den Vorfall sofort bei der Polizei <g><b>an</b></g>.",
       "en": "The neighbour immediately <g>reported</g> the incident to the police.",
       "uk": "Сусідка одразу заявила про інцидент у поліцію.",
       "ru": "Соседка сразу заявила об инциденте в полицию."
@@ -24116,7 +24116,7 @@ var VOCAB = [
       "ru": "точно сообщать полиции или суду, что видел или пережил"
     },
     "def": {
-      "de": "Der Zeuge <g>sagte</g> bei der Polizei alles genau <g>aus</g>.",
+      "de": "Der Zeuge <g><b>sagte</b></g> bei der Polizei alles genau <g><b>aus</b></g>.",
       "en": "The witness <g>testified</g> everything precisely to the police.",
       "uk": "Свідок точно дав свідчення поліції.",
       "ru": "Свидетель точно дал показания полиции."
@@ -24162,7 +24162,7 @@ var VOCAB = [
       "ru": "официально просить кого-то явиться в определённое время"
     },
     "def": {
-      "de": "Die Polizei <g>lädt</g> den Zeugen für morgen <g>vor</g>.",
+      "de": "Die Polizei <g><b>lädt</b></g> den Zeugen für morgen <g><b>vor</b></g>.",
       "en": "The police <g>summon</g> the witness for tomorrow.",
       "uk": "Поліція викликає свідка на завтра.",
       "ru": "Полиция вызывает свидетеля на завтра."
@@ -24208,7 +24208,7 @@ var VOCAB = [
       "ru": "покидать транспорт, например автобус"
     },
     "def": {
-      "de": "An der nächsten Haltestelle <g>steigen</g> wir <g>aus</g>.",
+      "de": "An der nächsten Haltestelle <g><b>steigen</b></g> wir <g><b>aus</b></g>.",
       "en": "We <g>get</g> <g>off</g> at the next stop.",
       "uk": "Ми виходимо на наступній зупинці.",
       "ru": "Мы выходим на следующей остановке."
@@ -24231,7 +24231,7 @@ var VOCAB = [
       "ru": "заходить в транспорт, например автобус"
     },
     "def": {
-      "de": "Wir <g>steigen</g> hier in die U-Bahn <g>ein</g>.",
+      "de": "Wir <g><b>steigen</b></g> hier in die U-Bahn <g><b>ein</b></g>.",
       "en": "We <g>get</g> <g>on</g> the subway here.",
       "uk": "Ми сідаємо тут у метро.",
       "ru": "Мы садимся здесь в метро."
@@ -24254,7 +24254,7 @@ var VOCAB = [
       "ru": "переходить с одного транспорта на другой, чтобы продолжить поездку"
     },
     "def": {
-      "de": "Am Hauptbahnhof <g>steigen</g> wir in die andere Linie <g>um</g>.",
+      "de": "Am Hauptbahnhof <g><b>steigen</b></g> wir in die andere Linie <g><b>um</b></g>.",
       "en": "At the main station, we <g>change</g> to the other line.",
       "uk": "На головному вокзалі ми пересідаємо на іншу лінію.",
       "ru": "На главном вокзале мы пересаживаемся на другую линию."
