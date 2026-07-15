@@ -1,14 +1,12 @@
 name: Generate TTS Audio
 
-# Запускається автоматично ПІСЛЯ успішного завершення workflow деплою
+# Запускається автоматично ПІСЛЯ успішного завершення "Update SW Cache Version"
 # (щоб генерація аудіо не конкурувала за ресурси з перевіркою/деплоєм
 # файлів баз B2-Beruf.js та Financial-Accounting-Foundations.js),
 # або вручну.
 on:
   workflow_run:
-    # ⚠️ ЗАМІНІТЬ на точну назву (поле `name:` на початку yml-файлу
-    # вашого workflow деплою) — назва файлу тут не підходить.
-    workflows: ['YOUR_DEPLOY_WORKFLOW_NAME']
+    workflows: ['Update SW Cache Version']
     types:
       - completed
   workflow_dispatch:   # Ручне керування режимами швидкості
@@ -19,16 +17,24 @@ on:
         default: false
         type: boolean
       run_free:
-        description: 'Увімкнути режим FREE (повільний потік)'
+        description: 'Увімкнути режим FREE (повільний потік, менша пачка коміту)'
         required: false
         default: false
         type: boolean
 
+# Не даємо двом запускам (напр. ручному й автоматичному) одночасно
+# писати в audio/ — це саме та ситуація, що призводила до застарілого
+# manifest.json, конфліктів при pull --rebase і, як наслідок, повторної
+# генерації вже готових файлів.
+concurrency:
+  group: gen-audio
+  cancel-in-progress: false
+
 jobs:
   generate:
     runs-on: ubuntu-latest
-    # Запускаємо, якщо це ручний запуск АБО деплой завершився успішно
-    # (при провалі деплою генерацію аудіо пропускаємо).
+    # Запускаємо, якщо це ручний запуск АБО деплой (бамп версії) завершився
+    # успішно (при провалі — генерацію аудіо пропускаємо).
     if: >-
       github.event_name == 'workflow_dispatch' ||
       github.event.workflow_run.conclusion == 'success'
@@ -40,31 +46,38 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          # Для workflow_run обов'язково беремо саме той коміт, що був
-          # задеплоєний, а не дефолтну гілку (інакше можна підхопити
-          # застарілу версію баз).
+          # Для workflow_run беремо саме той коміт, що був задеплоєний —
+          # нижче ми звіримо з нього ЛИШЕ файли баз, а не весь working tree
+          # (див. крок "Sync branch tip" — інакше manifest.json/audio/
+          # лишаються застарілими, і скрипт вважає вже готові файли новими).
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
         # Дефолтний неглибокий checkout (fetch-depth: 1) — повна історія
         # git тут не використовується, тож тягнути її не потрібно.
 
-      # ⚠️ КРИТИЧНО: checkout конкретного SHA (а не назви гілки) завжди
-      # лишає репозиторій у detached HEAD — git взагалі не знає, ЯКУ
-      # гілку оновлювати. Саме це й було причиною
-      # "fatal: You are not currently on a branch" при git push (і
-      # чому pull --rebase у gen_audio.py теж не рятував — він так само
-      # вимагає бути на гілці з налаштованим upstream). Тут створюємо
-      # локальну гілку з тим самим іменем, що й у задеплоєної гілки,
-      # і одразу прив'язуємо її до origin — сам коміт, з якого
-      # стартуємо, лишається саме тим, що задеплоївся, але git
-      # push/pull (без аргументів, як у gen_audio.py) починають
-      # працювати як зазвичай.
-      - name: Exit detached HEAD state
+      # ⚠️ КРИТИЧНО: просте "git checkout -B BRANCH" (без другого аргументу)
+      # створює локальну гілку НА ПОТОЧНОМУ (старому, задеплоєному) коміті,
+      # а не на актуальному tip-і origin/BRANCH. Через це working tree
+      # лишався застарілим — manifest.json та вже згенеровані mp3 з
+      # попередніх запусків (закомічені вже ПІСЛЯ SHA, який тут
+      # задеплоївся) були невидимі скрипту, і він генерував ті самі файли
+      # знову. Тут явно синхронізуємось з origin/BRANCH (актуальний
+      # audio/ + manifest.json), а файли баз даних беремо саме версії,
+      # що реально задеплоєна.
+      - name: Sync branch tip (keep audio/manifest.json fresh)
         run: |
           BRANCH="${{ github.event.workflow_run.head_branch || github.ref_name }}"
-          echo "Гілка: $BRANCH"
+          DEPLOYED_SHA="${{ github.event.workflow_run.head_sha || github.sha }}"
+          echo "Гілка: $BRANCH, задеплоєний коміт: $DEPLOYED_SHA"
+
           git fetch origin "$BRANCH"
-          git checkout -B "$BRANCH"
+          git checkout -B "$BRANCH" "origin/$BRANCH"
           git branch --set-upstream-to="origin/$BRANCH" "$BRANCH"
+
+          # Файли баз даних беремо ТОЧНО ті, що були задеплоєні (а не
+          # можливо новіші з тих пір, що з'явились на origin/BRANCH) —
+          # audio генерується саме під той контент, який зараз бачать
+          # користувачі.
+          git checkout "$DEPLOYED_SHA" -- '*.js'
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -88,8 +101,13 @@ jobs:
           TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
           # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше — 1.2 сек
           TTS_DELAY:   ${{ github.event.inputs.run_turbo == 'true' && '0.05' || '1.2' }}
-          # Кількість файлів у пачці для проміжного коміту (15 для турбо, 50 для звичайного)
-          TTS_COMMIT_LIMIT: ${{ github.event.inputs.run_turbo == 'true' && '15' || '50' }}
+          # Кількість файлів у пачці для проміжного коміту:
+          # 15 — TURBO, 25 — FREE (повільний потік, частіші проміжні коміти),
+          # 50 — звичайний автозапуск (workflow_run) чи ручний без прапорців.
+          TTS_COMMIT_LIMIT: >-
+            ${{ github.event.inputs.run_turbo == 'true' && '15'
+             || github.event.inputs.run_free == 'true' && '25'
+             || '50' }}
         run: python gen_audio.py
 
       # ФІНАЛЬНИЙ КОМІТ: Дозаписує залишки файлів, які не ввійшли в останню пачку
