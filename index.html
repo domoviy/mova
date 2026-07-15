@@ -2388,7 +2388,7 @@ body.lesson-active .vocab-top{
     <div id="view-dialogue" class="view card-view">
 
       <div class="vocab-top">
-        <div class="vplayer" style="display:none">
+        <div class="vplayer">
           <button class="vplay" id="dlgplaybtn" onclick="toggleDialogue()">▶</button>
           <button class="vstop" onclick="stopDialogue()">⏹</button>
           <button class="vseq smart" id="dlgshuffle-btn" onclick="cycleDialogueMode()">🧠</button>
@@ -2400,11 +2400,11 @@ body.lesson-active .vocab-top{
           </div>
           <select id="dlgf-cat" onchange="resetDialogueQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
+        <div class="vchips" id="dlgchips"></div>
         <div class="vtab-bar" id="dialogue-tabs">
           <button class="vtab active" onclick="switchDialogueTab(0)">🃏</button>
           <button class="vtab" onclick="switchDialogueTab(1)">📋</button>
         </div>
-        <div class="vchips" id="dlgchips" style="display:none"></div>
       </div>
 
       <!-- Картка + прогрес -->
@@ -2574,7 +2574,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '333-bb8dd64';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8822,31 +8822,10 @@ function _lfGrammarButton(card){
   return { icon: '📖', onClick: function(){ showGrammarModal(card.gram); } };
 }
 
-// Куди має "жити" #lf-unit-card прямо зараз — єдиний спільний елемент,
-// що використовується і для уроку (усередині #vocab-panel-card), і для
-// самостійного перегляду Dialogue (усередині #dlg-panel-card). Виклик
-// без аргументу (з lfRunUnitStep при LF truthy) завжди повертає його
-// "додому" в урок — інакше картка уроку могла б лишитись невидимою,
-// якщо перед цим користувач переглядав Dialogue самостійно.
-function _relocateUnitCard(targetParentId){
-  var el = document.getElementById('lf-unit-card');
-  var target = document.getElementById(targetParentId);
-  if(el && target && el.parentElement !== target){
-    target.appendChild(el);
-  }
-}
-
 function lfRunUnitStep(units, handlers, onAllDone){
-  if(!units || !units.length){ onAllDone ? onAllDone() : (LF && lfNextStep()); return; }
+  if(!LF || !units || !units.length){ onAllDone ? onAllDone() : lfNextStep(); return; }
   _lfUnit = { units: units, idx: 0, handlers: handlers, onAllDone: onAllDone };
-
-  // У справжньому уроці — завжди повертаємо картку в її "домашній"
-  // контейнер (#vocab-panel-card), незалежно від того, де вона могла
-  // лишитись після самостійного перегляду Dialogue.
-  if(LF){
-    _relocateUnitCard('vocab-panel-card');
-    LF.unitProgress = { done: 0, total: units.length };
-  }
+  LF.unitProgress = { done: 0, total: units.length };
 
   // Ховаємо старий vocab-UI (.fc-area з 3D-флипом, плеєр, прогрес-смугу
   // картки) — #lf-unit-card повністю замінює їх для будь-якого типу
@@ -8858,7 +8837,7 @@ function lfRunUnitStep(units, handlers, onAllDone){
   var vplayer = document.querySelector('#view-vocab .vplayer');
   if(vplayer) vplayer.style.display = 'none';
 
-  if(LF) lfRenderBar();
+  lfRenderBar();
 
   setTimeout(function(){
     var el = document.getElementById('lf-unit-card');
@@ -8885,6 +8864,7 @@ function _lfUnitSwipe(dir){
 }
 
 function _lfUnitShow(){
+  if(!LF) return;
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit){ _lfUnitStepDone(); return; }
 
@@ -8975,10 +8955,8 @@ function _lfUnitShowNextBtn(){
       return;
     }
     _lfUnit.idx++;
-    if(LF){
-      LF.unitProgress = { done: _lfUnit.idx, total: _lfUnit.units.length };
-      lfRenderBar();
-    }
+    LF.unitProgress = { done: _lfUnit.idx, total: _lfUnit.units.length };
+    lfRenderBar();
     _lfUnitShow();
   };
 
@@ -10069,7 +10047,8 @@ function resetDialogueQ(){
 function initDialogue(){
   initDialogueFilters();
   applyDialogueLangUI();
-  startDialogueCardMode();
+  if(D.queue.length===0) D.queue=buildDialogueQueue();
+  renderDialogueCard();
 }
 function initDialogueFilters(){
   if(typeof DIALOGE==='undefined' || typeof CATS==='undefined') return;
@@ -10321,54 +10300,7 @@ function switchDialogueTab(tab){
   document.querySelectorAll('#dialogue-tabs .vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
   document.getElementById('dlg-panel-card').style.display   = tab===0?'flex':'none';
   document.getElementById('dlg-panel-browse').style.display = tab===1?'block':'none';
-  const chips=document.getElementById('dlgchips'); if(chips) chips.style.display = tab===1?'':'none';
   if(tab===1) renderDialogueBrowse();
-  else startDialogueCardMode();
-}
-
-// Самостійний перегляд Dialogue (вкладка 🃏) — той самий принцип, що й
-// у кроці "dlg_learn" уроку: месенджер-бульбашки, аудіо грає автоматично,
-// кнопка "Далі" зʼявляється лише після завершення озвучення (чи одразу,
-// якщо аудіо недоступне), свайп вгору/вниз — SM-2 оцінка. Замінює стару
-// flip-картку (dlg-fc-area) і плеєр зверху — вони більше не потрібні,
-// бо аудіо й "Далі" вже й так керують послідовністю.
-//
-// Перевикористовує lfRunUnitStep()/_lfDlgHandlers 1:1 (той самий рушій,
-// що й в уроці) — єдина відмінність: LF тут null (це не урок), тож
-// #lf-unit-card тимчасово "переїжджає" в #dlg-panel-card (замість
-// #vocab-panel-card) на час самостійного перегляду. lfRunUnitStep()
-// сам поверне картку назад в урок, якщо користувач пізніше почне
-// справжній урок (див. _relocateUnitCard).
-// Спільна частина для startDialogueCardMode()/openDialogueCard() —
-// ховає старий flip-UI, переносить #lf-unit-card у вкладку Dialogue,
-// і запускає D.queue через той самий рушій, що й урок.
-function _runDialogueQueueAsUnits(){
-  var fcArea = document.getElementById('dlg-fc-area');
-  if(fcArea) fcArea.style.display = 'none';
-  var vprogrow = document.querySelector('#dlg-panel-card .vprogrow-flow');
-  if(vprogrow) vprogrow.style.display = 'none';
-
-  _relocateUnitCard('dlg-panel-card');
-
-  var units = D.queue.map(function(card){
-    return { kind:'dlg', cardId: card.id, side:'main', card: card, aShown: false };
-  });
-
-  lfRunUnitStep(units, _lfDlgHandlers, _onDialogueUnitsDone);
-}
-
-function startDialogueCardMode(){
-  if(typeof DIALOGE === 'undefined' || !DIALOGE.length) return;
-  if(!D.queue || !D.queue.length) D.queue = buildDialogueQueue();
-  _runDialogueQueueAsUnits();
-}
-
-// Черга закінчилась — самостійний перегляд не має "завершення" як урок,
-// тож просто перебудовуємо чергу (SM-2/пріоритет уже оновились після
-// оцінок) і продовжуємо безперервно.
-function _onDialogueUnitsDone(){
-  D.queue = buildDialogueQueue();
-  if(D.queue.length) startDialogueCardMode();
 }
 // Спільний рядок-картка для списків "Усі картки"/Закладки (Vocab,
 // Dialogue, Favorites) — раніше кожен з трьох render*-методів дублював
@@ -10400,20 +10332,14 @@ function renderDialogueBrowse(){
 function openDialogueCard(dlgIdx){
   const card=DIALOGE[dlgIdx]; if(!card) return;
   if(!D.queue.length) D.queue=buildDialogueQueue();
-  // Ротуємо чергу так, щоб клікнута картка йшла ПЕРШОЮ — решта черги
-  // продовжує природним порядком одразу після неї (не губимо контекст
-  // решти карток, просто починаємо саме з цієї).
   const qIdx=D.queue.findIndex(c=>c.id===card.id);
-  if(qIdx!==-1){
-    D.queue = D.queue.slice(qIdx).concat(D.queue.slice(0, qIdx));
-  } else {
-    D.queue.unshift(card);
-  }
+  if(qIdx!==-1){ D.idx=qIdx; }
+  else{ D.queue.unshift(card); D.idx=0; }
+  D.flipped=false;
+  renderDialogueCard();
   document.querySelectorAll('#dialogue-tabs .vtab').forEach((t,i)=>t.classList.toggle('active',i===0));
-  document.getElementById('dlg-panel-card').style.display='flex';
+  document.getElementById('dlg-panel-card').style.display='';
   document.getElementById('dlg-panel-browse').style.display='none';
-  const chips=document.getElementById('dlgchips'); if(chips) chips.style.display='none';
-  _runDialogueQueueAsUnits();
 }
 
 // ── ЧІПИ КАТЕГОРІЙ ───────────────────────────────────────────
@@ -10437,11 +10363,9 @@ function setDialogueCat(id,btn){
   document.querySelectorAll('#dlgchips .chip').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   window.mlog?.('dialogue_category_selected',{cat:id});
-  // Перебудовуємо чергу карток (застосується наступного разу, коли
-  // повернуться на 🃏) і одразу відкриваємо СПИСОК цієї категорії —
-  // клік на чіп веде до списку, а не лишається на поточній вкладці.
-  D.queue = buildDialogueQueue();
-  switchDialogueTab(1);
+  resetDialogueQ();
+  const browse=document.getElementById('dlg-panel-browse');
+  if(browse && browse.style.display!=='none') renderDialogueBrowse();
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{
