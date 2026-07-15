@@ -2400,11 +2400,11 @@ body.lesson-active .vocab-top{
           </div>
           <select id="dlgf-cat" onchange="resetDialogueQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
-        <div class="vchips" id="dlgchips"></div>
         <div class="vtab-bar" id="dialogue-tabs">
           <button class="vtab active" onclick="switchDialogueTab(0)">🃏</button>
           <button class="vtab" onclick="switchDialogueTab(1)">📋</button>
         </div>
+        <div class="vchips" id="dlgchips" style="display:none"></div>
       </div>
 
       <!-- Картка + прогрес -->
@@ -2574,7 +2574,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '332-5f7e060';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -10321,6 +10321,7 @@ function switchDialogueTab(tab){
   document.querySelectorAll('#dialogue-tabs .vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
   document.getElementById('dlg-panel-card').style.display   = tab===0?'flex':'none';
   document.getElementById('dlg-panel-browse').style.display = tab===1?'block':'none';
+  const chips=document.getElementById('dlgchips'); if(chips) chips.style.display = tab===1?'':'none';
   if(tab===1) renderDialogueBrowse();
   else startDialogueCardMode();
 }
@@ -10338,9 +10339,10 @@ function switchDialogueTab(tab){
 // #vocab-panel-card) на час самостійного перегляду. lfRunUnitStep()
 // сам поверне картку назад в урок, якщо користувач пізніше почне
 // справжній урок (див. _relocateUnitCard).
-function startDialogueCardMode(){
-  if(typeof DIALOGE === 'undefined' || !DIALOGE.length) return;
-
+// Спільна частина для startDialogueCardMode()/openDialogueCard() —
+// ховає старий flip-UI, переносить #lf-unit-card у вкладку Dialogue,
+// і запускає D.queue через той самий рушій, що й урок.
+function _runDialogueQueueAsUnits(){
   var fcArea = document.getElementById('dlg-fc-area');
   if(fcArea) fcArea.style.display = 'none';
   var vprogrow = document.querySelector('#dlg-panel-card .vprogrow-flow');
@@ -10348,12 +10350,17 @@ function startDialogueCardMode(){
 
   _relocateUnitCard('dlg-panel-card');
 
-  if(!D.queue || !D.queue.length) D.queue = buildDialogueQueue();
   var units = D.queue.map(function(card){
     return { kind:'dlg', cardId: card.id, side:'main', card: card, aShown: false };
   });
 
   lfRunUnitStep(units, _lfDlgHandlers, _onDialogueUnitsDone);
+}
+
+function startDialogueCardMode(){
+  if(typeof DIALOGE === 'undefined' || !DIALOGE.length) return;
+  if(!D.queue || !D.queue.length) D.queue = buildDialogueQueue();
+  _runDialogueQueueAsUnits();
 }
 
 // Черга закінчилась — самостійний перегляд не має "завершення" як урок,
@@ -10393,14 +10400,20 @@ function renderDialogueBrowse(){
 function openDialogueCard(dlgIdx){
   const card=DIALOGE[dlgIdx]; if(!card) return;
   if(!D.queue.length) D.queue=buildDialogueQueue();
+  // Ротуємо чергу так, щоб клікнута картка йшла ПЕРШОЮ — решта черги
+  // продовжує природним порядком одразу після неї (не губимо контекст
+  // решти карток, просто починаємо саме з цієї).
   const qIdx=D.queue.findIndex(c=>c.id===card.id);
-  if(qIdx!==-1){ D.idx=qIdx; }
-  else{ D.queue.unshift(card); D.idx=0; }
-  D.flipped=false;
-  renderDialogueCard();
+  if(qIdx!==-1){
+    D.queue = D.queue.slice(qIdx).concat(D.queue.slice(0, qIdx));
+  } else {
+    D.queue.unshift(card);
+  }
   document.querySelectorAll('#dialogue-tabs .vtab').forEach((t,i)=>t.classList.toggle('active',i===0));
-  document.getElementById('dlg-panel-card').style.display='';
+  document.getElementById('dlg-panel-card').style.display='flex';
   document.getElementById('dlg-panel-browse').style.display='none';
+  const chips=document.getElementById('dlgchips'); if(chips) chips.style.display='none';
+  _runDialogueQueueAsUnits();
 }
 
 // ── ЧІПИ КАТЕГОРІЙ ───────────────────────────────────────────
@@ -10424,9 +10437,11 @@ function setDialogueCat(id,btn){
   document.querySelectorAll('#dlgchips .chip').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   window.mlog?.('dialogue_category_selected',{cat:id});
-  resetDialogueQ();
-  const browse=document.getElementById('dlg-panel-browse');
-  if(browse && browse.style.display!=='none') renderDialogueBrowse();
+  // Перебудовуємо чергу карток (застосується наступного разу, коли
+  // повернуться на 🃏) і одразу відкриваємо СПИСОК цієї категорії —
+  // клік на чіп веде до списку, а не лишається на поточній вкладці.
+  D.queue = buildDialogueQueue();
+  switchDialogueTab(1);
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{
