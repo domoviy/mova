@@ -37,19 +37,13 @@ RETRY_BASE_DELAY = float(os.environ.get('TTS_RETRY_BASE_DELAY', '2.0'))
 
 # Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
 # у тій самій директорії, що й цей скрипт, а аудіо генерується в
-# audio/<COURSE>/... (назва папки аудіо == назва файлу бази без .js).
-# Кожен запис: (назва .js файлу бази без розширення, id курсу —
-# він же назва папки в audio/ і префікс ключів у audio/manifest.json).
-# Для Deutsch-B2-Beruf і Deutsch-A2 файл перейменували (для логічнішого
-# сортування файлів бази), а id/папку аудіо НАВМИСНО лишили старими —
-# так само, як у index.html (COURSES[].id != COURSES[].file там). Це
-# позбавляє від перейменування папки з сотнями mp3-файлів на диску і
-# міграції ключів у manifest.json — при незмінному id все й так збігається.
+# audio/<COURSE>/... — назва папки аудіо і префікс ключів у
+# audio/manifest.json ЗАВЖДИ збігаються з назвою файлу бази без .js.
 COURSES = [
-    ('Deutsch-B2-Beruf', 'B2-Beruf'),
-    ('Financial-Accounting-Foundations', 'Financial-Accounting-Foundations'),
-    ('Deutsch-A2', 'A2-Deutsch'),
-    ('Deutsch-B1', 'B1-Deutsch'),
+    'Deutsch-B2-Beruf',
+    'Financial-Accounting-Foundations',
+    'Deutsch-A2',
+    'Deutsch-B1',
 ]
 
 AUDIO_ROOT = pathlib.Path('audio')
@@ -447,11 +441,11 @@ async def main():
     # до tasks, вона бачить порожній список і завжди повертає дефолт.
     course_lang_order = {}
 
-    for file_stem, course in COURSES:
-      audio_config, raw_items, primary_lang = load_js_database(f"{file_stem}.js")
+    for course in COURSES:
+      audio_config, raw_items, primary_lang = load_js_database(f"{course}.js")
       audio_base = AUDIO_ROOT / course
       course_lang_order[course] = [primary_lang] + [l for l in audio_config.keys() if l != primary_lang]
-      print(f"— Курс '{course}' (файл {file_stem}.js): знайдено {len(raw_items)} елементів бази.", flush=True)
+      print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази.", flush=True)
 
       for item in raw_items:
         item_id = item["id"]
@@ -618,7 +612,7 @@ async def main():
     #    від найбільшої швидкості до найменшої).
     # 3) Курси йдуть у порядку списку COURSES (як і раніше — порядок
     #    курсів природно зберігається, бо сортування стабільне).
-    course_order = {course: idx for idx, (_, course) in enumerate(COURSES)}
+    course_order = {course: idx for idx, course in enumerate(COURSES)}
     lang_rank_by_course = {
         course: {lang: i for i, lang in enumerate(order)}
         for course, order in course_lang_order.items()

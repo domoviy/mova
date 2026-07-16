@@ -2579,26 +2579,21 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '340-312ae09';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
 // Список доступних курсів. Додавати нові — тільки тут.
 //
-// ⚠️ У A2-Deutsch і B2-Beruf `id` НЕ збігається з `file` — це навмисно,
-// не помилка. Файли бази перейменували (Deutsch-A2.js/Deutsch-B2-Beruf.js)
-// для логічнішого сортування, але `id` лишили старим, бо саме `id`
-// (не назва файлу!) визначає: назву папки з аудіо (audio/<id>/...),
-// ключі в audio/manifest.json (кожен ключ починається саме з id), і
-// localStorage-ключі кожного користувача (обраний курс, дата іспиту,
-// прогрес Smart Review — усе прив'язане до id). Зміна id вимагала б
-// перейменування папки audio/ на диску (недоступно через веб-інтерфейс
-// без git) і міграції вже накопичених даних браузера. Перейменування
-// самого лише .js-файлу цього не зачіпає.
+// `id` — єдине джерело істини для курсу: файл бази завантажується як
+// `${id}.js`, папка з аудіо — audio/<id>/..., ключі в audio/manifest.json
+// починаються з <id>, і localStorage-ключі користувача (обраний курс,
+// дата іспиту, прогрес Smart Review) прив'язані саме до id. Окремого
+// поля `file` немає навмисно — щоб не могло знову розійтись із назвою
+// .js-файлу.
 const COURSES = [
   {
-    id:       'A2-Deutsch',
-    file:     'Deutsch-A2.js',
+    id:       'Deutsch-A2',
     title:    'A2 Deutsch',
     emoji:    '🏠',
     level:    'A2',
@@ -2606,8 +2601,7 @@ const COURSES = [
     desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
   },
   {
-    id:       'B1-Deutsch',
-    file:     'Deutsch-B1.js',
+    id:       'Deutsch-B1',
     title:    'B1 Deutsch',
     emoji:    '💬',
     level:    'B1',
@@ -2615,8 +2609,7 @@ const COURSES = [
     desc:     { de:'Deutsch für Fortgeschrittene', uk:'Німецька для середнього рівня', en:'German for intermediate learners' },
   },
   {
-    id:       'B2-Beruf',
-    file:     'Deutsch-B2-Beruf.js',
+    id:       'Deutsch-B2-Beruf',
     title:    'B2 Beruf',
     emoji:    '💼',
     level:    'B2',
@@ -2625,7 +2618,6 @@ const COURSES = [
   },
   {
     id:       'Financial-Accounting-Foundations',
-    file:     'Financial-Accounting-Foundations.js',
     title:    'Financial Accounting: Foundations',
     emoji:    '💰',
     level:    'Foundations',
@@ -2635,7 +2627,6 @@ const COURSES = [
   // Приклад як додати новий курс:
   // {
   //   id:    'A2-Alltag',
-  //   file:  'A2-Alltag.js',
   //   title: 'A2 Alltag',
   //   emoji: '🏠',
   //   level: 'A2',
@@ -2647,7 +2638,7 @@ const COURSES = [
 let activeCourse = null;  // поточний курс (об'єкт з COURSES)
 
 function getSavedCourseId(){
-  return localStorage.getItem('mova_course') || 'B2-Beruf';
+  return localStorage.getItem('mova_course') || 'Deutsch-B2-Beruf';
 }
 function saveCourseId(id){
   localStorage.setItem('mova_course', id);
@@ -2666,7 +2657,7 @@ function loadCourseScript(courseId){
     if(!course){ reject(new Error('Course not found: '+courseId)); return; }
 
     // ТИМЧАСОВЕ ІНСТРУМЕНТУВАННЯ — прибрати після діагностики.
-    const _srcUrl = course.file + '?v=' + APP_VERSION;
+    const _srcUrl = course.id + '.js?v=' + APP_VERSION;
     const _t0 = performance.now();
 
     const s = document.createElement('script');
@@ -2679,7 +2670,7 @@ function loadCourseScript(courseId){
         const entries = performance.getEntriesByName(_srcUrl);
         const entry = entries[entries.length-1];
         const fromCache = entry && entry.transferSize === 0 && entry.encodedBodySize > 0;
-        const _msg = `course-script "${course.file}": ${(performance.now()-_t0).toFixed(0)}ms (fetch+onload) · ${fromCache ? 'З КЕШУ' : 'З МЕРЕЖІ'}` + (entry ? ` · encodedBodySize=${entry.encodedBodySize}B` : '');
+        const _msg = `course-script "${course.id}.js": ${(performance.now()-_t0).toFixed(0)}ms (fetch+onload) · ${fromCache ? 'З КЕШУ' : 'З МЕРЕЖІ'}` + (entry ? ` · encodedBodySize=${entry.encodedBodySize}B` : '');
         if(typeof logPerf==='function') logPerf(_msg); else console.log('⏱ [splash-perf]', _msg);
       }catch(e){ console.log('⏱ [splash-perf] course-script timing недоступний:', e); }
 
@@ -2690,11 +2681,11 @@ function loadCourseScript(courseId){
       // Для курсів без GRAMMAR/gram (напр. Financial-Accounting) поверне [] —
       // вкладку "Grammatik" тоді просто не показуємо (див. sbApplyDataSourceUI).
       try{ GRAM_CARDS = buildGramCards(); GRAM_CATS = buildGramCats(); }catch(e){ GRAM_CARDS=[]; GRAM_CATS=[]; }
-      { const _m = `course-script "${course.file}": +${(performance.now()-_t0).toFixed(0)}ms повний onload (з парсингом VOCAB/GRAMMAR/SPRACHBAUSTEINE + buildGramCards)`;
+      { const _m = `course-script "${course.id}.js": +${(performance.now()-_t0).toFixed(0)}ms повний onload (з парсингом VOCAB/GRAMMAR/SPRACHBAUSTEINE + buildGramCards)`;
         if(typeof logPerf==='function') logPerf(_m); else console.log('⏱ [splash-perf]', _m); }
       resolve(course);
     };
-    s.onerror = ()=>reject(new Error('Failed to load: '+course.file));
+    s.onerror = ()=>reject(new Error('Failed to load: '+course.id+'.js'));
     document.head.appendChild(s);
   });
 }
@@ -4532,8 +4523,8 @@ async function init(){
   try{
     await loadCourseScript(courseId);
   }catch(e){
-    console.warn('init: course load failed, trying B2-Beruf:', e);
-    try{ await loadCourseScript('B2-Beruf'); }catch(e2){ console.error(e2); }
+    console.warn('init: course load failed, trying Deutsch-B2-Beruf:', e);
+    try{ await loadCourseScript('Deutsch-B2-Beruf'); }catch(e2){ console.error(e2); }
   }
   _tm('loadCourseScript() завершено (мережа+парсинг бази курсу)');
   // activeCourse тепер відомий (щойно встановлений у loadCourseScript) —
@@ -4652,7 +4643,7 @@ const audioExistsCache = new Map();
 function getAudioUrl(cardId, field, lang){
   const speed  = V.langSpeed?.[lang] || '100';
   const cat    = cardId.split('_')[0];
-  const course = activeCourse?.id || 'B2-Beruf';
+  const course = activeCourse?.id || 'Deutsch-B2-Beruf';
   return `audio/${course}/${lang}/${speed}/${cat}/${cardId}_${field}_${lang}_${speed}.mp3`;
 }
 
@@ -11902,7 +11893,7 @@ function slugifyGramWord(word) {
 
 function getGramWordAudioUrl(word, lang) {
   const speed  = V.langSpeed?.[lang] || '100';
-  const course = activeCourse?.id || 'B2-Beruf';
+  const course = activeCourse?.id || 'Deutsch-B2-Beruf';
   const slug   = slugifyGramWord(word);
   return `audio/${course}/${lang}/${speed}/gram/gram_word_${slug}_${lang}_${speed}.mp3`;
 }
