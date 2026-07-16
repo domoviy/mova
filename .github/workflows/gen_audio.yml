@@ -2,7 +2,7 @@ name: Generate TTS Audio
 
 # Запускається автоматично ПІСЛЯ успішного завершення "Update SW Cache Version"
 # (щоб генерація аудіо не конкурувала за ресурси з перевіркою/деплоєм
-# файлів баз B2-Beruf.js та Financial-Accounting-Foundations.js),
+# файлів баз Deutsch-B2-Beruf.js та Financial-Accounting-Foundations.js),
 # або вручну.
 on:
   workflow_run:
