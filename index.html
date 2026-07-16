@@ -2111,7 +2111,7 @@ body.lesson-active .vocab-top{
           <button class="vplay" id="vplaybtn" onclick="toggleVocabListenMode()">▶</button>
           <button class="vstop" onclick="stopVocabListenMode()">⏹</button>
           <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()">🧠</button>
-          <button class="vlang-btn" id="vplayboth-btn" onclick="toggleVocabPlayBoth()" title="Передня сторона / обидві">🔂</button>
+          <button class="vlang-btn" id="vplayboth-btn" onclick="cycleVocabPlaySide()" title="Передня / обидві / задня">1️⃣</button>
           <div class="vlang-grp">
             <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn on"  id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
@@ -2297,12 +2297,12 @@ body.lesson-active .vocab-top{
             <button class="vlang-btn off" id="sblang-ru" onclick="sbToggleLang('ru')">🇷🇺 RU</button>
           </div>
         </div>
-        <div class="vlang-grp" id="sb-src-toggle" style="margin-top:6px">
+        <div class="vlang-grp" id="sb-src-toggle" style="margin-top:6px;display:none">
           <button class="vlang-btn on"  data-src="sb"   onclick="sbSetDataSource('sb')">🔤 Sprachbausteine</button>
           <button class="vlang-btn off" data-src="gram" onclick="sbSetDataSource('gram')">📘 Grammatik</button>
         </div>
         <div class="vchips" id="sb-cat-chips"></div>
-        <div class="vtab-bar">
+        <div class="vtab-bar" id="sb-tabs-bar">
           <button class="vtab active" id="sbt-learn"    onclick="sbSetMode('learn')">📖 Lernen</button>
           <button class="vtab"        id="sbt-practice" onclick="sbSetMode('practice')">🎯 Üben</button>
           <button class="vtab"        id="sbt-exam"     onclick="sbSetMode('exam')">📝 Prüfung</button>
@@ -2558,6 +2558,9 @@ body.lesson-active .vocab-top{
   <button class="bn-item" onclick="showView('sb')" data-view="sb">
     <span class="bn-icon">🧩</span><span data-i18n="nav_sb">Sprachbau</span>
   </button>
+  <button class="bn-item" onclick="showView('gram')" data-view="gram">
+    <span class="bn-icon">📘</span><span>Граматика</span>
+  </button>
   <button class="bn-item" onclick="showView('dialogue')" data-view="dialogue">
     <span class="bn-icon">💬</span><span>Dialogue</span>
   </button>
@@ -2576,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '338-bb4ecff';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3238,11 +3241,10 @@ let V={
   pause:    _s.pause   ??300,
   readPause:_s.readPause??300,
   mode:     _s.mode    ||'smart',
-  // Пасивне прослуховування (плеєр): чи озвучувати лише передню сторону
-  // картки (термін/short) чи обидві (+def). За замовчуванням — лише
-  // передня, це швидший, менш навантажений режим (типове прослуховування
-  // "згадай слово", а не повне вивчення значення).
-  playBoth: _s.playBoth ?? false,
+  // Пасивне прослуховування (плеєр): яку сторону картки озвучувати —
+  // 'front' (лише термін/short), 'both' (+ визначення), 'back' (лише
+  // визначення). Перемикається по колу кнопкою 🔂.
+  playSide: _s.playSide || 'front',
   listening: false, // чи зараз активне пасивне прослуховування (не персистимо)
   srsRating:  null,  // поточна оцінка SM-2 (1/3/5), null = ще не оцінено
   lessonId:   null,  // id активного уроку або null
@@ -3352,7 +3354,7 @@ function syncFontSizeSlider(){
 function saveSettings(){
   localStorage.setItem('mova_settings',JSON.stringify({
     speed:V.speed, repeats:V.repeats,
-    pause:V.pause, readPause:V.readPause, mode:V.mode, playBoth:V.playBoth
+    pause:V.pause, readPause:V.readPause, mode:V.mode, playSide:V.playSide
   }));
 }
 // ── SM-2 ENGINE ───────────────────────────────────────────────
@@ -4501,10 +4503,13 @@ const haptic = {
 function updateBottomNavVisibility(){
   const hasSB  = typeof SPRACHBAUSTEINE !== 'undefined' && SPRACHBAUSTEINE?.length;
   const hasDlg = typeof DIALOGE !== 'undefined' && DIALOGE?.length;
+  const hasGram= typeof GRAM_CATS !== 'undefined' && GRAM_CATS?.length;
   const sbBtn  = document.querySelector('#bottom-nav [data-view="sb"]');
   const dlgBtn = document.querySelector('#bottom-nav [data-view="dialogue"]');
-  if(sbBtn)  sbBtn.style.display  = hasSB  ? '' : 'none';
-  if(dlgBtn) dlgBtn.style.display = hasDlg ? '' : 'none';
+  const gramBtn= document.querySelector('#bottom-nav [data-view="gram"]');
+  if(sbBtn)   sbBtn.style.display   = hasSB   ? '' : 'none';
+  if(dlgBtn)  dlgBtn.style.display  = hasDlg  ? '' : 'none';
+  if(gramBtn) gramBtn.style.display = hasGram ? '' : 'none';
 }
 
 async function init(){
@@ -4864,10 +4869,17 @@ document.addEventListener('visibilitychange', ()=>{
 function showView(id){
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.bn-item[data-view]').forEach(n=>n.classList.remove('active'));
-  document.getElementById('view-'+id).classList.add('active');
+  // "gram" не має власного .view — це той самий #view-sb, лише з
+  // SB.dataSource='gram' (Grammatik-Trainer винесено в окрему вкладку
+  // нижнього меню, але й далі використовує спільну розмітку/логіку
+  // Sprachbausteine, щоб не дублювати весь модуль практики).
+  const domId = id==='gram' ? 'sb' : id;
+  document.getElementById('view-'+domId).classList.add('active');
   const btn=document.querySelector('[data-view="'+id+'"]');if(btn)btn.classList.add('active');
   if(id==='vocab'){initVocab();initVocabChips();}
   if(id==='dialogue'){initDialogue();initDialogueChips();}
+  if(id==='sb')  sbSetDataSource('sb');
+  if(id==='gram') sbSetDataSource('gram');
   if(id==='favs')renderFavGrid();
   if(id==='settings')syncFontSizeSlider();
   if(id==='settings'){renderStreakUI();renderTempoRow();try{srRenderDashboard();}catch(e){}}
@@ -4914,7 +4926,7 @@ function wasAudioPlayedForCard(cardId){
 }
 
 // ── VOCAB ─────────────────────────────────────────────────────
-function initVocab(){initVocabFilters();applyVocabLangUI();if(V.queue.length===0)V.queue=buildVocabQueue();startVocabCardMode();}
+function initVocab(){initVocabFilters();applyVocabLangUI();updateVocabPlaySideBtn();if(V.queue.length===0)V.queue=buildVocabQueue();startVocabCardMode();}
 function initVocabFilters(){
   if(typeof CATS === 'undefined') return; // курс ще не завантажено
   const sel=document.getElementById('vf-cat');if(!sel||sel.options.length>1)return;
@@ -9112,16 +9124,20 @@ function updateVocabLangButtons(unit){
 }
 
 // Черга юнітів для пасивного прослуховування — на відміну від
-// _lfVocabBuildUnits() (завжди term+def для уроку), тут def-юніт
-// додається лише якщо V.playBoth=true ("обидві сторони"). За
-// замовчуванням (playBoth=false) — лише передня сторона (term/short).
+// _lfVocabBuildUnits() (завжди term+def для уроку), тут склад залежить
+// від V.playSide: 'front' — лише term, 'both' — term+def, 'back' —
+// лише def (якщо def[primaryLang] відсутній, картка просто пропускається
+// у 'back'-режимі — озвучувати нічого).
 function _lfVocabBuildListenUnits(){
   var cards = V.queue || [];
   var units = [];
   var pl = primaryLang();
   cards.forEach(function(card){
-    units.push({ kind:'vocab', cardId: card.id, side:'term', card: card });
-    if(V.playBoth && card.def && card.def[pl]){
+    var hasDef = card.def && card.def[pl];
+    if(V.playSide === 'front' || V.playSide === 'both'){
+      units.push({ kind:'vocab', cardId: card.id, side:'term', card: card });
+    }
+    if((V.playSide === 'both' || V.playSide === 'back') && hasDef){
       units.push({ kind:'vocab', cardId: card.id, side:'def', card: card });
     }
   });
@@ -9226,7 +9242,7 @@ var _lfVocabHandlers = {
   // Мультимовне аудіо для пасивного прослуховування (плеєр, ▶) —
   // активовані мови (V.langs) замість лише primaryLang. Задня сторона
   // (def) взагалі не потрапляє в чергу прослуховування, якщо
-  // V.playBoth=false — див. _lfVocabBuildListenUnits().
+  // V.playSide (front/both/back) — див. _lfVocabBuildListenUnits().
   getMultiLangAudioText: function(unit){
     var card = unit.card;
     var activeLangs = ['de','en','uk','ru'].filter(function(l){ return V.langs[l]; });
@@ -10624,7 +10640,7 @@ function _onVocabUnitsDone(){
 // Пасивне прослуховування (кнопка ▶ у плеєрі) — аудіо активованими
 // мовами (V.langs), без кнопки "Далі": переходить до наступної картки
 // сам одразу після озвучення. Лише передня сторона за замовчуванням
-// (V.playBoth), свайп для SM-2 лишається доступним.
+// (V.playSide), свайп для SM-2 лишається доступним.
 function startVocabListenMode(){
   if(typeof VOCAB === 'undefined' || !VOCAB.length) return;
   if(!V.queue || !V.queue.length) V.queue = buildVocabQueue();
@@ -10668,14 +10684,30 @@ function updateVocabPlayerPlayBtn(){
   btn.classList.toggle('pause', V.listening);
 }
 
-// "Передня сторона / обидві" — перемикач у плеєрі, що визначає, чи
-// def-сторона теж потрапляє в чергу пасивного прослуховування.
-function toggleVocabPlayBoth(){
-  V.playBoth = !V.playBoth;
+// "Передня / обидві / задня" — перемикач у плеєрі по колу:
+// front → both → back → front, визначає склад черги прослуховування.
+var VOCAB_PLAY_SIDE_CYCLE = ['front','both','back'];
+var VOCAB_PLAY_SIDE_ICON  = { front:'1️⃣', both:'🔀', back:'2️⃣' };
+var VOCAB_PLAY_SIDE_TITLE = {
+  front: {de:'Nur Vorderseite', uk:'Лише передня сторона', en:'Front only',    ru:'Только лицевая'},
+  both:  {de:'Beide Seiten',    uk:'Обидві сторони',       en:'Both sides',    ru:'Обе стороны'},
+  back:  {de:'Nur Rückseite',   uk:'Лише задня сторона',   en:'Back only',     ru:'Только обратная'},
+};
+
+function cycleVocabPlaySide(){
+  var i = VOCAB_PLAY_SIDE_CYCLE.indexOf(V.playSide);
+  V.playSide = VOCAB_PLAY_SIDE_CYCLE[(i+1) % VOCAB_PLAY_SIDE_CYCLE.length];
   saveSettings();
-  var btn = document.getElementById('vplayboth-btn');
-  if(btn) btn.classList.toggle('on', V.playBoth);
+  updateVocabPlaySideBtn();
   if(V.listening){ stopVocabListenMode(); startVocabListenMode(); }
+}
+
+function updateVocabPlaySideBtn(){
+  var btn = document.getElementById('vplayboth-btn');
+  if(!btn) return;
+  btn.textContent = VOCAB_PLAY_SIDE_ICON[V.playSide] || '1️⃣';
+  btn.title = VOCAB_PLAY_SIDE_TITLE[V.playSide]?.[uiLang] || '';
+  btn.classList.toggle('on', V.playSide !== 'front');
 }
 
 function toggleVocab(){ unlockAudioCtx();
@@ -11207,6 +11239,14 @@ function sbSetDataSource(src){
   var learnTab=document.getElementById('sbt-learn'), examTab=document.getElementById('sbt-exam');
   if(learnTab) learnTab.style.display = src==='gram' ? 'none' : '';
   if(examTab)  examTab.style.display  = src==='gram' ? 'none' : '';
+  // У Граматиці плеєр (▶/⏹/мовні тогли) не використовується — режим
+  // завжди один (Practice), озвучення вже й так автоматичне (як в
+  // уроці). А коли лишається лише 1 з 3 вкладок — сама смуга вкладок
+  // втрачає сенс (нема між чим перемикатись), тому теж ховаємо.
+  var vplayer = document.querySelector('#sb-vocab-top .vplayer');
+  var tabsBar = document.getElementById('sb-tabs-bar');
+  if(vplayer) vplayer.style.display = src==='gram' ? 'none' : '';
+  if(tabsBar) tabsBar.style.display = src==='gram' ? 'none' : '';
   sbRenderCatChips();
   sbSetMode('practice');
 }
