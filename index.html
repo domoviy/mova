@@ -283,6 +283,7 @@ body{
 }
 .vlang-btn.on{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
 .vlang-btn.off{opacity:.35;filter:grayscale(.9)}
+.vlang-btn.lang-unavailable{opacity:.25;filter:grayscale(1);cursor:not-allowed;pointer-events:none}
 
 /* ══ CHIPS ══ */
 .vchips{
@@ -2107,9 +2108,10 @@ body.lesson-active .vocab-top{
 
       <div class="vocab-top">
         <div class="vplayer">
-          <button class="vplay" id="vplaybtn" onclick="toggleVocab()">▶</button>
-          <button class="vstop" onclick="stopVocab()">⏹</button>
+          <button class="vplay" id="vplaybtn" onclick="toggleVocabListenMode()">▶</button>
+          <button class="vstop" onclick="stopVocabListenMode()">⏹</button>
           <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()">🧠</button>
+          <button class="vlang-btn" id="vplayboth-btn" onclick="toggleVocabPlayBoth()" title="Передня сторона / обидві">🔂</button>
           <div class="vlang-grp">
             <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
             <button class="vlang-btn on"  id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
@@ -2118,7 +2120,6 @@ body.lesson-active .vocab-top{
           </div>
           <select id="vf-cat" onchange="resetVocabQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
-        <div class="vchips" id="vchips"></div>
         <div class="vtab-bar" id="vocab-tabs">
           <button class="vtab active" onclick="switchVocabTab(0)">🃏</button>
           <button class="vtab" onclick="switchVocabTab(1)">📋</button>
@@ -2129,6 +2130,7 @@ body.lesson-active .vocab-top{
           <button class="vtab" onclick="switchVocabTab(6)">🔍</button>
           <button class="vtab" onclick="switchVocabTab(7)">🎤</button>
         </div>
+        <div class="vchips" id="vchips" style="display:none"></div>
       </div>
 
       <!-- Картка + прогрес — спільний .card-panel -->
@@ -2388,7 +2390,7 @@ body.lesson-active .vocab-top{
     <div id="view-dialogue" class="view card-view">
 
       <div class="vocab-top">
-        <div class="vplayer">
+        <div class="vplayer" style="display:none">
           <button class="vplay" id="dlgplaybtn" onclick="toggleDialogue()">▶</button>
           <button class="vstop" onclick="stopDialogue()">⏹</button>
           <button class="vseq smart" id="dlgshuffle-btn" onclick="cycleDialogueMode()">🧠</button>
@@ -2400,11 +2402,11 @@ body.lesson-active .vocab-top{
           </div>
           <select id="dlgf-cat" onchange="resetDialogueQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
-        <div class="vchips" id="dlgchips"></div>
         <div class="vtab-bar" id="dialogue-tabs">
           <button class="vtab active" onclick="switchDialogueTab(0)">🃏</button>
           <button class="vtab" onclick="switchDialogueTab(1)">📋</button>
         </div>
+        <div class="vchips" id="dlgchips" style="display:none"></div>
       </div>
 
       <!-- Картка + прогрес -->
@@ -2574,7 +2576,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '337-86dcda0';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3236,6 +3238,12 @@ let V={
   pause:    _s.pause   ??300,
   readPause:_s.readPause??300,
   mode:     _s.mode    ||'smart',
+  // Пасивне прослуховування (плеєр): чи озвучувати лише передню сторону
+  // картки (термін/short) чи обидві (+def). За замовчуванням — лише
+  // передня, це швидший, менш навантажений режим (типове прослуховування
+  // "згадай слово", а не повне вивчення значення).
+  playBoth: _s.playBoth ?? false,
+  listening: false, // чи зараз активне пасивне прослуховування (не персистимо)
   srsRating:  null,  // поточна оцінка SM-2 (1/3/5), null = ще не оцінено
   lessonId:   null,  // id активного уроку або null
   lessonCards: [],   // картки активного уроку
@@ -3344,7 +3352,7 @@ function syncFontSizeSlider(){
 function saveSettings(){
   localStorage.setItem('mova_settings',JSON.stringify({
     speed:V.speed, repeats:V.repeats,
-    pause:V.pause, readPause:V.readPause, mode:V.mode
+    pause:V.pause, readPause:V.readPause, mode:V.mode, playBoth:V.playBoth
   }));
 }
 // ── SM-2 ENGINE ───────────────────────────────────────────────
@@ -4651,6 +4659,15 @@ function urlToAudioMkey(url){
   return url.replace(/^audio\//, '').replace(/\.mp3$/, '');
 }
 
+// Чи є pregen-аудіо для картки+поля+мови — за манефестом (без мережевого
+// запиту). Якщо маніфест ще не завантажився — не блокуємо UI (true),
+// той самий консервативний підхід, що й у isAudioCacheValid().
+function hasAudioFor(cardId, field, lang){
+  if(!audioManifest) return true;
+  var mkey = urlToAudioMkey(getAudioUrl(cardId, field, lang));
+  return mkey in audioManifest;
+}
+
 // fetchAudioBlob → замінено на fetchAudioBuffer (Web Audio API)
 
 async function playPregenAudio(url, onEnd, gen){
@@ -4855,12 +4872,16 @@ function showView(id){
   if(id==='settings')syncFontSizeSlider();
   if(id==='settings'){renderStreakUI();renderTempoRow();try{srRenderDashboard();}catch(e){}}
   if(id==='lernpfad'){renderLernpfad();}
-  // Якщо переходимо не в урок — прибираємо артефакти lesson-result і lf-sb-next-btn
+  // Якщо переходимо не в урок — прибираємо артефакти lesson-result,
+  // lf-sb-next-btn, і будь-яку активну сесію рушія карток (аудіо, кнопка
+  // "Далі") — інакше вона лишається "висіти" поверх геть іншої вкладки
+  // (напр. Налаштувань), бо нічого раніше не прибирало її при навігації.
   if(!LF){
     const lr=document.getElementById('lesson-result');
     if(lr) lr.classList.remove('show');
     const sb=document.getElementById('lf-sb-next-btn');
     if(sb) sb.remove();
+    if(id!=='vocab' && id!=='dialogue') _lfUnitTeardown();
   }
   document.getElementById('content').scrollTo(0,0);
 }
@@ -4893,7 +4914,7 @@ function wasAudioPlayedForCard(cardId){
 }
 
 // ── VOCAB ─────────────────────────────────────────────────────
-function initVocab(){initVocabFilters();applyVocabLangUI();if(V.queue.length===0)V.queue=buildVocabQueue();renderVocabCard();}
+function initVocab(){initVocabFilters();applyVocabLangUI();if(V.queue.length===0)V.queue=buildVocabQueue();startVocabCardMode();}
 function initVocabFilters(){
   if(typeof CATS === 'undefined') return; // курс ще не завантажено
   const sel=document.getElementById('vf-cat');if(!sel||sel.options.length>1)return;
@@ -8822,22 +8843,57 @@ function _lfGrammarButton(card){
   return { icon: '📖', onClick: function(){ showGrammarModal(card.gram); } };
 }
 
-function lfRunUnitStep(units, handlers, onAllDone){
-  if(!LF || !units || !units.length){ onAllDone ? onAllDone() : lfNextStep(); return; }
-  _lfUnit = { units: units, idx: 0, handlers: handlers, onAllDone: onAllDone };
-  LF.unitProgress = { done: 0, total: units.length };
+// Куди має "жити" #lf-unit-card прямо зараз — єдиний спільний елемент,
+// що використовується і для уроку (усередині #vocab-panel-card), і для
+// самостійного перегляду Dialogue (усередині #dlg-panel-card). Виклик
+// без аргументу (з lfRunUnitStep при LF truthy) завжди повертає його
+// "додому" в урок — інакше картка уроку могла б лишитись невидимою,
+// якщо перед цим користувач переглядав Dialogue самостійно.
+function _relocateUnitCard(targetParentId){
+  var el = document.getElementById('lf-unit-card');
+  var target = document.getElementById(targetParentId);
+  if(el && target && el.parentElement !== target){
+    target.appendChild(el);
+  }
+}
 
-  // Ховаємо старий vocab-UI (.fc-area з 3D-флипом, плеєр, прогрес-смугу
-  // картки) — #lf-unit-card повністю замінює їх для будь-якого типу
-  // юнітів (vocab/SB/...), завжди в межах view-vocab.
+function lfRunUnitStep(units, handlers, onAllDone, opts){
+  if(!units || !units.length){ onAllDone ? onAllDone() : (LF && lfNextStep()); return; }
+  // autoAdvance (опційно) — режим пасивного прослуховування: після
+  // аудіо одразу переходимо до наступної картки самі, без кнопки
+  // "Далі" (див. startVocabListenMode()). За замовчуванням false —
+  // звичайний ручний режим з кнопкою "Далі" (як завжди).
+  _lfUnit = { units: units, idx: 0, handlers: handlers, onAllDone: onAllDone, autoAdvance: !!(opts && opts.autoAdvance) };
+
+  // У справжньому уроці — завжди повертаємо картку в її "домашній"
+  // контейнер (#vocab-panel-card), незалежно від того, де вона могла
+  // лишитись після самостійного перегляду Dialogue.
+  if(LF){
+    _relocateUnitCard('vocab-panel-card');
+    LF.unitProgress = { done: 0, total: units.length };
+  }
+
+  // Ховаємо старий vocab-UI (.fc-area з 3D-флипом, прогрес-смугу картки)
+  // — #lf-unit-card повністю замінює їх для будь-якого типу юнітів
+  // (vocab/SB/dialogue/...), завжди в межах view-vocab. Ці елементи
+  // більше нікому не потрібні (і в уроці, і в самостійному перегляді),
+  // тож ховаємо безумовно.
   var fcArea = document.getElementById('fc-area');
   if(fcArea) fcArea.style.display = 'none';
   var vprogrow = document.querySelector('#vocab-panel-card .vprogrow-flow');
   if(vprogrow) vprogrow.style.display = 'none';
-  var vplayer = document.querySelector('#view-vocab .vplayer');
-  if(vplayer) vplayer.style.display = 'none';
+  // .vplayer (Vocab) — на відміну від fc-area/vprogrow, тут ховаємо
+  // ЛИШЕ в справжньому уроці (потрібен повноекранний фокус без плеєра).
+  // У самостійному перегляді (LF немає) плеєр — свідомо активний
+  // елемент (передня/обидві сторони, мовні кнопки прослуховування) і
+  // не повинен ховатись. Dialogue-плеєр ховається окремо, назавжди,
+  // прямо в розмітці (він там взагалі не потрібен) — цього коду не стосується.
+  if(LF){
+    var vplayer = document.querySelector('#view-vocab .vplayer');
+    if(vplayer) vplayer.style.display = 'none';
+  }
 
-  lfRenderBar();
+  if(LF) lfRenderBar();
 
   setTimeout(function(){
     var el = document.getElementById('lf-unit-card');
@@ -8864,7 +8920,6 @@ function _lfUnitSwipe(dir){
 }
 
 function _lfUnitShow(){
-  if(!LF) return;
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit){ _lfUnitStepDone(); return; }
 
@@ -8873,9 +8928,19 @@ function _lfUnitShow(){
 
   _lfUnit.handlers.render(unit);
 
-  var items = _lfUnit.handlers.getAudioText(unit) || [];
+  // У режимі пасивного прослуховування (autoAdvance) — мультимовне
+  // аудіо за активованими мовами (getMultiLangAudioText), якщо handler
+  // його підтримує; інакше — звичайний одномовний getAudioText.
+  var items = (_lfUnit.autoAdvance && _lfUnit.handlers.getMultiLangAudioText)
+    ? (_lfUnit.handlers.getMultiLangAudioText(unit) || [])
+    : (_lfUnit.handlers.getAudioText(unit) || []);
+
   _lfUnitPlay(items, function(){
-    _lfUnitShowNextBtn();
+    if(_lfUnit.autoAdvance){
+      setTimeout(_lfUnitAdvance, V.pause);
+    } else {
+      _lfUnitShowNextBtn();
+    }
   });
 }
 
@@ -8892,7 +8957,9 @@ function _lfUnitPlay(items, onDone){
     if(i >= items.length){ onDone(); return; }
     var item = items[i++];
     if(!item || !item.text){ next(); return; }
-    speak(item.text, primaryLang(), function(){
+    // item.lang — опційно (мультимовне прослуховування); за замовчуванням
+    // primaryLang(), як і раніше для всіх існуючих викликів.
+    speak(item.text, item.lang || primaryLang(), function(){
       if(myToken !== _lfUnitPlayToken) return;
       setTimeout(next, V.pause);
     }, _lfUnit.units[_lfUnit.idx].cardId, item.field);
@@ -8945,23 +9012,32 @@ function _lfUnitShowNextBtn(){
   nextBtn.textContent = typeof t === 'function' ? t('btn_sb_weiter') : 'Далі →';
   nextBtn.onclick = function(){
     row.remove();
-    // onNext може повернути true, якщо юніт ще не завершено (напр.
-    // Dialogue: питання дограло → «Далі» розкриває відповідь, а не
-    // переходить до наступної картки) — тоді не зрушуємо idx/прогрес,
-    // просто перерендерюємо той самий юніт.
-    var notDone = unit && _lfUnit.handlers.onNext && _lfUnit.handlers.onNext(unit);
-    if(notDone){
-      _lfUnitShow();
-      return;
-    }
-    _lfUnit.idx++;
-    LF.unitProgress = { done: _lfUnit.idx, total: _lfUnit.units.length };
-    lfRenderBar();
-    _lfUnitShow();
+    _lfUnitAdvance();
   };
 
   row.appendChild(nextBtn);
   document.body.appendChild(row);
+}
+
+// Спільна логіка переходу до наступного юніта — використовується і
+// кнопкою "Далі" (ручний режим), і авто-переходом (пасивне
+// прослуховування, autoAdvance). onNext може повернути true, якщо юніт
+// ще не завершено (напр. Dialogue: питання дограло → "Далі"/авто-перехід
+// розкриває відповідь, а не переходить до наступної картки) — тоді не
+// зрушуємо idx/прогрес, просто перерендерюємо той самий юніт.
+function _lfUnitAdvance(){
+  var unit = _lfUnit.units[_lfUnit.idx];
+  var notDone = unit && _lfUnit.handlers.onNext && _lfUnit.handlers.onNext(unit);
+  if(notDone){
+    _lfUnitShow();
+    return;
+  }
+  _lfUnit.idx++;
+  if(LF){
+    LF.unitProgress = { done: _lfUnit.idx, total: _lfUnit.units.length };
+    lfRenderBar();
+  }
+  _lfUnitShow();
 }
 
 function _lfUnitStepDone(){
@@ -8977,6 +9053,23 @@ function _lfUnitStepDone(){
   _lfUnit = { units: [], idx: 0, handlers: null, onAllDone: null };
   if(onAllDone) onAllDone();
   else lfNextStep();
+}
+
+// Перериває поточну сесію рушія карток БЕЗ виклику onAllDone (на
+// відміну від _lfUnitStepDone) — використовується, коли користувач
+// просто НАВІГУЄ ГЕТЬ (інша вкладка/view), а не коли черга природно
+// завершилась. Без цього кнопка "Далі" (і активне аудіо) лишались би
+// висіти поверх геть іншої вкладки — нічого раніше не прибирало їх при
+// простій навігації.
+function _lfUnitTeardown(){
+  _lfUnitPlayToken++;
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  var row = document.getElementById('lf-next-row');
+  if(row) row.remove();
+  SwipeManager.destroy(document.getElementById('lf-unit-card'));
+  V.listening = false;
+  if(typeof updateVocabPlayerPlayBtn === 'function') updateVocabPlayerPlayBtn();
 }
 
 // ── VOCAB CARD step (lesson flow) — реалізація на базі lfRunUnitStep ──
@@ -8998,6 +9091,38 @@ function _lfVocabBuildUnits(){
     // порожнім/зламаним. Пропускаємо його повністю для таких карток.
     if(card.def && card.def[pl]) {
       units.push({ kind:'vocab', cardId: card.id, side:'def',  card: card });
+    }
+  });
+  return units;
+}
+
+// Вимикає кнопку мови в плеєрі, якщо для ПОТОЧНОЇ картки немає аудіо цією
+// мовою (навіть якщо загалом генерація для мови пройшла успішно — окреме
+// слово могло не згенеруватись, напр. через тимчасову помилку TTS).
+function updateVocabLangButtons(unit){
+  var card = unit.card;
+  var field = unit.side === 'term' ? 'term' : 'def';
+  ['de','en','uk','ru'].forEach(function(lang){
+    var btn = document.getElementById('vlcard-'+lang);
+    if(!btn) return;
+    var text = card[field] && card[field][lang];
+    var available = !!text && hasAudioFor(card.id, field, lang);
+    btn.classList.toggle('lang-unavailable', !available);
+  });
+}
+
+// Черга юнітів для пасивного прослуховування — на відміну від
+// _lfVocabBuildUnits() (завжди term+def для уроку), тут def-юніт
+// додається лише якщо V.playBoth=true ("обидві сторони"). За
+// замовчуванням (playBoth=false) — лише передня сторона (term/short).
+function _lfVocabBuildListenUnits(){
+  var cards = V.queue || [];
+  var units = [];
+  var pl = primaryLang();
+  cards.forEach(function(card){
+    units.push({ kind:'vocab', cardId: card.id, side:'term', card: card });
+    if(V.playBoth && card.def && card.def[pl]){
+      units.push({ kind:'vocab', cardId: card.id, side:'def', card: card });
     }
   });
   return units;
@@ -9089,6 +9214,31 @@ var _lfVocabHandlers = {
 
     var cardEl = document.getElementById('lf-unit-card');
     if(cardEl) cardEl.style.display = 'flex';
+
+    // Оновлюємо доступність мовних кнопок плеєра під ЦЮ картку — аудіо
+    // може бути відсутнім для якоїсь мови конкретно тут, навіть якщо
+    // загалом генерація пройшла успішно (напр. TTS-помилка саме на
+    // цьому слові). У самому уроці елементів плеєра нема (сховані), тож
+    // це безпечний no-op у тому контексті.
+    if(typeof updateVocabLangButtons === 'function') updateVocabLangButtons(unit);
+  },
+
+  // Мультимовне аудіо для пасивного прослуховування (плеєр, ▶) —
+  // активовані мови (V.langs) замість лише primaryLang. Задня сторона
+  // (def) взагалі не потрапляє в чергу прослуховування, якщо
+  // V.playBoth=false — див. _lfVocabBuildListenUnits().
+  getMultiLangAudioText: function(unit){
+    var card = unit.card;
+    var activeLangs = ['de','en','uk','ru'].filter(function(l){ return V.langs[l]; });
+    var fields = unit.side === 'term' ? ['term','short'] : ['def'];
+    var items = [];
+    activeLangs.forEach(function(lang){
+      fields.forEach(function(field){
+        var text = card[field] && card[field][lang];
+        if(text) items.push({ text: text, field: field, lang: lang });
+      });
+    });
+    return items;
   },
 
   getAudioText: function(unit){
@@ -10047,8 +10197,7 @@ function resetDialogueQ(){
 function initDialogue(){
   initDialogueFilters();
   applyDialogueLangUI();
-  if(D.queue.length===0) D.queue=buildDialogueQueue();
-  renderDialogueCard();
+  startDialogueCardMode();
 }
 function initDialogueFilters(){
   if(typeof DIALOGE==='undefined' || typeof CATS==='undefined') return;
@@ -10297,10 +10446,58 @@ function speakDialogueA(d,langs,i,done){
 
 // ── ВКЛАДКИ (🃏 картки / 📋 список) ─────────────────────────────
 function switchDialogueTab(tab){
+  if(tab!==0 && !LF) _lfUnitTeardown();
   document.querySelectorAll('#dialogue-tabs .vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
   document.getElementById('dlg-panel-card').style.display   = tab===0?'flex':'none';
   document.getElementById('dlg-panel-browse').style.display = tab===1?'block':'none';
+  const chips=document.getElementById('dlgchips'); if(chips) chips.style.display = tab===1?'':'none';
   if(tab===1) renderDialogueBrowse();
+  else startDialogueCardMode();
+}
+
+// Самостійний перегляд Dialogue (вкладка 🃏) — той самий принцип, що й
+// у кроці "dlg_learn" уроку: месенджер-бульбашки, аудіо грає автоматично,
+// кнопка "Далі" зʼявляється лише після завершення озвучення (чи одразу,
+// якщо аудіо недоступне), свайп вгору/вниз — SM-2 оцінка. Замінює стару
+// flip-картку (dlg-fc-area) і плеєр зверху — вони більше не потрібні,
+// бо аудіо й "Далі" вже й так керують послідовністю.
+//
+// Перевикористовує lfRunUnitStep()/_lfDlgHandlers 1:1 (той самий рушій,
+// що й в уроці) — єдина відмінність: LF тут null (це не урок), тож
+// #lf-unit-card тимчасово "переїжджає" в #dlg-panel-card (замість
+// #vocab-panel-card) на час самостійного перегляду. lfRunUnitStep()
+// сам поверне картку назад в урок, якщо користувач пізніше почне
+// справжній урок (див. _relocateUnitCard).
+// Спільна частина для startDialogueCardMode()/openDialogueCard() —
+// ховає старий flip-UI, переносить #lf-unit-card у вкладку Dialogue,
+// і запускає D.queue через той самий рушій, що й урок.
+function _runDialogueQueueAsUnits(){
+  var fcArea = document.getElementById('dlg-fc-area');
+  if(fcArea) fcArea.style.display = 'none';
+  var vprogrow = document.querySelector('#dlg-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = 'none';
+
+  _relocateUnitCard('dlg-panel-card');
+
+  var units = D.queue.map(function(card){
+    return { kind:'dlg', cardId: card.id, side:'main', card: card, aShown: false };
+  });
+
+  lfRunUnitStep(units, _lfDlgHandlers, _onDialogueUnitsDone);
+}
+
+function startDialogueCardMode(){
+  if(typeof DIALOGE === 'undefined' || !DIALOGE.length) return;
+  if(!D.queue || !D.queue.length) D.queue = buildDialogueQueue();
+  _runDialogueQueueAsUnits();
+}
+
+// Черга закінчилась — самостійний перегляд не має "завершення" як урок,
+// тож просто перебудовуємо чергу (SM-2/пріоритет уже оновились після
+// оцінок) і продовжуємо безперервно.
+function _onDialogueUnitsDone(){
+  D.queue = buildDialogueQueue();
+  if(D.queue.length) startDialogueCardMode();
 }
 // Спільний рядок-картка для списків "Усі картки"/Закладки (Vocab,
 // Dialogue, Favorites) — раніше кожен з трьох render*-методів дублював
@@ -10332,14 +10529,20 @@ function renderDialogueBrowse(){
 function openDialogueCard(dlgIdx){
   const card=DIALOGE[dlgIdx]; if(!card) return;
   if(!D.queue.length) D.queue=buildDialogueQueue();
+  // Ротуємо чергу так, щоб клікнута картка йшла ПЕРШОЮ — решта черги
+  // продовжує природним порядком одразу після неї (не губимо контекст
+  // решти карток, просто починаємо саме з цієї).
   const qIdx=D.queue.findIndex(c=>c.id===card.id);
-  if(qIdx!==-1){ D.idx=qIdx; }
-  else{ D.queue.unshift(card); D.idx=0; }
-  D.flipped=false;
-  renderDialogueCard();
+  if(qIdx!==-1){
+    D.queue = D.queue.slice(qIdx).concat(D.queue.slice(0, qIdx));
+  } else {
+    D.queue.unshift(card);
+  }
   document.querySelectorAll('#dialogue-tabs .vtab').forEach((t,i)=>t.classList.toggle('active',i===0));
-  document.getElementById('dlg-panel-card').style.display='';
+  document.getElementById('dlg-panel-card').style.display='flex';
   document.getElementById('dlg-panel-browse').style.display='none';
+  const chips=document.getElementById('dlgchips'); if(chips) chips.style.display='none';
+  _runDialogueQueueAsUnits();
 }
 
 // ── ЧІПИ КАТЕГОРІЙ ───────────────────────────────────────────
@@ -10363,9 +10566,11 @@ function setDialogueCat(id,btn){
   document.querySelectorAll('#dlgchips .chip').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
   window.mlog?.('dialogue_category_selected',{cat:id});
-  resetDialogueQ();
-  const browse=document.getElementById('dlg-panel-browse');
-  if(browse && browse.style.display!=='none') renderDialogueBrowse();
+  // Перебудовуємо чергу карток (застосується наступного разу, коли
+  // повернуться на 🃏) і одразу відкриваємо СПИСОК цієї категорії —
+  // клік на чіп веде до списку, а не лишається на поточній вкладці.
+  D.queue = buildDialogueQueue();
+  switchDialogueTab(1);
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{
@@ -10386,6 +10591,93 @@ window.addEventListener('DOMContentLoaded', ()=>{
 });
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
+// ── Vocab card-mode (той самий рушій, що й урок) ────────────────
+// Спільна частина: ховає старий flip-UI (fc-area), переносить
+// #lf-unit-card у #vocab-panel-card (могла "переїхати" в Dialogue, якщо
+// користувач перед цим переглядав його — див. _relocateUnitCard) і
+// запускає задані юніти через lfRunUnitStep.
+function _runVocabQueueAsUnits(units, autoAdvance, onAllDone){
+  var fcArea = document.getElementById('fc-area');
+  if(fcArea) fcArea.style.display = 'none';
+  var vprogrow = document.querySelector('#vocab-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = 'none';
+
+  _relocateUnitCard('vocab-panel-card');
+
+  lfRunUnitStep(units, _lfVocabHandlers, onAllDone, { autoAdvance: autoAdvance });
+}
+
+// Звичайний (ручний) режим перегляду — картка, аудіо один раз, кнопка
+// "Далі" після нього, свайп вгору/вниз для SM-2. Викликається при вході
+// на вкладку 🃏 і після завершення черги (нескінченний перегляд).
+function startVocabCardMode(){
+  if(typeof VOCAB === 'undefined' || !VOCAB.length) return;
+  if(!V.queue || !V.queue.length) V.queue = buildVocabQueue();
+  _runVocabQueueAsUnits(_lfVocabBuildUnits(), false, _onVocabUnitsDone);
+}
+
+function _onVocabUnitsDone(){
+  V.queue = buildVocabQueue();
+  if(V.queue.length) startVocabCardMode();
+}
+
+// Пасивне прослуховування (кнопка ▶ у плеєрі) — аудіо активованими
+// мовами (V.langs), без кнопки "Далі": переходить до наступної картки
+// сам одразу після озвучення. Лише передня сторона за замовчуванням
+// (V.playBoth), свайп для SM-2 лишається доступним.
+function startVocabListenMode(){
+  if(typeof VOCAB === 'undefined' || !VOCAB.length) return;
+  if(!V.queue || !V.queue.length) V.queue = buildVocabQueue();
+  var units = _lfVocabBuildListenUnits();
+  if(!units.length) return;
+  V.listening = true;
+  updateVocabPlayerPlayBtn();
+  _runVocabQueueAsUnits(units, true, _onVocabListenDone);
+}
+
+function stopVocabListenMode(){
+  _lfUnitPlayToken++; // скасовує будь-яку активну послідовність відтворення
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  V.listening = false;
+  updateVocabPlayerPlayBtn();
+  startVocabCardMode(); // повертаємось у звичайний ручний режим
+}
+
+function toggleVocabListenMode(){
+  unlockAudioCtx();
+  if(V.listening) stopVocabListenMode();
+  else startVocabListenMode();
+}
+
+function _onVocabListenDone(){
+  // Черга прослуховування закінчилась природно (не через ⏹) —
+  // перебудовуємо (SM-2 пріоритети вже оновились) і продовжуємо, поки
+  // користувач сам не натисне ⏹.
+  if(!V.listening) return;
+  V.queue = buildVocabQueue();
+  var units = _lfVocabBuildListenUnits();
+  if(units.length) _runVocabQueueAsUnits(units, true, _onVocabListenDone);
+  else stopVocabListenMode();
+}
+
+function updateVocabPlayerPlayBtn(){
+  var btn = document.getElementById('vplaybtn');
+  if(!btn) return;
+  btn.textContent = V.listening ? '⏸' : '▶';
+  btn.classList.toggle('pause', V.listening);
+}
+
+// "Передня сторона / обидві" — перемикач у плеєрі, що визначає, чи
+// def-сторона теж потрапляє в чергу пасивного прослуховування.
+function toggleVocabPlayBoth(){
+  V.playBoth = !V.playBoth;
+  saveSettings();
+  var btn = document.getElementById('vplayboth-btn');
+  if(btn) btn.classList.toggle('on', V.playBoth);
+  if(V.listening){ stopVocabListenMode(); startVocabListenMode(); }
+}
+
 function toggleVocab(){ unlockAudioCtx();
   if(!V.playing){
     if(!V.queue.length)V.queue=buildVocabQueue();
@@ -10626,6 +10918,10 @@ function resetStreak(){
 function switchVocabTab(tab){
   // Зупиняємо запис при переключенні
   if(typeof spState!=='undefined' && spState.recording) spStopRecord();
+  // Йдемо геть з картки (tab!==0) — прибираємо активну сесію рушія
+  // (аудіо, кнопку "Далі"), інакше вона лишається висіти й на інших
+  // під-вкладках Словника (список/парі/тести тощо).
+  if(tab!==0 && !LF) _lfUnitTeardown();
   document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===tab));
   document.getElementById('vocab-panel-card').style.display   = tab===0?'flex':'none';
   document.getElementById('vocab-panel-browse').style.display = tab===1?'block':'none';
@@ -10635,6 +10931,8 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
+  const chips=document.getElementById('vchips'); if(chips) chips.style.display = tab===1?'':'none';
+  if(tab===0 && !(LF && (LF.steps[LF.step]==='cards'))) startVocabCardMode();
   if(tab===1) renderVocabBrowse();
   if(tab===2 && !(LF && (LF.steps[LF.step]==='matching' || LF.steps[LF.step]?.startsWith('matching_x')))) startMatching();
   if(tab===3 && !(LF && LF.steps[LF.step]==='choice'))   startMultipleChoice();
@@ -10653,15 +10951,19 @@ function renderVocabBrowse(){
 function openVocabCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
   if(!V.queue.length)V.queue=buildVocabQueue();
-  // Знаходимо картку у черзі за id
+  // Ротуємо чергу так, щоб клікнута картка йшла ПЕРШОЮ — решта черги
+  // продовжує природним порядком одразу після неї.
   const qIdx=V.queue.findIndex(c=>c.id===card.id);
-  if(qIdx!==-1){V.idx=qIdx;}
-  else{V.queue.unshift(card);V.idx=0;} // якщо не в черзі — ставимо першою
-  V.flipped=false;
-  renderVocabCard();
+  if(qIdx!==-1){
+    V.queue = V.queue.slice(qIdx).concat(V.queue.slice(0, qIdx));
+  } else {
+    V.queue.unshift(card);
+  }
   document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active',i===0));
-  document.getElementById('vocab-panel-card').style.display='';
+  document.getElementById('vocab-panel-card').style.display='flex';
   document.getElementById('vocab-panel-browse').style.display='none';
+  const chips=document.getElementById('vchips'); if(chips) chips.style.display='none';
+  _runVocabQueueAsUnits(_lfVocabBuildUnits(), false, _onVocabUnitsDone);
 }
 
 // ── CHIPS ─────────────────────────────────────────────────────
