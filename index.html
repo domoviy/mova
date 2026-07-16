@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '341-b1974ee';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4879,7 +4879,12 @@ function showView(id){
   // lf-sb-next-btn, і будь-яку активну сесію рушія карток (аудіо, кнопка
   // "Далі") — інакше вона лишається "висіти" поверх геть іншої вкладки
   // (напр. Налаштувань), бо нічого раніше не прибирало її при навігації.
-  if(!LF){
+  // Якщо урок ще НЕЗАВЕРШЕНИЙ (LF активний) і користувач іде геть через
+  // нижнє меню — це не штатне завершення (exitLessonFlow тут не
+  // викликається), тож абортуємо сесію без зарахування результату.
+  if(LF && id!=='vocab' && id!=='dialogue'){
+    abandonLessonFlow();
+  } else if(!LF){
     const lr=document.getElementById('lesson-result');
     if(lr) lr.classList.remove('show');
     const sb=document.getElementById('lf-sb-next-btn');
@@ -4917,7 +4922,14 @@ function wasAudioPlayedForCard(cardId){
 }
 
 // ── VOCAB ─────────────────────────────────────────────────────
-function initVocab(){initVocabFilters();applyVocabLangUI();updateVocabPlaySideBtn();if(V.queue.length===0)V.queue=buildVocabQueue();startVocabCardMode();}
+function initVocab(){initVocabFilters();applyVocabLangUI();updateVocabPlaySideBtn();if(V.queue.length===0)V.queue=buildVocabQueue();
+  // Автозапуск озвучення лише коли вкладку Vocab реально видно (напр.
+  // явний перехід showView('vocab')) — initVocab() також викликається зі
+  // switchCourse() при зміні курсу, коли на екрані геть інший view, і
+  // раніше в цьому випадку теж зайво стартувало озвучення випадкової
+  // картки нового курсу.
+  if(document.getElementById('view-vocab')?.classList.contains('active')) startVocabCardMode();
+}
 function initVocabFilters(){
   if(typeof CATS === 'undefined') return; // курс ще не завантажено
   const sel=document.getElementById('vf-cat');if(!sel||sel.options.length>1)return;
@@ -9881,6 +9893,70 @@ function _quizShowResult(){
   }
 }
 
+// Перериває активну сесію уроку БЕЗ зарахування результату (стрік/
+// subtestStats/час) — на відміну від exitLessonFlow(), яку викликають
+// лише при штатному завершенні уроку. Потрібна для випадку, коли
+// користувач іде геть із НЕЗАВЕРШЕНОГО уроку через нижнє меню (напр.
+// тицяє "Lernpfad" ще раз чи "Налаштування" прямо посеред уроку) —
+// showView() тоді викликається напряму, минаючи exitLessonFlow(), і без
+// цієї функції кнопка "Далі" та активне аудіо лишались висіти поверх
+// геть іншої вкладки, бо LF ще не скидався в null. Дублює лише DOM/стан
+// прибирання з exitLessonFlow(), без srRecordLesson().
+function abandonLessonFlow(){
+  if(!LF) return;
+  stopVocab();
+  sbStopPlay();
+  LF = null;
+  V.lessonId = null; V.lessonCards = [];
+  V.queue = []; V.idx = 0;
+  quizState = null;
+  _lfUnitPlayToken++;
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  document.getElementById('lf-next-row')?.remove();
+  SwipeManager.destroy(document.getElementById('lf-unit-card'));
+  const unitCard = document.getElementById('lf-unit-card');
+  if(unitCard) unitCard.style.display = 'none';
+  const fcArea = document.getElementById('fc-area');
+  if(fcArea) fcArea.style.display = '';
+  const vprogrowFlow = document.querySelector('#vocab-panel-card .vprogrow-flow');
+  if(vprogrowFlow) vprogrowFlow.style.display = '';
+  _lfUnit = { units: [], idx: 0, handlers: null, onAllDone: null };
+  if(typeof window._preLessonVocabMode !== 'undefined' && window._preLessonVocabMode !== null){
+    V.mode = window._preLessonVocabMode;
+    window._preLessonVocabMode = null;
+    const _vshBtn = document.getElementById('vshuffle-btn');
+    if(_vshBtn){
+      const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};
+      _vshBtn.classList.remove('smart','shuffle');
+      _vshBtn.textContent=cfg.icon;
+      if(cfg.cls) _vshBtn.classList.add(cfg.cls);
+    }
+  }
+  var sbVT = document.getElementById('sb-vocab-top');
+  if(sbVT){
+    var tb = sbVT.querySelector('.vtab-bar'); if(tb) tb.style.display='';
+    var ch = document.getElementById('sb-cat-chips'); if(ch) ch.style.display='';
+    var pl = sbVT.querySelector('.vplayer'); if(pl) pl.style.display='';
+  }
+  var sbBtn = document.getElementById('lf-sb-next-btn');
+  if(sbBtn) sbBtn.remove();
+  sbHideFeedbackModal();
+  const bar=document.getElementById('lesson-flow-bar');
+  if(bar){ bar.classList.remove('active'); }
+  document.documentElement.style.setProperty('--lf-bar-h','0px');
+  const resultEl=document.getElementById('lesson-result');
+  if(resultEl) resultEl.classList.remove('show');
+  const vocabTop=document.querySelector('.vocab-top');
+  if(vocabTop) vocabTop.style.display='';
+  const dlgTop = document.querySelector('#view-dialogue .vocab-top');
+  if(dlgTop) dlgTop.style.display='';
+  document.getElementById('dlg-panel-card')?.classList.remove('lesson-fullcard');
+  document.getElementById('sb-panel-learn')?.classList.remove('lesson-fullcard');
+  lfSetLessonMode(false);
+  switchVocabTab(0);
+}
+
 function exitLessonFlow(){
   // Зараховуємо урок (стрік, subtestStats, час) РІВНО ОДИН РАЗ — саме тут,
   // при явному підтвердженні завершення. LF._recorded захищає від
@@ -9951,8 +10027,15 @@ function exitLessonFlow(){
   document.getElementById('dlg-panel-card')?.classList.remove('lesson-fullcard');
   document.getElementById('sb-panel-learn')?.classList.remove('lesson-fullcard');
   lfSetLessonMode(false);
-  switchVocabTab(0);
+  // ВАЖЛИВО: showView('lernpfad') має йти ПЕРЕД switchVocabTab(0) — інакше
+  // #view-vocab у момент виклику switchVocabTab(0) ще формально активний,
+  // і вона (як звичайний перехід на вкладку "Картки") стартує озвучення
+  // випадкової картки словника й наново створює кнопку "Далі" вже ПІСЛЯ
+  // завершення уроку. showView() спершу перемикає активний view, тож
+  // switchVocabTab(0) після нього лише скидає індекс під-вкладки на
+  // майбутнє (без побічного автозапуску — див. guard у самій функції).
   showView('lernpfad');
+  switchVocabTab(0);
 }
 
 function restartLessonFlow(){
@@ -10955,6 +11038,14 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
   const chips=document.getElementById('vchips'); if(chips) chips.style.display = tab===1?'':'none';
+  // Автозапуск озвучення/рендеру під-вкладки має сенс лише коли вкладку
+  // Vocab РЕАЛЬНО видно користувачу. switchVocabTab() також викликається
+  // як службова "скинути стан на індекс 0" утиліта з initVocab() (при
+  // зміні курсу), exitLessonFlow() і abandonLessonFlow() (при виході з
+  // уроку) — саме тоді, коли на екрані вже геть інший view. Без цієї
+  // перевірки такий "службовий" виклик так само запускав озвучення
+  // випадкової картки і показував кнопку "Далі" поверх чужого екрана.
+  if(!document.getElementById('view-vocab')?.classList.contains('active')) return;
   if(tab===0 && !(LF && (LF.steps[LF.step]==='cards'))) startVocabCardMode();
   if(tab===1) renderVocabBrowse();
   if(tab===2 && !(LF && (LF.steps[LF.step]==='matching' || LF.steps[LF.step]?.startsWith('matching_x')))) startMatching();
