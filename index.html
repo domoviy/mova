@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '343-f52f485';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3231,7 +3231,14 @@ let V={
   repeats:  _s.repeats ??1,
   pause:    _s.pause   ??300,
   readPause:_s.readPause??300,
-  mode:     _s.mode    ||'smart',
+  // Режим сортування картки: 'srs' — справжній SM-2 (прострочені +
+  // пріоритет), 'smart' — проста евристика (перегляди/обране/днів з
+  // останнього разу, БЕЗ SM-2), 'random', 'seq'. За замовчуванням для
+  // нових користувачів (без збереженого _s.mode) — саме 'srs': це і є
+  // "розумне" сортування, яке має відповідати SB.sortMode='smart' у
+  // Sprachbausteine/Граматиці (там 'smart' — це вже справжній SM-2,
+  // назва просто відрізняється між Vocab і SB історично).
+  mode:     _s.mode    ||'srs',
   // Пасивне прослуховування (плеєр): яку сторону картки озвучувати —
   // 'front' (лише термін/short), 'both' (+ визначення), 'back' (лише
   // визначення). Перемикається по колу кнопкою 🔂.
@@ -8934,6 +8941,12 @@ function _lfUnitSwipe(dir){
   else               _lfUnit.handlers.onSwipeDown(unit);
 }
 
+// Прапорець: пропустити автоозвучення для НАСТУПНОГО показу картки один
+// раз. Використовується, коли повертаємось у ручний режим одразу після
+// явного ⏹ у пасивному прослуховуванні — картку щойно чули, повторне
+// озвучення тієї самої миті сприймається як баг, а не фіча.
+var _lfSkipNextAutoplay = false;
+
 function _lfUnitShow(){
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit){ _lfUnitStepDone(); return; }
@@ -8950,13 +8963,21 @@ function _lfUnitShow(){
     ? (_lfUnit.handlers.getMultiLangAudioText(unit) || [])
     : (_lfUnit.handlers.getAudioText(unit) || []);
 
-  _lfUnitPlay(items, function(){
+  var afterPlay = function(){
     if(_lfUnit.autoAdvance){
       setTimeout(_lfUnitAdvance, V.pause);
     } else {
       _lfUnitShowNextBtn();
     }
-  });
+  };
+
+  if(_lfSkipNextAutoplay){
+    _lfSkipNextAutoplay = false;
+    afterPlay();
+    return;
+  }
+
+  _lfUnitPlay(items, afterPlay);
 }
 
 var _lfUnitPlayToken = 0;
@@ -9131,8 +9152,14 @@ function updateVocabLangButtons(unit){
 // від V.playSide: 'front' — лише term, 'both' — term+def, 'back' —
 // лише def (якщо def[primaryLang] відсутній, картка просто пропускається
 // у 'back'-режимі — озвучувати нічого).
-function _lfVocabBuildListenUnits(){
+// startCardId (опційно) — id картки, з якої почати чергу (замість
+// завжди з початку V.queue) — див. startVocabListenMode().
+function _lfVocabBuildListenUnits(startCardId){
   var cards = V.queue || [];
+  if(startCardId){
+    var startIdx = cards.findIndex(function(c){ return c.id === startCardId; });
+    if(startIdx > 0) cards = cards.slice(startIdx);
+  }
   var units = [];
   var pl = primaryLang();
   cards.forEach(function(card){
@@ -9553,8 +9580,29 @@ function lfShowResult(){
     ).join('');
   }
 
-  
+  // ВАЖЛИВО: srRecordLesson(LF) (стрік, subtestStats, час) НЕ викликається
+  // тут — лише при явному підтвердженні завершення уроку (клік на
+  // "Наступний урок"/"До списку уроків", див. startNextLesson()/
+  // exitLessonFlow()). Показ екрану результату сам по собі — це ще не
+  // "урок пройдено", інакше день-в-ударі зараховувався б навіть якщо
+  // користувач так і не підтвердив завершення (напр. просто закрив вкладку).
+  // Оновлюємо прогрес Lernpfad
+  setTimeout(renderLernpfad, 300);
+
+  // Заповнюємо кнопки результату
+  const btnNext = document.getElementById('lr-btn-next');
+  const btnList = document.getElementById('lr-btn-list');
+  if(btnNext) btnNext.textContent = t('btn_next_lesson');
+  if(btnList) btnList.textContent = t('btn_to_lessons');
+}
+
 // Smart Review: тегування VOCAB карток полем examPart за категорією
+// ⚠️ Раніше ця функція (і srRecordLesson нижче) були помилково вкладені
+// ВСЕРЕДИНУ lfShowResult() — через це вони були недоступні (не в area
+// видимості) з exitLessonFlow()/startNextLesson()/loadCourseScript(),
+// виклик кидав ReferenceError, і через це стрік не зараховувався, а
+// examPart-теги карток не проставлялись при завантаженні курсу. Винесено
+// на верхній рівень.
 function srTagVocab(){
   if(typeof VOCAB==='undefined'||!VOCAB?.length) return;
 
@@ -9643,22 +9691,6 @@ function srRecordLesson(lf){
     s2.todayMinutes = (s2.todayMinutes||0) + mins;
     srSaveState(s2);
   }catch(e){ console.warn('[SR] srRecordLesson:', e); }
-}
-
-  // ВАЖЛИВО: srRecordLesson(LF) (стрік, subtestStats, час) НЕ викликається
-  // тут — лише при явному підтвердженні завершення уроку (клік на
-  // "Наступний урок"/"До списку уроків", див. startNextLesson()/
-  // exitLessonFlow()). Показ екрану результату сам по собі — це ще не
-  // "урок пройдено", інакше день-в-ударі зараховувався б навіть якщо
-  // користувач так і не підтвердив завершення (напр. просто закрив вкладку).
-  // Оновлюємо прогрес Lernpfad
-  setTimeout(renderLernpfad, 300);
-
-  // Заповнюємо кнопки результату
-  const btnNext = document.getElementById('lr-btn-next');
-  const btnList = document.getElementById('lr-btn-list');
-  if(btnNext) btnNext.textContent = t('btn_next_lesson');
-  if(btnList) btnList.textContent = t('btn_to_lessons');
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -10718,7 +10750,13 @@ function _onVocabUnitsDone(){
 function startVocabListenMode(){
   if(typeof VOCAB === 'undefined' || !VOCAB.length) return;
   if(!V.queue || !V.queue.length) V.queue = buildVocabQueue();
-  var units = _lfVocabBuildListenUnits();
+  // Починаємо саме з картки, яку зараз реально бачить користувач (стан
+  // рушія карток _lfUnit), а не завжди з початку черги — інакше клік ▶
+  // після кількох "Далі" стрибав назад на першу картку V.queue.
+  var currentCardId = (typeof _lfUnit !== 'undefined' && _lfUnit && _lfUnit.units && _lfUnit.units[_lfUnit.idx])
+    ? _lfUnit.units[_lfUnit.idx].cardId
+    : null;
+  var units = _lfVocabBuildListenUnits(currentCardId);
   if(!units.length) return;
   V.listening = true;
   updateVocabPlayerPlayBtn();
@@ -10731,6 +10769,7 @@ function stopVocabListenMode(){
   if(currentAudio){ currentAudio.pause(); currentAudio = null; }
   V.listening = false;
   updateVocabPlayerPlayBtn();
+  _lfSkipNextAutoplay = true; // картку щойно чули — не дублюємо озвучення
   startVocabCardMode(); // повертаємось у звичайний ручний режим
 }
 
@@ -10761,7 +10800,7 @@ function updateVocabPlayerPlayBtn(){
 // "Передня / обидві / задня" — перемикач у плеєрі по колу:
 // front → both → back → front, визначає склад черги прослуховування.
 var VOCAB_PLAY_SIDE_CYCLE = ['front','both','back'];
-var VOCAB_PLAY_SIDE_ICON  = { front:'1️⃣', both:'🔀', back:'2️⃣' };
+var VOCAB_PLAY_SIDE_ICON  = { front:'1️⃣', both:'1/2', back:'2️⃣' };
 var VOCAB_PLAY_SIDE_TITLE = {
   front: {de:'Nur Vorderseite', uk:'Лише передня сторона', en:'Front only',    ru:'Только лицевая'},
   both:  {de:'Beide Seiten',    uk:'Обидві сторони',       en:'Both sides',    ru:'Обе стороны'},
