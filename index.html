@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '352-bbb80fc';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4395,6 +4395,35 @@ function srGetAllCards(){
   return [...vocab, ...sb, ...dlg];
 }
 
+// ── "Один net-результат за один перегляд картки" ─────────────────
+// Свайп угору/вниз може випадково спрацювати кілька разів за один показ
+// картки (тремтіння руки під час одного жесту, або користувач свідомо
+// "передумав" і свайпнув у протилежний бік). Без захисту нижче кожен
+// такий повторний виклик незалежно зсуває SM-2 (repetitions/interval/EF)
+// — і повторний "Знаю" за той самий перегляд неправомірно "прискорює"
+// картку, а протилежний свайп ПІСЛЯ першого — додається до нього, замість
+// того щоб його замінити.
+// Правило (як просив користувач): у межах одного перегляду береться
+// РІВНО ОДНЕ рішення — останнє. Однакова оцінка вдруге — ігнорується
+// (не рахується заново). Інша оцінка — повністю ЗАМІНЮЄ попередню
+// (як так, ніби за цей перегляд був лише один цей свайп).
+// Реалізація: перед ПЕРШИМ записом за перегляд картки знімаємо копію
+// зачепленого стану (state.cards + state.subtestStats). Кожен наступний
+// виклик за той самий перегляд спершу відкочує стан до цього знімку —
+// і лише тоді (якщо оцінка інша) пише нову оцінку поверх чистого стану.
+// srBeginCardViewing() викликається в кожній системі показу карток
+// (lf-unit-card, старий fc-area Vocab/Dialogue) РІВНО в момент реального
+// переходу на іншу картку (idx++/idx--), не при кожному рендері — інакше
+// злетів би прогрес повторного рендеру ТІЄЇ Ж картки (напр. розкриття
+// відповіді в Dialogue "Далі" без зміни idx).
+let _srViewingGuard = null; // {key, snapshotCards, snapshotSubtest, rating}
+
+function _srViewingKey(id, side){ return id + '::' + (side || 'term'); }
+
+function srBeginCardViewing(){
+  _srViewingGuard = null;
+}
+
 // srsRate — тонка обгортка над єдиною системою (srRecordAnswer).
 // q: 1=Не знаю, 3=Невпевнений, 5=Знаю. Раніше ця функція сама рахувала
 // SM-2 і писала в окрему структуру 'srs_'+id — тепер вся арифметика й
@@ -4402,8 +4431,36 @@ function srGetAllCards(){
 // side: опціональна грань картки (undefined/'term' — основна; будь-який
 // інший рядок, напр. 'def' — окремий SM-2-розклад, див. srRecordAnswer).
 function srsRate(id, q, side){
+  const key = _srViewingKey(id, side);
+
+  if(_srViewingGuard && _srViewingGuard.key === key){
+    if(_srViewingGuard.rating === q){
+      // Та сама оцінка вдруге за той самий перегляд — не рахуємо заново.
+      const d = srsLoad(id, side);
+      return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
+    }
+    // Користувач передумав — відкочуємо стан до знімку ПЕРЕД першою
+    // оцінкою цього перегляду, щоб нова оцінка повністю замінила стару,
+    // а не додалась до неї.
+    const state = srLoadState();
+    state.cards = _srViewingGuard.snapshotCards;
+    state.subtestStats = _srViewingGuard.snapshotSubtest;
+    srSaveState(state);
+  } else {
+    // Перший свайп за цей перегляд картки — знімаємо копію стану ДО запису.
+    const state0 = srLoadState();
+    _srViewingGuard = {
+      key,
+      snapshotCards:   JSON.parse(JSON.stringify(state0.cards)),
+      snapshotSubtest: JSON.parse(JSON.stringify(state0.subtestStats)),
+      rating: null,
+    };
+  }
+
   const eventType = q>=5 ? 'swipe_know' : q>=3 ? 'swipe_unsure' : 'swipe_dontknow';
   recordCardEvent(id, eventType, srGetExamPart(id, wasAudioPlayedForCard(id)), side);
+  _srViewingGuard.rating = q;
+
   const d = srsLoad(id, side); // перечитуємо щойно записаний стан для зворотної сумісності повернення
   return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
 }
@@ -5079,6 +5136,7 @@ function vocabPrev(){
   if(!V.queue.length)return;
   swipeCard('right',()=>{
     V.idx=(V.idx-1+V.queue.length)%V.queue.length;
+    srBeginCardViewing();
     V.flipped=false;V.repeatCount=0;
     renderVocabCard();
     if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
@@ -5091,6 +5149,7 @@ function vocabNext(){
   stopVocab();
   swipeCard('left',()=>{
     V.idx++;if(V.idx>=V.queue.length){if(_srPlanCardIds){stopVocab();return;}V.queue=buildVocabQueue();V.idx=0;}
+    srBeginCardViewing();
     V.flipped=false;V.repeatCount=0;
     renderVocabCard();
     if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
@@ -5102,7 +5161,7 @@ function resetVocabQ(){
   // Це захищає від випадкового скидання при кліку на чіп категорії
   // або перемиканні режиму (🧠) під час відтворення уроку.
   if(V.lessonId && typeof LF !== 'undefined' && LF) return;
-  const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);
+  const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;srBeginCardViewing();V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);
 }
 
 // ── SWIPE ─────────────────────────────────────────────────────
@@ -5119,6 +5178,7 @@ function initSwipe(){
       haptic.medium(); stopVocab();
       swipeCard('left', () => {
         V.idx++; if(V.idx>=V.queue.length){if(_srPlanCardIds){stopVocab();return;}V.queue=buildVocabQueue();V.idx=0;}
+        srBeginCardViewing();
         V.flipped=false; V.repeatCount=0; renderVocabCard();
         if(wp) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
       });
@@ -5131,6 +5191,7 @@ function initSwipe(){
       haptic.medium(); stopVocab();
       swipeCard('right', () => {
         V.idx=(V.idx-1+V.queue.length)%V.queue.length;
+        srBeginCardViewing();
         V.flipped=false; V.repeatCount=0; renderVocabCard();
         if(wp) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
       });
@@ -5290,6 +5351,7 @@ function srsSwipe(q){
     playGen++;
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     V.repeatCount=0; V.idx++;
+    srBeginCardViewing();
     const ticket = ++cardGen;
     setTimeout(()=>{
       if(V.playing && !V.paused && cardGen===ticket) playVocabNext();
@@ -8885,11 +8947,22 @@ function _relocateUnitCard(targetParentId){
 
 function lfRunUnitStep(units, handlers, onAllDone, opts){
   if(!units || !units.length){ onAllDone ? onAllDone() : (LF && lfNextStep()); return; }
+  // КРИТИЧНО: скасовуємо будь-який АКТИВНИЙ ланцюжок відтворення (напр.
+  // від самостійного перегляду Vocab ДО старту уроку, чи від попереднього
+  // кроку) — інакше стара рекурсія _lfUnitPlay()→setTimeout(next,...)
+  // не зупиняється (токен ніхто не змінював саме в цій точці), і трохи
+  // згодом сама дограє СТАРУ картку і власноруч створить "Далі" —
+  // вже поверх геть іншого екрана (напр. після завершення уроку).
+  _lfUnitPlayToken++;
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  document.getElementById('lf-next-row')?.remove();
   // autoAdvance (опційно) — режим пасивного прослуховування: після
   // аудіо одразу переходимо до наступної картки самі, без кнопки
   // "Далі" (див. startVocabListenMode()). За замовчуванням false —
   // звичайний ручний режим з кнопкою "Далі" (як завжди).
   _lfUnit = { units: units, idx: 0, handlers: handlers, onAllDone: onAllDone, autoAdvance: !!(opts && opts.autoAdvance) };
+  srBeginCardViewing(); // нова черга/сесія — перша картка це новий "перегляд"
 
   // У справжньому уроці — завжди повертаємо картку в її "домашній"
   // контейнер (#vocab-panel-card), незалежно від того, де вона могла
@@ -9069,10 +9142,13 @@ function _lfUnitAdvance(){
   var unit = _lfUnit.units[_lfUnit.idx];
   var notDone = unit && _lfUnit.handlers.onNext && _lfUnit.handlers.onNext(unit);
   if(notDone){
+    // Той самий юніт перерендерюється (напр. розкриття відповіді в
+    // Dialogue) — idx НЕ змінюється, тож це все ще той самий "перегляд".
     _lfUnitShow();
     return;
   }
   _lfUnit.idx++;
+  srBeginCardViewing(); // реальний перехід на іншу картку — новий "перегляд"
   if(LF){
     LF.unitProgress = { done: _lfUnit.idx, total: _lfUnit.units.length };
     lfRenderBar();
@@ -9535,6 +9611,18 @@ function _lfInjectSBNextBtn(onNext, labelOverride){
 
 function lfShowResult(){
   if(!LF) return;
+
+  // Захисно зупиняємо будь-яке відтворення від попереднього кроку —
+  // 'sb_prac' (Sprachbausteine) має ВЛАСНУ, окрему від lf-unit-card
+  // систему черги/показу (SB.pracQueue/sbRenderPrac), яку до цього
+  // моменту ніщо явно не зупиняло при переході на 'result'.
+  sbStopPlay();
+  _lfUnitPlayToken++;
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  // #lf-next-row — position:fixed, доданий напряму в document.body (не
+  // всередині жодного .view) — перемикання view його НЕ ховає автоматично.
+  document.getElementById('lf-next-row')?.remove();
 
   // Попередній крок ('sb_prac' — вправи Sprachbausteine/Граматика) лишає
   // активним view-sb (lfStartSBPrac() робить showView('sb')). Але
@@ -10204,10 +10292,11 @@ function playVocabNext(){
       return;
     }
     V.queue=buildVocabQueue();V.idx=0;V.repeatCount=0;
+    srBeginCardViewing();
   }
   if(V.repeatCount===0){V.flipped=false;V.srsRating=null;renderVocabCard();}
   else{V.flipped=false;document.getElementById('flashcard').classList.remove('flipped');}
-  const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;playVocabNext();return;}
+  const v=V.queue[V.idx];if(!v){V.idx++;V.repeatCount=0;srBeginCardViewing();playVocabNext();return;}
   const al=getActiveLangs();
 
   // Prefetch: term→short→def картки +1, потім +2 (послідовно, тільки активні мови)
@@ -10229,6 +10318,7 @@ function playVocabNext(){
           // recordCardEvent тут же оновлює totalPlays/lastSeen — одна точка запису.
           if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
           V.repeatCount=0;V.idx++;
+          srBeginCardViewing();
           V.timer=setTimeout(()=>{ if(guard()) playVocabNext(); },V.readPause);
         }
       });
@@ -10451,6 +10541,7 @@ function initDialogueSwipe(){
       const wp=D.playing; haptic.medium(); stopDialogue();
       swipeCard('left', ()=>{
         D.idx++; if(D.idx>=D.queue.length){ D.queue=buildDialogueQueue(); D.idx=0; }
+        srBeginCardViewing();
         D.flipped=false; D.repeatCount=0; renderDialogueCard();
         if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').textContent='⏸'; document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
       }, 'dlg-fc-area');
@@ -10460,6 +10551,7 @@ function initDialogueSwipe(){
       const wp=D.playing; haptic.medium(); stopDialogue();
       swipeCard('right', ()=>{
         D.idx=(D.idx-1+D.queue.length)%D.queue.length;
+        srBeginCardViewing();
         D.flipped=false; D.repeatCount=0; renderDialogueCard();
         if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').textContent='⏸'; document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
       }, 'dlg-fc-area');
@@ -10491,6 +10583,7 @@ function dlgSrsSwipe(q){
     playGen++;
     if(currentAudio){ currentAudio.pause(); currentAudio=null; }
     D.repeatCount=0; D.idx++;
+    srBeginCardViewing();
     const ticket=++cardGen;
     setTimeout(()=>{ if(D.playing && !D.paused && cardGen===ticket) playDialogueNext(); }, 600);
   }
@@ -10541,10 +10634,10 @@ function playDialogueNext(){
   const ticket=++cardGen;
   const guard=()=>D.playing && !D.paused && cardGen===ticket;
 
-  if(D.idx>=D.queue.length){ D.queue=buildDialogueQueue(); D.idx=0; D.repeatCount=0; }
+  if(D.idx>=D.queue.length){ D.queue=buildDialogueQueue(); D.idx=0; D.repeatCount=0; srBeginCardViewing(); }
   if(D.repeatCount===0){ D.flipped=false; D.srsRating=null; renderDialogueCard(); }
   else{ D.flipped=false; document.getElementById('dlg-flashcard').classList.remove('flipped'); }
-  const d=D.queue[D.idx]; if(!d){ D.idx++; D.repeatCount=0; playDialogueNext(); return; }
+  const d=D.queue[D.idx]; if(!d){ D.idx++; D.repeatCount=0; srBeginCardViewing(); playDialogueNext(); return; }
   const al=getActiveDialogueLangs();
 
   speakDialogueQ(d,al,0,()=>{
@@ -10559,6 +10652,7 @@ function playDialogueNext(){
         // Картку повністю прослухано без свайпу-оцінки — м'який пасивний прогрес
         if(D.srsRating==null && srsDue(d.id)){ try{ srsRatePassive(d.id); }catch(e){} }
         D.repeatCount=0; D.idx++;
+        srBeginCardViewing();
         D.timer=setTimeout(()=>{ if(guard()) playDialogueNext(); }, V.readPause);
       }
     });
