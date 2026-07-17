@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '347-af5c1fc';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9535,6 +9535,21 @@ function _lfInjectSBNextBtn(onNext, labelOverride){
 
 function lfShowResult(){
   if(!LF) return;
+
+  // Попередній крок ('sb_prac' — вправи Sprachbausteine/Граматика) лишає
+  // активним view-sb (lfStartSBPrac() робить showView('sb')). Але
+  // #lesson-result і #streak-celebration фізично лежать усередині
+  // #view-vocab — без явного перемикання назад результат уроку й
+  // анімація стріку рендеряться в DOM, але лишаються невидимими (view-sb
+  // ще активний). Робимо мінімальне перемикання класів напряму (а не
+  // повний showView('vocab')) — щоб не тригерити initVocab()/автозапуск
+  // озвучення випадкової картки словника саме в момент показу результату.
+  if(!document.getElementById('view-vocab')?.classList.contains('active')){
+    document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+    document.getElementById('view-vocab')?.classList.add('active');
+    document.querySelectorAll('.bn-item[data-view]').forEach(n=>n.classList.toggle('active', n.dataset.view==='vocab'));
+  }
+
   const bar = document.getElementById('lesson-flow-bar');
   if(bar) bar.classList.remove('active');
   document.documentElement.style.setProperty('--lf-bar-h','0px');
