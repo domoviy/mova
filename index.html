@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '344-d83670b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4889,14 +4889,18 @@ function showView(id){
   // Якщо урок ще НЕЗАВЕРШЕНИЙ (LF активний) і користувач іде геть через
   // нижнє меню — це не штатне завершення (exitLessonFlow тут не
   // викликається), тож абортуємо сесію без зарахування результату.
-  if(LF && id!=='vocab' && id!=='dialogue'){
+  // 'vocab'/'dialogue'/'sb' виключені — кроки уроку (vocab cards, dialogue,
+  // ТАКОЖ sb_prac — вправи Sprachbausteine/Граматика) легітимно
+  // показуються саме в цих view (lfStartSBPrac() викликає showView('sb')
+  // посеред активного уроку), це не вихід з уроку.
+  if(LF && id!=='vocab' && id!=='dialogue' && id!=='sb'){
     abandonLessonFlow();
   } else if(!LF){
     const lr=document.getElementById('lesson-result');
     if(lr) lr.classList.remove('show');
     const sb=document.getElementById('lf-sb-next-btn');
     if(sb) sb.remove();
-    if(id!=='vocab' && id!=='dialogue') _lfUnitTeardown();
+    if(id!=='vocab' && id!=='dialogue' && id!=='sb') _lfUnitTeardown();
   }
   document.getElementById('content').scrollTo(0,0);
 }
