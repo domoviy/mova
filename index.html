@@ -419,7 +419,14 @@ body{
   transition:border-color .15s, background .15s, opacity .3s;
   min-height:56px;
   display:flex;align-items:center;justify-content:center;
-  word-break:break-word;
+  /* Було: word-break:break-word — це "грубий" переніс, що ріже слово
+     будь-де, щойно воно не влазить, ПЕРЕБИВАЮЧИ hyphens:auto (словникові
+     правила переносу для мови кнопки — lang вже коректно виставлений у
+     matchMakeBtn()). Тепер: overflow-wrap:break-word — лише "останній
+     засіб", коли навіть після пошуку правильної точки переносу слово
+     все одно не влазить (напр. довге складне слово без валідної точки).
+     Слова, що влазять повністю, як і раніше не переносяться взагалі. */
+  overflow-wrap:break-word;
   hyphens:auto;
   -webkit-hyphens:auto;
   user-select:none;
@@ -2579,7 +2586,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '360-e5ea344';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3231,14 +3238,14 @@ let V={
   repeats:  _s.repeats ??1,
   pause:    _s.pause   ??300,
   readPause:_s.readPause??300,
-  // Режим сортування картки: 'srs' — справжній SM-2 (прострочені +
-  // пріоритет), 'smart' — проста евристика (перегляди/обране/днів з
-  // останнього разу, БЕЗ SM-2), 'random', 'seq'. За замовчуванням для
-  // нових користувачів (без збереженого _s.mode) — саме 'srs': це і є
-  // "розумне" сортування, яке має відповідати SB.sortMode='smart' у
-  // Sprachbausteine/Граматиці (там 'smart' — це вже справжній SM-2,
-  // назва просто відрізняється між Vocab і SB історично).
-  mode:     _s.mode    ||'srs',
+  // Режим сортування картки — рівно 2 варіанти: 'srs' (справжній SM-2:
+  // прострочені + пріоритет — найрозумніший, за замовчуванням) і 'seq'
+  // (послідовний, без сортування). Раніше існували ще 'smart' (проста
+  // евристика без SM-2) і 'random' — прибрані як зайвий вибір, що плутав
+  // з 'srs'. Валідуємо збережене значення: якщо в когось лишилось старе
+  // 'smart'/'random' з localStorage — мігруємо на 'srs' (не 'seq'), бо
+  // це і є найближчий/найкращий еквівалент "розумного" сортування.
+  mode:     (_s.mode === 'seq' ? 'seq' : 'srs'),
   // Пасивне прослуховування (плеєр): яку сторону картки озвучувати —
   // 'front' (лише термін/short), 'both' (+ визначення), 'back' (лише
   // визначення). Перемикається по колу кнопкою 🔂.
@@ -4614,7 +4621,7 @@ async function init(){
   const lp=document.getElementById('vreadpause');if(lp){lp.value=V.readPause/1000;document.getElementById('vrpv').textContent=(V.readPause/1000).toFixed(1).replace('.',',')+'s';}
   // Синхронізуємо кнопку режиму
   const sb=document.getElementById('vshuffle-btn');
-  if(sb){sb.classList.remove('smart','shuffle');const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
+  if(sb){sb.classList.remove('smart','shuffle');const cfg={srs:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''}}[V.mode]||{icon:'🧠',cls:'smart'};sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
   const dsb=document.getElementById('dlgshuffle-btn');
   if(dsb){dsb.classList.remove('smart','shuffle');const dcfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[D.mode]||{icon:'🧠',cls:'smart'};dsb.textContent=dcfg.icon;if(dcfg.cls)dsb.classList.add(dcfg.cls);}
   loadFontSize();
@@ -5011,17 +5018,7 @@ function buildVocabQueue(){
   // всі картки уроку без обмеження 5-ти і ламала lesson flow.
   const cf=document.getElementById('vf-cat')?.value||'all';
   let arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
-  if(V.mode==='random'){
-    arr=arr.sort(()=>Math.random()-.5);
-  } else if(V.mode==='smart'){
-    // Той самий клас проблеми, що й у гілці 'srs' нижче: cardScore()
-    // читає localStorage ПОКАРТКОВО всередині компаратора sort() —
-    // O(n log n) синхронних localStorage-читань замість O(n). Рахуємо
-    // рахунки один раз наперед.
-    const scoreCache = new Map();
-    arr.forEach(v => scoreCache.set(v.id, cardScore(v)));
-    arr = arr.sort((a,b) => scoreCache.get(b.id) - scoreCache.get(a.id));
-  } else if(V.mode==='srs'){
+  if(V.mode==='srs'){
     // SM-2: спочатку прострочені та нові, потім за пріоритетом.
     //
     // ВИМІРЯНО НА iPhone: цей крок займав до 11.4с на курсі з великою
@@ -10129,7 +10126,7 @@ function abandonLessonFlow(){
     window._preLessonVocabMode = null;
     const _vshBtn = document.getElementById('vshuffle-btn');
     if(_vshBtn){
-      const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};
+      const cfg={srs:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''}}[V.mode]||{icon:'🧠',cls:'smart'};
       _vshBtn.classList.remove('smart','shuffle');
       _vshBtn.textContent=cfg.icon;
       if(cfg.cls) _vshBtn.classList.add(cfg.cls);
@@ -10202,7 +10199,7 @@ function exitLessonFlow(){
     window._preLessonVocabMode = null;
     const _vshBtn = document.getElementById('vshuffle-btn');
     if(_vshBtn){
-      const cfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[V.mode]||{icon:'🧠',cls:'smart'};
+      const cfg={srs:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''}}[V.mode]||{icon:'🧠',cls:'smart'};
       _vshBtn.classList.remove('smart','shuffle');
       _vshBtn.textContent=cfg.icon;
       if(cfg.cls) _vshBtn.classList.add(cfg.cls);
@@ -11114,14 +11111,16 @@ function toggleVocabLang(l){
 }
 function applyVocabLangUI(){const vis=visibleLangs();['de','en','uk','ru'].forEach(l=>{const b=document.getElementById('vlcard-'+l);if(b){b.style.display=vis.includes(l)?'':'none';b.classList.toggle('on',!!V.langs[l]);b.classList.toggle('off',!V.langs[l]);}});}
 function cycleVocabMode(){
-  const modes=['smart','seq','random','srs'];
+  // У Vocab лишається рівно 2 алгоритми сортування: 'srs' — справжній
+  // SM-2 (найрозумніший, за замовчуванням) і 'seq' — послідовний (без
+  // сортування, порядок бази). Раніше були ще 'smart' (проста евристика
+  // без SM-2) і 'random' — прибрано як зайвий вибір, що плутав з 'srs'.
+  const modes=['srs','seq'];
   V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
   const btn=document.getElementById('vshuffle-btn');
   const cfg={
-    smart: {icon:'🧠',cls:'smart'},
-    seq:   {icon:'➡', cls:''},
-    random:{icon:'🔀',cls:'shuffle'},
-    srs:   {icon:'🔬',cls:'smart'},
+    srs: {icon:'🧠',cls:'smart'},
+    seq: {icon:'➡', cls:''},
   }[V.mode];
   if(btn){btn.classList.remove('smart','shuffle');btn.textContent=cfg.icon;if(cfg.cls)btn.classList.add(cfg.cls);}
   if(V.mode==='srs'){
@@ -11129,7 +11128,7 @@ function cycleVocabMode(){
     const arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
     const dueCount=arr.filter(v=>srsDue(v.id)).length;
     const newCount=arr.filter(v=>!srsLoad(v.id).dueDate).length;
-    notify('🔬 SM-2: '+dueCount+' '+t('srs_today').replace('📅 ','')+' · '+newCount+' '+t('srs_new').replace('✨ ',''));
+    notify('🧠 SM-2: '+dueCount+' '+t('srs_today').replace('📅 ','')+' · '+newCount+' '+t('srs_new').replace('✨ ',''));
   }
   saveSettings();resetVocabQ();
 }
