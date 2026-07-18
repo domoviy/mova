@@ -1583,7 +1583,7 @@ body.lesson-active .vocab-top{
   box-shadow:0 -4px 32px rgba(0,0,0,.18);
 }
 .sb-prac-feedback-modal-row{
-  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;
 }
 .sb-prac-feedback-modal-icon{font-size:24px;}
 .sb-prac-feedback-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);}
@@ -1651,7 +1651,7 @@ body.lesson-active .vocab-top{
   font-size:calc(var(--fs-card) + var(--fs-secondary) + 2px);
   line-height:1;
 }
-.grammar-modal-title-wrap{flex:1;min-width:0}
+.grammar-modal-title-wrap{flex:1;min-width:0;text-align:center}
 .grammar-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink)}
 .grammar-modal-title-sub{font-size:var(--fs-secondary);font-weight:500;color:var(--muted);margin-top:2px}
 .grammar-modal-close{
@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '359-46f5575';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8211,7 +8211,7 @@ const LF_STEP_LABELS = {
   quiz:     {de:'Quiz',           uk:'Квіз',               en:'Quiz'},
   sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція',  en:'Language Pattern'},
   dlg_learn:{de:'Dialogue',       uk:'Dialogue',           en:'Dialogue'},
-  sb_prac:  {de:'SB Übung',       uk:'Вправа',             en:'SB Practice'},
+  sb_prac:  {de:'Grammatik',       uk:'Граматика',          en:'Grammar'},
   result:   {de:'Ergebnis',       uk:'Результат',          en:'Result'},
 };
 
@@ -9726,12 +9726,19 @@ function lfShowResult(){
     ).join('');
   }
 
-  // ВАЖЛИВО: srRecordLesson(LF) (стрік, subtestStats, час) НЕ викликається
-  // тут — лише при явному підтвердженні завершення уроку (клік на
-  // "Наступний урок"/"До списку уроків", див. startNextLesson()/
-  // exitLessonFlow()). Показ екрану результату сам по собі — це ще не
-  // "урок пройдено", інакше день-в-ударі зараховувався б навіть якщо
-  // користувач так і не підтвердив завершення (напр. просто закрив вкладку).
+  // Зараховуємо урок (стрік, subtestStats, час) РІВНО ОДИН РАЗ — САМЕ ТУТ,
+  // одразу як показується екран результату. Раніше це відкладалось до
+  // явного натискання "Наступний урок"/"До списку уроків" — але це
+  // штучна відмінність: усі кроки уроку до 'result' уже пройдені, тож
+  // сам факт показу результату ВЖЕ означає "урок пройдено", а натискання
+  // кнопок нижче — це просто подальша навігація, не додаткове
+  // підтвердження. LF._recorded і тут захищає від подвійного зарахування
+  // (exitLessonFlow()/startNextLesson() перевіряють той самий прапорець).
+  let celebrationPending = false;
+  if(LF && !LF._recorded){
+    LF._recorded = true;
+    celebrationPending = !!srRecordLesson(LF);
+  }
   // Оновлюємо прогрес Lernpfad
   setTimeout(renderLernpfad, 300);
 
@@ -9740,6 +9747,20 @@ function lfShowResult(){
   const btnList = document.getElementById('lr-btn-list');
   if(btnNext) btnNext.textContent = t('btn_next_lesson');
   if(btnList) btnList.textContent = t('btn_to_lessons');
+
+  // Якщо щойно запустилась повноекранна анімація стріку
+  // (showStreakCelebration, ~2200мс) — ховаємо кнопки "Наступний
+  // урок"/"До списку уроків" до її завершення, щоб користувач спершу
+  // побачив анімацію, а не одразу тицяв кудись під нею. Якщо стрік не
+  // збільшився (уже був урок сьогодні) — кнопки показуються одразу.
+  if(btnNext) btnNext.style.visibility = celebrationPending ? 'hidden' : 'visible';
+  if(btnList) btnList.style.visibility = celebrationPending ? 'hidden' : 'visible';
+  if(celebrationPending){
+    setTimeout(()=>{
+      if(btnNext) btnNext.style.visibility = 'visible';
+      if(btnList) btnList.style.visibility = 'visible';
+    }, 2300);
+  }
 }
 
 // Smart Review: тегування VOCAB карток полем examPart за категорією
@@ -12129,17 +12150,16 @@ function sbRenderPrac() {
     return '<div class="'+cls+'"></div>';
   }).join('');
 
-  // category — В УРОЦІ показуємо загальний підпис (як у tiles/"Склади
-  // речення" — там теж нема конкретної теми над реченням, лише
-  // загальний step-заголовок вгорі), а не конкретну тему картки: вона й
-  // так дублюється у верхньому progress bar (LF_STEP_LABELS.sb_prac).
-  // У самостійній практиці (не в уроці) лишаємо конкретну категорію —
-  // там людина сама обирала фільтр і бачення теми доречне.
+  // category — В УРОЦІ взагалі не показуємо (дублює верхній step-заголовок
+  // — LF_STEP_LABELS.sb_prac / #lf-step-name, який тепер явно каже
+  // "Граматика"). У самостійній практиці (не в уроці) лишаємо конкретну
+  // категорію — там людина сама обирала фільтр і бачення теми доречне.
   var catEl=document.getElementById('sb-prac-cat');
   if(catEl){
     if(LF){
-      catEl.textContent = (typeof LF_STEP_LABELS!=='undefined' && LF_STEP_LABELS.sb_prac?.[uiLang]) || LF_STEP_LABELS.sb_prac?.de || 'Übung';
+      catEl.style.display = 'none';
     } else {
+      catEl.style.display = '';
       catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
     }
   }
