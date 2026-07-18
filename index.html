@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '356-7488126';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5780,16 +5780,28 @@ function _runLessonFlow(lesson, allCards){
   // за станом ДО цього уроку) — складання речення вимагає активного
   // продукування, а це має сенс лише після хоча б одного знайомства зі
   // словом, інакше вправа стає "вгадай, чого ще не бачив" замість практики.
-  const tilesTermPool = sorted.filter(c=>(c.term?.[pLang]||'').split(' ').length>=2 && !srIsCardNew(state, c.id));
-  const tilesDefPool  = sorted.filter(c=>c.def?.[pLang] && c.def[pLang].includes('<b>') && !srIsCardNew(state, c.id));
-  const tilesTermCards = tilesTermPool.slice(0, Math.min(2, tilesTermPool.length));
-  // Def-картка — уникаємо повтору картки, що вже потрапила в term-вибірку
-  const tilesDefCandidate = tilesDefPool.find(c => !tilesTermCards.some(t=>t.id===c.id));
-  const tilesDefCards = tilesDefCandidate ? [tilesDefCandidate] : [];
-  const tilesCards = [
-    ...tilesTermCards.map(c => ({ card: c, mode: 'term' })),
-    ...tilesDefCards.map(c => ({ card: c, mode: 'def' })),
-  ];
+  //
+  // Раніше третьою карткою був 'def'-режим — складання ВСЬОГО речення
+  // з def[primaryLang()] без дистракторів. На B2 def-речення мали в
+  // середньому ~15 слів (77% карток — понад 12 слів, максимум 32) — це
+  // одночасно і не влазило на екран, і перевіряло не той навик (пригадати
+  // ВЕСЬ текст напам'ять, а не порядок слів у виучуваній одиниці). Формат
+  // "склади ціле речення" для довгого анотованого тексту — задача
+  // "Доповни речення" (def_fill, той самий <b>-маркер), а не Tiles.
+  // Tiles тепер працює виключно з term[primaryLang()] — короткими
+  // одиницями, для яких переставляння слів і має сенс.
+  // Верхня межа (≤6 слів) — системний запобіжник: на B2 такою межею
+  // відсікається лише ~1% придатного пулу (переважна більшість term —
+  // 2-3 слова), але гарантує, що жодна картка (на будь-якому рівні,
+  // якщо колись трапиться довгий виняток) не перетворить вправу на стіну
+  // тайлів, які не влазять на екран.
+  const tilesTermPool = sorted.filter(c=>{
+    const n = (c.term?.[pLang]||'').split(' ').filter(Boolean).length;
+    return n>=2 && n<=6 && !srIsCardNew(state, c.id);
+  });
+  const tilesTermCards = tilesTermPool.slice(0, Math.min(3, tilesTermPool.length));
+  const tilesCards = tilesTermCards.map(c => ({ card: c, mode: 'term' }));
+
 
   const hasTiles  = tilesCards.length > 0;
   const hasSB     = lessonSBCards.length > 0;
@@ -6543,8 +6555,13 @@ let tilesState = { cards:[], idx:0, current:null, answer:[], words:[] };
 
 function getVocabPool(){
   const cf = document.getElementById('vf-cat')?.value||'all';
+  // Та сама межа (2-6 слів), що й у кроці уроку (див. lfStartTiles) —
+  // системна гарантія, а не лише для лесон-флоу.
   return (typeof VOCAB!=='undefined'?VOCAB:[])
-    .filter(v=>(cf==='all'||v.cat===cf) && v.term?.[primaryLang()] && v.term[primaryLang()].split(' ').length>=2);
+    .filter(v=>{
+      const n = (v.term?.[primaryLang()]||'').split(' ').filter(Boolean).length;
+      return (cf==='all'||v.cat===cf) && n>=2 && n<=6;
+    });
 }
 
 function startTiles(){
@@ -6579,44 +6596,6 @@ function tilesShowCard(){
   tilesState.currentMode = mode;
   tilesState.answer = [];
   tilesState.checked = false;
-
-  if(mode === 'def'){
-    // Def-режим: складаємо ВСЕ речення з def[primaryLang()] (без HTML-тегів),
-    // дистракторів немає взагалі — лише слова самого речення.
-    const stripTags = s => (s||'').replace(/<[^>]+>/g, '');
-    const pLang = primaryLang();
-    const defHint = stripTags(card.def?.[uiLang] || card.def?.[pLang] || '');
-    const qTextEl = document.getElementById('tiles-q-text');
-    qTextEl.className = 'tiles-q-text mc-q-term';
-    qTextEl.textContent = defHint;
-
-    // Prefetch аудіо основної мови курсу — поле 'def'
-    try {
-      const audioUrl = getAudioUrl(card.id, 'def', pLang);
-      const audioMkey = urlToAudioMkey(audioUrl);
-      if((!audioBlobCache.has(audioUrl) || !isAudioCacheValid(audioUrl, audioMkey)) && audioExistsCache.get(audioUrl) !== '404'){
-        fetchBlobUrl(audioUrl, 8000, audioMkey).catch(()=>{});
-      }
-    } catch(e) {}
-
-    const correctStr = stripTags(card.def?.[pLang] || '');
-    const words = correctStr.split(' ').filter(Boolean);
-    tilesState.words = words;
-
-    const allTiles = words.slice().sort(()=>Math.random()-.5);
-    const bank = document.getElementById('tiles-bank');
-    bank.innerHTML='';
-    allTiles.forEach((w,i)=>{
-      const tile = document.createElement('button');
-      tile.className = 'tile';
-      tile.textContent = w;
-      tile.dataset.word = w;
-      tile.dataset.idx = i;
-      tile.addEventListener('click', ()=>tilesPickWord(tile));
-      bank.appendChild(tile);
-    });
-    return;
-  }
 
   // Питання у tiles-q-text:
   // - uiLang === primaryLang() → показуємо short[primaryLang()] (те, що
@@ -7013,7 +6992,6 @@ function tilesCheck(){
   const given   = tilesState.answer;
   const isOk = given.join(' ') === correct.join(' ');
   tilesState.checked = true;
-  const mode = tilesState.currentMode || 'term';
 
   const ansEl = document.getElementById('tiles-answer');
   ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
@@ -7024,19 +7002,15 @@ function tilesCheck(){
   // завершення озвучення (tilesRevealResultBtn нижче).
   tilesShowResultModal(isOk, correct.join(' '));
 
-  // Озвучуємо правильне речення після перевірки відповіді — поле
-  // залежить від режиму (term/def), бо це різні pregen-аудіофайли.
+  // Озвучуємо правильне речення (термін) після перевірки відповіді.
   // Текст і озвучку зараховуємо ОКРЕМИМИ слабкими сигналами в Lesen/Hören
   // (10%/50% — контенту тут менше, ніж у повноцінній картці з прикладом).
   recordCardEvent(tilesState.current.id, 'tiles_audio_after_check', 'Hören');
   recordCardEvent(tilesState.current.id, 'tiles_text_after_check', 'Lesen');
   try {
-    const field = mode === 'def' ? 'def' : 'term';
     const pLang = primaryLang();
-    const text = mode === 'def'
-      ? (tilesState.current.def?.[pLang] || '').replace(/<[^>]+>/g, '')
-      : (tilesState.current.term?.[pLang] || '');
-    speak(text, pLang, tilesRevealResultBtn, tilesState.current.id, field);
+    const text = tilesState.current.term?.[pLang] || '';
+    speak(text, pLang, tilesRevealResultBtn, tilesState.current.id, 'term');
   } catch(e) { tilesRevealResultBtn(); }
 }
 
