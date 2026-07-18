@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '355-b61d74c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7020,6 +7020,10 @@ function tilesCheck(){
   recordCardEvent(tilesState.current.id, isOk ? 'task_correct' : 'task_wrong');
   haptic[isOk?'success':'error']();
 
+  // Показуємо модальний результат — кнопка "Далі" в ньому прихована до
+  // завершення озвучення (tilesRevealResultBtn нижче).
+  tilesShowResultModal(isOk, correct.join(' '));
+
   // Озвучуємо правильне речення після перевірки відповіді — поле
   // залежить від режиму (term/def), бо це різні pregen-аудіофайли.
   // Текст і озвучку зараховуємо ОКРЕМИМИ слабкими сигналами в Lesen/Hören
@@ -7032,11 +7036,8 @@ function tilesCheck(){
     const text = mode === 'def'
       ? (tilesState.current.def?.[pLang] || '').replace(/<[^>]+>/g, '')
       : (tilesState.current.term?.[pLang] || '');
-    speak(text, pLang, null, tilesState.current.id, field);
-  } catch(e) {}
-
-  // Показуємо модальний результат
-  tilesShowResultModal(isOk, correct.join(' '));
+    speak(text, pLang, tilesRevealResultBtn, tilesState.current.id, field);
+  } catch(e) { tilesRevealResultBtn(); }
 }
 
 function tilesShowResultModal(isOk, correctStr){
@@ -7066,7 +7067,7 @@ function tilesShowResultModal(isOk, correctStr){
         : (uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')
       }</div>
       <div class="tiles-result-correct">${correctStr}</div>
-      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action">
+      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">
         ${btnLabel}
       </button>
     </div>`;
@@ -7078,6 +7079,16 @@ function tilesShowResultModal(isOk, correctStr){
     tilesState.idx++;
     tilesShowCard();
   });
+}
+
+// Кнопка "Далі" в модалці результату (Tiles/Def) з'являється лише коли
+// дограє озвучення правильного речення — так само, як у
+// Sprachbausteine/Граматиці (див. sbRevealFeedbackNextBtn). Передається
+// як onEnd у speak(); той викликає onEnd і при успіху, і одразу ж, якщо
+// аудіо недоступне (404/помилка) — тож кнопка не "зависає" назавжди.
+function tilesRevealResultBtn(){
+  var btn = document.getElementById('tiles-result-action');
+  if(btn) btn.style.visibility = 'visible';
 }
 
 function tilesCheckAuto(){
@@ -7272,6 +7283,11 @@ function defCheck(){
   recordCardEvent(defState.current.id, isOk ? 'task_correct' : 'task_wrong');
   haptic[isOk ? 'success' : 'error']();
 
+  // Показуємо модальний результат — кнопка "Далі" прихована до
+  // завершення озвучення (tilesRevealResultBtn — та сама, що й у Tiles,
+  // бо defShowResultModal перевикористовує ту саму розмітку/id кнопки).
+  defShowResultModal(isOk, defState.fullSentence);
+
   try {
     const pLang = primaryLang();
     const pair = getSpeedPair();
@@ -7281,10 +7297,9 @@ function defCheck(){
     if(V.langSpeed && pair) V.langSpeed[pLang] = pair.normal;
     speak(defState.fullSentence, pLang, () => {
       if(V.langSpeed && savedRate !== undefined) V.langSpeed[pLang] = savedRate;
+      tilesRevealResultBtn();
     }, defState.current.id, 'def');
-  } catch(e) {}
-
-  defShowResultModal(isOk, defState.fullSentence);
+  } catch(e) { tilesRevealResultBtn(); }
 }
 
 function defShowResultModal(isOk, fullSentence){
@@ -7317,7 +7332,7 @@ function defShowResultModal(isOk, fullSentence){
       <div class="tiles-result-icon">${isOk?'✅':'❌'}</div>
       <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
       <div class="tiles-result-correct" style="line-height:1.3;text-align:center">${highlighted}${translationHtml}</div>
-      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action">${btnLabel}</button>
+      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">${btnLabel}</button>
     </div>`;
   document.body.appendChild(overlay);
   document.getElementById('tiles-result-action').addEventListener('click', () => {
