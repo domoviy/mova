@@ -2579,7 +2579,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '358-f403301';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5781,26 +5781,31 @@ function _runLessonFlow(lesson, allCards){
   // продукування, а це має сенс лише після хоча б одного знайомства зі
   // словом, інакше вправа стає "вгадай, чого ще не бачив" замість практики.
   //
-  // Раніше третьою карткою був 'def'-режим — складання ВСЬОГО речення
-  // з def[primaryLang()] без дистракторів. На B2 def-речення мали в
-  // середньому ~15 слів (77% карток — понад 12 слів, максимум 32) — це
-  // одночасно і не влазило на екран, і перевіряло не той навик (пригадати
-  // ВЕСЬ текст напам'ять, а не порядок слів у виучуваній одиниці). Формат
-  // "склади ціле речення" для довгого анотованого тексту — задача
-  // "Доповни речення" (def_fill, той самий <b>-маркер), а не Tiles.
-  // Tiles тепер працює виключно з term[primaryLang()] — короткими
-  // одиницями, для яких переставляння слів і має сенс.
-  // Верхня межа (≤6 слів) — системний запобіжник: на B2 такою межею
-  // відсікається лише ~1% придатного пулу (переважна більшість term —
-  // 2-3 слова), але гарантує, що жодна картка (на будь-якому рівні,
-  // якщо колись трапиться довгий виняток) не перетворить вправу на стіну
-  // тайлів, які не влазять на екран.
+  // 'term' — короткі одиниці (2-6 слів; 99% пулу B2), завжди безпечно.
+  // 'def' — повне анотоване речення з <b>-маркером цільової фрази; тут
+  // верхня межа СУВОРІША (≤10 слів) — на B2 середнє речення ~15 слів і
+  // 77% довші за 12, тож без ліміту тайли не влазили на екран. З ≤10
+  // лишається ~7.6% анотованих карток (148 з 1959) — менший, але робочий
+  // пул, і на екрані такі речення комфортні (перевірено вручну).
   const tilesTermPool = sorted.filter(c=>{
     const n = (c.term?.[pLang]||'').split(' ').filter(Boolean).length;
     return n>=2 && n<=6 && !srIsCardNew(state, c.id);
   });
-  const tilesTermCards = tilesTermPool.slice(0, Math.min(3, tilesTermPool.length));
-  const tilesCards = tilesTermCards.map(c => ({ card: c, mode: 'term' }));
+  const tilesDefPool = sorted.filter(c=>{
+    if(!c.def?.[pLang] || !c.def[pLang].includes('<b>') || srIsCardNew(state, c.id)) return false;
+    const n = c.def[pLang].replace(/<[^>]+>/g,'').split(' ').filter(Boolean).length;
+    return n<=10;
+  });
+  const tilesTermCards = tilesTermPool.slice(0, Math.min(2, tilesTermPool.length));
+  // Def-картка — уникаємо повтору картки, що вже потрапила в term-вибірку.
+  // Якщо у пулі немає жодного придатного (короткого) def-речення для цього
+  // модуля — просто не додаємо третю картку (2 term-картки — теж ок).
+  const tilesDefCandidate = tilesDefPool.find(c => !tilesTermCards.some(t=>t.id===c.id));
+  const tilesDefCards = tilesDefCandidate ? [tilesDefCandidate] : [];
+  const tilesCards = [
+    ...tilesTermCards.map(c => ({ card: c, mode: 'term' })),
+    ...tilesDefCards.map(c => ({ card: c, mode: 'def' })),
+  ];
 
 
   const hasTiles  = tilesCards.length > 0;
@@ -6597,6 +6602,46 @@ function tilesShowCard(){
   tilesState.answer = [];
   tilesState.checked = false;
 
+  if(mode === 'def'){
+    // Def-режим: складаємо ВСЕ речення з def[primaryLang()] (без HTML-тегів),
+    // дистракторів немає — лише слова самого речення. Пул уже відфільтровано
+    // за довжиною (≤10 слів, див. lfStartTiles) — сюди довгі речення не
+    // потрапляють.
+    const stripTags = s => (s||'').replace(/<[^>]+>/g, '');
+    const pLang = primaryLang();
+    const defHint = stripTags(card.def?.[uiLang] || card.def?.[pLang] || '');
+    const qTextEl = document.getElementById('tiles-q-text');
+    qTextEl.className = 'tiles-q-text mc-q-term';
+    qTextEl.textContent = defHint;
+
+    // Prefetch аудіо основної мови курсу — поле 'def'
+    try {
+      const audioUrl = getAudioUrl(card.id, 'def', pLang);
+      const audioMkey = urlToAudioMkey(audioUrl);
+      if((!audioBlobCache.has(audioUrl) || !isAudioCacheValid(audioUrl, audioMkey)) && audioExistsCache.get(audioUrl) !== '404'){
+        fetchBlobUrl(audioUrl, 8000, audioMkey).catch(()=>{});
+      }
+    } catch(e) {}
+
+    const correctStr = stripTags(card.def?.[pLang] || '');
+    const words = correctStr.split(' ').filter(Boolean);
+    tilesState.words = words;
+
+    const allTiles = words.slice().sort(()=>Math.random()-.5);
+    const bank = document.getElementById('tiles-bank');
+    bank.innerHTML='';
+    allTiles.forEach((w,i)=>{
+      const tile = document.createElement('button');
+      tile.className = 'tile';
+      tile.textContent = w;
+      tile.dataset.word = w;
+      tile.dataset.idx = i;
+      tile.addEventListener('click', ()=>tilesPickWord(tile));
+      bank.appendChild(tile);
+    });
+    return;
+  }
+
   // Питання у tiles-q-text:
   // - uiLang === primaryLang() → показуємо short[primaryLang()] (те, що
   //   треба скласти з частин — контекст мовою, яку вивчаємо)
@@ -6992,6 +7037,7 @@ function tilesCheck(){
   const given   = tilesState.answer;
   const isOk = given.join(' ') === correct.join(' ');
   tilesState.checked = true;
+  const mode = tilesState.currentMode || 'term';
 
   const ansEl = document.getElementById('tiles-answer');
   ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
@@ -7002,15 +7048,19 @@ function tilesCheck(){
   // завершення озвучення (tilesRevealResultBtn нижче).
   tilesShowResultModal(isOk, correct.join(' '));
 
-  // Озвучуємо правильне речення (термін) після перевірки відповіді.
+  // Озвучуємо правильне речення після перевірки відповіді — поле
+  // залежить від режиму (term/def), бо це різні pregen-аудіофайли.
   // Текст і озвучку зараховуємо ОКРЕМИМИ слабкими сигналами в Lesen/Hören
   // (10%/50% — контенту тут менше, ніж у повноцінній картці з прикладом).
   recordCardEvent(tilesState.current.id, 'tiles_audio_after_check', 'Hören');
   recordCardEvent(tilesState.current.id, 'tiles_text_after_check', 'Lesen');
   try {
+    const field = mode === 'def' ? 'def' : 'term';
     const pLang = primaryLang();
-    const text = tilesState.current.term?.[pLang] || '';
-    speak(text, pLang, tilesRevealResultBtn, tilesState.current.id, 'term');
+    const text = mode === 'def'
+      ? (tilesState.current.def?.[pLang] || '').replace(/<[^>]+>/g, '')
+      : (tilesState.current.term?.[pLang] || '');
+    speak(text, pLang, tilesRevealResultBtn, tilesState.current.id, field);
   } catch(e) { tilesRevealResultBtn(); }
 }
 
@@ -9753,11 +9803,13 @@ function srTagVocab(){
 
 // ── Smart Review: зараховуємо урок ─────────────────────────
 function srRecordLesson(lf){
-  if(!lf) return;
+  if(!lf) return false;
+  let celebrated = false;
   try{
     const streakResult = srUpdateStreak();
     if(streakResult.increased && typeof showStreakCelebration === 'function'){
       showStreakCelebration(streakResult.streak);
+      celebrated = true;
     }
     const lessonStart = lf.startTime || Date.now();
     const state0 = srLoadState();
@@ -9787,6 +9839,7 @@ function srRecordLesson(lf){
     s2.todayMinutes = (s2.todayMinutes||0) + mins;
     srSaveState(s2);
   }catch(e){ console.warn('[SR] srRecordLesson:', e); }
+  return celebrated;
 }
 
 // ══════════════════════════════════════════════════════════════
@@ -10090,9 +10143,16 @@ function exitLessonFlow(){
   // при явному підтвердженні завершення. LF._recorded захищає від
   // подвійного зарахування, коли startNextLesson() сам викликає цю функцію
   // (див. нижче) — тоді запис уже стався там, і тут повторно не робимо.
+  // srRecordLesson() повертає true, якщо стрік щойно збільшився і на
+  // екрані зараз грає повноекранна анімація (showStreakCelebration) —
+  // тоді ПЕРЕХІД на інший view відкладаємо (celebrationPending нижче),
+  // інакше showView('lernpfad') ховає #view-vocab (а з ним і анімацію,
+  // яка фізично лежить усередині) ще до того, як браузер встиг її
+  // намалювати — анімація "вбивається" власним же кодом за мілісекунди.
+  let celebrationPending = false;
   if(LF && !LF._recorded){
     LF._recorded = true;
-    srRecordLesson(LF);
+    celebrationPending = !!srRecordLesson(LF);
   }
   // Stop all audio immediately
   stopVocab();
@@ -10162,8 +10222,15 @@ function exitLessonFlow(){
   // завершення уроку. showView() спершу перемикає активний view, тож
   // switchVocabTab(0) після нього лише скидає індекс під-вкладки на
   // майбутнє (без побічного автозапуску — див. guard у самій функції).
-  showView('lernpfad');
-  switchVocabTab(0);
+  const leaveLernpfad = () => { showView('lernpfad'); switchVocabTab(0); };
+  if(celebrationPending){
+    // showStreakCelebration() сама ховається через ~2200мс (fade-out ще
+    // +350мс) — чекаємо трохи довше, щоб користувач встиг побачити
+    // анімацію ПОВНІСТЮ до того, як ми перемкнемо view.
+    setTimeout(leaveLernpfad, 2300);
+  } else {
+    leaveLernpfad();
+  }
 }
 
 function restartLessonFlow(){
@@ -10177,10 +10244,23 @@ function startNextLesson(){
   // коментар в exitLessonFlow(). Тут — бо ця функція теж викликається
   // напряму з кнопки "Наступний урок", і може сама піти шляхом, що НЕ
   // викликає exitLessonFlow() (_goToLessonOrExit/startReviewLesson).
+  let celebrationPending = false;
   if(LF && !LF._recorded){
     LF._recorded = true;
-    srRecordLesson(LF);
+    celebrationPending = !!srRecordLesson(LF);
   }
+  // Якщо щойно запустилась повноекранна анімація стріку (showStreakCelebration,
+  // ~2200мс) — відкладаємо будь-який подальший перехід (список уроків АБО
+  // старт наступного уроку з власним автоплеєм аудіо), інакше він одразу
+  // ляже поверх/заглушить анімацію, яка ще не встигла дограти.
+  if(celebrationPending){
+    setTimeout(_startNextLessonProceed, 2300);
+  } else {
+    _startNextLessonProceed();
+  }
+}
+
+function _startNextLessonProceed(){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   if(!lessons.length){ exitLessonFlow(); return; }
 
