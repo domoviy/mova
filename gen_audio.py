@@ -329,25 +329,35 @@ async def synthesize_speech(text, voice, rate_str, output_path):
     await communicate.save(output_path)
 
 def git_commit_and_push(count):
-    try:
-        subprocess.run(["git", "add", "audio/"], check=True)
-        status = subprocess.run(["git", "diff", "--staged", "--quiet"])
-        if status.returncode != 0:
-            msg = f"🎙 TTS Audio Update: +{count} files [skip ci]"
-            subprocess.run(["git", "commit", "-m", msg], check=True)
+    """Комітить+пушить поточний stage (якщо є що), і В БУДЬ-ЯКОМУ РАЗІ
+    намагається допушити будь-які МІСЦЕВІ коміти, що ще не в origin —
+    напр. якщо попередній виклик закомітив, а push тоді не пройшов: без
+    цього такий "застряглий" коміт ніколи більше не пушився б і губився
+    б разом з ефемерним runner'ом по завершенню джоби. Падає (raise) при
+    остаточній невдачі — щоб зіпсований прогон одразу було видно як ❌ в
+    GitHub Actions, а не тихо втрачати дані щоразу.
+    """
+    subprocess.run(["git", "add", "audio/"], check=True)
+    status = subprocess.run(["git", "diff", "--staged", "--quiet"])
+    if status.returncode != 0:
+        msg = f"🎙 TTS Audio Update: +{count} files [skip ci]"
+        subprocess.run(["git", "commit", "-m", msg], check=True)
+        print(f"--- [Git Bot] Закомічено пачку з {count} файлів ---", flush=True)
 
-            # Спочатку пробуємо просто push — це єдиний writer у audio/ під
-            # час свого запуску, тож конфлікти вкрай рідкісні. Мережевий
-            # pull --rebase робимо лише як retry, якщо push дійсно відхилено.
-            push_result = subprocess.run(["git", "push"])
-            if push_result.returncode != 0:
-                print("--- [Git Bot] Push відхилено, пробуємо pull --rebase і повторити ---", flush=True)
-                subprocess.run(["git", "pull", "--rebase"], check=True)
-                subprocess.run(["git", "push"], check=True)
-
-            print(f"--- [Git Bot] Збережено пачку з {count} файлів ---", flush=True)
-    except Exception as e:
-        print(f"Git commit error: {e}", flush=True)
+    # Незалежно від того, чи саме ЦЕЙ виклик щось закомітив — допушуємо
+    # будь-які локальні коміти, яких ще нема в origin (напр. лишились
+    # непушнутими з попереднього виклику, де commit пройшов, а push — ні).
+    ahead = subprocess.run(
+        ["git", "rev-list", "@{u}..HEAD", "--count"],
+        capture_output=True, text=True
+    )
+    if ahead.returncode == 0 and ahead.stdout.strip() not in ("", "0"):
+        push_result = subprocess.run(["git", "push"])
+        if push_result.returncode != 0:
+            print("--- [Git Bot] Push відхилено, пробуємо pull --rebase і повторити ---", flush=True)
+            subprocess.run(["git", "pull", "--rebase"], check=True)
+            subprocess.run(["git", "push"], check=True)
+        print("--- [Git Bot] Запушено ---", flush=True)
 
 def write_to_manifest_file(mkey, content_hash):
     current_manifest = {}
@@ -642,13 +652,20 @@ async def main():
     await asyncio.gather(*pool)
 
     if stats["batch_counter"] > 0:
-        git_commit_and_push(stats["batch_counter"])
+        try:
+            git_commit_and_push(stats["batch_counter"])
+        except Exception as e:
+            print(f"❌ Фінальний коміт/push не вдався: {e}", flush=True)
+            print("   Аудіофайли й записи manifest.json цієї пачки НЕ потрапили в репозиторій", flush=True)
+            print("   (лишились би лише на диску ефемерного runner'а і загубились би без сліду).", flush=True)
+            sys.exit(1)
 
     print(f"🎉 Роботу завершено! Згенеровано та внесено в маніфест: {stats['generated']} файлів.", flush=True)
     if stats["failed"] > 0:
         print(f"⚠️  Не вдалося згенерувати {stats['failed']} файл(ів) навіть після {RETRY_ATTEMPTS} спроб — запустіть скрипт ще раз, він доробить лише їх:", flush=True)
         for mkey in stats["failed_mkeys"]:
             print(f"   · {mkey}", flush=True)
+        sys.exit(1)
 
 if __name__ == "__main__":
     asyncio.run(main())
