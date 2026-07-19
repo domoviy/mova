@@ -575,6 +575,20 @@ body{
 .lp-module:not(.locked):not(.done):active{
   background:rgba(201,168,76,.08);
 }
+/* Опційна картка "Бонус: Граматика" — свідомо ІНША за виглядом від
+   звичайних вузлів шляху (пунктирна рамка замість суцільної, менша
+   вага тіні): має читатись як "необов'язкове поглиблення", а не як
+   черговий обов'язковий крок шляху. */
+.lp-module-bonus{
+  border-style:dashed;
+  border-color:rgba(201,168,76,.5);
+  background:rgba(201,168,76,.04);
+  box-shadow:none;
+}
+.lp-module-bonus:active{
+  background:rgba(201,168,76,.1);
+}
+.lp-module-bonus .lp-module-title{color:var(--gold);}
 .lp-module-icon{
   width:36px;height:36px;border-radius:10px;
   background:var(--forest);
@@ -2586,7 +2600,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '365-cc92cba';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5158,7 +5172,26 @@ function resetVocabQ(){
   // Це захищає від випадкового скидання при кліку на чіп категорії
   // або перемиканні режиму (🧠) під час відтворення уроку.
   if(V.lessonId && typeof LF !== 'undefined' && LF) return;
-  const wp=V.playing;stopVocab();V.queue=buildVocabQueue();V.idx=0;srBeginCardViewing();V.flipped=false;V.repeatCount=0;renderVocabCard();if(wp)setTimeout(toggleVocab,200);
+  // Було: renderVocabCard() — рендер СТАРОЇ, прихованої (#fc-area)
+  // системи карток; видима зараз картка (#lf-unit-card) від цього
+  // виклику взагалі не оновлювалась. Тому зміна алгоритму сортування
+  // (🧠/➡️) коректно перебудовувала V.queue, але показана картка
+  // лишалась зі старим порядком — новий порядок було видно лише в
+  // плеєрі (▶️ щоразу будує чергу прослуховування напряму з V.queue
+  // заново). Тепер — startVocabCardMode()/startVocabListenMode(), які
+  // й малюють видиму зараз картку/чергу.
+  const wasListening = V.listening;
+  stopVocab();
+  V.queue = buildVocabQueue();
+  V.idx = 0;
+  srBeginCardViewing();
+  V.flipped = false;
+  V.repeatCount = 0;
+  if(wasListening){
+    startVocabListenMode();
+  } else {
+    startVocabCardMode();
+  }
 }
 
 // ── SWIPE ─────────────────────────────────────────────────────
@@ -5659,6 +5692,89 @@ function lessonUnlocked(lesson){
 
 // ── ПОВТОРЕННЯ (Review Lessons) ───────────────────────────────────
 // Збирає картки з вказаних розділів і запускає той самий lesson-flow що й звичайний урок
+// ── ОПЦІЙНИЙ БОНУСНИЙ УРОК "ГРАМАТИКА" ───────────────────────────
+// Не блокує проходження шляху — доступний одразу, щойно модуль/глава
+// розблоковані, незалежно від прогресу решти уроків. Для вмотивованих
+// учнів/за завданням викладача. Складається ЛИШЕ з кроку sb_prac
+// (той самий рушій вправ, що й у звичайному уроці) з повним пулом за
+// темою (buildGrammarBonusPool) + фінального результату — тобто це
+// одразу практика, без карток/matching/tiles.
+function startModuleGrammarBonus(lessonId){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const lesson = lessons.find(l=>l.id===lessonId);
+  if(!lesson || !lesson.grammar) return;
+  const pool = buildGrammarBonusPool([lesson.grammar]);
+  if(!pool.length){
+    notify('⚠️ '+(uiLang==='uk'?'Немає завдань граматики для цього модуля':uiLang==='ru'?'Нет заданий по грамматике для этого модуля':uiLang==='en'?'No grammar tasks for this module':'Keine Grammatikaufgaben für dieses Modul'));
+    return;
+  }
+  const title = {
+    de:'Grammatik: '+(lesson.title?.de||''), uk:'Граматика: '+(lesson.title?.uk||''),
+    en:'Grammar: '+(lesson.title?.en||''),   ru:'Грамматика: '+(lesson.title?.ru||''),
+  };
+  _runGrammarBonusFlow({
+    id: '_gram_module_'+lesson.id,
+    title,
+    _isGrammarBonus: true,
+    _bonusForLessonId: lesson.id,
+    _grammarBonusPool: pool,
+  });
+}
+
+function startChapterGrammarBonus(chapterNum){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const chapterLessons = lessons.filter(l=>l.chapter===chapterNum);
+  const topicIds = Array.from(new Set(chapterLessons.map(l=>l.grammar).filter(Boolean)));
+  const pool = buildGrammarBonusPool(topicIds);
+  if(!pool.length){
+    notify('⚠️ '+(uiLang==='uk'?'Немає завдань граматики для цієї глави':uiLang==='ru'?'Нет заданий по грамматике для этой главы':uiLang==='en'?'No grammar tasks for this chapter':'Keine Grammatikaufgaben für dieses Kapitel'));
+    return;
+  }
+  const chTitle = chapterLessons[0]?.chapterTitle || {de:'',uk:'',en:'',ru:''};
+  const title = {
+    de:'Grammatik: '+(chTitle.de||''), uk:'Граматика: '+(chTitle.uk||''),
+    en:'Grammar: '+(chTitle.en||''),   ru:'Грамматика: '+(chTitle.ru||''),
+  };
+  _runGrammarBonusFlow({
+    id: '_gram_chapter_'+chapterNum,
+    title,
+    _isGrammarBonus: true,
+    _bonusForChapter: chapterNum,
+    _grammarBonusPool: pool,
+  });
+}
+
+// Мінімальний lesson-flow — лише sb_prac (з підміненим повним пулом
+// замість звичайної куцої 4-карткової вибірки) + result. Використовує
+// той самий LF/lfGoStep/lfShowResult/srRecordLesson, що й звичайний
+// урок — тому стрік і запис у SM-2 працюють без жодних додаткових змін
+// (див. lfShowResult()).
+function _runGrammarBonusFlow(lesson){
+  stopVocab();
+  LF = {
+    lessonId:  lesson.id,
+    lesson,
+    cards:      [],
+    matchCards: [],
+    matchExtraPools: {},
+    tilesCards: [],
+    allCards:   [],
+    sbCards:    [],
+    sbIdx:      0,
+    dlgCard:    null,
+    steps:      ['sb_prac', 'result'],
+    step:       0,
+    results:    {},
+    startTime:  Date.now(),
+    _grammarBonusPool: lesson._grammarBonusPool,
+  };
+  V.lessonId    = lesson.id;
+  V.lessonCards = [];
+  showView('vocab');
+  lfRenderBar();
+  lfGoStep(0);
+}
+
 function startReviewLesson(chapterNums, labelKey){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const vocab   = typeof VOCAB!=='undefined'   ? VOCAB   : [];
@@ -6009,8 +6125,9 @@ function renderLernpfad(){
         <div class="lp-chapter-arrow">▼</div>
       </div>
       <div class="lp-modules">
-        ${ch.modules.map(m=>renderModuleCard(m)).join('')}
+        ${ch.modules.map(m=>renderModuleCard(m)+renderGrammarBonusCard(m)).join('')}
         ${reviewHtml}
+        ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
       </div>`;
     container.appendChild(chEl);
   });
@@ -6104,6 +6221,53 @@ function renderModuleCard(lesson){
       ${unlocked?`<div class="lp-module-prog">
         <div class="lp-module-prog-fill" style="width:${pct}%"></div>
       </div>`:''}
+    </div>
+  </div>`;
+}
+
+// Опційна картка "Бонус: Граматика" одного модуля — НЕ блокує основний
+// шлях, доступна одразу, щойно модуль розблокований (незалежно від
+// прогресу решти уроку). Для вмотивованих учнів/за завданням викладача.
+// Порожній рядок (нічого не рендеримо), якщо: модуль ще замкнений, тема
+// не задана як id у GRAMMAR (старі курси з вільним текстом), або для
+// теми взагалі немає готових <g>-завдань.
+function renderGrammarBonusCard(lesson){
+  if(!lesson.grammar || !lessonUnlocked(lesson)) return '';
+  const rule = getGrammarRule(lesson.grammar);
+  if(!rule) return '';
+  if(!buildGrammarBonusPool([lesson.grammar]).length) return '';
+  const label = {
+    de:'Bonus: Grammatik', uk:'Бонус: Граматика',
+    en:'Bonus: Grammar',   ru:'Бонус: Грамматика',
+  }[uiLang] || 'Bonus: Grammatik';
+  return `<div class="lp-module lp-module-bonus" onclick="startModuleGrammarBonus('${lesson.id}')">
+    <div class="lp-module-icon">⭐</div>
+    <div class="lp-module-body">
+      <div class="lp-module-title">${label}</div>
+      <div class="lp-module-meta">${grammarLabel(rule)}</div>
+    </div>
+  </div>`;
+}
+
+// Опційна картка "Бонус: Граматика" усієї глави — той самий принцип,
+// але пул охоплює ВСІ теми граматики глави (union по модулях).
+function renderChapterGrammarBonusCard(chapterNum, chapterLessons, unlocked){
+  if(!unlocked) return '';
+  const topicIds = Array.from(new Set(chapterLessons.map(l=>l.grammar).filter(Boolean)));
+  if(!topicIds.length || !buildGrammarBonusPool(topicIds).length) return '';
+  const label = {
+    de:'Bonus: Grammatik-Wiederholung',   uk:'Бонус: Повторення граматики',
+    en:'Bonus: Grammar review',           ru:'Бонус: Повторение грамматики',
+  }[uiLang] || 'Bonus: Grammatik-Wiederholung';
+  const sub = {
+    de: topicIds.length+' Themen', uk: topicIds.length+' тем',
+    en: topicIds.length+' topics', ru: topicIds.length+' тем',
+  }[uiLang] || topicIds.length+' Themen';
+  return `<div class="lp-module lp-module-bonus" onclick="startChapterGrammarBonus(${chapterNum})">
+    <div class="lp-module-icon">⭐</div>
+    <div class="lp-module-body">
+      <div class="lp-module-title">${label}</div>
+      <div class="lp-module-meta">${sub}</div>
     </div>
   </div>`;
 }
@@ -9389,13 +9553,25 @@ var _lfVocabHandlers = {
   // активовані мови (V.langs) замість лише primaryLang. Задня сторона
   // (def) взагалі не потрапляє в чергу прослуховування, якщо
   // V.playSide (front/both/back) — див. _lfVocabBuildListenUnits().
+  //
+  // Порядок: спершу ВСІ активні мови для term, потім ВСІ активні мови
+  // для short (поле — зовнішній цикл, мова — внутрішній) — тобто
+  // term(primary) → term(ui) → short(primary) → short(ui) — а не
+  // навпаки (мова→поле), як було раніше. Мови впорядковані семантично
+  // (primaryLang — мова, яку вивчаємо, першою; далі uiLang — рідна/
+  // інтерфейсна; далі решта активних), а не фіксованим de→en→uk→ru.
   getMultiLangAudioText: function(unit){
     var card = unit.card;
-    var activeLangs = ['de','en','uk','ru'].filter(function(l){ return V.langs[l]; });
+    var pl = primaryLang();
+    var ul = uiLang;
+    var langOrder = [pl];
+    if(ul !== pl) langOrder.push(ul);
+    ['de','en','uk','ru'].forEach(function(l){ if(langOrder.indexOf(l)===-1) langOrder.push(l); });
+    var activeLangs = langOrder.filter(function(l){ return V.langs[l]; });
     var fields = unit.side === 'term' ? ['term','short'] : ['def'];
     var items = [];
-    activeLangs.forEach(function(lang){
-      fields.forEach(function(field){
+    fields.forEach(function(field){
+      activeLangs.forEach(function(lang){
         var text = card[field] && card[field][lang];
         if(text) items.push({ text: text, field: field, lang: lang });
       });
@@ -9546,14 +9722,20 @@ function _lfBuildSBPracQueue(){
 }
 
 function lfStartSBPrac(){
-  if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
-
-  // Фіксована черга з 4 карток: до 2 Sprachbausteine на повторення сьогодні
-  // (якщо є) + решта — Grammatik-Trainer картки цього уроку (докладніше —
-  // див. _lfBuildSBPracQueue вище). Будуємо ДО будь-яких змін DOM: якщо
-  // після фільтрації "нових" слів (srIsCardNew) черга порожня — просто
-  // пропускаємо крок, не чіпаючи UI взагалі.
-  SB.pracQueue = _lfBuildSBPracQueue();
+  // Бонусний урок "Граматика" — повний, заздалегідь підготовлений пул
+  // (buildGrammarBonusPool, до 10 завдань) замість звичайної куцої
+  // 4-карткової вибірки _lfBuildSBPracQueue().
+  if(LF && LF._grammarBonusPool && LF._grammarBonusPool.length){
+    SB.pracQueue = LF._grammarBonusPool.slice();
+  } else {
+    if(!LF || !LF.sbCards || !LF.sbCards.length){ lfNextStep(); return; }
+    // Фіксована черга з 4 карток: до 2 Sprachbausteine на повторення сьогодні
+    // (якщо є) + решта — Grammatik-Trainer картки цього уроку (докладніше —
+    // див. _lfBuildSBPracQueue вище). Будуємо ДО будь-яких змін DOM: якщо
+    // після фільтрації "нових" слів (srIsCardNew) черга порожня — просто
+    // пропускаємо крок, не чіпаючи UI взагалі.
+    SB.pracQueue = _lfBuildSBPracQueue();
+  }
   if(!SB.pracQueue.length){ lfNextStep(); return; }
 
   const vocabTop = document.querySelector('.vocab-top');
@@ -10283,6 +10465,27 @@ function _startNextLessonProceed(){
   if(!lessons.length){ exitLessonFlow(); return; }
 
   const finishedLesson = LF?.lesson;
+
+  // Бонусний урок "Граматика" (опційний, не вузол основного шляху) —
+  // "Наступний урок" має продовжити РЕАЛЬНИЙ шлях так, ніби щойно
+  // пройдено модуль/главу, до якої бонус прив'язаний (див.
+  // startModuleGrammarBonus/startChapterGrammarBonus) — а не лишати
+  // користувача "в нікуди". Даємо те саме відчуття завершеності, що й
+  // після звичайного уроку.
+  if(finishedLesson?._isGrammarBonus){
+    if(finishedLesson._bonusForChapter != null){
+      const nextChapterFirstModule = lessons.find(l =>
+        l.chapter === finishedLesson._bonusForChapter + 1 && l.module === 1
+      );
+      _goToLessonOrExit(nextChapterFirstModule);
+      return;
+    }
+    const realLesson = lessons.find(l => l.id === finishedLesson._bonusForLessonId);
+    if(!realLesson){ exitLessonFlow(); return; }
+    _proceedFromLesson(realLesson);
+    return;
+  }
+
   const wasReview = !!finishedLesson?._isReview;
 
   // ── Випадок 1: щойно пройдений урок БУВ ревью глави ──────────────
@@ -10301,7 +10504,14 @@ function _startNextLessonProceed(){
   const currentId = LF?.lessonId;
   const current = lessons.find(l => l.id === currentId);
   if(!current){ exitLessonFlow(); return; }
+  _proceedFromLesson(current);
+}
 
+// Спільна логіка "що далі після модуля X" — використовується і для
+// звичайного завершення уроку, і для завершення бонусного уроку
+// "Граматика" модуля (де X — модуль, до якого бонус прив'язаний).
+function _proceedFromLesson(current){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const {pct} = lessonProgress(current);
 
   // Випадок 2: поточний МОДУЛЬ ще не завершено (<80%) → повторюємо його ж.
@@ -11431,6 +11641,28 @@ function buildGramCards(){
     });
   });
   return out;
+}
+
+// Пул завдань для ОПЦІЙНОГО бонусного уроку "Граматика" (модуля чи
+// глави) — усі речення КУРСУ (не лише цього модуля/глави) для вказаних
+// граматичних тем (topicIds — значення lesson.grammar), відсортовані за
+// SM-2 пріоритетом (прострочені/нові — першими) і обмежені 10
+// завданнями за раз. 10 — доказово ефективний розмір однієї сесії:
+// обсяг робочої пам'яті (~7±2 за Міллером, ~4±1 за уточненням Коуена),
+// cognitive load theory (Sweller), spacing/testing effect, і практика
+// індустрії (Duolingo/Memrise теж сходяться на ~10-15).
+function buildGrammarBonusPool(topicIds){
+  if(typeof VOCAB==='undefined' || !VOCAB.length || !topicIds || !topicIds.length) return [];
+  var topics = new Set(topicIds.filter(Boolean));
+  if(!topics.size) return [];
+  var allGram = buildGramCards();
+  var matching = allGram.filter(function(gc){ return topics.has(gc.gram); });
+  if(!matching.length) return [];
+  var state = srLoadState();
+  var sorted = matching.slice().sort(function(a,b){
+    return srPriorityFromState(state, b._srcId) - srPriorityFromState(state, a._srcId);
+  });
+  return sorted.slice(0, 10);
 }
 
 // Категорії для чіпів-фільтрів у режимі Grammatik — по одній на кожну
