@@ -681,6 +681,7 @@ var LESSONS = [
       "mwb_117",
       "mwb_118",
       "mwb_119",
+      "mwb_212"
     ],
     "unlockAfter": "k1m4",
     "sbCards": [
@@ -1086,7 +1087,8 @@ var LESSONS = [
       "eat_101",
       "eat_102",
       "eat_103",
-      "eat_104"
+      "eat_104",
+      "eat_158"
     ],
     "unlockAfter": "k3m1",
     "sbCards": [
@@ -1758,7 +1760,9 @@ var LESSONS = [
       "mes_050",
       "mes_051",
       "mes_052",
-      "mes_053"
+      "mes_053",
+      "mes_054",
+      "mes_055"
     ],
     "unlockAfter": "k5m1",
     "sbCards": [
@@ -3097,7 +3101,14 @@ var LESSONS = [
       "ges_032",
       "ges_033",
       "ges_034",
-      "ges_035"
+      "ges_035",
+      "ges_168",
+      "ges_169",
+      "ges_170",
+      "ges_171",
+      "ges_172",
+      "ges_173",
+      "ges_174"
     ],
     "unlockAfter": "k8m4",
     "sbCards": [
@@ -3352,7 +3363,11 @@ var LESSONS = [
       "ges_164",
       "ges_165",
       "ges_166",
-      "ges_167"
+      "ges_167",
+      "mbr_197",
+      "mbr_198",
+      "mbr_199",
+      "mbr_200"
     ],
     "unlockAfter": "k9m3",
     "sbCards": [
@@ -3479,7 +3494,8 @@ var LESSONS = [
       "dig_055",
       "dig_056",
       "dig_057",
-      "dig_058"
+      "dig_058",
+      "mwb_211"
     ],
     "unlockAfter": "k10m1",
     "sbCards": [
@@ -5734,6 +5750,23 @@ var VOCAB = [
 {"id": "kor_220", "cat": "Korrespondenz und Handel", "term": {"de": "die Werbezwecke", "en": "advertising purposes", "uk": "рекламні цілі", "ru": "рекламные цели"}, "short": {"de": "etwas wird gekauft, um damit Werbung zu machen", "en": "something is bought in order to advertise with it", "uk": "щось купується, щоб з його допомогою рекламувати", "ru": "что-то покупается, чтобы с его помощью рекламировать"}, "def": {"de": "Diese Musterware wird ausschließlich für <b>Werbezwecke</b> hergestellt und <g>ist</g> nicht zum Verkauf <g>bestimmt</g>.", "en": "This sample merchandise is produced exclusively for <b>advertising purposes</b> and <g>is</g> not <g>intended</g> for sale.", "uk": "Цей зразок товару виготовляється виключно для <b>рекламних цілей</b> і не призначений для продажу.", "ru": "Этот образец товара изготавливается исключительно для <b>рекламных целей</b> и не предназначен для продажи."}, "gram": "passiv_mit_sein"},
 {"id": "kor_221", "cat": "Korrespondenz und Handel", "term": {"de": "die Sonderanfertigung, -en", "en": "custom-made product", "uk": "виріб на замовлення", "ru": "изделие на заказ"}, "short": {"de": "ein Produkt, das nach speziellen Wünschen angefertigt wurde; kein Standard-Produkt; kein Umtausch möglich", "en": "a product made to special requirements; not a standard product; no exchange possible", "uk": "товар, виготовлений за спеціальними побажаннями; не стандартний товар; обмін неможливий", "ru": "товар, изготовленный по специальным пожеланиям; не стандартный товар; обмен невозможен"}, "def": {"de": "<g>Dadurch, dass</g> es sich um <b>eine Sonderanfertigung</b> handelte, konnte der Kunde die Ware nach der Bestellung nicht mehr umtauschen.", "en": "<g>By</g> being <b>a custom-made product</b>, the item could no longer be exchanged by the customer after ordering.", "uk": "<g>Через те, що</g> це було <b>виробом на замовлення</b>, клієнт не міг обміняти товар після оформлення замовлення.", "ru": "<g>Из-за того, что</g> это было <b>изделием на заказ</b>, клиент не мог обменять товар после оформления заказа."}, "gram": "modalsatz_dadurch_indem"},
 {"id": "kor_222", "cat": "Korrespondenz und Handel", "term": {"de": "der Lieferengpass, -pässe", "en": "supply bottleneck, shortage", "uk": "дефіцит постачання", "ru": "дефицит поставок"}, "short": {"de": "der Lieferant kann nicht liefern, z. B. wegen fehlender Produktteile, zu wenig produzierter Ware oder Schwierigkeiten in der Produktion", "en": "the supplier cannot deliver, e.g. due to missing parts, insufficient production, or production difficulties", "uk": "постачальник не може здійснити поставку, наприклад через відсутність деталей, недостатній обсяг виробництва чи труднощі у виробництві", "ru": "поставщик не может осуществить поставку, например из-за отсутствия деталей, недостаточного объёма производства или трудностей в производстве"}, "def": {"de": "<g>Indem</g> die Firma den Kunden frühzeitig über <b>den Lieferengpass</b> informierte, vermied sie unnötigen Ärger.", "en": "<g>By</g> informing the customer about <b>the supply bottleneck</b> early, the company avoided unnecessary trouble.", "uk": "<g>Завчасно поінформувавши</g> клієнта про <b>дефіцит постачання</b>, фірма уникнула зайвих неприємностей.", "ru": "<g>Заблаговременно проинформировав</g> клиента о <b>дефиците поставок</b>, фирма избежала ненужных неприятностей."}, "gram": "modalsatz_dadurch_indem"}
+,
+{"id": "mes_054", "cat": "Messe", "term": {"de": "der Stammkunde, -n / die Stammkundin, -nen", "en": "regular customer", "uk": "постійний клієнт / постійна клієнтка", "ru": "постоянный клиент / постоянная клиентка"}, "short": {"de": "Kunde, der regelmäßig einkauft", "en": "customer who buys regularly", "uk": "клієнт, який регулярно купує", "ru": "клиент, который регулярно покупает"}, "def": {"de": "Frau Beck ist eine <b>Stammkundin</b> und kauft seit Jahren bei uns ein.", "en": "Ms. Beck is a <b>regular customer</b> and has bought from us for years.", "uk": "Пані Бек — наша <b>постійна клієнтка</b> вже багато років.", "ru": "Госпожа Бек — наша <b>постоянная клиентка</b> уже много лет."}, "gram": ""},
+{"id": "mes_055", "cat": "Messe", "term": {"de": "die Stammkundschaft", "en": "regular clientele", "uk": "постійна клієнтура", "ru": "постоянная клиентура"}, "short": {"de": "alle Stammkunden zusammen", "en": "all regular customers together", "uk": "усі постійні клієнти разом", "ru": "все постоянные клиенты вместе"}, "def": {"de": "Unsere treue <b>Stammkundschaft</b> schätzt vor allem den persönlichen Service.", "en": "Our loyal <b>regular clientele</b> especially values the personal service.", "uk": "Наша віддана <b>постійна клієнтура</b> цінує передусім особистий сервіс.", "ru": "Наша преданная <b>постоянная клиентура</b> ценит прежде всего личный сервис."}, "gram": ""},
+{"id": "eat_158", "cat": "Der erste Arbeitstag", "term": {"de": "die Daten eingeben", "en": "to enter data", "uk": "вводити дані", "ru": "вводить данные"}, "short": {"de": "in ein Formular oder eine Eingabemaske<br>der Fokus liegt auf dem Eingeben", "en": "type into a form or input mask<br>focus: the entering itself", "uk": "вписувати у форму чи поле вводу<br>фокус: сам процес введення", "ru": "вписывать в форму или поле ввода<br>фокус: сам процесс ввода"}, "def": {"de": "Bitte <b>geben</b> Sie Ihre Kontaktdaten direkt im Formular <b>ein</b>.", "en": "Please <b>enter</b> your contact <b>data</b> directly in the form.", "uk": "Будь ласка, <b>введіть</b> свої контактні <b>дані</b> прямо у форму.", "ru": "Пожалуйста, <b>введите</b> свои контактные <b>данные</b> прямо в форму."}, "gram": ""},
+{"id": "ges_168", "cat": "Gesundheit und Kommunikation", "term": {"de": "der Leib, -er", "en": "the body", "uk": "тіло", "ru": "тело"}, "short": {"de": "der Körper", "en": "the physical body", "uk": "фізичне тіло", "ru": "физическое тело"}, "def": {"de": "Sport hält <b>Leib</b> und Seele gesund.", "en": "Sport keeps <b>body</b> and soul healthy.", "uk": "Спорт зберігає <b>тіло</b> й душу здоровими.", "ru": "Спорт сохраняет <b>тело</b> и душу здоровыми."}, "gram": ""},
+{"id": "ges_169", "cat": "Gesundheit und Kommunikation", "term": {"de": "das leibliche Kind", "en": "biological child", "uk": "рідна дитина", "ru": "родной ребёнок"}, "short": {"de": "eigenes Kind, kein Adoptivkind", "en": "one's own child, not adopted", "uk": "власна дитина, не прийомна", "ru": "собственный ребёнок, не приёмный"}, "def": {"de": "Sie hat zwei <b>leibliche Kinder</b> und einen Adoptivsohn.", "en": "She has two <b>biological children</b> and one adopted son.", "uk": "У неї двоє <b>рідних дітей</b> і один прийомний син.", "ru": "У неё двое <b>родных детей</b> и один приёмный сын."}, "gram": ""},
+{"id": "ges_170", "cat": "Gesundheit und Kommunikation", "term": {"de": "die Seele, -n", "en": "the soul", "uk": "душа", "ru": "душа"}, "short": {"de": "der Geist im Körper", "en": "the spirit within the body", "uk": "дух у тілі", "ru": "дух в теле"}, "def": {"de": "Nach dem langen Urlaub fühlt sich ihre <b>Seele</b> wieder ruhig an.", "en": "After the long vacation, her <b>soul</b> feels calm again.", "uk": "Після довгої відпустки її <b>душа</b> знову спокійна.", "ru": "После долгого отпуска её <b>душа</b> снова спокойна."}, "gram": ""},
+{"id": "ges_171", "cat": "Gesundheit und Kommunikation", "term": {"de": "kneipen", "en": "to do Kneipp water therapy", "uk": "займатися кнайп-терапією", "ru": "заниматься кнайп-терапией"}, "short": {"de": "im Wasser gehen, Wasser treten", "en": "walk in water, tread water (therapy)", "uk": "ходити у воді (водолікування)", "ru": "ходить в воде (водолечение)"}, "def": {"de": "Im Kurpark kann man im kalten Bach <b>kneipen</b>.", "en": "In the spa park, you can <b>do Kneipp therapy</b> in the cold stream.", "uk": "У парку санаторію можна <b>займатися кнайп-терапією</b> в холодному струмку.", "ru": "В парке санатория можно <b>заниматься кнайп-терапией</b> в холодном ручье."}, "gram": ""},
+{"id": "ges_172", "cat": "Gesundheit und Kommunikation", "term": {"de": "das Präventionsseminar, -e", "en": "prevention seminar", "uk": "профілактичний семінар", "ru": "профилактический семинар"}, "short": {"de": "Seminar z. B. zum Stressumgang", "en": "seminar, e.g. on handling stress", "uk": "семінар, напр. про подолання стресу", "ru": "семинар, напр. о преодолении стресса"}, "def": {"de": "Am Freitag findet ein <b>Präventionsseminar</b> zum Thema Stress statt.", "en": "On Friday, there is a <b>prevention seminar</b> about stress.", "uk": "У п'ятницю відбудеться <b>профілактичний семінар</b> про стрес.", "ru": "В пятницу состоится <b>профилактический семинар</b> о стрессе."}, "gram": ""},
+{"id": "ges_173", "cat": "Gesundheit und Kommunikation", "term": {"de": "ein ausgewogenes Angebot", "en": "a balanced range", "uk": "збалансований асортимент", "ru": "сбалансированный ассортимент"}, "short": {"de": "vielseitig, abwechslungsreich", "en": "varied, diverse selection", "uk": "різноманітний, урізноманітнений", "ru": "разнообразный, многогранный"}, "def": {"de": "Die Kantine bietet ein <b>ausgewogenes Angebot</b> an Gerichten.", "en": "The canteen offers a <b>balanced range</b> of dishes.", "uk": "Їдальня пропонує <b>збалансований асортимент</b> страв.", "ru": "Столовая предлагает <b>сбалансированный ассортимент</b> блюд."}, "gram": ""},
+{"id": "ges_174", "cat": "Gesundheit und Kommunikation", "term": {"de": "der nachhaltige Speiseplan", "en": "sustainable meal plan", "uk": "сталий раціон харчування", "ru": "устойчивый рацион питания"}, "short": {"de": "umweltschonende Lebensmittel", "en": "eco-friendly food choices", "uk": "екологічні продукти харчування", "ru": "экологичные продукты питания"}, "def": {"de": "Unsere Kantine setzt jetzt auf einen <b>nachhaltigen Speiseplan</b>.", "en": "Our canteen now focuses on a <b>sustainable meal plan</b>.", "uk": "Наша їдальня тепер орієнтується на <b>сталий раціон</b>.", "ru": "Наша столовая теперь ориентируется на <b>устойчивый рацион</b>."}, "gram": ""},
+{"id": "mwb_211", "cat": "Mein Weg in den Beruf", "term": {"de": "etwas finanziell stemmen", "en": "to afford something financially", "uk": "фінансово потягнути щось", "ru": "финансово потянуть что-либо"}, "short": {"de": "sich etwas leisten können", "en": "to be able to afford something", "uk": "могти собі це дозволити", "ru": "мочь себе это позволить"}, "def": {"de": "Allein kann er die Gründung nicht <b>finanziell stemmen</b>.", "en": "Alone, he cannot <b>afford</b> the start-up <b>financially</b>.", "uk": "Сам він не може <b>фінансово потягнути</b> заснування компанії.", "ru": "Один он не может <b>финансово потянуть</b> открытие компании."}, "gram": ""},
+{"id": "mwb_212", "cat": "Mein Weg in den Beruf", "term": {"de": "einen klaren Schnitt machen", "en": "to make a clean break", "uk": "покласти чіткий край", "ru": "поставить чёткую точку"}, "short": {"de": "etwas endgültig beenden", "en": "to end something definitively", "uk": "остаточно щось завершити", "ru": "окончательно что-то завершить"}, "def": {"de": "Nach der Kündigung wollte sie <b>einen klaren Schnitt machen</b>.", "en": "After quitting, she wanted <b>to make a clean break</b>.", "uk": "Після звільнення вона хотіла <b>покласти чіткий край</b>.", "ru": "После увольнения она хотела <b>поставить чёткую точку</b>."}, "gram": ""},
+{"id": "mbr_197", "cat": "Mein Beruf", "term": {"de": "kaum etwas auszusetzen", "en": "hardly anything to criticize", "uk": "майже нема до чого причепитися", "ru": "почти не к чему придраться"}, "short": {"de": "nichts zu kritisieren", "en": "nothing to complain about", "uk": "нічого критикувати", "ru": "нечего критиковать"}, "def": {"de": "An seiner Arbeit gibt es <b>kaum etwas auszusetzen</b>.", "en": "There is <b>hardly anything to criticize</b> about his work.", "uk": "У його роботі <b>майже нема до чого причепитися</b>.", "ru": "В его работе <b>почти не к чему придраться</b>."}, "gram": ""},
+{"id": "mbr_198", "cat": "Mein Beruf", "term": {"de": "mit Enthusiasmus arbeiten", "en": "to work with enthusiasm", "uk": "працювати із захопленням", "ru": "работать с энтузиазмом"}, "short": {"de": "mit Begeisterung, Energie arbeiten", "en": "to work with passion, energy", "uk": "працювати з натхненням, енергією", "ru": "работать с воодушевлением, энергией"}, "def": {"de": "Sie arbeitet stets <b>mit Enthusiasmus</b> an neuen Projekten.", "en": "She always <b>works with enthusiasm</b> on new projects.", "uk": "Вона завжди <b>працює із захопленням</b> над новими проєктами.", "ru": "Она всегда <b>работает с энтузиазмом</b> над новыми проектами."}, "gram": ""},
+{"id": "mbr_199", "cat": "Mein Beruf", "term": {"de": "das einfache Arbeitszeugnis", "en": "simple employment reference", "uk": "просте трудове свідоцтво", "ru": "простая трудовая характеристика"}, "short": {"de": "Zeugnis ohne Bewertung", "en": "reference without evaluation", "uk": "довідка без оцінки роботи", "ru": "справка без оценки работы"}, "def": {"de": "Er bat nur um ein <b>einfaches Arbeitszeugnis</b> ohne Bewertung.", "en": "He only asked for a <b>simple employment reference</b> without evaluation.", "uk": "Він попросив лише <b>просте трудове свідоцтво</b> без оцінки.", "ru": "Он попросил только <b>простую трудовую характеристику</b> без оценки."}, "gram": ""},
+{"id": "mbr_200", "cat": "Mein Beruf", "term": {"de": "das qualifizierte Arbeitszeugnis", "en": "detailed employment reference", "uk": "кваліфіковане трудове свідоцтво", "ru": "квалифицированная трудовая характеристика"}, "short": {"de": "Zeugnis mit Bewertung", "en": "reference with evaluation", "uk": "довідка з оцінкою роботи", "ru": "справка с оценкой работы"}, "def": {"de": "Für die Bewerbung braucht sie ein <b>qualifiziertes Arbeitszeugnis</b>.", "en": "For the application, she needs a <b>detailed employment reference</b>.", "uk": "Для заявки їй потрібне <b>кваліфіковане трудове свідоцтво</b>.", "ru": "Для заявки ей нужна <b>квалифицированная трудовая характеристика</b>."}, "gram": ""}
 ];
 var DIALOGE = [
 {"id": "dlg_001", "cat": "Telefongespräch", "q": {"de": "Könnten Sie mich bitte mit Herrn / Frau … verbinden?", "en": "Could you please connect me with Mr. / Ms. …?", "uk": "Чи не могли б ви з'єднати мене з паном / пані …?", "ru": "Не могли бы вы соединить меня с господином / госпожой …?"}, "a": {"de": "Ja, natürlich. Einen Moment bitte, ich verbinde Sie.", "en": "Yes, of course. One moment please, I'll connect you.", "uk": "Так, звичайно. Хвилинку, будь ласка, я вас з'єдную.", "ru": "Да, конечно. Одну минуту, я вас соединяю."}, "gram": ""},
