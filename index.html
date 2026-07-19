@@ -2579,9 +2579,6 @@ body.lesson-active .vocab-top{
   <button class="bn-item" onclick="showView('sb')" data-view="sb">
     <span class="bn-icon">🧩</span><span data-i18n="nav_sb">Sprachbau</span>
   </button>
-  <button class="bn-item" onclick="showView('gram')" data-view="gram">
-    <span class="bn-icon">📘</span><span>Граматика</span>
-  </button>
   <button class="bn-item" onclick="showView('dialogue')" data-view="dialogue">
     <span class="bn-icon">💬</span><span>Dialogue</span>
   </button>
@@ -2600,7 +2597,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '366-1843fc3';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4579,13 +4576,10 @@ const haptic = {
 function updateBottomNavVisibility(){
   const hasSB  = typeof SPRACHBAUSTEINE !== 'undefined' && SPRACHBAUSTEINE?.length;
   const hasDlg = typeof DIALOGE !== 'undefined' && DIALOGE?.length;
-  const hasGram= typeof GRAM_CATS !== 'undefined' && GRAM_CATS?.length;
   const sbBtn  = document.querySelector('#bottom-nav [data-view="sb"]');
   const dlgBtn = document.querySelector('#bottom-nav [data-view="dialogue"]');
-  const gramBtn= document.querySelector('#bottom-nav [data-view="gram"]');
   if(sbBtn)   sbBtn.style.display   = hasSB   ? '' : 'none';
   if(dlgBtn)  dlgBtn.style.display  = hasDlg  ? '' : 'none';
-  if(gramBtn) gramBtn.style.display = hasGram ? '' : 'none';
 }
 
 async function init(){
@@ -5751,6 +5745,18 @@ function startChapterGrammarBonus(chapterNum){
 // (див. lfShowResult()).
 function _runGrammarBonusFlow(lesson){
   stopVocab();
+  // КРИТИЧНО: так само, як на старті lfRunUnitStep() — скасовуємо будь-
+  // який активний фоновий ланцюжок відтворення (напр. від самостійного
+  // перегляду Vocab прямо перед стартом цього бонусного уроку). Цей
+  // урок стрибає одразу в 'sb_prac', МИНАЮЧИ lfRunUnitStep() (sb_prac —
+  // окрема від lf-unit-card система), тож без цього стара рекурсія
+  // _lfUnitPlay()→setTimeout(next,...) не зупинялась і сама, з
+  // запізненням, догравала картку зі словника й створювала "Далі"/
+  // "Повторити" вже поверх екрана Граматики.
+  _lfUnitPlayToken++;
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  document.getElementById('lf-next-row')?.remove();
   LF = {
     lessonId:  lesson.id,
     lesson,
