@@ -2597,7 +2597,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '368-df8868b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4937,6 +4937,18 @@ document.addEventListener('visibilitychange', ()=>{
 
 // ── NAVIGATION ────────────────────────────────────────────────
 function showView(id){
+  // Скасовуємо будь-яку активну сесію рушія карток (аудіо, кнопка
+  // "Далі"/"Повторити") — БЕЗУМОВНО, на кожному переході, незалежно від
+  // того, звідки й куди саме йде навігація. Це найчастіше джерело бага
+  // "кнопка Далі/аудіо зі словника вспливає казна-де": будь-яка НОВА
+  // точка входу (стандартний перегляд Vocab, Sprachbausteine, майбутні
+  // бонусні уроки тощо), яка забуде явно скасувати токен, раніше знову й
+  // знову відтворювала той самий клас бага (і ми латали це в 3+ різних
+  // місцях окремо). Тепер це робиться РІВНО ОДИН РАЗ, у єдиній точці,
+  // через яку проходить абсолютно кожна навігація — а не вручну в
+  // кожній окремій "start X" функції.
+  _lfUnitTeardown();
+
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.bn-item[data-view]').forEach(n=>n.classList.remove('active'));
   // "gram" не має власного .view — це той самий #view-sb, лише з
@@ -4954,17 +4966,15 @@ function showView(id){
   if(id==='settings')syncFontSizeSlider();
   if(id==='settings'){renderStreakUI();renderTempoRow();try{srRenderDashboard();}catch(e){}}
   if(id==='lernpfad'){renderLernpfad();}
-  // Якщо переходимо не в урок — прибираємо артефакти lesson-result,
-  // lf-sb-next-btn, і будь-яку активну сесію рушія карток (аудіо, кнопка
-  // "Далі") — інакше вона лишається "висіти" поверх геть іншої вкладки
-  // (напр. Налаштувань), бо нічого раніше не прибирало її при навігації.
+  // Якщо переходимо не в урок — прибираємо артефакти lesson-result і
+  // lf-sb-next-btn (аудіо/кнопка "Далі" вже прибрані вище, безумовно).
   // Якщо урок ще НЕЗАВЕРШЕНИЙ (LF активний) і користувач іде геть через
   // нижнє меню — це не штатне завершення (exitLessonFlow тут не
   // викликається), тож абортуємо сесію без зарахування результату.
-  // 'vocab'/'dialogue'/'sb' виключені — кроки уроку (vocab cards, dialogue,
-  // ТАКОЖ sb_prac — вправи Sprachbausteine/Граматика) легітимно
-  // показуються саме в цих view (lfStartSBPrac() викликає showView('sb')
-  // посеред активного уроку), це не вихід з уроку.
+  // 'vocab'/'dialogue'/'sb' виключені з абандону — кроки уроку (vocab
+  // cards, dialogue, ТАКОЖ sb_prac — вправи Sprachbausteine/Граматика)
+  // легітимно показуються саме в цих view (lfStartSBPrac() робить
+  // showView('sb') посеред активного уроку), це не вихід з уроку.
   if(LF && id!=='vocab' && id!=='dialogue' && id!=='sb'){
     abandonLessonFlow();
   } else if(!LF){
@@ -4972,7 +4982,6 @@ function showView(id){
     if(lr) lr.classList.remove('show');
     const sb=document.getElementById('lf-sb-next-btn');
     if(sb) sb.remove();
-    if(id!=='vocab' && id!=='dialogue' && id!=='sb') _lfUnitTeardown();
   }
   document.getElementById('content').scrollTo(0,0);
 }
@@ -5696,8 +5705,10 @@ function lessonUnlocked(lesson){
 function startModuleGrammarBonus(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson = lessons.find(l=>l.id===lessonId);
-  if(!lesson || !lesson.grammar) return;
-  const pool = buildGrammarBonusPool([lesson.grammar]);
+  if(!lesson) return;
+  const topics = getModuleGrammarTopics(lesson);
+  if(!topics.length) return;
+  const pool = buildGrammarBonusPool(topics, _cardIdsUpToLesson(lesson));
   if(!pool.length){
     notify('⚠️ '+(uiLang==='uk'?'Немає завдань граматики для цього модуля':uiLang==='ru'?'Нет заданий по грамматике для этого модуля':uiLang==='en'?'No grammar tasks for this module':'Keine Grammatikaufgaben für dieses Modul'));
     return;
@@ -5718,8 +5729,10 @@ function startModuleGrammarBonus(lessonId){
 function startChapterGrammarBonus(chapterNum){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const chapterLessons = lessons.filter(l=>l.chapter===chapterNum);
-  const topicIds = Array.from(new Set(chapterLessons.map(l=>l.grammar).filter(Boolean)));
-  const pool = buildGrammarBonusPool(topicIds);
+  const topicIds = Array.from(new Set(
+    chapterLessons.reduce((acc,l)=>acc.concat(getModuleGrammarTopics(l)), [])
+  ));
+  const pool = buildGrammarBonusPool(topicIds, _cardIdsUpToChapter(chapterNum));
   if(!pool.length){
     notify('⚠️ '+(uiLang==='uk'?'Немає завдань граматики для цієї глави':uiLang==='ru'?'Нет заданий по грамматике для этой главы':uiLang==='en'?'No grammar tasks for this chapter':'Keine Grammatikaufgaben für dieses Kapitel'));
     return;
@@ -6238,29 +6251,39 @@ function renderModuleCard(lesson){
 // не задана як id у GRAMMAR (старі курси з вільним текстом), або для
 // теми взагалі немає готових <g>-завдань.
 function renderGrammarBonusCard(lesson){
-  if(!lesson.grammar || !lessonUnlocked(lesson)) return '';
-  const rule = getGrammarRule(lesson.grammar);
-  if(!rule) return '';
-  if(!buildGrammarBonusPool([lesson.grammar]).length) return '';
+  if(!lessonUnlocked(lesson)) return '';
+  const topics = getModuleGrammarTopics(lesson);
+  if(!topics.length) return '';
+  if(!buildGrammarBonusPool(topics, _cardIdsUpToLesson(lesson)).length) return '';
   const label = {
     de:'Bonus: Grammatik', uk:'Бонус: Граматика',
     en:'Bonus: Grammar',   ru:'Бонус: Грамматика',
   }[uiLang] || 'Bonus: Grammatik';
+  // Підпис: правило, офіційно введене саме цим модулем (lesson.grammar),
+  // інакше — перше розпізнане правило серед тем модуля (для
+  // "продовжувальних" модулів без власного lesson.grammar — див.
+  // getModuleGrammarTopics), або просто кількість тем.
+  const primaryRule = getGrammarRule(lesson.grammar) || topics.map(getGrammarRule).find(Boolean);
+  const sub = primaryRule ? grammarLabel(primaryRule)
+    : (topics.length+' '+(uiLang==='uk'?'тем':uiLang==='ru'?'тем':uiLang==='en'?'topics':'Themen'));
   return `<div class="lp-module lp-module-bonus" onclick="startModuleGrammarBonus('${lesson.id}')">
     <div class="lp-module-icon">⭐</div>
     <div class="lp-module-body">
       <div class="lp-module-title">${label}</div>
-      <div class="lp-module-meta">${grammarLabel(rule)}</div>
+      <div class="lp-module-meta">${sub}</div>
     </div>
   </div>`;
 }
 
 // Опційна картка "Бонус: Граматика" усієї глави — той самий принцип,
-// але пул охоплює ВСІ теми граматики глави (union по модулях).
+// але пул охоплює ВСІ теми граматики глави (union по модулях, за
+// реальними card.gram, не лише lesson.grammar).
 function renderChapterGrammarBonusCard(chapterNum, chapterLessons, unlocked){
   if(!unlocked) return '';
-  const topicIds = Array.from(new Set(chapterLessons.map(l=>l.grammar).filter(Boolean)));
-  if(!topicIds.length || !buildGrammarBonusPool(topicIds).length) return '';
+  const topicIds = Array.from(new Set(
+    chapterLessons.reduce((acc,l)=>acc.concat(getModuleGrammarTopics(l)), [])
+  ));
+  if(!topicIds.length || !buildGrammarBonusPool(topicIds, _cardIdsUpToChapter(chapterNum)).length) return '';
   const label = {
     de:'Bonus: Grammatik-Wiederholung',   uk:'Бонус: Повторення граматики',
     en:'Bonus: Grammar review',           ru:'Бонус: Повторение грамматики',
@@ -11649,20 +11672,72 @@ function buildGramCards(){
   return out;
 }
 
+// Граматичні теми, які РЕАЛЬНО зустрічаються серед карток модуля (через
+// card.gram кожної картки), а не лише офіційно "введена" тема з
+// lesson.grammar. У базі так влаштовано: якщо модуль не вводить нову
+// граматику, він просто продовжує використовувати РАНІШЕ введену — з
+// новими словами. lesson.grammar заповнюється лише для модуля, що
+// ВВОДИТЬ тему вперше (звідти бейдж "G" на картці модуля) — тому раніше
+// бонус спирався лише на нього, і "продовжувальні" модулі взагалі не
+// отримували картки бонусу, хоча їхні картки й далі позначені тим самим
+// card.gram.
+function getModuleGrammarTopics(lesson){
+  if(typeof VOCAB === 'undefined' || !VOCAB.length) return [];
+  var ids = new Set(lesson.cardIds || []);
+  var topics = new Set();
+  VOCAB.forEach(function(c){ if(ids.has(c.id) && c.gram) topics.add(c.gram); });
+  return Array.from(topics);
+}
+
+// Усі cardId з модулів "до і включно" з вказаним — у природному порядку
+// курсу (глава, потім номер модуля в главі), а НЕ за позицією в масиві
+// LESSONS. Використовується, щоб пул бонусу не включав приклади з
+// модулів, яких учень ще не проходив (незнайома лексика/спойлери).
+function _cardIdsUpToLesson(lesson){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  var ids = new Set();
+  lessons.forEach(function(l){
+    var before = l.chapter < lesson.chapter || (l.chapter === lesson.chapter && l.module <= lesson.module);
+    if(before) (l.cardIds||[]).forEach(function(id){ ids.add(id); });
+  });
+  return ids;
+}
+
+// Те саме, але для повторення ЦІЛОЇ глави — усі картки цієї глави й усіх
+// попередніх (не залежить від номера модуля всередині глави, бо
+// повторення охоплює всі її модулі одразу).
+function _cardIdsUpToChapter(chapterNum){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  var ids = new Set();
+  lessons.forEach(function(l){
+    if(l.chapter <= chapterNum) (l.cardIds||[]).forEach(function(id){ ids.add(id); });
+  });
+  return ids;
+}
+
 // Пул завдань для ОПЦІЙНОГО бонусного уроку "Граматика" (модуля чи
-// глави) — усі речення КУРСУ (не лише цього модуля/глави) для вказаних
-// граматичних тем (topicIds — значення lesson.grammar), відсортовані за
-// SM-2 пріоритетом (прострочені/нові — першими) і обмежені 10
+// глави) — речення для вказаних граматичних тем (topicIds), відсортовані
+// за SM-2 пріоритетом (прострочені/нові — першими) і обмежені 10
 // завданнями за раз. 10 — доказово ефективний розмір однієї сесії:
 // обсяг робочої пам'яті (~7±2 за Міллером, ~4±1 за уточненням Коуена),
 // cognitive load theory (Sweller), spacing/testing effect, і практика
 // індустрії (Duolingo/Memrise теж сходяться на ~10-15).
-function buildGrammarBonusPool(topicIds){
+//
+// eligibleCardIds (опційно) — Set id карток, з яких можна брати речення.
+// ВАЖЛИВО: без цього обмеження пул охоплював УВЕСЬ курс, включно з
+// модулями, яких учень ще не проходив — тобто в бонус модуля 1 могли
+// потрапити приклади з модуля 30 (незнайома лексика, спойлери). Виклики
+// нижче передають картки лише "цей модуль/глава і все, що ДО нього".
+function buildGrammarBonusPool(topicIds, eligibleCardIds){
   if(typeof VOCAB==='undefined' || !VOCAB.length || !topicIds || !topicIds.length) return [];
   var topics = new Set(topicIds.filter(Boolean));
   if(!topics.size) return [];
   var allGram = buildGramCards();
-  var matching = allGram.filter(function(gc){ return topics.has(gc.gram); });
+  var matching = allGram.filter(function(gc){
+    if(!topics.has(gc.gram)) return false;
+    if(eligibleCardIds && !eligibleCardIds.has(gc._srcId)) return false;
+    return true;
+  });
   if(!matching.length) return [];
   var state = srLoadState();
   var sorted = matching.slice().sort(function(a,b){
