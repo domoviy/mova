@@ -1095,31 +1095,6 @@ body{
 .tiles-result-btn.ok{background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);}
 .tiles-result-btn.nok{background:var(--soft);color:var(--warm);border:1px solid var(--border);}
 .tiles-result-btn:active{opacity:.85;}
-/* Поки чекаємо завершення озвучення (tilesRevealResultBtn) — кнопка й
-   далі повністю на місці (той самий колір/форма), просто зі спінером
-   замість тексту. Було: visibility:hidden — місце під кнопку лишалось
-   зарезервованим, але порожнім і невиразним ("дірка" знизу модалки).
-   Тепер завжди видно щось конкретне: або спінер (триває), або текст
-   (готово) — без порожнього проміжку між ними. */
-.tiles-result-btn.loading{
-  color:transparent;
-  pointer-events:none;
-  position:relative;
-}
-.tiles-result-btn.loading::after{
-  content:'';
-  position:absolute;left:50%;top:50%;
-  width:20px;height:20px;margin:-10px 0 0 -10px;
-  border:2.5px solid rgba(0,0,0,.2);
-  border-top-color:rgba(0,0,0,.55);
-  border-radius:50%;
-  animation:tilesResultSpin .7s linear infinite;
-}
-.tiles-result-btn.nok.loading::after{
-  border-color:rgba(255,255,255,.15);
-  border-top-color:var(--muted);
-}
-@keyframes tilesResultSpin{ to{ transform:rotate(360deg); } }
 
 
 /* ══ LESSON FLOW ══ */
@@ -1641,23 +1616,6 @@ body.lesson-active .vocab-top{
   background:linear-gradient(135deg,var(--gold),#b8873a);
   color:var(--forest);font-size:16px;font-weight:800;
   cursor:pointer;font-family:inherit;letter-spacing:.2px;
-  position:relative;
-}
-/* Той самий принцип, що й .tiles-result-btn.loading — поки чекаємо
-   озвучення, кнопка лишається на місці (спінер), а не порожнє
-   зарезервоване місце (visibility:hidden). */
-.sb-prac-feedback-modal-next.loading{
-  color:transparent;
-  pointer-events:none;
-}
-.sb-prac-feedback-modal-next.loading::after{
-  content:'';
-  position:absolute;left:50%;top:50%;
-  width:20px;height:20px;margin:-10px 0 0 -10px;
-  border:2.5px solid rgba(0,0,0,.2);
-  border-top-color:rgba(0,0,0,.55);
-  border-radius:50%;
-  animation:tilesResultSpin .7s linear infinite;
 }
 .sb-prac-feedback-modal.correct .sb-prac-feedback-modal-sheet{
   border-top:3px solid #27ae60;
@@ -2639,7 +2597,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '370-4680a0a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7323,7 +7281,7 @@ function tilesShowResultModal(isOk, correctStr){
         : (uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')
       }</div>
       <div class="tiles-result-correct">${correctStr}</div>
-      <button class="tiles-result-btn ${isOk?'ok':'nok'} loading" id="tiles-result-action">
+      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">
         ${btnLabel}
       </button>
     </div>`;
@@ -7344,7 +7302,7 @@ function tilesShowResultModal(isOk, correctStr){
 // аудіо недоступне (404/помилка) — тож кнопка не "зависає" назавжди.
 function tilesRevealResultBtn(){
   var btn = document.getElementById('tiles-result-action');
-  if(btn) btn.classList.remove('loading');
+  if(btn) btn.style.visibility = 'visible';
 }
 
 function tilesCheckAuto(){
@@ -7588,7 +7546,7 @@ function defShowResultModal(isOk, fullSentence){
       <div class="tiles-result-icon">${isOk?'✅':'❌'}</div>
       <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
       <div class="tiles-result-correct" style="line-height:1.3;text-align:center">${highlighted}${translationHtml}</div>
-      <button class="tiles-result-btn ${isOk?'ok':'nok'} loading" id="tiles-result-action">${btnLabel}</button>
+      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">${btnLabel}</button>
     </div>`;
   document.body.appendChild(overlay);
   document.getElementById('tiles-result-action').addEventListener('click', () => {
@@ -12388,7 +12346,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
       '</div>' +
       sentenceHtml +
       '<div class="sb-prac-feedback-modal-expl">'+expl+'</div>' +
-      '<button class="sb-prac-feedback-modal-next loading" id="sb-modal-next-btn">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
+      '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn" style="visibility:hidden">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
     '</div>';
 
   document.body.appendChild(modal);
@@ -12412,7 +12370,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
 // не "зависає" назавжди, якщо файлу просто немає.
 function sbRevealFeedbackNextBtn(){
   var btn = document.getElementById('sb-modal-next-btn');
-  if(btn) btn.classList.remove('loading');
+  if(btn) btn.style.visibility = 'visible';
 }
 
 function sbHideFeedbackModal() {
