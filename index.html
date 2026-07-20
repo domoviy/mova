@@ -2596,7 +2596,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '372-1b44505';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5705,9 +5705,9 @@ function startModuleGrammarBonus(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson = lessons.find(l=>l.id===lessonId);
   if(!lesson) return;
-  const topics = getModuleGrammarTopics(lesson);
-  if(!topics.length) return;
-  const pool = buildGrammarBonusPool(topics, _cardIdsUpToLesson(lesson));
+  const topic = getModuleGrammarTopic(lesson);
+  if(!topic) return;
+  const pool = buildGrammarBonusPool([topic], _cardIdsUpToLesson(lesson));
   if(!pool.length){
     notify('⚠️ '+(uiLang==='uk'?'Немає завдань граматики для цього модуля':uiLang==='ru'?'Нет заданий по грамматике для этого модуля':uiLang==='en'?'No grammar tasks for this module':'Keine Grammatikaufgaben für dieses Modul'));
     return;
@@ -5729,7 +5729,7 @@ function startChapterGrammarBonus(chapterNum){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const chapterLessons = lessons.filter(l=>l.chapter===chapterNum);
   const topicIds = Array.from(new Set(
-    chapterLessons.reduce((acc,l)=>acc.concat(getModuleGrammarTopics(l)), [])
+    chapterLessons.map(l=>getModuleGrammarTopic(l)).filter(Boolean)
   ));
   const pool = buildGrammarBonusPool(topicIds, _cardIdsUpToChapter(chapterNum));
   if(!pool.length){
@@ -6251,20 +6251,15 @@ function renderModuleCard(lesson){
 // теми взагалі немає готових <g>-завдань.
 function renderGrammarBonusCard(lesson){
   if(!lessonUnlocked(lesson)) return '';
-  const topics = getModuleGrammarTopics(lesson);
-  if(!topics.length) return '';
-  if(!buildGrammarBonusPool(topics, _cardIdsUpToLesson(lesson)).length) return '';
+  const topic = getModuleGrammarTopic(lesson);
+  if(!topic) return '';
+  if(!buildGrammarBonusPool([topic], _cardIdsUpToLesson(lesson)).length) return '';
   const label = {
     de:'Bonus: Grammatik', uk:'Бонус: Граматика',
     en:'Bonus: Grammar',   ru:'Бонус: Грамматика',
   }[uiLang] || 'Bonus: Grammatik';
-  // Підпис: правило, офіційно введене саме цим модулем (lesson.grammar),
-  // інакше — перше розпізнане правило серед тем модуля (для
-  // "продовжувальних" модулів без власного lesson.grammar — див.
-  // getModuleGrammarTopics), або просто кількість тем.
-  const primaryRule = getGrammarRule(lesson.grammar) || topics.map(getGrammarRule).find(Boolean);
-  const sub = primaryRule ? grammarLabel(primaryRule)
-    : (topics.length+' '+(uiLang==='uk'?'тем':uiLang==='ru'?'тем':uiLang==='en'?'topics':'Themen'));
+  const rule = getGrammarRule(topic);
+  const sub = rule ? grammarLabel(rule) : topic;
   return `<div class="lp-module lp-module-bonus" onclick="startModuleGrammarBonus('${lesson.id}')">
     <div class="lp-module-icon">⭐</div>
     <div class="lp-module-body">
@@ -6275,12 +6270,13 @@ function renderGrammarBonusCard(lesson){
 }
 
 // Опційна картка "Бонус: Граматика" усієї глави — той самий принцип,
-// але пул охоплює ВСІ теми граматики глави (union по модулях, за
-// реальними card.gram, не лише lesson.grammar).
+// але пул охоплює ВСІ теми граматики глави (union тем модулів, кожна —
+// через getModuleGrammarTopic, тобто з успадкуванням для продовжувальних
+// модулів без власного lesson.grammar).
 function renderChapterGrammarBonusCard(chapterNum, chapterLessons, unlocked){
   if(!unlocked) return '';
   const topicIds = Array.from(new Set(
-    chapterLessons.reduce((acc,l)=>acc.concat(getModuleGrammarTopics(l)), [])
+    chapterLessons.map(l=>getModuleGrammarTopic(l)).filter(Boolean)
   ));
   if(!topicIds.length || !buildGrammarBonusPool(topicIds, _cardIdsUpToChapter(chapterNum)).length) return '';
   const label = {
@@ -11671,21 +11667,26 @@ function buildGramCards(){
   return out;
 }
 
-// Граматичні теми, які РЕАЛЬНО зустрічаються серед карток модуля (через
-// card.gram кожної картки), а не лише офіційно "введена" тема з
-// lesson.grammar. У базі так влаштовано: якщо модуль не вводить нову
-// граматику, він просто продовжує використовувати РАНІШЕ введену — з
-// новими словами. lesson.grammar заповнюється лише для модуля, що
-// ВВОДИТЬ тему вперше (звідти бейдж "G" на картці модуля) — тому раніше
-// бонус спирався лише на нього, і "продовжувальні" модулі взагалі не
-// отримували картки бонусу, хоча їхні картки й далі позначені тим самим
-// card.gram.
-function getModuleGrammarTopics(lesson){
-  if(typeof VOCAB === 'undefined' || !VOCAB.length) return [];
-  var ids = new Set(lesson.cardIds || []);
-  var topics = new Set();
-  VOCAB.forEach(function(c){ if(ids.has(c.id) && c.gram) topics.add(c.gram); });
-  return Array.from(topics);
+// Тема граматики модуля — ЄДИНА (не набір усіх побіжних card.gram, які
+// могли зустрітись у прикладах карток модуля з геть інших причин).
+// Якщо lesson.grammar заповнено — модуль ВВОДИТЬ цю тему вперше (звідти
+// бейдж "G" на картці модуля). Якщо ні (продовжувальний модуль) — за
+// авторською логікою бази "якщо в уроці немає нової граматики,
+// використовується попередня" — беремо тему НАЙБЛИЖЧОГО ПОПЕРЕДНЬОГО
+// модуля курсу (за позицією: глава, потім номер модуля), який щось
+// вводив. Раніше тема визначалась скануванням card.gram усіх карток
+// модуля — але картка могла побіжно торкатись і ІНШОЇ, другорядної теми
+// в прикладі речення, і Set-порядок міг випадково підняти саме її
+// нагору замість реальної теми модуля.
+function getModuleGrammarTopic(lesson){
+  if(lesson.grammar) return lesson.grammar;
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const before = lessons
+    .filter(function(l){
+      return l.grammar && (l.chapter < lesson.chapter || (l.chapter === lesson.chapter && l.module < lesson.module));
+    })
+    .sort(function(a,b){ return (a.chapter - b.chapter) || (a.module - b.module); });
+  return before.length ? before[before.length-1].grammar : null;
 }
 
 // Усі cardId з модулів "до і включно" з вказаним — у природному порядку
