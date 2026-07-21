@@ -2143,12 +2143,6 @@ body.lesson-active .vocab-top{
         <div class="vtab-bar" id="vocab-tabs">
           <button class="vtab active" onclick="switchVocabTab(0)">🃏</button>
           <button class="vtab" onclick="switchVocabTab(1)">📋</button>
-          <button class="vtab" onclick="switchVocabTab(2)">🔗</button>
-          <button class="vtab" onclick="switchVocabTab(3)">🎯</button>
-          <button class="vtab" onclick="switchVocabTab(4)">🧩</button>
-          <button class="vtab" onclick="switchVocabTab(5)">❓</button>
-          <button class="vtab" onclick="switchVocabTab(6)">🔍</button>
-          <button class="vtab" onclick="switchVocabTab(7)">🎤</button>
         </div>
         <div class="vchips" id="vchips" style="display:none"></div>
       </div>
@@ -2548,6 +2542,17 @@ body.lesson-active .vocab-top{
       <div class="srow-label"><label>🔄 Оновити додаток</label><small>Скинути Service Worker і перезавантажити. Виправляє помилку «усі картки в уроці»</small></div>
       <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
     </div>
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
+      <div class="srow-label"><label>🃏 Вправи Vocab (тест)</label><small>Прямий доступ до вкладок, прибраних з основного UI</small></div>
+      <div style="display:flex;flex-direction:column;gap:6px">
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(2)">🔗 Пари</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(3)">🎯 Вибір</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(4)">🧩 Склади речення</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)">❓ Квіз</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(6)">🔍 Доповни речення</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)">🎤 Вимова</button>
+      </div>
+    </div>
     </div>
     </div>
 
@@ -2592,7 +2597,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '374-6c2e3bb';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6334,6 +6339,15 @@ function toggleDebugSection(headerEl){
   content.style.display = isOpen ? 'none' : '';
   const chevron = headerEl?.querySelector('.ssec-chevron');
   if(chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+}
+
+// Прямий доступ до тестових вправ Vocab (🔗🎯🧩❓🔍🎤), прибраних з
+// основної vtab-bar (лишились там тільки 🃏 Картки і 📋 Список) — щоб
+// не заважати звичайним користувачам, але лишити можливість швидко
+// перевірити конкретну вправу під час розробки.
+function debugOpenVocabTab(n){
+  showView('vocab');
+  switchVocabTab(n);
 }
 
 function logErr(source, msg, detail=''){
@@ -10355,22 +10369,16 @@ function abandonLessonFlow(){
 }
 
 function exitLessonFlow(){
-  // Зараховуємо урок (стрік, subtestStats, час) РІВНО ОДИН РАЗ — саме тут,
-  // при явному підтвердженні завершення. LF._recorded захищає від
-  // подвійного зарахування, коли startNextLesson() сам викликає цю функцію
-  // (див. нижче) — тоді запис уже стався там, і тут повторно не робимо.
-  // srRecordLesson() повертає true, якщо стрік щойно збільшився і на
-  // екрані зараз грає повноекранна анімація (showStreakCelebration) —
-  // тоді ПЕРЕХІД на інший view відкладаємо (celebrationPending нижче),
-  // інакше showView('lernpfad') ховає #view-vocab (а з ним і анімацію,
-  // яка фізично лежить усередині) ще до того, як браузер встиг її
-  // намалювати — анімація "вбивається" власним же кодом за мілісекунди.
-  let celebrationPending = false;
-  if(LF && !LF._recorded){
-    LF._recorded = true;
-    celebrationPending = !!srRecordLesson(LF);
-  }
-  // Stop all audio immediately
+  // Зарахування уроку (стрік, subtestStats, час) відбувається ВИКЛЮЧНО в
+  // lfShowResult() — рівно тоді, коли урок СПРАВДІ повністю пройдено
+  // (дійшов до кроку 'result'). Ця функція викликається як з кнопки
+  // "До списку уроків" (ПІСЛЯ завершення — LF._recorded вже true, немає
+  // чого робити), так і з кнопки "✕" ПРЯМО ПОСЕРЕД активного уроку
+  // (дострокове переривання). РАНІШЕ тут ЩЕ РАЗ намагались зарахувати
+  // урок, якщо LF._recorded ще не було true — а при виході через "✕" це
+  // майже завжди так (lfShowResult ще не встиг відпрацювати), тож
+  // достроково перерваний, НЕЗАВЕРШЕНИЙ урок помилково зараховувався як
+  // пройдений (стрік/статистика/анімація стріку).
   stopVocab();
   sbStopPlay();
   LF = null;
@@ -10438,15 +10446,13 @@ function exitLessonFlow(){
   // завершення уроку. showView() спершу перемикає активний view, тож
   // switchVocabTab(0) після нього лише скидає індекс під-вкладки на
   // майбутнє (без побічного автозапуску — див. guard у самій функції).
-  const leaveLernpfad = () => { showView('lernpfad'); switchVocabTab(0); };
-  if(celebrationPending){
-    // showStreakCelebration() сама ховається через ~2200мс (fade-out ще
-    // +350мс) — чекаємо трохи довше, щоб користувач встиг побачити
-    // анімацію ПОВНІСТЮ до того, як ми перемкнемо view.
-    setTimeout(leaveLernpfad, 2300);
-  } else {
-    leaveLernpfad();
-  }
+  // Затримка на час анімації стріку тут більше НЕ потрібна: кнопки
+  // "Наступний урок"/"До списку уроків" на екрані результату самі
+  // лишаються невидимими (visibility:hidden), поки анімація не
+  // дограє (див. lfShowResult()) — тобто ця функція вже фізично не може
+  // бути викликана ЦИМ шляхом раніше, ніж анімація завершиться.
+  showView('lernpfad');
+  switchVocabTab(0);
 }
 
 function restartLessonFlow(){
@@ -10456,24 +10462,13 @@ function restartLessonFlow(){
 
 // Запускає наступний урок у тому самому розділі, або перший незавершений
 function startNextLesson(){
-  // Зараховуємо урок (стрік, subtestStats, час) РІВНО ОДИН РАЗ — див.
-  // коментар в exitLessonFlow(). Тут — бо ця функція теж викликається
-  // напряму з кнопки "Наступний урок", і може сама піти шляхом, що НЕ
-  // викликає exitLessonFlow() (_goToLessonOrExit/startReviewLesson).
-  let celebrationPending = false;
-  if(LF && !LF._recorded){
-    LF._recorded = true;
-    celebrationPending = !!srRecordLesson(LF);
-  }
-  // Якщо щойно запустилась повноекранна анімація стріку (showStreakCelebration,
-  // ~2200мс) — відкладаємо будь-який подальший перехід (список уроків АБО
-  // старт наступного уроку з власним автоплеєм аудіо), інакше він одразу
-  // ляже поверх/заглушить анімацію, яка ще не встигла дограти.
-  if(celebrationPending){
-    setTimeout(_startNextLessonProceed, 2300);
-  } else {
-    _startNextLessonProceed();
-  }
+  // Зарахування уроку відбувається ВИКЛЮЧНО в lfShowResult() (див.
+  // коментар в exitLessonFlow()). Кнопка "Наступний урок" (яка викликає
+  // цю функцію) сама лишається невидимою/недоступною, поки не дограє
+  // анімація стріку — тобто на момент виклику цієї функції запис і
+  // анімація вже точно відбулись, жодної додаткової затримки тут
+  // більше не потрібно.
+  _startNextLessonProceed();
 }
 
 function _startNextLessonProceed(){
