@@ -2317,10 +2317,6 @@ body.lesson-active .vocab-top{
             <button class="vlang-btn off" id="sblang-ru" onclick="sbToggleLang('ru')">🇷🇺 RU</button>
           </div>
         </div>
-        <div class="vlang-grp" id="sb-src-toggle" style="margin-top:6px;display:none">
-          <button class="vlang-btn on"  data-src="sb"   onclick="sbSetDataSource('sb')">🔤 Sprachbausteine</button>
-          <button class="vlang-btn off" data-src="gram" onclick="sbSetDataSource('gram')">📘 Grammatik</button>
-        </div>
         <div class="vchips" id="sb-cat-chips"></div>
         <div class="vtab-bar" id="sb-tabs-bar">
           <button class="vtab active" id="sbt-learn"    onclick="sbSetMode('learn')">📖 Lernen</button>
@@ -2596,7 +2592,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '373-b78512c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9778,8 +9774,6 @@ function lfStartSBPrac(){
     if(vtabBar2) vtabBar2.style.display = 'none';
     var playerBar2 = sbVocabTop2.querySelector('.vplayer');
     if(playerBar2) playerBar2.style.display = 'none';
-    var srcToggle2 = document.getElementById('sb-src-toggle');
-    if(srcToggle2) srcToggle2.style.display = 'none';
     var chips2 = document.getElementById('sb-cat-chips');
     if(chips2) chips2.style.display = 'none';
   }
@@ -9821,8 +9815,6 @@ function _lfSBPracDone(){
     if(vtabBar) vtabBar.style.display = '';
     var playerBar = sbVocabTop.querySelector('.vplayer');
     if(playerBar) playerBar.style.display = '';
-    var srcToggle = document.getElementById('sb-src-toggle');
-    if(srcToggle) srcToggle.style.display = '';
     var chips = document.getElementById('sb-cat-chips');
     if(chips) chips.style.display = '';
   }
@@ -11866,10 +11858,6 @@ function sbSetDataSource(src){
   SB.dataSource = src;
   SB.catFilter = 'all';
   SB.pracQueue=[]; SB.pracIdx=0; SB.pracAnswered=false; SB.pracResults=[];
-  document.querySelectorAll('#sb-src-toggle .vlang-btn').forEach(function(b){
-    b.classList.toggle('on', b.dataset.src===src);
-    b.classList.toggle('off', b.dataset.src!==src);
-  });
   // Grammatik-Trainer поки що працює лише в режимі Üben (Learn/Prüfung
   // розраховані на pregen-аудіо й структуру SPRACHBAUSTEINE, не адаптовані).
   var learnTab=document.getElementById('sbt-learn'), examTab=document.getElementById('sbt-exam');
