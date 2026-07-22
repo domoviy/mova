@@ -1684,6 +1684,48 @@ body.lesson-active .vocab-top{
 .grammar-modal-body g{font-weight:700;color:var(--g-accent)}
 .grammar-modal-body b{color:var(--ink)}
 
+.grammar-modal-rule-toggle{
+  display:flex;align-items:center;justify-content:center;gap:7px;
+  width:100%;margin-top:16px;padding:12px;
+  background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.4);border-radius:12px;
+  color:var(--gold);font-weight:700;font-size:var(--fs-secondary);
+  font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.grammar-modal-rule-toggle:active{opacity:.8;}
+.grammar-modal-rule-toggle .grammar-modal-rule-chevron{font-size:18px;line-height:1;}
+
+/* Повноекранний рідер для GRAMMAR[].rule — окремий шар (не bottom-
+   sheet): довгий структурований текст з нумерованими розділами читається
+   набагато комфортніше на весь екран. */
+.grammar-rule-fullscreen{
+  position:fixed;inset:0;z-index:400;
+  background:var(--paper);
+  display:flex;flex-direction:column;
+}
+.grammar-rule-fs-header{
+  display:flex;align-items:center;gap:14px;flex-shrink:0;
+  padding:14px 20px;padding-top:calc(env(safe-area-inset-top,0px) + 14px);
+  border-bottom:1px solid var(--border);
+  background:var(--paper);
+}
+.grammar-rule-fs-back{
+  width:38px;height:38px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--soft);border:none;color:var(--ink);
+  font-size:19px;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;
+}
+.grammar-rule-fs-back:active{opacity:.8;}
+.grammar-rule-fs-title-wrap{flex:1;min-width:0;}
+.grammar-rule-fs-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);line-height:1.25}
+.grammar-rule-fs-title-sub{font-size:var(--fs-tertiary);color:var(--muted);margin-top:1px}
+.grammar-rule-fs-body{
+  flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;
+  padding:22px 20px;padding-bottom:calc(env(safe-area-inset-bottom,0px) + 32px);
+  font-size:var(--fs-secondary);line-height:1.65;color:var(--warm);
+}
+.grammar-rule-fs-body g{font-weight:700;color:var(--g-accent)}
+.grammar-rule-fs-body b{color:var(--ink)}
+
 /* mc-options used in practice/exam: make buttons work as answer tiles */
 #sb-prac-options .mc-opt, #sb-exam-options .mc-opt {
   cursor:pointer; transition:border-color .15s, background .15s;
@@ -2597,7 +2639,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '378-2d3d2d5';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9229,6 +9271,14 @@ function showGrammarModal(id){
   overlay.onclick = function(e){ if(e.target === overlay) closeGrammarModal(); };
   var expl = rule.explanation || {};
   var explText = expl[uiLang] || expl[primaryLang()] || expl.en || expl.de || '';
+  // Нове, докладніше поле бази (з нумерованими пунктами й прикладами на
+  // кожен — у реальних записах це ~250-300 слів, тобто десь 1-1.5 екрана
+  // тексту). Замало місця в куцому bottom-sheet поряд із затемненим
+  // фоном — тому "Правило" відкриває ОКРЕМИЙ повноекранний рідер
+  // (showGrammarRuleFullscreen), а не розгортається тут же.
+  var ruleObj = rule.rule || {};
+  var ruleText = ruleObj[uiLang] || ruleObj[primaryLang()] || ruleObj.en || ruleObj.de || '';
+  var ruleLabel = {de:'Regel', uk:'Правило', en:'Rule', ru:'Правило'}[uiLang] || 'Regel';
   var titles = grammarTitleParts(rule);
   overlay.innerHTML =
     '<div class="grammar-modal">' +
@@ -9241,6 +9291,12 @@ function showGrammarModal(id){
         '<button class="grammar-modal-close" onclick="closeGrammarModal()">✕</button>' +
       '</div>' +
       '<div class="grammar-modal-body">'+explText+'</div>' +
+      (ruleText ?
+        '<button class="grammar-modal-rule-toggle" onclick="showGrammarRuleFullscreen(\''+id+'\')">' +
+          '<span>📚</span><span>'+ruleLabel+'</span>' +
+          '<span class="grammar-modal-rule-chevron">›</span>' +
+        '</button>'
+      : '') +
     '</div>';
   document.body.appendChild(overlay);
   haptic.light();
@@ -9248,6 +9304,42 @@ function showGrammarModal(id){
 
 function closeGrammarModal(){
   var el = document.getElementById('grammar-modal-overlay');
+  if(el) el.remove();
+}
+
+// Повноекранний рідер повного правила (GRAMMAR[].rule) — окремий шар
+// поверх усього (не bottom-sheet): довгий структурований текст з
+// нумерованими розділами читається набагато комфортніше на весь екран,
+// ніж у куцому вікні з притемненим тлом зверху. Закриває під собою
+// короткий showGrammarModal() — повернення "←" веде на екран, що був
+// до відкриття граматики взагалі, не назад у коротку картку.
+function showGrammarRuleFullscreen(id){
+  var rule = getGrammarRule(id);
+  if(!rule) return;
+  var ruleObj = rule.rule || {};
+  var ruleText = ruleObj[uiLang] || ruleObj[primaryLang()] || ruleObj.en || ruleObj.de || '';
+  if(!ruleText) return;
+  closeGrammarModal();
+  closeGrammarRuleFullscreen();
+  var titles = grammarTitleParts(rule);
+  var el = document.createElement('div');
+  el.id = 'grammar-rule-fullscreen';
+  el.className = 'grammar-rule-fullscreen';
+  el.innerHTML =
+    '<div class="grammar-rule-fs-header">' +
+      '<button class="grammar-rule-fs-back" onclick="closeGrammarRuleFullscreen()">←</button>' +
+      '<div class="grammar-rule-fs-title-wrap">' +
+        '<div class="grammar-rule-fs-title">'+titles.main+'</div>' +
+        (titles.sub ? '<div class="grammar-rule-fs-title-sub">'+titles.sub+'</div>' : '') +
+      '</div>' +
+    '</div>' +
+    '<div class="grammar-rule-fs-body">'+ruleText+'</div>';
+  document.body.appendChild(el);
+  haptic.light();
+}
+
+function closeGrammarRuleFullscreen(){
+  var el = document.getElementById('grammar-rule-fullscreen');
   if(el) el.remove();
 }
 
