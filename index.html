@@ -2597,7 +2597,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '376-fbd63dd';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5695,13 +5695,10 @@ function lessonUnlocked(lesson){
 
 // ── ПОВТОРЕННЯ (Review Lessons) ───────────────────────────────────
 // Збирає картки з вказаних розділів і запускає той самий lesson-flow що й звичайний урок
-// ── ОПЦІЙНИЙ БОНУСНИЙ УРОК "ГРАМАТИКА" ───────────────────────────
-// Не блокує проходження шляху — доступний одразу, щойно модуль/глава
+// ── ОПЦІЙНІ БОНУСНІ УРОКИ (Граматика, Діалоги) ────────────────────
+// Не блокують проходження шляху — доступні одразу, щойно модуль/глава
 // розблоковані, незалежно від прогресу решти уроків. Для вмотивованих
-// учнів/за завданням викладача. Складається ЛИШЕ з кроку sb_prac
-// (той самий рушій вправ, що й у звичайному уроці) з повним пулом за
-// темою (buildGrammarBonusPool) + фінального результату — тобто це
-// одразу практика, без карток/matching/tiles.
+// учнів/за завданням викладача.
 function startModuleGrammarBonus(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson = lessons.find(l=>l.id===lessonId);
@@ -5717,11 +5714,12 @@ function startModuleGrammarBonus(lessonId){
     de:'Grammatik: '+(lesson.title?.de||''), uk:'Граматика: '+(lesson.title?.uk||''),
     en:'Grammar: '+(lesson.title?.en||''),   ru:'Грамматика: '+(lesson.title?.ru||''),
   };
-  _runGrammarBonusFlow({
+  _runBonusLessonFlow({
     id: '_gram_module_'+lesson.id,
     title,
-    _isGrammarBonus: true,
+    _isBonusLesson: true,
     _bonusForLessonId: lesson.id,
+    steps: ['sb_prac', 'result'],
     _grammarBonusPool: pool,
   });
 }
@@ -5742,30 +5740,78 @@ function startChapterGrammarBonus(chapterNum){
     de:'Grammatik: '+(chTitle.de||''), uk:'Граматика: '+(chTitle.uk||''),
     en:'Grammar: '+(chTitle.en||''),   ru:'Грамматика: '+(chTitle.ru||''),
   };
-  _runGrammarBonusFlow({
+  _runBonusLessonFlow({
     id: '_gram_chapter_'+chapterNum,
     title,
-    _isGrammarBonus: true,
+    _isBonusLesson: true,
     _bonusForChapter: chapterNum,
+    steps: ['sb_prac', 'result'],
     _grammarBonusPool: pool,
   });
 }
 
-// Мінімальний lesson-flow — лише sb_prac (з підміненим повним пулом
-// замість звичайної куцої 4-карткової вибірки) + result. Використовує
-// той самий LF/lfGoStep/lfShowResult/srRecordLesson, що й звичайний
-// урок — тому стрік і запис у SM-2 працюють без жодних додаткових змін
-// (див. lfShowResult()).
-function _runGrammarBonusFlow(lesson){
+// Пул діалогів для бонусу глави — union lesson.dlgCards усіх модулів
+// глави (те саме поле бази, що вже існує й частково заповнене, просто
+// досі ніде не читалось — навіть звичайний крок dlg_learn ігнорував
+// його, беручи діалог з усього курсу за SM-2 незалежно від модуля).
+// Якщо жоден модуль глави ще не має заповнених dlgCards — пул
+// порожній, і бонус просто не показується ("перевірка чи є діалоги
+// до цієї теми").
+function buildDialogueBonusPool(chapterNum){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const allDlg = typeof DIALOGE!=='undefined' ? DIALOGE : [];
+  if(!allDlg.length) return [];
+  const ids = new Set();
+  lessons.filter(l=>l.chapter===chapterNum).forEach(l=>(l.dlgCards||[]).forEach(id=>ids.add(id)));
+  if(!ids.size) return [];
+  const cards = allDlg.filter(d=>ids.has(d.id));
+  const state = srLoadState();
+  const sorted = cards.slice().sort((a,b)=>srPriorityFromState(state,b.id)-srPriorityFromState(state,a.id));
+  // Менший ліміт, ніж у Граматики (10): один діалог — це ДВІ репліки
+  // (питання+відповідь) аудіо, змістовно важчий за одне речення з
+  // пропуском, тож сесія порівнянної тривалості виходить коротшою.
+  return sorted.slice(0, 8);
+}
+
+function startChapterDialogueBonus(chapterNum){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const chapterLessons = lessons.filter(l=>l.chapter===chapterNum);
+  const pool = buildDialogueBonusPool(chapterNum);
+  if(!pool.length){
+    notify('⚠️ '+(uiLang==='uk'?'Немає діалогів для цієї глави':uiLang==='ru'?'Нет диалогов для этой главы':uiLang==='en'?'No dialogues for this chapter':'Keine Dialoge für dieses Kapitel'));
+    return;
+  }
+  const chTitle = chapterLessons[0]?.chapterTitle || {de:'',uk:'',en:'',ru:''};
+  const title = {
+    de:'Dialoge: '+(chTitle.de||''), uk:'Діалоги: '+(chTitle.uk||''),
+    en:'Dialogues: '+(chTitle.en||''), ru:'Диалоги: '+(chTitle.ru||''),
+  };
+  _runBonusLessonFlow({
+    id: '_dlg_chapter_'+chapterNum,
+    title,
+    _isBonusLesson: true,
+    _bonusForChapter: chapterNum,
+    steps: ['dlg_learn', 'result'],
+    _dlgBonusPool: pool,
+  });
+}
+
+// Мінімальний lesson-flow — лише практичний крок (sb_prac або dlg_learn,
+// з підміненим повним пулом замість звичайної куцої вибірки) + result.
+// Використовує той самий LF/lfGoStep/lfShowResult/srRecordLesson, що й
+// звичайний урок — тому стрік і запис у SM-2 працюють без жодних
+// додаткових змін (див. lfShowResult()).
+function _runBonusLessonFlow(lesson){
   stopVocab();
   // КРИТИЧНО: так само, як на старті lfRunUnitStep() — скасовуємо будь-
   // який активний фоновий ланцюжок відтворення (напр. від самостійного
   // перегляду Vocab прямо перед стартом цього бонусного уроку). Цей
-  // урок стрибає одразу в 'sb_prac', МИНАЮЧИ lfRunUnitStep() (sb_prac —
-  // окрема від lf-unit-card система), тож без цього стара рекурсія
+  // урок стрибає одразу в практичний крок, МИНАЮЧИ lfRunUnitStep() для
+  // sb_prac (окрема система) — тож без цього стара рекурсія
   // _lfUnitPlay()→setTimeout(next,...) не зупинялась і сама, з
   // запізненням, догравала картку зі словника й створювала "Далі"/
-  // "Повторити" вже поверх екрана Граматики.
+  // "Повторити" вже поверх бонусного екрана. Для dlg_learn це не
+  // потрібно (він і сам через lfRunUnitStep), але шкоди теж нема.
   _lfUnitPlayToken++;
   playGen++;
   if(currentAudio){ currentAudio.pause(); currentAudio = null; }
@@ -5781,7 +5827,8 @@ function _runGrammarBonusFlow(lesson){
     sbCards:    [],
     sbIdx:      0,
     dlgCard:    null,
-    steps:      ['sb_prac', 'result'],
+    dlgCards:   lesson._dlgBonusPool || [],
+    steps:      lesson.steps,
     step:       0,
     results:    {},
     startTime:  Date.now(),
@@ -6147,6 +6194,7 @@ function renderLernpfad(){
         ${ch.modules.map(m=>renderModuleCard(m)+renderGrammarBonusCard(m)).join('')}
         ${reviewHtml}
         ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
+        ${renderChapterDialogueBonusCard(ch.num, reviewUnlocked)}
       </div>`;
     container.appendChild(chEl);
   });
@@ -6296,6 +6344,32 @@ function renderChapterGrammarBonusCard(chapterNum, chapterLessons, unlocked){
     </div>
   </div>`;
 }
+
+// Опційна картка "Бонус: Діалоги" глави — union lesson.dlgCards усіх
+// модулів глави. Порожній рядок, якщо жоден модуль глави ще не має
+// заповнених dlgCards (поле бази існує, але поки що заповнене лише
+// частково — це і є "перевірка, чи є діалоги до цієї теми").
+function renderChapterDialogueBonusCard(chapterNum, unlocked){
+  if(!unlocked) return '';
+  const pool = buildDialogueBonusPool(chapterNum);
+  if(!pool.length) return '';
+  const label = {
+    de:'Bonus: Dialoge',  uk:'Бонус: Діалоги',
+    en:'Bonus: Dialogues', ru:'Бонус: Диалоги',
+  }[uiLang] || 'Bonus: Dialoge';
+  const sub = {
+    de: pool.length+' Dialoge', uk: pool.length+' діалогів',
+    en: pool.length+' dialogues', ru: pool.length+' диалогов',
+  }[uiLang] || pool.length+' Dialoge';
+  return `<div class="lp-module lp-module-bonus" onclick="startChapterDialogueBonus(${chapterNum})">
+    <div class="lp-module-icon">⭐</div>
+    <div class="lp-module-body">
+      <div class="lp-module-title">${label}</div>
+      <div class="lp-module-meta">${sub}</div>
+    </div>
+  </div>`;
+}
+
 
 function startLesson(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
@@ -8865,8 +8939,13 @@ function _lfSBLearnDone(){
 // SM-2: одна оцінка на картку (як і SB) — узгоджено симетрично.
 
 function _lfDlgBuildUnits(){
-  if(!LF || !LF.dlgCard) return [];
-  return [{ kind:'dlg', cardId: LF.dlgCard.id, side:'main', card: LF.dlgCard, aShown: false }];
+  if(!LF) return [];
+  // LF.dlgCards (масив) — бонусний урок з кількома діалогами. Інакше —
+  // звичний одиничний LF.dlgCard, як у кожному пересічному уроці.
+  const cards = (LF.dlgCards && LF.dlgCards.length) ? LF.dlgCards : (LF.dlgCard ? [LF.dlgCard] : []);
+  return cards.map(function(card){
+    return { kind:'dlg', cardId: card.id, side:'main', card: card, aShown: false };
+  });
 }
 
 var _lfDlgHandlers = {
@@ -9039,7 +9118,8 @@ var _lfDlgHandlers = {
 };
 
 function lfStartDlgLearn(){
-  if(!LF || !LF.dlgCard){ lfNextStep(); return; }
+  const hasCards = LF && ((LF.dlgCards && LF.dlgCards.length) || LF.dlgCard);
+  if(!hasCards){ lfNextStep(); return; }
 
   // Відновлюємо player на випадок якщо попередній крок його сховав
   var vp = document.querySelector('#view-vocab .vplayer');
@@ -10477,13 +10557,13 @@ function _startNextLessonProceed(){
 
   const finishedLesson = LF?.lesson;
 
-  // Бонусний урок "Граматика" (опційний, не вузол основного шляху) —
-  // "Наступний урок" має продовжити РЕАЛЬНИЙ шлях так, ніби щойно
-  // пройдено модуль/главу, до якої бонус прив'язаний (див.
-  // startModuleGrammarBonus/startChapterGrammarBonus) — а не лишати
-  // користувача "в нікуди". Даємо те саме відчуття завершеності, що й
-  // після звичайного уроку.
-  if(finishedLesson?._isGrammarBonus){
+  // Будь-який опційний бонусний урок (Граматика, Діалоги — не вузол
+  // основного шляху) — "Наступний урок" має продовжити РЕАЛЬНИЙ шлях
+  // так, ніби щойно пройдено модуль/главу, до якої бонус прив'язаний
+  // (див. startModuleGrammarBonus/startChapterGrammarBonus/
+  // startChapterDialogueBonus) — а не лишати користувача "в нікуди".
+  // Даємо те саме відчуття завершеності, що й після звичайного уроку.
+  if(finishedLesson?._isBonusLesson){
     if(finishedLesson._bonusForChapter != null){
       const nextChapterFirstModule = lessons.find(l =>
         l.chapter === finishedLesson._bonusForChapter + 1 && l.module === 1
