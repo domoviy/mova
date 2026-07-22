@@ -2597,7 +2597,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '377-474f5d6';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5999,10 +5999,19 @@ function _runLessonFlow(lesson, allCards){
   );
   const matchCards = matchPool.slice(0, Math.min(5, matchPool.length));
 
-  // Вибираємо 1 картку Dialogue для уроку — через SM-2 пріоритет
+  // Вибираємо 1 картку Dialogue для уроку — ПРІОРИТЕТНО з власного
+  // lesson.dlgCards (прив'язка діалог↔модуль, яка вже існує в базі), і
+  // лише картки САМЕ цього модуля, за SM-2-пріоритетом серед них. Якщо
+  // dlgCards порожній (діалоги для цього модуля ще не написані) —
+  // dlgCard = null, і крок dlg_learn нижче просто пропускається/
+  // замінюється фолбеком через _pushStepOrFiller (той самий механізм,
+  // що й для tiles/sb_prac/def) — а НЕ бере випадковий діалог не по темі
+  // з усього курсу, як було раніше.
   const allDlg = typeof DIALOGE !== 'undefined' ? DIALOGE : [];
-  const dlgCard = allDlg.length > 0
-    ? [...allDlg].sort((a,b) => srPriorityFromState(state,b.id) - srPriorityFromState(state,a.id))[0]
+  const lessonDlgIds = new Set(lesson.dlgCards || []);
+  const lessonDlgPool = allDlg.filter(d => lessonDlgIds.has(d.id));
+  const dlgCard = lessonDlgPool.length > 0
+    ? [...lessonDlgPool].sort((a,b) => srPriorityFromState(state,b.id) - srPriorityFromState(state,a.id))[0]
     : null;
 
   // Запасний пул для заміни кроків, яких не вистачає (def/dlg_learn/
@@ -6174,6 +6183,13 @@ function renderLernpfad(){
 
     // Розблоковано якщо хоч один модуль пройдено ≥50%
     const reviewUnlocked = ch.modules.some(m=>lessonProgress(m).pct>=50);
+    // Бонус "Діалоги" — окрема, слабша умова: видимий одразу, щойно
+    // ПРОЙДЕНО (не лише розпочато) хоча б один урок глави (poріг ≥80%,
+    // той самий, що означає "модуль завершено" в решті застосунку —
+    // див. _proceedFromLesson). Не прив'язаний до reviewUnlocked/
+    // Граматики свідомо — користувач попросив саме цю, окрему умову
+    // для Діалогів.
+    const dlgBonusUnlocked = ch.modules.some(m=>lessonProgress(m).pct>=80);
     // Рендер картки повторення всередині глави
     const reviewHtml = renderReviewCard([ch.num], 'module', reviewUnlocked);
 
@@ -6194,7 +6210,7 @@ function renderLernpfad(){
         ${ch.modules.map(m=>renderModuleCard(m)+renderGrammarBonusCard(m)).join('')}
         ${reviewHtml}
         ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
-        ${renderChapterDialogueBonusCard(ch.num, reviewUnlocked)}
+        ${renderChapterDialogueBonusCard(ch.num, dlgBonusUnlocked)}
       </div>`;
     container.appendChild(chEl);
   });
