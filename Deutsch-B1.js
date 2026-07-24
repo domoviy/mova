@@ -340,6 +340,12 @@ var GRAMMAR = [
       "en": "The connector <g>bis</g> marks the end point of an action or a period of time (until). It rules a subordinate clause, so the verb goes to the very end.<br>Example: Ich warte hier, <g>bis du kommst</g>.",
       "uk": "Сполучник <g>bis</g> вказує на кінцевий пункт дії або часового проміжку (доки, поки не). Це підрядне речення, тому змінюване дієслово стоїть у самому кінці.<br>Приклад: Ich warte hier, <g>bis du kommst</g>.",
       "ru": "Союз <g>bis</g> указывает на конечную точку действия или временного промежутка (пока, пока не). Это придаточное предложение, поэтому спрягаемый глагол стоит в самом конце.<br>Пример: Ich warte hier, <g>bis du kommst</g>."
+    },
+    "rule": {
+      "de": "<b>Nebensatz mit bis</b><br>Der Konnektor <g>bis</g> zeigt den Endpunkt einer Handlung oder eines Zeitraums (bis wann?). Es ist ein Nebensatz, das konjugierte Verb steht am Ende.<br><br><table><tr><th>Hauptsatz</th><th>Nebensatz (bis ... Verb)</th></tr><tr><td>Ich warte hier,</td><td><g>bis</g> du <g>kommst</g>.</td></tr></table><br><b>Beispiele</b><br>Ich warte hier, <g>bis du kommst</g>.<br>Wir bleiben, <g>bis</g> der Film <g>zu Ende ist</g>.<br><br><b>Vergleich mit der Präposition:</b> <g>bis</g> + Nomen (bis Montag) vs. <g>bis</g> + Nebensatz (bis du kommst).",
+      "en": "",
+      "uk": "<b>Підрядне речення з bis</b><br>Сполучник <g>bis</g> вказує на кінцевий момент дії чи часового проміжку (до якого часу?). Це підрядне речення, тому змінюване дієслово стоїть у кінці.<br><br><table><tr><th>Головне речення</th><th>Підрядне (bis ... дієслово)</th></tr><tr><td>Ich warte hier,</td><td><g>bis</g> du <g>kommst</g>.</td></tr></table><br><b>Приклади</b><br>Ich warte hier, <g>bis du kommst</g>. (Я чекаю тут, поки ти не прийдеш.)<br>Wir bleiben, <g>bis</g> der Film <g>zu Ende ist</g>. (Ми залишимось, поки фільм не закінчиться.)<br><br><b>Порівняння з прийменником:</b> <g>bis</g> + іменник (bis Montag — до понеділка) vs. <g>bis</g> + підрядне речення (bis du kommst).",
+      "ru": ""
     }
   },
   {
@@ -350,6 +356,12 @@ var GRAMMAR = [
       "en": "You can turn almost any verb into a noun. The infinitive form gets capitalized and always takes the neutral article <g>das</g>.<br>Example: leben -> <g>das Leben</g>, essen -> <g>das Essen</g>.",
       "uk": "Майже з кожного дієслова можна зробити іменник (субстантивація). Для цього інфінітив пишеться з великої літери та завжди отримує артикль середнього роду <g>das</g>.<br>Приклад: leben -> <g>das Leben</g> (життя), essen -> <g>das Essen</g> (їжа).",
       "ru": "Почти из каждого глагола можно сделать существительное (субстантивация). Для этого инфинитив пишется с большой буквы и всегда получает артикль среднего рода <g>das</g>.<br>Пример: leben -> <g>das Leben</g> (жизнь), essen -> <g>das Essen</g> (еда)."
+    },
+    "rule": {
+      "de": "<b>Substantivierter Infinitiv</b><br>Fast jedes Verb kann zum Nomen werden: einfach den Infinitiv großschreiben. Das Nomen ist immer <g>neutral</g> (Artikel <g>das</g>).<br><br><table><tr><th>Verb</th><th>Nomen</th></tr><tr><td>leben</td><td><g>das Leben</g></td></tr><tr><td>essen</td><td><g>das Essen</g></td></tr><tr><td>lernen</td><td><g>das Lernen</g></td></tr></table><br><b>Beispiele</b><br><g>Das Lernen</g> einer Sprache braucht Zeit.<br><g>Das Essen</g> schmeckt gut.<br><br><b>Tipp:</b> Diese Nomen haben normalerweise keinen Plural.",
+      "en": "",
+      "uk": "<b>Субстантивований інфінітив</b><br>Майже кожне дієслово можна перетворити на іменник: достатньо написати інфінітив з великої літери. Такий іменник завжди <g>середнього роду</g> (артикль <g>das</g>).<br><br><table><tr><th>Дієслово</th><th>Іменник</th></tr><tr><td>leben</td><td><g>das Leben</g></td></tr><tr><td>essen</td><td><g>das Essen</g></td></tr><tr><td>lernen</td><td><g>das Lernen</g></td></tr></table><br><b>Приклади</b><br><g>Das Lernen</g> einer Sprache braucht Zeit. (Вивчення мови потребує часу.)<br><g>Das Essen</g> schmeckt gut. (Їжа смачна.)<br><br><b>Порада:</b> Такі іменники зазвичай не мають множини.",
+      "ru": ""
     }
   },
   {
@@ -360,6 +372,12 @@ var GRAMMAR = [
       "en": "When discussing objects or topics, we use <g>wo-</g> + preposition for questions (worüber) and <g>da-</g> + preposition for answers (darüber). An '-r-' is added if the preposition starts with a vowel.<br>Example: Worüber sprecht ihr? Wir sprechen <g>darüber</g>.",
       "uk": "Коли ми говоримо про неживі предмети чи абстрактні речі, ми використовуємо слова з <g>wo-</g> для запитань (worüber — про що) та з <g>da-</g> для вказування на це в матчі-відповіді (darüber — про це). Якщо прийменник починається на голосну, додається літера '-r-'.<br>Приклад: Worüber sprecht ihr? Wir sprechen <g>darüber</g>.",
       "ru": "Когда мы говорим о неодушевленных предметах или абстрактных вещах, мы используем слова с <g>wo-</g> для вопросов (worüber — о чем) и с <g>da-</g> для указания на это в ответе (darüber — об этом). Если предлог начинается на гласную, добавляется буква '-r-'.<br>Пример: Worüber sprecht ihr? Wir sprechen <g>darüber</g>."
+    },
+    "rule": {
+      "de": "<b>Präpositionaladverbien: wo- / da-</b><br><table><tr><th>Funktion</th><th>Form</th><th>Beispiel</th></tr><tr><td>Frage (Sache)</td><td><g>wo(r)-</g> + Präposition</td><td><g>Worüber</g> sprecht ihr?</td></tr><tr><td>Antwort / Verweis (Sache)</td><td><g>da(r)-</g> + Präposition</td><td>Wir sprechen <g>darüber</g>.</td></tr></table><br>Beginnt die Präposition mit einem Vokal, wird ein <g>-r-</g> eingefügt: wor<b>über</b>, dar<b>über</b>, wor<b>an</b>, dar<b>an</b>.<br><br><b>Achtung:</b> Für Personen benutzt man KEINE Präpositionaladverbien, sondern Präposition + wen/wem: Über wen sprecht ihr? — Über ihn.",
+      "en": "",
+      "uk": "<b>Прийменникові прислівники: wo- / da-</b><br><table><tr><th>Функція</th><th>Форма</th><th>Приклад</th></tr><tr><td>Питання (річ)</td><td><g>wo(r)-</g> + прийменник</td><td><g>Worüber</g> sprecht ihr?</td></tr><tr><td>Відповідь / вказівка (річ)</td><td><g>da(r)-</g> + прийменник</td><td>Wir sprechen <g>darüber</g>.</td></tr></table><br>Якщо прийменник починається з голосної, додається <g>-r-</g>: wor<b>über</b>, dar<b>über</b>, wor<b>an</b>, dar<b>an</b>.<br><br><b>Увага:</b> Для людей прийменникові прислівники НЕ вживаються, замість них — прийменник + wen/wem: Über wen sprecht ihr? — Über ihn.",
+      "ru": ""
     }
   },
   {
@@ -370,6 +388,12 @@ var GRAMMAR = [
       "en": "We use Futur I for plans, promises, or assumptions about the future. It consists of the conjugated verb <g>werden</g> in position 2 and the main verb in the <g>infinitive</g> at the very end.<br>Example: Ich <g>werde</g> morgen das Auto <g>waschen</g>.",
       "uk": "Майбутній час (Futur I) використовується для планів, обіцянок або припущень щодо майбутнього. Він будується за допомогою дієслова <g>werden</g> на другому місці та основного дієслова в <g>інфінітиві</g> в самому кінці речення.<br>Приклад: Ich <g>werde</g> morgen das Auto <g>waschen</g>.",
       "ru": "Будущее время (Futur I) используется для планов, обещаний или предположений относительно будущего. Оно строится с помощью глагола <g>werden</g> на втором месте и основного глагола в <g>инфинитиве</g> в самом конце предложения.<br>Пример: Ich <g>werde</g> morgen das Auto <g>waschen</g>."
+    },
+    "rule": {
+      "de": "<b>Futur I: werden + Infinitiv</b><br><table><tr><th>Person</th><th><g>werden</g></th></tr><tr><td>ich</td><td><g>werde</g></td></tr><tr><td>du</td><td><g>wirst</g></td></tr><tr><td>er/sie/es</td><td><g>wird</g></td></tr><tr><td>wir</td><td><g>werden</g></td></tr><tr><td>ihr</td><td><g>werdet</g></td></tr><tr><td>sie/Sie</td><td><g>werden</g></td></tr></table><br><b>Satzbau</b><br><g>werden</g> (Position 2) + ... + <g>Infinitiv</g> (Satzende).<br>Ich <g>werde</g> morgen das Auto <g>waschen</g>.<br><br><b>Gebrauch</b><br>Pläne, Versprechen, Vermutungen über die Zukunft.<br><br><b>Tipp:</b> Im Alltag benutzt man oft einfach das Präsens + Zeitangabe (Ich wasche morgen das Auto). Futur I betont besonders Versprechen oder Vermutungen.",
+      "en": "",
+      "uk": "<b>Майбутній час I: werden + інфінітив</b><br><table><tr><th>Особа</th><th><g>werden</g></th></tr><tr><td>ich</td><td><g>werde</g></td></tr><tr><td>du</td><td><g>wirst</g></td></tr><tr><td>er/sie/es</td><td><g>wird</g></td></tr><tr><td>wir</td><td><g>werden</g></td></tr><tr><td>ihr</td><td><g>werdet</g></td></tr><tr><td>sie/Sie</td><td><g>werden</g></td></tr></table><br><b>Побудова речення</b><br><g>werden</g> (2-га позиція) + ... + <g>інфінітив</g> (кінець речення).<br>Ich <g>werde</g> morgen das Auto <g>waschen</g>. (Я помию машину завтра.)<br><br><b>Вживання</b><br>Плани, обіцянки, припущення про майбутнє.<br><br><b>Порада:</b> У побуті часто просто використовують презенс + вказівку часу (Ich wasche morgen das Auto). Futur I особливо підкреслює обіцянку чи припущення.",
+      "ru": ""
     }
   },
   {
@@ -380,6 +404,12 @@ var GRAMMAR = [
       "en": "A two-part connector used to emphasize that two positive aspects apply at the same time (not only ... but also).<br>Example: Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich.",
       "uk": "Подвійний сполучник, який з'єднує два факти, підкреслюючи, що актуальні обидва варіанти (не тільки..., але й...).<br>Приклад: Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich.",
       "ru": "Двойной союз, который соединяет два факта, подчеркивая, что актуальны оба варианта (не только..., но и...).<br>Пример: Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich."
+    },
+    "rule": {
+      "de": "<b>nicht nur ..., sondern auch ...</b><br>Ein zweiteiliger Konnektor, der zwei positive Aspekte verbindet und betont, dass beides gleichzeitig zutrifft.<br><br><table><tr><th>Teil 1</th><th>Teil 2</th></tr><tr><td><g>nicht nur</g></td><td><g>sondern auch</g></td></tr></table><br><b>Beispiele</b><br>Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich.<br>Sie spricht <g>nicht nur</g> Deutsch, <g>sondern auch</g> Französisch.<br><br><b>Tipp:</b> Ähnlich wie <g>sowohl ... als auch</g>, aber mit stärkerer Betonung des zweiten (oft überraschenden) Teils.",
+      "en": "",
+      "uk": "<b>nicht nur ..., sondern auch ...</b><br>Подвійний сполучник, що поєднує два позитивні аспекти, підкреслюючи, що обидва актуальні одночасно.<br><br><table><tr><th>Частина 1</th><th>Частина 2</th></tr><tr><td><g>nicht nur</g></td><td><g>sondern auch</g></td></tr></table><br><b>Приклади</b><br>Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich. (Він не лише розумний, а й дуже спортивний.)<br>Sie spricht <g>nicht nur</g> Deutsch, <g>sondern auch</g> Französisch. (Вона розмовляє не лише німецькою, а й французькою.)<br><br><b>Порада:</b> Подібно до <g>sowohl ... als auch</g>, але з сильнішим наголосом на другій (часто несподіваній) частині.",
+      "ru": ""
     }
   },
   {
@@ -390,6 +420,12 @@ var GRAMMAR = [
       "en": "We use infinitive clauses with <g>um ... zu</g> to express a purpose or goal (In order to...). This structure can only be used if the subject in both clauses is exactly the same.<br>Example: Ich lerne Deutsch, <g>um</g> in Deutschland <g>zu arbeiten</g>.",
       "uk": "Конструкція <g>um ... zu</g> використовується для вираження мети (для того, щоб...). Важливо: її можна вживати лише тоді, коли підмет у головній та підрядній частинах повністю збігається.<br>Приклад: Ich lerne Deutsch, <g>um</g> in Deutschland <g>zu arbeiten</g>.",
       "ru": "Конструкция <g>um ... zu</g> используется для выражения цели (для того, чтобы...). Важно: её можно употреблять только тогда, когда подлежащее в главной и придаточной частях полностью совпадает.<br>Пример: Ich lerne Deutsch, <g>um</g> in Deutschland <g>zu arbeiten</g>."
+    },
+    "rule": {
+      "de": "<b>Sätze mit um ... zu</b><br>Diese Konstruktion drückt ein Ziel oder eine Absicht aus (Frage: <g>Wozu?</g>).<br><br><table><tr><th>Bedingung</th><th>Konstruktion</th></tr><tr><td>gleiches Subjekt</td><td><g>um ... zu</g> + Infinitiv</td></tr><tr><td>unterschiedliches Subjekt</td><td><g>damit</g> + Nebensatz</td></tr></table><br><b>Beispiele</b><br>Ich lerne Deutsch, <g>um</g> in Deutschland <g>zu arbeiten</g>. (Subjekt ich = ich)<br><br><b>Achtung:</b> <g>um ... zu</g> geht NUR, wenn das Subjekt in beiden Satzteilen gleich ist. Sonst braucht man <g>damit</g>.",
+      "en": "",
+      "uk": "<b>Речення з um ... zu</b><br>Ця конструкція виражає мету або намір (питання: <g>Для чого?</g>).<br><br><table><tr><th>Умова</th><th>Конструкція</th></tr><tr><td>однаковий підмет</td><td><g>um ... zu</g> + інфінітив</td></tr><tr><td>різні підмети</td><td><g>damit</g> + підрядне речення</td></tr></table><br><b>Приклади</b><br>Ich lerne Deutsch, <g>um</g> in Deutschland <g>zu arbeiten</g>. (Підмет однаковий: я = я. Я вивчаю німецьку, щоб працювати в Німеччині.)<br><br><b>Увага:</b> <g>um ... zu</g> можна вживати ЛИШЕ якщо підмет однаковий в обох частинах речення. Інакше потрібен <g>damit</g>.",
+      "ru": ""
     }
   },
   {
@@ -400,6 +436,12 @@ var GRAMMAR = [
       "en": "Review: If the subject in the main clause and the subordinate clause is different, you MUST use <g>damit</g> instead of 'um...zu'. The conjugated verb moves to the end.<br>Example: Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>.",
       "uk": "Повторення: якщо підмети в головному та підрядному реченнях різні, ми ОБОВ'ЯЗКОВО використовуємо сполучник <g>damit</g> (замість конструкції 'um...zu'). Змінюване дієслово йде на кінець.<br>Приклад: Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>.",
       "ru": "Повторение: если подлежащие в главном и придаточном предложениях разные, мы ОБЯЗАТЕЛЬНО используем союз <g>damit</g> (вместо конструкции 'um...zu'). Спрягаемый глагол уходит в конец.<br>Пример: Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>."
+    },
+    "rule": {
+      "de": "<b>Wiederholung: Nebensatz mit damit</b><br><table><tr><th>Bedingung</th><th>Konstruktion</th></tr><tr><td>gleiches Subjekt</td><td>um ... zu</td></tr><tr><td>unterschiedliches Subjekt</td><td><g>damit</g> + Nebensatz</td></tr></table><br>Bei <g>damit</g> steht das konjugierte Verb am Ende des Nebensatzes.<br><br><b>Beispiele</b><br>Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>. (Subjekt 1: ich; Subjekt 2: er — unterschiedlich, also <g>damit</g>)<br><br><b>Vergleich:</b> Ich lerne, <g>um</g> die Prüfung <g>zu bestehen</g>. (gleiches Subjekt) vs. Der Lehrer erklärt es langsam, <g>damit</g> wir es <g>verstehen</g>. (unterschiedliches Subjekt)",
+      "en": "",
+      "uk": "<b>Повторення: підрядне речення з damit</b><br><table><tr><th>Умова</th><th>Конструкція</th></tr><tr><td>однаковий підмет</td><td>um ... zu</td></tr><tr><td>різні підмети</td><td><g>damit</g> + підрядне речення</td></tr></table><br>З <g>damit</g> змінюване дієслово стоїть у кінці підрядного речення.<br><br><b>Приклади</b><br>Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>. (Підмет 1: я; підмет 2: він — різні, тому <g>damit</g>. Я даю синові гроші, щоб він купив книгу.)<br><br><b>Порівняння:</b> Ich lerne, <g>um</g> die Prüfung <g>zu bestehen</g>. (однаковий підмет) vs. Der Lehrer erklärt es langsam, <g>damit</g> wir es <g>verstehen</g>. (різні підмети)",
+      "ru": ""
     }
   },
   {
@@ -410,6 +452,12 @@ var GRAMMAR = [
       "en": "You can turn many adjectives into nouns by adding the suffixes <g>-heit</g> or <g>-keit</g>. These nouns are always feminine and take the article <g>die</g>.<br>Example: krank -> <g>die Krankheit</g>, einsam -> <g>die Einsamkeit</g>.",
       "uk": "З багатьох прикметників можна утворити іменники за допомогою суфіксів <g>-heit</g> або <g>-keit</g>. Такі слова завжди жіночого роду і мають артикль <g>die</g>.<br>Приклад: krank -> <g>die Krankheit</g> (хвороба), einsam -> <g>die Einsamkeit</g> (самотність).",
       "ru": "Из многих прилагательных можно образовать существительные с помощью суффиксов <g>-heit</g> или <g>-keit</g>. Такие слова всегда женского рода и имеют артикль <g>die</g>.<br>Пример: krank -> <g>die Krankheit</g> (болезнь), einsam -> <g>die Einsamkeit</g> (одиночество)."
+    },
+    "rule": {
+      "de": "<b>Wortbildung: Nomen auf -heit / -keit</b><br><table><tr><th>Adjektiv</th><th>Nomen</th></tr><tr><td>krank</td><td><g>die Krankheit</g></td></tr><tr><td>frei</td><td><g>die Freiheit</g></td></tr><tr><td>einsam</td><td><g>die Einsamkeit</g></td></tr><tr><td>möglich</td><td><g>die Möglichkeit</g></td></tr></table><br><b>Regel:</b> Diese Nomen sind IMMER feminin (Artikel <g>die</g>).<br><br><b>Tipp:</b> <g>-keit</g> steht meistens nach Adjektiven auf <g>-ig, -lich, -bar</g> (möglich -> Möglichkeit), sonst meist <g>-heit</g>.",
+      "en": "",
+      "uk": "<b>Словотвір: іменники на -heit / -keit</b><br><table><tr><th>Прикметник</th><th>Іменник</th></tr><tr><td>krank</td><td><g>die Krankheit</g></td></tr><tr><td>frei</td><td><g>die Freiheit</g></td></tr><tr><td>einsam</td><td><g>die Einsamkeit</g></td></tr><tr><td>möglich</td><td><g>die Möglichkeit</g></td></tr></table><br><b>Правило:</b> Ці іменники ЗАВЖДИ жіночого роду (артикль <g>die</g>).<br><br><b>Порада:</b> <g>-keit</g> зазвичай додається після прикметників на <g>-ig, -lich, -bar</g> (möglich -> Möglichkeit), в інших випадках частіше <g>-heit</g>.",
+      "ru": ""
     }
   },
   {
@@ -420,6 +468,12 @@ var GRAMMAR = [
       "en": "In the passive voice, the action is important, not the person doing it. Structure: conjugated <g>werden</g> in position 2 + <g>Partizip II</g> at the end of the sentence.<br>Example: Das Auto <g>wird repariert</g>.",
       "uk": "У пасивному стані (Passiv) важлива сама дія, а не той, хто її виконує. Структура: змінюване дієслово <g>werden</g> стоїть на 2-му місці, а основне дієслово у формі <g>Partizip II</g> — в самому кінці речення.<br>Приклад: Das Auto <g>wird repariert</g> (Машину ремонтують).",
       "ru": "В пассивном залоге (Passiv) важно само действие, а не тот, кто его выполняет. Структура: спрягаемый глагол <g>werden</g> стоит на 2-м месте, а основной глагол в форме <g>Partizip II</g> — в самом конце предложения.<br>Пример: Das Auto <g>wird repariert</g> (Машину ремонтируют)."
+    },
+    "rule": {
+      "de": "<b>Passiv Präsens</b><br><table><tr><th>Aktiv</th><th>Passiv</th></tr><tr><td>Der Mechaniker <b>repariert</b> das Auto.</td><td>Das Auto <g>wird repariert</g>.</td></tr></table><br><b>Bildung</b><br><g>werden</g> (konjugiert, Position 2) + <g>Partizip II</g> (Satzende).<br><br><table><tr><th>Person</th><th><g>werden</g></th></tr><tr><td>ich</td><td><g>werde</g></td></tr><tr><td>du</td><td><g>wirst</g></td></tr><tr><td>er/sie/es</td><td><g>wird</g></td></tr><tr><td>wir</td><td><g>werden</g></td></tr><tr><td>ihr</td><td><g>werdet</g></td></tr><tr><td>sie/Sie</td><td><g>werden</g></td></tr></table><br><b>Beispiele</b><br>Das Auto <g>wird repariert</g>.<br>Die Fenster <g>werden geputzt</g>.<br><br><b>Tipp:</b> Wer die Handlung ausführt, ist unwichtig oder unbekannt — deshalb wird das Passiv genutzt.",
+      "en": "",
+      "uk": "<b>Пасив (теперішній час)</b><br><table><tr><th>Актив</th><th>Пасив</th></tr><tr><td>Der Mechaniker <b>repariert</b> das Auto.</td><td>Das Auto <g>wird repariert</g>.</td></tr></table><br><b>Утворення</b><br><g>werden</g> (змінюване, 2-га позиція) + <g>Partizip II</g> (кінець речення).<br><br><table><tr><th>Особа</th><th><g>werden</g></th></tr><tr><td>ich</td><td><g>werde</g></td></tr><tr><td>du</td><td><g>wirst</g></td></tr><tr><td>er/sie/es</td><td><g>wird</g></td></tr><tr><td>wir</td><td><g>werden</g></td></tr><tr><td>ihr</td><td><g>werdet</g></td></tr><tr><td>sie/Sie</td><td><g>werden</g></td></tr></table><br><b>Приклади</b><br>Das Auto <g>wird repariert</g>. (Машину ремонтують.)<br>Die Fenster <g>werden geputzt</g>. (Вікна миють.)<br><br><b>Порада:</b> Пасив вживають, коли не важливо або невідомо, хто виконує дію.",
+      "ru": ""
     }
   },
   {
@@ -430,6 +484,12 @@ var GRAMMAR = [
       "en": "Review of the conversational past tense: <g>haben</g> / <g>sein</g> (position 2) + <g>Partizip II</g> (at the end). We use <g>sein</g> for movement or change of state, otherwise we use <g>haben</g>.<br>Example: Ich <g>habe</g> geschlafen. Er <g>ist</g> gekommen.",
       "uk": "Повторення розмовної форми минулого часу: <g>haben</g>  /  <g>sein</g> (на 2-му місці) + <g>Partizip II</g> (в кінці речення). Дієслово <g>sein</g> використовується при русі або зміні стану, в інших випадках — <g>haben</g>.<br>Приклад: Ich <g>habe</g> geschlafen. Er <g>ist</g> gekommen.",
       "ru": "Повторение разговорной формы прошедшего времени: <g>haben</g>  /  <g>sein</g> (на 2-м месте) + <g>Partizip II</g> (в конце предложения). Глагол <g>sein</g> используется при движении или изменении состояния, в остальных случаях — <g>haben</g>.<br>Пример: Ich <g>habe</g> geschlafen. Er <g>ist</g> gekommen."
+    },
+    "rule": {
+      "de": "<b>Wiederholung: Perfekt</b><br><table><tr><th>Hilfsverb</th><th>Wann?</th></tr><tr><td><g>sein</g></td><td>Bewegung (gehen, fahren) oder Zustandsänderung (aufwachen, einschlafen)</td></tr><tr><td><g>haben</g></td><td>alle anderen Verben (Standardfall)</td></tr></table><br><b>Bildung</b><br><g>haben/sein</g> (Position 2) + <g>Partizip II</g> (Satzende).<br><br><b>Beispiele</b><br>Ich <g>habe</g> geschlafen.<br>Er <g>ist</g> gekommen.<br>Wir <g>sind</g> nach Berlin <g>gefahren</g>.<br><br><b>Tipp:</b> Im gesprochenen Deutsch ist das Perfekt die am häufigsten genutzte Vergangenheitsform.",
+      "en": "",
+      "uk": "<b>Повторення: перфект</b><br><table><tr><th>Допоміжне дієслово</th><th>Коли?</th></tr><tr><td><g>sein</g></td><td>рух (gehen, fahren) або зміна стану (aufwachen, einschlafen)</td></tr><tr><td><g>haben</g></td><td>усі інші дієслова (стандартний випадок)</td></tr></table><br><b>Утворення</b><br><g>haben/sein</g> (2-га позиція) + <g>Partizip II</g> (кінець речення).<br><br><b>Приклади</b><br>Ich <g>habe</g> geschlafen. (Я спав.)<br>Er <g>ist</g> gekommen. (Він прийшов.)<br>Wir <g>sind</g> nach Berlin <g>gefahren</g>. (Ми поїхали до Берліна.)<br><br><b>Порада:</b> У розмовній німецькій перфект — найуживаніша форма минулого часу.",
+      "ru": ""
     }
   },
   {
@@ -440,6 +500,12 @@ var GRAMMAR = [
       "en": "You can turn many verbs into nouns by replacing the '-en' ending with the suffix <g>-ung</g>. These nouns usually describe processes and are always feminine (<g>die</g>).<br>Example: wohnen -> <g>die Wohnung</g>, einladen -> <g>die Einladung</g>.",
       "uk": "Багато дієслів можна перетворити на іменники, замінивши закінчення '-en' на суфікс <g>-ung</g>. Такі іменники зазвичай позначають дію або її результат і завжди мають жіночий рід (<g>die</g>).<br>Приклад: wohnen -> <g>die Wohnung</g> (квартира), einladen -> <g>die Einladung</g> (запрошення).",
       "ru": "Многие глаголы можно превратить в существительные, заменив окончание '-en' на суффикс <g>-ung</g>. Такие существительные обычно обозначают процесс или результат действия и всегда имеют женский род (<g>die</g>).<br>Пример: wohnen -> <g>die Wohnung</g> (квартира), einladen -> <g>die Einladung</g> (приглашение)."
+    },
+    "rule": {
+      "de": "<b>Wortbildung: Nomen auf -ung</b><br><table><tr><th>Verb</th><th>Nomen</th></tr><tr><td>wohnen</td><td><g>die Wohnung</g></td></tr><tr><td>einladen</td><td><g>die Einladung</g></td></tr><tr><td>lösen</td><td><g>die Lösung</g></td></tr></table><br><b>Regel:</b> Verb ohne <g>-en</g> + Suffix <g>-ung</g>. Diese Nomen sind IMMER feminin (Artikel <g>die</g>) und beschreiben meist einen Prozess oder ein Ergebnis.<br><br><b>Beispiele</b><br><g>Die Wohnung</g> ist groß.<br>Danke für <g>die Einladung</g>.",
+      "en": "",
+      "uk": "<b>Словотвір: іменники на -ung</b><br><table><tr><th>Дієслово</th><th>Іменник</th></tr><tr><td>wohnen</td><td><g>die Wohnung</g></td></tr><tr><td>einladen</td><td><g>die Einladung</g></td></tr><tr><td>lösen</td><td><g>die Lösung</g></td></tr></table><br><b>Правило:</b> дієслово без <g>-en</g> + суфікс <g>-ung</g>. Ці іменники ЗАВЖДИ жіночого роду (артикль <g>die</g>) і зазвичай позначають процес чи результат.<br><br><b>Приклади</b><br><g>Die Wohnung</g> ist groß. (Квартира велика.)<br>Danke für <g>die Einladung</g>. (Дякую за запрошення.)",
+      "ru": ""
     }
   },
   {
@@ -450,6 +516,12 @@ var GRAMMAR = [
       "en": "Review: Many verbs are firmly attached to a specific preposition that dictates the case. Important for B1: <g>sich interessieren für</g> (+ Accusative), <g>träumen von</g> (+ Dative).<br>Example: Ich interessiere mich <g>für Musik</g>.",
       "uk": "Повторення: багато дієслів мають стійке керування з певним прийменником і відмінком. Важливі для B1: <g>sich interessieren für</g> (+ Знахідний), <g>träumen von</g> (+ Давальний), <g>sich freuen auf / über</g> (+ Знахідний).<br>Приклад: Ich interessiere mich <g>für Musik</g>.",
       "ru": "Повторение: многие глаголы имеют устойчивое управление с определенным предлогом и падежом. Важные для B1: <g>sich interessieren für</g> (+ Винительный), <g>träumen von</g> (+ Дательный), <g>sich freuen auf / über</g> (+ Винительный).<br>Пример: Ich interessiere mich <g>für Musik</g>."
+    },
+    "rule": {
+      "de": "<b>Verben mit Präpositionen — Wiederholung</b><br><table><tr><th>Verb</th><th>Präposition</th><th>Kasus</th></tr><tr><td><g>sich interessieren für</g></td><td>für</td><td>Akkusativ</td></tr><tr><td><g>träumen von</g></td><td>von</td><td>Dativ</td></tr><tr><td><g>sich freuen auf</g></td><td>auf</td><td>Akkusativ (Zukunft)</td></tr><tr><td><g>sich freuen über</g></td><td>über</td><td>Akkusativ (Gegenwart)</td></tr></table><br><b>Beispiele</b><br>Ich interessiere mich <g>für Musik</g>.<br>Sie träumt <g>von einer Reise</g>.<br>Wir freuen uns <g>auf den Urlaub</g>. (etwas kommt noch)<br>Wir freuen uns <g>über das Geschenk</g>. (schon passiert)",
+      "en": "",
+      "uk": "<b>Дієслова з прийменниками — повторення</b><br><table><tr><th>Дієслово</th><th>Прийменник</th><th>Відмінок</th></tr><tr><td><g>sich interessieren für</g></td><td>für</td><td>Знахідний</td></tr><tr><td><g>träumen von</g></td><td>von</td><td>Давальний</td></tr><tr><td><g>sich freuen auf</g></td><td>auf</td><td>Знахідний (майбутнє)</td></tr><tr><td><g>sich freuen über</g></td><td>über</td><td>Знахідний (сучасне)</td></tr></table><br><b>Приклади</b><br>Ich interessiere mich <g>für Musik</g>. (Я цікавлюсь музикою.)<br>Sie träumt <g>von einer Reise</g>. (Вона мріє про подорож.)<br>Wir freuen uns <g>auf den Urlaub</g>. (щось ще попереду) — Ми тішимось з очікуваної відпустки.<br>Wir freuen uns <g>über das Geschenk</g>. (вже сталося) — Ми радіємо подарунку.",
+      "ru": ""
     }
   },
   {
@@ -460,6 +532,12 @@ var GRAMMAR = [
       "en": "For objects or concepts we use pronominal adverbs: questions start with <g>wo-</g> (or <g>wor-</g> before vowels), while answers  /  references start with <g>da-</g> (or <g>dar-</g>).<br>Example: <g>Wovon</g> träumst du? Ich träume <g>davon</g>.",
       "uk": "Для речей ми використовуємо займенникові прислівники: питання починаються з <g>wo-</g> (або <g>wor-</g> перед голосними), а відповіді  /  вказівки — з <g>da-</g> (або <g>dar-</g>).<br>Приклад: <g>Wovon</g> träumst du? Ich träume <g>davon</g>.",
       "ru": "Для вещей мы используем местоименные наречия: вопросы начинаются с <g>wo-</g> (или <g>wor-</g> перед гласными), а ответы  /  указания — с <g>da-</g> (или <g>dar-</g>).<br>Пример: <g>Wovon</g> träumst du? Ich träume <g>davon</g>."
+    },
+    "rule": {
+      "de": "<b>Fragewörter mit wo(r)- und da(r)-</b><br><table><tr><th>Funktion</th><th>Form</th><th>Beispiel</th></tr><tr><td>Frage (Sache)</td><td><g>wo(r)-</g> + Präposition</td><td><g>Wovon</g> träumst du?</td></tr><tr><td>Antwort / Verweis (Sache)</td><td><g>da(r)-</g> + Präposition</td><td>Ich träume <g>davon</g>.</td></tr></table><br>Vor einem Vokal wird ein <g>-r-</g> eingefügt: wor<b>auf</b>, dar<b>auf</b>, wor<b>über</b>, dar<b>über</b>.<br><br><b>Achtung:</b> Bei Personen fragen wir mit Präposition + wen/wem: <g>Von wem</g> träumst du? — Von ihr.",
+      "en": "",
+      "uk": "<b>Питальні слова з wo(r)- та da(r)-</b><br><table><tr><th>Функція</th><th>Форма</th><th>Приклад</th></tr><tr><td>Питання (річ)</td><td><g>wo(r)-</g> + прийменник</td><td><g>Wovon</g> träumst du?</td></tr><tr><td>Відповідь / вказівка (річ)</td><td><g>da(r)-</g> + прийменник</td><td>Ich träume <g>davon</g>.</td></tr></table><br>Перед голосною додається <g>-r-</g>: wor<b>auf</b>, dar<b>auf</b>, wor<b>über</b>, dar<b>über</b>.<br><br><b>Увага:</b> Про людей запитуємо прийменником + wen/wem: <g>Von wem</g> träumst du? — Von ihr.",
+      "ru": ""
     }
   },
   {
@@ -470,6 +548,12 @@ var GRAMMAR = [
       "en": "The modal particles <g>denn</g> and <g>eigentlich</g> make questions sound softer, more natural, and show genuine interest in spoken German.<br>Example: Wie heißt du <g>denn</g>? Woher kommst du <g>eigentlich</g>?",
       "uk": "Модальні часточки <g>denn</g> та <g>eigentlich</g> роблять запитання в розмові більш живими, дружніми та демонструють щирий інтерес до співрозмовника.<br>Приклад: Wie heißt du <g>denn</g>? Woher kommst du <g>eigentlich</g>?",
       "ru": "Модальные частицы <g>denn</g> и <g>eigentlich</g> делают вопросы в разговоре более живыми, дружелюбными и демонстрируют искренний интерес к собеседнику.<br>Пример: Wie heißt du <g>denn</g>? Woher kommst du <g>eigentlich</g>?"
+    },
+    "rule": {
+      "de": "<b>Modalpartikeln: denn und eigentlich</b><br><table><tr><th>Partikel</th><th>Funktion</th></tr><tr><td><g>denn</g></td><td>zeigt echtes Interesse, macht Fragen freundlicher</td></tr><tr><td><g>eigentlich</g></td><td>leitet einen Themenwechsel ein oder zeigt beiläufige Neugier</td></tr></table><br>Diese Wörter verändern die Bedeutung des Satzes nicht — sie machen ihn nur natürlicher im Gespräch.<br><br><b>Beispiele</b><br>Wie heißt du <g>denn</g>?<br>Woher kommst du <g>eigentlich</g>?<br><br><b>Tipp:</b> Modalpartikeln stehen normalerweise direkt nach dem Subjekt oder Verb, nie am Satzanfang.",
+      "en": "",
+      "uk": "<b>Модальні частки: denn і eigentlich</b><br><table><tr><th>Частка</th><th>Функція</th></tr><tr><td><g>denn</g></td><td>показує щирий інтерес, робить питання приязнішим</td></tr><tr><td><g>eigentlich</g></td><td>вводить зміну теми або показує принагідну цікавість</td></tr></table><br>Ці слова не змінюють значення речення — вони лише роблять його природнішим у розмові.<br><br><b>Приклади</b><br>Wie heißt du <g>denn</g>? (То як тебе звати?)<br>Woher kommst du <g>eigentlich</g>? (А звідки ти взагалі?)<br><br><b>Порада:</b> Модальні частки зазвичай стоять одразу після підмета чи дієслова, ніколи на початку речення.",
+      "ru": ""
     }
   },
   {
@@ -480,6 +564,12 @@ var GRAMMAR = [
       "en": "Adding the prefix <g>un-</g> to the front of an adjective changes its meaning to the exact opposite.<br>Example: glücklich -> <g>unglücklich</g>, freundlich -> <g>unfreundlich</g>.",
       "uk": "Префікс <g>un-</g> перед прикметником змінює його значення на протилежне (заперечення).<br>Приклад: glücklich -> <g>unglücklich</g> (нещасливий), freundlich -> <g>unfreundlich</g> (непривітний).",
       "ru": "Префикс <g>un-</g> перед прилагательным меняет его значение на противоположное (отрицание).<br>Пример: glücklich -> <g>unglücklich</g> (несчастливый), freundlich -> <g>unfreundlich</g> (неприветливый)."
+    },
+    "rule": {
+      "de": "<b>Wortbildung: Adjektive mit un-</b><br><table><tr><th>Adjektiv</th><th>Gegenteil</th></tr><tr><td>glücklich</td><td><g>unglücklich</g></td></tr><tr><td>freundlich</td><td><g>unfreundlich</g></td></tr><tr><td>wichtig</td><td><g>unwichtig</g></td></tr></table><br><b>Regel:</b> <g>un-</g> + Adjektiv = Gegenteil (Verneinung). Die Betonung liegt auf <g>un-</g>.<br><br><b>Beispiele</b><br>Er war den ganzen Tag <g>unglücklich</g>.<br>Sie war sehr <g>unfreundlich</g> zu mir.<br>Das ist doch total <g>unwichtig</g>!<br><br><b>Achtung:</b> Nicht bei jedem Adjektiv funktioniert <g>un-</g> — manche haben ein eigenes Gegenteilwort (gut -> schlecht, nicht *ungut).",
+      "en": "",
+      "uk": "<b>Словотвір: прикметники з un-</b><br><table><tr><th>Прикметник</th><th>Протилежність</th></tr><tr><td>glücklich</td><td><g>unglücklich</g></td></tr><tr><td>freundlich</td><td><g>unfreundlich</g></td></tr><tr><td>wichtig</td><td><g>unwichtig</g></td></tr></table><br><b>Правило:</b> <g>un-</g> + прикметник = протилежне значення (заперечення). Наголос падає на <g>un-</g>.<br><br><b>Приклади</b><br>Er war den ganzen Tag <g>unglücklich</g>. (Він був весь день нещасливим.)<br>Sie war sehr <g>unfreundlich</g> zu mir. (Вона була дуже неприязна до мене.)<br>Das ist doch total <g>unwichtig</g>! (Та це ж зовсім не важливо!)<br><br><b>Увага:</b> Не всі прикметники утворюють протилежність за допомогою <g>un-</g> — деякі мають окреме слово (gut -> schlecht, а не *ungut).",
+      "ru": ""
     }
   },
   {
@@ -490,6 +580,12 @@ var GRAMMAR = [
       "en": "To express imaginary or unreal wishes, we use Subjunctive II (<g>hätte, wäre, würde + infinitive</g>). Particles like 'doch' or 'nur' are frequently added.<br>Example: Ich <g>wäre</g> gern am Strand! Wenn ich nur mehr Zeit <g>hätte</g>!",
       "uk": "Для вираження уявних, нереальних бажань (мрій) ми використовуємо Кон'юнктив II (<g>hätte, wäre, würde + інфінітив</g>). Часто додаються часточки 'doch' або 'nur'.<br>Приклад: Ich <g>wäre</g> gern am Strand! Wenn ich nur mehr Zeit <g>hätte</g>!",
       "ru": "Для выражения воображаемых, нереальных желаний (мечтаний) мы используем Конъюнктив II (<g>hätte, wäre, würde + инфинитив</g>). Часто добавляются частицы 'doch' или 'nur'.<br>Пример: Ich <g>wäre</g> gern am Strand! Wenn ich nur mehr Zeit <g>hätte</g>!"
+    },
+    "rule": {
+      "de": "<b>Konjunktiv II: Wünsche äußern</b><br><table><tr><th>Verb</th><th>Konjunktiv II</th></tr><tr><td>sein</td><td><g>wäre</g></td></tr><tr><td>haben</td><td><g>hätte</g></td></tr><tr><td>andere Verben</td><td><g>würde</g> + Infinitiv</td></tr></table><br><b>Struktur für Wünsche</b><br>Oft mit <g>doch</g>, <g>nur</g> oder <g>doch nur</g> verstärkt.<br><br><b>Beispiele</b><br>Ich <g>wäre</g> gern am Strand!<br>Wenn ich <g>nur</g> mehr Zeit <g>hätte</g>!<br>Ich <g>würde</g> gern mehr reisen.<br><br><b>Tipp:</b> Diese Sätze drücken einen Wunsch aus, der (noch) nicht Realität ist.",
+      "en": "",
+      "uk": "<b>Кон'юнктив II: вираження бажань</b><br><table><tr><th>Дієслово</th><th>Konjunktiv II</th></tr><tr><td>sein</td><td><g>wäre</g></td></tr><tr><td>haben</td><td><g>hätte</g></td></tr><tr><td>інші дієслова</td><td><g>würde</g> + інфінітив</td></tr></table><br><b>Структура для бажань</b><br>Часто підсилюється словами <g>doch</g>, <g>nur</g> або <g>doch nur</g>.<br><br><b>Приклади</b><br>Ich <g>wäre</g> gern am Strand! (Я б хотів бути на пляжі!)<br>Wenn ich <g>nur</g> mehr Zeit <g>hätte</g>! (Якби ж я мав більше часу!)<br>Ich <g>würde</g> gern mehr reisen. (Я б хотів більше подорожувати.)<br><br><b>Порада:</b> Такі речення виражають бажання, яке (поки що) не є реальністю.",
+      "ru": ""
     }
   },
   {
@@ -500,6 +596,12 @@ var GRAMMAR = [
       "en": "When describing conditions that are not real, we use <g>wenn</g> with <g>Subjunctive II</g> in both clauses. The verb in the wenn-clause sits at the very end.<br>Example: <g>Wenn</g> ich viel Geld <g>hätte</g>, <g>würde</g> ich ein Haus <g>kaufen</g>.",
       "uk": "Якщо ми говоримо про умови, які є нереальними наразі, ми використовуємо сполучник <g>wenn</g> разом із <g>Кон'юнктивом II</g> в обох частинах речення. Дієслово в підрядному реченні стоїть у кінці.<br>Приклад: <g>Wenn</g> ich viel Geld <g>hätte</g>, <g>würde</g> ich ein Haus <g>kaufen</g>.",
       "ru": "Если мы говорим об условиях, которые нереальны на данный момент, мы используем союз <g>wenn</g> вместе с <g>Конъюнктивом II</g> в обеих частях предложения. Глагол в придаточном стоит в конце.<br>Пример: <g>Wenn</g> ich viel Geld <g>hätte</g>, <g>würde</g> ich ein Haus <g>kaufen</g>."
+    },
+    "rule": {
+      "de": "<b>Irreale Bedingungssätze mit wenn + Konjunktiv II</b><br><table><tr><th>Teil</th><th>Form</th></tr><tr><td>wenn-Satz (Bedingung)</td><td><g>wenn</g> ... <g>Konjunktiv II</g> ... Verb am Ende</td></tr><tr><td>Hauptsatz (Folge)</td><td><g>würde</g> + Infinitiv (oder Konjunktiv II)</td></tr></table><br><b>Beispiel</b><br><g>Wenn</g> ich viel Geld <g>hätte</g>, <g>würde</g> ich ein Haus <g>kaufen</g>.<br><br><b>Gebrauch</b><br>Die Bedingung ist unrealistisch oder unwahrscheinlich (Gegensatz zur Realität).<br><br><b>Tipp:</b> Man kann den Hauptsatz auch zuerst stellen: <g>Ich würde ein Haus kaufen, wenn ich viel Geld hätte.</g>",
+      "en": "",
+      "uk": "<b>Нереальні умовні речення з wenn + Konjunktiv II</b><br><table><tr><th>Частина</th><th>Форма</th></tr><tr><td>wenn-речення (умова)</td><td><g>wenn</g> ... <g>Konjunktiv II</g> ... дієслово в кінці</td></tr><tr><td>головне речення (наслідок)</td><td><g>würde</g> + інфінітив (або Konjunktiv II)</td></tr></table><br><b>Приклад</b><br><g>Wenn</g> ich viel Geld <g>hätte</g>, <g>würde</g> ich ein Haus <g>kaufen</g>. (Якби я мав багато грошей, я б купив будинок.)<br><br><b>Вживання</b><br>Умова є нереальною або малоймовірною (на противагу дійсності).<br><br><b>Порада:</b> Головне речення можна поставити першим: <g>Ich würde ein Haus kaufen, wenn ich viel Geld hätte.</g>",
+      "ru": ""
     }
   },
   {
@@ -510,6 +612,12 @@ var GRAMMAR = [
       "en": "When a verb has a fixed preposition and is followed by a subordinate clause, we use a prepositional adverb (<g>darauf, darüber...</g>) in the main clause connected to a <g>dass</g>-clause.<br>Example: Ich freue mich <g>darauf, dass</g> du mich <g>besuchst</g>.",
       "uk": "Якщо дієслово вимагає прийменника, а далі йде підрядне речення, у головній частині з'являється займенниковий прислівник (<g>darauf, darüber...</g>), який поєднується зі сполучником <g>dass</g>.<br>Приклад: Ich freue mich <g>darauf, dass</g> du mich <g>besuchst</g>.",
       "ru": "Если глагол требует предлога, а далее следует придаточное предложение, в главной части появляется местоименное наречие (<g>darauf, darüber...</g>), которое связывается с союзом <g>dass</g>.<br>Пример: Ich freue mich <g>darauf, dass</g> du mich <g>besuchst</g>."
+    },
+    "rule": {
+      "de": "<b>Verben mit Präposition + dass-Satz</b><br>Wenn nach einem präpositionalen Verb ein ganzer Satz (Nebensatz) folgt, benutzen wir ein Präpositionaladverb (<g>da(r)-</g>) + <g>dass</g>.<br><br><table><tr><th>Struktur</th><th>Beispiel</th></tr><tr><td>Verb + Präpositionaladverb + <g>dass</g> + Nebensatz</td><td>Ich freue mich <g>darauf, dass</g> du mich <g>besuchst</g>.</td></tr></table><br><b>Weitere Beispiele</b><br>Ich ärgere mich <g>darüber, dass</g> es <g>regnet</g>.<br>Sie hofft <g>darauf, dass</g> alles gut <g>geht</g>.<br><br><b>Achtung:</b> Ohne diese Konstruktion mit Nomen: Ich freue mich <g>auf den Besuch</g>. Mit Nebensatz: Ich freue mich <g>darauf, dass</g> du kommst.",
+      "en": "",
+      "uk": "<b>Дієслова з прийменником + dass-речення</b><br>Коли після дієслова з прийменником іде ціле підрядне речення, ми вживаємо займенниковий прислівник (<g>da(r)-</g>) + <g>dass</g>.<br><br><table><tr><th>Структура</th><th>Приклад</th></tr><tr><td>дієслово + займенниковий прислівник + <g>dass</g> + підрядне</td><td>Ich freue mich <g>darauf, dass</g> du mich <g>besuchst</g>.</td></tr></table><br><b>Ще приклади</b><br>Ich ärgere mich <g>darüber, dass</g> es <g>regnet</g>. (Мене дратує, що йде дощ.)<br>Sie hofft <g>darauf, dass</g> alles gut <g>geht</g>. (Вона сподівається, що все буде добре.)<br><br><b>Увага:</b> Без цієї конструкції з іменником: Ich freue mich <g>auf den Besuch</g>. З підрядним: Ich freue mich <g>darauf, dass</g> du kommst.",
+      "ru": ""
     }
   },
   {
@@ -520,6 +628,12 @@ var GRAMMAR = [
       "en": "Nouns can be turned into adjectives by adding <g>-ig</g> or <g>-isch</g>. If these adjectives stand before a noun, they must take normal adjective endings.<br>Example: der Wind -> ein wind<g>iger</g> Tag, die Romantik -> ein romant<g>isches</g> Buch.",
       "uk": "З іменників можна утворювати прикметники за допомогою суфіксів <g>-ig</g> або <g>-isch</g>. Якщо такі прикметники стоять перед іменником, вони отримують звичайні відмінкові закінчення.<br>Приклад: der Wind -> ein wind<g>iger</g> Tag, die Romantik -> ein romant<g>isches</g> Buch.",
       "ru": "Из существительных можно образовывать прилагательные с помощью суффиксов <g>-ig</g> или <g>-isch</g>. Если такие прилагательные стоят перед существительным, они получают обычные падежные окончания.<br>Пример: der Wind -> ein wind<g>iger</g> Tag, die Romantik -> ein romant<g>isches</g> Buch."
+    },
+    "rule": {
+      "de": "<b>Wortbildung: Adjektive auf -ig / -isch</b><br><table><tr><th>Nomen</th><th>Adjektiv</th></tr><tr><td>der Wind</td><td><g>windig</g></td></tr><tr><td>die Sonne</td><td><g>sonnig</g></td></tr><tr><td>die Romantik</td><td><g>romantisch</g></td></tr></table><br><b>Deklination vor dem Nomen</b><br>Diese Adjektive werden wie alle anderen dekliniert.<br>ein wind<g>iger</g> Tag (maskulin, Nom.)<br>ein romant<g>isches</g> Buch (neutral, Nom.)<br><br><b>Tipp:</b> <g>-isch</g> kommt oft bei Ländern, Sprachen oder abstrakten Begriffen (typisch, chemisch, historisch).",
+      "en": "",
+      "uk": "<b>Словотвір: прикметники на -ig / -isch</b><br><table><tr><th>Іменник</th><th>Прикметник</th></tr><tr><td>der Wind</td><td><g>windig</g></td></tr><tr><td>die Sonne</td><td><g>sonnig</g></td></tr><tr><td>die Romantik</td><td><g>romantisch</g></td></tr></table><br><b>Відмінювання перед іменником</b><br>Ці прикметники відмінюються як і всі інші.<br>ein wind<g>iger</g> Tag (чоловічий рід, Nom.) — вітряний день<br>ein romant<g>isches</g> Buch (середній рід, Nom.) — романтична книга<br><br><b>Порада:</b> <g>-isch</g> часто зустрічається з країнами, мовами чи абстрактними поняттями (typisch, chemisch, historisch).",
+      "ru": ""
     }
   },
   {
@@ -530,6 +644,12 @@ var GRAMMAR = [
       "en": "The connector <g>bevor</g> describes a time sequence (before). The action in the main clause happens first. The verb in the <g>bevor</g>-clause moves to the end.<br>Example: Wasch deine Hände, <g>bevor</g> du <g>isst</g>.",
       "uk": "Сполучник <g>bevor</g> вказує на послідовність дій (перш ніж, перед тим як). Дія в головному реченні відбувається спочатку, а в підрядному після <g>bevor</g> — пізніше. Дієслово стоїть у кінці.<br>Приклад: Wasch deine Hände, <g>bevor</g> du <g>isst</g>.",
       "ru": "Союз <g>bevor</g> указывает на последовательность действий (прежде чем, перед тем как). Действие в главном предложении происходит сначала, а в придаточном после <g>bevor</g> — позже. Глагол стоит в конце.<br>Пример: Wasch deine Hände, <g>bevor</g> du <g>isst</g>."
+    },
+    "rule": {
+      "de": "<b>Nebensatz mit bevor</b><br>Der Konnektor <g>bevor</g> zeigt: die Handlung im Hauptsatz passiert zuerst, die im Nebensatz danach.<br><br><table><tr><th>Reihenfolge</th><th>Satzteil</th></tr><tr><td>1. zuerst</td><td>Hauptsatz</td></tr><tr><td>2. danach</td><td><g>bevor</g>-Nebensatz</td></tr></table><br>Das konjugierte Verb steht wie immer am Ende des Nebensatzes.<br><br><b>Beispiele</b><br>Wasch deine Hände, <g>bevor</g> du <g>isst</g>.<br><g>Bevor</g> ich ins Bett <g>gehe</g>, putze ich mir die Zähne. (Nebensatz zuerst -> Hauptsatz beginnt mit Verb)<br><br><b>Gegenteil:</b> <g>nachdem</g> — dreht die Reihenfolge um (die Nebensatz-Handlung passiert zuerst).",
+      "en": "",
+      "uk": "<b>Підрядне речення з bevor</b><br>Сполучник <g>bevor</g> показує: дія в головному реченні відбувається спочатку, а в підрядному — пізніше.<br><br><table><tr><th>Порядок</th><th>Частина речення</th></tr><tr><td>1. спочатку</td><td>головне речення</td></tr><tr><td>2. потім</td><td>підрядне з <g>bevor</g></td></tr></table><br>Змінюване дієслово, як завжди, стоїть у кінці підрядного речення.<br><br><b>Приклади</b><br>Wasch deine Hände, <g>bevor</g> du <g>isst</g>. (Помий руки, перш ніж їсти.)<br><g>Bevor</g> ich ins Bett <g>gehe</g>, putze ich mir die Zähne. (Підрядне спочатку -> головне починається з дієслова. Перед тим як лягти спати, я чищу зуби.)<br><br><b>Протилежність:</b> <g>nachdem</g> — змінює порядок (дія в підрядному відбувається спочатку).",
+      "ru": ""
     }
   },
   {
@@ -540,6 +660,12 @@ var GRAMMAR = [
       "en": "Systematic review of adjective endings at the B1 level. After a <g>definite article</g>, we use weak endings (<g>-e</g> / <g>-en</g>). After an <g>indefinite article</g>, the adjective displays the gender marker in Nominative  /  Accusative (<g>-er, -es, -e, -en</g>).",
       "uk": "Систематичний огляд закінчень прикметників на рівні B1. Після <g>означеного артикля</g> використовуються слабкі закінчення (<g>-e</g>  /  <g>-en</g>). Після <g>неозначеного артикля</g> у називному та знахідному відмінках прикметник переймає родовий маркер (<g>-er, -es, -e, -en</g>).",
       "ru": "Систематический обзор окончаний прилагательных на уровне B1. После <g>определенного артикля</g> используются слабые окончания (<g>-e</g>  /  <g>-en</g>). После <g>неопределенного артикля</g> в именительном и винительном падежах прилагательное перенимает родовой маркер (<g>-er, -es, -e, -en</g>)."
+    },
+    "rule": {
+      "de": "<b>Adjektivdeklination — Übersicht</b><br><table><tr><th>Kasus</th><th>nach best. Artikel</th><th>nach unbest. Artikel</th></tr><tr><td>Nom. mask.</td><td><g>-e</g> (der gute Mann)</td><td><g>-er</g> (ein guter Mann)</td></tr><tr><td>Nom./Akk. neutr.</td><td><g>-e</g> (das gute Kind)</td><td><g>-es</g> (ein gutes Kind)</td></tr><tr><td>Nom./Akk. fem.</td><td><g>-e</g> (die gute Frau)</td><td><g>-e</g> (eine gute Frau)</td></tr><tr><td>alle anderen Fälle</td><td><g>-en</g></td><td><g>-en</g></td></tr></table><br><b>Regel</b><br>Nach dem <g>bestimmten Artikel</g> trägt meist der Artikel selbst schon die Information (Genus/Kasus) — das Adjektiv bekommt die schwache Endung <g>-e</g> oder <g>-en</g>.<br>Nach dem <g>unbestimmten Artikel</g> zeigt das Adjektiv im Nominativ und Akkusativ (mask./neutr.) das fehlende Signal selbst: <g>-er, -es, -e</g>.<br><br><b>Beispiele</b><br>Der neu<g>e</g> Lehrer ist nett. (bestimmt)<br>Ein neu<g>er</g> Lehrer ist da. (unbestimmt, mask., Nom.)",
+      "en": "",
+      "uk": "<b>Відмінювання прикметників — огляд</b><br><table><tr><th>Відмінок</th><th>після означ. артикля</th><th>після неозн. артикля</th></tr><tr><td>Nom. чол.</td><td><g>-e</g> (der gute Mann)</td><td><g>-er</g> (ein guter Mann)</td></tr><tr><td>Nom./Akk. сер.</td><td><g>-e</g> (das gute Kind)</td><td><g>-es</g> (ein gutes Kind)</td></tr><tr><td>Nom./Akk. жін.</td><td><g>-e</g> (die gute Frau)</td><td><g>-e</g> (eine gute Frau)</td></tr><tr><td>всі інші випадки</td><td><g>-en</g></td><td><g>-en</g></td></tr></table><br><b>Правило</b><br>Після <g>означеного артикля</g> сам артикль вже несе інформацію (рід/відмінок) — прикметник отримує слабке закінчення <g>-e</g> або <g>-en</g>.<br>Після <g>неозначеного артикля</g> у називному та знахідному відмінках (чол./сер. рід) прикметник сам показує відсутній маркер: <g>-er, -es, -e</g>.<br><br><b>Приклади</b><br>Der neu<g>e</g> Lehrer ist nett. (означений, вчитель гарний.)<br>Ein neu<g>er</g> Lehrer ist da. (неозначений, чол., Nom. — Прийшов новий вчитель.)",
+      "ru": ""
     }
   },
   {
@@ -550,6 +676,12 @@ var GRAMMAR = [
       "en": "When comparative forms (e.g., kleiner) or superlative forms (e.g., kleinste) stand directly before a noun, they must also take the regular <g>adjective endings</g>.<br>Example: ein <g>kleineres</g> Auto (Comparative + es), das <g>kleinste</g> Haus (Superlativ + e).",
       "uk": "Якщо вищий (Komparativ) або найвищий (Superlativ) ступені порівняння стоять безпосередньо перед іменником, вони додатково отримують звичайні <g>закінчення прикметників</g>.<br>Приклад: ein <g>kleineres</g> Auto (Вищий ступінь + закінчення середнього роду '-es'), das <g>kleinste</g> Haus.",
       "ru": "Если сравнительная (Komparativ) или превосходная (Superlativ) степени сравнения стоят непосредственно перед существительным, они дополнительно получают обычные <g>окончания прилагательных</g>.<br>Пример: ein <g>kleineres</g> Auto (Сравнительная степень + окончание среднего рода '-es'), das <g>kleinste</g> Haus."
+    },
+    "rule": {
+      "de": "<b>Komparativ / Superlativ vor dem Nomen</b><br><table><tr><th>Form</th><th>Beispiel</th></tr><tr><td>Komparativ + Adjektivendung</td><td>ein <g>kleineres</g> Auto</td></tr><tr><td>Superlativ + Adjektivendung</td><td>das <g>kleinste</g> Haus</td></tr></table><br><b>Bildung</b><br>Komparativ: Adjektiv + <g>-er</g> + normale Endung.<br>Superlativ: Adjektiv + <g>-st</g> (oder <g>-est</g>) + normale Endung.<br><br><b>Beispiele</b><br>ein <g>kleineres</g> Auto (Komparativ + -es, neutr., unbest. Artikel)<br>das <g>kleinste</g> Haus (Superlativ + -e, neutr., best. Artikel)<br>die <g>schnellsten</g> Autos (Superlativ Plural)",
+      "en": "",
+      "uk": "<b>Вищий / найвищий ступінь перед іменником</b><br><table><tr><th>Форма</th><th>Приклад</th></tr><tr><td>Komparativ + закінчення прикметника</td><td>ein <g>kleineres</g> Auto</td></tr><tr><td>Superlativ + закінчення прикметника</td><td>das <g>kleinste</g> Haus</td></tr></table><br><b>Утворення</b><br>Komparativ (вищий): прикметник + <g>-er</g> + звичайне закінчення.<br>Superlativ (найвищий): прикметник + <g>-st</g> (або <g>-est</g>) + звичайне закінчення.<br><br><b>Приклади</b><br>ein <g>kleineres</g> Auto (Komparativ + -es, середній рід, неозн. артикль) — менша машина<br>das <g>kleinste</g> Haus (Superlativ + -e, середній рід, означ. артикль) — найменший будинок<br>die <g>schnellsten</g> Autos (Superlativ, множина) — найшвидші машини",
+      "ru": ""
     }
   },
   {
@@ -560,6 +692,12 @@ var GRAMMAR = [
       "en": "Adjectives can function as nouns. They are capitalized but still keep their regular <g>adjective endings</g> when declined!<br>Example: bekannt -> der <g>Bekannte</g> (ein <g>Bekannter</g>), neu -> etwas <g>Neues</g>.",
       "uk": "Прикметники можуть перетворюватися на іменники (субстантивація). Вони пишуться з великої літери, але при цьому повністю зберігають свої <g>закінчення прикметників</g> при відмінюванні!<br>Приклад: bekannt -> der <g>Bekannte</g> (знайомий), neu -> etwas <g>Neues</g> (щось нове).",
       "ru": "Прилагательные могут превращаться в существительные (субстантивация). Они пишутся с большой буквы, но при этом полностью сохраняют свои <g>окончания прилагательных</g> при склонении!<br>Пример: bekannt -> der <g>Bekannte</g> (знакомый), neu -> etwas <g>Neues</g> (что-то новое)."
+    },
+    "rule": {
+      "de": "<b>Wortbildung: Adjektive als Nomen</b><br><table><tr><th>Adjektiv</th><th>Nomen</th></tr><tr><td>bekannt</td><td>der <g>Bekannte</g> / ein <g>Bekannter</g></td></tr><tr><td>neu</td><td>etwas <g>Neues</g></td></tr><tr><td>krank</td><td>der/die <g>Kranke</g></td></tr></table><br><b>Regel</b><br>Diese Nomen werden großgeschrieben, behalten aber die <g>Adjektivendungen</g> — sie deklinieren sich wie normale Adjektive!<br><br><b>Beispiele</b><br>Ich habe einen <g>Bekannten</g> getroffen.<br>Gibt es etwas <g>Neues</g>?<br><br><b>Tipp:</b> Genus hängt von der Person ab: der Bekannte (mask.), die Bekannte (fem.).",
+      "en": "",
+      "uk": "<b>Словотвір: прикметники як іменники</b><br><table><tr><th>Прикметник</th><th>Іменник</th></tr><tr><td>bekannt</td><td>der <g>Bekannte</g> / ein <g>Bekannter</g></td></tr><tr><td>neu</td><td>etwas <g>Neues</g></td></tr><tr><td>krank</td><td>der/die <g>Kranke</g></td></tr></table><br><b>Правило</b><br>Такі іменники пишуться з великої літери, але зберігають <g>закінчення прикметників</g> — відмінюються як звичайні прикметники!<br><br><b>Приклади</b><br>Ich habe einen <g>Bekannten</g> getroffen. (Я зустрів знайомого.)<br>Gibt es etwas <g>Neues</g>? (Є щось нове?)<br><br><b>Порада:</b> Рід залежить від особи: der Bekannte (чол.), die Bekannte (жін.).",
+      "ru": ""
     }
   },
   {
@@ -570,6 +708,12 @@ var GRAMMAR = [
       "en": "<g>nicht brauchen zu</g> means the same as 'nicht müssen' (no obligation). It requires an infinitive clause with <g>zu</g> at the end.<br>Example: Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>.",
       "uk": "Конструкція <g>nicht brauchen zu</g> означає те саме, що й 'nicht müssen' (немає потреби щось робити, не обов'язково). Вона використовується з інфінітивом та часткою <g>zu</g> в кінці речення.<br>Приклад: Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>.",
       "ru": "Конструкция <g>nicht brauchen zu</g> означает то же самое, что и 'nicht müssen' (нет необходимости что-то делать, не обязательно). Она используется с инфинитивом и частицей <g>zu</g> в конце предложения.<br>Пример: Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>."
+    },
+    "rule": {
+      "de": "<b>nicht brauchen zu</b><br><table><tr><th>Konstruktion</th><th>Bedeutung</th></tr><tr><td><g>nicht müssen</g></td><td>keine Pflicht</td></tr><tr><td><g>nicht brauchen zu</g> + Infinitiv</td><td>keine Pflicht (gleiche Bedeutung)</td></tr></table><br><b>Beispiele</b><br>Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Du musst nicht arbeiten.)<br>Sie <g>braucht</g> das <g>nicht zu erklären</g>.<br><br><b>Tipp:</b> Diese Form ist etwas formeller und wird oft mit <g>nur</g> kombiniert: Du brauchst nur anzurufen.",
+      "en": "",
+      "uk": "<b>nicht brauchen zu</b><br><table><tr><th>Конструкція</th><th>Значення</th></tr><tr><td><g>nicht müssen</g></td><td>немає обов'язку</td></tr><tr><td><g>nicht brauchen zu</g> + інфінітив</td><td>немає обов'язку (те саме значення)</td></tr></table><br><b>Приклади</b><br>Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Тобі сьогодні не обов'язково працювати.)<br>Sie <g>braucht</g> das <g>nicht zu erklären</g>. (Їй не потрібно це пояснювати.)<br><br><b>Порада:</b> Ця форма трохи офіційніша і часто поєднується з <g>nur</g>: Du brauchst nur anzurufen. (Тобі достатньо просто зателефонувати.)",
+      "ru": ""
     }
   },
   {
@@ -580,6 +724,12 @@ var GRAMMAR = [
       "en": "The connector <g>während</g> connects two actions that happen at the exact same time (simultaneously). In this subordinate clause, the verb goes to the end.<br>Example: <g>Während</g> ich koche, <g>hört</g> mein Mann Musik.",
       "uk": "Сполучник <g>während</g> поєднує дві дії, які відбуваються абсолютно одночасно (поки, в той час як, тоді як). Це підрядне речення, тому змінюване дієслово стоїть у кінці.<br>Приклад: <g>Während</g> ich koche, <g>hört</g> mein Mann Musik.",
       "ru": "Союз <g>während</g> соединяет два действия, которые происходят абсолютно одновременно (в то время как, пока). Это придаточное предложение, поэтому спрягаемый глагол стоит в конце.<br>Пример: <g>Während</g> ich koche, <g>hört</g> mein Mann Musik."
+    },
+    "rule": {
+      "de": "<b>Nebensatz mit während</b><br>Der Konnektor <g>während</g> zeigt: zwei Handlungen passieren gleichzeitig (simultan).<br><br><table><tr><th>Nebensatz</th><th>Hauptsatz</th></tr><tr><td><g>Während</g> ich koche,</td><td><g>hört</g> mein Mann Musik.</td></tr></table><br>Das konjugierte Verb steht wie immer am Ende des Nebensatzes.<br><br><b>Beispiele</b><br><g>Während</g> ich koche, <g>hört</g> mein Mann Musik.<br>Mein Mann hört Musik, <g>während</g> ich <g>koche</g>. (Hauptsatz zuerst)<br><br><b>Zweite Bedeutung:</b> <g>während</g> kann auch einen Kontrast ausdrücken (im Gegensatz dazu): Er ist faul, während sie sehr fleißig ist.",
+      "en": "",
+      "uk": "<b>Підрядне речення з während</b><br>Сполучник <g>während</g> показує: дві дії відбуваються одночасно (симультанно).<br><br><table><tr><th>Підрядне</th><th>Головне</th></tr><tr><td><g>Während</g> ich koche,</td><td><g>hört</g> mein Mann Musik.</td></tr></table><br>Змінюване дієслово, як завжди, стоїть у кінці підрядного речення.<br><br><b>Приклади</b><br><g>Während</g> ich koche, <g>hört</g> mein Mann Musik. (Поки я готую, мій чоловік слухає музику.)<br>Mein Mann hört Musik, <g>während</g> ich <g>koche</g>. (головне спочатку)<br><br><b>Друге значення:</b> <g>während</g> може також виражати контраст (тоді як, натомість): Er ist faul, während sie sehr fleißig ist. (Він лінивий, тоді як вона дуже старанна.)",
+      "ru": ""
     }
   },
   {
@@ -590,6 +740,12 @@ var GRAMMAR = [
       "en": "Indefinite pronouns (<g>jemand, niemand, alles</g>) refer to unspecified people  /  things. Possessive pronouns (<g>meins, deins</g>) can fully replace a noun if it has already been mentioned.<br>Example: Ist das dein Stift? Nein, das ist <g>meins</g>.",
       "uk": "Неозначені займенники (<g>jemand, niemand, alles, etwas</g>) вказують на невизначених осіб чи предмети. Присвійні займенники в абсолютній формі (<g>meins, deins</g>) можуть повністю замінювати іменник, якщо він уже відомий з контексту.<br>Приклад: Ist das dein Stift? Nein, das ist <g>meins</g> (Ні, це моє).",
       "ru": "Неопределенные местоимения (<g>jemand, niemand, alles, etwas</g>) указывают на неопределенных лиц или предметы. Притяжательные местоимения в абсолютной форме (<g>meins, deins</g>) могут полностью заменять существительное, если оно уже известно из контекста.<br>Пример: Ist das dein Stift? Nein, das ist <g>meins</g> (Нет, это мое)."
+    },
+    "rule": {
+      "de": "<b>Indefinitpronomen und Possessivpronomen</b><br><table><tr><th>Typ</th><th>Beispiele</th></tr><tr><td>Indefinitpronomen</td><td><g>jemand, niemand, etwas, alles</g></td></tr><tr><td>Possessivpronomen (absolut)</td><td><g>meins, deins, seins, ihrs</g></td></tr></table><br>Indefinitpronomen ersetzen eine unbestimmte Person oder Sache. Possessivpronomen in dieser Form ersetzen ein ganzes Nomen, wenn es schon bekannt ist.<br><br><b>Beispiele</b><br><g>Jemand</g> hat angerufen.<br>Ich habe <g>nichts</g> gehört.<br>Ist das dein Stift? Nein, das ist <g>meins</g>.",
+      "en": "",
+      "uk": "<b>Неозначені та присвійні займенники</b><br><table><tr><th>Тип</th><th>Приклади</th></tr><tr><td>Неозначені займенники</td><td><g>jemand, niemand, etwas, alles</g></td></tr><tr><td>Присвійні займенники (абсолютна форма)</td><td><g>meins, deins, seins, ihrs</g></td></tr></table><br>Неозначені займенники вказують на невизначену особу чи предмет. Присвійні займенники в цій формі замінюють цілий іменник, якщо він уже відомий.<br><br><b>Приклади</b><br><g>Jemand</g> hat angerufen. (Хтось телефонував.)<br>Ich habe <g>nichts</g> gehört. (Я нічого не чув.)<br>Ist das dein Stift? Nein, das ist <g>meins</g>. (Це твоя ручка? Ні, це моя.)",
+      "ru": ""
     }
   },
   {
@@ -600,6 +756,12 @@ var GRAMMAR = [
       "en": "The suffix <g>-chen</g> is used to make things sound smaller or cuter (diminutive). These nouns are always neutral (<g>das</g>) and the stem vowel often gets an umlaut.<br>Example: das Brot -> <g>das Brötchen</g>, die Katze -> <g>das Kätzchen</g>.",
       "uk": "Суфікс <g>-chen</g> використовується для утворення зменшувально-пестливих форм (димінутивів). Такі слова завжди мають середній рід (<g>das</g>), а коренева голосна зазвичай отримує умлаут.<br>Приклад: das Brot -> <g>das Brötchen</g> (булочка), die Katze -> <g>das Kätzchen</g> (кошеня).",
       "ru": "Суффикс <g>-chen</g> используется для образования уменьшительно-ласкательных форм (диминутивов). Такие слова всегда имеют средний род (<g>das</g>), а корневая гласная обычно получает умлаут.<br>Пример: das Brot -> <g>das Brötchen</g> (булочка), die Katze -> <g>das Kätzchen</g> (кошечка)."
+    },
+    "rule": {
+      "de": "<b>Wortbildung: Nomen auf -chen</b><br><table><tr><th>Nomen</th><th>Diminutiv</th></tr><tr><td>das Brot</td><td><g>das Brötchen</g></td></tr><tr><td>die Katze</td><td><g>das Kätzchen</g></td></tr><tr><td>das Haus</td><td><g>das Häuschen</g></td></tr></table><br><b>Regel:</b> Alle Nomen mit <g>-chen</g> sind IMMER <g>neutral</g> (das), auch wenn das Ursprungswort ein anderes Genus hatte. Der Stammvokal bekommt oft einen Umlaut (a->ä, o->ö, u->ü).<br><br><b>Beispiele</b><br><g>Das Brötchen</g> schmeckt frisch.<br>Was für ein süßes <g>Kätzchen</g>!",
+      "en": "",
+      "uk": "<b>Словотвір: іменники на -chen</b><br><table><tr><th>Іменник</th><th>Зменшувальна форма</th></tr><tr><td>das Brot</td><td><g>das Brötchen</g></td></tr><tr><td>die Katze</td><td><g>das Kätzchen</g></td></tr><tr><td>das Haus</td><td><g>das Häuschen</g></td></tr></table><br><b>Правило:</b> Усі іменники з <g>-chen</g> ЗАВЖДИ <g>середнього роду</g> (das), навіть якщо початкове слово мало інший рід. Коренева голосна часто отримує умлаут (a->ä, o->ö, u->ü).<br><br><b>Приклади</b><br><g>Das Brötchen</g> schmeckt frisch. (Булочка смачна свіжа.)<br>Was für ein süßes <g>Kätzchen</g>! (Яке миле кошеня!)",
+      "ru": ""
     }
   },
   {
@@ -610,6 +772,12 @@ var GRAMMAR = [
       "en": "Plusquamperfekt is used for an action that happened BEFORE another past event (past perfect). Structure: simple past of haben  /  sein (<g>hatte  /  war</g>) + <g>Partizip II</g>.<br>Example: Nachdem ich gegessen <g>hatte</g>, ging ich schlafen.",
       "uk": "Плюсквамперфект (передминулий час) описує дію, яка відбулася ЩЕ РАНІШЕ за іншу подію в минулому. Структура: дієслово haben  /  sein у претериті (<g>hatte  /  war</g>) + <g>Partizip II</g> основного дієслова в кінці.<br>Приклад: Nachdem ich gegessen <g>hatte</g>, ging ich schlafen (Після того як я поїв [спочатку], я пішов спати [потім]).",
       "ru": "Плюсквамперфект (преждепрошедшее время) описывает действие, которое произошло ЕЩЕ РАНЬШЕ другого события в прошлом. Структура: глагол haben  /  sein в претерите (<g>hatte  /  war</g>) + <g>Partizip II</g> основного глагола в конце.<br>Пример: Nachdem ich gegessen <g>hatte</g>, ging ich schlafen (После того как я поел [сначала], я пошел спать [потом])."
+    },
+    "rule": {
+      "de": "<b>Plusquamperfekt</b><br><table><tr><th>Zeitstufe</th><th>Beispiel</th></tr><tr><td>1. zuerst (Plusquamperfekt)</td><td>Ich <g>hatte</g> gegessen.</td></tr><tr><td>2. danach (Präteritum)</td><td>Ich ging schlafen.</td></tr></table><br><b>Bildung</b><br>Präteritum von <g>haben</g> oder <g>sein</g> (<g>hatte / war</g>) + <g>Partizip II</g> am Ende.<br><br><b>Beispiele</b><br>Nachdem ich gegessen <g>hatte</g>, ging ich schlafen.<br>Sie <g>war</g> schon <g>gegangen</g>, als ich ankam.<br><br><b>Gebrauch:</b> Nur für die noch frühere Vorvergangenheit — meist zusammen mit <g>nachdem</g>.",
+      "en": "",
+      "uk": "<b>Плюсквамперфект (передминулий час)</b><br><table><tr><th>Часовий рівень</th><th>Приклад</th></tr><tr><td>1. спочатку (Plusquamperfekt)</td><td>Ich <g>hatte</g> gegessen.</td></tr><tr><td>2. потім (Präteritum)</td><td>Ich ging schlafen.</td></tr></table><br><b>Утворення</b><br>Претерит дієслова <g>haben</g> або <g>sein</g> (<g>hatte / war</g>) + <g>Partizip II</g> у кінці.<br><br><b>Приклади</b><br>Nachdem ich gegessen <g>hatte</g>, ging ich schlafen. (Після того як я поїв, я пішов спати.)<br>Sie <g>war</g> schon <g>gegangen</g>, als ich ankam. (Вона вже пішла, коли я прийшов.)<br><br><b>Вживання:</b> Лише для ще давнішої минулої дії — зазвичай разом зі сполучником <g>nachdem</g>.",
+      "ru": ""
     }
   },
   {
@@ -620,6 +788,12 @@ var GRAMMAR = [
       "en": "An infinitive verb can be used directly as a noun. It is always neutral (<g>das</g>) and capitalized. It usually describes general activities.<br>Example: <g>Das Rauchen</g> ist hier verboten. <g>Das Lesen</g> macht Spaß.",
       "uk": "Інфінітив дієслова можна напряму вживати як іменник. Таке слово завжди середнього роду (<g>das</g>) і пишеться з великої літери, позначаючи процес взагалі.<br>Приклад: <g>Das Rauchen</g> ist hier verboten (Куріння тут заборонено). <g>Das Lesen</g> macht Spaß (Читати приносить задоволення).",
       "ru": "Инфинитив глагола можно напрямую употреблять как существительное. Такое слово всегда среднего рода (<g>das</g>) и пишется с большой буквы, обозначая процесс вообще.<br>Пример: <g>Das Rauchen</g> ist hier verboten (Курение здесь запрещено). <g>Das Lesen</g> macht Spaß (Чтение приносит удовольствие)."
+    },
+    "rule": {
+      "de": "<b>Infinitiv als Nomen</b><br><table><tr><th>Infinitiv</th><th>Nomen</th></tr><tr><td>rauchen</td><td><g>das Rauchen</g></td></tr><tr><td>lesen</td><td><g>das Lesen</g></td></tr></table><br><b>Regel:</b> Der Infinitiv wird großgeschrieben und bekommt immer den Artikel <g>das</g>. Er beschreibt allgemeine Aktivitäten oder Prozesse.<br><br><b>Beispiele</b><br><g>Das Rauchen</g> ist hier verboten.<br><g>Das Lesen</g> macht Spaß.<br><br><b>Tipp:</b> Diese Konstruktion ist eine Alternative zu Verben mit zu: Rauchen verboten! = Es ist verboten zu rauchen.",
+      "en": "",
+      "uk": "<b>Інфінітив як іменник</b><br><table><tr><th>Інфінітив</th><th>Іменник</th></tr><tr><td>rauchen</td><td><g>das Rauchen</g></td></tr><tr><td>lesen</td><td><g>das Lesen</g></td></tr></table><br><b>Правило:</b> Інфінітив пишеться з великої літери й завжди отримує артикль <g>das</g>. Він позначає загальну діяльність або процес.<br><br><b>Приклади</b><br><g>Das Rauchen</g> ist hier verboten. (Куріння тут заборонено.)<br><g>Das Lesen</g> macht Spaß. (Читання приносить задоволення.)<br><br><b>Порада:</b> Ця конструкція — альтернатива дієсловам з zu: Rauchen verboten! = Es ist verboten zu rauchen.",
+      "ru": ""
     }
   },
   {
@@ -630,6 +804,12 @@ var GRAMMAR = [
       "en": "The connector <g>nachdem</g> shows that one action happens before another. If the main clause is in the simple past, the nachdem-clause MUST use <g>Plusquamperfekt</g>.<br>Example: <g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball.",
       "uk": "Сполучник <g>nachdem</g> означає 'після того як' і вимагає узгодження часів. Якщо головне речення стоїть у минулому часі Präteritum, то підрядне після <g>nachdem</g> обов'язково має стояти в передминулому <g>Plusquamperfekt</g>.<br>Приклад: <g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball.",
       "ru": "Союз <g>nachdem</g> означает 'после того как' и требует согласования времен. Если главное предложение стоит в прошедшем времени Präteritum, то придаточное после <g>nachdem</g> обязательно должно стоять в преждепрошедшем <g>Plusquamperfekt</g>.<br>Пример: <g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball."
+    },
+    "rule": {
+      "de": "<b>Nebensatz mit nachdem</b><br><table><tr><th>Hauptsatz-Zeit</th><th>nachdem-Satz-Zeit</th></tr><tr><td>Präsens</td><td>Perfekt</td></tr><tr><td>Präteritum</td><td><g>Plusquamperfekt</g></td></tr></table><br><b>Regel:</b> Die Handlung im <g>nachdem</g>-Satz passiert VOR der Handlung im Hauptsatz — deshalb steht sie in einer früheren Zeitstufe.<br><br><b>Beispiele</b><br><g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball. (Plusquamperfekt -> Präteritum)<br><g>Nachdem</g> ich gegessen <g>habe</g>, gehe ich spazieren. (Perfekt -> Präsens)<br><br><b>Achtung:</b> Anders als bei den meisten Nebensätzen ist bei <g>nachdem</g> die Zeitform sehr wichtig!",
+      "en": "",
+      "uk": "<b>Підрядне речення з nachdem</b><br><table><tr><th>Час у головному</th><th>Час у nachdem-реченні</th></tr><tr><td>Präsens</td><td>Perfekt</td></tr><tr><td>Präteritum</td><td><g>Plusquamperfekt</g></td></tr></table><br><b>Правило:</b> Дія у підрядному з <g>nachdem</g> відбувається РАНІШЕ за дію в головному реченні — тому вона стоїть в раніший часовий рівень.<br><br><b>Приклади</b><br><g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball. (Plusquamperfekt -> Präteritum. Після того як він зробив домашнє завдання, він грав у футбол.)<br><g>Nachdem</g> ich gegessen <g>habe</g>, gehe ich spazieren. (Perfekt -> Präsens. Після того як я поїм, я піду гуляти.)<br><br><b>Увага:</b> На відміну від більшості підрядних речень, у <g>nachdem</g> дуже важливий узгоджений час!",
+      "ru": ""
     }
   },
   {
