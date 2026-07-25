@@ -2171,6 +2171,7 @@ body.lesson-active .vocab-top{
         <div class="lr-sub" id="lr-sub"></div>
         <div class="lr-stats" id="lr-stats"></div>
         <button class="lr-btn-primary" id="lr-btn-next" onclick="startNextLesson()"></button>
+        <button class="lr-btn-secondary" id="lr-btn-vocab" onclick="openLessonDictionaryFromResult()" style="display:none"></button>
         <button class="lr-btn-secondary" id="lr-btn-list" onclick="exitLessonFlow()"></button>
       </div>
 
@@ -2621,7 +2622,7 @@ body.lesson-active .vocab-top{
     <span class="bn-icon">★</span><span id="bn-favs-label">Закладки</span>
     <span class="bn-badge" id="nb-favs">0</span>
   </button>
-  <button class="bn-item" onclick="showView('vocab')" data-view="vocab">
+  <button class="bn-item" onclick="openMainDictionary()" data-view="vocab">
     <span class="bn-icon">📖</span><span id="bn-vocab-label">Словник</span>
   </button>
   <button class="bn-item" onclick="showView('sb')" data-view="sb">
@@ -2645,7 +2646,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '391-41c0b2d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3314,6 +3315,12 @@ let V={
   srsRating:  null,  // поточна оцінка SM-2 (1/3/5), null = ще не оцінено
   lessonId:   null,  // id активного уроку або null
   lessonCards: [],   // картки активного уроку
+  // Скоуп Словника, коли його відкрито НЕ з нижнього меню, а з конкретного
+  // місця — після уроку (лише картки цього уроку), з блоку "Повторення
+  // глави" (картки всієї глави) чи "Повторення курсу" (картки всього
+  // курсу). null = без фільтра, звичайний Словник (увесь VOCAB курсу).
+  filterIds:   null, // Set<string> vocab id, або null
+  filterLabel: null, // текст для тосту ("📚 Назва уроку/глави")
 };
 
 // Повертає {normal, slow} — рядки-відсотки з AUDIO_CONFIG[primaryLang()],
@@ -5163,6 +5170,7 @@ function buildVocabQueue(){
   // всі картки уроку без обмеження 5-ти і ламала lesson flow.
   const cf=document.getElementById('vf-cat')?.value||'all';
   let arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
+  if(V.filterIds) arr = arr.filter(v=>V.filterIds.has(v.id));
   if(V.mode==='srs'){
     // SM-2: спочатку прострочені та нові, потім за пріоритетом.
     //
@@ -6335,10 +6343,11 @@ function renderLernpfad(){
         <div class="lp-chapter-arrow">▼</div>
       </div>
       <div class="lp-modules">
-        ${ch.modules.map(m=>renderModuleCard(m)+renderGrammarBonusCard(m)).join('')}
+        ${ch.modules.map(m=>renderModuleCard(m)+renderGrammarBonusCard(m)+renderModuleVocabCard(m)).join('')}
         ${reviewHtml}
         ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
         ${renderChapterDialogueBonusCard(ch.num, dlgBonusUnlocked)}
+        ${renderChapterVocabCard(ch.num, reviewUnlocked)}
       </div>`;
     container.appendChild(chEl);
   });
@@ -6368,7 +6377,7 @@ function renderLernpfad(){
       </div>
       <div class="lp-chapter-arrow">▼</div>
     </div>
-    <div class="lp-modules">${courseRevCard}</div>`;
+    <div class="lp-modules">${courseRevCard}${renderCourseVocabCard(allChapterNums, courseUnlocked)}</div>`;
   container.appendChild(courseReviewEl);
 
   // Оновлюємо label навбару
@@ -6462,6 +6471,40 @@ function renderGrammarBonusCard(lesson){
   </div>`;
 }
 
+// Опційна картка "Бонус: Словник" одного модуля — та сама умова
+// розблокування, що й "Бонус: Граматика" (lessonUnlocked), і сама відразу
+// показується поруч з нею в Шляху. Відкриває Словник (🃏+📋), обмежений
+// лише картками ЦЬОГО модуля.
+function renderModuleVocabCard(lesson){
+  if(!lessonUnlocked(lesson)) return '';
+  if(!(lesson.cardIds||[]).length) return '';
+  const label = {
+    de:'Bonus: Wörterbuch', uk:'Бонус: Словник',
+    en:'Bonus: Dictionary', ru:'Бонус: Словарь',
+  }[uiLang] || 'Bonus: Wörterbuch';
+  const sub = {
+    de: lesson.cardIds.length+' Karten', uk: lesson.cardIds.length+' карток',
+    en: lesson.cardIds.length+' cards',  ru: lesson.cardIds.length+' карточек',
+  }[uiLang] || lesson.cardIds.length+' Karten';
+  return `<div class="lp-module lp-module-bonus" onclick="startModuleVocabBonus('${lesson.id}')">
+    <div class="lp-module-icon">📖</div>
+    <div class="lp-module-body">
+      <div class="lp-module-title">${label}</div>
+      <div class="lp-module-meta">${sub}</div>
+    </div>
+  </div>`;
+}
+function startModuleVocabBonus(lessonId){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const lesson  = lessons.find(l=>l.id===lessonId);
+  if(!lesson) return;
+  const label = {
+    de:'Bonus: Wörterbuch', uk:'Бонус: Словник',
+    en:'Bonus: Dictionary', ru:'Бонус: Словарь',
+  }[uiLang] || 'Bonus: Wörterbuch';
+  openVocabDictionary(lesson.cardIds||[], label);
+}
+
 // Опційна картка "Бонус: Граматика" усієї глави — той самий принцип,
 // але пул охоплює ВСІ теми граматики глави (union тем модулів, кожна —
 // через getModuleGrammarTopic, тобто з успадкуванням для продовжувальних
@@ -6514,6 +6557,76 @@ function renderChapterDialogueBonusCard(chapterNum, unlocked){
   </div>`;
 }
 
+// Картка "Словник" у блоці Повторення глави — відкриває звичайний Словник
+// (🃏 картки + 📋 список, той самий вигляд, що й з нижнього меню), але
+// обмежений картками ВСІЄЇ глави (усі уроки з номером chapterNum), а не
+// лише поточної SM-2-сесії повторення. Видима за тих самих умов, що й
+// сама картка "Повторення" (unlocked), і лише якщо в главі є картки.
+function renderChapterVocabCard(chapterNum, unlocked){
+  if(!unlocked) return '';
+  const ids = _reviewDictionaryCardIds([chapterNum]);
+  if(!ids.length) return '';
+  const label = {
+    de:'Wörterbuch: Kapitel', uk:'Словник глави',
+    en:'Chapter dictionary',  ru:'Словарь главы',
+  }[uiLang] || 'Wörterbuch: Kapitel';
+  const sub = {
+    de: ids.length+' Karten', uk: ids.length+' карток',
+    en: ids.length+' cards',  ru: ids.length+' карточек',
+  }[uiLang] || ids.length+' Karten';
+  // onclick викликає wrapper з числовим аргументом (chapterNum) — без
+  // інлайнових масивів/JSON в атрибуті, щоб не боротись з екрануванням
+  // лапок; ids/label wrapper перераховує сам у момент кліку.
+  return `<div class="lp-module lp-module-bonus" onclick="startChapterVocabView(${chapterNum})">
+    <div class="lp-module-icon">📖</div>
+    <div class="lp-module-body">
+      <div class="lp-module-title">${label}</div>
+      <div class="lp-module-meta">${sub}</div>
+    </div>
+  </div>`;
+}
+function startChapterVocabView(chapterNum){
+  const label = {
+    de:'Wörterbuch: Kapitel', uk:'Словник глави',
+    en:'Chapter dictionary',  ru:'Словарь главы',
+  }[uiLang] || 'Wörterbuch: Kapitel';
+  openVocabDictionary(_reviewDictionaryCardIds([chapterNum]), label);
+}
+
+// Те саме, але для блоку Повторення курсу — картки з УСІХ розділів курсу.
+function renderCourseVocabCard(chapterNums, unlocked){
+  if(!unlocked) return '';
+  const ids = _reviewDictionaryCardIds(chapterNums);
+  if(!ids.length) return '';
+  const label = {
+    de:'Wörterbuch: Kurs', uk:'Словник курсу',
+    en:'Course dictionary', ru:'Словарь курса',
+  }[uiLang] || 'Wörterbuch: Kurs';
+  const sub = {
+    de: ids.length+' Karten', uk: ids.length+' карток',
+    en: ids.length+' cards',  ru: ids.length+' карточек',
+  }[uiLang] || ids.length+' Karten';
+  return `<div class="lp-module lp-module-bonus" onclick="startCourseVocabView()">
+    <div class="lp-module-icon">📖</div>
+    <div class="lp-module-body">
+      <div class="lp-module-title">${label}</div>
+      <div class="lp-module-meta">${sub}</div>
+    </div>
+  </div>`;
+}
+// Wrapper для курсу: сам перераховує повний список глав з LESSONS (не
+// покладається на closure renderLernpfad) — так само безпечно викликати
+// з onclick без аргументів.
+function startCourseVocabView(){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const allNums = [...new Set(lessons.map(l=>l.chapter))];
+  const label = {
+    de:'Wörterbuch: Kurs', uk:'Словник курсу',
+    en:'Course dictionary', ru:'Словарь курса',
+  }[uiLang] || 'Wörterbuch: Kurs';
+  openVocabDictionary(_reviewDictionaryCardIds(allNums), label);
+}
+
 
 function startLesson(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
@@ -6542,6 +6655,76 @@ function startLesson(lessonId){
   showView('vocab');
   renderVocabCard();
   notify('📚 '+(lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de));
+}
+
+// Знімає скоуп Словника (V.filterIds/filterLabel) — повертає звичайний
+// Словник з усіма картками курсу. Викликається при явному переході в
+// Словник з нижнього меню (openMainDictionary), а також при виході з
+// lesson-flow, щоб скоуп не "прилипав" до наступного відкриття.
+function clearVocabFilter(){
+  V.filterIds   = null;
+  V.filterLabel = null;
+}
+
+// Явний вхід у Словник з нижнього меню — завжди без фільтра, увесь VOCAB
+// поточного курсу (навіть якщо до цього був відкритий скоуп уроку/глави/курсу).
+function openMainDictionary(){
+  clearVocabFilter();
+  showView('vocab');
+}
+
+// Відкриває Словник (той самий вигляд — 🃏 картки + 📋 список — що й з
+// нижнього меню), але обмежений заданим набором id карток: після уроку —
+// лише картки цього уроку, у "Повторенні глави" — картки всієї глави, у
+// "Повторенні курсу" — картки всього курсу. cardIds — масив/ітерований
+// набір id; label — назва для тосту-підказки (опційно).
+function openVocabDictionary(cardIds, label){
+  const vocab = typeof VOCAB!=='undefined' ? VOCAB : [];
+  const idSet = new Set(cardIds||[]);
+  const filtered = vocab.filter(v=>idSet.has(v.id));
+  if(!filtered.length){
+    notify('⚠️ '+(uiLang==='uk'?'Немає карток':uiLang==='ru'?'Нет карточек':uiLang==='en'?'No cards':'Keine Karten'));
+    return;
+  }
+
+  stopVocab();
+
+  V.filterIds   = idSet;
+  V.filterLabel = label||null;
+  V.queue       = [...filtered].sort(()=>Math.random()-.5);
+  V.idx         = 0;
+  V.repeatCount = 0;
+  V.flipped     = false;
+
+  showView('vocab');
+
+  // Якщо викликано з екрана результату уроку (lfShowResult ховає всі
+  // панелі Словника й показує #lesson-result замість них) — явно
+  // повертаємо видимість картки й активну вкладку 🃏, інакше картка
+  // рендериться, але лишається невидимою під результатом уроку.
+  document.getElementById('lesson-result')?.classList.remove('show');
+  ['vocab-panel-match','vocab-panel-choice','vocab-panel-tiles',
+   'vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-speech'].forEach(pid=>{
+    const el=document.getElementById(pid); if(el) el.style.display='none';
+  });
+  const cardPanel = document.getElementById('vocab-panel-card');
+  if(cardPanel) cardPanel.style.display='flex';
+  document.querySelectorAll('.vtab').forEach((t,i)=>t.classList.toggle('active', i===0));
+
+  renderVocabCard();
+  if(label) notify('📚 '+label);
+}
+
+// Збирає унікальні cardIds усіх уроків заданих глав (розділів) — той самий
+// набір, що йде в SRS-урок "Повторення" (startReviewLesson), але тут для
+// звичайного перегляду Словником (без SM-2-сесії).
+function _reviewDictionaryCardIds(chapterNums){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const ids = new Set();
+  lessons.filter(l=>chapterNums.includes(l.chapter)).forEach(l=>{
+    (l.cardIds||[]).forEach(id=>ids.add(id));
+  });
+  return [...ids];
 }
 
 
@@ -8704,7 +8887,12 @@ function lfSetLessonMode(active){
   const vtabs     = document.getElementById('vocab-tabs');
   const bottomNav = document.getElementById('bottom-nav');
   const sortBtn   = document.getElementById('vshuffle-btn');
-  if(vchips)    vchips.style.display    = active ? 'none' : '';
+  // vchips: як і в switchVocabTab — показуємо лише коли реально відкрита
+  // вкладка 📋 (Список) І Словник НЕ обмежений скоупом (V.filterIds) —
+  // інакше цей виклик (наприклад, при виході з lesson-flow) знову
+  // безумовно показував би чіпси поверх уже відфільтрованого списку.
+  const browseTabOpen = document.getElementById('vocab-panel-browse')?.style.display !== 'none';
+  if(vchips)    vchips.style.display    = (active || !browseTabOpen || V.filterIds) ? 'none' : '';
   if(vtabs)     vtabs.style.display     = active ? 'none' : '';
   if(bottomNav) bottomNav.style.display = active ? 'none' : '';
   if(sortBtn)   sortBtn.style.display   = active ? 'none' : '';
@@ -10228,8 +10416,17 @@ function lfShowResult(){
   // Заповнюємо кнопки результату
   const btnNext = document.getElementById('lr-btn-next');
   const btnList = document.getElementById('lr-btn-list');
+  const btnVocab = document.getElementById('lr-btn-vocab');
   if(btnNext) btnNext.textContent = t('btn_next_lesson');
   if(btnList) btnList.textContent = t('btn_to_lessons');
+  // Кнопка "Словник" — лише якщо в уроку справді є словникові картки
+  // (звичайний урок або сесія повторення глави/курсу; бонусні
+  // граматика/діалоги cardIds не мають — кнопка для них не показується).
+  const hasVocabCards = !!(LF.lesson?.cardIds && LF.lesson.cardIds.length);
+  if(btnVocab){
+    btnVocab.style.display = hasVocabCards ? '' : 'none';
+    btnVocab.textContent = '📖 ' + (uiLang==='uk'?'Словник':uiLang==='ru'?'Словарь':uiLang==='en'?'Dictionary':'Wörterbuch');
+  }
 
   // Якщо щойно запустилась повноекранна анімація стріку
   // (showStreakCelebration, ~2200мс) — ховаємо кнопки "Наступний
@@ -10238,12 +10435,26 @@ function lfShowResult(){
   // збільшився (уже був урок сьогодні) — кнопки показуються одразу.
   if(btnNext) btnNext.style.visibility = celebrationPending ? 'hidden' : 'visible';
   if(btnList) btnList.style.visibility = celebrationPending ? 'hidden' : 'visible';
+  if(btnVocab) btnVocab.style.visibility = celebrationPending ? 'hidden' : 'visible';
   if(celebrationPending){
     setTimeout(()=>{
       if(btnNext) btnNext.style.visibility = 'visible';
       if(btnList) btnList.style.visibility = 'visible';
+      if(btnVocab) btnVocab.style.visibility = 'visible';
     }, 2300);
   }
+}
+
+// Кнопка "📖 Словник" на екрані результату уроку — відкриває Словник,
+// обмежений картками ЩОЙНО пройденого уроку (LF.lesson.cardIds). Working
+// зі звичайними уроками, а також із сесіями "Повторення глави"/"Повторення
+// курсу" (їхній синтетичний lesson теж має cardIds — усі картки
+// відповідних розділів), LF ще не скинутий на цьому екрані.
+function openLessonDictionaryFromResult(){
+  if(!LF || !LF.lesson) return;
+  const title = LF.lesson.title;
+  const label = title?.[uiLang] || title?.[primaryLang()] || title?.en || title?.de || null;
+  openVocabDictionary(LF.lesson.cardIds || [], label);
 }
 
 // Smart Review: тегування VOCAB карток полем examPart за категорією
@@ -10593,7 +10804,7 @@ function abandonLessonFlow(){
   stopVocab();
   sbStopPlay();
   LF = null;
-  V.lessonId = null; V.lessonCards = [];
+  V.lessonId = null; V.lessonCards = []; clearVocabFilter();
   V.queue = []; V.idx = 0;
   quizState = null;
   _lfUnitPlayToken++;
@@ -10657,7 +10868,7 @@ function exitLessonFlow(){
   stopVocab();
   sbStopPlay();
   LF = null;
-  V.lessonId = null; V.lessonCards = [];
+  V.lessonId = null; V.lessonCards = []; clearVocabFilter();
   V.queue = []; V.idx = 0;
   quizState = null;
   // Прибираємо vocab unit-step UI (lfRunUnitStep) — на випадок виходу з
@@ -10831,7 +11042,7 @@ function _goToLessonOrExit(lesson){
   // перед showView('vocab') — це ламає autoplay при першому натисканні.
   // Робимо мінімальне скидання стану вручну:
   LF = null;
-  V.lessonId = null; V.lessonCards = [];
+  V.lessonId = null; V.lessonCards = []; clearVocabFilter();
   quizState = null;
   const bar = document.getElementById('lesson-flow-bar');
   if(bar) bar.classList.remove('active');
@@ -11774,7 +11985,10 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
-  const chips=document.getElementById('vchips'); if(chips) chips.style.display = tab===1?'':'none';
+  // Чіпси категорій — лише у вкладці 📋, і лише коли Словник НЕ обмежений
+  // скоупом (урок/глава/курс, V.filterIds) — там картки й так уже
+  // відфільтровані, і чіпси лише плутатимуть (можуть звузити список до 0).
+  const chips=document.getElementById('vchips'); if(chips) chips.style.display = (tab===1 && !V.filterIds)?'':'none';
   // Автозапуск озвучення/рендеру під-вкладки має сенс лише коли вкладку
   // Vocab РЕАЛЬНО видно користувачу. switchVocabTab() також викликається
   // як службова "скинути стан на індекс 0" утиліта з initVocab() (при
@@ -11794,7 +12008,16 @@ function switchVocabTab(tab){
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
-  const items=VOCAB.filter(v=>cf==='all'||v.cat===cf);const dl=getActiveLangs()[0]||primaryLang();
+  let items=VOCAB.filter(v=>cf==='all'||v.cat===cf);
+  if(V.filterIds) items = items.filter(v=>V.filterIds.has(v.id));
+  const dl=getActiveLangs()[0]||primaryLang();
+  if(!items.length){
+    document.getElementById('vocab-browse-grid').innerHTML =
+      `<p style="text-align:center;padding:24px;color:var(--muted)">${
+        uiLang==='uk'?'Немає карток':uiLang==='ru'?'Нет карточек':uiLang==='en'?'No cards':'Keine Karten'
+      }</p>`;
+    return;
+  }
   document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>
     renderMiniCardRow(v.cat, v.term?.[dl]||v.term?.[primaryLang()]||'', v.short?.[dl]||v.short?.[primaryLang()]||'', `openVocabCard(${VOCAB.indexOf(v)})`)
   ).join('');
