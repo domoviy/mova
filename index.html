@@ -2645,7 +2645,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '388-1d20f30';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2805,8 +2805,9 @@ async function switchCourse(courseId){
     document.querySelectorAll('.course-btn').forEach(b=>{
       b.classList.toggle('active', b.dataset.course===courseId);
     });
-    // Обнуляємо денний лічильник — streak рахується окремо для кожного курсу
-    // зберігаємо попередній streak і починаємо новий відлік
+    // Стрік тепер єдиний на весь застосунок (mova_app_streak) — просто
+    // перемальовуємо UI, щоб хедер одразу показав актуальне число.
+    if(typeof renderStreakUI === 'function') renderStreakUI();
     const todayKey='mova_today_'+new Date().toISOString().slice(0,10)+'_'+courseId;
     if(!localStorage.getItem(todayKey)){
       // Перший раз відкриваємо цей курс сьогодні — обнуляємо daily count в UI
@@ -3426,16 +3427,83 @@ function saveSettings(){
 // ═══════════════════════════════════════════════════════════════════
 // SMART REVIEW — інлайн версія smart_review.js (без ES Modules)
 // ═══════════════════════════════════════════════════════════════════
-// Дата іспиту, subtestStats, streak, daily plan — усе це релевантне лише
+// Дата іспиту, subtestStats, daily plan — усе це релевантне лише
 // для конкретного курсу (напр. telc DTB B2 має сенс для B2-Beruf, але не
 // для Financial-Accounting-Foundations) → стан Smart Review зберігається
 // ОКРЕМО для кожного курсу, під ключем mova_smart_review_<courseId>.
+// Виняток — streak/lastSessionDate: це показник регулярності занять у
+// застосунку ЗАГАЛОМ, тож зберігається окремо, в єдиному mova_app_streak
+// (див. srLoadGlobalStreak/srSaveGlobalStreak/srMigrateStreakToGlobal нижче).
 const SR_STORAGE_KEY_LEGACY = "mova_smart_review"; // єдиний спільний стан до multi-course
 const SR_STORAGE_PREFIX = "mova_smart_review_";
 function srStorageKey(){
   const courseId = (typeof activeCourse !== 'undefined' && activeCourse?.id) || getSavedCourseId();
   return SR_STORAGE_PREFIX + courseId;
 }
+
+// ── ГЛОБАЛЬНИЙ (курсо-незалежний) СТРІК ──────────────────────────
+// Стрік — це показник регулярності занять у застосунку загалом, а не
+// в конкретному курсі, тож зберігаємо його ОКРЕМО від per-course стану
+// Smart Review (cards/examDate/subtestStats лишаються per-course, як і
+// раніше — це справді курсо-специфічні дані).
+const SR_GLOBAL_STREAK_KEY = "mova_app_streak";
+const SR_STREAK_MIGRATED_KEY = "mova_streak_migrated_v1";
+
+function srLoadGlobalStreak(){
+  try{
+    const r = localStorage.getItem(SR_GLOBAL_STREAK_KEY);
+    if(r) return JSON.parse(r);
+  }catch(e){}
+  return {streak:0, lastSessionDate:null};
+}
+function srSaveGlobalStreak(streak, lastSessionDate){
+  try{ localStorage.setItem(SR_GLOBAL_STREAK_KEY, JSON.stringify({streak, lastSessionDate})); }catch(e){}
+}
+
+// Одноразова міграція: до цього стрік зберігався ОКРЕМО в кожному
+// mova_smart_review_<courseId> — курси, пройдені паралельно, мали
+// РІЗНІ числа. Переносимо в єдиний mova_app_streak НАЙБІЛЬШЕ значення
+// серед усіх курсів (щоб ніхто не втратив прогрес), беремо lastSessionDate
+// саме того курсу, де стрік був найбільшим (щоб коректно продовжити
+// відлік "чи вже займались сьогодні"). Старі streak/lastSessionDate
+// видаляємо з per-course стану — джерело правди тепер лише одне.
+function srMigrateStreakToGlobal(){
+  if(localStorage.getItem(SR_STREAK_MIGRATED_KEY)) return;
+  try{
+    let bestStreak = 0, bestDate = null;
+    const keysToClean = [];
+    for(let i=0;i<localStorage.length;i++){
+      const key = localStorage.key(i);
+      if(!key) continue;
+      if(key===SR_STORAGE_KEY_LEGACY || key.indexOf(SR_STORAGE_PREFIX)===0){
+        keysToClean.push(key);
+        try{
+          const st = JSON.parse(localStorage.getItem(key));
+          const s = (st && typeof st.streak==='number') ? st.streak : 0;
+          if(s > bestStreak || (s===bestStreak && st?.lastSessionDate > (bestDate||''))){
+            bestStreak = s;
+            bestDate = st?.lastSessionDate || bestDate;
+          }
+        }catch(e){}
+      }
+    }
+    srSaveGlobalStreak(bestStreak, bestDate);
+    // Прибираємо старі поля з per-course станів — лишаємо решту (cards,
+    // examDate, subtestStats, dailyPlan, examHistory) недоторканими.
+    keysToClean.forEach(key=>{
+      try{
+        const st = JSON.parse(localStorage.getItem(key));
+        if(st && typeof st==='object'){
+          delete st.streak;
+          delete st.lastSessionDate;
+          localStorage.setItem(key, JSON.stringify(st));
+        }
+      }catch(e){}
+    });
+  }catch(e){}
+  try{ localStorage.setItem(SR_STREAK_MIGRATED_KEY,'1'); }catch(e){}
+}
+srMigrateStreakToGlobal();
 
 const SR_EXAM_WEIGHT = {
   Sprachbausteine:1.5, Lesen:1.2, Schreiben:1.2,
@@ -3591,15 +3659,27 @@ let _srStateCacheKey = null;
 
 function srLoadState(){
   const key = srStorageKey();
-  if(_srStateCache !== null && _srStateCacheKey === key) return _srStateCache;
-  try{ const r=localStorage.getItem(key); _srStateCache = r?JSON.parse(r):srDefaultState(); }catch{ _srStateCache = srDefaultState(); }
-  _srStateCacheKey = key;
+  if(_srStateCache === null || _srStateCacheKey !== key){
+    try{ const r=localStorage.getItem(key); _srStateCache = r?JSON.parse(r):srDefaultState(); }catch{ _srStateCache = srDefaultState(); }
+    _srStateCacheKey = key;
+  }
+  // streak/lastSessionDate — курсо-незалежні, завжди підтягуємо з
+  // глобального сховища поверх per-course об'єкта (single source of truth).
+  const g = srLoadGlobalStreak();
+  _srStateCache.streak = g.streak || 0;
+  _srStateCache.lastSessionDate = g.lastSessionDate || null;
   return _srStateCache;
 }
 function srSaveState(s){
   _srStateCache = s;
   _srStateCacheKey = srStorageKey();
-  try{ localStorage.setItem(srStorageKey(), JSON.stringify(s)); }catch(e){}
+  // Зберігаємо глобальний стрік окремо, а з per-course блоба, що йде в
+  // localStorage, прибираємо ці поля — не дублюємо джерело правди.
+  srSaveGlobalStreak(s.streak || 0, s.lastSessionDate || null);
+  const toPersist = Object.assign({}, s);
+  delete toPersist.streak;
+  delete toPersist.lastSessionDate;
+  try{ localStorage.setItem(srStorageKey(), JSON.stringify(toPersist)); }catch(e){}
 }
 function srDefaultState(){
   return {examDate:null, examType:'telc_DTB_B2', cards:{}, subtestStats:{}, lastSessionDate:null, streak:0, dailyPlan:null, examHistory:[]};
@@ -10231,6 +10311,7 @@ function srRecordLesson(lf){
   let celebrated = false;
   try{
     const streakResult = srUpdateStreak();
+    if(typeof renderStreakUI === 'function') renderStreakUI();
     if(streakResult.increased && typeof showStreakCelebration === 'function'){
       showStreakCelebration(streakResult.streak);
       celebrated = true;
