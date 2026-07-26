@@ -2654,7 +2654,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '397-5ab3d53';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9356,6 +9356,23 @@ function _lfDlgAppendBubble(body, html){
   });
 }
 
+// card.name_q/card.name_a містять id персонажа (напр. 'de_w_julia') —
+// показуємо просто card CHARACTERS.name для ЦЬОГО id як є, без жодної
+// локалізації/підміни мови.
+function characterName(storedId){
+  if(!storedId) return '';
+  if(typeof CHARACTERS === 'undefined' || !CHARACTERS.length){
+    console.warn('[characterName] CHARACTERS не завантажені (undefined або порожній масив) — курс не має цієї таблиці, або він ще не догрузився. storedId:', storedId);
+    return storedId;
+  }
+  const found = CHARACTERS.find(c => c.id === storedId);
+  if(!found){
+    console.warn('[characterName] Персонажа з id "'+storedId+'" не знайдено в CHARACTERS. Наявні id:', CHARACTERS.map(c=>c.id));
+    return storedId;
+  }
+  return found.name;
+}
+
 var _lfDlgHandlers = {
   render: function(unit){
     var card = unit.card;
@@ -9404,7 +9421,7 @@ var _lfDlgHandlers = {
 
     var text   = card[unit.field]?.[pl] || '';
     var textTr = ul !== pl ? (card[unit.field]?.[ul] || '') : '';
-    var speaker = unit.speakerRole==='q' ? card.name_q : card.name_a;
+    var speaker = unit.speakerRole==='q' ? characterName(card.name_q) : characterName(card.name_a);
     var bubbleCls = unit.speakerRole==='q' ? 'lf-dlg-bubble-q' : 'lf-dlg-bubble-a';
 
     function buildBubble(){
