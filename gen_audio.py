@@ -186,6 +186,51 @@ def get_voice_id(category, sub_type, lang):
         fallbacks = {"de": "de-DE-KatjaNeural", "uk": "uk-UA-PolinaNeural", "en": "en-US-AriaNeural", "ru": "ru-RU-SvetlanaNeural"}
         return fallbacks.get(lang, "de-DE-KatjaNeural")
 
+def resolve_character_voice(characters_list, stored_id, target_lang):
+    """Персонажа в картці dlg_XXX задано ОДНИМ id певної мови (напр.
+    card['name_q'] = 'de_w_julia'), а генерувати аудіо треба на кожну
+    мову картки (de/en/uk/ru). Конвенція id — '<lang>_<персонаж>'
+    (de_w_julia, en_w_julia, uk_w_julia, ru_w_julia — той самий
+    персонаж, 4 записи в CHARACTERS, по одному на мову). Тож беремо
+    суфікс після мовного префікса ('w_julia') і шукаємо в CHARACTERS
+    запис '<target_lang>_<той самий суфікс>' — так одна й та сама
+    "людина" звучить відповідним голосом незалежно від того, якою
+    мовою зараз озвучується репліка.
+
+    Повертає edge_tts-голос або None, якщо персонажа для потрібної
+    мови не знайдено (тоді викликач сам вирішує запасний варіант)."""
+    if not stored_id or not characters_list:
+        return None
+    parts = stored_id.split('_', 1)
+    if len(parts) != 2:
+        return None
+    persona_suffix = parts[1]  # напр. 'w_julia'
+    target_id = f"{target_lang}_{persona_suffix}"
+    for c in characters_list:
+        if c.get("id") == target_id:
+            return c.get("edge_tts")
+    # Персонажа для цієї мови ще не описано в CHARACTERS (курс поки не
+    # додав переклад) — пробуємо буквально заданий id, якщо його мова
+    # раптом і так збігається з потрібною.
+    for c in characters_list:
+        if c.get("id") == stored_id and c.get("lang") == target_lang:
+            return c.get("edge_tts")
+    return None
+
+def redemittel_fields(item):
+    """Впорядкований список полів-реплік ОДНІЄЇ картки dlg_XXX: базові
+    q/a завжди присутні, далі — за наявності в даних — q1/a1, q2/a2,
+    ... доки в картці є хоч одне з полів наступного номера. Точна
+    копія логіки _dlgCardTurns() з index.html — тримати синхронізовано,
+    інакше pregen-аудіо розійдеться з тим, які репліки показує клієнт."""
+    fields = ['q', 'a']
+    n = 1
+    while n <= 30 and (f'q{n}' in item or f'a{n}' in item):
+        if f'q{n}' in item: fields.append(f'q{n}')
+        if f'a{n}' in item: fields.append(f'a{n}')
+        n += 1
+    return fields
+
 def clean_text(text):
     if not text:
         return ""
@@ -255,6 +300,7 @@ def load_js_database(file_path):
             print(f"⚠ Не вдалося розпарсити AUDIO_CONFIG у {file_path}, використовую дефолт (усі мови, 100+080): {e}", flush=True)
 
     raw_items = []
+    characters_list = []
     blocks = re.findall(r'(?:var|let|const|export)\s+(\w+)\s*=\s*(\[.*?\])\s*(;|\n\n|var|let|const|export|$)', content, re.DOTALL)
 
     if not blocks:
@@ -282,6 +328,9 @@ def load_js_database(file_path):
         try:
             items = json.loads(clean_array)
             if isinstance(items, list):
+                if var_name == "CHARACTERS":
+                    characters_list = items
+                    continue
                 for item in items:
                     if isinstance(item, dict) and "id" in item:
                         item["_fallback_var"] = var_name
@@ -300,6 +349,9 @@ def load_js_database(file_path):
                 normalized = re.sub(r'([{,]\s*)([a-zA-Z_]\w*)\s*:', r'\1"\2":', clean_array)
                 items = json.loads(normalized)
                 if isinstance(items, list):
+                    if var_name == "CHARACTERS":
+                        characters_list = items
+                        continue
                     for item in items:
                         if isinstance(item, dict) and "id" in item:
                             item["_fallback_var"] = var_name
@@ -314,7 +366,7 @@ def load_js_database(file_path):
                 print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}: "
                       f"{type(e_fallback).__name__}: {e_fallback}\n", flush=True)
 
-    return config, raw_items, primary_lang
+    return config, raw_items, primary_lang, characters_list
 
 async def synthesize_speech(text, voice, rate_str, output_path):
     """Генерація аудіо через Edge TTS."""
@@ -441,7 +493,8 @@ async def main():
     fields_map = {
         "vocab": ["term", "short", "def"],
         "sprachbau": ["sentence", "answer", "explanation"],
-        "redemittel": ["q", "a"]
+        # "redemittel" тут немає навмисно — набір реплік dlg_XXX змінний
+        # (q, a, q1, a1, q2, ...), обчислюється динамічно redemittel_fields().
     }
 
     # Порядок мов для кожного курсу — PRIMARY_LANG першою, решта в порядку
@@ -452,10 +505,11 @@ async def main():
     course_lang_order = {}
 
     for course in COURSES:
-      audio_config, raw_items, primary_lang = load_js_database(f"{course}.js")
+      audio_config, raw_items, primary_lang, characters_list = load_js_database(f"{course}.js")
       audio_base = AUDIO_ROOT / course
       course_lang_order[course] = [primary_lang] + [l for l in audio_config.keys() if l != primary_lang]
-      print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази.", flush=True)
+      print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази"
+            f"{f', {len(characters_list)} персонажів' if characters_list else ''}.", flush=True)
 
       for item in raw_items:
         item_id = item["id"]
@@ -467,7 +521,11 @@ async def main():
             internal_cat = "redemittel"
 
         cat_lower = item_id.split('_')[0].lower()
-        fields = fields_map[internal_cat]
+        # redemittel (dlg_XXX) може мати змінну кількість реплік у ОДНІЙ
+        # картці (q, a, q1, a1, q2, a2, ...) — на відміну від vocab/
+        # sprachbau, де набір полів завжди фіксований, тут список
+        # обчислюється по факту наявних полів (redemittel_fields).
+        fields = redemittel_fields(item) if internal_cat == "redemittel" else fields_map[internal_cat]
 
         for field in fields:
             field_obj = item.get(field)
@@ -501,7 +559,20 @@ async def main():
                     if not cleaned:
                         continue
 
-                    voice = get_voice_id(internal_cat, field, lang)
+                    if internal_cat == "redemittel":
+                        # 'q','q1','q2',... озвучує персонаж з name_q;
+                        # 'a','a1','a2',... — персонаж з name_a. Голос
+                        # шукаємо в CHARACTERS за (id, мова); якщо картка
+                        # ще не має name_q/name_a або персонажа для цієї
+                        # мови не описано — падаємо назад на дефолтний
+                        # голос ролі з VOICE_MAPPING (стара поведінка).
+                        role = "q" if field.startswith("q") else "a"
+                        persona_id = item.get("name_q" if role == "q" else "name_a")
+                        voice = resolve_character_voice(characters_list, persona_id, lang)
+                        if not voice:
+                            voice = get_voice_id(internal_cat, role, lang)
+                    else:
+                        voice = get_voice_id(internal_cat, field, lang)
                     rates = audio_config.get(lang, ["100"])
 
                     for rate in rates:

@@ -1577,6 +1577,14 @@ body.lesson-active .vocab-top{
   margin-left:auto;
   border-bottom-right-radius:4px;
 }
+/* Ім'я персонажа над бульбашкою (name_q/name_a) — показується лише якщо
+   задане в даних; вирівнюється по тому ж боку, що й сама бульбашка. */
+.lf-dlg-speaker{
+  font-size:11px;font-weight:700;letter-spacing:.02em;
+  color:var(--muted);margin-bottom:3px;padding:0 4px;
+}
+.lf-dlg-bubble-q .lf-dlg-speaker{ text-align:left; }
+.lf-dlg-bubble-a .lf-dlg-speaker{ text-align:right; }
 /* Месенджер-ефект: контейнер поводиться як звичайний потік зверху вниз
    (стабільний overflow/scroll), але поки повідомлень мало — весь простір
    "з'їдає" псевдоелемент-розпірка (margin-top:auto), тож єдине повідомлення
@@ -2646,7 +2654,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '393-b953025';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2719,6 +2727,9 @@ function loadCourseScript(courseId){
     if(old) old.remove();
     // Очищаємо стару базу
     if(window.VOCAB) window.VOCAB = [];
+    // Той самий скид для CHARACTERS — не всі курси (поки що) мають цю
+    // таблицю; без скиду вона могла б "тягнутись" зі старого курсу.
+    if(window.CHARACTERS) window.CHARACTERS = [];
 
     const course = COURSES.find(c=>c.id===courseId);
     if(!course){ reject(new Error('Course not found: '+courseId)); return; }
@@ -9270,13 +9281,78 @@ function _lfSBLearnDone(){
 // кожною реплікою (без озвучення). Без обертання картки.
 // SM-2: одна оцінка на картку (як і SB) — узгоджено симетрично.
 
+// Розбирає ОДНУ картку dlg_XXX на впорядкований список реплік: базові
+// q/a завжди присутні (формат гарантує це), далі — за наявності —
+// q1/a1, q2/a2, ... доки в даних є хоч одне з полів наступного номера.
+// role='q' — репліку озвучує name_q, role='a' — name_a.
+function _dlgCardTurns(card){
+  const turns = [{field:'q', role:'q'}, {field:'a', role:'a'}];
+  let n = 1;
+  while(n <= 30 && (card['q'+n] !== undefined || card['a'+n] !== undefined)){
+    if(card['q'+n] !== undefined) turns.push({field:'q'+n, role:'q'});
+    if(card['a'+n] !== undefined) turns.push({field:'a'+n, role:'a'});
+    n++;
+  }
+  return turns;
+}
+
+// Розгортає масив карток у ПЛОСКИЙ список юнітів "одна репліка = один
+// юніт" — так кожен тап "Далі" просуває рушій рівно на одну репліку,
+// незалежно від того, чи це початок нової картки, чи продовження вже
+// показаної. isFirstOfCard=true позначає ПЕРШУ репліку кожної картки —
+// саме на ній render() очищає транскрипт, бо dlg_001, dlg_002 і т.д. —
+// окремі непов'язані діалоги, а не продовження один одного; УСЕРЕДИНІ
+// однієї картки (q, a, q1, a1, q2, a2, ...) репліки, навпаки, НАКОПИЧУЮТЬСЯ
+// в одному транскрипті.
+function _dlgCardsToUnits(cards){
+  const units = [];
+  (cards||[]).forEach(function(card){
+    _dlgCardTurns(card).forEach(function(turn, i){
+      units.push({
+        kind: 'dlg', cardId: card.id, side:'main', card: card,
+        field: turn.field, speakerRole: turn.role, isFirstOfCard: i===0,
+      });
+    });
+  });
+  return units;
+}
+
 function _lfDlgBuildUnits(){
   if(!LF) return [];
   // LF.dlgCards (масив) — бонусний урок з кількома діалогами. Інакше —
   // звичний одиничний LF.dlgCard, як у кожному пересічному уроці.
   const cards = (LF.dlgCards && LF.dlgCards.length) ? LF.dlgCards : (LF.dlgCard ? [LF.dlgCard] : []);
-  return cards.map(function(card){
-    return { kind:'dlg', cardId: card.id, side:'main', card: card, aShown: false };
+  return _dlgCardsToUnits(cards);
+}
+
+// FLIP-анімація: запам'ятовуємо позиції ВСІХ наявних бульбашок ДО
+// вставки нової, вставляємо, і плавно доводимо кожну з них до нової
+// позиції (замість миттєвого стрибка, коли розпірка-спейсер стискається
+// або контейнер прокручується). Узагальнення попередньої версії, де
+// зсувалась лише одна (щойно показана) бульбашка — тепер їх може бути
+// скільки завгодно, і кожна плавно "їде" вгору, звільняючи місце знизу.
+function _lfDlgAppendBubble(body, html){
+  const prevRects = new Map();
+  Array.prototype.forEach.call(body.children, function(el){
+    prevRects.set(el, el.getBoundingClientRect());
+  });
+  body.insertAdjacentHTML('beforeend', html);
+  prevRects.forEach(function(oldRect, el){
+    const newRect = el.getBoundingClientRect();
+    const dy = oldRect.top - newRect.top;
+    if(Math.abs(dy) > 0.5){
+      el.style.transition = 'none';
+      el.style.transform = 'translateY('+dy+'px)';
+      requestAnimationFrame(function(){
+        el.style.transition = 'transform .32s cubic-bezier(.22,1,.36,1)';
+        el.style.transform = 'translateY(0)';
+      });
+      el.addEventListener('transitionend', function te(){
+        el.style.transition = '';
+        el.style.transform = '';
+        el.removeEventListener('transitionend', te);
+      });
+    }
   });
 }
 
@@ -9326,72 +9402,47 @@ var _lfDlgHandlers = {
     if(!body) return;
     body.classList.add('lf-dlg-mode');
 
-    var q = card.q?.[pl] || '';
-    var qTr = ul !== pl ? (card.q?.[ul] || '') : '';
+    var text   = card[unit.field]?.[pl] || '';
+    var textTr = ul !== pl ? (card[unit.field]?.[ul] || '') : '';
+    var speaker = unit.speakerRole==='q' ? card.name_q : card.name_a;
+    var bubbleCls = unit.speakerRole==='q' ? 'lf-dlg-bubble-q' : 'lf-dlg-bubble-a';
 
-    function buildBubble(cls, mainText, mainLang, trText, trLang){
-      return '<div class="lf-dlg-bubble '+cls+' lf-bubble-in">'+
+    function buildBubble(){
+      return '<div class="lf-dlg-bubble '+bubbleCls+' lf-bubble-in">'+
+        (speaker ? '<div class="lf-dlg-speaker">'+speaker+'</div>' : '')+
         '<div class="lf-unit-main-row">'+
-          '<span class="lf-unit-flag">'+(F[mainLang]||'')+'</span>'+
-          '<div class="lf-unit-sentence">'+mainText+'</div>'+
+          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
+          '<div class="lf-unit-sentence">'+text+'</div>'+
         '</div>'+
-        (trText ?
+        (textTr ?
           '<div class="lf-unit-main-row">'+
-            '<span class="lf-unit-flag">'+(F[trLang]||'')+'</span>'+
-            '<div class="lf-unit-sentence">'+trText+'</div>'+
+            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
+            '<div class="lf-unit-sentence">'+textTr+'</div>'+
           '</div>'
         : '')+
       '</div>';
     }
 
-    var existingQ = body.querySelector('.lf-dlg-bubble-q');
-    var existingA = body.querySelector('.lf-dlg-bubble-a');
-
-    if(unit.aShown && existingQ && !existingA){
-      // Питання вже на екрані (і вже "приземлилось") — додаємо бульбашку
-      // відповіді. Через розпірку (margin-top:auto — тримає єдине
-      // повідомлення внизу картки, поки їх мало) поява відповіді стискає
-      // розпірку і ЗСУВАЄ питання вгору — раніше це відбувалось миттєво
-      // (звичайний reflow), відчувалось як "стрибок". FLIP-техніка:
-      // міряємо позицію питання ДО вставки відповіді, вставляємо, міряємо
-      // ПІСЛЯ — і плавно анімуємо різницю через transform, замість
-      // миттєвого стрибка. Разом з тим, що відповідь влітає знизу своєю
-      // анімацією (.lf-bubble-in) — виходить ефект месенджера: нове
-      // повідомлення зʼявляється, а попереднє плавно здвигається, щоб
-      // звільнити місце.
-      existingQ.classList.remove('lf-bubble-in');
-      var firstRect = existingQ.getBoundingClientRect();
-
-      var a = card.a?.[pl] || '';
-      var aTr = ul !== pl ? (card.a?.[ul] || '') : '';
-      body.insertAdjacentHTML('beforeend', buildBubble('lf-dlg-bubble-a', a, pl, aTr, ul));
-
-      var lastRect = existingQ.getBoundingClientRect();
-      var dy = firstRect.top - lastRect.top;
-      if(Math.abs(dy) > 0.5){
-        existingQ.style.transition = 'none';
-        existingQ.style.transform = 'translateY('+dy+'px)';
-        requestAnimationFrame(function(){
-          existingQ.style.transition = 'transform .32s cubic-bezier(.22,1,.36,1)';
-          existingQ.style.transform = 'translateY(0)';
-        });
-        existingQ.addEventListener('transitionend', function te(){
-          existingQ.style.transition = '';
-          existingQ.style.transform = '';
-          existingQ.removeEventListener('transitionend', te);
-        });
-      }
+    // dlg_001, dlg_002 і т.д. — окремі НЕПОВʼЯЗАНІ діалоги: транскрипт
+    // очищається рівно на ПЕРШІЙ репліці кожної картки (isFirstOfCard),
+    // а не лише раз на всю сесію. Це заразом прибирає й бульбашки з
+    // попередньої, геть іншої практики (vocab/SB), що могли лишитись у
+    // тому самому спільному контейнері #lf-unit-body.
+    // УСЕРЕДИНІ ж однієї картки (q, a, q1, a1, q2, a2, ...) репліки
+    // НАКОПИЧУЮТЬСЯ в одному транскрипті — справжній багатореплічний
+    // діалог. При одній єдиній парі q/a це просто дві репліки поспіль —
+    // поведінка ідентична попередній однообмінній.
+    if(unit.isFirstOfCard){
+      body.innerHTML = '';
     } else {
-      // Нова картка (або перший рендер) — питання (і відповідь, якщо вже
-      // мала бути показана) влітають знизу тією самою анімацією.
-      var html = buildBubble('lf-dlg-bubble-q', q, pl, qTr, ul);
-      if(unit.aShown){
-        var a2 = card.a?.[pl] || '';
-        var aTr2 = ul !== pl ? (card.a?.[ul] || '') : '';
-        html += buildBubble('lf-dlg-bubble-a', a2, pl, aTr2, ul);
-      }
-      body.innerHTML = html;
+      // "Приземляємо" вже показані бульбашки (прибираємо one-shot
+      // анімацію .lf-bubble-in) перед додаванням нової.
+      Array.prototype.forEach.call(body.querySelectorAll('.lf-bubble-in'), function(el){
+        el.classList.remove('lf-bubble-in');
+      });
     }
+
+    _lfDlgAppendBubble(body, buildBubble());
 
     // Прокручуємо до низу, щоб щойно додане повідомлення було видно
     // повністю, а не обрізане краєм картки — саме та проблема, з якої
@@ -9407,15 +9458,12 @@ var _lfDlgHandlers = {
   getAudioText: function(unit){
     var card = unit.card;
     var pl = primaryLang();
-    if(!unit.aShown){
-      return [{ text: card.q?.[pl]||'', field: 'q' }];
-    }
-    return [{ text: card.a?.[pl]||'', field: 'a' }];
+    return [{ text: card[unit.field]?.[pl]||'', field: unit.field }];
   },
 
-  // Q+A завжди послідовно, без 🔊-кнопки повтору (аудіо й так грає
-  // автоматично на кожному кроці) — але 📖-кнопка граматики додається,
-  // якщо у картки є посилання (unit.card.gram).
+  // Кожна репліка озвучується послідовно, без 🔊-кнопки повтору (аудіо й
+  // так грає автоматично на кожному кроці) — але 📖-кнопка граматики
+  // додається, якщо у картки є посилання (unit.card.gram).
   getSecondaryButtons: function(unit){
     var gramBtn = _lfGrammarButton(unit.card);
     return gramBtn ? [gramBtn] : [];
@@ -9438,14 +9486,14 @@ var _lfDlgHandlers = {
     showSrsHint('✅', label, 5, 'lf-unit-card');
   },
 
+  // Кнопка "Далі" лишається як і була: кожен тап — це один крок. Раніше
+  // один юніт = одна картка (перший тап розкривав відповідь, другий ішов
+  // далі); тепер один юніт = ОДНА репліка, тож кнопці більше не треба
+  // "затримувати" оболонку на місці — простий перехід до наступної
+  // репліки (q, a, q1, a1, q2, a2, ...) чи, якщо це була остання репліка
+  // картки, до першої репліки НАСТУПНОЇ незалежної картки.
   onNext: function(unit){
     trackCardToday(unit.cardId);
-    // Перший «Далі» (питання дограло) — розкриваємо відповідь і
-    // повідомляємо оболонці не завершувати юніт (Q+A завжди послідовно).
-    if(!unit.aShown){
-      unit.aShown = true;
-      return true; // "юніт не завершено" — оболонка перерендерить його ж
-    }
   },
 };
 
@@ -11508,9 +11556,10 @@ function _runDialogueQueueAsUnits(){
 
   _relocateUnitCard('dlg-panel-card');
 
-  var units = D.queue.map(function(card){
-    return { kind:'dlg', cardId: card.id, side:'main', card: card, aShown: false };
-  });
+  // Той самий рушій розгортання карток на репліки, що й у lfStartDlgLearn
+  // (_dlgCardsToUnits) — інакше самостійний перегляд Словник:Діалоги
+  // показував би лише q/a і не бачив би q1/a1/q2/a2 тощо.
+  var units = _dlgCardsToUnits(D.queue);
 
   lfRunUnitStep(units, _lfDlgHandlers, _onDialogueUnitsDone);
 }
