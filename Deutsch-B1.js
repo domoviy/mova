@@ -7,6 +7,59 @@ var AUDIO_CONFIG = {
   "ru": ["100"]
 };
 
+// ── ПЕРСОНАЖІ (для озвучення діалогів різними голосами) ──────────
+// Зіставляє id персонажа (те, що записується в поля name_q/name_a
+// картки DIALOGE) з конкретним голосом edge-tts для кожної мови.
+//
+// Навіщо саме так: одна репліка діалогу (q, a, q1, a1, q2, a2, ...)
+// озвучується РІЗНИМИ мовами (de/en/uk/ru — по одному аудіофайлу на
+// кожну), а persona (name_q/"хто говорить") — одна й та сама для ролі
+// протягом усього діалогу. Тому ключ пошуку — {id персонажа + мова}:
+// один і той самий персонаж (напр. "Julia") має свій запис на кожну
+// мову — de_w_julia, en_w_julia, uk_w_julia, ru_w_julia — тож голос
+// підбирається окремо під мову, а "хто говорить" лишається тим самим.
+//
+// Формат одного запису:
+//   { id: 'id_персонажа', lang: 'de'|'en'|'uk'|'ru', name: 'Показуване ім'я',
+//     edge_tts: 'точна назва голосу з `edge-tts --list-voices`' }
+//
+// Використання при генерації аудіо (offline-пайплайн, не в браузері):
+//   1. беремо card.name_q / card.name_a картки DIALOGE;
+//   2. шукаємо в цій таблиці запис з тим самим id і потрібною мовою (lang);
+//   3. використовуємо characters[i].edge_tts як голос для синтезу репліки.
+
+var CHARACTERS = [
+  // ── Німецька (de-DE) — 4 стандартні "якісні" голоси ──
+  { "id": "de_w_julia", "lang": "de", "name": "Julia", "edge_tts": "de-DE-KatjaNeural"},
+  { "id": "de_w_anna",  "lang": "de", "name": "Anna",  "edge_tts": "de-DE-AmalaNeural"},
+  { "id": "de_m_mark",  "lang": "de", "name": "Mark",  "edge_tts": "de-DE-ConradNeural"},
+  { "id": "de_m_david", "lang": "de", "name": "David", "edge_tts": "de-DE-KillianNeural"},
+
+  // ── Англійська (en-US / en-GB) — приклад стартового набору ──
+  { "id": "en_w_julia", "lang": "en", "name": "Julia", "edge_tts": "en-US-AriaNeural"},
+  { "id": "en_w_anna",  "lang": "en", "name": "Jenny", "edge_tts": "en-US-JennyNeural"},
+  { "id": "en_w_nina",  "lang": "en", "name": "Nina",  "edge_tts": "en-GB-SoniaNeural"},
+
+  { "id": "en_m_mark",  "lang": "en", "name": "Mark",  "edge_tts": "en-GB-RyanNeural"},
+  { "id": "en_m_david", "lang": "en", "name": "David", "edge_tts": "en-US-GuyNeural"},
+  { "id": "en_m_alex",  "lang": "en", "name": "Alex",  "edge_tts": "en-US-DavisNeural"},
+  // ── Українська (uk-UA) ──
+  { "id": "uk_w_julia", "lang": "uk", "name": "Julia", "edge_tts": "uk-UA-PolinaNeural"},
+  { "id": "uk_m_mark",  "lang": "uk", "name": "Остап", "edge_tts": "uk-UA-OstapNeural"},
+
+  // ── Російська (ru-RU) ──
+  { "id": "ru_w_julia", "lang": "ru", "name": "Юлия",  "edge_tts": "ru-RU-SvetlanaNeural"},
+  { "id": "ru_m_mark",  "lang": "ru", "name": "Mark",  "edge_tts": "ru-RU-DmitryNeural"},
+];
+
+// Допоміжна функція для offline-пайплайну генерації аудіо (не для
+// браузера — просто зручний lookup при написанні скрипта озвучення):
+//   var c = findCharacter('de_m_mark', 'de');  // -> {id, lang, name, edge_tts}
+function findCharacter(personaId, lang){
+  return CHARACTERS.find(function(c){ return c.id === personaId && c.lang === lang; }) || null;
+}
+
+
 // ════════════════════════════════════════════════════════════════
 //  GRAMMAR — список граматичних конструкцій рівня B1.1 (Die neue Linie 1, Kapitel 1–8)
 // ════════════════════════════════════════════════════════════════
@@ -24666,6 +24719,7 @@ var DIALOGE = [
   {
     "id": "dlg_001",
     "cat": "Neue Nachbarn",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Könnten</g> Sie bitte etwas leiser sein? Es ist schon nach 22 Uhr.",
       "en": "<g>Could you</g> please be a bit quieter? It's already after 10 p.m.",
@@ -24683,6 +24737,7 @@ var DIALOGE = [
   {
     "id": "dlg_002",
     "cat": "Neue Nachbarn",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wo <g>darf</g> ich meinen Kinderwagen abstellen?",
       "en": "Where <g>may</g> I leave my stroller?",
@@ -24700,6 +24755,7 @@ var DIALOGE = [
   {
     "id": "dlg_003",
     "cat": "Neue Nachbarn",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum riecht es hier im Treppenhaus so gut?",
       "en": "Why does it smell so good here in the stairwell?",
@@ -24717,6 +24773,7 @@ var DIALOGE = [
   {
     "id": "dlg_004",
     "cat": "Neue Nachbarn",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Seit wann wohnt ihr schon in diesem Haus?",
       "en": "Since when have you been living in this building?",
@@ -24734,6 +24791,7 @@ var DIALOGE = [
   {
     "id": "dlg_005",
     "cat": "Hier kaufe ich ein.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wollen wir <g>sowohl</g> Milch <g>als auch</g> Eier auf dem Markt kaufen?",
       "en": "Shall we buy <g>both</g> milk <g>and</g> eggs at the market?",
@@ -24751,6 +24809,7 @@ var DIALOGE = [
   {
     "id": "dlg_006",
     "cat": "Hier kaufe ich ein.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Die Hose, <g>die</g> ich letzte Woche gekauft habe, ist leider kaputt.",
       "en": "The trousers <g>that</g> I bought last week are unfortunately broken.",
@@ -24768,6 +24827,7 @@ var DIALOGE = [
   {
     "id": "dlg_007",
     "cat": "Hier kaufe ich ein.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum schreibst du eine Reklamation?",
       "en": "Why are you writing a complaint?",
@@ -24785,6 +24845,7 @@ var DIALOGE = [
   {
     "id": "dlg_008",
     "cat": "Hier kaufe ich ein.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Kannst du mir kurz helfen, das Formular für den Umtausch auszufüllen?",
       "en": "Can you help me for a moment to fill in the exchange form?",
@@ -24802,6 +24863,7 @@ var DIALOGE = [
   {
     "id": "dlg_009",
     "cat": "Wir sind für Sie da.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Er <g>dürfte</g> jetzt schon zu Hause sein, oder?",
       "en": "He <g>should</g> already be home now, right?",
@@ -24819,6 +24881,7 @@ var DIALOGE = [
   {
     "id": "dlg_010",
     "cat": "Wir sind für Sie da.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wessen Konto ist das eigentlich?",
       "en": "Whose account is that, actually?",
@@ -24836,6 +24899,7 @@ var DIALOGE = [
   {
     "id": "dlg_011",
     "cat": "Wir sind für Sie da.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum hast du die Versicherung gekündigt, <g>obwohl</g> sie so günstig war?",
       "en": "Why did you cancel the insurance <g>although</g> it was so cheap?",
@@ -24853,6 +24917,7 @@ var DIALOGE = [
   {
     "id": "dlg_012",
     "cat": "Wir sind für Sie da.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Hast du schon die Verbraucherzentrale angerufen?",
       "en": "Have you already called the consumer advice centre?",
@@ -24870,6 +24935,7 @@ var DIALOGE = [
   {
     "id": "dlg_013",
     "cat": "Schmeckt's?",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie hat sich eure Ernährung verändert, <g>seit</g> ihr in Deutschland lebt?",
       "en": "How has your diet changed <g>since</g> you have been living in Germany?",
@@ -24887,6 +24953,7 @@ var DIALOGE = [
   {
     "id": "dlg_014",
     "cat": "Schmeckt's?",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Isst du lieber regelmäßig zu Hause oder isst du oft unterwegs?",
       "en": "Do you prefer eating regularly at home, or do you often eat on the go?",
@@ -24904,6 +24971,7 @@ var DIALOGE = [
   {
     "id": "dlg_015",
     "cat": "Schmeckt's?",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum hast du so lange auf das Rezept gewartet?",
       "en": "Why did you wait so long for the recipe?",
@@ -24921,6 +24989,7 @@ var DIALOGE = [
   {
     "id": "dlg_016",
     "cat": "Schmeckt's?",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was waren die Ergebnisse der Umfrage über Essgewohnheiten?",
       "en": "What were the results of the survey on eating habits?",
@@ -24938,6 +25007,7 @@ var DIALOGE = [
   {
     "id": "dlg_017",
     "cat": "Ah, so ist das!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Worüber</g> hast du dich beim Sprachkurs am meisten geärgert?",
       "en": "What <g>were</g> you most annoyed <g>about</g> in the language course?",
@@ -24955,6 +25025,7 @@ var DIALOGE = [
   {
     "id": "dlg_018",
     "cat": "Ah, so ist das!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Mit wem</g> sprichst du eigentlich deine Muttersprache?",
       "en": "<g>Who</g> do you actually speak your native language <g>with</g>?",
@@ -24972,6 +25043,7 @@ var DIALOGE = [
   {
     "id": "dlg_019",
     "cat": "Ah, so ist das!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Bist du schon lange hier, oder wohnst du erst seit Kurzem in Deutschland?",
       "en": "Have you been here long, or have you only lived in Germany for a short time?",
@@ -24989,6 +25061,7 @@ var DIALOGE = [
   {
     "id": "dlg_020",
     "cat": "Ah, so ist das!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was hat dich am meisten überrascht, als du hierhergekommen bist?",
       "en": "What surprised you most when you came here?",
@@ -25006,6 +25079,7 @@ var DIALOGE = [
   {
     "id": "dlg_021",
     "cat": "Im Krankenhaus",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wird der Patient morgen operiert?",
       "en": "Will the patient be operated on tomorrow?",
@@ -25023,6 +25097,7 @@ var DIALOGE = [
   {
     "id": "dlg_022",
     "cat": "Im Krankenhaus",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum bist du in die Notaufnahme gegangen?",
       "en": "Why did you go to the emergency room?",
@@ -25040,6 +25115,7 @@ var DIALOGE = [
   {
     "id": "dlg_023",
     "cat": "Im Krankenhaus",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wozu brauchst du dieses Formular?",
       "en": "What do you need this form for?",
@@ -25057,6 +25133,7 @@ var DIALOGE = [
   {
     "id": "dlg_024",
     "cat": "Im Krankenhaus",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie lange dauert die Untersuchung ungefähr?",
       "en": "How long does the examination take approximately?",
@@ -25074,6 +25151,7 @@ var DIALOGE = [
   {
     "id": "dlg_025",
     "cat": "Alles für die Umwelt",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wird der Müll hier eigentlich richtig getrennt?",
       "en": "Is the rubbish actually sorted properly here?",
@@ -25091,6 +25169,7 @@ var DIALOGE = [
   {
     "id": "dlg_026",
     "cat": "Alles für die Umwelt",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Habt ihr in diesem Jahr schon Energie gespart?",
       "en": "Have you already saved energy this year?",
@@ -25108,6 +25187,7 @@ var DIALOGE = [
   {
     "id": "dlg_027",
     "cat": "Alles für die Umwelt",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum kauft ihr nur noch saisonales Gemüse?",
       "en": "Why do you only buy seasonal vegetables now?",
@@ -25125,6 +25205,7 @@ var DIALOGE = [
   {
     "id": "dlg_028",
     "cat": "Alles für die Umwelt",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was können wir noch für das Klima tun?",
       "en": "What else can we do for the climate?",
@@ -25142,6 +25223,7 @@ var DIALOGE = [
   {
     "id": "dlg_029",
     "cat": "Lust auf Kultur?",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Worauf</g> freust du dich beim Festival am meisten?",
       "en": "What are you looking forward <g>to</g> most at the festival?",
@@ -25159,6 +25241,7 @@ var DIALOGE = [
   {
     "id": "dlg_030",
     "cat": "Lust auf Kultur?",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Wovon</g> handelt eigentlich die neue Ausstellung im Museum?",
       "en": "What is the new exhibition at the museum actually about?",
@@ -25176,6 +25259,7 @@ var DIALOGE = [
   {
     "id": "dlg_031",
     "cat": "Lust auf Kultur?",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie war <g>denn</g> die Führung durch die Bibliothek?",
       "en": "<g>So</g>, how was the library tour?",
@@ -25193,6 +25277,7 @@ var DIALOGE = [
   {
     "id": "dlg_032",
     "cat": "Lust auf Kultur?",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Kannst du mir ein gutes Straßenfestival empfehlen?",
       "en": "Can you recommend a good street festival to me?",
@@ -25210,6 +25295,7 @@ var DIALOGE = [
   {
     "id": "dlg_033",
     "cat": "Eine neue Arbeit!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Ich rufe wegen der Stellenanzeige an. <g>Könnten</g> Sie mir sagen, ob die Stelle noch frei ist?",
       "en": "I'm calling about the job advertisement. <g>Could you</g> tell me if the position is still available?",
@@ -25227,6 +25313,7 @@ var DIALOGE = [
   {
     "id": "dlg_034",
     "cat": "Eine neue Arbeit!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Ich hätte gern</g> mehr Informationen über die Arbeitszeiten.",
       "en": "<g>I would like</g> more information about the working hours.",
@@ -25244,6 +25331,7 @@ var DIALOGE = [
   {
     "id": "dlg_035",
     "cat": "Eine neue Arbeit!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was würdest du tun, <g>wenn</g> du den Job nicht <g>bekämst</g>?",
       "en": "What would you do <g>if</g> you <g>didn't get</g> the job?",
@@ -25261,6 +25349,7 @@ var DIALOGE = [
   {
     "id": "dlg_036",
     "cat": "Eine neue Arbeit!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie war dein Vorstellungsgespräch heute?",
       "en": "How was your job interview today?",
@@ -25278,6 +25367,7 @@ var DIALOGE = [
   {
     "id": "dlg_037",
     "cat": "Sport und Bewegung",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Sollen wir laufen gehen, <g>bevor</g> es zu heiß wird?",
       "en": "Should we go running <g>before</g> it gets too hot?",
@@ -25295,6 +25385,7 @@ var DIALOGE = [
   {
     "id": "dlg_038",
     "cat": "Sport und Bewegung",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wer hat den <g>schnellsten</g> Lauf beim Wettkampf gemacht?",
       "en": "Who had the <g>fastest</g> run in the competition?",
@@ -25312,6 +25403,7 @@ var DIALOGE = [
   {
     "id": "dlg_039",
     "cat": "Sport und Bewegung",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Machst du beim Spendenlauf am Samstag mit?",
       "en": "Are you taking part in the charity run on Saturday?",
@@ -25329,6 +25421,7 @@ var DIALOGE = [
   {
     "id": "dlg_040",
     "cat": "Sport und Bewegung",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum trainierst du eigentlich jeden Tag?",
       "en": "Why do you actually train every day?",
@@ -25346,6 +25439,7 @@ var DIALOGE = [
   {
     "id": "dlg_041",
     "cat": "Mütter, Väter, Kinder",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wer kocht heute, <g>während</g> ich das Baby bade?",
       "en": "Who's cooking today <g>while</g> I bathe the baby?",
@@ -25363,6 +25457,7 @@ var DIALOGE = [
   {
     "id": "dlg_042",
     "cat": "Mütter, Väter, Kinder",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Muss ich den Kita-Platz schon jetzt beantragen?",
       "en": "Do I have to apply for the daycare place already now?",
@@ -25380,6 +25475,7 @@ var DIALOGE = [
   {
     "id": "dlg_043",
     "cat": "Mütter, Väter, Kinder",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie geht es euch als frischgebackene Eltern?",
       "en": "How are you doing as new parents?",
@@ -25397,6 +25493,7 @@ var DIALOGE = [
   {
     "id": "dlg_044",
     "cat": "Mütter, Väter, Kinder",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wer holt heute die Kinder von der Schule ab?",
       "en": "Who's picking up the kids from school today?",
@@ -25414,6 +25511,7 @@ var DIALOGE = [
   {
     "id": "dlg_045",
     "cat": "Ankommen im Beruf",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Nachdem</g> ich die Prüfung bestanden hatte, habe ich sofort eine Stelle gefunden.",
       "en": "<g>After</g> I had passed the exam, I found a job right away.",
@@ -25431,6 +25529,7 @@ var DIALOGE = [
   {
     "id": "dlg_046",
     "cat": "Ankommen im Beruf",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Hattest du vor dem Interview schon mal in Deutschland gearbeitet?",
       "en": "Had you worked in Germany before the interview?",
@@ -25448,6 +25547,7 @@ var DIALOGE = [
   {
     "id": "dlg_047",
     "cat": "Ankommen im Beruf",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie läuft die Anerkennung deines Diploms?",
       "en": "How's the recognition of your diploma going?",
@@ -25465,6 +25565,7 @@ var DIALOGE = [
   {
     "id": "dlg_048",
     "cat": "Ankommen im Beruf",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie findest du deine neuen Kollegen?",
       "en": "What do you think of your new colleagues?",
@@ -25482,6 +25583,7 @@ var DIALOGE = [
   {
     "id": "dlg_049",
     "cat": "Freiwillig",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Das Auto <g>muss</g> von einem Ehrenamtlichen <g>repariert werden</g>, bevor wir losfahren können.",
       "en": "The car <g>has to be repaired</g> by a volunteer before we can leave.",
@@ -25499,6 +25601,7 @@ var DIALOGE = [
   {
     "id": "dlg_050",
     "cat": "Freiwillig",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Wegen des</g> schlechten Wetters findet der Ausflug morgen nicht statt.",
       "en": "<g>Because of the</g> bad weather, the trip won't take place tomorrow.",
@@ -25516,6 +25619,7 @@ var DIALOGE = [
   {
     "id": "dlg_051",
     "cat": "Freiwillig",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Bist du auch beim Ehrenamt in der Nachbarschaftshilfe dabei?",
       "en": "Are you also involved in volunteering for the neighbourhood help?",
@@ -25533,6 +25637,7 @@ var DIALOGE = [
   {
     "id": "dlg_052",
     "cat": "Freiwillig",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was hat dich motiviert, dich freiwillig zu engagieren?",
       "en": "What motivated you to get involved as a volunteer?",
@@ -25550,6 +25655,7 @@ var DIALOGE = [
   {
     "id": "dlg_053",
     "cat": "Ein neues Zuhause",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Ist das die Wohnung, <g>für die</g> du dich beworben hast?",
       "en": "Is that the flat <g>for which</g> you applied?",
@@ -25567,6 +25673,7 @@ var DIALOGE = [
   {
     "id": "dlg_054",
     "cat": "Ein neues Zuhause",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Kennst du einen Ort, <g>wo</g> man günstig wohnen kann?",
       "en": "Do you know a place <g>where</g> you can live cheaply?",
@@ -25584,6 +25691,7 @@ var DIALOGE = [
   {
     "id": "dlg_055",
     "cat": "Ein neues Zuhause",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie hoch sind die Nebenkosten in eurem neuen Haus?",
       "en": "How high are the utility costs in your new house?",
@@ -25601,6 +25709,7 @@ var DIALOGE = [
   {
     "id": "dlg_056",
     "cat": "Ein neues Zuhause",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wann könnt ihr in die neue Wohnung einziehen?",
       "en": "When can you move into the new flat?",
@@ -25618,6 +25727,7 @@ var DIALOGE = [
   {
     "id": "dlg_057",
     "cat": "Hier bleibe ich.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Ist das der <g>ausgefüllte</g> Antrag für die Einbürgerung?",
       "en": "Is that the <g>completed</g> application for naturalisation?",
@@ -25635,6 +25745,7 @@ var DIALOGE = [
   {
     "id": "dlg_058",
     "cat": "Hier bleibe ich.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Brauche ich <g>entweder</g> meinen Pass <g>oder</g> meinen Ausweis für den Termin?",
       "en": "Do I need <g>either</g> my passport <g>or</g> my ID card for the appointment?",
@@ -25652,6 +25763,7 @@ var DIALOGE = [
   {
     "id": "dlg_059",
     "cat": "Hier bleibe ich.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie lange dauert der Integrationskurs insgesamt?",
       "en": "How long does the integration course take altogether?",
@@ -25669,6 +25781,7 @@ var DIALOGE = [
   {
     "id": "dlg_060",
     "cat": "Hier bleibe ich.",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Fühlst du dich mittlerweile zu Hause in Deutschland?",
       "en": "Do you feel at home in Germany by now?",
@@ -25686,6 +25799,7 @@ var DIALOGE = [
   {
     "id": "dlg_061",
     "cat": "Das haben wir uns verdient!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Fahren wir dieses Jahr weg, <g>oder</g> bleiben wir lieber zu Hause?",
       "en": "Are we going away this year, <g>or</g> would we rather stay home?",
@@ -25703,6 +25817,7 @@ var DIALOGE = [
   {
     "id": "dlg_062",
     "cat": "Das haben wir uns verdient!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wann kommst du von deiner Reise <g>zurück</g>?",
       "en": "When are you coming <g>back</g> from your trip?",
@@ -25720,6 +25835,7 @@ var DIALOGE = [
   {
     "id": "dlg_063",
     "cat": "Das haben wir uns verdient!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wart ihr schon mal in der Jugendherberge in der Altstadt?",
       "en": "Have you ever been to the youth hostel in the old town?",
@@ -25737,6 +25853,7 @@ var DIALOGE = [
   {
     "id": "dlg_064",
     "cat": "Das haben wir uns verdient!",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Habt ihr von dem Einbruch in der Nachbarschaft gehört?",
       "en": "Have you heard about the burglary in the neighbourhood?",

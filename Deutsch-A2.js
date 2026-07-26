@@ -7,6 +7,58 @@ var AUDIO_CONFIG = {
 //  "ru": ["100"]
 };
 
+// ── ПЕРСОНАЖІ (для озвучення діалогів різними голосами) ──────────
+// Зіставляє id персонажа (те, що записується в поля name_q/name_a
+// картки DIALOGE) з конкретним голосом edge-tts для кожної мови.
+//
+// Навіщо саме так: одна репліка діалогу (q, a, q1, a1, q2, a2, ...)
+// озвучується РІЗНИМИ мовами (de/en/uk/ru — по одному аудіофайлу на
+// кожну), а persona (name_q/"хто говорить") — одна й та сама для ролі
+// протягом усього діалогу. Тому ключ пошуку — {id персонажа + мова}:
+// один і той самий персонаж (напр. "Julia") має свій запис на кожну
+// мову — de_w_julia, en_w_julia, uk_w_julia, ru_w_julia — тож голос
+// підбирається окремо під мову, а "хто говорить" лишається тим самим.
+//
+// Формат одного запису:
+//   { id: 'id_персонажа', lang: 'de'|'en'|'uk'|'ru', name: 'Показуване ім'я',
+//     edge_tts: 'точна назва голосу з `edge-tts --list-voices`' }
+//
+// Використання при генерації аудіо (offline-пайплайн, не в браузері):
+//   1. беремо card.name_q / card.name_a картки DIALOGE;
+//   2. шукаємо в цій таблиці запис з тим самим id і потрібною мовою (lang);
+//   3. використовуємо characters[i].edge_tts як голос для синтезу репліки.
+
+var CHARACTERS = [
+  // ── Німецька (de-DE) — 4 стандартні "якісні" голоси ──
+  { "id": "de_w_julia", "lang": "de", "name": "Julia", "edge_tts": "de-DE-KatjaNeural"},
+  { "id": "de_w_anna",  "lang": "de", "name": "Anna",  "edge_tts": "de-DE-AmalaNeural"},
+  { "id": "de_m_mark",  "lang": "de", "name": "Mark",  "edge_tts": "de-DE-ConradNeural"},
+  { "id": "de_m_david", "lang": "de", "name": "David", "edge_tts": "de-DE-KillianNeural"},
+
+  // ── Англійська (en-US / en-GB) — приклад стартового набору ──
+  { "id": "en_w_julia", "lang": "en", "name": "Julia", "edge_tts": "en-US-AriaNeural"},
+  { "id": "en_w_anna",  "lang": "en", "name": "Jenny", "edge_tts": "en-US-JennyNeural"},
+  { "id": "en_w_nina",  "lang": "en", "name": "Nina",  "edge_tts": "en-GB-SoniaNeural"},
+
+  { "id": "en_m_mark",  "lang": "en", "name": "Mark",  "edge_tts": "en-GB-RyanNeural"},
+  { "id": "en_m_david", "lang": "en", "name": "David", "edge_tts": "en-US-GuyNeural"},
+  { "id": "en_m_alex",  "lang": "en", "name": "Alex",  "edge_tts": "en-US-DavisNeural"},
+  // ── Українська (uk-UA) ──
+  { "id": "uk_w_julia", "lang": "uk", "name": "Julia", "edge_tts": "uk-UA-PolinaNeural"},
+  { "id": "uk_m_mark",  "lang": "uk", "name": "Остап", "edge_tts": "uk-UA-OstapNeural"},
+
+  // ── Російська (ru-RU) ──
+  { "id": "ru_w_julia", "lang": "ru", "name": "Юлия",  "edge_tts": "ru-RU-SvetlanaNeural"},
+  { "id": "ru_m_mark",  "lang": "ru", "name": "Mark",  "edge_tts": "ru-RU-DmitryNeural"},
+];
+
+// Допоміжна функція для offline-пайплайну генерації аудіо (не для
+// браузера — просто зручний lookup при написанні скрипта озвучення):
+//   var c = findCharacter('de_m_mark', 'de');  // -> {id, lang, name, edge_tts}
+function findCharacter(personaId, lang){
+  return CHARACTERS.find(function(c){ return c.id === personaId && c.lang === lang; }) || null;
+}
+
 
 // ════════════════════════════════════════════════════════════════
 //  GRAMMAR — обʼєднаний список граматичних конструкцій рівнів A2.1 + A2.2
@@ -21,6 +73,12 @@ var GRAMMAR = [
       "en": "We use Perfekt to talk about past actions. It is formed using <g>haben</g> or <g>sein</g> in the 2nd position and the <g>Partizip II</g> at the very end of the sentence.<br>Example: Ich <g>habe</g> Deutsch <g>gelernt</g>. Er <g>ist</g> nach Berlin <g>geflogen</g>.",
       "uk": "Перфект використовується для опису дій у минулому. Він складається з допоміжного дієслова <g>haben</g> або <g>sein</g> на другому місці та основного дієслова у формі <g>Partizip II</g> в самому кінці речення.<br>Приклад: Ich <g>habe</g> Deutsch <g>gelernt</g>. Er <g>ist</g> nach Berlin <g>geflogen</g>.",
       "ru": "Перфект используется для описания действий в прошлом. Он состоит из вспомогательного глагола <g>haben</g> или <g>sein</g> на втором месте и основного глагола в форме <g>Partizip II</g> в самом конце предложения.<br>Пример: Ich <g>habe</g> Deutsch <g>gelernt</g>. Er <g>ist</g> nach Berlin <g>geflogen</g>."
+    },
+    "rule": {
+      "de": "<b>Bildung:</b> <g>haben</g> oder <g>sein</g> auf Position 2 + <g>Partizip II</g> am Satzende.<br><br><table><tr><th>ich</th><td>habe / bin</td></tr><tr><th>du</th><td>hast / bist</td></tr><tr><th>er/sie/es</th><td>hat / ist</td></tr><tr><th>wir</th><td>haben / sind</td></tr><tr><th>ihr</th><td>habt / seid</td></tr><tr><th>sie/Sie</th><td>haben / sind</td></tr></table><br><b>Partizip II bilden:</b><br>• regelmäßig: ge + Stamm + t → machen → <g>gemacht</g><br>• unregelmäßig: ge + Stamm + en (oft mit Vokalwechsel) → fahren → <g>gefahren</g><br>• Verben auf -ieren: ohne ge- → studieren → <g>studiert</g><br>• trennbare Verben: Präfix + ge + Stamm → einkaufen → <g>eingekauft</g><br>• untrennbare Verben (be-, ge-, er-, ver-, zer-, ent-, emp-, miss-): ohne ge- → verstehen → <g>verstanden</g><br><br><b>sein oder haben?</b><br><g>sein</g>: Bewegung (gehen, fahren, fliegen), Zustandsänderung (aufwachen, sterben) + die Verben <g>sein, werden, bleiben</g>.<br><g>haben</g>: alle anderen Verben, alle reflexiven Verben und alle Verben mit Akkusativobjekt.<br><br><b>Beispiele:</b><br>Ich <g>habe</g> einen Brief <g>geschrieben</g>.<br>Er <g>ist</g> nach Hause <g>gegangen</g>.",
+      "en": "",
+      "uk": "<b>Утворення:</b> допоміжне дієслово <g>haben</g> (мати) або <g>sein</g> (бути) на другій позиції речення + смислове дієслово у формі <g>Partizip II</g> у самому кінці.<br><br><table><tr><th>ich</th><td>habe / bin</td></tr><tr><th>du</th><td>hast / bist</td></tr><tr><th>er/sie/es</th><td>hat / ist</td></tr><tr><th>wir</th><td>haben / sind</td></tr><tr><th>ihr</th><td>habt / seid</td></tr><tr><th>sie/Sie</th><td>haben / sind</td></tr></table><br><b>Як утворити Partizip II:</b><br>• правильні дієслова: ge + основа + t → machen → <g>gemacht</g><br>• неправильні дієслова: ge + основа + en (часто зі зміною кореневого голосного) → fahren → <g>gefahren</g><br>• дієслова на -ieren: без ge- → studieren → <g>studiert</g><br>• дієслова з відокремлюваним префіксом: префікс + ge + основа → einkaufen → <g>eingekauft</g><br>• дієслова з невідокремлюваним префіксом (be-, ge-, er-, ver-, zer-, ent-, emp-, miss-): без ge- → verstehen → <g>verstanden</g><br><br><b>sein чи haben?</b><br><g>sein</g> вживається з дієсловами руху (gehen, fahren, fliegen), дієсловами зміни стану (aufwachen — прокидатися, sterben — помирати), а також із дієсловами <g>sein, werden, bleiben</g>.<br><g>haben</g> — з усіма іншими дієсловами, усіма зворотними дієсловами та дієсловами зі знахідним відмінком.<br><br><b>Приклади:</b><br>Ich <g>habe</g> einen Brief <g>geschrieben</g>. (Я написав листа.)<br>Er <g>ist</g> nach Hause <g>gegangen</g>. (Він пішов додому.)",
+      "ru": ""
     }
   },
   {
@@ -31,6 +89,12 @@ var GRAMMAR = [
       "en": "Präteritum is another past tense. At the A2 level, we mostly use it only for <g>war</g> (to be) and <g>hatte</g> (to have).<br>Example: Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit.",
       "uk": "Претерит — це ще одна форма минулого часу. На рівні А2 ми зазвичай використовуємо його лише для дієслів <g>war</g> (був/була) та <g>hatte</g> (мав/мала).<br>Приклад: Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit.",
       "ru": "Претерит — это еще одна форма прошедшего времени. На уровне А2 мы обычно используем его только для глаголов <g>war</g> (был/была) и <g>hatte</g> (имел/имела).<br>Пример: Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit."
+    },
+    "rule": {
+      "de": "<b>Bildung der regelmäßigen Verben:</b> Stamm + <g>-te</g> + Endung.<br><br><table><tr><th>ich</th><td>machte</td></tr><tr><th>du</th><td>machtest</td></tr><tr><th>er/sie/es</th><td>machte</td></tr><tr><th>wir</th><td>machten</td></tr><tr><th>ihr</th><td>machtet</td></tr><tr><th>sie/Sie</th><td>machten</td></tr></table><br><b>Unregelmäßige Verben</b> ändern den Stammvokal (Ablaut) und haben oft eigene Formen, z. B. fahren → fuhr, gehen → ging — diese Formen muss man einzeln lernen.<br><br><b>Wichtig für A2:</b> Im Alltag wird meistens das <g>Perfekt</g> benutzt. Aber <g>sein</g>, <g>haben</g> und die Modalverben stehen fast immer im Präteritum.<br><br><table><tr><th></th><th>sein</th><th>haben</th></tr><tr><td>ich</td><td>war</td><td>hatte</td></tr><tr><td>du</td><td>warst</td><td>hattest</td></tr><tr><td>er/sie/es</td><td>war</td><td>hatte</td></tr><tr><td>wir</td><td>waren</td><td>hatten</td></tr><tr><td>ihr</td><td>wart</td><td>hattet</td></tr><tr><td>sie/Sie</td><td>waren</td><td>hatten</td></tr></table><br><b>Beispiel:</b> Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit.",
+      "en": "",
+      "uk": "<b>Утворення правильних дієслів:</b> основа дієслова + суфікс <g>-te</g> + закінчення.<br><br><table><tr><th>ich</th><td>machte</td></tr><tr><th>du</th><td>machtest</td></tr><tr><th>er/sie/es</th><td>machte</td></tr><tr><th>wir</th><td>machten</td></tr><tr><th>ihr</th><td>machtet</td></tr><tr><th>sie/Sie</th><td>machten</td></tr></table><br><b>Неправильні дієслова</b> змінюють кореневий голосний (аблаут) і мають власні форми, наприклад fahren → fuhr, gehen → ging — ці форми потрібно вивчати окремо.<br><br><b>Важливо для рівня A2:</b> У повсякденному мовленні здебільшого використовується <g>Perfekt</g>. Але дієслова <g>sein</g>, <g>haben</g> та модальні дієслова майже завжди вживаються у <g>Präteritum</g>.<br><br><table><tr><th></th><th>sein</th><th>haben</th></tr><tr><td>ich</td><td>war</td><td>hatte</td></tr><tr><td>du</td><td>warst</td><td>hattest</td></tr><tr><td>er/sie/es</td><td>war</td><td>hatte</td></tr><tr><td>wir</td><td>waren</td><td>hatten</td></tr><tr><td>ihr</td><td>wart</td><td>hattet</td></tr><tr><td>sie/Sie</td><td>waren</td><td>hatten</td></tr></table><br><b>Приклад:</b> Letztes Jahr <g>war</g> ich in Deutschland und <g>hatte</g> viel Zeit. (Минулого року я був у Німеччині й мав багато часу.)",
+      "ru": ""
     }
   },
   {
@@ -41,6 +105,12 @@ var GRAMMAR = [
       "en": "Modal verbs (<g>können, müssen, wollen, dürfen, sollen, mögen</g>) change their form and sit in the 2nd position. The main verb goes to the end of the sentence in its infinitive form.<br>Note: 'ich' and 'er/sie/es' forms are identical (ich <g>kann</g>, er <g>kann</g>).",
       "uk": "Модальні дієслова (<g>können, müssen, wollen, dürfen, sollen, mögen</g>) стоять на другому місці у реченні. Друге (основне) дієслово стоїть у початковій формі (інфінітив) в самому кінці.<br>Увага: форми для 'ich' та 'er/sie/es' збігаються (ich <g>kann</g>, er <g>kann</g>).",
       "ru": "Модальные глаголы (<g>können, müssen, wollen, dürfen, sollen, mögen</g>) стоят на втором месте в предложении. Второй (основной) глагол стоит в начальной форме (инфинитив) в самом конце.<br>Внимание: формы для 'ich' и 'er/sie/es' совпадают (ich <g>kann</g>, er <g>kann</g>)."
+    },
+    "rule": {
+      "de": "<b>Position:</b> Modalverb steht auf Position 2 und wird konjugiert. Das zweite (Voll-)Verb steht im <g>Infinitiv</g> ganz am Satzende.<br><br><table><tr><th>Person</th><th>können</th></tr><tr><td>ich</td><td>kann</td></tr><tr><td>du</td><td>kannst</td></tr><tr><td>er/sie/es</td><td>kann</td></tr><tr><td>wir</td><td>können</td></tr><tr><td>ihr</td><td>könnt</td></tr><tr><td>sie/Sie</td><td>können</td></tr></table><br><b>Genauso konjugiert:</b><br>• müssen → muss, musst, muss, müssen, müsst, müssen<br>• wollen → will, willst, will, wollen, wollt, wollen<br>• dürfen → darf, darfst, darf, dürfen, dürft, dürfen<br>• sollen → soll, sollst, soll, sollen, sollt, sollen<br>• mögen → mag, magst, mag, mögen, mögt, mögen<br><br><b>Achtung:</b> Bei allen Modalverben (außer sollen) sind die Formen für <g>ich</g> und <g>er/sie/es</g> identisch, und der Stammvokal ändert sich oft im Singular.<br><br><b>Beispiel:</b> Ich <g>kann</g> gut <g>schwimmen</g>. Wir <g>müssen</g> jetzt <g>gehen</g>.",
+      "en": "",
+      "uk": "<b>Позиція в реченні:</b> модальне дієслово стоїть на другій позиції та змінюється за особами. Друге (основне) дієслово стоїть у формі <g>Infinitiv</g> (початкова форма) у самому кінці речення.<br><br><table><tr><th>Особа</th><th>können</th></tr><tr><td>ich</td><td>kann</td></tr><tr><td>du</td><td>kannst</td></tr><tr><td>er/sie/es</td><td>kann</td></tr><tr><td>wir</td><td>können</td></tr><tr><td>ihr</td><td>könnt</td></tr><tr><td>sie/Sie</td><td>können</td></tr></table><br><b>Так само відмінюються:</b><br>• müssen → muss, musst, muss, müssen, müsst, müssen<br>• wollen → will, willst, will, wollen, wollt, wollen<br>• dürfen → darf, darfst, darf, dürfen, dürft, dürfen<br>• sollen → soll, sollst, soll, sollen, sollt, sollen<br>• mögen → mag, magst, mag, mögen, mögt, mögen<br><br><b>Увага:</b> у всіх модальних дієслів (крім sollen) форми для <g>ich</g> та <g>er/sie/es</g> збігаються, а кореневий голосний часто змінюється в однині.<br><br><b>Приклад:</b> Ich <g>kann</g> gut <g>schwimmen</g>. (Я вмію добре плавати.) Wir <g>müssen</g> jetzt <g>gehen</g>. (Нам зараз треба йти.)",
+      "ru": ""
     }
   },
   {
@@ -51,6 +121,12 @@ var GRAMMAR = [
       "en": "In the past tense, modal verbs lose their umlauts (ä, ö, ü) and add '-te-'.<br>Example: können -> ich <g>konnte</g>, müssen -> ich <g>musste</g>, wollen -> ich <g>wollte</g>.",
       "uk": "У минулому часі модальні дієслова втрачають умлаут (ä, ö, ü) та отримують суфікс '-te-'.<br>Приклад: können -> ich <g>konnte</g>, müssen -> ich <g>musste</g>, wollen -> ich <g>wollte</g>.",
       "ru": "В прошедшем времени модальные глаголы теряют умлаут (ä, ö, ü) и получают суффикс '-te-'.<br>Пример: können -> ich <g>konnte</g>, müssen -> ich <g>musste</g>, wollen -> ich <g>wollte</g>."
+    },
+    "rule": {
+      "de": "<b>Bildung:</b> Modalverben verlieren im Präteritum ihren Umlaut (ä, ö, ü → a, o, u) und bekommen die Endung <g>-te</g> wie regelmäßige Verben.<br><br><table><tr><th>Infinitiv</th><th>Präteritum (ich)</th></tr><tr><td>können</td><td>konnte</td></tr><tr><td>müssen</td><td>musste</td></tr><tr><td>wollen</td><td>wollte</td></tr><tr><td>dürfen</td><td>durfte</td></tr><tr><td>sollen</td><td>sollte</td></tr><tr><td>mögen</td><td>mochte</td></tr></table><br><b>Weitere Personen (Beispiel können):</b> du konntest, er/sie/es konnte, wir konnten, ihr konntet, sie/Sie konnten.<br><br><b>Beispiel:</b> Als Kind <g>konnte</g> ich nicht schwimmen. Ich <g>musste</g> jeden Tag früh aufstehen.",
+      "en": "",
+      "uk": "<b>Утворення:</b> у <g>Präteritum</g> модальні дієслова втрачають умлаут (ä, ö, ü → a, o, u) і отримують закінчення <g>-te</g>, як і правильні дієслова.<br><br><table><tr><th>Infinitiv</th><th>Präteritum (ich)</th></tr><tr><td>können</td><td>konnte</td></tr><tr><td>müssen</td><td>musste</td></tr><tr><td>wollen</td><td>wollte</td></tr><tr><td>dürfen</td><td>durfte</td></tr><tr><td>sollen</td><td>sollte</td></tr><tr><td>mögen</td><td>mochte</td></tr></table><br><b>Інші особи (приклад können):</b> du konntest, er/sie/es konnte, wir konnten, ihr konntet, sie/Sie konnten.<br><br><b>Приклад:</b> Als Kind <g>konnte</g> ich nicht schwimmen. (У дитинстві я не вмів плавати.) Ich <g>musste</g> jeden Tag früh aufstehen. (Мені доводилось щодня рано вставати.)",
+      "ru": ""
     }
   },
   {
@@ -61,6 +137,12 @@ var GRAMMAR = [
       "en": "The conjunction <g>weil</g> answers the question 'Why?'. In a <g>weil</g>-clause, the conjugated verb moves to the very end of the sentence.<br>Example: Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>.",
       "uk": "Сполучник <g>weil</g> відповідає на питання 'Чому?'. У підрядному реченні після <g>weil</g> змінюване дієслово йде на самий кінець речення.<br>Приклад: Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>.",
       "ru": "Союз <g>weil</g> отвечает на вопрос 'Почему?'. В придаточном предложении после <g>weil</g> спрягаемый глагол уходит в самый конец предложения.<br>Пример: Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>."
+    },
+    "rule": {
+      "de": "<b>Wortstellung:</b> Hauptsatz, + <g>weil</g> + Subjekt + (weitere Angaben) + ... + Verb (konjugiert, ganz am Ende).<br><br><table><tr><th>Position</th><th>weil</th><th>Subjekt</th><th>Angaben</th><th>Verb</th></tr><tr><td>Beispiel</td><td>weil</td><td>ich</td><td>in Deutschland</td><td>lebe</td></tr></table><br><b>Achtung:</b> Bei zwei Verben (z. B. Modalverb + Infinitiv oder Perfekt) stehen beide Verben zusammen am Satzende, das konjugierte Verb ganz zuletzt.<br><br><b>Beispiele:</b><br>Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>.<br>Sie ist müde, <g>weil</g> sie viel <g>gearbeitet hat</g>.",
+      "en": "",
+      "uk": "<b>Порядок слів:</b> головне речення, + <g>weil</g> (тому що) + підмет + (інші члени речення) + ... + дієслово (у зміненій формі, у самому кінці).<br><br><table><tr><th>Позиція</th><th>weil</th><th>Підмет</th><th>Інше</th><th>Дієслово</th></tr><tr><td>Приклад</td><td>weil</td><td>ich</td><td>in Deutschland</td><td>lebe</td></tr></table><br><b>Увага:</b> якщо в реченні два дієслова (наприклад, модальне дієслово + інфінітив, або Perfekt), обидва йдуть в кінці речення разом, а змінюване дієслово — останнім.<br><br><b>Приклади:</b><br>Ich lerne Deutsch, <g>weil</g> ich in Deutschland leben <g>möchte</g>. (Я вивчаю німецьку, тому що хочу жити в Німеччині.)<br>Sie ist müde, <g>weil</g> sie viel <g>gearbeitet hat</g>. (Вона втомлена, тому що багато працювала.)",
+      "ru": ""
     }
   },
   {
@@ -71,6 +153,12 @@ var GRAMMAR = [
       "en": "The conjunction <g>dass</g> connects clauses after verbs of thinking, saying, or feeling (glauben, sagen, wissen). The conjugated verb goes to the end.<br>Example: Ich weiß, <g>dass</g> du recht <g>hast</g>.",
       "uk": "Сполучник <g>dass</g> зʼєднує речення після дієслів думки, мовлення або відчуття (glauben, sagen, wissen). Змінюване дієслово стоїть у кінці.<br>Приклад: Ich weiß, <g>dass</g> du recht <g>hast</g>.",
       "ru": "Союз <g>dass</g> соединяет предложения после глаголов мысли, речи или чувства (glauben, sagen, wissen). Спрягаемый глагол стоит в конце.<br>Пример: Ich weiß, <g>dass</g> du recht <g>hast</g>."
+    },
+    "rule": {
+      "de": "<b>Wortstellung:</b> genau wie bei <g>weil</g> — nach <g>dass</g> steht das konjugierte Verb ganz am Ende des Nebensatzes.<br><br><b>Verwendung:</b> <g>dass</g> verbindet einen Hauptsatz mit einem Nebensatz nach Verben des Denkens, Sagens oder Fühlens.<br><br><table><tr><th>Verben mit dass</th></tr><tr><td>glauben, denken, meinen</td></tr><tr><td>sagen, erzählen, antworten</td></tr><tr><td>wissen, finden, hoffen</td></tr><tr><td>froh sein, sicher sein</td></tr></table><br><b>Beispiele:</b><br>Ich weiß, <g>dass</g> du recht <g>hast</g>.<br>Er sagt, <g>dass</g> er morgen <g>kommt</g>.",
+      "en": "",
+      "uk": "<b>Порядок слів:</b> так само, як і з <g>weil</g> — після <g>dass</g> змінюване дієслово стоїть у самому кінці підрядного речення.<br><br><b>Вживання:</b> сполучник <g>dass</g> (що) зʼєднує головне речення з підрядним після дієслів думки, мовлення чи відчуття.<br><br><table><tr><th>Дієслова з dass</th></tr><tr><td>glauben, denken, meinen (вважати, думати)</td></tr><tr><td>sagen, erzählen, antworten (казати, розповідати, відповідати)</td></tr><tr><td>wissen, finden, hoffen (знати, вважати, сподіватись)</td></tr><tr><td>froh sein, sicher sein (радіти, бути впевненим)</td></tr></table><br><b>Приклади:</b><br>Ich weiß, <g>dass</g> du recht <g>hast</g>. (Я знаю, що ти правий.)<br>Er sagt, <g>dass</g> er morgen <g>kommt</g>. (Він каже, що прийде завтра.)",
+      "ru": ""
     }
   },
   {
@@ -81,6 +169,12 @@ var GRAMMAR = [
       "en": "We use <g>wenn</g> for conditions (If...) or repeated actions in the present/past. The verb goes to the end.<br>Example: <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause.",
       "uk": "Ми використовуємо <g>wenn</g> для умов (Якщо...) або для повторюваних дій у теперішньому чи минулому часі (Коли...). Дієслово йде на кінець.<br>Приклад: <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause.",
       "ru": "Мы используем <g>wenn</g> для условий (Если...) или для повторяющихся действий в настоящем или прошлом (Когда...). Глагол уходит на конец.<br>Пример: <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause."
+    },
+    "rule": {
+      "de": "<b>Wortstellung:</b> <g>wenn</g> + Subjekt + ... + Verb (Ende). Der Hauptsatz danach beginnt oft direkt mit dem Verb (der Nebensatz besetzt Position 1).<br><br><b>Zwei Bedeutungen:</b><br>1) <b>Bedingung</b> (Wenn... dann): <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause.<br>2) <b>Wiederholung</b> in Gegenwart/Vergangenheit (= immer wenn): <g>Wenn</g> ich Zeit <g>habe</g>, lese ich.<br><br><table><tr><th>Nebensatz</th><th>Hauptsatz</th></tr><tr><td>Wenn es regnet,</td><td>bleibe ich zu Hause.</td></tr></table><br><b>Achtung:</b> Nach dem Komma folgt gleich das Verb (Verb-Subjekt-Umstellung), weil der Nebensatz die Position 1 im Hauptsatz besetzt.",
+      "en": "",
+      "uk": "<b>Порядок слів:</b> <g>wenn</g> + підмет + ... + дієслово (у кінці). Головне речення після коми часто починається одразу з дієслова (підрядне речення займає першу позицію).<br><br><b>Два значення:</b><br>1) <b>Умова</b> (Якщо... то): <g>Wenn</g> es regnet, <g>bleibe</g> ich zu Hause. (Якщо йде дощ, я залишаюсь вдома.)<br>2) <b>Повторювана дія</b> у теперішньому чи минулому (= щоразу, коли): <g>Wenn</g> ich Zeit <g>habe</g>, lese ich. (Коли в мене є час, я читаю.)<br><br><table><tr><th>Підрядне речення</th><th>Головне речення</th></tr><tr><td>Wenn es regnet,</td><td>bleibe ich zu Hause.</td></tr></table><br><b>Увага:</b> одразу після коми йде дієслово (інверсія дієслово-підмет), тому що підрядне речення займає першу позицію в головному реченні.",
+      "ru": ""
     }
   },
   {
@@ -91,6 +185,12 @@ var GRAMMAR = [
       "en": "For single past events we use <g>als</g>, for repeated past events we use <g>wenn</g>. <g>Schon</g> means already (sooner/more than expected), <g>erst</g> means only/not until (later/less).<br>Example: <g>Als</g> ich Kind war, war ich <g>erst</g> einmal in Berlin.",
       "uk": "Для одноразових подій у минулому використовуємо <g>als</g>, для повторюваних — <g>wenn</g>. Слово <g>schon</g> означає 'вже' (раніше, ніж очікувалось), а <g>erst</g> — 'лише / тільки' (пізніше або менше).<br>Приклад: <g>Als</g> ich Kind war, war ich <g>erst</g> einmal in Berlin.",
       "ru": "Для однократных событий в прошлом используем <g>als</g>, для повторяющихся — <g>wenn</g>. Слово <g>schon</g> означает 'уже' (раньше, чем ожидалось), а <g>erst</g> — 'только / всего лишь' (позже или меньше).<br>Пример: <g>Als</g> ich Kind war, war ich <g>erst</g> einmal in Berlin."
+    },
+    "rule": {
+      "de": "<b>als vs. wenn (Vergangenheit):</b><br><table><tr><th>als</th><td>ein einmaliges Ereignis in der Vergangenheit</td></tr><tr><th>wenn</th><td>ein wiederholtes Ereignis in der Vergangenheit (= jedes Mal)</td></tr></table><br><b>Beispiele:</b><br><g>Als</g> ich 18 war, habe ich meinen Führerschein gemacht. (einmal)<br><g>Wenn</g> ich früher Ferien hatte, bin ich immer zu meiner Oma gefahren. (mehrmals)<br><br><b>schon vs. erst:</b><br><table><tr><th>schon</th><td>früher / mehr als erwartet</td></tr><tr><th>erst</th><td>später / weniger als erwartet, noch nicht ganz</td></tr></table><br><b>Beispiele:</b><br>Es ist <g>schon</g> 20 Uhr! (das ist spät)<br>Es ist <g>erst</g> 8 Uhr. (das ist früh)<br>Ich war <g>schon</g> dreimal in Berlin. / Ich war <g>erst</g> einmal in Berlin.",
+      "en": "",
+      "uk": "<b>als чи wenn (минулий час):</b><br><table><tr><th>als</th><td>одноразова подія в минулому</td></tr><tr><th>wenn</th><td>повторювана подія в минулому (= щоразу)</td></tr></table><br><b>Приклади:</b><br><g>Als</g> ich 18 war, habe ich meinen Führerschein gemacht. (одного разу — коли мені було 18)<br><g>Wenn</g> ich früher Ferien hatte, bin ich immer zu meiner Oma gefahren. (кілька разів — щоразу на канікулах)<br><br><b>schon чи erst:</b><br><table><tr><th>schon</th><td>раніше / більше, ніж очікувалось (вже)</td></tr><tr><th>erst</th><td>пізніше / менше, ніж очікувалось, ще не зовсім (лише, тільки)</td></tr></table><br><b>Приклади:</b><br>Es ist <g>schon</g> 20 Uhr! (вже 20:00 — це пізно)<br>Es ist <g>erst</g> 8 Uhr. (лише 8:00 — це рано)<br>Ich war <g>schon</g> dreimal in Berlin. (Я вже був у Берліні тричі.) / Ich war <g>erst</g> einmal in Berlin. (Я був у Берліні лише один раз.)",
+      "ru": ""
     }
   },
   {
@@ -101,6 +201,12 @@ var GRAMMAR = [
       "en": "Some verbs always require an object in the dative case (Question: To whom?). Key verbs: <g>helfen, danken, gefallen, gehören, schmecken</g>.<br>Example: Ich helfe <g>dem</g> Mann (Masculine: der -> dem).",
       "uk": "Деякі дієслова завжди вимагають після себе давального відмінка (Питання: Кому?). Важливі дієслова: <g>helfen, danken, gefallen, gehören, schmecken</g>.<br>Приклад: Ich helfe <g>dem</g> Mann (Чоловічий рід: der -> dem).",
       "ru": "Некоторые глаголы всегда требуют после себя дательного падежа (Вопрос: Кому?). Важные глаголы: <g>helfen, danken, gefallen, gehören, schmecken</g>.<br>Пример: Ich helfe <g>dem</g> Mann (Мужской род: der -> dem)."
+    },
+    "rule": {
+      "de": "<b>Frage:</b> Wem? — diese Verben haben immer ein Objekt im <g>Dativ</g>, nie im Akkusativ.<br><br><table><tr><th>Verb</th><th>Bedeutung</th></tr><tr><td>helfen</td><td>помагати</td></tr><tr><td>danken</td><td>дякувати</td></tr><tr><td>gefallen</td><td>подобатись</td></tr><tr><td>gehören</td><td>належати</td></tr><tr><td>schmecken</td><td>смакувати</td></tr><tr><td>gratulieren</td><td>вітати</td></tr><tr><td>antworten</td><td>відповідати</td></tr></table><br><b>Artikel im Dativ:</b><br><table><tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr><tr><td>bestimmt</td><td>dem</td><td>der</td><td>dem</td><td>den (+n)</td></tr><tr><td>unbestimmt</td><td>einem</td><td>einer</td><td>einem</td><td>–</td></tr></table><br><b>Beispiele:</b><br>Ich helfe <g>dem</g> Mann.<br>Das Buch gehört <g>der</g> Lehrerin.<br>Die Suppe schmeckt <g>den</g> Kindern.",
+      "en": "",
+      "uk": "<b>Питання:</b> Кому? — ці дієслова завжди вимагають додатка у <g>давальному відмінку</g> (Dativ), ніколи у знахідному.<br><br><table><tr><th>Дієслово</th><th>Значення</th></tr><tr><td>helfen</td><td>допомагати</td></tr><tr><td>danken</td><td>дякувати</td></tr><tr><td>gefallen</td><td>подобатись</td></tr><tr><td>gehören</td><td>належати</td></tr><tr><td>schmecken</td><td>смакувати, бути смачним</td></tr><tr><td>gratulieren</td><td>вітати</td></tr><tr><td>antworten</td><td>відповідати</td></tr></table><br><b>Артикль у давальному відмінку:</b><br><table><tr><th></th><th>чол. рід</th><th>жін. рід</th><th>сер. рід</th><th>множина</th></tr><tr><td>означений</td><td>dem</td><td>der</td><td>dem</td><td>den (+n)</td></tr><tr><td>неозначений</td><td>einem</td><td>einer</td><td>einem</td><td>–</td></tr></table><br><b>Приклади:</b><br>Ich helfe <g>dem</g> Mann. (Я допомагаю чоловікові.)<br>Das Buch gehört <g>der</g> Lehrerin. (Книжка належить вчительці.)<br>Die Suppe schmeckt <g>den</g> Kindern. (Суп смакує дітям.)",
+      "ru": ""
     }
   },
   {
@@ -111,6 +217,12 @@ var GRAMMAR = [
       "en": "Verbs like <g>geben, zeigen, schenken, bringen</g> have two objects: the person is in the <g>dative</g> (To whom?), and the thing is in the <g>accusative</g> (What?).<br>Example: Ich gebe <g>dem Kind</g> (Dative) <g>einen Ball</g> (Accusative).",
       "uk": "Дієслова на кшталт <g>geben, zeigen, schenken, bringen</g> мають два додатки: особа завжди стоїть у <g>давальному</g> відмінку (Кому?), а річ — у <g>знахідному</g> (Що?).<br>Приклад: Ich gebe <g>dem Kind</g> (Давальний) <g>einen Ball</g> (Знахідний).",
       "ru": "Глаголы вроде <g>geben, zeigen, schenken, bringen</g> имеют два дополнения: лицо всегда стоит в <g>дательном</g> падеже (Кому?), а вещь — в <g>винительном</g> (Что?).<br>Пример: Ich gebe <g>dem Kind</g> (Дательный) <g>einen Ball</g> (Винительный)."
+    },
+    "rule": {
+      "de": "<b>Struktur:</b> diese Verben haben zwei Objekte — Person im <g>Dativ</g> (Wem?) und Sache im <g>Akkusativ</g> (Was?).<br><br><table><tr><th>Verb</th><th>Bedeutung</th></tr><tr><td>geben</td><td>давати</td></tr><tr><td>zeigen</td><td>показувати</td></tr><tr><td>schenken</td><td>дарувати</td></tr><tr><td>bringen</td><td>приносити</td></tr><tr><td>erklären</td><td>пояснювати</td></tr><tr><td>schreiben</td><td>писати</td></tr></table><br><b>Reihenfolge der Objekte:</b><br><table><tr><th>zwei Nomen</th><td>Dativ vor Akkusativ</td></tr><tr><th>Nomen + Pronomen</th><td>Pronomen (egal welcher Kasus) vor Nomen</td></tr><tr><th>zwei Pronomen</th><td>Akkusativ vor Dativ</td></tr></table><br><b>Beispiele:</b><br>Ich gebe <g>dem Kind</g> (Dativ) <g>einen Ball</g> (Akkusativ).<br>Ich gebe <g>ihm</g> (Pronomen) <g>einen Ball</g>.<br>Ich gebe <g>ihn</g> (Akk.) <g>ihm</g> (Dat.).",
+      "en": "",
+      "uk": "<b>Структура:</b> ці дієслова мають два додатки — особа у <g>давальному відмінку</g> (Кому?) і річ у <g>знахідному відмінку</g> (Що?).<br><br><table><tr><th>Дієслово</th><th>Значення</th></tr><tr><td>geben</td><td>давати</td></tr><tr><td>zeigen</td><td>показувати</td></tr><tr><td>schenken</td><td>дарувати</td></tr><tr><td>bringen</td><td>приносити</td></tr><tr><td>erklären</td><td>пояснювати</td></tr><tr><td>schreiben</td><td>писати</td></tr></table><br><b>Порядок додатків у реченні:</b><br><table><tr><th>два іменники</th><td>давальний перед знахідним</td></tr><tr><th>іменник + займенник</th><td>займенник (незалежно від відмінка) стоїть перед іменником</td></tr><tr><th>два займенники</th><td>знахідний перед давальним</td></tr></table><br><b>Приклади:</b><br>Ich gebe <g>dem Kind</g> (давальний) <g>einen Ball</g> (знахідний). (Я даю дитині мʼяч.)<br>Ich gebe <g>ihm</g> (займенник) <g>einen Ball</g>. (Я даю йому мʼяч.)<br>Ich gebe <g>ihn</g> (знах.) <g>ihm</g> (дав.). (Я даю його йому.)",
+      "ru": ""
     }
   },
   {
@@ -121,6 +233,12 @@ var GRAMMAR = [
       "en": "Nine prepositions (e.g., <g>in, auf, an, unter</g>) change case: Where to? (movement/action) -> <g>Accusative</g>. Where? (location/rest) -> <g>Dative</g>.<br>Example: Ich hänge das Bild <g>an die</g> Wand (Acc.). Das Bild hängt <g>an der</g> Wand (Dat.).",
       "uk": "Девʼять прийменників (напр., <g>in, auf, an, unter</g>) змінюють відмінок: Куди? (рух/дія) -> <g>Знахідний</g>. Де? (статичне місце) -> <g>Давальний</g>.<br>Приклад: Ich hänge das Bild <g>an die</g> Wand (Знахідний). Das Bild hängt <g>an der</g> Wand (Давальний).",
       "ru": "Девять предлогов (напр., <g>in, auf, an, unter</g>) меняют падеж: Куда? (движение/действие) -> <g>Винительный</g>. Где? (положение/покой) -> <g>Дательный</g>.<br>Пример: Ich hänge das Bild <g>an die</g> Wand (Вин.). Das Bild hängt <g>an der</g> Wand (Дат.)."
+    },
+    "rule": {
+      "de": "<b>Die neun Wechselpräpositionen:</b> <g>an, auf, hinter, in, neben, über, unter, vor, zwischen</g>.<br><br><table><tr><th>Frage</th><th>Kasus</th><th>Bedeutung</th></tr><tr><td>Wohin?</td><td><g>Akkusativ</g></td><td>Bewegung, Richtung, Ziel</td></tr><tr><td>Wo?</td><td><g>Dativ</g></td><td>Position, Ruhe, Ort</td></tr></table><br><b>Merksatz:</b> Wenn sich etwas bewegt und sein Ort sich ändert → Akkusativ. Wenn etwas an einem Ort bleibt/ist → Dativ.<br><br><table><tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th></tr><tr><td>Akk.</td><td>den</td><td>die</td><td>das</td></tr><tr><td>Dat.</td><td>dem</td><td>der</td><td>dem</td></tr></table><br><b>Beispiele:</b><br>Ich hänge das Bild <g>an die</g> Wand. (Akk. — Bewegung)<br>Das Bild hängt <g>an der</g> Wand. (Dat. — Position)<br>Ich gehe <g>ins</g> Kino. / Ich bin <g>im</g> Kino.",
+      "en": "",
+      "uk": "<b>Девʼять прийменників подвійного керування:</b> <g>an, auf, hinter, in, neben, über, unter, vor, zwischen</g>.<br><br><table><tr><th>Питання</th><th>Відмінок</th><th>Значення</th></tr><tr><td>Куди?</td><td><g>Знахідний</g></td><td>рух, напрямок, мета</td></tr><tr><td>Де?</td><td><g>Давальний</g></td><td>положення, спокій, місце</td></tr></table><br><b>Правило для запамʼятовування:</b> якщо предмет рухається і змінює місце → знахідний відмінок. Якщо предмет перебуває на місці/у стані спокою → давальний відмінок.<br><br><table><tr><th></th><th>чол. рід</th><th>жін. рід</th><th>сер. рід</th></tr><tr><td>Знах.</td><td>den</td><td>die</td><td>das</td></tr><tr><td>Дав.</td><td>dem</td><td>der</td><td>dem</td></tr></table><br><b>Приклади:</b><br>Ich hänge das Bild <g>an die</g> Wand. (Знахідний — рух, я вішаю картину)<br>Das Bild hängt <g>an der</g> Wand. (Давальний — картина висить, статичний стан)<br>Ich gehe <g>ins</g> Kino. (Іду в кіно) / Ich bin <g>im</g> Kino. (Я в кіно)",
+      "ru": ""
     }
   },
   {
@@ -131,6 +249,12 @@ var GRAMMAR = [
       "en": "We use prepositions like <g>zu, nach, in, an, über</g> to describe directions. <g>Zu</g> is used for people or businesses (+ Dative), <g>nach</g> for cities and countries without articles.<br>Example: Ich gehe <g>zum</g> Arzt. Ich fliege <g>nach</g> Paris.",
       "uk": "Ми використовуємо прийменники <g>zu, nach, in, an, über</g> для вказівки напрямку. Напрямок <g>zu</g> вживаємо до людей або установ (+ Давальний), а <g>nach</g> — до міст і країн без артикля.<br>Приклад: Ich gehe <g>zum</g> Arzt. Ich fliege <g>nach</g> Paris.",
       "ru": "Мы используем предлоги <g>zu, nach, in, an, über</g> для указания направления. Направление <g>zu</g> используется к людям или учреждениям (+ Дательный), а <g>nach</g> — к городам и странам без артикля.<br>Пример: Ich gehe <g>zum</g> Arzt. Ich fliege <g>nach</g> Paris."
+    },
+    "rule": {
+      "de": "<b>Wichtige Präpositionen für Richtungen:</b><br><table><tr><th>Präposition</th><th>Verwendung</th></tr><tr><td><g>zu</g> (+ Dativ)</td><td>zu Personen, Institutionen, Geschäften</td></tr><tr><td><g>nach</g></td><td>zu Städten/Ländern ohne Artikel, Himmelsrichtungen</td></tr><tr><td><g>in</g> (+ Akk.)</td><td>zu Ländern mit Artikel, geschlossenen Räumen</td></tr><tr><td><g>an</g> (+ Akk.)</td><td>an Grenzen, Ufer, Flüsse</td></tr><tr><td><g>über</g> (+ Akk.)</td><td>über eine Route/durch einen Ort</td></tr></table><br><b>Kontraktionen:</b> zu + dem = <g>zum</g>, zu + der = <g>zur</g>, in + das = <g>ins</g>, an + das = <g>ans</g>.<br><br><b>Beispiele:</b><br>Ich gehe <g>zum</g> Arzt. Ich fliege <g>nach</g> Paris. Ich fahre <g>in die</g> Schweiz. Wir fahren <g>an den</g> Rhein.",
+      "en": "",
+      "uk": "<b>Основні прийменники напрямку:</b><br><table><tr><th>Прийменник</th><th>Вживання</th></tr><tr><td><g>zu</g> (+ давальний)</td><td>до людей, установ, магазинів</td></tr><tr><td><g>nach</g></td><td>до міст/країн без артикля, сторони світу</td></tr><tr><td><g>in</g> (+ знахідний)</td><td>до країн з артиклем, у закриті приміщення</td></tr><tr><td><g>an</g> (+ знахідний)</td><td>до меж, берегів, річок</td></tr><tr><td><g>über</g> (+ знахідний)</td><td>через маршрут/певне місце</td></tr></table><br><b>Стягнені форми:</b> zu + dem = <g>zum</g>, zu + der = <g>zur</g>, in + das = <g>ins</g>, an + das = <g>ans</g>.<br><br><b>Приклади:</b><br>Ich gehe <g>zum</g> Arzt. (Я йду до лікаря.) Ich fliege <g>nach</g> Paris. (Я лечу до Парижа.) Ich fahre <g>in die</g> Schweiz. (Я їду до Швейцарії.) Wir fahren <g>an den</g> Rhein. (Ми їдемо на Рейн.)",
+      "ru": ""
     }
   },
   {
@@ -141,6 +265,12 @@ var GRAMMAR = [
       "en": "Prepositions for points in time or duration: <g>vor</g> (past event), <g>nach</g> (after an event), <g>seit</g> (started in the past, still ongoing + Dative), <g>für</g> (for a duration + Accusative).<br>Example: <g>Seit einem</g> Jahr lerne ich Deutsch <g>für einen</g> Monat.",
       "uk": "Прийменники для позначення часу та тривалості: <g>vor</g> (до/тому назад), <g>nach</g> (після), <g>seit</g> (з певного часу в минулому і триває досі + Давальний), <g>für</g> (на якийсь час + Знахідний).<br>Приклад: <g>Seit einem</g> Jahr lerne ich Deutsch <g>für einen</g> Monat.",
       "ru": "Предлоги для обозначения времени и длительности: <g>vor</g> (до/назад), <g>nach</g> (после), <g>seit</g> (с какого-то времени в прошлом и продолжается сейчас + Дательный), <g>für</g> (на какое-то время + Винительный).<br>Пример: <g>Seit einem</g> Jahr lerne ich Deutsch <g>für einen</g> Monat."
+    },
+    "rule": {
+      "de": "<table><tr><th>Präposition</th><th>Kasus</th><th>Bedeutung</th></tr><tr><td><g>vor</g></td><td>Dativ</td><td>Zeitpunkt in der Vergangenheit (vor 2 Jahren)</td></tr><tr><td><g>nach</g></td><td>Dativ</td><td>nach einem Ereignis, danach</td></tr><tr><td><g>seit</g></td><td>Dativ</td><td>Beginn in der Vergangenheit, dauert bis jetzt</td></tr><tr><td><g>für</g></td><td>Akkusativ</td><td>geplante Dauer</td></tr><tr><td><g>bis</g></td><td>Akkusativ</td><td>Endpunkt</td></tr></table><br><b>Achtung seit vs. für:</b> <g>seit</g> = Beginn einer Handlung, die bis heute dauert (Präsens!). <g>für</g> = geplante/abgeschlossene Dauer.<br><br><b>Beispiele:</b><br><g>Seit einem</g> Jahr lerne ich Deutsch.<br>Ich fahre <g>für einen</g> Monat nach Berlin.<br><g>Vor</g> zwei Jahren habe ich geheiratet.",
+      "en": "",
+      "uk": "<table><tr><th>Прийменник</th><th>Відмінок</th><th>Значення</th></tr><tr><td><g>vor</g></td><td>давальний</td><td>момент часу в минулому (два роки тому)</td></tr><tr><td><g>nach</g></td><td>давальний</td><td>після події, потім</td></tr><tr><td><g>seit</g></td><td>давальний</td><td>початок дії в минулому, що триває й досі</td></tr><tr><td><g>für</g></td><td>знахідний</td><td>запланована тривалість</td></tr><tr><td><g>bis</g></td><td>знахідний</td><td>кінцева точка</td></tr></table><br><b>Увага, seit чи für:</b> <g>seit</g> — початок дії, яка триває й досі (використовується з теперішнім часом!). <g>für</g> — запланована або завершена тривалість.<br><br><b>Приклади:</b><br><g>Seit einem</g> Jahr lerne ich Deutsch. (Я вивчаю німецьку вже рік.)<br>Ich fahre <g>für einen</g> Monat nach Berlin. (Я їду до Берліна на місяць.)<br><g>Vor</g> zwei Jahren habe ich geheiratet. (Два роки тому я одружився/вийшла заміж.)",
+      "ru": ""
     }
   },
   {
@@ -151,6 +281,12 @@ var GRAMMAR = [
       "en": "When a word like 'ein' or 'mein' comes before an adjective, the adjective in the nominative takes the gender signal: masculine (<g>-er</g>), neutral (<g>-es</g>), feminine (<g>-e</g>). In the accusative masculine, it is always <g>-en</g>.<br>Example: Das ist ein <g>guter</g> Mann. Ich habe ein <g>schönes</g> Auto.",
       "uk": "Якщо перед прикметником стоїть слово 'ein' або 'mein', прикметник у називному відмінку переймає закінчення роду: чоловічий (<g>-er</g>), середній (<g>-es</g>), жіночий (<g>-e</g>). У знахідному відмінку чол. роду завжди буде <g>-en</g>.<br>Приклад: Das ist ein <g>guter</g> Mann. Ich habe ein <g>schönes</g> Auto.",
       "ru": "Если перед прилагательным стоит слово 'ein' или 'mein', прилагательное в именительном падеже принимает окончание рода: мужской (<g>-er</g>), средний (<g>-es</g>), женский (<g>-e</g>). В винительном падеже муж. рода всегда будет <g>-en</g>.<br>Пример: Das ist ein <g>guter</g> Mann. Ich habe ein <g>schönes</g> Auto."
+    },
+    "rule": {
+      "de": "<b>Regel:</b> Nach 'ein/mein/dein...' zeigt das Adjektiv im Nominativ und Akkusativ (außer Maskulin Akk.) das Genus-Signal, das der Artikel nicht zeigen kann.<br><br><table><tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr><tr><td>Nominativ</td><td>-er</td><td>-e</td><td>-es</td><td>-en</td></tr><tr><td>Akkusativ</td><td>-en</td><td>-e</td><td>-es</td><td>-en</td></tr><tr><td>Dativ</td><td>-en</td><td>-en</td><td>-en</td><td>-en</td></tr></table><br><b>Merksatz:</b> Im Dativ und Plural ist es fast immer <g>-en</g>. Nur im Nominativ (und Akk. feminin/neutral) unterscheiden sich die Endungen nach Genus.<br><br><b>Beispiele:</b><br>Das ist ein <g>guter</g> Mann. (Nom. mask.)<br>Ich habe ein <g>schönes</g> Auto. (Akk. neutral)<br>Ich habe einen <g>guten</g> Freund. (Akk. mask.)<br>Mit meinem <g>neuen</g> Auto. (Dativ)",
+      "en": "",
+      "uk": "<b>Правило:</b> після 'ein/mein/dein...' прикметник у називному та знахідному (крім чол. роду знахідного) відмінках бере на себе сигнал роду, який не показує сам артикль.<br><br><table><tr><th></th><th>чол. рід</th><th>жін. рід</th><th>сер. рід</th><th>множина</th></tr><tr><td>Називний</td><td>-er</td><td>-e</td><td>-es</td><td>-en</td></tr><tr><td>Знахідний</td><td>-en</td><td>-e</td><td>-es</td><td>-en</td></tr><tr><td>Давальний</td><td>-en</td><td>-en</td><td>-en</td><td>-en</td></tr></table><br><b>Для запамʼятовування:</b> у давальному відмінку та множині майже завжди <g>-en</g>. Лише в називному (і знахідному жін./сер. роду) закінчення відрізняються залежно від роду.<br><br><b>Приклади:</b><br>Das ist ein <g>guter</g> Mann. (Називний, чол. рід — Це хороший чоловік.)<br>Ich habe ein <g>schönes</g> Auto. (Знахідний, сер. рід — У мене гарна машина.)<br>Ich habe einen <g>guten</g> Freund. (Знахідний, чол. рід — У мене хороший друг.)<br>Mit meinem <g>neuen</g> Auto. (Давальний — Моєю новою машиною.)",
+      "ru": ""
     }
   },
   {
@@ -161,6 +297,12 @@ var GRAMMAR = [
       "en": "We use <g>Was für ein...</g> to ask about characteristics or options (What kind of...?). The word 'ein' changes based on case and gender.<br>Example: <g>Was für ein</g> Auto hast du? (Neutral, Accusative).",
       "uk": "За допомогою <g>Was für ein...</g> запитують про якість або вибір речі (Що це за...? Який саме...?). Слово 'ein' змінюється залежно від відмінка та роду.<br>Приклад: <g>Was für ein</g> Auto hast du? (Середній рід, Знахідний відмінок).",
       "ru": "С помощью <g>Was für ein...</g> спрашивают о качестве или выборе вещи (Что за...? Какой именно...?). Слово 'ein' меняется в зависимости от падежа и рода.<br>Пример: <g>Was für ein</g> Auto hast du? (Средний род, Винительный падеж)."
+    },
+    "rule": {
+      "de": "<b>Bedeutung:</b> <g>Was für ein...?</g> fragt nach Eigenschaften, einer Art oder einer Auswahl (nicht nach einer bestimmten Menge — dafür nutzt man 'welcher').<br><br><table><tr><th>Kasus</th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr><tr><td>Nominativ</td><td>was für ein</td><td>was für eine</td><td>was für ein</td><td>was für</td></tr><tr><td>Akkusativ</td><td>was für einen</td><td>was für eine</td><td>was für ein</td><td>was für</td></tr></table><br><b>Achtung:</b> 'für' hat hier keinen Einfluss auf den Kasus — der Kasus hängt vom Verb im Satz ab!<br><br><b>Beispiele:</b><br><g>Was für ein</g> Auto hast du? (Akk. neutral)<br><g>Was für eine</g> Musik magst du?<br><g>Was für</g> Bücher liest du gern? (Plural)",
+      "en": "",
+      "uk": "<b>Значення:</b> питання <g>Was für ein...?</g> (Який саме...? Що за...?) запитує про якість, тип або вибір речі (не про конкретну кількість — для цього використовується 'welcher').<br><br><table><tr><th>Відмінок</th><th>чол. рід</th><th>жін. рід</th><th>сер. рід</th><th>множина</th></tr><tr><td>Називний</td><td>was für ein</td><td>was für eine</td><td>was für ein</td><td>was für</td></tr><tr><td>Знахідний</td><td>was für einen</td><td>was für eine</td><td>was für ein</td><td>was für</td></tr></table><br><b>Увага:</b> слово 'für' тут не впливає на відмінок — відмінок залежить від дієслова в реченні!<br><br><b>Приклади:</b><br><g>Was für ein</g> Auto hast du? (Знахідний, сер. рід — Яку саме машину ти маєш?)<br><g>Was für eine</g> Musik magst du? (Яку музику тобі подобається?)<br><g>Was für</g> Bücher liest du gern? (множина — Які книжки ти любиш читати?)",
+      "ru": ""
     }
   },
   {
@@ -171,6 +313,12 @@ var GRAMMAR = [
       "en": "The comparative form adds <g>-er</g> (often with an umlaut: alt -> älter). To show equality, use <g>so ... wie</g>. For differences, use the comparative + <g>als</g>.<br>Example: Er ist <g>so groß wie</g> ich. Er ist <g>älter als</g> ich.",
       "uk": "Вищий ступінь прикметників (компаратив) отримує закінчення <g>-er</g> (часто з умлаутом: alt -> älter). Для порівняння однакових речей використовуємо <g>so ... wie</g> (такий же ... як), для різних — компаратив + <g>als</g> (ніж).<br>Приклад: Er ist <g>so groß wie</g> ich. Er ist <g>älter als</g> ich.",
       "ru": "Сравнительная степень прилагательных (компаратив) получает окончание <g>-er</g> (часто с умлаутом: alt -> älter). Для сравнения одинаковых вещей используем <g>so ... wie</g> (такой же ... как), для разных — компаратив + <g>als</g> (чем).<br>Пример: Er ist <g>so groß wie</g> ich. Er ist <g>älter als</g> ich."
+    },
+    "rule": {
+      "de": "<b>Bildung:</b> Adjektiv + <g>-er</g> (oft mit Umlaut bei einsilbigen Wörtern: a→ä, o→ö, u→ü).<br><br><table><tr><th>Grundform</th><th>Komparativ</th></tr><tr><td>alt</td><td>älter</td></tr><tr><td>groß</td><td>größer</td></tr><tr><td>jung</td><td>jünger</td></tr><tr><td>gut</td><td>besser</td></tr><tr><td>gern</td><td>lieber</td></tr><tr><td>viel</td><td>mehr</td></tr></table><br><b>Vergleiche:</b><br><table><tr><th>Gleichheit</th><td>(nicht) so ... wie</td></tr><tr><th>Unterschied</th><td>Komparativ + als</td></tr></table><br><b>Beispiele:</b><br>Er ist <g>so groß wie</g> ich. (gleich)<br>Er ist <g>älter als</g> ich. (Unterschied)<br>Ich arbeite <g>mehr als</g> er.",
+      "en": "",
+      "uk": "<b>Утворення:</b> прикметник + закінчення <g>-er</g> (часто з умлаутом в односкладових словах: a→ä, o→ö, u→ü).<br><br><table><tr><th>Початкова форма</th><th>Компаратив</th></tr><tr><td>alt (старий)</td><td>älter</td></tr><tr><td>groß (великий)</td><td>größer</td></tr><tr><td>jung (молодий)</td><td>jünger</td></tr><tr><td>gut (добрий)</td><td>besser</td></tr><tr><td>gern (охоче)</td><td>lieber</td></tr><tr><td>viel (багато)</td><td>mehr</td></tr></table><br><b>Порівняння:</b><br><table><tr><th>Рівність</th><td>(nicht) so ... wie (такий же ... як)</td></tr><tr><th>Різниця</th><td>компаратив + als (ніж)</td></tr></table><br><b>Приклади:</b><br>Er ist <g>so groß wie</g> ich. (Він такий же високий, як я.)<br>Er ist <g>älter als</g> ich. (Він старший за мене.)<br>Ich arbeite <g>mehr als</g> er. (Я працюю більше, ніж він.)",
+      "ru": ""
     }
   },
   {
@@ -181,6 +329,12 @@ var GRAMMAR = [
       "en": "The superlative is the highest form. After verbs, we usually use <g>am ...-sten</g>. Before nouns, we use the definite article + <g>-ste</g> with correct adjective ending.<br>Example: Kaffee schmeckt mir <g>am besten</g>. Das ist das <g>schönste</g> Haus.",
       "uk": "Найвищий ступінь прикметників (суперлатив) виражає найвищу якість. Після дієслів зазвичай використовуємо форму <g>am ...-sten</g>. Перед іменниками — означений артикль + закінчення <g>-ste</g>.<br>Приклад: Kaffee schmeckt mir <g>am besten</g>. Das ist das <g>schönste</g> Haus.",
       "ru": "Превосходная степень прилагательных (суперлатив) выражает наивысшее качество. После глаголов обычно используем форму <g>am ...-sten</g>. Перед существительными — определенный артикль + окончание <g>-ste</g>.<br>Пример: Kaffee schmeckt mir <g>am besten</g>. Das ist das <g>schönste</g> Haus."
+    },
+    "rule": {
+      "de": "<b>Zwei Formen:</b><br><table><tr><th>Nach Verben (prädikativ)</th><td><g>am</g> + Adjektiv + <g>-sten</g></td></tr><tr><th>Vor Nomen (attributiv)</th><td>bestimmter Artikel + Adjektiv + <g>-ste</g> + Endung</td></tr></table><br><table><tr><th>Grundform</th><th>Komparativ</th><th>Superlativ (am ...)</th></tr><tr><td>alt</td><td>älter</td><td>am ältesten</td></tr><tr><td>groß</td><td>größer</td><td>am größten</td></tr><tr><td>gut</td><td>besser</td><td>am besten</td></tr><tr><td>gern</td><td>lieber</td><td>am liebsten</td></tr><tr><td>viel</td><td>mehr</td><td>am meisten</td></tr></table><br><b>Achtung:</b> Adjektive auf -d, -t, -s, -z, -sch bekommen ein extra -e- (am kältesten, am heißesten).<br><br><b>Beispiele:</b><br>Kaffee schmeckt mir <g>am besten</g>.<br>Das ist das <g>schönste</g> Haus der Stadt.",
+      "en": "",
+      "uk": "<b>Дві форми:</b><br><table><tr><th>Після дієслів (предикативно)</th><td><g>am</g> + прикметник + <g>-sten</g></td></tr><tr><th>Перед іменником (атрибутивно)</th><td>означений артикль + прикметник + <g>-ste</g> + закінчення</td></tr></table><br><table><tr><th>Початкова форма</th><th>Компаратив</th><th>Суперлатив (am ...)</th></tr><tr><td>alt</td><td>älter</td><td>am ältesten</td></tr><tr><td>groß</td><td>größer</td><td>am größten</td></tr><tr><td>gut</td><td>besser</td><td>am besten</td></tr><tr><td>gern</td><td>lieber</td><td>am liebsten</td></tr><tr><td>viel</td><td>mehr</td><td>am meisten</td></tr></table><br><b>Увага:</b> прикметники, що закінчуються на -d, -t, -s, -z, -sch, отримують додаткове -e- (am kältesten, am heißesten).<br><br><b>Приклади:</b><br>Kaffee schmeckt mir <g>am besten</g>. (Кава смакує мені найбільше.)<br>Das ist das <g>schönste</g> Haus der Stadt. (Це найкрасивіший будинок у місті.)",
+      "ru": ""
     }
   },
   {
@@ -191,6 +345,12 @@ var GRAMMAR = [
       "en": "We use <g>dieser, diese, dieses</g> to point out a specific person or object (this). They decline exactly like definite articles (der, die, das).<br>Example: Mir gefällt <g>dieses</g> Buch (Buch is neutral -> dieses).",
       "uk": "Вказівні артиклі <g>dieser, diese, dieses</g> вказують на конкретну особу чи річ (цей, ця, це). Вони відмінюються точно так само, як і означені артиклі (der, die, das).<br>Приклад: Mir gefällt <g>dieses</g> Buch (нейтральний рід -> dieses).",
       "ru": "Указательные артикли <g>dieser, diese, dieses</g> указывают на конкретное лицо или вещь (этот, эта, это). Они склоняются точно так же, как и определенные артикли (der, die, das).<br>Пример: Mir gefällt <g>dieses</g> Buch (средний род -> dieses)."
+    },
+    "rule": {
+      "de": "<b>Deklination:</b> <g>dieser, diese, dieses</g> dekliniert man genau wie den bestimmten Artikel (der, die, das).<br><br><table><tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr><tr><td>Nominativ</td><td>dieser</td><td>diese</td><td>dieses</td><td>diese</td></tr><tr><td>Akkusativ</td><td>diesen</td><td>diese</td><td>dieses</td><td>diese</td></tr><tr><td>Dativ</td><td>diesem</td><td>dieser</td><td>diesem</td><td>diesen</td></tr></table><br><b>Vergleich mit dem Artikel:</b> der→dieser, die→diese, das→dieses, dem→diesem, den→diesen.<br><br><b>Beispiele:</b><br>Mir gefällt <g>dieses</g> Buch. (Nom./Akk. neutral)<br><g>Diese</g> Wohnung ist teuer.<br>Ich helfe <g>diesem</g> Mann. (Dativ)",
+      "en": "",
+      "uk": "<b>Відмінювання:</b> <g>dieser, diese, dieses</g> відмінюється точно так само, як означений артикль (der, die, das).<br><br><table><tr><th></th><th>чол. рід</th><th>жін. рід</th><th>сер. рід</th><th>множина</th></tr><tr><td>Називний</td><td>dieser</td><td>diese</td><td>dieses</td><td>diese</td></tr><tr><td>Знахідний</td><td>diesen</td><td>diese</td><td>dieses</td><td>diese</td></tr><tr><td>Давальний</td><td>diesem</td><td>dieser</td><td>diesem</td><td>diesen</td></tr></table><br><b>Порівняння з артиклем:</b> der→dieser, die→diese, das→dieses, dem→diesem, den→diesen.<br><br><b>Приклади:</b><br>Mir gefällt <g>dieses</g> Buch. (Називний/знахідний сер. роду — Мені подобається ця книга.)<br><g>Diese</g> Wohnung ist teuer. (Ця квартира дорога.)<br>Ich helfe <g>diesem</g> Mann. (Давальний — Я допомагаю цьому чоловікові.)",
+      "ru": ""
     }
   },
   {
@@ -201,6 +361,12 @@ var GRAMMAR = [
       "en": "For extra polite requests, we use Subjunctive II. Mostly we use <g>hätte</g>, <g>wäre</g> or the combination <g>würde</g> + infinitive at the end.<br>Example: Ich <g>hätte</g> gern einen Kaffee. <g>Würden</g> Sie mir bitte <g>helfen</g>?",
       "uk": "Для дуже ввічливих прохань використовується сослагательний спосіб (Конʼюнктив ІІ). Найчастіше ми вживаємо форми <g>hätte</g>, <g>wäre</g> або комбінацію <g>würde</g> + інфінітив у кінці речення.<br>Приклад: Ich <g>hätte</g> gern einen Kaffee. <g>Würden</g> Sie mir bitte <g>helfen</g>?",
       "ru": "Для очень вежливых просьб используется сослагательное наклонение (Конъюнктив II). Чаще всего мы используем формы <g>hätte</g>, <g>wäre</g> или комбинацию <g>würde</g> + инфинитив в конце предложения.<br>Пример: Ich <g>hätte</g> gern einen Kaffee. <g>Würden</g> Sie mir bitte <g>helfen</g>?"
+    },
+    "rule": {
+      "de": "<b>Bildung mit würde:</b> <g>würde</g> (konjugiert) + Subjekt ... + Infinitiv am Ende.<br><br><table><tr><th>ich</th><td>würde</td></tr><tr><th>du</th><td>würdest</td></tr><tr><th>er/sie/es</th><td>würde</td></tr><tr><th>wir</th><td>würden</td></tr><tr><th>ihr</th><td>würdet</td></tr><tr><th>sie/Sie</th><td>würden</td></tr></table><br><b>Wichtige feste Formen (ohne würde):</b><br><table><tr><th>haben</th><td><g>hätte</g>, hättest, hätte, hätten, hättet, hätten</td></tr><tr><th>sein</th><td><g>wäre</g>, wärst, wäre, wären, wärt, wären</td></tr><tr><th>können</th><td><g>könnte</g>, könntest, könnte, könnten, könntet, könnten</td></tr></table><br><b>Beispiele:</b><br>Ich <g>hätte</g> gern einen Kaffee.<br><g>Würden</g> Sie mir bitte <g>helfen</g>?<br><g>Könntest</g> du bitte das Fenster schließen?",
+      "en": "",
+      "uk": "<b>Утворення з würde:</b> <g>würde</g> (у потрібній формі) + підмет ... + інфінітив у кінці речення.<br><br><table><tr><th>ich</th><td>würde</td></tr><tr><th>du</th><td>würdest</td></tr><tr><th>er/sie/es</th><td>würde</td></tr><tr><th>wir</th><td>würden</td></tr><tr><th>ihr</th><td>würdet</td></tr><tr><th>sie/Sie</th><td>würden</td></tr></table><br><b>Важливі окремі форми (без würde):</b><br><table><tr><th>haben</th><td><g>hätte</g>, hättest, hätte, hätten, hättet, hätten</td></tr><tr><th>sein</th><td><g>wäre</g>, wärst, wäre, wären, wärt, wären</td></tr><tr><th>können</th><td><g>könnte</g>, könntest, könnte, könnten, könntet, könnten</td></tr></table><br><b>Приклади:</b><br>Ich <g>hätte</g> gern einen Kaffee. (Я хотів би кави.)<br><g>Würden</g> Sie mir bitte <g>helfen</g>? (Чи не могли б ви мені допомогти?)<br><g>Könntest</g> du bitte das Fenster schließen? (Чи не міг би ти зачинити вікно?)",
+      "ru": ""
     }
   },
   {
@@ -211,6 +377,12 @@ var GRAMMAR = [
       "en": "Personal pronouns change depending on the case: Nominative (ich/du), Accusative (mich/dich), and Dative (mir/dir).<br>Example: Hilfst du <g>mir</g> (Dative)? Ich liebe <g>dich</g> (Accusative).",
       "uk": "Особові займенники змінюють свою форму залежно від відмінка: Називний (ich/du), Знахідний (mich/dich) та Давальний (mir/dir).<br>Приклад: Hilfst du <g>mir</g> (Давальний)? Ich liebe <g>dich</g> (Знахідний).",
       "ru": "Личные местоимения изменяют свою форму в зависимости от падежа: Именительный (ich/du), Винительный (mich/dich) и Дательный (mir/dir).<br>Пример: Hilfst du <g>mir</g> (Дательный)? Ich liebe <g>dich</g> (Винительный)."
+    },
+    "rule": {
+      "de": "<b>Deklination der Personalpronomen:</b><br><table><tr><th>Nominativ</th><th>Akkusativ</th><th>Dativ</th></tr><tr><td>ich</td><td>mich</td><td>mir</td></tr><tr><td>du</td><td>dich</td><td>dir</td></tr><tr><td>er</td><td>ihn</td><td>ihm</td></tr><tr><td>sie</td><td>sie</td><td>ihr</td></tr><tr><td>es</td><td>es</td><td>ihm</td></tr><tr><td>wir</td><td>uns</td><td>uns</td></tr><tr><td>ihr</td><td>euch</td><td>euch</td></tr><tr><td>sie/Sie</td><td>sie/Sie</td><td>ihnen/Ihnen</td></tr></table><br><b>Wann welcher Kasus?</b> Akkusativ nach Verben mit einem Objekt (lieben, sehen, kennen). Dativ nach Verben mit 'Wem?' (helfen, danken, gefallen).<br><br><b>Beispiele:</b><br>Hilfst du <g>mir</g>? (Dativ)<br>Ich liebe <g>dich</g>. (Akkusativ)<br>Kennst du <g>ihn</g>?",
+      "en": "",
+      "uk": "<b>Відмінювання особових займенників:</b><br><table><tr><th>Називний</th><th>Знахідний</th><th>Давальний</th></tr><tr><td>ich</td><td>mich</td><td>mir</td></tr><tr><td>du</td><td>dich</td><td>dir</td></tr><tr><td>er</td><td>ihn</td><td>ihm</td></tr><tr><td>sie</td><td>sie</td><td>ihr</td></tr><tr><td>es</td><td>es</td><td>ihm</td></tr><tr><td>wir</td><td>uns</td><td>uns</td></tr><tr><td>ihr</td><td>euch</td><td>euch</td></tr><tr><td>sie/Sie</td><td>sie/Sie</td><td>ihnen/Ihnen</td></tr></table><br><b>Коли який відмінок?</b> Знахідний — після дієслів з одним додатком (lieben, sehen, kennen). Давальний — після дієслів з питанням 'Кому?' (helfen, danken, gefallen).<br><br><b>Приклади:</b><br>Hilfst du <g>mir</g>? (Давальний — Ти мені допоможеш?)<br>Ich liebe <g>dich</g>. (Знахідний — Я тебе кохаю.)<br>Kennst du <g>ihn</g>? (Ти його знаєш?)",
+      "ru": ""
     }
   },
   {
@@ -221,6 +393,12 @@ var GRAMMAR = [
       "en": "Reflexive verbs require a reflexive pronoun (e.g., <g>mich, dich, sich</g>). It shows that the action reflects back to the subject.<br>Example: Ich wasche <g>mich</g>. Er freut <g>sich</g>.",
       "uk": "Зворотні дієслова потребують зворотного займенника (напр., <g>mich, dich, sich</g>), який є аналогом часточки '-ся'. Він показує, що дія спрямована на самого себе.<br>Приклад: Ich wasche <g>mich</g> (Я миюся). Er freut <g>sich</g> (Він радіє).",
       "ru": "Возвратные глаголы требуют возвратного местоимения (напр., <g>mich, dich, sich</g>), которое является аналогом частицы '-ся'. Оно показывает, что действие направлено на самого себя.<br>Пример: Ich wasche <g>mich</g> (Я моюсь). Er freut <g>sich</g> (Он радуется)."
+    },
+    "rule": {
+      "de": "<b>Deklination der Reflexivpronomen im Akkusativ:</b><br><br><table><tr><th>ich</th><td>mich</td></tr><tr><th>du</th><td>dich</td></tr><tr><th>er/sie/es</th><td>sich</td></tr><tr><th>wir</th><td>uns</td></tr><tr><th>ihr</th><td>euch</td></tr><tr><th>sie/Sie</th><td>sich</td></tr></table><br><b>Achtung:</b> Nur für 'er/sie/es' und 'sie/Sie' gibt es die Form <g>sich</g>. Bei den anderen Personen sind die Reflexivpronomen identisch mit den Akkusativpronomen (mich, dich, uns, euch).<br><br><b>Wichtige reflexive Verben:</b> sich waschen, sich freuen (auf/über), sich interessieren (für), sich beeilen, sich erinnern (an), sich fühlen.<br><br><b>Beispiele:</b><br>Ich wasche <g>mich</g> jeden Morgen.<br>Er freut <g>sich</g> auf die Ferien.<br>Wir beeilen <g>uns</g>.",
+      "en": "",
+      "uk": "<b>Відмінювання зворотних займенників у знахідному відмінку:</b><br><br><table><tr><th>ich</th><td>mich</td></tr><tr><th>du</th><td>dich</td></tr><tr><th>er/sie/es</th><td>sich</td></tr><tr><th>wir</th><td>uns</td></tr><tr><th>ihr</th><td>euch</td></tr><tr><th>sie/Sie</th><td>sich</td></tr></table><br><b>Увага:</b> форма <g>sich</g> існує лише для 'er/sie/es' та 'sie/Sie'. В інших особах зворотні займенники збігаються зі знахідними формами особових займенників (mich, dich, uns, euch).<br><br><b>Важливі зворотні дієслова:</b> sich waschen (митися), sich freuen (радіти), sich interessieren für (цікавитись), sich beeilen (поспішати), sich erinnern an (памʼятати), sich fühlen (почуватися).<br><br><b>Приклади:</b><br>Ich wasche <g>mich</g> jeden Morgen. (Я миюся щоранку.)<br>Er freut <g>sich</g> auf die Ferien. (Він радіє з приводу канікул.)<br>Wir beeilen <g>uns</g>. (Ми поспішаємо.)",
+      "ru": ""
     }
   },
   {
@@ -231,6 +409,12 @@ var GRAMMAR = [
       "en": "Many verbs have a fixed preposition and a fixed case. You have to memorize them together. Key examples: <g>warten auf</g> (+ Accusative), <g>sprechen mit</g> (+ Dative).<br>Example: Ich warte <g>auf den</g> Bus.",
       "uk": "Багато дієслів мають сталий прийменник та вимагають конкретного відмінка. Їх потрібно вчити разом. Важливо: <g>warten auf</g> (+ Знахідний), <g>sprechen mit</g> (+ Давальний).<br>Приклад: Ich warte <g>auf den</g> Bus.",
       "ru": "Многие глаголы имеют фиксированный предлог и требуют конкретного падежа. Их нужно учить вместе. Важно: <g>warten auf</g> (+ Винительный), <g>sprechen mit</g> (+ Дательный).<br>Пример: Ich warte <g>auf den</g> Bus."
+    },
+    "rule": {
+      "de": "<b>Prinzip:</b> Manche Verben brauchen immer die gleiche Präposition + einen festen Kasus — man muss diese Kombination auswendig lernen.<br><br><table><tr><th>Verb + Präposition</th><th>Kasus</th></tr><tr><td>warten auf</td><td>Akkusativ</td></tr><tr><td>sich freuen auf</td><td>Akkusativ</td></tr><tr><td>sich interessieren für</td><td>Akkusativ</td></tr><tr><td>denken an</td><td>Akkusativ</td></tr><tr><td>sprechen mit</td><td>Dativ</td></tr><tr><td>sich treffen mit</td><td>Dativ</td></tr><tr><td>Angst haben vor</td><td>Dativ</td></tr></table><br><b>Frage danach:</b> für Personen fragt man <g>Auf wen?/Mit wem?</g>, für Sachen <g>Worauf?/Womit?</g> (wo(r) + Präposition).<br><br><b>Beispiele:</b><br>Ich warte <g>auf den</g> Bus.<br>Ich spreche <g>mit meiner</g> Mutter.<br><g>Worauf</g> wartest du? — <g>Auf den</g> Bus.",
+      "en": "",
+      "uk": "<b>Принцип:</b> деякі дієслова завжди вимагають одного й того ж прийменника з певним відмінком — це поєднання потрібно вчити напамʼять.<br><br><table><tr><th>Дієслово + прийменник</th><th>Відмінок</th></tr><tr><td>warten auf (чекати на)</td><td>знахідний</td></tr><tr><td>sich freuen auf (радіти з приводу)</td><td>знахідний</td></tr><tr><td>sich interessieren für (цікавитись)</td><td>знахідний</td></tr><tr><td>denken an (думати про)</td><td>знахідний</td></tr><tr><td>sprechen mit (розмовляти з)</td><td>давальний</td></tr><tr><td>sich treffen mit (зустрічатись з)</td><td>давальний</td></tr><tr><td>Angst haben vor (боятися)</td><td>давальний</td></tr></table><br><b>Питання до них:</b> про людей запитують <g>Auf wen?/Mit wem?</g> (На кого?/З ким?), про речі — <g>Worauf?/Womit?</g> (wo(r) + прийменник).<br><br><b>Приклади:</b><br>Ich warte <g>auf den</g> Bus. (Я чекаю на автобус.)<br>Ich spreche <g>mit meiner</g> Mutter. (Я розмовляю зі своєю мамою.)<br><g>Worauf</g> wartest du? — <g>Auf den</g> Bus. (На що ти чекаєш? — На автобус.)",
+      "ru": ""
     }
   },
   {
@@ -241,6 +425,12 @@ var GRAMMAR = [
       "en": "<g>Deshalb</g> expresses a consequence (therefore / that's why). Note: <g>deshalb</g> takes the 1st position in the main clause, followed immediately by the conjugated verb!<br>Example: Ich bin krank, <g>deshalb bleibe</g> ich im Bett.",
       "uk": "Слово <g>deshalb</g> виражає наслідок (тому / через це). Важливо: <g>deshalb</g> займає 1-шу позицію в головному реченні, тому одразу після нього стоїть дієслово!<br>Приклад: Ich bin krank, <g>deshalb bleibe</g> ich im Bett.",
       "ru": "Слово <g>deshalb</g> выражает следствие (поэтому / из-за этого). Важно: <g>deshalb</g> занимает 1-ю позицию в главном предложении, поэтому сразу после него стоит глагол!<br>Пример: Ich bin krank, <g>deshalb bleibe</g> ich im Bett."
+    },
+    "rule": {
+      "de": "<b>Position:</b> <g>deshalb</g> ist ein Adverb (kein Konnektor wie 'weil') und besetzt Position 1 im Hauptsatz. Danach kommt sofort das konjugierte Verb (Position 2), dann das Subjekt.<br><br><table><tr><th>Position 1</th><th>Position 2 (Verb)</th><th>Subjekt</th><th>Rest</th></tr><tr><td>Deshalb</td><td>bleibe</td><td>ich</td><td>im Bett.</td></tr></table><br><b>Vergleich mit weil:</b><br><table><tr><th>weil</th><td>Nebensatz, Verb am Ende: ..., weil ich krank bin.</td></tr><tr><th>deshalb</th><td>zwei Hauptsätze: Ich bin krank, deshalb bleibe ich im Bett.</td></tr></table><br><b>Ähnliche Wörter:</b> deswegen, darum, daher (gleiche Position und Bedeutung).<br><br><b>Beispiel:</b> Ich bin krank, <g>deshalb bleibe</g> ich im Bett.",
+      "en": "",
+      "uk": "<b>Позиція:</b> <g>deshalb</g> — прислівник (а не сполучник, як 'weil'), тому займає першу позицію в головному реченні. Одразу після нього йде змінюване дієслово (2-га позиція), а потім підмет.<br><br><table><tr><th>Позиція 1</th><th>Позиція 2 (дієслово)</th><th>Підмет</th><th>Решта</th></tr><tr><td>Deshalb</td><td>bleibe</td><td>ich</td><td>im Bett.</td></tr></table><br><b>Порівняння з weil:</b><br><table><tr><th>weil</th><td>підрядне речення, дієслово в кінці: ..., weil ich krank bin.</td></tr><tr><th>deshalb</th><td>два самостійних речення: Ich bin krank, deshalb bleibe ich im Bett.</td></tr></table><br><b>Схожі слова:</b> deswegen, darum, daher (та ж позиція й значення).<br><br><b>Приклад:</b> Ich bin krank, <g>deshalb bleibe</g> ich im Bett. (Я хворію, тому залишаюся в ліжку.)",
+      "ru": ""
     }
   },
   {
@@ -251,6 +441,12 @@ var GRAMMAR = [
       "en": "In module A2.2 we expand Subjunctive II. We use <g>sollte</g> to give advice and <g>könnte</g> to ask very politely.<br>Example: Du <g>solltest</g> zum Arzt gehen. <g>Könnten</g> Sie das Fenster schließen?",
       "uk": "У модулі А2.2 ми розширюємо використання Конʼюнктиву ІІ. Форму <g>sollte</g> використовують для порад (тобі слід було б), а <g>könnte</g> — для дуже ввічливих питань.<br>Приклад: Du <g>solltest</g> zum Arzt gehen. <g>Könnten</g> Sie das Fenster schließen?",
       "ru": "В модуле А2.2 мы расширяем использование Конъюнктива II. Форму <g>sollte</g> используют для советов (тебе следовало бы), а <g>könnte</g> — для очень вежливых вопросов.<br>Пример: Du <g>solltest</g> zum Arzt gehen. <g>Könnten</g> Sie das Fenster schließen?"
+    },
+    "rule": {
+      "de": "<b>Erweiterung des Konjunktiv II:</b><br><table><tr><th>Form</th><th>Funktion</th><th>Beispiel</th></tr><tr><td><g>sollte</g></td><td>Ratschlag geben</td><td>Du <g>solltest</g> mehr schlafen.</td></tr><tr><td><g>könnte</g></td><td>sehr höflich fragen / Vorschlag</td><td><g>Könntest</g> du mir helfen?</td></tr><tr><td><g>hätte</g>/<g>wäre</g></td><td>Wunsch</td><td>Ich <g>hätte</g> gern Zeit.</td></tr></table><br><b>Konjugation von sollen:</b> ich sollte, du solltest, er/sie/es sollte, wir sollten, ihr solltet, sie/Sie sollten.<br><br><b>Beispiele:</b><br>Du <g>solltest</g> zum Arzt gehen. (Rat)<br><g>Könnten</g> Sie das Fenster schließen? (höfliche Bitte)",
+      "en": "",
+      "uk": "<b>Розширення Конʼюнктиву ІІ:</b><br><table><tr><th>Форма</th><th>Функція</th><th>Приклад</th></tr><tr><td><g>sollte</g></td><td>дати пораду</td><td>Du <g>solltest</g> mehr schlafen. (Тобі варто більше спати.)</td></tr><tr><td><g>könnte</g></td><td>дуже ввічливо запитати / запропонувати</td><td><g>Könntest</g> du mir helfen? (Чи не міг би ти мені допомогти?)</td></tr><tr><td><g>hätte</g>/<g>wäre</g></td><td>бажання</td><td>Ich <g>hätte</g> gern Zeit. (Я хотів би мати час.)</td></tr></table><br><b>Відмінювання sollen:</b> ich sollte, du solltest, er/sie/es sollte, wir sollten, ihr solltet, sie/Sie sollten.<br><br><b>Приклади:</b><br>Du <g>solltest</g> zum Arzt gehen. (Тобі слід сходити до лікаря — порада.)<br><g>Könnten</g> Sie das Fenster schließen? (Чи не могли б ви зачинити вікно? — ввічливе прохання.)",
+      "ru": ""
     }
   },
   {
@@ -261,6 +457,12 @@ var GRAMMAR = [
       "en": "After the definite article (der, die, das), adjectives in the nominative always end in <g>-e</g>. In the plural and other cases (Dative, Accusative masculine), the ending is mostly <g>-en</g>.<br>Example: Der <g>neue</g> Kollege ist nett. Ich helfe dem <g>alten</g> Mann.",
       "uk": "Після означеного артикля (der, die, das) прикметники в називному відмінку завжди мають закінчення <g>-e</g>. У множині та інших відмінках (Давальний, Знахідний чол. роду) закінчення зазвичай змінюється на <g>-en</g>.<br>Приклад: Der <g>neue</g> Kollege ist nett. Ich helfe dem <g>alten</g> Mann.",
       "ru": "После определенного артикля (der, die, das) прилагательные в именительном падеже всегда имеют окончание <g>-e</g>. Во множественном числе и других падежах (Дательный, Винительный муж. рода) окончание обычно меняется на <g>-en</g>.<br>Пример: Der <g>neue</g> Kollege ist nett. Ich helfe dem <g>alten</g> Mann."
+    },
+    "rule": {
+      "de": "<b>Regel:</b> Nach dem bestimmten Artikel zeigt bereits der Artikel den Genus — deshalb bekommt das Adjektiv meist eine 'schwache' Endung.<br><br><table><tr><th></th><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr><tr><td>Nominativ</td><td>-e</td><td>-e</td><td>-e</td><td>-en</td></tr><tr><td>Akkusativ</td><td>-en</td><td>-e</td><td>-e</td><td>-en</td></tr><tr><td>Dativ</td><td>-en</td><td>-en</td><td>-en</td><td>-en</td></tr></table><br><b>Merksatz:</b> Nur im Nominativ (alle Genera) und im Akkusativ (feminin/neutral) steht <g>-e</g>. In allen anderen Fällen: <g>-en</g>.<br><br><b>Beispiele:</b><br>Der <g>neue</g> Kollege ist nett. (Nom. mask.)<br>Ich helfe dem <g>alten</g> Mann. (Dativ)<br>Ich kenne die <g>neue</g> Kollegin. (Akk. fem.)",
+      "en": "",
+      "uk": "<b>Правило:</b> після означеного артикля рід уже показує сам артикль — тому прикметник зазвичай отримує 'слабке' закінчення.<br><br><table><tr><th></th><th>чол. рід</th><th>жін. рід</th><th>сер. рід</th><th>множина</th></tr><tr><td>Називний</td><td>-e</td><td>-e</td><td>-e</td><td>-en</td></tr><tr><td>Знахідний</td><td>-en</td><td>-e</td><td>-e</td><td>-en</td></tr><tr><td>Давальний</td><td>-en</td><td>-en</td><td>-en</td><td>-en</td></tr></table><br><b>Для запамʼятовування:</b> лише в називному (всі роди) та знахідному (жін./сер. роду) — <g>-e</g>. У всіх інших випадках: <g>-en</g>.<br><br><b>Приклади:</b><br>Der <g>neue</g> Kollege ist nett. (Називний, чол. рід — Новий колега приємний.)<br>Ich helfe dem <g>alten</g> Mann. (Давальний — Я допомагаю старому чоловікові.)<br>Ich kenne die <g>neue</g> Kollegin. (Знахідний, жін. рід — Я знаю нову колегу.)",
+      "ru": ""
     }
   },
   {
@@ -271,6 +473,12 @@ var GRAMMAR = [
       "en": "A relative clause describes a noun in more detail. In the nominative, the relative pronoun looks exactly like the definite article (<g>der, die, das, die</g>). The verb goes to the end.<br>Example: Das ist der Mann, <g>der</g> hier <g>wohnt</g>.",
       "uk": "Підрядне означальне речення детальніше описує іменник. У називному відмінку відносний займенник збігається з артиклем іменника (<g>der, die, das, die</g>). Дієслово стоїть у кінці.<br>Приклад: Das ist der Mann, <g>der</g> hier <g>wohnt</g>.",
       "ru": "Придаточное определительное предложение подробнее описывает существительное. В именительном падеже относительное местоимение совпадает с артиклем существительного (<g>der, die, das, die</g>). Глагол стоит в конце.<br>Пример: Das ist der Mann, <g>der</g> hier <g>wohnt</g>."
+    },
+    "rule": {
+      "de": "<b>Relativpronomen im Nominativ = wie der bestimmte Artikel:</b><br><br><table><tr><th>maskulin</th><th>feminin</th><th>neutral</th><th>Plural</th></tr><tr><td>der</td><td>die</td><td>das</td><td>die</td></tr></table><br><b>Regel:</b> Das Genus des Relativpronomens richtet sich nach dem Nomen davor, der Kasus nach der Funktion im Nebensatz. Das Verb steht am Ende.<br><br><b>Struktur:</b> Hauptsatz + Nomen, + Relativpronomen + ... + Verb.<br><br><b>Beispiele:</b><br>Das ist der Mann, <g>der</g> hier <g>wohnt</g>. (Mann = maskulin)<br>Das ist die Frau, <g>die</g> Deutsch <g>unterrichtet</g>. (Frau = feminin)<br>Das ist das Kind, <g>das</g> gern <g>spielt</g>. (Kind = neutral)",
+      "en": "",
+      "uk": "<b>Відносний займенник у називному відмінку = як означений артикль:</b><br><br><table><tr><th>чол. рід</th><th>жін. рід</th><th>сер. рід</th><th>множина</th></tr><tr><td>der</td><td>die</td><td>das</td><td>die</td></tr></table><br><b>Правило:</b> рід відносного займенника визначається іменником перед ним, а відмінок — функцією у підрядному реченні. Дієслово стоїть у кінці.<br><br><b>Структура:</b> головне речення + іменник, + відносний займенник + ... + дієслово.<br><br><b>Приклади:</b><br>Das ist der Mann, <g>der</g> hier <g>wohnt</g>. (Mann — чол. рід — Це чоловік, який тут живе.)<br>Das ist die Frau, <g>die</g> Deutsch <g>unterrichtet</g>. (Frau — жін. рід — Це жінка, яка викладає німецьку.)<br>Das ist das Kind, <g>das</g> gern <g>spielt</g>. (Kind — сер. рід — Це дитина, яка любить гратися.)",
+      "ru": ""
     }
   },
   {
@@ -281,6 +489,12 @@ var GRAMMAR = [
       "en": "The verb <g>werden</g> means a change or development (to become). It is irregular: ich werde, du <g>wirst</g>, er/sie/es <g>wird</g>.<br>Example: Mein Sohn <g>wird</g> bald Arzt. Es <g>wird</g> kalt.",
       "uk": "Дієслово <g>werden</g> означає зміну стану, розвиток або майбутній час (ставати чимось/кимось). Воно неправильне: ich werde, du <g>wirst</g>, er/sie/es <g>wird</g>.<br>Приклад: Mein Sohn <g>wird</g> bald Arzt. Es <g>wird</g> kalt.",
       "ru": "Глагол <g>werden</g> означает изменение состояния, развитие или будущее время (становиться чем-то/кем-то). Он неправильный: ich werde, du <g>wirst</g>, er/sie/es <g>wird</g>.<br>Пример: Mein Sohn <g>wird</g> bald Arzt. Es <g>wird</g> kalt."
+    },
+    "rule": {
+      "de": "<b>Konjugation im Präsens (unregelmäßig):</b><br><br><table><tr><th>ich</th><td>werde</td></tr><tr><th>du</th><td>wirst</td></tr><tr><th>er/sie/es</th><td>wird</td></tr><tr><th>wir</th><td>werden</td></tr><tr><th>ihr</th><td>werdet</td></tr><tr><th>sie/Sie</th><td>werden</td></tr></table><br><b>Drei Verwendungen:</b><br><table><tr><th>1. Veränderung</th><td>+ Adjektiv: Es <g>wird</g> kalt.</td></tr><tr><th>2. Beruf/Zustand</th><td>+ Nomen: Er <g>wird</g> Arzt.</td></tr><tr><th>3. Futur I</th><td>+ Infinitiv am Ende: Ich <g>werde</g> morgen <g>kommen</g>.</td></tr></table><br><b>Beispiele:</b><br>Mein Sohn <g>wird</g> bald Arzt.<br>Es <g>wird</g> dunkel.<br>Ich <g>werde</g> dich <g>anrufen</g>.",
+      "en": "",
+      "uk": "<b>Відмінювання в теперішньому часі (неправильне дієслово):</b><br><br><table><tr><th>ich</th><td>werde</td></tr><tr><th>du</th><td>wirst</td></tr><tr><th>er/sie/es</th><td>wird</td></tr><tr><th>wir</th><td>werden</td></tr><tr><th>ihr</th><td>werdet</td></tr><tr><th>sie/Sie</th><td>werden</td></tr></table><br><b>Три вживання:</b><br><table><tr><th>1. Зміна стану</th><td>+ прикметник: Es <g>wird</g> kalt. (Стає холодно.)</td></tr><tr><th>2. Професія/стан</th><td>+ іменник: Er <g>wird</g> Arzt. (Він стане лікарем.)</td></tr><tr><th>3. Майбутній час (Futur I)</th><td>+ інфінітив у кінці: Ich <g>werde</g> morgen <g>kommen</g>. (Я прийду завтра.)</td></tr></table><br><b>Приклади:</b><br>Mein Sohn <g>wird</g> bald Arzt. (Мій син скоро стане лікарем.)<br>Es <g>wird</g> dunkel. (Темніє.)<br>Ich <g>werde</g> dich <g>anrufen</g>. (Я тобі зателефоную.)",
+      "ru": ""
     }
   },
   {
@@ -291,6 +505,12 @@ var GRAMMAR = [
       "en": "The verb <g>lassen</g> has two main meanings: to leave something somewhere, or to have something done by someone else. <g>Lassen</g> is in position 2, the main verb is at the end.<br>Example: Ich <g>lasse</g> mein Auto <g>reparieren</g> (The mechanic does it).",
       "uk": "Дієслово <g>lassen</g> має два головних значення: залишати щось десь, або доручати комусь зробити щось замість вас. <g>Lassen</g> стоїть на 2-му місці, основне дієслово — в кінці.<br>Приклад: Ich <g>lasse</g> mein Auto <g>reparieren</g> (Авто ремонтую не я, а механік).",
       "ru": "Глагол <g>lassen</g> имеет два главных значения: оставлять что-то где-то, или поручать кому-то сделать что-то вместо вас. <g>Lassen</g> стоит на 2-м месте, основной глагол — в конце.<br>Пример: Ich <g>lasse</g> mein Auto <g>reparieren</g> (Авто ремонтирую не я, а механик)."
+    },
+    "rule": {
+      "de": "<b>Konjugation (unregelmäßig):</b> ich lasse, du <g>lässt</g>, er/sie/es <g>lässt</g>, wir lassen, ihr lasst, sie/Sie lassen.<br><br><b>Zwei Bedeutungen:</b><br><table><tr><th>1. dalassen</th><td>etwas irgendwo zurücklassen: Ich <g>lasse</g> das Auto zu Hause.</td></tr><tr><th>2. machen lassen</th><td>eine Aktion von jemand anderem ausführen lassen: Ich <g>lasse</g> mein Auto <g>reparieren</g>.</td></tr></table><br><b>Wortstellung:</b> <g>lassen</g> auf Position 2, Infinitiv des zweiten Verbs ganz am Ende.<br><br><b>Beispiele:</b><br>Ich <g>lasse</g> meinen Schlüssel im Büro.<br>Ich <g>lasse</g> mir die Haare <g>schneiden</g>.",
+      "en": "",
+      "uk": "<b>Відмінювання (неправильне дієслово):</b> ich lasse, du <g>lässt</g>, er/sie/es <g>lässt</g>, wir lassen, ihr lasst, sie/Sie lassen.<br><br><b>Два значення:</b><br><table><tr><th>1. залишати</th><td>залишити щось десь: Ich <g>lasse</g> das Auto zu Hause. (Я залишаю машину вдома.)</td></tr><tr><th>2. доручати</th><td>доручити комусь виконати дію замість себе: Ich <g>lasse</g> mein Auto <g>reparieren</g>. (Я віддаю машину в ремонт.)</td></tr></table><br><b>Порядок слів:</b> <g>lassen</g> на 2-й позиції, інфінітив другого дієслова — у самому кінці.<br><br><b>Приклади:</b><br>Ich <g>lasse</g> meinen Schlüssel im Büro. (Я залишаю ключ в офісі.)<br>Ich <g>lasse</g> mir die Haare <g>schneiden</g>. (Я стрижуся — у перукарні, а не сама.)",
+      "ru": ""
     }
   },
   {
@@ -301,6 +521,12 @@ var GRAMMAR = [
       "en": "We use <g>damit</g> to express a purpose or goal (What for?). The conjugated verb goes to the end. Note: The subjects in the main and subordinate clause are usually different.<br>Example: Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>.",
       "uk": "Ми використовуємо <g>damit</g> для вираження мети (Для чого? З якою метою?). Дієслово йде на кінець речення. Важливо: підмет у головному та підрядному реченнях зазвичай різний.<br>Приклад: Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>.",
       "ru": "Мы используем <g>damit</g> для выражения цели (Для чего? С какой целью?). Глагол уходит в конец предложения. Важно: подлежащее в главном и придаточном предложениях обычно разное.<br>Пример: Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>."
+    },
+    "rule": {
+      "de": "<b>Verwendung:</b> <g>damit</g> zeigt ein Ziel/eine Absicht (Wozu? Zu welchem Zweck?). Wichtig: die Subjekte im Haupt- und Nebensatz sind meistens verschieden.<br><br><b>Wortstellung:</b> Hauptsatz, + <g>damit</g> + Subjekt + ... + Verb (Ende).<br><br><table><tr><th>Konnektor</th><th>Wann benutzt man ihn?</th></tr><tr><td><g>damit</g></td><td>zwei verschiedene Subjekte</td></tr><tr><td><g>um ... zu</g></td><td>gleiches Subjekt in beiden Sätzen (+ Infinitiv, kein eigenes Verb)</td></tr></table><br><b>Beispiele:</b><br>Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>. (ich ≠ du)<br>Vergleich: Ich lerne Deutsch, <g>um</g> einen Job <g>zu</g> finden. (gleiches Subjekt: ich)",
+      "en": "",
+      "uk": "<b>Вживання:</b> <g>damit</g> виражає мету/намір (Для чого? З якою метою?). Важливо: підмети в головному й підрядному реченнях зазвичай різні.<br><br><b>Порядок слів:</b> головне речення, + <g>damit</g> + підмет + ... + дієслово (у кінці).<br><br><table><tr><th>Сполучник</th><th>Коли використовувати?</th></tr><tr><td><g>damit</g></td><td>два різні підмети</td></tr><tr><td><g>um ... zu</g></td><td>однаковий підмет в обох частинах (+ інфінітив, без власного дієслова)</td></tr></table><br><b>Приклади:</b><br>Ich gebe dir Geld, <g>damit</g> du ein Buch <g>kaufst</g>. (я ≠ ти — Я даю тобі гроші, щоб ти купив книжку.)<br>Порівняння: Ich lerne Deutsch, <g>um</g> einen Job <g>zu</g> finden. (однаковий підмет: я — Я вивчаю німецьку, щоб знайти роботу.)",
+      "ru": ""
     }
   },
   {
@@ -311,6 +537,12 @@ var GRAMMAR = [
       "en": "An indirect question is more polite. We start with a phrase like 'Können Sie mir sagen...' and connect it with the question word (<g>wann, wo, wie</g>). The verb goes to the end.<br>Example: Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>?",
       "uk": "Непряме питання є більш ввічливим варіантом звичайного питання. Ми починаємо з фрази на кшталт 'Können Sie mir sagen...' і далі використовуємо питальне слово (<g>wann, wo, wie</g>). Дієслово йде на кінець.<br>Приклад: Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>?",
       "ru": "Косвенный вопрос является более вежливым вариантом обычного вопроса. Мы начинаем с фразы вроде 'Können Sie mir sagen...' и далее используем вопросительное слово (<g>wann, wo, wie</g>). Глагол идет в конец.<br>Пример: Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>?"
+    },
+    "rule": {
+      "de": "<b>Struktur:</b> höfliche Einleitung (Können Sie mir sagen...? / Ich weiß nicht,...) + Fragewort + Subjekt + ... + Verb (Ende).<br><br><table><tr><th>Direkte Frage</th><th>Indirekte Frage</th></tr><tr><td>Wo ist der Bahnhof?</td><td>Können Sie mir sagen, wo der Bahnhof <g>ist</g>?</td></tr><tr><td>Wann kommt der Zug?</td><td>Wissen Sie, wann der Zug <g>kommt</g>?</td></tr></table><br><b>Typische Einleitungen:</b> Können Sie mir sagen...? Wissen Sie...? Ich möchte wissen,... Ich weiß nicht,...<br><br><b>Beispiele:</b><br>Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>?<br>Ich weiß nicht, <g>wie</g> das <g>funktioniert</g>.",
+      "en": "",
+      "uk": "<b>Структура:</b> ввічливе вступне речення (Können Sie mir sagen...? / Ich weiß nicht,...) + питальне слово + підмет + ... + дієслово (у кінці).<br><br><table><tr><th>Пряме питання</th><th>Непряме питання</th></tr><tr><td>Wo ist der Bahnhof?</td><td>Können Sie mir sagen, wo der Bahnhof <g>ist</g>?</td></tr><tr><td>Wann kommt der Zug?</td><td>Wissen Sie, wann der Zug <g>kommt</g>?</td></tr></table><br><b>Типові вступні фрази:</b> Können Sie mir sagen...? (Чи можете ви мені сказати...?) Wissen Sie...? (Чи знаєте ви...?) Ich möchte wissen,... (Я хотів би знати,...) Ich weiß nicht,... (Я не знаю,...)<br><br><b>Приклади:</b><br>Können Sie mir sagen, <g>wo</g> der Bahnhof <g>ist</g>? (Чи можете сказати, де вокзал?)<br>Ich weiß nicht, <g>wie</g> das <g>funktioniert</g>. (Я не знаю, як це працює.)",
+      "ru": ""
     }
   },
   {
@@ -3402,6 +3634,7 @@ var DIALOGE = [
   {
     "id": "dlg_001",
     "cat": "Sich vorstellen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie heißen Sie und woher kommen Sie?",
       "en": "What is your name and where are you from?",
@@ -3419,6 +3652,7 @@ var DIALOGE = [
   {
     "id": "dlg_002",
     "cat": "Sich vorstellen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Seit wann arbeiten Sie in dieser Firma?",
       "en": "Since when have you been working at this company?",
@@ -3436,6 +3670,7 @@ var DIALOGE = [
   {
     "id": "dlg_003",
     "cat": "Sich vorstellen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Duzen wir uns oder sollen wir uns siezen?",
       "en": "Shall we use „du“ with each other, or should we use „Sie“?",
@@ -3453,6 +3688,7 @@ var DIALOGE = [
   {
     "id": "dlg_004",
     "cat": "Sich vorstellen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g>Können</g> Sie mir kurz helfen? Ich finde mein Büro nicht.",
       "en": "<g>Can</g> you help me for a moment? I can't find my office.",
@@ -3470,6 +3706,7 @@ var DIALOGE = [
   {
     "id": "dlg_005",
     "cat": "Wohnungssuche und Umzug",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum ziehst du um?",
       "en": "Why are you moving?",
@@ -3487,6 +3724,7 @@ var DIALOGE = [
   {
     "id": "dlg_006",
     "cat": "Wohnungssuche und Umzug",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wo soll ich den Schrank hinstellen?",
       "en": "Where should I put the cupboard?",
@@ -3504,6 +3742,7 @@ var DIALOGE = [
   {
     "id": "dlg_007",
     "cat": "Wohnungssuche und Umzug",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie hoch ist die Miete für die Wohnung?",
       "en": "How much is the rent for the apartment?",
@@ -3521,6 +3760,7 @@ var DIALOGE = [
   {
     "id": "dlg_008",
     "cat": "Wohnungssuche und Umzug",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wer macht bei euch in der WG den Haushalt?",
       "en": "Who does the housework in your shared flat?",
@@ -3538,6 +3778,7 @@ var DIALOGE = [
   {
     "id": "dlg_009",
     "cat": "Über Arbeit und Freizeit sprechen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was machst du in deiner Freizeit am liebsten?",
       "en": "What do you like to do most in your free time?",
@@ -3555,6 +3796,7 @@ var DIALOGE = [
   {
     "id": "dlg_010",
     "cat": "Über Arbeit und Freizeit sprechen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Hast du am Samstag Zeit für einen Termin?",
       "en": "Do you have time for an appointment on Saturday?",
@@ -3572,6 +3814,7 @@ var DIALOGE = [
   {
     "id": "dlg_011",
     "cat": "Über Arbeit und Freizeit sprechen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Bist du Mitglied in einem Sportverein?",
       "en": "Are you a member of a sports club?",
@@ -3589,6 +3832,7 @@ var DIALOGE = [
   {
     "id": "dlg_012",
     "cat": "Über Arbeit und Freizeit sprechen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum kommst du heute später zur Arbeit?",
       "en": "Why are you coming to work later today?",
@@ -3606,6 +3850,7 @@ var DIALOGE = [
   {
     "id": "dlg_013",
     "cat": "Kleidung kaufen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Kann ich Ihnen helfen? Suchen Sie etwas Bestimmtes?",
       "en": "Can I help you? Are you looking for something specific?",
@@ -3623,6 +3868,7 @@ var DIALOGE = [
   {
     "id": "dlg_014",
     "cat": "Kleidung kaufen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Welche Größe brauchen Sie?",
       "en": "What size do you need?",
@@ -3640,6 +3886,7 @@ var DIALOGE = [
   {
     "id": "dlg_015",
     "cat": "Kleidung kaufen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie gefällt Ihnen das Kleid?",
       "en": "How do you like the dress?",
@@ -3657,6 +3904,7 @@ var DIALOGE = [
   {
     "id": "dlg_016",
     "cat": "Kleidung kaufen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wo finde ich die Umkleidekabine?",
       "en": "Where can I find the fitting room?",
@@ -3674,6 +3922,7 @@ var DIALOGE = [
   {
     "id": "dlg_017",
     "cat": "Verkehrsmittel",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie kommst du normalerweise zur Arbeit?",
       "en": "How do you normally get to work?",
@@ -3691,6 +3940,7 @@ var DIALOGE = [
   {
     "id": "dlg_018",
     "cat": "Verkehrsmittel",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Fährt dieser Bus zum Hauptbahnhof?",
       "en": "Does this bus go to the main station?",
@@ -3708,6 +3958,7 @@ var DIALOGE = [
   {
     "id": "dlg_019",
     "cat": "Verkehrsmittel",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum nimmst du heute ein Taxi?",
       "en": "Why are you taking a taxi today?",
@@ -3725,6 +3976,7 @@ var DIALOGE = [
   {
     "id": "dlg_020",
     "cat": "Verkehrsmittel",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Ist die U-Bahn-Station barrierefrei?",
       "en": "Is the subway station accessible?",
@@ -3742,6 +3994,7 @@ var DIALOGE = [
   {
     "id": "dlg_021",
     "cat": "Familie und Migration",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Erzählen Sie mir etwas über Ihre Familie.",
       "en": "Tell me something about your family.",
@@ -3759,6 +4012,7 @@ var DIALOGE = [
   {
     "id": "dlg_022",
     "cat": "Familie und Migration",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wann sind Sie nach Deutschland gekommen?",
       "en": "When did you come to Germany?",
@@ -3776,6 +4030,7 @@ var DIALOGE = [
   {
     "id": "dlg_023",
     "cat": "Familie und Migration",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "War es am Anfang schwer für Sie?",
       "en": "Was it difficult for you at the beginning?",
@@ -3793,6 +4048,7 @@ var DIALOGE = [
   {
     "id": "dlg_024",
     "cat": "Familie und Migration",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie oft besuchen Sie Ihr Heimatland?",
       "en": "How often do you visit your homeland?",
@@ -3810,6 +4066,7 @@ var DIALOGE = [
   {
     "id": "dlg_025",
     "cat": "Einen Ausflug planen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Hast du einen Vorschlag für unseren Ausflug am Wochenende?",
       "en": "Do you have a suggestion for our trip at the weekend?",
@@ -3827,6 +4084,7 @@ var DIALOGE = [
   {
     "id": "dlg_026",
     "cat": "Einen Ausflug planen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie wird das Wetter am Samstag?",
       "en": "What will the weather be like on Saturday?",
@@ -3844,6 +4102,7 @@ var DIALOGE = [
   {
     "id": "dlg_027",
     "cat": "Einen Ausflug planen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wo wart ihr letztes Wochenende?",
       "en": "Where were you last weekend?",
@@ -3861,6 +4120,7 @@ var DIALOGE = [
   {
     "id": "dlg_028",
     "cat": "Einen Ausflug planen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Sollen wir für den Ausflug ein Hotel buchen?",
       "en": "Should we book a hotel for the trip?",
@@ -3878,6 +4138,7 @@ var DIALOGE = [
   {
     "id": "dlg_029",
     "cat": "Nach dem Weg fragen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Entschuldigung, wie komme ich zum Brandenburger Tor?",
       "en": "Excuse me, how do I get to the Brandenburg Gate?",
@@ -3895,6 +4156,7 @@ var DIALOGE = [
   {
     "id": "dlg_030",
     "cat": "Nach dem Weg fragen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Ist es weit von hier bis zum Museum?",
       "en": "Is it far from here to the museum?",
@@ -3912,6 +4174,7 @@ var DIALOGE = [
   {
     "id": "dlg_031",
     "cat": "Nach dem Weg fragen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wo ist hier in der Nähe eine Apotheke?",
       "en": "Where is there a pharmacy nearby?",
@@ -3929,6 +4192,7 @@ var DIALOGE = [
   {
     "id": "dlg_032",
     "cat": "Nach dem Weg fragen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Welche U-Bahn fährt zum Alexanderplatz?",
       "en": "Which subway goes to Alexanderplatz?",
@@ -3946,6 +4210,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_001",
     "cat": "Schule und Elternsprechtag",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie war der erste Schultag deines Sohnes?",
       "en": "How was your son's first day at school?",
@@ -3963,6 +4228,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_002",
     "cat": "Schule und Elternsprechtag",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Interessiert sich Ihre Tochter für Naturwissenschaften?",
       "en": "Is your daughter interested in natural sciences?",
@@ -3980,6 +4246,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_003",
     "cat": "Schule und Elternsprechtag",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum ärgert sich der Lehrer heute so sehr?",
       "en": "Why is the teacher so annoyed today?",
@@ -3997,6 +4264,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_004",
     "cat": "Schule und Elternsprechtag",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie war der Elternsprechtag?",
       "en": "How was the parent-teacher conference?",
@@ -4014,6 +4282,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_005",
     "cat": "Konflikte und Bitten",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum streiten sich die Nachbarn schon wieder?",
       "en": "Why are the neighbours arguing again?",
@@ -4031,6 +4300,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_006",
     "cat": "Konflikte und Bitten",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "<g><b>Könntest</b></g> du mir kurz helfen?",
       "en": "<g><b>Could</b></g> you help me for a moment?",
@@ -4048,6 +4318,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_007",
     "cat": "Konflikte und Bitten",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie hast du dich bei ihr entschuldigt?",
       "en": "How did you apologise to her?",
@@ -4065,6 +4336,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_008",
     "cat": "Konflikte und Bitten",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie habt ihr den Konflikt gelöst?",
       "en": "How did you resolve the conflict?",
@@ -4082,6 +4354,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_009",
     "cat": "Geräte und Reparaturen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was ist mit deinem Laptop passiert?",
       "en": "What happened to your laptop?",
@@ -4099,6 +4372,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_010",
     "cat": "Geräte und Reparaturen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Hast du noch Garantie auf das Handy?",
       "en": "Do you still have a warranty on the phone?",
@@ -4116,6 +4390,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_011",
     "cat": "Geräte und Reparaturen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Kannst du mir eine gute App zum Deutschlernen empfehlen?",
       "en": "Can you recommend a good app for learning German?",
@@ -4133,6 +4408,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_012",
     "cat": "Geräte und Reparaturen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wo kann man kaputte Geräte kostenlos reparieren lassen?",
       "en": "Where can you get broken devices repaired for free?",
@@ -4150,6 +4426,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_013",
     "cat": "Einkaufen und Meinungen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie findest du das Kleid, das im Schaufenster hängt?",
       "en": "What do you think of the dress that is hanging in the shop window?",
@@ -4167,6 +4444,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_014",
     "cat": "Einkaufen und Meinungen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Welche Größe brauchst du bei dieser Jacke?",
       "en": "What size do you need for this jacket?",
@@ -4184,6 +4462,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_015",
     "cat": "Einkaufen und Meinungen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was vermutest du, wer dieses Bild gemalt hat?",
       "en": "Who do you assume painted this picture?",
@@ -4201,6 +4480,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_016",
     "cat": "Einkaufen und Meinungen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Hast du die Konzertkarten schon gebucht?",
       "en": "Have you already booked the concert tickets?",
@@ -4218,6 +4498,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_017",
     "cat": "Beruf und Bewerbung",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was möchtest du werden, wenn du die Ausbildung beendet hast?",
       "en": "What do you want to become when you finish your training?",
@@ -4235,6 +4516,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_018",
     "cat": "Beruf und Bewerbung",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was würdest du mir für die Berufswahl raten?",
       "en": "What would you advise me for choosing a career?",
@@ -4252,6 +4534,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_019",
     "cat": "Beruf und Bewerbung",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Hast du deine Bewerbung schon abgeschickt?",
       "en": "Have you already sent your application?",
@@ -4269,6 +4552,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_020",
     "cat": "Beruf und Bewerbung",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Was ist deine größte Stärke?",
       "en": "What is your greatest strength?",
@@ -4286,6 +4570,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_021",
     "cat": "Freundschaft und Haustiere",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum vertraust du ihr so sehr?",
       "en": "Why do you trust her so much?",
@@ -4303,6 +4588,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_022",
     "cat": "Freundschaft und Haustiere",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum hast du deinem Sohn ein Haustier gekauft?",
       "en": "Why did you buy your son a pet?",
@@ -4320,6 +4606,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_023",
     "cat": "Freundschaft und Haustiere",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Lässt du deinen Sohn den Hund allein ausführen?",
       "en": "Do you let your son walk the dog alone?",
@@ -4337,6 +4624,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_024",
     "cat": "Freundschaft und Haustiere",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie habt ihr euch kennengelernt?",
       "en": "How did you two meet?",
@@ -4354,6 +4642,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_025",
     "cat": "Ämter und Behörden",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Wissen Sie, <g>wo</g> sich das zuständige Amt befindet?",
       "en": "Do you know <g>where</g> the responsible office is?",
@@ -4371,6 +4660,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_026",
     "cat": "Ämter und Behörden",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Können Sie mir sagen, ob mein Führerschein hier gültig ist?",
       "en": "Can you tell me whether my driving licence is valid here?",
@@ -4388,6 +4678,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_027",
     "cat": "Ämter und Behörden",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Welche Unterlagen brauche ich für den Antrag?",
       "en": "What documents do I need for the application?",
@@ -4405,6 +4696,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_028",
     "cat": "Ämter und Behörden",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Haben Sie meine verlorene Tasche im Fundbüro gefunden?",
       "en": "Did you find my lost bag at the lost-property office?",
@@ -4422,6 +4714,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_029",
     "cat": "Feste und Einladungen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Feiert ihr das Fest im Garten oder drinnen?",
       "en": "Are you celebrating the party in the garden or inside?",
@@ -4439,6 +4732,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_030",
     "cat": "Feste und Einladungen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Hast du die Einladungen schon verschickt?",
       "en": "Have you already sent the invitations?",
@@ -4456,6 +4750,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_031",
     "cat": "Feste und Einladungen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Nimmst du unsere Einladung zur Feier an?",
       "en": "Will you accept our invitation to the celebration?",
@@ -4473,6 +4768,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_032",
     "cat": "Feste und Einladungen",
+    "name_q": "de_w_julia", "name_a": "de_m_mark", 
     "q": {
       "de": "Welche Traditionen gibt es bei euch zu Silvester?",
       "en": "What traditions do you have for New Year's Eve?",
