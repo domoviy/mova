@@ -435,49 +435,70 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
             stats["processed_tasks"] += 1
             current_num = stats["processed_tasks"]
 
-        print(f"[{current_num}/{total_tasks}] -> {task['mkey']} -> Голос: {task['voice']} -> '{task['cleaned'][:30]}...'", flush=True)
+        # NEW — цього mkey раніше не було в manifest.json взагалі.
+        # CHANGED — ключ був, але з ІНШИМ хешем (текст/голос/швидкість
+        # відрізняються від того, що вже закомічено). Якщо файли
+        # регенеруються без змін у базі — цей рядок покаже, який саме
+        # з двох сценаріїв відбувається (і, для CHANGED, старий хеш —
+        # це вже саме по собі підказка, що зберігалось раніше).
+        reason = "NEW" if task.get("existing_hash") is None else f"CHANGED {task['existing_hash']}→{task['content_hash']}"
+        print(f"[{current_num}/{total_tasks}] -> {task['mkey']} -> Голос: {task['voice']} -> [{reason}] -> '{task['cleaned'][:30]}...'", flush=True)
 
-        # Retry з експоненційною паузою — транзитні збої (тимчасовий
-        # rate-limit Edge TTS, обрив мережі) не мають назавжди лишати
-        # діру в аудіо: без retry одна невдала спроба означала, що файл
-        # просто не зʼявиться, і про це дізнаєшся лише постфактум за
-        # 404 у браузерному логі.
+        # Retry з експоненційною паузою стосується ЛИШЕ синтезу мовлення
+        # (транзитні збої Edge TTS API/мережі). Git-операції (коміт/пуш)
+        # навмисно ВИНЕСЕНІ з цього try/except нижче — РАНІШЕ вони були
+        # всередині нього, і БУДЬ-ЯКА git-помилка (напр. push відхилено +
+        # невдалий rebase, тимчасовий збій мережі під час push) трактувалась
+        # як "не вдалось згенерувати аудіо для ЦЬОГО файлу": щойно готовий
+        # mp3 видалявся (file_path.unlink()), хоча сам синтез пройшов
+        # успішно — проблема була суто в git. Найімовірніша причина
+        # "одні й ті самі файли постійно генеруються": файл видалявся
+        # через збій git-кроку, і на НАСТУПНОМУ запуску знову вважався
+        # відсутнім — попри те, що текст/голос жодного разу не змінювались.
         last_error = None
+        synthesized = False
         for attempt in range(1, RETRY_ATTEMPTS + 1):
             try:
                 await synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path)
-
-                async with lock:
-                    write_to_manifest_file(task["mkey"], task["content_hash"])
-
-                    stats["generated"] += 1
-                    stats["batch_counter"] += 1
-
-                    if stats["batch_counter"] >= COMMIT_LIMIT:
-                        git_commit_and_push(stats["batch_counter"])
-                        stats["batch_counter"] = 0
-
-                if DELAY_SEC > 0:
-                    await asyncio.sleep(DELAY_SEC)
-
-                return  # успіх — далі не йдемо
-
+                synthesized = True
+                break
             except Exception as e:
                 last_error = e
                 if file_path.exists():
                     file_path.unlink()
-
                 if attempt < RETRY_ATTEMPTS:
                     backoff = RETRY_BASE_DELAY * (2 ** (attempt - 1))
                     print(f"⚠️  Спроба {attempt}/{RETRY_ATTEMPTS} для {task['mkey']} невдала: {e} — повтор через {backoff:.0f}с", flush=True)
                     await asyncio.sleep(backoff)
 
-        # Усі спроби вичерпано
-        print(f"❌ Помилка генерації для {task['mkey']} після {RETRY_ATTEMPTS} спроб: {last_error}", flush=True)
+        if not synthesized:
+            print(f"❌ Помилка генерації для {task['mkey']} після {RETRY_ATTEMPTS} спроб: {last_error}", flush=True)
+            async with lock:
+                stats["failed"] = stats.get("failed", 0) + 1
+                stats["failed_mkeys"] = stats.get("failed_mkeys", [])
+                stats["failed_mkeys"].append(task["mkey"])
+            return
+
+        # Синтез успішний — записуємо в маніфест і, за потреби, комітимо
+        # пачку. Це ОКРЕМА зона відповідальності: якщо тут спіткнеться
+        # git — аудіофайл НЕ видаляємо (він валідний!) і завдання НЕ
+        # вважаємо "невдалим" — просто лишаємо batch_counter як є, щоб
+        # спроба закомітити повторилась на наступній пачці чи в
+        # фінальному флаші (в кінці main()).
         async with lock:
-            stats["failed"] = stats.get("failed", 0) + 1
-            stats["failed_mkeys"] = stats.get("failed_mkeys", [])
-            stats["failed_mkeys"].append(task["mkey"])
+            write_to_manifest_file(task["mkey"], task["content_hash"])
+            stats["generated"] += 1
+            stats["batch_counter"] += 1
+
+            if stats["batch_counter"] >= COMMIT_LIMIT:
+                try:
+                    git_commit_and_push(stats["batch_counter"])
+                    stats["batch_counter"] = 0
+                except Exception as e:
+                    print(f"⚠️  Проміжний коміт/пуш пачки не вдався: {e} — спробуємо знову на наступній пачці або в кінці роботи.", flush=True)
+
+        if DELAY_SEC > 0:
+            await asyncio.sleep(DELAY_SEC)
 
 async def main():
     print("Запуск генератора MOVA TTS (Edge TTS).", flush=True)
@@ -599,6 +620,7 @@ async def main():
                                 "filename": filename,
                                 "mkey": mkey,
                                 "content_hash": content_hash,
+                                "existing_hash": existing_hash,
                                 "primary_lang": primary_lang
                             })
 
@@ -640,6 +662,7 @@ async def main():
                                 "filename": filename,
                                 "mkey": mkey,
                                 "content_hash": content_hash,
+                                "existing_hash": existing_hash,
                                 "primary_lang": primary_lang
                             })
 
@@ -682,6 +705,7 @@ async def main():
                               "filename": filename,
                               "mkey": mkey,
                               "content_hash": content_hash,
+                              "existing_hash": existing_hash,
                               "primary_lang": primary_lang
                           })
               print(f"  · Grammatik-Trainer: {len(gram_words)} унікальних слів на кнопках (замість карток×полів).", flush=True)
