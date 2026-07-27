@@ -1643,6 +1643,16 @@ body.lesson-active .vocab-top{
 .sb-prac-feedback-modal-expl{
   font-size:14px;color:var(--warm);line-height:1.3;margin-bottom:16px;
 }
+.sb-prac-feedback-modal-expl.hidden{ display:none; }
+.sb-prac-modal-actions{ display:flex; gap:10px; }
+.sb-prac-modal-actions .sb-prac-feedback-modal-next{ flex:1; width:auto; }
+.sb-prac-modal-secondary-btn{
+  flex-shrink:0;width:54px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--paper);border:1px solid var(--border);border-radius:14px;
+  font-size:20px;cursor:pointer;font-family:inherit;color:var(--ink);
+}
+.sb-prac-modal-secondary-btn:active{opacity:.8;transform:scale(.96);background:var(--soft);}
 .sb-prac-feedback-modal-next{
   width:100%;padding:15px;border-radius:14px;border:none;
   background:linear-gradient(135deg,var(--gold),#b8873a);
@@ -2679,7 +2689,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '400-1b03659';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5771,6 +5781,13 @@ function matchHandleClick(btn){
     const isLastPairNoChoice = matchState.matched === roundSize - 1;
     matchState.matched++;
     haptic.success();
+
+    // Прогрес усього уроку — оновлюємо ЖИВЦЕМ, одразу по кожній парі
+    // (не чекаючи завершення всього раунду matching).
+    if(LF && matchState._lfMode){
+      LF.unitProgress = { done: matchState.matched, total: roundSize };
+      lfRenderBar();
+    }
 
     const mc = matchState.cards.find(c => c.card.id === sel.cardId);
     if(isLastPairNoChoice){
@@ -8968,14 +8985,27 @@ function lfRenderBar(){
   // Цільна смуга прогресу всього уроку: завершені кроки + частковий
   // прогрес поточного кроку (для unit-кроків типу vocab — частка
   // виконаних юнітів; для решти кроків — 0 поки крок не завершено).
+  //
+  // Кожен крок мав вагу "1" незалежно від того, скільки в ньому реально
+  // роботи — для 'dlg_learn' це було невірно: діалог тепер може мати не
+  // 2 репліки (1 обмін), а й 6-8 (кілька обмінів), і крок з довгим
+  // діалогом мав ту саму вагу "1", що й крок із коротким — прогрес-бар
+  // ледь рухався, поки йде довгий діалог, а потім різко стрибав. Тому
+  // вага кроку тепер = ФАКТИЧНА кількість реплік (_lfStepWeight), а не
+  // завжди 1; для решти кроків (cards/matching/tiles/sb_prac) вага й
+  // надалі 1 — там немає такого розкиду "довжини" кроку.
   const stepsEl = document.getElementById('lf-steps');
   if(stepsEl){
-    const totalSteps = LF.steps.filter(s=>s!=='result').length;
+    const relevantSteps = LF.steps.filter(s=>s!=='result');
+    const weights = relevantSteps.map(_lfStepWeight);
+    const totalWeight = weights.reduce((a,b)=>a+b, 0);
+    const doneWeight = weights.slice(0, Math.min(LF.step, weights.length)).reduce((a,b)=>a+b, 0);
+    const curStepWeight = weights[LF.step] ?? 1;
     const curFrac = (LF.unitProgress && LF.unitProgress.total > 0)
       ? Math.min(1, LF.unitProgress.done / LF.unitProgress.total)
       : 0;
-    const pct = totalSteps > 0
-      ? Math.round(((LF.step + curFrac) / totalSteps) * 100)
+    const pct = totalWeight > 0
+      ? Math.round(((doneWeight + curFrac*curStepWeight) / totalWeight) * 100)
       : 0;
     stepsEl.innerHTML =
       '<div class="lf-pb"><div class="lf-pbf" id="lf-pbf" style="width:'+pct+'%"></div></div>';
@@ -8993,6 +9023,30 @@ function lfRenderBar(){
         (LF_STEP_LABELS[cur]?.[uiLang] || LF_STEP_LABELS[cur]?.de || cur);
     }
   }
+}
+
+// Вага кроку для прогрес-бару всього уроку (lfRenderBar). Для
+// 'dlg_learn' — фактична кількість реплік (не фіксовано "2"): або сума
+// реплік по всіх картках бонусної сесії глави (LF.dlgCards), або
+// репліки ОДНІЄЇ картки звичайного уроку (LF.dlgCard). Для решти кроків
+// вага завжди 1 — там немає такого розкиду "довжини" кроку.
+function _lfStepWeight(stepName){
+  if(stepName === 'dlg_learn' && LF){
+    if(LF.dlgCards && LF.dlgCards.length) return _dlgCardsToUnits(LF.dlgCards).length;
+    if(LF.dlgCard) return _dlgCardTurns(LF.dlgCard).length;
+  }
+  // "Знайди пару" — кожна пара окремий "крок" по вазі, так само як
+  // репліки діалогу вище: довший раунд (більше пар) мав би займати
+  // пропорційно більшу частку прогрес-бару, а не ту саму вагу "1", що й
+  // короткий. matchExtraPools[stepName] — запасні раунди (matching_x*),
+  // підставлені замість недоступних def/dlg_learn/tiles/sb_prac.
+  if(LF && stepName === 'matching'){
+    return (LF.matchCards && LF.matchCards.length) || 1;
+  }
+  if(LF && typeof stepName === 'string' && stepName.indexOf('matching_x') === 0){
+    return (LF.matchExtraPools && LF.matchExtraPools[stepName] && LF.matchExtraPools[stepName].length) || 1;
+  }
+  return 1;
 }
 
 function lfSetLessonMode(active){
@@ -9146,6 +9200,11 @@ function lfStartMatching(poolOverride){
     firstTry: new Set(chosen.map(c=>c.id)),
     _lfMode: true,
   };
+  // Кожна пара — окремий "юніт" для прогрес-бару всього уроку (як і
+  // vocab/dlg/sb) — інакше бар стояв на місці всю вправу і стрибав
+  // одразу на весь крок лише в самому кінці раунду.
+  LF.unitProgress = { done: 0, total: matchState.cards.length };
+  lfRenderBar();
   const grid = document.getElementById('match-grid');
   const result = document.getElementById('match-result');
   if(result) result.style.display='none';
@@ -12993,6 +13052,22 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
     sentenceHtml = '<div style="margin:10px 0;padding:10px 12px;background:var(--soft);border-radius:10px;display:flex;flex-direction:column;gap:2px">'+rows.join('')+'</div>';
   }
 
+  // Пояснення (expl) БІЛЬШЕ НЕ показуємо одразу разом з модалкою —
+  // користувач спершу бачить лише правильно/неправильно, а вирішує сам,
+  // чи розкривати пояснення (💡), і, якщо є повне граматичне правило в
+  // базі (card.gram), чи відкривати його цілком (📖) — той самий патерн,
+  // що вже є на кроці SB Lernen (_lfSBHandlers.getSecondaryButtons).
+  var hasExpl = !!(expl && expl.trim());
+  var gramBtn = card ? _lfGrammarButton(card) : null;
+
+  var secondaryBtns = '';
+  if(hasExpl){
+    secondaryBtns += '<button class="sb-prac-modal-secondary-btn" id="sb-modal-expl-btn" type="button">💡</button>';
+  }
+  if(gramBtn){
+    secondaryBtns += '<button class="sb-prac-modal-secondary-btn" id="sb-modal-gram-btn" type="button">📖</button>';
+  }
+
   var modal = document.createElement('div');
   modal.id = 'sb-feedback-modal';
   modal.className = 'sb-prac-feedback-modal ' + (ok ? 'correct' : 'wrong');
@@ -13004,8 +13079,11 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
         '<span class="sb-prac-feedback-modal-title">'+title+'</span>' +
       '</div>' +
       sentenceHtml +
-      '<div class="sb-prac-feedback-modal-expl">'+expl+'</div>' +
-      '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn" style="visibility:hidden">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
+      '<div class="sb-prac-feedback-modal-expl hidden" id="sb-modal-expl">'+expl+'</div>' +
+      '<div class="sb-prac-modal-actions">' +
+        secondaryBtns +
+        '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn" style="visibility:hidden">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
+      '</div>' +
     '</div>';
 
   document.body.appendChild(modal);
@@ -13020,6 +13098,19 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
   });
 
   document.getElementById('sb-modal-next-btn').onclick = onNext;
+
+  var explBtn = document.getElementById('sb-modal-expl-btn');
+  if(explBtn){
+    explBtn.onclick = function(){
+      document.getElementById('sb-modal-expl')?.classList.remove('hidden');
+      explBtn.disabled = true;
+      explBtn.style.opacity = '.5';
+    };
+  }
+  var gramModalBtn = document.getElementById('sb-modal-gram-btn');
+  if(gramModalBtn && gramBtn){
+    gramModalBtn.onclick = gramBtn.onClick;
+  }
 }
 
 // Кнопка "Далі" в модалці ховається до завершення озвучення правильного
