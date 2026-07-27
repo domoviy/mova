@@ -752,7 +752,13 @@ var LESSONS = [
       "k1_028"
     ],
     "unlockAfter": null,
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_001",
+      "dlg_002",
+      "dlg_003",
+      "dlg_004"
+    ]
   },
   {
     "id": "k1m2",
@@ -897,7 +903,13 @@ var LESSONS = [
       "k2_028"
     ],
     "unlockAfter": "k1m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_005",
+      "dlg_006",
+      "dlg_007",
+      "dlg_008"
+    ]
   },
   {
     "id": "k2m2",
@@ -1040,7 +1052,13 @@ var LESSONS = [
       "k3_025"
     ],
     "unlockAfter": "k2m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_009",
+      "dlg_010",
+      "dlg_011",
+      "dlg_012"
+    ]
   },
   {
     "id": "k3m2",
@@ -1220,7 +1238,13 @@ var LESSONS = [
       "k4_031"
     ],
     "unlockAfter": "k4m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_013",
+      "dlg_014",
+      "dlg_015",
+      "dlg_016"
+    ]
   },
   {
     "id": "k4m3",
@@ -1328,7 +1352,13 @@ var LESSONS = [
       "k5_025"
     ],
     "unlockAfter": "k4m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_017",
+      "dlg_018",
+      "dlg_019",
+      "dlg_020"
+    ]
   },
   {
     "id": "k5m2",
@@ -1507,7 +1537,13 @@ var LESSONS = [
       "k6_029"
     ],
     "unlockAfter": "k6m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_021",
+      "dlg_022",
+      "dlg_023",
+      "dlg_024"
+    ]
   },
   {
     "id": "k6m3",
@@ -1614,7 +1650,13 @@ var LESSONS = [
       "k7_023"
     ],
     "unlockAfter": "k6m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_025",
+      "dlg_026",
+      "dlg_027",
+      "dlg_028"
+    ]
   },
   {
     "id": "k7m2",
@@ -1794,7 +1836,13 @@ var LESSONS = [
       "k8_027"
     ],
     "unlockAfter": "k8m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_029",
+      "dlg_030",
+      "dlg_031",
+      "dlg_032"
+    ]
   },
   {
     "id": "k8m3",
@@ -1939,7 +1987,13 @@ var LESSONS = [
       "k9_027"
     ],
     "unlockAfter": "k9m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_001",
+      "dlg_a22_002",
+      "dlg_a22_003",
+      "dlg_a22_004"
+    ]
   },
   {
     "id": "k9m3",
@@ -2047,7 +2101,13 @@ var LESSONS = [
       "k10_024"
     ],
     "unlockAfter": "k9m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_005",
+      "dlg_a22_006",
+      "dlg_a22_007",
+      "dlg_a22_008"
+    ]
   },
   {
     "id": "k10m2",
@@ -2227,7 +2287,13 @@ var LESSONS = [
       "k11_028"
     ],
     "unlockAfter": "k11m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_009",
+      "dlg_a22_010",
+      "dlg_a22_011",
+      "dlg_a22_012"
+    ]
   },
   {
     "id": "k11m3",
@@ -2335,7 +2401,13 @@ var LESSONS = [
       "k12_024"
     ],
     "unlockAfter": "k11m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_013",
+      "dlg_a22_014",
+      "dlg_a22_015",
+      "dlg_a22_016"
+    ]
   },
   {
     "id": "k12m2",
@@ -2515,7 +2587,13 @@ var LESSONS = [
       "k13_028"
     ],
     "unlockAfter": "k13m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_017",
+      "dlg_a22_018",
+      "dlg_a22_019",
+      "dlg_a22_020"
+    ]
   },
   {
     "id": "k13m3",
@@ -2659,7 +2737,13 @@ var LESSONS = [
       "k14_028"
     ],
     "unlockAfter": "k14m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_021",
+      "dlg_a22_022",
+      "dlg_a22_023",
+      "dlg_a22_024"
+    ]
   },
   {
     "id": "k14m3",
@@ -2767,7 +2851,13 @@ var LESSONS = [
       "k15_024"
     ],
     "unlockAfter": "k14m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_025",
+      "dlg_a22_026",
+      "dlg_a22_027",
+      "dlg_a22_028"
+    ]
   },
   {
     "id": "k15m2",
@@ -2947,7 +3037,13 @@ var LESSONS = [
       "k16_028"
     ],
     "unlockAfter": "k16m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_029",
+      "dlg_a22_030",
+      "dlg_a22_031",
+      "dlg_a22_032"
+    ]
   },
   {
     "id": "k16m3",

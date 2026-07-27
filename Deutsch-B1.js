@@ -1376,7 +1376,13 @@ var LESSONS = [
       "k1_030"
     ],
     "unlockAfter": "k1m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_001",
+      "dlg_002",
+      "dlg_003",
+      "dlg_004"
+    ]
   },
   {
     "id": "k1m3",
@@ -1592,7 +1598,13 @@ var LESSONS = [
       "k2_031"
     ],
     "unlockAfter": "k2m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_005",
+      "dlg_006",
+      "dlg_007",
+      "dlg_008"
+    ]
   },
   {
     "id": "k2m3",
@@ -1951,7 +1963,13 @@ var LESSONS = [
       "k3_060"
     ],
     "unlockAfter": "k3m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_009",
+      "dlg_010",
+      "dlg_011",
+      "dlg_012"
+    ]
   },
   {
     "id": "k4m1",
@@ -2129,7 +2147,13 @@ var LESSONS = [
       "k4_055"
     ],
     "unlockAfter": "k4m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_013",
+      "dlg_014",
+      "dlg_015",
+      "dlg_016"
+    ]
   },
   {
     "id": "k4m6",
@@ -2345,7 +2369,13 @@ var LESSONS = [
       "k5_055"
     ],
     "unlockAfter": "k5m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_017",
+      "dlg_018",
+      "dlg_019",
+      "dlg_020"
+    ]
   },
   {
     "id": "k5m6",
@@ -2416,7 +2446,13 @@ var LESSONS = [
       "k6_023"
     ],
     "unlockAfter": null,
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_021",
+      "dlg_022",
+      "dlg_023",
+      "dlg_024"
+    ]
   },
   {
     "id": "k6m2",
@@ -2631,7 +2667,13 @@ var LESSONS = [
       "k7_023"
     ],
     "unlockAfter": null,
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_025",
+      "dlg_026",
+      "dlg_027",
+      "dlg_028"
+    ]
   },
   {
     "id": "k7m2",
@@ -2917,7 +2959,13 @@ var LESSONS = [
       "k8_039"
     ],
     "unlockAfter": "k8m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_029",
+      "dlg_030",
+      "dlg_031",
+      "dlg_032"
+    ]
   },
   {
     "id": "k8m4",
@@ -3061,7 +3109,13 @@ var LESSONS = [
       "k9_023"
     ],
     "unlockAfter": "k8m6",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_033",
+      "dlg_034",
+      "dlg_035",
+      "dlg_036"
+    ]
   },
   {
     "id": "k9m2",
@@ -3241,7 +3295,13 @@ var LESSONS = [
       "k10_023"
     ],
     "unlockAfter": "k9m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_037",
+      "dlg_038",
+      "dlg_039",
+      "dlg_040"
+    ]
   },
   {
     "id": "k10m2",
@@ -3457,7 +3517,13 @@ var LESSONS = [
       "k11_031"
     ],
     "unlockAfter": "k11m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_041",
+      "dlg_042",
+      "dlg_043",
+      "dlg_044"
+    ]
   },
   {
     "id": "k11m3",
@@ -3601,7 +3667,13 @@ var LESSONS = [
       "k12_024"
     ],
     "unlockAfter": "k11m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_045",
+      "dlg_046",
+      "dlg_047",
+      "dlg_048"
+    ]
   },
   {
     "id": "k12m2",
@@ -3925,7 +3997,13 @@ var LESSONS = [
       "k13_050"
     ],
     "unlockAfter": "k13m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_049",
+      "dlg_050",
+      "dlg_051",
+      "dlg_052"
+    ]
   },
   {
     "id": "k14m1",
@@ -3997,7 +4075,13 @@ var LESSONS = [
       "k14_032"
     ],
     "unlockAfter": "k14m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_053",
+      "dlg_054",
+      "dlg_055",
+      "dlg_056"
+    ]
   },
   {
     "id": "k14m3",
@@ -4249,7 +4333,13 @@ var LESSONS = [
       "k15_039"
     ],
     "unlockAfter": "k15m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_057",
+      "dlg_058",
+      "dlg_059",
+      "dlg_060"
+    ]
   },
   {
     "id": "k15m4",
@@ -4357,7 +4447,13 @@ var LESSONS = [
       "k16_023"
     ],
     "unlockAfter": "k15m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_061",
+      "dlg_062",
+      "dlg_063",
+      "dlg_064"
+    ]
   },
   {
     "id": "k16m2",
