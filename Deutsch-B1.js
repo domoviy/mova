@@ -30,26 +30,27 @@ var AUDIO_CONFIG = {
 
 var CHARACTERS = [
   // ── Німецька (de-DE) — 4 стандартні "якісні" голоси ──
-  { "id": "de_w_julia", "lang": "de", "name": "Julia", "edge_tts": "de-DE-KatjaNeural"},
-  { "id": "de_w_anna",  "lang": "de", "name": "Anna",  "edge_tts": "de-DE-AmalaNeural"},
-  { "id": "de_m_mark",  "lang": "de", "name": "Mark",  "edge_tts": "de-DE-ConradNeural"},
-  { "id": "de_m_david", "lang": "de", "name": "David", "edge_tts": "de-DE-KillianNeural"},
+  { "id": "de_w_julia", "gender": "w", "lang": "de", "name": "Julia", "edge_tts": "de-DE-KatjaNeural"},
+  { "id": "de_w_anna", "gender": "w",  "lang": "de", "name": "Anna",  "edge_tts": "de-DE-AmalaNeural"},
+  { "id": "de_m_mark", "gender": "m",  "lang": "de", "name": "Mark",  "edge_tts": "de-DE-ConradNeural"},
+  { "id": "de_m_david", "gender": "m", "lang": "de", "name": "David", "edge_tts": "de-DE-KillianNeural"},
 
   // ── Англійська (en-US / en-GB) — приклад стартового набору ──
-  { "id": "en_w_julia", "lang": "en", "name": "Julia", "edge_tts": "en-US-AriaNeural"},
-  { "id": "en_w_anna",  "lang": "en", "name": "Jenny", "edge_tts": "en-US-JennyNeural"},
-  { "id": "en_w_nina",  "lang": "en", "name": "Nina",  "edge_tts": "en-GB-SoniaNeural"},
+  { "id": "en_w_julia", "gender": "w", "lang": "en", "name": "Julia", "edge_tts": "en-US-AriaNeural"},
+  { "id": "en_w_anna", "gender": "w",  "lang": "en", "name": "Jenny", "edge_tts": "en-US-JennyNeural"},
+  { "id": "en_w_nina", "gender": "w",  "lang": "en", "name": "Nina",  "edge_tts": "en-GB-SoniaNeural"},
 
-  { "id": "en_m_mark",  "lang": "en", "name": "Mark",  "edge_tts": "en-GB-RyanNeural"},
-  { "id": "en_m_david", "lang": "en", "name": "David", "edge_tts": "en-US-GuyNeural"},
-  { "id": "en_m_alex",  "lang": "en", "name": "Alex",  "edge_tts": "en-US-DavisNeural"},
+  { "id": "en_m_mark", "gender": "m",  "lang": "en", "name": "Mark",  "edge_tts": "en-GB-RyanNeural"},
+  { "id": "en_m_david", "gender": "m", "lang": "en", "name": "David", "edge_tts": "en-US-GuyNeural"},
+  { "id": "en_m_alex", "gender": "m",  "lang": "en", "name": "Alex",  "edge_tts": "en-US-DavisNeural"},
+
   // ── Українська (uk-UA) ──
-  { "id": "uk_w_julia", "lang": "uk", "name": "Julia", "edge_tts": "uk-UA-PolinaNeural"},
-  { "id": "uk_m_mark",  "lang": "uk", "name": "Остап", "edge_tts": "uk-UA-OstapNeural"},
+  { "id": "uk_w_julia", "gender": "w", "lang": "uk", "name": "Julia", "edge_tts": "uk-UA-PolinaNeural"},
+  { "id": "uk_m_mark", "gender": "m",  "lang": "uk", "name": "Остап", "edge_tts": "uk-UA-OstapNeural"},
 
   // ── Російська (ru-RU) ──
-  { "id": "ru_w_julia", "lang": "ru", "name": "Юлия",  "edge_tts": "ru-RU-SvetlanaNeural"},
-  { "id": "ru_m_mark",  "lang": "ru", "name": "Mark",  "edge_tts": "ru-RU-DmitryNeural"},
+  { "id": "ru_w_julia", "gender": "w", "lang": "ru", "name": "Юлия",  "edge_tts": "ru-RU-SvetlanaNeural"},
+  { "id": "ru_m_mark", "gender": "m",  "lang": "ru", "name": "Mark",  "edge_tts": "ru-RU-DmitryNeural"},
 ];
 
 // Допоміжна функція для offline-пайплайну генерації аудіо (не для
