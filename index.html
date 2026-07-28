@@ -1401,6 +1401,26 @@ body{
 /* ══ SETTINGS ══ */
 .ssec{background:var(--paper);border-radius:13px;border:1px solid var(--border);padding:14px;margin-bottom:12px}
 .ssec h3{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:.8px}
+/* Групи другого рівня в Settings: об'єднують кілька .ssec-карток однієї
+   теми (Gestalt-принцип близькості). Заголовок групи — жирний, золотий,
+   трохи більший за підзаголовки карток всередині — щоб при швидкому
+   скролі спершу зчитувались 3-4 макро-теми, а вже потім деталі кожної. */
+.ssec-group{ margin-bottom:26px; }
+.ssec-group:last-child{ margin-bottom:0; }
+.ssec-group-title{
+  font-size:12px;font-weight:800;color:var(--gold);
+  text-transform:uppercase;letter-spacing:1px;
+  margin:0 2px 10px;display:flex;align-items:center;gap:7px;
+}
+.ssec-group-title .ssec-group-line{
+  flex:1;height:1px;background:linear-gradient(90deg,rgba(201,168,76,.35),transparent);
+}
+/* Картки всередині групи стоять тісніше одна до одної, ніж групи між
+   собою — саме різниця відступів і "читає" ієрархію без зайвих рамок. */
+.ssec-group .ssec,
+.ssec-group .sr-dashboard-ssec{ margin-bottom:8px; }
+.ssec-group .ssec:last-child,
+.ssec-group .sr-dashboard-ssec:last-child{ margin-bottom:0; }
 .srow{display:flex;align-items:center;justify-content:space-between;padding:11px 0;border-bottom:1px solid var(--soft);gap:10px}
 .srow:last-child{border-bottom:none}
 .srow-label label{font-size:14px;font-weight:600}
@@ -2585,6 +2605,10 @@ body.lesson-active .vocab-top{
     <div id="view-settings" class="view">
     <div class="sh"><h2>⚙️ <span data-i18n="sec_settings">Einstellungen</span></h2></div>
 
+    <!-- ГРУПА 1: Курс і мова ─────────────────────────────────── -->
+    <div class="ssec-group">
+    <div class="ssec-group-title">📚 <span data-i18n="grp_course_lang">Kurs &amp; Sprache</span><span class="ssec-group-line"></span></div>
+
     <!-- 1. Курс -->
     <div class="ssec" id="ssec-course">
     <h3>📚 <span data-i18n="sec_course">Kurs</span></h3>
@@ -2593,7 +2617,18 @@ body.lesson-active .vocab-top{
     </div>
     </div>
 
-    <!-- 2. Розмір шрифту -->
+    <!-- 2. Мова інтерфейсу -->
+    <div class="ssec" id="ssec-lang">
+    <h3>🌐 <span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
+    <div style="display:flex;gap:8px;padding:4px 0;flex-direction:column">
+      <button class="btn ui-lang-btn ssec-btn active" data-lang="de" onclick="setUiLang('de')">🇩🇪 Deutsch</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="uk" onclick="setUiLang('uk')">🇺🇦 Українська</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="en" onclick="setUiLang('en')">🇬🇧 English</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="ru" onclick="setUiLang('ru')">🇷🇺 Русский</button>
+    </div>
+    </div>
+
+    <!-- 3. Розмір шрифту -->
     <div class="ssec" id="ssec-fontsize">
     <h3>🔤 <span data-i18n="sec_fontsize">Schriftgröße</span></h3>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:10px">
@@ -2609,17 +2644,11 @@ body.lesson-active .vocab-top{
       </div>
     </div>
     </div>
+    </div><!-- /ГРУПА 1 -->
 
-    <!-- 3. Мова інтерфейсу -->
-    <div class="ssec" id="ssec-lang">
-    <h3>🌐 <span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
-    <div style="display:flex;gap:8px;padding:4px 0;flex-direction:column">
-      <button class="btn ui-lang-btn ssec-btn active" data-lang="de" onclick="setUiLang('de')">🇩🇪 Deutsch</button>
-      <button class="btn ui-lang-btn ssec-btn" data-lang="uk" onclick="setUiLang('uk')">🇺🇦 Українська</button>
-      <button class="btn ui-lang-btn ssec-btn" data-lang="en" onclick="setUiLang('en')">🇬🇧 English</button>
-      <button class="btn ui-lang-btn ssec-btn" data-lang="ru" onclick="setUiLang('ru')">🇷🇺 Русский</button>
-    </div>
-    </div>
+    <!-- ГРУПА 2: Прогрес і іспит ─────────────────────────────── -->
+    <div class="ssec-group">
+    <div class="ssec-group-title">🎯 <span data-i18n="grp_progress_exam">Fortschritt &amp; Prüfung</span><span class="ssec-group-line"></span></div>
 
     <!-- 4. Готовність до іспиту -->
     <div class="sr-dashboard-ssec" id="ssec-sr-dashboard">
@@ -2641,13 +2670,18 @@ body.lesson-active .vocab-top{
 
     <!-- 6. Ціль і дані -->
     <div class="ssec">
-    <h3>📊 <span data-i18n="sec_goal_data">Lernziel & Daten</span></h3>
+    <h3>📊 <span data-i18n="sec_goal_data">Lernziel &amp; Daten</span></h3>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
     </div>
+    </div><!-- /ГРУПА 2 -->
+
+    <!-- ГРУПА 3: Аудіо ───────────────────────────────────────── -->
+    <div class="ssec-group">
+    <div class="ssec-group-title">🔊 <span data-i18n="grp_audio">Wiedergabe</span><span class="ssec-group-line"></span></div>
 
     <!-- 7. Налаштування озвучування (Швидкість — перший пункт) -->
     <div class="ssec">
@@ -2657,6 +2691,11 @@ body.lesson-active .vocab-top{
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_pause">Pause</label><small data-i18n="sub_pause">Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_readpause">Lesepause</label><small data-i18n="sub_readpause">Nach dem Umdrehen</small></div><div class="srow-ctrl"><input type="range" min="0" max="20" step="0.1" value="0.3" id="vreadpause" oninput="V.readPause=+this.value*1000;document.getElementById('vrpv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vrpv">0,3s</span></div></div>
     </div>
+    </div><!-- /ГРУПА 3 -->
+
+    <!-- ГРУПА 4: Технічне ────────────────────────────────────── -->
+    <div class="ssec-group">
+    <div class="ssec-group-title">🛠 <span data-i18n="grp_technical">Technisch</span><span class="ssec-group-line"></span></div>
 
     <!-- 8. Налагодження — згорнуто за замовчуванням, клік по заголовку розгортає -->
     <div class="ssec">
@@ -2698,6 +2737,7 @@ body.lesson-active .vocab-top{
     </div>
     </div>
     </div>
+    </div><!-- /ГРУПА 4 -->
 
     <!-- Версія додатку -->
     <div class="app-footer-version">
@@ -2740,7 +2780,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '408-87d93b9';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2967,6 +3007,7 @@ const I18N = {
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
     sr_readiness_info:'Zeigt, wie gut Karten verankert sind (≥2 richtige Wiederholungen, noch nicht fällig) — nicht nur ob sie schon gesehen wurden.',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
+    grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
     nav_lernpfad:'Path', nav_sb:'Sprachbau',
@@ -3047,6 +3088,7 @@ const I18N = {
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
     sr_readiness_info:'Показує, наскільки добре закріплені картки (≥2 правильні повторення, ще не due) — а не просто факт, що їх переглянули.',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
+    grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
     nav_lernpfad:'Шлях', nav_sb:'Sprachbau',
@@ -3122,6 +3164,7 @@ const I18N = {
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
     sr_readiness_info:'Shows how well cards are retained (≥2 correct repetitions, not due yet) — not just whether you have seen them.',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
+    grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
     nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
@@ -3198,6 +3241,7 @@ const I18N = {
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
     sr_readiness_info:'Показывает, насколько хорошо закреплены карточки (≥2 правильных повторения, ещё не due) — а не просто факт, что их просмотрели.',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
+    grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
     nav_lernpfad:'Путь', nav_sb:'Sprachbau',
