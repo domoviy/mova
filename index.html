@@ -1069,8 +1069,11 @@ body{
 .sr-ob-btn-skip{font-size:var(--fs-tertiary)}
 .h-chip-counter{font-size:var(--fs-utility);font-weight:700;color:var(--gold)}
 .srs-hint-badge{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
+  position:absolute;
+  /* top/left/transform виставляються динамічно в showSrsHint() —
+     або впритул до #lf-unit-hint (реальний getBoundingClientRect),
+     або по центру зони як фолбек. Тут навмисно без значень за
+     замовчуванням, щоб не було "стрибка" з центру в потрібну точку. */
   background:rgba(13,43,26,.92);
   border:1px solid rgba(201,168,76,.35);
   border-radius:16px;padding:14px 24px;
@@ -1386,6 +1389,32 @@ body{
    відповідь), які в half-width картці 2-колонкової сітки обрізались би
    нерівно; на всю ширину вони читаються природно. */
 .vocab-grid{display:flex;flex-direction:column;gap:8px}
+/* Favoriten — empty state. Іконка-зірка в тому ж "рукописному" стилі,
+   що й лого MOVA (товстий скруглений контур, без заливки) + м'яке
+   золоте світіння позаду, статичне (без нескінченної анімації —
+   це не splash-екран, не варто відволікати постійним рухом). */
+.fav-empty-state{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:56px 28px 24px;
+}
+.fav-empty-icon-wrap{
+  position:relative;width:72px;height:72px;margin-bottom:22px;flex-shrink:0;
+}
+.fav-empty-icon-glow{
+  position:absolute;inset:-16px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.32),transparent 70%);
+  filter:blur(7px);
+}
+.fav-empty-icon{ position:relative;width:100%;height:100%; }
+.fav-empty-title{
+  font-size:17px;font-weight:700;color:var(--ink);
+  margin-bottom:8px;max-width:260px;line-height:1.35;
+}
+.fav-empty-sub{
+  font-size:14px;color:var(--muted);line-height:1.5;
+  max-width:280px;margin-bottom:26px;
+}
+.fav-empty-cta{ max-width:230px; }
 .vocab-mini-card{
   background:var(--paper);border-radius:12px;border:1px solid var(--border);
   padding:12px 14px;cursor:pointer;
@@ -2443,7 +2472,23 @@ body.lesson-active .vocab-top{
     <div id="view-favs" class="view">
       <div class="sh"><h2>★ Favoriten</h2></div>
       <div class="vocab-grid" id="fav-grid"></div>
-      <p id="fav-empty" style="text-align:center;color:var(--muted);padding:48px 0;display:none">Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.</p>
+      <!-- Empty state: перше враження нового користувача про фічу Favoriten.
+           Замість голого тексту — іконка в стилі логотипу MOVA (той самий
+           "рукописний" контур), заголовок, пояснення МЕХАНІКИ (звідки
+           взагалі беруться закладки) і CTA, що одразу веде туди, де можна
+           додати першу. -->
+      <div id="fav-empty" class="fav-empty-state" style="display:none">
+        <div class="fav-empty-icon-wrap">
+          <div class="fav-empty-icon-glow"></div>
+          <svg class="fav-empty-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 10 L61.5 39 L93 40.5 L68 59.5 L77 89.5 L50 71.5 L23 89.5 L32 59.5 L7 40.5 L38.5 39 Z"
+              fill="none" stroke="var(--gold)" stroke-width="5.5" stroke-linejoin="round" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="fav-empty-title" data-i18n="favs_empty_title">Hier erscheinen deine Favoriten</div>
+        <div class="fav-empty-sub" data-i18n="favs_empty_sub">Tippe ☆ auf einer Wortkarte — sie landet sofort hier, zum schnellen Wiederholen.</div>
+        <button class="lr-btn-primary fav-empty-cta" onclick="showView('vocab')" data-i18n="favs_empty_cta">Zu den Vokabeln</button>
+      </div>
     </div>
 
     <!-- LERNPFAD -->
@@ -2780,7 +2825,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '409-9e2ddbd';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2991,6 +3036,9 @@ const I18N = {
     fav_added:'★ Zu Lesezeichen hinzugefügt',
     fav_removed:'☆ Aus Lesezeichen entfernt',
     favs_empty:'Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.',
+    favs_empty_title:'Hier erscheinen deine Favoriten',
+    favs_empty_sub:'Tippe ☆ auf einer Wortkarte — sie landet sofort hier, zum schnellen Wiederholen.',
+    favs_empty_cta:'Zu den Vokabeln',
     settings_title:'⚙️ Einstellungen',
     sec_playback:'Wiedergabe',
     lbl_repeats:'Wiederholungen', sub_repeats:'Zyklen pro Karte',
@@ -3072,6 +3120,9 @@ const I18N = {
     fav_added:'★ Додано в закладки',
     fav_removed:'☆ Видалено із закладок',
     favs_empty:'Ще немає закладок.<br>Натисни ☆ на картці.',
+    favs_empty_title:"Тут з'являться твої улюблені слова",
+    favs_empty_sub:'Натискай ☆ на картці слова — вона одразу опиниться тут, для швидкого повторення.',
+    favs_empty_cta:'Перейти до словника',
     settings_title:'⚙️ Налаштування',
     sec_playback:'Відтворення',
     lbl_repeats:'Повторення', sub_repeats:'Циклів на картку',
@@ -3148,6 +3199,9 @@ const I18N = {
     fav_added:'★ Added to bookmarks',
     fav_removed:'☆ Removed from bookmarks',
     favs_empty:'No favorites yet.<br>Tap ☆ on a card.',
+    favs_empty_title:'Your favorite words will appear here',
+    favs_empty_sub:'Tap ☆ on a word card — it lands here instantly, ready for quick review.',
+    favs_empty_cta:'Go to Vocab',
     settings_title:'⚙️ Settings',
     sec_playback:'Playback',
     lbl_repeats:'Repetitions', sub_repeats:'Cycles per card',
@@ -3225,6 +3279,9 @@ const I18N = {
     fav_added:'★ Добавлено в закладки',
     fav_removed:'☆ Удалено из закладок',
     favs_empty:'Нет закладок.<br>Нажми ☆ на карточке.',
+    favs_empty_title:'Здесь появятся твои любимые слова',
+    favs_empty_sub:'Нажимай ☆ на карточке слова — она сразу окажется здесь, для быстрого повторения.',
+    favs_empty_cta:'Перейти к словарю',
     settings_title:'⚙️ Настройки',
     sec_playback:'Воспроизведение',
     lbl_repeats:'Повторения', sub_repeats:'Циклов на карточку',
@@ -3370,8 +3427,9 @@ function applyI18n(){
     {emoji:'🎤', key:'tab_speech'},
   ];
   tabs.forEach((tab,i)=>{ if(tabDefs[i]) tab.textContent=tabDefs[i].emoji; });
-  // Favorites empty
-  const fe = qsel('fav-empty'); if(fe) fe.innerHTML = t('favs_empty');
+  // Favorites empty state — заголовок/підпис/кнопка перекладаються нижче
+  // через загальний цикл [data-i18n] (у розмітці більше не голий текст,
+  // тож більше не можна просто перезаписати innerHTML одним рядком).
   // Settings heading — через data-i18n span, не перезаписуємо вручну
   // Labels by data-i18n attribute (підхоплює і h3 span, і все інше)
   document.querySelectorAll('[data-i18n]').forEach(el=>{
@@ -5683,6 +5741,31 @@ function showSrsHint(emoji, label, q, areaId='fc-area'){
   const area = document.getElementById(areaId);
   if(area && hint.parentElement !== area) area.appendChild(hint);
   hint.innerHTML = emoji+'<br><span class="srs-hint-label">'+label+'</span>';
+
+  // Позиція: якщо в цій зоні є підпис #lf-unit-hint (маленький текст
+  // під карткою уроку) — ставимо бейдж рівно туди, замість дефолтного
+  // центру екрана. Рахуємо РЕАЛЬНЕ положення через getBoundingClientRect
+  // (а не фіксовані пікселі), бо .lf-unit-hint — звичайний flex-елемент,
+  // притиснутий до низу картки через flex:1 на .lf-unit-body вище нього;
+  // його відстань від ВЕРХУ картки "пливе" залежно від довжини контенту
+  // й висоти екрана, а от від НИЗУ — стабільна (емпірично ~38px у
+  // typical mobile viewport). Тому міряємо наживо щоразу, а не хардкодимо.
+  const anchor = area ? area.querySelector('#lf-unit-hint') : null;
+  if(anchor && area){
+    const aRect = area.getBoundingClientRect();
+    const hRect = anchor.getBoundingClientRect();
+    const centerY = (hRect.top + hRect.bottom) / 2 - aRect.top;
+    hint.style.top = centerY + 'px';
+    hint.style.left = '50%';
+    hint.style.transform = 'translate(-50%,-50%)';
+  } else {
+    // Фолбек для зон без такого підпису (fc-area, dlg-fc-area, sb-fc-area) —
+    // лишаємо старе центрування.
+    hint.style.top = '50%';
+    hint.style.left = '50%';
+    hint.style.transform = 'translate(-50%,-50%)';
+  }
+
   hint.style.opacity = '1';
   clearTimeout(hint._t);
   hint._t = setTimeout(()=>{ hint.style.opacity='0'; }, 1200);
@@ -9379,7 +9462,10 @@ var _lfSBHandlers = {
         toggleFavorite(card.id, true);
         var nowFav = isFavorite(card.id);
         setFavVisual(nowFav);
+        // Іконку (★/☆) showSrsHint() вже малює окремо зверху бейджа — тож
+        // тут прибираємо зірку з самого тексту лейбла, інакше вона дублюється.
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в закладки') : (typeof t==='function'?t('fav_removed'):'☆ Видалено із закладок');
+        label = label.replace(/^[★☆]\s*/, '');
         showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
       };
       var prevHandlers = favBtn._lfFavHandlers;
@@ -9651,7 +9737,10 @@ var _lfDlgHandlers = {
         toggleFavorite(card.id, true);
         var nowFav = isFavorite(card.id);
         setFavVisual(nowFav);
+        // Іконку (★/☆) showSrsHint() вже малює окремо зверху бейджа — тож
+        // тут прибираємо зірку з самого тексту лейбла, інакше вона дублюється.
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в закладки') : (typeof t==='function'?t('fav_removed'):'☆ Видалено із закладок');
+        label = label.replace(/^[★☆]\s*/, '');
         showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
       };
       var prevHandlers = favBtn._lfFavHandlers;
@@ -10299,7 +10388,10 @@ var _lfVocabHandlers = {
         toggleFavorite(card.id, true);
         var nowFav = isFavorite(card.id);
         setFavVisual(nowFav);
+        // Іконку (★/☆) showSrsHint() вже малює окремо зверху бейджа — тож
+        // тут прибираємо зірку з самого тексту лейбла, інакше вона дублюється.
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в закладки') : (typeof t==='function'?t('fav_removed'):'☆ Видалено із закладок');
+        label = label.replace(/^[★☆]\s*/, '');
         showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
       };
       // Окремі touch listeners (як fc-fav-front/back) — інакше .lf-unit-card

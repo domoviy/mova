@@ -533,6 +533,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_001",
       "sbs_007"
+    ],
+    "dlgCards": [
+      "dlg_029"
     ]
   },
   {
@@ -6581,6 +6584,121 @@ var DIALOGE = [
       "ru": "В качестве компенсации я могу также предложить вам ваучер на следующий заказ. Мы сделаем всё, <g>чтобы</g> это не повторилось."
     },
     "gram": "konnektoren_infinitiv"
+  },
+{
+    "id": "dlg_029",
+    "cat": "Mein Beruf",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Wir haben ein Problem: Die Geschäftsführung hat entschieden, dass unser Standort ab nächstem Jahr in einen anderen Vorort verlegt wird. Die Entfernung zum neuen Arbeitsort beträgt fast 60 Kilometer, und viele Kolleginnen und Kollegen wissen jetzt nicht, ob sie pendeln oder umziehen sollen.",
+      "en": "We have a problem: management has decided that our location will be moved to another suburb starting next year. The distance to the new workplace is almost 60 kilometers, and many colleagues don't know now whether they should commute or relocate.",
+      "uk": "У нас проблема: керівництво вирішило, що з наступного року наш офіс перенесуть в інше передмістя. Відстань до нового місця роботи становить майже 60 кілометрів, і багато колег тепер не знають, чи їм їздити щодня, чи переїжджати.",
+      "ru": "У нас проблема: руководство решило, что с следующего года наш офис перенесут в другой пригород. Расстояние до нового места работы составляет почти 60 километров, и многие коллеги теперь не знают, ездить ли им каждый день или переезжать."
+    },
+    "a": {
+      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass der neue Standort für viele Mitarbeitende zu weit entfernt ist?",
+      "en": "Did I understand you correctly: so the issue is that the new location is too far away for many employees?",
+      "uk": "Я правильно тебе зрозумів(ла): отже, йдеться про те, що нове місце розташування занадто далеко для багатьох співробітників?",
+      "ru": "Я правильно тебя понял(а): значит, речь о том, что новое расположение слишком далеко для многих сотрудников?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welche Folgen hätte das für das Team, wenn wir nichts unternehmen?",
+      "en": "Exactly. What do you think, what consequences would that have for the team if we do nothing?",
+      "uk": "Саме так. Як ти думаєш, які наслідки це матиме для команди, якщо ми нічого не зробимо?",
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь для команды, если мы ничего не предпримем?"
+    },
+    "a1": {
+      "de": "Ich bin der Meinung, dass mehrere erfahrene Fachkräfte kündigen würden, <g>weil</g> ihnen die tägliche Pendelzeit zu lang <g>wäre</g>.",
+      "en": "I think that several experienced specialists would resign, because the daily commuting time would be too long for them.",
+      "uk": "Я вважаю, що кілька досвідчених фахівців звільнилися б, оскільки щоденний час на дорогу був би для них занадто довгим.",
+      "ru": "Я считаю, что несколько опытных специалистов уволились бы, потому что ежедневное время на дорогу было бы для них слишком долгим."
+    },
+    "q2": {
+      "de": "Wie wäre es, wenn wir der Geschäftsführung vorschlagen, dass Mitarbeitende an zwei Tagen pro Woche im Homeoffice arbeiten dürfen?",
+      "en": "How about we suggest to management that employees be allowed to work from home two days a week?",
+      "uk": "Що якщо ми запропонуємо керівництву дозволити співробітникам працювати з дому два дні на тиждень?",
+      "ru": "Что если мы предложим руководству разрешить сотрудникам работать из дома два дня в неделю?"
+    },
+    "a2": {
+      "de": "Das ist sicherlich sinnvoll, da man sich dann nicht sofort an einen neuen Wohnort gewöhnen müsste. Wir sollten aber vorher klären, ob das für alle Abteilungen überhaupt in Frage kommt.",
+      "en": "That certainly makes sense, since then people wouldn't have to get used to a new place of residence right away. But we should first clarify whether that's even an option for all departments.",
+      "uk": "Це, безумовно, розумно, адже тоді не довелося б одразу звикати до нового місця проживання. Але спершу варто з'ясувати, чи це взагалі можливо для всіх відділів.",
+      "ru": "Это, безусловно, разумно, так как тогда не пришлось бы сразу привыкать к новому месту жительства. Но сначала нужно выяснить, возможно ли это вообще для всех отделов."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, zusätzlich eine flexible Gleitzeit mit fester Kernarbeitszeit einzuführen. Was hältst du davon?",
+      "en": "Another suggestion would be to also introduce flexible working hours with a fixed core time. What do you think about that?",
+      "uk": "Ще одна пропозиція - додатково впровадити гнучкий графік із фіксованим основним робочим часом. Що ти про це думаєш?",
+      "ru": "Еще одно предложение - дополнительно ввести гибкий график с фиксированным основным рабочим временем. Что ты об этом думаешь?"
+    },
+    "a3": {
+      "de": "Ein Argument, das dagegen spricht, ist, dass nicht jede Abteilung im Homeoffice arbeiten kann - die Buchhaltung zum Beispiel braucht oft persönlichen Kundenkontakt vor Ort.",
+      "en": "One argument against that is that not every department can work from home - accounting, for example, often needs personal contact with clients on-site.",
+      "uk": "Аргумент проти цього полягає в тому, що не кожен відділ може працювати з дому - бухгалтерія, наприклад, часто потребує особистого контакту з клієнтами на місці.",
+      "ru": "Аргумент против этого в том, что не каждый отдел может работать из дома - бухгалтерия, например, часто нуждается в личном контакте с клиентами на месте."
+    },
+    "q4": {
+      "de": "Das stimmt zwar, aber man könnte das Problem eventuell lösen, <g>indem</g> man abwechselnd im Büro und im Homeoffice <g>arbeitet</g>.",
+      "en": "That's true, but we could perhaps solve the problem by working alternately in the office and from home.",
+      "uk": "Це правда, але цю проблему можна було б вирішити, якщо працювати почергово в офісі та вдома.",
+      "ru": "Это верно, но эту проблему можно было бы решить, если работать поочередно в офисе и дома."
+    },
+    "a4": {
+      "de": "Da bin ich ganz deiner Meinung. Ich kann mir überhaupt nicht vorstellen, dass die Geschäftsführung dagegen wäre, wenn wir zeigen, dass die Produktivität dadurch nicht sinkt.",
+      "en": "I completely agree with you. I really can't imagine that management would be against it if we show that productivity doesn't decrease as a result.",
+      "uk": "Тут я з тобою цілком згоден(на). Я взагалі не можу собі уявити, що керівництво було б проти, якщо ми покажемо, що продуктивність через це не знижується.",
+      "ru": "Тут я с тобой полностью согласен(на). Я вообще не могу себе представить, что руководство было бы против, если мы покажем, что производительность из-за этого не снижается."
+    },
+    "q5": {
+      "de": "Sollten wir auch vorschlagen, eine Änderung an den befristeten Arbeitsverträgen vorzunehmen und sie in unbefristete Verträge umzuwandeln, damit sich die Fachkräfte am neuen Standort sicherer fühlen?",
+      "en": "Should we also suggest making a change to the fixed-term employment contracts and converting them into permanent ones, so that the specialists feel more secure at the new location?",
+      "uk": "Чи варто нам також запропонувати внести зміну до строкових трудових договорів і перетворити їх на безстрокові, щоб фахівці почувалися впевненіше на новому місці?",
+      "ru": "Стоит ли нам также предложить внести изменение в срочные трудовые договоры и превратить их в бессрочные, чтобы специалисты чувствовали себя увереннее на новом месте?"
+    },
+    "a5": {
+      "de": "Das halte ich für einen guten Punkt, <g>weil</g> es Vertrauen <g>schafft</g>. Zusätzlich könnten wir eine kleine Umzugshilfe für alle anbieten, die tatsächlich umziehen möchten.",
+      "en": "I think that's a good point, because it builds trust. In addition, we could offer everyone who actually wants to relocate a small relocation allowance.",
+      "uk": "Вважаю це гарною думкою, бо це створює довіру. Крім того, ми могли б запропонувати невелику допомогу з переїздом усім, хто справді хоче переїхати.",
+      "ru": "Считаю это хорошей мыслью, потому что это создаёт доверие. Кроме того, мы могли бы предложить небольшую помощь с переездом всем, кто действительно хочет переехать."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich bereite einen kurzen Bericht über die Homeoffice-Möglichkeiten vor, und du kümmerst dich um die Zahlen zur Umzugshilfe. Einverstanden?",
+      "en": "Let's split up the tasks: I'll prepare a short report on the home office options, and you take care of the figures for the relocation allowance. Agreed?",
+      "uk": "Давай розподілимо завдання: я підготую короткий звіт про можливості роботи з дому, а ти займешся цифрами щодо допомоги з переїздом. Домовились?",
+      "ru": "Давай разделим задачи: я подготовлю короткий отчёт о возможностях работы из дома, а ты займёшься цифрами по помощи с переездом. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, deinen Teil schon bis Mittwoch fertigzustellen, damit wir noch Zeit für Korrekturen haben?",
+      "en": "Agreed. Do you intend to finish your part by Wednesday, so we still have time for corrections?",
+      "uk": "Домовились. Ти маєш намір завершити свою частину вже до середи, щоб у нас залишився час на виправлення?",
+      "ru": "Договорились. Ты намерен(а) завершить свою часть уже к среде, чтобы у нас осталось время на исправления?"
+    },
+    "q7": {
+      "de": "Wäre es realistisch, wenn wir den Vorschlag bis Ende der Woche fertigstellen und ihn nächsten Montag im Meeting vorstellen?",
+      "en": "Would it be realistic if we finish the proposal by the end of the week and present it at the meeting next Monday?",
+      "uk": "Чи буде реалістично, якщо ми завершимо пропозицію до кінця тижня та представимо її наступного понеділка на нараді?",
+      "ru": "Будет ли реалистично, если мы завершим предложение к концу недели и представим его в следующий понедельник на совещании?"
+    },
+    "a7": {
+      "de": "Ja, das sollte machbar sein, wenn wir uns morgen noch einmal kurz austauschen, um die letzten Details zu klären.",
+      "en": "Yes, that should be feasible if we quickly touch base again tomorrow to clarify the last details.",
+      "uk": "Так, це має бути здійсненно, якщо ми завтра ще раз коротко обговоримо й уточнимо останні деталі.",
+      "ru": "Да, это должно быть выполнимо, если мы завтра ещё раз коротко обсудим и уточним последние детали."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir schlagen flexibles Homeoffice, eine faire Gleitzeitregelung und eine Umzugshilfe vor, damit niemand wegen des neuen Standorts kündigen muss.",
+      "en": "Let's summarize: we're proposing flexible home office, a fair flextime arrangement, and a relocation allowance, so that nobody has to resign because of the new location.",
+      "uk": "Підсумуємо: ми пропонуємо гнучку роботу з дому, справедливий гнучкий графік і допомогу з переїздом, щоб нікому не довелося звільнятися через нове місце розташування.",
+      "ru": "Подведём итог: мы предлагаем гибкую работу из дома, справедливый гибкий график и помощь с переездом, чтобы никому не пришлось увольняться из-за нового местоположения."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, so erfüllen wir auch die Anforderung, alle Mitarbeitenden fair zu behandeln - unser Vorschlag wird bei der Geschäftsführung sicher Anerkennung finden. Ich schreibe das Protokoll und schicke es dir heute noch.",
+      "en": "Exactly. I think that way we also meet the requirement to treat all employees fairly - our proposal will surely gain recognition from management. I'll write up the minutes and send them to you today.",
+      "uk": "Саме так. Гадаю, так ми ще й виконуємо вимогу справедливо ставитися до всіх співробітників - наша пропозиція точно знайде визнання в керівництва. Я напишу протокол і надішлю тобі його ще сьогодні.",
+      "ru": "Именно так. Думаю, так мы ещё и выполняем требование справедливо относиться ко всем сотрудникам - наше предложение точно найдёт признание у руководства. Я напишу протокол и отправлю его тебе ещё сегодня."
+    },
+    "gram": "wortstellung"
   }
 ];
 
