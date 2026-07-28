@@ -3839,7 +3839,7 @@ var DIALOGE = [
   {
     "id": "dlg_005",
     "cat": "Wohnungssuche und Umzug",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Warum ziehst du um?",
       "en": "Why are you moving?",
@@ -3857,7 +3857,7 @@ var DIALOGE = [
   {
     "id": "dlg_006",
     "cat": "Wohnungssuche und Umzug",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Wo soll ich den Schrank hinstellen?",
       "en": "Where should I put the cupboard?",
@@ -3875,7 +3875,7 @@ var DIALOGE = [
   {
     "id": "dlg_007",
     "cat": "Wohnungssuche und Umzug",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Wie hoch ist die Miete für die Wohnung?",
       "en": "How much is the rent for the apartment?",
@@ -3893,7 +3893,7 @@ var DIALOGE = [
   {
     "id": "dlg_008",
     "cat": "Wohnungssuche und Umzug",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Wer macht bei euch in der WG den Haushalt?",
       "en": "Who does the housework in your shared flat?",
@@ -3911,7 +3911,7 @@ var DIALOGE = [
   {
     "id": "dlg_009",
     "cat": "Über Arbeit und Freizeit sprechen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Was machst du in deiner Freizeit am liebsten?",
       "en": "What do you like to do most in your free time?",
@@ -3929,7 +3929,7 @@ var DIALOGE = [
   {
     "id": "dlg_010",
     "cat": "Über Arbeit und Freizeit sprechen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Hast du am Samstag Zeit für einen Termin?",
       "en": "Do you have time for an appointment on Saturday?",
@@ -3947,7 +3947,7 @@ var DIALOGE = [
   {
     "id": "dlg_011",
     "cat": "Über Arbeit und Freizeit sprechen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Bist du Mitglied in einem Sportverein?",
       "en": "Are you a member of a sports club?",
@@ -3965,7 +3965,7 @@ var DIALOGE = [
   {
     "id": "dlg_012",
     "cat": "Über Arbeit und Freizeit sprechen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Warum kommst du heute später zur Arbeit?",
       "en": "Why are you coming to work later today?",
@@ -3983,7 +3983,7 @@ var DIALOGE = [
   {
     "id": "dlg_013",
     "cat": "Kleidung kaufen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Kann ich Ihnen helfen? Suchen Sie etwas Bestimmtes?",
       "en": "Can I help you? Are you looking for something specific?",
@@ -4001,7 +4001,7 @@ var DIALOGE = [
   {
     "id": "dlg_014",
     "cat": "Kleidung kaufen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Welche Größe brauchen Sie?",
       "en": "What size do you need?",
@@ -4019,7 +4019,7 @@ var DIALOGE = [
   {
     "id": "dlg_015",
     "cat": "Kleidung kaufen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie gefällt Ihnen das Kleid?",
       "en": "How do you like the dress?",
@@ -4037,7 +4037,7 @@ var DIALOGE = [
   {
     "id": "dlg_016",
     "cat": "Kleidung kaufen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Wo finde ich die Umkleidekabine?",
       "en": "Where can I find the fitting room?",
@@ -4055,7 +4055,7 @@ var DIALOGE = [
   {
     "id": "dlg_017",
     "cat": "Verkehrsmittel",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_w_anna", 
     "q": {
       "de": "Wie kommst du normalerweise zur Arbeit?",
       "en": "How do you normally get to work?",
@@ -4073,7 +4073,7 @@ var DIALOGE = [
   {
     "id": "dlg_018",
     "cat": "Verkehrsmittel",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_w_anna", 
     "q": {
       "de": "Fährt dieser Bus zum Hauptbahnhof?",
       "en": "Does this bus go to the main station?",
@@ -4091,7 +4091,7 @@ var DIALOGE = [
   {
     "id": "dlg_019",
     "cat": "Verkehrsmittel",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_w_anna", 
     "q": {
       "de": "Warum nimmst du heute ein Taxi?",
       "en": "Why are you taking a taxi today?",
@@ -4109,7 +4109,7 @@ var DIALOGE = [
   {
     "id": "dlg_020",
     "cat": "Verkehrsmittel",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_w_anna", 
     "q": {
       "de": "Ist die U-Bahn-Station barrierefrei?",
       "en": "Is the subway station accessible?",
@@ -4127,7 +4127,7 @@ var DIALOGE = [
   {
     "id": "dlg_021",
     "cat": "Familie und Migration",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_m_mark", "name_a": "de_m_david", 
     "q": {
       "de": "Erzählen Sie mir etwas über Ihre Familie.",
       "en": "Tell me something about your family.",
@@ -4145,7 +4145,7 @@ var DIALOGE = [
   {
     "id": "dlg_022",
     "cat": "Familie und Migration",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_m_mark", "name_a": "de_m_david", 
     "q": {
       "de": "Wann sind Sie nach Deutschland gekommen?",
       "en": "When did you come to Germany?",
@@ -4163,7 +4163,7 @@ var DIALOGE = [
   {
     "id": "dlg_023",
     "cat": "Familie und Migration",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_m_mark", "name_a": "de_m_david", 
     "q": {
       "de": "War es am Anfang schwer für Sie?",
       "en": "Was it difficult for you at the beginning?",
@@ -4181,7 +4181,7 @@ var DIALOGE = [
   {
     "id": "dlg_024",
     "cat": "Familie und Migration",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_m_mark", "name_a": "de_m_david", 
     "q": {
       "de": "Wie oft besuchen Sie Ihr Heimatland?",
       "en": "How often do you visit your homeland?",
@@ -4271,7 +4271,7 @@ var DIALOGE = [
   {
     "id": "dlg_029",
     "cat": "Nach dem Weg fragen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Entschuldigung, wie komme ich zum Brandenburger Tor?",
       "en": "Excuse me, how do I get to the Brandenburg Gate?",
@@ -4289,7 +4289,7 @@ var DIALOGE = [
   {
     "id": "dlg_030",
     "cat": "Nach dem Weg fragen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Ist es weit von hier bis zum Museum?",
       "en": "Is it far from here to the museum?",
@@ -4307,7 +4307,7 @@ var DIALOGE = [
   {
     "id": "dlg_031",
     "cat": "Nach dem Weg fragen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Wo ist hier in der Nähe eine Apotheke?",
       "en": "Where is there a pharmacy nearby?",
@@ -4325,7 +4325,7 @@ var DIALOGE = [
   {
     "id": "dlg_032",
     "cat": "Nach dem Weg fragen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Welche U-Bahn fährt zum Alexanderplatz?",
       "en": "Which subway goes to Alexanderplatz?",
@@ -4343,7 +4343,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_001",
     "cat": "Schule und Elternsprechtag",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Wie war der erste Schultag deines Sohnes?",
       "en": "How was your son's first day at school?",
@@ -4361,7 +4361,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_002",
     "cat": "Schule und Elternsprechtag",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Interessiert sich Ihre Tochter für Naturwissenschaften?",
       "en": "Is your daughter interested in natural sciences?",
@@ -4379,7 +4379,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_003",
     "cat": "Schule und Elternsprechtag",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Warum ärgert sich der Lehrer heute so sehr?",
       "en": "Why is the teacher so annoyed today?",
@@ -4397,7 +4397,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_004",
     "cat": "Schule und Elternsprechtag",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Wie war der Elternsprechtag?",
       "en": "How was the parent-teacher conference?",
@@ -4415,7 +4415,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_005",
     "cat": "Konflikte und Bitten",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Warum streiten sich die Nachbarn schon wieder?",
       "en": "Why are the neighbours arguing again?",
@@ -4433,7 +4433,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_006",
     "cat": "Konflikte und Bitten",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "<g><b>Könntest</b></g> du mir kurz helfen?",
       "en": "<g><b>Could</b></g> you help me for a moment?",
@@ -4451,7 +4451,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_007",
     "cat": "Konflikte und Bitten",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie hast du dich bei ihr entschuldigt?",
       "en": "How did you apologise to her?",
@@ -4469,7 +4469,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_008",
     "cat": "Konflikte und Bitten",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Wie habt ihr den Konflikt gelöst?",
       "en": "How did you resolve the conflict?",
@@ -4487,7 +4487,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_009",
     "cat": "Geräte und Reparaturen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_w_anna", 
     "q": {
       "de": "Was ist mit deinem Laptop passiert?",
       "en": "What happened to your laptop?",
@@ -4505,7 +4505,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_010",
     "cat": "Geräte und Reparaturen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_w_anna", 
     "q": {
       "de": "Hast du noch Garantie auf das Handy?",
       "en": "Do you still have a warranty on the phone?",
@@ -4523,7 +4523,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_011",
     "cat": "Geräte und Reparaturen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_w_anna", 
     "q": {
       "de": "Kannst du mir eine gute App zum Deutschlernen empfehlen?",
       "en": "Can you recommend a good app for learning German?",
@@ -4541,7 +4541,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_012",
     "cat": "Geräte und Reparaturen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_w_anna", 
     "q": {
       "de": "Wo kann man kaputte Geräte kostenlos reparieren lassen?",
       "en": "Where can you get broken devices repaired for free?",
@@ -4559,7 +4559,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_013",
     "cat": "Einkaufen und Meinungen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_m_mark", "name_a": "de_m_david", 
     "q": {
       "de": "Wie findest du das Kleid, das im Schaufenster hängt?",
       "en": "What do you think of the dress that is hanging in the shop window?",
@@ -4577,7 +4577,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_014",
     "cat": "Einkaufen und Meinungen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_m_mark", "name_a": "de_m_david", 
     "q": {
       "de": "Welche Größe brauchst du bei dieser Jacke?",
       "en": "What size do you need for this jacket?",
@@ -4595,7 +4595,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_015",
     "cat": "Einkaufen und Meinungen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_m_mark", "name_a": "de_m_david", 
     "q": {
       "de": "Was vermutest du, wer dieses Bild gemalt hat?",
       "en": "Who do you assume painted this picture?",
@@ -4613,7 +4613,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_016",
     "cat": "Einkaufen und Meinungen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_m_mark", "name_a": "de_m_david", 
     "q": {
       "de": "Hast du die Konzertkarten schon gebucht?",
       "en": "Have you already booked the concert tickets?",
@@ -4703,7 +4703,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_021",
     "cat": "Freundschaft und Haustiere",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Warum vertraust du ihr so sehr?",
       "en": "Why do you trust her so much?",
@@ -4721,7 +4721,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_022",
     "cat": "Freundschaft und Haustiere",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Warum hast du deinem Sohn ein Haustier gekauft?",
       "en": "Why did you buy your son a pet?",
@@ -4739,7 +4739,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_023",
     "cat": "Freundschaft und Haustiere",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Lässt du deinen Sohn den Hund allein ausführen?",
       "en": "Do you let your son walk the dog alone?",
@@ -4757,7 +4757,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_024",
     "cat": "Freundschaft und Haustiere",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_david", 
     "q": {
       "de": "Wie habt ihr euch kennengelernt?",
       "en": "How did you two meet?",
@@ -4775,7 +4775,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_025",
     "cat": "Ämter und Behörden",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Wissen Sie, <g>wo</g> sich das zuständige Amt befindet?",
       "en": "Do you know <g>where</g> the responsible office is?",
@@ -4793,7 +4793,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_026",
     "cat": "Ämter und Behörden",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Können Sie mir sagen, ob mein Führerschein hier gültig ist?",
       "en": "Can you tell me whether my driving licence is valid here?",
@@ -4811,7 +4811,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_027",
     "cat": "Ämter und Behörden",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Welche Unterlagen brauche ich für den Antrag?",
       "en": "What documents do I need for the application?",
@@ -4829,7 +4829,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_028",
     "cat": "Ämter und Behörden",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_julia", "name_a": "de_m_david", 
     "q": {
       "de": "Haben Sie meine verlorene Tasche im Fundbüro gefunden?",
       "en": "Did you find my lost bag at the lost-property office?",
@@ -4847,7 +4847,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_029",
     "cat": "Feste und Einladungen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Feiert ihr das Fest im Garten oder drinnen?",
       "en": "Are you celebrating the party in the garden or inside?",
@@ -4865,7 +4865,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_030",
     "cat": "Feste und Einladungen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Hast du die Einladungen schon verschickt?",
       "en": "Have you already sent the invitations?",
@@ -4883,7 +4883,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_031",
     "cat": "Feste und Einladungen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Nimmst du unsere Einladung zur Feier an?",
       "en": "Will you accept our invitation to the celebration?",
@@ -4901,7 +4901,7 @@ var DIALOGE = [
   {
     "id": "dlg_a22_032",
     "cat": "Feste und Einladungen",
-    "name_q": "de_w_julia", "name_a": "de_m_mark", 
+    "name_q": "de_w_anna", "name_a": "de_m_mark", 
     "q": {
       "de": "Welche Traditionen gibt es bei euch zu Silvester?",
       "en": "What traditions do you have for New Year's Eve?",

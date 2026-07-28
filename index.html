@@ -1163,15 +1163,57 @@ body{
   animation: streakCelPop .5s cubic-bezier(.34,1.56,.64,1);
 }
 .streak-cel-flame{
-  font-size:96px;line-height:1;
   width:130px;height:130px;margin:0 auto;
   display:flex;align-items:center;justify-content:center;
   filter: drop-shadow(0 0 24px rgba(255,140,0,.55));
   animation: streakCelBounce 1.1s ease-in-out infinite;
 }
-/* Коли lottie.js завантажився і замінив emoji-фолбек на SVG-анімацію —
-   бібліотека сама вписує SVG у розміри контейнера (width/height вище). */
-.streak-cel-flame svg{ width:100%!important; height:100%!important; }
+/* Вогонь на чистому CSS (без зовнішніх залежностей/мережі — раніше тут
+   був Lottie з CDN, який міг просто не завантажитись при відсутній
+   мережі чи заблокованому CDN). Три шари "полум'я" різного розміру й
+   кольору (від темно-помаранчевого зовні до майже білого в центрі),
+   кожен зі своєю фазою flicker-анімації (asymmetric border-radius +
+   scale + rotate) — разом дають враження живого, тремтливого вогню. */
+.cel-fire{ position:relative; width:100px; height:130px; }
+.cel-fire-flame{
+  position:absolute; left:50%; bottom:0;
+  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
+  transform-origin:50% 100%;
+  filter: blur(.5px);
+}
+.cel-fire-flame-1{
+  width:80px; height:120px; margin-left:-40px;
+  background: radial-gradient(circle at 50% 78%, #ff9d2e 0%, #ff6a00 55%, #d43d00 100%);
+}
+.cel-fire-flame-2{
+  width:56px; height:90px; margin-left:-28px;
+  background: radial-gradient(circle at 50% 80%, #ffd166 0%, #ff9d2e 60%, #ff6a00 100%);
+}
+.cel-fire-flame-3{
+  width:30px; height:54px; margin-left:-15px;
+  background: radial-gradient(circle at 50% 85%, #fff6d8 0%, #ffe27a 55%, #ffb347 100%);
+}
+/* Клас cel-fire-anim перемикається JS-функцією _restartStreakFlameAnim()
+   при кожному показі celebration-екрана — щоб анімація завжди
+   стартувала з нуля, а не продовжувала довільну фазу з минулого разу. */
+.cel-fire-anim .cel-fire-flame-1{ animation: celFlameFlicker1 1.6s ease-in-out infinite; }
+.cel-fire-anim .cel-fire-flame-2{ animation: celFlameFlicker2 1.3s ease-in-out infinite; }
+.cel-fire-anim .cel-fire-flame-3{ animation: celFlameFlicker3 1s ease-in-out infinite; }
+@keyframes celFlameFlicker1{
+  0%,100%{ transform:scaleY(1) scaleX(1) rotate(-2deg); border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; }
+  25%{ transform:scaleY(1.08) scaleX(.94) rotate(2deg); border-radius:45% 55% 50% 50% / 65% 55% 45% 35%; }
+  50%{ transform:scaleY(.95) scaleX(1.05) rotate(-1deg); border-radius:55% 45% 45% 55% / 55% 65% 35% 45%; }
+  75%{ transform:scaleY(1.05) scaleX(.97) rotate(1deg); border-radius:50% 50% 55% 45% / 60% 58% 42% 40%; }
+}
+@keyframes celFlameFlicker2{
+  0%,100%{ transform:scaleY(1) scaleX(1) rotate(2deg); }
+  33%{ transform:scaleY(1.12) scaleX(.93) rotate(-3deg); }
+  66%{ transform:scaleY(.92) scaleX(1.06) rotate(3deg); }
+}
+@keyframes celFlameFlicker3{
+  0%,100%{ transform:scaleY(1) translateY(0) rotate(0deg); }
+  50%{ transform:scaleY(1.18) translateY(-4px) rotate(-2deg); }
+}
 .streak-cel-num{
   font-size:64px;font-weight:800;color:#fff;
   font-family:'Inter',sans-serif;margin-top:4px;
@@ -1909,12 +1951,6 @@ body.lesson-active .vocab-top{
   }
 })();
 </script>
-<!-- lottie-web — лише для анімованого вогню в celebration-екрані стріку
-     (showStreakCelebration). defer — не блокує рендер сторінки; якщо
-     мережа недоступна чи CDN заблокований, скрипт просто не завантажиться
-     і застосунок тихо лишиться на статичному emoji 🔥-фолбеку (вже в
-     HTML за замовчуванням) — жодних помилок, нічого критичного не ламає. -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js" defer></script>
 </head>
 <body>
 
@@ -2201,7 +2237,13 @@ body.lesson-active .vocab-top{
       <!-- Повноекранна анімація збільшення стріку (див. showStreakCelebration) -->
       <div id="streak-celebration" onclick="_dismissStreakCelebration()">
         <div class="streak-cel-inner">
-          <div class="streak-cel-flame" id="streak-cel-flame">🔥</div>
+          <div class="streak-cel-flame" id="streak-cel-flame">
+            <div class="cel-fire cel-fire-anim">
+              <div class="cel-fire-flame cel-fire-flame-1"></div>
+              <div class="cel-fire-flame cel-fire-flame-2"></div>
+              <div class="cel-fire-flame cel-fire-flame-3"></div>
+            </div>
+          </div>
           <div class="streak-cel-num" id="streak-cel-num">1</div>
           <div class="streak-cel-label" id="streak-cel-label"></div>
         </div>
@@ -2214,7 +2256,6 @@ body.lesson-active .vocab-top{
         <div class="lr-sub" id="lr-sub"></div>
         <div class="lr-stats" id="lr-stats"></div>
         <button class="lr-btn-primary" id="lr-btn-next" onclick="startNextLesson()"></button>
-        <button class="lr-btn-secondary" id="lr-btn-vocab" onclick="openLessonDictionaryFromResult()" style="display:none"></button>
         <button class="lr-btn-secondary" id="lr-btn-list" onclick="exitLessonFlow()"></button>
       </div>
 
@@ -2689,7 +2730,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '405-8eef742';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6966,31 +7007,17 @@ function animateOdometer(el, fromNum, toNum){
   }
 }
 
-// Лінива ініціалізація анімованого вогню (Lottie, Noto Animated Emoji
-// 🔥) — лише один раз, при першому показі celebration-екрана. Якщо
-// lottie-web (CDN, defer) з якоїсь причини не завантажився (немає
-// мережі/заблоковано) — тихо лишаємось на статичному emoji-фолбеку,
-// який уже є в HTML за замовчуванням.
-function _ensureStreakFlameLottie(){
+// Перезапускає CSS keyframe-анімацію вогню (streak-cel-flame): просто
+// перемикаючи клас, браузер лише "продовжив" би вже поточну фазу
+// анімації (вона infinite, ніколи не зупиняється). Тому щоразу форсуємо
+// reflow (читання offsetWidth) між removeClass/addClass — це змушує
+// браузер справді почати анімацію з нуля, а не з довільної фази.
+function _restartStreakFlameAnim(){
   const el = document.getElementById('streak-cel-flame');
-  if(!el || el._lottieAnim || typeof lottie === 'undefined') return;
-  try{
-    el.textContent = '';
-    el._lottieAnim = lottie.loadAnimation({
-      container: el,
-      renderer: 'svg',
-      loop: true,
-      autoplay: true,
-      path: 'https://fonts.gstatic.com/s/e/notoemoji/latest/1f525/lottie.json'
-    });
-    el._lottieAnim.addEventListener('data_failed', function(){
-      el._lottieAnim = null;
-      el.textContent = '🔥';
-    });
-  }catch(e){
-    el._lottieAnim = null;
-    el.textContent = '🔥';
-  }
+  if(!el) return;
+  el.classList.remove('cel-fire-anim');
+  void el.offsetWidth; // форсуємо reflow
+  el.classList.add('cel-fire-anim');
 }
 
 function showStreakCelebration(streak, prevStreak){
@@ -7005,9 +7032,7 @@ function showStreakCelebration(streak, prevStreak){
   const lbl = {'de':'Tage in Folge!','uk':'днів поспіль!','en':'day streak!','ru':'дней подряд!'}[uiLang] || 'days!';
   if(lblEl) lblEl.textContent = lbl;
 
-  _ensureStreakFlameLottie();
-  const flameEl = document.getElementById('streak-cel-flame');
-  if(flameEl && flameEl._lottieAnim) flameEl._lottieAnim.goToAndPlay(0);
+  _restartStreakFlameAnim();
 
   el.classList.remove('fade-out');
   el.classList.add('show');
@@ -10652,17 +10677,8 @@ function lfShowResult(){
   // Заповнюємо кнопки результату
   const btnNext = document.getElementById('lr-btn-next');
   const btnList = document.getElementById('lr-btn-list');
-  const btnVocab = document.getElementById('lr-btn-vocab');
   if(btnNext) btnNext.textContent = t('btn_next_lesson');
   if(btnList) btnList.textContent = t('btn_to_lessons');
-  // Кнопка "Словник" — лише якщо в уроку справді є словникові картки
-  // (звичайний урок або сесія повторення глави/курсу; бонусні
-  // граматика/діалоги cardIds не мають — кнопка для них не показується).
-  const hasVocabCards = !!(LF.lesson?.cardIds && LF.lesson.cardIds.length);
-  if(btnVocab){
-    btnVocab.style.display = hasVocabCards ? '' : 'none';
-    btnVocab.textContent = '📖 ' + (uiLang==='uk'?'Словник':uiLang==='ru'?'Словарь':uiLang==='en'?'Dictionary':'Wörterbuch');
-  }
 
   // Якщо щойно запустилась повноекранна анімація стріку
   // (showStreakCelebration, ~2200мс) — ховаємо кнопки "Наступний
@@ -10671,26 +10687,12 @@ function lfShowResult(){
   // збільшився (уже був урок сьогодні) — кнопки показуються одразу.
   if(btnNext) btnNext.style.visibility = celebrationPending ? 'hidden' : 'visible';
   if(btnList) btnList.style.visibility = celebrationPending ? 'hidden' : 'visible';
-  if(btnVocab) btnVocab.style.visibility = celebrationPending ? 'hidden' : 'visible';
   if(celebrationPending){
     setTimeout(()=>{
       if(btnNext) btnNext.style.visibility = 'visible';
       if(btnList) btnList.style.visibility = 'visible';
-      if(btnVocab) btnVocab.style.visibility = 'visible';
     }, 2300);
   }
-}
-
-// Кнопка "📖 Словник" на екрані результату уроку — відкриває Словник,
-// обмежений картками ЩОЙНО пройденого уроку (LF.lesson.cardIds). Working
-// зі звичайними уроками, а також із сесіями "Повторення глави"/"Повторення
-// курсу" (їхній синтетичний lesson теж має cardIds — усі картки
-// відповідних розділів), LF ще не скинутий на цьому екрані.
-function openLessonDictionaryFromResult(){
-  if(!LF || !LF.lesson) return;
-  const title = LF.lesson.title;
-  const label = title?.[uiLang] || title?.[primaryLang()] || title?.en || title?.de || null;
-  openVocabDictionary(LF.lesson.cardIds || [], label);
 }
 
 // Smart Review: тегування VOCAB карток полем examPart за категорією
