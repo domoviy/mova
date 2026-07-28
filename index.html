@@ -1621,31 +1621,41 @@ body.lesson-active .vocab-top{
    у файлі: g{font-weight:700;color:var(--g-accent)}) */
 .lf-unit-body b{font-weight:700;color:var(--gold)}
 
-/* Dialogue: бульбашки повідомлень — питання зліва, відповідь справа */
+/* Dialogue: рядок = аватарка персонажа + бульбашка повідомлення.
+   Питання (q) — аватар зліва, бульбашка зліва; відповідь (a) — аватар
+   справа, бульбашка справа. Бульбашка — flex:1, тож займає майже всю
+   ширину, що лишилась від аватарки до протилежного краю. */
+.lf-dlg-row{
+  display:flex;align-items:flex-end;gap:8px;max-width:100%;
+}
+.lf-dlg-row-q{ margin-right:auto; }
+.lf-dlg-row-a{ margin-left:auto; flex-direction:row-reverse; }
+.lf-dlg-avatar{
+  width:30px;height:30px;border-radius:50%;flex-shrink:0;
+  object-fit:cover;background:var(--soft);border:1px solid var(--border);
+}
 .lf-dlg-bubble{
-  max-width:88%;border-radius:16px;padding:12px 14px;
+  flex:1;min-width:0;border-radius:16px;padding:12px 14px;
 }
 .lf-dlg-bubble .lf-unit-main-row + .lf-unit-main-row{
   margin-top:6px;padding-top:0;border-top:none;
 }
 .lf-dlg-bubble-q{
   background:var(--soft);border:1px solid var(--border);
-  margin-right:auto;
   border-bottom-left-radius:4px;
 }
 .lf-dlg-bubble-a{
   background:var(--gold-dim);border:1px solid rgba(201,168,76,.25);
-  margin-left:auto;
   border-bottom-right-radius:4px;
 }
-/* Ім'я персонажа над бульбашкою (name_q/name_a) — показується лише якщо
-   задане в даних; вирівнюється по тому ж боку, що й сама бульбашка. */
+/* Ім'я персонажа — підпис ПІД повідомленням, ближче до аватарки (з
+   того ж боку, що й сама аватарка), а не заголовок над текстом. */
 .lf-dlg-speaker{
   font-size:11px;font-weight:700;letter-spacing:.02em;
-  color:var(--muted);margin-bottom:3px;padding:0 4px;
+  color:var(--muted);margin-top:4px;padding:0 4px;
 }
-.lf-dlg-bubble-q .lf-dlg-speaker{ text-align:left; }
-.lf-dlg-bubble-a .lf-dlg-speaker{ text-align:right; }
+.lf-dlg-row-q .lf-dlg-speaker{ text-align:left; }
+.lf-dlg-row-a .lf-dlg-speaker{ text-align:right; }
 /* Месенджер-ефект: контейнер поводиться як звичайний потік зверху вниз
    (стабільний overflow/scroll), але поки повідомлень мало — весь простір
    "з'їдає" псевдоелемент-розпірка (margin-top:auto), тож єдине повідомлення
@@ -2730,7 +2740,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '407-8c0b90f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9569,6 +9579,15 @@ function characterName(storedId){
   return found.name;
 }
 
+// Аватарка персонажа (data:URI) для тієї ж картки CHARACTERS, що й
+// characterName() вище. Повертає '' якщо персонажа/аватарки нема —
+// виклик коду просто не малює <img>, замість зламаної розмітки.
+function characterAvatar(storedId){
+  if(!storedId || typeof CHARACTERS === 'undefined' || !CHARACTERS.length) return '';
+  const found = CHARACTERS.find(c => c.id === storedId);
+  return (found && found.avatar) ? found.avatar : '';
+}
+
 var _lfDlgHandlers = {
   render: function(unit){
     var card = unit.card;
@@ -9617,22 +9636,28 @@ var _lfDlgHandlers = {
 
     var text   = card[unit.field]?.[pl] || '';
     var textTr = ul !== pl ? (card[unit.field]?.[ul] || '') : '';
-    var speaker = unit.speakerRole==='q' ? characterName(card.name_q) : characterName(card.name_a);
+    var speakerId = unit.speakerRole==='q' ? card.name_q : card.name_a;
+    var speaker = characterName(speakerId);
+    var avatar = characterAvatar(speakerId);
     var bubbleCls = unit.speakerRole==='q' ? 'lf-dlg-bubble-q' : 'lf-dlg-bubble-a';
+    var rowCls = unit.speakerRole==='q' ? 'lf-dlg-row-q' : 'lf-dlg-row-a';
 
     function buildBubble(){
-      return '<div class="lf-dlg-bubble '+bubbleCls+' lf-bubble-in">'+
-        (speaker ? '<div class="lf-dlg-speaker">'+speaker+'</div>' : '')+
-        '<div class="lf-unit-main-row">'+
-          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
-          '<div class="lf-unit-sentence">'+text+'</div>'+
-        '</div>'+
-        (textTr ?
+      return '<div class="lf-dlg-row '+rowCls+' lf-bubble-in">'+
+        (avatar ? '<img class="lf-dlg-avatar" src="'+avatar+'" alt="'+speaker+'">' : '')+
+        '<div class="lf-dlg-bubble '+bubbleCls+'">'+
           '<div class="lf-unit-main-row">'+
-            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-            '<div class="lf-unit-sentence">'+textTr+'</div>'+
-          '</div>'
-        : '')+
+            '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
+            '<div class="lf-unit-sentence">'+text+'</div>'+
+          '</div>'+
+          (textTr ?
+            '<div class="lf-unit-main-row">'+
+              '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
+              '<div class="lf-unit-sentence">'+textTr+'</div>'+
+            '</div>'
+          : '')+
+          (speaker ? '<div class="lf-dlg-speaker">'+speaker+'</div>' : '')+
+        '</div>'+
       '</div>';
     }
 
