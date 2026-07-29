@@ -244,10 +244,13 @@ def clean_text(text):
     text = re.sub(r'(?<=[.!?…])<<BR>>', ' ', text)
     text = text.replace('<<BR>>', '. ')
 
-    # <g>/<b> — лише граматична/смислова розмітка, вміст залишається,
-    # самі теги-обгортки прибираємо без заміни на пробіл.
+    # <g>/<b>/<r> — лише граматична/смислова розмітка, вміст залишається,
+    # самі теги-обгортки прибираємо без заміни на пробіл. <r> — маркер
+    # стандартних фраз (Redemittel) у діалогах; для TTS це звичайний
+    # текст, лише на клієнті він підсвічується кольором.
     text = re.sub(r'</?g>', '', text)
     text = re.sub(r'</?b>', '', text)
+    text = re.sub(r'</?r>', '', text)
 
     # Будь-які інші теги, які могли залишитись, — прибираємо як раніше.
     text = re.sub(r'<[^>]+>', ' ', text)
@@ -264,6 +267,97 @@ def compute_content_hash(cleaned_text, voice, rate):
     і тільки тоді файл вважається застарілим і йде на перегенерацію."""
     payload = f"{cleaned_text}|{voice}|{rate}"
     return hashlib.sha256(payload.encode('utf-8')).hexdigest()[:10]
+
+def _error_snippet(text, pos, context=80):
+    """Фрагмент тексту навколо позиції помилки json.loads (pos —
+    символьний офсет від початку рядка, що передавався в json.loads)."""
+    start = max(0, pos - context)
+    end = min(len(text), pos + context)
+    snippet = text[start:end].replace('\n', '⏎')
+    marker_pos = pos - start
+    return f"{snippet}\n{' ' * marker_pos}^-- тут"
+
+
+def _parse_js_array_blocks(content, file_path):
+    """Спільна логіка розбору 'var/let/const/export NAME = [...]' блоків
+    з тексту JS-файлу — використовується і для файлів курсів
+    (load_js_database), і для спільного characters.js
+    (load_characters_file). Повертає список (var_name, items) — items
+    це вже розпарсений Python-список словників.
+
+    Спершу строгий json.loads(); якщо не вдалось (людяний JS-стиль з
+    нелапкованими ключами об'єкта) — fallback-нормалізація ключів.
+    Обидва варіанти прибирають // та /* */ коментарі і trailing comma
+    перед парсингом."""
+    blocks = re.findall(r'(?:var|let|const|export)\s+(\w+)\s*=\s*(\[.*?\])\s*(;|\n\n|var|let|const|export|$)', content, re.DOTALL)
+
+    if not blocks:
+        print(f"⚠ У файлі {file_path} regex не знайшов жодного блоку виду "
+              f"'var/let/const/export NAME = [...]'. Файл або порожній, "
+              f"або має нестандартну структуру — перевір вручну.", flush=True)
+
+    results = []
+    for var_name, array_content, _ in blocks:
+        clean_array = re.sub(r'//.*', '', array_content)
+        clean_array = re.sub(r'/\*.*?\*/', '', clean_array, flags=re.DOTALL)
+        clean_array = re.sub(r',\s*([\]\}])', r'\1', clean_array)
+
+        try:
+            items = json.loads(clean_array)
+            if isinstance(items, list):
+                results.append((var_name, items))
+        except json.JSONDecodeError as e_strict:
+            # Деякі масиви (наприклад SPRACHBAUSTEINE) написані в "людяному"
+            # JS-стилі з нелапкованими ключами об'єкта ({id:"x"} замість
+            # {"id":"x"}) — валідний JS, але невалідний JSON. Застосовуємо
+            # нормалізацію ЛИШЕ як fallback, коли строгий парсинг провалився:
+            # масиви з текстом, що містить двокрапки всередині рядкових
+            # значень (DIALOGE тощо), уже парсяться строгим json.loads()
+            # вище і НІКОЛИ не доходять до цього regex — він і не повинен
+            # їх торкатись, бо може неправильно зрозуміти ":" у тексті
+            # як межу ключа.
+            try:
+                normalized = re.sub(r'([{,]\s*)([a-zA-Z_]\w*)\s*:', r'\1"\2":', clean_array)
+                items = json.loads(normalized)
+                if isinstance(items, list):
+                    results.append((var_name, items))
+            except json.JSONDecodeError as e_fallback:
+                print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}.", flush=True)
+                print(f"   Строгий парсинг:   {e_strict.msg} (рядок {e_strict.lineno}, колонка {e_strict.colno})", flush=True)
+                print(f"   Fallback-парсинг:  {e_fallback.msg} (рядок {e_fallback.lineno}, колонка {e_fallback.colno})", flush=True)
+                print(f"   Фрагмент навколо помилки fallback-парсингу:", flush=True)
+                print(f"   ...{_error_snippet(normalized, e_fallback.pos)}...\n", flush=True)
+            except Exception as e_fallback:
+                print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}: "
+                      f"{type(e_fallback).__name__}: {e_fallback}\n", flush=True)
+    return results
+
+
+# Спільний файл персонажів (характери діалогів — однакові для ВСІХ
+# курсів, тепер винесені з кожного окремого "<COURSE>.js" в один
+# "characters.js" поруч зі скриптом; index.html теж завантажує його
+# окремо і кешує між курсами — див. loadCharactersScript() там).
+CHARACTERS_FILE = pathlib.Path('characters.js')
+
+def load_characters_file(file_path=CHARACTERS_FILE):
+    """Завантажує CHARACTERS ОДИН РАЗ зі спільного файлу (а не з кожного
+    курсу окремо, як було раніше). Якщо файл відсутній — повертає []
+    і виводить попередження; генерація діалогів тоді просто відкотиться
+    на дефолтний голос ролі з VOICE_MAPPING (той самий фолбек, що й
+    завжди був для персонажа, якого не знайдено)."""
+    if not file_path.exists():
+        print(f"⚠ Спільний файл персонажів '{file_path}' не знайдено — "
+              f"аудіо діалогів озвучиться дефолтними голосами ролі "
+              f"(VOICE_MAPPING), без персональних edge_tts-голосів.", flush=True)
+        return []
+    with open(file_path, 'r', encoding='utf-8') as f:
+        content = f.read()
+    for var_name, items in _parse_js_array_blocks(content, file_path):
+        if var_name == "CHARACTERS":
+            return items
+    print(f"⚠ У файлі '{file_path}' не знайдено var CHARACTERS.", flush=True)
+    return []
+
 
 def load_js_database(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
@@ -300,73 +394,19 @@ def load_js_database(file_path):
             print(f"⚠ Не вдалося розпарсити AUDIO_CONFIG у {file_path}, використовую дефолт (усі мови, 100+080): {e}", flush=True)
 
     raw_items = []
-    characters_list = []
-    blocks = re.findall(r'(?:var|let|const|export)\s+(\w+)\s*=\s*(\[.*?\])\s*(;|\n\n|var|let|const|export|$)', content, re.DOTALL)
-
-    if not blocks:
-        print(f"⚠ У файлі {file_path} regex не знайшов жодного блоку виду "
-              f"'var/let/const/export NAME = [...]'. Файл або порожній, "
-              f"або має нестандартну структуру — перевір вручну.", flush=True)
-
-    def _error_snippet(text, pos, context=80):
-        """Фрагмент тексту навколо позиції помилки json.loads (pos —
-        символьний офсет від початку рядка, що передавався в json.loads)."""
-        start = max(0, pos - context)
-        end = min(len(text), pos + context)
-        snippet = text[start:end].replace('\n', '⏎')
-        marker_pos = pos - start
-        return f"{snippet}\n{' ' * marker_pos}^-- тут"
-
-    for var_name, array_content, _ in blocks:
-        if var_name in ["CATS", "LESSONS"]:
+    # CHARACTERS у файлах курсів більше НЕ визначається (винесено в
+    # спільний characters.js, див. load_characters_file() вище) — але
+    # якщо раптом і трапиться в старому/ще не мігрованому файлі курсу,
+    # просто ігноруємо його тут: джерело правди тепер одне.
+    for var_name, items in _parse_js_array_blocks(content, file_path):
+        if var_name in ["CATS", "LESSONS", "CHARACTERS"]:
             continue
+        for item in items:
+            if isinstance(item, dict) and "id" in item:
+                item["_fallback_var"] = var_name
+                raw_items.append(item)
 
-        clean_array = re.sub(r'//.*', '', array_content)
-        clean_array = re.sub(r'/\*.*?\*/', '', clean_array, flags=re.DOTALL)
-        clean_array = re.sub(r',\s*([\]\}])', r'\1', clean_array)
-
-        try:
-            items = json.loads(clean_array)
-            if isinstance(items, list):
-                if var_name == "CHARACTERS":
-                    characters_list = items
-                    continue
-                for item in items:
-                    if isinstance(item, dict) and "id" in item:
-                        item["_fallback_var"] = var_name
-                        raw_items.append(item)
-        except json.JSONDecodeError as e_strict:
-            # Деякі масиви (наприклад SPRACHBAUSTEINE) написані в "людяному"
-            # JS-стилі з нелапкованими ключами об'єкта ({id:"x"} замість
-            # {"id":"x"}) — валідний JS, але невалідний JSON. Застосовуємо
-            # нормалізацію ЛИШЕ як fallback, коли строгий парсинг провалився:
-            # масиви з текстом, що містить двокрапки всередині рядкових
-            # значень (DIALOGE тощо), уже парсяться строгим json.loads()
-            # вище і НІКОЛИ не доходять до цього regex — він і не повинен
-            # їх торкатись, бо може неправильно зрозуміти ":" у тексті
-            # як межу ключа.
-            try:
-                normalized = re.sub(r'([{,]\s*)([a-zA-Z_]\w*)\s*:', r'\1"\2":', clean_array)
-                items = json.loads(normalized)
-                if isinstance(items, list):
-                    if var_name == "CHARACTERS":
-                        characters_list = items
-                        continue
-                    for item in items:
-                        if isinstance(item, dict) and "id" in item:
-                            item["_fallback_var"] = var_name
-                            raw_items.append(item)
-            except json.JSONDecodeError as e_fallback:
-                print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}.", flush=True)
-                print(f"   Строгий парсинг:   {e_strict.msg} (рядок {e_strict.lineno}, колонка {e_strict.colno})", flush=True)
-                print(f"   Fallback-парсинг:  {e_fallback.msg} (рядок {e_fallback.lineno}, колонка {e_fallback.colno})", flush=True)
-                print(f"   Фрагмент навколо помилки fallback-парсингу:", flush=True)
-                print(f"   ...{_error_snippet(normalized, e_fallback.pos)}...\n", flush=True)
-            except Exception as e_fallback:
-                print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}: "
-                      f"{type(e_fallback).__name__}: {e_fallback}\n", flush=True)
-
-    return config, raw_items, primary_lang, characters_list
+    return config, raw_items, primary_lang
 
 async def synthesize_speech(text, voice, rate_str, output_path):
     """Генерація аудіо через Edge TTS."""
@@ -523,14 +563,20 @@ async def main():
     # бо list.sort(key=...) у CPython на час виконання ключа тимчасово
     # "спорожняє" сам список, що сортується — якщо key-функція звертається
     # до tasks, вона бачить порожній список і завжди повертає дефолт.
+    # Персонажі — тепер ОДИН спільний файл на весь застосунок (раніше
+    # кожен курс мав власну ідентичну копію CHARACTERS). Читаємо один
+    # раз, ДО циклу курсів, і той самий список використовуємо для всіх.
+    characters_list = load_characters_file()
+    print(f"— Персонажі (characters.js): {len(characters_list)} записів"
+          f"{' — файл не знайдено, буде дефолтний голос ролі' if not characters_list else ''}.", flush=True)
+
     course_lang_order = {}
 
     for course in COURSES:
-      audio_config, raw_items, primary_lang, characters_list = load_js_database(f"{course}.js")
+      audio_config, raw_items, primary_lang = load_js_database(f"{course}.js")
       audio_base = AUDIO_ROOT / course
       course_lang_order[course] = [primary_lang] + [l for l in audio_config.keys() if l != primary_lang]
-      print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази"
-            f"{f', {len(characters_list)} персонажів' if characters_list else ''}.", flush=True)
+      print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази.", flush=True)
 
       for item in raw_items:
         item_id = item["id"]
@@ -561,6 +607,14 @@ async def main():
                     # озвучувалась, незалежно від того, що написано в
                     # AUDIO_CONFIG.
                     if lang not in audio_config: continue
+                    # Діалоги (dlg_XXX) — аудіо генерується ВИКЛЮЧНО мовою
+                    # primary_lang курсу. Переклад іншими мовами лишається
+                    # текстом на екрані (без озвучення) — так само, як уже
+                    # й так було для distractors/gram.word нижче: слухове
+                    # тренування має сенс лише мовою, яку вивчають, а
+                    # озвучення діалогу всіма 4 мовами (як vocab/sprachbau)
+                    # лише роздуває обсяг генерації без користі для навчання.
+                    if internal_cat == "redemittel" and lang != primary_lang: continue
                     if text is None: continue
                     if isinstance(text, str) and not text.strip(): continue
                     if isinstance(text, list) and not text: continue
