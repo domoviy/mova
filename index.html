@@ -1350,6 +1350,22 @@ body{
   border-bottom:1.5px dashed rgba(126,207,255,.45);
 }
 
+/* ── Redemittel <r>…</r> — стандартна фраза діалогу, лише у Dialogue ──
+   Навмисно ІНШИЙ відтінок синього і ІНШИЙ стиль, ніж <g>: <g> — це
+   граматична змінна/конструкція (курсив + пунктирне підкреслення —
+   натякає "тут можна підставити своє"), а <r> — усталений вислів
+   ЦІЛКОМ, який варто запам'ятати як є (суцільна заливка-піл, без
+   курсиву — нічого тут "не підставляється"). Насичений синій, а не
+   блакитний <g>, щоб два маркери не зливались в одне й те саме. */
+.lf-dlg-bubble r {
+  display:inline;
+  color:#4a90d9;
+  font-weight:600;
+  background:rgba(74,144,217,.14);
+  border-radius:4px;
+  padding:0 3px;
+}
+
 @keyframes slideOutLeft {from{transform:translateX(0);opacity:1}to{transform:translateX(-110%);opacity:0}}
 @keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(110%);opacity:0}}
 @keyframes slideInLeft {from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
@@ -2834,7 +2850,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '415-b2caf6e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -2900,6 +2916,41 @@ function saveCourseId(id){
 }
 
 // Динамічно завантажує JS файл курсу і повертає Promise
+// Завантажує СПІЛЬНИЙ characters.js (аватарки+голоси персонажів
+// діалогів — однакові для всіх курсів) ОКРЕМО від курсу і ОДИН РАЗ за
+// сесію. На відміну від loadCourseScript() тут НЕМАЄ скиду CHARACTERS
+// при перемиканні курсу — файл незалежний від курсу, тож нема сенсу
+// перезавантажувати його щоразу. ?v=APP_VERSION дає той самий
+// кеш-дружній патерн, що й course-script (браузер кешує файл між
+// сесіями й перемиканнями курсів, доки APP_VERSION не зміниться).
+let _charactersLoadPromise = null;
+function loadCharactersScript(){
+  // Вже завантажено (або завантаження вже триває) — не дублюємо fetch.
+  if(window.CHARACTERS && window.CHARACTERS.length) return Promise.resolve();
+  if(_charactersLoadPromise) return _charactersLoadPromise;
+
+  _charactersLoadPromise = new Promise((resolve, reject)=>{
+    const _srcUrl = 'characters.js?v=' + APP_VERSION;
+    const _t0 = performance.now();
+    const s = document.createElement('script');
+    s.id  = 'characters-script';
+    s.src = _srcUrl;
+    s.onload = ()=>{
+      try{
+        const entries = performance.getEntriesByName(_srcUrl);
+        const entry = entries[entries.length-1];
+        const fromCache = entry && entry.transferSize === 0 && entry.encodedBodySize > 0;
+        const _msg = `characters-script: ${(performance.now()-_t0).toFixed(0)}ms · ${fromCache ? 'З КЕШУ' : 'З МЕРЕЖІ'}` + (entry ? ` · encodedBodySize=${entry.encodedBodySize}B` : '');
+        if(typeof logPerf==='function') logPerf(_msg); else console.log('⏱ [splash-perf]', _msg);
+      }catch(e){}
+      resolve();
+    };
+    s.onerror = ()=>{ _charactersLoadPromise = null; reject(new Error('Failed to load characters.js')); };
+    document.head.appendChild(s);
+  });
+  return _charactersLoadPromise;
+}
+
 function loadCourseScript(courseId){
   return new Promise((resolve, reject)=>{
     // Видаляємо попередній скрипт курсу якщо є
@@ -2907,9 +2958,10 @@ function loadCourseScript(courseId){
     if(old) old.remove();
     // Очищаємо стару базу
     if(window.VOCAB) window.VOCAB = [];
-    // Той самий скид для CHARACTERS — не всі курси (поки що) мають цю
-    // таблицю; без скиду вона могла б "тягнутись" зі старого курсу.
-    if(window.CHARACTERS) window.CHARACTERS = [];
+    // CHARACTERS сюди НЕ входить: персонажі тепер живуть у спільному
+    // characters.js, завантаженому окремо через loadCharactersScript()
+    // (див. вище) — вони однакові для всіх курсів і НЕ повинні
+    // скидатись/перезавантажуватись при кожній зміні курсу.
 
     const course = COURSES.find(c=>c.id===courseId);
     if(!course){ reject(new Error('Course not found: '+courseId)); return; }
@@ -4940,6 +4992,15 @@ async function init(){
   repairCorruptedEaseFactors();
   _tm('міграції прогресу завершено');
 
+  // Персонажі — спільний файл, однаковий для всіх курсів. Стартуємо
+  // завантаження ПАРАЛЕЛЬНО з курсом (best-effort, не критично): якщо
+  // characters.js не завантажиться — діалоги просто покажуться без
+  // аватарок/іменованих голосів (той самий фолбек, що й раніше для
+  // курсів без CHARACTERS), а не ламають запуск застосунку.
+  const charactersPromise = loadCharactersScript().catch(e=>{
+    console.warn('init: characters.js load failed (діалоги без аватарок/голосів персонажів):', e);
+  });
+
   // Завантажуємо активний курс
   const courseId = getSavedCourseId();
   try{
@@ -4948,6 +5009,7 @@ async function init(){
     console.warn('init: course load failed, trying Deutsch-B2-Beruf:', e);
     try{ await loadCourseScript('Deutsch-B2-Beruf'); }catch(e2){ console.error(e2); }
   }
+  await charactersPromise;
   _tm('loadCourseScript() завершено (мережа+парсинг бази курсу)');
   // activeCourse тепер відомий (щойно встановлений у loadCourseScript) —
   // перерендерюємо список курсів у налаштуваннях, інакше при холодному
