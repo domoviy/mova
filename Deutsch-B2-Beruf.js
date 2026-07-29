@@ -8,72 +8,6 @@ var AUDIO_CONFIG = {
 };
 
 
-// ── ПЕРСОНАЖІ (для озвучення діалогів різними голосами) ──────────
-// Зіставляє id персонажа (те, що записується в поля name_q/name_a
-// картки DIALOGE) з конкретним голосом edge-tts для кожної мови.
-//
-// Навіщо саме так: одна репліка діалогу (q, a, q1, a1, q2, a2, ...)
-// озвучується РІЗНИМИ мовами (de/en/uk/ru — по одному аудіофайлу на
-// кожну), а persona (name_q/"хто говорить") — одна й та сама для ролі
-// протягом усього діалогу. Тому ключ пошуку — {id персонажа + мова}:
-// один і той самий персонаж (напр. "Julia") має свій запис на кожну
-// мову — de_w_julia, en_w_julia, uk_w_julia, ru_w_julia — тож голос
-// підбирається окремо під мову, а "хто говорить" лишається тим самим.
-//
-// Формат одного запису:
-//   { id: 'id_персонажа', lang: 'de'|'en'|'uk'|'ru', name: 'Показуване ім'я',
-//     edge_tts: 'точна назва голосу з `edge-tts --list-voices`' }
-//
-// Використання при генерації аудіо (offline-пайплайн, не в браузері):
-//   1. беремо card.name_q / card.name_a картки DIALOGE;
-//   2. шукаємо в цій таблиці запис з тим самим id і потрібною мовою (lang);
-//   3. використовуємо characters[i].edge_tts як голос для синтезу репліки.
-
-
-// ── АВАТАРКИ персонажів (для бульбашок діалогів у UI) ──────────────
-// Прості flat-style SVG-портрети, вшиті як data:URI (base64), щоб не
-// тягнути окремі файли зображень. Один аватар на 'базового' персонажа
-// (Julia / Mark / Anna / David / Alex / Nina) — переюзується для всіх
-// його мовних варіантів у CHARACTERS (de_w_julia, en_w_julia, uk_w_julia...),
-// бо це той самий герой, лише озвучений різними мовами/голосами.
-var CHARACTER_AVATARS = {
-  julia: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPHBhdGggZD0iTTIwIDUwIEMxOCAyMCAzOCA4IDUwIDggQzYyIDggODIgMjAgODAgNTAKICAgICAgICAgQzgwIDQwIDc0IDM0IDcwIDM0IEM3MCAzMCA2NCAyMiA1MCAyMiBDMzYgMjIgMzAgMzAgMzAgMzQKICAgICAgICAgQzI2IDM0IDIwIDQwIDIwIDUwIFoiIGZpbGw9IiNkOTYyMmIiLz4KPHBhdGggZD0iTTIwIDQ4IEMxOCA2NSAyMCA4NSAyNCA5NSBMMzAgOTIgQzI3IDc4IDI2IDYwIDI3IDQ4IFoiIGZpbGw9IiNjODU0MWYiLz4KPHBhdGggZD0iTTgwIDQ4IEM4MiA2NSA4MCA4NSA3NiA5NSBMNzAgOTIgQzczIDc4IDc0IDYwIDczIDQ4IFoiIGZpbGw9IiNjODU0MWYiLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MiIgcj0iMzAiIGZpbGw9IiNmMmM5YTAiLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjUzIiByPSI1IiBmaWxsPSIjZjJjOWEwIi8+PGNpcmNsZSBjeD0iNzkiIGN5PSI1MyIgcj0iNSIgZmlsbD0iI2YyYzlhMCIvPjxwYXRoIGQ9Ik0gNDggNTQgUSA0NiA2MCA0OSA2MSIgc3Ryb2tlPSIjZDlhODc4IiBzdHJva2Utd2lkdGg9IjEuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTSAzMSA0NCBRIDM3IDQxIDQzIDQ0IiBzdHJva2U9IiNiNTQ5MWUiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNIDU3IDQ0IFEgNjMgNDEgNjkgNDQiIHN0cm9rZT0iI2I1NDkxZSIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxlbGxpcHNlIGN4PSIzNyIgY3k9IjUwIiByeD0iNS41IiByeT0iNC4yIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMmIyYjJiIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIzLjIiIGZpbGw9IiMzZjllNWMiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIxLjMiIGZpbGw9IiMxYTFhMWEiLz48ZWxsaXBzZSBjeD0iNjMiIGN5PSI1MCIgcng9IjUuNSIgcnk9IjQuMiIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzJiMmIyYiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMy4yIiBmaWxsPSIjM2Y5ZTVjIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMS4zIiBmaWxsPSIjMWExYTFhIi8+PHBhdGggZD0iTSAzMiA0NiBRIDMwIDQzIDI5IDQ1IiBzdHJva2U9IiMyYjJiMmIiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0gNjggNDYgUSA3MCA0MyA3MSA0NSIgc3Ryb2tlPSIjMmIyYjJiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNIDQyIDY4IFEgNTAgNzMgNTggNjgiIHN0cm9rZT0iI2E4NWQ1ZCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTIwIDUwIEMxOCAyMCAzOCA4IDUwIDggQzYyIDggODIgMjAgODAgNTAKICAgICAgICAgQzgwIDQwIDc0IDM0IDcwIDM0IEM3MCAzMCA2NCAyMiA1MCAyMiBDMzYgMjIgMzAgMzAgMzAgMzQKICAgICAgICAgQzI2IDM0IDIwIDQwIDIwIDUwIFoiIGZpbGw9IiNkOTYyMmIiLz4KPHBhdGggZD0iTTIwIDQ4IEMxOCA2NSAyMCA4NSAyNCA5NSBMMzAgOTIgQzI3IDc4IDI2IDYwIDI3IDQ4IFoiIGZpbGw9IiNjODU0MWYiLz4KPHBhdGggZD0iTTgwIDQ4IEM4MiA2NSA4MCA4NSA3NiA5NSBMNzAgOTIgQzczIDc4IDc0IDYwIDczIDQ4IFoiIGZpbGw9IiNjODU0MWYiLz4KPC9zdmc+",
-  mark:  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj48Y2lyY2xlIGN4PSIyNiIgY3k9IjMwIiByPSI5IiBmaWxsPSIjZTljMjU3Ii8+PGNpcmNsZSBjeD0iMzQiIGN5PSIyMCIgcj0iOSIgZmlsbD0iI2U5YzI1NyIvPjxjaXJjbGUgY3g9IjQ0IiBjeT0iMTUiIHI9IjkiIGZpbGw9IiNlOWMyNTciLz48Y2lyY2xlIGN4PSI1NiIgY3k9IjE1IiByPSI5IiBmaWxsPSIjZTljMjU3Ii8+PGNpcmNsZSBjeD0iNjYiIGN5PSIyMCIgcj0iOSIgZmlsbD0iI2U5YzI1NyIvPjxjaXJjbGUgY3g9Ijc0IiBjeT0iMzAiIHI9IjkiIGZpbGw9IiNlOWMyNTciLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjQwIiByPSI3IiBmaWxsPSIjZTljMjU3Ii8+PGNpcmNsZSBjeD0iNzgiIGN5PSI0MCIgcj0iNyIgZmlsbD0iI2U5YzI1NyIvPjxjaXJjbGUgY3g9IjMwIiBjeT0iMTQiIHI9IjgiIGZpbGw9IiNlOWMyNTciLz48Y2lyY2xlIGN4PSI1MCIgY3k9IjEwIiByPSI5IiBmaWxsPSIjZTljMjU3Ii8+PGNpcmNsZSBjeD0iNzAiIGN5PSIxNCIgcj0iOCIgZmlsbD0iI2U5YzI1NyIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iNTIiIHI9IjMwIiBmaWxsPSIjZjJjOWEwIi8+PGNpcmNsZSBjeD0iMjEiIGN5PSI1MyIgcj0iNSIgZmlsbD0iI2YyYzlhMCIvPjxjaXJjbGUgY3g9Ijc5IiBjeT0iNTMiIHI9IjUiIGZpbGw9IiNmMmM5YTAiLz48cGF0aCBkPSJNIDQ4IDU0IFEgNDYgNjAgNDkgNjEiIHN0cm9rZT0iI2Q5YTg3OCIgc3Ryb2tlLXdpZHRoPSIxLjMiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0gMzEgNDQgUSAzNyA0MSA0MyA0NCIgc3Ryb2tlPSIjYzlhMTNmIiBzdHJva2Utd2lkdGg9IjEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTSA1NyA0NCBRIDYzIDQxIDY5IDQ0IiBzdHJva2U9IiNjOWExM2YiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48ZWxsaXBzZSBjeD0iMzciIGN5PSI1MCIgcng9IjUuNSIgcnk9IjQuMiIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzJiMmIyYiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iMzciIGN5PSI1MCIgcj0iMy4yIiBmaWxsPSIjM2Y3ZmQxIi8+PGNpcmNsZSBjeD0iMzciIGN5PSI1MCIgcj0iMS4zIiBmaWxsPSIjMWExYTFhIi8+PGVsbGlwc2UgY3g9IjYzIiBjeT0iNTAiIHJ4PSI1LjUiIHJ5PSI0LjIiIGZpbGw9IndoaXRlIiBzdHJva2U9IiMyYjJiMmIiIHN0cm9rZS13aWR0aD0iMSIvPjxjaXJjbGUgY3g9IjYzIiBjeT0iNTAiIHI9IjMuMiIgZmlsbD0iIzNmN2ZkMSIvPjxjaXJjbGUgY3g9IjYzIiBjeT0iNTAiIHI9IjEuMyIgZmlsbD0iIzFhMWExYSIvPjxwYXRoIGQ9Ik0gNDIgNjggUSA1MCA3MyA1OCA2OCIgc3Ryb2tlPSIjYTg1ZDVkIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxjaXJjbGUgY3g9IjI2IiBjeT0iMzAiIHI9IjkiIGZpbGw9IiNlOWMyNTciLz48Y2lyY2xlIGN4PSIzNCIgY3k9IjIwIiByPSI5IiBmaWxsPSIjZTljMjU3Ii8+PGNpcmNsZSBjeD0iNDQiIGN5PSIxNSIgcj0iOSIgZmlsbD0iI2U5YzI1NyIvPjxjaXJjbGUgY3g9IjU2IiBjeT0iMTUiIHI9IjkiIGZpbGw9IiNlOWMyNTciLz48Y2lyY2xlIGN4PSI2NiIgY3k9IjIwIiByPSI5IiBmaWxsPSIjZTljMjU3Ii8+PGNpcmNsZSBjeD0iNzQiIGN5PSIzMCIgcj0iOSIgZmlsbD0iI2U5YzI1NyIvPjxjaXJjbGUgY3g9IjIyIiBjeT0iNDAiIHI9IjciIGZpbGw9IiNlOWMyNTciLz48Y2lyY2xlIGN4PSI3OCIgY3k9IjQwIiByPSI3IiBmaWxsPSIjZTljMjU3Ii8+PGNpcmNsZSBjeD0iMzAiIGN5PSIxNCIgcj0iOCIgZmlsbD0iI2U5YzI1NyIvPjxjaXJjbGUgY3g9IjUwIiBjeT0iMTAiIHI9IjkiIGZpbGw9IiNlOWMyNTciLz48Y2lyY2xlIGN4PSI3MCIgY3k9IjE0IiByPSI4IiBmaWxsPSIjZTljMjU3Ii8+PC9zdmc+",
-  anna:  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPHBhdGggZD0iTTE5IDUyIEMxNyAyMiAzNCA5IDUwIDkgQzY2IDkgODMgMjIgODEgNTIKICAgICAgICAgQzgxIDM0IDc0IDI0IDY4IDIyIEM2NCAzMCA2MCAzNCA1MCAzNCBDNDAgMzQgMzYgMzAgMzIgMjIKICAgICAgICAgQzI2IDI0IDE5IDM0IDE5IDUyIFoiIGZpbGw9IiNlOWM3NjYiLz4KPHBhdGggZD0iTTE5IDUwIEMxNyA2MCAxOSA2OCAyNCA3MiBMMjkgNjYgQzI2IDYwIDI1IDU0IDI2IDQ4IFoiIGZpbGw9IiNkY2I4NGYiLz4KPHBhdGggZD0iTTgxIDUwIEM4MyA2MCA4MSA2OCA3NiA3MiBMNzEgNjYgQzc0IDYwIDc1IDU0IDc0IDQ4IFoiIGZpbGw9IiNkY2I4NGYiLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MiIgcj0iMzAiIGZpbGw9IiNmMmM5YTAiLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjUzIiByPSI1IiBmaWxsPSIjZjJjOWEwIi8+PGNpcmNsZSBjeD0iNzkiIGN5PSI1MyIgcj0iNSIgZmlsbD0iI2YyYzlhMCIvPjxwYXRoIGQ9Ik0gNDggNTQgUSA0NiA2MCA0OSA2MSIgc3Ryb2tlPSIjZDlhODc4IiBzdHJva2Utd2lkdGg9IjEuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTSAzMSA0NCBRIDM3IDQxIDQzIDQ0IiBzdHJva2U9IiNjOWExM2YiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNIDU3IDQ0IFEgNjMgNDEgNjkgNDQiIHN0cm9rZT0iI2M5YTEzZiIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxlbGxpcHNlIGN4PSIzNyIgY3k9IjUwIiByeD0iNS41IiByeT0iNC4yIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMmIyYjJiIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIzLjIiIGZpbGw9IiM3YTVhM2EiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIxLjMiIGZpbGw9IiMxYTFhMWEiLz48ZWxsaXBzZSBjeD0iNjMiIGN5PSI1MCIgcng9IjUuNSIgcnk9IjQuMiIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzJiMmIyYiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMy4yIiBmaWxsPSIjN2E1YTNhIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMS4zIiBmaWxsPSIjMWExYTFhIi8+PHBhdGggZD0iTSAzMiA0NiBRIDMwIDQzIDI5IDQ1IiBzdHJva2U9IiMyYjJiMmIiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0gNjggNDYgUSA3MCA0MyA3MSA0NSIgc3Ryb2tlPSIjMmIyYjJiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNIDQyIDY4IFEgNTAgNzMgNTggNjgiIHN0cm9rZT0iI2E4NWQ1ZCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTE5IDUyIEMxNyAyMiAzNCA5IDUwIDkgQzY2IDkgODMgMjIgODEgNTIKICAgICAgICAgQzgxIDM0IDc0IDI0IDY4IDIyIEM2NCAzMCA2MCAzNCA1MCAzNCBDNDAgMzQgMzYgMzAgMzIgMjIKICAgICAgICAgQzI2IDI0IDE5IDM0IDE5IDUyIFoiIGZpbGw9IiNlOWM3NjYiLz4KPHBhdGggZD0iTTE5IDUwIEMxNyA2MCAxOSA2OCAyNCA3MiBMMjkgNjYgQzI2IDYwIDI1IDU0IDI2IDQ4IFoiIGZpbGw9IiNkY2I4NGYiLz4KPHBhdGggZD0iTTgxIDUwIEM4MyA2MCA4MSA2OCA3NiA3MiBMNzEgNjYgQzc0IDYwIDc1IDU0IDc0IDQ4IFoiIGZpbGw9IiNkY2I4NGYiLz4KPC9zdmc+",
-  david: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPHBhdGggZD0iTTIwIDQ2IEMxOSAxOCAzNiA5IDUwIDkgQzY0IDkgODEgMTggODAgNDYKICAgICAgICAgQzgwIDM0IDcyIDI2IDY2IDI2IEM2MCAyMiA1NiAyMCA1MCAyMCBDNDQgMjAgNDAgMjIgMzQgMjYKICAgICAgICAgQzI4IDI2IDIwIDM0IDIwIDQ2IFoiIGZpbGw9IiMzYjJhMjAiLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MiIgcj0iMzAiIGZpbGw9IiNmMmM5YTAiLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjUzIiByPSI1IiBmaWxsPSIjZjJjOWEwIi8+PGNpcmNsZSBjeD0iNzkiIGN5PSI1MyIgcj0iNSIgZmlsbD0iI2YyYzlhMCIvPjxwYXRoIGQ9Ik0gNDggNTQgUSA0NiA2MCA0OSA2MSIgc3Ryb2tlPSIjZDlhODc4IiBzdHJva2Utd2lkdGg9IjEuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTSAzMSA0NCBRIDM3IDQxIDQzIDQ0IiBzdHJva2U9IiMyYjFlMTYiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNIDU3IDQ0IFEgNjMgNDEgNjkgNDQiIHN0cm9rZT0iIzJiMWUxNiIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxlbGxpcHNlIGN4PSIzNyIgY3k9IjUwIiByeD0iNS41IiByeT0iNC4yIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMmIyYjJiIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIzLjIiIGZpbGw9IiM1YzNkMjQiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIxLjMiIGZpbGw9IiMxYTFhMWEiLz48ZWxsaXBzZSBjeD0iNjMiIGN5PSI1MCIgcng9IjUuNSIgcnk9IjQuMiIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzJiMmIyYiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMy4yIiBmaWxsPSIjNWMzZDI0Ii8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMS4zIiBmaWxsPSIjMWExYTFhIi8+PHBhdGggZD0iTSA0MiA2OCBRIDUwIDczIDU4IDY4IiBzdHJva2U9IiNhODVkNWQiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yMCA0NiBDMTkgMTggMzYgOSA1MCA5IEM2NCA5IDgxIDE4IDgwIDQ2CiAgICAgICAgIEM4MCAzNCA3MiAyNiA2NiAyNiBDNjAgMjIgNTYgMjAgNTAgMjAgQzQ0IDIwIDQwIDIyIDM0IDI2CiAgICAgICAgIEMyOCAyNiAyMCAzNCAyMCA0NiBaIiBmaWxsPSIjM2IyYTIwIi8+Cjwvc3ZnPg==",
-  alex:  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPHBhdGggZD0iTTIwIDQ1IEMyMCAxNyAzNiA5IDUwIDkgQzY0IDkgODAgMTcgODAgNDUKICAgICAgICAgQzc4IDMzIDcwIDI0IDY0IDI1IEM1OCAyMCA1NCAxOSA1MCAxOSBDNDYgMTkgNDIgMjAgMzYgMjUKICAgICAgICAgQzMwIDI0IDIyIDMzIDIwIDQ1IFoiIGZpbGw9IiNhMzdmNGEiLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MiIgcj0iMzAiIGZpbGw9IiNmMmM5YTAiLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjUzIiByPSI1IiBmaWxsPSIjZjJjOWEwIi8+PGNpcmNsZSBjeD0iNzkiIGN5PSI1MyIgcj0iNSIgZmlsbD0iI2YyYzlhMCIvPjxwYXRoIGQ9Ik0gNDggNTQgUSA0NiA2MCA0OSA2MSIgc3Ryb2tlPSIjZDlhODc4IiBzdHJva2Utd2lkdGg9IjEuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTSAzMSA0NCBRIDM3IDQxIDQzIDQ0IiBzdHJva2U9IiM4YTZhM2QiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNIDU3IDQ0IFEgNjMgNDEgNjkgNDQiIHN0cm9rZT0iIzhhNmEzZCIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxlbGxpcHNlIGN4PSIzNyIgY3k9IjUwIiByeD0iNS41IiByeT0iNC4yIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMmIyYjJiIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIzLjIiIGZpbGw9IiM3YTZhM2EiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIxLjMiIGZpbGw9IiMxYTFhMWEiLz48ZWxsaXBzZSBjeD0iNjMiIGN5PSI1MCIgcng9IjUuNSIgcnk9IjQuMiIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzJiMmIyYiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMy4yIiBmaWxsPSIjN2E2YTNhIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMS4zIiBmaWxsPSIjMWExYTFhIi8+PHBhdGggZD0iTSA0MiA2OCBRIDUwIDczIDU4IDY4IiBzdHJva2U9IiNhODVkNWQiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CjxwYXRoIGQ9Ik0yMCA0NSBDMjAgMTcgMzYgOSA1MCA5IEM2NCA5IDgwIDE3IDgwIDQ1CiAgICAgICAgIEM3OCAzMyA3MCAyNCA2NCAyNSBDNTggMjAgNTQgMTkgNTAgMTkgQzQ2IDE5IDQyIDIwIDM2IDI1CiAgICAgICAgIEMzMCAyNCAyMiAzMyAyMCA0NSBaIiBmaWxsPSIjYTM3ZjRhIi8+Cjwvc3ZnPg==",
-  nina:  "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMDAgMTAwIj4KPHBhdGggZD0iTTE5IDUyIEMxNyAyMCAzNSA4IDUwIDggQzY1IDggODMgMjAgODEgNTIKICAgICAgICAgQzgxIDQwIDc1IDM0IDcxIDM0IEM3MSAyOCA2NCAyMSA1MCAyMSBDMzYgMjEgMjkgMjggMjkgMzQKICAgICAgICAgQzI1IDM0IDE5IDQwIDE5IDUyIFoiIGZpbGw9IiMyZTIwMTYiLz4KPHBhdGggZD0iTTE5IDUwIEMxNiA2OCAxOCA4OCAyMyA5NyBMMzAgOTMgQzI2IDc4IDI1IDYwIDI3IDQ4IFoiIGZpbGw9IiMyNDFhMTEiLz4KPHBhdGggZD0iTTgxIDUwIEM4NCA2OCA4MiA4OCA3NyA5NyBMNzAgOTMgQzc0IDc4IDc1IDYwIDczIDQ4IFoiIGZpbGw9IiMyNDFhMTEiLz4KPGNpcmNsZSBjeD0iNTAiIGN5PSI1MiIgcj0iMzAiIGZpbGw9IiNmMmM5YTAiLz48Y2lyY2xlIGN4PSIyMSIgY3k9IjUzIiByPSI1IiBmaWxsPSIjZjJjOWEwIi8+PGNpcmNsZSBjeD0iNzkiIGN5PSI1MyIgcj0iNSIgZmlsbD0iI2YyYzlhMCIvPjxwYXRoIGQ9Ik0gNDggNTQgUSA0NiA2MCA0OSA2MSIgc3Ryb2tlPSIjZDlhODc4IiBzdHJva2Utd2lkdGg9IjEuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTSAzMSA0NCBRIDM3IDQxIDQzIDQ0IiBzdHJva2U9IiMxZjE3MTAiIHN0cm9rZS13aWR0aD0iMS42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNIDU3IDQ0IFEgNjMgNDEgNjkgNDQiIHN0cm9rZT0iIzFmMTcxMCIgc3Ryb2tlLXdpZHRoPSIxLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxlbGxpcHNlIGN4PSIzNyIgY3k9IjUwIiByeD0iNS41IiByeT0iNC4yIiBmaWxsPSJ3aGl0ZSIgc3Ryb2tlPSIjMmIyYjJiIiBzdHJva2Utd2lkdGg9IjEiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIzLjIiIGZpbGw9IiM1YzNkMjQiLz48Y2lyY2xlIGN4PSIzNyIgY3k9IjUwIiByPSIxLjMiIGZpbGw9IiMxYTFhMWEiLz48ZWxsaXBzZSBjeD0iNjMiIGN5PSI1MCIgcng9IjUuNSIgcnk9IjQuMiIgZmlsbD0id2hpdGUiIHN0cm9rZT0iIzJiMmIyYiIgc3Ryb2tlLXdpZHRoPSIxIi8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMy4yIiBmaWxsPSIjNWMzZDI0Ii8+PGNpcmNsZSBjeD0iNjMiIGN5PSI1MCIgcj0iMS4zIiBmaWxsPSIjMWExYTFhIi8+PHBhdGggZD0iTSAzMiA0NiBRIDMwIDQzIDI5IDQ1IiBzdHJva2U9IiMyYjJiMmIiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0gNjggNDYgUSA3MCA0MyA3MSA0NSIgc3Ryb2tlPSIjMmIyYjJiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNIDQyIDY4IFEgNTAgNzMgNTggNjgiIHN0cm9rZT0iI2E4NWQ1ZCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KPHBhdGggZD0iTTE5IDUyIEMxNyAyMCAzNSA4IDUwIDggQzY1IDggODMgMjAgODEgNTIKICAgICAgICAgQzgxIDQwIDc1IDM0IDcxIDM0IEM3MSAyOCA2NCAyMSA1MCAyMSBDMzYgMjEgMjkgMjggMjkgMzQKICAgICAgICAgQzI1IDM0IDE5IDQwIDE5IDUyIFoiIGZpbGw9IiMyZTIwMTYiLz4KPHBhdGggZD0iTTE5IDUwIEMxNiA2OCAxOCA4OCAyMyA5NyBMMzAgOTMgQzI2IDc4IDI1IDYwIDI3IDQ4IFoiIGZpbGw9IiMyNDFhMTEiLz4KPHBhdGggZD0iTTgxIDUwIEM4NCA2OCA4MiA4OCA3NyA5NyBMNzAgOTMgQzc0IDc4IDc1IDYwIDczIDQ4IFoiIGZpbGw9IiMyNDFhMTEiLz4KPC9zdmc+"
-};
-
-var CHARACTERS = [
-  // ── Німецька (de-DE) — 4 стандартні "якісні" голоси ──
-  { "id": "de_w_julia", "gender": "w", "lang": "de", "name": "Julia", "edge_tts": "de-DE-KatjaNeural", "avatar": CHARACTER_AVATARS.julia},
-  { "id": "de_w_anna", "gender": "w",  "lang": "de", "name": "Anna",  "edge_tts": "de-DE-AmalaNeural", "avatar": CHARACTER_AVATARS.anna},
-  { "id": "de_m_mark", "gender": "m",  "lang": "de", "name": "Mark",  "edge_tts": "de-DE-ConradNeural", "avatar": CHARACTER_AVATARS.mark},
-  { "id": "de_m_david", "gender": "m", "lang": "de", "name": "David", "edge_tts": "de-DE-KillianNeural", "avatar": CHARACTER_AVATARS.david},
-  // ── Англійська (en-US / en-GB) — приклад стартового набору ──
-  { "id": "en_w_julia", "gender": "w", "lang": "en", "name": "Julia", "edge_tts": "en-US-AriaNeural", "avatar": CHARACTER_AVATARS.julia},
-  { "id": "en_w_anna", "gender": "w",  "lang": "en", "name": "Jenny", "edge_tts": "en-US-JennyNeural", "avatar": CHARACTER_AVATARS.anna},
-  { "id": "en_w_nina", "gender": "w",  "lang": "en", "name": "Nina",  "edge_tts": "en-GB-SoniaNeural", "avatar": CHARACTER_AVATARS.nina},
-  { "id": "en_m_mark", "gender": "m",  "lang": "en", "name": "Mark",  "edge_tts": "en-GB-RyanNeural", "avatar": CHARACTER_AVATARS.mark},
-  { "id": "en_m_david", "gender": "m", "lang": "en", "name": "David", "edge_tts": "en-US-GuyNeural", "avatar": CHARACTER_AVATARS.david},
-  { "id": "en_m_alex", "gender": "m",  "lang": "en", "name": "Alex",  "edge_tts": "en-US-DavisNeural", "avatar": CHARACTER_AVATARS.alex},
-  // ── Українська (uk-UA) ──
-  { "id": "uk_w_julia", "gender": "w", "lang": "uk", "name": "Julia", "edge_tts": "uk-UA-PolinaNeural", "avatar": CHARACTER_AVATARS.julia},
-  { "id": "uk_m_mark", "gender": "m",  "lang": "uk", "name": "Остап", "edge_tts": "uk-UA-OstapNeural", "avatar": CHARACTER_AVATARS.mark},
-  // ── Російська (ru-RU) ──
-  { "id": "ru_w_julia", "gender": "w", "lang": "ru", "name": "Юлия",  "edge_tts": "ru-RU-SvetlanaNeural", "avatar": CHARACTER_AVATARS.julia},
-  { "id": "ru_m_mark", "gender": "m",  "lang": "ru", "name": "Mark",  "edge_tts": "ru-RU-DmitryNeural", "avatar": CHARACTER_AVATARS.mark},
-];
-
-// Допоміжна функція для offline-пайплайну генерації аудіо (не для
-// браузера — просто зручний lookup при написанні скрипта озвучення):
-//   var c = findCharacter('de_m_mark', 'de');  // -> {id, lang, name, edge_tts}
-function findCharacter(personaId, lang){
-  return CHARACTERS.find(function(c){ return c.id === personaId && c.lang === lang; }) || null;
-}
-
-
 // ════════════════════════════════════════════════════════════════
 //  VOCAB DATA  ·  Deutsch-B2  ·  Beruf
 //  Формат кожної картки:
@@ -1138,6 +1072,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_018",
       "sbs_019"
+    ],
+    "dlgCards": [
+      "dlg_036"
     ]
   },
   {
@@ -6050,6 +5987,12 @@ var DIALOGE = [
 {
     "id": "dlg_001",
     "cat": "Telefongespräch",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6069,6 +6012,12 @@ var DIALOGE = [
 {
     "id": "dlg_002",
     "cat": "Telefongespräch",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6088,6 +6037,12 @@ var DIALOGE = [
 {
     "id": "dlg_003",
     "cat": "Telefongespräch",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6107,6 +6062,12 @@ var DIALOGE = [
 {
     "id": "dlg_004",
     "cat": "Telefongespräch",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6126,6 +6087,12 @@ var DIALOGE = [
 {
     "id": "dlg_005",
     "cat": "Telefongespräch",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6145,6 +6112,12 @@ var DIALOGE = [
 {
     "id": "dlg_006",
     "cat": "Messe",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6164,6 +6137,12 @@ var DIALOGE = [
 {
     "id": "dlg_007",
     "cat": "Messe",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6183,6 +6162,12 @@ var DIALOGE = [
 {
     "id": "dlg_008",
     "cat": "Messe",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6202,6 +6187,12 @@ var DIALOGE = [
 {
     "id": "dlg_009",
     "cat": "Messe",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6221,6 +6212,12 @@ var DIALOGE = [
 {
     "id": "dlg_010",
     "cat": "Messe",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6240,6 +6237,12 @@ var DIALOGE = [
 {
     "id": "dlg_011",
     "cat": "Messe",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6259,6 +6262,12 @@ var DIALOGE = [
 {
     "id": "dlg_012",
     "cat": "Messe",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6278,6 +6287,12 @@ var DIALOGE = [
 {
     "id": "dlg_013",
     "cat": "Messe",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6297,6 +6312,13 @@ var DIALOGE = [
 {
     "id": "dlg_014",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6340,6 +6362,13 @@ var DIALOGE = [
 {
     "id": "dlg_015",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6359,6 +6388,13 @@ var DIALOGE = [
 {
     "id": "dlg_016",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6378,6 +6414,13 @@ var DIALOGE = [
 {
     "id": "dlg_017",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6397,6 +6440,13 @@ var DIALOGE = [
 {
     "id": "dlg_018",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6416,6 +6466,13 @@ var DIALOGE = [
 {
     "id": "dlg_019",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6435,6 +6492,13 @@ var DIALOGE = [
 {
     "id": "dlg_020",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6454,6 +6518,13 @@ var DIALOGE = [
 {
     "id": "dlg_021",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6473,6 +6544,13 @@ var DIALOGE = [
 {
     "id": "dlg_022",
     "cat": "Lösungswege diskutieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6492,6 +6570,12 @@ var DIALOGE = [
 {
     "id": "dlg_023",
     "cat": "Etwas reklamieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6511,6 +6595,12 @@ var DIALOGE = [
 {
     "id": "dlg_024",
     "cat": "Etwas reklamieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6530,6 +6620,12 @@ var DIALOGE = [
 {
     "id": "dlg_025",
     "cat": "Etwas reklamieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6549,6 +6645,12 @@ var DIALOGE = [
 {
     "id": "dlg_026",
     "cat": "Etwas reklamieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6568,6 +6670,12 @@ var DIALOGE = [
 {
     "id": "dlg_027",
     "cat": "Etwas reklamieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6587,6 +6695,12 @@ var DIALOGE = [
 {
     "id": "dlg_028",
     "cat": "Etwas reklamieren",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
@@ -6606,6 +6720,13 @@ var DIALOGE = [
 {
     "id": "dlg_029",
     "cat": "Mein Beruf",
+    "task": {
+      "de": "Ihr Betrieb verlegt den Standort, und der neue Arbeitsweg ist für viele Kolleginnen und Kollegen deutlich weiter (fast 60 Kilometer). Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "Your company is relocating, and the new commute is much longer for many colleagues (almost 60 kilometers). Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Ваша компанія переносить офіс, і новий шлях на роботу для багатьох колег значно довший (майже 60 кілометрів). Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Ваша компания переезжает, и новый путь на работу для многих коллег значительно длиннее (почти 60 километров). Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
     "name_a": "de_m_david",
     "q": {
@@ -6615,10 +6736,10 @@ var DIALOGE = [
       "ru": "У нас проблема: руководство решило, что с следующего года наш офис перенесут в другой пригород. Расстояние до нового места работы составляет почти 60 километров, и многие коллеги теперь не знают, ездить ли им каждый день или переезжать."
     },
     "a": {
-      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass der neue Standort für viele Mitarbeitende zu weit entfernt ist?",
-      "en": "Did I understand you correctly: so the issue is that the new location is too far away for many employees?",
-      "uk": "Я правильно тебе зрозумів: отже, йдеться про те, що нове місце розташування занадто далеко для багатьох співробітників?",
-      "ru": "Я правильно тебя понял: значит, речь о том, что новое расположение слишком далеко для многих сотрудников?"
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass der neue Standort für viele Mitarbeitende zu weit entfernt ist?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that the new location is too far away for many employees?",
+      "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що нове місце розташування занадто далеко для багатьох співробітників?",
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что новое расположение слишком далеко для многих сотрудников?"
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das für das Team, wenn wir nichts unternehmen?",
@@ -6627,46 +6748,46 @@ var DIALOGE = [
       "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь для команды, если мы ничего не предпримем?"
     },
     "a1": {
-      "de": "Ich bin der Meinung, dass mehrere erfahrene Fachkräfte kündigen würden, <g>weil</g> ihnen die tägliche Pendelzeit zu lang <g>wäre</g>.",
-      "en": "I think that several experienced specialists would resign, because the daily commuting time would be too long for them.",
-      "uk": "Я вважаю, що кілька досвідчених фахівців звільнилися б, оскільки щоденний час на дорогу був би для них занадто довгим.",
-      "ru": "Я считаю, что несколько опытных специалистов уволились бы, потому что ежедневное время на дорогу было бы для них слишком долгим."
+      "de": "<r>Ich bin der Meinung, dass</r> mehrere erfahrene Fachkräfte kündigen würden, <g>weil</g> ihnen die tägliche Pendelzeit zu lang <g>wäre</g>.",
+      "en": "<r>I think that</r> several experienced specialists would resign, because the daily commuting time would be too long for them.",
+      "uk": "<r>Я вважаю, що</r> кілька досвідчених фахівців звільнилися б, оскільки щоденний час на дорогу був би для них занадто довгим.",
+      "ru": "<r>Я считаю, что</r> несколько опытных специалистов уволились бы, потому что ежедневное время на дорогу было бы для них слишком долгим."
     },
     "q2": {
-      "de": "Wie wäre es, wenn wir der Geschäftsführung vorschlagen, dass Mitarbeitende an zwei Tagen pro Woche im Homeoffice arbeiten dürfen?",
-      "en": "How about we suggest to management that employees be allowed to work from home two days a week?",
-      "uk": "Що якщо ми запропонуємо керівництву дозволити співробітникам працювати з дому два дні на тиждень?",
-      "ru": "Что если мы предложим руководству разрешить сотрудникам работать из дома два дня в неделю?"
+      "de": "<r>Wie wäre es, wenn wir</r> der Geschäftsführung vorschlagen, dass Mitarbeitende an zwei Tagen pro Woche im Homeoffice arbeiten dürfen?",
+      "en": "<r>How about we</r> suggest to management that employees be allowed to work from home two days a week?",
+      "uk": "<r>Що якщо ми</r> запропонуємо керівництву дозволити співробітникам працювати з дому два дні на тиждень?",
+      "ru": "<r>Что если мы</r> предложим руководству разрешить сотрудникам работать из дома два дня в неделю?"
     },
     "a2": {
-      "de": "Das ist sicherlich sinnvoll, da man sich dann nicht sofort an einen neuen Wohnort gewöhnen müsste. Wir sollten aber vorher klären, ob das für alle Abteilungen überhaupt in Frage kommt.",
-      "en": "That certainly makes sense, since then people wouldn't have to get used to a new place of residence right away. But we should first clarify whether that's even an option for all departments.",
-      "uk": "Це, безумовно, розумно, адже тоді не довелося б одразу звикати до нового місця проживання. Але спершу варто з'ясувати, чи це взагалі можливо для всіх відділів.",
-      "ru": "Это, безусловно, разумно, так как тогда не пришлось бы сразу привыкать к новому месту жительства. Но сначала нужно выяснить, возможно ли это вообще для всех отделов."
+      "de": "Das <r>ist sicherlich sinnvoll, da</r> man sich dann nicht sofort an einen neuen Wohnort gewöhnen müsste. Wir sollten aber vorher klären, ob das für alle Abteilungen überhaupt in Frage kommt.",
+      "en": "That <r>certainly makes sense</r>, since then people wouldn't have to get used to a new place of residence right away. But we should first clarify whether that's even an option for all departments.",
+      "uk": "Це, <r>безумовно, розумно</r>, адже тоді не довелося б одразу звикати до нового місця проживання. Але спершу варто з'ясувати, чи це взагалі можливо для всіх відділів.",
+      "ru": "Это, <r>безусловно, разумно</r>, так как тогда не пришлось бы сразу привыкать к новому месту жительства. Но сначала нужно выяснить, возможно ли это вообще для всех отделов."
     },
     "q3": {
-      "de": "Ein weiterer Vorschlag wäre, zusätzlich eine flexible Gleitzeit mit fester Kernarbeitszeit einzuführen. Was hältst du davon?",
-      "en": "Another suggestion would be to also introduce flexible working hours with a fixed core time. What do you think about that?",
-      "uk": "Ще одна пропозиція - додатково впровадити гнучкий графік із фіксованим основним робочим часом. Що ти про це думаєш?",
-      "ru": "Еще одно предложение - дополнительно ввести гибкий график с фиксированным основным рабочим временем. Что ты об этом думаешь?"
+      "de": "Ein weiterer Vorschlag wäre, zusätzlich eine flexible Gleitzeit mit fester Kernarbeitszeit einzuführen. <r>Was hältst du davon</r>?",
+      "en": "Another suggestion would be to also introduce flexible working hours with a fixed core time. <r>What do you think about that</r>?",
+      "uk": "Ще одна пропозиція - додатково впровадити гнучкий графік із фіксованим основним робочим часом. <r>Що ти про це думаєш</r>?",
+      "ru": "Еще одно предложение - дополнительно ввести гибкий график с фиксированным основным рабочим временем. <r>Что ты об этом думаешь</r>?"
     },
     "a3": {
-      "de": "Ein Argument, das dagegen spricht, ist, dass nicht jede Abteilung im Homeoffice arbeiten kann - die Buchhaltung zum Beispiel braucht oft persönlichen Kundenkontakt vor Ort.",
-      "en": "One argument against that is that not every department can work from home - accounting, for example, often needs personal contact with clients on-site.",
-      "uk": "Аргумент проти цього полягає в тому, що не кожен відділ може працювати з дому - бухгалтерія, наприклад, часто потребує особистого контакту з клієнтами на місці.",
-      "ru": "Аргумент против этого в том, что не каждый отдел может работать из дома - бухгалтерия, например, часто нуждается в личном контакте с клиентами на месте."
+      "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass nicht jede Abteilung im Homeoffice arbeiten kann - die Buchhaltung zum Beispiel braucht oft persönlichen Kundenkontakt vor Ort.",
+      "en": "<r>One argument against that is</r> that not every department can work from home - accounting, for example, often needs personal contact with clients on-site.",
+      "uk": "<r>Аргумент проти цього</r> полягає в тому, що не кожен відділ може працювати з дому - бухгалтерія, наприклад, часто потребує особистого контакту з клієнтами на місці.",
+      "ru": "<r>Аргумент против этого</r> в том, что не каждый отдел может работать из дома - бухгалтерия, например, часто нуждается в личном контакте с клиентами на месте."
     },
     "q4": {
-      "de": "Das stimmt zwar, aber man könnte das Problem eventuell lösen, <g>indem</g> man abwechselnd im Büro und im Homeoffice <g>arbeitet</g>.",
-      "en": "That's true, but we could perhaps solve the problem by working alternately in the office and from home.",
-      "uk": "Це правда, але цю проблему можна було б вирішити, якщо працювати почергово в офісі та вдома.",
-      "ru": "Это верно, но эту проблему можно было бы решить, если работать поочередно в офисе и дома."
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, <g>indem</g></r> man abwechselnd im Büro und im Homeoffice <g>arbeitet</g>.",
+      "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> working alternately in the office and from home.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо працювати почергово в офісі та вдома.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если работать поочередно в офисе и дома."
     },
     "a4": {
-      "de": "Da bin ich ganz deiner Meinung. Ich kann mir überhaupt nicht vorstellen, dass die Geschäftsführung dagegen wäre, wenn wir zeigen, dass die Produktivität dadurch nicht sinkt.",
-      "en": "I completely agree with you. I really can't imagine that management would be against it if we show that productivity doesn't decrease as a result.",
-      "uk": "Тут я з тобою цілком згоден. Я взагалі не можу собі уявити, що керівництво було б проти, якщо ми покажемо, що продуктивність через це не знижується.",
-      "ru": "Тут я с тобой полностью согласен. Я вообще не могу себе представить, что руководство было бы против, если мы покажем, что производительность из-за этого не снижается."
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir überhaupt nicht vorstellen, dass die Geschäftsführung dagegen wäre, wenn wir zeigen, dass die Produktivität dadurch nicht sinkt.",
+      "en": "<r>I completely agree with you</r>. I really can't imagine that management would be against it if we show that productivity doesn't decrease as a result.",
+      "uk": "<r>Тут я з тобою цілком згоден</r>. Я взагалі не можу собі уявити, що керівництво було б проти, якщо ми покажемо, що продуктивність через це не знижується.",
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Я вообще не могу себе представить, что руководство было бы против, если мы покажем, что производительность из-за этого не снижается."
     },
     "q5": {
       "de": "Sollten wir auch vorschlagen, eine Änderung an den befristeten Arbeitsverträgen vorzunehmen und sie in unbefristete Verträge umzuwandeln, damit sich die Fachkräfte am neuen Standort sicherer fühlen?",
@@ -6675,10 +6796,10 @@ var DIALOGE = [
       "ru": "Стоит ли нам также предложить внести изменение в срочные трудовые договоры и превратить их в бессрочные, чтобы специалисты чувствовали себя увереннее на новом месте?"
     },
     "a5": {
-      "de": "Das halte ich für einen guten Punkt, <g>weil</g> es Vertrauen <g>schafft</g>. Zusätzlich könnten wir eine kleine Umzugshilfe für alle anbieten, die tatsächlich umziehen möchten.",
-      "en": "I think that's a good point, because it builds trust. In addition, we could offer everyone who actually wants to relocate a small relocation allowance.",
-      "uk": "Вважаю це гарною думкою, бо це створює довіру. Крім того, ми могли б запропонувати невелику допомогу з переїздом усім, хто справді хоче переїхати.",
-      "ru": "Считаю это хорошей мыслью, потому что это создаёт доверие. Кроме того, мы могли бы предложить небольшую помощь с переездом всем, кто действительно хочет переехать."
+      "de": "Das <r>halte ich für einen guten Punkt</r>, <g>weil</g> es Vertrauen <g>schafft</g>. Zusätzlich könnten wir eine kleine Umzugshilfe für alle anbieten, die tatsächlich umziehen möchten.",
+      "en": "<r>I think that's a good point</r>, because it builds trust. In addition, we could offer everyone who actually wants to relocate a small relocation allowance.",
+      "uk": "<r>Вважаю це гарною думкою</r>, бо це створює довіру. Крім того, ми могли б запропонувати невелику допомогу з переїздом усім, хто справді хоче переїхати.",
+      "ru": "<r>Считаю это хорошей мыслью</r>, потому что это создаёт доверие. Кроме того, мы могли бы предложить небольшую помощь с переездом всем, кто действительно хочет переехать."
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich bereite einen kurzen Bericht über die Homeoffice-Möglichkeiten vor, und du kümmerst dich um die Zahlen zur Umzugshilfe. Einverstanden?",
@@ -6721,6 +6842,13 @@ var DIALOGE = [
 {
     "id": "dlg_030",
     "cat": "Bei der Agentur für Arbeit",
+    "task": {
+      "de": "",
+      "en": "",
+      "uk": "",
+      "ru": ""
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
     "name_a": "de_m_david",
     "q": {
@@ -6730,10 +6858,10 @@ var DIALOGE = [
       "ru": "У нас проблема: наша новая коллега, госпожа Кляйн, пришла в профессию из другой сферы и вовремя встала на учёт как безработная, но её номер социального страхования и разрешение на работу до сих пор не пришли, потому что в агентстве занятости не хватает некоторых документов."
     },
     "a": {
-      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass sie ohne diese Nummer nicht offiziell bei uns anfangen kann?",
-      "en": "Did I understand you correctly: so the issue is that she can't officially start with us without that number?",
-      "uk": "Я правильно тебе зрозумів: отже, йдеться про те, що без цього номера вона не може офіційно розпочати роботу в нас?",
-      "ru": "Я правильно тебя понял: значит, речь о том, что без этого номера она не может официально начать работу у нас?"
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass sie ohne diese Nummer nicht offiziell bei uns anfangen kann?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that she can't officially start with us without that number?",
+      "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що без цього номера вона не може офіційно розпочати роботу в нас?",
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что без этого номера она не может официально начать работу у нас?"
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das für das Team, wenn sie nicht pünktlich anfangen kann?",
@@ -6748,10 +6876,10 @@ var DIALOGE = [
       "ru": "Честно говоря, меня это немного пугает, потому что тогда проект пришлось бы начинать без неё, а другим коллегам - брать на себя дополнительные задачи."
     },
     "q2": {
-      "de": "Wie wäre es, wenn wir ihr ein Angebot machen und sie zunächst auf einer Teilzeitstelle mitarbeiten lassen, bis alle Unterlagen vollständig sind?",
-      "en": "How about we make her an offer and let her work part-time at first, until all the documents are complete?",
-      "uk": "Що якщо ми зробимо їй пропозицію і дозволимо спочатку працювати на неповну ставку, поки всі документи не будуть готові?",
-      "ru": "Что если мы сделаем ей предложение и разрешим сначала работать на неполную ставку, пока все документы не будут готовы?"
+      "de": "<r>Wie wäre es, wenn wir</r> ihr ein Angebot machen und sie zunächst auf einer Teilzeitstelle mitarbeiten lassen, bis alle Unterlagen vollständig sind?",
+      "en": "<r>How about we</r> make her an offer and let her work part-time at first, until all the documents are complete?",
+      "uk": "<r>Що якщо ми</r> зробимо їй пропозицію і дозволимо спочатку працювати на неповну ставку, поки всі документи не будуть готові?",
+      "ru": "<r>Что если мы</r> сделаем ей предложение и разрешим сначала работать на неполную ставку, пока все документы не будут готовы?"
     },
     "a2": {
       "de": "Das klingt sinnvoll, aber wir sollten vorher klären, ob das ohne gültige Arbeitserlaubnis überhaupt in Frage kommt.",
@@ -6766,22 +6894,22 @@ var DIALOGE = [
       "ru": "Ещё одно предложение - отправить запрос в агентство занятости, можем ли мы сопроводить её на следующий приём, чтобы она точно на него попала и всё прошло быстрее."
     },
     "a3": {
-      "de": "Ein Argument, das dagegen spricht, ist, dass wir dafür während der Arbeitszeit jemanden freistellen müssten.",
-      "en": "One argument against that is that we'd have to free someone up during working hours for that.",
-      "uk": "Аргумент проти цього полягає в тому, що для цього нам довелося б звільнити когось від роботи на якийсь час.",
-      "ru": "Аргумент против этого в том, что для этого нам пришлось бы освободить кого-то от работы на время."
+      "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass wir dafür während der Arbeitszeit jemanden freistellen müssten.",
+      "en": "<r>One argument against that is</r> that we'd have to free someone up during working hours for that.",
+      "uk": "<r>Аргумент проти цього</r> полягає в тому, що для цього нам довелося б звільнити когось від роботи на якийсь час.",
+      "ru": "<r>Аргумент против этого</r> в том, что для этого нам пришлось бы освободить кого-то от работы на время."
     },
     "q4": {
-      "de": "Das stimmt zwar, aber man könnte das Problem eventuell lösen, indem wir uns die Begleitung im Team aufteilen.",
-      "en": "That's true, but we could perhaps solve the problem by splitting the accompanying duty within the team.",
-      "uk": "Це правда, але цю проблему можна було б вирішити, розподіливши супровід між членами команди.",
-      "ru": "Это верно, но эту проблему можно было бы решить, распределив сопровождение между членами команды."
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir uns die Begleitung im Team aufteilen.",
+      "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> splitting the accompanying duty within the team.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, розподіливши супровід між членами команди.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, распределив сопровождение между членами команды."
     },
     "a4": {
-      "de": "Da bin ich ganz deiner Meinung. Ich kann mir überhaupt nicht vorstellen, dass das für einen Vormittag ein großes Problem wäre.",
-      "en": "I completely agree with you. I really can't imagine that being a big problem for just one morning.",
-      "uk": "Тут я з тобою цілком згоден. Я взагалі не можу собі уявити, що це стане великою проблемою заради одного ранку.",
-      "ru": "Тут я с тобой полностью согласен. Я вообще не могу себе представить, что это станет большой проблемой ради одного утра."
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir überhaupt nicht vorstellen, dass das für einen Vormittag ein großes Problem wäre.",
+      "en": "<r>I completely agree with you</r>. I really can't imagine that being a big problem for just one morning.",
+      "uk": "<r>Тут я з тобою цілком згоден</r>. Я взагалі не можу собі уявити, що це стане великою проблемою заради одного ранку.",
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Я вообще не могу себе представить, что это станет большой проблемой ради одного утра."
     },
     "q5": {
       "de": "Zusätzlich könnten wir ihr die Reisekosten für die Fahrten zum Amt erstatten - ich glaube, sie hat sogar Anspruch darauf, wenn sie dafür extra fahren muss.",
@@ -6790,10 +6918,10 @@ var DIALOGE = [
       "ru": "Кроме того, мы могли бы возместить ей расходы на поездки в ведомство - думаю, она даже имеет на это право, раз ей приходится ехать дополнительно."
     },
     "a5": {
-      "de": "Das halte ich für einen guten Punkt. Wir könnten außerdem ihre Probezeit erst mit dem tatsächlichen Arbeitsbeginn starten lassen, damit ihr nichts verloren geht.",
-      "en": "I think that's a good point. We could also only start her probationary period from her actual start date, so she doesn't lose anything.",
-      "uk": "Вважаю це гарною думкою. Ми також могли б почати відлік її випробувального терміну лише з фактичного початку роботи, щоб вона нічого не втратила.",
-      "ru": "Считаю это хорошей мыслью. Мы также могли бы начать отсчёт её испытательного срока только с фактического начала работы, чтобы она ничего не потеряла."
+      "de": "Das <r>halte ich für einen guten Punkt</r>. Wir könnten außerdem ihre Probezeit erst mit dem tatsächlichen Arbeitsbeginn starten lassen, damit ihr nichts verloren geht.",
+      "en": "<r>I think that's a good point</r>. We could also only start her probationary period from her actual start date, so she doesn't lose anything.",
+      "uk": "<r>Вважаю це гарною думкою</r>. Ми також могли б почати відлік її випробувального терміну лише з фактичного початку роботи, щоб вона нічого не втратила.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы начать отсчёт её испытательного срока только с фактического начала работы, чтобы она ничего не потеряла."
     },
     "q6": {
       "de": "Lass uns die Aufgaben in Angriff nehmen und aufteilen: Ich kläre die Sache mit der Personalabteilung, und du sprichst mit Frau Klein über den neuen Zeitplan. Einverstanden?",
@@ -6836,6 +6964,13 @@ var DIALOGE = [
 {
     "id": "dlg_031",
     "cat": "Schlüsselqualifikationen",
+    "task": {
+      "de": "Für ein neues Kundenprojekt braucht Ihr Team jemanden mit Verhandlungskompetenz und Erfahrung im Risikomanagement, aber im Moment hat niemand im Team beides. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "For a new client project your team needs someone with negotiation skills and experience in risk management, but right now nobody on the team has both. Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Для нового клієнтського проєкту вашій команді потрібна людина з навичками ведення переговорів і досвідом у ризик-менеджменті, але наразі в команді немає нікого з обома навичками одразу. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Для нового клиентского проекта вашей команде нужен человек с навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого с обоими навыками сразу. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
     "name_a": "de_m_mark",
     "q": {
@@ -6845,10 +6980,10 @@ var DIALOGE = [
       "ru": "У нас проблема: для нового клиентского проекта нам нужен человек с выраженными навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого, кто обладал бы обоими навыками одновременно."
     },
     "a": {
-      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass wir intern nicht die passende Kombination an Fachkompetenzen haben?",
-      "en": "Did I understand you correctly: so the issue is that internally we don't have the right combination of expertise?",
-      "uk": "Я правильно тебе зрозумів: отже, йдеться про те, що всередині команди в нас немає потрібного поєднання компетенцій?",
-      "ru": "Я правильно тебя понял: значит, речь о том, что внутри команды у нас нет нужного сочетания компетенций?"
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass wir intern nicht die passende Kombination an Fachkompetenzen haben?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that internally we don't have the right combination of expertise?",
+      "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що всередині команди в нас немає потрібного поєднання компетенцій?",
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что внутри команды у нас нет нужного сочетания компетенций?"
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir das Projekt trotzdem ohne die nötigen Kompetenzen starten?",
@@ -6863,10 +6998,10 @@ var DIALOGE = [
       "ru": "Думаю, это была бы плохая идея, потому что тогда мы не смогли бы достаточно быстро реагировать на проблемы."
     },
     "q2": {
-      "de": "Wie wäre es, wenn wir die Aufgaben nach unseren Stärken aufteilen? Du hast doch ziemlich viel Verhandlungskompetenz, oder?",
-      "en": "How about we split the tasks according to our strengths? You do have quite a lot of negotiation skills, don't you?",
-      "uk": "Що якщо ми розподілимо завдання за нашими сильними сторонами? У тебе ж непогані навички ведення переговорів, чи не так?",
-      "ru": "Что если мы распределим задачи по нашим сильным сторонам? У тебя же неплохие навыки ведения переговоров, разве нет?"
+      "de": "<r>Wie wäre es, wenn wir</r> die Aufgaben nach unseren Stärken aufteilen? Du hast doch ziemlich viel Verhandlungskompetenz, oder?",
+      "en": "<r>How about we</r> split the tasks according to our strengths? You do have quite a lot of negotiation skills, don't you?",
+      "uk": "<r>Що якщо ми</r> розподілимо завдання за нашими сильними сторонами? У тебе ж непогані навички ведення переговорів, чи не так?",
+      "ru": "<r>Что если мы</r> распределим задачи по нашим сильным сторонам? У тебя же неплохие навыки ведения переговоров, разве нет?"
     },
     "a2": {
       "de": "Das stimmt, aber ich habe leider überhaupt <g>keine</g> Erfahrung im Risikomanagement - das liegt mir wirklich <g>nicht</g>.",
@@ -6881,22 +7016,22 @@ var DIALOGE = [
       "ru": "Не проблема, зато я довольно сильна в тайм-менеджменте и решении проблем - это я могла бы взять на себя."
     },
     "a3": {
-      "de": "Ein Argument, das dagegen spricht, ist, dass dann niemand mehr für die Kundenbetreuung da wäre, weil du die momentan auch übernimmst.",
-      "en": "One argument against that is that then there'd be nobody left for customer service, since you're currently handling that too.",
-      "uk": "Аргумент проти цього полягає в тому, що тоді нікому було б займатися обслуговуванням клієнтів, адже наразі цим займаєшся ти.",
-      "ru": "Аргумент против этого в том, что тогда некому было бы заниматься обслуживанием клиентов, ведь сейчас этим занимаешься ты."
+      "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass dann niemand mehr für die Kundenbetreuung da wäre, weil du die momentan auch übernimmst.",
+      "en": "<r>One argument against that is</r> that then there'd be nobody left for customer service, since you're currently handling that too.",
+      "uk": "<r>Аргумент проти цього</r> полягає в тому, що тоді нікому було б займатися обслуговуванням клієнтів, адже наразі цим займаєшся ти.",
+      "ru": "<r>Аргумент против этого</r> в том, что тогда некому было бы заниматься обслуживанием клиентов, ведь сейчас этим занимаешься ты."
     },
     "q4": {
-      "de": "Das stimmt zwar, aber man könnte das Problem vielleicht lösen, indem nicht nur ich, sondern auch ein Kollege aus dem anderen Team die Kundenbetreuung übernimmt.",
-      "en": "That's true, but we could perhaps solve the problem by having not only me, but also a colleague from the other team take over customer service.",
-      "uk": "Це правда, але цю проблему можна було б вирішити, якщо обслуговування клієнтів візьму на себе не лише я, а й колега з іншої команди.",
-      "ru": "Это верно, но эту проблему можно было бы решить, если обслуживание клиентов возьму на себя не только я, но и коллега из другой команды."
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem vielleicht lösen, indem</r> nicht nur ich, sondern auch ein Kollege aus dem anderen Team die Kundenbetreuung übernimmt.",
+      "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> having not only me, but also a colleague from the other team take over customer service.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо обслуговування клієнтів візьму на себе не лише я, а й колега з іншої команди.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если обслуживание клиентов возьму на себя не только я, но и коллега из другой команды."
     },
     "a4": {
-      "de": "Da bin ich ganz deiner Meinung. Ich glaube nicht, dass das ein Problem wäre, wenn wir das rechtzeitig ankündigen.",
-      "en": "I completely agree with you. I don't think that would be a problem if we announce it in good time.",
-      "uk": "Тут я з тобою цілком згоден. Не думаю, що це стане проблемою, якщо ми повідомимо про це заздалегідь.",
-      "ru": "Тут я с тобой полностью согласен. Не думаю, что это станет проблемой, если мы сообщим об этом заранее."
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich glaube nicht, dass das ein Problem wäre, wenn wir das rechtzeitig ankündigen.",
+      "en": "<r>I completely agree with you</r>. I don't think that would be a problem if we announce it in good time.",
+      "uk": "<r>Тут я з тобою цілком згоден</r>. Не думаю, що це стане проблемою, якщо ми повідомимо про це заздалегідь.",
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Не думаю, что это станет проблемой, если мы сообщим об этом заранее."
     },
     "q5": {
       "de": "Zusätzlich könnten wir eine externe Schulung im Risikomanagement für dich vorschlagen, damit du beim nächsten Mal nicht mehr auf uns angewiesen bist.",
@@ -6905,10 +7040,10 @@ var DIALOGE = [
       "ru": "Кроме того, мы могли бы предложить тебе внешнее обучение по риск-менеджменту, чтобы в следующий раз ты уже не зависел от нас."
     },
     "a5": {
-      "de": "Das halte ich für einen guten Punkt. Ich habe übrigens auch keine Angst davor, mich in ein neues Thema einzuarbeiten.",
-      "en": "I think that's a good point. By the way, I'm also not afraid of getting into a new topic.",
-      "uk": "Вважаю це гарною думкою. До речі, я також анітрохи не боюся розбиратися в новій темі.",
-      "ru": "Считаю это хорошей мыслью. Кстати, я тоже совершенно не боюсь разбираться в новой теме."
+      "de": "Das <r>halte ich für einen guten Punkt</r>. Ich habe übrigens auch keine Angst davor, mich in ein neues Thema einzuarbeiten.",
+      "en": "<r>I think that's a good point</r>. By the way, I'm also not afraid of getting into a new topic.",
+      "uk": "<r>Вважаю це гарною думкою</r>. До речі, я також анітрохи не боюся розбиратися в новій темі.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Кстати, я тоже совершенно не боюсь разбираться в новой теме."
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um die Übergabe der Kundenbetreuung, und du meldest dich für die Risikomanagement-Schulung an. Einverstanden?",
@@ -6951,25 +7086,32 @@ var DIALOGE = [
 {
     "id": "dlg_032",
     "cat": "Anerkennung",
+    "task": {
+      "de": "Ein Kollege möchte seine im Ausland erworbene Berufsqualifikation anerkennen lassen, weiß aber nicht genau, welche Unterlagen dafür nötig sind. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie ihm helfen können.",
+      "en": "A colleague wants to have his professional qualification, earned abroad, officially recognized, but doesn't know exactly which documents are needed for that. Discuss with your conversation partner how you could help him.",
+      "uk": "Колега хоче визнати свою професійну кваліфікацію, здобуту за кордоном, але не знає точно, які документи для цього потрібні. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете йому допомогти.",
+      "ru": "Коллега хочет признать свою профессиональную квалификацию, полученную за границей, но не знает точно, какие документы для этого нужны. Обсудите со своим собеседником или собеседницей, как вы можете ему помочь."
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_m_mark",
     "name_a": "de_w_anna",
     "q": {
-      "de": "Ich muss dir kurz von einem Kollegen erzählen: Herr Boateng hat mir erzählt, dass er in seinem Herkunftsland als Ingenieur gearbeitet hat und jetzt einen Antrag auf Anerkennung seiner Berufsqualifikation stellen möchte, aber er weiß nicht, welche Dokumente dafür erforderlich sind.",
-      "en": "I have to quickly tell you about a colleague: Mr. Boateng told me that he worked as an engineer in his home country and now wants to apply for recognition of his professional qualification, but he doesn't know which documents are required for that.",
-      "uk": "Мушу коротко розповісти тобі про одного колегу: пан Боатенг розповів мені, що на батьківщині працював інженером і тепер хоче подати заявку на визнання своєї професійної кваліфікації, але не знає, які документи для цього потрібні.",
-      "ru": "Должен коротко рассказать тебе об одном коллеге: господин Боатенг рассказал мне, что на родине работал инженером и теперь хочет подать заявку на признание своей профессиональной квалификации, но не знает, какие документы для этого нужны."
+      "de": "Ich muss dir kurz von einem Kollegen erzählen: Herr Boateng <r>hat mir erzählt, dass</r> er in seinem Herkunftsland als Ingenieur gearbeitet hat und jetzt einen Antrag auf Anerkennung seiner Berufsqualifikation stellen möchte, aber er weiß nicht, welche Dokumente dafür erforderlich sind.",
+      "en": "I have to quickly tell you about a colleague: Mr. Boateng <r>told me that</r> he worked as an engineer in his home country and now wants to apply for recognition of his professional qualification, but he doesn't know which documents are required for that.",
+      "uk": "Мушу коротко розповісти тобі про одного колегу: пан Боатенг <r>розповів мені, що</r> на батьківщині працював інженером і тепер хоче подати заявку на визнання своєї професійної кваліфікації, але не знає, які документи для цього потрібні.",
+      "ru": "Должен коротко рассказать тебе об одном коллеге: господин Боатенг <r>рассказал мне, что</r> на родине работал инженером и теперь хочет подать заявку на признание своей профессиональной квалификации, но не знает, какие документы для этого нужны."
     },
     "a": {
-      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass ihm die Informationen zum Verfahren fehlen?",
-      "en": "Did I understand you correctly: so the issue is that he's missing information about the procedure?",
-      "uk": "Я правильно тебе зрозуміла: отже, йдеться про те, що йому бракує інформації про саму процедуру?",
-      "ru": "Я правильно тебя поняла: значит, речь о том, что ему не хватает информации о самой процедуре?"
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass ihm die Informationen zum Verfahren fehlen?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that he's missing information about the procedure?",
+      "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться про те, що йому бракує інформації про саму процедуру?",
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что ему не хватает информации о самой процедуре?"
     },
     "q1": {
-      "de": "Genau. Sein Ziel ist es, so schnell wie möglich in seinem eigentlichen Beruf zu arbeiten. Was denkst du, wie wir ihm helfen könnten?",
-      "en": "Exactly. His goal is to work in his actual profession as soon as possible. What do you think, how could we help him?",
-      "uk": "Саме так. Його мета - якомога швидше почати працювати за фахом. Як ти думаєш, чим ми могли б йому допомогти?",
-      "ru": "Именно так. Его цель - как можно скорее начать работать по специальности. Как ты думаешь, чем мы могли бы ему помочь?"
+      "de": "Genau. <r>Sein Ziel ist es,</r> so schnell wie möglich in seinem eigentlichen Beruf zu arbeiten. Was denkst du, wie wir ihm helfen könnten?",
+      "en": "Exactly. <r>His goal is</r> to work in his actual profession as soon as possible. What do you think, how could we help him?",
+      "uk": "Саме так. <r>Його мета</r> - якомога швидше почати працювати за фахом. Як ти думаєш, чим ми могли б йому допомогти?",
+      "ru": "Именно так. <r>Его цель</r> - как можно скорее начать работать по специальности. Как ты думаешь, чем мы могли бы ему помочь?"
     },
     "a1": {
       "de": "Ich würde vorschlagen, dass wir uns zusammen an die zuständige Stelle wenden und für ihn Informationen einholen.",
@@ -6978,10 +7120,10 @@ var DIALOGE = [
       "ru": "Я бы предложила вместе обратиться в соответствующее учреждение и собрать для него информацию."
     },
     "q2": {
-      "de": "Das ist eine gute Idee. Er hat übrigens auch gesagt, dass ihm noch einige Dokumente aus seinem Herkunftsland fehlen.",
-      "en": "That's a good idea. By the way, he also said that he's still missing some documents from his home country.",
-      "uk": "Гарна ідея. До речі, він також казав, що йому досі бракує кількох документів з батьківщини.",
-      "ru": "Хорошая идея. Кстати, он также говорил, что ему всё ещё не хватает нескольких документов с родины."
+      "de": "Das ist eine gute Idee. Er hat übrigens auch <r>gesagt, dass</r> ihm noch einige Dokumente aus seinem Herkunftsland fehlen.",
+      "en": "That's a good idea. By the way, he also <r>said that</r> he's still missing some documents from his home country.",
+      "uk": "Гарна ідея. До речі, він також <r>казав, що</r> йому досі бракує кількох документів з батьківщини.",
+      "ru": "Хорошая идея. Кстати, он также <r>говорил, что</r> ему всё ещё не хватает нескольких документов с родины."
     },
     "a2": {
       "de": "Dann sollten wir ihm empfehlen, einen Antrag auf Fristverlängerung zu stellen, damit er die fehlenden Unterlagen in Ruhe nachreichen kann.",
@@ -7002,10 +7144,10 @@ var DIALOGE = [
       "ru": "Аргумент в пользу этого, безусловно, в том, что многие коллеги уже успешно воспользовались именно этой программой."
     },
     "q4": {
-      "de": "Stimmt, aber er hat auch erwähnt, dass er Angst hat, dass sein Abschluss am Ende nicht vollständig anerkannt wird.",
-      "en": "True, but he also mentioned that he's afraid his qualification won't be fully recognized in the end.",
-      "uk": "Це правда, але він також згадав, що боїться, що його кваліфікацію в результаті визнають не повністю.",
-      "ru": "Это правда, но он также упомянул, что боится, что его квалификацию в итоге признают не полностью."
+      "de": "Stimmt, aber er hat auch <r>erwähnt, dass</r> er Angst hat, dass sein Abschluss am Ende nicht vollständig anerkannt wird.",
+      "en": "True, but he also <r>mentioned that</r> he's afraid his qualification won't be fully recognized in the end.",
+      "uk": "Це правда, але він також <r>згадав, що</r> боїться, що його кваліфікацію в результаті визнають не повністю.",
+      "ru": "Это правда, но он также <r>упомянул, что</r> боится, что его квалификацию в итоге признают не полностью."
     },
     "a4": {
       "de": "Das verstehe ich. Aber selbst wenn nicht alles anerkannt wird, könnte er einen Anpassungslehrgang machen, um die restliche Qualifikation nachzuholen.",
@@ -7014,10 +7156,10 @@ var DIALOGE = [
       "ru": "Я это понимаю. Но даже если признают не всё, он мог бы пройти адаптационный курс, чтобы наверстать остальную квалификацию."
     },
     "q5": {
-      "de": "Gute Idee. Ich weiß, dass er sich sehr für seinen Beruf interessiert - er hätte bestimmt Lust, so einen Lehrgang zu machen, wenn es nötig wäre.",
-      "en": "Good idea. I know he's very interested in his profession - he would definitely feel like doing such a course if it were necessary.",
-      "uk": "Гарна ідея. Я знаю, що він дуже захоплений своєю професією - йому точно захотілося б пройти такий курс, якби це знадобилося.",
-      "ru": "Хорошая идея. Я знаю, что он очень увлечён своей профессией - ему бы точно захотелось пройти такой курс, если бы это понадобилось."
+      "de": "Gute Idee. Ich weiß, dass er sich sehr für seinen Beruf interessiert - <r>er hätte bestimmt Lust</r>, so einen Lehrgang zu machen, wenn es nötig wäre.",
+      "en": "Good idea. I know he's very interested in his profession - he <r>would definitely feel like</r> doing such a course if it were necessary.",
+      "uk": "Гарна ідея. Я знаю, що він дуже захоплений своєю професією - <r>йому точно захотілося б</r> пройти такий курс, якби це знадобилося.",
+      "ru": "Хорошая идея. Я знаю, что он очень увлечён своей профессией - <r>ему бы точно захотелось</r> пройти такой курс, если бы это понадобилось."
     },
     "a5": {
       "de": "Dann sollten wir ihm vorschlagen, schon jetzt eine Anfrage bei der zuständigen Stelle einzuleiten, auch wenn noch nicht alle Dokumente vollständig sind.",
@@ -7038,10 +7180,10 @@ var DIALOGE = [
       "ru": "Согласна. Ты намерен сразу сказать ему, что мы поддержим его с заявкой?"
     },
     "q7": {
-      "de": "Ja, genau das habe ich vor. Wäre es realistisch, wenn wir uns übermorgen zu dritt zusammensetzen, um alles zu besprechen?",
-      "en": "Yes, that's exactly what I intend to do. Would it be realistic if the three of us sit down the day after tomorrow to discuss everything?",
-      "uk": "Так, саме це я і маю намір зробити. Чи буде реалістично, якщо післязавтра ми зберемося втрьох, щоб усе обговорити?",
-      "ru": "Да, именно это я и намерен сделать. Будет ли реалистично, если послезавтра мы соберёмся втроём, чтобы всё обсудить?"
+      "de": "Ja, <r>genau das habe ich vor</r>. Wäre es realistisch, wenn wir uns übermorgen zu dritt zusammensetzen, um alles zu besprechen?",
+      "en": "Yes, <r>that's exactly what I intend to do</r>. Would it be realistic if the three of us sit down the day after tomorrow to discuss everything?",
+      "uk": "Так, <r>саме це я і маю намір зробити</r>. Чи буде реалістично, якщо післязавтра ми зберемося втрьох, щоб усе обговорити?",
+      "ru": "Да, <r>именно это я и намерен сделать</r>. Будет ли реалистично, если послезавтра мы соберёмся втроём, чтобы всё обсудить?"
     },
     "a7": {
       "de": "Das sollte machbar sein. Ich bereite bis dahin schon ein paar Informationen zum Förderprogramm vor.",
@@ -7066,6 +7208,13 @@ var DIALOGE = [
 {
     "id": "dlg_033",
     "cat": "Auf Jobsuche",
+    "task": {
+      "de": "Für eine offene Stelle haben Sie schon mehrere Stellenanzeigen geschaltet, aber es kommen kaum passende Bewerbungen. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie die Stelle besetzen können.",
+      "en": "For an open position you have already placed several job ads, but hardly any suitable applications are coming in. Discuss with your conversation partner how you could fill the position.",
+      "uk": "Для відкритої вакансії ви вже розмістили кілька оголошень, але майже не надходить відповідних відгуків. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете закрити цю вакансію.",
+      "ru": "Для открытой вакансии вы уже разместили несколько объявлений, но почти не поступает подходящих откликов. Обсудите со своим собеседником или собеседницей, как вы можете закрыть эту вакансию."
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_m_david",
     "name_a": "de_w_julia",
     "q": {
@@ -7075,10 +7224,10 @@ var DIALOGE = [
       "ru": "У нас проблема: для открытой вакансии чертёжника-строителя мы уже разместили три объявления на разных джоб-порталах, но не получили ни достаточного количества, ни действительно подходящих откликов."
     },
     "a": {
-      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass die klassischen Jobportale für diese Stelle einfach nicht mehr ausreichen?",
-      "en": "Did I understand you correctly: so the issue is that the classic job portals just aren't enough anymore for this position?",
-      "uk": "Я правильно тебе зрозуміла: отже, йдеться про те, що класичні джоб-портали для цієї вакансії вже просто недостатні?",
-      "ru": "Я правильно тебя поняла: значит, речь о том, что классические джоб-порталы для этой вакансии уже просто недостаточны?"
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass die klassischen Jobportale für diese Stelle einfach nicht mehr ausreichen?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that the classic job portals just aren't enough anymore for this position?",
+      "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться про те, що класичні джоб-портали для цієї вакансії вже просто недостатні?",
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что классические джоб-порталы для этой вакансии уже просто недостаточны?"
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir die Stelle noch länger nicht besetzen können?",
@@ -7093,10 +7242,10 @@ var DIALOGE = [
       "ru": "Думаю, тогда пострадают как коллеги в команде, так и наши клиенты, потому что заказы будут накапливаться."
     },
     "q2": {
-      "de": "Wie wäre es, wenn wir zusätzlich einen Headhunter beauftragen, der gezielt passende Kandidatinnen und Kandidaten anwirbt?",
-      "en": "How about we additionally hire a headhunter who specifically recruits suitable candidates?",
-      "uk": "Що якщо ми додатково залучимо хедхантера, який цілеспрямовано шукатиме відповідних кандидатів?",
-      "ru": "Что если мы дополнительно привлечём хедхантера, который целенаправленно будет искать подходящих кандидатов?"
+      "de": "<r>Wie wäre es, wenn wir</r> zusätzlich einen Headhunter beauftragen, der gezielt passende Kandidatinnen und Kandidaten anwirbt?",
+      "en": "<r>How about we</r> additionally hire a headhunter who specifically recruits suitable candidates?",
+      "uk": "<r>Що якщо ми</r> додатково залучимо хедхантера, який цілеспрямовано шукатиме відповідних кандидатів?",
+      "ru": "<r>Что если мы</r> дополнительно привлечём хедхантера, который целенаправленно будет искать подходящих кандидатов?"
     },
     "a2": {
       "de": "Das ist eine gute Idee, aber das kostet natürlich auch einiges - wir sollten also vorher klären, ob sich das für uns lohnt.",
@@ -7117,16 +7266,16 @@ var DIALOGE = [
       "ru": "Аргумент в пользу этого, безусловно, в том, что это ничего не стоит. Но аргумент против - в том, что там мы скорее охватываем более молодую аудиторию, у которой ещё нет завершённого профессионального пути."
     },
     "q4": {
-      "de": "Das stimmt zwar, aber man könnte das Problem vielleicht lösen, indem wir <g>entweder</g> gezielt in Fachgruppen posten <g>oder</g> direkt ehemalige Praktikanten ansprechen.",
-      "en": "That's true, but we could perhaps solve the problem by either posting specifically in professional groups or reaching out directly to former interns.",
-      "uk": "Це правда, але цю проблему можна було б вирішити, якщо ми або цілеспрямовано публікуватимемо оголошення у фахових групах, або звернемося напряму до колишніх практикантів.",
-      "ru": "Это верно, но эту проблему можно было бы решить, если мы либо целенаправленно будем публиковать объявления в профессиональных группах, либо обратимся напрямую к бывшим практикантам."
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem vielleicht lösen, indem</r> wir <g>entweder</g> gezielt in Fachgruppen posten <g>oder</g> direkt ehemalige Praktikanten ansprechen.",
+      "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> either posting specifically in professional groups or reaching out directly to former interns.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми або цілеспрямовано публікуватимемо оголошення у фахових групах, або звернемося напряму до колишніх практикантів.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы либо целенаправленно будем публиковать объявления в профессиональных группах, либо обратимся напрямую к бывшим практикантам."
     },
     "a4": {
-      "de": "Da bin ich ganz deiner Meinung. <g>Je</g> mehr Kanäle wir nutzen, <g>desto</g> größer ist die Chance, die richtige Person zu finden.",
-      "en": "I completely agree with you. The more channels we use, the greater the chance of finding the right person.",
-      "uk": "Тут я з тобою цілком згодна. Чим більше каналів ми використовуємо, тим більший шанс знайти потрібну людину.",
-      "ru": "Тут я с тобой полностью согласна. Чем больше каналов мы используем, тем больше шанс найти нужного человека."
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. <g>Je</g> mehr Kanäle wir nutzen, <g>desto</g> größer ist die Chance, die richtige Person zu finden.",
+      "en": "<r>I completely agree with you</r>. The more channels we use, the greater the chance of finding the right person.",
+      "uk": "<r>Тут я з тобою цілком згодна</r>. Чим більше каналів ми використовуємо, тим більший шанс знайти потрібну людину.",
+      "ru": "<r>Тут я с тобой полностью согласна</r>. Чем больше каналов мы используем, тем больше шанс найти нужного человека."
     },
     "q5": {
       "de": "Zusätzlich könnten wir bei der Arbeitsvermittlung nachfragen, ob dort passende Profile vorliegen.",
@@ -7135,10 +7284,10 @@ var DIALOGE = [
       "ru": "Кроме того, мы могли бы спросить в агентстве занятости, есть ли у них подходящие профили."
     },
     "a5": {
-      "de": "Das halte ich für einen guten Punkt. Wir sollten aber <g>nicht nur</g> auf Fachkenntnisse, <g>sondern auch</g> auf die Motivation der Bewerber achten.",
-      "en": "I think that's a good point. We should pay attention not only to technical skills, but also to the applicants' motivation.",
-      "uk": "Вважаю це гарною думкою. Нам варто звертати увагу не лише на фахові знання, а й на мотивацію кандидатів.",
-      "ru": "Считаю это хорошей мыслью. Нам стоит обращать внимание не только на профессиональные знания, но и на мотивацию кандидатов."
+      "de": "Das <r>halte ich für einen guten Punkt</r>. Wir sollten aber <g>nicht nur</g> auf Fachkenntnisse, <g>sondern auch</g> auf die Motivation der Bewerber achten.",
+      "en": "<r>I think that's a good point</r>. We should pay attention not only to technical skills, but also to the applicants' motivation.",
+      "uk": "<r>Вважаю це гарною думкою</r>. Нам варто звертати увагу не лише на фахові знання, а й на мотивацію кандидатів.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Нам стоит обращать внимание не только на профессиональные знания, но и на мотивацию кандидатов."
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um den Kontakt mit dem Headhunter, und du postest die Stelle in unserem sozialen Netzwerk. Einverstanden?",
@@ -7181,6 +7330,13 @@ var DIALOGE = [
 {
     "id": "dlg_034",
     "cat": "Lebenslauf",
+    "task": {
+      "de": "Der Lebenslauf einer Kollegin muss noch heute für eine Bewerbung überarbeitet werden, aber die Datumsangaben sind uneinheitlich und die Sprachkenntnisse sind nicht genau beschrieben. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Lebenslauf verbessern können.",
+      "en": "A colleague's CV still needs to be revised today for an application, but the dates are inconsistent and the language skills aren't described precisely. Discuss with your conversation partner how you could improve the CV.",
+      "uk": "Резюме колеги потрібно доопрацювати вже сьогодні для заявки, але дати вказані непослідовно, а мовні навички описані неточно. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете покращити резюме.",
+      "ru": "Резюме коллеги нужно доработать сегодня же для заявки, но даты указаны непоследовательно, а языковые навыки описаны неточно. Обсудите со своим собеседником или собеседницей, как вы можете улучшить резюме."
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_m_david",
     "name_a": "de_w_anna",
     "q": {
@@ -7190,10 +7346,10 @@ var DIALOGE = [
       "ru": "У нас проблема: нам нужно сегодня же доработать резюме госпожи Петренко для заявки, но даты указаны непоследовательно, а у языковых навыков написано просто 'хорошо', без точного уровня."
     },
     "a": {
-      "de": "Habe ich dich richtig verstanden: Es geht also vor allem um die Formatierung und um genauere Angaben zu den Sprachkenntnissen?",
-      "en": "Did I understand you correctly: so it's mainly about the formatting and about giving more precise information on the language skills?",
-      "uk": "Я правильно тебе зрозуміла: отже, йдеться передусім про форматування і про точніші дані щодо мовних навичок?",
-      "ru": "Я правильно тебя поняла: значит, речь прежде всего о форматировании и о более точных данных по языковым навыкам?"
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um die Formatierung und um genauere Angaben zu den Sprachkenntnissen?",
+      "en": "<r>Did I understand you correctly</r>: so it's mainly about the formatting and about giving more precise information on the language skills?",
+      "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться передусім про форматування і про точніші дані щодо мовних навичок?",
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь прежде всего о форматировании и о более точных данных по языковым навыкам?"
     },
     "q1": {
       "de": "Genau. Was denkst du, welchen Eindruck macht das auf einen Personaler, wenn der Lebenslauf nicht einheitlich wirkt?",
@@ -7208,10 +7364,10 @@ var DIALOGE = [
       "ru": "Думаю, непоследовательное табличное резюме быстро выглядит несерьёзно, даже если квалификация на самом деле очень хорошая."
     },
     "q2": {
-      "de": "Wie wäre es, wenn wir bei den Sprachkenntnissen konkrete Niveaus angeben, also zum Beispiel 'Englisch: verhandlungssicher' statt einfach nur 'gut'?",
-      "en": "How about we state concrete levels for the language skills, so for example 'English: proficient to negotiation level' instead of just 'good'?",
-      "uk": "Що якщо ми вкажемо конкретні рівні мовних навичок, наприклад 'англійська: вільне володіння на рівні переговорів' замість просто 'добре'?",
-      "ru": "Что если мы укажем конкретные уровни языковых навыков, например 'английский: свободное владение на уровне переговоров' вместо просто 'хорошо'?"
+      "de": "<r>Wie wäre es, wenn wir</r> bei den Sprachkenntnissen konkrete Niveaus angeben, also zum Beispiel 'Englisch: verhandlungssicher' statt einfach nur 'gut'?",
+      "en": "<r>How about we</r> state concrete levels for the language skills, so for example 'English: proficient to negotiation level' instead of just 'good'?",
+      "uk": "<r>Що якщо ми</r> вкажемо конкретні рівні мовних навичок, наприклад 'англійська: вільне володіння на рівні переговорів' замість просто 'добре'?",
+      "ru": "<r>Что если мы</r> укажем конкретные уровни языковых навыков, например 'английский: свободное владение на уровне переговоров' вместо просто 'хорошо'?"
     },
     "a2": {
       "de": "Das ist sinnvoll, aber wir sollten sie vorher fragen, ob sie ihr Englisch wirklich als verhandlungssicher einschätzt, sonst wirkt das übertrieben.",
@@ -7232,16 +7388,16 @@ var DIALOGE = [
       "ru": "Аргумент в пользу этого, безусловно, в том, что это выглядит намного профессиональнее. Аргумент против разве что в том, что это займёт немного времени."
     },
     "q4": {
-      "de": "Das stimmt zwar, aber man könnte das Problem lösen, indem wir die Vorlage einmal komplett durchgehen und die Formatierung automatisch anpassen.",
-      "en": "That's true, but we could solve the problem by going through the template once completely and adjusting the formatting automatically.",
-      "uk": "Це правда, але цю проблему можна було б вирішити, якщо ми один раз повністю пройдемося по шаблону і автоматично виправимо форматування.",
-      "ru": "Это верно, но эту проблему можно было бы решить, если мы один раз полностью пройдёмся по шаблону и автоматически исправим форматирование."
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem lösen, indem</r> wir die Vorlage einmal komplett durchgehen und die Formatierung automatisch anpassen.",
+      "en": "<r>That's true, but</r> <r>we could solve the problem by</r> going through the template once completely and adjusting the formatting automatically.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми один раз повністю пройдемося по шаблону і автоматично виправимо форматування.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы один раз полностью пройдёмся по шаблону и автоматически исправим форматирование."
     },
     "a4": {
-      "de": "Da bin ich ganz deiner Meinung. Ich kann mir gut vorstellen, dass das in einer halben Stunde erledigt ist, wenn wir es zusammen machen.",
-      "en": "I completely agree with you. I can well imagine that being done in half an hour if we do it together.",
-      "uk": "Тут я з тобою цілком згодна. Я цілком можу уявити, що ми впораємося за півгодини, якщо зробимо це разом.",
-      "ru": "Тут я с тобой полностью согласна. Я вполне могу представить, что мы справимся за полчаса, если сделаем это вместе."
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir gut vorstellen, dass das in einer halben Stunde erledigt ist, wenn wir es zusammen machen.",
+      "en": "<r>I completely agree with you</r>. I can well imagine that being done in half an hour if we do it together.",
+      "uk": "<r>Тут я з тобою цілком згодна</r>. Я цілком можу уявити, що ми впораємося за півгодини, якщо зробимо це разом.",
+      "ru": "<r>Тут я с тобой полностью согласна</r>. Я вполне могу представить, что мы справимся за полчаса, если сделаем это вместе."
     },
     "q5": {
       "de": "Zusätzlich fehlt noch die Unterschrift unter dem Lebenslauf - das sollten wir sie auch noch ergänzen lassen.",
@@ -7250,10 +7406,10 @@ var DIALOGE = [
       "ru": "Кроме того, под резюме всё ещё не хватает подписи - стоит попросить её и это добавить."
     },
     "a5": {
-      "de": "Das halte ich für einen guten Punkt. Wir könnten ihr außerdem empfehlen, ihren beruflichen Werdegang etwas klarer zu strukturieren, mit genauen Angaben zur Tätigkeit bei jeder Station.",
-      "en": "I think that's a good point. We could also recommend that she structure her career path a bit more clearly, with precise details on the role at each position.",
-      "uk": "Вважаю це гарною думкою. Ми також могли б порадити їй чіткіше структурувати свій професійний шлях, із точними даними про діяльність на кожній посаді.",
-      "ru": "Считаю это хорошей мыслью. Мы также могли бы посоветовать ей чётче структурировать свой профессиональный путь, с точными данными о деятельности на каждой должности."
+      "de": "Das <r>halte ich für einen guten Punkt</r>. Wir könnten ihr außerdem empfehlen, ihren beruflichen Werdegang etwas klarer zu strukturieren, mit genauen Angaben zur Tätigkeit bei jeder Station.",
+      "en": "<r>I think that's a good point</r>. We could also recommend that she structure her career path a bit more clearly, with precise details on the role at each position.",
+      "uk": "<r>Вважаю це гарною думкою</r>. Ми також могли б порадити їй чіткіше структурувати свій професійний шлях, із точними даними про діяльність на кожній посаді.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы посоветовать ей чётче структурировать свой профессиональный путь, с точными данными о деятельности на каждой должности."
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um die Formatierung und die Datumsangaben, und du sprichst mit Frau Petrenko über die Sprachkenntnisse und die Unterschrift. Einverstanden?",
@@ -7296,6 +7452,13 @@ var DIALOGE = [
 {
     "id": "dlg_035",
     "cat": "Ausbildung",
+    "task": {
+      "de": "Für zwei freie Ausbildungsplätze haben sich bisher kaum passende Bewerberinnen und Bewerber gemeldet. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie mehr Auszubildende finden können.",
+      "en": "For two open apprenticeship places, hardly any suitable applicants have come forward so far. Discuss with your conversation partner how you could find more trainees.",
+      "uk": "На два вільні місця для навчання поки що відгукнулося дуже мало відповідних кандидатів. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете знайти більше учнів.",
+      "ru": "На два свободных места для обучения пока откликнулось очень мало подходящих кандидатов. Обсудите со своим собеседником или собеседницей, как вы можете найти больше учеников."
+    },
+    "type": "Lösungswege diskutieren",
     "name_q": "de_m_mark",
     "name_a": "de_w_julia",
     "q": {
@@ -7305,10 +7468,10 @@ var DIALOGE = [
       "ru": "У нас проблема: у нас есть два свободных места для дуального обучения по специальности электронщик, но пока откликнулись только два кандидата, и ни один из них не проявил настоящего интереса к этому ремеслу."
     },
     "a": {
-      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass wir kaum passende Azubis für die freien Plätze finden?",
-      "en": "Did I understand you correctly: so the issue is that we can hardly find suitable apprentices for the open places?",
-      "uk": "Я правильно тебе зрозуміла: отже, йдеться про те, що ми майже не можемо знайти відповідних учнів на вільні місця?",
-      "ru": "Я правильно тебя поняла: значит, речь о том, что мы почти не можем найти подходящих учеников на свободные места?"
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass wir kaum passende Azubis für die freien Plätze finden?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that we can hardly find suitable apprentices for the open places?",
+      "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться про те, що ми майже не можемо знайти відповідних учнів на вільні місця?",
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что мы почти не можем найти подходящих учеников на свободные места?"
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir die Plätze dieses Jahr gar nicht besetzen können?",
@@ -7323,10 +7486,10 @@ var DIALOGE = [
       "ru": "Думаю, тогда нам будет не хватать персонала на предприятии, чтобы выполнять все текущие задачи."
     },
     "q2": {
-      "de": "Wie wäre es, wenn wir direkt mit der örtlichen Berufsschule Kontakt aufnehmen, um dort für unsere Ausbildungsplätze zu werben?",
-      "en": "How about we get in touch directly with the local vocational school, in order to promote our apprenticeship places there?",
-      "uk": "Що якщо ми звернемося безпосередньо до місцевого професійного училища, щоб розповісти там про наші вакантні місця?",
-      "ru": "Что если мы обратимся напрямую в местное профессиональное училище, чтобы рассказать там о наших вакантных местах?"
+      "de": "<r>Wie wäre es, wenn wir</r> direkt mit der örtlichen Berufsschule Kontakt aufnehmen, um dort für unsere Ausbildungsplätze zu werben?",
+      "en": "<r>How about we</r> get in touch directly with the local vocational school, in order to promote our apprenticeship places there?",
+      "uk": "<r>Що якщо ми</r> звернемося безпосередньо до місцевого професійного училища, щоб розповісти там про наші вакантні місця?",
+      "ru": "<r>Что если мы</r> обратимся напрямую в местное профессиональное училище, чтобы рассказать там о наших вакантных местах?"
     },
     "a2": {
       "de": "Das ist eine gute Idee, aber wir sollten die Schüler nicht nur kurz ansprechen, <g>ohne</g> ihnen die Vorteile der dualen Ausbildung genau <g>zu</g> erklären.",
@@ -7347,16 +7510,16 @@ var DIALOGE = [
       "ru": "Аргумент в пользу этого, безусловно, в том, что деньги важны для многих молодых людей. Аргумент против - в том, что нам сначала пришлось бы выяснить бюджет на это."
     },
     "q4": {
-      "de": "Das stimmt zwar, aber man könnte das Problem vielleicht auch lösen, indem wir zusätzlich ein duales Studium statt der klassischen Ausbildung anbieten.",
-      "en": "That's true, but we could perhaps also solve the problem by additionally offering a dual study programme instead of the classic apprenticeship.",
-      "uk": "Це правда, але цю проблему можна було б вирішити й тим, що ми додатково запропонуємо дуальне навчання в університеті замість класичного учнівства.",
-      "ru": "Это верно, но эту проблему можно было бы решить и тем, что мы дополнительно предложим дуальное обучение в университете вместо классического ученичества."
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem vielleicht auch lösen, indem</r> wir zusätzlich ein duales Studium statt der klassischen Ausbildung anbieten.",
+      "en": "<r>That's true, but</r> <r>we could perhaps also solve the problem by</r> additionally offering a dual study programme instead of the classic apprenticeship.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r> й тим, що ми додатково запропонуємо дуальне навчання в університеті замість класичного учнівства.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r> и тем, что мы дополнительно предложим дуальное обучение в университете вместо классического ученичества."
     },
     "a4": {
-      "de": "Da bin ich ganz deiner Meinung. <g>Anstatt</g> nur auf die klassische Ausbildung <g>zu</g> setzen, sollten wir wirklich beide Wege parallel anbieten.",
-      "en": "I completely agree with you. Instead of relying only on the classic apprenticeship, we should really offer both paths in parallel.",
-      "uk": "Тут я з тобою цілком згодна. Замість того, щоб покладатися лише на класичне учнівство, нам справді варто пропонувати обидва шляхи паралельно.",
-      "ru": "Тут я с тобой полностью согласна. Вместо того чтобы полагаться только на классическое ученичество, нам действительно стоит предлагать оба пути параллельно."
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. <g>Anstatt</g> nur auf die klassische Ausbildung <g>zu</g> setzen, sollten wir wirklich beide Wege parallel anbieten.",
+      "en": "<r>I completely agree with you</r>. Instead of relying only on the classic apprenticeship, we should really offer both paths in parallel.",
+      "uk": "<r>Тут я з тобою цілком згодна</r>. Замість того, щоб покладатися лише на класичне учнівство, нам справді варто пропонувати обидва шляхи паралельно.",
+      "ru": "<r>Тут я с тобой полностью согласна</r>. Вместо того чтобы полагаться только на классическое ученичество, нам действительно стоит предлагать оба пути параллельно."
     },
     "q5": {
       "de": "Zusätzlich könnten wir bei einer Umschulung ansetzen - vielleicht gibt es Interessierte, die schon einen anderen Beruf gelernt haben, aber wechseln möchten.",
@@ -7365,10 +7528,10 @@ var DIALOGE = [
       "ru": "Кроме того, мы могли бы обратить внимание на переквалификацию - возможно, есть заинтересованные люди, которые уже получили другую профессию, но хотят сменить направление."
     },
     "a5": {
-      "de": "Das halte ich für einen guten Punkt. Wir sollten das Ziel klar kommunizieren: Wer die duale Ausbildung erfolgreich abschließt, hat bei uns gute Übernahmechancen.",
-      "en": "I think that's a good point. We should clearly communicate the goal: whoever successfully completes the dual training has good chances of being taken on permanently with us.",
-      "uk": "Вважаю це гарною думкою. Нам варто чітко донести мету: хто успішно завершить дуальну освіту, має в нас хороші шанси залишитися на постійній роботі.",
-      "ru": "Считаю это хорошей мыслью. Нам стоит чётко донести цель: кто успешно завершит дуальное обучение, имеет у нас хорошие шансы остаться на постоянной работе."
+      "de": "Das <r>halte ich für einen guten Punkt</r>. Wir sollten das Ziel klar kommunizieren: Wer die duale Ausbildung erfolgreich abschließt, hat bei uns gute Übernahmechancen.",
+      "en": "<r>I think that's a good point</r>. We should clearly communicate the goal: whoever successfully completes the dual training has good chances of being taken on permanently with us.",
+      "uk": "<r>Вважаю це гарною думкою</r>. Нам варто чітко донести мету: хто успішно завершить дуальну освіту, має в нас хороші шанси залишитися на постійній роботі.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Нам стоит чётко донести цель: кто успешно завершит дуальное обучение, имеет у нас хорошие шансы остаться на постоянной работе."
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um den Kontakt zur Berufsschule, und du sprichst mit der Geschäftsführung über die Ausbildungsvergütung. Einverstanden?",
@@ -7407,6 +7570,128 @@ var DIALOGE = [
       "ru": "Именно так. Думаю, с этими мерами у нас хорошие шансы заполнить места уже в этом году. Я коротко запишу распределение задач и отправлю его тебе сегодня же."
     },
     "gram": "konnektoren_infinitiv"
+  },
+{
+    "id": "dlg_036",
+    "cat": "Bewerbung",
+    "task": {
+      "de": "Ein Bewerber hat sich schon mehrmals nach dem Stand seiner Initiativbewerbung erkundigt, aber Sie haben sein Bewerbungsschreiben noch nicht geprüft. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "An applicant has already asked several times about the status of his unsolicited application, but you haven't reviewed his cover letter yet. Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Кандидат уже кілька разів запитував про статус своєї ініціативної заявки, а ви ще не переглянули його супровідний лист. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Кандидат уже несколько раз спрашивал о статусе своей инициативной заявки, а вы ещё не рассмотрели его сопроводительное письмо. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Wir haben ein Problem: Herr Nowak hat uns eine Initiativbewerbung geschickt und heute schon zweimal angerufen, um den aktuellen Stand zu erfragen, aber wir haben sein Bewerbungsschreiben noch gar nicht richtig geprüft.",
+      "en": "We have a problem: Mr. Nowak sent us an unsolicited application and has already called twice today to ask about the current status, but we haven't even properly reviewed his cover letter yet.",
+      "uk": "У нас проблема: пан Новак надіслав нам ініціативну заявку і вже двічі сьогодні телефонував, щоб дізнатися про поточний стан справи, а ми ще навіть не переглянули як слід його супровідний лист.",
+      "ru": "У нас проблема: господин Новак прислал нам инициативную заявку и уже дважды сегодня звонил, чтобы узнать о текущем статусе, а мы ещё даже не рассмотрели как следует его сопроводительное письмо."
+    },
+    "a": {
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass wir ihm noch keine Rückmeldung geben konnten, obwohl er schon nachfragt?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that we haven't been able to give him any feedback yet, even though he's already asking?",
+      "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що ми ще не змогли дати йому жодної відповіді, хоча він уже цікавиться?",
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что мы ещё не смогли дать ему никакого ответа, хотя он уже интересуется?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welchen Eindruck macht das auf ihn, wenn wir ihn noch länger warten lassen?",
+      "en": "Exactly. What do you think, what impression does that make on him if we keep him waiting even longer?",
+      "uk": "Саме так. Як ти думаєш, яке враження це на нього справляє, якщо ми змушуємо його чекати ще довше?",
+      "ru": "Именно так. Как ты думаешь, какое впечатление это на него производит, если мы заставляем его ждать ещё дольше?"
+    },
+    "a1": {
+      "de": "Ich glaube, dass das ziemlich schlecht ankommt, weil viele Bewerber genau daran messen, wie professionell wir als Unternehmen wirken.",
+      "en": "I think that comes across pretty badly, because a lot of applicants judge exactly that - how professional we seem as a company.",
+      "uk": "Гадаю, це справляє доволі погане враження, бо багато кандидатів судять саме за цим, наскільки професійно виглядає наша компанія.",
+      "ru": "Думаю, это производит довольно плохое впечатление, потому что многие кандидаты судят именно по этому, насколько профессионально выглядит наша компания."
+    },
+    "q2": {
+      "de": "<r>Wie wäre es, wenn wir</r> uns sein Anschreiben jetzt gemeinsam ansehen und schnell entscheiden, ob es zu unserem Anforderungsprofil passt?",
+      "en": "<r>How about we</r> look at his cover letter together right now and quickly decide whether it matches our job requirements profile?",
+      "uk": "<r>Що якщо ми</r> зараз разом подивимося на його супровідний лист і швидко вирішимо, чи відповідає він нашому профілю вимог?",
+      "ru": "<r>Что если мы</r> сейчас вместе посмотрим на его сопроводительное письмо и быстро решим, соответствует ли оно нашему профилю требований?"
+    },
+    "a2": {
+      "de": "Gute Idee. Seine Einleitung finde ich stark, aber sein Schlusssatz wirkt für meinen Geschmack etwas zu selbstbewusst, fast schon arrogant.",
+      "en": "Good idea. I find his introduction strong, but his closing sentence strikes me as a bit too self-confident, almost arrogant.",
+      "uk": "Гарна ідея. Його вступ мені здається сильним, але заключне речення видається мені трохи занадто самовпевненим, майже зухвалим.",
+      "ru": "Хорошая идея. Его вступление мне кажется сильным, но заключительное предложение выглядит для меня немного слишком самоуверенным, почти дерзким."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, ihn trotzdem zu einem Vorstellungstermin einzuladen - im persönlichen Gespräch wirkt so etwas oft ganz anders.",
+      "en": "Another suggestion would be to invite him to an interview anyway - in person, things like that often come across quite differently.",
+      "uk": "Ще одна пропозиція - все одно запросити його на співбесіду: наживо таке часто справляє зовсім інше враження.",
+      "ru": "Ещё одно предложение - всё равно пригласить его на собеседование: вживую такое часто производит совсем другое впечатление."
+    },
+    "a3": {
+      "de": "Ein Argument dafür ist sicherlich, dass seine Berufserfahrung wirklich zu uns passt. Ein Argument dagegen ist aber, dass wir dafür kurzfristig einen Termin finden müssten.",
+      "en": "One argument for that is certainly that his professional experience really fits us. One argument against it, though, is that we'd have to find a slot on short notice for that.",
+      "uk": "Аргумент на користь цього, безумовно, у тому, що його досвід роботи дійсно нам підходить. Аргумент проти - те, що нам довелося б швидко знайти час для цього.",
+      "ru": "Аргумент в пользу этого, безусловно, в том, что его опыт работы действительно нам подходит. Аргумент против - в том, что нам пришлось бы быстро найти время для этого."
+    },
+    "q4": {
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem lösen, indem</r> wir ihm heute noch kurz Bescheid geben und einen Termin für nächste Woche vorschlagen.",
+      "en": "<r>That's true, but</r> <r>we could solve the problem by</r> letting him know briefly today and suggesting an appointment for next week.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми ще сьогодні коротко повідомимо йому і запропонуємо термін на наступний тиждень.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы ещё сегодня коротко сообщим ему и предложим срок на следующей неделе."
+    },
+    "a4": {
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. Dann hat er wenigstens eine klare Rückmeldung und muss nicht weiter im Unklaren bleiben.",
+      "en": "<r>I completely agree with you</r>. Then at least he'll have a clear response and won't have to stay in the dark any longer.",
+      "uk": "<r>Тут я з тобою цілком згоден</r>. Тоді він принаймні матиме чітку відповідь і не залишиться в невизначеності.",
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Тогда у него хотя бы будет чёткий ответ, и он не останется в неопределённости."
+    },
+    "q5": {
+      "de": "Zusätzlich könnten wir ihm in der Einladung schon unsere Gehaltsvorstellung für die Stelle nennen, damit von Anfang an Klarheit herrscht.",
+      "en": "In addition, we could already mention our salary expectations for the position in the invitation, so there's clarity from the start.",
+      "uk": "Крім того, ми могли б вже в запрошенні назвати нашу очікувану зарплату для цієї посади, щоб від самого початку була ясність.",
+      "ru": "Кроме того, мы могли бы уже в приглашении назвать наши ожидания по зарплате для этой должности, чтобы с самого начала была ясность."
+    },
+    "a5": {
+      "de": "Das <r>halte ich für einen guten Punkt</r>. So kann er sich auch besser vorbereiten und uns im Gespräch seine eigenen Erwartungen nennen.",
+      "en": "<r>I think that's a good point</r>. That way he can prepare better too, and tell us his own expectations in the interview.",
+      "uk": "<r>Вважаю це гарною думкою</r>. Так він зможе краще підготуватися і озвучити нам на співбесіді власні очікування.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Так он сможет лучше подготовиться и озвучить нам на собеседовании свои собственные ожидания."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich rufe ihn zurück und vereinbare den Termin, und du bereitest schon mal die Checkliste für das Gespräch vor. Einverstanden?",
+      "en": "Let's split up the tasks: I'll call him back and arrange the appointment, and you prepare the checklist for the interview. Agreed?",
+      "uk": "Давай розподілимо завдання: я передзвоню йому і домовлюся про термін, а ти підготуй чекліст для співбесіди. Домовились?",
+      "ru": "Давай разделим задачи: я перезвоню ему и договорюсь о встрече, а ты подготовь чек-лист для собеседования. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, ihn noch heute Nachmittag anzurufen?",
+      "en": "Agreed. Do you intend to call him already this afternoon?",
+      "uk": "Згоден. Ти маєш намір зателефонувати йому вже сьогодні пополудні?",
+      "ru": "Согласен. Ты намерена позвонить ему уже сегодня после обеда?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn wir den Termin schon für Donnerstag festlegen?",
+      "en": "Yes, would it be realistic if we set the appointment for Thursday already?",
+      "uk": "Так, чи буде реалістично, якщо ми вже призначимо термін на четвер?",
+      "ru": "Да, будет ли реалистично, если мы уже назначим встречу на четверг?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein, solange der Raum für Vorstellungsgespräche noch frei ist.",
+      "en": "That should be feasible, as long as the interview room is still free.",
+      "uk": "Це має бути здійсненно, поки кімната для співбесід ще вільна.",
+      "ru": "Это должно быть выполнимо, пока комната для собеседований ещё свободна."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir rufen Herrn Nowak heute noch zurück, laden ihn für Donnerstag zum Vorstellungstermin ein und bereiten die Checkliste sowie unsere Gehaltsvorstellung vor.",
+      "en": "Let's summarize: we'll call Mr. Nowak back today, invite him for an interview on Thursday, and prepare the checklist as well as our salary expectations.",
+      "uk": "Підсумуємо: ми сьогодні ж передзвонимо пану Новаку, запросимо його на співбесіду в четвер і підготуємо чекліст та нашу очікувану зарплату.",
+      "ru": "Подведём итог: мы сегодня же перезвоним господину Новаку, пригласим его на собеседование в четверг и подготовим чек-лист и наши ожидания по зарплате."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, so zeigen wir ihm, dass wir seine Initiativbewerbung ernst nehmen - das hinterlässt sicher einen guten Eindruck. Ich schreibe die wichtigsten Punkte kurz zusammen und schicke sie dir noch heute.",
+      "en": "Exactly. I think that way we show him that we take his unsolicited application seriously - that will surely leave a good impression. I'll summarize the key points and send them to you today.",
+      "uk": "Саме так. Гадаю, так ми покажемо йому, що серйозно ставимося до його ініціативної заявки - це точно залишить гарне враження. Я коротко підсумую головні пункти і надішлю їх тобі ще сьогодні.",
+      "ru": "Именно так. Думаю, так мы покажем ему, что серьёзно относимся к его инициативной заявке - это точно оставит хорошее впечатление. Я коротко подведу итоги и отправлю их тебе сегодня же."
+    },
+    "gram": ""
   }
 ];
 
