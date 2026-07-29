@@ -603,6 +603,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_017",
       "sbs_022"
+    ],
+    "dlgCards": [
+      "dlg_030"
     ]
   },
   {
@@ -687,6 +690,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_013",
       "sbs_015"
+    ],
+    "dlgCards": [
+      "dlg_031"
     ]
   },
   {
@@ -6699,6 +6705,236 @@ var DIALOGE = [
       "ru": "Именно так. Думаю, так мы ещё и выполняем требование справедливо относиться ко всем сотрудникам - наше предложение точно найдёт признание у руководства. Я напишу протокол и отправлю его тебе ещё сегодня."
     },
     "gram": "wortstellung"
+  },
+{
+    "id": "dlg_030",
+    "cat": "Bei der Agentur für Arbeit",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Wir haben ein Problem: Unsere neue Kollegin, Frau Klein, ist Quereinsteigerin und hat sich rechtzeitig arbeitslos gemeldet, aber ihre Sozialversicherungsnummer und die Arbeitserlaubnis sind noch nicht angekommen, weil bei der Agentur für Arbeit einige Unterlagen fehlen.",
+      "en": "We have a problem: our new colleague, Ms. Klein, is a career changer and registered as unemployed on time, but her social security number and work permit still haven't arrived, because some documents are missing at the employment agency.",
+      "uk": "У нас проблема: наша нова колега, пані Кляйн, прийшла в професію з іншої сфери і вчасно стала на облік як безробітна, але її номер соціального страхування та дозвіл на роботу досі не прийшли, бо в агентстві зайнятості бракує деяких документів.",
+      "ru": "У нас проблема: наша новая коллега, госпожа Кляйн, пришла в профессию из другой сферы и вовремя встала на учёт как безработная, но её номер социального страхования и разрешение на работу до сих пор не пришли, потому что в агентстве занятости не хватает некоторых документов."
+    },
+    "a": {
+      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass sie ohne diese Nummer nicht offiziell bei uns anfangen kann?",
+      "en": "Did I understand you correctly: so the issue is that she can't officially start with us without that number?",
+      "uk": "Я правильно тебе зрозумів: отже, йдеться про те, що без цього номера вона не може офіційно розпочати роботу в нас?",
+      "ru": "Я правильно тебя понял: значит, речь о том, что без этого номера она не может официально начать работу у нас?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welche Folgen hätte das für das Team, wenn sie nicht pünktlich anfangen kann?",
+      "en": "Exactly. What do you think, what consequences would that have for the team if she can't start on time?",
+      "uk": "Саме так. Як ти думаєш, які наслідки це матиме для команди, якщо вона не зможе почати вчасно?",
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь для команды, если она не сможет начать вовремя?"
+    },
+    "a1": {
+      "de": "Ehrlich gesagt macht mir das ein bisschen Angst, weil das Projekt dann ohne sie starten müsste und die anderen Kolleginnen und Kollegen zusätzliche Aufgaben übernehmen müssten.",
+      "en": "Honestly, that worries me a bit, because the project would then have to start without her and the other colleagues would have to take on extra tasks.",
+      "uk": "Чесно кажучи, мене це трохи лякає, бо тоді проєкт довелося б починати без неї, а іншим колегам - брати на себе додаткові завдання.",
+      "ru": "Честно говоря, меня это немного пугает, потому что тогда проект пришлось бы начинать без неё, а другим коллегам - брать на себя дополнительные задачи."
+    },
+    "q2": {
+      "de": "Wie wäre es, wenn wir ihr ein Angebot machen und sie zunächst auf einer Teilzeitstelle mitarbeiten lassen, bis alle Unterlagen vollständig sind?",
+      "en": "How about we make her an offer and let her work part-time at first, until all the documents are complete?",
+      "uk": "Що якщо ми зробимо їй пропозицію і дозволимо спочатку працювати на неповну ставку, поки всі документи не будуть готові?",
+      "ru": "Что если мы сделаем ей предложение и разрешим сначала работать на неполную ставку, пока все документы не будут готовы?"
+    },
+    "a2": {
+      "de": "Das klingt sinnvoll, aber wir sollten vorher klären, ob das ohne gültige Arbeitserlaubnis überhaupt in Frage kommt.",
+      "en": "That sounds sensible, but we should first clarify whether that's even an option without a valid work permit.",
+      "uk": "Звучить розумно, але спершу варто з'ясувати, чи це взагалі можливо без дійсного дозволу на роботу.",
+      "ru": "Звучит разумно, но сначала нужно выяснить, возможно ли это вообще без действующего разрешения на работу."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, eine Anfrage an die Agentur für Arbeit zu stellen, ob wir sie zu ihrem nächsten Termin begleiten dürfen, damit sie ihn sicher wahrnimmt und alles schneller geht.",
+      "en": "Another suggestion would be to submit a request to the employment agency about whether we can accompany her to her next appointment, so she attends it for sure and everything goes faster.",
+      "uk": "Ще одна пропозиція - надіслати запит до агентства зайнятості, чи можемо ми супроводити її на наступний прийом, щоб вона точно на нього потрапила і все пройшло швидше.",
+      "ru": "Ещё одно предложение - отправить запрос в агентство занятости, можем ли мы сопроводить её на следующий приём, чтобы она точно на него попала и всё прошло быстрее."
+    },
+    "a3": {
+      "de": "Ein Argument, das dagegen spricht, ist, dass wir dafür während der Arbeitszeit jemanden freistellen müssten.",
+      "en": "One argument against that is that we'd have to free someone up during working hours for that.",
+      "uk": "Аргумент проти цього полягає в тому, що для цього нам довелося б звільнити когось від роботи на якийсь час.",
+      "ru": "Аргумент против этого в том, что для этого нам пришлось бы освободить кого-то от работы на время."
+    },
+    "q4": {
+      "de": "Das stimmt zwar, aber man könnte das Problem eventuell lösen, indem wir uns die Begleitung im Team aufteilen.",
+      "en": "That's true, but we could perhaps solve the problem by splitting the accompanying duty within the team.",
+      "uk": "Це правда, але цю проблему можна було б вирішити, розподіливши супровід між членами команди.",
+      "ru": "Это верно, но эту проблему можно было бы решить, распределив сопровождение между членами команды."
+    },
+    "a4": {
+      "de": "Da bin ich ganz deiner Meinung. Ich kann mir überhaupt nicht vorstellen, dass das für einen Vormittag ein großes Problem wäre.",
+      "en": "I completely agree with you. I really can't imagine that being a big problem for just one morning.",
+      "uk": "Тут я з тобою цілком згоден. Я взагалі не можу собі уявити, що це стане великою проблемою заради одного ранку.",
+      "ru": "Тут я с тобой полностью согласен. Я вообще не могу себе представить, что это станет большой проблемой ради одного утра."
+    },
+    "q5": {
+      "de": "Zusätzlich könnten wir ihr die Reisekosten für die Fahrten zum Amt erstatten - ich glaube, sie hat sogar Anspruch darauf, wenn sie dafür extra fahren muss.",
+      "en": "In addition, we could reimburse her travel costs for the trips to the agency - I think she's even entitled to it, since she has to make the extra trip.",
+      "uk": "Крім того, ми могли б відшкодувати їй витрати на поїздки до відомства - гадаю, вона навіть має на це право, якщо їй доводиться їхати додатково.",
+      "ru": "Кроме того, мы могли бы возместить ей расходы на поездки в ведомство - думаю, она даже имеет на это право, раз ей приходится ехать дополнительно."
+    },
+    "a5": {
+      "de": "Das halte ich für einen guten Punkt. Wir könnten außerdem ihre Probezeit erst mit dem tatsächlichen Arbeitsbeginn starten lassen, damit ihr nichts verloren geht.",
+      "en": "I think that's a good point. We could also only start her probationary period from her actual start date, so she doesn't lose anything.",
+      "uk": "Вважаю це гарною думкою. Ми також могли б почати відлік її випробувального терміну лише з фактичного початку роботи, щоб вона нічого не втратила.",
+      "ru": "Считаю это хорошей мыслью. Мы также могли бы начать отсчёт её испытательного срока только с фактического начала работы, чтобы она ничего не потеряла."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben in Angriff nehmen und aufteilen: Ich kläre die Sache mit der Personalabteilung, und du sprichst mit Frau Klein über den neuen Zeitplan. Einverstanden?",
+      "en": "Let's tackle and split up the tasks: I'll sort things out with HR, and you talk to Ms. Klein about the new schedule. Agreed?",
+      "uk": "Давай візьмемося за завдання і розподілимо їх: я з'ясую питання з відділом кадрів, а ти поговориш із пані Кляйн про новий графік. Домовились?",
+      "ru": "Давай возьмёмся за задачи и разделим их: я выясню вопрос с отделом кадров, а ты поговоришь с госпожой Кляйн о новом графике. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, das noch diese Woche mit der Personalabteilung zu klären?",
+      "en": "Agreed. Do you intend to sort that out with HR this week already?",
+      "uk": "Домовились. Ти маєш намір з'ясувати це з відділом кадрів уже цього тижня?",
+      "ru": "Договорились. Ты намерена выяснить это с отделом кадров уже на этой неделе?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn ich das bis Donnerstag erledige und wir uns am Freitag noch einmal kurz austauschen?",
+      "en": "Yes, would it be realistic if I get that done by Thursday and we touch base briefly again on Friday?",
+      "uk": "Так, чи буде реалістично, якщо я зроблю це до четверга, а в п'ятницю ми ще раз коротко обговоримо?",
+      "ru": "Да, будет ли реалистично, если я сделаю это до четверга, а в пятницу мы ещё раз коротко обсудим?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein. Ich informiere Frau Klein dann am Freitagnachmittag über die Lösung.",
+      "en": "That should be feasible. I'll then inform Ms. Klein about the solution on Friday afternoon.",
+      "uk": "Це має бути здійсненно. Тоді я повідомлю пані Кляйн про рішення в п'ятницю після обіду.",
+      "ru": "Это должно быть выполнимо. Тогда я сообщу госпоже Кляйн о решении в пятницу после обеда."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Frau Klein arbeitet vorerst in Teilzeit, wir begleiten sie zum Amt, erstatten ihr die Reisekosten und verschieben den Beginn ihrer Probezeit, damit ihr keine Nachteile entstehen.",
+      "en": "Let's summarize: Ms. Klein will work part-time for now, we'll accompany her to the agency, reimburse her travel costs, and postpone the start of her probationary period, so she isn't disadvantaged.",
+      "uk": "Підсумуємо: пані Кляйн поки що працюватиме на неповну ставку, ми супроводимо її до відомства, відшкодуємо їй витрати на поїздки та відкладемо початок випробувального терміну, щоб вона не мала жодних недоліків.",
+      "ru": "Подведём итог: госпожа Кляйн пока будет работать на неполную ставку, мы сопроводим её в ведомство, возместим ей расходы на поездки и отложим начало испытательного срока, чтобы у неё не было никаких недостатков."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, damit erfüllen wir auch die Anforderung, neue Kolleginnen und Kollegen fair zu behandeln - diese Lösung wird bei Frau Klein sicher Anerkennung finden. Ich schreibe die wichtigsten Punkte kurz zusammen und schicke sie euch beiden noch heute.",
+      "en": "Exactly. I think that way we also meet the requirement to treat new colleagues fairly - this solution will surely gain recognition from Ms. Klein. I'll summarize the key points and send them to both of you today.",
+      "uk": "Саме так. Гадаю, так ми ще й виконуємо вимогу справедливо ставитися до нових колег - це рішення точно знайде визнання в пані Кляйн. Я коротко підсумую головні пункти і надішлю їх вам обом уже сьогодні.",
+      "ru": "Именно так. Думаю, так мы ещё и выполняем требование справедливо относиться к новым коллегам - это решение точно найдёт признание у госпожи Кляйн. Я коротко подведу итоги и отправлю их вам обоим сегодня же."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_031",
+    "cat": "Schlüsselqualifikationen",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Wir haben ein Problem: Für das neue Kundenprojekt brauchen wir jemanden mit ausgeprägter Verhandlungskompetenz und Erfahrung im Risikomanagement, aber im Team hat das aktuell niemand in Kombination.",
+      "en": "We have a problem: for the new client project we need someone with strong negotiation skills and experience in risk management, but right now nobody on the team has both.",
+      "uk": "У нас проблема: для нового клієнтського проєкту нам потрібна людина з вираженими навичками ведення переговорів і досвідом у ризик-менеджменті, але наразі в команді немає нікого, хто мав би обидва навички одночасно.",
+      "ru": "У нас проблема: для нового клиентского проекта нам нужен человек с выраженными навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого, кто обладал бы обоими навыками одновременно."
+    },
+    "a": {
+      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass wir intern nicht die passende Kombination an Fachkompetenzen haben?",
+      "en": "Did I understand you correctly: so the issue is that internally we don't have the right combination of expertise?",
+      "uk": "Я правильно тебе зрозумів: отже, йдеться про те, що всередині команди в нас немає потрібного поєднання компетенцій?",
+      "ru": "Я правильно тебя понял: значит, речь о том, что внутри команды у нас нет нужного сочетания компетенций?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir das Projekt trotzdem ohne die nötigen Kompetenzen starten?",
+      "en": "Exactly. What do you think, what consequences would that have if we start the project anyway without the necessary skills?",
+      "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо ми все одно почнемо проєкт без потрібних навичок?",
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы всё равно начнём проект без нужных навыков?"
+    },
+    "a1": {
+      "de": "Ich glaube, das wäre <g>keine</g> gute Idee, weil wir dann bei Problemen <g>nicht</g> schnell genug reagieren könnten.",
+      "en": "I think that would be a bad idea, because then we wouldn't be able to react quickly enough to problems.",
+      "uk": "Гадаю, це була б погана ідея, бо тоді ми не змогли б достатньо швидко реагувати на проблеми.",
+      "ru": "Думаю, это была бы плохая идея, потому что тогда мы не смогли бы достаточно быстро реагировать на проблемы."
+    },
+    "q2": {
+      "de": "Wie wäre es, wenn wir die Aufgaben nach unseren Stärken aufteilen? Du hast doch ziemlich viel Verhandlungskompetenz, oder?",
+      "en": "How about we split the tasks according to our strengths? You do have quite a lot of negotiation skills, don't you?",
+      "uk": "Що якщо ми розподілимо завдання за нашими сильними сторонами? У тебе ж непогані навички ведення переговорів, чи не так?",
+      "ru": "Что если мы распределим задачи по нашим сильным сторонам? У тебя же неплохие навыки ведения переговоров, разве нет?"
+    },
+    "a2": {
+      "de": "Das stimmt, aber ich habe leider überhaupt <g>keine</g> Erfahrung im Risikomanagement - das liegt mir wirklich <g>nicht</g>.",
+      "en": "That's true, but unfortunately I have no experience at all in risk management - it's really not my thing.",
+      "uk": "Це правда, але, на жаль, у мене взагалі немає досвіду в ризик-менеджменті - це справді не моє.",
+      "ru": "Это правда, но, к сожалению, у меня вообще нет опыта в риск-менеджменте - это правда не моё."
+    },
+    "q3": {
+      "de": "Kein Problem, dafür bin ich in Zeitmanagement und Problemlösung ziemlich stark - das könnte ich übernehmen.",
+      "en": "No problem, I'm pretty strong in time management and problem solving instead - I could take that on.",
+      "uk": "Не проблема, натомість я досить сильна в тайм-менеджменті та вирішенні проблем - це я могла б узяти на себе.",
+      "ru": "Не проблема, зато я довольно сильна в тайм-менеджменте и решении проблем - это я могла бы взять на себя."
+    },
+    "a3": {
+      "de": "Ein Argument, das dagegen spricht, ist, dass dann niemand mehr für die Kundenbetreuung da wäre, weil du die momentan auch übernimmst.",
+      "en": "One argument against that is that then there'd be nobody left for customer service, since you're currently handling that too.",
+      "uk": "Аргумент проти цього полягає в тому, що тоді нікому було б займатися обслуговуванням клієнтів, адже наразі цим займаєшся ти.",
+      "ru": "Аргумент против этого в том, что тогда некому было бы заниматься обслуживанием клиентов, ведь сейчас этим занимаешься ты."
+    },
+    "q4": {
+      "de": "Das stimmt zwar, aber man könnte das Problem vielleicht lösen, indem nicht nur ich, sondern auch ein Kollege aus dem anderen Team die Kundenbetreuung übernimmt.",
+      "en": "That's true, but we could perhaps solve the problem by having not only me, but also a colleague from the other team take over customer service.",
+      "uk": "Це правда, але цю проблему можна було б вирішити, якщо обслуговування клієнтів візьму на себе не лише я, а й колега з іншої команди.",
+      "ru": "Это верно, но эту проблему можно было бы решить, если обслуживание клиентов возьму на себя не только я, но и коллега из другой команды."
+    },
+    "a4": {
+      "de": "Da bin ich ganz deiner Meinung. Ich glaube nicht, dass das ein Problem wäre, wenn wir das rechtzeitig ankündigen.",
+      "en": "I completely agree with you. I don't think that would be a problem if we announce it in good time.",
+      "uk": "Тут я з тобою цілком згоден. Не думаю, що це стане проблемою, якщо ми повідомимо про це заздалегідь.",
+      "ru": "Тут я с тобой полностью согласен. Не думаю, что это станет проблемой, если мы сообщим об этом заранее."
+    },
+    "q5": {
+      "de": "Zusätzlich könnten wir eine externe Schulung im Risikomanagement für dich vorschlagen, damit du beim nächsten Mal nicht mehr auf uns angewiesen bist.",
+      "en": "In addition, we could suggest an external risk management training for you, so that next time you're not dependent on us anymore.",
+      "uk": "Крім того, ми могли б запропонувати тобі зовнішнє навчання з ризик-менеджменту, щоб наступного разу ти вже не залежав від нас.",
+      "ru": "Кроме того, мы могли бы предложить тебе внешнее обучение по риск-менеджменту, чтобы в следующий раз ты уже не зависел от нас."
+    },
+    "a5": {
+      "de": "Das halte ich für einen guten Punkt. Ich habe übrigens auch keine Angst davor, mich in ein neues Thema einzuarbeiten.",
+      "en": "I think that's a good point. By the way, I'm also not afraid of getting into a new topic.",
+      "uk": "Вважаю це гарною думкою. До речі, я також анітрохи не боюся розбиратися в новій темі.",
+      "ru": "Считаю это хорошей мыслью. Кстати, я тоже совершенно не боюсь разбираться в новой теме."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um die Übergabe der Kundenbetreuung, und du meldest dich für die Risikomanagement-Schulung an. Einverstanden?",
+      "en": "Let's split up the tasks: I'll take care of handing over customer service, and you sign up for the risk management training. Agreed?",
+      "uk": "Давай розподілимо завдання: я займуся передачею обслуговування клієнтів, а ти запишешся на навчання з ризик-менеджменту. Домовились?",
+      "ru": "Давай разделим задачи: я займусь передачей обслуживания клиентов, а ты запишешься на обучение по риск-менеджменту. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Ich habe nicht vor, das auf die lange Bank zu schieben - ich melde mich noch diese Woche an.",
+      "en": "Agreed. I don't intend to put that off - I'll sign up this week already.",
+      "uk": "Домовились. Я не збираюся відкладати це в довгий ящик - запишуся вже цього тижня.",
+      "ru": "Договорились. Я не собираюсь откладывать это в долгий ящик - запишусь уже на этой неделе."
+    },
+    "q7": {
+      "de": "Wäre es realistisch, wenn wir das Projekt trotzdem schon nächste Woche starten, auch wenn deine Schulung noch nicht abgeschlossen ist?",
+      "en": "Would it be realistic if we start the project next week anyway, even if your training isn't finished yet?",
+      "uk": "Чи буде реалістично, якщо ми все одно почнемо проєкт уже наступного тижня, навіть якщо твоє навчання ще не завершиться?",
+      "ru": "Будет ли реалистично, если мы всё равно начнём проект уже на следующей неделе, даже если твоё обучение ещё не завершится?"
+    },
+    "a7": {
+      "de": "Ja, das sollte kein Problem sein, solange wir am Anfang keine risikobehafteten Entscheidungen treffen müssen.",
+      "en": "Yes, that should be no problem, as long as we don't have to make any risky decisions at the very start.",
+      "uk": "Так, це не повинно стати проблемою, поки на початку нам не доведеться приймати ризикованих рішень.",
+      "ru": "Да, это не должно стать проблемой, пока в начале нам не придётся принимать рискованных решений."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir teilen die Aufgaben nach unseren Stärken auf, du machst die Risikomanagement-Schulung, und die Kundenbetreuung geht nicht nur an mich, sondern auch an einen Kollegen aus dem anderen Team.",
+      "en": "Let's summarize: we split the tasks according to our strengths, you do the risk management training, and customer service goes not only to me, but also to a colleague from the other team.",
+      "uk": "Підсумуємо: ми розподіляємо завдання за нашими сильними сторонами, ти проходиш навчання з ризик-менеджменту, а обслуговування клієнтів переходить не лише до мене, а й до колеги з іншої команди.",
+      "ru": "Подведём итог: мы распределяем задачи по нашим сильным сторонам, ты проходишь обучение по риск-менеджменту, а обслуживание клиентов переходит не только ко мне, но и к коллеге из другой команды."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, so erfüllen wir die Anforderungen des Projekts, ohne dass jemand von uns überfordert ist - diese Lösung wird beim Kunden sicher gut ankommen. Ich schreibe die Aufgabenverteilung kurz auf und schicke sie dir noch heute.",
+      "en": "Exactly. I think that way we meet the project's requirements without either of us being overwhelmed - this solution will surely go down well with the client. I'll write up the task distribution and send it to you today.",
+      "uk": "Саме так. Гадаю, так ми виконуємо вимоги проєкту, і при цьому ніхто з нас не буде перевантажений - це рішення точно сподобається клієнту. Я коротко запишу розподіл завдань і надішлю тобі його ще сьогодні.",
+      "ru": "Именно так. Думаю, так мы выполняем требования проекта, и при этом никто из нас не будет перегружен - это решение точно понравится клиенту. Я коротко запишу распределение задач и отправлю его тебе сегодня же."
+    },
+    "gram": "negation"
   }
 ];
 

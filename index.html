@@ -1651,13 +1651,17 @@ body.lesson-active .vocab-top{
    кнопки (padding 32px + line-height ~1.2×шрифт) + відступи, а не
    довільним числом — щоб не розʼїжджалось при зміні розміру шрифту. */
 .lf-unit-body{display:flex;flex-direction:column;gap:8px;flex:1;overflow:auto;padding-bottom:calc(56px + var(--fs-card) * 1.2)}
+/* Fade зверху/знизу, коли контент реально не влазить і скролиться
+   (вкладений скрол — .lf-unit-card фіксованої висоти, .lf-unit-body
+   росте всередині). mask-image виставляється динамічно з JS
+   (updateUnitBodyFade нижче) — тут лише плавний перехід. */
+.lf-unit-body{transition:mask-image .15s ease, -webkit-mask-image .15s ease}
 .lf-unit-hint{text-align:center;font-size:var(--fs-utility);color:var(--muted);padding:14px 0 2px;flex-shrink:0}
 .lf-progress-counter{font-family:'Inter',monospace;font-size:var(--fs-utility);color:var(--muted);white-space:nowrap}
 .lf-unit-main-row{display:flex;align-items:baseline;gap:9px}
 .lf-unit-main-row + .lf-unit-main-row{
   margin-top:8px;padding-top:14px;border-top:1px solid var(--soft);
 }
-.lf-unit-flag{font-size:20px;flex-shrink:0}
 .lf-unit-term{font-size:var(--fs-card);font-weight:700;line-height:1.3;color:var(--ink)}
 .lf-unit-short{font-size:var(--fs-card);font-weight:400;color:var(--muted);margin-top:2px}
 /* Довгий текст (приклад-речення: Vocab def, SB sentence/переклад/пояснення,
@@ -1665,6 +1669,11 @@ body.lesson-active .vocab-top{
    жирний блок; сам термін лишається жирним (.lf-unit-term вище — тільки
    для Vocab term/переклад терміну, короткий текст). */
 .lf-unit-sentence{font-size:var(--fs-card);font-weight:400;line-height:1.3;color:var(--ink)}
+/* Переклад (другий .lf-unit-main-row у парі оригінал/переклад) —
+   візуально вторинний: трохи менший і приглушений, замість однакового
+   з оригіналом розміру. Економить вертикальний простір на довгих
+   реченнях і одразу сигналізує "це підказка, не головний текст". */
+.lf-unit-sentence-tr{font-size:calc(var(--fs-card) * 0.87);font-weight:400;line-height:1.3;color:var(--muted)}
 /* Виділений термін/ключове слово <b> підсвічується кольором-акцентом
    (для <g> — граматичної конструкції — глобальне правило вже є вище
    у файлі: g{font-weight:700;color:var(--g-accent)}) */
@@ -2825,7 +2834,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '411-fd153c6';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5728,6 +5737,46 @@ function srsSwipe(q){
   // q===1 (Не знаю) → аудіо грає до кінця, playVocabNext спрацює сам.
   // srsRate вже викликано (записує totalPlays теж — єдина точка запису).
 }
+
+// Fade зверху/знизу картки уроку (.lf-unit-body), коли контент реально
+// не влазить у фіксовану висоту й скролиться всередині картки (вкладений
+// скрол). Без цього довгий текст просто обрізається по краю картки без
+// жодного натяку, що там є ще — саме це виглядало як "текст не влазить".
+// Рахуємо РЕАЛЬНИЙ стан скролу (scrollTop/scrollHeight), а не показуємо
+// fade завжди — короткий текст, що й так повністю влазить, лишається
+// без жодних градієнтів.
+(function(){
+  function updateUnitBodyFade(){
+    var body = document.getElementById('lf-unit-body');
+    if(!body) return;
+    var hasMoreAbove = body.scrollTop > 4;
+    var hasMoreBelow = body.scrollTop + body.clientHeight < body.scrollHeight - 4;
+    if(!hasMoreAbove && !hasMoreBelow){
+      body.style.maskImage = '';
+      body.style.webkitMaskImage = '';
+      return;
+    }
+    var g = 'linear-gradient(to bottom,'
+      + (hasMoreAbove ? 'transparent 0,black 22px' : 'black 0')
+      + ','
+      + (hasMoreBelow ? 'black calc(100% - 22px),transparent 100%' : 'black 100%')
+      + ')';
+    body.style.maskImage = g;
+    body.style.webkitMaskImage = g;
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var body = document.getElementById('lf-unit-body');
+    if(!body) return;
+    body.addEventListener('scroll', updateUnitBodyFade, {passive:true});
+    window.addEventListener('resize', updateUnitBodyFade);
+    // Контент .lf-unit-body підмінюється через innerHTML з десятка різних
+    // місць (Vocab/SB/Dialogue рендери) — замість того, щоб чіпати кожне,
+    // слухаємо самі мутації DOM і перераховуємо fade автоматично.
+    new MutationObserver(updateUnitBodyFade).observe(body, {childList:true, subtree:true, characterData:true});
+    updateUnitBodyFade();
+  });
+  window.updateUnitBodyFade = updateUnitBodyFade;
+})();
 
 // Показує інформаційний хінт з результатом SRS
 function showSrsHint(emoji, label, q, areaId='fc-area'){
@@ -9499,13 +9548,11 @@ var _lfSBHandlers = {
 
     var html =
       '<div class="lf-unit-main-row">'+
-        '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
         '<div class="lf-unit-sentence">'+sentence+'</div>'+
       '</div>'+
       (sentenceTr ?
         '<div class="lf-unit-main-row">'+
-          '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-          '<div class="lf-unit-sentence">'+sentenceTr+'</div>'+
+          '<div class="lf-unit-sentence-tr">'+sentenceTr+'</div>'+
         '</div>'
       : '');
 
@@ -9780,13 +9827,11 @@ var _lfDlgHandlers = {
         (avatar ? '<img class="lf-dlg-avatar" src="'+avatar+'" alt="'+speaker+'">' : '')+
         '<div class="lf-dlg-bubble '+bubbleCls+'">'+
           '<div class="lf-unit-main-row">'+
-            '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
             '<div class="lf-unit-sentence">'+text+'</div>'+
           '</div>'+
           (textTr ?
             '<div class="lf-unit-main-row">'+
-              '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-              '<div class="lf-unit-sentence">'+textTr+'</div>'+
+              '<div class="lf-unit-sentence-tr">'+textTr+'</div>'+
             '</div>'
           : '')+
           (speaker ? '<div class="lf-dlg-speaker">'+speaker+'</div>' : '')+
@@ -10429,13 +10474,11 @@ var _lfVocabHandlers = {
       var shortTranslation = ul !== pl ? (card.short?.[ul] || '') : '';
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
-          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
           '<div><div class="lf-unit-term">'+term+'</div>'+
           (short ? '<div class="lf-unit-short">'+short+'</div>' : '')+'</div>'+
         '</div>'+
         (termTranslation ?
           '<div class="lf-unit-main-row">'+
-            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
             '<div><div class="lf-unit-term">'+termTranslation+'</div>'+
             (shortTranslation ? '<div class="lf-unit-short">'+shortTranslation+'</div>' : '')+'</div>'+
           '</div>'
@@ -10445,13 +10488,11 @@ var _lfVocabHandlers = {
       var defTranslation = ul !== pl ? (card.def?.[ul] || '') : '';
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
-          '<span class="lf-unit-flag">'+(F[pl]||'')+'</span>'+
           '<div class="lf-unit-sentence">'+def+'</div>'+
         '</div>'+
         (defTranslation ?
           '<div class="lf-unit-main-row">'+
-            '<span class="lf-unit-flag">'+(F[ul]||'')+'</span>'+
-            '<div class="lf-unit-sentence">'+defTranslation+'</div>'+
+            '<div class="lf-unit-sentence-tr">'+defTranslation+'</div>'+
           '</div>'
         : '');
     }
