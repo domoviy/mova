@@ -6290,8 +6290,8 @@ var DIALOGE = [
     "a": {
       "de": "Habe ich dich richtig verstanden: Es geht also vor allem um die schlechte Kommunikation mit dem Lieferanten?",
       "en": "Did I understand you correctly: it's mainly about the poor communication with the supplier?",
-      "uk": "Я правильно тебе зрозумів(ла): отже, йдеться передусім про погану комунікацію з постачальником?",
-      "ru": "Я правильно тебя понял(а): значит, речь идёт прежде всего о плохой коммуникации с поставщиком?"
+      "uk": "Я правильно тебе зрозумів: отже, йдеться передусім про погану комунікацію з постачальником?",
+      "ru": "Я правильно тебя понял: значит, речь идёт прежде всего о плохой коммуникации с поставщиком?"
     },
     "q1": {
       "de": "Genau, das trifft es gut. Was denkst du, könnten wir dagegen unternehmen?",
@@ -6384,14 +6384,14 @@ var DIALOGE = [
     "q": {
       "de": "Dagegen spricht aber, dass uns das Zeit kostet. Wärst du damit einverstanden, beide Schritte parallel zu starten?",
       "en": "But the argument against that is that it costs us time. Would you agree to start both steps in parallel?",
-      "uk": "Але проти цього говорить те, що це коштує нам часу. Ти був(ла) б з цим згоден(на) розпочати обидва кроки паралельно?",
-      "ru": "Но против этого говорит то, что это стоит нам времени. Ты был(а) бы согласен(на) начать оба шага параллельно?"
+      "uk": "Але проти цього говорить те, що це коштує нам часу. Ти був би з цим згоден розпочати обидва кроки паралельно?",
+      "ru": "Но против этого говорит то, что это стоит нам времени. Ты был бы согласен начать оба шага параллельно?"
     },
     "a": {
       "de": "Das klingt überzeugend. Damit bin ich einverstanden, weil wir so schneller eine Lösung finden.",
       "en": "That sounds convincing. I agree with that, because that way we'll find a solution faster.",
-      "uk": "Це звучить переконливо. Я з цим згоден(на), тому що так ми швидше знайдемо рішення.",
-      "ru": "Это звучит убедительно. Я с этим согласен(на), потому что так мы быстрее найдём решение."
+      "uk": "Це звучить переконливо. Я з цим згоден, тому що так ми швидше знайдемо рішення.",
+      "ru": "Это звучит убедительно. Я с этим согласен, потому что так мы быстрее найдём решение."
     },
     "gram": ""
   },
@@ -6599,8 +6599,8 @@ var DIALOGE = [
     "a": {
       "de": "Habe ich dich richtig verstanden: Es geht also darum, dass der neue Standort für viele Mitarbeitende zu weit entfernt ist?",
       "en": "Did I understand you correctly: so the issue is that the new location is too far away for many employees?",
-      "uk": "Я правильно тебе зрозумів(ла): отже, йдеться про те, що нове місце розташування занадто далеко для багатьох співробітників?",
-      "ru": "Я правильно тебя понял(а): значит, речь о том, что новое расположение слишком далеко для многих сотрудников?"
+      "uk": "Я правильно тебе зрозумів: отже, йдеться про те, що нове місце розташування занадто далеко для багатьох співробітників?",
+      "ru": "Я правильно тебя понял: значит, речь о том, что новое расположение слишком далеко для многих сотрудников?"
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das für das Team, wenn wir nichts unternehmen?",
@@ -6647,8 +6647,8 @@ var DIALOGE = [
     "a4": {
       "de": "Da bin ich ganz deiner Meinung. Ich kann mir überhaupt nicht vorstellen, dass die Geschäftsführung dagegen wäre, wenn wir zeigen, dass die Produktivität dadurch nicht sinkt.",
       "en": "I completely agree with you. I really can't imagine that management would be against it if we show that productivity doesn't decrease as a result.",
-      "uk": "Тут я з тобою цілком згоден(на). Я взагалі не можу собі уявити, що керівництво було б проти, якщо ми покажемо, що продуктивність через це не знижується.",
-      "ru": "Тут я с тобой полностью согласен(на). Я вообще не могу себе представить, что руководство было бы против, если мы покажем, что производительность из-за этого не снижается."
+      "uk": "Тут я з тобою цілком згоден. Я взагалі не можу собі уявити, що керівництво було б проти, якщо ми покажемо, що продуктивність через це не знижується.",
+      "ru": "Тут я с тобой полностью согласен. Я вообще не могу себе представить, что руководство было бы против, если мы покажем, что производительность из-за этого не снижается."
     },
     "q5": {
       "de": "Sollten wir auch vorschlagen, eine Änderung an den befristeten Arbeitsverträgen vorzunehmen und sie in unbefristete Verträge umzuwandeln, damit sich die Fachkräfte am neuen Standort sicherer fühlen?",
@@ -6672,7 +6672,7 @@ var DIALOGE = [
       "de": "Einverstanden. Hast du die Absicht, deinen Teil schon bis Mittwoch fertigzustellen, damit wir noch Zeit für Korrekturen haben?",
       "en": "Agreed. Do you intend to finish your part by Wednesday, so we still have time for corrections?",
       "uk": "Домовились. Ти маєш намір завершити свою частину вже до середи, щоб у нас залишився час на виправлення?",
-      "ru": "Договорились. Ты намерен(а) завершить свою часть уже к среде, чтобы у нас осталось время на исправления?"
+      "ru": "Договорились. Ты намерена завершить свою часть уже к среде, чтобы у нас осталось время на исправления?"
     },
     "q7": {
       "de": "Wäre es realistisch, wenn wir den Vorschlag bis Ende der Woche fertigstellen und ihn nächsten Montag im Meeting vorstellen?",

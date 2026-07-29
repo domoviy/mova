@@ -2496,7 +2496,7 @@ body.lesson-active .vocab-top{
       <!-- Smart Review: Daily Plan + Profile -->
       <div id="sr-daily-plan"></div>
       <div class="lp-header">
-        <h2>🗺 <span data-i18n="nav_lernpfad">Lernpfad</span></h2>
+        <h2>🎓 <span data-i18n="nav_lernpfad">Lernen</span></h2>
         <small id="lp-overall-text"></small>
         <div class="lp-progress-bar"><div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div></div>
       </div>
@@ -2795,7 +2795,7 @@ body.lesson-active .vocab-top{
 <!-- BOTTOM NAV -->
 <div id="bottom-nav">
   <button class="bn-item" onclick="showView('lernpfad')" data-view="lernpfad">
-    <span class="bn-icon">🗺</span><span id="lp-nav-label">Lernpfad</span>
+    <span class="bn-icon">🎓</span><span id="lp-nav-label">Lernen</span>
   </button>
   <button class="bn-item" onclick="showView('favs')" data-view="favs">
     <span class="bn-icon">★</span><span id="bn-favs-label">Закладки</span>
@@ -2825,7 +2825,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '410-f9c9a3e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3058,11 +3058,11 @@ const I18N = {
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
-    nav_lernpfad:'Path', nav_sb:'Sprachbau',
+    nav_lernpfad:'Learning', nav_sb:'Sprachbau',
     lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
     lp_cards:'cards', lp_of:'of',
     lp_grammar:'Grammar:',
-    nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
+    nav_lernpfad:'Lernen', nav_sb:'Sprachbau',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
     lp_grammar:'Grammatik:',
@@ -3079,16 +3079,16 @@ const I18N = {
     match_empty:'Keine Karten in dieser Kategorie',
     match_few:'Zu wenige Karten — mindestens',
     match_needed:'nötig',
-    lp_title:'🗺',
+    lp_title:'🎓 Lernen',
     lp_overall_loading:'Lädt…',
     lp_no_lessons:'Keine Lektionen verfügbar',
     lp_module_prefix:'Modul',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
-    nav_lernpfad:'Lernpfad',
+    nav_lernpfad:'Lernen',
     btn_next_lesson:'▶ Nächste Lektion',
     btn_sb_weiter:'Weiter →',
-    btn_to_lessons:'🗺 Zur Lektionsliste',
+    btn_to_lessons:'🎓 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
     lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
@@ -3142,7 +3142,7 @@ const I18N = {
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
-    nav_lernpfad:'Шлях', nav_sb:'Sprachbau',
+    nav_lernpfad:'Навчання', nav_sb:'Sprachbau',
     lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
     lp_cards:'карток', lp_of:'з',
     lp_grammar:'Граматика:',
@@ -3159,16 +3159,16 @@ const I18N = {
     match_empty:'Немає карток у цій категорії',
     match_few:'Замало карток — потрібно мінімум',
     match_needed:'',
-    lp_title:'🗺 Навчальний шлях',
+    lp_title:'🎓 Навчання',
     lp_overall_loading:'Завантаження…',
     lp_no_lessons:'Уроки недоступні',
     lp_module_prefix:'Модуль',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
-    nav_lernpfad:'Шлях',
+    nav_lernpfad:'Навчання',
     btn_next_lesson:'▶ Наступний урок',
     btn_sb_weiter:'Далі →',
-    btn_to_lessons:'🗺 До списку уроків',
+    btn_to_lessons:'🎓 До списку уроків',
     btn_check:'✓ Перевірити',
     lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
@@ -3221,7 +3221,7 @@ const I18N = {
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
-    nav_lernpfad:'Lernpfad', nav_sb:'Sprachbau',
+    nav_lernpfad:'Learning', nav_sb:'Sprachbau',
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
     lp_grammar:'Grammatik:',
@@ -3238,16 +3238,16 @@ const I18N = {
     match_empty:'No cards in this category',
     match_few:'Too few cards — need at least',
     match_needed:'',
-    lp_title:'🗺 Learning Path',
+    lp_title:'🎓 Learning',
     lp_overall_loading:'Loading…',
     lp_no_lessons:'No lessons available',
     lp_module_prefix:'Module',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
-    nav_lernpfad:'Path',
+    nav_lernpfad:'Learning',
     btn_next_lesson:'▶ Next Lesson',
     btn_sb_weiter:'Next →',
-    btn_to_lessons:'🗺 Lesson List',
+    btn_to_lessons:'🎓 Lesson List',
     btn_check:'✓ Check',
     lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
@@ -3301,7 +3301,7 @@ const I18N = {
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
-    nav_lernpfad:'Путь', nav_sb:'Sprachbau',
+    nav_lernpfad:'Обучение', nav_sb:'Sprachbau',
     lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
     lp_cards:'карточек', lp_of:'из',
     lp_grammar:'Грамматика:',
@@ -3318,7 +3318,7 @@ const I18N = {
     match_empty:'Нет карточек в этой категории',
     match_few:'Слишком мало карточек — нужно минимум',
     match_needed:'',
-    lp_title:'🗺 Учебный путь',
+    lp_title:'🎓 Обучение',
     lp_overall_loading:'Загрузка…',
     lp_no_lessons:'Уроки недоступны',
     lp_module_prefix:'Модуль',
@@ -3326,7 +3326,7 @@ const I18N = {
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
     btn_sb_weiter:'Далее →',
-    btn_to_lessons:'🗺 К списку уроков',
+    btn_to_lessons:'🎓 К списку уроков',
     btn_check:'✓ Проверить',
     lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
