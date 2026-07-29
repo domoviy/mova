@@ -2834,7 +2834,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '412-2437f5f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6352,7 +6352,7 @@ function _runLessonFlow(lesson, allCards){
   const fresh = sorted.filter(c => !seenToday.includes(c.id));
   // Беремо нові (ще не бачені сьогодні в цьому уроці), якщо їх достатньо;
   // якщо пул вичерпано — довивчуємо рештою (весь урок вже пройдено сьогодні).
-  const flowCards = (fresh.length >= Math.min(4, sorted.length) ? fresh : sorted)
+  let flowCards = (fresh.length >= Math.min(4, sorted.length) ? fresh : sorted)
     .slice(0, Math.min(4, sorted.length));
 
   try{
@@ -6413,16 +6413,14 @@ function _runLessonFlow(lesson, allCards){
   const matchPool = sorted.filter(c =>
     c.term?.[primaryLang()] && c.term?.[uiLang] && (uiLang!==primaryLang() || c.short?.[primaryLang()])
   );
-  const matchCards = matchPool.slice(0, Math.min(5, matchPool.length));
+  let matchCards = matchPool.slice(0, Math.min(5, matchPool.length));
 
   // Вибираємо 1 картку Dialogue для уроку — ПРІОРИТЕТНО з власного
   // lesson.dlgCards (прив'язка діалог↔модуль, яка вже існує в базі), і
   // лише картки САМЕ цього модуля, за SM-2-пріоритетом серед них. Якщо
   // dlgCards порожній (діалоги для цього модуля ще не написані) —
-  // dlgCard = null, і крок dlg_learn нижче просто пропускається/
-  // замінюється фолбеком через _pushStepOrFiller (той самий механізм,
-  // що й для tiles/sb_prac/def) — а НЕ бере випадковий діалог не по темі
-  // з усього курсу, як було раніше.
+  // dlgCard = null, і крок dlg_learn нижче просто пропускається — урок
+  // стає коротшим (без штучного заповнювача, див. коментар нижче).
   const allDlg = typeof DIALOGE !== 'undefined' ? DIALOGE : [];
   const lessonDlgIds = new Set(lesson.dlgCards || []);
   const lessonDlgPool = allDlg.filter(d => lessonDlgIds.has(d.id));
@@ -6430,51 +6428,68 @@ function _runLessonFlow(lesson, allCards){
     ? [...lessonDlgPool].sort((a,b) => srPriorityFromState(state,b.id) - srPriorityFromState(state,a.id))[0]
     : null;
 
-  // Запасний пул для заміни кроків, яких не вистачає (def/dlg_learn/
-  // tiles/sb_prac) — щоб урок не ставав КОРОТШИМ, коли якийсь крок
-  // недоступний, а замінювався на щось інше приблизно тієї ж тривалості.
-  // Найнадійніший кандидат — ще один раунд "Знайди пару": він рідко буває
-  // порожнім (тягне з усього модуля), і сам собою вже гейміфікований.
-  // Кожен запасний раунд отримує СВІЖИЙ шматок карток (не ті самі, що вже
-  // були в основному matching), щоб не повторюватись у межах уроку.
-  const usedInMatch = new Set(matchCards.map(c=>c.id));
-  const extraPool = matchPool.filter(c => !usedInMatch.has(c.id));
-  const extraChunks = [];
-  for(let i=0; i<extraPool.length; i+=5){
-    const chunk = extraPool.slice(i, i+5);
-    if(chunk.length >= 2) extraChunks.push(chunk);
+  // ── Скорочення уроку (~25-30%) ────────────────────────────────
+  //
+  // C. Довгий діалог — урок "тільки діалог". Якщо в обраної картки
+  // діалогу багато реплік (≥6, тобто кілька обмінів, а не один
+  // питання-відповідь) — решта кроків (cards/matching/tiles/граматика)
+  // просто не будуються. Той самий формат LF.steps, що вже й так working
+  // у Dialogue Bonus (_runBonusLessonFlow) — нічого нового вигадувати не
+  // треба, лише підмінити пули для звичайного уроку так само.
+  const isLongDialogueLesson = !!dlgCard && _dlgCardTurns(dlgCard).length >= 6;
+  if(isLongDialogueLesson){
+    flowCards  = [];
+    matchCards = [];
   }
-  let _extraChunkIdx = 0;
-  const matchExtraPools = {};
-  function _pushStepOrFiller(steps, available, stepName){
-    if(available){ steps.push(stepName); return; }
-    if(_extraChunkIdx < extraChunks.length){
-      const fillerName = 'matching_x' + steps.length;
-      matchExtraPools[fillerName] = extraChunks[_extraChunkIdx++];
-      steps.push(fillerName);
-    }
-    // якщо й запасних карток не лишилось — просто пропускаємо крок
-    // (той самий фолбек, що був раніше), урок стає коротшим лише коли
-    // модуль справді замалий для повноцінної заміни.
-  }
+  const effTiles = isLongDialogueLesson ? [] : tilesCards;
+  const effSB    = isLongDialogueLesson ? [] : lessonSBCards;
+  const effHasTiles   = effTiles.length > 0;
+  const effHasSB      = effSB.length > 0;
+  const effHasDefFill = !isLongDialogueLesson && hasDefFill;
 
-  const steps = ['cards'];
-  _pushStepOrFiller(steps, hasDefFill, 'def');
-  steps.push('matching');
-  _pushStepOrFiller(steps, !!dlgCard, 'dlg_learn');
-  _pushStepOrFiller(steps, hasTiles, 'tiles');
-  _pushStepOrFiller(steps, hasSB, 'sb_prac');
-  steps.push('result');
+  let steps;
+  if(isLongDialogueLesson){
+    steps = ['dlg_learn', 'result'];
+  } else {
+    // A. Без штучного заповнювача — раніше відсутній крок (нема даних на
+    // діалог/tiles/SB під цей модуль) підмінявся ЩЕ ОДНИМ раундом
+    // "Знайди пару", щоб урок не ставав коротшим. Тепер просто пропускаємо
+    // крок — урок природно коротший, коли контенту менше, замість
+    // штучного добивання до однакової довжини щоразу.
+    //
+    // B. def і sb_prac — обидва по суті "граматика в контексті речення"
+    // (анотоване речення з пропуском). Замість ОБОХ щоразу — один
+    // граматичний крок на урок, чергуючи за парністю lesson.module: непарні
+    // модулі пріоритетно отримують def, парні — sb_prac. Якщо пріоритетний
+    // варіант недоступний (нема даних) — пробуємо інший, а не пропускаємо
+    // граматику геть.
+    const preferSbOverDef = (lesson.module||0) % 2 === 0;
+    let grammarStep = null;
+    if(preferSbOverDef){
+      if(effHasSB) grammarStep = 'sb_prac';
+      else if(effHasDefFill) grammarStep = 'def';
+    } else {
+      if(effHasDefFill) grammarStep = 'def';
+      else if(effHasSB) grammarStep = 'sb_prac';
+    }
+
+    steps = ['cards'];
+    if(grammarStep) steps.push(grammarStep);
+    steps.push('matching');
+    if(dlgCard) steps.push('dlg_learn');
+    if(effHasTiles) steps.push('tiles');
+    steps.push('result');
+  }
 
   LF = {
     lessonId:  lesson.id,
     lesson,
     cards:     flowCards,
     matchCards,
-    matchExtraPools,
-    tilesCards,
+    matchExtraPools: {},
+    tilesCards: effTiles,
     allCards,
-    sbCards:   lessonSBCards,
+    sbCards:   effSB,
     sbIdx:     0,
     dlgCard,
     steps,

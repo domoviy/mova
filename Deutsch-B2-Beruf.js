@@ -804,6 +804,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_018",
       "sbs_023"
+    ],
+    "dlgCards": [
+      "dlg_032"
     ]
   },
   {
@@ -882,6 +885,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_002",
       "sbs_008"
+    ],
+    "dlgCards": [
+      "dlg_033"
     ]
   },
   {
@@ -959,6 +965,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_017",
       "sbs_044"
+    ],
+    "dlgCards": [
+      "dlg_034"
     ]
   },
   {
@@ -1031,6 +1040,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_033",
       "sbs_046"
+    ],
+    "dlgCards": [
+      "dlg_035"
     ]
   },
   {
@@ -6935,6 +6947,466 @@ var DIALOGE = [
       "ru": "Именно так. Думаю, так мы выполняем требования проекта, и при этом никто из нас не будет перегружен - это решение точно понравится клиенту. Я коротко запишу распределение задач и отправлю его тебе сегодня же."
     },
     "gram": "negation"
+  },
+{
+    "id": "dlg_032",
+    "cat": "Anerkennung",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Ich muss dir kurz von einem Kollegen erzählen: Herr Boateng hat mir erzählt, dass er in seinem Herkunftsland als Ingenieur gearbeitet hat und jetzt einen Antrag auf Anerkennung seiner Berufsqualifikation stellen möchte, aber er weiß nicht, welche Dokumente dafür erforderlich sind.",
+      "en": "I have to quickly tell you about a colleague: Mr. Boateng told me that he worked as an engineer in his home country and now wants to apply for recognition of his professional qualification, but he doesn't know which documents are required for that.",
+      "uk": "Мушу коротко розповісти тобі про одного колегу: пан Боатенг розповів мені, що на батьківщині працював інженером і тепер хоче подати заявку на визнання своєї професійної кваліфікації, але не знає, які документи для цього потрібні.",
+      "ru": "Должен коротко рассказать тебе об одном коллеге: господин Боатенг рассказал мне, что на родине работал инженером и теперь хочет подать заявку на признание своей профессиональной квалификации, но не знает, какие документы для этого нужны."
+    },
+    "a": {
+      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass ihm die Informationen zum Verfahren fehlen?",
+      "en": "Did I understand you correctly: so the issue is that he's missing information about the procedure?",
+      "uk": "Я правильно тебе зрозуміла: отже, йдеться про те, що йому бракує інформації про саму процедуру?",
+      "ru": "Я правильно тебя поняла: значит, речь о том, что ему не хватает информации о самой процедуре?"
+    },
+    "q1": {
+      "de": "Genau. Sein Ziel ist es, so schnell wie möglich in seinem eigentlichen Beruf zu arbeiten. Was denkst du, wie wir ihm helfen könnten?",
+      "en": "Exactly. His goal is to work in his actual profession as soon as possible. What do you think, how could we help him?",
+      "uk": "Саме так. Його мета - якомога швидше почати працювати за фахом. Як ти думаєш, чим ми могли б йому допомогти?",
+      "ru": "Именно так. Его цель - как можно скорее начать работать по специальности. Как ты думаешь, чем мы могли бы ему помочь?"
+    },
+    "a1": {
+      "de": "Ich würde vorschlagen, dass wir uns zusammen an die zuständige Stelle wenden und für ihn Informationen einholen.",
+      "en": "I would suggest that we contact the relevant office together and gather information for him.",
+      "uk": "Я б запропонувала разом звернутися до відповідної установи і зібрати для нього інформацію.",
+      "ru": "Я бы предложила вместе обратиться в соответствующее учреждение и собрать для него информацию."
+    },
+    "q2": {
+      "de": "Das ist eine gute Idee. Er hat übrigens auch gesagt, dass ihm noch einige Dokumente aus seinem Herkunftsland fehlen.",
+      "en": "That's a good idea. By the way, he also said that he's still missing some documents from his home country.",
+      "uk": "Гарна ідея. До речі, він також казав, що йому досі бракує кількох документів з батьківщини.",
+      "ru": "Хорошая идея. Кстати, он также говорил, что ему всё ещё не хватает нескольких документов с родины."
+    },
+    "a2": {
+      "de": "Dann sollten wir ihm empfehlen, einen Antrag auf Fristverlängerung zu stellen, damit er die fehlenden Unterlagen in Ruhe nachreichen kann.",
+      "en": "Then we should recommend that he apply for an extension of the deadline, so he can submit the missing documents calmly.",
+      "uk": "Тоді варто порадити йому подати заяву на продовження терміну, щоб він міг спокійно донести відсутні документи.",
+      "ru": "Тогда стоит посоветовать ему подать заявление на продление срока, чтобы он мог спокойно донести недостающие документы."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, ihm ein Förderprogramm zu empfehlen - damit könnte er die Kosten für die Übersetzung der Dokumente decken.",
+      "en": "Another suggestion would be to recommend a funding programme to him - that could cover the costs of translating the documents.",
+      "uk": "Ще одна пропозиція - порадити йому програму підтримки: вона могла б покрити витрати на переклад документів.",
+      "ru": "Ещё одно предложение - посоветовать ему программу поддержки: она могла бы покрыть расходы на перевод документов."
+    },
+    "a3": {
+      "de": "Ein Argument dafür ist sicherlich, dass viele Kolleginnen und Kollegen genau dieses Programm schon erfolgreich in Anspruch genommen haben.",
+      "en": "One argument in favor of that is certainly that many colleagues have already successfully made use of exactly this programme.",
+      "uk": "Аргумент на користь цього, безумовно, полягає в тому, що багато колег вже успішно скористалися саме цією програмою.",
+      "ru": "Аргумент в пользу этого, безусловно, в том, что многие коллеги уже успешно воспользовались именно этой программой."
+    },
+    "q4": {
+      "de": "Stimmt, aber er hat auch erwähnt, dass er Angst hat, dass sein Abschluss am Ende nicht vollständig anerkannt wird.",
+      "en": "True, but he also mentioned that he's afraid his qualification won't be fully recognized in the end.",
+      "uk": "Це правда, але він також згадав, що боїться, що його кваліфікацію в результаті визнають не повністю.",
+      "ru": "Это правда, но он также упомянул, что боится, что его квалификацию в итоге признают не полностью."
+    },
+    "a4": {
+      "de": "Das verstehe ich. Aber selbst wenn nicht alles anerkannt wird, könnte er einen Anpassungslehrgang machen, um die restliche Qualifikation nachzuholen.",
+      "en": "I understand that. But even if not everything is recognized, he could do an adaptation course to make up the remaining qualification.",
+      "uk": "Я це розумію. Але навіть якщо визнають не все, він міг би пройти адаптаційний курс, щоб надолужити решту кваліфікації.",
+      "ru": "Я это понимаю. Но даже если признают не всё, он мог бы пройти адаптационный курс, чтобы наверстать остальную квалификацию."
+    },
+    "q5": {
+      "de": "Gute Idee. Ich weiß, dass er sich sehr für seinen Beruf interessiert - er hätte bestimmt Lust, so einen Lehrgang zu machen, wenn es nötig wäre.",
+      "en": "Good idea. I know he's very interested in his profession - he would definitely feel like doing such a course if it were necessary.",
+      "uk": "Гарна ідея. Я знаю, що він дуже захоплений своєю професією - йому точно захотілося б пройти такий курс, якби це знадобилося.",
+      "ru": "Хорошая идея. Я знаю, что он очень увлечён своей профессией - ему бы точно захотелось пройти такой курс, если бы это понадобилось."
+    },
+    "a5": {
+      "de": "Dann sollten wir ihm vorschlagen, schon jetzt eine Anfrage bei der zuständigen Stelle einzuleiten, auch wenn noch nicht alle Dokumente vollständig sind.",
+      "en": "Then we should suggest that he initiate an inquiry with the relevant office already now, even if not all the documents are complete yet.",
+      "uk": "Тоді варто запропонувати йому вже зараз ініціювати запит до відповідної установи, навіть якщо ще не всі документи готові.",
+      "ru": "Тогда стоит предложить ему уже сейчас инициировать запрос в соответствующее учреждение, даже если ещё не все документы готовы."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich rede noch heute mit ihm über seine Situation, und du informierst dich über das Förderprogramm. Einverstanden?",
+      "en": "Let's split up the tasks: I'll talk to him about his situation today, and you find out about the funding programme. Agreed?",
+      "uk": "Давай розподілимо завдання: я сьогодні ж поговорю з ним про його ситуацію, а ти дізнаєшся більше про програму підтримки. Домовились?",
+      "ru": "Давай разделим задачи: я сегодня же поговорю с ним о его ситуации, а ты узнаешь больше о программе поддержки. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, ihm auch gleich zu sagen, dass wir ihn beim Antrag unterstützen?",
+      "en": "Agreed. Do you intend to tell him right away that we'll support him with the application?",
+      "uk": "Згодна. Ти маєш намір одразу сказати йому, що ми підтримаємо його із заявкою?",
+      "ru": "Согласна. Ты намерен сразу сказать ему, что мы поддержим его с заявкой?"
+    },
+    "q7": {
+      "de": "Ja, genau das habe ich vor. Wäre es realistisch, wenn wir uns übermorgen zu dritt zusammensetzen, um alles zu besprechen?",
+      "en": "Yes, that's exactly what I intend to do. Would it be realistic if the three of us sit down the day after tomorrow to discuss everything?",
+      "uk": "Так, саме це я і маю намір зробити. Чи буде реалістично, якщо післязавтра ми зберемося втрьох, щоб усе обговорити?",
+      "ru": "Да, именно это я и намерен сделать. Будет ли реалистично, если послезавтра мы соберёмся втроём, чтобы всё обсудить?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein. Ich bereite bis dahin schon ein paar Informationen zum Förderprogramm vor.",
+      "en": "That should be feasible. I'll prepare some information about the funding programme by then.",
+      "uk": "Це має бути здійсненно. До того часу я підготую трохи інформації про програму підтримки.",
+      "ru": "Это должно быть выполнимо. К тому времени я подготовлю немного информации о программе поддержки."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir helfen Herrn Boateng beim Antrag auf Anerkennung, informieren ihn über das Förderprogramm und einen möglichen Anpassungslehrgang, und in zwei Tagen besprechen wir alles gemeinsam.",
+      "en": "Let's summarize: we help Mr. Boateng with the recognition application, inform him about the funding programme and a possible adaptation course, and discuss everything together in two days.",
+      "uk": "Підсумуємо: ми допомагаємо пану Боатенгу з заявкою на визнання, інформуємо його про програму підтримки та можливий адаптаційний курс, а за два дні обговоримо все разом.",
+      "ru": "Подведём итог: мы помогаем господину Боатенгу с заявкой на признание, информируем его о программе поддержки и возможном адаптационном курсе, а через два дня обсудим всё вместе."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, so erfüllen wir seinen Wunsch, möglichst schnell wieder in seinem Beruf zu arbeiten - das wird ihm sicher sehr helfen. Ich schreibe die wichtigsten Punkte kurz zusammen und schicke sie euch beiden noch heute.",
+      "en": "Exactly. I think that way we fulfil his wish to work in his profession again as soon as possible - that will surely help him a lot. I'll summarize the key points and send them to both of you today.",
+      "uk": "Саме так. Гадаю, так ми виконуємо його бажання якомога швидше знову працювати за фахом - це точно йому дуже допоможе. Я коротко підсумую головні пункти і надішлю їх вам обом уже сьогодні.",
+      "ru": "Именно так. Думаю, так мы исполняем его желание как можно скорее снова работать по специальности - это точно очень ему поможет. Я коротко подведу итоги и отправлю их вам обоим сегодня же."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_033",
+    "cat": "Auf Jobsuche",
+    "name_q": "de_m_david",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Wir haben ein Problem: Für die offene Stelle als Bauzeichner haben wir schon drei Stellenanzeigen auf verschiedenen Jobportalen geschaltet, aber wir haben <g>weder</g> genug <g>noch</g> wirklich passende Bewerbungen bekommen.",
+      "en": "We have a problem: for the open position as a draughtsperson we've already placed three job ads on different job portals, but we've gotten neither enough nor really suitable applications.",
+      "uk": "У нас проблема: для відкритої вакансії кресляра-будівельника ми вже розмістили три оголошення на різних джоб-порталах, але не отримали ні достатньої кількості, ні справді відповідних відгуків.",
+      "ru": "У нас проблема: для открытой вакансии чертёжника-строителя мы уже разместили три объявления на разных джоб-порталах, но не получили ни достаточного количества, ни действительно подходящих откликов."
+    },
+    "a": {
+      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass die klassischen Jobportale für diese Stelle einfach nicht mehr ausreichen?",
+      "en": "Did I understand you correctly: so the issue is that the classic job portals just aren't enough anymore for this position?",
+      "uk": "Я правильно тебе зрозуміла: отже, йдеться про те, що класичні джоб-портали для цієї вакансії вже просто недостатні?",
+      "ru": "Я правильно тебя поняла: значит, речь о том, что классические джоб-порталы для этой вакансии уже просто недостаточны?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir die Stelle noch länger nicht besetzen können?",
+      "en": "Exactly. What do you think, what consequences would that have if we can't fill the position for even longer?",
+      "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо ми ще довше не зможемо закрити вакансію?",
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы ещё дольше не сможем закрыть вакансию?"
+    },
+    "a1": {
+      "de": "Ich glaube, dass dann <g>sowohl</g> die Kolleginnen und Kollegen im Team <g>als auch</g> unsere Kunden darunter leiden würden, weil die Aufträge liegen bleiben.",
+      "en": "I think that then both the colleagues on the team and our clients would suffer, because the orders would pile up.",
+      "uk": "Гадаю, тоді постраждають як колеги в команді, так і наші клієнти, бо замовлення накопичуватимуться.",
+      "ru": "Думаю, тогда пострадают как коллеги в команде, так и наши клиенты, потому что заказы будут накапливаться."
+    },
+    "q2": {
+      "de": "Wie wäre es, wenn wir zusätzlich einen Headhunter beauftragen, der gezielt passende Kandidatinnen und Kandidaten anwirbt?",
+      "en": "How about we additionally hire a headhunter who specifically recruits suitable candidates?",
+      "uk": "Що якщо ми додатково залучимо хедхантера, який цілеспрямовано шукатиме відповідних кандидатів?",
+      "ru": "Что если мы дополнительно привлечём хедхантера, который целенаправленно будет искать подходящих кандидатов?"
+    },
+    "a2": {
+      "de": "Das ist eine gute Idee, aber das kostet natürlich auch einiges - wir sollten also vorher klären, ob sich das für uns lohnt.",
+      "en": "That's a good idea, but of course that costs something too - we should clarify beforehand whether it's worth it for us.",
+      "uk": "Це гарна ідея, але це, звісно, коштуватиме грошей - варто спершу з'ясувати, чи виправдає це себе для нас.",
+      "ru": "Это хорошая идея, но это, конечно, будет стоить денег - стоит сначала выяснить, оправдает ли это себя для нас."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, die Stelle zusätzlich über unser soziales Netzwerk zu verbreiten - viele gute Bewerbungen kommen doch inzwischen genau darüber.",
+      "en": "Another suggestion would be to also spread the job posting through our social network - a lot of good applications come through exactly that channel these days.",
+      "uk": "Ще одна пропозиція - додатково поширити вакансію через нашу соціальну мережу: багато гарних відгуків нині надходить саме звідти.",
+      "ru": "Ещё одно предложение - дополнительно распространить вакансию через нашу социальную сеть: сейчас многие хорошие отклики приходят именно оттуда."
+    },
+    "a3": {
+      "de": "Ein Argument dafür ist sicherlich, dass das nichts kostet. Ein Argument dagegen ist aber, dass wir dort eher jüngere Zielgruppen erreichen, die noch keinen abgeschlossenen beruflichen Werdegang haben.",
+      "en": "One argument for that is certainly that it doesn't cost anything. One argument against it, though, is that we tend to reach younger target groups there who don't have a completed career path yet.",
+      "uk": "Аргумент на користь цього, безумовно, у тому, що це нічого не коштує. Але аргумент проти - те, що там ми радше досягаємо молодшої аудиторії, яка ще не має завершеного професійного шляху.",
+      "ru": "Аргумент в пользу этого, безусловно, в том, что это ничего не стоит. Но аргумент против - в том, что там мы скорее охватываем более молодую аудиторию, у которой ещё нет завершённого профессионального пути."
+    },
+    "q4": {
+      "de": "Das stimmt zwar, aber man könnte das Problem vielleicht lösen, indem wir <g>entweder</g> gezielt in Fachgruppen posten <g>oder</g> direkt ehemalige Praktikanten ansprechen.",
+      "en": "That's true, but we could perhaps solve the problem by either posting specifically in professional groups or reaching out directly to former interns.",
+      "uk": "Це правда, але цю проблему можна було б вирішити, якщо ми або цілеспрямовано публікуватимемо оголошення у фахових групах, або звернемося напряму до колишніх практикантів.",
+      "ru": "Это верно, но эту проблему можно было бы решить, если мы либо целенаправленно будем публиковать объявления в профессиональных группах, либо обратимся напрямую к бывшим практикантам."
+    },
+    "a4": {
+      "de": "Da bin ich ganz deiner Meinung. <g>Je</g> mehr Kanäle wir nutzen, <g>desto</g> größer ist die Chance, die richtige Person zu finden.",
+      "en": "I completely agree with you. The more channels we use, the greater the chance of finding the right person.",
+      "uk": "Тут я з тобою цілком згодна. Чим більше каналів ми використовуємо, тим більший шанс знайти потрібну людину.",
+      "ru": "Тут я с тобой полностью согласна. Чем больше каналов мы используем, тем больше шанс найти нужного человека."
+    },
+    "q5": {
+      "de": "Zusätzlich könnten wir bei der Arbeitsvermittlung nachfragen, ob dort passende Profile vorliegen.",
+      "en": "In addition, we could ask the job placement service whether they have suitable profiles.",
+      "uk": "Крім того, ми могли б запитати в агентства зайнятості, чи є в них відповідні профілі.",
+      "ru": "Кроме того, мы могли бы спросить в агентстве занятости, есть ли у них подходящие профили."
+    },
+    "a5": {
+      "de": "Das halte ich für einen guten Punkt. Wir sollten aber <g>nicht nur</g> auf Fachkenntnisse, <g>sondern auch</g> auf die Motivation der Bewerber achten.",
+      "en": "I think that's a good point. We should pay attention not only to technical skills, but also to the applicants' motivation.",
+      "uk": "Вважаю це гарною думкою. Нам варто звертати увагу не лише на фахові знання, а й на мотивацію кандидатів.",
+      "ru": "Считаю это хорошей мыслью. Нам стоит обращать внимание не только на профессиональные знания, но и на мотивацию кандидатов."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um den Kontakt mit dem Headhunter, und du postest die Stelle in unserem sozialen Netzwerk. Einverstanden?",
+      "en": "Let's split up the tasks: I'll take care of contacting the headhunter, and you post the position on our social network. Agreed?",
+      "uk": "Давай розподілимо завдання: я займуся контактом із хедхантером, а ти опублікуєш вакансію в нашій соціальній мережі. Домовились?",
+      "ru": "Давай разделим задачи: я займусь контактом с хедхантером, а ты опубликуешь вакансию в нашей социальной сети. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, den Headhunter schon diese Woche zu kontaktieren?",
+      "en": "Agreed. Do you intend to contact the headhunter already this week?",
+      "uk": "Згодна. Ти маєш намір зв'язатися з хедхантером уже цього тижня?",
+      "ru": "Согласна. Ты намерен связаться с хедхантером уже на этой неделе?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn wir uns nächste Woche schon die ersten Rückmeldungen ansehen?",
+      "en": "Yes, would it be realistic if we already look at the first responses next week?",
+      "uk": "Так, чи буде реалістично, якщо ми вже наступного тижня подивимося перші відгуки?",
+      "ru": "Да, будет ли реалистично, если мы уже на следующей неделе посмотрим первые отклики?"
+    },
+    "a7": {
+      "de": "<g>Zwar</g> ist eine Woche ziemlich knapp, <g>aber</g> das sollte machbar sein, wenn beide Kanäle gleichzeitig laufen.",
+      "en": "A week is admittedly quite tight, but that should be feasible if both channels run at the same time.",
+      "uk": "Тиждень, щоправда, доволі стислий термін, але це має бути здійсненно, якщо обидва канали працюватимуть одночасно.",
+      "ru": "Неделя, правда, довольно сжатый срок, но это должно быть выполнимо, если оба канала будут работать одновременно."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir beauftragen einen Headhunter, nutzen zusätzlich unser soziales Netzwerk und fragen bei der Arbeitsvermittlung nach, damit wir die Stelle endlich besetzen können.",
+      "en": "Let's summarize: we hire a headhunter, additionally use our social network, and ask the job placement service, so we can finally fill the position.",
+      "uk": "Підсумуємо: ми залучаємо хедхантера, додатково використовуємо нашу соціальну мережу і запитуємо в агентства зайнятості, щоб нарешті закрити вакансію.",
+      "ru": "Подведём итог: мы привлекаем хедхантера, дополнительно используем нашу социальную сеть и спрашиваем в агентстве занятости, чтобы наконец закрыть вакансию."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, mit dieser Kombination haben wir gute Chancen, <g>sowohl</g> schnell <g>als auch</g> die richtige Person zu finden. Ich schreibe die Aufgabenverteilung kurz auf und schicke sie dir noch heute.",
+      "en": "Exactly. I think with this combination we have a good chance of both moving quickly and finding the right person. I'll write up the task distribution and send it to you today.",
+      "uk": "Саме так. Гадаю, з такою комбінацією в нас гарні шанси і швидко, і правильно знайти потрібну людину. Я коротко запишу розподіл завдань і надішлю тобі його ще сьогодні.",
+      "ru": "Именно так. Думаю, с такой комбинацией у нас хорошие шансы и быстро, и правильно найти нужного человека. Я коротко запишу распределение задач и отправлю его тебе сегодня же."
+    },
+    "gram": "konnektoren_zweiteilig"
+  },
+{
+    "id": "dlg_034",
+    "cat": "Lebenslauf",
+    "name_q": "de_m_david",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Wir haben ein Problem: Wir müssen den Lebenslauf von Frau Petrenko für die Bewerbung noch heute überarbeiten, aber die Datumsangaben sind nicht einheitlich, und bei den Sprachkenntnissen steht nur 'gut', ohne genaues Niveau.",
+      "en": "We have a problem: we need to revise Ms. Petrenko's CV for the application today, but the dates aren't formatted consistently, and for language skills it just says 'good', without a precise level.",
+      "uk": "У нас проблема: нам треба сьогодні ж доопрацювати резюме пані Петренко для заявки, але дати вказані непослідовно, а біля мовних навичок написано лише 'добре', без чіткого рівня.",
+      "ru": "У нас проблема: нам нужно сегодня же доработать резюме госпожи Петренко для заявки, но даты указаны непоследовательно, а у языковых навыков написано просто 'хорошо', без точного уровня."
+    },
+    "a": {
+      "de": "Habe ich dich richtig verstanden: Es geht also vor allem um die Formatierung und um genauere Angaben zu den Sprachkenntnissen?",
+      "en": "Did I understand you correctly: so it's mainly about the formatting and about giving more precise information on the language skills?",
+      "uk": "Я правильно тебе зрозуміла: отже, йдеться передусім про форматування і про точніші дані щодо мовних навичок?",
+      "ru": "Я правильно тебя поняла: значит, речь прежде всего о форматировании и о более точных данных по языковым навыкам?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welchen Eindruck macht das auf einen Personaler, wenn der Lebenslauf nicht einheitlich wirkt?",
+      "en": "Exactly. What do you think, what impression does that make on a recruiter if the CV doesn't look consistent?",
+      "uk": "Саме так. Як ти думаєш, яке враження це справляє на кадровика, якщо резюме виглядає непослідовно?",
+      "ru": "Именно так. Как ты думаешь, какое впечатление это производит на кадровика, если резюме выглядит непоследовательно?"
+    },
+    "a1": {
+      "de": "Ich glaube, dass ein uneinheitlicher tabellarischer Lebenslauf schnell unseriös wirkt, auch wenn die Qualifikationen eigentlich sehr gut sind.",
+      "en": "I think an inconsistent tabular CV quickly looks unprofessional, even if the qualifications themselves are actually very good.",
+      "uk": "Гадаю, непослідовне табличне резюме швидко виглядає несерйозно, навіть якщо кваліфікація насправді дуже хороша.",
+      "ru": "Думаю, непоследовательное табличное резюме быстро выглядит несерьёзно, даже если квалификация на самом деле очень хорошая."
+    },
+    "q2": {
+      "de": "Wie wäre es, wenn wir bei den Sprachkenntnissen konkrete Niveaus angeben, also zum Beispiel 'Englisch: verhandlungssicher' statt einfach nur 'gut'?",
+      "en": "How about we state concrete levels for the language skills, so for example 'English: proficient to negotiation level' instead of just 'good'?",
+      "uk": "Що якщо ми вкажемо конкретні рівні мовних навичок, наприклад 'англійська: вільне володіння на рівні переговорів' замість просто 'добре'?",
+      "ru": "Что если мы укажем конкретные уровни языковых навыков, например 'английский: свободное владение на уровне переговоров' вместо просто 'хорошо'?"
+    },
+    "a2": {
+      "de": "Das ist sinnvoll, aber wir sollten sie vorher fragen, ob sie ihr Englisch wirklich als verhandlungssicher einschätzt, sonst wirkt das übertrieben.",
+      "en": "That makes sense, but we should first ask her whether she really rates her English as negotiation-level, otherwise it looks exaggerated.",
+      "uk": "Це розумно, але спершу варто запитати в неї, чи справді вона оцінює свою англійську на такому рівні, інакше це виглядатиме перебільшено.",
+      "ru": "Это разумно, но сначала стоит спросить у неё, действительно ли она оценивает свой английский на таком уровне, иначе это будет выглядеть преувеличенно."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, alle Datumsangaben einheitlich im gleichen Format zu schreiben, also entweder überall Monat und Jahr oder überall nur das Jahr.",
+      "en": "Another suggestion would be to write all the dates in the same format throughout - so either month and year everywhere, or just the year everywhere.",
+      "uk": "Ще одна пропозиція - написати всі дати в одному форматі: або скрізь місяць і рік, або скрізь лише рік.",
+      "ru": "Ещё одно предложение - написать все даты в одном формате: либо везде месяц и год, либо везде только год."
+    },
+    "a3": {
+      "de": "Ein Argument dafür ist sicherlich, dass das viel professioneller wirkt. Ein Argument dagegen wäre höchstens, dass das noch etwas Zeit kostet.",
+      "en": "One argument for that is certainly that it looks much more professional. One argument against it would be, at most, that it takes some extra time.",
+      "uk": "Аргумент на користь цього, безумовно, у тому, що це виглядає набагато професійніше. Аргумент проти хіба що в тому, що це забере трохи часу.",
+      "ru": "Аргумент в пользу этого, безусловно, в том, что это выглядит намного профессиональнее. Аргумент против разве что в том, что это займёт немного времени."
+    },
+    "q4": {
+      "de": "Das stimmt zwar, aber man könnte das Problem lösen, indem wir die Vorlage einmal komplett durchgehen und die Formatierung automatisch anpassen.",
+      "en": "That's true, but we could solve the problem by going through the template once completely and adjusting the formatting automatically.",
+      "uk": "Це правда, але цю проблему можна було б вирішити, якщо ми один раз повністю пройдемося по шаблону і автоматично виправимо форматування.",
+      "ru": "Это верно, но эту проблему можно было бы решить, если мы один раз полностью пройдёмся по шаблону и автоматически исправим форматирование."
+    },
+    "a4": {
+      "de": "Da bin ich ganz deiner Meinung. Ich kann mir gut vorstellen, dass das in einer halben Stunde erledigt ist, wenn wir es zusammen machen.",
+      "en": "I completely agree with you. I can well imagine that being done in half an hour if we do it together.",
+      "uk": "Тут я з тобою цілком згодна. Я цілком можу уявити, що ми впораємося за півгодини, якщо зробимо це разом.",
+      "ru": "Тут я с тобой полностью согласна. Я вполне могу представить, что мы справимся за полчаса, если сделаем это вместе."
+    },
+    "q5": {
+      "de": "Zusätzlich fehlt noch die Unterschrift unter dem Lebenslauf - das sollten wir sie auch noch ergänzen lassen.",
+      "en": "In addition, the signature under the CV is still missing - we should have her add that too.",
+      "uk": "Крім того, під резюме досі бракує підпису - варто попросити її і це додати.",
+      "ru": "Кроме того, под резюме всё ещё не хватает подписи - стоит попросить её и это добавить."
+    },
+    "a5": {
+      "de": "Das halte ich für einen guten Punkt. Wir könnten ihr außerdem empfehlen, ihren beruflichen Werdegang etwas klarer zu strukturieren, mit genauen Angaben zur Tätigkeit bei jeder Station.",
+      "en": "I think that's a good point. We could also recommend that she structure her career path a bit more clearly, with precise details on the role at each position.",
+      "uk": "Вважаю це гарною думкою. Ми також могли б порадити їй чіткіше структурувати свій професійний шлях, із точними даними про діяльність на кожній посаді.",
+      "ru": "Считаю это хорошей мыслью. Мы также могли бы посоветовать ей чётче структурировать свой профессиональный путь, с точными данными о деятельности на каждой должности."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um die Formatierung und die Datumsangaben, und du sprichst mit Frau Petrenko über die Sprachkenntnisse und die Unterschrift. Einverstanden?",
+      "en": "Let's split up the tasks: I'll take care of the formatting and the dates, and you talk to Ms. Petrenko about the language skills and the signature. Agreed?",
+      "uk": "Давай розподілимо завдання: я займуся форматуванням і датами, а ти поговориш з пані Петренко про мовні навички і підпис. Домовились?",
+      "ru": "Давай разделим задачи: я займусь форматированием и датами, а ты поговоришь с госпожой Петренко о языковых навыках и подписи. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, die überarbeitete Version noch heute Abend an sie zu schicken?",
+      "en": "Agreed. Do you intend to send her the revised version already this evening?",
+      "uk": "Згодна. Ти маєш намір надіслати їй доопрацьовану версію вже сьогодні ввечері?",
+      "ru": "Согласна. Ты намерен отправить ей доработанную версию уже сегодня вечером?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn wir bis siebzehn Uhr fertig sind und sie dann gleich Rückfragen stellen kann?",
+      "en": "Yes, would it be realistic if we're done by five p.m. so she can ask follow-up questions right away?",
+      "uk": "Так, чи буде реалістично, якщо ми закінчимо до сімнадцятої години, щоб вона одразу могла поставити уточнювальні запитання?",
+      "ru": "Да, будет ли реалистично, если мы закончим к семнадцати часам, чтобы она сразу могла задать уточняющие вопросы?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein. Ich rufe sie gleich an und bespreche mit ihr die letzten Details.",
+      "en": "That should be feasible. I'll call her right away and discuss the last details with her.",
+      "uk": "Це має бути здійсненно. Я одразу їй подзвоню і обговорю останні деталі.",
+      "ru": "Это должно быть выполнимо. Я сразу же ей позвоню и обсужу последние детали."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir vereinheitlichen das Datumsformat, ergänzen konkrete Sprachniveaus und die Unterschrift, und strukturieren den beruflichen Werdegang klarer, damit der Lebenslauf seriös wirkt.",
+      "en": "Let's summarize: we'll standardize the date format, add concrete language levels and the signature, and structure the career path more clearly, so the CV looks professional.",
+      "uk": "Підсумуємо: ми уніфікуємо формат дат, додаємо конкретні мовні рівні та підпис, і чіткіше структуруємо професійний шлях, щоб резюме виглядало серйозно.",
+      "ru": "Подведём итог: мы унифицируем формат дат, добавляем конкретные языковые уровни и подпись, и чётче структурируем профессиональный путь, чтобы резюме выглядело серьёзно."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, damit hat Frau Petrenko jetzt einen wirklich professionellen tabellarischen Lebenslauf - das wird bei den Personalern sicher gut ankommen. Ich schreibe ihr kurz eine Nachricht und schicke ihr die überarbeitete Version noch heute.",
+      "en": "Exactly. I think that gives Ms. Petrenko a really professional tabular CV now - recruiters will surely respond well to that. I'll write her a quick message and send her the revised version today.",
+      "uk": "Саме так. Гадаю, тепер у пані Петренко справді професійне табличне резюме - кадровикам це точно сподобається. Я напишу їй коротке повідомлення і надішлю доопрацьовану версію ще сьогодні.",
+      "ru": "Именно так. Думаю, теперь у госпожи Петренко действительно профессиональное табличное резюме - кадровикам это точно понравится. Я напишу ей короткое сообщение и отправлю доработанную версию сегодня же."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_035",
+    "cat": "Ausbildung",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Wir haben ein Problem: Wir haben zwei freie Ausbildungsplätze für die duale Ausbildung als Elektroniker, aber es haben sich bisher nur zwei Bewerber gemeldet, und keiner davon hat wirklich Interesse am Handwerk gezeigt.",
+      "en": "We have a problem: we have two open apprenticeship places for the dual training as an electronics technician, but so far only two applicants have come forward, and neither of them has really shown interest in the trade.",
+      "uk": "У нас проблема: у нас є два вільні місця для дуальної освіти за фахом електронник, але поки що відгукнулися лише двоє кандидатів, і жоден з них не виявив справжнього інтересу до цього ремесла.",
+      "ru": "У нас проблема: у нас есть два свободных места для дуального обучения по специальности электронщик, но пока откликнулись только два кандидата, и ни один из них не проявил настоящего интереса к этому ремеслу."
+    },
+    "a": {
+      "de": "Habe ich dich richtig verstanden: Es geht also darum, dass wir kaum passende Azubis für die freien Plätze finden?",
+      "en": "Did I understand you correctly: so the issue is that we can hardly find suitable apprentices for the open places?",
+      "uk": "Я правильно тебе зрозуміла: отже, йдеться про те, що ми майже не можемо знайти відповідних учнів на вільні місця?",
+      "ru": "Я правильно тебя поняла: значит, речь о том, что мы почти не можем найти подходящих учеников на свободные места?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir die Plätze dieses Jahr gar nicht besetzen können?",
+      "en": "Exactly. What do you think, what consequences would that have if we can't fill the places at all this year?",
+      "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо ми взагалі не зможемо заповнити місця цього року?",
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы вообще не сможем заполнить места в этом году?"
+    },
+    "a1": {
+      "de": "Ich glaube, dass wir dann im Ausbildungsbetrieb personell zu knapp dastehen würden, <g>um</g> alle anfallenden Aufgaben <g>zu</g> erledigen.",
+      "en": "I think that then we'd be too short-staffed in the training company to handle all the tasks that come up.",
+      "uk": "Гадаю, тоді нам бракуватиме персоналу на підприємстві, щоб виконувати всі поточні завдання.",
+      "ru": "Думаю, тогда нам будет не хватать персонала на предприятии, чтобы выполнять все текущие задачи."
+    },
+    "q2": {
+      "de": "Wie wäre es, wenn wir direkt mit der örtlichen Berufsschule Kontakt aufnehmen, um dort für unsere Ausbildungsplätze zu werben?",
+      "en": "How about we get in touch directly with the local vocational school, in order to promote our apprenticeship places there?",
+      "uk": "Що якщо ми звернемося безпосередньо до місцевого професійного училища, щоб розповісти там про наші вакантні місця?",
+      "ru": "Что если мы обратимся напрямую в местное профессиональное училище, чтобы рассказать там о наших вакантных местах?"
+    },
+    "a2": {
+      "de": "Das ist eine gute Idee, aber wir sollten die Schüler nicht nur kurz ansprechen, <g>ohne</g> ihnen die Vorteile der dualen Ausbildung genau <g>zu</g> erklären.",
+      "en": "That's a good idea, but we shouldn't just briefly approach the students without explaining the advantages of the dual training in detail.",
+      "uk": "Це гарна ідея, але не варто просто коротко звертатися до учнів, не пояснивши їм детально переваги дуальної освіти.",
+      "ru": "Это хорошая идея, но не стоит просто коротко обращаться к ученикам, не объяснив им подробно преимущества дуального обучения."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, die Ausbildungsvergütung etwas zu erhöhen, um für Bewerber attraktiver zu werden.",
+      "en": "Another suggestion would be to raise the trainee allowance a bit, in order to become more attractive to applicants.",
+      "uk": "Ще одна пропозиція - трохи підвищити стипендію учня, щоб стати привабливішими для кандидатів.",
+      "ru": "Ещё одно предложение - немного повысить стипендию ученика, чтобы стать привлекательнее для кандидатов."
+    },
+    "a3": {
+      "de": "Ein Argument dafür ist sicherlich, dass Geld für viele junge Leute wichtig ist. Ein Argument dagegen ist aber, dass wir das Budget dafür erst noch klären müssten.",
+      "en": "One argument for that is certainly that money matters to a lot of young people. One argument against it, though, is that we'd first have to clarify the budget for that.",
+      "uk": "Аргумент на користь цього, безумовно, у тому, що гроші важливі для багатьох молодих людей. Аргумент проти - те, що нам спершу довелося б з'ясувати бюджет на це.",
+      "ru": "Аргумент в пользу этого, безусловно, в том, что деньги важны для многих молодых людей. Аргумент против - в том, что нам сначала пришлось бы выяснить бюджет на это."
+    },
+    "q4": {
+      "de": "Das stimmt zwar, aber man könnte das Problem vielleicht auch lösen, indem wir zusätzlich ein duales Studium statt der klassischen Ausbildung anbieten.",
+      "en": "That's true, but we could perhaps also solve the problem by additionally offering a dual study programme instead of the classic apprenticeship.",
+      "uk": "Це правда, але цю проблему можна було б вирішити й тим, що ми додатково запропонуємо дуальне навчання в університеті замість класичного учнівства.",
+      "ru": "Это верно, но эту проблему можно было бы решить и тем, что мы дополнительно предложим дуальное обучение в университете вместо классического ученичества."
+    },
+    "a4": {
+      "de": "Da bin ich ganz deiner Meinung. <g>Anstatt</g> nur auf die klassische Ausbildung <g>zu</g> setzen, sollten wir wirklich beide Wege parallel anbieten.",
+      "en": "I completely agree with you. Instead of relying only on the classic apprenticeship, we should really offer both paths in parallel.",
+      "uk": "Тут я з тобою цілком згодна. Замість того, щоб покладатися лише на класичне учнівство, нам справді варто пропонувати обидва шляхи паралельно.",
+      "ru": "Тут я с тобой полностью согласна. Вместо того чтобы полагаться только на классическое ученичество, нам действительно стоит предлагать оба пути параллельно."
+    },
+    "q5": {
+      "de": "Zusätzlich könnten wir bei einer Umschulung ansetzen - vielleicht gibt es Interessierte, die schon einen anderen Beruf gelernt haben, aber wechseln möchten.",
+      "en": "In addition, we could look into retraining - maybe there are interested people who've already learned a different profession but want to switch.",
+      "uk": "Крім того, ми могли б звернути увагу на перекваліфікацію - можливо, є зацікавлені люди, які вже здобули іншу професію, але хочуть змінити напрямок.",
+      "ru": "Кроме того, мы могли бы обратить внимание на переквалификацию - возможно, есть заинтересованные люди, которые уже получили другую профессию, но хотят сменить направление."
+    },
+    "a5": {
+      "de": "Das halte ich für einen guten Punkt. Wir sollten das Ziel klar kommunizieren: Wer die duale Ausbildung erfolgreich abschließt, hat bei uns gute Übernahmechancen.",
+      "en": "I think that's a good point. We should clearly communicate the goal: whoever successfully completes the dual training has good chances of being taken on permanently with us.",
+      "uk": "Вважаю це гарною думкою. Нам варто чітко донести мету: хто успішно завершить дуальну освіту, має в нас хороші шанси залишитися на постійній роботі.",
+      "ru": "Считаю это хорошей мыслью. Нам стоит чётко донести цель: кто успешно завершит дуальное обучение, имеет у нас хорошие шансы остаться на постоянной работе."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um den Kontakt zur Berufsschule, und du sprichst mit der Geschäftsführung über die Ausbildungsvergütung. Einverstanden?",
+      "en": "Let's split up the tasks: I'll take care of contacting the vocational school, and you talk to management about the trainee allowance. Agreed?",
+      "uk": "Давай розподілимо завдання: я займуся контактом із професійним училищем, а ти поговориш з керівництвом про стипендію учнів. Домовились?",
+      "ru": "Давай разделим задачи: я займусь контактом с профессиональным училищем, а ты поговоришь с руководством о стипендии учеников. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, die Berufsschule schon diese Woche zu kontaktieren?",
+      "en": "Agreed. Do you intend to contact the vocational school already this week?",
+      "uk": "Згодна. Ти маєш намір звернутися до училища вже цього тижня?",
+      "ru": "Согласна. Ты намерен обратиться в училище уже на этой неделе?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn wir uns in zwei Wochen schon die ersten Rückmeldungen ansehen?",
+      "en": "Yes, would it be realistic if we already look at the first responses in two weeks?",
+      "uk": "Так, чи буде реалістично, якщо ми вже за два тижні подивимося перші відгуки?",
+      "ru": "Да, будет ли реалистично, если мы уже через две недели посмотрим первые отклики?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein, solange wir jetzt gleich anfangen, ohne noch länger zu warten.",
+      "en": "That should be feasible, as long as we start right away now, without waiting any longer.",
+      "uk": "Це має бути здійсненно, якщо ми почнемо прямо зараз, не чекаючи довше.",
+      "ru": "Это должно быть выполнимо, если мы начнём прямо сейчас, не дожидаясь дольше."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir kontaktieren die Berufsschule, prüfen eine höhere Ausbildungsvergütung und bieten zusätzlich ein duales Studium an, um die freien Plätze endlich zu besetzen.",
+      "en": "Let's summarize: we'll contact the vocational school, check on a higher trainee allowance, and additionally offer a dual study programme, in order to finally fill the open places.",
+      "uk": "Підсумуємо: ми звертаємося до професійного училища, розглядаємо підвищення стипендії учнів і додатково пропонуємо дуальне навчання, щоб нарешті заповнити вільні місця.",
+      "ru": "Подведём итог: мы обращаемся в профессиональное училище, рассматриваем повышение стипендии учеников и дополнительно предлагаем дуальное обучение, чтобы наконец заполнить свободные места."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, mit diesen Maßnahmen haben wir gute Chancen, die Ausbildungsplätze noch in diesem Jahr zu besetzen. Ich schreibe die Aufgabenverteilung kurz auf und schicke sie dir noch heute.",
+      "en": "Exactly. I think with these measures we have a good chance of filling the apprenticeship places still this year. I'll write up the task distribution and send it to you today.",
+      "uk": "Саме так. Гадаю, з цими заходами в нас гарні шанси заповнити місця вже цього року. Я коротко запишу розподіл завдань і надішлю тобі його ще сьогодні.",
+      "ru": "Именно так. Думаю, с этими мерами у нас хорошие шансы заполнить места уже в этом году. Я коротко запишу распределение задач и отправлю его тебе сегодня же."
+    },
+    "gram": "konnektoren_infinitiv"
   }
 ];
 
