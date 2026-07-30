@@ -278,6 +278,20 @@ def _error_snippet(text, pos, context=80):
     return f"{snippet}\n{' ' * marker_pos}^-- тут"
 
 
+def _single_to_double_quoted_values(s):
+    """Конвертує 'значення' (одинарні лапки) на "значення" (подвійні) —
+    ЛИШЕ в позиції значення (одразу після ':', тобто property value),
+    а не будь-де в тексті. Так апострофи всередині вже ПОДВІЙНОлапкових
+    рядків картки (напр. "ім'я") лишаються недоторканими — цей regex їх
+    навіть не бачить, він шукає конкретно ':' + одинарні лапки."""
+    def repl(m):
+        inner = m.group(1)
+        inner = inner.replace("\\'", "'")   # \' → ' (розекранування)
+        inner = inner.replace('"', '\\"')   # а вже наявні " екрануємо
+        return ': "' + inner + '"'
+    return re.sub(r":\s*'((?:[^'\\]|\\.)*)'", repl, s)
+
+
 def _parse_js_array_blocks(content, file_path):
     """Спільна логіка розбору 'var/let/const/export NAME = [...]' блоків
     з тексту JS-файлу — використовується і для файлів курсів
@@ -286,9 +300,9 @@ def _parse_js_array_blocks(content, file_path):
     це вже розпарсений Python-список словників.
 
     Спершу строгий json.loads(); якщо не вдалось (людяний JS-стиль з
-    нелапкованими ключами об'єкта) — fallback-нормалізація ключів.
-    Обидва варіанти прибирають // та /* */ коментарі і trailing comma
-    перед парсингом."""
+    нелапкованими ключами об'єкта і/або одинарними лапками у значеннях)
+    — fallback-нормалізація. Обидва варіанти прибирають // та /* */
+    коментарі і trailing comma перед парсингом."""
     blocks = re.findall(r'(?:var|let|const|export)\s+(\w+)\s*=\s*(\[.*?\])\s*(;|\n\n|var|let|const|export|$)', content, re.DOTALL)
 
     if not blocks:
@@ -309,15 +323,18 @@ def _parse_js_array_blocks(content, file_path):
         except json.JSONDecodeError as e_strict:
             # Деякі масиви (наприклад SPRACHBAUSTEINE) написані в "людяному"
             # JS-стилі з нелапкованими ключами об'єкта ({id:"x"} замість
-            # {"id":"x"}) — валідний JS, але невалідний JSON. Застосовуємо
-            # нормалізацію ЛИШЕ як fallback, коли строгий парсинг провалився:
-            # масиви з текстом, що містить двокрапки всередині рядкових
+            # {"id":"x"}) і/або одинарними лапками у значеннях (значення
+            # {"id":'NVV'} замість {"id":"NVV"} — саме так була написана
+            # CATS у Deutsch-B2-Beruf.js/Financial-Accounting-Foundations.js,
+            # через що весь масив падав ЦІЛКОМ) — валідний JS, невалідний
+            # JSON. Застосовуємо нормалізацію ЛИШЕ як fallback, коли
+            # строгий парсинг провалився: масиви з текстом, що містить
+            # двокрапки/апострофи всередині ПОДВІЙНОлапкових рядкових
             # значень (DIALOGE тощо), уже парсяться строгим json.loads()
-            # вище і НІКОЛИ не доходять до цього regex — він і не повинен
-            # їх торкатись, бо може неправильно зрозуміти ":" у тексті
-            # як межу ключа.
+            # вище і НІКОЛИ не доходять до цього regex.
             try:
                 normalized = re.sub(r'([{,]\s*)([a-zA-Z_]\w*)\s*:', r'\1"\2":', clean_array)
+                normalized = _single_to_double_quoted_values(normalized)
                 items = json.loads(normalized)
                 if isinstance(items, list):
                     results.append((var_name, items))
@@ -352,6 +369,19 @@ def load_characters_file(file_path=CHARACTERS_FILE):
         return []
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
+
+    # Кожен запис CHARACTERS посилається на аватарку через
+    # CHARACTER_AVATARS.<ключ> (щоб не дублювати важкі base64-рядки по
+    # 4 рази на персонажа — одна аватарка на 4 мовні записи). У браузері
+    # це звичайна JS-змінна, яка резолвиться сама; для ЦЬОГО парсера
+    # (він читає файл як майже-JSON, JS не виконує) таке посилання —
+    # непарсибельний токен, через який весь масив CHARACTERS раніше
+    # падав ЦІЛКОМ (і генерація діалогів відкочувалась на 0 персонажів).
+    # gen_audio.py аватарки не використовує (лише id/lang/edge_tts для
+    # підбору голосу) — тож просто прибираємо поле "avatar": ... з
+    # тексту перед парсингом, замість того щоб резолвити саме значення.
+    content = re.sub(r',?\s*"avatar"\s*:\s*CHARACTER_AVATARS\.\w+', '', content)
+
     for var_name, items in _parse_js_array_blocks(content, file_path):
         if var_name == "CHARACTERS":
             return items
@@ -615,6 +645,12 @@ async def main():
                     # озвучення діалогу всіма 4 мовами (як vocab/sprachbau)
                     # лише роздуває обсяг генерації без користі для навчання.
                     if internal_cat == "redemittel" and lang != primary_lang: continue
+                    # Sprachbausteine (sbs_XXX) — той самий принцип: лише
+                    # primary_lang. Це вправа на граматичну форму МОВОЮ, яку
+                    # вивчають (типовий формат іспиту telc B2) — озвучення
+                    # sentence/answer/explanation іншими 3 мовами так само не
+                    # несе навчальної користі, лише роздуває обсяг генерації.
+                    if internal_cat == "sprachbau" and lang != primary_lang: continue
                     if text is None: continue
                     if isinstance(text, str) and not text.strip(): continue
                     if isinstance(text, list) and not text: continue
