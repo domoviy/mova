@@ -1722,6 +1722,17 @@ body.lesson-active .vocab-top{
   background:var(--gold-dim);border:1px solid rgba(201,168,76,.25);
   border-bottom-right-radius:4px;
 }
+/* ── Завдання (dlg_task) — контекст ПЕРЕД діалогом, якщо в картки є
+   поле task. Дизайн як повідомлення (той самий фон/рамка/шрифт, що й
+   .lf-dlg-bubble-q), але БЕЗ аватарки й БЕЗ підпису імені (це не
+   репліка персонажа), і на всю ширину картки — а не вузька бульбашка
+   з місцем під аватар збоку. Нейтральний (не "золотий" a-стиль варіант,
+   бо task — не "відповідь", а умова/рамка для всього діалогу). */
+.lf-dlg-task{
+  width:100%; box-sizing:border-box;
+  border-radius:16px; padding:12px 14px;
+  background:var(--soft); border:1px solid var(--border);
+}
 /* Ім'я персонажа — підпис ПІД повідомленням, ближче до аватарки (з
    того ж боку, що й сама аватарка), а не заголовок над текстом. */
 .lf-dlg-speaker{
@@ -2850,7 +2861,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '418-40b66c9';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6479,10 +6490,7 @@ function _runLessonFlow(lesson, allCards){
 
   // Вибираємо 1 картку Dialogue для уроку — ПРІОРИТЕТНО з власного
   // lesson.dlgCards (прив'язка діалог↔модуль, яка вже існує в базі), і
-  // лише картки САМЕ цього модуля, за SM-2-пріоритетом серед них. Якщо
-  // dlgCards порожній (діалоги для цього модуля ще не написані) —
-  // dlgCard = null, і крок dlg_learn нижче просто пропускається — урок
-  // стає коротшим (без штучного заповнювача, див. коментар нижче).
+  // лише картки САМЕ цього модуля, за SM-2-пріоритетом серед них.
   const allDlg = typeof DIALOGE !== 'undefined' ? DIALOGE : [];
   const lessonDlgIds = new Set(lesson.dlgCards || []);
   const lessonDlgPool = allDlg.filter(d => lessonDlgIds.has(d.id));
@@ -6490,58 +6498,43 @@ function _runLessonFlow(lesson, allCards){
     ? [...lessonDlgPool].sort((a,b) => srPriorityFromState(state,b.id) - srPriorityFromState(state,a.id))[0]
     : null;
 
-  // ── Скорочення уроку (~25-30%) ────────────────────────────────
+  // Довгий діалог (≥6 реплік, тобто кілька обмінів, а не одна пара
+  // питання-відповідь) НЕ входить у звичайний урок — інакше він один
+  // займає стільки ж часу, скільки решта кроків разом. Замість того щоб
+  // (як раніше) перетворювати ВЕСЬ урок у "тільки діалог", просто не
+  // додаємо його в steps: довгі діалоги тепер мають власний окремий вхід
+  // у Навчанні — картка "Діалог" одразу під уроком (renderModuleDialogueCard
+  // нижче), а не крок усередині lesson-flow. lesson.dlgCards лишається на
+  // своєму місці — картка Діалог просто бере його звідти напряму.
+  const dlgCardForLesson = (dlgCard && _dlgCardTurns(dlgCard).length >= 6) ? null : dlgCard;
+
+  // A. Без штучного заповнювача — відсутній крок (нема даних на діалог/
+  // tiles/SB під цей модуль) просто пропускається, а не підміняється
+  // ще одним раундом "Знайди пару" — урок природно коротший, коли
+  // контенту менше, замість штучного добивання до однакової довжини.
   //
-  // C. Довгий діалог — урок "тільки діалог". Якщо в обраної картки
-  // діалогу багато реплік (≥6, тобто кілька обмінів, а не один
-  // питання-відповідь) — решта кроків (cards/matching/tiles/граматика)
-  // просто не будуються. Той самий формат LF.steps, що вже й так working
-  // у Dialogue Bonus (_runBonusLessonFlow) — нічого нового вигадувати не
-  // треба, лише підмінити пули для звичайного уроку так само.
-  const isLongDialogueLesson = !!dlgCard && _dlgCardTurns(dlgCard).length >= 6;
-  if(isLongDialogueLesson){
-    flowCards  = [];
-    matchCards = [];
-  }
-  const effTiles = isLongDialogueLesson ? [] : tilesCards;
-  const effSB    = isLongDialogueLesson ? [] : lessonSBCards;
-  const effHasTiles   = effTiles.length > 0;
-  const effHasSB      = effSB.length > 0;
-  const effHasDefFill = !isLongDialogueLesson && hasDefFill;
-
-  let steps;
-  if(isLongDialogueLesson){
-    steps = ['dlg_learn', 'result'];
+  // B. def і sb_prac — обидва по суті "граматика в контексті речення"
+  // (анотоване речення з пропуском). Замість ОБОХ щоразу — один
+  // граматичний крок на урок, чергуючи за парністю lesson.module: непарні
+  // модулі пріоритетно отримують def, парні — sb_prac. Якщо пріоритетний
+  // варіант недоступний (нема даних) — пробуємо інший, а не пропускаємо
+  // граматику геть.
+  const preferSbOverDef = (lesson.module||0) % 2 === 0;
+  let grammarStep = null;
+  if(preferSbOverDef){
+    if(hasSB) grammarStep = 'sb_prac';
+    else if(hasDefFill) grammarStep = 'def';
   } else {
-    // A. Без штучного заповнювача — раніше відсутній крок (нема даних на
-    // діалог/tiles/SB під цей модуль) підмінявся ЩЕ ОДНИМ раундом
-    // "Знайди пару", щоб урок не ставав коротшим. Тепер просто пропускаємо
-    // крок — урок природно коротший, коли контенту менше, замість
-    // штучного добивання до однакової довжини щоразу.
-    //
-    // B. def і sb_prac — обидва по суті "граматика в контексті речення"
-    // (анотоване речення з пропуском). Замість ОБОХ щоразу — один
-    // граматичний крок на урок, чергуючи за парністю lesson.module: непарні
-    // модулі пріоритетно отримують def, парні — sb_prac. Якщо пріоритетний
-    // варіант недоступний (нема даних) — пробуємо інший, а не пропускаємо
-    // граматику геть.
-    const preferSbOverDef = (lesson.module||0) % 2 === 0;
-    let grammarStep = null;
-    if(preferSbOverDef){
-      if(effHasSB) grammarStep = 'sb_prac';
-      else if(effHasDefFill) grammarStep = 'def';
-    } else {
-      if(effHasDefFill) grammarStep = 'def';
-      else if(effHasSB) grammarStep = 'sb_prac';
-    }
-
-    steps = ['cards'];
-    if(grammarStep) steps.push(grammarStep);
-    steps.push('matching');
-    if(dlgCard) steps.push('dlg_learn');
-    if(effHasTiles) steps.push('tiles');
-    steps.push('result');
+    if(hasDefFill) grammarStep = 'def';
+    else if(hasSB) grammarStep = 'sb_prac';
   }
+
+  const steps = ['cards'];
+  if(grammarStep) steps.push(grammarStep);
+  steps.push('matching');
+  if(dlgCardForLesson) steps.push('dlg_learn');
+  if(hasTiles) steps.push('tiles');
+  steps.push('result');
 
   LF = {
     lessonId:  lesson.id,
@@ -6549,11 +6542,11 @@ function _runLessonFlow(lesson, allCards){
     cards:     flowCards,
     matchCards,
     matchExtraPools: {},
-    tilesCards: effTiles,
+    tilesCards: hasTiles ? tilesCards : [],
     allCards,
-    sbCards:   effSB,
+    sbCards:   hasSB ? lessonSBCards : [],
     sbIdx:     0,
-    dlgCard,
+    dlgCard: dlgCardForLesson,
     steps,
     step:      0,
     results:   {},
@@ -6676,13 +6669,11 @@ function renderLernpfad(){
 
     // Розблоковано якщо хоч один модуль пройдено ≥50%
     const reviewUnlocked = ch.modules.some(m=>lessonProgress(m).pct>=50);
-    // Бонус "Діалоги" — окрема, слабша умова: видимий одразу, щойно
-    // ПРОЙДЕНО (не лише розпочато) хоча б один урок глави (poріг ≥80%,
-    // той самий, що означає "модуль завершено" в решті застосунку —
-    // див. _proceedFromLesson). Не прив'язаний до reviewUnlocked/
-    // Граматики свідомо — користувач попросив саме цю, окрему умову
-    // для Діалогів.
-    const dlgBonusUnlocked = ch.modules.some(m=>lessonProgress(m).pct>=80);
+    // Бонус "Діалоги" — ТЕПЕР не раз на главу в кінці, а одразу під
+    // кожним уроком (renderModuleDialogueCard), якщо саме до НЬОГО
+    // прив'язаний діалог. dlgBonusUnlocked/renderChapterDialogueBonusCard
+    // більше не використовуються тут — функції лишились у коді на
+    // випадок, якщо цей формат захочуть повернути.
     // Рендер картки повторення всередині глави
     const reviewHtml = renderReviewCard([ch.num], 'module', reviewUnlocked);
 
@@ -6700,10 +6691,9 @@ function renderLernpfad(){
         <div class="lp-chapter-arrow">▼</div>
       </div>
       <div class="lp-modules">
-        ${ch.modules.map(m=>renderModuleCard(m)+renderGrammarBonusCard(m)+renderModuleVocabCard(m)).join('')}
+        ${ch.modules.map(m=>renderModuleCard(m)+renderModuleDialogueCard(m)+renderGrammarBonusCard(m)+renderModuleVocabCard(m)).join('')}
         ${reviewHtml}
         ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
-        ${renderChapterDialogueBonusCard(ch.num, dlgBonusUnlocked)}
         ${renderChapterVocabCard(ch.num, reviewUnlocked)}
       </div>`;
     container.appendChild(chEl);
@@ -6808,6 +6798,69 @@ function renderModuleCard(lesson){
 // Порожній рядок (нічого не рендеримо), якщо: модуль ще замкнений, тема
 // не задана як id у GRAMMAR (старі курси з вільним текстом), або для
 // теми взагалі немає готових <g>-завдань.
+// Пул діалогів ОДНОГО уроку (на відміну від buildDialogueBonusPool —
+// той бере union усієї глави). lesson.dlgCards може містити кілька
+// карток, тому бонус-урок теж працює з повним пулом (за SM-2-пріоритетом),
+// а не лише з тією однією, що потрапила в звичайний lesson-flow.
+function buildModuleDialoguePool(lesson){
+  const allDlg = typeof DIALOGE !== 'undefined' ? DIALOGE : [];
+  if(!allDlg.length || !(lesson.dlgCards||[]).length) return [];
+  const ids = new Set(lesson.dlgCards);
+  const cards = allDlg.filter(d=>ids.has(d.id));
+  if(!cards.length) return [];
+  const state = srLoadState();
+  return cards.slice().sort((a,b)=>srPriorityFromState(state,b.id)-srPriorityFromState(state,a.id));
+}
+
+function startModuleDialogueBonus(lessonId){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const lesson  = lessons.find(l=>l.id===lessonId);
+  if(!lesson) return;
+  const pool = buildModuleDialoguePool(lesson);
+  if(!pool.length){
+    notify('⚠️ '+(uiLang==='uk'?'Немає діалогів для цього уроку':uiLang==='ru'?'Нет диалогов для этого урока':uiLang==='en'?'No dialogues for this lesson':'Keine Dialoge für diese Lektion'));
+    return;
+  }
+  const title = {
+    de:'Dialog: '+(lesson.title?.de||''), uk:'Діалог: '+(lesson.title?.uk||''),
+    en:'Dialogue: '+(lesson.title?.en||''), ru:'Диалог: '+(lesson.title?.ru||''),
+  };
+  _runBonusLessonFlow({
+    id: '_dlg_module_'+lesson.id,
+    title,
+    _isBonusLesson: true,
+    _bonusForLessonId: lesson.id,
+    steps: ['dlg_learn', 'result'],
+    _dlgBonusPool: pool,
+  });
+}
+
+// Картка "Діалог" ОДРАЗУ під уроком (не раз на главу в кінці, як
+// раніше renderChapterDialogueBonusCard) — щойно в lesson.dlgCards є
+// хоч одна картка, прив'язана до ЦЬОГО модуля. Та сама умова
+// розблокування, що й Бонус: Граматика/Словник (lessonUnlocked) —
+// з'являється разом з рештою бонусів модуля, щойно урок доступний.
+function renderModuleDialogueCard(lesson){
+  if(!lessonUnlocked(lesson)) return '';
+  const pool = buildModuleDialoguePool(lesson);
+  if(!pool.length) return '';
+  const label = {
+    de:'Dialog',  uk:'Діалог',
+    en:'Dialogue', ru:'Диалог',
+  }[uiLang] || 'Dialog';
+  const sub = {
+    de: pool.length+' Dialoge', uk: pool.length+' '+(pool.length===1?'діалог':'діалоги'),
+    en: pool.length+' dialogue'+(pool.length===1?'':'s'), ru: pool.length+' '+(pool.length===1?'диалог':'диалога'),
+  }[uiLang] || pool.length+' Dialoge';
+  return `<div class="lp-module lp-module-bonus" onclick="startModuleDialogueBonus('${lesson.id}')">
+    <div class="lp-module-icon">💬</div>
+    <div class="lp-module-body">
+      <div class="lp-module-title">${label}</div>
+      <div class="lp-module-meta">${sub}</div>
+    </div>
+  </div>`;
+}
+
 function renderGrammarBonusCard(lesson){
   if(!lessonUnlocked(lesson)) return '';
   const topic = getModuleGrammarTopic(lesson);
@@ -9764,13 +9817,29 @@ function _dlgCardTurns(card){
 // окремі непов'язані діалоги, а не продовження один одного; УСЕРЕДИНІ
 // однієї картки (q, a, q1, a1, q2, a2, ...) репліки, навпаки, НАКОПИЧУЮТЬСЯ
 // в одному транскрипті.
+//
+// Якщо в картки заповнене поле task (контекст/умова діалогу, напр.
+// "Ви консультант, який радить колезі...") — воно стає ОКРЕМИМ першим
+// юнітом (kind:'dlg_task'), перед усіма репліками, і саме воно тепер
+// "забирає" isFirstOfCard (перша репліка діалогу після нього вже НЕ
+// очищає транскрипт — task лишається видимим зверху, репліки додаються
+// під ним).
+function _hasNonEmptyTask(card){
+  return !!(card.task && Object.keys(card.task).some(function(l){
+    return card.task[l] && String(card.task[l]).trim();
+  }));
+}
 function _dlgCardsToUnits(cards){
   const units = [];
   (cards||[]).forEach(function(card){
+    const hasTask = _hasNonEmptyTask(card);
+    if(hasTask){
+      units.push({ kind: 'dlg_task', cardId: card.id, card: card, isFirstOfCard: true });
+    }
     _dlgCardTurns(card).forEach(function(turn, i){
       units.push({
         kind: 'dlg', cardId: card.id, side:'main', card: card,
-        field: turn.field, speakerRole: turn.role, isFirstOfCard: i===0,
+        field: turn.field, speakerRole: turn.role, isFirstOfCard: (i===0 && !hasTask),
       });
     });
   });
@@ -9891,15 +9960,32 @@ var _lfDlgHandlers = {
     if(!body) return;
     body.classList.add('lf-dlg-mode');
 
-    var text   = card[unit.field]?.[pl] || '';
-    var textTr = ul !== pl ? (card[unit.field]?.[ul] || '') : '';
-    var speakerId = unit.speakerRole==='q' ? card.name_q : card.name_a;
-    var speaker = characterName(speakerId);
-    var avatar = characterAvatar(speakerId);
-    var bubbleCls = unit.speakerRole==='q' ? 'lf-dlg-bubble-q' : 'lf-dlg-bubble-a';
-    var rowCls = unit.speakerRole==='q' ? 'lf-dlg-row-q' : 'lf-dlg-row-a';
+    var isTask = unit.kind === 'dlg_task';
+    var text   = isTask ? (card.task?.[pl] || '') : (card[unit.field]?.[pl] || '');
+    var textTr = ul !== pl ? (isTask ? (card.task?.[ul] || '') : (card[unit.field]?.[ul] || '')) : '';
+    var speakerId = isTask ? null : (unit.speakerRole==='q' ? card.name_q : card.name_a);
+    var speaker = isTask ? '' : characterName(speakerId);
+    var avatar  = isTask ? '' : characterAvatar(speakerId);
+    var bubbleCls = isTask ? '' : (unit.speakerRole==='q' ? 'lf-dlg-bubble-q' : 'lf-dlg-bubble-a');
+    var rowCls    = isTask ? '' : (unit.speakerRole==='q' ? 'lf-dlg-row-q' : 'lf-dlg-row-a');
 
     function buildBubble(){
+      // Завдання (task) — контекст ПЕРЕД діалогом: дизайн як повідомлення
+      // (той самий шрифт/переклад під оригіналом), але БЕЗ аватарки й
+      // БЕЗ підпису імені (це не репліка персонажа), і на всю ширину
+      // картки — а не вузька бульбашка з місцем під аватар збоку.
+      if(isTask){
+        return '<div class="lf-dlg-task lf-bubble-in">'+
+          '<div class="lf-unit-main-row">'+
+            '<div class="lf-unit-sentence">'+text+'</div>'+
+          '</div>'+
+          (textTr ?
+            '<div class="lf-unit-main-row">'+
+              '<div class="lf-unit-sentence-tr">'+textTr+'</div>'+
+            '</div>'
+          : '')+
+        '</div>';
+      }
       return '<div class="lf-dlg-row '+rowCls+' lf-bubble-in">'+
         (avatar ? '<img class="lf-dlg-avatar" src="'+avatar+'" alt="'+speaker+'">' : '')+
         '<div class="lf-dlg-bubble '+bubbleCls+'">'+
@@ -9951,6 +10037,9 @@ var _lfDlgHandlers = {
   getAudioText: function(unit){
     var card = unit.card;
     var pl = primaryLang();
+    if(unit.kind === 'dlg_task'){
+      return [{ text: card.task?.[pl]||'', field: 'task' }];
+    }
     return [{ text: card[unit.field]?.[pl]||'', field: unit.field }];
   },
 

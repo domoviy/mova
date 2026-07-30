@@ -1243,6 +1243,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_013",
       "sbs_014"
+    ],
+    "dlgCards": [
+      "dlg_040"
     ]
   },
   {
@@ -1320,6 +1323,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_027",
       "sbs_028"
+    ],
+    "dlgCards": [
+      "dlg_041"
     ]
   },
   {
@@ -7919,6 +7925,250 @@ var DIALOGE = [
       "ru": "Именно так. Думаю, так она почувствует себя желанной гостьей с самого начала - в конце концов, хорошая культура приветствия как минимум так же важна, как и сами формальности. Я коротко сообщу ресепшену и сразу этим займусь."
     },
     "gram": "vergleichssaetze_als_wie_je_desto"
+  },
+{
+    "id": "dlg_040",
+    "cat": "Herzlich willkommen",
+    "task": {
+      "de": "Eine neue Kollegin ist sehr zurückhaltend und beteiligt sich kaum an Gesprächen in der Pause. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "A new colleague is very reserved and hardly takes part in conversations during breaks. Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Нова колега дуже стримана і майже не бере участі в розмовах під час перерв. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Новая коллега очень сдержанная и почти не участвует в разговорах во время перерывов. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Wir haben ein Problem: Unsere neue Kollegin, Frau Berger, ist sehr zurückhaltend und beteiligt sich in der Kaffeepause fast nie an der Unterhaltung. Ich glaube, <g>es</g> fällt ihr schwer, sich bei uns wirklich wohlzufühlen.",
+      "en": "We have a problem: our new colleague, Ms. Berger, is very reserved and almost never joins the conversation during the coffee break. I think it's hard for her to really feel comfortable with us.",
+      "uk": "У нас проблема: наша нова колега, пані Бергер, дуже стримана і майже ніколи не бере участі в розмові під час кавової перерви. Гадаю, їй важко по-справжньому відчути себе комфортно серед нас.",
+      "ru": "У нас проблема: наша новая коллега, госпожа Бергер, очень сдержанная и почти никогда не участвует в разговоре во время кофе-паузы. Думаю, ей трудно по-настоящему почувствовать себя комфортно среди нас."
+    },
+    "a": {
+      "de": "<r>Habe ich dich richtig verstanden</r>: <g>Es</g> geht also darum, dass wir sie noch nicht richtig ins Team integriert haben?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that we haven't really integrated her into the team yet?",
+      "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що ми ще не по-справжньому інтегрували її в команду?",
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что мы ещё по-настоящему не интегрировали её в команду?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welche Folgen hätte das, wenn sie sich weiterhin so ausgeschlossen fühlt?",
+      "en": "Exactly. What do you think, what consequences would that have if she keeps feeling excluded like this?",
+      "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо вона й надалі почуватиметься так відсторонено?",
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если она и дальше будет чувствовать себя так отстранённо?"
+    },
+    "a1": {
+      "de": "Ich glaube, dass sie sich dann irgendwann innerlich vom Team distanziert, obwohl ihre fachliche Arbeit eigentlich sehr gut ist.",
+      "en": "I think that at some point she'll distance herself internally from the team, even though her professional work is actually very good.",
+      "uk": "Гадаю, тоді вона з часом внутрішньо віддалиться від команди, хоча її фахова робота насправді дуже гарна.",
+      "ru": "Думаю, тогда она со временем внутренне отдалится от команды, хотя её профессиональная работа на самом деле очень хорошая."
+    },
+    "q2": {
+      "de": "<r>Wie wäre es, wenn wir</r> versuchen, eine Gemeinsamkeit zu finden, über die wir mit ihr ins Gespräch kommen können?",
+      "en": "<r>How about we</r> try to find some common ground we could use to start a conversation with her?",
+      "uk": "<r>Що якщо ми</r> спробуємо знайти якусь спільну тему, через яку зможемо з нею розговоритися?",
+      "ru": "<r>Что если мы</r> попробуем найти какую-то общую тему, через которую сможем с ней разговориться?"
+    },
+    "a2": {
+      "de": "Das <r>ist sicherlich sinnvoll, da</r> ein gemeinsames Thema oft hilft, das Eis zu brechen. Weißt du eigentlich, wofür sie sich interessiert?",
+      "en": "That <r>certainly makes sense</r>, since a shared topic often helps break the ice. Do you actually know what she's interested in?",
+      "uk": "Це, <r>безумовно, розумно</r>, бо спільна тема часто допомагає розтопити кригу. А ти взагалі знаєш, чим вона цікавиться?",
+      "ru": "Это, <r>безусловно, разумно</r>, потому что общая тема часто помогает растопить лёд. А ты вообще знаешь, чем она интересуется?"
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, sie einfach mal ganz offen und taktvoll auf ihre Interessen anzusprechen, ohne zu aufdringlich zu wirken.",
+      "en": "Another suggestion would be to just openly and tactfully ask her about her interests, without coming across as too pushy.",
+      "uk": "Ще одна пропозиція - просто відкрито й тактовно запитати про її інтереси, не виглядаючи занадто нав'язливо.",
+      "ru": "Ещё одно предложение - просто открыто и тактично спросить о её интересах, не выглядя слишком навязчиво."
+    },
+    "a3": {
+      "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass manche Menschen es als unangenehm empfinden, direkt nach Persönlichem gefragt zu werden.",
+      "en": "<r>One argument against that is</r> that some people find it uncomfortable to be asked directly about personal things.",
+      "uk": "<r>Аргумент проти цього</r> полягає в тому, що деяким людям неприємно, коли їх прямо запитують про особисте.",
+      "ru": "<r>Аргумент против этого</r> в том, что некоторым людям неприятно, когда их напрямую спрашивают о личном."
+    },
+    "q4": {
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir erst mal eine lockere, informelle Atmosphäre schaffen, ohne sie sofort etwas Persönliches zu fragen.",
+      "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> first creating a relaxed, informal atmosphere, without immediately asking her anything personal.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми спершу створимо невимушену, неформальну атмосферу, не запитуючи одразу нічого особистого.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы сначала создадим непринуждённую, неформальную атмосферу, не спрашивая сразу ничего личного."
+    },
+    "a4": {
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. <g>Es</g> ist wichtig, ihr Zeit zu lassen, damit sie sich von selbst öffnet.",
+      "en": "<r>I completely agree with you</r>. It's important to give her time, so she can open up on her own.",
+      "uk": "<r>Тут я з тобою цілком згоден</r>. Важливо дати їй час, щоб вона розкрилася сама.",
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Важно дать ей время, чтобы она раскрылась сама."
+    },
+    "q5": {
+      "de": "Zusätzlich könnten wir sie aktiv zu unseren informellen Teamaktivitäten einladen, ohne dabei zu viel Druck aufzubauen.",
+      "en": "In addition, we could actively invite her to our informal team activities, without putting too much pressure on her.",
+      "uk": "Крім того, ми могли б активно запрошувати її на наші неформальні командні заходи, не створюючи при цьому зайвого тиску.",
+      "ru": "Кроме того, мы могли бы активно приглашать её на наши неформальные командные мероприятия, не создавая при этом лишнего давления."
+    },
+    "a5": {
+      "de": "Das <r>halte ich für einen guten Punkt</r>. <g>Es</g> gibt bestimmt kleine Gesten, die eine Verbindung herstellen, ohne dass es ihr unangenehm wird.",
+      "en": "<r>I think that's a good point</r>. There are surely small gestures that can establish a connection without making her uncomfortable.",
+      "uk": "<r>Вважаю це гарною думкою</r>. Напевно, є маленькі жести, які можуть створити зв'язок, не змушуючи її почуватися незручно.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Наверняка есть маленькие жесты, которые могут создать связь, не заставляя её чувствовать себя неловко."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich spreche sie morgen in der Pause ganz beiläufig auf ihre Freizeit an, und du lädst sie zum gemeinsamen Mittagessen ein. Einverstanden?",
+      "en": "Let's split up the tasks: tomorrow I'll casually ask her about her free time during the break, and you invite her to have lunch together. Agreed?",
+      "uk": "Давай розподілимо завдання: завтра я невимушено запитаю в неї про дозвілля під час перерви, а ти запросиш її на спільний обід. Домовились?",
+      "ru": "Давай разделим задачи: завтра я непринуждённо спрошу у неё о досуге во время перерыва, а ты пригласишь её на совместный обед. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, das schon morgen früh zu machen?",
+      "en": "Agreed. Do you intend to do that already tomorrow morning?",
+      "uk": "Згоден. Ти маєш намір зробити це вже завтра вранці?",
+      "ru": "Согласен. Ты намерена сделать это уже завтра утром?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn wir das schon in der ersten Pause versuchen?",
+      "en": "Yes, would it be realistic if we try that already during the first break?",
+      "uk": "Так, чи буде реалістично, якщо ми спробуємо це вже під час першої перерви?",
+      "ru": "Да, будет ли реалистично, если мы попробуем это уже во время первого перерыва?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein, solange wir dabei wirklich locker und offen bleiben.",
+      "en": "That should be feasible, as long as we really stay relaxed and open about it.",
+      "uk": "Це має бути здійсненно, якщо ми справді залишимося невимушеними й відкритими.",
+      "ru": "Это должно быть выполнимо, если мы действительно останемся непринуждёнными и открытыми."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir schaffen eine entspannte Atmosphäre, sprechen sie taktvoll auf gemeinsame Interessen an und laden sie zu informellen Aktivitäten ein, damit sie sich im Team wohler fühlt.",
+      "en": "Let's summarize: we'll create a relaxed atmosphere, tactfully ask her about shared interests, and invite her to informal activities, so she feels more comfortable on the team.",
+      "uk": "Підсумуємо: ми створюємо невимушену атмосферу, тактовно запитуємо про спільні інтереси і запрошуємо її на неформальні заходи, щоб вона почувалася комфортніше в команді.",
+      "ru": "Подведём итог: мы создаём непринуждённую атмосферу, тактично спрашиваем об общих интересах и приглашаем её на неформальные мероприятия, чтобы она чувствовала себя комфортнее в команде."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, so zeigen wir ihr echtes Interesse, ohne sie zu bedrängen - das dürfte langfristig eine gute Verbindung schaffen. Ich spreche gleich morgen mit ihr über das Mittagessen.",
+      "en": "Exactly. I think that way we show her genuine interest without pressuring her - that should build a good connection in the long run. I'll talk to her about lunch first thing tomorrow.",
+      "uk": "Саме так. Гадаю, так ми покажемо їй щирий інтерес, не тиснучи на неї - це має з часом створити гарний зв'язок. Я поговорю з нею про обід уже завтра вранці.",
+      "ru": "Именно так. Думаю, так мы покажем ей искренний интерес, не давя на неё - это должно со временем создать хорошую связь. Я поговорю с ней об обеде уже завтра утром."
+    },
+    "gram": "es_pronomen"
+  },
+{
+    "id": "dlg_041",
+    "cat": "Arbeitsaufträge",
+    "task": {
+      "de": "Ein Kollege hat drei neue Arbeitsaufträge bekommen, obwohl er schon zwei dringende Deadlines hat. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "A colleague has received three new work assignments even though he already has two urgent deadlines. Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Колега отримав три нових робочих доручення, хоча в нього вже є два термінові дедлайни. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Коллега получил три новых рабочих поручения, хотя у него уже есть два срочных дедлайна. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_m_mark",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Wir haben ein Problem: Herr Meier hat unserem Kollegen Lukas heute drei neue Arbeitsaufträge gegeben, obwohl der bis Freitag schon zwei dringende Deadlines hat. Sein Arbeitspensum ist jetzt einfach zu hoch.",
+      "en": "We have a problem: Mr. Meier gave our colleague Lukas three new work assignments today, even though he already has two urgent deadlines by Friday. His workload is now simply too high.",
+      "uk": "У нас проблема: пан Майєр сьогодні дав нашому колезі Лукасу три нових робочих доручення, хоча в того вже є два термінові дедлайни до п'ятниці. Його навантаження зараз просто зашкалює.",
+      "ru": "У нас проблема: господин Майер сегодня дал нашему коллеге Лукасу три новых рабочих поручения, хотя у того уже есть два срочных дедлайна до пятницы. Его нагрузка сейчас просто зашкаливает."
+    },
+    "a": {
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass die Prioritäten der einzelnen Aufträge gar nicht klar sind?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that the priorities of the individual assignments aren't clear at all?",
+      "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що пріоритети окремих доручень взагалі не зрозумілі?",
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что приоритеты отдельных поручений вообще не ясны?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welche Folgen hätte das, wenn Lukas versucht, alles gleichzeitig fristgerecht zu erledigen?",
+      "en": "Exactly. What do you think, what consequences would that have if Lukas tries to finish everything on time at the same time?",
+      "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо Лукас спробує виконати все одночасно й вчасно?",
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если Лукас попробует выполнить всё одновременно и вовремя?"
+    },
+    "a1": {
+      "de": "Ich glaube, dass dann am Ende gar nichts richtig fertig wird, weil er ständig zwischen den Aufgaben hin- und herspringen müsste.",
+      "en": "I think that in the end nothing would really get finished properly, because he'd constantly have to jump back and forth between the tasks.",
+      "uk": "Гадаю, тоді врешті-решт нічого не буде зроблено як слід, бо йому доведеться постійно перемикатися між завданнями.",
+      "ru": "Думаю, тогда в итоге ничего не будет сделано как следует, потому что ему придётся постоянно переключаться между задачами."
+    },
+    "q2": {
+      "de": "<r>Wie wäre es, wenn wir</r> mit Herrn Meier sprechen und ihn bitten, die neuen Aufträge nach Priorität zu ordnen?",
+      "en": "<r>How about we</r> talk to Mr. Meier and ask him to rank the new assignments by priority?",
+      "uk": "<r>Що якщо ми</r> поговоримо з паном Майєром і попросимо його розставити нові доручення за пріоритетом?",
+      "ru": "<r>Что если мы</r> поговорим с господином Майером и попросим его расставить новые поручения по приоритету?"
+    },
+    "a2": {
+      "de": "Das <r>ist sicherlich sinnvoll, da</r> Lukas dann wenigstens weiß, was zuerst erledigt werden muss. Weißt du, bis wann die neuen Aufträge fertig sein sollen?",
+      "en": "That <r>certainly makes sense</r>, since then Lukas would at least know what needs to be done first. Do you know by when the new assignments are supposed to be done?",
+      "uk": "Це, <r>безумовно, розумно</r>, бо тоді Лукас хоча б знатиме, що робити першим. Ти знаєш, до якого терміну мають бути готові нові доручення?",
+      "ru": "Это, <r>безусловно, разумно</r>, потому что тогда Лукас хотя бы будет знать, что делать в первую очередь. Ты знаешь, к какому сроку должны быть готовы новые поручения?"
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, dass wir einen Teil der Aufgaben an andere Kolleginnen und Kollegen delegieren, die gerade weniger zu tun haben.",
+      "en": "Another suggestion would be for us to delegate some of the tasks to other colleagues who currently have less to do.",
+      "uk": "Ще одна пропозиція - делегувати частину завдань іншим колегам, у яких зараз менше роботи.",
+      "ru": "Ещё одно предложение - делегировать часть задач другим коллегам, у которых сейчас меньше работы."
+    },
+    "a3": {
+      "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass sich dann jemand erst in ein fremdes Thema einarbeiten müsste, was auch wieder Zeit kostet.",
+      "en": "<r>One argument against that is</r> that someone would first have to get familiar with an unfamiliar topic, which also costs time.",
+      "uk": "<r>Аргумент проти цього</r> полягає в тому, що комусь довелося б спершу розібратися в незнайомій темі, а це теж займає час.",
+      "ru": "<r>Аргумент против этого</r> в том, что кому-то сначала пришлось бы разобраться в незнакомой теме, а это тоже занимает время."
+    },
+    "q4": {
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir nur die einfacheren Teilaufgaben delegieren und Lukas die komplexeren Aufträge selbst bearbeiten lässt.",
+      "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> only delegating the simpler subtasks and letting Lukas handle the more complex assignments himself.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми делегуємо лише простіші підзавдання, а складніші доручення Лукас виконає сам.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы делегируем только более простые подзадачи, а более сложные поручения Лукас выполнит сам."
+    },
+    "a4": {
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. So bleibt die Zuständigkeit klar, und trotzdem wird das Arbeitspensum spürbar kleiner.",
+      "en": "<r>I completely agree with you</r>. That way responsibility stays clear, and the workload still gets noticeably smaller.",
+      "uk": "<r>Тут я з тобою цілком згоден</r>. Так зона відповідальності залишається чіткою, а навантаження все одно помітно зменшується.",
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Так зона ответственности остаётся чёткой, а нагрузка всё равно заметно уменьшается."
+    },
+    "q5": {
+      "de": "Zusätzlich sollten wir Herrn Meier bitten, neue Anweisungen künftig lieber schriftlich statt nur mündlich zu geben, damit nichts untergeht.",
+      "en": "In addition, we should ask Mr. Meier to give new instructions in writing rather than just verbally from now on, so nothing gets lost.",
+      "uk": "Крім того, варто попросити пана Майєра надалі давати нові інструкції письмово, а не лише усно, щоб нічого не загубилося.",
+      "ru": "Кроме того, стоит попросить господина Майера впредь давать новые инструкции письменно, а не только устно, чтобы ничего не терялось."
+    },
+    "a5": {
+      "de": "Das <r>halte ich für einen guten Punkt</r>. Dann können wir auch besser überprüfen, was schon erledigt ist und was noch aussteht.",
+      "en": "<r>I think that's a good point</r>. Then we can also better check what's already done and what's still outstanding.",
+      "uk": "<r>Вважаю це гарною думкою</r>. Тоді ми також зможемо краще перевіряти, що вже зроблено, а що ще залишається.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Тогда мы также сможем лучше проверять, что уже сделано, а что ещё остаётся."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich spreche mit Herrn Meier über die Prioritäten, und du fragst im Team nach, wer aktuell Kapazität für zusätzliche Aufgaben hat. Einverstanden?",
+      "en": "Let's split up the tasks: I'll talk to Mr. Meier about the priorities, and you ask around the team who currently has capacity for additional tasks. Agreed?",
+      "uk": "Давай розподілимо завдання: я поговорю з паном Майєром про пріоритети, а ти запитаєш у команди, хто зараз має ресурс для додаткових завдань. Домовились?",
+      "ru": "Давай разделим задачи: я поговорю с господином Майером о приоритетах, а ты спросишь у команды, у кого сейчас есть ресурс для дополнительных задач. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, das Gespräch noch heute zu führen?",
+      "en": "Agreed. Do you intend to have that conversation already today?",
+      "uk": "Домовились. Ти маєш намір провести цю розмову вже сьогодні?",
+      "ru": "Договорились. Ты намерен провести этот разговор уже сегодня?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn wir das noch vor der Teambesprechung klären?",
+      "en": "Yes, would it be realistic if we sort that out before the team meeting?",
+      "uk": "Так, чи буде реалістично, якщо ми владнаємо це ще до наради команди?",
+      "ru": "Да, будет ли реалистично, если мы уладим это ещё до совещания команды?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein, solange Herr Meier heute Nachmittag noch Zeit hat.",
+      "en": "That should be feasible, as long as Mr. Meier still has time this afternoon.",
+      "uk": "Це має бути здійсненно, якщо в пана Майєра ще є час сьогодні пополудні.",
+      "ru": "Это должно быть выполнимо, если у господина Майера ещё есть время сегодня после обеда."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir klären die Prioritäten mit Herrn Meier, delegieren die einfacheren Teilaufgaben und bitten künftig um schriftliche Anweisungen, damit Lukas' Arbeitspensum wieder machbar wird.",
+      "en": "Let's summarize: we'll clarify the priorities with Mr. Meier, delegate the simpler subtasks, and ask for written instructions from now on, so Lukas's workload becomes manageable again.",
+      "uk": "Підсумуємо: ми узгоджуємо пріоритети з паном Майєром, делегуємо простіші підзавдання і надалі просимо письмові інструкції, щоб навантаження Лукаса знову стало посильним.",
+      "ru": "Подведём итог: мы согласовываем приоритеты с господином Майером, делегируем более простые подзадачи и впредь просим письменные инструкции, чтобы нагрузка Лукаса снова стала посильной."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, so behält Lukas den Überblick, ohne dass die Deadlines gefährdet sind. Ich notiere die wichtigsten Punkte im Protokoll und schicke sie dir gleich nach dem Gespräch.",
+      "en": "Exactly. I think that way Lukas keeps an overview without the deadlines being at risk. I'll note the key points in the minutes and send them to you right after the conversation.",
+      "uk": "Саме так. Гадаю, так Лукас збереже контроль над ситуацією, а дедлайни не постраждають. Я занотую головні пункти в протоколі і надішлю тобі одразу після розмови.",
+      "ru": "Именно так. Думаю, так Лукас сохранит контроль над ситуацией, а дедлайны не пострадают. Я запишу главные пункты в протокол и отправлю тебе сразу после разговора."
+    },
+    "gram": ""
   }
 ];
 
