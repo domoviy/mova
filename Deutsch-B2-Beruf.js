@@ -469,7 +469,9 @@ var LESSONS = [
       "sbs_007"
     ],
     "dlgCards": [
-      "dlg_029"
+      "dlg_029",
+      "dlg_037",
+      "dlg_038"
     ]
   },
   {
@@ -1158,6 +1160,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_036",
       "sbs_037"
+    ],
+    "dlgCards": [
+      "dlg_039"
     ]
   },
   {
@@ -7692,6 +7697,228 @@ var DIALOGE = [
       "ru": "Именно так. Думаю, так мы покажем ему, что серьёзно относимся к его инициативной заявке - это точно оставит хорошее впечатление. Я коротко подведу итоги и отправлю их тебе сегодня же."
     },
     "gram": ""
+  },
+{
+    "id": "dlg_037",
+    "cat": "Arbeitsweg",
+    "task": {
+      "de": "Thema: Arbeitsweg – „Wie kommst du eigentlich jeden Tag zur Arbeit?“",
+      "en": "Topic: Commute – \"How do you actually get to work every day?\"",
+      "uk": "Тема: Дорога на роботу – «Як ти взагалі щодня добираєшся до роботи?»",
+      "ru": "Тема: Дорога на работу – «Как ты вообще каждый день добираешься до работы?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag mal, wie kommst du eigentlich jeden Tag zur Arbeit? Fährst du mit dem Auto oder nimmst du die Bahn?",
+      "en": "Tell me, how do you actually get to work every day? Do you drive or take the train?",
+      "uk": "Скажи, а як ти взагалі щодня добираєшся до роботи? Їздиш на машині чи потягом?",
+      "ru": "Скажи, а как ты вообще каждый день добираешься до работы? На машине или на поезде?"
+    },
+    "a": {
+      "de": "Ich fahre meistens mit dem Zug, das dauert ungefähr vierzig Minuten. Ehrlich gesagt lese ich in der Zeit ganz gern oder höre einen Podcast. Und wie sieht das bei dir aus, fährst du auch mit dem Zug?",
+      "en": "I mostly take the train, it takes about forty minutes. Honestly, I quite like reading during that time, or I listen to a podcast. What about you, do you take the train too?",
+      "uk": "Я здебільшого їжджу потягом, це займає хвилин сорок. Чесно кажучи, я люблю в цей час почитати або послухати подкаст. А в тебе як, теж потягом їздиш?",
+      "ru": "Я в основном езжу на поезде, это занимает минут сорок. Честно говоря, я люблю в это время почитать или послушать подкаст. А у тебя как, тоже на поезде?"
+    },
+    "q1": {
+      "de": "Nein, ich wohne relativ nah am Büro, deshalb fahre ich meistens mit dem Fahrrad, wenn das Wetter mitspielt. Bei Regen nehme ich den Bus. Stört es dich eigentlich nicht, dass die Fahrt jeden Tag so lange dauert?",
+      "en": "No, I live pretty close to the office, so I mostly ride my bike when the weather cooperates. When it rains I take the bus. Doesn't it bother you that the ride takes so long every day?",
+      "uk": "Ні, я живу досить близько до офісу, тому здебільшого їжджу на велосипеді, якщо погода дозволяє. А коли дощить, їду автобусом. А тебе не дратує, що дорога щодня займає стільки часу?",
+      "ru": "Нет, я живу довольно близко к офису, поэтому обычно езжу на велосипеде, если погода позволяет. А когда дождь, еду на автобусе. А тебя не раздражает, что дорога каждый день занимает так много времени?"
+    },
+    "a1": {
+      "de": "Am Anfang fand ich das schon anstrengend, aber mittlerweile habe ich mich richtig daran gewöhnt. Ich nutze die Zeit einfach produktiv. Radfahren klingt aber auch toll, das hält bestimmt fit, oder?",
+      "en": "At first I found it pretty exhausting, but by now I've really gotten used to it. I just use the time productively. Biking sounds great too though, that must keep you fit, right?",
+      "uk": "Спочатку мені було це важкувато, але зараз я вже цілком звик. Просто використовую цей час продуктивно. Але велосипед - це теж класно, це, мабуть, тримає тебе у формі, так?",
+      "ru": "Сначала мне было это тяжеловато, но сейчас я уже полностью привык. Просто использую это время продуктивно. Но велосипед - это тоже здорово, это, наверное, держит тебя в форме, да?"
+    },
+    "q2": {
+      "de": "Ja, total, und ich spare mir dadurch sogar den Weg ins Fitnessstudio. Aber bei Schnee oder Glätte im Winter wird es schon manchmal ungemütlich.",
+      "en": "Yeah, totally, and it even saves me a trip to the gym. But when there's snow or ice in winter it does get a bit unpleasant sometimes.",
+      "uk": "Так, дуже, і я навіть заощаджую на поході в спортзал. Але взимку, коли сніг чи ожеледиця, буває доволі неприємно.",
+      "ru": "Да, очень, и я даже экономлю на походе в спортзал. Но зимой, когда снег или гололёд, бывает довольно неприятно."
+    },
+    "a2": {
+      "de": "Das kann ich mir vorstellen. Ich bin froh, dass ich im Winter einfach im warmen Zug sitzen kann und mich um nichts kümmern muss.",
+      "en": "I can imagine. I'm glad that in winter I can just sit in the warm train and not have to worry about anything.",
+      "uk": "Можу собі уявити. Я радий, що взимку можу просто сидіти в теплому потязі і ні про що не переживати.",
+      "ru": "Могу себе представить. Я рад, что зимой могу просто сидеть в тёплом поезде и ни о чём не переживать."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_038",
+    "cat": "Wochenende",
+    "task": {
+      "de": "Thema: Wochenende – „Hast du schon Pläne für dieses Wochenende?“",
+      "en": "Topic: Weekend – \"Do you already have plans for this weekend?\"",
+      "uk": "Тема: Вихідні – «У тебе вже є плани на ці вихідні?»",
+      "ru": "Тема: Выходные – «У тебя уже есть планы на эти выходные?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag mal, hast du schon Pläne für dieses Wochenende?",
+      "en": "Tell me, do you already have plans for this weekend?",
+      "uk": "Скажи, у тебе вже є плани на ці вихідні?",
+      "ru": "Скажи, у тебя уже есть планы на эти выходные?"
+    },
+    "a": {
+      "de": "Am Samstag fahre ich mit meiner Familie zu meinen Eltern aufs Land, das machen wir eigentlich fast jedes zweite Wochenende. Am Sonntag will ich dann aber wirklich mal ausschlafen und es mir zu Hause gemütlich machen. Und du, hast du schon etwas vor?",
+      "en": "On Saturday I'm going to the countryside with my family to visit my parents, we actually do that almost every other weekend. On Sunday though I really want to sleep in and just relax at home. What about you, do you have anything planned already?",
+      "uk": "У суботу ми з родиною їдемо за місто до моїх батьків, ми взагалі робимо це майже кожні вихідні через одні. А в неділю я справді хочу виспатися і просто відпочити вдома. А в тебе вже є якісь плани?",
+      "ru": "В субботу мы с семьёй едем за город к моим родителям, мы вообще делаем это почти каждые вторые выходные. А в воскресенье я действительно хочу выспаться и просто отдохнуть дома. А у тебя уже есть какие-то планы?"
+    },
+    "q1": {
+      "de": "Noch nicht wirklich konkret, aber ich möchte auf jeden Fall etwas draußen unternehmen, weil das Wetter so schön werden soll. Vielleicht gehe ich wandern oder treffe mich einfach mit Freunden im Park.",
+      "en": "Not really anything concrete yet, but I definitely want to do something outdoors since the weather's supposed to be nice. Maybe I'll go hiking or just meet up with friends in the park.",
+      "uk": "Поки що нічого конкретного, але я точно хочу щось зробити на свіжому повітрі, бо погода начебто буде гарна. Може, піду в похід або просто зустрінуся з друзями в парку.",
+      "ru": "Пока ничего конкретного, но я точно хочу сделать что-то на свежем воздухе, потому что погода вроде обещает быть хорошей. Может, пойду в поход или просто встречусь с друзьями в парке."
+    },
+    "a1": {
+      "de": "Das klingt nach einem schönen Ausgleich zur Arbeitswoche. Kochst du dann sonntags auch gerne, oder bestellt ihr euch eher etwas?",
+      "en": "That sounds like a nice balance to the work week. Do you enjoy cooking on Sundays too, or do you usually order something instead?",
+      "uk": "Звучить як гарний баланс після робочого тижня. А в неділю ти любиш готувати, чи ви радше щось замовляєте?",
+      "ru": "Звучит как хороший баланс после рабочей недели. А в воскресенье ты любишь готовить, или вы скорее что-то заказываете?"
+    },
+    "q2": {
+      "de": "Sonntags koche ich total gerne, meistens etwas Einfaches. Das ist für mich fast schon ein kleines Ritual geworden. Und was machst du normalerweise, wenn du mal so richtig entspannen willst?",
+      "en": "I really enjoy cooking on Sundays, usually something simple. It's become almost a little ritual for me. And what do you usually do when you really want to relax?",
+      "uk": "У неділю я дуже люблю готувати, зазвичай щось просте. Це для мене вже стало майже маленьким ритуалом. А що зазвичай робиш ти, коли хочеш по-справжньому відпочити?",
+      "ru": "По воскресеньям я очень люблю готовить, обычно что-то простое. Это для меня уже стало почти маленьким ритуалом. А что обычно делаешь ты, когда хочешь по-настоящему отдохнуть?"
+    },
+    "a2": {
+      "de": "Ich lese auch total gerne, am liebsten mit einer Tasse Kaffee auf dem Balkon, wenn die Sonne scheint. Das ist für mich der perfekte Ausgleich nach einer stressigen Woche.",
+      "en": "I also love reading, ideally with a cup of coffee on the balcony when the sun's out. That's the perfect balance for me after a stressful week.",
+      "uk": "Я теж дуже люблю читати, найкраще з чашкою кави на балконі, коли світить сонце. Для мене це ідеальний спосіб відновитися після напруженого тижня.",
+      "ru": "Я тоже очень люблю читать, лучше всего с чашкой кофе на балконе, когда светит солнце. Для меня это идеальный способ восстановиться после напряжённой недели."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_039",
+    "cat": "Der erste Arbeitstag",
+    "task": {
+      "de": "Ihre neue Kollegin fängt heute an, aber ihr Passwort und ihr Schlüssel für den Arbeitsplatz sind noch nicht bereit. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "Your new colleague starts today, but her password and her key for the workplace aren't ready yet. Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Ваша нова колега сьогодні починає роботу, але її пароль і ключ від робочого місця ще не готові. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Ваша новая коллега сегодня начинает работу, но её пароль и ключ от рабочего места ещё не готовы. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_m_david",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Wir haben ein Problem: Die neue Kollegin, Frau Yilmaz, fängt heute an, aber ihr Passwort für den Computer ist noch nicht eingerichtet, und ihren Schlüssel für den Arbeitsplatz hat sie auch noch nicht bekommen.",
+      "en": "We have a problem: our new colleague, Ms. Yilmaz, starts today, but her password for the computer hasn't been set up yet, and she hasn't received her key for the workplace either.",
+      "uk": "У нас проблема: наша нова колега, пані Йилмаз, сьогодні виходить на роботу, але її пароль для комп'ютера ще не налаштований, і ключ від робочого місця вона теж ще не отримала.",
+      "ru": "У нас проблема: наша новая коллега, госпожа Йилмаз, сегодня выходит на работу, но её пароль для компьютера ещё не настроен, и ключ от рабочего места она тоже ещё не получила."
+    },
+    "a": {
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass sie an ihrem ersten Tag weder ins System noch ins Büro richtig reinkommt?",
+      "en": "<r>Did I understand you correctly</r>: so the issue is that on her first day she can get into neither the system nor the office properly?",
+      "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться про те, що в перший день вона не може нормально потрапити ні в систему, ні в офіс?",
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что в первый день она не может нормально попасть ни в систему, ни в офис?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welchen Eindruck macht das auf sie, wenn ihr erster Arbeitstag so chaotisch beginnt?",
+      "en": "Exactly. What do you think, what impression does that make on her if her first day starts off so chaotically?",
+      "uk": "Саме так. Як ти думаєш, яке враження це на неї справить, якщо перший робочий день почнеться так хаотично?",
+      "ru": "Именно так. Как ты думаешь, какое впечатление это на неё произведёт, если первый рабочий день начнётся так хаотично?"
+    },
+    "a1": {
+      "de": "Ich glaube, das ist schlimmer, <g>als</g> wir denken - der erste Eindruck bleibt meistens lange im Gedächtnis.",
+      "en": "I think that's worse than we think - the first impression usually stays in someone's memory for a long time.",
+      "uk": "Гадаю, це гірше, ніж ми думаємо - перше враження зазвичай надовго залишається в пам'яті.",
+      "ru": "Думаю, это хуже, чем мы думаем - первое впечатление обычно надолго остаётся в памяти."
+    },
+    "q2": {
+      "de": "<r>Wie wäre es, wenn wir</r> sofort die IT-Abteilung anrufen und um eine schnelle Genehmigung für ein vorläufiges Passwort bitten?",
+      "en": "<r>How about we</r> call IT right away and ask for quick approval for a temporary password?",
+      "uk": "<r>Що якщо ми</r> одразу зателефонуємо в ІТ-відділ і попросимо швидкий дозвіл на тимчасовий пароль?",
+      "ru": "<r>Что если мы</r> сразу позвоним в ИТ-отдел и попросим быстрое разрешение на временный пароль?"
+    },
+    "a2": {
+      "de": "Das <r>ist sicherlich sinnvoll, da</r> sie sonst den ganzen Vormittag nichts machen kann. Ich hoffe nur, das geht genauso schnell <g>wie</g> beim letzten Mal.",
+      "en": "That <r>certainly makes sense</r>, since otherwise she can't do anything all morning. I just hope it goes as quickly as it did last time.",
+      "uk": "Це, <r>безумовно, розумно</r>, бо інакше вона нічого не зможе робити цілий ранок. Сподіваюся тільки, що це піде так само швидко, як минулого разу.",
+      "ru": "Это, <r>безусловно, разумно</r>, иначе она ничего не сможет делать всё утро. Надеюсь только, что это пройдёт так же быстро, как в прошлый раз."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, ihr vorübergehend meinen Schlüssel zu leihen, bis die Rezeption einen neuen für sie ausgestellt hat.",
+      "en": "Another suggestion would be to lend her my key temporarily, until reception has issued a new one for her.",
+      "uk": "Ще одна пропозиція - тимчасово позичити їй мій ключ, поки на рецепції не видадуть їй новий.",
+      "ru": "Ещё одно предложение - временно одолжить ей мой ключ, пока на ресепшене не выдадут ей новый."
+    },
+    "a3": {
+      "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass du dann selbst nicht mehr an deinen Arbeitsplatz kommst, wenn du den Schlüssel abgibst.",
+      "en": "<r>One argument against that is</r> that you yourself won't be able to get into your own workplace anymore if you hand over your key.",
+      "uk": "<r>Аргумент проти цього</r> полягає в тому, що ти сам тоді не зможеш потрапити на своє робоче місце, якщо віддаси ключ.",
+      "ru": "<r>Аргумент против этого</r> в том, что ты сам тогда не сможешь попасть на своё рабочее место, если отдашь ключ."
+    },
+    "q4": {
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> die Rezeption uns kurzfristig einen Ersatzschlüssel ausleiht.",
+      "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> having reception lend us a spare key on short notice.",
+      "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо рецепція терміново позичить нам запасний ключ.",
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если ресепшен срочно одолжит нам запасной ключ."
+    },
+    "a4": {
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. <g>Je</g> schneller wir das klären, <g>desto</g> entspannter kann ihr erster Tag noch werden.",
+      "en": "<r>I completely agree with you</r>. The faster we sort this out, the more relaxed her first day can still become.",
+      "uk": "<r>Тут я з тобою цілком згодна</r>. Чим швидше ми це владнаємо, тим спокійнішим ще може стати її перший день.",
+      "ru": "<r>Тут я с тобой полностью согласна</r>. Чем быстрее мы это уладим, тем спокойнее ещё может стать её первый день."
+    },
+    "q5": {
+      "de": "Zusätzlich sollten wir ihr auch gleich das Organigramm und den Dienstplan zeigen, damit sie einen Überblick über die Abteilung bekommt.",
+      "en": "In addition, we should also show her the org chart and the duty roster right away, so she gets an overview of the department.",
+      "uk": "Крім того, варто одразу показати їй органіграму та графік чергувань, щоб вона отримала уявлення про відділ.",
+      "ru": "Кроме того, стоит сразу показать ей органиграмму и график дежурств, чтобы она получила представление об отделе."
+    },
+    "a5": {
+      "de": "Das <r>halte ich für einen guten Punkt</r>. Wir könnten ihr auch gleich die wichtigsten Sicherheitsvorschriften erklären, bevor sie sich im Großraumbüro einlebt.",
+      "en": "<r>I think that's a good point</r>. We could also explain the most important safety rules to her right away, before she settles into the open-plan office.",
+      "uk": "<r>Вважаю це гарною думкою</r>. Ми також могли б одразу пояснити їй найважливіші правила безпеки, перш ніж вона освоїться у відкритому офісі.",
+      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы сразу объяснить ей самые важные правила безопасности, прежде чем она освоится в открытом офисе."
+    },
+    "q6": {
+      "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um das Passwort und den Schlüssel, und du zeigst ihr das Gebäude und die Abteilung. Einverstanden?",
+      "en": "Let's split up the tasks: I'll take care of the password and the key, and you show her the building and the department. Agreed?",
+      "uk": "Давай розподілимо завдання: я займуся паролем і ключем, а ти покажеш їй будівлю і відділ. Домовились?",
+      "ru": "Давай разделим задачи: я займусь паролем и ключом, а ты покажешь ей здание и отдел. Договорились?"
+    },
+    "a6": {
+      "de": "Einverstanden. Hast du die Absicht, die IT-Abteilung noch vor der Begrüßung anzurufen?",
+      "en": "Agreed. Do you intend to call IT already before the welcome?",
+      "uk": "Згодна. Ти маєш намір зателефонувати в ІТ-відділ ще до привітання?",
+      "ru": "Согласна. Ты намерен позвонить в ИТ-отдел ещё до приветствия?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn wir das in den nächsten zehn Minuten klären, bevor sie ankommt?",
+      "en": "Yes, would it be realistic if we sort that out in the next ten minutes, before she arrives?",
+      "uk": "Так, чи буде реалістично, якщо ми владнаємо це за наступні десять хвилин, до її приходу?",
+      "ru": "Да, будет ли реалистично, если мы уладим это за следующие десять минут, до её прихода?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein, solange die IT-Abteilung schneller reagiert, als wir befürchten.",
+      "en": "That should be feasible, as long as IT reacts faster than we fear.",
+      "uk": "Це має бути здійсненно, якщо ІТ-відділ відреагує швидше, ніж ми побоюємося.",
+      "ru": "Это должно быть выполнимо, если ИТ-отдел отреагирует быстрее, чем мы опасаемся."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir organisieren sofort Passwort und Schlüssel, zeigen ihr das Organigramm und die Sicherheitsvorschriften, damit ihr erster Arbeitstag trotzdem gut beginnt.",
+      "en": "Let's summarize: we'll organize the password and key right away, show her the org chart and the safety rules, so her first day still starts off well.",
+      "uk": "Підсумуємо: ми одразу організовуємо пароль і ключ, показуємо їй органіграму та правила безпеки, щоб її перший робочий день все ж почався добре.",
+      "ru": "Подведём итог: мы сразу организуем пароль и ключ, покажем ей органиграмму и правила безопасности, чтобы её первый рабочий день всё же начался хорошо."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, so fühlt sie sich von Anfang an willkommen - eine gute Willkommenskultur ist schließlich mindestens so wichtig wie die Formalitäten selbst. Ich schreibe der Rezeption kurz Bescheid und kümmere mich gleich darum.",
+      "en": "Exactly. I think that way she'll feel welcome from the start - after all, a good welcome culture is at least as important as the formalities themselves. I'll quickly let reception know and take care of it right away.",
+      "uk": "Саме так. Гадаю, так вона відчує себе бажаною гостею з самого початку - зрештою, гарна культура привітання щонайменше настільки ж важлива, як і самі формальності. Я коротко повідомлю рецепцію і одразу цим займуся.",
+      "ru": "Именно так. Думаю, так она почувствует себя желанной гостьей с самого начала - в конце концов, хорошая культура приветствия как минимум так же важна, как и сами формальности. Я коротко сообщу ресепшену и сразу этим займусь."
+    },
+    "gram": "vergleichssaetze_als_wie_je_desto"
   }
 ];
 
