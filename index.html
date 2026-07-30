@@ -2351,6 +2351,7 @@ body.lesson-active .vocab-top{
         <div class="lr-sub" id="lr-sub"></div>
         <div class="lr-stats" id="lr-stats"></div>
         <button class="lr-btn-primary" id="lr-btn-next" onclick="startNextLesson()"></button>
+        <button class="lr-btn-primary" id="lr-btn-next-dlg" onclick="startNextDialogue()" style="display:none;background:linear-gradient(135deg,#4a90d9,#2f6cb0)"></button>
         <button class="lr-btn-secondary" id="lr-btn-list" onclick="exitLessonFlow()"></button>
       </div>
 
@@ -2843,9 +2844,6 @@ body.lesson-active .vocab-top{
   <button class="bn-item" onclick="showView('sb')" data-view="sb">
     <span class="bn-icon">🧩</span><span data-i18n="nav_sb">Sprachbau</span>
   </button>
-  <button class="bn-item" onclick="showView('dialogue')" data-view="dialogue">
-    <span class="bn-icon">💬</span><span>Dialogue</span>
-  </button>
 </div>
 
 <div class="notif" id="notif"></div>
@@ -2861,7 +2859,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '419-3d1102f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4976,16 +4974,15 @@ const haptic = {
   error:   ()=>navigator.vibrate?.([20, 40, 20, 40, 20]),
 };
 
-// Ховає кнопки нижнього меню Sprachbau/Dialogue, якщо у курсу немає
-// відповідних даних (SPRACHBAUSTEINE/DIALOGE) — інакше вони ведуть у
-// порожній екран без жодного контенту.
+// Ховає кнопку нижнього меню Sprachbau, якщо у курсу немає відповідних
+// даних (SPRACHBAUSTEINE) — інакше вона веде у порожній екран без
+// жодного контенту. Dialogue-таб прибрано з нав-бару взагалі (діалоги
+// тепер доступні лише через картки "Діалог" одразу під уроками в
+// Навчанні — так процес не відволікає від запланованого курсу).
 function updateBottomNavVisibility(){
   const hasSB  = typeof SPRACHBAUSTEINE !== 'undefined' && SPRACHBAUSTEINE?.length;
-  const hasDlg = typeof DIALOGE !== 'undefined' && DIALOGE?.length;
   const sbBtn  = document.querySelector('#bottom-nav [data-view="sb"]');
-  const dlgBtn = document.querySelector('#bottom-nav [data-view="dialogue"]');
   if(sbBtn)   sbBtn.style.display   = hasSB   ? '' : 'none';
-  if(dlgBtn)  dlgBtn.style.display  = hasDlg  ? '' : 'none';
 }
 
 async function init(){
@@ -10998,25 +10995,43 @@ function lfShowResult(){
   const secs     = elapsed%60;
   const timeStr  = mins>0 ? `${mins}хв ${secs}с` : `${secs}с`;
 
-  // Рахуємо покращення SM-2
-  const improved = LF.cards.filter(c=>{
-    const d=srsLoad(c.id);
-    return (d.lastQ||0)>=3;
-  }).length;
-  const pct = Math.round(improved/LF.cards.length*100);
-  const emoji = pct>=80?'🏆':pct>=50?'🎉':'💪';
+  // Урок "тільки діалог" (Dialogue Bonus, LF.cards порожній — там нема
+  // карток словника взагалі, лише репліки) — метрика "% покращено"
+  // тут безглузда (ділення 0/0 = NaN) і взагалі не про діалог: там нема
+  // "правильно/неправильно", є сам факт практики. Окрема, простіша похвала.
+  const isDlgOnly = LF.cards.length === 0 && (LF.dlgCards||[]).length > 0;
+  const totalTurns = isDlgOnly ? LF.dlgCards.reduce((sum,c)=>sum+_dlgCardTurns(c).length, 0) : 0;
+
+  let improved = 0, pct = 0, emoji, titleText;
+  if(isDlgOnly){
+    emoji = '💬';
+    titleText = uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!';
+  } else {
+    // Рахуємо покращення SM-2
+    improved = LF.cards.filter(c=>{
+      const d=srsLoad(c.id);
+      return (d.lastQ||0)>=3;
+    }).length;
+    pct = Math.round(improved/LF.cards.length*100);
+    emoji = pct>=80?'🏆':pct>=50?'🎉':'💪';
+    titleText =
+      pct>=80 ? (uiLang==='uk'?'Чудово!':uiLang==='en'?'Excellent!':'Ausgezeichnet!') :
+      pct>=50 ? (uiLang==='uk'?'Добре!':uiLang==='en'?'Good job!':'Gut gemacht!') :
+                (uiLang==='uk'?'Продовжуй!':uiLang==='en'?'Keep going!':'Weiter so!');
+  }
 
   document.getElementById('lr-emoji').textContent = emoji;
-  document.getElementById('lr-title').textContent =
-    pct>=80 ? (uiLang==='uk'?'Чудово!':uiLang==='en'?'Excellent!':'Ausgezeichnet!') :
-    pct>=50 ? (uiLang==='uk'?'Добре!':uiLang==='en'?'Good job!':'Gut gemacht!') :
-              (uiLang==='uk'?'Продовжуй!':uiLang==='en'?'Keep going!':'Weiter so!');
+  document.getElementById('lr-title').textContent = titleText;
   document.getElementById('lr-sub').textContent =
     LF.lesson.title[uiLang]||LF.lesson.title[primaryLang()]||LF.lesson.title.en||LF.lesson.title.de;
 
   const statsEl = document.getElementById('lr-stats');
   if(statsEl){
-    const rows = [
+    const rows = isDlgOnly ? [
+      [uiLang==='uk'?'Діалогів':uiLang==='en'?'Dialogues':uiLang==='ru'?'Диалогов':'Dialoge', LF.dlgCards.length],
+      [uiLang==='uk'?'Реплік':uiLang==='en'?'Turns':uiLang==='ru'?'Реплик':'Repliken', totalTurns],
+      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
+    ] : [
       [uiLang==='uk'?'Карток пройдено':uiLang==='en'?'Cards covered':'Karten', LF.cards.length],
       [uiLang==='uk'?'Покращено':uiLang==='en'?'Improved':'Verbessert', improved+'/'+LF.cards.length],
       [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
@@ -11045,8 +11060,24 @@ function lfShowResult(){
   // Заповнюємо кнопки результату
   const btnNext = document.getElementById('lr-btn-next');
   const btnList = document.getElementById('lr-btn-list');
+  const btnNextDlg = document.getElementById('lr-btn-next-dlg');
   if(btnNext) btnNext.textContent = t('btn_next_lesson');
   if(btnList) btnList.textContent = t('btn_to_lessons');
+
+  // "Наступний діалог" — лише після Dialogue Bonus (isDlgOnly), і лише
+  // якщо десь далі в курсі є ЩЕ один урок з прив'язаним діалогом (інакше
+  // кнопка веде в нікуди). Дає змогу пройти кілька діалогів поспіль, не
+  // повертаючись щоразу в Навчання й не проходячи звичайні уроки між ними.
+  const bonusForId = LF.lesson?._bonusForLessonId;
+  const nextDlgLesson = (isDlgOnly && bonusForId) ? _findNextLessonWithDialogue(bonusForId) : null;
+  if(btnNextDlg){
+    if(nextDlgLesson){
+      btnNextDlg.textContent = uiLang==='uk'?'💬 Наступний діалог':uiLang==='en'?'💬 Next dialogue':uiLang==='ru'?'💬 Следующий диалог':'💬 Nächster Dialog';
+      btnNextDlg.style.display = '';
+    } else {
+      btnNextDlg.style.display = 'none';
+    }
+  }
 
   // Якщо щойно запустилась повноекранна анімація стріку
   // (showStreakCelebration, ~2200мс) — ховаємо кнопки "Наступний
@@ -11055,12 +11086,37 @@ function lfShowResult(){
   // збільшився (уже був урок сьогодні) — кнопки показуються одразу.
   if(btnNext) btnNext.style.visibility = celebrationPending ? 'hidden' : 'visible';
   if(btnList) btnList.style.visibility = celebrationPending ? 'hidden' : 'visible';
+  if(btnNextDlg) btnNextDlg.style.visibility = celebrationPending ? 'hidden' : 'visible';
   if(celebrationPending){
     setTimeout(()=>{
       if(btnNext) btnNext.style.visibility = 'visible';
       if(btnList) btnList.style.visibility = 'visible';
+      if(btnNextDlg) btnNextDlg.style.visibility = 'visible';
     }, 2300);
   }
+}
+
+// Шукає наступний (за порядком курсу) урок ПІСЛЯ afterLessonId, у якого
+// є прив'язаний діалог (lesson.dlgCards) — для кнопки "Наступний діалог"
+// на екрані результату Dialogue Bonus.
+function _findNextLessonWithDialogue(afterLessonId){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const idx = lessons.findIndex(l=>l.id===afterLessonId);
+  if(idx===-1) return null;
+  for(let i=idx+1;i<lessons.length;i++){
+    if((lessons[i].dlgCards||[]).length>0) return lessons[i];
+  }
+  return null;
+}
+
+// "Наступний діалог" — переходить одразу до Dialogue Bonus НАСТУПНОГО
+// уроку з прив'язаним діалогом, минаючи звичайні уроки між ними.
+function startNextDialogue(){
+  const bonusForId = LF?.lesson?._bonusForLessonId;
+  if(!bonusForId){ exitLessonFlow(); return; }
+  const next = _findNextLessonWithDialogue(bonusForId);
+  if(!next){ exitLessonFlow(); return; }
+  startModuleDialogueBonus(next.id);
 }
 
 // Smart Review: тегування VOCAB карток полем examPart за категорією

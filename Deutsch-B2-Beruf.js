@@ -541,7 +541,8 @@ var LESSONS = [
       "sbs_022"
     ],
     "dlgCards": [
-      "dlg_030"
+      "dlg_030",
+      "dlg_043"
     ]
   },
   {
@@ -628,7 +629,8 @@ var LESSONS = [
       "sbs_015"
     ],
     "dlgCards": [
-      "dlg_031"
+      "dlg_031",
+      "dlg_044"
     ]
   },
   {
@@ -742,7 +744,8 @@ var LESSONS = [
       "sbs_023"
     ],
     "dlgCards": [
-      "dlg_032"
+      "dlg_032",
+      "dlg_045"
     ]
   },
   {
@@ -823,7 +826,8 @@ var LESSONS = [
       "sbs_008"
     ],
     "dlgCards": [
-      "dlg_033"
+      "dlg_033",
+      "dlg_046"
     ]
   },
   {
@@ -1400,6 +1404,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_003",
       "sbs_009"
+    ],
+    "dlgCards": [
+      "dlg_042"
     ]
   },
   {
@@ -8167,6 +8174,328 @@ var DIALOGE = [
       "en": "Exactly. I think that way Lukas keeps an overview without the deadlines being at risk. I'll note the key points in the minutes and send them to you right after the conversation.",
       "uk": "Саме так. Гадаю, так Лукас збереже контроль над ситуацією, а дедлайни не постраждають. Я занотую головні пункти в протоколі і надішлю тобі одразу після розмови.",
       "ru": "Именно так. Думаю, так Лукас сохранит контроль над ситуацией, а дедлайны не пострадают. Я запишу главные пункты в протокол и отправлю тебе сразу после разговора."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_042",
+    "cat": "Hard Skills",
+    "task": {
+      "de": "Ein neuer Kollege soll sich in eine wichtige Software einarbeiten, aber ihm fehlen die Zugangsdaten, und eine Mentorenschaft ist noch nicht offiziell geregelt. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "A new colleague is supposed to get trained in an important piece of software, but he's missing the login credentials, and a mentorship hasn't been officially arranged yet. Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Новий колега має навчитися працювати з важливою програмою, але йому бракує даних для входу, а наставництво ще офіційно не оформлене. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Новый коллега должен научиться работать с важной программой, но ему не хватает данных для входа, а наставничество ещё официально не оформлено. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Wir haben ein Problem: Unser neuer Kollege, Herr Fischer, soll sich in die Datenanalyse-Software einarbeiten, aber ihm fehlen noch die Zugangsdaten, und eine Mentorenschaft wurde bisher auch nicht offiziell vertraglich festgelegt.",
+      "en": "We have a problem: our new colleague, Mr. Fischer, is supposed to get trained in the data analysis software, but he's still missing the login credentials, and a mentorship hasn't been officially set up in his contract yet either.",
+      "uk": "У нас проблема: наш новий колега, пан Фішер, має навчитися працювати з програмою аналізу даних, але йому досі бракує логіна й пароля, і наставництво також офіційно ще не закріплене в договорі.",
+      "ru": "У нас проблема: наш новый коллега, господин Фишер, должен научиться работать с программой анализа данных, но ему всё ещё не хватает логина и пароля, и наставничество тоже официально ещё не закреплено в договоре."
+    },
+    "a": {
+      "de": "<r>Ach so</r>, das heißt, er weiß eigentlich gar nicht genau, wer ihn einarbeiten soll und womit er überhaupt arbeiten kann?",
+      "en": "Ah, I see - so that means he doesn't actually know who's supposed to train him or what he can even work with?",
+      "uk": "Ага, зрозуміло - тобто він, по суті, навіть не знає, хто має його навчати і з чим він взагалі може працювати?",
+      "ru": "А, понятно - то есть он, по сути, даже не знает, кто должен его обучать и с чем он вообще может работать?"
+    },
+    "q1": {
+      "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir das nicht schnell klären?",
+      "en": "Exactly. What do you think, what consequences would that have if we don't sort this out quickly?",
+      "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо ми швидко це не владнаємо?",
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы быстро это не уладим?"
+    },
+    "a1": {
+      "de": "Ich glaube, dass er sich dann ziemlich verloren fühlt und seine ersten Wochen nicht wirklich produktiv nutzen kann.",
+      "en": "I think he'd feel pretty lost then and wouldn't really be able to use his first weeks productively.",
+      "uk": "Гадаю, тоді він почуватиметься доволі загубленим і не зможе по-справжньому продуктивно використати свої перші тижні.",
+      "ru": "Думаю, тогда он будет чувствовать себя довольно потерянным и не сможет по-настоящему продуктивно использовать свои первые недели."
+    },
+    "q2": {
+      "de": "<r>Wie wäre es, wenn wir</r> sofort die IT-Abteilung kontaktieren und um die Zugangsdaten für die Software bitten?",
+      "en": "<r>How about we</r> contact IT right away and ask for the login credentials for the software?",
+      "uk": "<r>Що якщо ми</r> одразу звернемося в ІТ-відділ і попросимо дані для входу в програму?",
+      "ru": "<r>Что если мы</r> сразу обратимся в ИТ-отдел и попросим данные для входа в программу?"
+    },
+    "a2": {
+      "de": "Das <r>ist sicherlich sinnvoll, da</r> er ohne Zugang gar nicht üben kann. <r>Mir ist nicht ganz klar</r>, wer eigentlich für die Freigabe zuständig ist.",
+      "en": "That <r>certainly makes sense</r>, since he can't practice at all without access. I'm not entirely clear on who's actually responsible for the approval, though.",
+      "uk": "Це, <r>безумовно, розумно</r>, бо без доступу він взагалі не зможе практикуватися. Мені, щоправда, не зовсім зрозуміло, хто саме відповідає за надання дозволу.",
+      "ru": "Это, <r>безусловно, разумно</r>, потому что без доступа он вообще не сможет практиковаться. Мне, правда, не совсем понятно, кто именно отвечает за предоставление разрешения."
+    },
+    "q3": {
+      "de": "Ein weiterer Vorschlag wäre, dass ich seine Mentorin werde, weil ich mit der Software am besten vertraut bin.",
+      "en": "Another suggestion would be for me to become his mentor, since I'm most familiar with the software.",
+      "uk": "Ще одна пропозиція - я стану його наставницею, бо найкраще знайома з програмою.",
+      "ru": "Ещё одно предложение - я стану его наставницей, потому что лучше всех знакома с программой."
+    },
+    "a3": {
+      "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass du selbst gerade ziemlich ausgelastet bist und kaum Zeit für eine Mentorenschaft hättest.",
+      "en": "<r>One argument against that is</r> that you yourself are pretty overloaded right now and would hardly have time for a mentorship.",
+      "uk": "<r>Аргумент проти цього</r> полягає в тому, що ти сама зараз досить завантажена й навряд чи матимеш час на наставництво.",
+      "ru": "<r>Аргумент против этого</r> в том, что ты сама сейчас довольно загружена и вряд ли будешь иметь время на наставничество."
+    },
+    "q4": {
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir uns die Mentorenschaft zu zweit teilen.",
+      "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> splitting the mentorship between the two of us.",
+      "uk": "<r>Це правда, але</r> <r>цю проблему можна було б вирішити</r>, якщо ми розділимо наставництво між нами двома.",
+      "ru": "<r>Это верно, но</r> <r>эту проблему можно было бы решить</r>, если мы разделим наставничество между нами двоими."
+    },
+    "a4": {
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. <r>Okay, dann mache ich also Folgendes</r>: Ich übernehme die ersten zwei Wochen, und danach übernimmst du.",
+      "en": "<r>I completely agree with you</r>. Okay, so here's what I'll do: I'll take the first two weeks, and after that you take over.",
+      "uk": "<r>Тут я з тобою цілком згоден</r>. Гаразд, тоді я зроблю так: я візьму перші два тижні, а потім ти.",
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Хорошо, тогда я сделаю так: я возьму первые две недели, а потом ты."
+    },
+    "q5": {
+      "de": "Gut. <r>Achte bitte darauf, dass</r> du ihm zuerst die Grundfunktionen zeigst, dann erst die komplexeren Analysen - Schritt für Schritt eben.",
+      "en": "Good. Please make sure you show him the basic functions first, then the more complex analyses - step by step.",
+      "uk": "Добре. Простеж, будь ласка, щоб спочатку показати йому основні функції, а вже потім складніші аналізи - крок за кроком.",
+      "ru": "Хорошо. Проследи, пожалуйста, чтобы сначала показать ему основные функции, а уже потом более сложные анализы - шаг за шагом."
+    },
+    "a5": {
+      "de": "<r>In Ordnung, ich muss also</r> zuerst die Grundlagen erklären und außerdem darauf achten, dass er alles wirklich versteht, bevor wir weitermachen.",
+      "en": "Alright, so I need to explain the basics first and also make sure he really understands everything before we move on.",
+      "uk": "Гаразд, тобто спочатку я маю пояснити основи, а також стежити, щоб він справді все розумів, перш ніж ми йдемо далі.",
+      "ru": "Хорошо, то есть сначала я должен объяснить основы, а также следить, чтобы он действительно всё понимал, прежде чем мы пойдём дальше."
+    },
+    "q6": {
+      "de": "Genau. Und <r>ganz wichtig ist, dass</r> die Mentorenschaft am besten offiziell vertraglich festgelegt wird, damit es später keine Missverständnisse gibt.",
+      "en": "Exactly. And it's also really important that the mentorship gets officially set up in the contract, so there are no misunderstandings later.",
+      "uk": "Саме так. І ще дуже важливо, щоб наставництво було офіційно закріплене в договорі, щоб потім не виникало непорозумінь.",
+      "ru": "Именно так. И ещё очень важно, чтобы наставничество было официально закреплено в договоре, чтобы потом не возникало недоразумений."
+    },
+    "a6": {
+      "de": "Das leuchtet ein. Kümmerst du dich darum, das mit der Personalabteilung zu klären?",
+      "en": "That makes sense. Will you take care of clarifying that with HR?",
+      "uk": "Логічно. Ти візьмеш на себе з'ясувати це з відділом кадрів?",
+      "ru": "Логично. Ты возьмёшь на себя выяснить это с отделом кадров?"
+    },
+    "q7": {
+      "de": "Ja, wäre es realistisch, wenn ich das noch heute Nachmittag anspreche?",
+      "en": "Yes, would it be realistic if I bring it up already this afternoon?",
+      "uk": "Так, чи буде реалістично, якщо я підніму це питання вже сьогодні пополудні?",
+      "ru": "Да, будет ли реалистично, если я подниму этот вопрос уже сегодня после обеда?"
+    },
+    "a7": {
+      "de": "Das sollte machbar sein, solange die Personalabteilung heute noch erreichbar ist.",
+      "en": "That should be feasible, as long as HR is still reachable today.",
+      "uk": "Це має бути здійсненно, якщо відділ кадрів сьогодні ще на місці.",
+      "ru": "Это должно быть выполнимо, если отдел кадров сегодня ещё на месте."
+    },
+    "q8": {
+      "de": "Fassen wir zusammen: Wir kümmern uns um die Zugangsdaten, teilen uns die Mentorenschaft und lassen sie offiziell festlegen, damit Herr Fischer gut in seine neue Aufgabe startet.",
+      "en": "Let's summarize: we'll take care of the login credentials, split the mentorship between us, and have it officially set up, so Mr. Fischer gets off to a good start in his new role.",
+      "uk": "Підсумуємо: ми займаємося даними для входу, ділимо наставництво між собою і закріплюємо це офіційно, щоб пан Фішер добре стартував на новій посаді.",
+      "ru": "Подведём итог: мы занимаемся данными для входа, делим наставничество между собой и закрепляем это официально, чтобы господин Фишер хорошо стартовал на новой должности."
+    },
+    "a8": {
+      "de": "Genau. Ich denke, so hat er von Anfang an eine klare Struktur und weiß, an wen er sich wenden kann. Ich schreibe der IT-Abteilung gleich wegen der Zugangsdaten.",
+      "en": "Exactly. I think that way he'll have a clear structure from the start and know who to turn to. I'll write to IT right away about the login credentials.",
+      "uk": "Саме так. Гадаю, так у нього з самого початку буде чітка структура, і він знатиме, до кого звертатися. Я одразу напишу в ІТ-відділ щодо даних для входу.",
+      "ru": "Именно так. Думаю, так у него с самого начала будет чёткая структура, и он будет знать, к кому обращаться. Я сразу напишу в ИТ-отдел насчёт данных для входа."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_043",
+    "cat": "Freizeitgestaltung",
+    "task": {
+      "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich gerne in deiner Freizeit?“",
+      "en": "Topic: Leisure time – \"What do you actually enjoy doing in your free time?\"",
+      "uk": "Тема: Дозвілля – «А що ти взагалі любиш робити у вільний час?»",
+      "ru": "Тема: Досуг – «А что ты вообще любишь делать в свободное время?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Sag mal, was machst du eigentlich gerne in deiner Freizeit?",
+      "en": "Tell me, what do you actually enjoy doing in your free time?",
+      "uk": "Скажи, а що ти взагалі любиш робити у вільний час?",
+      "ru": "Скажи, а что ты вообще любишь делать в свободное время?"
+    },
+    "a": {
+      "de": "Ich spiele seit ein paar Jahren in einer Band Gitarre, das ist eigentlich mein liebstes Hobby. Wir proben meistens dienstags abends. Und du, hast du auch ein Hobby, dem du regelmäßig nachgehst?",
+      "en": "I've been playing guitar in a band for a few years now, that's actually my favorite hobby. We usually rehearse on Tuesday evenings. What about you, do you have a hobby you do regularly too?",
+      "uk": "Я вже кілька років граю на гітарі в гурті, це, власне, моє улюблене хобі. Ми зазвичай репетируємо у вівторок увечері. А в тебе теж є хобі, яким ти регулярно займаєшся?",
+      "ru": "Я уже несколько лет играю на гитаре в группе, это, собственно, моё любимое хобби. Мы обычно репетируем по вторникам вечером. А у тебя тоже есть хобби, которым ты регулярно занимаешься?"
+    },
+    "q1": {
+      "de": "Ja, ich gehe total gerne klettern, am liebsten draußen im Sommer, aber im Winter auch in der Kletterhalle. Wie lange spielst du eigentlich schon Gitarre?",
+      "en": "Yes, I really love climbing, ideally outdoors in summer, but in the climbing gym in winter too. How long have you actually been playing guitar?",
+      "uk": "Так, я дуже люблю скелелазіння, найкраще на природі влітку, але взимку теж ходжу в скеледром. До речі, як довго ти вже граєш на гітарі?",
+      "ru": "Да, я очень люблю скалолазание, лучше всего на природе летом, но зимой тоже хожу в скалодром. Кстати, как долго ты уже играешь на гитаре?"
+    },
+    "a1": {
+      "de": "Schon seit meiner Schulzeit, also bestimmt fünfzehn Jahre. Klettern klingt aber auch spannend - hast du davor eigentlich keine Angst?",
+      "en": "Since my school days, so probably fifteen years. Climbing sounds exciting too though - aren't you actually scared of it?",
+      "uk": "Ще зі шкільних часів, тобто вже років п'ятнадцять. Скелелазіння теж звучить захопливо - тобі взагалі не страшно?",
+      "ru": "Ещё со школьных времён, то есть уже лет пятнадцать. Скалолазание тоже звучит увлекательно - тебе вообще не страшно?"
+    },
+    "q2": {
+      "de": "Am Anfang schon ein bisschen, aber mittlerweile fühle ich mich damit sehr sicher, vor allem weil ich immer mit erfahrenen Leuten unterwegs bin. Tretet ihr mit der Band eigentlich auch mal live auf?",
+      "en": "At first a little, but by now I feel very safe with it, especially because I'm always out with experienced people. Do you and the band actually ever perform live?",
+      "uk": "Спочатку трохи було, але зараз я почуваюся дуже впевнено, особливо тому що завжди їжджу з досвідченими людьми. А ви з гуртом взагалі виступаєте наживо?",
+      "ru": "Сначала немного было, но сейчас я чувствую себя очень уверенно, особенно потому что всегда езжу с опытными людьми. А вы с группой вообще выступаете вживую?"
+    },
+    "a2": {
+      "de": "Ja, ein paarmal im Jahr, meistens auf kleineren Veranstaltungen in der Stadt. Das macht total viel Spaß, auch wenn ich vorher immer ziemlich nervös bin.",
+      "en": "Yes, a few times a year, usually at smaller events in the city. It's a lot of fun, even though I'm always pretty nervous beforehand.",
+      "uk": "Так, кілька разів на рік, зазвичай на невеликих заходах у місті. Це дуже весело, хоча перед виступом я завжди досить нервую.",
+      "ru": "Да, несколько раз в год, обычно на небольших мероприятиях в городе. Это очень весело, хотя перед выступлением я всегда довольно нервничаю."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_044",
+    "cat": "Urlaub",
+    "task": {
+      "de": "Thema: Urlaub – „Hast du schon Pläne für deinen nächsten Urlaub?“",
+      "en": "Topic: Vacation – \"Do you already have plans for your next vacation?\"",
+      "uk": "Тема: Відпустка – «У тебе вже є плани на наступну відпустку?»",
+      "ru": "Тема: Отпуск – «У тебя уже есть планы на следующий отпуск?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag mal, hast du eigentlich schon Pläne für deinen nächsten Urlaub?",
+      "en": "Tell me, do you already have plans for your next vacation?",
+      "uk": "Скажи, у тебе вже є плани на наступну відпустку?",
+      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?"
+    },
+    "a": {
+      "de": "Ja, ich fliege im August für zwei Wochen nach Portugal, ans Meer. Ich freue mich schon total darauf, einfach mal abzuschalten. Und du, fährst du dieses Jahr auch irgendwohin?",
+      "en": "Yes, in August I'm flying to Portugal for two weeks, to the coast. I'm really looking forward to just switching off for a while. What about you, are you going anywhere this year too?",
+      "uk": "Так, у серпні я лечу на два тижні до Португалії, на узбережжя. Я вже дуже чекаю просто відключитися від усього. А в тебе, ти теж кудись поїдеш цього року?",
+      "ru": "Да, в августе я лечу на две недели в Португалию, на побережье. Я уже очень жду просто отключиться от всего. А у тебя, ты тоже куда-нибудь поедешь в этом году?"
+    },
+    "q1": {
+      "de": "Ich bin mir noch nicht ganz sicher, aber ich überlege, ob ich lieber wieder in die Berge fahre oder dieses Mal etwas ganz Neues ausprobiere. Warst du schon mal in Portugal?",
+      "en": "I'm not quite sure yet, but I'm thinking about whether to go back to the mountains or try something completely new this time. Have you been to Portugal before?",
+      "uk": "Я ще не зовсім впевнена, але думаю, чи поїхати знову в гори, чи спробувати цього разу щось зовсім нове. Ти вже бував у Португалії?",
+      "ru": "Я ещё не совсем уверена, но думаю, поехать ли снова в горы или попробовать в этот раз что-то совсем новое. Ты уже бывал в Португалии?"
+    },
+    "a1": {
+      "de": "Nein, das ist tatsächlich mein erstes Mal dort. Ein Kollege hat es mir total empfohlen, wegen der Strände und dem guten Essen. Fährst du eigentlich lieber allein oder mit Familie in den Urlaub?",
+      "en": "No, this is actually my first time there. A colleague really recommended it to me, because of the beaches and the good food. Do you actually prefer traveling alone or with family on vacation?",
+      "uk": "Ні, це насправді мій перший раз там. Колега мені дуже радив - через пляжі і хорошу їжу. А ти взагалі любиш їздити у відпустку сама чи з родиною?",
+      "ru": "Нет, это на самом деле мой первый раз там. Коллега мне очень советовал - из-за пляжей и хорошей еды. А ты вообще любишь ездить в отпуск один или с семьёй?"
+    },
+    "q2": {
+      "de": "Meistens mit meinem Partner, aber dieses Jahr überlegen wir, ob wir vielleicht auch ein paar Tage mit Freunden zusammen verreisen. Wie lange bist du insgesamt weg?",
+      "en": "Mostly with my partner, but this year we're thinking about maybe also traveling with friends for a few days. How long are you away in total?",
+      "uk": "Здебільшого з партнером, але цього року ми думаємо, можливо, поїхати ще на кілька днів разом з друзями. А ти на скільки загалом їдеш?",
+      "ru": "В основном с партнёром, но в этом году мы думаем, может, поехать ещё на несколько дней вместе с друзьями. А ты на сколько всего уезжаешь?"
+    },
+    "a2": {
+      "de": "Genau zwei Wochen, das reicht meistens, um wirklich zur Ruhe zu kommen. Danach freue ich mich aber auch schon wieder ein bisschen auf die Arbeit, ehrlich gesagt.",
+      "en": "Exactly two weeks, that's usually enough to really unwind. But after that I'm honestly already a little looking forward to work again too.",
+      "uk": "Рівно на два тижні, зазвичай цього вистачає, щоб справді відпочити. Але потім я, чесно кажучи, вже трохи чекаю знову на роботу.",
+      "ru": "Ровно на две недели, обычно этого хватает, чтобы действительно отдохнуть. Но потом я, честно говоря, уже немного жду снова работу."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_045",
+    "cat": "Sportaktivitäten",
+    "task": {
+      "de": "Thema: Sportaktivitäten – „Treibst du eigentlich regelmäßig Sport?“",
+      "en": "Topic: Sports activities – \"Do you actually exercise regularly?\"",
+      "uk": "Тема: Спортивна активність – «Ти взагалі регулярно займаєшся спортом?»",
+      "ru": "Тема: Спортивная активность – «Ты вообще регулярно занимаешься спортом?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Sag mal, treibst du eigentlich regelmäßig Sport?",
+      "en": "Tell me, do you actually exercise regularly?",
+      "uk": "Скажи, а ти взагалі регулярно займаєшся спортом?",
+      "ru": "Скажи, а ты вообще регулярно занимаешься спортом?"
+    },
+    "a": {
+      "de": "Ja, ich gehe seit letztem Jahr dreimal die Woche joggen, meistens früh morgens vor der Arbeit. Das gibt mir richtig Energie für den ganzen Tag. Und du, machst du auch irgendeinen Sport?",
+      "en": "Yes, I've been going jogging three times a week since last year, usually early in the morning before work. It really gives me energy for the whole day. What about you, do you do any sport too?",
+      "uk": "Так, я з минулого року бігаю тричі на тиждень, зазвичай рано вранці перед роботою. Це справді дає мені енергію на цілий день. А в тебе, ти теж якимось спортом займаєшся?",
+      "ru": "Да, я с прошлого года бегаю трижды в неделю, обычно рано утром перед работой. Это действительно даёт мне энергию на весь день. А у тебя, ты тоже каким-то спортом занимаешься?"
+    },
+    "q1": {
+      "de": "Ich gehe zweimal pro Woche zum Yoga, das hilft mir total, nach der Arbeit abzuschalten. Läufst du eigentlich draußen oder lieber auf dem Laufband?",
+      "en": "I go to yoga twice a week, it really helps me switch off after work. Do you actually run outside or do you prefer the treadmill?",
+      "uk": "Я двічі на тиждень ходжу на йогу, це дуже допомагає мені відключитися після роботи. А ти взагалі бігаєш надворі чи радше на біговій доріжці?",
+      "ru": "Я дважды в неделю хожу на йогу, это очень помогает мне отключиться после работы. А ты вообще бегаешь на улице или предпочитаешь беговую дорожку?"
+    },
+    "a1": {
+      "de": "Fast immer draußen, außer bei richtig schlechtem Wetter. Ich mag es einfach, dabei ein bisschen die Natur zu sehen. Wie lange machst du schon Yoga?",
+      "en": "Almost always outside, except in really bad weather. I just like seeing a bit of nature while I do it. How long have you been doing yoga?",
+      "uk": "Майже завжди надворі, хіба що в дуже погану погоду. Мені просто подобається бачити трохи природи під час бігу. Як довго ти вже займаєшся йогою?",
+      "ru": "Почти всегда на улице, разве что в очень плохую погоду. Мне просто нравится видеть немного природы во время бега. Как долго ты уже занимаешься йогой?"
+    },
+    "q2": {
+      "de": "Ungefähr zwei Jahre jetzt, ich habe damit nach einer stressigen Zeit im Job angefangen. Hast du eigentlich schon mal an einem Lauf oder Marathon teilgenommen?",
+      "en": "About two years now, I started after a stressful time at work. Have you actually ever taken part in a race or a marathon?",
+      "uk": "Уже приблизно два роки, я почала після напруженого періоду на роботі. А ти взагалі колись брав участь у забігу чи марафоні?",
+      "ru": "Уже примерно два года, я начала после напряжённого периода на работе. А ты вообще когда-нибудь участвовал в забеге или марафоне?"
+    },
+    "a2": {
+      "de": "Ja, letztes Jahr habe ich meinen ersten Halbmarathon gemacht, das war eine echte Herausforderung, aber auch total motivierend. Dieses Jahr will ich es vielleicht sogar noch mal versuchen.",
+      "en": "Yes, last year I did my first half marathon, that was a real challenge, but also really motivating. This year I might even try it again.",
+      "uk": "Так, минулого року я пробіг свій перший напівмарафон, це було справжнім викликом, але й дуже мотивувало. Цього року я, можливо, навіть спробую ще раз.",
+      "ru": "Да, в прошлом году я пробежал свой первый полумарафон, это было настоящим вызовом, но и очень мотивировало. В этом году я, возможно, даже попробую ещё раз."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_046",
+    "cat": "Arbeitszeiten",
+    "task": {
+      "de": "Thema: Arbeitszeiten – „Wie sind eigentlich deine Arbeitszeiten geregelt?“",
+      "en": "Topic: Working hours – \"How are your working hours actually arranged?\"",
+      "uk": "Тема: Робочий час – «А як у тебе взагалі влаштований робочий графік?»",
+      "ru": "Тема: Рабочее время – «А как у тебя вообще устроен рабочий график?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_david",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Sag mal, wie sind eigentlich deine Arbeitszeiten geregelt? Hast du feste Zeiten oder Gleitzeit?",
+      "en": "Tell me, how are your working hours actually arranged? Do you have fixed hours or flextime?",
+      "uk": "Скажи, а як у тебе взагалі влаштований робочий графік? У тебе фіксований час чи гнучкий?",
+      "ru": "Скажи, а как у тебя вообще устроен рабочий график? У тебя фиксированное время или гибкое?"
+    },
+    "a": {
+      "de": "Ich habe Gleitzeit, meistens fange ich so gegen halb neun an und höre dann gegen halb sechs auf. Das passt gut zu mir, weil ich morgens sowieso nicht so früh aus dem Bett komme. Und wie sieht das bei dir aus?",
+      "en": "I have flextime, I usually start around half past eight and finish around half past five. That suits me well, because I don't get out of bed that early in the morning anyway. What's it like for you?",
+      "uk": "У мене гнучкий графік, зазвичай я починаю приблизно о пів на дев'яту і закінчую десь о пів на шосту. Мені це підходить, бо вранці я все одно не дуже рано прокидаюся. А в тебе як?",
+      "ru": "У меня гибкий график, обычно я начинаю примерно в половине девятого и заканчиваю где-то в половине шестого. Мне это подходит, потому что утром я всё равно не очень рано просыпаюсь. А у тебя как?"
+    },
+    "q1": {
+      "de": "Bei mir ist es ähnlich, aber ich fange meistens schon um acht an, damit ich nachmittags früher fertig bin. Nutzt du die Gleitzeit eigentlich auch mal für private Termine?",
+      "en": "It's similar for me, but I usually start already at eight, so I'm done earlier in the afternoon. Do you actually sometimes use the flextime for personal appointments too?",
+      "uk": "У мене схоже, але я зазвичай починаю вже о восьмій, щоб раніше закінчити пополудні. А ти взагалі іноді використовуєш гнучкий графік для особистих справ?",
+      "ru": "У меня похоже, но я обычно начинаю уже в восемь, чтобы раньше закончить после обеда. А ты вообще иногда используешь гибкий график для личных дел?"
+    },
+    "a1": {
+      "de": "Ja, total gerne, letzte Woche hatte ich zum Beispiel einen Arzttermin am Vormittag und habe die Zeit einfach abends nachgeholt. Machst du eigentlich manchmal Überstunden?",
+      "en": "Yes, gladly, last week for example I had a doctor's appointment in the morning and just made up the time in the evening. Do you actually sometimes work overtime?",
+      "uk": "Так, залюбки, наприклад минулого тижня в мене був прийом у лікаря вранці, і я просто доробила ці години ввечері. А ти взагалі іноді працюєш понаднормово?",
+      "ru": "Да, с удовольствием, например на прошлой неделе у меня был приём у врача утром, и я просто доработала эти часы вечером. А ты вообще иногда работаешь сверхурочно?"
+    },
+    "q2": {
+      "de": "Ab und zu schon, vor allem wenn ein Projekt kurz vor der Deadline steht. Meistens kann ich mir die Stunden dann aber später wieder freinehmen. Arbeitest du eigentlich auch manchmal im Homeoffice?",
+      "en": "Every now and then, especially when a project is close to its deadline. But usually I can take the hours off again later. Do you actually sometimes work from home too?",
+      "uk": "Час від часу так, особливо коли проєкт наближається до дедлайну. Але зазвичай я потім можу взяти ці години як відгул. А ти взагалі іноді працюєш з дому?",
+      "ru": "Время от времени да, особенно когда проект приближается к дедлайну. Но обычно я потом могу взять эти часы как отгул. А ты вообще иногда работаешь из дома?"
+    },
+    "a2": {
+      "de": "Ja, zwei Tage die Woche, meistens montags und freitags. Das finde ich echt praktisch, vor allem weil ich mir dann den Arbeitsweg spare und konzentrierter arbeiten kann.",
+      "en": "Yes, two days a week, usually Mondays and Fridays. I find that really practical, especially because I save the commute and can work more focused.",
+      "uk": "Так, два дні на тиждень, зазвичай у понеділок і п'ятницю. Мені це дуже зручно, особливо тому що я тоді економлю на дорозі й можу працювати зосередженіше.",
+      "ru": "Да, два дня в неделю, обычно по понедельникам и пятницам. Мне это очень удобно, особенно потому что я тогда экономлю на дороге и могу работать сосредоточеннее."
     },
     "gram": ""
   }
