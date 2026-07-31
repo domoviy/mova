@@ -48,10 +48,15 @@ var CHARACTER_AVATARS = {
 
 var CHARACTERS = [
   // ── Німецька (de-DE) — 4 стандартні "якісні" голоси ──
-  { "id": "de_w_julia", "gender": "w", "lang": "de", "name": "Julia", "edge_tts": "de-DE-KatjaNeural", "avatar": CHARACTER_AVATARS.julia},
-  { "id": "de_w_anna", "gender": "w",  "lang": "de", "name": "Anna",  "edge_tts": "de-DE-AmalaNeural", "avatar": CHARACTER_AVATARS.anna},
-  { "id": "de_m_mark", "gender": "m",  "lang": "de", "name": "Mark",  "edge_tts": "de-DE-ConradNeural", "avatar": CHARACTER_AVATARS.mark},
+  { "id": "de_w_julia", "gender": "w", "lang": "de", "name": "Julia", "edge_tts": "de-DE-SeraphinaMultilingualNeural", "avatar": CHARACTER_AVATARS.julia},
+  { "id": "de_w_anna", "gender": "w",  "lang": "de", "name": "Anna",  "edge_tts": "de-DE-KatjaNeural", "avatar": CHARACTER_AVATARS.anna},
+  { "id": "de_w_nina", "gender": "w", "lang": "de", "name": "Nina", "edge_tts": "de-DE-AmalaNeural", "avatar": CHARACTER_AVATARS.julia},
+  
+  
+  { "id": "de_m_mark", "gender": "m",  "lang": "de", "name": "Mark",  "edge_tts": "de-DE-FlorianMultilingualNeural", "avatar": CHARACTER_AVATARS.mark},
   { "id": "de_m_david", "gender": "m", "lang": "de", "name": "David", "edge_tts": "de-DE-KillianNeural", "avatar": CHARACTER_AVATARS.david},
+  { "id": "de_m_alex", "gender": "m",  "lang": "de", "name": "Alex",  "edge_tts": "de-DE-ConradNeural", "avatar": CHARACTER_AVATARS.mark},
+  
   // ── Англійська (en-US / en-GB) — приклад стартового набору ──
   { "id": "en_w_julia", "gender": "w", "lang": "en", "name": "Julia", "edge_tts": "en-US-AriaNeural", "avatar": CHARACTER_AVATARS.julia},
   { "id": "en_w_anna", "gender": "w",  "lang": "en", "name": "Jenny", "edge_tts": "en-US-JennyNeural", "avatar": CHARACTER_AVATARS.anna},
