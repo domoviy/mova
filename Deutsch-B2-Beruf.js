@@ -907,7 +907,8 @@ var LESSONS = [
       "sbs_044"
     ],
     "dlgCards": [
-      "dlg_034"
+      "dlg_034",
+      "dlg_047"
     ]
   },
   {
@@ -982,7 +983,8 @@ var LESSONS = [
       "sbs_046"
     ],
     "dlgCards": [
-      "dlg_035"
+      "dlg_035",
+      "dlg_048"
     ]
   },
   {
@@ -1080,7 +1082,8 @@ var LESSONS = [
       "sbs_019"
     ],
     "dlgCards": [
-      "dlg_036"
+      "dlg_036",
+      "dlg_049"
     ]
   },
   {
@@ -1166,7 +1169,8 @@ var LESSONS = [
       "sbs_037"
     ],
     "dlgCards": [
-      "dlg_039"
+      "dlg_039",
+      "dlg_050"
     ]
   },
   {
@@ -1249,7 +1253,8 @@ var LESSONS = [
       "sbs_014"
     ],
     "dlgCards": [
-      "dlg_040"
+      "dlg_040",
+      "dlg_051"
     ]
   },
   {
@@ -1329,7 +1334,8 @@ var LESSONS = [
       "sbs_028"
     ],
     "dlgCards": [
-      "dlg_041"
+      "dlg_041",
+      "dlg_052"
     ]
   },
   {
@@ -1406,7 +1412,8 @@ var LESSONS = [
       "sbs_009"
     ],
     "dlgCards": [
-      "dlg_042"
+      "dlg_042",
+      "dlg_053"
     ]
   },
   {
@@ -1486,6 +1493,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_004",
       "sbs_010"
+    ],
+    "dlgCards": [
+      "dlg_054"
     ]
   },
   {
@@ -1572,6 +1582,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_009",
       "sbs_035"
+    ],
+    "dlgCards": [
+      "dlg_055"
     ]
   },
   {
@@ -8496,6 +8509,456 @@ var DIALOGE = [
       "en": "Yes, two days a week, usually Mondays and Fridays. I find that really practical, especially because I save the commute and can work more focused.",
       "uk": "Так, два дні на тиждень, зазвичай у понеділок і п'ятницю. Мені це дуже зручно, особливо тому що я тоді економлю на дорозі й можу працювати зосередженіше.",
       "ru": "Да, два дня в неделю, обычно по понедельникам и пятницам. Мне это очень удобно, особенно потому что я тогда экономлю на дороге и могу работать сосредоточеннее."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_047",
+    "cat": "Kinderbetreuung",
+    "task": {
+      "de": "Thema: Kinderbetreuung – „Wie organisierst du eigentlich die Kinderbetreuung neben der Arbeit?“",
+      "en": "Topic: Childcare – \"How do you actually organize childcare alongside work?\"",
+      "uk": "Тема: Догляд за дітьми – «А як ти взагалі організовуєш догляд за дітьми поряд з роботою?»",
+      "ru": "Тема: Уход за детьми – «А как ты вообще организуешь уход за детьми наряду с работой?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Sag mal, wie organisierst du eigentlich die Kinderbetreuung neben der Arbeit? Das stelle ich mir ziemlich stressig vor.",
+      "en": "Tell me, how do you actually organize childcare alongside work? I imagine that's pretty stressful.",
+      "uk": "Скажи, а як ти взагалі організовуєш догляд за дітьми поряд з роботою? Мені здається, це доволі напружено.",
+      "ru": "Скажи, а как ты вообще организуешь уход за детьми наряду с работой? Мне кажется, это довольно напряжённо."
+    },
+    "a": {
+      "de": "Ehrlich gesagt ist es manchmal schon eine Herausforderung. Meine Tochter ist vormittags in der Kita, und nachmittags springt meistens meine Mutter ein, wenn ich noch arbeiten muss. Hast du eigentlich selbst Kinder?",
+      "en": "Honestly, it can be a real challenge sometimes. My daughter is at daycare in the mornings, and my mother usually steps in during the afternoon if I still have to work. Do you actually have kids yourself?",
+      "uk": "Чесно кажучи, іноді це справжній виклик. Моя донька зранку в садочку, а пополудні зазвичай виручає моя мама, якщо мені ще треба працювати. А в тебе взагалі є діти?",
+      "ru": "Честно говоря, иногда это настоящий вызов. Моя дочь по утрам в садике, а после обеда обычно выручает моя мама, если мне ещё нужно работать. А у тебя вообще есть дети?"
+    },
+    "q1": {
+      "de": "Nein, noch nicht, aber meine Schwester hat einen zweijährigen Sohn, und ich sehe, wie viel Organisation das braucht. Ist die Kita eigentlich ganztags geöffnet?",
+      "en": "No, not yet, but my sister has a two-year-old son, and I see how much organizing that takes. Is the daycare actually open all day?",
+      "uk": "Ні, ще немає, але в моєї сестри дворічний син, і я бачу, скільки організації це вимагає. А садочок взагалі працює цілий день?",
+      "ru": "Нет, пока нет, но у моей сестры двухлетний сын, и я вижу, сколько организации это требует. А садик вообще работает целый день?"
+    },
+    "a1": {
+      "de": "Ja, zum Glück bis siebzehn Uhr, das passt meistens ganz gut mit meinen Arbeitszeiten zusammen. Nur wenn ich mal länger arbeiten muss, wird es wirklich knapp. Hilft dir eigentlich jemand aus deiner Familie mit deiner Nichte oder deinem Neffen?",
+      "en": "Yes, thankfully until five p.m., that usually fits pretty well with my working hours. It only really gets tight when I have to work longer sometimes. Does anyone in your family actually help with your niece or nephew?",
+      "uk": "Так, на щастя, до сімнадцятої, це зазвичай непогано узгоджується з моїм робочим графіком. Тільки коли мені треба довше попрацювати, стає справді тісно. А тобі допомагає хтось із родини з твоєю племінницею чи племінником?",
+      "ru": "Да, к счастью, до семнадцати часов, это обычно неплохо согласуется с моим рабочим графиком. Только когда мне нужно поработать подольше, становится действительно тесно. А тебе помогает кто-то из семьи с твоей племянницей или племянником?"
+    },
+    "q2": {
+      "de": "Ja, meine Eltern springen ab und zu ein, wenn meine Schwester einen Termin hat. Ich finde es total schön zu sehen, wie die ganze Familie irgendwie zusammenhält. Nimmst du dir eigentlich manchmal auch bewusst Zeit nur für dich?",
+      "en": "Yes, my parents step in every now and then when my sister has an appointment. I really love seeing how the whole family sort of holds together. Do you actually sometimes deliberately make time just for yourself?",
+      "uk": "Так, мої батьки час від часу виручають, коли в моєї сестри є якась справа. Мені дуже приємно бачити, як уся родина якось тримається разом. А ти взагалі іноді свідомо виділяєш час тільки для себе?",
+      "ru": "Да, мои родители время от времени выручают, когда у моей сестры какое-то дело. Мне очень приятно видеть, как вся семья как-то держится вместе. А ты вообще иногда сознательно выделяешь время только для себя?"
+    },
+    "a2": {
+      "de": "Ehrlich gesagt eher selten, aber ich versuche, mir wenigstens einmal die Woche einen Abend für mich freizuhalten. Das brauche ich einfach, um wieder Energie zu tanken.",
+      "en": "Honestly, rarely, but I try to at least keep one evening a week free just for myself. I just need that to recharge my energy.",
+      "uk": "Чесно кажучи, досить рідко, але я намагаюся хоча б раз на тиждень залишати вечір вільним для себе. Це мені просто потрібно, щоб знову набратися енергії.",
+      "ru": "Честно говоря, довольно редко, но я стараюсь хотя бы раз в неделю оставлять вечер свободным для себя. Это мне просто нужно, чтобы снова набраться энергии."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_048",
+    "cat": "Arbeitsweg",
+    "task": {
+      "de": "Thema: Arbeitsweg – „Wie kommst du eigentlich normalerweise zur Arbeit?“",
+      "en": "Topic: Commute – \"How do you actually usually get to work?\"",
+      "uk": "Тема: Дорога на роботу – «А як ти взагалі зазвичай добираєшся до роботи?»",
+      "ru": "Тема: Дорога на работу – «А как ты вообще обычно добираешься до работы?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_david",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag mal, wie kommst du eigentlich normalerweise zur Arbeit? Wohnst du weit weg vom Büro?",
+      "en": "Tell me, how do you usually get to work actually? Do you live far from the office?",
+      "uk": "Скажи, а як ти взагалі зазвичай добираєшся до роботи? Ти далеко живеш від офісу?",
+      "ru": "Скажи, а как ты вообще обычно добираешься до работы? Ты далеко живёшь от офиса?"
+    },
+    "a": {
+      "de": "Eigentlich nicht so weit, ich fahre meistens mit dem Auto, das dauert ungefähr zwanzig Minuten. Manchmal nehme ich aber auch den E-Scooter, wenn das Wetter gut ist. Und du, wie sieht das bei dir aus?",
+      "en": "Actually not that far, I mostly drive, it takes about twenty minutes. But sometimes I also take an e-scooter when the weather's good. What about you, what's it like for you?",
+      "uk": "Взагалі не дуже далеко, я здебільшого їжджу машиною, це займає хвилин двадцять. Але іноді їжджу й на електросамокаті, якщо гарна погода. А в тебе як?",
+      "ru": "Вообще не очень далеко, я в основном езжу на машине, это занимает минут двадцать. Но иногда езжу и на электросамокате, если хорошая погода. А у тебя как?"
+    },
+    "q1": {
+      "de": "Ich fahre eigentlich fast immer mit dem Auto, aber seit Kurzem teile ich mir eine Fahrgemeinschaft mit einem Kollegen aus der Nachbarschaft. Wie findest du eigentlich den E-Scooter im Vergleich zum Auto?",
+      "en": "I actually drive almost always too, but recently I've been carpooling with a colleague from the neighborhood. How do you actually find the e-scooter compared to the car?",
+      "uk": "Я взагалі майже завжди їжджу машиною, але останнім часом я їжджу разом із колегою із сусіднього району по черзі. До речі, як тобі електросамокат порівняно з машиною?",
+      "ru": "Я вообще почти всегда езжу на машине, но в последнее время я езжу вместе с коллегой из соседнего района по очереди. Кстати, как тебе электросамокат по сравнению с машиной?"
+    },
+    "a1": {
+      "de": "Der macht wirklich Spaß, vor allem im Sommer, aber bei Regen nutze ich ihn natürlich nicht. Eine Fahrgemeinschaft klingt aber auch praktisch - spart ihr euch dadurch viele Kosten?",
+      "en": "It's really fun, especially in summer, but of course I don't use it when it rains. Carpooling sounds practical too though - does it save you a lot of costs?",
+      "uk": "Це справді весело, особливо влітку, але в дощ я його, звісно, не використовую. А спільні поїздки теж звучать практично - це заощаджує вам чимало коштів?",
+      "ru": "Это действительно весело, особенно летом, но в дождь я его, конечно, не использую. А совместные поездки тоже звучат практично - это экономит вам немало денег?"
+    },
+    "q2": {
+      "de": "Ja, ziemlich viel sogar, wir teilen uns Benzin und Parkgebühren, und ich muss nur jede zweite Woche wirklich fahren. Gibt es eigentlich viele Parkplätze bei euch in der Nähe?",
+      "en": "Yes, quite a lot actually, we split the gas and parking fees, and I only really have to drive every other week. Are there actually a lot of parking spots near you?",
+      "uk": "Так, доволі багато, ми ділимо витрати на бензин і паркування, і мені реально треба їхати лише кожен другий тиждень. А у вас поблизу багато паркомісць?",
+      "ru": "Да, довольно много, мы делим расходы на бензин и парковку, и мне реально нужно ехать только через неделю. А у вас поблизости много парковочных мест?"
+    },
+    "a2": {
+      "de": "Leider nicht wirklich, ich suche morgens manchmal ziemlich lange nach einem freien Platz. Deshalb überlege ich eigentlich schon länger, öfter mit dem E-Scooter oder sogar mit dem Fahrrad zu fahren.",
+      "en": "Unfortunately not really, in the mornings I sometimes have to look for a free spot for quite a while. That's actually why I've been thinking for a while about riding the e-scooter more often, or even a bike.",
+      "uk": "На жаль, не дуже, вранці я іноді досить довго шукаю вільне місце. Тому я взагалі вже давно думаю частіше їздити на електросамокаті або навіть на велосипеді.",
+      "ru": "К сожалению, не очень, утром я иногда довольно долго ищу свободное место. Поэтому я вообще уже давно думаю чаще ездить на электросамокате или даже на велосипеде."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_049",
+    "cat": "Wochenende",
+    "task": {
+      "de": "Thema: Wochenende – „Was hast du eigentlich dieses Wochenende vor?“",
+      "en": "Topic: Weekend – \"What do you actually have planned for this weekend?\"",
+      "uk": "Тема: Вихідні – «А що ти взагалі плануєш на ці вихідні?»",
+      "ru": "Тема: Выходные – «А что ты вообще планируешь на эти выходные?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_julia",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Sag mal, was hast du eigentlich dieses Wochenende vor?",
+      "en": "Tell me, what do you actually have planned for this weekend?",
+      "uk": "Скажи, а що ти взагалі плануєш на ці вихідні?",
+      "ru": "Скажи, а что ты вообще планируешь на эти выходные?"
+    },
+    "a": {
+      "de": "Ich wollte eigentlich schon lange mal mein Wohnzimmer neu streichen, also nutze ich das Wochenende wahrscheinlich dafür. Das wird bestimmt anstrengend, aber ich freue mich schon darauf, wie es danach aussieht. Und du, hast du schon was geplant?",
+      "en": "I've actually been wanting to repaint my living room for a long time, so I'll probably use the weekend for that. It's bound to be exhausting, but I'm already looking forward to how it'll look afterward. What about you, have you planned anything yet?",
+      "uk": "Я вже давно хотіла перефарбувати вітальню, тож, мабуть, використаю вихідні саме для цього. Це точно буде виснажливо, але я вже зараз рада, як усе виглядатиме потім. А в тебе вже є якісь плани?",
+      "ru": "Я уже давно хотела перекрасить гостиную, так что, наверное, использую выходные именно для этого. Это точно будет утомительно, но я уже сейчас рада тому, как всё будет выглядеть потом. А у тебя уже есть какие-то планы?"
+    },
+    "q1": {
+      "de": "Ich treffe mich am Samstag mit einer alten Freundin, die ich schon ewig nicht mehr gesehen habe. Wir wollen zusammen brunchen gehen und dann vielleicht noch shoppen. Welche Farbe hast du dir eigentlich für dein Wohnzimmer ausgesucht?",
+      "en": "I'm meeting an old friend on Saturday whom I haven't seen in ages. We want to go for brunch together and then maybe do some shopping. What color have you actually picked for your living room?",
+      "uk": "У суботу я зустрічаюся зі старою подругою, яку не бачила вже цілу вічність. Ми хочемо разом поснідати, а потім, може, ще й пройтися магазинами. До речі, який колір ти обрала для вітальні?",
+      "ru": "В субботу я встречаюсь со старой подругой, которую не видела уже целую вечность. Мы хотим вместе позавтракать, а потом, может, ещё и пройтись по магазинам. Кстати, какой цвет ты выбрала для гостиной?"
+    },
+    "a1": {
+      "de": "Ich überlege noch zwischen einem hellen Grau und einem warmen Beige, kann mich aber einfach nicht entscheiden. Klingt aber schön, dass ihr euch nach so langer Zeit mal wiedertrefft - worüber unterhaltet ihr euch dann meistens?",
+      "en": "I'm still deciding between a light gray and a warm beige, but I just can't make up my mind. Sounds nice though that you two are meeting up again after so long - what do you usually talk about then?",
+      "uk": "Я ще думаю між світло-сірим і теплим бежевим, але ніяк не можу вирішити. Але звучить приємно, що ви знову зустрічаєтеся після такої перерви - про що ви зазвичай розмовляєте?",
+      "ru": "Я ещё думаю между светло-серым и тёплым бежевым, но никак не могу решить. Но звучит приятно, что вы снова встречаетесь после такого перерыва - о чём вы обычно разговариваете?"
+    },
+    "q2": {
+      "de": "Eigentlich über alles Mögliche, meistens aber über die Arbeit oder was sich bei uns beiden gerade so tut. Am Sonntag will ich dann aber wirklich nichts machen und einfach nur entspannen. Hast du eigentlich schon eine Idee, wie du das Wochenende ausklingen lässt?",
+      "en": "Actually about all sorts of things, but mostly about work or what's going on with each of us right now. On Sunday though I really don't want to do anything and just relax. Do you actually have an idea yet how you'll wind down the weekend?",
+      "uk": "Взагалі про все підряд, але здебільшого про роботу або про те, що відбувається в нас обох. А в неділю я справді нічого не хочу робити і просто хочу відпочити. А в тебе вже є ідея, як ти завершиш вихідні?",
+      "ru": "Вообще обо всём подряд, но в основном о работе или о том, что происходит у нас обеих. А в воскресенье я действительно ничего не хочу делать и просто хочу отдохнуть. А у тебя уже есть идея, как ты завершишь выходные?"
+    },
+    "a2": {
+      "de": "Am Sonntag will ich wahrscheinlich einfach nur auf dem Sofa liegen und eine Serie schauen, nachdem ich mich beim Streichen bestimmt total ausgepowert habe.",
+      "en": "On Sunday I'll probably just lie on the couch and watch a series, after I've completely worn myself out with the painting.",
+      "uk": "У неділю я, напевно, просто ляжу на диван і подивлюся серіал, бо точно повністю виснажуся після фарбування.",
+      "ru": "В воскресенье я, наверное, просто лягу на диван и посмотрю сериал, потому что точно полностью вымотаюсь после покраски."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_050",
+    "cat": "Freizeitgestaltung",
+    "task": {
+      "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich am liebsten, wenn du mal ein bisschen Zeit für dich hast?“",
+      "en": "Topic: Leisure time – \"What do you actually like doing most when you have a bit of time for yourself?\"",
+      "uk": "Тема: Дозвілля – «А що ти взагалі найбільше любиш робити, коли маєш трохи часу для себе?»",
+      "ru": "Тема: Досуг – «А что ты вообще больше всего любишь делать, когда у тебя есть немного времени для себя?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_david",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Sag mal, was machst du eigentlich am liebsten, wenn du mal ein bisschen Zeit für dich hast?",
+      "en": "Tell me, what do you actually like doing most when you have a bit of time for yourself?",
+      "uk": "Скажи, а що ти взагалі найбільше любиш робити, коли маєш трохи часу для себе?",
+      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть немного времени для себя?"
+    },
+    "a": {
+      "de": "Ich gehe seit ein paar Monaten in einen Malkurs, das war schon lange ein Traum von mir. Wir treffen uns immer mittwochs abends und malen zusammen mit Acrylfarben. Und du, wie verbringst du deine freie Zeit am liebsten?",
+      "en": "I've been going to a painting class for a few months now, that's been a dream of mine for a long time. We meet every Wednesday evening and paint together with acrylics. What about you, how do you like to spend your free time most?",
+      "uk": "Я вже кілька місяців ходжу на курси малювання, це вже давно було моєю мрією. Ми зустрічаємося щосереди ввечері і малюємо разом акриловими фарбами. А в тебе як, як ти найбільше любиш проводити вільний час?",
+      "ru": "Я уже несколько месяцев хожу на курсы рисования, это уже давно было моей мечтой. Мы встречаемся каждую среду вечером и рисуем вместе акриловыми красками. А у тебя как, как ты больше всего любишь проводить свободное время?"
+    },
+    "q1": {
+      "de": "Ich bin eigentlich in einem Buchclub, wir lesen jeden Monat ein neues Buch und treffen uns dann, um darüber zu diskutieren. Bist du eigentlich schon gut im Malen geworden, oder fängst du gerade erst an?",
+      "en": "I'm actually in a book club, we read a new book every month and then meet up to discuss it. Have you actually gotten pretty good at painting already, or are you just starting out?",
+      "uk": "Я взагалі в книжковому клубі, ми щомісяця читаємо нову книжку, а потім зустрічаємося, щоб її обговорити. А ти вже добре навчилася малювати, чи тільки починаєш?",
+      "ru": "Я вообще в книжном клубе, мы каждый месяц читаем новую книгу, а потом встречаемся, чтобы её обсудить. А ты уже хорошо научилась рисовать, или только начинаешь?"
+    },
+    "a1": {
+      "de": "Ich würde sagen, ich mache schon Fortschritte, auch wenn ich noch lange kein Profi bin. Ein Buchclub klingt aber auch total spannend - welches Buch lest ihr gerade?",
+      "en": "I'd say I'm making progress, even though I'm still far from a professional. A book club sounds really exciting too though - what book are you reading right now?",
+      "uk": "Я б сказала, що вже прогресую, хоча до професіонала мені ще далеко. Книжковий клуб теж звучить дуже цікаво - яку книжку ви зараз читаєте?",
+      "ru": "Я бы сказала, что уже прогрессирую, хотя до профессионала мне ещё далеко. Книжный клуб тоже звучит очень интересно - какую книгу вы сейчас читаете?"
+    },
+    "q2": {
+      "de": "Gerade lesen wir einen Kriminalroman, der in Berlin spielt, das macht wirklich Spaß. Stellst du deine Bilder eigentlich irgendwo aus, oder malst du nur für dich selbst?",
+      "en": "Right now we're reading a crime novel set in Berlin, it's really fun. Do you actually exhibit your paintings anywhere, or do you just paint for yourself?",
+      "uk": "Зараз ми читаємо детектив, дія якого відбувається в Берліні, це справді захопливо. А ти виставляєш свої картини десь, чи малюєш лише для себе?",
+      "ru": "Сейчас мы читаем детектив, действие которого происходит в Берлине, это действительно увлекательно. А ты выставляешь свои картины где-то, или рисуешь только для себя?"
+    },
+    "a2": {
+      "de": "Bisher nur für mich, aber ein paar aus dem Kurs haben letztes Jahr eine kleine Ausstellung gemacht. Vielleicht traue ich mich das ja auch irgendwann mal.",
+      "en": "So far just for myself, but a few people from the class did a small exhibition last year. Maybe I'll work up the courage to do that too someday.",
+      "uk": "Поки що лише для себе, але декілька людей з курсу минулого року зробили невелику виставку. Може, колись і я наважуся.",
+      "ru": "Пока только для себя, но несколько человек с курса в прошлом году сделали небольшую выставку. Может, когда-нибудь и я решусь."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_051",
+    "cat": "Urlaub",
+    "task": {
+      "de": "Thema: Urlaub – „Hast du eigentlich schon Pläne für den Sommer?“",
+      "en": "Topic: Vacation – \"Do you actually already have plans for the summer?\"",
+      "uk": "Тема: Відпустка – «А в тебе вже є плани на літо?»",
+      "ru": "Тема: Отпуск – «А у тебя уже есть планы на лето?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Sag mal, hast du eigentlich schon Pläne für den Sommer? Fährst du irgendwohin in den Urlaub?",
+      "en": "Tell me, do you actually already have plans for the summer? Are you going anywhere on vacation?",
+      "uk": "Скажи, а в тебе вже є плани на літо? Ти кудись поїдеш у відпустку?",
+      "ru": "Скажи, а у тебя уже есть планы на лето? Ты куда-нибудь поедешь в отпуск?"
+    },
+    "a": {
+      "de": "Ja, ich fahre für eine Woche mit dem Wohnmobil durch Norwegen, das wollte ich schon lange mal machen. Ich freue mich total auf die Natur dort und die vielen Fjorde. Und du, hast du auch schon was vor?",
+      "en": "Yes, I'm taking a camper van through Norway for a week, I've wanted to do that for a long time. I'm really looking forward to the nature there and the many fjords. What about you, do you have anything planned too?",
+      "uk": "Так, я на тиждень їду на кемпері через Норвегію, я вже давно хотів це зробити. Дуже чекаю на природу там і численні фʼорди. А в тебе теж уже є якісь плани?",
+      "ru": "Да, я на неделю еду на кемпере через Норвегию, я уже давно хотел это сделать. Очень жду природу там и множество фьордов. А у тебя тоже уже есть какие-то планы?"
+    },
+    "q1": {
+      "de": "Ich glaube, ich bleibe dieses Jahr eher zu Hause und mache eine Art Staycation, also einfach ein paar freie Tage ohne konkrete Pläne. Warst du eigentlich schon mal mit dem Wohnmobil unterwegs?",
+      "en": "I think I'll actually stay home this year and do a kind of staycation, so just a few free days without any concrete plans. Have you actually traveled by camper van before?",
+      "uk": "Гадаю, цього року я радше залишуся вдома і зроблю щось на кшталт стейкейшену, тобто просто кілька вільних днів без конкретних планів. А ти вже колись подорожував на кемпері?",
+      "ru": "Думаю, в этом году я скорее останусь дома и сделаю что-то вроде стейкейшена, то есть просто несколько свободных дней без конкретных планов. А ты уже когда-нибудь путешествовал на кемпере?"
+    },
+    "a1": {
+      "de": "Nein, das ist tatsächlich mein erstes Mal, ich bin schon ein bisschen aufgeregt, wie das wird. Eine Staycation klingt aber auch total entspannt - was machst du dann normalerweise an so freien Tagen?",
+      "en": "No, this is actually my first time, I'm already a bit excited about how it'll turn out. A staycation sounds really relaxing too though - what do you usually do on days off like that?",
+      "uk": "Ні, це насправді мій перший раз, я вже трохи хвилююся, як воно буде. Але стейкейшен теж звучить дуже розслаблено - що ти зазвичай робиш у такі вільні дні?",
+      "ru": "Нет, это на самом деле мой первый раз, я уже немного волнуюсь, как это будет. Но стейкейшен тоже звучит очень расслабленно - что ты обычно делаешь в такие свободные дни?"
+    },
+    "q2": {
+      "de": "Meistens schlafe ich einfach länger aus und treffe mich mit Freunden, die auch gerade Zeit haben. Manchmal fahre ich auch spontan für einen Tag irgendwohin. Wie lange bist du eigentlich mit dem Wohnmobil unterwegs?",
+      "en": "Mostly I just sleep in and meet up with friends who also have time then. Sometimes I also spontaneously drive somewhere for a day. How long are you actually traveling by camper van?",
+      "uk": "Здебільшого я просто довше висипаюся і зустрічаюся з друзями, у яких теж є час. Іноді спонтанно їду кудись на день. А скільки ти взагалі подорожуєш на кемпері?",
+      "ru": "В основном я просто дольше высыпаюсь и встречаюсь с друзьями, у которых тоже есть время. Иногда спонтанно еду куда-нибудь на день. А сколько ты вообще путешествуешь на кемпере?"
+    },
+    "a2": {
+      "de": "Genau eine Woche, das reicht meiner Meinung nach gerade richtig, um ein paar Orte zu sehen, ohne total im Stress zu sein.",
+      "en": "Exactly one week, in my opinion that's just about right to see a few places without being totally stressed.",
+      "uk": "Рівно тиждень, на мою думку, цього якраз досить, щоб побачити кілька місць, не перебуваючи в постійному стресі.",
+      "ru": "Ровно неделю, по-моему, этого как раз достаточно, чтобы увидеть несколько мест, не находясь в постоянном стрессе."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_052",
+    "cat": "Sportaktivitäten",
+    "task": {
+      "de": "Thema: Sportaktivitäten – „Treibst du eigentlich Sport, oder eher gar nicht so?“",
+      "en": "Topic: Sports activities – \"Do you actually do sports, or not really?\"",
+      "uk": "Тема: Спортивна активність – «Ти взагалі займаєшся спортом, чи радше ні?»",
+      "ru": "Тема: Спортивная активность – «Ты вообще занимаешься спортом, или скорее нет?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag mal, treibst du eigentlich Sport, oder eher gar nicht so?",
+      "en": "Tell me, do you actually do sports, or not really?",
+      "uk": "Скажи, а ти взагалі займаєшся спортом, чи радше ні?",
+      "ru": "Скажи, а ты вообще занимаешься спортом, или скорее нет?"
+    },
+    "a": {
+      "de": "Doch, ich spiele seit der Schulzeit Fußball, mittlerweile in einer kleinen Freizeitliga hier in der Stadt. Wir trainieren zweimal die Woche und haben am Wochenende meistens ein Spiel. Und du, machst du auch etwas Sportliches?",
+      "en": "Actually yes, I've been playing football since school, these days in a small recreational league here in the city. We train twice a week and usually have a match on the weekend. What about you, do you do anything sporty too?",
+      "uk": "Ні, навпаки, я граю у футбол ще зі шкільних часів, зараз у невеликій аматорській лізі тут у місті. Ми тренуємося двічі на тиждень, і зазвичай на вихідних маємо матч. А в тебе, ти теж чимось спортивним займаєшся?",
+      "ru": "Нет, наоборот, я играю в футбол ещё со школьных времён, сейчас в небольшой любительской лиге здесь в городе. Мы тренируемся дважды в неделю, и обычно на выходных у нас матч. А у тебя, ты тоже чем-то спортивным занимаешься?"
+    },
+    "q1": {
+      "de": "Ich gehe eigentlich dreimal die Woche ins Fitnessstudio, hauptsächlich Krafttraining. Ich finde es total befriedigend, wenn man sieht, wie man langsam stärker wird. Wie läuft's eigentlich mit eurer Liga, seid ihr gerade erfolgreich?",
+      "en": "I actually go to the gym three times a week, mainly strength training. I find it really satisfying when you see yourself slowly getting stronger. How's it going with your league actually, are you doing well right now?",
+      "uk": "Я взагалі тричі на тиждень ходжу в спортзал, здебільшого силові тренування. Мені дуже приємно, коли бачиш, як поступово стаєш сильнішим. До речі, як справи з вашою лігою, у вас зараз успішно йде?",
+      "ru": "Я вообще трижды в неделю хожу в спортзал, в основном силовые тренировки. Мне очень приятно, когда видишь, как постепенно становишься сильнее. Кстати, как дела с вашей лигой, у вас сейчас успешно идёт?"
+    },
+    "a1": {
+      "de": "Ziemlich gut sogar, wir stehen momentan auf Platz zwei. Krafttraining klingt aber auch spannend - hast du dir eigentlich schon konkrete Ziele gesetzt?",
+      "en": "Pretty well actually, we're currently in second place. Strength training sounds exciting too though - have you actually set yourself any concrete goals?",
+      "uk": "Навіть доволі добре, зараз ми на другому місці. Силові тренування теж звучать цікаво - а ти вже поставив собі конкретні цілі?",
+      "ru": "Даже довольно хорошо, сейчас мы на втором месте. Силовые тренировки тоже звучат интересно - а ты уже поставил себе конкретные цели?"
+    },
+    "q2": {
+      "de": "Ja, ich möchte bis Ende des Jahres eigentlich mein Gewicht beim Kniebeugen deutlich steigern. Das motiviert mich total, regelmäßig hinzugehen. Verletzt du dich beim Fußball eigentlich manchmal?",
+      "en": "Yes, I actually want to significantly increase my squat weight by the end of the year. That really motivates me to go regularly. Do you actually sometimes get injured playing football?",
+      "uk": "Так, я взагалі хочу до кінця року суттєво збільшити вагу в присіданнях. Це мене дуже мотивує регулярно ходити. А ти взагалі іноді травмуєшся у футболі?",
+      "ru": "Да, я вообще хочу к концу года существенно увеличить вес в приседаниях. Это меня очень мотивирует регулярно ходить. А ты вообще иногда травмируешься в футболе?"
+    },
+    "a2": {
+      "de": "Zum Glück bisher nur kleinere Sachen, aber ein Teamkollege hat sich letztes Jahr das Knie verletzt und musste ziemlich lange pausieren. Deshalb wärme ich mich inzwischen immer besonders gründlich auf.",
+      "en": "Fortunately only minor things so far, but a teammate injured his knee last year and had to take a pretty long break. That's why I always warm up especially thoroughly these days.",
+      "uk": "На щастя, поки що лише дрібниці, але один товариш по команді минулого року травмував коліно і мусив довго пропустити. Тому тепер я завжди особливо ретельно розминаюся.",
+      "ru": "К счастью, пока только мелочи, но один товарищ по команде в прошлом году травмировал колено и должен был долго пропустить. Поэтому теперь я всегда особенно тщательно разминаюсь."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_053",
+    "cat": "Arbeitszeiten",
+    "task": {
+      "de": "Thema: Arbeitszeiten – „Wie sieht das eigentlich bei dir mit den Arbeitszeiten aus?“",
+      "en": "Topic: Working hours – \"What's it actually like for you with the working hours?\"",
+      "uk": "Тема: Робочий час – «А як у тебе взагалі з робочим часом?»",
+      "ru": "Тема: Рабочее время – «А как у тебя вообще с рабочим временем?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Sag mal, wie sieht das eigentlich bei dir mit den Arbeitszeiten aus? Arbeitest du Vollzeit oder Teilzeit?",
+      "en": "Tell me, what's it actually like for you with the working hours? Do you work full-time or part-time?",
+      "uk": "Скажи, а як у тебе взагалі з робочим часом? Ти працюєш повний день чи неповний?",
+      "ru": "Скажи, а как у тебя вообще с рабочим временем? Ты работаешь полный день или неполный?"
+    },
+    "a": {
+      "de": "Ich arbeite seit letztem Jahr in Teilzeit, ungefähr dreißig Stunden die Woche. Das war eine bewusste Entscheidung, damit ich mehr Zeit für mich habe. Und du, wie ist das bei dir geregelt?",
+      "en": "I've been working part-time since last year, about thirty hours a week. That was a deliberate decision, so I'd have more time for myself. What about you, how is that arranged for you?",
+      "uk": "Я з минулого року працюю неповний день, приблизно тридцять годин на тиждень. Це було свідоме рішення, щоб мати більше часу для себе. А в тебе як це влаштовано?",
+      "ru": "Я с прошлого года работаю неполный день, примерно тридцать часов в неделю. Это было осознанное решение, чтобы иметь больше времени для себя. А у тебя как это устроено?"
+    },
+    "q1": {
+      "de": "Ich arbeite Vollzeit, aber dafür habe ich relativ flexible Kernarbeitszeiten. Wie hast du das eigentlich mit deinem Chef ausgehandelt, die Reduzierung auf Teilzeit?",
+      "en": "I work full-time, but I have relatively flexible core hours. How did you actually negotiate reducing to part-time with your boss?",
+      "uk": "Я працюю повний день, але зате в мене відносно гнучкий основний робочий час. До речі, як ти домовилася зі своїм керівником про скорочення до неповного дня?",
+      "ru": "Я работаю полный день, но зато у меня относительно гибкое основное рабочее время. Кстати, как ты договорилась со своим руководителем о сокращении до неполного дня?"
+    },
+    "a1": {
+      "de": "Das war tatsächlich einfacher als gedacht, ich musste nur begründen, warum ich das möchte, und dann haben wir gemeinsam einen Plan gemacht. Vermisst du eigentlich manchmal, mehr freie Tage zu haben?",
+      "en": "That was actually easier than I thought, I just had to explain why I wanted it, and then we made a plan together. Do you actually sometimes miss having more days off?",
+      "uk": "Це насправді було простіше, ніж я думала, треба було лише пояснити, чому я цього хочу, а потім ми разом склали план. А тобі часом не бракує більшої кількості вільних днів?",
+      "ru": "Это на самом деле было проще, чем я думала, нужно было только объяснить, почему я этого хочу, а потом мы вместе составили план. А тебе иногда не хватает большего количества свободных дней?"
+    },
+    "q2": {
+      "de": "Ehrlich gesagt schon ein bisschen, vor allem wenn ich sehe, wie entspannt du wirkst. Aber ich brauche das Gehalt einer Vollzeitstelle im Moment noch. Wünschst du dir eigentlich, irgendwann wieder Vollzeit zu arbeiten?",
+      "en": "Honestly, a little bit, especially when I see how relaxed you seem. But I still need the salary of a full-time position right now. Do you actually wish you'd go back to full-time at some point?",
+      "uk": "Чесно кажучи, трохи бракує, особливо коли бачу, яка ти розслаблена. Але мені поки що потрібна зарплата повної ставки. А ти взагалі хотіла б колись знову працювати повний день?",
+      "ru": "Честно говоря, немного не хватает, особенно когда вижу, какая ты расслабленная. Но мне пока нужна зарплата полной ставки. А ты вообще хотела бы когда-нибудь снова работать полный день?"
+    },
+    "a2": {
+      "de": "Momentan eigentlich nicht, ich genieße die zusätzliche Zeit einfach zu sehr. Aber vielleicht ändert sich das ja nochmal, wenn sich meine Lebenssituation verändert.",
+      "en": "Not really at the moment, I just enjoy the extra time too much. But maybe that'll change again if my life situation changes.",
+      "uk": "Наразі взагалі ні, мені просто дуже подобається додатковий час. Але, можливо, це ще зміниться, якщо зміниться моя життєва ситуація.",
+      "ru": "Сейчас вообще нет, мне просто очень нравится дополнительное время. Но, возможно, это ещё изменится, если изменится моя жизненная ситуация."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_054",
+    "cat": "Kinderbetreuung",
+    "task": {
+      "de": "Thema: Kinderbetreuung – „Wie handhabt ihr das eigentlich mit der Kinderbetreuung, wenn ihr beide arbeitet?“",
+      "en": "Topic: Childcare – \"How do you actually handle childcare when you're both working?\"",
+      "uk": "Тема: Догляд за дітьми – «А як ви взагалі справляєтеся з доглядом за дітьми, якщо ви обоє працюєте?»",
+      "ru": "Тема: Уход за детьми – «А как вы вообще справляетесь с уходом за детьми, если вы оба работаете?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Sag mal, wie handhabt ihr das eigentlich mit der Kinderbetreuung, wenn ihr beide arbeitet?",
+      "en": "Tell me, how do you actually handle childcare when you're both working?",
+      "uk": "Скажи, а як ви взагалі справляєтеся з доглядом за дітьми, якщо ви обоє працюєте?",
+      "ru": "Скажи, а как вы вообще справляетесь с уходом за детьми, если вы оба работаете?"
+    },
+    "a": {
+      "de": "Wir teilen uns das eigentlich ziemlich gut auf: Ich bringe die Kinder morgens zur Schule, und mein Partner holt sie meistens nachmittags ab. An den Tagen, an denen er länger arbeiten muss, springt zum Glück der Hort ein. Und bei euch, wie läuft das?",
+      "en": "We actually split it up pretty well: I take the kids to school in the morning, and my partner usually picks them up in the afternoon. On the days he has to work longer, luckily the after-school club steps in. What about you, how does that work for you?",
+      "uk": "Ми, власне, доволі непогано це розподіляємо: я вранці відводжу дітей до школи, а мій партнер зазвичай забирає їх пополудні. У ті дні, коли йому треба довше працювати, на щастя, виручає група продовженого дня. А у вас як це відбувається?",
+      "ru": "Мы, собственно, довольно неплохо это распределяем: я утром отвожу детей в школу, а мой партнёр обычно забирает их после обеда. В те дни, когда ему нужно дольше работать, к счастью, выручает группа продлённого дня. А у вас как это происходит?"
+    },
+    "q1": {
+      "de": "Bei uns ist es ähnlich, nur dass wir keinen Partner haben, der sich das teilt - ich mache das meistens allein, mit Unterstützung von meiner Nachbarin. Wie alt sind eure Kinder eigentlich?",
+      "en": "For us it's similar, except we don't have a partner to share it with - I mostly do it alone, with support from my neighbor. How old are your kids actually?",
+      "uk": "У нас схоже, тільки в нас немає партнера, який би це ділив - я здебільшого роблю це сама, за підтримки моєї сусідки. До речі, скільки років вашим дітям?",
+      "ru": "У нас похоже, только у нас нет партнёра, который бы это делил - я в основном делаю это одна, при поддержке моей соседки. Кстати, сколько лет вашим детям?"
+    },
+    "a1": {
+      "de": "Meine Tochter ist sieben und mein Sohn ist zehn, die beiden gehen inzwischen zum Glück auch schon relativ selbstständig zur Schule. Das muss aber schon anstrengend sein, das alles allein zu organisieren - hast du eigentlich viel Unterstützung von der Familie?",
+      "en": "My daughter is seven and my son is ten, luckily they're both already relatively independent getting to school by now. That must be exhausting though, organizing all of that alone - do you actually get a lot of support from family?",
+      "uk": "Моїй доньці сім, а синові десять, обидва вже, на щастя, доволі самостійно ходять до школи. Але це, мабуть, важко - організовувати все самій, - тобі допомагає родина?",
+      "ru": "Моей дочери семь, а сыну десять, оба уже, к счастью, довольно самостоятельно ходят в школу. Но это, наверное, тяжело - организовывать всё одной, - тебе помогает семья?"
+    },
+    "q2": {
+      "de": "Zum Glück ja, meine Eltern wohnen ganz in der Nähe und springen ein, wenn es mal eng wird. Ohne die beiden wäre es wirklich schwierig. Nehmt ihr eigentlich auch mal Urlaubstage, nur um Zeit mit den Kindern zu verbringen?",
+      "en": "Fortunately yes, my parents live very close by and step in whenever things get tight. Without the two of them it would really be difficult. Do you actually sometimes take vacation days just to spend time with the kids?",
+      "uk": "На щастя, так, мої батьки живуть зовсім поруч і виручають, коли стає складно. Без них двох було б справді важко. А ви взагалі берете відпустку тільки для того, щоб провести час з дітьми?",
+      "ru": "К счастью, да, мои родители живут совсем рядом и выручают, когда становится сложно. Без них двоих было бы действительно тяжело. А вы вообще берёте отпуск только для того, чтобы провести время с детьми?"
+    },
+    "a2": {
+      "de": "Ja, das versuchen wir schon regelmäßig zu machen, gerade in den Schulferien. Das ist uns beiden wirklich wichtig, auch wenn es manchmal schwierig ist, das mit der Arbeit unter einen Hut zu bringen.",
+      "en": "Yes, we do try to do that regularly, especially during school holidays. It's really important to both of us, even if it's sometimes hard to juggle with work.",
+      "uk": "Так, ми стараємося робити це регулярно, особливо на шкільних канікулах. Це справді важливо для нас обох, хоча іноді складно поєднувати це з роботою.",
+      "ru": "Да, мы стараемся делать это регулярно, особенно на школьных каникулах. Это действительно важно для нас обоих, хотя иногда сложно совмещать это с работой."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_055",
+    "cat": "Arbeitsweg",
+    "task": {
+      "de": "Thema: Arbeitsweg – „Wie lange brauchst du eigentlich bis zur Arbeit, und wie kommst du dahin?“",
+      "en": "Topic: Commute – \"How long does it actually take you to get to work, and how do you get there?\"",
+      "uk": "Тема: Дорога на роботу – «А скільки часу тобі взагалі потрібно, щоб дістатися до роботи, і як ти туди добираєшся?»",
+      "ru": "Тема: Дорога на работу – «А сколько времени тебе вообще нужно, чтобы добраться до работы, и как ты туда добираешься?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_mark",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Sag mal, wie lange brauchst du eigentlich bis zur Arbeit, und wie kommst du dahin?",
+      "en": "Tell me, how long does it actually take you to get to work, and how do you get there?",
+      "uk": "Скажи, а скільки часу тобі взагалі потрібно, щоб дістатися до роботи, і як ти туди добираєшся?",
+      "ru": "Скажи, а сколько времени тебе вообще нужно, чтобы добраться до работы, и как ты туда добираешься?"
+    },
+    "a": {
+      "de": "Ich laufe tatsächlich zu Fuß, das dauert ungefähr fünfundzwanzig Minuten. Ich wohne zum Glück ziemlich zentral, deshalb lohnt sich für mich weder Auto noch Bahn. Und du, wie sieht das bei dir aus?",
+      "en": "I actually walk, it takes about twenty-five minutes. Luckily I live pretty centrally, so neither a car nor the train is really worth it for me. What about you, what's it like for you?",
+      "uk": "Я насправді ходжу пішки, це займає приблизно двадцять п'ять хвилин. На щастя, я живу досить близько до центру, тому мені немає сенсу користуватися ні машиною, ні потягом. А в тебе як?",
+      "ru": "Я на самом деле хожу пешком, это занимает примерно двадцать пять минут. К счастью, я живу довольно близко к центру, поэтому мне нет смысла пользоваться ни машиной, ни поездом. А у тебя как?"
+    },
+    "q1": {
+      "de": "Ich fahre mit dem Bus, das dauert normalerweise etwa dreißig Minuten, aber wenn es Verspätungen gibt, kann es auch mal eine Stunde werden. Genießt du es eigentlich, jeden Tag zu Fuß zu gehen?",
+      "en": "I take the bus, it usually takes about thirty minutes, but if there are delays it can even take an hour sometimes. Do you actually enjoy walking every day?",
+      "uk": "Я їжджу автобусом, зазвичай це займає хвилин тридцять, але коли бувають затримки, може вийти й ціла година. А тобі подобається щодня ходити пішки?",
+      "ru": "Я езжу на автобусе, обычно это занимает минут тридцать, но когда бывают задержки, может выйти и целый час. А тебе нравится каждый день ходить пешком?"
+    },
+    "a1": {
+      "de": "Ja, total, das ist für mich schon fast wie ein kleiner Spaziergang zum Aufwachen. Bei Regen ist es natürlich weniger angenehm, aber das nehme ich gerne in Kauf. Ärgerst du dich eigentlich oft über die Verspätungen beim Bus?",
+      "en": "Yes, totally, for me it's almost like a little walk to wake up. In the rain it's obviously less pleasant, but I gladly put up with that. Do you actually often get annoyed about the bus delays?",
+      "uk": "Так, дуже, для мене це майже як маленька прогулянка, щоб прокинутися. У дощ це, звісно, менш приємно, але я на це залюбки погоджуюся. А тебе часто дратують затримки автобуса?",
+      "ru": "Да, очень, для меня это почти как маленькая прогулка, чтобы проснуться. В дождь это, конечно, менее приятно, но я на это охотно соглашаюсь. А тебя часто раздражают задержки автобуса?"
+    },
+    "q2": {
+      "de": "Ehrlich gesagt schon manchmal, vor allem wenn ich dadurch zu spät zu einem Meeting komme. Ich habe mir mittlerweile angewöhnt, immer einen Puffer einzuplanen. Gehst du eigentlich auch bei richtig schlechtem Wetter zu Fuß, oder nimmst du dann ein Taxi?",
+      "en": "Honestly, sometimes yes, especially when it makes me late for a meeting because of it. By now I've gotten used to always planning in a buffer. Do you actually also walk in really bad weather, or do you take a taxi then?",
+      "uk": "Чесно кажучи, іноді так, особливо коли через це я запізнююся на нараду. Тепер я вже звик завжди закладати запас часу. А ти взагалі ходиш пішки й у зовсім погану погоду, чи тоді береш таксі?",
+      "ru": "Честно говоря, иногда да, особенно когда из-за этого я опаздываю на совещание. Теперь я уже привык всегда закладывать запас времени. А ты вообще ходишь пешком и в совсем плохую погоду, или тогда берёшь такси?"
+    },
+    "a2": {
+      "de": "Nein, ich gehe eigentlich immer zu Fuß, egal bei welchem Wetter, ich habe einfach eine gute Regenjacke. Das ist mir lieber, als mich auf ein Taxi oder Öffis verlassen zu müssen.",
+      "en": "No, I actually always walk, no matter the weather, I just have a good rain jacket. I prefer that to having to rely on a taxi or public transport.",
+      "uk": "Ні, я взагалі завжди ходжу пішки, незалежно від погоди, у мене просто хороший дощовик. Мені це більше подобається, ніж покладатися на таксі чи громадський транспорт.",
+      "ru": "Нет, я вообще всегда хожу пешком, независимо от погоды, у меня просто хороший дождевик. Мне это больше нравится, чем полагаться на такси или общественный транспорт."
     },
     "gram": ""
   }
