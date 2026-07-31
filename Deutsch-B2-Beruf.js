@@ -1662,6 +1662,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_030",
       "sbs_047"
+    ],
+    "dlgCards": [
+      "dlg_056"
     ]
   },
   {
@@ -1765,6 +1768,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_020",
       "sbs_022"
+    ],
+    "dlgCards": [
+      "dlg_057"
     ]
   },
   {
@@ -1861,6 +1867,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_038",
       "sbs_039"
+    ],
+    "dlgCards": [
+      "dlg_058"
     ]
   },
   {
@@ -1953,7 +1962,8 @@ var LESSONS = [
       "dlg_010",
       "dlg_011",
       "dlg_012",
-      "dlg_013"
+      "dlg_013",
+      "dlg_059"
     ]
   },
   {
@@ -8959,6 +8969,206 @@ var DIALOGE = [
       "en": "No, I actually always walk, no matter the weather, I just have a good rain jacket. I prefer that to having to rely on a taxi or public transport.",
       "uk": "Ні, я взагалі завжди ходжу пішки, незалежно від погоди, у мене просто хороший дощовик. Мені це більше подобається, ніж покладатися на таксі чи громадський транспорт.",
       "ru": "Нет, я вообще всегда хожу пешком, независимо от погоды, у меня просто хороший дождевик. Мне это больше нравится, чем полагаться на такси или общественный транспорт."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_056",
+    "cat": "Wochenende",
+    "task": {
+      "de": "Thema: Wochenende – „Hast du eigentlich schon was für dieses Wochenende geplant?“",
+      "en": "Topic: Weekend – \"Do you actually have anything planned for this weekend?\"",
+      "uk": "Тема: Вихідні – «А в тебе вже є плани на ці вихідні?»",
+      "ru": "Тема: Выходные – «А у тебя уже есть планы на эти выходные?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Sag mal, hast du eigentlich schon was für dieses Wochenende geplant?",
+      "en": "Tell me, do you actually have anything planned for this weekend?",
+      "uk": "Скажи, а в тебе вже є плани на ці вихідні?",
+      "ru": "Скажи, а у тебя уже есть планы на эти выходные?"
+    },
+    "a": {
+      "de": "Ja, meine Nichte hat am Samstag Geburtstag, deshalb feiern wir bei meiner Schwester im Garten, falls das Wetter mitspielt. Ich muss noch ein Geschenk besorgen. Und du, was steht bei dir an?",
+      "en": "Yes, my niece's birthday is on Saturday, so we're celebrating at my sister's place in the garden, if the weather cooperates. I still need to get a present. What about you, what's on your agenda?",
+      "uk": "Так, у моєї племінниці в суботу день народження, тож ми святкуємо в саду в моєї сестри, якщо погода дозволить. Мені ще треба купити подарунок. А в тебе що заплановано?",
+      "ru": "Да, у моей племянницы в субботу день рождения, поэтому мы празднуем в саду у моей сестры, если погода позволит. Мне ещё нужно купить подарок. А у тебя что запланировано?"
+    },
+    "q1": {
+      "de": "Ich wollte eigentlich auf den Wochenmarkt gehen, den gibt es hier nur samstags, und danach vielleicht noch ins Café. Hast du eigentlich schon eine Idee, was du ihr schenken könntest?",
+      "en": "I actually wanted to go to the farmers' market, it's only here on Saturdays, and maybe to a café afterward. Do you actually have an idea yet what you could give her?",
+      "uk": "Я взагалі хотіла піти на щотижневий ринок, він тут тільки по суботах, а потім, може, ще в кафе. А в тебе вже є ідея, що їй подарувати?",
+      "ru": "Я вообще хотела пойти на еженедельный рынок, он здесь только по субботам, а потом, может, ещё в кафе. А у тебя уже есть идея, что ей подарить?"
+    },
+    "a1": {
+      "de": "Ich überlege, ob ich ihr ein Buch oder lieber etwas zum Malen kaufe, sie ist total kreativ im Moment. Der Wochenmarkt klingt aber auch schön - kaufst du da eigentlich öfter ein?",
+      "en": "I'm thinking about whether to get her a book or maybe something for painting instead, she's really into being creative right now. The farmers' market sounds nice too though - do you actually shop there often?",
+      "uk": "Я думаю, чи купити їй книжку, чи щось для малювання, вона зараз дуже захоплена творчістю. А ринок теж звучить приємно - ти там часто щось купуєш?",
+      "ru": "Я думаю, купить ли ей книгу или что-то для рисования, она сейчас очень увлечена творчеством. А рынок тоже звучит приятно - ты там часто что-то покупаешь?"
+    },
+    "q2": {
+      "de": "Ja, fast jede Woche, ich mag es einfach, das Gemüse und Obst frisch direkt von den Ständen zu holen. Wie alt wird deine Nichte eigentlich?",
+      "en": "Yes, almost every week, I just like getting the vegetables and fruit fresh directly from the stalls. How old is your niece actually going to turn?",
+      "uk": "Так, майже щотижня, мені просто подобається брати овочі й фрукти свіжими прямо з прилавків. А скільки років виповнюється твоїй племінниці?",
+      "ru": "Да, почти каждую неделю, мне просто нравится брать овощи и фрукты свежими прямо с прилавков. А сколько лет исполняется твоей племяннице?"
+    },
+    "a2": {
+      "de": "Sie wird sechs, die Zeit vergeht wirklich wie im Flug. Ich freue mich schon total darauf, alle Kinder auf der Feier zusammen spielen zu sehen.",
+      "en": "She's turning six, time really does fly by. I'm already really looking forward to seeing all the kids play together at the party.",
+      "uk": "Їй виповнюється шість, час справді летить. Я вже дуже чекаю побачити, як усі діти разом граються на святі.",
+      "ru": "Ей исполняется шесть, время действительно летит. Я уже очень жду увидеть, как все дети вместе играют на празднике."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_057",
+    "cat": "Freizeitgestaltung",
+    "task": {
+      "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich am liebsten, wenn du frei hast?“",
+      "en": "Topic: Leisure time – \"What do you actually like doing most when you have free time?\"",
+      "uk": "Тема: Дозвілля – «А що ти взагалі найбільше любиш робити, коли маєш вільний час?»",
+      "ru": "Тема: Досуг – «А что ты вообще больше всего любишь делать, когда у тебя есть свободное время?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Sag mal, was machst du eigentlich am liebsten, wenn du frei hast?",
+      "en": "Tell me, what do you actually like doing most when you have free time?",
+      "uk": "Скажи, а що ти взагалі найбільше любиш робити, коли маєш вільний час?",
+      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть свободное время?"
+    },
+    "a": {
+      "de": "Ich fotografiere total gerne, meistens am Wochenende gehe ich raus und suche nach schönen Motiven in der Natur. Das entspannt mich total. Und du, hast du auch ein Hobby, das dir wichtig ist?",
+      "en": "I really love photography, usually on weekends I go out and look for beautiful subjects in nature. It really relaxes me. What about you, do you have a hobby that's important to you too?",
+      "uk": "Я дуже люблю фотографувати, зазвичай на вихідних виходжу й шукаю гарні сюжети на природі. Це мене дуже заспокоює. А в тебе теж є хобі, яке для тебе важливе?",
+      "ru": "Я очень люблю фотографировать, обычно по выходным выхожу и ищу красивые сюжеты на природе. Это меня очень успокаивает. А у тебя тоже есть хобби, которое для тебя важно?"
+    },
+    "q1": {
+      "de": "Ich backe wahnsinnig gerne, vor allem Brot mit Sauerteig, das mache ich schon seit über einem Jahr. Was fotografierst du eigentlich am liebsten?",
+      "en": "I love baking, especially sourdough bread, I've been doing that for over a year now. What do you actually like photographing most?",
+      "uk": "Я дуже люблю пекти, особливо хліб на заквасці, я вже займаюся цим більше року. А що ти найбільше любиш фотографувати?",
+      "ru": "Я очень люблю печь, особенно хлеб на закваске, я уже занимаюсь этим больше года. А что ты больше всего любишь фотографировать?"
+    },
+    "a1": {
+      "de": "Am liebsten Landschaften, besonders bei Sonnenaufgang oder Sonnenuntergang, das Licht ist dann einfach unglaublich. Sauerteigbrot backen klingt aber auch spannend - ist das nicht ziemlich aufwendig?",
+      "en": "Mostly landscapes, especially at sunrise or sunset, the light is just incredible then. Baking sourdough bread sounds exciting too though - isn't that pretty labor-intensive?",
+      "uk": "Найбільше пейзажі, особливо на світанку чи заході сонця, світло тоді просто неймовірне. Хліб на заквасці теж звучить цікаво - це, мабуть, доволі клопітно?",
+      "ru": "Больше всего пейзажи, особенно на рассвете или закате, свет тогда просто невероятный. Хлеб на закваске тоже звучит интересно - это, наверное, довольно хлопотно?"
+    },
+    "q2": {
+      "de": "Am Anfang war es das schon, man muss den Sauerteig ja regelmäßig füttern, aber mittlerweile ist das für mich schon Routine geworden. Stellst du deine Fotos eigentlich irgendwo online, oder behältst du sie für dich?",
+      "en": "At first it was, you have to feed the sourdough starter regularly, but by now it's become routine for me. Do you actually post your photos somewhere online, or do you keep them to yourself?",
+      "uk": "Спочатку так і було, треба регулярно годувати закваску, але зараз для мене це вже стало рутиною. А ти викладаєш свої фото десь онлайн, чи залишаєш їх лише для себе?",
+      "ru": "Сначала так и было, нужно регулярно кормить закваску, но сейчас для меня это уже стало рутиной. А ты выкладываешь свои фото где-то онлайн, или оставляешь их только для себя?"
+    },
+    "a2": {
+      "de": "Ich poste ab und zu was auf einem kleinen Account, hauptsächlich für Freunde und Familie. Es macht mir einfach Spaß, die Momente festzuhalten, auch wenn nicht viele Leute das sehen.",
+      "en": "I post something every now and then on a small account, mainly for friends and family. I just enjoy capturing the moments, even if not many people see it.",
+      "uk": "Я час від часу щось публікую на невеликому акаунті, здебільшого для друзів і родини. Мені просто подобається фіксувати ці моменти, навіть якщо це бачить небагато людей.",
+      "ru": "Я время от времени что-то публикую на небольшом аккаунте, в основном для друзей и семьи. Мне просто нравится фиксировать эти моменты, даже если это видит немного людей."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_058",
+    "cat": "Urlaub",
+    "task": {
+      "de": "Thema: Urlaub – „Hast du eigentlich schon Pläne für deinen nächsten Urlaub?“",
+      "en": "Topic: Vacation – \"Do you already have plans for your next vacation?\"",
+      "uk": "Тема: Відпустка – «У тебе вже є плани на наступну відпустку?»",
+      "ru": "Тема: Отпуск – «У тебя уже есть планы на следующий отпуск?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Sag mal, hast du eigentlich schon Pläne für deinen nächsten Urlaub?",
+      "en": "Tell me, do you already have plans for your next vacation?",
+      "uk": "Скажи, у тебе вже є плани на наступну відпустку?",
+      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?"
+    },
+    "a": {
+      "de": "Ja, ich fliege im Herbst für ein paar Tage nach Wien, ich war noch nie dort und wollte die Stadt schon lange mal sehen. Und du, hast du auch schon was vor?",
+      "en": "Yes, in the fall I'm flying to Vienna for a few days, I've never been there and have wanted to see the city for a long time. What about you, do you have anything planned too?",
+      "uk": "Так, восени я лечу на кілька днів до Відня, я там ще ніколи не був і вже давно хотів побачити це місто. А в тебе теж уже є якісь плани?",
+      "ru": "Да, осенью я лечу на несколько дней в Вену, я там ещё никогда не был и уже давно хотел увидеть этот город. А у тебя тоже уже есть какие-то планы?"
+    },
+    "q1": {
+      "de": "Ich fahre eigentlich zu meiner Familie nach Polen, das mache ich fast jedes Jahr im Sommer. Freust du dich eigentlich schon besonders auf etwas Bestimmtes in Wien?",
+      "en": "I actually go visit my family in Poland, I do that almost every year in summer. Are you actually especially looking forward to something specific in Vienna?",
+      "uk": "Я взагалі їжджу до своєї родини в Польщу, роблю це майже щороку влітку. А ти вже особливо чекаєш на щось конкретне у Відні?",
+      "ru": "Я вообще езжу к своей семье в Польшу, делаю это почти каждый год летом. А ты уже особенно ждёшь чего-то конкретного в Вене?"
+    },
+    "a1": {
+      "de": "Total, ich will unbedingt die Kaffeehäuser dort ausprobieren und vielleicht auch ein Konzert besuchen. Ist es eigentlich schön, die Familie so regelmäßig zu besuchen?",
+      "en": "Totally, I definitely want to try the coffee houses there and maybe go to a concert too. Is it actually nice to visit family that regularly?",
+      "uk": "Дуже, я обов'язково хочу спробувати тамтешні кав'ярні, а може, й сходити на концерт. А тобі приємно так регулярно відвідувати родину?",
+      "ru": "Очень, я обязательно хочу попробовать тамошние кофейни, а может, и сходить на концерт. А тебе приятно так регулярно навещать семью?"
+    },
+    "q2": {
+      "de": "Ja, sehr, auch wenn die Fahrt manchmal etwas anstrengend ist. Aber es lohnt sich total, meine Großeltern und Cousins wiederzusehen. Fliegst du eigentlich allein nach Wien, oder kommt jemand mit?",
+      "en": "Yes, very, even though the trip is sometimes a bit exhausting. But it's really worth it to see my grandparents and cousins again. Are you actually flying to Vienna alone, or is someone coming with you?",
+      "uk": "Так, дуже, навіть якщо дорога іноді трохи виснажлива. Але це того варте - знову побачити бабусю з дідусем і кузенів. А ти летиш до Відня сам, чи хтось поїде з тобою?",
+      "ru": "Да, очень, даже если дорога иногда немного утомительна. Но это того стоит - снова увидеть бабушку с дедушкой и кузенов. А ты летишь в Вену один, или кто-то поедет с тобой?"
+    },
+    "a2": {
+      "de": "Ich fliege dieses Mal allein, ich finde es eigentlich ganz schön, ab und zu auch mal Zeit für mich zu haben und alles in meinem eigenen Tempo zu erkunden.",
+      "en": "I'm flying alone this time, I actually think it's quite nice to have time for myself now and then and explore everything at my own pace.",
+      "uk": "Цього разу я лечу сам, мені взагалі здається доволі приємним іноді мати час для себе й досліджувати все у власному темпі.",
+      "ru": "На этот раз я лечу один, мне вообще кажется довольно приятным иногда иметь время для себя и исследовать всё в своём темпе."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_059",
+    "cat": "Sportaktivitäten",
+    "task": {
+      "de": "Thema: Sportaktivitäten – „Machst du eigentlich regelmäßig Sport, oder eher unregelmäßig?“",
+      "en": "Topic: Sports activities – \"Do you actually do sports regularly, or more irregularly?\"",
+      "uk": "Тема: Спортивна активність – «Ти взагалі регулярно займаєшся спортом, чи радше нерегулярно?»",
+      "ru": "Тема: Спортивная активность – «Ты вообще регулярно занимаешься спортом, или скорее нерегулярно?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Sag mal, machst du eigentlich regelmäßig Sport, oder eher unregelmäßig?",
+      "en": "Tell me, do you actually do sports regularly, or more irregularly?",
+      "uk": "Скажи, а ти взагалі регулярно займаєшся спортом, чи радше нерегулярно?",
+      "ru": "Скажи, а ты вообще регулярно занимаешься спортом, или скорее нерегулярно?"
+    },
+    "a": {
+      "de": "Ich schwimme seit ein paar Jahren zweimal die Woche, meistens früh morgens, bevor viele Leute im Schwimmbad sind. Das ist für mich total meditativ. Und du, treibst du auch Sport?",
+      "en": "I've been swimming twice a week for a few years now, usually early in the morning before there are a lot of people at the pool. It's really meditative for me. What about you, do you do sports too?",
+      "uk": "Я вже кілька років плаваю двічі на тиждень, зазвичай рано вранці, поки в басейні мало людей. Для мене це справжня медитація. А в тебе як, ти теж займаєшся спортом?",
+      "ru": "Я уже несколько лет плаваю дважды в неделю, обычно рано утром, пока в бассейне мало людей. Для меня это настоящая медитация. А у тебя как, ты тоже занимаешься спортом?"
+    },
+    "q1": {
+      "de": "Ich spiele eigentlich Tennis, einmal die Woche mit einem Freund, und samstags gehe ich manchmal noch Rad fahren. Schwimmst du eigentlich lieber im Schwimmbad oder im See?",
+      "en": "I actually play tennis, once a week with a friend, and on Saturdays I sometimes go cycling too. Do you actually prefer swimming in the pool or in the lake?",
+      "uk": "Я взагалі граю в теніс, раз на тиждень з другом, а по суботах іноді ще катаюся на велосипеді. А ти плаваєш радше в басейні чи в озері?",
+      "ru": "Я вообще играю в теннис, раз в неделю с другом, а по субботам иногда ещё катаюсь на велосипеде. А ты плаваешь скорее в бассейне или в озере?"
+    },
+    "a1": {
+      "de": "Eigentlich beides, im Sommer gehe ich total gerne in den See, das ist noch entspannender als das Schwimmbad. Wie lange spielt ihr eigentlich schon zusammen Tennis?",
+      "en": "Actually both, in summer I really love going to the lake, that's even more relaxing than the pool. How long have you actually been playing tennis together?",
+      "uk": "Взагалі і те, і те, влітку я дуже люблю ходити на озеро, це навіть розслабленіше, ніж басейн. До речі, як довго ви вже граєте в теніс разом?",
+      "ru": "Вообще и то, и то, летом я очень люблю ходить на озеро, это даже расслабленнее, чем бассейн. Кстати, как долго вы уже играете в теннис вместе?"
+    },
+    "q2": {
+      "de": "Schon seit über drei Jahren, wir sind mittlerweile richtig gut eingespielt. Fährst du eigentlich auch längere Strecken mit dem Rad, oder eher kurze Touren?",
+      "en": "For over three years now, we're really well coordinated by now. Do you actually also ride longer distances by bike, or more short tours?",
+      "uk": "Уже понад три роки, ми вже дуже добре зіграні. А ти взагалі їздиш і на довші дистанції на велосипеді, чи радше на короткі маршрути?",
+      "ru": "Уже больше трёх лет, мы уже очень хорошо сыграны. А ты вообще ездишь и на более длинные дистанции на велосипеде, или скорее на короткие маршруты?"
+    },
+    "a2": {
+      "de": "Meistens kurze Touren am Wochenende, aber letztes Jahr bin ich einmal eine richtig lange Strecke gefahren, das war eine echte Herausforderung, aber auch total befriedigend.",
+      "en": "Mostly short tours on the weekend, but last year I once rode a really long distance, that was a real challenge, but also really satisfying.",
+      "uk": "Здебільшого короткі маршрути на вихідних, але минулого року я одного разу проїхав справді довгу дистанцію, це був справжній виклик, але й дуже приємно.",
+      "ru": "В основном короткие маршруты на выходных, но в прошлом году я однажды проехал действительно длинную дистанцию, это был настоящий вызов, но и очень приятно."
     },
     "gram": ""
   }
