@@ -614,7 +614,19 @@ async def main():
         internal_cat = "vocab"
         if item_id.startswith("sbs_"):
             internal_cat = "sprachbau"
-        elif item_id.startswith("dlg_"):
+        elif item_id.startswith(("dlg_", "red_", "talk_", "prob_")):
+            # Діалоги тепер розділені за префіксом id на 3 функціональні
+            # типи — окремі папки в audio/ (той самий механізм, що вже
+            # розводить vocab/gram/sbs по своїх папках, просто вперше
+            # застосований і до діалогів):
+            #   dlg_  — старі картки (лишаються як є, без міграції)
+            #   red_  — Redemittel (усталені фрази)
+            #   talk_ — Smalltalk
+            #   prob_ — Пошук рішення
+            # Поведінка (redemittel_fields, лише primary_lang) однакова
+            # для всіх чотирьох префіксів — розрізняються лише папкою
+            # (cat_lower нижче й так бере САМЕ префікс, без додаткового
+            # мапінгу).
             internal_cat = "redemittel"
 
         cat_lower = item_id.split('_')[0].lower()
