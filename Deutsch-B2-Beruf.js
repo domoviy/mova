@@ -2556,6 +2556,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_006",
       "sbs_040"
+    ],
+    "dlgCards": [
+      "dlg_065"
     ]
   },
   {
@@ -2641,6 +2644,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_019",
       "sbs_024"
+    ],
+    "dlgCards": [
+      "dlg_066"
     ]
   },
   {
@@ -9430,6 +9436,106 @@ var DIALOGE = [
       "en": "I can already harvest the first herbs, but I still have to wait a few weeks for the tomatoes. But I'm already really looking forward to it.",
       "uk": "Перші трави я вже можу збирати, але на томати мені ще треба почекати кілька тижнів. Але я вже дуже цього чекаю.",
       "ru": "Первые травы я уже могу собирать, но томатов мне ещё нужно подождать несколько недель. Но я уже очень этого жду."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_065",
+    "cat": "Urlaub",
+    "task": {
+      "de": "Thema: Urlaub – „Hast du eigentlich schon Pläne für den Winterurlaub?“",
+      "en": "Topic: Vacation – \"Do you actually already have plans for the winter vacation?\"",
+      "uk": "Тема: Відпустка – «А в тебе вже є плани на зимову відпустку?»",
+      "ru": "Тема: Отпуск – «А у тебя уже есть планы на зимний отпуск?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Sag mal, hast du eigentlich schon Pläne für den Winterurlaub?",
+      "en": "Tell me, do you actually already have plans for the winter vacation?",
+      "uk": "Скажи, а в тебе вже є плани на зимову відпустку?",
+      "ru": "Скажи, а у тебя уже есть планы на зимний отпуск?"
+    },
+    "a": {
+      "de": "Ja, ich fahre im Januar für eine Woche zum Skifahren in die Alpen, das mache ich eigentlich jedes Jahr mit meinen Geschwistern. Und du, hast du auch schon was vor?",
+      "en": "Yes, in January I'm going skiing in the Alps for a week, I actually do that every year with my siblings. What about you, do you have anything planned too?",
+      "uk": "Так, у січні я їду на тиждень кататися на лижах в Альпи, я взагалі роблю це щороку з братами й сестрами. А в тебе теж уже є якісь плани?",
+      "ru": "Да, в январе я еду на неделю кататься на лыжах в Альпы, я вообще делаю это каждый год с братьями и сёстрами. А у тебя тоже уже есть какие-то планы?"
+    },
+    "q1": {
+      "de": "Ich glaube, ich bleibe dieses Jahr eher zu Hause, ich bin ehrlich gesagt kein großer Fan von Kälte. Fahrt ihr eigentlich immer in dasselbe Skigebiet, oder wechselt ihr auch mal?",
+      "en": "I think I'll rather stay home this year, honestly I'm not a big fan of the cold. Do you actually always go to the same ski resort, or do you switch sometimes too?",
+      "uk": "Гадаю, цього року я радше залишуся вдома, чесно кажучи, я не дуже люблю холод. А ви завжди їздите в один і той самий гірськолижний курорт, чи іноді змінюєте?",
+      "ru": "Думаю, в этом году я скорее останусь дома, честно говоря, я не очень люблю холод. А вы всегда ездите на один и тот же горнолыжный курорт, или иногда меняете?"
+    },
+    "a1": {
+      "de": "Meistens fahren wir ins gleiche Gebiet, weil wir die Pisten dort schon richtig gut kennen. Kälte ist tatsächlich nicht jedermanns Sache - was machst du dann stattdessen, wenn du zu Hause bleibst?",
+      "en": "We mostly go to the same area, because we already know the slopes really well there. Cold really isn't for everyone - what do you do instead when you stay home then?",
+      "uk": "Здебільшого їздимо в той самий район, бо ми там уже дуже добре знаємо траси. Холод справді підходить не всім - а що ти тоді робиш замість цього, коли залишаєшся вдома?",
+      "ru": "В основном ездим в один и тот же район, потому что мы там уже очень хорошо знаем трассы. Холод действительно подходит не всем - а что ты тогда делаешь вместо этого, когда остаёшься дома?"
+    },
+    "q2": {
+      "de": "Ich nutze die Zeit meistens, um mich einfach mal richtig auszuruhen und vielleicht ein paar Bücher zu lesen, die schon lange auf meinem Stapel liegen. Bist du eigentlich schon lange am Skifahren, oder hast du das erst als Erwachsener gelernt?",
+      "en": "I usually use the time to really rest and maybe read a few books that have been sitting on my pile for a long time. Have you actually been skiing for a long time, or did you only learn as an adult?",
+      "uk": "Я зазвичай використовую цей час, щоб справді добре відпочити й, можливо, почитати кілька книжок, які вже давно лежать у моїй стопці. А ти взагалі давно катаєшся на лижах, чи навчився вже дорослим?",
+      "ru": "Я обычно использую это время, чтобы действительно хорошо отдохнуть и, возможно, почитать несколько книг, которые уже давно лежат в моей стопке. А ты вообще давно катаешься на лыжах, или научился уже взрослым?"
+    },
+    "a2": {
+      "de": "Schon seit ich klein bin, meine Eltern haben mich quasi auf die Ski gestellt, sobald ich laufen konnte. Deshalb ist das für mich einfach ein fester Teil vom Winter.",
+      "en": "Since I was little, my parents basically put me on skis as soon as I could walk. That's why it's just a fixed part of winter for me.",
+      "uk": "Ще з дитинства, мої батьки практично поставили мене на лижі, щойно я навчився ходити. Тому для мене це просто невід'ємна частина зими.",
+      "ru": "Ещё с детства, мои родители практически поставили меня на лыжи, как только я научился ходить. Поэтому для меня это просто неотъемлемая часть зимы."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_066",
+    "cat": "Sportaktivitäten",
+    "task": {
+      "de": "Thema: Sportaktivitäten – „Machst du eigentlich Sport, oder ist das eher nicht so dein Ding?“",
+      "en": "Topic: Sports activities – \"Do you actually do sports, or is that more not your thing?\"",
+      "uk": "Тема: Спортивна активність – «Ти взагалі займаєшся спортом, чи це радше не твоє?»",
+      "ru": "Тема: Спортивная активность – «Ты вообще занимаешься спортом, или это скорее не твоё?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_alex",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Sag mal, machst du eigentlich Sport, oder ist das eher nicht so dein Ding?",
+      "en": "Tell me, do you actually do sports, or is that more not your thing?",
+      "uk": "Скажи, а ти взагалі займаєшся спортом, чи це радше не твоє?",
+      "ru": "Скажи, а ты вообще занимаешься спортом, или это скорее не твоё?"
+    },
+    "a": {
+      "de": "Doch, ich tanze seit ein paar Jahren, hauptsächlich Salsa, das mache ich einmal die Woche in einem Kurs. Das macht wirklich Spaß und man lernt dabei auch total nette Leute kennen. Und du, machst du auch etwas Sportliches?",
+      "en": "Actually yes, I've been dancing for a few years now, mainly salsa, I do that once a week in a class. It's really fun and you get to meet really nice people too. What about you, do you do anything sporty too?",
+      "uk": "Ні, навпаки, я вже кілька років танцюю, здебільшого сальсу, роблю це раз на тиждень на курсах. Це справді весело, і при цьому знайомишся з дуже приємними людьми. А в тебе, ти теж чимось спортивним займаєшся?",
+      "ru": "Нет, наоборот, я уже несколько лет танцую, в основном сальсу, делаю это раз в неделю на курсах. Это действительно весело, и при этом знакомишься с очень приятными людьми. А у тебя, ты тоже чем-то спортивным занимаешься?"
+    },
+    "q1": {
+      "de": "Ich mache eigentlich Kampfsport, genauer gesagt Judo, das trainiere ich schon seit meiner Jugend. Wie schwer war es eigentlich am Anfang, die Schritte beim Salsa zu lernen?",
+      "en": "I actually do martial arts, specifically judo, I've been training that since my youth. How hard was it actually at first to learn the steps in salsa?",
+      "uk": "Я взагалі займаюся бойовими мистецтвами, точніше дзюдо, тренуюся ще з юності. А наскільки важко було на початку вивчити кроки сальси?",
+      "ru": "Я вообще занимаюсь боевыми искусствами, точнее дзюдо, тренируюсь ещё с юности. А насколько тяжело было в начале выучить шаги сальсы?"
+    },
+    "a1": {
+      "de": "Ehrlich gesagt am Anfang ziemlich schwer, ich hatte zwei linke Füße, aber mit der Zeit wird es wirklich besser. Judo klingt aber auch spannend - hast du da eigentlich schon einen bestimmten Gürtelgrad erreicht?",
+      "en": "Honestly, pretty hard at first, I had two left feet, but it really gets better over time. Judo sounds exciting too though - have you actually reached a certain belt rank yet?",
+      "uk": "Чесно кажучи, спочатку доволі важко, у мене були дві ліві ноги, але з часом справді стає краще. А дзюдо теж звучить цікаво - ти вже досяг певного рівня поясу?",
+      "ru": "Честно говоря, сначала довольно тяжело, у меня были две левые ноги, но со временем действительно становится лучше. А дзюдо тоже звучит интересно - ты уже достиг определённого уровня пояса?"
+    },
+    "q2": {
+      "de": "Ja, ich bin mittlerweile beim braunen Gürtel, der schwarze ist aber noch ein ganzes Stück entfernt. Tanzt du eigentlich immer mit demselben Partner, oder wechselt ihr im Kurs?",
+      "en": "Yes, I'm at brown belt by now, but black is still quite a way off. Do you actually always dance with the same partner, or do you switch in the class?",
+      "uk": "Так, я вже маю коричневий пояс, але до чорного ще доволі далеко. А ти завжди танцюєш з тим самим партнером, чи змінюєте на курсах?",
+      "ru": "Да, у меня уже коричневый пояс, но до чёрного ещё довольно далеко. А ты всегда танцуешь с одним и тем же партнёром, или меняете на курсах?"
+    },
+    "a2": {
+      "de": "Wir wechseln eigentlich ständig, das gehört beim Salsa irgendwie dazu. Am Anfang war mir das etwas unangenehm, aber jetzt genieße ich es total.",
+      "en": "We actually switch constantly, that's just part of salsa somehow. At first that felt a bit awkward to me, but now I really enjoy it.",
+      "uk": "Ми взагалі постійно змінюємо, це якось само собою зрозуміло в сальсі. Спочатку мені було трохи незручно, але тепер я цим дуже насолоджуюся.",
+      "ru": "Мы вообще постоянно меняем, это как-то само собой разумеется в сальсе. Сначала мне было немного неловко, но теперь я этим очень наслаждаюсь."
     },
     "gram": ""
   }
