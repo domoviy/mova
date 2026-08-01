@@ -2728,6 +2728,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_028",
       "sbs_030"
+    ],
+    "dlgCards": [
+      "dlg_067"
     ]
   },
   {
@@ -2793,6 +2796,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_026",
       "sbs_031"
+    ],
+    "dlgCards": [
+      "dlg_068"
     ]
   },
   {
@@ -9536,6 +9542,106 @@ var DIALOGE = [
       "en": "We actually switch constantly, that's just part of salsa somehow. At first that felt a bit awkward to me, but now I really enjoy it.",
       "uk": "Ми взагалі постійно змінюємо, це якось само собою зрозуміло в сальсі. Спочатку мені було трохи незручно, але тепер я цим дуже насолоджуюся.",
       "ru": "Мы вообще постоянно меняем, это как-то само собой разумеется в сальсе. Сначала мне было немного неловко, но теперь я этим очень наслаждаюсь."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_067",
+    "cat": "Arbeitszeiten",
+    "task": {
+      "de": "Thema: Arbeitszeiten – „Wie sind eigentlich deine Arbeitszeiten geregelt?“",
+      "en": "Topic: Working hours – \"How are your working hours actually arranged?\"",
+      "uk": "Тема: Робочий час – «А як у тебе взагалі влаштований робочий графік?»",
+      "ru": "Тема: Рабочее время – «А как у тебя вообще устроен рабочий график?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag mal, wie sind eigentlich deine Arbeitszeiten geregelt? Arbeitest du klassisch fünf Tage die Woche?",
+      "en": "Tell me, how are your working hours actually arranged? Do you work the classic five days a week?",
+      "uk": "Скажи, а як у тебе взагалі влаштований робочий графік? Ти працюєш класично п'ять днів на тиждень?",
+      "ru": "Скажи, а как у тебя вообще устроен рабочий график? Ты работаешь классически пять дней в неделю?"
+    },
+    "a": {
+      "de": "Nein, tatsächlich nicht, wir haben seit ein paar Monaten eine Vier-Tage-Woche eingeführt, ich arbeite also nur noch Montag bis Donnerstag. Und du, wie sieht das bei dir aus?",
+      "en": "No, actually not, we introduced a four-day week a few months ago, so I only work Monday to Thursday now. What about you, what's it like for you?",
+      "uk": "Ні, насправді ні, у нас кілька місяців тому запровадили чотириденний робочий тиждень, тож я тепер працюю лише з понеділка по четвер. А в тебе як?",
+      "ru": "Нет, на самом деле нет, у нас несколько месяцев назад ввели четырёхдневную рабочую неделю, так что я теперь работаю только с понедельника по четверг. А у тебя как?"
+    },
+    "q1": {
+      "de": "Ich arbeite eigentlich noch klassisch fünf Tage, aber dafür mit relativ kurzen Tagen. Wie hat sich die Vier-Tage-Woche eigentlich auf deine Produktivität ausgewirkt?",
+      "en": "I actually still work the classic five days, but with relatively short days. How has the four-day week actually affected your productivity?",
+      "uk": "Я взагалі ще працюю класично п'ять днів, але зате з відносно короткими днями. А як чотириденний тиждень вплинув на твою продуктивність?",
+      "ru": "Я вообще ещё работаю классически пять дней, но зато с относительно короткими днями. А как четырёхдневная неделя повлияла на твою продуктивность?"
+    },
+    "a1": {
+      "de": "Ehrlich gesagt bin ich sogar produktiver geworden, weil ich mich an den vier Tagen mehr konzentriere. Fünf kürzere Tage klingt aber auch angenehm - wie lange arbeitest du eigentlich pro Tag?",
+      "en": "Honestly, I've actually become more productive, because I concentrate more on the four days. Five shorter days sounds nice too though - how long do you actually work per day?",
+      "uk": "Чесно кажучи, я навіть став продуктивнішим, бо за ці чотири дні більше концентруюся. Але п'ять коротших днів теж звучить приємно - скільки годин ти взагалі працюєш на день?",
+      "ru": "Честно говоря, я даже стал продуктивнее, потому что за эти четыре дня больше концентрируюсь. Но пять более коротких дней тоже звучит приятно - сколько часов ты вообще работаешь в день?"
+    },
+    "q2": {
+      "de": "Meistens so sechs Stunden, das reicht für mich völlig aus. Verdienst du eigentlich bei der Vier-Tage-Woche genauso viel wie vorher, oder wurde das Gehalt angepasst?",
+      "en": "Usually about six hours, that's completely enough for me. Do you actually earn just as much with the four-day week as before, or was the salary adjusted?",
+      "uk": "Зазвичай близько шести годин, мені цього цілком вистачає. А ти при чотириденному тижні заробляєш стільки ж, скільки й раніше, чи зарплату скоригували?",
+      "ru": "Обычно около шести часов, мне этого вполне хватает. А ты при четырёхдневной неделе зарабатываешь столько же, сколько и раньше, или зарплату скорректировали?"
+    },
+    "a2": {
+      "de": "Zum Glück genauso viel, das war eine der wichtigsten Bedingungen bei der Einführung. Ohne den vollen Lohnausgleich hätte ich ehrlich gesagt auch nicht mitgemacht.",
+      "en": "Fortunately just as much, that was one of the most important conditions when it was introduced. Without full pay compensation, honestly, I wouldn't have gone along with it either.",
+      "uk": "На щастя, стільки ж, це була одна з найважливіших умов при впровадженні. Без повної компенсації зарплати я б, чесно кажучи, теж не погодився.",
+      "ru": "К счастью, столько же, это было одно из самых важных условий при внедрении. Без полной компенсации зарплаты я бы, честно говоря, тоже не согласился."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_068",
+    "cat": "Kinderbetreuung",
+    "task": {
+      "de": "Thema: Kinderbetreuung – „Wie handhabt ihr das eigentlich in den Sommerferien mit der Kinderbetreuung?“",
+      "en": "Topic: Childcare – \"How do you actually handle childcare during the summer holidays?\"",
+      "uk": "Тема: Догляд за дітьми – «А як ви взагалі справляєтеся з доглядом за дітьми на літніх канікулах?»",
+      "ru": "Тема: Уход за детьми – «А как вы вообще справляетесь с уходом за детьми на летних каникулах?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_alex",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Sag mal, wie handhabt ihr das eigentlich in den Sommerferien mit der Kinderbetreuung? Das sind ja sechs Wochen ohne Schule.",
+      "en": "Tell me, how do you actually handle childcare during the summer holidays? That's six weeks without school after all.",
+      "uk": "Скажи, а як ви взагалі справляєтеся з доглядом за дітьми на літніх канікулах? Це ж шість тижнів без школи.",
+      "ru": "Скажи, а как вы вообще справляетесь с уходом за детьми на летних каникулах? Это же шесть недель без школы."
+    },
+    "a": {
+      "de": "Ehrlich gesagt ist das immer die größte Herausforderung im Jahr. Wir schicken unsere Tochter für drei Wochen in ein Ferienlager, und die restliche Zeit teilen wir uns zwischen meinem Mann und mir auf. Und ihr, wie macht ihr das?",
+      "en": "Honestly, that's always the biggest challenge of the year. We send our daughter to a summer camp for three weeks, and split the rest of the time between my husband and me. What about you, how do you handle it?",
+      "uk": "Чесно кажучи, це завжди найбільший виклик року. Ми відправляємо доньку на три тижні в літній табір, а решту часу розподіляємо між моїм чоловіком і мною. А ви як це робите?",
+      "ru": "Честно говоря, это всегда самый большой вызов года. Мы отправляем дочь на три недели в летний лагерь, а остальное время распределяем между моим мужем и мной. А вы как это делаете?"
+    },
+    "q1": {
+      "de": "Bei uns übernimmt meistens meine Mutter ein paar Wochen, sie freut sich total, ihre Enkel mal länger um sich zu haben. Was macht deine Tochter eigentlich im Ferienlager, hat sie ein bestimmtes Programm?",
+      "en": "For us, my mother usually takes over for a few weeks, she's really happy to have her grandkids around longer. What does your daughter actually do at the summer camp, does she have a specific program?",
+      "uk": "У нас зазвичай кілька тижнів бере на себе моя мама, вона дуже рада мати онуків довше поруч. А що робить твоя донька в таборі, у неї є якась конкретна програма?",
+      "ru": "У нас обычно несколько недель берёт на себя моя мама, она очень рада подольше побыть с внуками. А что делает твоя дочь в лагере, у неё есть какая-то конкретная программа?"
+    },
+    "a1": {
+      "de": "Es ist ein Sportcamp, sie macht dort verschiedene Aktivitäten wie Schwimmen, Klettern und Ballspiele. Sie liebt es total und freut sich schon das ganze Jahr darauf. Wie alt sind eigentlich deine Enkel - äh, ich meine, deine Kinder?",
+      "en": "It's a sports camp, she does various activities there like swimming, climbing and ball games. She loves it and looks forward to it the whole year. How old are your grandkids actually - uh, I mean your kids?",
+      "uk": "Це спортивний табір, вона там займається різними активностями - плаванням, скелелазінням, іграми з м'ячем. Вона це просто обожнює і чекає на це весь рік. А скільки років твоїм онукам - ой, тобто твоїм дітям?",
+      "ru": "Это спортивный лагерь, она там занимается разными активностями - плаванием, скалолазанием, играми с мячом. Она это просто обожает и ждёт этого весь год. А сколько лет твоим внукам - ой, то есть твоим детям?"
+    },
+    "q2": {
+      "de": "Kein Problem, meine sind sechs und neun. Wart ihr eigentlich schon mal in Sorge, dass eure Tochter Heimweh im Ferienlager bekommt?",
+      "en": "No problem, mine are six and nine. Have you actually ever worried that your daughter might get homesick at the camp?",
+      "uk": "Нічого страшного, моїм шість і дев'ять. А ви взагалі колись переживали, що донька почне сумувати за домом у таборі?",
+      "ru": "Ничего страшного, моим шесть и девять. А вы вообще когда-нибудь переживали, что дочь начнёт скучать по дому в лагере?"
+    },
+    "a2": {
+      "de": "Am Anfang schon ein bisschen, aber sie hat sich erstaunlich schnell eingewöhnt und ruft uns kaum an, was eigentlich ein gutes Zeichen ist.",
+      "en": "A little at first, but she settled in surprisingly quickly and hardly calls us, which is actually a good sign.",
+      "uk": "Спочатку трохи, але вона напрочуд швидко звикла і майже не телефонує нам, що взагалі-то хороша ознака.",
+      "ru": "Сначала немного, но она на удивление быстро освоилась и почти не звонит нам, что вообще-то хороший знак."
     },
     "gram": ""
   }
