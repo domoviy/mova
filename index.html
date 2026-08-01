@@ -585,6 +585,30 @@ body{
   border-color:rgba(201,168,76,.4);
   background:rgba(201,168,76,.05);
 }
+/* "You are here" — ОДИН урок на весь курс (findCurrentLesson). Товща
+   золота рамка + м'яке зовнішнє світіння (той самий прийом, що й
+   .lr-btn-primary), і легка пульсація САМЕ іконки (не всієї картки —
+   так гучніше, ніж треба) — той самий keyframes lrNextPulse, що вже
+   пульсує кнопку "Далі" на екрані результату. Пінований чіп
+   "Почати"/"Продовжити" зверху картки. */
+.lp-module.current{
+  border-color:var(--gold);border-width:2px;
+  box-shadow:0 4px 18px rgba(201,168,76,.32);
+}
+.lp-module-current-chip{
+  position:absolute;top:-9px;left:16px;
+  background:var(--gold);color:var(--forest);
+  font-size:11px;font-weight:800;letter-spacing:.02em;
+  padding:2px 9px;border-radius:8px;
+  box-shadow:0 2px 6px rgba(13,43,26,.18);
+}
+.lp-module.current .lp-module-icon{
+  animation:lpCurrentPulse 1.6s ease-in-out infinite;
+}
+@keyframes lpCurrentPulse{
+  0%,100%{ transform:scale(1);   box-shadow:0 0 0 rgba(201,168,76,0); }
+  50%    { transform:scale(1.08); box-shadow:0 0 12px rgba(201,168,76,.55); }
+}
 .lp-module:not(.locked):not(.done):active{
   background:rgba(201,168,76,.08);
 }
@@ -2940,7 +2964,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '428-e037168';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6225,6 +6249,20 @@ function matchShowResult(){
 // ── LERNPFAD ──────────────────────────────────────────────────
 
 // Прогрес уроку: скільки карток пройдено (playCount > 0) з cardIds
+// "Поточний" урок — ОДИН на весь курс (не по одному на главу): перший
+// у порядку курсу урок, який розблокований, але ще не пройдений на
+// 80%+. Той самий принцип "один явний наступний крок", що в Duolingo.
+// Кешуємо результат на поточний рендер Lernpfad (renderLernpfad
+// скидає кеш на початку) — щоб не пересортовувати LESSONS на кожен
+// виклик renderModuleCard всередині циклу глав/модулів.
+let _lpCurrentLessonCache;
+function findCurrentLesson(){
+  if(_lpCurrentLessonCache !== undefined) return _lpCurrentLessonCache;
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  _lpCurrentLessonCache = lessons.find(l => lessonUnlocked(l) && lessonProgress(l).pct < 80) || null;
+  return _lpCurrentLessonCache;
+}
+
 function lessonProgress(lesson){
   if(!lesson?.cardIds?.length) return {done:0, total:0, pct:0};
   // totalPlays тепер живе в єдиній структурі Smart Review (state.cards[id]),
@@ -6706,6 +6744,9 @@ function renderReviewCard(chapterNums, labelKey, isUnlocked){
 }
 
 function renderLernpfad(){
+  // Скидаємо кеш "поточного" уроку — прогрес міг змінитись з
+  // попереднього рендеру (щойно пройдений урок тощо).
+  _lpCurrentLessonCache = undefined;
   // Smart Review: рендеримо Daily Plan
   try{ srRenderDailyPlan(); }catch(e){ console.warn('[SR] renderDailyPlan:', e); }
   const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
@@ -6743,6 +6784,11 @@ function renderLernpfad(){
   chapterList.forEach((ch)=>{
     const allDone = ch.modules.every(m=>lessonProgress(m).pct>=80);
     const anyDone = ch.modules.some(m=>lessonProgress(m).pct>0);
+    // Глава з "поточним" уроком розгортається автоматично, НАВІТЬ якщо
+    // його ще жодного разу не відкривали (pct===0) — інакше "you are
+    // here"-підсвітка на щойно розблокованій главі була б невидимою,
+    // поки користувач сам не розгорне главу вручну.
+    const hasCurrent = ch.modules.some(m => findCurrentLesson()?.id === m.id);
 
     // Розблоковано якщо хоч один модуль пройдено ≥50%
     const reviewUnlocked = ch.modules.some(m=>lessonProgress(m).pct>=50);
@@ -6755,7 +6801,7 @@ function renderLernpfad(){
     const reviewHtml = renderReviewCard([ch.num], 'module', reviewUnlocked);
 
     const chEl = document.createElement('div');
-    chEl.className = 'lp-chapter'+(anyDone?' open':'');
+    chEl.className = 'lp-chapter'+((anyDone||hasCurrent)?' open':'');
     chEl.innerHTML = `
       <div class="lp-chapter-head ${allDone?'done':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
         <div class="lp-chapter-num ${allDone?'done':''}">${ch.num}</div>
@@ -6814,15 +6860,22 @@ function renderLernpfad(){
 
 function lernpfadScrollToLastLesson(){
   try{
-    const lastId = localStorage.getItem('mova_last_lesson');
-    if(!lastId) return;
-    // Шукаємо елемент уроку — він рендериться через onclick з lessonId
-    const el = document.querySelector(`#lp-chapters [onclick*="${lastId}"]`);
-    if(!el) return;
-    // Переконуємось що розділ відкритий
-    const chapter = el.closest('.lp-chapter');
-    if(chapter && !chapter.classList.contains('open')){
-      chapter.classList.add('open');
+    // Пріоритет — "поточний" урок (findCurrentLesson, вже має id
+    // lp-current-module в розмітці й глава з ним автовідкрита в
+    // renderLernpfad). mova_last_lesson — лише фолбек, якщо поточного
+    // немає (напр. курс повністю пройдено).
+    let el = document.getElementById('lp-current-module');
+    if(!el){
+      const lastId = localStorage.getItem('mova_last_lesson');
+      if(!lastId) return;
+      // Шукаємо елемент уроку — він рендериться через onclick з lessonId
+      el = document.querySelector(`#lp-chapters [onclick*="${lastId}"]`);
+      if(!el) return;
+      // Переконуємось що розділ відкритий
+      const chapter = el.closest('.lp-chapter');
+      if(chapter && !chapter.classList.contains('open')){
+        chapter.classList.add('open');
+      }
     }
     // Скролимо з невеликим відступом зверху
     setTimeout(()=>{
@@ -6835,11 +6888,12 @@ function renderModuleCard(lesson){
   const {done, total, pct} = lessonProgress(lesson);
   const unlocked = lessonUnlocked(lesson);
   const isDone   = pct >= 80;
+  const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === lesson.id;
 
   const skillIcons = {'Lesen':'📖','Schreiben':'✍️','Sprechen':'🗣','Hören':'👂'};
   const skills = (lesson.skills||[]).map(s=>skillIcons[s]||s).join(' ');
   const icon   = isDone ? '✅' : !unlocked ? '🔒' : skills||'📚';
-  const statusClass = isDone?'done':!unlocked?'locked':'';
+  const statusClass = isDone?'done':!unlocked?'locked':isCurrent?'current':'';
 
   // lesson.grammar: спочатку пробуємо як id у таблиці GRAMMAR (нові
   // курси) — показуємо локалізовану назву й робимо клікабельним.
@@ -6849,9 +6903,17 @@ function renderModuleCard(lesson){
   const gramText  = gramRule ? grammarLabel(gramRule) : (lesson.grammar||'');
   const gramClick = gramRule ? ` style="text-decoration:underline;cursor:pointer" onclick="event.stopPropagation();showGrammarModal('${lesson.grammar}')"` : '';
 
-  return `<div class="lp-module ${statusClass}"
+  // Чіп "Почати"/"Продовжити" — лише на ЄДИНІЙ картці "поточного" уроку
+  // на весь курс (findCurrentLesson), не на кожному розблокованому.
+  const chipLabel = pct>0
+    ? (uiLang==='uk'?'▶ Продовжити':uiLang==='en'?'▶ Continue':uiLang==='ru'?'▶ Продолжить':'▶ Weiter')
+    : (uiLang==='uk'?'▶ Почати':uiLang==='en'?'▶ Start':uiLang==='ru'?'▶ Начать':'▶ Starten');
+  const currentChip = isCurrent ? `<div class="lp-module-current-chip">${chipLabel}</div>` : '';
+
+  return `<div class="lp-module ${statusClass}" id="${isCurrent?'lp-current-module':''}"
     onclick="${unlocked?`startLessonFlow('${lesson.id}')`:''}"
     style="${unlocked?'':'pointer-events:none'}">
+    ${currentChip}
     <div class="lp-module-icon">${icon}</div>
     <div class="lp-module-body">
       <div class="lp-module-title">${t('lp_module_prefix')} ${lesson.module} · ${lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de}</div>
