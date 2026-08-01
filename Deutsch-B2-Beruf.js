@@ -2049,6 +2049,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_027",
       "sbs_032"
+    ],
+    "dlgCards": [
+      "dlg_060"
     ]
   },
   {
@@ -2195,6 +2198,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_005",
       "sbs_015"
+    ],
+    "dlgCards": [
+      "dlg_061"
     ]
   },
   {
@@ -9169,6 +9175,106 @@ var DIALOGE = [
       "en": "Mostly short tours on the weekend, but last year I once rode a really long distance, that was a real challenge, but also really satisfying.",
       "uk": "Здебільшого короткі маршрути на вихідних, але минулого року я одного разу проїхав справді довгу дистанцію, це був справжній виклик, але й дуже приємно.",
       "ru": "В основном короткие маршруты на выходных, но в прошлом году я однажды проехал действительно длинную дистанцию, это был настоящий вызов, но и очень приятно."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_060",
+    "cat": "Arbeitszeiten",
+    "task": {
+      "de": "Thema: Arbeitszeiten – „Wie sind eigentlich deine Arbeitszeiten geregelt?“",
+      "en": "Topic: Working hours – \"How are your working hours actually arranged?\"",
+      "uk": "Тема: Робочий час – «А як у тебе взагалі влаштований робочий графік?»",
+      "ru": "Тема: Рабочее время – «А как у тебя вообще устроен рабочий график?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_alex",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Sag mal, wie sind eigentlich deine Arbeitszeiten geregelt? Arbeitest du auch manchmal im Schichtdienst?",
+      "en": "Tell me, how are your working hours actually arranged? Do you actually sometimes work shifts too?",
+      "uk": "Скажи, а як у тебе взагалі влаштований робочий графік? Ти теж іноді працюєш позмінно?",
+      "ru": "Скажи, а как у тебя вообще устроен рабочий график? Ты тоже иногда работаешь посменно?"
+    },
+    "a": {
+      "de": "Ja, tatsächlich, ich arbeite abwechselnd Früh- und Spätschicht, das wechselt wöchentlich. Am Anfang war das schon ziemlich ungewohnt für meinen Rhythmus. Und du, wie sieht das bei dir aus?",
+      "en": "Yes, actually, I work alternating early and late shifts, that changes weekly. At first that was pretty unusual for my rhythm. What about you, what's it like for you?",
+      "uk": "Так, справді, я працюю по черзі в ранкову й вечірню зміни, це змінюється щотижня. Спочатку це було доволі незвично для мого ритму. А в тебе як?",
+      "ru": "Да, действительно, я работаю поочерёдно в утреннюю и вечернюю смены, это меняется еженедельно. Сначала это было довольно непривычно для моего ритма. А у тебя как?"
+    },
+    "q1": {
+      "de": "Ich habe eigentlich ganz normale Bürozeiten, meistens von neun bis siebzehn Uhr. Wie kommst du eigentlich mit dem ständigen Wechsel zwischen den Schichten klar?",
+      "en": "I actually have pretty normal office hours, usually from nine to five. How do you actually cope with the constant switching between shifts?",
+      "uk": "У мене взагалі звичайний офісний графік, зазвичай з дев'ятої до сімнадцятої. А як ти справляєшся з постійною зміною змін?",
+      "ru": "У меня вообще обычный офисный график, обычно с девяти до семнадцати. А как ты справляешься с постоянной сменой смен?"
+    },
+    "a1": {
+      "de": "Mittlerweile ziemlich gut, ich habe mir feste Routinen fürs Schlafen angewöhnt, egal in welcher Schicht ich gerade bin. Findest du deine festen Bürozeiten eigentlich manchmal auch langweilig?",
+      "en": "Pretty well by now, I've gotten used to fixed sleep routines, no matter which shift I'm currently on. Do you actually sometimes find your fixed office hours boring too?",
+      "uk": "Зараз уже доволі добре, я звикла до чіткого режиму сну, незалежно від того, в якій я зараз зміні. А тобі часом не буває нудно від фіксованого офісного графіка?",
+      "ru": "Сейчас уже довольно хорошо, я привыкла к чёткому режиму сна, независимо от того, в какой я сейчас смене. А тебе иногда не бывает скучно от фиксированного офисного графика?"
+    },
+    "q2": {
+      "de": "Manchmal schon, ehrlich gesagt, aber ich schätze auch die Planbarkeit, weil ich immer genau weiß, wann ich frei habe. Bekommst du für die Spätschicht eigentlich einen Zuschlag?",
+      "en": "Sometimes, honestly, but I also appreciate the predictability, because I always know exactly when I have time off. Do you actually get a bonus for the late shift?",
+      "uk": "Чесно кажучи, часом буває, але я також ціную передбачуваність, бо завжди точно знаю, коли в мене вихідний. А тобі за вечірню зміну взагалі платять надбавку?",
+      "ru": "Честно говоря, иногда бывает, но я также ценю предсказуемость, потому что всегда точно знаю, когда у меня выходной. А тебе за вечернюю смену вообще платят надбавку?"
+    },
+    "a2": {
+      "de": "Ja, zum Glück, das gleicht die Unbequemlichkeit zumindest finanziell ein bisschen aus. Ohne den Zuschlag würde sich das ehrlich gesagt kaum lohnen.",
+      "en": "Yes, fortunately, that at least financially compensates for the inconvenience a bit. Without the bonus, honestly, it would hardly be worth it.",
+      "uk": "Так, на щастя, це хоча б фінансово трохи компенсує незручність. Чесно кажучи, без надбавки це навряд чи було б вигідно.",
+      "ru": "Да, к счастью, это хотя бы финансово немного компенсирует неудобство. Честно говоря, без надбавки это вряд ли было бы выгодно."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_061",
+    "cat": "Kinderbetreuung",
+    "task": {
+      "de": "Thema: Kinderbetreuung – „Wie ist das eigentlich bei dir mit der Kinderbetreuung, jetzt wo dein Sohn schon älter ist?“",
+      "en": "Topic: Childcare – \"How is it actually with childcare for you now that your son is older?\"",
+      "uk": "Тема: Догляд за дітьми – «А як у тебе взагалі з доглядом за дітьми, тепер коли твій син уже старший?»",
+      "ru": "Тема: Уход за детьми – «А как у тебя вообще с уходом за детьми, теперь когда твой сын уже старше?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Sag mal, wie ist das eigentlich bei dir mit der Kinderbetreuung, jetzt wo dein Sohn schon älter ist?",
+      "en": "Tell me, how is it actually with childcare for you now that your son is older?",
+      "uk": "Скажи, а як у тебе взагалі з доглядом за дітьми, тепер коли твій син уже старший?",
+      "ru": "Скажи, а как у тебя вообще с уходом за детьми, теперь когда твой сын уже старше?"
+    },
+    "a": {
+      "de": "Ehrlich gesagt wird es eigentlich einfacher, mein Sohn ist jetzt vierzehn und kommt schon ziemlich gut allein klar. Ich muss ihn nicht mehr überall hinbringen, das spart total viel Zeit. Und du, wie handhabt ihr das mit euren Kindern?",
+      "en": "Honestly, it's actually getting easier, my son is fourteen now and manages pretty well on his own. I don't have to take him everywhere anymore, that really saves a lot of time. What about you, how do you handle it with your kids?",
+      "uk": "Чесно кажучи, стає взагалі простіше, моєму синові вже чотирнадцять, і він доволі добре справляється сам. Мені вже не треба всюди його возити, це справді заощаджує багато часу. А в тебе як з дітьми?",
+      "ru": "Честно говоря, становится вообще проще, моему сыну уже четырнадцать, и он довольно хорошо справляется сам. Мне уже не нужно везде его возить, это действительно экономит много времени. А у тебя как с детьми?"
+    },
+    "q1": {
+      "de": "Meine sind noch klein, drei und fünf, da ist es schon noch ziemlich aufwendig. Wir haben eine Tagesmutter, die zweimal die Woche einspringt. Vermisst du eigentlich manchmal die Zeit, als er noch kleiner war?",
+      "en": "Mine are still little, three and five, so it's still pretty demanding. We have a childminder who steps in twice a week. Do you actually sometimes miss the time when he was younger?",
+      "uk": "Мої ще маленькі, три й п'ять, тож там ще доволі клопітно. У нас є нянька, яка виручає двічі на тиждень. А тобі часом не бракує того часу, коли він був меншим?",
+      "ru": "Мои ещё маленькие, три и пять, так что там ещё довольно хлопотно. У нас есть няня, которая выручает дважды в неделю. А тебе иногда не хватает того времени, когда он был младше?"
+    },
+    "a1": {
+      "de": "Manchmal schon, ehrlich gesagt, aber ich genieße auch, dass ich jetzt wieder mehr Freizeit für mich habe. Eine Tagesmutter klingt aber praktisch - wie habt ihr die eigentlich gefunden?",
+      "en": "Sometimes, honestly, but I also enjoy having more free time for myself again now. A childminder sounds practical though - how did you actually find her?",
+      "uk": "Чесно кажучи, іноді бракує, але мені й подобається, що зараз у мене знову більше вільного часу для себе. Нянька звучить практично - а як ви її взагалі знайшли?",
+      "ru": "Честно говоря, иногда не хватает, но мне и нравится, что сейчас у меня снова больше свободного времени для себя. Няня звучит практично - а как вы её вообще нашли?"
+    },
+    "q2": {
+      "de": "Über eine Empfehlung von Freunden, wir hatten großes Glück. Ist dein Sohn eigentlich schon oft allein zu Hause, oder ist da noch jemand bei ihm?",
+      "en": "Through a recommendation from friends, we got really lucky. Is your son actually home alone often already, or is someone with him?",
+      "uk": "За рекомендацією друзів, нам дуже пощастило. А твій син уже часто сам вдома, чи з ним ще хтось є?",
+      "ru": "По рекомендации друзей, нам очень повезло. А твой сын уже часто один дома, или с ним ещё кто-то есть?"
+    },
+    "a2": {
+      "de": "Inzwischen schon öfter, aber ich rufe trotzdem immer mal zwischendurch an, nur um sicherzugehen, dass alles in Ordnung ist.",
+      "en": "More often by now, but I still call in between sometimes, just to make sure everything's okay.",
+      "uk": "Зараз уже частіше, але я все одно завжди телефоную, просто щоб переконатися, що все гаразд.",
+      "ru": "Сейчас уже чаще, но я всё равно всегда звоню, просто чтобы убедиться, что всё в порядке."
     },
     "gram": ""
   }
