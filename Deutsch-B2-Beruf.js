@@ -2273,6 +2273,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_011",
       "sbs_033"
+    ],
+    "dlgCards": [
+      "dlg_062"
     ]
   },
   {
@@ -2371,7 +2374,8 @@ var LESSONS = [
       "dlg_002",
       "dlg_003",
       "dlg_004",
-      "dlg_005"
+      "dlg_005",
+      "dlg_063"
     ]
   },
   {
@@ -2455,7 +2459,8 @@ var LESSONS = [
       "dlg_019",
       "dlg_020",
       "dlg_021",
-      "dlg_022"
+      "dlg_022",
+      "dlg_064"
     ]
   },
   {
@@ -9275,6 +9280,156 @@ var DIALOGE = [
       "en": "More often by now, but I still call in between sometimes, just to make sure everything's okay.",
       "uk": "Зараз уже частіше, але я все одно завжди телефоную, просто щоб переконатися, що все гаразд.",
       "ru": "Сейчас уже чаще, но я всё равно всегда звоню, просто чтобы убедиться, что всё в порядке."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_062",
+    "cat": "Arbeitsweg",
+    "task": {
+      "de": "Thema: Arbeitsweg – „Wie weit ist es eigentlich bei dir bis zur Arbeit? Pendelst du viel?“",
+      "en": "Topic: Commute – \"How far is it actually to work for you? Do you commute a lot?\"",
+      "uk": "Тема: Дорога на роботу – «А як далеко в тебе взагалі до роботи? Ти багато їздиш?»",
+      "ru": "Тема: Дорога на работу – «А как далеко у тебя вообще до работы? Ты много ездишь?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_david",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Sag mal, wie weit ist es eigentlich bei dir bis zur Arbeit? Pendelst du viel?",
+      "en": "Tell me, how far is it actually to work for you? Do you commute a lot?",
+      "uk": "Скажи, а як далеко в тебе взагалі до роботи? Ти багато їздиш?",
+      "ru": "Скажи, а как далеко у тебя вообще до работы? Ты много ездишь?"
+    },
+    "a": {
+      "de": "Ehrlich gesagt ziemlich weit, ich fahre mit dem Motorrad, das dauert ungefähr fünfundvierzig Minuten. Im Sommer macht das richtig Spaß, im Winter ist es aber schon eine Herausforderung. Und du, wie sieht dein Arbeitsweg aus?",
+      "en": "Honestly, pretty far, I ride a motorcycle, it takes about forty-five minutes. In summer that's really fun, but in winter it's quite a challenge. What about you, what's your commute like?",
+      "uk": "Чесно кажучи, доволі далеко, я їжджу на мотоциклі, це займає хвилин сорок п'ять. Влітку це справді весело, а взимку це вже виклик. А в тебе яка дорога на роботу?",
+      "ru": "Честно говоря, довольно далеко, я езжу на мотоцикле, это занимает минут сорок пять. Летом это действительно весело, а зимой это уже вызов. А у тебя какая дорога на работу?"
+    },
+    "q1": {
+      "de": "Bei mir sind es nur zehn Minuten mit der Straßenbahn, ich habe wirklich Glück, dass ich so zentral wohne. Fährst du eigentlich auch im Winter mit dem Motorrad, oder steigst du dann um?",
+      "en": "For me it's only ten minutes by tram, I'm really lucky to live so centrally. Do you actually also ride the motorcycle in winter, or do you switch then?",
+      "uk": "У мене лише десять хвилин трамваєм, мені справді пощастило жити так близько до центру. А ти взагалі теж їздиш на мотоциклі взимку, чи тоді пересідаєш?",
+      "ru": "У меня всего десять минут на трамвае, мне действительно повезло жить так близко к центру. А ты вообще тоже ездишь на мотоцикле зимой, или тогда пересаживаешься?"
+    },
+    "a1": {
+      "de": "Bei Schnee oder Eis steige ich dann tatsächlich auf die Bahn um, das ist mir dann doch zu riskant. Zehn Minuten klingt aber wirklich traumhaft - warst du eigentlich schon mal woanders mit einem längeren Arbeitsweg?",
+      "en": "In snow or ice I actually switch to the train, that's just too risky for me then. Ten minutes sounds really dreamy though - have you actually ever had a longer commute somewhere else?",
+      "uk": "У сніг чи ожеледицю я справді пересідаю на потяг, це для мене вже надто ризиковано. Десять хвилин звучить просто чудово - а ти взагалі колись мав довшу дорогу на роботу деінде?",
+      "ru": "В снег или гололёд я действительно пересаживаюсь на поезд, это для меня уже слишком рискованно. Десять минут звучит просто прекрасно - а у тебя вообще когда-нибудь была более долгая дорога на работу в другом месте?"
+    },
+    "q2": {
+      "de": "Ja, in meinem letzten Job musste ich eine Stunde fahren, das war schon ziemlich anstrengend auf Dauer. Deshalb habe ich mich bei der Wohnungssuche auch bewusst für die Nähe zur Arbeit entschieden. Überlegst du eigentlich manchmal, näher an die Arbeit zu ziehen?",
+      "en": "Yes, in my last job I had to travel an hour, that was pretty exhausting in the long run. That's why when I was looking for an apartment I deliberately chose to be close to work. Do you actually sometimes think about moving closer to work?",
+      "uk": "Так, на попередній роботі мені треба було їхати годину, це було доволі виснажливо в довгостроковій перспективі. Тому під час пошуку квартири я свідомо обрав близькість до роботи. А ти взагалі іноді думаєш переїхати ближче до роботи?",
+      "ru": "Да, на предыдущей работе мне нужно было ехать час, это было довольно изнурительно в долгосрочной перспективе. Поэтому при поиске квартиры я сознательно выбрал близость к работе. А ты вообще иногда думаешь переехать ближе к работе?"
+    },
+    "a2": {
+      "de": "Ehrlich gesagt schon öfter, aber ich hänge einfach zu sehr an meiner jetzigen Wohnung und der Nachbarschaft, um wirklich umzuziehen.",
+      "en": "Honestly, quite often, but I'm just too attached to my current apartment and the neighborhood to actually move.",
+      "uk": "Чесно кажучи, доволі часто, але я просто занадто прив'язана до своєї теперішньої квартири й району, щоб справді переїхати.",
+      "ru": "Честно говоря, довольно часто, но я просто слишком привязана к своей нынешней квартире и району, чтобы действительно переехать."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_063",
+    "cat": "Wochenende",
+    "task": {
+      "de": "Thema: Wochenende – „Hast du eigentlich schon was für dieses Wochenende vor?“",
+      "en": "Topic: Weekend – \"Do you actually have anything planned for this weekend?\"",
+      "uk": "Тема: Вихідні – «А в тебе вже є плани на ці вихідні?»",
+      "ru": "Тема: Выходные – «А у тебя уже есть планы на эти выходные?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_alex",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Sag mal, hast du eigentlich schon was für dieses Wochenende vor?",
+      "en": "Tell me, do you actually have anything planned for this weekend?",
+      "uk": "Скажи, а в тебе вже є плани на ці вихідні?",
+      "ru": "Скажи, а у тебя уже есть планы на эти выходные?"
+    },
+    "a": {
+      "de": "Ja, ich engagiere mich seit ein paar Monaten ehrenamtlich in einem Tierheim, und samstags helfe ich dort meistens beim Gassigehen mit den Hunden. Das macht mir richtig Freude. Und du, hast du schon Pläne?",
+      "en": "Yes, I've been volunteering at an animal shelter for a few months now, and on Saturdays I usually help there by walking the dogs. That really brings me joy. What about you, do you have plans already?",
+      "uk": "Так, я вже кілька місяців волонтерю в притулку для тварин, і по суботах здебільшого допомагаю там вигулювати собак. Це мені справді приносить радість. А в тебе вже є плани?",
+      "ru": "Да, я уже несколько месяцев волонтёрю в приюте для животных, и по субботам обычно помогаю там выгуливать собак. Это мне действительно приносит радость. А у тебя уже есть планы?"
+    },
+    "q1": {
+      "de": "Ich wollte eigentlich eine Wanderung machen, es gibt hier in der Nähe einen schönen Weg durch den Wald, den ich schon lange mal ausprobieren wollte. Wie bist du eigentlich auf die Idee mit dem Tierheim gekommen?",
+      "en": "I actually wanted to go hiking, there's a nice trail through the forest nearby that I've wanted to try for a long time. How did you actually come up with the idea of the animal shelter?",
+      "uk": "Я взагалі хотів піти в похід, тут поблизу є гарна стежка через ліс, яку я вже давно хотів спробувати. А як ти взагалі прийшла до ідеї з притулком?",
+      "ru": "Я вообще хотел пойти в поход, здесь поблизости есть красивая тропа через лес, которую я уже давно хотел попробовать. А как ты вообще пришла к идее с приютом?"
+    },
+    "a1": {
+      "de": "Eine Freundin hat mich mal mitgenommen, und seitdem bin ich einfach dabeigeblieben. Es ist wirklich schön zu sehen, wie sich manche Hunde nach ein paar Wochen verändern. Gehst du eigentlich alleine wandern, oder nimmst du jemanden mit?",
+      "en": "A friend took me along once, and I've just stuck with it since. It's really nice to see how some dogs change after a few weeks. Do you actually go hiking alone, or do you take someone with you?",
+      "uk": "Подруга якось узяла мене з собою, і відтоді я просто залишилася. Це справді приємно бачити, як деякі собаки змінюються через кілька тижнів. А ти взагалі ходиш у похід сам, чи береш когось із собою?",
+      "ru": "Подруга как-то взяла меня с собой, и с тех пор я просто осталась. Это действительно приятно видеть, как некоторые собаки меняются через несколько недель. А ты вообще ходишь в поход один, или берёшь кого-то с собой?"
+    },
+    "q2": {
+      "de": "Meistens alleine, ich finde das total entspannend, einfach mit meinen eigenen Gedanken unterwegs zu sein. Wie viele Stunden verbringst du eigentlich normalerweise im Tierheim?",
+      "en": "Mostly alone, I find it really relaxing to just be out with my own thoughts. How many hours do you actually usually spend at the shelter?",
+      "uk": "Здебільшого сам, мені дуже подобається просто побути наодинці зі своїми думками. А скільки годин ти зазвичай проводиш у притулку?",
+      "ru": "В основном один, мне очень нравится просто побыть наедине со своими мыслями. А сколько часов ты обычно проводишь в приюте?"
+    },
+    "a2": {
+      "de": "So ungefähr drei bis vier Stunden, das reicht meistens, um wirklich etwas zu bewirken, ohne dass es mir zu anstrengend wird.",
+      "en": "About three to four hours, that's usually enough to really make a difference, without it becoming too exhausting for me.",
+      "uk": "Десь три-чотири години, зазвичай цього достатньо, щоб справді щось змінити, і водночас це не надто виснажує.",
+      "ru": "Где-то три-четыре часа, обычно этого достаточно, чтобы действительно что-то изменить, и при этом это не слишком утомляет."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_064",
+    "cat": "Freizeitgestaltung",
+    "task": {
+      "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich am liebsten, wenn du frei hast?“",
+      "en": "Topic: Leisure time – \"What do you actually like doing most when you have free time?\"",
+      "uk": "Тема: Дозвілля – «А що ти взагалі найбільше любиш робити, коли маєш вільний час?»",
+      "ru": "Тема: Досуг – «А что ты вообще больше всего любишь делать, когда у тебя есть свободное время?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_nina",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Sag mal, was machst du eigentlich am liebsten, wenn du frei hast?",
+      "en": "Tell me, what do you actually like doing most when you have free time?",
+      "uk": "Скажи, а що ти взагалі найбільше любиш робити, коли маєш вільний час?",
+      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть свободное время?"
+    },
+    "a": {
+      "de": "Ich gärtnere total gerne, ich habe seit letztem Jahr einen kleinen Schrebergarten und verbringe dort echt viel Zeit. Gerade pflanze ich Tomaten und Kräuter an. Und du, wie verbringst du am liebsten deine Freizeit?",
+      "en": "I really love gardening, I've had a small allotment garden since last year and spend a lot of time there. Right now I'm planting tomatoes and herbs. What about you, how do you like to spend your free time most?",
+      "uk": "Я дуже люблю садівництво, у мене з минулого року є невеликий садовий наділ, і я проводжу там справді багато часу. Зараз саджаю томати й трави. А в тебе як, як ти найбільше любиш проводити вільний час?",
+      "ru": "Я очень люблю садоводство, у меня с прошлого года есть небольшой садовый участок, и я провожу там действительно много времени. Сейчас сажаю томаты и травы. А у тебя как, как ты больше всего любишь проводить свободное время?"
+    },
+    "q1": {
+      "de": "Ich spiele eigentlich ziemlich viel am Computer, meistens abends mit Freunden online. Das entspannt mich total nach der Arbeit. Was baust du eigentlich alles in deinem Garten an?",
+      "en": "I actually play a lot on the computer, mostly in the evenings online with friends. It really relaxes me after work. What do you actually grow in your garden?",
+      "uk": "Я взагалі доволі багато граю на комп'ютері, зазвичай увечері онлайн з друзями. Це мене дуже розслабляє після роботи. А що ти взагалі вирощуєш у своєму саду?",
+      "ru": "Я вообще довольно много играю на компьютере, обычно вечером онлайн с друзьями. Это меня очень расслабляет после работы. А что ты вообще выращиваешь в своём саду?"
+    },
+    "a1": {
+      "de": "Hauptsächlich Gemüse, aber auch ein paar Blumen für die Bienen. Es macht mir richtig Spaß zu sehen, wie alles wächst. Spielt ihr eigentlich immer dasselbe Spiel, oder wechselt ihr öfter?",
+      "en": "Mainly vegetables, but also a few flowers for the bees. I really enjoy seeing everything grow. Do you actually always play the same game, or do you switch often?",
+      "uk": "Здебільшого овочі, але й трохи квітів для бджіл. Мені справді приємно бачити, як усе росте. А ви завжди граєте в одну й ту саму гру, чи часто змінюєте?",
+      "ru": "В основном овощи, но и немного цветов для пчёл. Мне действительно приятно видеть, как всё растёт. А вы всегда играете в одну и ту же игру, или часто меняете?"
+    },
+    "q2": {
+      "de": "Meistens dasselbe, wir sind schon seit Jahren in einem Team zusammen, das macht einfach mehr Spaß, wenn man sich gut kennt. Erntest du eigentlich schon etwas aus deinem Garten, oder ist es noch zu früh?",
+      "en": "Mostly the same one, we've been on a team together for years now, it's just more fun when you know each other well. Are you actually already harvesting anything from your garden, or is it still too early?",
+      "uk": "Здебільшого одну й ту саму, ми вже роками разом в одній команді, це просто веселіше, коли добре знаєш одне одного. А ти вже щось збираєш зі свого саду, чи ще зарано?",
+      "ru": "В основном одну и ту же, мы уже годами вместе в одной команде, это просто веселее, когда хорошо знаешь друг друга. А ты уже что-то собираешь со своего сада, или ещё рано?"
+    },
+    "a2": {
+      "de": "Die ersten Kräuter kann ich schon ernten, aber auf die Tomaten muss ich noch ein paar Wochen warten. Ich freue mich aber jetzt schon total darauf.",
+      "en": "I can already harvest the first herbs, but I still have to wait a few weeks for the tomatoes. But I'm already really looking forward to it.",
+      "uk": "Перші трави я вже можу збирати, але на томати мені ще треба почекати кілька тижнів. Але я вже дуже цього чекаю.",
+      "ru": "Первые травы я уже могу собирать, но томатов мне ещё нужно подождать несколько недель. Но я уже очень этого жду."
     },
     "gram": ""
   }

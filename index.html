@@ -554,10 +554,17 @@ body{
 .lp-chapter.open .lp-chapter-arrow{transform:rotate(180deg);}
 .lp-modules{
   display:none;padding:10px;
-  flex-direction:column;gap:8px;
+  flex-direction:column;gap:14px;
   background:var(--soft);
 }
 .lp-chapter.open .lp-modules{display:flex;}
+/* Групуємо картки ОДНОГО модуля (Урок, Діалог, Граматика-бонус,
+   Словник-бонус) тісніше одна до одної (4px), а .lp-modules{gap:14px}
+   вище лишається відстанню МІЖ різними модулями — той самий принцип
+   Gestalt-близькості, що й у групах Settings: тісне = "одна тема". */
+.lp-module-group{
+  display:flex;flex-direction:column;gap:4px;
+}
 
 /* Модуль — картка уроку */
 .lp-module{
@@ -1161,6 +1168,47 @@ body{
 }
 #streak-celebration.show{ display:flex; }
 #streak-celebration.fade-out{ transition:opacity .35s ease; opacity:0; }
+
+/* ── #lesson-celebration — ІНША анімація, ніж вогонь стріку ──────────
+   Вогонь (#streak-celebration) — 1 раз на день, коли стрік реально
+   зростає. Це — після КОЖНОГО завершення уроку/довгого діалогу/
+   граматики в Навчанні, тож навмисно спокійніша й швидша: кільце, що
+   розходиться пульсом, і галочка замість мерехтливого полум'я з
+   лічильником-одометром — щоб не зливалась із вогнем і не набридала
+   при частому повторенні. */
+#lesson-celebration{
+  position:fixed;inset:0;z-index:9700;
+  display:none;align-items:center;justify-content:center;
+  background:rgba(20,16,8,.72);
+  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+}
+#lesson-celebration.show{ display:flex; }
+#lesson-celebration.fade-out{ transition:opacity .35s ease; opacity:0; }
+.lc-inner{
+  text-align:center;
+  animation: streakCelPop .45s cubic-bezier(.34,1.56,.64,1);
+}
+.lc-burst{
+  position:relative;width:120px;height:120px;margin:0 auto;
+  display:flex;align-items:center;justify-content:center;
+}
+.lc-burst-ring{
+  position:absolute;inset:0;border-radius:50%;
+  border:3px solid var(--gold);
+  animation:lcRingPulse 1s cubic-bezier(.16,.84,.44,1) infinite;
+}
+.lc-burst-icon{
+  position:relative;font-size:56px;line-height:1;color:var(--gold);
+  filter:drop-shadow(0 0 18px rgba(201,168,76,.55));
+}
+@keyframes lcRingPulse{
+  0%{ transform:scale(.6); opacity:.9; }
+  100%{ transform:scale(1.35); opacity:0; }
+}
+.lc-label{
+  font-size:19px;font-weight:700;color:#fff;
+  font-family:'Inter',sans-serif;margin-top:14px;
+}
 .streak-cel-inner{
   text-align:center;
   animation: streakCelPop .5s cubic-bezier(.34,1.56,.64,1);
@@ -1732,6 +1780,25 @@ body.lesson-active .vocab-top{
   width:100%; box-sizing:border-box;
   border-radius:16px; padding:12px 14px;
   background:var(--soft); border:1px solid var(--border);
+}
+/* Контекст іспиту над завданням — маленький "eyebrow", а не повний
+   текст умов щоразу (щоб не набридало повторенням). ⓘ розкриває повні
+   умови лише за тапом, через notify() — той самий легкий патерн, що й
+   ⓘ у "Prüfungsbereitschaft" в Settings. */
+.lf-dlg-exam-badge{
+  display:flex;align-items:center;gap:6px;
+  padding:0 3px;margin-bottom:2px;
+  font-size:12px;font-weight:700;letter-spacing:.03em;
+  text-transform:uppercase;color:var(--muted);
+}
+.lf-dlg-exam-icon{font-size:13px;flex-shrink:0;}
+.lf-dlg-exam-label{flex:1;min-width:0;}
+.lf-dlg-exam-info{
+  flex-shrink:0;width:18px;height:18px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--card);border:1px solid var(--border);
+  font-size:11px;font-weight:700;color:var(--muted);
+  text-transform:none;letter-spacing:0;cursor:pointer;
 }
 /* Ім'я персонажа — підпис ПІД повідомленням, ближче до аватарки (з
    того ж боку, що й сама аватарка), а не заголовок над текстом. */
@@ -2344,6 +2411,20 @@ body.lesson-active .vocab-top{
         </div>
       </div>
 
+      <!-- Повноекранне святкування "урок/діалог/граматика завершено" —
+           ІНША анімація, ніж вогонь стріку (той — 1 раз на день, це —
+           після КОЖНОГО завершення уроку/довгого діалогу/граматики).
+           Візуально самостійний компонент, не режим вогню. -->
+      <div id="lesson-celebration" onclick="_dismissLessonCelebration()">
+        <div class="lc-inner">
+          <div class="lc-burst" id="lc-burst">
+            <span class="lc-burst-ring"></span>
+            <span class="lc-burst-icon" id="lc-burst-icon">✓</span>
+          </div>
+          <div class="lc-label" id="lc-label"></div>
+        </div>
+      </div>
+
       <!-- Результат уроку -->
       <div id="lesson-result">
         <div class="lr-emoji" id="lr-emoji">🎉</div>
@@ -2859,7 +2940,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '425-aacd3c9';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6448,10 +6529,9 @@ function _runLessonFlow(lesson, allCards){
   //
   // 'term' — короткі одиниці (2-6 слів; 99% пулу B2), завжди безпечно.
   // 'def' — повне анотоване речення з <b>-маркером цільової фрази; тут
-  // верхня межа СУВОРІША (≤10 слів) — на B2 середнє речення ~15 слів і
-  // 77% довші за 12, тож без ліміту тайли не влазили на екран. З ≤10
-  // лишається ~7.6% анотованих карток (148 з 1959) — менший, але робочий
-  // пул, і на екрані такі речення комфортні (перевірено вручну).
+  // верхня межа СУВОРІША (≤15 слів) — на B2 середнє речення ~15 слів,
+  // тож без ліміту тайли не влазили на екран (перевірено — ≤15 лишає
+  // комфортний робочий пул і речення без переносів).
   const tilesTermPool = sorted.filter(c=>{
     const n = (c.term?.[pLang]||'').split(' ').filter(Boolean).length;
     return n>=2 && n<=6 && !srIsCardNew(state, c.id);
@@ -6459,7 +6539,7 @@ function _runLessonFlow(lesson, allCards){
   const tilesDefPool = sorted.filter(c=>{
     if(!c.def?.[pLang] || !c.def[pLang].includes('<b>') || srIsCardNew(state, c.id)) return false;
     const n = c.def[pLang].replace(/<[^>]+>/g,'').split(' ').filter(Boolean).length;
-    return n<=10;
+    return n<=15;
   });
   const tilesTermCards = tilesTermPool.slice(0, Math.min(2, tilesTermPool.length));
   // Def-картка — уникаємо повтору картки, що вже потрапила в term-вибірку.
@@ -6688,7 +6768,7 @@ function renderLernpfad(){
         <div class="lp-chapter-arrow">▼</div>
       </div>
       <div class="lp-modules">
-        ${ch.modules.map(m=>renderModuleCard(m)+renderModuleDialogueCard(m)+renderGrammarBonusCard(m)+renderModuleVocabCard(m)).join('')}
+        ${ch.modules.map(m=>`<div class="lp-module-group">${renderModuleCard(m)}${renderModuleDialogueCard(m)}${renderGrammarBonusCard(m)}${renderModuleVocabCard(m)}</div>`).join('')}
         ${reviewHtml}
         ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
         ${renderChapterVocabCard(ch.num, reviewUnlocked)}
@@ -7333,24 +7413,38 @@ function _restartStreakFlameAnim(){
   el.classList.add('cel-fire-anim');
 }
 
-function showStreakCelebration(streak, prevStreak){
+// opts.generic:true — святкування БЕЗ конкретного числа (не перший урок
+// дня, або завершення діалогу): 🎉-іконка замість полум'я+одометра,
+// довільний текст замість "N днів поспіль". opts.onDone — викликається
+// ПІСЛЯ закриття анімації (авто через 2.2с, або одразу тапом) — для
+// сценаріїв, де після святкування треба ЩОСЬ ЗРОБИТИ (напр. одразу
+// перейти до наступного діалогу), а не просто показати кнопки.
+// Виключно вогонь стріку — 1 раз на день, коли стрік реально зростає
+// (streakResult.increased у lfShowResult вирішує, чи взагалі викликати
+// цю функцію). opts.onDone — колбек ПІСЛЯ закриття (авто через 2.2с або
+// тапом) — потрібен, щоб дочекатись цієї анімації перед показом
+// #lesson-celebration нижче, якщо обидві мають спрацювати того самого
+// дня (не накладати їх одна на одну).
+function showStreakCelebration(streak, prevStreak, opts){
+  opts = opts || {};
   const el = document.getElementById('streak-celebration');
   if(!el) return;
   const numEl = document.getElementById('streak-cel-num');
   const lblEl = document.getElementById('streak-cel-label');
+
   if(numEl){
     const from = (typeof prevStreak === 'number' && prevStreak >= 0) ? prevStreak : Math.max(0, streak-1);
     animateOdometer(numEl, from, streak);
   }
   const lbl = {'de':'Tage in Folge!','uk':'днів поспіль!','en':'day streak!','ru':'дней подряд!'}[uiLang] || 'days!';
   if(lblEl) lblEl.textContent = lbl;
-
   _restartStreakFlameAnim();
 
   el.classList.remove('fade-out');
   el.classList.add('show');
 
   clearTimeout(el._autoDismissTimer);
+  el._onDoneCallback = typeof opts.onDone === 'function' ? opts.onDone : null;
   el._autoDismissTimer = setTimeout(_dismissStreakCelebration, 2200);
 
   if(typeof haptic !== 'undefined') haptic.medium?.();
@@ -7361,7 +7455,53 @@ function _dismissStreakCelebration(){
   if(!el || !el.classList.contains('show')) return;
   clearTimeout(el._autoDismissTimer);
   el.classList.add('fade-out');
-  setTimeout(()=>{ el.classList.remove('show','fade-out'); }, 350);
+  const cb = el._onDoneCallback;
+  el._onDoneCallback = null;
+  setTimeout(()=>{
+    el.classList.remove('show','fade-out');
+    if(cb) cb();
+  }, 350);
+}
+
+// ІНША анімація, ніж вогонь стріку — після КОЖНОГО завершення уроку,
+// довгого діалогу (Dialogue Bonus) чи граматики (Grammar Bonus) у
+// Навчанні, незалежно від того, зростав сьогодні стрік чи ні. Коротша
+// за вогонь (1.6с проти 2.2с) — свідомо, бо ця з'являється значно
+// частіше, і не повинна набридати. opts.onDone — той самий патерн
+// колбека, що й у showStreakCelebration, для послідовного ланцюжка
+// (напр. "Наступний діалог": дочекатись анімації → потім перейти).
+function showLessonCelebration(opts){
+  opts = opts || {};
+  const el = document.getElementById('lesson-celebration');
+  if(!el) return;
+  const iconEl = document.getElementById('lc-burst-icon');
+  const lblEl  = document.getElementById('lc-label');
+
+  if(iconEl) iconEl.textContent = opts.icon || '✓';
+  if(lblEl)  lblEl.textContent  = opts.label ||
+    (uiLang==='uk'?'Урок завершено!':uiLang==='en'?'Lesson completed!':uiLang==='ru'?'Урок завершён!':'Lektion abgeschlossen!');
+
+  el.classList.remove('fade-out');
+  el.classList.add('show');
+
+  clearTimeout(el._autoDismissTimer);
+  el._onDoneCallback = typeof opts.onDone === 'function' ? opts.onDone : null;
+  el._autoDismissTimer = setTimeout(_dismissLessonCelebration, 1600);
+
+  if(typeof haptic !== 'undefined') haptic.medium?.();
+}
+
+function _dismissLessonCelebration(){
+  const el = document.getElementById('lesson-celebration');
+  if(!el || !el.classList.contains('show')) return;
+  clearTimeout(el._autoDismissTimer);
+  el.classList.add('fade-out');
+  const cb = el._onDoneCallback;
+  el._onDoneCallback = null;
+  setTimeout(()=>{
+    el.classList.remove('show','fade-out');
+    if(cb) cb();
+  }, 350);
 }
 
 function showPerfLog(){
@@ -7679,7 +7819,7 @@ function tilesShowCard(){
   if(mode === 'def'){
     // Def-режим: складаємо ВСЕ речення з def[primaryLang()] (без HTML-тегів),
     // дистракторів немає — лише слова самого речення. Пул уже відфільтровано
-    // за довжиною (≤10 слів, див. lfStartTiles) — сюди довгі речення не
+    // за довжиною (≤15 слів, див. lfStartTiles) — сюди довші речення не
     // потрапляють.
     const stripTags = s => (s||'').replace(/<[^>]+>/g, '');
     const pLang = primaryLang();
@@ -8353,15 +8493,8 @@ function defUpdateCheckBtn(){
   const allFilled = defState.slots.every(s => s.word !== null);
   const checkBtn = document.getElementById('def-check-btn');
   if(!checkBtn) return;
-  if(allFilled){
-    checkBtn.textContent = typeof t === 'function' ? t('btn_check') : 'Überprüfen';
-    checkBtn.style.display = 'block';
-  } else {
-    // Показуємо як тільки хоч один слот заповнений
-    const anyFilled = defState.slots.some(s => s.word !== null);
-    checkBtn.textContent = typeof t === 'function' ? t('btn_check') : 'Überprüfen';
-    checkBtn.style.display = anyFilled ? 'block' : 'none';
-  }
+  checkBtn.textContent = typeof t === 'function' ? t('btn_check') : 'Überprüfen';
+  checkBtn.style.display = allFilled ? 'block' : 'none';
 }
 
 function defCheck(){
@@ -9821,6 +9954,33 @@ function _dlgCardTurns(card){
 // "забирає" isFirstOfCard (перша репліка діалогу після нього вже НЕ
 // очищає транскрипт — task лишається видимим зверху, репліки додаються
 // під ним).
+// Контекст іспиту для завдання (dlg_task) — компактний "eyebrow"-рядок
+// НАД самим завданням: іконка + коротка назва частини іспиту (завжди
+// видима, щоб було зрозуміло, що це за завдання), і окрема ⓘ-кнопка з
+// повними умовами (лише за тапом — щоб не повторювати довгий текст
+// умов щоразу і не напружувати користувача). Ключ — card.type.
+// ⚠️ Мапа поки заповнена ОДНИМ прикладом (усна частина 3, telc B2 Beruf —
+// парна розмова/спільне вирішення завдання). Якщо реальні значення
+// card.type у базі інші — підправ ключі тут, решта механізму (badge,
+// ⓘ-інфо) спрацює для будь-якого нового запису так само.
+var EXAM_PART_INFO = {
+  'muendlich_teil3': {
+    icon: '🎤',
+    label: {de:'Mündliche Prüfung – Teil 3', uk:'Усна частина 3', en:'Oral exam – Part 3', ru:'Устная часть 3'},
+    info: {
+      de:'Ihr führt zu zweit ein Gespräch und löst gemeinsam eine Aufgabe.',
+      uk:'Ви вдвох ведете розмову й спільно вирішуєте завдання.',
+      en:'You and a partner have a conversation and solve a task together.',
+      ru:'Вы вдвоём ведёте разговор и совместно решаете задачу.',
+    },
+  },
+};
+function showExamPartInfo(type){
+  var info = EXAM_PART_INFO[type];
+  if(!info) return;
+  notify(info.info[uiLang]||info.info.de);
+}
+
 function _hasNonEmptyTask(card){
   return !!(card.task && Object.keys(card.task).some(function(l){
     return card.task[l] && String(card.task[l]).trim();
@@ -9972,7 +10132,15 @@ var _lfDlgHandlers = {
       // БЕЗ підпису імені (це не репліка персонажа), і на всю ширину
       // картки — а не вузька бульбашка з місцем під аватар збоку.
       if(isTask){
-        return '<div class="lf-dlg-task lf-bubble-in">'+
+        var examInfo = EXAM_PART_INFO[card.type];
+        var examBadge = examInfo ?
+          '<div class="lf-dlg-exam-badge lf-bubble-in">'+
+            '<span class="lf-dlg-exam-icon">'+examInfo.icon+'</span>'+
+            '<span class="lf-dlg-exam-label">'+(examInfo.label[uiLang]||examInfo.label[pl]||examInfo.label.de)+'</span>'+
+            '<span class="lf-dlg-exam-info" onclick="showExamPartInfo(\''+card.type+'\')">ⓘ</span>'+
+          '</div>'
+        : '';
+        return examBadge+'<div class="lf-dlg-task lf-bubble-in">'+
           '<div class="lf-unit-main-row">'+
             '<div class="lf-unit-sentence">'+text+'</div>'+
           '</div>'+
@@ -10040,12 +10208,17 @@ var _lfDlgHandlers = {
     return [{ text: card[unit.field]?.[pl]||'', field: unit.field }];
   },
 
-  // Кожна репліка озвучується послідовно, без 🔊-кнопки повтору (аудіо й
-  // так грає автоматично на кожному кроці) — але 📖-кнопка граматики
-  // додається, якщо у картки є посилання (unit.card.gram).
+  // 🔊-кнопка повтору звуку — той самий патерн, що й у Sprachbausteine/
+  // Vocab (getAudioText(unit) ще раз у _lfUnitPlay). Кнопку граматики
+  // (📖) прибрано з діалогу — тут вона зайва, є в Grammar Bonus.
   getSecondaryButtons: function(unit){
-    var gramBtn = _lfGrammarButton(unit.card);
-    return gramBtn ? [gramBtn] : [];
+    return [{
+      icon: '🔊',
+      onClick: function(){
+        var items = _lfDlgHandlers.getAudioText(unit) || [];
+        _lfUnitPlay(items, function(){});
+      }
+    }];
   },
 
   onSwipeUp: function(unit){
@@ -11049,18 +11222,50 @@ function lfShowResult(){
   // кнопок нижче — це просто подальша навігація, не додаткове
   // підтвердження. LF._recorded і тут захищає від подвійного зарахування
   // (exitLessonFlow()/startNextLesson() перевіряють той самий прапорець).
+  // #lesson-celebration — ПЕРША: це нагорода за сам факт завершення
+  // ЦЬОГО уроку/діалогу/граматики, тож логічно йде одразу. Вогонь
+  // (#streak-celebration) — ДРУГИЙ, лише коли стрік реально зростає (1
+  // раз на день): зростання стріку — це НАСЛІДОК завершеного уроку, тож
+  // показується вже ПІСЛЯ нагороди за сам урок, а не раніше.
+  const isGrammarOnly = LF.cards.length === 0 && !isDlgOnly && (LF._grammarBonusPool||[]).length > 0;
+  const lcIcon  = isDlgOnly ? '💬' : isGrammarOnly ? '📚' : '✓';
+  const lcLabel = isDlgOnly
+    ? (uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!')
+    : isGrammarOnly
+      ? (uiLang==='uk'?'Граматику завершено!':uiLang==='en'?'Grammar completed!':uiLang==='ru'?'Грамматика завершена!':'Grammatik abgeschlossen!')
+      : (uiLang==='uk'?'Урок завершено!':uiLang==='en'?'Lesson completed!':uiLang==='ru'?'Урок завершён!':'Lektion abgeschlossen!');
+
+  // Кнопки результату ховаються, поки йде святкування (#lesson-celebration
+  // і/або вогонь), і з'являються рівно тоді, коли останнє з них реально
+  // закрилось (onDone), а не за вгаданим таймаутом — інакше при
+  // ланцюжку "нагорода → вогонь" (обидва того самого дня) кнопки
+  // виринали б ще ПІД час другої анімації.
+  const btnNext = document.getElementById('lr-btn-next');
+  const btnList = document.getElementById('lr-btn-list');
+  const btnNextDlg = document.getElementById('lr-btn-next-dlg');
+  function revealResultButtons(){
+    if(btnNext) btnNext.style.visibility = 'visible';
+    if(btnList) btnList.style.visibility = 'visible';
+    if(btnNextDlg) btnNextDlg.style.visibility = 'visible';
+  }
+
   let celebrationPending = false;
   if(LF && !LF._recorded){
     LF._recorded = true;
-    celebrationPending = !!srRecordLesson(LF);
+    const streakResult = srRecordLesson(LF);
+    celebrationPending = true;
+    if(streakResult && streakResult.increased){
+      showLessonCelebration({ icon: lcIcon, label: lcLabel,
+        onDone: () => showStreakCelebration(streakResult.streak, streakResult.prevStreak, { onDone: revealResultButtons })
+      });
+    } else {
+      showLessonCelebration({ icon: lcIcon, label: lcLabel, onDone: revealResultButtons });
+    }
   }
   // Оновлюємо прогрес Lernpfad
   setTimeout(renderLernpfad, 300);
 
   // Заповнюємо кнопки результату
-  const btnNext = document.getElementById('lr-btn-next');
-  const btnList = document.getElementById('lr-btn-list');
-  const btnNextDlg = document.getElementById('lr-btn-next-dlg');
   if(btnNext) btnNext.textContent = t('btn_next_lesson');
   if(btnList) btnList.textContent = t('btn_to_lessons');
 
@@ -11079,21 +11284,9 @@ function lfShowResult(){
     }
   }
 
-  // Якщо щойно запустилась повноекранна анімація стріку
-  // (showStreakCelebration, ~2200мс) — ховаємо кнопки "Наступний
-  // урок"/"До списку уроків" до її завершення, щоб користувач спершу
-  // побачив анімацію, а не одразу тицяв кудись під нею. Якщо стрік не
-  // збільшився (уже був урок сьогодні) — кнопки показуються одразу.
   if(btnNext) btnNext.style.visibility = celebrationPending ? 'hidden' : 'visible';
   if(btnList) btnList.style.visibility = celebrationPending ? 'hidden' : 'visible';
   if(btnNextDlg) btnNextDlg.style.visibility = celebrationPending ? 'hidden' : 'visible';
-  if(celebrationPending){
-    setTimeout(()=>{
-      if(btnNext) btnNext.style.visibility = 'visible';
-      if(btnList) btnList.style.visibility = 'visible';
-      if(btnNextDlg) btnNextDlg.style.visibility = 'visible';
-    }, 2300);
-  }
 }
 
 // Шукає наступний (за порядком курсу) урок ПІСЛЯ afterLessonId, у якого
@@ -11180,15 +11373,11 @@ function srTagVocab(){
 
 // ── Smart Review: зараховуємо урок ─────────────────────────
 function srRecordLesson(lf){
-  if(!lf) return false;
-  let celebrated = false;
+  if(!lf) return null;
+  let streakResult = null;
   try{
-    const streakResult = srUpdateStreak();
+    streakResult = srUpdateStreak();
     if(typeof renderStreakUI === 'function') renderStreakUI();
-    if(streakResult.increased && typeof showStreakCelebration === 'function'){
-      showStreakCelebration(streakResult.streak, streakResult.prevStreak);
-      celebrated = true;
-    }
     const lessonStart = lf.startTime || Date.now();
     const state0 = srLoadState();
     // Картки уроку — записуємо ТІЛЬКИ ті, що ще не отримали явної оцінки
@@ -11217,7 +11406,7 @@ function srRecordLesson(lf){
     s2.todayMinutes = (s2.todayMinutes||0) + mins;
     srSaveState(s2);
   }catch(e){ console.warn('[SR] srRecordLesson:', e); }
-  return celebrated;
+  return streakResult;
 }
 
 // ══════════════════════════════════════════════════════════════
