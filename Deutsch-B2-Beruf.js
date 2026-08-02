@@ -3116,6 +3116,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_042",
       "sbs_040"
+    ],
+    "dlgCards": [
+      "dlg_071"
     ]
   },
   {
@@ -9746,6 +9749,56 @@ var DIALOGE = [
       "en": "Something fancier, it has lots of small compartments and looks really nice. That's why the assembly probably takes longer than with a normal shelf too.",
       "uk": "Щось незвичніше, у неї багато маленьких відділень, і виглядає вона справді гарно. Тому збирання, напевно, займе довше, ніж зі звичайною полицею.",
       "ru": "Что-то более необычное, у неё много маленьких отделений, и выглядит она действительно красиво. Поэтому сборка, наверное, займёт дольше, чем с обычной полкой."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_071",
+    "cat": "Freizeitgestaltung",
+    "task": {
+      "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich am liebsten, wenn du mal Zeit für dich hast?“",
+      "en": "Topic: Leisure time – \"What do you actually like doing most when you have time for yourself?\"",
+      "uk": "Тема: Дозвілля – «А що ти взагалі найбільше любиш робити, коли маєш час для себе?»",
+      "ru": "Тема: Досуг – «А что ты вообще больше всего любишь делать, когда у тебя есть время для себя?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Sag mal, was machst du eigentlich am liebsten, wenn du mal Zeit für dich hast?",
+      "en": "Tell me, what do you actually like doing most when you have time for yourself?",
+      "uk": "Скажи, а що ти взагалі найбільше любиш робити, коли маєш час для себе?",
+      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть время для себя?"
+    },
+    "a": {
+      "de": "Ich töpfere seit ein paar Monaten, ich habe einen Kurs in einer kleinen Werkstatt in der Nähe gefunden. Es ist total meditativ, mit den Händen zu arbeiten. Und du, wie verbringst du deine Freizeit am liebsten?",
+      "en": "I've been doing pottery for a few months now, I found a class in a small workshop nearby. It's really meditative working with your hands. What about you, how do you like to spend your free time most?",
+      "uk": "Я вже кілька місяців займаюся гончарством, знайшла курси в невеликій майстерні поблизу. Це справді медитативно - працювати руками. А в тебе як, як ти найбільше любиш проводити вільний час?",
+      "ru": "Я уже несколько месяцев занимаюсь гончарным делом, нашла курсы в небольшой мастерской неподалёку. Это действительно медитативно - работать руками. А у тебя как, как ты больше всего любишь проводить свободное время?"
+    },
+    "q1": {
+      "de": "Ich spiele eigentlich sehr gerne Schach, meistens online, aber manchmal auch mit meinem Opa, der ist wirklich gut darin. Was stellst du eigentlich alles beim Töpfern her?",
+      "en": "I actually really like playing chess, mostly online, but sometimes also with my grandpa, he's really good at it. What do you actually make with pottery?",
+      "uk": "Я взагалі дуже люблю грати в шахи, здебільшого онлайн, але іноді й з дідусем, він справді дуже добре грає. А що ти взагалі виготовляєш, коли займаєшся гончарством?",
+      "ru": "Я вообще очень люблю играть в шахматы, в основном онлайн, но иногда и с дедушкой, он действительно очень хорошо играет. А что ты вообще изготавливаешь, когда занимаешься гончарным делом?"
+    },
+    "a1": {
+      "de": "Hauptsächlich Schalen und Tassen, aber ich probiere mich auch langsam an komplizierteren Formen. Spielst du eigentlich schon lange Schach, oder hast du das erst kürzlich angefangen?",
+      "en": "Mainly bowls and cups, but I'm also slowly trying my hand at more complicated shapes. Have you actually been playing chess for a long time, or did you only start recently?",
+      "uk": "Здебільшого миски й чашки, але я поступово пробую й складніші форми. А ти вже давно граєш у шахи, чи почала нещодавно?",
+      "ru": "В основном миски и чашки, но я постепенно пробую и более сложные формы. А ты уже давно играешь в шахматы, или начала недавно?"
+    },
+    "q2": {
+      "de": "Schon seit meiner Kindheit, mein Opa hat es mir beigebracht, als ich ungefähr acht war. Wie lange dauert es eigentlich, bis so eine Tasse fertig ist?",
+      "en": "Since my childhood actually, my grandpa taught me when I was about eight. How long does it actually take until a cup like that is finished?",
+      "uk": "Ще з дитинства, дідусь навчив мене, коли мені було років вісім. А скільки часу взагалі йде на виготовлення такої чашки?",
+      "ru": "Ещё с детства, дедушка научил меня, когда мне было около восьми. А сколько времени вообще уходит на изготовление такой чашки?"
+    },
+    "a2": {
+      "de": "Von der ersten Formung bis zum fertigen Brand vergehen meistens zwei bis drei Wochen, weil alles trocknen und gebrannt werden muss. Das erfordert schon eine ganze Portion Geduld.",
+      "en": "From the first shaping to the finished firing it usually takes two to three weeks, because everything has to dry and be fired. That really requires quite a bit of patience.",
+      "uk": "Від першого формування до готового виробу зазвичай минає два-три тижні, бо все має висохнути й пройти випал. Це вимагає чималого терпіння.",
+      "ru": "От первой формовки до готового изделия обычно проходит две-три недели, потому что всё должно высохнуть и пройти обжиг. Это требует изрядного терпения."
     },
     "gram": ""
   }
