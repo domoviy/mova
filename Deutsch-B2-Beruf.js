@@ -2985,7 +2985,8 @@ var LESSONS = [
       "dlg_025",
       "dlg_026",
       "dlg_027",
-      "dlg_028"
+      "dlg_028",
+      "dlg_069"
     ]
   },
   {
@@ -3052,6 +3053,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_034",
       "sbs_041"
+    ],
+    "dlgCards": [
+      "dlg_070"
     ]
   },
   {
@@ -9642,6 +9646,106 @@ var DIALOGE = [
       "en": "A little at first, but she settled in surprisingly quickly and hardly calls us, which is actually a good sign.",
       "uk": "Спочатку трохи, але вона напрочуд швидко звикла і майже не телефонує нам, що взагалі-то хороша ознака.",
       "ru": "Сначала немного, но она на удивление быстро освоилась и почти не звонит нам, что вообще-то хороший знак."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_069",
+    "cat": "Arbeitsweg",
+    "task": {
+      "de": "Thema: Arbeitsweg – „Wie kommst du eigentlich normalerweise zur Arbeit? Hast du einen festen Weg?“",
+      "en": "Topic: Commute – \"How do you actually usually get to work? Do you have a fixed route?\"",
+      "uk": "Тема: Дорога на роботу – «А як ти взагалі зазвичай добираєшся до роботи? У тебе є фіксований маршрут?»",
+      "ru": "Тема: Дорога на работу – «А как ты вообще обычно добираешься до работы? У тебя есть фиксированный маршрут?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_julia",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Sag mal, wie kommst du eigentlich normalerweise zur Arbeit? Hast du einen festen Weg?",
+      "en": "Tell me, how do you actually usually get to work? Do you have a fixed route?",
+      "uk": "Скажи, а як ти взагалі зазвичай добираєшся до роботи? У тебе є фіксований маршрут?",
+      "ru": "Скажи, а как ты вообще обычно добираешься до работы? У тебя есть фиксированный маршрут?"
+    },
+    "a": {
+      "de": "Eigentlich nicht wirklich, das ist bei mir total unterschiedlich. Manchmal nehme ich die U-Bahn, manchmal fahre ich mit einer Mitfahr-App mit, je nachdem, was gerade am besten passt. Und du, hast du einen festen Arbeitsweg?",
+      "en": "Actually not really, it's quite different for me. Sometimes I take the subway, sometimes I ride with a ride-sharing app, depending on what fits best at the time. What about you, do you have a fixed commute?",
+      "uk": "Взагалі ні, у мене це дуже по-різному. Іноді їду метро, іноді їду через застосунок для спільних поїздок, залежно від того, що зараз найкраще підходить. А в тебе є фіксований шлях на роботу?",
+      "ru": "Вообще нет, у меня это очень по-разному. Иногда еду на метро, иногда еду через приложение для совместных поездок, в зависимости от того, что сейчас лучше подходит. А у тебя есть фиксированный путь на работу?"
+    },
+    "q1": {
+      "de": "Ich fahre eigentlich immer mit der U-Bahn, das ist für mich am zuverlässigsten. Wie funktioniert das eigentlich mit der Mitfahr-App, findest du da immer schnell jemanden?",
+      "en": "I actually always take the subway, that's the most reliable for me. How does it actually work with the ride-sharing app, do you always find someone quickly?",
+      "uk": "Я взагалі завжди їжджу метро, для мене це найнадійніше. А як взагалі працює цей застосунок для спільних поїздок, ти завжди швидко когось знаходиш?",
+      "ru": "Я вообще всегда езжу на метро, для меня это самое надёжное. А как вообще работает это приложение для совместных поездок, ты всегда быстро кого-то находишь?"
+    },
+    "a1": {
+      "de": "Meistens schon, gerade zu den Stoßzeiten gibt es viele Leute, die dieselbe Strecke fahren. Es ist auch günstiger als alleine mit dem Auto zu fahren. Fährst du eigentlich auch mal mit dem Fahrrad, wenn das Wetter gut ist?",
+      "en": "Mostly yes, especially during rush hour there are a lot of people going the same route. It's also cheaper than driving alone by car. Do you actually sometimes ride a bike too, when the weather's good?",
+      "uk": "Здебільшого так, особливо в години пік багато людей їдуть тим самим маршрутом. Це ще й дешевше, ніж їхати самій на машині. А ти взагалі іноді їздиш на велосипеді, коли гарна погода?",
+      "ru": "В основном да, особенно в часы пик много людей едут тем же маршрутом. Это ещё и дешевле, чем ехать одной на машине. А ты вообще иногда ездишь на велосипеде, когда хорошая погода?"
+    },
+    "q2": {
+      "de": "Manchmal schon, aber ehrlich gesagt bin ich da eher inkonsequent, meistens bleibe ich dann doch bei der U-Bahn. Redest du eigentlich viel mit den Leuten, mit denen du mitfährst?",
+      "en": "Sometimes, but honestly I'm rather inconsistent about it, mostly I end up sticking with the subway anyway. Do you actually talk a lot with the people you ride with?",
+      "uk": "Іноді так, але чесно кажучи, я в цьому доволі непослідовна, здебільшого все одно залишаюся на метро. А ти взагалі багато розмовляєш з людьми, з якими їдеш?",
+      "ru": "Иногда да, но честно говоря, я в этом довольно непоследовательна, в основном всё равно остаюсь на метро. А ты вообще много разговариваешь с людьми, с которыми едешь?"
+    },
+    "a2": {
+      "de": "Kommt drauf an, manchmal unterhalte ich mich richtig gut mit ihnen, manchmal hört jeder einfach nur seine eigene Musik. Beides ist eigentlich völlig in Ordnung für mich.",
+      "en": "Depends, sometimes I have a really good conversation with them, sometimes everyone just listens to their own music. Both are actually completely fine with me.",
+      "uk": "Залежить, іноді ми справді добре спілкуємося, іноді кожен просто слухає свою музику. Обидва варіанти для мене цілком нормальні.",
+      "ru": "Зависит, иногда мы действительно хорошо общаемся, иногда каждый просто слушает свою музыку. Оба варианта для меня совершенно нормальные."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_070",
+    "cat": "Wochenende",
+    "task": {
+      "de": "Thema: Wochenende – „Hast du eigentlich schon was für dieses Wochenende vor?“",
+      "en": "Topic: Weekend – \"Do you actually have anything planned for this weekend?\"",
+      "uk": "Тема: Вихідні – «А в тебе вже є плани на ці вихідні?»",
+      "ru": "Тема: Выходные – «А у тебя уже есть планы на эти выходные?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_alex",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Sag mal, hast du eigentlich schon was für dieses Wochenende vor?",
+      "en": "Tell me, do you actually have anything planned for this weekend?",
+      "uk": "Скажи, а в тебе вже є плани на ці вихідні?",
+      "ru": "Скажи, а у тебя уже есть планы на эти выходные?"
+    },
+    "a": {
+      "de": "Ja, ich möchte endlich mein neues Regal aufbauen, das steht schon seit zwei Wochen unausgepackt in meiner Wohnung. Das wird bestimmt den ganzen Samstag dauern. Und du, was hast du vor?",
+      "en": "Yes, I finally want to assemble my new shelf, it's been sitting unpacked in my apartment for two weeks now. That'll probably take the whole Saturday. What about you, what are you up to?",
+      "uk": "Так, я нарешті хочу зібрати свою нову полицю, вона вже два тижні стоїть нерозпакована в моїй квартирі. Це, мабуть, займе всю суботу. А в тебе які плани?",
+      "ru": "Да, я наконец хочу собрать свою новую полку, она уже две недели стоит нераспакованная в моей квартире. Это, наверное, займёт всю субботу. А у тебя какие планы?"
+    },
+    "q1": {
+      "de": "Ich wollte eigentlich auf den Flohmarkt gehen, der findet hier einmal im Monat statt, und ich suche schon lange nach ein paar alten Büchern. Ist das Regal eigentlich schwer aufzubauen, oder hast du da schon Erfahrung mit?",
+      "en": "I actually wanted to go to the flea market, it takes place here once a month, and I've been looking for some old books for a long time. Is the shelf actually hard to assemble, or do you already have experience with that?",
+      "uk": "Я взагалі хотів піти на блошиний ринок, він тут проходить раз на місяць, і я вже давно шукаю кілька старих книжок. А цю полицю взагалі важко збирати, чи в тебе вже є досвід?",
+      "ru": "Я вообще хотел пойти на блошиный рынок, он здесь проходит раз в месяц, и я уже давно ищу несколько старых книг. А эту полку вообще тяжело собирать, или у тебя уже есть опыт?"
+    },
+    "a1": {
+      "de": "Ehrlich gesagt bin ich nicht besonders geschickt darin, aber zum Glück hilft mir ein Freund dabei. Ohne ihn würde das wahrscheinlich ewig dauern. Findest du auf dem Flohmarkt eigentlich oft, wonach du suchst?",
+      "en": "Honestly, I'm not particularly skilled at it, but luckily a friend is helping me with it. Without him it would probably take forever. Do you actually often find what you're looking for at the flea market?",
+      "uk": "Чесно кажучи, я не дуже вправна в цьому, але на щастя мені допомагає друг. Без нього це, напевно, тривало б вічність. А ти на блошиному ринку часто знаходиш те, що шукаєш?",
+      "ru": "Честно говоря, я не особо ловкая в этом, но, к счастью, мне помогает друг. Без него это, наверное, длилось бы вечность. А ты на блошином рынке часто находишь то, что ищешь?"
+    },
+    "q2": {
+      "de": "Manchmal schon, manchmal aber auch gar nichts, das ist immer ein bisschen Glückssache. Was für ein Regal habt ihr euch eigentlich ausgesucht, ein einfaches oder etwas Ausgefalleneres?",
+      "en": "Sometimes, but sometimes nothing at all too, it's always a bit of luck. What kind of shelf did you choose actually, a simple one or something fancier?",
+      "uk": "Іноді так, а іноді взагалі нічого, це завжди трохи справа удачі. А яку полицю ви взагалі обрали, просту чи щось незвичніше?",
+      "ru": "Иногда да, а иногда вообще ничего, это всегда немного дело удачи. А какую полку вы вообще выбрали, простую или что-то более необычное?"
+    },
+    "a2": {
+      "de": "Etwas Ausgefalleneres, es hat viele kleine Fächer und sieht wirklich schön aus. Deshalb dauert der Aufbau wahrscheinlich auch länger als bei einem normalen Regal.",
+      "en": "Something fancier, it has lots of small compartments and looks really nice. That's why the assembly probably takes longer than with a normal shelf too.",
+      "uk": "Щось незвичніше, у неї багато маленьких відділень, і виглядає вона справді гарно. Тому збирання, напевно, займе довше, ніж зі звичайною полицею.",
+      "ru": "Что-то более необычное, у неё много маленьких отделений, и выглядит она действительно красиво. Поэтому сборка, наверное, займёт дольше, чем с обычной полкой."
     },
     "gram": ""
   }
