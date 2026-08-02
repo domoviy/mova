@@ -3189,6 +3189,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_001",
       "sbs_038"
+    ],
+    "dlgCards": [
+      "dlg_072"
     ]
   },
   {
@@ -9799,6 +9802,56 @@ var DIALOGE = [
       "en": "From the first shaping to the finished firing it usually takes two to three weeks, because everything has to dry and be fired. That really requires quite a bit of patience.",
       "uk": "Від першого формування до готового виробу зазвичай минає два-три тижні, бо все має висохнути й пройти випал. Це вимагає чималого терпіння.",
       "ru": "От первой формовки до готового изделия обычно проходит две-три недели, потому что всё должно высохнуть и пройти обжиг. Это требует изрядного терпения."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_072",
+    "cat": "Urlaub",
+    "task": {
+      "de": "Thema: Urlaub – „Hast du eigentlich schon Pläne für deinen nächsten Urlaub?“",
+      "en": "Topic: Vacation – \"Do you actually already have plans for your next vacation?\"",
+      "uk": "Тема: Відпустка – «У тебе вже є плани на наступну відпустку?»",
+      "ru": "Тема: Отпуск – «У тебя уже есть планы на следующий отпуск?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_mark",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Sag mal, hast du eigentlich schon Pläne für deinen nächsten Urlaub?",
+      "en": "Tell me, do you actually already have plans for your next vacation?",
+      "uk": "Скажи, у тебе вже є плани на наступну відпустку?",
+      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?"
+    },
+    "a": {
+      "de": "Ja, ich mache im Sommer zum ersten Mal eine Kreuzfahrt durchs Mittelmeer, das war schon lange mein Traum. Ich freue mich total darauf, verschiedene Häfen zu besuchen. Und du, hast du auch schon was vor?",
+      "en": "Yes, in summer I'm going on a Mediterranean cruise for the first time, that's been my dream for a long time. I'm really looking forward to visiting different ports. What about you, do you have anything planned too?",
+      "uk": "Так, влітку я вперше вирушаю в круїз по Середземному морю, це була моя давня мрія. Я дуже чекаю відвідати різні порти. А в тебе теж уже є якісь плани?",
+      "ru": "Да, летом я впервые отправляюсь в круиз по Средиземному морю, это была моя давняя мечта. Я очень жду посетить разные порты. А у тебя тоже уже есть какие-то планы?"
+    },
+    "q1": {
+      "de": "Ich wollte eigentlich mit dem Rucksack durch Südostasien reisen, so richtig planlos und spontan. Was erhoffst du dir eigentlich am meisten von der Kreuzfahrt?",
+      "en": "I actually wanted to backpack through Southeast Asia, really planless and spontaneous. What are you actually hoping for most from the cruise?",
+      "uk": "Я взагалі хотів помандрувати з рюкзаком по Південно-Східній Азії, зовсім без плану й спонтанно. А чого ти найбільше очікуєш від круїзу?",
+      "ru": "Я вообще хотел попутешествовать с рюкзаком по Юго-Восточной Азии, совсем без плана и спонтанно. А чего ты больше всего ожидаешь от круиза?"
+    },
+    "a1": {
+      "de": "Vor allem, dass ich mich mal so richtig entspannen kann, ohne mich um irgendetwas kümmern zu müssen. Alles ist ja schon organisiert. Backpacking klingt aber auch total spannend - hast du das eigentlich schon mal gemacht?",
+      "en": "Mostly that I can really relax without having to worry about anything. Everything's already organized after all. Backpacking sounds really exciting too though - have you actually done that before?",
+      "uk": "Найбільше того, що я справді зможу відпочити, не турбуючись ні про що. Все ж уже організовано. Але бекпекінг теж звучить дуже цікаво - ти вже колись таке робив?",
+      "ru": "Больше всего того, что я действительно смогу отдохнуть, не беспокоясь ни о чём. Всё же уже организовано. Но бэкпекинг тоже звучит очень интересно - ты уже когда-нибудь такое делал?"
+    },
+    "q2": {
+      "de": "Ja, vor ein paar Jahren, das war eine der besten Erfahrungen meines Lebens. Man lernt dabei wirklich, mit sehr wenig auszukommen. Wie lange dauert deine Kreuzfahrt eigentlich?",
+      "en": "Yes, a few years ago, that was one of the best experiences of my life. You really learn to get by with very little. How long does your cruise actually last?",
+      "uk": "Так, кілька років тому, це був один із найкращих досвідів мого життя. Там справді вчишся обходитися дуже малим. А скільки взагалі триває твій круїз?",
+      "ru": "Да, несколько лет назад, это было одно из лучших впечатлений моей жизни. Там действительно учишься обходиться очень малым. А сколько вообще длится твой круиз?"
+    },
+    "a2": {
+      "de": "Zwei Wochen, das ist für mich genau die richtige Länge, um wirklich abzuschalten, ohne dass es mir am Ende zu lang wird.",
+      "en": "Two weeks, that's exactly the right length for me to really switch off, without it getting too long in the end.",
+      "uk": "Два тижні, для мене це саме та тривалість, щоб справді відпочити, і водночас це не стає занадто довго.",
+      "ru": "Две недели, для меня это как раз та продолжительность, чтобы действительно отдохнуть, и при этом это не становится слишком долго."
     },
     "gram": ""
   }
