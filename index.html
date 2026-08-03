@@ -1113,17 +1113,18 @@ body{
      або впритул до #lf-unit-hint (реальний getBoundingClientRect),
      або по центру зони як фолбек. Тут навмисно без значень за
      замовчуванням, щоб не було "стрибка" з центру в потрібну точку. */
+  display:flex;align-items:center;gap:10px;
   background:rgba(13,43,26,.92);
   border:1px solid rgba(201,168,76,.35);
-  border-radius:16px;padding:14px 24px;
-  font-size:var(--fs-card);font-weight:600;
-  color:var(--gold);text-align:center;
+  border-radius:16px;padding:12px 20px;
+  color:var(--gold);
   pointer-events:none;z-index:100;
   backdrop-filter:blur(8px);
   transition:opacity .3s ease;
   white-space:nowrap;
 }
-.srs-hint-label{font-size:var(--fs-secondary);opacity:.8}
+.srs-hint-icon{font-size:22px;line-height:1;flex-shrink:0;}
+.srs-hint-label{font-size:var(--fs-secondary);font-weight:600;opacity:.9}
 .mc-result-score{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold);font-family:'Inter',sans-serif}
 .mc-result-praise{color:var(--muted);font-size:var(--fs-tertiary);margin:8px 0 16px}
 .sp-result-title{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold)}
@@ -2972,7 +2973,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '432-bb664cf';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5972,7 +5973,7 @@ function showSrsHint(emoji, label, q, areaId='fc-area'){
   // Прикріплюємо хінт до тієї карткової зони, що зараз активна (vocab / dialogue)
   const area = document.getElementById(areaId);
   if(area && hint.parentElement !== area) area.appendChild(hint);
-  hint.innerHTML = emoji+'<br><span class="srs-hint-label">'+label+'</span>';
+  hint.innerHTML = '<span class="srs-hint-icon">'+emoji+'</span><span class="srs-hint-label">'+label+'</span>';
 
   // Позиція: якщо в цій зоні є підпис #lf-unit-hint (маленький текст
   // під карткою уроку) — ставимо бейдж рівно туди, замість дефолтного
@@ -6959,15 +6960,31 @@ function buildModuleDialoguePool(lesson){
   return cards.slice().sort((a,b)=>srPriorityFromState(state,b.id)-srPriorityFromState(state,a.id));
 }
 
-function startModuleDialogueBonus(lessonId){
+// Відстежує, які картки діалогу вже показані в ПОТОЧНОМУ ланцюжку
+// "Наступний діалог" (не в LF.dlgCards — той тепер завжди [1 картка],
+// щоб КОЖЕН діалог завершувався власним result-екраном+святкуванням,
+// а не мовчки перетікав у наступний усередині одного dlg_learn-кроку —
+// саме це й було причиною "немає анімації, вмикається наступний
+// діалог"). Скидається лише при СВІЖОМУ вході з Навчання (opts._chain
+// не передано); при переході через "Наступний діалог" — НЕ скидається,
+// щоб не показати ту саму картку двічі поспіль.
+let _lfDlgChainSeen = new Set();
+
+function startModuleDialogueBonus(lessonId, opts){
+  opts = opts || {};
+  if(!opts._chain) _lfDlgChainSeen = new Set();
+
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson  = lessons.find(l=>l.id===lessonId);
   if(!lesson) return;
-  const pool = buildModuleDialoguePool(lesson);
+  const pool = buildModuleDialoguePool(lesson).filter(c => !_lfDlgChainSeen.has(c.id));
   if(!pool.length){
     notify('⚠️ '+(uiLang==='uk'?'Немає діалогів для цього уроку':uiLang==='ru'?'Нет диалогов для этого урока':uiLang==='en'?'No dialogues for this lesson':'Keine Dialoge für diese Lektion'));
     return;
   }
+  const card = pool[0];
+  _lfDlgChainSeen.add(card.id);
+
   const title = {
     de:'Dialog: '+(lesson.title?.de||''), uk:'Діалог: '+(lesson.title?.uk||''),
     en:'Dialogue: '+(lesson.title?.en||''), ru:'Диалог: '+(lesson.title?.ru||''),
@@ -6978,7 +6995,7 @@ function startModuleDialogueBonus(lessonId){
     _isBonusLesson: true,
     _bonusForLessonId: lesson.id,
     steps: ['dlg_learn', 'result'],
-    _dlgBonusPool: pool,
+    _dlgBonusPool: [card],   // ЛИШЕ одна картка за сесію — див. коментар вище
   });
 }
 
@@ -9633,6 +9650,21 @@ function lfGoStep(stepIdx){
   LF.unitProgress = null; // скидаємо — кожен крок сам встановлює, якщо unit-based (напр. vocab)
   lfRenderBar();
 
+  // КРИТИЧНО: скасовуємо будь-який АКТИВНИЙ ланцюжок відтворення від
+  // ПОПЕРЕДНЬОГО кроку — той самий запобіжник, що й на вході в
+  // lfRunUnitStep(), але тут — БЕЗУМОВНО, на кожному переході кроку.
+  // Раніше він спрацьовував лише коли НАСТУПНИЙ крок сам unit-based
+  // (cards/def/sb_prac/dlg_learn, всі йдуть через lfRunUnitStep) — але
+  // 'matching' (і tiles/choice/quiz) стартують ЗОВСІМ іншим шляхом
+  // (lfStartMatching() тощо, без lfRunUnitStep), тож токен ніхто не
+  // чіпав: відкладене аудіо з попереднього кроку (напр. граматики)
+  // могло дограти вже НА ЕКРАНІ "Знайди пару" й самостійно намалювати
+  // "🔊 Повторити"/"Далі" поверх геть іншої вправи.
+  _lfUnitPlayToken++;
+  playGen++;
+  if(currentAudio){ currentAudio.pause(); currentAudio = null; }
+  document.getElementById('lf-next-row')?.remove();
+
   // Ховаємо lesson-result
   document.getElementById('lesson-result').classList.remove('show');
   // Видаляємо залишкову кнопку Далі від SB кроків
@@ -11340,13 +11372,17 @@ function lfShowResult(){
   if(btnList) btnList.textContent = t('btn_to_lessons');
 
   // "Наступний діалог" — лише після Dialogue Bonus (isDlgOnly), і лише
-  // якщо десь далі в курсі є ЩЕ один урок з прив'язаним діалогом (інакше
-  // кнопка веде в нікуди). Дає змогу пройти кілька діалогів поспіль, не
+  // якщо є куди йти: або в ЦЬОМУ Ж уроці лишився ще непоказаний діалог
+  // (_lfDlgChainSeen), або десь далі в курсі є ЩЕ один урок з
+  // прив'язаним діалогом. Дає змогу пройти кілька діалогів поспіль, не
   // повертаючись щоразу в Навчання й не проходячи звичайні уроки між ними.
   const bonusForId = LF.lesson?._bonusForLessonId;
-  const nextDlgLesson = (isDlgOnly && bonusForId) ? _findNextLessonWithDialogue(bonusForId) : null;
+  const bonusLesson = bonusForId ? (typeof LESSONS!=='undefined' ? LESSONS.find(l=>l.id===bonusForId) : null) : null;
+  const sameLessonHasMore = isDlgOnly && bonusLesson &&
+    buildModuleDialoguePool(bonusLesson).some(c => !_lfDlgChainSeen.has(c.id));
+  const nextDlgLesson = (isDlgOnly && bonusForId && !sameLessonHasMore) ? _findNextLessonWithDialogue(bonusForId) : null;
   if(btnNextDlg){
-    if(nextDlgLesson){
+    if(sameLessonHasMore || nextDlgLesson){
       btnNextDlg.textContent = uiLang==='uk'?'💬 Наступний діалог':uiLang==='en'?'💬 Next dialogue':uiLang==='ru'?'💬 Следующий диалог':'💬 Nächster Dialog';
       btnNextDlg.style.display = '';
     } else {
@@ -11372,14 +11408,27 @@ function _findNextLessonWithDialogue(afterLessonId){
   return null;
 }
 
-// "Наступний діалог" — переходить одразу до Dialogue Bonus НАСТУПНОГО
-// уроку з прив'язаним діалогом, минаючи звичайні уроки між ними.
+// "Наступний діалог" — СПЕРШУ перевіряє, чи в ЦЬОМУ Ж уроці лишився ще
+// хоч один непоказаний у поточному ланцюжку діалог (_lfDlgChainSeen) —
+// і якщо так, показує саме його. Лише коли урок вичерпано, переходить
+// до НАСТУПНОГО уроку з прив'язаним діалогом, минаючи звичайні уроки
+// між ними. {_chain:true} — не скидає _lfDlgChainSeen, щоб та сама
+// картка не показалась двічі поспіль у межах одного ланцюжка "Наступний
+// діалог".
 function startNextDialogue(){
   const bonusForId = LF?.lesson?._bonusForLessonId;
   if(!bonusForId){ exitLessonFlow(); return; }
+
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const currentLesson = lessons.find(l=>l.id===bonusForId);
+  if(currentLesson){
+    const remaining = buildModuleDialoguePool(currentLesson).filter(c => !_lfDlgChainSeen.has(c.id));
+    if(remaining.length){ startModuleDialogueBonus(currentLesson.id, {_chain:true}); return; }
+  }
+
   const next = _findNextLessonWithDialogue(bonusForId);
   if(!next){ exitLessonFlow(); return; }
-  startModuleDialogueBonus(next.id);
+  startModuleDialogueBonus(next.id, {_chain:true});
 }
 
 // Smart Review: тегування VOCAB карток полем examPart за категорією
