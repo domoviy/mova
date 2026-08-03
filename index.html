@@ -973,7 +973,7 @@ body{
 .tiles-q-text{font-size:var(--fs-card);color:#fff;line-height:1.3;font-family:'Inter',sans-serif;}
 .tiles-q-text.mc-q-term{color:#fff;font-weight:400;}
 .tiles-answer{
-  flex:0 0 auto;min-height:64px;max-height:35vh;border-radius:14px;
+  flex:0 0 auto;min-height:64px;max-height:28vh;border-radius:14px;
   border:1.5px dashed var(--border);
   background:rgba(201,168,76,.04);
   padding:12px 14px;margin-bottom:8px;
@@ -983,6 +983,16 @@ body{
 }
 .tiles-answer.correct{border-color:#2ecc71;border-style:solid;background:rgba(46,204,113,.06);}
 .tiles-answer.wrong  {border-color:#e74c3c;border-style:solid;background:rgba(231,76,60,.06);}
+/* Компактний режим (12+ слів, див. tilesUpdateCompactMode) — менші
+   плитки в ОБОХ зонах одночасно, щоб розмір лишався візуально
+   узгодженим між реченням і банком. Б'є в саму причину тісняви замість
+   боротьби з наслідками (fade-градієнт нижче — це вже підстраховка). */
+.tiles-answer.compact{ gap:6px; padding:10px 12px; }
+.tiles-bank.compact{ gap:7px; }
+.tiles-answer.compact .tile,
+.tiles-bank.compact .tile{
+  padding:6px 11px;font-size:calc(var(--fs-card) * .85);min-height:36px;
+}
 .tile{
   padding:9px 16px;border-radius:8px;
   border:1.5px solid var(--gold);
@@ -991,7 +1001,7 @@ body{
   cursor:pointer;font-family:inherit;
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
-  transition:opacity .15s,transform .1s;
+  transition:opacity .15s,transform .1s,padding .15s,font-size .15s;
   min-height:44px;display:inline-flex;align-items:center;
 }
 .tile:active{transform:scale(.95);}
@@ -1057,6 +1067,7 @@ body{
   /* відступ знизу щоб плитки не ховались під fixed кнопкою Перевірити */
   padding-bottom:calc(72px + var(--lm-nav, 0px) + env(safe-area-inset-bottom, 0px) + 8px);
   box-sizing:border-box;
+  transition:mask-image .15s ease, -webkit-mask-image .15s ease;
 }
 .tiles-check-row{
   flex-shrink:0;padding:8px 0 calc(var(--lm-nav)+env(safe-area-inset-bottom,0px)+8px);
@@ -2973,7 +2984,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '434-41072e7';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5962,6 +5973,48 @@ function srsSwipe(q){
   window.updateUnitBodyFade = updateUnitBodyFade;
 })();
 
+// Той самий fade-натяк на прихований контент, що й вище для
+// .lf-unit-body — тепер для .tiles-bank (вправа "Склади речення"):
+// два незалежні скрол-контейнери (.tiles-answer + .tiles-bank) в одній
+// фіксованій панелі означають, що останній рядок банку може впертись
+// у нижню межу без жодного натяку, що там можна доскролити.
+(function(){
+  function updateTilesBankFade(){
+    var bank = document.getElementById('tiles-bank');
+    if(!bank) return;
+    var hasMoreAbove = bank.scrollTop > 4;
+    var hasMoreBelow = bank.scrollTop + bank.clientHeight < bank.scrollHeight - 4;
+    if(!hasMoreAbove && !hasMoreBelow){
+      bank.style.maskImage = '';
+      bank.style.webkitMaskImage = '';
+      return;
+    }
+    var g = 'linear-gradient(to bottom,'
+      + (hasMoreAbove ? 'transparent 0,black 22px' : 'black 0')
+      + ','
+      + (hasMoreBelow ? 'black calc(100% - 22px),transparent 100%' : 'black 100%')
+      + ')';
+    bank.style.maskImage = g;
+    bank.style.webkitMaskImage = g;
+  }
+  document.addEventListener('DOMContentLoaded', function(){
+    var bank = document.getElementById('tiles-bank');
+    if(!bank) return;
+    bank.addEventListener('scroll', updateTilesBankFade, {passive:true});
+    window.addEventListener('resize', updateTilesBankFade);
+    // Плитки додаються/прибираються прямими DOM-мутаціями (tilesPickWord
+    // тощо), не через innerHTML-заміну цілком — тому теж слухаємо мутації,
+    // а не лише scroll.
+    new MutationObserver(updateTilesBankFade).observe(bank, {childList:true, subtree:true});
+    // .tiles-answer теж змінює висоту (стискаючи місце під банк) —
+    // кожна зміна там опосередковано впливає на те, чи банк скролиться.
+    var answer = document.getElementById('tiles-answer');
+    if(answer) new MutationObserver(updateTilesBankFade).observe(answer, {childList:true, subtree:true});
+    updateTilesBankFade();
+  });
+  window.updateTilesBankFade = updateTilesBankFade;
+})();
+
 // Показує інформаційний хінт з результатом SRS
 function showSrsHint(emoji, label, q, areaId='fc-area'){
   let hint = document.getElementById('srs-hint');
@@ -7885,6 +7938,20 @@ function startTiles(){
   tilesShowCard();
 }
 
+// Компактний режим плиток — при 12+ словах (тепер, коли ліміт def-режиму
+// підняли з 10 до 15) вмикаємо менші картки одразу в ОБОХ зонах
+// (речення + банк), а не лише в одній — інакше розміри між зонами не
+// збігалися б візуально. Б'є в корінь причини тісняви (забагато
+// "фізичної" висоти на ту саму кількість слів), а не лише маскує
+// симптом.
+function tilesUpdateCompactMode(wordCount){
+  const isCompact = wordCount >= 12;
+  const answerEl = document.getElementById('tiles-answer');
+  const bankEl = document.getElementById('tiles-bank');
+  if(answerEl) answerEl.classList.toggle('compact', isCompact);
+  if(bankEl) bankEl.classList.toggle('compact', isCompact);
+}
+
 function tilesShowCard(){
   const fb = document.getElementById('tiles-feedback');
   if(fb){ fb.style.display='none'; fb.textContent=''; }
@@ -7927,6 +7994,7 @@ function tilesShowCard(){
     const correctStr = stripTags(card.def?.[pLang] || '');
     const words = correctStr.split(' ').filter(Boolean);
     tilesState.words = words;
+    tilesUpdateCompactMode(words.length);
 
     const allTiles = words.slice().sort(()=>Math.random()-.5);
     const bank = document.getElementById('tiles-bank');
@@ -7975,6 +8043,7 @@ function tilesShowCard(){
   const correctStr = card.term?.[pLang] || '';
   const words = correctStr.split(' ').filter(Boolean);
   tilesState.words = words;
+  tilesUpdateCompactMode(words.length);
 
   // Дистрактори — слова з term[primaryLang()] інших карток
   const pool = getVocabPool();
