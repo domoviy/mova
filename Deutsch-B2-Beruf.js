@@ -3284,6 +3284,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_032",
       "sbs_047"
+    ],
+    "dlgCards": [
+      "dlg_073"
     ]
   },
   {
@@ -9852,6 +9855,56 @@ var DIALOGE = [
       "en": "Two weeks, that's exactly the right length for me to really switch off, without it getting too long in the end.",
       "uk": "Два тижні, для мене це саме та тривалість, щоб справді відпочити, і водночас це не стає занадто довго.",
       "ru": "Две недели, для меня это как раз та продолжительность, чтобы действительно отдохнуть, и при этом это не становится слишком долго."
+    },
+    "gram": ""
+  },
+{
+    "id": "dlg_073",
+    "cat": "Sportaktivitäten",
+    "task": {
+      "de": "Ich würde gern mit dem Klettern anfangen. Wie siehst du das?",
+      "en": "I'd like to start climbing. What do you think?",
+      "uk": "Я б хотіла почати займатися скелелазінням. Як ти на це дивишся?",
+      "ru": "Я бы хотела начать заниматься скалолазанием. Как ты на это смотришь?"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag mal, ich würde gern mit dem Klettern anfangen. <r>Wie siehst du das</r>?",
+      "en": "Tell me, I'd like to start climbing. <r>What do you think</r>?",
+      "uk": "Скажи, я б хотіла почати займатися скелелазінням. <r>Як ти на це дивишся</r>?",
+      "ru": "Скажи, я бы хотела начать заниматься скалолазанием. <r>Как ты на это смотришь</r>?"
+    },
+    "a": {
+      "de": "Ja, <r>das finde ich eine gute Idee</r>, das soll super für die Kondition sein. <r>Hast du schon Erfahrungen damit gemacht</r>, oder wäre das komplett neu für dich?",
+      "en": "Yes, <r>I think that's a good idea</r>, it's supposed to be great for fitness. <r>Have you had any experience with it</r> already, or would that be completely new for you?",
+      "uk": "Так, <r>я вважаю це гарною ідеєю</r>, кажуть, це чудово для фізичної форми. <r>У тебе вже є досвід у цьому</r>, чи для тебе це було б зовсім нове?",
+      "ru": "Да, <r>я считаю это хорошей идеей</r>, говорят, это отлично для физической формы. <r>У тебя уже есть опыт в этом</r>, или для тебя это было бы совсем новым?"
+    },
+    "q1": {
+      "de": "Komplett neu, ehrlich gesagt. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, ob ich mutig genug dafür bin. Denkst du, das ist wirklich so anstrengend, wie alle sagen?",
+      "en": "Completely new, honestly. <r>I don't know, I'm not sure</r> if I'm brave enough for it. Do you think it's really as exhausting as everyone says?",
+      "uk": "Чесно кажучи, зовсім нове. <r>Я не знаю, я не впевнена</r>, чи достатньо я смілива для цього. Ти думаєш, це справді так виснажливо, як усі кажуть?",
+      "ru": "Честно говоря, совсем новое. <r>Я не знаю, я не уверена</r>, достаточно ли я смелая для этого. Ты думаешь, это действительно так утомительно, как все говорят?"
+    },
+    "a1": {
+      "de": "<r>Es hängt davon ab, ob</r> du in einer Kletterhalle anfängst oder gleich draußen am Fels. In der Halle ist es viel einfacher für Anfänger. <r>Aber man sollte es versuchen</r>.",
+      "en": "<r>It depends on whether</r> you start in a climbing gym or straight outdoors on real rock. In the gym it's much easier for beginners. <r>But you should just try it</r>.",
+      "uk": "<r>Залежить, чи</r> почнеш ти в скеледромі, чи одразу на справжній скелі надворі. У залі це значно простіше для початківців. <r>Але варто просто спробувати</r>.",
+      "ru": "<r>Зависит от того</r>, начнёшь ли ты в скалодроме, или сразу на настоящей скале на улице. В зале это намного проще для начинающих. <r>Но стоит просто попробовать</r>."
+    },
+    "q2": {
+      "de": "Das stimmt wahrscheinlich. <r>Was denkst du</r>, sollte ich lieber allein anfangen oder gleich mit jemandem zusammen?",
+      "en": "That's probably true. <r>What do you think</r>, should I rather start alone or right away together with someone?",
+      "uk": "Мабуть, це правда. <r>Як ти думаєш</r>, мені краще почати самій чи одразу з кимось разом?",
+      "ru": "Наверное, это правда. <r>Как ты думаешь</r>, мне лучше начать одной или сразу с кем-то вместе?"
+    },
+    "a2": {
+      "de": "<r>Ich bin der Meinung, dass</r> es am Anfang leichter ist, mit jemand Erfahrenem zu gehen, der einem die Grundlagen zeigt. Ich könnte dich zum Beispiel mal mitnehmen, wenn du magst.",
+      "en": "<r>I think that</r> it's easier at the start to go with someone experienced who shows you the basics. I could take you along sometime, for example, if you'd like.",
+      "uk": "<r>Я вважаю, що</r> на початку легше піти з кимось досвідченим, хто покаже основи. Я могла б, наприклад, колись узяти тебе з собою, якщо хочеш.",
+      "ru": "<r>Я считаю, что</r> вначале легче пойти с кем-то опытным, кто покажет основы. Я могла бы, например, как-нибудь взять тебя с собой, если хочешь."
     },
     "gram": ""
   }
