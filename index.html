@@ -2934,6 +2934,7 @@ body.lesson-active .vocab-top{
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
       <div class="srow-label"><label>🃏 Вправи Vocab (тест)</label><small>Прямий доступ до вкладок, прибраних з основного UI</small></div>
       <div style="display:flex;flex-direction:column;gap:6px">
+        <button class="btn btn-s" style="text-align:left" onclick="showView('sb')">🧩 Sprachbausteine</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(2)">🔗 Пари</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(3)">🎯 Вибір</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(4)">🧩 Склади речення</button>
@@ -2966,9 +2967,6 @@ body.lesson-active .vocab-top{
   <button class="bn-item" onclick="openMainDictionary()" data-view="vocab">
     <span class="bn-icon">📖</span><span id="bn-vocab-label">Словник</span>
   </button>
-  <button class="bn-item" onclick="showView('sb')" data-view="sb">
-    <span class="bn-icon">🧩</span><span data-i18n="nav_sb">Sprachbau</span>
-  </button>
 </div>
 
 <div class="notif" id="notif"></div>
@@ -2984,7 +2982,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '435-a8a6824';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5104,11 +5102,11 @@ const haptic = {
 // жодного контенту. Dialogue-таб прибрано з нав-бару взагалі (діалоги
 // тепер доступні лише через картки "Діалог" одразу під уроками в
 // Навчанні — так процес не відволікає від запланованого курсу).
-function updateBottomNavVisibility(){
-  const hasSB  = typeof SPRACHBAUSTEINE !== 'undefined' && SPRACHBAUSTEINE?.length;
-  const sbBtn  = document.querySelector('#bottom-nav [data-view="sb"]');
-  if(sbBtn)   sbBtn.style.display   = hasSB   ? '' : 'none';
-}
+// Sprachbau-таб прибрано з нав-бару (перенесено в Settings → Debug —
+// функціонал уже використовується всередині уроку, а в основному меню
+// лише відволікав від запланованої лінії навчання, той самий принцип,
+// що й раніше для Dialogue-табу).
+function updateBottomNavVisibility(){}
 
 async function init(){
   // ── ТИМЧАСОВЕ ІНСТРУМЕНТУВАННЯ ──────────────────────────────
