@@ -3857,6 +3857,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_043",
       "sbs_037"
+    ],
+    "dlgCards": [
+      "dlg_080"
     ]
   },
   {
@@ -3955,6 +3958,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_002",
       "sbs_048"
+    ],
+    "dlgCards": [
+      "dlg_081"
     ]
   }
 ];
@@ -10223,6 +10229,106 @@ var DIALOGE = [
       "en": "I think so, that sounds like a good idea. Let's give it a try next weekend.",
       "uk": "Мабуть, так, звучить як гарна ідея. Давай спробуємо наступні вихідні.",
       "ru": "Наверное, да, звучит как хорошая идея. Давай попробуем в следующие выходные."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_080",
+    "cat": "Wochenende",
+    "task": {
+      "de": "Thema: Wochenende – „Was könnte man an einem regnerischen Wochenende unternehmen?“",
+      "en": "Topic: Weekend – \"What could you do on a rainy weekend?\"",
+      "uk": "Тема: Вихідні – «Що можна робити в дощові вихідні?»",
+      "ru": "Тема: Выходные – «Что можно делать в дождливые выходные?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Sag mal, was könnte man eigentlich an einem regnerischen Wochenende unternehmen? Ich hab schon oft keine Idee, wenn's draußen so schlecht ist.",
+      "en": "Tell me, what could you actually do on a rainy weekend? I often have no idea what to do when the weather's that bad outside.",
+      "uk": "Скажи, а що взагалі можна робити в дощові вихідні? У мене часто немає ідей, коли надворі так погано.",
+      "ru": "Скажи, а что вообще можно делать в дождливые выходные? У меня часто нет идей, когда на улице так плохо."
+    },
+    "a": {
+      "de": "<r>Das finde ich eine gute Idee</r>. <r>Man könnte vielleicht</r> ins Kino gehen, <g>wegen des</g> schlechten Wetters ist das ja gerade perfekt.",
+      "en": "<r>I think that's a good idea</r> to think about. <r>We could maybe</r> go to the cinema, <g>because of</g> the bad weather that's actually perfect.",
+      "uk": "<r>Я вважаю це гарною ідеєю</r> — подумати над цим. <r>Можна було б</r> піти в кіно, <g>через</g> погану погоду це якраз ідеально.",
+      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r> пойти в кино, <g>из-за</g> плохой погоды это как раз идеально."
+    },
+    "q1": {
+      "de": "Stimmt, das mache ich manchmal auch. <r>Es gibt auch die Möglichkeit</r>, einfach zu Hause zu backen, oder?",
+      "en": "True, I sometimes do that too. <r>There's also the option</r> of just baking at home, right?",
+      "uk": "Точно, я іноді теж так роблю. <r>Є ще й така можливість</r> — просто випікати щось удома, правда?",
+      "ru": "Точно, я иногда тоже так делаю. <r>Есть ещё и такая возможность</r> - просто печь что-то дома, верно?"
+    },
+    "a1": {
+      "de": "Ja, genau, das mache ich <g>während</g> des Regens sehr gern, das ist richtig gemütlich. <r>Hättest du noch eine andere Idee</r>?",
+      "en": "Yes, exactly, I really like doing that <g>during</g> the rain, it's really cozy. <r>Would you have another idea</r>?",
+      "uk": "Так, саме так, я дуже люблю робити це <g>під час</g> дощу, це дуже затишно. <r>У тебе є ще якась ідея</r>?",
+      "ru": "Да, именно так, я очень люблю делать это <g>во время</g> дождя, это очень уютно. <r>У тебя есть ещё какая-то идея</r>?"
+    },
+    "q2": {
+      "de": "<r>Vielleicht könnte man auch</r> ins Museum gehen, <g>trotz des</g> Wetters ist da drinnen ja alles trocken. <r>Was denkst du</r>, würde dir das gefallen?",
+      "en": "<r>Maybe we could also</r> go to a museum, <g>despite</g> the weather it's all dry in there. <r>What do you think</r>, would you like that?",
+      "uk": "<r>Можливо, можна було б ще</r> піти в музей, <g>попри</g> погоду там усередині все сухо. <r>Як ти думаєш</r>, тобі б це сподобалося?",
+      "ru": "<r>Возможно, можно было бы ещё</r> пойти в музей, <g>несмотря на</g> погоду там внутри всё сухо. <r>Как ты думаешь</r>, тебе бы это понравилось?"
+    },
+    "a2": {
+      "de": "<r>Ich bin der Meinung, dass</r> das eine super Idee wäre. Lass uns das am nächsten verregneten Wochenende einfach mal ausprobieren.",
+      "en": "<r>I think that</r> would be a great idea. Let's just try that out on the next rainy weekend.",
+      "uk": "<r>Я вважаю, що</r> це була б чудова ідея. Давай спробуємо це на наступних дощових вихідних.",
+      "ru": "<r>Я считаю, что</r> это была бы отличная идея. Давай попробуем это в следующие дождливые выходные."
+    },
+    "gram": "waehrend_genitiv_praeposition"
+  },
+  {
+    "id": "dlg_081",
+    "cat": "Kinderbetreuung",
+    "task": {
+      "de": "Thema: Kinderbetreuung – „Ich würde gern nach der Elternzeit in Teilzeit weiterarbeiten. Wie siehst du das?“",
+      "en": "Topic: Childcare – \"I'd like to keep working part-time after parental leave. What do you think?\"",
+      "uk": "Тема: Догляд за дітьми – «Я б хотіла продовжити працювати на неповну ставку після декретної відпустки. Як ти на це дивишся?»",
+      "ru": "Тема: Уход за детьми – «Я бы хотела продолжить работать неполный день после декретного отпуска. Как ты на это смотришь?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Sag mal, ich würde gern nach der Elternzeit in Teilzeit weiterarbeiten. <r>Wie siehst du das</r>?",
+      "en": "Tell me, I'd like to keep working part-time after parental leave. <r>What do you think</r>?",
+      "uk": "Скажи, я б хотіла продовжити працювати на неповну ставку після декретної відпустки. <r>Як ти на це дивишся</r>?",
+      "ru": "Скажи, я бы хотела продолжить работать неполный день после декретного отпуска. <r>Как ты на это смотришь</r>?"
+    },
+    "a": {
+      "de": "Ja, <r>das sehe ich auch so</r>, so kann man Familie und Beruf besser miteinander verbinden. Hast du schon mit deiner Chefin darüber gesprochen?",
+      "en": "Yes, <r>I think so too</r>, that way you can combine family and work better. Have you talked to your boss about it yet?",
+      "uk": "Так, <r>я теж так вважаю</r>, так можна краще поєднувати сім'ю й роботу. Ти вже говорила зі своєю начальницею про це?",
+      "ru": "Да, <r>я тоже так считаю</r>, так можно лучше совмещать семью и работу. Ты уже говорила со своей начальницей об этом?"
+    },
+    "q1": {
+      "de": "Noch nicht, aber ich überlege es mir. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, wie viele Stunden ich realistisch schaffen würde.",
+      "en": "Not yet, but I'm thinking about it. <r>I don't know, I'm not sure</r> how many hours I could realistically manage.",
+      "uk": "Ще ні, але я про це думаю. <r>Я не знаю, я не впевнена</r>, скільки годин я реально зможу справлятися.",
+      "ru": "Ещё нет, но я об этом думаю. <r>Я не знаю, я не уверена</r>, сколько часов я реально смогу выдержать."
+    },
+    "a1": {
+      "de": "Das verstehe ich gut. <r>Es hängt davon ab, ob</r> eure Kita auch flexible Betreuungszeiten anbietet, oder?",
+      "en": "I understand that. <r>It depends on whether</r> your daycare also offers flexible hours, right?",
+      "uk": "Розумію тебе. <r>Залежить від того, чи</r> ваш садочок теж пропонує гнучкий графік, правда?",
+      "ru": "Понимаю тебя. <r>Зависит от того, есть ли</r> у вашего садика тоже гибкий график, верно?"
+    },
+    "q2": {
+      "de": "Genau, das ist bei uns leider noch nicht klar. <r>Was denkst du</r>, sollte ich erstmal mit der Kita sprechen oder mit meinem Arbeitgeber?",
+      "en": "Exactly, that's not clear yet for us unfortunately. <r>What do you think</r>, should I talk to the daycare first or to my employer?",
+      "uk": "Точно, у нас це, на жаль, ще не зрозуміло. <r>Як ти думаєш</r>, мені спершу поговорити з садочком чи з роботодавцем?",
+      "ru": "Точно, у нас это, к сожалению, ещё не ясно. <r>Как ты думаешь</r>, мне сначала поговорить с садиком или с работодателем?"
+    },
+    "a2": {
+      "de": "<r>Ich würde dir empfehlen</r>, erstmal die Kita-Frage zu klären, dann kannst du deinem Arbeitgeber konkrete Zeiten vorschlagen.",
+      "en": "<r>I'd recommend</r> clarifying the daycare question first, then you can suggest specific hours to your employer.",
+      "uk": "<r>Я б порадив тобі</r> спершу з'ясувати питання з садочком, а потім ти зможеш запропонувати роботодавцю конкретні години.",
+      "ru": "<r>Я бы посоветовал тебе</r> сначала выяснить вопрос с садиком, а потом ты сможешь предложить работодателю конкретные часы."
     },
     "gram": ""
   }
