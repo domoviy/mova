@@ -1495,7 +1495,8 @@ var LESSONS = [
       "sbs_010"
     ],
     "dlgCards": [
-      "dlg_054"
+      "dlg_054",
+      "dlg_082"
     ]
   },
   {
@@ -1584,7 +1585,8 @@ var LESSONS = [
       "sbs_035"
     ],
     "dlgCards": [
-      "dlg_055"
+      "dlg_055",
+      "dlg_083"
     ]
   },
   {
@@ -1664,7 +1666,8 @@ var LESSONS = [
       "sbs_047"
     ],
     "dlgCards": [
-      "dlg_056"
+      "dlg_056",
+      "dlg_084"
     ]
   },
   {
@@ -10331,6 +10334,300 @@ var DIALOGE = [
       "ru": "<r>Я бы посоветовал тебе</r> сначала выяснить вопрос с садиком, а потом ты сможешь предложить работодателю конкретные часы."
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_082",
+    "cat": "Im Meeting",
+    "task": {
+      "de": "In eurem Team dauern die wöchentlichen Meetings regelmäßig deutlich länger als geplant. Häufig unterbrechen sich die Kolleginnen und Kollegen gegenseitig, und nicht alle Punkte der Tagesordnung werden behandelt.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nZeitrahmen: Wie kann man die Meetings pünktlich beenden?\nRedezeit: Wie verhindert man, dass sich alle gegenseitig unterbrechen?\nTagesordnung: Wie stellt man sicher, dass alle Punkte behandelt werden?\nModeration: Wer sollte das Meeting leiten?",
+      "en": "In your team, the weekly meetings regularly run much longer than planned. Colleagues often interrupt each other, and not all agenda items get covered.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nTime frame: How can meetings be finished on time?\nSpeaking time: How can you prevent everyone from interrupting each other?\nAgenda: How can you make sure all items get covered?\nModeration: Who should lead the meeting?",
+      "uk": "У вашій команді щотижневі наради регулярно тривають значно довше, ніж заплановано. Колеги часто перебивають одне одного, і не всі пункти порядку денного встигають обговорити.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nЧасові рамки: Як завершувати наради вчасно?\nЧас на виступ: Як запобігти тому, щоб усі перебивали одне одного?\nПорядок денний: Як переконатися, що всі пункти обговорені?\nМодерація: Хто має вести нараду?",
+      "ru": "В вашей команде еженедельные совещания регулярно длятся значительно дольше, чем запланировано. Коллеги часто перебивают друг друга, и не все пункты повестки дня успевают обсудить.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nВременные рамки: Как завершать совещания вовремя?\nВремя на выступление: Как предотвратить, чтобы все перебивали друг друга?\nПовестка дня: Как убедиться, что все пункты обсуждены?\nМодерация: Кто должен вести совещание?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: Unsere wöchentlichen Team-Meetings dauern inzwischen fast immer viel länger als geplant, und oft schaffen wir es nicht, alle Punkte auf der Tagesordnung zu besprechen.",
+      "en": "<r>We should talk about a problem</r>: our weekly team meetings almost always take much longer than planned now, and we often don't manage to cover every item on the agenda.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: наші щотижневі командні наради тепер майже завжди тривають набагато довше, ніж заплановано, і часто ми не встигаємо обговорити всі пункти порядку денного.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: наши еженедельные командные совещания теперь почти всегда длятся намного дольше, чем запланировано, и часто мы не успеваем обсудить все пункты повестки дня."
+    },
+    "a": {
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also vor allem darum, dass wir die Zeit im Meeting nicht gut genug einteilen?",
+      "en": "<r>Did I understand you correctly</r>: so the main issue is that we're not managing our time well enough during the meeting?",
+      "uk": "<r>Я правильно тебе зрозумів</r>: тобто головна проблема в тому, що ми недостатньо добре розподіляємо час на нараді?",
+      "ru": "<r>Я правильно тебя понял</r>: то есть главная проблема в том, что мы недостаточно хорошо распределяем время на совещании?"
+    },
+    "q1": {
+      "de": "Genau, und dazu kommt, dass sich manche ständig gegenseitig unterbrechen, bevor jemand seinen Gedanken zu Ende bringen kann. <r>Welche Möglichkeiten siehst du</r>, um das zu ändern?",
+      "en": "Exactly, and on top of that, some people keep interrupting each other before anyone can finish their thought. <r>What options do you see</r> for changing that?",
+      "uk": "Саме так, і до того ж дехто постійно перебиває одне одного, перш ніж хтось встигне договорити свою думку. <r>Які можливості ти бачиш</r>, щоб це змінити?",
+      "ru": "Именно так, и к тому же кое-кто постоянно перебивает друг друга, прежде чем кто-то успеет договорить свою мысль. <r>Какие возможности ты видишь</r>, чтобы это изменить?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten für jeden Tagesordnungspunkt eine feste Redezeit einplanen, zum Beispiel fünf Minuten. <r>Was hältst du davon</r>?",
+      "en": "<r>I have an idea</r>: we could set a fixed speaking time for each agenda item, say five minutes. <r>What do you think about that</r>?",
+      "uk": "<r>У мене є ідея</r>: ми могли б виділити фіксований час на виступ для кожного пункту порядку денного, наприклад п'ять хвилин. <r>Що ти про це думаєш</r>?",
+      "ru": "<r>У меня есть идея</r>: мы могли бы выделить фиксированное время на выступление для каждого пункта повестки дня, например пять минут. <r>Что ты об этом думаешь</r>?"
+    },
+    "q2": {
+      "de": "<r>Das klingt vernünftig</r>. <g>Wer</g> die Redezeit überschreitet, <g>der</g> sollte dann höflich daran erinnert werden, oder?",
+      "en": "<r>That sounds reasonable</r>. <g>Whoever</g> goes over their speaking time should be reminded politely, right?",
+      "uk": "<r>Це звучить розумно</r>. <g>Хто</g> перевищує час на виступ, <g>того</g> ввічливо про це нагадають, добре?",
+      "ru": "<r>Это звучит разумно</r>. <g>Кто</g> превышает время на выступление, <g>того</g> вежливо об этом напомнят, хорошо?"
+    },
+    "a2": {
+      "de": "Ja, genau, das könnte zum Beispiel die Person übernehmen, die das Meeting moderiert. Wer moderiert eigentlich bei euch normalerweise?",
+      "en": "Yes, exactly, the person moderating the meeting could take care of that, for example. Who usually moderates in your team, actually?",
+      "uk": "Так, точно, це, наприклад, могла б робити людина, яка модерує нараду. До речі, хто у вас зазвичай модерує?",
+      "ru": "Да, точно, это, например, могла бы делать модерирующая совещание сторона. Кстати, кто у вас обычно модерирует?"
+    },
+    "q3": {
+      "de": "Bisher niemand richtig, wir fangen einfach an. <r>Vielleicht wäre es sinnvoll, wenn</r> wir die Moderation reihum übernehmen?",
+      "en": "No one really, so far we just start. <r>Maybe it would make sense if</r> we took turns moderating?",
+      "uk": "Поки що ніхто конкретно, ми просто починаємо. <r>Можливо, було б доречно, якщо</r> ми будемо по черзі брати на себе модерацію?",
+      "ru": "Пока никто конкретно, мы просто начинаем. <r>Возможно, было бы разумно, если бы</r> мы по очереди брали на себя модерацию?"
+    },
+    "a3": {
+      "de": "<r>Das finde ich eine gute Idee, allerdings sollten wir auch bedenken, dass</r> die moderierende Person sich vorher gut vorbereiten muss, damit die Tagesordnung wirklich eingehalten wird.",
+      "en": "<r>I think that's a good idea, though we should also keep in mind that</r> the person moderating needs to prepare well beforehand so the agenda is actually followed.",
+      "uk": "<r>Я вважаю це гарною ідеєю, хоча варто також враховувати, що</r> людина, яка модерує, має добре підготуватися заздалегідь, щоб порядок денний справді дотримувався.",
+      "ru": "<r>Я считаю это хорошей идеей, хотя стоит также учитывать, что</r> модерирующему человеку нужно хорошо подготовиться заранее, чтобы повестка дня действительно соблюдалась."
+    },
+    "q4": {
+      "de": "Stimmt. <r>Wie wäre es, wenn wir</r> die Tagesordnung schon einen Tag vorher verschicken, damit sich alle vorbereiten können?",
+      "en": "True. <r>How about if we</r> send out the agenda a day in advance, so everyone can prepare?",
+      "uk": "Правда. <r>Що якщо ми</r> будемо надсилати порядок денний за день наперед, щоб усі могли підготуватися?",
+      "ru": "Верно. <r>Что если мы</r> будем отправлять повестку дня за день до совещания, чтобы все могли подготовиться?"
+    },
+    "a4": {
+      "de": "<r>Damit bin ich einverstanden</r>. Und <g>wer</g> dann noch zusätzliche Punkte einbringen möchte, <g>der</g> kann das vorher der moderierenden Person mitteilen.",
+      "en": "<r>I agree with that</r>. And <g>whoever</g> wants to bring up additional points can let the person moderating know beforehand.",
+      "uk": "<r>Я з цим згоден</r>. А <g>хто</g> захоче додати ще якісь пункти, <g>той</g> може попередньо повідомити про це модератора.",
+      "ru": "<r>Я с этим согласен</r>. А <g>кто</g> захочет добавить ещё какие-то пункты, <g>тот</g> может заранее сообщить об этом модератору."
+    },
+    "q5": {
+      "de": "Gut, dann <r>könnten wir</r> auch gleich eine feste Meetingdauer von 45 Minuten festlegen, damit wir uns alle daran halten.",
+      "en": "Good, then <r>we could</r> also set a fixed meeting length of 45 minutes, so we all stick to it.",
+      "uk": "Добре, тоді <r>ми могли б</r> ще й встановити фіксовану тривалість наради — 45 хвилин, щоб усі цього дотримувалися.",
+      "ru": "Хорошо, тогда <r>мы могли бы</r> ещё установить фиксированную продолжительность совещания — 45 минут, чтобы все этого придерживались."
+    },
+    "a5": {
+      "de": "<r>Das halte ich für einen guten Vorschlag</r>. Falls ein Thema mehr Zeit braucht, könnten wir dafür extra einen Termin vereinbaren, statt das Meeting zu verlängern.",
+      "en": "<r>I think that's a good suggestion</r>. If a topic needs more time, we could just schedule a separate appointment for it instead of extending the meeting.",
+      "uk": "<r>Я вважаю це гарною пропозицією</r>. Якщо якійсь темі потрібно більше часу, ми могли б просто призначити для неї окрему зустріч, замість того щоб продовжувати нараду.",
+      "ru": "<r>Я считаю это хорошим предложением</r>. Если какой-то теме нужно больше времени, мы могли бы просто назначить для неё отдельную встречу, вместо того чтобы продлевать совещание."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir führen eine feste Redezeit, eine reihum wechselnde Moderation und eine vorab verschickte Tagesordnung ein, und die Meetings sollen künftig maximal 45 Minuten dauern.",
+      "en": "<r>Let's summarize</r>: we'll introduce a fixed speaking time, rotating moderation, and an agenda sent out in advance, and meetings should be a maximum of 45 minutes going forward.",
+      "uk": "<r>Підсумуємо</r>: ми запроваджуємо фіксований час на виступ, модерацію по черзі та завчасно надісланий порядок денний, і наради надалі мають тривати максимум 45 хвилин.",
+      "ru": "<r>Подведём итог</r>: мы вводим фиксированное время на выступление, модерацию по очереди и заранее отправленную повестку дня, и совещания впредь должны длиться максимум 45 минут."
+    },
+    "a6": {
+      "de": "Genau. Ich denke, so werden unsere Meetings deutlich effizienter. Ich schreibe die neuen Regeln zusammen und schicke sie noch heute an das ganze Team.",
+      "en": "Exactly. I think that will make our meetings a lot more efficient. I'll put the new rules together and send them to the whole team today.",
+      "uk": "Саме так. Гадаю, так наші наради стануть значно ефективнішими. Я складу нові правила і надішлю їх усій команді ще сьогодні.",
+      "ru": "Именно так. Думаю, так наши совещания станут значительно эффективнее. Я составлю новые правила и отправлю их всей команде ещё сегодня."
+    },
+    "gram": "relativsatz_wer"
+  },
+  {
+    "id": "dlg_083",
+    "cat": "Konflikte am Arbeitsplatz",
+    "task": {
+      "de": "In eurem Team gibt es seit einiger Zeit Spannungen zwischen zwei Kolleginnen: Eine von ihnen fühlt sich in Besprechungen ständig unterbrochen, ihre Vorschläge werden kaum ernst genommen. Die Stimmung im Team ist dadurch spürbar angespannt.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nGespräch: Wie kann man das Thema ansprechen, ohne jemanden bloßzustellen?\nUrsachen: Woran könnte der Konflikt liegen?\nRegeln: Welche Regeln könnten Unterbrechungen im Meeting verhindern?\nNachverfolgung: Wie stellt man sicher, dass sich die Situation wirklich verbessert?",
+      "en": "For some time now there's been tension in your team between two colleagues: one of them feels constantly interrupted during meetings, and her suggestions are barely taken seriously. As a result, the mood in the team is noticeably tense.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nConversation: How can you bring up the topic without putting anyone on the spot?\nCauses: What might be causing the conflict?\nRules: What rules could prevent interruptions in meetings?\nFollow-up: How can you make sure the situation actually improves?",
+      "uk": "У вашій команді вже деякий час є напруга між двома колежанками: одна з них постійно відчуває, що її перебивають на нарадах, а її пропозиції майже не сприймають серйозно. Через це атмосфера в команді помітно напружена.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nРозмова: Як підняти цю тему, не ставлячи нікого в незручне становище?\nПричини: У чому може бути причина конфлікту?\nПравила: Які правила могли б запобігти перебиванням на нарадах?\nПодальші кроки: Як переконатися, що ситуація справді покращиться?",
+      "ru": "В вашей команде уже некоторое время есть напряжение между двумя коллегами: одна из них постоянно чувствует, что её перебивают на совещаниях, а её предложения почти не воспринимаются всерьёз. Из-за этого атмосфера в команде заметно напряжённая.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nРазговор: Как поднять эту тему, не ставя никого в неловкое положение?\nПричины: В чём может быть причина конфликта?\nПравила: Какие правила могли бы предотвратить перебивания на совещаниях?\nДальнейшие шаги: Как убедиться, что ситуация действительно улучшится?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: <r>Mir ist aufgefallen, dass</r> es zwischen Sarah und Tom in letzter Zeit ziemlich angespannt ist. Sarah hat mir erzählt, dass sie sich in Meetings ständig von ihm unterbrochen fühlt.",
+      "en": "<r>We should talk about a problem</r>: <r>I've noticed that</r> things have been pretty tense between Sarah and Tom lately. Sarah told me she feels constantly interrupted by him in meetings.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: <r>я помітила, що</r> останнім часом між Сарою і Томом досить напружено. Сара розповіла мені, що постійно відчуває, ніби він її перебиває на нарадах.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: <r>я заметила, что</r> в последнее время между Сарой и Томом довольно напряжённо. Сара рассказала мне, что постоянно чувствует, будто он её перебивает на совещаниях."
+    },
+    "a": {
+      "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Sie hat das Gefühl, dass ihre Vorschläge dadurch gar nicht richtig gehört werden?",
+      "en": "I've noticed that too. <r>Did I understand you correctly</r>: she feels her suggestions aren't really being heard because of that?",
+      "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: вона відчуває, що через це її пропозиції насправді не почуті?",
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: она чувствует, что из-за этого её предложения на самом деле не слышат?"
+    },
+    "q1": {
+      "de": "Genau, und das belastet sie ziemlich. <r>Was könnten wir in dieser Situation machen</r>, ohne dass es unangenehm für alle wird?",
+      "en": "Exactly, and it's really weighing on her. <r>What could we do in this situation</r> without making it uncomfortable for everyone?",
+      "uk": "Саме так, і це її досить сильно пригнічує. <r>Що ми могли б зробити в цій ситуації</r>, щоб це не було неприємно для всіх?",
+      "ru": "Именно так, и это её довольно сильно угнетает. <r>Что мы могли бы сделать в этой ситуации</r>, чтобы это не было неприятно для всех?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Vielleicht könnten wir zuerst mit Tom unter vier Augen sprechen, statt das gleich vor dem ganzen Team anzusprechen.",
+      "en": "<r>I have an idea</r>: maybe we could talk to Tom privately first, instead of bringing it up in front of the whole team right away.",
+      "uk": "<r>У мене є ідея</r>: можливо, спершу нам варто поговорити з Томом віч-на-віч, а не одразу піднімати це перед усією командою.",
+      "ru": "<r>У меня есть идея</r>: возможно, сначала нам стоит поговорить с Томом наедине, а не сразу поднимать это перед всей командой."
+    },
+    "q2": {
+      "de": "Das finde ich gut. <r>Ich kann gut nachvollziehen, dass</r> ihm das gar nicht bewusst ist. <r>Was hältst du davon, wenn</r> wir ihm einfach sagen: 'Uns ist aufgefallen, dass...'?",
+      "en": "I think that's good. <r>I can understand that</r> he's probably not even aware of it. <r>What do you think if</r> we just tell him: 'We've noticed that...'?",
+      "uk": "Гарна думка. <r>Я цілком розумію, що</r> він, напевно, навіть не усвідомлює цього. <r>Як ти дивишся на те, якщо</r> ми просто скажемо йому: «Ми помітили, що...»?",
+      "ru": "Хорошая мысль. <r>Я вполне понимаю, что</r> он, наверное, даже не осознаёт этого. <r>Как ты смотришь на то, если</r> мы просто скажем ему: «Мы заметили, что...»?"
+    },
+    "a2": {
+      "de": "Ja, <r>das klingt vernünftig</r>. Wir sollten ihm auch sagen, dass sein Verhalten für das Team unangenehm ist, aber ohne Vorwürfe zu machen.",
+      "en": "Yes, <r>that sounds reasonable</r>. We should also tell him that his behavior is uncomfortable for the team, but without making accusations.",
+      "uk": "Так, <r>це звучить розумно</r>. Варто також сказати йому, що його поведінка неприємна для команди, але без звинувачень.",
+      "ru": "Да, <r>это звучит разумно</r>. Стоит также сказать ему, что его поведение неприятно для команды, но без обвинений."
+    },
+    "q3": {
+      "de": "Gute Idee. Zusätzlich könnten wir vorschlagen, feste Meetingregeln einzuführen, zum Beispiel, dass man sich gegenseitig ausreden lässt.",
+      "en": "Good idea. On top of that, we could suggest introducing fixed meeting rules, for example letting each other finish speaking.",
+      "uk": "Гарна ідея. Крім того, ми могли б запропонувати ввести фіксовані правила для нарад, наприклад, дозволяти одне одному договорювати думку до кінця.",
+      "ru": "Хорошая идея. Кроме того, мы могли бы предложить ввести фиксированные правила для совещаний, например, давать друг другу договаривать мысль до конца."
+    },
+    "a3": {
+      "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Dazu könnten wir noch eine Randnotiz oder ein Zeichen einführen, wenn jemand unterbrochen wird.",
+      "en": "<r>I think that's an excellent solution</r>. We could also introduce a small note or signal for when someone gets interrupted.",
+      "uk": "<r>Я вважаю це чудовим рішенням</r>. Ще ми могли б запровадити невеличкий знак чи сигнал, коли когось перебивають.",
+      "ru": "<r>Я считаю это отличным решением</r>. Ещё мы могли бы ввести небольшой знак или сигнал, когда кого-то перебивают."
+    },
+    "q4": {
+      "de": "Und wie stellen wir sicher, dass sich das wirklich verbessert und nicht nach ein paar Tagen wieder vergessen wird?",
+      "en": "And how do we make sure this actually improves and isn't forgotten again after a few days?",
+      "uk": "А як нам переконатися, що це справді покращиться, а не забудеться через кілька днів?",
+      "ru": "А как нам убедиться, что это действительно улучшится, а не забудется через несколько дней?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> das Thema einfach in ein paar Wochen noch einmal ansprechen und nachfragen, wie es beiden damit geht.",
+      "en": "<r>Maybe we could</r> just bring the topic up again in a few weeks and ask both of them how things are going.",
+      "uk": "<r>Можливо, ми могли б</r> просто підняти цю тему знову через кілька тижнів і запитати в обох, як справи.",
+      "ru": "<r>Возможно, мы могли бы</r> просто поднять эту тему снова через несколько недель и спросить у обоих, как дела."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir das Gespräch mit Tom diese Woche noch führen, damit sich die Situation nicht weiter zuspitzt?",
+      "en": "Good point. Should we have the conversation with Tom this week, so the situation doesn't escalate further?",
+      "uk": "Слушна думка. Проведемо розмову з Томом цього тижня, щоб ситуація не загострилася далі?",
+      "ru": "Дельная мысль. Проведём разговор с Томом на этой неделе, чтобы ситуация не обострилась дальше?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte das übernehmen, wenn du danach mit Sarah sprichst, damit sie weiß, dass wir uns darum kümmern.",
+      "en": "Yes, that would make sense. I could take care of that, if you talk to Sarah afterward, so she knows we're taking care of it.",
+      "uk": "Так, це було б розумно. Я міг би взяти це на себе, якщо ти після цього поговориш із Сарою, щоб вона знала, що ми цим займаємося.",
+      "ru": "Да, это было бы разумно. Я мог бы взять это на себя, если ты после этого поговоришь с Сарой, чтобы она знала, что мы этим занимаемся."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Du sprichst zeitnah mit Tom, ich rede mit Sarah, und wir führen gemeinsam feste Regeln fürs Meeting ein. In vier Wochen schauen wir noch mal, ob sich etwas verändert hat.",
+      "en": "<r>Let's summarize</r>: you'll talk to Tom soon, I'll talk to Sarah, and together we'll introduce fixed meeting rules. In four weeks we'll check whether anything has changed.",
+      "uk": "<r>Підсумуємо</r>: ти найближчим часом поговориш з Томом, я поговорю з Сарою, і разом ми запровадимо фіксовані правила для нарад. Через чотири тижні перевіримо, чи щось змінилося.",
+      "ru": "<r>Подведём итог</r>: ты в ближайшее время поговоришь с Томом, я поговорю с Сарой, и вместе мы введём фиксированные правила для совещаний. Через четыре недели проверим, изменилось ли что-то."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so können wir die Situation lösen, ohne dass sich jemand bloßgestellt fühlt.",
+      "en": "Exactly, that's what we'll do. I think that way we can resolve the situation without anyone feeling put on the spot.",
+      "uk": "Саме так, так і зробимо. Гадаю, так ми зможемо вирішити ситуацію, не змушуючи нікого почуватися ніяково.",
+      "ru": "Именно так, так и сделаем. Думаю, так мы сможем решить ситуацию, не заставляя никого чувствовать себя неловко."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_084",
+    "cat": "Was ist zu tun?",
+    "task": {
+      "de": "Eine Kollegin verlässt in zwei Wochen die Abteilung und muss ihre Aufgaben an einen Nachfolger übergeben. Bisher gibt es aber weder eine vollständige Aufgabenliste noch feste Termine für die Einarbeitung, und der Zeitplan wird immer knapper.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nAufgabenliste: Welche Aufgaben und Projekte müssen unbedingt übergeben werden?\nZeitplan: Wie lässt sich die Einarbeitung in der verbleibenden Zeit organisieren?\nDokumentation: Was sollte schriftlich festgehalten werden?\nAnsprechpartner: Wer hilft dem Nachfolger nach der Übergabe bei Fragen?",
+      "en": "A colleague is leaving the department in two weeks and has to hand over her tasks to a successor. So far, though, there's neither a complete task list nor fixed dates for the handover training, and the schedule keeps getting tighter.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nTask list: Which tasks and projects absolutely need to be handed over?\nSchedule: How can the handover training be organized in the remaining time?\nDocumentation: What should be written down?\nContact person: Who will help the successor with questions after the handover?",
+      "uk": "Одна колежанка залишає відділ через два тижні і має передати свої завдання наступнику. Проте досі немає ні повного списку завдань, ні чітких термінів для введення в курс справи, а часу залишається дедалі менше.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nСписок завдань: Які завдання й проєкти обов'язково потрібно передати?\nГрафік: Як організувати введення в курс справи за час, що залишився?\nДокументація: Що варто зафіксувати письмово?\nКонтактна особа: Хто допомагатиме наступнику із запитаннями після передачі справ?",
+      "ru": "Одна коллега покидает отдел через две недели и должна передать свои задачи преемнику. Однако до сих пор нет ни полного списка задач, ни чётких сроков для введения в курс дела, а времени остаётся всё меньше.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nСписок задач: Какие задачи и проекты обязательно нужно передать?\nГрафик: Как организовать введение в курс дела за оставшееся время?\nДокументация: Что стоит зафиксировать письменно?\nКонтактное лицо: Кто будет помогать преемнику с вопросами после передачи дел?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "<r>Wir haben ein Problem</r>: Frau Meier verlässt in zwei Wochen unsere Abteilung, aber wir haben ihre Übergabe bisher noch nicht richtig <g>zur Sprache gebracht</g> - es gibt weder eine vollständige Aufgabenliste noch feste Termine für die Einarbeitung ihres Nachfolgers.",
+      "en": "<r>We have a problem</r>: Ms. Meier is leaving our department in two weeks, but we still haven't really <g>brought up</g> her handover - there's neither a complete task list nor fixed dates for training her successor.",
+      "uk": "<r>У нас проблема</r>: пані Маєр залишає наш відділ через два тижні, але ми досі по-справжньому не <g>підняли</g> тему її передачі справ - немає ні повного списку завдань, ні чітких термінів для введення в курс справи наступника.",
+      "ru": "<r>У нас проблема</r>: госпожа Майер покидает наш отдел через две недели, но мы до сих пор по-настоящему не <g>подняли</g> тему её передачи дел - нет ни полного списка задач, ни чётких сроков для введения преемника в курс дела."
+    },
+    "a": {
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es besteht also die Gefahr, dass wichtige Informationen verloren gehen, wenn wir jetzt nicht schnell handeln?",
+      "en": "<r>Did I understand you correctly</r>: so there's a risk that important information gets lost if we don't act quickly now?",
+      "uk": "<r>Я правильно тебе зрозумів</r>: тобто є ризик, що важлива інформація загубиться, якщо ми зараз не діятимемо швидко?",
+      "ru": "<r>Я правильно тебя понял</r>: то есть есть риск, что важная информация потеряется, если мы сейчас не будем действовать быстро?"
+    },
+    "q1": {
+      "de": "Genau, das würde den ganzen Projektfortschritt <g>aufs Spiel setzen</g>. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, that would <g>put</g> the whole project progress <g>at risk</g>. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, це <g>поставило б під загрозу</g> весь прогрес проєкту. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, это <g>поставило бы под угрозу</g> весь прогресс проекта. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten zusammen mit ihr sofort eine Aufgabenliste erstellen, in der alle laufenden Projekte und offenen Punkte stehen.",
+      "en": "<r>I have an idea</r>: we could sit down with her right away and create a task list with all ongoing projects and open items.",
+      "uk": "<r>У мене є ідея</r>: ми могли б одразу разом з нею скласти список завдань, у якому будуть усі поточні проєкти й відкриті питання.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы сразу вместе с ней составить список задач, в котором будут все текущие проекты и открытые вопросы."
+    },
+    "q2": {
+      "de": "<r>Das klingt vernünftig</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich feste Einarbeitungstermine für den Nachfolger festlegen, damit nichts vergessen wird?",
+      "en": "<r>That sounds reasonable</r>. <r>What do you think if</r> we also set fixed training dates for the successor, so nothing gets forgotten?",
+      "uk": "<r>Це звучить розумно</r>. <r>Як ти дивишся на те, якщо</r> ми додатково встановимо чіткі терміни для введення наступника в курс справи, щоб нічого не забути?",
+      "ru": "<r>Это звучит разумно</r>. <r>Как ты смотришь на то, если</r> мы дополнительно установим чёткие сроки для введения преемника в курс дела, чтобы ничего не забыть?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. Wir sollten dabei auch klären, welche Unterlagen <g>zur Verfügung stehen</g> müssen, bevor Frau Meier geht.",
+      "en": "<r>Yes, I think that's a good idea</r>. We should also clarify which documents need to <g>be available</g> before Ms. Meier leaves.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Варто також з'ясувати, які документи мають <g>бути в наявності</g>, перш ніж пані Маєр піде.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Стоит также выяснить, какие документы должны <g>быть в наличии</g>, прежде чем госпожа Майер уйдёт."
+    },
+    "q3": {
+      "de": "Stimmt. Und ich denke, wir sollten möglichst bald neue Regeln zur Übergabe einführen, damit sowas nicht wieder passiert.",
+      "en": "True. And I think we should introduce new handover rules as soon as possible, so this doesn't happen again.",
+      "uk": "Правда. І я думаю, нам варто якнайшвидше запровадити нові правила щодо передачі справ, щоб таке більше не повторювалося.",
+      "ru": "Верно. И я думаю, нам стоит как можно скорее ввести новые правила передачи дел, чтобы такое больше не повторялось."
+    },
+    "a3": {
+      "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Dazu könnten wir noch eine Checkliste erstellen, die wir bei jeder künftigen Übergabe verwenden.",
+      "en": "<r>I think that's an excellent solution</r>. On top of that, we could create a checklist that we use for every future handover.",
+      "uk": "<r>Я вважаю це чудовим рішенням</r>. Крім того, ми могли б скласти чекліст, який використовуватимемо для кожної майбутньої передачі справ.",
+      "ru": "<r>Я считаю это отличным решением</r>. Кроме того, мы могли бы составить чек-лист, который будем использовать для каждой будущей передачи дел."
+    },
+    "q4": {
+      "de": "Gute Idee. Wer sollte dem Nachfolger denn nach der offiziellen Übergabe bei Fragen zur Seite stehen, falls doch noch etwas unklar ist?",
+      "en": "Good idea. Who should be available to the successor for questions after the official handover, in case something's still unclear?",
+      "uk": "Гарна ідея. А хто має бути доступний для наступника із запитаннями після офіційної передачі справ, якщо щось усе ж залишиться незрозумілим?",
+      "ru": "Хорошая идея. А кто должен быть доступен для преемника с вопросами после официальной передачи дел, если что-то всё же останется неясным?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnte</r> Frau Meier noch für die ersten zwei Wochen als Ansprechpartnerin per E-Mail erreichbar bleiben, auch wenn sie schon in der neuen Abteilung ist.",
+      "en": "<r>Maybe</r> Ms. Meier could stay reachable by email as a contact person for the first two weeks, even after she's already in the new department.",
+      "uk": "<r>Можливо</r>, пані Маєр могла б залишатися доступною електронною поштою як контактна особа перші два тижні, навіть якщо вона вже буде у новому відділі.",
+      "ru": "<r>Возможно</r>, госпожа Майер могла бы оставаться доступной по электронной почте как контактное лицо первые две недели, даже если она уже будет в новом отделе."
+    },
+    "q5": {
+      "de": "Das wäre hilfreich. Sollen wir das gleich mit ihr besprechen, damit wir keine Zeit mehr verlieren?",
+      "en": "That would help. Should we talk to her about this right away, so we don't lose any more time?",
+      "uk": "Це було б корисно. Обговоримо це з нею одразу, щоб не втрачати більше часу?",
+      "ru": "Это было бы полезно. Обсудим это с ней сразу, чтобы не терять больше времени?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte das Gespräch mit ihr heute noch führen, wenn du in der Zwischenzeit die Checkliste vorbereitest.",
+      "en": "Yes, that would make sense. I could have that conversation with her today, if you prepare the checklist in the meantime.",
+      "uk": "Так, це було б розумно. Я міг би провести цю розмову з нею вже сьогодні, якщо ти тим часом підготуєш чекліст.",
+      "ru": "Да, это было бы разумно. Я мог бы провести этот разговор с ней уже сегодня, если ты тем временем подготовишь чек-лист."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir erstellen eine vollständige Aufgabenliste, legen feste Einarbeitungstermine fest, und Frau Meier bleibt zwei Wochen lang als Ansprechpartnerin erreichbar.",
+      "en": "<r>Let's summarize</r>: we'll create a complete task list, set fixed training dates, and Ms. Meier will stay reachable as a contact person for two weeks.",
+      "uk": "<r>Підсумуємо</r>: ми складемо повний список завдань, встановимо чіткі терміни для введення в курс справи, і пані Маєр залишатиметься доступною як контактна особа два тижні.",
+      "ru": "<r>Подведём итог</r>: мы составим полный список задач, установим чёткие сроки для введения в курс дела, и госпожа Майер будет оставаться доступной как контактное лицо две недели."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so kann die Übergabe reibungslos gelingen, ohne dass wichtige Informationen verloren gehen.",
+      "en": "Exactly, that's what we'll do. I think that way the handover can go smoothly without losing any important information.",
+      "uk": "Саме так, так і зробимо. Гадаю, так передача справ пройде без проблем і без втрати важливої інформації.",
+      "ru": "Именно так, так и сделаем. Думаю, так передача дел пройдёт без проблем и без потери важной информации."
+    },
+    "gram": "nomen_verb_verbindungen"
   }
 ];
 
