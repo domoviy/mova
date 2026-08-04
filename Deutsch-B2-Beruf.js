@@ -3373,6 +3373,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_005",
       "sbs_039"
+    ],
+    "dlgCards": [
+      "dlg_074"
     ]
   },
   {
@@ -3451,6 +3454,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_015",
       "sbs_048"
+    ],
+    "dlgCards": [
+      "dlg_075"
     ]
   },
   {
@@ -3528,6 +3534,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_006",
       "sbs_012"
+    ],
+    "dlgCards": [
+      "dlg_076"
     ]
   },
   {
@@ -3632,6 +3641,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_016",
       "sbs_045"
+    ],
+    "dlgCards": [
+      "dlg_077"
     ]
   },
   {
@@ -3690,6 +3702,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_007",
       "sbs_036"
+    ],
+    "dlgCards": [
+      "dlg_078"
     ]
   },
   {
@@ -3760,6 +3775,9 @@ var LESSONS = [
     "sbCards": [
       "sbs_017",
       "sbs_025"
+    ],
+    "dlgCards": [
+      "dlg_079"
     ]
   },
   {
@@ -9905,6 +9923,306 @@ var DIALOGE = [
       "en": "<r>I think that</r> it's easier at the start to go with someone experienced who shows you the basics. I could take you along sometime, for example, if you'd like.",
       "uk": "<r>Я вважаю, що</r> на початку легше піти з кимось досвідченим, хто покаже основи. Я могла б, наприклад, колись узяти тебе з собою, якщо хочеш.",
       "ru": "<r>Я считаю, что</r> вначале легче пойти с кем-то опытным, кто покажет основы. Я могла бы, например, как-нибудь взять тебя с собой, если хочешь."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_074",
+    "cat": "Sportaktivitäten",
+    "task": {
+      "de": "Thema: Sportaktivitäten – „Was könnte man tun, um im Arbeitsalltag mehr in Bewegung zu bleiben?“",
+      "en": "Topic: Sport activities – \"What could we do to stay more active during the workday?\"",
+      "uk": "Тема: Спортивна активність – «Що можна робити, щоб більше рухатися протягом робочого дня?»",
+      "ru": "Тема: Спортивная активность – «Что можно делать, чтобы больше двигаться в течение рабочего дня?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_m_david",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Sag mal, was könnte man eigentlich tun, um im Arbeitsalltag mehr in <g>Bewegung</g> zu bleiben? Ich sitze den ganzen Tag nur am Schreibtisch.",
+      "en": "Tell me, what could we actually do to get more <g>movement</g> into the workday? I just sit at my desk all day.",
+      "uk": "Скажи, а що взагалі можна зробити, щоб більше <g>рухатися</g> протягом робочого дня? Я цілий день просто сиджу за столом.",
+      "ru": "Скажи, а что вообще можно сделать, чтобы больше <g>двигаться</g> в течение рабочего дня? Я целый день просто сижу за столом."
+    },
+    "a": {
+      "de": "<r>Das finde ich eine gute Idee</r>, darüber nachzudenken. <r>Man könnte vielleicht</r> in der Mittagspause einen kurzen Spaziergang machen, das hilft schon beim <g>Stressabbau</g>.",
+      "en": "<r>I think that's a good idea</r> to think about. <r>We could</r> maybe take a short walk during the lunch break, that already helps with <g>stress relief</g>.",
+      "uk": "<r>Я вважаю це гарною ідеєю</r> — подумати над цим. <r>Можна було б</r>, наприклад, робити коротку прогулянку в обідню перерву, це вже допомагає зі <g>зняттям стресу</g>.",
+      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r>, например, делать короткую прогулку в обеденный перерыв, это уже помогает со <g>снятием стресса</g>."
+    },
+    "q1": {
+      "de": "Stimmt, das mache ich manchmal schon. <r>Es gibt auch die Möglichkeit</r>, die Treppe statt den Aufzug zu nehmen, oder? Kleine Dinge, die sich gut in den Alltag einbauen lassen.",
+      "en": "True, I sometimes already do that. <r>There's also the option</r> of taking the stairs instead of the elevator, right? Small things that fit easily into everyday life.",
+      "uk": "Точно, я іноді так і роблю. <r>Є ще й така можливість</r> - ходити сходами замість ліфта, правда? Дрібниці, які легко вписати в повсякденне життя.",
+      "ru": "Точно, я иногда так и делаю. <r>Есть ещё и такая возможность</r> - ходить по лестнице вместо лифта, правда? Мелочи, которые легко вписать в повседневную жизнь."
+    },
+    "a1": {
+      "de": "Genau, und manche Firmen bieten ja auch Entspannungsübungen oder einen Fitnessraum an. <r>Hättest du eine andere Idee</r>, wie man das im Team umsetzen könnte?",
+      "en": "Exactly, and some companies also offer relaxation exercises or a fitness room. <r>Would you have another idea</r> how we could do that as a team?",
+      "uk": "Саме так, і деякі фірми пропонують ще й вправи на розслаблення чи спортзал. <r>У тебе є інша ідея</r>, як це можна впровадити в команді?",
+      "ru": "Именно так, и некоторые фирмы предлагают ещё и упражнения на расслабление или спортзал. <r>У тебя есть другая идея</r>, как это можно внедрить в команде?"
+    },
+    "q2": {
+      "de": "<r>Vielleicht könnte man auch</r> ein gemeinsames Sportangebot organisieren, zum Beispiel einmal pro Woche Yoga nach der Arbeit. <r>Was denkst du</r>, würde sowas bei den Kollegen ankommen?",
+      "en": "<r>Maybe we could also</r> organize a team sports activity, for example yoga once a week after work. <r>What do you think</r>, would that appeal to our colleagues?",
+      "uk": "<r>Можливо, можна було б ще</r> організувати спільну спортивну активність, наприклад, раз на тиждень йогу після роботи. <r>Як ти думаєш</r>, чи сподобалося б це колегам?",
+      "ru": "<r>Возможно, можно было бы ещё</r> организовать совместную спортивную активность, например, раз в неделю йогу после работы. <r>Как ты думаешь</r>, понравилось бы это коллегам?"
+    },
+    "a2": {
+      "de": "<r>Ich bin der Meinung, dass</r> viele das gern machen würden, gerade zur <g>Prävention</g> von Rückenschmerzen. <r>Das wäre mein Vorschlag</r>: Wir sprechen einfach mal die Chefin darauf an.",
+      "en": "<r>I think that</r> a lot of people would enjoy that, especially for <g>preventing</g> back pain. <r>That would be my suggestion</r>: let's just ask the boss about it.",
+      "uk": "<r>Я вважаю, що</r> багато хто із задоволенням би це робив, особливо для <g>профілактики</g> болю в спині. <r>Ось моя пропозиція</r>: давай просто запитаємо про це начальницю.",
+      "ru": "<r>Я считаю, что</r> многие с удовольствием бы это делали, особенно для <g>профилактики</g> боли в спине. <r>Вот моё предложение</r>: давай просто спросим об этом начальницу."
+    },
+    "gram": "nominalisierung"
+  },
+  {
+    "id": "dlg_075",
+    "cat": "Arbeitszeiten",
+    "task": {
+      "de": "Thema: Arbeitszeiten – „Ich würde gern öfter im Homeoffice arbeiten. Wie siehst du das?“",
+      "en": "Topic: Working hours – \"I'd like to work from home more often. What do you think?\"",
+      "uk": "Тема: Робочий час – «Я б хотіла частіше працювати з дому. Як ти на це дивишся?»",
+      "ru": "Тема: Рабочее время – «Я бы хотела чаще работать из дома. Как ты на это смотришь?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Sag mal, ich würde gern öfter im Homeoffice arbeiten. <r>Wie siehst du das</r>?",
+      "en": "Tell me, I'd like to work from home more often. <r>What do you think</r>?",
+      "uk": "Скажи, я б хотіла частіше працювати з дому. <r>Як ти на це дивишся</r>?",
+      "ru": "Скажи, я бы хотела чаще работать из дома. <r>Как ты на это смотришь</r>?"
+    },
+    "a": {
+      "de": "Ja, <r>das sehe ich auch so</r>, gerade an Tagen, an denen man sich gut konzentrieren muss, ist das echt praktisch. Hast du schon mal mit deiner Chefin darüber gesprochen?",
+      "en": "Yes, <r>I think so too</r>, especially on days when you need to concentrate, it's really practical. Have you talked to your boss about it yet?",
+      "uk": "Так, <r>я теж так вважаю</r>, особливо в дні, коли треба добре зосередитися, це справді зручно. Ти вже говорила зі своєю начальницею про це?",
+      "ru": "Да, <r>я тоже так считаю</r>, особенно в дни, когда нужно хорошо сосредоточиться, это действительно удобно. Ты уже говорила со своей начальницей об этом?"
+    },
+    "q1": {
+      "de": "Noch nicht direkt, aber ich überlege es mir. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, ob das bei uns im Team überhaupt möglich wäre. Wie handhabt ihr das eigentlich in deiner Abteilung?",
+      "en": "Not directly yet, but I'm thinking about it. <r>I don't know, I'm not sure</r> if that would even be possible in our team. How do you actually handle that in your department?",
+      "uk": "Ще ні напряму, але я про це думаю. <r>Я не знаю, я не впевнена</r>, чи це взагалі можливо в нашій команді. До речі, як це влаштовано у вашому відділі?",
+      "ru": "Ещё не напрямую, но я об этом думаю. <r>Я не знаю, я не уверена</r>, возможно ли это вообще в нашей команде. Кстати, как это устроено в вашем отделе?"
+    },
+    "a1": {
+      "de": "Bei uns ist das inzwischen ziemlich flexibel – wir können uns zwei Tage pro Woche frei aussuchen. <r>Es hängt davon ab, ob</r> gerade wichtige Meetings anstehen, aber sonst klappt das gut.",
+      "en": "For us it's pretty flexible now – we can choose two days a week freely. <r>It depends on whether</r> there are important meetings coming up, but otherwise it works well.",
+      "uk": "У нас це вже доволі гнучко - можна самим обирати два дні на тиждень. <r>Залежить від того, чи</r> заплановані важливі зустрічі, але загалом це добре працює.",
+      "ru": "У нас это уже довольно гибко - можно самим выбирать два дня в неделю. <r>Зависит от того, есть ли</r> важные встречи, но в остальном это хорошо работает."
+    },
+    "q2": {
+      "de": "Das klingt gut. <r>Was denkst du</r>, sollte ich das lieber schriftlich beantragen oder erstmal informell ansprechen?",
+      "en": "That sounds good. <r>What do you think</r>, should I rather apply in writing or bring it up informally first?",
+      "uk": "Звучить непогано. <r>Як ти думаєш</r>, мені краще подати письмову заяву чи спершу поговорити неформально?",
+      "ru": "Звучит неплохо. <r>Как ты думаешь</r>, мне лучше подать письменное заявление или сначала поговорить неформально?"
+    },
+    "a2": {
+      "de": "<r>Ich würde dir empfehlen</r>, erstmal informell nachzufragen, das wirkt weniger förmlich. Wenn sie offen dafür ist, könnt ihr das später schriftlich festhalten.",
+      "en": "<r>I'd recommend</r> asking informally first, that feels less formal. If she's open to it, you can put it in writing later.",
+      "uk": "<r>Я б порадив тобі</r> спершу запитати неформально, це виглядає менш офіційно. Якщо вона буде відкрита до цього, потім можна оформити письмово.",
+      "ru": "<r>Я бы посоветовал тебе</r> сначала спросить неформально, это выглядит менее официально. Если она будет открыта к этому, потом можно оформить письменно."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_076",
+    "cat": "Kinderbetreuung",
+    "task": {
+      "de": "Thema: Kinderbetreuung – „Was könnte man tun, damit sich Arbeit und Kinderbetreuung besser vereinbaren lassen?“",
+      "en": "Topic: Childcare – \"What could be done to make it easier to combine work and childcare?\"",
+      "uk": "Тема: Догляд за дітьми – «Що можна зробити, щоб краще поєднувати роботу й догляд за дітьми?»",
+      "ru": "Тема: Уход за детьми – «Что можно сделать, чтобы лучше совмещать работу и уход за детьми?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag <g>mal</g>, was könnte man eigentlich tun, damit sich Arbeit und Kinderbetreuung besser vereinbaren lassen? Wie machst du <g>denn</g> das mit deinen Kindern?",
+      "en": "Tell me — <g>just</g> out of curiosity — what could actually be done to make it easier to combine work and childcare? How do you <g>actually</g> manage that with your kids?",
+      "uk": "Скажи-<g>но</g>, що взагалі можна зробити, щоб краще поєднувати роботу й догляд за дітьми? А як ти <g>власне</g> це робиш зі своїми дітьми?",
+      "ru": "Скажи-<g>ка</g>, а что вообще можно сделать, чтобы лучше совмещать работу и уход за детьми? А как ты <g>вообще-то</g> это делаешь со своими детьми?"
+    },
+    "a": {
+      "de": "Das ist eine gute Frage. <r>Man könnte vielleicht</r> flexiblere Arbeitszeiten anbieten, dann könnte man die Kinder morgens selbst zur Schule bringen.",
+      "en": "That's a good question. <r>We could maybe</r> offer more flexible working hours, then people could take their kids to school themselves in the morning.",
+      "uk": "Гарне запитання. <r>Можна було б</r> запропонувати гнучкіший робочий графік, тоді можна було б самим відводити дітей до школи вранці.",
+      "ru": "Хороший вопрос. <r>Можно было бы</r> предложить более гибкий график работы, тогда можно было бы самим отводить детей в школу утром."
+    },
+    "q1": {
+      "de": "Stimmt, das wäre ein guter Anfang. <r>Es gibt auch die Möglichkeit</r>, dass die Firma einen Betriebskindergarten anbietet, oder?",
+      "en": "True, that would be a good start. <r>There's also the option</r> of the company offering an on-site daycare, right?",
+      "uk": "Точно, це був би непоганий початок. <r>Є ще й така можливість</r>, що фірма пропонує власний дитячий садок, правда?",
+      "ru": "Точно, это был бы неплохой старт. <r>Есть ещё и такая возможность</r>, что фирма предлагает собственный детский сад, верно?"
+    },
+    "a1": {
+      "de": "Ja, genau, manche größeren Firmen bieten das inzwischen an. <r>Hättest du eine andere Idee</r>, wie man das im Alltag erleichtern könnte?",
+      "en": "Yes, exactly, some bigger companies already offer that. <r>Would you have another idea</r> how to make everyday life easier?",
+      "uk": "Так, саме так, деякі більші фірми вже це пропонують. <r>У тебе є інша ідея</r>, як полегшити це в повсякденному житті?",
+      "ru": "Да, именно так, некоторые крупные фирмы уже это предлагают. <r>У тебя есть другая идея</r>, как облегчить это в повседневной жизни?"
+    },
+    "q2": {
+      "de": "<r>Vielleicht könnte man auch</r> im Homeoffice arbeiten, wenn ein Kind krank ist. <r>Was denkst du</r>, würde das bei euch funktionieren?",
+      "en": "<r>Maybe we could also</r> work from home when a child is sick. <r>What do you think</r>, would that work at your place?",
+      "uk": "<r>Можливо, можна було б ще</r> працювати з дому, коли дитина хворіє. <r>Як ти думаєш</r>, чи спрацювало б це у вас?",
+      "ru": "<r>Возможно, можно было бы ещё</r> работать из дома, когда ребёнок болеет. <r>Как ты думаешь</r>, сработало бы это у вас?"
+    },
+    "a2": {
+      "de": "<r>Ich bin der Meinung, dass</r> das auf jeden Fall helfen würde. Das wird <g>schon</g> klappen, wenn man mit dem Chef offen darüber spricht.",
+      "en": "<r>I think that</r> would definitely help. It'll work out <g>just fine</g> if you talk to your boss openly about it.",
+      "uk": "<r>Я вважаю, що</r> це точно допомогло б. Усе <g>обов'язково</g> вийде, якщо відкрито поговорити з начальником.",
+      "ru": "<r>Я считаю, что</r> это точно помогло бы. Всё <g>обязательно</g> получится, если открыто поговорить с начальником."
+    },
+    "gram": "modalpartikeln"
+  },
+  {
+    "id": "dlg_077",
+    "cat": "Urlaub",
+    "task": {
+      "de": "Thema: Urlaub – „Ich würde gern öfter kurze Kurzurlaube machen, statt einmal im Jahr lange wegzufahren. Wie siehst du das?“",
+      "en": "Topic: Vacation – \"I'd like to take short getaways more often instead of one long trip a year. What do you think?\"",
+      "uk": "Тема: Відпустка – «Я б хотіла частіше брати короткі відпустки замість однієї довгої поїздки на рік. Як ти на це дивишся?»",
+      "ru": "Тема: Отпуск – «Я бы хотела чаще брать короткие отпуска вместо одной долгой поездки в год. Как ты на это смотришь?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Sag mal, ich würde gern öfter kurze Kurzurlaube machen, statt einmal im Jahr lange wegzufahren. <r>Wie siehst du das</r>?",
+      "en": "Tell me, I'd like to take short getaways more often instead of one long trip a year. <r>What do you think</r>?",
+      "uk": "Скажи, я б хотіла частіше брати короткі відпустки замість однієї довгої поїздки на рік. <r>Як ти на це дивишся</r>?",
+      "ru": "Скажи, я бы хотела чаще брать короткие отпуска вместо одной долгой поездки в год. <r>Как ты на это смотришь</r>?"
+    },
+    "a": {
+      "de": "Ja, <r>das sehe ich auch so</r>, so hat man öfter im Jahr etwas, worauf man sich freuen kann. <r>Hast du schon Erfahrungen damit gemacht</r>?",
+      "en": "Yes, <r>I think so too</r>, that way you have something to look forward to more often throughout the year. <r>Have you had any experience with that</r>?",
+      "uk": "Так, <r>я теж так вважаю</r>, тоді протягом року частіше є на що чекати з нетерпінням. <r>У тебе вже є досвід у цьому</r>?",
+      "ru": "Да, <r>я тоже так считаю</r>, тогда в течение года чаще есть, чего ждать с нетерпением. <r>У тебя уже есть опыт в этом</r>?"
+    },
+    "q1": {
+      "de": "Ja, letztes Jahr war ich zweimal für ein verlängertes Wochenende weg, das war richtig erholsam. Machst du das auch öfter mal so?",
+      "en": "Yes, last year I went away twice for a long weekend, that was really relaxing. Do you do that more often too?",
+      "uk": "Так, торік я двічі їздила на подовжений вихідний, це було справді розслабляюче. Ти теж так частіше робиш?",
+      "ru": "Да, в прошлом году я дважды ездила на продлённые выходные, это было действительно расслабляюще. Ты тоже так чаще делаешь?"
+    },
+    "a1": {
+      "de": "Bisher eher selten, ich nehme meistens einen großen Urlaub im Sommer. <r>Es hängt davon ab, ob</r> ich genug Urlaubstage übrighabe für so etwas Spontanes.",
+      "en": "So far rather rarely, I usually take one big vacation in summer. <r>It depends on whether</r> I have enough vacation days left for something spontaneous like that.",
+      "uk": "Поки що рідко, я зазвичай беру одну велику відпустку влітку. <r>Залежить від того, чи</r> в мене залишилося достатньо відпускних днів на щось спонтанне.",
+      "ru": "Пока что редко, я обычно беру один большой отпуск летом. <r>Зависит от того, есть ли</r> у меня достаточно отпускных дней на что-то спонтанное."
+    },
+    "q2": {
+      "de": "Das verstehe ich. <r>Was denkst du</r>, würde es sich lohnen, den Jahresurlaub aufzuteilen?",
+      "en": "I understand. <r>What do you think</r>, would it be worth splitting up the annual leave?",
+      "uk": "Розумію. <r>Як ти думаєш</r>, чи варто було б розділити річну відпустку?",
+      "ru": "Понимаю. <r>Как ты думаешь</r>, стоило бы разделить годовой отпуск?"
+    },
+    "a2": {
+      "de": "Ich glaube schon, gerade um zwischendurch mal richtig abzuschalten. Ich werde das nächstes Jahr auf jeden Fall mal ausprobieren.",
+      "en": "I think so, especially to really switch off in between. I'll definitely try that out next year.",
+      "uk": "Мабуть, так, особливо щоб час від часу справді відпочивати від усього. Наступного року я точно спробую це зробити.",
+      "ru": "Наверное, да, особенно чтобы время от времени по-настоящему отключаться. В следующем году я точно попробую это сделать."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_078",
+    "cat": "Arbeitsweg",
+    "task": {
+      "de": "Thema: Arbeitsweg – „Was könnte man tun, um den Arbeitsweg entspannter zu gestalten?“",
+      "en": "Topic: Commute – \"What could be done to make the commute to work less stressful?\"",
+      "uk": "Тема: Дорога на роботу – «Що можна зробити, щоб дорога на роботу була менш напруженою?»",
+      "ru": "Тема: Дорога на работу – «Что можно сделать, чтобы дорога на работу была менее напряжённой?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Sag mal, was könnte man eigentlich tun, um den Arbeitsweg entspannter zu gestalten? Ich stehe morgens ständig im <g>stockenden</g> Verkehr.",
+      "en": "Tell me, what could actually be done to make the commute to work less stressful? I'm stuck in <g>backed-up</g> traffic every morning.",
+      "uk": "Скажи, а що взагалі можна зробити, щоб дорога на роботу була менш напруженою? Я щоранку стою в <g>заблокованому</g> русі.",
+      "ru": "Скажи, а что вообще можно сделать, чтобы дорога на работу была менее напряжённой? Я каждое утро стою в <g>заблокированном</g> движении."
+    },
+    "a": {
+      "de": "<r>Das finde ich eine gute Idee</r>, darüber nachzudenken. <r>Man könnte vielleicht</r> öfter mit dem Fahrrad fahren, gerade bei <g>steigenden</g> Spritpreisen lohnt sich das.",
+      "en": "<r>I think that's a good idea</r> to think about. <r>We could maybe</r> cycle more often, especially with <g>rising</g> fuel prices that's worth it.",
+      "uk": "<r>Я вважаю це гарною ідеєю</r> — подумати над цим. <r>Можна було б</r> частіше їздити на велосипеді, особливо при <g>зростаючих</g> цінах на пальне це варте того.",
+      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r> чаще ездить на велосипеде, особенно при <g>растущих</g> ценах на бензин это того стоит."
+    },
+    "q1": {
+      "de": "Stimmt, das mache ich im Sommer schon manchmal. <r>Es gibt auch die Möglichkeit</r>, eine Fahrgemeinschaft zu bilden, oder?",
+      "en": "True, I sometimes already do that in summer. <r>There's also the option</r> of forming a carpool, right?",
+      "uk": "Точно, я іноді так роблю влітку. <r>Є ще й така можливість</r> — організувати спільні поїздки з колегами, правда?",
+      "ru": "Точно, я иногда так делаю летом. <r>Есть ещё и такая возможность</r> - организовать совместные поездки с коллегами, верно?"
+    },
+    "a1": {
+      "de": "Ja, genau, das würde auch den wachsenden Stau auf der Autobahn ein bisschen entlasten. <r>Hättest du noch eine andere Idee</r>?",
+      "en": "Yes, exactly, that would also ease the growing traffic jams on the highway a bit. <r>Would you have another idea</r>?",
+      "uk": "Так, саме так, це б трохи розвантажило й зростаючі затори на автомагістралі. <r>У тебе є ще якась ідея</r>?",
+      "ru": "Да, именно так, это бы немного разгрузило и растущие пробки на автомагистрали. <r>У тебя есть ещё какая-то идея</r>?"
+    },
+    "q2": {
+      "de": "<r>Vielleicht könnte man auch</r> früher losfahren, um den stärksten Berufsverkehr zu vermeiden. <r>Was denkst du</r>, würde das bei dir funktionieren?",
+      "en": "<r>Maybe we could also</r> leave earlier to avoid the worst rush-hour traffic. <r>What do you think</r>, would that work for you?",
+      "uk": "<r>Можливо, можна було б ще</r> виїжджати раніше, щоб уникнути найбільшого затору в годину пік. <r>Як ти думаєш</r>, чи спрацювало б це у тебе?",
+      "ru": "<r>Возможно, можно было бы ещё</r> выезжать пораньше, чтобы избежать самого сильного затора в час пик. <r>Как ты думаешь</r>, сработало бы это у тебя?"
+    },
+    "a2": {
+      "de": "<r>Ich bin der Meinung, dass</r> das auf jeden Fall helfen würde. Mit einem gut <g>geplanten</g> Zeitpuffer kommt man viel entspannter an.",
+      "en": "<r>I think that</r> would definitely help. With a well-<g>planned</g> time buffer, you arrive much more relaxed.",
+      "uk": "<r>Я вважаю, що</r> це точно допомогло б. З добре <g>спланованим</g> запасом часу приїжджаєш набагато спокійніше.",
+      "ru": "<r>Я считаю, что</r> это точно помогло бы. С хорошо <g>спланированным</g> запасом времени приезжаешь намного спокойнее."
+    },
+    "gram": "partizipien_als_adjektive"
+  },
+  {
+    "id": "dlg_079",
+    "cat": "Freizeitgestaltung",
+    "task": {
+      "de": "Thema: Freizeitgestaltung – „Ich würde gern öfter am Wochenende einen Kurs oder Workshop machen, statt nur zu Hause zu bleiben. Wie siehst du das?“",
+      "en": "Topic: Leisure activities – \"I'd like to do a course or workshop more often on weekends instead of just staying home. What do you think?\"",
+      "uk": "Тема: Дозвілля – «Я б хотіла частіше проводити вихідні на курсах чи майстер-класах, а не просто вдома. Як ти на це дивишся?»",
+      "ru": "Тема: Досуг – «Я бы хотела чаще проводить выходные на курсах или мастер-классах, а не просто дома. Как ты на это смотришь?»"
+    },
+    "type": "Small Talk",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Sag mal, ich würde gern öfter am Wochenende einen Kurs oder Workshop machen, statt nur zu Hause zu bleiben. <r>Wie siehst du das</r>?",
+      "en": "Tell me, I'd like to do a course or workshop more often on weekends instead of just staying home. <r>What do you think</r>?",
+      "uk": "Скажи, я б хотіла частіше проводити вихідні на курсах чи майстер-класах, а не просто вдома. <r>Як ти на це дивишся</r>?",
+      "ru": "Скажи, я бы хотела чаще проводить выходные на курсах или мастер-классах, а не просто дома. <r>Как ты на это смотришь</r>?"
+    },
+    "a": {
+      "de": "Ja, <r>das sehe ich auch so</r>, man lernt dabei ja auch immer etwas Neues. <r>Hast du schon Erfahrungen damit gemacht</r>?",
+      "en": "Yes, <r>I think so too</r>, you always learn something new that way. <r>Have you had any experience with that</r>?",
+      "uk": "Так, <r>я теж так вважаю</r>, там завжди можна навчитися чогось нового. <r>У тебе вже є досвід у цьому</r>?",
+      "ru": "Да, <r>я тоже так считаю</r>, там всегда можно узнать что-то новое. <r>У тебя уже есть опыт в этом</r>?"
+    },
+    "q1": {
+      "de": "Ja, ich war letztes Jahr bei einem Töpferkurs, das hat richtig Spaß gemacht. Machst du auch manchmal sowas?",
+      "en": "Yes, last year I did a pottery course, that was really fun. Do you sometimes do something like that too?",
+      "uk": "Так, торік я була на курсі гончарства, це було дуже весело. Ти теж іноді так робиш?",
+      "ru": "Да, в прошлом году я была на курсе гончарного дела, это было очень весело. Ты тоже иногда так делаешь?"
+    },
+    "a1": {
+      "de": "Bisher eher selten, ich verbringe die Wochenenden meistens einfach mit Freunden. <r>Es hängt davon ab, ob</r> ich Lust auf etwas Neues habe oder mich lieber entspannen möchte.",
+      "en": "So far rather rarely, I usually just spend weekends with friends. <r>It depends on whether</r> I feel like trying something new or would rather relax.",
+      "uk": "Поки що рідко, я зазвичай просто проводжу вихідні з друзями. <r>Залежить від того, чи</r> в мене є настрій спробувати щось нове, чи я краще відпочину.",
+      "ru": "Пока что редко, я обычно просто провожу выходные с друзьями. <r>Зависит от того, есть ли</r> у меня настроение попробовать что-то новое, или я лучше отдохну."
+    },
+    "q2": {
+      "de": "Das verstehe ich gut. <r>Was denkst du</r>, hättest du Interesse, mal zusammen einen Kochkurs auszuprobieren?",
+      "en": "I get that. <r>What do you think</r>, would you be interested in trying a cooking class together sometime?",
+      "uk": "Розумію. <r>Як ти думаєш</r>, чи було б тобі цікаво якось разом спробувати кулінарний курс?",
+      "ru": "Понимаю. <r>Как ты думаешь</r>, было бы тебе интересно как-нибудь вместе попробовать кулинарный курс?"
+    },
+    "a2": {
+      "de": "Ich glaube schon, das klingt nach einer guten Idee. Lass uns das nächste Wochenende mal in Angriff nehmen.",
+      "en": "I think so, that sounds like a good idea. Let's give it a try next weekend.",
+      "uk": "Мабуть, так, звучить як гарна ідея. Давай спробуємо наступні вихідні.",
+      "ru": "Наверное, да, звучит как хорошая идея. Давай попробуем в следующие выходные."
     },
     "gram": ""
   }
