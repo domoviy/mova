@@ -2384,7 +2384,8 @@ var LESSONS = [
       "dlg_003",
       "dlg_004",
       "dlg_005",
-      "dlg_063"
+      "dlg_063",
+      "dlg_091"
     ]
   },
   {
@@ -2567,7 +2568,8 @@ var LESSONS = [
       "sbs_040"
     ],
     "dlgCards": [
-      "dlg_065"
+      "dlg_065",
+      "dlg_092"
     ]
   },
   {
@@ -11222,6 +11224,202 @@ var DIALOGE = [
       "ru": "Именно так, так и сделаем. Думаю, так мы сможем снова укрепить командный дух, не заставляя Пауля чувствовать себя неловко."
     },
     "gram": "konjunktiv2_als_ob"
+  },
+  {
+    "id": "dlg_091",
+    "cat": "Guten Tag, Sie sprechen mit …",
+    "task": {
+      "de": "Immer wieder beschweren sich Kundinnen und Kunden, dass sie am Telefon mehrmals falsch verbunden werden, bevor sie endlich mit der richtigen Ansprechperson sprechen können. Das kostet viel Zeit und sorgt für Frust auf beiden Seiten.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nUrsache: Woran könnte es liegen, dass Anrufe so oft falsch weitergeleitet werden?\nLösung: Wie könnt ihr sicherstellen, dass Anrufe schneller richtig ankommen?\nSchulung: Was sollten die Mitarbeitenden am Telefon zusätzlich lernen?\nRückmeldung: Wie erfahrt ihr, ob sich die Situation verbessert hat?",
+      "en": "Customers keep complaining that they get transferred to the wrong person several times on the phone before they can finally speak to the right contact. This costs a lot of time and causes frustration on both sides.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nCause: What might be causing calls to be transferred incorrectly so often?\nSolution: How can you make sure calls reach the right person faster?\nTraining: What should the staff answering the phone additionally learn?\nFeedback: How do you find out whether the situation has improved?",
+      "uk": "Клієнти постійно скаржаться, що їх кілька разів неправильно з'єднують по телефону, перш ніж вони нарешті можуть поговорити з потрібною людиною. Це забирає багато часу і викликає роздратування з обох сторін.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПричина: Чому дзвінки так часто неправильно переадресовують?\nРішення: Як забезпечити, щоб дзвінки швидше потрапляли до потрібної людини?\nНавчання: Чого додатково варто навчити співробітників, які відповідають на дзвінки?\nЗворотний зв'язок: Як дізнатися, чи покращилася ситуація?",
+      "ru": "Клиенты постоянно жалуются, что их несколько раз неправильно соединяют по телефону, прежде чем они наконец могут поговорить с нужным человеком. Это отнимает много времени и вызывает раздражение с обеих сторон.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПричина: Почему звонки так часто неправильно перенаправляют?\nРешение: Как обеспечить, чтобы звонки быстрее попадали к нужному человеку?\nОбучение: Чему дополнительно стоит научить сотрудников, отвечающих на звонки?\nОбратная связь: Как узнать, улучшилась ли ситуация?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: Mehrere Kundinnen und Kunden haben sich beschwert, dass sie am Telefon mehrmals falsch verbunden werden, bevor sie die richtige Ansprechperson erreichen.",
+      "en": "<r>We should talk about a problem</r>: several customers have complained that they get transferred to the wrong person multiple times on the phone before reaching the right contact.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: кілька клієнтів поскаржилися, що їх по телефону кілька разів неправильно з'єднують, перш ніж вони досягають потрібної людини.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: несколько клиентов пожаловались, что их по телефону несколько раз неправильно соединяют, прежде чем они достигают нужного человека."
+    },
+    "a": {
+      "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Das Problem liegt also vor allem bei der Weiterleitung am Anfang des Gesprächs?",
+      "en": "I've heard about that too. <r>Did I understand you correctly</r>: so the problem is mainly with the transfer at the beginning of the call?",
+      "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: тобто проблема передусім у переадресації на початку розмови?",
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: то есть проблема прежде всего в переадресации в начале разговора?"
+    },
+    "q1": {
+      "de": "Genau, und das kostet die Kunden viel Zeit und sorgt für Frust. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, and that costs customers a lot of time and causes frustration. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, і це забирає у клієнтів багато часу та викликає роздратування. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, и это отнимает у клиентов много времени и вызывает раздражение. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten am Empfang eine kurze Übersicht aufhängen, wer für welches Thema zuständig ist, damit gleich richtig verbunden wird.",
+      "en": "<r>I have an idea</r>: we could put up a short overview at reception showing who's responsible for which topic, so calls get transferred correctly right away.",
+      "uk": "<r>У мене є ідея</r>: ми могли б повісити на рецепції коротку схему, хто за яку тему відповідає, щоб одразу правильно з'єднувати.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы повесить на ресепшене короткую схему, кто за какую тему отвечает, чтобы сразу правильно соединять."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich eine feste Standardfrage einführen, zum Beispiel 'Worum geht es genau, damit ich Sie richtig verbinden kann?'",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also introduce a standard question, for example 'What is this regarding, so I can transfer you correctly?'",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково впровадимо стандартне запитання, наприклад «Про що йдеться, щоб я міг(-ла) правильно вас з'єднати?»",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём стандартный вопрос, например «По какому вопросу вы звоните, чтобы я мог(-ла) правильно вас соединить?»"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. So können die Kolleginnen und Kollegen am Empfang gezielter fragen, statt einfach zu raten.",
+      "en": "<r>Yes, I think that's a good idea</r>. That way the colleagues at reception can ask more specifically instead of just guessing.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так колеги на рецепції зможуть запитувати більш цілеспрямовано, а не просто вгадувати.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так коллеги на ресепшене смогут спрашивать более целенаправленно, а не просто угадывать."
+    },
+    "q3": {
+      "de": "Stimmt. Und was machen wir, wenn eine Anfrage trotzdem bei der falschen Person landet?",
+      "en": "True. And what do we do if a request still ends up with the wrong person?",
+      "uk": "Правда. А що робити, якщо запит все ж потрапить не до тієї людини?",
+      "ru": "Верно. А что делать, если запрос всё же попадёт не к тому человеку?"
+    },
+    "a3": {
+      "de": "Das halte ich für eine ausgezeichnete Frage. Die Person könnte dann höflich sagen: <r>'Entschuldigung, da sind Sie bei mir leider nicht richtig, ich verbinde Sie sofort weiter.'</r>",
+      "en": "That's an excellent question. That person could then politely say: <r>'I'm sorry, you've reached the wrong person, I'll transfer you right away.'</r>",
+      "uk": "Це чудове запитання. Ця людина могла б тоді ввічливо сказати: <r>«Вибачте, ви потрапили не туди, я одразу з'єдную вас далі»</r>.",
+      "ru": "Это отличный вопрос. Этот человек мог бы тогда вежливо сказать: <r>«Извините, вы попали не туда, я сразу же соединю вас дальше»</r>."
+    },
+    "q4": {
+      "de": "Gute Idee. Sollten wir das auch als kleine Schulung für alle am Empfang anbieten?",
+      "en": "Good idea. Should we also offer that as a short training for everyone at reception?",
+      "uk": "Гарна ідея. Може, запропонуємо це ще й як коротке навчання для всіх на рецепції?",
+      "ru": "Хорошая идея. Может, предложим это ещё и как короткое обучение для всех на ресепшене?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> eine kurze Einweisung machen, in der alle typische Sätze für solche Situationen gemeinsam üben.",
+      "en": "<r>Maybe we could</r> hold a short briefing where everyone practices typical sentences for such situations together.",
+      "uk": "<r>Можливо, ми могли б</r> провести короткий інструктаж, де всі разом потренуються на типових фразах для таких ситуацій.",
+      "ru": "<r>Возможно, мы могли бы</r> провести короткий инструктаж, где все вместе потренируются на типичных фразах для таких ситуаций."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir das gleich in den nächsten zwei Wochen organisieren?",
+      "en": "Good point. Should we organize that in the next two weeks?",
+      "uk": "Слушна думка. Організуємо це найближчі два тижні?",
+      "ru": "Дельная мысль. Организуем это в ближайшие две недели?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte die Übersicht vorbereiten, wenn du dich um die Schulungstermine kümmerst.",
+      "en": "Yes, that would make sense. I could prepare the overview, if you take care of the training dates.",
+      "uk": "Так, це було б розумно. Я міг би підготувати схему, якщо ти займешся термінами навчання.",
+      "ru": "Да, это было бы разумно. Я мог бы подготовить схему, если ты займёшься датами обучения."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir erstellen eine Übersicht, führen eine Standardfrage ein, und alle am Empfang bekommen eine kurze Schulung zum Umleiten von Anrufen.",
+      "en": "<r>Let's summarize</r>: we'll create an overview, introduce a standard question, and everyone at reception will get a short training on transferring calls.",
+      "uk": "<r>Підсумуємо</r>: ми складемо схему, впровадимо стандартне запитання, і всі на рецепції пройдуть коротке навчання з переадресації дзвінків.",
+      "ru": "<r>Подведём итог</r>: мы составим схему, введём стандартный вопрос, и все на ресепшене пройдут короткое обучение по переадресации звонков."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so werden unsere Kunden künftig deutlich schneller richtig verbunden.",
+      "en": "Exactly, that's what we'll do. I think that way our customers will be transferred to the right person much faster in the future.",
+      "uk": "Саме так, так і зробимо. Гадаю, так наші клієнти будуть значно швидше потрапляти до потрібної людини.",
+      "ru": "Именно так, так и сделаем. Думаю, так наши клиенты будут значительно быстрее попадать к нужному человеку."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_092",
+    "cat": "Online-Konferenzen",
+    "task": {
+      "de": "In euren Online-Meetings gibt es fast jede Woche technische Probleme: Die Verbindung bricht ab, jemand vergisst die Stummschaltung aufzuheben, oder es sind laute Hintergrundgeräusche zu hören. Dadurch geht viel Zeit verloren.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nTechnik: Wie könnt ihr die Verbindungsqualität verbessern?\nVerhalten: Welche Regeln helfen gegen Stummschaltungs- und Geräuschprobleme?\nSupport: Wer hilft schnell, wenn technische Probleme auftreten?\nVorbereitung: Wie können sich alle besser auf die Meetings vorbereiten?",
+      "en": "In your online meetings, technical problems come up almost every week: the connection drops, someone forgets to unmute, or loud background noise can be heard. This wastes a lot of time.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nTechnology: How can you improve the connection quality?\nBehavior: What rules help with mute and noise problems?\nSupport: Who helps quickly when technical problems occur?\nPreparation: How can everyone prepare better for the meetings?",
+      "uk": "У ваших онлайн-нарадах майже щотижня виникають технічні проблеми: зв'язок обривається, хтось забуває увімкнути мікрофон, або чути гучні фонові шуми. Через це втрачається багато часу.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nТехніка: Як покращити якість зв'язку?\nПоведінка: Які правила допоможуть з проблемами вимкненого мікрофона й шумів?\nПідтримка: Хто швидко допоможе при технічних проблемах?\nПідготовка: Як усім краще підготуватися до нарад?",
+      "ru": "На ваших онлайн-совещаниях почти каждую неделю возникают технические проблемы: связь обрывается, кто-то забывает включить микрофон, или слышны громкие фоновые шумы. Из-за этого теряется много времени.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nТехника: Как улучшить качество связи?\nПоведение: Какие правила помогут с проблемами выключенного микрофона и шумов?\nПоддержка: Кто быстро поможет при технических проблемах?\nПодготовка: Как всем лучше подготовиться к совещаниям?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: In unseren Online-Meetings gibt es fast jede Woche technische Probleme, zum Beispiel bricht die Verbindung ab oder jemand vergisst, die Stummschaltung aufzuheben.",
+      "en": "<r>We should talk about a problem</r>: in our online meetings there are technical problems almost every week, for example the connection drops or someone forgets to unmute.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: у наших онлайн-нарадах майже щотижня трапляються технічні проблеми, наприклад зв'язок обривається або хтось забуває увімкнути мікрофон.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: на наших онлайн-совещаниях почти каждую неделю случаются технические проблемы, например связь обрывается или кто-то забывает включить микрофон."
+    },
+    "a": {
+      "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Dadurch geht in fast jedem Meeting Zeit verloren?",
+      "en": "I've noticed that too. <r>Did I understand you correctly</r>: so time gets wasted in almost every meeting because of that?",
+      "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто через це майже в кожній нараді втрачається час?",
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть из-за этого почти в каждом совещании теряется время?"
+    },
+    "q1": {
+      "de": "Genau, manchmal sogar zehn Minuten am Anfang. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, sometimes even ten minutes at the start. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, іноді навіть десять хвилин на початку. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, иногда даже десять минут в начале. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten alle bitten, fünf Minuten vor Beginn schon online zu sein und ihre Technik kurz zu testen.",
+      "en": "<r>I have an idea</r>: we could ask everyone to be online five minutes before the start and quickly test their tech.",
+      "uk": "<r>У мене є ідея</r>: ми могли б попросити всіх бути онлайн за п'ять хвилин до початку і швидко перевірити техніку.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы попросить всех быть онлайн за пять минут до начала и быстро проверить технику."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich eine feste Regel einführen, dass alle außer der sprechenden Person stummgeschaltet bleiben?",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also introduce a fixed rule that everyone except the person speaking stays muted?",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково запровадимо чітке правило, що всі, крім того, хто говорить, залишаються з вимкненим мікрофоном?",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём чёткое правило, что все, кроме говорящего, остаются с выключенным микрофоном?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. Das würde auch die Hintergrundgeräusche deutlich reduzieren, die uns sonst oft ablenken.",
+      "en": "<r>Yes, I think that's a good idea</r>. That would also significantly reduce the background noise that often distracts us.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Це також значно зменшило б фонові шуми, які часто нас відволікають.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Это также значительно уменьшило бы фоновые шумы, которые часто нас отвлекают."
+    },
+    "q3": {
+      "de": "Stimmt. Und was machen wir, wenn trotzdem mal jemand technische Probleme hat, zum Beispiel eine schlechte Verbindung?",
+      "en": "True. And what do we do if someone still has technical problems, for example a bad connection?",
+      "uk": "Правда. А що робити, якщо в когось усе ж будуть технічні проблеми, наприклад поганий зв'язок?",
+      "ru": "Верно. А что делать, если у кого-то всё же будут технические проблемы, например плохая связь?"
+    },
+    "a3": {
+      "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>: Diese Person könnte kurz in den Chat schreiben, dann fassen wir für sie am Ende die wichtigsten Punkte zusammen.",
+      "en": "<r>I think that's an excellent solution</r>: that person could quickly write in the chat, and we'll summarize the key points for them at the end.",
+      "uk": "<r>Я вважаю це чудовим рішенням</r>: ця людина могла б швидко написати в чат, а ми наприкінці підсумуємо для неї найважливіші моменти.",
+      "ru": "<r>Я считаю это отличным решением</r>: этот человек мог бы быстро написать в чат, а мы в конце подытожим для него самые важные моменты."
+    },
+    "q4": {
+      "de": "Gute Idee. Sollten wir außerdem jemanden bestimmen, der sich beim technischen Support meldet, falls es größere Probleme gibt?",
+      "en": "Good idea. Should we also designate someone to contact technical support if there are bigger problems?",
+      "uk": "Гарна ідея. Може, ще призначимо когось, хто звертатиметься до техпідтримки, якщо виникнуть більші проблеми?",
+      "ru": "Хорошая идея. Может, ещё назначим кого-то, кто будет обращаться в техподдержку, если возникнут более серьёзные проблемы?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> das reihum machen, dann ist es nicht immer dieselbe Person, die sich darum kümmern muss.",
+      "en": "<r>Maybe we could</r> take turns doing that, so it's not always the same person who has to deal with it.",
+      "uk": "<r>Можливо, ми могли б</r> робити це по черзі, щоб не завжди одна й та сама людина цим займалася.",
+      "ru": "<r>Возможно, мы могли бы</r> делать это по очереди, чтобы не всегда один и тот же человек этим занимался."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir diese Regeln gleich im nächsten Meeting vorstellen, damit alle Bescheid wissen?",
+      "en": "Good point. Should we present these rules right at the next meeting, so everyone knows about them?",
+      "uk": "Слушна думка. Представимо ці правила одразу на наступній нараді, щоб усі знали?",
+      "ru": "Дельная мысль. Представим эти правила сразу на следующем совещании, чтобы все знали?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte eine kurze Übersicht schreiben, wenn du das im Kalender für alle ankündigst.",
+      "en": "Yes, that would make sense. I could write a short overview, if you announce it in the calendar for everyone.",
+      "uk": "Так, це було б розумно. Я міг би написати коротку схему, якщо ти оголосиш це в календарі для всіх.",
+      "ru": "Да, это было бы разумно. Я мог бы написать короткую схему, если ты объявишь это в календаре для всех."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Alle testen vorher ihre Technik, bleiben standardmäßig stummgeschaltet, und bei Problemen schreibt man in den Chat oder wendet sich reihum an den Support.",
+      "en": "<r>Let's summarize</r>: everyone tests their tech beforehand, stays muted by default, and if there are problems, people write in the chat or take turns contacting support.",
+      "uk": "<r>Підсумуємо</r>: усі заздалегідь перевіряють техніку, за замовчуванням залишаються з вимкненим мікрофоном, а при проблемах пишуть у чат або по черзі звертаються до техпідтримки.",
+      "ru": "<r>Подведём итог</r>: все заранее проверяют технику, по умолчанию остаются с выключенным микрофоном, а при проблемах пишут в чат или по очереди обращаются в техподдержку."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so verlieren wir künftig deutlich weniger Zeit mit technischen Problemen.",
+      "en": "Exactly, that's what we'll do. I think that way we'll lose a lot less time to technical problems in the future.",
+      "uk": "Саме так, так і зробимо. Гадаю, так ми надалі втрачатимемо значно менше часу через технічні проблеми.",
+      "ru": "Именно так, так и сделаем. Думаю, так мы впредь будем терять значительно меньше времени из-за технических проблем."
+    },
+    "gram": ""
   }
 ];
 

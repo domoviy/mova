@@ -528,6 +528,19 @@ body{
 .lp-chapter-head.done{
   background:rgba(201,168,76,.06);
 }
+/* "Ти тут" — велика кольорова банер-шапка активної глави (як у
+   Duolingo "ЧАСТИНА N, РОЗДІЛ ..."), у фірмових кольорах застосунку
+   (forest/gold) замість копіювання чужого помаранчевого. */
+.lp-chapter-head.current{
+  background:linear-gradient(135deg, var(--forest), #14351f);
+  border-bottom:none;padding:18px 16px;
+}
+.lp-chapter-head.current .lp-chapter-title{color:#fff;}
+.lp-chapter-head.current .lp-chapter-sub{color:rgba(255,255,255,.65);}
+.lp-chapter-head.current .lp-chapter-num{
+  background:var(--gold);color:var(--forest);width:34px;height:34px;font-size:16px;
+}
+.lp-chapter-head.current .lp-chapter-arrow{color:rgba(255,255,255,.7);}
 .lp-chapter-num{
   width:28px;height:28px;border-radius:50%;
   background:var(--forest);color:var(--gold);
@@ -556,8 +569,90 @@ body{
   display:none;padding:10px;
   flex-direction:column;gap:14px;
   background:var(--soft);
+  position:relative;
 }
 .lp-chapter.open .lp-modules{display:flex;}
+.lp-module-group{ position:relative; z-index:1; }
+
+/* ── Звивиста стежка (Duolingo-стиль): кругла "гема" на крок, ─────
+   зигзаг-зсув по горизонталі, розділювач-назва перед кожним модулем.
+   Технічно уроки й діалоги всередині генеруються динамічно
+   (buildLearningPath), але сама стежка дає відчуття "я йду вперед". */
+.lp-path{
+  display:flex;flex-direction:column;align-items:center;
+  gap:20px;padding:20px 6px 6px;
+}
+.lp-path-node-wrap{
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  transition:transform .2s;
+}
+.lp-node{
+  width:60px;height:60px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;position:relative;cursor:pointer;
+  background:var(--forest);
+  box-shadow:0 5px 0 rgba(13,43,26,.35), 0 7px 12px rgba(13,43,26,.16);
+  transition:transform .12s, box-shadow .12s;
+}
+.lp-node:active{ transform:translateY(3px); box-shadow:0 2px 0 rgba(13,43,26,.35); }
+.lp-node-icon{ position:relative; z-index:1; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); }
+.lp-node.lp-node-dialogue{
+  background:var(--accent, #4a7c9d);
+  box-shadow:0 5px 0 rgba(30,70,95,.4), 0 7px 12px rgba(30,70,95,.18);
+}
+.lp-node.done{
+  background:var(--gold);
+  box-shadow:0 5px 0 rgba(160,128,40,.4), 0 7px 12px rgba(160,128,40,.16);
+}
+.lp-node.locked{
+  background:var(--border);cursor:default;
+  box-shadow:0 5px 0 rgba(0,0,0,.10);
+}
+.lp-node.locked:active{ transform:none; }
+.lp-node.current{
+  width:84px;height:84px;font-size:34px;
+  box-shadow:0 7px 0 rgba(13,43,26,.35), 0 10px 18px rgba(13,43,26,.2);
+  animation:lpNodeBreathe 1.8s ease-in-out infinite;
+}
+.lp-node.lp-node-dialogue.current{
+  box-shadow:0 7px 0 rgba(30,70,95,.4), 0 10px 18px rgba(30,70,95,.22);
+}
+.lp-node.current .lp-node-current-ring{ inset:-12px; border-width:4px; }
+@keyframes lpNodeBreathe{
+  0%,100%{ transform:scale(1); }
+  50%{ transform:scale(1.06); }
+}
+.lp-node-current-ring{
+  position:absolute;inset:-9px;border:3px solid var(--gold);border-radius:50%;
+  opacity:.5;animation:lpRingPulse 1.8s ease-in-out infinite;
+}
+@keyframes lpRingPulse{
+  0%,100%{ transform:scale(1); opacity:.55; }
+  50%{ transform:scale(1.15); opacity:.1; }
+}
+.lp-node-label{
+  font-size:12px;font-weight:800;color:var(--forest);
+  background:var(--gold);padding:4px 12px;border-radius:10px;
+  box-shadow:0 2px 6px rgba(13,43,26,.15);white-space:nowrap;
+}
+.lp-node-progress{
+  font-size:10px;font-weight:700;color:var(--muted);
+}
+.lp-module-divider{
+  display:flex;align-items:center;gap:10px;width:100%;
+  margin:6px 0 -4px;padding:0 4px;
+}
+.lp-module-divider span:not(.lp-module-divider-text){
+  flex:1;height:1px;background:var(--border);
+}
+.lp-module-divider-text{
+  font-size:var(--fs-tertiary);font-weight:800;color:var(--muted);
+  white-space:nowrap;text-transform:uppercase;letter-spacing:.02em;
+}
+.lp-bonus-row{
+  display:flex;flex-direction:column;gap:8px;
+  padding:4px 10px 0;
+}
 /* Групуємо картки ОДНОГО модуля (Урок, Діалог, Граматика-бонус,
    Словник-бонус) тісніше одна до одної (4px), а .lp-modules{gap:14px}
    вище лишається відстанню МІЖ різними модулями — той самий принцип
@@ -2982,7 +3077,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '441-baa31ee';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3083,6 +3178,133 @@ function loadCharactersScript(){
   return _charactersLoadPromise;
 }
 
+// ── ДИНАМІЧНА ПОБУДОВА ШЛЯХУ (session-sized суб-уроки) ────────────
+// "Модуль" у базі курсу (k1m1 і т.д.) — тематичний контент-бакет
+// (10-150 карток), не сесія одного разу. Тут ріжемо cardIds модуля
+// на суб-уроки на льоту, session-sized, окремо для кожного рівня
+// (менше слів на A2/B1, бо мозок менш підготований до L2, більше на
+// B2 — сформовані мовці тримають більше за раз). Це НЕ обмежує темп
+// (скільки суб-уроків пройти за день — вирішує сам користувач,
+// канікули/дедлайни тут узагалі не враховуються) — це лише розмір
+// однієї "порції" на карті шляху.
+//
+// У другу половину суб-уроків модуля домішуємо кілька карток на
+// повторення з ПОПЕРЕДНЬОГО модуля (пріоритет — прострочені по SM-2),
+// щоб забування не чекало окремого фонового Smart Review.
+//
+// sbCards/dlgCards лишаються прив'язані до ОСТАННЬОГО суб-уроку
+// модуля (як і зараз — Sprachbausteine/Dialogue Bonus з'являються,
+// щойно весь модуль пройдено). dlgCards й так рендериться умовно,
+// лише якщо у lesson.dlgCards щось є (renderModuleDialogueCard) —
+// тому "діалог, якщо є" вже підтримано без додаткових змін.
+//
+// unlockAfter-ланцюжок: перший суб-урок модуля успадковує ОРИГІНАЛЬНИЙ
+// lesson.unlockAfter (перемаплений на останній суб-урок референсного
+// модуля) — це важливо, бо в базі є явні "розриви" (напр. k9m1:null
+// в Deutsch-A2), що дозволяють проходити частини курсу незалежно.
+// Наступні суб-уроки того самого модуля просто йдуть один за одним.
+var PATH_CONFIG = {
+  A2:         { newWordsPerLesson: 4, reviewMix: 3 },
+  B1:         { newWordsPerLesson: 5, reviewMix: 3 },
+  B2:         { newWordsPerLesson: 7, reviewMix: 3 },
+  Foundations:{ newWordsPerLesson: 6, reviewMix: 3 },
+};
+
+function buildLearningPath(rawLessons, courseLevel){
+  if(!Array.isArray(rawLessons) || !rawLessons.length) return rawLessons;
+  var cfg = PATH_CONFIG[courseLevel] || { newWordsPerLesson: 6, reviewMix: 3 };
+  var cap = Math.max(1, cfg.newWordsPerLesson|0);
+  var state = (typeof srLoadState === 'function') ? (function(){ try{ return srLoadState(); }catch(e){ return null; } })() : null;
+
+  // Прострочені по SM-2 — спершу; картки без srsState (щойно бачені) — в кінці.
+  function dueFirst(ids){
+    if(!state || !state.cards) return ids.slice();
+    return ids.slice().sort(function(a,b){
+      var ca = state.cards[a], cb = state.cards[b];
+      var ta = (ca && ca.nextReview) ? ca.nextReview : Infinity;
+      var tb = (cb && cb.nextReview) ? cb.nextReview : Infinity;
+      return ta - tb;
+    });
+  }
+
+  var out = [];
+  var lastSubOf     = {}; // originalModuleId -> id останнього суб-уроку цього модуля
+  var moduleCardIds = {}; // originalModuleId -> повний cardIds модуля (пул для interleave НАСТУПНОГО)
+
+  rawLessons.forEach(function(lesson){
+    var ids = lesson.cardIds || [];
+
+    // Модулі без карток (чисто службові) — не ріжемо, лише перемаплюємо unlockAfter.
+    if(!ids.length){
+      var mapped = (lesson.unlockAfter === null || lesson.unlockAfter === undefined)
+        ? null : (lastSubOf[lesson.unlockAfter] || lesson.unlockAfter);
+      var passthrough = Object.assign({}, lesson, { type: 'lesson', unlockAfter: mapped });
+      out.push(passthrough);
+      lastSubOf[lesson.id] = passthrough.id;
+      moduleCardIds[lesson.id] = ids;
+      return;
+    }
+
+    var chunks = [];
+    for(var i=0; i<ids.length; i+=cap) chunks.push(ids.slice(i, i+cap));
+    var n = chunks.length, half = Math.ceil(n/2);
+    var prevModCards = (lesson.unlockAfter && moduleCardIds[lesson.unlockAfter]) || [];
+
+    var withinModulePrevId = null;
+    var dlgAt = Math.min(2, n) - 1; // діалог одразу після ~2-го суб-уроку (Урок-Урок-Діалог-Урок), або в кінці, якщо суб-уроків менше
+    chunks.forEach(function(chunk, idx){
+      var isLast = idx === n-1;
+      var subCardIds = chunk.slice();
+      if(idx >= half && prevModCards.length){
+        subCardIds = subCardIds.concat(dueFirst(prevModCards).slice(0, cfg.reviewMix));
+      }
+      var subId = lesson.id + '_s' + (idx+1);
+      var unlockAfter = idx === 0
+        ? ((lesson.unlockAfter === null || lesson.unlockAfter === undefined)
+            ? null : (lastSubOf[lesson.unlockAfter] || lesson.unlockAfter))
+        : withinModulePrevId;
+
+      out.push(Object.assign({}, lesson, {
+        id:          subId,
+        type:        'lesson',
+        cardIds:     subCardIds,
+        unlockAfter: unlockAfter,
+        sbCards:     isLast ? (lesson.sbCards || []) : [],
+        dlgCards:    [], // діалог тепер окремий вузол послідовності (нижче), не бонус-сайдкар лекції
+        _subIndex:   idx+1,
+        _subTotal:   n,
+        _parentModuleId: lesson.id,
+      }));
+      withinModulePrevId = subId;
+
+      // Діалог — ПОВНОЦІННИЙ вузол шляху (Урок-Урок-Діалог-Урок), не
+      // прикріплена бонус-картка. Вставляємо лише якщо для модуля є
+      // хоч один dlgCards (умова "якщо є" — не всюди ще написано).
+      // cardIds = dlgCards: lessonProgress/lessonUnlocked повторно
+      // використовують той самий стан SM-2 (srsRate пишеться в
+      // state.cards[id] однаково для vocab- і dlg-карток).
+      if(idx === dlgAt && (lesson.dlgCards||[]).length){
+        var dlgId = lesson.id + '_dlg';
+        out.push(Object.assign({}, lesson, {
+          id:          dlgId,
+          type:        'dialogue',
+          cardIds:     lesson.dlgCards,
+          dlgCards:    lesson.dlgCards,
+          sbCards:     [],
+          unlockAfter: withinModulePrevId,
+          _parentModuleId: lesson.id,
+        }));
+        withinModulePrevId = dlgId;
+      }
+    });
+
+    lastSubOf[lesson.id]     = withinModulePrevId;
+    moduleCardIds[lesson.id] = ids;
+  });
+
+  return out;
+}
+
 function loadCourseScript(courseId){
   return new Promise((resolve, reject)=>{
     // Видаляємо попередній скрипт курсу якщо є
@@ -3117,6 +3339,14 @@ function loadCourseScript(courseId){
       }catch(e){ console.log('⏱ [splash-perf] course-script timing недоступний:', e); }
 
       activeCourse = course;
+      // Перебудовуємо LESSONS у session-sized суб-уроки (buildLearningPath) —
+      // ДО будь-чого, що читає LESSONS (Lernpfad, findCurrentLesson і т.д.).
+      // Курс без LESSONS (напр. майбутній суто-словниковий курс) — no-op.
+      try{
+        if(typeof LESSONS !== 'undefined' && Array.isArray(LESSONS)){
+          LESSONS = buildLearningPath(LESSONS, course.level);
+        }
+      }catch(e){ console.error('[path] buildLearningPath failed:', e); }
       // Smart Review: додаємо examPart до карток якщо ще не є
       try{ srTagVocab(); }catch(e){}
       // Grammatik-Trainer: перебудовуємо похідний пул карток під новий курс.
@@ -6862,8 +7092,27 @@ function renderLernpfad(){
 
     const chEl = document.createElement('div');
     chEl.className = 'lp-chapter'+((anyDone||hasCurrent)?' open':'');
+
+    // Будуємо звивисту стежку: розділювач-назва перед кожним новим
+    // модулем + кругла "гема" на кожен крок (урок/діалог), з
+    // зигзаг-зсувом. Граматика/словник-бонуси модуля — виносимо в
+    // окремий рядок під стежкою (рендеримо лише раз, на ОСТАННЬОМУ
+    // суб-уроці модуля — інакше та сама бонус-картка дублювалась би
+    // на кожному суб-уроці).
+    let prevParentId = null, pathHtml = '', bonusHtml = '';
+    ch.modules.forEach((m, idx)=>{
+      if(m._parentModuleId !== prevParentId){
+        pathHtml += renderModuleDivider(m);
+        prevParentId = m._parentModuleId;
+      }
+      pathHtml += renderPathNode(m, idx);
+      if(m.type === 'lesson' && m._subIndex === m._subTotal){
+        bonusHtml += renderGrammarBonusCard(m) + renderModuleVocabCard(m);
+      }
+    });
+
     chEl.innerHTML = `
-      <div class="lp-chapter-head ${allDone?'done':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
+      <div class="lp-chapter-head ${allDone?'done':''} ${hasCurrent?'current':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
         <div class="lp-chapter-num ${allDone?'done':''}">${ch.num}</div>
         <div class="lp-chapter-info">
           <div class="lp-chapter-title">${ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de}</div>
@@ -6874,7 +7123,8 @@ function renderLernpfad(){
         <div class="lp-chapter-arrow">▼</div>
       </div>
       <div class="lp-modules">
-        ${ch.modules.map(m=>`<div class="lp-module-group">${renderModuleCard(m)}${renderModuleDialogueCard(m)}${renderGrammarBonusCard(m)}${renderModuleVocabCard(m)}</div>`).join('')}
+        <div class="lp-path">${pathHtml}</div>
+        ${bonusHtml ? `<div class="lp-bonus-row">${bonusHtml}</div>` : ''}
         ${reviewHtml}
         ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
         ${renderChapterVocabCard(ch.num, reviewUnlocked)}
@@ -6944,6 +7194,51 @@ function lernpfadScrollToLastLesson(){
   }catch(e){}
 }
 
+// Зигзаг-зсув по горизонталі для кожного кроку стежки — те саме
+// відчуття "звивистого шляху", що й у Duolingo, без важкої SVG-кривої.
+function _lpZigzagOffset(i){
+  const pattern = [0, 46, 72, 46, 0, -46, -72, -46];
+  return pattern[i % pattern.length];
+}
+
+// Розділювач-назва модуля між групами кроків стежки — показує НАЗВУ
+// модуля (як "Робота: Готуйся до співбесіди" у Duolingo), навіть
+// попри те, що всередині модуль розрізаний на кілька суб-уроків.
+function renderModuleDivider(lesson){
+  const title = lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de;
+  return `<div class="lp-module-divider"><span></span><span class="lp-module-divider-text">${t('lp_module_prefix')} ${lesson.module} · ${title}</span><span></span></div>`;
+}
+
+// Один крок звивистої стежки — кругла "гема": урок (📖) або діалог
+// (💬), з окремим кольором/іконкою по типу. cardIds однакові для обох
+// типів технічно (лекція чи dlgCards), тому lessonProgress/
+// lessonUnlocked відпрацьовують без жодних умов на type.
+function renderPathNode(node, idx){
+  const {done, total, pct} = lessonProgress(node);
+  const unlocked  = lessonUnlocked(node);
+  const isDone    = pct >= 80;
+  const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
+  const isDialogue = node.type === 'dialogue';
+  const icon = !unlocked ? '🔒' : isDone ? '★' : isDialogue ? '💬' : '📖';
+  const typeClass   = isDialogue ? 'lp-node-dialogue' : 'lp-node-lesson';
+  const statusClass = isDone ? 'done' : !unlocked ? 'locked' : isCurrent ? 'current' : '';
+  const offset = _lpZigzagOffset(idx);
+  const clickHandler = !unlocked ? '' :
+    isDialogue ? `startModuleDialogueBonus('${node.id}')` : `startLessonFlow('${node.id}')`;
+  const chipLabel = pct > 0
+    ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
+    : ({uk:'▶ Почати',     en:'▶ Start',    ru:'▶ Начать',     de:'▶ Starten'}[uiLang] || '▶ Starten');
+  return `<div class="lp-path-node-wrap" style="transform:translateX(${offset}px)">
+    <div class="lp-node ${typeClass} ${statusClass}" id="${isCurrent?'lp-current-module':''}"
+      onclick="${clickHandler}">
+      ${isCurrent ? '<div class="lp-node-current-ring"></div>' : ''}
+      <span class="lp-node-icon">${icon}</span>
+    </div>
+    ${isCurrent ? `<div class="lp-node-label">${chipLabel}</div>`
+      : (unlocked && !isDone ? `<div class="lp-node-progress">${done}/${total}</div>` : '')}
+  </div>`;
+}
+
 function renderModuleCard(lesson){
   const {done, total, pct} = lessonProgress(lesson);
   const unlocked = lessonUnlocked(lesson);
@@ -6976,7 +7271,7 @@ function renderModuleCard(lesson){
     ${currentChip}
     <div class="lp-module-icon">${icon}</div>
     <div class="lp-module-body">
-      <div class="lp-module-title">${t('lp_module_prefix')} ${lesson.module} · ${lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de}</div>
+      <div class="lp-module-title">${t('lp_module_prefix')} ${lesson.module}${lesson._subTotal>1?' · '+lesson._subIndex+'/'+lesson._subTotal:''} · ${lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de}</div>
       <div class="lp-module-meta">
         ${!unlocked
           ? t('lp_locked')
@@ -12910,15 +13205,18 @@ function renderFavGrid(){
 }
 function openFavCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
-  // Черга — тільки обрані картки
+  // Черга — тільки обрані картки, РОТОВАНА так, щоб клікнута картка йшла
+  // першою (той самий патерн, що й openDialogueCard). Важливо: просте
+  // виставлення V.idx тут НЕ працює — showView('vocab') одразу запускає
+  // startVocabCardMode(), який будує чергу "units" з V.queue від самого
+  // початку (_lfVocabBuildUnits) і повністю ігнорує V.idx/renderVocabCard,
+  // тому завжди показувало першу картку черги замість клікнутої.
   const favQueue=VOCAB.filter(v=>isFavorite(v.id));
-  V.queue=favQueue;
-  // Знаходимо позицію картки в черзі обраних
   const qIdx=favQueue.findIndex(v=>v.id===card.id);
-  V.idx=qIdx!==-1?qIdx:0;
+  V.queue = qIdx!==-1 ? favQueue.slice(qIdx).concat(favQueue.slice(0,qIdx)) : favQueue;
+  V.idx=0;
   V.flipped=false;
   showView('vocab');
-  setTimeout(()=>renderVocabCard(),50);
 }
 
 // ── STATS ─────────────────────────────────────────────────────
