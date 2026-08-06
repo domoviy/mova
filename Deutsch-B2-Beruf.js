@@ -2657,7 +2657,8 @@ var LESSONS = [
       "sbs_024"
     ],
     "dlgCards": [
-      "dlg_066"
+      "dlg_066",
+      "dlg_093"
     ]
   },
   {
@@ -2741,7 +2742,8 @@ var LESSONS = [
       "sbs_030"
     ],
     "dlgCards": [
-      "dlg_067"
+      "dlg_067",
+      "dlg_094"
     ]
   },
   {
@@ -11418,6 +11420,202 @@ var DIALOGE = [
       "en": "Exactly, that's what we'll do. I think that way we'll lose a lot less time to technical problems in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми надалі втрачатимемо значно менше часу через технічні проблеми.",
       "ru": "Именно так, так и сделаем. Думаю, так мы впредь будем терять значительно меньше времени из-за технических проблем."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_093",
+    "cat": "Mit freundlichen Grüßen",
+    "task": {
+      "de": "In eurem Team schreibt jeder E-Mails an Kunden ein bisschen anders: Manche sind sehr förmlich und steif, andere fast zu locker. Dadurch wirkt der Auftritt des Unternehmens nach außen uneinheitlich.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nStil: Wie könnt ihr einen einheitlichen, aber freundlichen Ton finden?\nVorlage: Was sollte eine gemeinsame E-Mail-Vorlage enthalten?\nSchulung: Wie könnt ihr das im Team einführen?\nKontrolle: Wie stellt ihr sicher, dass sich alle daran halten?",
+      "en": "In your team, everyone writes emails to customers a bit differently: some are very formal and stiff, others almost too casual. As a result, the company's image comes across as inconsistent to the outside.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nStyle: How can you find a consistent but friendly tone?\nTemplate: What should a shared email template include?\nTraining: How can you introduce this in the team?\nControl: How do you make sure everyone sticks to it?",
+      "uk": "У вашій команді кожен пише листи клієнтам трохи по-своєму: одні дуже офіційні й сухі, інші майже занадто невимушені. Через це компанія справляє неоднорідне враження ззовні.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nСтиль: Як знайти єдиний, але доброзичливий тон?\nШаблон: Що має містити спільний шаблон листа?\nНавчання: Як впровадити це в команді?\nКонтроль: Як переконатися, що всі цього дотримуються?",
+      "ru": "В вашей команде каждый пишет письма клиентам немного по-своему: одни очень официальные и сухие, другие почти слишком неформальные. Из-за этого компания производит неоднородное впечатление снаружи.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nСтиль: Как найти единый, но дружелюбный тон?\nШаблон: Что должен содержать общий шаблон письма?\nОбучение: Как внедрить это в команде?\nКонтроль: Как убедиться, что все этого придерживаются?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: Mir ist aufgefallen, dass im Team jeder E-Mails an Kunden ein bisschen anders schreibt. Manche sind sehr steif, andere fast zu locker.",
+      "en": "<r>We should talk about a problem</r>: I've noticed that everyone in the team writes emails to customers a bit differently. Some are very stiff, others almost too casual.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: я помітила, що в команді кожен пише листи клієнтам трохи по-своєму. Одні дуже сухі, інші майже занадто невимушені.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: я заметила, что в команде каждый пишет письма клиентам немного по-своему. Одни очень сухие, другие почти слишком неформальные."
+    },
+    "a": {
+      "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: <g>Dadurch</g> wirkt unser Auftritt nach außen nicht einheitlich?",
+      "en": "I've noticed that too. <r>Did I understand you correctly</r>: <g>as a result</g> our image comes across as inconsistent?",
+      "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: <g>через це</g> наш образ виглядає неоднорідним ззовні?",
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: <g>из-за этого</g> наш образ выглядит неоднородным снаружи?"
+    },
+    "q1": {
+      "de": "Genau, und das kann bei Kunden einen unprofessionellen Eindruck hinterlassen. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, and that can leave an unprofessional impression on customers. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, і це може справити на клієнтів непрофесійне враження. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, и это может произвести на клиентов непрофессиональное впечатление. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten eine kleine Vorlage für Standard-Mails erstellen, <g>dazu</g> gehören zum Beispiel feste Formulierungen für Anrede und Schluss.",
+      "en": "<r>I have an idea</r>: we could create a small template for standard emails, <g>that includes</g>, for example, fixed phrases for the greeting and closing.",
+      "uk": "<r>У мене є ідея</r>: ми могли б створити невеликий шаблон для стандартних листів, <g>до нього входять</g>, наприклад, фіксовані формулювання для звернення й завершення.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы создать небольшой шаблон для стандартных писем, <g>в него входят</g>, например, фиксированные формулировки для обращения и завершения."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir dabei auch ein paar Beispiele für einen freundlichen, aber nicht zu lockeren Ton sammeln?",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also collect a few examples for a friendly but not too casual tone while we're at it?",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми заразом зберемо ще й кілька прикладів для доброзичливого, але не занадто невимушеного тону?",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы заодно соберём ещё и несколько примеров для дружелюбного, но не слишком неформального тона?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. Davon könnten vor allem die neuen Kolleginnen und Kollegen profitieren, die sich noch nicht so sicher fühlen.",
+      "en": "<r>Yes, I think that's a good idea</r>. The new colleagues who don't feel so confident yet could especially benefit from that.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Особливо від цього могли б виграти нові колеги, які ще не почуваються достатньо впевнено.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Особенно от этого могли бы выиграть новые коллеги, которые ещё не чувствуют себя достаточно уверенно."
+    },
+    "q3": {
+      "de": "Stimmt. Und wie führen wir die Vorlage am besten im Team ein?",
+      "en": "True. And how do we best introduce the template to the team?",
+      "uk": "Правда. А як нам краще впровадити шаблон у команді?",
+      "ru": "Верно. А как нам лучше внедрить шаблон в команде?"
+    },
+    "a3": {
+      "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir sie im nächsten Meeting kurz vorstellen und <g>damit</g> gleich zeigen, wie man sie in der Praxis benutzt.",
+      "en": "That's an excellent question. Maybe we could present it briefly at the next meeting and use it to show right away how it works in practice.",
+      "uk": "Це чудове запитання. Можливо, ми могли б коротко представити його на наступній нараді і одразу показати, як користуватися ним на практиці.",
+      "ru": "Это отличный вопрос. Возможно, мы могли бы коротко представить его на следующем совещании и сразу показать, как пользоваться им на практике."
+    },
+    "q4": {
+      "de": "Gute Idee. Und wie stellen wir sicher, dass sich am Ende auch wirklich alle daran halten?",
+      "en": "Good idea. And how do we make sure everyone actually sticks to it in the end?",
+      "uk": "Гарна ідея. А як нам переконатися, що зрештою всі справді цього дотримуються?",
+      "ru": "Хорошая идея. А как нам убедиться, что в итоге все действительно этого придерживаются?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> uns gegenseitig ab und zu eine Mail zur Kontrolle schicken, bevor sie an den Kunden rausgeht.",
+      "en": "<r>Maybe we could</r> occasionally send each other an email for a quick check before it goes out to the customer.",
+      "uk": "<r>Можливо, ми могли б</r> час від часу надсилати одне одному лист для перевірки, перш ніж він піде до клієнта.",
+      "ru": "<r>Возможно, мы могли бы</r> время от времени отправлять друг другу письмо для проверки, прежде чем оно уйдёт к клиенту."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir die Vorlage gleich diese Woche fertig machen, damit wir bald damit starten können?",
+      "en": "Good point. Should we finish the template this week, so we can get started soon?",
+      "uk": "Слушна думка. Завершимо шаблон цього тижня, щоб швидко почати ним користуватися?",
+      "ru": "Дельная мысль. Завершим шаблон на этой неделе, чтобы быстро начать им пользоваться?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte einen ersten Entwurf schreiben, wenn du schon mal ein paar gute Beispiel-Mails heraussuchst.",
+      "en": "Yes, that would make sense. I could write a first draft, if you look up a few good example emails in the meantime.",
+      "uk": "Так, це було б розумно. Я міг би написати перший варіант, якщо ти тим часом підбереш кілька хороших прикладів листів.",
+      "ru": "Да, это было бы разумно. Я мог бы написать первый вариант, если ты тем временем подберёшь несколько хороших примеров писем."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir erstellen eine gemeinsame Vorlage, stellen sie im nächsten Meeting vor, und wir schicken uns anfangs gegenseitig Mails zur Kontrolle.",
+      "en": "<r>Let's summarize</r>: we'll create a shared template, present it at the next meeting, and at first we'll send each other emails for a quick check.",
+      "uk": "<r>Підсумуємо</r>: ми створимо спільний шаблон, представимо його на наступній нараді, і спершу надсилатимемо одне одному листи для перевірки.",
+      "ru": "<r>Подведём итог</r>: мы создадим общий шаблон, представим его на следующем совещании, и сначала будем отправлять друг другу письма для проверки."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, damit wirken unsere E-Mails künftig deutlich einheitlicher und professioneller.",
+      "en": "Exactly, that's what we'll do. I think that way our emails will come across as much more consistent and professional in the future.",
+      "uk": "Саме так, так і зробимо. Гадаю, так наші листи стануть значно більш однорідними та професійними.",
+      "ru": "Именно так, так и сделаем. Думаю, так наши письма станут значительно более единообразными и профессиональными."
+    },
+    "gram": "textzusammenhang"
+  },
+  {
+    "id": "dlg_094",
+    "cat": "Das ist unser Angebot",
+    "task": {
+      "de": "Einer Kundin wurde letzte Woche ein Angebotsschreiben mit einem falschen Preis geschickt: Die Menge stimmte nicht mit den Konditionen überein, und die Versandkosten fehlten komplett. Die Kundin hat das inzwischen bemerkt und ist verunsichert.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nKorrektur: Wie geht ihr am besten mit dem Fehler gegenüber der Kundin um?\nUrsache: Woran könnte es liegen, dass solche Fehler passieren?\nKontrolle: Wie lassen sich Angebote künftig besser überprüfen?\nVertrauen: Wie könnt ihr das Vertrauen der Kundin wiederherstellen?",
+      "en": "Last week, a customer was sent an offer letter with an incorrect price: the quantity didn't match the terms, and the shipping costs were missing entirely. The customer has since noticed and is now unsettled.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nCorrection: What's the best way to handle the mistake with the customer?\nCause: What might be causing mistakes like this to happen?\nControl: How can offers be better checked in the future?\nTrust: How can you restore the customer's trust?",
+      "uk": "Минулого тижня клієнтці надіслали комерційну пропозицію з неправильною ціною: кількість не відповідала умовам, а вартість доставки взагалі була відсутня. Клієнтка це вже помітила і тепер почувається невпевнено.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nВиправлення: Як найкраще повідомити клієнтці про помилку?\nПричина: Чому можуть траплятися такі помилки?\nКонтроль: Як надалі краще перевіряти пропозиції?\nДовіра: Як відновити довіру клієнтки?",
+      "ru": "На прошлой неделе клиентке отправили коммерческое предложение с неправильной ценой: количество не соответствовало условиям, а стоимость доставки вообще отсутствовала. Клиентка уже это заметила и теперь чувствует себя неуверенно.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nИсправление: Как лучше всего сообщить клиентке об ошибке?\nПричина: Почему могут случаться такие ошибки?\nКонтроль: Как впредь лучше проверять предложения?\nДоверие: Как восстановить доверие клиентки?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: Einer Kundin wurde letzte Woche ein Angebot mit einem falschen Preis geschickt, und die Versandkosten fehlten komplett.",
+      "en": "<r>We should talk about a problem</r>: last week a customer was sent an offer with an incorrect price, and the shipping costs were missing entirely.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: минулого тижня клієнтці надіслали пропозицію з неправильною ціною, а вартість доставки взагалі була відсутня.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: на прошлой неделе клиентке отправили предложение с неправильной ценой, а стоимость доставки вообще отсутствовала."
+    },
+    "a": {
+      "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Die Kundin hat den Fehler selbst bemerkt und ist jetzt verunsichert?",
+      "en": "I've heard about that too. <r>Did I understand you correctly</r>: the customer noticed the mistake herself and is now unsettled?",
+      "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: клієнтка сама помітила помилку і тепер почувається невпевнено?",
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: клиентка сама заметила ошибку и теперь чувствует себя неуверенно?"
+    },
+    "q1": {
+      "de": "Genau, und das wirkt natürlich nicht besonders professionell. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, and that naturally doesn't come across as very professional. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, і це, звісно, виглядає не дуже професійно. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, и это, конечно, выглядит не очень профессионально. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir sollten der Kundin so schnell wie möglich ein korrigiertes Angebot schicken und uns kurz für den Fehler entschuldigen.",
+      "en": "<r>I have an idea</r>: we should send the customer a corrected offer as soon as possible and briefly apologize for the mistake.",
+      "uk": "<r>У мене є ідея</r>: нам варто якнайшвидше надіслати клієнтці виправлену пропозицію і коротко вибачитися за помилку.",
+      "ru": "<r>У меня есть идея</r>: нам стоит как можно скорее отправить клиентке исправленное предложение и коротко извиниться за ошибку."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir ihr zusätzlich einen kleinen Rabatt anbieten, um den Fehler wiedergutzumachen?",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also offer her a small discount to make up for the mistake?",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково запропонуємо їй невелику знижку, щоб компенсувати помилку?",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно предложим ей небольшую скидку, чтобы компенсировать ошибку?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. Das würde bestimmt zeigen, dass wir den Fehler ernst nehmen und die Kundin nicht verlieren wollen.",
+      "en": "<r>Yes, I think that's a good idea</r>. That would definitely show that we take the mistake seriously and don't want to lose the customer.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Це точно покаже, що ми серйозно ставимося до помилки і не хочемо втрачати клієнтку.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Это точно покажет, что мы серьёзно относимся к ошибке и не хотим терять клиентку."
+    },
+    "q3": {
+      "de": "Stimmt. Und wie verhindern wir, dass sowas noch einmal passiert?",
+      "en": "True. And how do we prevent this from happening again?",
+      "uk": "Правда. А як нам запобігти тому, щоб таке повторилося?",
+      "ru": "Верно. А как нам предотвратить повторение такого?"
+    },
+    "a3": {
+      "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir einführen, dass jedes Angebot vor dem Versand noch von einer zweiten Person kurz gegengelesen wird.",
+      "en": "That's an excellent question. Maybe we could introduce a rule that every offer gets briefly proofread by a second person before it's sent out.",
+      "uk": "Це чудове запитання. Можливо, ми могли б запровадити правило, що кожну пропозицію перед відправленням коротко перевіряє друга людина.",
+      "ru": "Это отличный вопрос. Возможно, мы могли бы ввести правило, что каждое предложение перед отправкой коротко проверяет второй человек."
+    },
+    "q4": {
+      "de": "Gute Idee. Und sollten wir dafür vielleicht auch eine kleine Checkliste erstellen, mit Preis, Menge, Konditionen und Versandkosten?",
+      "en": "Good idea. And should we maybe also create a small checklist for that, with price, quantity, terms, and shipping costs?",
+      "uk": "Гарна ідея. А може, ще й створимо для цього невеликий чекліст із ціною, кількістю, умовами й вартістю доставки?",
+      "ru": "Хорошая идея. А может, ещё создадим для этого небольшой чек-лист с ценой, количеством, условиями и стоимостью доставки?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> das sogar in unsere Angebotsvorlage direkt einbauen, dann wird nichts mehr vergessen.",
+      "en": "<r>Maybe we could</r> even build that directly into our offer template, then nothing gets forgotten anymore.",
+      "uk": "<r>Можливо, ми могли б</r> навіть вбудувати це прямо в наш шаблон пропозиції, тоді нічого більше не забудеться.",
+      "ru": "<r>Возможно, мы могли бы</r> даже встроить это прямо в наш шаблон предложения, тогда ничего больше не забудется."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir das gleich diese Woche umsetzen, damit wir schnell wieder sicherer sind?",
+      "en": "Good point. Should we implement that this week, so we feel more confident again quickly?",
+      "uk": "Слушна думка. Впровадимо це цього тижня, щоб швидко знову почуватися впевненіше?",
+      "ru": "Дельная мысль. Внедрим это на этой неделе, чтобы быстро снова чувствовать себя увереннее?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte die Checkliste erstellen, wenn du dich um das korrigierte Angebot für die Kundin kümmerst.",
+      "en": "Yes, that would make sense. I could create the checklist, if you take care of the corrected offer for the customer.",
+      "uk": "Так, це було б розумно. Я міг би створити чекліст, якщо ти займешся виправленою пропозицією для клієнтки.",
+      "ru": "Да, это было бы разумно. Я мог бы создать чек-лист, если ты займёшься исправленным предложением для клиентки."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Du schickst der Kundin heute noch ein korrigiertes Angebot mit Rabatt, und ich erstelle eine Checkliste fürs Gegenlesen künftiger Angebote.",
+      "en": "<r>Let's summarize</r>: you'll send the customer a corrected offer with a discount today, and I'll create a checklist for proofreading future offers.",
+      "uk": "<r>Підсумуємо</r>: ти сьогодні ж надішлеш клієнтці виправлену пропозицію зі знижкою, а я створю чекліст для перевірки майбутніх пропозицій.",
+      "ru": "<r>Подведём итог</r>: ты сегодня же отправишь клиентке исправленное предложение со скидкой, а я создам чек-лист для проверки будущих предложений."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so gewinnen wir das Vertrauen der Kundin zurück und vermeiden solche Fehler in Zukunft.",
+      "en": "Exactly, that's what we'll do. I think that way we'll win back the customer's trust and avoid mistakes like this in the future.",
+      "uk": "Саме так, так і зробимо. Гадаю, так ми повернемо довіру клієнтки і уникнемо подібних помилок у майбутньому.",
+      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентки и избежим подобных ошибок в будущем."
     },
     "gram": ""
   }
