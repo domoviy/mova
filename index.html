@@ -528,19 +528,6 @@ body{
 .lp-chapter-head.done{
   background:rgba(201,168,76,.06);
 }
-/* "Ти тут" — велика кольорова банер-шапка активної глави (як у
-   Duolingo "ЧАСТИНА N, РОЗДІЛ ..."), у фірмових кольорах застосунку
-   (forest/gold) замість копіювання чужого помаранчевого. */
-.lp-chapter-head.current{
-  background:linear-gradient(135deg, var(--forest), #14351f);
-  border-bottom:none;padding:18px 16px;
-}
-.lp-chapter-head.current .lp-chapter-title{color:#fff;}
-.lp-chapter-head.current .lp-chapter-sub{color:rgba(255,255,255,.65);}
-.lp-chapter-head.current .lp-chapter-num{
-  background:var(--gold);color:var(--forest);width:34px;height:34px;font-size:16px;
-}
-.lp-chapter-head.current .lp-chapter-arrow{color:rgba(255,255,255,.7);}
 .lp-chapter-num{
   width:28px;height:28px;border-radius:50%;
   background:var(--forest);color:var(--gold);
@@ -572,87 +559,15 @@ body{
   position:relative;
 }
 .lp-chapter.open .lp-modules{display:flex;}
+/* "Стежка" — з'єднувальна пунктирна лінія позаду іконок вузлів,
+   той самий Duolingo-принцип "послідовність кроків, що йдуть один за
+   одним", без важкої SVG-кривої (яку неможливо перевірити наосліп). */
+.lp-modules::before{
+  content:'';position:absolute;left:33px;top:16px;bottom:16px;width:2px;
+  background:repeating-linear-gradient(to bottom, var(--border) 0 6px, transparent 6px 13px);
+  z-index:0;pointer-events:none;
+}
 .lp-module-group{ position:relative; z-index:1; }
-
-/* ── Звивиста стежка (Duolingo-стиль): кругла "гема" на крок, ─────
-   зигзаг-зсув по горизонталі, розділювач-назва перед кожним модулем.
-   Технічно уроки й діалоги всередині генеруються динамічно
-   (buildLearningPath), але сама стежка дає відчуття "я йду вперед". */
-.lp-path{
-  display:flex;flex-direction:column;align-items:center;
-  gap:20px;padding:20px 6px 6px;
-}
-.lp-path-node-wrap{
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  transition:transform .2s;
-}
-.lp-node{
-  width:60px;height:60px;border-radius:50%;flex-shrink:0;
-  display:flex;align-items:center;justify-content:center;
-  font-size:24px;position:relative;cursor:pointer;
-  background:var(--forest);
-  box-shadow:0 5px 0 rgba(13,43,26,.35), 0 7px 12px rgba(13,43,26,.16);
-  transition:transform .12s, box-shadow .12s;
-}
-.lp-node:active{ transform:translateY(3px); box-shadow:0 2px 0 rgba(13,43,26,.35); }
-.lp-node-icon{ position:relative; z-index:1; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); }
-.lp-node.lp-node-dialogue{
-  background:var(--accent, #4a7c9d);
-  box-shadow:0 5px 0 rgba(30,70,95,.4), 0 7px 12px rgba(30,70,95,.18);
-}
-.lp-node.done{
-  background:var(--gold);
-  box-shadow:0 5px 0 rgba(160,128,40,.4), 0 7px 12px rgba(160,128,40,.16);
-}
-.lp-node.locked{
-  background:var(--border);cursor:default;
-  box-shadow:0 5px 0 rgba(0,0,0,.10);
-}
-.lp-node.locked:active{ transform:none; }
-.lp-node.current{
-  width:84px;height:84px;font-size:34px;
-  box-shadow:0 7px 0 rgba(13,43,26,.35), 0 10px 18px rgba(13,43,26,.2);
-  animation:lpNodeBreathe 1.8s ease-in-out infinite;
-}
-.lp-node.lp-node-dialogue.current{
-  box-shadow:0 7px 0 rgba(30,70,95,.4), 0 10px 18px rgba(30,70,95,.22);
-}
-.lp-node.current .lp-node-current-ring{ inset:-12px; border-width:4px; }
-@keyframes lpNodeBreathe{
-  0%,100%{ transform:scale(1); }
-  50%{ transform:scale(1.06); }
-}
-.lp-node-current-ring{
-  position:absolute;inset:-9px;border:3px solid var(--gold);border-radius:50%;
-  opacity:.5;animation:lpRingPulse 1.8s ease-in-out infinite;
-}
-@keyframes lpRingPulse{
-  0%,100%{ transform:scale(1); opacity:.55; }
-  50%{ transform:scale(1.15); opacity:.1; }
-}
-.lp-node-label{
-  font-size:12px;font-weight:800;color:var(--forest);
-  background:var(--gold);padding:4px 12px;border-radius:10px;
-  box-shadow:0 2px 6px rgba(13,43,26,.15);white-space:nowrap;
-}
-.lp-node-progress{
-  font-size:10px;font-weight:700;color:var(--muted);
-}
-.lp-module-divider{
-  display:flex;align-items:center;gap:10px;width:100%;
-  margin:6px 0 -4px;padding:0 4px;
-}
-.lp-module-divider span:not(.lp-module-divider-text){
-  flex:1;height:1px;background:var(--border);
-}
-.lp-module-divider-text{
-  font-size:var(--fs-tertiary);font-weight:800;color:var(--muted);
-  white-space:nowrap;text-transform:uppercase;letter-spacing:.02em;
-}
-.lp-bonus-row{
-  display:flex;flex-direction:column;gap:8px;
-  padding:4px 10px 0;
-}
 /* Групуємо картки ОДНОГО модуля (Урок, Діалог, Граматика-бонус,
    Словник-бонус) тісніше одна до одної (4px), а .lp-modules{gap:14px}
    вище лишається відстанню МІЖ різними модулями — той самий принцип
@@ -729,6 +644,20 @@ body{
   background:rgba(201,168,76,.1);
 }
 .lp-module-bonus .lp-module-title{color:var(--gold);}
+/* Вузол-діалог — ПОВНОЦІННИЙ, обов'язковий крок шляху (Урок-Урок-
+   Діалог-Урок), тому виглядає як звичайний .lp-module (суцільна
+   рамка, не пунктирна як у .lp-module-bonus), лише інший акцентний
+   колір іконки/рамки — щоб тип кроку читався з першого погляду. */
+.lp-dialogue-node{
+  border-color:rgba(74,124,157,.45);
+}
+.lp-dialogue-node .lp-module-icon{background:var(--accent, #4a7c9d);}
+.lp-dialogue-node.done .lp-module-icon{background:var(--gold);}
+.lp-dialogue-node.locked .lp-module-icon{background:var(--border);}
+.lp-dialogue-node.current{
+  border-color:var(--accent, #4a7c9d);border-width:2px;
+  box-shadow:0 4px 18px rgba(74,124,157,.28);
+}
 .lp-module-icon{
   width:36px;height:36px;border-radius:10px;
   background:var(--forest);
@@ -1866,10 +1795,6 @@ body.lesson-active .vocab-top{
   margin-top:8px;padding-top:14px;border-top:1px solid var(--soft);
 }
 .lf-unit-term{font-size:var(--fs-card);font-weight:700;line-height:1.3;color:var(--ink)}
-/* Karaoke-підсвітка слова, що зараз озвучується (синхронно з аудіо,
-   таймінг — .words.json з gen_audio.py, Edge TTS WordBoundary). */
-.tts-word{ transition:background-color .1s, color .1s; border-radius:4px; padding:0 1px; }
-.tts-word.active{ background:var(--gold); color:var(--forest); }
 .lf-unit-short{font-size:var(--fs-card);font-weight:400;color:var(--muted);margin-top:2px}
 /* Довгий текст (приклад-речення: Vocab def, SB sentence/переклад/пояснення,
    Dialogue q/a/переклади) — звичайна вага, щоб не зливатись у суцільний
@@ -3081,7 +3006,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '445-36eee62';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5515,78 +5440,7 @@ function hasAudioFor(cardId, field, lang){
 
 // fetchAudioBlob → замінено на fetchAudioBuffer (Web Audio API)
 
-// ── ПІДСВІЧУВАННЯ СЛІВ СИНХРОННО З АУДІО (karaoke-style) ─────────
-// Той самий принцип, що й Read Aloud в Edge — але тут таймінг слів
-// приходить не з браузерного TTS у реальному часі, а з сайдкар-файлу
-// <mp3>.words.json, згенерованого офлайн разом з аудіо (gen_audio.py,
-// Edge TTS WordBoundary). Якщо файл відсутній (старе аудіо, ще не
-// перегенероване/backfilled, чи 404) — просто мовчки нема підсвітки,
-// решта відтворення працює як завжди.
-var _ttsWordTimingCache = new Map(); // url -> Array<{word,start,end}> | null (404/помилка)
-async function fetchWordTiming(mp3Url){
-  var url = mp3Url.replace(/\.mp3$/, '.words.json');
-  if(_ttsWordTimingCache.has(url)) return _ttsWordTimingCache.get(url);
-  try{
-    var r = await fetch(url);
-    if(!r.ok){ _ttsWordTimingCache.set(url, null); return null; }
-    var data = await r.json();
-    if(!Array.isArray(data) || !data.length){ _ttsWordTimingCache.set(url, null); return null; }
-    _ttsWordTimingCache.set(url, data);
-    return data;
-  }catch(e){ _ttsWordTimingCache.set(url, null); return null; }
-}
-
-// Обгортає "слівні" токени тексту всередині el у <span class="tts-word">,
-// зберігаючи пробіли/пунктуацію поза span-ами незмінними. Індекс i-го
-// span відповідає i-й позиції в масиві таймінгу (обидва йдуть за
-// порядком появи слів у тому самому вихідному тексті, який озвучувався).
-function wrapWordsForHighlight(el){
-  if(!el) return [];
-  var text = el.textContent;
-  // \p{L}\p{N}' — літери/цифри/апостроф (Ich, arbeite, 24-Stunden, it's)
-  var html = text.replace(/[\p{L}\p{N}']+/gu, function(word){
-    return '<span class="tts-word">'+word+'</span>';
-  });
-  el.innerHTML = html;
-  return Array.prototype.slice.call(el.querySelectorAll('.tts-word'));
-}
-
-function clearWordHighlight(el){
-  if(!el) return;
-  el.querySelectorAll('.tts-word.active').forEach(function(s){ s.classList.remove('active'); });
-}
-
-// rAF-цикл підсвітки — один активний за раз (gen — той самий playGen,
-// що й у speak()/playPregenAudio(), щоб стара підсвітка не продовжувала
-// малювати кадри поверх уже іншої картки).
-var _ttsHighlightRAF = null;
-function _runWordHighlight(audioEl, spans, words, gen){
-  if(_ttsHighlightRAF) cancelAnimationFrame(_ttsHighlightRAF);
-  var lastIdx = -1;
-  function tick(){
-    if(playGen !== gen || audioEl.paused || audioEl.ended){
-      _ttsHighlightRAF = null;
-      return;
-    }
-    var t = audioEl.currentTime;
-    // Лінійний пошук зазвичай достатній (десятки слів на картку), і
-    // майже завжди починаємо з lastIdx (природний прогрес часу вперед).
-    var idx = -1;
-    for(var i=0; i<words.length; i++){
-      if(t >= words[i].start && t < words[i].end){ idx = i; break; }
-      if(t < words[i].start) break;
-    }
-    if(idx !== lastIdx){
-      if(lastIdx>=0 && spans[lastIdx]) spans[lastIdx].classList.remove('active');
-      if(idx>=0 && spans[idx]) spans[idx].classList.add('active');
-      lastIdx = idx;
-    }
-    _ttsHighlightRAF = requestAnimationFrame(tick);
-  }
-  _ttsHighlightRAF = requestAnimationFrame(tick);
-}
-
-async function playPregenAudio(url, onEnd, gen, highlightEl){
+async function playPregenAudio(url, onEnd, gen){
   // Зупиняємо попереднє відтворення
   const a = getSharedAudio();
   a.pause();
@@ -5597,10 +5451,7 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
   logErr('audio:try','→ pregen',fname);
 
   const mkey = urlToAudioMkey(url);
-  const [blobUrl, wordTiming] = await Promise.all([
-    fetchBlobUrl(url, 8000, mkey),
-    highlightEl ? fetchWordTiming(url) : Promise.resolve(null),
-  ]);
+  const blobUrl = await fetchBlobUrl(url, 8000, mkey);
 
   if(playGen !== gen){ logErr('audio:gen','cancelled',fname); return; }
   if(!blobUrl){
@@ -5609,17 +5460,10 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
     return;
   }
 
-  // Готуємо span-и ДО старту відтворення — таймінг уже маємо (fetch вище,
-  // паралельно з blobUrl). Якщо .words.json відсутній (старе аудіо, ще
-  // не backfilled, чи 404) — wordTiming===null, підсвітки просто не буде.
-  const highlightSpans = (highlightEl && wordTiming) ? wrapWordsForHighlight(highlightEl) : null;
-
   let _done = false;
   const finish = (src)=>{
     if(_done) return; _done = true;
     clearTimeout(wdog);
-    if(_ttsHighlightRAF){ cancelAnimationFrame(_ttsHighlightRAF); _ttsHighlightRAF = null; }
-    if(highlightEl) clearWordHighlight(highlightEl);
     // Якщо це вже не активне відтворення (скасоване через stopTTS/новий
     // виклик speak() для іншої картки/поля) — НЕ торкаємось спільного
     // <audio> елемента. Інакше застарілий watchdog (15с) міг через
@@ -5645,10 +5489,7 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
 
   const playP = a.play();
   if(playP){
-    playP.then(()=>{
-      logErr('audio:playing','▶',fname);
-      if(highlightSpans && highlightSpans.length) _runWordHighlight(a, highlightSpans, wordTiming, gen);
-    })
+    playP.then(()=>{ logErr('audio:playing','▶',fname); })
          .catch(e=>{
            logErr('audio:play()',e.message,fname);
            // Fallback: окремий елемент
@@ -5656,9 +5497,7 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
            fallback.onended = ()=>finish('fb-ok');
            fallback.onerror = ()=>finish('fb-err');
            currentAudio = fallback;
-           fallback.play().then(()=>{
-             if(highlightSpans && highlightSpans.length) _runWordHighlight(fallback, highlightSpans, wordTiming, gen);
-           }).catch(e2=>{
+           fallback.play().catch(e2=>{
              logErr('audio:fb-play',e2.message,fname);
              finish('fb-play-err');
            });
@@ -5681,7 +5520,7 @@ function _waitForPriorityClear(){
   });
 }
 
-async function speak(text, lang, onEnd, cardId, field, silent, highlightEl){
+async function speak(text, lang, onEnd, cardId, field, silent){
   stopTTS();
   const gen = playGen;
   let _ended = false;
@@ -5712,7 +5551,7 @@ async function speak(text, lang, onEnd, cardId, field, silent, highlightEl){
   if(cachedAndValid){
     logErr('speak','cached → pregen',fname);
     markAudioPlayedForCard(cardId);
-    playPregenAudio(url, safeEnd, gen, highlightEl);
+    playPregenAudio(url, safeEnd, gen);
     return;
   }
 
@@ -5731,7 +5570,7 @@ async function speak(text, lang, onEnd, cardId, field, silent, highlightEl){
   if(blobUrl){
     logErr('speak','blob→ pregen',fname);
     markAudioPlayedForCard(cardId);
-    playPregenAudio(url, safeEnd, gen, highlightEl);
+    playPregenAudio(url, safeEnd, gen);
   } else {
     logErr('speak','fetch failed → no audio',fname);
     failSilently();
@@ -7182,27 +7021,8 @@ function renderLernpfad(){
 
     const chEl = document.createElement('div');
     chEl.className = 'lp-chapter'+((anyDone||hasCurrent)?' open':'');
-
-    // Будуємо звивисту стежку: розділювач-назва перед кожним новим
-    // модулем + кругла "гема" на кожен крок (урок/діалог), з
-    // зигзаг-зсувом. Граматика/словник-бонуси модуля — виносимо в
-    // окремий рядок під стежкою (рендеримо лише раз, на ОСТАННЬОМУ
-    // суб-уроці модуля — інакше та сама бонус-картка дублювалась би
-    // на кожному суб-уроці).
-    let prevParentId = null, pathHtml = '', bonusHtml = '';
-    ch.modules.forEach((m, idx)=>{
-      if(m._parentModuleId !== prevParentId){
-        pathHtml += renderModuleDivider(m);
-        prevParentId = m._parentModuleId;
-      }
-      pathHtml += renderPathNode(m, idx);
-      if(m.type === 'lesson' && m._subIndex === m._subTotal){
-        bonusHtml += renderGrammarBonusCard(m) + renderModuleVocabCard(m);
-      }
-    });
-
     chEl.innerHTML = `
-      <div class="lp-chapter-head ${allDone?'done':''} ${hasCurrent?'current':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
+      <div class="lp-chapter-head ${allDone?'done':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
         <div class="lp-chapter-num ${allDone?'done':''}">${ch.num}</div>
         <div class="lp-chapter-info">
           <div class="lp-chapter-title">${ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de}</div>
@@ -7213,8 +7033,11 @@ function renderLernpfad(){
         <div class="lp-chapter-arrow">▼</div>
       </div>
       <div class="lp-modules">
-        <div class="lp-path">${pathHtml}</div>
-        ${bonusHtml ? `<div class="lp-bonus-row">${bonusHtml}</div>` : ''}
+        ${ch.modules.map(m=>`<div class="lp-module-group">${
+          m.type==='dialogue'
+            ? renderDialoguePathNode(m)
+            : renderModuleCard(m)+renderGrammarBonusCard(m)+renderModuleVocabCard(m)
+        }</div>`).join('')}
         ${reviewHtml}
         ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
         ${renderChapterVocabCard(ch.num, reviewUnlocked)}
@@ -7284,48 +7107,28 @@ function lernpfadScrollToLastLesson(){
   }catch(e){}
 }
 
-// Зигзаг-зсув по горизонталі для кожного кроку стежки — те саме
-// відчуття "звивистого шляху", що й у Duolingo, без важкої SVG-кривої.
-function _lpZigzagOffset(i){
-  const pattern = [0, 46, 72, 46, 0, -46, -72, -46];
-  return pattern[i % pattern.length];
-}
-
-// Розділювач-назва модуля між групами кроків стежки — показує НАЗВУ
-// модуля (як "Робота: Готуйся до співбесіди" у Duolingo), навіть
-// попри те, що всередині модуль розрізаний на кілька суб-уроків.
-function renderModuleDivider(lesson){
-  const title = lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de;
-  return `<div class="lp-module-divider"><span></span><span class="lp-module-divider-text">${t('lp_module_prefix')} ${lesson.module} · ${title}</span><span></span></div>`;
-}
-
-// Один крок звивистої стежки — кругла "гема": урок (📖) або діалог
-// (💬), з окремим кольором/іконкою по типу. cardIds однакові для обох
-// типів технічно (лекція чи dlgCards), тому lessonProgress/
-// lessonUnlocked відпрацьовують без жодних умов на type.
-function renderPathNode(node, idx){
+function renderDialoguePathNode(node){
   const {done, total, pct} = lessonProgress(node);
-  const unlocked  = lessonUnlocked(node);
-  const isDone    = pct >= 80;
+  const unlocked = lessonUnlocked(node);
+  const isDone   = pct >= 80;
   const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
-  const isDialogue = node.type === 'dialogue';
-  const icon = !unlocked ? '🔒' : isDone ? '★' : isDialogue ? '💬' : '📖';
-  const typeClass   = isDialogue ? 'lp-node-dialogue' : 'lp-node-lesson';
-  const statusClass = isDone ? 'done' : !unlocked ? 'locked' : isCurrent ? 'current' : '';
-  const offset = _lpZigzagOffset(idx);
-  const clickHandler = !unlocked ? '' :
-    isDialogue ? `startModuleDialogueBonus('${node.id}')` : `startLessonFlow('${node.id}')`;
-  const chipLabel = pct > 0
-    ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
-    : ({uk:'▶ Почати',     en:'▶ Start',    ru:'▶ Начать',     de:'▶ Starten'}[uiLang] || '▶ Starten');
-  return `<div class="lp-path-node-wrap" style="transform:translateX(${offset}px)">
-    <div class="lp-node ${typeClass} ${statusClass}" id="${isCurrent?'lp-current-module':''}"
-      onclick="${clickHandler}">
-      ${isCurrent ? '<div class="lp-node-current-ring"></div>' : ''}
-      <span class="lp-node-icon">${icon}</span>
+  const icon = isDone ? '✅' : !unlocked ? '🔒' : '💬';
+  const statusClass = isDone?'done':!unlocked?'locked':isCurrent?'current':'';
+  const label = {de:'Dialog', uk:'Діалог', en:'Dialogue', ru:'Диалог'}[uiLang] || 'Dialog';
+  const chipLabel = pct>0
+    ? (uiLang==='uk'?'▶ Продовжити':uiLang==='en'?'▶ Continue':uiLang==='ru'?'▶ Продолжить':'▶ Weiter')
+    : (uiLang==='uk'?'▶ Почати':uiLang==='en'?'▶ Start':uiLang==='ru'?'▶ Начать':'▶ Starten');
+  const currentChip = isCurrent ? `<div class="lp-module-current-chip">${chipLabel}</div>` : '';
+  return `<div class="lp-module lp-dialogue-node ${statusClass}" id="${isCurrent?'lp-current-module':''}"
+    onclick="${unlocked?`startModuleDialogueBonus('${node.id}')`:''}"
+    style="${unlocked?'':'pointer-events:none'}">
+    ${currentChip}
+    <div class="lp-module-icon">${icon}</div>
+    <div class="lp-module-body">
+      <div class="lp-module-title">${label}</div>
+      <div class="lp-module-meta">${!unlocked ? t('lp_locked') : done+' '+t('lp_of')+' '+total}</div>
+      ${unlocked?`<div class="lp-module-prog"><div class="lp-module-prog-fill" style="width:${pct}%"></div></div>`:''}
     </div>
-    ${isCurrent ? `<div class="lp-node-label">${chipLabel}</div>`
-      : (unlocked && !isDone ? `<div class="lp-node-progress">${done}/${total}</div>` : '')}
   </div>`;
 }
 
@@ -10432,10 +10235,6 @@ var _lfSBHandlers = {
 
   onNext: function(unit){
     if(typeof sbMarkLearned === 'function') sbMarkLearned(unit.cardId);
-    // Той самий захист, що й у vocab/dialogue (див. коментарі там):
-    // без свайпу totalPlays лишається 0, lessonProgress() ніколи не
-    // зарахує картку як "пройдену". q=3 — нейтральна оцінка.
-    if(!_lfUnitSwipedThisView) srsRate(unit.cardId, 3);
   },
 };
 
@@ -10668,12 +10467,8 @@ var _lfDlgHandlers = {
     var catEl = document.getElementById('lf-unit-cat');
     if(catEl) catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
 
-    // Свайп для оцінки тут вимкнено (див. коментар біля SwipeManager.init
-    // у lfRunUnitStep) — репліку розмови неприродно оцінювати жестом
-    // "знаю/не знаю". Підказку про свайп тому не показуємо: єдина дія
-    // тут — сам скрол історії й тап "Далі".
     var hintEl = document.getElementById('lf-unit-hint');
-    if(hintEl) hintEl.textContent = '';
+    if(hintEl) hintEl.textContent = typeof t==='function' ? t('hint_srs_lesson') : '↑ Не знаю · ↓ Знаю';
 
     var body = document.getElementById('lf-unit-body');
     if(!body) return;
@@ -10783,11 +10578,22 @@ var _lfDlgHandlers = {
     }];
   },
 
-  // onSwipeUp/onSwipeDown свідомо ПРИБРАНО: SwipeManager для діалогу
-  // більше не підключається (див. lfRunUnitStep) — оцінка репліки
-  // жестом "знаю/не знаю" неприродна для розмови, і перехоплення
-  // touchstart заважало звичайному скролу історії. Присутність
-  // користувача фіксує сам тап "Далі" — див. onNext нижче.
+  onSwipeUp: function(unit){
+    srsRate(unit.cardId, 1);
+    var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
+    showSrsHint('🔄', _rep, 1, 'lf-unit-card');
+  },
+
+  onSwipeDown: function(unit){
+    srsRate(unit.cardId, 5);
+    var d = srsLoad(unit.cardId);
+    var days = d.interval || 1;
+    var _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
+    var _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
+    var _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+    var label = days===1 ? _tmr : _in+days+_day;
+    showSrsHint('✅', label, 5, 'lf-unit-card');
+  },
 
   // Кнопка "Далі" лишається як і була: кожен тап — це один крок. Раніше
   // один юніт = одна картка (перший тап розкривав відповідь, другий ішов
@@ -10797,14 +10603,6 @@ var _lfDlgHandlers = {
   // картки, до першої репліки НАСТУПНОЇ незалежної картки.
   onNext: function(unit){
     trackCardToday(unit.cardId);
-    // Свайп у діалозі неприродний (це репліка розмови, не слово для
-    // запам'ятовування) — більшість людей просто тапає "Далі". Без цього
-    // totalPlays лишався 0, і lessonProgress() ніколи не зараховував
-    // репліку як "пройдену" — наступний крок шляху не розблоковувався,
-    // навіть коли діалог був повністю прослуханий/прочитаний. q=3 —
-    // нейтральна оцінка ("бачив, не оцінював"), не псує SM-2-розклад
-    // так, як зробила б хибна оцінка "не знаю"/"знаю" за замовчуванням.
-    if(!_lfUnitSwipedThisView) srsRate(unit.cardId, 3);
   },
 };
 
@@ -11052,20 +10850,6 @@ function lfRunUnitStep(units, handlers, onAllDone, opts){
   setTimeout(function(){
     var el = document.getElementById('lf-unit-card');
     if(!el) return;
-    // Діалог — свайп вгору/вниз для SM-2-оцінки тут навмисно ВИМКНЕНО:
-    // оцінювати кожну репліку розмови жестом "знаю/не знаю" неприродно
-    // (це не окреме слово для запам'ятовування), і SwipeManager.init()
-    // перехоплює touchstart (preventDefault), що заважало б звичайному
-    // скролу історії повідомлень, як у месенджері. Замість свайпу —
-    // сам факт натискання "Далі" на репліку (onNext, див. _lfDlgHandlers)
-    // фіксує, що користувач був присутній і бачив повідомлення.
-    // SwipeManager.destroy() про всяк випадок — якщо картка щойно
-    // перевикористана з попереднього кроку (vocab/SB), де свайп був
-    // активний, знімаємо старі слухачі, а не просто не додаємо нові.
-    if(handlers === _lfDlgHandlers){
-      SwipeManager.destroy(el);
-      return;
-    }
     SwipeManager.init(el, {
       onTap:   function(){ /* заблоковано — навігація лише через "Далі" */ },
       onLeft:  function(){ /* заблоковано */ },
@@ -11078,22 +10862,9 @@ function lfRunUnitStep(units, handlers, onAllDone, opts){
   _lfUnitShow();
 }
 
-// Прапорець: чи оцінив користувач ПОТОЧНИЙ юніт свайпом (↑/↓) під час
-// цього перегляду. Скидається при кожному новому _lfUnitShow(). Потрібен,
-// щоб onNext() кожного handler'а міг підстрахувати прогрес/розблокування
-// (lessonProgress рахує лише картки з totalPlays>0, а totalPlays пишеться
-// ЛИШЕ всередині srsRate()) — без свайпу картка інакше НІКОЛИ не
-// зараховується як "пройдена", хоч користувач її й прочитав/прослухав.
-// Найпомітніше це було в діалогах: свайп там неприродний (це не
-// одиночне слово для запам'ятовування, а репліка в розмові), тож
-// більшість людей просто тапали "Далі" — і наступний крок шляху НІКОЛИ
-// не розблоковувався, попри те що діалог був повністю пройдений.
-var _lfUnitSwipedThisView = false;
-
 function _lfUnitSwipe(dir){
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit || !_lfUnit.handlers) return;
-  _lfUnitSwipedThisView = true;
   // Свайп завжди впливає на SM-2 (фідбек showSrsHint вже всередині
   // onSwipeUp/onSwipeDown через srsSwipe-аналог) — аудіо/UI не змінюємо.
   if(dir === 'up')   _lfUnit.handlers.onSwipeUp(unit);
@@ -11110,7 +10881,6 @@ function _lfUnitShow(){
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit){ _lfUnitStepDone(); return; }
 
-  _lfUnitSwipedThisView = false;
   var old = document.getElementById('lf-next-row');
   if(old) old.remove();
 
@@ -11124,16 +10894,7 @@ function _lfUnitShow(){
     : (_lfUnit.handlers.getAudioText(unit) || []);
 
   var afterPlay = function(){
-    // Останній юніт ОСТАННЬОГО практичного кроку уроку (LF.steps завжди
-    // закінчується 'result') — авто-перехід без кнопки "Далі", тим самим
-    // шляхом, що вже й так використовує режим прослуховування
-    // (autoAdvance): _lfUnitAdvance() → _lfUnitStepDone() → lfStepDone()
-    // → (600мс) → lfNextStep() → крок 'result' → lfShowResult() показує
-    // святкування ОДРАЗУ, без проміжного натискання. Для решти карток
-    // уроку "Далі" лишається — тут навмисна пауза для читання/свайпу.
-    var isVeryLastUnit = LF && _lfUnit.idx === _lfUnit.units.length - 1
-      && LF.step === LF.steps.length - 2; // крок прямо перед 'result'
-    if(_lfUnit.autoAdvance || isVeryLastUnit){
+    if(_lfUnit.autoAdvance){
       setTimeout(_lfUnitAdvance, V.pause);
     } else {
       _lfUnitShowNextBtn();
@@ -11164,15 +10925,10 @@ function _lfUnitPlay(items, onDone){
     if(!item || !item.text){ next(); return; }
     // item.lang — опційно (мультимовне прослуховування); за замовчуванням
     // primaryLang(), як і раніше для всіх існуючих викликів.
-    // highlightEl шукаємо за data-audio-field="<field>" всередині поточної
-    // картки — опційна розмітка: якщо render(unit) конкретного типу юніта
-    // її не проставив, highlightEl буде null і speak() просто програє без
-    // підсвітки (нічого не ламається, підсвітка — суто адитивна фіча).
-    var highlightEl = document.querySelector('#lf-unit-card [data-audio-field="'+item.field+'"]');
     speak(item.text, item.lang || primaryLang(), function(){
       if(myToken !== _lfUnitPlayToken) return;
       setTimeout(next, V.pause);
-    }, _lfUnit.units[_lfUnit.idx].cardId, item.field, false, highlightEl);
+    }, _lfUnit.units[_lfUnit.idx].cardId, item.field);
   }
   next();
 }
@@ -11411,8 +11167,8 @@ var _lfVocabHandlers = {
       var shortTranslation = ul !== pl ? (card.short?.[ul] || '') : '';
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
-          '<div><div class="lf-unit-term" data-audio-field="term">'+term+'</div>'+
-          (short ? '<div class="lf-unit-short" data-audio-field="short">'+short+'</div>' : '')+'</div>'+
+          '<div><div class="lf-unit-term">'+term+'</div>'+
+          (short ? '<div class="lf-unit-short">'+short+'</div>' : '')+'</div>'+
         '</div>'+
         (termTranslation ?
           '<div class="lf-unit-main-row">'+
@@ -11425,7 +11181,7 @@ var _lfVocabHandlers = {
       var defTranslation = ul !== pl ? (card.def?.[ul] || '') : '';
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-sentence" data-audio-field="def">'+def+'</div>'+
+          '<div class="lf-unit-sentence">'+def+'</div>'+
         '</div>'+
         (defTranslation ?
           '<div class="lf-unit-main-row">'+
@@ -11531,15 +11287,6 @@ var _lfVocabHandlers = {
 
   onNext: function(unit){
     trackCardToday(unit.cardId);
-    // Той самий захист, що й у діалогу (див. коментар там): якщо
-    // користувач жодного разу не свайпнув картку під час цього
-    // перегляду — totalPlays лишається 0, і lessonProgress() ніколи не
-    // зарахує її як "пройдену" (навіть попри те, що картку показано й
-    // озвучено). q=3 — нейтральна оцінка, не підмінює явний свайп.
-    if(!_lfUnitSwipedThisView){
-      var side = unit.side === 'term' ? undefined : unit.side;
-      srsRate(unit.cardId, 3, side);
-    }
   },
 };
 
@@ -13351,18 +13098,15 @@ function renderFavGrid(){
 }
 function openFavCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
-  // Черга — тільки обрані картки, РОТОВАНА так, щоб клікнута картка йшла
-  // першою (той самий патерн, що й openDialogueCard). Важливо: просте
-  // виставлення V.idx тут НЕ працює — showView('vocab') одразу запускає
-  // startVocabCardMode(), який будує чергу "units" з V.queue від самого
-  // початку (_lfVocabBuildUnits) і повністю ігнорує V.idx/renderVocabCard,
-  // тому завжди показувало першу картку черги замість клікнутої.
+  // Черга — тільки обрані картки
   const favQueue=VOCAB.filter(v=>isFavorite(v.id));
+  V.queue=favQueue;
+  // Знаходимо позицію картки в черзі обраних
   const qIdx=favQueue.findIndex(v=>v.id===card.id);
-  V.queue = qIdx!==-1 ? favQueue.slice(qIdx).concat(favQueue.slice(0,qIdx)) : favQueue;
-  V.idx=0;
+  V.idx=qIdx!==-1?qIdx:0;
   V.flipped=false;
   showView('vocab');
+  setTimeout(()=>renderVocabCard(),50);
 }
 
 // ── STATS ─────────────────────────────────────────────────────
