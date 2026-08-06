@@ -34,6 +34,14 @@ COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '20'))
 # зростає експоненційно (спроба 2 → ×2, спроба 3 → ×4 і т.д.).
 RETRY_ATTEMPTS = int(os.environ.get('TTS_RETRY_ATTEMPTS', '3'))
 RETRY_BASE_DELAY = float(os.environ.get('TTS_RETRY_BASE_DELAY', '2.0'))
+# Опційний режим: добудувати .words.json (таймінг слів) для ВЖЕ
+# згенерованого аудіо, чий хеш (текст/голос/швидкість) не змінився —
+# звичайний прогін такі файли пропускає (вони вже є й контент не
+# змінився). Вмикається явно (TTS_BACKFILL_TIMINGS=1), щоб не вповільнювати
+# кожен звичайний запуск зайвою перевіркою диска на тисячах незмінних
+# файлів. mp3 при цьому теж перезаписується (Edge TTS не гарантує побайтну
+# ідентичність між викликами — лише функціональну), сам текст/голос ті самі.
+BACKFILL_TIMINGS = os.environ.get('TTS_BACKFILL_TIMINGS', '0') == '1'
 
 # Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
 # у тій самій директорії, що й цей скрипт, а аудіо генерується в
@@ -438,8 +446,29 @@ def load_js_database(file_path):
 
     return config, raw_items, primary_lang
 
-async def synthesize_speech(text, voice, rate_str, output_path):
-    """Генерація аудіо через Edge TTS."""
+async def synthesize_speech(text, voice, rate_str, output_path, want_timing=False):
+    """Генерація аудіо через Edge TTS.
+
+    want_timing=False (типовий випадок для БІЛЬШОСТІ файлів — усі мови
+    крім PRIMARY_LANG, картки без прапорця "wordTiming": true в базі) —
+    звичайний .save(), без WordBoundary-подій і без .words.json.
+    Дешевше й швидше: не кожна картка потребує karaoke-підсвітки слів.
+
+    want_timing=True — Edge TTS вміє віддавати WordBoundary-події
+    (позиція+тривалість КОЖНОГО слова в аудіопотоці) — той самий принцип,
+    що й Read Aloud у браузері Edge, лише тут застосований до наперед
+    згенерованого mp3, а не до озвучення в реальному часі. За замовчуванням
+    бібліотека віддає лише SentenceBoundary (речення) — потрібно явно
+    попросити `boundary="WordBoundary"`.
+
+    Таймінг зберігається сайдкар-файлом <output_path з .mp3 на .words.json>
+    поруч з аудіо: список [{word, start, end}], start/end — у СЕКУНДАХ.
+    Offset/duration від Edge TTS приходять у тіках по 100 наносекунд
+    (TICKS_PER_SECOND=10_000_000 у самій бібліотеці) — ділимо на 1e7.
+
+    Порожній words.json (для дуже коротких текстів/голосів без підтримки
+    boundary) — не помилка: фронтенд просто не підсвічує в такому випадку.
+    """
     if not edge_tts:
         raise RuntimeError("Пакет 'edge-tts' не встановлено.")
     rate_val = int(rate_str)
@@ -447,8 +476,44 @@ async def synthesize_speech(text, voice, rate_str, output_path):
     diff = abs(rate_val - 100)
     edge_rate = f"{sign}{diff}%"
 
-    communicate = edge_tts.Communicate(text, voice, rate=edge_rate)
-    await communicate.save(output_path)
+    if not want_timing:
+        communicate = edge_tts.Communicate(text, voice, rate=edge_rate)
+        await communicate.save(str(output_path))
+        return
+
+    communicate = edge_tts.Communicate(text, voice, rate=edge_rate, boundary="WordBoundary")
+    # save() з metadata_fname пише JSONL (по одному WordBoundary-об'єкту на
+    # рядок) — це вбудований, вже перевірений шлях бібліотеки, безпечніший
+    # за ручний обхід communicate.stream(). Тимчасовий файл видаляємо після
+    # того, як переклали дані у власний компактний .words.json.
+    raw_meta_path = pathlib.Path(str(output_path) + '.meta.jsonl')
+    await communicate.save(str(output_path), str(raw_meta_path))
+
+    words = []
+    if raw_meta_path.exists():
+        try:
+            with open(raw_meta_path, 'r', encoding='utf-8') as f:
+                for line in f:
+                    line = line.strip()
+                    if not line:
+                        continue
+                    try:
+                        meta = json.loads(line)
+                    except json.JSONDecodeError:
+                        continue
+                    if meta.get('type') != 'WordBoundary':
+                        continue
+                    words.append({
+                        'word':  meta['text'],
+                        'start': round(meta['offset'] / 10_000_000, 3),
+                        'end':   round((meta['offset'] + meta['duration']) / 10_000_000, 3),
+                    })
+        finally:
+            raw_meta_path.unlink(missing_ok=True)
+
+    timing_path = pathlib.Path(str(output_path)).with_suffix('.words.json')
+    with open(timing_path, 'w', encoding='utf-8') as f:
+        json.dump(words, f, ensure_ascii=False)
 
 def git_commit_and_push(count):
     """Комітить+пушить поточний stage (якщо є що), і В БУДЬ-ЯКОМУ РАЗІ
@@ -481,6 +546,18 @@ def git_commit_and_push(count):
             subprocess.run(["git", "push"], check=True)
         print("--- [Git Bot] Запушено ---", flush=True)
 
+def timing_missing(audio_base, lang, rate, cat_lower, filename, want_timing):
+    """Чи бракує .words.json (таймінг слів) для файлу, що вже мав би бути
+    згенерований. Використовується лише коли BACKFILL_TIMINGS=1 — в
+    звичайному режимі завжди повертає False, щоб не чіпати диск на кожен
+    незмінний mkey. want_timing=False (картка без "wordTiming": true в
+    базі, або мова не PRIMARY_LANG) — теж завжди False: бекфіл стосується
+    лише файлів, яким таймінг взагалі потрібен."""
+    if not BACKFILL_TIMINGS or not want_timing:
+        return False
+    sidecar = audio_base / lang / rate / cat_lower / filename.replace('.mp3', '.words.json')
+    return not sidecar.exists()
+
 def write_to_manifest_file(mkey, content_hash):
     current_manifest = {}
     if MANIFEST.exists():
@@ -507,11 +584,22 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
 
         # NEW — цього mkey раніше не було в manifest.json взагалі.
         # CHANGED — ключ був, але з ІНШИМ хешем (текст/голос/швидкість
-        # відрізняються від того, що вже закомічено). Якщо файли
-        # регенеруються без змін у базі — цей рядок покаже, який саме
-        # з двох сценаріїв відбувається (і, для CHANGED, старий хеш —
-        # це вже саме по собі підказка, що зберігалось раніше).
-        reason = "NEW" if task.get("existing_hash") is None else f"CHANGED {task['existing_hash']}→{task['content_hash']}"
+        # відрізняються від того, що вже закомічено). TIMING-BACKFILL —
+        # хеш той самий (mp3 не мав би змінитись змістовно), просто раніше
+        # згенерованому файлу бракувало .words.json (режим
+        # TTS_BACKFILL_TIMINGS=1). На відміну від NEW/CHANGED, тут САМ mp3
+        # НЕ перезаписується (див. timing_only нижче) — синтезуємо у
+        # тимчасовий файл лише заради .words.json, а вже наявний mp3
+        # лишається як є, без жодного дотику.
+        timing_only = (task.get("existing_hash") is not None
+                       and task["existing_hash"] == task["content_hash"]
+                       and task.get("want_timing"))
+        if task.get("existing_hash") is None:
+            reason = "NEW"
+        elif timing_only:
+            reason = "TIMING-BACKFILL (mp3 не чіпається)"
+        else:
+            reason = f"CHANGED {task['existing_hash']}→{task['content_hash']}"
         print(f"[{current_num}/{total_tasks}] -> {task['mkey']} -> Голос: {task['voice']} -> [{reason}] -> '{task['cleaned'][:30]}...'", flush=True)
 
         # Retry з експоненційною паузою стосується ЛИШЕ синтезу мовлення
@@ -525,17 +613,38 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # "одні й ті самі файли постійно генеруються": файл видалявся
         # через збій git-кроку, і на НАСТУПНОМУ запуску знову вважався
         # відсутнім — попри те, що текст/голос жодного разу не змінювались.
+        tmp_path = file_path.with_name(file_path.stem + '.tmp_timing.mp3') if timing_only else None
         last_error = None
         synthesized = False
         for attempt in range(1, RETRY_ATTEMPTS + 1):
             try:
-                await synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path)
+                if timing_only:
+                    # mp3 вже є й контент не змінився — синтезуємо в
+                    # ТИМЧАСОВИЙ файл, забираємо звідти лише .words.json,
+                    # справжній mp3 НЕ чіпаємо (Edge TTS не гарантує побайтну
+                    # ідентичність між викликами — навіщо ризикувати diff'ом
+                    # в git заради файлу, що функціонально не змінився).
+                    await synthesize_speech(task["cleaned"], task["voice"], task["rate"], tmp_path, want_timing=True)
+                    tmp_timing = tmp_path.with_suffix('.words.json')
+                    real_timing = file_path.with_suffix('.words.json')
+                    if tmp_timing.exists():
+                        tmp_timing.replace(real_timing)
+                    tmp_path.unlink(missing_ok=True)
+                else:
+                    await synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path, want_timing=task.get("want_timing", False))
                 synthesized = True
                 break
             except Exception as e:
                 last_error = e
-                if file_path.exists():
-                    file_path.unlink()
+                if timing_only:
+                    tmp_path.unlink(missing_ok=True)
+                    tmp_path.with_suffix('.words.json').unlink(missing_ok=True)
+                else:
+                    if file_path.exists():
+                        file_path.unlink()
+                    timing_path = file_path.with_suffix('.words.json')
+                    if timing_path.exists():
+                        timing_path.unlink()
                 if attempt < RETRY_ATTEMPTS:
                     backoff = RETRY_BASE_DELAY * (2 ** (attempt - 1))
                     print(f"⚠️  Спроба {attempt}/{RETRY_ATTEMPTS} для {task['mkey']} невдала: {e} — повтор через {backoff:.0f}с", flush=True)
@@ -572,6 +681,9 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
 
 async def main():
     print("Запуск генератора MOVA TTS (Edge TTS).", flush=True)
+    if BACKFILL_TIMINGS:
+        print("⏱  Режим TTS_BACKFILL_TIMINGS=1: mp3 з тим самим хешем, але без "
+              ".words.json, теж будуть перегенеровані (лише заради таймінгу).", flush=True)
 
     manifest_data = {}
     if MANIFEST.exists():
@@ -704,10 +816,15 @@ async def main():
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
                         existing_hash = manifest_data.get(mkey)
+                        # Таймінг слів — лише якщо картка явно позначена
+                        # "wordTiming": true в базі, і лише для PRIMARY_LANG
+                        # курсу (переклади іншими мовами ніхто не підсвічує).
+                        want_timing = bool(item.get("wordTiming")) and lang == primary_lang
 
                         # Генеруємо, якщо ключа немає АБО текст/голос змінився
-                        # (тобто збережений хеш не співпадає з поточним).
-                        if existing_hash != content_hash:
+                        # (тобто збережений хеш не співпадає з поточним), АБО
+                        # (лише в режимі backfill) mp3 вже є, але без .words.json.
+                        if existing_hash != content_hash or timing_missing(audio_base, lang, rate, cat_lower, filename, want_timing):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -723,6 +840,7 @@ async def main():
                                 "mkey": mkey,
                                 "content_hash": content_hash,
                                 "existing_hash": existing_hash,
+                                "want_timing": want_timing,
                                 "primary_lang": primary_lang
                             })
 
@@ -748,8 +866,11 @@ async def main():
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
                         existing_hash = manifest_data.get(mkey)
+                        # distractors — підписи кнопок (варіанти відповіді),
+                        # не текст для читання/прослуховування — підсвічувати
+                        # тут нічого, таймінг свідомо не генерується ніколи.
 
-                        if existing_hash != content_hash:
+                        if existing_hash != content_hash or timing_missing(audio_base, primary_lang, rate, cat_lower, filename, False):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -765,6 +886,7 @@ async def main():
                                 "mkey": mkey,
                                 "content_hash": content_hash,
                                 "existing_hash": existing_hash,
+                                "want_timing": False,
                                 "primary_lang": primary_lang
                             })
 
@@ -791,8 +913,10 @@ async def main():
 
                       content_hash = compute_content_hash(cleaned, voice, rate)
                       existing_hash = manifest_data.get(mkey)
+                      # gram_word — завжди одне слово: підсвічувати нíчого,
+                      # таймінг тут свідомо не генерується ніколи.
 
-                      if existing_hash != content_hash:
+                      if existing_hash != content_hash or timing_missing(audio_base, primary_lang, rate, "gram", filename, False):
                           tasks.append({
                               "id": f"gram_word_{slug}",
                               "course": course,
@@ -808,6 +932,7 @@ async def main():
                               "mkey": mkey,
                               "content_hash": content_hash,
                               "existing_hash": existing_hash,
+                              "want_timing": False,
                               "primary_lang": primary_lang
                           })
               print(f"  · Grammatik-Trainer: {len(gram_words)} унікальних слів на кнопках (замість карток×полів).", flush=True)
