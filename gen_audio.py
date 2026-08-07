@@ -42,6 +42,15 @@ RETRY_BASE_DELAY = float(os.environ.get('TTS_RETRY_BASE_DELAY', '2.0'))
 # файлів. mp3 при цьому теж перезаписується (Edge TTS не гарантує побайтну
 # ідентичність між викликами — лише функціональну), сам текст/голос ті самі.
 BACKFILL_TIMINGS = os.environ.get('TTS_BACKFILL_TIMINGS', '0') == '1'
+# Категорії, для яких генерується .words.json (таймінг слів для
+# karaoke-підсвітки) — рішення на рівні ГЕНЕРАТОРА, не бази: додавати
+# однаковий "wordTiming": true в кожен з тисяч записів бази безглуздо
+# (роздуває файл, і будь-яка зміна категорії вимагала б масової
+# правки даних). internal_cat відповідає значенням, які й так вже
+# обчислює main() нижче: "vocab", "sprachbau", "redemittel" (dlg_/
+# red_/talk_/prob_ — усі 4 префікси діалогів). Додати нову категорію
+# в область дії підсвітки — один рядок тут, без жодних правок бази.
+CATEGORIES_WITH_TIMING = {"redemittel"}
 
 # Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
 # у тій самій директорії, що й цей скрипт, а аудіо генерується в
@@ -450,9 +459,9 @@ async def synthesize_speech(text, voice, rate_str, output_path, want_timing=Fals
     """Генерація аудіо через Edge TTS.
 
     want_timing=False (типовий випадок для БІЛЬШОСТІ файлів — усі мови
-    крім PRIMARY_LANG, картки без прапорця "wordTiming": true в базі) —
+    крім PRIMARY_LANG, і категорії поза CATEGORIES_WITH_TIMING) —
     звичайний .save(), без WordBoundary-подій і без .words.json.
-    Дешевше й швидше: не кожна картка потребує karaoke-підсвітки слів.
+    Дешевше й швидше: не кожна категорія потребує karaoke-підсвітки слів.
 
     want_timing=True — Edge TTS вміє віддавати WordBoundary-події
     (позиція+тривалість КОЖНОГО слова в аудіопотоці) — той самий принцип,
@@ -550,9 +559,9 @@ def timing_missing(audio_base, lang, rate, cat_lower, filename, want_timing):
     """Чи бракує .words.json (таймінг слів) для файлу, що вже мав би бути
     згенерований. Використовується лише коли BACKFILL_TIMINGS=1 — в
     звичайному режимі завжди повертає False, щоб не чіпати диск на кожен
-    незмінний mkey. want_timing=False (картка без "wordTiming": true в
-    базі, або мова не PRIMARY_LANG) — теж завжди False: бекфіл стосується
-    лише файлів, яким таймінг взагалі потрібен."""
+    незмінний mkey. want_timing=False (категорія поза
+    CATEGORIES_WITH_TIMING, або мова не PRIMARY_LANG) — теж завжди
+    False: бекфіл стосується лише файлів, яким таймінг взагалі потрібен."""
     if not BACKFILL_TIMINGS or not want_timing:
         return False
     sidecar = audio_base / lang / rate / cat_lower / filename.replace('.mp3', '.words.json')
@@ -816,10 +825,11 @@ async def main():
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
                         existing_hash = manifest_data.get(mkey)
-                        # Таймінг слів — лише якщо картка явно позначена
-                        # "wordTiming": true в базі, і лише для PRIMARY_LANG
+                        # Таймінг слів — лише для категорій із
+                        # CATEGORIES_WITH_TIMING (рішення генератора, не
+                        # бази — див. коментар там), і лише для PRIMARY_LANG
                         # курсу (переклади іншими мовами ніхто не підсвічує).
-                        want_timing = bool(item.get("wordTiming")) and lang == primary_lang
+                        want_timing = internal_cat in CATEGORIES_WITH_TIMING and lang == primary_lang
 
                         # Генеруємо, якщо ключа немає АБО текст/голос змінився
                         # (тобто збережений хеш не співпадає з поточним), АБО
