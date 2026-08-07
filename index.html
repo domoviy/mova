@@ -223,6 +223,10 @@ body{
 /* ══ STREAK IN NAV ══ */
 .bn-streak{flex-direction:column;gap:2px;cursor:pointer}
 .bn-fire{font-size:22px;line-height:1;filter:grayscale(1) opacity(.35);transition:filter .4s}
+/* У шапці (темний #header) той самий тьмяний фільтр майже невидимий —
+   світліший/непрозоріший варіант як дефолт, до того як JS (updateStreakUI)
+   виставить inline hf.style.filter з тим самим значенням. */
+#header .bn-fire{filter:grayscale(1) brightness(1.9) opacity(.85);}
 .bn-streak.done .bn-fire{filter:none}
 .bn-streak.pulse .bn-fire{animation:firePop .4s ease}
 @keyframes firePop{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
@@ -3127,7 +3131,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '449-d6f8d83';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -13536,7 +13540,16 @@ function renderStreakUI(pulse=false){
   const bp=document.getElementById('bn-streak-pbf');if(bp)bp.style.width=pct+'%';
   // Хедер
   const hc=document.getElementById('h-streak-count');if(hc)hc.textContent=streak;
-  const hf=document.getElementById('h-fire');if(hf)hf.style.filter=done?'':'grayscale(1) opacity(.4)';
+  // Шапка темно-зелена (#header{background:var(--forest)}), а .bn-fire
+  // (grayscale(1) opacity(.35)) підібраний під світлий фон нижньої
+  // панелі — на темному тлі та сама тьмяно-сіра іконка майже зникає.
+  // Тому для шапки — окреме, яскравіше значення для "не виконано".
+  // ВАЖЛИВО: обидва стани виставляємо ЯВНО ('none' / grayscale-рядок),
+  // а не порожній рядок для done — порожній рядок просто скидає inline
+  // style і падає назад на CSS-клас .bn-fire, який сам по собі теж
+  // сірий (#header .bn-fire нижче) — тобто вогонь у шапці міг НІКОЛИ
+  // не показувати повний колір навіть при виконаній денній цілі.
+  const hf=document.getElementById('h-fire');if(hf)hf.style.filter=done?'none':'grayscale(1) brightness(1.9) opacity(.85)';
   const st=document.getElementById('st-today');if(st)st.textContent=todayN;
   const stot=document.getElementById('st-total');if(stot)stot.textContent=totalN;
   const sl=document.getElementById('daily-goal');if(sl){sl.value=goal;document.getElementById('daily-goal-v').textContent=goal;}
