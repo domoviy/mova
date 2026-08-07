@@ -3131,7 +3131,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '452-b4a119b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12605,21 +12605,26 @@ function _proceedFromLesson(current){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const {pct} = lessonProgress(current);
 
-  // Випадок 2: поточний МОДУЛЬ ще не завершено (<80%) → повторюємо його ж.
+  // Випадок 2: поточний вузол ще не завершено (<80%) → повторюємо його ж.
   if(pct < 80){
     _goToLessonOrExit(current);
     return;
   }
 
-  // Модуль завершено — шукаємо наступний модуль ТІЄЇ Ж глави.
-  const sameChapterModules = lessons
-    .filter(l => l.chapter === current.chapter)
-    .sort((a,b) => a.module - b.module);
-  const nextModule = sameChapterModules.find(l => l.module === current.module + 1);
+  // Вузол завершено — шукаємо наступний РОЗБЛОКОВАНИЙ і ще НЕ завершений
+  // вузол у ТІЙ Ж главі, у ПОРЯДКУ МАСИВУ (buildLearningPath генерує
+  // LESSONS строго послідовно: суб-уроки й діалог-вузли одного модуля
+  // йдуть підряд, з тим самим .module — тому пошук "current.module+1"
+  // тепер НЕПРАВИЛЬНИЙ: він одразу стрибав в ІНШИЙ оригінальний модуль,
+  // пропускаючи решту поточного — саме це й було причиною "показує
+  // завдання наступного діалогу" одразу після завершення попереднього
+  // кроку, замість справжнього наступного суб-уроку тієї ж глави).
+  const sameChapter = lessons.filter(l => l.chapter === current.chapter);
+  const nextInChapter = sameChapter.find(l => l.id !== current.id && lessonUnlocked(l) && lessonProgress(l).pct < 80);
 
-  // Випадок 3: є наступний модуль цієї глави → відкриваємо його.
-  if(nextModule){
-    _goToLessonOrExit(nextModule);
+  // Випадок 3: є ще не пройдений вузол цієї глави → відкриваємо його.
+  if(nextInChapter){
+    _goToLessonOrExit(nextInChapter);
     return;
   }
 
@@ -13533,7 +13538,17 @@ function renderStreakUI(pulse=false){
   // p.streak більше ніде не показується (лишається лише внутрішньо в
   // mova_progress, про всяк випадок до майбутнього редизайну гейміфікації).
   const streak = (typeof srLoadState === 'function' ? (srLoadState().streak || 0) : (p.streak||0));
-  const pct=Math.min(100,(todayN/goal)*100),done=todayN>=goal;
+  // "done" (вогонь кольоровий) раніше рахувався ЛИШЕ по p.todayCards>=goal
+  // (окремий, старіший лічильник карток із trackCardToday). Але число
+  // стріку вище вже читається з ІНШОГО джерела — srLoadState().streak,
+  // яке інкрементується при завершенні уроку (srUpdateStreak), і зовсім
+  // не гарантує todayCards>=goal (типовий сценарій із новою нарізкою
+  // шляху на дрібні суб-уроки: один пройдений урок = 4-8 карток, менше
+  // за дефолтний goal=10 — стрік уже зафіксовано, а вогонь досі сірий).
+  // Тому done — АБО картковий поріг, АБО стрік уже зафіксовано сьогодні
+  // (те саме джерело правди, що й для числа): останнє й головне.
+  const streakDoneToday = typeof srLoadState === 'function' && srLoadState().lastSessionDate === today;
+  const pct=Math.min(100,(todayN/goal)*100),done=todayN>=goal || streakDoneToday;
   const bnS=document.getElementById('bn-streak');
   if(bnS){bnS.classList.toggle('done',done);if(pulse){bnS.classList.add('pulse');setTimeout(()=>bnS.classList.remove('pulse'),500);}}
   const bc=document.getElementById('bn-streak-count');if(bc)bc.textContent=streak;
