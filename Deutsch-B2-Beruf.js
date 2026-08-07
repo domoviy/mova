@@ -2811,7 +2811,8 @@ var LESSONS = [
       "sbs_031"
     ],
     "dlgCards": [
-      "dlg_068"
+      "dlg_068",
+      "dlg_095"
     ]
   },
   {
@@ -2999,7 +3000,8 @@ var LESSONS = [
       "dlg_026",
       "dlg_027",
       "dlg_028",
-      "dlg_069"
+      "dlg_069",
+      "dlg_096"
     ]
   },
   {
@@ -3068,7 +3070,8 @@ var LESSONS = [
       "sbs_041"
     ],
     "dlgCards": [
-      "dlg_070"
+      "dlg_070",
+      "dlg_097"
     ]
   },
   {
@@ -3131,7 +3134,8 @@ var LESSONS = [
       "sbs_040"
     ],
     "dlgCards": [
-      "dlg_071"
+      "dlg_071",
+      "dlg_098"
     ]
   },
   {
@@ -3204,7 +3208,8 @@ var LESSONS = [
       "sbs_038"
     ],
     "dlgCards": [
-      "dlg_072"
+      "dlg_072",
+      "dlg_099"
     ]
   },
   {
@@ -11618,6 +11623,496 @@ var DIALOGE = [
       "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентки и избежим подобных ошибок в будущем."
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_095",
+    "cat": "Die Bestellung",
+    "task": {
+      "de": "In den letzten Wochen kam es mehrmals vor, dass schriftliche Bestellungen von Kunden unvollständig waren: Es fehlten Angaben zur Menge, zum Liefertermin oder zur Rechnungsadresse. Das führte zu Verzögerungen und zusätzlichem Klärungsaufwand.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nUrsache: Woran könnte es liegen, dass Bestellungen oft unvollständig sind?\nFormular: Wie könnt ihr sicherstellen, dass alle wichtigen Angaben enthalten sind?\nKommunikation: Wie geht ihr vor, wenn trotzdem Informationen fehlen?\nNachverfolgung: Wie überprüft ihr, ob sich die Situation verbessert hat?",
+      "en": "Over the last few weeks, written customer orders have repeatedly been incomplete: information about quantity, delivery date, or billing address was missing. This led to delays and extra effort to clarify things.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nCause: What might be causing orders to be incomplete so often?\nForm: How can you make sure all important information is included?\nCommunication: What do you do if information is still missing?\nFollow-up: How do you check whether the situation has improved?",
+      "uk": "Останніми тижнями кілька разів траплялося, що письмові замовлення клієнтів були неповними: бракувало даних про кількість, термін доставки або адресу для рахунку. Це призводило до затримок і додаткової роботи для уточнення.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПричина: Чому замовлення часто бувають неповними?\nФормуляр: Як забезпечити, щоб уся важлива інформація була вказана?\nКомунікація: Що робити, якщо інформація все ж бракує?\nПодальші дії: Як перевірити, чи ситуація покращилася?",
+      "ru": "В последние недели несколько раз случалось, что письменные заказы клиентов были неполными: не хватало данных о количестве, сроке доставки или адресе для счёта. Это приводило к задержкам и дополнительной работе по уточнению.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПричина: Почему заказы часто бывают неполными?\nФормуляр: Как обеспечить, чтобы вся важная информация была указана?\nКоммуникация: Что делать, если информация всё же отсутствует?\nДальнейшие действия: Как проверить, улучшилась ли ситуация?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: In den letzten Wochen waren mehrere schriftliche Bestellungen von Kunden unvollständig, es fehlten zum Beispiel Angaben zur Menge oder zum Liefertermin.",
+      "en": "<r>We should talk about a problem</r>: over the last few weeks several written customer orders have been incomplete, for example information about quantity or delivery date was missing.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: останніми тижнями кілька письмових замовлень клієнтів були неповними, наприклад бракувало даних про кількість або термін доставки.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последние недели несколько письменных заказов клиентов были неполными, например не хватало данных о количестве или сроке доставки."
+    },
+    "a": {
+      "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Das führt dann zu Verzögerungen, weil wir erst nachfragen müssen?",
+      "en": "I've noticed that too. <r>Did I understand you correctly</r>: that leads to delays because we have to ask first?",
+      "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: через це виникають затримки, бо нам спершу доводиться уточнювати?",
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: из-за этого возникают задержки, потому что нам сначала приходится уточнять?"
+    },
+    "q1": {
+      "de": "Genau, und das kostet uns jedes Mal wertvolle Zeit. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, and that costs us valuable time every time. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, і це щоразу забирає в нас цінний час. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, и это каждый раз отнимает у нас ценное время. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten das Problem lösen, <g>indem</g> wir ein festes Bestellformular mit Pflichtfeldern einführen.",
+      "en": "<r>I have an idea</r>: we could solve the problem <g>by</g> introducing a fixed order form with required fields.",
+      "uk": "<r>У мене є ідея</r>: ми могли б вирішити проблему, <g>запровадивши</g> фіксований бланк замовлення з обов'язковими полями.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы решить проблему, <g>введя</g> фиксированный бланк заказа с обязательными полями."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich <g>dadurch, dass</g> wir eine automatische Bestätigungsmail einrichten, den Kunden gleich zeigen, welche Angaben noch fehlen?",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also show customers right away which information is still missing <g>by setting up</g> an automatic confirmation email?",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково, <g>налаштувавши</g> автоматичний лист-підтвердження, одразу показуватимемо клієнтам, яких даних ще бракує?",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно, <g>настроив</g> автоматическое письмо-подтверждение, сразу будем показывать клиентам, каких данных ещё не хватает?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. So merken die Kunden sofort, wenn etwas unvollständig ist, und wir müssen nicht extra nachfassen.",
+      "en": "<r>Yes, I think that's a good idea</r>. That way customers notice immediately if something's incomplete, and we don't have to follow up separately.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так клієнти одразу помітять, якщо чогось бракує, і нам не доведеться додатково уточнювати.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так клиенты сразу заметят, если чего-то не хватает, и нам не придётся дополнительно уточнять."
+    },
+    "q3": {
+      "de": "Stimmt. Und was machen wir, wenn trotzdem mal eine Bestellung unvollständig bei uns ankommt?",
+      "en": "True. And what do we do if an order still arrives incomplete?",
+      "uk": "Правда. А що робити, якщо замовлення все ж прийде до нас неповним?",
+      "ru": "Верно. А что делать, если заказ всё же придёт к нам неполным?"
+    },
+    "a3": {
+      "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>: Dann sollten wir sofort und höflich nachfragen, am besten telefonisch, damit es keine langen Verzögerungen gibt.",
+      "en": "<r>I think that's an excellent solution</r>: then we should ask right away and politely, ideally by phone, so there aren't any long delays.",
+      "uk": "<r>Я вважаю це чудовим рішенням</r>: тоді нам варто одразу й ввічливо уточнити, найкраще телефоном, щоб не було довгих затримок.",
+      "ru": "<r>Я считаю это отличным решением</r>: тогда нам стоит сразу и вежливо уточнить, лучше всего по телефону, чтобы не было долгих задержек."
+    },
+    "q4": {
+      "de": "Gute Idee. Und wie stellen wir sicher, dass sich das Formular am Ende auch wirklich durchsetzt?",
+      "en": "Good idea. And how do we make sure the form actually gets used consistently in the end?",
+      "uk": "Гарна ідея. А як нам переконатися, що бланк зрештою справді почнуть використовувати?",
+      "ru": "Хорошая идея. А как нам убедиться, что бланк в итоге действительно начнут использовать?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> es <g>dadurch einführen, dass</g> wir es allen Kunden aktiv in der nächsten Bestellbestätigung mitschicken.",
+      "en": "<r>Maybe we could</r> introduce it <g>by</g> actively sending it to all customers with the next order confirmation.",
+      "uk": "<r>Можливо, ми могли б</r> впровадити його, <g>активно надсилаючи</g> його всім клієнтам разом із наступним підтвердженням замовлення.",
+      "ru": "<r>Возможно, мы могли бы</r> внедрить его, <g>активно отправляя</g> его всем клиентам вместе со следующим подтверждением заказа."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir das Formular gleich diese Woche fertig machen, damit wir bald starten können?",
+      "en": "Good point. Should we finish the form this week, so we can get started soon?",
+      "uk": "Слушна думка. Завершимо бланк цього тижня, щоб швидко почати?",
+      "ru": "Дельная мысль. Завершим бланк на этой неделе, чтобы быстро начать?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte einen ersten Entwurf erstellen, wenn du schon mal die wichtigsten Pflichtfelder zusammenstellst.",
+      "en": "Yes, that would make sense. I could create a first draft, if you put together the most important required fields in the meantime.",
+      "uk": "Так, це було б розумно. Я міг би підготувати перший варіант, якщо ти тим часом складеш найважливіші обов'язкові поля.",
+      "ru": "Да, это было бы разумно. Я мог бы подготовить первый вариант, если ты тем временем соберёшь самые важные обязательные поля."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir erstellen ein Bestellformular mit Pflichtfeldern, richten eine automatische Bestätigungsmail ein, und bei fehlenden Angaben fragen wir sofort telefonisch nach.",
+      "en": "<r>Let's summarize</r>: we'll create an order form with required fields, set up an automatic confirmation email, and if information is missing, we'll call right away.",
+      "uk": "<r>Підсумуємо</r>: ми створимо бланк замовлення з обов'язковими полями, налаштуємо автоматичний лист-підтвердження, а при відсутніх даних одразу телефонуватимемо.",
+      "ru": "<r>Подведём итог</r>: мы создадим бланк заказа с обязательными полями, настроим автоматическое письмо-подтверждение, а при отсутствующих данных сразу будем звонить."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, indem wir das konsequent umsetzen, werden Bestellungen künftig deutlich seltener unvollständig sein.",
+      "en": "Exactly, that's what we'll do. I think that by implementing this consistently, orders will be incomplete much less often in the future.",
+      "uk": "Саме так, так і зробимо. Гадаю, послідовно це впроваджуючи, замовлення надалі будуть неповними значно рідше.",
+      "ru": "Именно так, так и сделаем. Думаю, последовательно это внедряя, заказы впредь будут неполными значительно реже."
+    },
+    "gram": "modalsatz_dadurch_indem"
+  },
+  {
+    "id": "dlg_096",
+    "cat": "Ich möchte reklamieren",
+    "task": {
+      "de": "In den letzten Wochen häufen sich die Reklamationen von Kunden, die sich unter anderem über verspätete Antworten und wenig Verständnis beim Beschwerdemanagement beklagen. Manche Kunden wollen deshalb sogar den Anbieter wechseln.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nReaktionszeit: Wie könnt ihr schneller auf Reklamationen reagieren?\nUmgangston: Wie geht ihr einfühlsamer mit unzufriedenen Kunden um?\nLösung: Welche Art von Entschädigung könnt ihr anbieten?\nNachverfolgung: Wie stellt ihr sicher, dass zufriedene Kunden bleiben?",
+      "en": "Over the last few weeks, customer complaints have been piling up — customers are complaining, among other things, about late responses and little understanding in complaint handling. Some customers are even considering switching to another provider.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nResponse time: How can you respond to complaints faster?\nTone: How can you deal more empathetically with dissatisfied customers?\nSolution: What kind of compensation can you offer?\nFollow-up: How do you make sure customers stay satisfied?",
+      "uk": "Останніми тижнями зростає кількість скарг клієнтів, які скаржаться, зокрема, на пізні відповіді та мало розуміння в роботі зі скаргами. Деякі клієнти навіть подумують перейти до іншого постачальника.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nЧас реакції: Як швидше реагувати на скарги?\nТон спілкування: Як спілкуватися з невдоволеними клієнтами з більшим розумінням?\nРішення: Яку компенсацію можна запропонувати?\nПодальші дії: Як переконатися, що клієнти залишаються задоволеними?",
+      "ru": "В последние недели растёт количество жалоб клиентов, которые жалуются, среди прочего, на поздние ответы и мало понимания в работе с жалобами. Некоторые клиенты даже подумывают перейти к другому поставщику.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nВремя реакции: Как быстрее реагировать на жалобы?\nТон общения: Как общаться с недовольными клиентами с большим пониманием?\nРешение: Какую компенсацию можно предложить?\nДальнейшие действия: Как убедиться, что клиенты остаются довольны?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: In letzter Zeit häufen sich die Reklamationen, und einige Kunden beschweren sich, dass wir zu spät antworten und wenig Verständnis zeigen.",
+      "en": "<r>We should talk about a problem</r>: complaints have been piling up recently, and some customers say we respond too late and show little understanding.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: останнім часом зростає кількість скарг, і деякі клієнти кажуть, що ми відповідаємо занадто пізно й проявляємо мало розуміння.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время растёт количество жалоб, и некоторые клиенты говорят, что мы отвечаем слишком поздно и проявляем мало понимания."
+    },
+    "a": {
+      "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Manche Kunden überlegen deswegen sogar, den Anbieter zu wechseln?",
+      "en": "I've heard about that too. <r>Did I understand you correctly</r>: some customers are even considering switching to another provider because of this?",
+      "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: через це деякі клієнти навіть подумують перейти до іншого постачальника?",
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: из-за этого некоторые клиенты даже подумывают перейти к другому поставщику?"
+    },
+    "q1": {
+      "de": "Genau, und das können wir uns natürlich nicht leisten. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, and we obviously can't afford that. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, і ми, звісно, не можемо собі цього дозволити. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, и мы, конечно, не можем себе этого позволить. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten uns eine feste Reaktionszeit setzen, zum Beispiel innerhalb von 24 Stunden auf jede Reklamation zu antworten.",
+      "en": "<r>I have an idea</r>: we could set a fixed response time, for example responding to every complaint within 24 hours.",
+      "uk": "<r>У мене є ідея</r>: ми могли б встановити чіткий час реакції, наприклад відповідати на кожну скаргу протягом 24 годин.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы установить чёткое время реакции, например отвечать на каждую жалобу в течение 24 часов."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich ein paar feste Formulierungen für die ersten Sätze einer Antwort sammeln, etwa <r>'Wir bedauern sehr, dass es zu Problemen gekommen ist'</r>?",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also collect a few fixed phrases for the opening lines of a response, like <r>'We're very sorry that problems have occurred'</r>?",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково зберемо кілька фіксованих фраз для перших речень відповіді, наприклад <r>«Нам дуже прикро, що виникли проблеми»</r>?",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно соберём несколько фиксированных фраз для первых предложений ответа, например <r>«Нам очень жаль, что возникли проблемы»</r>?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. So klingt jede Antwort gleich einfühlsamer, auch wenn es mal stressig ist.",
+      "en": "<r>Yes, I think that's a good idea</r>. That way every response sounds more empathetic right away, even when things get stressful.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так кожна відповідь одразу звучатиме зрозуміліше, навіть коли буває напружено.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так каждый ответ сразу будет звучать более чутко, даже когда бывает напряжённо."
+    },
+    "q3": {
+      "de": "Stimmt. Und was bieten wir den Kunden an, wenn wirklich ein Fehler auf unserer Seite vorliegt?",
+      "en": "True. And what do we offer customers if there really is a mistake on our end?",
+      "uk": "Правда. А що ми пропонуємо клієнтам, якщо помилка справді на нашій стороні?",
+      "ru": "Верно. А что мы предлагаем клиентам, если ошибка действительно на нашей стороне?"
+    },
+    "a3": {
+      "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir zum Beispiel einen Rabatt oder einen Gutschein als Entschädigung anbieten.",
+      "en": "That's an excellent question. Maybe we could offer a discount or a voucher as compensation, for example.",
+      "uk": "Це чудове запитання. Можливо, ми могли б запропонувати, наприклад, знижку чи ваучер як компенсацію.",
+      "ru": "Это отличный вопрос. Возможно, мы могли бы предложить, например, скидку или ваучер в качестве компенсации."
+    },
+    "q4": {
+      "de": "Gute Idee. Und wie stellen wir sicher, dass die Kunden am Ende trotzdem zufrieden bleiben?",
+      "en": "Good idea. And how do we make sure customers stay satisfied in the end?",
+      "uk": "Гарна ідея. А як нам переконатися, що клієнти зрештою залишаться задоволеними?",
+      "ru": "Хорошая идея. А как нам убедиться, что клиенты в итоге останутся довольны?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> uns ein oder zwei Wochen später noch einmal kurz melden und fragen, ob jetzt alles in Ordnung ist.",
+      "en": "<r>Maybe we could</r> check in briefly again a week or two later and ask if everything's fine now.",
+      "uk": "<r>Можливо, ми могли б</r> через тиждень-два коротко зв'язатися знову і запитати, чи все тепер гаразд.",
+      "ru": "<r>Возможно, мы могли бы</r> через неделю-две коротко связаться снова и спросить, всё ли теперь в порядке."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir diese neuen Regeln gleich im nächsten Meeting mit dem ganzen Team besprechen?",
+      "en": "Good point. Should we discuss these new rules with the whole team at the next meeting?",
+      "uk": "Слушна думка. Обговоримо ці нові правила з усією командою на наступній нараді?",
+      "ru": "Дельная мысль. Обсудим эти новые правила со всей командой на следующем совещании?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte eine kurze Übersicht mit den Formulierungen vorbereiten, wenn du dich um die Reaktionszeiten kümmerst.",
+      "en": "Yes, that would make sense. I could prepare a short overview with the phrases, if you take care of the response times.",
+      "uk": "Так, це було б розумно. Я міг би підготувати коротку схему з фразами, якщо ти займешся часом реакції.",
+      "ru": "Да, это было бы разумно. Я мог бы подготовить короткую схему с фразами, если ты займёшься временем реакции."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir setzen eine feste Reaktionszeit, nutzen einfühlsame Formulierungen, bieten bei Fehlern eine Entschädigung an, und wir melden uns später noch einmal bei den Kunden.",
+      "en": "<r>Let's summarize</r>: we'll set a fixed response time, use empathetic phrases, offer compensation for mistakes, and follow up with customers afterward.",
+      "uk": "<r>Підсумуємо</r>: ми встановлюємо чіткий час реакції, використовуємо співчутливі фрази, пропонуємо компенсацію за помилки й пізніше знову зв'язуємося з клієнтами.",
+      "ru": "<r>Подведём итог</r>: мы устанавливаем чёткое время реакции, используем чуткие фразы, предлагаем компенсацию за ошибки и позже снова связываемся с клиентами."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so gewinnen wir das Vertrauen der Kunden zurück und verlieren künftig weniger Kunden durch Reklamationen.",
+      "en": "Exactly, that's what we'll do. I think that way we'll win back the customers' trust and lose fewer customers to complaints in the future.",
+      "uk": "Саме так, так і зробимо. Гадаю, так ми повернемо довіру клієнтів і надалі втрачатимемо менше клієнтів через скарги.",
+      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентов и впредь будем терять меньше клиентов из-за жалоб."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_097",
+    "cat": "Zeit für die Familie",
+    "task": {
+      "de": "In eurer Abteilung gab es zuletzt mehrere Anfragen von Kolleginnen und Kollegen, die nach der Elternzeit in Teilzeit oder mit flexibleren Arbeitszeiten zurückkehren möchten. Bisher gibt es aber keine einheitlichen Regeln, wie mit solchen Anfragen umgegangen wird.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nKriterien: Wonach sollte sich entscheiden, wer Teilzeit oder flexible Zeiten bekommt?\nKommunikation: Wie informiert ihr die Mitarbeitenden über ihre Möglichkeiten?\nGleichbehandlung: Wie stellt ihr sicher, dass alle fair behandelt werden?\nUmsetzung: Wie führt ihr neue Regeln im Team ein?",
+      "en": "In your department, there have recently been several requests from colleagues who want to return from parental leave working part-time or with more flexible hours. So far, though, there are no consistent rules for handling such requests.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nCriteria: What should determine who gets part-time or flexible hours?\nCommunication: How do you inform employees about their options?\nFairness: How do you make sure everyone is treated fairly?\nImplementation: How do you introduce new rules in the team?",
+      "uk": "У вашому відділі останнім часом надійшло кілька запитів від колег, які хочуть повернутися з декретної відпустки на неповний робочий день або з гнучкішим графіком. Проте досі немає єдиних правил щодо таких запитів.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nКритерії: Від чого має залежати рішення, хто отримає неповний день чи гнучкий графік?\nКомунікація: Як інформувати співробітників про їхні можливості?\nРівне ставлення: Як переконатися, що до всіх ставляться справедливо?\nВпровадження: Як впровадити нові правила в команді?",
+      "ru": "В вашем отделе в последнее время поступило несколько запросов от коллег, которые хотят вернуться из декретного отпуска на неполный рабочий день или с более гибким графиком. Однако до сих пор нет единых правил для таких запросов.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nКритерии: От чего должно зависеть решение, кто получит неполный день или гибкий график?\nКоммуникация: Как информировать сотрудников об их возможностях?\nРавное отношение: Как убедиться, что ко всем относятся справедливо?\nВнедрение: Как внедрить новые правила в команде?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: In letzter Zeit haben sich mehrere Kolleginnen und Kollegen nach der Elternzeit <g>für</g> Teilzeit oder flexiblere Arbeitszeiten interessiert, aber wir haben dafür noch keine einheitlichen Regeln.",
+      "en": "<r>We should talk about a problem</r>: recently several colleagues have shown interest <g>in</g> working part-time or with more flexible hours after parental leave, but we don't have any consistent rules for that yet.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: останнім часом кілька колег зацікавилися неповним днем чи гнучкішим графіком після декретної відпустки, але в нас поки що немає жодних єдиних правил щодо цього.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время несколько коллег заинтересовались неполным днём или более гибким графиком после декретного отпуска, но у нас пока нет никаких единых правил на этот счёт."
+    },
+    "a": {
+      "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Bisher entscheiden wir das eher von Fall zu Fall?",
+      "en": "I've noticed that too. <r>Did I understand you correctly</r>: so far we're deciding that more on a case-by-case basis?",
+      "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: поки що ми вирішуємо це радше в кожному окремому випадку?",
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: пока что мы решаем это скорее в каждом отдельном случае?"
+    },
+    "q1": {
+      "de": "Genau, und das kann schnell ungerecht wirken. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, and that can quickly come across as unfair. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, і це може швидко виглядати несправедливо. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, и это может быстро выглядеть несправедливо. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten klare Kriterien festlegen, wonach sich ein Anspruch auf Teilzeit richtet, zum Beispiel abhängig <g>von</g> der Stelle und den Aufgaben.",
+      "en": "<r>I have an idea</r>: we could set clear criteria for what determines entitlement to part-time work, for example depending <g>on</g> the position and tasks.",
+      "uk": "<r>У мене є ідея</r>: ми могли б встановити чіткі критерії того, від чого залежить право на неповний день, наприклад залежно від посади й завдань.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы установить чёткие критерии того, от чего зависит право на неполный день, например в зависимости от должности и задач."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich alle Mitarbeitenden aktiv über ihre Möglichkeiten informieren, statt dass sie sich selbst darum kümmern müssen?",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also actively inform all employees about their options, instead of them having to look into it themselves?",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково активно інформуватимемо всіх співробітників про їхні можливості, замість того щоб вони самі про це дізнавалися?",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно активно будем информировать всех сотрудников об их возможностях, вместо того чтобы они сами об этом узнавали?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. So müssen sich die Kolleginnen und Kollegen nicht selbst <g>um</g> das Thema kümmern, sondern bekommen die Informationen direkt.",
+      "en": "<r>Yes, I think that's a good idea</r>. That way colleagues don't have to take care <g>of</g> the topic themselves, but get the information directly.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так колегам не доведеться самим перейматися цією темою, а вони одразу отримають інформацію.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так коллегам не придётся самим заботиться об этой теме, а они сразу получат информацию."
+    },
+    "q3": {
+      "de": "Stimmt. Und wie stellen wir sicher, dass am Ende auch wirklich alle gleich behandelt werden?",
+      "en": "True. And how do we make sure everyone actually ends up being treated equally?",
+      "uk": "Правда. А як нам переконатися, що зрештою до всіх справді ставляться однаково?",
+      "ru": "Верно. А как нам убедиться, что в итоге ко всем действительно относятся одинаково?"
+    },
+    "a3": {
+      "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir eine kleine Checkliste erstellen, die für jede Anfrage einheitlich angewendet wird.",
+      "en": "That's an excellent question. Maybe we could create a short checklist that gets applied consistently to every request.",
+      "uk": "Це чудове запитання. Можливо, ми могли б створити короткий чекліст, який однаково застосовуватиметься до кожного запиту.",
+      "ru": "Это отличный вопрос. Возможно, мы могли бы создать короткий чек-лист, который будет одинаково применяться к каждому запросу."
+    },
+    "q4": {
+      "de": "Gute Idee. Und wie führen wir die neuen Regeln am besten im Team ein?",
+      "en": "Good idea. And how do we best introduce the new rules to the team?",
+      "uk": "Гарна ідея. А як нам краще впровадити нові правила в команді?",
+      "ru": "Хорошая идея. А как нам лучше внедрить новые правила в команде?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> sie im nächsten Meeting vorstellen und uns dabei auch auf ein paar konkrete Beispiele stützen.",
+      "en": "<r>Maybe we could</r> present them at the next meeting and also base them on a few concrete examples.",
+      "uk": "<r>Можливо, ми могли б</r> представити їх на наступній нараді й спиратися при цьому на кілька конкретних прикладів.",
+      "ru": "<r>Возможно, мы могли бы</r> представить их на следующем совещании и опираться при этом на несколько конкретных примеров."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir die Kriterien gleich diese Woche ausarbeiten, damit wir schnell starten können?",
+      "en": "Good point. Should we work out the criteria this week, so we can get started quickly?",
+      "uk": "Слушна думка. Розробимо критерії цього тижня, щоб швидко почати?",
+      "ru": "Дельная мысль. Разработаем критерии на этой неделе, чтобы быстро начать?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte einen ersten Entwurf schreiben, wenn du dich um die Beispiele kümmerst.",
+      "en": "Yes, that would make sense. I could write a first draft, if you take care of the examples.",
+      "uk": "Так, це було б розумно. Я міг би написати перший варіант, якщо ти займешся прикладами.",
+      "ru": "Да, это было бы разумно. Я мог бы написать первый вариант, если ты займёшься примерами."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir legen klare Kriterien fest, informieren alle aktiv, erstellen eine Checkliste, und stellen das Ganze im nächsten Meeting vor.",
+      "en": "<r>Let's summarize</r>: we'll set clear criteria, actively inform everyone, create a checklist, and present it all at the next meeting.",
+      "uk": "<r>Підсумуємо</r>: ми встановлюємо чіткі критерії, активно інформуємо всіх, створюємо чекліст і представляємо все це на наступній нараді.",
+      "ru": "<r>Подведём итог</r>: мы устанавливаем чёткие критерии, активно информируем всех, создаём чек-лист и представляем всё это на следующем совещании."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so behandeln wir künftig alle Anfragen fair und einheitlich.",
+      "en": "Exactly, that's what we'll do. I think that way we'll handle all requests fairly and consistently in the future.",
+      "uk": "Саме так, так і зробимо. Гадаю, так ми надалі розглядатимемо всі запити справедливо й однаково.",
+      "ru": "Именно так, так и сделаем. Думаю, так мы впредь будем рассматривать все запросы справедливо и одинаково."
+    },
+    "gram": "praepositionen_nomen_verb_adjektiv"
+  },
+  {
+    "id": "dlg_098",
+    "cat": "Wozu verwendet man das?",
+    "task": {
+      "de": "In eurer Firma gibt es immer wieder Unfälle und Fehlbedienungen, weil neue Mitarbeitende die technischen Geräte in der Produktion nicht richtig erklärt bekommen. Die vorhandene Bedienungsanleitung ist sehr kompliziert geschrieben.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nErklärung: Wie könnt ihr Geräte verständlicher erklären?\nMaterial: Was sollte eine gute Anleitung enthalten?\nEinarbeitung: Wie könnt ihr neue Mitarbeitende besser einweisen?\nSicherheit: Wie stellt ihr sicher, dass alle die Geräte sicher bedienen?",
+      "en": "In your company, accidents and operating mistakes keep happening because new employees don't get the technical equipment in production properly explained to them. The existing manual is written in a very complicated way.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nExplanation: How can you explain equipment more clearly?\nMaterials: What should a good manual include?\nOnboarding: How can you better train new employees?\nSafety: How do you make sure everyone operates the equipment safely?",
+      "uk": "У вашій компанії постійно трапляються нещасні випадки й помилки в керуванні, бо новим співробітникам не пояснюють належно технічне обладнання у виробництві. Наявна інструкція написана дуже складно.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПояснення: Як зрозуміліше пояснювати обладнання?\nМатеріали: Що має містити хороша інструкція?\nВведення в курс справи: Як краще навчати нових співробітників?\nБезпека: Як переконатися, що всі безпечно керують обладнанням?",
+      "ru": "В вашей компании постоянно случаются несчастные случаи и ошибки в управлении, потому что новым сотрудникам не объясняют должным образом техническое оборудование на производстве. Имеющаяся инструкция написана очень сложно.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nОбъяснение: Как понятнее объяснять оборудование?\nМатериалы: Что должна содержать хорошая инструкция?\nВведение в курс дела: Как лучше обучать новых сотрудников?\nБезопасность: Как убедиться, что все безопасно управляют оборудованием?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: In letzter Zeit gab es mehrere Fehlbedienungen, weil neue Mitarbeitende die Geräte in der Produktion nicht richtig erklärt bekommen.",
+      "en": "<r>We should talk about a problem</r>: recently there have been several operating mistakes because new employees don't get the equipment in production properly explained to them.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: останнім часом сталося кілька помилок в керуванні, бо новим співробітникам не пояснюють належно обладнання у виробництві.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время произошло несколько ошибок в управлении, потому что новым сотрудникам не объясняют должным образом оборудование на производстве."
+    },
+    "a": {
+      "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Die vorhandene Bedienungsanleitung ist einfach zu kompliziert geschrieben?",
+      "en": "I've heard about that too. <r>Did I understand you correctly</r>: the existing manual is simply written too complicated?",
+      "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: наявна інструкція просто написана занадто складно?",
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: имеющаяся инструкция просто написана слишком сложно?"
+    },
+    "q1": {
+      "de": "Genau, da stehen viele Fachbegriffe drin, die für neue Kolleginnen und Kollegen schwer zu verstehen sind. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, it's full of technical terms that are hard for new colleagues to understand. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, там багато фахових термінів, які важко зрозуміти новим колегам. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, там много специальных терминов, которые трудно понять новым коллегам. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten eine einfachere Kurzanleitung mit Bildern erstellen, die die wichtigsten Schritte zeigt.",
+      "en": "<r>I have an idea</r>: we could create a simpler quick-start guide with pictures showing the most important steps.",
+      "uk": "<r>У мене є ідея</r>: ми могли б створити простішу коротку інструкцію із зображеннями, що показує найважливіші кроки.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы создать более простую краткую инструкцию с изображениями, показывающими самые важные шаги."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich neue Mitarbeitende die Geräte immer erst unter Aufsicht ausprobieren lassen, bevor sie allein damit arbeiten?",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also always have new employees try out the equipment under supervision first, before working with it alone?",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково завжди даватимемо новим співробітникам спробувати обладнання під наглядом, перш ніж вони працюватимуть самостійно?",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно всегда будем давать новым сотрудникам попробовать оборудование под присмотром, прежде чем они будут работать самостоятельно?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. So können erfahrene Kolleginnen und Kollegen direkt zeigen, wozu die einzelnen Funktionen dienen.",
+      "en": "<r>Yes, I think that's a good idea</r>. That way experienced colleagues can show directly what each function is for.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так досвідчені колеги зможуть одразу показати, для чого призначена кожна функція.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так опытные коллеги смогут сразу показать, для чего предназначена каждая функция."
+    },
+    "q3": {
+      "de": "Stimmt. Und wie stellen wir sicher, dass die Sicherheit dabei nicht zu kurz kommt?",
+      "en": "True. And how do we make sure safety doesn't get neglected in the process?",
+      "uk": "Правда. А як нам переконатися, що безпека при цьому не постраждає?",
+      "ru": "Верно. А как нам убедиться, что безопасность при этом не пострадает?"
+    },
+    "a3": {
+      "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir die wichtigsten Sicherheitshinweise extra farbig markieren, damit sie sofort auffallen.",
+      "en": "That's an excellent question. Maybe we could highlight the most important safety instructions in color, so they stand out immediately.",
+      "uk": "Це чудове запитання. Можливо, ми могли б виділити найважливіші вказівки з безпеки кольором, щоб вони одразу впадали в очі.",
+      "ru": "Это отличный вопрос. Возможно, мы могли бы выделить самые важные указания по безопасности цветом, чтобы они сразу бросались в глаза."
+    },
+    "q4": {
+      "de": "Gute Idee. Und sollten wir vielleicht auch eine kurze Einweisung als Pflicht für alle neuen Mitarbeitenden einführen?",
+      "en": "Good idea. And should we maybe also make a short briefing mandatory for all new employees?",
+      "uk": "Гарна ідея. А чи не варто нам також зробити короткий інструктаж обов'язковим для всіх нових співробітників?",
+      "ru": "Хорошая идея. А не стоит ли нам также сделать короткий инструктаж обязательным для всех новых сотрудников?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> das sogar mit einer kleinen praktischen Prüfung verbinden, bevor jemand allein an einem Gerät arbeitet.",
+      "en": "<r>Maybe we could</r> even combine that with a short practical test, before anyone works alone on a device.",
+      "uk": "<r>Можливо, ми могли б</r> навіть поєднати це з коротким практичним тестом, перш ніж хтось працюватиме самостійно з пристроєм.",
+      "ru": "<r>Возможно, мы могли бы</r> даже объединить это с коротким практическим тестом, прежде чем кто-то будет работать самостоятельно с устройством."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir die neue Kurzanleitung gleich diese Woche fertig machen, damit wir bald starten können?",
+      "en": "Good point. Should we finish the new quick-start guide this week, so we can get started soon?",
+      "uk": "Слушна думка. Завершимо нову коротку інструкцію цього тижня, щоб швидко почати?",
+      "ru": "Дельная мысль. Завершим новую краткую инструкцию на этой неделе, чтобы быстро начать?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte den Text schreiben, wenn du dich um die passenden Bilder kümmerst.",
+      "en": "Yes, that would make sense. I could write the text, if you take care of the matching pictures.",
+      "uk": "Так, це було б розумно. Я міг би написати текст, якщо ти займешся відповідними зображеннями.",
+      "ru": "Да, это было бы разумно. Я мог бы написать текст, если ты займёшься подходящими изображениями."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir erstellen eine einfache Kurzanleitung mit Bildern, führen eine Einweisung mit Übung ein, und markieren die wichtigsten Sicherheitshinweise deutlich.",
+      "en": "<r>Let's summarize</r>: we'll create a simple quick-start guide with pictures, introduce a briefing with practice, and clearly highlight the most important safety instructions.",
+      "uk": "<r>Підсумуємо</r>: ми створимо просту коротку інструкцію із зображеннями, впровадимо інструктаж із практикою і чітко виділимо найважливіші вказівки з безпеки.",
+      "ru": "<r>Подведём итог</r>: мы создадим простую краткую инструкцию с изображениями, введём инструктаж с практикой и чётко выделим самые важные указания по безопасности."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so verstehen neue Mitarbeitende die Geräte künftig deutlich schneller und sicherer.",
+      "en": "Exactly, that's what we'll do. I think that way new employees will understand the equipment much faster and more safely in the future.",
+      "uk": "Саме так, так і зробимо. Гадаю, так нові співробітники надалі розумітимуть обладнання значно швидше й безпечніше.",
+      "ru": "Именно так, так и сделаем. Думаю, так новые сотрудники впредь будут понимать оборудование значительно быстрее и безопаснее."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_099",
+    "cat": "Qualität ist uns wichtig",
+    "task": {
+      "de": "Bei einer externen Qualitätsprüfung wurden mehrere Mängel an den ausgelieferten Produkten festgestellt. Der Prüfer sagte, die Fehlerquote sei in den letzten Monaten deutlich gestiegen, und mehrere Kunden hätten sich bereits beschwert.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nUrsache: Woran könnte es liegen, dass die Fehlerquote gestiegen ist?\nKontrolle: Wie könnt ihr die Qualitätskontrolle verbessern?\nKommunikation: Wie informiert ihr die betroffenen Kunden?\nPrävention: Wie verhindert ihr künftig ähnliche Probleme?",
+      "en": "During an external quality inspection, several defects were found in the delivered products. The inspector said the error rate had risen significantly in recent months, and several customers had already complained.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nCause: What might be causing the error rate to rise?\nControl: How can you improve quality control?\nCommunication: How do you inform the affected customers?\nPrevention: How do you prevent similar problems in the future?",
+      "uk": "Під час зовнішньої перевірки якості виявили кілька дефектів у поставлених продуктах. Перевіряючий сказав, що відсоток браку за останні місяці помітно зріс, і кілька клієнтів уже поскаржилися.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПричина: Чому міг зрости відсоток браку?\nКонтроль: Як покращити контроль якості?\nКомунікація: Як інформувати постраждалих клієнтів?\nПрофілактика: Як запобігти подібним проблемам надалі?",
+      "ru": "Во время внешней проверки качества обнаружили несколько дефектов в поставленных продуктах. Проверяющий сказал, что процент брака за последние месяцы заметно вырос, и несколько клиентов уже пожаловались.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПричина: Почему мог вырасти процент брака?\nКонтроль: Как улучшить контроль качества?\nКоммуникация: Как информировать пострадавших клиентов?\nПрофилактика: Как предотвратить подобные проблемы впредь?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "<r>Wir sollten über ein Problem sprechen</r>: Bei der externen Qualitätsprüfung sagte der Prüfer, die Fehlerquote <g>sei</g> in den letzten Monaten deutlich gestiegen.",
+      "en": "<r>We should talk about a problem</r>: during the external quality inspection, the inspector said the error rate <g>had risen</g> significantly in recent months.",
+      "uk": "<r>Нам варто обговорити одну проблему</r>: під час зовнішньої перевірки якості перевіряючий сказав, що відсоток браку за останні місяці <g>помітно зріс</g>.",
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: во время внешней проверки качества проверяющий сказал, что процент брака за последние месяцы <g>заметно вырос</g>."
+    },
+    "a": {
+      "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Mehrere Kunden <g>hätten</g> sich deswegen schon beschwert?",
+      "en": "I've heard about that too. <r>Did I understand you correctly</r>: several customers <g>had</g> already <g>complained</g> because of that?",
+      "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: кілька клієнтів через це вже <g>поскаржилися</g>?",
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: несколько клиентов из-за этого уже <g>пожаловались</g>?"
+    },
+    "q1": {
+      "de": "Genau, das hat er auch erwähnt. <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "Exactly, he mentioned that too. <r>What could we do in this situation</r>?",
+      "uk": "Саме так, він теж це згадав. <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Именно так, он тоже это упомянул. <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "a1": {
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten zuerst genau analysieren, an welcher Stelle in der Produktion die meisten Fehler entstehen.",
+      "en": "<r>I have an idea</r>: we could first analyze exactly where in production most of the defects occur.",
+      "uk": "<r>У мене є ідея</r>: ми могли б спершу точно проаналізувати, на якому етапі виробництва виникає найбільше дефектів.",
+      "ru": "<r>У меня есть идея</r>: мы могли бы сначала точно проанализировать, на каком этапе производства возникает больше всего дефектов."
+    },
+    "q2": {
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich eine zweite Qualitätskontrolle vor dem Versand einführen?",
+      "en": "<r>That sounds good</r>. <r>What do you think if</r> we also introduce a second quality check before shipping?",
+      "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково впровадимо другу перевірку якості перед відправленням?",
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём вторую проверку качества перед отправкой?"
+    },
+    "a2": {
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. So würden fehlerhafte Produkte gar nicht erst zum Kunden gelangen.",
+      "en": "<r>Yes, I think that's a good idea</r>. That way faulty products wouldn't even reach the customer in the first place.",
+      "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так браковані продукти взагалі не потраплятимуть до клієнта.",
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так бракованные продукты вообще не будут попадать к клиенту."
+    },
+    "q3": {
+      "de": "Stimmt. Und wie gehen wir mit den Kunden um, die sich schon beschwert haben?",
+      "en": "True. And how do we deal with the customers who have already complained?",
+      "uk": "Правда. А як нам бути з клієнтами, які вже поскаржилися?",
+      "ru": "Верно. А как нам быть с клиентами, которые уже пожаловались?"
+    },
+    "a3": {
+      "de": "Das halte ich für eine ausgezeichnete Frage. Der Prüfer meinte, viele Kunden <g>würden</g> vor allem eine schnelle Reaktion und einen kostenlosen Ersatz <g>erwarten</g>.",
+      "en": "That's an excellent question. The inspector said many customers <g>would</g> mainly <g>expect</g> a quick response and a free replacement.",
+      "uk": "Це чудове запитання. Перевіряючий сказав, що багато клієнтів <g>очікували б</g> передусім швидкої реакції та безкоштовної заміни.",
+      "ru": "Это отличный вопрос. Проверяющий сказал, что многие клиенты <g>ожидали бы</g> прежде всего быстрой реакции и бесплатной замены."
+    },
+    "q4": {
+      "de": "Gute Idee. Sollten wir uns dann direkt bei diesen Kunden melden und uns entschuldigen?",
+      "en": "Good idea. Should we then contact those customers directly and apologize?",
+      "uk": "Гарна ідея. Може, нам одразу зв'язатися з цими клієнтами й вибачитися?",
+      "ru": "Хорошая идея. Может, нам сразу связаться с этими клиентами и извиниться?"
+    },
+    "a4": {
+      "de": "<r>Vielleicht könnten wir</r> das sogar heute noch machen, dann zeigen wir, dass wir das Problem ernst nehmen.",
+      "en": "<r>Maybe we could</r> even do that today, then we'd show that we're taking the problem seriously.",
+      "uk": "<r>Можливо, ми могли б</r> навіть зробити це сьогодні ж, тоді ми покажемо, що серйозно ставимося до проблеми.",
+      "ru": "<r>Возможно, мы могли бы</r> даже сделать это сегодня же, тогда мы покажем, что серьёзно относимся к проблеме."
+    },
+    "q5": {
+      "de": "Guter Punkt. Sollen wir die neue Kontrolle gleich diese Woche einführen, damit wir schnell wieder sicherer werden?",
+      "en": "Good point. Should we introduce the new check this week, so we feel more confident again quickly?",
+      "uk": "Слушна думка. Впровадимо нову перевірку цього тижня, щоб швидко знову почуватися впевненіше?",
+      "ru": "Дельная мысль. Внедрим новую проверку на этой неделе, чтобы быстро снова чувствовать себя увереннее?"
+    },
+    "a5": {
+      "de": "Ja, das wäre sinnvoll. Ich könnte den Ablauf dafür entwerfen, wenn du dich um die Kommunikation mit den Kunden kümmerst.",
+      "en": "Yes, that would make sense. I could design the process for that, if you take care of the communication with the customers.",
+      "uk": "Так, це було б розумно. Я міг би розробити процес для цього, якщо ти займешся комунікацією з клієнтами.",
+      "ru": "Да, это было бы разумно. Я мог бы разработать процесс для этого, если ты займёшься коммуникацией с клиентами."
+    },
+    "q6": {
+      "de": "<r>Fassen wir zusammen</r>: Wir analysieren die Fehlerquellen, führen eine zweite Qualitätskontrolle ein, und wir melden uns noch heute bei den betroffenen Kunden.",
+      "en": "<r>Let's summarize</r>: we'll analyze the sources of the defects, introduce a second quality check, and contact the affected customers today.",
+      "uk": "<r>Підсумуємо</r>: ми проаналізуємо джерела дефектів, впровадимо другу перевірку якості й зв'яжемося з постраждалими клієнтами ще сьогодні.",
+      "ru": "<r>Подведём итог</r>: мы проанализируем источники дефектов, введём вторую проверку качества и свяжемся с пострадавшими клиентами сегодня же."
+    },
+    "a6": {
+      "de": "Genau, so machen wir es. Ich denke, so gewinnen wir das Vertrauen der Kunden zurück und verbessern die Qualität nachhaltig.",
+      "en": "Exactly, that's what we'll do. I think that way we'll win back the customers' trust and improve quality sustainably.",
+      "uk": "Саме так, так і зробимо. Гадаю, так ми повернемо довіру клієнтів і стало покращимо якість.",
+      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентов и стабильно улучшим качество."
+    },
+    "gram": "indirekte_rede_konjunktiv1"
   }
 ];
 
