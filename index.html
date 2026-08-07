@@ -595,27 +595,43 @@ body{
   transition:transform .12s, box-shadow .12s;
 }
 .lp-node:active{ transform:translateY(3px); box-shadow:0 2px 0 rgba(13,43,26,.35); }
-.lp-node-icon{ position:relative; z-index:1; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); }
-.lp-node.lp-node-dialogue{
+.lp-node-icon{ position:relative; z-index:1; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); transition:filter .15s; }
+/* Small talk — невимушена розмова, синій акцент (як і раніше). */
+.lp-node.lp-node-smalltalk{
   background:var(--accent, #4a7c9d);
   box-shadow:0 5px 0 rgba(30,70,95,.4), 0 7px 12px rgba(30,70,95,.18);
+}
+/* Пошук рішення — окремий, "важчий" колір (сливовий), щоб відрізнявся
+   від small talk з першого погляду: інший тип задачі — не просто
+   побалакати, а розв'язати конкретну ситуацію. */
+.lp-node.lp-node-problemsolving{
+  background:#7c5cb0;
+  box-shadow:0 5px 0 rgba(60,40,90,.4), 0 7px 12px rgba(60,40,90,.18);
 }
 .lp-node.done{
   background:var(--gold);
   box-shadow:0 5px 0 rgba(160,128,40,.4), 0 7px 12px rgba(160,128,40,.16);
 }
+/* Заблокований — гема сіріє (фон), а ІКОНКА лишається тією ж самою
+   (📖/💬/🧩), лише знебарвлюється grayscale-фільтром: користувач бачить
+   ЯКИЙ тип кроку на нього чекає, навіть недоступний. cursor:pointer —
+   клік і далі щось робить (showLockedLessonModal), тому лишаємо звичну
+   натискну анімацію (:active успадковується від .lp-node вище). */
 .lp-node.locked{
-  background:var(--border);cursor:default;
+  background:var(--border);
   box-shadow:0 5px 0 rgba(0,0,0,.10);
 }
-.lp-node.locked:active{ transform:none; }
+.lp-node.locked .lp-node-icon{ filter:grayscale(1) opacity(.55); }
 .lp-node.current{
   width:84px;height:84px;font-size:34px;
   box-shadow:0 7px 0 rgba(13,43,26,.35), 0 10px 18px rgba(13,43,26,.2);
   animation:lpNodeBreathe 1.8s ease-in-out infinite;
 }
-.lp-node.lp-node-dialogue.current{
+.lp-node.lp-node-smalltalk.current{
   box-shadow:0 7px 0 rgba(30,70,95,.4), 0 10px 18px rgba(30,70,95,.22);
+}
+.lp-node.lp-node-problemsolving.current{
+  box-shadow:0 7px 0 rgba(60,40,90,.4), 0 10px 18px rgba(60,40,90,.22);
 }
 .lp-node.current .lp-node-current-ring{ inset:-12px; border-width:4px; }
 @keyframes lpNodeBreathe{
@@ -2084,6 +2100,36 @@ body.lesson-active .vocab-top{
 .grammar-modal-rule-toggle:active{opacity:.8;}
 .grammar-modal-rule-toggle .grammar-modal-rule-chevron{font-size:18px;line-height:1;}
 
+/* Модалка "заблокований урок" — той самий bottom-sheet принцип, що й
+   grammar-modal, окремі класи (можливість стилізувати незалежно). */
+.locked-modal-overlay{
+  position:fixed;inset:0;z-index:300;
+  display:flex;align-items:flex-end;
+  padding:0;background:rgba(0,0,0,.4);
+}
+.locked-modal{
+  position:relative;z-index:1;
+  width:100%;background:var(--paper);
+  border-radius:20px 20px 0 0;
+  padding:24px 20px calc(env(safe-area-inset-bottom,0px) + 16px);
+  box-shadow:0 -4px 32px rgba(0,0,0,.18);
+  border-top:3px solid var(--border);
+  text-align:center;
+}
+.locked-modal-icon{
+  width:56px;height:56px;border-radius:50%;margin:0 auto 14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;background:var(--soft);
+}
+.locked-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);margin-bottom:8px}
+.locked-modal-body{font-size:var(--fs-secondary);color:var(--warm);line-height:1.45;margin-bottom:18px}
+.locked-modal-cta{
+  width:100%;padding:14px;border:none;border-radius:14px;
+  background:var(--forest);color:#fff;font-weight:800;font-size:var(--fs-secondary);
+  font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.locked-modal-cta:active{opacity:.85;}
+
 /* Повноекранний рідер для GRAMMAR[].rule — окремий шар (не bottom-
    sheet): довгий структурований текст з нумерованими розділами читається
    набагато комфортніше на весь екран. */
@@ -3081,7 +3127,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '448-6030f28';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3214,6 +3260,26 @@ var PATH_CONFIG = {
   Foundations:{ newWordsPerLesson: 6, reviewMix: 3 },
 };
 
+// Підтип діалогового вузла для іконки на стежці: 'smalltalk' (💬,
+// невимушена розмова) чи 'problemsolving' (🧩, вирішення конкретної
+// ситуації/конфлікту). Дивимось на необов'язкове поле `type` в записах
+// DIALOGE (авторське рішення на майбутнє, зараз у базі його ще нема —
+// тому дефолт 'smalltalk', як для коротших/легших фразових обмінів,
+// що й становлять поточний DIALOGE). Мажоритарне голосування — якщо
+// пул вузла колись міститиме картки різних підтипів, перемагає
+// частіший; при рівності — 'smalltalk' (менш "важкий" типово).
+function _lpDialogueNodeType(dlgCardIds){
+  if(typeof DIALOGE === 'undefined' || !Array.isArray(DIALOGE)) return 'smalltalk';
+  var ids = new Set(dlgCardIds || []);
+  var counts = { smalltalk: 0, problemsolving: 0 };
+  DIALOGE.forEach(function(c){
+    if(!ids.has(c.id)) return;
+    var tp = c.type === 'problemsolving' ? 'problemsolving' : 'smalltalk';
+    counts[tp]++;
+  });
+  return counts.problemsolving > counts.smalltalk ? 'problemsolving' : 'smalltalk';
+}
+
 function buildLearningPath(rawLessons, courseLevel){
   if(!Array.isArray(rawLessons) || !rawLessons.length) return rawLessons;
   var cfg = PATH_CONFIG[courseLevel] || { newWordsPerLesson: 6, reviewMix: 3 };
@@ -3292,6 +3358,7 @@ function buildLearningPath(rawLessons, courseLevel){
         out.push(Object.assign({}, lesson, {
           id:          dlgId,
           type:        'dialogue',
+          dlgType:     _lpDialogueNodeType(lesson.dlgCards),
           cardIds:     lesson.dlgCards,
           dlgCards:    lesson.dlgCards,
           sbCards:     [],
@@ -3493,6 +3560,9 @@ const I18N = {
     lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
     lp_cards:'Karten', lp_of:'von',
     lp_grammar:'Grammatik:',
+    locked_modal_title:'🔒 Noch nicht so weit',
+    locked_modal_body:'Schließe zuerst den vorherigen Schritt ab — darauf baut dieser hier auf. Das ist kein Hindernis, sondern Teil des Wegs zu flüssigem Deutsch: Jede abgeschlossene Lektion bringt dich schneller ans Ziel als jeder Sprung nach vorn.',
+    locked_modal_cta:'Verstanden',
     hint_front:'↕ Tippen · ← → Wischen',
     hint_srs:'↑ Nicht kennen · ↓ Kennen · ← Weiter · → Zurück',
     hint_srs_lesson:'↑ Nicht kennen · ↓ Kennen',
@@ -3573,6 +3643,9 @@ const I18N = {
     lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
     lp_cards:'карток', lp_of:'з',
     lp_grammar:'Граматика:',
+    locked_modal_title:'🔒 Ще зарано',
+    locked_modal_body:'Спершу завершіть попередній крок — матеріал тут на ньому й будується. Це не перешкода, а частина шляху до вільної німецької: кожен пройдений урок наближає вас до мети швидше, ніж будь-який стрибок наперед.',
+    locked_modal_cta:'Зрозуміло',
     hint_front:'↕ Натисни · ← → Свайп',
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далі · → Назад',
     hint_srs_lesson:'↑ Не знаю · ↓ Знаю',
@@ -3649,9 +3722,12 @@ const I18N = {
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
     nav_lernpfad:'Learning', nav_sb:'Sprachbau',
-    lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
-    lp_cards:'Karten', lp_of:'von',
-    lp_grammar:'Grammatik:',
+    lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
+    lp_cards:'cards', lp_of:'of',
+    lp_grammar:'Grammar:',
+    locked_modal_title:'🔒 Not yet',
+    locked_modal_body:'Finish the previous step first — this one builds directly on it. It\'s not a roadblock, it\'s part of the path to fluent German: every completed lesson gets you there faster than skipping ahead ever could.',
+    locked_modal_cta:'Got it',
     hint_front:'↕ Tap · ← → Swipe',
     hint_srs:'↑ Don\'t know · ↓ Know · ← Next · → Back',
     hint_srs_lesson:'↑ Don\'t know · ↓ Know',
@@ -3732,6 +3808,9 @@ const I18N = {
     lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
     lp_cards:'карточек', lp_of:'из',
     lp_grammar:'Грамматика:',
+    locked_modal_title:'🔒 Ещё рано',
+    locked_modal_body:'Сначала завершите предыдущий шаг — этот урок строится именно на нём. Это не преграда, а часть пути к свободному немецкому: каждый пройденный урок приближает вас к цели быстрее, чем любой прыжок вперёд.',
+    locked_modal_cta:'Понятно',
     hint_front:'↕ Нажми · ← → Свайп',
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далее · → Назад',
     hint_srs_lesson:'↑ Не знаю · ↓ Знаю',
@@ -7299,9 +7378,25 @@ function renderModuleDivider(lesson){
   return `<div class="lp-module-divider"><span></span><span class="lp-module-divider-text">${t('lp_module_prefix')} ${lesson.module} · ${title}</span><span></span></div>`;
 }
 
-// Один крок звивистої стежки — кругла "гема": урок (📖) або діалог
-// (💬), з окремим кольором/іконкою по типу. cardIds однакові для обох
-// типів технічно (лекція чи dlgCards), тому lessonProgress/
+// Візуальний профіль вузла стежки по типу: іконка + клас кольору. Три
+// типи: звичайний урок (📖 книга — вивчення нового), small talk (💬
+// репліка — невимушена розмова) і пошук рішення (🧩 пазл — треба
+// зібрати рішення конкретної ситуації, а не просто побалакати).
+// Іконка НЕ підмінюється на 🔒 при блокуванні (раніше було так) —
+// користувач має бачити ЯКИЙ саме крок на нього чекає, навіть
+// заблокований; замість цього іконка й гема просто сіріють (клас
+// .locked нижче в CSS вимикає колір через grayscale-фільтр).
+function _lpNodeVisual(node){
+  if(node.type === 'dialogue'){
+    return node.dlgType === 'problemsolving'
+      ? { icon: '🧩', cls: 'lp-node-problemsolving' }
+      : { icon: '💬', cls: 'lp-node-smalltalk' };
+  }
+  return { icon: '📖', cls: 'lp-node-lesson' };
+}
+
+// Один крок звивистої стежки — кругла "гема". cardIds однакові для
+// усіх типів технічно (лекція чи dlgCards), тому lessonProgress/
 // lessonUnlocked відпрацьовують без жодних умов на type.
 function renderPathNode(node, idx){
   const {done, total, pct} = lessonProgress(node);
@@ -7309,17 +7404,18 @@ function renderPathNode(node, idx){
   const isDone    = pct >= 80;
   const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
-  const icon = !unlocked ? '🔒' : isDone ? '★' : isDialogue ? '💬' : '📖';
-  const typeClass   = isDialogue ? 'lp-node-dialogue' : 'lp-node-lesson';
+  const visual = _lpNodeVisual(node);
+  const icon = isDone ? '★' : visual.icon;
   const statusClass = isDone ? 'done' : !unlocked ? 'locked' : isCurrent ? 'current' : '';
   const offset = _lpZigzagOffset(idx);
-  const clickHandler = !unlocked ? '' :
-    isDialogue ? `startModuleDialogueBonus('${node.id}')` : `startLessonFlow('${node.id}')`;
+  const clickHandler = !unlocked
+    ? 'showLockedLessonModal()'
+    : isDialogue ? `startModuleDialogueBonus('${node.id}')` : `startLessonFlow('${node.id}')`;
   const chipLabel = pct > 0
     ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
     : ({uk:'▶ Почати',     en:'▶ Start',    ru:'▶ Начать',     de:'▶ Starten'}[uiLang] || '▶ Starten');
   return `<div class="lp-path-node-wrap" style="transform:translateX(${offset}px)">
-    <div class="lp-node ${typeClass} ${statusClass}" id="${isCurrent?'lp-current-module':''}"
+    <div class="lp-node ${visual.cls} ${statusClass}" id="${isCurrent?'lp-current-module':''}"
       onclick="${clickHandler}">
       ${isCurrent ? '<div class="lp-node-current-ring"></div>' : ''}
       <span class="lp-node-icon">${icon}</span>
@@ -10938,6 +11034,31 @@ function showGrammarModal(id){
 
 function closeGrammarModal(){
   var el = document.getElementById('grammar-modal-overlay');
+  if(el) el.remove();
+}
+
+// Модалка при кліку на заблокований вузол стежки — пояснює ЧОМУ
+// заблоковано і мотивує повернутись/завершити попередній крок, а не
+// просто мовчки ігнорувати клік (як було раніше).
+function showLockedLessonModal(){
+  closeLockedLessonModal();
+  var overlay = document.createElement('div');
+  overlay.id = 'locked-modal-overlay';
+  overlay.className = 'locked-modal-overlay';
+  overlay.onclick = function(e){ if(e.target === overlay) closeLockedLessonModal(); };
+  overlay.innerHTML =
+    '<div class="locked-modal">' +
+      '<div class="locked-modal-icon">🔒</div>' +
+      '<div class="locked-modal-title">'+t('locked_modal_title')+'</div>' +
+      '<div class="locked-modal-body">'+t('locked_modal_body')+'</div>' +
+      '<button class="locked-modal-cta" onclick="closeLockedLessonModal()">'+t('locked_modal_cta')+'</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  haptic.light();
+}
+
+function closeLockedLessonModal(){
+  var el = document.getElementById('locked-modal-overlay');
   if(el) el.remove();
 }
 
