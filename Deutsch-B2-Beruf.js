@@ -3304,7 +3304,8 @@ var LESSONS = [
       "sbs_047"
     ],
     "dlgCards": [
-      "dlg_073"
+      "dlg_073",
+      "dlg_100"
     ]
   },
   {
@@ -3393,7 +3394,8 @@ var LESSONS = [
       "sbs_039"
     ],
     "dlgCards": [
-      "dlg_074"
+      "dlg_074",
+      "dlg_101"
     ]
   },
   {
@@ -12113,6 +12115,178 @@ var DIALOGE = [
       "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентов и стабильно улучшим качество."
     },
     "gram": "indirekte_rede_konjunktiv1"
+  },
+  {
+    "id": "dlg_100",
+    "cat": "Wer kann einspringen?",
+    "task": {
+      "de": "Ihre Kollegin hat sich heute Morgen krankgeschrieben und fällt damit für die Nachtschicht morgen aus. Der Dienstplan für die nächste Woche ist ohnehin schon sehr eng, und mehrere Kolleginnen und Kollegen haben sich zuletzt über kurzfristige Vertretungen beschwert.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nSofortige Lösung: Wer kann kurzfristig einspringen?\nFairness: Wie verteilt man Vertretungen gerecht?\nLangfristige Lösung: Braucht es einen festen Vertretungsplan?\nFamilienfreundlichkeit: Wie berücksichtigt man Kolleginnen und Kollegen mit Kindern?\nKommunikation: Wie informiert man das Team schnell über Änderungen?",
+      "en": "Your colleague called in sick this morning and will be unable to work tomorrow's night shift. Next week's shift schedule is already very tight, and several colleagues have recently complained about short-notice cover arrangements.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nImmediate solution: Who can step in at short notice?\nFairness: How can cover shifts be distributed fairly?\nLong-term solution: Is a fixed stand-in plan needed?\nFamily-friendliness: How do you take colleagues with children into account?\nCommunication: How do you quickly inform the team about changes?",
+      "uk": "Ваша колега сьогодні вранці взяла лікарняний і через це не зможе вийти на нічну зміну завтра. Графік чергувань на наступний тиждень і так уже дуже щільний, і кілька колег нещодавно скаржилися на термінові заміни.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nНегайне рішення: Хто може терміново підмінити?\nСправедливість: Як справедливо розподіляти заміни?\nДовгострокове рішення: Чи потрібен постійний план підміни?\nСімейна орієнтованість: Як враховувати колег з дітьми?\nКомунікація: Як швидко інформувати команду про зміни?",
+      "ru": "Ваша коллега сегодня утром взяла больничный и из-за этого не сможет выйти на ночную смену завтра. График дежурств на следующую неделю и так уже очень плотный, и несколько коллег недавно жаловались на срочные замены.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nНемедленное решение: Кто может срочно подменить?\nСправедливость: Как справедливо распределять замены?\nДолгосрочное решение: Нужен ли постоянный план подмены?\nСемейная ориентированность: Как учитывать коллег с детьми?\nКоммуникация: Как быстро информировать команду об изменениях?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "David, ich muss dir kurz etwas sagen: Sabine hat sich heute Morgen krankgeschrieben und fällt damit für die Nachtschicht morgen aus. <r>Wir haben also die Herausforderung, dass</r> wir bis morgen früh jemanden für den Schichtdienst finden müssen. <r>Wie sollten wir vorgehen</r>?",
+      "en": "David, I need to tell you something quickly: Sabine called in sick this morning, so she won't be able to work tomorrow's night shift. <r>So we have the challenge that</r> we need to find someone for the shift by tomorrow morning. <r>How should we proceed</r>?",
+      "uk": "Девіде, мушу тобі дещо швидко сказати: Сабіна сьогодні вранці взяла лікарняний, тому не зможе вийти на нічну зміну завтра. <r>Отже, у нас є проблема, що</r> нам потрібно знайти когось на зміну до завтрашнього ранку. <r>Як нам діяти</r>?",
+      "ru": "Давид, мне нужно быстро сказать тебе кое-что: Сабина сегодня утром взяла больничный, поэтому не сможет выйти на ночную смену завтра. <r>Итак, у нас есть проблема, что</r> нам нужно найти кого-то на смену до завтрашнего утра. <r>Как нам действовать</r>?"
+    },
+    "a": {
+      "de": "Oh nein, das ist wirklich ungünstig. <r>Habe ich dich richtig verstanden</r>: Wir haben also noch niemanden für die Nachtschicht? Wer könnte deiner Meinung nach kurzfristig einspringen?",
+      "en": "Oh no, that's really inconvenient. <r>Did I understand you correctly</r>: so we don't have anyone for the night shift yet? Who do you think could step in at short notice?",
+      "uk": "О ні, це справді незручно. <r>Я правильно тебе зрозумів</r>: тобто в нас поки що немає нікого на нічну зміну? Хто, на твою думку, міг би терміново підмінити?",
+      "ru": "О нет, это действительно неудобно. <r>Я правильно тебя понял</r>: то есть у нас пока нет никого на ночную смену? Кто, по-твоему, мог бы срочно подменить?"
+    },
+    "q1": {
+      "de": "<r>Ich hätte eine Idee</r>: Thomas hat neulich erwähnt, dass er morgen Nachmittag flexibel ist. Vielleicht könnten wir ihn fragen, ob er einspringen kann.",
+      "en": "<r>I have an idea</r>: Thomas mentioned recently that he's flexible tomorrow afternoon. Maybe we could ask him if he can step in.",
+      "uk": "<r>У мене є ідея</r>: Томас нещодавно казав, що завтра після обіду він вільний. Можливо, варто запитати, чи зможе він підмінити.",
+      "ru": "<r>У меня есть идея</r>: Томас недавно говорил, что завтра после обеда он свободен. Может, стоит спросить, сможет ли он подменить."
+    },
+    "a1": {
+      "de": "<r>Das ist zwar kein schlechter Vorschlag, aber</r> Thomas ist in den letzten Wochen schon zweimal für andere eingesprungen. Ich finde, wir sollten die Vertretungen nicht immer auf dieselben Leute abwälzen.",
+      "en": "<r>That's not a bad suggestion, but</r> Thomas has already covered for others twice in the past few weeks. I think we shouldn't keep putting the cover shifts on the same people.",
+      "uk": "<r>Це непогана пропозиція, але</r> Томас за останні тижні вже двічі підміняв інших. Мені здається, не варто постійно перекладати заміни на тих самих людей.",
+      "ru": "<r>Это неплохое предложение, но</r> Томас за последние недели уже дважды подменял других. Мне кажется, не стоит постоянно перекладывать замены на одних и тех же людей."
+    },
+    "q2": {
+      "de": "Du hast recht. <r>Vielleicht könnten wir das Problem lösen, indem</r> wir eine Liste mit Freiwilligen für kurzfristige Vertretungen erstellen, in die sich alle freiwillig eintragen können. <r>Was hältst du davon</r>?",
+      "en": "You're right. <r>Maybe we could solve the problem by</r> creating a list of volunteers for short-notice cover, where everyone can sign up voluntarily. <r>What do you think</r>?",
+      "uk": "Ти маєш рацію. <r>Можливо, ми могли б вирішити проблему, якщо</r> створимо список добровольців для термінових замін, куди кожен зможе записатися за бажанням. <r>Як ти на це дивишся</r>?",
+      "ru": "Ты прав. <r>Возможно, мы могли бы решить проблему, если</r> создадим список добровольцев для срочных замен, куда каждый сможет записаться по желанию. <r>Как ты на это смотришь</r>?"
+    },
+    "a2": {
+      "de": "<r>Das klingt überzeugend</r>. Wir müssen aber auch daran denken, dass manche Kolleginnen und Kollegen mit Kindern nicht immer spontan einspringen können. <r>Ich finde es besser, wenn</r> wir die Freiwilligenliste mit einem festen Vertretungsplan kombinieren, der die familiäre Situation berücksichtigt.",
+      "en": "<r>That sounds convincing</r>. But we also need to remember that some colleagues with children can't always step in spontaneously. <r>I think it's better if</r> we combine the volunteer list with a fixed stand-in plan that takes family circumstances into account.",
+      "uk": "<r>Звучить переконливо</r>. Але треба також пам'ятати, що деякі колеги з дітьми не завжди можуть спонтанно підмінити когось. <r>Гадаю, краще, якщо</r> ми поєднаємо список добровольців із постійним планом підміни, який враховує сімейну ситуацію.",
+      "ru": "<r>Звучит убедительно</r>. Но нужно также помнить, что некоторые коллеги с детьми не всегда могут спонтанно подменить кого-то. <r>Думаю, лучше, если</r> мы объединим список добровольцев с постоянным планом подмены, который учитывает семейную ситуацию."
+    },
+    "q3": {
+      "de": "Guter Punkt. Wir könnten außerdem eine Art Rufbereitschaft einführen – allerdings nur freiwillig und mit einem Ausgleich, zum Beispiel einem freien Tag später. <r>Wie siehst du das</r>?",
+      "en": "Good point. We could also introduce a kind of on-call system – but only voluntary and with compensation, for example a day off later. <r>What do you think</r>?",
+      "uk": "Слушна думка. Ми могли б також запровадити щось на кшталт чергування на виклик — але лише за бажанням і з компенсацією, наприклад, вихідним пізніше. <r>Як ти на це дивишся</r>?",
+      "ru": "Дельная мысль. Мы могли бы также ввести что-то вроде дежурства по вызову — но только добровольно и с компенсацией, например, выходным позже. <r>Как ты на это смотришь</r>?"
+    },
+    "a3": {
+      "de": "<r>Dem kann ich nur zustimmen</r>. Ein Ausgleich ist mir wichtig. Lass uns den Vorschlag beim nächsten Teammeeting vorstellen, damit alle mitreden können, bevor wir etwas endgültig festlegen.",
+      "en": "<r>I can only agree with that</r>. Compensation matters to me. Let's present the proposal at the next team meeting so everyone can have a say before we finalize anything.",
+      "uk": "<r>Не можу не погодитися</r>. Компенсація для мене важлива. Пропоную представити пропозицію на наступній командній нараді, щоб усі могли висловитися, перш ніж ми щось остаточно вирішимо.",
+      "ru": "<r>Не могу не согласиться</r>. Компенсация для меня важна. Предлагаю представить предложение на следующем командном собрании, чтобы все могли высказаться, прежде чем мы что-то окончательно решим."
+    },
+    "q4": {
+      "de": "Gute Idee. Wir sollten außerdem klären, wie wir das ganze Team schnell über kurzfristige Änderungen informieren – vielleicht über eine gemeinsame Chatgruppe?",
+      "en": "Good idea. We should also clarify how we quickly inform the whole team about short-notice changes – maybe through a shared chat group?",
+      "uk": "Гарна ідея. Нам також варто з'ясувати, як швидко інформувати всю команду про термінові зміни — можливо, через спільну групу в чаті?",
+      "ru": "Хорошая идея. Нам также стоит выяснить, как быстро информировать всю команду о срочных изменениях — может быть, через общую группу в чате?"
+    },
+    "a4": {
+      "de": "<r>Das halte ich für eine sehr gute Idee</r>. Eine Chatgruppe wäre praktisch, und zusätzlich könnten wir den Dienstplan digital pflegen, damit jeder ihn jederzeit einsehen kann.",
+      "en": "<r>I think that's a very good idea</r>. A chat group would be practical, and we could also keep the shift schedule digital so everyone can check it anytime.",
+      "uk": "<r>Вважаю це дуже гарною ідеєю</r>. Група в чаті була б практичною, і ми могли б додатково вести графік чергувань в електронному вигляді, щоб кожен міг переглянути його будь-коли.",
+      "ru": "<r>Считаю это очень хорошей идеей</r>. Группа в чате была бы удобной, и мы могли бы дополнительно вести график дежурств в электронном виде, чтобы каждый мог посмотреть его в любое время."
+    },
+    "q5": {
+      "de": "<r>Dann lass uns folgende Punkte festhalten</r>: Für morgen fragen wir Thomas, ob er einspringen kann, und außerdem bereiten wir den Vorschlag für Freiwilligenliste, Vertretungsplan und Chatgruppe fürs Teammeeting vor.",
+      "en": "<r>Then let's note down the following points</r>: for tomorrow we'll ask Thomas if he can step in, and we'll also prepare the proposal for the volunteer list, stand-in plan and chat group for the team meeting.",
+      "uk": "<r>Тоді зафіксуймо такі пункти</r>: на завтра ми запитаємо Томаса, чи зможе він підмінити, а також підготуємо пропозицію щодо списку добровольців, плану підміни й групи в чаті для командної наради.",
+      "ru": "<r>Тогда зафиксируем такие пункты</r>: на завтра мы спросим Томаса, сможет ли он подменить, а также подготовим предложение по списку добровольцев, плану подмены и группе в чате для командного собрания."
+    },
+    "a5": {
+      "de": "<r>Einverstanden, das ist eine gute Lösung</r>. Ich kümmere mich um die schriftliche Zusammenfassung, und du sprichst kurz mit Thomas wegen morgen.",
+      "en": "<r>Agreed, that's a good solution</r>. I'll take care of the written summary, and you have a quick word with Thomas about tomorrow.",
+      "uk": "<r>Погоджуюся, це гарне рішення</r>. Я подбаю про письмове резюме, а ти коротко поговориш із Томасом щодо завтра.",
+      "ru": "<r>Согласен, это хорошее решение</r>. Я позабочусь о письменном резюме, а ты коротко поговоришь с Томасом насчёт завтра."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_101",
+    "cat": "Gesünder geht immer",
+    "task": {
+      "de": "Die Geschäftsführung hat festgestellt, dass die Krankheitsrate im Team in den letzten Monaten deutlich gestiegen ist. Mehrere Kolleginnen und Kollegen klagen über Rückenschmerzen und Erschöpfung, und die Fehlzeiten nehmen weiter zu.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nUrsache: Warum ist die Krankheitsrate wahrscheinlich gestiegen?\nArbeitsplatz: Wie kann man den Bildschirmarbeitsplatz ergonomischer gestalten?\nBewegung und Entspannung: Welche Angebote zu Sport und Stressmanagement wären sinnvoll?\nErnährung: Wie kann die Kantine zu einem gesünderen Angebot beitragen?\nNächste Schritte: Wie und wann stellt man die Vorschläge der Geschäftsführung vor?",
+      "en": "Management has noticed that the sickness rate in the team has risen noticeably over the past few months. Several colleagues complain of back pain and exhaustion, and absences keep increasing.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nCause: Why has the sickness rate probably risen?\nWorkstation: How can the screen workstation be made more ergonomic?\nExercise and relaxation: What offerings for sports and stress management would make sense?\nNutrition: How can the canteen contribute to a healthier offering?\nNext steps: How and when do you present the proposals to management?",
+      "uk": "Керівництво помітило, що рівень захворюваності в команді за останні місяці помітно зріс. Кілька колег скаржаться на біль у спині та виснаження, а кількість відсутностей продовжує зростати.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПричина: Чому, ймовірно, зріс рівень захворюваності?\nРобоче місце: Як зробити робоче місце з екраном більш ергономічним?\nРух і розслаблення: Які пропозиції щодо спорту та управління стресом були б доречними?\nХарчування: Як їдальня може сприяти здоровішому меню?\nНаступні кроки: Як і коли представити пропозиції керівництву?",
+      "ru": "Руководство заметило, что уровень заболеваемости в команде за последние месяцы заметно вырос. Несколько коллег жалуются на боли в спине и истощение, а количество отсутствий продолжает расти.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПричина: Почему, вероятно, вырос уровень заболеваемости?\nРабочее место: Как сделать рабочее место с экраном более эргономичным?\nДвижение и расслабление: Какие предложения по спорту и управлению стрессом были бы уместны?\nПитание: Как столовая может способствовать более здоровому меню?\nСледующие шаги: Как и когда представить предложения руководству?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Nina, hast du kurz Zeit? <r>Wir haben die Herausforderung, dass</r> die Krankheitsrate im Team in den letzten Monaten deutlich gestiegen ist. Nach <g>Auswertung</g> der Krankmeldungen sehe ich vor allem Rückenschmerzen und Erschöpfung als Hauptursachen.",
+      "en": "Nina, do you have a moment? <r>We have the challenge that</r> the sickness rate in the team has risen noticeably in the last few months. After <g>analyzing</g> the sick notes, I mainly see back pain and exhaustion as the main causes.",
+      "uk": "Ніно, у тебе є хвилинка? <r>У нас є проблема, що</r> рівень захворюваності в команді за останні місяці помітно зріс. Після <g>аналізу</g> лікарняних я бачу передусім біль у спині та виснаження як основні причини.",
+      "ru": "Нина, у тебя есть минутка? <r>У нас есть проблема, что</r> уровень заболеваемости в команде за последние месяцы заметно вырос. После <g>анализа</g> больничных листов я вижу прежде всего боли в спине и истощение как основные причины."
+    },
+    "a": {
+      "de": "Das habe ich auch schon gemerkt. <r>Habe ich dich richtig verstanden</r>: Die Fehlzeiten hängen also vor allem mit Rückenschmerzen und Erschöpfung zusammen? <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "I noticed that too. <r>Did I understand you correctly</r>: so the absences are mainly related to back pain and exhaustion? <r>What could we do in this situation</r>?",
+      "uk": "Я теж це помітила. <r>Я правильно тебе зрозуміла</r>: тобто відсутності пов'язані передусім із болем у спині та виснаженням? <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Я тоже это заметила. <r>Я правильно тебя поняла</r>: то есть отсутствия связаны прежде всего с болями в спине и истощением? <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "q1": {
+      "de": "<r>Ich hätte einen Vorschlag</r>: Durch die <g>Verbesserung</g> der Ergonomie an den Bildschirmarbeitsplätzen könnten wir die Rückenschmerzen sicher reduzieren. Höhenverstellbare Tische wären zum Beispiel eine Möglichkeit.",
+      "en": "<r>I'd have a suggestion</r>: through the <g>improvement</g> of ergonomics at the screen workstations, we could probably reduce the back pain. Height-adjustable desks would be one option, for example.",
+      "uk": "<r>У мене була б пропозиція</r>: завдяки <g>покращенню</g> ергономіки на робочих місцях з екранами ми могли б, напевно, зменшити біль у спині. Столи з регульованою висотою, наприклад, були б одним із варіантів.",
+      "ru": "<r>У меня было бы предложение</r>: благодаря <g>улучшению</g> эргономики на рабочих местах с экранами мы могли бы, наверное, уменьшить боли в спине. Столы с регулируемой высотой, например, были бы одним из вариантов."
+    },
+    "a1": {
+      "de": "<r>Das klingt vernünftig</r>, aber ich glaube, das allein reicht nicht. Die Arbeitsbelastung ist einfach zu hoch, und viele schaffen es kaum, überhaupt Pausen zu machen.",
+      "en": "<r>That sounds reasonable</r>, but I don't think that alone is enough. The workload is simply too high, and many people barely manage to take breaks at all.",
+      "uk": "<r>Звучить розумно</r>, але, гадаю, самого цього недостатньо. Робоче навантаження просто занадто високе, і багатьом навряд чи вдається взагалі робити перерви.",
+      "ru": "<r>Звучит разумно</r>, но, думаю, одного этого недостаточно. Рабочая нагрузка просто слишком высокая, и многим едва удаётся вообще делать перерывы."
+    },
+    "q2": {
+      "de": "<r>Da hast du recht</r>. <r>Wie wäre es, wenn</r> wir eine feste Pausenregelung einführen und zusätzlich ein Fitnessprogramm mit Entspannungsübungen anbieten? <r>Was hältst du davon</r>?",
+      "en": "<r>You're right about that</r>. <r>How about</r> we introduce a fixed break schedule and also offer a fitness programme with relaxation exercises? <r>What do you think</r>?",
+      "uk": "<r>Тут ти маєш рацію</r>. <r>Як щодо того, щоб</r> ми запровадили чіткий графік перерв і додатково запропонували фітнес-програму з вправами на розслаблення? <r>Як ти на це дивишся</r>?",
+      "ru": "<r>Тут ты прав</r>. <r>Как насчёт того, чтобы</r> мы ввели чёткий график перерывов и дополнительно предложили фитнес-программу с упражнениями на расслабление? <r>Как ты на это смотришь</r>?"
+    },
+    "a2": {
+      "de": "<r>Das gefällt mir</r>. Wir dürfen aber nicht vergessen, dass nicht jeder gleich Lust auf Sport hat. Vielleicht könnten wir zusätzlich ein Präventionsseminar zum Thema Stressmanagement anbieten.",
+      "en": "<r>I like that</r>. But we mustn't forget that not everyone feels like doing sports. Maybe we could also offer a prevention seminar on stress management.",
+      "uk": "<r>Мені це подобається</r>. Але не варто забувати, що не кожен одразу захоче займатися спортом. Можливо, ми могли б додатково запропонувати семінар з профілактики на тему управління стресом.",
+      "ru": "<r>Мне это нравится</r>. Но не стоит забывать, что не каждый сразу захочет заниматься спортом. Может быть, мы могли бы дополнительно предложить семинар по профилактике на тему управления стрессом."
+    },
+    "q3": {
+      "de": "Gute Ergänzung. Und was ist mit der Ernährung? Ich habe gehört, dass sich viele über das Kantinenessen beschweren.",
+      "en": "Good addition. And what about food? I've heard that a lot of people complain about the canteen food.",
+      "uk": "Гарне доповнення. А як щодо харчування? Я чув, що багато хто скаржиться на їжу в їдальні.",
+      "ru": "Хорошее дополнение. А как насчёт питания? Я слышал, что многие жалуются на еду в столовой."
+    },
+    "a3": {
+      "de": "<r>Ich bin deiner Meinung</r>. <r>Eine Möglichkeit wäre zum Beispiel</r>, mit der Kantine ein ausgewogenes Angebot und einen nachhaltigen Speiseplan zu entwickeln, mit mehr frischem Gemüse und weniger Fertiggerichten.",
+      "en": "<r>I agree with you</r>. <r>One option would be, for example,</r> to develop a balanced range and a sustainable meal plan with the canteen, with more fresh vegetables and fewer ready meals.",
+      "uk": "<r>Я цілком з тобою згодна</r>. <r>Одним із варіантів було б, наприклад,</r> розробити разом з їдальнею збалансоване меню та сталий план харчування, з більшою кількістю свіжих овочів і меншою кількістю напівфабрикатів.",
+      "ru": "<r>Я полностью с тобой согласна</r>. <r>Одним из вариантов было бы, например,</r> разработать вместе со столовой сбалансированное меню и устойчивый план питания, с большим количеством свежих овощей и меньшим количеством полуфабрикатов."
+    },
+    "q4": {
+      "de": "<r>Gut, dann fassen wir zusammen</r>: Durch die <g>Einführung</g> eines Fitnessprogramms, eine feste Pausenregelung, ein Präventionsseminar und ein gesünderes Kantinenangebot wollen wir die Krankheitsrate senken.",
+      "en": "<r>Alright, let's summarize</r>: through the <g>introduction</g> of a fitness programme, a fixed break schedule, a prevention seminar, and a healthier canteen offering, we want to bring the sickness rate down.",
+      "uk": "<r>Гаразд, тоді підсумуємо</r>: завдяки <g>впровадженню</g> фітнес-програми, чіткого графіка перерв, семінару з профілактики та здоровішого меню в їдальні ми хочемо знизити рівень захворюваності.",
+      "ru": "<r>Хорошо, тогда подведём итог</r>: благодаря <g>внедрению</g> фитнес-программы, чёткого графика перерывов, семинара по профилактике и более здорового меню в столовой мы хотим снизить уровень заболеваемости."
+    },
+    "a4": {
+      "de": "Genau, so machen wir es. Ich spreche mit der Kantine wegen des Speiseplans, und du kümmerst dich um das Angebot für das Fitnessprogramm und das Seminar.",
+      "en": "Exactly, that's what we'll do. I'll talk to the canteen about the meal plan, and you take care of the offer for the fitness programme and the seminar.",
+      "uk": "Саме так, так і зробимо. Я поговорю з їдальнею щодо плану харчування, а ти займешся пропозицією щодо фітнес-програми та семінару.",
+      "ru": "Именно так, так и сделаем. Я поговорю со столовой насчёт плана питания, а ты займёшься предложением по фитнес-программе и семинару."
+    },
+    "q5": {
+      "de": "Sollten wir das Ganze auch der Geschäftsführung vorstellen, bevor wir loslegen?",
+      "en": "Should we also present the whole thing to management before we start?",
+      "uk": "Може, варто представити все це керівництву, перш ніж почати?",
+      "ru": "Может, стоит представить всё это руководству, прежде чем начинать?"
+    },
+    "a5": {
+      "de": "Gute Idee. Wir fassen die Vorschläge kurz zusammen und stellen sie nächste Woche im Meeting vor, dann können wir gleich mit der Umsetzung beginnen.",
+      "en": "Good idea. We'll briefly summarize the proposals and present them at next week's meeting, then we can start implementing right away.",
+      "uk": "Гарна ідея. Ми коротко підсумуємо пропозиції й представимо їх на нараді наступного тижня, тоді зможемо одразу почати впровадження.",
+      "ru": "Хорошая идея. Мы коротко подведём итог предложений и представим их на собрании на следующей неделе, тогда сможем сразу начать внедрение."
+    },
+    "gram": "nominalisierung"
   }
 ];
 
