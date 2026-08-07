@@ -3476,7 +3476,8 @@ var LESSONS = [
       "sbs_048"
     ],
     "dlgCards": [
-      "dlg_075"
+      "dlg_075",
+      "dlg_102"
     ]
   },
   {
@@ -12287,6 +12288,92 @@ var DIALOGE = [
       "ru": "Хорошая идея. Мы коротко подведём итог предложений и представим их на собрании на следующей неделе, тогда сможем сразу начать внедрение."
     },
     "gram": "nominalisierung"
+  },
+  {
+    "id": "dlg_102",
+    "cat": "Das ist mir wichtig",
+    "task": {
+      "de": "Beim letzten Teammeeting haben mehrere Kolleginnen und Kollegen kritisiert, dass die internen Kurzvorträge oft schwer zu verfolgen sind – es fehlt an Struktur, klaren Übergängen und einer erkennbaren Kernaussage.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nProblem: Warum sind die Kurzvorträge schwer zu verfolgen?\nStruktur: Wie sollte ein guter Kurzvortrag aufgebaut sein?\nHilfsmittel: Welche Redemittel und Hilfsmittel (z. B. Schaubilder) könnten helfen?\nVorbereitung: Wie können sich die Kolleginnen und Kollegen besser vorbereiten?\nUmsetzung: Wie und wann stellt man die neuen Regeln vor?",
+      "en": "At the last team meeting, several colleagues criticized that the internal short presentations are often hard to follow – they lack structure, clear transitions, and a recognizable key message.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nProblem: Why are the short presentations hard to follow?\nStructure: How should a good short presentation be structured?\nTools: What stock phrases and aids (e.g., diagrams) could help?\nPreparation: How can colleagues prepare better?\nImplementation: How and when do you introduce the new rules?",
+      "uk": "На останній командній нараді кілька колег розкритикували те, що внутрішні короткі доповіді часто важко сприймати — бракує структури, чітких переходів і зрозумілої ключової думки.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПроблема: Чому короткі доповіді важко сприймати?\nСтруктура: Якою має бути структура гарної короткої доповіді?\nІнструменти: Які фрази та засоби (наприклад, схеми) можуть допомогти?\nПідготовка: Як колеги можуть краще готуватися?\nВпровадження: Як і коли представити нові правила?",
+      "ru": "На последнем командном собрании несколько коллег раскритиковали то, что внутренние короткие доклады часто трудно воспринимать — не хватает структуры, чётких переходов и понятной ключевой мысли.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПроблема: Почему короткие доклады трудно воспринимать?\nСтруктура: Какой должна быть структура хорошего короткого доклада?\nИнструменты: Какие фразы и средства (например, схемы) могут помочь?\nПодготовка: Как коллеги могут лучше готовиться?\nВнедрение: Как и когда представить новые правила?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Alex, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Beim letzten Teammeeting haben mehrere Kolleginnen und Kollegen gesagt, dass unsere Kurzvorträge oft schwer zu verfolgen sind.",
+      "en": "Alex, do you have a moment? <r>We should talk about a problem</r>: at the last team meeting, several colleagues said that our short presentations are often hard to follow.",
+      "uk": "Алексе, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: на останній командній нараді кілька колег сказали, що наші короткі доповіді часто важко сприймати.",
+      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: на последнем командном собрании несколько коллег сказали, что наши короткие доклады часто трудно воспринимать."
+    },
+    "a": {
+      "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um die Struktur der Vorträge? <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "I've heard that too. <r>Did I understand you correctly</r>: so it's mainly about the structure of the talks? <r>What could we do in this situation</r>?",
+      "uk": "Я теж це чув. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про структуру доповідей? <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Я тоже это слышал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о структуре докладов? <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "q1": {
+      "de": "<r>Aus meiner Sicht spricht dafür, dass</r> oft eine klare Einleitung fehlt und viele direkt mitten ins Thema einsteigen, ohne zu sagen, worum es überhaupt geht.",
+      "en": "<r>From my point of view, an argument for that is that</r> a clear introduction is often missing, and many people dive straight into the topic without saying what it's actually about.",
+      "uk": "<r>На мою думку, на користь цього свідчить те, що</r> часто бракує чіткого вступу, і багато хто одразу занурюється в тему, не пояснивши, про що взагалі йдеться.",
+      "ru": "<r>На мой взгляд, в пользу этого говорит то, что</r> часто не хватает чёткого вступления, и многие сразу погружаются в тему, не объяснив, о чём вообще идёт речь."
+    },
+    "a1": {
+      "de": "<r>Da stimme ich dir zu</r>. Meiner Erfahrung nach hilft es außerdem sehr, wenn man am Ende die Schlüsselbotschaft noch einmal hervorhebt. Das ist mir besonders wichtig, weil die Zuhörer sonst oft nicht wissen, was sie eigentlich mitnehmen sollen.",
+      "en": "<r>I agree with you on that</r>. In my experience it also helps a lot if you highlight the key message again at the end. That's particularly important to me, because otherwise listeners often don't know what they're actually supposed to take away.",
+      "uk": "<r>Тут я з тобою згодна</r>. За моїм досвідом, ще дуже допомагає, якщо наприкінці ще раз підкреслити ключову думку. Для мене це особливо важливо, бо інакше слухачі часто не розуміють, що їм узагалі варто винести з доповіді.",
+      "ru": "<r>Тут я с тобой согласна</r>. По моему опыту, также очень помогает, если в конце ещё раз подчеркнуть ключевую мысль. Для меня это особенно важно, потому что иначе слушатели часто не понимают, что им вообще нужно вынести из доклада."
+    },
+    "q2": {
+      "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten eine kurze Checkliste erstellen – mit festen Redemitteln zum Einleiten, zum Übergehen zu einem neuen Punkt und zum Abschließen. Ich bevorzuge dabei eine möglichst kurze Version, die man sich schnell merken kann. <r>Was hältst du davon</r>?",
+      "en": "<r>I'd have a suggestion</r>: we could create a short checklist – with fixed phrases for the introduction, for moving on to a new point, and for the conclusion. I prefer as short a version as possible, one people can memorize quickly. <r>What do you think</r>?",
+      "uk": "<r>У мене була б пропозиція</r>: ми могли б створити коротку пам'ятку — з фіксованими фразами для вступу, для переходу до нового пункту й для завершення. При цьому я віддаю перевагу максимально короткій версії, яку можна швидко запам'ятати. <r>Як ти на це дивишся</r>?",
+      "ru": "<r>У меня было бы предложение</r>: мы могли бы создать короткую памятку — с фиксированными фразами для вступления, для перехода к новому пункту и для завершения. При этом я предпочитаю максимально короткую версию, которую можно быстро запомнить. <r>Как ты на это смотришь</r>?"
+    },
+    "a2": {
+      "de": "<r>Das gefällt mir</r>. Wir dürfen aber nicht vergessen, dass ein Vortrag auch mit einem passenden Schaubild viel verständlicher wird. Außerdem könnten wir dafür ein konkretes Beispiel zeigen.",
+      "en": "<r>I like that</r>. But we mustn't forget that a talk also becomes much clearer with a suitable diagram. We could also show a concrete example for that.",
+      "uk": "<r>Мені це подобається</r>. Але не варто забувати, що доповідь стає значно зрозумілішою й з відповідною схемою. Крім того, ми могли б показати для цього конкретний приклад.",
+      "ru": "<r>Мне это нравится</r>. Но не стоит забывать, что доклад становится намного понятнее и с подходящей схемой. Кроме того, мы могли бы показать для этого конкретный пример."
+    },
+    "q3": {
+      "de": "Guter Punkt. Zum einen könnten wir die Checkliste mit Beispielsätzen versehen, zum anderen könnten wir vor dem Vortrag kurz Feedback von einer Kollegin oder einem Kollegen einholen.",
+      "en": "Good point. For one thing, we could add example sentences to the checklist; for another, we could briefly get feedback from a colleague before the talk.",
+      "uk": "Слушна думка. З одного боку, ми могли б доповнити пам'ятку прикладами речень, з іншого — могли б перед доповіддю коротко отримати відгук від колеги.",
+      "ru": "Дельная мысль. С одной стороны, мы могли бы дополнить памятку примерами предложений, с другой — могли бы перед докладом коротко получить обратную связь от коллеги."
+    },
+    "a3": {
+      "de": "Guter Punkt, jedoch sollten wir das Ganze nicht zu kompliziert machen, sonst hat am Ende niemand mehr Lust, überhaupt einen Vortrag zu halten. Für mich ist die Praxistauglichkeit ausschlaggebend.",
+      "en": "Good point, however we shouldn't make the whole thing too complicated, otherwise nobody will feel like giving a talk at all in the end. For me, practicality is the decisive factor.",
+      "uk": "Слушна думка, однак нам не варто робити з цього щось надто складне, бо інакше врешті-решт нікому вже не захочеться виступати з доповіддю взагалі. Для мене вирішальним є практичність.",
+      "ru": "Дельная мысль, однако нам не стоит делать из этого что-то слишком сложное, иначе в конце концов никому уже не захочется выступать с докладом вообще. Для меня решающим является практичность."
+    },
+    "q4": {
+      "de": "<r>Gut, dann fassen wir zusammen</r>: Wir erstellen eine einfache Checkliste mit Redemitteln für Einleitung, Hauptteil und Schluss, dazu ein Beispiel mit Schaubild, und wir bieten kurzes Feedback vor dem Vortrag an.",
+      "en": "<r>Alright, let's summarize</r>: we'll create a simple checklist with phrases for the introduction, main part, and conclusion, plus an example with a diagram, and we'll offer brief feedback before the talk.",
+      "uk": "<r>Гаразд, тоді підсумуємо</r>: ми створимо просту пам'ятку з фразами для вступу, основної частини й завершення, додамо приклад зі схемою і запропонуємо короткий відгук перед доповіддю.",
+      "ru": "<r>Хорошо, тогда подведём итог</r>: мы создадим простую памятку с фразами для вступления, основной части и завершения, добавим пример со схемой и предложим короткую обратную связь перед докладом."
+    },
+    "a4": {
+      "de": "Genau, so machen wir es. Ich kümmere mich um die Checkliste, und du erstellst das Beispiel mit dem Schaubild.",
+      "en": "Exactly, that's what we'll do. I'll take care of the checklist, and you put together the example with the diagram.",
+      "uk": "Саме так, так і зробимо. Я подбаю про пам'ятку, а ти підготуєш приклад зі схемою.",
+      "ru": "Именно так, так и сделаем. Я позабочусь о памятке, а ты подготовишь пример со схемой."
+    },
+    "q5": {
+      "de": "Sollten wir das den Kolleginnen und Kollegen auch kurz beim nächsten Meeting vorstellen?",
+      "en": "Should we also present this briefly to the colleagues at the next meeting?",
+      "uk": "Може, варто коротко представити це колегам на наступній нараді?",
+      "ru": "Может, стоит коротко представить это коллегам на следующем собрании?"
+    },
+    "a5": {
+      "de": "Gute Idee. Dann wissen alle gleich, worauf es ankommt, und wir können die Checkliste ab dem nächsten Kurzvortrag ausprobieren.",
+      "en": "Good idea. That way everyone will immediately know what matters, and we can try out the checklist starting with the next short presentation.",
+      "uk": "Гарна ідея. Тоді всі одразу знатимуть, на що звертати увагу, і ми зможемо випробувати пам'ятку вже з наступної короткої доповіді.",
+      "ru": "Хорошая идея. Тогда все сразу будут знать, на что обращать внимание, и мы сможем опробовать памятку уже со следующего короткого доклада."
+    },
+    "gram": ""
   }
 ];
 
