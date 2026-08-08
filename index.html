@@ -3131,7 +3131,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '453-9c8c05a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3354,22 +3354,35 @@ function buildLearningPath(rawLessons, courseLevel){
       // Діалог — ПОВНОЦІННИЙ вузол шляху (Урок-Урок-Діалог-Урок), не
       // прикріплена бонус-картка. Вставляємо лише якщо для модуля є
       // хоч один dlgCards (умова "якщо є" — не всюди ще написано).
-      // cardIds = dlgCards: lessonProgress/lessonUnlocked повторно
+      //
+      // ОКРЕМИЙ вузол НА КОЖНУ картку діалогу, а не один вузол з усім
+      // пулом одразу: коли dlgCards модуля містить кілька РІЗНИХ карток
+      // (різні теми/ситуації), програвання їх усіх поспіль в ОДНІЙ
+      // сесії відчувається як "один змішаний урок" — без святкування чи
+      // паузи між тим, що насправді різні діалоги (напр. "пошук
+      // рішення" непомітно перетікає у "small talk"). Тепер кожна
+      // картка — власний вузол: власне святкування, власний запис у
+      // unlockAfter-ланцюжок, власний тип іконки (_lpDialogueNodeType
+      // рахується вже для ОДНІЄЇ картки, не для всього пулу).
+      //
+      // cardIds = [dlgId]: lessonProgress/lessonUnlocked повторно
       // використовують той самий стан SM-2 (srsRate пишеться в
       // state.cards[id] однаково для vocab- і dlg-карток).
       if(idx === dlgAt && (lesson.dlgCards||[]).length){
-        var dlgId = lesson.id + '_dlg';
-        out.push(Object.assign({}, lesson, {
-          id:          dlgId,
-          type:        'dialogue',
-          dlgType:     _lpDialogueNodeType(lesson.dlgCards),
-          cardIds:     lesson.dlgCards,
-          dlgCards:    lesson.dlgCards,
-          sbCards:     [],
-          unlockAfter: withinModulePrevId,
-          _parentModuleId: lesson.id,
-        }));
-        withinModulePrevId = dlgId;
+        lesson.dlgCards.forEach(function(dlgId, dIdx){
+          var nodeId = lesson.id + '_dlg' + (dIdx+1);
+          out.push(Object.assign({}, lesson, {
+            id:          nodeId,
+            type:        'dialogue',
+            dlgType:     _lpDialogueNodeType([dlgId]),
+            cardIds:     [dlgId],
+            dlgCards:    [dlgId],
+            sbCards:     [],
+            unlockAfter: withinModulePrevId,
+            _parentModuleId: lesson.id,
+          }));
+          withinModulePrevId = nodeId;
+        });
       }
     });
 
