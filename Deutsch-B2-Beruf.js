@@ -3986,7 +3986,8 @@ var LESSONS = [
       "sbs_048"
     ],
     "dlgCards": [
-      "dlg_081"
+      "dlg_081",
+      "dlg_108"
     ]
   }
 ];
@@ -8306,9 +8307,9 @@ var DIALOGE = [
     },
     "a": {
       "de": "<r>Ach so</r>, das heißt, er weiß eigentlich gar nicht genau, wer ihn einarbeiten soll und womit er überhaupt arbeiten kann?",
-      "en": "Ah, I see - so that means he doesn't actually know who's supposed to train him or what he can even work with?",
-      "uk": "Ага, зрозуміло - тобто він, по суті, навіть не знає, хто має його навчати і з чим він взагалі може працювати?",
-      "ru": "А, понятно - то есть он, по сути, даже не знает, кто должен его обучать и с чем он вообще может работать?"
+      "en": "<r>Ah, I see</r> - so that means he doesn't actually know who's supposed to train him or what he can even work with?",
+      "uk": "<r>Ага, зрозуміло</r> - тобто він, по суті, навіть не знає, хто має його навчати і з чим він взагалі може працювати?",
+      "ru": "<r>А, понятно</r> - то есть он, по сути, даже не знает, кто должен его обучать и с чем он вообще может работать?"
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir das nicht schnell klären?",
@@ -8330,9 +8331,9 @@ var DIALOGE = [
     },
     "a2": {
       "de": "Das <r>ist sicherlich sinnvoll, da</r> er ohne Zugang gar nicht üben kann. <r>Mir ist nicht ganz klar</r>, wer eigentlich für die Freigabe zuständig ist.",
-      "en": "That <r>certainly makes sense</r>, since he can't practice at all without access. I'm not entirely clear on who's actually responsible for the approval, though.",
-      "uk": "Це, <r>безумовно, розумно</r>, бо без доступу він взагалі не зможе практикуватися. Мені, щоправда, не зовсім зрозуміло, хто саме відповідає за надання дозволу.",
-      "ru": "Это, <r>безусловно, разумно</r>, потому что без доступа он вообще не сможет практиковаться. Мне, правда, не совсем понятно, кто именно отвечает за предоставление разрешения."
+      "en": "That <r>certainly makes sense</r>, since he can't practice at all without access. <r>I'm not entirely clear on</r> who's actually responsible for the approval, though.",
+      "uk": "Це, <r>безумовно, розумно</r>, бо без доступу він взагалі не зможе практикуватися. <r>Мені, щоправда, не зовсім зрозуміло</r>, хто саме відповідає за надання дозволу.",
+      "ru": "Это, <r>безусловно, разумно</r>, потому что без доступа он вообще не сможет практиковаться. <r>Мне, правда, не совсем понятно</r>, кто именно отвечает за предоставление разрешения."
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, dass ich seine Mentorin werde, weil ich mit der Software am besten vertraut bin.",
@@ -8354,27 +8355,27 @@ var DIALOGE = [
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. <r>Okay, dann mache ich also Folgendes</r>: Ich übernehme die ersten zwei Wochen, und danach übernimmst du.",
-      "en": "<r>I completely agree with you</r>. Okay, so here's what I'll do: I'll take the first two weeks, and after that you take over.",
-      "uk": "<r>Тут я з тобою цілком згоден</r>. Гаразд, тоді я зроблю так: я візьму перші два тижні, а потім ти.",
-      "ru": "<r>Тут я с тобой полностью согласен</r>. Хорошо, тогда я сделаю так: я возьму первые две недели, а потом ты."
+      "en": "<r>I completely agree with you</r>. <r>Okay, so here's what I'll do</r>: I'll take the first two weeks, and after that you take over.",
+      "uk": "<r>Тут я з тобою цілком згоден</r>. <r>Гаразд, тоді я зроблю так</r>: я візьму перші два тижні, а потім ти.",
+      "ru": "<r>Тут я с тобой полностью согласен</r>. <r>Хорошо, тогда я сделаю так</r>: я возьму первые две недели, а потом ты."
     },
     "q5": {
       "de": "Gut. <r>Achte bitte darauf, dass</r> du ihm zuerst die Grundfunktionen zeigst, dann erst die komplexeren Analysen - Schritt für Schritt eben.",
-      "en": "Good. Please make sure you show him the basic functions first, then the more complex analyses - step by step.",
-      "uk": "Добре. Простеж, будь ласка, щоб спочатку показати йому основні функції, а вже потім складніші аналізи - крок за кроком.",
-      "ru": "Хорошо. Проследи, пожалуйста, чтобы сначала показать ему основные функции, а уже потом более сложные анализы - шаг за шагом."
+      "en": "Good. <r>Please make sure</r> you show him the basic functions first, then the more complex analyses - step by step.",
+      "uk": "Добре. <r>Простеж, будь ласка, щоб</r> спочатку показати йому основні функції, а вже потім складніші аналізи - крок за кроком.",
+      "ru": "Хорошо. <r>Проследи, пожалуйста, чтобы</r> сначала показать ему основные функции, а уже потом более сложные анализы - шаг за шагом."
     },
     "a5": {
       "de": "<r>In Ordnung, ich muss also</r> zuerst die Grundlagen erklären und außerdem darauf achten, dass er alles wirklich versteht, bevor wir weitermachen.",
-      "en": "Alright, so I need to explain the basics first and also make sure he really understands everything before we move on.",
-      "uk": "Гаразд, тобто спочатку я маю пояснити основи, а також стежити, щоб він справді все розумів, перш ніж ми йдемо далі.",
-      "ru": "Хорошо, то есть сначала я должен объяснить основы, а также следить, чтобы он действительно всё понимал, прежде чем мы пойдём дальше."
+      "en": "<r>Alright, so I need to</r> explain the basics first and also make sure he really understands everything before we move on.",
+      "uk": "<r>Гаразд, тобто</r> спочатку я маю пояснити основи, а також стежити, щоб він справді все розумів, перш ніж ми йдемо далі.",
+      "ru": "<r>Хорошо, то есть</r> сначала я должен объяснить основы, а также следить, чтобы он действительно всё понимал, прежде чем мы пойдём дальше."
     },
     "q6": {
       "de": "Genau. Und <r>ganz wichtig ist, dass</r> die Mentorenschaft am besten offiziell vertraglich festgelegt wird, damit es später keine Missverständnisse gibt.",
-      "en": "Exactly. And it's also really important that the mentorship gets officially set up in the contract, so there are no misunderstandings later.",
-      "uk": "Саме так. І ще дуже важливо, щоб наставництво було офіційно закріплене в договорі, щоб потім не виникало непорозумінь.",
-      "ru": "Именно так. И ещё очень важно, чтобы наставничество было официально закреплено в договоре, чтобы потом не возникало недоразумений."
+      "en": "Exactly. And <r>it's also really important that</r> the mentorship gets officially set up in the contract, so there are no misunderstandings later.",
+      "uk": "Саме так. І ще <r>дуже важливо, щоб</r> наставництво було офіційно закріплене в договорі, щоб потім не виникало непорозумінь.",
+      "ru": "Именно так. И ещё <r>очень важно, чтобы</r> наставничество было официально закреплено в договоре, чтобы потом не возникало недоразумений."
     },
     "a6": {
       "de": "Das leuchtet ein. Kümmerst du dich darum, das mit der Personalabteilung zu klären?",
@@ -12809,6 +12810,92 @@ var DIALOGE = [
       "ru": "Точно, особенно если мы покажем, что из этого также могут возникнуть новые карьерные возможности для команды."
     },
     "gram": "waehrend_genitiv_praeposition"
+  },
+  {
+    "id": "dlg_108",
+    "cat": "Man lernt nie aus",
+    "task": {
+      "de": "Das Unternehmen möchte ab dem nächsten Quartal auf agiles Arbeiten mit Scrum umstellen und flachere Hierarchien einführen. Mehrere Kolleginnen und Kollegen sind unsicher, weil ihnen wichtige Zukunftskompetenzen zu fehlen scheinen.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nProblem: Warum sind einige Kolleginnen und Kollegen unsicher?\nKompetenzen: Welche Zukunftskompetenzen braucht das Team konkret?\nWeiterbildung: Wie kann man sich gezielt weiterbilden?\nPraxis: Wie kann man die neue Arbeitsweise schrittweise ausprobieren?\nUnterstützung: Wer könnte das Team dabei begleiten?",
+      "en": "The company wants to switch to agile working with Scrum and introduce flatter hierarchies starting next quarter. Several colleagues are unsure because they seem to be lacking important future skills.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nProblem: Why are some colleagues unsure?\nSkills: What future skills does the team specifically need?\nTraining: How can you develop these skills in a targeted way?\nPractice: How can you try out the new way of working step by step?\nSupport: Who could support the team through this?",
+      "uk": "Компанія з наступного кварталу хоче перейти на гнучку роботу за Scrum та впровадити пласкіші ієрархії. Кілька колег невпевнені, бо їм, здається, бракує важливих компетенцій майбутнього.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПроблема: Чому деякі колеги невпевнені?\nКомпетенції: Які саме компетенції майбутнього потрібні команді?\nНавчання: Як можна цілеспрямовано підвищувати кваліфікацію?\nПрактика: Як поступово випробувати новий спосіб роботи?\nПідтримка: Хто міг би супроводжувати команду в цьому процесі?",
+      "ru": "Компания со следующего квартала хочет перейти на гибкую работу по Scrum и внедрить более плоские иерархии. Несколько коллег не уверены, потому что им, кажется, не хватает важных компетенций будущего.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПроблема: Почему некоторые коллеги не уверены?\nКомпетенции: Какие именно компетенции будущего нужны команде?\nОбучение: Как можно целенаправленно повышать квалификацию?\nПрактика: Как постепенно опробовать новый способ работы?\nПоддержка: Кто мог бы сопровождать команду в этом процессе?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_m_david",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Anna, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Das Unternehmen möchte ab nächstem Quartal auf agiles Arbeiten mit Scrum umstellen, aber einige Kolleginnen und Kollegen sind ziemlich unsicher.",
+      "en": "Anna, do you have a moment? <r>We should talk about a problem</r>: starting next quarter, the company wants to switch to agile working with Scrum, but several colleagues are quite unsure about it.",
+      "uk": "Анно, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: з наступного кварталу компанія хоче перейти на гнучку роботу за Scrum, але кілька колег доволі невпевнені щодо цього.",
+      "ru": "Анна, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: с следующего квартала компания хочет перейти на гибкую работу по Scrum, но несколько коллег довольно не уверены в этом."
+    },
+    "a": {
+      "de": "Das habe ich auch gehört. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um fehlende Erfahrung mit der neuen Arbeitsweise? <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "I've heard that too. <r>Did I understand you correctly</r>: so it's mainly about a lack of experience with the new way of working? <r>What could we do in this situation</r>?",
+      "uk": "Я теж це чула. <r>Я правильно тебе зрозуміла</r>: тобто йдеться передусім про брак досвіду з новим способом роботи? <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Я тоже это слышала. <r>Я правильно тебя поняла</r>: то есть речь прежде всего о нехватке опыта с новым способом работы? <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "q1": {
+      "de": "Genau. Viele haben das Gefühl, dass ihnen wichtige Zukunftskompetenzen fehlen – zum Beispiel Agilität, Verhandlungsgeschick oder der Umgang mit Datenanalyse.",
+      "en": "Exactly. Many feel like they're missing important future skills – for example agility, negotiation skills, or working with data analysis.",
+      "uk": "Саме так. Багатьом здається, що їм бракує важливих компетенцій майбутнього — наприклад, гнучкості, навичок ведення переговорів або роботи з аналізом даних.",
+      "ru": "Именно. Многим кажется, что им не хватает важных компетенций будущего — например, гибкости, навыков ведения переговоров или работы с анализом данных."
+    },
+    "a1": {
+      "de": "<r>Das kann ich nachvollziehen</r>. Man lernt das ja nicht von heute auf morgen. Vielleicht sollten wir erst einmal herausfinden, welche Kompetenzen im Team schon vorhanden sind und wo genau die Lücken liegen.",
+      "en": "<r>I can understand that</r>. You don't learn that overnight, after all. Maybe we should first find out what skills already exist in the team and where exactly the gaps are.",
+      "uk": "<r>Я це розумію</r>. Це ж не вивчиш за один день. Можливо, спершу варто з'ясувати, які компетенції в команді вже є, а де саме прогалини.",
+      "ru": "<r>Я это понимаю</r>. Это ведь не выучишь за один день. Возможно, сначала стоит выяснить, какие компетенции в команде уже есть, а где именно пробелы."
+    },
+    "q2": {
+      "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten eine kurze Weiterbildung zu Scrum und Kanban anbieten, bevor wir richtig umstellen. <r>Was hältst du davon</r>?",
+      "en": "<r>I'd have a suggestion</r>: we could offer a short training course on Scrum and Kanban before we actually switch over. <r>What do you think</r>?",
+      "uk": "<r>У мене була б пропозиція</r>: ми могли б запропонувати коротке навчання зі Scrum і Kanban, перш ніж дійсно переходити на нову систему. <r>Як ти на це дивишся</r>?",
+      "ru": "<r>У меня было бы предложение</r>: мы могли бы предложить короткое обучение по Scrum и Kanban, прежде чем действительно переходить на новую систему. <r>Как ты на это смотришь</r>?"
+    },
+    "a2": {
+      "de": "<r>Das gefällt mir</r>. Zusätzlich könnten wir erst mit einem kleinen Pilotteam einen Sprint testen, damit alle in der Praxis erproben können, wie agiles Arbeiten funktioniert.",
+      "en": "<r>I like that</r>. In addition, we could first test a sprint with a small pilot team, so everyone can try out in practice how agile working actually works.",
+      "uk": "<r>Мені це подобається</r>. Крім того, ми могли б спершу протестувати спринт із невеликою пілотною командою, щоб усі на практиці спробували, як насправді працює гнучкий підхід.",
+      "ru": "<r>Мне это нравится</r>. Кроме того, мы могли бы сначала протестировать спринт с небольшой пилотной командой, чтобы все на практике попробовали, как на самом деле работает гибкий подход."
+    },
+    "q3": {
+      "de": "Guter Punkt. Und vielleicht könnte jemand mit Erfahrung, zum Beispiel aus einem Startup, das Team am Anfang begleiten und Fragen beantworten.",
+      "en": "Good point. And maybe someone with experience, for example from a startup, could support the team at the start and answer questions.",
+      "uk": "Слушна думка. І, можливо, хтось із досвідом, наприклад зі стартапу, міг би на початку супроводжувати команду й відповідати на запитання.",
+      "ru": "Дельная мысль. И, возможно, кто-то с опытом, например из стартапа, мог бы вначале сопровождать команду и отвечать на вопросы."
+    },
+    "a3": {
+      "de": "<r>Da stimme ich dir zu</r>. Das würde die Kolleginnen und Kollegen entlasten und den Kulturwandel hin zu flacheren Hierarchien sicher erleichtern.",
+      "en": "<r>I agree with you on that</r>. That would take some of the pressure off colleagues and definitely make the cultural shift toward flatter hierarchies easier.",
+      "uk": "<r>Тут я з тобою згодна</r>. Це зняло б частину напруги з колег і точно полегшило б культурні зміни в бік пласкіших ієрархій.",
+      "ru": "<r>Тут я с тобой согласна</r>. Это сняло бы часть напряжения с коллег и точно облегчило бы культурные изменения в сторону более плоских иерархий."
+    },
+    "q4": {
+      "de": "<r>Gut, dann fassen wir zusammen</r>: Wir ermitteln zuerst die Kompetenzlücken, bieten eine Weiterbildung zu Scrum und Kanban an, testen die neue Arbeitsweise mit einem Pilotteam und holen uns erfahrene Begleitung.",
+      "en": "<r>Alright, let's summarize</r>: we'll first identify the skill gaps, offer training on Scrum and Kanban, test the new way of working with a pilot team, and get experienced support.",
+      "uk": "<r>Гаразд, тоді підсумуємо</r>: спочатку визначаємо прогалини в компетенціях, пропонуємо навчання зі Scrum і Kanban, тестуємо новий спосіб роботи з пілотною командою і залучаємо досвідчений супровід.",
+      "ru": "<r>Хорошо, тогда подведём итог</r>: сначала определяем пробелы в компетенциях, предлагаем обучение по Scrum и Kanban, тестируем новый способ работы с пилотной командой и привлекаем опытное сопровождение."
+    },
+    "a4": {
+      "de": "Genau, so machen wir es. Ich frage mal in unserem Netzwerk nach, wer als Mentorin oder Mentor infrage käme.",
+      "en": "Exactly, that's what we'll do. I'll ask around in our network who might work as a mentor.",
+      "uk": "Саме так, так і зробимо. Я запитаю в нашій мережі контактів, хто міг би стати ментором.",
+      "ru": "Именно так, так и сделаем. Я спрошу в нашей сети контактов, кто мог бы стать наставником."
+    },
+    "q5": {
+      "de": "Denkst du, das reicht, damit sich alle im Team sicherer fühlen?",
+      "en": "Do you think that's enough to make everyone in the team feel more confident?",
+      "uk": "Як гадаєш, цього достатньо, щоб уся команда почувалася впевненіше?",
+      "ru": "Как думаешь, этого достаточно, чтобы вся команда почувствовала себя увереннее?"
+    },
+    "a5": {
+      "de": "Auf jeden Fall, vor allem wenn wir zeigen, dass Weiterbildung hier kontinuierlich möglich ist und man wirklich nie ausgelernt hat.",
+      "en": "Definitely, especially if we show that continuous training is possible here and that you really never stop learning.",
+      "uk": "Обов'язково, особливо якщо ми покажемо, що постійне навчання тут можливе і що вчитися насправді ніколи не пізно.",
+      "ru": "Обязательно, особенно если мы покажем, что постоянное обучение здесь возможно и что учиться на самом деле никогда не поздно."
+    },
+    "gram": ""
   }
 ];
 
