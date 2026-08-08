@@ -3557,7 +3557,8 @@ var LESSONS = [
       "sbs_012"
     ],
     "dlgCards": [
-      "dlg_076"
+      "dlg_076",
+      "dlg_103"
     ]
   },
   {
@@ -3664,7 +3665,8 @@ var LESSONS = [
       "sbs_045"
     ],
     "dlgCards": [
-      "dlg_077"
+      "dlg_077",
+      "dlg_104"
     ]
   },
   {
@@ -3725,7 +3727,8 @@ var LESSONS = [
       "sbs_036"
     ],
     "dlgCards": [
-      "dlg_078"
+      "dlg_078",
+      "dlg_105"
     ]
   },
   {
@@ -3798,7 +3801,8 @@ var LESSONS = [
       "sbs_025"
     ],
     "dlgCards": [
-      "dlg_079"
+      "dlg_079",
+      "dlg_106"
     ]
   },
   {
@@ -3880,7 +3884,8 @@ var LESSONS = [
       "sbs_037"
     ],
     "dlgCards": [
-      "dlg_080"
+      "dlg_080",
+      "dlg_107"
     ]
   },
   {
@@ -12374,6 +12379,436 @@ var DIALOGE = [
       "ru": "Хорошая идея. Тогда все сразу будут знать, на что обращать внимание, и мы сможем опробовать памятку уже со следующего короткого доклада."
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_103",
+    "cat": "Wie sagt man das?",
+    "task": {
+      "de": "In den letzten Wochen gab es im Team mehrere Missverständnisse, weil Nachrichten im Chat oft sehr direkt oder unklar formuliert waren. Das hat die Stimmung im Team spürbar belastet.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nProblem: Warum entstehen die Missverständnisse?\nKommunikationsform: Wann sollte man lieber persönlich statt schriftlich sprechen?\nSprache: Wie kann man Nachrichten höflicher formulieren?\nRegeln: Welche Regeln könnten helfen (z. B. ausreden lassen, nachfragen)?\nUmsetzung: Wie stellt man die neuen Regeln im Team vor?",
+      "en": "In recent weeks there have been several misunderstandings in the team because chat messages were often phrased very directly or unclearly. This has noticeably strained the mood in the team.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nCause: Why do the misunderstandings arise?\nCommunication method: When should you talk in person rather than in writing?\nLanguage: How can messages be phrased more politely?\nRules: What rules could help (e.g., letting others finish, asking follow-up questions)?\nImplementation: How do you introduce the new rules to the team?",
+      "uk": "Останніми тижнями в команді виникло кілька непорозумінь через те, що повідомлення в чаті часто були сформульовані надто прямо або незрозуміло. Це помітно погіршило атмосферу в команді.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПричина: Чому виникають непорозуміння?\nФорма спілкування: Коли краще говорити особисто, а не письмово?\nМова: Як формулювати повідомлення ввічливіше?\nПравила: Які правила можуть допомогти (наприклад, не перебивати, перепитувати)?\nВпровадження: Як представити нові правила команді?",
+      "ru": "В последние недели в команде возникло несколько недоразумений из-за того, что сообщения в чате часто формулировались слишком прямо или непонятно. Это заметно испортило атмосферу в команде.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПричина: Почему возникают недоразумения?\nФорма общения: Когда лучше говорить лично, а не письменно?\nЯзык: Как формулировать сообщения вежливее?\nПравила: Какие правила могут помочь (например, не перебивать, переспрашивать)?\nВнедрение: Как представить новые правила команде?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "David, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Mir ist aufgefallen, dass es in letzter Zeit im Team mehrere Missverständnisse gab, weil Nachrichten im Chat oft sehr direkt oder unklar formuliert waren.",
+      "en": "David, do you have a moment? <r>We should talk about a problem</r>: I've noticed that there have been several misunderstandings in the team lately, because chat messages were often phrased very directly or unclearly.",
+      "uk": "Девіде, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: я помітила, що останнім часом у команді сталося кілька непорозумінь, бо повідомлення в чаті часто були сформульовані дуже прямо або незрозуміло.",
+      "ru": "Давид, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: я заметила, что в последнее время в команде было несколько недоразумений, потому что сообщения в чате часто формулировались очень прямо или непонятно."
+    },
+    "a": {
+      "de": "Stimmt, das ist mir <g>ja</g> auch schon aufgefallen. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um den Ton in unserer schriftlichen Kommunikation?",
+      "en": "True, I've <g>actually</g> noticed that too. <r>Did I understand you correctly</r>: so it's mainly about the tone in our written communication?",
+      "uk": "Правда, я, <g>знаєш</g>, теж це вже помітив. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про тон нашого письмового спілкування?",
+      "ru": "Верно, я, <g>знаешь</g>, тоже это уже заметил. <r>Я правильно тебя понял</r>: то есть речь прежде всего о тоне нашего письменного общения?"
+    },
+    "q1": {
+      "de": "Genau. Julia hat letzte Woche eine Nachricht als ziemlich barsch empfunden, obwohl das bestimmt nicht so gemeint war. Im Chat schreibt man halt oft schnell, ohne an den Ton zu denken.",
+      "en": "Exactly. Julia found a message pretty blunt last week, even though it certainly wasn't meant that way. In chat, people just write quickly without thinking about the tone.",
+      "uk": "Саме так. Юлія минулого тижня сприйняла одне повідомлення як доволі різке, хоча воно точно не так задумувалося. У чаті просто пишуть швидко, не думаючи про тон.",
+      "ru": "Именно. Юлия на прошлой неделе восприняла одно сообщение как довольно резкое, хотя оно точно не так задумывалось. В чате просто пишут быстро, не думая о тоне."
+    },
+    "a1": {
+      "de": "<r>Das kann ich nachvollziehen</r>. Vielleicht sollten wir uns mal überlegen, wann eine Nachricht im Chat überhaupt sinnvoll ist und wann man lieber kurz persönlich vorbeigeht oder anruft.",
+      "en": "<r>I can understand that</r>. Maybe we should think about when a chat message actually makes sense and when it's better to just stop by or call instead.",
+      "uk": "<r>Я це розумію</r>. Можливо, варто подумати, коли повідомлення в чаті взагалі має сенс, а коли краще просто підійти особисто або зателефонувати.",
+      "ru": "<r>Я это понимаю</r>. Возможно, стоит подумать, когда сообщение в чате вообще имеет смысл, а когда лучше просто зайти лично или позвонить."
+    },
+    "q2": {
+      "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten <g>doch</g> vereinbaren, dass wichtige oder heikle Themen grundsätzlich im Gespräch geklärt werden, nicht nur schriftlich. Da sieht man wenigstens die Körpersprache und kann Missverständnisse gleich klären. <r>Was hältst du davon</r>?",
+      "en": "<r>I'd have a suggestion</r>: we could, <g>after all</g>, agree that important or sensitive topics should generally be clarified in conversation, not just in writing. That way you at least see the body language and can clear up misunderstandings right away. <r>What do you think</r>?",
+      "uk": "<r>У мене була б пропозиція</r>: ми <g>ж</g> могли б домовитися, що важливі чи делікатні теми в принципі з'ясовуються в розмові, а не лише письмово. Так принаймні видно мову тіла і можна одразу прояснити непорозуміння. <r>Як ти на це дивишся</r>?",
+      "ru": "<r>У меня было бы предложение</r>: мы <g>же</g> могли бы договориться, что важные или деликатные темы в принципе проясняются в разговоре, а не только письменно. Так хотя бы видно язык тела и можно сразу прояснить недоразумения. <r>Как ты на это смотришь</r>?"
+    },
+    "a2": {
+      "de": "<r>Das gefällt mir</r>. Wir sollten uns außerdem angewöhnen, den anderen erst ausreden zu lassen und nachzufragen, bevor man etwas hinterfragt oder kritisiert.",
+      "en": "<r>I like that</r>. We should also get into the habit of letting the other person finish first and asking follow-up questions before questioning or criticizing something.",
+      "uk": "<r>Мені це подобається</r>. Ще нам варто привчити себе спершу давати іншому договорити й перепитувати, перш ніж щось піддавати сумніву чи критикувати.",
+      "ru": "<r>Мне это нравится</r>. Ещё нам стоит приучить себя сначала давать другому договорить и переспрашивать, прежде чем что-то подвергать сомнению или критиковать."
+    },
+    "q3": {
+      "de": "Guter Punkt. Und beim Schreiben könnten wir versuchen, Dinge höflicher zu formulieren, statt direkt zu sagen, was uns stört – also nicht um den heißen Brei reden, aber eben auch nicht zu schroff.",
+      "en": "Good point. And when writing, we could try to phrase things more politely instead of saying directly what bothers us – so not beating around the bush, but also not too blunt.",
+      "uk": "Слушна думка. А під час написання ми могли б намагатися формулювати речі ввічливіше, замість того щоб прямо казати, що нас турбує — тобто не ходити навколо та навколо, але й не занадто різко.",
+      "ru": "Дельная мысль. А при написании мы могли бы стараться формулировать вещи вежливее, вместо того чтобы прямо говорить, что нас беспокоит — то есть не ходить вокруг да около, но и не слишком резко."
+    },
+    "a3": {
+      "de": "<r>Da stimme ich dir zu</r>. Wie sollten wir das denn im Team kommunizieren, ohne dass es wie eine Belehrung wirkt?",
+      "en": "<r>I agree with you on that</r>. How should we actually communicate that to the team without it sounding like a lecture?",
+      "uk": "<r>Тут я з тобою згоден</r>. Як нам це власне донести до команди, щоб це не звучало як повчання?",
+      "ru": "<r>Тут я с тобой согласен</r>. Как нам это, собственно, донести до команды, чтобы это не звучало как нравоучение?"
+    },
+    "q4": {
+      "de": "<r>Gut, dann fassen wir zusammen</r>: Wir vereinbaren, heikle Themen persönlich zu klären, den anderen ausreden zu lassen und Nachrichten höflicher zu formulieren. Das stellen wir kurz beim nächsten Meeting vor.",
+      "en": "<r>Alright, let's summarize</r>: we'll agree to clarify sensitive topics in person, let others finish speaking, and phrase messages more politely. We'll present that briefly at the next meeting.",
+      "uk": "<r>Гаразд, тоді підсумуємо</r>: ми домовляємося з'ясовувати делікатні теми особисто, давати іншому договорити та формулювати повідомлення ввічливіше. Це коротко представимо на наступній нараді.",
+      "ru": "<r>Хорошо, тогда подведём итог</r>: мы договариваемся прояснять деликатные темы лично, давать другому договорить и формулировать сообщения вежливее. Это коротко представим на следующем собрании."
+    },
+    "a4": {
+      "de": "Genau, so machen wir es. Ich fasse die Punkte kurz zusammen, und du sprichst das beim Meeting an.",
+      "en": "Exactly, that's what we'll do. I'll summarize the points briefly, and you bring it up at the meeting.",
+      "uk": "Саме так, так і зробимо. Я коротко підсумую пункти, а ти піднімеш це питання на нараді.",
+      "ru": "Именно так, так и сделаем. Я коротко подведу итог пунктов, а ты поднимешь это на собрании."
+    },
+    "q5": {
+      "de": "Denkst du, das reicht, um die Stimmung im Team wieder zu verbessern?",
+      "en": "Do you think that's enough to improve the mood in the team again?",
+      "uk": "Як гадаєш, цього достатньо, щоб знову покращити атмосферу в команді?",
+      "ru": "Как думаешь, этого достаточно, чтобы снова улучшить атмосферу в команде?"
+    },
+    "a5": {
+      "de": "Das wird <g>schon</g> klappen, wenn alle ein bisschen aufmerksamer mit dem Ton umgehen. Die Gesprächsatmosphäre wird sich sicher verbessern.",
+      "en": "It'll work out <g>just fine</g> if everyone pays a bit more attention to their tone. The conversational atmosphere will definitely improve.",
+      "uk": "Усе <g>обов'язково</g> вийде, якщо всі трохи уважніше стежитимуть за тоном. Атмосфера спілкування точно покращиться.",
+      "ru": "Всё <g>обязательно</g> получится, если все будут немного внимательнее к тону. Атмосфера общения точно улучшится."
+    },
+    "gram": "modalpartikeln"
+  },
+  {
+    "id": "dlg_104",
+    "cat": "Es passt nicht",
+    "task": {
+      "de": "Ein Kollege hat in letzter Zeit mehrmals wichtige Fristen verpasst, und Projektübergaben waren unvollständig. Das Team kann sich nicht mehr richtig auf ihn verlassen, und ein klärendes Mitarbeitergespräch steht bevor.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nProblem: Was genau ist das Problem?\nVorbereitung: Wie bereitet man das Gespräch sachlich vor?\nGesprächsführung: Wie spricht man das Problem an, ohne jemanden bloßzustellen?\nLösungsvorschläge: Welche konkreten Lösungen könnte man vorschlagen?\nNachbereitung: Wie sorgt man dafür, dass sich die Situation nicht wiederholt?",
+      "en": "A colleague has repeatedly missed important deadlines recently, and project handovers were incomplete. The team can no longer really rely on him, and a clarifying performance conversation is coming up.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nProblem: What exactly is the problem?\nPreparation: How do you prepare for the conversation objectively?\nConducting the conversation: How do you address the problem without embarrassing anyone?\nProposed solutions: What concrete solutions could you suggest?\nFollow-up: How do you make sure the situation doesn't happen again?",
+      "uk": "Колега останнім часом кілька разів пропустив важливі дедлайни, а передачі проєктів були неповними. Команда більше не може по-справжньому на нього покластися, і насувається роз'яснювальна розмова з керівництва.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПроблема: У чому саме полягає проблема?\nПідготовка: Як підготувати розмову об'єктивно?\nВедення розмови: Як порушити проблему, не принижуючи людину?\nПропозиції рішень: Які конкретні рішення можна запропонувати?\nПодальші дії: Як зробити так, щоб ситуація не повторилася?",
+      "ru": "Коллега в последнее время несколько раз пропустил важные сроки, а передача проектов была неполной. Команда больше не может по-настоящему на него положиться, и предстоит разъяснительный разговор с руководителем.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПроблема: В чём именно заключается проблема?\nПодготовка: Как подготовить разговор объективно?\nВедение разговора: Как поднять проблему, не унижая человека?\nПредложения решений: Какие конкретные решения можно предложить?\nДальнейшие действия: Как сделать так, чтобы ситуация не повторилась?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Julia, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Ich muss demnächst ein Gespräch mit Tom führen, weil er in letzter Zeit mehrmals wichtige Fristen verpasst hat und die Übergaben unvollständig waren.",
+      "en": "Julia, do you have a moment? <r>We should talk about a problem</r>: I need to have a conversation with Tom soon, because he's missed several important deadlines recently and the handovers were incomplete.",
+      "uk": "Юліє, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: скоро мені треба провести розмову з Томом, бо він останнім часом кілька разів пропустив важливі дедлайни, а передачі були неповними.",
+      "ru": "Юлия, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: скоро мне нужно провести разговор с Томом, потому что он в последнее время несколько раз пропустил важные сроки, а передачи были неполными."
+    },
+    "a": {
+      "de": "Das habe ich auch schon mitbekommen. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um seine Unzuverlässigkeit bei Projektübergaben? <r>Was könntest du in dieser Situation machen</r>?",
+      "en": "I've noticed that too. <r>Did I understand you correctly</r>: so it's mainly about his unreliability with project handovers? <r>What could you do in this situation</r>?",
+      "uk": "Я теж це помітила. <r>Я правильно тебе зрозуміла</r>: тобто йдеться передусім про його ненадійність при передачі проєктів? <r>Що ти міг би зробити в цій ситуації</r>?",
+      "ru": "Я тоже это заметила. <r>Я правильно тебя поняла</r>: то есть речь прежде всего о его ненадёжности при передаче проектов? <r>Что ты мог бы сделать в этой ситуации</r>?"
+    },
+    "q1": {
+      "de": "Genau. Das Problem ist, dass sich das Team mittlerweile nicht mehr richtig auf ihn verlassen kann, und das macht mir schon Sorgen wegen der Auswirkungen auf die anderen Projekte.",
+      "en": "Exactly. The problem is that the team can no longer really rely on him, and that already worries me because of the impact on the other projects.",
+      "uk": "Саме так. Проблема в тому, що команда більше не може по-справжньому на нього покластися, і це вже мене турбує через вплив на інші проєкти.",
+      "ru": "Именно. Проблема в том, что команда больше не может по-настоящему на него положиться, и это уже меня беспокоит из-за влияния на другие проекты."
+    },
+    "a1": {
+      "de": "<r>Das kann ich nachvollziehen</r>. Wichtig ist aber, dass du das Gespräch sachlich führst und ihn nicht vor anderen bloßstellst. <r>Ich hätte einen Vorschlag</r>: Formuliere lieber Ich-Botschaften, also zum Beispiel „Ich habe wahrgenommen, dass…“ statt „Du machst immer…“.",
+      "en": "<r>I can understand that</r>. But it's important that you handle the conversation objectively and don't embarrass him in front of others. <r>I'd have a suggestion</r>: use I-statements instead, for example \"I've noticed that…\" rather than \"You always…\".",
+      "uk": "<r>Я це розумію</r>. Але важливо, щоб ти вів розмову об'єктивно й не принижував його перед іншими. <r>У мене була б пропозиція</r>: краще формулюй Я-повідомлення, наприклад, «Я помітив, що…» замість «Ти завжди…».",
+      "ru": "<r>Я это понимаю</r>. Но важно, чтобы ты вёл разговор объективно и не унижал его перед другими. <r>У меня было бы предложение</r>: лучше формулируй Я-высказывания, например, «Я заметил, что…» вместо «Ты всегда…»."
+    },
+    "q2": {
+      "de": "Guter Punkt. Und ich sollte wahrscheinlich auch versuchen, seine Perspektive einzunehmen – vielleicht steckt ja ein anderes Problem dahinter. <r>Was hältst du davon</r>, wenn ich ihn zuerst einfach frage, wie es ihm gerade geht?",
+      "en": "Good point. And I should probably also try to see it from his perspective – maybe there's another issue behind it. <r>What do you think</r> if I just start by asking how he's doing?",
+      "uk": "Слушна думка. І, мабуть, мені варто спробувати подивитися на це з його перспективи — можливо, за цим стоїть щось інше. <r>Як ти на це дивишся</r>, якщо я спершу просто запитаю, як у нього справи?",
+      "ru": "Дельная мысль. И, наверное, мне стоит попробовать посмотреть на это с его точки зрения — возможно, за этим стоит что-то другое. <r>Как ты на это смотришь</r>, если я сначала просто спрошу, как у него дела?"
+    },
+    "a2": {
+      "de": "<r>Das gefällt mir</r>. So zeigst du gleich, dass es dir nicht nur um Kritik geht. Danach könntest du konkret ansprechen, welche Fristen betroffen waren und welche Auswirkungen das hatte.",
+      "en": "<r>I like that</r>. That way you immediately show that it's not only about criticism. After that, you could specifically address which deadlines were affected and what impact that had.",
+      "uk": "<r>Мені це подобається</r>. Так ти одразу покажеш, що йдеться не лише про критику. Після цього ти міг би конкретно порушити, які дедлайни постраждали і які це мало наслідки.",
+      "ru": "<r>Мне это нравится</r>. Так ты сразу покажешь, что дело не только в критике. После этого ты мог бы конкретно обозначить, какие сроки пострадали и какие это имело последствия."
+    },
+    "q3": {
+      "de": "Und am Ende sollten wir wahrscheinlich gemeinsam nach Lösungen suchen, oder? Zum Beispiel mehr Transparenz bei der Kalkulation der Fristen, damit klar ist, wie viel Zeit realistisch nötig ist.",
+      "en": "And in the end we should probably look for solutions together, right? For example, more transparency in calculating deadlines, so it's clear how much time is realistically needed.",
+      "uk": "І, напевно, наприкінці нам варто разом пошукати рішення? Наприклад, більше прозорості в розрахунку дедлайнів, щоб було зрозуміло, скільки часу реально потрібно.",
+      "ru": "И, наверное, в конце нам стоит вместе поискать решения? Например, больше прозрачности в расчёте сроков, чтобы было понятно, сколько времени реально нужно."
+    },
+    "a3": {
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. Ihr könntet auch vereinbaren, dass er bei Problemen frühzeitig Bescheid gibt, statt die Frist einfach verstreichen zu lassen. Das würde Konflikten in Zukunft vorbeugen.",
+      "en": "<r>I completely agree with you</r>. You could also agree that he lets you know early if there's a problem, instead of just letting the deadline pass. That would help prevent conflicts in the future.",
+      "uk": "<r>Тут я цілком з тобою згодна</r>. Ви також могли б домовитися, що він завчасно попереджатиме про проблеми, замість того щоб просто дати дедлайну спливти. Це допомогло б запобігти конфліктам у майбутньому.",
+      "ru": "<r>Тут я полностью с тобой согласна</r>. Вы также могли бы договориться, что он заранее предупредит о проблемах, вместо того чтобы просто дать сроку пройти. Это помогло бы предотвратить конфликты в будущем."
+    },
+    "q4": {
+      "de": "<r>Gut, dann fasse ich zusammen</r>: Ich frage zuerst nach seiner Situation, spreche die Fristen sachlich mit Ich-Botschaften an und schlage mehr Transparenz sowie frühzeitige Rückmeldungen als Lösung vor.",
+      "en": "<r>Alright, let me summarize</r>: I'll first ask about his situation, address the deadlines objectively using I-statements, and suggest more transparency plus early feedback as a solution.",
+      "uk": "<r>Гаразд, тоді підсумую</r>: спершу я запитаю про його ситуацію, об'єктивно порушу питання дедлайнів через Я-повідомлення й запропоную більше прозорості та завчасний зворотний зв'язок як рішення.",
+      "ru": "<r>Хорошо, тогда подведу итог</r>: сначала я спрошу о его ситуации, объективно подниму вопрос сроков через Я-высказывания и предложу больше прозрачности и раннюю обратную связь как решение."
+    },
+    "a4": {
+      "de": "Genau, so machst du es am besten. Wenn du willst, kann ich vorher noch einmal mit dir üben, wie du die Sätze am besten formulierst.",
+      "en": "Exactly, that's the best way to do it. If you want, I can practice the wording with you beforehand.",
+      "uk": "Саме так, це найкращий варіант. Якщо хочеш, я можу заздалегідь потренувати з тобою формулювання.",
+      "ru": "Именно так, это лучший вариант. Если хочешь, я могу заранее потренировать с тобой формулировки."
+    },
+    "q5": {
+      "de": "Das wäre super. Und was mache ich, wenn er das Problem einfach abstreitet?",
+      "en": "That would be great. And what do I do if he simply denies the problem?",
+      "uk": "Це було б чудово. А що робити, якщо він просто заперечуватиме проблему?",
+      "ru": "Это было бы здорово. А что делать, если он просто будет отрицать проблему?"
+    },
+    "a5": {
+      "de": "Dann bleib ruhig und sachlich und nenne konkrete Beispiele – so lässt sich schwer widersprechen. Am Ende zählt vor allem, dass ihr gemeinsam eine Lösung findet.",
+      "en": "Then stay calm and factual and give concrete examples – that's hard to argue with. In the end, what matters most is that you find a solution together.",
+      "uk": "Тоді залишайся спокійним та об'єктивним і наводь конкретні приклади — це важко заперечити. Зрештою, найважливіше — щоб ви разом знайшли рішення.",
+      "ru": "Тогда оставайся спокойным и объективным и приводи конкретные примеры — это трудно оспорить. В конце концов, самое важное — чтобы вы вместе нашли решение."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_105",
+    "cat": "Roboterwelt",
+    "task": {
+      "de": "Die Geschäftsführung möchte verstärkt automatisierte Prozesse und KI-gestützte Tools einführen, doch im Team gibt es Unsicherheit und Sorge um den Arbeitsplatz.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nNutzen: Welchen Nutzen könnte die Automatisierung bringen?\nBedenken: Welche Bedenken haben die Kolleginnen und Kollegen?\nSicherheit: Wie stellt man Datenschutz und Cybersicherheit sicher?\nEinführung: Wie führt man die neuen Tools schrittweise ein?\nUnterstützung: Welche Schulungen oder Unterstützung brauchen die Mitarbeitenden?",
+      "en": "Management wants to introduce more automated processes and AI-supported tools, but there is uncertainty and concern about job security within the team.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nBenefit: What benefits could automation bring?\nConcerns: What concerns do colleagues have?\nSecurity: How do you ensure data protection and cybersecurity?\nRollout: How do you introduce the new tools step by step?\nSupport: What training or support do employees need?",
+      "uk": "Керівництво хоче активніше впроваджувати автоматизовані процеси та інструменти на основі ШІ, але в команді є невпевненість і побоювання щодо збереження робочих місць.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nКористь: Яку користь може принести автоматизація?\nПобоювання: Які побоювання мають колеги?\nБезпека: Як забезпечити захист даних і кібербезпеку?\nВпровадження: Як поступово впроваджувати нові інструменти?\nПідтримка: Яке навчання чи підтримка потрібні співробітникам?",
+      "ru": "Руководство хочет активнее внедрять автоматизированные процессы и инструменты на основе ИИ, но в команде есть неуверенность и опасения по поводу сохранения рабочих мест.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПольза: Какую пользу может принести автоматизация?\nОпасения: Какие опасения есть у коллег?\nБезопасность: Как обеспечить защиту данных и кибербезопасность?\nВнедрение: Как постепенно внедрять новые инструменты?\nПоддержка: Какое обучение или поддержка нужны сотрудникам?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Alex, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Die Geschäftsführung möchte mehr automatisierte Prozesse und KI-gestützte Tools einführen, aber im Team gibt es einige Bedenken.",
+      "en": "Alex, do you have a moment? <r>We should talk about a problem</r>: management wants to introduce more automated processes and AI-supported tools, but there are some concerns in the team.",
+      "uk": "Алексе, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: керівництво хоче впроваджувати більше автоматизованих процесів та інструментів на основі ШІ, але в команді є певні побоювання.",
+      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: руководство хочет внедрять больше автоматизированных процессов и инструментов на основе ИИ, но в команде есть определённые опасения."
+    },
+    "a": {
+      "de": "Das habe ich auch gehört. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um Unsicherheit gegenüber der Automatisierung? <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "I've heard that too. <r>Did I understand you correctly</r>: so it's mainly about uncertainty regarding automation? <r>What could we do in this situation</r>?",
+      "uk": "Я теж це чув. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про невпевненість щодо автоматизації? <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Я тоже это слышал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о неуверенности насчёт автоматизации? <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "q1": {
+      "de": "Genau. Manche haben Angst, dass die neu <g>eingeführten</g> Tools ihre Aufgaben komplett übernehmen und Arbeitsplätze wegfallen könnten.",
+      "en": "Exactly. Some people are worried that the newly <g>introduced</g> tools will completely take over their tasks and that jobs could disappear.",
+      "uk": "Саме так. Дехто боїться, що нещодавно <g>впроваджені</g> інструменти повністю замінять їхні завдання і робочі місця можуть зникнути.",
+      "ru": "Именно. Некоторые боятся, что недавно <g>внедрённые</g> инструменты полностью заменят их задачи и рабочие места могут исчезнуть."
+    },
+    "a1": {
+      "de": "<r>Das kann ich nachvollziehen</r>. Wichtig wäre es, klar zu kommunizieren, dass die Automatisierung vor allem repetitive Aufgaben übernehmen soll, damit mehr Zeit für anspruchsvollere Arbeit bleibt.",
+      "en": "<r>I can understand that</r>. It would be important to clearly communicate that automation is mainly meant to take over repetitive tasks, so there's more time for more demanding work.",
+      "uk": "<r>Я це розумію</r>. Важливо було б чітко донести, що автоматизація насамперед має брати на себе повторювані завдання, щоб залишалося більше часу на складнішу роботу.",
+      "ru": "<r>Я это понимаю</r>. Было бы важно чётко донести, что автоматизация прежде всего должна брать на себя повторяющиеся задачи, чтобы оставалось больше времени на более сложную работу."
+    },
+    "q2": {
+      "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten ein kleines Pilotprojekt starten, zum Beispiel mit der stark <g>wachsenden</g> Zahl an Anfragen im Kundenservice, und die Ergebnisse dann transparent zeigen. <r>Was hältst du davon</r>?",
+      "en": "<r>I'd have a suggestion</r>: we could start a small pilot project, for example with the rapidly <g>growing</g> number of customer service requests, and then show the results transparently. <r>What do you think</r>?",
+      "uk": "<r>У мене була б пропозиція</r>: ми могли б запустити невеликий пілотний проєкт, наприклад із швидко <g>зростаючою</g> кількістю запитів у службі підтримки клієнтів, а потім прозоро показати результати. <r>Як ти на це дивишся</r>?",
+      "ru": "<r>У меня было бы предложение</r>: мы могли бы запустить небольшой пилотный проект, например с быстро <g>растущим</g> количеством запросов в службе поддержки клиентов, а потом прозрачно показать результаты. <r>Как ты на это смотришь</r>?"
+    },
+    "a2": {
+      "de": "<r>Das gefällt mir</r>. Wir sollten aber auch die Cybersicherheit im Blick behalten – etwa durch Verschlüsselung, regelmäßige Backups und Zwei-Faktor-Authentifizierung, damit keine Datenschutzprobleme entstehen.",
+      "en": "<r>I like that</r>. But we should also keep cybersecurity in mind – for example through encryption, regular backups, and two-factor authentication, so that no data protection issues arise.",
+      "uk": "<r>Мені це подобається</r>. Але нам також варто пам'ятати про кібербезпеку — наприклад, шифрування, регулярні резервні копії та двофакторну автентифікацію, щоб не виникло проблем із захистом даних.",
+      "ru": "<r>Мне это нравится</r>. Но нам также стоит помнить о кибербезопасности — например, шифрование, регулярные резервные копии и двухфакторная аутентификация, чтобы не возникло проблем с защитой данных."
+    },
+    "q3": {
+      "de": "Guter Punkt. Und die gut <g>dokumentierten</g> Ergebnisse aus dem Pilotprojekt könnten wir dann beim nächsten Meeting vorstellen, damit alle sehen, was sich wirklich verbessert.",
+      "en": "Good point. And we could present the well <g>documented</g> results of the pilot project at the next meeting, so everyone can see what's actually improving.",
+      "uk": "Слушна думка. А добре <g>задокументовані</g> результати пілотного проєкту ми могли б представити на наступній нараді, щоб усі бачили, що дійсно покращується.",
+      "ru": "Дельная мысль. А хорошо <g>задокументированные</g> результаты пилотного проекта мы могли бы представить на следующем собрании, чтобы все видели, что действительно улучшается."
+    },
+    "a3": {
+      "de": "<r>Da stimme ich dir zu</r>. Außerdem sollten wir Schulungen anbieten, damit sich alle sicher im Umgang mit den neuen digitalen Tools fühlen.",
+      "en": "<r>I agree with you on that</r>. We should also offer training so everyone feels confident using the new digital tools.",
+      "uk": "<r>Тут я з тобою згоден</r>. Крім того, варто запропонувати навчання, щоб усі почувалися впевнено, працюючи з новими цифровими інструментами.",
+      "ru": "<r>Тут я с тобой согласен</r>. Кроме того, стоит предложить обучение, чтобы все чувствовали себя уверенно при работе с новыми цифровыми инструментами."
+    },
+    "q4": {
+      "de": "<r>Gut, dann fassen wir zusammen</r>: Wir starten ein Pilotprojekt im Kundenservice, achten auf Datenschutz und Cybersicherheit, dokumentieren die Ergebnisse und bieten passende Schulungen an.",
+      "en": "<r>Alright, let's summarize</r>: we'll start a pilot project in customer service, pay attention to data protection and cybersecurity, document the results, and offer suitable training.",
+      "uk": "<r>Гаразд, тоді підсумуємо</r>: ми запускаємо пілотний проєкт у службі підтримки клієнтів, дбаємо про захист даних і кібербезпеку, документуємо результати й пропонуємо відповідне навчання.",
+      "ru": "<r>Хорошо, тогда подведём итог</r>: мы запускаем пилотный проект в службе поддержки клиентов, заботимся о защите данных и кибербезопасности, документируем результаты и предлагаем подходящее обучение."
+    },
+    "a4": {
+      "de": "Genau, so machen wir es. Ich kümmere mich um die technische Seite, und du sprichst mit der Geschäftsführung wegen der Schulungen.",
+      "en": "Exactly, that's what we'll do. I'll take care of the technical side, and you talk to management about the training.",
+      "uk": "Саме так, так і зробимо. Я подбаю про технічну сторону, а ти поговориш із керівництвом щодо навчання.",
+      "ru": "Именно так, так и сделаем. Я позабочусь о технической стороне, а ты поговоришь с руководством насчёт обучения."
+    },
+    "q5": {
+      "de": "Sollten wir das Team auch regelmäßig über den Fortschritt informieren?",
+      "en": "Should we also keep the team regularly informed about the progress?",
+      "uk": "Може, варто також регулярно інформувати команду про прогрес?",
+      "ru": "Может, стоит также регулярно информировать команду о прогрессе?"
+    },
+    "a5": {
+      "de": "Auf jeden Fall. So bleibt alles transparent, und die anfangs skeptischen Kolleginnen und Kollegen sehen, dass ihre Bedenken ernst genommen werden.",
+      "en": "Definitely. That keeps everything transparent, and the colleagues who were initially skeptical will see that their concerns are being taken seriously.",
+      "uk": "Обов'язково. Так усе залишатиметься прозорим, і спочатку скептично налаштовані колеги побачать, що їхні побоювання беруть до уваги.",
+      "ru": "Обязательно. Так всё останется прозрачным, и изначально скептически настроенные коллеги увидят, что их опасения принимают всерьёз."
+    },
+    "gram": "partizipien_als_adjektive"
+  },
+  {
+    "id": "dlg_106",
+    "cat": "Ich mache mich selbstständig",
+    "task": {
+      "de": "Ein Kollege überlegt, sich selbstständig zu machen und ein eigenes Beratungsunternehmen mit internationalen Kundinnen und Kunden aufzubauen. Er ist sich aber unsicher, ob er das finanziell stemmen kann und wie er den Schritt am besten vorbereitet.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nFinanzen: Welche finanziellen Fragen muss er vorher klären?\nAbsicherung: Wie sieht es mit Kranken- und Arbeitslosenversicherung aus?\nZielmarkt: Wie findet man einen passenden internationalen Zielmarkt?\nRisiken: Welche Risiken sollte man bedenken (Wettbewerb, Sprachbarriere)?\nEntscheidung: Wie bereitet man eine gut durchdachte Entscheidung vor?",
+      "en": "A colleague is considering going self-employed and building his own consulting business with international clients. However, he's unsure whether he can afford it financially and how best to prepare for this step.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nFinances: What financial questions does he need to clarify beforehand?\nCoverage: What about health and unemployment insurance?\nTarget market: How do you find a suitable international target market?\nRisks: What risks should be considered (competition, language barriers)?\nDecision: How do you prepare a well-thought-out decision?",
+      "uk": "Колега розмірковує, чи не відкрити власну справу — консалтингову компанію з міжнародними клієнтами. Проте він не впевнений, чи потягне це фінансово і як найкраще підготуватися до цього кроку.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nФінанси: Які фінансові питання йому варто з'ясувати заздалегідь?\nЗахист: Як бути зі страхуванням здоров'я та на випадок безробіття?\nЦільовий ринок: Як знайти відповідний міжнародний цільовий ринок?\nРизики: Які ризики варто врахувати (конкуренція, мовний бар'єр)?\nРішення: Як підготувати добре продумане рішення?",
+      "ru": "Коллега размышляет, не открыть ли собственное дело — консалтинговую компанию с международными клиентами. Однако он не уверен, потянет ли это финансово и как лучше подготовиться к этому шагу.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nФинансы: Какие финансовые вопросы ему стоит прояснить заранее?\nЗащита: Как быть со страхованием здоровья и на случай безработицы?\nЦелевой рынок: Как найти подходящий международный целевой рынок?\nРиски: Какие риски стоит учесть (конкуренция, языковой барьер)?\nРешение: Как подготовить хорошо продуманное решение?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Mark, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: David überlegt, sich selbstständig zu machen und ein eigenes Beratungsunternehmen mit internationalen Kunden aufzubauen, ist sich aber total unsicher.",
+      "en": "Mark, do you have a moment? <r>We should talk about a problem</r>: David is thinking about going self-employed and building his own consulting business with international clients, but he's totally unsure.",
+      "uk": "Марку, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: Давид розмірковує над тим, щоб відкрити власну консалтингову компанію з міжнародними клієнтами, але він зовсім не впевнений.",
+      "ru": "Марк, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: Давид размышляет о том, чтобы открыть собственную консалтинговую компанию с международными клиентами, но он совсем не уверен."
+    },
+    "a": {
+      "de": "Das hat er mir auch schon erzählt. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um die finanzielle Seite? <r>Was könnten wir ihm in dieser Situation raten</r>?",
+      "en": "He's told me that too. <r>Did I understand you correctly</r>: so it's mainly about the financial side? <r>What could we advise him in this situation</r>?",
+      "uk": "Він і мені про це розповідав. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про фінансовий бік? <r>Що ми могли б йому порадити в цій ситуації</r>?",
+      "ru": "Он и мне об этом рассказывал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о финансовой стороне? <r>Что мы могли бы ему посоветовать в этой ситуации</r>?"
+    },
+    "q1": {
+      "de": "Genau. Er fragt sich, ob er das finanziell überhaupt stemmen kann, wenn er den sicheren Job und den Kündigungsschutz aufgibt.",
+      "en": "Exactly. He's wondering whether he can even afford it financially if he gives up his secure job and protection against dismissal.",
+      "uk": "Саме так. Він переймається, чи потягне це фінансово, якщо відмовиться від стабільної роботи та захисту від звільнення.",
+      "ru": "Именно. Он переживает, потянет ли это финансово, если откажется от стабильной работы и защиты от увольнения."
+    },
+    "a1": {
+      "de": "<r>Das kann ich nachvollziehen</r>. Er sollte sich vorher genau ansehen, wie es dann mit Krankenversicherung und Arbeitslosenversicherung aussieht – als Selbstständiger muss man sich ja meistens selbst darum kümmern.",
+      "en": "<r>I can understand that</r>. He should take a close look beforehand at how health insurance and unemployment insurance would work – as a self-employed person, you usually have to sort that out yourself.",
+      "uk": "<r>Я це розумію</r>. Йому варто заздалегідь детально розібратися, як тоді буде зі страхуванням здоров'я та на випадок безробіття — самозайнятому зазвичай доводиться дбати про це самому.",
+      "ru": "<r>Я это понимаю</r>. Ему стоит заранее подробно разобраться, как тогда будет со страхованием здоровья и на случай безработицы — самозанятому обычно приходится заботиться об этом самому."
+    },
+    "q2": {
+      "de": "<r>Ich hätte einen Vorschlag</r>: Er könnte sich erst einmal einen Finanzpuffer für sechs bis zwölf Monate zurücklegen, bevor er kündigt. <r>Was hältst du davon</r>?",
+      "en": "<r>I'd have a suggestion</r>: he could set aside a financial buffer for six to twelve months before quitting. <r>What do you think</r>?",
+      "uk": "<r>У мене була б пропозиція</r>: перед звільненням він міг би відкласти фінансову подушку на шість-дванадцять місяців. <r>Як ти на це дивишся</r>?",
+      "ru": "<r>У меня было бы предложение</r>: перед увольнением он мог бы отложить финансовую подушку на шесть-двенадцать месяцев. <r>Как ты на это смотришь</r>?"
+    },
+    "a2": {
+      "de": "<r>Das gefällt mir</r>. Außerdem sollte er sich überlegen, welchen Zielmarkt er überhaupt ansprechen will – gerade bei internationalen Kunden spielen ja auch Sprachbarrieren und kulturelle Unterschiede eine Rolle.",
+      "en": "<r>I like that</r>. He should also think about which target market he actually wants to address – especially with international clients, language barriers and cultural differences play a role too.",
+      "uk": "<r>Мені це подобається</r>. Йому також варто подумати, який цільовий ринок він взагалі хоче охопити — особливо з міжнародними клієнтами важливу роль відіграють мовні бар'єри й культурні відмінності.",
+      "ru": "<r>Мне это нравится</r>. Ему также стоит подумать, какой целевой рынок он вообще хочет охватить — особенно с международными клиентами важную роль играют языковые барьеры и культурные различия."
+    },
+    "q3": {
+      "de": "Guter Punkt. Und er sollte sich auch mit dem Wettbewerb in seiner Branche beschäftigen, damit er weiß, wie er wettbewerbsfähig bleiben kann.",
+      "en": "Good point. And he should also look at the competition in his industry, so he knows how to stay competitive.",
+      "uk": "Слушна думка. І йому варто придивитися до конкуренції у своїй галузі, щоб знати, як залишатися конкурентоспроможним.",
+      "ru": "Дельная мысль. И ему стоит присмотреться к конкуренции в своей отрасли, чтобы знать, как оставаться конкурентоспособным."
+    },
+    "a3": {
+      "de": "<r>Da stimme ich dir zu</r>. Vielleicht könnte er auch mit der Handelskammer sprechen – die beraten oft kostenlos zu solchen Fragen.",
+      "en": "<r>I agree with you on that</r>. Maybe he could also talk to the chamber of commerce – they often offer free advice on such questions.",
+      "uk": "<r>Тут я з тобою згоден</r>. Можливо, він міг би також поговорити з торговою палатою — вони часто безкоштовно консультують із таких питань.",
+      "ru": "<r>Тут я с тобой согласен</r>. Возможно, он мог бы также поговорить с торговой палатой — там часто бесплатно консультируют по таким вопросам."
+    },
+    "q4": {
+      "de": "<r>Gut, dann fassen wir zusammen</r>: Er sollte einen Finanzpuffer aufbauen, sich um Versicherungen kümmern, einen passenden Zielmarkt wählen und sich bei der Handelskammer beraten lassen.",
+      "en": "<r>Alright, let's summarize</r>: he should build a financial buffer, sort out his insurance, choose a suitable target market, and get advice from the chamber of commerce.",
+      "uk": "<r>Гаразд, тоді підсумуємо</r>: йому варто створити фінансову подушку, розібратися зі страхуванням, обрати відповідний цільовий ринок і проконсультуватися в торговій палаті.",
+      "ru": "<r>Хорошо, тогда подведём итог</r>: ему стоит создать финансовую подушку, разобраться со страхованием, выбрать подходящий целевой рынок и проконсультироваться в торговой палате."
+    },
+    "a4": {
+      "de": "Genau, das würde ich ihm auch so vorschlagen. Ich kann ihm gern die Kontaktdaten von der Handelskammer schicken.",
+      "en": "Exactly, that's what I'd suggest to him too. I'm happy to send him the chamber of commerce's contact details.",
+      "uk": "Саме так, я б порадив йому те саме. Я можу надіслати йому контакти торгової палати.",
+      "ru": "Именно так, я бы посоветовал ему то же самое. Я могу отправить ему контакты торговой палаты."
+    },
+    "q5": {
+      "de": "Das wäre super. Denkst du, wir sollten ihm auch von jemandem berichten, der das schon gemacht hat?",
+      "en": "That would be great. Do you think we should also tell him about someone who's already done this?",
+      "uk": "Це було б чудово. Як гадаєш, чи варто розповісти йому про когось, хто вже це зробив?",
+      "ru": "Это было бы здорово. Как думаешь, стоит ли рассказать ему о ком-то, кто уже это сделал?"
+    },
+    "a5": {
+      "de": "Auf jeden Fall. Ein persönliches Gespräch mit jemandem, der bereits selbstständig ist, hilft meistens mehr als jede Checkliste.",
+      "en": "Definitely. A personal conversation with someone who's already self-employed usually helps more than any checklist.",
+      "uk": "Обов'язково. Особиста розмова з кимось, хто вже працює самостійно, зазвичай допомагає більше за будь-який чек-лист.",
+      "ru": "Обязательно. Личный разговор с кем-то, кто уже работает самостоятельно, обычно помогает больше любого чек-листа."
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_107",
+    "cat": "Berufe der Zukunft",
+    "task": {
+      "de": "Aufgrund des neuen Lieferkettengesetzes muss das Unternehmen ab nächstem Jahr einen ausführlichen Nachhaltigkeitsbericht erstellen. Bisher hat sich im Team niemand mit CSR-Themen beschäftigt, und die Frist rückt näher.\n\nÜberlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation angemessen reagieren.\n\nDiese Stichpunkte helfen Ihnen.\nProblem: Warum ist das ein Problem für das Team?\nZuständigkeit: Wer könnte sich auf das Thema spezialisieren?\nZeitplan: Wie schafft man das innerhalb der Frist?\nUnterstützung: Welche Fortbildung oder externe Hilfe wäre sinnvoll?\nZukunft: Welche neuen Aufgaben oder Berufe könnten daraus entstehen?",
+      "en": "Due to the new supply chain due diligence act, the company has to produce a detailed sustainability report starting next year. So far no one on the team has dealt with CSR topics, and the deadline is approaching.\n\nDiscuss with your conversation partner how you would respond appropriately to this situation.\n\nThese points can help you.\nProblem: Why is this a problem for the team?\nResponsibility: Who could specialize in this topic?\nTimeline: How can this be achieved within the deadline?\nSupport: What training or external help would make sense?\nFuture: What new tasks or jobs could emerge from this?",
+      "uk": "Через новий закон про ланцюги постачання компанія з наступного року має готувати детальний звіт зі сталого розвитку. Досі в команді ніхто не займався темами CSR, а дедлайн наближається.\n\nОбговоріть зі своїм співрозмовником чи співрозмовницею, як ви відповідно відреагуєте на цю ситуацію.\n\nОсь кілька пунктів, які можуть допомогти.\nПроблема: Чому це проблема для команди?\nВідповідальність: Хто міг би спеціалізуватися на цій темі?\nГрафік: Як встигнути в межах дедлайну?\nПідтримка: Яке навчання чи зовнішня допомога були б доречними?\nМайбутнє: Які нові завдання чи професії можуть з цього виникнути?",
+      "ru": "Из-за нового закона о цепочках поставок компания с следующего года должна готовить подробный отчёт об устойчивом развитии. До сих пор в команде никто не занимался темами CSR, а срок приближается.\n\nОбсудите со своим собеседником или собеседницей, как вы соответствующим образом отреагируете на эту ситуацию.\n\nВот несколько пунктов, которые могут помочь.\nПроблема: Почему это проблема для команды?\nОтветственность: Кто мог бы специализироваться на этой теме?\nГрафик: Как успеть в рамках срока?\nПоддержка: Какое обучение или внешняя помощь были бы уместны?\nБудущее: Какие новые задачи или профессии могут из этого возникнуть?"
+    },
+    "type": "Lösungswege diskutieren",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Alex, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: <g>Aufgrund</g> des neuen Lieferkettengesetzes muss unser Unternehmen ab nächstem Jahr einen ausführlichen Nachhaltigkeitsbericht erstellen, und bisher hat sich bei uns niemand mit CSR-Themen beschäftigt.",
+      "en": "Alex, do you have a moment? <r>We should talk about a problem</r>: <g>due to</g> the new supply chain due diligence act, our company has to produce a detailed sustainability report starting next year, and so far no one here has dealt with CSR topics.",
+      "uk": "Алексе, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: <g>через</g> новий закон про ланцюги постачання наша компанія з наступного року має готувати детальний звіт зі сталого розвитку, а досі в нас ніхто не займався темами CSR.",
+      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: <g>из-за</g> нового закона о цепочках поставок наша компания с следующего года должна готовить подробный отчёт об устойчивом развитии, а до сих пор у нас никто не занимался темами CSR."
+    },
+    "a": {
+      "de": "Das ist mir auch schon aufgefallen. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um fehlendes Fachwissen im Team? <r>Was könnten wir in dieser Situation machen</r>?",
+      "en": "I've noticed that too. <r>Did I understand you correctly</r>: so it's mainly about a lack of expertise in the team? <r>What could we do in this situation</r>?",
+      "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про брак фахових знань у команді? <r>Що ми могли б зробити в цій ситуації</r>?",
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть речь прежде всего о нехватке экспертизы в команде? <r>Что мы могли бы сделать в этой ситуации</r>?"
+    },
+    "q1": {
+      "de": "Genau. Und die Frist rückt näher – wir müssten den ersten Bericht <g>innerhalb</g> der nächsten sechs Monate vorbereiten.",
+      "en": "Exactly. And the deadline is getting closer – we'd need to prepare the first report <g>within</g> the next six months.",
+      "uk": "Саме так. І дедлайн наближається — перший звіт нам треба підготувати <g>протягом</g> наступних шести місяців.",
+      "ru": "Именно. И срок приближается — первый отчёт нам нужно подготовить <g>в течение</g> следующих шести месяцев."
+    },
+    "a1": {
+      "de": "<r>Das kann ich nachvollziehen</r>. Vielleicht sollten wir jemanden aus dem Team fragen, ob er oder sie sich auf das Thema Nachhaltigkeit spezialisieren möchte, statt komplett neue Leute einzustellen.",
+      "en": "<r>I can understand that</r>. Maybe we should ask someone on the team whether they'd like to specialize in sustainability, instead of hiring completely new people.",
+      "uk": "<r>Я це розумію</r>. Можливо, варто запитати когось із команди, чи не хотів би він чи вона спеціалізуватися на темі сталого розвитку, замість того щоб наймати абсолютно нових людей.",
+      "ru": "<r>Я это понимаю</r>. Возможно, стоит спросить кого-то из команды, не хотел бы он или она специализироваться на теме устойчивого развития, вместо того чтобы нанимать совершенно новых людей."
+    },
+    "q2": {
+      "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten eine passende Fortbildung suchen und der Person dann auch neue Aufstiegsmöglichkeiten als CSR-Beauftragte oder CSR-Beauftragter anbieten. <r>Was hältst du davon</r>?",
+      "en": "<r>I'd have a suggestion</r>: we could look for a suitable training course and then also offer that person new promotion prospects as a CSR officer. <r>What do you think</r>?",
+      "uk": "<r>У мене була б пропозиція</r>: ми могли б знайти відповідне навчання і потім запропонувати цій людині нові можливості для кар'єрного зростання як CSR-фахівця. <r>Як ти на це дивишся</r>?",
+      "ru": "<r>У меня было бы предложение</r>: мы могли бы найти подходящее обучение и потом предложить этому человеку новые возможности карьерного роста в качестве CSR-специалиста. <r>Как ты на это смотришь</r>?"
+    },
+    "a2": {
+      "de": "<r>Das gefällt mir</r>. Wir sollten außerdem prüfen, ob wir uns externe Unterstützung holen, zum Beispiel eine Beraterin oder einen Berater, die bzw. der uns beim ersten Bericht begleitet.",
+      "en": "<r>I like that</r>. We should also check whether we should bring in external support, for example a consultant who can guide us through the first report.",
+      "uk": "<r>Мені це подобається</r>. Нам також варто перевірити, чи не залучити зовнішню підтримку, наприклад консультанта, який супроводжуватиме нас у роботі над першим звітом.",
+      "ru": "<r>Мне это нравится</r>. Нам также стоит проверить, не привлечь ли внешнюю поддержку, например консультанта, который будет сопровождать нас при подготовке первого отчёта."
+    },
+    "q3": {
+      "de": "Guter Punkt. Und <g>trotz</g> des engen Zeitplans sollten wir uns auch gleich um Themen wie Diversität und Barrierefreiheit kümmern, weil das auch Teil der Berichtspflicht ist.",
+      "en": "Good point. And <g>despite</g> the tight schedule, we should also start dealing with topics like diversity and accessibility right away, since that's also part of the reporting obligation.",
+      "uk": "Слушна думка. І <g>попри</g> щільний графік, нам варто одразу зайнятися й такими темами, як різноманіття та доступність, адже це теж частина обов'язку зі звітності.",
+      "ru": "Дельная мысль. И <g>несмотря на</g> плотный график, нам стоит сразу заняться и такими темами, как разнообразие и доступность, ведь это тоже часть обязанности по отчётности."
+    },
+    "a3": {
+      "de": "<r>Da stimme ich dir zu</r>. Das könnte langfristig sogar zu einer ganz neuen Stelle im Unternehmen führen – gerade solche Berufe werden in Zukunft immer wichtiger.",
+      "en": "<r>I agree with you on that</r>. That could even lead to a whole new position in the company in the long run – jobs like that are becoming increasingly important.",
+      "uk": "<r>Тут я з тобою згоден</r>. Це навіть може згодом привести до появи цілком нової посади в компанії — такі професії стають дедалі важливішими.",
+      "ru": "<r>Тут я с тобой согласен</r>. Это даже может со временем привести к появлению совершенно новой должности в компании — такие профессии становятся всё важнее."
+    },
+    "q4": {
+      "de": "<r>Gut, dann fassen wir zusammen</r>: Wir suchen jemanden aus dem Team für eine Fortbildung im Bereich Nachhaltigkeit, holen uns bei Bedarf externe Unterstützung und kümmern uns rechtzeitig um Diversität und Barrierefreiheit.",
+      "en": "<r>Alright, let's summarize</r>: we'll look for someone on the team for training in sustainability, bring in external support if needed, and take care of diversity and accessibility in good time.",
+      "uk": "<r>Гаразд, тоді підсумуємо</r>: ми шукаємо когось із команди для навчання зі сталого розвитку, за потреби залучаємо зовнішню підтримку і вчасно займаємося різноманіттям і доступністю.",
+      "ru": "<r>Хорошо, тогда подведём итог</r>: мы ищем кого-то из команды для обучения в области устойчивого развития, при необходимости привлекаем внешнюю поддержку и вовремя занимаемся разнообразием и доступностью."
+    },
+    "a4": {
+      "de": "Genau, so machen wir es. Ich frage im Team herum, wer Interesse an der Spezialisierung hätte.",
+      "en": "Exactly, that's what we'll do. I'll ask around the team who'd be interested in specializing.",
+      "uk": "Саме так, так і зробимо. Я запитаю в команді, хто зацікавлений у такій спеціалізації.",
+      "ru": "Именно так, так и сделаем. Я спрошу в команде, кто заинтересован в такой специализации."
+    },
+    "q5": {
+      "de": "Denkst du, die Geschäftsführung wird das unterstützen?",
+      "en": "Do you think management will support this?",
+      "uk": "Як гадаєш, керівництво це підтримає?",
+      "ru": "Как думаешь, руководство это поддержит?"
+    },
+    "a5": {
+      "de": "Bestimmt, vor allem, wenn wir zeigen, dass daraus langfristig auch neue Karrierechancen für das Team entstehen können.",
+      "en": "Definitely, especially if we show that it could also create new career opportunities for the team in the long run.",
+      "uk": "Точно, особливо якщо ми покажемо, що з цього також можуть виникнути нові кар'єрні можливості для команди.",
+      "ru": "Точно, особенно если мы покажем, что из этого также могут возникнуть новые карьерные возможности для команды."
+    },
+    "gram": "waehrend_genitiv_praeposition"
   }
 ];
 
