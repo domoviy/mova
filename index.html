@@ -3131,7 +3131,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '456-2f7f348';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3266,22 +3266,24 @@ var PATH_CONFIG = {
 
 // Підтип діалогового вузла для іконки на стежці: 'smalltalk' (💬,
 // невимушена розмова) чи 'problemsolving' (🧩, вирішення конкретної
-// ситуації/конфлікту). Дивимось на необов'язкове поле `type` в записах
-// DIALOGE (авторське рішення на майбутнє, зараз у базі його ще нема —
-// тому дефолт 'smalltalk', як для коротших/легших фразових обмінів,
-// що й становлять поточний DIALOGE). Мажоритарне голосування — якщо
-// пул вузла колись міститиме картки різних підтипів, перемагає
-// частіший; при рівності — 'smalltalk' (менш "важкий" типово).
-function _lpDialogueNodeType(dlgCardIds){
-  if(typeof DIALOGE === 'undefined' || !Array.isArray(DIALOGE)) return 'smalltalk';
+// ситуації/конфлікту). Реальні значення `type` в базах (перевірено на
+// даних): B2 вже має конкретні теги "Small Talk"/"Lösungswege
+// diskutieren"; A2/B1 поки позначені узагальненим "Gemeinsam etwas
+// planen" (без явної спеціалізації). Логіка:
+//   1) Конкретний тег ("Small Talk"/"Lösungswege diskutieren") —
+//      завжди переважає, незалежно від позиції діалогу в модулі.
+//   2) Немає конкретного тегу (лише узагальнений "Gemeinsam etwas
+//      planen", чи взагалі нема type) — визначаємо по ПОЗИЦІЇ: перший
+//      діалог модуля -> Small Talk (легший "розігрів"), кожен
+//      наступний -> Lösungswege diskutieren (складніший, ближче до
+//      підсумку модуля).
+function _lpDialogueNodeType(dlgCardIds, isFirst){
+  if(typeof DIALOGE === 'undefined' || !Array.isArray(DIALOGE)) return isFirst ? 'smalltalk' : 'problemsolving';
   var ids = new Set(dlgCardIds || []);
-  var counts = { smalltalk: 0, problemsolving: 0 };
-  DIALOGE.forEach(function(c){
-    if(!ids.has(c.id)) return;
-    var tp = c.type === 'problemsolving' ? 'problemsolving' : 'smalltalk';
-    counts[tp]++;
-  });
-  return counts.problemsolving > counts.smalltalk ? 'problemsolving' : 'smalltalk';
+  var types = DIALOGE.filter(function(c){ return ids.has(c.id); }).map(function(c){ return c.type; });
+  if(types.indexOf('Small Talk') !== -1) return 'smalltalk';
+  if(types.indexOf('Lösungswege diskutieren') !== -1) return 'problemsolving';
+  return isFirst ? 'smalltalk' : 'problemsolving';
 }
 
 function buildLearningPath(rawLessons, courseLevel){
@@ -3374,7 +3376,7 @@ function buildLearningPath(rawLessons, courseLevel){
           out.push(Object.assign({}, lesson, {
             id:          nodeId,
             type:        'dialogue',
-            dlgType:     _lpDialogueNodeType([dlgId]),
+            dlgType:     _lpDialogueNodeType([dlgId], dIdx === 0),
             cardIds:     [dlgId],
             dlgCards:    [dlgId],
             sbCards:     [],
@@ -11249,6 +11251,16 @@ function _lfUnitShow(){
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit){ _lfUnitStepDone(); return; }
 
+  // #lf-unit-card ховається (display:none) у кількох місцях виходу з
+  // unit-режиму (exitLessonFlow і т.д.) — інлайн-стилем, який ніщо
+  // потім не скидає. Наступний вхід у unit-режим (напр. клік по картці
+  // в Закладках одразу після виходу з уроку/діалогу) рендерив контент
+  // і навіть програвав аудіо коректно, але картка лишалась невидимою
+  // (стара inline-стиль), поки не перезавантажити сторінку. Тому тут,
+  // при кожному показі нового юніта, ЯВНО повертаємо видимість.
+  var cardEl = document.getElementById('lf-unit-card');
+  if(cardEl) cardEl.style.display = '';
+
   _lfUnitSwipedThisView = false;
   var old = document.getElementById('lf-next-row');
   if(old) old.remove();
@@ -12650,6 +12662,18 @@ function _proceedFromLesson(current){
 // глав уже пройдено — немає "наступної глави").
 function _goToLessonOrExit(lesson){
   if(!lesson){ exitLessonFlow(); return; }
+  // Диспетчеризація по типу вузла: dialogue-вузли МАЮТЬ йти через
+  // startModuleDialogueBonus (dlgCards), а не startLessonFlow (яка
+  // трактує lesson.cardIds як vocab-слова для Словника). Раніше тут
+  // викликався ЛИШЕ startLessonFlow безумовно — коли _proceedFromLesson
+  // знаходив наступним DIALOGUE-вузол (а тепер, коли кожна картка
+  // діалогу — окремий вузол, це трапляється регулярно), Словник
+  // відкривався з id діалогової картки замість vocab-id — звідси
+  // порожня вибірка слів після "Наступний урок".
+  if(lesson.type === 'dialogue'){
+    startModuleDialogueBonus(lesson.id);
+    return;
+  }
   // Не викликаємо exitLessonFlow() щоб уникнути showView('lernpfad')
   // перед showView('vocab') — це ламає autoplay при першому натисканні.
   // Робимо мінімальне скидання стану вручну:
