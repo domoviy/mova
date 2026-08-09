@@ -658,17 +658,39 @@ body{
 .lp-node-progress{
   font-size:10px;font-weight:700;color:var(--muted);
 }
-.lp-module-divider{
-  display:flex;align-items:center;gap:10px;width:100%;
-  margin:6px 0 -4px;padding:0 4px;
+/* Модуль — ЗГОРТНА секція (не просто розділювач-текст). Непочаті
+   модулі за замовчуванням закриті — у довгій главі з 5-7 модулями
+   інакше важко зорієнтуватись, у якому саме модулі ти зараз. */
+.lp-module-section{ margin-bottom:10px; }
+.lp-module-section-body{
+  display:none; overflow:hidden;
 }
-.lp-module-divider span:not(.lp-module-divider-text){
-  flex:1;height:1px;background:var(--border);
+.lp-module-section.open .lp-module-section-body{ display:block; }
+.lp-module-divider{
+  width:100%;padding:8px 10px;margin:6px 0 0;
+  border-radius:10px;cursor:pointer;-webkit-tap-highlight-color:transparent;
+  background:var(--soft);border:1px solid var(--border);
+}
+.lp-module-divider-crumb{
+  font-size:10px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:.03em;margin-bottom:2px;
+}
+.lp-module-divider-main{
+  display:flex;align-items:center;gap:8px;
 }
 .lp-module-divider-text{
-  font-size:var(--fs-tertiary);font-weight:800;color:var(--muted);
-  white-space:nowrap;text-transform:uppercase;letter-spacing:.02em;
+  flex:1;min-width:0;
+  font-size:var(--fs-tertiary);font-weight:800;color:var(--ink);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
+.lp-module-divider-meta{
+  font-size:11px;font-weight:700;color:var(--muted);flex-shrink:0;
+}
+.lp-module-divider-arrow{
+  font-size:11px;color:var(--muted);flex-shrink:0;
+  transition:transform .2s;
+}
+.lp-module-section.open .lp-module-divider-arrow{ transform:rotate(180deg); }
 .lp-bonus-row{
   display:flex;flex-direction:column;gap:8px;
   padding:4px 10px 0;
@@ -3131,7 +3153,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '458-5e3e9f7';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3599,6 +3621,7 @@ const I18N = {
     lp_overall_loading:'Lädt…',
     lp_no_lessons:'Keine Lektionen verfügbar',
     lp_module_prefix:'Modul',
+    lp_chapter_prefix:'Kapitel',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -3682,6 +3705,7 @@ const I18N = {
     lp_overall_loading:'Завантаження…',
     lp_no_lessons:'Уроки недоступні',
     lp_module_prefix:'Модуль',
+    lp_chapter_prefix:'Розділ',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -3764,6 +3788,7 @@ const I18N = {
     lp_overall_loading:'Loading…',
     lp_no_lessons:'No lessons available',
     lp_module_prefix:'Module',
+    lp_chapter_prefix:'Chapter',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -3847,6 +3872,7 @@ const I18N = {
     lp_overall_loading:'Загрузка…',
     lp_no_lessons:'Уроки недоступны',
     lp_module_prefix:'Модуль',
+    lp_chapter_prefix:'Раздел',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -7281,23 +7307,45 @@ function renderLernpfad(){
     const chEl = document.createElement('div');
     chEl.className = 'lp-chapter'+((anyDone||hasCurrent)?' open':'');
 
-    // Будуємо звивисту стежку: розділювач-назва перед кожним новим
-    // модулем + кругла "гема" на кожен крок (урок/діалог), з
-    // зигзаг-зсувом. Граматика/словник-бонуси модуля — виносимо в
-    // окремий рядок під стежкою (рендеримо лише раз, на ОСТАННЬОМУ
-    // суб-уроці модуля — інакше та сама бонус-картка дублювалась би
-    // на кожному суб-уроці).
-    let prevParentId = null, pathHtml = '', bonusHtml = '';
-    ch.modules.forEach((m, idx)=>{
-      if(m._parentModuleId !== prevParentId){
-        pathHtml += renderModuleDivider(m);
-        prevParentId = m._parentModuleId;
+    // Групуємо вузли по _parentModuleId — кожен модуль стає ОКРЕМОЮ
+    // згортною секцією (не просто розділювачем у спільній стрічці).
+    // Непочаті модулі (0% прогресу і не містять "поточний" вузол) —
+    // згорнуті за замовчуванням: у довгій главі з 5-7 модулями інакше
+    // важко зорієнтуватись, у якому саме модулі ти зараз. Розділювач
+    // модуля тепер дублює й ГЛАВУ (номер+назва) поруч із модулем — це
+    // видно навіть коли скролиш глибоко всередині розгорнутої глави, не
+    // повертаючись до шапки глави вгорі.
+    const moduleGroups = [];
+    let curGroup = null;
+    ch.modules.forEach(function(m){
+      if(!curGroup || curGroup.parentId !== m._parentModuleId){
+        curGroup = { parentId: m._parentModuleId, moduleNum: m.module, title: m.title, nodes: [] };
+        moduleGroups.push(curGroup);
       }
-      pathHtml += renderPathNode(m, idx);
-      if(m.type === 'lesson' && m._subIndex === m._subTotal){
-        bonusHtml += renderGrammarBonusCard(m) + renderModuleVocabCard(m);
-      }
+      curGroup.nodes.push(m);
     });
+
+    let nodeIdx = 0, bonusHtml = '';
+    const modulesHtml = moduleGroups.map(function(grp){
+      const doneCount = grp.nodes.filter(n=>lessonProgress(n).pct>=80).length;
+      const anyModuleDone = grp.nodes.some(n=>lessonProgress(n).pct>0);
+      const hasModuleCurrent = grp.nodes.some(n=>findCurrentLesson()?.id===n.id);
+      const isModuleOpen = anyModuleDone || hasModuleCurrent;
+
+      let pathHtml = '';
+      grp.nodes.forEach(function(m){
+        pathHtml += renderPathNode(m, nodeIdx);
+        nodeIdx++;
+        if(m.type === 'lesson' && m._subIndex === m._subTotal){
+          bonusHtml += renderGrammarBonusCard(m) + renderModuleVocabCard(m);
+        }
+      });
+
+      return `<div class="lp-module-section ${isModuleOpen?'open':''}">
+        ${renderModuleDivider(grp, ch, doneCount)}
+        <div class="lp-module-section-body"><div class="lp-path">${pathHtml}</div></div>
+      </div>`;
+    }).join('');
 
     chEl.innerHTML = `
       <div class="lp-chapter-head ${allDone?'done':''} ${hasCurrent?'current':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
@@ -7311,7 +7359,7 @@ function renderLernpfad(){
         <div class="lp-chapter-arrow">▼</div>
       </div>
       <div class="lp-modules">
-        <div class="lp-path">${pathHtml}</div>
+        ${modulesHtml}
         ${bonusHtml ? `<div class="lp-bonus-row">${bonusHtml}</div>` : ''}
         ${reviewHtml}
         ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
@@ -7389,12 +7437,21 @@ function _lpZigzagOffset(i){
   return pattern[i % pattern.length];
 }
 
-// Розділювач-назва модуля між групами кроків стежки — показує НАЗВУ
-// модуля (як "Робота: Готуйся до співбесіди" у Duolingo), навіть
-// попри те, що всередині модуль розрізаний на кілька суб-уроків.
-function renderModuleDivider(lesson){
-  const title = lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de;
-  return `<div class="lp-module-divider"><span></span><span class="lp-module-divider-text">${t('lp_module_prefix')} ${lesson.module} · ${title}</span><span></span></div>`;
+// Розділювач-заголовок модуля — тепер ЗГОРТНА секція (не просто текст
+// між кроками стежки). Дублює й ГЛАВУ (номер+назва) поруч з модулем:
+// у довгій розгорнутій главі з кількома модулями інакше губиться
+// орієнтир "де я зараз", коли скролиш глибоко вниз повз шапку глави.
+function renderModuleDivider(grp, ch, doneCount){
+  const title = grp.title[uiLang]||grp.title[primaryLang()]||grp.title.en||grp.title.de;
+  const chTitle = ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de;
+  return `<div class="lp-module-divider" onclick="this.closest('.lp-module-section').classList.toggle('open')">
+    <div class="lp-module-divider-crumb">${t('lp_chapter_prefix')} ${ch.num} · ${chTitle}</div>
+    <div class="lp-module-divider-main">
+      <span class="lp-module-divider-text">${t('lp_module_prefix')} ${grp.moduleNum} · ${title}</span>
+      <span class="lp-module-divider-meta">${doneCount}/${grp.nodes.length}</span>
+      <span class="lp-module-divider-arrow">▼</span>
+    </div>
+  </div>`;
 }
 
 // Візуальний профіль вузла стежки по типу: іконка + клас кольору. Три
