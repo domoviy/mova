@@ -1901,7 +1901,16 @@ body.lesson-active .vocab-top{
    росте всередині). mask-image виставляється динамічно з JS
    (updateUnitBodyFade нижче) — тут лише плавний перехід. */
 .lf-unit-body{transition:mask-image .15s ease, -webkit-mask-image .15s ease}
-.lf-unit-hint{text-align:center;font-size:var(--fs-utility);color:var(--muted);padding:14px 0 2px;flex-shrink:0}
+.lf-unit-hint{
+  text-align:center;font-size:var(--fs-utility);color:var(--muted);padding:14px 0 2px;flex-shrink:0;
+  /* min-height — та сама висота, порожній рядок чи ні (напр. у діалозі,
+     де свайп-підказку прибрано зовсім — див. _lfDlgHandlers.render).
+     Без цього картка "схлопується" на висоту тексту (~15px), і резерв
+     під ФІКСОВАНУ кнопку "Далі" (.lf-unit-body padding-bottom нижче,
+     розрахований саме на повну висоту підказки) стає замалим —
+     останнє повідомлення трохи заходить під кнопку. */
+  min-height:calc(var(--fs-utility) * 1.3 + 16px);
+}
 .lf-progress-counter{font-family:'Inter',monospace;font-size:var(--fs-utility);color:var(--muted);white-space:nowrap}
 .lf-unit-main-row{display:flex;align-items:baseline;gap:9px}
 .lf-unit-main-row + .lf-unit-main-row{
@@ -1946,6 +1955,23 @@ body.lesson-active .vocab-top{
 }
 .lf-dlg-bubble .lf-unit-main-row + .lf-unit-main-row{
   margin-top:6px;padding-top:0;border-top:none;
+}
+/* Переклад репліки з'являється НЕ одразу з оригіналом, а щойно
+   озвучення завершиться (або програма зрозуміє, що файлу нема) —
+   _lfDlgRevealLastTranslation(), викликається з afterPlay у
+   _lfUnitShow(). Спочатку видно ніби повне повідомлення однією мовою,
+   тоді плавно "виростає" переклад під ним з тонкою лінією-роздільником
+   (раніше лінію між ними в бульбашці навмисно прибирали — правило
+   вище; тепер вона з'являється РАЗОМ з перекладом, як частина reveal). */
+.lf-unit-main-row.lf-unit-tr-row{
+  max-height:0;opacity:0;overflow:hidden;margin-top:0;padding-top:0;border-top-color:transparent;
+  transition:max-height .4s ease, opacity .3s ease .08s, margin-top .4s ease;
+}
+.lf-dlg-bubble .lf-unit-main-row.lf-unit-tr-row.revealed,
+.lf-dlg-task .lf-unit-main-row.lf-unit-tr-row.revealed{
+  max-height:240px;opacity:1;margin-top:8px;padding-top:9px;
+  border-top:1px solid rgba(0,0,0,.08);
+  transition:max-height .4s ease, opacity .3s ease .08s, margin-top .4s ease, padding-top .4s ease, border-top-color .3s ease .12s;
 }
 .lf-dlg-bubble-q{
   background:var(--soft);border:1px solid var(--border);
@@ -3153,7 +3179,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '460-8e23588';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3299,6 +3325,23 @@ var PATH_CONFIG = {
 //      діалог модуля -> Small Talk (легший "розігрів"), кожен
 //      наступний -> Lösungswege diskutieren (складніший, ближче до
 //      підсумку модуля).
+// Список id, придатних для ОКРЕМОГО вузла-діалогу на стежці — лише
+// картки DIALOGE з одним із 3 явних типів. Картки без type (чи з
+// іншим значенням) НЕ стають вузлами шляху — лишаються доступні лише
+// як звичайний Dialogue Bonus (dlgCards на суб-уроці), не як окремий
+// обов'язковий крок.
+var LP_DIALOGUE_NODE_TYPES = ['Small Talk', 'Gemeinsam etwas planen', 'Lösungswege diskutieren'];
+function _lpEligibleDialogueIds(dlgCardIds){
+  if(typeof DIALOGE === 'undefined' || !Array.isArray(DIALOGE)) return [];
+  var ids = new Set(dlgCardIds || []);
+  var byId = {};
+  DIALOGE.forEach(function(c){ if(ids.has(c.id)) byId[c.id] = c; });
+  return (dlgCardIds || []).filter(function(id){
+    var c = byId[id];
+    return c && LP_DIALOGUE_NODE_TYPES.indexOf(c.type) !== -1;
+  });
+}
+
 function _lpDialogueNodeType(dlgCardIds, isFirst){
   if(typeof DIALOGE === 'undefined' || !Array.isArray(DIALOGE)) return isFirst ? 'smalltalk' : 'problemsolving';
   var ids = new Set(dlgCardIds || []);
@@ -3377,7 +3420,10 @@ function buildLearningPath(rawLessons, courseLevel){
 
       // Діалог — ПОВНОЦІННИЙ вузол шляху (Урок-Урок-Діалог-Урок), не
       // прикріплена бонус-картка. Вставляємо лише якщо для модуля є
-      // хоч один dlgCards (умова "якщо є" — не всюди ще написано).
+      // хоч один dlgCards (умова "якщо є" — не всюди ще написано), І
+      // ЛИШЕ картки з одним із 3 явних типів (_lpEligibleDialogueIds) —
+      // картки без type чи з іншим значенням окремим вузлом шляху не
+      // стають (лишаються доступні тільки як Dialogue Bonus).
       //
       // ОКРЕМИЙ вузол НА КОЖНУ картку діалогу, а не один вузол з усім
       // пулом одразу: коли dlgCards модуля містить кілька РІЗНИХ карток
@@ -3392,8 +3438,9 @@ function buildLearningPath(rawLessons, courseLevel){
       // cardIds = [dlgId]: lessonProgress/lessonUnlocked повторно
       // використовують той самий стан SM-2 (srsRate пишеться в
       // state.cards[id] однаково для vocab- і dlg-карток).
-      if(idx === dlgAt && (lesson.dlgCards||[]).length){
-        lesson.dlgCards.forEach(function(dlgId, dIdx){
+      var eligibleDlgIds = idx === dlgAt ? _lpEligibleDialogueIds(lesson.dlgCards) : [];
+      if(eligibleDlgIds.length){
+        eligibleDlgIds.forEach(function(dlgId, dIdx){
           var nodeId = lesson.id + '_dlg' + (dIdx+1);
           out.push(Object.assign({}, lesson, {
             id:          nodeId,
@@ -10201,6 +10248,15 @@ function lfRenderBar(){
     if(cur === 'matching' || (cur && cur.startsWith('matching_x'))){
       // Повний заголовок вправи (раніше дублювався окремим match-title)
       nameEl.textContent = t('match_title');
+    } else if(cur === 'dlg_learn' && LF.dlgCards && LF.dlgCards[0] && LF.dlgCards[0].type){
+      // Замість завжди-статичного "Dialogue" — реальний тип поточної
+      // картки з бази ("Small Talk"/"Gemeinsam etwas planen"/
+      // "Lösungswege diskutieren"). Кожен dlg_learn-крок тепер = рівно
+      // 1 картка (окремий вузол шляху), тож LF.dlgCards[0] — саме та,
+      // що зараз грається. Фолбек на генеричну назву — якщо картка без
+      // type (напр. звичайний Dialogue Bonus на уроці, не з path-вузла:
+      // той механізм не фільтрує по type, як buildLearningPath).
+      nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' + LF.dlgCards[0].type;
     } else {
       nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' +
         (LF_STEP_LABELS[cur]?.[uiLang] || LF_STEP_LABELS[cur]?.de || cur);
@@ -10862,6 +10918,12 @@ var _lfDlgHandlers = {
     var rowCls    = isTask ? '' : (unit.speakerRole==='q' ? 'lf-dlg-row-q' : 'lf-dlg-row-a');
 
     function buildBubble(){
+      // Переклад (textTr) рендериться ОДРАЗУ в розмітці, але прихований
+      // (.lf-unit-tr-row без .revealed — max-height:0/opacity:0, див.
+      // CSS) — з'являється (плавний reveal + тонка лінія-роздільник)
+      // лише коли озвучення репліки завершиться АБО програма зрозуміє,
+      // що файлу звуку нема (_lfDlgRevealLastTranslation, викликається
+      // з afterPlay у _lfUnitShow — саме той момент, де це вже відомо).
       // Завдання (task) — контекст ПЕРЕД діалогом: дизайн як повідомлення
       // (той самий шрифт/переклад під оригіналом), але БЕЗ аватарки й
       // БЕЗ підпису імені (це не репліка персонажа), і на всю ширину
@@ -10880,7 +10942,7 @@ var _lfDlgHandlers = {
             '<div class="lf-unit-sentence">'+text+'</div>'+
           '</div>'+
           (textTr ?
-            '<div class="lf-unit-main-row">'+
+            '<div class="lf-unit-main-row lf-unit-tr-row">'+
               '<div class="lf-unit-sentence-tr">'+textTr+'</div>'+
             '</div>'
           : '')+
@@ -10893,7 +10955,7 @@ var _lfDlgHandlers = {
             '<div class="lf-unit-sentence">'+text+'</div>'+
           '</div>'+
           (textTr ?
-            '<div class="lf-unit-main-row">'+
+            '<div class="lf-unit-main-row lf-unit-tr-row">'+
               '<div class="lf-unit-sentence-tr">'+textTr+'</div>'+
             '</div>'
           : '')+
@@ -11304,6 +11366,19 @@ function _lfUnitSwipe(dir){
 // озвучення тієї самої миті сприймається як баг, а не фіча.
 var _lfSkipNextAutoplay = false;
 
+// Розкриває переклад ОСТАННЬОЇ ще не розкритої репліки в транскрипті
+// діалогу (.lf-unit-tr-row без .revealed — щойно додана репліка).
+// Викликається з afterPlay() у _lfUnitShow(), тобто рівно тоді, коли
+// озвучення (speak()) або завершилось, або playPregenAudio() зрозумів,
+// що файлу нема (обидва варіанти проходять через один onDone/afterPlay).
+function _lfDlgRevealLastTranslation(){
+  var body = document.getElementById('lf-unit-body');
+  if(!body) return;
+  var rows = body.querySelectorAll('.lf-unit-tr-row:not(.revealed)');
+  var last = rows[rows.length-1];
+  if(last) last.classList.add('revealed');
+}
+
 function _lfUnitShow(){
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit){ _lfUnitStepDone(); return; }
@@ -11332,6 +11407,13 @@ function _lfUnitShow(){
     : (_lfUnit.handlers.getAudioText(unit) || []);
 
   var afterPlay = function(){
+    // Переклад репліки діалогу з'являється РІВНО тут — озвучення або
+    // завершилось, або playPregenAudio() зрозумів, що файлу нема (обидва
+    // варіанти ведуть в onDone → сюди). Для vocab/SB нічого не робить
+    // (unit.kind тут інший, _lfDlgRevealLastTranslation просто не знайде
+    // .lf-unit-tr-row — ця розмітка лише в _lfDlgHandlers.render).
+    if(unit.kind === 'dlg' || unit.kind === 'dlg_task') _lfDlgRevealLastTranslation();
+
     // Останній юніт ОСТАННЬОГО практичного кроку уроку (LF.steps завжди
     // закінчується 'result') — авто-перехід без кнопки "Далі", тим самим
     // шляхом, що вже й так використовує режим прослуховування
