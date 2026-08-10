@@ -1969,7 +1969,16 @@ body.lesson-active .vocab-top{
 }
 .lf-dlg-bubble .lf-unit-main-row.lf-unit-tr-row.revealed,
 .lf-dlg-task .lf-unit-main-row.lf-unit-tr-row.revealed{
-  max-height:240px;opacity:1;margin-top:8px;padding-top:9px;
+  /* 2000px — свідомо із запасом (не точна висота контенту): для CSS
+     max-height-анімації достатньо, щоб перевищувати БУДЬ-ЯКИЙ реальний
+     текст (навіть довге завдання-абзац діалогу), інакше довший
+     переклад обрізається через overflow:hidden. JS після завершення
+     transitionend (_lfDlgRevealLastTranslation) додатково знімає
+     max-height зовсім (style.maxHeight='none') — про всяк випадок,
+     якщо контент стане ще довшим пізніше (напр. зміна розміру шрифту
+     в налаштуваннях), 2000px тут — не постійна стеля, а лише міст для
+     самої анімації розкриття. */
+  max-height:2000px;opacity:1;margin-top:8px;padding-top:9px;
   border-top:1px solid rgba(0,0,0,.08);
   transition:max-height .4s ease, opacity .3s ease .08s, margin-top .4s ease, padding-top .4s ease, border-top-color .3s ease .12s;
 }
@@ -3183,7 +3192,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '469-3799b1d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11417,6 +11426,12 @@ function _lfDlgRevealLastTranslation(onRevealed){
   };
   var onTransEnd = function(e){
     if(e.propertyName !== 'max-height') return;
+    // 2000px у CSS — лише міст для самої анімації (щоб довгий текст
+    // завдання не обрізався через overflow:hidden), не постійна стеля.
+    // Знімаємо cap повністю, щоб контент лишався коректним і надалі
+    // (напр. якщо користувач згодом збільшить розмір шрифту в
+    // налаштуваннях — 2000px теоретично теж може стати замалим).
+    last.style.maxHeight = 'none';
     // Переклад "виростає" — доскролюємо синхронно із завершенням саме
     // цієї анімації (scrollHeight вже оновлений), щоб низ повідомлення
     // лишився на стандартній відстані від кнопки "Далі".
