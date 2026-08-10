@@ -1981,6 +1981,10 @@ body.lesson-active .vocab-top{
   background:var(--gold-dim);border:1px solid rgba(201,168,76,.25);
   border-bottom-right-radius:4px;
 }
+/* Стандартна підсвітка слова (.tts-word.active — золотий фон/зелений
+   текст) на золотавому фоні бульбашки-відповіді читалась би погано —
+   тут інверсія (темно-зелений/білий), контраст лишається високим. */
+.lf-dlg-bubble-a .tts-word.active{background:var(--forest);color:#fff;}
 /* ── Завдання (dlg_task) — контекст ПЕРЕД діалогом, якщо в картки є
    поле task. Дизайн як повідомлення (той самий фон/рамка/шрифт, що й
    .lf-dlg-bubble-q), але БЕЗ аватарки й БЕЗ підпису імені (це не
@@ -3179,7 +3183,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '462-80dcc64';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3674,6 +3678,7 @@ const I18N = {
     nav_lernpfad:'Lernen',
     btn_next_lesson:'▶ Nächste Lektion',
     btn_sb_weiter:'Weiter →',
+    btn_dlg_finish:'✓ Abschließen',
     btn_to_lessons:'🎓 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
     lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', tab_def_short:'Lückentext', tab_speech:'Sprechen',
@@ -3758,6 +3763,7 @@ const I18N = {
     nav_lernpfad:'Навчання',
     btn_next_lesson:'▶ Наступний урок',
     btn_sb_weiter:'Далі →',
+    btn_dlg_finish:'✓ Завершити',
     btn_to_lessons:'🎓 До списку уроків',
     btn_check:'✓ Перевірити',
     lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', tab_def_short:'Заповни', tab_speech:'Говоріння',
@@ -3841,6 +3847,7 @@ const I18N = {
     nav_lernpfad:'Learning',
     btn_next_lesson:'▶ Next Lesson',
     btn_sb_weiter:'Next →',
+    btn_dlg_finish:'✓ Finish',
     btn_to_lessons:'🎓 Lesson List',
     btn_check:'✓ Check',
     lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', tab_def_short:'Fill-in', tab_speech:'Speaking',
@@ -3924,6 +3931,7 @@ const I18N = {
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
     btn_sb_weiter:'Далее →',
+    btn_dlg_finish:'✓ Завершить',
     btn_to_lessons:'🎓 К списку уроков',
     btn_check:'✓ Проверить',
     lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', tab_def_short:'Вставь', tab_speech:'Говорение',
@@ -7528,7 +7536,12 @@ function renderPathNode(node, idx){
   const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
   const visual = _lpNodeVisual(node);
-  const icon = isDone ? '★' : visual.icon;
+  // Іконка типу (📖/💬/🧩) лишається однаковою і на пройденому уроці —
+  // ЗМІНЮЄТЬСЯ лише колір (через .lp-node.done → золотий фон, CSS
+  // нижче), не сама іконка. Раніше пройдений урок ставав ★ незалежно
+  // від типу — і тоді неможливо було на око знайти, скажімо, конкретний
+  // пройдений діалог "пошуку рішення", щоб повторити саме його.
+  const icon = visual.icon;
   const statusClass = isDone ? 'done' : !unlocked ? 'locked' : isCurrent ? 'current' : '';
   const offset = _lpZigzagOffset(idx);
   const clickHandler = !unlocked
@@ -10916,6 +10929,15 @@ var _lfDlgHandlers = {
     var avatar  = isTask ? '' : characterAvatar(speakerId);
     var bubbleCls = isTask ? '' : (unit.speakerRole==='q' ? 'lf-dlg-bubble-q' : 'lf-dlg-bubble-a');
     var rowCls    = isTask ? '' : (unit.speakerRole==='q' ? 'lf-dlg-row-q' : 'lf-dlg-row-a');
+    // Той самий field, що й у getAudioText(unit) нижче ('task' для
+    // dlg_task, інакше unit.field: 'q','a','q1','a1',...) — за ним
+    // _lfUnitPlay() у lfRunUnitStep шукає ЦЕЙ САМЕ елемент
+    // (data-audio-field="...") і підключає karaoke-підсвітку слів
+    // (wrapWordsForHighlight/_runWordHighlight), якщо для картки є
+    // .words.json. Унікальність field в межах картки (q,a,q1,a1,...)
+    // гарантує, що querySelector завжди знайде САМЕ цю (щойно додану)
+    // репліку, а не якусь із попередніх, що вже накопичені в транскрипті.
+    var audioField = isTask ? 'task' : unit.field;
 
     function buildBubble(){
       // Переклад (textTr) рендериться ОДРАЗУ в розмітці, але прихований
@@ -10939,7 +10961,7 @@ var _lfDlgHandlers = {
         : '';
         return examBadge+'<div class="lf-dlg-task lf-bubble-in">'+
           '<div class="lf-unit-main-row">'+
-            '<div class="lf-unit-sentence">'+text+'</div>'+
+            '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
           '</div>'+
           (textTr ?
             '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -10952,7 +10974,7 @@ var _lfDlgHandlers = {
         (avatar ? '<img class="lf-dlg-avatar" src="'+avatar+'" alt="'+speaker+'">' : '')+
         '<div class="lf-dlg-bubble '+bubbleCls+'">'+
           '<div class="lf-unit-main-row">'+
-            '<div class="lf-unit-sentence">'+text+'</div>'+
+            '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
           '</div>'+
           (textTr ?
             '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -11376,7 +11398,20 @@ function _lfDlgRevealLastTranslation(){
   if(!body) return;
   var rows = body.querySelectorAll('.lf-unit-tr-row:not(.revealed)');
   var last = rows[rows.length-1];
-  if(last) last.classList.add('revealed');
+  if(!last) return;
+  last.classList.add('revealed');
+  // Переклад "виростає" (max-height transition ~0.4s, CSS) — блок
+  // повідомлення стає вищим. Доскролюємо ЩЕ РАЗ, синхронно із
+  // завершенням саме цієї анімації (transitionend по max-height, не
+  // одразу — інакше scrollHeight ще старий, до зростання), щоб низ
+  // повідомлення плавно "піднявся" й лишився на стандартній відстані
+  // від кнопки "Далі", а не сховався під нею через нову висоту бульбашки.
+  var onDone = function(e){
+    if(e.propertyName !== 'max-height') return;
+    last.removeEventListener('transitionend', onDone);
+    body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+  };
+  last.addEventListener('transitionend', onDone);
 }
 
 function _lfUnitShow(){
@@ -11412,18 +11447,24 @@ function _lfUnitShow(){
     // варіанти ведуть в onDone → сюди). Для vocab/SB нічого не робить
     // (unit.kind тут інший, _lfDlgRevealLastTranslation просто не знайде
     // .lf-unit-tr-row — ця розмітка лише в _lfDlgHandlers.render).
-    if(unit.kind === 'dlg' || unit.kind === 'dlg_task') _lfDlgRevealLastTranslation();
+    var isDialogueUnit = unit.kind === 'dlg' || unit.kind === 'dlg_task';
+    if(isDialogueUnit) _lfDlgRevealLastTranslation();
 
     // Останній юніт ОСТАННЬОГО практичного кроку уроку (LF.steps завжди
-    // закінчується 'result') — авто-перехід без кнопки "Далі", тим самим
-    // шляхом, що вже й так використовує режим прослуховування
-    // (autoAdvance): _lfUnitAdvance() → _lfUnitStepDone() → lfStepDone()
-    // → (600мс) → lfNextStep() → крок 'result' → lfShowResult() показує
-    // святкування ОДРАЗУ, без проміжного натискання. Для решти карток
-    // уроку "Далі" лишається — тут навмисна пауза для читання/свайпу.
+    // закінчується 'result'). Для vocab/SB — авто-перехід без кнопки
+    // "Далі" (той самий шлях, що й пасивне прослуховування): onDone →
+    // _lfUnitAdvance() → _lfUnitStepDone() → lfStepDone() → (600мс) →
+    // lfNextStep() → крок 'result' → lfShowResult() показує святкування
+    // ОДРАЗУ. Для ДІАЛОГУ — навпаки: саме на останньому повідомленні
+    // авто-перехід прибираємо (окрема від vocab/SB поведінка), бо
+    // інакше в користувача нема часу перечитати останню репліку чи
+    // весь діалог перш ніж побачити святкування. Замість авто-переходу —
+    // кнопка з мотивуючим текстом ("✓ Завершити" замість "Далі").
     var isVeryLastUnit = LF && _lfUnit.idx === _lfUnit.units.length - 1
       && LF.step === LF.steps.length - 2; // крок прямо перед 'result'
-    if(_lfUnit.autoAdvance || isVeryLastUnit){
+    if(isVeryLastUnit && isDialogueUnit){
+      _lfUnitShowNextBtn(true);
+    } else if(_lfUnit.autoAdvance || (isVeryLastUnit && !isDialogueUnit)){
       setTimeout(_lfUnitAdvance, V.pause);
     } else {
       _lfUnitShowNextBtn();
@@ -11467,7 +11508,7 @@ function _lfUnitPlay(items, onDone){
   next();
 }
 
-function _lfUnitShowNextBtn(){
+function _lfUnitShowNextBtn(isFinish){
   if(document.getElementById('lf-next-row')) return; // вже показана
 
   var unit = _lfUnit.units[_lfUnit.idx];
@@ -11509,7 +11550,13 @@ function _lfUnitShowNextBtn(){
 
   var nextBtn = document.createElement('button');
   nextBtn.className = 'btn btn-lesson-sb-next';
-  nextBtn.textContent = typeof t === 'function' ? t('btn_sb_weiter') : 'Далі →';
+  // isFinish — останнє повідомлення діалогу: мотивуючий текст замість
+  // звичайного "Далі" (btn_dlg_finish), і клік і далі веде через
+  // звичайнісінький _lfUnitAdvance() — святкування вже покажеться
+  // одразу після нього (dlg_learn = єдиний крок, без штучної паузи).
+  nextBtn.textContent = isFinish
+    ? (typeof t === 'function' ? t('btn_dlg_finish') : '✓ Завершити')
+    : (typeof t === 'function' ? t('btn_sb_weiter') : 'Далі →');
   nextBtn.onclick = function(){
     row.remove();
     _lfUnitAdvance();
