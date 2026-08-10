@@ -1919,7 +1919,10 @@ var LESSONS = [
       "k3_054"
     ],
     "unlockAfter": "k3m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_081"
+    ]
   },
   {
     "id": "k3m6",
@@ -27139,6 +27142,80 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, оставляем страховку имущества, расторгаем старую автостраховку, и выясняем всё важное сегодня. Это целесообразно, хотя и требует усилий! До связи!"
     },
     "gram": "nebensatz_mit_obwohl"
+  },
+  {
+    "id": "dlg_081",
+    "cat": "Beratungsgespräch mit der Versicherung planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie fahren bald in den Urlaub und möchten mit einem Freund/einer Freundin ein Beratungsgespräch mit der Versicherungsvertreterin planen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das Gespräch vorbereiten.\nDiese Punkte helfen Ihnen:\nWann vereinbaren Sie das Beratungsgespräch?\nBrauchen Sie eine Reiseversicherung?\nWie lang ist die Kündigungsfrist des alten Vertrags?\nSollen Sie vorher zur Verbraucherzentrale gehen?\nWer unterschreibt den neuen Vertrag?",
+      "en": "Situation: You're going on vacation soon and want to plan a consultation with the insurance agent with a friend.\nTask: Plan together with your conversation partner how you'll prepare for the meeting.\nThese points will help you:\nWhen will you schedule the consultation?\nDo you need travel insurance?\nHow long is the notice period on the old contract?\nShould you visit the consumer advice centre first?\nWho will sign the new contract?",
+      "uk": "Ситуація: Ви скоро їдете у відпустку і хочете спланувати з другом/подругою консультацію з представницею страхової компанії.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєтеся до розмови.\nЦі пункти Вам допоможуть:\nКоли Ви домовитеся про консультацію?\nЧи потрібна Вам туристична страховка?\nЯкий термін розірвання старого договору?\nЧи варто спершу звернутися в центр захисту прав споживачів?\nХто підпише новий договір?",
+      "ru": "Ситуация: Вы скоро едете в отпуск и хотите спланировать с другом/подругой консультацию с представителем страховой компании.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы подготовитесь к разговору.\nЭти пункты Вам помогут:\nКогда Вы договоритесь о консультации?\nНужна ли Вам туристическая страховка?\nКакой срок расторжения старого договора?\nСтоит ли сначала обратиться в центр защиты прав потребителей?\nКто подпишет новый договор?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo! Wir fahren bald in den Urlaub. Sollen wir ein Beratungsgespräch mit der Versicherungsvertreterin vereinbaren?",
+      "en": "Hi! We're going on vacation soon. Should we schedule a consultation with the insurance agent?",
+      "uk": "Привіт! Ми скоро їдемо у відпустку. Може, домовимося про консультацію з представницею страхової компанії?",
+      "ru": "Привет! Мы скоро едем в отпуск. Может, договоримся о консультации с представителем страховой компании?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst das <g>Beratungsgespräch</g> für nächste Woche vereinbaren.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we schedule the <g>consultation</g> for next week first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу домовилися про <g>консультаційну бесіду</g> на наступний тиждень.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала договорились о <g>консультационной беседе</g> на следующую неделю.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> sie nach einer guten <g>Reiseversicherung</g> fragen.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we ask her about good <g>travel insurance</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми запитали в неї про гарну <g>туристичну страховку</g>.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы спросили у неё о хорошей <g>туристической страховке</g>.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an den alten Vertrag denken.<br><r>Wir könnten doch</r> fragen, wie lang die <g>Kündigungsfrist</g> für unseren alten Vertrag ist.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the old contract.<br><r>We could</r> ask how long the <g>notice period</g> is for our old contract.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про старий договір.<br><r>Ми могли б</r> запитати, який <g>термін розірвання</g> нашого старого договору.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о старом договоре.<br><r>Мы могли бы</r> спросить, какой <g>срок расторжения</g> нашего старого договора.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns vorher bei der Verbraucherzentrale informieren.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we get information from the consumer advice centre beforehand.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми заздалегідь порадилися в центрі захисту прав споживачів.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы заранее проконсультировались в центре защиты прав потребителей.<br><r>Ты согласна с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir fragen auch nach dem genauen <g>Zahlungstermin</g>, damit wir nichts vergessen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we also ask about the exact <g>payment date</g>, so we don't forget anything.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> запитаємо ще про точну <g>дату платежу</g>, щоб нічого не забути.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> спросим ещё о точной <g>дате платежа</g>, чтобы ничего не забыть.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir den Vertrag gleich unterschreiben sollten.<br><r>Vielleicht wäre es am besten, wenn wir</r> erst zu Hause in Ruhe alles besprechen.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we should sign the contract right away.<br><r>Maybe it would be best if</r> we discuss everything calmly at home first.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи варто нам одразу підписувати договір.<br><r>Можливо, було б найкраще, якби ми</r> спершу спокійно все обговорили вдома.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, стоит ли нам сразу подписывать договор.<br><r>Возможно, было бы лучше, если бы мы</r> сначала спокойно всё обсудили дома.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> das <g>Kündigungsschreiben</g> für den alten Vertrag schon vorbereiten.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> prepare the <g>letter of termination</g> for the old contract already.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> заздалегідь підготуємо <g>лист про розірвання договору</g> для старого договору.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> заранее подготовим <g>письмо о расторжении договора</g> для старого договора.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> auch nach einem passenden <g>Sparplan</g> fragen, bevor wir den neuen Vertrag abschließen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we also ask about a suitable <g>savings plan</g> before we sign the new contract.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми також запитали про підходящий <g>ощадний план</g>, перш ніж укладемо новий договір.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы также спросили о подходящем <g>сберегательном плане</g>, прежде чем заключим новый договор.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir vereinbaren das Beratungsgespräch, fragen nach der Reiseversicherung und der Kündigungsfrist, und bereiten das Kündigungsschreiben vor. Ich freue mich schon auf den Urlaub! Bis nächste Woche!",
+      "en": "Yes, good idea! So, we'll schedule the consultation, ask about the travel insurance and the notice period, and prepare the letter of termination. I'm already looking forward to the vacation! See you next week!",
+      "uk": "Так, гарна ідея! Отже, домовляємося про консультацію, запитуємо про туристичну страховку й термін розірвання, і готуємо лист про розірвання договору. Уже тішуся відпустці! До наступного тижня!",
+      "ru": "Да, хорошая идея! Итак, договариваемся о консультации, спрашиваем о туристической страховке и сроке расторжения, и готовим письмо о расторжении договора. Уже жду отпуска с нетерпением! До следующей недели!"
+    },
+    "gram": "komposita_verb_nomen"
   }
 ];
 
