@@ -1500,7 +1500,10 @@ var LESSONS = [
       "k6_024"
     ],
     "unlockAfter": "k5m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_053"
+    ]
   },
   {
     "id": "k6m2",
@@ -1541,7 +1544,8 @@ var LESSONS = [
       "dlg_021",
       "dlg_022",
       "dlg_023",
-      "dlg_024"
+      "dlg_024",
+      "dlg_054"
     ]
   },
   {
@@ -5913,6 +5917,106 @@ var DIALOGE = [
       "ru": "Отлично, тогда у тебя точно будут лучшие шансы на собеседовании. Удачи!"
     },
     "gram": "superlativ"
+  },
+  {
+    "id": "dlg_053",
+    "cat": "Die Hochzeit der Cousine planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Die Hochzeit Ihrer Cousine ist bald. Sie müssen die Verwandtschaft im Ausland einladen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wen laden wir ein?<br>Wer kann/darf noch jemanden mitbringen?<br>Wann verschicken wir die Einladungen?",
+      "en": "Your cousin's wedding is coming up soon. You need to invite the relatives abroad.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Who do we invite?<br>Who can/may bring someone else?<br>When do we send the invitations?",
+      "uk": "Незабаром весілля вашої кузини. Вам потрібно запросити родичів за кордоном.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Кого ми запрошуємо?<br>Хто може/може взяти когось ще?<br>Коли ми надішлемо запрошення?",
+      "ru": "Скоро свадьба вашей кузины. Вам нужно пригласить родственников за границей.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Кого мы приглашаем?<br>Кто может/может взять кого-то ещё?<br>Когда мы отправим приглашения?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo David! Die Hochzeit von unserer Cousine ist bald. Wir müssen die Verwandtschaft einladen. Hilfst du mir?",
+      "en": "Hi David! Our cousin's wedding is coming up soon. We need to invite the relatives. Can you help me?",
+      "uk": "Привіт, Девіде! Незабаром весілля нашої кузини. Нам треба запросити родичів. Допоможеш мені?",
+      "ru": "Привет, Дэвид! Скоро свадьба нашей кузины. Нам нужно пригласить родственников. Поможешь мне?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> die Einladungen zusammen schreiben.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> write the invitations together.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> разом написати запрошення.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> вместе написать приглашения.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> unsere Großeltern <g>können</g> nicht so weit reisen, das <g>müssen</g> wir bedenken.<br><r>Ich hätte einen Vorschlag:</r> Wir organisieren ihnen eine Mitfahrgelegenheit.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> our grandparents <g>can't</g> travel that far, we <g>have to</g> think about that.<br><r>I have a suggestion:</r> we organise a ride for them.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> наші бабуся й дідусь не можуть їхати так далеко, це нам треба врахувати.<br><r>У мене є пропозиція:</r> організуємо їм машину, щоб підвезти.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> наши бабушка и дедушка не могут ехать так далеко, это нам нужно учесть.<br><r>У меня есть предложение:</r> организуем им машину, чтобы подвезти.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> Onkel Peter seinen Sohn mitbringen <g>darf</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> Uncle Peter <g>may</g> bring his son along.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> дозволити дядькові Петру взяти з собою сина.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> разрешить дяде Петру взять с собой сына.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir schicken die Einladungen bis Ende der Woche ab.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we send the invitations by the end of the week.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> надішлемо запрошення до кінця тижня.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> отправим приглашения до конца недели.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, dann wird das bestimmt eine schöne Familienfeier. Bis bald!",
+      "en": "Great, then this will definitely be a lovely family celebration. See you soon!",
+      "uk": "Чудово, тоді це точно буде чудове родинне свято. До зустрічі!",
+      "ru": "Отлично, тогда это точно будет прекрасный семейный праздник. До скорого!"
+    },
+    "gram": "modalverben"
+  },
+  {
+    "id": "dlg_054",
+    "cat": "Eine Reise ins Heimatland planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie waren seit fünf Jahren nicht mehr in Ihrem Heimatland. Sie möchten mit Ihrem Partner / Ihrer Partnerin eine Reise dorthin planen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann fahren wir?<br>Was müssen wir vorher erledigen?<br>Wie lange bleiben wir?",
+      "en": "You haven't been to your homeland for five years. You would like to plan a trip there with your partner.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we go?<br>What do we need to take care of beforehand?<br>How long do we stay?",
+      "uk": "Ви вже п'ять років не були на батьківщині. Ви хочете спланувати туди поїздку зі своїм партнером / своєю партнеркою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми їдемо?<br>Що нам треба залагодити заздалегідь?<br>Як довго ми залишимось?",
+      "ru": "Вы уже пять лет не были на родине. Вы хотите спланировать туда поездку со своим партнёром / своей партнёршей.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы едем?<br>Что нам нужно уладить заранее?<br>Как долго мы останемся?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo Mark! Ich war seit fünf Jahren nicht mehr in meinem Heimatland. Sollen wir eine Reise dorthin planen?",
+      "en": "Hi Mark! I haven't been to my homeland for five years. Shall we plan a trip there?",
+      "uk": "Привіт, Марку! Я вже п'ять років не була на своїй батьківщині. Спланюємо туди поїздку?",
+      "ru": "Привет, Марк! Я уже пять лет не была на своей родине. Спланируем туда поездку?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> im Sommer fahren, das wäre am besten.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> go in summer, that would be best.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> поїхати влітку, це було б найкраще.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> поехать летом, это было бы лучше всего.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> <g>vor</g> der Reise müssen wir noch die Pässe verlängern.<br><r>Ich hätte einen Vorschlag:</r> Wir kümmern uns schon nächste Woche darum.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> <g>before</g> the trip we still need to renew our passports.<br><r>I have a suggestion:</r> we take care of it next week already.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> перед поїздкою нам ще треба продовжити паспорти.<br><r>У мене є пропозиція:</r> займемося цим уже наступного тижня.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> перед поездкой нам ещё нужно продлить паспорта.<br><r>У меня есть предложение:</r> займёмся этим уже на следующей неделе.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir <g>für</g> drei Wochen bleiben.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we stay <g>for</g> three weeks.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> залишитися на три тижні.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> остаться на три недели.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Ich rufe meine Familie an, ich habe <g>seit</g> einem Monat nicht mehr mit ihnen gesprochen.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> I call my family, I haven't spoken to them <g>for</g> a month.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> я подзвоню родині, я вже місяць з ними не розмовляла.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> я позвоню семье, я уже месяц с ними не разговаривала.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, das wird bestimmt eine schöne Reise in dein Heimatland. Ich freue mich schon!",
+      "en": "Great, this will definitely be a lovely trip to your homeland. I'm already looking forward to it!",
+      "uk": "Чудово, це точно буде чудова поїздка на твою батьківщину. Я вже тішуся!",
+      "ru": "Отлично, это точно будет прекрасная поездка на твою родину. Я уже радуюсь!"
+    },
+    "gram": "temporale_praepositionen"
   }
 ];
 
