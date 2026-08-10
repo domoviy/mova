@@ -3183,7 +3183,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '466-ea7bca5';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11393,25 +11393,38 @@ var _lfSkipNextAutoplay = false;
 // Викликається з afterPlay() у _lfUnitShow(), тобто рівно тоді, коли
 // озвучення (speak()) або завершилось, або playPregenAudio() зрозумів,
 // що файлу нема (обидва варіанти проходять через один onDone/afterPlay).
-function _lfDlgRevealLastTranslation(){
+//
+// onRevealed(cb) — ВАЖЛИВО: кнопка "Далі"/авто-перехід мають чекати на
+// ЗАВЕРШЕННЯ анімації розкриття, а не просто на її СТАРТ. Раніше кнопка
+// рендерилась одразу (синхронно), а переклад ще ~0.4с "виростав" —
+// тому кнопка візуально з'являлась ПЕРШОЮ, хоч у коді виклик реального
+// розкриття йшов до неї. Тепер afterPlay передає callback сюди, і той
+// викликається лише після transitionend (чи по запасному таймауту,
+// якщо transitionend не спрацює — напр. prefers-reduced-motion вимикає
+// transition-и й подія просто не відбудеться).
+function _lfDlgRevealLastTranslation(onRevealed){
   var body = document.getElementById('lf-unit-body');
-  if(!body) return;
-  var rows = body.querySelectorAll('.lf-unit-tr-row:not(.revealed)');
+  var rows = body ? body.querySelectorAll('.lf-unit-tr-row:not(.revealed)') : [];
   var last = rows[rows.length-1];
-  if(!last) return;
+  if(!last){ if(onRevealed) onRevealed(); return; }
   last.classList.add('revealed');
-  // Переклад "виростає" (max-height transition ~0.4s, CSS) — блок
-  // повідомлення стає вищим. Доскролюємо ЩЕ РАЗ, синхронно із
-  // завершенням саме цієї анімації (transitionend по max-height, не
-  // одразу — інакше scrollHeight ще старий, до зростання), щоб низ
-  // повідомлення плавно "піднявся" й лишився на стандартній відстані
-  // від кнопки "Далі", а не сховався під нею через нову висоту бульбашки.
-  var onDone = function(e){
-    if(e.propertyName !== 'max-height') return;
-    last.removeEventListener('transitionend', onDone);
-    body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+
+  var done = false;
+  var finish = function(){
+    if(done) return; done = true;
+    last.removeEventListener('transitionend', onTransEnd);
+    if(onRevealed) onRevealed();
   };
-  last.addEventListener('transitionend', onDone);
+  var onTransEnd = function(e){
+    if(e.propertyName !== 'max-height') return;
+    // Переклад "виростає" — доскролюємо синхронно із завершенням саме
+    // цієї анімації (scrollHeight вже оновлений), щоб низ повідомлення
+    // лишився на стандартній відстані від кнопки "Далі".
+    if(body) body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+    finish();
+  };
+  last.addEventListener('transitionend', onTransEnd);
+  setTimeout(finish, 500); // запасний тригер, якщо transitionend не спрацював
 }
 
 function _lfUnitShow(){
@@ -11448,27 +11461,36 @@ function _lfUnitShow(){
     // (unit.kind тут інший, _lfDlgRevealLastTranslation просто не знайде
     // .lf-unit-tr-row — ця розмітка лише в _lfDlgHandlers.render).
     var isDialogueUnit = unit.kind === 'dlg' || unit.kind === 'dlg_task';
-    if(isDialogueUnit) _lfDlgRevealLastTranslation();
 
-    // Останній юніт ОСТАННЬОГО практичного кроку уроку (LF.steps завжди
-    // закінчується 'result'). Для vocab/SB — авто-перехід без кнопки
-    // "Далі" (той самий шлях, що й пасивне прослуховування): onDone →
-    // _lfUnitAdvance() → _lfUnitStepDone() → lfStepDone() → (600мс) →
-    // lfNextStep() → крок 'result' → lfShowResult() показує святкування
-    // ОДРАЗУ. Для ДІАЛОГУ — навпаки: саме на останньому повідомленні
-    // авто-перехід прибираємо (окрема від vocab/SB поведінка), бо
-    // інакше в користувача нема часу перечитати останню репліку чи
-    // весь діалог перш ніж побачити святкування. Замість авто-переходу —
-    // кнопка з мотивуючим текстом ("✓ Завершити" замість "Далі").
-    var isVeryLastUnit = LF && _lfUnit.idx === _lfUnit.units.length - 1
-      && LF.step === LF.steps.length - 2; // крок прямо перед 'result'
-    if(isVeryLastUnit && isDialogueUnit){
-      _lfUnitShowNextBtn(true);
-    } else if(_lfUnit.autoAdvance || (isVeryLastUnit && !isDialogueUnit)){
-      setTimeout(_lfUnitAdvance, V.pause);
-    } else {
-      _lfUnitShowNextBtn();
-    }
+    var proceed = function(){
+      // Останній юніт ОСТАННЬОГО практичного кроку уроку (LF.steps завжди
+      // закінчується 'result'). Для vocab/SB — авто-перехід без кнопки
+      // "Далі" (той самий шлях, що й пасивне прослуховування): onDone →
+      // _lfUnitAdvance() → _lfUnitStepDone() → lfStepDone() → (600мс) →
+      // lfNextStep() → крок 'result' → lfShowResult() показує святкування
+      // ОДРАЗУ. Для ДІАЛОГУ — навпаки: саме на останньому повідомленні
+      // авто-перехід прибираємо (окрема від vocab/SB поведінка), бо
+      // інакше в користувача нема часу перечитати останню репліку чи
+      // весь діалог перш ніж побачити святкування. Замість авто-переходу —
+      // кнопка з мотивуючим текстом ("✓ Завершити" замість "Далі").
+      var isVeryLastUnit = LF && _lfUnit.idx === _lfUnit.units.length - 1
+        && LF.step === LF.steps.length - 2; // крок прямо перед 'result'
+      if(isVeryLastUnit && isDialogueUnit){
+        _lfUnitShowNextBtn(true);
+      } else if(_lfUnit.autoAdvance || (isVeryLastUnit && !isDialogueUnit)){
+        setTimeout(_lfUnitAdvance, V.pause);
+      } else {
+        _lfUnitShowNextBtn();
+      }
+    };
+
+    // Для діалогу — кнопка/авто-перехід чекають на ЗАВЕРШЕННЯ анімації
+    // розкриття перекладу (не просто на її старт): раніше кнопка
+    // рендерилась одразу, а переклад ще ~0.4с "виростав" під нею —
+    // тому візуально кнопка з'являлась ПЕРШОЮ. Тепер порядок подій
+    // правильний: спочатку розкриття (з анімацією), тоді кнопка.
+    if(isDialogueUnit) _lfDlgRevealLastTranslation(proceed);
+    else proceed();
   };
 
   if(_lfSkipNextAutoplay){

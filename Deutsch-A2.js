@@ -1423,7 +1423,10 @@ var LESSONS = [
       "k5_035"
     ],
     "unlockAfter": "k5m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_051"
+    ]
   },
   {
     "id": "k5m4",
@@ -1459,7 +1462,10 @@ var LESSONS = [
       "k5_040"
     ],
     "unlockAfter": "k5m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_052"
+    ]
   },
   {
     "id": "k6m1",
@@ -5807,6 +5813,106 @@ var DIALOGE = [
       "ru": "Отлично, тогда, надеюсь, у меня будет меньше стресса утром. Спасибо тебе!"
     },
     "gram": "weil_satz"
+  },
+  {
+    "id": "dlg_051",
+    "cat": "Verkehrsmittel für den Ausflug vergleichen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie und Ihr Partner / Ihre Partnerin möchten am Wochenende zu Verwandten in eine andere Stadt fahren.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Welches Verkehrsmittel? (Vor- und Nachteile)<br>Wann losfahren?<br>Wie viel dürfen wir ausgeben?",
+      "en": "You and your partner would like to visit relatives in another city at the weekend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Which means of transport? (advantages and disadvantages)<br>When to leave?<br>How much can we spend?",
+      "uk": "Ви й ваш партнер / ваша партнерка хочете на вихідних поїхати до родичів в інше місто.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Яким транспортом? (переваги й недоліки)<br>Коли виїжджати?<br>Скільки ми можемо витратити?",
+      "ru": "Вы и ваш партнёр / ваша партнёрша хотите на выходных поехать к родственникам в другой город.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Каким транспортом? (преимущества и недостатки)<br>Когда выезжать?<br>Сколько мы можем потратить?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo David! Am Wochenende wollen wir zu meiner Schwester fahren. Wie kommen wir am besten dahin?",
+      "en": "Hi David! We want to visit my sister this weekend. What's the best way to get there?",
+      "uk": "Привіт, Девіде! На вихідних ми хочемо поїхати до моєї сестри. Як нам краще туди дістатися?",
+      "ru": "Привет, Дэвид! На выходных мы хотим поехать к моей сестре. Как нам лучше туда добраться?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> mit dem Auto fahren.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> go by car.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> поїхати автомобілем.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> поехать на машине.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> der Zug ist viel <g>schneller</g> <g>als</g> das Auto.<br><r>Ich hätte einen Vorschlag:</r> Wir nehmen den Zug.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> the train is much <g>faster</g> <g>than</g> the car.<br><r>I have a suggestion:</r> we take the train.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> потяг набагато швидший за автомобіль.<br><r>У мене є пропозиція:</r> поїдемо потягом.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> поезд намного быстрее автомобиля.<br><r>У меня есть предложение:</r> поедем на поезде.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> der Zug fast <g>so teuer</g> ist <g>wie</g> das Auto, aber viel praktischer.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> the train is almost <g>as expensive</g> <g>as</g> the car, but much more practical.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> потяг майже такий же дорогий, як автомобіль, але набагато практичніший.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> поезд почти такой же дорогой, как автомобиль, но намного практичнее.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir fahren um acht Uhr vom Bahnhof los.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we leave from the train station at eight o'clock.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> вирушимо з вокзалу о восьмій.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> выедем с вокзала в восемь.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, der Zug ist bestimmt bequemer als das Auto. Bis Samstag!",
+      "en": "Great, the train is definitely more comfortable than the car. See you Saturday!",
+      "uk": "Чудово, потяг точно зручніший за автомобіль. До суботи!",
+      "ru": "Отлично, поезд точно удобнее автомобиля. До субботы!"
+    },
+    "gram": "komparativ"
+  },
+  {
+    "id": "dlg_052",
+    "cat": "Die beste Route zum Vorstellungsgespräch finden",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie haben nächste Woche ein Vorstellungsgespräch. Ein Freund / Eine Freundin möchte Ihnen helfen, die beste Verbindung zu finden.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Welches Verkehrsmittel?<br>Wann losfahren?<br>Was, wenn etwas schiefgeht?",
+      "en": "You have a job interview next week. A friend would like to help you find the best connection.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Which means of transport?<br>When to leave?<br>What if something goes wrong?",
+      "uk": "У вас наступного тижня співбесіда. Друг / подруга хоче допомогти вам знайти найкраще сполучення.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Яким транспортом?<br>Коли виїжджати?<br>Що робити, якщо щось піде не так?",
+      "ru": "У вас на следующей неделе собеседование. Друг / подруга хочет помочь вам найти лучшее сообщение.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Каким транспортом?<br>Когда выезжать?<br>Что делать, если что-то пойдёт не так?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Hallo Nina! Ich habe nächste Woche ein Vorstellungsgespräch. Kannst du mir helfen, die beste Verbindung zu finden?",
+      "en": "Hi Nina! I have a job interview next week. Can you help me find the best connection?",
+      "uk": "Привіт, Ніно! У мене наступного тижня співбесіда. Можеш допомогти мені знайти найкраще сполучення?",
+      "ru": "Привет, Нина! У меня на следующей неделе собеседование. Можешь помочь мне найти лучшее сообщение?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst den Fahrplan online prüfen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> check the timetable online first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку перевірити розклад онлайн.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала проверить расписание онлайн.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> die U-Bahn ist <g>am schnellsten</g>, das wäre <g>am besten</g>.<br><r>Ich hätte einen Vorschlag:</r> Wir nehmen die U-Bahn-Linie 3.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> the subway is <g>the fastest</g>, that would be <g>the best</g>.<br><r>I have a suggestion:</r> we take subway line 3.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> метро найшвидше, тому це буде найкраще.<br><r>У мене є пропозиція:</r> поїдемо лінією метро 3.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> метро самое быстрое, поэтому это будет лучше всего.<br><r>У меня есть предложение:</r> поедем по линии метро 3.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir die Haltestelle nehmen, die <g>am sichersten</g> ist.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we take the stop that is <g>the safest</g>.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> обрати зупинку, яка найбезпечніша.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> выбрать остановку, которая самая безопасная.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Ich fahre eine Stunde früher los, um sicher pünktlich zu sein.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> I leave an hour earlier to be sure I'm on time.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> я виїду на годину раніше, щоб точно встигнути вчасно.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> я выеду на час раньше, чтобы точно успеть вовремя.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, dann hast du bestimmt die beste Chance beim Gespräch. Viel Erfolg!",
+      "en": "Great, then you'll definitely have the best chance at the interview. Good luck!",
+      "uk": "Чудово, тоді в тебе точно будуть найкращі шанси на співбесіді. Успіхів!",
+      "ru": "Отлично, тогда у тебя точно будут лучшие шансы на собеседовании. Удачи!"
+    },
+    "gram": "superlativ"
   }
 ];
 

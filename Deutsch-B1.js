@@ -1802,7 +1802,10 @@ var LESSONS = [
       "k3_031"
     ],
     "unlockAfter": "k3m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_078"
+    ]
   },
   {
     "id": "k3m3",
@@ -1838,7 +1841,10 @@ var LESSONS = [
       "k3_039"
     ],
     "unlockAfter": "k3m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_079"
+    ]
   },
   {
     "id": "k3m4",
@@ -1874,7 +1880,10 @@ var LESSONS = [
       "k3_047"
     ],
     "unlockAfter": "k3m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_080"
+    ]
   },
   {
     "id": "k3m5",
@@ -26908,6 +26917,228 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, мы идём в банк завтра утром, берём удостоверения, я становлюсь совладелицей, и потом настраиваем онлайн-банкинг. Уже жду этого с нетерпением! До завтра!"
     },
     "gram": "modalverben_vermutung"
+  },
+  {
+    "id": "dlg_078",
+    "cat": "Bankangebote vergleichen planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie brauchen jetzt auch ein eigenes Konto und möchten mit einem Freund/einer Freundin die Angebote verschiedener Banken vergleichen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie die Angebote vergleichen.\nDiese Punkte helfen Ihnen:\nWie hoch ist die Kontogebühr?\nIst eine Versicherung dabei?\nWie sind die Zinsen des Dispokredits?\nSparbuch oder Kreditkarte – was ist wichtiger?\nWann eröffnen Sie das neue Konto?",
+      "en": "Situation: You now need your own account too and want to compare different banks' offers with a friend.\nTask: Plan together with your conversation partner how you'll compare the offers.\nThese points will help you:\nHow much is the account fee?\nIs insurance included?\nWhat's the interest rate on the overdraft?\nSavings book or credit card – which matters more?\nWhen will you open the new account?",
+      "uk": "Ситуація: Вам тепер теж потрібен власний рахунок, і Ви хочете порівняти пропозиції різних банків разом з другом/подругою.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви порівняєте пропозиції.\nЦі пункти Вам допоможуть:\nЯка плата за рахунок?\nЧи входить страхування?\nЯкі відсотки за кредитним лімітом?\nОщадна книжка чи кредитна картка – що важливіше?\nКоли Ви відкриєте новий рахунок?",
+      "ru": "Ситуация: Вам теперь тоже нужен собственный счёт, и Вы хотите сравнить предложения разных банков вместе с другом/подругой.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы сравните предложения.\nЭти пункты Вам помогут:\nКакая плата за счёт?\nВходит ли страхование?\nКакие проценты по кредитному лимиту?\nСберегательная книжка или кредитная карта – что важнее?\nКогда Вы откроете новый счёт?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo! Ich brauche jetzt auch ein eigenes Konto. Kannst du mir helfen, die Angebote zu vergleichen?",
+      "en": "Hi! I need my own account now too. Can you help me compare the offers?",
+      "uk": "Привіт! Мені теж тепер потрібен власний рахунок. Можеш допомогти мені порівняти пропозиції?",
+      "ru": "Привет! Мне тоже теперь нужен собственный счёт. Можешь помочь мне сравнить предложения?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Höhe <g>der Kontogebühr</g> vergleichen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first compare the amount <g>of the account fee</g>.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу порівняли розмір <g>плати за рахунок</g>.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала сравнили размер <g>платы за счёт</g>.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auch die Bedingungen <g>der Versicherung</g> anschauen, die manche Banken anbieten.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we also look at the conditions <g>of the insurance</g> some banks offer.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми також подивилися на умови <g>страхування</g>, яке пропонують деякі банки.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы также посмотрели на условия <g>страхования</g>, которое предлагают некоторые банки.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an den Dispokredit denken.<br><r>Wir könnten doch</r> die Zinsen <g>des Dispokredits</g> vergleichen, falls du mal im Minus bist.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the overdraft facility.<br><r>We could</r> compare the interest <g>on the overdraft</g>, in case you're ever in the red.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про кредитний ліміт.<br><r>Ми могли б</r> порівняти відсотки <g>кредитного ліміту</g>, якщо ти колись підеш у мінус.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о кредитном лимите.<br><r>Мы могли бы</r> сравнить проценты <g>кредитного лимита</g>, если ты когда-нибудь уйдёшь в минус.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns auch die Vorteile <g>des Sparbuchs</g> ansehen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we also look at the benefits <g>of the savings book</g>.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми також подивилися на переваги <g>ощадної книжки</g>.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы также посмотрели на преимущества <g>сберегательной книжки</g>.<br><r>Ты согласен с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir prüfen auch, ob eine Kreditkarte im Preis <g>des Kontos</g> enthalten ist.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we also check whether a credit card is included in the price <g>of the account</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> перевіримо ще, чи входить кредитна картка у вартість <g>рахунку</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> проверим ещё, входит ли кредитная карта в стоимость <g>счёта</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, welche Bank am besten passt.<br><r>Vielleicht wäre es am besten, wenn wir</r> die Website <g>jeder Bank</g> gemeinsam durchsehen.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> which bank fits best.<br><r>Maybe it would be best if</r> we go through <g>each bank's</g> website together.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, який банк підходить найкраще.<br><r>Можливо, було б найкраще, якби ми</r> разом переглянули сайт <g>кожного банку</g>.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, какой банк подходит лучше всего.<br><r>Возможно, было бы лучше, если бы мы</r> вместе просмотрели сайт <g>каждого банка</g>.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> am Ende die Ergebnisse <g>unseres Vergleichs</g> zusammenfassen.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> summarize the results <g>of our comparison</g> at the end.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> наприкінці підсумуємо результати <g>нашого порівняння</g>.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> в конце подведём итоги <g>нашего сравнения</g>.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> das Konto <g>der besten Bank</g> gleich morgen eröffnen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we open <g>the best bank's</g> account tomorrow.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми відкрили рахунок <g>найкращого банку</g> вже завтра.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы открыли счёт <g>лучшего банка</g> уже завтра.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir vergleichen zuerst die Kontogebühr, die Zinsen und die Versicherung, und morgen eröffnest du dann das Konto der besten Bank. Ich helfe dir gern dabei! Bis morgen!",
+      "en": "Yes, good idea! So, we'll first compare the account fee, the interest, and the insurance, and tomorrow you'll open the account at the best bank. I'm happy to help you with it! See you tomorrow!",
+      "uk": "Так, гарна ідея! Отже, спершу порівнюємо плату за рахунок, відсотки й страхування, а завтра ти відкриваєш рахунок найкращого банку. Із задоволенням допоможу тобі! До завтра!",
+      "ru": "Да, хорошая идея! Итак, сначала сравниваем плату за счёт, проценты и страхование, а завтра ты открываешь счёт лучшего банка. С удовольствием помогу тебе! До завтра!"
+    },
+    "gram": "genitiv"
+  },
+  {
+    "id": "dlg_079",
+    "cat": "Verlorene Bankkarte sperren planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie können Ihre Bankkarte nicht mehr finden und wissen nicht, ob Sie sie verloren haben oder ob sie gestohlen wurde. Sie möchten mit einem Freund/einer Freundin planen, was Sie jetzt tun.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie vorgehen.\nDiese Punkte helfen Ihnen:\nZuerst die Karte sperren – wie?\nDiebstahl oder verloren?\nAnzeige bei der Polizei erstatten?\nDer Bank Bescheid geben\nWie bekommen Sie eine Ersatzkarte?",
+      "en": "Situation: You can't find your bank card and don't know whether you lost it or it was stolen. You want to plan with a friend what to do now.\nTask: Plan together with your conversation partner how you'll proceed.\nThese points will help you:\nBlock the card first – how?\nTheft or lost?\nFile a police report?\nNotify the bank\nHow do you get a replacement card?",
+      "uk": "Ситуація: Ви не можете знайти свою банківську картку і не знаєте, чи загубили її, чи її вкрали. Ви хочете спланувати з другом/подругою, що робити далі.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nСпершу заблокувати картку – як?\nКрадіжка чи загубили?\nПодати заяву в поліцію?\nПовідомити банк\nЯк отримати нову картку?",
+      "ru": "Ситуация: Вы не можете найти свою банковскую карту и не знаете, потеряли ли Вы её или её украли. Вы хотите спланировать с другом/подругой, что делать дальше.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nСначала заблокировать карту – как?\nКража или потеря?\nПодать заявление в полицию?\nУведомить банк\nКак получить новую карту?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo! Ich kann meine Bankkarte nicht mehr finden. Kannst du mir helfen, zu überlegen, was ich jetzt tun soll?",
+      "en": "Hi! I can't find my bank card anymore. Can you help me think about what to do now?",
+      "uk": "Привіт! Я ніяк не можу знайти свою банківську картку. Можеш допомогти мені подумати, що робити?",
+      "ru": "Привет! Я никак не могу найти свою банковскую карту. Можешь помочь мне подумать, что делать?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst den Sperrnotruf anrufen, damit niemand dein Geld abheben kann.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we call the emergency blocking hotline first, so no one can withdraw your money.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу зателефонували на гарячу лінію блокування, щоб ніхто не зняв твої гроші.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала позвонили на горячую линию блокировки, чтобы никто не снял твои деньги.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> überlegen, ob die Karte gestohlen wurde oder ob ich sie einfach verloren habe.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we think about whether the card was stolen or whether I just lost it.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми подумали, чи картку вкрали, чи я просто її загубив.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы подумали, украли карту или я просто её потерял.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Polizei denken.<br><r>Wir könnten doch</r> eine Anzeige bei der Polizei erstatten, falls die Karte gestohlen wurde.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the police.<br><r>We could</r> file a police report, in case the card was stolen.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про поліцію.<br><r>Ми могли б</r> подати заяву в поліцію, якщо картку вкрали.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о полиции.<br><r>Мы могли бы</r> подать заявление в полицию, если карту украли.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> danach gleich der Bank Bescheid geben.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we notify the bank right afterwards.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми одразу після цього повідомили банк.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы сразу после этого уведомили банк.<br><r>Ты согласна с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir fragen gleich, wie lange es dauert, bis du eine Ersatzkarte bekommst.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we ask right away how long it takes for you to get a replacement card.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> одразу запитаємо, скільки часу потрібно, щоб отримати нову картку.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> сразу спросим, сколько времени нужно, чтобы получить новую карту.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob die Bank die Karte sofort ersetzen kann.<br><r>Vielleicht wäre es am besten, wenn wir</r> das direkt in der Bankfiliale klären.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether the bank can replace the card right away.<br><r>Maybe it would be best if</r> we clarify that directly at the bank branch.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи зможе банк одразу замінити картку.<br><r>Можливо, було б найкраще, якби ми</r> з'ясували це прямо у відділенні банку.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, сможет ли банк сразу заменить карту.<br><r>Возможно, было бы лучше, если бы мы</r> выяснили это прямо в отделении банка.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> zusammen zur Bankfiliale gehen, dann bist du nicht allein.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> go to the bank branch together, so you're not alone.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> підемо разом у відділення банку, щоб ти не був сам.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> пойдём вместе в отделение банка, чтобы ты не был один.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> gleich jetzt beim Sperrnotruf anrufen, bevor wir losgehen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we call the emergency blocking hotline right now, before we go.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми зателефонували на гарячу лінію просто зараз, перш ніж підемо.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы позвонили на горячую линию прямо сейчас, прежде чем пойдём.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir rufen jetzt den Sperrnotruf an, gehen dann zusammen zur Bankfiliale, und du erstattest eine Anzeige, falls die Karte gestohlen wurde. Ich bin bei dir! Bis gleich!",
+      "en": "Yes, good idea! So, we'll call the emergency blocking hotline now, then go to the bank branch together, and you'll file a police report in case the card was stolen. I'm with you! See you in a bit!",
+      "uk": "Так, гарна ідея! Отже, зараз телефонуємо на гарячу лінію, потім разом ідемо у відділення банку, і ти подаєш заяву в поліцію, якщо картку вкрали. Я з тобою! До зустрічі!",
+      "ru": "Да, хорошая идея! Итак, сейчас звоним на горячую линию, потом вместе идём в отделение банка, и ты подаёшь заявление в полицию, если карту украли. Я с тобой! До скорого!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_080",
+    "cat": "Versicherung behalten oder kündigen planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Mitbewohner/Ihre Mitbewohnerin überlegen, ob Sie Ihre Hausratversicherung behalten oder eine andere Versicherung kündigen sollten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie vorgehen.\nDiese Punkte helfen Ihnen:\nBrauchen Sie die Versicherung wirklich? (freiwillig oder notwendig)\nWas deckt der Versicherungsschutz ab?\nWie hoch ist die Selbstbeteiligung?\nSollen Sie die alte Versicherung kündigen?\nWann klären Sie das?",
+      "en": "Situation: You and your roommate are considering whether to keep your home contents insurance or cancel another insurance policy.\nTask: Plan together with your conversation partner how you'll proceed.\nThese points will help you:\nDo you really need the insurance? (voluntary or necessary)\nWhat does the insurance coverage include?\nHow high is the deductible?\nShould you cancel the old insurance?\nWhen will you sort this out?",
+      "uk": "Ситуація: Ви та Ваш сусід/Ваша сусідка по кімнаті обмірковуєте, чи залишити страхування майна, чи розірвати інший страховий договір.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЧи справді Вам потрібне це страхування? (добровільне чи необхідне)\nЩо покриває страховий захист?\nЯка франшиза?\nЧи варто розірвати старе страхування?\nКоли Ви це з'ясуєте?",
+      "ru": "Ситуация: Вы и Ваш сосед/Ваша соседка по комнате обдумываете, оставить ли страхование имущества или расторгнуть другой страховой договор.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nДействительно ли Вам нужна эта страховка? (добровольная или необходимая)\nЧто покрывает страховая защита?\nКакая франшиза?\nСтоит ли расторгнуть старую страховку?\nКогда Вы это выясните?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo! Ich habe über unsere Hausratversicherung nachgedacht. Sollen wir zusammen überlegen, ob wir sie wirklich brauchen?",
+      "en": "Hi! I've been thinking about our home contents insurance. Should we think together about whether we really need it?",
+      "uk": "Привіт! Я думала про наше страхування майна. Може, разом подумаємо, чи справді воно нам потрібне?",
+      "ru": "Привет! Я думала о нашей страховке имущества. Может, вместе подумаем, действительно ли она нам нужна?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sie behalten, <g>obwohl</g> sie extra Geld kostet, denn sie schützt uns bei einem Einbruch.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we keep it, <g>although</g> it costs extra money, because it protects us in case of a break-in.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми залишили його, <g>хоча</g> воно коштує додаткових грошей, бо захищає нас на випадок крадіжки.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы оставили её, <g>хотя</g> она стоит дополнительных денег, потому что защищает нас на случай кражи.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> prüfen, was der Versicherungsschutz genau abdeckt, <g>obwohl</g> das etwas Zeit braucht.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we check exactly what the insurance coverage includes, <g>although</g> that takes a bit of time.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми перевірили, що саме покриває страховий захист, <g>хоча</g> це забере трохи часу.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы проверили, что именно покрывает страховая защита, <g>хотя</g> это займёт немного времени.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Selbstbeteiligung denken.<br><r>Wir könnten doch</r> schauen, wie hoch die Selbstbeteiligung ist, <g>obwohl</g> das im Vertrag oft klein steht.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the deductible.<br><r>We could</r> check how high the deductible is, <g>although</g> that's often written small in the contract.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про франшизу.<br><r>Ми могли б</r> подивитися, яка франшиза, <g>хоча</g> це часто написано дрібним шрифтом у договорі.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о франшизе.<br><r>Мы могли бы</r> посмотреть, какая франшиза, <g>хотя</g> это часто написано мелким шрифтом в договоре.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> die Versicherung behalten, <g>obwohl</g> sie freiwillig ist, weil sie uns Sicherheit gibt.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we keep the insurance, <g>although</g> it's voluntary, because it gives us peace of mind.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми залишили страхування, <g>хоча</g> воно добровільне, бо воно дає нам спокій.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы оставили страховку, <g>хотя</g> она добровольная, потому что она даёт нам спокойствие.<br><r>Ты согласен с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir kündigen die alte Kfz-Versicherung, <g>obwohl</g> wir sie schon lange haben, weil sie zu teuer ist.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we cancel the old car insurance, <g>although</g> we've had it for a long time, because it's too expensive.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми розірвемо стару автостраховку, <g>хоча</g> вона в нас уже давно, бо вона занадто дорога.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> мы расторгнем старую автостраховку, <g>хотя</g> она у нас уже давно, потому что она слишком дорогая.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob eine Kündigung so einfach ist.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns informieren, <g>obwohl</g> das vielleicht etwas kompliziert ist.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether cancelling is that simple.<br><r>Maybe it would be best if</r> we find out more, <g>although</g> that might be a bit complicated.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи так просто розірвати договір.<br><r>Можливо, було б найкраще, якби ми</r> дізналися більше, <g>хоча</g> це, можливо, трохи складно.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, так ли просто расторгнуть договор.<br><r>Возможно, было бы лучше, если бы мы</r> узнали больше, <g>хотя</g> это, возможно, немного сложно.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> die Kündigung schreiben, <g>obwohl</g> wir noch keine Antwort von der neuen Versicherung haben.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> write the cancellation letter, <g>although</g> we don't have an answer from the new insurer yet.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> напишемо розірвання договору, <g>хоча</g> ми ще не маємо відповіді від нової страхової.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> напишем расторжение договора, <g>хотя</g> у нас ещё нет ответа от новой страховой.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> alles gleich heute klären, <g>obwohl</g> wir eigentlich keine Zeit haben.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we sort everything out today, <g>although</g> we don't really have time.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми все з'ясували вже сьогодні, <g>хоча</g> в нас насправді немає часу.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы всё выясним уже сегодня, <g>хотя</g> у нас на самом деле нет времени.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir behalten die Hausratversicherung, kündigen die alte Kfz-Versicherung, und klären heute noch alles Wichtige. Das ist zwar sinnvoll, obwohl es Arbeit macht! Bis später!",
+      "en": "Yes, good idea! So, we'll keep the home contents insurance, cancel the old car insurance, and sort out everything important today. It's sensible, although it's a bit of work! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, залишаємо страхування майна, розриваємо стару автостраховку, і з'ясовуємо все важливе сьогодні. Це доцільно, хоча й потребує зусиль! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, оставляем страховку имущества, расторгаем старую автостраховку, и выясняем всё важное сегодня. Это целесообразно, хотя и требует усилий! До связи!"
+    },
+    "gram": "nebensatz_mit_obwohl"
   }
 ];
 
