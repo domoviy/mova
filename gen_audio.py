@@ -34,23 +34,36 @@ COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '20'))
 # зростає експоненційно (спроба 2 → ×2, спроба 3 → ×4 і т.д.).
 RETRY_ATTEMPTS = int(os.environ.get('TTS_RETRY_ATTEMPTS', '3'))
 RETRY_BASE_DELAY = float(os.environ.get('TTS_RETRY_BASE_DELAY', '2.0'))
-# Опційний режим: добудувати .words.json (таймінг слів) для ВЖЕ
-# згенерованого аудіо, чий хеш (текст/голос/швидкість) не змінився —
-# звичайний прогін такі файли пропускає (вони вже є й контент не
-# змінився). Вмикається явно (TTS_BACKFILL_TIMINGS=1), щоб не вповільнювати
-# кожен звичайний запуск зайвою перевіркою диска на тисячах незмінних
-# файлів. mp3 при цьому теж перезаписується (Edge TTS не гарантує побайтну
-# ідентичність між викликами — лише функціональну), сам текст/голос ті самі.
-BACKFILL_TIMINGS = os.environ.get('TTS_BACKFILL_TIMINGS', '0') == '1'
-# Категорії, для яких генерується .words.json (таймінг слів для
-# karaoke-підсвітки) — рішення на рівні ГЕНЕРАТОРА, не бази: додавати
-# однаковий "wordTiming": true в кожен з тисяч записів бази безглуздо
-# (роздуває файл, і будь-яка зміна категорії вимагала б масової
-# правки даних). internal_cat відповідає значенням, які й так вже
-# обчислює main() нижче: "vocab", "sprachbau", "redemittel" (dlg_/
-# red_/talk_/prob_ — усі 4 префікси діалогів). Додати нову категорію
-# в область дії підсвітки — один рядок тут, без жодних правок бази.
-CATEGORIES_WITH_TIMING = {"redemittel"}
+# Поля, для яких генерується .words.json (таймінг слів для karaoke-
+# підсвітки) — рішення на рівні ГЕНЕРАТОРА, не бази: додавати однаковий
+# "wordTiming": true в кожен з тисяч записів бази безглуздо (роздуває
+# файл, і будь-яка зміна області дії вимагала б масової правки даних).
+# Ключ — internal_cat (ті самі значення, які й так вже обчислює main()
+# нижче: "vocab", "sprachbau", "redemittel"). Значення — множина полів
+# ЦІЄЇ категорії, для яких потрібен таймінг, або None = усі поля
+# категорії (використовується для redemittel, чий список полів
+# динамічний: q/a/q1/a1/.../q30/a30 — див. redemittel_fields()).
+# vocab: term/short/def — усі 3 поля, які користувач чує й читає услід.
+# sprachbau: лише "sentence" (повне речення з підставленим значенням
+# замість {{BLANK}} — той самий текст, який реально озвучується, див.
+# підстановку нижче) — "answer"/"explanation" підсвічувати нема сенсу,
+# це короткі підказки, а не текст для читання услід за озвученням.
+# Застосовується лише до PRIMARY_LANG курсу (переклади не підсвічуються,
+# те саме обмеження, що вже діяло для redemittel). Додати нову
+# категорію/поле в область дії підсвітки — один рядок тут.
+CATEGORIES_WITH_TIMING = {
+    "vocab":       {"term", "short", "def"},
+    "sprachbau":   {"sentence"},
+    "redemittel":  None,
+}
+
+def field_wants_timing(internal_cat, field, lang, primary_lang):
+    if lang != primary_lang:
+        return False
+    if internal_cat not in CATEGORIES_WITH_TIMING:
+        return False
+    allowed = CATEGORIES_WITH_TIMING[internal_cat]
+    return allowed is None or field in allowed
 
 # Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
 # у тій самій директорії, що й цей скрипт, а аудіо генерується в
@@ -64,7 +77,15 @@ COURSES = [
 ]
 
 AUDIO_ROOT = pathlib.Path('audio')
-MANIFEST = pathlib.Path('audio') / 'manifest.json'
+
+def manifest_path(course):
+    """Кожен курс має ВЛАСНИЙ audio/<course>/manifest.json замість
+    одного спільного audio/manifest.json. Клієнт (index.html) знає
+    activeCourse ще до завантаження маніфесту — і йому фізично не
+    потрібні хеші всіх інших курсів, лише свій. Один спільний файл
+    ріс з кожним курсом і при кожному старті довантажував усе відразу,
+    хоча в межах сесії користувач бачить максимум один курс."""
+    return AUDIO_ROOT / course / 'manifest.json'
 
 # ── Мапінг голосів ────────────────────────────────────────────
 VOICE_MAPPING = {
@@ -284,6 +305,35 @@ def compute_content_hash(cleaned_text, voice, rate):
     і тільки тоді файл вважається застарілим і йде на перегенерацію."""
     payload = f"{cleaned_text}|{voice}|{rate}"
     return hashlib.sha256(payload.encode('utf-8')).hexdigest()[:10]
+
+# Суфікс, яким позначається в manifest.json той факт, що для файлу вже
+# згенеровано .words.json (таймінг слів), а не лише сам mp3. Замість
+# окремого стану "чи є таймінг" на диску (дорога перевірка файлової
+# системи на тисячах записів) кодуємо це прямо у значенні manifest —
+# порівняння "очікуване значення vs збережене" тоді саме по собі виявляє
+# і зміну контенту (CHANGED), і старий запис без таймінгу (TIMING-BACKFILL),
+# без жодного stat()-виклику. TTS_BACKFILL_TIMINGS більше не потрібен:
+# бекфіл старих файлів (mp3 без .words.json) стається сам собою на
+# найближчому звичайному прогоні, щойно для їхньої категорії/мови
+# want_timing стає True.
+TIMED_SUFFIX = "+t"
+
+def manifest_value(content_hash, want_timing):
+    """Значення, що пишеться в manifest.json для ключа: content_hash,
+    доповнений позначкою TIMED_SUFFIX, якщо для цього файлу мав бути (і,
+    відповідно, вже є) згенерований .words.json."""
+    return f"{content_hash}{TIMED_SUFFIX}" if want_timing else content_hash
+
+def manifest_hash_part(value):
+    """Витягує чистий content_hash зі значення manifest.json — незалежно
+    від того, чи позначений він TIMED_SUFFIX. Завдяки цьому старий запис
+    (закомічений до появи таймінгу, тому без суфіксу) з тим самим хешем,
+    що й зараз, коректно розпізнається як 'контент не змінився, просто
+    таймінгу ще бракує' — а не як 'CHANGED', що змусило б перегенерувати
+    сам mp3 без потреби."""
+    if value is None:
+        return None
+    return value[:-len(TIMED_SUFFIX)] if value.endswith(TIMED_SUFFIX) else value
 
 def _error_snippet(text, pos, context=80):
     """Фрагмент тексту навколо позиції помилки json.loads (pos —
@@ -555,29 +605,18 @@ def git_commit_and_push(count):
             subprocess.run(["git", "push"], check=True)
         print("--- [Git Bot] Запушено ---", flush=True)
 
-def timing_missing(audio_base, lang, rate, cat_lower, filename, want_timing):
-    """Чи бракує .words.json (таймінг слів) для файлу, що вже мав би бути
-    згенерований. Використовується лише коли BACKFILL_TIMINGS=1 — в
-    звичайному режимі завжди повертає False, щоб не чіпати диск на кожен
-    незмінний mkey. want_timing=False (категорія поза
-    CATEGORIES_WITH_TIMING, або мова не PRIMARY_LANG) — теж завжди
-    False: бекфіл стосується лише файлів, яким таймінг взагалі потрібен."""
-    if not BACKFILL_TIMINGS or not want_timing:
-        return False
-    sidecar = audio_base / lang / rate / cat_lower / filename.replace('.mp3', '.words.json')
-    return not sidecar.exists()
-
-def write_to_manifest_file(mkey, content_hash):
+def write_to_manifest_file(course, mkey, value):
+    path = manifest_path(course)
     current_manifest = {}
-    if MANIFEST.exists():
+    if path.exists():
         try:
-            with open(MANIFEST, 'r', encoding='utf-8') as f:
+            with open(path, 'r', encoding='utf-8') as f:
                 current_manifest = json.load(f)
         except: pass
 
-    current_manifest[mkey] = content_hash
-    MANIFEST.parent.mkdir(parents=True, exist_ok=True)
-    with open(MANIFEST, 'w', encoding='utf-8') as f:
+    current_manifest[mkey] = value
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, 'w', encoding='utf-8') as f:
         json.dump(current_manifest, f, ensure_ascii=False, indent=2)
 
 # ── Основний асинхронний воркер ─────────────────────────────────
@@ -594,12 +633,13 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # NEW — цього mkey раніше не було в manifest.json взагалі.
         # CHANGED — ключ був, але з ІНШИМ хешем (текст/голос/швидкість
         # відрізняються від того, що вже закомічено). TIMING-BACKFILL —
-        # хеш той самий (mp3 не мав би змінитись змістовно), просто раніше
-        # згенерованому файлу бракувало .words.json (режим
-        # TTS_BACKFILL_TIMINGS=1). На відміну від NEW/CHANGED, тут САМ mp3
-        # НЕ перезаписується (див. timing_only нижче) — синтезуємо у
-        # тимчасовий файл лише заради .words.json, а вже наявний mp3
-        # лишається як є, без жодного дотику.
+        # хеш той самий (mp3 не мав би змінитись змістовно), просто
+        # раніше згенерованому файлу бракувало .words.json — старий запис
+        # у manifest.json ще без позначки TIMED_SUFFIX (з'явився до того,
+        # як цій категорії/мові стало треба таймінг). На відміну від
+        # NEW/CHANGED, тут САМ mp3 НЕ перезаписується (див. timing_only
+        # нижче) — синтезуємо у тимчасовий файл лише заради .words.json,
+        # а вже наявний mp3 лишається як є, без жодного дотику.
         timing_only = (task.get("existing_hash") is not None
                        and task["existing_hash"] == task["content_hash"]
                        and task.get("want_timing"))
@@ -674,7 +714,7 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # спроба закомітити повторилась на наступній пачці чи в
         # фінальному флаші (в кінці main()).
         async with lock:
-            write_to_manifest_file(task["mkey"], task["content_hash"])
+            write_to_manifest_file(task["course"], task["mkey"], manifest_value(task["content_hash"], task.get("want_timing", False)))
             stats["generated"] += 1
             stats["batch_counter"] += 1
 
@@ -688,18 +728,62 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         if DELAY_SEC > 0:
             await asyncio.sleep(DELAY_SEC)
 
+def migrate_legacy_manifest():
+    """Одноразова міграція: старий спільний audio/manifest.json ділимо на
+    audio/<course>/manifest.json за префіксом курсу в кожному mkey (mkey
+    і так завжди починається з "<course>/..." — нічого рахувати заново).
+    Запускається автоматично на старті, лише якщо legacy-файл ще існує;
+    після поділу перейменовується в manifest.json.migrated, щоб не
+    спрацювати вдруге. Без цього кроку перший прогін після переходу на
+    поділ по курсах не бачив би жодного старого хешу і перегенерував би
+    геть усе аудіо заново (для всіх курсів одразу)."""
+    legacy = AUDIO_ROOT / 'manifest.json'
+    if not legacy.exists():
+        return
+    print("📦 Знайдено старий спільний audio/manifest.json — ділю на файли по курсах...", flush=True)
+    try:
+        with open(legacy, 'r', encoding='utf-8') as f:
+            legacy_data = json.load(f)
+    except Exception as e:
+        print(f"⚠ Не вдалося прочитати старий audio/manifest.json: {e} — міграцію пропущено, "
+              f"файл лишається як є (перевірте вручну).", flush=True)
+        return
+
+    by_course = {}
+    skipped = 0
+    for mkey, value in legacy_data.items():
+        course = mkey.split('/', 1)[0]
+        if course not in COURSES:
+            skipped += 1
+            continue
+        by_course.setdefault(course, {})[mkey] = value
+
+    for course, entries in by_course.items():
+        path = manifest_path(course)
+        current = {}
+        if path.exists():
+            try:
+                with open(path, 'r', encoding='utf-8') as f:
+                    current = json.load(f)
+            except: pass
+        # Записи, що вже є в per-course файлі (напр. з перерваної попередньої
+        # спроби міграції), не перезаписуємо старішими legacy-значеннями.
+        for mkey, value in entries.items():
+            current.setdefault(mkey, value)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with open(path, 'w', encoding='utf-8') as f:
+            json.dump(current, f, ensure_ascii=False, indent=2)
+
+    legacy.rename(AUDIO_ROOT / 'manifest.json.migrated')
+    total = sum(len(v) for v in by_course.values())
+    extra = f", {skipped} записів пропущено (курс поза списком COURSES)" if skipped else ""
+    print(f"✅ Міграцію завершено: {total} записів розподілено по {len(by_course)} курс(ах){extra}. "
+          f"Старий файл перейменовано в manifest.json.migrated (можна видалити пізніше).", flush=True)
+
+
 async def main():
     print("Запуск генератора MOVA TTS (Edge TTS).", flush=True)
-    if BACKFILL_TIMINGS:
-        print("⏱  Режим TTS_BACKFILL_TIMINGS=1: mp3 з тим самим хешем, але без "
-              ".words.json, теж будуть перегенеровані (лише заради таймінгу).", flush=True)
-
-    manifest_data = {}
-    if MANIFEST.exists():
-        try:
-            with open(MANIFEST, 'r', encoding='utf-8') as f:
-                manifest_data = json.load(f)
-        except: pass
+    migrate_legacy_manifest()
 
     tasks = []
     fields_map = {
@@ -728,6 +812,17 @@ async def main():
       audio_base = AUDIO_ROOT / course
       course_lang_order[course] = [primary_lang] + [l for l in audio_config.keys() if l != primary_lang]
       print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази.", flush=True)
+
+      # Власний manifest.json курсу — читаємо саме тут (а не одним спільним
+      # словником на всі курси до цього циклу), бо нижче він же й пишеться
+      # окремим файлом на курс (write_to_manifest_file(course, ...)).
+      manifest_data = {}
+      mpath = manifest_path(course)
+      if mpath.exists():
+          try:
+              with open(mpath, 'r', encoding='utf-8') as f:
+                  manifest_data = json.load(f)
+          except: pass
 
       for item in raw_items:
         item_id = item["id"]
@@ -824,17 +919,21 @@ async def main():
                         mkey = f"{course}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
-                        existing_hash = manifest_data.get(mkey)
-                        # Таймінг слів — лише для категорій із
-                        # CATEGORIES_WITH_TIMING (рішення генератора, не
-                        # бази — див. коментар там), і лише для PRIMARY_LANG
-                        # курсу (переклади іншими мовами ніхто не підсвічує).
-                        want_timing = internal_cat in CATEGORIES_WITH_TIMING and lang == primary_lang
+                        # Таймінг слів — лише для полів із CATEGORIES_WITH_TIMING
+                        # (рішення генератора, не бази — див. коментар там), і
+                        # лише для PRIMARY_LANG курсу (переклади іншими мовами
+                        # ніхто не підсвічує).
+                        want_timing = field_wants_timing(internal_cat, field, lang, primary_lang)
+                        existing_value = manifest_data.get(mkey)
+                        existing_hash = manifest_hash_part(existing_value)
 
-                        # Генеруємо, якщо ключа немає АБО текст/голос змінився
-                        # (тобто збережений хеш не співпадає з поточним), АБО
-                        # (лише в режимі backfill) mp3 вже є, але без .words.json.
-                        if existing_hash != content_hash or timing_missing(audio_base, lang, rate, cat_lower, filename, want_timing):
+                        # Генеруємо, якщо очікуване значення (хеш +, за
+                        # потреби, позначка таймінгу) відрізняється від
+                        # збереженого — це охоплює і NEW (ключа нема), і
+                        # CHANGED (текст/голос змінився), і TIMING-BACKFILL
+                        # (хеш той самий, але старий запис ще без позначки
+                        # таймінгу — mp3 при цьому не чіпається, див. worker_task).
+                        if existing_value != manifest_value(content_hash, want_timing):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -875,12 +974,13 @@ async def main():
                         mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
-                        existing_hash = manifest_data.get(mkey)
                         # distractors — підписи кнопок (варіанти відповіді),
                         # не текст для читання/прослуховування — підсвічувати
                         # тут нічого, таймінг свідомо не генерується ніколи.
+                        existing_value = manifest_data.get(mkey)
+                        existing_hash = manifest_hash_part(existing_value)
 
-                        if existing_hash != content_hash or timing_missing(audio_base, primary_lang, rate, cat_lower, filename, False):
+                        if existing_value != content_hash:
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -922,11 +1022,12 @@ async def main():
                       mkey = f"{course}/{primary_lang}/{rate}/gram/gram_word_{slug}_{primary_lang}_{rate}"
 
                       content_hash = compute_content_hash(cleaned, voice, rate)
-                      existing_hash = manifest_data.get(mkey)
                       # gram_word — завжди одне слово: підсвічувати нíчого,
                       # таймінг тут свідомо не генерується ніколи.
+                      existing_value = manifest_data.get(mkey)
+                      existing_hash = manifest_hash_part(existing_value)
 
-                      if existing_hash != content_hash or timing_missing(audio_base, primary_lang, rate, "gram", filename, False):
+                      if existing_value != content_hash:
                           tasks.append({
                               "id": f"gram_word_{slug}",
                               "course": course,

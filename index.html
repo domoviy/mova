@@ -3178,14 +3178,14 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '472-c0d14e6';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
 // Список доступних курсів. Додавати нові — тільки тут.
 //
 // `id` — єдине джерело істини для курсу: файл бази завантажується як
-// `${id}.js`, папка з аудіо — audio/<id>/..., ключі в audio/manifest.json
+// `${id}.js`, папка з аудіо — audio/<id>/..., ключі в audio/<id>/manifest.json
 // починаються з <id>, і localStorage-ключі користувача (обраний курс,
 // дата іспиту, прогрес Smart Review) прив'язані саме до id. Окремого
 // поля `file` немає навмисно — щоб не могло знову розійтись із назвою
@@ -3561,6 +3561,11 @@ async function switchCourse(courseId){
 
   try{
     await loadCourseScript(courseId);
+    // Маніфест аудіо-хешів — тепер per-course файл (audio/<course>/manifest.json),
+    // тож при кожному перемиканні курсу його треба перезавантажити заново
+    // (раніше був один спільний файл на всі курси і цей виклик був не
+    // потрібен — loadAudioManifest() викликався лише один раз в init()).
+    await loadAudioManifest();
     // PRIMARY_LANG нового курсу вже відома — синхронізуємо видимі мови
     // у плеєрах (V.langs/D.langs/SB.langs), інакше вони лишаться зі
     // старого курсу (див. init(), де це робиться при холодному старті).
@@ -5691,16 +5696,84 @@ function hasAudioFor(cardId, field, lang){
 // Edge TTS WordBoundary). Якщо файл відсутній (старе аудіо, ще не
 // перегенероване/backfilled, чи 404) — просто мовчки нема підсвітки,
 // решта відтворення працює як завжди.
-var _ttsWordTimingCache = new Map(); // url -> Array<{word,start,end}> | null (404/помилка)
-async function fetchWordTiming(mp3Url){
+var _ttsWordTimingCache = new Map(); // url -> Array<{word,start,end}> | null (404/помилка), живе лише в пам'яті сторінки
+
+// ── ПЕРСИСТЕНТНИЙ КЕШ ТАЙМІНГУ (localStorage) ────────────────────
+// _ttsWordTimingCache вище — лише in-memory (зникає при кожному
+// перезавантаженні сторінки), тому .words.json досі перезапитувався б
+// мережею при кожному відкритті застосунку, хоча текст/голос картки
+// (а отже й таймінг) практично ніколи не змінюються. Тут — той самий
+// принцип, що вже є для mp3 (audioHashRegistry): зберігаємо САМІ ДАНІ
+// таймінгу в localStorage разом з хешем з audio/<course>/manifest.json,
+// і повторно фетчимо .words.json ЛИШЕ якщо цей хеш змінився (картка
+// втратила актуальність) — інакше беремо готові дані з кешу без мережі.
+const WORD_TIMING_STORE_KEY = 'mova_word_timing_cache';
+let _wordTimingStore = null; // { [mkey]: {hash, words} }
+
+function loadWordTimingStore(){
+  if(_wordTimingStore) return _wordTimingStore;
+  try{
+    _wordTimingStore = JSON.parse(localStorage.getItem(WORD_TIMING_STORE_KEY) || '{}');
+  }catch(e){
+    _wordTimingStore = {};
+  }
+  return _wordTimingStore;
+}
+
+function saveWordTimingEntry(mkey, hash, words){
+  const store = loadWordTimingStore();
+  store[mkey] = {hash, words};
+  try{
+    localStorage.setItem(WORD_TIMING_STORE_KEY, JSON.stringify(store));
+  }catch(e){
+    // localStorage переповнений (Safari ~5MB) — кеш таймінгу некритичний
+    // (лише karaoke-підсвітка), тихо ігноруємо, наступного разу просто
+    // знову зафетчиться з мережі.
+  }
+}
+
+// Той самий принцип, що й pruneAudioHashRegistry() — прибирає записи
+// ЛИШЕ поточного курсу, яких більше нема в його audioManifest.
+function pruneWordTimingStore(){
+  if(!audioManifest || !activeCourse) return;
+  const store = loadWordTimingStore();
+  const prefix = activeCourse.id + '/';
+  let changed = false;
+  for(const mkey of Object.keys(store)){
+    if(!mkey.startsWith(prefix)) continue;
+    if(!(mkey in audioManifest)){ delete store[mkey]; changed = true; }
+  }
+  if(changed){
+    try{ localStorage.setItem(WORD_TIMING_STORE_KEY, JSON.stringify(store)); }catch(e){}
+  }
+}
+
+// mkey — той самий ключ з audio/<course>/manifest.json, що й для mp3 (urlToAudioMkey(mp3Url)),
+// потрібен щоб звірити актуальність кешу за хешем. Без mkey (виклик "наосліп",
+// теоретично) кеш просто пропускається — фетчимо з мережі як і раніше.
+async function fetchWordTiming(mp3Url, mkey){
   var url = mp3Url.replace(/\.mp3$/, '.words.json');
   if(_ttsWordTimingCache.has(url)) return _ttsWordTimingCache.get(url);
+
+  var manifestHash = (mkey && audioManifest) ? audioManifest[mkey] : null;
+  if(mkey && manifestHash){
+    var stored = loadWordTimingStore()[mkey];
+    if(stored && stored.hash === manifestHash){
+      _ttsWordTimingCache.set(url, stored.words);
+      return stored.words;
+    }
+  }
+
   try{
     var r = await fetch(url);
     if(!r.ok){ _ttsWordTimingCache.set(url, null); return null; }
     var data = await r.json();
     if(!Array.isArray(data) || !data.length){ _ttsWordTimingCache.set(url, null); return null; }
     _ttsWordTimingCache.set(url, data);
+    // Кешуємо персистентно лише якщо знаємо актуальний хеш (mkey є в
+    // manifest) — інакше при наступному старті не було б із чим звіряти
+    // актуальність, і застарілий запис міг би "прилипнути" назавжди.
+    if(mkey && manifestHash) saveWordTimingEntry(mkey, manifestHash, data);
     return data;
   }catch(e){ _ttsWordTimingCache.set(url, null); return null; }
 }
@@ -5768,7 +5841,7 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
   const mkey = urlToAudioMkey(url);
   const [blobUrl, wordTiming] = await Promise.all([
     fetchBlobUrl(url, 8000, mkey),
-    highlightEl ? fetchWordTiming(url) : Promise.resolve(null),
+    highlightEl ? fetchWordTiming(url, mkey) : Promise.resolve(null),
   ]);
 
   if(playGen !== gen){ logErr('audio:gen','cancelled',fname); return; }
@@ -9874,34 +9947,47 @@ function saveAudioHashRegistryEntry(mkey, hash){
   try{ localStorage.setItem(AUDIO_HASH_REGISTRY_KEY, JSON.stringify(reg)); }catch(e){}
 }
 
-// Завантажує audio/manifest.json. Викликається один раз з init().
+// Завантажує audio/<course>/manifest.json АКТИВНОГО курсу (не спільний
+// audio/manifest.json на всі курси одразу — кожен курс тепер має власний
+// файл, менший і не залежний від розміру бази інших курсів). Викликається
+// з init() (після loadCourseScript) і з switchCourse() (де activeCourse
+// щойно змінився на новий курс).
 async function loadAudioManifest(){
+  const course = activeCourse?.id;
+  if(!course){ logErr('audio:manifest','no activeCourse yet',''); return; }
+  const url = `audio/${course}/manifest.json`;
   try{
-    const resp = await fetch('audio/manifest.json', {cache:'no-store'});
+    const resp = await fetch(url, {cache:'no-store'});
     if(resp.ok){
       audioManifest = await resp.json();
-      logErr('audio:manifest','loaded '+Object.keys(audioManifest).length+' keys','');
+      logErr('audio:manifest','loaded '+Object.keys(audioManifest).length+' keys ('+course+')','');
       pruneAudioHashRegistry();
+      pruneWordTimingStore();
     }
   }catch(e){
     logErr('audio:manifest','fetch failed: '+e.message,'');
     // Немає мережі при старті — пробуємо взяти те, що SW вже міг
     // закешувати раніше (network-first з фолбеком саме для цього).
     try{
-      const cached = await caches.match('audio/manifest.json');
+      const cached = await caches.match(url);
       if(cached){ audioManifest = await cached.json(); }
     }catch(e2){}
   }
 }
 
-// Прибирає з локального реєстру записи, яких більше немає в маніфесті
-// (картку видалили з бази) — щоб localStorage не накопичував сміття
-// після кожного редагування Deutsch-B2-Beruf.js.
+// Прибирає з локального реєстру записи ПОТОЧНОГО курсу, яких більше немає
+// в його маніфесті (картку видалили з бази) — щоб localStorage не
+// накопичував сміття після кожного редагування бази курсу. Записи ІНШИХ
+// курсів (mkey з іншим префіксом, бо audioManifest тепер містить лише
+// один курс) свідомо не чіпаємо — інакше кожне перемикання курсу стирало
+// б підтверджений кеш усіх інших курсів.
 function pruneAudioHashRegistry(){
-  if(!audioManifest) return;
+  if(!audioManifest || !activeCourse) return;
   const reg = loadAudioHashRegistry();
+  const prefix = activeCourse.id + '/';
   let changed = false;
   for(const mkey of Object.keys(reg)){
+    if(!mkey.startsWith(prefix)) continue;
     if(!(mkey in audioManifest)){ delete reg[mkey]; changed = true; }
   }
   if(changed){
@@ -9972,7 +10058,7 @@ function initAudioUnlock(){
 }
 
 // Завантажує і кешує blob URL з детальним логуванням.
-// mkey (опціонально) — ключ з audio/manifest.json для перевірки хешу:
+// mkey (опціонально) — ключ з audio/<course>/manifest.json для перевірки хешу:
 // якщо закешована версія застаріла, in-memory кеш і persistent Cache
 // Storage примусово інвалідуються ПЕРЕД фетчем, щоб мережа дала нову
 // версію файлу одразу, а не "на наступний раз".
@@ -10081,6 +10167,12 @@ async function clearAudioCache(){
   audioBlobCache.clear();
   audioBufferCache.clear();
   audioExistsCache.clear();
+  // Кеш таймінгу слів (karaoke-підсвітка) — і in-memory, і персистентний
+  // localStorage — теж вважаємо частиною "кешу аудіофайлів" з погляду
+  // користувача, чистимо разом.
+  _ttsWordTimingCache.clear();
+  try{ localStorage.removeItem(WORD_TIMING_STORE_KEY); }catch(e){}
+  _wordTimingStore = {};
 
   // 2. Чистимо персистентний Cache Storage (якщо є service worker)
   let deleted = 0;
