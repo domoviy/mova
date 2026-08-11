@@ -2039,7 +2039,10 @@ var LESSONS = [
       "k4_031"
     ],
     "unlockAfter": "k4m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_084"
+    ]
   },
   {
     "id": "k4m3",
@@ -2075,7 +2078,10 @@ var LESSONS = [
       "k4_039"
     ],
     "unlockAfter": "k4m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_085"
+    ]
   },
   {
     "id": "k4m4",
@@ -27368,6 +27374,154 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, идём за покупками сегодня вечером, встречаемся на завтрак завтра в девять, и я готовлю сладкое и солёное, пока ты позаботишься о кофе. Уже жду этого с нетерпением! До завтра!"
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_084",
+    "cat": "Nostalgischen Kochabend planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund/Ihre Freundin möchten einen nostalgischen Kochabend planen und dabei alte Familienrezepte aus Ihrer Kindheit nachkochen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Kochabend organisieren.\nDiese Punkte helfen Ihnen:\nWas gab es bei Ihnen früher oft zu essen?\nWas aßen und tranken Sie als Kinder am liebsten?\nWer bringt welches Gericht mit?\nFragen Sie Ihre Eltern nach den Rezepten?\nWann und wo treffen Sie sich?",
+      "en": "Situation: You and your friend want to plan a nostalgic cooking night and recreate old family recipes from your childhood.\nTask: Plan together with your conversation partner how you'll organize the cooking night.\nThese points will help you:\nWhat did you often eat back then?\nWhat did you like to eat and drink most as children?\nWho will bring which dish?\nWill you ask your parents for the recipes?\nWhen and where will you meet?",
+      "uk": "Ситуація: Ви та Ваш друг/Ваша подруга хочете спланувати ностальгічний вечір кулінарії і приготувати старі сімейні рецепти з дитинства.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви організуєте вечір кулінарії.\nЦі пункти Вам допоможуть:\nЩо у Вас раніше часто їли?\nЩо Ви найбільше любили їсти й пити в дитинстві?\nХто яку страву принесе?\nЧи запитаєте Ви в батьків рецепти?\nКоли і де Ви зустрінетеся?",
+      "ru": "Ситуация: Вы и Ваш друг/Ваша подруга хотите спланировать ностальгический кулинарный вечер и приготовить старые семейные рецепты из детства.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы организуете кулинарный вечер.\nЭти пункты Вам помогут:\nЧто у Вас раньше часто ели?\nЧто Вы больше всего любили есть и пить в детстве?\nКто какое блюдо принесёт?\nСпросите ли Вы у родителей рецепты?\nКогда и где Вы встретитесь?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo! Ich habe neulich an unsere Kindheit gedacht. Weißt du noch, was es bei euch zu Hause oft zu essen gab? Wollen wir einen Kochabend planen und ein paar alte Gerichte nachkochen?",
+      "en": "Hi! I was thinking about our childhood recently. Do you remember what you often used to eat at home? Should we plan a cooking night and recreate a few old dishes?",
+      "uk": "Привіт! Я нещодавно згадувала наше дитинство. Пам'ятаєш, що у вас удома часто їли? Може, сплануємо вечір кулінарії і приготуємо кілька старих страв?",
+      "ru": "Привет! Я недавно вспоминала наше детство. Помнишь, что у вас дома часто ели? Может, спланируем кулинарный вечер и приготовим несколько старых блюд?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst überlegen, was es bei uns damals oft <g>gab</g>, zum Beispiel Kartoffelsuppe.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first think about what we often <g>had</g> back then, for example potato soup.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу подумали, що в нас тоді часто <g>було</g>, наприклад картопляний суп.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала подумали, что у нас тогда часто <g>было</g>, например картофельный суп.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auch daran denken, was wir als Kinder am liebsten <g>aßen</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we also think about what we <g>liked to eat</g> most as kids.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми також подумали, що ми найбільше <g>любили їсти</g> в дитинстві.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы также подумали, что мы больше всего <g>любили есть</g> в детстве.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Getränke denken.<br><r>Wir könnten doch</r> überlegen, was wir früher immer <g>tranken</g>, vielleicht selbst gemachten Saft.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the drinks.<br><r>We could</r> think about what we always <g>drank</g> back then, maybe homemade juice.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про напої.<br><r>Ми могли б</r> подумати, що ми завжди <g>пили</g> тоді, можливо домашній сік.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о напитках.<br><r>Мы могли бы</r> подумать, что мы всегда <g>пили</g> тогда, может быть домашний сок.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass</r> jeder ein Gericht mitbringt, das seine Mutter früher oft <g>kochte</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> everyone brings a dish their mother often <g>cooked</g> back then.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> кожен приніс страву, яку його мама часто <g>готувала</g>.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> каждый принёс блюдо, которое его мама часто <g>готовила</g>.<br><r>Ты согласен с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Meine Oma <g>backte</g> immer einen Apfelkuchen, den bringe ich mit.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> my grandma always <g>baked</g> an apple cake, I'll bring that.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> моя бабуся завжди <g>пекла</g> яблучний пиріг, я його принесу.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> моя бабушка всегда <g>пекла</g> яблочный пирог, я его принесу.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir uns an alle Rezepte noch erinnern.<br><r>Vielleicht wäre es am besten, wenn wir</r> vorher unsere Eltern fragen, wie es früher <g>war</g>.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we still remember all the recipes.<br><r>Maybe it would be best if</r> we ask our parents beforehand how it <g>was</g> back then.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи пам'ятаємо ми всі рецепти.<br><r>Можливо, було б найкраще, якби ми</r> заздалегідь запитали в батьків, як <g>було</g> раніше.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, помним ли мы все рецепты.<br><r>Возможно, было бы лучше, если бы мы</r> заранее спросили у родителей, как <g>было</g> раньше.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> fragen, wie lange die Vorbereitung das letzte Mal <g>dauerte</g>.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> ask how long the preparation <g>took</g> last time.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> запитаємо, скільки часу <g>тривала</g> підготовка минулого разу.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> спросим, сколько времени <g>заняла</g> подготовка в прошлый раз.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> das Ganze so machen, wie es früher bei den Familienfesten <g>war</g> – mit viel Musik und Gästen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we do the whole thing like it <g>was</g> at the family parties back then – with lots of music and guests.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми зробили все так, як <g>було</g> раніше на сімейних святах – з музикою та гостями.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы сделали всё так, как <g>было</g> раньше на семейных праздниках – с музыкой и гостями.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir kochen die alten Familienrezepte nach, ich bringe den Apfelkuchen meiner Oma mit, und wir fragen unsere Eltern nach den Rezepten. Ich freue mich schon auf den Kochabend! Bis Samstag!",
+      "en": "Yes, good idea! So, we'll recreate the old family recipes, I'll bring my grandma's apple cake, and we'll ask our parents for the recipes. I'm already looking forward to the cooking night! See you Saturday!",
+      "uk": "Так, гарна ідея! Отже, ми готуємо старі сімейні рецепти, я принесу бабусин яблучний пиріг, і запитаємо в батьків про рецепти. Уже тішуся вечору кулінарії! До суботи!",
+      "ru": "Да, хорошая идея! Итак, мы готовим старые семейные рецепты, я принесу бабушкин яблочный пирог, и спросим у родителей рецепты. Уже жду с нетерпением кулинарный вечер! До субботы!"
+    },
+    "gram": "praeteritum_wdh_b1"
+  },
+  {
+    "id": "dlg_085",
+    "cat": "Gesünder leben planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie haben in letzter Zeit zugenommen und möchten mit einem Freund/einer Freundin planen, wie Sie sich gesünder ernähren und mehr bewegen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie Ihre Gewohnheiten verändern.\nDiese Punkte helfen Ihnen:\nWas möchten Sie verändern? (Ernährung, Sport)\nWie oft treffen Sie sich regelmäßig?\nWie kontrollieren Sie Ihren Fortschritt?\nWas tun Sie, wenn es schwerfällt?\nWie unterstützen Sie sich gegenseitig?",
+      "en": "Situation: You've gained weight recently and want to plan with a friend how to eat more healthily and move more.\nTask: Plan together with your conversation partner how you'll change your habits.\nThese points will help you:\nWhat do you want to change? (diet, exercise)\nHow often will you meet regularly?\nHow will you track your progress?\nWhat will you do when it's hard?\nHow will you support each other?",
+      "uk": "Ситуація: Ви останнім часом набрали вагу і хочете спланувати з другом/подругою, як харчуватися здоровіше й більше рухатися.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви зміните свої звички.\nЦі пункти Вам допоможуть:\nЩо Ви хочете змінити? (харчування, спорт)\nЯк часто Ви зустрічатиметеся регулярно?\nЯк Ви контролюватимете прогрес?\nЩо Ви робитимете, коли буде важко?\nЯк Ви підтримуватимете одне одного?",
+      "ru": "Ситуация: Вы в последнее время набрали вес и хотите спланировать с другом/подругой, как питаться здоровее и больше двигаться.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы измените свои привычки.\nЭти пункты Вам помогут:\nЧто Вы хотите изменить? (питание, спорт)\nКак часто Вы будете встречаться регулярно?\nКак Вы будете отслеживать прогресс?\nЧто Вы будете делать, когда будет трудно?\nКак Вы будете поддерживать друг друга?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo! Ich habe in letzter Zeit ziemlich zugenommen. Sollen wir zusammen planen, wie wir uns gesünder ernähren?",
+      "en": "Hi! I've gained quite a bit of weight lately. Should we plan together how to eat more healthily?",
+      "uk": "Привіт! Останнім часом я досить набрав вагу. Може, сплануємо разом, як харчуватися здоровіше?",
+      "ru": "Привет! В последнее время я довольно сильно набрал вес. Может, спланируем вместе, как питаться здоровее?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> uns regelmäßig treffen, <g>deshalb</g> würde ich sagen: jeden Mittwoch.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we meet regularly, <g>that's why</g> I'd say every Wednesday.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми зустрічалися регулярно, <g>тому</g> я б сказала: щосереди.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы встречались регулярно, <g>поэтому</g> я бы сказала: каждую среду.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> gemeinsam kochen, <g>deswegen</g> sparen wir auch Zeit.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we cook together, <g>that's why</g> we also save time.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми готували разом, <g>тому</g> ми ще й заощадимо час.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы готовили вместе, <g>поэтому</g> мы ещё и сэкономим время.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an den Sport denken.<br><r>Wir könnten doch</r> dreimal die Woche laufen gehen, es ist zwar anstrengend, <g>trotzdem</g> schaffen wir das bestimmt zusammen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about exercise.<br><r>We could</r> go running three times a week, it's tiring, but <g>still</g> we'll definitely manage it together.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про спорт.<br><r>Ми могли б</r> бігати тричі на тиждень, це втомливо, але <g>все ж</g> ми точно впораємося разом.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о спорте.<br><r>Мы могли бы</r> бегать три раза в неделю, это утомительно, но <g>всё же</g> мы точно справимся вместе.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> unseren Fortschritt aufschreiben, <g>deshalb</g> führen wir ein kleines Tagebuch.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we write down our progress, <g>that's why</g> we'll keep a little journal.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми записували свій прогрес, <g>тому</g> ведемо невеликий щоденник.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы записывали свой прогресс, <g>поэтому</g> ведём небольшой дневник.<br><r>Ты согласна с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir essen bewusster, <g>deswegen</g> kaufen wir weniger Fertiggerichte.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we eat more mindfully, <g>that's why</g> we'll buy fewer ready meals.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми їстимемо усвідомленіше, <g>тому</g> купуватимемо менше готових страв.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы будем есть осознаннее, <g>поэтому</g> будем покупать меньше готовых блюд.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir das immer durchhalten.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns auch mal einen freien Tag erlauben, aber <g>trotzdem</g> bleiben wir dabei.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we'll always keep it up.<br><r>Maybe it would be best if</r> we allow ourselves a day off sometimes, but <g>still</g> stick with it.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи витримаємо ми це завжди.<br><r>Можливо, було б найкраще, якби ми</r> іноді дозволяли собі вихідний день, але <g>все ж</g> продовжували.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, всегда ли мы это выдержим.<br><r>Возможно, было бы лучше, если бы мы</r> иногда позволяли себе выходной день, но <g>всё же</g> продолжали.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> weiterhin motiviert bleiben, auch wenn es manchmal schwerfällt.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> stay motivated, even if it's sometimes hard.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> залишатимемося мотивованими, навіть коли буде важко.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> будем оставаться мотивированными, даже когда будет трудно.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> uns gegenseitig unterstützen, <g>deshalb</g> schreiben wir uns jeden Abend eine kurze Nachricht.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we support each other, <g>that's why</g> we'll write each other a short message every evening.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми підтримували одне одного, <g>тому</g> писатимемо одне одному коротке повідомлення щовечора.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы поддерживали друг друга, <g>поэтому</g> будем писать друг другу короткое сообщение каждый вечер.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir treffen uns jeden Mittwoch, kochen zusammen, laufen dreimal die Woche, und schreiben uns jeden Abend. Ich freue mich schon auf unsere Veränderung! Bis Mittwoch!",
+      "en": "Yes, good idea! So, we'll meet every Wednesday, cook together, go running three times a week, and write to each other every evening. I'm already looking forward to our change! See you Wednesday!",
+      "uk": "Так, гарна ідея! Отже, зустрічаємося щосереди, готуємо разом, бігаємо тричі на тиждень, і пишемо одне одному щовечора. Уже тішуся нашій зміні! До середи!",
+      "ru": "Да, хорошая идея! Итак, встречаемся каждую среду, готовим вместе, бегаем три раза в неделю, и пишем друг другу каждый вечер. Уже жду с нетерпением наших перемен! До среды!"
+    },
+    "gram": "deshalb_deswegen_trotzdem"
   }
 ];
 

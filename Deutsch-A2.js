@@ -2024,7 +2024,8 @@ var LESSONS = [
       "dlg_a22_001",
       "dlg_a22_002",
       "dlg_a22_003",
-      "dlg_a22_004"
+      "dlg_a22_004",
+      "dlg_066"
     ]
   },
   {
@@ -2061,7 +2062,10 @@ var LESSONS = [
       "k9_033"
     ],
     "unlockAfter": "k9m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_067"
+    ]
   },
   {
     "id": "k9m4",
@@ -2097,7 +2101,10 @@ var LESSONS = [
       "k9_040"
     ],
     "unlockAfter": "k9m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_068"
+    ]
   },
   {
     "id": "k10m1",
@@ -2138,7 +2145,8 @@ var LESSONS = [
       "dlg_a22_005",
       "dlg_a22_006",
       "dlg_a22_007",
-      "dlg_a22_008"
+      "dlg_a22_008",
+      "dlg_069"
     ]
   },
   {
@@ -2175,7 +2183,10 @@ var LESSONS = [
       "k10_028"
     ],
     "unlockAfter": "k10m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_070"
+    ]
   },
   {
     "id": "k10m3",
@@ -2211,7 +2222,10 @@ var LESSONS = [
       "k10_033"
     ],
     "unlockAfter": "k10m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_071"
+    ]
   },
   {
     "id": "k10m4",
@@ -6596,6 +6610,306 @@ var DIALOGE = [
       "ru": "Отлично, тогда он точно будет хорошо готов к контрольной!"
     },
     "gram": "perfekt"
+  },
+  {
+    "id": "dlg_066",
+    "cat": "Sich auf den Elternsprechtag vorbereiten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Morgen ist der Elternsprechtag Ihres Kindes. Sie möchten sich mit Ihrem Partner / Ihrer Partnerin vorbereiten.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Worüber sprechen wir?<br>Was fragen wir die Lehrerin?<br>Wann bereiten wir uns vor?",
+      "en": "Tomorrow is your child's parent-teacher conference. You would like to prepare with your partner.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we talk about?<br>What do we ask the teacher?<br>When do we prepare?",
+      "uk": "Завтра батьківські збори у вашої дитини. Ви хочете підготуватися зі своїм партнером / партнеркою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Про що ми говоримо?<br>Що ми запитаємо вчительку?<br>Коли ми готуємося?",
+      "ru": "Завтра родительское собрание у вашего ребёнка. Вы хотите подготовиться со своим партнёром / партнёршей.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>О чём мы говорим?<br>Что мы спросим у учительницы?<br>Когда мы готовимся?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo Julia! Morgen ist der Elternsprechtag. Wollen wir uns kurz vorbereiten?",
+      "en": "Hi Julia! Tomorrow is the parent-teacher conference. Shall we prepare briefly?",
+      "uk": "Привіт, Юліє! Завтра батьківські збори. Підготуємось трохи?",
+      "ru": "Привет, Юлия! Завтра родительское собрание. Подготовимся немного?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> uns Notizen machen, worüber wir sprechen wollen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> make notes about what we want to talk about.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> зробити нотатки про те, про що хочемо поговорити.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сделать заметки о том, о чём хотим поговорить.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich <g>ärgere</g> mich <g>über</g> den Lärm in der Klasse, das sollten wir ansprechen.<br><r>Ich hätte einen Vorschlag:</r> Wir fragen die Lehrerin danach.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I <g>am annoyed</g> <g>about</g> the noise in the classroom, we should bring that up.<br><r>I have a suggestion:</r> we ask the teacher about it.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> мене дратує шум у класі, це нам варто підняти.<br><r>У мене є пропозиція:</r> запитаємо про це вчительку.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> меня раздражает шум в классе, это нам стоит поднять.<br><r>У меня есть предложение:</r> спросим об этом учительницу.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir uns auch <g>auf</g> die guten Nachrichten <g>freuen</g>, unser Kind interessiert sich sehr für Mathe.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we also <g>look forward</g> <g>to</g> the good news, our child is very interested in maths.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> також радіти хорошим новинам, наша дитина дуже цікавиться математикою.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> тоже радоваться хорошим новостям, наш ребёнок очень интересуется математикой.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir bereiten uns heute Abend zusammen <g>auf</g> das Gespräch <g>vor</g>.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we <g>prepare</g> together <g>for</g> the conversation tonight.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> сьогодні ввечері разом підготуємося до розмови.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> сегодня вечером вместе подготовимся к разговору.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, dann sind wir gut vorbereitet für morgen!",
+      "en": "Great, then we'll be well prepared for tomorrow!",
+      "uk": "Чудово, тоді ми будемо добре готові до завтра!",
+      "ru": "Отлично, тогда мы будем хорошо готовы к завтрашнему дню!"
+    },
+    "gram": "praepositionalverben"
+  },
+  {
+    "id": "dlg_067",
+    "cat": "Eine Lernzeit vor dem Test planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Die Kinder haben nächste Woche einen wichtigen Test. Sie möchten mit Ihrem Partner / Ihrer Partnerin eine Lernzeit einplanen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wie lange lernen wir jeden Tag?<br>Wie oft machen wir Pausen?<br>Wo lernen wir?",
+      "en": "The children have an important test next week. You would like to plan a study time with your partner.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>How long do we study each day?<br>How often do we take breaks?<br>Where do we study?",
+      "uk": "У дітей наступного тижня важливий тест. Ви хочете спланувати час для навчання зі своїм партнером / партнеркою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Скільки часу вчимося щодня?<br>Як часто робимо перерви?<br>Де вчимося?",
+      "ru": "У детей на следующей неделе важный тест. Вы хотите спланировать время для учёбы со своим партнёром / партнёршей.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Сколько времени учимся каждый день?<br>Как часто делаем перерывы?<br>Где учимся?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo David! Die Kinder haben nächste Woche einen wichtigen Test. Sollen wir eine Lernzeit einplanen?",
+      "en": "Hi David! The children have an important test next week. Shall we plan a study time?",
+      "uk": "Привіт, Девіде! У дітей наступного тижня важливий тест. Спланюємо час для навчання?",
+      "ru": "Привет, Дэвид! У детей на следующей неделе важный тест. Спланируем время для учёбы?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> jeden Tag eine Stunde zusammen lernen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> study together for an hour every day.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> щодня годину вчитися разом.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> каждый день по часу учиться вместе.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> wir sollten auch genug Pausen einplanen, damit sie sich konzentrieren können.<br><r>Ich hätte einen Vorschlag:</r> Wir machen alle zwanzig Minuten eine kurze Pause.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> we should also plan enough breaks, so they can concentrate.<br><r>I have a suggestion:</r> we take a short break every twenty minutes.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> нам варто ще спланувати достатньо перерв, щоб вони могли зосередитися.<br><r>У мене є пропозиція:</r> робитимемо коротку перерву кожні двадцять хвилин.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> нам стоит ещё спланировать достаточно перерывов, чтобы они могли сосредоточиться.<br><r>У меня есть предложение:</r> будем делать короткий перерыв каждые двадцать минут.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir sie loben, wenn sie fleißig sind.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we praise them when they are diligent.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> хвалити їх, коли вони старанні.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> хвалить их, когда они старательные.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir treffen uns jeden Nachmittag in der Bibliothek.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we meet at the library every afternoon.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> зустрічатимемось щодня вдень у бібліотеці.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> будем встречаться каждый день днём в библиотеке.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, dann sind sie bestimmt gut auf den Test vorbereitet!",
+      "en": "Great, then they'll definitely be well prepared for the test!",
+      "uk": "Чудово, тоді вони точно будуть добре готові до тесту!",
+      "ru": "Отлично, тогда они точно будут хорошо готовы к тесту!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_068",
+    "cat": "Sich um ein Förderprogramm bewerben",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Ihr Kind ist sehr begabt in Mathe. Sie möchten mit Ihrem Partner / Ihrer Partnerin die Bewerbung für ein Förderprogramm planen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Mit wem sprechen wir zuerst?<br>Was müssen wir vorbereiten?<br>Bis wann bewerben wir uns?",
+      "en": "Your child is very talented in maths. You would like to plan the application for a gifted program with your partner.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Who do we talk to first?<br>What do we need to prepare?<br>By when do we apply?",
+      "uk": "Ваша дитина дуже обдарована в математиці. Ви хочете спланувати заявку на програму для обдарованих зі своїм партнером / партнеркою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>З ким ми поговоримо спочатку?<br>Що нам треба підготувати?<br>До коли подаємо заявку?",
+      "ru": "Ваш ребёнок очень одарён в математике. Вы хотите спланировать заявку на программу для одарённых со своим партнёром / партнёршей.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>С кем мы поговорим сначала?<br>Что нам нужно подготовить?<br>До какого числа подаём заявку?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo Julia! Unser Kind ist wirklich begabt in Mathe. Sollen wir es für das Förderprogramm anmelden?",
+      "en": "Hi Julia! Our child is really talented in maths. Shall we sign them up for the gifted program?",
+      "uk": "Привіт, Юліє! Наша дитина справді обдарована в математиці. Запишемо її на програму для обдарованих?",
+      "ru": "Привет, Юлия! Наш ребёнок действительно одарён в математике. Запишем его на программу для одарённых?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst mit der Klassenlehrerin sprechen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> talk to the homeroom teacher first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку поговорити з класною керівницею.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала поговорить с классным руководителем.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> wir sollten auch den Lehrplan des Programms genau ansehen.<br><r>Ich hätte einen Vorschlag:</r> Wir lesen die Unterlagen zusammen durch.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> we should also take a close look at the program's curriculum.<br><r>I have a suggestion:</r> we read through the documents together.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> нам варто ще уважно подивитися на навчальну програму.<br><r>У мене є пропозиція:</r> прочитаємо документи разом.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> нам стоит ещё внимательно посмотреть на учебную программу.<br><r>У меня есть предложение:</r> прочитаем документы вместе.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir uns bis Ende der Woche um einen Platz bewerben.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we apply for a place by the end of the week.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> подати заявку на місце до кінця тижня.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> подать заявку на место до конца недели.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir rufen morgen die Schule an und vereinbaren einen Termin.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we call the school tomorrow and arrange an appointment.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> завтра зателефонуємо в школу і домовимося про зустріч.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> завтра позвоним в школу и договоримся о встрече.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich bin sicher, das wird eine tolle Erfahrung für unser Kind!",
+      "en": "Great, I'm sure this will be a wonderful experience for our child!",
+      "uk": "Чудово, я впевнена, це буде чудовий досвід для нашої дитини!",
+      "ru": "Отлично, я уверена, это будет прекрасный опыт для нашего ребёнка!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_069",
+    "cat": "Ein Gespräch zur Konfliktlösung planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie und Ihr Mitbewohner / Ihre Mitbewohnerin streiten sich in letzter Zeit oft. Sie möchten ein ruhiges Gespräch planen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann reden wir?<br>Wo reden wir?<br>Was schreiben wir vorher auf?",
+      "en": "You and your flatmate have been arguing a lot lately. You would like to plan a calm conversation.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we talk?<br>Where do we talk?<br>What do we write down beforehand?",
+      "uk": "Ви й ваш співмешканець / співмешканка останнім часом часто сваритеся. Ви хочете спланувати спокійну розмову.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли розмовляємо?<br>Де розмовляємо?<br>Що записуємо заздалегідь?",
+      "ru": "Вы и ваш сосед / соседка по квартире в последнее время часто ссоритесь. Вы хотите спланировать спокойный разговор.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда разговариваем?<br>Где разговариваем?<br>Что записываем заранее?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo Julia! Wir streiten uns in letzter Zeit oft. Sollen wir mal in Ruhe darüber reden?",
+      "en": "Hi Julia! We've been arguing a lot lately. Shall we talk about it calmly sometime?",
+      "uk": "Привіт, Юліє! Останнім часом ми часто сваримося. Може, поговоримо про це спокійно?",
+      "ru": "Привет, Юлия! В последнее время мы часто ссоримся. Может, поговорим об этом спокойно?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> heute Abend einen ruhigen Moment dafür finden.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> find a quiet moment for it tonight.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> знайти для цього спокійну хвилину сьогодні ввечері.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> найти для этого спокойную минуту сегодня вечером.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich bin manchmal noch wütend, <g>deshalb brauche</g> ich vielleicht noch etwas Zeit.<br><r>Ich hätte einen Vorschlag:</r> Wir warten bis morgen früh, dann sind wir ruhiger.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I'm still sometimes angry, <g>that's why I need</g> maybe a bit more time.<br><r>I have a suggestion:</r> we wait until tomorrow morning, then we'll be calmer.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я іноді ще злий, тому мені, можливо, потрібен ще трохи час.<br><r>У мене є пропозиція:</r> зачекаємо до завтрашнього ранку, тоді будемо спокійніші.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я иногда ещё злюсь, поэтому мне, возможно, нужно ещё немного времени.<br><r>У меня есть предложение:</r> подождём до завтрашнего утра, тогда будем спокойнее.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> ich mir vorher Notizen mache, <g>deshalb vergesse</g> ich nichts Wichtiges.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> I take notes beforehand, <g>that's why I won't forget</g> anything important.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> я заздалегідь зроблю нотатки, тому нічого важливого не забуду.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> я заранее сделаю заметки, поэтому ничего важного не забуду.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir setzen uns morgen früh in die Küche und sprechen in Ruhe.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we sit down in the kitchen tomorrow morning and talk calmly.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> завтра вранці сядемо на кухні й спокійно поговоримо.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> завтра утром сядем на кухне и спокойно поговорим.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich glaube, das wird uns beiden helfen, die Stimmung zu verbessern!",
+      "en": "Great, I think that will help both of us improve the mood!",
+      "uk": "Чудово, я думаю, це допоможе нам обом покращити настрій!",
+      "ru": "Отлично, я думаю, это поможет нам обоим улучшить настроение!"
+    },
+    "gram": "satz_mit_deshalb"
+  },
+  {
+    "id": "dlg_070",
+    "cat": "Um einen Gefallen bitten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie möchten sich für morgen ein Auto von einem Freund / einer Freundin ausleihen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wie fragen wir höflich?<br>Worauf sollten wir achten?<br>Wann geben wir das Auto zurück?",
+      "en": "You would like to borrow a car from a friend for tomorrow.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>How do we ask politely?<br>What should we pay attention to?<br>When do we return the car?",
+      "uk": "Ви хочете позичити авто в друга / подруги на завтра.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Як ми ввічливо запитаємо?<br>На що нам варто зважати?<br>Коли повернемо авто?",
+      "ru": "Вы хотите одолжить машину у друга / подруги на завтра.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Как мы вежливо спросим?<br>На что нам стоит обратить внимание?<br>Когда вернём машину?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo David! Ich muss dich um einen Gefallen bitten. Kannst du mir kurz zuhören?",
+      "en": "Hi David! I need to ask you for a favour. Can you listen to me for a moment?",
+      "uk": "Привіт, Девіде! Мені треба попросити тебе про послугу. Можеш мене трохи послухати?",
+      "ru": "Привет, Дэвид! Мне нужно попросить тебя об услуге. Можешь меня немного послушать?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> gleich jetzt darüber sprechen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> talk about it right now.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> поговорити про це прямо зараз.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> поговорить об этом прямо сейчас.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich wollte erst höflich fragen: <g>Könntest</g> du mir dein Auto für morgen ausleihen?<br><r>Ich hätte einen Vorschlag:</r> Ich bringe es dir am Abend mit vollem Tank zurück.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I wanted to ask politely first: <g>Could</g> you lend me your car for tomorrow?<br><r>I have a suggestion:</r> I'll bring it back to you in the evening with a full tank.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я спершу хотіла ввічливо запитати: чи не міг би ти позичити мені свою машину на завтра?<br><r>У мене є пропозиція:</r> я поверну її тобі ввечері з повним баком.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я сначала хотела вежливо спросить: не мог бы ты одолжить мне свою машину на завтра?<br><r>У меня есть предложение:</r> я верну её тебе вечером с полным баком.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> du vorsichtig fährst, du <g>solltest</g> bei Regen besonders aufpassen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> you drive carefully, you <g>should</g> be especially careful in the rain.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> їдь обережно, тобі варто бути особливо уважною під час дощу.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> езжай осторожно, тебе стоит быть особенно внимательной в дождь.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Ich hole die Schlüssel morgen früh bei dir ab.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> I pick up the keys from you tomorrow morning.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> я заберу ключі в тебе завтра вранці.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> я заберу ключи у тебя завтра утром.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich vertraue dir. Danke, dass du so respektvoll fragst!",
+      "en": "Great, I trust you. Thanks for asking so respectfully!",
+      "uk": "Чудово, я тобі довіряю. Дякую, що питаєш так шанобливо!",
+      "ru": "Отлично, я тебе доверяю. Спасибо, что спрашиваешь так уважительно!"
+    },
+    "gram": "hoeflichkeit_konjunktiv_a22"
+  },
+  {
+    "id": "dlg_071",
+    "cat": "Ein Teambuilding-Event planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Im Team gab es zuletzt einige Missverständnisse. Sie möchten mit einem Kollegen / einer Kollegin ein Teambuilding-Event planen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was machen wir?<br>Worüber sprechen wir?<br>Wann findet es statt?",
+      "en": "There have been some misunderstandings in the team recently. You would like to plan a team-building event with a colleague.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we do?<br>What do we talk about?<br>When does it take place?",
+      "uk": "Останнім часом у команді сталося кілька непорозумінь. Ви хочете спланувати тімбілдинг-захід з колегою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Що ми робимо?<br>Про що ми говоримо?<br>Коли це відбувається?",
+      "ru": "В последнее время в команде было несколько недоразумений. Вы хотите спланировать тимбилдинг-мероприятие с коллегой.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Что мы делаем?<br>О чём мы говорим?<br>Когда это состоится?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo Anna! Im Team gab es zuletzt einige Missverständnisse. Sollen wir ein Teambuilding-Event planen?",
+      "en": "Hi Anna! There have been some misunderstandings in the team recently. Shall we plan a team-building event?",
+      "uk": "Привіт, Анно! Останнім часом у команді сталося кілька непорозумінь. Спланюємо тімбілдинг-захід?",
+      "ru": "Привет, Анна! В последнее время в команде было несколько недоразумений. Спланируем тимбилдинг-мероприятие?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> ein gemeinsames Kochevent organisieren.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> organise a joint cooking event.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> організувати спільний кулінарний захід.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> организовать совместное кулинарное мероприятие.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> wir sollten auch über Toleranz und Kritik sprechen.<br><r>Ich hätte einen Vorschlag:</r> Wir machen zuerst eine kurze Übung dazu.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> we should also talk about tolerance and criticism.<br><r>I have a suggestion:</r> we do a short exercise about it first.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> нам варто ще поговорити про толерантність і критику.<br><r>У мене є пропозиція:</r> спочатку зробимо коротку вправу на цю тему.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> нам стоит ещё поговорить о толерантности и критике.<br><r>У меня есть предложение:</r> сначала сделаем короткое упражнение на эту тему.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir uns gegenseitig zeigen, wie hilfsbereit und teamfähig wir sind.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we show each other how helpful and team-oriented we are.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> показати одне одному, які ми чуйні й здатні до командної роботи.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> показать друг другу, какие мы отзывчивые и способные к командной работе.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir planen das Event für nächsten Freitagnachmittag.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we plan the event for next Friday afternoon.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> заплануємо захід на наступну п'ятницю після обіду.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> запланируем мероприятие на следующую пятницу после обеда.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich glaube, das wird uns helfen, uns zu versöhnen und besser zusammenzuarbeiten!",
+      "en": "Great, I think this will help us reconcile and work together better!",
+      "uk": "Чудово, я думаю, це допоможе нам помиритися і краще співпрацювати!",
+      "ru": "Отлично, я думаю, это поможет нам помириться и лучше сотрудничать!"
+    },
+    "gram": ""
   }
 ];
 
