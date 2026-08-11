@@ -633,20 +633,26 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # NEW — цього mkey раніше не було в manifest.json взагалі.
         # CHANGED — ключ був, але з ІНШИМ хешем (текст/голос/швидкість
         # відрізняються від того, що вже закомічено). TIMING-BACKFILL —
-        # хеш той самий (mp3 не мав би змінитись змістовно), просто
-        # раніше згенерованому файлу бракувало .words.json — старий запис
-        # у manifest.json ще без позначки TIMED_SUFFIX (з'явився до того,
-        # як цій категорії/мові стало треба таймінг). На відміну від
-        # NEW/CHANGED, тут САМ mp3 НЕ перезаписується (див. timing_only
-        # нижче) — синтезуємо у тимчасовий файл лише заради .words.json,
-        # а вже наявний mp3 лишається як є, без жодного дотику.
-        timing_only = (task.get("existing_hash") is not None
-                       and task["existing_hash"] == task["content_hash"]
-                       and task.get("want_timing"))
+        # хеш той самий, просто раніше згенерованому файлу бракувало
+        # .words.json (старий запис у manifest.json ще без TIMED_SUFFIX,
+        # з'явився до того, як цій категорії/полю стало треба таймінг).
+        # Усі три випадки обробляються ОДНАКОВО — mp3 перегенеровується
+        # разом з таймінгом і в TIMING-BACKFILL теж. Раніше тут був окремий
+        # "щадний" режим (синтез у тимчасовий файл, забирали лише
+        # .words.json, сам mp3 не чіпали) — але оскільки генерація
+        # таймінгу займає РІВНО стільки ж часу, що й звичайний синтез
+        # (WordBoundary-івенти йдуть паралельно з аудіопотоком у тому ж
+        # запиті до Edge TTS, а не окремим проходом), економія на "не
+        # чіпати mp3" виявилась ілюзорною — а ризик, що стара версія
+        # mp3 і нова версія .words.json трохи розійдуться (напр. якщо
+        # текст очищення (cleaned) змінювався між генераціями без зміни
+        # хешу через баг, або Edge TTS все ж дає різну паузу/наголос між
+        # викликами), був реальним. Простіше й надійніше — завжди мати
+        # mp3 і .words.json з ОДНОГО й того самого виклику синтезу.
         if task.get("existing_hash") is None:
             reason = "NEW"
-        elif timing_only:
-            reason = "TIMING-BACKFILL (mp3 не чіпається)"
+        elif task.get("want_timing"):
+            reason = "TIMING-BACKFILL" if task.get("existing_hash") == task.get("content_hash") else f"CHANGED {task['existing_hash']}→{task['content_hash']}"
         else:
             reason = f"CHANGED {task['existing_hash']}→{task['content_hash']}"
         print(f"[{current_num}/{total_tasks}] -> {task['mkey']} -> Голос: {task['voice']} -> [{reason}] -> '{task['cleaned'][:30]}...'", flush=True)
@@ -662,38 +668,20 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # "одні й ті самі файли постійно генеруються": файл видалявся
         # через збій git-кроку, і на НАСТУПНОМУ запуску знову вважався
         # відсутнім — попри те, що текст/голос жодного разу не змінювались.
-        tmp_path = file_path.with_name(file_path.stem + '.tmp_timing.mp3') if timing_only else None
         last_error = None
         synthesized = False
         for attempt in range(1, RETRY_ATTEMPTS + 1):
             try:
-                if timing_only:
-                    # mp3 вже є й контент не змінився — синтезуємо в
-                    # ТИМЧАСОВИЙ файл, забираємо звідти лише .words.json,
-                    # справжній mp3 НЕ чіпаємо (Edge TTS не гарантує побайтну
-                    # ідентичність між викликами — навіщо ризикувати diff'ом
-                    # в git заради файлу, що функціонально не змінився).
-                    await synthesize_speech(task["cleaned"], task["voice"], task["rate"], tmp_path, want_timing=True)
-                    tmp_timing = tmp_path.with_suffix('.words.json')
-                    real_timing = file_path.with_suffix('.words.json')
-                    if tmp_timing.exists():
-                        tmp_timing.replace(real_timing)
-                    tmp_path.unlink(missing_ok=True)
-                else:
-                    await synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path, want_timing=task.get("want_timing", False))
+                await synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path, want_timing=task.get("want_timing", False))
                 synthesized = True
                 break
             except Exception as e:
                 last_error = e
-                if timing_only:
-                    tmp_path.unlink(missing_ok=True)
-                    tmp_path.with_suffix('.words.json').unlink(missing_ok=True)
-                else:
-                    if file_path.exists():
-                        file_path.unlink()
-                    timing_path = file_path.with_suffix('.words.json')
-                    if timing_path.exists():
-                        timing_path.unlink()
+                if file_path.exists():
+                    file_path.unlink()
+                timing_path = file_path.with_suffix('.words.json')
+                if timing_path.exists():
+                    timing_path.unlink()
                 if attempt < RETRY_ATTEMPTS:
                     backoff = RETRY_BASE_DELAY * (2 ** (attempt - 1))
                     print(f"⚠️  Спроба {attempt}/{RETRY_ATTEMPTS} для {task['mkey']} невдала: {e} — повтор через {backoff:.0f}с", flush=True)
@@ -932,7 +920,9 @@ async def main():
                         # збереженого — це охоплює і NEW (ключа нема), і
                         # CHANGED (текст/голос змінився), і TIMING-BACKFILL
                         # (хеш той самий, але старий запис ще без позначки
-                        # таймінгу — mp3 при цьому не чіпається, див. worker_task).
+                        # таймінгу — у всіх трьох випадках mp3 перегенеровується
+                        # РАЗОМ з .words.json, з одного виклику синтезу — див.
+                        # worker_task).
                         if existing_value != manifest_value(content_hash, want_timing):
                             tasks.append({
                                 "id": item_id,
