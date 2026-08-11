@@ -2737,7 +2737,7 @@ body.lesson-active .vocab-top{
         <div class="mc-progress" id="mc-progress"></div>
         <div class="mc-question" id="mc-question" style="cursor:pointer" onclick="mcPlayAudio()">
           <div class="mc-q-label" id="mc-q-label">Begriff</div>
-          <div class="mc-q-row"><div class="mc-q-term" id="mc-q-term"></div></div>
+          <div class="mc-q-row"><div class="mc-q-term" id="mc-q-term" data-audio-field="term"></div></div>
         </div>
         <div class="mc-options" id="mc-options"></div>
       </div>
@@ -3178,7 +3178,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '474-9a4d3fb';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5687,6 +5687,21 @@ function hasAudioFor(cardId, field, lang){
   return mkey in audioManifest;
 }
 
+// Чи є ще й ТАЙМІНГ слів (.words.json) для картки+поля+мови — не лише
+// mp3. У manifest.json значення для mkey закінчується суфіксом "+t" лише
+// якщо для нього згенеровано таймінг (див. TIMED_SUFFIX / manifest_value()
+// у gen_audio.py — той самий суфікс, тут просто перевіряємо його
+// наявність). Використовується як дешева перевірка ПЕРЕД тим, як шукати
+// DOM-елемент і підключати karaoke-підсвітку — для полів/мов поза
+// областю дії таймінгу (не PRIMARY_LANG, чи поле на кшталт
+// sprachbau.answer/.explanation) просто не морочимось.
+function hasTimingFor(cardId, field, lang){
+  if(!audioManifest) return false;
+  var mkey = urlToAudioMkey(getAudioUrl(cardId, field, lang));
+  var v = audioManifest[mkey];
+  return typeof v === 'string' && v.slice(-2) === '+t';
+}
+
 // fetchAudioBlob → замінено на fetchAudioBuffer (Web Audio API)
 
 // ── ПІДСВІЧУВАННЯ СЛІВ СИНХРОННО З АУДІО (karaoke-style) ─────────
@@ -6173,8 +6188,8 @@ function renderVocabCard(){
   const cat=CATS.find(c=>c.id===v.cat);
   const al=getActiveLangs();
   if(!V.flipped){trackCardToday(v.id);window.mlog?.('card_viewed',{cat:v.cat,mode:V.mode});}
-  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${v.term?.[l]||''}</div><div class="fc-short">${v.short?.[l]||''}</div></div></div>`).join('');
-  const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${v.def?.[l]||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
+  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term" data-audio-field="term" data-lang="${l}">${v.term?.[l]||''}</div><div class="fc-short" data-audio-field="short" data-lang="${l}">${v.short?.[l]||''}</div></div></div>`).join('');
+  const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def" data-audio-field="def" data-lang="${l}">${v.def?.[l]||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('flashcard');if(!card)return;
   card.classList.toggle('flipped',V.flipped);
   const fav=isFavorite(v.id);
@@ -8518,7 +8533,12 @@ function mcShowCard(){
   });
 
   // Автоматично відтворюємо аудіо основної мови курсу при появі нового питання
-  setTimeout(()=>{ if(card.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term'); }, 150);
+  setTimeout(()=>{
+    if(card.term?.[primaryLang()]){
+      const highlightEl = hasTimingFor(card.id,'term',primaryLang()) ? document.getElementById('mc-q-term') : null;
+      speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term', false, highlightEl);
+    }
+  }, 150);
 
   // Prefetch аудіо наступної картки у фоні
   const nextCard = mcState.cards[mcState.idx + 1];
@@ -8560,7 +8580,10 @@ function mcAnswer(btn, chosen, correct, card){
 function mcPlayAudio(){
   const card = mcState.currentCard;
   if(!card) return;
-  if(card.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term');
+  if(card.term?.[primaryLang()]){
+    const highlightEl = hasTimingFor(card.id,'term',primaryLang()) ? document.getElementById('mc-q-term') : null;
+    speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term', false, highlightEl);
+  }
 }
 
 function mcShowResult(){
@@ -13009,8 +13032,8 @@ function renderDialogueCard(){
   const cat=CATS.find(c=>c.id===d.cat);
   const al=getActiveDialogueLangs();
   if(!D.flipped){ trackCardToday(d.id); window.mlog?.('dialogue_card_viewed',{cat:d.cat,mode:D.mode}); }
-  const qRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term">${d.q?.[l]||''}</div></div></div>`).join('');
-  const aRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def">${d.a?.[l]||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
+  const qRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term" data-audio-field="q" data-lang="${l}">${d.q?.[l]||''}</div></div></div>`).join('');
+  const aRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def" data-audio-field="a" data-lang="${l}">${d.a?.[l]||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('dlg-flashcard'); if(!card) return;
   card.classList.toggle('flipped', D.flipped);
   const fav=isFavorite(d.id);
@@ -13223,9 +13246,12 @@ function speakDialogueQ(d,langs,i,done){
   const text=d.q?.[langs[i]];
   if(!text){ speakDialogueQ(d,langs,i+1,done); return; }
   let _c=false;
+  const highlightEl = hasTimingFor(d.id,'q',langs[i])
+    ? document.querySelector('#dlg-fc-front-inner [data-audio-field="q"][data-lang="'+langs[i]+'"]')
+    : null;
   speak(text, langs[i],
     ()=>{ if(_c)return; _c=true; setTimeout(()=>speakDialogueQ(d,langs,i+1,done), V.pause); },
-    d.id, 'q');
+    d.id, 'q', false, highlightEl);
 }
 function speakDialogueA(d,langs,i,done){
   if(!D.playing||D.paused){ return; }
@@ -13233,9 +13259,12 @@ function speakDialogueA(d,langs,i,done){
   const text=d.a?.[langs[i]];
   if(!text){ speakDialogueA(d,langs,i+1,done); return; }
   let _c=false;
+  const highlightEl = hasTimingFor(d.id,'a',langs[i])
+    ? document.querySelector('#dlg-fc-back-inner [data-audio-field="a"][data-lang="'+langs[i]+'"]')
+    : null;
   speak(text, langs[i],
     ()=>{ if(_c)return; _c=true; setTimeout(()=>speakDialogueA(d,langs,i+1,done), V.pause); },
-    d.id, 'a');
+    d.id, 'a', false, highlightEl);
 }
 
 // ── ВКЛАДКИ (🃏 картки / 📋 список) ─────────────────────────────
@@ -13539,9 +13568,12 @@ function speakVocabTerms(v,langs,i,done){
   const text=v.term?.[langs[i]];
   if(!text){speakVocabTerms(v,langs,i+1,done);return;}
   let _c=false;
+  const highlightEl = hasTimingFor(v.id,'term',langs[i])
+    ? document.querySelector('#fc-front-inner [data-audio-field="term"][data-lang="'+langs[i]+'"]')
+    : null;
   speak(text, langs[i],
     ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabTerms(v,langs,i+1,done),V.pause); },
-    v.id,'term');
+    v.id,'term', false, highlightEl);
 }
 function speakVocabShort(v,langs,done){
   if(!V.playing||V.paused){return;}
@@ -13556,9 +13588,12 @@ function speakVocabShortLang(v,langs,i,done){
   const text=v.short?.[langs[i]];
   if(!text){speakVocabShortLang(v,langs,i+1,done);return;}
   let _c=false;
+  const highlightEl = hasTimingFor(v.id,'short',langs[i])
+    ? document.querySelector('#fc-front-inner [data-audio-field="short"][data-lang="'+langs[i]+'"]')
+    : null;
   speak(text,langs[i],
     ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabShortLang(v,langs,i+1,done),V.pause); },
-    v.id,'short');
+    v.id,'short', false, highlightEl);
 }
 function speakVocabDefs(v,langs,i,done){
   if(!V.playing||V.paused){return;}
@@ -13566,9 +13601,12 @@ function speakVocabDefs(v,langs,i,done){
   const text=v.def?.[langs[i]];
   if(!text){speakVocabDefs(v,langs,i+1,done);return;}
   let _c=false;
+  const highlightEl = hasTimingFor(v.id,'def',langs[i])
+    ? document.querySelector('#fc-back-inner [data-audio-field="def"][data-lang="'+langs[i]+'"]')
+    : null;
   speak(text, langs[i],
     ()=>{ if(_c)return;_c=true; setTimeout(()=>speakVocabDefs(v,langs,i+1,done),V.pause); },
-    v.id,'def');
+    v.id,'def', false, highlightEl);
 }
 
 // ── LANG ──────────────────────────────────────────────────────
@@ -14367,7 +14405,7 @@ function sbRenderLearn() {
       var html = raw.replace('{{BLANK}}', '<b>'+sbA(card, l)+'</b>');
       return (i>0 ? '<div class="sb-front-divider"></div>' : '')
         + (langs.length>1 ? '<div class="sb-front-lang-label">'+langLabels[l]+'</div>' : '')
-        + '<div class="sb-front-sentence">'+html+'</div>';
+        + '<div class="sb-front-sentence" data-audio-field="sentence" data-lang="'+l+'">'+html+'</div>';
     }).join('');
   }
 
@@ -14529,10 +14567,16 @@ function sbAutoPlay() {
     }
     var l = audioLangs[li];
     var text = sbL(card.sentence,l).replace('{{BLANK}}', sbA(card,l));
+    // hasTimingFor() і так поверне false для l !== primaryLang() (audio
+    // для sprachbau генерується лише PRIMARY_LANG — див. gen_audio.py),
+    // тож окремо перевіряти мову тут не треба.
+    var highlightEl = hasTimingFor(card.id,'sentence',l)
+      ? document.querySelector('#sb-front-body [data-audio-field="sentence"][data-lang="'+l+'"]')
+      : null;
     speak(text,l,function(){
       if(!SB.playing||SB.playCardGen!==gen) return;
       setTimeout(function(){ speakSentences(li+1); },300);
-    },card.id,'sentence');
+    },card.id,'sentence', false, highlightEl);
   }
 
   function afterSentences(){
@@ -14989,7 +15033,19 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     speakGramWord(chosen, primaryLang(), function() {
       showFeedback();
       setTimeout(function() {
-        speak(null, primaryLang(), revealNextBtn, card._srcId, 'def');
+        // Речення озвучується готовим pregen-аудіо ОРИГІНАЛЬНОЇ VOCAB-картки
+        // (card._srcId, 'def') — тож щоб підсвітка збігалась слово-в-слово
+        // з тим, що реально звучить, показуємо тут те саме речення з
+        // ПРАВИЛЬНИМ словом (card.answer), а не з тим, що обрав користувач
+        // (chosen) — при неправильній відповіді підставлений chosen не
+        // збігався б з озвученим текстом.
+        var sentEl = document.getElementById('sb-prac-sentence');
+        var fullText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
+        if(sentEl) sentEl.innerHTML = '<div class="mc-q-term" data-audio-field="def">'+fullText+'</div>';
+        var highlightEl = hasTimingFor(card._srcId,'def',primaryLang())
+          ? document.querySelector('#sb-prac-sentence [data-audio-field="def"]')
+          : null;
+        speak(null, primaryLang(), revealNextBtn, card._srcId, 'def', false, highlightEl);
       }, 300);
     });
   } else {
@@ -14999,7 +15055,16 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
       showFeedback();
       // After answer audio ends → play full sentence
       setTimeout(function() {
-        speak(sentenceText, primaryLang(), revealNextBtn, card.id, 'sentence');
+        // Так само як вище — розкриваємо повне речення (з підставленою
+        // ПРАВИЛЬНОЮ відповіддю, не chosen) синхронно з тим, що
+        // озвучується, щоб підсвітка мала правильний текст для збігу.
+        // До цього моменту sentEl показував речення з порожнім місцем.
+        var sentEl = document.getElementById('sb-prac-sentence');
+        if(sentEl) sentEl.innerHTML = '<div class="mc-q-term" data-audio-field="sentence">'+sentenceText+'</div>';
+        var highlightEl = hasTimingFor(card.id,'sentence',primaryLang())
+          ? document.querySelector('#sb-prac-sentence [data-audio-field="sentence"]')
+          : null;
+        speak(sentenceText, primaryLang(), revealNextBtn, card.id, 'sentence', false, highlightEl);
       }, 300);
     }, card.id, field);
   }
