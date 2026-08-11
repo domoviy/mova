@@ -1516,17 +1516,6 @@ body{
   transition:opacity .15s,transform .1s;
 }
 .lr-btn-primary:active{transform:scale(.97);opacity:.9;}
-/* Приваблива пульсація кнопки "Наступний урок" — стимулює клікнути */
-#lr-btn-next{
-  animation:lrNextPulse 1.6s ease-in-out infinite;
-}
-#lr-btn-next:active{
-  animation-play-state:paused;
-}
-@keyframes lrNextPulse{
-  0%,100%{ transform:scale(1);   box-shadow:0 4px 18px rgba(201,168,76,.38); }
-  50%    { transform:scale(1.035); box-shadow:0 6px 28px rgba(201,168,76,.62); }
-}
 .lr-btn-secondary{
   display:block;width:100%;max-width:320px;
   padding:15px 20px;border-radius:16px;
@@ -2685,9 +2674,6 @@ body.lesson-active .vocab-top{
         <div class="lr-title" id="lr-title"></div>
         <div class="lr-sub" id="lr-sub"></div>
         <div class="lr-stats" id="lr-stats"></div>
-        <button class="lr-btn-primary" id="lr-btn-next" onclick="startNextLesson()"></button>
-        <button class="lr-btn-primary" id="lr-btn-next-dlg" onclick="startNextDialogue()" style="display:none;background:linear-gradient(135deg,#4a90d9,#2f6cb0)"></button>
-        <button class="lr-btn-secondary" id="lr-btn-list" onclick="exitLessonFlow()"></button>
       </div>
 
       <div class="vocab-top">
@@ -3192,7 +3178,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '471-601199c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4071,11 +4057,6 @@ function applyI18n(){
   // Tiles check button
   const chkBtn = document.getElementById('tiles-check-btn');
   if(chkBtn) chkBtn.textContent = t('btn_check');
-  // Lesson result buttons
-  const lrNext = document.getElementById('lr-btn-next');
-  if(lrNext) lrNext.textContent = t('btn_next_lesson');
-  const lrList = document.getElementById('lr-btn-list');
-  if(lrList) lrList.textContent = t('btn_to_lessons');
 }
 
 
@@ -11410,7 +11391,9 @@ var _lfSkipNextAutoplay = false;
 // розкриття йшов до неї. Тепер afterPlay передає callback сюди, і той
 // викликається лише після transitionend (чи по запасному таймауту,
 // якщо transitionend не спрацює — напр. prefers-reduced-motion вимикає
-// transition-и й подія просто не відбудеться).
+// transition-и й подія просто не відбудеться) + ДОДАТКОВОЇ паузи
+// READING_PAUSE_MS на прочитання перекладу, перш ніж показати кнопку.
+var DLG_TR_READING_PAUSE_MS = 1200;
 function _lfDlgRevealLastTranslation(onRevealed){
   var body = document.getElementById('lf-unit-body');
   var rows = body ? body.querySelectorAll('.lf-unit-tr-row:not(.revealed)') : [];
@@ -11436,10 +11419,16 @@ function _lfDlgRevealLastTranslation(onRevealed){
     // цієї анімації (scrollHeight вже оновлений), щоб низ повідомлення
     // лишився на стандартній відстані від кнопки "Далі".
     if(body) body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
-    finish();
+    // Кнопку показуємо НЕ одразу по завершенню анімації, а ще через
+    // паузу на прочитання — інакше переклад ледь встиг з'явитись, а
+    // кнопка вже тут.
+    setTimeout(finish, DLG_TR_READING_PAUSE_MS);
   };
   last.addEventListener('transitionend', onTransEnd);
-  setTimeout(finish, 800); // запасний тригер, якщо transitionend не спрацював
+  // Запасний тригер, якщо transitionend не спрацював — довший за
+  // "нормальний" шлях (~0.4с анімація + 1200мс пауза), щоб не
+  // перебивати паузу на прочитання власним раннім спрацюванням.
+  setTimeout(finish, 400 + DLG_TR_READING_PAUSE_MS + 600);
 }
 
 function _lfUnitShow(){
@@ -12202,10 +12191,10 @@ function lfShowResult(){
   // одразу як показується екран результату. Раніше це відкладалось до
   // явного натискання "Наступний урок"/"До списку уроків" — але це
   // штучна відмінність: усі кроки уроку до 'result' уже пройдені, тож
-  // сам факт показу результату ВЖЕ означає "урок пройдено", а натискання
-  // кнопок нижче — це просто подальша навігація, не додаткове
+  // сам факт показу результату ВЖЕ означає "урок пройдено", а перехід
+  // до Lernpfad нижче — це просто подальша навігація, не додаткове
   // підтвердження. LF._recorded і тут захищає від подвійного зарахування
-  // (exitLessonFlow()/startNextLesson() перевіряють той самий прапорець).
+  // (exitLessonFlow() перевіряє той самий прапорець).
   // #lesson-celebration — ПЕРША: це нагорода за сам факт завершення
   // ЦЬОГО уроку/діалогу/граматики, тож логічно йде одразу. Вогонь
   // (#streak-celebration) — ДРУГИЙ, лише коли стрік реально зростає (1
@@ -12219,18 +12208,16 @@ function lfShowResult(){
       ? (uiLang==='uk'?'Граматику завершено!':uiLang==='en'?'Grammar completed!':uiLang==='ru'?'Грамматика завершена!':'Grammatik abgeschlossen!')
       : (uiLang==='uk'?'Урок завершено!':uiLang==='en'?'Lesson completed!':uiLang==='ru'?'Урок завершён!':'Lektion abgeschlossen!');
 
-  // Кнопки результату ховаються, поки йде святкування (#lesson-celebration
-  // і/або вогонь), і з'являються рівно тоді, коли останнє з них реально
-  // закрилось (onDone), а не за вгаданим таймаутом — інакше при
-  // ланцюжку "нагорода → вогонь" (обидва того самого дня) кнопки
-  // виринали б ще ПІД час другої анімації.
-  const btnNext = document.getElementById('lr-btn-next');
-  const btnList = document.getElementById('lr-btn-list');
-  const btnNextDlg = document.getElementById('lr-btn-next-dlg');
-  function revealResultButtons(){
-    if(btnNext) btnNext.style.visibility = 'visible';
-    if(btnList) btnList.style.visibility = 'visible';
-    if(btnNextDlg) btnNextDlg.style.visibility = 'visible';
+  // Раніше тут показувались 3 кнопки ("Наступний урок"/"Наступний
+  // діалог"/"До списку уроків") після завершення святкування. Тепер —
+  // без кнопок: після завершення СВЯТКУВАННЯ (і вогню стріку, якщо він
+  // сьогодні зростав) автоматично повертаємось у Lernpfad, до активної
+  // точки, де користувач зараз навчається. showView('lernpfad') сам
+  // викликає renderLernpfad(), який сам скролить до #lp-current-module
+  // (findCurrentLesson — уже враховує щойно завершений урок/діалог,
+  // тож "активна точка" — це наступний РОЗБЛОКОВАНИЙ невиконаний крок).
+  function goToLernpfadActivePoint(){
+    showView('lernpfad');
   }
 
   let celebrationPending = false;
@@ -12240,67 +12227,19 @@ function lfShowResult(){
     celebrationPending = true;
     if(streakResult && streakResult.increased){
       showLessonCelebration({ icon: lcIcon, label: lcLabel,
-        onDone: () => showStreakCelebration(streakResult.streak, streakResult.prevStreak, { onDone: revealResultButtons })
+        onDone: () => showStreakCelebration(streakResult.streak, streakResult.prevStreak, { onDone: goToLernpfadActivePoint })
       });
     } else {
-      showLessonCelebration({ icon: lcIcon, label: lcLabel, onDone: revealResultButtons });
+      showLessonCelebration({ icon: lcIcon, label: lcLabel, onDone: goToLernpfadActivePoint });
     }
   }
   // Оновлюємо прогрес Lernpfad
   setTimeout(renderLernpfad, 300);
 
-  // Заповнюємо кнопки результату
-  if(btnNext) btnNext.textContent = t('btn_next_lesson');
-  if(btnList) btnList.textContent = t('btn_to_lessons');
-
-  // "Наступний діалог" прибрано: startModuleDialogueBonus() тепер грає
-  // ВЕСЬ пул вузла за одну сесію (див. коментар там), тож "лишилось ще
-  // непоказане в цьому ж уроці" більше не буває. Крос-лекційний перехід
-  // (стрибок одразу до наступного уроку з діалогом десь далі в курсі)
-  // теж прибрано — у моделі шляху з послідовним розблокуванням це
-  // означало б перескочити повз ще заблокований контент. "Продовжити"
-  // (btnNext) і так коректно веде до наступного РОЗБЛОКОВАНОГО кроку.
-  if(btnNextDlg) btnNextDlg.style.display = 'none';
-
-  if(btnNext) btnNext.style.visibility = celebrationPending ? 'hidden' : 'visible';
-  if(btnList) btnList.style.visibility = celebrationPending ? 'hidden' : 'visible';
-  if(btnNextDlg) btnNextDlg.style.visibility = celebrationPending ? 'hidden' : 'visible';
-}
-
-// Шукає наступний (за порядком курсу) урок ПІСЛЯ afterLessonId, у якого
-// є прив'язаний діалог (lesson.dlgCards) — для кнопки "Наступний діалог"
-// на екрані результату Dialogue Bonus.
-function _findNextLessonWithDialogue(afterLessonId){
-  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-  const idx = lessons.findIndex(l=>l.id===afterLessonId);
-  if(idx===-1) return null;
-  for(let i=idx+1;i<lessons.length;i++){
-    if((lessons[i].dlgCards||[]).length>0) return lessons[i];
-  }
-  return null;
-}
-
-// "Наступний діалог" — СПЕРШУ перевіряє, чи в ЦЬОМУ Ж уроці лишився ще
-// хоч один непоказаний у поточному ланцюжку діалог (_lfDlgChainSeen) —
-// і якщо так, показує саме його. Лише коли урок вичерпано, переходить
-// до НАСТУПНОГО уроку з прив'язаним діалогом, минаючи звичайні уроки
-// між ними. {_chain:true} — не скидає _lfDlgChainSeen, щоб та сама
-// картка не показалась двічі поспіль у межах одного ланцюжка "Наступний
-// діалог".
-function startNextDialogue(){
-  const bonusForId = LF?.lesson?._bonusForLessonId;
-  if(!bonusForId){ exitLessonFlow(); return; }
-
-  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-  const currentLesson = lessons.find(l=>l.id===bonusForId);
-  if(currentLesson){
-    const remaining = buildModuleDialoguePool(currentLesson).filter(c => !_lfDlgChainSeen.has(c.id));
-    if(remaining.length){ startModuleDialogueBonus(currentLesson.id, {_chain:true}); return; }
-  }
-
-  const next = _findNextLessonWithDialogue(bonusForId);
-  if(!next){ exitLessonFlow(); return; }
-  startModuleDialogueBonus(next.id, {_chain:true});
+  // Якщо з якоїсь причини LF._recorded уже було true (захист від
+  // подвійного зарахування — напр. lfShowResult() викликано вдруге) —
+  // святкування пропускається, тож переходимо одразу, без чекання onDone.
+  if(!celebrationPending) goToLernpfadActivePoint();
 }
 
 // Smart Review: тегування VOCAB карток полем examPart за категорією
@@ -12788,131 +12727,6 @@ function restartLessonFlow(){
   if(id){ exitLessonFlow(); startLessonFlow(id); }
 }
 
-// Запускає наступний урок у тому самому розділі, або перший незавершений
-function startNextLesson(){
-  // Зарахування уроку відбувається ВИКЛЮЧНО в lfShowResult() (див.
-  // коментар в exitLessonFlow()). Кнопка "Наступний урок" (яка викликає
-  // цю функцію) сама лишається невидимою/недоступною, поки не дограє
-  // анімація стріку — тобто на момент виклику цієї функції запис і
-  // анімація вже точно відбулись, жодної додаткової затримки тут
-  // більше не потрібно.
-  _startNextLessonProceed();
-}
-
-function _startNextLessonProceed(){
-  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-  if(!lessons.length){ exitLessonFlow(); return; }
-
-  const finishedLesson = LF?.lesson;
-
-  // Будь-який опційний бонусний урок (Граматика, Діалоги — не вузол
-  // основного шляху) — "Наступний урок" має продовжити РЕАЛЬНИЙ шлях
-  // так, ніби щойно пройдено модуль/главу, до якої бонус прив'язаний
-  // (див. startModuleGrammarBonus/startChapterGrammarBonus/
-  // startChapterDialogueBonus) — а не лишати користувача "в нікуди".
-  // Даємо те саме відчуття завершеності, що й після звичайного уроку.
-  if(finishedLesson?._isBonusLesson){
-    if(finishedLesson._bonusForChapter != null){
-      const nextChapterFirstModule = lessons.find(l =>
-        l.chapter === finishedLesson._bonusForChapter + 1 && l.module === 1
-      );
-      _goToLessonOrExit(nextChapterFirstModule);
-      return;
-    }
-    const realLesson = lessons.find(l => l.id === finishedLesson._bonusForLessonId);
-    if(!realLesson){ exitLessonFlow(); return; }
-    _proceedFromLesson(realLesson);
-    return;
-  }
-
-  const wasReview = !!finishedLesson?._isReview;
-
-  // ── Випадок 1: щойно пройдений урок БУВ ревью глави ──────────────
-  // → переходимо до Модуля 1 наступної глави.
-  if(wasReview){
-    const reviewChapters = finishedLesson._chapterNums || [];
-    const maxReviewedChapter = Math.max(...reviewChapters, 0);
-    const nextChapterFirstModule = lessons.find(l =>
-      l.chapter === maxReviewedChapter + 1 && l.module === 1
-    );
-    _goToLessonOrExit(nextChapterFirstModule);
-    return;
-  }
-
-  // ── Звичайний урок (не ревью) ────────────────────────────────────
-  const currentId = LF?.lessonId;
-  const current = lessons.find(l => l.id === currentId);
-  if(!current){ exitLessonFlow(); return; }
-  _proceedFromLesson(current);
-}
-
-// Спільна логіка "що далі після модуля X" — використовується і для
-// звичайного завершення уроку, і для завершення бонусного уроку
-// "Граматика" модуля (де X — модуль, до якого бонус прив'язаний).
-function _proceedFromLesson(current){
-  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-  const {pct} = lessonProgress(current);
-
-  // Випадок 2: поточний вузол ще не завершено (<80%) → повторюємо його ж.
-  if(pct < 80){
-    _goToLessonOrExit(current);
-    return;
-  }
-
-  // Вузол завершено — шукаємо наступний РОЗБЛОКОВАНИЙ і ще НЕ завершений
-  // вузол у ТІЙ Ж главі, у ПОРЯДКУ МАСИВУ (buildLearningPath генерує
-  // LESSONS строго послідовно: суб-уроки й діалог-вузли одного модуля
-  // йдуть підряд, з тим самим .module — тому пошук "current.module+1"
-  // тепер НЕПРАВИЛЬНИЙ: він одразу стрибав в ІНШИЙ оригінальний модуль,
-  // пропускаючи решту поточного — саме це й було причиною "показує
-  // завдання наступного діалогу" одразу після завершення попереднього
-  // кроку, замість справжнього наступного суб-уроку тієї ж глави).
-  const sameChapter = lessons.filter(l => l.chapter === current.chapter);
-  const nextInChapter = sameChapter.find(l => l.id !== current.id && lessonUnlocked(l) && lessonProgress(l).pct < 80);
-
-  // Випадок 3: є ще не пройдений вузол цієї глави → відкриваємо його.
-  if(nextInChapter){
-    _goToLessonOrExit(nextInChapter);
-    return;
-  }
-
-  // Випадок 4: це був останній модуль глави → урок повторення цієї глави.
-  startReviewLesson([current.chapter], 'chapter');
-}
-
-// Допоміжна: переходить у lesson-flow для конкретного уроку, або виходить
-// у список Lernpfad, якщо такого уроку не існує (наприклад останній курс
-// глав уже пройдено — немає "наступної глави").
-function _goToLessonOrExit(lesson){
-  if(!lesson){ exitLessonFlow(); return; }
-  // Диспетчеризація по типу вузла: dialogue-вузли МАЮТЬ йти через
-  // startModuleDialogueBonus (dlgCards), а не startLessonFlow (яка
-  // трактує lesson.cardIds як vocab-слова для Словника). Раніше тут
-  // викликався ЛИШЕ startLessonFlow безумовно — коли _proceedFromLesson
-  // знаходив наступним DIALOGUE-вузол (а тепер, коли кожна картка
-  // діалогу — окремий вузол, це трапляється регулярно), Словник
-  // відкривався з id діалогової картки замість vocab-id — звідси
-  // порожня вибірка слів після "Наступний урок".
-  if(lesson.type === 'dialogue'){
-    startModuleDialogueBonus(lesson.id);
-    return;
-  }
-  // Не викликаємо exitLessonFlow() щоб уникнути showView('lernpfad')
-  // перед showView('vocab') — це ламає autoplay при першому натисканні.
-  // Робимо мінімальне скидання стану вручну:
-  LF = null;
-  V.lessonId = null; V.lessonCards = []; clearVocabFilter();
-  quizState = null;
-  const bar = document.getElementById('lesson-flow-bar');
-  if(bar) bar.classList.remove('active');
-  const resultEl = document.getElementById('lesson-result');
-  if(resultEl) resultEl.classList.remove('show');
-  const vocabTop = document.querySelector('.vocab-top');
-  if(vocabTop) vocabTop.style.display = '';
-  lfSetLessonMode(false);
-  // НЕ викликаємо showView('lernpfad') і switchVocabTab(0) — одразу стартуємо урок
-  startLessonFlow(lesson.id);
-}
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
 function stopVocab(){
