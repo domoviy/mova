@@ -2261,7 +2261,10 @@ var LESSONS = [
       "k10_040"
     ],
     "unlockAfter": "k10m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_072"
+    ]
   },
   {
     "id": "k11m1",
@@ -2297,7 +2300,10 @@ var LESSONS = [
       "k11_024"
     ],
     "unlockAfter": "k10m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_073"
+    ]
   },
   {
     "id": "k11m2",
@@ -2338,7 +2344,8 @@ var LESSONS = [
       "dlg_a22_009",
       "dlg_a22_010",
       "dlg_a22_011",
-      "dlg_a22_012"
+      "dlg_a22_012",
+      "dlg_074"
     ]
   },
   {
@@ -6910,6 +6917,156 @@ var DIALOGE = [
       "ru": "Отлично, я думаю, это поможет нам помириться и лучше сотрудничать!"
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_072",
+    "cat": "Einen Streitpunkt gemeinsam lösen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie und Ihr Mitbewohner / Ihre Mitbewohnerin haben schon lange Streit wegen der Küche. Sie möchten das klären.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was ist der Streitpunkt genau?<br>Wer gibt worin nach?<br>Wie halten wir die Lösung fest?",
+      "en": "You and your flatmate have had a long-running argument about the kitchen. You would like to sort it out.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What exactly is the point of contention?<br>Who gives in on what?<br>How do we record the solution?",
+      "uk": "Ви й ваш співмешканець / співмешканка вже давно сваритеся через кухню. Ви хочете це владнати.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>У чому саме предмет суперечки?<br>Хто в чому поступається?<br>Як ми зафіксуємо рішення?",
+      "ru": "Вы и ваш сосед / соседка по квартире уже давно ссоритесь из-за кухни. Вы хотите это уладить.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>В чём именно предмет спора?<br>Кто в чём уступает?<br>Как мы зафиксируем решение?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo Mark! Wir haben schon lange keine Ruhe wegen des Streitpunkts mit der Küche. Lass uns das klären.",
+      "en": "Hi Mark! We haven't had any peace for a long time because of the argument about the kitchen. Let's sort it out.",
+      "uk": "Привіт, Марку! У нас уже давно немає спокою через суперечку про кухню. Давай це владнаємо.",
+      "ru": "Привет, Марк! У нас уже давно нет покоя из-за спора о кухне. Давай это уладим."
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> uns beide einigen, bevor es schlimmer wird.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> both reach an agreement before it gets worse.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> обоє домовитися, поки не стало гірше.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> оба договориться, пока не стало хуже.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich bin bereit, bei der Küchenordnung etwas nachzugeben.<br><r>Ich hätte einen Vorschlag:</r> Wir machen einen klaren Plan, wer wann putzt.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I'm willing to give in a bit on the kitchen order.<br><r>I have a suggestion:</r> we make a clear plan of who cleans when.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я готова трохи поступитися щодо порядку на кухні.<br><r>У мене є пропозиція:</r> зробимо чіткий план, хто коли прибирає.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я готова немного уступить насчёт порядка на кухне.<br><r>У меня есть предложение:</r> сделаем чёткий план, кто когда убирает.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir toleranter mit unserer Verschiedenheit umgehen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we handle our differences more tolerantly.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> ставитися толерантніше до наших відмінностей.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> относиться толерантнее к нашим различиям.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir schreiben den Plan auf und hängen ihn in die Küche.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we write the plan down and hang it in the kitchen.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> напишемо план і повісимо його на кухні.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> напишем план и повесим его на кухне.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, dann haben wir endlich wieder Ruhe zu Hause!",
+      "en": "Great, then we'll finally have peace at home again!",
+      "uk": "Чудово, тоді у нас нарешті знову буде спокій вдома!",
+      "ru": "Отлично, тогда у нас наконец снова будет покой дома!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_073",
+    "cat": "Einen Tag ohne Bildschirm planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie haben zu viel Zeit am Bildschirm verbracht und möchten mit einer Freundin einen Tag ohne Handy planen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Welchen Tag wählen wir?<br>Welche Geräte lassen wir zu Hause?<br>Was machen wir stattdessen?",
+      "en": "You have spent too much time on the screen and would like to plan a day without your phone with a friend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Which day do we choose?<br>Which devices do we leave at home?<br>What do we do instead?",
+      "uk": "Ви провели забагато часу біля екрана й хочете спланувати день без телефону з подругою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Який день оберемо?<br>Які пристрої залишимо вдома?<br>Що робитимемо натомість?",
+      "ru": "Вы провели слишком много времени у экрана и хотите спланировать день без телефона с подругой.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Какой день выберем?<br>Какие устройства оставим дома?<br>Что будем делать вместо этого?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo Anna! Ich habe zu viel Zeit am Bildschirm verbracht. Wollen wir einen Tag ohne Handy machen?",
+      "en": "Hi Anna! I've spent too much time on the screen. Shall we have a day without our phones?",
+      "uk": "Привіт, Анно! Я забагато часу провела біля екрана. Влаштуємо день без телефону?",
+      "ru": "Привет, Анна! Я слишком много времени провела у экрана. Устроим день без телефона?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> den nächsten Sonntag dafür wählen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> choose next Sunday for it.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> обрати для цього наступну неділю.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> выбрать для этого следующее воскресенье.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> das <g>nützliche</g> Navigationsgerät sollten wir vielleicht doch mitnehmen.<br><r>Ich hätte einen Vorschlag:</r> Wir lassen nur die Handys zu Hause.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> we should probably still bring the <g>useful</g> navigation device.<br><r>I have a suggestion:</r> we only leave the phones at home.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> корисний навігаційний пристрій нам, мабуть, варто все ж узяти.<br><r>У мене є пропозиція:</r> залишимо вдома лише телефони.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> полезное навигационное устройство нам, пожалуй, всё же стоит взять.<br><r>У меня есть предложение:</r> оставим дома только телефоны.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir in den <g>großen</g> Park in der Nähe gehen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we go to the <g>big</g> park nearby.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> піти у великий парк неподалік.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> пойти в большой парк неподалёку.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir treffen uns um zehn Uhr am Eingang.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we meet at ten o'clock at the entrance.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> зустрінемося о десятій біля входу.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> встретимся в десять у входа.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich freue mich schon auf einen Tag ohne Bildschirm!",
+      "en": "Great, I'm already looking forward to a day without a screen!",
+      "uk": "Чудово, я вже тішуся дню без екрана!",
+      "ru": "Отлично, я уже радуюсь дню без экрана!"
+    },
+    "gram": "adjektiv_bestimmter_artikel"
+  },
+  {
+    "id": "dlg_074",
+    "cat": "Ein kaputtes Gerät reparieren lassen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Ihr Laptop ist kaputt, das Display funktioniert nicht mehr. Sie möchten mit einem Freund ins Geschäft gehen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was prüfen wir zuerst?<br>Was nehmen wir mit?<br>Wann gehen wir hin?",
+      "en": "Your laptop is broken, the display no longer works. You would like to go to the shop with a friend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we check first?<br>What do we bring?<br>When do we go?",
+      "uk": "Ваш ноутбук зламався, дисплей більше не працює. Ви хочете піти в магазин з другом.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Що ми перевіримо спочатку?<br>Що ми візьмемо з собою?<br>Коли ми підемо?",
+      "ru": "Ваш ноутбук сломался, дисплей больше не работает. Вы хотите пойти в магазин с другом.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Что мы проверим сначала?<br>Что мы возьмём с собой?<br>Когда мы пойдём?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo David! Mein Laptop ist kaputt, das Display funktioniert nicht mehr. Kommst du mit ins Geschäft?",
+      "en": "Hi David! My laptop is broken, the display doesn't work anymore. Will you come with me to the shop?",
+      "uk": "Привіт, Девіде! Мій ноутбук зламався, дисплей більше не працює. Підеш зі мною в магазин?",
+      "ru": "Привет, Дэвид! Мой ноутбук сломался, дисплей больше не работает. Пойдёшь со мной в магазин?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst die Garantie prüfen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> check the warranty first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку перевірити гарантію.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала проверить гарантию.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich glaube, das <g>defekte</g> Display ist schon zwei Jahre alt, die Garantie ist vielleicht abgelaufen.<br><r>Ich hätte einen Vorschlag:</r> Wir fragen trotzdem einen Techniker.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I think the <g>defective</g> display is already two years old, the warranty may have expired.<br><r>I have a suggestion:</r> we ask a technician anyway.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я думаю, несправному дисплею вже два роки, гарантія, можливо, закінчилась.<br><r>У мене є пропозиція:</r> все одно запитаємо техніка.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я думаю, неисправному дисплею уже два года, гарантия, возможно, закончилась.<br><r>У меня есть предложение:</r> всё равно спросим техника.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir auch den <g>alten</g> Akku mitnehmen, falls er das Problem ist.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we also bring the <g>old</g> battery, in case that's the problem.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> взяти ще й старий акумулятор, якщо проблема в ньому.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> взять ещё и старый аккумулятор, если проблема в нём.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir gehen morgen früh direkt zum Kundendienst.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we go straight to customer service tomorrow morning.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> завтра вранці підемо прямо до служби підтримки.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> завтра утром пойдём прямо в службу поддержки.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich hoffe, sie können den Laptop schnell reparieren!",
+      "en": "Great, I hope they can repair the laptop quickly!",
+      "uk": "Чудово, сподіваюся, вони швидко відремонтують ноутбук!",
+      "ru": "Отлично, надеюсь, они быстро отремонтируют ноутбук!"
+    },
+    "gram": "adjektiv_bestimmter_artikel"
   }
 ];
 

@@ -2117,7 +2117,10 @@ var LESSONS = [
       "k4_046"
     ],
     "unlockAfter": "k4m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_086"
+    ]
   },
   {
     "id": "k4m5",
@@ -2136,7 +2139,8 @@ var LESSONS = [
       "ru": "Результаты опроса"
     },
     "skills": [
-      "Lesen"
+      "Lesen",
+      "Sprechen"
     ],
     "grammar": "genitiv_alternativen",
     "cardIds": [
@@ -2157,7 +2161,8 @@ var LESSONS = [
       "dlg_013",
       "dlg_014",
       "dlg_015",
-      "dlg_016"
+      "dlg_016",
+      "dlg_087"
     ]
   },
   {
@@ -2194,7 +2199,10 @@ var LESSONS = [
       "k4_060"
     ],
     "unlockAfter": "k4m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_088"
+    ]
   },
   {
     "id": "k5m1",
@@ -27522,6 +27530,228 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, встречаемся каждую среду, готовим вместе, бегаем три раза в неделю, и пишем друг другу каждый вечер. Уже жду с нетерпением наших перемен! До среды!"
     },
     "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "dlg_086",
+    "cat": "Geburtstagstorte gemeinsam backen planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Bald ist der Geburtstag einer gemeinsamen Freundin. Sie möchten mit einem Freund/einer Freundin zusammen kochen und backen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das organisieren.\nDiese Punkte helfen Ihnen:\nWelches Familienrezept nutzen Sie für den Kuchen?\nWas fehlt im Küchenschrank?\nWie groß soll die Portionengröße sein?\nWie decken Sie den Gästetisch?\nWas machen Sie mit den Essensresten danach?",
+      "en": "Situation: A mutual friend's birthday is coming up soon. You want to cook and bake together with a friend.\nTask: Plan together with your conversation partner how you'll organize it.\nThese points will help you:\nWhich family recipe will you use for the cake?\nWhat's missing in the kitchen cabinet?\nWhat portion size do you need?\nHow will you set the guest table?\nWhat will you do with the leftovers afterwards?",
+      "uk": "Ситуація: Скоро день народження спільної подруги. Ви хочете приготувати й спекти щось разом із другом/подругою.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви це організуєте.\nЦі пункти Вам допоможуть:\nЯкий сімейний рецепт Ви використаєте для торта?\nЧого бракує в кухонній шафі?\nЯкий розмір порції Вам потрібен?\nЯк Ви накриєте стіл для гостей?\nЩо Ви робитимете із залишками їжі потім?",
+      "ru": "Ситуация: Скоро день рождения общей подруги. Вы хотите приготовить и испечь что-то вместе с другом/подругой.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это организуете.\nЭти пункты Вам помогут:\nКакой семейный рецепт Вы используете для торта?\nЧего не хватает в кухонном шкафу?\nКакой размер порции Вам нужен?\nКак Вы накроете стол для гостей?\nЧто Вы будете делать с остатками еды потом?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo! Bald ist der Geburtstag von Anna. Wollen wir zusammen kochen und backen?",
+      "en": "Hi! Anna's birthday is coming up soon. Should we cook and bake together?",
+      "uk": "Привіт! Скоро день народження Анни. Може, приготуємо і спечемо щось разом?",
+      "ru": "Привет! Скоро день рождения Анны. Может, приготовим и испечём что-то вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> die <g>Geburtstagstorte</g> nach dem Rezept meiner Mutter backen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we bake the <g>birthday cake</g> using my mother's recipe.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спекли <g>торт на день народження</g> за рецептом моєї мами.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы испекли <g>торт на день рождения</g> по рецепту моей мамы.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> zuerst im <g>Küchenschrank</g> nachsehen, was wir noch an Zutaten haben.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we first check the <g>kitchen cabinet</g> to see what ingredients we still have.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми спершу подивилися в <g>кухонній шафі</g>, які інгредієнти в нас ще є.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы сначала посмотрели в <g>кухонном шкафу</g>, какие ингредиенты у нас ещё есть.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Anzahl der Gäste denken.<br><r>Wir könnten doch</r> die <g>Portionengröße</g> danach berechnen, wie viele Leute kommen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the number of guests.<br><r>We could</r> calculate the <g>portion size</g> based on how many people are coming.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про кількість гостей.<br><r>Ми могли б</r> розрахувати <g>розмір порції</g> залежно від того, скільки людей прийде.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о количестве гостей.<br><r>Мы могли бы</r> рассчитать <g>размер порции</g> в зависимости от того, сколько людей придёт.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> noch ein zweites <g>Familienrezept</g> ausprobieren, vielleicht hat deine Oma auch eins.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we also try a second <g>family recipe</g>, maybe your grandma has one too.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми спробували ще й другий <g>сімейний рецепт</g>, можливо, у твоєї бабусі теж є якийсь.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы попробовали ещё и второй <g>семейный рецепт</g>, может, у твоей бабушки тоже есть какой-то.<br><r>Ты согласен с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir decken den <g>Gästetisch</g> schön, mit Blumen und Kerzen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we set the <g>guest table</g> nicely, with flowers and candles.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми гарно накриємо <g>стіл для гостей</g>, з квітами й свічками.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> мы красиво накроем <g>стол для гостей</g>, с цветами и свечами.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir genug Zeit für alles haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> schon am Vortag mit dem Backen anfangen.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we'll have enough time for everything.<br><r>Maybe it would be best if</r> we start baking already the day before.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи вистачить нам часу на все.<br><r>Можливо, було б найкраще, якби ми</r> почали пекти вже напередодні.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, хватит ли нам времени на всё.<br><r>Возможно, было бы лучше, если бы мы</r> начали печь уже накануне.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> die <g>Essensreste</g> danach an die Nachbarn verteilen, damit nichts weggeworfen wird.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> give the <g>leftovers</g> to the neighbours afterwards, so nothing gets thrown away.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> роздамо <g>залишки їжі</g> сусідам потім, щоб нічого не викидати.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> раздадим <g>остатки еды</g> соседям потом, чтобы ничего не выбрасывать.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> am Ende gemeinsam alles probieren, bevor die Gäste kommen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we taste everything together at the end, before the guests arrive.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми наприкінці разом усе спробували, перед тим як прийдуть гості.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы в конце всё вместе попробовали, перед тем как придут гости.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir backen die Torte nach dem Familienrezept, decken den Gästetisch schön, und verteilen die Essensreste danach an die Nachbarn. Ich freue mich schon aufs Kochen! Bis morgen!",
+      "en": "Yes, good idea! So, we'll bake the cake using the family recipe, set the guest table nicely, and give the leftovers to the neighbours afterwards. I'm already looking forward to cooking! See you tomorrow!",
+      "uk": "Так, гарна ідея! Отже, печемо торт за сімейним рецептом, гарно накриваємо стіл для гостей, а потім роздаємо залишки їжі сусідам. Уже тішуся готуванню! До завтра!",
+      "ru": "Да, хорошая идея! Итак, печём торт по семейному рецепту, красиво накрываем стол для гостей, а потом раздаём остатки еды соседям. Уже жду с нетерпением готовки! До завтра!"
+    },
+    "gram": "komposita_fugenelemente"
+  },
+  {
+    "id": "dlg_087",
+    "cat": "Schmeckt's?",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie möchten mit einem Freund/einer Freundin eine Umfrage zu Essgewohnheiten planen und die Ergebnisse später präsentieren.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie die Umfrage durchführen.\nDiese Punkte helfen Ihnen:\nWelche Fragen stellen Sie in der Umfrage?\nWen befragen Sie?\nWie sammeln Sie die Antworten?\nWie präsentieren Sie die Ergebnisse? (Statistik, Durchschnitt)\nBis wann ist die Umfrage fertig?",
+      "en": "Situation: You want to plan a survey about eating habits with a friend and present the results later.\nTask: Plan together with your conversation partner how you'll conduct the survey.\nThese points will help you:\nWhat questions will you ask in the survey?\nWho will you survey?\nHow will you collect the answers?\nHow will you present the results? (statistics, average)\nBy when will the survey be finished?",
+      "uk": "Ситуація: Ви хочете спланувати з другом/подругою опитування про харчові звички і потім представити результати.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви проведете опитування.\nЦі пункти Вам допоможуть:\nЯкі запитання Ви поставите в опитуванні?\nКого Ви опитаєте?\nЯк Ви зберете відповіді?\nЯк Ви представите результати? (статистика, середнє значення)\nДо якого часу опитування буде готове?",
+      "ru": "Ситуация: Вы хотите спланировать с другом/подругой опрос о привычках питания и потом представить результаты.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы проведёте опрос.\nЭти пункты Вам помогут:\nКакие вопросы Вы зададите в опросе?\nКого Вы опросите?\nКак Вы соберёте ответы?\nКак Вы представите результаты? (статистика, среднее значение)\nДо какого времени опрос будет готов?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo! Ich würde gern eine Umfrage zu unseren Essgewohnheiten machen. Hast du Lust, das mit mir zu planen?",
+      "en": "Hi! I'd like to do a survey about our eating habits. Do you feel like planning that with me?",
+      "uk": "Привіт! Хотів би провести опитування про наші харчові звички. Маєш бажання спланувати це зі мною?",
+      "ru": "Привет! Хотел бы провести опрос о наших привычках питания. Есть желание спланировать это со мной?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Meinung <g>der Mehrheit</g> herausfinden wollen, also fragen wir viele Leute.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first find out the opinion <g>of the majority</g>, so we'll ask a lot of people.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу з'ясували думку <g>більшості</g>, тому запитаємо багато людей.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала выяснили мнение <g>большинства</g>, поэтому спросим много людей.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> die Fragen <g>von unserem Kurs</g> beantworten lassen.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we let the questions be answered <g>by our class</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> на запитання відповіли учасники <g>нашого курсу</g>.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> на вопросы ответили участники <g>нашего курса</g>.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Auswertung denken.<br><r>Wir könnten doch</r> die Antworten <g>der Teilnehmer</g> in einer Tabelle sammeln.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the evaluation.<br><r>We could</r> collect the answers <g>of the participants</g> in a table.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про обробку даних.<br><r>Ми могли б</r> зібрати відповіді <g>учасників</g> у таблиці.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать об обработке данных.<br><r>Мы могли бы</r> собрать ответы <g>участников</g> в таблице.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> am Ende den Durchschnitt <g>von allen Antworten</g> berechnen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we calculate the average <g>of all the answers</g> at the end.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми наприкінці порахували середнє значення <g>всіх відповідей</g>.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы в конце посчитали среднее значение <g>всех ответов</g>.<br><r>Ты согласна с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir zeigen die Ergebnisse <g>der Umfrage</g> als kleine Statistik.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we show the results <g>of the survey</g> as a small statistic.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> покажемо результати <g>опитування</g> як невелику статистику.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> покажем результаты <g>опроса</g> как небольшую статистику.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir genug Teilnehmer finden.<br><r>Vielleicht wäre es am besten, wenn wir</r> auch die Kollegen <g>von meiner Schwester</g> fragen.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we'll find enough participants.<br><r>Maybe it would be best if</r> we also ask the colleagues <g>of my sister</g>.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи знайдемо ми достатньо учасників.<br><r>Можливо, було б найкраще, якби ми</r> запитали ще й колег <g>моєї сестри</g>.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, найдём ли мы достаточно участников.<br><r>Возможно, было бы лучше, если бы мы</r> спросили ещё и коллег <g>моей сестры</g>.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> die Tendenz <g>der Antworten</g> am Ende kurz zusammenfassen.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> briefly summarize the trend <g>of the answers</g> at the end.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> наприкінці коротко підсумуємо тенденцію <g>відповідей</g>.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> в конце коротко подведём итоги тенденции <g>ответов</g>.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> die Umfrage bis Ende <g>der Woche</g> fertig machen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we finish the survey by the end <g>of the week</g>.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми закінчили опитування до кінця <g>тижня</g>.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы закончили опрос до конца <g>недели</g>.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir stellen die Fragen unserem Kurs, sammeln die Antworten, und berechnen am Ende den Durchschnitt für die Statistik. Ich freue mich schon auf die Ergebnisse! Bis bald!",
+      "en": "Yes, good idea! So, we'll ask our class the questions, collect the answers, and calculate the average for the statistic at the end. I'm already looking forward to the results! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, ставимо запитання нашому курсу, збираємо відповіді, і наприкінці рахуємо середнє значення для статистики. Уже тішуся результатам! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, задаём вопросы нашему курсу, собираем ответы, и в конце считаем среднее значение для статистики. Уже жду результатов с нетерпением! До связи!"
+    },
+    "gram": "genitiv_alternativen"
+  },
+  {
+    "id": "dlg_088",
+    "cat": "Gesundes Meal-Prep planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie möchten sich gesünder ernähren und mit einem Freund/einer Freundin Essen für die ganze Woche vorkochen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das Essen vorbereiten.\nDiese Punkte helfen Ihnen:\nWas kochen Sie? (abwechslungsreich, ausgewogen)\nWie groß sind die Portionen?\nWie viele Frischhaltedosen brauchen Sie?\nWie sorgen Sie für genug Vitamine und Ballaststoffe?\nWann treffen Sie sich zum Kochen?",
+      "en": "Situation: You want to eat more healthily and prepare meals for the whole week with a friend.\nTask: Plan together with your conversation partner how you'll prepare the food.\nThese points will help you:\nWhat will you cook? (varied, balanced)\nHow big are the portions?\nHow many food storage containers do you need?\nHow will you make sure you get enough vitamins and fibre?\nWhen will you meet to cook?",
+      "uk": "Ситуація: Ви хочете харчуватися здоровіше і приготувати їжу на весь тиждень разом із другом/подругою.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви приготуєте їжу.\nЦі пункти Вам допоможуть:\nЩо Ви готуватимете? (різноманітно, збалансовано)\nЯкий розмір порцій?\nСкільки контейнерів для зберігання їжі Вам потрібно?\nЯк Ви подбаєте про достатньо вітамінів і клітковини?\nКоли Ви зустрінетеся для готування?",
+      "ru": "Ситуация: Вы хотите питаться здоровее и приготовить еду на всю неделю вместе с другом/подругой.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы приготовите еду.\nЭти пункты Вам помогут:\nЧто Вы будете готовить? (разнообразно, сбалансированно)\nКакой размер порций?\nСколько контейнеров для хранения еды Вам нужно?\nКак Вы позаботитесь о достаточном количестве витаминов и клетчатки?\nКогда Вы встретитесь для готовки?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo! Ich möchte mich gesünder ernähren. Sollen wir zusammen Essen für die Woche vorkochen?",
+      "en": "Hi! I want to eat healthier. Should we cook meals for the week together?",
+      "uk": "Привіт! Хочу харчуватися здоровіше. Може, приготуємо їжу на тиждень разом?",
+      "ru": "Привет! Хочу питаться здоровее. Может, приготовим еду на неделю вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> ein abwechslungsreiches Menü planen, damit es nicht langweilig wird.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we plan a varied menu, so it doesn't get boring.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спланували різноманітне меню, щоб не було нудно.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы спланировали разнообразное меню, чтобы не было скучно.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auf eine ausgewogene Mischung aus Gemüse und Eiweiß achten.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we make sure to have a balanced mix of vegetables and protein.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми подбали про збалансоване поєднання овочів і білка.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы позаботились о сбалансированном сочетании овощей и белка.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Portionen denken.<br><r>Wir könnten doch</r> die Portionen gleich groß machen, dann ist es fair für beide.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the portions.<br><r>We could</r> make the portions the same size, so it's fair for both of us.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про порції.<br><r>Ми могли б</r> зробити порції однакового розміру, тоді буде справедливо для обох.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о порциях.<br><r>Мы могли бы</r> сделать порции одинакового размера, тогда будет справедливо для обоих.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> genug Frischhaltedosen kaufen, bevor wir anfangen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we buy enough food storage containers before we start.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми купили достатньо контейнерів для зберігання їжі, перш ніж почати.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы купили достаточно контейнеров для хранения еды, прежде чем начать.<br><r>Ты согласен с этим?</r>"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir achten auf genug Ballaststoffe, zum Beispiel mit Vollkornreis.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we make sure to get enough fibre, for example with brown rice.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми подбаємо про достатньо клітковини, наприклад із бурим рисом.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> мы позаботимся о достаточном количестве клетчатки, например с бурым рисом.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir alle wichtigen Vitamine bekommen.<br><r>Vielleicht wäre es am besten, wenn wir</r> noch etwas Obst als Snack dazupacken.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we're getting all the important vitamins.<br><r>Maybe it would be best if</r> we add some fruit as a snack.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи отримуємо ми всі важливі вітаміни.<br><r>Можливо, було б найкраще, якби ми</r> додали трохи фруктів як перекус.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, получаем ли мы все важные витамины.<br><r>Возможно, было бы лучше, если бы мы</r> добавили немного фруктов как перекус.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch die Kalorien pro Portion grob berechnen.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> also roughly calculate the calories per portion.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> ще приблизно порахуємо калорії на порцію.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> ещё примерно посчитаем калории на порцию.<br><r>Тебе так подходит?</r>"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> uns schon am Sonntagnachmittag zum Kochen treffen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we meet to cook on Sunday afternoon already.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми зустрілися для готування вже в неділю вдень.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы встретились для готовки уже в воскресенье днём.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir kochen am Sonntag ein abwechslungsreiches, ausgewogenes Menü, packen es in Frischhaltedosen und nehmen noch etwas Obst als Snack mit. Ich freue mich schon aufs Kochen! Bis Sonntag!",
+      "en": "Yes, good idea! So, we'll cook a varied, balanced menu on Sunday, pack it into food storage containers, and take some fruit as a snack too. I'm already looking forward to cooking! See you Sunday!",
+      "uk": "Так, гарна ідея! Отже, готуємо в неділю різноманітне, збалансоване меню, розкладаємо в контейнери для зберігання їжі, і беремо ще трохи фруктів як перекус. Уже тішуся готуванню! До неділі!",
+      "ru": "Да, хорошая идея! Итак, готовим в воскресенье разнообразное, сбалансированное меню, раскладываем в контейнеры для хранения еды, и берём ещё немного фруктов как перекус. Уже жду с нетерпением готовки! До воскресенья!"
+    },
+    "gram": ""
   }
 ];
 
