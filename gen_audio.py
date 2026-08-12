@@ -197,15 +197,36 @@ def collect_gram_words(raw_items, primary_lang):
     тему. Дистрактори тепер детерміновані (build_gram_card, без
     Math.random), тож безпечно озвучити кожне слово ОДИН РАЗ і
     посилатись на нього з будь-якої картки за текстом слова.
+
+    ДЕДУПЛІКАЦІЯ БЕЗ УРАХУВАННЯ РЕГІСТРУ (.lower() як ключ) — і це не
+    косметика, а причина давнього бага "ті самі 56 файлів постійно
+    перегенеруються": те саме слово-конектор у реченні природно
+    трапляється і з великої літери (на початку речення — 'Allerdings'),
+    і з малої (в середині — 'allerdings'), а в GRAM_DISTRACTOR_POOL
+    (тут, у Python) слова завжди записані малими. Раніше words був
+    звичайним case-sensitive set() — 'Allerdings' і 'allerdings'
+    потрапляли туди як ДВА різні елементи, slugify_word() зводив обидва
+    до ОДНОГО й того самого файлу (gram_word_allerdings_de_100), але
+    кожен зі своїм текстом → своїм content_hash. Обидва проходили через
+    okremі asyncio-таски, що писали в manifest.json під той самий mkey
+    — хто з них завершувався ОСТАННІМ (а порядок завершення паралельних
+    мережевих запитів до Edge TTS не гарантований), той і "вигравав" цей
+    прогін. Наступного прогону програний варіант знову не збігався з
+    manifest і йшов у CHANGED — і так безкінечно, два варіанти
+    "боролися" за один mkey щоразу. Перший-по-порядку варіант (за
+    порядком items у базі) тепер лишається канонічним завжди — і write
+    в manifest.json стабілізується raз і назавжди.
     """
-    words = set()
+    words = {}  # lower() -> перша (за порядком items) форма слова
     for item in raw_items:
         card = build_gram_card(item, primary_lang)
         if not card:
             continue
-        words.add(card["answer"])
-        words.update(card["distractors"])
-    return words
+        for w in [card["answer"]] + card["distractors"]:
+            key = w.lower()
+            if key not in words:
+                words[key] = w
+    return set(words.values())
 
 
 def slugify_word(word):

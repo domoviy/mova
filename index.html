@@ -3249,7 +3249,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '479-12e5c8f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3377,7 +3377,14 @@ function loadCharactersScript(){
 // Наступні суб-уроки того самого модуля просто йдуть один за одним.
 var PATH_CONFIG = {
   A2:         { newWordsPerLesson: 4, reviewMix: 3 },
-  B1:         { newWordsPerLesson: 5, reviewMix: 3 },
+  // Було newWordsPerLesson: 5 — нижча щільність суб-уроків, ніж в A2,
+  // хоча суб'єктивна складність слів A2 і B1 для користувача приблизно
+  // однакова (не факт, що B1-слово засвоюється в 1.25 раза легше за
+  // A2-слово, щоб виправдати ширший крок). Обидва курси до того ж мають
+  // рівно 10 карток/модуль — тож саме це число (4 замість 5) і визначало
+  // різницю у видимій кількості вузлів лінії (192 у A2 проти 176 у B1,
+  // попри те що в B1 модулів і слів більше). Тепер однаково з A2.
+  B1:         { newWordsPerLesson: 4, reviewMix: 3 },
   B2:         { newWordsPerLesson: 7, reviewMix: 3 },
   Foundations:{ newWordsPerLesson: 6, reviewMix: 3 },
 };
