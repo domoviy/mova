@@ -2581,7 +2581,10 @@ var LESSONS = [
       "k12_040"
     ],
     "unlockAfter": "k12m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_080"
+    ]
   },
   {
     "id": "k13m1",
@@ -2617,7 +2620,10 @@ var LESSONS = [
       "k13_024"
     ],
     "unlockAfter": "k12m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_081"
+    ]
   },
   {
     "id": "k13m2",
@@ -2658,7 +2664,8 @@ var LESSONS = [
       "dlg_a22_017",
       "dlg_a22_018",
       "dlg_a22_019",
-      "dlg_a22_020"
+      "dlg_a22_020",
+      "dlg_082"
     ]
   },
   {
@@ -2695,7 +2702,10 @@ var LESSONS = [
       "k13_033"
     ],
     "unlockAfter": "k13m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_083"
+    ]
   },
   {
     "id": "k13m4",
@@ -7330,6 +7340,206 @@ var DIALOGE = [
       "ru": "Отлично, я думаю, это будет оригинальный подарок, Нина!"
     },
     "gram": "praepositionen_akkusativ_dativ"
+  },
+  {
+    "id": "dlg_080",
+    "cat": "Ein Upcycling-Projekt planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie haben eine alte Schublade und einen Korb gefunden. Sie möchten mit einer Freundin daraus etwas Neues machen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was machen wir aus der Schublade?<br>Was machen wir aus dem Korb?<br>Wann fangen wir an?",
+      "en": "You have found an old drawer and a basket. You would like to make something new out of them with a friend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we make from the drawer?<br>What do we make from the basket?<br>When do we start?",
+      "uk": "Ви знайшли стару шухляду й кошик. Ви хочете зробити з них щось нове з подругою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Що ми зробимо з шухляди?<br>Що ми зробимо з кошика?<br>Коли ми почнемо?",
+      "ru": "Вы нашли старый ящик и корзину. Вы хотите сделать из них что-то новое с подругой.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Что мы сделаем из ящика?<br>Что мы сделаем из корзины?<br>Когда мы начнём?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo Julia! Ich habe eine alte Schublade und einen Korb gefunden. Wollen wir daraus etwas Neues machen?",
+      "en": "Hi Julia! I found an old drawer and a basket. Shall we make something new out of them?",
+      "uk": "Привіт, Юліє! Я знайшов стару шухляду й кошик. Зробимо з них щось нове?",
+      "ru": "Привет, Юлия! Я нашёл старый ящик и корзину. Сделаем из них что-то новое?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> aus der Schublade ein kleines Regal bauen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> build a small shelf out of the drawer.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> зробити з шухляди маленьку полицю.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сделать из ящика маленькую полку.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> wir sollten auch den Korb für Kissen benutzen, das wäre praktisch.<br><r>Ich hätte einen Vorschlag:</r> Wir legen weiche Kissen hinein.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> we should also use the basket for cushions, that would be practical.<br><r>I have a suggestion:</r> we put soft cushions inside.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> нам варто ще використати кошик під подушки, це було б практично.<br><r>У мене є пропозиція:</r> покладемо туди м'які подушки.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> нам стоит ещё использовать корзину под подушки, это было бы практично.<br><r>У меня есть предложение:</r> положим туда мягкие подушки.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir den alten Spiegel auch neu gestalten, damit er wieder schön aussieht.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we also redesign the old mirror, so it looks nice again.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> ще й оновити старе дзеркало, щоб воно знову виглядало гарно.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> ещё и обновить старое зеркало, чтобы оно снова выглядело красиво.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir treffen uns am Samstag und fangen zusammen an.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we meet on Saturday and start together.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> зустрінемося в суботу й почнемо разом.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> встретимся в субботу и начнём вместе.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich freue mich schon, alte Sachen wiederzuverwenden, Alex!",
+      "en": "Great, I'm already looking forward to reusing old things, Alex!",
+      "uk": "Чудово, я вже тішуся, що повторно використаємо старі речі, Алекс!",
+      "ru": "Отлично, я уже радуюсь, что повторно используем старые вещи, Алекс!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_081",
+    "cat": "Eine Ausbildung zum Handwerksberuf planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie glauben, dass Sie Elektriker werden möchten. Sie möchten mit einem Freund planen, wie Sie das erreichen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wie finden wir eine Ausbildungsstelle?<br>Welche Stärken und Schwächen habe ich?<br>Was machen wir als Nächstes?",
+      "en": "You think you want to become an electrician. You would like to plan with a friend how to achieve that.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>How do we find a training position?<br>What are my strengths and weaknesses?<br>What do we do next?",
+      "uk": "Ви думаєте, що хочете стати електриком. Ви хочете спланувати з другом, як цього досягти.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Як ми знайдемо місце навчання?<br>Які в мене сильні й слабкі сторони?<br>Що ми робимо далі?",
+      "ru": "Вы думаете, что хотите стать электриком. Вы хотите спланировать с другом, как этого достичь.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Как мы найдём место для обучения?<br>Какие у меня сильные и слабые стороны?<br>Что мы делаем дальше?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo Mark! Ich glaube, ich werde Elektriker. Kannst du mir helfen, das zu planen?",
+      "en": "Hi Mark! I think I'll become an electrician. Can you help me plan that?",
+      "uk": "Привіт, Марку! Я думаю, стану електриком. Можеш допомогти мені це спланувати?",
+      "ru": "Привет, Марк! Я думаю, стану электриком. Можешь помочь мне это спланировать?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst im Internet nach Ausbildungsplätzen suchen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> first search online for training positions.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку пошукати місця навчання в інтернеті.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала поискать места для обучения в интернете.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich hoffe, ich <g>werde</g> auch wirklich ein guter Elektriker.<br><r>Ich hätte einen Vorschlag:</r> Wir schreiben zuerst meine Stärken und Schwächen auf.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I hope I <g>will</g> also really <g>become</g> a good electrician.<br><r>I have a suggestion:</r> we write down my strengths and weaknesses first.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> сподіваюся, я справді стану добрим електриком.<br><r>У мене є пропозиція:</r> спочатку запишемо мої сильні й слабкі сторони.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> надеюсь, я действительно стану хорошим электриком.<br><r>У меня есть предложение:</r> сначала запишем мои сильные и слабые стороны.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> du dir keine Sorgen machst, auch wenn es am Anfang schwer <g>wird</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> you don't worry, even if it <g>gets</g> hard at the beginning.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> не хвилюватися, навіть якщо на початку буде важко.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> не волноваться, даже если в начале будет тяжело.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir rufen morgen bei einer Firma an und fragen nach einem Praktikum.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we call a company tomorrow and ask about an internship.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> завтра зателефонуємо у фірму й запитаємо про стажування.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> завтра позвоним в фирму и спросим о стажировке.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich glaube, du wirst ein toller Elektriker, David!",
+      "en": "Great, I think you'll be a great electrician, David!",
+      "uk": "Чудово, я думаю, ти станеш чудовим електриком, Девіде!",
+      "ru": "Отлично, я думаю, ты станешь отличным электриком, Дэвид!"
+    },
+    "gram": "verb_werden"
+  },
+  {
+    "id": "dlg_082",
+    "cat": "Sich auf ein Vorstellungsgespräch vorbereiten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie haben nächste Woche ein Vorstellungsgespräch und möchten sich mit einer Freundin vorbereiten.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was üben wir?<br>Welche Schlüsselqualifikationen nenne ich?<br>Wann treffen wir uns?",
+      "en": "You have a job interview next week and would like to prepare with a friend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we practise?<br>Which key qualifications do I mention?<br>When do we meet?",
+      "uk": "У вас наступного тижня співбесіда, і ви хочете підготуватися з подругою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Що ми тренуємо?<br>Які ключові кваліфікації я назву?<br>Коли зустрінемося?",
+      "ru": "У вас на следующей неделе собеседование, и вы хотите подготовиться с подругой.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Что мы тренируем?<br>Какие ключевые квалификации я назову?<br>Когда встретимся?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo Anna! Ich habe nächste Woche ein Vorstellungsgespräch. Kannst du mir ein paar Ratschläge geben?",
+      "en": "Hi Anna! I have a job interview next week. Can you give me some advice?",
+      "uk": "Привіт, Анно! У мене наступного тижня співбесіда. Можеш дати мені кілька порад?",
+      "ru": "Привет, Анна! У меня на следующей неделе собеседование. Можешь дать мне несколько советов?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst deine Vorteile und Nachteile aufschreiben.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> write down your advantages and disadvantages first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку записати твої переваги й недоліки.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала записать твои преимущества и недостатки.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich weiß nicht, wie ich anfangen soll. <g>Könntest</g> du mir ein Beispiel geben?<br><r>Ich hätte einen Vorschlag:</r> Wir üben zusammen typische Fragen.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I don't know how to start. <g>Could</g> you give me an example?<br><r>I have a suggestion:</r> we practise typical questions together.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я не знаю, з чого почати. Чи не могла б ти навести приклад?<br><r>У мене є пропозиція:</r> потренуємо разом типові запитання.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я не знаю, с чего начать. Не могла бы ты привести пример?<br><r>У меня есть предложение:</r> потренируем вместе типичные вопросы.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> du dir auch überlegst, was deine Schlüsselqualifikationen sind, du <g>solltest</g> sie klar nennen können.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> you also think about your key qualifications, you <g>should</g> be able to name them clearly.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> ще й обдумати свої ключові кваліфікації, тобі варто вміти чітко їх назвати.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> ещё и обдумать свои ключевые квалификации, тебе стоит уметь чётко их назвать.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir treffen uns morgen Abend und üben eine Stunde.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we meet tomorrow evening and practise for an hour.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> зустрінемося завтра ввечері й потренуємось годину.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> встретимся завтра вечером и потренируемся час.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich bin sicher, du triffst eine gute Entscheidung, Alex!",
+      "en": "Great, I'm sure you'll make a good decision, Alex!",
+      "uk": "Чудово, я впевнена, ти приймеш гарне рішення, Алекс!",
+      "ru": "Отлично, я уверена, ты примешь хорошее решение, Алекс!"
+    },
+    "gram": "hoeflichkeit_konjunktiv_a22"
+  },
+  {
+    "id": "dlg_083",
+    "cat": "Eine Bewerbung für die Werkstatt schreiben",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie möchten sich bei einer Werkstatt um einen Ausbildungsplatz bewerben und brauchen Hilfe beim Anschreiben.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was aktualisieren wir zuerst?<br>Was erwähnen wir im Anschreiben?<br>Wann schicken wir die Bewerbung ab?",
+      "en": "You would like to apply for an apprenticeship at a workshop and need help with the cover letter.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we update first?<br>What do we mention in the cover letter?<br>When do we send the application?",
+      "uk": "Ви хочете подати заявку на навчання в майстерні та потребуєте допомоги з супровідним листом.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Що оновимо спочатку?<br>Що згадаємо в супровідному листі?<br>Коли надішлемо заяву?",
+      "ru": "Вы хотите подать заявку на обучение в мастерской и нуждаетесь в помощи с сопроводительным письмом.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Что обновим сначала?<br>Что упомянем в сопроводительном письме?<br>Когда отправим заявку?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo David! Ich möchte mich bei einer Werkstatt um einen Ausbildungsplatz bewerben. Hilfst du mir beim Anschreiben?",
+      "en": "Hi David! I would like to apply for an apprenticeship at a workshop. Can you help me with the cover letter?",
+      "uk": "Привіт, Девіде! Я хочу подати заявку на навчання в майстерні. Допоможеш мені з супровідним листом?",
+      "ru": "Привет, Дэвид! Я хочу подать заявку на обучение в мастерской. Поможешь мне с сопроводительным письмом?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst deinen Lebenslauf aktualisieren.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> update your CV first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку оновити твоє резюме.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала обновить твоё резюме.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich glaube, <g>dass</g> mein Anschreiben noch nicht gut genug <g>ist</g>.<br><r>Ich hätte einen Vorschlag:</r> Wir schreiben es zusammen neu.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I think <g>that</g> my cover letter <g>is</g> not good enough yet.<br><r>I have a suggestion:</r> we rewrite it together.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я думаю, що мій супровідний лист ще недостатньо хороший.<br><r>У мене є пропозиція:</r> напишемо його заново разом.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я думаю, что моё сопроводительное письмо ещё недостаточно хорошее.<br><r>У меня есть предложение:</r> напишем его заново вместе.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> du deine Fremdsprachenkenntnisse erwähnst, das könnte helfen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> you mention your foreign language skills, that could help.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> згадати про знання іноземних мов, це може допомогти.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> упомянуть о знании иностранных языков, это может помочь.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir schicken die Bewerbung ab, sobald ich sicher bin, <g>dass</g> alles richtig <g>ist</g>.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we send the application as soon as I'm sure <g>that</g> everything <g>is</g> correct.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> надішлемо заяву, щойно я буду впевнена, що все правильно.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> отправим заявку, как только я буду уверена, что всё правильно.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich glaube, deine Bewerbung wird echt überzeugend, Nina!",
+      "en": "Great, I think your application will be really convincing, Nina!",
+      "uk": "Чудово, я думаю, твоя заява буде справді переконливою, Ніно!",
+      "ru": "Отлично, я думаю, твоя заявка будет действительно убедительной, Нина!"
+    },
+    "gram": "dass_satz_wdh"
   }
 ];
 

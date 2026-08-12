@@ -2686,6 +2686,10 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
     <div id="sr-days-chip" class="h-chip-counter" style="display:none;align-items:center;gap:3px;padding:3px 8px;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:20px;color:var(--gold);cursor:pointer;flex-shrink:0" onclick="showView('settings')"></div>
     <!-- Вогонь і Налаштування у хедері замість stopbtn -->
     <div class="h-right-btns">
+      <button class="h-icon-btn" onclick="showView('settings')" title="M">
+        <span id="h-xp" style="color:var(--gold);font-weight:700">𐌌</span>
+        <span id="h-xp-count" class="h-chip-counter">0</span>
+      </button>
       <button class="h-icon-btn" onclick="showStreakInfo()" title="Streak">
         <span class="bn-fire" id="h-fire">🔥</span>
         <span id="h-streak-count" class="h-chip-counter">0</span>
@@ -3147,6 +3151,8 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
     <h3>📊 <span data-i18n="sec_goal_data">Lernziel &amp; Daten</span></h3>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
+    <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_today">M heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-today">0</span></div>
+    <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_total">M gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-total">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
@@ -3249,7 +3255,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '481-a03f374';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3718,7 +3724,7 @@ const I18N = {
     lbl_readpause:'Lesepause', sub_readpause:'Nach dem Umdrehen',
     btn_slow:'🐢 Langsam', btn_normal:'▶ Normal',
     sec_streak:'Lernziel & Streak',
-    lbl_today:'Heute', lbl_total:'Gesamt',
+    lbl_today:'Heute', lbl_total:'Gesamt', lbl_xp_today:'M heute', lbl_xp_total:'M gesamt',
     lbl_goal:'Tagesziel', sub_goal:'Karten pro Tag',
     lbl_streak_reset:'Streak zurücksetzen',
     sec_data:'Daten',
@@ -3807,7 +3813,7 @@ const I18N = {
     lbl_readpause:'Пауза читання', sub_readpause:'Після перевертання',
     btn_slow:'🐢 Повільно', btn_normal:'▶ Нормально',
     sec_streak:'Ціль і серія',
-    lbl_today:'Сьогодні', lbl_total:'Всього',
+    lbl_today:'Сьогодні', lbl_total:'Всього', lbl_xp_today:'M сьогодні', lbl_xp_total:'M всього',
     lbl_goal:'Денна ціль', sub_goal:'Карток на день',
     lbl_streak_reset:'Скинути серію',
     sec_data:'Дані',
@@ -3891,7 +3897,7 @@ const I18N = {
     lbl_readpause:'Reading pause', sub_readpause:'After flip',
     btn_slow:'🐢 Slow', btn_normal:'▶ Normal',
     sec_streak:'Goal & Streak',
-    lbl_today:'Today', lbl_total:'Total',
+    lbl_today:'Today', lbl_total:'Total', lbl_xp_today:'M today', lbl_xp_total:'M total',
     lbl_goal:'Daily goal', sub_goal:'Cards per day',
     lbl_streak_reset:'Reset streak',
     sec_data:'Data',
@@ -3976,7 +3982,7 @@ const I18N = {
     lbl_readpause:'Пауза чтения', sub_readpause:'После переворота',
     btn_slow:'🐢 Медленно', btn_normal:'▶ Нормально',
     sec_streak:'Цель и серия',
-    lbl_today:'Сегодня', lbl_total:'Всего',
+    lbl_today:'Сегодня', lbl_total:'Всего', lbl_xp_today:'M сегодня', lbl_xp_total:'M всего',
     lbl_goal:'Дневная цель', sub_goal:'Карточек в день',
     lbl_streak_reset:'Сбросить серию',
     sec_data:'Данные',
@@ -4351,6 +4357,78 @@ function srLoadGlobalStreak(){
 function srSaveGlobalStreak(streak, lastSessionDate){
   try{ localStorage.setItem(SR_GLOBAL_STREAK_KEY, JSON.stringify({streak, lastSessionDate})); }catch(e){}
 }
+
+// ── ГЕЙМІФІКАЦІЯ: БАЛИ (XP) ──────────────────────────────────────────
+// Мета: бали відображають СКЛАДНІСТЬ активності, а не CEFR-рівень курсу —
+// щоб учні A2/B1/B2 могли чесно порівнювати прогрес (лінійка складності
+// одна для всіх рівнів: впізнавання слова однаково просте що в A2, що в
+// B2, продукування репліки в діалозі однаково складне на будь-якому
+// рівні). Реального крос-юзерного рейтингу поки нема (лише особистий
+// прогрес) — тому все нижче навмисно ГЛОБАЛЬНЕ (курсо-незалежне), той
+// самий принцип, що й у стріку вище: бали за A2 і бали за B2 йдуть в
+// ОДИН спільний рахунок, а не розпорошуються по mova_smart_review_<course>.
+//
+// Вага за типом активності (див. srGetExamPart — вона й так уже класифікує
+// кожну картку за навичкою на момент оцінки, тут просто мапимо цю вже
+// наявну класифікацію на бали замість того щоб вигадувати нову):
+//   Lesen        — впізнавання/читання (найлегше, база)
+//   Hören        — аудіювання (трохи складніше за читання мовчки)
+//   Sprachbausteine — застосування граматики в контексті
+//   Sprechen     — продукування репліки (найважче — активна навичка)
+// Якщо картка потрапляє під кілька категорій одночасно (напр. Dialogue
+// рахується і як Sprechen, і як Hören) — беремо МАКСИМАЛЬНУ вагу, бо
+// сам факт озвучення+відповіді вимагав усіх цих навичок одночасно.
+const XP_TASK_WEIGHT = { 'Lesen':10, 'Hören':12, 'Sprachbausteine':18, 'Sprechen':22, 'General':10 };
+
+// Множник за якістю відповіді (SM-2 q: 1/3/5). Навмисно НЕ робимо його
+// надто крутим (0 за "не знаю") — інакше бали починають конфліктувати з
+// чесністю самооцінки SM-2: якщо "Не знаю" не дає майже нічого, з'являється
+// спокуса завжди тиснути "Знаю", щоб отримати більше балів — а це ламає
+// саму інтервальну систему повторень (картка, позначена "знаю" неправдиво,
+// довше не повертається на повторення). "Не знаю" — це теж реальна,
+// ефективна практика (саме зустріч зі складною карткою і є навчанням),
+// тож різниця між оцінками помірна, а не карально-різка.
+const XP_QUALITY_MULT = { 1:0.7, 3:0.85, 5:1.0 };
+
+// Фіксований бонус за ЗАВЕРШЕННЯ уроку (не за окремі картки) — однаковий
+// на всіх рівнях, винагороджує саме звичку "довести сесію до кінця".
+const XP_LESSON_COMPLETE_BONUS = 20;
+
+const XP_KEY = "mova_app_xp";
+
+function xpLoad(){
+  try{
+    const r = localStorage.getItem(XP_KEY);
+    if(r) return JSON.parse(r);
+  }catch(e){}
+  return {total:0, todayDate:null, todayPoints:0};
+}
+function xpSave(x){ try{ localStorage.setItem(XP_KEY, JSON.stringify(x)); }catch(e){} }
+
+// Бали за ОДНЕ оцінювання картки. parts — те, що повертає srGetExamPart()
+// (рядок або масив рядків, якщо картка стосується кількох навичок одразу).
+function xpPointsForRating(parts, q){
+  const list = Array.isArray(parts) ? parts : [parts];
+  const weight = Math.max(...list.map(p => XP_TASK_WEIGHT[p] ?? XP_TASK_WEIGHT.General));
+  const mult = XP_QUALITY_MULT[q] ?? 0.7;
+  return Math.round(weight * mult);
+}
+
+// Нараховує бали (будь-яка кількість, включно з бонусом за урок) в
+// загальний рахунок і в "сьогоднішній" лічильник. Повертає новий total.
+function xpAward(points){
+  if(!points) return xpLoad().total;
+  const today = todayStr();
+  const x = xpLoad();
+  if(x.todayDate !== today){ x.todayDate = today; x.todayPoints = 0; }
+  x.total = (x.total||0) + points;
+  x.todayPoints = (x.todayPoints||0) + points;
+  xpSave(x);
+  if(typeof renderStreakUI === 'function') renderStreakUI();
+  return x.total;
+}
+function xpGetTotal(){ return xpLoad().total || 0; }
+
 
 // Одноразова міграція: до цього стрік зберігався ОКРЕМО в кожному
 // mova_smart_review_<courseId> — курси, пройдені паралельно, мали
@@ -5479,11 +5557,15 @@ function srsRate(id, q, side){
     }
     // Користувач передумав — відкочуємо стан до знімку ПЕРЕД першою
     // оцінкою цього перегляду, щоб нова оцінка повністю замінила стару,
-    // а не додалась до неї.
+    // а не додалась до неї. Бали — так само: знімаємо ті, що вже
+    // нарахувались за ПОПЕРЕДНЮ оцінку цього ж перегляду (xpAward з
+    // від'ємним числом), інакше "передумав" дублював би бали разом з
+    // SM-2-станом, який тут уже відкочується.
     const state = srLoadState();
     state.cards = _srViewingGuard.snapshotCards;
     state.subtestStats = _srViewingGuard.snapshotSubtest;
     srSaveState(state);
+    if(_srViewingGuard.xpAwarded) xpAward(-_srViewingGuard.xpAwarded);
   } else {
     // Перший свайп за цей перегляд картки — знімаємо копію стану ДО запису.
     const state0 = srLoadState();
@@ -5492,12 +5574,22 @@ function srsRate(id, q, side){
       snapshotCards:   JSON.parse(JSON.stringify(state0.cards)),
       snapshotSubtest: JSON.parse(JSON.stringify(state0.subtestStats)),
       rating: null,
+      xpAwarded: 0,
     };
   }
 
   const eventType = q>=5 ? 'swipe_know' : q>=3 ? 'swipe_unsure' : 'swipe_dontknow';
-  recordCardEvent(id, eventType, srGetExamPart(id, wasAudioPlayedForCard(id)), side);
+  const examParts = srGetExamPart(id, wasAudioPlayedForCard(id));
+  recordCardEvent(id, eventType, examParts, side);
   _srViewingGuard.rating = q;
+  // Бали — за ту саму (вже дедупліковану _srViewingGuard-ом) оцінку, тож
+  // повторний виклик з ТІЄЮ Ж оцінкою за один перегляд вище вже пішов на
+  // return раніше і сюди не дійде — кожен перегляд картки дає бали РІВНО
+  // один раз, як і сам SM-2 запис. xpAwarded запам'ятовуємо в guard —
+  // якщо користувач передумає (гілка вище), саме це число буде знято.
+  const xpPts = xpPointsForRating(examParts, q);
+  xpAward(xpPts);
+  _srViewingGuard.xpAwarded = xpPts;
 
   const d = srsLoad(id, side); // перечитуємо щойно записаний стан для зворотної сумісності повернення
   return {ef:d.ef, interval:d.interval, dueDate:d.dueDate};
@@ -7201,6 +7293,7 @@ function _runBonusLessonFlow(lesson){
     results:    {},
     startTime:  Date.now(),
     _grammarBonusPool: lesson._grammarBonusPool,
+    _xpAtStart: xpGetTotal(),
   };
   V.lessonId    = lesson.id;
   V.lessonCards = [];
@@ -7429,6 +7522,7 @@ function _runLessonFlow(lesson, allCards){
     step:      0,
     results:   {},
     startTime: Date.now(),
+    _xpAtStart: xpGetTotal(),
   };
 
   V.lessonId    = lesson.id;
@@ -12412,22 +12506,6 @@ function lfShowResult(){
   document.getElementById('lr-sub').textContent =
     LF.lesson.title[uiLang]||LF.lesson.title[primaryLang()]||LF.lesson.title.en||LF.lesson.title.de;
 
-  const statsEl = document.getElementById('lr-stats');
-  if(statsEl){
-    const rows = isDlgOnly ? [
-      [uiLang==='uk'?'Діалогів':uiLang==='en'?'Dialogues':uiLang==='ru'?'Диалогов':'Dialoge', LF.dlgCards.length],
-      [uiLang==='uk'?'Реплік':uiLang==='en'?'Turns':uiLang==='ru'?'Реплик':'Repliken', totalTurns],
-      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
-    ] : [
-      [uiLang==='uk'?'Карток пройдено':uiLang==='en'?'Cards covered':'Karten', LF.cards.length],
-      [uiLang==='uk'?'Покращено':uiLang==='en'?'Improved':'Verbessert', improved+'/'+LF.cards.length],
-      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
-    ];
-    statsEl.innerHTML = rows.map(([l,v])=>
-      `<div class="lr-stat-row"><span>${l}</span><span class="lr-stat-val">${v}</span></div>`
-    ).join('');
-  }
-
   // Зараховуємо урок (стрік, subtestStats, час) РІВНО ОДИН РАЗ — САМЕ ТУТ,
   // одразу як показується екран результату. Раніше це відкладалось до
   // явного натискання "Наступний урок"/"До списку уроків" — але це
@@ -12464,6 +12542,12 @@ function lfShowResult(){
   let celebrationPending = false;
   if(LF && !LF._recorded){
     LF._recorded = true;
+    // Бонус за завершення уроку — фіксований, однаковий на всіх рівнях
+    // (див. XP_LESSON_COMPLETE_BONUS вище). Саме тут, а не раніше —
+    // guard LF._recorded відсікає повторні виклики lfShowResult() так
+    // само, як і для стріку нижче, тож бонус нараховується рівно один
+    // раз за урок.
+    xpAward(XP_LESSON_COMPLETE_BONUS);
     const streakResult = srRecordLesson(LF);
     celebrationPending = true;
     if(streakResult && streakResult.increased){
@@ -12474,6 +12558,34 @@ function lfShowResult(){
       showLessonCelebration({ icon: lcIcon, label: lcLabel, onDone: goToLernpfadActivePoint });
     }
   }
+
+  // XP-рядок будуємо ТУТ (після бонусу вище) — LF._xpAtStart зафіксовано
+  // на старті уроку (LF = {...}), тож різниця з поточним total включає і
+  // бали за кожну оцінену картку (нараховані інкрементально в srsRate() по
+  // ходу уроку), і щойно нарахований бонус завершення. При повторному
+  // виклику lfShowResult() (LF._recorded вже true, бонус вище не
+  // повторюється) число лишається тим самим — читається з persisted total,
+  // а не рахується наново.
+  const xpEarned = xpGetTotal() - (LF._xpAtStart || 0);
+  const statsEl = document.getElementById('lr-stats');
+  if(statsEl){
+    const xpRow = [uiLang==='uk'?'M зароблено':uiLang==='en'?'M earned':uiLang==='ru'?'M заработано':'M verdient', '<span style="color:var(--gold)">𐌌</span> '+xpEarned];
+    const rows = isDlgOnly ? [
+      [uiLang==='uk'?'Діалогів':uiLang==='en'?'Dialogues':uiLang==='ru'?'Диалогов':'Dialoge', LF.dlgCards.length],
+      [uiLang==='uk'?'Реплік':uiLang==='en'?'Turns':uiLang==='ru'?'Реплик':'Repliken', totalTurns],
+      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
+      xpRow,
+    ] : [
+      [uiLang==='uk'?'Карток пройдено':uiLang==='en'?'Cards covered':'Karten', LF.cards.length],
+      [uiLang==='uk'?'Покращено':uiLang==='en'?'Improved':'Verbessert', improved+'/'+LF.cards.length],
+      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
+      xpRow,
+    ];
+    statsEl.innerHTML = rows.map(([l,v])=>
+      `<div class="lr-stat-row"><span>${l}</span><span class="lr-stat-val">${v}</span></div>`
+    ).join('');
+  }
+
   // Оновлюємо прогрес Lernpfad
   setTimeout(renderLernpfad, 300);
 
@@ -13908,6 +14020,14 @@ function renderStreakUI(pulse=false){
   const hf=document.getElementById('h-fire');if(hf)hf.style.filter=done?'none':'grayscale(1) brightness(1.9) opacity(.85)';
   const st=document.getElementById('st-today');if(st)st.textContent=todayN;
   const stot=document.getElementById('st-total');if(stot)stot.textContent=totalN;
+  // Бали (XP) — той самий глобальний, курсо-незалежний рахунок, що й
+  // стрік вище (xpLoad/XP_KEY, див. визначення). Оновлюємо тут же, а не
+  // окремою функцією-дублем — renderStreakUI() і так вже викликається
+  // з усіх потрібних місць (loadCourseScript, srRecordLesson, setDailyGoal).
+  const xp = xpLoad();
+  const hxc=document.getElementById('h-xp-count'); if(hxc) hxc.textContent = xp.total||0;
+  const sxt=document.getElementById('st-xp-today'); if(sxt) sxt.textContent = (xp.todayDate===today ? xp.todayPoints : 0)||0;
+  const sxtot=document.getElementById('st-xp-total'); if(sxtot) sxtot.textContent = xp.total||0;
   const sl=document.getElementById('daily-goal');if(sl){sl.value=goal;document.getElementById('daily-goal-v').textContent=goal;}
 }
 function showStreakInfo(){

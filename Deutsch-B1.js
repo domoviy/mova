@@ -25993,16 +25993,16 @@ var DIALOGE = [
     "name_q": "de_m_mark",
     "name_a": "de_w_julia",
     "q": {
-      "de": "Hallo! Schön, dass wir das zusammen planen können. Der Keller und das Treppenhaus sehen wirklich chaotisch aus – wir sollten das mal aufräumen.",
-      "en": "Hi! It's great that we can plan this together. The basement and the stairwell really look chaotic – we should tidy them up.",
-      "uk": "Привіт! Добре, що ми можемо це спланувати разом. Підвал і підʼїзд справді виглядають безладно – треба це прибрати.",
-      "ru": "Привет! Хорошо, что мы можем это спланировать вместе. Подвал и подъезд действительно выглядят беспорядочно – надо это убрать."
+          "de": "Hallo, Julia! Schön, dass wir das zusammen planen können. Der Keller und das Treppenhaus sehen wirklich chaotisch aus – wir sollten das mal aufräumen.",
+          "en": "Hi, Julia! It's great that we can plan this together. The basement and the stairwell really look chaotic – we should tidy them up.",
+          "uk": "Привіт, Юліє! Добре, що ми можемо це спланувати разом. Підвал і підʼїзд справді виглядають безладно – треба це прибрати.",
+          "ru": "Привет, Юлия! Хорошо, что мы можем это спланировать вместе. Подвал и подъезд действительно выглядят беспорядочно – надо это убрать."
     },
     "a": {
-      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> das am Samstagvormittag machen?<br><r>Passt dir das so?</r>",
-      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> do it on Saturday morning?<br><r>Does that work for you?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>А що, якби ми</r> зробили це в суботу вранці?<br><r>Тобі так підходить?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>А что, если мы</r> сделаем это в субботу утром?<br><r>Тебе так подходит?</r>"
+          "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> das am Samstagvormittag machen?<br><r>Passt dir das so</r>, Mark?",
+          "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> do it on Saturday morning?<br><r>Does that work for you</r>, Mark?",
+          "uk": "<r>Точно, я теж так думаю</r>.<br><r>А що, якби ми</r> зробили це в суботу вранці?<br><r>Тобі так підходить</r>, Марку?",
+          "ru": "<r>Точно, я тоже так думаю</r>.<br><r>А что, если мы</r> сделаем это в субботу утром?<br><r>Тебе так подходит</r>, Марк?"
     },
     "q1": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir zuerst</r> den Keller aufräumen <r>und dann</r> das Treppenhaus.<br><r>Was denkst du?</r>",
@@ -26065,18 +26065,18 @@ var DIALOGE = [
       "ru": "Ситуация: Вы и Ваш сосед/Ваша соседка хотите организовать небольшой праздник для соседей во дворе.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это организуете.\nЭти пункты Вам помогут:\nКогда? (дата, время)\nГде именно? (двор, сад)\nСтолы и стулья – куда поставить?\nЧто взять с собой? (еда, напитки, музыка)\nМашины – как с парковкой?"
     },
     "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_a": "de_m_david",
     "q": {
-      "de": "Hallo! Wollen wir zusammen das Fest für unsere Nachbarschaft planen? Ich finde, das wird eine schöne Gelegenheit, die neuen Nachbarn kennenzulernen.",
-      "en": "Hi! Shall we plan the party for our neighbourhood together? I think it'll be a nice chance to get to know the new neighbours.",
-      "uk": "Привіт! Хочеш, сплануємо разом свято для нашого сусідства? Думаю, це буде гарна нагода познайомитися з новими сусідами.",
-      "ru": "Привет! Давай спланируем вместе праздник для нашего района? Думаю, это будет хорошая возможность познакомиться с новыми соседями."
+          "de": "Hallo, David! Wollen wir zusammen das Fest für unsere Nachbarschaft planen? Ich finde, das wird eine schöne Gelegenheit, die neuen Nachbarn kennenzulernen.",
+          "en": "Hi, David! Shall we plan the party for our neighbourhood together? I think it'll be a nice chance to get to know the new neighbours.",
+          "uk": "Привіт, Девіде! Хочеш, сплануємо разом свято для нашого сусідства? Думаю, це буде гарна нагода познайомитися з новими сусідами.",
+          "ru": "Привет, Дэвид! Давай спланируем вместе праздник для нашего района? Думаю, это будет хорошая возможность познакомиться с новыми соседями."
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Wie wäre es, wenn wir</r> das am nächsten Samstagnachmittag machen?<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>How about we</r> do it next Saturday afternoon?<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>А що, якби ми</r> зробили це в наступну суботу вдень?<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>А что, если мы</r> сделаем это в следующую субботу днём?<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Wie wäre es, wenn wir</r> das am nächsten Samstagnachmittag machen?<br><r>Was denkst du</r>, Julia?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>How about we</r> do it next Saturday afternoon?<br><r>What do you think</r>, Julia?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>А що, якби ми</r> зробили це в наступну суботу вдень?<br><r>Що ти думаєш</r>, Юліє?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>А что, если мы</r> сделаем это в следующую субботу днём?<br><r>Что ты думаешь</r>, Юлия?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> die Tische <g>in den</g> Hof stellen, dort haben wir mehr Platz als im Garten.<br><r>Wie findest du das?</r>",
@@ -26138,19 +26138,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви їдете наступного тижня на десять днів у відпустку і хочете організувати сусідську допомогу зі своїм сусідом/сусідкою.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви це організуєте.\nЦі пункти Вам допоможуть:\nКоли саме? (дата від–до)\nПоливання квітів – як часто?\nЗабирати пошту і посилки?\nПередати ключ – коли і де?\nПослуга у відповідь – що Ви можете зробити натомість?",
       "ru": "Ситуация: Вы уезжаете на следующей неделе на десять дней в отпуск и хотите организовать соседскую помощь со своим соседом/соседкой.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это организуете.\nЭти пункты Вам помогут:\nКогда именно? (даты от–до)\nПолив цветов – как часто?\nЗабирать почту и посылки?\nПередать ключ – когда и где?\nУслуга в ответ – что Вы можете сделать взамен?"
     },
-    "name_q": "de_m_mark",
-    "name_a": "de_w_julia",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo! Ich hätte eine Bitte an dich: Ich fahre nächste Woche zehn Tage in den Urlaub und wollte mit dir zusammen planen, wie wir das am besten organisieren.",
-      "en": "Hi! I have a favour to ask you: I'm going on vacation for ten days next week and wanted to plan with you how we can best organize it.",
-      "uk": "Привіт! У мене є до тебе прохання: наступного тижня я їду на десять днів у відпустку і хотів разом з тобою спланувати, як нам це краще організувати.",
-      "ru": "Привет! У меня к тебе просьба: на следующей неделе я еду на десять дней в отпуск и хотел вместе с тобой спланировать, как нам это лучше организовать."
+          "de": "Hallo, Mark! Ich hätte eine Bitte an dich: Ich fahre nächste Woche zehn Tage in den Urlaub und wollte mit dir zusammen planen, wie wir das am besten organisieren.",
+          "en": "Hi, Mark! I have a favour to ask you: I'm going on vacation for ten days next week and wanted to plan with you how we can best organize it.",
+          "uk": "Привіт, Марку! У мене є до тебе прохання: наступного тижня я їду на десять днів у відпустку і хотів разом з тобою спланувати, як нам це краще організувати.",
+          "ru": "Привет, Марк! У меня к тебе просьба: на следующей неделе я еду на десять дней в отпуск и хотел вместе с тобой спланировать, как нам это лучше организовать."
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass</r> ich mich jeden Tag um deine Blumen <g>kümmern könnte</g>.<br><r>Ist dir das recht?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> I <g>could take care of</g> your flowers every day.<br><r>Is that okay with you?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> я <g>могла доглядати</g> за твоїми квітами щодня.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> я <g>могла заботиться</g> о твоих цветах каждый день.<br><r>Тебе это подходит?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass</r> ich mich jeden Tag um deine Blumen <g>kümmern könnte</g>.<br><r>Ist dir das recht</r>, Anna?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> I <g>could take care of</g> your flowers every day.<br><r>Is that okay with you</r>, Anna?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> я <g>могла доглядати</g> за твоїми квітами щодня.<br><r>Тобі це підходить</r>, Анно?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> я <g>могла заботиться</g> о твоих цветах каждый день.<br><r>Тебе это подходит</r>, Анна?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass</r> du meine Post aus dem Briefkasten <g>holen könntest</g>.<br><r>Wäre das okay für dich?</r>",
@@ -26167,20 +26167,20 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass</r> ich dir vorher meinen Ersatzschlüssel gebe.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> I give you my spare key beforehand.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> я заздалегідь віддав тобі запасний ключ.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> я заранее отдал тебе запасной ключ.<br><r>Ты согласна с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> я заздалегідь віддав тобі запасний ключ.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> я заранее отдал тебе запасной ключ.<br><r>Ты согласен с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Gib mir einfach Bescheid, wann genau du losfährst.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> just let me know exactly when you're leaving.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> просто повідом мені, коли саме ти вирушаєш.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> просто сообщи мне, когда именно ты уезжаешь.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> просто сообщи мне, когда именно ты уезжаешь.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob ich dir das einfach so zumuten kann.<br><r>Vielleicht wäre es am besten, wenn</r> ich dir im Gegenzug einen Gefallen <g>tun würde</g>.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether I can just ask that of you.<br><r>Maybe it would be best if</r> I <g>did</g> you a favour in return.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи можу я просто так тебе про це просити.<br><r>Можливо, було б найкраще, якби</r> я <g>зробив</g> тобі послугу натомість.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Хм, я не совсем уверен</r>, могу ли я просто так тебя об этом просить.<br><r>Возможно, было бы лучше, если бы</r> я <g>сделал</g> тебе услугу взамен.<br><r>Тебе это подходит?</r>"
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи можу я просто так тебе про це просити.<br><r>Можливо, було б найкраще, якби</r> я <g>зробив</g> тобі послугу натомість.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, могу ли я просто так тебя об этом просить.<br><r>Возможно, было бы лучше, если бы</r> я <g>сделал</g> тебе услугу взамен.<br><r>Тебе это подходит?</r>"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> dein Werkzeug für mein Regal ausleihen, das wäre schon genug.<br><r>Passt dir das so?</r>",
@@ -26191,8 +26191,8 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass</r> ich dir den Schlüssel morgen vorbeibringe.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> I bring you the key tomorrow.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> я приніс тобі ключ завтра.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> я принёс тебе ключ завтра.<br><r>Мы можем об этом договориться?</r>"
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> я приніс тобі ключ завтра.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> я принёс тебе ключ завтра.<br><r>Мы можем об этом договориться?</r>"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, ich gieße jeden Tag deine Blumen, hole die Post und die Pakete ab, und du bringst mir morgen den Schlüssel und leihst mir dein Werkzeug fürs Regal. Ich freue mich schon darauf, dir zu helfen! Bis morgen!",
@@ -26212,19 +26212,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви хочете організувати збори мешканців будинку разом із сусідом/сусідкою, щоб усі орендарі краще жили разом як спільнота.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви це організуєте.\nЦі пункти Вам допоможуть:\nКоли і де? (дата зборів)\nЯкі теми? (шум, сортування сміття)\nХто запрошує орендарів?\nЯк ми домовимося наприкінці? (правила будинку)\nХто чим займається?",
       "ru": "Ситуация: Вы хотите организовать собрание жильцов дома вместе с соседом/соседкой, чтобы все арендаторы лучше жили вместе как сообщество.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это организуете.\nЭти пункты Вам помогут:\nКогда и где? (дата собрания)\nКакие темы? (шум, сортировка мусора)\nКто приглашает арендаторов?\nКак мы договоримся в конце? (правила дома)\nКто чем занимается?"
     },
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
     "q": {
-      "de": "Hallo! Ich finde, wir sollten mal eine Hausversammlung organisieren, damit wir als Gemeinschaft besser zusammenleben. Hast du Lust, das mit mir zu planen?",
-      "en": "Hi! I think we should organize a house meeting so we can live together better as a community. Do you feel like planning that with me?",
-      "uk": "Привіт! Думаю, нам варто організувати збори мешканців будинку, щоб краще жити разом як спільнота. Маєш бажання спланувати це зі мною?",
-      "ru": "Привет! Думаю, нам стоит организовать собрание жильцов дома, чтобы лучше жить вместе как сообщество. У тебя есть желание спланировать это со мной?"
+          "de": "Hallo, Alex! Ich finde, wir sollten mal eine Hausversammlung organisieren, damit wir als Gemeinschaft besser zusammenleben. Hast du Lust, das mit mir zu planen?",
+          "en": "Hi, Alex! I think we should organize a house meeting so we can live together better as a community. Do you feel like planning that with me?",
+          "uk": "Привіт, Алексе! Думаю, нам варто організувати збори мешканців будинку, щоб краще жити разом як спільнота. Маєш бажання спланувати це зі мною?",
+          "ru": "Привет, Алекс! Думаю, нам стоит организовать собрание жильцов дома, чтобы лучше жить вместе как сообщество. У тебя есть желание спланировать это со мной?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> versuchen, <g>einen Termin zu finden</g>, der für alle Mieter passt.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we try <g>to find a date</g> that works for all the tenants.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спробували <g>знайти дату</g>, яка підійде всім орендарям.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы попробовали <g>найти дату</g>, которая подойдёт всем арендаторам.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> versuchen, <g>einen Termin zu finden</g>, der für alle Mieter passt.<br><r>Was denkst du</r>, Nina?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we try <g>to find a date</g> that works for all the tenants.<br><r>What do you think</r>, Nina?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спробували <g>знайти дату</g>, яка підійде всім орендарям.<br><r>Що ти думаєш</r>, Ніно?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы попробовали <g>найти дату</g>, которая подойдёт всем арендаторам.<br><r>Что ты думаешь</r>, Нина?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> zuerst überlegen, welche Themen wichtig sind, zum Beispiel, wie wir <g>Streit zu vermeiden</g> versuchen können.<br><r>Wie findest du das?</r>",
@@ -26286,19 +26286,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви хочете спланувати невеликий грильфест у саду разом із сусідом/сусідкою, дотримуючись правил будинку.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви це організуєте.\nЦі пункти Вам допоможуть:\nКоли? (дата, час, дотримання часу тиші)\nДе смажити? (газон, тераса)\nПовідомити інших орендарів?\nЩо робити, якщо піде дощ? (спільні приміщення)\nПрибирання і паркування для гостей?",
       "ru": "Ситуация: Вы хотите спланировать небольшой шашлык в саду вместе с соседом/соседкой, соблюдая правила дома.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это организуете.\nЭти пункты Вам помогут:\nКогда? (дата, время, соблюдение тихого часа)\nГде жарить? (газон, терраса)\nСообщить другим арендаторам?\nЧто делать, если пойдёт дождь? (общие помещения)\nУборка и парковка для гостей?"
     },
-    "name_q": "de_m_mark",
-    "name_a": "de_w_julia",
+    "name_q": "de_m_david",
+    "name_a": "de_w_anna",
     "q": {
-      "de": "Hallo! Ich wollte fragen, ob wir zusammen ein kleines Grillfest im Garten planen können. Was meinst du?",
-      "en": "Hi! I wanted to ask whether we could plan a little barbecue in the garden together. What do you think?",
-      "uk": "Привіт! Хотів запитати, чи не могли б ми разом спланувати невеличкий грильфест у саду. Що ти думаєш?",
-      "ru": "Привет! Хотел спросить, не могли бы мы вместе спланировать небольшой шашлык в саду. Что ты думаешь?"
+          "de": "Hallo, Anna! Ich wollte fragen, ob wir zusammen ein kleines Grillfest im Garten planen können. Was meinst du?",
+          "en": "Hi, Anna! I wanted to ask whether we could plan a little barbecue in the garden together. What do you think?",
+          "uk": "Привіт, Анно! Хотів запитати, чи не могли б ми разом спланувати невеличкий грильфест у саду. Що ти думаєш?",
+          "ru": "Привет, Анна! Хотел спросить, не могли бы мы вместе спланировать небольшой шашлык в саду. Что ты думаешь?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> das an einem Samstag machen, aber wir <g>müssen</g> die Ruhezeit ab 22 Uhr beachten.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we do it on a Saturday, but we <g>have to</g> respect the quiet hours from 10 pm.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми зробили це в суботу, але ми <g>маємо</g> дотримуватися часу тиші з 22:00.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сделали это в субботу, но мы <g>должны</g> соблюдать тихий час с 22:00.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> das an einem Samstag machen, aber wir <g>müssen</g> die Ruhezeit ab 22 Uhr beachten.<br><r>Was denkst du</r>, David?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we do it on a Saturday, but we <g>have to</g> respect the quiet hours from 10 pm.<br><r>What do you think</r>, David?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми зробили це в суботу, але ми <g>маємо</g> дотримуватися часу тиші з 22:00.<br><r>Що ти думаєш</r>, Девіде?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сделали это в субботу, но мы <g>должны</g> соблюдать тихий час с 22:00.<br><r>Что ты думаешь</r>, Дэвид?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auf der Terrasse grillen, denn laut Hausordnung <g>dürfen</g> wir auf dem Rasen nicht grillen.<br><r>Wie findest du das?</r>",
@@ -26360,19 +26360,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ваш сусід часто нетактовно шумить, як увечері, так і на вихідних. Ви хочете разом з іншим сусідом/сусідкою спланувати розмову з ним.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви проведете цю розмову.\nЦі пункти Вам допоможуть:\nКоли Ви з ним поговорите?\nЩо саме Ви скажете? (доброзичливо, без звинувачень)\nЯкий компроміс Ви запропонуєте?\nЩо робити, якщо він не відреагує?\nЯк Ви обміняєтеся враженнями потім?",
       "ru": "Ситуация: Ваш сосед часто бестактно шумит, как вечерами, так и по выходным. Вы хотите вместе с другим соседом/соседкой спланировать разговор с ним.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы проведёте этот разговор.\nЭти пункты Вам помогут:\nКогда Вы с ним поговорите?\nЧто именно Вы скажете? (доброжелательно, без обвинений)\nКакой компромисс Вы предложите?\nЧто делать, если он не отреагирует?\nКак Вы обменяетесь впечатлениями потом?"
     },
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo! Ich wollte mit dir besprechen, wie wir mit unserem lauten Nachbarn reden können. Der Lärm wird wirklich zu viel.",
-      "en": "Hi! I wanted to talk to you about how we can speak with our loud neighbour. The noise is really getting to be too much.",
-      "uk": "Привіт! Хотіла з тобою обговорити, як нам поговорити з нашим шумним сусідом. Шум справді вже занадто.",
-      "ru": "Привет! Хотела с тобой обсудить, как нам поговорить с нашим шумным соседом. Шум уже действительно чересчур."
+          "de": "Hallo, Nina! Ich wollte mit dir besprechen, wie wir mit unserem lauten Nachbarn reden können. Der Lärm wird wirklich zu viel.",
+          "en": "Hi, Nina! I wanted to talk to you about how we can speak with our loud neighbour. The noise is really getting to be too much.",
+          "uk": "Привіт, Ніно! Хотіла з тобою обговорити, як нам поговорити з нашим шумним сусідом. Шум справді вже занадто.",
+          "ru": "Привет, Нина! Хотела с тобой обсудить, как нам поговорить с нашим шумным соседом. Шум уже действительно чересчур."
     },
     "a": {
-      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich schlage vor, dass wir</r> ihn zusammen ansprechen, denn er ist <g>sowohl</g> abends <g>als auch</g> am Wochenende laut.<br><r>Was denkst du?</r>",
-      "en": "<r>Exactly, I think so too</r>.<br><r>I suggest that</r> we talk to him together, because he's noisy <g>both</g> in the evenings <g>and</g> on weekends.<br><r>What do you think?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Пропоную, щоб</r> ми поговорили з ним разом, адже він галасує <g>як</g> увечері, <g>так</g> і на вихідних.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Предлагаю, чтобы</r> мы поговорили с ним вместе, ведь он шумит <g>как</g> вечерами, <g>так</g> и по выходным.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich schlage vor, dass wir</r> ihn zusammen ansprechen, denn er ist <g>sowohl</g> abends <g>als auch</g> am Wochenende laut.<br><r>Was denkst du</r>, Mark?",
+          "en": "<r>Exactly, I think so too</r>.<br><r>I suggest that</r> we talk to him together, because he's noisy <g>both</g> in the evenings <g>and</g> on weekends.<br><r>What do you think</r>, Mark?",
+          "uk": "<r>Точно, я теж так думаю</r>.<br><r>Пропоную, щоб</r> ми поговорили з ним разом, адже він галасує <g>як</g> увечері, <g>так</g> і на вихідних.<br><r>Що ти думаєш</r>, Марку?",
+          "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Предлагаю, чтобы</r> мы поговорили с ним вместе, ведь он шумит <g>как</g> вечерами, <g>так</g> и по выходным.<br><r>Что ты думаешь</r>, Марк?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> am besten freundlich bleiben und ihm sagen, dass wir <g>weder</g> streiten <g>noch</g> ihn ignorieren wollen, sondern eine Lösung finden möchten.<br><r>Wie findest du das?</r>",
@@ -26389,20 +26389,20 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> ihm einen Kompromiss anbieten, zum Beispiel <g>sowohl</g> feste Ruhezeiten <g>als auch</g> weniger Partys unter der Woche.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we offer him a compromise, for example <g>both</g> fixed quiet hours <g>and</g> fewer parties during the week.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми запропонували йому компроміс, наприклад, <g>як</g> чіткий час тиші, <g>так</g> і менше вечірок посеред тижня.<br><r>Ти згоден з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы предложили ему компромисс, например, <g>как</g> чёткие тихие часы, <g>так</g> и меньше вечеринок посреди недели.<br><r>Ты согласен с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми запропонували йому компроміс, наприклад, <g>як</g> чіткий час тиші, <g>так</g> і менше вечірок посеред тижня.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы предложили ему компромисс, например, <g>как</g> чёткие тихие часы, <g>так</g> и меньше вечеринок посреди недели.<br><r>Ты согласна с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sollten ihm nicht vorwerfen, dass er rücksichtslos ist, sondern ruhig erklären, wie nervig der Lärm für uns ist.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we shouldn't accuse him of being inconsiderate, but calmly explain how annoying the noise is for us.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> нам не варто звинувачувати його в нетактовності, а краще спокійно пояснити, наскільки дратівливий цей шум для нас.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> нам не стоит обвинять его в бестактности, а лучше спокойно объяснить, насколько раздражающий этот шум для нас.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> нам не стоит обвинять его в бестактности, а лучше спокойно объяснить, насколько раздражающий этот шум для нас.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob er überhaupt zuhören wird.<br><r>Vielleicht wäre es am besten, wenn</r> wir ihm sagen, dass wir uns sonst offiziell beschweren müssten.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether he'll even listen.<br><r>Maybe it would be best if</r> we tell him that otherwise we'd have to file an official complaint.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнена</r>, чи стане він взагалі слухати.<br><r>Можливо, було б найкраще, якби</r> ми сказали йому, що інакше нам довелося б подати офіційну скаргу.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Хм, я не совсем уверена</r>, станет ли он вообще слушать.<br><r>Возможно, было бы лучше, если бы</r> мы сказали ему, что иначе нам пришлось бы подать официальную жалобу.<br><r>Тебе это подходит?</r>"
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи стане він взагалі слухати.<br><r>Можливо, було б найкраще, якби</r> ми сказали йому, що інакше нам довелося б подати офіційну скаргу.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, станет ли он вообще слушать.<br><r>Возможно, было бы лучше, если бы</r> мы сказали ему, что иначе нам пришлось бы подать официальную жалобу.<br><r>Тебе это подходит?</r>"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> das Gespräch gemeinsam führen, dann fühlt er sich weniger angegriffen.<br><r>Passt dir das so?</r>",
@@ -26413,8 +26413,8 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> uns danach noch kurz austauschen, wie das Gespräch gelaufen ist.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we check in briefly afterwards about how the conversation went.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми потім ще коротко обмінялися враженнями, як пройшла розмова.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы потом ещё коротко обменялись впечатлениями, как прошёл разговор.<br><r>Мы можем об этом договориться?</r>"
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми потім ще коротко обмінялися враженнями, як пройшла розмова.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы потом ещё коротко обменялись впечатлениями, как прошёл разговор.<br><r>Мы можем об этом договориться?</r>"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir klingeln am Samstagvormittag zusammen, sprechen ruhig mit ihm über den Lärm, schlagen einen Kompromiss vor, und danach tauschen wir uns aus. Ich hoffe, das Gespräch läuft gut! Bis Samstag!",
@@ -26434,19 +26434,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви та Ваш друг/Ваша подруга хочете разом піти за покупками, бо вам ще потрібно чимало на тиждень.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підете за покупками.\nЦі пункти Вам допоможуть:\nКоли і де робити покупки? (врахувати години роботи)\nЩо в списку покупок?\nДе є спеціальні пропозиції?\nПеревірити запаси вдома – чого справді бракує?\nЯк Ви поділите витрати на касі?",
       "ru": "Ситуация: Вы и Ваш друг/Ваша подруга хотите вместе сходить за покупками, потому что вам ещё нужно немало на неделю.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы пойдёте за покупками.\nЭти пункты Вам помогут:\nКогда и где делать покупки? (учесть часы работы)\nЧто в списке покупок?\nГде есть специальные предложения?\nПроверить запасы дома – чего действительно не хватает?\nКак Вы разделите расходы на кассе?"
     },
-    "name_q": "de_m_mark",
+    "name_q": "de_m_alex",
     "name_a": "de_w_julia",
     "q": {
-      "de": "Hallo! Sollen wir zusammen einkaufen gehen? Ich glaube, wir brauchen noch einiges für die Woche.",
-      "en": "Hi! Should we go shopping together? I think we still need quite a few things for the week.",
-      "uk": "Привіт! Може, підемо на закупи разом? Думаю, нам ще потрібно чимало на цей тиждень.",
-      "ru": "Привет! Может, сходим за покупками вместе? Думаю, нам ещё нужно немало на эту неделю."
+          "de": "Hallo, Julia! Sollen wir zusammen einkaufen gehen? Ich glaube, wir brauchen noch einiges für die Woche.",
+          "en": "Hi, Julia! Should we go shopping together? I think we still need quite a few things for the week.",
+          "uk": "Привіт, Юліє! Може, підемо на закупи разом? Думаю, нам ще потрібно чимало на цей тиждень.",
+          "ru": "Привет, Юлия! Может, сходим за покупками вместе? Думаю, нам ещё нужно немало на эту неделю."
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst schauen, welche Öffnungszeiten der Supermarkt hat.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first check the supermarket's opening hours.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу подивилися, які години роботи в супермаркету.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала посмотрели, какие часы работы у супермаркета.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst schauen, welche Öffnungszeiten der Supermarkt hat.<br><r>Was denkst du</r>, Alex?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first check the supermarket's opening hours.<br><r>What do you think</r>, Alex?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу подивилися, які години роботи в супермаркету.<br><r>Що ти думаєш</r>, Алексе?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала посмотрели, какие часы работы у супермаркета.<br><r>Что ты думаешь</r>, Алекс?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> vorher eine gemeinsame Einkaufsliste schreiben, damit wir nichts vergessen.<br><r>Wie findest du das?</r>",
@@ -26511,16 +26511,16 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo! Ich wollte mit dir eine gemeinsame Bestellung planen, dann sparen wir uns die Versandkosten. Hast du Lust?",
-      "en": "Hi! I wanted to plan a joint order with you, that way we save on shipping costs. Are you up for it?",
-      "uk": "Привіт! Хотіла спланувати з тобою спільне замовлення, так ми заощадимо на доставці. Маєш бажання?",
-      "ru": "Привет! Хотела спланировать с тобой совместный заказ, так мы сэкономим на доставке. Есть желание?"
+          "de": "Hallo, Mark! Ich wollte mit dir eine gemeinsame Bestellung planen, dann sparen wir uns die Versandkosten. Hast du Lust?",
+          "en": "Hi, Mark! I wanted to plan a joint order with you, that way we save on shipping costs. Are you up for it?",
+          "uk": "Привіт, Марку! Хотіла спланувати з тобою спільне замовлення, так ми заощадимо на доставці. Маєш бажання?",
+          "ru": "Привет, Марк! Хотела спланировать с тобой совместный заказ, так мы сэкономим на доставке. Есть желание?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> <g>uns</g> zuerst überlegen, was wir wirklich bestellen wollen.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first figure out for <g>ourselves</g> what we really want to order.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу <g>визначимося</g>, що ми справді хочемо замовити.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала <g>определимся</g>, что мы действительно хотим заказать.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> <g>uns</g> zuerst überlegen, was wir wirklich bestellen wollen.<br><r>Was denkst du</r>, Julia?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first figure out for <g>ourselves</g> what we really want to order.<br><r>What do you think</r>, Julia?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу <g>визначимося</g>, що ми справді хочемо замовити.<br><r>Що ти думаєш</r>, Юліє?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала <g>определимся</g>, что мы действительно хотим заказать.<br><r>Что ты думаешь</r>, Юлия?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> <g>uns</g> vorher über die Bewertungen informieren.<br><r>Wie findest du das?</r>",
@@ -26582,19 +26582,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви та Ваш друг/Ваша подруга разом замовили щось в інтернеті, але товар, на жаль, прийшов пошкодженим.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви оформите рекламацію.\nЦі пункти Вам допоможуть:\nЩо пошкоджене або несправне?\nХто напише рекламацію?\nЯк Ви відправите товар назад?\nЩо робити, якщо продавець не відповідає?\nЗаміна чи повернення грошей?",
       "ru": "Ситуация: Вы и Ваш друг/Ваша подруга вместе заказали что-то в интернете, но товар, к сожалению, пришёл повреждённым.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы оформите претензию.\nЭти пункты Вам помогут:\nЧто повреждено или неисправно?\nКто напишет претензию?\nКак Вы отправите товар обратно?\nЧто делать, если продавец не отвечает?\nЗамена или возврат денег?"
     },
-    "name_q": "de_m_mark",
-    "name_a": "de_w_julia",
+    "name_q": "de_w_anna",
+    "name_a": "de_m_david",
     "q": {
-      "de": "Hallo! Hast du das Paket schon aufgemacht? Ich glaube, da ist leider ein Fehler – das Produkt, das wir bestellt haben, ist beschädigt.",
-      "en": "Hi! Have you already opened the package? I think there's unfortunately a mistake – the product we ordered is damaged.",
-      "uk": "Привіт! Ти вже відкривала посилку? Думаю, на жаль, тут помилка – товар, який ми замовили, пошкоджений.",
-      "ru": "Привет! Ты уже открывала посылку? Думаю, к сожалению, здесь ошибка – товар, который мы заказали, повреждён."
+          "de": "Hallo, David! Hast du das Paket schon aufgemacht? Ich glaube, da ist leider ein Fehler – das Produkt, das wir bestellt haben, ist beschädigt.",
+          "en": "Hi, David! Have you already opened the package? I think there's unfortunately a mistake – the product we ordered is damaged.",
+          "uk": "Привіт, Девіде! Ти вже відкривала посилку? Думаю, на жаль, тут помилка – товар, який ми замовили, пошкоджений.",
+          "ru": "Привет, Дэвид! Ты уже открывала посылку? Думаю, к сожалению, здесь ошибка – товар, который мы заказали, повреждён."
     },
     "a": {
-      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich schlage vor, dass wir</r> sofort eine Reklamation schreiben, denn das ist ja nicht unser Fehler, <g>sondern</g> ein Fehler vom Versand.<br><r>Was denkst du?</r>",
-      "en": "<r>Exactly, I think so too</r>.<br><r>I suggest that</r> we write a complaint right away, because this isn't our fault, <g>but rather</g> a shipping error.<br><r>What do you think?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Пропоную, щоб</r> ми одразу написали рекламацію, адже це не наша провина, <g>а</g> помилка доставки.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Предлагаю, чтобы</r> мы сразу написали претензию, ведь это не наша вина, <g>а</g> ошибка доставки.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich schlage vor, dass wir</r> sofort eine Reklamation schreiben, denn das ist ja nicht unser Fehler, <g>sondern</g> ein Fehler vom Versand.<br><r>Was denkst du</r>, Anna?",
+          "en": "<r>Exactly, I think so too</r>.<br><r>I suggest that</r> we write a complaint right away, because this isn't our fault, <g>but rather</g> a shipping error.<br><r>What do you think</r>, Anna?",
+          "uk": "<r>Точно, я теж так думаю</r>.<br><r>Пропоную, щоб</r> ми одразу написали рекламацію, адже це не наша провина, <g>а</g> помилка доставки.<br><r>Що ти думаєш</r>, Анно?",
+          "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Предлагаю, чтобы</r> мы сразу написали претензию, ведь это не наша вина, <g>а</g> ошибка доставки.<br><r>Что ты думаешь</r>, Анна?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> den Verkäufer kontaktieren, <g>der</g> uns die Bestellung geschickt hat.<br><r>Wie findest du das?</r>",
@@ -26611,20 +26611,20 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> es nicht einfach behalten, <g>sondern</g> direkt zurückschicken.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we don't just keep it, <g>but rather</g> send it straight back.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми не залишали товар собі, <g>а</g> одразу відправили назад.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы не оставляли товар себе, <g>а</g> сразу отправили обратно.<br><r>Ты согласна с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми не залишали товар собі, <g>а</g> одразу відправили назад.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы не оставляли товар себе, <g>а</g> сразу отправили обратно.<br><r>Ты согласен с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir bitten um einen Ersatz, <g>der</g> uns schnell zugeschickt wird.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we ask for a replacement <g>that</g> gets sent to us quickly.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> просимо заміну, <g>яку</g> нам швидко надішлють.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> просим замену, <g>которую</g> нам быстро пришлют.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> просим замену, <g>которую</g> нам быстро пришлют.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob der Verkäufer schnell reagiert.<br><r>Vielleicht wäre es am besten, wenn wir</r> eine Frist setzen, <g>die</g> klar ist, damit er weiß, bis wann er antworten muss.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether the seller will react quickly.<br><r>Maybe it would be best if</r> we set a deadline <g>that</g> is clear, so they know by when they have to respond.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи відреагує продавець швидко.<br><r>Можливо, було б найкраще, якби ми</r> встановили чіткий термін, <g>який</g> зрозумілий, щоб він знав, до коли має відповісти.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Хм, я не совсем уверен</r>, отреагирует ли продавец быстро.<br><r>Возможно, было бы лучше, если бы мы</r> установили чёткий срок, <g>который</g> понятен, чтобы он знал, до какого времени должен ответить.<br><r>Тебе это подходит?</r>"
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи відреагує продавець швидко.<br><r>Можливо, було б найкраще, якби ми</r> встановили чіткий термін, <g>який</g> зрозумілий, щоб він знав, до коли має відповісти.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, отреагирует ли продавец быстро.<br><r>Возможно, было бы лучше, если бы мы</r> установили чёткий срок, <g>который</g> понятен, чтобы он знал, до какого времени должен ответить.<br><r>Тебе это подходит?</r>"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> das Geld zurückfordern, falls kein Ersatz kommt, <g>der</g> uns passt.<br><r>Passt dir das so?</r>",
@@ -26635,8 +26635,8 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> die Reklamation nicht mündlich machen, <g>sondern</g> schriftlich, damit wir alles dokumentiert haben.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we don't file the complaint verbally, <g>but rather</g> in writing, so we have everything documented.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми оформили рекламацію не усно, <g>а</g> письмово, щоб мати все задокументовано.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы оформили претензию не устно, <g>а</g> письменно, чтобы всё было задокументировано.<br><r>Мы можем об этом договориться?</r>"
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми оформили рекламацію не усно, <g>а</g> письмово, щоб мати все задокументовано.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы оформили претензию не устно, <g>а</g> письменно, чтобы всё было задокументировано.<br><r>Мы можем об этом договориться?</r>"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir machen ein Foto, schreiben eine schriftliche Reklamation, schicken das beschädigte Produkt zurück und bitten um einen Ersatz. Ich hoffe, das klappt schnell! Bis später!",
@@ -26656,19 +26656,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви хочете замовити разом із другом/подругою онлайн подарунок для спільної подруги.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви оформите замовлення.\nЦі пункти Вам допоможуть:\nЩо Ви покладете в кошик?\nЯкий спосіб оплати Ви оберете?\nКуди має прийти доставка? (адреса доставки)\nЯкий термін доставки?\nХто оформить замовлення й запише номер замовлення?",
       "ru": "Ситуация: Вы хотите заказать онлайн вместе с другом/подругой подарок для общей подруги.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы оформите заказ.\nЭти пункты Вам помогут:\nЧто Вы положите в корзину?\nКакой способ оплаты Вы выберете?\nКуда должна прийти доставка? (адрес доставки)\nКакой срок доставки?\nКто оформит заказ и запишет номер заказа?"
     },
-    "name_q": "de_w_julia",
+    "name_q": "de_w_nina",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo! Ich wollte mit dir ein Geschenk für Anna bestellen. Hast du Zeit, das mit mir zu planen?",
-      "en": "Hi! I wanted to order a present for Anna with you. Do you have time to plan that with me?",
-      "uk": "Привіт! Хотіла з тобою замовити подарунок для Анни. Маєш час спланувати це зі мною?",
-      "ru": "Привет! Хотела с тобой заказать подарок для Анны. Есть время спланировать это со мной?"
+          "de": "Hallo, Mark! Ich wollte mit dir ein Geschenk für Anna bestellen. Hast du Zeit, das mit mir zu planen?",
+          "en": "Hi, Mark! I wanted to order a present for Anna with you. Do you have time to plan that with me?",
+          "uk": "Привіт, Марку! Хотіла з тобою замовити подарунок для Анни. Маєш час спланувати це зі мною?",
+          "ru": "Привет, Марк! Хотела с тобой заказать подарок для Анны. Есть время спланировать это со мной?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst etwas Passendes in den <g>Warenkorb</g> legen.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first put something suitable in the <g>shopping cart</g>.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу поклали щось підходяще в <g>кошик</g>.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала положили что-то подходящее в <g>корзину</g>.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst etwas Passendes in den <g>Warenkorb</g> legen.<br><r>Was denkst du</r>, Nina?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first put something suitable in the <g>shopping cart</g>.<br><r>What do you think</r>, Nina?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу поклали щось підходяще в <g>кошик</g>.<br><r>Що ти думаєш</r>, Ніно?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала положили что-то подходящее в <g>корзину</g>.<br><r>Что ты думаешь</r>, Нина?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auf die <g>Versandkosten</g> achten, damit es nicht zu teuer wird.<br><r>Wie findest du das?</r>",
@@ -26730,19 +26730,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви та Ваш сусід/Ваша сусідка по кімнаті отримали спільний рахунок, який потрібно оплатити разом.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви оплатите рахунок.\nЦі пункти Вам допоможуть:\nЯка сума до сплати?\nДо якого терміну?\nХто зробить переказ?\nЯк Ви поділите суму?\nЩо зробити, щоб уникнути офіційного нагадування?",
       "ru": "Ситуация: Вы и Ваш сосед/Ваша соседка по комнате получили общий счёт, который нужно оплатить вместе.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы оплатите счёт.\nЭти пункты Вам помогут:\nКакая сумма к оплате?\nДо какого срока?\nКто сделает перевод?\nКак Вы разделите сумму?\nЧто сделать, чтобы избежать официального напоминания?"
     },
-    "name_q": "de_m_mark",
+    "name_q": "de_m_david",
     "name_a": "de_w_julia",
     "q": {
-      "de": "Hallo! Ich habe die Rechnung bekommen, die wir zusammen bezahlen müssen. Wollen wir kurz planen, wie wir das machen?",
-      "en": "Hi! I got the invoice that we need to pay together. Do you want to quickly plan how we'll do that?",
-      "uk": "Привіт! Я отримав рахунок, який нам треба оплатити разом. Хочеш швидко спланувати, як ми це зробимо?",
-      "ru": "Привет! Я получил счёт, который нам нужно оплатить вместе. Хочешь быстро спланировать, как мы это сделаем?"
+          "de": "Hallo, Julia! Ich habe die Rechnung bekommen, die wir zusammen bezahlen müssen. Wollen wir kurz planen, wie wir das machen?",
+          "en": "Hi, Julia! I got the invoice that we need to pay together. Do you want to quickly plan how we'll do that?",
+          "uk": "Привіт, Юліє! Я отримав рахунок, який нам треба оплатити разом. Хочеш швидко спланувати, як ми це зробимо?",
+          "ru": "Привет, Юлия! Я получил счёт, который нам нужно оплатить вместе. Хочешь быстро спланировать, как мы это сделаем?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst den Betrag prüfen, <g>den</g> wir zahlen müssen.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first check the amount <g>that</g> we have to pay.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу перевірили суму, <g>яку</g> треба сплатити.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала проверили сумму, <g>которую</g> нужно оплатить.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst den Betrag prüfen, <g>den</g> wir zahlen müssen.<br><r>Was denkst du</r>, David?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first check the amount <g>that</g> we have to pay.<br><r>What do you think</r>, David?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу перевірили суму, <g>яку</g> треба сплатити.<br><r>Що ти думаєш</r>, Девіде?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала проверили сумму, <g>которую</g> нужно оплатить.<br><r>Что ты думаешь</r>, Дэвид?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> die Frist beachten, <g>die</g> auf der Rechnung steht.<br><r>Wie findest du das?</r>",
@@ -26804,19 +26804,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ваша стара пральна машина зламалася. Ви хочете спланувати із сусідом/сусідкою по кімнаті, як купити нову.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підете за покупкою.\nЦі пункти Вам допоможуть:\nДе Ви порівняєте ціни?\nЯка якість Вам потрібна? (огляди)\nЧи є знижка або уцінена модель?\nЧи справді прилад вартий цього?\nЩо робити, якщо доведеться обміняти товар? (квитанція)",
       "ru": "Ситуация: Ваша старая стиральная машина сломалась. Вы хотите спланировать с соседом/соседкой по комнате, как купить новую.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы пойдёте за покупкой.\nЭти пункты Вам помогут:\nГде Вы сравните цены?\nКакое качество Вам нужно? (обзоры)\nЕсть ли скидка или уценённая модель?\nДействительно ли прибор стоит того?\nЧто делать, если придётся обменять товар? (квитанция)"
     },
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_q": "de_m_mark",
+    "name_a": "de_w_anna",
     "q": {
-      "de": "Hallo! Unsere alte Waschmaschine ist kaputt. Sollen wir zusammen planen, wie wir eine neue kaufen?",
-      "en": "Hi! Our old washing machine is broken. Should we plan together how we'll buy a new one?",
-      "uk": "Привіт! Наша стара пральна машина зламалася. Може, сплануємо разом, як купити нову?",
-      "ru": "Привет! Наша старая стиральная машина сломалась. Может, спланируем вместе, как купить новую?"
+          "de": "Hallo, Anna! Unsere alte Waschmaschine ist kaputt. Sollen wir zusammen planen, wie wir eine neue kaufen?",
+          "en": "Hi, Anna! Our old washing machine is broken. Should we plan together how we'll buy a new one?",
+          "uk": "Привіт, Анно! Наша стара пральна машина зламалася. Може, сплануємо разом, як купити нову?",
+          "ru": "Привет, Анна! Наша старая стиральная машина сломалась. Может, спланируем вместе, как купить новую?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst einen Preisvergleich machen.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first do a price comparison.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу порівняли ціни.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала сравнили цены.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst einen Preisvergleich machen.<br><r>Was denkst du</r>, Mark?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first do a price comparison.<br><r>What do you think</r>, Mark?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу порівняли ціни.<br><r>Що ти думаєш</r>, Марку?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала сравнили цены.<br><r>Что ты думаешь</r>, Марк?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auch die Qualität vergleichen und ein paar Testberichte lesen.<br><r>Wie findest du das?</r>",
@@ -26833,20 +26833,20 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> nur ein Gerät kaufen, das sich wirklich lohnt.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we only buy an appliance that's really worth it.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми купили лише той прилад, який справді вартий цього.<br><r>Ти згоден з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы купили только тот прибор, который действительно стоит того.<br><r>Ты согласен с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми купили лише той прилад, який справді вартий цього.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы купили только тот прибор, который действительно стоит того.<br><r>Ты согласна с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sparen noch eine Woche, dann haben wir genug Geld für ein besseres Modell.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we save for one more week, then we'll have enough money for a better model.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми ще тиждень поекономимо, тоді в нас буде достатньо грошей на кращу модель.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> мы ещё неделю поэкономим, тогда у нас будет достаточно денег на лучшую модель.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы ещё неделю поэкономим, тогда у нас будет достаточно денег на лучшую модель.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir so lange warten sollten.<br><r>Vielleicht wäre es am besten, wenn wir</r> die Quittung gut aufbewahren, falls wir es umtauschen müssen.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether we should wait that long.<br><r>Maybe it would be best if</r> we keep the receipt safe, in case we need to exchange it.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнена</r>, чи варто нам так довго чекати.<br><r>Можливо, було б найкраще, якби ми</r> добре зберігали квитанцію, якщо доведеться обміняти товар.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Хм, я не совсем уверена</r>, стоит ли нам так долго ждать.<br><r>Возможно, было бы лучше, если бы мы</r> хорошо сохранили квитанцию, если придётся обменять товар.<br><r>Тебе это подходит?</r>"
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи варто нам так довго чекати.<br><r>Можливо, було б найкраще, якби ми</r> добре зберігали квитанцію, якщо доведеться обміняти товар.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, стоит ли нам так долго ждать.<br><r>Возможно, было бы лучше, если бы мы</r> хорошо сохранили квитанцию, если придётся обменять товар.<br><r>Тебе это подходит?</r>"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> am Wochenende zusammen in den Laden gehen und es uns direkt ansehen.<br><r>Passt dir das so?</r>",
@@ -26857,8 +26857,8 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> vorher noch schnell online die besten Angebote vergleichen.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we quickly compare the best offers online beforehand.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми заздалегідь швидко порівняли найкращі пропозиції онлайн.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы заранее быстро сравнили лучшие предложения онлайн.<br><r>Мы можем об этом договориться?</r>"
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми заздалегідь швидко порівняли найкращі пропозиції онлайн.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы заранее быстро сравнили лучшие предложения онлайн.<br><r>Мы можем об этом договориться?</r>"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir vergleichen die Preise online, lesen die Testberichte, und am Wochenende gehen wir zusammen in den Laden. Ich hoffe, wir finden ein gutes Angebot! Bis Samstag!",
@@ -26878,19 +26878,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви хочете відкрити спільний поточний рахунок у банку разом із другом/подругою.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви це зробите.\nЦі пункти Вам допоможуть:\nКоли відкрите відділення банку?\nЩо потрібно взяти з собою? (посвідчення особи)\nХто відкриє рахунок, хто стане співвласником/співвласницею?\nСкільки часу це може зайняти?\nЩо Ви зробите потім? (онлайн-банкінг, PIN-код)",
       "ru": "Ситуация: Вы хотите открыть совместный текущий счёт в банке вместе с другом/подругой.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это сделаете.\nЭти пункты Вам помогут:\nКогда открыто отделение банка?\nЧто нужно взять с собой? (удостоверение личности)\nКто откроет счёт, кто станет совладельцем/совладелицей?\nСколько времени это может занять?\nЧто Вы сделаете потом? (онлайн-банкинг, ПИН-код)"
     },
-    "name_q": "de_m_mark",
-    "name_a": "de_w_julia",
+    "name_q": "de_m_alex",
+    "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo! Wollen wir zusammen zur Bank gehen und ein gemeinsames Konto eröffnen? Ich glaube, das wäre praktisch für uns.",
-      "en": "Hi! Should we go to the bank together and open a joint account? I think that would be practical for us.",
-      "uk": "Привіт! Може, підемо разом у банк і відкриємо спільний рахунок? Думаю, це було б зручно для нас.",
-      "ru": "Привет! Может, пойдём вместе в банк и откроем совместный счёт? Думаю, это было бы удобно для нас."
+          "de": "Hallo, Nina! Wollen wir zusammen zur Bank gehen und ein gemeinsames Konto eröffnen? Ich glaube, das wäre praktisch für uns.",
+          "en": "Hi, Nina! Should we go to the bank together and open a joint account? I think that would be practical for us.",
+          "uk": "Привіт, Ніно! Може, підемо разом у банк і відкриємо спільний рахунок? Думаю, це було б зручно для нас.",
+          "ru": "Привет, Нина! Может, пойдём вместе в банк и откроем совместный счёт? Думаю, это было бы удобно для нас."
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> morgen früh gehen, die Bankfiliale <g>müsste</g> um neun Uhr öffnen.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we go tomorrow morning, the bank branch <g>should</g> open at nine.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми пішли завтра вранці, відділення банку <g>має</g> відкритися о дев'ятій.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы пошли завтра утром, отделение банка <g>должно</g> открыться в девять.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> morgen früh gehen, die Bankfiliale <g>müsste</g> um neun Uhr öffnen.<br><r>Was denkst du</r>, Alex?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we go tomorrow morning, the bank branch <g>should</g> open at nine.<br><r>What do you think</r>, Alex?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми пішли завтра вранці, відділення банку <g>має</g> відкритися о дев'ятій.<br><r>Що ти думаєш</r>, Алексе?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы пошли завтра утром, отделение банка <g>должно</g> открыться в девять.<br><r>Что ты думаешь</r>, Алекс?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> unsere Ausweise mitnehmen, wir <g>dürften</g> die brauchen.<br><r>Wie findest du das?</r>",
@@ -26953,18 +26953,18 @@ var DIALOGE = [
       "ru": "Ситуация: Вам теперь тоже нужен собственный счёт, и Вы хотите сравнить предложения разных банков вместе с другом/подругой.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы сравните предложения.\nЭти пункты Вам помогут:\nКакая плата за счёт?\nВходит ли страхование?\nКакие проценты по кредитному лимиту?\nСберегательная книжка или кредитная карта – что важнее?\nКогда Вы откроете новый счёт?"
     },
     "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_a": "de_w_anna",
     "q": {
-      "de": "Hallo! Ich brauche jetzt auch ein eigenes Konto. Kannst du mir helfen, die Angebote zu vergleichen?",
-      "en": "Hi! I need my own account now too. Can you help me compare the offers?",
-      "uk": "Привіт! Мені теж тепер потрібен власний рахунок. Можеш допомогти мені порівняти пропозиції?",
-      "ru": "Привет! Мне тоже теперь нужен собственный счёт. Можешь помочь мне сравнить предложения?"
+          "de": "Hallo, Anna! Ich brauche jetzt auch ein eigenes Konto. Kannst du mir helfen, die Angebote zu vergleichen?",
+          "en": "Hi, Anna! I need my own account now too. Can you help me compare the offers?",
+          "uk": "Привіт, Анно! Мені теж тепер потрібен власний рахунок. Можеш допомогти мені порівняти пропозиції?",
+          "ru": "Привет, Анна! Мне тоже теперь нужен собственный счёт. Можешь помочь мне сравнить предложения?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Höhe <g>der Kontogebühr</g> vergleichen.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first compare the amount <g>of the account fee</g>.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу порівняли розмір <g>плати за рахунок</g>.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала сравнили размер <g>платы за счёт</g>.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Höhe <g>der Kontogebühr</g> vergleichen.<br><r>Was denkst du</r>, Julia?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first compare the amount <g>of the account fee</g>.<br><r>What do you think</r>, Julia?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу порівняли розмір <g>плати за рахунок</g>.<br><r>Що ти думаєш</r>, Юліє?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала сравнили размер <g>платы за счёт</g>.<br><r>Что ты думаешь</r>, Юлия?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auch die Bedingungen <g>der Versicherung</g> anschauen, die manche Banken anbieten.<br><r>Wie findest du das?</r>",
@@ -26981,14 +26981,14 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns auch die Vorteile <g>des Sparbuchs</g> ansehen.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we also look at the benefits <g>of the savings book</g>.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми також подивилися на переваги <g>ощадної книжки</g>.<br><r>Ти згоден з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы также посмотрели на преимущества <g>сберегательной книжки</g>.<br><r>Ты согласен с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми також подивилися на переваги <g>ощадної книжки</g>.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы также посмотрели на преимущества <g>сберегательной книжки</g>.<br><r>Ты согласна с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir prüfen auch, ob eine Kreditkarte im Preis <g>des Kontos</g> enthalten ist.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we also check whether a credit card is included in the price <g>of the account</g>.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> перевіримо ще, чи входить кредитна картка у вартість <g>рахунку</g>.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> проверим ещё, входит ли кредитная карта в стоимость <g>счёта</g>.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> проверим ещё, входит ли кредитная карта в стоимость <g>счёта</g>.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, welche Bank am besten passt.<br><r>Vielleicht wäre es am besten, wenn wir</r> die Website <g>jeder Bank</g> gemeinsam durchsehen.<br><r>Wäre das okay für dich?</r>",
@@ -27026,19 +27026,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви не можете знайти свою банківську картку і не знаєте, чи загубили її, чи її вкрали. Ви хочете спланувати з другом/подругою, що робити далі.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nСпершу заблокувати картку – як?\nКрадіжка чи загубили?\nПодати заяву в поліцію?\nПовідомити банк\nЯк отримати нову картку?",
       "ru": "Ситуация: Вы не можете найти свою банковскую карту и не знаете, потеряли ли Вы её или её украли. Вы хотите спланировать с другом/подругой, что делать дальше.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nСначала заблокировать карту – как?\nКража или потеря?\nПодать заявление в полицию?\nУведомить банк\nКак получить новую карту?"
     },
-    "name_q": "de_m_mark",
-    "name_a": "de_w_julia",
+    "name_q": "de_m_david",
+    "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo! Ich kann meine Bankkarte nicht mehr finden. Kannst du mir helfen, zu überlegen, was ich jetzt tun soll?",
-      "en": "Hi! I can't find my bank card anymore. Can you help me think about what to do now?",
-      "uk": "Привіт! Я ніяк не можу знайти свою банківську картку. Можеш допомогти мені подумати, що робити?",
-      "ru": "Привет! Я никак не могу найти свою банковскую карту. Можешь помочь мне подумать, что делать?"
+          "de": "Hallo, Nina! Ich kann meine Bankkarte nicht mehr finden. Kannst du mir helfen, zu überlegen, was ich jetzt tun soll?",
+          "en": "Hi, Nina! I can't find my bank card anymore. Can you help me think about what to do now?",
+          "uk": "Привіт, Ніно! Я ніяк не можу знайти свою банківську картку. Можеш допомогти мені подумати, що робити?",
+          "ru": "Привет, Нина! Я никак не могу найти свою банковскую карту. Можешь помочь мне подумать, что делать?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst den Sperrnotruf anrufen, damit niemand dein Geld abheben kann.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we call the emergency blocking hotline first, so no one can withdraw your money.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу зателефонували на гарячу лінію блокування, щоб ніхто не зняв твої гроші.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала позвонили на горячую линию блокировки, чтобы никто не снял твои деньги.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst den Sperrnotruf anrufen, damit niemand dein Geld abheben kann.<br><r>Was denkst du</r>, David?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we call the emergency blocking hotline first, so no one can withdraw your money.<br><r>What do you think</r>, David?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу зателефонували на гарячу лінію блокування, щоб ніхто не зняв твої гроші.<br><r>Що ти думаєш</r>, Девіде?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала позвонили на горячую линию блокировки, чтобы никто не снял твои деньги.<br><r>Что ты думаешь</r>, Дэвид?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> überlegen, ob die Karte gestohlen wurde oder ob ich sie einfach verloren habe.<br><r>Wie findest du das?</r>",
@@ -27100,19 +27100,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви та Ваш сусід/Ваша сусідка по кімнаті обмірковуєте, чи залишити страхування майна, чи розірвати інший страховий договір.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЧи справді Вам потрібне це страхування? (добровільне чи необхідне)\nЩо покриває страховий захист?\nЯка франшиза?\nЧи варто розірвати старе страхування?\nКоли Ви це з'ясуєте?",
       "ru": "Ситуация: Вы и Ваш сосед/Ваша соседка по комнате обдумываете, оставить ли страхование имущества или расторгнуть другой страховой договор.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nДействительно ли Вам нужна эта страховка? (добровольная или необходимая)\nЧто покрывает страховая защита?\nКакая франшиза?\nСтоит ли расторгнуть старую страховку?\nКогда Вы это выясните?"
     },
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_q": "de_m_mark",
+    "name_a": "de_m_alex",
     "q": {
-      "de": "Hallo! Ich habe über unsere Hausratversicherung nachgedacht. Sollen wir zusammen überlegen, ob wir sie wirklich brauchen?",
-      "en": "Hi! I've been thinking about our home contents insurance. Should we think together about whether we really need it?",
-      "uk": "Привіт! Я думала про наше страхування майна. Може, разом подумаємо, чи справді воно нам потрібне?",
-      "ru": "Привет! Я думала о нашей страховке имущества. Может, вместе подумаем, действительно ли она нам нужна?"
+          "de": "Hallo, Alex! Ich habe über unsere Hausratversicherung nachgedacht. Sollen wir zusammen überlegen, ob wir sie wirklich brauchen?",
+          "en": "Hi, Alex! I've been thinking about our home contents insurance. Should we think together about whether we really need it?",
+          "uk": "Привіт, Алексе! Я думала про наше страхування майна. Може, разом подумаємо, чи справді воно нам потрібне?",
+          "ru": "Привет, Алекс! Я думала о нашей страховке имущества. Может, вместе подумаем, действительно ли она нам нужна?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sie behalten, <g>obwohl</g> sie extra Geld kostet, denn sie schützt uns bei einem Einbruch.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we keep it, <g>although</g> it costs extra money, because it protects us in case of a break-in.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми залишили його, <g>хоча</g> воно коштує додаткових грошей, бо захищає нас на випадок крадіжки.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы оставили её, <g>хотя</g> она стоит дополнительных денег, потому что защищает нас на случай кражи.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sie behalten, <g>obwohl</g> sie extra Geld kostet, denn sie schützt uns bei einem Einbruch.<br><r>Was denkst du</r>, Mark?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we keep it, <g>although</g> it costs extra money, because it protects us in case of a break-in.<br><r>What do you think</r>, Mark?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми залишили його, <g>хоча</g> воно коштує додаткових грошей, бо захищає нас на випадок крадіжки.<br><r>Що ти думаєш</r>, Марку?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы оставили её, <g>хотя</g> она стоит дополнительных денег, потому что защищает нас на случай кражи.<br><r>Что ты думаешь</r>, Марк?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> prüfen, was der Versicherungsschutz genau abdeckt, <g>obwohl</g> das etwas Zeit braucht.<br><r>Wie findest du das?</r>",
@@ -27129,8 +27129,8 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> die Versicherung behalten, <g>obwohl</g> sie freiwillig ist, weil sie uns Sicherheit gibt.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we keep the insurance, <g>although</g> it's voluntary, because it gives us peace of mind.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми залишили страхування, <g>хоча</g> воно добровільне, бо воно дає нам спокій.<br><r>Ти згоден з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы оставили страховку, <g>хотя</g> она добровольная, потому что она даёт нам спокойствие.<br><r>Ты согласен с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми залишили страхування, <g>хоча</g> воно добровільне, бо воно дає нам спокій.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы оставили страховку, <g>хотя</g> она добровольная, потому что она даёт нам спокойствие.<br><r>Ты согласен с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir kündigen die alte Kfz-Versicherung, <g>obwohl</g> wir sie schon lange haben, weil sie zu teuer ist.<br><r>Was hältst du davon?</r>",
@@ -27141,8 +27141,8 @@ var DIALOGE = [
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob eine Kündigung so einfach ist.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns informieren, <g>obwohl</g> das vielleicht etwas kompliziert ist.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether cancelling is that simple.<br><r>Maybe it would be best if</r> we find out more, <g>although</g> that might be a bit complicated.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнена</r>, чи так просто розірвати договір.<br><r>Можливо, було б найкраще, якби ми</r> дізналися більше, <g>хоча</g> це, можливо, трохи складно.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Хм, я не совсем уверена</r>, так ли просто расторгнуть договор.<br><r>Возможно, было бы лучше, если бы мы</r> узнали больше, <g>хотя</g> это, возможно, немного сложно.<br><r>Тебе это подходит?</r>"
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи так просто розірвати договір.<br><r>Можливо, було б найкраще, якби ми</r> дізналися більше, <g>хоча</g> це, можливо, трохи складно.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, так ли просто расторгнуть договор.<br><r>Возможно, было бы лучше, если бы мы</r> узнали больше, <g>хотя</g> это, возможно, немного сложно.<br><r>Тебе это подходит?</r>"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> die Kündigung schreiben, <g>obwohl</g> wir noch keine Antwort von der neuen Versicherung haben.<br><r>Passt dir das so?</r>",
@@ -27153,8 +27153,8 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> alles gleich heute klären, <g>obwohl</g> wir eigentlich keine Zeit haben.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we sort everything out today, <g>although</g> we don't really have time.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми все з'ясували вже сьогодні, <g>хоча</g> в нас насправді немає часу.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы всё выясним уже сегодня, <g>хотя</g> у нас на самом деле нет времени.<br><r>Мы можем об этом договориться?</r>"
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми все з'ясували вже сьогодні, <g>хоча</g> в нас насправді немає часу.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы всё выясним уже сегодня, <g>хотя</g> у нас на самом деле нет времени.<br><r>Мы можем об этом договориться?</r>"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir behalten die Hausratversicherung, kündigen die alte Kfz-Versicherung, und klären heute noch alles Wichtige. Das ist zwar sinnvoll, obwohl es Arbeit macht! Bis später!",
@@ -27174,19 +27174,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви скоро їдете у відпустку і хочете спланувати з другом/подругою консультацію з представницею страхової компанії.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєтеся до розмови.\nЦі пункти Вам допоможуть:\nКоли Ви домовитеся про консультацію?\nЧи потрібна Вам туристична страховка?\nЯкий термін розірвання старого договору?\nЧи варто спершу звернутися в центр захисту прав споживачів?\nХто підпише новий договір?",
       "ru": "Ситуация: Вы скоро едете в отпуск и хотите спланировать с другом/подругой консультацию с представителем страховой компании.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы подготовитесь к разговору.\nЭти пункты Вам помогут:\nКогда Вы договоритесь о консультации?\nНужна ли Вам туристическая страховка?\nКакой срок расторжения старого договора?\nСтоит ли сначала обратиться в центр защиты прав потребителей?\nКто подпишет новый договор?"
     },
-    "name_q": "de_m_mark",
+    "name_q": "de_w_anna",
     "name_a": "de_w_julia",
     "q": {
-      "de": "Hallo! Wir fahren bald in den Urlaub. Sollen wir ein Beratungsgespräch mit der Versicherungsvertreterin vereinbaren?",
-      "en": "Hi! We're going on vacation soon. Should we schedule a consultation with the insurance agent?",
-      "uk": "Привіт! Ми скоро їдемо у відпустку. Може, домовимося про консультацію з представницею страхової компанії?",
-      "ru": "Привет! Мы скоро едем в отпуск. Может, договоримся о консультации с представителем страховой компании?"
+          "de": "Hallo, Julia! Wir fahren bald in den Urlaub. Sollen wir ein Beratungsgespräch mit der Versicherungsvertreterin vereinbaren?",
+          "en": "Hi, Julia! We're going on vacation soon. Should we schedule a consultation with the insurance agent?",
+          "uk": "Привіт, Юліє! Ми скоро їдемо у відпустку. Може, домовимося про консультацію з представницею страхової компанії?",
+          "ru": "Привет, Юлия! Мы скоро едем в отпуск. Может, договоримся о консультации с представителем страховой компании?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst das <g>Beratungsgespräch</g> für nächste Woche vereinbaren.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we schedule the <g>consultation</g> for next week first.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу домовилися про <g>консультаційну бесіду</g> на наступний тиждень.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала договорились о <g>консультационной беседе</g> на следующую неделю.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst das <g>Beratungsgespräch</g> für nächste Woche vereinbaren.<br><r>Was denkst du</r>, Anna?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we schedule the <g>consultation</g> for next week first.<br><r>What do you think</r>, Anna?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу домовилися про <g>консультаційну бесіду</g> на наступний тиждень.<br><r>Що ти думаєш</r>, Анно?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала договорились о <g>консультационной беседе</g> на следующую неделю.<br><r>Что ты думаешь</r>, Анна?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> sie nach einer guten <g>Reiseversicherung</g> fragen.<br><r>Wie findest du das?</r>",
@@ -27203,8 +27203,8 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns vorher bei der Verbraucherzentrale informieren.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we get information from the consumer advice centre beforehand.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми заздалегідь порадилися в центрі захисту прав споживачів.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы заранее проконсультировались в центре защиты прав потребителей.<br><r>Ты согласна с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми заздалегідь порадилися в центрі захисту прав споживачів.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы заранее проконсультировались в центре защиты прав потребителей.<br><r>Ты согласна с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir fragen auch nach dem genauen <g>Zahlungstermin</g>, damit wir nichts vergessen.<br><r>Was hältst du davon?</r>",
@@ -27215,8 +27215,8 @@ var DIALOGE = [
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir den Vertrag gleich unterschreiben sollten.<br><r>Vielleicht wäre es am besten, wenn wir</r> erst zu Hause in Ruhe alles besprechen.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether we should sign the contract right away.<br><r>Maybe it would be best if</r> we discuss everything calmly at home first.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи варто нам одразу підписувати договір.<br><r>Можливо, було б найкраще, якби ми</r> спершу спокійно все обговорили вдома.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Хм, я не совсем уверен</r>, стоит ли нам сразу подписывать договор.<br><r>Возможно, было бы лучше, если бы мы</r> сначала спокойно всё обсудили дома.<br><r>Тебе это подходит?</r>"
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи варто нам одразу підписувати договір.<br><r>Можливо, було б найкраще, якби ми</r> спершу спокійно все обговорили вдома.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, стоит ли нам сразу подписывать договор.<br><r>Возможно, было бы лучше, если бы мы</r> сначала спокойно всё обсудили дома.<br><r>Тебе это подходит?</r>"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> das <g>Kündigungsschreiben</g> für den alten Vertrag schon vorbereiten.<br><r>Passt dir das so?</r>",
@@ -27227,8 +27227,8 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> auch nach einem passenden <g>Sparplan</g> fragen, bevor wir den neuen Vertrag abschließen.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we also ask about a suitable <g>savings plan</g> before we sign the new contract.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми також запитали про підходящий <g>ощадний план</g>, перш ніж укладемо новий договір.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы также спросили о подходящем <g>сберегательном плане</g>, прежде чем заключим новый договор.<br><r>Мы можем об этом договориться?</r>"
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми також запитали про підходящий <g>ощадний план</g>, перш ніж укладемо новий договір.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы также спросили о подходящем <g>сберегательном плане</g>, прежде чем заключим новый договор.<br><r>Мы можем об этом договориться?</r>"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir vereinbaren das Beratungsgespräch, fragen nach der Reiseversicherung und der Kündigungsfrist, und bereiten das Kündigungsschreiben vor. Ich freue mich schon auf den Urlaub! Bis nächste Woche!",
@@ -27248,19 +27248,19 @@ var DIALOGE = [
       "uk": "Ситуація: Хоча Ви вчасно розірвали договір, з Вашого рахунку все одно списали плату. Ви хочете спланувати з другом/подругою, як це з'ясувати.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЯкий доказ Вам потрібен? (підтвердження розірвання)\nВи спершу напишете чи зателефонуєте?\nЯк Ви вимагатимете гроші назад?\nЯкий термін Ви встановите?\nЩо робити, якщо компанія не відповідає?",
       "ru": "Ситуация: Хотя Вы вовремя расторгли договор, с Вашего счёта всё равно списали плату. Вы хотите спланировать с другом/подругой, как это выяснить.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nКакое доказательство Вам нужно? (подтверждение расторжения)\nВы сначала напишете или позвоните?\nКак Вы потребуете деньги обратно?\nКакой срок Вы установите?\nЧто делать, если компания не отвечает?"
     },
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_q": "de_w_nina",
+    "name_a": "de_m_david",
     "q": {
-      "de": "Hallo! Ich habe gerade gesehen, dass trotzdem eine Gebühr von meinem Konto abgebucht wurde, obwohl ich rechtzeitig gekündigt habe. Kannst du mir helfen, das zu klären?",
-      "en": "Hi! I just saw that a fee was still charged from my account, although I cancelled in time. Can you help me sort this out?",
-      "uk": "Привіт! Я щойно побачила, що з мого рахунку все одно списали плату, хоча я вчасно розірвала договір. Можеш допомогти мені це з'ясувати?",
-      "ru": "Привет! Я только что увидела, что с моего счёта всё равно списали плату, хотя я вовремя расторгла договор. Можешь помочь мне это выяснить?"
+          "de": "Hallo, David! Ich habe gerade gesehen, dass trotzdem eine Gebühr von meinem Konto abgebucht wurde, obwohl ich rechtzeitig gekündigt habe. Kannst du mir helfen, das zu klären?",
+          "en": "Hi, David! I just saw that a fee was still charged from my account, although I cancelled in time. Can you help me sort this out?",
+          "uk": "Привіт, Девіде! Я щойно побачила, що з мого рахунку все одно списали плату, хоча я вчасно розірвала договір. Можеш допомогти мені це з'ясувати?",
+          "ru": "Привет, Дэвид! Я только что увидела, что с моего счёта всё равно списали плату, хотя я вовремя расторгла договор. Можешь помочь мне это выяснить?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Bestätigung suchen, <g>denn</g> die brauchen wir als Nachweis.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we look for the confirmation first, <g>because</g> we need it as proof.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу знайшли підтвердження, <g>бо</g> воно нам потрібне як доказ.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала нашли подтверждение, <g>потому что</g> оно нам нужно как доказательство.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Bestätigung suchen, <g>denn</g> die brauchen wir als Nachweis.<br><r>Was denkst du</r>, Nina?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we look for the confirmation first, <g>because</g> we need it as proof.<br><r>What do you think</r>, Nina?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу знайшли підтвердження, <g>бо</g> воно нам потрібне як доказ.<br><r>Що ти думаєш</r>, Ніно?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала нашли подтверждение, <g>потому что</g> оно нам нужно как доказательство.<br><r>Что ты думаешь</r>, Нина?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> der Firma schreiben, <g>weil</g> wir einen Nachweis haben.<br><r>Wie findest du das?</r>",
@@ -27322,19 +27322,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви хочете поснідати разом із другом/подругою на вихідних і порівняти свої харчові звички.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви організуєте сніданок.\nЦі пункти Вам допоможуть:\nСолодке чи солоне – що буде?\nЧи хтось вегетаріанець?\nЩо робити, якщо хтось хоче їсти низькокалорійно?\nХто піде за покупками? (торговий автомат чи супермаркет)\nКоли Ви зустрінетеся?",
       "ru": "Ситуация: Вы хотите позавтракать вместе с другом/подругой на выходных и сравнить свои привычки питания.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы организуете завтрак.\nЭти пункты Вам помогут:\nСладкое или солёное – что будет?\nЕсть ли вегетарианец?\nЧто делать, если кто-то хочет есть низкокалорийно?\nКто пойдёт за покупками? (торговый автомат или супермаркет)\nКогда Вы встретитесь?"
     },
-    "name_q": "de_m_mark",
-    "name_a": "de_w_julia",
+    "name_q": "de_m_alex",
+    "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo! Wollen wir am Wochenende zusammen frühstücken? Ich würde gern mal unsere Essgewohnheiten vergleichen.",
-      "en": "Hi! Should we have breakfast together this weekend? I'd like to compare our eating habits sometime.",
-      "uk": "Привіт! Може, поснідаємо разом на вихідних? Хотів би порівняти наші харчові звички.",
-      "ru": "Привет! Может, позавтракаем вместе на выходных? Хотел бы сравнить наши привычки питания."
+          "de": "Hallo, Mark! Wollen wir am Wochenende zusammen frühstücken? Ich würde gern mal unsere Essgewohnheiten vergleichen.",
+          "en": "Hi, Mark! Should we have breakfast together this weekend? I'd like to compare our eating habits sometime.",
+          "uk": "Привіт, Марку! Може, поснідаємо разом на вихідних? Хотів би порівняти наші харчові звички.",
+          "ru": "Привет, Марк! Может, позавтракаем вместе на выходных? Хотел бы сравнить наши привычки питания."
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sowohl etwas Süßes als auch etwas Salziges machen, dann ist für jeden etwas dabei.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we make both something sweet and something salty, so there's something for everyone.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми приготували і щось солодке, і щось солоне, тоді кожному щось знайдеться.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы приготовили и что-то сладкое, и что-то солёное, тогда каждому что-то найдётся.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sowohl etwas Süßes als auch etwas Salziges machen, dann ist für jeden etwas dabei.<br><r>Was denkst du</r>, Alex?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we make both something sweet and something salty, so there's something for everyone.<br><r>What do you think</r>, Alex?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми приготували і щось солодке, і щось солоне, тоді кожному щось знайдеться.<br><r>Що ти думаєш</r>, Алексе?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы приготовили и что-то сладкое, и что-то солёное, тогда каждому что-то найдётся.<br><r>Что ты думаешь</r>, Алекс?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auch an vegetarische Optionen denken, falls jemand kein Fleisch isst.<br><r>Wie findest du das?</r>",
@@ -27351,14 +27351,14 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns treffen, sobald wir richtig Hunger haben, also so gegen neun Uhr.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we meet as soon as we're really hungry, so around nine.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми зустрілися, як тільки зголодніємо, тобто десь о дев'ятій.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы встретились, как только проголодаемся, то есть около девяти.<br><r>Ты согласна с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми зустрілися, як тільки зголодніємо, тобто десь о дев'ятій.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы встретились, как только проголодаемся, то есть около девяти.<br><r>Ты согласен с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Ich kaufe frisches Brot, und du bringst etwas vom Automaten mit, falls uns noch etwas fehlt.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> I'll buy fresh bread, and you bring something from the vending machine, in case we're still missing something.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> я куплю свіжий хліб, а ти принесеш щось із торгового автомата, якщо нам чогось бракуватиме.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> я куплю свежий хлеб, а ты принесёшь что-нибудь из торгового автомата, если нам чего-то будет не хватать.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> я куплю свежий хлеб, а ты принесёшь что-нибудь из торгового автомата, если нам чего-то будет не хватать.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob der Automat um diese Zeit schon Kaffee hat.<br><r>Vielleicht wäre es am besten, wenn wir</r> stattdessen frischen Kaffee kochen.<br><r>Wäre das okay für dich?</r>",
@@ -27397,18 +27397,18 @@ var DIALOGE = [
       "ru": "Ситуация: Вы и Ваш друг/Ваша подруга хотите спланировать ностальгический кулинарный вечер и приготовить старые семейные рецепты из детства.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы организуете кулинарный вечер.\nЭти пункты Вам помогут:\nЧто у Вас раньше часто ели?\nЧто Вы больше всего любили есть и пить в детстве?\nКто какое блюдо принесёт?\nСпросите ли Вы у родителей рецепты?\nКогда и где Вы встретитесь?"
     },
     "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo! Ich habe neulich an unsere Kindheit gedacht. Weißt du noch, was es bei euch zu Hause oft zu essen gab? Wollen wir einen Kochabend planen und ein paar alte Gerichte nachkochen?",
-      "en": "Hi! I was thinking about our childhood recently. Do you remember what you often used to eat at home? Should we plan a cooking night and recreate a few old dishes?",
-      "uk": "Привіт! Я нещодавно згадувала наше дитинство. Пам'ятаєш, що у вас удома часто їли? Може, сплануємо вечір кулінарії і приготуємо кілька старих страв?",
-      "ru": "Привет! Я недавно вспоминала наше детство. Помнишь, что у вас дома часто ели? Может, спланируем кулинарный вечер и приготовим несколько старых блюд?"
+          "de": "Hallo, Nina! Ich habe neulich an unsere Kindheit gedacht. Weißt du noch, was es bei euch zu Hause oft zu essen gab? Wollen wir einen Kochabend planen und ein paar alte Gerichte nachkochen?",
+          "en": "Hi, Nina! I was thinking about our childhood recently. Do you remember what you often used to eat at home? Should we plan a cooking night and recreate a few old dishes?",
+          "uk": "Привіт, Ніно! Я нещодавно згадувала наше дитинство. Пам'ятаєш, що у вас удома часто їли? Може, сплануємо вечір кулінарії і приготуємо кілька старих страв?",
+          "ru": "Привет, Нина! Я недавно вспоминала наше детство. Помнишь, что у вас дома часто ели? Может, спланируем кулинарный вечер и приготовим несколько старых блюд?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst überlegen, was es bei uns damals oft <g>gab</g>, zum Beispiel Kartoffelsuppe.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first think about what we often <g>had</g> back then, for example potato soup.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу подумали, що в нас тоді часто <g>було</g>, наприклад картопляний суп.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала подумали, что у нас тогда часто <g>было</g>, например картофельный суп.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst überlegen, was es bei uns damals oft <g>gab</g>, zum Beispiel Kartoffelsuppe.<br><r>Was denkst du</r>, Julia?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first think about what we often <g>had</g> back then, for example potato soup.<br><r>What do you think</r>, Julia?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу подумали, що в нас тоді часто <g>було</g>, наприклад картопляний суп.<br><r>Що ти думаєш</r>, Юліє?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала подумали, что у нас тогда часто <g>было</g>, например картофельный суп.<br><r>Что ты думаешь</r>, Юлия?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auch daran denken, was wir als Kinder am liebsten <g>aßen</g>.<br><r>Wie findest du das?</r>",
@@ -27425,14 +27425,14 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass</r> jeder ein Gericht mitbringt, das seine Mutter früher oft <g>kochte</g>.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> everyone brings a dish their mother often <g>cooked</g> back then.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> кожен приніс страву, яку його мама часто <g>готувала</g>.<br><r>Ти згоден з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> каждый принёс блюдо, которое его мама часто <g>готовила</g>.<br><r>Ты согласен с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> кожен приніс страву, яку його мама часто <g>готувала</g>.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> каждый принёс блюдо, которое его мама часто <g>готовила</g>.<br><r>Ты согласна с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Meine Oma <g>backte</g> immer einen Apfelkuchen, den bringe ich mit.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> my grandma always <g>baked</g> an apple cake, I'll bring that.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> моя бабуся завжди <g>пекла</g> яблучний пиріг, я його принесу.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> моя бабушка всегда <g>пекла</g> яблочный пирог, я его принесу.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> моя бабушка всегда <g>пекла</g> яблочный пирог, я его принесу.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir uns an alle Rezepte noch erinnern.<br><r>Vielleicht wäre es am besten, wenn wir</r> vorher unsere Eltern fragen, wie es früher <g>war</g>.<br><r>Wäre das okay für dich?</r>",
@@ -27470,19 +27470,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви останнім часом набрали вагу і хочете спланувати з другом/подругою, як харчуватися здоровіше й більше рухатися.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви зміните свої звички.\nЦі пункти Вам допоможуть:\nЩо Ви хочете змінити? (харчування, спорт)\nЯк часто Ви зустрічатиметеся регулярно?\nЯк Ви контролюватимете прогрес?\nЩо Ви робитимете, коли буде важко?\nЯк Ви підтримуватимете одне одного?",
       "ru": "Ситуация: Вы в последнее время набрали вес и хотите спланировать с другом/подругой, как питаться здоровее и больше двигаться.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы измените свои привычки.\nЭти пункты Вам помогут:\nЧто Вы хотите изменить? (питание, спорт)\nКак часто Вы будете встречаться регулярно?\nКак Вы будете отслеживать прогресс?\nЧто Вы будете делать, когда будет трудно?\nКак Вы будете поддерживать друг друга?"
     },
-    "name_q": "de_m_mark",
-    "name_a": "de_w_julia",
+    "name_q": "de_m_david",
+    "name_a": "de_m_alex",
     "q": {
-      "de": "Hallo! Ich habe in letzter Zeit ziemlich zugenommen. Sollen wir zusammen planen, wie wir uns gesünder ernähren?",
-      "en": "Hi! I've gained quite a bit of weight lately. Should we plan together how to eat more healthily?",
-      "uk": "Привіт! Останнім часом я досить набрав вагу. Може, сплануємо разом, як харчуватися здоровіше?",
-      "ru": "Привет! В последнее время я довольно сильно набрал вес. Может, спланируем вместе, как питаться здоровее?"
+          "de": "Hallo, Alex! Ich habe in letzter Zeit ziemlich zugenommen. Sollen wir zusammen planen, wie wir uns gesünder ernähren?",
+          "en": "Hi, Alex! I've gained quite a bit of weight lately. Should we plan together how to eat more healthily?",
+          "uk": "Привіт, Алексе! Останнім часом я досить набрав вагу. Може, сплануємо разом, як харчуватися здоровіше?",
+          "ru": "Привет, Алекс! В последнее время я довольно сильно набрал вес. Может, спланируем вместе, как питаться здоровее?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> uns regelmäßig treffen, <g>deshalb</g> würde ich sagen: jeden Mittwoch.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we meet regularly, <g>that's why</g> I'd say every Wednesday.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми зустрічалися регулярно, <g>тому</g> я б сказала: щосереди.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы встречались регулярно, <g>поэтому</g> я бы сказала: каждую среду.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> uns regelmäßig treffen, <g>deshalb</g> würde ich sagen: jeden Mittwoch.<br><r>Was denkst du</r>, David?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we meet regularly, <g>that's why</g> I'd say every Wednesday.<br><r>What do you think</r>, David?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми зустрічалися регулярно, <g>тому</g> я б сказала: щосереди.<br><r>Що ти думаєш</r>, Девіде?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы встречались регулярно, <g>поэтому</g> я бы сказала: каждую среду.<br><r>Что ты думаешь</r>, Дэвид?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> gemeinsam kochen, <g>deswegen</g> sparen wir auch Zeit.<br><r>Wie findest du das?</r>",
@@ -27499,14 +27499,14 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> unseren Fortschritt aufschreiben, <g>deshalb</g> führen wir ein kleines Tagebuch.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we write down our progress, <g>that's why</g> we'll keep a little journal.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми записували свій прогрес, <g>тому</g> ведемо невеликий щоденник.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы записывали свой прогресс, <g>поэтому</g> ведём небольшой дневник.<br><r>Ты согласна с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми записували свій прогрес, <g>тому</g> ведемо невеликий щоденник.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы записывали свой прогресс, <g>поэтому</g> ведём небольшой дневник.<br><r>Ты согласен с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir essen bewusster, <g>deswegen</g> kaufen wir weniger Fertiggerichte.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we eat more mindfully, <g>that's why</g> we'll buy fewer ready meals.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми їстимемо усвідомленіше, <g>тому</g> купуватимемо менше готових страв.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы будем есть осознаннее, <g>поэтому</g> будем покупать меньше готовых блюд.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> мы будем есть осознаннее, <g>поэтому</g> будем покупать меньше готовых блюд.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir das immer durchhalten.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns auch mal einen freien Tag erlauben, aber <g>trotzdem</g> bleiben wir dabei.<br><r>Wäre das okay für dich?</r>",
@@ -27544,19 +27544,19 @@ var DIALOGE = [
       "uk": "Ситуація: Скоро день народження спільної подруги. Ви хочете приготувати й спекти щось разом із другом/подругою.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви це організуєте.\nЦі пункти Вам допоможуть:\nЯкий сімейний рецепт Ви використаєте для торта?\nЧого бракує в кухонній шафі?\nЯкий розмір порції Вам потрібен?\nЯк Ви накриєте стіл для гостей?\nЩо Ви робитимете із залишками їжі потім?",
       "ru": "Ситуация: Скоро день рождения общей подруги. Вы хотите приготовить и испечь что-то вместе с другом/подругой.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это организуете.\nЭти пункты Вам помогут:\nКакой семейный рецепт Вы используете для торта?\nЧего не хватает в кухонном шкафу?\nКакой размер порции Вам нужен?\nКак Вы накроете стол для гостей?\nЧто Вы будете делать с остатками еды потом?"
     },
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_q": "de_w_anna",
+    "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo! Bald ist der Geburtstag von Anna. Wollen wir zusammen kochen und backen?",
-      "en": "Hi! Anna's birthday is coming up soon. Should we cook and bake together?",
-      "uk": "Привіт! Скоро день народження Анни. Може, приготуємо і спечемо щось разом?",
-      "ru": "Привет! Скоро день рождения Анны. Может, приготовим и испечём что-то вместе?"
+          "de": "Hallo, Nina! Bald ist der Geburtstag von Julia. Wollen wir zusammen kochen und backen?",
+          "en": "Hi, Nina! Julia's birthday is coming up soon. Should we cook and bake together?",
+          "uk": "Привіт, Ніно! Скоро день народження Юлії. Може, приготуємо і спечемо щось разом?",
+          "ru": "Привет, Нина! Скоро день рождения Юлии. Может, приготовим и испечём что-то вместе?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> die <g>Geburtstagstorte</g> nach dem Rezept meiner Mutter backen.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we bake the <g>birthday cake</g> using my mother's recipe.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спекли <g>торт на день народження</g> за рецептом моєї мами.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы испекли <g>торт на день рождения</g> по рецепту моей мамы.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> die <g>Geburtstagstorte</g> nach dem Rezept meiner Mutter backen.<br><r>Was denkst du</r>, Anna?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we bake the <g>birthday cake</g> using my mother's recipe.<br><r>What do you think</r>, Anna?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спекли <g>торт на день народження</g> за рецептом моєї мами.<br><r>Що ти думаєш</r>, Анно?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы испекли <g>торт на день рождения</g> по рецепту моей мамы.<br><r>Что ты думаешь</r>, Анна?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> zuerst im <g>Küchenschrank</g> nachsehen, was wir noch an Zutaten haben.<br><r>Wie findest du das?</r>",
@@ -27573,14 +27573,14 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> noch ein zweites <g>Familienrezept</g> ausprobieren, vielleicht hat deine Oma auch eins.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we also try a second <g>family recipe</g>, maybe your grandma has one too.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми спробували ще й другий <g>сімейний рецепт</g>, можливо, у твоєї бабусі теж є якийсь.<br><r>Ти згоден з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы попробовали ещё и второй <g>семейный рецепт</g>, может, у твоей бабушки тоже есть какой-то.<br><r>Ты согласен с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми спробували ще й другий <g>сімейний рецепт</g>, можливо, у твоєї бабусі теж є якийсь.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы попробовали ещё и второй <g>семейный рецепт</g>, может, у твоей бабушки тоже есть какой-то.<br><r>Ты согласна с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir decken den <g>Gästetisch</g> schön, mit Blumen und Kerzen.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we set the <g>guest table</g> nicely, with flowers and candles.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми гарно накриємо <g>стіл для гостей</g>, з квітами й свічками.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> мы красиво накроем <g>стол для гостей</g>, с цветами и свечами.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы красиво накроем <g>стол для гостей</g>, с цветами и свечами.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir genug Zeit für alles haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> schon am Vortag mit dem Backen anfangen.<br><r>Wäre das okay für dich?</r>",
@@ -27619,18 +27619,18 @@ var DIALOGE = [
       "ru": "Ситуация: Вы хотите спланировать с другом/подругой опрос о привычках питания и потом представить результаты.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы проведёте опрос.\nЭти пункты Вам помогут:\nКакие вопросы Вы зададите в опросе?\nКого Вы опросите?\nКак Вы соберёте ответы?\nКак Вы представите результаты? (статистика, среднее значение)\nДо какого времени опрос будет готов?"
     },
     "name_q": "de_m_mark",
-    "name_a": "de_w_julia",
+    "name_a": "de_m_david",
     "q": {
-      "de": "Hallo! Ich würde gern eine Umfrage zu unseren Essgewohnheiten machen. Hast du Lust, das mit mir zu planen?",
-      "en": "Hi! I'd like to do a survey about our eating habits. Do you feel like planning that with me?",
-      "uk": "Привіт! Хотів би провести опитування про наші харчові звички. Маєш бажання спланувати це зі мною?",
-      "ru": "Привет! Хотел бы провести опрос о наших привычках питания. Есть желание спланировать это со мной?"
+          "de": "Hallo, David! Ich würde gern eine Umfrage zu unseren Essgewohnheiten machen. Hast du Lust, das mit mir zu planen?",
+          "en": "Hi, David! I'd like to do a survey about our eating habits. Do you feel like planning that with me?",
+          "uk": "Привіт, Девіде! Хотів би провести опитування про наші харчові звички. Маєш бажання спланувати це зі мною?",
+          "ru": "Привет, Дэвид! Хотел бы провести опрос о наших привычках питания. Есть желание спланировать это со мной?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Meinung <g>der Mehrheit</g> herausfinden wollen, also fragen wir viele Leute.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first find out the opinion <g>of the majority</g>, so we'll ask a lot of people.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу з'ясували думку <g>більшості</g>, тому запитаємо багато людей.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала выяснили мнение <g>большинства</g>, поэтому спросим много людей.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Meinung <g>der Mehrheit</g> herausfinden wollen, also fragen wir viele Leute.<br><r>Was denkst du</r>, Mark?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first find out the opinion <g>of the majority</g>, so we'll ask a lot of people.<br><r>What do you think</r>, Mark?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу з'ясували думку <g>більшості</g>, тому запитаємо багато людей.<br><r>Що ти думаєш</r>, Марку?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала выяснили мнение <g>большинства</g>, поэтому спросим много людей.<br><r>Что ты думаешь</r>, Марк?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> die Fragen <g>von unserem Kurs</g> beantworten lassen.<br><r>Wie findest du das?</r>",
@@ -27647,14 +27647,14 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> am Ende den Durchschnitt <g>von allen Antworten</g> berechnen.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we calculate the average <g>of all the answers</g> at the end.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми наприкінці порахували середнє значення <g>всіх відповідей</g>.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы в конце посчитали среднее значение <g>всех ответов</g>.<br><r>Ты согласна с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми наприкінці порахували середнє значення <g>всіх відповідей</g>.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы в конце посчитали среднее значение <g>всех ответов</g>.<br><r>Ты согласен с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir zeigen die Ergebnisse <g>der Umfrage</g> als kleine Statistik.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we show the results <g>of the survey</g> as a small statistic.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> покажемо результати <g>опитування</g> як невелику статистику.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> покажем результаты <g>опроса</g> как небольшую статистику.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> покажем результаты <g>опроса</g> как небольшую статистику.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir genug Teilnehmer finden.<br><r>Vielleicht wäre es am besten, wenn wir</r> auch die Kollegen <g>von meiner Schwester</g> fragen.<br><r>Wäre das okay für dich?</r>",
@@ -27692,19 +27692,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ви хочете харчуватися здоровіше і приготувати їжу на весь тиждень разом із другом/подругою.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви приготуєте їжу.\nЦі пункти Вам допоможуть:\nЩо Ви готуватимете? (різноманітно, збалансовано)\nЯкий розмір порцій?\nСкільки контейнерів для зберігання їжі Вам потрібно?\nЯк Ви подбаєте про достатньо вітамінів і клітковини?\nКоли Ви зустрінетеся для готування?",
       "ru": "Ситуация: Вы хотите питаться здоровее и приготовить еду на всю неделю вместе с другом/подругой.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы приготовите еду.\nЭти пункты Вам помогут:\nЧто Вы будете готовить? (разнообразно, сбалансированно)\nКакой размер порций?\nСколько контейнеров для хранения еды Вам нужно?\nКак Вы позаботитесь о достаточном количестве витаминов и клетчатки?\nКогда Вы встретитесь для готовки?"
     },
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "name_q": "de_m_alex",
+    "name_a": "de_w_anna",
     "q": {
-      "de": "Hallo! Ich möchte mich gesünder ernähren. Sollen wir zusammen Essen für die Woche vorkochen?",
-      "en": "Hi! I want to eat healthier. Should we cook meals for the week together?",
-      "uk": "Привіт! Хочу харчуватися здоровіше. Може, приготуємо їжу на тиждень разом?",
-      "ru": "Привет! Хочу питаться здоровее. Может, приготовим еду на неделю вместе?"
+          "de": "Hallo, Anna! Ich möchte mich gesünder ernähren. Sollen wir zusammen Essen für die Woche vorkochen?",
+          "en": "Hi, Anna! I want to eat healthier. Should we cook meals for the week together?",
+          "uk": "Привіт, Анно! Хочу харчуватися здоровіше. Може, приготуємо їжу на тиждень разом?",
+          "ru": "Привет, Анна! Хочу питаться здоровее. Может, приготовим еду на неделю вместе?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> ein abwechslungsreiches Menü planen, damit es nicht langweilig wird.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we plan a varied menu, so it doesn't get boring.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спланували різноманітне меню, щоб не було нудно.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы спланировали разнообразное меню, чтобы не было скучно.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> ein abwechslungsreiches Menü planen, damit es nicht langweilig wird.<br><r>Was denkst du</r>, Alex?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we plan a varied menu, so it doesn't get boring.<br><r>What do you think</r>, Alex?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спланували різноманітне меню, щоб не було нудно.<br><r>Що ти думаєш</r>, Алексе?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы спланировали разнообразное меню, чтобы не было скучно.<br><r>Что ты думаешь</r>, Алекс?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auf eine ausgewogene Mischung aus Gemüse und Eiweiß achten.<br><r>Wie findest du das?</r>",
@@ -27721,20 +27721,20 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> genug Frischhaltedosen kaufen, bevor wir anfangen.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we buy enough food storage containers before we start.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми купили достатньо контейнерів для зберігання їжі, перш ніж почати.<br><r>Ти згоден з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы купили достаточно контейнеров для хранения еды, прежде чем начать.<br><r>Ты согласен с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми купили достатньо контейнерів для зберігання їжі, перш ніж почати.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы купили достаточно контейнеров для хранения еды, прежде чем начать.<br><r>Ты согласна с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir achten auf genug Ballaststoffe, zum Beispiel mit Vollkornreis.<br><r>Was hältst du davon?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we make sure to get enough fibre, for example with brown rice.<br><r>What do you think of that?</r>",
       "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми подбаємо про достатньо клітковини, наприклад із бурим рисом.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> мы позаботимся о достаточном количестве клетчатки, например с бурым рисом.<br><r>Что ты на это скажешь?</r>"
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы позаботимся о достаточном количестве клетчатки, например с бурым рисом.<br><r>Что ты на это скажешь?</r>"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir alle wichtigen Vitamine bekommen.<br><r>Vielleicht wäre es am besten, wenn wir</r> noch etwas Obst als Snack dazupacken.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether we're getting all the important vitamins.<br><r>Maybe it would be best if</r> we add some fruit as a snack.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнена</r>, чи отримуємо ми всі важливі вітаміни.<br><r>Можливо, було б найкраще, якби ми</r> додали трохи фруктів як перекус.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Хм, я не совсем уверена</r>, получаем ли мы все важные витамины.<br><r>Возможно, было бы лучше, если бы мы</r> добавили немного фруктов как перекус.<br><r>Тебе это подходит?</r>"
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи отримуємо ми всі важливі вітаміни.<br><r>Можливо, було б найкраще, якби ми</r> додали трохи фруктів як перекус.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, получаем ли мы все важные витамины.<br><r>Возможно, было бы лучше, если бы мы</r> добавили немного фруктов как перекус.<br><r>Тебе это подходит?</r>"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch die Kalorien pro Portion grob berechnen.<br><r>Passt dir das so?</r>",
@@ -27745,8 +27745,8 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> uns schon am Sonntagnachmittag zum Kochen treffen.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we meet to cook on Sunday afternoon already.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми зустрілися для готування вже в неділю вдень.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы встретились для готовки уже в воскресенье днём.<br><r>Мы можем об этом договориться?</r>"
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми зустрілися для готування вже в неділю вдень.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы встретились для готовки уже в воскресенье днём.<br><r>Мы можем об этом договориться?</r>"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir kochen am Sonntag ein abwechslungsreiches, ausgewogenes Menü, packen es in Frischhaltedosen und nehmen noch etwas Obst als Snack mit. Ich freue mich schon aufs Kochen! Bis Sonntag!",
@@ -27766,19 +27766,19 @@ var DIALOGE = [
       "uk": "Ситуація: Ваша нова колега з іншої країни. Ви хочете спланувати з колегою, як допомогти їй освоїтися тут.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви це зробите.\nЦі пункти Вам допоможуть:\nЩо для неї, ймовірно, найбільш незвичне?\nЯкі місцеві правила Ви пояснити?\nЯк Ви покажете їй місто?\nЩо здивувало Вас самих, відколи Ви тут?\nКоли Ви її запросите?",
       "ru": "Ситуация: Ваша новая коллега из другой страны. Вы хотите спланировать с коллегой, как помочь ей освоиться здесь.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это сделаете.\nЭти пункты Вам помогут:\nЧто для неё, вероятно, самое непривычное?\nКакие местные правила Вы объясните?\nКак Вы покажете ей город?\nЧто удивило Вас самих, с тех пор как Вы здесь?\nКогда Вы её пригласите?"
     },
-    "name_q": "de_m_mark",
+    "name_q": "de_w_nina",
     "name_a": "de_w_julia",
     "q": {
-      "de": "Hallo! Unsere neue Kollegin kommt aus einem anderen Land. Sollen wir zusammen planen, wie wir ihr hier alles zeigen?",
-      "en": "Hi! Our new colleague is from another country. Should we plan together how we'll show her around here?",
-      "uk": "Привіт! Наша нова колега з іншої країни. Може, сплануємо разом, як показати їй усе тут?",
-      "ru": "Привет! Наша новая коллега из другой страны. Может, спланируем вместе, как показать ей всё здесь?"
+          "de": "Hallo, Julia! Unsere neue Kollegin kommt aus einem anderen Land. Sollen wir zusammen planen, wie wir ihr hier alles zeigen?",
+          "en": "Hi, Julia! Our new colleague is from another country. Should we plan together how we'll show her around here?",
+          "uk": "Привіт, Юліє! Наша нова колега з іншої країни. Може, сплануємо разом, як показати їй усе тут?",
+          "ru": "Привет, Юлия! Наша новая коллега из другой страны. Может, спланируем вместе, как показать ей всё здесь?"
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> ihr die wichtigsten Regeln erklären, denn <g>seit</g> ich hier arbeite, weiß ich, wie viele Missverständnisse es geben kann.<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we explain the most important rules to her, because <g>since</g> I've been working here, I know how many misunderstandings there can be.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми пояснили їй найважливіші правила, адже <g>відколи</g> я тут працюю, знаю, скільки може бути непорозумінь.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы объяснили ей самые важные правила, ведь <g>с тех пор как</g> я здесь работаю, знаю, сколько может быть недоразумений.<br><r>Что ты думаешь?</r>"
+          "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> ihr die wichtigsten Regeln erklären, denn <g>seit</g> ich hier arbeite, weiß ich, wie viele Missverständnisse es geben kann.<br><r>Was denkst du</r>, Nina?",
+          "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we explain the most important rules to her, because <g>since</g> I've been working here, I know how many misunderstandings there can be.<br><r>What do you think</r>, Nina?",
+          "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми пояснили їй найважливіші правила, адже <g>відколи</g> я тут працюю, знаю, скільки може бути непорозумінь.<br><r>Що ти думаєш</r>, Ніно?",
+          "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы объяснили ей самые важные правила, ведь <g>с тех пор как</g> я здесь работаю, знаю, сколько может быть недоразумений.<br><r>Что ты думаешь</r>, Нина?"
     },
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> ihr erzählen, was uns selbst überrascht hat, <g>seitdem</g> wir hier leben.<br><r>Wie findest du das?</r>",
@@ -27795,8 +27795,8 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> ihr die Stadt zeigen, damit sie sich schneller vertraut fühlt.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we show her around the city, so she feels familiar with it faster.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми показали їй місто, щоб вона швидше почувалася звично.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы показали ей город, чтобы она быстрее почувствовала себя как дома.<br><r>Ты согласна с этим?</r>"
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми показали їй місто, щоб вона швидше почувалася звично.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы показали ей город, чтобы она быстрее почувствовала себя как дома.<br><r>Ты согласна с этим?</r>"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir laden sie zu uns nach Hause ein, <g>seitdem</g> ich das mache, fühlen sich neue Kollegen viel wohler.<br><r>Was hältst du davon?</r>",
@@ -27807,8 +27807,8 @@ var DIALOGE = [
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob sie sich schon traut, uns Fragen zu stellen.<br><r>Vielleicht wäre es am besten, wenn wir</r> selbst erzählen, welche Erwartungen wir am Anfang hatten.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether she already feels comfortable asking us questions.<br><r>Maybe it would be best if</r> we tell her ourselves what expectations we had at the start.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи наважується вона вже ставити нам запитання.<br><r>Можливо, було б найкраще, якби ми</r> самі розповіли, які очікування мали на початку.<br><r>Тобі це підходить?</r>",
-      "ru": "<r>Хм, я не совсем уверен</r>, решается ли она уже задавать нам вопросы.<br><r>Возможно, было бы лучше, если бы мы</r> сами рассказали, какие ожидания у нас были вначале.<br><r>Тебе это подходит?</r>"
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи наважується вона вже ставити нам запитання.<br><r>Можливо, було б найкраще, якби ми</r> самі розповіли, які очікування мали на початку.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, решается ли она уже задавать нам вопросы.<br><r>Возможно, было бы лучше, если бы мы</r> сами рассказали, какие ожидания у нас были вначале.<br><r>Тебе это подходит?</r>"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch erklären, wie sich unsere Kultur entwickelt hat, das interessiert bestimmt viele.<br><r>Passt dir das so?</r>",
@@ -27819,8 +27819,8 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> sie schon nächste Woche zum Mittagessen einladen.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we invite her for lunch already next week.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми запросили її на обід вже наступного тижня.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы пригласили её на обед уже на следующей неделе.<br><r>Мы можем об этом договориться?</r>"
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми запросили її на обід вже наступного тижня.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы пригласили её на обед уже на следующей неделе.<br><r>Мы можем об этом договориться?</r>"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir erklären ihr die wichtigsten Regeln, zeigen ihr die Stadt, und laden sie nächste Woche zum Mittagessen ein. Ich freue mich schon darauf, sie besser kennenzulernen! Bis bald!",
