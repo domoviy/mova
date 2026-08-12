@@ -7,7 +7,35 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="MOVA">
-<title>MOVA · Deutsch B2</title>
+<title>MOVA — німецька точно за програмою Integrationskurs</title>
+<meta name="description" content="Слова, граматика й діалоги — ті самі, що на інтеграційних курсах A2, B1 та B2 Beruf. Готуйся до telc з телефону: аудіо з носійною вимовою, живі діалоги, офлайн.">
+
+<!-- Open Graph — прев'ю посилання в месенджерах (WhatsApp, Telegram, Viber, Signal...).
+     Важливо: ці теги СТАТИЧНІ — краулери месенджерів HTML не рендерять і JS не
+     виконують, лише один раз парсять сирий HTML. Тому мову тексту прев'ю не можна
+     підлаштувати під мову ОС отримувача (як усередині самого додатку) — вона
+     ОДНА, зафіксована тут назавжди для всіх, хто відкриє посилання. Обрано
+     українську — основна мова спілкування цільової аудиторії (мігранти з
+     України/пострадянського простору, що готуються до Integrationskurs у
+     Німеччині), і сам додаток інтерфейсно теж працює здебільшого uk/de/en.
+     Якщо потрібна інша мова — поміняти лише значення og:title/og:description/
+     twitter:* нижче, назва файлу og-image.png лишається тою самою. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="MOVA">
+<meta property="og:url" content="https://mova.now/">
+<meta property="og:title" content="MOVA — німецька точно за програмою Integrationskurs">
+<meta property="og:description" content="Слова, граматика й діалоги — ті самі, що на інтеграційних курсах A2, B1 та B2 Beruf. Готуйся до telc: аудіо з носійною вимовою, живі діалоги, офлайн — просто з телефону.">
+<meta property="og:image" content="https://mova.now/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="uk_UA">
+
+<!-- Twitter Card — деякі клієнти (напр. Telegram Instant View, X) читають саме ці,
+     а не og:*, тому дублюємо ті самі значення. -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MOVA — німецька точно за програмою Integrationskurs">
+<meta name="twitter:description" content="Слова, граматика й діалоги — ті самі, що на інтеграційних курсах A2, B1 та B2 Beruf. Готуйся до telc: аудіо з носійною вимовою, живі діалоги, офлайн.">
+<meta name="twitter:image" content="https://mova.now/og-image.png">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
 <!-- Inter — локальні woff2 файли, кешуються Service Worker офлайн -->
@@ -1928,6 +1956,19 @@ body.lesson-active .vocab-top{
    селектора (тип+2 класи) природно переважає базове .tts-word.active
    (2 класи) вище — без !important. */
 g .tts-word.active, r .tts-word.active{ background:var(--forest); }
+/* Той самий golden-on-golden конфлікт трапляється й тут: <b> у
+   .lf-unit-body (словниковий термін у Vocab def, підсвітка нижче) і
+   .sb-front-sentence (підставлена відповідь у Sprachbausteine) НАВМИСНО
+   пофарбовані в золотий (var(--gold)/var(--gold-lt), див. правила цих
+   класів нижче й у #2306) — і якраз ці два поля тепер теж мають
+   karaoke-підсвітку (data-audio-field="def"/"sentence"). Базовий
+   .tts-word.active з золотим фоном на золотому тексті — це та сама
+   "золотий на золотому" нечитабельність, що й для <g>/<r> вище, лише
+   для <b> вона трапляється ЛИШЕ в цих двох контекстах (в інших місцях
+   <b> — звичайний невиділений колір, там фон .tts-word.active лишається
+   базовим, чіпати його не треба).*/
+.lf-unit-body b .tts-word.active,
+.sb-front-sentence b .tts-word.active{ background:var(--forest); }
 .lf-unit-short{font-size:var(--fs-card);font-weight:400;color:var(--muted);margin-top:2px}
 /* Довгий текст (приклад-речення: Vocab def, SB sentence/переклад/пояснення,
    Dialogue q/a/переклади) — звичайна вага, щоб не зливатись у суцільний
@@ -3198,7 +3239,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '477-ee3472b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3624,6 +3665,13 @@ async function switchCourse(courseId){
     notify((activeCourse?.emoji||'📚')+' '+activeCourse?.title);
     csShowModal('done', activeCourse);
     setTimeout(csHideModal, 1400);
+    // Після зміни курсу — одразу в лінію уроків нового курсу (а не
+    // лишати користувача на тій вкладці, де він натиснув "змінити курс",
+    // яка для щойно завантаженого курсу може бути ще порожньою/нерелевантною,
+    // напр. Favoriten чи Dialogue без жодної обраної картки). showView('lernpfad')
+    // сам викликає renderLernpfad(), який сам скролить до активної точки
+    // (findCurrentLesson) — той самий шлях, що вже є в goToLernpfadActivePoint().
+    showView('lernpfad');
   }catch(e){
     console.error('switchCourse error:', e);
     notify('⚠️ Курс не вдалося завантажити');
