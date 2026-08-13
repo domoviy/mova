@@ -2945,7 +2945,8 @@ var LESSONS = [
       "dlg_a22_025",
       "dlg_a22_026",
       "dlg_a22_027",
-      "dlg_a22_028"
+      "dlg_a22_028",
+      "dlg_089"
     ]
   },
   {
@@ -2982,7 +2983,10 @@ var LESSONS = [
       "k15_028"
     ],
     "unlockAfter": "k15m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_090"
+    ]
   },
   {
     "id": "k15m3",
@@ -7803,6 +7807,106 @@ var DIALOGE = [
       "ru": "Отлично, я уже радуюсь провести день с тобой, Нина!"
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_089",
+    "cat": "Einen Behördengang vorbereiten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie müssen Ihren Ausweis beantragen und wissen nicht genau, wie das geht. Sie möchten sich mit einem Freund vorbereiten.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was füllen wir aus?<br>Welche Fragen stellen wir?<br>Wann gehen wir zum Amt?",
+      "en": "You need to apply for your ID card and don't know exactly how it works. You would like to prepare with a friend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we fill out?<br>What questions do we ask?<br>When do we go to the office?",
+      "uk": "Вам треба подати заяву на посвідчення особи, і ви не знаєте точно, як це зробити. Ви хочете підготуватися з другом.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Що ми заповнюємо?<br>Які запитання поставимо?<br>Коли підемо до установи?",
+      "ru": "Вам нужно подать заявление на удостоверение личности, и вы не знаете точно, как это сделать. Вы хотите подготовиться с другом.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Что мы заполняем?<br>Какие вопросы зададим?<br>Когда пойдём в учреждение?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Hallo Alex! Ich muss meinen Ausweis beantragen und weiß nicht genau, wie das geht. Hilfst du mir?",
+      "en": "Hi Alex! I need to apply for my ID card and don't know exactly how it works. Can you help me?",
+      "uk": "Привіт, Алекс! Мені треба подати заяву на посвідчення особи, і я не знаю точно, як це зробити. Допоможеш мені?",
+      "ru": "Привет, Алекс! Мне нужно подать заявление на удостоверение личности, и я не знаю точно, как это сделать. Поможешь мне?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst das Formular zusammen ausfüllen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> fill out the form together first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку разом заповнити бланк.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала вместе заполнить бланк.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich weiß nicht, welches Amt zuständig ist. Können Sie mir sagen, <g>wo</g> ich das Formular abgeben <g>muss</g>?<br><r>Ich hätte einen Vorschlag:</r> Wir rufen vorher beim Amt an und fragen.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I don't know which office is responsible. Can you tell me <g>where</g> I <g>have to</g> hand in the form?<br><r>I have a suggestion:</r> we call the office beforehand and ask.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я не знаю, яка установа відповідальна. Чи не могли б ви сказати мені, де я маю здати бланк?<br><r>У мене є пропозиція:</r> зателефонуємо в установу заздалегідь і запитаємо.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я не знаю, какое учреждение отвечает за это. Не могли бы вы сказать мне, где мне нужно сдать бланк?<br><r>У меня есть предложение:</r> позвоним в учреждение заранее и спросим.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir auch fragen, <g>wie viel</g> die Gebühr <g>kostet</g>, bevor wir hingehen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we also ask <g>how much</g> the fee <g>costs</g> before we go there.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> ще запитати, скільки коштує збір, перш ніж туди йти.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> ещё спросить, сколько стоит сбор, прежде чем туда идти.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir gehen morgen früh gemeinsam zum Amt.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we go to the office together tomorrow morning.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> завтра вранці підемо разом до установи.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> завтра утром пойдём вместе в учреждение.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, dann bist du bestimmt gut vorbereitet, Nina!",
+      "en": "Great, then you'll definitely be well prepared, Nina!",
+      "uk": "Чудово, тоді ти точно будеш добре підготовлена, Ніно!",
+      "ru": "Отлично, тогда ты точно будешь хорошо подготовлена, Нина!"
+    },
+    "gram": "indirekter_fragesatz_fragewort"
+  },
+  {
+    "id": "dlg_090",
+    "cat": "Einen Besuch im Fundbüro planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie haben Ihren Führerschein verloren und möchten mit einer Freundin zum Fundbüro gehen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann hat das Fundbüro geöffnet?<br>Was fragen wir dort?<br>Wann gehen wir hin?",
+      "en": "You have lost your driving licence and would like to go to the lost-property office with a friend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When is the lost-property office open?<br>What do we ask there?<br>When do we go?",
+      "uk": "Ви загубили водійське посвідчення і хочете піти до бюро знахідок із подругою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли працює бюро знахідок?<br>Що ми там запитаємо?<br>Коли ми підемо?",
+      "ru": "Вы потеряли водительские права и хотите пойти в бюро находок с подругой.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда работает бюро находок?<br>Что мы там спросим?<br>Когда мы пойдём?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo Julia! Ich habe meinen Führerschein verloren. Kommst du mit zum Fundbüro?",
+      "en": "Hi Julia! I've lost my driving licence. Will you come with me to the lost-property office?",
+      "uk": "Привіт, Юліє! Я загубив водійське посвідчення. Підеш зі мною до бюро знахідок?",
+      "ru": "Привет, Юлия! Я потерял водительские права. Пойдёшь со мной в бюро находок?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst die Öffnungszeiten online prüfen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> check the opening hours online first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку перевірити години роботи онлайн.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала проверить часы работы онлайн.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich weiß nicht, <g>ob</g> sie meinen Führerschein wirklich <g>haben</g>.<br><r>Ich hätte einen Vorschlag:</r> Wir rufen vorher an und fragen nach.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I don't know <g>whether</g> they really <g>have</g> my driving licence.<br><r>I have a suggestion:</r> we call beforehand and ask.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я не знаю, чи справді в них моє посвідчення.<br><r>У мене є пропозиція:</r> зателефонуємо заздалегідь і запитаємо.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я не знаю, действительно ли у них мои права.<br><r>У меня есть предложение:</r> позвоним заранее и спросим.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir auch fragen, <g>ob</g> deswegen ein Bußgeldbescheid <g>kommt</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we also ask <g>whether</g> a fine notice <g>comes</g> because of this.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> ще запитати, чи прийде через це повідомлення про штраф.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> ещё спросить, придёт ли из-за этого уведомление о штрафе.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir gehen heute Nachmittag zusammen zum Schalter.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we go to the counter together this afternoon.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> сьогодні вдень підемо разом до віконця.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> сегодня днём пойдём вместе к окошку.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, ich hoffe, dein Führerschein ist noch da, Mark!",
+      "en": "Great, I hope your driving licence is still there, Mark!",
+      "uk": "Чудово, сподіваюся, твоє посвідчення ще там, Марку!",
+      "ru": "Отлично, надеюсь, твои права ещё там, Марк!"
+    },
+    "gram": "indirekter_fragesatz_ob"
   }
 ];
 
