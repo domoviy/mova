@@ -2518,7 +2518,10 @@ var LESSONS = [
       "k6_031"
     ],
     "unlockAfter": "k6m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_096"
+    ]
   },
   {
     "id": "k6m3",
@@ -28287,6 +28290,80 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, спрашиваем врача, навещаем её по очереди, и ухаживаем дома, как только её выпишут. Надеюсь, ей скоро станет лучше! До связи!"
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_096",
+    "cat": "Freundin im Krankenhaus unterstützen planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Ihre Freundin Nina hat morgen eine wichtige Untersuchung im Krankenhaus. Sie möchten mit einem Freund/einer Freundin planen, wie Sie sie in dieser Zeit unterstützen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, was Sie ihr versprechen.\nDiese Punkte helfen Ihnen:\nWas werden Sie tun, sobald Sie den Befund erfahren?\nWie oft werden Sie sie besuchen?\nWerden Sie sie zur Therapie begleiten?\nWas sagen Sie ihr über die Genesung?\nWas versprechen Sie ihr für die schwere Zeit?",
+      "en": "Situation: Your friend Nina has an important examination at the hospital tomorrow. You want to plan with a friend how you'll support her during this time.\nTask: Plan together with your conversation partner what you'll promise her.\nThese points will help you:\nWhat will you do as soon as you find out the results?\nHow often will you visit her?\nWill you go with her to therapy?\nWhat will you tell her about the recovery?\nWhat will you promise her for the difficult time?",
+      "uk": "Ситуація: У Вашої подруги Ніни завтра важливе обстеження в лікарні. Ви хочете спланувати з другом/подругою, як Ви підтримаєте її в цей час.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, що Ви їй пообіцяєте.\nЦі пункти Вам допоможуть:\nЩо Ви зробите, щойно дізнаєтеся результат?\nЯк часто Ви будете її відвідувати?\nЧи будете Ви супроводжувати її на терапію?\nЩо Ви скажете їй про одужання?\nЩо Ви пообіцяєте їй на цей складний час?",
+      "ru": "Ситуация: У Вашей подруги Нины завтра важное обследование в больнице. Вы хотите спланировать с другом/подругой, как Вы поддержите её в это время.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, что Вы ей пообещаете.\nЭти пункты Вам помогут:\nЧто Вы сделаете, как только узнаете результат?\nКак часто Вы будете её навещать?\nБудете ли Вы сопровождать её на терапию?\nЧто Вы скажете ей о выздоровлении?\nЧто Вы пообещаете ей на это трудное время?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Hallo, Alex! Ich habe mit dem Arzt gesprochen. Nina wird morgen eine wichtige Untersuchung haben. Wollen wir planen, wie wir sie in dieser Zeit unterstützen?",
+      "en": "Hi, Alex! I talked to the doctor. Nina will have an important examination tomorrow. Should we plan how we'll support her during this time?",
+      "uk": "Привіт, Алексе! Я поговорила з лікарем. У Ніни завтра буде важливе обстеження. Може, сплануємо, як ми підтримаємо її в цей час?",
+      "ru": "Привет, Алекс! Я поговорила с врачом. У Нины завтра будет важное обследование. Может, спланируем, как мы поддержим её в это время?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sie anrufen, sobald wir <g>den Befund erfahren werden</g>.<br><r>Was denkst du</r>, Anna?",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we call her as soon as <g>we find out the results</g>.<br><r>What do you think</r>, Anna?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми зателефонуємо їй, щойно <g>дізнаємося результат</g>.<br><r>Що ти думаєш</r>, Анно?",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы позвоним ей, как только <g>узнаем результат</g>.<br><r>Что ты думаешь</r>, Анна?"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> ihr versprechen, dass wir <g>sie jeden Tag besuchen werden</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we promise her that <g>we will visit her every day</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми пообіцяємо їй, що <g>будемо відвідувати її щодня</g>.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы пообещаем ей, что <g>будем навещать её каждый день</g>.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Therapie denken.<br><r>Wir könnten doch</r> versprechen, dass wir <g>sie zur Therapie begleiten werden</g>, wenn sie das möchte.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the therapy.<br><r>We could</r> promise that <g>we will go with her to therapy</g>, if she wants that.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про терапію.<br><r>Ми могли б</r> пообіцяти, що <g>будемо супроводжувати її на терапію</g>, якщо вона захоче.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о терапии.<br><r>Мы могли бы</r> пообещать, что <g>будем сопровождать её на терапию</g>, если она захочет.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> ihr sagen, dass <g>sich die Schmerzen bald abklingen werden</g>.<br><r>Bist du damit einverstanden</r>, Alex?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we tell her that <g>the pain will subside soon</g>.<br><r>Do you agree with that</r>, Alex?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми сказали їй, що <g>біль скоро вщухне</g>.<br><r>Ти згоден з цим</r>, Алексе?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы сказали ей, что <g>боль скоро утихнет</g>.<br><r>Ты согласен с этим</r>, Алекс?"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir versprechen, dass <g>wir ihr in dieser schweren Zeit helfen werden</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we promise that <g>we will help her through this difficult time</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> пообіцяємо, що <g>ми допоможемо їй у цей складний час</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> пообещаем, что <g>мы поможем ей в это трудное время</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob die Diagnose schon heute feststeht.<br><r>Vielleicht wäre es am besten, wenn wir</r> sagen, dass <g>wir flexibel bleiben werden</g>, egal was der Arzt sagt.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether the diagnosis is already confirmed today.<br><r>Maybe it would be best if</r> we say that <g>we will stay flexible</g>, no matter what the doctor says.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи діагноз уже підтверджений сьогодні.<br><r>Можливо, було б найкраще, якби ми</r> сказали, що <g>ми залишимося гнучкими</g>, хай там що скаже лікар.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, подтверждён ли диагноз уже сегодня.<br><r>Возможно, было бы лучше, если бы мы</r> сказали, что <g>мы останемся гибкими</g>, что бы ни сказал врач.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> versprechen, dass <g>wir sie nie allein lassen werden</g>.<br><r>Passt dir das so</r>, Anna?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> promise that <g>we will never leave her alone</g>.<br><r>Does that work for you</r>, Anna?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> пообіцяємо, що <g>ніколи не залишимо її саму</g>.<br><r>Тобі так підходить</r>, Анно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> пообещаем, что <g>никогда не оставим её одну</g>.<br><r>Тебе так подходит</r>, Анна?"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> ihr sagen, dass <g>sie sich sicher bald erholen wird</g>.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we tell her that <g>she will surely recover soon</g>.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми сказали їй, що <g>вона точно скоро одужає</g>.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы сказали ей, что <g>она точно скоро выздоровеет</g>.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir rufen sie nach der Untersuchung an, besuchen sie jeden Tag, und begleiten sie bei der Therapie. Ich bin sicher, sie wird sich bald erholen! Bis bald!",
+      "en": "Yes, good idea! So, we'll call her after the examination, visit her every day, and go with her to therapy. I'm sure she'll recover soon! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, телефонуємо їй після обстеження, відвідуємо щодня, і супроводжуємо на терапію. Я впевнений, вона скоро одужає! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, звоним ей после обследования, навещаем каждый день, и сопровождаем на терапию. Я уверен, она скоро выздоровеет! До связи!"
+    },
+    "gram": "futur_werden"
   }
 ];
 
