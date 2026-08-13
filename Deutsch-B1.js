@@ -2437,7 +2437,10 @@ var LESSONS = [
       "k5_060"
     ],
     "unlockAfter": "k5m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_094"
+    ]
   },
   {
     "id": "k6m1",
@@ -2477,7 +2480,8 @@ var LESSONS = [
       "dlg_021",
       "dlg_022",
       "dlg_023",
-      "dlg_024"
+      "dlg_024",
+      "dlg_095"
     ]
   },
   {
@@ -28135,6 +28139,154 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, выясняем, из-за чего все раздражаются, хорошо готовимся, и открыто об этом говорим. Уже жду с нетерпением это выяснить! До связи!"
     },
     "gram": "praepositionaladverbien_b1"
+  },
+  {
+    "id": "dlg_094",
+    "cat": "Etikette-Leitfaden für neue Kollegen planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie möchten mit einer Kollegin/einem Kollegen einen kleinen Leitfaden zur Etikette für neue Kollegen schreiben.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Leitfaden vorbereiten.\nDiese Punkte helfen Ihnen:\nWie begrüßt man sich hier normalerweise?\nWelche Themen sind beim Smalltalk okay, worauf sollte man verzichten?\nWelche Sitten und Bräuche sind wichtig zu wissen?\nWie beruhigt man jemanden, der unsicher ist?\nWann ist der Leitfaden fertig?",
+      "en": "Situation: You want to write a short etiquette guide for new colleagues with a colleague.\nTask: Plan together with your conversation partner how you'll prepare the guide.\nThese points will help you:\nHow do people usually greet each other here?\nWhat topics are okay for small talk, what should be avoided?\nWhat customs and traditions are important to know?\nHow do you calm someone who feels unsure?\nWhen will the guide be finished?",
+      "uk": "Ситуація: Ви хочете написати з колегою короткий путівник з етикету для нових колег.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте путівник.\nЦі пункти Вам допоможуть:\nЯк тут зазвичай вітаються?\nЯкі теми прийнятні для невимушеної розмови, чого варто уникати?\nЯкі звичаї й традиції важливо знати?\nЯк заспокоїти когось, хто почувається невпевнено?\nКоли путівник буде готовий?",
+      "ru": "Ситуация: Вы хотите написать с коллегой короткий путеводитель по этикету для новых коллег.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы подготовите путеводитель.\nЭти пункты Вам помогут:\nКак здесь обычно приветствуют друг друга?\nКакие темы приемлемы для непринуждённой беседы, чего стоит избегать?\nКакие обычаи и традиции важно знать?\nКак успокоить кого-то, кто чувствует себя неуверенно?\nКогда путеводитель будет готов?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Hallo, Alex! Ich dachte, wir könnten für unsere neuen Kollegen einen kleinen Leitfaden zur Etikette hier schreiben. Hast du Lust, das mit mir zu planen?",
+      "en": "Hi, Alex! I was thinking we could write a short etiquette guide for our new colleagues here. Do you feel like planning that with me?",
+      "uk": "Привіт, Алексе! Я подумала, що ми могли б написати короткий путівник з етикету для наших нових колег тут. Маєш бажання спланувати це зі мною?",
+      "ru": "Привет, Алекс! Я подумала, что мы могли бы написать короткий путеводитель по этикету для наших новых коллег здесь. Есть желание спланировать это со мной?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst erklären, wie man sich hier normalerweise begrüßt.<br><r>Was denkst du</r>, Anna?",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first explain how people usually greet each other here.<br><r>What do you think</r>, Anna?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу пояснили, як тут зазвичай вітаються.<br><r>Що ти думаєш</r>, Анно?",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала объяснили, как здесь обычно приветствуют друг друга.<br><r>Что ты думаешь</r>, Анна?"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auch ein paar Tipps zum Smalltalk geben, also worüber man gern spricht.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we also give a few small talk tips, meaning what people like to talk about.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми також дали кілька порад щодо невимушеної розмови, тобто про що люблять говорити.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы также дали несколько советов по непринуждённой беседе, то есть о чём любят говорить.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Tabus denken.<br><r>Wir könnten doch</r> eine kurze Liste machen, worauf man beim Smalltalk lieber verzichten sollte.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the taboos.<br><r>We could</r> make a short list of what to avoid in small talk.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про табу.<br><r>Ми могли б</r> скласти короткий список того, чого краще уникати в розмові.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о табу.<br><r>Мы могли бы</r> составить короткий список того, чего лучше избегать в разговоре.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch die wichtigsten Sitten und Bräuche erklären.<br><r>Bist du damit einverstanden</r>, Alex?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we also explain the most important customs and traditions.<br><r>Do you agree with that</r>, Alex?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми також пояснили найважливіші звичаї й традиції.<br><r>Ти згоден з цим</r>, Алексе?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы также объяснили самые важные обычаи и традиции.<br><r>Ты согласен с этим</r>, Алекс?"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir schreiben auch, wie man Leute beruhigt, die sich am Anfang unsicher fühlen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we also write about how to calm people down who feel unsure at the start.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> напишемо ще, як заспокоювати людей, які почуваються невпевнено на початку.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> напишем ещё, как успокаивать людей, которые чувствуют себя неуверенно в начале.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir alle Regeln der Etikette in ein Dokument packen können.<br><r>Vielleicht wäre es am besten, wenn wir</r> nur die wichtigsten Punkte auswählen.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we can fit all the etiquette rules into one document.<br><r>Maybe it would be best if</r> we only pick the most important points.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи вмістимо ми всі правила етикету в один документ.<br><r>Можливо, було б найкраще, якби ми</r> обрали лише найважливіші пункти.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, уместим ли мы все правила этикета в один документ.<br><r>Возможно, было бы лучше, если бы мы</r> выбрали только самые важные пункты.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch erklären, wie lange es normalerweise dauert, bis man sich an alles gewöhnt.<br><r>Passt dir das so</r>, Anna?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> also explain how long it usually takes to get used to everything.<br><r>Does that work for you</r>, Anna?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> ще пояснимо, скільки зазвичай часу потрібно, щоб звикнути до всього.<br><r>Тобі так підходить</r>, Анно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> ещё объясним, сколько обычно времени нужно, чтобы привыкнуть ко всему.<br><r>Тебе так подходит</r>, Анна?"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> den Leitfaden noch diese Woche fertig machen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we finish the guide already this week.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми завершили путівник уже цього тижня.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы завершили путеводитель уже на этой неделе.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir erklären die Begrüßung, geben Tipps zum Smalltalk, und schreiben die wichtigsten Sitten und Bräuche auf. Ich freue mich schon auf den fertigen Leitfaden! Bis bald!",
+      "en": "Yes, good idea! So, we'll explain the greeting, give small talk tips, and write down the most important customs and traditions. I'm already looking forward to the finished guide! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, пояснюємо вітання, даємо поради щодо розмови, і записуємо найважливіші звичаї й традиції. Уже тішуся готовому путівнику! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, объясняем приветствие, даём советы по беседе, и записываем самые важные обычаи и традиции. Уже жду с нетерпением готовый путеводитель! До связи!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_095",
+    "cat": "Im Krankenhaus",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Eine gemeinsame Kollegin liegt im Krankenhaus. Sie möchten mit einem Kollegen/einer Kollegin planen, wie Sie sie unterstützen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen.\nDiese Punkte helfen Ihnen:\nWann besuchen Sie sie im Krankenhaus?\nWas bringen Sie mit?\nWer betreut sie, wenn sie entlassen wird?\nFragen Sie vorher den Arzt?\nWie informieren Sie andere Kollegen?",
+      "en": "Situation: A mutual colleague is in the hospital. You want to plan with a colleague how to support her.\nTask: Plan together with your conversation partner how you'll do it.\nThese points will help you:\nWhen will you visit her at the hospital?\nWhat will you bring?\nWho will look after her once she's discharged?\nWill you ask the doctor first?\nHow will you inform other colleagues?",
+      "uk": "Ситуація: Спільна колега лежить у лікарні. Ви хочете спланувати з колегою, як їй допомогти.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви це зробите.\nЦі пункти Вам допоможуть:\nКоли Ви відвідаєте її в лікарні?\nЩо Ви принесете?\nХто доглядатиме за нею, коли її випишуть?\nЧи запитаєте Ви спершу лікаря?\nЯк Ви повідомите інших колег?",
+      "ru": "Ситуация: Общая коллега лежит в больнице. Вы хотите спланировать с коллегой, как ей помочь.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы это сделаете.\nЭти пункты Вам помогут:\nКогда Вы навестите её в больнице?\nЧто Вы принесёте?\nКто будет ухаживать за ней, когда её выпишут?\nСпросите ли Вы сначала врача?\nКак Вы сообщите другим коллегам?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo, David! Ich habe gehört, dass Nina im Krankenhaus ist. Sollen wir zusammen planen, wie wir sie unterstützen?",
+      "en": "Hi, David! I heard that Nina is in the hospital. Should we plan together how we'll support her?",
+      "uk": "Привіт, Девіде! Я чув, що Ніна в лікарні. Може, сплануємо разом, як їй допомогти?",
+      "ru": "Привет, Дэвид! Я слышал, что Нина в больнице. Может, спланируем вместе, как ей помочь?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sie schon morgen im Krankenhaus besuchen.<br><r>Was denkst du</r>, Alex?",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we visit her at the hospital tomorrow already.<br><r>What do you think</r>, Alex?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми відвідали її в лікарні вже завтра.<br><r>Що ти думаєш</r>, Алексе?",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы навестили её в больнице уже завтра.<br><r>Что ты думаешь</r>, Алекс?"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> uns abwechseln, damit sie nicht jeden Tag zu viel Besuch hat.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we take turns, so she doesn't get too many visitors every day.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми чергувалися, щоб у неї не було забагато відвідувачів щодня.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы чередовались, чтобы у неё не было слишком много посетителей каждый день.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> fragen, wann genau die Besuchszeiten in der Notaufnahme sind.<br><r>Wir könnten doch</r> vorher in der Klinik anrufen und fragen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> ask exactly when the visiting hours at the emergency room are.<br><r>We could</r> call the clinic beforehand and ask.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> запитати, коли саме години відвідин у приймальному відділенні.<br><r>Ми могли б</r> заздалегідь зателефонувати в клініку й запитати.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> спросить, когда именно часы посещений в приёмном покое.<br><r>Мы могли бы</r> заранее позвонить в клинику и спросить.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> ihr etwas zu lesen mitbringen, damit sie sich nicht langweilt.<br><r>Bist du damit einverstanden</r>, David?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we bring her something to read, so she doesn't get bored.<br><r>Do you agree with that</r>, David?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми принесли їй щось почитати, щоб вона не нудьгувала.<br><r>Ти згоден з цим</r>, Девіде?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы принесли ей что-нибудь почитать, чтобы она не скучала.<br><r>Ты согласен с этим</r>, Дэвид?"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wenn sie entlassen wird, betreuen wir sie abwechselnd zu Hause.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> once she's discharged, we take turns looking after her at home.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> коли її випишуть, ми по черзі доглядатимемо за нею вдома.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> когда её выпишут, мы по очереди будем ухаживать за ней дома.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob sie überhaupt schon Besuch empfangen darf.<br><r>Vielleicht wäre es am besten, wenn wir</r> zuerst den Arzt fragen, ob ein Besuch okay ist.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether she's even allowed visitors yet.<br><r>Maybe it would be best if</r> we first ask the doctor whether a visit is okay.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи дозволено їй уже приймати відвідувачів.<br><r>Можливо, було б найкраще, якби ми</r> спершу запитали лікаря, чи можна відвідати.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, разрешено ли ей уже принимать посетителей.<br><r>Возможно, было бы лучше, если бы мы</r> сначала спросили врача, можно ли навестить.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch die anderen Kollegen informieren, damit sie sich nicht unnötig Sorgen machen.<br><r>Passt dir das so</r>, Alex?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> also inform the other colleagues, so they don't worry unnecessarily.<br><r>Does that work for you</r>, Alex?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> також повідомимо інших колег, щоб вони не хвилювалися даремно.<br><r>Тобі так підходить</r>, Алексе?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> ещё сообщим другим коллегам, чтобы они не переживали зря.<br><r>Тебе так подходит</r>, Алекс?"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> gleich heute Abend eine kleine Nachricht an alle schreiben.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we write a short message to everyone tonight already.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми вже сьогодні ввечері написали коротке повідомлення всім.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы уже сегодня вечером написали короткое сообщение всем.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir fragen den Arzt, besuchen sie abwechselnd, und betreuen sie zu Hause, sobald sie entlassen wird. Ich hoffe, es geht ihr bald besser! Bis bald!",
+      "en": "Yes, good idea! So, we'll ask the doctor, visit her in turns, and look after her at home once she's discharged. I hope she feels better soon! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, запитуємо лікаря, відвідуємо її по черзі, і доглядаємо вдома, щойно її випишуть. Сподіваюся, їй скоро стане краще! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, спрашиваем врача, навещаем её по очереди, и ухаживаем дома, как только её выпишут. Надеюсь, ей скоро станет лучше! До связи!"
+    },
+    "gram": ""
   }
 ];
 

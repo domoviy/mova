@@ -74,6 +74,109 @@ if(location.protocol === 'https:'){
         logEvent(anal,'session_end',{session_id:sid,duration_sec:Math.round((Date.now()-start)/1000)});
     });
     window.mlog=(e,p={})=>{try{logEvent(anal,e,{session_id:sid,...p});}catch(_){}};
+
+    // ── Хмарний бекап/відновлення (Firebase Auth + Firestore) ──────
+    // ЕКСПЕРИМЕНТАЛЬНО: навмисно доступно лише з Налаштування → Debug
+    // (window.cloudSignUp/cloudSignIn/... викликаються з onclick там, не
+    // з жодного видимого звичайним користувачам місця). Email+пароль,
+    // а не magic link/Google — простіше для аудиторії (один екран, без
+    // перемикання в поштову скриньку чи залежності від Google-акаунту),
+    // Firebase Auth сам безпечно хешує паролі й дає готовий "забув
+    // пароль" — нам не треба городити це вручну.
+    //
+    // Навмисно РУЧНИЙ бекап/відновлення, а НЕ фоновий авто-sync: це
+    // перший крок — перевірити весь ланцюжок (Auth → запис у Firestore
+    // → читання назад → коректне відновлення на іншому пристрої) без
+    // найризикованішої частини (фонові слухачі, автоматичне злиття
+    // конфліктів двох пристроїв, що редагували офлайн одночасно). Кнопка
+    // "Зберегти"/"Відновити" — це затребувана дією людини операція, тож
+    // конфлікт (забув натиснути перед зміною пристрою) лягає на
+    // користувача, а не на автоматику, яку легко зламати непомітно.
+    const {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged}
+      = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
+    const {getFirestore, doc, setDoc, getDoc, serverTimestamp}
+      = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
+    const auth = getAuth(app);
+    const db   = getFirestore(app);
+    window._cloudUser = null;
+    onAuthStateChanged(auth, user=>{
+      window._cloudUser = user;
+      if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
+    });
+
+    window.cloudSignUp = async (email, password) => {
+      try{
+        await createUserWithEmailAndPassword(auth, email, password);
+        window.notify?.('✅ Акаунт створено');
+      }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+    };
+    window.cloudSignIn = async (email, password) => {
+      try{
+        await signInWithEmailAndPassword(auth, email, password);
+        window.notify?.('✅ Увійшли');
+      }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+    };
+    window.cloudSignOut = async () => {
+      try{ await signOut(auth); window.notify?.('👋 Вийшли'); }
+      catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+    };
+
+    // Ключі localStorage, які НЕ бекапляться навіть попри префікс
+    // mova_/srs_ — суто пристрій-локальна бухгалтерія (кеші аудіо,
+    // прапорці міграцій), відновлення яких на іншому пристрої не має
+    // сенсу або навіть може зашкодити (напр. повторний запуск міграції
+    // на вже мігрованих даних).
+    const CLOUD_BACKUP_EXCLUDE = [
+      'mova_uid', 'mova_audio_hash_registry', 'mova_word_timing_cache',
+    ];
+    const CLOUD_BACKUP_EXCLUDE_PREFIX = [
+      'mova_ef_repair_v', 'mova_streak_migrated_v', 'mova_progress_schema_v', 'mova_sr_ob_skipped_',
+    ];
+    function _cloudCollectBackupData(){
+      const out = {};
+      for(let i=0; i<localStorage.length; i++){
+        const key = localStorage.key(i);
+        if(!key) continue;
+        if(!(key.startsWith('mova_') || key.startsWith('srs_'))) continue;
+        if(CLOUD_BACKUP_EXCLUDE.includes(key)) continue;
+        if(CLOUD_BACKUP_EXCLUDE_PREFIX.some(p=>key.startsWith(p))) continue;
+        out[key] = localStorage.getItem(key);
+      }
+      return out;
+    }
+
+    window.cloudBackup = async () => {
+      if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
+      try{
+        const data = _cloudCollectBackupData();
+        // Firestore ліміт документа — 1MiB. Для типового обсягу прогресу
+        // (тисячі карток × короткий SM-2-запис) вистачає з великим
+        // запасом; якщо колись впритул — розбити на кілька документів
+        // (напр. по курсу) буде наступним кроком, не зараз.
+        await setDoc(doc(db, 'backups', window._cloudUser.uid), {
+          data: JSON.stringify(data),
+          keyCount: Object.keys(data).length,
+          savedAt: serverTimestamp(),
+          savedAtClient: Date.now(),
+        });
+        window.notify?.('☁️ Збережено ('+Object.keys(data).length+' записів)');
+        if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
+      }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+    };
+
+    window.cloudRestore = async () => {
+      if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
+      try{
+        const snap = await getDoc(doc(db, 'backups', window._cloudUser.uid));
+        if(!snap.exists()){ window.notify?.('⚠️ Бекапу ще немає'); return; }
+        const data = JSON.parse(snap.data().data || '{}');
+        // Перезаписуємо ЛИШЕ ключі з бекапу — те, чого в бекапі нема
+        // (напр. пристрій-локальні кеші), не чіпаємо взагалі.
+        Object.keys(data).forEach(key => { try{ localStorage.setItem(key, data[key]); }catch(_){} });
+        window.notify?.('☁️ Відновлено ('+Object.keys(data).length+' записів) — перезавантажую...');
+        setTimeout(()=>location.reload(), 900);
+      }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+    };
   }catch(e){console.warn('Firebase init failed:',e);}
 }
 </script>
@@ -3261,6 +3364,27 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
       <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
+      <div class="srow-label"><label>☁️ Хмарний бекап (тест)</label><small>Firebase email+пароль — експериментально, ручний бекап/відновлення, без авто-синхронізації між пристроями</small></div>
+      <div id="cloud-auth-status" style="font-size:13px;color:var(--muted)">🔒 Не увійшли</div>
+      <div id="cloud-auth-form" style="display:flex;flex-direction:column;gap:6px">
+        <input type="email" id="cloud-email" placeholder="Email" autocomplete="email"
+          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
+        <input type="password" id="cloud-password" placeholder="Пароль (мін. 6 символів)" autocomplete="current-password"
+          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-s" style="flex:1" onclick="debugCloudSignUp()">Зареєструватись</button>
+          <button class="btn btn-s" style="flex:1" onclick="debugCloudSignIn()">Увійти</button>
+        </div>
+      </div>
+      <div id="cloud-signed-in-actions" style="display:none;flex-direction:column;gap:6px">
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-s" style="flex:1" onclick="debugCloudBackup()">⬆️ Зберегти в хмару</button>
+          <button class="btn btn-s" style="flex:1" onclick="debugCloudRestore()">⬇️ Відновити з хмари</button>
+        </div>
+        <button class="btn btn-s" onclick="window.cloudSignOut?.()">Вийти з акаунту</button>
+      </div>
+    </div>
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
       <div class="srow-label"><label>🃏 Вправи Vocab (тест)</label><small>Прямий доступ до вкладок, прибраних з основного UI</small></div>
       <div style="display:flex;flex-direction:column;gap:6px">
         <button class="btn btn-s" style="text-align:left" onclick="showView('sb')">🧩 Sprachbausteine</button>
@@ -3311,7 +3435,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '486-297b733';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8350,6 +8474,13 @@ function toggleDebugSection(headerEl){
   content.style.display = isOpen ? 'none' : '';
   const chevron = headerEl?.querySelector('.ssec-chevron');
   if(chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
+  // На випадок якщо стан авторизації змінився (напр. Firebase вже
+  // відновив сесію з IndexedDB) ДО того, як цю секцію вперше розгорнули —
+  // модуль з cloudSignIn/onAuthStateChanged міг встигнути спрацювати
+  // раніше, ніж узагалі існував #cloud-auth-status в DOM (він і так є,
+  // просто прихований display:none, тож насправді це рідкісний edge
+  // case — але дешево підстрахуватись).
+  if(!isOpen && typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
 }
 
 // Прямий доступ до тестових вправ Vocab (🔗🎯🧩❓🔍🎤), прибраних з
@@ -10538,7 +10669,52 @@ async function _doFetchBlobUrl(url, timeoutMs, mkey){
   }
 }
 
-// ── ОЧИЩЕННЯ КЕШУ АУДІО (Налаштування → Налагодження) ──────────
+// ── ХМАРНИЙ БЕКАП/ВІДНОВЛЕННЯ (Налаштування → Debug) ───────────
+// UI-обгортки над window.cloudSignUp/cloudSignIn/cloudSignOut/cloudBackup/
+// cloudRestore, визначеними в <script type="module"> на початку файлу
+// (там же живуть auth/db — Firebase-модулі імпортуються лише туди,
+// звичайний non-module код нижче лише читає інпути й дзвонить у ці
+// window.-функції). Секція навмисно ЕКСПЕРИМЕНТАЛЬНА — доступна лише
+// тут, у Debug, не винесена нікуди в основний UI.
+window._cloudRenderAuthUI = function(){
+  const statusEl = document.getElementById('cloud-auth-status');
+  const formEl   = document.getElementById('cloud-auth-form');
+  const inEl     = document.getElementById('cloud-signed-in-actions');
+  if(!statusEl) return;
+  const user = window._cloudUser;
+  if(user){
+    statusEl.innerHTML = '✅ Увійшли як <b>'+user.email+'</b>';
+    if(formEl) formEl.style.display = 'none';
+    if(inEl)   inEl.style.display   = '';
+  } else {
+    statusEl.textContent = '🔒 Не увійшли';
+    if(formEl) formEl.style.display = '';
+    if(inEl)   inEl.style.display   = 'none';
+  }
+};
+function debugCloudSignUp(){
+  const email = document.getElementById('cloud-email')?.value.trim();
+  const pw    = document.getElementById('cloud-password')?.value;
+  if(!email || !pw){ notify('⚠️ Введіть email і пароль'); return; }
+  if(pw.length < 6){ notify('⚠️ Пароль — мінімум 6 символів'); return; }
+  window.cloudSignUp?.(email, pw);
+}
+function debugCloudSignIn(){
+  const email = document.getElementById('cloud-email')?.value.trim();
+  const pw    = document.getElementById('cloud-password')?.value;
+  if(!email || !pw){ notify('⚠️ Введіть email і пароль'); return; }
+  window.cloudSignIn?.(email, pw);
+}
+function debugCloudBackup(){
+  if(!confirm('Зберегти поточний прогрес у хмару? Попередній бекап (якщо був) буде перезаписано.')) return;
+  window.cloudBackup?.();
+}
+function debugCloudRestore(){
+  if(!confirm('Відновити прогрес з хмари? Поточні локальні дані на цьому пристрої буде ЗАМІНЕНО збереженими в хмарі, і застосунок перезавантажиться.')) return;
+  window.cloudRestore?.();
+}
+
+
 // Чистимо як інпам'ятні Maps (blob URL-и, статус 404, буфери),
 // так і персистентний Cache Storage сервіс-воркера — але видаляємо
 // ТІЛЬКИ записи з шляхом /audio/, не чіпаючи кеш самого app-shell.
