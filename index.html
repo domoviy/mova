@@ -251,6 +251,15 @@ body{
 /* ══ STREAK IN NAV ══ */
 .bn-streak{flex-direction:column;gap:2px;cursor:pointer}
 .bn-fire{font-size:22px;line-height:1;filter:grayscale(1) opacity(.35);transition:filter .4s}
+/* Спільний бокс для іконки в шапці (🔥 emoji і 𐌌 unicode-гліф мають РІЗНІ
+   внутрішні вертикальні метрики навіть при однаковому font-size — emoji
+   традиційно "квадратні", текстовий гліф сидить на базовій лінії зі своїми
+   ascent/descent. Без фіксованої висоти боксу лічильники під ними (h-xp-count/
+   h-streak-count) не стояли б рівно на одному рівні, хоч кнопки й в одному
+   flex-row. Фіксована height+flex-центрування прибирає залежність від
+   метрик шрифту — обидва бокси однакової висоти, лічильники завжди на
+   одному рівні незалежно від того, який саме гліф усередині. */
+.h-icon-glyph{display:flex;align-items:center;justify-content:center;height:22px;line-height:1;}
 /* У шапці (темний #header) той самий тьмяний фільтр майже невидимий —
    світліший/непрозоріший варіант як дефолт, до того як JS (updateStreakUI)
    виставить inline hf.style.filter з тим самим значенням. */
@@ -1388,14 +1397,32 @@ body{
 #lesson-celebration{
   position:fixed;inset:0;z-index:9700;
   display:none;align-items:center;justify-content:center;
-  background:rgba(20,16,8,.72);
-  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+  /* Навмисно БЕЗ затемнення/блюру фону (раніше було rgba(20,16,8,.72)+blur) —
+     під цим оверлеєм лишається видимим щойно показаний #lesson-result
+     (заголовок, час уроку, "M зароблено" в lr-stats), і затемнення
+     ховало б його на весь час святкування. pointer-events на самому
+     контейнері вимкнені (крізь порожній фон можна тапати), а на .lc-inner
+     повернені — клік по картці святкування, як і раніше, закриває його. */
+  pointer-events:none;
 }
+#lesson-celebration .lc-inner{ pointer-events:auto; }
 #lesson-celebration.show{ display:flex; }
 #lesson-celebration.fade-out{ transition:opacity .35s ease; opacity:0; }
 .lc-inner{
   text-align:center;
   animation: streakCelPop .45s cubic-bezier(.34,1.56,.64,1);
+}
+/* Картка-підложка — раніше легкість читання .lc-label забезпечувало
+   темне затемнення всього фону; тепер фону-затемнення нема (щоб час
+   уроку в #lesson-result лишався видимим позаду), тож самій анімації
+   потрібна власна непрозора "земля" під ногами, інакше золотий текст/
+   кільце губилися б на строкатому фоні статистики позаду. */
+.lc-card{
+  background:var(--card,#fff);
+  border-radius:20px;
+  padding:28px 32px 24px;
+  box-shadow:0 12px 40px rgba(20,16,8,.22), 0 2px 10px rgba(20,16,8,.12);
+  border:1px solid var(--border,rgba(0,0,0,.06));
 }
 .lc-burst{
   position:relative;width:120px;height:120px;margin:0 auto;
@@ -1415,8 +1442,22 @@ body{
   100%{ transform:scale(1.35); opacity:0; }
 }
 .lc-label{
-  font-size:19px;font-weight:700;color:#fff;
+  font-size:19px;font-weight:700;color:var(--ink);
   font-family:'Inter',sans-serif;margin-top:14px;
+}
+/* Рядок "Зароблено N 𐌌" — сам текст статичний (не літає), летить лише
+   КЛОН цього елемента (createFlyingXPClone нижче), а оригінал ховається
+   на час польоту (visibility:hidden) і повертається видимим при
+   наступному показі святкування. */
+.lc-xp-row{
+  margin-top:10px;font-size:17px;font-weight:700;color:var(--gold);
+  font-family:'Inter',sans-serif;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  animation: lcXpPop .4s cubic-bezier(.34,1.56,.64,1) .15s backwards;
+}
+@keyframes lcXpPop{
+  0%{ transform:scale(.5); opacity:0; }
+  100%{ transform:scale(1); opacity:1; }
 }
 .streak-cel-inner{
   text-align:center;
@@ -2687,11 +2728,11 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
     <!-- Вогонь і Налаштування у хедері замість stopbtn -->
     <div class="h-right-btns">
       <button class="h-icon-btn" onclick="showView('settings')" title="M">
-        <span id="h-xp" style="color:var(--gold);font-weight:700">𐌌</span>
+        <span id="h-xp" class="h-icon-glyph" style="color:var(--gold);font-weight:700;font-size:20px">𐌌</span>
         <span id="h-xp-count" class="h-chip-counter">0</span>
       </button>
       <button class="h-icon-btn" onclick="showStreakInfo()" title="Streak">
-        <span class="bn-fire" id="h-fire">🔥</span>
+        <span class="bn-fire h-icon-glyph" id="h-fire" style="font-size:22px">🔥</span>
         <span id="h-streak-count" class="h-chip-counter">0</span>
       </button>
       <button class="h-icon-btn" onclick="showView('settings')" title="Settings">⚙️</button>
@@ -2735,11 +2776,16 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
            Візуально самостійний компонент, не режим вогню. -->
       <div id="lesson-celebration" onclick="_dismissLessonCelebration()">
         <div class="lc-inner">
-          <div class="lc-burst" id="lc-burst">
-            <span class="lc-burst-ring"></span>
-            <span class="lc-burst-icon" id="lc-burst-icon">✓</span>
+          <div class="lc-card">
+            <div class="lc-burst" id="lc-burst">
+              <span class="lc-burst-ring"></span>
+              <span class="lc-burst-icon" id="lc-burst-icon">✓</span>
+            </div>
+            <div class="lc-label" id="lc-label"></div>
+            <div class="lc-xp-row" id="lc-xp-row" style="display:none">
+              <span id="lc-xp-text"></span>
+            </div>
           </div>
-          <div class="lc-label" id="lc-label"></div>
         </div>
       </div>
 
@@ -3255,7 +3301,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '482-d15dcab';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7295,6 +7341,7 @@ function _runBonusLessonFlow(lesson){
     _grammarBonusPool: lesson._grammarBonusPool,
     _xpAtStart: xpGetTotal(),
   };
+  window._xpDisplayFrozen = true;
   V.lessonId    = lesson.id;
   V.lessonCards = [];
   showView('vocab');
@@ -7524,6 +7571,7 @@ function _runLessonFlow(lesson, allCards){
     startTime: Date.now(),
     _xpAtStart: xpGetTotal(),
   };
+  window._xpDisplayFrozen = true;
 
   V.lessonId    = lesson.id;
   V.lessonCards = allCards;
@@ -8517,30 +8565,109 @@ function _dismissStreakCelebration(){
   }, 350);
 }
 
+// Летючий клон XP-рядка: FLIP-технікою (без бібліотек) переносить
+// візуальну копію елемента з поточної позиції в позицію хедер-іконки
+// балів (#h-xp), плавно зменшуючись і розчиняючись по дорозі. Оригінал
+// на час польоту ховається (visibility:hidden) — видно тільки клон,
+// сам #lesson-celebration лишається на місці й далі показує ✓ і підпис.
+function _flyXpToHeader(sourceEl, onArrive){
+  const targetEl = document.getElementById('h-xp');
+  if(!sourceEl || !targetEl){ onArrive && onArrive(); return; }
+  const sRect = sourceEl.getBoundingClientRect();
+  const tRect = targetEl.getBoundingClientRect();
+
+  const clone = sourceEl.cloneNode(true);
+  clone.removeAttribute('id');
+  Object.assign(clone.style, {
+    position:'fixed', left:sRect.left+'px', top:sRect.top+'px',
+    width:sRect.width+'px', height:sRect.height+'px', margin:'0',
+    zIndex:'9999', pointerEvents:'none',
+    transition:'transform .6s cubic-bezier(.34,.7,.36,1), opacity .55s ease .05s',
+    transform:'translate(0,0) scale(1)', opacity:'1',
+    display:'flex', alignItems:'center', justifyContent:'center',
+  });
+  document.body.appendChild(clone);
+  sourceEl.style.visibility = 'hidden';
+
+  const dx = (tRect.left + tRect.width/2) - (sRect.left + sRect.width/2);
+  const dy = (tRect.top  + tRect.height/2) - (sRect.top  + sRect.height/2);
+
+  requestAnimationFrame(()=>{ requestAnimationFrame(()=>{
+    clone.style.transform = `translate(${dx}px, ${dy}px) scale(.3)`;
+    clone.style.opacity   = '0';
+  }); });
+
+  setTimeout(()=>{
+    clone.remove();
+    // Короткий "поп" на іконці в хедері — той самий keyframe, що вже є
+    // для вогника стріку (firePop), просто перевикористаний тут.
+    targetEl.style.animation = 'none';
+    void targetEl.offsetWidth; // reflow, щоб animation:none встиг застосуватись перед новим запуском
+    targetEl.style.animation = 'firePop .4s ease';
+    onArrive && onArrive();
+  }, 620);
+}
+
 // ІНША анімація, ніж вогонь стріку — після КОЖНОГО завершення уроку,
 // довгого діалогу (Dialogue Bonus) чи граматики (Grammar Bonus) у
-// Навчанні, незалежно від того, зростав сьогодні стрік чи ні. Коротша
-// за вогонь (1.6с проти 2.2с) — свідомо, бо ця з'являється значно
-// частіше, і не повинна набридати. opts.onDone — той самий патерн
-// колбека, що й у showStreakCelebration, для послідовного ланцюжка
-// (напр. "Наступний діалог": дочекатись анімації → потім перейти).
+// Навчанні, незалежно від того, зростав сьогодні стрік чи ні.
+// opts.onDone — той самий патерн колбека, що й у showStreakCelebration,
+// для послідовного ланцюжка (напр. "Наступний діалог": дочекатись
+// анімації → потім перейти).
+// opts.xpEarned (опційно) — скільки балів нараховано за цей урок: якщо
+// > 0, після паузи "прочитати" запускається _flyXpToHeader() — число
+// летить у хедер, і ЛИШЕ ПІСЛЯ прильоту хедер розморожується
+// (window._xpDisplayFrozen, виставлений на старті уроку — див.
+// LF-конструктори) і одометр-анімацією рахує від старого total до нового
+// (щоб "летить, ПОТІМ збільшується", а не одразу видно фінальне число).
 function showLessonCelebration(opts){
   opts = opts || {};
   const el = document.getElementById('lesson-celebration');
   if(!el) return;
-  const iconEl = document.getElementById('lc-burst-icon');
-  const lblEl  = document.getElementById('lc-label');
+  const iconEl  = document.getElementById('lc-burst-icon');
+  const lblEl   = document.getElementById('lc-label');
+  const xpRowEl = document.getElementById('lc-xp-row');
+  const xpTxtEl = document.getElementById('lc-xp-text');
 
   if(iconEl) iconEl.textContent = opts.icon || '✓';
   if(lblEl)  lblEl.textContent  = opts.label ||
     (uiLang==='uk'?'Урок завершено!':uiLang==='en'?'Lesson completed!':uiLang==='ru'?'Урок завершён!':'Lektion abgeschlossen!');
+
+  const xpEarned = opts.xpEarned|0;
+  if(xpRowEl){
+    if(xpEarned > 0){
+      xpTxtEl.innerHTML = (uiLang==='uk'?'Зароблено ':uiLang==='en'?'Earned ':uiLang==='ru'?'Заработано ':'Verdient ')
+        + '+'+xpEarned+' <span style="color:var(--gold)">𐌌</span>';
+      xpRowEl.style.display = '';
+      xpRowEl.style.visibility = ''; // на випадок якщо лишилось hidden від попереднього польоту
+    } else {
+      xpRowEl.style.display = 'none';
+    }
+  }
 
   el.classList.remove('fade-out');
   el.classList.add('show');
 
   clearTimeout(el._autoDismissTimer);
   el._onDoneCallback = typeof opts.onDone === 'function' ? opts.onDone : null;
-  el._autoDismissTimer = setTimeout(_dismissLessonCelebration, 1600);
+
+  if(xpEarned > 0 && xpRowEl){
+    // Даємо секунду "прочитати", тоді летимо, тоді розморожуємо хедер.
+    setTimeout(()=>{
+      _flyXpToHeader(xpRowEl, ()=>{
+        const before = Math.max(0, xpGetTotal() - xpEarned);
+        window._xpDisplayFrozen = false;
+        const hxc = document.getElementById('h-xp-count');
+        if(hxc && typeof animateOdometer === 'function') animateOdometer(hxc, before, xpGetTotal());
+        else if(hxc) hxc.textContent = xpGetTotal();
+      });
+    }, 1050);
+    el._autoDismissTimer = setTimeout(_dismissLessonCelebration, 2300);
+  } else {
+    // Без балів (не мало б траплятись — бонус за урок нараховується
+    // завжди — але про всяк випадок лишаємо коротший старий таймінг).
+    el._autoDismissTimer = setTimeout(_dismissLessonCelebration, 1600);
+  }
 
   if(typeof haptic !== 'undefined') haptic.medium?.();
 }
@@ -8554,9 +8681,20 @@ function _dismissLessonCelebration(){
   el._onDoneCallback = null;
   setTimeout(()=>{
     el.classList.remove('show','fade-out');
+    // Якщо закрито тапом РАНІШЕ, ніж долетів клон (_flyXpToHeader ще не
+    // встиг повернути видимість оригіналу) — примусово повертаємо, і
+    // на випадок дострокового закриття теж розморожуємо хедер тут,
+    // а не лишаємо його застряглим назавжди.
+    const xpRowEl = document.getElementById('lc-xp-row');
+    if(xpRowEl) xpRowEl.style.visibility = '';
+    if(window._xpDisplayFrozen){
+      window._xpDisplayFrozen = false;
+      if(typeof renderStreakUI === 'function') renderStreakUI();
+    }
     if(cb) cb();
   }, 350);
 }
+
 
 function showPerfLog(){
   document.getElementById('err-log-overlay')?.remove();
@@ -12550,22 +12688,28 @@ function lfShowResult(){
     xpAward(XP_LESSON_COMPLETE_BONUS);
     const streakResult = srRecordLesson(LF);
     celebrationPending = true;
+    // ПОВНА сума за урок — картки (нараховані інкрементально в srsRate()
+    // по ходу уроку) + щойно нарахований бонус завершення вище. Саме це
+    // число (а не сам лише бонус) летить у святкуванні й показується в
+    // lr-stats нижче — обидва мають узгоджуватись з тим, на скільки
+    // реально зросте лічильник у хедері.
+    const xpEarnedThisLesson = xpGetTotal() - (LF._xpAtStart || 0);
     if(streakResult && streakResult.increased){
-      showLessonCelebration({ icon: lcIcon, label: lcLabel,
+      showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson,
         onDone: () => showStreakCelebration(streakResult.streak, streakResult.prevStreak, { onDone: goToLernpfadActivePoint })
       });
     } else {
-      showLessonCelebration({ icon: lcIcon, label: lcLabel, onDone: goToLernpfadActivePoint });
+      showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson, onDone: goToLernpfadActivePoint });
     }
   }
 
-  // XP-рядок будуємо ТУТ (після бонусу вище) — LF._xpAtStart зафіксовано
-  // на старті уроку (LF = {...}), тож різниця з поточним total включає і
-  // бали за кожну оцінену картку (нараховані інкрементально в srsRate() по
-  // ходу уроку), і щойно нарахований бонус завершення. При повторному
-  // виклику lfShowResult() (LF._recorded вже true, бонус вище не
-  // повторюється) число лишається тим самим — читається з persisted total,
-  // а не рахується наново.
+  // XP-рядок для lr-stats — та сама формула (persisted total мінус знімок
+  // на старті уроку), рахуємо тут же ще раз: при ПЕРШОМУ виклику це дасть
+  // те саме число, що й xpEarnedThisLesson вище (обчислення чисте,
+  // total між цими двома рядками не змінюється); при ПОВТОРНОМУ виклику
+  // lfShowResult() (LF._recorded вже true, блок вище пропущено) — це
+  // єдине місце, де число взагалі рахується, і воно так само стабільне,
+  // бо читається з persisted total, а не рахується наново з нуля.
   const xpEarned = xpGetTotal() - (LF._xpAtStart || 0);
   const statsEl = document.getElementById('lr-stats');
   if(statsEl){
@@ -12937,6 +13081,16 @@ function abandonLessonFlow(){
   if(!LF) return;
   stopVocab();
   sbStopPlay();
+  // Якщо вихід посеред уроку — розморожуємо хедер негайно (інакше
+  // #h-xp-count назавжди лишився б застряглим на значенні "до уроку":
+  // showLessonCelebration(), яка й мала б це зробити, тут просто не
+  // викликається, LF._recorded ніколи не стає true при достроковому виході).
+  // Актуальний total уже персистований (srsRate() пише інкрементально по
+  // ходу уроку незалежно від заморозки дисплея) — просто перечитуємо й
+  // показуємо як є, без прольотної анімації (їй нема на чому грати —
+  // "зароблено N" екран так і не показувався).
+  window._xpDisplayFrozen = false;
+  if(typeof renderStreakUI === 'function') renderStreakUI();
   LF = null;
   V.lessonId = null; V.lessonCards = []; clearVocabFilter();
   V.queue = []; V.idx = 0;
@@ -13001,6 +13155,13 @@ function exitLessonFlow(){
   // пройдений (стрік/статистика/анімація стріку).
   stopVocab();
   sbStopPlay();
+  // Той самий запобіжник, що й у abandonLessonFlow() — ідемпотентний:
+  // якщо урок уже завершився штатно (celebration відпрацювала й сама
+  // розморозила), тут просто нема що робити. Якщо ж вихід достроковий
+  // через "✕" (LF._recorded ще не true, celebration не викликалась) —
+  // це єдине місце, де флаг взагалі знімається.
+  window._xpDisplayFrozen = false;
+  if(typeof renderStreakUI === 'function') renderStreakUI();
   LF = null;
   V.lessonId = null; V.lessonCards = []; clearVocabFilter();
   V.queue = []; V.idx = 0;
@@ -14025,7 +14186,16 @@ function renderStreakUI(pulse=false){
   // окремою функцією-дублем — renderStreakUI() і так вже викликається
   // з усіх потрібних місць (loadCourseScript, srRecordLesson, setDailyGoal).
   const xp = xpLoad();
-  const hxc=document.getElementById('h-xp-count'); if(hxc) hxc.textContent = xp.total||0;
+  // _xpDisplayFrozen: під час активного уроку (LF-конструктори нижче)
+  // ХЕДЕР навмисно НЕ показує актуальний total одразу — інакше до моменту
+  // святкування він уже показував би фінальне число (бали нараховуються
+  // інкрементально по ходу уроку в srsRate()), і "число улітає вгору,
+  // ПОТІМ рахунок збільшується" виглядало б як подвійний приріст.
+  // Показ і одометр-анімацію "старе → нове" виконує showLessonCelebration()
+  // після прольоту, звідти ж прапорець і знімається.
+  if(!window._xpDisplayFrozen){
+    const hxc=document.getElementById('h-xp-count'); if(hxc) hxc.textContent = xp.total||0;
+  }
   const sxt=document.getElementById('st-xp-today'); if(sxt) sxt.textContent = (xp.todayDate===today ? xp.todayPoints : 0)||0;
   const sxtot=document.getElementById('st-xp-total'); if(sxtot) sxtot.textContent = xp.total||0;
   const sl=document.getElementById('daily-goal');if(sl){sl.value=goal;document.getElementById('daily-goal-v').textContent=goal;}
