@@ -540,6 +540,16 @@ body{
   font-family:'Inter',sans-serif;font-weight:800;
   font-size:var(--fs-card);color:var(--gold);margin:0 0 2px;
 }
+/* 🎓 на більшості платформ — переважно чорна шапочка (Apple/Google), тож
+   на темно-зеленому --forest (майже чорному) фоні хедера силует губиться
+   майже повністю. Той самий прийом, що вже є для .bn-fire в темній
+   шапці (filter:brightness), тут — м'яке біле світіння-контур навколо
+   гліфа (drop-shadow з невеликим blur, двічі для щільнішого контуру):
+   не змінює власні кольори емодзі (золота китиця лишається золотою),
+   лише додає силуету видиму межу проти темного фону. */
+.lp-header-emoji{
+  filter: drop-shadow(0 0 1.5px rgba(255,255,255,.9)) drop-shadow(0 0 1.5px rgba(255,255,255,.9));
+}
 .lp-header small{
   font-size:var(--fs-tertiary);color:rgba(255,255,255,.55);
 }
@@ -2975,7 +2985,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
       <!-- Smart Review: Daily Plan + Profile -->
       <div id="sr-daily-plan"></div>
       <div class="lp-header">
-        <h2>🎓 <span data-i18n="nav_lernpfad">Lernen</span></h2>
+        <h2><span class="lp-header-emoji">🎓</span> <span data-i18n="nav_lernpfad">Lernen</span></h2>
         <small id="lp-overall-text"></small>
         <div class="lp-progress-bar"><div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div></div>
       </div>
@@ -3301,7 +3311,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '483-81653a5';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
