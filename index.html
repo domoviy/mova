@@ -3435,7 +3435,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '490-52837f4';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3655,7 +3655,29 @@ function buildLearningPath(rawLessons, courseLevel){
     var prevModCards = (lesson.unlockAfter && moduleCardIds[lesson.unlockAfter]) || [];
 
     var withinModulePrevId = null;
-    var dlgAt = Math.min(2, n) - 1; // діалог одразу після ~2-го суб-уроку (Урок-Урок-Діалог-Урок), або в кінці, якщо суб-уроків менше
+
+    // РАНІШЕ всі eligible-діалоги модуля вставлялись в ОДНУ спільну точку
+    // (dlgAt, ~після 2-го суб-уроку) — якщо модуль мав кілька типів
+    // діалогу одразу (Small Talk + Lösungswege diskutieren +
+    // Gemeinsam etwas planen — усі 3 можливі на один модуль,
+    // LP_DIALOGUE_NODE_TYPES вище), вони йшли ПОСПІЛЬ один за одним без
+    // жодного уроку між ними — знижувало відчуття різноманіття
+    // діяльності (саме на це поскаржились). Тепер КОЖЕН діалог отримує
+    // ОКРЕМУ точку вставки, рівномірно розподілену по суб-уроках модуля
+    // (класична формула "розподілити m елементів по n слотах":
+    // slot(k) = floor((k+1)·n / (m+1))) — Урок-Урок-Діалог-Урок-Діалог-
+    // Урок, а не Урок-Урок-Діалог-Діалог-Урок. Якщо в модулі лише 1
+    // суб-урок (n=1), а діалогів кілька — розвести нема на чому (одна-
+    // єдина точка вставки фізично існує), тож у цьому рідкісному
+    // граничному випадку вони й далі підуть поспіль — обмеження
+    // наявного контенту, не алгоритму.
+    var eligibleDlgIds = _lpEligibleDialogueIds(lesson.dlgCards);
+    var dlgAtSlot = {}; // idx суб-уроку (0-based) -> [{dlgId, order}, ...] що йдуть ПІСЛЯ нього
+    eligibleDlgIds.forEach(function(dlgId, k){
+      var slot = Math.min(n-1, Math.floor((k+1) * n / (eligibleDlgIds.length+1)));
+      (dlgAtSlot[slot] = dlgAtSlot[slot] || []).push({dlgId: dlgId, order: k});
+    });
+
     chunks.forEach(function(chunk, idx){
       var isLast = idx === n-1;
       var subCardIds = chunk.slice();
@@ -3682,42 +3704,39 @@ function buildLearningPath(rawLessons, courseLevel){
       withinModulePrevId = subId;
 
       // Діалог — ПОВНОЦІННИЙ вузол шляху (Урок-Урок-Діалог-Урок), не
-      // прикріплена бонус-картка. Вставляємо лише якщо для модуля є
-      // хоч один dlgCards (умова "якщо є" — не всюди ще написано), І
-      // ЛИШЕ картки з одним із 3 явних типів (_lpEligibleDialogueIds) —
-      // картки без type чи з іншим значенням окремим вузлом шляху не
-      // стають (лишаються доступні тільки як Dialogue Bonus).
+      // прикріплена бонус-картка. Вставляємо лише картки з одним із 3
+      // явних типів (_lpEligibleDialogueIds) — картки без type чи з
+      // іншим значенням окремим вузлом шляху не стають (лишаються
+      // доступні тільки як Dialogue Bonus).
       //
       // ОКРЕМИЙ вузол НА КОЖНУ картку діалогу, а не один вузол з усім
       // пулом одразу: коли dlgCards модуля містить кілька РІЗНИХ карток
       // (різні теми/ситуації), програвання їх усіх поспіль в ОДНІЙ
       // сесії відчувається як "один змішаний урок" — без святкування чи
       // паузи між тим, що насправді різні діалоги (напр. "пошук
-      // рішення" непомітно перетікає у "small talk"). Тепер кожна
-      // картка — власний вузол: власне святкування, власний запис у
+      // рішення" непомітно перетікає у "small talk"). Кожна картка —
+      // власний вузол: власне святкування, власний запис у
       // unlockAfter-ланцюжок, власний тип іконки (_lpDialogueNodeType
       // рахується вже для ОДНІЄЇ картки, не для всього пулу).
       //
       // cardIds = [dlgId]: lessonProgress/lessonUnlocked повторно
       // використовують той самий стан SM-2 (srsRate пишеться в
       // state.cards[id] однаково для vocab- і dlg-карток).
-      var eligibleDlgIds = idx === dlgAt ? _lpEligibleDialogueIds(lesson.dlgCards) : [];
-      if(eligibleDlgIds.length){
-        eligibleDlgIds.forEach(function(dlgId, dIdx){
-          var nodeId = lesson.id + '_dlg' + (dIdx+1);
-          out.push(Object.assign({}, lesson, {
-            id:          nodeId,
-            type:        'dialogue',
-            dlgType:     _lpDialogueNodeType([dlgId], dIdx === 0),
-            cardIds:     [dlgId],
-            dlgCards:    [dlgId],
-            sbCards:     [],
-            unlockAfter: withinModulePrevId,
-            _parentModuleId: lesson.id,
-          }));
-          withinModulePrevId = nodeId;
-        });
-      }
+      var slotDlgs = dlgAtSlot[idx] || [];
+      slotDlgs.forEach(function(item){
+        var nodeId = lesson.id + '_dlg' + (item.order+1);
+        out.push(Object.assign({}, lesson, {
+          id:          nodeId,
+          type:        'dialogue',
+          dlgType:     _lpDialogueNodeType([item.dlgId], item.order === 0),
+          cardIds:     [item.dlgId],
+          dlgCards:    [item.dlgId],
+          sbCards:     [],
+          unlockAfter: withinModulePrevId,
+          _parentModuleId: lesson.id,
+        }));
+        withinModulePrevId = nodeId;
+      });
     });
 
     lastSubOf[lesson.id]     = withinModulePrevId;
