@@ -2636,7 +2636,10 @@ var LESSONS = [
       "k6_054"
     ],
     "unlockAfter": "k6m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_099"
+    ]
   },
   {
     "id": "k6m6",
@@ -28519,6 +28522,80 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, берём страховую карту, заполняем формуляр, и я остаюсь на связи по телефону. Надеюсь, твоему брату скоро станет лучше! До связи!"
     },
     "gram": "satz_mit_um_zu"
+  },
+  {
+    "id": "dlg_099",
+    "cat": "Operation eines Angehörigen begleiten planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Der Bruder eines Freundes/einer Freundin muss operiert werden. Sie möchten mit einem Freund/einer Freundin planen, wie Sie ihn unterstützen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie vorgehen.\nDiese Punkte helfen Ihnen:\nWie wird der Chirurg den Patienten aufklären?\nWelche Fragen zu Narkose und Risiko sollten Sie vorbereiten?\nWer bleibt während der Operation da?\nWie erfahren Sie die Prognose danach?\nWer überwacht ihn nach der Operation?",
+      "en": "Situation: A friend's brother needs to have surgery. You want to plan with a friend how to support him.\nTask: Plan together with your conversation partner how you'll proceed.\nThese points will help you:\nHow will the surgeon inform the patient?\nWhat questions about anaesthesia and risk should you prepare?\nWho will stay during the operation?\nHow will you find out the prognosis afterwards?\nWho will monitor him after the operation?",
+      "uk": "Ситуація: Брату друга/подруги потрібна операція. Ви хочете спланувати з другом/подругою, як його підтримати.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЯк хірург проінформує пацієнта?\nЯкі питання про наркоз і ризики варто підготувати?\nХто залишиться під час операції?\nЯк Ви дізнаєтеся прогноз потім?\nХто наглядатиме за ним після операції?",
+      "ru": "Ситуация: Брату друга/подруги нужна операция. Вы хотите спланировать с другом/подругой, как его поддержать.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nКак хирург проинформирует пациента?\nКакие вопросы о наркозе и рисках стоит подготовить?\nКто останется во время операции?\nКак Вы узнаете прогноз потом?\nКто будет наблюдать за ним после операции?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Hallo, Nina! Der Arzt hat gesagt, mein Bruder muss operiert werden. Kannst du mir helfen, das mit mir durchzugehen?",
+      "en": "Hi, Nina! The doctor said my brother needs to have surgery. Can you help me go through this with me?",
+      "uk": "Привіт, Ніно! Лікар сказав, що моєму брату потрібна операція. Можеш допомогти мені все обдумати?",
+      "ru": "Привет, Нина! Врач сказал, что моему брату нужна операция. Можешь помочь мне всё обдумать?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst mit dem Chirurgen sprechen, <g>damit</g> er deinen Bruder gut <g>aufklärt</g>.<br><r>Was denkst du</r>, David?",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first talk to the surgeon, <g>so that</g> he informs your brother well.<br><r>What do you think</r>, David?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу поговорили з хірургом, <g>щоб</g> він добре проінформував твого брата.<br><r>Що ти думаєш</r>, Девіде?",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала поговорили с хирургом, <g>чтобы</g> он хорошо проинформировал твоего брата.<br><r>Что ты думаешь</r>, Дэвид?"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> alle Fragen aufschreiben, <g>damit</g> mein Bruder nichts <g>vergisst</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we write down all the questions, <g>so that</g> my brother doesn't forget anything.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми записали всі запитання, <g>щоб</g> мій брат нічого не забув.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы записали все вопросы, <g>чтобы</g> мой брат ничего не забыл.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Risiken denken.<br><r>Wir könnten doch</r> fragen, welche Risiken es bei der Narkose gibt, <g>damit</g> er wirklich informiert <g>zustimmt</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the risks.<br><r>We could</r> ask what risks the anaesthesia carries, <g>so that</g> he really gives informed consent.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про ризики.<br><r>Ми могли б</r> запитати, які ризики є при наркозі, <g>щоб</g> він справді усвідомлено погодився.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о рисках.<br><r>Мы могли бы</r> спросить, какие риски есть при наркозе, <g>чтобы</g> он действительно осознанно согласился.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass</r> ich bei ihm bleibe, <g>damit</g> er sich vor der Operation ruhiger <g>fühlt</g>.<br><r>Bist du damit einverstanden</r>, Nina?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> I stay with him, <g>so that</g> he feels calmer before the operation.<br><r>Do you agree with that</r>, Nina?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> я залишився з ним, <g>щоб</g> він почувався спокійніше перед операцією.<br><r>Ти згодна з цим</r>, Ніно?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> я остался с ним, <g>чтобы</g> он чувствовал себя спокойнее перед операцией.<br><r>Ты согласна с этим</r>, Нина?"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Ich rufe dich sofort an, <g>damit</g> du <g>weißt</g>, sobald die Operation vorbei ist.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> I'll call you right away, <g>so that</g> you know as soon as the operation is over.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> я одразу тобі зателефоную, <g>щоб</g> ти знав, щойно операція закінчиться.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> я сразу тебе позвоню, <g>чтобы</g> ты знал, как только операция закончится.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob ich während der Operation ruhig bleiben kann.<br><r>Vielleicht wäre es am besten, wenn</r> du bei mir bist, <g>damit</g> ich nicht allein <g>warten</g> muss.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether I can stay calm during the operation.<br><r>Maybe it would be best if</r> you're with me, <g>so that</g> I don't have to wait alone.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи зможу я залишатися спокійним під час операції.<br><r>Можливо, було б найкраще, якби</r> ти була зі мною, <g>щоб</g> мені не довелося чекати самому.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, смогу ли я оставаться спокойным во время операции.<br><r>Возможно, было бы лучше, если бы</r> ты была со мной, <g>чтобы</g> мне не пришлось ждать одному.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> nach der Operation dableiben, <g>damit</g> der Chirurg uns sofort die Prognose <g>sagen</g> kann.<br><r>Passt dir das so</r>, David?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> stay after the operation, <g>so that</g> the surgeon can tell us the prognosis right away.<br><r>Does that work for you</r>, David?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> залишимося після операції, <g>щоб</g> хірург міг одразу сказати нам прогноз.<br><r>Тобі так підходить</r>, Девіде?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> останемся после операции, <g>чтобы</g> хирург мог сразу сказать нам прогноз.<br><r>Тебе так подходит</r>, Дэвид?"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> uns danach abwechseln, <g>damit</g> immer jemand ihn <g>überwacht</g>.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we take turns afterwards, <g>so that</g> someone always monitors him.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми потім чергувалися, <g>щоб</g> хтось завжди наглядав за ним.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы потом чередовались, <g>чтобы</g> кто-то всегда наблюдал за ним.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir sprechen mit dem Chirurgen, bleiben bei deinem Bruder, und warten zusammen auf die Prognose. Ich bin sicher, alles wird gut gehen! Bis bald!",
+      "en": "Yes, good idea! So, we'll talk to the surgeon, stay with your brother, and wait together for the prognosis. I'm sure everything will go well! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, розмовляємо з хірургом, залишаємося з твоїм братом, і разом чекаємо на прогноз. Я впевнена, усе буде добре! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, разговариваем с хирургом, остаёмся с твоим братом, и вместе ждём прогноза. Я уверена, всё будет хорошо! До связи!"
+    },
+    "gram": "nebensatz_mit_damit_wdh_b1"
   }
 ];
 
