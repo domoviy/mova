@@ -3100,7 +3100,10 @@ var LESSONS = [
       "k16_024"
     ],
     "unlockAfter": "k15m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_093"
+    ]
   },
   {
     "id": "k16m2",
@@ -8013,6 +8016,56 @@ var DIALOGE = [
       "ru": "Отлично, я уверена, с правильной печатью это будет быстро, Нина!"
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_093",
+    "cat": "Eine Geburtstagsüberraschung planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Marks Geburtstag ist bald. Sie möchten mit einer Freundin eine Überraschungsfeier für ihn planen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wo feiern wir?<br>Was schenken wir ihm?<br>Wie halten wir es geheim?",
+      "en": "Mark's birthday is coming up soon. You would like to plan a surprise party for him with a friend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Where do we celebrate?<br>What do we give him as a gift?<br>How do we keep it secret?",
+      "uk": "Незабаром день народження Марка. Ви хочете спланувати для нього сюрпризне свято з подругою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Де ми святкуємо?<br>Що ми йому подаруємо?<br>Як ми збережемо це в таємниці?",
+      "ru": "Скоро день рождения Марка. Вы хотите спланировать для него сюрпризную вечеринку с подругой.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Где мы празднуем?<br>Что мы ему подарим?<br>Как мы сохраним это в тайне?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Hallo Nina! Marks Geburtstag ist bald. Wollen wir eine Überraschungsfeier planen?",
+      "en": "Hi Nina! Mark's birthday is coming up soon. Shall we plan a surprise party?",
+      "uk": "Привіт, Ніно! Незабаром день народження Марка. Спланюємо сюрпризне свято?",
+      "ru": "Привет, Нина! Скоро день рождения Марка. Спланируем сюрпризную вечеринку?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> die Feier bei mir zu Hause machen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> have the party at my place.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> влаштувати свято в мене вдома.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> устроить праздник у меня дома.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> wir sollten früh anfangen, <g>weil</g> die Vorbereitung viel Zeit <g>kostet</g>.<br><r>Ich hätte einen Vorschlag:</r> Wir schreiben zuerst eine Gästeliste.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> we should start early, <g>because</g> the preparation <g>takes</g> a lot of time.<br><r>I have a suggestion:</r> we write a guest list first.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> нам варто почати рано, бо підготовка забирає багато часу.<br><r>У мене є пропозиція:</r> спочатку напишемо список гостей.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> нам стоит начать рано, потому что подготовка занимает много времени.<br><r>У меня есть предложение:</r> сначала напишем список гостей.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir alle bitten, <g>dass</g> sie pünktlich <g>kommen</g>, damit die Überraschung klappt.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we ask everyone <g>that</g> they <g>come</g> on time, so the surprise works.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> попросити всіх прийти вчасно, щоб сюрприз вдався.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> попросить всех прийти вовремя, чтобы сюрприз удался.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir rufen alle an, <g>wenn</g> das Geschenk fertig <g>ist</g>.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we call everyone <g>when</g> the gift <g>is</g> ready.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> зателефонуємо всім, коли подарунок буде готовий.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> позвоним всем, когда подарок будет готов.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, das wird bestimmt eine tolle Überraschung, Alex!",
+      "en": "Great, this will definitely be a great surprise, Alex!",
+      "uk": "Чудово, це точно буде чудовий сюрприз, Алекс!",
+      "ru": "Отлично, это точно будет отличный сюрприз, Алекс!"
+    },
+    "gram": "nebensaetze_konnektoren_wdh"
   }
 ];
 

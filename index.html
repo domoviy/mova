@@ -841,6 +841,29 @@ body{
   transition:transform .2s;
 }
 .lp-module-section.open .lp-module-divider-arrow{ transform:rotate(180deg); }
+/* Компактні кнопки "Словник"/"Граматика" на плашці модуля й глави —
+   іконка + мікропідпис (замінюють колишні повнорозмірні
+   .lp-module.lp-module-bonus картки, що роздували звивисту доріжку при
+   кількох модулях поспіль). Підпис навмисно НЕ прибираємо (на відміну
+   від суто піктограми) — аудиторія додатку не завжди впевнені
+   користувачі складних інтерфейсів, а голий значок легко не зрозуміти. */
+.lp-mini-btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;
+  background:var(--gold-dim);border:1px solid rgba(201,168,76,.3);
+  border-radius:10px;
+  width:44px;height:44px;flex-shrink:0;
+  font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.lp-mini-btn:active{ background:rgba(201,168,76,.28); }
+.lp-mini-btn-icon{ font-size:20px;line-height:1;font-weight:800;color:var(--gold); }
+.lp-mini-btn-label{ font-size:8px;font-weight:700;color:var(--gold);line-height:1.05;white-space:normal;text-align:center; }
+/* На "ти тут"-банері глави (.lp-chapter-head.current) фон темний
+   (forest-градієнт) — той самий gold-dim tint там губився б, тож
+   світліша напівпрозора підложка, той самий принцип, що вже є для
+   .lp-chapter-num/.lp-chapter-title в цьому стані нижче. */
+.lp-chapter-head.current .lp-mini-btn{ background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.25); }
+.lp-chapter-head.current .lp-mini-btn-icon,
+.lp-chapter-head.current .lp-mini-btn-label{ color:#fff; }
 .lp-bonus-row{
   display:flex;flex-direction:column;gap:8px;
   padding:4px 10px 0;
@@ -3435,7 +3458,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '491-407bdcd';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7884,13 +7907,18 @@ function renderLernpfad(){
     let curGroup = null;
     ch.modules.forEach(function(m){
       if(!curGroup || curGroup.parentId !== m._parentModuleId){
-        curGroup = { parentId: m._parentModuleId, moduleNum: m.module, title: m.title, nodes: [] };
+        curGroup = { parentId: m._parentModuleId, moduleNum: m.module, title: m.title, nodes: [], lastLesson: null };
         moduleGroups.push(curGroup);
       }
       curGroup.nodes.push(m);
+      // Останній суб-урок модуля (не діалог) — представник модуля для
+      // кнопок Словник/Граматика на плашці (той самий вузол, що раніше
+      // передавався в renderGrammarBonusCard/renderModuleVocabCard: має
+      // повний cardIds "з початку модуля" і фінальний unlock-стан).
+      if(m.type === 'lesson' && m._subIndex === m._subTotal) curGroup.lastLesson = m;
     });
 
-    let nodeIdx = 0, bonusHtml = '';
+    let nodeIdx = 0;
     const modulesHtml = moduleGroups.map(function(grp){
       const doneCount = grp.nodes.filter(n=>lessonProgress(n).pct>=80).length;
       const anyModuleDone = grp.nodes.some(n=>lessonProgress(n).pct>0);
@@ -7901,9 +7929,6 @@ function renderLernpfad(){
       grp.nodes.forEach(function(m){
         pathHtml += renderPathNode(m, nodeIdx);
         nodeIdx++;
-        if(m.type === 'lesson' && m._subIndex === m._subTotal){
-          bonusHtml += renderGrammarBonusCard(m) + renderModuleVocabCard(m);
-        }
       });
 
       return `<div class="lp-module-section ${isModuleOpen?'open':''}">
@@ -7921,14 +7946,13 @@ function renderLernpfad(){
             ch.modules.filter(m=>lessonProgress(m).pct>=80).length
           }/${ch.modules.length} ${t('lp_done').toLowerCase()}</div>
         </div>
+        ${renderChapterDividerVocabBtn(ch.num, reviewUnlocked)}
+        ${renderChapterDividerGramBtn(ch.num, ch.modules, reviewUnlocked)}
         <div class="lp-chapter-arrow">▼</div>
       </div>
       <div class="lp-modules">
         ${modulesHtml}
-        ${bonusHtml ? `<div class="lp-bonus-row">${bonusHtml}</div>` : ''}
         ${reviewHtml}
-        ${renderChapterGrammarBonusCard(ch.num, ch.modules, reviewUnlocked)}
-        ${renderChapterVocabCard(ch.num, reviewUnlocked)}
       </div>`;
     container.appendChild(chEl);
   });
@@ -8014,9 +8038,58 @@ function renderModuleDivider(grp, ch, doneCount){
     <div class="lp-module-divider-main">
       <span class="lp-module-divider-text">${t('lp_module_prefix')} ${grp.moduleNum} · ${title}</span>
       <span class="lp-module-divider-meta">${doneCount}/${grp.nodes.length}</span>
+      ${renderModuleDividerVocabBtn(grp.lastLesson)}
+      ${renderModuleDividerGramBtn(grp.lastLesson)}
       <span class="lp-module-divider-arrow">▼</span>
     </div>
   </div>`;
+}
+
+// Компактна заміна renderModuleVocabCard(lesson) нижче — той самий стан
+// "чи є що показати" (lessonUnlocked + непорожній cardIds), інша лише
+// розмітка (іконка+мікропідпис у плашці модуля, не окрема повнорозмірна
+// картка в стрічці). event.stopPropagation() — плашка сама клікабельна
+// (розгортає/згортає секцію), без цього тап по кнопці заразом і
+// перемикав би секцію.
+function renderModuleDividerVocabBtn(lesson){
+  if(!lesson || !lessonUnlocked(lesson) || !(lesson.cardIds||[]).length) return '';
+  const label = {de:'Wörter',uk:'Словник',en:'Words',ru:'Словарь'}[uiLang]||'Wörter';
+  return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startModuleVocabBonus('${lesson.id}')">
+    <span class="lp-mini-btn-icon">📖</span><span class="lp-mini-btn-label">${label}</span>
+  </button>`;
+}
+// Компактна заміна renderGrammarBonusCard(lesson) нижче — та сама умова
+// (є тема ГІ і в пулі бонусу справді є картки), інша лише розмітка.
+function renderModuleDividerGramBtn(lesson){
+  if(!lesson || !lessonUnlocked(lesson)) return '';
+  const topic = getModuleGrammarTopic(lesson);
+  if(!topic || !buildGrammarBonusPool([topic], _cardIdsUpToLesson(lesson)).length) return '';
+  const label = {de:'Grammatik',uk:'Граматика',en:'Grammar',ru:'Грамматика'}[uiLang]||'Grammatik';
+  return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startModuleGrammarBonus('${lesson.id}')">
+    <span class="lp-mini-btn-icon">G</span><span class="lp-mini-btn-label">${label}</span>
+  </button>`;
+}
+// Компактні аналоги для плашки ГЛАВИ (.lp-chapter-head) — той самий
+// принцип, умови скопійовані з renderChapterVocabCard/
+// renderChapterGrammarBonusCard нижче (лишились у коді, більше не
+// викликаються з основного рендеру).
+function renderChapterDividerVocabBtn(chapterNum, unlocked){
+  if(!unlocked) return '';
+  const ids = _reviewDictionaryCardIds([chapterNum]);
+  if(!ids.length) return '';
+  const label = {de:'Wörter',uk:'Словник',en:'Words',ru:'Словарь'}[uiLang]||'Wörter';
+  return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startChapterVocabView(${chapterNum})">
+    <span class="lp-mini-btn-icon">📖</span><span class="lp-mini-btn-label">${label}</span>
+  </button>`;
+}
+function renderChapterDividerGramBtn(chapterNum, chapterLessons, unlocked){
+  if(!unlocked) return '';
+  const topicIds = Array.from(new Set(chapterLessons.map(l=>getModuleGrammarTopic(l)).filter(Boolean)));
+  if(!topicIds.length || !buildGrammarBonusPool(topicIds, _cardIdsUpToChapter(chapterNum)).length) return '';
+  const label = {de:'Grammatik',uk:'Граматика',en:'Grammar',ru:'Грамматика'}[uiLang]||'Grammatik';
+  return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startChapterGrammarBonus(${chapterNum})">
+    <span class="lp-mini-btn-icon">G</span><span class="lp-mini-btn-label">${label}</span>
+  </button>`;
 }
 
 // Візуальний профіль вузла стежки по типу: іконка + клас кольору. Три
@@ -8204,6 +8277,11 @@ function renderModuleDialogueCard(lesson){
   </div>`;
 }
 
+// Повнорозмірна картка "Бонус: Граматика" — БІЛЬШЕ НЕ використовується в
+// основному рендері (замінена компактною renderModuleDividerGramBtn() на
+// плашці модуля, див. renderModuleDivider вище) — розтягувала звивисту
+// доріжку, коли модулів у главі кілька поспіль. Функцію лишено в коді
+// на випадок, якщо формат повнорозмірної картки захочуть повернути.
 function renderGrammarBonusCard(lesson){
   if(!lessonUnlocked(lesson)) return '';
   const topic = getModuleGrammarTopic(lesson);
@@ -8228,6 +8306,8 @@ function renderGrammarBonusCard(lesson){
 // розблокування, що й "Бонус: Граматика" (lessonUnlocked), і сама відразу
 // показується поруч з нею в Шляху. Відкриває Словник (🃏+📋), обмежений
 // лише картками ЦЬОГО модуля.
+// БІЛЬШЕ НЕ використовується в основному рендері — замінена
+// renderModuleDividerVocabBtn() на плашці модуля. Лишено в коді.
 function renderModuleVocabCard(lesson){
   if(!lessonUnlocked(lesson)) return '';
   if(!(lesson.cardIds||[]).length) return '';
@@ -8262,6 +8342,8 @@ function startModuleVocabBonus(lessonId){
 // але пул охоплює ВСІ теми граматики глави (union тем модулів, кожна —
 // через getModuleGrammarTopic, тобто з успадкуванням для продовжувальних
 // модулів без власного lesson.grammar).
+// БІЛЬШЕ НЕ використовується в основному рендері — замінена
+// renderChapterDividerGramBtn() на плашці глави (.lp-chapter-head). Лишено в коді.
 function renderChapterGrammarBonusCard(chapterNum, chapterLessons, unlocked){
   if(!unlocked) return '';
   const topicIds = Array.from(new Set(
@@ -8315,6 +8397,8 @@ function renderChapterDialogueBonusCard(chapterNum, unlocked){
 // обмежений картками ВСІЄЇ глави (усі уроки з номером chapterNum), а не
 // лише поточної SM-2-сесії повторення. Видима за тих самих умов, що й
 // сама картка "Повторення" (unlocked), і лише якщо в главі є картки.
+// БІЛЬШЕ НЕ використовується в основному рендері — замінена
+// renderChapterDividerVocabBtn() на плашці глави (.lp-chapter-head). Лишено в коді.
 function renderChapterVocabCard(chapterNum, unlocked){
   if(!unlocked) return '';
   const ids = _reviewDictionaryCardIds([chapterNum]);

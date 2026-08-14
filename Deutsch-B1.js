@@ -2557,7 +2557,10 @@ var LESSONS = [
       "k6_038"
     ],
     "unlockAfter": "k6m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_097"
+    ]
   },
   {
     "id": "k6m4",
@@ -2577,7 +2580,8 @@ var LESSONS = [
     },
     "skills": [
       "Hören",
-      "Schreiben"
+      "Schreiben",
+      "Sprechen"
     ],
     "grammar": "satz_mit_um_zu",
     "cardIds": [
@@ -2593,7 +2597,10 @@ var LESSONS = [
       "k6_046"
     ],
     "unlockAfter": "k6m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_098"
+    ]
   },
   {
     "id": "k6m5",
@@ -28364,6 +28371,154 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, звоним ей после обследования, навещаем каждый день, и сопровождаем на терапию. Я уверен, она скоро выздоровеет! До связи!"
     },
     "gram": "futur_werden"
+  },
+  {
+    "id": "dlg_097",
+    "cat": "Erste-Hilfe-Kurs organisieren planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Nach einem Unfall letzte Woche möchten Sie mit einer Kollegin/einem Kollegen einen Erste-Hilfe-Kurs für das Team organisieren.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Kurs vorbereiten.\nDiese Punkte helfen Ihnen:\nWas üben Sie im Kurs?\nWer soll den Kurs leiten?\nWie alarmiert man im Notfall richtig?\nTheorie oder Praxis – was ist wichtiger?\nWann und wie oft findet der Kurs statt?",
+      "en": "Situation: After an accident last week, you want to organize a first-aid course for the team with a colleague.\nTask: Plan together with your conversation partner how you'll prepare the course.\nThese points will help you:\nWhat will you practice in the course?\nWho should lead the course?\nHow do you alert help correctly in an emergency?\nTheory or practice – what's more important?\nWhen and how often will the course take place?",
+      "uk": "Ситуація: Після аварії минулого тижня Ви хочете організувати з колегою курс першої допомоги для команди.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте курс.\nЦі пункти Вам допоможуть:\nЩо Ви тренуватимете на курсі?\nХто має вести курс?\nЯк правильно сповіщати допомогу в надзвичайній ситуації?\nТеорія чи практика – що важливіше?\nКоли і як часто відбуватиметься курс?",
+      "ru": "Ситуация: После аварии на прошлой неделе Вы хотите организовать с коллегой курс первой помощи для команды.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы подготовите курс.\nЭти пункты Вам помогут:\nЧто Вы будете тренировать на курсе?\nКто должен вести курс?\nКак правильно оповещать о помощи в экстренной ситуации?\nТеория или практика – что важнее?\nКогда и как часто будет проходить курс?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo, Anna! Nach dem Unfall letzte Woche finde ich, wir sollten einen Erste-Hilfe-Kurs für das Team organisieren. Wollen wir das zusammen planen?",
+      "en": "Hi, Anna! After the accident last week, I think we should organize a first-aid course for the team. Should we plan that together?",
+      "uk": "Привіт, Анно! Після минулотижневої аварії я думаю, нам варто організувати курс першої допомоги для команди. Може, сплануємо це разом?",
+      "ru": "Привет, Анна! После аварии на прошлой неделе я думаю, нам стоит организовать курс первой помощи для команды. Может, спланируем это вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> üben, wie man <g>nicht nur</g> Wunden versorgt, <g>sondern auch</g> mit bewusstlosen Personen umgeht.<br><r>Was denkst du</r>, Nina?",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we practice how to <g>not only</g> treat wounds <g>but also</g> handle unconscious people.<br><r>What do you think</r>, Nina?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми потренувалися, як <g>не тільки</g> обробляти рани, <g>а й</g> діяти з непритомними людьми.<br><r>Що ти думаєш</r>, Ніно?",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы потренировались, как <g>не только</g> обрабатывать раны, <g>но и</g> действовать с людьми без сознания.<br><r>Что ты думаешь</r>, Нина?"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> zeigen, wie man im Notfall <g>nicht nur</g> ruhig bleibt, <g>sondern auch</g> schnell alarmiert.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we show how to <g>not only</g> stay calm in an emergency <g>but also</g> alert help quickly.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми показали, як у надзвичайній ситуації <g>не тільки</g> залишатися спокійними, <g>а й</g> швидко сповіщати допомогу.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы показали, как в экстренной ситуации <g>не только</g> оставаться спокойными, <g>но и</g> быстро оповещать помощь.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an den Kursleiter denken.<br><r>Wir könnten doch</r> jemanden fragen, der <g>nicht nur</g> Erfahrung hat, <g>sondern auch</g> gut erklären kann.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the course instructor.<br><r>We could</r> ask someone who has <g>not only</g> experience <g>but also</g> the ability to explain well.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про викладача курсу.<br><r>Ми могли б</r> запросити когось, хто має <g>не тільки</g> досвід, <g>а й</g> уміє добре пояснювати.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о преподавателе курса.<br><r>Мы могли бы</r> пригласить кого-то, у кого есть <g>не только</g> опыт, <g>но и</g> умение хорошо объяснять.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> zeigen, wie man <g>nicht nur</g> eine blutende Wunde versorgt, <g>sondern auch</g> einen Schock erkennt.<br><r>Bist du damit einverstanden</r>, Anna?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we show how to <g>not only</g> treat a bleeding wound <g>but also</g> recognize shock.<br><r>Do you agree with that</r>, Anna?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонувала, щоб</r> ми показали, як <g>не тільки</g> обробити криваву рану, <g>а й</g> розпізнати шок.<br><r>Ти згодна з цим</r>, Анно?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложила, чтобы</r> мы показали, как <g>не только</g> обработать кровоточащую рану, <g>но и</g> распознать шок.<br><r>Ты согласна с этим</r>, Анна?"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir üben <g>nicht nur</g> theoretisch, <g>sondern auch</g> praktisch mit einer Puppe.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we practice <g>not only</g> theoretically <g>but also</g> practically with a dummy.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> потренуємося <g>не тільки</g> теоретично, <g>а й</g> практично на манекені.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> потренируемся <g>не только</g> теоретически, <g>но и</g> практически на манекене.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob genug Kollegen Zeit haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> den Kurs <g>nicht nur</g> einmal, <g>sondern auch</g> ein zweites Mal anbieten.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether enough colleagues will have time.<br><r>Maybe it would be best if</r> we offer the course <g>not only</g> once <g>but also</g> a second time.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи в достатньої кількості колег буде час.<br><r>Можливо, було б найкраще, якби ми</r> провели курс <g>не тільки</g> один раз, <g>а й</g> удруге.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, будет ли у достаточного числа коллег время.<br><r>Возможно, было бы лучше, если бы мы</r> провели курс <g>не только</g> один раз, <g>но и</g> во второй.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> <g>nicht nur</g> das Verbandsmaterial mitbringen, <g>sondern auch</g> ein kleines Handout.<br><r>Passt dir das so</r>, Nina?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> bring <g>not only</g> the bandages <g>but also</g> a small handout.<br><r>Does that work for you</r>, Nina?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> візьмемо <g>не тільки</g> перев'язувальний матеріал, <g>а й</g> невеликий друкований матеріал.<br><r>Тобі так підходить</r>, Ніно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> возьмём <g>не только</g> перевязочный материал, <g>но и</g> небольшой печатный материал.<br><r>Тебе так подходит</r>, Нина?"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> den Kurs schon nächste Woche organisieren, denn <g>nicht nur</g> Sicherheit, <g>sondern auch</g> Selbstvertrauen ist wichtig für alle.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we organize the course already next week, because <g>not only</g> safety <g>but also</g> confidence is important for everyone.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонувала, щоб</r> ми організували курс уже наступного тижня, адже <g>не тільки</g> безпека, <g>а й</g> впевненість важлива для всіх.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложила, чтобы</r> мы организовали курс уже на следующей неделе, ведь <g>не только</g> безопасность, <g>но и</g> уверенность важна для всех.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir organisieren einen Erste-Hilfe-Kurs mit Theorie und Praxis, und üben sowohl Wunden als auch Bewusstlosigkeit. Ich freue mich schon darauf, das Team vorzubereiten! Bis bald!",
+      "en": "Yes, good idea! So, we'll organize a first-aid course with theory and practice, and practice both wounds and unconsciousness. I'm already looking forward to preparing the team! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, організовуємо курс першої допомоги з теорією і практикою, і тренуємо як рани, так і непритомність. Уже тішуся підготувати команду! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, организуем курс первой помощи с теорией и практикой, и тренируем как раны, так и обморочные состояния. Уже жду с нетерпением подготовить команду! До связи!"
+    },
+    "gram": "nicht_nur_sondern_auch"
+  },
+  {
+    "id": "dlg_098",
+    "cat": "Begleitung in die Notaufnahme planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Ihr Bruder hat sich verletzt und Sie müssen mit ihm in die Notaufnahme. Sie möchten mit einem Freund/einer Freundin planen, wie Sie das organisieren.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie vorgehen.\nDiese Punkte helfen Ihnen:\nWas bringen Sie mit, um sich schnell anzumelden?\nWas tun Sie, damit die Wartezeit kürzer wird?\nWie füllen Sie das Formular aus?\nWer bleibt telefonisch erreichbar?\nWas ist wichtig, damit alles dringend bearbeitet wird?",
+      "en": "Situation: Your brother got hurt and you need to take him to the emergency room. You want to plan with a friend how to organize this.\nTask: Plan together with your conversation partner how you'll proceed.\nThese points will help you:\nWhat will you bring to register quickly?\nWhat will you do so the waiting time is shorter?\nHow will you fill out the form?\nWho will stay reachable by phone?\nWhat's important so everything is handled urgently?",
+      "uk": "Ситуація: Ваш брат травмувався, і Вам потрібно з ним у приймальне відділення. Ви хочете спланувати з другом/подругою, як це організувати.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЩо Ви візьмете, щоб швидко зареєструватися?\nЩо Ви зробите, щоб час очікування був коротшим?\nЯк Ви заповните формуляр?\nХто залишиться на зв'язку по телефону?\nЩо важливо, щоб усе обробили терміново?",
+      "ru": "Ситуация: Ваш брат травмировался, и Вам нужно с ним в приёмный покой. Вы хотите спланировать с другом/подругой, как это организовать.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nЧто Вы возьмёте, чтобы быстро зарегистрироваться?\nЧто Вы сделаете, чтобы время ожидания было короче?\nКак Вы заполните формуляр?\nКто останется на связи по телефону?\nЧто важно, чтобы всё обработали срочно?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Mein Bruder hat sich verletzt, ich muss mit ihm in die Notaufnahme. Kannst du mir helfen, das zu organisieren?",
+      "en": "Hi, Mark! My brother got hurt, I need to go to the emergency room with him. Can you help me organize that?",
+      "uk": "Привіт, Марку! Мій брат травмувався, мені потрібно з ним у приймальне відділення. Можеш допомогти мені це організувати?",
+      "ru": "Привет, Марк! Мой брат травмировался, мне нужно с ним в приёмный покой. Можешь помочь мне это организовать?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass</r> du zuerst die Versicherungskarte mitnimmst, <g>um dich</g> schnell <g>anmelden zu</g> können.<br><r>Was denkst du</r>, David?",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> you first take the insurance card, <g>to</g> be able <g>to register</g> quickly.<br><r>What do you think</r>, David?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ти спершу взяв страхову картку, <g>щоб</g> швидко зареєструватися.<br><r>Що ти думаєш</r>, Девіде?",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> ты сначала взял страховую карту, <g>чтобы</g> быстро зарегистрироваться.<br><r>Что ты думаешь</r>, Дэвид?"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass</r> ich das Formular schon zu Hause ausfülle, <g>um</g> Zeit <g>zu sparen</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> I fill out the form at home already, <g>to</g> save time.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> я заповнив формуляр уже вдома, <g>щоб</g> зекономити час.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> я заполнил формуляр уже дома, <g>чтобы</g> сэкономить время.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Wartezeit denken.<br><r>Wir könnten doch</r> der Schwester sofort sagen, dass es dringend ist, <g>damit</g> sie eurem Fall Priorität <g>gibt</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the waiting time.<br><r>We could</r> tell the nurse right away that it's urgent, <g>so that</g> she gives your case priority.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про час очікування.<br><r>Ми могли б</r> одразу сказати медсестрі, що це терміново, <g>щоб</g> вона надала вашому випадку пріоритет.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о времени ожидания.<br><r>Мы могли бы</r> сразу сказать медсестре, что это срочно, <g>чтобы</g> она дала вашему случаю приоритет.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass</r> ich alles unterschreibe, <g>um</g> keine Zeit <g>zu verlieren</g>.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> I sign everything, <g>to</g> not lose any time.<br><r>Do you agree with that</r>, Mark?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> я підписав усе, <g>щоб</g> не втрачати часу.<br><r>Ти згоден з цим</r>, Марку?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> я подписал всё, <g>чтобы</g> не терять времени.<br><r>Ты согласен с этим</r>, Марк?"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Ich rufe schon jetzt an, <g>damit</g> die Ärzte sich vorbereiten <g>können</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> I'll call right now, <g>so that</g> the doctors can prepare.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> я зателефоную вже зараз, <g>щоб</g> лікарі могли підготуватися.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>У меня есть предложение:</r> я позвоню уже сейчас, <g>чтобы</g> врачи могли подготовиться.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob ich alles allein schaffe.<br><r>Vielleicht wäre es am besten, wenn</r> ich dich anrufe, <g>um</g> dir Bescheid <g>zu geben</g>, sobald wir da sind.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether I can manage everything alone.<br><r>Maybe it would be best if</r> I call you, <g>to</g> let you know as soon as we're there.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи впораюся я з усім сам.<br><r>Можливо, було б найкраще, якби</r> я подзвонив тобі, <g>щоб</g> повідомити, щойно ми будемо на місці.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, справлюсь ли я со всем один.<br><r>Возможно, было бы лучше, если бы</r> я позвонил тебе, <g>чтобы</g> сообщить, как только мы будем на месте.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> die Formulare zusammen abgeben, <g>damit</g> nichts <g>fehlt</g>.<br><r>Passt dir das so</r>, David?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> hand in the forms together, <g>so that</g> nothing is missing.<br><r>Does that work for you</r>, David?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> здамо формуляри разом, <g>щоб</g> нічого не бракувало.<br><r>Тобі так підходить</r>, Девіде?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> сдадим формуляры вместе, <g>чтобы</g> ничего не пропустить.<br><r>Тебе так подходит</r>, Дэвид?"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> jetzt gleich losfahren, <g>um</g> keine Zeit mehr <g>zu verlieren</g>.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we leave right now, <g>to</g> not lose any more time.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми поїхали вже зараз, <g>щоб</g> не втрачати більше часу.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы поехали уже сейчас, <g>чтобы</g> не терять больше времени.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir nehmen die Versicherungskarte mit, füllen das Formular aus, und ich bleibe telefonisch erreichbar. Ich hoffe, es geht deinem Bruder bald besser! Bis bald!",
+      "en": "Yes, good idea! So, we'll take the insurance card, fill out the form, and I'll stay reachable by phone. I hope your brother feels better soon! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, беремо страхову картку, заповнюємо формуляр, і я лишаюся на зв'язку по телефону. Сподіваюся, твоєму братові скоро стане краще! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, берём страховую карту, заполняем формуляр, и я остаюсь на связи по телефону. Надеюсь, твоему брату скоро станет лучше! До связи!"
+    },
+    "gram": "satz_mit_um_zu"
   }
 ];
 
