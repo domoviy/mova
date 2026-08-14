@@ -3144,7 +3144,8 @@ var LESSONS = [
       "dlg_a22_029",
       "dlg_a22_030",
       "dlg_a22_031",
-      "dlg_a22_032"
+      "dlg_a22_032",
+      "dlg_094"
     ]
   },
   {
@@ -3181,7 +3182,10 @@ var LESSONS = [
       "k16_033"
     ],
     "unlockAfter": "k16m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_095"
+    ]
   },
   {
     "id": "k16m4",
@@ -8066,6 +8070,106 @@ var DIALOGE = [
       "ru": "Отлично, это точно будет отличный сюрприз, Алекс!"
     },
     "gram": "nebensaetze_konnektoren_wdh"
+  },
+  {
+    "id": "dlg_094",
+    "cat": "Einladungen schreiben und dekorieren",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie müssen noch die Einladungen für das Fest schreiben und die Dekoration kaufen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was schreiben wir zuerst?<br>Wie dekorieren wir?<br>Wann kaufen wir alles ein?",
+      "en": "You still need to write the invitations for the celebration and buy the decorations.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we write first?<br>How do we decorate?<br>When do we buy everything?",
+      "uk": "Вам ще треба написати запрошення на свято й купити прикраси.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Що ми пишемо спочатку?<br>Як ми прикрашаємо?<br>Коли ми все купимо?",
+      "ru": "Вам ещё нужно написать приглашения на праздник и купить украшения.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Что мы пишем сначала?<br>Как мы украшаем?<br>Когда мы всё купим?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo Anna! Wir müssen noch die Einladungen schreiben und die Deko kaufen. Hast du Zeit?",
+      "en": "Hi Anna! We still need to write the invitations and buy the decorations. Do you have time?",
+      "uk": "Привіт, Анно! Нам ще треба написати запрошення й купити прикраси. У тебе є час?",
+      "ru": "Привет, Анна! Нам ещё нужно написать приглашения и купить украшения. У тебя есть время?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> zuerst die Glückwunschkarten schreiben.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> write the greeting cards first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> спочатку написати листівки з вітаннями.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> сначала написать открытки с поздравлениями.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> wir sollten zuerst wissen, wie viele Gäste kommen.<br><r>Ich hätte einen Vorschlag:</r> Wir zählen zuerst, wer die Einladung schon angenommen hat.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> we should first know how many guests are coming.<br><r>I have a suggestion:</r> we first count who has already accepted the invitation.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> нам варто спочатку знати, скільки гостей прийде.<br><r>У мене є пропозиція:</r> спочатку порахуємо, хто вже прийняв запрошення.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> нам стоит сначала узнать, сколько гостей придёт.<br><r>У меня есть предложение:</r> сначала посчитаем, кто уже принял приглашение.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir den Raum bunt dekorieren und einen großen Kuchen mit Kerzen backen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we decorate the room colourfully and bake a big cake with candles.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> яскраво прикрасити кімнату й спекти великий пиріг зі свічками.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> ярко украсить комнату и испечь большой пирог со свечами.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir treffen uns morgen und kaufen alles zusammen ein.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we meet tomorrow and buy everything together.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> зустрінемося завтра й купимо все разом.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> встретимся завтра и купим всё вместе.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, das wird bestimmt ein wunderschönes Fest, Mark!",
+      "en": "Great, this will definitely be a beautiful celebration, Mark!",
+      "uk": "Чудово, це точно буде прекрасне свято, Марку!",
+      "ru": "Отлично, это точно будет прекрасный праздник, Марк!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_095",
+    "cat": "Eine Silvesterfeier planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Silvester kommt bald. Sie möchten mit einer Freundin eine Feier mit Traditionen aus aller Welt planen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Welche Traditionen probieren wir aus?<br>Was brauchen wir dafür?<br>Wann treffen wir uns?",
+      "en": "New Year's Eve is coming up soon. You would like to plan a party with traditions from around the world with a friend.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Which traditions do we try?<br>What do we need for that?<br>When do we meet?",
+      "uk": "Незабаром Новий рік. Ви хочете спланувати вечірку з традиціями з усього світу з подругою.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Які традиції ми спробуємо?<br>Що нам для цього потрібно?<br>Коли ми зустрінемося?",
+      "ru": "Скоро Новый год. Вы хотите спланировать вечеринку с традициями со всего мира с подругой.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Какие традиции мы попробуем?<br>Что нам для этого нужно?<br>Когда мы встретимся?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo Anna! Silvester kommt bald. Wollen wir eine Feier mit Traditionen aus aller Welt planen?",
+      "en": "Hi Anna! New Year's Eve is coming up soon. Shall we plan a party with traditions from around the world?",
+      "uk": "Привіт, Анно! Незабаром Новий рік. Спланюємо вечірку з традиціями з усього світу?",
+      "ru": "Привет, Анна! Скоро Новый год. Спланируем вечеринку с традициями со всего мира?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so.</r><br><r>Wir könnten doch</r> ein kleines Feuerwerk kaufen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that.</r><br><r>We could</r> buy some small fireworks.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так.</r><br><r>Ми могли б</r> купити невеликий феєрверк.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, так и сделаем.</r><br><r>Мы могли бы</r> купить небольшой фейерверк.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich würde auch gerne einen spanischen Brauch ausprobieren, zwölf Trauben um Mitternacht zu essen.<br><r>Ich hätte einen Vorschlag:</r> Wir kaufen für jeden Gast zwölf Trauben.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but</r> I would also like to try a Spanish custom, eating twelve grapes at midnight.<br><r>I have a suggestion:</r> we buy twelve grapes for each guest.<br><r>How do you like that?</r>",
+      "uk": "<r>Це звучить непогано, але</r> я також хотіла б спробувати іспанський звичай — з'їсти опівночі дванадцять виноградин.<br><r>У мене є пропозиція:</r> купимо для кожного гостя дванадцять виноградин.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но</r> я тоже хотела бы попробовать испанский обычай — съесть в полночь двенадцать виноградин.<br><r>У меня есть предложение:</r> купим для каждого гостя двенадцать виноградин.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> wir uns auch bunt verkleiden, so ähnlich wie beim Karneval.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> we also dress up colourfully, similar to carnival.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> також яскраво переодягнутися, схоже на карнавал.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> тоже ярко нарядиться, похоже на карнавал.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir treffen uns am 31. Dezember um acht Uhr bei mir.<br><r>Passt dir das so?</r>",
+      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we meet at my place on 31 December at eight o'clock.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> зустрінемося 31 грудня о восьмій у мене.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> встретимся 31 декабря в восемь у меня.<br><r>Тебе так подходит?</r>"
+    },
+    "a2": {
+      "de": "Super, das wird bestimmt eine unvergessliche Silvesterfeier, Julia!",
+      "en": "Great, this will definitely be an unforgettable New Year's Eve party, Julia!",
+      "uk": "Чудово, це точно буде незабутня новорічна вечірка, Юліє!",
+      "ru": "Отлично, это точно будет незабываемая новогодняя вечеринка, Юлия!"
+    },
+    "gram": ""
   }
 ];
 
