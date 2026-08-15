@@ -2675,7 +2675,10 @@ var LESSONS = [
       "k6_060"
     ],
     "unlockAfter": "k6m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_100"
+    ]
   },
   {
     "id": "k7m1",
@@ -28596,6 +28599,80 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, разговариваем с хирургом, остаёмся с твоим братом, и вместе ждём прогноза. Я уверена, всё будет хорошо! До связи!"
     },
     "gram": "nebensatz_mit_damit_wdh_b1"
+  },
+  {
+    "id": "dlg_100",
+    "cat": "Gesundheitstag im Team organisieren",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie möchten mit einem Kollegen/einer Kollegin einen kleinen Gesundheitstag für Ihr Team organisieren.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Tag vorbereiten.\nDiese Punkte helfen Ihnen:\nWas ist die Wichtigkeit eines Gesundheitstages?\nWelche Möglichkeiten bieten Sie den Mitarbeitern?\nWie sorgen Sie für Sicherheit und Sauberkeit?\nWelche Schwierigkeiten könnten auftreten?\nWie fördern Sie die Gesundheit langfristig?",
+      "en": "Situation: You want to organize a small health day for your team with a colleague.\nTask: Plan together with your conversation partner how you'll prepare the day.\nThese points will help you:\nWhat's the importance of a health day?\nWhat opportunities will you offer employees?\nHow will you ensure safety and cleanliness?\nWhat difficulties might arise?\nHow will you promote health long-term?",
+      "uk": "Ситуація: Ви хочете організувати з колегою невеликий день здоров'я для своєї команди.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте цей день.\nЦі пункти Вам допоможуть:\nУ чому важливість дня здоров'я?\nЯкі можливості Ви запропонуєте співробітникам?\nЯк Ви подбаєте про безпеку й чистоту?\nЯкі труднощі можуть виникнути?\nЯк Ви сприятимете здоров'ю в довгостроковій перспективі?",
+      "ru": "Ситуация: Вы хотите организовать с коллегой небольшой день здоровья для своей команды.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы подготовите этот день.\nЭти пункты Вам помогут:\nВ чём важность дня здоровья?\nКакие возможности Вы предложите сотрудникам?\nКак Вы позаботитесь о безопасности и чистоте?\nКакие трудности могут возникнуть?\nКак Вы будете способствовать здоровью в долгосрочной перспективе?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo, Julia! Ich finde, wir sollten einen kleinen Gesundheitstag für unser Team organisieren. Wollen wir das zusammen planen?",
+      "en": "Hi, Julia! I think we should organize a small health day for our team. Should we plan that together?",
+      "uk": "Привіт, Юліє! Думаю, нам варто організувати невеликий день здоров'я для нашої команди. Може, сплануємо це разом?",
+      "ru": "Привет, Юлия! Думаю, нам стоит организовать небольшой день здоровья для нашей команды. Может, спланируем это вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst über die <g>Wichtigkeit</g> der Gesundheit am Arbeitsplatz sprechen.<br><r>Was denkst du</r>, Alex?",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first talk about the <g>importance</g> of health in the workplace.<br><r>What do you think</r>, Alex?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу поговорили про <g>важливість</g> здоров'я на робочому місці.<br><r>Що ти думаєш</r>, Алексе?",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала поговорили о <g>важности</g> здоровья на рабочем месте.<br><r>Что ты думаешь</r>, Алекс?"
+    },
+    "q1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> den Kollegen die <g>Möglichkeit</g> geben, sich kostenlos untersuchen zu lassen.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we give colleagues the <g>opportunity</g> to have a free check-up.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми дали колегам <g>можливість</g> пройти безкоштовний огляд.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы дали коллегам <g>возможность</g> пройти бесплатный осмотр.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Sicherheit denken.<br><r>Wir könnten doch</r> auch über <g>Sicherheit</g> am Arbeitsplatz sprechen, zum Beispiel bei schwerem Heben.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about safety.<br><r>We could</r> also talk about <g>safety</g> at work, for example with heavy lifting.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про безпеку.<br><r>Ми могли б</r> також поговорити про <g>безпеку</g> на роботі, наприклад при піднятті важких речей.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о безопасности.<br><r>Мы могли бы</r> также поговорить о <g>безопасности</g> на работе, например при подъёме тяжестей.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch die <g>Sauberkeit</g> in der Küche und den Pausenräumen thematisieren.<br><r>Bist du damit einverstanden</r>, Julia?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we also address <g>cleanliness</g> in the kitchen and break rooms.<br><r>Do you agree with that</r>, Julia?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми також торкнулися <g>чистоти</g> на кухні й у кімнатах відпочинку.<br><r>Ти згодна з цим</r>, Юліє?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы также затронули <g>чистоту</g> на кухне и в комнатах отдыха.<br><r>Ты согласна с этим</r>, Юлия?"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sprechen offen über <g>Schwierigkeiten</g>, die manche mit Stress haben.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we talk openly about the <g>difficulties</g> some people have with stress.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> поговоримо відверто про <g>труднощі</g>, які дехто має зі стресом.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> поговорим открыто о <g>трудностях</g>, которые у некоторых со стрессом.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob alle Kollegen an diesem Tag Zeit haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> den Tag so planen, dass es genug <g>Freiheit</g> bei der Zeitwahl gibt.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether all colleagues have time that day.<br><r>Maybe it would be best if</r> we plan the day so that there's enough <g>freedom</g> in choosing the time.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи у всіх колег буде час того дня.<br><r>Можливо, було б найкраще, якби ми</r> спланували день так, щоб було достатньо <g>свободи</g> у виборі часу.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, будет ли у всех коллег время в этот день.<br><r>Возможно, было бы лучше, если бы мы</r> спланировали день так, чтобы было достаточно <g>свободы</g> в выборе времени.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> am Ende über die Zeit nach einer <g>Krankheit</g> sprechen, also wie man sich gut erholt.<br><r>Passt dir das so</r>, Alex?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> talk at the end about the time after an <g>illness</g>, meaning how to recover well.<br><r>Does that work for you</r>, Alex?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> наприкінці поговоримо про час після <g>хвороби</g>, тобто як добре одужувати.<br><r>Тобі так підходить</r>, Алексе?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> в конце поговорим о времени после <g>болезни</g>, то есть как хорошо восстанавливаться.<br><r>Тебе так подходит</r>, Алекс?"
+    },
+    "q4": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> die <g>Gesundheit</g> unserer Kollegen zu einem festen Thema im Team machen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we make our colleagues' <g>health</g> a permanent topic in the team.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми зробили <g>здоров'я</g> наших колег постійною темою в команді.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы сделали <g>здоровье</g> наших коллег постоянной темой в команде.<br><r>Мы можем об этом договориться?</r>"
+    },
+    "a4": {
+      "de": "Ja, gute Idee! Also, wir sprechen über Gesundheit, Sicherheit und Sauberkeit, bieten kostenlose Untersuchungen an, und planen genug Flexibilität für alle. Ich freue mich schon auf den Gesundheitstag! Bis bald!",
+      "en": "Yes, good idea! So, we'll talk about health, safety, and cleanliness, offer free check-ups, and plan enough flexibility for everyone. I'm already looking forward to the health day! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, говоримо про здоров'я, безпеку й чистоту, пропонуємо безкоштовні огляди, і плануємо достатньо гнучкості для всіх. Уже тішуся дню здоров'я! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, говорим о здоровье, безопасности и чистоте, предлагаем бесплатные осмотры, и планируем достаточно гибкости для всех. Уже жду с нетерпением день здоровья! До связи!"
+    },
+    "gram": "nomen_auf_heit_keit"
   }
 ];
 

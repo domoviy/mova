@@ -1581,6 +1581,17 @@ body{
   font-size:19px;font-weight:700;color:var(--ink);
   font-family:'Inter',sans-serif;margin-top:14px;
 }
+/* Час виконання уроку — статистика, яку раніше було видно лише на
+   #lesson-result ПІД цим оверлеєм (затемнення фону нема, але картка
+   святкування (.lc-card) все одно своїм фоном перекриває той рядок).
+   Дублюємо тут же, у самій картці — надійніше й простіше, ніж
+   позиціювати оверлей відносно координат конкретного рядка на іншому
+   екрані (яка ще й скролиться/змінює позицію залежно від довжини
+   контенту над нею). */
+.lc-time-row{
+  margin-top:6px;font-size:13px;color:var(--muted);
+  font-family:'Inter',sans-serif;
+}
 /* Рядок "Зароблено N 𐌌" — сам текст статичний (не літає), летить лише
    КЛОН цього елемента (createFlyingXPClone нижче), а оригінал ховається
    на час польоту (visibility:hidden) і повертається видимим при
@@ -2918,6 +2929,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
               <span class="lc-burst-icon" id="lc-burst-icon">✓</span>
             </div>
             <div class="lc-label" id="lc-label"></div>
+            <div class="lc-time-row" id="lc-time-row" style="display:none"></div>
             <div class="lc-xp-row" id="lc-xp-row" style="display:none">
               <span id="lc-xp-text"></span>
             </div>
@@ -3458,7 +3470,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '494-7f033b1';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6287,7 +6299,20 @@ function wrapWordsForHighlight(el){
     }
   }
   Array.prototype.slice.call(el.childNodes).forEach(walk);
-  return spans;
+
+  // ПОВЕРТАЄМО ВСІ .tts-word у el (не лише щойно створені у spans вище) —
+  // критично для кнопки "🔊 Повторити": при першому програванні весь
+  // текст обгортається span-ами (spans тут = усі слова). При ПОВТОРНОМУ
+  // виклику wrapWordsForHighlight() на той самий el текст уже повністю
+  // обгорнутий з минулого разу — walk() вище не знаходить жодного нового
+  // текстового вузла (лишились самі вже готові span-и, обхід їх свідомо
+  // пропускає, щоб не подвоїти обгортку), і spans лишався б ПОРОЖНІМ —
+  // виклик _runWordHighlight() у playPregenAudio() тоді просто не
+  // запускався б (highlightSpans.length === 0), звук програвався б, а
+  // підсвітка — ні. querySelectorAll тут повертає ВСІ span-и (і старі, і
+  // щойно створені) у порядку документа — тому й порядку читання,
+  // працює однаково коректно і на першому, і на повторному виклику.
+  return Array.prototype.slice.call(el.querySelectorAll('.tts-word'));
 }
 
 function clearWordHighlight(el){
@@ -8910,14 +8935,25 @@ function showLessonCelebration(opts){
   opts = opts || {};
   const el = document.getElementById('lesson-celebration');
   if(!el) return;
-  const iconEl  = document.getElementById('lc-burst-icon');
-  const lblEl   = document.getElementById('lc-label');
-  const xpRowEl = document.getElementById('lc-xp-row');
-  const xpTxtEl = document.getElementById('lc-xp-text');
+  const iconEl   = document.getElementById('lc-burst-icon');
+  const lblEl    = document.getElementById('lc-label');
+  const timeEl   = document.getElementById('lc-time-row');
+  const xpRowEl  = document.getElementById('lc-xp-row');
+  const xpTxtEl  = document.getElementById('lc-xp-text');
 
   if(iconEl) iconEl.textContent = opts.icon || '✓';
   if(lblEl)  lblEl.textContent  = opts.label ||
     (uiLang==='uk'?'Урок завершено!':uiLang==='en'?'Lesson completed!':uiLang==='ru'?'Урок завершён!':'Lektion abgeschlossen!');
+
+  if(timeEl){
+    if(opts.timeStr){
+      const prefix = uiLang==='uk'?'Час: ':uiLang==='en'?'Time: ':uiLang==='ru'?'Время: ':'Zeit: ';
+      timeEl.textContent = prefix + opts.timeStr;
+      timeEl.style.display = '';
+    } else {
+      timeEl.style.display = 'none';
+    }
+  }
 
   const xpEarned = opts.xpEarned|0;
   if(xpRowEl){
@@ -13026,11 +13062,11 @@ function lfShowResult(){
     // реально зросте лічильник у хедері.
     const xpEarnedThisLesson = xpGetTotal() - (LF._xpAtStart || 0);
     if(streakResult && streakResult.increased){
-      showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson,
+      showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson, timeStr: timeStr,
         onDone: () => showStreakCelebration(streakResult.streak, streakResult.prevStreak, { onDone: goToLernpfadActivePoint })
       });
     } else {
-      showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson, onDone: goToLernpfadActivePoint });
+      showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson, timeStr: timeStr, onDone: goToLernpfadActivePoint });
     }
   }
 
@@ -14405,7 +14441,21 @@ function toggleFavorite(id, silent){
   // Якщо активний режим Favoriten і картку прибрали — перебудовуємо чергу
   if(!fav && V.queue===VOCAB.filter(v=>isFavorite(v.id))) resetVocabQ();
 }
-function updateFavBadge(){const count=VOCAB.filter(v=>isFavorite(v.id)).length;const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
+// Загальна кількість закладок — по УСІХ типах карток, що можна додати в
+// обране (зірка "★" працює однаково на Vocab, Dialogue і Sprachbausteine
+// картках, toggleFavorite() — та сама функція для всіх трьох, дані в
+// тому самому форматі localStorage 'mova_'+id). РАНІШЕ тут рахувався
+// лише VOCAB — якщо закладки додавались через Діалоги чи Sprachbausteine,
+// вони в бейдж не потрапляли взагалі, тож цифра могла бути суттєво
+// заниженою відносно реальної кількості закладок.
+function _favCount(){
+  let n = 0;
+  if(typeof VOCAB !== 'undefined')            n += VOCAB.filter(v=>isFavorite(v.id)).length;
+  if(typeof DIALOGE !== 'undefined')          n += DIALOGE.filter(d=>isFavorite(d.id)).length;
+  if(typeof SPRACHBAUSTEINE !== 'undefined')  n += SPRACHBAUSTEINE.filter(c=>isFavorite(c.id)).length;
+  return n;
+}
+function updateFavBadge(){const count=_favCount();const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
 function renderFavGrid(){
   const dl=getActiveLangs()[0]||primaryLang();const favs=VOCAB.filter(v=>isFavorite(v.id));
   const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
