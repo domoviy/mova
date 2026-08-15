@@ -3470,7 +3470,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '496-0e3adda';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7426,19 +7426,7 @@ function lessonProgress(lesson){
 
 // Чи розблокований урок
 function lessonUnlocked(lesson){
-  if(!lesson.unlockAfter) return true; // перший урок розділу — завжди відкритий
-
-  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-  const prev = lessons.find(l=>l.id===lesson.unlockAfter);
-  if(!prev) return true;
-
-  // Якщо попередній урок з ІНШОГО розділу — перший урок нового розділу відкритий
-  // (дозволяємо проходити категорії незалежно)
-  if(prev.chapter !== lesson.chapter) return true;
-
-  // В межах одного розділу — треба 80%+ попереднього уроку
-  const {pct} = lessonProgress(prev);
-  return pct >= 80;
+  return true; // всі модулі розблоковані одразу
 }
 
 
