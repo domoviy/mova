@@ -2718,7 +2718,8 @@ var LESSONS = [
       "dlg_025",
       "dlg_026",
       "dlg_027",
-      "dlg_028"
+      "dlg_028",
+      "dlg_101"
     ]
   },
   {
@@ -28673,6 +28674,80 @@ var DIALOGE = [
       "ru": "Да, хорошая идея! Итак, говорим о здоровье, безопасности и чистоте, предлагаем бесплатные осмотры, и планируем достаточно гибкости для всех. Уже жду с нетерпением день здоровья! До связи!"
     },
     "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "dlg_101",
+    "cat": "Alles für die Umwelt",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Nachbar/Ihre Nachbarin möchten gemeinsam etwas für die Umwelt in Ihrer Straße tun.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWas? (Aufräumaktion am Fluss)\nWann? (Datum, Uhrzeit)\nWas mitbringen? (Handschuhe, Müllsäcke)\nWie oft wiederholen?\nWen noch einladen?",
+      "en": "Situation: You and your neighbour want to do something for the environment on your street together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat? (clean-up campaign by the river)\nWhen? (date, time)\nWhat to bring? (gloves, garbage bags)\nHow often to repeat it?\nWho else to invite?",
+      "uk": "Ситуація: Ви та Ваш сусід/Ваша сусідка хочете разом зробити щось для довкілля на своїй вулиці.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЩо? (прибирання біля річки)\nКоли? (дата, час)\nЩо взяти з собою? (рукавички, мішки для сміття)\nЯк часто повторювати?\nКого ще запросити?",
+      "ru": "Ситуация: Вы и Ваш сосед/Ваша соседка хотите вместе сделать что-то для окружающей среды на своей улице.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nЧто? (уборка у реки)\nКогда? (дата, время)\nЧто взять с собой? (перчатки, мешки для мусора)\nКак часто повторять?\nКого ещё пригласить?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo, Anna! Wir wollten doch zusammen etwas für die Umwelt in unserer Straße organisieren, oder?",
+      "en": "Hi, Anna! We wanted to organize something for the environment in our street together, didn't we?",
+      "uk": "Привіт, Анно! Ми ж хотіли разом організувати щось для довкілля на нашій вулиці, чи не так?",
+      "ru": "Привет, Анна! Мы же хотели вместе организовать что-то для окружающей среды на нашей улице, да?"
+    },
+    "a": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten eine Aufräumaktion am Fluss organisieren, um etwas für die Umwelt zu tun.<br><r>Was denkst du?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I have a suggestion:</r> we could organize a clean-up campaign by the river to do something for the environment.<br><r>What do you think?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>У мене є пропозиція:</r> ми могли б організувати прибирання біля річки, щоб зробити щось для довкілля.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>У меня есть предложение:</r> мы могли бы организовать уборку у реки, чтобы сделать что-то для окружающей среды.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Termin <r>bedenken</r>.<br><r>Wie wäre es, wenn wir</r> das am Samstagvormittag machen?<br><r>Passt dir das so?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the date.<br><r>How about we</r> do that on Saturday morning?<br><r>Does that work for you?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> дату.<br><r>Що якщо ми</r> зробимо це в суботу вранці?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> дате.<br><r>Что если мы</r> сделаем это в субботу утром?<br><r>Тебе это подходит?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Wir könnten doch</r> Handschuhe und Müllsäcke mitbringen.<br><r>Hast du eine bessere Idee?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>We could</r> bring gloves and garbage bags.<br><r>Do you have a better idea?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Ми могли б</r> взяти рукавички та мішки для сміття.<br><r>У тебе є краща ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Мы могли бы</r> взять перчатки и мешки для мусора.<br><r>У тебя есть идея получше?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir das nicht nur einmal machen, sondern mit einer festen Häufigkeit wiederholen, zum Beispiel einmal im Monat.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we don't just do this once, but repeat it with a fixed frequency, for example once a month.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми робили це не один раз, а повторювали з певною частотою, наприклад раз на місяць.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы делали это не один раз, а повторяли с определённой частотой, например раз в месяц.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären</r>, wie viele Nachbarn wirklich mitmachen.<br><r>Mein Vorschlag wäre, dass wir</r> es erst einmal alle zwei Monate versuchen, damit die Aktion nachhaltig bleibt.<br><r>Wäre das okay für dich?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how many neighbors will actually take part.<br><r>My suggestion would be that we</r> try it every two months at first, so the action stays sustainable.<br><r>Would that be okay for you?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати</r>, скільки сусідів справді долучаться.<br><r>Моя пропозиція така, що ми</r> спочатку спробуємо раз на два місяці, щоб акція залишалася сталою.<br><r>Тобі це підійде?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить</r>, сколько соседей действительно присоединятся.<br><r>Моё предложение в том, чтобы мы</r> сначала попробовали раз в два месяца, чтобы акция оставалась устойчивой.<br><r>Тебе это подойдёт?</r>"
+    },
+    "q3": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Lass uns doch</r> auch die Kinder aus der Nachbarschaft einladen, damit sie mehr Aufmerksamkeit für die Umwelt entwickeln.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>Let's also</r> invite the children from the neighborhood, so they develop more awareness for the environment.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Звучить чудово, так і зробимо</r>.<br><r>Давай також</r> запросимо дітей із сусідства, щоб вони звертали більше уваги на довкілля.<br><r>Ми можемо на цьому домовитися?</r>",
+      "ru": "<r>Звучит здорово, так и сделаем</r>.<br><r>Давай также</r> пригласим детей из соседних домов, чтобы они уделяли больше внимания окружающей среде.<br><r>Мы можем на этом договориться?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>.<br><r>Vielleicht wäre es am besten, wenn wir</r> zuerst die Hausverwaltung über die Aktion informieren.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r>.<br><r>Maybe it would be best if we</r> inform the property management about the action first.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>.<br><r>Можливо, було б найкраще, якби ми</r> спершу повідомили управителя будинку про акцію.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>.<br><r>Может быть, было бы лучше, если бы мы</r> сначала сообщили управляющему домом об акции.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Eine Idee wäre, dass wir</r> noch ein paar zusätzliche Müllsäcke kaufen, falls es eine Knappheit gibt.<br><r>Bist du damit einverstanden</r>, Anna?",
+      "en": "<r>I like that a lot</r>.<br><r>One idea would be that we</r> buy a few extra garbage bags in case there's a shortage.<br><r>Are you okay with that</r>, Anna?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Була б ідея, щоб ми</r> купили ще кілька додаткових мішків для сміття на випадок дефіциту.<br><r>Ти з цим згодна</r>, Анно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Была бы идея, чтобы мы</r> купили ещё несколько дополнительных мешков для мусора на случай нехватки.<br><r>Ты с этим согласна</r>, Анна?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Am Samstag treffen wir uns am Fluss, bringen Handschuhe und Müllsäcke mit und laden auch die Kinder ein. Das ist echt eine schöne Aktion für mehr Nachhaltigkeit in unserer Straße. Bis Samstag, Mark!",
+      "en": "Yes, of course! So, here's what we'll do: on Saturday we'll meet by the river, bring gloves and garbage bags, and invite the children too. That's really a nice action for more sustainability on our street. See you Saturday, Mark!",
+      "uk": "Так, звісно! Отже, зробимо так: у суботу зустрінемось біля річки, візьмемо рукавички й мішки для сміття та запросимо дітей. Це справді чудова акція заради більшої сталості на нашій вулиці. До суботи, Марку!",
+      "ru": "Да, конечно! Итак, сделаем так: в субботу встретимся у реки, возьмём перчатки и мешки для мусора и пригласим детей. Это правда классная акция ради большей устойчивости на нашей улице. До субботы, Марк!"
+    },
+    "gram": ""
   }
 ];
 
