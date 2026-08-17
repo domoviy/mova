@@ -1775,7 +1775,8 @@ body{
 .sb-front-sentence g, .sb-back-sentence g,
 .mc-q-term g, .mc-opt g,
 .tiles-q-text g, .tiles-result-correct g,
-.def-slot g, .match-btn g {
+.def-slot g, .match-btn g,
+.lf-dlg-bubble g, .lf-dlg-task g {
   display:inline;
   color:#7ecfff;               /* холодний блакитний — контрастний на темному і світлому */
   font-style:italic;
@@ -1795,7 +1796,7 @@ body{
    відрізняє <r> від звичайного тексту), а разом з фоном karaoke-
    підсвітки (.tts-word.active) давала б два накладені прямокутники
    одночасно — візуально зайве. Лишився тільки колір, як і в <g>. */
-.lf-dlg-bubble r {
+.lf-dlg-bubble r, .lf-dlg-task r {
   display:inline;
   color:#4a90d9;
   font-weight:600;
@@ -3457,6 +3458,10 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)">🎤 Вимова</button>
       </div>
     </div>
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
+      <div class="srow-label"><label>📰 Forumsbeitrag (тест)</label><small>Самостійний перегляд var SCHREIBEN — той самий рушій, що й Dialogue (озвучення+karaoke, <r>/<g>, крок-за-кроком з перекладом)</small></div>
+      <button class="btn btn-s" style="text-align:left" onclick="debugOpenForumsbeitrag()">📰 Forumsbeitrag</button>
+    </div>
     <div class="srow">
       <div class="srow-label"><label>🔄 Оновити додаток</label><small>Скинути Service Worker і перезавантажити. Виправляє помилку «усі картки в уроці». Потенційно небезпечно (примусово скидає кеш) — тримати останнім у списку.</small></div>
       <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
@@ -3500,7 +3505,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '503-93b53e4';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11936,6 +11941,200 @@ var _lfDlgHandlers = {
   },
 };
 
+// ── FORUMSBEITRAG (SCHREIBEN) — той самий рушій, що й Dialogue ──────
+// Ідея 1:1 як _dlgCardsToUnits/_lfDlgHandlers вище: картка з var
+// SCHREIBEN розгортається у плаский список юнітів (task-контекст +
+// одна репліка на кожен елемент card.parts), і показується через той
+// самий lfRunUnitStep()/#lf-unit-card, що й діалог — озвучення
+// primaryLang з karaoke-підсвіткою (data-audio-field), потім переклад
+// з reveal-анімацією (_lfDlgRevealLastTranslation — розширено нижче на
+// kind 'frm_intro'/'frm_part'), потім кнопка "Далі". Єдина суттєва
+// відмінність від діалогу: тут НЕМАЄ аватарки/імені персонажа при
+// кожному кроці (Forumsbeitrag — монолог одного автора, а не розмова
+// двох) — усі бульбашки використовують ту саму розмітку, що dlg_task
+// (.lf-dlg-task — на всю ширину, без аватара), з "eyebrow"-міткою над
+// текстом: для інтро це topic картки, для кожної репліки — локалізована
+// назва структурного блоку (Anrede/Einleitung/Meinung/Pro/Kontra/
+// Vorschlag/Schluss/Name, див. FRM_ROLE_LABELS).
+var FRM_ROLE_LABELS = {
+  anrede:     {de:'Anrede',            en:'Salutation',    uk:'Звертання',            ru:'Обращение'},
+  einleitung: {de:'Einleitung',        en:'Introduction',  uk:'Вступ',                ru:'Введение'},
+  meinung:    {de:'Eigene Meinung',    en:'Your opinion',  uk:'Власна думка',         ru:'Своё мнение'},
+  pro:        {de:'Pro-Argumente',     en:'Pro arguments', uk:'Аргументи «за»',       ru:'Аргументы «за»'},
+  kontra:     {de:'Kontra-Argumente',  en:'Contra arguments', uk:'Аргументи «проти»', ru:'Аргументы «против»'},
+  vorschlag:  {de:'Eigener Vorschlag', en:'Your suggestion', uk:'Власна пропозиція',  ru:'Своё предложение'},
+  schluss:    {de:'Schlusssatz',       en:'Closing sentence', uk:'Прикінцеве речення',ru:'Заключительное предложение'},
+  name:       {de:'Unterschrift',      en:'Signature',      uk:'Підпис',              ru:'Подпись'},
+};
+
+// Кожна картка SCHREIBEN завжди має topic+task (на відміну від
+// DIALOGE, де card.task опційний) — тож перший юніт (kind:'frm_intro')
+// показуємо БЕЗУМОВНО, для кожної картки, а не лише за наявності
+// непорожнього task (порівняй з _hasNonEmptyTask/dlg_task вище).
+function _frmCardsToUnits(cards){
+  const units = [];
+  (cards||[]).forEach(function(card){
+    units.push({ kind: 'frm_intro', cardId: card.id, card: card, isFirstOfCard: true });
+    (card.parts||[]).forEach(function(part){
+      units.push({ kind: 'frm_part', cardId: card.id, card: card, part: part, isFirstOfCard: false });
+    });
+  });
+  return units;
+}
+
+var _lfFrmHandlers = {
+  render: function(unit){
+    var card = unit.card;
+    var pl = primaryLang();
+    var ul = uiLang;
+    var fav = isFavorite(card.id);
+
+    // ★-закладка — на весь допис (card.id), той самий id для всіх його
+    // юнітів (task-контекст і кожна репліка) — узгоджено з тим, як
+    // Favorites уже працює для DIALOGE (одна картка = один id).
+    var favBtn = document.getElementById('lf-unit-fav');
+    if(favBtn){
+      var setFavVisual = function(isFav){
+        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.classList.toggle('active', isFav);
+      };
+      setFavVisual(fav);
+      var doToggle = function(){
+        toggleFavorite(card.id, true);
+        var nowFav = isFavorite(card.id);
+        setFavVisual(nowFav);
+        var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в закладки') : (typeof t==='function'?t('fav_removed'):'☆ Видалено із закладок');
+        label = label.replace(/^[★☆]\s*/, '');
+        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+      };
+      var prevHandlers = favBtn._lfFavHandlers;
+      if(prevHandlers){
+        favBtn.removeEventListener('touchstart', prevHandlers.ts);
+        favBtn.removeEventListener('touchend', prevHandlers.te);
+        favBtn.removeEventListener('click', prevHandlers.cl);
+      }
+      var ts = function(e){ e.stopPropagation(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
+      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      favBtn.addEventListener('touchstart', ts, {passive:true});
+      favBtn.addEventListener('touchend', te, {passive:false});
+      favBtn.addEventListener('click', cl);
+      favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
+    }
+
+    var catEl = document.getElementById('lf-unit-cat');
+    if(catEl){
+      var cat = typeof CATS!=='undefined' ? CATS.find(function(c){ return c.id===card.cat; }) : null;
+      catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : (card.cat||'');
+    }
+
+    // Так само, як у Dialogue: свайп тут вимкнено (див. lfRunUnitStep),
+    // тож жодної підказки про нього не показуємо.
+    var hintEl = document.getElementById('lf-unit-hint');
+    if(hintEl) hintEl.textContent = '';
+
+    var body = document.getElementById('lf-unit-body');
+    if(!body) return;
+    body.classList.add('lf-dlg-mode');
+
+    var isIntro = unit.kind === 'frm_intro';
+    var text, textTr, audioField, eyebrowIcon, eyebrowLabel;
+
+    if(isIntro){
+      // Topic+Task — контекст ПЕРЕД усім дописом, той самий принцип, що
+      // dlg_task: topic — коротка "eyebrow"-мітка (без "Thema:" — див.
+      // prompt-forumsbeitrag.md, префікс лишається суто UI-шаром тут),
+      // task — саме формулювання завдання, основний текст блоку.
+      text        = card.task?.[pl] || '';
+      textTr      = ul !== pl ? (card.task?.[ul] || '') : '';
+      audioField  = 'task';
+      eyebrowIcon = '📝';
+      eyebrowLabel = 'Thema: ' + (card.topic?.[uiLang] || card.topic?.[pl] || card.topic?.de || '');
+    } else {
+      var part = unit.part;
+      text        = part[pl] || '';
+      textTr      = ul !== pl ? (part[ul] || '') : '';
+      audioField  = part.role;
+      eyebrowIcon = '';
+      var roleInfo = FRM_ROLE_LABELS[part.role];
+      eyebrowLabel = roleInfo ? (roleInfo[uiLang]||roleInfo.en||roleInfo.de) : (part.role||'');
+    }
+
+    function buildBubble(){
+      var eyebrow = '<div class="lf-dlg-exam-badge lf-bubble-in">'+
+        (eyebrowIcon ? '<span class="lf-dlg-exam-icon">'+eyebrowIcon+'</span>' : '')+
+        '<span class="lf-dlg-exam-label">'+eyebrowLabel+'</span>'+
+      '</div>';
+      // .lf-dlg-task — та сама розмітка, що dlg_task у Dialogue: на всю
+      // ширину, без аватарки/імені (не репліка персонажа). data-audio-field
+      // на .lf-unit-sentence — за ним _lfUnitPlay() підключає karaoke-
+      // підсвітку слів (wrapWordsForHighlight), якщо для цього
+      // cardId+field є .words.json (наразі для forum_* аудіо ще не
+      // згенеровано — просто мовчки нема підсвітки, решта працює як є).
+      return eyebrow+'<div class="lf-dlg-task lf-bubble-in">'+
+        '<div class="lf-unit-main-row">'+
+          '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
+        '</div>'+
+        (textTr ?
+          '<div class="lf-unit-main-row lf-unit-tr-row">'+
+            '<div class="lf-unit-sentence-tr">'+textTr+'</div>'+
+          '</div>'
+        : '')+
+      '</div>';
+    }
+
+    // isFirstOfCard === true рівно на frm_intro (task/topic) — саме тут
+    // очищаємо транскрипт, той самий принцип, що dlg_001/dlg_002 і т.д.
+    // (окремі непов'язані картки). Усередині ж однієї картки всі частини
+    // (anrede, einleitung, ..., name) накопичуються в одному
+    // транскрипті — цілий допис виростає бульбашка за бульбашкою.
+    if(unit.isFirstOfCard){
+      body.innerHTML = '';
+    } else {
+      Array.prototype.forEach.call(body.querySelectorAll('.lf-bubble-in'), function(el){
+        el.classList.remove('lf-bubble-in');
+      });
+    }
+
+    _lfDlgAppendBubble(body, buildBubble());
+
+    requestAnimationFrame(function(){
+      body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+    });
+
+    var cardEl = document.getElementById('lf-unit-card');
+    if(cardEl) cardEl.style.display = 'flex';
+  },
+
+  getAudioText: function(unit){
+    var card = unit.card;
+    var pl = primaryLang();
+    if(unit.kind === 'frm_intro'){
+      return [{ text: card.task?.[pl]||'', field: 'task' }];
+    }
+    return [{ text: unit.part[pl]||'', field: unit.part.role }];
+  },
+
+  // 🔊-кнопка повтору звуку — той самий патерн, що й у Dialogue.
+  getSecondaryButtons: function(unit){
+    return [{
+      icon: '🔊',
+      onClick: function(){
+        var items = _lfFrmHandlers.getAudioText(unit) || [];
+        _lfUnitPlay(items, function(){});
+      }
+    }];
+  },
+
+  // onSwipeUp/onSwipeDown свідомо відсутні — свайп для Forumsbeitrag
+  // вимкнено так само, як для Dialogue (див. lfRunUnitStep і
+  // "handlers === _lfDlgHandlers" нижче, розширене на _lfFrmHandlers).
+  onNext: function(unit){
+    trackCardToday(unit.cardId);
+    if(!_lfUnitSwipedThisView) srsRate(unit.cardId, 3);
+  },
+};
+
 function lfStartDlgLearn(){
   const hasCards = LF && ((LF.dlgCards && LF.dlgCards.length) || LF.dlgCard);
   if(!hasCards){ lfNextStep(); return; }
@@ -12215,7 +12414,9 @@ function lfRunUnitStep(units, handlers, onAllDone, opts){
     // SwipeManager.destroy() про всяк випадок — якщо картка щойно
     // перевикористана з попереднього кроку (vocab/SB), де свайп був
     // активний, знімаємо старі слухачі, а не просто не додаємо нові.
-    if(handlers === _lfDlgHandlers){
+    // Те саме стосується Forumsbeitrag (_lfFrmHandlers) — це теж не
+    // репліка для оцінки "знаю/не знаю", а частина зв'язного тексту.
+    if(handlers === _lfDlgHandlers || handlers === _lfFrmHandlers){
       SwipeManager.destroy(el);
       return;
     }
@@ -12345,7 +12546,13 @@ function _lfUnitShow(){
     // варіанти ведуть в onDone → сюди). Для vocab/SB нічого не робить
     // (unit.kind тут інший, _lfDlgRevealLastTranslation просто не знайде
     // .lf-unit-tr-row — ця розмітка лише в _lfDlgHandlers.render).
-    var isDialogueUnit = unit.kind === 'dlg' || unit.kind === 'dlg_task';
+    // isDialogueUnit — попри назву, тепер охоплює й Forumsbeitrag
+    // (frm_intro/frm_part): та сама message-бульбашка з .lf-unit-tr-row,
+    // той самий reveal-переклад-після-озвучення принцип (_lfDlgRevealLastTranslation
+    // шукає розмітку за класом, а не за kind, тож розширення тут —
+    // єдина потрібна зміна).
+    var isDialogueUnit = unit.kind === 'dlg' || unit.kind === 'dlg_task'
+      || unit.kind === 'frm_intro' || unit.kind === 'frm_part';
 
     var proceed = function(){
       // Останній юніт ОСТАННЬОГО практичного кроку уроку (LF.steps завжди
@@ -14130,6 +14337,61 @@ function _onDialogueUnitsDone(){
   D.queue = buildDialogueQueue();
   if(D.queue.length) startDialogueCardMode();
 }
+
+// ── FORUMSBEITRAG — самостійний перегляд, той самий принцип, що й
+// _runDialogueQueueAsUnits/startDialogueCardMode вище, лише інше
+// джерело карток (var SCHREIBEN) і інший handlers-об'єкт (_lfFrmHandlers,
+// без аватара/імені персонажа — див. коментар біля нього). Контейнер
+// той самий #dlg-panel-card (вкладка "Діалог") — окремої вкладки
+// нижнього меню для Forumsbeitrag поки нема, доступ лише з debug-меню
+// Налаштувань (debugOpenForumsbeitrag нижче).
+function _runForumQueueAsUnits(){
+  var fcArea = document.getElementById('dlg-fc-area');
+  if(fcArea) fcArea.style.display = 'none';
+  var vprogrow = document.querySelector('#dlg-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = 'none';
+
+  _relocateUnitCard('dlg-panel-card');
+
+  var cards = (typeof SCHREIBEN !== 'undefined') ? SCHREIBEN : [];
+  var units = _frmCardsToUnits(cards);
+  lfRunUnitStep(units, _lfFrmHandlers, _onForumUnitsDone);
+}
+
+function startForumsbeitragMode(){
+  if(typeof SCHREIBEN === 'undefined' || !SCHREIBEN.length){
+    notify('Немає жодної картки Forumsbeitrag (var SCHREIBEN) у поточному курсі');
+    return;
+  }
+  _runForumQueueAsUnits();
+}
+
+// Черга закінчилась — як і Dialogue, самостійний перегляд просто
+// починає її знову (безкінечний перегляд), а не "завершується".
+function _onForumUnitsDone(){
+  if(typeof SCHREIBEN !== 'undefined' && SCHREIBEN.length) startForumsbeitragMode();
+}
+
+// Точка входу з debug-меню Налаштувань. Свідомо НЕ через showView('dialogue')
+// — той викликає initDialogue()→startDialogueCardMode(), який одразу
+// стартував би ЗВИЧАЙНУ чергу DIALOGE в тому самому контейнері, і його
+// довелось би одразу перебивати. Тут — той самий підзір перемикання
+// екрана/вкладки, що й у showView()/switchDialogueTab(0), але напряму
+// в режим Forumsbeitrag, без проміжного запуску Dialogue.
+function debugOpenForumsbeitrag(){
+  _lfUnitTeardown();
+  if(typeof LF !== 'undefined' && LF) abandonLessonFlow();
+  document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
+  document.querySelectorAll('.bn-item[data-view]').forEach(function(n){ n.classList.remove('active'); });
+  document.getElementById('view-dialogue').classList.add('active');
+  document.querySelectorAll('#dialogue-tabs .vtab').forEach(function(t,i){ t.classList.toggle('active', i===0); });
+  document.getElementById('dlg-panel-card').style.display = 'flex';
+  document.getElementById('dlg-panel-browse').style.display = 'none';
+  var chips = document.getElementById('dlgchips');
+  if(chips) chips.style.display = 'none';
+  startForumsbeitragMode();
+}
+
 // Спільний рядок-картка для списків "Усі картки"/Закладки (Vocab,
 // Dialogue, Favorites) — раніше кожен з трьох render*-методів дублював
 // майже ідентичний шаблон розмітки. Один стовпчик, на всю ширину:
