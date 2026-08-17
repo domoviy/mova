@@ -2912,7 +2912,10 @@ var LESSONS = [
       "k7_060"
     ],
     "unlockAfter": "k7m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_106"
+    ]
   },
   {
     "id": "k8m1",
@@ -2947,7 +2950,10 @@ var LESSONS = [
       "k8_023"
     ],
     "unlockAfter": null,
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_107"
+    ]
   },
   {
     "id": "k8m2",
@@ -2983,7 +2989,10 @@ var LESSONS = [
       "k8_031"
     ],
     "unlockAfter": "k8m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_108"
+    ]
   },
   {
     "id": "k8m3",
@@ -29057,6 +29066,228 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: дети увидят, как сеют, собирают урожай и косят, как доят коров и как сортируют мусор и бутылки с депозитом. Это будет отличная и познавательная поездка! Спасибо за идею, Анна!"
     },
     "gram": "passiv_praesens_b1"
+  },
+  {
+    "id": "dlg_106",
+    "cat": "Infoveranstaltung zum Klimawandel planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund/Ihre Freundin möchten gemeinsam eine Informationsveranstaltung zum Klimawandel organisieren.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWorüber wollen Sie informieren? (Klimakrise, Erderwärmung, CO2-Ausstoß)\nWie wollen Sie das Bewusstsein der Leute wecken?\nWas können die Leute nachhaltig tun?\nWen laden Sie ein?\nWo und wann findet die Veranstaltung statt?",
+      "en": "Situation: You and your friend want to organize an information event about climate change together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat do you want to inform people about? (climate crisis, global warming, CO2 emissions)\nHow do you want to raise people's awareness?\nWhat can people do sustainably?\nWho do you invite?\nWhere and when does the event take place?",
+      "uk": "Ситуація: Ви та Ваш друг/Ваша подруга хочете разом організувати інформаційний захід про зміну клімату.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nПро що Ви хочете розповісти? (кліматична криза, глобальне потепління, викиди CO2)\nЯк Ви хочете підвищити усвідомлення людей?\nЩо люди можуть робити екологічно?\nКого Ви запросите?\nДе і коли відбудеться захід?",
+      "ru": "Ситуация: Вы и Ваш друг/Ваша подруга хотите вместе организовать информационное мероприятие об изменении климата.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nО чём Вы хотите рассказать? (климатический кризис, глобальное потепление, выбросы CO2)\nКак Вы хотите повысить осознанность людей?\nЧто люди могут делать экологично?\nКого Вы пригласите?\nГде и когда пройдёт мероприятие?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Ich möchte etwas gegen die Klimakrise tun. Sollen wir zusammen eine Infoveranstaltung zum Klimawandel planen?",
+      "en": "Hi, Mark! I want to do something about the climate crisis. Should we plan an information event about climate change together?",
+      "uk": "Привіт, Марку! Я хочу щось зробити проти кліматичної кризи. Може, разом сплануємо інформаційний захід про зміну клімату?",
+      "ru": "Привет, Марк! Я хочу что-то сделать против климатического кризиса. Может, вместе спланируем информационное мероприятие об изменении климата?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten zuerst über die Erderwärmung und den CO2-Ausstoß sprechen, weil das viele Menschen noch nicht richtig verstehen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> we could first talk about global warming and CO2 emissions, because many people still don't really understand that.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> ми могли б спершу розповісти про глобальне потепління та викиди CO2, бо багато людей ще не до кінця це розуміють.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> мы могли бы сначала рассказать о глобальном потеплении и выбросах CO2, потому что многие люди ещё не до конца это понимают.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Ursachen <r>bedenken</r>.<br><r>Wir könnten doch</r> auch erklären, was den Klimawandel eigentlich verursacht, zum Beispiel der Verkehr und die Industrie.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the causes.<br><r>We could</r> also explain what actually causes climate change, for example traffic and industry.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> причини.<br><r>Ми могли б</r> також пояснити, що насправді спричиняє зміну клімату, наприклад транспорт і промисловість.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> причинах.<br><r>Мы могли бы</r> также объяснить, что на самом деле вызывает изменение климата, например транспорт и промышленность.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch über die Auswirkungen sprechen, zum Beispiel auf die Tiere und die Natur.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> also talk about the effects, for example on animals and nature.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> також поговоримо про наслідки, наприклад для тварин і природи.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также поговорим о последствиях, например для животных и природы.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir den Leuten zeigen, wie ihr eigenes Verhalten das Klima beeinflusst.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we show people how their own behavior influences the climate.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми показали людям, як їхня власна поведінка впливає на клімат.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы показали людям, как их собственное поведение влияет на климат.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir dafür haben.<br><r>Eine Idee wäre, dass wir</r> auch praktische Tipps geben, wie man nachhaltiger leben kann.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we have for that.<br><r>One idea would be that we</r> also give practical tips on how to live more sustainably.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу в нас на це є.<br><r>Була б ідея, щоб ми</r> також дали практичні поради, як жити більш екологічно.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько у нас на это времени.<br><r>Была бы идея, чтобы мы</r> также дали практические советы, как жить более экологично.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> auch erklären, wie jeder Einzelne die Umwelt schützen kann?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also explain how each individual can protect the environment?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також пояснимо, як кожна людина може захищати довкілля?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также объясним, как каждый человек может защищать окружающую среду?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir genug Zeit haben, alles zu erklären.<br><r>Vielleicht wäre es am besten, wenn wir</r> eine Expertin oder einen Experten einladen, um mehr Bewusstsein für das Thema zu schaffen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we'll have enough time to explain everything.<br><r>Maybe it would be best if we</r> invite an expert to create more awareness of the topic.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи вистачить у нас часу все пояснити.<br><r>Можливо, було б найкраще, якби ми</r> запросили експерта чи експертку, щоб створити більше усвідомлення теми.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, хватит ли у нас времени всё объяснить.<br><r>Может быть, было бы лучше, если бы мы</r> пригласили эксперта или экспертку, чтобы создать больше осознания темы.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> eine Expertin oder einen Experten fragen, ob sie oder er am Freitagabend kommen kann.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> ask an expert whether they can come on Friday evening.<br><r>Are you okay with that</r>, Mark?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> запитаємо експерта чи експертку, чи зможе він або вона прийти в п'ятницю ввечері.<br><r>Ти з цим згоден</r>, Марку?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> спросим эксперта или экспертку, сможет ли он или она прийти в пятницу вечером.<br><r>Ты с этим согласен</r>, Марк?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir informieren über die Erderwärmung, den CO2-Ausstoß und die Auswirkungen, geben Tipps für ein nachhaltiges Leben und laden eine Expertin oder einen Experten ein. So schaffen wir mehr Bewusstsein für die Klimakrise! Danke für die Idee, Julia!",
+      "en": "Yes, of course! So, here's what we'll do: we'll inform people about global warming, CO2 emissions and the effects, give tips for a sustainable life, and invite an expert. That way we'll create more awareness of the climate crisis! Thanks for the idea, Julia!",
+      "uk": "Так, звісно! Отже, зробимо так: розповімо про глобальне потепління, викиди CO2 та наслідки, дамо поради для сталого життя і запросимо експерта чи експертку. Так ми створимо більше усвідомлення кліматичної кризи! Дякую за ідею, Юліє!",
+      "ru": "Да, конечно! Итак, сделаем так: расскажем о глобальном потеплении, выбросах CO2 и последствиях, дадим советы для устойчивой жизни и пригласим эксперта или экспертку. Так мы создадим больше осознания климатического кризиса! Спасибо за идею, Юлия!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_107",
+    "cat": "Kunstveranstaltung gemeinsam besuchen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihre Freundin möchten gemeinsam eine Kunstveranstaltung besuchen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWann findet die Veranstaltung statt? (Termin)\nWo? (Veranstaltungsort)\nWie melden Sie sich an? (Anmeldung)\nBrauchen Sie eine Einladung?\nMüssen Sie um Erlaubnis fragen?",
+      "en": "Situation: You and your friend want to attend an art event together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhen does the event take place? (date)\nWhere? (venue)\nHow do you register? (registration)\nDo you need an invitation?\nDo you need to ask for permission?",
+      "uk": "Ситуація: Ви та Ваша подруга хочете разом відвідати мистецький захід.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nКоли відбудеться захід? (дата)\nДе? (місце проведення)\nЯк Ви зареєструєтеся? (реєстрація)\nВам потрібне запрошення?\nЧи потрібно просити дозволу?",
+      "ru": "Ситуация: Вы и Ваша подруга хотите вместе посетить культурное мероприятие.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКогда пройдёт мероприятие? (дата)\nГде? (место проведения)\nКак Вы зарегистрируетесь? (регистрация)\nВам нужно приглашение?\nНужно ли просить разрешения?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo, Julia! Ich habe gehört, dass im Museum eine tolle Kunstveranstaltung stattfindet. Wollen wir zusammen hingehen?",
+      "en": "Hi, Julia! I heard that a great art event is taking place at the museum. Shall we go together?",
+      "uk": "Привіт, Юліє! Я чула, що в музеї відбувається чудовий мистецький захід. Може, підемо разом?",
+      "ru": "Привет, Юлия! Я слышала, что в музее проходит классное культурное мероприятие. Может, сходим вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Lass uns zuerst herausfinden, an welchem Termin die Veranstaltung stattfindet.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> let's first find out on which date the event takes place.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> давай спершу дізнаємося, на яку дату призначений захід.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> давай сначала узнаем, на какую дату назначено мероприятие.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Ort <r>bedenken</r>.<br><r>Wir könnten doch</r> auch schauen, wo genau der Veranstaltungsort ist, damit wir nicht zu spät kommen.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the location.<br><r>We could</r> also check exactly where the venue is, so we don't arrive too late.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> місце.<br><r>Ми могли б</r> також перевірити, де саме розташоване місце проведення, щоб не запізнитися.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> месте.<br><r>Мы могли бы</r> также проверить, где именно находится место проведения, чтобы не опоздать.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns beide online anmelden, weil die Anmeldung Pflicht ist.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> both register online, because registration is required.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> обидві зареєструємося онлайн, бо реєстрація обов'язкова.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> обе зарегистрируемся онлайн, потому что регистрация обязательна.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir auch fragen, ob wir noch eine Freundin einladen dürfen, dann bekommen wir vielleicht eine zweite Einladung.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we also ask whether we can invite another friend, then we might get a second invitation.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми ще запитали, чи можна запросити ще одну подругу, тоді ми, можливо, отримаємо друге запрошення.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы ещё спросили, можно ли пригласить ещё одну подругу, тогда мы, возможно, получим второе приглашение.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viele Leute mitkommen können.<br><r>Eine Idee wäre, dass wir</r> beide bei der Arbeit um Erlaubnis fragen, weil die Veranstaltung schon am Nachmittag beginnt.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how many people can come along.<br><r>One idea would be that we</r> both ask for permission at work, since the event already starts in the afternoon.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки людей можуть піти з нами.<br><r>Була б ідея, щоб ми</r> обидві попросили дозволу на роботі, бо захід починається вже вдень.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько людей смогут пойти с нами.<br><r>Была бы идея, чтобы мы</r> обе попросили разрешения на работе, потому что мероприятие начинается уже днём.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> vorher noch ein bisschen über die Kunst dort lesen, damit wir mehr verstehen?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> read a bit about the art there beforehand, so we understand more?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> заздалегідь трохи почитаємо про мистецтво там, щоб краще розуміти?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> заранее немного почитаем об искусстве там, чтобы лучше понимать?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob noch Plätze frei sind.<br><r>Vielleicht wäre es am besten, wenn wir</r> die Anmeldung noch heute machen, bevor alle Plätze weg sind.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether there are still spots available.<br><r>Maybe it would be best if we</r> register today already, before all the spots are gone.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи є ще вільні місця.<br><r>Можливо, було б найкраще, якби ми</r> зареєструвалися вже сьогодні, поки всі місця не зайняли.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, есть ли ещё свободные места.<br><r>Может быть, было бы лучше, если бы мы</r> зарегистрировались уже сегодня, пока все места не заняли.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns gleich jetzt zusammen anmelden, dann haben wir sicher einen Platz.<br><r>Bist du damit einverstanden</r>, Julia?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> register together right now, then we'll definitely have a spot.<br><r>Are you okay with that</r>, Julia?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> зареєструємося разом прямо зараз, тоді в нас точно буде місце.<br><r>Ти з цим згодна</r>, Юліє?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> зарегистрируемся вместе прямо сейчас, тогда у нас точно будет место.<br><r>Ты с этим согласна</r>, Юлия?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir melden uns jetzt beide an, fragen bei der Arbeit um Erlaubnis und lesen noch etwas über die Kunst. Ich freue mich schon auf die Veranstaltung! Danke für die Einladung, Anna!",
+      "en": "Yes, of course! So, here's what we'll do: we'll both register now, ask for permission at work, and read a bit about the art. I'm already looking forward to the event! Thanks for the invitation, Anna!",
+      "uk": "Так, звісно! Отже, зробимо так: обидві зараз зареєструємося, попросимо дозволу на роботі і почитаємо трохи про мистецтво. Я вже чекаю на цей захід! Дякую за запрошення, Анно!",
+      "ru": "Да, конечно! Итак, сделаем так: обе сейчас зарегистрируемся, попросим разрешения на работе и почитаем немного об искусстве. Я уже жду этого мероприятия! Спасибо за приглашение, Анна!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_108",
+    "cat": "Festivalbesuch gemeinsam planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund möchten gemeinsam ein Festival besuchen.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWorauf müssen Sie sich vorbereiten?\nWorum kümmern Sie sich? (Tickets)\nWoran müssen Sie denken?\nWorauf können Sie sich verlassen?\nWoran müssen Sie sich gewöhnen?",
+      "en": "Situation: You and your friend want to attend a festival together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat do you need to prepare for?\nWhat do you take care of? (tickets)\nWhat do you need to think about?\nWhat can you rely on?\nWhat do you need to get used to?",
+      "uk": "Ситуація: Ви та Ваш друг хочете разом відвідати фестиваль.\nЗавдання: Сплануйте разом зі своїм співрозмовником, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nДо чого треба підготуватися?\nПро що подбати? (квитки)\nПро що треба подумати?\nНа що можна покластися?\nДо чого треба звикнути?",
+      "ru": "Ситуация: Вы и Ваш друг хотите вместе посетить фестиваль.\nЗадание: Спланируйте вместе со своим собеседником, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nК чему нужно подготовиться?\nО чём позаботиться? (билеты)\nО чём нужно подумать?\nНа что можно положиться?\nК чему нужно привыкнуть?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Das Festival ist schon in einer Woche! Wollen wir zusammen planen, was wir noch machen müssen?",
+      "en": "Hi, Mark! The festival is already in a week! Shall we plan together what we still need to do?",
+      "uk": "Привіт, Марку! Фестиваль вже через тиждень! Може, разом сплануємо, що нам ще потрібно зробити?",
+      "ru": "Привет, Марк! Фестиваль уже через неделю! Может, вместе спланируем, что нам ещё нужно сделать?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sollten uns zuerst gut <g>auf das Festival</g> vorbereiten und eine Liste machen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> we should first prepare well <g>for the festival</g> and make a list.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> нам варто спершу добре підготуватися <g>до фестивалю</g> і скласти список.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> нам стоит сначала хорошо подготовиться <g>к фестивалю</g> и составить список.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Tickets <r>bedenken</r>.<br><r>Wir könnten doch</r> uns zuerst <g>um die Tickets</g> kümmern, bevor sie ausverkauft sind.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the tickets.<br><r>We could</r> first take care <g>of the tickets</g>, before they're sold out.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> квитки.<br><r>Ми могли б</r> спершу подбати <g>про квитки</g>, поки їх не розкупили.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> билетах.<br><r>Мы могли бы</r> сначала позаботиться <g>о билетах</g>, пока их не раскупили.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns rechtzeitig <g>an die Ohrstöpsel</g> erinnern, sonst vergessen wir sie wieder.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> remember <g>the earplugs</g> in time, otherwise we'll forget them again.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> вчасно згадаємо <g>про беруші</g>, бо інакше знову їх забудемо.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> вовремя вспомним <g>о берушах</g>, иначе снова их забудем.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir auch <g>an das Wetter</g> denken und eine Jacke einpacken, falls es regnet.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we also think <g>about the weather</g> and pack a jacket in case it rains.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми також подумали <g>про погоду</g> і взяли куртку на випадок дощу.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы также подумали <g>о погоде</g> и взяли куртку на случай дождя.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir anreisen.<br><r>Eine Idee wäre, dass wir</r> noch <g>auf die Bestätigung</g> von den Ticketverkäufern warten, bevor wir alles andere planen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how we'll get there.<br><r>One idea would be that we</r> still wait <g>for the confirmation</g> from the ticket sellers before we plan everything else.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як ми туди дістанемося.<br><r>Була б ідея, щоб ми</r> ще почекали <g>на підтвердження</g> від продавців квитків, перш ніж планувати решту.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как мы туда доберёмся.<br><r>Была бы идея, чтобы мы</r> ещё подождали <g>подтверждения</g> от продавцов билетов, прежде чем планировать остальное.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns <g>auf meinen Bruder</g> verlassen? Er kann uns mit dem Auto hinfahren.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> rely <g>on my brother</g>? He can drive us there.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> покладемося <g>на мого брата</g>? Він може відвезти нас машиною.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> положимся <g>на моего брата</g>? Он может отвезти нас на машине.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob er wirklich Zeit hat.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns selbst <g>mit der Anreise</g> beschäftigen und vielleicht einen Zug nehmen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether he really has time.<br><r>Maybe it would be best if we</r> deal <g>with the trip</g> ourselves and maybe take a train.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи справді в нього є час.<br><r>Можливо, було б найкраще, якби ми</r> самі зайнялися <g>дорогою туди</g> і, може, поїхали потягом.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, действительно ли у него есть время.<br><r>Может быть, было бы лучше, если бы мы</r> сами занялись <g>дорогой туда</g> и, может быть, поехали на поезде.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns langsam <g>an das Zelten</g> gewöhnen und vorher einmal im Garten übernachten.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> slowly get used <g>to camping</g> and spend a night in the garden first.<br><r>Are you okay with that</r>, Mark?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> потроху звикнемо <g>до наметів</g> і спершу переночуємо в саду.<br><r>Ти з цим згоден</r>, Марку?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> постепенно привыкнем <g>к палаткам</g> и сначала переночуем в саду.<br><r>Ты с этим согласен</r>, Марк?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir bereiten uns auf das Festival vor, kümmern uns um die Tickets, erinnern uns an die Ohrstöpsel und denken an das Wetter. Ich freue mich schon riesig! Danke für die Planung, Alex!",
+      "en": "Yes, of course! So, here's what we'll do: we'll prepare for the festival, take care of the tickets, remember the earplugs and think about the weather. I'm already really looking forward to it! Thanks for the planning, Alex!",
+      "uk": "Так, звісно! Отже, зробимо так: підготуємося до фестивалю, подбаємо про квитки, згадаємо про беруші і подумаємо про погоду. Я вже дуже тішуся! Дякую за планування, Алексе!",
+      "ru": "Да, конечно! Итак, сделаем так: подготовимся к фестивалю, позаботимся о билетах, вспомним о берушах и подумаем о погоде. Я уже очень рад! Спасибо за планирование, Алекс!"
+    },
+    "gram": "verben_mit_praep_wdh_b1"
   }
 ];
 
