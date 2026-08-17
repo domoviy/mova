@@ -13305,3 +13305,83 @@ var SPRACHBAUSTEINE = [
     gram:""
   },
 ];
+
+// ── SCHREIBEN: Forumsbeitrag (B2 Beruf, telc Schreiben) ────────
+var SCHREIBEN = [
+  {
+    "id": "forum_001",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Neuer Standort",
+      "en": "New location",
+      "uk": "Нова локація",
+      "ru": "Новая локация"
+    },
+    "task": {
+      "de": "Alle Mitarbeiterinnen und Mitarbeiter sollen umziehen oder pendeln, da Ihre Firma einen neuen Standort eröffnet. Der Standort ist zwar mit modernster Technik ausgestattet, ist aber 75 km vom jetzigen Standort entfernt.",
+      "en": "All employees are expected to move or commute, as your company is opening a new location. The location is equipped with state-of-the-art technology, but is 75 km from the current site.",
+      "uk": "Усі співробітники мають переїхати або їздити на роботу, оскільки ваша фірма відкриває нову локацію. Локація оснащена найсучаснішою технікою, але розташована за 75 км від теперішньої.",
+      "ru": "Все сотрудники должны переехать или ездить на работу, поскольку ваша фирма открывает новую локацию. Локация оснащена самой современной техникой, но находится в 75 км от нынешней."
+    },
+    "gram": "wortstellung",
+    "name": "de_w_anna",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr bestimmt schon wisst</r>, möchte die Geschäftsleitung den Standort unserer Firma verlegen. Alle Mitarbeiterinnen und Mitarbeiter sollen umziehen oder pendeln.",
+        "en": "as you probably already know, management wants to relocate our company's site. All employees are expected to either move or commute.",
+        "uk": "як ви, напевно, вже знаєте, керівництво хоче перенести локацію нашої фірми. Усі співробітники мають або переїхати, або їздити на роботу.",
+        "ru": "как вы, наверное, уже знаете, руководство хочет перенести местоположение нашей фирмы. Все сотрудники должны либо переехать, либо ездить на работу."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Diese Idee finde ich nicht gut.</r> <g>Obwohl</g> diese Situation viele Möglichkeiten für uns bietet, macht sie unseren Arbeitsalltag sehr kompliziert.",
+        "en": "I don't think this idea is good. Although this situation offers us many opportunities, it makes our everyday work life very complicated.",
+        "uk": "Ця ідея мені не подобається. Хоча ця ситуація дає нам багато можливостей, вона дуже ускладнює наше повсякденне робоче життя.",
+        "ru": "Эта идея мне не нравится. Хотя эта ситуация даёт нам много возможностей, она очень усложняет наши рабочие будни."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Einerseits</r> gibt es am neuen Standort modernste Technik, was sich positiv auf unsere Firma auswirkt. Wir können dort neue Erfahrungen sammeln, Weiterbildungen absolvieren und Karriere machen.",
+        "en": "On the one hand, the new site has state-of-the-art technology, which has a positive effect on our company. There we can gain new experience, take further training and build a career.",
+        "uk": "З одного боку, на новій локації є найсучасніша техніка, що позитивно впливає на нашу фірму. Там ми зможемо здобути новий досвід, пройти підвищення кваліфікації та зробити кар'єру.",
+        "ru": "С одной стороны, на новом месте есть самая современная техника, что положительно сказывается на нашей фирме. Там мы сможем получить новый опыт, пройти повышение квалификации и сделать карьеру."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> verlieren wir viel Zeit, <g>wenn</g> wir jeden Tag zwei Stunden zur Arbeit pendeln müssen. Viele Mitarbeiter haben Familien und möchten ihre Freizeit mit ihren Kindern verbringen. Außerdem sind die hohen Fahrtkosten ein Argument, das gegen das Pendeln spricht. Darüber hinaus wäre ein Umzug für Familien mit Kindern sehr schwierig, da die Kinder den Kindergarten oder die Schule <g>wechseln müssten</g>.",
+        "en": "On the other hand, we lose a lot of time if we have to commute two hours to work every day. Many employees have families and want to spend their free time with their children. In addition, the high travel costs are an argument against commuting. Moreover, moving would be very difficult for families with children, since the children would have to change kindergarten or school.",
+        "uk": "З іншого боку, ми втрачаємо багато часу, якщо щодня мусимо їхати на роботу дві години. У багатьох співробітників є сім'ї, і вони хочуть проводити вільний час зі своїми дітьми. Крім того, високі витрати на дорогу — це аргумент проти їзди на роботу. Більше того, переїзд був би дуже складним для родин з дітьми, оскільки дітям довелося б змінити садочок або школу.",
+        "ru": "С другой стороны, мы теряем много времени, если каждый день должны добираться на работу два часа. У многих сотрудников есть семьи, и они хотят проводить свободное время со своими детьми. Кроме того, высокие транспортные расходы — это аргумент против поездок на работу. Более того, переезд был бы очень сложным для семей с детьми, поскольку детям пришлось бы сменить детский сад или школу."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die Mitarbeiter zwischen Homeoffice und Pendeln wählen <g>können</g>. So könnten die Mitarbeiter eine Woche in der Firma und eine Woche zu Hause arbeiten, was Fahrtkosten und Zeit spart.",
+        "en": "That's why I suggest that employees be able to choose between working from home and commuting. This way, employees could work one week at the company and one week at home, which would save travel costs and time.",
+        "uk": "Тому я пропоную, щоб співробітники могли обирати між роботою з дому та їздою на роботу. Так співробітники могли б один тиждень працювати у фірмі, а один тиждень — вдома, що заощадило б витрати на дорогу і час.",
+        "ru": "Поэтому я предлагаю, чтобы сотрудники могли выбирать между работой из дома и поездками на работу. Так сотрудники могли бы одну неделю работать в фирме, а одну неделю — дома, что сэкономило бы транспортные расходы и время."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinungen.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinions.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на ваші думки.",
+        "ru": "Что вы об этом думаете? С нетерпением жду ваших мнений."
+      },
+      {
+        "role": "name",
+        "de": "Anna",
+        "en": "Anna",
+        "uk": "Анна",
+        "ru": "Анна"
+      }
+    ]
+  }
+];
