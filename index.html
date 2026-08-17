@@ -1909,6 +1909,16 @@ body{
 .srow-ctrl{display:flex;gap:7px;align-items:center;flex-shrink:0}
 .srow-ctrl input[type=range]{width:85px;accent-color:var(--gold)}
 .srow-ctrl span{font-size:14px;font-family:'Inter',monospace;color:var(--gold);min-width:34px;text-align:right}
+/* Простий CSS-перемикач (checkbox під капотом, візуально — повзунок) —
+   у застосунку досі не було бінарних on/off налаштувань, лише кнопки/
+   слайдери, тож стилю не існувало. flex-shrink:0 — рядок з довгим
+   описом (.srow-label small) не повинен стискати сам перемикач. */
+.dbg-switch{position:relative;display:inline-block;width:44px;height:26px;flex-shrink:0}
+.dbg-switch input{position:absolute;opacity:0;width:0;height:0}
+.dbg-switch-track{position:absolute;inset:0;cursor:pointer;background:var(--border);border-radius:999px;transition:background .2s}
+.dbg-switch-track::before{content:'';position:absolute;height:20px;width:20px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+.dbg-switch input:checked + .dbg-switch-track{background:var(--gold)}
+.dbg-switch input:checked + .dbg-switch-track::before{transform:translateX(18px)}
 .speed-toggle{display:flex;gap:6px}
 .sp-btn{flex:1;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border);background:var(--soft);font-size:var(--fs-tertiary);font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.15s;white-space:nowrap;text-align:center}
 .sp-btn.active{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
@@ -2060,7 +2070,13 @@ body.lesson-active .vocab-top{
    використовується в lfRunUnitStep (універсальна оболонка-крок уроку) */
 .lf-next-row{
   position:fixed;
-  bottom:calc(env(safe-area-inset-bottom,0px) + var(--nav-h) + 12px);
+  /* Було "+ 12px" — той самий запас, що й раніше був нижнім padding
+     .lf-unit-card (22px → 10px, різниця 12px). Тепер картка "виросла"
+     вниз на ці 12px (менше внутрішнього відступу — те саме місце під
+     кнопками стало ближчим до тексту картки), тож опускаємо рядок
+     кнопок на ту саму відстань, щоб зберегти той самий візуальний
+     проміжок між карткою і кнопками, що був до зміни padding. */
+  bottom:calc(env(safe-area-inset-bottom,0px) + var(--nav-h));
   left:24px;right:24px;
   display:flex;gap:10px;
   z-index:200;
@@ -2079,7 +2095,16 @@ body.lesson-active .vocab-top{
 .lf-unit-card{
   background:var(--paper);border-radius:18px;border:1px solid var(--border);
   box-shadow:0 4px 18px rgba(0,0,0,.08);
-  padding:18px 18px 22px;
+  /* Боки й низ — 10px, ЩОБ РАЗОМ із зовнішнім відступом .card-panel
+     (14px, від краю екрана до самої картки) дати ті самі 24px, що й у
+     .lf-next-row (кнопки "Далі"/"Повторити" нижче, left/right:24px) —
+     інакше текст усередині картки й ряд кнопок під нею мали РІЗНИЙ
+     сумарний відступ від краю екрана (32px проти 24px), і картка
+     візуально виглядала ширшою за кнопки. Низ так само 10px, як і боки
+     (раніше було 22px — асиметрично відносно боків без причини). Верх
+     лишається 18px — інший ритм (відступ під прогрес-бар над карткою,
+     не пов'язаний з цим вирівнюванням). */
+  padding:18px 10px 10px;
   display:flex;flex-direction:column;flex:1;min-height:0;
   position:relative;
   user-select:none;-webkit-user-select:none;touch-action:none;
@@ -3348,8 +3373,6 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
     <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_today">M heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-today">0</span></div>
     <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_total">M gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-total">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_streak_reset">Streak zurücksetzen</label></div><button class="btn btn-s" onclick="resetStreak()">🗑 Reset</button></div>
-    <div class="srow"><div class="srow-label"><label data-i18n="lbl_data_reset">Karteistatistik löschen</label><small data-i18n="sub_data_reset">Play-Zähler zurücksetzen</small></div><button class="btn btn-s" onclick="resetCardStats()">🗑 Reset</button></div>
     </div>
     </div><!-- /ГРУПА 2 -->
 
@@ -3379,6 +3402,13 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
     </h3>
     <div id="debug-section-content" style="display:none;margin-top:12px">
     <div class="srow">
+      <div class="srow-label"><label>🔓 <span data-i18n="lbl_unlock_all">Розблокувати усі уроки</span></label><small data-i18n="sub_unlock_all">Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!</small></div>
+      <label class="dbg-switch">
+        <input type="checkbox" id="debug-unlock-all-toggle" onchange="debugToggleUnlockAll(this.checked)">
+        <span class="dbg-switch-track"></span>
+      </label>
+    </div>
+    <div class="srow">
       <div class="srow-label"><label>Error Log</label><small>Переглянути помилки аудіо та JS</small></div>
       <button class="btn btn-s" onclick="showErrorLog()">📋 Log</button>
     </div>
@@ -3393,10 +3423,6 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
     <div class="srow">
       <div class="srow-label"><label>🔊 Аудіо-кеш</label><small>Видалити всі завантажені аудіофайли</small></div>
       <button class="btn btn-s" onclick="clearAudioCache()">🗑 Очистити кеш аудіо</button>
-    </div>
-    <div class="srow">
-      <div class="srow-label"><label>🔄 Оновити додаток</label><small>Скинути Service Worker і перезавантажити. Виправляє помилку «усі картки в уроці»</small></div>
-      <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
       <div class="srow-label"><label>☁️ Хмарний бекап (тест)</label><small>Firebase email+пароль — експериментально, ручний бекап/відновлення, без авто-синхронізації між пристроями</small></div>
@@ -3430,6 +3456,10 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(6)">🔍 Доповни речення</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)">🎤 Вимова</button>
       </div>
+    </div>
+    <div class="srow">
+      <div class="srow-label"><label>🔄 Оновити додаток</label><small>Скинути Service Worker і перезавантажити. Виправляє помилку «усі картки в уроці». Потенційно небезпечно (примусово скидає кеш) — тримати останнім у списку.</small></div>
+      <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
     </div>
     </div>
     </div>
@@ -3470,7 +3500,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '499-3e8d289';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3991,9 +4021,8 @@ const I18N = {
     sec_streak:'Lernziel & Streak',
     lbl_today:'Heute', lbl_total:'Gesamt', lbl_xp_today:'M heute', lbl_xp_total:'M gesamt',
     lbl_goal:'Tagesziel', sub_goal:'Karten pro Tag',
-    lbl_streak_reset:'Streak zurücksetzen',
+    lbl_unlock_all:'Alle Lektionen freischalten', sub_unlock_all:'Zeigt alle Lektionen im Pfad als freigeschaltet an, unabhängig vom tatsächlichen Fortschritt. Nur zum Testen — vergiss nicht, es wieder auszuschalten!',
     sec_data:'Daten',
-    lbl_data_reset:'Karteistatistik löschen', sub_data_reset:'Play-Zähler zurücksetzen',
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
     sr_readiness_info:'Zeigt, wie gut Karten verankert sind (≥2 richtige Wiederholungen, noch nicht fällig) — nicht nur ob sie schon gesehen wurden.',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
@@ -4080,9 +4109,8 @@ const I18N = {
     sec_streak:'Ціль і серія',
     lbl_today:'Сьогодні', lbl_total:'Всього', lbl_xp_today:'M сьогодні', lbl_xp_total:'M всього',
     lbl_goal:'Денна ціль', sub_goal:'Карток на день',
-    lbl_streak_reset:'Скинути серію',
+    lbl_unlock_all:'Розблокувати усі уроки', sub_unlock_all:'Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!',
     sec_data:'Дані',
-    lbl_data_reset:'Очистити статистику', sub_data_reset:'Скинути лічильник',
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
     sr_readiness_info:'Показує, наскільки добре закріплені картки (≥2 правильні повторення, ще не due) — а не просто факт, що їх переглянули.',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
@@ -4164,9 +4192,8 @@ const I18N = {
     sec_streak:'Goal & Streak',
     lbl_today:'Today', lbl_total:'Total', lbl_xp_today:'M today', lbl_xp_total:'M total',
     lbl_goal:'Daily goal', sub_goal:'Cards per day',
-    lbl_streak_reset:'Reset streak',
+    lbl_unlock_all:'Unlock all lessons', sub_unlock_all:'Shows all lessons in the path as unlocked, regardless of actual progress. For testing only — don\'t forget to turn it off!',
     sec_data:'Data',
-    lbl_data_reset:'Clear card stats', sub_data_reset:'Reset play counter',
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
     sr_readiness_info:'Shows how well cards are retained (≥2 correct repetitions, not due yet) — not just whether you have seen them.',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
@@ -4249,9 +4276,8 @@ const I18N = {
     sec_streak:'Цель и серия',
     lbl_today:'Сегодня', lbl_total:'Всего', lbl_xp_today:'M сегодня', lbl_xp_total:'M всего',
     lbl_goal:'Дневная цель', sub_goal:'Карточек в день',
-    lbl_streak_reset:'Сбросить серию',
+    lbl_unlock_all:'Разблокировать все уроки', sub_unlock_all:'Показывает все уроки в линии как разблокированные, независимо от реального прогресса. Только для тестирования — не забудьте выключить!',
     sec_data:'Данные',
-    lbl_data_reset:'Очистить статистику', sub_data_reset:'Сбросить счётчик',
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
     sr_readiness_info:'Показывает, насколько хорошо закреплены карточки (≥2 правильных повторения, ещё не due) — а не просто факт, что их просмотрели.',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
@@ -6607,17 +6633,6 @@ function showView(id){
 }
 
 // ── SETTINGS ──────────────────────────────────────────────────
-function resetCardStats(){
-  if(!confirm('Alle Kartenstatistiken löschen?'))return;
-  // totalPlays/lastSeen тепер живуть у єдиній структурі Smart Review,
-  // не в окремих ключах 'mova_'+id (та система видалена при об'єднанні).
-  const state = srLoadState();
-  Object.keys(state.cards||{}).forEach(id=>{
-    if(state.cards[id]){ state.cards[id].totalPlays = 0; state.cards[id].lastSeen = 0; }
-  });
-  srSaveState(state);
-  notify('Statistik gelöscht ✓');
-}
 function notify(msg){const e=document.getElementById('notif');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
 
 // Чи реально прозвучало аудіо для поточної картки (хоч би для одного
@@ -7425,8 +7440,37 @@ function lessonProgress(lesson){
 }
 
 // Чи розблокований урок
+// ── DEBUG: примусове розблокування всіх уроків ──────────────────
+// Читається з localStorage напряму (а не кешується в змінну) — просто й
+// надійно, lessonUnlocked() викликається нечасто настільки, щоб зайвий
+// localStorage.getItem() мав значення для продуктивності.
+function debugIsUnlockAllActive(){
+  try{ return localStorage.getItem('mova_debug_unlock_all') === '1'; }catch(e){ return false; }
+}
+function debugToggleUnlockAll(checked){
+  try{ localStorage.setItem('mova_debug_unlock_all', checked ? '1' : '0'); }catch(e){}
+  // Розблокування — суто візуальне (lessonUnlocked() перевіряється в
+  // рендері шляху), тож щоб зміна одразу відобразилась без перезаходу —
+  // перебудовуємо Lernpfad прямо зараз.
+  if(typeof renderLernpfad === 'function') renderLernpfad();
+  notify(checked ? '🔓 Усі уроки розблоковано (debug)' : '🔒 Розблокування вимкнено');
+}
+
 function lessonUnlocked(lesson){
-  return true; // всі модулі розблоковані одразу
+  if(debugIsUnlockAllActive()) return true; // DEBUG-перемикач — див. вище
+  if(!lesson.unlockAfter) return true; // перший урок розділу — завжди відкритий
+
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const prev = lessons.find(l=>l.id===lesson.unlockAfter);
+  if(!prev) return true;
+
+  // Якщо попередній урок з ІНШОГО розділу — перший урок нового розділу відкритий
+  // (дозволяємо проходити категорії незалежно)
+  if(prev.chapter !== lesson.chapter) return true;
+
+  // В межах одного розділу — треба 80%+ попереднього уроку
+  const {pct} = lessonProgress(prev);
+  return pct >= 80;
 }
 
 
@@ -8628,6 +8672,15 @@ function toggleDebugSection(headerEl){
   // просто прихований display:none, тож насправді це рідкісний edge
   // case — але дешево підстрахуватись).
   if(!isOpen && typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
+  // Перемикач "Розблокувати усі уроки" — checkbox статичний у HTML (без
+  // checked за замовчуванням), синхронізуємо його з реальним збереженим
+  // станом щоразу, як секцію розгортають (не лише при завантаженні
+  // сторінки — mind that toggleDebugSection відкриває/закриває ту саму
+  // секцію повторно, стан має лишатись коректним щоразу).
+  if(!isOpen){
+    const unlockToggle = document.getElementById('debug-unlock-all-toggle');
+    if(unlockToggle) unlockToggle.checked = debugIsUnlockAllActive();
+  }
 }
 
 // Прямий доступ до тестових вправ Vocab (🔗🎯🧩❓🔍🎤), прибраних з
@@ -12221,7 +12274,7 @@ var _lfSkipNextAutoplay = false;
 // якщо transitionend не спрацює — напр. prefers-reduced-motion вимикає
 // transition-и й подія просто не відбудеться) + ДОДАТКОВОЇ паузи
 // READING_PAUSE_MS на прочитання перекладу, перш ніж показати кнопку.
-var DLG_TR_READING_PAUSE_MS = 1200;
+var DLG_TR_READING_PAUSE_MS = 1100;
 function _lfDlgRevealLastTranslation(onRevealed){
   var body = document.getElementById('lf-unit-body');
   var rows = body ? body.querySelectorAll('.lf-unit-tr-row:not(.revealed)') : [];
@@ -12254,7 +12307,7 @@ function _lfDlgRevealLastTranslation(onRevealed){
   };
   last.addEventListener('transitionend', onTransEnd);
   // Запасний тригер, якщо transitionend не спрацював — довший за
-  // "нормальний" шлях (~0.4с анімація + 1200мс пауза), щоб не
+  // "нормальний" шлях (~0.4с анімація + пауза на прочитання), щоб не
   // перебивати паузу на прочитання власним раннім спрацюванням.
   setTimeout(finish, 400 + DLG_TR_READING_PAUSE_MS + 600);
 }
@@ -14494,7 +14547,7 @@ function trackCardToday(id){
       // ПРИМІТКА: p.streak рахується й далі (внутрішня історія на
       // майбутнє), АЛЕ більше НІДЕ не показується — єдине джерело
       // правди для відображення стріку тепер srLoadState().streak
-      // (див. renderStreakUI/showStreakInfo/resetStreak). Не плутати.
+      // (див. renderStreakUI/showStreakInfo). Не плутати.
       if(p.lastDate===today){}
       else if(!p.lastDate||p.lastDate===yesterday){p.streak=(p.streak||0)+1;p.bestStreak=Math.max(p.streak,p.bestStreak||0);p.lastDate=today;p.graceUsed=false;}
       else if(!p.graceUsed&&p.lastDate===two){p.graceUsed=true;p.lastDate=today;}
@@ -14574,20 +14627,6 @@ function showStreakInfo(){
   const todayN=(p.todayDate===today?p.todayCards:0)||0;
   const streak = (typeof srLoadState === 'function' ? (srLoadState().streak || 0) : (p.streak||0));
   notify(`🔥 ${streak} Tage · ${todayN}/${getGoal()} heute · ${p.totalCards||0} gesamt`);
-}
-function resetStreak(){
-  if(!confirm('Streak zurücksetzen?'))return;
-  localStorage.removeItem('mova_progress');
-  // Скидаємо і фактичне джерело правди (state.streak) — інакше кнопка
-  // "Reset" в Налаштуваннях нічого б не змінювала (хедер читає звідти ж).
-  try{
-    const s = srLoadState();
-    s.streak = 0;
-    s.lastSessionDate = null;
-    srSaveState(s);
-  }catch(e){}
-  renderStreakUI();
-  notify('Streak zurückgesetzt');
 }
 
 // ── BROWSE ────────────────────────────────────────────────────
