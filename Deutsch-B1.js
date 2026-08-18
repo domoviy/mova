@@ -3256,7 +3256,8 @@ var LESSONS = [
     },
     "skills": [
       "Schreiben",
-      "Lesen"
+      "Lesen",
+      "Sprechen"
     ],
     "grammar": "verben_praep_dass_satz",
     "cardIds": [
@@ -3272,7 +3273,10 @@ var LESSONS = [
       "k9_038"
     ],
     "unlockAfter": "k9m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_115"
+    ]
   },
   {
     "id": "k9m4",
@@ -29748,6 +29752,80 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: поищем объявления о вакансиях, обновим резюме, подадимся в несколько компаний и будем мотивировать друг друга. Я уже жду нашего шанса! Спасибо за идею, Дэвид!"
     },
     "gram": "nebensatz_wenn_konjunktiv2_irreal"
+  },
+  {
+    "id": "dlg_115",
+    "cat": "Bewerbungsunterlagen gemeinsam vorbereiten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund/Ihre Freundin bereiten beide Ihre Bewerbungsunterlagen vor und möchten sich dabei gegenseitig unterstützen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWorauf hoffen Sie?\nWomit rechnen Sie?\nWovon sind Sie überzeugt?\nWorauf freuen Sie sich?\nWorum machen Sie sich Sorgen?",
+      "en": "Situation: You and your friend are both preparing your job application documents and want to support each other.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat are you hoping for?\nWhat are you counting on?\nWhat are you convinced of?\nWhat are you looking forward to?\nWhat are you worried about?",
+      "uk": "Ситуація: Ви та Ваш друг/Ваша подруга обоє готуєте документи для подання заявки на роботу і хочете підтримувати одне одного.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nНа що Ви сподіваєтеся?\nНа що Ви розраховуєте?\nУ чому Ви переконані?\nЧому Ви тішитеся?\nЧерез що Ви хвилюєтеся?",
+      "ru": "Ситуация: Вы и Ваш друг/Ваша подруга оба готовите документы для подачи заявки на работу и хотите поддерживать друг друга.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nНа что Вы надеетесь?\nНа что Вы рассчитываете?\nВ чём Вы убеждены?\nЧему Вы радуетесь?\nИз-за чего Вы переживаете?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo, Julia! Wir schreiben ja beide gerade unsere Bewerbungen. Wollen wir uns gegenseitig helfen?",
+      "en": "Hi, Julia! We're both writing our applications right now. Shall we help each other?",
+      "uk": "Привіт, Юліє! Ми ж обоє зараз пишемо заяви про прийом на роботу. Може, допоможемо одне одному?",
+      "ru": "Привет, Юлия! Мы же оба сейчас пишем заявления о приёме на работу. Может, поможем друг другу?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Ich hoffe <g>darauf, dass</g> wir beide schnell eine Rückmeldung bekommen – lass uns die Unterlagen zusammen fertig machen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> I <g>hope that</g> we both get feedback quickly – let's finish the documents together.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> я сподіваюся <g>на те, що</g> ми обоє швидко отримаємо відповідь – давай завершимо документи разом.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> я надеюсь <g>на то, что</g> мы оба быстро получим ответ – давай закончим документы вместе.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Realität <r>bedenken</r>.<br><r>Wir könnten doch</r> auch <g>damit rechnen, dass</g> nicht jede Bewerbung sofort klappt.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> reality.<br><r>We could</r> also <g>count on the fact that</g> not every application works out right away.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> реальність.<br><r>Ми могли б</r> також <g>розраховувати на те, що</g> не кожна заявка спрацює одразу.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> реальности.<br><r>Мы могли бы</r> также <g>рассчитывать на то, что</g> не каждая заявка сработает сразу.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> positiv bleiben – ich bin <g>davon überzeugt, dass</g> wir gute Chancen haben.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> stay positive – I'<g>m convinced that</g> we have good chances.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> залишимося позитивними – я <g>переконана у тому, що</g> в нас хороші шанси.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> оставались позитивными – я <g>убеждена в том, что</g> у нас хорошие шансы.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir uns aufs Positive konzentrieren – ich freue mich schon <g>darauf, dass</g> wir bald das Vorstellungsgespräch haben.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we focus on the positive – I'm already looking forward <g>to the fact that</g> we'll have the interview soon.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми зосередилися на позитиві – я вже тішуся <g>з того, що</g> в нас скоро буде співбесіда.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы сосредоточились на позитиве – я уже радуюсь <g>тому, что</g> у нас скоро будет собеседование.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir noch haben.<br><r>Eine Idee wäre, dass wir</r> ehrlich sind – ich mache mir Sorgen <g>darum, dass</g> wir nicht alle Unterlagen rechtzeitig fertig haben.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we have left.<br><r>One idea would be that we</r> are honest – I'<g>m worried that</g> we won't have all the documents ready in time.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу в нас ще є.<br><r>Була б ідея, щоб ми</r> були чесними – я хвилююся <g>через те, що</g> ми не встигнемо підготувати всі документи вчасно.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени у нас ещё есть.<br><r>Была бы идея, чтобы мы</r> были честными – я переживаю <g>из-за того, что</g> мы не успеем подготовить все документы вовремя.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> das zuerst klären? Ich ärgere mich total <g>darüber, dass</g> mein Zeugnis noch fehlt.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> clarify that first? It really <g>annoys me that</g> my certificate is still missing.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> спершу з'ясуємо це? Мене дуже <g>дратує те, що</g> мого свідоцтва ще немає.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> сначала выясним это? Меня очень <g>раздражает то, что</g> моей справки ещё нет.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob das jetzt so wichtig ist.<br><r>Vielleicht wäre es am besten, wenn wir</r> zuerst <g>daran denken, dass</g> wir den Personalchef gut beeindrucken müssen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether that's so important right now.<br><r>Maybe it would be best if we</r> first <g>keep in mind that</g> we need to impress the HR manager.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи це зараз так важливо.<br><r>Можливо, було б найкраще, якби ми</r> спершу <g>пам'ятали про те, що</g> нам потрібно справити гарне враження на керівника відділу кадрів.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, так ли это сейчас важно.<br><r>Может быть, было бы лучше, если бы мы</r> сначала <g>помнили о том, что</g> нам нужно произвести хорошее впечатление на начальника отдела кадров.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns auch <g>darum kümmern, dass</g> die Homeoffice-Frage im Anschreiben erwähnt wird.<br><r>Bist du damit einverstanden</r>, Julia?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also <g>make sure that</g> the home-office question is mentioned in the cover letter.<br><r>Are you okay with that</r>, Julia?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також <g>подбаємо про те, щоб</g> питання про домашній офіс було згадано в супровідному листі.<br><r>Ти з цим згодна</r>, Юліє?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также <g>позаботимся о том, чтобы</g> вопрос о домашнем офисе был упомянут в сопроводительном письме.<br><r>Ты с этим согласна</r>, Юлия?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir bereiten die Unterlagen vor, kümmern uns um das Zeugnis und die Homeoffice-Frage und bleiben positiv. Ich freue mich schon auf die Rückmeldung! Danke für die Idee, Mark!",
+      "en": "Yes, of course! So, here's what we'll do: we'll prepare the documents, take care of the certificate and the home-office question, and stay positive. I'm already looking forward to the feedback! Thanks for the idea, Mark!",
+      "uk": "Так, звісно! Отже, зробимо так: підготуємо документи, подбаємо про свідоцтво й питання домашнього офісу та залишимося позитивними. Я вже чекаю на відповідь! Дякую за ідею, Марку!",
+      "ru": "Да, конечно! Итак, сделаем так: подготовим документы, позаботимся о справке и вопросе домашнего офиса и останемся позитивными. Я уже жду ответа! Спасибо за идею, Марк!"
+    },
+    "gram": "verben_praep_dass_satz"
   }
 ];
 

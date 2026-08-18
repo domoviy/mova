@@ -495,7 +495,8 @@ var LESSONS = [
     },
     "skills": [
       "Hören",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -546,6 +547,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_030",
       "dlg_043"
+    ],
+    "frmCards": [
+      "forum_005"
     ]
   },
   {
@@ -565,7 +569,8 @@ var LESSONS = [
       "ru": "Это я умею – ключевые навыки"
     },
     "skills": [
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "negation",
     "cardIds": [
@@ -634,6 +639,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_031",
       "dlg_044"
+    ],
+    "frmCards": [
+      "forum_006"
     ]
   },
   {
@@ -749,6 +757,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_032",
       "dlg_045"
+    ],
+    "frmCards": [
+      "forum_004"
     ]
   },
   {
@@ -13543,6 +13554,234 @@ var SCHREIBEN = [
         "en": "Mark",
         "uk": "Марк",
         "ru": "Марк"
+      }
+    ]
+  },
+  {
+    "id": "forum_004",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Begleitprogramm für Berufsabschlüsse aus dem Ausland",
+      "en": "Support program for foreign professional qualifications",
+      "uk": "Програма супроводу для закордонних кваліфікацій",
+      "ru": "Программа сопровождения для иностранных квалификаций"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte ein internes Förderprogramm einführen: Neue Mitarbeitende mit ausländischem Berufsabschluss sollen während des Anerkennungsverfahrens befristet in einer anderen Abteilung eingesetzt werden, bis ihre Qualifikation offiziell anerkannt ist.",
+      "en": "Management wants to introduce an internal support program: new employees with a foreign professional qualification are to be temporarily assigned to a different department during the recognition procedure, until their qualification is officially recognized.",
+      "uk": "Керівництво хоче запровадити внутрішню програму підтримки: нових співробітників із закордонною кваліфікацією мають тимчасово залучати до іншого відділу на час процедури визнання, доки їхню кваліфікацію офіційно не визнають.",
+      "ru": "Руководство хочет ввести внутреннюю программу поддержки: новых сотрудников с иностранной квалификацией должны временно привлекать к другому отделу на время процедуры признания, пока их квалификация официально не будет признана."
+    },
+    "gram": "passiv_mit_sein",
+    "name": "de_w_nina",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein neues Förderprogramm für Kolleginnen und Kollegen, deren Berufsabschluss aus dem Ausland noch nicht anerkannt ist. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning a new support program for colleagues whose professional qualification from abroad is not yet recognized. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує нову програму підтримки для колег, чия закордонна кваліфікація ще не визнана. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует новую программу поддержки для коллег, чья иностранная квалификация ещё не признана. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Unterstützung längst überfällig war – vor allem für alle, deren Qualifikation hierzulande noch nicht <g>anerkannt ist</g>.",
+        "en": "I am of the opinion that this support was long overdue – especially for everyone whose qualification is not yet recognized here.",
+        "uk": "Я вважаю, що ця підтримка давно назріла — особливо для всіх, чия кваліфікація тут ще не визнана.",
+        "ru": "Я считаю, что эта поддержка давно назрела — особенно для всех, чья квалификация здесь ещё не признана."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass die betroffenen Kolleginnen und Kollegen während der oft langwierigen Anerkennung nicht einfach warten müssten, sondern schon jetzt praktische Erfahrung sammeln und sich in einer neuen Abteilung spezialisieren könnten – etwa in der IT-Abteilung oder in der Logistik.",
+        "en": "One advantage would undoubtedly be that those affected wouldn't simply have to wait during the often lengthy recognition process, but could already gain practical experience and specialize in a new department – for example in the IT department or in logistics.",
+        "uk": "Однією з переваг, безсумнівно, було б те, що постраждалим не довелося б просто чекати під час часто тривалого визнання, а вже зараз здобувати практичний досвід і спеціалізуватися в новому відділі — наприклад, в ІТ-відділі чи в логістиці.",
+        "ru": "Одним из преимуществ, несомненно, было бы то, что затронутым сотрудникам не пришлось бы просто ждать во время часто долгого признания, а уже сейчас получать практический опыт и специализироваться в новом отделе — например, в ИТ-отделе или в логистике."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> ist ein befristeter Einsatz in einer fremden Abteilung nicht für jeden einfach: Wer einen Antrag auf Anerkennung seiner Berufsqualifikation gestellt hat, muss ohnehin schon zahlreiche Dokumente aus dem Herkunftsland einreichen, und solange der Antrag noch nicht <g>bearbeitet ist</g>, könnte die zusätzliche Umstellung am Arbeitsplatz manche eher verunsichern als entlasten.",
+        "en": "On the other hand, a temporary assignment to an unfamiliar department isn't easy for everyone: anyone who has submitted an application for recognition of their professional qualification often already has to submit numerous documents from their country of origin, and as long as the application hasn't been processed yet, the additional adjustment at work could unsettle some people rather than relieve them.",
+        "uk": "З іншого боку, тимчасове переведення до незнайомого відділу не для кожного просте: той, хто подав заявку на визнання своєї професійної кваліфікації, часто й так має подати чимало документів із країни походження, а поки заявку ще не опрацьовано, додаткова зміна на роботі радше могла б декого дезорієнтувати, ніж розвантажити.",
+        "ru": "С другой стороны, временное назначение в незнакомый отдел не для каждого просто: тот, кто подал заявку на признание своей профессиональной квалификации, часто и так должен подать немало документов из страны происхождения, а пока заявка ещё не обработана, дополнительное изменение на работе скорее могло бы кого-то дезориентировать, чем разгрузить."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> jeder betroffenen Person ein fester Ansprechpartner zur Seite gestellt wird, der beratend tätig ist und bei Fragen zum Verfahren sofort zuständig ist.",
+        "en": "That's why I suggest that every affected person be assigned a fixed contact person who provides advice and is immediately responsible for questions about the procedure.",
+        "uk": "Тому я пропоную, щоб кожній причетній особі призначили постійного контактного співробітника, який консультує і відразу відповідає за питання щодо процедури.",
+        "ru": "Поэтому я предлагаю, чтобы каждому причастному лицу назначили постоянного контактного сотрудника, который консультирует и сразу отвечает за вопросы по процедуре."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Nina",
+        "en": "Nina",
+        "uk": "Ніна",
+        "ru": "Нина"
+      }
+    ]
+  },
+  {
+    "id": "forum_005",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Genehmigungspflicht für Nebentätigkeiten",
+      "en": "Approval requirement for side jobs",
+      "uk": "Обов'язкове погодження підробітку",
+      "ru": "Обязательное согласование подработки"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte einführen, dass jede Nebentätigkeit künftig vorab schriftlich genehmigt werden muss, um mögliche Überschneidungen mit der Hauptstelle laut Tarifvertrag zu vermeiden.",
+      "en": "Management wants to introduce a rule that every side job must be approved in writing in advance, in order to avoid possible overlaps with the main position according to the collective agreement.",
+      "uk": "Керівництво хоче запровадити правило, що кожен підробіток надалі має бути письмово погоджений заздалегідь, щоб уникнути можливих перетинів з основною посадою згідно з тарифною угодою.",
+      "ru": "Руководство хочет ввести правило, что каждая подработка впредь должна быть письменно согласована заранее, чтобы избежать возможных пересечений с основной должностью согласно тарифному договору."
+    },
+    "gram": "konnektoren_zweiteilig",
+    "name": "de_m_david",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass jede Nebentätigkeit künftig vorab genehmigt werden muss. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning that every side job will have to be approved in advance in the future. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб кожен підробіток надалі попередньо погоджувався. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы каждая подработка впредь предварительно согласовывалась. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Regelung nachvollziehbar ist, auch wenn sie für manche Kolleginnen und Kollegen zusätzlichen Aufwand bedeutet.",
+        "en": "I am of the opinion that this policy is understandable, even if it means extra effort for some colleagues.",
+        "uk": "Я вважаю, що це правило зрозуміле, навіть якщо воно означає додаткові клопоти для деяких колег.",
+        "ru": "Я считаю, что это правило понятно, даже если оно означает дополнительные хлопоты для некоторых коллег."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass so <g>sowohl</g> die Work-Life-Balance der Mitarbeitenden <g>als auch</g> die Einhaltung des Tarifvertrags im Blick behalten werden. Wer bereits unter Zeitdruck steht, wird auf diese Weise vor einer zu großen Verantwortung geschützt.",
+        "en": "One advantage would undoubtedly be that this way both the employees' work-life balance and compliance with the collective agreement are kept in view. Anyone already under time pressure is thus protected from taking on too much responsibility.",
+        "uk": "Однією з переваг, безсумнівно, було б те, що так враховується і баланс роботи й особистого життя співробітників, і дотримання тарифної угоди. Той, хто вже й так перебуває під тиском часу, у такий спосіб захищений від надто великої відповідальності.",
+        "ru": "Одним из преимуществ, несомненно, было бы то, что так учитывается и баланс работы и личной жизни сотрудников, и соблюдение тарифного договора. Тот, кто уже и так находится под давлением времени, таким образом защищён от слишком большой ответственности."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> ist eine Nebentätigkeit für viele <g>nicht nur</g> eine finanzielle Notwendigkeit, <g>sondern auch</g> eine Möglichkeit, sich in einem anderen Bereich zu qualifizieren. Eine zusätzliche Genehmigungspflicht könnte manche eher abschrecken, als sie zu unterstützen.",
+        "en": "On the other hand, for many a side job is not only a financial necessity but also a chance to gain qualifications in another field. An additional approval requirement could discourage some people rather than support them.",
+        "uk": "З іншого боку, для багатьох підробіток — це не лише фінансова необхідність, а й можливість здобути кваліфікацію в іншій сфері. Додатковий обов'язок погодження радше міг би відлякати декого, ніж підтримати.",
+        "ru": "С другой стороны, для многих подработка — это не только финансовая необходимость, но и возможность получить квалификацию в другой сфере. Дополнительная обязанность согласования скорее могла бы отпугнуть кого-то, чем поддержать."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die Genehmigung nur bei einer tatsächlichen Überschneidung mit der Hauptstelle erforderlich ist, und nicht generell für jede Nebentätigkeit.",
+        "en": "That's why I suggest that approval only be required in the case of an actual overlap with the main position, and not generally for every side job.",
+        "uk": "Тому я пропоную, щоб погодження вимагалося лише у випадку реального перетину з основною посадою, а не загалом для кожного підробітку.",
+        "ru": "Поэтому я предлагаю, чтобы согласование требовалось только в случае реального пересечения с основной должностью, а не в целом для каждой подработки."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "David",
+        "en": "David",
+        "uk": "Давид",
+        "ru": "Давид"
+      }
+    ]
+  },
+  {
+    "id": "forum_006",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "360-Grad-Feedback zu unseren Schlüsselqualifikationen",
+      "en": "360-degree feedback on our key qualifications",
+      "uk": "360-градусний зворотний зв'язок щодо наших ключових компетенцій",
+      "ru": "360-градусная обратная связь по нашим ключевым компетенциям"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte ein jährliches 360-Grad-Feedback einführen: Kolleginnen und Kollegen sollen sich gegenseitig zu Schlüsselqualifikationen wie Teamfähigkeit, Kommunikationsfähigkeit und Belastbarkeit einschätzen.",
+      "en": "Management wants to introduce an annual 360-degree feedback: colleagues are to assess each other on key qualifications such as teamwork skills, communication skills and resilience.",
+      "uk": "Керівництво хоче запровадити щорічний 360-градусний зворотний зв'язок: колеги мають оцінювати одне одного за ключовими компетенціями, як-от здатність працювати в команді, комунікативні навички та стресостійкість.",
+      "ru": "Руководство хочет ввести ежегодную 360-градусную обратную связь: коллеги должны оценивать друг друга по ключевым компетенциям, таким как способность работать в команде, коммуникативные навыки и стрессоустойчивость."
+    },
+    "gram": "negation",
+    "name": "de_m_alex",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein jährliches 360-Grad-Feedback zu unseren Schlüsselqualifikationen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning an annual 360-degree feedback on our key qualifications. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує щорічний 360-градусний зворотний зв'язок щодо наших ключових компетенцій. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует ежегодную 360-градусную обратную связь по нашим ключевым компетенциям. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> ein solches Feedback zu Eigenschaften wie Zuverlässigkeit oder Lernbereitschaft grundsätzlich hilfreich sein kann, auch wenn es <g>kein Ersatz</g> für ein persönliches Gespräch mit der Führungskraft sein sollte.",
+        "en": "I am of the opinion that such feedback on qualities like reliability or willingness to learn can basically be helpful, even though it should be no substitute for a personal conversation with one's manager.",
+        "uk": "Я вважаю, що такий зворотний зв'язок щодо таких якостей, як надійність чи готовність вчитися, в принципі може бути корисним, хоча він не повинен замінювати особисту розмову з керівником.",
+        "ru": "Я считаю, что такая обратная связь по таким качествам, как надёжность или готовность учиться, в принципе может быть полезной, хотя она не должна заменять личный разговор с руководителем."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir so ehrlicher erfahren, wie unsere Teamfähigkeit, unsere Kommunikationsfähigkeit, unsere Eigeninitiative oder unsere Belastbarkeit von den Kolleginnen und Kollegen wahrgenommen wird – Aspekte, die man selbst oft gar nicht einschätzen kann.",
+        "en": "One advantage would undoubtedly be that we find out more honestly how our teamwork skills, our communication skills, our initiative or our resilience are perceived by colleagues – aspects that one often can't assess in oneself at all.",
+        "uk": "Однією з переваг, безсумнівно, було б те, що ми чесніше дізнаємося, як колеги сприймають нашу здатність працювати в команді, комунікативні навички, ініціативність чи стресостійкість — аспекти, які самому оцінити часто взагалі неможливо.",
+        "ru": "Одним из преимуществ, несомненно, было бы то, что мы честнее узнаём, как коллеги воспринимают нашу способность работать в команде, коммуникативные навыки, инициативность или стрессоустойчивость — аспекты, которые самому оценить зачастую вообще невозможно."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> ist anonymes Feedback <g>nicht immer konstruktiv</g>: Manche Rückmeldungen könnten unfair oder gar nicht nachvollziehbar sein und dadurch sogar das Arbeitsklima belasten, wenn <g>niemand</g> die Kritik näher begründen muss.",
+        "en": "On the other hand, anonymous feedback isn't always constructive: some comments could be unfair or not comprehensible at all and could even harm the working atmosphere, if no one has to justify the criticism in more detail.",
+        "uk": "З іншого боку, анонімний зворотний зв'язок не завжди конструктивний: деякі відгуки можуть бути несправедливими або взагалі незрозумілими і навіть погіршити атмосферу в колективі, якщо ніхто не мусить детальніше обґрунтувати критику.",
+        "ru": "С другой стороны, анонимная обратная связь не всегда конструктивна: некоторые отзывы могут быть несправедливыми или вообще непонятными и даже ухудшить атмосферу в коллективе, если никто не должен подробнее обосновать критику."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> jede Rückmeldung kurz schriftlich begründet werden muss, damit <g>keine</g> Bewertung ohne konkretes Beispiel abgegeben wird.",
+        "en": "That's why I suggest that every comment has to be briefly justified in writing, so that no assessment is given without a concrete example.",
+        "uk": "Тому я пропоную, щоб кожен відгук коротко обґрунтовувався письмово, щоб жодна оцінка не давалася без конкретного прикладу.",
+        "ru": "Поэтому я предлагаю, чтобы каждый отзыв коротко обосновывался письменно, чтобы ни одна оценка не давалась без конкретного примера."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Alex",
+        "en": "Alex",
+        "uk": "Алекс",
+        "ru": "Алекс"
       }
     ]
   }
