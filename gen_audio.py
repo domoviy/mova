@@ -24,6 +24,51 @@ try:
 except ImportError:
     edge_tts = None
 
+if edge_tts:
+    # ── Патч edge-tts: реальна локаль замість хардкодженого en-US ───
+    # Бібліотека edge-tts (перевірено до версії 7.2.8 включно, актуальної
+    # на момент цього патчу) у mkssml() ЗАВЖДИ пише в SSML
+    # <speak ... xml:lang='en-US'>, незалежно від фактичного голосу —
+    # див. communicate.py, mkssml(). Для звичайних (одномовних) голосів
+    # (de-DE-KatjaNeural, uk-UA-PolinaNeural тощо) це не шкодить: Azure
+    # все одно озвучує рідною локаллю самого голосу.
+    #
+    # Але для *Multilingual*-голосів (напр. de-DE-SeraphinaMultilingualNeural
+    # — саме такий у персонажа Julia в characters.js) цей xml:lang реально
+    # впливає на мовну модель: рушій орієнтується на нього, вирішуючи,
+    # якою мовою читати. Хардкод en-US призводить до того, що ПЕРШІ слова
+    # німецького речення озвучуються з англійською вимовою/інтонацією,
+    # доки рушій сам не "розпізнає" фактичну мову тексту — саме той ефект,
+    # який чути на початку фраз у багатомовних голосів.
+    #
+    # Офіційного параметра для зміни xml:lang у публічному API Communicate
+    # немає, тому патчимо функцію mkssml прямо в модулі: підміняємо
+    # xml:lang='en-US' на реальну локаль голосу (перші дві частини його
+    # імені, напр. "de-DE" з "de-DE-SeraphinaMultilingualNeural" — так
+    # само влаштовані всі voice-імена Microsoft: <locale>-<VoiceName>).
+    _orig_mkssml = edge_tts.communicate.mkssml
+    _voice_locale_re = re.compile(r"\(([a-zA-Z]{2,3}-[A-Za-z]{2,}),")
+    def _extract_voice_locale(voice):
+        """Дістає локаль ('de-DE', 'uk-UA', ...) з voice-рядка. До моменту
+        виклику mkssml() edge-tts (у TTSConfig.__post_init__) вже встигає
+        розгорнути коротке ім'я голосу ('de-DE-KatjaNeural') у повний
+        формат 'Microsoft Server Speech Text to Speech Voice (de-DE,
+        KatjaNeural)' — тому локаль тут беремо з дужок, а не з початку
+        рядка (короткий формат лишаємо як запасний варіант — про всяк
+        випадок, якщо якась версія edge-tts колись поведеться інакше)."""
+        if not voice:
+            return "en-US"
+        m = _voice_locale_re.search(voice)
+        if m:
+            return m.group(1)
+        parts = voice.split("-")
+        return "-".join(parts[:2]) if len(parts) >= 2 else "en-US"
+    def _patched_mkssml(tc, escaped_text):
+        locale = _extract_voice_locale(getattr(tc, "voice", ""))
+        ssml = _orig_mkssml(tc, escaped_text)
+        return ssml.replace("xml:lang='en-US'", f"xml:lang='{locale}'", 1)
+    edge_tts.communicate.mkssml = _patched_mkssml
+
 # ── Конфігурація ──────────────────────────────────────────────
 WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
 DELAY_SEC = float(os.environ.get('TTS_DELAY', '1.2'))
@@ -577,25 +622,74 @@ def load_js_database(file_path):
 
     return config, raw_items, primary_lang
 
+def _looks_truncated(cleaned_text, boundary_words):
+    """Перевірка ЦІЛІСНОСТІ потоку Edge TTS — не плутати з перевіркою
+    ВИМОВИ (це недосяжно без ASR, і скрипт цього свідомо не робить, див.
+    коментар над synthesize_speech).
+
+    Причина, чому це взагалі потрібно: у бібліотеці edge-tts цикл
+    "async for received in websocket" у Communicate.__stream() просто
+    МОВЧКИ завершується, якщо з'єднання обірветься ДО отримання
+    "turn.end" — виняток кидається лише тоді, коли не надійшло ЖОДНОГО
+    аудіобайту (NoAudioReceived). Тобто часткове, обірване напризволяще
+    аудіо (наприклад, без кількох останніх слів речення) бібліотека
+    вважає УСПІШНИМ завершенням .save() — ніякого сигналу про проблему
+    зовні не долітає. compute_content_hash() рахується з (текст, голос,
+    швидкість) — жодного з них обрив не змінює, тож без цієї перевірки
+    обірваний файл назавжди лишався б у manifest.json як "валідний" і
+    ніколи більше не перегенерувався б.
+
+    Евристика: порівнюємо кількість реально отриманих WordBoundary-подій
+    із орієнтовною кількістю "слів" у вихідному тексті (розбиття по
+    пробілах) — і звіряємо ОСТАННЄ отримане слово з останнім словом
+    тексту. Обидва сигнали разом добре ловлять типовий випадок "потік
+    урвався за кілька слів до кінця", майже не даючи хибних спрацювань
+    на голосах, де WordBoundary злегка групує/розбиває слова інакше, ніж
+    наївний split() (дефіси, апострофи тощо)."""
+    expected = re.findall(r"\S+", cleaned_text)
+    if not expected:
+        return False
+    if not boundary_words:
+        # Голос без підтримки WordBoundary (рідкість, але буває) —
+        # перевірити нічим, не караємо хибним "обірвано".
+        return False
+
+    ratio = len(boundary_words) / len(expected)
+    if ratio < 0.85:
+        return True
+
+    norm = lambda w: re.sub(r"[^\w'-]", "", w, flags=re.UNICODE).lower()
+    last_expected, last_got = norm(expected[-1]), norm(boundary_words[-1])
+    if last_expected and last_got and last_expected not in last_got and last_got not in last_expected:
+        return True
+    return False
+
+
 async def synthesize_speech(text, voice, rate_str, output_path, want_timing=False):
     """Генерація аудіо через Edge TTS.
 
-    want_timing=False (типовий випадок для БІЛЬШОСТІ файлів — усі мови
-    крім PRIMARY_LANG, і категорії поза CATEGORIES_WITH_TIMING) —
-    звичайний .save(), без WordBoundary-подій і без .words.json.
-    Дешевше й швидше: не кожна категорія потребує karaoke-підсвітки слів.
+    WordBoundary-події (позиція+тривалість/текст КОЖНОГО слова в
+    аудіопотоці) запитуються ЗАВЖДИ, незалежно від want_timing — не лише
+    заради karaoke-таймінгу (той самий принцип, що Read Aloud у браузері
+    Edge), а й тому, що це ЄДИНИЙ доступний сигнал для перевірки, що потік
+    не обірвався посеред синтезу (див. _looks_truncated() і коментар там —
+    сама бібліотека такий обрив мовчки вважає успіхом). За замовчуванням
+    бібліотека віддає лише SentenceBoundary — потрібно явно попросити
+    boundary="WordBoundary".
 
-    want_timing=True — Edge TTS вміє віддавати WordBoundary-події
-    (позиція+тривалість КОЖНОГО слова в аудіопотоці) — той самий принцип,
-    що й Read Aloud у браузері Edge, лише тут застосований до наперед
-    згенерованого mp3, а не до озвучення в реальному часі. За замовчуванням
-    бібліотека віддає лише SentenceBoundary (речення) — потрібно явно
-    попросити `boundary="WordBoundary"`.
+    want_timing=True — .words.json зберігається як сайдкар-файл поруч з
+    аудіо (для karaoke-підсвітки в застосунку): список [{word, start,
+    end}], start/end — у СЕКУНДАХ (offset/duration від Edge TTS приходять
+    у тіках по 100 наносекунд — TICKS_PER_SECOND=10_000_000 — ділимо на 1e7).
+    want_timing=False — ті самі WordBoundary-події отримуємо й перевіряємо,
+    але .words.json НЕ пишемо (категорії поза CATEGORIES_WITH_TIMING його
+    не потребують) — невеликий додатковий трафік метаданих ціною захисту
+    від тихого обриву того самого файлу.
 
-    Таймінг зберігається сайдкар-файлом <output_path з .mp3 на .words.json>
-    поруч з аудіо: список [{word, start, end}], start/end — у СЕКУНДАХ.
-    Offset/duration від Edge TTS приходять у тіках по 100 наносекунд
-    (TICKS_PER_SECOND=10_000_000 у самій бібліотеці) — ділимо на 1e7.
+    Обірваний синтез (за _looks_truncated) кидає RuntimeError — це
+    ПОТРАПЛЯЄ в уже наявний retry-цикл worker_task (видаляє частковий
+    файл, повторює спробу з експоненційною паузою), тож жодних змін у
+    worker_task не знадобилось.
 
     Порожній words.json (для дуже коротких текстів/голосів без підтримки
     boundary) — не помилка: фронтенд просто не підсвічує в такому випадку.
@@ -607,16 +701,12 @@ async def synthesize_speech(text, voice, rate_str, output_path, want_timing=Fals
     diff = abs(rate_val - 100)
     edge_rate = f"{sign}{diff}%"
 
-    if not want_timing:
-        communicate = edge_tts.Communicate(text, voice, rate=edge_rate)
-        await communicate.save(str(output_path))
-        return
-
     communicate = edge_tts.Communicate(text, voice, rate=edge_rate, boundary="WordBoundary")
     # save() з metadata_fname пише JSONL (по одному WordBoundary-об'єкту на
     # рядок) — це вбудований, вже перевірений шлях бібліотеки, безпечніший
     # за ручний обхід communicate.stream(). Тимчасовий файл видаляємо після
-    # того, як переклали дані у власний компактний .words.json.
+    # того, як переклали дані у власний компактний .words.json (чи просто
+    # звірили на цілісність, якщо want_timing=False).
     raw_meta_path = pathlib.Path(str(output_path) + '.meta.jsonl')
     await communicate.save(str(output_path), str(raw_meta_path))
 
@@ -642,9 +732,19 @@ async def synthesize_speech(text, voice, rate_str, output_path, want_timing=Fals
         finally:
             raw_meta_path.unlink(missing_ok=True)
 
-    timing_path = pathlib.Path(str(output_path)).with_suffix('.words.json')
-    with open(timing_path, 'w', encoding='utf-8') as f:
-        json.dump(words, f, ensure_ascii=False)
+    if _looks_truncated(text, [w['word'] for w in words]):
+        expected_n = len(re.findall(r"\S+", text))
+        raise RuntimeError(
+            f"Обірваний потік Edge TTS: отримано {len(words)} слів-подій, "
+            f"текст очікує ~{expected_n} — файл, судячи з усього, "
+            f"обрізаний і не буде збережений."
+        )
+
+    if want_timing:
+        timing_path = pathlib.Path(str(output_path)).with_suffix('.words.json')
+        with open(timing_path, 'w', encoding='utf-8') as f:
+            json.dump(words, f, ensure_ascii=False)
+
 
 def git_commit_and_push(count):
     """Комітить+пушить поточний stage (якщо є що), і В БУДЬ-ЯКОМУ РАЗІ
