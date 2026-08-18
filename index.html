@@ -762,6 +762,13 @@ body{
   background:#7c5cb0;
   box-shadow:0 5px 0 rgba(60,40,90,.4), 0 7px 12px rgba(60,40,90,.18);
 }
+/* Forumsbeitrag — окремий вузол шляху (той самий принцип, що dialogue:
+   💬/🧩 вище), теплий бурштиновий акцент, щоб не плутати з жодним із
+   двох типів діалогу — це монолог-текст, не розмова. */
+.lp-node.lp-node-forum{
+  background:#c07a2e;
+  box-shadow:0 5px 0 rgba(120,70,20,.4), 0 7px 12px rgba(120,70,20,.18);
+}
 .lp-node.done{
   background:var(--gold);
   box-shadow:0 5px 0 rgba(160,128,40,.4), 0 7px 12px rgba(160,128,40,.16);
@@ -786,6 +793,9 @@ body{
 }
 .lp-node.lp-node-problemsolving.current{
   box-shadow:0 7px 0 rgba(60,40,90,.4), 0 10px 18px rgba(60,40,90,.22);
+}
+.lp-node.lp-node-forum.current{
+  box-shadow:0 7px 0 rgba(120,70,20,.4), 0 10px 18px rgba(120,70,20,.22);
 }
 .lp-node.current .lp-node-current-ring{ inset:-12px; border-width:4px; }
 @keyframes lpNodeBreathe{
@@ -3505,7 +3515,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '507-e2d0df1';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3684,6 +3694,23 @@ function _lpDialogueNodeType(dlgCardIds, isFirst){
   return isFirst ? 'smalltalk' : 'problemsolving';
 }
 
+// Список id, придатних для окремого вузла-Forumsbeitrag на стежці — той
+// самий принцип, що _lpEligibleDialogueIds вище, але простіший: типів
+// лише один (жодного розгалуження на smalltalk/problemsolving), тож
+// єдина умова — картка справді існує у var SCHREIBEN і має
+// cat:"Forumsbeitrag" (захист від помилково вписаного id чи майбутніх
+// інших типів у тому самому масиві).
+function _lpEligibleForumIds(frmCardIds){
+  if(typeof SCHREIBEN === 'undefined' || !Array.isArray(SCHREIBEN)) return [];
+  var ids = new Set(frmCardIds || []);
+  var byId = {};
+  SCHREIBEN.forEach(function(c){ if(ids.has(c.id)) byId[c.id] = c; });
+  return (frmCardIds || []).filter(function(id){
+    var c = byId[id];
+    return c && c.cat === 'Forumsbeitrag';
+  });
+}
+
 function buildLearningPath(rawLessons, courseLevel){
   if(!Array.isArray(rawLessons) || !rawLessons.length) return rawLessons;
   var cfg = PATH_CONFIG[courseLevel] || { newWordsPerLesson: 6, reviewMix: 3 };
@@ -3771,6 +3798,22 @@ function buildLearningPath(rawLessons, courseLevel){
       (dlgAtSlot[slot] = dlgAtSlot[slot] || []).push({dlgId: dlgId, order: k});
     });
 
+    // Forumsbeitrag — той самий принцип розподілу по слотах, що й діалог
+    // щойно вище (той самий "розподілити m елементів по n слотах" —
+    // slot(k) = floor((k+1)·n / (m+1))), АЛЕ окремим незалежним
+    // розподілом: dlgAtSlot і frmAtSlot рахуються кожен від СВОЄЇ
+    // кількості елементів (eligibleDlgIds.length / eligibleFrmIds.length),
+    // тож вони можуть лягати в один і той самий слот (обидва вставляться
+    // в тому самому місці ланцюжка, просто послідовними вузлами — це
+    // рідкісний випадок, бо в модулі зазвичай щонайбільше 1
+    // Forumsbeitrag, на відміну від дialogCards, де буває кілька).
+    var eligibleFrmIds = _lpEligibleForumIds(lesson.frmCards);
+    var frmAtSlot = {};
+    eligibleFrmIds.forEach(function(frmId, k){
+      var slot = Math.min(n-1, Math.floor((k+1) * n / (eligibleFrmIds.length+1)));
+      (frmAtSlot[slot] = frmAtSlot[slot] || []).push({frmId: frmId, order: k});
+    });
+
     chunks.forEach(function(chunk, idx){
       var isLast = idx === n-1;
       var subCardIds = chunk.slice();
@@ -3792,6 +3835,7 @@ function buildLearningPath(rawLessons, courseLevel){
         unlockAfter: unlockAfter,
         sbCards:     isLast ? (lesson.sbCards || []) : [],
         dlgCards:    [], // діалог тепер окремий вузол послідовності (нижче), не бонус-сайдкар лекції
+        frmCards:    [], // Forumsbeitrag — так само окремий вузол (нижче), не сайдкар лекції
         _subIndex:   idx+1,
         _subTotal:   n,
         _parentModuleId: lesson.id,
@@ -3831,6 +3875,26 @@ function buildLearningPath(rawLessons, courseLevel){
           dlgType:     _lpDialogueNodeType([item.dlgId], item.order === 0),
           cardIds:     [item.dlgId],
           dlgCards:    [item.dlgId],
+          sbCards:     [],
+          unlockAfter: withinModulePrevId,
+          _parentModuleId: lesson.id,
+        }));
+        withinModulePrevId = nodeId;
+      });
+
+      // Forumsbeitrag — той самий принцип, що діалог щойно вище: власний
+      // вузол шляху на КОЖНУ картку (не сайдкар), cardIds=[frmId] для
+      // повторного використання lessonProgress/lessonUnlocked/SM-2
+      // без жодних умов на type.
+      var slotFrms = frmAtSlot[idx] || [];
+      slotFrms.forEach(function(item){
+        var nodeId = lesson.id + '_frm' + (item.order+1);
+        out.push(Object.assign({}, lesson, {
+          id:          nodeId,
+          type:        'forum',
+          cardIds:     [item.frmId],
+          frmCards:    [item.frmId],
+          dlgCards:    [],
           sbCards:     [],
           unlockAfter: withinModulePrevId,
           _parentModuleId: lesson.id,
@@ -7614,6 +7678,7 @@ function _runBonusLessonFlow(lesson){
     sbIdx:      0,
     dlgCard:    null,
     dlgCards:   lesson._dlgBonusPool || [],
+    frmCards:   lesson._frmBonusPool || [],
     steps:      lesson.steps,
     step:       0,
     results:    {},
@@ -8199,6 +8264,9 @@ function _lpNodeVisual(node){
       ? { icon: '🧩', cls: 'lp-node-problemsolving' }
       : { icon: '💬', cls: 'lp-node-smalltalk' };
   }
+  if(node.type === 'forum'){
+    return { icon: '📰', cls: 'lp-node-forum' };
+  }
   return { icon: '📖', cls: 'lp-node-lesson' };
 }
 
@@ -8211,8 +8279,9 @@ function renderPathNode(node, idx){
   const isDone    = pct >= 80;
   const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
+  const isForum = node.type === 'forum';
   const visual = _lpNodeVisual(node);
-  // Іконка типу (📖/💬/🧩) лишається однаковою і на пройденому уроці —
+  // Іконка типу (📖/💬/🧩/📰) лишається однаковою і на пройденому уроці —
   // ЗМІНЮЄТЬСЯ лише колір (через .lp-node.done → золотий фон, CSS
   // нижче), не сама іконка. Раніше пройдений урок ставав ★ незалежно
   // від типу — і тоді неможливо було на око знайти, скажімо, конкретний
@@ -8222,7 +8291,9 @@ function renderPathNode(node, idx){
   const offset = _lpZigzagOffset(idx);
   const clickHandler = !unlocked
     ? 'showLockedLessonModal()'
-    : isDialogue ? `startModuleDialogueBonus('${node.id}')` : `startLessonFlow('${node.id}')`;
+    : isDialogue ? `startModuleDialogueBonus('${node.id}')`
+    : isForum ? `startModuleForumBonus('${node.id}')`
+    : `startLessonFlow('${node.id}')`;
   const chipLabel = pct > 0
     ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
     : ({uk:'▶ Почати',     en:'▶ Start',    ru:'▶ Начать',     de:'▶ Starten'}[uiLang] || '▶ Starten');
@@ -8341,6 +8412,48 @@ function startModuleDialogueBonus(lessonId){
     _bonusForLessonId: lesson.id,
     steps: ['dlg_learn', 'result'],
     _dlgBonusPool: pool,   // ВЕСЬ пул одразу — без порційного "Наступний діалог"
+  });
+}
+
+// Пул Forumsbeitrag ОДНОГО уроку — той самий принцип, що
+// buildModuleDialoguePool щойно вище. Для path-вузла (lesson.frmCards
+// містить рівно 1 id, див. buildLearningPath) пул завжди з 1 картки;
+// сортування за SM-2-пріоритетом тут навмисно не робимо (на відміну
+// від діалогу) — сенсу нема сортувати масив з одного елемента, а якщо
+// колись з'явиться "Бонус: Forumsbeitrag" глави з кількома картками
+// одразу (за аналогією з buildChapterDialoguePool) — сортування можна
+// буде додати тоді ж.
+function buildModuleForumPool(lesson){
+  const allFrm = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN : [];
+  if(!allFrm.length || !(lesson.frmCards||[]).length) return [];
+  const ids = new Set(lesson.frmCards);
+  return allFrm.filter(c => ids.has(c.id) && c.cat === 'Forumsbeitrag');
+}
+
+// Точка входу з кліку по вузлу шляху type:'forum' (renderPathNode) — той
+// самий каркас, що startModuleDialogueBonus щойно вище: мінімальний
+// lesson-flow лише з практичним кроком (тут — 'frm_learn') + result.
+function startModuleForumBonus(lessonId){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const lesson  = lessons.find(l=>l.id===lessonId);
+  if(!lesson) return;
+  const pool = buildModuleForumPool(lesson);
+  if(!pool.length){
+    notify('⚠️ '+(uiLang==='uk'?'Немає Forumsbeitrag для цього уроку':uiLang==='ru'?'Нет Forumsbeitrag для этого урока':uiLang==='en'?'No Forumsbeitrag for this lesson':'Kein Forumsbeitrag für diese Lektion'));
+    return;
+  }
+
+  const title = {
+    de:'Forumsbeitrag: '+(lesson.title?.de||''), uk:'Допис на форумі: '+(lesson.title?.uk||''),
+    en:'Forum post: '+(lesson.title?.en||''), ru:'Пост на форуме: '+(lesson.title?.ru||''),
+  };
+  _runBonusLessonFlow({
+    id: '_frm_module_'+lesson.id,
+    title,
+    _isBonusLesson: true,
+    _bonusForLessonId: lesson.id,
+    steps: ['frm_learn', 'result'],
+    _frmBonusPool: pool,
   });
 }
 
@@ -11053,6 +11166,7 @@ const LF_STEP_ICONS = {
   quiz:     '❓',
   sb_learn: '📖',
   dlg_learn:'💬',
+  frm_learn:'📰',
   sb_prac:  '🎯',
   result:   '🏁',
 };
@@ -11066,6 +11180,7 @@ const LF_STEP_LABELS = {
   quiz:     {de:'Quiz',           uk:'Квіз',               en:'Quiz'},
   sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція',  en:'Language Pattern'},
   dlg_learn:{de:'Dialogue',       uk:'Dialogue',           en:'Dialogue'},
+  frm_learn:{de:'Forumsbeitrag',  uk:'Допис на форумі',    en:'Forum post'},
   sb_prac:  {de:'Grammatik',       uk:'Граматика',          en:'Grammar'},
   result:   {de:'Ergebnis',       uk:'Результат',          en:'Result'},
 };
@@ -11146,6 +11261,12 @@ function lfRenderBar(){
       // type (напр. звичайний Dialogue Bonus на уроці, не з path-вузла:
       // той механізм не фільтрує по type, як buildLearningPath).
       nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' + LF.dlgCards[0].type;
+    } else if(cur === 'frm_learn' && LF.frmCards && LF.frmCards[0] && LF.frmCards[0].topic){
+      // Той самий принцип, що dlg_learn щойно вище — замість статичного
+      // "Forumsbeitrag" показуємо реальну тему картки (card.topic),
+      // одразу зрозуміло, ПРО ЩО цей допис, не лише що це "допис".
+      var frmTopic = LF.frmCards[0].topic[uiLang] || LF.frmCards[0].topic[primaryLang()] || LF.frmCards[0].topic.de || '';
+      nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' + frmTopic;
     } else {
       nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' +
         (LF_STEP_LABELS[cur]?.[uiLang] || LF_STEP_LABELS[cur]?.de || cur);
@@ -11162,6 +11283,13 @@ function _lfStepWeight(stepName){
   if(stepName === 'dlg_learn' && LF){
     if(LF.dlgCards && LF.dlgCards.length) return _dlgCardsToUnits(LF.dlgCards).length;
     if(LF.dlgCard) return _dlgCardTurns(LF.dlgCard).length;
+  }
+  // Forumsbeitrag — той самий принцип, що dlg_learn щойно вище: вага =
+  // фактична кількість "реплік"-блоків (task + кожна частина parts),
+  // не завжди 1 — довший допис і на прогрес-барі мав би займати
+  // пропорційно більшу частку.
+  if(stepName === 'frm_learn' && LF && LF.frmCards && LF.frmCards.length){
+    return _frmCardsToUnits(LF.frmCards).length;
   }
   // "Знайди пару" — кожна пара окремий "крок" по вазі, так само як
   // репліки діалогу вище: довший раунд (більше пар) мав би займати
@@ -11300,6 +11428,8 @@ function lfGoStep(stepIdx){
     lfStartSBLearn();
   } else if(step === 'dlg_learn'){
     lfStartDlgLearn();
+  } else if(step === 'frm_learn'){
+    lfStartFrmLearn();
   } else if(step === 'sb_prac'){
     lfStartSBPrac();
   } else if(step === 'result'){
@@ -12150,6 +12280,39 @@ function lfStartDlgLearn(){
 }
 
 function _lfDlgLearnDone(){
+  var fcArea = document.getElementById('fc-area');
+  if(fcArea) fcArea.style.display = '';
+  var vprogrow = document.querySelector('#vocab-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = '';
+  var unitCard = document.getElementById('lf-unit-card');
+  if(unitCard) unitCard.style.display = 'none';
+  var vplayer = document.querySelector('#view-vocab .vplayer');
+  if(vplayer) vplayer.style.display = '';
+  setTimeout(initSwipe, 50);
+  lfRenderBar();
+  lfNextStep();
+}
+
+// Forumsbeitrag-крок ('frm_learn') УСЕРЕДИНІ звичайного lesson-flow —
+// той самий каркас 1:1, що lfStartDlgLearn/_lfDlgLearnDone щойно вище,
+// лише LF.frmCards/_frmCardsToUnits/_lfFrmHandlers замість dlg-аналогів.
+// Рендериться в той самий контейнер #vocab-panel-card (tab 0) — не
+// #dlg-panel-card, як самостійний debug-перегляд (debugOpenForumsbeitrag) —
+// адже тут це крок уроку, а не окремий екран Dialogue.
+function lfStartFrmLearn(){
+  const hasCards = LF && LF.frmCards && LF.frmCards.length;
+  if(!hasCards){ lfNextStep(); return; }
+
+  var vp = document.querySelector('#view-vocab .vplayer');
+  if(vp) vp.style.display='';
+
+  switchVocabTab(0);
+
+  var units = _frmCardsToUnits(LF.frmCards);
+  lfRunUnitStep(units, _lfFrmHandlers, _lfFrmLearnDone);
+}
+
+function _lfFrmLearnDone(){
   var fcArea = document.getElementById('fc-area');
   if(fcArea) fcArea.style.display = '';
   var vprogrow = document.querySelector('#vocab-panel-card .vprogrow-flow');
@@ -13236,8 +13399,20 @@ function lfShowResult(){
   const isDlgOnly = LF.cards.length === 0 && (LF.dlgCards||[]).length > 0;
   const totalTurns = isDlgOnly ? LF.dlgCards.reduce((sum,c)=>sum+_dlgCardTurns(c).length, 0) : 0;
 
+  // Той самий випадок, що isDlgOnly щойно вище, для Forumsbeitrag-уроку
+  // (LF.cards порожній, лише LF.frmCards) — без цієї гілки код провалився б
+  // в else нижче й рахував б improved/pct з ПОРОЖНЬОГО LF.cards
+  // (0/0 = NaN), тож перевіряємо isFrmOnly ПЕРШИМ (до isDlgOnly теж
+  // технічно можна, порядок не критичний — обидва флаги взаємовиключні,
+  // бо на один бонусний урок призначається лише ОДИН з трьох пулів:
+  // dlgCards/frmCards/_grammarBonusPool).
+  const isFrmOnly = LF.cards.length === 0 && (LF.frmCards||[]).length > 0;
+
   let improved = 0, pct = 0, emoji, titleText;
-  if(isDlgOnly){
+  if(isFrmOnly){
+    emoji = '📰';
+    titleText = uiLang==='uk'?'Допис завершено!':uiLang==='en'?'Forum post completed!':uiLang==='ru'?'Пост завершён!':'Beitrag abgeschlossen!';
+  } else if(isDlgOnly){
     emoji = '💬';
     titleText = uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!';
   } else {
@@ -13272,9 +13447,11 @@ function lfShowResult(){
   // (#streak-celebration) — ДРУГИЙ, лише коли стрік реально зростає (1
   // раз на день): зростання стріку — це НАСЛІДОК завершеного уроку, тож
   // показується вже ПІСЛЯ нагороди за сам урок, а не раніше.
-  const isGrammarOnly = LF.cards.length === 0 && !isDlgOnly && (LF._grammarBonusPool||[]).length > 0;
-  const lcIcon  = isDlgOnly ? '💬' : isGrammarOnly ? '📚' : '✓';
-  const lcLabel = isDlgOnly
+  const isGrammarOnly = LF.cards.length === 0 && !isDlgOnly && !isFrmOnly && (LF._grammarBonusPool||[]).length > 0;
+  const lcIcon  = isFrmOnly ? '📰' : isDlgOnly ? '💬' : isGrammarOnly ? '📚' : '✓';
+  const lcLabel = isFrmOnly
+    ? (uiLang==='uk'?'Допис завершено!':uiLang==='en'?'Forum post completed!':uiLang==='ru'?'Пост завершён!':'Beitrag abgeschlossen!')
+    : isDlgOnly
     ? (uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!')
     : isGrammarOnly
       ? (uiLang==='uk'?'Граматику завершено!':uiLang==='en'?'Grammar completed!':uiLang==='ru'?'Грамматика завершена!':'Grammatik abgeschlossen!')
@@ -13329,7 +13506,11 @@ function lfShowResult(){
   const statsEl = document.getElementById('lr-stats');
   if(statsEl){
     const xpRow = [uiLang==='uk'?'M зароблено':uiLang==='en'?'M earned':uiLang==='ru'?'M заработано':'M verdient', '<span style="color:var(--gold)">𐌌</span> '+xpEarned];
-    const rows = isDlgOnly ? [
+    const rows = isFrmOnly ? [
+      [uiLang==='uk'?'Дописів':uiLang==='en'?'Forum posts':uiLang==='ru'?'Постов':'Beiträge', LF.frmCards.length],
+      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
+      xpRow,
+    ] : isDlgOnly ? [
       [uiLang==='uk'?'Діалогів':uiLang==='en'?'Dialogues':uiLang==='ru'?'Диалогов':'Dialoge', LF.dlgCards.length],
       [uiLang==='uk'?'Реплік':uiLang==='en'?'Turns':uiLang==='ru'?'Реплик':'Repliken', totalTurns],
       [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],

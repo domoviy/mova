@@ -472,6 +472,9 @@ var LESSONS = [
       "dlg_029",
       "dlg_037",
       "dlg_038"
+    ],
+    "frmCards": [
+      "forum_001"
     ]
   },
   {
