@@ -13383,5 +13383,81 @@ var SCHREIBEN = [
         "ru": "Анна"
       }
     ]
+  },
+  {
+    "id": "forum_002",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Nachhaltige Dienstreisen",
+      "en": "Sustainable business trips",
+      "uk": "Екологічні відрядження",
+      "ru": "Экологичные командировки"
+    },
+    "task": {
+      "de": "Aus Umweltgründen sollen Dienstreisen unter 800 Kilometern künftig nur noch mit der Bahn statt mit dem Flugzeug stattfinden. Die Zugfahrt dauert oft deutlich länger als der Flug.",
+      "en": "For environmental reasons, business trips under 800 kilometers are to take place only by train instead of by plane in future. The train journey often takes significantly longer than the flight.",
+      "uk": "З екологічних причин відрядження на відстань до 800 кілометрів мають надалі здійснюватися лише потягом, а не літаком. Поїздка потягом часто триває значно довше, ніж політ.",
+      "ru": "По экологическим причинам командировки на расстояние до 800 километров должны впредь осуществляться только поездом, а не самолётом. Поездка на поезде часто занимает значительно больше времени, чем перелёт."
+    },
+    "gram": "nominalisierung",
+    "name": "de_w_julia",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, Dienstreisen unter 800 Kilometern künftig nur noch mit der Bahn durchführen zu lassen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to have business trips under 800 kilometers carried out only by train in the future. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб відрядження на відстань до 800 кілометрів надалі здійснювались лише потягом. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы командировки на расстояние до 800 километров впредь осуществлялись только поездом. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Regelung grundsätzlich sinnvoll ist, auch wenn sie im Alltag nicht immer einfach umzusetzen sein wird.",
+        "en": "I am of the opinion that this policy basically makes sense, even if it won't always be easy to implement in everyday life.",
+        "uk": "Я вважаю, що це правило в принципі має сенс, навіть якщо його не завжди буде легко втілити в повсякденному житті.",
+        "ru": "Я считаю, что это правило в принципе имеет смысл, даже если его не всегда будет легко реализовать в повседневной жизни."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos <g>die Reduzierung</g> unseres CO2-Ausstoßes, denn die Bahn ist deutlich umweltfreundlicher als das Flugzeug. Außerdem lässt sich die Fahrtzeit oft produktiv für die Vorbereitung von Terminen nutzen.",
+        "en": "One advantage would undoubtedly be the reduction of our CO2 emissions, since trains are much more environmentally friendly than planes. In addition, travel time can often be used productively to prepare for appointments.",
+        "uk": "Однією з переваг, безсумнівно, було б скорочення наших викидів CO2, адже потяг набагато екологічніший за літак. Крім того, час у дорозі часто можна продуктивно використати для підготовки до зустрічей.",
+        "ru": "Одним из преимуществ, несомненно, было бы сокращение наших выбросов CO2, ведь поезд намного экологичнее самолёта. Кроме того, время в пути часто можно продуктивно использовать для подготовки к встречам."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> bedeutet eine längere Anreise auch mehr Zeit, die uns für die eigentliche Arbeit fehlt. Bei kurzfristigen Terminen könnte eine Zugverspätung zudem zu ernsthaften Problemen führen.",
+        "en": "On the other hand, a longer journey also means less time for our actual work. In the case of short-notice appointments, a delayed train could also lead to serious problems.",
+        "uk": "З іншого боку, довша дорога означає й менше часу на власне роботу. У випадку термінових зустрічей запізнення потяга також могло б призвести до серйозних проблем.",
+        "ru": "С другой стороны, более долгая дорога означает и меньше времени на саму работу. В случае срочных встреч опоздание поезда также могло бы привести к серьёзным проблемам."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir bei der <g>Umsetzung</g> Ausnahmen zulassen, wenn eine Zugfahrt aus zeitlichen Gründen wirklich nicht in Frage kommt.",
+        "en": "That's why I suggest that we allow exceptions in the implementation, when a train journey is really not an option for time reasons.",
+        "uk": "Тому я пропоную, щоб при впровадженні ми допускали винятки, якщо поїздка потягом справді не підходить через брак часу.",
+        "ru": "Поэтому я предлагаю, чтобы при внедрении мы допускали исключения, если поездка на поезде действительно не подходит по причине нехватки времени."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Julia",
+        "en": "Julia",
+        "uk": "Юлія",
+        "ru": "Юлия"
+      }
+    ]
   }
 ];
