@@ -1992,7 +1992,8 @@ var LESSONS = [
       "ru": "В командировке – объявления"
     },
     "skills": [
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "indefinitpronomen",
     "cardIds": [
@@ -2062,6 +2063,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_060",
       "dlg_088"
+    ],
+    "frmCards": [
+      "forum_002"
     ]
   },
   {

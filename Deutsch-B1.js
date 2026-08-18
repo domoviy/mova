@@ -3195,7 +3195,8 @@ var LESSONS = [
       "dlg_033",
       "dlg_034",
       "dlg_035",
-      "dlg_036"
+      "dlg_036",
+      "dlg_113"
     ]
   },
   {
@@ -3232,7 +3233,10 @@ var LESSONS = [
       "k9_031"
     ],
     "unlockAfter": "k9m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_114"
+    ]
   },
   {
     "id": "k9m3",
@@ -29596,6 +29600,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: посетим выставку, попросим порекомендовать художников, спросим о правилах и обменяемся мнениями с художниками. Это точно будет интересно! Спасибо за идею, Алекс!"
     },
     "gram": "adjektive_mit_un"
+  },
+  {
+    "id": "dlg_113",
+    "cat": "Eine neue Arbeit!",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund/Ihre Freundin möchten beide die Stelle wechseln und planen gemeinsam, wie Sie sich bewerben.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWas wäre Ihre Traumstelle?\nWas würden Sie sich vom Gehalt wünschen?\nWer könnte beim Anschreiben helfen?\nWas wäre für Sie bei der Arbeit wichtig? (flexible Zeiten, nette Kollegen)\nWie würden Sie sich auf ein Gespräch vorbereiten?",
+      "en": "Situation: You and your friend both want to change jobs and are planning together how to apply.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat would your dream job be?\nWhat would you wish for regarding the salary?\nWho could help with the cover letter?\nWhat would be important to you at work? (flexible hours, nice colleagues)\nHow would you prepare for an interview?",
+      "uk": "Ситуація: Ви та Ваш друг/Ваша подруга обоє хочете змінити роботу й разом плануєте, як подаватися на нову посаду.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯкою була б Ваша робота мрії?\nЩо б Ви хотіли щодо зарплати?\nХто міг би допомогти із супровідним листом?\nЩо було б для Вас важливим на роботі? (гнучкий графік, приємні колеги)\nЯк би Ви підготувалися до співбесіди?",
+      "ru": "Ситуация: Вы и Ваш друг/Ваша подруга оба хотите сменить работу и вместе планируете, как подаваться на новую должность.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКакой была бы Ваша работа мечты?\nЧто бы Вы хотели насчёт зарплаты?\nКто мог бы помочь с сопроводительным письмом?\nЧто было бы для Вас важным на работе? (гибкий график, приятные коллеги)\nКак бы Вы подготовились к собеседованию?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Hallo, Alex! Ich habe gehört, dass du auch überlegst, die Stelle zu wechseln. Wollen wir zusammen planen, wie wir uns bewerben?",
+      "en": "Hi, Alex! I heard that you're also thinking about switching jobs. Shall we plan together how to apply?",
+      "uk": "Привіт, Алексе! Я чула, що ти теж думаєш про зміну роботи. Може, разом сплануємо, як подаватися на нову посаду?",
+      "ru": "Привет, Алекс! Я слышала, что ты тоже думаешь о смене работы. Может, вместе спланируем, как подаваться на новую должность?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Ich <g>wäre</g> so gern in einer Firma mit flexiblen Arbeitszeiten – lass uns zuerst danach suchen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> I <g>would</g> love to work at a company with flexible hours – let's search for that first.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> я <g>б</g> дуже хотів працювати у фірмі з гнучким графіком – давай спершу пошукаємо таку.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> я <g>бы</g> очень хотел работать в компании с гибким графиком – давай сначала поищем такую.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> das Gehalt <r>bedenken</r>.<br><r>Wir könnten doch</r> auch darüber sprechen – wenn ich nur ein höheres Gehalt <g>hätte</g>, könnte ich mir mehr leisten.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the salary.<br><r>We could</r> also talk about that – if only I <g>had</g> a higher salary, I could afford more.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> зарплату.<br><r>Ми могли б</r> також поговорити про це – якби ж я <g>мала</g> вищу зарплату, я могла б дозволити собі більше.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> зарплате.<br><r>Мы могли бы</r> также поговорить об этом – если бы у меня <g>была</g> зарплата побольше, я могла бы позволить себе больше.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch über die Branche sprechen – ich <g>würde</g> am liebsten in die IT-Branche wechseln.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> also talk about the industry – I <g>would</g> most love to switch to the IT industry.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> також поговоримо про галузь – я <g>б</g> найбільше хотів перейти в ІТ-сферу.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также поговорим об отрасли – я <g>бы</g> больше всего хотел перейти в IT-сферу.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir uns auch überlegen, wie eine Beförderung aussehen könnte – ich <g>hätte</g> auch gern dieses Jahr eine Beförderung.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we also think about what a promotion could look like – I <g>would</g> love to get a promotion this year too.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми також подумали, як могло б виглядати підвищення – я <g>б</g> теж хотіла цього року підвищення.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы также подумали, как могло бы выглядеть повышение – я <g>бы</g> тоже хотела в этом году повышение.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie realistisch das ist.<br><r>Eine Idee wäre, dass wir</r> zuerst an den Überstunden arbeiten – ich <g>würde</g> doch so gern weniger Überstunden machen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how realistic that is.<br><r>One idea would be that we</r> first work on the overtime – I really <g>would</g> love to work fewer overtime hours.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> наскільки це реалістично.<br><r>Була б ідея, щоб ми</r> спершу попрацювали над понаднормовими – я <g>б</g> дуже хотів менше працювати понаднормово.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> насколько это реалистично.<br><r>Была бы идея, чтобы мы</r> сначала поработали над сверхурочными – я <g>бы</g> очень хотел меньше работать сверхурочно.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns gegenseitig beim Anschreiben helfen? Es <g>wäre</g> schön, wenn wir beide bald eine neue Stelle hätten.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> help each other with the cover letter? It <g>would</g> be nice if we both had a new position soon.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> допоможемо одне одному із супровідним листом? <g>Було б</g> чудово, якби ми обоє скоро мали нову посаду.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> поможем друг другу с сопроводительным письмом? <g>Было бы</g> здорово, если бы мы оба скоро получили новую должность.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob ich schon bereit für ein Gespräch bin.<br><r>Vielleicht wäre es am besten, wenn wir</r> erst ein bisschen üben – ich <g>würde</g> mir wünschen, dass die neuen Kollegen wenigstens nett sind.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether I'm ready for an interview yet.<br><r>Maybe it would be best if we</r> practice a little first – I <g>would</g> wish that the new colleagues are at least nice.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи готовий я вже до співбесіди.<br><r>Можливо, було б найкраще, якби ми</r> спершу трохи потренувалися – я <g>б</g> хотів, щоб нові колеги були хоча б приємними.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, готов ли я уже к собеседованию.<br><r>Может быть, было бы лучше, если бы мы</r> сначала немного потренировались – я <g>бы</g> хотел, чтобы новые коллеги были хотя бы приятными.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns morgen treffen – ich <g>hätte</g> gern deine Hilfe beim Anschreiben.<br><r>Bist du damit einverstanden</r>, Alex?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> meet tomorrow – I <g>would</g> love your help with the cover letter.<br><r>Are you okay with that</r>, Alex?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> зустрінемося завтра – я <g>б</g> хотіла твоєї допомоги із супровідним листом.<br><r>Ти з цим згоден</r>, Алексе?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> встретимся завтра – я <g>бы</g> хотела твоей помощи с сопроводительным письмом.<br><r>Ты с этим согласен</r>, Алекс?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir suchen nach flexiblen Stellen, sprechen übers Gehalt und die Beförderung, helfen uns beim Anschreiben und üben für das Gespräch. Ich freue mich schon auf unsere neuen Karrieren! Danke für die Idee, Nina!",
+      "en": "Yes, of course! So, here's what we'll do: we'll search for flexible positions, talk about the salary and the promotion, help each other with the cover letter, and practice for the interview. I'm already looking forward to our new careers! Thanks for the idea, Nina!",
+      "uk": "Так, звісно! Отже, зробимо так: пошукаємо гнучкі посади, поговоримо про зарплату й підвищення, допоможемо одне одному із супровідним листом і потренуємося перед співбесідою. Я вже тішуся нашій новій кар'єрі! Дякую за ідею, Ніно!",
+      "ru": "Да, конечно! Итак, сделаем так: поищем гибкие должности, поговорим о зарплате и повышении, поможем друг другу с сопроводительным письмом и потренируемся перед собеседованием. Я уже жду нашей новой карьеры! Спасибо за идею, Нина!"
+    },
+    "gram": "konjunktiv2_wuensche_b1"
+  },
+  {
+    "id": "dlg_114",
+    "cat": "Traumjob-Bewerbung gemeinsam planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Kollege/Ihre Kollegin träumen beide von einem neuen Job und möchten gemeinsam planen, wie Sie sich bewerben.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWas würden Sie tun, wenn Sie mehr Zeit hätten?\nWo finden Sie Stellenanzeigen?\nWas würden Sie im Lebenslauf ändern?\nWie würden Sie mehr Motivation zeigen?\nWas wäre Ihre Chance auf den Traumjob?",
+      "en": "Situation: You and your colleague both dream of a new job and want to plan together how you'll apply.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat would you do if you had more time?\nWhere do you find job ads?\nWhat would you change in your CV?\nHow would you show more motivation?\nWhat would be your chance at the dream job?",
+      "uk": "Ситуація: Ви та Ваш колега/Ваша колега обоє мрієте про нову роботу і хочете разом спланувати, як подаватися.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЩо б Ви робили, якби мали більше часу?\nДе знайти оголошення про вакансії?\nЩо б Ви змінили в резюме?\nЯк би Ви показали більше мотивації?\nЯким був би Ваш шанс на роботу мрії?",
+      "ru": "Ситуация: Вы и Ваш коллега/Ваша коллега оба мечтаете о новой работе и хотите вместе спланировать, как подаваться.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nЧто бы Вы делали, если бы у Вас было больше времени?\nГде найти объявления о вакансиях?\nЧто бы Вы изменили в резюме?\nКак бы Вы показали больше мотивации?\nКаким был бы Ваш шанс на работу мечты?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo, Anna! Ich habe gehört, dass du auch von einem neuen Job träumst. Wollen wir zusammen planen, wie wir uns bewerben?",
+      "en": "Hi, Anna! I heard that you're also dreaming of a new job. Shall we plan together how we can apply?",
+      "uk": "Привіт, Анно! Я чув, що ти теж мрієш про нову роботу. Може, разом сплануємо, як подаватися?",
+      "ru": "Привет, Анна! Я слышал, что ты тоже мечтаешь о новой работе. Может, вместе спланируем, как подаваться?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> <g>Wenn ich mehr Zeit hätte, würde ich jeden Tag neue Stellenanzeigen durchsuchen</g> – lass uns das zusammen machen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> <g>if I had more time, I would search new job ads every day</g> – let's do that together.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> <g>якби я мала більше часу, я б щодня переглядала нові оголошення про вакансії</g> – давай зробимо це разом.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> <g>если бы у меня было больше времени, я бы каждый день просматривала новые объявления о вакансиях</g> – давай сделаем это вместе.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Mut <r>bedenken</r>.<br><r>Wir könnten doch</r> ehrlich sein – <g>wenn ich mutiger wäre, würde ich sofort kündigen</g>, aber vielleicht sollten wir erst einen neuen Job finden.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the courage.<br><r>We could</r> be honest – <g>if I were braver, I would quit right away</g>, but maybe we should find a new job first.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> сміливість.<br><r>Ми могли б</r> бути чесними – <g>якби я був сміливішим, я б одразу звільнився</g>, але, мабуть, нам варто спершу знайти нову роботу.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> смелости.<br><r>Мы могли бы</r> быть честными – <g>если бы я был смелее, я бы сразу уволился</g>, но, наверное, нам стоит сначала найти новую работу.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns gegenseitig helfen – <g>wenn ich meinen Lebenslauf aktualisieren würde, hätte ich sicher bessere Chancen</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> help each other – <g>if I updated my CV, I would surely have better chances</g>.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> допоможемо одне одному – <g>якби я оновила своє резюме, у мене точно були б кращі шанси</g>.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> помогли друг другу – <g>если бы я обновила своё резюме, у меня точно были бы шансы лучше</g>.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir uns Ziele setzen – <g>wenn ich mich bei mehr Firmen bewerben würde, hätte ich auch mehr Möglichkeiten</g>.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we set ourselves goals – <g>if I applied to more companies, I would also have more opportunities</g>.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми поставили собі цілі – <g>якби я подавався в більше компаній, у мене було б більше можливостей</g>.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы поставили себе цели – <g>если бы я подавался в больше компаний, у меня было бы больше возможностей</g>.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir wirklich haben.<br><r>Eine Idee wäre, dass wir</r> über Teilzeit nachdenken – <g>wenn ich in Teilzeit arbeiten könnte, hätte ich mehr Zeit für die Bewerbungen</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we really have.<br><r>One idea would be that we</r> think about part-time work – <g>if I could work part-time, I would have more time for applications</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу в нас справді є.<br><r>Була б ідея, щоб ми</r> подумали про неповну зайнятість – <g>якби я могла працювати неповний день, у мене було б більше часу на подання заявок</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени у нас действительно есть.<br><r>Была бы идея, чтобы мы</r> подумали о неполной занятости – <g>если бы я могла работать неполный день, у меня было бы больше времени на подачу заявок</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns gegenseitig motivieren? <g>Wenn ich mehr Motivation hätte, würde ich mich noch heute bewerben</g>.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> motivate each other? <g>If I had more motivation, I would apply today already</g>.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> будемо мотивувати одне одного? <g>Якби в мене було більше мотивації, я б подався вже сьогодні</g>.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> будем мотивировать друг друга? <g>Если бы у меня было больше мотивации, я бы подался уже сегодня</g>.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob ein neuer Job wirklich alles besser macht.<br><r>Vielleicht wäre es am besten, wenn wir</r> zuerst überlegen, was uns wichtig ist – <g>wenn der Arbeitgeber flexibler wäre, wäre ich schon viel zufriedener</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether a new job really makes everything better.<br><r>Maybe it would be best if we</r> first think about what's important to us – <g>if the employer were more flexible, I would already be much more satisfied</g>.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи нова робота справді все покращить.<br><r>Можливо, було б найкраще, якби ми</r> спершу подумали, що для нас важливо – <g>якби роботодавець був гнучкішим, я вже була б набагато задоволенішою</g>.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, действительно ли новая работа всё улучшит.<br><r>Может быть, было бы лучше, если бы мы</r> сначала подумали, что для нас важно – <g>если бы работодатель был более гибким, я была бы уже намного довольнее</g>.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns gegenseitig unterstützen. <g>Wenn wir beide unseren Traumjob hätten, wären wir doch beide viel glücklicher</g>.<br><r>Bist du damit einverstanden</r>, Anna?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> support each other. <g>If we both had our dream job, we would both be much happier</g>.<br><r>Are you okay with that</r>, Anna?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> підтримуватимемо одне одного. <g>Якби ми обоє мали роботу мрії, ми обоє були б набагато щасливішими</g>.<br><r>Ти з цим згодна</r>, Анно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> будем поддерживать друг друга. <g>Если бы у нас обоих была работа мечты, мы оба были бы намного счастливее</g>.<br><r>Ты с этим согласна</r>, Анна?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir suchen Stellenanzeigen, aktualisieren unsere Lebensläufe, bewerben uns bei mehreren Firmen und motivieren uns gegenseitig. Ich freue mich schon auf unsere Chance! Danke für die Idee, David!",
+      "en": "Yes, of course! So, here's what we'll do: we'll search for job ads, update our CVs, apply to several companies, and motivate each other. I'm already looking forward to our chance! Thanks for the idea, David!",
+      "uk": "Так, звісно! Отже, зробимо так: пошукаємо оголошення про вакансії, оновимо резюме, подамося в кілька компаній і мотивуватимемо одне одного. Я вже тішуся нашому шансу! Дякую за ідею, Девіде!",
+      "ru": "Да, конечно! Итак, сделаем так: поищем объявления о вакансиях, обновим резюме, подадимся в несколько компаний и будем мотивировать друг друга. Я уже жду нашего шанса! Спасибо за идею, Дэвид!"
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal"
   }
 ];
 
