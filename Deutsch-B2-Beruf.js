@@ -3403,6 +3403,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_074",
       "dlg_101"
+    ],
+    "frmCards": [
+      "forum_003"
     ]
   },
   {
@@ -13464,6 +13467,82 @@ var SCHREIBEN = [
         "en": "Julia",
         "uk": "Юлія",
         "ru": "Юлия"
+      }
+    ]
+  },
+  {
+    "id": "forum_003",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Betriebssport während der Arbeitszeit",
+      "en": "Company sports during working hours",
+      "uk": "Спорт від компанії в робочий час",
+      "ru": "Корпоративный спорт в рабочее время"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte ein wöchentliches Fitnessprogramm einführen, an dem alle Mitarbeitenden während der Arbeitszeit teilnehmen sollen, um die Gesundheitsförderung am Arbeitsplatz zu stärken.",
+      "en": "Management wants to introduce a weekly fitness program that all employees are expected to attend during working hours, in order to strengthen health promotion in the workplace.",
+      "uk": "Керівництво хоче запровадити щотижневу фітнес-програму, в якій усі співробітники мають брати участь у робочий час, щоб посилити оздоровлення на робочому місці.",
+      "ru": "Руководство хочет ввести еженедельную фитнес-программу, в которой все сотрудники должны участвовать в рабочее время, чтобы усилить оздоровление на рабочем месте."
+    },
+    "gram": "nominalisierung",
+    "name": "de_m_mark",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein wöchentliches Fitnessprogramm für alle Mitarbeitenden. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning a weekly fitness program for all employees. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує щотижневу фітнес-програму для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует еженедельную фитнес-программу для всех сотрудников. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> <g>die Einführung</g> eines solchen Programms grundsätzlich sinnvoll ist, auch wenn die konkrete Umsetzung nicht für jede Abteilung gleich einfach sein wird.",
+        "en": "I am of the opinion that introducing such a program basically makes sense, even if the concrete implementation won't be equally easy for every department.",
+        "uk": "Я вважаю, що запровадження такої програми в принципі має сенс, навіть якщо конкретна реалізація буде не для кожного відділу однаково простою.",
+        "ru": "Я считаю, что введение такой программы в принципе имеет смысл, даже если конкретная реализация будет не для каждого отдела одинаково простой."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos <g>der Stressabbau</g>: Betriebssport während der Arbeitszeit fördert die Bewegung und verbessert nachweislich die Konzentrationsfähigkeit. Darüber hinaus kann ein regelmäßiges Fitnessprogramm die Krankheitsrate langfristig senken.",
+        "en": "One advantage would undoubtedly be stress relief: company sports during working hours promote movement and demonstrably improve the ability to concentrate. In addition, a regular fitness program can lower the sickness rate in the long term.",
+        "uk": "Однією з переваг, безсумнівно, було б зниження стресу: корпоративний спорт у робочий час сприяє руху та доведено покращує здатність до концентрації. Крім того, регулярна фітнес-програма може довгостроково знизити рівень захворюваності.",
+        "ru": "Одним из преимуществ, несомненно, было бы снижение стресса: корпоративный спорт в рабочее время способствует движению и доказанно улучшает способность к концентрации. Кроме того, регулярная фитнес-программа может в долгосрочной перспективе снизить уровень заболеваемости."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> bedeutet eine Stunde Betriebssport pro Woche auch eine Stunde weniger für die eigentliche Arbeit, wodurch sich <g>die Arbeitsbelastung</g> an anderer Stelle erhöhen könnte. Zudem haben nicht alle Kolleginnen und Kollegen dieselbe körperliche Fitness, sodass ein verpflichtendes Programm manche eher überfordern als entlasten würde.",
+        "en": "On the other hand, one hour of company sports per week also means one hour less for actual work, which could increase the workload elsewhere. Moreover, not all colleagues have the same physical fitness, so a mandatory program would overwhelm rather than relieve some of them.",
+        "uk": "З іншого боку, одна година корпоративного спорту на тиждень означає й на одну годину менше часу на власне роботу, через що навантаження могло б зрости десь-інде. Крім того, не всі колеги мають однакову фізичну підготовку, тож обов'язкова програма радше перевантажувала б декого, ніж розвантажувала.",
+        "ru": "С другой стороны, один час корпоративного спорта в неделю означает и на один час меньше времени для собственно работы, из-за чего нагрузка могла бы вырасти в другом месте. Кроме того, не у всех коллег одинаковая физическая подготовка, поэтому обязательная программа скорее перегружала бы некоторых, чем разгружала."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> <g>die Teilnahme</g> am Fitnessprogramm freiwillig bleibt und stattdessen auch andere Formen der Gesundheitsförderung angeboten werden, etwa ergonomische Bildschirmarbeitsplätze oder eine bessere Pausenregelung.",
+        "en": "That's why I suggest that participation in the fitness program remain voluntary, and that other forms of health promotion be offered instead, such as ergonomic screen workstations or better break arrangements.",
+        "uk": "Тому я пропоную, щоб участь у фітнес-програмі лишалась добровільною, а натомість пропонувались і інші форми оздоровлення, наприклад ергономічні робочі місця з екраном або краще регулювання перерв.",
+        "ru": "Поэтому я предлагаю, чтобы участие в фитнес-программе оставалось добровольным, а вместо этого предлагались и другие формы оздоровления, например эргономичные рабочие места с экраном или лучшее регулирование перерывов."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Mark",
+        "en": "Mark",
+        "uk": "Марк",
+        "ru": "Марк"
       }
     ]
   }
