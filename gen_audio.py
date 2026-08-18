@@ -55,6 +55,9 @@ CATEGORIES_WITH_TIMING = {
     "vocab":       {"term", "short", "def"},
     "sprachbau":   {"sentence"},
     "redemittel":  None,
+    # Forumsbeitrag (forum_XXX) — той самий принцип, що redemittel:
+    # усі поля (task + кожна частина допису), лише PRIMARY_LANG.
+    "forum":       None,
 }
 
 def field_wants_timing(internal_cat, field, lang, primary_lang):
@@ -108,6 +111,15 @@ VOICE_MAPPING = {
     "redemittel": {
         "q": {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
         "a": {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
+    },
+    # Forumsbeitrag (forum_XXX) — один автор на весь допис (не 2 ролі,
+    # як у redemittel q/a). Голос шукаємо СПЕРШУ за card.name (id
+    # персонажа з characters.js, той самий принцип, що name_q/name_a
+    # у redemittel, — див. resolve_character_voice нижче); цей запис
+    # тут — лише запасний варіант, якщо персонажа не вдалось знайти
+    # (картка ще без name, чи для потрібної мови його не описано).
+    "forum": {
+        "post": {"de": "de-DE-KatjaNeural", "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural", "ru": "ru-RU-SvetlanaNeural"}
     },
     # Grammatik-Trainer (gram_* картки) — слова, що показуються на кнопках
     # відповіді (правильний варіант + дистрактори). Той самий голос для
@@ -289,6 +301,45 @@ def redemittel_fields(item):
         if f'a{n}' in item: fields.append(f'a{n}')
         n += 1
     return fields
+
+def forum_fields(item):
+    """Впорядкований список полів-'реплік' ОДНІЄЇ картки forum_XXX:
+    'task' (умова/тема допису — озвучується так само, як dlg_task у
+    redemittel) першим, далі — role кожного елемента item['parts'] у
+    тому порядку, в якому вони й так записані в базі (anrede,
+    einleitung, meinung, pro, kontra, vorschlag, schluss, name). Точна
+    відповідність _frmCardsToUnits()/FRM_ROLE_LABELS в index.html —
+    тримати синхронізовано, інакше pregen-аудіо розійдеться з тим, що
+    показує клієнт.
+
+    ⚠️ Одна з ролей у parts буквально зветься "name" (підпис під
+    дописом, напр. "Anna") — НЕ плутати з card['name'] на рівні картки
+    (id персонажа-автора з characters.js, напр. "de_w_anna"). Саме тому
+    forum_XXX, на відміну від redemittel, НЕ переливається в generic
+    "field_obj = item.get(field)"-цикл нижче (там 'name' резолвився б
+    у card['name'] замість тексту репліки-підпису) — обробляється
+    окремою гілкою (див. internal_cat == "forum" у main())."""
+    fields = ['task']
+    for part in item.get('parts') or []:
+        role = part.get('role') if isinstance(part, dict) else None
+        if role:
+            fields.append(role)
+    return fields
+
+def forum_field_text(item, field):
+    """Текст (мовний dict {de,en,uk,ru}) для поля картки forum_XXX —
+    'task' читається з item['task'] напряму, будь-яке інше поле
+    шукається за role серед item['parts']. Повертає {} якщо не
+    знайдено (виклик коду тоді просто нічого не генерує для нього).
+    'role' — службовий ключ самого part-об'єкта, не мова, тому явно
+    виключений з результату (інакше цикл нижче спробував би озвучити
+    буквальний рядок ролі, напр. 'anrede', як "текст мовою role")."""
+    if field == 'task':
+        return item.get('task') or {}
+    for part in item.get('parts') or []:
+        if isinstance(part, dict) and part.get('role') == field:
+            return {k: v for k, v in part.items() if k != 'role'}
+    return {}
 
 def clean_text(text):
     if not text:
@@ -839,6 +890,15 @@ async def main():
         internal_cat = "vocab"
         if item_id.startswith("sbs_"):
             internal_cat = "sprachbau"
+        elif item_id.startswith("forum_"):
+            # Forumsbeitrag (var SCHREIBEN) — структурно НЕ як dlg_XXX
+            # (q/a пари двох ролей): один автор (card['name']) на весь
+            # допис, репліки лежать у card['parts'] (кожна — {role,
+            # de,en,uk,ru}), а не в top-level полях картки. Тому окрема
+            # internal_cat, оброблена власною гілкою нижче (не generic
+            # "field_obj = item.get(field)" цикл, розрахований на
+            # top-level поля) — див. коментар у forum_fields().
+            internal_cat = "forum"
         elif item_id.startswith(("dlg_", "red_", "talk_", "prob_")):
             # Діалоги тепер розділені за префіксом id на 3 функціональні
             # типи — окремі папки в audio/ (той самий механізм, що вже
@@ -855,6 +915,67 @@ async def main():
             internal_cat = "redemittel"
 
         cat_lower = item_id.split('_')[0].lower()
+
+        if internal_cat == "forum":
+            # ── Forumsbeitrag: окрема гілка (не generic field/lang цикл
+            # нижче) — один голос-автор на ВЕСЬ допис (card['name'] —
+            # id персонажа з characters.js, той самий принцип, що
+            # name_q/name_a в redemittel, лише ОДНА роль замість двох),
+            # і лише PRIMARY_LANG (той самий принцип, що redemittel/
+            # sprachbau — слухове тренування має сенс лише мовою, яку
+            # вивчають).
+            if primary_lang in audio_config:
+                persona_id = item.get("name")
+                voice = resolve_character_voice(characters_list, persona_id, primary_lang)
+                if not voice:
+                    voice = get_voice_id("forum", "post", primary_lang)
+                rates = audio_config.get(primary_lang, ["100"])
+
+                for field in forum_fields(item):
+                    field_obj = forum_field_text(item, field)
+                    text = field_obj.get(primary_lang) if isinstance(field_obj, dict) else None
+                    if text is None: continue
+                    if isinstance(text, str) and not text.strip(): continue
+
+                    cleaned = clean_text(text)
+                    if not cleaned:
+                        continue
+
+                    want_timing = field_wants_timing("forum", field, primary_lang, primary_lang)
+
+                    for rate in rates:
+                        filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
+                        mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
+
+                        content_hash = compute_content_hash(cleaned, voice, rate)
+                        existing_value = manifest_data.get(mkey)
+                        existing_hash = manifest_hash_part(existing_value)
+
+                        if existing_value != manifest_value(content_hash, want_timing):
+                            tasks.append({
+                                "id": item_id,
+                                "course": course,
+                                "audio_base": audio_base,
+                                "internal_cat": internal_cat,
+                                "cat_lower": cat_lower,
+                                "sub": field,
+                                "lang": primary_lang,
+                                "rate": rate,
+                                "cleaned": cleaned,
+                                "voice": voice,
+                                "filename": filename,
+                                "mkey": mkey,
+                                "content_hash": content_hash,
+                                "existing_hash": existing_hash,
+                                "want_timing": want_timing,
+                                "primary_lang": primary_lang
+                            })
+            # forum_XXX повністю оброблено вище (task+parts, лише
+            # primary_lang) — переходимо до наступної картки, без
+            # generic циклу нижче (розрахований на top-level поля
+            # картки, яких forum-картка в такому вигляді не має).
+            continue
+
         # redemittel (dlg_XXX) може мати змінну кількість реплік у ОДНІЙ
         # картці (q, a, q1, a1, q2, a2, ...) — на відміну від vocab/
         # sprachbau, де набір полів завжди фіксований, тут список
