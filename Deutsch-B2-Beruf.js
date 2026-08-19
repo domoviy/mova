@@ -780,7 +780,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "konnektoren_zweiteilig",
     "cardIds": [
@@ -842,6 +843,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_033",
       "dlg_046"
+    ],
+    "frmCards": [
+      "forum_007"
     ]
   },
   {
@@ -923,6 +927,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_034",
       "dlg_047"
+    ],
+    "frmCards": [
+      "forum_008"
     ]
   },
   {
@@ -942,7 +949,8 @@ var LESSONS = [
       "ru": "Школа – предприятие – университет?"
     },
     "skills": [
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "konnektoren_infinitiv",
     "cardIds": [
@@ -999,6 +1007,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_035",
       "dlg_048"
+    ],
+    "frmCards": [
+      "forum_009"
     ]
   },
   {
@@ -1098,6 +1109,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_036",
       "dlg_049"
+    ],
+    "frmCards": [
+      "forum_010"
     ]
   },
   {
@@ -13782,6 +13796,310 @@ var SCHREIBEN = [
         "en": "Alex",
         "uk": "Алекс",
         "ru": "Алекс"
+      }
+    ]
+  },
+  {
+    "id": "forum_007",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Interne Stellenausschreibung vor externer Suche",
+      "en": "Internal job posting before external search",
+      "uk": "Внутрішнє оголошення вакансії перед зовнішнім пошуком",
+      "ru": "Внутреннее объявление вакансии перед внешним поиском"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte einführen, dass jede offene Stelle zunächst zwei Wochen lang intern ausgeschrieben wird, bevor eine externe Stellenanzeige auf Jobportalen veröffentlicht wird.",
+      "en": "Management wants to introduce a rule that every open position is first posted internally for two weeks before an external job ad is published on job portals.",
+      "uk": "Керівництво хоче запровадити правило, що кожна вакансія спершу два тижні оголошується всередині компанії, перш ніж зовнішнє оголошення публікується на джоб-порталах.",
+      "ru": "Руководство хочет ввести правило, что каждая вакансия сначала две недели объявляется внутри компании, прежде чем внешнее объявление публикуется на джоб-порталах."
+    },
+    "gram": "konnektoren_zweiteilig",
+    "name": "de_w_julia",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass jede offene Stelle künftig zunächst intern <g>ausgeschrieben wird</g>, bevor sie extern auf Jobportalen veröffentlicht wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning that every open position will first be posted internally in the future, before it is published externally on job portals. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб кожна вакансія надалі спершу оголошувалась всередині компанії, перш ніж публікуватись зовні на джоб-порталах. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы каждая вакансия впредь сначала объявлялась внутри компании, прежде чем публиковаться извне на джоб-порталах. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Regelung fair ist, weil sie allen Kolleginnen und Kollegen die gleiche Chance gibt, sich auf eine neue Stelle zu bewerben.",
+        "en": "I am of the opinion that this policy is fair, because it gives all colleagues the same chance to apply for a new position.",
+        "uk": "Я вважаю, що це правило справедливе, бо воно дає всім колегам однаковий шанс податися на нову вакансію.",
+        "ru": "Я считаю, что это правило справедливо, потому что оно даёт всем коллегам одинаковый шанс подать заявку на новую должность."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass <g>sowohl</g> unsere Erfahrung im Unternehmen <g>als auch</g> unsere Kenntnis der internen Abläufe endlich stärker berücksichtigt werden. <g>Je früher</g> man sich intern bewirbt, <g>desto größer</g> sind die Chancen, wirklich gehört zu werden.",
+        "en": "One advantage would undoubtedly be that both our experience in the company and our knowledge of internal processes are finally given greater consideration. The earlier one applies internally, the greater the chances of really being heard.",
+        "uk": "Однією з переваг, безсумнівно, було б те, що нарешті більше враховуватиметься і наш досвід у компанії, і наше знання внутрішніх процесів. Що раніше подаєшся всередині компанії, то більші шанси, що тебе справді почують.",
+        "ru": "Одним из преимуществ, несомненно, было бы то, что наконец больше будет учитываться и наш опыт в компании, и наше знание внутренних процессов. Чем раньше подаёшься внутри компании, тем больше шансов, что тебя действительно услышат."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> ist nicht jede Stelle für interne Kolleginnen und Kollegen interessant, und <g>wer</g> schon lange auf eine bestimmte Position wartet, könnte trotzdem leer ausgehen, wenn die Anforderungen <g>weder</g> mit der eigenen Erfahrung <g>noch</g> mit der gewünschten Weiterentwicklung übereinstimmen.",
+        "en": "On the other hand, not every position is interesting for internal colleagues, and anyone who has been waiting a long time for a certain position could still end up empty-handed if the requirements match neither their own experience nor their desired development.",
+        "uk": "З іншого боку, не кожна вакансія цікава внутрішнім колегам, і той, хто вже давно чекає на певну посаду, все одно міг би лишитися ні з чим, якщо вимоги не збігаються ні з власним досвідом, ні з бажаним розвитком.",
+        "ru": "С другой стороны, не каждая вакансия интересна внутренним коллегам, и тот, кто уже давно ждёт определённую должность, всё равно мог бы остаться ни с чем, если требования не совпадают ни с собственным опытом, ни с желаемым развитием."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die interne Ausschreibung <g>nicht nur</g> online im Intranet sichtbar ist, <g>sondern auch</g> in den Teambesprechungen aktiv angesprochen wird, <g>um</g> wirklich alle zu erreichen.",
+        "en": "That's why I suggest that the internal posting not only be visible online on the intranet, but also actively mentioned in team meetings, in order to really reach everyone.",
+        "uk": "Тому я пропоную, щоб внутрішнє оголошення було не лише видимим онлайн в інтранеті, а й активно згадувалось на командних зустрічах, щоб справді дійти до всіх.",
+        "ru": "Поэтому я предлагаю, чтобы внутреннее объявление было не только видимым онлайн в интранете, но и активно упоминалось на командных встречах, чтобы действительно дойти до всех."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Julia",
+        "en": "Julia",
+        "uk": "Юлія",
+        "ru": "Юлия"
+      }
+    ]
+  },
+  {
+    "id": "forum_008",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Aktualisierter Lebenslauf bei internem Stellenwechsel",
+      "en": "Updated CV for internal job changes",
+      "uk": "Оновлене резюме при внутрішньому переведенні",
+      "ru": "Обновлённое резюме при внутреннем переводе"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte einführen, dass alle Mitarbeitenden bei einem Wechsel innerhalb der Firma einen aktualisierten tabellarischen Lebenslauf mit Angaben zu Werdegang, Ausbildung sowie EDV- und Sprachkenntnissen einreichen müssen.",
+      "en": "Management wants to introduce a rule that all employees must submit an updated tabular CV with details of their career history, education, and IT and language skills whenever they change positions within the company.",
+      "uk": "Керівництво хоче запровадити правило, що всі співробітники при переведенні всередині компанії мають подавати оновлене табличне резюме з даними про кар'єрний шлях, освіту, а також знання ІТ та мов.",
+      "ru": "Руководство хочет ввести правило, что все сотрудники при переводе внутри компании должны подавать обновлённое табличное резюме с данными о карьерном пути, образовании, а также знании ИТ и языков."
+    },
+    "gram": "nominalisierung",
+    "name": "de_w_anna",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass bei jedem internen Stellenwechsel künftig ein aktualisierter Lebenslauf eingereicht werden muss. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning that an updated CV will have to be submitted for every internal job change in the future. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб надалі при кожному внутрішньому переведенні подавалося оновлене резюме. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы впредь при каждом внутреннем переводе подавалось обновлённое резюме. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese <g>Aktualisierung</g> grundsätzlich sinnvoll ist, denn ein veralteter Lebenslauf mit falschen Angaben zur Ausbildung oder zu den Sprachkenntnissen wirkt wenig seriös.",
+        "en": "I am of the opinion that this update basically makes sense, because an outdated CV with incorrect information about one's education or language skills doesn't look very serious.",
+        "uk": "Я вважаю, що це оновлення в принципі має сенс, адже застаріле резюме з неправильними даними про освіту чи знання мов виглядає не надто серйозно.",
+        "ru": "Я считаю, что это обновление в принципе имеет смысл, ведь устаревшее резюме с неверными данными об образовании или знании языков выглядит не слишком серьёзно."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass die Personalabteilung so jederzeit einen gut <g>gepflegten</g> Überblick über unseren Werdegang, unsere Abschlüsse und unsere EDV-Kenntnisse hat – gerade bei internen Bewerbungen spart das viel Zeit. Außerdem sind wir dann auch selbst <g>verantwortlich für</g> unsere eigenen Angaben.",
+        "en": "One advantage would undoubtedly be that HR always has a well-maintained overview of our career history, our qualifications and our IT skills – which saves a lot of time especially for internal applications. Besides, we then also become responsible for our own information ourselves.",
+        "uk": "Однією з переваг, безсумнівно, було б те, що відділ кадрів завжди мав би добре впорядкований огляд нашого кар'єрного шляху, наших кваліфікацій та знань ІТ — це особливо економить час при внутрішніх заявках. Крім того, тоді ми самі відповідаємо за власні дані.",
+        "ru": "Одним из преимуществ, несомненно, было бы то, что отдел кадров всегда имел бы хорошо упорядоченный обзор нашего карьерного пути, наших квалификаций и знаний ИТ — это особенно экономит время при внутренних заявках. Кроме того, тогда мы сами отвечаем за собственные данные."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> müssen <g>manche</g> Kolleginnen und Kollegen ihren Lebenslauf kaum je aktualisieren, weil sich an ihrer Tätigkeit über Jahre hinweg nichts ändert. <g>Trotzdem</g> sollen offenbar alle regelmäßig dieselbe Arbeit erledigen, was wenig einheitlich wirkt.",
+        "en": "On the other hand, some colleagues hardly ever need to update their CV, because nothing changes about their job for years. Nevertheless, everyone is apparently supposed to do the same task regularly, which doesn't seem very consistent.",
+        "uk": "З іншого боку, деяким колегам майже ніколи не доводиться оновлювати резюме, бо в їхній діяльності роками нічого не змінюється. Попри це, усі, вочевидь, мають регулярно виконувати одну й ту саму роботу, що виглядає не надто послідовно.",
+        "ru": "С другой стороны, некоторым коллегам почти никогда не приходится обновлять резюме, потому что в их деятельности годами ничего не меняется. Несмотря на это, все, видимо, должны регулярно выполнять одну и ту же работу, что выглядит не слишком последовательно."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir <g>es</g> uns einfacher machen und künftig nur die relevanten Angaben zum aktuellen Abschluss oder zu neuen Sprachkenntnissen aktualisieren müssen.",
+        "en": "That's why I suggest that we make it easier for ourselves and in future only have to update the relevant information about our current qualification or new language skills.",
+        "uk": "Тому я пропоную, щоб ми спростили собі це і надалі оновлювали лише актуальні дані про останню кваліфікацію чи нові знання мов.",
+        "ru": "Поэтому я предлагаю, чтобы мы упростили себе это и впредь обновляли только актуальные данные о последней квалификации или новых знаниях языков."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Anna",
+        "en": "Anna",
+        "uk": "Анна",
+        "ru": "Анна"
+      }
+    ]
+  },
+  {
+    "id": "forum_009",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Duale Ausbildung statt externer Fachkräfte",
+      "en": "In-house apprenticeships instead of external specialists",
+      "uk": "Власне навчання замість зовнішніх фахівців",
+      "ru": "Собственное обучение вместо внешних специалистов"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte künftig verstärkt eigene Azubis im Rahmen einer dualen Ausbildung ausbilden, anstatt bereits ausgebildete Fachkräfte von außen einzustellen.",
+      "en": "Management wants to train more of its own apprentices through dual vocational training in the future, instead of hiring already qualified specialists from outside.",
+      "uk": "Керівництво хоче надалі активніше навчати власних учнів у рамках дуальної освіти, замість наймати вже кваліфікованих фахівців ззовні.",
+      "ru": "Руководство хочет впредь активнее обучать собственных учеников в рамках дуального образования, вместо того чтобы нанимать уже квалифицированных специалистов извне."
+    },
+    "gram": "konnektoren_infinitiv",
+    "name": "de_w_nina",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, künftig verstärkt eigene Azubis auszubilden, <g>anstatt</g> fertige Fachkräfte einzustellen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to train more of its own apprentices in the future, instead of hiring ready-made specialists. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує надалі активніше навчати власних учнів, замість наймати вже готових фахівців. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует впредь активнее обучать собственных учеников, вместо того чтобы нанимать уже готовых специалистов. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Entscheidung langfristig klug ist, auch wenn eine duale Ausbildung am Anfang mehr Zeit und Betreuung erfordert als die Einstellung fertiger Fachkräfte.",
+        "en": "I am of the opinion that this decision is wise in the long run, even though a dual apprenticeship requires more time and supervision at the beginning than hiring ready-made specialists.",
+        "uk": "Я вважаю, що це рішення далекоглядне, навіть якщо дуальна освіта на початку вимагає більше часу й супроводу, ніж наймання готових фахівців.",
+        "ru": "Я считаю, что это решение дальновидное, даже если дуальное образование в начале требует больше времени и сопровождения, чем наём готовых специалистов."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir die Azubis von Anfang an nach unseren eigenen Standards ausbilden können, <g>ohne</g> später aufwendig nachschulen zu müssen. <g>Wer</g> die Berufsschule mit guten Noten abschließt, hat zudem oft schon während der Ausbildung realistische Übernahmechancen.",
+        "en": "One advantage would undoubtedly be that we can train apprentices according to our own standards from the very beginning, without having to retrain them extensively later. Anyone who finishes vocational school with good grades also often already has realistic chances of being taken on during the apprenticeship.",
+        "uk": "Однією з переваг, безсумнівно, було б те, що ми можемо з самого початку навчати учнів за власними стандартами, без потреби згодом складно перенавчати їх. До того ж, той, хто закінчує професійне училище з хорошими оцінками, часто вже під час навчання має реальні шанси на працевлаштування.",
+        "ru": "Одним из преимуществ, несомненно, было бы то, что мы можем с самого начала обучать учеников по собственным стандартам, без необходимости впоследствии сложно переучивать их. К тому же тот, кто заканчивает профессиональное училище с хорошими оценками, часто уже во время обучения имеет реальные шансы на трудоустройство."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> kostet eine duale Ausbildung die Firma über mehrere Jahre hinweg Zeit und Geld, und nicht jeder Azubi bleibt am Ende auch wirklich im Betrieb. <g>Je länger</g> die Ausbildung dauert, <g>desto größer</g> wird zudem das Risiko, dass gut ausgebildete Azubis nach dem Abschluss zu einem anderen Arbeitgeber wechseln.",
+        "en": "On the other hand, a dual apprenticeship costs the company time and money over several years, and not every apprentice actually stays with the company in the end. The longer the training takes, the greater the risk also becomes that well-trained apprentices will switch to a different employer after completing it.",
+        "uk": "З іншого боку, дуальна освіта коштує фірмі часу й грошей упродовж кількох років, і не кожен учень зрештою справді залишається в компанії. Що довше триває навчання, то більшим стає ризик, що добре навчені учні після завершення перейдуть до іншого роботодавця.",
+        "ru": "С другой стороны, дуальное образование стоит фирме времени и денег в течение нескольких лет, и не каждый ученик в итоге действительно остаётся в компании. Чем дольше длится обучение, тем больше становится риск, что хорошо обученные ученики после завершения перейдут к другому работодателю."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir uns stärker um den Kontakt zu Berufsschulen bemühen, <g>um</g> frühzeitig für unseren Ausbildungsbetrieb zu werben, statt erst kurz vor Ausbildungsende <g>in Betracht zu ziehen</g>, wer übernommen wird.",
+        "en": "That's why I suggest that we make more of an effort to stay in contact with vocational schools, in order to promote our training company early on, instead of only considering who will be taken on shortly before the end of the apprenticeship.",
+        "uk": "Тому я пропоную, щоб ми активніше підтримували контакт із професійними училищами, щоб заздалегідь рекламувати наше підприємство як місце навчання, замість того щоб розглядати питання працевлаштування лише незадовго до завершення навчання.",
+        "ru": "Поэтому я предлагаю, чтобы мы активнее поддерживали контакт с профессиональными училищами, чтобы заранее рекламировать наше предприятие как место обучения, вместо того чтобы рассматривать вопрос трудоустройства только незадолго до завершения обучения."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Nina",
+        "en": "Nina",
+        "uk": "Ніна",
+        "ru": "Нина"
+      }
+    ]
+  },
+  {
+    "id": "forum_010",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Einheitliches Onboarding-Programm für alle neuen Mitarbeitenden",
+      "en": "Uniform onboarding program for all new employees",
+      "uk": "Єдина програма адаптації для всіх нових співробітників",
+      "ru": "Единая программа адаптации для всех новых сотрудников"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte ein einheitliches Onboarding-Programm einführen: Alle neuen Mitarbeitenden – ob in Festanstellung, befristet oder als Praktikant – sollen künftig dieselbe strukturierte Einarbeitungsphase mit festen Weiterbildungsmaßnahmen durchlaufen.",
+      "en": "Management wants to introduce a uniform onboarding program: all new employees – whether in a permanent position, on a fixed-term contract or as an intern – are to go through the same structured induction phase with fixed training measures in the future.",
+      "uk": "Керівництво хоче запровадити єдину програму адаптації: усі нові співробітники — незалежно від того, чи це постійна посада, строковий контракт, чи стажування — мають надалі проходити той самий структурований етап введення в посаду з визначеними заходами підвищення кваліфікації.",
+      "ru": "Руководство хочет ввести единую программу адаптации: все новые сотрудники — независимо от того, постоянная это должность, срочный контракт или стажировка — должны впредь проходить тот же структурированный этап введения в должность с определёнными мероприятиями по повышению квалификации."
+    },
+    "gram": "modalsatz_dadurch_indem",
+    "name": "de_m_david",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein einheitliches Onboarding-Programm für alle neuen Mitarbeitenden. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning a uniform onboarding program for all new employees. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує єдину програму адаптації для всіх нових співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует единую программу адаптации для всех новых сотрудников. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Idee grundsätzlich gut ist, auch wenn eine einheitliche Einarbeitungsphase nicht für jede Position gleich sinnvoll sein wird.",
+        "en": "I am of the opinion that this idea is basically good, even though a uniform induction phase won't be equally useful for every position.",
+        "uk": "Я вважаю, що ця ідея загалом хороша, навіть якщо єдиний етап введення в посаду буде не для кожної позиції однаково доречним.",
+        "ru": "Я считаю, что эта идея в целом хорошая, даже если единый этап введения в должность будет не для каждой позиции одинаково уместным."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass neue Mitarbeitende <g>während der Einarbeitungsphase</g> von Anfang an dieselben Grundlagen erhalten und sich dadurch schneller im Unternehmen zurechtfinden. <g>Indem</g> wir feste Weiterbildungsmaßnahmen einplanen, sorgen wir außerdem für eine gleichbleibende Qualität der Einarbeitung.",
+        "en": "One advantage would undoubtedly be that new employees receive the same basics from the very beginning during the induction phase, and thus find their way around the company more quickly. By planning fixed training measures, we also ensure a consistent quality of induction.",
+        "uk": "Однією з переваг, безсумнівно, було б те, що нові співробітники з самого початку отримують ту саму базову інформацію під час етапу введення в посаду і завдяки цьому швидше орієнтуються в компанії. Плануючи чіткі заходи підвищення кваліфікації, ми також забезпечуємо стабільну якість введення в посаду.",
+        "ru": "Одним из преимуществ, несомненно, было бы то, что новые сотрудники с самого начала получают одну и ту же базовую информацию во время этапа введения в должность и благодаря этому быстрее ориентируются в компании. Планируя чёткие мероприятия по повышению квалификации, мы также обеспечиваем стабильное качество введения в должность."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> wirkt ein einheitliches Programm für erfahrene Quereinsteiger schnell so, <g>als ob</g> sie noch nichts vom Berufsleben wüssten. Wer bereits jahrelange Berufserfahrung mitbringt, braucht <g>wohl</g> kaum dieselbe ausführliche Einführung wie ein Praktikant ohne Vorkenntnisse.",
+        "en": "On the other hand, a uniform program quickly makes experienced career-changers feel as if they didn't know anything about working life yet. Anyone who already brings years of professional experience probably hardly needs the same detailed introduction as an intern without prior knowledge.",
+        "uk": "З іншого боку, єдина програма швидко змушує досвідчених людей, які змінили професію, почуватися так, ніби вони ще нічого не знають про робоче життя. Той, хто вже має багаторічний професійний досвід, навряд чи потребує такого ж детального введення, як стажист без попередніх знань.",
+        "ru": "С другой стороны, единая программа быстро заставляет опытных людей, сменивших профессию, чувствовать себя так, будто они ещё ничего не знают о трудовой жизни. Тот, кто уже имеет многолетний профессиональный опыт, вряд ли нуждается в таком же подробном введении, как стажёр без предварительных знаний."
+      },
+      {
+        "role": "vorschlag",
+        "de": "Die Personalabteilung betont zwar, <g>das Programm sei</g> für alle gleich sinnvoll. <r>Deshalb schlage ich vor, dass</r> sie es dennoch je nach Vorerfahrung individuell anpasst, anstatt allen dieselbe Einarbeitungsphase vorzuschreiben.",
+        "en": "HR does point out that the program is said to be equally useful for everyone. That's why I suggest that they nevertheless adapt it individually according to prior experience, instead of prescribing the same induction phase for everyone.",
+        "uk": "Відділ кадрів наголошує, що програма нібито однаково корисна для всіх. Тому я пропоную, щоб вони все ж адаптували її індивідуально залежно від попереднього досвіду, замість того щоб приписувати всім однаковий етап введення в посаду.",
+        "ru": "Отдел кадров подчёркивает, что программа якобы одинаково полезна для всех. Поэтому я предлагаю, чтобы они всё же адаптировали её индивидуально в зависимости от предыдущего опыта, вместо того чтобы предписывать всем одинаковый этап введения в должность."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "David",
+        "en": "David",
+        "uk": "Давид",
+        "ru": "Давид"
       }
     ]
   }

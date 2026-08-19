@@ -3312,7 +3312,10 @@ var LESSONS = [
       "k9_046"
     ],
     "unlockAfter": "k9m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_116"
+    ]
   },
   {
     "id": "k9m5",
@@ -3348,7 +3351,10 @@ var LESSONS = [
       "k9_050"
     ],
     "unlockAfter": "k9m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_117"
+    ]
   },
   {
     "id": "k10m1",
@@ -29826,6 +29832,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: подготовим документы, позаботимся о справке и вопросе домашнего офиса и останемся позитивными. Я уже жду ответа! Спасибо за идею, Марк!"
     },
     "gram": "verben_praep_dass_satz"
+  },
+  {
+    "id": "dlg_116",
+    "cat": "Vorstellungsgespräch gemeinsam üben",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund/Ihre Freundin haben beide bald ein Vorstellungsgespräch und möchten sich gemeinsam vorbereiten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWelche Fragen üben Sie?\nWie sprechen Sie über Stärken und Schwächen?\nWas sind Ihre Erwartungen?\nWie wollen Sie reagieren, wenn eine Frage schwierig ist?\nWie wichtig ist das Auftreten?",
+      "en": "Situation: You and your friend both have a job interview coming up soon and want to prepare together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhich questions do you practice?\nHow do you talk about strengths and weaknesses?\nWhat are your expectations?\nHow do you want to react if a question is difficult?\nHow important is your demeanour?",
+      "uk": "Ситуація: У Вас та Вашого друга/подруги обох скоро співбесіда, і Ви хочете підготуватися разом.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯкі питання Ви потренуєте?\nЯк Ви говоритимете про сильні й слабкі сторони?\nЯкі Ваші очікування?\nЯк Ви хочете реагувати, якщо питання складне?\nНаскільки важлива манера триматися?",
+      "ru": "Ситуация: У Вас и Вашего друга/подруги у обоих скоро собеседование, и Вы хотите подготовиться вместе.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКакие вопросы Вы потренируете?\nКак Вы будете говорить о сильных и слабых сторонах?\nКаковы Ваши ожидания?\nКак Вы хотите реагировать, если вопрос сложный?\nНасколько важна манера держаться?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo, David! Wir haben ja beide bald ein Vorstellungsgespräch. Wollen wir zusammen üben?",
+      "en": "Hi, David! We both have a job interview coming up soon. Shall we practice together?",
+      "uk": "Привіт, Девіде! У нас обох скоро співбесіда. Може, потренуємося разом?",
+      "ru": "Привет, Дэвид! У нас обоих скоро собеседование. Может, потренируемся вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Lass uns mit <g>einer wichtigen Frage</g> anfangen – zum Beispiel: 'Warum wollen Sie bei uns arbeiten?'<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> let's start with <g>an important question</g> – for example: 'Why do you want to work here?'<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> давай почнемо з <g>важливого питання</g> – наприклад: 'Чому ви хочете працювати в нас?'<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> давай начнём с <g>важного вопроса</g> – например: 'Почему вы хотите у нас работать?'<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Schwächen <r>bedenken</r>.<br><r>Wir könnten doch</r> auch üben, wie man <g>bei einer schwierigen Frage</g> ruhig bleibt, zum Beispiel bei einer Frage nach Schwächen.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the weaknesses.<br><r>We could</r> also practice how to stay calm <g>with a difficult question</g>, for example a question about weaknesses.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> слабкі сторони.<br><r>Ми могли б</r> також потренуватися, як залишатися спокійним <g>при складному питанні</g>, наприклад про слабкі сторони.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> слабых сторонах.<br><r>Мы могли бы</r> также потренироваться оставаться спокойными <g>при сложном вопросе</g>, например о слабых сторонах.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> vor jeder Antwort <g>einen ruhigen Moment</g> nehmen, bevor wir sprechen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> take <g>a calm moment</g> before every answer, before we speak.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> братимемо <g>спокійну мить</g> перед кожною відповіддю, перш ніж говорити.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> будем брать <g>спокойный момент</g> перед каждым ответом, прежде чем говорить.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir zeigen, dass die Firma <g>einen selbstständigen Mitarbeiter</g> in uns findet.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we show the company that it's finding <g>an independent employee</g> in us.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми показали, що фірма знаходить у нас <g>самостійного співробітника</g>.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы показали, что фирма находит в нас <g>самостоятельного сотрудника</g>.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir auf Kritik reagieren.<br><r>Eine Idee wäre, dass wir</r> auch üben, wie man <g>auf eine kritische Frage</g> ruhig und höflich reagiert.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how we react to criticism.<br><r>One idea would be that we</r> also practice how to react calmly and politely <g>to a critical question</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як ми реагуємо на критику.<br><r>Була б ідея, щоб ми</r> також потренувалися, як спокійно й ввічливо реагувати <g>на критичне питання</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как мы реагируем на критику.<br><r>Была бы идея, чтобы мы</r> также потренировались спокойно и вежливо реагировать <g>на критический вопрос</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns <g>ein typisches Beispiel</g> aus dem Internet ansehen, damit wir wissen, was uns erwartet?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> look at <g>a typical example</g> from the internet, so we know what to expect?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> подивимося <g>типовий приклад</g> з інтернету, щоб знати, чого очікувати?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> посмотрим <g>типичный пример</g> из интернета, чтобы знать, чего ожидать?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob das genug ist.<br><r>Vielleicht wäre es am besten, wenn wir</r> auch über <g>praktische Erfahrung</g> sprechen, die wir schon gesammelt haben.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether that's enough.<br><r>Maybe it would be best if we</r> also talk about <g>practical experience</g> we've already gained.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи цього достатньо.<br><r>Можливо, було б найкраще, якби ми</r> також поговорили про <g>практичний досвід</g>, який ми вже здобули.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, достаточно ли этого.<br><r>Может быть, было бы лучше, если бы мы</r> также поговорили о <g>практическом опыте</g>, который мы уже получили.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns gegenseitig sagen, dass das hier <g>ein mutiger Schritt</g> für uns beide ist.<br><r>Bist du damit einverstanden</r>, David?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> tell each other that this is <g>a brave step</g> for both of us.<br><r>Are you okay with that</r>, David?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> скажемо одне одному, що це <g>сміливий крок</g> для нас обох.<br><r>Ти з цим згоден</r>, Девіде?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> скажем друг другу, что это <g>смелый шаг</g> для нас обоих.<br><r>Ты с этим согласен</r>, Дэвид?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir üben wichtige und schwierige Fragen, sprechen über unsere Stärken und Erfahrung und bleiben ruhig und mutig. Ich freue mich schon auf das Gespräch! Danke für die Idee, Julia!",
+      "en": "Yes, of course! So, here's what we'll do: we'll practice important and difficult questions, talk about our strengths and experience, and stay calm and brave. I'm already looking forward to the interview! Thanks for the idea, Julia!",
+      "uk": "Так, звісно! Отже, зробимо так: потренуємо важливі й складні питання, поговоримо про наші сильні сторони та досвід і залишимося спокійними й сміливими. Я вже чекаю на співбесіду! Дякую за ідею, Юліє!",
+      "ru": "Да, конечно! Итак, сделаем так: потренируем важные и сложные вопросы, поговорим о наших сильных сторонах и опыте и останемся спокойными и смелыми. Я уже жду собеседования! Спасибо за идею, Юлия!"
+    },
+    "gram": "adjektive_auf_ig_isch"
+  },
+  {
+    "id": "dlg_117",
+    "cat": "Neue Gewohnheiten für den Arbeitsalltag planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Kollege/Ihre Kollegin möchten gemeinsam neue Gewohnheiten für einen besseren Alltag bei der Arbeit einführen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWie können Sie echte Pausen machen?\nWie schaffen Sie pünktlichen Feierabend?\nWas würden Sie am Arbeitsplatz ändern?\nWelche Weiterbildung wäre sinnvoll?\nWas sind Ihre Wünsche, und was ist die Wirklichkeit?",
+      "en": "Situation: You and your colleague want to introduce new habits together for a better everyday work life.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nHow can you take real breaks?\nHow do you manage to leave work on time?\nWhat would you change about your workplace?\nWhat further training would make sense?\nWhat are your wishes, and what is reality?",
+      "uk": "Ситуація: Ви та Ваш колега/Ваша колега хочете разом запровадити нові звички для кращих робочих буднів.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк зробити перерви справжніми?\nЯк вчасно закінчувати роботу?\nЩо б Ви змінили на робочому місці?\nЯке підвищення кваліфікації було б доречним?\nЯкі Ваші бажання, а яка дійсність?",
+      "ru": "Ситуация: Вы и Ваш коллега/Ваша коллега хотите вместе ввести новые привычки для лучших рабочих будней.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКак сделать перерывы настоящими?\nКак вовремя заканчивать работу?\nЧто бы Вы изменили на рабочем месте?\nКакое повышение квалификации было бы уместным?\nКаковы Ваши желания, а какова действительность?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Ich habe gemerkt, dass wir beide nie richtig Pause machen. Wollen wir zusammen neue Gewohnheiten für den Arbeitsalltag einführen?",
+      "en": "Hi, Mark! I noticed that neither of us ever really takes a break. Shall we introduce new habits for our everyday work life together?",
+      "uk": "Привіт, Марку! Я помітила, що ми обоє ніколи по-справжньому не робимо перерву. Може, разом запровадимо нові звички для робочих буднів?",
+      "ru": "Привет, Марк! Я заметила, что мы оба никогда по-настоящему не делаем перерыв. Может, вместе введём новые привычки для рабочих будней?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten eine feste Pause einführen, in der wir wirklich vom Bildschirm weggehen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> we could introduce a fixed break where we really step away from the screen.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> ми могли б запровадити чітку перерву, під час якої справді відходимо від екрана.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> мы могли бы ввести чёткий перерыв, во время которого действительно отходим от экрана.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Feierabend <r>bedenken</r>.<br><r>Wir könnten doch</r> uns auch vornehmen, pünktlich Feierabend zu machen, statt immer länger zu bleiben.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the end of the workday.<br><r>We could</r> also aim to leave work on time, instead of always staying longer.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> кінець робочого дня.<br><r>Ми могли б</r> також поставити собі за мету вчасно закінчувати роботу, а не завжди затримуватися.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> конце рабочего дня.<br><r>Мы могли бы</r> также поставить себе цель вовремя заканчивать работу, а не всегда задерживаться.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch unseren Arbeitsplatz aufräumen, damit wir uns besser konzentrieren können.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> also tidy up our workplace, so we can concentrate better.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> також приберемо на робочому місці, щоб краще концентруватися.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также приберём на рабочем месте, чтобы лучше концентрироваться.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir uns beide regelmäßig weiterbilden, damit wir mehr Verantwortung übernehmen können.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we both pursue further training regularly, so we can take on more responsibility.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми обоє регулярно підвищували кваліфікацію, щоб могли брати на себе більше відповідальності.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы оба регулярно повышали квалификацию, чтобы могли брать на себя больше ответственности.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit das kostet.<br><r>Eine Idee wäre, dass wir</r> ehrlich über den Lohn sprechen, denn unsere Wünsche und die Wirklichkeit passen manchmal nicht zusammen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time that takes.<br><r>One idea would be that we</r> talk honestly about the wage, because our wishes and reality sometimes don't match up.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу це забере.<br><r>Була б ідея, щоб ми</r> чесно поговорили про зарплату, бо наші бажання й дійсність іноді не збігаються.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени это займёт.<br><r>Была бы идея, чтобы мы</r> честно поговорили о зарплате, потому что наши желания и действительность иногда не совпадают.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns eine feste Gewohnheit angewöhnen, jeden Freitag über die Woche zu sprechen?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> develop a fixed habit of talking about the week every Friday?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> виробимо чітку звичку щоп'ятниці обговорювати тиждень?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> выработаем чёткую привычку каждую пятницу обсуждать неделю?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir das jede Woche schaffen.<br><r>Vielleicht wäre es am besten, wenn wir</r> erst mal schauen, wie zufrieden wir in unserer jetzigen Position tätig sind.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we'll manage that every week.<br><r>Maybe it would be best if we</r> first look at how satisfied we are working in our current position.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи встигатимемо ми щотижня.<br><r>Можливо, було б найкраще, якби ми</r> спершу подивилися, наскільки ми задоволені, працюючи на нашій теперішній посаді.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, будем ли мы успевать каждую неделю.<br><r>Может быть, было бы лучше, если бы мы</r> сначала посмотрели, насколько мы довольны, работая на нашей нынешней должности.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> morgen gleich mit der ersten richtigen Pause anfangen.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> start with the first real break tomorrow already.<br><r>Are you okay with that</r>, Mark?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> уже завтра почнемо з першої справжньої перерви.<br><r>Ти з цим згоден</r>, Марку?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> уже завтра начнём с первого настоящего перерыва.<br><r>Ты с этим согласен</r>, Марк?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir machen echte Pausen, gehen pünktlich in den Feierabend, räumen den Arbeitsplatz auf und bilden uns weiter. Ich freue mich schon auf unseren neuen Alltag! Danke für die Idee, Anna!",
+      "en": "Yes, of course! So, here's what we'll do: we'll take real breaks, leave work on time, tidy up the workplace, and pursue further training. I'm already looking forward to our new everyday routine! Thanks for the idea, Anna!",
+      "uk": "Так, звісно! Отже, зробимо так: робитимемо справжні перерви, вчасно закінчуватимемо роботу, приберемо на робочому місці й підвищуватимемо кваліфікацію. Я вже тішуся нашим новим буднями! Дякую за ідею, Анно!",
+      "ru": "Да, конечно! Итак, сделаем так: будем делать настоящие перерывы, вовремя заканчивать работу, приберём на рабочем месте и будем повышать квалификацию. Я уже жду наших новых будней! Спасибо за идею, Анна!"
+    },
+    "gram": ""
   }
 ];
 
