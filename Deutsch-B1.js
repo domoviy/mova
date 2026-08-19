@@ -3472,7 +3472,10 @@ var LESSONS = [
       "k10_039"
     ],
     "unlockAfter": "k10m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_120"
+    ]
   },
   {
     "id": "k10m4",
@@ -3492,7 +3495,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Schreiben"
+      "Schreiben",
+      "Sprechen"
     ],
     "grammar": "adjektive_als_nomen",
     "cardIds": [
@@ -3508,7 +3512,10 @@ var LESSONS = [
       "k10_046"
     ],
     "unlockAfter": "k10m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_121"
+    ]
   },
   {
     "id": "k10m5",
@@ -30132,6 +30139,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: поприветствуем нового тренера, покажем наш талант, спросим о тактике и вместе примем вызов. Я уже жду нового сезона! Спасибо за идею, Марк!"
     },
     "gram": "adjektivdeklination_bestimmter_artikel"
+  },
+  {
+    "id": "dlg_120",
+    "cat": "Vorbereitung auf die Meisterschaft planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund/Ihre Freundin nehmen beide an einer Meisterschaft teil und möchten gemeinsam trainieren und sich vorbereiten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWelche Strecke wählen Sie?\nWelches Tempo laufen Sie?\nWer ist der stärkste Gegner?\nWelche Zeit ist Ihr Ziel?\nWie trainieren Sie Ihre Ausdauer?",
+      "en": "Situation: You and your friend are both taking part in a championship and want to train and prepare together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhich route do you choose?\nWhat pace do you run?\nWho is the strongest opponent?\nWhat time is your goal?\nHow do you train your endurance?",
+      "uk": "Ситуація: Ви та Ваш друг/Ваша подруга обоє берете участь у чемпіонаті й хочете разом тренуватися та готуватися.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯку трасу Ви оберете?\nЯким темпом бігтимете?\nХто найсильніший суперник?\nЯкий час є Вашою метою?\nЯк Ви тренуєте свою витривалість?",
+      "ru": "Ситуация: Вы и Ваш друг/Ваша подруга оба участвуете в чемпионате и хотите вместе тренироваться и готовиться.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКакую трассу Вы выберете?\nКаким темпом побежите?\nКто самый сильный соперник?\nКакое время является Вашей целью?\nКак Вы тренируете свою выносливость?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo, Julia! Wir nehmen ja beide an der Meisterschaft teil. Wollen wir zusammen trainieren?",
+      "en": "Hi, Julia! We're both taking part in the championship. Shall we train together?",
+      "uk": "Привіт, Юліє! Ми ж обоє беремо участь у чемпіонаті. Може, потренуємося разом?",
+      "ru": "Привет, Юлия! Мы же оба участвуем в чемпионате. Может, потренируемся вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Lass uns <g>eine schnellere Strecke</g> für unser Training wählen als letztes Mal.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> let's choose <g>a faster route</g> for our training than last time.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> давай оберемо <g>швидшу трасу</g> для тренування, ніж минулого разу.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> давай выберем <g>более быструю трассу</g> для тренировки, чем в прошлый раз.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Wettkampftag <r>bedenken</r>.<br><r>Wir könnten doch</r> uns vorher informieren, welche <g>die schnellste Strecke</g> am Wettkampftag ist.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the competition day.<br><r>We could</r> find out beforehand which is <g>the fastest route</g> on the competition day.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> день змагання.<br><r>Ми могли б</r> заздалегідь дізнатися, яка <g>найшвидша траса</g> в день змагання.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> дне соревнования.<br><r>Мы могли бы</r> заранее узнать, какая <g>самая быстрая трасса</g> в день соревнования.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> beim Training <g>ein höheres Tempo</g> als sonst ausprobieren.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> try out <g>a higher pace</g> than usual during training.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> спробуємо на тренуванні <g>вищий темп</g>, ніж зазвичай.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> попробуем на тренировке <g>более высокий темп</g>, чем обычно.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir <g>das höchste Tempo</g> erst am Ende der Strecke laufen, damit wir nicht zu früh müde werden.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we only run <g>the highest pace</g> at the end of the route, so we don't get tired too early.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми бігли <g>найвищим темпом</g> лише наприкінці траси, щоб не втомитися зарано.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы бежали <g>самым высоким темпом</g> только в конце трассы, чтобы не устать слишком рано.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer die Konkurrenz ist.<br><r>Eine Idee wäre, dass wir</r> uns informieren, wer <g>der stärkere Gegner</g> in unserer Gruppe sein könnte.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> who the competition is.<br><r>One idea would be that we</r> find out who <g>the stronger opponent</g> in our group might be.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто наші конкуренти.<br><r>Була б ідея, щоб ми</r> дізналися, хто може бути <g>сильнішим суперником</g> у нашій групі.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто наши конкуренты.<br><r>Была бы идея, чтобы мы</r> узнали, кто может быть <g>более сильным соперником</g> в нашей группе.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns besonders auf <g>den stärksten Gegner</g> vorbereiten, damit wir keine Angst vor ihm haben?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> prepare especially for <g>the strongest opponent</g>, so we're not afraid of him?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> особливо підготуємося до <g>найсильнішого суперника</g>, щоб не боятися його?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> особенно подготовимся к <g>самому сильному сопернику</g>, чтобы не бояться его?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir uns zu sehr auf den Gegner konzentrieren sollten.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns einfach auf <g>eine bessere Zeit</g> als beim letzten Mal konzentrieren.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we should focus too much on the opponent.<br><r>Maybe it would be best if we</r> simply focus on <g>a better time</g> than last time.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи варто нам занадто зосереджуватися на суперникові.<br><r>Можливо, було б найкраще, якби ми</r> просто зосередилися на <g>кращому часі</g>, ніж минулого разу.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, стоит ли нам слишком концентрироваться на сопернике.<br><r>Может быть, было бы лучше, если бы мы</r> просто сосредоточились на <g>лучшем времени</g>, чем в прошлый раз.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns gemeinsam vornehmen, <g>die beste Zeit</g> unseres Lebens zu laufen.<br><r>Bist du damit einverstanden</r>, Julia?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> both aim together to run <g>the best time</g> of our lives.<br><r>Are you okay with that</r>, Julia?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> разом поставимо собі за мету пробігти <g>найкращий час</g> у своєму житті.<br><r>Ти з цим згодна</r>, Юліє?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> вместе поставим себе цель пробежать <g>лучшее время</g> в своей жизни.<br><r>Ты с этим согласна</r>, Юлия?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir wählen eine schnellere Strecke, trainieren unser Tempo, bereiten uns auf den stärksten Gegner vor und laufen für eine bessere Zeit. Ich freue mich schon auf die Meisterschaft! Danke für die Idee, Alex!",
+      "en": "Yes, of course! So, here's what we'll do: we'll choose a faster route, train our pace, prepare for the strongest opponent, and run for a better time. I'm already looking forward to the championship! Thanks for the idea, Alex!",
+      "uk": "Так, звісно! Отже, зробимо так: оберемо швидшу трасу, тренуватимемо темп, підготуємося до найсильнішого суперника й бігтимемо заради кращого часу. Я вже чекаю на чемпіонат! Дякую за ідею, Алексе!",
+      "ru": "Да, конечно! Итак, сделаем так: выберем более быструю трассу, потренируем темп, подготовимся к самому сильному сопернику и побежим ради лучшего времени. Я уже жду чемпионата! Спасибо за идею, Алекс!"
+    },
+    "gram": "komparativ_superlativ_vor_nomen"
+  },
+  {
+    "id": "dlg_121",
+    "cat": "Spendenlauf gemeinsam veranstalten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihre Kollegin/Ihr Kollege möchten gemeinsam einen Spendenlauf für einen guten Zweck veranstalten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWie finden Sie Freiwillige und Teilnehmer?\nWelche Route wählen Sie?\nWie sammeln Sie Spenden?\nWer bekommt den Erlös?\nWie überzeugen Sie den Verein zur Unterstützung?",
+      "en": "Situation: You and your colleague want to organize a charity run for a good cause together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nHow do you find volunteers and participants?\nWhich route do you choose?\nHow do you collect donations?\nWho receives the proceeds?\nHow do you convince the club to support it?",
+      "uk": "Ситуація: Ви та Ваша колега/Ваш колега хочете разом організувати благодійний забіг заради доброї справи.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк Ви знайдете волонтерів і учасників?\nЯкий маршрут Ви оберете?\nЯк Ви збиратимете пожертви?\nХто отримає виторг?\nЯк Ви переконаєте клуб у підтримці?",
+      "ru": "Ситуация: Вы и Ваш коллега/Ваша коллега хотите вместе организовать благотворительный забег ради доброго дела.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКак Вы найдёте волонтёров и участников?\nКакой маршрут Вы выберете?\nКак Вы будете собирать пожертвования?\nКто получит выручку?\nКак Вы убедите клуб в поддержке?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo, Anna! Ich möchte einen Spendenlauf veranstalten. Wollen wir das zusammen planen?",
+      "en": "Hi, Anna! I want to organize a charity run. Shall we plan it together?",
+      "uk": "Привіт, Анно! Я хочу організувати благодійний забіг. Може, сплануємо це разом?",
+      "ru": "Привет, Анна! Я хочу организовать благотворительный забег. Может, спланируем это вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir brauchen bestimmt mehr <g>Freiwillige</g>, die uns beim Organisieren helfen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> we'll definitely need more <g>volunteers</g> to help us organize.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> нам точно потрібно більше <g>волонтерів</g>, які допоможуть з організацією.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> нам точно нужно больше <g>волонтёров</g>, которые помогут с организацией.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Teilnehmerzahl <r>bedenken</r>.<br><r>Wir könnten doch</r> mehr Leute fragen – ich habe schon <g>einen Bekannten</g> gefragt, ob er als Läufer teilnimmt.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the number of participants.<br><r>We could</r> ask more people – I already asked <g>an acquaintance</g> whether he'll take part as a runner.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> кількість учасників.<br><r>Ми могли б</r> запитати більше людей – я вже запитав <g>одного знайомого</g>, чи він братиме участь як бігун.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> количестве участников.<br><r>Мы могли бы</r> спросить больше людей – я уже спросил <g>одного знакомого</g>, будет ли он участвовать как бегун.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> zwei Routen planen, eine für Kinder und eine längere für <g>Erwachsene</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> plan two routes, one for children and a longer one for <g>adults</g>.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> сплануємо два маршрути – один для дітей і довший для <g>дорослих</g>.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> спланируем два маршрута – один для детей и более длинный для <g>взрослых</g>.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir dieses Jahr <g>etwas Neues</g> ausprobieren, zum Beispiel eine Online-Anmeldung.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we try out <g>something new</g> this year, for example online registration.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми цього року спробували <g>щось нове</g>, наприклад онлайн-реєстрацію.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы в этом году попробовали <g>что-то новое</g>, например онлайн-регистрацию.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> welchen Betrag wir erwarten.<br><r>Eine Idee wäre, dass wir</r> den Erlös für <g>das Beste</g> aus dem Verein verwenden – zum Beispiel für neue Ausrüstung.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> what amount we expect.<br><r>One idea would be that we</r> use the proceeds for <g>the best thing</g> for the club – for example new equipment.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> яку суму ми очікуємо.<br><r>Була б ідея, щоб ми</r> використали виторг на <g>найкраще</g> для клубу – наприклад, на нове спорядження.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> какую сумму мы ожидаем.<br><r>Была бы идея, чтобы мы</r> использовали выручку на <g>самое лучшее</g> для клуба – например, на новое снаряжение.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> das Geld stattdessen <g>den Schwachen</g> in unserer Stadt spenden, zum Beispiel einer Klinik?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> donate the money instead to <g>those in need</g> in our city, for example a clinic?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> натомість пожертвуємо гроші <g>слабшим</g> у нашому місті, наприклад клініці?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> вместо этого пожертвуем деньги <g>слабым</g> в нашем городе, например клинике?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob der Verein damit einverstanden ist.<br><r>Vielleicht wäre es am besten, wenn wir</r> beide fragen – letztes Jahr hat sogar <g>ein Fremder</g> spontan gespendet, also ist die Unterstützung sicher da.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether the club will agree to that.<br><r>Maybe it would be best if we</r> both ask – last year even <g>a stranger</g> spontaneously donated, so the support is definitely there.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи погодиться клуб.<br><r>Можливо, було б найкраще, якби ми</r> обоє запитали – минулого року навіть <g>незнайомець</g> спонтанно пожертвував, тож підтримка точно є.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, согласится ли клуб.<br><r>Может быть, было бы лучше, если бы мы</r> оба спросили – в прошлом году даже <g>незнакомец</g> спонтанно пожертвовал, так что поддержка точно есть.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> den Betrag am Ende an eine Organisation für <g>die Kranken</g> in unserer Region überweisen.<br><r>Bist du damit einverstanden</r>, Anna?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> transfer the amount at the end to an organization for <g>the sick</g> in our region.<br><r>Are you okay with that</r>, Anna?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> наприкінці переведемо суму організації для <g>хворих</g> у нашому регіоні.<br><r>Ти з цим згодна</r>, Анно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> в конце переведём сумму организации для <g>больных</g> в нашем регионе.<br><r>Ты с этим согласна</r>, Анна?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir suchen Freiwillige, planen die Route, sammeln Spenden und geben den Erlös für die Kranken. Ich freue mich schon auf den Spendenlauf! Danke für die Idee, David!",
+      "en": "Yes, of course! So, here's what we'll do: we'll look for volunteers, plan the route, collect donations, and give the proceeds to the sick. I'm already looking forward to the charity run! Thanks for the idea, David!",
+      "uk": "Так, звісно! Отже, зробимо так: пошукаємо волонтерів, сплануємо маршрут, зберемо пожертви й віддамо виторг хворим. Я вже чекаю на благодійний забіг! Дякую за ідею, Девіде!",
+      "ru": "Да, конечно! Итак, сделаем так: поищем волонтёров, спланируем маршрут, соберём пожертвования и отдадим выручку больным. Я уже жду благотворительного забега! Спасибо за идею, Дэвид!"
+    },
+    "gram": "adjektive_als_nomen"
   }
 ];
 

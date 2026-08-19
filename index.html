@@ -3515,7 +3515,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '514-51e2688';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9971,7 +9971,16 @@ function tilesCheck(){
     const text = mode === 'def'
       ? (tilesState.current.def?.[pLang] || '').replace(/<[^>]+>/g, '')
       : (tilesState.current.term?.[pLang] || '');
-    speak(text, pLang, tilesRevealResultBtn, tilesState.current.id, field);
+    // Слідкування (karaoke-підсвітка) за словами в модалці результату —
+    // той самий принцип, що вже є в Sprachbausteine/Grammatik-Trainer
+    // (sbPracAnswer, hasTimingFor+querySelector+7-й аргумент speak()).
+    // .tiles-result-correct тут містить ЛИШЕ саме речення (жодного
+    // вкладеного перекладу поруч, на відміну від Def-модалки нижче) —
+    // тож весь div безпечно передати як highlightEl напряму.
+    const highlightEl = hasTimingFor(tilesState.current.id, field, pLang)
+      ? document.querySelector('#tiles-result-overlay .tiles-result-correct')
+      : null;
+    speak(text, pLang, tilesRevealResultBtn, tilesState.current.id, field, false, highlightEl);
   } catch(e) { tilesRevealResultBtn(); }
 }
 
@@ -10223,10 +10232,19 @@ function defCheck(){
     // Було: хардкод '100' — ламалось для курсів без 100%-аудіо (напр. A2 з 080/095).
     // Тепер: найвища швидкість, яку курс реально згенерував.
     if(V.langSpeed && pair) V.langSpeed[pLang] = pair.normal;
+    // Слідкування за словами — той самий принцип, що в Tiles/Sprachbausteine
+    // вище. .tiles-result-sentence-text (не весь .tiles-result-correct!) —
+    // окремий вкладений div лише з реченням, БЕЗ перекладу поруч (той у
+    // .tiles-result-translation) — інакше wrapWordsForHighlight() обгорнув
+    // би словами й переклад, а підсвітка орієнтується на позиції слів САМЕ
+    // мовою, яка озвучується.
+    const highlightEl = hasTimingFor(defState.current.id, 'def', pLang)
+      ? document.querySelector('#tiles-result-overlay .tiles-result-sentence-text')
+      : null;
     speak(defState.fullSentence, pLang, () => {
       if(V.langSpeed && savedRate !== undefined) V.langSpeed[pLang] = savedRate;
       tilesRevealResultBtn();
-    }, defState.current.id, 'def');
+    }, defState.current.id, 'def', false, highlightEl);
   } catch(e) { tilesRevealResultBtn(); }
 }
 
@@ -10259,7 +10277,7 @@ function defShowResultModal(isOk, fullSentence){
     <div class="tiles-result-sheet">
       <div class="tiles-result-icon">${isOk?'✅':'❌'}</div>
       <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
-      <div class="tiles-result-correct" style="line-height:1.3;text-align:center">${highlighted}${translationHtml}</div>
+      <div class="tiles-result-correct" style="line-height:1.3;text-align:center"><div class="tiles-result-sentence-text" data-audio-field="def">${highlighted}</div>${translationHtml}</div>
       <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">${btnLabel}</button>
     </div>`;
   document.body.appendChild(overlay);
