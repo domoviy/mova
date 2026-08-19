@@ -24,6 +24,17 @@ try:
 except ImportError:
     edge_tts = None
 
+try:
+    from mutagen.mp3 import MP3
+except ImportError:
+    MP3 = None
+    # Потрібно: pip install mutagen --break-system-packages
+    # Використовується ЛИШЕ для _looks_timing_desynced() нижче — читає
+    # реальну тривалість готового mp3-файлу з його заголовків (без
+    # ffmpeg, чисто Python). Якщо пакета нема — ця перевірка тихо
+    # пропускається (див. коментар у synthesize_speech), решта
+    # генерації працює як і раніше.
+
 if edge_tts:
     # ── Патч edge-tts: реальна локаль замість хардкодженого en-US ───
     # Бібліотека edge-tts (перевірено до версії 7.2.8 включно, актуальної
@@ -665,6 +676,37 @@ def _looks_truncated(cleaned_text, boundary_words):
     return False
 
 
+def _looks_timing_desynced(words, audio_duration_sec):
+    """Друга, ОКРЕМА перевірка цілісності — ловить інший тип обриву, ніж
+    _looks_truncated() вище. Там перевіряється, чи прийшли ВСІ слова
+    (кількість + останнє слово збігається з текстом) — це ловить обрив
+    самого потоку/тексту. А буває інакше: усі слова прийшли коректно,
+    ТЕКСТ повний, аудіофайл теж повний і не обірваний — але останнє
+    слово в WordBoundary-метаданих отримує 'end', що суттєво коротший
+    за РЕАЛЬНУ тривалість готового mp3-файлу. У застосунку karaoke-
+    підсвітка орієнтується саме на ці 'end'-мітки — тож слідкування за
+    словами тихо зупиняється ще ДО того, як звук фактично дограє.
+    Саме такий випадок і виявив користувач на довгій фразі.
+
+    Причина найімовірніше в тому, що для довших фраз метадані
+    WordBoundary (окремий канал повідомлень вебсокета) і сам аудіопотік
+    можуть накопичувати невеликий розсинхрон між собою — на відміну від
+    обриву З'ЄДНАННЯ (яке ловить _looks_truncated), тут САМЕ З'ЄДНАННЯ
+    відпрацювало повністю, тому попередня перевірка це не бачить.
+
+    Толерантність: max(0.6 сек, 5% тривалості) — не караємо природну
+    коротку паузу/дихання в кінці репліки, яку Edge TTS іноді додає
+    після останнього слова; спрацьовує лише на дійсно суттєвий розрив."""
+    if not words or audio_duration_sec is None:
+        return False
+    last_end = words[-1].get('end')
+    if last_end is None:
+        return False
+    gap = audio_duration_sec - last_end
+    tolerance = max(0.6, 0.05 * audio_duration_sec)
+    return gap > tolerance
+
+
 async def synthesize_speech(text, voice, rate_str, output_path, want_timing=False):
     """Генерація аудіо через Edge TTS.
 
@@ -741,6 +783,37 @@ async def synthesize_speech(text, voice, rate_str, output_path, want_timing=Fals
         )
 
     if want_timing:
+        # Друга перевірка — вже ПІСЛЯ того, як текст визнано повним
+        # (_looks_truncated вище пройшла). Тут ловимо інший випадок:
+        # текст і аудіо повні, але останнє слово в таймінгу закінчується
+        # суттєво РАНІШЕ за фактичний кінець mp3-файлу (розсинхрон
+        # WordBoundary-метаданих і аудіопотоку на довших фразах — див.
+        # _looks_timing_desynced() вище). Читаємо реальну тривалість
+        # готового mp3 через mutagen (без ffmpeg).
+        #
+        # Якщо mutagen не встановлено (MP3 is None) — перевірку тихо
+        # пропускаємо: краще згенерувати без цієї гарантії, ніж впасти
+        # через відсутню опціональну залежність.
+        if MP3 is not None and words:
+            try:
+                audio_duration = MP3(str(output_path)).info.length
+            except Exception:
+                # Пошкоджений/нечитаний mp3 — це само по собі підозріло
+                # (файл щойно записаний тим самим Edge TTS), тож теж
+                # трактуємо як обрив і йдемо на retry.
+                raise RuntimeError(
+                    "Не вдалося прочитати тривалість щойно згенерованого "
+                    "mp3 (mutagen) — файл, судячи з усього, пошкоджений "
+                    "і не буде збережений."
+                )
+            if _looks_timing_desynced(words, audio_duration):
+                raise RuntimeError(
+                    f"Розсинхрон таймінгу: останнє слово закінчується на "
+                    f"{words[-1]['end']:.2f}с, а аудіофайл триває "
+                    f"{audio_duration:.2f}с — підсвітка в застосунку "
+                    f"зупинилася б раніше за звук, файл не буде збережений."
+                )
+
         timing_path = pathlib.Path(str(output_path)).with_suffix('.words.json')
         with open(timing_path, 'w', encoding='utf-8') as f:
             json.dump(words, f, ensure_ascii=False)
