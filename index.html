@@ -3515,7 +3515,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '513-4dec9b4';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12246,14 +12246,27 @@ var _lfFrmHandlers = {
   },
 
   // 🔊-кнопка повтору звуку — той самий патерн, що й у Dialogue.
+  // 📖-кнопка — той самий патерн, що й VOCAB (getSecondaryButtons для
+  // сторони 'def' вище): відкриває модалку з поясненням граматичного
+  // правила (card.gram, _lfGrammarButton — спільний хелпер). Показуємо
+  // ЛИШЕ на юнітах, де в тексті ЦЬОГО конкретного кроку справді є <g>
+  // (переважно meinung/pro/kontra/vorschlag) — на anrede/schluss/name,
+  // де граматичної позначки зазвичай нема, кнопка була б без сенсу.
   getSecondaryButtons: function(unit){
-    return [{
+    var buttons = [{
       icon: '🔊',
       onClick: function(){
         var items = _lfFrmHandlers.getAudioText(unit) || [];
         _lfUnitPlay(items, function(){});
       }
     }];
+    var pl = primaryLang();
+    var partText = unit.kind === 'frm_intro'
+      ? ((unit.card.task && unit.card.task[pl]) || '')
+      : ((unit.part && unit.part[pl]) || '');
+    var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
+    if(gramBtn) buttons.push(gramBtn);
+    return buttons;
   },
 
   // onSwipeUp/onSwipeDown свідомо відсутні — свайп для Forumsbeitrag

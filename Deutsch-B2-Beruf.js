@@ -1132,7 +1132,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "vergleichssaetze_als_wie_je_desto",
     "cardIds": [
@@ -1199,6 +1200,9 @@ var LESSONS = [
     "dlgCards": [
       "dlg_039",
       "dlg_050"
+    ],
+    "frmCards": [
+      "forum_011"
     ]
   },
   {
@@ -14100,6 +14104,82 @@ var SCHREIBEN = [
         "en": "David",
         "uk": "Давид",
         "ru": "Давид"
+      }
+    ]
+  },
+  {
+    "id": "forum_011",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Umstellung auf ein Großraumbüro",
+      "en": "Switch to an open-plan office",
+      "uk": "Перехід на офіс відкритого типу",
+      "ru": "Переход на офис открытого типа"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte alle Einzelbüros abschaffen und stattdessen ein einziges Großraumbüro einrichten, in dem sich alle Mitarbeitenden einen gemeinsamen Arbeitsbereich teilen.",
+      "en": "Management wants to abolish all individual offices and instead set up a single open-plan office in which all employees share a common work area.",
+      "uk": "Керівництво хоче скасувати всі окремі кабінети й натомість облаштувати єдиний офіс відкритого типу, де всі співробітники ділитимуть спільний робочий простір.",
+      "ru": "Руководство хочет упразднить все отдельные кабинеты и вместо этого обустроить единый офис открытого типа, где все сотрудники будут делить общее рабочее пространство."
+    },
+    "gram": "vergleichssaetze_als_wie_je_desto",
+    "name": "de_m_alex",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, alle Einzelbüros abzuschaffen und stattdessen ein großes Großraumbüro einzurichten. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to abolish all individual offices and set up one large open-plan office instead. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує скасувати всі окремі кабінети й натомість облаштувати один великий офіс відкритого типу. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует упразднить все отдельные кабинеты и вместо этого обустроить один большой офис открытого типа. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Umstellung gut gemeint ist, auch wenn die Ergonomie am Arbeitsplatz dabei nicht für jeden gleich gut berücksichtigt werden kann.",
+        "en": "I am of the opinion that this change is well-intentioned, even though workplace ergonomics can't be considered equally well for everyone in the process.",
+        "uk": "Я вважаю, що ця зміна продумана з добрими намірами, навіть якщо ергономіку робочого місця при цьому не можна врахувати однаково добре для кожного.",
+        "ru": "Я считаю, что это изменение продумано с добрыми намерениями, даже если эргономику рабочего места при этом нельзя учесть одинаково хорошо для каждого."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir uns im Großraumbüro schneller austauschen können und spontane Besprechungen viel einfacher werden. <g>Je offener</g> der Raum gestaltet ist, <g>desto leichter</g> fällt uns die Zusammenarbeit zwischen den Abteilungen.",
+        "en": "One advantage would undoubtedly be that we can exchange ideas more quickly in the open-plan office and spontaneous meetings become much easier. The more open the space is designed, the easier collaboration between departments becomes for us.",
+        "uk": "Однією з переваг, безсумнівно, було б те, що у відкритому офісі ми можемо швидше обмінюватися думками, а спонтанні наради стають набагато простішими. Що відкритіший простір, то легше нам співпрацювати між відділами.",
+        "ru": "Одним из преимуществ, несомненно, было бы то, что в открытом офисе мы можем быстрее обмениваться мнениями, а спонтанные совещания становятся намного проще. Чем более открытым спроектировано пространство, тем легче нам сотрудничать между отделами."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> steigt in einem Großraumbüro meist auch der Lärmpegel deutlich an, und nicht jeder fühlt sich dort gleich wohl. <g>Vor allem für konzentriertes Arbeiten</g> fehlt uns dann oft ein ruhiger Rückzugsort.",
+        "en": "On the other hand, the noise level in an open-plan office usually also rises significantly, and not everyone feels equally comfortable there. Especially for concentrated work, we then often lack a quiet retreat.",
+        "uk": "З іншого боку, у відкритому офісі зазвичай також помітно зростає рівень шуму, і не кожному там однаково комфортно. Особливо для зосередженої роботи нам тоді часто бракує тихого куточка.",
+        "ru": "С другой стороны, в открытом офисе обычно также заметно возрастает уровень шума, и не каждому там одинаково комфортно. Особенно для сосредоточенной работы нам тогда часто не хватает тихого уголка."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die Geschäftsleitung diese <g>Entscheidung</g> nicht allein <g>trifft</g>, sondern uns vorher noch einmal befragt. So könnten neben dem Großraumbüro auch einige kleinere Rückzugsräume für konzentriertes Arbeiten oder vertrauliche Gespräche erhalten bleiben.",
+        "en": "That's why I suggest that management not make this decision alone, but ask us again beforehand. That way, in addition to the open-plan office, some smaller retreat rooms for concentrated work or confidential conversations could also be kept.",
+        "uk": "Тому я пропоную, щоб керівництво не приймало це рішення самостійно, а заздалегідь ще раз запитало нашу думку. Так, окрім офісу відкритого типу, могли б зберегтися і кілька менших приміщень для зосередженої роботи чи конфіденційних розмов.",
+        "ru": "Поэтому я предлагаю, чтобы руководство не принимало это решение самостоятельно, а заранее ещё раз спросило наше мнение. Так, помимо офиса открытого типа, могли бы сохраниться и несколько меньших помещений для сосредоточенной работы или конфиденциальных разговоров."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Alex",
+        "en": "Alex",
+        "uk": "Алекс",
+        "ru": "Алекс"
       }
     ]
   }

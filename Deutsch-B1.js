@@ -3395,7 +3395,8 @@ var LESSONS = [
       "dlg_037",
       "dlg_038",
       "dlg_039",
-      "dlg_040"
+      "dlg_040",
+      "dlg_118"
     ]
   },
   {
@@ -3432,7 +3433,10 @@ var LESSONS = [
       "k10_031"
     ],
     "unlockAfter": "k10m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_119"
+    ]
   },
   {
     "id": "k10m3",
@@ -29980,6 +29984,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: будем делать настоящие перерывы, вовремя заканчивать работу, приберём на рабочем месте и будем повышать квалификацию. Я уже жду наших новых будней! Спасибо за идею, Анна!"
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_118",
+    "cat": "Sport und Bewegung",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund/Ihre Freundin nehmen beide an einem Wettkampf teil und möchten sich gemeinsam vorbereiten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWie wärmen Sie sich auf?\nWie dehnen Sie sich?\nWie kontrollieren Sie die Ausrüstung?\nWie konzentrieren Sie sich, bevor es losgeht?\nWie gehen Sie mit Nervosität um?",
+      "en": "Situation: You and your friend are both taking part in a competition and want to prepare together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nHow do you warm up?\nHow do you stretch?\nHow do you check the equipment?\nHow do you concentrate before it starts?\nHow do you deal with nervousness?",
+      "uk": "Ситуація: Ви та Ваш друг/Ваша подруга обоє берете участь у змаганні й хочете підготуватися разом.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк Ви розігріваєтеся?\nЯк Ви розтягуєтеся?\nЯк Ви перевіряєте спорядження?\nЯк Ви зосереджуєтеся перед стартом?\nЯк Ви справляєтеся з нервозністю?",
+      "ru": "Ситуация: Вы и Ваш друг/Ваша подруга оба участвуете в соревновании и хотите подготовиться вместе.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКак Вы разминаетесь?\nКак Вы растягиваетесь?\nКак Вы проверяете снаряжение?\nКак Вы сосредотачиваетесь перед стартом?\nКак Вы справляетесь с нервозностью?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Hallo, Alex! Wir haben ja beide bald einen Wettkampf. Wollen wir zusammen planen, wie wir uns vorbereiten?",
+      "en": "Hi, Alex! We both have a competition coming up soon. Shall we plan together how we'll prepare?",
+      "uk": "Привіт, Алексе! У нас обох скоро змагання. Може, разом сплануємо, як підготуватися?",
+      "ru": "Привет, Алекс! У нас обоих скоро соревнование. Может, вместе спланируем, как подготовиться?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sollten uns gut aufwärmen, <g>bevor der Wettkampf beginnt</g>.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> we should warm up well <g>before the competition begins</g>.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> нам варто добре розігрітися, <g>перш ніж почнеться змагання</g>.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> нам стоит хорошо размяться, <g>прежде чем начнётся соревнование</g>.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Ausrüstung <r>bedenken</r>.<br><r>Wir könnten doch</r> sie kontrollieren, <g>bevor wir zur Startlinie gehen</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the equipment.<br><r>We could</r> check it <g>before we go to the starting line</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> спорядження.<br><r>Ми могли б</r> перевірити його, <g>перш ніж підемо на стартову лінію</g>.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> снаряжении.<br><r>Мы могли бы</r> проверить его, <g>прежде чем пойдём на стартовую линию</g>.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns richtig dehnen, <g>bevor wir richtig loslegen</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> stretch properly <g>before we really get started</g>.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> добре розтягнемося, <g>перш ніж по-справжньому почнемо</g>.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> хорошо растянемся, <g>прежде чем по-настоящему начнём</g>.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> ich mich in Ruhe konzentriere, <g>bevor der Wettkampf startet</g>.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> I concentrate calmly <g>before the competition starts</g>.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> я спокійно зосередилася, <g>перш ніж почнеться змагання</g>.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> я спокойно сосредоточилась, <g>прежде чем начнётся соревнование</g>.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir mit der Nervosität umgehen.<br><r>Eine Idee wäre, dass wir</r> ein paarmal tief durchatmen, <g>bevor wir zu nervös werden</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how we deal with nervousness.<br><r>One idea would be that we</r> take a few deep breaths <g>before we get too nervous</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як ми впораємося з нервозністю.<br><r>Була б ідея, щоб ми</r> кілька разів глибоко подихали, <g>перш ніж занадто занервуємо</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как мы справимся с нервозностью.<br><r>Была бы идея, чтобы мы</r> несколько раз глубоко подышали, <g>прежде чем слишком занервничаем</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> pünktlich da sind, <g>bevor wir an der Startlinie stehen müssen</g>?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> are on time <g>before we have to stand at the starting line</g>?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> будемо вчасно, <g>перш ніж нам доведеться стояти на стартовій лінії</g>?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> будем вовремя, <g>прежде чем нам придётся стоять на стартовой линии</g>?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir daran denken werden.<br><r>Vielleicht wäre es am besten, wenn wir</r> genug trinken, <g>bevor wir uns richtig anstrengen</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we'll remember that.<br><r>Maybe it would be best if we</r> drink enough <g>before we really push ourselves</g>.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи ми про це пам'ятатимемо.<br><r>Можливо, було б найкраще, якби ми</r> пили достатньо, <g>перш ніж по-справжньому докладемо зусиль</g>.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, вспомним ли мы об этом.<br><r>Может быть, было бы лучше, если бы мы</r> пили достаточно, <g>прежде чем по-настоящему приложим усилия</g>.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns noch leicht bewegen, <g>bevor die Muskeln kalt werden</g>.<br><r>Bist du damit einverstanden</r>, Alex?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also move around a bit <g>before our muscles get cold</g>.<br><r>Are you okay with that</r>, Alex?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> ще трохи порухаємося, <g>перш ніж м'язи охолонуть</g>.<br><r>Ти з цим згоден</r>, Алексе?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> ещё немного подвигаемся, <g>прежде чем мышцы остынут</g>.<br><r>Ты с этим согласен</r>, Алекс?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir wärmen uns auf, kontrollieren die Ausrüstung, dehnen uns, konzentrieren uns und bewegen uns leicht. Ich freue mich schon auf den Wettkampf! Danke für die Idee, Nina!",
+      "en": "Yes, of course! So, here's what we'll do: we'll warm up, check the equipment, stretch, concentrate, and move around lightly. I'm already looking forward to the competition! Thanks for the idea, Nina!",
+      "uk": "Так, звісно! Отже, зробимо так: розігріємося, перевіримо спорядження, розтягнемося, зосередимося й трохи порухаємося. Я вже чекаю на змагання! Дякую за ідею, Ніно!",
+      "ru": "Да, конечно! Итак, сделаем так: разомнёмся, проверим снаряжение, растянемся, сосредоточимся и немного подвигаемся. Я уже жду соревнования! Спасибо за идею, Нина!"
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "dlg_119",
+    "cat": "Neuen Trainer und neues Team willkommen heißen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihre Teamkollegin/Ihr Teamkollege haben einen neuen Trainer/eine neue Trainerin bekommen und möchten gemeinsam planen, wie das neue Team gut startet.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWie begrüßen Sie den neuen Trainer?\nWelche Taktik schlagen Sie vor?\nWie zeigen Sie Ihr Talent?\nWelchen Erfolg wollen Sie erreichen?\nWie gehen Sie mit der neuen Herausforderung um?",
+      "en": "Situation: You and your teammate have gotten a new coach and want to plan together how the new team gets off to a good start.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nHow do you welcome the new coach?\nWhat tactics do you suggest?\nHow do you show your talent?\nWhat success do you want to achieve?\nHow do you deal with the new challenge?",
+      "uk": "Ситуація: У Вас та Вашого товариша/товаришки по команді з'явився новий тренер/нова тренерка, і Ви хочете разом спланувати, як нова команда добре стартує.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк Ви привітаєте нового тренера?\nЯку тактику Ви запропонуєте?\nЯк Ви покажете свій талант?\nЯкого успіху Ви хочете досягти?\nЯк Ви впораєтеся з новим викликом?",
+      "ru": "Ситуация: У Вас и Вашего товарища/товарища по команде появился новый тренер/новая тренер, и Вы хотите вместе спланировать, как новая команда хорошо стартует.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКак Вы поприветствуете нового тренера?\nКакую тактику Вы предложите?\nКак Вы покажете свой талант?\nКакого успеха Вы хотите достичь?\nКак Вы справитесь с новым вызовом?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Hallo, Nina! Wir haben ja jetzt einen neuen Trainer. Wollen wir zusammen planen, wie das neue Team gut startet?",
+      "en": "Hi, Nina! We have a new coach now. Shall we plan together how the new team can get off to a good start?",
+      "uk": "Привіт, Ніно! У нас тепер новий тренер. Може, разом сплануємо, як нова команда добре стартує?",
+      "ru": "Привет, Нина! У нас теперь новый тренер. Может, вместе спланируем, как новая команда хорошо стартует?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> <g>Der neue Trainer</g> kommt ja schon morgen – lass uns ihn gemeinsam begrüßen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> <g>the new coach</g> is arriving tomorrow already – let's welcome him together.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> <g>новий тренер</g> приїжджає вже завтра – давай привітаємо його разом.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> <g>новый тренер</g> приезжает уже завтра – давай поприветствуем его вместе.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> das Team <r>bedenken</r>.<br><r>Wir könnten doch</r> uns vorstellen, wie es ist, wenn <g>ein neuer Trainer</g> ein Team kennenlernt – wir sollten offen und freundlich sein.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the team.<br><r>We could</r> imagine what it's like when <g>a new coach</g> gets to know a team – we should be open and friendly.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> команду.<br><r>Ми могли б</r> уявити, як це, коли <g>новий тренер</g> знайомиться з командою – нам варто бути відкритими й привітними.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> команде.<br><r>Мы могли бы</r> представить, каково это, когда <g>новый тренер</g> знакомится с командой – нам стоит быть открытыми и дружелюбными.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> ihm gleich zeigen, was <g>das große Talent</g> unseres Teams ist.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> show him right away what <g>the great talent</g> of our team is.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> одразу покажемо йому, у чому <g>великий талант</g> нашої команди.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> сразу покажем ему, в чём <g>большой талант</g> нашей команды.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir auch sagen, dass jeder von uns <g>ein großes Talent</g> mitbringt.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we also say that each of us brings <g>a great talent</g>.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми також сказали, що кожен із нас приносить <g>великий талант</g>.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы также сказали, что каждый из нас приносит <g>большой талант</g>.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel wir schon wissen.<br><r>Eine Idee wäre, dass wir</r> fragen, wie <g>die neue Taktik</g> aussehen wird, bevor wir zu viel planen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how much we already know.<br><r>One idea would be that we</r> ask what <g>the new tactics</g> will look like, before we plan too much.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки ми вже знаємо.<br><r>Була б ідея, щоб ми</r> запитали, якою буде <g>нова тактика</g>, перш ніж занадто багато планувати.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько мы уже знаем.<br><r>Была бы идея, чтобы мы</r> спросили, какой будет <g>новая тактика</g>, прежде чем слишком много планировать.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns fest vornehmen, gemeinsam <g>einen großen Erfolg</g> zu erreichen?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> firmly resolve to achieve <g>a great success</g> together?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> твердо вирішимо разом досягти <g>великого успіху</g>?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> твёрдо решим вместе достичь <g>большого успеха</g>?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir das gleich am Anfang versprechen sollten.<br><r>Vielleicht wäre es am besten, wenn wir</r> erst mal zeigen, dass wir <g>die gute Leistung</g> von letzter Saison wiederholen können.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we should promise that right at the start.<br><r>Maybe it would be best if we</r> first show that we can repeat <g>the good performance</g> from last season.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи варто одразу на початку це обіцяти.<br><r>Можливо, було б найкраще, якби ми</r> спершу показали, що можемо повторити <g>хороший результат</g> минулого сезону.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, стоит ли сразу в начале это обещать.<br><r>Может быть, было бы лучше, если бы мы</r> сначала показали, что можем повторить <g>хороший результат</g> прошлого сезона.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> gemeinsam sagen, dass diese Saison <g>eine große Herausforderung</g> für uns alle ist.<br><r>Bist du damit einverstanden</r>, Nina?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> say together that this season is <g>a big challenge</g> for all of us.<br><r>Are you okay with that</r>, Nina?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> разом скажемо, що цей сезон – <g>великий виклик</g> для нас усіх.<br><r>Ти з цим згодна</r>, Ніно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> вместе скажем, что этот сезон – <g>большой вызов</g> для нас всех.<br><r>Ты с этим согласна</r>, Нина?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir begrüßen den neuen Trainer, zeigen unser Talent, fragen nach der Taktik und nehmen die Herausforderung gemeinsam an. Ich freue mich schon auf die neue Saison! Danke für die Idee, Mark!",
+      "en": "Yes, of course! So, here's what we'll do: we'll welcome the new coach, show our talent, ask about the tactics, and take on the challenge together. I'm already looking forward to the new season! Thanks for the idea, Mark!",
+      "uk": "Так, звісно! Отже, зробимо так: привітаємо нового тренера, покажемо наш талант, запитаємо про тактику й разом приймемо виклик. Я вже тішуся новому сезону! Дякую за ідею, Марку!",
+      "ru": "Да, конечно! Итак, сделаем так: поприветствуем нового тренера, покажем наш талант, спросим о тактике и вместе примем вызов. Я уже жду нового сезона! Спасибо за идею, Марк!"
+    },
+    "gram": "adjektivdeklination_bestimmter_artikel"
   }
 ];
 
