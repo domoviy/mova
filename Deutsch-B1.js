@@ -3551,7 +3551,10 @@ var LESSONS = [
       "k10_050"
     ],
     "unlockAfter": "k10m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_122"
+    ]
   },
   {
     "id": "k11m1",
@@ -3587,7 +3590,10 @@ var LESSONS = [
       "k11_023"
     ],
     "unlockAfter": "k10m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_123"
+    ]
   },
   {
     "id": "k11m2",
@@ -30287,6 +30293,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: поищем волонтёров, спланируем маршрут, соберём пожертвования и отдадим выручку больным. Я уже жду благотворительного забега! Спасибо за идею, Дэвид!"
     },
     "gram": "adjektive_als_nomen"
+  },
+  {
+    "id": "dlg_122",
+    "cat": "Freunde für Sport begeistern",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihre Freundin möchten gemeinsam Vorschläge machen, wie Ihre Freunde sich mehr bewegen könnten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWelche Sportart schlagen Sie vor?\nWie überzeugen Sie die anderen?\nWen überreden Sie zuerst?\nWie steigern Sie langsam die Fitness aller?\nWollen Sie ein Event veranstalten?",
+      "en": "Situation: You and your friend want to make suggestions together about how your friends could move more.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat sport do you suggest?\nHow do you convince the others?\nWho do you persuade first?\nHow do you gradually improve everyone's fitness?\nDo you want to organize an event?",
+      "uk": "Ситуація: Ви та Ваша подруга хочете разом придумати пропозиції, як Ваші друзі могли б більше рухатися.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯкий вид спорту Ви запропонуєте?\nЯк Ви переконаєте інших?\nКого Ви вмовите першим?\nЯк Ви поступово покращите форму всіх?\nЧи хочете Ви організувати подію?",
+      "ru": "Ситуация: Вы и Ваша подруга хотите вместе придумать предложения, как Ваши друзья могли бы больше двигаться.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКакой вид спорта Вы предложите?\nКак Вы убедите остальных?\nКого Вы уговорите первым?\nКак Вы постепенно улучшите форму всех?\nХотите ли Вы организовать мероприятие?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Hallo, Nina! Unsere Freunde bewegen sich viel zu wenig. Wollen wir zusammen ein paar Vorschläge zum Sport machen?",
+      "en": "Hi, Nina! Our friends move way too little. Shall we come up with some suggestions about sport together?",
+      "uk": "Привіт, Ніно! Наші друзі рухаються занадто мало. Може, разом придумаємо кілька пропозицій щодо спорту?",
+      "ru": "Привет, Нина! Наши друзья двигаются слишком мало. Может, вместе придумаем несколько предложений о спорте?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten eine ganz neue Sportart vorschlagen, zum Beispiel Klettern.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> we could suggest a completely new type of sport, for example climbing.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> ми могли б запропонувати зовсім новий вид спорту, наприклад скелелазіння.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> мы могли бы предложить совсем новый вид спорта, например скалолазание.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Kosten <r>bedenken</r>.<br><r>Wir könnten doch</r> zuerst überlegen, wie wir die anderen am besten überzeugen können.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the costs.<br><r>We could</r> first think about how to best convince the others.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> витрати.<br><r>Ми могли б</r> спершу подумати, як найкраще переконати інших.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> расходах.<br><r>Мы могли бы</r> сначала подумать, как лучше убедить остальных.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> zuerst Mark überreden, weil er meistens auch die anderen mitzieht.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> persuade Mark first, because he usually gets the others to join too.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> спершу вмовимо Марка, бо він зазвичай тягне за собою й інших.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> сначала уговорим Марка, потому что он обычно тянет за собой и остальных.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir langsam anfangen, damit alle ihre Fitness ohne Druck steigern können.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we start slowly, so everyone can improve their fitness without pressure.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми почали повільно, щоб усі могли покращувати свою форму без тиску.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы начали медленно, чтобы все могли улучшать свою форму без давления.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wann wir Zeit haben.<br><r>Eine Idee wäre, dass wir</r> ein kleines Event veranstalten, bei dem alle die neue Sportart einfach ausprobieren können.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> when we have time.<br><r>One idea would be that we</r> organize a small event where everyone can simply try out the new sport.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> коли в нас є час.<br><r>Була б ідея, щоб ми</r> організували невелику подію, де всі просто зможуть спробувати новий вид спорту.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> когда у нас есть время.<br><r>Была бы идея, чтобы мы</r> организовали небольшое мероприятие, где все просто смогут попробовать новый вид спорта.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> auch fragen, ob wir mit einem lokalen Verein zusammenarbeiten können?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also ask whether we can work together with a local club?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також запитаємо, чи можемо співпрацювати з місцевим клубом?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также спросим, можем ли мы сотрудничать с местным клубом?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob alle wirklich mitmachen wollen.<br><r>Vielleicht wäre es am besten, wenn wir</r> einen kleinen Rekord-Wettbewerb machen, damit es allen mehr Spaß macht.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether everyone really wants to join in.<br><r>Maybe it would be best if we</r> hold a small record challenge, so it's more fun for everyone.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи всі справді захочуть долучитися.<br><r>Можливо, було б найкраще, якби ми</r> влаштували невеликий рекордний конкурс, щоб усім було веселіше.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, все ли действительно захотят присоединиться.<br><r>Может быть, было бы лучше, если бы мы</r> устроили небольшое рекордное соревнование, чтобы всем было веселее.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> gleich morgen mit Mark sprechen und ihm die ganze Idee vorschlagen.<br><r>Bist du damit einverstanden</r>, Nina?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> talk to Mark tomorrow already and suggest the whole idea to him.<br><r>Are you okay with that</r>, Nina?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> уже завтра поговоримо з Марком і запропонуємо йому всю ідею.<br><r>Ти з цим згодна</r>, Ніно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> уже завтра поговорим с Марком и предложим ему всю идею.<br><r>Ты с этим согласна</r>, Нина?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir schlagen eine neue Sportart vor, überreden Mark zuerst, veranstalten ein kleines Event und suchen einen Verein. Ich freue mich schon darauf! Danke für die Idee, Julia!",
+      "en": "Yes, of course! So, here's what we'll do: we'll suggest a new sport, persuade Mark first, organize a small event, and look for a club. I'm already looking forward to it! Thanks for the idea, Julia!",
+      "uk": "Так, звісно! Отже, зробимо так: запропонуємо новий вид спорту, спершу вмовимо Марка, організуємо невелику подію й пошукаємо клуб. Я вже тішуся цьому! Дякую за ідею, Юліє!",
+      "ru": "Да, конечно! Итак, сделаем так: предложим новый вид спорта, сначала уговорим Марка, организуем небольшое мероприятие и поищем клуб. Я уже жду этого! Спасибо за идею, Юлия!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_123",
+    "cat": "Geburt gemeinsam vorbereiten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Partner/Ihre Partnerin erwarten ein Kind und möchten sich gemeinsam auf die Geburt vorbereiten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWie finden Sie eine Hebamme?\nWann beginnt der Mutterschutz?\nWer nimmt Vaterschaftsurlaub?\nWas brauchen Sie für das Neugeborene?\nWie finden Sie einen Kita-Platz?",
+      "en": "Situation: You and your partner are expecting a child and want to prepare for the birth together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nHow do you find a midwife?\nWhen does maternity leave begin?\nWho takes paternity leave?\nWhat do you need for the newborn?\nHow do you find a daycare spot?",
+      "uk": "Ситуація: Ви та Ваш партнер/Ваша партнерка чекаєте на дитину й хочете разом підготуватися до пологів.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк Ви знайдете акушерку?\nКоли починається декретна відпустка?\nХто візьме батьківську відпустку?\nЩо Вам потрібно для новонародженого?\nЯк Ви знайдете місце в дитячому садку?",
+      "ru": "Ситуация: Вы и Ваш партнёр/Ваша партнёрша ждёте ребёнка и хотите вместе подготовиться к родам.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКак Вы найдёте акушерку?\nКогда начинается декретный отпуск?\nКто возьмёт отпуск для отцов?\nЧто Вам нужно для новорождённого?\nКак Вы найдёте место в детском саду?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Die Schwangerschaft geht ja schon in die letzte Phase. Wollen wir uns zusammen auf die Geburt vorbereiten?",
+      "en": "Hi, Mark! The pregnancy is already entering its final phase. Shall we prepare for the birth together?",
+      "uk": "Привіт, Марку! Вагітність уже входить у завершальну фазу. Може, разом підготуємося до пологів?",
+      "ru": "Привет, Марк! Беременность уже входит в завершающую фазу. Может, вместе подготовимся к родам?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sollten zuerst eine Hebamme finden, die uns bei der Geburt begleitet.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> we should first find a midwife who can accompany us during the birth.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> нам варто спершу знайти акушерку, яка супроводжуватиме нас під час пологів.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> нам стоит сначала найти акушерку, которая будет сопровождать нас во время родов.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Mutterschutz <r>bedenken</r>.<br><r>Wir könnten doch</r> auch klären, wann genau mein Mutterschutz beginnt, damit ich rechtzeitig aufhöre zu arbeiten.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> maternity protection.<br><r>We could</r> also clarify exactly when my maternity leave begins, so I stop working in time.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> охорону материнства.<br><r>Ми могли б</r> також з'ясувати, коли саме починається моя декретна відпустка, щоб я вчасно перестала працювати.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать об</r> охране материнства.<br><r>Мы могли бы</r> также выяснить, когда именно начинается мой декретный отпуск, чтобы я вовремя перестала работать.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch schon mit meinem Chef über den Vaterschaftsurlaub sprechen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> also talk to my boss about paternity leave already.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> також уже поговоримо з моїм начальником про батьківську відпустку.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также уже поговорим с моим начальником об отпуске для отцов.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir zusammen einen Kinderwagen und andere Sachen für das Neugeborene kaufen.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we buy a stroller and other things for the newborn together.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми разом купили дитячу коляску та інші речі для новонародженого.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы вместе купили детскую коляску и другие вещи для новорождённого.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Geld wir dafür haben.<br><r>Eine Idee wäre, dass wir</r> schon jetzt besprechen, wie wir uns beim Stillen und Wickeln abwechseln.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how much money we have for that.<br><r>One idea would be that we</r> discuss now how we'll take turns with breastfeeding and changing nappies.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки грошей у нас на це є.<br><r>Була б ідея, щоб ми</r> вже зараз обговорили, як ми чергуватимемося з годуванням груддю та переодяганням підгузків.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько денег у нас на это есть.<br><r>Была бы идея, чтобы мы</r> уже сейчас обсудили, как мы будем чередоваться с кормлением грудью и сменой подгузников.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns schon jetzt für einen Kita-Platz anmelden, weil die Wartelisten so lang sind?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> register for a daycare spot already now, since the waiting lists are so long?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> вже зараз запишемося на місце в дитячому садку, бо черги такі довгі?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> уже сейчас запишемся на место в детском саду, потому что очереди такие длинные?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir schon so weit im Voraus planen sollten.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns einfach Zeit lassen und die Verantwortung Schritt für Schritt übernehmen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we should plan that far ahead already.<br><r>Maybe it would be best if we</r> just take our time and take on the responsibility step by step.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи варто нам планувати так далеко наперед.<br><r>Можливо, було б найкраще, якби ми</r> просто дали собі час і брали на себе відповідальність крок за кроком.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, стоит ли нам планировать так далеко наперёд.<br><r>Может быть, было бы лучше, если бы мы</r> просто дали себе время и брали на себя ответственность шаг за шагом.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> trotzdem schon diese Woche die Hebamme anrufen, dann haben wir das Wichtigste erledigt.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> still call the midwife this week, then we'll have the most important thing done.<br><r>Are you okay with that</r>, Mark?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> все ж уже цього тижня зателефонуємо акушерці, тоді найважливіше буде зроблено.<br><r>Ти з цим згоден</r>, Марку?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> всё же уже на этой неделе позвоним акушерке, тогда самое важное будет сделано.<br><r>Ты с этим согласен</r>, Марк?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir suchen eine Hebamme, klären den Mutterschutz und den Vaterschaftsurlaub, kaufen einen Kinderwagen und melden uns für einen Kita-Platz an. Ich freue mich schon auf unser Neugeborenes! Danke für die Idee, Anna!",
+      "en": "Yes, of course! So, here's what we'll do: we'll look for a midwife, clarify the maternity and paternity leave, buy a stroller, and register for a daycare spot. I'm already looking forward to our newborn! Thanks for the idea, Anna!",
+      "uk": "Так, звісно! Отже, зробимо так: пошукаємо акушерку, з'ясуємо декретну й батьківську відпустку, купимо коляску й запишемося на місце в дитячому садку. Я вже чекаю на нашого новонародженого! Дякую за ідею, Анно!",
+      "ru": "Да, конечно! Итак, сделаем так: поищем акушерку, выясним декретный и отцовский отпуск, купим коляску и запишемся на место в детском саду. Я уже жду нашего новорождённого! Спасибо за идею, Анна!"
+    },
+    "gram": ""
   }
 ];
 

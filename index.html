@@ -1780,20 +1780,16 @@ body{
 .fc-def-lang-label{font-size:var(--fs-tertiary);font-weight:700;color:var(--gold);margin-bottom:2px}
 .fc-def{font-size:var(--fs-card);line-height:1.3;color:var(--warm)}
 
-/* ── Граматична підказка <g>…</g> — виділення у всіх видах карток ── */
-.fc-front g, .fc-back g,
-.sb-front-sentence g, .sb-back-sentence g,
-.mc-q-term g, .mc-opt g,
-.tiles-q-text g, .tiles-result-correct g,
-.def-slot g, .match-btn g,
-.lf-dlg-bubble g, .lf-dlg-task g {
-  display:inline;
-  color:#7ecfff;               /* холодний блакитний — контрастний на темному і світлому */
-  font-style:italic;
-  font-weight:600;
-  letter-spacing:.01em;
-  border-bottom:1.5px dashed rgba(126,207,255,.45);
-}
+/* Граматична підказка <g>…</g> у всіх видах карток (fc-front/fc-back,
+   sb-front/back-sentence, mc-q-term/opt, tiles-q-text/result-correct,
+   def-slot, match-btn, dialogue-бульбашки, Forumsbeitrag) — раніше тут
+   було ОКРЕМЕ правило (блакитний курсив із пунктирним підкресленням),
+   яке ПЕРЕБИВАЛО глобальне g{...} (рядок ~239) своєю вищою
+   специфічністю (клас+елемент проти самого елемента) — саме тому
+   картки й Forumsbeitrag виглядали інакше, ніж мало бути. Прибрано:
+   тепер усі контексти однаково падають на глобальне правило
+   (жирний текст + var(--g-accent) — теплий цегляний акцент), як і
+   задумано коментарем біля g{...}.*/
 
 /* ── Redemittel <r>…</r> — стандартна фраза діалогу, лише у Dialogue ──
    Навмисно ІНШИЙ відтінок синього і ІНШИЙ стиль, ніж <g>: <g> — це
@@ -3515,7 +3511,7 @@ g .tts-word.active, r .tts-word.active{ background:var(--forest); }
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '516-0c7fcce';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
