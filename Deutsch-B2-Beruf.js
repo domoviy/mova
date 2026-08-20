@@ -1222,9 +1222,13 @@ var LESSONS = [
       "ru": "Добро пожаловать – Small Talk"
     },
     "skills": [
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "es_pronomen",
+    "frmCards": [
+      "forum_012"
+    ],
     "cardIds": [
       "eat_018",
       "eat_021",
@@ -14180,6 +14184,82 @@ var SCHREIBEN = [
         "en": "Alex",
         "uk": "Алекс",
         "ru": "Алекс"
+      }
+    ]
+  },
+  {
+    "id": "forum_012",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Buddy-Programm für neue Kolleginnen und Kollegen",
+      "en": "Buddy program for new colleagues",
+      "uk": "Buddy-програма для нових колег",
+      "ru": "Buddy-программа для новых коллег"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte ein Buddy-Programm einführen: Jede neue Mitarbeiterin und jeder neue Mitarbeiter soll in den ersten Wochen eine feste Ansprechperson aus dem Team bekommen, die beim Einstieg hilft.",
+      "en": "Management wants to introduce a buddy program: every new employee is to be given a fixed contact person from the team during the first weeks, who helps with getting started.",
+      "uk": "Керівництво хоче запровадити buddy-програму: кожен новий співробітник має отримати в перші тижні постійну контактну особу з команди, яка допомагатиме з входженням у роботу.",
+      "ru": "Руководство хочет ввести buddy-программу: каждый новый сотрудник должен получить в первые недели постоянное контактное лицо из команды, которое будет помогать с началом работы."
+    },
+    "gram": "es_pronomen",
+    "name": "de_m_mark",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Hallo zusammen,",
+        "en": "Hello everyone,",
+        "uk": "Привіт усім,",
+        "ru": "Привет всем,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon gehört habt, plant die Geschäftsleitung</r>, ein Buddy-Programm für neue Mitarbeiterinnen und Mitarbeiter einzuführen. <r>Auch ich möchte heute in unserem Blog etwas dazu</r> schreiben.",
+        "en": "as you have probably already heard, management is planning to introduce a buddy program for new employees. I would also like to write something about this in our blog today.",
+        "uk": "як ви, напевно, вже чули, керівництво планує запровадити buddy-програму для нових співробітників. Я теж хочу сьогодні написати про це кілька слів у нашому блозі.",
+        "ru": "как вы, наверное, уже слышали, руководство планирует ввести buddy-программу для новых сотрудников. Я тоже хочу сегодня написать об этом несколько слов в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> <g>es</g> für neue Kolleginnen und Kollegen am Anfang oft schwer ist, das Eis zu brechen und eine vertraute Atmosphäre im Team zu finden.",
+        "en": "I am of the opinion that it is often difficult for new colleagues at the beginning to break the ice and find a familiar atmosphere in the team.",
+        "uk": "Я вважаю, що новим колегам спочатку часто буває важко розтопити лід і знайти довірливу атмосферу в команді.",
+        "ru": "Я считаю, что новым коллегам поначалу часто бывает трудно растопить лёд и найти доверительную атмосферу в команде."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> sicherlich, dass das <g>Kennenlernen</g> durch eine feste Ansprechperson deutlich leichter <g>würde</g> und der erste Kontakt zum Team viel angenehmer wäre. Außerdem könnte die Buddy-Person beim Small Talk in der Pause helfen und so echtes Interesse am neuen Kollegen zeigen.",
+        "en": "One advantage would certainly be that getting to know each other would become much easier with a fixed contact person, and the first contact with the team would be much more pleasant. In addition, the buddy could help with small talk during breaks and thus show genuine interest in the new colleague.",
+        "uk": "Однією з переваг, безумовно, було б те, що знайомство з командою стало б набагато легшим завдяки постійній контактній особі, а перший контакт з командою був би набагато приємнішим. Крім того, buddy міг би допомагати зі small talk під час перерви і тим самим виявляти щирий інтерес до нового колеги.",
+        "ru": "Одним из преимуществ, безусловно, было бы то, что знакомство с командой стало бы намного легче благодаря постоянному контактному лицу, а первый контакт с командой был бы намного приятнее. Кроме того, buddy мог бы помогать со small talk во время перерыва и тем самым проявлять искренний интерес к новому коллеге."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> haben nicht alle Kolleginnen und Kollegen genug Zeit, <g>um</g> sich zusätzlich <g>um</g> eine neue Person zu kümmern, ohne dass die eigene Arbeit darunter leidet. Zudem passt nicht jede Buddy-Person automatisch zum Charakter des neuen Mitarbeiters, was die Unterhaltung anfangs eher formell statt locker wirken lassen könnte.",
+        "en": "On the other hand, not all colleagues have enough time to additionally take care of a new person without their own work suffering. Moreover, not every buddy automatically matches the character of the new employee, which could make the conversation feel rather formal instead of relaxed at first.",
+        "uk": "З іншого боку, не всі колеги мають достатньо часу, щоб додатково опікуватися новою людиною, без того щоб не постраждала їхня власна робота. Крім того, не кожна buddy-особа автоматично підходить за характером новому співробітнику, через що спілкування спочатку може здаватися радше формальним, ніж невимушеним.",
+        "ru": "С другой стороны, не у всех коллег достаточно времени, чтобы дополнительно заботиться о новом человеке, чтобы при этом не пострадала их собственная работа. Кроме того, не каждый buddy автоматически подходит по характеру новому сотруднику, из-за чего общение поначалу может казаться скорее формальным, чем непринуждённым."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die Buddy-Person und die neue Kollegin oder der neue Kollege vorher kurz befragt <g>werden</g>, damit die Zuständigkeit zu beiden passt und das Gespräch von Anfang an offen und taktvoll verläuft.",
+        "en": "That's why I suggest that the buddy and the new colleague be briefly asked in advance, so that they are a good match for each other and the conversation goes smoothly, openly and tactfully from the start.",
+        "uk": "Тому я пропоную, щоб buddy і нового колегу заздалегідь коротко опитували, щоб відповідність підходила обом і розмова від самого початку проходила відкрито й тактовно.",
+        "ru": "Поэтому я предлагаю, чтобы buddy и нового коллегу заранее коротко опрашивали, чтобы соответствие подходило обоим и разговор с самого начала проходил открыто и тактично."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Mark",
+        "en": "Mark",
+        "uk": "Марк",
+        "ru": "Марк"
       }
     ]
   }

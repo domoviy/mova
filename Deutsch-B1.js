@@ -3695,7 +3695,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Schreiben"
+      "Schreiben",
+      "Sprechen"
     ],
     "grammar": "indefinitpronomen_possessivpronomen",
     "cardIds": [
@@ -3711,7 +3712,10 @@ var LESSONS = [
       "k11_046"
     ],
     "unlockAfter": "k11m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_126"
+    ]
   },
   {
     "id": "k11m5",
@@ -3747,7 +3751,10 @@ var LESSONS = [
       "k11_050"
     ],
     "unlockAfter": "k11m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_127"
+    ]
   },
   {
     "id": "k12m1",
@@ -30593,6 +30600,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: разделим домашнюю работу, воспитание и работу, будем чередоваться с отпуском по уходу и оставим старые ролевые модели позади. Я уже жду нашей жизни втроём! Спасибо за идею, Анна!"
     },
     "gram": "nebensatz_mit_waehrend"
+  },
+  {
+    "id": "dlg_126",
+    "cat": "Kinder ohne Klischees erziehen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Partner möchten gemeinsam überlegen, wie Sie Ihre Kinder ohne alte Frauenrollen und Männerrollen erziehen.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWie reagieren Sie auf Klischees und Vorurteile?\nWie teilen Sie die Aufgaben zu Hause?\nWelche Vorbilder zeigen Sie den Kindern?\nWie akzeptieren Sie Unterschiede zwischen den Kindern?\nWie sprechen Sie über Gleichberechtigung?",
+      "en": "Situation: You and your partner want to think together about how to raise your children without old women's and men's roles.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nHow do you react to stereotypes and prejudices?\nHow do you split the tasks at home?\nWhat role models do you show the children?\nHow do you accept differences between the children?\nHow do you talk about equality?",
+      "uk": "Ситуація: Ви та Ваш партнер хочете разом подумати, як виховувати дітей без старих жіночих і чоловічих ролей.\nЗавдання: Сплануйте разом зі своїм співрозмовником, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк Ви реагуєте на стереотипи й упередження?\nЯк Ви розподіляєте завдання вдома?\nЯкі взірці Ви показуєте дітям?\nЯк Ви приймаєте відмінності між дітьми?\nЯк Ви говорите про рівноправність?",
+      "ru": "Ситуация: Вы и Ваш партнёр хотите вместе подумать, как воспитывать детей без старых женских и мужских ролей.\nЗадание: Спланируйте вместе со своим собеседником, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКак Вы реагируете на стереотипы и предрассудки?\nКак Вы распределяете задачи дома?\nКакие образцы Вы показываете детям?\nКак Вы принимаете различия между детьми?\nКак Вы говорите о равноправии?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Ich möchte, dass unsere Kinder ohne alte Frauenrollen und Männerrollen aufwachsen. Wollen wir das zusammen planen?",
+      "en": "Hi, Mark! I want our kids to grow up without old women's and men's roles. Shall we plan that together?",
+      "uk": "Привіт, Марку! Я хочу, щоб наші діти зростали без старих жіночих і чоловічих ролей. Може, сплануємо це разом?",
+      "ru": "Привет, Марк! Я хочу, чтобы наши дети росли без старых женских и мужских ролей. Может, спланируем это вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Vielleicht denkt <g>jemand</g> in unserer Familie noch in alten Klischees – wir sollten das ruhig ansprechen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> maybe <g>someone</g> in our family still thinks in old stereotypes – we should calmly address that.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> можливо, <g>хтось</g> у нашій родині ще мислить старими стереотипами – нам варто спокійно про це поговорити.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> возможно, <g>кто-то</g> в нашей семье ещё мыслит старыми стереотипами – нам стоит спокойно об этом поговорить.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Vorurteile <r>bedenken</r>.<br><r>Wir könnten doch</r> uns einigen: <g>Niemand</g> soll unseren Kindern sagen, was Jungen oder Mädchen dürfen und was nicht.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the prejudices.<br><r>We could</r> agree: <g>no one</g> should tell our kids what boys or girls are allowed to do and what not.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> упередження.<br><r>Ми могли б</r> домовитися: <g>ніхто</g> не повинен казати нашим дітям, що можна хлопчикам чи дівчаткам, а що ні.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> предрассудках.<br><r>Мы могли бы</r> договориться: <g>никто</g> не должен говорить нашим детям, что можно мальчикам или девочкам, а что нет.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> den Kindern <g>etwas</g> Wichtiges zeigen: dass Jungen auch weinen dürfen und Mädchen auch wütend sein dürfen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> show the children <g>something</g> important: that boys are allowed to cry too and girls are allowed to be angry too.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> покажемо дітям <g>щось</g> важливе: що хлопчикам теж можна плакати, а дівчаткам теж можна злитися.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> покажем детям <g>что-то</g> важное: что мальчикам тоже можно плакать, а девочкам тоже можно злиться.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir aufpassen, dass unsere Kinder <g>nichts</g> von diesen alten Vorurteilen übernehmen.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we make sure our children don't pick up <g>anything</g> from these old prejudices.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми стежили, щоб наші діти <g>нічого</g> не переймали з цих старих упереджень.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы следили, чтобы наши дети <g>ничего</g> не перенимали из этих старых предрассудков.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer welche Aufgabe übernimmt.<br><r>Eine Idee wäre, dass wir</r> die Aufgaben klar aufteilen – diese Aufgabe hier ist <g>meins</g>, die andere teilen wir uns.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> who takes which task.<br><r>One idea would be that we</r> divide the tasks clearly – this task here is <g>mine</g>, we'll share the other one.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто яке завдання бере на себе.<br><r>Була б ідея, щоб ми</r> чітко розподілили завдання – це завдання тут <g>моє</g>, а те інше ми поділимо.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто какое задание берёт на себя.<br><r>Была бы идея, чтобы мы</r> чётко распределили задания – это задание здесь <g>моё</g>, а то другое мы поделим.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns direkt einigen: Das Wäschewaschen ist <g>deins</g>, das Kochen mache ich.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> agree right away: doing the laundry is <g>yours</g>, I'll do the cooking.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> одразу домовимося: прання – <g>твоє</g>, готування я візьму на себе.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> сразу договоримся: стирка – <g>твоя</g>, готовку я возьму на себя.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob unser Sohn das schon versteht.<br><r>Vielleicht wäre es am besten, wenn wir</r> ihm einfach zeigen: Wenn er eine Puppe will, ist das <g>seins</g>, genauso wie ein Ball.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether our son already understands that.<br><r>Maybe it would be best if we</r> simply show him: if he wants a doll, that's <g>his</g>, just like a ball.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи наш син уже це розуміє.<br><r>Можливо, було б найкраще, якби ми</r> просто показали йому: якщо він хоче ляльку, це <g>його</g>, так само як м'яч.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, понимает ли уже наш сын это.<br><r>Может быть, было бы лучше, если бы мы</r> просто показали ему: если он хочет куклу, это <g>его</g>, так же как мяч.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> das genauso bei unserer Tochter machen: Wenn sie Fußball spielen will, ist das <g>ihrs</g>, genauso wie Tanzen.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> do the same with our daughter: if she wants to play football, that's <g>hers</g>, just like dancing.<br><r>Are you okay with that</r>, Mark?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> так само зробимо з нашою донькою: якщо вона хоче грати у футбол, це <g>її</g>, так само як танці.<br><r>Ти з цим згоден</r>, Марку?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> так же сделаем с нашей дочерью: если она хочет играть в футбол, это <g>её</g>, так же как танцы.<br><r>Ты с этим согласен</r>, Марк?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir sprechen über Klischees, teilen die Aufgaben fair und akzeptieren, dass jedes Kind seine eigenen Interessen hat. Ich freue mich schon auf mehr Gleichberechtigung in unserer Familie! Danke für die Idee, David!",
+      "en": "Yes, of course! So, here's what we'll do: we'll talk about stereotypes, share the tasks fairly, and accept that each child has their own interests. I'm already looking forward to more equality in our family! Thanks for the idea, David!",
+      "uk": "Так, звісно! Отже, зробимо так: поговоримо про стереотипи, справедливо розподілимо завдання й прийматимемо, що кожна дитина має свої власні інтереси. Я вже тішуся більшій рівноправності в нашій родині! Дякую за ідею, Девіде!",
+      "ru": "Да, конечно! Итак, сделаем так: поговорим о стереотипах, справедливо распределим задачи и будем принимать, что у каждого ребёнка свои собственные интересы. Я уже жду большего равноправия в нашей семье! Спасибо за идею, Дэвид!"
+    },
+    "gram": "indefinitpronomen_possessivpronomen"
+  },
+  {
+    "id": "dlg_127",
+    "cat": "Zuhause in zwei Wohnungen einrichten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Ex-Partner/Ihre Ex-Partnerin haben sich getrennt und möchten gemeinsam planen, wie sich Ihr Kind in beiden Wohnungen wohlfühlt.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWas braucht Ihr Kind in beiden Wohnungen?\nWie richten Sie ein Zimmer für Ihr Kind ein?\nWas packen Sie für den Wechsel zwischen den Häusern?\nWie sprechen Sie über das Sorgerecht?\nWie helfen Sie Ihrem Kind, sich in der neuen Patchworkfamilie wohlzufühlen?",
+      "en": "Situation: You and your ex-partner have separated and want to plan together how your child can feel comfortable in both apartments.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat does your child need in both apartments?\nHow do you set up a room for your child?\nWhat do you pack for switching between the houses?\nHow do you talk about custody?\nHow do you help your child feel comfortable in the new blended family?",
+      "uk": "Ситуація: Ви та Ваш колишній партнер/Ваша колишня партнерка розлучилися і хочете разом спланувати, як Вашій дитині буде добре в обох квартирах.\nЗавдання: Сплануйте разом зі своїм співрозмовником, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЩо потрібно Вашій дитині в обох квартирах?\nЯк Ви облаштуєте кімнату для дитини?\nЩо Ви пакуєте для переїзду між будинками?\nЯк Ви говорите про опіку?\nЯк Ви допомагаєте дитині почуватися добре в новій змішаній родині?",
+      "ru": "Ситуация: Вы и Ваш бывший партнёр/Ваша бывшая партнёрша расстались и хотите вместе спланировать, как Вашему ребёнку будет хорошо в обеих квартирах.\nЗадание: Спланируйте вместе со своим собеседником, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nЧто нужно Вашему ребёнку в обеих квартирах?\nКак Вы обустроите комнату для ребёнка?\nЧто Вы пакуете для переезда между домами?\nКак Вы говорите об опеке?\nКак Вы помогаете ребёнку хорошо себя чувствовать в новой смешанной семье?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo, Julia! Jetzt, wo wir getrennt sind, sollten wir überlegen, wie sich unser Kind in beiden Wohnungen wohlfühlt. Wollen wir das zusammen planen?",
+      "en": "Hi, Julia! Now that we've separated, we should think about how our child can feel comfortable in both homes. Shall we plan that together?",
+      "uk": "Привіт, Юліє! Тепер, коли ми розлучилися, нам варто подумати, як нашій дитині буде добре в обох квартирах. Може, сплануємо це разом?",
+      "ru": "Привет, Юлия! Теперь, когда мы расстались, нам стоит подумать, как нашему ребёнку будет хорошо в обеих квартирах. Может, спланируем это вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten ein kleines <g>Köfferchen</g> packen, das immer mit ihr zwischen den Wohnungen wechselt.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> we could pack a small <g>suitcase</g> that always travels with her between the apartments.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> ми могли б скласти маленьку <g>валізку</g>, яка завжди переїжджатиме з нею між квартирами.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> мы могли бы собрать маленький <g>чемоданчик</g>, который всегда будет переезжать с ней между квартирами.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> ihr eigenes Zimmer <r>bedenken</r>.<br><r>Wir könnten doch</r> auch bei mir ein richtiges <g>Zimmerchen</g> für sie einrichten, nicht nur eine Ecke.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> her own room.<br><r>We could</r> also set up a proper little <g>room</g> for her at my place, not just a corner.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> її власну кімнату.<br><r>Ми могли б</r> також облаштувати в мене справжню <g>кімнатку</g> для неї, а не просто куточок.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> её собственной комнате.<br><r>Мы могли бы</r> также обустроить у меня настоящую <g>комнатку</g> для неё, а не просто уголок.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> ein gemütliches <g>Bettchen</g> für sie kaufen, damit sie überall gut schläft.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> buy a cozy little <g>bed</g> for her, so she sleeps well everywhere.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> купимо для неї затишне <g>ліжечко</g>, щоб вона всюди добре спала.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> купим для неё уютную <g>кроватку</g>, чтобы она везде хорошо спала.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir ihr vielleicht sogar ein kleines <g>Kätzchen</g> schenken, das bei mir wohnt – das könnte ihr helfen.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we maybe even give her a little <g>kitten</g> that lives at my place – that could help her.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми, можливо, навіть подарували їй маленьке <g>кошеня</g>, яке житиме в мене – це могло б їй допомогти.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы, может быть, даже подарили ей маленького <g>котёнка</g>, который будет жить у меня – это могло бы ей помочь.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer sich um das Tier kümmert.<br><r>Eine Idee wäre, dass wir</r> zuerst ein <g>Bildchen</g> von unserer ganzen Familie in beide Zimmer hängen, damit sie sich verbunden fühlt.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> who takes care of the animal.<br><r>One idea would be that we</r> first hang a little <g>picture</g> of our whole family in both rooms, so she feels connected.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто піклуватиметься про тварину.<br><r>Була б ідея, щоб ми</r> спершу повісили в обох кімнатах <g>картинку</g> всієї нашої родини, щоб вона відчувала зв'язок.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто будет заботиться о животном.<br><r>Была бы идея, чтобы мы</r> сначала повесили в обеих комнатах <g>картинку</g> всей нашей семьи, чтобы она чувствовала связь.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> ihr in beiden Zimmern ein kleines <g>Tischchen</g> zum Malen hinstellen?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> put a small little <g>table</g> for drawing in both rooms for her?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> поставимо їй в обох кімнатах маленький <g>столик</g> для малювання?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> поставим ей в обеих комнатах маленький <g>столик</g> для рисования?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir schon so viele Möbel brauchen.<br><r>Vielleicht wäre es am besten, wenn wir</r> erst mal ein einfaches <g>Körbchen</g> für ihre Lieblingsspielsachen in jedes Zimmer stellen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we need that much furniture already.<br><r>Maybe it would be best if we</r> first put a simple little <g>basket</g> for her favorite toys in each room.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи нам уже потрібно стільки меблів.<br><r>Можливо, було б найкраще, якби ми</r> спершу поставили в кожну кімнату простий <g>кошичок</g> для її улюблених іграшок.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, нужно ли нам уже столько мебели.<br><r>Может быть, было бы лучше, если бы мы</r> сначала поставили в каждую комнату простую <g>корзинку</g> для её любимых игрушек.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> ihr noch ein kleines <g>Häuschen</g> zum Spielen kaufen, das bei mir stehen kann.<br><r>Bist du damit einverstanden</r>, Julia?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also buy her a little <g>dollhouse</g> to play with, that can stay at my place.<br><r>Are you okay with that</r>, Julia?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> ще купимо їй маленький <g>будиночок</g> для гри, який стоятиме в мене.<br><r>Ти з цим згодна</r>, Юліє?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> ещё купим ей маленький <g>домик</g> для игры, который будет стоять у меня.<br><r>Ты с этим согласна</r>, Юлия?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir richten beide ein Zimmerchen ein, packen ein Köfferchen, hängen ein Bildchen auf und sorgen dafür, dass sie sich in unserer Patchworkfamilie wohlfühlt. Ich freue mich schon darauf! Danke für die Idee, Alex!",
+      "en": "Yes, of course! So, here's what we'll do: we'll both set up a little room, pack a little suitcase, hang up a little picture, and make sure she feels comfortable in our blended family. I'm already looking forward to it! Thanks for the idea, Alex!",
+      "uk": "Так, звісно! Отже, зробимо так: обоє облаштуємо кімнатку, спакуємо валізку, повісимо картинку й подбаємо, щоб вона добре почувалася в нашій змішаній родині. Я вже тішуся цьому! Дякую за ідею, Алексе!",
+      "ru": "Да, конечно! Итак, сделаем так: обе обустроим комнатку, соберём чемоданчик, повесим картинку и позаботимся, чтобы она хорошо себя чувствовала в нашей смешанной семье. Я уже жду этого! Спасибо за идею, Алекс!"
+    },
+    "gram": "nomen_auf_chen"
   }
 ];
 
