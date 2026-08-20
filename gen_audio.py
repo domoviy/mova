@@ -16,6 +16,7 @@ import json
 import hashlib
 import pathlib
 import re
+import difflib
 import asyncio
 import subprocess
 
@@ -88,7 +89,12 @@ COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '20'))
 # здатись (транзитні збої Edge TTS API/мережі — тимчасовий rate-limit,
 # обрив зʼєднання тощо). RETRY_BASE_DELAY — базова пауза перед повтором,
 # зростає експоненційно (спроба 2 → ×2, спроба 3 → ×4 і т.д.).
-RETRY_ATTEMPTS = int(os.environ.get('TTS_RETRY_ATTEMPTS', '3'))
+# Було 3 — піднято до 5: перевірки цілісності (_looks_truncated тощо)
+# тепер СТРОГІ (нуль толерантності до розбіжностей у словах, замість
+# колишнього м'якого порогу 0.85), тож транзитним мережевим збоям
+# природно треба більше спроб, щоб "проскочити" випадковий глюк
+# з'єднання, а не застрягти в списку "не вдалося згенерувати".
+RETRY_ATTEMPTS = int(os.environ.get('TTS_RETRY_ATTEMPTS', '5'))
 RETRY_BASE_DELAY = float(os.environ.get('TTS_RETRY_BASE_DELAY', '2.0'))
 # Поля, для яких генерується .words.json (таймінг слів для karaoke-
 # підсвітки) — рішення на рівні ГЕНЕРАТОРА, не бази: додавати однаковий
@@ -633,6 +639,27 @@ def load_js_database(file_path):
 
     return config, raw_items, primary_lang
 
+def _tokenize_like_frontend(text):
+    """Токенізація ТОЧНО як wrapWordsForHighlight() в index.html
+    (WORD_RE = /[\\p{L}\\p{N}'-]+/gu — літери, цифри, апостроф, ДЕФІС;
+    жодної пунктуації, жодних самостійних тире-пауз). Раніше тут був
+    наївний re.findall(r"\\S+", ...) (розбиття за пробілами) — і він
+    рахував СИСТЕМАТИЧНО БІЛЬШЕ "слів", ніж є насправді: розділові знаки,
+    приліплені до слова ("Firma,"), і особливо самостійне тире-паузу
+    ("–", U+2013 EN DASH, часто оточене пробілами з обох боків) — усе це
+    Edge TTS не озвучує як окреме "слово" і, відповідно, НЕ створює під
+    це WordBoundary-подію. М'який поріг допустимості (0.85) раніше
+    маскував цю розбіжність, не даючи побачити РЕАЛЬНІ обриви — картка з
+    одним тире-паузою й одним обірваним словом посередині виглядала
+    так само "майже повною", як картка без жодної проблеми.
+
+    `\\w` у Python (за замовчуванням, без re.ASCII) вже покриває Unicode-
+    літери/цифри — еквівалент \\p{L}\\p{N} з невеликою різницею
+    (додатково матчить '_', що в природному тексті курсу не трапляється,
+    отже не впливає на результат)."""
+    return re.findall(r"[\w'-]+", text, re.UNICODE)
+
+
 def _looks_truncated(cleaned_text, boundary_words):
     """Перевірка ЦІЛІСНОСТІ потоку Edge TTS — не плутати з перевіркою
     ВИМОВИ (це недосяжно без ASR, і скрипт цього свідомо не робить, див.
@@ -642,22 +669,29 @@ def _looks_truncated(cleaned_text, boundary_words):
     "async for received in websocket" у Communicate.__stream() просто
     МОВЧКИ завершується, якщо з'єднання обірветься ДО отримання
     "turn.end" — виняток кидається лише тоді, коли не надійшло ЖОДНОГО
-    аудіобайту (NoAudioReceived). Тобто часткове, обірване напризволяще
-    аудіо (наприклад, без кількох останніх слів речення) бібліотека
-    вважає УСПІШНИМ завершенням .save() — ніякого сигналу про проблему
-    зовні не долітає. compute_content_hash() рахується з (текст, голос,
-    швидкість) — жодного з них обрив не змінює, тож без цієї перевірки
-    обірваний файл назавжди лишався б у manifest.json як "валідний" і
-    ніколи більше не перегенерувався б.
+    аудіобайту (NoAudioReceived). compute_content_hash() рахується з
+    (текст, голос, швидкість) — жодного з них обрив не змінює, тож без
+    цієї перевірки обірваний файл назавжди лишався б у manifest.json як
+    "валідний" і ніколи більше не перегенерувався б.
 
-    Евристика: порівнюємо кількість реально отриманих WordBoundary-подій
-    із орієнтовною кількістю "слів" у вихідному тексті (розбиття по
-    пробілах) — і звіряємо ОСТАННЄ отримане слово з останнім словом
-    тексту. Обидва сигнали разом добре ловлять типовий випадок "потік
-    урвався за кілька слів до кінця", майже не даючи хибних спрацювань
-    на голосах, де WordBoundary злегка групує/розбиває слова інакше, ніж
-    наївний split() (дефіси, апострофи тощо)."""
-    expected = re.findall(r"\S+", cleaned_text)
+    ⚠️ РАНІШЕ тут була м'яка перевірка (ratio ≥ 0.85 + збіг лише
+    ОСТАННЬОГО слова) — вона ловила лише обрив У КІНЦІ фрази. Реальний
+    звіт користувача: "у таймінгу було пропущене ОДНЕ слово ПОСЕРЕДИНІ
+    речення, і слідкування відставало на 1 слово до кінця фрази". Для
+    речення з 20 слів це ratio=19/20=0.95 — МИНАЄ поріг 0.85 без жодної
+    помилки, а останнє слово при цьому все одно збігається (загублене
+    слово не в кінці) — стара перевірка була структурно сліпа саме до
+    цього класу браку.
+
+    Тепер — ПОВНЕ ПОСЛІДОВНЕ вирівнювання (difflib.SequenceMatcher) між
+    очікуваними словами (_tokenize_like_frontend, той самий регексп, що
+    й на клієнті) і реально отриманими WordBoundary-текстами: БУДЬ-ЯКА
+    розбіжність (вставка/видалення/заміна) — на будь-якій позиції, не
+    лише в кінці — трактується як обрив. Це свідомо СТРОГО (нуль
+    толерантності): ціна хибного спрацювання — один зайвий retry
+    (дешево), а ціна пропущеного браку — файл, який ніхто не почує
+    зламаним одразу і доведеться шукати вручну на слух (дорого)."""
+    expected = _tokenize_like_frontend(cleaned_text)
     if not expected:
         return False
     if not boundary_words:
@@ -665,14 +699,14 @@ def _looks_truncated(cleaned_text, boundary_words):
         # перевірити нічим, не караємо хибним "обірвано".
         return False
 
-    ratio = len(boundary_words) / len(expected)
-    if ratio < 0.85:
-        return True
-
     norm = lambda w: re.sub(r"[^\w'-]", "", w, flags=re.UNICODE).lower()
-    last_expected, last_got = norm(expected[-1]), norm(boundary_words[-1])
-    if last_expected and last_got and last_expected not in last_got and last_got not in last_expected:
-        return True
+    expected_norm = [norm(w) for w in expected]
+    got_norm = [norm(w) for w in boundary_words]
+
+    sm = difflib.SequenceMatcher(None, expected_norm, got_norm, autojunk=False)
+    for tag, _i1, _i2, _j1, _j2 in sm.get_opcodes():
+        if tag != 'equal':
+            return True
     return False
 
 
@@ -866,10 +900,10 @@ async def synthesize_speech(text, voice, rate_str, output_path, want_timing=Fals
             raw_meta_path.unlink(missing_ok=True)
 
     if _looks_truncated(text, [w['word'] for w in words]):
-        expected_n = len(re.findall(r"\S+", text))
+        expected_n = len(_tokenize_like_frontend(text))
         raise RuntimeError(
             f"Обірваний потік Edge TTS: отримано {len(words)} слів-подій, "
-            f"текст очікує ~{expected_n} — файл, судячи з усього, "
+            f"текст очікує {expected_n} — файл, судячи з усього, "
             f"обрізаний і не буде збережений."
         )
 
