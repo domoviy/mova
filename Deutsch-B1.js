@@ -3634,7 +3634,8 @@ var LESSONS = [
       "dlg_041",
       "dlg_042",
       "dlg_043",
-      "dlg_044"
+      "dlg_044",
+      "dlg_125"
     ]
   },
   {
@@ -3671,7 +3672,10 @@ var LESSONS = [
       "k11_039"
     ],
     "unlockAfter": "k11m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_124"
+    ]
   },
   {
     "id": "k11m4",
@@ -30441,6 +30445,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: поищем акушерку, выясним декретный и отцовский отпуск, купим коляску и запишемся на место в детском саду. Я уже жду нашего новорождённого! Спасибо за идею, Анна!"
     },
     "gram": ""
+  },
+  {
+    "id": "dlg_124",
+    "cat": "Gegenseitige Unterstützung im Alltag planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Ihr Freund erzieht sein Kind allein und möchte oft nicht um Hilfe bitten. Sie möchten gemeinsam ein System aufbauen, damit er nicht alles allein machen muss.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWobei können Sie helfen?\nWie zeigen Sie, dass man sich nicht schämen muss?\nWie teilen Sie die Verantwortung?\nWie bewältigen Sie den Alltag zusammen?\nWarum muss man sich nichts beweisen?",
+      "en": "Situation: Your friend raises his child alone and often doesn't want to ask for help. You want to build a system together so he doesn't have to do everything alone.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat can you help with?\nHow do you show that there's no need to be ashamed?\nHow do you share the responsibility?\nHow do you manage everyday life together?\nWhy is there no need to prove anything?",
+      "uk": "Ситуація: Ваш друг сам виховує свою дитину і часто не хоче просити про допомогу. Ви хочете разом побудувати систему, щоб йому не доводилося все робити самому.\nЗавдання: Сплануйте разом зі своїм співрозмовником, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЧим Ви можете допомогти?\nЯк Ви покажете, що не потрібно соромитися?\nЯк Ви розподілите відповідальність?\nЯк Ви долатимете повсякдення разом?\nЧому не потрібно нічого доводити?",
+      "ru": "Ситуация: Ваш друг сам воспитывает своего ребёнка и часто не хочет просить о помощи. Вы хотите вместе построить систему, чтобы ему не приходилось делать всё самому.\nЗадание: Спланируйте вместе со своим собеседником, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nЧем Вы можете помочь?\nКак Вы покажете, что не нужно стыдиться?\nКак Вы разделите ответственность?\nКак Вы будете справляться с повседневностью вместе?\nПочему не нужно ничего доказывать?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo, David! Ich habe gemerkt, dass du versuchst, alles alleine zu schaffen. Wollen wir zusammen planen, wie ich dir helfen kann?",
+      "en": "Hi, David! I noticed that you're trying to manage everything on your own. Shall we plan together how I can help you?",
+      "uk": "Привіт, Девіде! Я помітила, що ти намагаєшся впоратися з усім сам. Може, разом сплануємо, як я можу тобі допомогти?",
+      "ru": "Привет, Дэвид! Я заметила, что ты пытаешься справиться со всем сам. Может, вместе спланируем, как я могу тебе помочь?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Du hast recht – ich <g>brauche wirklich nicht alles allein zu machen</g>, auch wenn es sich manchmal so anfühlt.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> you're right – I <g>really don't need to do everything alone</g>, even if it sometimes feels that way.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> ти маєш рацію – мені справді <g>не потрібно все робити самому</g>, навіть якщо іноді здається інакше.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> ты прав – мне правда <g>не нужно делать всё самому</g>, даже если иногда кажется иначе.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> deine Gefühle <r>bedenken</r>.<br><r>Wir könnten doch</r> uns immer wieder daran erinnern: Du <g>brauchst dich nicht zu schämen</g>, wenn du um Hilfe bittest.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> your feelings.<br><r>We could</r> keep reminding ourselves: you <g>don't need to be ashamed</g> when you ask for help.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> твої почуття.<br><r>Ми могли б</r> постійно нагадувати собі: тобі <g>не потрібно соромитися</g>, коли ти просиш про допомогу.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> твоих чувствах.<br><r>Мы могли бы</r> постоянно напоминать себе: тебе <g>не нужно стыдиться</g>, когда ты просишь о помощи.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns gegenseitig sagen: Wir <g>brauchen uns keine Sorgen zu machen</g>, wenn wir uns aufeinander verlassen können.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> tell each other: we <g>don't need to worry</g> when we can rely on each other.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> будемо казати одне одному: нам <g>не потрібно хвилюватися</g>, коли ми можемо покластися одне на одного.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> будем говорить друг другу: нам <g>не нужно волноваться</g>, когда мы можем положиться друг на друга.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> du weißt: Du <g>brauchst die Verantwortung nicht allein zu tragen</g>, weil ich immer da bin.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> you know: you <g>don't need to carry the responsibility alone</g>, because I'm always here.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ти знав: тобі <g>не потрібно нести відповідальність самому</g>, бо я завжди поруч.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> ты знал: тебе <g>не нужно нести ответственность одному</g>, потому что я всегда рядом.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie oft ich anrufen darf.<br><r>Eine Idee wäre, dass wir</r> vereinbaren: Ich <g>brauche nicht zu zögern</g>, dich einfach anzurufen, wenn ich Hilfe brauche.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how often I'm allowed to call.<br><r>One idea would be that we</r> agree: I <g>don't need to hesitate</g> to just call you when I need help.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як часто мені можна дзвонити.<br><r>Була б ідея, щоб ми</r> домовилися: мені <g>не потрібно вагатися</g> просто зателефонувати тобі, коли мені потрібна допомога.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как часто мне можно звонить.<br><r>Была бы идея, чтобы мы</r> договорились: мне <g>не нужно колебаться</g> просто позвонить тебе, когда мне нужна помощь.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns die Aufgaben aufteilen? Du <g>brauchst zum Beispiel den Einkauf nicht immer allein zu erledigen</g>.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> divide the tasks? For example, you <g>don't always need to do the shopping alone</g>.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> розподілимо завдання? Тобі, наприклад, <g>не потрібно завжди самому робити покупки</g>.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> распределим задачи? Тебе, например, <g>не нужно всегда самому делать покупки</g>.<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob ich das wirklich annehmen kann.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns klarmachen: Wir <g>brauchen uns gegenseitig nichts zu beweisen</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether I can really accept that.<br><r>Maybe it would be best if we</r> make it clear to ourselves: we <g>don't need to prove anything to each other</g>.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи справді можу це прийняти.<br><r>Можливо, було б найкраще, якби ми</r> усвідомили: нам <g>не потрібно нічого доводити одне одному</g>.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, действительно ли могу это принять.<br><r>Может быть, было бы лучше, если бы мы</r> осознали: нам <g>не нужно ничего доказывать друг другу</g>.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> ab jetzt einfach gemeinsam anfangen: Du <g>brauchst den Alltag nicht mehr allein zu bewältigen</g>.<br><r>Bist du damit einverstanden</r>, David?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> just start doing this together from now on: you <g>don't need to cope with everyday life alone anymore</g>.<br><r>Are you okay with that</r>, David?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> просто почнемо робити це разом уже зараз: тобі <g>більше не потрібно самому долати повсякдення</g>.<br><r>Ти з цим згоден</r>, Девіде?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> просто начнём делать это вместе уже сейчас: тебе <g>больше не нужно одному справляться с повседневностью</g>.<br><r>Ты с этим согласен</r>, Дэвид?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Ich rufe dich an, wenn ich Hilfe brauche, wir teilen die Verantwortung und den Alltag, und ich schäme mich nicht mehr, um Hilfe zu bitten. Danke für die Idee, Nina!",
+      "en": "Yes, of course! So, here's what we'll do: I'll call you when I need help, we'll share the responsibility and everyday life, and I won't be ashamed to ask for help anymore. Thanks for the idea, Nina!",
+      "uk": "Так, звісно! Отже, зробимо так: я телефонуватиму тобі, коли мені потрібна допомога, ми розподілятимемо відповідальність і повсякдення, і я більше не соромитимуся просити про допомогу. Дякую за ідею, Ніно!",
+      "ru": "Да, конечно! Итак, сделаем так: я буду звонить тебе, когда мне нужна помощь, мы будем делить ответственность и повседневность, и я больше не буду стыдиться просить о помощи. Спасибо за идею, Нина!"
+    },
+    "gram": "nicht_brauchen_zu"
+  },
+  {
+    "id": "dlg_125",
+    "cat": "Mütter, Väter, Kinder",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Partner erwarten ein Kind und möchten gemeinsam planen, wie Sie sich Haushalt, Erziehung und Beruf aufteilen.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWer ist berufstätig, während der/die andere zu Hause bleibt?\nWie teilen Sie die Hausarbeit?\nWer betreut das Kind, während der/die andere arbeitet?\nWie wechseln Sie sich bei der Elternzeit ab?\nWas denken Sie über traditionelle Männerrollen?",
+      "en": "Situation: You and your partner are expecting a child and want to plan together how to divide the household, childcare, and work.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWho works while the other stays at home?\nHow do you split the housework?\nWho looks after the child while the other works?\nHow do you take turns with parental leave?\nWhat do you think about traditional men's roles?",
+      "uk": "Ситуація: Ви та Ваш партнер чекаєте на дитину й хочете разом спланувати, як розподілити домашні справи, виховання та роботу.\nЗавдання: Сплануйте разом зі своїм співрозмовником, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nХто працює, поки інший залишається вдома?\nЯк Ви розподілите хатню роботу?\nХто доглядає дитину, поки інший працює?\nЯк Ви чергуватиметеся з батьківською відпусткою?\nЩо Ви думаєте про традиційні чоловічі ролі?",
+      "ru": "Ситуация: Вы и Ваш партнёр ждёте ребёнка и хотите вместе спланировать, как разделить домашние дела, воспитание и работу.\nЗадание: Спланируйте вместе со своим собеседником, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКто работает, пока другой остаётся дома?\nКак Вы разделите домашнюю работу?\nКто присматривает за ребёнком, пока другой работает?\nКак Вы будете чередоваться с отпуском по уходу за ребёнком?\nЧто Вы думаете о традиционных мужских ролях?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Hallo, Alex! Bald kommt unser Kind zur Welt. Wollen wir zusammen planen, wie wir uns Haushalt und Erziehung aufteilen?",
+      "en": "Hi, Alex! Our child is coming soon. Shall we plan together how we'll divide the housework and childcare?",
+      "uk": "Привіт, Алексе! Скоро народиться наша дитина. Може, разом сплануємо, як ми розподілимо домашні справи й виховання?",
+      "ru": "Привет, Алекс! Скоро родится наш ребёнок. Может, вместе спланируем, как мы разделим домашние дела и воспитание?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> <g>Während du kochst, kann ich mit dem Kind spielen</g> – so haben wir beide etwas zu tun.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> <g>while you cook, I can play with the child</g> – that way we both have something to do.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> <g>поки ти готуєш, я можу грати з дитиною</g> – так у нас обох буде чим зайнятися.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> <g>пока ты готовишь, я могу играть с ребёнком</g> – так у нас обоих будет чем заняться.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Arbeitszeiten <r>bedenken</r>.<br><r>Wir könnten doch</r> auch festlegen: <g>Während du arbeitest, betreue ich das Kind</g>, und andersherum.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the working hours.<br><r>We could</r> also decide: <g>while you're working, I'll look after the child</g>, and the other way around.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> робочий час.<br><r>Ми могли б</r> також домовитися: <g>поки ти працюєш, я доглядатиму дитину</g>, і навпаки.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> рабочем времени.<br><r>Мы могли бы</r> также договориться: <g>пока ты работаешь, я буду присматривать за ребёнком</g>, и наоборот.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns auch beim Einkaufen abwechseln: <g>Während ich im Homeoffice bin, kannst du einkaufen gehen</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> also take turns with the shopping: <g>while I'm working from home, you can go shopping</g>.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> також чергуватимемося з покупками: <g>поки я на домашньому офісі, ти можеш піти за покупками</g>.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также будем чередоваться с покупками: <g>пока я на удалёнке, ты можешь сходить за покупками</g>.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir uns bei der Hausarbeit abwechseln: <g>Während du die Hausarbeit machst, sehe ich nach dem Baby</g>.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we take turns with the housework: <g>while you do the housework, I'll check on the baby</g>.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми чергувалися з хатньою роботою: <g>поки ти робиш хатню роботу, я наглядатиму за дитиною</g>.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы чередовались с домашней работой: <g>пока ты делаешь домашнюю работу, я присмотрю за малышом</g>.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie lange die Elternzeit dauert.<br><r>Eine Idee wäre, dass wir</r> uns bei der Elternzeit abwechseln: <g>Während einer von uns zu Hause bleibt, ist der andere berufstätig</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how long the parental leave lasts.<br><r>One idea would be that we</r> take turns with parental leave: <g>while one of us stays at home, the other works</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як довго триває батьківська відпустка.<br><r>Була б ідея, щоб ми</r> чергувалися з батьківською відпусткою: <g>поки один із нас удома, інший працює</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как долго длится отпуск по уходу за ребёнком.<br><r>Была бы идея, чтобы мы</r> чередовались с отпуском по уходу за ребёнком: <g>пока один из нас дома, другой работает</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> ganz bewusst zeigen: <g>Während manche noch an alte Männerrollen glauben, teilen wir uns lieber alles gleich auf</g>?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> deliberately show: <g>while some people still believe in old man's roles, we'd rather split everything equally</g>?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> свідомо покажемо: <g>тоді як дехто досі вірить у старі чоловічі ролі, ми краще розділимо все порівну</g>?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> сознательно покажем: <g>тогда как кто-то всё ещё верит в старые мужские роли, мы лучше разделим всё поровну</g>?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir immer alles genau gleich teilen können.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns flexibel organisieren: <g>Während du dich um die Erziehung kümmerst, erledige ich die Anrufe und Termine</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we can always split everything exactly equally.<br><r>Maybe it would be best if we</r> organize ourselves flexibly: <g>while you take care of the upbringing, I'll handle the calls and appointments</g>.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи зможемо ми завжди ділити все точно порівну.<br><r>Можливо, було б найкраще, якби ми</r> організувалися гнучко: <g>поки ти займаєшся вихованням, я вирішуватиму дзвінки та зустрічі</g>.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, сможем ли мы всегда делить всё точно поровну.<br><r>Может быть, было бы лучше, если бы мы</r> организовались гибко: <g>пока ты занимаешься воспитанием, я буду решать звонки и встречи</g>.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> das einfach so ausprobieren: <g>Während das Kind schläft, können wir zusammen entspannen</g>.<br><r>Bist du damit einverstanden</r>, Alex?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> just try it that way: <g>while the child is sleeping, we can relax together</g>.<br><r>Are you okay with that</r>, Alex?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> просто спробуємо так: <g>поки дитина спить, ми можемо разом відпочивати</g>.<br><r>Ти з цим згоден</r>, Алексе?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> просто попробуем так: <g>пока ребёнок спит, мы можем вместе отдыхать</g>.<br><r>Ты с этим согласен</r>, Алекс?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir teilen Hausarbeit, Erziehung und Beruf, wechseln uns bei der Elternzeit ab und lassen alte Rollenbilder hinter uns. Ich freue mich schon auf unser Leben zu dritt! Danke für die Idee, Anna!",
+      "en": "Yes, of course! So, here's what we'll do: we'll share the housework, upbringing and work, take turns with parental leave, and leave old role models behind. I'm already looking forward to our life as a family of three! Thanks for the idea, Anna!",
+      "uk": "Так, звісно! Отже, зробимо так: розділимо хатню роботу, виховання й роботу, чергуватимемося з батьківською відпусткою й залишимо старі рольові моделі позаду. Я вже тішуся нашому життю утрьох! Дякую за ідею, Анно!",
+      "ru": "Да, конечно! Итак, сделаем так: разделим домашнюю работу, воспитание и работу, будем чередоваться с отпуском по уходу и оставим старые ролевые модели позади. Я уже жду нашей жизни втроём! Спасибо за идею, Анна!"
+    },
+    "gram": "nebensatz_mit_waehrend"
   }
 ];
 
