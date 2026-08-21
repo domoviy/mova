@@ -3833,7 +3833,10 @@ var LESSONS = [
       "k12_032"
     ],
     "unlockAfter": "k12m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_129"
+    ]
   },
   {
     "id": "k12m3",
@@ -30823,6 +30826,80 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: подадим заявку на признание, пройдём языковой курс, пойдём в учреждение и переведём документы. Я уже жду нашего нового старта! Спасибо за идею, Юлия!"
     },
     "gram": "nebensatz_mit_nachdem"
+  },
+  {
+    "id": "dlg_129",
+    "cat": "Lebensläufe gemeinsam aktualisieren",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund möchten gemeinsam Ihre Lebensläufe aktualisieren und dabei über Ihre bisherige Berufserfahrung sprechen.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWas hatten Sie schon gemacht, bevor Sie hierhergekommen sind?\nWelche Firma hatten Sie schon geleitet oder gegründet?\nWelchen Abschluss hatten Sie schon gemacht?\nWelche Position hatten Sie schon gehabt?\nWas hatten Sie schon studiert?",
+      "en": "Situation: You and your friend want to update your CVs together and talk about your previous work experience.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat had you already done before you came here?\nWhich company had you already managed or founded?\nWhich degree had you already completed?\nWhich position had you already held?\nWhat had you already studied?",
+      "uk": "Ситуація: Ви та Ваш друг хочете разом оновити свої резюме й поговорити про попередній професійний досвід.\nЗавдання: Сплануйте разом зі своїм співрозмовником, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЩо Ви вже робили, перш ніж приїхали сюди?\nЯку фірму Ви вже очолювали чи заснували?\nЯкий диплом Ви вже здобули?\nЯку посаду Ви вже мали?\nЩо Ви вже вивчали?",
+      "ru": "Ситуация: Вы и Ваш друг хотите вместе обновить свои резюме и поговорить о предыдущем профессиональном опыте.\nЗадание: Спланируйте вместе со своим собеседником, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nЧто Вы уже делали, прежде чем приехали сюда?\nКакую фирму Вы уже возглавляли или основали?\nКакой диплом Вы уже получили?\nКакую должность Вы уже занимали?\nЧто Вы уже изучали?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo, David! Wir sollten unsere Lebensläufe aktualisieren. Wollen wir das zusammen machen und über unsere bisherige Erfahrung sprechen?",
+      "en": "Hi, David! We should update our CVs. Shall we do that together and talk about our previous experience?",
+      "uk": "Привіт, Девіде! Нам варто оновити резюме. Може, зробимо це разом і поговоримо про наш попередній досвід?",
+      "ru": "Привет, Дэвид! Нам стоит обновить резюме. Может, сделаем это вместе и поговорим о нашем предыдущем опыте?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> <g>Bevor ich hierhergekommen bin, hatte ich schon zehn Jahre Erfahrung auf dem Arbeitsmarkt gesammelt</g> – das sollte ich unbedingt erwähnen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> <g>before I came here, I had already gained ten years of experience on the labour market</g> – I should definitely mention that.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> <g>перш ніж я сюди приїхав, я вже здобув десять років досвіду на ринку праці</g> – це варто обов'язково згадати.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> <g>прежде чем я сюда приехал, я уже приобрёл десять лет опыта на рынке труда</g> – это стоит обязательно упомянуть.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Reihenfolge <r>bedenken</r>.<br><r>Wir könnten doch</r> damit anfangen: <g>Nachdem ich meinen Lebenslauf zum ersten Mal geschrieben hatte, fühlte ich mich viel sicherer</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the order.<br><r>We could</r> start with that: <g>after I had written my CV for the first time, I felt much more confident</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> порядок.<br><r>Ми могли б</r> почати з цього: <g>після того як я вперше написав своє резюме, я почувався набагато впевненіше</g>.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> порядке.<br><r>Мы могли бы</r> начать с этого: <g>после того как я впервые написал своё резюме, я почувствовал себя намного увереннее</g>.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch erwähnen: <g>Bevor ich diese Stelle bekam, hatte ich schon eine eigene Firma gegründet</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> also mention: <g>before I got this job, I had already founded my own company</g>.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> також згадаємо: <g>перш ніж я отримав цю посаду, я вже заснував власну фірму</g>.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также упомянем: <g>прежде чем я получил эту должность, я уже основал собственную фирму</g>.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir auch schreiben: <g>Als ich hier ankam, hatte ich schon ein großes Team geleitet</g>.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we also write: <g>when I arrived here, I had already managed a large team</g>.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонував, щоб</r> ми також написали: <g>коли я сюди приїхав, я вже керував великою командою</g>.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласен, это подходит</r>.<br><r>Я бы предложил, чтобы</r> мы также написали: <g>когда я сюда приехал, я уже руководил большой командой</g>.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viele Details wir schreiben.<br><r>Eine Idee wäre, dass wir</r> den Abschluss klar hervorheben: <g>Bevor ich nach Deutschland kam, hatte ich schon meinen Abschluss gemacht</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how many details we write.<br><r>One idea would be that we</r> clearly highlight the degree: <g>before I came to Germany, I had already finished my degree</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки деталей ми напишемо.<br><r>Була б ідея, щоб ми</r> чітко виділили диплом: <g>перш ніж я приїхав до Німеччини, я вже здобув свій диплом</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько деталей мы напишем.<br><r>Была бы идея, чтобы мы</r> чётко выделили диплом: <g>прежде чем я приехал в Германию, я уже получил свой диплом</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> auch erklären: <g>Nachdem ich Wirtschaft studiert hatte, wechselte ich in eine ganz andere Branche</g>?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also explain: <g>after I had studied economics, I switched to a completely different industry</g>?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також пояснимо: <g>після того як я вивчав економіку, я перейшов у зовсім іншу галузь</g>?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также объясним: <g>после того как я изучал экономику, я перешёл в совсем другую отрасль</g>?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob das für die neue Stelle wichtig ist.<br><r>Vielleicht wäre es am besten, wenn wir</r> trotzdem erwähnen: <g>Bevor ich diese Position hatte, hatte ich schon in drei verschiedenen Firmen gearbeitet</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether that's important for the new job.<br><r>Maybe it would be best if we</r> mention it anyway: <g>before I had this position, I had already worked at three different companies</g>.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи це важливо для нової посади.<br><r>Можливо, було б найкраще, якби ми</r> все ж це згадали: <g>перш ніж я мав цю посаду, я вже працював у трьох різних фірмах</g>.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, важно ли это для новой должности.<br><r>Может быть, было бы лучше, если бы мы</r> всё же это упомянули: <g>прежде чем у меня была эта должность, я уже работал в трёх разных фирмах</g>.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> zum Schluss schreiben: <g>Als ich mich beworben habe, hatte ich schon so viel Erfahrung gesammelt, dass ich sehr zuversichtlich war</g>.<br><r>Bist du damit einverstanden</r>, David?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> write at the end: <g>when I applied, I had already gained so much experience that I was very confident</g>.<br><r>Are you okay with that</r>, David?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> наприкінці напишемо: <g>коли я подавав заявку, я вже здобув стільки досвіду, що був дуже впевненим</g>.<br><r>Ти з цим згоден</r>, Девіде?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> в конце напишем: <g>когда я подавал заявку, я уже приобрёл столько опыта, что был очень уверен</g>.<br><r>Ты с этим согласен</r>, Дэвид?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir schreiben über unseren Arbeitsmarkt, unsere Firmen, unseren Abschluss und unsere Positionen. Ich freue mich schon auf die neuen Lebensläufe! Danke für die Idee, Mark!",
+      "en": "Yes, of course! So, here's what we'll do: we'll write about our labour market experience, our companies, our degree, and our positions. I'm already looking forward to the new CVs! Thanks for the idea, Mark!",
+      "uk": "Так, звісно! Отже, зробимо так: напишемо про наш ринок праці, наші фірми, наш диплом і наші посади. Я вже тішуся новим резюме! Дякую за ідею, Марку!",
+      "ru": "Да, конечно! Итак, сделаем так: напишем о нашем рынке труда, наших фирмах, нашем дипломе и наших должностях. Я уже жду новых резюме! Спасибо за идею, Марк!"
+    },
+    "gram": "plusquamperfekt"
   }
 ];
 
