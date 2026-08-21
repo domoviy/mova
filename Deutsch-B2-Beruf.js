@@ -1658,9 +1658,13 @@ var LESSONS = [
       "ru": "Что нужно сделать? – передача дел"
     },
     "skills": [
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "nomen_verb_verbindungen",
+    "frmCards": [
+      "forum_017"
+    ],
     "cardIds": [
       "zar_031",
       "zar_032",
@@ -1743,6 +1747,9 @@ var LESSONS = [
       "Lesen"
     ],
     "grammar": null,
+    "frmCards": [
+      "forum_018"
+    ],
     "cardIds": [
       "zar_041",
       "zar_042",
@@ -1850,6 +1857,9 @@ var LESSONS = [
       "Schreiben"
     ],
     "grammar": "passiv_passiversatz",
+    "frmCards": [
+      "forum_019"
+    ],
     "cardIds": [
       "uns_002",
       "uns_051",
@@ -1947,9 +1957,13 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": null,
+    "frmCards": [
+      "forum_020"
+    ],
     "cardIds": [
       "mes_003",
       "mes_004",
@@ -2138,6 +2152,9 @@ var LESSONS = [
       "Schreiben"
     ],
     "grammar": null,
+    "frmCards": [
+      "forum_021"
+    ],
     "cardIds": [
       "uns_036",
       "uns_037",
@@ -2285,9 +2302,13 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "konjunktiv2_als_ob",
+    "frmCards": [
+      "forum_022"
+    ],
     "cardIds": [
       "kia_002",
       "kia_003",
@@ -14580,6 +14601,462 @@ var SCHREIBEN = [
         "en": "Nina",
         "uk": "Ніна",
         "ru": "Нина"
+      }
+    ]
+  },
+  {
+    "id": "forum_017",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Einheitlicher Übergabebericht bei Aufgabenwechsel",
+      "en": "Standardized handover report when changing roles",
+      "uk": "Єдиний звіт про передачу справ при зміні обов'язків",
+      "ru": "Единый отчёт о передаче дел при смене обязанностей"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte einen einheitlichen Übergabebericht für alle Mitarbeitenden einführen, der beim Wechsel der Position oder vor einem längeren Urlaub ausgefüllt werden muss. Bisher gab es keine festen Vorgaben, wie eine Aufgabenübergabe dokumentiert werden soll.",
+      "en": "Management wants to introduce a standardized handover report for all employees, to be filled out when changing positions or before a longer leave. Until now, there have been no fixed guidelines for how a task handover should be documented.",
+      "uk": "Керівництво хоче запровадити єдиний звіт про передачу справ для всіх співробітників, який потрібно заповнювати при зміні посади або перед тривалою відпусткою. Досі не було чітких вимог щодо того, як документувати передачу завдань.",
+      "ru": "Руководство хочет ввести единый отчёт о передаче дел для всех сотрудников, который нужно заполнять при смене должности или перед длительным отпуском. До сих пор не было чётких требований к тому, как документировать передачу задач."
+    },
+    "gram": "nomen_verb_verbindungen",
+    "name": "de_m_alex",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, einen einheitlichen Übergabebericht für alle Mitarbeitenden einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to introduce a standardized handover report for all employees. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити єдиний звіт про передачу справ для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует ввести единый отчёт о передаче дел для всех сотрудников. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> jeder für seine Aufgaben klar <g>Verantwortung tragen</g> sollte, denn bisher blieb der Arbeitsstand oft unklar, wenn jemand die Stelle wechselte oder in den Urlaub ging.",
+        "en": "I am of the opinion that everyone should clearly take responsibility for their own tasks, because until now the state of the work often remained unclear when someone changed positions or went on leave.",
+        "uk": "Я вважаю, що кожен має чітко нести відповідальність за свої завдання, адже досі стан роботи часто залишався незрозумілим, коли хтось змінював посаду чи йшов у відпустку.",
+        "ru": "Я считаю, что каждый должен чётко нести ответственность за свои задачи, ведь до сих пор состояние работы часто оставалось неясным, когда кто-то менял должность или уходил в отпуск."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> der Arbeitsstand mit einem festen Formular viel leichter <g>nachzuvollziehen ist</g>, weil der Nachfolger sofort einen Überblick über offene und abgeschlossene Aufgaben bekommt.",
+        "en": "A very important argument in favor is that the state of the work is much easier to follow with a fixed form, because the successor immediately gets an overview of open and completed tasks.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що з фіксованим формуляром стан роботи набагато легше прослідкувати, адже наступник одразу отримує огляд відкритих і завершених завдань.",
+        "ru": "Очень важный аргумент в пользу этого — то, что с фиксированным формуляром состояние работы гораздо легче отследить, ведь преемник сразу получает обзор открытых и завершённых задач."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein zusätzliches Formular manchmal lästig wirkt und der eigentliche Zweck — nämlich Ruhe zu bewahren, statt Aufgaben ungeklärt liegen zu lassen — <g>dabei</g> leicht aus dem Blick gerät.",
+        "en": "On the other hand, one should also consider that an additional form sometimes feels tedious, and the actual purpose — namely staying calm instead of leaving tasks unresolved — can easily get lost in the process.",
+        "uk": "З іншого боку, варто також враховувати, що додатковий формуляр іноді сприймається як тягар, і справжня мета — а саме зберегти спокій замість того, щоб залишати завдання нез'ясованими — при цьому легко губиться з поля зору.",
+        "ru": "С другой стороны, стоит также учитывать, что дополнительный формуляр иногда воспринимается как обуза, и настоящая цель — а именно сохранить спокойствие вместо того, чтобы оставлять задачи невыясненными — при этом легко теряется из виду."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> in jedem Team klar geregelt wird, wer <g>verantwortlich ist für</g> welchen Teilbereich der Übergabe, und dass offene Punkte regelmäßig in einer gemeinsamen Aufgabenliste zur Sprache kommen.",
+        "en": "That is why I propose that each team clearly define who is responsible for which part of the handover, and that open points be raised regularly in a shared task list.",
+        "uk": "Тому я пропоную, щоб у кожній команді було чітко визначено, хто відповідає за яку частину передачі справ, і щоб відкриті питання регулярно порушувалися в спільному списку завдань.",
+        "ru": "Поэтому я предлагаю, чтобы в каждой команде было чётко определено, кто отвечает за какую часть передачи дел, и чтобы открытые вопросы регулярно поднимались в общем списке задач."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Alex",
+        "en": "Alex",
+        "uk": "Алекс",
+        "ru": "Алекс"
+      }
+    ]
+  },
+  {
+    "id": "forum_018",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Leitfaden für positive E-Mail-Kommunikation",
+      "en": "Guidelines for positive email communication",
+      "uk": "Посібник з позитивного спілкування електронною поштою",
+      "ru": "Руководство по позитивному общению по электронной почте"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung hat festgestellt, dass viele interne E-Mails zu negativ oder unfreundlich formuliert sind, was öfter zu Missverständnissen führt. Deshalb soll ein Leitfaden für eine positive und wertschätzende Kommunikation per E-Mail eingeführt werden.",
+      "en": "Management has noticed that many internal emails are worded too negatively or unfriendly, which often leads to misunderstandings. That's why guidelines for positive and appreciative email communication are to be introduced.",
+      "uk": "Керівництво помітило, що багато внутрішніх листів сформульовано занадто негативно чи недружньо, що часто призводить до непорозумінь. Тому планується запровадити посібник з позитивного та шанобливого спілкування електронною поштою.",
+      "ru": "Руководство заметило, что многие внутренние письма сформулированы слишком негативно или недружелюбно, что часто приводит к недоразумениям. Поэтому планируется ввести руководство по позитивному и уважительному общению по электронной почте."
+    },
+    "gram": "indirekte_rede_konjunktiv1",
+    "name": "de_m_mark",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, einen Leitfaden für eine positive und wertschätzende E-Mail-Kommunikation einzuführen, damit unser Arbeitsumfeld insgesamt angenehmer wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to introduce guidelines for positive and appreciative email communication, so that our workplace becomes more pleasant overall. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити посібник з позитивного та шанобливого спілкування електронною поштою, щоб загалом зробити наше робоче середовище приємнішим. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует ввести руководство по позитивному и уважительному общению по электронной почте, чтобы в целом сделать нашу рабочую среду приятнее. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> ein solcher Leitfaden wirklich sinnvoll ist, denn mehrere Kolleginnen und Kollegen haben mir zuletzt erzählt, der Ton in manchen internen Mails <g>sei</g> oft zu schroff und wenig wertschätzend.",
+        "en": "I am of the opinion that these guidelines really make sense, because several colleagues recently told me that the tone in some internal emails is often too harsh and not very appreciative.",
+        "uk": "Я вважаю, що такий посібник справді доцільний, адже кілька колег нещодавно розповіли мені, що тон деяких внутрішніх листів часто буває занадто різким і мало шанобливим.",
+        "ru": "Я считаю, что такое руководство действительно имеет смысл, ведь несколько коллег недавно рассказали мне, что тон некоторых внутренних писем часто бывает слишком резким и мало уважительным."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> sich viele Missverständnisse vermeiden lassen, <g>indem man Betreff und Anrede von Anfang an klarer formuliert</g> und wichtige Personen konsequent in Kopie setzt.",
+        "en": "A very important argument in favor is that many misunderstandings can be avoided by formulating the subject line and salutation more clearly from the start and consistently cc'ing important people.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що багатьох непорозумінь можна уникнути, якщо з самого початку чіткіше формулювати тему листа й звертання та послідовно ставити важливих людей у копію.",
+        "ru": "Очень важный аргумент в пользу этого — то, что многих недоразумений можно избежать, если с самого начала чётче формулировать тему письма и обращение и последовательно ставить важных людей в копию."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass nicht jeder sofort <g>Verständnis aufbringt für</g> einen neuen Leitfaden, besonders wenn die vorgeschlagenen Formulierungen als zu förmlich oder unpersönlich empfunden werden.",
+        "en": "On the other hand, one should also consider that not everyone immediately shows understanding for new guidelines, especially when the suggested phrasing feels too formal or impersonal.",
+        "uk": "З іншого боку, варто також враховувати, що не кожен одразу з розумінням поставиться до нового посібника, особливо якщо запропоновані формулювання сприймаються як занадто офіційні чи безособові.",
+        "ru": "С другой стороны, стоит также учитывать, что не каждый сразу отнесётся с пониманием к новому руководству, особенно если предложенные формулировки воспринимаются как слишком официальные или безличные."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir gemeinsam ein paar Beispielformulierungen sammeln, <g>um Missverständnisse von vornherein zu vermeiden</g> und dabei trotzdem sachlich und diplomatisch zu bleiben.",
+        "en": "That is why I propose that we collect a few example phrases together, in order to avoid misunderstandings from the outset while still remaining factual and diplomatic.",
+        "uk": "Тому я пропоную разом зібрати кілька прикладів формулювань, щоб від самого початку уникати непорозумінь і водночас залишатися об'єктивними та дипломатичними.",
+        "ru": "Поэтому я предлагаю вместе собрать несколько примеров формулировок, чтобы с самого начала избегать недоразумений и при этом оставаться объективными и дипломатичными."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Mark",
+        "en": "Mark",
+        "uk": "Марк",
+        "ru": "Марк"
+      }
+    ]
+  },
+  {
+    "id": "forum_019",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Neues Firmenprofil – mehr Werte statt nur Zahlen",
+      "en": "New company profile – more values, not just numbers",
+      "uk": "Новий профіль компанії – більше цінностей, а не лише цифр",
+      "ru": "Новый профиль компании – больше ценностей, а не только цифр"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte das Firmenprofil auf der Unternehmenswebsite komplett überarbeiten und dabei stärker die Unternehmenskultur und die Werte des Unternehmens in den Vordergrund stellen. Bisher stand vor allem die Marktposition mit Zahlen zu Umsatz und Gewinn im Mittelpunkt.",
+      "en": "Management wants to completely revise the company profile on the corporate website, placing greater emphasis on the company culture and values. Until now, the focus has mainly been on market position with figures on revenue and profit.",
+      "uk": "Керівництво хоче повністю переробити профіль компанії на корпоративному сайті, роблячи більший акцент на корпоративній культурі та цінностях компанії. Досі увага зосереджувалась переважно на ринковій позиції з цифрами обороту й прибутку.",
+      "ru": "Руководство хочет полностью переработать профиль компании на корпоративном сайте, делая больший акцент на корпоративной культуре и ценностях компании. До сих пор внимание было сосредоточено в основном на рыночной позиции с цифрами оборота и прибыли."
+    },
+    "gram": "passiv_passiversatz",
+    "name": "de_w_julia",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, das Firmenprofil auf unserer Website komplett zu überarbeiten und dabei die Unternehmenskultur stärker in den Vordergrund zu stellen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to completely revise the company profile on our website and place greater emphasis on the company culture. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує повністю переробити профіль компанії на нашому сайті й приділити більше уваги корпоративній культурі. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует полностью переработать профиль компании на нашем сайте и уделить больше внимания корпоративной культуре. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Überarbeitung längst überfällig ist, denn unser Unternehmen <g>wird</g> online oft nur nach Umsatz und Gewinn <g>beurteilt</g>, obwohl uns als Arbeitgeber eigentlich viel mehr ausmacht.",
+        "en": "I am of the opinion that this revision is long overdue, because our company is often judged online only by revenue and profit, even though there is much more to us as an employer.",
+        "uk": "Я вважаю, що ця переробка давно назріла, адже нашу компанію онлайн часто оцінюють лише за оборотом і прибутком, хоча як роботодавця нас характеризує набагато більше.",
+        "ru": "Я считаю, что эта переработка давно назрела, ведь нашу компанию онлайн часто оценивают только по обороту и прибыли, хотя как работодателя нас характеризует гораздо больше."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> sich unsere Unternehmenskultur kaum in reinen Zahlen <g>ausdrücken lässt</g>, sondern eher durch konkrete Beispiele aus dem Arbeitsalltag und den Werten der Mitarbeiter sichtbar wird.",
+        "en": "A very important argument in favor is that our company culture can hardly be expressed in pure numbers, but rather becomes visible through concrete examples from everyday work and the employees' values.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що нашу корпоративну культуру навряд чи можна виразити суто цифрами, вона стає видимою радше через конкретні приклади з робочих буднів і цінності співробітників.",
+        "ru": "Очень важный аргумент в пользу этого — то, что нашу корпоративную культуру вряд ли можно выразить чистыми цифрами, она становится видна скорее через конкретные примеры из рабочих будней и ценности сотрудников."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein überzeugendes Leitbild nicht von heute auf morgen <g>zu verfassen ist</g>, sondern gründlich vorbereitet und mit der Geschäftsführung abgestimmt werden muss.",
+        "en": "On the other hand, one should also consider that a convincing mission statement cannot be written overnight, but must be carefully prepared and coordinated with management.",
+        "uk": "З іншого боку, варто також враховувати, що переконливий кодекс цінностей неможливо написати за один день — його потрібно ретельно підготувати й узгодити з керівництвом.",
+        "ru": "С другой стороны, стоит также учитывать, что убедительный кодекс ценностей нельзя написать за один день — его нужно тщательно подготовить и согласовать с руководством."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> <g>man</g> Mitarbeitende aus verschiedenen Abteilungen aktiv in den Prozess einbezieht, damit das neue Firmenprofil unsere Werte und unsere Kernkompetenzen wirklich authentisch widerspiegelt.",
+        "en": "That is why I propose that employees from different departments be actively involved in the process, so that the new company profile really authentically reflects our values and core competencies.",
+        "uk": "Тому я пропоную активно залучати до цього процесу співробітників з різних відділів, щоб новий профіль компанії справді автентично відображав наші цінності та ключові компетенції.",
+        "ru": "Поэтому я предлагаю активно привлекать к этому процессу сотрудников из разных отделов, чтобы новый профиль компании действительно аутентично отражал наши ценности и ключевые компетенции."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Julia",
+        "en": "Julia",
+        "uk": "Юлія",
+        "ru": "Юлия"
+      }
+    ]
+  },
+  {
+    "id": "forum_020",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Neuer Messeauftritt – mehr persönliche Beratung",
+      "en": "New trade fair presence – more personal consulting",
+      "uk": "Новий формат участі у виставці – більше особистих консультацій",
+      "ru": "Новый формат участия в выставке – больше персональных консультаций"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung plant, den Messeauftritt für die nächste Fachmesse neu zu gestalten und dabei stärker auf persönliche Beratung statt auf reine Werbematerialien zu setzen. Bisher lag der Fokus vor allem auf Give-aways und Broschüren am Stand.",
+      "en": "Management is planning to redesign the trade fair presence for the next industry fair, focusing more on personal consulting rather than pure promotional materials. Until now, the focus has mainly been on give-aways and brochures at the booth.",
+      "uk": "Керівництво планує оновити формат участі у виставці на наступному галузевому заході, роблячи більший акцент на особистих консультаціях, а не лише на рекламних матеріалах. Досі увага зосереджувалась переважно на подарунках і брошурах на стенді.",
+      "ru": "Руководство планирует обновить формат участия в выставке на следующем отраслевом мероприятии, делая больший акцент на персональных консультациях, а не только на рекламных материалах. До сих пор внимание было сосредоточено в основном на подарках и брошюрах на стенде."
+    },
+    "gram": "praepositionen_nomen_verb_adjektiv",
+    "name": "de_w_nina",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, unseren Messeauftritt für die nächste Fachmesse neu zu gestalten und dabei stärker auf persönliche Beratung statt auf reine Werbematerialien zu setzen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to redesign our trade fair presence for the next industry fair, focusing more on personal consulting rather than pure promotional materials. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує оновити наш формат участі у виставці на наступному галузевому заході, роблячи більший акцент на особистих консультаціях, а не на самих лише рекламних матеріалах. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует обновить наш формат участия в выставке на следующем отраслевом мероприятии, делая больший акцент на персональных консультациях, а не только на рекламных материалах. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> unser Messestand sich künftig stärker <g>durch persönliche Beratung auszeichnen</g> sollte, statt vor allem mit Give-aways und Broschüren zu punkten.",
+        "en": "I am of the opinion that our booth should stand out more through personal consulting in the future, instead of scoring mainly with give-aways and brochures.",
+        "uk": "Я вважаю, що наш стенд надалі має вирізнятися насамперед особистими консультаціями, а не переважно подарунками й брошурами.",
+        "ru": "Я считаю, что наш стенд в дальнейшем должен выделяться прежде всего персональными консультациями, а не в основном подарками и брошюрами."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>jeder</g> Besucher individuell beraten werden könnte, wenn wir weniger Zeit für das bloße Verteilen von Prospekten aufwenden.",
+        "en": "A very important argument in favor is that every visitor could be advised individually if we spent less time simply handing out brochures.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що кожного відвідувача можна було б консультувати індивідуально, якби ми витрачали менше часу на просту роздачу проспектів.",
+        "ru": "Очень важный аргумент в пользу этого — то, что каждого посетителя можно было бы консультировать индивидуально, если бы мы тратили меньше времени на простую раздачу проспектов."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass es <g>während der Messe</g> oft hektisch zugeht und nicht immer genug Standdienst zur Verfügung steht, um jedem Fachbesucher ausführlich Zeit zu widmen.",
+        "en": "On the other hand, one should also consider that things often get hectic during the trade fair and there isn't always enough booth staff available to devote extensive time to every trade visitor.",
+        "uk": "З іншого боку, варто також враховувати, що під час виставки часто буває напружено, і не завжди вистачає персоналу на стенді, щоб приділити достатньо часу кожному фаховому відвідувачу.",
+        "ru": "С другой стороны, стоит также учитывать, что во время выставки часто бывает напряжённо, и не всегда хватает персонала на стенде, чтобы уделить достаточно времени каждому профессиональному посетителю."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir <g>dazu</g> ein kurzes, strukturiertes Beratungsgespräch mit drei festen Fragen entwickeln, damit wir auch bei vollem Andrang schnell das Interesse der Besucher wecken und Kontakt knüpfen können.",
+        "en": "That is why I propose that we develop a short, structured consulting conversation with three fixed questions, so that even during a full rush we can quickly spark visitors' interest and make contact.",
+        "uk": "Тому я пропоную розробити коротку структуровану консультаційну бесіду з трьома фіксованими запитаннями, щоб навіть при великому напливі відвідувачів ми могли швидко зацікавити їх і встановити контакт.",
+        "ru": "Поэтому я предлагаю разработать короткую структурированную консультационную беседу с тремя фиксированными вопросами, чтобы даже при большом наплыве посетителей мы могли быстро заинтересовать их и установить контакт."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Nina",
+        "en": "Nina",
+        "uk": "Ніна",
+        "ru": "Нина"
+      }
+    ]
+  },
+  {
+    "id": "forum_021",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Einheitliche Struktur für Produktpräsentationen",
+      "en": "Standardized structure for product presentations",
+      "uk": "Єдина структура для презентацій продукту",
+      "ru": "Единая структура для презентаций продукта"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte für die Markteinführung des neuen Produkts eine einheitliche Struktur für interne Präsentationen einführen, mit festem Einstieg, Hauptteil und Schluss sowie verpflichtenden Diagrammen zur Veranschaulichung der Produkteigenschaften. Bisher hat jede Abteilung ihre Präsentationen völlig frei gestaltet.",
+      "en": "Management wants to introduce a standardized structure for internal presentations for the new product's market launch, with a fixed introduction, main part and conclusion, as well as mandatory diagrams to illustrate product features. Until now, each department has designed its presentations completely freely.",
+      "uk": "Керівництво хоче запровадити для запуску нового продукту на ринок єдину структуру внутрішніх презентацій із чітким вступом, основною частиною та висновком, а також обов'язковими діаграмами для наочного зображення характеристик продукту. Досі кожен відділ оформлював свої презентації повністю на власний розсуд.",
+      "ru": "Руководство хочет ввести для вывода нового продукта на рынок единую структуру внутренних презентаций с чётким вступлением, основной частью и заключением, а также обязательными диаграммами для наглядного представления характеристик продукта. До сих пор каждый отдел оформлял свои презентации полностью по своему усмотрению."
+    },
+    "gram": "modalpartikeln",
+    "name": "de_m_david",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, für die Markteinführung unseres neuen Produkts eine einheitliche Struktur für interne Präsentationen einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to introduce a standardized structure for internal presentations for our new product's market launch. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити єдину структуру внутрішніх презентацій для запуску нашого нового продукту. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует ввести единую структуру внутренних презентаций для вывода нашего нового продукта на рынок. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> eine einheitliche Gliederung <g>ja</g> grundsätzlich eine gute Idee ist, denn bisher hat jede Abteilung ihre Präsentationen völlig unterschiedlich aufgebaut, und das Publikum musste sich jedes Mal neu orientieren.",
+        "en": "I am of the opinion that a standardized structure is, as we all know, a good idea in principle, because until now every department has organized its presentations completely differently, and the audience had to reorient itself every time.",
+        "uk": "Я вважаю, що єдина структура — це, звісно, слушна ідея, адже досі кожен відділ по-своєму вибудовував презентації, і аудиторії щоразу доводилося заново орієнтуватися.",
+        "ru": "Я считаю, что единая структура — это, конечно же, хорошая идея, ведь до сих пор каждый отдел по-своему выстраивал презентации, и аудитории каждый раз приходилось заново ориентироваться."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>gerade bei komplexen Produkteigenschaften helfen</g> Diagramme und Statistiken, den Überblick zu behalten und die wichtigsten Vorteile gegenüber unseren Mitbewerbern klar zu veranschaulichen.",
+        "en": "A very important argument in favor is that especially with complex product features, diagrams and statistics help to keep an overview and clearly illustrate the main advantages over our competitors.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що особливо у випадку складних характеристик продукту діаграми й статистика допомагають зберегти огляд і чітко продемонструвати головні переваги перед конкурентами.",
+        "ru": "Очень важный аргумент в пользу этого — то, что особенно при сложных характеристиках продукта диаграммы и статистика помогают сохранить общий обзор и чётко продемонстрировать главные преимущества перед конкурентами."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass <g>es nicht immer leicht ist</g>, jede Präsentation exakt gleich aufzubauen, wenn sich die Produkte inhaltlich stark voneinander unterscheiden.",
+        "en": "On the other hand, one should also consider that it is not always easy to structure every presentation exactly the same way when the products differ greatly in content.",
+        "uk": "З іншого боку, варто також враховувати, що не завжди легко вибудувати кожну презентацію абсолютно однаково, коли продукти суттєво відрізняються за змістом.",
+        "ru": "С другой стороны, стоит также учитывать, что не всегда легко выстроить каждую презентацию совершенно одинаково, когда продукты сильно отличаются по содержанию."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die neuen Vorgaben <g>kein starres Korsett</g> sind, sondern nur einen groben Rahmen mit Einstieg, Hauptteil und Schluss bieten, den jede Abteilung flexibel füllen kann.",
+        "en": "That is why I propose that the new guidelines not be a rigid corset, but only offer a rough framework with an introduction, main part and conclusion that each department can fill flexibly.",
+        "uk": "Тому я пропоную, щоб нові вимоги не були жорстким корсетом, а лише пропонували загальний каркас із вступом, основною частиною та висновком, який кожен відділ міг би гнучко наповнювати.",
+        "ru": "Поэтому я предлагаю, чтобы новые требования не были жёстким корсетом, а лишь предлагали общий каркас со вступлением, основной частью и заключением, который каждый отдел мог бы гибко наполнять."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "David",
+        "en": "David",
+        "uk": "Давід",
+        "ru": "Давид"
+      }
+    ]
+  },
+  {
+    "id": "forum_022",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Teamfähigkeit als Kriterium in der Leistungsbeurteilung",
+      "en": "Team spirit as a criterion in performance reviews",
+      "uk": "Уміння працювати в команді як критерій оцінки ефективності",
+      "ru": "Умение работать в команде как критерий оценки эффективности"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung überlegt, Teamfähigkeit künftig offiziell als Kriterium in die jährliche Leistungsbeurteilung aufzunehmen, damit Zusammenarbeit und Teamgeist stärker gewürdigt werden. Bisher wurden vor allem individuelle Leistungen bewertet.",
+      "en": "Management is considering officially adding team spirit as a criterion in the annual performance review, so that collaboration and team spirit are recognized more strongly. Until now, mainly individual performance has been evaluated.",
+      "uk": "Керівництво розглядає можливість офіційно додати вміння працювати в команді як критерій до щорічної оцінки ефективності, щоб більше цінувати співпрацю та командний дух. Досі оцінювались переважно індивідуальні досягнення.",
+      "ru": "Руководство рассматривает возможность официально добавить умение работать в команде как критерий в ежегодную оценку эффективности, чтобы больше ценить сотрудничество и командный дух. До сих пор оценивались в основном индивидуальные достижения."
+    },
+    "gram": "konjunktiv2_als_ob",
+    "name": "de_w_anna",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, überlegt die Geschäftsleitung, Teamfähigkeit künftig offiziell als Kriterium in die jährliche Leistungsbeurteilung aufzunehmen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is considering officially adding team spirit as a criterion in the annual performance review in future. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво розглядає можливість надалі офіційно додати вміння працювати в команді як критерій до щорічної оцінки ефективності. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство рассматривает возможность в дальнейшем официально добавить умение работать в команде как критерий в ежегодную оценку эффективности. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Änderung wirklich überfällig ist, denn manche Kolleginnen und Kollegen verhalten sich im Alltag so, <g>als ob Teamarbeit reine Zeitverschwendung wäre</g>, obwohl gemeinsame Ziele uns doch alle betreffen.",
+        "en": "I am of the opinion that this change is really overdue, because in everyday life some colleagues act as if teamwork were a pure waste of time, even though shared goals concern all of us.",
+        "uk": "Я вважаю, що ця зміна справді назріла, адже в буденній роботі деякі колеги поводяться так, ніби командна робота — суцільна втрата часу, хоча спільні цілі стосуються всіх нас.",
+        "ru": "Я считаю, что это изменение действительно назрело, ведь в повседневной работе некоторые коллеги ведут себя так, будто командная работа — сплошная трата времени, хотя общие цели касаются всех нас."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> die Zusammenarbeit deutlich reibungsloser läuft, wenn Rollen und Aufgaben im Team klar <g>verteilt sind</g> und jeder genau weiß, wofür er verantwortlich ist.",
+        "en": "A very important argument in favor is that collaboration runs much more smoothly when roles and tasks within the team are clearly assigned and everyone knows exactly what they are responsible for.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що співпраця проходить набагато плавніше, коли ролі й завдання в команді чітко розподілені і кожен точно знає, за що він відповідає.",
+        "ru": "Очень важный аргумент в пользу этого — то, что сотрудничество проходит намного более гладко, когда роли и задачи в команде чётко распределены и каждый точно знает, за что он отвечает."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass mit einer offiziellen Bewertung vielleicht ein unangenehmer Druck entsteht: <g>Je</g> stärker Teamfähigkeit bewertet wird, <g>desto</g> mehr könnten manche Kolleginnen und Kollegen nur noch nach außen hilfsbereit wirken wollen.",
+        "en": "On the other hand, one should also consider that an official evaluation might create uncomfortable pressure: the more strongly team spirit is assessed, the more some colleagues might just want to appear helpful on the surface.",
+        "uk": "З іншого боку, варто також враховувати, що офіційна оцінка може створити неприємний тиск: чим сильніше оцінюватиметься вміння працювати в команді, тим більше деякі колеги можуть прагнути лише зовні здаватися готовими допомогти.",
+        "ru": "С другой стороны, стоит также учитывать, что официальная оценка может создать неприятное давление: чем сильнее будет оцениваться умение работать в команде, тем больше некоторые коллеги могут стремиться лишь внешне казаться отзывчивыми."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir gemeinsam klare, faire Kriterien entwickeln, <g>indem wir regelmäßig offen miteinander kommunizieren</g> und uns gegenseitig ehrliches Feedback auf Augenhöhe geben.",
+        "en": "That is why I propose that we jointly develop clear, fair criteria by communicating openly with each other regularly and giving each other honest feedback as equals.",
+        "uk": "Тому я пропоную розробити разом чіткі й справедливі критерії, регулярно відкрито спілкуючись один з одним і даючи чесний зворотний зв'язок на рівних.",
+        "ru": "Поэтому я предлагаю разработать вместе чёткие и справедливые критерии, регулярно открыто общаясь друг с другом и давая честную обратную связь на равных."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Anna",
+        "en": "Anna",
+        "uk": "Анна",
+        "ru": "Анна"
       }
     ]
   }
