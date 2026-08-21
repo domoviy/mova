@@ -3795,7 +3795,8 @@ var LESSONS = [
       "dlg_045",
       "dlg_046",
       "dlg_047",
-      "dlg_048"
+      "dlg_048",
+      "dlg_128"
     ]
   },
   {
@@ -30748,6 +30749,80 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, сделаем так: обе обустроим комнатку, соберём чемоданчик, повесим картинку и позаботимся, чтобы она хорошо себя чувствовала в нашей смешанной семье. Я уже жду этого! Спасибо за идею, Алекс!"
     },
     "gram": "nomen_auf_chen"
+  },
+  {
+    "id": "dlg_128",
+    "cat": "Ankommen im Beruf",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihre Freundin sind vor Kurzem nach Deutschland gekommen und möchten gemeinsam die nächsten Schritte für Ihre berufliche Zukunft planen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWie beantragen Sie die Anerkennung Ihrer Qualifikation?\nWelchen Sprachkurs besuchen Sie?\nWie leben Sie sich ein?\nWelche Anträge müssen Sie bei welchen Behörden stellen?\nWer hilft Ihnen beim Übersetzen?",
+      "en": "Situation: You and your friend recently came to Germany and want to plan the next steps for your professional future together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nHow do you apply for recognition of your qualification?\nWhich language course do you take?\nHow do you settle in?\nWhich applications do you need to submit to which authorities?\nWho helps you with translating?",
+      "uk": "Ситуація: Ви та Ваша подруга нещодавно приїхали до Німеччини й хочете разом спланувати наступні кроки для своєї професійної майбутності.\nЗавдання: Сплануйте разом зі своєю співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк Ви подасте заявку на визнання кваліфікації?\nЯкий мовний курс Ви пройдете?\nЯк Ви освоїтеся?\nЯкі заяви потрібно подати до яких установ?\nХто допоможе Вам із перекладом?",
+      "ru": "Ситуация: Вы и Ваша подруга недавно приехали в Германию и хотите вместе спланировать следующие шаги для своего профессионального будущего.\nЗадание: Спланируйте вместе со своей собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКак Вы подадите заявку на признание квалификации?\nКакой языковой курс Вы пройдёте?\nКак Вы освоитесь?\nКакие заявления нужно подать в какие учреждения?\nКто поможет Вам с переводом?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo, Anna! Nachdem wir jetzt beide hier angekommen sind, sollten wir überlegen, wie es beruflich weitergeht. Wollen wir das zusammen planen?",
+      "en": "Hi, Anna! Now that we've both arrived here, we should think about how things continue professionally. Shall we plan that together?",
+      "uk": "Привіт, Анно! Тепер, коли ми обидві сюди приїхали, нам варто подумати, як розвиватиметься наша кар'єра. Може, сплануємо це разом?",
+      "ru": "Привет, Анна! Теперь, когда мы обе сюда приехали, нам стоит подумать, как будет развиваться карьера. Может, спланируем это вместе?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> <g>Nachdem wir hier angekommen sind, sollten wir zuerst unsere Anerkennung beantragen</g>, damit unsere Ausbildung anerkannt wird.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> <g>now that we've arrived here, we should first apply for recognition of our qualifications</g>, so our training gets recognised.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> <g>тепер, коли ми сюди приїхали, нам варто спершу подати заявку на визнання кваліфікації</g>, щоб нашу освіту визнали.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> <g>теперь, когда мы сюда приехали, нам стоит сначала подать заявку на признание квалификации</g>, чтобы наше образование признали.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> unsere Sprachkenntnisse <r>bedenken</r>.<br><r>Wir könnten doch</r> auch einen Sprachkurs machen – <g>nachdem ich schon einen Kurs besucht habe, fühle ich mich viel sicherer</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> our language skills.<br><r>We could</r> also take a language course – <g>now that I've already attended a course, I feel much more confident</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> наші мовні знання.<br><r>Ми могли б</r> також пройти мовний курс – <g>тепер, коли я вже відвідала курс, я почуваюся набагато впевненіше</g>.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> наших языковых знаниях.<br><r>Мы могли бы</r> также пройти языковой курс – <g>теперь, когда я уже посетила курс, я чувствую себя намного увереннее</g>.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns Zeit nehmen, um uns gut zu integrieren: <g>Nachdem wir uns eingelebt haben, können wir uns viel besser auf die Arbeit konzentrieren</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> take time to integrate well: <g>now that we've settled in, we can concentrate much better on work</g>.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> дамо собі час, щоб добре інтегруватися: <g>тепер, коли ми освоїлися, ми можемо набагато краще зосередитися на роботі</g>.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> дадим себе время, чтобы хорошо интегрироваться: <g>теперь, когда мы освоились, мы можем намного лучше сосредоточиться на работе</g>.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir zusammen zur Behörde gehen: <g>Nachdem du schon einmal dort warst, weißt du jetzt, welche Unterlagen wir brauchen</g>.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we go to the authority together: <g>now that you've already been there once, you know which documents we need</g>.<br><r>How do you see it?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми разом підемо до установи: <g>тепер, коли ти вже там була, ти знаєш, які документи нам потрібні</g>.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы вместе пойдём в учреждение: <g>теперь, когда ты уже там была, ты знаешь, какие документы нам нужны</g>.<br><r>Как ты на это смотришь?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie lange das dauert.<br><r>Eine Idee wäre, dass wir</r> den Antrag heute noch stellen: <g>Nachdem wir den Antrag gestellt haben, müssen wir nur noch warten</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how long that takes.<br><r>One idea would be that we</r> submit the application already today: <g>now that we've submitted the application, we just need to wait</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки це триває.<br><r>Була б ідея, щоб ми</r> подали заяву вже сьогодні: <g>тепер, коли ми подали заяву, нам залишається тільки чекати</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько это длится.<br><r>Была бы идея, чтобы мы</r> подали заявление уже сегодня: <g>теперь, когда мы подали заявление, нам остаётся только ждать</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> unseren Freund fragen: <g>Nachdem er die Dokumente übersetzt hat, können wir sie sofort einreichen</g>?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> ask our friend: <g>now that he's translated the documents, we can submit them right away</g>?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> запитаємо нашого друга: <g>тепер, коли він переклав документи, ми можемо одразу їх подати</g>?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> спросим нашего друга: <g>теперь, когда он перевёл документы, мы можем сразу их подать</g>?<br><r>Тебе это подходит?</r>"
+    },
+    "a3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir schon alles verstanden haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns daran erinnern: <g>Nachdem wir uns am Anfang orientiert hatten, fanden wir alles viel einfacher</g>, also wird es diesmal auch klappen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we've understood everything yet.<br><r>Maybe it would be best if we</r> remember: <g>after we had gotten our bearings at the start, we found everything much easier</g>, so it'll work out this time too.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи ми вже все зрозуміли.<br><r>Можливо, було б найкраще, якби ми</r> згадали: <g>після того як ми на початку зорієнтувалися, все виявилося набагато простішим</g>, тож цього разу теж вийде.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, всё ли мы уже поняли.<br><r>Может быть, было бы лучше, если бы мы</r> вспомнили: <g>после того как мы в начале сориентировались, всё оказалось намного проще</g>, так что и в этот раз получится.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "q4": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch daran denken: <g>Nachdem wir die Wohnung gefunden hatten, ging danach wirklich alles viel schneller</g>.<br><r>Bist du damit einverstanden</r>, Anna?",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also keep in mind: <g>after we had found the apartment, everything really went much faster afterwards</g>.<br><r>Are you okay with that</r>, Anna?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також пам'ятаємо: <g>після того як ми знайшли квартиру, потім усе справді пішло набагато швидше</g>.<br><r>Ти з цим згодна</r>, Анно?",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также помним: <g>после того как мы нашли квартиру, потом всё действительно пошло намного быстрее</g>.<br><r>Ты с этим согласна</r>, Анна?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir machen es so: Wir beantragen die Anerkennung, machen einen Sprachkurs, gehen zur Behörde und lassen die Dokumente übersetzen. Ich freue mich schon auf unseren neuen Start! Danke für die Idee, Julia!",
+      "en": "Yes, of course! So, here's what we'll do: we'll apply for recognition, take a language course, go to the authority, and have the documents translated. I'm already looking forward to our new start! Thanks for the idea, Julia!",
+      "uk": "Так, звісно! Отже, зробимо так: подамо заявку на визнання, пройдемо мовний курс, підемо до установи й перекладемо документи. Я вже тішуся нашому новому старту! Дякую за ідею, Юліє!",
+      "ru": "Да, конечно! Итак, сделаем так: подадим заявку на признание, пройдём языковой курс, пойдём в учреждение и переведём документы. Я уже жду нашего нового старта! Спасибо за идею, Юлия!"
+    },
+    "gram": "nebensatz_mit_nachdem"
   }
 ];
 

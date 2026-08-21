@@ -1311,9 +1311,13 @@ var LESSONS = [
     },
     "skills": [
       "Hören",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
+    "frmCards": [
+      "forum_013"
+    ],
     "cardIds": [
       "eat_036",
       "eat_037",
@@ -1391,9 +1395,13 @@ var LESSONS = [
       "ru": "Технические навыки"
     },
     "skills": [
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
+    "frmCards": [
+      "forum_014"
+    ],
     "cardIds": [
       "hsk_021",
       "hsk_026",
@@ -14260,6 +14268,158 @@ var SCHREIBEN = [
         "en": "Mark",
         "uk": "Марк",
         "ru": "Марк"
+      }
+    ]
+  },
+  {
+    "id": "forum_013",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Neues Tool zur Vergabe von Arbeitsaufträgen",
+      "en": "New tool for assigning work tasks",
+      "uk": "Новий інструмент для видачі робочих завдань",
+      "ru": "Новый инструмент для выдачи рабочих заданий"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte ein digitales Tool einführen, mit dem alle Arbeitsaufträge künftig schriftlich vergeben, mit Deadline und Priorität versehen und dokumentiert werden sollen. Bisher wurden viele Aufgaben nur mündlich zwischen Tür und Angel delegiert.",
+      "en": "Management wants to introduce a digital tool with which all work tasks will in future be assigned in writing, given a deadline and priority, and documented. Until now, many tasks were delegated only verbally in passing.",
+      "uk": "Керівництво хоче запровадити цифровий інструмент, за допомогою якого всі робочі завдання надалі видаватимуться письмово, матимуть дедлайн і пріоритет та будуть документуватися. Досі багато завдань делегували лише усно, мимохідь.",
+      "ru": "Руководство хочет ввести цифровой инструмент, с помощью которого все рабочие задания впредь будут выдаваться письменно, получать дедлайн и приоритет и документироваться. До сих пор многие задания делегировали только устно, мимоходом."
+    },
+    "gram": "nomen_verb_verbindungen",
+    "name": "de_w_julia",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "An alle,",
+        "en": "To everyone,",
+        "uk": "Всім,",
+        "ru": "Всем,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst, möchte die Geschäftsleitung</r> ein neues Tool für Arbeitsaufträge einführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management wants to introduce a new tool for work tasks. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво хоче запровадити новий інструмент для робочих завдань. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство хочет ввести новый инструмент для рабочих заданий. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Idee <g>Sinn macht</g>, weil mündliche Anweisungen oft zu Missverständnissen führen.",
+        "en": "I am of the opinion that this idea makes sense, because verbal instructions often lead to misunderstandings.",
+        "uk": "Я вважаю, що ця ідея має сенс, оскільки усні вказівки часто призводять до непорозумінь.",
+        "ru": "Я считаю, что эта идея имеет смысл, поскольку устные указания часто приводят к недоразумениям."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> sicherlich, dass die Zuständigkeit für jeden Arbeitsauftrag klar dokumentiert wird und wir bei Rückfragen sofort <g>Bescheid wissen</g>, wer wofür verantwortlich ist. Außerdem sehen wir Priorität und Deadline dann auf einen Blick.",
+        "en": "One advantage would certainly be that responsibility for each task is clearly documented, and in case of queries we immediately know who is responsible for what. In addition, we then see the priority and deadline at a glance.",
+        "uk": "Однією з переваг, безумовно, було б те, що відповідальність за кожне завдання чітко документується, і при уточненнях ми одразу знаємо, хто за що відповідає. Крім того, ми тоді бачимо пріоритет і дедлайн одним поглядом.",
+        "ru": "Одним из преимуществ, безусловно, было бы то, что ответственность за каждое задание чётко документируется, и при уточнениях мы сразу знаем, кто за что отвечает. Кроме того, мы тогда видим приоритет и дедлайн одним взглядом."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> nimmt die zusätzliche Dokumentation Zeit <g>in Anspruch</g>, die uns dann für die eigentliche Arbeit fehlt. Zudem befürchten manche Kolleginnen und Kollegen, dass spontane, kurze Absprachen dadurch komplizierter <g>würden</g>.",
+        "en": "On the other hand, the additional documentation takes up time that we then lack for the actual work. Moreover, some colleagues fear that spontaneous, short arrangements would become more complicated as a result.",
+        "uk": "З іншого боку, додаткова документація забирає час, якого нам тоді бракує для самої роботи. Крім того, деякі колеги побоюються, що спонтанні, короткі домовленості через це стали б складнішими.",
+        "ru": "С другой стороны, дополнительная документация отнимает время, которого нам тогда не хватает для самой работы. Кроме того, некоторые коллеги опасаются, что спонтанные, короткие договорённости из-за этого стали бы сложнее."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir das Tool nur für größere oder dringende Arbeitsaufträge <g>einsetzen</g> und kleinere Absprachen weiterhin mündlich klären dürfen, sofern sie kurz im Protokoll <g>festgehalten werden</g>.",
+        "en": "That's why I suggest that we use the tool only for larger or urgent tasks and that we may continue to clarify smaller arrangements verbally, as long as they are briefly noted in the log.",
+        "uk": "Тому я пропоную використовувати цей інструмент лише для більших або термінових завдань, а менші домовленості й надалі можна буде узгоджувати усно, якщо їх коротко фіксувати в протоколі.",
+        "ru": "Поэтому я предлагаю использовать этот инструмент только для более крупных или срочных заданий, а меньшие договорённости и впредь можно будет согласовывать устно, если их коротко фиксировать в протоколе."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Julia",
+        "en": "Julia",
+        "uk": "Юлія",
+        "ru": "Юлия"
+      }
+    ]
+  },
+  {
+    "id": "forum_014",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Pflichtzertifizierung für Hard Skills",
+      "en": "Mandatory certification for hard skills",
+      "uk": "Обов'язкова сертифікація hard skills",
+      "ru": "Обязательная сертификация hard skills"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung plant, dass Mitarbeiterinnen und Mitarbeiter künftig alle zwei Jahre eine Zertifizierung in mindestens einem Hard-Skill-Bereich wie Datenanalyse, Digitale Transformation oder Arbeitsrecht nachweisen müssen.",
+      "en": "Management is planning that employees will in future have to prove certification in at least one hard-skill area, such as data analysis, digital transformation or labour law, every two years.",
+      "uk": "Керівництво планує, щоб співробітники надалі кожні два роки підтверджували сертифікацію принаймні в одній сфері hard skills, як-от аналіз даних, цифрова трансформація чи трудове право.",
+      "ru": "Руководство планирует, чтобы сотрудники впредь каждые два года подтверждали сертификацию хотя бы в одной сфере hard skills, такой как анализ данных, цифровая трансформация или трудовое право."
+    },
+    "gram": "relativsatz_wer",
+    "name": "de_w_anna",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Дорогі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon gehört habt, plant die Geschäftsleitung</r>, eine Pflichtzertifizierung für Hard Skills einzuführen. <r>Auch ich möchte heute in unserem Blog etwas dazu</r> schreiben.",
+        "en": "as you have probably already heard, management is planning to introduce mandatory certification for hard skills. I would also like to write something about this in our blog today.",
+        "uk": "як ви, напевно, вже чули, керівництво планує запровадити обов'язкову сертифікацію hard skills. Я теж хочу сьогодні написати про це кілька слів у нашому блозі.",
+        "ru": "как вы, наверное, уже слышали, руководство планирует ввести обязательную сертификацию hard skills. Я тоже хочу сегодня написать об этом несколько слов в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> <g>wer</g> seine Kenntnisse regelmäßig auffrischt, davon langfristig profitiert, auch wenn eine Pflicht anfangs unangenehm wirken kann.",
+        "en": "I am of the opinion that whoever regularly refreshes their knowledge benefits from it in the long run, even if an obligation may seem unpleasant at first.",
+        "uk": "Я вважаю, що той, хто регулярно оновлює свої знання, зрештою від цього виграє, навіть якщо обов'язковість спочатку може здаватися неприємною.",
+        "ru": "Я считаю, что тот, кто регулярно обновляет свои знания, в конечном счёте от этого выигрывает, даже если обязательность поначалу может казаться неприятной."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein Vorteil wäre</r> sicherlich, dass wir dadurch mit der digitalen Transformation Schritt halten und unsere Fähigkeiten anwenden könnten, ohne den Anschluss zu verlieren. Außerdem hat, wer eine Zertifizierung vorweisen kann, bei internen Bewerbungen oft bessere Chancen.",
+        "en": "One advantage would certainly be that this would let us keep pace with digital transformation and apply our skills without losing touch. In addition, whoever can present a certification often has better chances with internal applications.",
+        "uk": "Однією з переваг, безумовно, було б те, що завдяки цьому ми йшли б в ногу з цифровою трансформацією і могли б застосовувати свої навички, не втрачаючи зв'язку з новими тенденціями. Крім того, той, хто може підтвердити сертифікацію, часто має кращі шанси при внутрішніх заявках на посаду.",
+        "ru": "Одним из преимуществ, безусловно, было бы то, что благодаря этому мы шли бы в ногу с цифровой трансформацией и могли бы применять свои навыки, не теряя связь с новыми тенденциями. Кроме того, тот, кто может подтвердить сертификацию, часто имеет лучшие шансы при внутренних заявках на должность."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte die Geschäftsleitung bedenken, dass nicht jede Abteilung dieselben Hard Skills braucht, und <g>wer</g> zum Beispiel im Arbeitsschutz arbeitet, benötigt kaum eine Zertifizierung in Marktforschung. Zudem müssten die Kurse in der Arbeitszeit stattfinden, sonst würde die Belastung zu groß.",
+        "en": "On the other hand, management should consider that not every department needs the same hard skills, and whoever works in occupational safety, for example, hardly needs certification in market research. Moreover, the courses would have to take place during working hours, otherwise the burden would become too great.",
+        "uk": "З іншого боку, керівництву варто врахувати, що не кожному відділу потрібні однакові hard skills, і той, хто, наприклад, працює в галузі охорони праці, навряд чи потребує сертифікації з маркетингових досліджень. Крім того, курси мали б проходити в робочий час, інакше навантаження було б занадто великим.",
+        "ru": "С другой стороны, руководству стоит учесть, что не каждому отделу нужны одинаковые hard skills, и тот, кто, например, работает в сфере охраны труда, вряд ли нуждается в сертификации по маркетинговым исследованиям. Кроме того, курсы должны были бы проходить в рабочее время, иначе нагрузка была бы слишком большой."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> jede Abteilung selbst festlegt, welche Hard Skills wirklich relevant sind, und dass die Zertifizierung freiwillig bleibt, aber finanziell und zeitlich unterstützt wird.",
+        "en": "That's why I suggest that each department determine for itself which hard skills are really relevant, and that certification remain voluntary but be supported financially and in terms of time.",
+        "uk": "Тому я пропоную, щоб кожен відділ сам визначав, які hard skills дійсно актуальні, а сертифікація залишалася добровільною, але підтримувалася фінансово й у робочому часі.",
+        "ru": "Поэтому я предлагаю, чтобы каждый отдел сам определял, какие hard skills действительно актуальны, а сертификация оставалась добровольной, но поддерживалась финансово и по времени."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Anna",
+        "en": "Anna",
+        "uk": "Анна",
+        "ru": "Анна"
       }
     ]
   }
