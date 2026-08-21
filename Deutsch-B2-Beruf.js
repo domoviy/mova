@@ -1478,9 +1478,13 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "relativsatz_wer",
+    "frmCards": [
+      "forum_015"
+    ],
     "cardIds": [
       "zar_001",
       "zar_002",
@@ -1561,9 +1565,13 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": null,
+    "frmCards": [
+      "forum_016"
+    ],
     "cardIds": [
       "zar_016",
       "zar_017",
@@ -14420,6 +14428,158 @@ var SCHREIBEN = [
         "en": "Anna",
         "uk": "Анна",
         "ru": "Анна"
+      }
+    ]
+  },
+  {
+    "id": "forum_015",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Neue Meetingregeln – mehr Struktur für Besprechungen",
+      "en": "New meeting rules – more structure for meetings",
+      "uk": "Нові правила нарад – більше структури для зустрічей",
+      "ru": "Новые правила совещаний – больше структуры для встреч"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung möchte künftig feste Meetingregeln einführen, zum Beispiel eine verbindliche Tagesordnung und eine begrenzte Redezeit für jeden Teilnehmer. Bisher liefen viele Meetings ohne klare Struktur ab und dauerten oft länger als geplant.",
+      "en": "Management wants to introduce fixed meeting rules in future, such as a mandatory agenda and a limited speaking time for each participant. Until now, many meetings ran without a clear structure and often lasted longer than planned.",
+      "uk": "Керівництво хоче надалі запровадити чіткі правила проведення нарад, наприклад обов'язковий порядок денний і обмежений час виступу для кожного учасника. Досі багато нарад проходили без чіткої структури й часто тривали довше запланованого.",
+      "ru": "Руководство хочет в дальнейшем ввести чёткие правила проведения совещаний, например, обязательную повестку дня и ограниченное время выступления для каждого участника. До сих пор многие совещания проходили без чёткой структуры и часто длились дольше запланированного."
+    },
+    "gram": "relativsatz_wer",
+    "name": "de_m_david",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, feste Meetingregeln einzuführen, damit unser Jour fixe künftig produktiver abläuft. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to introduce fixed meeting rules so that our regular meetings run more productively in future. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити чіткі правила нарад, щоб наш регулярний Jour fixe надалі проходив продуктивніше. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует ввести чёткие правила совещаний, чтобы наш регулярный Jour fixe в дальнейшем проходил продуктивнее. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> klare Regeln unserer Meetingkultur <g>guttun würden</g>, denn aktuell erscheinen viele Teilnehmer nicht pünktlich, und die Moderation muss sich Mühe geben, damit die Tagesordnung eingehalten wird.",
+        "en": "I am of the opinion that clear rules would do our meeting culture good, because currently many participants don't arrive on time, and the moderator has to make a real effort to keep the agenda on track.",
+        "uk": "Я вважаю, що чіткі правила пішли б на користь нашій культурі нарад, адже наразі багато учасників не приходять вчасно, і модератору доводиться докладати чимало зусиль, щоб дотримуватися порядку денного.",
+        "ru": "Я считаю, что чёткие правила пошли бы на пользу нашей культуре совещаний, ведь сейчас многие участники не приходят вовремя, и модератору приходится прилагать немало усилий, чтобы придерживаться повестки дня."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> eine feste Agenda und eine begrenzte Redezeit <g>die Einhaltung der Tagesordnungspunkte</g> erleichtern. Außerdem könnte die Gesprächsleitung das Ergebnis am Ende klarer festhalten und bei Bedarf eine Abstimmung durchführen.",
+        "en": "A very important argument in favor is that a fixed agenda and limited speaking time make it easier to stick to the agenda items. In addition, the moderator could record the outcome more clearly at the end and hold a vote if needed.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що чіткий порядок денний і обмежений час виступу полегшують дотримання пунктів порядку денного. Крім того, модератор міг би наприкінці чіткіше фіксувати результат і за потреби провести голосування.",
+        "ru": "Очень важный аргумент в пользу этого — то, что чёткая повестка дня и ограниченное время выступления облегчают соблюдение пунктов повестки. Кроме того, модератор мог бы в конце чётче фиксировать результат и при необходимости проводить голосование."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass nicht jede Diskussion in eine starre Zeitvorgabe passt: <g>Wer</g> ein komplexes Thema erklären muss, <g>der</g> braucht manchmal einfach mehr Redezeit.",
+        "en": "On the other hand, one should also consider that not every discussion fits into a rigid time limit: whoever has to explain a complex topic sometimes simply needs more speaking time.",
+        "uk": "З іншого боку, варто також враховувати, що не кожна дискусія вписується в жорсткий часовий ліміт: хто мусить пояснити складну тему, той іноді просто потребує більше часу на виступ.",
+        "ru": "С другой стороны, стоит также учитывать, что не каждая дискуссия укладывается в жёсткий временной лимит: тому, кто должен объяснить сложную тему, иногда просто нужно больше времени на выступление."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die Moderation zusätzliche Redezeit vergeben kann — <g>je</g> komplexer das Thema ist, <g>desto</g> mehr Flexibilität sollte sie haben. Zudem fände ich hybride Meetings mit Videokonferenz sinnvoll, damit alle auf dem Laufenden bleiben.",
+        "en": "That is why I propose that the moderator should be able to grant extra speaking time — the more complex the topic, the more flexibility they should have. I would also find it useful to keep hybrid meetings with video conferencing, so that everyone stays up to date.",
+        "uk": "Тому я пропоную, щоб модератор міг надавати додатковий час виступу — чим складніша тема, тим більше гнучкості йому потрібно мати. Крім того, я вважаю доцільним зберегти гібридні наради з відеоконференцією, щоб усі були в курсі справ.",
+        "ru": "Поэтому я предлагаю, чтобы модератор мог предоставлять дополнительное время для выступления — чем сложнее тема, тем больше гибкости ему нужно иметь. Кроме того, я считаю целесообразным сохранить гибридные совещания с видеоконференцией, чтобы все были в курсе дел."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "David",
+        "en": "David",
+        "uk": "Давід",
+        "ru": "Давид"
+      }
+    ]
+  },
+  {
+    "id": "forum_016",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Verpflichtendes Konfliktmanagement-Training",
+      "en": "Mandatory conflict management training",
+      "uk": "Обов'язковий тренінг з управління конфліктами",
+      "ru": "Обязательный тренинг по управлению конфликтами"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung plant, ein verpflichtendes Konfliktmanagement-Training für alle Mitarbeitenden einzuführen, nachdem es in mehreren Abteilungen zu Spannungen und ungelösten Konflikten gekommen ist. Bisher gab es keine einheitlichen Regeln, wie mit Konflikten am Arbeitsplatz umgegangen werden soll.",
+      "en": "Management is planning to introduce mandatory conflict management training for all employees, after tensions and unresolved conflicts arose in several departments. Until now, there have been no uniform rules for how to handle conflicts in the workplace.",
+      "uk": "Керівництво планує запровадити обов'язковий тренінг з управління конфліктами для всіх співробітників після того, як у кількох відділах виникли напруження та невирішені конфлікти. Досі не було єдиних правил щодо того, як поводитися з конфліктами на робочому місці.",
+      "ru": "Руководство планирует ввести обязательный тренинг по управлению конфликтами для всех сотрудников после того, как в нескольких отделах возникли напряжённость и неразрешённые конфликты. До сих пор не было единых правил относительно того, как обращаться с конфликтами на рабочем месте."
+    },
+    "gram": "konjunktiv2_als_ob",
+    "name": "de_w_nina",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon gehört habt</r>, plant die Geschäftsleitung, ein verpflichtendes Konfliktmanagement-Training für alle Mitarbeitenden einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you've probably already heard, management is planning to introduce mandatory conflict management training for all employees. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже чули, керівництво планує запровадити обов'язковий тренінг з управління конфліктами для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже слышали, руководство планирует ввести обязательный тренинг по управлению конфликтами для всех сотрудников. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> ein solches Training wirklich notwendig ist, denn in letzter Zeit tun manche Kolleginnen und Kollegen so, <g>als ob es gar keine Spannungen im Team gäbe</g>, obwohl der Umgangston oft schon unangemessen ist.",
+        "en": "I am of the opinion that this kind of training is really necessary, because lately some colleagues act as if there were no tension in the team at all, even though the tone is often already inappropriate.",
+        "uk": "Я вважаю, що такий тренінг справді необхідний, адже останнім часом деякі колеги поводяться так, ніби в команді взагалі немає напруження, хоча тон спілкування вже часто буває неприйнятним.",
+        "ru": "Я считаю, что такой тренинг действительно необходим, ведь в последнее время некоторые коллеги ведут себя так, будто в команде вообще нет напряжённости, хотя тон общения уже нередко бывает неуместным."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> viele Missverständnisse <g>während eines Konflikts</g> einfach eskalieren, weil niemand die Verantwortung übernehmen will. Ein Mediator könnte in solchen Fällen frühzeitig schlichten und eine faire Lösung finden.",
+        "en": "A very important argument in favor is that many misunderstandings simply escalate during a conflict because nobody wants to take responsibility. A mediator could step in early in such cases and find a fair solution.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що багато непорозумінь просто загострюються під час конфлікту, бо ніхто не хоче брати на себе відповідальність. Медіатор міг би в таких випадках вчасно втрутитися й знайти справедливе рішення.",
+        "ru": "Очень важный аргумент в пользу этого — то, что многие недоразумения просто обостряются во время конфликта, потому что никто не хочет брать на себя ответственность. Медиатор мог бы в таких случаях вовремя вмешаться и найти справедливое решение."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein einzelnes Training kaum ausreicht, um <g>eskalierende</g> Spannungen dauerhaft zu deeskalieren, wenn sich am Betriebsklima insgesamt nichts ändert.",
+        "en": "On the other hand, one should also consider that a single training session is hardly enough to permanently defuse escalating tensions if nothing changes about the overall workplace climate.",
+        "uk": "З іншого боку, варто також враховувати, що одного тренінгу навряд чи достатньо, щоб надовго знизити напруження, яке загострюється, якщо загалом нічого не зміниться в атмосфері колективу.",
+        "ru": "С другой стороны, стоит также учитывать, что одного тренинга вряд ли достаточно, чтобы надолго снизить обостряющуюся напряжённость, если в целом ничего не изменится в атмосфере коллектива."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> zusätzlich feste Feedback-Gespräche eingeführt werden, damit <g>jeder</g> frühzeitig Rückmeldung geben und Kritik konstruktiv äußern kann, bevor aus einem Missverständnis ein offener Streit wird.",
+        "en": "That is why I propose that regular feedback meetings also be introduced, so that everyone can give feedback early and voice criticism constructively before a misunderstanding turns into an open dispute.",
+        "uk": "Тому я пропоную додатково запровадити регулярні бесіди зі зворотним зв'язком, щоб кожен міг вчасно дати зворотний зв'язок і конструктивно висловити критику, перш ніж непорозуміння переросте у відкриту сварку.",
+        "ru": "Поэтому я предлагаю дополнительно ввести регулярные беседы с обратной связью, чтобы каждый мог своевременно давать обратную связь и конструктивно высказывать критику, прежде чем недоразумение перерастёт в открытый спор."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Nina",
+        "en": "Nina",
+        "uk": "Ніна",
+        "ru": "Нина"
       }
     ]
   }
