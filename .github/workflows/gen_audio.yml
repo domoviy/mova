@@ -97,7 +97,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install edge-tts
+          pip install edge-tts mutagen
 
       # НАЛАШТУВАННЯ GIT: Потрібно заздалегідь для авто-сейвів скрипту
       - name: Configure Git Bot
