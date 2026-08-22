@@ -737,8 +737,15 @@ def _looks_truncated(cleaned_text, boundary_words):
     for tag, i1, i2, j1, j2 in sm.get_opcodes():
         if tag == 'equal':
             continue
-        expected_joined = ''.join(expected_norm[i1:i2])
-        got_joined = ''.join(got_norm[j1:j2])
+        # .replace('-', '') — порівнюємо ЗМІСТ, а не запис: дефіс сам по
+        # собі ніколи не озвучується (ні внутрішній, як "Buddy-Person"/
+        # "E-Mails", ні крайовий — той вже обрізає _norm_word). Якщо Edge
+        # TTS розбиває "Buddy-Person" на 2 події ("Buddy"+"Person"), об'єд-
+        # наний очікуваний токен лишається "buddy-person", а отриманий —
+        # "buddyperson"; без .replace('-', '') рядки НІКОЛИ не збігаються
+        # і легітимна інша сегментація хибно карається як "обрив".
+        expected_joined = ''.join(expected_norm[i1:i2]).replace('-', '')
+        got_joined = ''.join(got_norm[j1:j2]).replace('-', '')
         if expected_joined and expected_joined == got_joined:
             # Той самий зміст, лише інша сегментація (об'єднання/поділ
             # токенів Edge TTS) — нічого не загублено.
