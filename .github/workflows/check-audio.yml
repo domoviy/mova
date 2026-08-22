@@ -4,12 +4,12 @@ name: Перевірка аудіо (діагностика обривів)
 # на своєму комп'ютері не треба. Вкажи шляхи до файлів (через пробіл)
 # у полі "file_paths", натисни "Run workflow", і результат з'явиться
 # в логах цього прогону (Actions -> цей workflow -> останній run ->
-# крок "Перевірити файли").
+# крок "Перевірити гучність по словах").
 on:
   workflow_dispatch:
     inputs:
       file_paths:
-        description: 'Шляхи до .mp3 файлів через пробіл (напр. audio/Deutsch-B2-Beruf/de/075/forum/forum_001_task_de_075.mp3)'
+        description: 'Шляхи до .mp3 файлів через пробіл (напр. audio/Deutsch-B2-Beruf/de/100/forum/forum_010_pro_de_100.mp3)'
         required: true
         type: string
 
@@ -28,5 +28,11 @@ jobs:
       - name: Встановити mutagen
         run: pip install mutagen
 
-      - name: Перевірити файли
+      # ffmpeg на ubuntu-latest runners вже стоїть за замовчуванням —
+      # окремого install-кроку не треба.
+
+      - name: Перевірити тривалість/таймінг (duration vs words.json)
         run: python3 check_suspect_files.py ${{ inputs.file_paths }}
+
+      - name: Перевірити гучність по словах (шукає тишу всередині файлу)
+        run: python3 check_audio_energy.py ${{ inputs.file_paths }}
