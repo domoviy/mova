@@ -28,8 +28,11 @@ jobs:
       - name: Встановити mutagen
         run: pip install mutagen
 
-      # ffmpeg на ubuntu-latest runners вже стоїть за замовчуванням —
-      # окремого install-кроку не треба.
+      - name: Встановити ffmpeg
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+          ffmpeg -version | head -1
 
       - name: Перевірити тривалість/таймінг (duration vs words.json)
         run: python3 check_suspect_files.py ${{ inputs.file_paths }}
