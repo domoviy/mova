@@ -4151,7 +4151,8 @@ var LESSONS = [
       "dlg_049",
       "dlg_050",
       "dlg_051",
-      "dlg_052"
+      "dlg_052",
+      "dlg_137"
     ]
   },
   {
@@ -4188,7 +4189,10 @@ var LESSONS = [
       "k14_024"
     ],
     "unlockAfter": "k13m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_138"
+    ]
   },
   {
     "id": "k14m2",
@@ -31440,6 +31444,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, мы определяем разумные сферы, предлагаем заботливую поддержку, относимся друг к другу деликатно, создаём предложение помощи для новых участников, следим за уважительным тоном, оказываем друг другу мощную поддержку и проверяем, успешен ли наш круг. С большой эмпатией это точно будет здорово! Спасибо за идею, Дэвид!"
     },
     "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "dlg_137",
+    "cat": "Gemeinsam freiwillig engagieren planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: David und Julia überlegen, ob und wie sie sich gemeinsam freiwillig engagieren möchten.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, wie Sie das umsetzen.\nDiese Punkte helfen Ihnen:\nWelche Gefahren sollten Sie beachten?\nWelche Unterstützung können Sie sich holen?\nWie gewinnen Sie Vertrauen in die neue Aufgabe?\nWelchen Tag reservieren Sie dafür?\nWelchen Wert hat diese Arbeit für Sie?",
+      "en": "Situation: David and Julia are considering whether and how they want to get involved as volunteers together.\nTask: Plan together with your conversation partner how you'll put this into practice.\nThese points will help you:\nWhat dangers should you keep in mind?\nWhat support can you get?\nHow do you build trust in the new task?\nWhich day do you set aside for it?\nWhat value does this work have for you?",
+      "uk": "Ситуація: Девід і Юлія обмірковують, чи і як вони хочуть разом займатися волонтерством.\nЗавдання: Сплануйте разом зі своїм співрозмовником, як Ви це реалізуєте.\nЦі пункти Вам допоможуть:\nЯкі небезпеки варто врахувати?\nЯку підтримку Ви можете отримати?\nЯк Ви здобудете довіру до нового завдання?\nЯкий день Ви зарезервуєте для цього?\nЯку цінність має для Вас ця робота?",
+      "ru": "Ситуация: Дэвид и Юлия обдумывают, хотят ли и как они хотят вместе заниматься волонтёрством.\nЗадание: Спланируйте вместе со своим собеседником, как Вы это реализуете.\nЭти пункты Вам помогут:\nКакие опасности стоит учитывать?\nКакую поддержку Вы можете получить?\nКак Вы обретёте доверие к новой задаче?\nКакой день Вы зарезервируете для этого?\nКакую ценность имеет для Вас эта работа?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_w_julia",
+    "q": {
+      "de": "Hallo, Julia! Ich denke schon länger darüber nach, mich freiwillig zu engagieren. Wollen wir zusammen überlegen, wie wir das am besten machen?",
+      "en": "Hi, Julia! I've been thinking for a while about getting involved as a volunteer. Shall we think together about how to do that best?",
+      "uk": "Привіт, Юліє! Я вже давно думаю про те, щоб зайнятися волонтерством. Може, разом поміркуємо, як це краще зробити?",
+      "ru": "Привет, Юлия! Я уже давно думаю о том, чтобы заняться волонтёрством. Может, вместе подумаем, как это лучше сделать?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten unseren ganzen Freundeskreis fragen, dann können wir zusammenhalten und uns gegenseitig motivieren.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> We could ask our whole circle of friends, then we can stick together and motivate each other.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Ми могли б запитати все наше коло друзів, тоді ми зможемо триматися разом і мотивувати одне одного.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Мы могли бы спросить весь наш круг друзей, тогда мы сможем держаться вместе и мотивировать друг друга.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Gefahr <r>bedenken</r>.<br><r>Wir könnten doch</r> sagen: Einerseits gibt es bestimmt spannende Aufgaben, andererseits sollten wir auf keinen Fall etwas machen, das zu gefährlich ist.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the danger.<br><r>We could</r> say: on the one hand there are certainly exciting tasks, on the other hand we definitely shouldn't do anything too dangerous.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> небезпеку.<br><r>Ми могли б</r> сказати: з одного боку, точно є цікаві завдання, з іншого боку, нам у жодному разі не варто робити щось надто небезпечне.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать об</r> опасности.<br><r>Мы могли бы</r> сказать: с одной стороны, точно есть интересные задачи, с другой стороны, нам ни в коем случае не стоит делать что-то слишком опасное.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns zuerst bei einer Organisation informieren, die uns bei den ersten Schritten unterstützt.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> first get information from an organisation that supports us with the first steps.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> спершу дізналися все в організації, яка підтримає нас на перших кроках.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> сначала узнали всё в организации, которая поддержит нас на первых шагах.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> erst ein kleines Projekt ausprobieren, damit wir Vertrauen in unsere neue Aufgabe gewinnen?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> try out a small project first, so that we build trust in our new task?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> спочатку спробуємо невеликий проєкт, щоб здобути довіру до нашого нового завдання?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> сначала попробуем небольшой проект, чтобы обрести доверие к нашей новой задаче?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir wirklich haben.<br><r>Eine Idee wäre, dass wir</r> uns einen festen Tag in der Woche für unsere Idee reservieren, dann wird das auch wirklich zur Gewohnheit.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we really have.<br><r>One idea would be that we</r> set aside a fixed day each week for our idea, then it will really become a habit.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу в нас насправді є.<br><r>Була б ідея, щоб ми</r> зарезервували собі постійний день на тиждень для нашої ідеї, тоді це справді стане звичкою.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени у нас на самом деле есть.<br><r>Была бы идея, чтобы мы</r> зарезервировали себе постоянный день в неделю для нашей идеи, тогда это действительно станет привычкой.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir das lange genug durchhalten.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns gegenseitig daran erinnern, welchen Wert diese Arbeit für andere Menschen hat, dann bleiben wir motiviert.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we'll keep it up long enough.<br><r>Maybe it would be best if we</r> remind each other what value this work has for other people, then we'll stay motivated.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи витримаємо ми це достатньо довго.<br><r>Можливо, було б найкраще, якби ми</r> нагадували одне одному, яку цінність ця робота має для інших людей, тоді ми залишимося вмотивованими.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, продержимся ли мы достаточно долго.<br><r>Может быть, было бы лучше, если бы мы</r> напоминали друг другу, какую ценность эта работа имеет для других людей, тогда мы останемся мотивированными.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch gleich unsere Freunde fragen, ob sie mitmachen wollen, damit wir als Freundeskreis zusammenhalten.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also ask our friends right away whether they want to join, so that we stick together as a circle of friends.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також одразу запитаємо наших друзів, чи хочуть вони долучитися, щоб ми трималися разом як коло друзів.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также сразу спросим наших друзей, хотят ли они присоединиться, чтобы мы держались вместе как круг друзей.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> am Ende noch überlegen, wie wir unsere Unterstützung langfristig organisieren.<br><r>Bist du damit einverstanden</r>, Julia?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> also think at the end about how we organise our support in the long term.<br><r>Are you okay with that</r>, Julia?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> наприкінці ще подумали, як ми організуємо нашу підтримку на довгий термін.<br><r>Ти з цим згодна</r>, Юліє?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> в конце ещё подумаем, как мы организуем нашу поддержку на долгий срок.<br><r>Ты с этим согласна</r>, Юлия?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir fragen unseren Freundeskreis, informieren uns über die Gefahr und die Aufgaben, holen uns Unterstützung von einer Organisation, probieren ein kleines Projekt aus, reservieren einen festen Tag und erinnern uns immer an den Wert unserer Arbeit. So können wir wirklich zusammenhalten und Vertrauen aufbauen! Danke für die Idee, David!",
+      "en": "Yes, of course! So, we ask our circle of friends, find out about the dangers and the tasks, get support from an organisation, try out a small project, set aside a fixed day, and always remember the value of our work. That way we can really stick together and build trust! Thanks for the idea, David!",
+      "uk": "Так, звісно! Отже, ми запитуємо наше коло друзів, дізнаємося про небезпеки й завдання, отримуємо підтримку від організації, пробуємо невеликий проєкт, резервуємо постійний день і завжди пам'ятаємо про цінність нашої роботи. Так ми зможемо справді триматися разом і будувати довіру! Дякую за ідею, Девіде!",
+      "ru": "Да, конечно! Итак, мы спрашиваем наш круг друзей, узнаём об опасностях и задачах, получаем поддержку от организации, пробуем небольшой проект, резервируем постоянный день и всегда помним о ценности нашей работы. Так мы сможем действительно держаться вместе и строить доверие! Спасибо за идею, Дэвид!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_138",
+    "cat": "Neuen Nachbarn willkommen heißen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: In Ihrem Mehrfamilienhaus ist ein neuer Nachbar eingezogen.\nAufgabe: Planen Sie zusammen mit Ihrem Nachbarn, wie Sie ihn willkommen heißen.\nDiese Punkte helfen Ihnen:\nWen aus dem Haus laden Sie zum Kennenlernen ein?\nWie helfen Sie dem neuen Nachbarn beim Ankommen?\nWen fragen Sie um Rat für die Organisation?\nWie respektieren Sie die Wünsche des neuen Menschen?\nWas machen Sie, wenn er vorher in einem Einfamilienhaus gewohnt hat?",
+      "en": "Situation: A new neighbour has moved into your apartment building.\nTask: Plan together with your neighbour how you'll welcome him.\nThese points will help you:\nWho from the building do you invite to get to know him?\nHow do you help the new neighbour settle in?\nWho do you ask for advice on the organisation?\nHow do you respect the wishes of the new person?\nWhat do you do if he previously lived in a single-family house?",
+      "uk": "Ситуація: У Ваш багатоквартирний будинок переїхав новий сусід.\nЗавдання: Сплануйте разом зі своїм сусідом, як Ви його привітаєте.\nЦі пункти Вам допоможуть:\nКого з будинку Ви запросите для знайомства?\nЯк Ви допоможете новому сусідові освоїтися?\nУ кого Ви запитаєте поради щодо організації?\nЯк Ви поважатимете побажання нової людини?\nЩо Ви зробите, якщо він раніше жив в одноквартирному будинку?",
+      "ru": "Ситуация: В Ваш многоквартирный дом переехал новый сосед.\nЗадание: Спланируйте вместе со своим соседом, как Вы его поприветствуете.\nЭти пункты Вам помогут:\nКого из дома Вы пригласите для знакомства?\nКак Вы поможете новому соседу освоиться?\nУ кого Вы спросите совета по организации?\nКак Вы будете уважать пожелания нового человека?\nЧто Вы сделаете, если он раньше жил в одноквартирном доме?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Hast du schon gehört? In unserem Mehrfamilienhaus ist ein neuer Nachbar eingezogen. Wollen wir zusammen planen, wie wir ihn willkommen heißen?",
+      "en": "Hi, Mark! Have you already heard? A new neighbour has moved into our apartment building. Shall we plan together how we welcome him?",
+      "uk": "Привіт, Марку! Ти вже чув? У наш багатоквартирний будинок переїхав новий сусід. Може, разом сплануємо, як ми його привітаємо?",
+      "ru": "Привет, Марк! Ты уже слышал? В наш многоквартирный дом переехал новый сосед. Может, вместе спланируем, как мы его поприветствуем?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Ich habe gehört, dass er vorher in einem Einfamilienhaus gewohnt hat und jetzt zum ersten Mal in unserem Mehrfamilienhaus wohnt – er ist übrigens Architekt. Wir könnten <g>den neuen Architekten</g> gleich zu unserem kleinen Hausfest einladen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> I heard he used to live in a single-family house and now lives in an apartment building for the first time – by the way, he's an architect. We could invite <g>the new architect</g> to our little building party right away.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Я чув, що раніше він жив в одноквартирному будинку, а тепер уперше живе в нашому багатоквартирному будинку – до речі, він архітектор. Ми могли б одразу запросити <g>нового архітектора</g> на наше маленьке домашнє свято.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Я слышал, что раньше он жил в одноквартирном доме, а теперь впервые живёт в нашем многоквартирном доме – кстати, он архитектор. Мы могли бы сразу пригласить <g>нового архитектора</g> на наш маленький домашний праздник.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die anderen Nachbarn <r>bedenken</r>.<br><r>Wir könnten doch</r> auch <g>dem Studenten</g> aus dem dritten Stock Bescheid geben, der hilft bestimmt gern beim Aufbau.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the other neighbours.<br><r>We could</r> also let <g>the student</g> on the third floor know, he'll probably be happy to help set up.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> інших сусідів.<br><r>Ми могли б</r> також повідомити <g>студента</g> з третього поверху, він точно радо допоможе з підготовкою.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> других соседях.<br><r>Мы могли бы</r> также сообщить <g>студенту</g> с третьего этажа, он наверняка с радостью поможет с подготовкой.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch <g>den Polizisten</g> von nebenan fragen, der kennt bestimmt schon ein paar nette Geschichten aus der Nachbarschaft.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> also ask <g>the police officer</g> next door, he probably already knows a few nice stories from the neighbourhood.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> також запитали <g>поліцейського</g> по сусідству, він точно вже знає кілька цікавих історій із району.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также спросили <g>полицейского</g> по соседству, он наверняка уже знает несколько интересных историй из района.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> auch <g>dem neuen Praktikanten</g> aus dem Erdgeschoss Bescheid geben? Er kennt hier ja noch niemanden.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also let <g>the new intern</g> on the ground floor know? He doesn't know anyone here yet.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також повідомимо <g>нового практиканта</g> з першого поверху? Він тут ще нікого не знає.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также сообщим <g>новому стажёру</g> с первого этажа? Он здесь ещё никого не знает.<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob wir genug Platz für alle haben.<br><r>Eine Idee wäre, dass wir</r> auch <g>den Journalisten</g> aus dem zweiten Stock einladen, vielleicht schreibt er sogar einen netten Artikel über unser Haus.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> whether we have enough space for everyone.<br><r>One idea would be that we</r> also invite <g>the journalist</g> from the second floor, maybe he'll even write a nice article about our building.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи вистачить нам місця для всіх.<br><r>Була б ідея, щоб ми</r> також запросили <g>журналіста</g> з другого поверху, можливо, він навіть напише гарну статтю про наш будинок.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> хватит ли нам места для всех.<br><r>Была бы идея, чтобы мы</r> также пригласили <g>журналиста</g> со второго этажа, возможно, он даже напишет хорошую статью о нашем доме.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob der neue Nachbar so viele fremde Leute überhaupt mag.<br><r>Vielleicht wäre es am besten, wenn wir</r> zuerst unseren Hausmeister fragen – wir können <g>dem Experten</g> für solche Feste nämlich sicher vertrauen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether the new neighbour even likes so many strangers.<br><r>Maybe it would be best if we</r> ask our caretaker first – we can definitely trust <g>the expert</g> for this kind of party.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи взагалі любить новий сусід стільки незнайомих людей.<br><r>Можливо, було б найкраще, якби ми</r> спершу запитали нашого двірника – ми точно можемо довіряти <g>експерту</g> в таких святах.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, любит ли новый сосед вообще столько незнакомых людей.<br><r>Может быть, было бы лучше, если бы мы</r> сначала спросили нашего дворника – мы точно можем доверять <g>эксперту</g> в таких праздниках.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch <g>dem netten Kunden</g> aus der Bäckerei an der Ecke Bescheid sagen, der kennt fast jeden im Viertel.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also let <g>the nice customer</g> from the bakery on the corner know, he knows almost everyone in the neighbourhood.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також повідомимо <g>приємного клієнта</g> з пекарні на розі, він знає майже всіх у районі.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также сообщим <g>приятному клиенту</g> из пекарни на углу, он знает почти всех в районе.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> am Anfang einfach die Meinung <g>des neuen Menschen</g> respektieren und ihn erst mal in Ruhe ankommen lassen.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> simply respect the opinion of <g>the new person</g> at the start, and let him settle in peacefully first.<br><r>Are you okay with that</r>, Mark?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> спочатку просто поважали думку <g>нової людини</g> й дали йому спокійно освоїтися.<br><r>Ти з цим згоден</r>, Марку?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> сначала просто уважали мнение <g>нового человека</g> и дадим ему спокойно освоиться.<br><r>Ты с этим согласен</r>, Марк?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir laden den Architekten, den Polizisten und den Journalisten ein, geben dem Studenten und dem Praktikanten Bescheid, holen uns Tipps vom Experten, unserem Hausmeister, und sagen auch dem Kunden aus der Bäckerei Bescheid. Und natürlich respektieren wir die Meinung des neuen Menschen, falls er lieber erst mal seine Ruhe haben möchte. Ich freue mich schon auf unser Hausfest! Danke für die Idee, Alex!",
+      "en": "Yes, of course! So, we invite the architect, the police officer and the journalist, let the student and the intern know, get tips from the expert, our caretaker, and also let the customer from the bakery know. And of course we'll respect the opinion of the new person, in case he'd rather have some peace and quiet at first. I'm already looking forward to our building party! Thanks for the idea, Alex!",
+      "uk": "Так, звісно! Отже, ми запрошуємо архітектора, поліцейського й журналіста, повідомляємо студента й практиканта, отримуємо поради від експерта, нашого двірника, а також повідомляємо клієнта з пекарні. І, звісно, поважаємо думку нової людини, якщо він захоче спершу побути в спокої. Я вже тішуся нашому домашньому святу! Дякую за ідею, Алексе!",
+      "ru": "Да, конечно! Итак, мы приглашаем архитектора, полицейского и журналиста, сообщаем студенту и стажёру, получаем советы от эксперта, нашего дворника, а также сообщаем клиенту из пекарни. И, конечно, уважаем мнение нового человека, если он захочет сначала побыть в спокойствии. Я уже жду нашего домашнего праздника! Спасибо за идею, Алекс!"
+    },
+    "gram": "n_deklination"
   }
 ];
 
