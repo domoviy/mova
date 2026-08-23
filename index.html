@@ -2317,6 +2317,50 @@ body.lesson-active .vocab-top{
 }
 .lf-bubble-in{ animation:lfBubbleIn .32s cubic-bezier(.22,1,.36,1); }
 
+/* ── E-Mail (Schreiben, var EMAILS) — той самий "бульбашковий" рушій,
+   що Forumsbeitrag (_lfEmlHandlers/_emlCardsToUnits), лише перші два
+   юніти картки (mail_boss/mail_client) оформлені як лист у поштовому
+   клієнті (аватар-ініціал, From, Subject), а не звичайна .lf-dlg-task
+   бульбашка без заголовка. */
+.eml-mail-card{ padding-top:10px; }
+.eml-mail-header{
+  display:flex; align-items:flex-start; gap:10px;
+  padding-bottom:10px; margin-bottom:10px;
+  border-bottom:1px solid var(--border);
+}
+.eml-mail-avatar{
+  flex-shrink:0; width:34px; height:34px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--accent, #4f7cff); color:#fff;
+  font-size:15px; font-weight:700; text-transform:uppercase;
+}
+.eml-mail-meta{ min-width:0; flex:1; }
+.eml-mail-from{ font-size:13px; font-weight:700; color:var(--ink); }
+.eml-mail-subj{ font-size:12.5px; color:var(--muted); margin-top:2px; }
+
+/* ── E-Mail comprehension-питання (card.questions) — окремий, НЕ
+   аудіо-озвучений юніт ('eml_question'): 3 варіанти-кнопки замість
+   .lf-unit-sentence, з перевіркою правильності по кліку. "Далі"
+   з'являється лише ПІСЛЯ вибору відповіді (див. _lfUnitShow —
+   isQuestionUnit-гілка), а не автоматично, як для звичайних юнітів. */
+.eml-q-prompt{ font-size:var(--fs-card); font-weight:600; line-height:1.3; color:var(--ink); margin-bottom:12px; }
+.eml-q-options{ display:flex; flex-direction:column; gap:8px; }
+.eml-q-option{
+  display:block; width:100%; box-sizing:border-box; text-align:left;
+  padding:10px 12px; border-radius:12px;
+  border:1px solid var(--border); background:var(--card);
+  font-size:calc(var(--fs-card) * 0.9); line-height:1.35; color:var(--ink);
+  cursor:pointer; transition:background .15s, border-color .15s;
+}
+.eml-q-option:active{ background:var(--soft); }
+.eml-q-option.eml-q-correct{
+  border-color:#2fa84f; background:rgba(47,168,79,.14); font-weight:600;
+}
+.eml-q-option.eml-q-wrong{
+  border-color:#e05252; background:rgba(224,82,82,.14);
+}
+.eml-q-option.eml-q-disabled{ pointer-events:none; }
+
 .sb-prac-feedback-modal{
   position:fixed;inset:0;z-index:300;
   display:flex;align-items:flex-end;
@@ -3457,6 +3501,10 @@ body.lesson-active .vocab-top{
       <div class="srow-label"><label>📰 Forumsbeitrag (тест)</label><small>Самостійний перегляд var SCHREIBEN — той самий рушій, що й Dialogue (озвучення+karaoke, <r>/<g>, крок-за-кроком з перекладом)</small></div>
       <button class="btn btn-s" style="text-align:left" onclick="debugOpenForumsbeitrag()">📰 Forumsbeitrag</button>
     </div>
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
+      <div class="srow-label"><label>📧 E-Mail (тест)</label><small>Самостійний перегляд var EMAILS — той самий рушій: 2 листи (від керівника + скарга клієнта) у форматі поштового клієнта, відповідь компанії крок-за-кроком (озвучення+karaoke, <r>/<g>), потім 2 MC-питання на розуміння</small></div>
+      <button class="btn btn-s" style="text-align:left" onclick="debugOpenEmail()">📧 E-Mail</button>
+    </div>
     <div class="srow">
       <div class="srow-label"><label>🔄 Оновити додаток</label><small>Скинути Service Worker і перезавантажити. Виправляє помилку «усі картки в уроці». Потенційно небезпечно (примусово скидає кеш) — тримати останнім у списку.</small></div>
       <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
@@ -3500,7 +3548,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '539-278a8bc';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12333,6 +12381,274 @@ function lfStartDlgLearn(){
   lfRunUnitStep(units, _lfDlgHandlers, _lfDlgLearnDone);
 }
 
+// ═══════════════════════════════════════════════════════════════════
+// E-Mail (Schreiben, var EMAILS) — другий формат Schreiben поряд з
+// Forumsbeitrag щойно вище, той самий "бульбашковий" рушій
+// (lfRunUnitStep/_lfUnitPlay/_lfDlgAppendBubble), той самий принцип
+// primary_lang→переклад і <r>/<g>-розмітка. Відмінності від
+// Forumsbeitrag:
+//  1. Перші два юніти картки — НЕ task/topic, а два повноцінні листи
+//     (mail_boss: пересилка від керівника, mail_client: сам лист-скарга
+//     клієнта), оформлені як повідомлення поштового клієнта (From/
+//     Subject) — див. buildMailHeader() у _lfEmlRenderMailOrPart.
+//  2. Після всіх parts (відповідь компанії клієнту) йдуть 2
+//     інтерактивні MC-питання на розуміння mail_client (card.questions)
+//     — окремий kind 'eml_question', БЕЗ аудіо, з перевіркою
+//     правильності по кліку (див. _lfEmlRenderQuestion).
+// Поки що доступ лише з debug-меню Налаштувань (debugOpenEmail нижче),
+// той самий підхід, що й debugOpenForumsbeitrag — окремий пункт у
+// нижньому меню/уроці додамо окремо, коли контенту (var EMAILS) стане
+// достатньо.
+var EML_ROLE_LABELS = {
+  anrede:         {de:'Anrede',         en:'Salutation',   uk:'Звертання',              ru:'Обращение'},
+  bezugnahme:     {de:'Bezugnahme',     en:'Reference',    uk:'Посилання на лист',      ru:'Ссылка на письмо'},
+  entschuldigung: {de:'Entschuldigung', en:'Apology',      uk:'Вибачення',              ru:'Извинение'},
+  grund:          {de:'Grund',          en:'Reason',       uk:'Причина',                ru:'Причина'},
+  loesung:        {de:'Lösung',         en:'Solution',     uk:'Рішення',                ru:'Решение'},
+  grussformel:    {de:'Grußformel',     en:'Closing',      uk:'Прощальна формула',      ru:'Прощальная формула'},
+  unterschrift:   {de:'Unterschrift',   en:'Signature',    uk:'Підпис',                 ru:'Подпись'},
+};
+// eyebrow-мітки над двома вступними листами — той самий принцип, що
+// topic у Forumsbeitrag (card.topic?.[uiLang]): орієнтаційний текст
+// показуємо мовою ІНТЕРФЕЙСУ, а не primary_lang (це не сам контент для
+// читання, а підказка "що це за лист").
+var EML_INTRO_LABELS = {
+  boss:   {de:'E-Mail vom Vorgesetzten', en:"Boss's e-mail",       uk:'Лист від керівника',      ru:'Письмо от руководителя'},
+  client: {de:'Beschwerde-Mail',         en:"Client's complaint",  uk:'Лист-скарга клієнта',     ru:'Письмо-жалоба клиента'},
+};
+// "Питання N/2" — eyebrow для card.questions, той самий принцип.
+var EML_Q_LABEL = {de:'Verständnisfrage', en:'Comprehension question', uk:'Питання на розуміння', ru:'Вопрос на понимание'};
+
+function _emlCardsToUnits(cards){
+  const units = [];
+  (cards||[]).forEach(function(card){
+    units.push({ kind:'eml_boss',   cardId: card.id, card: card, isFirstOfCard: true });
+    units.push({ kind:'eml_client', cardId: card.id, card: card, isFirstOfCard: false });
+    (card.parts||[]).forEach(function(part){
+      units.push({ kind:'eml_part', cardId: card.id, card: card, part: part, isFirstOfCard: false });
+    });
+    (card.questions||[]).forEach(function(q, qi){
+      units.push({ kind:'eml_question', cardId: card.id, card: card, question: q, qIndex: qi, qTotal: (card.questions||[]).length, isFirstOfCard: false });
+    });
+  });
+  return units;
+}
+
+// mail_boss/mail_client/parts — спільна бульбашка (той самий принцип,
+// що buildBubble() у _lfFrmHandlers), лише перші два юніти отримують
+// додатковий .eml-mail-header (аватар-ініціал + From + Subject) НАД
+// текстом листа. Subject показуємо primary_lang-ом (це частина
+// контенту листа, який власне й читають, на відміну від eyebrow-мітки
+// вище — вона суто орієнтаційна, тому лишається мовою інтерфейсу).
+function _lfEmlRenderMailOrPart(body, unit){
+  var card = unit.card, pl = primaryLang(), ul = uiLang;
+  var text, textTr, audioField, eyebrowIcon, eyebrowLabel, mailHeader = null;
+
+  if(unit.kind === 'eml_boss'){
+    var mb = card.mail_boss || {};
+    text        = mb[pl] || '';
+    textTr      = ul !== pl ? (mb[ul] || '') : '';
+    audioField  = 'mail_boss';
+    eyebrowIcon = '👔';
+    eyebrowLabel = EML_INTRO_LABELS.boss[ul] || EML_INTRO_LABELS.boss.en;
+    mailHeader  = { from: mb.von || '', subject: (mb.betreff && (mb.betreff[pl]||mb.betreff.de)) || '' };
+  } else if(unit.kind === 'eml_client'){
+    var mc = card.mail_client || {};
+    text        = mc[pl] || '';
+    textTr      = ul !== pl ? (mc[ul] || '') : '';
+    audioField  = 'mail_client';
+    eyebrowIcon = '📨';
+    eyebrowLabel = EML_INTRO_LABELS.client[ul] || EML_INTRO_LABELS.client.en;
+    mailHeader  = { from: mc.von || '', subject: (mc.betreff && (mc.betreff[pl]||mc.betreff.de)) || '' };
+  } else { // eml_part
+    var part = unit.part;
+    text        = part[pl] || '';
+    textTr      = ul !== pl ? (part[ul] || '') : '';
+    audioField  = part.role;
+    eyebrowIcon = '';
+    var roleInfo = EML_ROLE_LABELS[part.role];
+    eyebrowLabel = roleInfo ? (roleInfo[ul]||roleInfo.en||roleInfo.de) : (part.role||'');
+  }
+
+  var eyebrow = '<div class="lf-dlg-exam-badge lf-bubble-in">'+
+    (eyebrowIcon ? '<span class="lf-dlg-exam-icon">'+eyebrowIcon+'</span>' : '')+
+    '<span class="lf-dlg-exam-label">'+eyebrowLabel+'</span>'+
+  '</div>';
+
+  var headerHtml = '';
+  if(mailHeader){
+    var initial = (mailHeader.from||'?').trim().charAt(0).toUpperCase() || '✉';
+    headerHtml = '<div class="eml-mail-header">'+
+      '<div class="eml-mail-avatar">'+initial+'</div>'+
+      '<div class="eml-mail-meta">'+
+        '<div class="eml-mail-from">'+mailHeader.from+'</div>'+
+        '<div class="eml-mail-subj">'+mailHeader.subject+'</div>'+
+      '</div>'+
+    '</div>';
+  }
+
+  var bubble = eyebrow+'<div class="lf-dlg-task'+(mailHeader?' eml-mail-card':'')+' lf-bubble-in">'+
+    headerHtml+
+    '<div class="lf-unit-main-row">'+
+      '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
+    '</div>'+
+    (textTr ?
+      '<div class="lf-unit-main-row lf-unit-tr-row">'+
+        '<div class="lf-unit-sentence-tr">'+textTr+'</div>'+
+      '</div>'
+    : '')+
+  '</div>';
+
+  _lfDlgAppendBubble(body, bubble);
+}
+
+// card.questions[] — 2 MC-питання про зміст mail_client, БЕЗ аудіо
+// (перевіряється розуміння прочитаного, а не слухання). ID бульбашки
+// стабільний (cardId+qIndex) — якщо render() викликається ПОВТОРНО на
+// той самий юніт (напр. користувач ще не відповів, а щось перерендерило
+// картку), уже наявну бульбашку НЕ дублюємо, лише виходимо — стан
+// вибору (клас .eml-q-disabled/.eml-q-correct) і так уже в DOM.
+function _lfEmlRenderQuestion(body, unit){
+  var pl = primaryLang(), ul = uiLang;
+  var bubbleId = 'eml-q-'+unit.cardId+'-'+unit.qIndex;
+  if(document.getElementById(bubbleId)) return;
+
+  var q = unit.question;
+  var eyebrowLabel = (EML_Q_LABEL[ul]||EML_Q_LABEL.en) + ' ' + (unit.qIndex+1) + '/' + unit.qTotal;
+  var eyebrow = '<div class="lf-dlg-exam-badge lf-bubble-in">'+
+    '<span class="lf-dlg-exam-icon">❓</span>'+
+    '<span class="lf-dlg-exam-label">'+eyebrowLabel+'</span>'+
+  '</div>';
+
+  var optionsHtml = (q.options||[]).map(function(opt){
+    return '<button type="button" class="eml-q-option" data-opt-id="'+opt.id+'">'+(opt[pl]||opt.de||'')+'</button>';
+  }).join('');
+
+  var bubble = eyebrow+'<div class="lf-dlg-task lf-bubble-in" id="'+bubbleId+'">'+
+    '<div class="eml-q-prompt">'+(q.prompt?.[pl]||'')+'</div>'+
+    '<div class="eml-q-options">'+optionsHtml+'</div>'+
+  '</div>';
+
+  _lfDlgAppendBubble(body, bubble);
+
+  var bubbleEl = document.getElementById(bubbleId);
+  if(!bubbleEl) return;
+  Array.prototype.forEach.call(bubbleEl.querySelectorAll('.eml-q-option'), function(btn){
+    btn.addEventListener('click', function(){
+      if(unit._answered) return;
+      unit._answered = true;
+      var chosenId = btn.getAttribute('data-opt-id');
+      Array.prototype.forEach.call(bubbleEl.querySelectorAll('.eml-q-option'), function(b){
+        b.classList.add('eml-q-disabled');
+        var optId = b.getAttribute('data-opt-id');
+        if(optId === q.correct) b.classList.add('eml-q-correct');
+        else if(optId === chosenId) b.classList.add('eml-q-wrong');
+      });
+      haptic[chosenId === q.correct ? 'success' : 'error']();
+      // "Далі" з'являється лише тепер — до вибору відповіді свідомо не
+      // показується (див. isQuestionUnit-гілку в _lfUnitShow нижче).
+      _lfUnitShowNextBtn();
+    });
+  });
+}
+
+var _lfEmlHandlers = {
+  render: function(unit){
+    var card = unit.card;
+    var fav = isFavorite(card.id);
+
+    var favBtn = document.getElementById('lf-unit-fav');
+    if(favBtn){
+      var setFavVisual = function(isFav){
+        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.classList.toggle('active', isFav);
+      };
+      setFavVisual(fav);
+      var doToggle = function(){
+        toggleFavorite(card.id, true);
+        var nowFav = isFavorite(card.id);
+        setFavVisual(nowFav);
+        var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в закладки') : (typeof t==='function'?t('fav_removed'):'☆ Видалено із закладок');
+        label = label.replace(/^[★☆]\s*/, '');
+        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+      };
+      var prevHandlers = favBtn._lfFavHandlers;
+      if(prevHandlers){
+        favBtn.removeEventListener('touchstart', prevHandlers.ts);
+        favBtn.removeEventListener('touchend', prevHandlers.te);
+        favBtn.removeEventListener('click', prevHandlers.cl);
+      }
+      var ts = function(e){ e.stopPropagation(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
+      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      favBtn.addEventListener('touchstart', ts, {passive:true});
+      favBtn.addEventListener('touchend', te, {passive:false});
+      favBtn.addEventListener('click', cl);
+      favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
+    }
+
+    var catEl = document.getElementById('lf-unit-cat');
+    if(catEl){
+      var cat = typeof CATS!=='undefined' ? CATS.find(function(c){ return c.id===card.cat; }) : null;
+      catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : (card.cat||'');
+    }
+    var hintEl = document.getElementById('lf-unit-hint');
+    if(hintEl) hintEl.textContent = '';
+
+    var body = document.getElementById('lf-unit-body');
+    if(!body) return;
+    body.classList.add('lf-dlg-mode');
+
+    if(unit.isFirstOfCard){
+      body.innerHTML = '';
+    } else {
+      Array.prototype.forEach.call(body.querySelectorAll('.lf-bubble-in'), function(el){
+        el.classList.remove('lf-bubble-in');
+      });
+    }
+
+    if(unit.kind === 'eml_question') _lfEmlRenderQuestion(body, unit);
+    else _lfEmlRenderMailOrPart(body, unit);
+
+    requestAnimationFrame(function(){
+      body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+    });
+
+    var cardEl = document.getElementById('lf-unit-card');
+    if(cardEl) cardEl.style.display = 'flex';
+  },
+
+  getAudioText: function(unit){
+    var card = unit.card;
+    var pl = primaryLang();
+    if(unit.kind === 'eml_boss')   return [{ text: card.mail_boss?.[pl]||'',   field: 'mail_boss' }];
+    if(unit.kind === 'eml_client') return [{ text: card.mail_client?.[pl]||'', field: 'mail_client' }];
+    if(unit.kind === 'eml_part')   return [{ text: unit.part[pl]||'', field: unit.part.role }];
+    return []; // eml_question — без аудіо
+  },
+
+  getSecondaryButtons: function(unit){
+    if(unit.kind === 'eml_question') return []; // немає ні 🔊, ні 📖 сенсу
+    var buttons = [{
+      icon: '🔊',
+      onClick: function(){
+        var items = _lfEmlHandlers.getAudioText(unit) || [];
+        _lfUnitPlay(items, function(){});
+      }
+    }];
+    var pl = primaryLang();
+    var partText = unit.kind === 'eml_part' ? ((unit.part && unit.part[pl]) || '') : '';
+    var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
+    if(gramBtn) buttons.push(gramBtn);
+    return buttons;
+  },
+
+  onNext: function(unit){
+    trackCardToday(unit.cardId);
+    if(!_lfUnitSwipedThisView) srsRate(unit.cardId, 3);
+  },
+};
+
 function _lfDlgLearnDone(){
   var fcArea = document.getElementById('fc-area');
   if(fcArea) fcArea.style.display = '';
@@ -12633,7 +12949,7 @@ function lfRunUnitStep(units, handlers, onAllDone, opts){
     // активний, знімаємо старі слухачі, а не просто не додаємо нові.
     // Те саме стосується Forumsbeitrag (_lfFrmHandlers) — це теж не
     // репліка для оцінки "знаю/не знаю", а частина зв'язного тексту.
-    if(handlers === _lfDlgHandlers || handlers === _lfFrmHandlers){
+    if(handlers === _lfDlgHandlers || handlers === _lfFrmHandlers || handlers === _lfEmlHandlers){
       SwipeManager.destroy(el);
       return;
     }
@@ -12769,7 +13085,14 @@ function _lfUnitShow(){
     // шукає розмітку за класом, а не за kind, тож розширення тут —
     // єдина потрібна зміна).
     var isDialogueUnit = unit.kind === 'dlg' || unit.kind === 'dlg_task'
-      || unit.kind === 'frm_intro' || unit.kind === 'frm_part';
+      || unit.kind === 'frm_intro' || unit.kind === 'frm_part'
+      || unit.kind === 'eml_boss' || unit.kind === 'eml_client' || unit.kind === 'eml_part';
+    // eml_question — інтерактивне MC-питання без аудіо (items=[] вище
+    // →  afterPlay викликається одразу-синхронно). "Далі" тут НЕ
+    // з'являється автоматично (на відміну від решти юнітів) — його
+    // показує сам обробник кліку по варіанту відповіді, у
+    // _lfEmlRenderQuestion, рівно тоді, коли користувач дійсно відповів.
+    if(unit.kind === 'eml_question') return;
 
     var proceed = function(){
       // Останній юніт ОСТАННЬОГО практичного кроку уроку (LF.steps завжди
@@ -14625,6 +14948,53 @@ function debugOpenForumsbeitrag(){
   var chips = document.getElementById('dlgchips');
   if(chips) chips.style.display = 'none';
   startForumsbeitragMode();
+}
+
+// E-Mail (var EMAILS) — той самий 1:1 патерн, що щойно вище для
+// Forumsbeitrag (_runForumQueueAsUnits/startForumsbeitragMode/
+// _onForumUnitsDone/debugOpenForumsbeitrag), лише _emlCardsToUnits/
+// _lfEmlHandlers замість frm-аналогів. Так само поки доступ лише з
+// debug-меню Налаштувань — окремий пункт нижнього меню/кроку уроку
+// додамо, коли контенту стане достатньо (як і планувалось для forum).
+function _runEmailQueueAsUnits(){
+  var fcArea = document.getElementById('dlg-fc-area');
+  if(fcArea) fcArea.style.display = 'none';
+  var vprogrow = document.querySelector('#dlg-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = 'none';
+
+  _relocateUnitCard('dlg-panel-card');
+
+  var cards = (typeof EMAILS !== 'undefined') ? EMAILS : [];
+  var units = _emlCardsToUnits(cards);
+  lfRunUnitStep(units, _lfEmlHandlers, _onEmailUnitsDone);
+}
+
+function startEmailMode(){
+  if(typeof EMAILS === 'undefined' || !EMAILS.length){
+    notify('Немає жодної картки E-Mail (var EMAILS) у поточному курсі');
+    return;
+  }
+  _runEmailQueueAsUnits();
+}
+
+// Черга закінчилась — як і Forumsbeitrag, самостійний перегляд просто
+// починає її знову (безкінечний перегляд).
+function _onEmailUnitsDone(){
+  if(typeof EMAILS !== 'undefined' && EMAILS.length) startEmailMode();
+}
+
+function debugOpenEmail(){
+  _lfUnitTeardown();
+  if(typeof LF !== 'undefined' && LF) abandonLessonFlow();
+  document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
+  document.querySelectorAll('.bn-item[data-view]').forEach(function(n){ n.classList.remove('active'); });
+  document.getElementById('view-dialogue').classList.add('active');
+  document.querySelectorAll('#dialogue-tabs .vtab').forEach(function(t,i){ t.classList.toggle('active', i===0); });
+  document.getElementById('dlg-panel-card').style.display = 'flex';
+  document.getElementById('dlg-panel-browse').style.display = 'none';
+  var chips = document.getElementById('dlgchips');
+  if(chips) chips.style.display = 'none';
+  startEmailMode();
 }
 
 // Спільний рядок-картка для списків "Усі картки"/Закладки (Vocab,
