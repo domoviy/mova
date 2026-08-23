@@ -3500,7 +3500,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '538-cb87b0e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6491,7 +6491,33 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
     logErr('audio:ok', src, fname);
     onEnd && onEnd();
   };
-  const wdog = setTimeout(()=>{ logErr('audio:watchdog','15s',fname); finish('wdog'); }, 15000);
+  // watchdog: захист від "зависання" <audio> (переважно iOS/Safari — коли
+  // подія 'ended' інколи просто не приходить). РАНІШЕ тут був ФІКСОВАНИЙ
+  // таймаут 15000мс незалежно від тривалості файлу — тобто БУДЬ-яка
+  // репліка довша за ~15с (типово forumsbeitrag pro/kontra/task) гарантовано
+  // обривалась watchdog'ом посеред фрази, а finish('wdog') імітував
+  // штатне завершення (onEnd викликався так, ніби файл дограв). Зовні це
+  // виглядало як обрив аудіо на конкретному слові — щоразу на тому самому,
+  // бо watchdog спрацьовував рівно через 15с від старту незалежно від
+  // вмісту файлу. Самі mp3-файли при цьому були повністю справні.
+  //
+  // Фікс: короткий "стартовий" watchdog (15с) лишається — він ловить
+  // випадок, коли відтворення взагалі не почалось/зависло ДО того, як
+  // стала відома тривалість. Та щойно браузер повідомляє реальну
+  // тривалість файлу (loadedmetadata/durationchange — блоб уже повністю
+  // в пам'яті, тож це відбувається майже миттєво після a.src), watchdog
+  // перезбройовується під РЕАЛЬНУ тривалість + запас (5с) — тепер він
+  // спрацює лише якщо файл дійсно завис, а не просто триває довше 15с.
+  let wdog = setTimeout(()=>{ logErr('audio:watchdog','15s-initial',fname); finish('wdog'); }, 15000);
+  const _rearmWatchdog = ()=>{
+    const dur = a.duration;
+    if(!isFinite(dur) || dur <= 0) return;
+    clearTimeout(wdog);
+    const ms = Math.round(dur*1000) + 5000;
+    wdog = setTimeout(()=>{ logErr('audio:watchdog', (ms/1000).toFixed(1)+'s-duration', fname); finish('wdog'); }, ms);
+  };
+  a.addEventListener('loadedmetadata', _rearmWatchdog);
+  a.addEventListener('durationchange', _rearmWatchdog);
 
   // Використовуємо спільний активований елемент
   a.src     = blobUrl;
