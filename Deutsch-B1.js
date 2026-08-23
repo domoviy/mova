@@ -4233,7 +4233,8 @@ var LESSONS = [
       "dlg_053",
       "dlg_054",
       "dlg_055",
-      "dlg_056"
+      "dlg_056",
+      "dlg_139"
     ]
   },
   {
@@ -31592,6 +31593,80 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, мы приглашаем архитектора, полицейского и журналиста, сообщаем студенту и стажёру, получаем советы от эксперта, нашего дворника, а также сообщаем клиенту из пекарни. И, конечно, уважаем мнение нового человека, если он захочет сначала побыть в спокойствии. Я уже жду нашего домашнего праздника! Спасибо за идею, Алекс!"
     },
     "gram": "n_deklination"
+  },
+  {
+    "id": "dlg_139",
+    "cat": "WG-Wohnung gemeinsam mieten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Anna und Nina möchten gemeinsam eine Wohnung mieten, für die sie sich schon lange interessieren.\nAufgabe: Planen Sie zusammen mit Ihrer Mitbewohnerin die nächsten Schritte.\nDiese Punkte helfen Ihnen:\nWann sprechen Sie mit dem Vermieter?\nWie viel Geld brauchen Sie für die Kaution?\nWas steht im Mietvertrag?\nWer kümmert sich um die Renovierung?\nWelche Kündigungsfrist gilt?",
+      "en": "Situation: Anna and Nina want to rent a flat together that they've been interested in for a long time.\nTask: Plan the next steps together with your flatmate.\nThese points will help you:\nWhen do you talk to the landlord?\nHow much money do you need for the deposit?\nWhat's in the rental contract?\nWho takes care of the renovation?\nWhat notice period applies?",
+      "uk": "Ситуація: Анна та Ніна хочуть разом орендувати квартиру, якою вони вже давно цікавляться.\nЗавдання: Сплануйте разом зі своєю співмешканкою наступні кроки.\nЦі пункти Вам допоможуть:\nКоли Ви поговорите з орендодавцем?\nСкільки грошей Вам потрібно для застави?\nЩо вказано в договорі оренди?\nХто займеться ремонтом?\nЯкий термін розірвання договору діє?",
+      "ru": "Ситуация: Анна и Нина хотят вместе арендовать квартиру, которой они уже давно интересуются.\nЗадание: Спланируйте вместе со своей соседкой по квартире следующие шаги.\nЭти пункты Вам помогут:\nКогда Вы поговорите с арендодателем?\nСколько денег Вам нужно для залога?\nЧто указано в договоре аренды?\nКто займётся ремонтом?\nКакой срок расторжения договора действует?"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Hallo, Nina! Ich habe die Wohnung gefunden, für die ich mich schon lange interessiere. Wollen wir zusammen planen, wie wir jetzt vorgehen?",
+      "en": "Hi, Nina! I found the flat I've been interested in for a long time. Shall we plan together how we proceed now?",
+      "uk": "Привіт, Ніно! Я знайшла квартиру, якою вже давно цікавлюся. Може, разом сплануємо, як ми діятимемо далі?",
+      "ru": "Привет, Нина! Я нашла квартиру, которой уже давно интересуюсь. Может, вместе спланируем, как мы будем действовать дальше?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Zuerst sollten wir <g>den Vermieter, mit dem</g> wir telefoniert haben, noch einmal anrufen und einen Besichtigungstermin ausmachen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> First we should call <g>the landlord we spoke to on the phone</g> again and arrange a viewing.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Спершу нам варто ще раз зателефонувати <g>орендодавцю, з яким</g> ми вже говорили телефоном, і домовитися про перегляд.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Сначала нам стоит ещё раз позвонить <g>арендодателю, с которым</g> мы уже говорили по телефону, и договориться о просмотре.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Kaution <r>bedenken</r>.<br><r>Wir könnten doch</r> schon mal Geld für <g>die Kaution, für die</g> wir sparen müssen, zur Seite legen.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the deposit.<br><r>We could</r> already start setting aside money for <g>the deposit we need to save for</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> заставу.<br><r>Ми могли б</r> вже почати відкладати гроші на <g>заставу, для якої</g> нам треба заощаджувати.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> залоге.<br><r>Мы могли бы</r> уже начать откладывать деньги на <g>залог, для которого</g> нам нужно копить.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns genau <g>den Mietvertrag, in dem</g> ja alle wichtigen Regeln stehen, durchlesen – vor allem, ob es sich um die Kaltmiete oder die Warmmiete handelt.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> carefully read through <g>the rental contract, in which</g> all the important rules are written – especially whether it's about the cold rent or the warm rent.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> уважно прочитали <g>договір оренди, у якому</g> прописані всі важливі правила – особливо чи йдеться про орендну плату без комунальних послуг, чи з ними.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> внимательно прочитали <g>договор аренды, в котором</g> прописаны все важные правила – особенно идёт ли речь об аренде без коммунальных услуг или с ними.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns noch mal <g>den Balkon, von dem</g> man angeblich den ganzen Park sehen kann, anschauen?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> take another look at <g>the balcony you can supposedly see the whole park from</g>?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> ще раз подивимося на <g>балкон, з якого</g> нібито видно весь парк?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> ещё раз посмотрим на <g>балкон, с которого</g> якобы виден весь парк?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer sich um die Renovierung kümmert.<br><r>Eine Idee wäre, dass wir</r> vorher klären, wer für <g>die Renovierung, für die</g> die Vormieter wohl noch zuständig sind, bezahlt.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> who takes care of the renovation.<br><r>One idea would be that we</r> first clarify who pays for <g>the renovation the previous tenants are probably still responsible for</g>.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто займеться ремонтом.<br><r>Була б ідея, щоб ми</r> заздалегідь з'ясували, хто платить за <g>ремонт, за який</g>, напевно, ще відповідають попередні орендарі.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто займётся ремонтом.<br><r>Была бы идея, чтобы мы</r> заранее выяснили, кто платит за <g>ремонт, за который</g>, наверное, ещё отвечают предыдущие арендаторы.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob die Kaltmiete wirklich so günstig bleibt, wie versprochen.<br><r>Vielleicht wäre es am besten, wenn wir</r> auch noch mal bei <g>dem Immobilienmakler, bei dem</g> wir uns gemeldet haben, nachfragen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether the cold rent will really stay as cheap as promised.<br><r>Maybe it would be best if we</r> also ask <g>the real estate agent we contacted</g> again.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи справді орендна плата залишиться такою дешевою, як обіцяли.<br><r>Можливо, було б найкраще, якби ми</r> ще раз запитали <g>маклера з нерухомості, до якого</g> ми зверталися.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, останется ли аренда действительно такой дешёвой, как обещали.<br><r>Может быть, было бы лучше, если бы мы</r> ещё раз спросили <g>риелтора, к которому</g> мы обращались.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch schon mal überlegen, wer <g>der Nachmieter, an den</g> wir die Wohnung irgendwann übergeben, sein könnte, falls wir mal ausziehen.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also already think about who <g>the next tenant we'd hand the flat over to</g> could be, in case we ever move out.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також уже подумаємо, хто міг би бути <g>наступним орендарем, якому</g> ми колись передамо квартиру, якщо ми колись виїдемо.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также уже подумаем, кто мог бы быть <g>следующим арендатором, которому</g> мы когда-нибудь передадим квартиру, если мы когда-нибудь съедем.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> am Ende noch <g>die Kündigungsfrist, nach der</g> wir frühestens wieder ausziehen könnten, genau nachlesen.<br><r>Bist du damit einverstanden</r>, Nina?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> also carefully read up on <g>the notice period after which</g> we could move out again at the earliest, at the end.<br><r>Are you okay with that</r>, Nina?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> наприкінці ще уважно прочитали про <g>термін розірвання договору, після якого</g> ми зможемо щонайшвидше виїхати знову.<br><r>Ти з цим згодна</r>, Ніно?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> в конце ещё внимательно прочитаем про <g>срок расторжения договора, после которого</g> мы сможем как можно скорее снова съехать.<br><r>Ты с этим согласна</r>, Нина?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir rufen den Vermieter an, sparen für die Kaution, lesen den Mietvertrag genau durch, schauen uns noch mal den Balkon an, klären die Renovierung, fragen beim Immobilienmakler nach der Kaltmiete, überlegen schon mal an einen möglichen Nachmieter und lesen die Kündigungsfrist genau nach. Ich freue mich schon auf unsere neue Wohnung! Danke für die Idee, Anna!",
+      "en": "Yes, of course! So, we call the landlord, save up for the deposit, carefully read through the rental contract, take another look at the balcony, clarify the renovation, ask the real estate agent about the cold rent, already think about a possible next tenant, and carefully read up on the notice period. I'm already looking forward to our new flat! Thanks for the idea, Anna!",
+      "uk": "Так, звісно! Отже, ми дзвонимо орендодавцю, заощаджуємо на заставу, уважно читаємо договір оренди, ще раз дивимося на балкон, з'ясовуємо ремонт, запитуємо маклера з нерухомості про орендну плату, вже думаємо про можливого наступного орендаря і уважно читаємо про термін розірвання договору. Я вже тішуся нашій новій квартирі! Дякую за ідею, Анно!",
+      "ru": "Да, конечно! Итак, мы звоним арендодателю, копим на залог, внимательно читаем договор аренды, ещё раз смотрим на балкон, выясняем ремонт, спрашиваем риелтора об аренде, уже думаем о возможном следующем арендаторе и внимательно читаем про срок расторжения договора. Я уже жду нашей новой квартиры! Спасибо за идею, Анна!"
+    },
+    "gram": "relativsatz_mit_praeposition"
   }
 ];
 

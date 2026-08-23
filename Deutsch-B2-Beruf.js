@@ -3963,9 +3963,13 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "waehrend_genitiv_praeposition",
+    "frmCards": [
+      "forum_039"
+    ],
     "cardIds": [
       "mbr_001",
       "mbr_002",
@@ -4046,9 +4050,13 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
+    "frmCards": [
+      "forum_040"
+    ],
     "cardIds": [
       "hsk_001",
       "hsk_003",
@@ -16333,6 +16341,158 @@ var SCHREIBEN = [
         "en": "Nina",
         "uk": "Ніна",
         "ru": "Нина"
+      }
+    ]
+  },
+  {
+    "id": "forum_039",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Verbindlicher Verhaltenskodex für Nachhaltigkeit und Ethik",
+      "en": "Binding code of conduct for sustainability and ethics",
+      "uk": "Обов'язковий кодекс поведінки щодо сталого розвитку та етики",
+      "ru": "Обязательный кодекс поведения по устойчивому развитию и этике"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung plant, einen unternehmensweiten Verhaltenskodex einzuführen, der Themen wie Nachhaltigkeit, Diversität und Antikorruption verbindlich regelt, um den neuen gesetzlichen Berichtspflichten gerecht zu werden. Bisher gab es dazu nur unverbindliche Empfehlungen.",
+      "en": "Management is planning to introduce a company-wide code of conduct that bindingly regulates topics such as sustainability, diversity and anti-corruption, in order to meet new statutory reporting obligations. Until now, there have only been non-binding recommendations on these topics.",
+      "uk": "Керівництво планує запровадити загальнокорпоративний кодекс поведінки, який чітко регулюватиме такі теми, як сталий розвиток, різноманіття та протидія корупції, щоб відповідати новим законодавчим вимогам звітності. Досі щодо цих тем існували лише необов'язкові рекомендації.",
+      "ru": "Руководство планирует ввести общекорпоративный кодекс поведения, который чётко регулирует такие темы, как устойчивое развитие, разнообразие и противодействие коррупции, чтобы соответствовать новым законодательным требованиям отчётности. До сих пор по этим темам существовали только необязательные рекомендации."
+    },
+    "gram": "waehrend_genitiv_praeposition",
+    "name": "de_m_david",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, einen unternehmensweiten Verhaltenskodex für Nachhaltigkeit und Ethik einzuführen, um den neuen gesetzlichen Berichtspflichten gerecht zu werden. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to introduce a company-wide code of conduct for sustainability and ethics, in order to meet the new statutory reporting obligations. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити загальнокорпоративний кодекс поведінки щодо сталого розвитку та етики, щоб відповідати новим законодавчим вимогам звітності. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует ввести общекорпоративный кодекс поведения по устойчивому развитию и этике, чтобы соответствовать новым законодательным требованиям отчётности. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> wir <g>angesichts der wachsenden Umweltverantwortung</g> und der neuen Berichtspflicht nicht länger warten sollten, denn bisher gab es zu diesen Themen nur unverbindliche Empfehlungen.",
+        "en": "I am of the opinion that, given our growing environmental responsibility and the new reporting obligation, we should not wait any longer, because until now there have only been non-binding recommendations on these topics.",
+        "uk": "Я вважаю, що з огляду на зростаючу відповідальність за довкілля та нові вимоги звітності нам не варто більше зволікати, адже досі щодо цих тем існували лише необов'язкові рекомендації.",
+        "ru": "Я считаю, что с учётом растущей ответственности за окружающую среду и новых требований отчётности нам не стоит больше медлить, ведь до сих пор по этим темам существовали только необязательные рекомендации."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>die Reduzierung unseres CO2-Fußabdrucks</g> durch erneuerbare Energien und mehr Energieeffizienz langfristig auch bares Geld spart, statt nur zusätzliche Kosten zu verursachen.",
+        "en": "A very important argument in favor is that reducing our carbon footprint through renewable energy and greater energy efficiency also saves real money in the long run, instead of just causing additional costs.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що зменшення нашого вуглецевого сліду завдяки відновлюваній енергії та вищій енергоефективності в довгостроковій перспективі також економить реальні гроші, а не лише спричиняє додаткові витрати.",
+        "ru": "Очень важный аргумент в пользу этого — то, что снижение нашего углеродного следа за счёт возобновляемой энергии и большей энергоэффективности в долгосрочной перспективе также экономит реальные деньги, а не только вызывает дополнительные расходы."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass <g>kein Verhaltenskodex</g> allein das Problem löst, wenn Themen wie Compliance und Unternehmensethik im Alltag nicht wirklich gelebt werden.",
+        "en": "On the other hand, one should also consider that no code of conduct alone solves the problem if topics such as compliance and corporate ethics are not really lived out in everyday practice.",
+        "uk": "З іншого боку, варто також враховувати, що жоден кодекс поведінки сам по собі не вирішить проблему, якщо такі теми, як комплаєнс і корпоративна етика, не втілюються реально в буденній роботі.",
+        "ru": "С другой стороны, стоит также учитывать, что ни один кодекс поведения сам по себе не решит проблему, если такие темы, как комплаенс и корпоративная этика, не будут реально воплощаться в повседневной работе."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir <g>sowohl</g> auf Diversität und Chancengleichheit <g>als auch</g> auf Antikorruption und ein funktionierendes Whistleblowing-System gleichermaßen achten, damit der Kodex mehr ist als nur ein Stück Papier.",
+        "en": "That is why I propose that we pay equal attention to both diversity and equal opportunity as well as anti-corruption and a functioning whistleblowing system, so that the code is more than just a piece of paper.",
+        "uk": "Тому я пропоную приділяти однакову увагу як різноманіттю та рівним можливостям, так і протидії корупції та дієвій системі захисту викривачів, щоб кодекс був не просто папірцем.",
+        "ru": "Поэтому я предлагаю уделять одинаковое внимание как разнообразию и равным возможностям, так и противодействию коррупции и работающей системе защиты информаторов, чтобы кодекс был не просто бумажкой."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "David",
+        "en": "David",
+        "uk": "Давід",
+        "ru": "Давид"
+      }
+    ]
+  },
+  {
+    "id": "forum_040",
+    "cat": "Forumsbeitrag",
+    "topic": {
+      "de": "Festes Weiterbildungsbudget für Zukunftskompetenzen",
+      "en": "Fixed training budget for future skills",
+      "uk": "Фіксований бюджет на навчання для компетенцій майбутнього",
+      "ru": "Фиксированный бюджет на обучение для компетенций будущего"
+    },
+    "task": {
+      "de": "Die Geschäftsleitung plant, allen Mitarbeitenden ein jährliches Weiterbildungsbudget für Themen wie agiles Arbeiten, digitale Transformation und Zukunftskompetenzen zur Verfügung zu stellen. Bisher gab es dafür keine festen Mittel, und Fortbildungen mussten meist individuell begründet werden.",
+      "en": "Management is planning to provide all employees with an annual training budget for topics such as agile working, digital transformation and future skills. Until now, there have been no fixed funds for this, and training courses usually had to be justified individually.",
+      "uk": "Керівництво планує надати всім співробітникам щорічний бюджет на навчання за темами на кшталт гнучких методів роботи, цифрової трансформації та компетенцій майбутнього. Досі для цього не було фіксованих коштів, і підвищення кваліфікації здебільшого доводилося обґрунтовувати індивідуально.",
+      "ru": "Руководство планирует предоставить всем сотрудникам ежегодный бюджет на обучение по таким темам, как гибкие методы работы, цифровая трансформация и компетенции будущего. До сих пор для этого не было фиксированных средств, и повышение квалификации в основном приходилось обосновывать индивидуально."
+    },
+    "gram": "vergleichssaetze_als_wie_je_desto",
+    "name": "de_w_anna",
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Liebe Kolleginnen und Kollegen,",
+        "en": "Dear colleagues,",
+        "uk": "Любі колеги,",
+        "ru": "Дорогие коллеги,"
+      },
+      {
+        "role": "einleitung",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, allen Mitarbeitenden ein jährliches Weiterbildungsbudget für Themen wie agiles Arbeiten und digitale Transformation zur Verfügung zu stellen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning to provide all employees with an annual training budget for topics such as agile working and digital transformation. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує надати всім співробітникам щорічний бюджет на навчання за темами на кшталт гнучких методів роботи та цифрової трансформації. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует предоставить всем сотрудникам ежегодный бюджет на обучение по таким темам, как гибкие методы работы и цифровая трансформация. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+      },
+      {
+        "role": "meinung",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Idee wirklich überfällig ist, denn <g>je</g> mehr wir in unsere eigenen Zukunftskompetenzen investieren, <g>desto</g> besser sind wir langfristig auf Veränderungen im Arbeitsalltag vorbereitet.",
+        "en": "I am of the opinion that this idea is really overdue, because the more we invest in our own future skills, the better prepared we are for changes in everyday work in the long run.",
+        "uk": "Я вважаю, що ця ідея справді назріла, адже чим більше ми інвестуємо у власні компетенції майбутнього, тим краще ми готові до змін у буденній роботі в довгостроковій перспективі.",
+        "ru": "Я считаю, что эта идея действительно назрела, ведь чем больше мы инвестируем в собственные компетенции будущего, тем лучше мы подготовлены к изменениям в повседневной работе в долгосрочной перспективе."
+      },
+      {
+        "role": "pro",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> wir uns gezielt weiterbilden können, <g>um mit der digitalen Transformation und neuen Methoden wie Scrum oder Kanban wirklich Schritt zu halten</g>.",
+        "en": "A very important argument in favor is that we can develop our skills in a targeted way, in order to really keep pace with digital transformation and new methods such as Scrum or Kanban.",
+        "uk": "Дуже важливий аргумент на користь цього — те, що ми можемо цілеспрямовано підвищувати кваліфікацію, щоб справді не відставати від цифрової трансформації та нових методів на кшталт Scrum чи Kanban.",
+        "ru": "Очень важный аргумент в пользу этого — то, что мы можем целенаправленно повышать квалификацию, чтобы действительно не отставать от цифровой трансформации и новых методов, таких как Scrum или Kanban."
+      },
+      {
+        "role": "kontra",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass <g>es</g> im stressigen Arbeitsalltag oft gar nicht so leicht <g>ist</g>, überhaupt Zeit für Fortbildungen zu finden, selbst wenn ein Budget zur Verfügung steht.",
+        "en": "On the other hand, one should also consider that in the stressful everyday work routine it is often not so easy to find any time for training courses at all, even if a budget is available.",
+        "uk": "З іншого боку, варто також враховувати, що в напруженій буденній роботі часто не так уже й легко взагалі знайти час на підвищення кваліфікації, навіть якщо бюджет наявний.",
+        "ru": "С другой стороны, стоит также учитывать, что в напряжённой повседневной работе зачастую не так уж легко вообще найти время на повышение квалификации, даже если бюджет имеется."
+      },
+      {
+        "role": "vorschlag",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir feste Lernzeiten direkt im Kalender blockieren, <g>indem wir</g> zum Beispiel jede Woche einen kurzen Zeitraum fest für Weiterbildung reservieren.",
+        "en": "That is why I propose that we block fixed learning times directly in the calendar, for example by reserving a short period each week specifically for training.",
+        "uk": "Тому я пропоную блокувати фіксований час для навчання безпосередньо в календарі, наприклад щотижня резервуючи короткий проміжок часу спеціально для підвищення кваліфікації.",
+        "ru": "Поэтому я предлагаю блокировать фиксированное время для обучения прямо в календаре, например еженедельно резервируя короткий промежуток времени специально для повышения квалификации."
+      },
+      {
+        "role": "schluss",
+        "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
+        "en": "What do you think about this? I'm curious to hear your opinion.",
+        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
+        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+      },
+      {
+        "role": "name",
+        "de": "Anna",
+        "en": "Anna",
+        "uk": "Анна",
+        "ru": "Анна"
       }
     ]
   }
