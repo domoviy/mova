@@ -200,6 +200,17 @@ VOICE_MAPPING = {
     "email": {
         "mail_boss":   {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
         "mail_client": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
+        # Запасні голоси mail_boss/mail_client (НЕ parts!) — на випадок,
+        # якщо основний голос стабільно (не транзитно — див. коментар
+        # біля EMAIL_VOICE_FALLBACK нижче) не може синтезувати конкретний
+        # текст без втрати слова (реальний, відтворюваний прогалини в
+        # Edge TTS для конкретної пари голос+текст, а не мережевий збій —
+        # RETRY тут не допомагає). Безпечно ТІЛЬКИ для цих двох полів:
+        # кожне — одноразовий текст на картку, тож підміна голосу не
+        # створює розбіжності "той самий автор різними голосами в різних
+        # реченнях", як створила б для parts/forum.post.
+        "mail_boss_fallback":   {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        "mail_client_fallback": {"de": "de-DE-KatjaNeural",   "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
         # Запасний голос автора ВІДПОВІДІ (parts), якщо card['name'] не
         # резолвиться через characters.js — той самий принцип, що
         # forum.post вище.
@@ -1183,6 +1194,42 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
                     await asyncio.sleep(backoff)
 
         if not synthesized:
+            # ── Запасний голос — ЛИШЕ для mail_boss/mail_client (email) ──
+            # Див. коментар біля EMAIL_VOICE_FALLBACK-запису у VOICE_MAPPING:
+            # безпечно тільки тут, бо кожне з цих двох полів — одноразовий
+            # текст на картку (жодної іншої репліки ТІЄЇ Ж "людини" десь-
+            # інде, з якою підміна голосу розійшлася б). RETRY_ATTEMPTS
+            # підряд однакових помилок з ОДНИМ голосом (як у reported-логах
+            # email_009_mail_client — 5/5 ідентичних, і повторно на
+            # наступному ЗАПУСКУ теж) означає не транзитний мережевий збій
+            # (там RETRY і так вже допоміг би), а стійку прогалину Edge TTS
+            # саме для цієї пари голос+текст — інший голос це часто обходить.
+            fallback_voice = None
+            if task["cat_lower"] == "email" and task["sub"] in ("mail_boss", "mail_client"):
+                fallback_voice = get_voice_id("email", task["sub"] + "_fallback", task["lang"])
+            if fallback_voice and fallback_voice != task["voice"]:
+                print(f"⚠️  Основний голос ({task['voice']}) стабільно не впорався з {task['mkey']} — пробуємо запасний голос {fallback_voice}...", flush=True)
+                for attempt in range(1, RETRY_ATTEMPTS + 1):
+                    try:
+                        await synthesize_speech(task["cleaned"], fallback_voice, task["rate"], file_path, want_timing=task.get("want_timing", False))
+                        synthesized = True
+                        task["voice"] = fallback_voice  # для маніфесту/хешу нижче — фіксуємо ФАКТИЧНО використаний голос
+                        task["content_hash"] = compute_content_hash(task["cleaned"], fallback_voice, task["rate"])
+                        print(f"✅ Запасний голос {fallback_voice} впорався для {task['mkey']}.", flush=True)
+                        break
+                    except Exception as e:
+                        last_error = e
+                        if file_path.exists():
+                            file_path.unlink()
+                        timing_path = file_path.with_suffix('.words.json')
+                        if timing_path.exists():
+                            timing_path.unlink()
+                        if attempt < RETRY_ATTEMPTS:
+                            backoff = min(RETRY_BASE_DELAY * (2 ** (attempt - 1)), 4.0)
+                            print(f"⚠️  Спроба {attempt}/{RETRY_ATTEMPTS} із запасним голосом для {task['mkey']} невдала: {e} — повтор через {backoff:.0f}с", flush=True)
+                            await asyncio.sleep(backoff)
+
+        if not synthesized:
             print(f"❌ Помилка генерації для {task['mkey']} після {RETRY_ATTEMPTS} спроб: {last_error}", flush=True)
             async with lock:
                 stats["failed"] = stats.get("failed", 0) + 1
@@ -1447,7 +1494,27 @@ async def main():
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
 
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        # Файл MIГ бути збережений раніше ЗАПАСНИМ голосом
+                        # (див. worker_task — основний голос стабільно не
+                        # впорався з конкретним текстом, автоматично
+                        # підмінили). Якщо порівнювати ЛИШЕ з хешем
+                        # основного голосу (як завжди), такий файл щоразу
+                        # виглядав би "ЗМІНЕНИМ" — і перегенеровувався б
+                        # (з тими самими 5 невдалими спробами основним
+                        # голосом) на КОЖНОМУ майбутньому прогоні назавжди,
+                        # хоча реально готовий і коректний. Тому для цих
+                        # двох полів звіряємось ще й із хешем ЗАПАСНОГО
+                        # голосу — і якщо збігається саме він, вважаємо
+                        # файл готовим (up to date), нічого не чіпаємо.
+                        is_up_to_date = existing_value == manifest_value(content_hash, want_timing)
+                        if not is_up_to_date and field in ("mail_boss", "mail_client"):
+                            fallback_voice = get_voice_id("email", field + "_fallback", primary_lang)
+                            if fallback_voice != voice:
+                                fallback_hash = compute_content_hash(cleaned, fallback_voice, rate)
+                                if existing_value == manifest_value(fallback_hash, want_timing):
+                                    is_up_to_date = True
+
+                        if not is_up_to_date:
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
