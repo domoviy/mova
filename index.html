@@ -1219,10 +1219,20 @@ body{
   padding:0 6px;
   margin:0 2px;
   vertical-align:middle;
+  /* vertical-align:middle центрує бокс відносно точки 0.5×x-height НАД
+     базовою лінією тексту — а не відносно візуального центру великих
+     літер/цифр рядка. Плашка (32px) явно вища за x-height шрифту, тож
+     її геометричний центр виявляється НИЖЧЕ візуального центру тексту
+     навколо — те й "трохи нижче основного тексту". position:relative +
+     top тут НЕ впливає на розрахунок висоти рядка/перенесення (на
+     відміну від margin-top) — лише візуально зсуває вже готовий inline-
+     бокс, тож текст навколо (і перенесення слова/коми після слота,
+     див. коментар у defBuildQuestion) лишається незмінним. */
+  position:relative;
+  top:-3px;
   border-radius:6px 6px 0 0;
   transition:background .15s, border-color .15s;
   cursor:default;
-  position:relative;
 }
 /* Порожній слот — пульсуючий підкреслення */
 .def-slot.empty {
@@ -3548,7 +3558,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '542-a11b9dc';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -16410,7 +16420,13 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
     // Завжди показуємо речення мовою курсу
     var deRaw = sbL(card.sentence, pLang);
     var deAns = sbA(card, pLang);
-    var deFilled = deRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+deAns+'</strong>');
+    // Кольором позначаємо відповідь, що заповнила пропуск (правильно/
+    // неправильно) — БЕЗ додаткової жирності: <span>, не <strong>.
+    // Жирним лишається ЛИШЕ те, що жирне саме в базі (card.sentence/
+    // deAns/ifAns можуть містити власний <b> — той рендериться сам,
+    // браузер за замовчуванням; тут ми його не чіпаємо і не додаємо
+    // жодного свого).
+    var deFilled = deRaw.replace('{{BLANK}}', '<span style="color:'+answerColor+'">'+deAns+'</span>');
     rows.push('<div class="sb-prac-result-de">'+(langFlags[pLang]||'🇩🇪')+' '+deFilled+'</div>');
     // Якщо мова інтерфейсу відрізняється від мови курсу — додаємо переклад
     var ifLang = typeof uiLang !== 'undefined' ? uiLang : pLang;
@@ -16432,7 +16448,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
         var ifRaw = sbL(card.sentence, ifLang);
         var ifAns = sbA(card, ifLang);
         if(ifRaw && ifRaw !== deRaw){
-          var ifFilled = ifRaw.replace('{{BLANK}}', '<strong style="color:'+answerColor+'">'+ifAns+'</strong>');
+          var ifFilled = ifRaw.replace('{{BLANK}}', '<span style="color:'+answerColor+'">'+ifAns+'</span>');
           rows.push('<div class="sb-prac-result-translation">'+langFlags[ifLang]+' '+ifFilled+'</div>');
         }
       }
