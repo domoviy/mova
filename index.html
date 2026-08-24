@@ -3558,7 +3558,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '546-e692560';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6552,6 +6552,33 @@ function _alignWordsToSpans(words, spans){
 // що й у speak()/playPregenAudio(), щоб стара підсвітка не продовжувала
 // малювати кадри поверх уже іншої картки).
 var _ttsHighlightRAF = null;
+// Слідкування за підсвіченим словом під час озвучення — коли текст
+// вищий за екран (типово Forumsbeitrag/E-Mail), просто чекати на
+// audioEl.onended і скролити ЛИШЕ в кінці недостатньо: користувач не
+// встигає читати далі за озвученням, поки активне слово вже давно
+// пішло нижче видимої області. Тримаємо активне слово у ВЕРХНІЙ
+// третині видимої зони, а не впритул до самого верху — це лишає
+// видимим "буфер" тексту, що йде ДАЛІ (природніше для читання наперед,
+// як у телесуфлері), і не дає слову щезнути внизу екрана. TRIGGER —
+// момент, коли пора прокручувати (слово вже опустилось нижче цієї
+// точки); TARGET — куди саме прокручуємо його назад.
+var LF_SCROLL_TRIGGER_RATIO = 0.65;
+var LF_SCROLL_TARGET_RATIO  = 0.35;
+function _lfAutoScrollFollowActiveWord(span){
+  var body = document.getElementById('lf-unit-body');
+  if(!body || !span) return;
+  var visibleH = _lfVisibleReadHeight(body);
+  if(visibleH <= 0) return;
+  var bodyRect = body.getBoundingClientRect();
+  var spanRect = span.getBoundingClientRect();
+  var spanBottomInView = spanRect.bottom - bodyRect.top;
+  if(spanBottomInView > visibleH * LF_SCROLL_TRIGGER_RATIO){
+    var spanTopInView = spanRect.top - bodyRect.top;
+    var delta = spanTopInView - visibleH * LF_SCROLL_TARGET_RATIO;
+    if(delta > 0.5) body.scrollTo({ top: body.scrollTop + delta, behavior: 'smooth' });
+  }
+}
+
 function _runWordHighlight(audioEl, spanGroups, words, gen){
   if(_ttsHighlightRAF) cancelAnimationFrame(_ttsHighlightRAF);
   var lastIdx = -1;
@@ -6559,6 +6586,13 @@ function _runWordHighlight(audioEl, spanGroups, words, gen){
     var group = idx>=0 ? spanGroups[idx] : null;
     if(!group) return;
     group.forEach(function(si){ if(spanGroups._spans[si]) spanGroups._spans[si].classList.toggle('active', on); });
+    if(on && group.length){
+      // Останній (найправіший) спан групи — "передній край" читання;
+      // для об'єднаних груп (напр. "75"+"km" — одна подія таймінгу)
+      // саме він показує, куди реально дійшло озвучення.
+      var lastSpan = spanGroups._spans[group[group.length-1]];
+      if(lastSpan) _lfAutoScrollFollowActiveWord(lastSpan);
+    }
   }
   function tick(){
     if(playGen !== gen || audioEl.paused || audioEl.ended){
@@ -12013,6 +12047,52 @@ function _lfDlgBuildUnits(){
 // або контейнер прокручується). Узагальнення попередньої версії, де
 // зсувалась лише одна (щойно показана) бульбашка — тепер їх може бути
 // скільки завгодно, і кожна плавно "їде" вгору, звільняючи місце знизу.
+// ── Скрол довгих повідомлень (Forumsbeitrag/E-Mail) ───────────────
+// Кнопка "Далі" (.lf-next-row) — position:fixed, ПОЗА потоком
+// .lf-unit-body; місце під неї зарезервоване через padding-bottom на
+// самому .lf-unit-body (див. CSS-коментар там же). Тобто РЕАЛЬНА
+// видима область для читання — це clientHeight контейнера МІНУС той
+// padding, а не просто clientHeight.
+function _lfVisibleReadHeight(body){
+  if(!body) return 0;
+  var reservedBottom = parseFloat(getComputedStyle(body).paddingBottom) || 0;
+  return body.clientHeight - reservedBottom;
+}
+
+// Довге повідомлення (task/mail_boss/mail_client/parts і т.д.), яке не
+// влазить у видиму область цілком, за замовчуванням скролилось би до
+// САМОГО НИЗУ (body.scrollHeight) — а це миттєво показує КІНЕЦЬ
+// повідомлення замість природного початку читання. Тут — якщо контент
+// вищий за видиму область, вирівнюємо його ВЕРХНІЙ край по верху
+// видимої області (щоб читання почалось з початку); інакше — звична
+// поведінка (докрутити до низу, щоб короткий блок і кнопка нижче не
+// губились поза кадром).
+//
+// topEl/measureEl можуть бути РІЗНИМИ елементами: topEl — те, що має
+// опинитись на самому верху (напр. eyebrow-мітка над бульбашкою, щоб
+// контекст "звідки цей лист" був так само видимий), а measureEl —
+// елемент, чия ВИСОТА і визначає, чи текст завеликий (напр. сама
+// .lf-dlg-task бульбашка). Коли не задано measureEl — міряємо topEl.
+function _lfAlignTallBlockToTop(body, topEl, measureEl){
+  if(!body || !topEl) return;
+  var visibleH = _lfVisibleReadHeight(body);
+  var contentH = (measureEl || topEl).scrollHeight;
+
+  if(contentH > visibleH){
+    var bodyRect = body.getBoundingClientRect();
+    var topRect = topEl.getBoundingClientRect();
+    // getBoundingClientRect(), а не offsetTop — .lf-unit-body сам
+    // position:static, тож offsetParent для його дітей резолвиться в
+    // НАСТУПНОГО позиційного предка (.lf-unit-card, position:relative),
+    // а не в body; offsetTop тоді рахував би відступ не від body.
+    var targetTop = (topRect.top - bodyRect.top) + body.scrollTop;
+    body.scrollTo({ top: targetTop, behavior: 'smooth' });
+  } else {
+    body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+  }
+}
+
+
 function _lfDlgAppendBubble(body, html){
   const prevRects = new Map();
   Array.prototype.forEach.call(body.children, function(el){
@@ -12708,11 +12788,20 @@ var _lfEmlHandlers = {
       });
     }
 
+    var _beforeCount = body.children.length;
     if(unit.kind === 'eml_question') _lfEmlRenderQuestion(body, unit);
     else _lfEmlRenderMailOrPart(body, unit);
 
     requestAnimationFrame(function(){
-      body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+      // Щойно додані елементи ЦЬОГО юніту — eyebrow-мітка + сама
+      // бульбашка (.lf-dlg-task), два top-level сиблінги, вставлені
+      // insertAdjacentHTML в _lfDlgAppendBubble. topEl=eyebrow, щоб і
+      // контекстна мітка ("Лист від керівника" тощо) лишалась видимою
+      // разом з початком тексту, а не з'їдалась зверху.
+      var added = Array.prototype.slice.call(body.children, _beforeCount);
+      var topEl = added[0] || body.lastElementChild;
+      var bubbleEl = added[added.length-1] || body.lastElementChild;
+      _lfAlignTallBlockToTop(body, topEl, bubbleEl);
     });
 
     var cardEl = document.getElementById('lf-unit-card');
@@ -13131,10 +13220,13 @@ function _lfDlgRevealLastTranslation(onRevealed){
     // (напр. якщо користувач згодом збільшить розмір шрифту в
     // налаштуваннях — 2000px теоретично теж може стати замалим).
     last.style.maxHeight = 'none';
-    // Переклад "виростає" — доскролюємо синхронно із завершенням саме
-    // цієї анімації (scrollHeight вже оновлений), щоб низ повідомлення
-    // лишився на стандартній відстані від кнопки "Далі".
-    if(body) body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+    // Переклад "виростає" — синхронно із завершенням саме цієї анімації
+    // (scrollHeight вже оновлений) або доскролюємо до низу (короткий
+    // переклад — низ повідомлення лишається на стандартній відстані від
+    // кнопки "Далі"), або, якщо сам переклад вищий за видиму область,
+    // вирівнюємо його ВЛАСНИЙ верх по верху видимої області — та сама
+    // перевірка, що й для primary_lang-тексту вище (_lfAlignTallBlockToTop).
+    if(body) _lfAlignTallBlockToTop(body, last, last);
     // Кнопку показуємо НЕ одразу по завершенню анімації, а ще через
     // паузу на прочитання — інакше переклад ледь встиг з'явитись, а
     // кнопка вже тут.
