@@ -4349,7 +4349,10 @@ var LESSONS = [
       "k14_055"
     ],
     "unlockAfter": "k14m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_142"
+    ]
   },
   {
     "id": "k14m6",
@@ -4385,7 +4388,10 @@ var LESSONS = [
       "k14_060"
     ],
     "unlockAfter": "k14m5",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_143"
+    ]
   },
   {
     "id": "k15m1",
@@ -31821,6 +31827,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, мы думаем о семье, приглашаем супружескую пару, разговариваем с арендаторами, поручаем мастеру последние ремонтные работы, узнаём всё в управлении домом, спрашиваем владельца, думаем о детях с садом и рассказываем первому гостю о пригороде на окраине. Я уже жду возможности представить дом! Спасибо за идею, Анна!"
     },
     "gram": "relativpronomen_dativ_wdh_b1"
+  },
+  {
+    "id": "dlg_142",
+    "cat": "Wohnungsanzeige kritisch prüfen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund haben eine Wohnungsanzeige mit vielen übertriebenen Adjektiven gefunden.\nAufgabe: Planen Sie gemeinsam, wie Sie prüfen, ob die Wohnung wirklich so gut ist.\nDiese Punkte helfen Ihnen:\nWie prüfen Sie die Lage und die Aussicht?\nWie testen Sie, ob die Wohnung wirklich ruhig und hell ist?\nWie hoch ist die Nachfrage nach so einer Wohnung?\nBleibt der Preis wirklich so günstig?\nWie modern ist die Ausstattung wirklich?",
+      "en": "Situation: You and your friend have found a flat listing with lots of exaggerated adjectives.\nTask: Plan together how you'll check whether the flat is really that good.\nThese points will help you:\nHow do you check the location and the view?\nHow do you test whether the flat is really quiet and bright?\nHow high is the demand for a flat like this?\nDoes the price really stay that cheap?\nHow modern are the fittings really?",
+      "uk": "Ситуація: Ви та Ваш друг знайшли оголошення про квартиру з багатьма перебільшеними прикметниками.\nЗавдання: Сплануйте разом, як Ви перевірите, чи справді квартира настільки хороша.\nЦі пункти Вам допоможуть:\nЯк Ви перевірите розташування та краєвид?\nЯк Ви перевірите, чи справді квартира тиха й світла?\nНаскільки високий попит на таку квартиру?\nЧи справді ціна залишається такою вигідною?\nНаскільки сучасне насправді оснащення?",
+      "ru": "Ситуация: Вы и Ваш друг нашли объявление о квартире со множеством преувеличенных прилагательных.\nЗадание: Спланируйте вместе, как Вы проверите, действительно ли квартира настолько хороша.\nЭти пункты Вам помогут:\nКак Вы проверите расположение и вид?\nКак Вы проверите, действительно ли квартира тихая и светлая?\nНасколько высок спрос на такую квартиру?\nДействительно ли цена останется такой выгодной?\nНасколько современно на самом деле оснащение?"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_m_alex",
+    "q": {
+      "de": "Hallo, Alex! Ich habe eine Wohnungsanzeige gefunden, die richtig übertrieben klingt. Wollen wir zusammen schauen, ob das wirklich stimmt?",
+      "en": "Hi, Alex! I found a flat listing that sounds really exaggerated. Shall we check together whether it's actually true?",
+      "uk": "Привіт, Алексе! Я знайшов оголошення про квартиру, яке звучить дуже перебільшено. Може, разом перевіримо, чи це справді так?",
+      "ru": "Привет, Алекс! Я нашёл объявление о квартире, которое звучит очень преувеличенно. Может, вместе проверим, действительно ли это так?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> In der Anzeige steht, die Wohnung sei <g>superbezahlbar</g> – das würde ich mir aber erst mal genauer anschauen wollen, bevor wir das glauben.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> The listing says the flat is <g>super affordable</g> – but I'd want to take a closer look at that before we believe it.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> В оголошенні написано, що квартира <g>надзвичайно доступна за ціною</g> – але я хотів би спершу перевірити це уважніше, перш ніж ми в це повіримо.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> В объявлении написано, что квартира <g>сверхдоступная по цене</g> – но я хотел бы сначала внимательнее это проверить, прежде чем мы в это поверим.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Lage <r>bedenken</r>.<br><r>Wir könnten doch</r> auch checken, ob die Wohnung wirklich so <g>hochisoliert</g> ist, wie es in der Anzeige steht.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the location.<br><r>We could</r> also check whether the flat is really as <g>highly insulated</g> as the listing says.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> розташування.<br><r>Ми могли б</r> також перевірити, чи справді квартира настільки <g>надзвичайно ізольована</g>, як написано в оголошенні.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> расположении.<br><r>Мы могли бы</r> также проверить, действительно ли квартира настолько <g>сверхизолирована</g>, как написано в объявлении.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> bei der Besichtigung genau hinhören, ob die Straße wirklich so <g>überruhig</g> ist, wie versprochen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> listen carefully during the viewing to check whether the street is really as <g>extremely quiet</g> as promised.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> уважно прислухалися під час перегляду, чи справді вулиця настільки <g>надзвичайно тиха</g>, як обіцяли.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> внимательно прислушались во время просмотра, действительно ли улица настолько <g>сверхтихая</g>, как обещали.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns auch die Aussicht anschauen und prüfen, ob die Zimmer wirklich <g>extrahell</g> sind, wie es in der Anzeige heißt?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also take a look at the view and check whether the rooms are really as <g>extra bright</g> as the listing says?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також подивимося на краєвид і перевіримо, чи справді кімнати такі <g>надзвичайно світлі</g>, як написано в оголошенні?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также посмотрим на вид и проверим, действительно ли комнаты такие <g>сверхсветлые</g>, как написано в объявлении?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie hoch die Nachfrage für so eine Wohnung wirklich ist.<br><r>Eine Idee wäre, dass wir</r> uns vorstellen, ob die Küche wirklich <g>superhell</g> ist, oder ob das nur ein Werbetrick ist.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how high the demand for a flat like this really is.<br><r>One idea would be that we</r> imagine whether the kitchen is really <g>super bright</g>, or whether that's just an advertising trick.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> наскільки насправді високий попит на таку квартиру.<br><r>Була б ідея, щоб ми</r> уявили, чи справді кухня <g>надзвичайно світла</g>, чи це просто рекламний трюк.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> насколько на самом деле высок спрос на такую квартиру.<br><r>Была бы идея, чтобы мы</r> представили, действительно ли кухня <g>сверхсветлая</g>, или это просто рекламный трюк.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob der Preis am Ende wirklich so günstig bleibt.<br><r>Vielleicht wäre es am besten, wenn wir</r> auch die Ausstattung prüfen, denn in der Anzeige heißt es, die Küche sei <g>hochmodern</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether the price will really stay that cheap in the end.<br><r>Maybe it would be best if we</r> also check the fittings, because the listing says the kitchen is <g>ultra-modern</g>.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи справді ціна залишиться такою вигідною врешті-решт.<br><r>Можливо, було б найкраще, якби ми</r> також перевірили оснащення, адже в оголошенні написано, що кухня <g>надсучасна</g>.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, действительно ли цена останется такой выгодной в итоге.<br><r>Может быть, было бы лучше, если бы мы</r> также проверили оснащение, ведь в объявлении написано, что кухня <g>сверхсовременная</g>.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch aufpassen, dass die Wohnung am Ende nicht <g>überteuert</g> ist, nur weil die Nachfrage so hoch ist.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also make sure the flat isn't <g>overpriced</g> in the end, just because the demand is so high.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також стежитимемо, щоб квартира зрештою не виявилася <g>надто дорогою</g> лише через високий попит.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также проследим, чтобы квартира в итоге не оказалась <g>слишком дорогой</g> только из-за высокого спроса.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> uns am Ende noch selbst überzeugen, ob das Viertel wirklich so <g>extraruhig</g> ist, wie in der Anzeige beschrieben.<br><r>Bist du damit einverstanden</r>, Alex?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> also convince ourselves at the end whether the neighbourhood is really as <g>extra quiet</g> as described in the listing.<br><r>Are you okay with that</r>, Alex?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> наприкінці самі переконаємося, чи справді квартал такий <g>надзвичайно тихий</g>, як описано в оголошенні.<br><r>Ти з цим згоден</r>, Алексе?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> в конце сами убедимся, действительно ли квартал такой <g>сверхтихий</g>, как описано в объявлении.<br><r>Ты с этим согласен</r>, Алекс?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir prüfen, ob die Wohnung wirklich superbezahlbar, hochisoliert, überruhig und extrahell ist, checken die hochmoderne Ausstattung, achten darauf, dass sie nicht überteuert ist, und überzeugen uns selbst, ob das Viertel extraruhig ist. Dann können wir uns endlich vorstellen, wie unser neues Zuhause wirklich aussieht! Danke für die Idee, Mark!",
+      "en": "Yes, of course! So, we check whether the flat is really super affordable, highly insulated, extremely quiet and extra bright, check the ultra-modern fittings, make sure it isn't overpriced, and convince ourselves whether the neighbourhood is extra quiet too. Then we can finally imagine what our new home really looks like! Thanks for the idea, Mark!",
+      "uk": "Так, звісно! Отже, ми перевіряємо, чи справді квартира надзвичайно доступна за ціною, добре ізольована, дуже тиха та світла, перевіряємо надсучасне оснащення, стежимо, щоб вона не була надто дорогою, і самі переконуємося, чи квартал справді дуже тихий. Тоді ми нарешті зможемо уявити, як насправді виглядатиме наш новий дім! Дякую за ідею, Марку!",
+      "ru": "Да, конечно! Итак, мы проверяем, действительно ли квартира сверхдоступная по цене, хорошо изолирована, очень тихая и светлая, проверяем сверхсовременное оснащение, следим, чтобы она не была слишком дорогой, и сами убеждаемся, действительно ли квартал очень тихий. Тогда мы наконец сможем представить, как на самом деле будет выглядеть наш новый дом! Спасибо за идею, Марк!"
+    },
+    "gram": "adjektive_super_hoch_ueber_extra"
+  },
+  {
+    "id": "dlg_143",
+    "cat": "Formelles Telefongespräch wegen Wohnung vorbereiten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: David und Nina möchten wegen einer Wohnung bei der Hausverwaltung anrufen.\nAufgabe: Bereiten Sie zusammen mit Ihrem Gesprächspartner das formelle Telefongespräch vor.\nDiese Punkte helfen Ihnen:\nWie melden Sie sich höflich am Telefon?\nWonach fragen Sie zur Wohnung (Wohnfläche, Lage, Nachbarschaft)?\nWas machen Sie, wenn Sie falsch verbunden sind?\nWas sagen Sie, wenn niemand rangeht?\nWie verabschieden Sie sich höflich?",
+      "en": "Situation: David and Nina want to call the property management about a flat.\nTask: Prepare the formal phone call together with your conversation partner.\nThese points will help you:\nHow do you politely answer/identify yourself on the phone?\nWhat do you ask about the flat (living space, location, neighbourhood)?\nWhat do you do if you're connected to the wrong person?\nWhat do you say if no one picks up?\nHow do you politely say goodbye?",
+      "uk": "Ситуація: Девід і Ніна хочуть зателефонувати в управління будинком щодо квартири.\nЗавдання: Підготуйте разом зі своїм співрозмовником офіційну телефонну розмову.\nЦі пункти Вам допоможуть:\nЯк Ви ввічливо називаєте себе телефоном?\nПро що Ви запитаєте щодо квартири (житлова площа, розташування, сусідство)?\nЩо Ви робите, якщо вас з'єднали не з тією людиною?\nЩо Ви скажете, якщо ніхто не відповідає?\nЯк Ви ввічливо прощаєтеся?",
+      "ru": "Ситуация: Дэвид и Нина хотят позвонить в управление домом насчёт квартиры.\nЗадание: Подготовьте вместе со своим собеседником официальный телефонный разговор.\nЭти пункты Вам помогут:\nКак Вы вежливо представляетесь по телефону?\nО чём Вы спросите насчёт квартиры (жилая площадь, расположение, соседство)?\nЧто Вы делаете, если Вас соединили не с тем человеком?\nЧто Вы скажете, если никто не отвечает?\nКак Вы вежливо прощаетесь?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Hallo, Nina! Wir sollten mal bei der Hausverwaltung wegen der Wohnung anrufen. Wollen wir zusammen überlegen, was wir sagen?",
+      "en": "Hi, Nina! We should call the property management about the flat. Shall we think together about what to say?",
+      "uk": "Привіт, Ніно! Нам варто зателефонувати в управління будинком щодо квартири. Може, разом обміркуємо, що казати?",
+      "ru": "Привет, Нина! Нам стоит позвонить в управление домом насчёт квартиры. Может, вместе обдумаем, что говорить?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wenn jemand rangeht, sollten wir uns zuerst höflich melden und unseren Namen nennen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> If someone picks up, we should first politely identify ourselves and give our names.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Якщо хтось відповість, нам варто спершу ввічливо представитися і назвати свої імена.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Если кто-то ответит, нам стоит сначала вежливо представиться и назвать свои имена.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Durchwahl <r>bedenken</r>.<br><r>Wir könnten doch</r> gleich nach der richtigen Durchwahl für die Vermietung fragen, falls wir falsch verbunden sind.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the extension number.<br><r>We could</r> ask right away for the correct extension for the rental department, in case we're connected to the wrong person.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> внутрішній номер.<br><r>Ми могли б</r> одразу запитати правильний внутрішній номер відділу оренди, якщо нас з'єднають не з тією людиною.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> внутреннем номере.<br><r>Мы могли бы</r> сразу спросить правильный внутренний номер отдела аренды, если нас соединят не с тем человеком.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> höflich fragen, ob man uns weiterverbinden kann, falls die falsche Person rangeht.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> politely ask whether they can transfer us, in case the wrong person picks up.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> ввічливо запитали, чи можуть нас з'єднати з потрібною людиною, якщо відповість не той, хто треба.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> вежливо спросили, могут ли нас соединить с нужным человеком, если ответит не тот, кто нужен.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> auch nach der genauen Wohnfläche fragen, damit wir wissen, ob die Wohnung wirklich so groß ist?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also ask about the exact living space, so we know whether the flat is really that big?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також запитаємо про точну житлову площу, щоб знати, чи справді квартира така велика?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также спросим о точной жилой площади, чтобы знать, действительно ли квартира такая большая?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob wir auch nach der Nachbarschaftshilfe fragen sollen.<br><r>Eine Idee wäre, dass wir</r> auch fragen, ob es im Haus eine Nachbarschaftshilfe gibt, das wäre für uns wichtig.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> whether we should also ask about neighbourhood help.<br><r>One idea would be that we</r> also ask whether there's neighbourhood help in the building, that would matter to us.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи варто нам також запитати про сусідську взаємодопомогу.<br><r>Була б ідея, щоб ми</r> також запитали, чи є в будинку сусідська взаємодопомога, це було б для нас важливо.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> стоит ли нам также спросить о соседской взаимопомощи.<br><r>Была бы идея, чтобы мы</r> также спросили, есть ли в доме соседская взаимопомощь, это было бы для нас важно.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob die Gegend wirklich so kinderfreundlich ist, wie in der Anzeige steht.<br><r>Vielleicht wäre es am besten, wenn wir</r> auch fragen, ob das Viertel wirklich kinderfreundlich und lebendig ist.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether the area is really as child-friendly as the listing says.<br><r>Maybe it would be best if we</r> also ask whether the neighbourhood is really child-friendly and lively.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи справді ця місцевість настільки дружня до дітей, як написано в оголошенні.<br><r>Можливо, було б найкраще, якби ми</r> також запитали, чи справді квартал дружній до дітей і жвавий.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, действительно ли этот район такой дружелюбный к детям, как написано в объявлении.<br><r>Может быть, было бы лучше, если бы мы</r> также спросили, действительно ли квартал дружелюбный к детям и оживлённый.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch fragen, wie weit es bis zur Innenstadt ist, das ist für uns beide wichtig.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also ask how far it is to the city centre, that matters to both of us.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також запитаємо, як далеко до центру міста, це важливо для нас обох.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также спросим, как далеко до центра города, это важно для нас обоих.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r>, falls niemand rangeht, eine kurze Nachricht auf dem Anrufbeantworter hinterlassen und uns höflich verabschieden.<br><r>Bist du damit einverstanden</r>, Nina?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> leave a short message on the answering machine if no one picks up, and say goodbye politely.<br><r>Are you okay with that</r>, Nina?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r>, якщо ніхто не відповість, залишили коротке повідомлення на автовідповідачі й ввічливо попрощалися.<br><r>Ти з цим згодна</r>, Ніно?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r>, если никто не ответит, оставили короткое сообщение на автоответчике и вежливо попрощались.<br><r>Ты с этим согласна</r>, Нина?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir melden uns höflich, fragen nach der Durchwahl, lassen uns notfalls weiterverbinden, fragen nach der Wohnfläche, der Nachbarschaftshilfe, ob das Viertel kinderfreundlich und lebendig ist, und wie weit es bis zur Innenstadt ist. Falls niemand rangeht, sprechen wir auf den Anrufbeantworter und verabschieden uns freundlich. Ich freue mich schon auf das Gespräch! Danke für die Idee, David!",
+      "en": "Yes, of course! So, we politely identify ourselves, ask for the extension, get transferred if needed, ask about the living space, the neighbourhood help, whether the area is child-friendly and lively, and how far it is to the city centre. If no one picks up, we leave a message on the answering machine and say a friendly goodbye. I'm already looking forward to the call! Thanks for the idea, David!",
+      "uk": "Так, звісно! Отже, ми ввічливо представляємося, запитуємо внутрішній номер, за потреби просимо з'єднати нас із потрібною людиною, запитуємо про житлову площу, сусідську взаємодопомогу, чи дружній квартал до дітей і жвавий, і як далеко до центру міста. Якщо ніхто не відповість, залишаємо повідомлення на автовідповідачі й дружньо прощаємося. Я вже тішуся розмові! Дякую за ідею, Девіде!",
+      "ru": "Да, конечно! Итак, мы вежливо представляемся, спрашиваем внутренний номер, при необходимости просим соединить нас с нужным человеком, спрашиваем о жилой площади, соседской взаимопомощи, дружелюбен ли квартал к детям и оживлён ли он, и как далеко до центра города. Если никто не ответит, оставляем сообщение на автоответчике и дружелюбно прощаемся. Я уже жду разговора! Спасибо за идею, Дэвид!"
+    },
+    "gram": ""
   }
 ];
 

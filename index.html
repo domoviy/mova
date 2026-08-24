@@ -3548,7 +3548,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '541-290ebb3';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6460,13 +6460,96 @@ function clearWordHighlight(el){
   el.querySelectorAll('.tts-word.active').forEach(function(s){ s.classList.remove('active'); });
 }
 
+// ── Вирівнювання words.json ⇄ DOM-спанів (karaoke) ────────────────
+// РАНІШЕ підсвітка покладалась на СУВОРУ позиційну відповідність:
+// words[i] ⇔ spans[i], та сама і-та позиція в обох масивах. Це working,
+// доки кількість токенів у ДВОХ незалежних токенізаціях (WORD_RE тут
+// у браузері й реальний потік WordBoundary-подій Edge TTS на боці
+// генератора) завжди рівно збігається. Дефісні слова ("Buddy-Person")
+// уже були виправлені (WORD_RE вище тепер теж тримає дефіс одним
+// токеном) — але лишився ІНШИЙ, ширший клас розбіжності: Edge TTS
+// час від часу об'єднує ЧИСЛО+ОДИНИЦЮ ("75 км" → одна WordBoundary-
+// подія замість двох), тоді як браузерний токенізатор (і сама server-
+// side _looks_truncated(), яка це свідомо ТОЛЕРУЄ як "той самий
+// зміст, інша сегментація" — див. коментар у gen_audio.py) бачить це
+// як два окремих слова. Один "зайвий" DOM-спан без пари в words.json
+// зсуває ВСІ наступні індекси на 1 — рівно та сама природа бага, що й
+// дефіс, лише для чисел/одиниць замість дефісних слів.
+//
+// Замість чергового спеціального регексп-випадку (крихко — наступний
+// клас розбіжності знову зламає підсвітку) тут — ЗАГАЛЬНЕ рішення:
+// вирівнюємо ДВІ послідовності по ТЕКСТУ (як difflib на сервері),
+// толеруючи як злиття (кілька DOM-спанів = один запис таймінгу), так
+// і розбиття (один DOM-спан = кілька записів таймінгу) в БУДЬ-якому
+// місці фрази, а не лише на числах. Повертає масив довжиною
+// words.length, де groups[i] — масив DOM-спанів, які треба підсвітити
+// РАЗОМ, поки звучить words[i].
+function _normWordForAlign(s){
+  return (s||'').toLowerCase().replace(/[^\p{L}\p{N}'-]/gu,'').replace(/^[-']+|[-']+$/g,'');
+}
+
+function _alignWordsToSpans(words, spans){
+  var spanTexts = spans.map(function(s){ return _normWordForAlign(s.textContent); });
+  var wordTexts = words.map(function(w){ return _normWordForAlign(w.word||''); });
+  var groups = new Array(words.length);
+  var si = 0, wi = 0;
+  var LOOKAHEAD = 4; // достатньо для "75"+"км", де-факто завжди 2
+
+  while(wi < words.length && si < spans.length){
+    if(spanTexts[si] === wordTexts[wi]){
+      groups[wi] = [si];
+      si++; wi++;
+      continue;
+    }
+    // Злиття: spans[si..si+k] разом складають wordTexts[wi]
+    // ("75"+"км" → "75км" == нормалізований "75 km" з таймінгу).
+    var merged = spanTexts[si], mergedSpans = [si], found = false;
+    for(var k=1; k<=LOOKAHEAD && si+k<spans.length; k++){
+      merged += spanTexts[si+k];
+      mergedSpans.push(si+k);
+      if(merged === wordTexts[wi]){ found = true; si += k; break; }
+      if(merged.length > wordTexts[wi].length) break; // вже не зійдеться — не подовжуємо дарма
+    }
+    if(found){
+      groups[wi] = mergedSpans;
+      si++; wi++;
+      continue;
+    }
+    // Розбиття: words[wi..wi+k] разом складають spanTexts[si]
+    // (дзеркальний, рідший випадок).
+    var mergedW = wordTexts[wi], mergedWIdx = [wi], foundW = false;
+    for(var k2=1; k2<=LOOKAHEAD && wi+k2<words.length; k2++){
+      mergedW += wordTexts[wi+k2];
+      mergedWIdx.push(wi+k2);
+      if(mergedW === spanTexts[si]){ foundW = true; wi += k2; break; }
+      if(mergedW.length > spanTexts[si].length) break;
+    }
+    if(foundW){
+      mergedWIdx.forEach(function(idx){ groups[idx] = [si]; });
+      si++; wi++;
+      continue;
+    }
+    // Жодного варіанту не зійшлося (несподіваний випадок) — best-effort
+    // позиційна пара, аби один нерозпізнаний збіг не зламав РЕШТУ
+    // підсвітки до кінця фрази.
+    groups[wi] = [si];
+    si++; wi++;
+  }
+  return groups;
+}
+
 // rAF-цикл підсвітки — один активний за раз (gen — той самий playGen,
 // що й у speak()/playPregenAudio(), щоб стара підсвітка не продовжувала
 // малювати кадри поверх уже іншої картки).
 var _ttsHighlightRAF = null;
-function _runWordHighlight(audioEl, spans, words, gen){
+function _runWordHighlight(audioEl, spanGroups, words, gen){
   if(_ttsHighlightRAF) cancelAnimationFrame(_ttsHighlightRAF);
   var lastIdx = -1;
+  function setActive(idx, on){
+    var group = idx>=0 ? spanGroups[idx] : null;
+    if(!group) return;
+    group.forEach(function(si){ if(spanGroups._spans[si]) spanGroups._spans[si].classList.toggle('active', on); });
+  }
   function tick(){
     if(playGen !== gen || audioEl.paused || audioEl.ended){
       _ttsHighlightRAF = null;
@@ -6481,8 +6564,8 @@ function _runWordHighlight(audioEl, spans, words, gen){
       if(t < words[i].start) break;
     }
     if(idx !== lastIdx){
-      if(lastIdx>=0 && spans[lastIdx]) spans[lastIdx].classList.remove('active');
-      if(idx>=0 && spans[idx]) spans[idx].classList.add('active');
+      setActive(lastIdx, false);
+      setActive(idx, true);
       lastIdx = idx;
     }
     _ttsHighlightRAF = requestAnimationFrame(tick);
@@ -6517,6 +6600,14 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
   // паралельно з blobUrl). Якщо .words.json відсутній (старе аудіо, ще
   // не backfilled, чи 404) — wordTiming===null, підсвітки просто не буде.
   const highlightSpans = (highlightEl && wordTiming) ? wrapWordsForHighlight(highlightEl) : null;
+  // Вирівнюємо ОДИН РАЗ тут (не на кожен кадр rAF у _runWordHighlight) —
+  // толерантно до злиття/розбиття токенів між words.json і DOM (напр.
+  // "75 km" як одна WordBoundary-подія) замість крихкої позиційної
+  // відповідності words[i]⇔spans[i]. Див. _alignWordsToSpans вище.
+  const highlightGroups = (highlightSpans && highlightSpans.length && wordTiming)
+    ? _alignWordsToSpans(wordTiming, highlightSpans)
+    : null;
+  if(highlightGroups) highlightGroups._spans = highlightSpans;
 
   let _done = false;
   const finish = (src)=>{
@@ -6577,7 +6668,7 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
   if(playP){
     playP.then(()=>{
       logErr('audio:playing','▶',fname);
-      if(highlightSpans && highlightSpans.length) _runWordHighlight(a, highlightSpans, wordTiming, gen);
+      if(highlightGroups) _runWordHighlight(a, highlightGroups, wordTiming, gen);
     })
          .catch(e=>{
            logErr('audio:play()',e.message,fname);
@@ -6587,7 +6678,7 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
            fallback.onerror = ()=>finish('fb-err');
            currentAudio = fallback;
            fallback.play().then(()=>{
-             if(highlightSpans && highlightSpans.length) _runWordHighlight(fallback, highlightSpans, wordTiming, gen);
+             if(highlightGroups) _runWordHighlight(fallback, highlightGroups, wordTiming, gen);
            }).catch(e2=>{
              logErr('audio:fb-play',e2.message,fname);
              finish('fb-play-err');
