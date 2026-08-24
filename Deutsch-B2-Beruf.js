@@ -2783,6 +2783,10 @@ var LESSONS = [
     "frmCards": [
       "forum_027"
     ],
+    "emlCards": [
+      "email_010",
+      "email_012"
+    ],
     "cardIds": [
       "mbr_091",
       "mbr_092",
@@ -2871,7 +2875,8 @@ var LESSONS = [
       "forum_028"
     ],
     "emlCards": [
-      "email_009"
+      "email_009",
+      "email_011"
     ],
     "cardIds": [
       "kor_076",
@@ -17619,6 +17624,375 @@ var EMAILS = [
         "en": "David Berger\nCustomer Service",
         "uk": "Давид Бергер\nСлужба підтримки клієнтів",
         "ru": "Давид Бергер\nСлужба поддержки клиентов"
+      }
+    ]
+  },
+  {
+    "id": "email_010",
+    "cat": "E-Mail",
+    "topic": {
+      "de": "Rechnung weicht vom schriftlichen Angebot ab",
+      "en": "Invoice deviates from the written offer",
+      "uk": "Рахунок відрізняється від письмової пропозиції",
+      "ru": "Счёт отличается от письменного предложения"
+    },
+    "reklamationsart": "fehlende_falsche_rechnung",
+    "loesungsart": "geldrueckgabe",
+    "gram": "nominalisierung",
+    "name": "de_m_mark",
+    "mail_boss": {
+      "von": "Julia Vogt, Vertriebsleiterin",
+      "betreff": {
+        "de": "Reklamation Rechnung vs. Angebot – bitte kümmern",
+        "en": "Complaint: invoice vs. offer – please take care of it",
+        "uk": "Скарга: рахунок проти пропозиції – прошу зайнятися",
+        "ru": "Претензия: счёт против предложения – прошу заняться"
+      },
+      "de": "Hallo Mark, könnten Sie sich bitte um die angehängte Reklamation von Herrn Feldmann kümmern? Ihm wurde offenbar ein höherer Betrag berechnet, als im ursprünglichen Angebot AN-2026-114 vereinbart war. Vermutlich ist bei der Übergabe des Angebots an die Buchhaltung etwas schiefgelaufen. Bitte entschuldigen Sie sich, klären Sie die Ursache und erstatten Sie ihm die Differenz. Danke und Grüße, Julia Vogt, Vertriebsleiterin",
+      "en": "Hi Mark, could you please take care of the attached complaint from Mr Feldmann? He was apparently charged a higher amount than agreed in the original offer AN-2026-114. Something probably went wrong when the offer was passed on to accounting. Please apologise, clarify the cause, and refund him the difference. Thanks and regards, Julia Vogt, Sales Director",
+      "uk": "Привіт, Марку, чи не могли б Ви розібратися з доданою скаргою пана Фельдманна? Йому, схоже, виставили рахунок на більшу суму, ніж було узгоджено в первісній пропозиції AN-2026-114. Ймовірно, щось пішло не так під час передачі пропозиції в бухгалтерію. Будь ласка, перепросіть, з'ясуйте причину і поверніть йому різницю. Дякую і вітання, Юлія Фогт, керівниця відділу продажів",
+      "ru": "Привет, Марк, не мог бы ты заняться приложенной жалобой господина Фельдманна? Ему, похоже, выставили счёт на большую сумму, чем было согласовано в первоначальном предложении AN-2026-114. Вероятно, что-то пошло не так при передаче предложения в бухгалтерию. Пожалуйста, извинись, выясни причину и верни ему разницу. Спасибо и привет, Юлия Фогт, руководитель отдела продаж"
+    },
+    "mail_client": {
+      "von": "Markus Feldmann, Geschäftsführer, Feldmann Elektrotechnik GmbH",
+      "betreff": {
+        "de": "Reklamation: Rechnung weicht von Angebot AN-2026-114 ab",
+        "en": "Complaint: Invoice deviates from offer AN-2026-114",
+        "uk": "Скарга: рахунок відрізняється від пропозиції AN-2026-114",
+        "ru": "Жалоба: счёт отличается от предложения AN-2026-114"
+      },
+      "de": "Sehr geehrte Damen und Herren, am 12. Mai hatten wir von Ihnen das schriftliche Angebot AN-2026-114 für einen jährlichen IT-Wartungsvertrag zu einem Festpreis von 3.200 Euro erhalten, das wir daraufhin angenommen haben. Die nun erhaltene Rechnung weist jedoch einen Betrag von 3.850 Euro aus, mit einer zusätzlichen Position „Fernwartung außerhalb der Geschäftszeiten“, die im ursprünglichen Angebot nicht enthalten war. Ich gehe davon aus, dass ein schriftliches Angebot verbindlich ist und der vereinbarte Festpreis eingehalten wird. Ich bitte Sie daher um Erstattung der Differenz von 650 Euro sowie um eine korrigierte Rechnung. Mit freundlichen Grüßen, Markus Feldmann, Geschäftsführer, Feldmann Elektrotechnik GmbH",
+      "en": "Dear Sir or Madam, on 12 May we received your written offer AN-2026-114 for an annual IT maintenance contract at a fixed price of €3,200, which we subsequently accepted. However, the invoice we have now received shows an amount of €3,850, with an additional item 'remote support outside business hours' that was not included in the original offer. I assume that a written offer is binding and that the agreed fixed price will be honoured. I therefore ask you to refund the difference of €650 and to provide a corrected invoice. Best regards, Markus Feldmann, Managing Director, Feldmann Elektrotechnik GmbH",
+      "uk": "Шановні пані та панове, 12 травня ми отримали від Вас письмову пропозицію AN-2026-114 на річний договір ІТ-обслуговування за фіксованою ціною 3200 євро, яку ми відповідно прийняли. Однак отриманий тепер рахунок показує суму 3850 євро з додатковою позицією «віддалене обслуговування поза робочим часом», якої не було в первісній пропозиції. Виходжу з того, що письмова пропозиція є обов'язковою і узгоджена фіксована ціна має дотримуватися. Тому прошу Вас повернути різницю в 650 євро та надати виправлений рахунок. З повагою, Маркус Фельдманн, керівник компанії, Feldmann Elektrotechnik GmbH",
+      "ru": "Уважаемые дамы и господа, 12 мая мы получили от Вас письменное предложение AN-2026-114 на годовой договор ИТ-обслуживания по фиксированной цене 3200 евро, которое мы соответственно приняли. Однако полученный теперь счёт показывает сумму 3850 евро с дополнительной позицией «удалённое обслуживание вне рабочего времени», которой не было в первоначальном предложении. Исхожу из того, что письменное предложение является обязательным и согласованная фиксированная цена должна соблюдаться. Поэтому прошу Вас вернуть разницу в 650 евро и предоставить исправленный счёт. С уважением, Маркус Фельдманн, руководитель компании, Feldmann Elektrotechnik GmbH"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": {
+          "de": "Herr Feldmann reklamiert, weil …",
+          "en": "Mr Feldmann is complaining because …",
+          "uk": "Пан Фельдманн подає рекламацію, тому що …",
+          "ru": "Господин Фельдманн подаёт претензию, потому что …"
+        },
+        "options": [
+          { "id": "a", "de": "der Wartungsvertrag nicht erfüllt wurde.", "en": "the maintenance contract was not fulfilled.", "uk": "договір обслуговування не було виконано.", "ru": "договор обслуживания не был выполнен." },
+          { "id": "b", "de": "die Rechnung höher ausfällt als im schriftlichen Angebot vereinbart.", "en": "the invoice is higher than what was agreed in the written offer.", "uk": "рахунок вищий, ніж було узгоджено в письмовій пропозиції.", "ru": "счёт выше, чем было согласовано в письменном предложении." },
+          { "id": "c", "de": "die Rechnung ihm nicht rechtzeitig zugestellt wurde.", "en": "the invoice was not delivered to him on time.", "uk": "рахунок не було вчасно надіслано йому.", "ru": "счёт не был вовремя ему доставлен." }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": "q2",
+        "prompt": {
+          "de": "Herr Feldmann …",
+          "en": "Mr Feldmann …",
+          "uk": "Пан Фельдманн …",
+          "ru": "Господин Фельдманн …"
+        },
+        "options": [
+          { "id": "a", "de": "fordert die Rückerstattung der Preisdifferenz gemäß dem Angebot.", "en": "demands a refund of the price difference according to the offer.", "uk": "вимагає повернення різниці в ціні відповідно до пропозиції.", "ru": "требует возврата разницы в цене согласно предложению." },
+          { "id": "b", "de": "möchte den Wartungsvertrag kündigen.", "en": "wants to cancel the maintenance contract.", "uk": "хоче розірвати договір обслуговування.", "ru": "хочет расторгнуть договор обслуживания." },
+          { "id": "c", "de": "verlangt ein neues, günstigeres Angebot.", "en": "demands a new, cheaper offer.", "uk": "вимагає нової, дешевшої пропозиції.", "ru": "требует нового, более дешёвого предложения." }
+        ],
+        "correct": "a"
+      }
+    ],
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Sehr geehrter Herr Feldmann,",
+        "en": "Dear Mr Feldmann,",
+        "uk": "Шановний пане Фельдманне,",
+        "ru": "Уважаемый господин Фельдманн,"
+      },
+      {
+        "role": "bezugnahme",
+        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die Abweichung zwischen unserem Angebot und der erhaltenen Rechnung hingewiesen haben.",
+        "en": "thank you very much for your email, in which you pointed out the discrepancy between our offer and the invoice you received.",
+        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на розбіжність між нашою пропозицією та отриманим рахунком.",
+        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на расхождение между нашим предложением и полученным счётом."
+      },
+      {
+        "role": "entschuldigung",
+        "de": "<r>Es tut uns sehr leid, dass</r> Ihnen ein höherer Betrag als im Angebot AN-2026-114 vereinbart in Rechnung gestellt wurde.",
+        "en": "We are very sorry that you were invoiced a higher amount than agreed in offer AN-2026-114.",
+        "uk": "Нам дуже прикро, що Вам виставили рахунок на суму, вищу за узгоджену в пропозиції AN-2026-114.",
+        "ru": "Нам очень жаль, что Вам выставили счёт на сумму, превышающую согласованную в предложении AN-2026-114."
+      },
+      {
+        "role": "grund",
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es bei <g>der Übermittlung</g> des Angebots an unsere Buchhaltung zu einem Missverständnis kam. Durch <g>die fehlerhafte Zuordnung</g> einer zusätzlichen Leistungsposition wurde der Rechnungsbetrag falsch berechnet.",
+        "en": "We have since found out that a misunderstanding occurred when the offer was passed on to our accounting department. Due to the incorrect assignment of an additional service item, the invoice amount was calculated incorrectly.",
+        "uk": "Ми вже з'ясували, що під час передачі пропозиції до нашої бухгалтерії виникло непорозуміння. Через неправильне віднесення додаткової позиції послуги сума рахунку була розрахована неправильно.",
+        "ru": "Мы уже выяснили, что при передаче предложения в нашу бухгалтерию возникло недоразумение. Из-за неправильного отнесения дополнительной позиции услуги сумма счёта была рассчитана неверно."
+      },
+      {
+        "role": "loesung",
+        "de": "<r>Als Entschädigung erstatten wir Ihnen</r> die Differenz von 650 Euro zwischen Angebot und Rechnung vollständig zurück. Selbstverständlich gilt für Sie weiterhin ausschließlich der im Angebot vereinbarte Festpreis von 3.200 Euro pro Jahr.",
+        "en": "As compensation, we will fully refund you the difference of €650 between the offer and the invoice. Of course, only the fixed price of €3,200 per year agreed in the offer continues to apply to you.",
+        "uk": "Як компенсацію ми повністю повернемо Вам різницю в 650 євро між пропозицією та рахунком. Звісно, для Вас надалі діє виключно фіксована ціна в 3200 євро на рік, узгоджена в пропозиції.",
+        "ru": "В качестве компенсации мы полностью вернём Вам разницу в 650 евро между предложением и счётом. Разумеется, для Вас и далее действует исключительно фиксированная цена в 3200 евро в год, согласованная в предложении."
+      },
+      {
+        "role": "grussformel",
+        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.\n\nMit freundlichen Grüßen",
+        "en": "We hope that you agree with this solution and thank you for your understanding.\n\nBest regards,",
+        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.\n\nЗ повагою,",
+        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.\n\nС уважением,"
+      },
+      {
+        "role": "unterschrift",
+        "de": "Mark Fischer\nKundenservice",
+        "en": "Mark Fischer\nCustomer Service",
+        "uk": "Марк Фішер\nСлужба підтримки клієнтів",
+        "ru": "Марк Фишер\nСлужба поддержки клиентов"
+      }
+    ]
+  },
+  {
+    "id": "email_011",
+    "cat": "E-Mail",
+    "topic": {
+      "de": "Bestellung nur teilweise geliefert – Verzicht auf Restlieferung",
+      "en": "Order only partially delivered – waiving the remaining delivery",
+      "uk": "Замовлення доставлено лише частково – відмова від решти поставки",
+      "ru": "Заказ доставлен только частично – отказ от оставшейся поставки"
+    },
+    "reklamationsart": "fehlende_lieferung_verzoegerung",
+    "loesungsart": "verzicht_auf_die_ware",
+    "gram": "waehrend_genitiv_praeposition",
+    "name": "de_m_alex",
+    "mail_boss": {
+      "von": "Katrin Lorenz, Vertriebsleiterin",
+      "betreff": {
+        "de": "Reklamation unvollständige Bestellung – bitte kümmern",
+        "en": "Incomplete order complaint – please take care of it",
+        "uk": "Скарга щодо неповного замовлення – прошу зайнятися",
+        "ru": "Претензия по неполному заказу – прошу заняться"
+      },
+      "de": "Hallo Alex, könnten Sie sich bitte um die angehängte Reklamation von Frau Brandt kümmern? Die USB-Sticks aus ihrer schriftlichen Bestellung sind wegen eines Lieferengpasses bei unserem Zulieferer weiterhin nicht eingetroffen. Da die Konferenz der Kundin bereits stattgefunden hat, möchte sie auf diesen Teil der Bestellung verzichten. Bitte entschuldigen Sie sich, erklären Sie die Verzögerung und stornieren Sie die Position wie gewünscht. Danke und Grüße, Katrin Lorenz, Vertriebsleiterin",
+      "en": "Hi Alex, could you please take care of the attached complaint from Ms Brandt? The USB sticks from her written order still have not arrived due to a supply shortage at our supplier. Since the customer's conference has already taken place, she would like to waive this part of the order. Please apologise, explain the delay and cancel the item as requested. Thanks and regards, Katrin Lorenz, Sales Director",
+      "uk": "Привіт, Алексе, чи не могли б Ви розібратися з доданою скаргою пані Брандт? USB-накопичувачі з її письмового замовлення досі не прибули через дефіцит поставок у нашого постачальника. Оскільки конференція клієнтки вже відбулася, вона хоче відмовитися від цієї частини замовлення. Будь ласка, перепросіть, поясніть причину затримки і скасуйте позицію, як вона просить. Дякую і вітання, Катрін Лоренц, керівниця відділу продажів",
+      "ru": "Привет, Алекс, не мог бы ты заняться приложенной жалобой госпожи Брандт? USB-накопители из её письменного заказа до сих пор не прибыли из-за дефицита поставок у нашего поставщика. Поскольку конференция клиентки уже состоялась, она хочет отказаться от этой части заказа. Пожалуйста, извинись, объясни причину задержки и отмени позицию, как она просит. Спасибо и привет, Катрин Лоренц, руководитель отдела продаж"
+    },
+    "mail_client": {
+      "von": "Nadine Brandt, Assistentin der Geschäftsführung, Solaris Energie AG",
+      "betreff": {
+        "de": "Reklamation: USB-Sticks aus Bestellung weiterhin ausstehend",
+        "en": "Complaint: USB sticks from order still outstanding",
+        "uk": "Скарга: USB-накопичувачі із замовлення досі не доставлені",
+        "ru": "Жалоба: USB-накопители из заказа до сих пор не доставлены"
+      },
+      "de": "Sehr geehrte Damen und Herren, in unserer schriftlichen Bestellung vom 2. Mai hatten wir 500 Notizblöcke und 200 USB-Sticks mit unserem Firmenlogo bestellt, beide Positionen sollten spätestens eine Woche vor unserer Jahreskonferenz am 20. Mai geliefert werden. Bei uns sind bislang lediglich die Notizblöcke eingetroffen. Die USB-Sticks fehlen weiterhin. Da unsere Konferenz inzwischen bereits stattgefunden hat, benötigen wir die USB-Sticks nicht mehr. Ich bitte Sie daher, die Position der USB-Sticks aus unserer Bestellung zu streichen und uns lediglich die tatsächlich gelieferten Notizblöcke in Rechnung zu stellen. Mit freundlichen Grüßen, Nadine Brandt, Assistentin der Geschäftsführung, Solaris Energie AG",
+      "en": "Dear Sir or Madam, in our written order of 2 May, we ordered 500 notepads and 200 USB sticks with our company logo, both items were to be delivered at the latest one week before our annual conference on 20 May. So far, only the notepads have arrived. The USB sticks are still missing. Since our conference has already taken place in the meantime, we no longer need the USB sticks. I therefore ask you to remove the USB stick item from our order and to invoice us only for the notepads actually delivered. Best regards, Nadine Brandt, Assistant to the Management, Solaris Energie AG",
+      "uk": "Шановні пані та панове, у нашому письмовому замовленні від 2 травня ми замовили 500 блокнотів і 200 USB-накопичувачів з логотипом нашої компанії, обидві позиції мали бути доставлені щонайпізніше за тиждень до нашої щорічної конференції 20 травня. Наразі до нас надійшли лише блокноти. USB-накопичувачі й досі відсутні. Оскільки наша конференція вже відбулася, USB-накопичувачі нам більше не потрібні. Тому прошу Вас видалити позицію USB-накопичувачів з нашого замовлення та виставити рахунок лише за фактично доставлені блокноти. З повагою, Надін Брандт, асистентка керівництва, Solaris Energie AG",
+      "ru": "Уважаемые дамы и господа, в нашем письменном заказе от 2 мая мы заказали 500 блокнотов и 200 USB-накопителей с логотипом нашей компании, обе позиции должны были быть доставлены самое позднее за неделю до нашей ежегодной конференции 20 мая. На данный момент к нам поступили только блокноты. USB-накопители по-прежнему отсутствуют. Поскольку наша конференция уже состоялась, USB-накопители нам больше не нужны. Поэтому прошу Вас удалить позицию USB-накопителей из нашего заказа и выставить счёт только за фактически доставленные блокноты. С уважением, Надин Брандт, ассистент руководства, Solaris Energie AG"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": {
+          "de": "Frau Brandt reklamiert, weil …",
+          "en": "Ms Brandt is complaining because …",
+          "uk": "Пані Брандт подає рекламацію, тому що …",
+          "ru": "Госпожа Брандт подаёт претензию, потому что …"
+        },
+        "options": [
+          { "id": "a", "de": "die Notizblöcke fehlerhaft bedruckt waren.", "en": "the notepads were printed incorrectly.", "uk": "блокноти були надруковані з помилками.", "ru": "блокноты были напечатаны с ошибками." },
+          { "id": "b", "de": "ein Teil ihrer Bestellung bislang nicht geliefert wurde.", "en": "part of her order has not been delivered so far.", "uk": "частину її замовлення досі не доставлено.", "ru": "часть её заказа до сих пор не доставлена." },
+          { "id": "c", "de": "die gesamte Bestellung zu spät ankam.", "en": "the entire order arrived too late.", "uk": "все замовлення прибуло запізно.", "ru": "весь заказ прибыл с опозданием." }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": "q2",
+        "prompt": {
+          "de": "Frau Brandt …",
+          "en": "Ms Brandt …",
+          "uk": "Пані Брандт …",
+          "ru": "Госпожа Брандт …"
+        },
+        "options": [
+          { "id": "a", "de": "möchte die fehlenden USB-Sticks so schnell wie möglich erhalten.", "en": "wants to receive the missing USB sticks as soon as possible.", "uk": "хоче якнайшвидше отримати відсутні USB-накопичувачі.", "ru": "хочет как можно скорее получить недостающие USB-накопители." },
+          { "id": "b", "de": "verzichtet auf die noch ausstehende Lieferung der USB-Sticks.", "en": "waives the still outstanding delivery of the USB sticks.", "uk": "відмовляється від ще незавершеної поставки USB-накопичувачів.", "ru": "отказывается от ещё незавершённой поставки USB-накопителей." },
+          { "id": "c", "de": "fordert eine Entschädigung für die verspäteten Notizblöcke.", "en": "demands compensation for the delayed notepads.", "uk": "вимагає компенсації за запізнілі блокноти.", "ru": "требует компенсации за запоздавшие блокноты." }
+        ],
+        "correct": "b"
+      }
+    ],
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Sehr geehrte Frau Brandt,",
+        "en": "Dear Ms Brandt,",
+        "uk": "Шановна пані Брандт,",
+        "ru": "Уважаемая госпожа Брандт,"
+      },
+      {
+        "role": "bezugnahme",
+        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die noch ausstehende Lieferung der USB-Sticks hingewiesen haben.",
+        "en": "thank you very much for your email, in which you pointed out the still outstanding delivery of the USB sticks.",
+        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на ще незавершену поставку USB-накопичувачів.",
+        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на ещё незавершённую поставку USB-накопителей."
+      },
+      {
+        "role": "entschuldigung",
+        "de": "<r>Es tut uns sehr leid, dass</r> die USB-Sticks nicht rechtzeitig vor Ihrer Konferenz bei Ihnen eingetroffen sind.",
+        "en": "We are very sorry that the USB sticks did not arrive at your premises in time before your conference.",
+        "uk": "Нам дуже прикро, що USB-накопичувачі не прибули до Вас вчасно перед Вашою конференцією.",
+        "ru": "Нам очень жаль, что USB-накопители не прибыли к Вам вовремя перед Вашей конференцией."
+      },
+      {
+        "role": "grund",
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es <g>während der Vorbereitung</g> der Bestellung zu einem Lieferengpass bei unserem Zulieferer für USB-Sticks gekommen ist.",
+        "en": "We have since found out that a supply shortage with our USB stick supplier occurred during the preparation of the order.",
+        "uk": "Ми вже з'ясували, що під час підготовки замовлення виник дефіцит поставок у нашого постачальника USB-накопичувачів.",
+        "ru": "Мы уже выяснили, что во время подготовки заказа возник дефицит поставок у нашего поставщика USB-накопителей."
+      },
+      {
+        "role": "loesung",
+        "de": "<r>Wie von Ihnen gewünscht, streichen wir</r> die Position der USB-Sticks vollständig aus Ihrer Bestellung. Sie erhalten ausschließlich für die gelieferten Notizblöcke eine entsprechend reduzierte Rechnung. Zusätzlich möchten wir uns für die Unannehmlichkeiten entschuldigen und bieten Ihnen bei Ihrer nächsten Bestellung <g>während der Hauptsaison</g> eine bevorzugte Bearbeitung an.",
+        "en": "As requested, we will completely remove the USB stick item from your order. You will receive a correspondingly reduced invoice solely for the notepads delivered. In addition, we would like to apologise for the inconvenience and offer you priority processing for your next order during peak season.",
+        "uk": "Як Ви й просили, ми повністю видаляємо позицію USB-накопичувачів з Вашого замовлення. Ви отримаєте відповідно зменшений рахунок виключно за доставлені блокноти. Крім того, хочемо перепросити за незручності й пропонуємо Вам пріоритетну обробку наступного замовлення в період високого сезону.",
+        "ru": "Как Вы и просили, мы полностью удаляем позицию USB-накопителей из Вашего заказа. Вы получите соответственно уменьшенный счёт исключительно за доставленные блокноты. Кроме того, хотим извиниться за неудобства и предлагаем Вам приоритетную обработку следующего заказа в период высокого сезона."
+      },
+      {
+        "role": "grussformel",
+        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.\n\nMit freundlichen Grüßen",
+        "en": "We hope that you agree with this solution and thank you for your understanding.\n\nBest regards,",
+        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.\n\nЗ повагою,",
+        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.\n\nС уважением,"
+      },
+      {
+        "role": "unterschrift",
+        "de": "Alex Berg\nKundenservice",
+        "en": "Alex Berg\nCustomer Service",
+        "uk": "Алекс Берг\nСлужба підтримки клієнтів",
+        "ru": "Алекс Берг\nСлужба поддержки клиентов"
+      }
+    ]
+  },
+  {
+    "id": "email_012",
+    "cat": "E-Mail",
+    "topic": {
+      "de": "Garantiezeit im Angebot weicht vom Kaufvertrag ab",
+      "en": "Warranty period in the offer differs from the purchase contract",
+      "uk": "Гарантійний термін у пропозиції відрізняється від договору купівлі-продажу",
+      "ru": "Гарантийный срок в предложении отличается от договора купли-продажи"
+    },
+    "reklamationsart": "schlechter_service",
+    "loesungsart": "verlaengerung_der_garantie",
+    "gram": "relativsatz_wer",
+    "name": "de_w_anna",
+    "mail_boss": {
+      "von": "Peter Wagner, Vertriebsleiter",
+      "betreff": {
+        "de": "Reklamation Garantiezeit – bitte kümmern",
+        "en": "Warranty period complaint – please take care of it",
+        "uk": "Скарга щодо гарантійного терміну – прошу зайнятися",
+        "ru": "Претензия по гарантийному сроку – прошу заняться"
+      },
+      "de": "Hallo Anna, könnten Sie sich bitte um die angehängte Reklamation von Herrn Sterner kümmern? Im Kaufvertrag wurde offenbar die falsche Standardvorlage verwendet, sodass nur eine einjährige statt der im Angebot zugesagten dreijährigen Garantie aufgeführt ist. Bitte entschuldigen Sie sich und bestätigen Sie ihm schriftlich die ursprünglich zugesagte Garantiezeit. Danke und Grüße, Peter Wagner, Vertriebsleiter",
+      "en": "Hi Anna, could you please take care of the attached complaint from Mr Sterner? It seems the wrong standard template was used for the purchase contract, so only a one-year warranty is listed instead of the three-year warranty promised in the offer. Please apologise and confirm the originally promised warranty period to him in writing. Thanks and regards, Peter Wagner, Sales Director",
+      "uk": "Привіт, Анно, чи не могли б Ви розібратися з доданою скаргою пана Штернера? У договорі купівлі-продажу, схоже, використано неправильний стандартний шаблон, тому вказано лише однорічну гарантію замість трирічної, обіцяної в пропозиції. Будь ласка, перепросіть і письмово підтвердьте йому первісно обіцяний термін гарантії. Дякую і вітання, Петер Вагнер, керівник відділу продажів",
+      "ru": "Привет, Анна, не могла бы ты заняться приложенной жалобой господина Штернера? В договоре купли-продажи, похоже, использован неправильный стандартный шаблон, поэтому указана только годовая гарантия вместо трёхлетней, обещанной в предложении. Пожалуйста, извинись и письменно подтверди ему первоначально обещанный срок гарантии. Спасибо и привет, Петер Вагнер, руководитель отдела продаж"
+    },
+    "mail_client": {
+      "von": "Michael Sterner, Inhaber, Sterner Druck & Kopie GmbH",
+      "betreff": {
+        "de": "Reklamation: Garantiezeit im Kaufvertrag stimmt nicht mit Angebot überein",
+        "en": "Complaint: Warranty period in the contract does not match the offer",
+        "uk": "Скарга: гарантійний термін у договорі не відповідає пропозиції",
+        "ru": "Жалоба: гарантийный срок в договоре не соответствует предложению"
+      },
+      "de": "Sehr geehrte Damen und Herren, in Ihrem schriftlichen Angebot AN-2026-089 vom 15. April für den Großformatdrucker XL-900 war ausdrücklich eine dreijährige Herstellergarantie zugesagt. Im nun vorliegenden Kaufvertrag ist jedoch lediglich eine einjährige Garantie aufgeführt. Ich habe mich für dieses Modell insbesondere wegen der langen Garantiezeit entschieden, da der Drucker intensiv im Dreischichtbetrieb genutzt wird. Ich gehe davon aus, dass ein schriftliches Angebot verbindlich ist und bitte Sie daher um eine schriftliche Bestätigung der ursprünglich zugesagten dreijährigen Garantie. Mit freundlichen Grüßen, Michael Sterner, Inhaber, Sterner Druck & Kopie GmbH",
+      "en": "Dear Sir or Madam, in your written offer AN-2026-089 dated 15 April for the large-format printer XL-900, a three-year manufacturer's warranty was explicitly promised. However, the purchase contract now in front of me only lists a one-year warranty. I chose this model in particular because of the long warranty period, since the printer is used intensively in three-shift operation. I assume that a written offer is binding and therefore ask you for written confirmation of the originally promised three-year warranty. Best regards, Michael Sterner, Owner, Sterner Druck & Kopie GmbH",
+      "uk": "Шановні пані та панове, у Вашій письмовій пропозиції AN-2026-089 від 15 квітня на широкоформатний принтер XL-900 було чітко обіцяно трирічну гарантію виробника. Однак у наявному тепер договорі купівлі-продажу вказано лише однорічну гарантію. Я обрав саме цю модель зокрема через тривалий термін гарантії, оскільки принтер інтенсивно використовується в тризмінному режимі. Виходжу з того, що письмова пропозиція є обов'язковою, тому прошу Вас надати письмове підтвердження первісно обіцяної трирічної гарантії. З повагою, Міхаель Штернер, власник, Sterner Druck & Kopie GmbH",
+      "ru": "Уважаемые дамы и господа, в Вашем письменном предложении AN-2026-089 от 15 апреля на широкоформатный принтер XL-900 была чётко обещана трёхлетняя гарантия производителя. Однако в имеющемся теперь договоре купли-продажи указана только годовая гарантия. Я выбрал именно эту модель в том числе из-за длительного срока гарантии, поскольку принтер интенсивно используется в трёхсменном режиме. Исхожу из того, что письменное предложение является обязательным, поэтому прошу Вас предоставить письменное подтверждение первоначально обещанной трёхлетней гарантии. С уважением, Михаэль Штернер, владелец, Sterner Druck & Kopie GmbH"
+    },
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": {
+          "de": "Herr Sterner reklamiert, weil …",
+          "en": "Mr Sterner is complaining because …",
+          "uk": "Пан Штернер подає рекламацію, тому що …",
+          "ru": "Господин Штернер подаёт претензию, потому что …"
+        },
+        "options": [
+          { "id": "a", "de": "der Drucker technische Mängel aufweist.", "en": "the printer has technical defects.", "uk": "принтер має технічні дефекти.", "ru": "принтер имеет технические дефекты." },
+          { "id": "b", "de": "die im Angebot genannte Garantiezeit nicht im Kaufvertrag steht.", "en": "the warranty period stated in the offer is not in the purchase contract.", "uk": "гарантійний термін, зазначений у пропозиції, не вказаний у договорі купівлі-продажу.", "ru": "гарантийный срок, указанный в предложении, не указан в договоре купли-продажи." },
+          { "id": "c", "de": "der Liefertermin nicht eingehalten wurde.", "en": "the delivery date was not met.", "uk": "термін доставки не було дотримано.", "ru": "срок поставки не был соблюдён." }
+        ],
+        "correct": "b"
+      },
+      {
+        "id": "q2",
+        "prompt": {
+          "de": "Herr Sterner …",
+          "en": "Mr Sterner …",
+          "uk": "Пан Штернер …",
+          "ru": "Господин Штернер …"
+        },
+        "options": [
+          { "id": "a", "de": "möchte den Kauf rückgängig machen.", "en": "wants to cancel the purchase.", "uk": "хоче скасувати покупку.", "ru": "хочет отменить покупку." },
+          { "id": "b", "de": "besteht auf der im Angebot zugesagten dreijährigen Garantie.", "en": "insists on the three-year warranty promised in the offer.", "uk": "наполягає на трирічній гарантії, обіцяній у пропозиції.", "ru": "настаивает на трёхлетней гарантии, обещанной в предложении." },
+          { "id": "c", "de": "verlangt eine Rückerstattung des Kaufpreises.", "en": "demands a refund of the purchase price.", "uk": "вимагає повернення вартості покупки.", "ru": "требует возврата стоимости покупки." }
+        ],
+        "correct": "b"
+      }
+    ],
+    "parts": [
+      {
+        "role": "anrede",
+        "de": "Sehr geehrter Herr Sterner,",
+        "en": "Dear Mr Sterner,",
+        "uk": "Шановний пане Штернере,",
+        "ru": "Уважаемый господин Штернер,"
+      },
+      {
+        "role": "bezugnahme",
+        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die abweichende Garantiezeit in unserem Kaufvertrag hingewiesen haben.",
+        "en": "thank you very much for your email, in which you pointed out the differing warranty period in our purchase contract.",
+        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на розбіжність у гарантійному терміні в нашому договорі купівлі-продажу.",
+        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на расхождение в гарантийном сроке в нашем договоре купли-продажи."
+      },
+      {
+        "role": "entschuldigung",
+        "de": "<r>Es tut uns sehr leid, dass</r> im Kaufvertrag versehentlich nur eine einjährige Garantie angegeben wurde.",
+        "en": "We are very sorry that only a one-year warranty was mistakenly stated in the purchase contract.",
+        "uk": "Нам дуже прикро, що в договорі купівлі-продажу помилково зазначено лише однорічну гарантію.",
+        "ru": "Нам очень жаль, что в договоре купли-продажи по ошибке указана только годовая гарантия."
+      },
+      {
+        "role": "grund",
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> bei der Vertragserstellung die Standardvorlage verwendet wurde, ohne die in Ihrem Angebot enthaltene Sonderaktion zu berücksichtigen. <g>Wer</g> ein schriftliches Angebot mit erweiterter Garantie erhält, <g>dem</g> steht diese natürlich auch vertraglich zu.",
+        "en": "We have since found out that the standard template was used when drawing up the contract, without taking into account the special promotion included in your offer. Whoever receives a written offer with an extended warranty is of course also contractually entitled to it.",
+        "uk": "Ми вже з'ясували, що під час укладання договору використали стандартний шаблон, не врахувавши спеціальну акцію, зазначену у Вашій пропозиції. Хто отримує письмову пропозицію з розширеною гарантією, той, звісно, має право на неї й за договором.",
+        "ru": "Мы уже выяснили, что при составлении договора использовался стандартный шаблон, без учёта специальной акции, указанной в Вашем предложении. Кто получает письменное предложение с расширенной гарантией, тот, конечно, имеет право на неё и по договору."
+      },
+      {
+        "role": "loesung",
+        "de": "<r>Wir bestätigen Ihnen hiermit ausdrücklich</r> die im Angebot AN-2026-089 zugesagte dreijährige Herstellergarantie. Eine korrigierte Vertragsversion mit der richtigen Garantiezeit erhalten Sie noch heute per E-Mail.",
+        "en": "We hereby expressly confirm the three-year manufacturer's warranty promised in offer AN-2026-089. You will receive a corrected version of the contract with the correct warranty period by email today.",
+        "uk": "Цим ми офіційно підтверджуємо трирічну гарантію виробника, обіцяну в пропозиції AN-2026-089. Виправлену версію договору з правильним гарантійним терміном Ви отримаєте електронною поштою вже сьогодні.",
+        "ru": "Настоящим мы официально подтверждаем трёхлетнюю гарантию производителя, обещанную в предложении AN-2026-089. Исправленную версию договора с правильным гарантийным сроком Вы получите по электронной почте уже сегодня."
+      },
+      {
+        "role": "grussformel",
+        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.\n\nMit freundlichen Grüßen",
+        "en": "We hope that you agree with this solution and thank you for your understanding.\n\nBest regards,",
+        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.\n\nЗ повагою,",
+        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.\n\nС уважением,"
+      },
+      {
+        "role": "unterschrift",
+        "de": "Anna Vogel\nKundenservice",
+        "en": "Anna Vogel\nCustomer Service",
+        "uk": "Анна Фогель\nСлужба підтримки клієнтів",
+        "ru": "Анна Фогель\nСлужба поддержки клиентов"
       }
     ]
   }
