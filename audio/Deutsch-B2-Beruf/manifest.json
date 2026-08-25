@@ -35967,8 +35967,8 @@
   "Deutsch-B2-Beruf/de/100/email/email_015_loesung_de_100": "a9179161c2+t",
   "Deutsch-B2-Beruf/de/100/email/email_015_grussformel_de_100": "e7c8cb9db8+t",
   "Deutsch-B2-Beruf/de/100/email/email_015_unterschrift_de_100": "078184fa91+t",
-  "Deutsch-B2-Beruf/de/100/email/email_016_mail_boss_de_100": "11429a8a40+t",
-  "Deutsch-B2-Beruf/de/100/email/email_016_mail_client_de_100": "13af733626+t",
+  "Deutsch-B2-Beruf/de/100/email/email_016_mail_boss_de_100": "b16fac8925+t",
+  "Deutsch-B2-Beruf/de/100/email/email_016_mail_client_de_100": "5ce1906f4a+t",
   "Deutsch-B2-Beruf/de/100/email/email_016_anrede_de_100": "78b87d62b2+t",
   "Deutsch-B2-Beruf/de/100/email/email_016_bezugnahme_de_100": "22035a6709+t",
   "Deutsch-B2-Beruf/de/100/email/email_016_entschuldigung_de_100": "8d7aadd951+t",
@@ -35976,7 +35976,7 @@
   "Deutsch-B2-Beruf/de/100/email/email_016_loesung_de_100": "832fae7dcf+t",
   "Deutsch-B2-Beruf/de/100/email/email_016_grussformel_de_100": "212b7cd09a+t",
   "Deutsch-B2-Beruf/de/100/email/email_016_unterschrift_de_100": "971e789a1e+t",
-  "Deutsch-B2-Beruf/de/100/email/email_017_mail_boss_de_100": "be7e2d54ba+t",
+  "Deutsch-B2-Beruf/de/100/email/email_017_mail_boss_de_100": "674ee6b916+t",
   "Deutsch-B2-Beruf/de/100/email/email_017_anrede_de_100": "b8d0b74dab+t",
   "Deutsch-B2-Beruf/de/100/email/email_017_bezugnahme_de_100": "3edff703a4+t",
   "Deutsch-B2-Beruf/de/100/email/email_017_entschuldigung_de_100": "4aec75ba49+t",
@@ -36030,7 +36030,7 @@
   "Deutsch-B2-Beruf/de/085/email/email_017_unterschrift_de_085": "97523a23af+t",
   "Deutsch-B2-Beruf/de/100/email/email_009_mail_client_de_100": "83f25b6e57+t",
   "Deutsch-B2-Beruf/de/100/email/email_012_mail_client_de_100": "de2336f330+t",
-  "Deutsch-B2-Beruf/de/100/email/email_017_mail_client_de_100": "9c7d76824e+t",
+  "Deutsch-B2-Beruf/de/100/email/email_017_mail_client_de_100": "98a34c1c20+t",
   "Deutsch-B2-Beruf/de/085/email/email_009_mail_client_de_085": "8a489d91af+t",
   "Deutsch-B2-Beruf/de/085/email/email_012_mail_client_de_085": "dfe4615643+t",
   "Deutsch-B2-Beruf/de/085/email/email_017_mail_client_de_085": "f7b356e241+t",
@@ -36191,5 +36191,6 @@
   "Deutsch-B2-Beruf/de/085/dlg/dlg_105_task_de_085": "80c25fa65c+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_106_task_de_085": "fd53a31008+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_107_task_de_085": "d1a8f8e0f0+t",
-  "Deutsch-B2-Beruf/de/085/dlg/dlg_108_task_de_085": "ff6b30b5a0+t"
+  "Deutsch-B2-Beruf/de/085/dlg/dlg_108_task_de_085": "ff6b30b5a0+t",
+  "Deutsch-B2-Beruf/de/100/email/email_018_mail_boss_de_100": "d29d273328+t"
 }
