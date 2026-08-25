@@ -4747,7 +4747,10 @@ var LESSONS = [
       "k16_040"
     ],
     "unlockAfter": "k16m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_152"
+    ]
   }
 ];
 
@@ -32585,6 +32588,80 @@ var DIALOGE = [
       "en": "Yes, of course! So, we report the break-in to the police, check what was stolen, don't enter the crime scene, describe the suspect exactly, think about our testimony, take a photo as evidence, expect to be summoned, and hope the police arrest the burglar soon. I really hope everything turns out well! Thanks for the idea, Nina!",
       "uk": "Так, звісно! Отже, ми заявляємо про пограбування в поліцію, дивимося, що вкрали, не заходимо на місце злочину, точно описуємо підозрюваного, обдумуємо свої свідчення, робимо фото як доказ, враховуємо можливий виклик і сподіваємося, що поліція скоро заарештує грабіжника. Я справді сподіваюся, що все закінчиться добре! Дякую за ідею, Ніно!",
       "ru": "Да, конечно! Итак, мы заявляем об ограблении в полицию, смотрим, что украли, не заходим на место преступления, точно описываем подозреваемого, обдумываем свои показания, делаем фото как доказательство, учитываем возможный вызов и надеемся, что полиция скоро арестует грабителя. Я действительно надеюсь, что всё закончится хорошо! Спасибо за идею, Нина!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_152",
+    "cat": "Sightseeing-Tag in neuer Stadt planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund sind in einer neuen Stadt und haben einen ganzen Tag Zeit.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin, was Sie sich anschauen.\nDiese Punkte helfen Ihnen:\nWelches Wahrzeichen besuchen Sie zuerst?\nWie kommen Sie mit der Straßenbahn dorthin?\nWie sorgen Sie für Ihre Sicherheit?\nWas machen Sie bei schlechtem Wetter?\nWelches Urteil fällen Sie am Ende über die Stadt?",
+      "en": "Situation: You and your friend are in a new city with a whole day to spend.\nTask: Plan together with your conversation partner what you'll see.\nThese points will help you:\nWhich landmark do you visit first?\nHow do you get there by tram?\nHow do you ensure your safety?\nWhat do you do in bad weather?\nWhat verdict do you reach about the city in the end?",
+      "uk": "Ситуація: Ви та Ваш друг у новому місті й маєте цілий день часу.\nЗавдання: Сплануйте разом зі своєю співрозмовницею, що Ви подивитеся.\nЦі пункти Вам допоможуть:\nЯку памʼятку Ви відвідаєте першою?\nЯк Ви дістанетеся туди трамваєм?\nЯк Ви забезпечите свою безпеку?\nЩо Ви робите в погану погоду?\nЯкий висновок Ви зробите про місто наприкінці?",
+      "ru": "Ситуация: Вы и Ваш друг в новом городе, и у Вас есть целый день.\nЗадание: Спланируйте вместе со своей собеседницей, что Вы посмотрите.\nЭти пункты Вам помогут:\nКакую достопримечательность Вы посетите первой?\nКак Вы доберётесь туда на трамвае?\nКак Вы обеспечите свою безопасность?\nЧто Вы делаете в плохую погоду?\nКакой вывод Вы сделаете о городе в конце?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_nina",
+    "q": {
+      "de": "Hallo, Nina! Wir sind jetzt in dieser neuen Stadt und haben noch einen ganzen Tag Zeit. Wollen wir zusammen planen, was wir uns anschauen?",
+      "en": "Hi, Nina! We're in this new city now and still have a whole day. Shall we plan together what we look at?",
+      "uk": "Привіт, Ніно! Ми тепер у цьому новому місті, і в нас ще є цілий день. Може, разом сплануємо, що подивимося?",
+      "ru": "Привет, Нина! Мы теперь в этом новом городе, и у нас есть ещё целый день. Может, вместе спланируем, что посмотрим?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten von der Jugendherberge aus zu Fuß zum größten Wahrzeichen der Stadt gehen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> We could walk from the youth hostel to the city's biggest landmark.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Ми могли б піти пішки з хостелу до найбільшої визначної пам'ятки міста.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Мы могли бы пойти пешком от хостела к самой большой достопримечательности города.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die fremde Stadt <r>bedenken</r>.<br><r>Wir könnten doch</r> selbst ein bisschen für unsere Sicherheit sorgen und nicht zu spät abends allein unterwegs sein.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the fact that this is a foreign city.<br><r>We could</r> take a bit of care for our own safety and not be out alone too late in the evening.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> те, що це чуже місто.<br><r>Ми могли б</r> самі трохи подбати про свою безпеку й не гуляти самим надто пізно ввечері.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> том, что это чужой город.<br><r>Мы могли бы</r> сами немного позаботиться о своей безопасности и не гулять одним слишком поздно вечером.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch das berühmte Denkmal in der Altstadt besuchen, das soll wirklich beeindruckend sein.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> also visit the famous monument in the old town, it's supposed to be really impressive.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> також відвідали відомий памʼятник у старому місті, кажуть, він справді вражаючий.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также посетили известный памятник в старом городе, говорят, он действительно впечатляющий.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> in die Straßenbahn einsteigen und einmal umsteigen, damit wir schneller dorthin kommen?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> board the tram and transfer once, so we get there faster?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> сядемо в трамвай і один раз пересядемо, щоб дістатися туди швидше?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> сядем в трамвай и один раз пересядем, чтобы добраться туда быстрее?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> an welcher Haltestelle wir aussteigen müssen.<br><r>Eine Idee wäre, dass wir</r> uns die richtige Haltestelle zum Aussteigen schon vorher genau notieren.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> at which stop we need to get off.<br><r>One idea would be that we</r> note down the correct stop to get off at beforehand.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> на якій зупинці нам виходити.<br><r>Була б ідея, щоб ми</r> заздалегідь точно записали потрібну зупинку для виходу.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> на какой остановке нам выходить.<br><r>Была бы идея, чтобы мы</r> заранее точно записали нужную остановку для выхода.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir genug Zeit für die ganze Architektur der Altstadt haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> uns nur auf die schönste Architektur konzentrieren, statt alles sehen zu wollen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we have enough time for all the architecture of the old town.<br><r>Maybe it would be best if we</r> just focus on the most beautiful architecture, instead of trying to see everything.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи вистачить нам часу на всю архітектуру старого міста.<br><r>Можливо, було б найкраще, якби ми</r> зосередилися лише на найкрасивішій архітектурі, замість того щоб намагатися побачити все.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, хватит ли нам времени на всю архитектуру старого города.<br><r>Может быть, было бы лучше, если бы мы</r> сосредоточились только на самой красивой архитектуре, вместо того чтобы пытаться увидеть всё.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch einen Plan B machen: Falls es regnet, fliehen wir einfach in ein Museum.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also make a plan B: if it rains, we'll simply flee into a museum.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також складемо план Б: якщо піде дощ, ми просто втечемо до музею.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также составим план Б: если пойдёт дождь, мы просто сбежим в музей.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> am Ende des Tages gemeinsam ein Urteil fällen, welche Stadt uns bisher am besten gefallen hat.<br><r>Bist du damit einverstanden</r>, Nina?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> reach a verdict together at the end of the day about which city we've liked best so far.<br><r>Are you okay with that</r>, Nina?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> наприкінці дня разом винесемо вирок, яке місто нам сподобалося найбільше досі.<br><r>Ти з цим згодна</r>, Ніно?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> в конце дня вместе вынесем вердикт, какой город нам понравился больше всего до сих пор.<br><r>Ты с этим согласна</r>, Нина?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir gehen von der Jugendherberge zum Wahrzeichen, achten selbst auf unsere Sicherheit, besuchen das Denkmal in der Altstadt, steigen in die Straßenbahn ein und einmal um, merken uns die richtige Haltestelle zum Aussteigen, konzentrieren uns auf die schönste Architektur, fliehen bei Regen ins Museum und fällen am Ende ein Urteil über unseren Lieblingsort. Ich freue mich schon auf den Tag! Danke für die Idee, Alex!",
+      "en": "Yes, of course! So, we walk from the youth hostel to the landmark, take care of our own safety, visit the monument in the old town, board the tram and transfer once, remember the right stop to get off at, focus on the most beautiful architecture, flee to a museum if it rains, and reach a verdict at the end about our favourite place. I'm already looking forward to the day! Thanks for the idea, Alex!",
+      "uk": "Так, звісно! Отже, ми йдемо з хостелу до пам'ятки, дбаємо про власну безпеку, відвідуємо памʼятник у старому місті, сідаємо в трамвай і один раз пересідаємо, пам'ятаємо потрібну зупинку для виходу, зосереджуємося на найкрасивішій архітектурі, тікаємо до музею, якщо піде дощ, і наприкінці виносимо вирок про наше улюблене місце. Я вже тішуся цьому дню! Дякую за ідею, Алексе!",
+      "ru": "Да, конечно! Итак, мы идём от хостела к достопримечательности, заботимся о собственной безопасности, посещаем памятник в старом городе, садимся в трамвай и один раз пересаживаемся, помним нужную остановку для выхода, сосредотачиваемся на самой красивой архитектуре, убегаем в музей, если пойдёт дождь, и в конце выносим вердикт о нашем любимом месте. Я уже жду этот день! Спасибо за идею, Алекс!"
     },
     "gram": ""
   }

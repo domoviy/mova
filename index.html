@@ -705,6 +705,25 @@ body{
 .lp-chapter-num.done{
   background:var(--gold);color:var(--forest);
 }
+/* "Підготовка до екзамену" — навмисно ІНШИЙ акцент (бордовий, не
+   forest/gold), щоб на лінії уроків одразу читалось як інший ТИП
+   секції (блоки іспиту), а не чергова тематична глава словника. Той
+   самий принцип що .lp-chapter-head.current (банер), лише інший колір
+   і завжди-іконка 🎓 замість номера (див. renderLernpfad). */
+.lp-chapter-head.examprep{
+  background:linear-gradient(135deg, #6b2332, #3d1119);
+  border-bottom:none;
+}
+.lp-chapter-head.examprep.current{
+  background:linear-gradient(135deg, #6b2332, #3d1119);
+}
+.lp-chapter-head.examprep .lp-chapter-title{color:#fff;}
+.lp-chapter-head.examprep .lp-chapter-sub{color:rgba(255,255,255,.65);}
+.lp-chapter-head.examprep .lp-chapter-arrow{color:rgba(255,255,255,.7);}
+.lp-chapter-num.examprep{
+  background:var(--gold);color:#3d1119;font-size:15px;
+}
+
 .lp-chapter-info{flex:1;min-width:0}
 .lp-chapter-title{
   font-size:var(--fs-tertiary);font-weight:700;color:var(--ink);
@@ -769,6 +788,15 @@ body{
   background:#c07a2e;
   box-shadow:0 5px 0 rgba(120,70,20,.4), 0 7px 12px rgba(120,70,20,.18);
 }
+/* E-Mail — другий формат Schreiben поряд з Forumsbeitrag щойно вище,
+   тому свідомо РІДНИЙ, але відмінний акцент: бордовий (той самий
+   принцип, що вся глава "Підготовка до екзамену", .lp-chapter-head.
+   examprep нижче) замість бурштинового forum — одразу видно "теж
+   Schreiben, але інший формат". */
+.lp-node.lp-node-email{
+  background:#8a2f3f;
+  box-shadow:0 5px 0 rgba(90,25,35,.4), 0 7px 12px rgba(90,25,35,.18);
+}
 .lp-node.done{
   background:var(--gold);
   box-shadow:0 5px 0 rgba(160,128,40,.4), 0 7px 12px rgba(160,128,40,.16);
@@ -796,6 +824,9 @@ body{
 }
 .lp-node.lp-node-forum.current{
   box-shadow:0 7px 0 rgba(120,70,20,.4), 0 10px 18px rgba(120,70,20,.22);
+}
+.lp-node.lp-node-email.current{
+  box-shadow:0 7px 0 rgba(90,25,35,.4), 0 10px 18px rgba(90,25,35,.24);
 }
 .lp-node.current .lp-node-current-ring{ inset:-12px; border-width:4px; }
 @keyframes lpNodeBreathe{
@@ -3561,7 +3592,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '553-1aa895d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -3754,6 +3785,74 @@ function _lpEligibleForumIds(frmCardIds){
   return (frmCardIds || []).filter(function(id){
     var c = byId[id];
     return c && c.cat === 'Forumsbeitrag';
+  });
+}
+
+// ── "Підготовка до екзамену" — синтетична глава В КІНЦІ лінії уроків ──
+// Складається з блоків реального іспиту (DTB: Mündliche Prüfung Teil
+// 1-3, Schreiben Forumsbeitrag/E-Mail), а не тематичних розділів
+// словника, тому НЕ походить з var LESSONS бази курсу — будується тут
+// повністю кодом і приклеюється до LESSONS ПІСЛЯ buildLearningPath (див.
+// виклик у loadCourseScript). Номер глави — завжди max існуючих + 1,
+// тож глава гарантовано лягає останньою незалежно від курсу.
+//
+// Наразі (свідомо, тимчасово) лише розділ "Schreiben → E-Mail", і той —
+// з УСІХ карток var EMAILS без відбору. Mündliche Prüfung і точковий
+// відбір карток під конкретний урок — наступний крок, коли визначимось,
+// які саме dlg_XXX картки відповідають Teil 1/2/3.
+//
+// ОДНА картка = ОДИН вузол шляху (cardIds/emlCards=[card.id]), той самий
+// принцип, що Forumsbeitrag/Dialogue (buildLearningPath вище,
+// "slotFrms.forEach" — власний вузол на кожну картку, не сайдкар). Було
+// спочатку зроблено ОДНИМ вузлом з УСІХ карток одразу — і виявилось, що
+// після проходження першої картки замість екрана результату (бали,
+// анімація, стрік) одразу стартувала наступна: lfRunUnitStep() викликає
+// onAllDone (тут _lfEmlLearnDone → 'result') лише коли ВЕСЬ переданий
+// список юнітів (за ВСІМА картками одразу) вичерпано, а не після кожної
+// картки окремо. Один вузол = одна картка виправляє це насправді, а не
+// просто ховає симптом.
+function _buildExamPrepPathNodes(){
+  const emails = typeof EMAILS !== 'undefined' ? EMAILS : [];
+  if(!emails.length) return [];
+
+  const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
+  let maxChapter = 0;
+  lessons.forEach(l=>{ if((l.chapter||0) > maxChapter) maxChapter = l.chapter; });
+  const chapterNum = maxChapter + 1;
+
+  const chapterTitle = {
+    de: 'Prüfungsvorbereitung', uk: 'Підготовка до екзамену',
+    en: 'Exam Preparation',     ru: 'Подготовка к экзамену',
+  };
+  const moduleId = 'examprep_schreiben';
+
+  let prevId = null;
+  return emails.map((card, i)=>{
+    const n = i + 1;
+    const lessonTitle = { de: 'E-Mail '+n, uk: 'E-Mail '+n, en: 'E-Mail '+n, ru: 'E-Mail '+n };
+    const nodeId = moduleId + '_email' + n;
+    const node = {
+      id:          nodeId,
+      type:        'email',
+      chapter:     chapterNum,
+      chapterTitle: chapterTitle,
+      module:      1,
+      title:       lessonTitle,
+      cardIds:     [card.id],
+      emlCards:    [card.id],
+      dlgCards:    [],
+      sbCards:     [],
+      frmCards:    [],
+      // Перша картка розділу — завжди відкрита; решта — послідовно,
+      // той самий принцип, що dialogue/forum-вузли вище (withinModulePrevId).
+      unlockAfter: prevId,
+      _isExamPrep: true,          // прапорець для окремого стилю глави (renderLernpfad)
+      _parentModuleId: moduleId,
+      _subIndex:   n,
+      _subTotal:   emails.length,
+    };
+    prevId = nodeId;
+    return node;
   });
 }
 
@@ -3997,6 +4096,16 @@ function loadCourseScript(courseId){
       try{
         if(typeof LESSONS !== 'undefined' && Array.isArray(LESSONS)){
           LESSONS = buildLearningPath(LESSONS, course.level);
+          // Синтетична глава "Підготовка до екзамену" — СВІДОМО не в
+          // самому файлі бази курсу (var LESSONS там), а тут, повністю
+          // кодом: на відміну від тематичних глав, вона не про словник, а
+          // про конкретні блоки іспиту (Schreiben/Mündliche Prüfung), тож
+          // не проходить через buildLearningPath (чанкінг словника на
+          // суб-уроки) — додається ОДРАЗУ як готові фінальні path-вузли,
+          // після нього. LESSONS.concat (не .push) — щоб не мутувати
+          // масив, який buildLearningPath щойно повернув.
+          try{ LESSONS = LESSONS.concat(_buildExamPrepPathNodes()); }
+          catch(e){ console.error('[path] _buildExamPrepPathNodes failed:', e); }
         }
       }catch(e){ console.error('[path] buildLearningPath failed:', e); }
       // Smart Review: додаємо examPart до карток якщо ще не є
@@ -7888,6 +7997,7 @@ function _runBonusLessonFlow(lesson){
     dlgCard:    null,
     dlgCards:   lesson._dlgBonusPool || [],
     frmCards:   lesson._frmBonusPool || [],
+    emlCards:   lesson._emlBonusPool || [],
     steps:      lesson.steps,
     step:       0,
     results:    {},
@@ -8230,7 +8340,8 @@ function renderLernpfad(){
     if(!chapters[l.chapter]) chapters[l.chapter]={
       num: l.chapter,
       title: l.chapterTitle,
-      modules: []
+      modules: [],
+      isExamPrep: !!l._isExamPrep,
     };
     chapters[l.chapter].modules.push(l);
   });
@@ -8304,9 +8415,10 @@ function renderLernpfad(){
       </div>`;
     }).join('');
 
+    chEl.className += ch.isExamPrep ? ' lp-chapter-examprep' : '';
     chEl.innerHTML = `
-      <div class="lp-chapter-head ${allDone?'done':''} ${hasCurrent?'current':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
-        <div class="lp-chapter-num ${allDone?'done':''}">${ch.num}</div>
+      <div class="lp-chapter-head ${allDone?'done':''} ${hasCurrent?'current':''} ${ch.isExamPrep?'examprep':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
+        <div class="lp-chapter-num ${allDone?'done':''} ${ch.isExamPrep?'examprep':''}">${ch.isExamPrep?'🎓':ch.num}</div>
         <div class="lp-chapter-info">
           <div class="lp-chapter-title">${ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de}</div>
           <div class="lp-chapter-sub">${ch.modules.length} ${t('lp_module_prefix')} · ${
@@ -8476,6 +8588,9 @@ function _lpNodeVisual(node){
   if(node.type === 'forum'){
     return { icon: '📰', cls: 'lp-node-forum' };
   }
+  if(node.type === 'email'){
+    return { icon: '📧', cls: 'lp-node-email' };
+  }
   return { icon: '📖', cls: 'lp-node-lesson' };
 }
 
@@ -8489,6 +8604,7 @@ function renderPathNode(node, idx){
   const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
   const isForum = node.type === 'forum';
+  const isEmail = node.type === 'email';
   const visual = _lpNodeVisual(node);
   // Іконка типу (📖/💬/🧩/📰) лишається однаковою і на пройденому уроці —
   // ЗМІНЮЄТЬСЯ лише колір (через .lp-node.done → золотий фон, CSS
@@ -8502,6 +8618,7 @@ function renderPathNode(node, idx){
     ? 'showLockedLessonModal()'
     : isDialogue ? `startModuleDialogueBonus('${node.id}')`
     : isForum ? `startModuleForumBonus('${node.id}')`
+    : isEmail ? `startModuleEmailBonus('${node.id}')`
     : `startLessonFlow('${node.id}')`;
   const chipLabel = pct > 0
     ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
@@ -8639,30 +8756,40 @@ function buildModuleForumPool(lesson){
   return allFrm.filter(c => ids.has(c.id) && c.cat === 'Forumsbeitrag');
 }
 
-// Точка входу з кліку по вузлу шляху type:'forum' (renderPathNode) — той
-// самий каркас, що startModuleDialogueBonus щойно вище: мінімальний
-// lesson-flow лише з практичним кроком (тут — 'frm_learn') + result.
-function startModuleForumBonus(lessonId){
+// Пул E-Mail — той самий принцип, що buildModuleForumPool щойно вище.
+// Наразі lesson.emlCards завжди містить ВСІ email_XXX з бази (див.
+// _buildExamPrepPathNodes) — це свідомо тимчасово, найближчим часом
+// заміниться на явний відбір конкретних карток під цей урок.
+function buildModuleEmailPool(lesson){
+  const allEml = typeof EMAILS !== 'undefined' ? EMAILS : [];
+  if(!allEml.length || !(lesson.emlCards||[]).length) return [];
+  const ids = new Set(lesson.emlCards);
+  return allEml.filter(c => ids.has(c.id) && c.cat === 'E-Mail');
+}
+
+// Точка входу з кліку по вузлу шляху type:'email' (renderPathNode) — той
+// самий каркас, що startModuleForumBonus щойно вище.
+function startModuleEmailBonus(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson  = lessons.find(l=>l.id===lessonId);
   if(!lesson) return;
-  const pool = buildModuleForumPool(lesson);
+  const pool = buildModuleEmailPool(lesson);
   if(!pool.length){
-    notify('⚠️ '+(uiLang==='uk'?'Немає Forumsbeitrag для цього уроку':uiLang==='ru'?'Нет Forumsbeitrag для этого урока':uiLang==='en'?'No Forumsbeitrag for this lesson':'Kein Forumsbeitrag für diese Lektion'));
+    notify('⚠️ '+(uiLang==='uk'?'Немає E-Mail для цього уроку':uiLang==='ru'?'Нет E-Mail для этого урока':uiLang==='en'?'No E-Mail for this lesson':'Keine E-Mail für diese Lektion'));
     return;
   }
 
   const title = {
-    de:'Forumsbeitrag: '+(lesson.title?.de||''), uk:'Допис на форумі: '+(lesson.title?.uk||''),
-    en:'Forum post: '+(lesson.title?.en||''), ru:'Пост на форуме: '+(lesson.title?.ru||''),
+    de:'E-Mail: '+(lesson.title?.de||''), uk:'E-Mail: '+(lesson.title?.uk||''),
+    en:'E-Mail: '+(lesson.title?.en||''), ru:'E-Mail: '+(lesson.title?.ru||''),
   };
   _runBonusLessonFlow({
-    id: '_frm_module_'+lesson.id,
+    id: '_eml_module_'+lesson.id,
     title,
     _isBonusLesson: true,
     _bonusForLessonId: lesson.id,
-    steps: ['frm_learn', 'result'],
-    _frmBonusPool: pool,
+    steps: ['eml_learn', 'result'],
+    _emlBonusPool: pool,
   });
 }
 
@@ -11394,6 +11521,7 @@ const LF_STEP_ICONS = {
   sb_learn: '📖',
   dlg_learn:'💬',
   frm_learn:'📰',
+  eml_learn:'📧',
   sb_prac:  '🎯',
   result:   '🏁',
 };
@@ -11408,6 +11536,7 @@ const LF_STEP_LABELS = {
   sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція',  en:'Language Pattern'},
   dlg_learn:{de:'Dialogue',       uk:'Dialogue',           en:'Dialogue'},
   frm_learn:{de:'Forumsbeitrag',  uk:'Допис на форумі',    en:'Forum post'},
+  eml_learn:{de:'E-Mail',         uk:'E-Mail',             en:'E-Mail'},
   sb_prac:  {de:'Grammatik',       uk:'Граматика',          en:'Grammar'},
   result:   {de:'Ergebnis',       uk:'Результат',          en:'Result'},
 };
@@ -11517,6 +11646,10 @@ function _lfStepWeight(stepName){
   // пропорційно більшу частку.
   if(stepName === 'frm_learn' && LF && LF.frmCards && LF.frmCards.length){
     return _frmCardsToUnits(LF.frmCards).length;
+  }
+  // E-Mail — той самий принцип, що forum щойно вище.
+  if(stepName === 'eml_learn' && LF && LF.emlCards && LF.emlCards.length){
+    return _emlCardsToUnits(LF.emlCards).length;
   }
   // "Знайди пару" — кожна пара окремий "крок" по вазі, так само як
   // репліки діалогу вище: довший раунд (більше пар) мав би займати
@@ -11657,6 +11790,8 @@ function lfGoStep(stepIdx){
     lfStartDlgLearn();
   } else if(step === 'frm_learn'){
     lfStartFrmLearn();
+  } else if(step === 'eml_learn'){
+    lfStartEmlLearn();
   } else if(step === 'sb_prac'){
     lfStartSBPrac();
   } else if(step === 'result'){
@@ -12889,6 +13024,36 @@ function _lfFrmLearnDone(){
   lfNextStep();
 }
 
+// E-Mail-крок ('eml_learn') УСЕРЕДИНІ звичайного lesson-flow — той самий
+// каркас 1:1, що lfStartFrmLearn/_lfFrmLearnDone щойно вище, лише
+// LF.emlCards/_emlCardsToUnits/_lfEmlHandlers замість frm-аналогів.
+function lfStartEmlLearn(){
+  const hasCards = LF && LF.emlCards && LF.emlCards.length;
+  if(!hasCards){ lfNextStep(); return; }
+
+  var vp = document.querySelector('#view-vocab .vplayer');
+  if(vp) vp.style.display='';
+
+  switchVocabTab(0);
+
+  var units = _emlCardsToUnits(LF.emlCards);
+  lfRunUnitStep(units, _lfEmlHandlers, _lfEmlLearnDone);
+}
+
+function _lfEmlLearnDone(){
+  var fcArea = document.getElementById('fc-area');
+  if(fcArea) fcArea.style.display = '';
+  var vprogrow = document.querySelector('#vocab-panel-card .vprogrow-flow');
+  if(vprogrow) vprogrow.style.display = '';
+  var unitCard = document.getElementById('lf-unit-card');
+  if(unitCard) unitCard.style.display = 'none';
+  var vplayer = document.querySelector('#view-vocab .vplayer');
+  if(vplayer) vplayer.style.display = '';
+  setTimeout(initSwipe, 50);
+  lfRenderBar();
+  lfNextStep();
+}
+
 
 // Контракт (узгоджено заздалегідь під vocab/SB/Dialogue, реалізовано
 // зараз лише для vocab — SB/Dialogue лишаються на старій логіці,
@@ -13981,10 +14146,18 @@ function lfShowResult(){
   // dlgCards/frmCards/_grammarBonusPool).
   const isFrmOnly = LF.cards.length === 0 && (LF.frmCards||[]).length > 0;
 
+  // Той самий принцип для E-Mail-уроку — LF.cards порожній, лише
+  // LF.emlCards (взаємовиключно з dlgCards/frmCards/_grammarBonusPool,
+  // на бонусний урок призначається лише один із чотирьох пулів).
+  const isEmlOnly = LF.cards.length === 0 && (LF.emlCards||[]).length > 0;
+
   let improved = 0, pct = 0, emoji, titleText;
   if(isFrmOnly){
     emoji = '📰';
     titleText = uiLang==='uk'?'Допис завершено!':uiLang==='en'?'Forum post completed!':uiLang==='ru'?'Пост завершён!':'Beitrag abgeschlossen!';
+  } else if(isEmlOnly){
+    emoji = '📧';
+    titleText = uiLang==='uk'?'Лист завершено!':uiLang==='en'?'E-mail completed!':uiLang==='ru'?'Письмо завершено!':'E-Mail abgeschlossen!';
   } else if(isDlgOnly){
     emoji = '💬';
     titleText = uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!';
@@ -14020,10 +14193,12 @@ function lfShowResult(){
   // (#streak-celebration) — ДРУГИЙ, лише коли стрік реально зростає (1
   // раз на день): зростання стріку — це НАСЛІДОК завершеного уроку, тож
   // показується вже ПІСЛЯ нагороди за сам урок, а не раніше.
-  const isGrammarOnly = LF.cards.length === 0 && !isDlgOnly && !isFrmOnly && (LF._grammarBonusPool||[]).length > 0;
-  const lcIcon  = isFrmOnly ? '📰' : isDlgOnly ? '💬' : isGrammarOnly ? '📚' : '✓';
+  const isGrammarOnly = LF.cards.length === 0 && !isDlgOnly && !isFrmOnly && !isEmlOnly && (LF._grammarBonusPool||[]).length > 0;
+  const lcIcon  = isFrmOnly ? '📰' : isEmlOnly ? '📧' : isDlgOnly ? '💬' : isGrammarOnly ? '📚' : '✓';
   const lcLabel = isFrmOnly
     ? (uiLang==='uk'?'Допис завершено!':uiLang==='en'?'Forum post completed!':uiLang==='ru'?'Пост завершён!':'Beitrag abgeschlossen!')
+    : isEmlOnly
+    ? (uiLang==='uk'?'Лист завершено!':uiLang==='en'?'E-mail completed!':uiLang==='ru'?'Письмо завершено!':'E-Mail abgeschlossen!')
     : isDlgOnly
     ? (uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!')
     : isGrammarOnly
@@ -14081,6 +14256,10 @@ function lfShowResult(){
     const xpRow = [uiLang==='uk'?'M зароблено':uiLang==='en'?'M earned':uiLang==='ru'?'M заработано':'M verdient', '<span style="color:var(--gold)">𐌌</span> '+xpEarned];
     const rows = isFrmOnly ? [
       [uiLang==='uk'?'Дописів':uiLang==='en'?'Forum posts':uiLang==='ru'?'Постов':'Beiträge', LF.frmCards.length],
+      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
+      xpRow,
+    ] : isEmlOnly ? [
+      [uiLang==='uk'?'Листів':uiLang==='en'?'E-mails':uiLang==='ru'?'Писем':'E-Mails', LF.emlCards.length],
       [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
       xpRow,
     ] : isDlgOnly ? [
