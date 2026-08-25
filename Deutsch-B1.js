@@ -4669,7 +4669,10 @@ var LESSONS = [
       "k16_031"
     ],
     "unlockAfter": "k16m1",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_150"
+    ]
   },
   {
     "id": "k16m3",
@@ -4705,7 +4708,10 @@ var LESSONS = [
       "k16_037"
     ],
     "unlockAfter": "k16m2",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_151"
+    ]
   },
   {
     "id": "k16m4",
@@ -32433,6 +32439,154 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, мы организуем праздник, приглашаем всех друзей, планируем поездку через неделю, проверяем наши отпускные дни, бронируем поездку и уже сейчас радуемся ей. Надеюсь, мы сможем действительно хорошо отдохнуть, прежде чем снова придётся отправляться на работу! Спасибо за идею, Алекс!"
     },
     "gram": "satzverbindungen_ueberblick"
+  },
+  {
+    "id": "dlg_150",
+    "cat": "Letzte Details vor der Reise planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihre Freundin planen die letzten Details vor Ihrer gemeinsamen Reise.\nAufgabe: Planen Sie zusammen, was Sie noch vor der Abreise erledigen müssen.\nDiese Punkte helfen Ihnen:\nWer kommt später nach?\nWas schicken Sie zurück?\nWohin fahren Sie weiter?\nWas bringen Sie für Freunde mit?\nWann kommen Sie zurück, und wer holt Sie ab?",
+      "en": "Situation: You and your friend are planning the final details before your trip together.\nTask: Plan together what you still need to take care of before departure.\nThese points will help you:\nWho is coming along later?\nWhat are you sending back?\nWhere are you driving on to?\nWhat are you bringing for friends?\nWhen are you coming back, and who is picking you up?",
+      "uk": "Ситуація: Ви та Ваша подруга плануєте останні деталі перед спільною подорожжю.\nЗавдання: Сплануйте разом, що Вам ще потрібно зробити перед від'їздом.\nЦі пункти Вам допоможуть:\nХто приєднається пізніше?\nЩо Ви відправите назад?\nКуди Ви поїдете далі?\nЩо Ви візьмете для друзів?\nКоли Ви повернетеся і хто Вас забере?",
+      "ru": "Ситуация: Вы и Ваша подруга планируете последние детали перед совместной поездкой.\nЗадание: Спланируйте вместе, что Вам ещё нужно сделать перед отъездом.\nЭти пункты Вам помогут:\nКто присоединится позже?\nЧто Вы отправите обратно?\nКуда Вы поедете дальше?\nЧто Вы возьмёте для друзей?\nКогда Вы вернётесь и кто Вас заберёт?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo, Anna! Bevor wir verreisen, müssen wir noch ein paar Dinge klären. Wollen wir zusammen die letzten Schritte planen?",
+      "en": "Hi, Anna! Before we go on our trip, we still need to clarify a few things. Shall we plan the final steps together?",
+      "uk": "Привіт, Анно! Перш ніж ми вирушимо в подорож, нам потрібно з'ясувати ще кілька речей. Може, разом сплануємо останні кроки?",
+      "ru": "Привет, Анна! Прежде чем мы отправимся в путешествие, нам нужно выяснить ещё несколько вещей. Может, вместе спланируем последние шаги?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Julia <g>kommt</g> leider erst zwei Tage später <g>nach</g>, das sollten wir schon mal einplanen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> Julia unfortunately <g>can only join us</g> two days later, we should plan for that already.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Юлія, на жаль, зможе <g>приєднатися</g> лише через два дні, це варто вже врахувати.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Юлия, к сожалению, сможет <g>присоединиться</g> только через два дня, это стоит уже учесть.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Koffer <r>bedenken</r>.<br><r>Wir könnten doch</r> sagen: Wir <g>schicken</g> die Sachen, die wir nicht brauchen, einfach schon vorher <g>zurück</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the suitcases.<br><r>We could</r> say: we'll just <g>send back</g> the things we don't need beforehand.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> валізи.<br><r>Ми могли б</r> сказати: ми просто <g>відправимо назад</g> речі, які нам не потрібні, заздалегідь.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> чемоданах.<br><r>Мы могли бы</r> сказать: мы просто <g>отправим обратно</g> вещи, которые нам не нужны, заранее.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> das so machen: Wir <g>werfen</g> vor der Abreise noch die alten Sachen im Kühlschrank <g>weg</g>.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> do it like this: before departure we'll <g>throw away</g> the old things in the fridge.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> зробили так: перед від'їздом ми <g>викинемо</g> старі речі з холодильника.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> сделали так: перед отъездом мы <g>выбросим</g> старые вещи из холодильника.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> das so entscheiden: Wir <g>fahren</g> nach der ersten Übernachtung gleich <g>weiter</g>.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> decide this: after the first overnight stay we'll <g>drive on</g> right away.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> вирішимо так: після першої ночівлі ми одразу <g>поїдемо далі</g>.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> решим так: после первой ночёвки мы сразу <g>поедем дальше</g>.<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> was wir für unsere Freunde mitbringen sollen.<br><r>Eine Idee wäre, dass wir</r> das machen: Wir <g>bringen</g> jedem ein kleines Geschenk <g>mit</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> what we should bring for our friends.<br><r>One idea would be that we</r> do this: we'll <g>bring</g> everyone a small present.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> що взяти для наших друзів.<br><r>Була б ідея, щоб ми</r> зробили так: <g>візьмемо</g> для кожного невеликий подарунок.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> что взять для наших друзей.<br><r>Была бы идея, чтобы мы</r> сделали так: <g>возьмём</g> для каждого небольшой подарок.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir schon genau wissen, wann wir zurückkommen.<br><r>Vielleicht wäre es am besten, wenn wir</r> das gleich festlegen: Wir <g>kommen</g> am Sonntagabend <g>zurück</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we already know exactly when we're coming back.<br><r>Maybe it would be best if we</r> settle this right away: we'll <g>come back</g> on Sunday evening.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи знаємо ми вже точно, коли повернемося.<br><r>Можливо, було б найкраще, якби ми</r> одразу це визначили: ми <g>повернемося</g> у неділю ввечері.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, знаем ли мы уже точно, когда вернёмся.<br><r>Может быть, было бы лучше, если бы мы</r> сразу это определили: мы <g>вернёмся</g> в воскресенье вечером.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch klären: <g>Holen</g> wir jemanden vom Bahnhof <g>ab</g>, oder nehmen wir ein Taxi?<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also clarify: do we <g>pick</g> someone up from the station, or do we take a taxi?<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також з'ясуємо: ми <g>заберемо</g> когось із вокзалу, чи візьмемо таксі?<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также выясним: мы <g>заберём</g> кого-то с вокзала, или возьмём такси?<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> das noch erledigen: Wir <g>räumen</g> vor der Abreise noch schnell die Wohnung <g>auf</g>.<br><r>Bist du damit einverstanden</r>, Anna?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> also take care of this: before departure we'll quickly <g>tidy up</g> the flat.<br><r>Are you okay with that</r>, Anna?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> ще й це владнали: перед від'їздом ми швидко <g>приберемо</g> квартиру.<br><r>Ти з цим згодна</r>, Анно?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> ещё и это уладим: перед отъездом мы быстро <g>уберём</g> квартиру.<br><r>Ты с этим согласна</r>, Анна?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, Julia kommt zwei Tage später nach, wir schicken unnötige Sachen zurück, werfen die alten Sachen weg, fahren nach der ersten Übernachtung weiter, bringen allen ein Geschenk mit, kommen am Sonntagabend zurück, holen jemanden vom Bahnhof ab oder nehmen ein Taxi, und räumen vorher noch die Wohnung auf. Ich freue mich schon auf unsere Reise! Danke für die Idee, Nina!",
+      "en": "Yes, of course! So, Julia will join us two days later, we'll send back things we don't need, throw away the old things, drive on after the first overnight stay, bring everyone a present, come back on Sunday evening, either pick someone up from the station or take a taxi, and quickly tidy up the flat beforehand. I'm already looking forward to our trip! Thanks for the idea, Nina!",
+      "uk": "Так, звісно! Отже, Юлія приєднається через два дні, ми відправимо назад непотрібні речі, викинемо старі речі, поїдемо далі після першої ночівлі, візьмемо подарунок для кожного, повернемося в неділю ввечері, заберемо когось із вокзалу або візьмемо таксі, і швидко приберемо квартиру перед від'їздом. Я вже тішуся нашій подорожі! Дякую за ідею, Ніно!",
+      "ru": "Да, конечно! Итак, Юлия присоединится через два дня, мы отправим обратно ненужные вещи, выбросим старые вещи, поедем дальше после первой ночёвки, возьмём подарок для каждого, вернёмся в воскресенье вечером, заберём кого-то с вокзала или возьмём такси, и быстро уберём квартиру перед отъездом. Я уже жду нашей поездки! Спасибо за идею, Нина!"
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1"
+  },
+  {
+    "id": "dlg_151",
+    "cat": "Einbruch bei der Polizei anzeigen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Sie und Ihr Freund haben beobachtet, wie in die Nachbarwohnung eingebrochen wurde.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, was Sie jetzt tun.\nDiese Punkte helfen Ihnen:\nWann zeigen Sie den Einbruch an?\nWas wurde gestohlen?\nWie beschreiben Sie den Verdächtigen?\nWas sagen Sie bei der Polizei aus?\nWelche Beweise haben Sie?",
+      "en": "Situation: You and your friend witnessed someone breaking into the neighbouring flat.\nTask: Plan together with your conversation partner what you'll do now.\nThese points will help you:\nWhen do you report the break-in?\nWhat was stolen?\nHow do you describe the suspect?\nWhat do you testify to the police?\nWhat evidence do you have?",
+      "uk": "Ситуація: Ви та Ваш друг побачили, як хтось вдерся в сусідню квартиру.\nЗавдання: Сплануйте разом зі своїм співрозмовником, що Ви робитимете тепер.\nЦі пункти Вам допоможуть:\nКоли Ви заявите про пограбування?\nЩо було вкрадено?\nЯк Ви опишете підозрюваного?\nЩо Ви скажете в поліції як свідчення?\nЯкі докази у Вас є?",
+      "ru": "Ситуация: Вы и Ваш друг увидели, как кто-то вломился в соседнюю квартиру.\nЗадание: Спланируйте вместе со своим собеседником, что Вы будете делать теперь.\nЭти пункты Вам помогут:\nКогда Вы заявите об ограблении?\nЧто было украдено?\nКак Вы опишете подозреваемого?\nЧто Вы скажете в полиции в качестве показаний?\nКакие доказательства у Вас есть?"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Ich glaube, ich habe gerade gesehen, wie jemand in die Nachbarwohnung eingebrochen ist! Wollen wir zusammen überlegen, was wir jetzt tun?",
+      "en": "Hi, Mark! I think I just saw someone break into the neighbouring flat! Shall we think together about what we do now?",
+      "uk": "Привіт, Марку! Здається, я щойно бачила, як хтось вдерся в сусідню квартиру! Може, разом поміркуємо, що робити далі?",
+      "ru": "Привет, Марк! Кажется, я только что видела, как кто-то вломился в соседнюю квартиру! Может, вместе подумаем, что делать дальше?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sollten den Einbruch sofort bei der Polizei anzeigen, damit sie so schnell wie möglich kommen kann.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> We should report the break-in to the police right away, so they can come as quickly as possible.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Нам варто одразу заявити про пограбування в поліцію, щоб вони могли приїхати якнайшвидше.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Нам стоит сразу заявить об ограблении в полицию, чтобы они могли приехать как можно скорее.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> das gestohlene Gut <r>bedenken</r>.<br><r>Wir könnten doch</r> erst mal schauen, ob wir sehen können, was genau gestohlen wurde.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the stolen items.<br><r>We could</r> first check whether we can see what exactly was stolen.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> вкрадене майно.<br><r>Ми могли б</r> спершу подивитися, чи можемо ми побачити, що саме вкрали.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> украденном имуществе.<br><r>Мы могли бы</r> сначала посмотреть, можем ли мы увидеть, что именно украли.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> den Tatort auf keinen Fall betreten, bevor die Polizei da ist, sonst zerstören wir vielleicht Spuren.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> definitely don't enter the crime scene before the police arrive, otherwise we might destroy evidence.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> у жодному разі не заходили на місце злочину, поки не приїде поліція, інакше ми можемо знищити сліди.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> ни в коем случае не заходили на место преступления, пока не приедет полиция, иначе мы можем уничтожить следы.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> der Polizei auch genau beschreiben, wo wir den Verdächtigen zuletzt gesehen haben, damit sie ihn schneller festnehmen können?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also describe to the police exactly where we last saw the suspect, so they can apprehend him faster?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також точно опишемо поліції, де ми востаннє бачили підозрюваного, щоб вони могли швидше його затримати?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также точно опишем полиции, где мы в последний раз видели подозреваемого, чтобы они могли быстрее его задержать?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> was wir genau aussagen sollen.<br><r>Eine Idee wäre, dass wir</r> uns vorher überlegen, was wir bei der Polizei genau aussagen wollen, damit wir nichts vergessen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> what exactly we should testify.<br><r>One idea would be that we</r> think in advance about what exactly we want to testify to the police, so that we don't forget anything.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> що саме нам казати як свідчення.<br><r>Була б ідея, щоб ми</r> заздалегідь подумали, що саме ми хочемо сказати поліції, щоб нічого не забути.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> что именно нам говорить в качестве показаний.<br><r>Была бы идея, чтобы мы</r> заранее подумали, что именно мы хотим сказать полиции, чтобы ничего не забыть.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir überhaupt genug Beweise haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> auch ein Foto von der Tür machen, das könnte später als Beweis wichtig sein.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we even have enough evidence.<br><r>Maybe it would be best if we</r> also take a photo of the door, that could be important as evidence later.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи взагалі маємо ми достатньо доказів.<br><r>Можливо, було б найкраще, якби ми</r> також сфотографували двері, це може стати важливим доказом пізніше.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, есть ли у нас вообще достаточно доказательств.<br><r>Может быть, было бы лучше, если бы мы</r> также сфотографировали дверь, это может стать важным доказательством позже.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch damit rechnen, dass wir später noch offiziell zur Aussage vorgeladen werden.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also expect that we'll officially be summoned to testify later.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також врахуємо, що нас пізніше офіційно викличуть дати свідчення.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также учтём, что нас позже официально вызовут дать показания.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> einfach hoffen, dass die Polizei den Einbrecher schnell verhaften kann.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> simply hope that the police can arrest the burglar quickly.<br><r>Are you okay with that</r>, Mark?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> просто сподівалися, що поліція швидко заарештує грабіжника.<br><r>Ти з цим згоден</r>, Марку?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> просто надеялись, что полиция быстро арестует грабителя.<br><r>Ты с этим согласен</r>, Марк?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir zeigen den Einbruch bei der Polizei an, schauen, was gestohlen wurde, betreten den Tatort nicht, beschreiben den Verdächtigen genau, überlegen uns unsere Aussage, machen ein Foto als Beweis, rechnen mit einer Vorladung und hoffen, dass die Polizei den Einbrecher bald verhaftet. Ich hoffe wirklich, dass alles gut ausgeht! Danke für die Idee, Nina!",
+      "en": "Yes, of course! So, we report the break-in to the police, check what was stolen, don't enter the crime scene, describe the suspect exactly, think about our testimony, take a photo as evidence, expect to be summoned, and hope the police arrest the burglar soon. I really hope everything turns out well! Thanks for the idea, Nina!",
+      "uk": "Так, звісно! Отже, ми заявляємо про пограбування в поліцію, дивимося, що вкрали, не заходимо на місце злочину, точно описуємо підозрюваного, обдумуємо свої свідчення, робимо фото як доказ, враховуємо можливий виклик і сподіваємося, що поліція скоро заарештує грабіжника. Я справді сподіваюся, що все закінчиться добре! Дякую за ідею, Ніно!",
+      "ru": "Да, конечно! Итак, мы заявляем об ограблении в полицию, смотрим, что украли, не заходим на место преступления, точно описываем подозреваемого, обдумываем свои показания, делаем фото как доказательство, учитываем возможный вызов и надеемся, что полиция скоро арестует грабителя. Я действительно надеюсь, что всё закончится хорошо! Спасибо за идею, Нина!"
+    },
+    "gram": ""
   }
 ];
 
