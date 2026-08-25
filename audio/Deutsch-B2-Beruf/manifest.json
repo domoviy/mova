@@ -36192,5 +36192,10 @@
   "Deutsch-B2-Beruf/de/085/dlg/dlg_106_task_de_085": "fd53a31008+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_107_task_de_085": "d1a8f8e0f0+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_108_task_de_085": "ff6b30b5a0+t",
-  "Deutsch-B2-Beruf/de/100/email/email_018_mail_boss_de_100": "d29d273328+t"
+  "Deutsch-B2-Beruf/de/100/email/email_018_mail_boss_de_100": "d29d273328+t",
+  "Deutsch-B2-Beruf/de/100/email/email_018_mail_client_de_100": "ca8fffa202+t",
+  "Deutsch-B2-Beruf/de/100/email/email_018_anrede_de_100": "ee7b866265+t",
+  "Deutsch-B2-Beruf/de/100/email/email_018_bezugnahme_de_100": "bd28cb9250+t",
+  "Deutsch-B2-Beruf/de/100/email/email_018_entschuldigung_de_100": "4b41dd117c+t",
+  "Deutsch-B2-Beruf/de/100/email/email_018_grund_de_100": "b357760ca8+t"
 }
