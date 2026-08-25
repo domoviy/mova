@@ -181,7 +181,12 @@ VOICE_MAPPING = {
     },
     "redemittel": {
         "q": {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural",       "ru": "ru-RU-SvetlanaNeural"},
-        "a": {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
+        "a": {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        # 'task' (dlg_task в index.html) — контекст ПЕРЕД діалогом,
+        # НЕ репліка жодного з двох співрозмовників (q/a) — окремий,
+        # третій голос, щоб на слух було очевидно "це не репліка", а
+        # вступ/умова завдання.
+        "task": {"de": "de-DE-FlorianMultilingualNeural", "uk": "uk-UA-OstapNeural", "en": "en-GB-RyanNeural", "ru": "ru-RU-DmitryNeural"}
     },
     # Forumsbeitrag (forum_XXX) — один автор на весь допис (не 2 ролі,
     # як у redemittel q/a). Голос шукаємо СПЕРШУ за card.name (id
@@ -377,12 +382,17 @@ def resolve_character_voice(characters_list, stored_id, target_lang):
     return None
 
 def redemittel_fields(item):
-    """Впорядкований список полів-реплік ОДНІЄЇ картки dlg_XXX: базові
-    q/a завжди присутні, далі — за наявності в даних — q1/a1, q2/a2,
-    ... доки в картці є хоч одне з полів наступного номера. Точна
-    копія логіки _dlgCardTurns() з index.html — тримати синхронізовано,
-    інакше pregen-аудіо розійдеться з тим, які репліки показує клієнт."""
-    fields = ['q', 'a']
+    """Впорядкований список полів-реплік ОДНІЄЇ картки dlg_XXX: 'task'
+    (контекст ПЕРЕД діалогом, dlg_task у index.html — не належить
+    жодному з двох співрозмовників) першим, далі — базові q/a завжди
+    присутні, потім — за наявності в даних — q1/a1, q2/a2, ... доки в
+    картці є хоч одне з полів наступного номера. Точна копія логіки
+    _dlgCardTurns()/units-побудови в index.html — тримати
+    синхронізовано, інакше pregen-аудіо розійдеться з тим, які репліки
+    показує клієнт. Порожній per-мова текст 'task' (типово в картках
+    без вступу) природно відсіюється нижче за загальним чеком
+    порожнього тексту — не треба перевіряти тут."""
+    fields = ['task', 'q', 'a']
     n = 1
     while n <= 30 and (f'q{n}' in item or f'a{n}' in item):
         if f'q{n}' in item: fields.append(f'q{n}')
@@ -1543,17 +1553,25 @@ async def main():
                         continue
 
                     if internal_cat == "redemittel":
-                        # 'q','q1','q2',... озвучує персонаж з name_q;
-                        # 'a','a1','a2',... — персонаж з name_a. Голос
-                        # шукаємо в CHARACTERS за (id, мова); якщо картка
-                        # ще не має name_q/name_a або персонажа для цієї
-                        # мови не описано — падаємо назад на дефолтний
-                        # голос ролі з VOICE_MAPPING (стара поведінка).
-                        role = "q" if field.startswith("q") else "a"
-                        persona_id = item.get("name_q" if role == "q" else "name_a")
-                        voice = resolve_character_voice(characters_list, persona_id, lang)
-                        if not voice:
-                            voice = get_voice_id(internal_cat, role, lang)
+                        if field == "task":
+                            # Контекст ПЕРЕД діалогом — НЕ репліка q чи a,
+                            # тож не резолвимо через name_q/name_a (це дало
+                            # б хибне "startswith('q')==False → роль a" і
+                            # озвучило вступ голосом ДРУГОГО співрозмовника).
+                            # Окремий, нейтральний голос з VOICE_MAPPING.
+                            voice = get_voice_id(internal_cat, "task", lang)
+                        else:
+                            # 'q','q1','q2',... озвучує персонаж з name_q;
+                            # 'a','a1','a2',... — персонаж з name_a. Голос
+                            # шукаємо в CHARACTERS за (id, мова); якщо картка
+                            # ще не має name_q/name_a або персонажа для цієї
+                            # мови не описано — падаємо назад на дефолтний
+                            # голос ролі з VOICE_MAPPING (стара поведінка).
+                            role = "q" if field.startswith("q") else "a"
+                            persona_id = item.get("name_q" if role == "q" else "name_a")
+                            voice = resolve_character_voice(characters_list, persona_id, lang)
+                            if not voice:
+                                voice = get_voice_id(internal_cat, role, lang)
                     else:
                         voice = get_voice_id(internal_cat, field, lang)
                     rates = audio_config.get(lang, ["100"])
