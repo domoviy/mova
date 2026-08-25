@@ -1210,6 +1210,16 @@ body{
 
 /* Inline слот у реченні */
 .def-slot {
+  display:inline;
+  margin:0 2px;
+  cursor:default;
+  transition:background .15s, border-color .15s, color .15s;
+}
+/* Порожній слот — єдиний, що лишається "плашкою" (бокс із висотою):
+   тут vertical-align:middle і top-компенсація виправдані, бо це просто
+   візуальне місце-заглушка, не символи тексту, вирівнювати по базовій
+   лінії нема чого. */
+.def-slot.empty {
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -1217,47 +1227,36 @@ body{
   height:32px;
   border-bottom:2.5px solid rgba(201,168,76,.6);
   padding:0 6px;
-  margin:0 2px;
   vertical-align:middle;
   /* vertical-align:middle центрує бокс відносно точки 0.5×x-height НАД
-     базовою лінією тексту — а не відносно візуального центру великих
-     літер/цифр рядка. Плашка (32px) явно вища за x-height шрифту, тож
-     її геометричний центр виявляється НИЖЧЕ візуального центру тексту
-     навколо — те й "трохи нижче основного тексту". position:relative +
-     top тут НЕ впливає на розрахунок висоти рядка/перенесення (на
-     відміну від margin-top) — лише візуально зсуває вже готовий inline-
-     бокс, тож текст навколо (і перенесення слова/коми після слота,
-     див. коментар у defBuildQuestion) лишається незмінним. */
+     базовою лінією тексту, а не відносно візуального центру великих
+     літер/цифр рядка — тому невеликий top-зсув компенсує цю різницю
+     (стосується лише порожнього боксу-заглушки; заповнене слово нижче
+     взагалі не має боксу, тож цей розрахунок йому не потрібен). */
   position:relative;
   top:-3px;
-  border-radius:6px 6px 0 0;
-  transition:background .15s, border-color .15s;
-  cursor:default;
-}
-/* Порожній слот — пульсуючий підкреслення */
-.def-slot.empty {
-  min-width:64px;
   background:rgba(201,168,76,.06);
-  border-bottom-color:rgba(201,168,76,.5);
+  border-radius:6px 6px 0 0;
 }
-/* Заповнений слот — стає кнопкою */
+/* Заповнений слот — БЕЗ плашки: звичайний inline-текст іншого кольору
+   з підкресленням замість боксу. Це усуває саму причину "трохи вище/
+   нижче основного тексту" — inline-текст без display:inline-flex і
+   fixed height природно стоїть на тій самій базовій лінії, що й решта
+   речення, жодного vertical-align тут не потрібно. */
 .def-slot.filled {
-  background:rgba(201,168,76,.18);
-  border-bottom-color:var(--gold);
-  cursor:pointer;
   color:var(--gold-lt);
   font-weight:700;
   font-size:var(--fs-card);
   font-family:'Inter',sans-serif;
+  border-bottom:2px solid var(--gold);
+  padding-bottom:1px;
+  cursor:pointer;
   -webkit-tap-highlight-color:transparent;
   touch-action:manipulation;
   user-select:none;
   -webkit-user-select:none;
-  border-radius:6px;
-  border:1.5px solid rgba(201,168,76,.5);
-  padding:2px 8px;
 }
-.def-slot.filled:active { opacity:.75; transform:scale(.96); }
+.def-slot.filled:active { opacity:.7; }
 
 /* Drag-ghost для слота */
 .def-slot-ghost {
@@ -1280,21 +1279,21 @@ body{
   align-items:center;
   justify-content:center;
 }
-/* Слот-підсвітка під час drag */
+/* Слот-підсвітка під час drag (актуально насамперед для .empty —
+   заповнений слот тепер без боксу, тож тут працює лише колір/бордер) */
 .def-slot.drag-over {
   background:rgba(201,168,76,.28);
   border-color:var(--gold);
 }
-/* Після перевірки */
+/* Після перевірки — без плашки, той самий принцип, що .filled: лише
+   колір і підкреслення. */
 .def-slot.slot-correct {
-  background:rgba(46,204,113,.18);
-  border-color:#2ecc71;
   color:#27ae60;
+  border-bottom-color:#2ecc71;
 }
 .def-slot.slot-wrong {
-  background:rgba(231,76,60,.14);
-  border-color:#e74c3c;
   color:#c0392b;
+  border-bottom-color:#e74c3c;
 }
 .tiles-question{
   background:var(--forest);border-radius:16px;
@@ -1436,7 +1435,7 @@ body{
 }
 .tiles-result-icon{font-size:44px;line-height:1;}
 .tiles-result-label{font-size:var(--fs-tertiary);font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
-.tiles-result-correct{font-size:var(--fs-card);font-weight:700;color:var(--ink);text-align:center;line-height:1.3;}
+.tiles-result-correct{font-size:var(--fs-card);font-weight:400;color:var(--ink);text-align:center;line-height:1.3;}
 .tiles-result-translation{font-size:var(--fs-secondary);color:var(--muted);line-height:1.3;text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
 .course-emoji{font-size:24px}
 .course-title{display:block;font-weight:700;font-size:var(--fs-tertiary);color:var(--ink)}
@@ -2918,9 +2917,13 @@ body.lesson-active .vocab-top{
             stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
-      <!-- MOVA: літери з mova_monoline_animiert.svg, статичні (вже намальовані) -->
+      <!-- MOVA: літери з mova_monoline_animiert.svg, статичні (вже намальовані).
+           Розмір навмисно вдвічі менший за іконку-хвилю зліва (13px/36.5px
+           замість 26px/73px) — viewBox лишається той самий (38 448 634 226),
+           тож пропорції напису не спотворюються, зменшується лише масштаб
+           відображення. -->
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="38 448 634 226"
-           style="height:26px;width:73px;display:block;flex-shrink:0;overflow:visible" aria-label="MOVA">
+           style="height:13px;width:36.5px;display:block;flex-shrink:0;overflow:visible" aria-label="MOVA">
         <!-- M -->
         <path d="M 50,660 L 50,460 L 99,560 L 148,460 L 148,660"
           fill="none" stroke="#c9a84c" stroke-width="35"
@@ -3558,7 +3561,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '550-122e136';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────

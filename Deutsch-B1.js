@@ -4510,7 +4510,8 @@ var LESSONS = [
       "dlg_057",
       "dlg_058",
       "dlg_059",
-      "dlg_060"
+      "dlg_060",
+      "dlg_146"
     ]
   },
   {
@@ -4547,7 +4548,10 @@ var LESSONS = [
       "k15_047"
     ],
     "unlockAfter": "k15m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_147"
+    ]
   },
   {
     "id": "k15m5",
@@ -4583,7 +4587,10 @@ var LESSONS = [
       "k15_050"
     ],
     "unlockAfter": "k15m4",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_148"
+    ]
   },
   {
     "id": "k16m1",
@@ -4624,7 +4631,8 @@ var LESSONS = [
       "dlg_061",
       "dlg_062",
       "dlg_063",
-      "dlg_064"
+      "dlg_064",
+      "dlg_149"
     ]
   },
   {
@@ -32129,6 +32137,302 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, мы радуемся смеющимся детям на празднике, рассказываем ему об ожидающей толпе и растущем числе натурализаций, объясняем ему существующие условия, говорим о растущей проблеме со временем ожидания, спрашиваем об отзывчивой сотруднице, предлагаем убедительное объяснение для его речи и говорим ему, что тягостная ситуация теперь закончилась. Его немецкое гражданство – это настоящее основное право, которым он может гордиться! Спасибо за идею, Юлия!"
     },
     "gram": "partizip1_als_adjektiv"
+  },
+  {
+    "id": "dlg_146",
+    "cat": "Einbürgerungsantrag gemeinsam überprüfen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Ihr Freund muss seinen Einbürgerungsantrag endlich fertig machen, und Sie möchten ihm beim letzten Check helfen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin, was Sie noch überprüfen.\nDiese Punkte helfen Ihnen:\nSind alle Dokumente vollständig ausgefüllt?\nHat er die Prüfung schon bestanden und den Integrationskurs abgeschlossen?\nGibt es noch offene Fristen oder Anfragen?\nWann ist sein nächster Termin?\nSind alle Nachweise beglaubigt?",
+      "en": "Situation: Your friend finally has to finish his naturalisation application, and you want to help him with the final check.\nTask: Plan together with your conversation partner what else you'll check.\nThese points will help you:\nAre all the documents completely filled out?\nHas he already passed the exam and completed the integration course?\nAre there any open deadlines or inquiries?\nWhen is his next appointment?\nAre all the certificates notarised?",
+      "uk": "Ситуація: Ваш друг нарешті має завершити свою заяву на натуралізацію, і Ви хочете допомогти йому з останньою перевіркою.\nЗавдання: Сплануйте разом зі своєю співрозмовницею, що Ви ще перевірите.\nЦі пункти Вам допоможуть:\nЧи всі документи повністю заповнені?\nЧи він уже склав іспит і завершив інтеграційний курс?\nЧи є ще відкриті строки чи запити?\nКоли його наступна зустріч?\nЧи всі підтвердження завірені?",
+      "ru": "Ситуация: Ваш друг наконец должен закончить свою заявку на натурализацию, и Вы хотите помочь ему с последней проверкой.\nЗадание: Спланируйте вместе со своей собеседницей, что Вы ещё проверите.\nЭти пункты Вам помогут:\nВсе ли документы полностью заполнены?\nСдал ли он уже экзамен и завершил интеграционный курс?\nЕсть ли ещё открытые сроки или запросы?\nКогда его следующая встреча?\nВсе ли подтверждения заверены?"
+    },
+    "name_q": "de_w_julia",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo, Anna! Unser Freund muss seinen Einbürgerungsantrag endlich fertig machen. Wollen wir zusammen alles noch einmal durchgehen?",
+      "en": "Hi, Anna! Our friend finally has to finish his naturalisation application. Shall we go through everything together once more?",
+      "uk": "Привіт, Анно! Наш друг нарешті має завершити свою заяву на натуралізацію. Може, разом ще раз усе переглянемо?",
+      "ru": "Привет, Анна! Наш друг наконец должен закончить свою заявку на натурализацию. Может, вместе ещё раз всё просмотрим?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten zuerst prüfen, ob jedes <g>ausgefüllte Dokument</g> auch wirklich vollständig ist.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> We could first check whether every <g>filled-out document</g> is really complete.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Ми могли б спочатку перевірити, чи справді повний кожен <g>заповнений документ</g>.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Мы могли бы сначала проверить, действительно ли полон каждый <g>заполненный документ</g>.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die doppelte Staatsbürgerschaft <r>bedenken</r>.<br><r>Wir könnten doch</r> auch checken, ob er den Nachweis über die <g>bestandene Prüfung</g> schon eingereicht hat.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the dual citizenship.<br><r>We could</r> also check whether he has already submitted proof of the <g>passed exam</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> подвійне громадянство.<br><r>Ми могли б</r> також перевірити, чи вже подав він підтвердження про <g>складений іспит</g>.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> двойном гражданстве.<br><r>Мы могли бы</r> также проверить, подал ли он уже подтверждение о <g>сданном экзамене</g>.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch checken, dass keine <g>verpasste Frist</g> das Ganze verzögert.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> also check that no <g>missed deadline</g> is delaying the whole thing.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> також перевірили, що жоден <g>пропущений строк</g> не затримує весь процес.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также проверили, что ни один <g>пропущенный срок</g> не задерживает весь процесс.<br><r>Ты согласна с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> auch nachschauen, ob jede <g>beantwortete Anfrage</g> vom Amt richtig gespeichert ist?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also check whether every <g>answered inquiry</g> from the authority is properly saved?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також перевіримо, чи правильно збережено кожен <g>опрацьований запит</g> від відомства?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также проверим, правильно ли сохранён каждый <g>обработанный запрос</g> от ведомства?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob die Glaubensfreiheit im Grundgesetz-Test überhaupt drankommt.<br><r>Eine Idee wäre, dass wir</r> eine Kopie der <g>eingereichten Bewerbung</g> für ihn selbst aufheben.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> whether freedom of religion even comes up in the constitution test.<br><r>One idea would be that we</r> keep a copy of the <g>submitted application</g> for himself.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи взагалі трапляється свобода віросповідання в тесті з основ права.<br><r>Була б ідея, щоб ми</r> зберегли для нього самого копію <g>поданої заявки</g>.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> встречается ли вообще свобода вероисповедания в тесте по основам права.<br><r>Была бы идея, чтобы мы</r> сохранили для него самого копию <g>поданной заявки</g>.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir den Integrationskurs schon richtig eingeplant haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> auch noch mal den <g>vereinbarten Termin</g> beim Amt bestätigen, damit nichts schiefgeht.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we've already planned the integration course correctly.<br><r>Maybe it would be best if we</r> also confirm the <g>arranged appointment</g> at the office once more, so that nothing goes wrong.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи ми вже правильно спланували інтеграційний курс.<br><r>Можливо, було б найкраще, якби ми</r> ще раз підтвердили <g>домовлену зустріч</g> у відомстві, щоб нічого не пішло не так.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверена</r>, правильно ли мы уже спланировали интеграционный курс.<br><r>Может быть, было бы лучше, если бы мы</r> ещё раз подтвердили <g>назначенную встречу</g> в ведомстве, чтобы ничего не пошло не так.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch die Bescheinigung über den <g>abgeschlossenen Integrationskurs</g> noch mal heraussuchen.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also find the certificate for the <g>completed integration course</g> again.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також ще раз знайдемо довідку про <g>завершений інтеграційний курс</g>.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также ещё раз найдём справку о <g>завершённом интеграционном курсе</g>.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> am Ende noch prüfen, ob jeder <g>beglaubigte Nachweis</g> wirklich dabei ist.<br><r>Bist du damit einverstanden</r>, Anna?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> also check at the end whether every <g>certified document</g> is really included.<br><r>Are you okay with that</r>, Anna?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> наприкінці ще перевіримо, чи справді на місці кожне <g>завірене підтвердження</g>.<br><r>Ти з цим згодна</r>, Анно?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> в конце ещё проверим, действительно ли на месте каждое <g>заверенное подтверждение</g>.<br><r>Ты с этим согласна</r>, Анна?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir prüfen jedes ausgefüllte Dokument, checken die bestandene Prüfung und die verpasste Frist, schauen jede beantwortete Anfrage an, heben eine Kopie der eingereichten Bewerbung auf, bestätigen den vereinbarten Termin, suchen die Bescheinigung für den abgeschlossenen Integrationskurs heraus und prüfen jeden beglaubigten Nachweis. Dann steht seiner doppelten Staatsbürgerschaft nichts mehr im Wege! Danke für die Idee, Julia!",
+      "en": "Yes, of course! So, we check every filled-out document, the passed exam and the missed deadline, look at every answered inquiry, keep a copy of the submitted application, confirm the arranged appointment, find the certificate for the completed integration course, and check every certified document. Then nothing will stand in the way of his dual citizenship! Thanks for the idea, Julia!",
+      "uk": "Так, звісно! Отже, ми перевіряємо кожен заповнений документ, складений іспит і пропущений строк, дивимося кожен опрацьований запит, зберігаємо копію поданої заявки, підтверджуємо домовлену зустріч, знаходимо довідку про завершений інтеграційний курс і перевіряємо кожне завірене підтвердження. Тоді нічого не стоятиме на шляху його подвійного громадянства! Дякую за ідею, Юліє!",
+      "ru": "Да, конечно! Итак, мы проверяем каждый заполненный документ, сданный экзамен и пропущенный срок, смотрим каждый обработанный запрос, сохраняем копию поданной заявки, подтверждаем назначенную встречу, находим справку о завершённом интеграционном курсе и проверяем каждое заверенное подтверждение. Тогда ничто не будет стоять на пути его двойного гражданства! Спасибо за идею, Юлия!"
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "dlg_147",
+    "cat": "Alternativen für den Amtsbesuch planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Ihr Freund muss zum Amt, um seine Papiere zu verlängern, und er weiß nicht genau, was er mitnehmen muss.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, welche Alternativen es gibt.\nDiese Punkte helfen Ihnen:\nBraucht er den Reisepass oder reicht der Ausweis?\nMeldet er den Wohnsitz online oder geht er persönlich?\nBraucht er einen Zeugen?\nAkzeptiert das Amt eine Kopie?\nBekommt er heute oder erst morgen einen Termin?",
+      "en": "Situation: Your friend has to go to the office to renew his papers, and he doesn't know exactly what to bring.\nTask: Plan together with your conversation partner what alternatives there are.\nThese points will help you:\nDoes he need the passport, or is the ID card enough?\nDoes he register his residence online, or does he go in person?\nDoes he need a witness?\nDoes the office accept a copy?\nDoes he get an appointment today or only tomorrow?",
+      "uk": "Ситуація: Ваш друг має піти у відомство, щоб продовжити свої документи, і він точно не знає, що взяти з собою.\nЗавдання: Сплануйте разом зі своїм співрозмовником, які є альтернативи.\nЦі пункти Вам допоможуть:\nЙому потрібен закордонний паспорт чи вистачить посвідчення особи?\nВін зареєструє місце проживання онлайн чи піде особисто?\nЙому потрібен свідок?\nЧи прийме відомство копію?\nВін отримає запис сьогодні чи лише завтра?",
+      "ru": "Ситуация: Ваш друг должен пойти в ведомство, чтобы продлить свои документы, и он точно не знает, что взять с собой.\nЗадание: Спланируйте вместе со своим собеседником, какие есть альтернативы.\nЭти пункты Вам помогут:\nЕму нужен загранпаспорт или хватит удостоверения личности?\nОн зарегистрирует место жительства онлайн или пойдёт лично?\nЕму нужен свидетель?\nПримет ли ведомство копию?\nОн получит запись сегодня или только завтра?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_anna",
+    "q": {
+      "de": "Hallo, Anna! Unser Freund muss zum Amt, um seine Papiere zu verlängern, aber er weiß nicht genau, was er alles mitnehmen muss. Wollen wir zusammen die Möglichkeiten durchgehen?",
+      "en": "Hi, Anna! Our friend has to go to the office to renew his papers, but he doesn't know exactly what he needs to bring. Shall we go through the options together?",
+      "uk": "Привіт, Анно! Наш друг має піти у відомство, щоб продовжити свої документи, але він точно не знає, що йому взяти з собою. Може, разом розглянемо варіанти?",
+      "ru": "Привет, Анна! Наш друг должен пойти в ведомство, чтобы продлить свои документы, но он точно не знает, что ему взять с собой. Может, вместе рассмотрим варианты?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> <g>Entweder</g> bringt er seinen Reisepass mit, <g>oder</g> er zeigt einfach seinen Ausweis, beides sollte reichen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> <g>Either</g> he brings his passport, <g>or</g> he just shows his ID card, either should be enough.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> <g>Або</g> він візьме із собою закордонний паспорт, <g>або</g> просто покаже посвідчення особи, обох варіантів має бути достатньо.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> <g>Либо</g> он возьмёт с собой загранпаспорт, <g>либо</g> просто покажет удостоверение личности, обоих вариантов должно быть достаточно.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Wohnsitz <r>bedenken</r>.<br><r>Wir könnten doch</r> ihm sagen: <g>Entweder</g> meldet er seinen Wohnsitz online, <g>oder</g> er geht persönlich zum Amt.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the residence.<br><r>We could</r> tell him: <g>either</g> he registers his residence online, <g>or</g> he goes to the office in person.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> місце проживання.<br><r>Ми могли б</r> сказати йому: <g>або</g> він зареєструє місце проживання онлайн, <g>або</g> піде особисто у відомство.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> месте жительства.<br><r>Мы могли бы</r> сказать ему: <g>либо</g> он зарегистрирует место жительства онлайн, <g>либо</g> пойдёт лично в ведомство.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> ihm sagen: <g>Entweder</g> verlängert er sein Aufenthaltsrecht schon jetzt, <g>oder</g> er wartet noch einen Monat und riskiert eine lange Warteliste.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> tell him: <g>either</g> he renews his right of residence right now, <g>or</g> he waits another month and risks a long waiting list.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> сказали йому: <g>або</g> він продовжить право на проживання вже зараз, <g>або</g> зачекає ще місяць і ризикне довгою чергою.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> сказали ему: <g>либо</g> он продлит право на проживание уже сейчас, <g>либо</g> подождёт ещё месяц и рискнёт долгой очередью.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> ihm sagen, <g>entweder</g> bringt er die Meldebescheinigung schon mit, <g>oder</g> er holt sie sich direkt vor Ort?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> tell him, <g>either</g> he brings the registration certificate along, <g>or</g> he gets it right there on site?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> скажемо йому: <g>або</g> він принесе довідку про реєстрацію з собою, <g>або</g> отримає її прямо на місці?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> скажем ему: <g>либо</g> он принесёт справку о регистрации с собой, <g>либо</g> получит её прямо на месте?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob er überhaupt einen Zeugen braucht.<br><r>Eine Idee wäre, dass wir</r> ihm erklären: <g>Entweder</g> nimmt er einen Zeugen mit, <g>oder</g> er geht allein, das hängt vom Amt ab.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> whether he even needs a witness.<br><r>One idea would be that we</r> explain to him: <g>either</g> he brings a witness along, <g>or</g> he goes alone, that depends on the office.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи потрібен йому взагалі свідок.<br><r>Була б ідея, щоб ми</r> пояснили йому: <g>або</g> він візьме із собою свідка, <g>або</g> піде сам, це залежить від відомства.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> нужен ли ему вообще свидетель.<br><r>Была бы идея, чтобы мы</r> объяснили ему: <g>либо</g> он возьмёт с собой свидетеля, <g>либо</g> пойдёт один, это зависит от ведомства.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob das Amt überhaupt Kopien akzeptiert.<br><r>Vielleicht wäre es am besten, wenn wir</r> vorher fragen: <g>Entweder</g> akzeptiert das Amt eine Kopie, <g>oder</g> wir brauchen unbedingt das Original.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether the office even accepts copies.<br><r>Maybe it would be best if we</r> ask beforehand: <g>either</g> the office accepts a copy, <g>or</g> we definitely need the original.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи взагалі приймає відомство копії.<br><r>Можливо, було б найкраще, якби ми</r> заздалегідь запитали: <g>або</g> відомство прийме копію, <g>або</g> нам обов'язково потрібен оригінал.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, принимает ли ведомство вообще копии.<br><r>Может быть, было бы лучше, если бы мы</r> заранее спросили: <g>либо</g> ведомство примет копию, <g>либо</g> нам обязательно нужен оригинал.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch klären, ob er <g>entweder</g> heute <g>oder</g> erst morgen einen Termin bekommt.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also clarify whether he gets an appointment <g>either</g> today <g>or</g> only tomorrow.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також з'ясуємо, чи отримає він запис <g>або</g> сьогодні, <g>або</g> лише завтра.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также выясним, получит ли он запись <g>либо</g> сегодня, <g>либо</g> только завтра.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> ihm auch sagen, dass er sich auf die Prüfung vorbereitet, denn <g>entweder</g> kommt eine Frage zur Demokratie dran, <g>oder</g> er hat einfach Glück.<br><r>Bist du damit einverstanden</r>, Anna?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> also tell him to prepare for the test, because <g>either</g> a question about democracy comes up, <g>or</g> he simply gets lucky.<br><r>Are you okay with that</r>, Anna?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> також скажемо йому підготуватися до тесту, адже <g>або</g> трапиться питання про демократію, <g>або</g> йому просто пощастить.<br><r>Ти з цим згодна</r>, Анно?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> также скажем ему подготовиться к тесту, ведь <g>либо</g> попадётся вопрос о демократии, <g>либо</g> ему просто повезёт.<br><r>Ты с этим согласна</r>, Анна?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir sagen ihm: entweder Reisepass oder Ausweis, entweder online oder persönlich, entweder jetzt verlängern oder warten, entweder Meldebescheinigung mitbringen oder vor Ort holen, entweder mit Zeugen oder allein, entweder Kopie oder Original, entweder heute oder morgen einen Termin, und entweder eine Demokratie-Frage oder Glück bei der Prüfung. Dann ist er bestens vorbereitet! Danke für die Idee, Alex!",
+      "en": "Yes, of course! So, we'll tell him: either passport or ID card, either online or in person, either renew now or wait, either bring the registration certificate or get it on site, either with a witness or alone, either copy or original, either an appointment today or tomorrow, and either a question about democracy or luck at the exam. Then he'll be perfectly prepared! Thanks for the idea, Alex!",
+      "uk": "Так, звісно! Отже, ми скажемо йому: або закордонний паспорт, або посвідчення особи, або онлайн, або особисто, або продовжити зараз, або зачекати, або принести довідку про реєстрацію, або отримати на місці, або зі свідком, або самому, або копія, або оригінал, або запис сьогодні, або завтра, і або питання про демократію, або удача на іспиті. Тоді він буде чудово підготовлений! Дякую за ідею, Алексе!",
+      "ru": "Да, конечно! Итак, мы скажем ему: либо загранпаспорт, либо удостоверение личности, либо онлайн, либо лично, либо продлить сейчас, либо подождать, либо принести справку о регистрации, либо получить на месте, либо со свидетелем, либо одному, либо копия, либо оригинал, либо запись сегодня, либо завтра, и либо вопрос о демократии, либо удача на экзамене. Тогда он будет прекрасно подготовлен! Спасибо за идею, Алекс!"
+    },
+    "gram": "entweder_oder"
+  },
+  {
+    "id": "dlg_148",
+    "cat": "Freund beim Einbürgerungsantrag begleiten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Ihr Freund muss den Einbürgerungsantrag vollständig ausfüllen und einreichen.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner, wie Sie ihn dabei unterstützen.\nDiese Punkte helfen Ihnen:\nWas muss er nachweisen?\nIst seine Aufenthaltserlaubnis noch gültig?\nWie hoch ist die Gebühr?\nWie bereitet er sich auf das Interview mit dem Sachbearbeiter vor?\nWarum ist es wichtig, zur Gesellschaft beizutragen?",
+      "en": "Situation: Your friend has to fill out and submit the naturalisation application completely.\nTask: Plan together with your conversation partner how you'll support him with this.\nThese points will help you:\nWhat does he need to prove?\nIs his residence permit still valid?\nHow high is the fee?\nHow does he prepare for the interview with the caseworker?\nWhy is it important to contribute to society?",
+      "uk": "Ситуація: Ваш друг має повністю заповнити й подати заяву на натуралізацію.\nЗавдання: Сплануйте разом зі своїм співрозмовником, як Ви його підтримаєте.\nЦі пункти Вам допоможуть:\nЩо йому потрібно підтвердити документально?\nЧи ще дійсний його дозвіл на проживання?\nЯкий розмір збору?\nЯк він готується до співбесіди з відповідальним працівником?\nЧому важливо робити внесок у суспільство?",
+      "ru": "Ситуация: Ваш друг должен полностью заполнить и подать заявление на натурализацию.\nЗадание: Спланируйте вместе со своим собеседником, как Вы его поддержите.\nЭти пункты Вам помогут:\nЧто ему нужно подтвердить документально?\nДействительно ли ещё его разрешение на проживание?\nКакой размер сбора?\nКак он готовится к собеседованию с ответственным сотрудником?\nПочему важно вносить вклад в общество?"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_m_mark",
+    "q": {
+      "de": "Hallo, Mark! Unser Freund muss endlich den Einbürgerungsantrag vollständig ausfüllen. Wollen wir zusammen überlegen, wie wir ihm dabei helfen können?",
+      "en": "Hi, Mark! Our friend finally has to fill out the naturalisation application completely. Shall we think together about how we can help him with that?",
+      "uk": "Привіт, Марку! Наш друг нарешті має повністю заповнити заяву на натуралізацію. Може, разом поміркуємо, як ми можемо йому в цьому допомогти?",
+      "ru": "Привет, Марк! Наш друг наконец должен полностью заполнить заявление на натурализацию. Может, вместе подумаем, как мы можем ему в этом помочь?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sollten zuerst prüfen, ob der Antrag wirklich vollständig ist und ob er seine Deutschkenntnisse gut genug nachweisen kann.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> We should first check whether the application is really complete and whether he can prove his German language skills well enough.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Нам варто спершу перевірити, чи справді заява повна і чи може він достатньо добре підтвердити свої знання німецької мови.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Нам стоит сначала проверить, действительно ли заявление полное и может ли он достаточно хорошо подтвердить свои знания немецкого языка.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Grundwerte <r>bedenken</r>, die im Antrag abgefragt werden.<br><r>Wir könnten doch</r> mit ihm zusammen die wichtigsten Fragen dazu durchgehen.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the fundamental values that are asked about in the application.<br><r>We could</r> go through the most important questions about that together with him.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> основні цінності, про які запитують у заяві.<br><r>Ми могли б</r> разом із ним пройтися по найважливіших питаннях на цю тему.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать об</r> основных ценностях, о которых спрашивают в заявлении.<br><r>Мы могли бы</r> вместе с ним пройтись по самым важным вопросам на эту тему.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch checken, ob seine Aufenthaltserlaubnis noch lange genug gültig ist.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> also check whether his residence permit is still valid for long enough.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> також перевірили, чи достатньо довго ще дійсний його дозвіл на проживання.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также проверили, действительно ли ещё достаточно долго его разрешение на проживание.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> ihm auch bei der Gebühr helfen, damit er genau weiß, wie viel er zahlen muss?<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also help him with the fee, so he knows exactly how much he needs to pay?<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також допоможемо йому зі збором, щоб він точно знав, скільки треба заплатити?<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также поможем ему со сбором, чтобы он точно знал, сколько нужно заплатить?<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie er mit der ganzen Bürokratie am besten klarkommt.<br><r>Eine Idee wäre, dass wir</r> ihm eine Liste mit allen Schritten machen, damit er nichts vergisst.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> how he can best deal with all the bureaucracy.<br><r>One idea would be that we</r> make him a list with all the steps, so he doesn't forget anything.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як йому найкраще впоратися з усією бюрократією.<br><r>Була б ідея, щоб ми</r> зробили йому список з усіма кроками, щоб він нічого не забув.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как ему лучше справиться со всей бюрократией.<br><r>Была бы идея, чтобы мы</r> сделали ему список со всеми шагами, чтобы он ничего не забыл.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob er sich schon genug auf das Interview vorbereitet hat.<br><r>Vielleicht wäre es am besten, wenn wir</r> mit ihm ein paar typische Fragen üben.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether he has already prepared enough for the interview.<br><r>Maybe it would be best if we</r> practise a few typical questions with him.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи достатньо він уже підготувався до співбесіди.<br><r>Можливо, було б найкраще, якби ми</r> потренували з ним кілька типових запитань.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, достаточно ли он уже подготовился к собеседованию.<br><r>Может быть, было бы лучше, если бы мы</r> потренировали с ним несколько типичных вопросов.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch überlegen, welche Fragen der Sachbearbeiter ihm stellen könnte.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> also think about which questions the caseworker might ask him.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також подумаємо, які запитання може поставити йому відповідальний працівник.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также подумаем, какие вопросы может задать ему ответственный сотрудник.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> ihm auch sagen, wie wichtig es ist, dass er zur Gesellschaft beiträgt.<br><r>Bist du damit einverstanden</r>, Mark?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> also tell him how important it is that he contributes to society.<br><r>Are you okay with that</r>, Mark?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> також скажемо йому, наскільки важливо робити внесок у суспільство.<br><r>Ти з цим згоден</r>, Марку?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> также скажем ему, насколько важно вносить вклад в общество.<br><r>Ты с этим согласен</r>, Марк?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir prüfen, ob der Antrag vollständig ist und die Deutschkenntnisse nachgewiesen sind, gehen die Grundwerte durch, checken die Aufenthaltserlaubnis, helfen bei der Gebühr, machen eine Liste gegen die Bürokratie, üben Fragen für das Interview mit dem Sachbearbeiter und erinnern ihn daran, wie wichtig sein Beitrag zur Gesellschaft ist. Dann kann eigentlich nichts mehr schiefgehen! Danke für die Idee, David!",
+      "en": "Yes, of course! So, we check whether the application is complete and the German skills are proven, go through the fundamental values, check the residence permit, help with the fee, make a list against the bureaucracy, practise questions for the interview with the caseworker, and remind him how important his contribution to society is. Then nothing should be able to go wrong anymore! Thanks for the idea, David!",
+      "uk": "Так, звісно! Отже, ми перевіряємо, чи повна заява і чи підтверджені знання німецької, проходимося по основних цінностях, перевіряємо дозвіл на проживання, допомагаємо зі збором, робимо список проти бюрократії, тренуємо запитання для співбесіди з відповідальним працівником і нагадуємо йому, наскільки важливий його внесок у суспільство. Тоді вже точно нічого не піде не так! Дякую за ідею, Девіде!",
+      "ru": "Да, конечно! Итак, мы проверяем, полное ли заявление и подтверждены ли знания немецкого, проходимся по основным ценностям, проверяем разрешение на проживание, помогаем со сбором, делаем список против бюрократии, тренируем вопросы для собеседования с ответственным сотрудником и напоминаем ему, насколько важен его вклад в общество. Тогда уже точно ничего не пойдёт не так! Спасибо за идею, Дэвид!"
+    },
+    "gram": ""
+  },
+  {
+    "id": "dlg_149",
+    "cat": "Fest und Reise nach der Einbürgerung planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Situation: Nach dem stressigen Einbürgerungsprozess möchten Sie und Ihr Freund feiern und danach gemeinsam verreisen.\nAufgabe: Planen Sie zusammen mit Ihrem Gesprächspartner das Fest und die Reise.\nDiese Punkte helfen Ihnen:\nWie feiern Sie, dass Sie sich erholen können?\nWen laden Sie zum Fest ein?\nWann reisen Sie ab?\nWorauf freuen Sie sich am meisten?\nWas hoffen Sie für die gemeinsame Zeit?",
+      "en": "Situation: After the stressful naturalisation process, you and your friend want to celebrate and then travel together.\nTask: Plan the party and the trip together with your conversation partner.\nThese points will help you:\nHow do you celebrate so that you can recover?\nWho do you invite to the party?\nWhen do you depart?\nWhat are you looking forward to the most?\nWhat do you hope for during your time together?",
+      "uk": "Ситуація: Після напруженого процесу натуралізації Ви та Ваш друг хочете відсвяткувати, а потім разом подорожувати.\nЗавдання: Сплануйте разом зі своїм співрозмовником свято та подорож.\nЦі пункти Вам допоможуть:\nЯк Ви святкуватимете, щоб змогти відпочити?\nКого Ви запросите на свято?\nКоли Ви вирушаєте?\nЧого Ви найбільше очікуєте?\nНа що Ви сподіваєтеся під час спільного часу?",
+      "ru": "Ситуация: После напряжённого процесса натурализации Вы и Ваш друг хотите отпраздновать, а потом вместе попутешествовать.\nЗадание: Спланируйте вместе со своим собеседником праздник и поездку.\nЭти пункты Вам помогут:\nКак Вы отпразднуете, чтобы суметь отдохнуть?\nКого Вы пригласите на праздник?\nКогда Вы отправляетесь?\nЧего Вы больше всего ждёте?\nНа что Вы надеетесь во время совместного времени?"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_m_david",
+    "q": {
+      "de": "Hallo, David! Nach dem ganzen Stress mit dem Einbürgerungsantrag haben wir uns wirklich eine Feier verdient. Wollen wir zusammen planen, wie wir feiern und danach verreisen?",
+      "en": "Hi, David! After all the stress with the naturalisation application, we've really earned a celebration. Shall we plan together how we celebrate and then travel afterwards?",
+      "uk": "Привіт, Девіде! Після всього цього стресу із заявою на натуралізацію ми справді заслужили свято. Може, разом сплануємо, як ми святкуватимемо, а потім вирушимо в подорож?",
+      "ru": "Привет, Дэвид! После всего этого стресса с заявлением на натурализацию мы действительно заслужили праздник. Может, вместе спланируем, как мы отпразднуем, а потом отправимся в путешествие?"
+    },
+    "a": {
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sollten ein großes Fest organisieren, <g>denn</g> wir haben wirklich hart dafür gearbeitet.<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> We should organise a big party, <g>because</g> we really worked hard for this.<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Нам варто організувати велике свято, <g>адже</g> ми справді важко над цим працювали.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Нам стоит организовать большой праздник, <g>ведь</g> мы действительно тяжело для этого работали.<br><r>Что ты думаешь?</r>"
+    },
+    "q1": {
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> das Budget <r>bedenken</r>.<br><r>Wir könnten doch</r> ein einfaches Fest machen, <g>aber</g> wir laden trotzdem genug Gäste ein.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also think about</r> the budget.<br><r>We could</r> have a simple party, <g>but</g> still invite enough guests.<br><r>How do you find that?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> бюджет.<br><r>Ми могли б</r> зробити просте свято, <g>але</g> все одно запросити достатньо гостей.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> бюджете.<br><r>Мы могли бы</r> устроить простой праздник, <g>но</g> всё равно пригласить достаточно гостей.<br><r>Как тебе такая идея?</r>"
+    },
+    "a1": {
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> alle Freunde einladen, <g>deshalb sollten</g> wir schon jetzt eine Liste machen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> invite all our friends, <g>so we should</g> make a list right away.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> запросили всіх друзів, <g>тому нам варто</g> вже зараз скласти список.<br><r>Ти згоден з цим?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> пригласили всех друзей, <g>поэтому нам стоит</g> уже сейчас составить список.<br><r>Ты согласен с этим?</r>"
+    },
+    "q2": {
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> das Fest an einem Wochentag machen? Viele sind müde vom Alltag, <g>trotzdem kommen</g> sie bestimmt gern.<br><r>Passt dir das so?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> hold the party on a weekday? Many people are tired from everyday life, but they'll <g>still come</g> gladly.<br><r>Does that work for you?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> проведемо свято в буденний день? Багато хто втомлений від щоденних справ, але <g>все одно прийдуть</g> із задоволенням.<br><r>Тобі це підходить?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> проведём праздник в будний день? Многие устали от повседневных дел, но <g>всё равно придут</g> с удовольствием.<br><r>Тебе это подходит?</r>"
+    },
+    "a2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wann wir am besten abreisen.<br><r>Eine Idee wäre, dass wir</r> die Reise erst eine Woche nach dem Fest planen, <g>weil</g> wir uns danach richtig erholen <g>wollen</g>.<br><r>Was hältst du davon?</r>",
+      "en": "<r>That's okay with me, however we'd still need to clarify</r> when we should best depart.<br><r>One idea would be that we</r> plan the trip only a week after the party, <g>because</g> we want to properly recover afterwards.<br><r>What do you think of that?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> коли нам краще виїжджати.<br><r>Була б ідея, щоб ми</r> запланували подорож лише через тиждень після свята, <g>бо</g> ми хочемо потім по-справжньому відпочити.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> когда нам лучше отправляться.<br><r>Была бы идея, чтобы мы</r> запланировали поездку только через неделю после праздника, <g>потому что</g> мы хотим потом по-настоящему отдохнуть.<br><r>Что ты на это скажешь?</r>"
+    },
+    "q3": {
+      "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir schon sicher sagen können, dass wir genug Zeit haben.<br><r>Vielleicht wäre es am besten, wenn wir</r> erst mal checken, <g>dass</g> wir wirklich genug Urlaubstage für die Reise <g>haben</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Hmm, I'm not so sure</r> whether we can already say for sure that we have enough time.<br><r>Maybe it would be best if we</r> first check <g>that</g> we really have enough vacation days for the trip.<br><r>What do you think about that?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи можемо ми вже точно сказати, що маємо достатньо часу.<br><r>Можливо, було б найкраще, якби ми</r> спершу перевірили, <g>що</g> в нас справді достатньо відпускних днів для подорожі.<br><r>Що ти про це думаєш?</r>",
+      "ru": "<r>Хм, я не совсем уверен</r>, можем ли мы уже точно сказать, что у нас достаточно времени.<br><r>Может быть, было бы лучше, если бы мы</r> сначала проверили, <g>что</g> у нас действительно достаточно отпускных дней для поездки.<br><r>Что ты об этом думаешь?</r>"
+    },
+    "a3": {
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> die Reise schon buchen, <g>wenn</g> wir uns beide sicher <g>sind</g>.<br><r>Wie siehst du das?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's</r> already book the trip <g>once</g> we're both sure.<br><r>How do you see it?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> забронюємо подорож, <g>якщо</g> ми обидва впевнені.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> забронируем поездку, <g>если</g> мы оба уверены.<br><r>Как ты на это смотришь?</r>"
+    },
+    "q4": {
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> uns jetzt schon auf die Reise freuen, <g>obwohl</g> wir noch etwas erschöpft vom Antrag <g>sind</g>.<br><r>Bist du damit einverstanden</r>, David?",
+      "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> already look forward to the trip now, <g>even though</g> we're still a bit exhausted from the application.<br><r>Are you okay with that</r>, David?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> вже зараз тішилися подорожі, <g>хоча</g> ми ще трохи виснажені після заяви.<br><r>Ти з цим згоден</r>, Девіде?",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> уже сейчас радовались поездке, <g>хотя</g> мы ещё немного измотаны после заявления.<br><r>Ты с этим согласен</r>, Дэвид?"
+    },
+    "a4": {
+      "de": "Ja, klar! Also, wir organisieren ein Fest, laden alle Freunde ein, planen die Reise eine Woche danach, checken unsere Urlaubstage, buchen die Reise und freuen uns schon jetzt darauf. Ich hoffe, wir können uns danach wirklich gut erholen, bevor wir wieder abreisen müssen zur Arbeit! Danke für die Idee, Alex!",
+      "en": "Yes, of course! So, we organise a party, invite all our friends, plan the trip a week later, check our vacation days, book the trip, and already look forward to it now. I hope we can really recover well afterwards, before we have to depart again for work! Thanks for the idea, Alex!",
+      "uk": "Так, звісно! Отже, ми організовуємо свято, запрошуємо всіх друзів, плануємо подорож через тиждень, перевіряємо наші відпускні дні, бронюємо подорож і вже зараз тішимося їй. Сподіваюся, ми зможемо справді добре відпочити, перш ніж знову доведеться виїжджати на роботу! Дякую за ідею, Алексе!",
+      "ru": "Да, конечно! Итак, мы организуем праздник, приглашаем всех друзей, планируем поездку через неделю, проверяем наши отпускные дни, бронируем поездку и уже сейчас радуемся ей. Надеюсь, мы сможем действительно хорошо отдохнуть, прежде чем снова придётся отправляться на работу! Спасибо за идею, Алекс!"
+    },
+    "gram": "satzverbindungen_ueberblick"
   }
 ];
 
