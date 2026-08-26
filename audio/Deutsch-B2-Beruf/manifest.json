@@ -33431,7 +33431,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_033_q7_de_100": "71c7be7030+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_033_a7_de_100": "4219018e12+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_033_q8_de_100": "008c93d47c+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_033_a8_de_100": "05dae0c47f+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_033_a8_de_100": "a9b70be40c+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_034_q_de_100": "d7a6e58401+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_034_a_de_100": "91f151c5d0+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_034_q1_de_100": "9cc0676ebb+t",
@@ -33467,7 +33467,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_035_q7_de_100": "3600998237+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_035_a7_de_100": "a87c8e6721+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_035_q8_de_100": "a1ed63ad84+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_035_a8_de_100": "d22af3cb18+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_035_a8_de_100": "a19c1007f5+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_032_q_de_085": "a20b0aa231+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_032_a_de_085": "b28b718148+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_032_q1_de_085": "717c57ca77+t",
@@ -33743,7 +33743,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_q7_de_100": "ccf52c833f+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_a7_de_100": "1ccf8cdbd6+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_q8_de_100": "2d59c058e0+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_041_a8_de_100": "a5625efbab+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_041_a8_de_100": "62e581c462+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_040_q_de_085": "cc0f40b560+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_040_a_de_085": "fe569176d8+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_040_q1_de_085": "1ffa1d93c2+t",
@@ -36245,5 +36245,7 @@
   "Deutsch-B2-Beruf/de/085/email/email_020_grund_de_085": "bf9b3eae3f+t",
   "Deutsch-B2-Beruf/de/085/email/email_020_loesung_de_085": "f930b91fe4+t",
   "Deutsch-B2-Beruf/de/085/email/email_020_grussformel_de_085": "d97e8aaafd+t",
-  "Deutsch-B2-Beruf/de/085/email/email_020_unterschrift_de_085": "96927063df+t"
+  "Deutsch-B2-Beruf/de/085/email/email_020_unterschrift_de_085": "96927063df+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_014_q3_de_100": "d333f3a5e2+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_014_a3_de_100": "3610ebc299+t"
 }
