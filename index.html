@@ -2317,13 +2317,24 @@ body.lesson-active .vocab-top{
 /* Контекст іспиту над завданням — маленький "eyebrow", а не повний
    текст умов щоразу (щоб не набридало повторенням). ⓘ розкриває повні
    умови лише за тапом, через notify() — той самий легкий патерн, що й
-   ⓘ у "Prüfungsbereitschaft" в Settings. */
+   ⓘ у "Prüfungsbereitschaft" в Settings.
+   Відступи АСИМЕТРИЧНІ навмисно: #lf-unit-body має gap:8px між усіма
+   бульбашками (базовий ритм), а тут margin-top ДОДАЄ до нього (більше
+   простору "звідки" — від попереднього блоку), тоді як від'ємний
+   margin-bottom ВІДНІМАЄ від нього (менше простору "куди" — до
+   власного блоку одразу під міткою). Разом це однозначно читається:
+   мітка належить блоку ПІД собою, а не над. padding-left = 16px, той
+   самий border-radius, що й у .lf-dlg-task нижче — лівий край підпису
+   вирівнюється точно там, де закруглення бульбашки переходить у пряму
+   лінію, а не довільно за 3px. */
 .lf-dlg-exam-badge{
   display:flex;align-items:center;gap:6px;
-  padding:0 3px;margin-bottom:2px;
+  padding:0 3px 0 16px;
+  margin-top:10px;margin-bottom:-4px;
   font-size:12px;font-weight:700;letter-spacing:.03em;
   text-transform:uppercase;color:var(--muted);
 }
+.lf-dlg-exam-badge:first-child{ margin-top:0; }
 .lf-dlg-exam-icon{font-size:13px;flex-shrink:0;}
 .lf-dlg-exam-label{flex:1;min-width:0;}
 .lf-dlg-exam-info{
@@ -3592,7 +3603,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '555-ce6c5c2';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7805,6 +7816,31 @@ let _lpCurrentLessonCache;
 function findCurrentLesson(){
   if(_lpCurrentLessonCache !== undefined) return _lpCurrentLessonCache;
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+
+  // Спершу — "наступний ПІСЛЯ щойно завершеного" (mova_last_completed_lesson,
+  // записується в lfShowResult() у момент реального завершення будь-якого
+  // уроку, включно з бонусними forum/email/dialogue). Це дає природне
+  // відчуття прогресу "я зробив X → ось що далі", а не сліпе повернення до
+  // першого незавершеного в УСЬОМУ курсі — той міг лишитись позаду, поки
+  // користувач проходив щось поза основною лінійною послідовністю (бонусний
+  // урок, розділ підготовки до екзамену тощо).
+  let lastCompletedId = null;
+  try{ lastCompletedId = localStorage.getItem('mova_last_completed_lesson'); }catch(e){}
+  if(lastCompletedId){
+    const idx = lessons.findIndex(l=>l.id===lastCompletedId);
+    if(idx !== -1){
+      for(let i=idx+1; i<lessons.length; i++){
+        if(lessonUnlocked(lessons[i]) && lessonProgress(lessons[i]).pct < 80){
+          _lpCurrentLessonCache = lessons[i];
+          return _lpCurrentLessonCache;
+        }
+      }
+    }
+  }
+
+  // Фолбек — перший візит без історії завершень, або після останнього
+  // завершеного далі вже нічого нема (кінець розділу/курсу): перший
+  // незавершений будь-де, стара поведінка.
   _lpCurrentLessonCache = lessons.find(l => lessonUnlocked(l) && lessonProgress(l).pct < 80) || null;
   return _lpCurrentLessonCache;
 }
@@ -8353,7 +8389,6 @@ function renderLernpfad(){
 
   chapterList.forEach((ch)=>{
     const allDone = ch.modules.every(m=>lessonProgress(m).pct>=80);
-    const anyDone = ch.modules.some(m=>lessonProgress(m).pct>0);
     // Глава з "поточним" уроком розгортається автоматично, НАВІТЬ якщо
     // його ще жодного разу не відкривали (pct===0) — інакше "you are
     // here"-підсвітка на щойно розблокованій главі була б невидимою,
@@ -8371,7 +8406,12 @@ function renderLernpfad(){
     const reviewHtml = renderReviewCard([ch.num], 'module', reviewUnlocked);
 
     const chEl = document.createElement('div');
-    chEl.className = 'lp-chapter'+((anyDone||hasCurrent)?' open':'');
+    // Розгорнута лише глава з АКТИВНИМ уроком — і непочату, і повністю
+    // пройдену главу згортаємо за замовчуванням (раніше anyDone тримав
+    // главу розгорнутою НАЗАВЖДИ, щойно в ній з'являвся хоч якийсь
+    // прогрес, навіть після 100% — тож пройдені глави ніколи не
+    // ховались). Вручну розгорнути завжди можна кліком по заголовку.
+    chEl.className = 'lp-chapter'+(hasCurrent?' open':'');
 
     // Групуємо вузли по _parentModuleId — кожен модуль стає ОКРЕМОЮ
     // згортною секцією (не просто розділювачем у спільній стрічці).
@@ -8399,9 +8439,11 @@ function renderLernpfad(){
     let nodeIdx = 0;
     const modulesHtml = moduleGroups.map(function(grp){
       const doneCount = grp.nodes.filter(n=>lessonProgress(n).pct>=80).length;
-      const anyModuleDone = grp.nodes.some(n=>lessonProgress(n).pct>0);
       const hasModuleCurrent = grp.nodes.some(n=>findCurrentLesson()?.id===n.id);
-      const isModuleOpen = anyModuleDone || hasModuleCurrent;
+      // Той самий принцип, що глава вище: розгорнутий лише модуль з
+      // АКТИВНИМ уроком, а не будь-який модуль з хоч якимось прогресом —
+      // непочатий і повністю пройдений модуль однаково згорнуті.
+      const isModuleOpen = hasModuleCurrent;
 
       let pathHtml = '';
       grp.nodes.forEach(function(m){
@@ -12231,6 +12273,20 @@ function _lfAlignTallBlockToTop(body, topEl, measureEl){
 }
 
 
+// Двомовний підпис блоку (eyebrow-мітка над бульбашкою Forumsbeitrag/
+// E-Mail) — primary_lang і мова інтерфейсу РАЗОМ ("Anrede · Звертання"),
+// а не лише одна з них. Якщо обидві мови збігаються (uiLang===primary_lang
+// для цього курсу, чи просто однаковий переклад) — показуємо один раз,
+// без дублю "Anrede · Anrede".
+function _lfBilingualLabel(labelObj, pl, ul){
+  if(!labelObj) return '';
+  var plText = labelObj[pl] || labelObj.de || '';
+  var ulText = labelObj[ul] || labelObj.en || '';
+  if(!ulText || ulText === plText) return plText;
+  if(!plText) return ulText;
+  return plText + ' · ' + ulText;
+}
+
 function _lfDlgAppendBubble(body, html){
   const prevRects = new Map();
   Array.prototype.forEach.call(body.children, function(el){
@@ -12587,7 +12643,7 @@ var _lfFrmHandlers = {
       textTr      = ul !== pl ? (card.task?.[ul] || '') : '';
       audioField  = 'task';
       eyebrowIcon = '📝';
-      eyebrowLabel = 'Thema: ' + (card.topic?.[uiLang] || card.topic?.[pl] || card.topic?.de || '');
+      eyebrowLabel = _lfBilingualLabel(card.topic, pl, ul);
     } else {
       var part = unit.part;
       text        = part[pl] || '';
@@ -12595,7 +12651,7 @@ var _lfFrmHandlers = {
       audioField  = part.role;
       eyebrowIcon = '';
       var roleInfo = FRM_ROLE_LABELS[part.role];
-      eyebrowLabel = roleInfo ? (roleInfo[uiLang]||roleInfo.en||roleInfo.de) : (part.role||'');
+      eyebrowLabel = roleInfo ? _lfBilingualLabel(roleInfo, pl, ul) : (part.role||'');
     }
 
     function buildBubble(){
@@ -12769,7 +12825,7 @@ function _lfEmlRenderMailOrPart(body, unit){
     textTr      = ul !== pl ? (mb[ul] || '') : '';
     audioField  = 'mail_boss';
     eyebrowIcon = '👔';
-    eyebrowLabel = EML_INTRO_LABELS.boss[ul] || EML_INTRO_LABELS.boss.en;
+    eyebrowLabel = _lfBilingualLabel(EML_INTRO_LABELS.boss, pl, ul);
     mailHeader  = { from: mb.von || '', subject: (mb.betreff && (mb.betreff[pl]||mb.betreff.de)) || '' };
   } else if(unit.kind === 'eml_client'){
     var mc = card.mail_client || {};
@@ -12777,7 +12833,7 @@ function _lfEmlRenderMailOrPart(body, unit){
     textTr      = ul !== pl ? (mc[ul] || '') : '';
     audioField  = 'mail_client';
     eyebrowIcon = '📨';
-    eyebrowLabel = EML_INTRO_LABELS.client[ul] || EML_INTRO_LABELS.client.en;
+    eyebrowLabel = _lfBilingualLabel(EML_INTRO_LABELS.client, pl, ul);
     mailHeader  = { from: mc.von || '', subject: (mc.betreff && (mc.betreff[pl]||mc.betreff.de)) || '' };
   } else { // eml_part
     var part = unit.part;
@@ -12786,7 +12842,7 @@ function _lfEmlRenderMailOrPart(body, unit){
     audioField  = part.role;
     eyebrowIcon = '';
     var roleInfo = EML_ROLE_LABELS[part.role];
-    eyebrowLabel = roleInfo ? (roleInfo[ul]||roleInfo.en||roleInfo.de) : (part.role||'');
+    eyebrowLabel = roleInfo ? _lfBilingualLabel(roleInfo, pl, ul) : (part.role||'');
   }
 
   var eyebrow = '<div class="lf-dlg-exam-badge lf-bubble-in">'+
@@ -12833,7 +12889,7 @@ function _lfEmlRenderQuestion(body, unit){
   if(document.getElementById(bubbleId)) return;
 
   var q = unit.question;
-  var eyebrowLabel = (EML_Q_LABEL[ul]||EML_Q_LABEL.en) + ' ' + (unit.qIndex+1) + '/' + unit.qTotal;
+  var eyebrowLabel = _lfBilingualLabel(EML_Q_LABEL, pl, ul) + ' ' + (unit.qIndex+1) + '/' + unit.qTotal;
   var eyebrow = '<div class="lf-dlg-exam-badge lf-bubble-in">'+
     '<span class="lf-dlg-exam-icon">❓</span>'+
     '<span class="lf-dlg-exam-label">'+eyebrowLabel+'</span>'+
@@ -14227,6 +14283,15 @@ function lfShowResult(){
     // раз за урок.
     xpAward(XP_LESSON_COMPLETE_BONUS);
     const streakResult = srRecordLesson(LF);
+    // Для findCurrentLesson() — "наступний ПІСЛЯ щойно завершеного", а не
+    // сліпо перший незавершений у всьому курсі. LF._bonusForLessonId — для
+    // бонусних уроків (forum/email/dialogue, див. _runBonusLessonFlow):
+    // LF.id там синтетичний ("_eml_module_..."), не знайдеться в LESSONS,
+    // а _bonusForLessonId — це якраз реальний id вузла шляху.
+    try{
+      const completedId = LF._bonusForLessonId || LF.id;
+      if(completedId) localStorage.setItem('mova_last_completed_lesson', completedId);
+    }catch(e){}
     celebrationPending = true;
     // ПОВНА сума за урок — картки (нараховані інкрементально в srsRate()
     // по ходу уроку) + щойно нарахований бонус завершення вище. Саме це
