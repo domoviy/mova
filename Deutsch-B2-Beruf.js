@@ -4165,6 +4165,1866 @@ var LESSONS = [
       "dlg_081",
       "dlg_108"
     ]
+  },
+  {
+    "id": "examprep_forumsbeitrag_1",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_001"
+    ],
+    "frmCards": [
+      "forum_001"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": null,
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 1,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_2",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_002"
+    ],
+    "frmCards": [
+      "forum_002"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_1",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 2,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_3",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_003"
+    ],
+    "frmCards": [
+      "forum_003"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_2",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 3,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_4",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_004"
+    ],
+    "frmCards": [
+      "forum_004"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_3",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 4,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_5",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_005"
+    ],
+    "frmCards": [
+      "forum_005"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_4",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 5,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_6",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_006"
+    ],
+    "frmCards": [
+      "forum_006"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_5",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 6,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_7",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_007"
+    ],
+    "frmCards": [
+      "forum_007"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_6",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 7,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_8",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_008"
+    ],
+    "frmCards": [
+      "forum_008"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_7",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 8,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_9",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_009"
+    ],
+    "frmCards": [
+      "forum_009"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_8",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 9,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_10",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_010"
+    ],
+    "frmCards": [
+      "forum_010"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_9",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 10,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_11",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_011"
+    ],
+    "frmCards": [
+      "forum_011"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_10",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 11,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_12",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_012"
+    ],
+    "frmCards": [
+      "forum_012"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_11",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 12,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_13",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_013"
+    ],
+    "frmCards": [
+      "forum_013"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_12",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 13,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_14",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_014"
+    ],
+    "frmCards": [
+      "forum_014"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_13",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 14,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_15",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_015"
+    ],
+    "frmCards": [
+      "forum_015"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_14",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 15,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_16",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_016"
+    ],
+    "frmCards": [
+      "forum_016"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_15",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 16,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_17",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_017"
+    ],
+    "frmCards": [
+      "forum_017"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_16",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 17,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_18",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_018"
+    ],
+    "frmCards": [
+      "forum_018"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_17",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 18,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_19",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_019"
+    ],
+    "frmCards": [
+      "forum_019"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_18",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 19,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_20",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_020"
+    ],
+    "frmCards": [
+      "forum_020"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_19",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 20,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_21",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_021"
+    ],
+    "frmCards": [
+      "forum_021"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_20",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 21,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_22",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_022"
+    ],
+    "frmCards": [
+      "forum_022"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_21",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 22,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_23",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_023"
+    ],
+    "frmCards": [
+      "forum_023"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_22",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 23,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_24",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_024"
+    ],
+    "frmCards": [
+      "forum_024"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_23",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 24,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_25",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_025"
+    ],
+    "frmCards": [
+      "forum_025"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_24",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 25,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_26",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_026"
+    ],
+    "frmCards": [
+      "forum_026"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_25",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 26,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_27",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_027"
+    ],
+    "frmCards": [
+      "forum_027"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_26",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 27,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_28",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_028"
+    ],
+    "frmCards": [
+      "forum_028"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_27",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 28,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_29",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_029"
+    ],
+    "frmCards": [
+      "forum_029"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_28",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 29,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_30",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_030"
+    ],
+    "frmCards": [
+      "forum_030"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_29",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 30,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_31",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_031"
+    ],
+    "frmCards": [
+      "forum_031"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_30",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 31,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_32",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_032"
+    ],
+    "frmCards": [
+      "forum_032"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_31",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 32,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_33",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_033"
+    ],
+    "frmCards": [
+      "forum_033"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_32",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 33,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_34",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_034"
+    ],
+    "frmCards": [
+      "forum_034"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_33",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 34,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_35",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_035"
+    ],
+    "frmCards": [
+      "forum_035"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_34",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 35,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_36",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_036"
+    ],
+    "frmCards": [
+      "forum_036"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_35",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 36,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_37",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_037"
+    ],
+    "frmCards": [
+      "forum_037"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_36",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 37,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_38",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_038"
+    ],
+    "frmCards": [
+      "forum_038"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_37",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 38,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_39",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_039"
+    ],
+    "frmCards": [
+      "forum_039"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_38",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 39,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_forumsbeitrag_40",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "forum",
+    "cardIds": [
+      "forum_040"
+    ],
+    "frmCards": [
+      "forum_040"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_forumsbeitrag_39",
+    "_parentModuleId": "examprep_forumsbeitrag",
+    "_subIndex": 40,
+    "_subTotal": 40
+  },
+  {
+    "id": "examprep_email_1",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_001"
+    ],
+    "emlCards": [
+      "email_001"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": null,
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 1,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_2",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_002"
+    ],
+    "emlCards": [
+      "email_002"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_1",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 2,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_3",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_003"
+    ],
+    "emlCards": [
+      "email_003"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_2",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 3,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_4",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_004"
+    ],
+    "emlCards": [
+      "email_004"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_3",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 4,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_5",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_005"
+    ],
+    "emlCards": [
+      "email_005"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_4",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 5,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_6",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_006"
+    ],
+    "emlCards": [
+      "email_006"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_5",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 6,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_7",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_007"
+    ],
+    "emlCards": [
+      "email_007"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_6",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 7,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_8",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_008"
+    ],
+    "emlCards": [
+      "email_008"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_7",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 8,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_9",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_009"
+    ],
+    "emlCards": [
+      "email_009"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_8",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 9,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_10",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_010"
+    ],
+    "emlCards": [
+      "email_010"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_9",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 10,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_11",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_011"
+    ],
+    "emlCards": [
+      "email_011"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_10",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 11,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_12",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_012"
+    ],
+    "emlCards": [
+      "email_012"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_11",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 12,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_13",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_013"
+    ],
+    "emlCards": [
+      "email_013"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_12",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 13,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_14",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_014"
+    ],
+    "emlCards": [
+      "email_014"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_13",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 14,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_15",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_015"
+    ],
+    "emlCards": [
+      "email_015"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_14",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 15,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_16",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_016"
+    ],
+    "emlCards": [
+      "email_016"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_15",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 16,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_17",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_017"
+    ],
+    "emlCards": [
+      "email_017"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_16",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 17,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_18",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_018"
+    ],
+    "emlCards": [
+      "email_018"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_17",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 18,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_19",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_019"
+    ],
+    "emlCards": [
+      "email_019"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_18",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 19,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_email_20",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "E-Mail",
+      "uk": "E-Mail",
+      "en": "E-Mail",
+      "ru": "E-Mail"
+    },
+    "type": "email",
+    "cardIds": [
+      "email_020"
+    ],
+    "emlCards": [
+      "email_020"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_email_19",
+    "_parentModuleId": "examprep_email",
+    "_subIndex": 20,
+    "_subTotal": 20
   }
 ];
 
