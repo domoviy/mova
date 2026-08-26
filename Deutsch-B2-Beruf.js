@@ -8710,7 +8710,7 @@ var DIALOGE = [
       "ru": "Мы могли бы найти золотую середину, если напишем отчёт совместно, а график составим раздельно."
     },
     "a": {
-      "de": "Fassen wir zusammen: Wir werden den Bericht zusammen schreiben. Also, wir machen das jetzt so: Ich kümmere mich um den Zeitplan.",
+      "de": "Fassen wir zusammen. Wir werden den Bericht zusammen schreiben. Also, wir machen das jetzt so: Ich kümmere mich um den Zeitplan.",
       "en": "Let's summarize: we will write the report together. So, this is how we'll do it now: I'll take care of the schedule.",
       "uk": "Підсумуємо: ми будемо писати звіт разом. Отже, ми зробимо так: я займуся графіком.",
       "ru": "Подведём итог: мы будем писать отчёт вместе. Итак, мы сделаем так: я займусь графиком."
@@ -9002,7 +9002,7 @@ var DIALOGE = [
       "ru": "Да, это должно быть выполнимо, если мы завтра ещё раз коротко обсудим и уточним последние детали."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir schlagen flexibles Homeoffice, eine faire Gleitzeitregelung und eine Umzugshilfe vor, damit niemand wegen des neuen Standorts kündigen muss.",
+      "de": "Fassen wir zusammen. Wir schlagen flexibles Homeoffice, eine faire Gleitzeitregelung und eine Umzugshilfe vor, damit niemand wegen des neuen Standorts kündigen muss.",
       "en": "Let's summarize: we're proposing flexible home office, a fair flextime arrangement, and a relocation allowance, so that nobody has to resign because of the new location.",
       "uk": "Підсумуємо: ми пропонуємо гнучку роботу з дому, справедливий гнучкий графік і допомогу з переїздом, щоб нікому не довелося звільнятися через нове місце розташування.",
       "ru": "Подведём итог: мы предлагаем гибкую работу из дома, справедливый гибкий график и помощь с переездом, чтобы никому не пришлось увольняться из-за нового местоположения."
@@ -9124,7 +9124,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо. Тогда я сообщу госпоже Кляйн о решении в пятницу после обеда."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Frau Klein arbeitet vorerst in Teilzeit, wir begleiten sie zum Amt, erstatten ihr die Reisekosten und verschieben den Beginn ihrer Probezeit, damit ihr keine Nachteile entstehen.",
+      "de": "Fassen wir zusammen. Frau Klein arbeitet vorerst in Teilzeit, wir begleiten sie zum Amt, erstatten ihr die Reisekosten und verschieben den Beginn ihrer Probezeit, damit ihr keine Nachteile entstehen.",
       "en": "Let's summarize: Ms. Klein will work part-time for now, we'll accompany her to the agency, reimburse her travel costs, and postpone the start of her probationary period, so she isn't disadvantaged.",
       "uk": "Підсумуємо: пані Кляйн поки що працюватиме на неповну ставку, ми супроводимо її до відомства, відшкодуємо їй витрати на поїздки та відкладемо початок випробувального терміну, щоб вона не мала жодних недоліків.",
       "ru": "Подведём итог: госпожа Кляйн пока будет работать на неполную ставку, мы сопроводим её в ведомство, возместим ей расходы на поездки и отложим начало испытательного срока, чтобы у неё не было никаких недостатков."
@@ -9246,7 +9246,7 @@ var DIALOGE = [
       "ru": "Да, это не должно стать проблемой, пока в начале нам не придётся принимать рискованных решений."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir teilen die Aufgaben nach unseren Stärken auf, du machst die Risikomanagement-Schulung, und die Kundenbetreuung geht nicht nur an mich, sondern auch an einen Kollegen aus dem anderen Team.",
+      "de": "Fassen wir zusammen. Wir teilen die Aufgaben nach unseren Stärken auf, du machst die Risikomanagement-Schulung, und die Kundenbetreuung geht nicht nur an mich, sondern auch an einen Kollegen aus dem anderen Team.",
       "en": "Let's summarize: we split the tasks according to our strengths, you do the risk management training, and customer service goes not only to me, but also to a colleague from the other team.",
       "uk": "Підсумуємо: ми розподіляємо завдання за нашими сильними сторонами, ти проходиш навчання з ризик-менеджменту, а обслуговування клієнтів переходить не лише до мене, а й до колеги з іншої команди.",
       "ru": "Подведём итог: мы распределяем задачи по нашим сильным сторонам, ты проходишь обучение по риск-менеджменту, а обслуживание клиентов переходит не только ко мне, но и к коллеге из другой команды."
@@ -9368,7 +9368,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо. К тому времени я подготовлю немного информации о программе поддержки."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir helfen Herrn Boateng beim Antrag auf Anerkennung, informieren ihn über das Förderprogramm und einen möglichen Anpassungslehrgang, und in zwei Tagen besprechen wir alles gemeinsam.",
+      "de": "Fassen wir zusammen. Wir helfen Herrn Boateng beim Antrag auf Anerkennung, informieren ihn über das Förderprogramm und einen möglichen Anpassungslehrgang, und in zwei Tagen besprechen wir alles gemeinsam.",
       "en": "Let's summarize: we help Mr. Boateng with the recognition application, inform him about the funding programme and a possible adaptation course, and discuss everything together in two days.",
       "uk": "Підсумуємо: ми допомагаємо пану Боатенгу з заявкою на визнання, інформуємо його про програму підтримки та можливий адаптаційний курс, а за два дні обговоримо все разом.",
       "ru": "Подведём итог: мы помогаем господину Боатенгу с заявкой на признание, информируем его о программе поддержки и возможном адаптационном курсе, а через два дня обсудим всё вместе."
@@ -9490,7 +9490,7 @@ var DIALOGE = [
       "ru": "Неделя, правда, довольно сжатый срок, но это должно быть выполнимо, если оба канала будут работать одновременно."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir beauftragen einen Headhunter, nutzen zusätzlich unser soziales Netzwerk und fragen bei der Arbeitsvermittlung nach, damit wir die Stelle endlich besetzen können.",
+      "de": "Fassen wir zusammen. Wir beauftragen einen Headhunter, nutzen zusätzlich unser soziales Netzwerk und fragen bei der Arbeitsvermittlung nach, damit wir die Stelle endlich besetzen können.",
       "en": "Let's summarize: we hire a headhunter, additionally use our social network, and ask the job placement service, so we can finally fill the position.",
       "uk": "Підсумуємо: ми залучаємо хедхантера, додатково використовуємо нашу соціальну мережу і запитуємо в агентства зайнятості, щоб нарешті закрити вакансію.",
       "ru": "Подведём итог: мы привлекаем хедхантера, дополнительно используем нашу социальную сеть и спрашиваем в агентстве занятости, чтобы наконец закрыть вакансию."
@@ -9612,7 +9612,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо. Я сразу же ей позвоню и обсужу последние детали."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir vereinheitlichen das Datumsformat, ergänzen konkrete Sprachniveaus und die Unterschrift, und strukturieren den beruflichen Werdegang klarer, damit der Lebenslauf seriös wirkt.",
+      "de": "Fassen wir zusammen. Wir vereinheitlichen das Datumsformat, ergänzen konkrete Sprachniveaus und die Unterschrift, und strukturieren den beruflichen Werdegang klarer, damit der Lebenslauf seriös wirkt.",
       "en": "Let's summarize: we'll standardize the date format, add concrete language levels and the signature, and structure the career path more clearly, so the CV looks professional.",
       "uk": "Підсумуємо: ми уніфікуємо формат дат, додаємо конкретні мовні рівні та підпис, і чіткіше структуруємо професійний шлях, щоб резюме виглядало серйозно.",
       "ru": "Подведём итог: мы унифицируем формат дат, добавляем конкретные языковые уровни и подпись, и чётче структурируем профессиональный путь, чтобы резюме выглядело серьёзно."
@@ -9734,7 +9734,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если мы начнём прямо сейчас, не дожидаясь дольше."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir kontaktieren die Berufsschule, prüfen eine höhere Ausbildungsvergütung und bieten zusätzlich ein duales Studium an, um die freien Plätze endlich zu besetzen.",
+      "de": "Fassen wir zusammen. Wir kontaktieren die Berufsschule, prüfen eine höhere Ausbildungsvergütung und bieten zusätzlich ein duales Studium an, um die freien Plätze endlich zu besetzen.",
       "en": "Let's summarize: we'll contact the vocational school, check on a higher trainee allowance, and additionally offer a dual study programme, in order to finally fill the open places.",
       "uk": "Підсумуємо: ми звертаємося до професійного училища, розглядаємо підвищення стипендії учнів і додатково пропонуємо дуальне навчання, щоб нарешті заповнити вільні місця.",
       "ru": "Подведём итог: мы обращаемся в профессиональное училище, рассматриваем повышение стипендии учеников и дополнительно предлагаем дуальное обучение, чтобы наконец заполнить свободные места."
@@ -9856,7 +9856,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, пока комната для собеседований ещё свободна."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir rufen Herrn Nowak heute noch zurück, laden ihn für Donnerstag zum Vorstellungstermin ein und bereiten die Checkliste sowie unsere Gehaltsvorstellung vor.",
+      "de": "Fassen wir zusammen. Wir rufen Herrn Nowak heute noch zurück, laden ihn für Donnerstag zum Vorstellungstermin ein und bereiten die Checkliste sowie unsere Gehaltsvorstellung vor.",
       "en": "Let's summarize: we'll call Mr. Nowak back today, invite him for an interview on Thursday, and prepare the checklist as well as our salary expectations.",
       "uk": "Підсумуємо: ми сьогодні ж передзвонимо пану Новаку, запросимо його на співбесіду в четвер і підготуємо чекліст та нашу очікувану зарплату.",
       "ru": "Подведём итог: мы сегодня же перезвоним господину Новаку, пригласим его на собеседование в четверг и подготовим чек-лист и наши ожидания по зарплате."
@@ -10078,7 +10078,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если ИТ-отдел отреагирует быстрее, чем мы опасаемся."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir organisieren sofort Passwort und Schlüssel, zeigen ihr das Organigramm und die Sicherheitsvorschriften, damit ihr erster Arbeitstag trotzdem gut beginnt.",
+      "de": "Fassen wir zusammen. Wir organisieren sofort Passwort und Schlüssel, zeigen ihr das Organigramm und die Sicherheitsvorschriften, damit ihr erster Arbeitstag trotzdem gut beginnt.",
       "en": "Let's summarize: we'll organize the password and key right away, show her the org chart and the safety rules, so her first day still starts off well.",
       "uk": "Підсумуємо: ми одразу організовуємо пароль і ключ, показуємо їй органіграму та правила безпеки, щоб її перший робочий день все ж почався добре.",
       "ru": "Подведём итог: мы сразу организуем пароль и ключ, покажем ей органиграмму и правила безопасности, чтобы её первый рабочий день всё же начался хорошо."
@@ -10200,7 +10200,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если мы действительно останемся непринуждёнными и открытыми."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir schaffen eine entspannte Atmosphäre, sprechen sie taktvoll auf gemeinsame Interessen an und laden sie zu informellen Aktivitäten ein, damit sie sich im Team wohler fühlt.",
+      "de": "Fassen wir zusammen. Wir schaffen eine entspannte Atmosphäre, sprechen sie taktvoll auf gemeinsame Interessen an und laden sie zu informellen Aktivitäten ein, damit sie sich im Team wohler fühlt.",
       "en": "Let's summarize: we'll create a relaxed atmosphere, tactfully ask her about shared interests, and invite her to informal activities, so she feels more comfortable on the team.",
       "uk": "Підсумуємо: ми створюємо невимушену атмосферу, тактовно запитуємо про спільні інтереси і запрошуємо її на неформальні заходи, щоб вона почувалася комфортніше в команді.",
       "ru": "Подведём итог: мы создаём непринуждённую атмосферу, тактично спрашиваем об общих интересах и приглашаем её на неформальные мероприятия, чтобы она чувствовала себя комфортнее в команде."
@@ -10322,7 +10322,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если у господина Майера ещё есть время сегодня после обеда."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir klären die Prioritäten mit Herrn Meier, delegieren die einfacheren Teilaufgaben und bitten künftig um schriftliche Anweisungen, damit Lukas' Arbeitspensum wieder machbar wird.",
+      "de": "Fassen wir zusammen. Wir klären die Prioritäten mit Herrn Meier, delegieren die einfacheren Teilaufgaben und bitten künftig um schriftliche Anweisungen, damit Lukas' Arbeitspensum wieder machbar wird.",
       "en": "Let's summarize: we'll clarify the priorities with Mr. Meier, delegate the simpler subtasks, and ask for written instructions from now on, so Lukas's workload becomes manageable again.",
       "uk": "Підсумуємо: ми узгоджуємо пріоритети з паном Майєром, делегуємо простіші підзавдання і надалі просимо письмові інструкції, щоб навантаження Лукаса знову стало посильним.",
       "ru": "Подведём итог: мы согласовываем приоритеты с господином Майером, делегируем более простые подзадачи и впредь просим письменные инструкции, чтобы нагрузка Лукаса снова стала посильной."
@@ -10444,7 +10444,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если отдел кадров сегодня ещё на месте."
     },
     "q8": {
-      "de": "Fassen wir zusammen: Wir kümmern uns um die Zugangsdaten, teilen uns die Mentorenschaft und lassen sie offiziell festlegen, damit Herr Fischer gut in seine neue Aufgabe startet.",
+      "de": "Fassen wir zusammen. Wir kümmern uns um die Zugangsdaten, teilen uns die Mentorenschaft und lassen sie offiziell festlegen, damit Herr Fischer gut in seine neue Aufgabe startet.",
       "en": "Let's summarize: we'll take care of the login credentials, split the mentorship between us, and have it officially set up, so Mr. Fischer gets off to a good start in his new role.",
       "uk": "Підсумуємо: ми займаємося даними для входу, ділимо наставництво між собою і закріплюємо це офіційно, щоб пан Фішер добре стартував на новій посаді.",
       "ru": "Подведём итог: мы занимаемся данными для входа, делим наставничество между собой и закрепляем это официально, чтобы господин Фишер хорошо стартовал на новой должности."
