@@ -3603,7 +3603,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '559-14af8bb';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8753,6 +8753,32 @@ function buildModuleForumPool(lesson){
   if(!allFrm.length || !(lesson.frmCards||[]).length) return [];
   const ids = new Set(lesson.frmCards);
   return allFrm.filter(c => ids.has(c.id) && c.cat === 'Forumsbeitrag');
+}
+
+// Точка входу з кліку по вузлу шляху type:'forum' (renderPathNode) — той
+// самий каркас, що startModuleEmailBonus нижче.
+function startModuleForumBonus(lessonId){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const lesson  = lessons.find(l=>l.id===lessonId);
+  if(!lesson) return;
+  const pool = buildModuleForumPool(lesson);
+  if(!pool.length){
+    notify('⚠️ '+(uiLang==='uk'?'Немає Forumsbeitrag для цього уроку':uiLang==='ru'?'Нет Forumsbeitrag для этого урока':uiLang==='en'?'No Forumsbeitrag for this lesson':'Kein Forumsbeitrag für diese Lektion'));
+    return;
+  }
+
+  const title = {
+    de:'Forumsbeitrag: '+(lesson.title?.de||''), uk:'Допис на форумі: '+(lesson.title?.uk||''),
+    en:'Forum post: '+(lesson.title?.en||''), ru:'Пост на форуме: '+(lesson.title?.ru||''),
+  };
+  _runBonusLessonFlow({
+    id: '_frm_module_'+lesson.id,
+    title,
+    _isBonusLesson: true,
+    _bonusForLessonId: lesson.id,
+    steps: ['frm_learn', 'result'],
+    _frmBonusPool: pool,
+  });
 }
 
 // Пул E-Mail — той самий принцип, що buildModuleForumPool щойно вище:
