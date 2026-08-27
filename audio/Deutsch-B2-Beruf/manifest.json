@@ -9912,7 +9912,7 @@
   "Deutsch-B2-Beruf/uk/100/mes/mes_004_def_uk_100": "3b1309dffb",
   "Deutsch-B2-Beruf/uk/100/mes/mes_012_term_uk_100": "73187997e9",
   "Deutsch-B2-Beruf/uk/100/mes/mes_012_short_uk_100": "e795263704",
-  "Deutsch-B2-Beruf/uk/100/mes/mes_012_def_uk_100": "bb80227249",
+  "Deutsch-B2-Beruf/uk/100/mes/mes_012_def_uk_100": "2d65b368ab",
   "Deutsch-B2-Beruf/uk/100/mes/mes_016_term_uk_100": "98e17a0838",
   "Deutsch-B2-Beruf/uk/100/mes/mes_016_short_uk_100": "b9190cdf40",
   "Deutsch-B2-Beruf/uk/100/mes/mes_016_def_uk_100": "0f4cc9413d",
@@ -9927,10 +9927,10 @@
   "Deutsch-B2-Beruf/uk/100/mes/mes_021_def_uk_100": "0098486666",
   "Deutsch-B2-Beruf/uk/100/mes/mes_022_term_uk_100": "96270e5ee6",
   "Deutsch-B2-Beruf/uk/100/mes/mes_022_short_uk_100": "ecb4d39344",
-  "Deutsch-B2-Beruf/uk/100/mes/mes_022_def_uk_100": "adf8286d6d",
+  "Deutsch-B2-Beruf/uk/100/mes/mes_022_def_uk_100": "327cd369c1",
   "Deutsch-B2-Beruf/uk/100/mes/mes_023_term_uk_100": "84d99ce17a",
   "Deutsch-B2-Beruf/uk/100/mes/mes_023_short_uk_100": "94cf407f77",
-  "Deutsch-B2-Beruf/uk/100/mes/mes_023_def_uk_100": "fdf113e695",
+  "Deutsch-B2-Beruf/uk/100/mes/mes_023_def_uk_100": "8ca741e48c",
   "Deutsch-B2-Beruf/uk/100/mes/mes_024_term_uk_100": "390bd49ca2",
   "Deutsch-B2-Beruf/uk/100/mes/mes_024_short_uk_100": "f663872778",
   "Deutsch-B2-Beruf/uk/100/mes/mes_024_def_uk_100": "d9dd7b237e",
@@ -37314,5 +37314,7 @@
   "Deutsch-B2-Beruf/uk/100/tel/tel_024_term_uk_100": "80b27e40ab",
   "Deutsch-B2-Beruf/uk/100/tel/tel_024_short_uk_100": "25f554d1f2",
   "Deutsch-B2-Beruf/uk/100/tel/tel_024_def_uk_100": "dc89f2c258",
-  "Deutsch-B2-Beruf/uk/100/tel/tel_051_term_uk_100": "44f7670f44"
+  "Deutsch-B2-Beruf/uk/100/tel/tel_051_term_uk_100": "44f7670f44",
+  "Deutsch-B2-Beruf/uk/100/tel/tel_051_short_uk_100": "91214ec1bb",
+  "Deutsch-B2-Beruf/uk/100/tel/tel_051_def_uk_100": "f80b928a22"
 }
