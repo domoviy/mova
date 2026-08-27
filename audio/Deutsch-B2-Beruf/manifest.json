@@ -33323,7 +33323,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_031_q7_de_100": "46e5b41e80+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_031_a7_de_100": "9ff5da0286+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_031_q8_de_100": "52eaea8428+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_031_a8_de_100": "222d388788+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_031_a8_de_100": "90d82b2dcb+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_030_q_de_085": "ce047f3bd7+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_030_a_de_085": "9cd2f3a79a+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_030_q1_de_085": "6ab09985dd+t",
@@ -33449,7 +33449,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_034_q7_de_100": "5038e1288a+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_034_a7_de_100": "885f836c3c+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_034_q8_de_100": "644da19ba5+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_034_a8_de_100": "cf8f68c97b+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_034_a8_de_100": "e663c10031+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_035_q_de_100": "1fdbdab44d+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_035_a_de_100": "f06cb72b1e+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_035_q1_de_100": "4b6cfeb83a+t",
@@ -33677,7 +33677,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_039_q7_de_100": "0cc39f7225+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_039_a7_de_100": "3573004f14+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_039_q8_de_100": "b038695fae+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_039_a8_de_100": "2e3f0dc3a8+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_039_a8_de_100": "bec2fe5aea+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_037_q_de_085": "f666f39d4f+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_037_a_de_085": "88d15db720+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_037_q1_de_085": "5f41dfa1b3+t",
@@ -33725,7 +33725,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_040_q7_de_100": "ae9fb35c42+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_040_a7_de_100": "bd7c11784b+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_040_q8_de_100": "1163650de5+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_040_a8_de_100": "a80d338397+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_040_a8_de_100": "cdfcdb5a91+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_q_de_100": "24206a48c0+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_a_de_100": "a3039699a1+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_q1_de_100": "7e01ee53d6+t",
@@ -36538,5 +36538,6 @@
   "Deutsch-B2-Beruf/en/100/onk/onk_036_def_en_100": "450848835d",
   "Deutsch-B2-Beruf/en/100/onk/onk_037_term_en_100": "0fd80bd84d",
   "Deutsch-B2-Beruf/en/100/onk/onk_037_short_en_100": "8555888968",
-  "Deutsch-B2-Beruf/en/100/onk/onk_037_def_en_100": "489bad7adf"
+  "Deutsch-B2-Beruf/en/100/onk/onk_037_def_en_100": "489bad7adf",
+  "Deutsch-B2-Beruf/de/100/geh/geh_080_term_de_100": "b5490cd15e+t"
 }
