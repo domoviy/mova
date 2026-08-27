@@ -6278,7 +6278,7 @@
   "Deutsch-B2-Beruf/de/100/sbs/sbs_003_distractors_4_de_100": "c3d3ba1b60",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_004_sentence_de_100": "c5566cd0cc+t",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_004_answer_de_100": "9e3ce5ed95",
-  "Deutsch-B2-Beruf/de/100/sbs/sbs_004_explanation_de_100": "0b2e010856",
+  "Deutsch-B2-Beruf/de/100/sbs/sbs_004_explanation_de_100": "4ffd3567f7",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_004_distractors_1_de_100": "b644f974dc",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_004_distractors_2_de_100": "6c47b67de0",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_004_distractors_3_de_100": "97de759aa4",
@@ -6292,7 +6292,7 @@
   "Deutsch-B2-Beruf/de/100/sbs/sbs_005_distractors_4_de_100": "5ba725a687",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_006_sentence_de_100": "8f61f5244e+t",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_006_answer_de_100": "97de759aa4",
-  "Deutsch-B2-Beruf/de/100/sbs/sbs_006_explanation_de_100": "1ca45e89bf",
+  "Deutsch-B2-Beruf/de/100/sbs/sbs_006_explanation_de_100": "ba7c4a91b9",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_006_distractors_1_de_100": "9e3ce5ed95",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_006_distractors_2_de_100": "b644f974dc",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_006_distractors_3_de_100": "8ab25b7d5d",
@@ -6306,7 +6306,7 @@
   "Deutsch-B2-Beruf/de/100/sbs/sbs_007_distractors_4_de_100": "4115d8c42b",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_008_sentence_de_100": "bbb9457afa+t",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_008_answer_de_100": "6c47b67de0",
-  "Deutsch-B2-Beruf/de/100/sbs/sbs_008_explanation_de_100": "dee07bc9b9",
+  "Deutsch-B2-Beruf/de/100/sbs/sbs_008_explanation_de_100": "5b31a767c5",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_008_distractors_1_de_100": "b644f974dc",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_008_distractors_2_de_100": "9e3ce5ed95",
   "Deutsch-B2-Beruf/de/100/sbs/sbs_008_distractors_3_de_100": "97de759aa4",
@@ -38000,5 +38000,7 @@
   "Deutsch-B2-Beruf/ru/100/mwb/mwb_079_def_ru_100": "0b115fb927",
   "Deutsch-B2-Beruf/ru/100/mwb/mwb_080_term_ru_100": "fb7be160bf",
   "Deutsch-B2-Beruf/ru/100/mwb/mwb_080_short_ru_100": "9c74216a0e",
-  "Deutsch-B2-Beruf/ru/100/mwb/mwb_080_def_ru_100": "b9d1b70860"
+  "Deutsch-B2-Beruf/ru/100/mwb/mwb_080_def_ru_100": "b9d1b70860",
+  "Deutsch-B2-Beruf/de/100/ges/ges_148_term_de_100": "5ce9dbe958+t",
+  "Deutsch-B2-Beruf/de/100/mwb/mwb_076_term_de_100": "1100ad192f+t"
 }
