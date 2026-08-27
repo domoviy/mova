@@ -30175,7 +30175,7 @@
   "Deutsch-B2-Beruf/de/085/ges/ges_154_term_de_085": "9e87e30bec+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_154_short_de_085": "94b82a30db+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_154_def_de_085": "2ccc4ebac1+t",
-  "Deutsch-B2-Beruf/de/085/ges/ges_157_term_de_085": "fd17e16bd2+t",
+  "Deutsch-B2-Beruf/de/085/ges/ges_157_term_de_085": "678ed5cbe3+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_157_short_de_085": "7feb3344ea+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_157_def_de_085": "f23e8b2f8a+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_158_term_de_085": "c1ce223074+t",
@@ -30196,7 +30196,7 @@
   "Deutsch-B2-Beruf/de/085/ges/ges_163_term_de_085": "152f6e8ce2+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_163_short_de_085": "a4cfbfe26f+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_163_def_de_085": "c92048a50c+t",
-  "Deutsch-B2-Beruf/de/085/ges/ges_164_term_de_085": "57dd788765+t",
+  "Deutsch-B2-Beruf/de/085/ges/ges_164_term_de_085": "5d7809694c+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_164_short_de_085": "67caeca7dd+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_164_def_de_085": "f8946302ba+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_165_term_de_085": "a9aaf14f6f+t",
@@ -30673,7 +30673,7 @@
   "Deutsch-B2-Beruf/de/085/kor/kor_007_term_de_085": "fc9e85bc91+t",
   "Deutsch-B2-Beruf/de/085/kor/kor_007_short_de_085": "4c968eb6e1+t",
   "Deutsch-B2-Beruf/de/085/kor/kor_007_def_de_085": "6d6255d0e0+t",
-  "Deutsch-B2-Beruf/de/085/kor/kor_008_term_de_085": "beff080990+t",
+  "Deutsch-B2-Beruf/de/085/kor/kor_008_term_de_085": "92f63af3f3+t",
   "Deutsch-B2-Beruf/de/085/kor/kor_008_short_de_085": "56e1a6376c+t",
   "Deutsch-B2-Beruf/de/085/kor/kor_008_def_de_085": "a0b924e68b+t",
   "Deutsch-B2-Beruf/de/085/kor/kor_009_term_de_085": "13c0a5e2a2+t",
@@ -38002,5 +38002,7 @@
   "Deutsch-B2-Beruf/ru/100/mwb/mwb_080_short_ru_100": "9c74216a0e",
   "Deutsch-B2-Beruf/ru/100/mwb/mwb_080_def_ru_100": "b9d1b70860",
   "Deutsch-B2-Beruf/de/100/ges/ges_148_term_de_100": "5ce9dbe958+t",
-  "Deutsch-B2-Beruf/de/100/mwb/mwb_076_term_de_100": "1100ad192f+t"
+  "Deutsch-B2-Beruf/de/100/mwb/mwb_076_term_de_100": "1100ad192f+t",
+  "Deutsch-B2-Beruf/de/085/ges/ges_148_term_de_085": "d9ba665476+t",
+  "Deutsch-B2-Beruf/de/085/mwb/mwb_076_term_de_085": "877ec3ab21+t"
 }
