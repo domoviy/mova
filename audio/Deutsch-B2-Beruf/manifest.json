@@ -6714,7 +6714,7 @@
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_002_def_uk_100": "cd6f4e32ab",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_003_term_uk_100": "784b84d9fc",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_003_short_uk_100": "6b6fb86b2a",
-  "Deutsch-B2-Beruf/uk/100/nvv/nvv_003_def_uk_100": "6d185766a2",
+  "Deutsch-B2-Beruf/uk/100/nvv/nvv_003_def_uk_100": "d9e769ebe9",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_004_term_uk_100": "344131a6ef",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_004_short_uk_100": "379a0e39de",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_004_def_uk_100": "952c4e0f21",
@@ -6857,7 +6857,7 @@
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_050_short_uk_100": "9e2aa94d9f",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_050_def_uk_100": "ed796a5610",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_051_term_uk_100": "346e73c4a6",
-  "Deutsch-B2-Beruf/uk/100/nvv/nvv_051_short_uk_100": "095466a762",
+  "Deutsch-B2-Beruf/uk/100/nvv/nvv_051_short_uk_100": "3b342d2fa0",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_051_def_uk_100": "8f58902865",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_052_term_uk_100": "136c754fbd",
   "Deutsch-B2-Beruf/uk/100/nvv/nvv_052_short_uk_100": "7707388a7d",
@@ -32939,7 +32939,7 @@
   "Deutsch-B2-Beruf/en/100/uns/uns_103_def_en_100": "883f118544",
   "Deutsch-B2-Beruf/en/100/uns/uns_104_term_en_100": "3b4ea3ee19",
   "Deutsch-B2-Beruf/en/100/uns/uns_104_short_en_100": "39919cd2f2",
-  "Deutsch-B2-Beruf/en/100/uns/uns_104_def_en_100": "31b0358636",
+  "Deutsch-B2-Beruf/en/100/uns/uns_104_def_en_100": "05b7b114a2",
   "Deutsch-B2-Beruf/en/100/uns/uns_105_term_en_100": "f2b5613fc0",
   "Deutsch-B2-Beruf/en/100/uns/uns_105_short_en_100": "34da83096f",
   "Deutsch-B2-Beruf/en/100/uns/uns_105_def_en_100": "e4ee1a8b95",
@@ -32969,7 +32969,7 @@
   "Deutsch-B2-Beruf/en/100/unp/unp_052_def_en_100": "fbb8be6e0c",
   "Deutsch-B2-Beruf/en/100/unp/unp_053_term_en_100": "225d7e336c",
   "Deutsch-B2-Beruf/en/100/unp/unp_053_short_en_100": "3ce8f3413e",
-  "Deutsch-B2-Beruf/en/100/unp/unp_053_def_en_100": "9d45210d75",
+  "Deutsch-B2-Beruf/en/100/unp/unp_053_def_en_100": "8c3aade73e",
   "Deutsch-B2-Beruf/en/100/unp/unp_054_term_en_100": "a70550550a",
   "Deutsch-B2-Beruf/en/100/unp/unp_054_short_en_100": "40bfbc0e5c",
   "Deutsch-B2-Beruf/en/100/unp/unp_054_def_en_100": "444799becd",
@@ -36590,5 +36590,6 @@
   "Deutsch-B2-Beruf/en/100/onk/onk_053_short_en_100": "b44c2a1b06",
   "Deutsch-B2-Beruf/en/100/onk/onk_053_def_en_100": "637ca216d3",
   "Deutsch-B2-Beruf/en/100/onk/onk_054_term_en_100": "070d427a99",
-  "Deutsch-B2-Beruf/en/100/onk/onk_054_short_en_100": "92a8401445"
+  "Deutsch-B2-Beruf/en/100/onk/onk_054_short_en_100": "92a8401445",
+  "Deutsch-B2-Beruf/en/100/onk/onk_054_def_en_100": "45dac3a7ef"
 }
