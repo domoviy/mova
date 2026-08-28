@@ -4324,7 +4324,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4355,7 +4355,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4386,7 +4386,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4417,7 +4417,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4448,7 +4448,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4479,7 +4479,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4510,7 +4510,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4541,7 +4541,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4572,7 +4572,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4603,7 +4603,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4634,7 +4634,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4665,7 +4665,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4696,7 +4696,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4727,7 +4727,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4758,7 +4758,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4789,7 +4789,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4820,7 +4820,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4851,7 +4851,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4882,7 +4882,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4913,7 +4913,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4944,7 +4944,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -4975,7 +4975,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5006,7 +5006,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5037,7 +5037,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5068,7 +5068,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5099,7 +5099,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5130,7 +5130,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5161,7 +5161,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5192,7 +5192,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5223,7 +5223,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5254,7 +5254,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5285,7 +5285,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5316,7 +5316,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5347,7 +5347,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5378,7 +5378,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5409,7 +5409,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5440,7 +5440,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5471,7 +5471,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5502,7 +5502,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5533,7 +5533,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 1,
+    "module": 3,
     "title": {
       "de": "Forumsbeitrag",
       "uk": "Forumsbeitrag",
@@ -5564,7 +5564,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5595,7 +5595,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5626,7 +5626,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5657,7 +5657,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5688,7 +5688,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5719,7 +5719,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5750,7 +5750,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5781,7 +5781,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5812,7 +5812,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5843,7 +5843,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5874,7 +5874,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5905,7 +5905,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5936,7 +5936,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5967,7 +5967,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -5998,7 +5998,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -6029,7 +6029,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -6060,7 +6060,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -6091,7 +6091,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -6122,7 +6122,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -6153,7 +6153,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 2,
+    "module": 4,
     "title": {
       "de": "E-Mail",
       "uk": "E-Mail",
@@ -6184,7 +6184,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6216,7 +6216,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6248,7 +6248,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6280,7 +6280,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6312,7 +6312,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6344,7 +6344,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6376,7 +6376,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6408,7 +6408,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6440,7 +6440,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6472,7 +6472,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6504,7 +6504,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6536,7 +6536,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6568,7 +6568,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6600,7 +6600,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6632,7 +6632,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6664,7 +6664,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6696,7 +6696,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6728,7 +6728,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6760,7 +6760,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6792,7 +6792,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6824,7 +6824,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6856,7 +6856,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6888,7 +6888,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6920,7 +6920,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6952,7 +6952,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -6984,7 +6984,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7016,7 +7016,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7048,7 +7048,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7080,7 +7080,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7112,7 +7112,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7144,7 +7144,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7176,7 +7176,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7208,7 +7208,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7240,7 +7240,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7272,7 +7272,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7304,7 +7304,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7336,7 +7336,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7368,7 +7368,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7400,7 +7400,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7432,7 +7432,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7464,7 +7464,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 3,
+    "module": 1,
     "title": {
       "de": "Mündliche Prüfung – Teil 2",
       "uk": "Mündliche Prüfung – Teil 2",
@@ -7496,7 +7496,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7528,7 +7528,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7560,7 +7560,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7592,7 +7592,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7624,7 +7624,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7656,7 +7656,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7688,7 +7688,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7720,7 +7720,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7752,7 +7752,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7784,7 +7784,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7816,7 +7816,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7848,7 +7848,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7880,7 +7880,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7912,7 +7912,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7944,7 +7944,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -7976,7 +7976,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8008,7 +8008,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8040,7 +8040,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8072,7 +8072,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8104,7 +8104,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8136,7 +8136,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8168,7 +8168,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8200,7 +8200,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8232,7 +8232,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8264,7 +8264,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8296,7 +8296,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8328,7 +8328,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8360,7 +8360,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8392,7 +8392,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8424,7 +8424,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8456,7 +8456,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8488,7 +8488,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8520,7 +8520,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8552,7 +8552,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8584,7 +8584,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8616,7 +8616,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8648,7 +8648,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8680,7 +8680,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8712,7 +8712,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8744,7 +8744,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8776,7 +8776,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8808,7 +8808,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8840,7 +8840,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8872,7 +8872,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8904,7 +8904,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8936,7 +8936,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -8968,7 +8968,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -9000,7 +9000,7 @@ var LESSONS = [
       "ru": "Подготовка к экзамену"
     },
     "chapterType": "examprep",
-    "module": 4,
+    "module": 2,
     "title": {
       "de": "Mündliche Prüfung – Teil 3",
       "uk": "Mündliche Prüfung – Teil 3",
@@ -24721,6 +24721,92 @@ var EMAILS = [
         "en": "David Berger",
         "uk": "Давид Бергер",
         "ru": "Давид Бергер"
+      }
+    ]
+  }
+];
+
+
+var STORY = [
+  {
+    "id": "story_001",
+    "cat": "Story",
+    "name": "de_m_david",
+    "topic": {
+      "de": "Beschreibung eines Arbeitgebers",
+      "uk": "Опис роботодавця",
+      "en": "Description of an employer",
+      "ru": "Описание работодателя"
+    },
+    "task": {
+      "de": "Thema 1: Beschreiben Sie einen Arbeitgeber, für den Sie gearbeitet haben oder arbeiten möchten.<br><br>Mögliche Fragen:<br>Firma? Wo?<br>Welche Branche?<br>Welche Abteilung/en?<br>Was waren meine Aufgaben?<br>Welche Produkte oder Dienstleistungen wurden angeboten?<br>Wie war das Arbeitsklima?<br>Wie war der Chef?<br>Wie waren die Kollegen?<br>Herausforderungen?<br>Was hat mir in der Firma besonders gefallen?<br>Weiterbildungen? Fortbildungen?",
+      "uk": "Тема 1: Опишіть роботодавця, на якого ви працювали або хотіли б працювати.<br><br>Можливі запитання:<br>Фірма? Де?<br>Яка галузь?<br>Який(і) відділ(и)?<br>Якими були мої обов'язки?<br>Які продукти чи послуги пропонувались?<br>Яка була атмосфера в колективі?<br>Яким був керівник?<br>Якими були колеги?<br>Труднощі?<br>Що мені найбільше сподобалось у фірмі?<br>Підвищення кваліфікації? Навчання?",
+      "en": "Topic 1: Describe an employer you have worked for or would like to work for.<br><br>Possible questions:<br>Company? Where?<br>Which industry?<br>Which department(s)?<br>What were my tasks?<br>What products or services were offered?<br>What was the working atmosphere like?<br>What was the boss like?<br>What were the colleagues like?<br>Challenges?<br>What did I like most about the company?<br>Further training? Professional development?",
+      "ru": "Тема 1: Опишите работодателя, на которого вы работали или хотели бы работать.<br><br>Возможные вопросы:<br>Фирма? Где?<br>Какая отрасль?<br>Какой(ие) отдел(ы)?<br>Какими были мои обязанности?<br>Какие продукты или услуги предлагались?<br>Какая была атмосфера в коллективе?<br>Каким был руководитель?<br>Какими были коллеги?<br>Трудности?<br>Что мне больше всего понравилось в фирме?<br>Повышение квалификации? Обучение?"
+    },
+    "parts": [
+      {
+        "role": "einleitung",
+        "de": "Ich möchte einen Arbeitgeber beschreiben, bei dem ich als Direktor der AIR Academy gearbeitet habe. AIR ist ein internationaler Medienkonzern und offizieller YouTube-Partner im Bereich Content und Creator-Management. Das Unternehmen ist weltweit tätig und hatte damals den Hauptsitz in der Ukraine.",
+        "uk": "Я хотів би описати роботодавця, у якого я працював директором AIR Academy. AIR — це міжнародний медіахолдинг і офіційний партнер YouTube у сфері контенту та управління креаторами. Компанія працює по всьому світу, а на той час її головний офіс знаходився в Україні.",
+        "en": "I would like to describe an employer where I worked as director of AIR Academy. AIR is an international media company and an official YouTube partner in content and creator management. The company operates worldwide and, at the time, had its headquarters in Ukraine.",
+        "ru": "Я хотел бы описать работодателя, у которого я работал директором AIR Academy. AIR — это международный медиахолдинг и официальный партнёр YouTube в сфере контента и управления креаторами. Компания работает по всему миру, а в то время её головной офис находился в Украине."
+      },
+      {
+        "role": "einleitung2",
+        "de": "Ich wurde persönlich vom CEO und Mitgesellschafter des Unternehmens eingeladen, diesen jungen, aber verlustbringenden Bereich zu leiten.",
+        "uk": "Мене особисто запросив генеральний директор і співвласник компанії очолити цей молодий, але збитковий напрямок.",
+        "en": "I was personally invited by the CEO and co-owner of the company to lead this young but loss-making department.",
+        "ru": "Меня лично пригласил генеральный директор и совладелец компании возглавить это молодое, но убыточное направление."
+      },
+      {
+        "role": "hauptteil1",
+        "de": "Die größte Herausforderung war, dass es praktisch weder Marketing noch ein strukturiertes Vertriebssystem in diesem Bereich gab.",
+        "uk": "Найбільшим викликом було те, що в цьому напрямку практично не було ні маркетингу, ні структурованої системи продажів.",
+        "en": "The biggest challenge was that there was practically neither marketing nor a structured sales system in this area.",
+        "ru": "Самым большим вызовом было то, что в этом направлении практически не было ни маркетинга, ни структурированной системы продаж."
+      },
+      {
+        "role": "hauptteil2",
+        "de": "Deshalb mussten wir in kurzer Zeit alles von Grund auf aufbauen: Marketingmaterialien erstellen, eine neue Website entwickeln und klare Vertriebsprozesse einführen.",
+        "uk": "Тому нам довелося за короткий час вибудувати все з нуля: створити маркетингові матеріали, розробити новий сайт і впровадити чіткі процеси продажів.",
+        "en": "That's why we had to build everything from scratch in a short time: create marketing materials, develop a new website, and introduce clear sales processes.",
+        "ru": "Поэтому нам пришлось за короткое время выстроить всё с нуля: создать маркетинговые материалы, разработать новый сайт и внедрить чёткие процессы продаж."
+      },
+      {
+        "role": "hauptteil3",
+        "de": "Nach etwa einem Monat intensiver Vorbereitung haben wir bereits im zweiten Monat mehr Umsatz erzielt als im gesamten Vorjahr zusammen.",
+        "uk": "Після приблизно місяця інтенсивної підготовки вже на другий місяць ми отримали більше доходу, ніж за весь попередній рік разом узятий.",
+        "en": "After about a month of intensive preparation, we generated more revenue in the second month than in the entire previous year combined.",
+        "ru": "После примерно месяца интенсивной подготовки уже на второй месяц мы получили больше выручки, чем за весь предыдущий год вместе взятый."
+      },
+      {
+        "role": "hauptteil4",
+        "de": "Besonders gefallen hat mir die Arbeit mit kreativen Menschen in einem internationalen Umfeld sowie der Kontakt zu großen Influencern und der schnelle, messbare Erfolg.",
+        "uk": "Мені особливо сподобалась робота з творчими людьми в міжнародному середовищі, а також контакт з великими інфлюенсерами та швидкий, вимірюваний успіх.",
+        "en": "What I particularly enjoyed was working with creative people in an international environment, as well as contact with major influencers and the fast, measurable success.",
+        "ru": "Мне особенно понравилась работа с творческими людьми в международной среде, а также контакт с крупными инфлюенсерами и быстрый, измеримый успех."
+      },
+      {
+        "role": "hauptteil5",
+        "de": "Ich konnte in dieser Zeit sehr viel praktische Erfahrung in den Bereichen Vertrieb, Marketing und Prozessaufbau sammeln.",
+        "uk": "За цей час я зміг накопичити дуже багато практичного досвіду у сферах продажів, маркетингу та побудови процесів.",
+        "en": "During this time, I was able to gain a great deal of practical experience in sales, marketing, and process development.",
+        "ru": "За это время я смог накопить очень много практического опыта в сферах продаж, маркетинга и построения процессов."
+      },
+      {
+        "role": "schluss1",
+        "de": "Insgesamt war es eine sehr intensive und lehrreiche Zeit, die meine berufliche Entwicklung stark geprägt hat.",
+        "uk": "Загалом це був дуже інтенсивний і повчальний період, який суттєво вплинув на мій професійний розвиток.",
+        "en": "Overall, it was a very intense and instructive time that strongly shaped my professional development.",
+        "ru": "В целом это был очень интенсивный и поучительный период, который существенно повлиял на моё профессиональное развитие."
+      },
+      {
+        "role": "schluss2",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit!",
+        "uk": "Дякую за увагу!",
+        "en": "Thank you for your attention!",
+        "ru": "Спасибо за внимание!"
       }
     ]
   }

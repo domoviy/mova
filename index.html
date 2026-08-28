@@ -3621,7 +3621,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '566-922bc0e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12852,7 +12852,14 @@ var _lfStoryHandlers = {
       textTr      = ul !== pl ? (part[ul] || '') : '';
       audioField  = part.role;
       eyebrowIcon = '';
-      var roleInfo = STORY_ROLE_LABELS[part.role];
+      // Роль подвоюється як ім'я аудіополя (унікальність файлу), тож
+      // кілька абзаців "основної частини" в реальній розповіді мусять
+      // мати РІЗНІ рядки ролі (hauptteil1, hauptteil2, ...) — інакше
+      // однакова назва поля перезаписала б аудіофайли одне одним. Але
+      // показувати користувачу мають однакову людську мітку "Hauptteil"
+      // для всіх них — тому фолбек: якщо точного збігу нема, пробуємо
+      // ще раз без кінцевих цифр.
+      var roleInfo = STORY_ROLE_LABELS[part.role] || STORY_ROLE_LABELS[part.role.replace(/\d+$/, '')];
       eyebrowLabel = roleInfo ? _lfBilingualLabel(roleInfo, pl, ul) : (part.role||'');
     }
 
