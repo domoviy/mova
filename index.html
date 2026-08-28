@@ -3621,7 +3621,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '568-31b9e8c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12843,7 +12843,7 @@ var _lfStoryHandlers = {
     if(isIntro){
       text        = card.task?.[pl] || '';
       textTr      = ul !== pl ? (card.task?.[ul] || '') : '';
-      audioField  = 'task';
+      audioField  = null; // 'task' — без аудіо (див. getAudioText), нічого підсвічувати
       eyebrowIcon = '🎤';
       eyebrowLabel = _lfBilingualLabel(card.topic, pl, ul);
     } else {
@@ -12906,12 +12906,19 @@ var _lfStoryHandlers = {
     var card = unit.card;
     var pl = primaryLang();
     if(unit.kind === 'story_intro'){
-      return [{ text: card.task?.[pl]||'', field: 'task' }];
+      // 'task' свідомо без аудіо (умова завдання, а не репліка для
+      // відтворення — див. story_fields() у gen_audio.py). Порожній
+      // масив (а не текст із полем 'task', якого тепер ніхто не
+      // генерує) — інакше рушій намагався б завантажити 404-файл і,
+      // за фолбеком на відсутнє аудіо, миттєво перейшов би далі, не
+      // давши прочитати (часто довгий) текст умови.
+      return [];
     }
     return [{ text: unit.part[pl]||'', field: unit.part.role }];
   },
 
   getSecondaryButtons: function(unit){
+    if(unit.kind === 'story_intro') return []; // без аудіо — нема що повторювати
     var buttons = [{
       icon: '🔊',
       onClick: function(){

@@ -461,12 +461,13 @@ def forum_field_text(item, field):
     return {}
 
 def story_fields(item):
-    """Mündliche Prüfung — Teil 1 (var STORY) — точна копія forum_fields()
-    щойно вище: 'task' першим, далі role кожного item['parts'] (типово
-    einleitung, hauptteil, schluss — але, як і forum, приймає БУДЬ-яку
-    роль, записану в базі). Синхронізовано з _storyCardsToUnits()/
-    STORY_ROLE_LABELS в index.html."""
-    fields = ['task']
+    """Mündliche Prüfung — Teil 1 (var STORY). На відміну від forum_fields()
+    вище, 'task' (умова завдання — довгий текст із переліком "Mögliche
+    Fragen") СВІДОМО не входить: це умова, яку читають, а не репліка для
+    відтворення — тому без аудіо. Синхронізовано з _storyCardsToUnits()/
+    _lfStoryHandlers.getAudioText() в index.html — там 'task' так само
+    не очікує аудіо (getAudioText повертає [] для story_intro)."""
+    fields = []
     for part in item.get('parts') or []:
         role = part.get('role') if isinstance(part, dict) else None
         if role:
