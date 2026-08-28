@@ -128,6 +128,9 @@ CATEGORIES_WITH_TIMING = {
     # PRIMARY_LANG. Користувач так само чує й читає услід за
     # озвученням — потрібна karaoke-підсвітка скрізь, а не вибірково.
     "email":       None,
+    # Mündliche Prüfung Teil 1 (story_XXX) — той самий принцип, що forum:
+    # усі поля (task + кожен блок розповіді), лише PRIMARY_LANG.
+    "story":       None,
 }
 
 def field_wants_timing(internal_cat, field, lang, primary_lang):
@@ -207,6 +210,13 @@ VOICE_MAPPING = {
     # (картка ще без name, чи для потрібної мови його не описано).
     "forum": {
         "post": {"de": "de-DE-KatjaNeural", "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural", "ru": "ru-RU-SvetlanaNeural"}
+    },
+    # Mündliche Prüfung Teil 1 (story_XXX) — усна розповідь ОДНІЄЇ
+    # людини (не 2 ролі) — той самий принцип, що forum щойно вище:
+    # голос шукаємо СПЕРШУ за card.name (id персонажа з characters.js),
+    # цей запис — лише запасний варіант.
+    "story": {
+        "post": {"de": "de-DE-FlorianMultilingualNeural", "uk": "uk-UA-OstapNeural", "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
     },
     # E-Mail (email_XXX) — на відміну від forum (один автор на весь
     # допис), тут природно ТРИ різні "голоси": керівник (mail_boss),
@@ -443,6 +453,28 @@ def forum_field_text(item, field):
     'role' — службовий ключ самого part-об'єкта, не мова, тому явно
     виключений з результату (інакше цикл нижче спробував би озвучити
     буквальний рядок ролі, напр. 'anrede', як "текст мовою role")."""
+    if field == 'task':
+        return item.get('task') or {}
+    for part in item.get('parts') or []:
+        if isinstance(part, dict) and part.get('role') == field:
+            return {k: v for k, v in part.items() if k != 'role'}
+    return {}
+
+def story_fields(item):
+    """Mündliche Prüfung — Teil 1 (var STORY) — точна копія forum_fields()
+    щойно вище: 'task' першим, далі role кожного item['parts'] (типово
+    einleitung, hauptteil, schluss — але, як і forum, приймає БУДЬ-яку
+    роль, записану в базі). Синхронізовано з _storyCardsToUnits()/
+    STORY_ROLE_LABELS в index.html."""
+    fields = ['task']
+    for part in item.get('parts') or []:
+        role = part.get('role') if isinstance(part, dict) else None
+        if role:
+            fields.append(role)
+    return fields
+
+def story_field_text(item, field):
+    """Точна копія forum_field_text() щойно вище, для var STORY."""
     if field == 'task':
         return item.get('task') or {}
     for part in item.get('parts') or []:
@@ -1405,6 +1437,13 @@ async def main():
             # "field_obj = item.get(field)" цикл, розрахований на
             # top-level поля) — див. коментар у forum_fields().
             internal_cat = "forum"
+        elif item_id.startswith("story_"):
+            # Mündliche Prüfung — Teil 1 (var STORY) — структурно
+            # ідентична forum_XXX (task + card['parts'] з {role,
+            # de,en,uk,ru}, один розповідач card['name']), тому окрема
+            # гілка нижче — точна копія forum, лише інші voice/fields-
+            # функції (story_fields()/story_field_text()).
+            internal_cat = "story"
         elif item_id.startswith("email_"):
             # E-Mail (var EMAILS) — той самий принцип, що forum щойно
             # вище (окрема гілка, не generic top-level-поля цикл), лише
@@ -1488,6 +1527,60 @@ async def main():
             # primary_lang) — переходимо до наступної картки, без
             # generic циклу нижче (розрахований на top-level поля
             # картки, яких forum-картка в такому вигляді не має).
+            continue
+
+        if internal_cat == "story":
+            # ── Mündliche Prüfung Teil 1: точна копія гілки forum щойно
+            # вище (один голос-розповідач card['name'], лише PRIMARY_LANG),
+            # лише story_fields()/story_field_text() замість forum-аналогів.
+            if primary_lang in audio_config:
+                persona_id = item.get("name")
+                voice = resolve_character_voice(characters_list, persona_id, primary_lang)
+                if not voice:
+                    voice = get_voice_id("story", "post", primary_lang)
+                rates = audio_config.get(primary_lang, ["100"])
+
+                for field in story_fields(item):
+                    field_obj = story_field_text(item, field)
+                    text = field_obj.get(primary_lang) if isinstance(field_obj, dict) else None
+                    if text is None: continue
+                    if isinstance(text, str) and not text.strip(): continue
+
+                    cleaned = clean_text(text, primary_lang)
+                    if not cleaned:
+                        continue
+
+                    want_timing = field_wants_timing("story", field, primary_lang, primary_lang)
+
+                    for rate in rates:
+                        filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
+                        mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
+
+                        content_hash = compute_content_hash(cleaned, voice, rate)
+                        existing_value = manifest_data.get(mkey)
+                        existing_hash = manifest_hash_part(existing_value)
+
+                        if existing_value != manifest_value(content_hash, want_timing):
+                            tasks.append({
+                                "id": item_id,
+                                "course": course,
+                                "audio_base": audio_base,
+                                "internal_cat": internal_cat,
+                                "cat_lower": cat_lower,
+                                "sub": field,
+                                "lang": primary_lang,
+                                "rate": rate,
+                                "cleaned": cleaned,
+                                "voice": voice,
+                                "filename": filename,
+                                "mkey": mkey,
+                                "content_hash": content_hash,
+                                "existing_hash": existing_hash,
+                                "want_timing": want_timing,
+                                "primary_lang": primary_lang
+                            })
+            # story_XXX повністю оброблено вище — переходимо до наступної
+            # картки, без generic циклу нижче.
             continue
 
         if internal_cat == "email":
