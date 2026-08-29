@@ -490,7 +490,13 @@ body{
   background:var(--paper);border:1.5px solid var(--border);
   transform:rotateY(180deg);box-shadow:0 3px 14px rgba(0,0,0,.06);
 }
-.fc-header{padding:14px 16px 0;display:flex;align-items:center;gap:8px}
+.fc-header{
+  /* Було 14px 16px 0 — зверху й знизу відступ відрізнявся від
+     бокового (16px), знизу взагалі був 0. Тепер усі чотири боки
+     рівні лівому/правому (16px), як просив запит. */
+  padding:16px;
+  display:flex;align-items:center;gap:8px;
+}
 .fc-fav{
   width:44px;height:44px;border-radius:50%;border:none;
   background:rgba(255,255,255,.1);color:rgba(255,255,255,.6);
@@ -2216,10 +2222,14 @@ body.lesson-active .vocab-top{
      інакше текст усередині картки й ряд кнопок під нею мали РІЗНИЙ
      сумарний відступ від краю екрана (32px проти 24px), і картка
      візуально виглядала ширшою за кнопки. Низ так само 10px, як і боки
-     (раніше було 22px — асиметрично відносно боків без причини). Верх
-     лишається 18px — інший ритм (відступ під прогрес-бар над карткою,
-     не пов'язаний з цим вирівнюванням). */
-  padding:18px 10px 10px;
+     (раніше було 22px — асиметрично відносно боків без причини).
+     Верх РАНІШЕ лишався 18px (інший "ритм" під прогрес-бар над
+     карткою) — але це робило відступ зірочки-закладки від верхнього
+     краю картки більшим за відступ від лівого краю (18 проти 10),
+     що виглядало нерівно. За явним запитом — верх тепер теж 10px,
+     рівно як боки й низ (картка суцільно 10px з усіх чотирьох боків).
+  */
+  padding:10px;
   display:flex;flex-direction:column;flex:1;min-height:0;
   position:relative;
   user-select:none;-webkit-user-select:none;touch-action:none;
@@ -3671,7 +3681,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '574-ad43b48';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7093,7 +7103,26 @@ function buildVocabQueue(){
   // всі картки уроку без обмеження 5-ти і ламала lesson flow.
   const cf=document.getElementById('vf-cat')?.value||'all';
   let arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
-  if(V.filterIds) arr = arr.filter(v=>V.filterIds.has(v.id));
+  if(V.filterIds){
+    arr = arr.filter(v=>V.filterIds.has(v.id));
+  } else {
+    // ПРАВКА 1: без явного скоупу (V.filterIds) — лексика вибирається
+    // ЛИШЕ з поточного модуля курсу і всіх модулів/глав ДО нього.
+    // Слова з модулів, які йдуть ПІЗНІШЕ за поточний, у вибірку не
+    // мають потрапляти (незнайома лексика, яку користувач ще не
+    // проходив). _cardIdsUpToLesson() вже існує й робить саме це
+    // (раніше застосовувалась лише для пулу бонусних уроків
+    // граматики) — тут той самий принцип для загального перегляду
+    // "Карток".
+    const curLesson = typeof findCurrentLesson === 'function' ? findCurrentLesson() : null;
+    if(curLesson){
+      const allowedIds = _cardIdsUpToLesson(curLesson);
+      arr = arr.filter(v => allowedIds.has(v.id));
+    }
+    // curLesson === null (курс повністю пройдено, або LESSONS
+    // недоступний) — навмисно НЕ звужуємо пул: краще показати все,
+    // ніж лишити користувача без жодної картки для повторення.
+  }
   if(V.mode==='srs'){
     // SM-2: спочатку прострочені та нові, потім за пріоритетом.
     //
@@ -7112,7 +7141,17 @@ function buildVocabQueue(){
     // викликає srsDue()/srsPriority() як раніше — цей фікс ізольований.
     const _srState = srLoadState();
     const due   = arr.filter(v=>srDueFromState(_srState,v.id)).sort((a,b)=>srPriorityFromState(_srState,b.id)-srPriorityFromState(_srState,a.id));
-    const notDue= arr.filter(v=>!srDueFromState(_srState,v.id));
+    // ПРАВКА 2: notDue раніше йшли "як є" (порядок бази курсу) — на
+    // базі з тисячами слів це означало, що першими з "хвоста" черги
+    // показувались випадкові слова з початку бази, а не ті, кому
+    // справді найближче до повторення. srPriorityFromState() для
+    // ще-не-due картки — від'ємне число, пропорційне тому, скільки
+    // днів лишилось до дати повтору (чим ближче до 0 — тим скоріше
+    // треба повторити). Той самий компаратор, що й для due вище
+    // (спадання за пріоритетом), тут природно дає "найближче до
+    // повтору — першим": -1 день > -1000 днів.
+    const notDue= arr.filter(v=>!srDueFromState(_srState,v.id))
+                      .sort((a,b)=>srPriorityFromState(_srState,b.id)-srPriorityFromState(_srState,a.id));
     arr = [...due, ...notDue];
   }
   return arr;
@@ -10083,15 +10122,23 @@ function tilesShowCard(){
   // Дистрактори — слова з term[primaryLang()] інших карток
   const pool = getVocabPool();
 
-  // Артиклі der/die/das — граматична особливість лише німецької мови
+  // Артиклі der/die/das — граматична особливість лише німецької мови.
+  // ВИПРАВЛЕНО: раніше "чи картка вже відома" читалась зі СТАРОГО
+  // ключа localStorage 'srs_'+id, який ніде в коді більше НЕ
+  // записується (перевірено — жодного localStorage.setItem('srs_'+...)
+  // у всьому файлі) — тож cardIsKnown завжди був false, і ця гілка
+  // фактично ніколи не спрацьовувала. Тепер — та сама перевірка, що й
+  // скрізь у решті коду: srLoadState()/state.cards[id], "відома" =
+  // хоч раз пройдена успішно (repetitions>0) АБО SM-2-інтервал
+  // перевищує 5 днів.
   const ARTICLES = pLang==='de' ? ['der','die','das'] : [];
   const presentArticle = words.find(w => ARTICLES.includes(w.toLowerCase()));
-  const cardIsKnown = (() => {
-    try {
-      const srs = JSON.parse(localStorage.getItem('srs_' + card.id) || '{}');
-      return srs.q > 0;
-    } catch(e) { return false; }
-  })();
+  let cardIsKnown = false;
+  if(presentArticle){
+    const _tilesSrState = srLoadState();
+    const cs = _tilesSrState.cards?.[card.id];
+    cardIsKnown = !!cs && ((cs.repetitions && cs.repetitions > 0) || (cs.interval && cs.interval > 5));
+  }
   let distWords;
   if (presentArticle && cardIsKnown) {
     // Замість рандомних слів — два невірних артиклі як дистрактори
@@ -10625,15 +10672,45 @@ function defShowCard(){
 
   // Дистрактори
   const pool = defGetPool();
-  const distWords = pool
-    .filter(v => v.id !== card.id)
-    .flatMap(v => {
-      const dHtml = v.def?.[lang] || '';
-      return [...dHtml.matchAll(/<b>(.*?)<\/b>/gi)].flatMap(m => m[1].split(' ').filter(Boolean));
-    })
-    .filter(w => !correctWords.includes(w) && w.length > 2)
-    .sort(() => Math.random() - .5)
-    .slice(0, Math.min(4, correctWords.length + 2));
+
+  // Артиклі der/die/das — той самий принцип, що вже (мав) працювати в
+  // tiles (startTiles): якщо серед ПРАВИЛЬНИХ слів для вставки є
+  // артикль і картка вже "знайома" (хоч раз пройдена успішно, АБО
+  // SM-2-інтервал перевищує 5 днів) — замість звичайних випадкових
+  // дистракторів з чужих речень пропонуємо саме ДВА ІНШІ артиклі.
+  // Без цього банк міг узагалі не містити жодного альтернативного
+  // артикля (звичайний пошук дистракторів бере слова з <b>-блоків
+  // ІНШИХ карток — там конкретно "der"/"das" як болдоване слово міг
+  // просто ЖОДНОГО разу не зустрітись), і вправа зводилась до
+  // єдиного варіанта в банку — не тест, а вгадайка "методом
+  // виключення". (Раніше в tiles була аналогічна ідея, але перевірка
+  // "чи картка вже відома" читала СТАРИЙ, більше ніде в коді не
+  // записуваний ключ localStorage 'srs_'+id — тому фактично ніколи не
+  // спрацьовувала; тут одразу правильна перевірка через
+  // srLoadState()/state.cards[id], як і скрізь у решті коду.)
+  const ARTICLES = lang==='de' ? ['der','die','das'] : [];
+  const presentArticle = correctWords.find(w => ARTICLES.includes(w.toLowerCase()));
+  let cardIsMature = false;
+  if(presentArticle){
+    const _defSrState = srLoadState();
+    const cs = _defSrState.cards?.[card.id];
+    cardIsMature = !!cs && ((cs.repetitions && cs.repetitions > 0) || (cs.interval && cs.interval > 5));
+  }
+
+  let distWords;
+  if(presentArticle && cardIsMature){
+    distWords = ARTICLES.filter(a => a !== presentArticle.toLowerCase());
+  } else {
+    distWords = pool
+      .filter(v => v.id !== card.id)
+      .flatMap(v => {
+        const dHtml = v.def?.[lang] || '';
+        return [...dHtml.matchAll(/<b>(.*?)<\/b>/gi)].flatMap(m => m[1].split(' ').filter(Boolean));
+      })
+      .filter(w => !correctWords.includes(w) && w.length > 2)
+      .sort(() => Math.random() - .5)
+      .slice(0, Math.min(4, correctWords.length + 2));
+  }
 
   const allTiles = [...correctWords, ...distWords].sort(() => Math.random() - .5);
 
@@ -14050,6 +14127,45 @@ function _lfVocabBuildListenUnits(startCardId){
   return units;
 }
 
+// ── PREFETCH для vocab-юнітів (урок + картковий режим на тому самому
+// рушії lfRunUnitStep) ──────────────────────────────────────────────
+// На відміну від startPrefetchChain()/prefetchCardSequential() (вільний
+// перегляд "Карток", кілька мов одразу) — тут лише ОДНА мова
+// (primaryLang, unit-екран озвучує тільки її) і алгоритм суворо
+// послідовний по полях: term довантажується (або підтверджується, що
+// вже валідний кеш) ПЕРШИМ, і лише ПІСЛЯ цього відправляється запит на
+// short; так само й def — лише після завершення short. Жодні два поля
+// не завантажуються одночасно.
+//
+// _lfVocabPrefetchGen — спільний "номер покоління" для скасування
+// застарілих ланцюжків: якщо юзер встиг перейти на інший юніт, поки
+// старий ланцюжок ще тягнув мережу, нова render() підніме generation,
+// і stale-ланцюжок сам вийде на найближчій перевірці — без явного
+// AbortController.
+var _lfVocabPrefetchGen = 0;
+async function _lfVocabPrefetchCardFields(card, fields){
+  var myGen = _lfVocabPrefetchGen;
+  var pl = primaryLang();
+  for(var i=0;i<fields.length;i++){
+    if(_lfVocabPrefetchGen !== myGen) return; // новіший юніт уже скасував цей ланцюжок
+    var field = fields[i];
+    var text = card[field] && card[field][pl];
+    if(!text) continue; // немає тексту цим полем узагалі — качати нічого, до наступного поля
+    var url = getAudioUrl(card.id, field, pl);
+    var mkey = urlToAudioMkey(url);
+    if((audioBlobCache.has(url) && isAudioCacheValid(url, mkey)) || audioExistsCache.get(url) === '404'){
+      continue; // вже валідний кеш або підтверджено 404 — "довантаження" не потрібне, одразу до наступного поля
+    }
+    await _waitForPriorityClear(); // не заважаємо мережі поточного активного аудіо
+    if(_lfVocabPrefetchGen !== myGen) return;
+    await fetchBlobUrl(url, 8000, mkey).catch(function(){});
+    // ЩОЙНО тут — після await fetchBlobUrl — term (чи short) гарантовано
+    // або в кеші, або підтверджено недоступним; лише тепер цикл іде до
+    // наступного поля і відправляє ЙОГО запит. Це і є вимога
+    // "спочатку term і тільки після завершення завантаження... short".
+  }
+}
+
 var _lfVocabHandlers = {
   render: function(unit){
     var card = unit.card;
@@ -14119,6 +14235,13 @@ var _lfVocabHandlers = {
             (shortTranslation ? '<div class="lf-unit-short">'+shortTranslation+'</div>' : '')+'</div>'+
           '</div>'
         : '');
+      // Юніт term+short щойно почав показуватись/озвучуватись — у фоні
+      // (не блокуючи саме відтворення) заздалегідь довантажуємо short,
+      // а потім def ЦІЄЇ Ж картки, послідовно: term → short → def. Коли
+      // відтворення природним чином дійде до short/def, файл уже буде
+      // готовий у кеші, без затримки на мережу саме в момент програвання.
+      _lfVocabPrefetchGen++;
+      _lfVocabPrefetchCardFields(card, ['term','short','def']);
     } else { // def
       var def = card.def?.[pl] || '';
       var defTranslation = ul !== pl ? (card.def?.[ul] || '') : '';
@@ -14131,6 +14254,24 @@ var _lfVocabHandlers = {
             '<div class="lf-unit-sentence-tr">'+defTranslation+'</div>'+
           '</div>'
         : '');
+      // Def — останнє поле картки перед переходом до term+short
+      // НАСТУПНОЇ картки в черзі. Саме зараз, поки def озвучується,
+      // заздалегідь запускаємо той самий послідовний ланцюжок для
+      // term, потім short НАСТУПНОЇ картки (шукаємо перший наступний
+      // vocab-юніт з ІНШИМ cardId — це й буде term-юніт наступного
+      // слова, оскільки _lfVocabBuildUnits() завжди чергує
+      // term(+short) → def? → term(+short) → ... для кожної картки).
+      var nextCard = null;
+      if(typeof _lfUnit !== 'undefined' && _lfUnit && _lfUnit.units){
+        for(var _ni=_lfUnit.idx+1; _ni<_lfUnit.units.length; _ni++){
+          var _u = _lfUnit.units[_ni];
+          if(_u.kind==='vocab' && _u.cardId !== unit.cardId){ nextCard = _u.card; break; }
+        }
+      }
+      if(nextCard){
+        _lfVocabPrefetchGen++;
+        _lfVocabPrefetchCardFields(nextCard, ['term','short']);
+      }
     }
 
     var cardEl = document.getElementById('lf-unit-card');
