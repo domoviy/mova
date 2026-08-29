@@ -32856,7 +32856,7 @@
   "Deutsch-B2-Beruf/de/085/uns/uns_108_term_de_085": "82c44e78a4+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_108_short_de_085": "5041b11877+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_108_def_de_085": "10a8dee9c8+t",
-  "Deutsch-B2-Beruf/de/085/uns/uns_109_term_de_085": "d0d058f8f1+t",
+  "Deutsch-B2-Beruf/de/085/uns/uns_109_term_de_085": "f706790e34+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_109_short_de_085": "ef06782a11+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_109_def_de_085": "1820b43abe+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_110_term_de_085": "6b369117fa+t",
@@ -38194,7 +38194,7 @@
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_036_term_uk_100": "aa0953f06c",
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_036_short_uk_100": "f9414c2fd0",
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_036_def_uk_100": "e09ac41e0f",
-  "Deutsch-B2-Beruf/uk/100/ssk/ssk_038_term_uk_100": "85ce191c15",
+  "Deutsch-B2-Beruf/uk/100/ssk/ssk_038_term_uk_100": "e97ee1d799",
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_038_short_uk_100": "314ebf68f0",
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_038_def_uk_100": "b074ab12e1",
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_042_term_uk_100": "2f58abb694",
@@ -39206,5 +39206,8 @@
   "Deutsch-B2-Beruf/uk/100/uns/uns_142_def_uk_100": "8e67959056",
   "Deutsch-B2-Beruf/de/100/ssk/ssk_059_term_de_100": "2c3dbc20ee+t",
   "Deutsch-B2-Beruf/de/100/ssk/ssk_059_short_de_100": "7fb7cd7a02+t",
-  "Deutsch-B2-Beruf/de/100/ssk/ssk_059_def_de_100": "c35d26bd76+t"
+  "Deutsch-B2-Beruf/de/100/ssk/ssk_059_def_de_100": "c35d26bd76+t",
+  "Deutsch-B2-Beruf/de/085/ssk/ssk_059_term_de_085": "d7242285f4+t",
+  "Deutsch-B2-Beruf/de/085/ssk/ssk_059_short_de_085": "5f0d9a7fdf+t",
+  "Deutsch-B2-Beruf/de/085/ssk/ssk_059_def_de_085": "8cbe1b6981+t"
 }
