@@ -1303,22 +1303,17 @@ body{
   margin:0 2px;
   cursor:default;
   transition:background .15s, border-color .15s, color .15s;
-  /* line-height:32px тут — на БАЗОВОМУ класі (діє і для .empty, і для
-     .filled), навмисно рівно те саме значення, що й height:32px у
-     .empty нижче. .empty — inline-flex з явною height, тому власну
-     line-height ігнорує (висота вже задана явно) — цей рядок нічого
-     там не змінює. А от .filled — звичайний inline-текст БЕЗ явної
-     висоти (щоб слово стояло на базовій лінії, не "плашкою" — див.
-     коментар нижче), і САМЕ тому рядок з .filled раніше "стискався"
-     після заповнення слота: без height:32px і без цього line-height
-     інлайновий текст займав лише свою природну висоту (~1.3×шрифт),
-     менше за 32px, і міжрядковий інтервал усього речення зменшувався
-     щойно користувач підставляв слово. line-height:32px не чіпає
-     позицію самого тексту на базовій лінії (це лише "leading" —
-     додатковий простір симетрично над/під рядком), тож заповнене
-     слово й далі рівно на лінії, але тепер стабільно тримає ту саму
-     висоту рядка, що була з порожнім слотом із самого початку. */
-  line-height:32px;
+  /* line-height:1.7 — БЕЗ одиниці (множник до ВЛАСНОГО font-size),
+     точно те саме число, що й у #def-q-text (inline style вище) і в
+     height/.empty нижче. Раніше тут був ФІКСОВАНИЙ line-height:32px,
+     а в контейнера — відносний line-height:1.3: при типовому
+     --fs-card:18px це 32px проти 23.4px — звідси й різний
+     міжрядковий інтервал між рядком зі слотом і рештою речення (те,
+     що видно на скріншотах). Коли ОБИДВА — той самий безодиничний
+     множник 1.7 — вони завжди дають ОДНАКОВУ висоту рядка, хоч би
+     який --fs-card користувач вибрав у налаштуваннях (14–28px),
+     оскільки обчислюються від того самого font-size. */
+  line-height:1.7;
 }
 /* Порожній слот — єдиний, що лишається "плашкою" (бокс із висотою):
    тут vertical-align:middle і top-компенсація виправдані, бо це просто
@@ -1329,7 +1324,7 @@ body{
   align-items:center;
   justify-content:center;
   min-width:64px;
-  height:32px;
+  height:1.7em; /* em — теж відносно ВЛАСНОГО font-size, той самий принцип і те саме число, що й line-height:1.7 вище — раніше було фіксовано 32px */
   border-bottom:2.5px solid rgba(201,168,76,.6);
   padding:0 6px;
   vertical-align:middle;
@@ -3237,7 +3232,7 @@ body.lesson-active .vocab-top{
       <!-- DEF FILL-IN (tab 6) -->
       <div id="vocab-panel-def" style="display:none">
         <div class="tiles-question" id="def-question-block">
-          <div class="tiles-q-text" id="def-q-text" style="color:#fff;line-height:1.3"></div>
+          <div class="tiles-q-text" id="def-q-text" style="color:#fff;line-height:1.7"></div>
         </div>
         <div class="tiles-bank" id="def-bank"></div>
         <div class="tiles-check-row">
@@ -3621,7 +3616,6 @@ body.lesson-active .vocab-top{
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
       <div class="srow-label"><label>🃏 Вправи Vocab (тест)</label><small>Прямий доступ до вкладок, прибраних з основного UI</small></div>
       <div style="display:flex;flex-direction:column;gap:6px">
-        <button class="btn btn-s" style="text-align:left" onclick="showView('sb')">🧩 Sprachbausteine</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(2)">🔗 Пари</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(3)">🎯 Вибір</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(4)">🧩 Склади речення</button>
@@ -3631,15 +3625,7 @@ body.lesson-active .vocab-top{
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>📰 Forumsbeitrag (тест)</label><small>Самостійний перегляд var SCHREIBEN — той самий рушій, що й Dialogue (озвучення+karaoke, <r>/<g>, крок-за-кроком з перекладом)</small></div>
-      <button class="btn btn-s" style="text-align:left" onclick="debugOpenForumsbeitrag()">📰 Forumsbeitrag</button>
-    </div>
-    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>📧 E-Mail (тест)</label><small>Самостійний перегляд var EMAILS — той самий рушій: 2 листи (від керівника + скарга клієнта) у форматі поштового клієнта, відповідь компанії крок-за-кроком (озвучення+karaoke, <r>/<g>), потім 2 MC-питання на розуміння</small></div>
-      <button class="btn btn-s" style="text-align:left" onclick="debugOpenEmail()">📧 E-Mail</button>
-    </div>
-    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>🎤 Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій, що Forumsbeitrag: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією)</small></div>
+      <div class="srow-label"><label>🎤 Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією)</small></div>
       <button class="btn btn-s" style="text-align:left" onclick="debugOpenStory()">🎤 Mündliche Prüfung – Teil 1</button>
     </div>
     </div>
@@ -3681,7 +3667,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '575-14b30ff';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7217,9 +7203,14 @@ function renderVocabCard(){
       const btn=document.getElementById(id);
       if(!btn||btn._favInited) return;
       btn._favInited=true;
-      const stopAndToggle=e=>{ e.stopPropagation(); if(e.cancelable) e.preventDefault(); const fid=btn.dataset.favId; if(fid) toggleFavorite(fid); };
+      // Той самий подвійний спрацьовуючий touchend+click, що й у зірочці
+      // уроку (виправлено вище) — тут та сама причина й той самий фікс:
+      // прапорець tapping гасить синтезований click, що йде одразу за
+      // touchend на деяких мобільних браузерах.
+      let tapping = false;
+      const stopAndToggle=e=>{ e.stopPropagation(); if(e.cancelable) e.preventDefault(); tapping = true; const fid=btn.dataset.favId; if(fid) toggleFavorite(fid); setTimeout(()=>{ tapping = false; }, 400); };
       btn.addEventListener('touchend', stopAndToggle, {passive:false});
-      btn.addEventListener('click', e=>{ e.stopPropagation(); const fid=btn.dataset.favId; if(fid) toggleFavorite(fid); });
+      btn.addEventListener('click', e=>{ e.stopPropagation(); if(tapping) return; const fid=btn.dataset.favId; if(fid) toggleFavorite(fid); });
     });
   }, 0);
 }
@@ -7332,24 +7323,15 @@ function initSwipe(){
     onDown: () => { haptic.success(); srsSwipe(5); },
   });
 
-  // Fav кнопки — окремі touch listeners щоб не конфліктувати зі swipe
-  function initFavBtn(id){
-    const btn = document.getElementById(id);
-    if(!btn) return;
-    btn.addEventListener('touchstart', e=>{ e.stopPropagation(); }, {passive:true});
-    btn.addEventListener('touchend', e=>{
-      e.stopPropagation();
-      if(e.cancelable) e.preventDefault();
-      const favId = btn.dataset.favId;
-      if(favId) toggleFavorite(favId);
-    }, {passive:false});
-    btn.addEventListener('click', e=>{
-      e.stopPropagation();
-      const favId = btn.dataset.favId;
-      if(favId) toggleFavorite(favId);
-    });
-  }
-  setTimeout(()=>{ initFavBtn('fc-fav-front'); initFavBtn('fc-fav-back'); }, 0);
+  // ВИДАЛЕНО дублюючу ініціалізацію fav-кнопок fc-fav-front/-back, яка
+  // тут раніше висіла ОКРЕМО й НЕЗАЛЕЖНО від того самого коду в
+  // renderVocabCard() (той — з guard'ом btn._favInited, виконується
+  // при кожному рендері картки, але реально біндить лише один раз).
+  // Через це на кнопки навішувались ОДРАЗУ ДВА незалежні набори
+  // touchend+click слухачів — один тап міг перемкнути "в закладках"
+  // до 4 разів поспіль (замість очікуваного одного), стан миготів
+  // туди-сюди, а показане повідомлення ("Додано"/"Видалено") не
+  // відповідало тому, що користувач бачив на екрані до тапу.
 }
 
 
@@ -7648,27 +7630,42 @@ let matchState = {
 };
 
 // Чи потрібен "шахматковий" режим (.match-grid.stagger) для поточного
-// раунду matching — вмикається, якщо серед термінів/пояснень є текст,
-// довший за приблизно половину типової ширини колонки. Рахуємо ДВОМА
-// евристиками одразу (або-або):
-//  1) довжина ОДНОГО нерозривного токена (слова) — саме такі слова
-//     (напр. німецькі композити на кшталт "Bildungsinformationszentrum")
-//     фізично не можуть перенестись по пробілу всередині колонки;
-//  2) загальна довжина фрази — навіть якщо кожне слово окремо коротке,
-//     довга фраза в 2 колонки виглядає затиснутою (багато рядків).
-// Пороги підібрані під --fs-card за замовчуванням (18px) на типовому
-// телефонному екрані — не претендують на ідеальну точність для
-// довільного розміру шрифту, лише орієнтир "явно довгий текст".
-function _matchNeedsStagger(cards){
-  const LONG_TOKEN = 16, LONG_TOTAL = 26;
-  return cards.some(({card}) => {
+// раунду matching — вмикається ТІЛЬКИ якщо серед term/short є ОДНЕ
+// слово (без пробілів), реальна відрендерена ширина якого перевищує
+// 50% ширини екрана. Саме одне слово — не вся фраза: фраза з кількох
+// коротких слів нормально переноситься по пробілу в звичайній
+// 2-колонковій сітці 50/50, а от одне задовге нерозривне слово
+// (наприклад, німецький композит на кшталт
+// "Bildungsinformationszentrum") фізично не влазить у колонку навіть
+// після переносу.
+//
+// Вимірюємо РЕАЛЬНОЮ шириною в пікселях через canvas.measureText(), а
+// не наближенням за кількістю символів — тим самим шрифтом/розміром,
+// що й .match-btn (var(--fs-card), 500, 'Inter'), щоб коректно
+// враховувати як поточний розмір шрифту користувача (14–28px,
+// налаштування), так і те, що різні літери мають різну ширину.
+let _matchMeasureCanvas = null;
+function _matchLongestWordWidth(cards){
+  if(!_matchMeasureCanvas) _matchMeasureCanvas = document.createElement('canvas');
+  const ctx = _matchMeasureCanvas.getContext('2d');
+  const fs = getComputedStyle(document.documentElement).getPropertyValue('--fs-card').trim() || '18px';
+  ctx.font = "500 " + fs + " 'Inter', sans-serif"; // 1:1 з font-weight/font-family .match-btn
+  let maxW = 0;
+  cards.forEach(({card}) => {
     const term  = targetText(card) || '';
     const short = nativeText(card) || '';
-    return [term, short].some(txt => {
-      if(txt.length > LONG_TOTAL) return true;
-      return txt.split(/\s+/).some(tok => tok.replace(/[.,;:!?'"„“()–-]/g,'').length > LONG_TOKEN);
+    [term, short].forEach(txt => {
+      txt.split(/\s+/).forEach(word => {
+        if(!word) return;
+        const w = ctx.measureText(word).width;
+        if(w > maxW) maxW = w;
+      });
     });
   });
+  return maxW;
+}
+function _matchNeedsStagger(cards){
+  return _matchLongestWordWidth(cards) > window.innerWidth * 0.5;
 }
 
 function startMatching(){
@@ -12169,9 +12166,21 @@ var _lfSBHandlers = {
         favBtn.removeEventListener('touchend', prevHandlers.te);
         favBtn.removeEventListener('click', prevHandlers.cl);
       }
+      // ВИПРАВЛЕНО: touchend викликав doToggle(), а після нього (навіть
+      // попри preventDefault) деякі мобільні браузери/WebView усе одно
+      // синтезували 'click' — і той теж викликав doToggle(). Разом це
+      // подвійне спрацювання на ОДИН тап: стан перемикався туди-сюди
+      // (напр. false→true→false), зірочка встигала блиснути активною
+      // й одразу згасала (користувач цього не помічав), а останнє
+      // повідомлення ("Видалено із закладок") показувалось навіть
+      // якщо зірочка щойно виглядала неактивною — саме той баг, що
+      // був описаний. Фікс: прапорець tapping — touchend позначає тап
+      // обробленим на короткий час, і наступний click (якщо це той
+      // самий синтезований клік) просто ігнорується.
+      var tapping = false;
       var ts = function(e){ e.stopPropagation(); };
-      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
-      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); tapping = true; doToggle(); setTimeout(function(){ tapping = false; }, 400); };
+      var cl = function(e){ e.stopPropagation(); if(tapping) return; doToggle(); };
       favBtn.addEventListener('touchstart', ts, {passive:true});
       favBtn.addEventListener('touchend', te, {passive:false});
       favBtn.addEventListener('click', cl);
@@ -12549,9 +12558,21 @@ var _lfDlgHandlers = {
         favBtn.removeEventListener('touchend', prevHandlers.te);
         favBtn.removeEventListener('click', prevHandlers.cl);
       }
+      // ВИПРАВЛЕНО: touchend викликав doToggle(), а після нього (навіть
+      // попри preventDefault) деякі мобільні браузери/WebView усе одно
+      // синтезували 'click' — і той теж викликав doToggle(). Разом це
+      // подвійне спрацювання на ОДИН тап: стан перемикався туди-сюди
+      // (напр. false→true→false), зірочка встигала блиснути активною
+      // й одразу згасала (користувач цього не помічав), а останнє
+      // повідомлення ("Видалено із закладок") показувалось навіть
+      // якщо зірочка щойно виглядала неактивною — саме той баг, що
+      // був описаний. Фікс: прапорець tapping — touchend позначає тап
+      // обробленим на короткий час, і наступний click (якщо це той
+      // самий синтезований клік) просто ігнорується.
+      var tapping = false;
       var ts = function(e){ e.stopPropagation(); };
-      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
-      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); tapping = true; doToggle(); setTimeout(function(){ tapping = false; }, 400); };
+      var cl = function(e){ e.stopPropagation(); if(tapping) return; doToggle(); };
       favBtn.addEventListener('touchstart', ts, {passive:true});
       favBtn.addEventListener('touchend', te, {passive:false});
       favBtn.addEventListener('click', cl);
@@ -12787,9 +12808,21 @@ var _lfFrmHandlers = {
         favBtn.removeEventListener('touchend', prevHandlers.te);
         favBtn.removeEventListener('click', prevHandlers.cl);
       }
+      // ВИПРАВЛЕНО: touchend викликав doToggle(), а після нього (навіть
+      // попри preventDefault) деякі мобільні браузери/WebView усе одно
+      // синтезували 'click' — і той теж викликав doToggle(). Разом це
+      // подвійне спрацювання на ОДИН тап: стан перемикався туди-сюди
+      // (напр. false→true→false), зірочка встигала блиснути активною
+      // й одразу згасала (користувач цього не помічав), а останнє
+      // повідомлення ("Видалено із закладок") показувалось навіть
+      // якщо зірочка щойно виглядала неактивною — саме той баг, що
+      // був описаний. Фікс: прапорець tapping — touchend позначає тап
+      // обробленим на короткий час, і наступний click (якщо це той
+      // самий синтезований клік) просто ігнорується.
+      var tapping = false;
       var ts = function(e){ e.stopPropagation(); };
-      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
-      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); tapping = true; doToggle(); setTimeout(function(){ tapping = false; }, 400); };
+      var cl = function(e){ e.stopPropagation(); if(tapping) return; doToggle(); };
       favBtn.addEventListener('touchstart', ts, {passive:true});
       favBtn.addEventListener('touchend', te, {passive:false});
       favBtn.addEventListener('click', cl);
@@ -12983,9 +13016,21 @@ var _lfStoryHandlers = {
         favBtn.removeEventListener('touchend', prevHandlers.te);
         favBtn.removeEventListener('click', prevHandlers.cl);
       }
+      // ВИПРАВЛЕНО: touchend викликав doToggle(), а після нього (навіть
+      // попри preventDefault) деякі мобільні браузери/WebView усе одно
+      // синтезували 'click' — і той теж викликав doToggle(). Разом це
+      // подвійне спрацювання на ОДИН тап: стан перемикався туди-сюди
+      // (напр. false→true→false), зірочка встигала блиснути активною
+      // й одразу згасала (користувач цього не помічав), а останнє
+      // повідомлення ("Видалено із закладок") показувалось навіть
+      // якщо зірочка щойно виглядала неактивною — саме той баг, що
+      // був описаний. Фікс: прапорець tapping — touchend позначає тап
+      // обробленим на короткий час, і наступний click (якщо це той
+      // самий синтезований клік) просто ігнорується.
+      var tapping = false;
       var ts = function(e){ e.stopPropagation(); };
-      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
-      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); tapping = true; doToggle(); setTimeout(function(){ tapping = false; }, 400); };
+      var cl = function(e){ e.stopPropagation(); if(tapping) return; doToggle(); };
       favBtn.addEventListener('touchstart', ts, {passive:true});
       favBtn.addEventListener('touchend', te, {passive:false});
       favBtn.addEventListener('click', cl);
@@ -13137,10 +13182,10 @@ function lfStartDlgLearn(){
 //     інтерактивні MC-питання на розуміння mail_client (card.questions)
 //     — окремий kind 'eml_question', БЕЗ аудіо, з перевіркою
 //     правильності по кліку (див. _lfEmlRenderQuestion).
-// Поки що доступ лише з debug-меню Налаштувань (debugOpenEmail нижче),
-// той самий підхід, що й debugOpenForumsbeitrag — окремий пункт у
-// нижньому меню/уроці додамо окремо, коли контенту (var EMAILS) стане
-// достатньо.
+// Самостійного debug-перегляду поза уроком (окремо від eml_learn-кроку
+// вище) для E-Mail більше немає — рушій використовується лише
+// всередині lesson-flow (LF.emlCards/_emlCardsToUnits/_lfEmlHandlers,
+// див. lfStartEmlLearn нижче).
 var EML_ROLE_LABELS = {
   anrede:         {de:'Anrede',         en:'Salutation',   uk:'Звертання',              ru:'Обращение'},
   bezugnahme:     {de:'Bezugnahme',     en:'Reference',    uk:'Посилання на лист',      ru:'Ссылка на письмо'},
@@ -13320,9 +13365,21 @@ var _lfEmlHandlers = {
         favBtn.removeEventListener('touchend', prevHandlers.te);
         favBtn.removeEventListener('click', prevHandlers.cl);
       }
+      // ВИПРАВЛЕНО: touchend викликав doToggle(), а після нього (навіть
+      // попри preventDefault) деякі мобільні браузери/WebView усе одно
+      // синтезували 'click' — і той теж викликав doToggle(). Разом це
+      // подвійне спрацювання на ОДИН тап: стан перемикався туди-сюди
+      // (напр. false→true→false), зірочка встигала блиснути активною
+      // й одразу згасала (користувач цього не помічав), а останнє
+      // повідомлення ("Видалено із закладок") показувалось навіть
+      // якщо зірочка щойно виглядала неактивною — саме той баг, що
+      // був описаний. Фікс: прапорець tapping — touchend позначає тап
+      // обробленим на короткий час, і наступний click (якщо це той
+      // самий синтезований клік) просто ігнорується.
+      var tapping = false;
       var ts = function(e){ e.stopPropagation(); };
-      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
-      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); tapping = true; doToggle(); setTimeout(function(){ tapping = false; }, 400); };
+      var cl = function(e){ e.stopPropagation(); if(tapping) return; doToggle(); };
       favBtn.addEventListener('touchstart', ts, {passive:true});
       favBtn.addEventListener('touchend', te, {passive:false});
       favBtn.addEventListener('click', cl);
@@ -13418,8 +13475,9 @@ function _lfDlgLearnDone(){
 // той самий каркас 1:1, що lfStartDlgLearn/_lfDlgLearnDone щойно вище,
 // лише LF.frmCards/_frmCardsToUnits/_lfFrmHandlers замість dlg-аналогів.
 // Рендериться в той самий контейнер #vocab-panel-card (tab 0) — не
-// #dlg-panel-card, як самостійний debug-перегляд (debugOpenForumsbeitrag) —
-// адже тут це крок уроку, а не окремий екран Dialogue.
+// #dlg-panel-card (окремого самостійного debug-перегляду поза уроком
+// для Forumsbeitrag більше немає) — адже тут це крок уроку, а не
+// окремий екран Dialogue.
 function lfStartFrmLearn(){
   const hasCards = LF && LF.frmCards && LF.frmCards.length;
   if(!hasCards){ lfNextStep(); return; }
@@ -14201,9 +14259,21 @@ var _lfVocabHandlers = {
         favBtn.removeEventListener('touchend', prevHandlers.te);
         favBtn.removeEventListener('click', prevHandlers.cl);
       }
+      // ВИПРАВЛЕНО: touchend викликав doToggle(), а після нього (навіть
+      // попри preventDefault) деякі мобільні браузери/WebView усе одно
+      // синтезували 'click' — і той теж викликав doToggle(). Разом це
+      // подвійне спрацювання на ОДИН тап: стан перемикався туди-сюди
+      // (напр. false→true→false), зірочка встигала блиснути активною
+      // й одразу згасала (користувач цього не помічав), а останнє
+      // повідомлення ("Видалено із закладок") показувалось навіть
+      // якщо зірочка щойно виглядала неактивною — саме той баг, що
+      // був описаний. Фікс: прапорець tapping — touchend позначає тап
+      // обробленим на короткий час, і наступний click (якщо це той
+      // самий синтезований клік) просто ігнорується.
+      var tapping = false;
       var ts = function(e){ e.stopPropagation(); };
-      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); doToggle(); };
-      var cl = function(e){ e.stopPropagation(); doToggle(); };
+      var te = function(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); tapping = true; doToggle(); setTimeout(function(){ tapping = false; }, 400); };
+      var cl = function(e){ e.stopPropagation(); if(tapping) return; doToggle(); };
       favBtn.addEventListener('touchstart', ts, {passive:true});
       favBtn.addEventListener('touchend', te, {passive:false});
       favBtn.addEventListener('click', cl);
@@ -15520,13 +15590,19 @@ function renderDialogueCard(){
       const btn=document.getElementById(id);
       if(!btn||btn._favInited) return;
       btn._favInited=true;
+      // Той самий подвійний touchend+click на один тап, що й в інших
+      // fav-кнопках (виправлено вище) — той самий фікс тут.
+      let tapping = false;
       btn.addEventListener('touchstart', e=>{ e.stopPropagation(); }, {passive:true});
       btn.addEventListener('touchend', e=>{
         e.stopPropagation(); if(e.cancelable) e.preventDefault();
+        tapping = true;
         const fid=btn.dataset.favId; if(fid) toggleDialogueFavorite(fid);
+        setTimeout(()=>{ tapping = false; }, 400);
       }, {passive:false});
       btn.addEventListener('click', e=>{
         e.stopPropagation();
+        if(tapping) return;
         const fid=btn.dataset.favId; if(fid) toggleDialogueFavorite(fid);
       });
     });
@@ -15768,64 +15844,10 @@ function _onDialogueUnitsDone(){
   if(D.queue.length) startDialogueCardMode();
 }
 
-// ── FORUMSBEITRAG — самостійний перегляд, той самий принцип, що й
-// _runDialogueQueueAsUnits/startDialogueCardMode вище, лише інше
-// джерело карток (var SCHREIBEN) і інший handlers-об'єкт (_lfFrmHandlers,
-// без аватара/імені персонажа — див. коментар біля нього). Контейнер
-// той самий #dlg-panel-card (вкладка "Діалог") — окремої вкладки
-// нижнього меню для Forumsbeitrag поки нема, доступ лише з debug-меню
-// Налаштувань (debugOpenForumsbeitrag нижче).
-function _runForumQueueAsUnits(){
-  var fcArea = document.getElementById('dlg-fc-area');
-  if(fcArea) fcArea.style.display = 'none';
-  var vprogrow = document.querySelector('#dlg-panel-card .vprogrow-flow');
-  if(vprogrow) vprogrow.style.display = 'none';
-
-  _relocateUnitCard('dlg-panel-card');
-
-  var cards = (typeof SCHREIBEN !== 'undefined') ? SCHREIBEN : [];
-  var units = _frmCardsToUnits(cards);
-  lfRunUnitStep(units, _lfFrmHandlers, _onForumUnitsDone);
-}
-
-function startForumsbeitragMode(){
-  if(typeof SCHREIBEN === 'undefined' || !SCHREIBEN.length){
-    notify('Немає жодної картки Forumsbeitrag (var SCHREIBEN) у поточному курсі');
-    return;
-  }
-  _runForumQueueAsUnits();
-}
-
-// Черга закінчилась — як і Dialogue, самостійний перегляд просто
-// починає її знову (безкінечний перегляд), а не "завершується".
-function _onForumUnitsDone(){
-  if(typeof SCHREIBEN !== 'undefined' && SCHREIBEN.length) startForumsbeitragMode();
-}
-
-// Точка входу з debug-меню Налаштувань. Свідомо НЕ через showView('dialogue')
-// — той викликає initDialogue()→startDialogueCardMode(), який одразу
-// стартував би ЗВИЧАЙНУ чергу DIALOGE в тому самому контейнері, і його
-// довелось би одразу перебивати. Тут — той самий підзір перемикання
-// екрана/вкладки, що й у showView()/switchDialogueTab(0), але напряму
-// в режим Forumsbeitrag, без проміжного запуску Dialogue.
-function debugOpenForumsbeitrag(){
-  _lfUnitTeardown();
-  if(typeof LF !== 'undefined' && LF) abandonLessonFlow();
-  document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
-  document.querySelectorAll('.bn-item[data-view]').forEach(function(n){ n.classList.remove('active'); });
-  document.getElementById('view-dialogue').classList.add('active');
-  document.querySelectorAll('#dialogue-tabs .vtab').forEach(function(t,i){ t.classList.toggle('active', i===0); });
-  document.getElementById('dlg-panel-card').style.display = 'flex';
-  document.getElementById('dlg-panel-browse').style.display = 'none';
-  var chips = document.getElementById('dlgchips');
-  if(chips) chips.style.display = 'none';
-  startForumsbeitragMode();
-}
-
-// Mündliche Prüfung — Teil 1 (var STORY) — той самий 1:1 патерн, що
-// щойно вище для Forumsbeitrag (_runForumQueueAsUnits/
-// startForumsbeitragMode/_onForumUnitsDone/debugOpenForumsbeitrag),
-// лише _storyCardsToUnits/_lfStoryHandlers замість forum-аналогів.
+// Mündliche Prüfung — Teil 1 (var STORY) — той самий принцип, що й
+// Dialogue (_runDialogueQueueAsUnits/startDialogueCardMode вище):
+// самостійний перегляд одним рушієм lfRunUnitStep, лише інше джерело
+// карток і handlers-об'єкт (_storyCardsToUnits/_lfStoryHandlers).
 function _runStoryQueueAsUnits(){
   var fcArea = document.getElementById('dlg-fc-area');
   if(fcArea) fcArea.style.display = 'none';
@@ -15865,53 +15887,6 @@ function debugOpenStory(){
   var chips = document.getElementById('dlgchips');
   if(chips) chips.style.display = 'none';
   startStoryMode();
-}
-
-// E-Mail (var EMAILS) — той самий 1:1 патерн, що щойно вище для
-// Forumsbeitrag (_runForumQueueAsUnits/startForumsbeitragMode/
-// _onForumUnitsDone/debugOpenForumsbeitrag), лише _emlCardsToUnits/
-// _lfEmlHandlers замість frm-аналогів. Так само поки доступ лише з
-// debug-меню Налаштувань — окремий пункт нижнього меню/кроку уроку
-// додамо, коли контенту стане достатньо (як і планувалось для forum).
-function _runEmailQueueAsUnits(){
-  var fcArea = document.getElementById('dlg-fc-area');
-  if(fcArea) fcArea.style.display = 'none';
-  var vprogrow = document.querySelector('#dlg-panel-card .vprogrow-flow');
-  if(vprogrow) vprogrow.style.display = 'none';
-
-  _relocateUnitCard('dlg-panel-card');
-
-  var cards = (typeof EMAILS !== 'undefined') ? EMAILS : [];
-  var units = _emlCardsToUnits(cards);
-  lfRunUnitStep(units, _lfEmlHandlers, _onEmailUnitsDone);
-}
-
-function startEmailMode(){
-  if(typeof EMAILS === 'undefined' || !EMAILS.length){
-    notify('Немає жодної картки E-Mail (var EMAILS) у поточному курсі');
-    return;
-  }
-  _runEmailQueueAsUnits();
-}
-
-// Черга закінчилась — як і Forumsbeitrag, самостійний перегляд просто
-// починає її знову (безкінечний перегляд).
-function _onEmailUnitsDone(){
-  if(typeof EMAILS !== 'undefined' && EMAILS.length) startEmailMode();
-}
-
-function debugOpenEmail(){
-  _lfUnitTeardown();
-  if(typeof LF !== 'undefined' && LF) abandonLessonFlow();
-  document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
-  document.querySelectorAll('.bn-item[data-view]').forEach(function(n){ n.classList.remove('active'); });
-  document.getElementById('view-dialogue').classList.add('active');
-  document.querySelectorAll('#dialogue-tabs .vtab').forEach(function(t,i){ t.classList.toggle('active', i===0); });
-  document.getElementById('dlg-panel-card').style.display = 'flex';
-  document.getElementById('dlg-panel-browse').style.display = 'none';
-  var chips = document.getElementById('dlgchips');
-  if(chips) chips.style.display = 'none';
-  startEmailMode();
 }
 
 // Спільний рядок-картка для списків "Усі картки"/Закладки (Vocab,
@@ -17385,13 +17360,19 @@ function sbInitFavBtns(cardId) {
     if(btn._sbFavClickHandler) btn.removeEventListener('click',      btn._sbFavClickHandler);
     // stopPropagation на touchstart — щоб SwipeManager не починав відстеження
     btn._sbFavStartHandler = function(e) { e.stopPropagation(); };
+    // Той самий подвійний touchend+click на один тап, що й в інших
+    // fav-кнопках (виправлено вище) — той самий фікс: прапорець
+    // tapping гасить синтезований click одразу після touchend.
+    var tapping = false;
     var handler = function(e) {
       e.stopPropagation();
       if(e.cancelable) e.preventDefault();
+      tapping = true;
       sbToggleFav(e);
+      setTimeout(function(){ tapping = false; }, 400);
     };
     btn._sbFavHandler = handler;
-    btn._sbFavClickHandler = function(e){ e.stopPropagation(); sbToggleFav(e); };
+    btn._sbFavClickHandler = function(e){ e.stopPropagation(); if(tapping) return; sbToggleFav(e); };
     btn.addEventListener('touchstart', btn._sbFavStartHandler, {passive:true});
     btn.addEventListener('touchend',   btn._sbFavHandler,      {passive:false});
     btn.addEventListener('click',      btn._sbFavClickHandler);
