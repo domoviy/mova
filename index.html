@@ -538,7 +538,17 @@ body{
 }
 .match-grid{
   display:grid;
-  grid-template-columns:1fr 1fr;
+  /* minmax(0,1fr), НЕ просто 1fr: grid-елемент за замовчуванням має
+     min-width:auto = ширина його НЕЛАМАНОГО вмісту (найдовше слово),
+     тож коли те слово ширше за половину екрана, ПРОСТО 1fr не міг
+     стиснути колонку менше за цей мінімум — колонка (і вся сітка)
+     вилазила за межі екрана, і текст праворуч буквально обрізався
+     краєм екрана (overflow-wrap:break-word на кнопці тут не рятував,
+     бо він працює лише КОЛИ в кнопки вже є фіксована ширина для
+     переносу — а сама ширина колонки й не звужувалась). minmax(0,1fr)
+     дозволяє колонці стиснутись до 0 і рости рівно до 1fr — текст
+     всередині кнопки тоді вже коректно переноситься по словах. */
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr);
   grid-auto-rows:min-content;
   gap:8px;
   flex:1;
@@ -548,8 +558,36 @@ body{
 .match-btn.side-term { grid-column:1; }
 /* Правий стовпець — пояснення */
 .match-btn.side-short{ grid-column:2; }
+/* ── "Шахматковий" режим (.match-grid.stagger) ──────────────────────
+   Активується з JS (_matchNeedsStagger), коли серед карток раунду є
+   довге слово/фраза (>50% типової ширини колонки) — двоколонкова
+   сітка 50/50 для такого тексту виглядає незручно (дуже вузька
+   колонка, багато переносів, кнопки різної висоти "гуляють"). Замість
+   грід-колонок 1fr/1fr — один стовпець на всю ширину, кнопки шириною
+   ~74% (більше за половину, як просив запит), термін і переклад
+   чергуються у випадковому порядку (як і раніше — це НЕ пари одна
+   під одною, пару треба шукати самому), але притиснуті по черзі до
+   протилежних країв — той самий "шахматковий" паттерн, що вже
+   використовується для бульбашок діалогу (.lf-dlg-row-q/-a). */
+.match-grid.stagger{
+  display:flex;
+  flex-direction:column;
+  grid-template-columns:none;
+}
+.match-grid.stagger .match-btn{
+  grid-column:auto;
+  width:74%;
+  max-width:74%;
+  align-self:flex-start;
+  text-align:left;
+}
+.match-grid.stagger .match-btn.side-short{
+  align-self:flex-end;
+  text-align:right;
+}
 .match-btn{
   padding:12px 10px;
+  min-width:0; /* дублює обхід min-content разом з minmax(0,1fr) вище — без цього довге нерозривне слово однаково могло тиснути на ширину колонки в деяких браузерах */
   border-radius:12px;
   border:1.5px solid var(--border);
   background:var(--card);
@@ -1259,6 +1297,22 @@ body{
   margin:0 2px;
   cursor:default;
   transition:background .15s, border-color .15s, color .15s;
+  /* line-height:32px тут — на БАЗОВОМУ класі (діє і для .empty, і для
+     .filled), навмисно рівно те саме значення, що й height:32px у
+     .empty нижче. .empty — inline-flex з явною height, тому власну
+     line-height ігнорує (висота вже задана явно) — цей рядок нічого
+     там не змінює. А от .filled — звичайний inline-текст БЕЗ явної
+     висоти (щоб слово стояло на базовій лінії, не "плашкою" — див.
+     коментар нижче), і САМЕ тому рядок з .filled раніше "стискався"
+     після заповнення слота: без height:32px і без цього line-height
+     інлайновий текст займав лише свою природну висоту (~1.3×шрифт),
+     менше за 32px, і міжрядковий інтервал усього речення зменшувався
+     щойно користувач підставляв слово. line-height:32px не чіпає
+     позицію самого тексту на базовій лінії (це лише "leading" —
+     додатковий простір симетрично над/під рядком), тож заповнене
+     слово й далі рівно на лінії, але тепер стабільно тримає ту саму
+     висоту рядка, що була з порожнім слотом із самого початку. */
+  line-height:32px;
 }
 /* Порожній слот — єдиний, що лишається "плашкою" (бокс із висотою):
    тут vertical-align:middle і top-компенсація виправдані, бо це просто
@@ -3617,7 +3671,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '573-80bf2ad';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7554,6 +7608,30 @@ let matchState = {
   firstTry:  new Set(), // id карток що підібрані з першої спроби
 };
 
+// Чи потрібен "шахматковий" режим (.match-grid.stagger) для поточного
+// раунду matching — вмикається, якщо серед термінів/пояснень є текст,
+// довший за приблизно половину типової ширини колонки. Рахуємо ДВОМА
+// евристиками одразу (або-або):
+//  1) довжина ОДНОГО нерозривного токена (слова) — саме такі слова
+//     (напр. німецькі композити на кшталт "Bildungsinformationszentrum")
+//     фізично не можуть перенестись по пробілу всередині колонки;
+//  2) загальна довжина фрази — навіть якщо кожне слово окремо коротке,
+//     довга фраза в 2 колонки виглядає затиснутою (багато рядків).
+// Пороги підібрані під --fs-card за замовчуванням (18px) на типовому
+// телефонному екрані — не претендують на ідеальну точність для
+// довільного розміру шрифту, лише орієнтир "явно довгий текст".
+function _matchNeedsStagger(cards){
+  const LONG_TOKEN = 16, LONG_TOTAL = 26;
+  return cards.some(({card}) => {
+    const term  = targetText(card) || '';
+    const short = nativeText(card) || '';
+    return [term, short].some(txt => {
+      if(txt.length > LONG_TOTAL) return true;
+      return txt.split(/\s+/).some(tok => tok.replace(/[.,;:!?'"„“()–-]/g,'').length > LONG_TOKEN);
+    });
+  });
+}
+
 function startMatching(){
   const result = document.getElementById('match-result');
   const grid   = document.getElementById('match-grid');
@@ -7566,6 +7644,7 @@ function startMatching(){
   let pool = vocabAll.filter(v => (cf==='all' || v.cat===cf) && v.term?.[primaryLang()] && v.term?.[uiLang] && (uiLang!==primaryLang() || v.short?.[primaryLang()]));
 
   if(pool.length < MATCH_SIZE){
+    grid.classList.remove('stagger'); // без цього повідомлення могло лишитись у флекс-режимі з минулого раунду
     grid.innerHTML = `<p style="text-align:center;color:var(--muted);padding:32px 16px;grid-column:1/-1">
       ⚠️ ${pool.length === 0 ? t('match_empty') : pool.length+' — '+t('match_few')+' '+MATCH_SIZE+' '+t('match_needed')}
     </p>`;
@@ -7590,6 +7669,11 @@ function startMatching(){
   // Дві колонки — ліва: терміни, права: пояснення (перемішані окремо)
   const terms  = [...chosen].sort(() => Math.random() - .5);
   const shorts = [...chosen].sort(() => Math.random() - .5);
+
+  // Довгий текст у раунді — перемикаємось на "шахматковий" режим
+  // замість тісної сітки 50/50 (див. _matchNeedsStagger вище і CSS
+  // .match-grid.stagger).
+  grid.classList.toggle('stagger', _matchNeedsStagger(matchState.cards));
 
   grid.innerHTML = '';
   // Чергуємо term/short щоб рядки грід були на одному рівні
@@ -7862,9 +7946,19 @@ function lessonUnlocked(lesson){
   // (дозволяємо проходити категорії незалежно)
   if(prev.chapter !== lesson.chapter) return true;
 
-  // В межах одного розділу — треба 80%+ попереднього уроку
+  // В межах одного розділу — треба 80%+ попереднього уроку.
+  // ВАЖЛИВО: перевіряємо ТРАНЗИТИВНО (рекурсивно), а не лише pct
+  // безпосереднього prev. pct рахується з lessonProgress() — фактичної
+  // кількості "зіграних" карток — і картки можуть бути зіграні в обхід
+  // самого уроку (словник, бонусна граматика, попередній стан
+  // дебаг-перемикача "Розблокувати усі" тощо). Якщо prev технічно має
+  // pct>=80, але САМ prev досі заблокований (бо урок ПЕРЕД ним не
+  // пройдено) — наступний урок теж має лишатись заблокованим, інакше
+  // в лінії з'являється розрив: сірий (заблокований) урок, а ПІСЛЯ
+  // нього — кольоровий (розблокований), хоча по суті весь ланцюжок від
+  // початку розділу ще не пройдено.
   const {pct} = lessonProgress(prev);
-  return pct >= 80;
+  return pct >= 80 && lessonUnlocked(prev);
 }
 
 
@@ -8303,7 +8397,7 @@ function renderReviewCard(chapterNums, labelKey, isUnlocked){
       ? '✅ '+(uiLang==='uk'?'Готово':uiLang==='ru'?'Готово':uiLang==='en'?'Done':'Fertig')+' · '+done+'/'+total
       : done+' '+(uiLang==='uk'?'з':uiLang==='ru'?'из':uiLang==='en'?'of':'von')+' '+total+' '+(uiLang==='uk'?'карток':uiLang==='ru'?'карточек':uiLang==='en'?'cards':'Karten');
 
-  const icon = isDone ? '✅' : !isUnlocked ? '🔒' : '🔁';
+  const icon = !isUnlocked ? '🔒' : isDone ? '✅' : '🔁';
 
   return `<div class="lp-module ${statusClass}"
     onclick="${clickFn}"
@@ -8637,7 +8731,16 @@ function renderPathNode(node, idx){
   // від типу — і тоді неможливо було на око знайти, скажімо, конкретний
   // пройдений діалог "пошуку рішення", щоб повторити саме його.
   const icon = visual.icon;
-  const statusClass = isDone ? 'done' : !unlocked ? 'locked' : isCurrent ? 'current' : '';
+  // ВАЖЛИВО: !unlocked перевіряємо ПЕРШИМ. pct (isDone) рахується з
+  // lessonProgress() — фактичної кількості "зіграних" карток — і це
+  // НЕЗАЛЕЖНО від того, чи urok досі заблокований ланцюжком unlockAfter
+  // (картки могли бути "зіграні" в обхід уроку — наприклад через
+  // словник/бонусну граматику/попередній дебаг-перемикач "Розблокувати
+  // усі"). Якщо перевіряти isDone раніше за unlocked, такий урок
+  // лишався б кольоровим/"пройденим" назавжди, навіть коли попередній
+  // урок у розділі ще не завершено — саме так виглядав баг із
+  // заблокованими сірими уроками впереміш з кольоровими "пройденими".
+  const statusClass = !unlocked ? 'locked' : isDone ? 'done' : isCurrent ? 'current' : '';
   const offset = _lpZigzagOffset(idx);
   const clickHandler = !unlocked
     ? 'showLockedLessonModal()'
@@ -8667,8 +8770,13 @@ function renderModuleCard(lesson){
 
   const skillIcons = {'Lesen':'📖','Schreiben':'✍️','Sprechen':'🗣','Hören':'👂'};
   const skills = (lesson.skills||[]).map(s=>skillIcons[s]||s).join(' ');
-  const icon   = isDone ? '✅' : !unlocked ? '🔒' : skills||'📚';
-  const statusClass = isDone?'done':!unlocked?'locked':isCurrent?'current':'';
+  // !unlocked — першим, з тієї ж причини, що й у renderPathNode вище:
+  // pct/isDone відображає фактично зіграні картки, а не те, чи урок
+  // досі заблокований ланцюжком unlockAfter — заблокований урок має
+  // лишатись сірим 🔒, навіть якщо його картки якимось чином вже
+  // "зіграні" (наприклад в обхід через словник/бонус/старий дебаг-стан).
+  const icon   = !unlocked ? '🔒' : isDone ? '✅' : skills||'📚';
+  const statusClass = !unlocked?'locked':isDone?'done':isCurrent?'current':'';
 
   // lesson.grammar: спочатку пробуємо як id у таблиці GRAMMAR (нові
   // курси) — показуємо локалізовану назву й робимо клікабельним.
@@ -11881,6 +11989,9 @@ function lfStartMatching(poolOverride){
   const terms  = [...chosen].sort(()=>Math.random()-.5);
   const shorts = [...chosen].sort(()=>Math.random()-.5);
   if(grid){
+    // Той самий "шахматковий" перемикач, що й у startMatching() —
+    // див. _matchNeedsStagger і CSS .match-grid.stagger.
+    grid.classList.toggle('stagger', _matchNeedsStagger(matchState.cards));
     grid.innerHTML = '';
     const maxLen = Math.max(terms.length, shorts.length);
     for(let i=0;i<maxLen;i++){
@@ -16991,7 +17102,11 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
     // браузер за замовчуванням; тут ми його не чіпаємо і не додаємо
     // жодного свого).
     var deFilled = deRaw.replace('{{BLANK}}', '<span style="color:'+answerColor+'">'+deAns+'</span>');
-    rows.push('<div class="sb-prac-result-de">'+(langFlags[pLang]||'🇩🇪')+' '+deFilled+'</div>');
+    // id тут — точка прив'язки karaoke-підсвітки (wrapWordsForHighlight)
+    // під час озвучення повного речення в sbPracAnswer: підсвітка має
+    // йти САМЕ тут, у модалці, а не в #sb-prac-sentence під нею (той
+    // захований під bottom-sheet і користувачу не видний).
+    rows.push('<div class="sb-prac-result-de" id="sb-modal-sentence-de">'+(langFlags[pLang]||'🇩🇪')+' '+deFilled+'</div>');
     // Якщо мова інтерфейсу відрізняється від мови курсу — додаємо переклад
     var ifLang = typeof uiLang !== 'undefined' ? uiLang : pLang;
     if(ifLang !== pLang){
@@ -17402,22 +17517,38 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   // готове pregen-аудіо ОРИГІНАЛЬНОЇ VOCAB-картки (card._srcId, 'def').
   // Кнопка "Далі" з'являється лише коли ЦЕ (речення) аудіо завершиться
   // (revealNextBtn) — а не одразу з появою фідбеку.
+  // ПІДСВІТКА (karaoke) під час озвучення повного речення: у режимі
+  // уроку (LF) речення в цей момент показує МОДАЛКА (#sb-modal-sentence-de
+  // всередині sb-feedback-modal), а #sb-prac-sentence в цей час схований
+  // під нею — підсвітка там користувачу не видна. Тому в LF цілимось у
+  // модальний елемент (він уже містить те саме речення з ПРАВИЛЬНОЮ
+  // відповіддю — sbShowFeedbackModal будує його синхронно, до виклику
+  // showFeedback()). Поза уроком (самостійна практика) модалки немає,
+  // фідбек — inline-блок поруч з #sb-prac-sentence, тож там і далі
+  // підсвічуємо саме #sb-prac-sentence, як і раніше.
   if(card._isGram){
     speakGramWord(chosen, primaryLang(), function() {
       showFeedback();
       setTimeout(function() {
         // Речення озвучується готовим pregen-аудіо ОРИГІНАЛЬНОЇ VOCAB-картки
         // (card._srcId, 'def') — тож щоб підсвітка збігалась слово-в-слово
-        // з тим, що реально звучить, показуємо тут те саме речення з
-        // ПРАВИЛЬНИМ словом (card.answer), а не з тим, що обрав користувач
-        // (chosen) — при неправильній відповіді підставлений chosen не
-        // збігався б з озвученим текстом.
-        var sentEl = document.getElementById('sb-prac-sentence');
-        var fullText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
-        if(sentEl) sentEl.innerHTML = '<div class="mc-q-term" data-audio-field="def">'+fullText+'</div>';
-        var highlightEl = hasTimingFor(card._srcId,'def',primaryLang())
-          ? document.querySelector('#sb-prac-sentence [data-audio-field="def"]')
-          : null;
+        // з тим, що реально звучить, беремо те саме речення з ПРАВИЛЬНИМ
+        // словом (card.answer), а не з тим, що обрав користувач (chosen) —
+        // при неправильній відповіді підставлений chosen не збігався б
+        // з озвученим текстом.
+        var highlightEl = null;
+        if(LF){
+          highlightEl = hasTimingFor(card._srcId,'def',primaryLang())
+            ? document.getElementById('sb-modal-sentence-de')
+            : null;
+        } else {
+          var sentEl = document.getElementById('sb-prac-sentence');
+          var fullText = sbL(card.sentence, primaryLang()).replace('{{BLANK}}', sbA(card,primaryLang()));
+          if(sentEl) sentEl.innerHTML = '<div class="mc-q-term" data-audio-field="def">'+fullText+'</div>';
+          highlightEl = hasTimingFor(card._srcId,'def',primaryLang())
+            ? document.querySelector('#sb-prac-sentence [data-audio-field="def"]')
+            : null;
+        }
         speak(null, primaryLang(), revealNextBtn, card._srcId, 'def', false, highlightEl);
       }, 300);
     });
@@ -17431,12 +17562,19 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
         // Так само як вище — розкриваємо повне речення (з підставленою
         // ПРАВИЛЬНОЮ відповіддю, не chosen) синхронно з тим, що
         // озвучується, щоб підсвітка мала правильний текст для збігу.
-        // До цього моменту sentEl показував речення з порожнім місцем.
-        var sentEl = document.getElementById('sb-prac-sentence');
-        if(sentEl) sentEl.innerHTML = '<div class="mc-q-term" data-audio-field="sentence">'+sentenceText+'</div>';
-        var highlightEl = hasTimingFor(card.id,'sentence',primaryLang())
-          ? document.querySelector('#sb-prac-sentence [data-audio-field="sentence"]')
-          : null;
+        var highlightEl = null;
+        if(LF){
+          highlightEl = hasTimingFor(card.id,'sentence',primaryLang())
+            ? document.getElementById('sb-modal-sentence-de')
+            : null;
+        } else {
+          // До цього моменту sentEl показував речення з порожнім місцем.
+          var sentEl = document.getElementById('sb-prac-sentence');
+          if(sentEl) sentEl.innerHTML = '<div class="mc-q-term" data-audio-field="sentence">'+sentenceText+'</div>';
+          highlightEl = hasTimingFor(card.id,'sentence',primaryLang())
+            ? document.querySelector('#sb-prac-sentence [data-audio-field="sentence"]')
+            : null;
+        }
         speak(sentenceText, primaryLang(), revealNextBtn, card.id, 'sentence', false, highlightEl);
       }, 300);
     }, card.id, field);
