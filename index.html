@@ -3578,10 +3578,6 @@ body.lesson-active .vocab-top{
       <div class="srow-label"><label>🎤 Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій, що Forumsbeitrag: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією)</small></div>
       <button class="btn btn-s" style="text-align:left" onclick="debugOpenStory()">🎤 Mündliche Prüfung – Teil 1</button>
     </div>
-    <div class="srow">
-      <div class="srow-label"><label>🔄 Оновити додаток</label><small>Скинути Service Worker і перезавантажити. Виправляє помилку «усі картки в уроці». Потенційно небезпечно (примусово скидає кеш) — тримати останнім у списку.</small></div>
-      <button class="btn btn-s" onclick="resetServiceWorker()">♻️ Скинути SW</button>
-    </div>
     </div>
     </div>
     </div><!-- /ГРУПА 4 -->
@@ -3621,7 +3617,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '570-7377084';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11459,22 +11455,6 @@ function debugCloudRestore(){
 // Видаляє застарілий SW-кеш і перезавантажує додаток.
 // Виправляє ситуацію, коли SW роздає старий JS з функцією startLesson
 // (без ліміту 5 карток) замість актуальної startLessonFlow.
-async function resetServiceWorker(){
-  if(!confirm('Скинути Service Worker і перезавантажити додаток?\nЦе виправить помилку "всі картки в уроці".')) return;
-  try{
-    if('serviceWorker' in navigator){
-      const regs = await navigator.serviceWorker.getRegistrations();
-      for(const reg of regs) await reg.unregister();
-    }
-    if('caches' in window){
-      const keys = await caches.keys();
-      await Promise.all(keys.map(k=>caches.delete(k)));
-    }
-  }catch(e){ logErr('sw:reset', e.message); }
-  notify('♻️ SW скинуто — перезавантаження...');
-  setTimeout(()=>location.reload(true), 800);
-}
-
 async function clearAudioCache(){
   if(!confirm('Очистити весь кеш аудіофайлів? Доведеться завантажити їх знову.')) return;
   // 1. Звільняємо blob URL-и, щоб уникнути memory leak, і чистимо in-memory кеші
