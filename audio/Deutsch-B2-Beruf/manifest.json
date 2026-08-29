@@ -30406,7 +30406,7 @@
   "Deutsch-B2-Beruf/de/085/geh/geh_068_term_de_085": "dd942b3869+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_068_short_de_085": "c06b44cd2e+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_068_def_de_085": "a4df80407e+t",
-  "Deutsch-B2-Beruf/de/085/geh/geh_069_term_de_085": "f2beec50dc+t",
+  "Deutsch-B2-Beruf/de/085/geh/geh_069_term_de_085": "9c63ebc063+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_069_short_de_085": "553d479593+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_069_def_de_085": "f9e2d35d83+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_070_term_de_085": "9f7e0f7cde+t",
@@ -38101,7 +38101,7 @@
   "Deutsch-B2-Beruf/de/085/ssk/ssk_036_term_de_085": "b72b39e144+t",
   "Deutsch-B2-Beruf/de/085/ssk/ssk_036_short_de_085": "0bc2858c43+t",
   "Deutsch-B2-Beruf/de/085/ssk/ssk_036_def_de_085": "a68cc309f4+t",
-  "Deutsch-B2-Beruf/de/085/ssk/ssk_038_term_de_085": "7306cf9345+t",
+  "Deutsch-B2-Beruf/de/085/ssk/ssk_038_term_de_085": "8d6b49c4d8+t",
   "Deutsch-B2-Beruf/de/085/ssk/ssk_038_short_de_085": "92ee3f6c93+t",
   "Deutsch-B2-Beruf/de/085/ssk/ssk_038_def_de_085": "b71544e4cd+t",
   "Deutsch-B2-Beruf/de/085/ssk/ssk_042_term_de_085": "97c90804b8+t",
@@ -38802,7 +38802,7 @@
   "Deutsch-B2-Beruf/de/085/geh/geh_166_term_de_085": "ad5aa59a56+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_166_short_de_085": "723f6ad5b4+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_166_def_de_085": "b9a3904bd1+t",
-  "Deutsch-B2-Beruf/de/085/geh/geh_167_term_de_085": "821c230e11+t",
+  "Deutsch-B2-Beruf/de/085/geh/geh_167_term_de_085": "7e76b71d7b+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_167_short_de_085": "5ccee4ddea+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_167_def_de_085": "2af52f3091+t",
   "Deutsch-B2-Beruf/de/085/geh/geh_168_term_de_085": "d14fa005ea+t",
@@ -39204,5 +39204,7 @@
   "Deutsch-B2-Beruf/uk/100/uns/uns_142_term_uk_100": "1c7722a3c7",
   "Deutsch-B2-Beruf/uk/100/uns/uns_142_short_uk_100": "69bf05cdad",
   "Deutsch-B2-Beruf/uk/100/uns/uns_142_def_uk_100": "8e67959056",
-  "Deutsch-B2-Beruf/de/100/ssk/ssk_059_term_de_100": "2c3dbc20ee+t"
+  "Deutsch-B2-Beruf/de/100/ssk/ssk_059_term_de_100": "2c3dbc20ee+t",
+  "Deutsch-B2-Beruf/de/100/ssk/ssk_059_short_de_100": "7fb7cd7a02+t",
+  "Deutsch-B2-Beruf/de/100/ssk/ssk_059_def_de_100": "c35d26bd76+t"
 }
