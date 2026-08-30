@@ -2632,6 +2632,80 @@ body.lesson-active .vocab-top{
 }
 .locked-modal-cta:active{opacity:.85;}
 
+/* ── Форма "Повідомити про помилку" ──────────────────────────────
+   Той самий bottom-sheet патерн, що й .locked-modal вище (узгоджено
+   візуально з рештою модалок застосунку), але зі справжньою формою:
+   чіпси типу помилки + textarea коментаря + прев'ю контексту. */
+.bugreport-modal-overlay{
+  position:fixed;inset:0;z-index:500;
+  display:flex;align-items:flex-end;
+  padding:0;background:rgba(0,0,0,.45);
+}
+.bugreport-modal{
+  position:relative;z-index:1;
+  width:100%;background:var(--paper);
+  border-radius:20px 20px 0 0;
+  padding:20px 20px calc(env(safe-area-inset-bottom,0px) + 16px);
+  box-shadow:0 -4px 32px rgba(0,0,0,.18);
+  border-top:3px solid var(--border);
+  max-height:88vh;overflow-y:auto;-webkit-overflow-scrolling:touch;
+}
+.bugreport-modal-title{
+  font-size:var(--fs-card);font-weight:800;color:var(--ink);
+  margin-bottom:4px;display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.bugreport-modal-close{
+  width:32px;height:32px;border-radius:50%;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--soft);border:none;color:var(--ink);
+  font-size:16px;cursor:pointer;font-family:inherit;-webkit-tap-highlight-color:transparent;
+}
+.bugreport-modal-close:active{opacity:.8;}
+.bugreport-modal-sub{font-size:var(--fs-tertiary);color:var(--muted);margin-bottom:16px;line-height:1.4}
+.bugreport-section-label{
+  font-size:var(--fs-tertiary);font-weight:700;color:var(--warm);
+  margin:14px 0 8px;text-transform:uppercase;letter-spacing:.02em;
+}
+.bugreport-types{display:flex;flex-wrap:wrap;gap:8px}
+.bugreport-type-chip{
+  padding:9px 14px;border-radius:999px;border:1.5px solid var(--border);
+  background:var(--soft);color:var(--ink);font-family:inherit;
+  font-size:var(--fs-tertiary);font-weight:600;cursor:pointer;
+  -webkit-tap-highlight-color:transparent;transition:background .15s,border-color .15s,color .15s;
+}
+.bugreport-type-chip.active{
+  background:var(--gold-dim);border-color:var(--gold);color:var(--gold);
+}
+.bugreport-comment{
+  width:100%;min-height:84px;margin-top:2px;padding:11px 13px;
+  border:1.5px solid var(--border);border-radius:12px;
+  background:var(--paper);color:var(--ink);font-family:inherit;
+  font-size:var(--fs-secondary);line-height:1.4;resize:vertical;
+  box-sizing:border-box;
+}
+.bugreport-comment:focus{outline:none;border-color:var(--gold)}
+.bugreport-context-toggle{
+  font-size:var(--fs-tertiary);color:var(--muted);cursor:pointer;
+  margin-top:12px;display:inline-flex;align-items:center;gap:4px;
+  -webkit-tap-highlight-color:transparent;
+}
+.bugreport-context-body{
+  display:none;margin-top:8px;padding:10px 12px;border-radius:10px;
+  background:var(--soft);font-size:12px;color:var(--muted);
+  white-space:pre-wrap;word-break:break-word;line-height:1.5;
+  max-height:160px;overflow-y:auto;
+}
+.bugreport-context-body.show{display:block}
+.bugreport-submit{
+  width:100%;padding:14px;border:none;border-radius:14px;margin-top:18px;
+  background:var(--forest);color:#fff;font-weight:800;font-size:var(--fs-secondary);
+  font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.bugreport-submit:active{opacity:.85}
+.bugreport-submit:disabled{opacity:.5;cursor:default}
+.bugreport-privacy-note{font-size:11px;color:var(--muted);margin-top:10px;line-height:1.4;text-align:center}
+
+
 /* Повноекранний рідер для GRAMMAR[].rule — окремий шар (не bottom-
    sheet): довгий структурований текст з нумерованими розділами читається
    набагато комфортніше на весь екран. */
@@ -3589,6 +3663,10 @@ body.lesson-active .vocab-top{
       <button class="btn btn-s" onclick="showSpeechLog()">📋 Log</button>
     </div>
     <div class="srow">
+      <div class="srow-label"><label>🐞 Повідомити про помилку</label><small>Тест форми звіту (тип помилки + коментар) — поки що тимчасово тут, згодом буде доступна прямо з вправ</small></div>
+      <button class="btn btn-s" onclick="showBugReportModal()">🐞 Звіт</button>
+    </div>
+    <div class="srow">
       <div class="srow-label"><label>🔊 Аудіо-кеш</label><small>Видалити всі завантажені аудіофайли</small></div>
       <button class="btn btn-s" onclick="clearAudioCache()">🗑 Очистити кеш аудіо</button>
     </div>
@@ -3667,7 +3745,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '576-73a746d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9359,6 +9437,192 @@ window.addEventListener('error', e=>{
 window.addEventListener('unhandledrejection', e=>{
   logErr('unhandledrejection', String(e.reason).slice(0,200));
 });
+
+// ══════════════════════════════════════════════════════════════════
+// ПОВІДОМИТИ ПРО ПОМИЛКУ — збір контексту + форма + відправка на
+// бекенд (Cloudflare Worker), який створює GitHub issue.
+//
+// !!! ПОТРІБНО ПІСЛЯ ДЕПЛОЮ WORKER'А: замінити ENDPOINT нижче на
+// реальний URL (напр. https://mova-report.<subdomain>.workers.dev/report).
+// Поки ENDPOINT — заглушка, кнопка працює (форма відкривається,
+// відправка "падає" мережевою помилкою) і звіт автоматично лягає в
+// локальну чергу (_bugReportQueue), звідки сам розішлеться, щойно
+// ENDPOINT стане робочим і з'явиться мережа — тестувати форму можна
+// вже зараз, без бекенда.
+const BUG_REPORT_ENDPOINT = 'https://REPLACE-ME.workers.dev/report';
+
+const BUG_REPORT_TYPES = [
+  { id:'translation',    emoji:'🔤', label:'Поганий переклад' },
+  { id:'audio',          emoji:'🔊', label:'Проблема з озвученням' },
+  { id:'exercise_logic', emoji:'🧩', label:'Помилка у вправі' },
+  { id:'ui_bug',         emoji:'🎨', label:'Візуальний баг' },
+  { id:'crash',          emoji:'💥', label:'Зависання/збій' },
+  { id:'other',          emoji:'❓', label:'Інше' },
+];
+
+// Анонімний ідентифікатор інсталяції — НЕ прив'язаний до жодних
+// особистих даних, лише дозволяє розробнику побачити "це той самий
+// інстал повторно повідомляє" під час тріажу issues.
+function getInstallId(){
+  try{
+    let id = localStorage.getItem('mova_install_id');
+    if(!id){
+      id = (crypto?.randomUUID) ? crypto.randomUUID()
+        : 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, c=>{
+            const r = Math.random()*16|0;
+            return (c==='x'?r:(r&0x3|0x8)).toString(16);
+          });
+      localStorage.setItem('mova_install_id', id);
+    }
+    return id;
+  }catch(e){ return 'unknown'; }
+}
+
+// Best-effort контекст поточного екрана — працює звідки завгодно
+// (навіть якщо викликано з Налаштувань, без активної вправи: тоді
+// просто lessonId/step/cardId будуть відсутні). type впливає лише на
+// те, чи включати spLog (лог озвучення) — не варто тягнути його для
+// звітів, не пов'язаних зі звуком.
+function _bugReportGatherContext(type){
+  const view = document.querySelector('.view.active')?.id?.replace('view-','') || null;
+  const ctx = {
+    courseId: (typeof activeCourse !== 'undefined' && activeCourse?.id) || null,
+    appVersion: (typeof APP_VERSION !== 'undefined') ? APP_VERSION : null,
+    view,
+    lessonId: (typeof LF !== 'undefined' && LF?.lesson?.id) || null,
+    step: (typeof LF !== 'undefined' && LF?.steps?.[LF.step]) || null,
+  };
+  return {
+    type,
+    context: ctx,
+    device: {
+      ua: navigator.userAgent,
+      viewport: window.innerWidth+'x'+window.innerHeight,
+      lang: navigator.language,
+    },
+    installId: getInstallId(),
+    ts: new Date().toISOString(),
+    errLog: (typeof ERR_LOG !== 'undefined') ? ERR_LOG.slice(0,30) : [],
+    spLog: (type==='audio' && typeof spLog !== 'undefined') ? spLog.slice(0,30) : [],
+  };
+}
+
+function showBugReportModal(){
+  document.getElementById('bugreport-overlay')?.remove();
+
+  const overlay = document.createElement('div');
+  overlay.id = 'bugreport-overlay';
+  overlay.className = 'bugreport-modal-overlay';
+  overlay.onclick = e => { if(e.target === overlay) overlay.remove(); };
+
+  let selectedType = null;
+
+  const modal = document.createElement('div');
+  modal.className = 'bugreport-modal';
+  modal.innerHTML = `
+    <div class="bugreport-modal-title">
+      <span>🐞 Повідомити про помилку</span>
+      <button class="bugreport-modal-close" id="bugreport-close-btn">✕</button>
+    </div>
+    <div class="bugreport-modal-sub">Оберіть тип проблеми — так її швидше знайдуть і виправлять.</div>
+    <div class="bugreport-section-label">Тип помилки</div>
+    <div class="bugreport-types" id="bugreport-types"></div>
+    <div class="bugreport-section-label">Коментар (необов'язково)</div>
+    <textarea class="bugreport-comment" id="bugreport-comment" placeholder="Опишіть, що не так…"></textarea>
+    <div class="bugreport-context-toggle" id="bugreport-ctx-toggle">▸ Що саме буде надіслано</div>
+    <div class="bugreport-context-body" id="bugreport-ctx-body"></div>
+    <button class="bugreport-submit" id="bugreport-submit-btn" disabled>Надіслати</button>
+    <div class="bugreport-privacy-note">Надсилається: контекст вправи, ваш коментар і технічна інформація про пристрій — без персональних даних.</div>
+  `;
+  overlay.appendChild(modal);
+  document.body.appendChild(overlay);
+
+  document.getElementById('bugreport-close-btn').onclick = () => overlay.remove();
+
+  const typesEl = document.getElementById('bugreport-types');
+  const submitBtn = document.getElementById('bugreport-submit-btn');
+  BUG_REPORT_TYPES.forEach(t => {
+    const chip = document.createElement('button');
+    chip.className = 'bugreport-type-chip';
+    chip.type = 'button';
+    chip.textContent = t.emoji+' '+t.label;
+    chip.onclick = () => {
+      selectedType = t.id;
+      typesEl.querySelectorAll('.bugreport-type-chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      submitBtn.disabled = false;
+      ctxBody.textContent = JSON.stringify(_bugReportGatherContext(selectedType), null, 2);
+    };
+    typesEl.appendChild(chip);
+  });
+
+  const ctxToggle = document.getElementById('bugreport-ctx-toggle');
+  const ctxBody = document.getElementById('bugreport-ctx-body');
+  ctxBody.textContent = JSON.stringify(_bugReportGatherContext(null), null, 2);
+  ctxToggle.onclick = () => {
+    const showing = ctxBody.classList.toggle('show');
+    ctxToggle.textContent = (showing?'▾':'▸') + ' Що саме буде надіслано';
+  };
+
+  submitBtn.onclick = () => {
+    if(!selectedType) return;
+    const comment = document.getElementById('bugreport-comment').value.trim();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Надсилаємо…';
+    submitBugReport(selectedType, comment).then(ok => {
+      overlay.remove();
+      notify(ok ? '✓ Дякуємо, звіт надіслано' : '📥 Мережі нема — надішлемо пізніше');
+    });
+  };
+}
+
+// Відправка на Worker; якщо мережа/бекенд недоступні — звіт лягає в
+// локальну чергу (localStorage) і буде дороблений при наступній
+// вдалій спробі (_bugReportFlushQueue, викликається при старті й на
+// подію 'online'). Це навмисно "fire and forget" з точки зору UX —
+// користувач не має чекати чи бачити мережеві помилки, звіт не губиться.
+async function submitBugReport(type, comment){
+  const payload = _bugReportGatherContext(type);
+  payload.comment = comment.slice(0, 2000);
+  try{
+    const res = await fetch(BUG_REPORT_ENDPOINT, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify(payload),
+    });
+    if(!res.ok) throw new Error('HTTP '+res.status);
+    return true;
+  }catch(e){
+    _bugReportQueuePush(payload);
+    return false;
+  }
+}
+
+function _bugReportQueuePush(payload){
+  try{
+    const q = JSON.parse(localStorage.getItem('mova_pending_reports')||'[]');
+    q.push(payload);
+    localStorage.setItem('mova_pending_reports', JSON.stringify(q.slice(-20))); // максимум 20 в черзі
+  }catch(e){}
+}
+
+async function _bugReportFlushQueue(){
+  let q;
+  try{ q = JSON.parse(localStorage.getItem('mova_pending_reports')||'[]'); }catch(e){ return; }
+  if(!q.length) return;
+  const remaining = [];
+  for(const payload of q){
+    try{
+      const res = await fetch(BUG_REPORT_ENDPOINT, {
+        method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload),
+      });
+      if(!res.ok) throw new Error('HTTP '+res.status);
+    }catch(e){ remaining.push(payload); }
+  }
+  try{ localStorage.setItem('mova_pending_reports', JSON.stringify(remaining)); }catch(e){}
+}
+window.addEventListener('online', _bugReportFlushQueue);
+setTimeout(_bugReportFlushQueue, 4000); // одна спроба дослати чергу невдовзі після старту застосунку
 
 function showSpeechLog(){
   document.getElementById('err-log-overlay')?.remove();
