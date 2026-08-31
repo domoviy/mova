@@ -25065,5 +25065,131 @@ var STORY = [
         "ru": ""
       }
     ]
+  },
+  {
+    "id": "story_003",
+    "cat": "Story",
+    "name": "de_m_david",
+    "topic": {
+      "de": "Ereignisse und Erfahrungen, die die Berufswahl beeinflusst haben",
+      "uk": "Події та досвід, що вплинули на вибір професії",
+      "en": "",
+      "ru": ""
+    },
+    "task": {
+      "de": "Thema 3: Beschreiben Sie Ereignisse und Erfahrungen, die Ihre Berufswahl beeinflusst haben.<br><br>Mögliche Fragen:<br>Stationen (Schulabschluss, Ausbildung / Studium, …)<br>Träume, Begabungen, Talente<br>Wichtige Personen für die Berufswahl?<br>Motivation?<br>Folgen?<br>Würden Sie diesen Beruf wieder wählen?",
+      "uk": "Тема 3: Опишіть події та досвід, які вплинули на ваш вибір професії.<br><br>Можливі запитання:<br>Етапи (закінчення школи, навчання/навчання у виші, …)<br>Мрії, здібності, таланти<br>Важливі люди для вибору професії?<br>Мотивація?<br>Наслідки?<br>Чи обрали б ви цю професію знову?",
+      "en": "",
+      "ru": ""
+    },
+    "parts": [
+      {
+        "role": "einleitung",
+        "de": "Mein beruflicher Werdegang wurde von meiner tiefen Leidenschaft für exakte Wissenschaften geprägt. Schon früh faszinierten mich Mathematik, Physik, Elektronik und Computer. Ich besuchte ein mathematisch-physikalisches Lyzeum, wo ich von außergewöhnlich begabten Mitschülern umgeben war – ein Umfeld, das meinen Wissensdurst und meine Motivation enorm beflügelte. Gleichzeitig bemerkte ich, dass manche Klassenkameraden aus wohlhabenderen Verhältnissen stammten. Im Gespräch mit ihren Eltern fiel mir auf, dass diese völlig anders über Erfolg, Geld und Chancen dachten als meine eigene Familie – eine Beobachtung, die mich schon damals zum Nachdenken brachte.",
+        "uk": "Мій професійний шлях був сформований моєю глибокою пристрастю до точних наук. Ще змалку мене захоплювали математика, фізика, електроніка та комп'ютери. Я навчався у фізико-математичному ліцеї, де мене оточували надзвичайно обдаровані однокласники — середовище, яке дуже сильно підживлювало мою жагу до знань і мотивацію. Водночас я помічав, що деякі однокласники походили із заможніших родин. У розмовах з їхніми батьками я звернув увагу, що вони мислили про успіх, гроші та можливості зовсім інакше, ніж моя власна родина — спостереження, яке вже тоді змушувало мене замислюватися.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil1",
+        "de": "An der Universität entschied ich mich für das Studium der Computersysteme und -netzwerke. Ich beteiligte mich aktiv an wissenschaftlichen Konferenzen – in Bereichen wie Informatik, Wirtschaft, Mathematik und Psychologie – und veröffentlichte zahlreiche Fachartikel. Mein ursprünglicher Plan war eine akademische Laufbahn, ein Doktorat. Doch trotz dieser Erfolge hatte ich stets das Gefühl, dass mir ein entscheidendes Puzzlestück fehlte. Durch Zufall stieß ich auf das Buch „Rich Dad Poor Dad\" von Robert Kiyosaki. Diese Lektüre veränderte mein Weltbild grundlegend: Ich erkannte, dass ich nicht „falsch\" war, sondern schlicht unternehmerische Ziele verfolgte. Eineinhalb Jahre nach meinem Universitätsabschluss gründete ich mein erstes Unternehmen, das qualifizierte Handwerkerdienstleistungen anbot. Ich eignete mir rasch Kenntnisse in Management, Marketing, ERP-Systemen und Verhandlungsführung an und war zeitweise auch als Business Development Manager sowie als unabhängiger Unternehmensberater tätig.",
+        "uk": "В університеті я обрав спеціальність «Комп'ютерні системи та мережі». Я активно брав участь у наукових конференціях — у сферах інформатики, економіки, математики та психології — і опублікував чимало фахових статей. Спочатку моїм планом була академічна кар'єра, докторантура. Але, попри ці успіхи, у мене завжди було відчуття, що мені бракує якогось важливого пазла. Випадково мені трапилася книга Роберта Кійосакі «Багатий тато, бідний тато». Це читання докорінно змінило мій світогляд: я зрозумів, що я не «неправильний», а просто маю підприємницькі цілі. Через півтора року після закінчення університету я заснував свою першу компанію, яка пропонувала кваліфіковані послуги майстрів. Я швидко опанував знання з менеджменту, маркетингу, ERP-систем та ведення переговорів, а деякий час працював також бізнес-девелопмент-менеджером і незалежним бізнес-консультантом.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil2",
+        "de": "Als der Krieg in der Ukraine ausbrach, war ich gezwungen, mit meiner Familie nach Deutschland zu emigrieren. Nach einer gründlichen Analyse des deutschen Arbeitsmarkts erkannte ich, dass die Schnittstelle zwischen meiner technischen Qualifikation, meiner unternehmerischen Erfahrung und dem tatsächlichen Marktbedarf in der SAP-Beratung liegt. Seitdem lerne ich intensiv Deutsch und bilde mich aktiv im SAP-Ökosystem weiter. Nach Abschluss der Weiterbildung werde ich als Junior SAP Berater einsteigen und plane, dank meiner breiten Berufserfahrung in den Bereichen IT und Business, innerhalb von fünf Jahren die Position eines Senior SAP Beraters zu erreichen.",
+        "uk": "Коли в Україні почалася війна, я був змушений разом із родиною емігрувати до Німеччини. Провівши ретельний аналіз німецького ринку праці, я зрозумів, що перетин моєї технічної кваліфікації, підприємницького досвіду та реальних потреб ринку лежить у сфері SAP-консалтингу. Відтоді я інтенсивно вивчаю німецьку мову й активно навчаюся в екосистемі SAP. Після завершення навчання я почну працювати молодшим SAP-консультантом і планую, завдяки своєму широкому професійному досвіду в ІТ та бізнесі, досягти позиції старшого SAP-консультанта протягом п'яти років.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss1",
+        "de": "Würde ich diesen Weg noch einmal wählen? Ohne jeden Zweifel. Jede Station – das Lyzeum, die Universität, das eigene Unternehmen, die Beratungstätigkeit und schließlich die Migration – hat mich geprägt und zu dem gemacht, was ich heute bin. Ich bin überzeugt, dass genau diese Kombination aus technischem Fundament und unternehmerischem Denken mein größtes Kapital für die Zukunft ist.",
+        "uk": "Чи обрав би я цей шлях знову? Без жодних сумнівів. Кожен етап — ліцей, університет, власна компанія, консалтингова діяльність і, нарешті, міграція — сформував мене і зробив тим, ким я є сьогодні. Я переконаний, що саме поєднання технічної бази та підприємницького мислення є моїм найбільшим капіталом на майбутнє.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss2",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit!",
+        "uk": "Дякую за увагу!",
+        "en": "",
+        "ru": ""
+      }
+    ]
+  },
+  {
+    "id": "story_004",
+    "cat": "Story",
+    "name": "de_m_david",
+    "topic": {
+      "de": "Ein berufliches Vorbild",
+      "uk": "Професійний взірець",
+      "en": "",
+      "ru": ""
+    },
+    "task": {
+      "de": "Thema 4: Beschreiben Sie eine Person aus Ihrem Umfeld, die für Sie ein berufliches Vorbild ist.<br><br>Mögliche Fragen:<br>Welche Person?<br>Wie ist die Beziehung zu dieser Person?<br>Welche positiven Eigenschaften besitzt diese Person?<br>Welchen Einfluss hat / hatte diese Person auf Sie?",
+      "uk": "Тема 4: Опишіть людину з вашого оточення, яка є для вас професійним взірцем.<br><br>Можливі запитання:<br>Яка людина?<br>Які стосунки з цією людиною?<br>Якими позитивними якостями володіє ця людина?<br>Який вплив має/мала ця людина на вас?",
+      "en": "",
+      "ru": ""
+    },
+    "parts": [
+      {
+        "role": "einleitung",
+        "de": "Wenn ich an ein berufliches Vorbild denke, fällt mir sofort mein Großvater Anatolij ein. Er war Chefingenieur und leitete den Bau zahlreicher Erdölraffinerien in verschiedenen Ländern – eine Karriere, die sowohl technisches Können als auch außergewöhnliche Führungsqualitäten erforderte.",
+        "uk": "Коли я думаю про професійний взірець, мені одразу спадає на думку мій дідусь Анатолій. Він був головним інженером і керував будівництвом численних нафтопереробних заводів у різних країнах — кар'єра, яка вимагала як технічної майстерності, так і виняткових лідерських якостей.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil1",
+        "de": "Als Kind verbrachte ich jeden Sommer bei ihm. Wir angelten gemeinsam, fuhren Boot, streiften durch Felder – und er erzählte mir dabei geduldig von Tieren, Pflanzen und der Welt um uns herum. Für meine endlosen Fragen hatte er stets eine Antwort. Nebenher bauten oder reparierten wir irgendetwas; es schien, als würde mein Großvater nie untätig sein. Diese Beobachtung hat sich tief in mir eingeprägt: Arbeit war für ihn keine Pflicht, sondern eine Lebensweise.",
+        "uk": "У дитинстві я проводив у нього кожне літо. Ми разом рибалили, каталися на човні, блукали полями — і він терпляче розповідав мені про тварин, рослини та світ навколо нас. На мої нескінченні запитання він завжди мав відповідь. Паралельно ми щось будували чи ремонтували; здавалося, що мій дідусь ніколи не сидів без діла. Це спостереження глибоко закарбувалося в мені: робота для нього була не обов'язком, а способом життя.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil2",
+        "de": "Besonders beeindruckt hat mich seine unerschöpfliche Neugier. Selbst mit 82 Jahren erlernte er den Umgang mit einem Smartphone und führte Videoanrufe durch – ein eindrucksvolles Zeugnis seiner Überzeugung, dass Lernen kein Ablaufdatum hat. Er pflegte zu sagen, dass alles mit dem Setzen eines Ziels beginnt – und dass man danach unweigerlich den Weg und die Mittel findet, es zu verwirklichen. Dieser Gedanke begleitet mich bis heute.",
+        "uk": "Особливо мене вразила його невичерпна допитливість. Навіть у 82 роки він навчився користуватися смартфоном і здійснював відеодзвінки — вражаюче свідчення його переконання, що навчання не має терміну придатності. Він любив говорити, що все починається з постановки мети — а потім неминуче знаходиш шлях і засоби для її втілення. Ця думка супроводжує мене й донині.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss1",
+        "de": "Mein Großvater Anatolij hat mir gezeigt, dass ein echter Profi nicht nur durch Fachwissen glänzt, sondern durch Neugier, Ausdauer und die Fähigkeit, andere zu inspirieren. Ich bin überzeugt, dass ich diese Werte – bewusst oder unbewusst – in meinen eigenen beruflichen Entscheidungen trage.",
+        "uk": "Мій дідусь Анатолій показав мені, що справжній професіонал вирізняється не лише фаховими знаннями, а й допитливістю, наполегливістю та здатністю надихати інших. Я переконаний, що несу ці цінності — свідомо чи несвідомо — у своїх власних професійних рішеннях.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss2",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit!",
+        "uk": "Дякую за увагу!",
+        "en": "",
+        "ru": ""
+      }
+    ]
+  },
+  {
+    "id": "story_005",
+    "cat": "Story",
+    "name": "de_m_david",
+    "topic": {
+      "de": "Vorgehen bei der Arbeitssuche",
+      "uk": "Порядок дій під час пошуку роботи",
+      "en": "",
+      "ru": ""
+    },
+    "task": {
+      "de": "Thema 5: Beschreiben Sie das Vorgehen bei der Arbeitssuche für ein Land Ihrer Wahl.<br><br>Mögliche Fragen:<br>Wo suchen Sie nach Angeboten? (Zeitung, Internet, Jobbörse, Messen)<br>Welche Unterlagen benötigen Sie?<br>Was sollte im Bewerbungsschreiben stehen?<br>Was sollte im Lebenslauf stehen?<br>Wie bereiten Sie sich auf das Vorstellungsgespräch vor?",
+      "uk": "Тема 5: Опишіть порядок дій під час пошуку роботи в обраній вами країні.<br><br>Можливі запитання:<br>Де ви шукаєте вакансії? (газета, інтернет, біржа праці, ярмарки вакансій)<br>Які документи вам потрібні?<br>Що має бути у супровідному листі?<br>Що має бути у резюме?<br>Як ви готуєтесь до співбесіди?",
+      "en": "",
+      "ru": ""
+    },
+    "parts": []
   }
 ];
