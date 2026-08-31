@@ -33724,7 +33724,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_040_a6_de_100": "5efba57d84+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_040_q7_de_100": "ae9fb35c42+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_040_a7_de_100": "bd7c11784b+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_040_q8_de_100": "1163650de5+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_040_q8_de_100": "fa8579803c+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_040_a8_de_100": "cdfcdb5a91+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_q_de_100": "24206a48c0+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_a_de_100": "a3039699a1+t",
@@ -33742,7 +33742,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_a6_de_100": "bf7196711c+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_q7_de_100": "ccf52c833f+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_a7_de_100": "1ccf8cdbd6+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_041_q8_de_100": "0279774b08+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_041_q8_de_100": "2d59c058e0+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_041_a8_de_100": "62e581c462+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_040_q_de_085": "cc0f40b560+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_040_a_de_085": "fe569176d8+t",
@@ -33796,7 +33796,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_042_a6_de_100": "5db06d3c1c+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_042_q7_de_100": "359d852954+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_042_a7_de_100": "7e3bfd479f+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_042_q8_de_100": "851784bd74+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_042_q8_de_100": "dc3b90c72f+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_042_a8_de_100": "3a11acad83+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_043_q_de_100": "f02c254125+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_043_a_de_100": "e1cdf4329c+t",
@@ -39212,5 +39212,7 @@
   "Deutsch-B2-Beruf/de/085/ssk/ssk_059_def_de_085": "8cbe1b6981+t",
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_059_term_uk_100": "3b2f69c17a",
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_059_short_uk_100": "4cc69b495a",
-  "Deutsch-B2-Beruf/uk/100/ssk/ssk_059_def_uk_100": "5a84c8acfa"
+  "Deutsch-B2-Beruf/uk/100/ssk/ssk_059_def_uk_100": "5a84c8acfa",
+  "Deutsch-B2-Beruf/de/100/story/story_002_einleitung_de_100": "caabcc5d92+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_einleitung2_de_100": "4c91c0fb4a+t"
 }
