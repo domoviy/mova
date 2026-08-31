@@ -12056,7 +12056,7 @@ var DIALOGE = [
       "ru": "Мы могли бы найти золотую середину, если напишем отчёт совместно, а график составим раздельно."
     },
     "a": {
-      "de": "Fassen wir zusammen. Wir werden den Bericht zusammen schreiben. Also, wir machen das jetzt so: Ich kümmere mich um den Zeitplan.",
+      "de": "Fassen wir zusammen: Wir werden den Bericht zusammen schreiben. Also, wir machen das jetzt so: Ich kümmere mich um den Zeitplan.",
       "en": "Let's summarize: we will write the report together. So, this is how we'll do it now: I'll take care of the schedule.",
       "uk": "Підсумуємо: ми будемо писати звіт разом. Отже, ми зробимо так: я займуся графіком.",
       "ru": "Подведём итог: мы будем писать отчёт вместе. Итак, мы сделаем так: я займусь графиком."
@@ -12348,7 +12348,7 @@ var DIALOGE = [
       "ru": "Да, это должно быть выполнимо, если мы завтра ещё раз коротко обсудим и уточним последние детали."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir schlagen flexibles Homeoffice, eine faire Gleitzeitregelung und eine Umzugshilfe vor, damit niemand wegen des neuen Standorts kündigen muss.",
+      "de": "Fassen wir zusammen: Wir schlagen flexibles Homeoffice, eine faire Gleitzeitregelung und eine Umzugshilfe vor, damit niemand wegen des neuen Standorts kündigen muss.",
       "en": "Let's summarize: we're proposing flexible home office, a fair flextime arrangement, and a relocation allowance, so that nobody has to resign because of the new location.",
       "uk": "Підсумуємо: ми пропонуємо гнучку роботу з дому, справедливий гнучкий графік і допомогу з переїздом, щоб нікому не довелося звільнятися через нове місце розташування.",
       "ru": "Подведём итог: мы предлагаем гибкую работу из дома, справедливый гибкий график и помощь с переездом, чтобы никому не пришлось увольняться из-за нового местоположения."
@@ -12470,7 +12470,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо. Тогда я сообщу госпоже Кляйн о решении в пятницу после обеда."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Frau Klein arbeitet vorerst in Teilzeit, wir begleiten sie zum Amt, erstatten ihr die Reisekosten und verschieben den Beginn ihrer Probezeit, damit ihr keine Nachteile entstehen.",
+      "de": "Fassen wir zusammen: Frau Klein arbeitet vorerst in Teilzeit, wir begleiten sie zum Amt, erstatten ihr die Reisekosten und verschieben den Beginn ihrer Probezeit, damit ihr keine Nachteile entstehen.",
       "en": "Let's summarize: Ms. Klein will work part-time for now, we'll accompany her to the agency, reimburse her travel costs, and postpone the start of her probationary period, so she isn't disadvantaged.",
       "uk": "Підсумуємо: пані Кляйн поки що працюватиме на неповну ставку, ми супроводимо її до відомства, відшкодуємо їй витрати на поїздки та відкладемо початок випробувального терміну, щоб вона не мала жодних недоліків.",
       "ru": "Подведём итог: госпожа Кляйн пока будет работать на неполную ставку, мы сопроводим её в ведомство, возместим ей расходы на поездки и отложим начало испытательного срока, чтобы у неё не было никаких недостатков."
@@ -12592,7 +12592,7 @@ var DIALOGE = [
       "ru": "Да, это не должно стать проблемой, пока в начале нам не придётся принимать рискованных решений."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir teilen die Aufgaben nach unseren Stärken auf, du machst die Risikomanagement-Schulung, und die Kundenbetreuung geht nicht nur an mich, sondern auch an einen Kollegen aus dem anderen Team.",
+      "de": "Fassen wir zusammen: Wir teilen die Aufgaben nach unseren Stärken auf, du machst die Risikomanagement-Schulung, und die Kundenbetreuung geht nicht nur an mich, sondern auch an einen Kollegen aus dem anderen Team.",
       "en": "Let's summarize: we split the tasks according to our strengths, you do the risk management training, and customer service goes not only to me, but also to a colleague from the other team.",
       "uk": "Підсумуємо: ми розподіляємо завдання за нашими сильними сторонами, ти проходиш навчання з ризик-менеджменту, а обслуговування клієнтів переходить не лише до мене, а й до колеги з іншої команди.",
       "ru": "Подведём итог: мы распределяем задачи по нашим сильным сторонам, ты проходишь обучение по риск-менеджменту, а обслуживание клиентов переходит не только ко мне, но и к коллеге из другой команды."
@@ -12714,7 +12714,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо. К тому времени я подготовлю немного информации о программе поддержки."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir helfen Herrn Boateng beim Antrag auf Anerkennung, informieren ihn über das Förderprogramm und einen möglichen Anpassungslehrgang, und in zwei Tagen besprechen wir alles gemeinsam.",
+      "de": "Fassen wir zusammen: Wir helfen Herrn Boateng beim Antrag auf Anerkennung, informieren ihn über das Förderprogramm und einen möglichen Anpassungslehrgang, und in zwei Tagen besprechen wir alles gemeinsam.",
       "en": "Let's summarize: we help Mr. Boateng with the recognition application, inform him about the funding programme and a possible adaptation course, and discuss everything together in two days.",
       "uk": "Підсумуємо: ми допомагаємо пану Боатенгу з заявкою на визнання, інформуємо його про програму підтримки та можливий адаптаційний курс, а за два дні обговоримо все разом.",
       "ru": "Подведём итог: мы помогаем господину Боатенгу с заявкой на признание, информируем его о программе поддержки и возможном адаптационном курсе, а через два дня обсудим всё вместе."
@@ -12836,7 +12836,7 @@ var DIALOGE = [
       "ru": "Неделя, правда, довольно сжатый срок, но это должно быть выполнимо, если оба канала будут работать одновременно."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir beauftragen einen Headhunter, nutzen zusätzlich unser soziales Netzwerk und fragen bei der Arbeitsvermittlung nach, damit wir die Stelle endlich besetzen können.",
+      "de": "Fassen wir zusammen: Wir beauftragen einen Headhunter, nutzen zusätzlich unser soziales Netzwerk und fragen bei der Arbeitsvermittlung nach, damit wir die Stelle endlich besetzen können.",
       "en": "Let's summarize: we hire a headhunter, additionally use our social network, and ask the job placement service, so we can finally fill the position.",
       "uk": "Підсумуємо: ми залучаємо хедхантера, додатково використовуємо нашу соціальну мережу і запитуємо в агентства зайнятості, щоб нарешті закрити вакансію.",
       "ru": "Подведём итог: мы привлекаем хедхантера, дополнительно используем нашу социальную сеть и спрашиваем в агентстве занятости, чтобы наконец закрыть вакансию."
@@ -12958,7 +12958,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо. Я сразу же ей позвоню и обсужу последние детали."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir vereinheitlichen das Datumsformat, ergänzen konkrete Sprachniveaus und die Unterschrift, und strukturieren den beruflichen Werdegang klarer, damit der Lebenslauf seriös wirkt.",
+      "de": "Fassen wir zusammen: Wir vereinheitlichen das Datumsformat, ergänzen konkrete Sprachniveaus und die Unterschrift, und strukturieren den beruflichen Werdegang klarer, damit der Lebenslauf seriös wirkt.",
       "en": "Let's summarize: we'll standardize the date format, add concrete language levels and the signature, and structure the career path more clearly, so the CV looks professional.",
       "uk": "Підсумуємо: ми уніфікуємо формат дат, додаємо конкретні мовні рівні та підпис, і чіткіше структуруємо професійний шлях, щоб резюме виглядало серйозно.",
       "ru": "Подведём итог: мы унифицируем формат дат, добавляем конкретные языковые уровни и подпись, и чётче структурируем профессиональный путь, чтобы резюме выглядело серьёзно."
@@ -13080,7 +13080,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если мы начнём прямо сейчас, не дожидаясь дольше."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir kontaktieren die Berufsschule, prüfen eine höhere Ausbildungsvergütung und bieten zusätzlich ein duales Studium an, um die freien Plätze endlich zu besetzen.",
+      "de": "Fassen wir zusammen: Wir kontaktieren die Berufsschule, prüfen eine höhere Ausbildungsvergütung und bieten zusätzlich ein duales Studium an, um die freien Plätze endlich zu besetzen.",
       "en": "Let's summarize: we'll contact the vocational school, check on a higher trainee allowance, and additionally offer a dual study programme, in order to finally fill the open places.",
       "uk": "Підсумуємо: ми звертаємося до професійного училища, розглядаємо підвищення стипендії учнів і додатково пропонуємо дуальне навчання, щоб нарешті заповнити вільні місця.",
       "ru": "Подведём итог: мы обращаемся в профессиональное училище, рассматриваем повышение стипендии учеников и дополнительно предлагаем дуальное обучение, чтобы наконец заполнить свободные места."
@@ -13202,7 +13202,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, пока комната для собеседований ещё свободна."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir rufen Herrn Nowak heute noch zurück, laden ihn für Donnerstag zum Vorstellungstermin ein und bereiten die Checkliste sowie unsere Gehaltsvorstellung vor.",
+      "de": "Fassen wir zusammen: Wir rufen Herrn Nowak heute noch zurück, laden ihn für Donnerstag zum Vorstellungstermin ein und bereiten die Checkliste sowie unsere Gehaltsvorstellung vor.",
       "en": "Let's summarize: we'll call Mr. Nowak back today, invite him for an interview on Thursday, and prepare the checklist as well as our salary expectations.",
       "uk": "Підсумуємо: ми сьогодні ж передзвонимо пану Новаку, запросимо його на співбесіду в четвер і підготуємо чекліст та нашу очікувану зарплату.",
       "ru": "Подведём итог: мы сегодня же перезвоним господину Новаку, пригласим его на собеседование в четверг и подготовим чек-лист и наши ожидания по зарплате."
@@ -13220,7 +13220,7 @@ var DIALOGE = [
     "cat": "Arbeitsweg",
     "task": {
       "de": "Thema: Arbeitsweg – „Wie kommst du eigentlich jeden Tag zur Arbeit?“",
-      "en": "Topic: Commute – \"How do you actually get to work every day?\"",
+      "en": "Topic: Commute – „How do you actually get to work every day?“",
       "uk": "Тема: Дорога на роботу – «Як ти взагалі щодня добираєшся до роботи?»",
       "ru": "Тема: Дорога на работу – «Как ты вообще каждый день добираешься до работы?»"
     },
@@ -13270,7 +13270,7 @@ var DIALOGE = [
     "cat": "Wochenende",
     "task": {
       "de": "Thema: Wochenende – „Hast du schon Pläne für dieses Wochenende?“",
-      "en": "Topic: Weekend – \"Do you already have plans for this weekend?\"",
+      "en": "Topic: Weekend – „Do you already have plans for this weekend?“",
       "uk": "Тема: Вихідні – «У тебе вже є плани на ці вихідні?»",
       "ru": "Тема: Выходные – «У тебя уже есть планы на эти выходные?»"
     },
@@ -13424,7 +13424,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если ИТ-отдел отреагирует быстрее, чем мы опасаемся."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir organisieren sofort Passwort und Schlüssel, zeigen ihr das Organigramm und die Sicherheitsvorschriften, damit ihr erster Arbeitstag trotzdem gut beginnt.",
+      "de": "Fassen wir zusammen: Wir organisieren sofort Passwort und Schlüssel, zeigen ihr das Organigramm und die Sicherheitsvorschriften, damit ihr erster Arbeitstag trotzdem gut beginnt.",
       "en": "Let's summarize: we'll organize the password and key right away, show her the org chart and the safety rules, so her first day still starts off well.",
       "uk": "Підсумуємо: ми одразу організовуємо пароль і ключ, показуємо їй органіграму та правила безпеки, щоб її перший робочий день все ж почався добре.",
       "ru": "Подведём итог: мы сразу организуем пароль и ключ, покажем ей органиграмму и правила безопасности, чтобы её первый рабочий день всё же начался хорошо."
@@ -13546,7 +13546,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если мы действительно останемся непринуждёнными и открытыми."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir schaffen eine entspannte Atmosphäre, sprechen sie taktvoll auf gemeinsame Interessen an und laden sie zu informellen Aktivitäten ein, damit sie sich im Team wohler fühlt.",
+      "de": "Fassen wir zusammen: Wir schaffen eine entspannte Atmosphäre, sprechen sie taktvoll auf gemeinsame Interessen an und laden sie zu informellen Aktivitäten ein, damit sie sich im Team wohler fühlt.",
       "en": "Let's summarize: we'll create a relaxed atmosphere, tactfully ask her about shared interests, and invite her to informal activities, so she feels more comfortable on the team.",
       "uk": "Підсумуємо: ми створюємо невимушену атмосферу, тактовно запитуємо про спільні інтереси і запрошуємо її на неформальні заходи, щоб вона почувалася комфортніше в команді.",
       "ru": "Подведём итог: мы создаём непринуждённую атмосферу, тактично спрашиваем об общих интересах и приглашаем её на неформальные мероприятия, чтобы она чувствовала себя комфортнее в команде."
@@ -13668,7 +13668,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если у господина Майера ещё есть время сегодня после обеда."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir klären die Prioritäten mit Herrn Meier, delegieren die einfacheren Teilaufgaben und bitten künftig um schriftliche Anweisungen, damit Lukas' Arbeitspensum wieder machbar wird.",
+      "de": "Fassen wir zusammen: Wir klären die Prioritäten mit Herrn Meier, delegieren die einfacheren Teilaufgaben und bitten künftig um schriftliche Anweisungen, damit Lukas' Arbeitspensum wieder machbar wird.",
       "en": "Let's summarize: we'll clarify the priorities with Mr. Meier, delegate the simpler subtasks, and ask for written instructions from now on, so Lukas's workload becomes manageable again.",
       "uk": "Підсумуємо: ми узгоджуємо пріоритети з паном Майєром, делегуємо простіші підзавдання і надалі просимо письмові інструкції, щоб навантаження Лукаса знову стало посильним.",
       "ru": "Подведём итог: мы согласовываем приоритеты с господином Майером, делегируем более простые подзадачи и впредь просим письменные инструкции, чтобы нагрузка Лукаса снова стала посильной."
@@ -13790,7 +13790,7 @@ var DIALOGE = [
       "ru": "Это должно быть выполнимо, если отдел кадров сегодня ещё на месте."
     },
     "q8": {
-      "de": "Fassen wir zusammen. Wir kümmern uns um die Zugangsdaten, teilen uns die Mentorenschaft und lassen sie offiziell festlegen, damit Herr Fischer gut in seine neue Aufgabe startet.",
+      "de": "Fassen wir zusammen: Wir kümmern uns um die Zugangsdaten, teilen uns die Mentorenschaft und lassen sie offiziell festlegen, damit Herr Fischer gut in seine neue Aufgabe startet.",
       "en": "Let's summarize: we'll take care of the login credentials, split the mentorship between us, and have it officially set up, so Mr. Fischer gets off to a good start in his new role.",
       "uk": "Підсумуємо: ми займаємося даними для входу, ділимо наставництво між собою і закріплюємо це офіційно, щоб пан Фішер добре стартував на новій посаді.",
       "ru": "Подведём итог: мы занимаемся данными для входа, делим наставничество между собой и закрепляем это официально, чтобы господин Фишер хорошо стартовал на новой должности."
@@ -13808,7 +13808,7 @@ var DIALOGE = [
     "cat": "Freizeitgestaltung",
     "task": {
       "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich gerne in deiner Freizeit?“",
-      "en": "Topic: Leisure time – \"What do you actually enjoy doing in your free time?\"",
+      "en": "Topic: Leisure time – „What do you actually enjoy doing in your free time?“",
       "uk": "Тема: Дозвілля – «А що ти взагалі любиш робити у вільний час?»",
       "ru": "Тема: Досуг – «А что ты вообще любишь делать в свободное время?»"
     },
@@ -13858,7 +13858,7 @@ var DIALOGE = [
     "cat": "Urlaub",
     "task": {
       "de": "Thema: Urlaub – „Hast du schon Pläne für deinen nächsten Urlaub?“",
-      "en": "Topic: Vacation – \"Do you already have plans for your next vacation?\"",
+      "en": "Topic: Vacation – „Do you already have plans for your next vacation?“",
       "uk": "Тема: Відпустка – «У тебе вже є плани на наступну відпустку?»",
       "ru": "Тема: Отпуск – «У тебя уже есть планы на следующий отпуск?»"
     },
@@ -13908,7 +13908,7 @@ var DIALOGE = [
     "cat": "Sportaktivitäten",
     "task": {
       "de": "Thema: Sportaktivitäten – „Treibst du eigentlich regelmäßig Sport?“",
-      "en": "Topic: Sports activities – \"Do you actually exercise regularly?\"",
+      "en": "Topic: Sports activities – „Do you actually exercise regularly?“",
       "uk": "Тема: Спортивна активність – «Ти взагалі регулярно займаєшся спортом?»",
       "ru": "Тема: Спортивная активность – «Ты вообще регулярно занимаешься спортом?»"
     },
@@ -13958,7 +13958,7 @@ var DIALOGE = [
     "cat": "Arbeitszeiten",
     "task": {
       "de": "Thema: Arbeitszeiten – „Wie sind eigentlich deine Arbeitszeiten geregelt?“",
-      "en": "Topic: Working hours – \"How are your working hours actually arranged?\"",
+      "en": "Topic: Working hours – „How are your working hours actually arranged?“",
       "uk": "Тема: Робочий час – «А як у тебе взагалі влаштований робочий графік?»",
       "ru": "Тема: Рабочее время – «А как у тебя вообще устроен рабочий график?»"
     },
@@ -14008,7 +14008,7 @@ var DIALOGE = [
     "cat": "Kinderbetreuung",
     "task": {
       "de": "Thema: Kinderbetreuung – „Wie organisierst du eigentlich die Kinderbetreuung neben der Arbeit?“",
-      "en": "Topic: Childcare – \"How do you actually organize childcare alongside work?\"",
+      "en": "Topic: Childcare – „How do you actually organize childcare alongside work?“",
       "uk": "Тема: Догляд за дітьми – «А як ти взагалі організовуєш догляд за дітьми поряд з роботою?»",
       "ru": "Тема: Уход за детьми – «А как ты вообще организуешь уход за детьми наряду с работой?»"
     },
@@ -14058,7 +14058,7 @@ var DIALOGE = [
     "cat": "Arbeitsweg",
     "task": {
       "de": "Thema: Arbeitsweg – „Wie kommst du eigentlich normalerweise zur Arbeit?“",
-      "en": "Topic: Commute – \"How do you actually usually get to work?\"",
+      "en": "Topic: Commute – „How do you actually usually get to work?“",
       "uk": "Тема: Дорога на роботу – «А як ти взагалі зазвичай добираєшся до роботи?»",
       "ru": "Тема: Дорога на работу – «А как ты вообще обычно добираешься до работы?»"
     },
@@ -14108,7 +14108,7 @@ var DIALOGE = [
     "cat": "Wochenende",
     "task": {
       "de": "Thema: Wochenende – „Was hast du eigentlich dieses Wochenende vor?“",
-      "en": "Topic: Weekend – \"What do you actually have planned for this weekend?\"",
+      "en": "Topic: Weekend – „What do you actually have planned for this weekend?“",
       "uk": "Тема: Вихідні – «А що ти взагалі плануєш на ці вихідні?»",
       "ru": "Тема: Выходные – «А что ты вообще планируешь на эти выходные?»"
     },
@@ -14158,7 +14158,7 @@ var DIALOGE = [
     "cat": "Freizeitgestaltung",
     "task": {
       "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich am liebsten, wenn du mal ein bisschen Zeit für dich hast?“",
-      "en": "Topic: Leisure time – \"What do you actually like doing most when you have a bit of time for yourself?\"",
+      "en": "Topic: Leisure time – „What do you actually like doing most when you have a bit of time for yourself?“",
       "uk": "Тема: Дозвілля – «А що ти взагалі найбільше любиш робити, коли маєш трохи часу для себе?»",
       "ru": "Тема: Досуг – «А что ты вообще больше всего любишь делать, когда у тебя есть немного времени для себя?»"
     },
@@ -14208,7 +14208,7 @@ var DIALOGE = [
     "cat": "Urlaub",
     "task": {
       "de": "Thema: Urlaub – „Hast du eigentlich schon Pläne für den Sommer?“",
-      "en": "Topic: Vacation – \"Do you actually already have plans for the summer?\"",
+      "en": "Topic: Vacation – „Do you actually already have plans for the summer?“",
       "uk": "Тема: Відпустка – «А в тебе вже є плани на літо?»",
       "ru": "Тема: Отпуск – «А у тебя уже есть планы на лето?»"
     },
@@ -14258,7 +14258,7 @@ var DIALOGE = [
     "cat": "Sportaktivitäten",
     "task": {
       "de": "Thema: Sportaktivitäten – „Treibst du eigentlich Sport, oder eher gar nicht so?“",
-      "en": "Topic: Sports activities – \"Do you actually do sports, or not really?\"",
+      "en": "Topic: Sports activities – „Do you actually do sports, or not really?“",
       "uk": "Тема: Спортивна активність – «Ти взагалі займаєшся спортом, чи радше ні?»",
       "ru": "Тема: Спортивная активность – «Ты вообще занимаешься спортом, или скорее нет?»"
     },
@@ -14308,7 +14308,7 @@ var DIALOGE = [
     "cat": "Arbeitszeiten",
     "task": {
       "de": "Thema: Arbeitszeiten – „Wie sieht das eigentlich bei dir mit den Arbeitszeiten aus?“",
-      "en": "Topic: Working hours – \"What's it actually like for you with the working hours?\"",
+      "en": "Topic: Working hours – „What's it actually like for you with the working hours?“",
       "uk": "Тема: Робочий час – «А як у тебе взагалі з робочим часом?»",
       "ru": "Тема: Рабочее время – «А как у тебя вообще с рабочим временем?»"
     },
@@ -14358,7 +14358,7 @@ var DIALOGE = [
     "cat": "Kinderbetreuung",
     "task": {
       "de": "Thema: Kinderbetreuung – „Wie handhabt ihr das eigentlich mit der Kinderbetreuung, wenn ihr beide arbeitet?“",
-      "en": "Topic: Childcare – \"How do you actually handle childcare when you're both working?\"",
+      "en": "Topic: Childcare – „How do you actually handle childcare when you're both working?“",
       "uk": "Тема: Догляд за дітьми – «А як ви взагалі справляєтеся з доглядом за дітьми, якщо ви обоє працюєте?»",
       "ru": "Тема: Уход за детьми – «А как вы вообще справляетесь с уходом за детьми, если вы оба работаете?»"
     },
@@ -14408,7 +14408,7 @@ var DIALOGE = [
     "cat": "Arbeitsweg",
     "task": {
       "de": "Thema: Arbeitsweg – „Wie lange brauchst du eigentlich bis zur Arbeit, und wie kommst du dahin?“",
-      "en": "Topic: Commute – \"How long does it actually take you to get to work, and how do you get there?\"",
+      "en": "Topic: Commute – „How long does it actually take you to get to work, and how do you get there?“",
       "uk": "Тема: Дорога на роботу – «А скільки часу тобі взагалі потрібно, щоб дістатися до роботи, і як ти туди добираєшся?»",
       "ru": "Тема: Дорога на работу – «А сколько времени тебе вообще нужно, чтобы добраться до работы, и как ты туда добираешься?»"
     },
@@ -14458,7 +14458,7 @@ var DIALOGE = [
     "cat": "Wochenende",
     "task": {
       "de": "Thema: Wochenende – „Hast du eigentlich schon was für dieses Wochenende geplant?“",
-      "en": "Topic: Weekend – \"Do you actually have anything planned for this weekend?\"",
+      "en": "Topic: Weekend – „Do you actually have anything planned for this weekend?“",
       "uk": "Тема: Вихідні – «А в тебе вже є плани на ці вихідні?»",
       "ru": "Тема: Выходные – «А у тебя уже есть планы на эти выходные?»"
     },
@@ -14508,7 +14508,7 @@ var DIALOGE = [
     "cat": "Freizeitgestaltung",
     "task": {
       "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich am liebsten, wenn du frei hast?“",
-      "en": "Topic: Leisure time – \"What do you actually like doing most when you have free time?\"",
+      "en": "Topic: Leisure time – „What do you actually like doing most when you have free time?“",
       "uk": "Тема: Дозвілля – «А що ти взагалі найбільше любиш робити, коли маєш вільний час?»",
       "ru": "Тема: Досуг – «А что ты вообще больше всего любишь делать, когда у тебя есть свободное время?»"
     },
@@ -14558,7 +14558,7 @@ var DIALOGE = [
     "cat": "Urlaub",
     "task": {
       "de": "Thema: Urlaub – „Hast du eigentlich schon Pläne für deinen nächsten Urlaub?“",
-      "en": "Topic: Vacation – \"Do you already have plans for your next vacation?\"",
+      "en": "Topic: Vacation – „Do you already have plans for your next vacation?“",
       "uk": "Тема: Відпустка – «У тебе вже є плани на наступну відпустку?»",
       "ru": "Тема: Отпуск – «У тебя уже есть планы на следующий отпуск?»"
     },
@@ -14608,7 +14608,7 @@ var DIALOGE = [
     "cat": "Sportaktivitäten",
     "task": {
       "de": "Thema: Sportaktivitäten – „Machst du eigentlich regelmäßig Sport, oder eher unregelmäßig?“",
-      "en": "Topic: Sports activities – \"Do you actually do sports regularly, or more irregularly?\"",
+      "en": "Topic: Sports activities – „Do you actually do sports regularly, or more irregularly?“",
       "uk": "Тема: Спортивна активність – «Ти взагалі регулярно займаєшся спортом, чи радше нерегулярно?»",
       "ru": "Тема: Спортивная активность – «Ты вообще регулярно занимаешься спортом, или скорее нерегулярно?»"
     },
@@ -14658,7 +14658,7 @@ var DIALOGE = [
     "cat": "Arbeitszeiten",
     "task": {
       "de": "Thema: Arbeitszeiten – „Wie sind eigentlich deine Arbeitszeiten geregelt?“",
-      "en": "Topic: Working hours – \"How are your working hours actually arranged?\"",
+      "en": "Topic: Working hours – „How are your working hours actually arranged?“",
       "uk": "Тема: Робочий час – «А як у тебе взагалі влаштований робочий графік?»",
       "ru": "Тема: Рабочее время – «А как у тебя вообще устроен рабочий график?»"
     },
@@ -14708,7 +14708,7 @@ var DIALOGE = [
     "cat": "Kinderbetreuung",
     "task": {
       "de": "Thema: Kinderbetreuung – „Wie ist das eigentlich bei dir mit der Kinderbetreuung, jetzt wo dein Sohn schon älter ist?“",
-      "en": "Topic: Childcare – \"How is it actually with childcare for you now that your son is older?\"",
+      "en": "Topic: Childcare – „How is it actually with childcare for you now that your son is older?“",
       "uk": "Тема: Догляд за дітьми – «А як у тебе взагалі з доглядом за дітьми, тепер коли твій син уже старший?»",
       "ru": "Тема: Уход за детьми – «А как у тебя вообще с уходом за детьми, теперь когда твой сын уже старше?»"
     },
@@ -14758,7 +14758,7 @@ var DIALOGE = [
     "cat": "Arbeitsweg",
     "task": {
       "de": "Thema: Arbeitsweg – „Wie weit ist es eigentlich bei dir bis zur Arbeit? Pendelst du viel?“",
-      "en": "Topic: Commute – \"How far is it actually to work for you? Do you commute a lot?\"",
+      "en": "Topic: Commute – „How far is it actually to work for you? Do you commute a lot?“",
       "uk": "Тема: Дорога на роботу – «А як далеко в тебе взагалі до роботи? Ти багато їздиш?»",
       "ru": "Тема: Дорога на работу – «А как далеко у тебя вообще до работы? Ты много ездишь?»"
     },
@@ -14808,7 +14808,7 @@ var DIALOGE = [
     "cat": "Wochenende",
     "task": {
       "de": "Thema: Wochenende – „Hast du eigentlich schon was für dieses Wochenende vor?“",
-      "en": "Topic: Weekend – \"Do you actually have anything planned for this weekend?\"",
+      "en": "Topic: Weekend – „Do you actually have anything planned for this weekend?“",
       "uk": "Тема: Вихідні – «А в тебе вже є плани на ці вихідні?»",
       "ru": "Тема: Выходные – «А у тебя уже есть планы на эти выходные?»"
     },
@@ -14858,7 +14858,7 @@ var DIALOGE = [
     "cat": "Freizeitgestaltung",
     "task": {
       "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich am liebsten, wenn du frei hast?“",
-      "en": "Topic: Leisure time – \"What do you actually like doing most when you have free time?\"",
+      "en": "Topic: Leisure time – „What do you actually like doing most when you have free time?“",
       "uk": "Тема: Дозвілля – «А що ти взагалі найбільше любиш робити, коли маєш вільний час?»",
       "ru": "Тема: Досуг – «А что ты вообще больше всего любишь делать, когда у тебя есть свободное время?»"
     },
@@ -14908,7 +14908,7 @@ var DIALOGE = [
     "cat": "Urlaub",
     "task": {
       "de": "Thema: Urlaub – „Hast du eigentlich schon Pläne für den Winterurlaub?“",
-      "en": "Topic: Vacation – \"Do you actually already have plans for the winter vacation?\"",
+      "en": "Topic: Vacation – „Do you actually already have plans for the winter vacation?“",
       "uk": "Тема: Відпустка – «А в тебе вже є плани на зимову відпустку?»",
       "ru": "Тема: Отпуск – «А у тебя уже есть планы на зимний отпуск?»"
     },
@@ -14958,7 +14958,7 @@ var DIALOGE = [
     "cat": "Sportaktivitäten",
     "task": {
       "de": "Thema: Sportaktivitäten – „Machst du eigentlich Sport, oder ist das eher nicht so dein Ding?“",
-      "en": "Topic: Sports activities – \"Do you actually do sports, or is that more not your thing?\"",
+      "en": "Topic: Sports activities – „Do you actually do sports, or is that more not your thing?“",
       "uk": "Тема: Спортивна активність – «Ти взагалі займаєшся спортом, чи це радше не твоє?»",
       "ru": "Тема: Спортивная активность – «Ты вообще занимаешься спортом, или это скорее не твоё?»"
     },
@@ -15008,7 +15008,7 @@ var DIALOGE = [
     "cat": "Arbeitszeiten",
     "task": {
       "de": "Thema: Arbeitszeiten – „Wie sind eigentlich deine Arbeitszeiten geregelt?“",
-      "en": "Topic: Working hours – \"How are your working hours actually arranged?\"",
+      "en": "Topic: Working hours – „How are your working hours actually arranged?“",
       "uk": "Тема: Робочий час – «А як у тебе взагалі влаштований робочий графік?»",
       "ru": "Тема: Рабочее время – «А как у тебя вообще устроен рабочий график?»"
     },
@@ -15058,7 +15058,7 @@ var DIALOGE = [
     "cat": "Kinderbetreuung",
     "task": {
       "de": "Thema: Kinderbetreuung – „Wie handhabt ihr das eigentlich in den Sommerferien mit der Kinderbetreuung?“",
-      "en": "Topic: Childcare – \"How do you actually handle childcare during the summer holidays?\"",
+      "en": "Topic: Childcare – „How do you actually handle childcare during the summer holidays?“",
       "uk": "Тема: Догляд за дітьми – «А як ви взагалі справляєтеся з доглядом за дітьми на літніх канікулах?»",
       "ru": "Тема: Уход за детьми – «А как вы вообще справляетесь с уходом за детьми на летних каникулах?»"
     },
@@ -15108,7 +15108,7 @@ var DIALOGE = [
     "cat": "Arbeitsweg",
     "task": {
       "de": "Thema: Arbeitsweg – „Wie kommst du eigentlich normalerweise zur Arbeit? Hast du einen festen Weg?“",
-      "en": "Topic: Commute – \"How do you actually usually get to work? Do you have a fixed route?\"",
+      "en": "Topic: Commute – „How do you actually usually get to work? Do you have a fixed route?“",
       "uk": "Тема: Дорога на роботу – «А як ти взагалі зазвичай добираєшся до роботи? У тебе є фіксований маршрут?»",
       "ru": "Тема: Дорога на работу – «А как ты вообще обычно добираешься до работы? У тебя есть фиксированный маршрут?»"
     },
@@ -15158,7 +15158,7 @@ var DIALOGE = [
     "cat": "Wochenende",
     "task": {
       "de": "Thema: Wochenende – „Hast du eigentlich schon was für dieses Wochenende vor?“",
-      "en": "Topic: Weekend – \"Do you actually have anything planned for this weekend?\"",
+      "en": "Topic: Weekend – „Do you actually have anything planned for this weekend?“",
       "uk": "Тема: Вихідні – «А в тебе вже є плани на ці вихідні?»",
       "ru": "Тема: Выходные – «А у тебя уже есть планы на эти выходные?»"
     },
@@ -15208,7 +15208,7 @@ var DIALOGE = [
     "cat": "Freizeitgestaltung",
     "task": {
       "de": "Thema: Freizeitgestaltung – „Was machst du eigentlich am liebsten, wenn du mal Zeit für dich hast?“",
-      "en": "Topic: Leisure time – \"What do you actually like doing most when you have time for yourself?\"",
+      "en": "Topic: Leisure time – „What do you actually like doing most when you have time for yourself?“",
       "uk": "Тема: Дозвілля – «А що ти взагалі найбільше любиш робити, коли маєш час для себе?»",
       "ru": "Тема: Досуг – «А что ты вообще больше всего любишь делать, когда у тебя есть время для себя?»"
     },
@@ -15258,7 +15258,7 @@ var DIALOGE = [
     "cat": "Urlaub",
     "task": {
       "de": "Thema: Urlaub – „Hast du eigentlich schon Pläne für deinen nächsten Urlaub?“",
-      "en": "Topic: Vacation – \"Do you actually already have plans for your next vacation?\"",
+      "en": "Topic: Vacation – „Do you actually already have plans for your next vacation?“",
       "uk": "Тема: Відпустка – «У тебе вже є плани на наступну відпустку?»",
       "ru": "Тема: Отпуск – «У тебя уже есть планы на следующий отпуск?»"
     },
@@ -15358,7 +15358,7 @@ var DIALOGE = [
     "cat": "Sportaktivitäten",
     "task": {
       "de": "Thema: Sportaktivitäten – „Was könnte man tun, um im Arbeitsalltag mehr in Bewegung zu bleiben?“",
-      "en": "Topic: Sport activities – \"What could we do to stay more active during the workday?\"",
+      "en": "Topic: Sport activities – „What could we do to stay more active during the workday?“",
       "uk": "Тема: Спортивна активність – «Що можна робити, щоб більше рухатися протягом робочого дня?»",
       "ru": "Тема: Спортивная активность – «Что можно делать, чтобы больше двигаться в течение рабочего дня?»"
     },
@@ -15408,7 +15408,7 @@ var DIALOGE = [
     "cat": "Arbeitszeiten",
     "task": {
       "de": "Thema: Arbeitszeiten – „Ich würde gern öfter im Homeoffice arbeiten. Wie siehst du das?“",
-      "en": "Topic: Working hours – \"I'd like to work from home more often. What do you think?\"",
+      "en": "Topic: Working hours – „I'd like to work from home more often. What do you think?“",
       "uk": "Тема: Робочий час – «Я б хотіла частіше працювати з дому. Як ти на це дивишся?»",
       "ru": "Тема: Рабочее время – «Я бы хотела чаще работать из дома. Как ты на это смотришь?»"
     },
@@ -15458,7 +15458,7 @@ var DIALOGE = [
     "cat": "Kinderbetreuung",
     "task": {
       "de": "Thema: Kinderbetreuung – „Was könnte man tun, damit sich Arbeit und Kinderbetreuung besser vereinbaren lassen?“",
-      "en": "Topic: Childcare – \"What could be done to make it easier to combine work and childcare?\"",
+      "en": "Topic: Childcare – „What could be done to make it easier to combine work and childcare?“",
       "uk": "Тема: Догляд за дітьми – «Що можна зробити, щоб краще поєднувати роботу й догляд за дітьми?»",
       "ru": "Тема: Уход за детьми – «Что можно сделать, чтобы лучше совмещать работу и уход за детьми?»"
     },
@@ -15508,7 +15508,7 @@ var DIALOGE = [
     "cat": "Urlaub",
     "task": {
       "de": "Thema: Urlaub – „Ich würde gern öfter kurze Kurzurlaube machen, statt einmal im Jahr lange wegzufahren. Wie siehst du das?“",
-      "en": "Topic: Vacation – \"I'd like to take short getaways more often instead of one long trip a year. What do you think?\"",
+      "en": "Topic: Vacation – „I'd like to take short getaways more often instead of one long trip a year. What do you think?“",
       "uk": "Тема: Відпустка – «Я б хотіла частіше брати короткі відпустки замість однієї довгої поїздки на рік. Як ти на це дивишся?»",
       "ru": "Тема: Отпуск – «Я бы хотела чаще брать короткие отпуска вместо одной долгой поездки в год. Как ты на это смотришь?»"
     },
@@ -15558,7 +15558,7 @@ var DIALOGE = [
     "cat": "Arbeitsweg",
     "task": {
       "de": "Thema: Arbeitsweg – „Was könnte man tun, um den Arbeitsweg entspannter zu gestalten?“",
-      "en": "Topic: Commute – \"What could be done to make the commute to work less stressful?\"",
+      "en": "Topic: Commute – „What could be done to make the commute to work less stressful?“",
       "uk": "Тема: Дорога на роботу – «Що можна зробити, щоб дорога на роботу була менш напруженою?»",
       "ru": "Тема: Дорога на работу – «Что можно сделать, чтобы дорога на работу была менее напряжённой?»"
     },
@@ -15608,7 +15608,7 @@ var DIALOGE = [
     "cat": "Freizeitgestaltung",
     "task": {
       "de": "Thema: Freizeitgestaltung – „Ich würde gern öfter am Wochenende einen Kurs oder Workshop machen, statt nur zu Hause zu bleiben. Wie siehst du das?“",
-      "en": "Topic: Leisure activities – \"I'd like to do a course or workshop more often on weekends instead of just staying home. What do you think?\"",
+      "en": "Topic: Leisure activities – „I'd like to do a course or workshop more often on weekends instead of just staying home. What do you think?“",
       "uk": "Тема: Дозвілля – «Я б хотіла частіше проводити вихідні на курсах чи майстер-класах, а не просто вдома. Як ти на це дивишся?»",
       "ru": "Тема: Досуг – «Я бы хотела чаще проводить выходные на курсах или мастер-классах, а не просто дома. Как ты на это смотришь?»"
     },
@@ -15658,7 +15658,7 @@ var DIALOGE = [
     "cat": "Wochenende",
     "task": {
       "de": "Thema: Wochenende – „Was könnte man an einem regnerischen Wochenende unternehmen?“",
-      "en": "Topic: Weekend – \"What could you do on a rainy weekend?\"",
+      "en": "Topic: Weekend – „What could you do on a rainy weekend?“",
       "uk": "Тема: Вихідні – «Що можна робити в дощові вихідні?»",
       "ru": "Тема: Выходные – «Что можно делать в дождливые выходные?»"
     },
@@ -15708,7 +15708,7 @@ var DIALOGE = [
     "cat": "Kinderbetreuung",
     "task": {
       "de": "Thema: Kinderbetreuung – „Ich würde gern nach der Elternzeit in Teilzeit weiterarbeiten. Wie siehst du das?“",
-      "en": "Topic: Childcare – \"I'd like to keep working part-time after parental leave. What do you think?\"",
+      "en": "Topic: Childcare – „I'd like to keep working part-time after parental leave. What do you think?“",
       "uk": "Тема: Догляд за дітьми – «Я б хотіла продовжити працювати на неповну ставку після декретної відпустки. Як ти на це дивишся?»",
       "ru": "Тема: Уход за детьми – «Я бы хотела продолжить работать неполный день после декретного отпуска. Как ты на это смотришь?»"
     },
@@ -17893,7 +17893,7 @@ var DIALOGE = [
     },
     "a1": {
       "de": "<r>Das kann ich nachvollziehen</r>. Wichtig ist aber, dass du das Gespräch sachlich führst und ihn nicht vor anderen bloßstellst. <r>Ich hätte einen Vorschlag</r>: Formuliere lieber Ich-Botschaften, also zum Beispiel „Ich habe wahrgenommen, dass…“ statt „Du machst immer…“.",
-      "en": "<r>I can understand that</r>. But it's important that you handle the conversation objectively and don't embarrass him in front of others. <r>I'd have a suggestion</r>: use I-statements instead, for example \"I've noticed that…\" rather than \"You always…\".",
+      "en": "<r>I can understand that</r>. But it's important that you handle the conversation objectively and don't embarrass him in front of others. <r>I'd have a suggestion</r>: use I-statements instead, for example „I've noticed that…“ rather than „You always…“.",
       "uk": "<r>Я це розумію</r>. Але важливо, щоб ти вів розмову об'єктивно й не принижував його перед іншими. <r>У мене була б пропозиція</r>: краще формулюй Я-повідомлення, наприклад, «Я помітив, що…» замість «Ти завжди…».",
       "ru": "<r>Я это понимаю</r>. Но важно, чтобы ты вёл разговор объективно и не унижал его перед другими. <r>У меня было бы предложение</r>: лучше формулируй Я-высказывания, например, «Я заметил, что…» вместо «Ты всегда…»."
     },
@@ -25009,6 +25009,60 @@ var STORY = [
         "uk": "Дякую за увагу!",
         "en": "Thank you for your attention!",
         "ru": "Спасибо за внимание!"
+      }
+    ]
+  },
+  {
+    "id": "story_002",
+    "cat": "Story",
+    "name": "de_m_david",
+    "topic": {
+      "de": "Ein gutes Arbeitsumfeld",
+      "uk": "Гарне робоче середовище",
+      "en": "",
+      "ru": ""
+    },
+    "task": {
+      "de": "Thema 2: Beschreiben Sie, wie Sie sich ein gutes Arbeitsumfeld vorstellen.<br><br>Mögliche Fragen:<br>Jobsicherheit?<br>Lohn/Gehalt?<br>Wie sind die Karrierechancen?<br>Wie ist die Kommunikation in der Firma?<br>Arbeitsklima?<br>Arbeitszeit?<br>Weiterbildungen? Fortbildungen?<br>Was möchte ich nicht?<br>Wo könnte es dieses Umfeld geben?<br>Beispiele aus ihrer Berufserfahrung",
+      "uk": "Тема 2: Опишіть, яким ви уявляєте собі гарне робоче середовище.<br><br>Можливі запитання:<br>Гарантія зайнятості?<br>Заробітна плата?<br>Які кар'єрні перспективи?<br>Яка комунікація у фірмі?<br>Атмосфера в колективі?<br>Робочий час?<br>Підвищення кваліфікації? Навчання?<br>Чого я не хочу?<br>Де могло б існувати таке середовище?<br>Приклади з вашого професійного досвіду",
+      "en": "",
+      "ru": ""
+    },
+    "parts": [
+      {
+        "role": "einleitung",
+        "de": "Guten Tag allerseits. Heute möchte ich über ein Thema sprechen, das für den langfristigen Erfolg jedes Unternehmens von entscheidender Bedeutung ist: das ideale Arbeitsumfeld. Ich bin fest davon überzeugt, dass echte Synergien in einem Team nur dann entstehen können, wenn bestimmte Bedingungen erfüllt sind. Wenn das Umfeld stimmt, kann das Ergebnis die Summe der Einzelteile weit übertreffen – sozusagen nach dem Prinzip, dass eins plus eins nicht zwei, sondern zehn, hundert oder gar tausend ergibt. Glücklicherweise gibt es heute bereits viele fortschrittliche Unternehmen, denen es gelungen ist, ein solches motivierendes Umfeld zu schaffen.",
+        "uk": "Доброго дня всім. Сьогодні я хотів би поговорити на тему, яка має вирішальне значення для довгострокового успіху будь-якої компанії: ідеальне робоче середовище. Я твердо переконаний, що справжня синергія в команді може виникнути лише тоді, коли виконані певні умови. Якщо середовище правильне, результат може значно перевищити суму окремих частин — так би мовити, за принципом, що один плюс один дорівнює не двом, а десяти, ста чи навіть тисячі. На щастя, сьогодні вже є багато прогресивних компаній, яким вдалося створити таке мотивуюче середовище.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "einleitung2",
+        "de": "In diesem Zusammenhang gefällt mir das bekannte Konzept von Jim Collins aus seinem Buch „Der Weg zu den Besten“ besonders gut: „Erst wer, dann was“. Das bedeutet, dass die Mitglieder eines Teams in erster Linie bei den Werten übereinstimmen müssen. Ein hochqualifizierter, aber menschlich unpassender Mitarbeiter kann die Leistung und das Arbeitsklima des gesamten Teams negativ beeinflussen. Im Laufe meiner Karriere habe ich bestimmte Kriterien definiert, die für mich in einem idealen Arbeitsumfeld absolut unverzichtbar sind.",
+        "uk": "У цьому контексті мені особливо подобається відома концепція Джима Коллінза з його книги «Від хорошого до величного»: «Спочатку хто, потім що». Це означає, що члени команди повинні насамперед збігатися за цінностями. Висококваліфікований, але не підхожий за особистісними якостями співробітник може негативно вплинути на продуктивність і атмосферу в усій команді. За час своєї кар'єри я визначив певні критерії, які є для мене абсолютно необхідними в ідеальному робочому середовищі.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil1",
+        "de": "Erstens muss die Arbeit eine Berufung sein. Ich möchte von meiner Tätigkeit so begeistert sein, dass ich bereit wäre, mich ihr vollzeitlich zu widmen. Das nennt man intrinsische Motivation. Zweitens muss die finanzielle Frage komplett geklärt und sozusagen „vom Tisch“ sein. Nur wenn ein Mitarbeiter angemessen bezahlt wird und keine Existenzsorgen hat, kann er nach Feierabend richtig entspannen und neue, kreative Ideen für das Unternehmen entwickeln. Niemand sollte gezwungen sein, nach einem Nebenjob zu suchen, um über die Runden zu kommen.",
+        "uk": "По-перше, робота повинна бути покликанням. Я хочу бути настільки захопленим своєю діяльністю, щоб бути готовим присвятити їй весь свій час. Це називається внутрішньою мотивацією. По-друге, фінансове питання має бути повністю вирішене і, так би мовити, «зняте з порядку денного». Лише коли співробітнику платять належним чином і він не має фінансових турбот, він може після роботи по-справжньому відпочити і генерувати нові креативні ідеї для компанії. Ніхто не повинен бути змушений шукати підробіток, щоб зводити кінці з кінцями.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil2",
+        "de": "Schließlich ist für die meisten Menschen die Anerkennung ihrer Leistung und das Gefühl der Zugehörigkeit zu etwas Großem von zentraler Bedeutung. Die ideale Atmosphäre in einem Unternehmen entsteht für mich dann, wenn alle Teammitglieder ein echtes „Ownership-Denken“ entwickeln. Sie sollten für ihre Aufgaben brennen, als wäre es ihr eigenes Unternehmen. Wenn diese Faktoren – gemeinsame Werte, intrinsische Motivation, finanzielle Sicherheit und gegenseitige Wertschätzung – zusammenkommen, entsteht ein Umfeld, in dem Spitzenleistungen erbracht werden können.",
+        "uk": "Нарешті, для більшості людей центральне значення має визнання їхніх досягнень і відчуття причетності до чогось великого. Ідеальна атмосфера в компанії виникає для мене тоді, коли всі члени команди розвивають справжнє «мислення власника». Вони повинні горіти своїми завданнями так, ніби це їхня власна компанія. Коли ці фактори — спільні цінності, внутрішня мотивація, фінансова стабільність і взаємна повага — поєднуються, виникає середовище, в якому можна досягати найвищих результатів.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss2",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit.",
+        "uk": "Дякую за увагу.",
+        "en": "",
+        "ru": ""
       }
     ]
   }
