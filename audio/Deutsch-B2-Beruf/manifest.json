@@ -32035,7 +32035,7 @@
   "Deutsch-B2-Beruf/de/085/dlg/dlg_020_q_de_085": "9d1c136f29+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_020_a_de_085": "1c4b0eac3c+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_021_q_de_085": "b52def75ad+t",
-  "Deutsch-B2-Beruf/de/085/dlg/dlg_021_a_de_085": "c944d1b25b+t",
+  "Deutsch-B2-Beruf/de/085/dlg/dlg_021_a_de_085": "ae5c557053+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_022_q_de_085": "adbf02d1ea+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_022_a_de_085": "3b972fd0a7+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_023_q_de_085": "247da80f1d+t",
@@ -33268,7 +33268,7 @@
   "Deutsch-B2-Beruf/de/085/dlg/dlg_029_a6_de_085": "0f2f9b2247+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_029_q7_de_085": "af468401d8+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_029_a7_de_085": "2af03c5637+t",
-  "Deutsch-B2-Beruf/de/085/dlg/dlg_029_q8_de_085": "8113c981ea+t",
+  "Deutsch-B2-Beruf/de/085/dlg/dlg_029_q8_de_085": "e2a88cc30a+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_029_a8_de_085": "30506a5678+t",
   "Deutsch-B2-Beruf/uk/100/dlg/dlg_029_q_uk_100": "5307eb8884",
   "Deutsch-B2-Beruf/uk/100/dlg/dlg_029_a_uk_100": "4143af9e8b",
@@ -39214,5 +39214,8 @@
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_059_short_uk_100": "4cc69b495a",
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_059_def_uk_100": "5a84c8acfa",
   "Deutsch-B2-Beruf/de/100/story/story_002_einleitung_de_100": "caabcc5d92+t",
-  "Deutsch-B2-Beruf/de/100/story/story_002_einleitung2_de_100": "4c91c0fb4a+t"
+  "Deutsch-B2-Beruf/de/100/story/story_002_einleitung2_de_100": "4c91c0fb4a+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil1_de_100": "e66d263fad+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil2_de_100": "9d7c668a47+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_schluss2_de_100": "ef69ac3fa7+t"
 }
