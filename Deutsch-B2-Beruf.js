@@ -25191,5 +25191,167 @@ var STORY = [
       "ru": ""
     },
     "parts": []
+  },
+  {
+    "id": "story_006",
+    "cat": "Story",
+    "name": "de_m_david",
+    "topic": {
+      "de": "Worauf es bei einem Bewerbungsgespräch ankommt",
+      "uk": "Що важливо на співбесіді",
+      "en": "",
+      "ru": ""
+    },
+    "task": {
+      "de": "Thema 6: Beschreiben Sie, worauf es bei einem Bewerbungsgespräch ankommt. Sprechen Sie über ein Land Ihrer Wahl.<br><br>Mögliche Fragen:<br>Weg zur Firma?<br>Für welchen Beruf?<br>Wie bereitet man sich vor?<br>Kleidung?<br>Verhalten?<br>Gehaltsvorstellungen?",
+      "uk": "Тема 6: Опишіть, що є важливим під час співбесіди. Розкажіть про обрану вами країну.<br><br>Можливі запитання:<br>Шлях до фірми?<br>На яку професію?<br>Як готуються до співбесіди?<br>Одяг?<br>Поведінка?<br>Очікування щодо зарплати?",
+      "en": "",
+      "ru": ""
+    },
+    "parts": [
+      {
+        "role": "einleitung",
+        "de": "Guten Tag allerseits. Heute möchte ich über ein sehr wichtiges Thema sprechen, und zwar darüber, worauf es bei einem Bewerbungsgespräch ankommt. Da ich selbst 18 Jahre lang mein eigener Chef war und ein erfolgreiches Unternehmen geleitet habe, betrachte ich diese Situation aus einer besonderen Perspektive. Ich habe in meinem Leben über 3000 Vorstellungsgespräche als Arbeitgeber geführt und weiß genau, worauf es ankommt. Wenn man sich auf eine Führungsposition bewirbt, beginnt der Prozess oft schon vor dem eigentlichen Gespräch. In Deutschland spricht man in diesem Zusammenhang häufig von „Vitamin B\" – also von wertvollen Beziehungen und Netzwerken, die einem die Tür zu einem Projekt öffnen können.",
+        "uk": "Доброго дня всім. Сьогодні я хотів би поговорити на дуже важливу тему, а саме про те, що є важливим під час співбесіди. Оскільки я сам 18 років був власним начальником і керував успішною компанією, я розглядаю цю ситуацію з особливої перспективи. За своє життя я провів понад 3000 співбесід як роботодавець і точно знаю, на що звертати увагу. Коли претендуєш на керівну посаду, процес часто починається ще до самої співбесіди. У Німеччині в цьому контексті часто говорять про «вітамін Б» — тобто про цінні зв'язки та мережі контактів, які можуть відкрити двері до проєкту.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil1",
+        "de": "Aus meiner Erfahrung als Arbeitgeber kann ich bestätigen, dass die ersten Minuten eines Gesprächs entscheidend sind. Viele Bewerber erhalten innerlich bereits in den ersten Sekunden ein klares „Nein\", und das restliche Gespräch wird nur noch aus Höflichkeit fortgesetzt. Um das zu vermeiden, muss der erste Eindruck absolut stimmen. Hier gilt das bekannte Sprichwort: „Kleider machen Leute\". Das äußere Erscheinungsbild muss absolut relevant für die angestrebte Rolle sein. Dazu gehören nicht nur die passende Kleidung, sondern auch eine freundliche Ausstrahlung, ein echtes Duchenne-Lächeln, bei dem das ganze Gesicht strahlt, und eine selbstbewusste Körpersprache.",
+        "uk": "Виходячи зі свого досвіду роботодавця, можу підтвердити, що перші хвилини співбесіди є вирішальними. Багато кандидатів вже в перші секунди подумки отримують чітке «ні», і решта розмови триває лише з ввічливості. Щоб цього уникнути, перше враження має бути бездоганним. Тут діє відоме прислів'я: «Зустрічають по одягу». Зовнішній вигляд має бути повністю релевантним бажаній ролі. Сюди належить не лише відповідний одяг, а й доброзичлива аура, справжня усмішка Дюшенна, коли сяє все обличчя, та впевнена мова тіла.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil2",
+        "de": "Ein weiterer unverzichtbarer Punkt ist die gründliche Vorbereitung, denn wie man so schön sagt: „Übung macht den Meister\". Man sollte im Voraus das Unternehmen gründlich recherchieren, um zu verstehen, dass man dessen Werte teilt. Es ist wichtig zu verstehen, welche eigenen Stärken für diese spezifische Rolle wertvoll sind. Ein erfolgreicher Kandidat muss in der Lage sein, dem Arbeitgeber präzise zu vermitteln, warum genau sein Profil und sein Hintergrund einen großen Mehrwert für das Team darstellen. Man muss eine klare und überzeugende Botschaft senden.",
+        "uk": "Ще одним необхідним пунктом є ретельна підготовка, адже, як гарно кажуть: «Практика робить майстра». Слід заздалегідь ретельно дослідити компанію, щоб зрозуміти, чи поділяєш ти її цінності. Важливо усвідомлювати, які власні сильні сторони є цінними саме для цієї ролі. Успішний кандидат повинен вміти чітко донести до роботодавця, чому саме його профіль і досвід становлять велику додану цінність для команди. Потрібно надіслати чітке й переконливе послання.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss1",
+        "de": "Zusammenfassend lässt sich sagen, dass ein Bewerbungsgespräch für mich keine Prüfung, sondern eine Verhandlung über eine langfristige Kooperation ist. Eine dauerhafte und erfolgreiche Zusammenarbeit ist meiner Meinung nach nur dann möglich, wenn es sich um eine Win-Win-Situation handelt, von der beide Seiten profitieren. Wenn am Ende der Verhandlungen beide Parteien genau wissen, warum sie miteinander arbeiten möchten, dann ist das konkrete Jobangebot nur noch eine Frage der Zeit.",
+        "uk": "Підсумовуючи, можна сказати, що співбесіда для мене — це не іспит, а переговори про довгострокову співпрацю. На мою думку, тривала й успішна співпраця можлива лише тоді, коли це ситуація «win-win», з якої виграють обидві сторони. Якщо наприкінці переговорів обидві сторони точно знають, чому вони хочуть працювати разом, то конкретна пропозиція роботи — це лише питання часу.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss2",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit.",
+        "uk": "Дякую за увагу.",
+        "en": "",
+        "ru": ""
+      }
+    ]
+  },
+  {
+    "id": "story_007",
+    "cat": "Story",
+    "name": "de_m_david",
+    "topic": {
+      "de": "Eine minimalistische Lern-App",
+      "uk": "Мінімалістичний застосунок для вивчення мови",
+      "en": "",
+      "ru": ""
+    },
+    "task": {
+      "de": "Thema 7: Beschreiben Sie ein Produkt / eine Dienstleistung Ihrer Wahl.<br><br>Mögliche Fragen:<br>Welches Produkt?<br>Welche Merkmale?<br>Wo gibt es das?<br>Seit wann gibt es das Produkt?<br>Für was ist es gut bzw. welchen Nutzen hat es für den Kunden?<br>Vorteile?<br>Nachteile?<br>Erfolg?<br>Marketing? Veränderungen?",
+      "uk": "Тема 7: Опишіть продукт/послугу на ваш вибір.<br><br>Можливі запитання:<br>Який продукт?<br>Які особливості?<br>Де це можна знайти?<br>Відколи існує цей продукт?<br>Для чого він потрібен, яку користь має для клієнта?<br>Переваги?<br>Недоліки?<br>Успіх?<br>Маркетинг? Зміни?",
+      "en": "",
+      "ru": ""
+    },
+    "parts": [
+      {
+        "role": "einleitung",
+        "de": "Ich habe das Thema Produkt gewählt.",
+        "uk": "Я обрав тему «Продукт».",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil1",
+        "de": "Ich habe 18 Jahre lang ein eigenes Unternehmen in der Ukraine geleitet. Als IT-Ingenieur habe ich Erfahrung mit der Entwicklung komplexer Systeme und der Kundengewinnung. Nach meiner Ankunft in Deutschland stand ich vor einer neuen Herausforderung: dem intensiven Sprachenlernen auf dem Niveau B2.",
+        "uk": "Я 18 років керував власною компанією в Україні. Як ІТ-інженер, я маю досвід розробки складних систем та залучення клієнтів. Після приїзду до Німеччини переді мною постав новий виклик: інтенсивне вивчення мови на рівні B2.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil2",
+        "de": "Dabei ist mir ein großes Problem aufgefallen: Die meisten Sprach-Apps bieten nur allgemeine Inhalte. Wenn man aber ein festes Ziel und eine Prüfung hat, verliert man mit solchen Apps zu viel Zeit. Außerdem steht man oft vor der Frage: Was soll ich heute lernen? Wenn das Gehirn zu viele Optionen hat, verschiebt man die Aufgabe leicht auf morgen.",
+        "uk": "При цьому я помітив велику проблему: більшість мовних застосунків пропонують лише загальний контент. Але якщо в тебе є конкретна мета та іспит, з такими застосунками втрачаєш забагато часу. Крім того, часто постає питання: що вчити сьогодні? Коли мозок має забагато варіантів, легко відкласти завдання на завтра.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil3",
+        "de": "Aus meiner Erfahrung kenne ich ein wichtiges Prinzip: Eine Aufgabe wird am besten erledigt, wenn man nur eine einzige Option hat. Heute möchte ich Ihnen ein innovatives Produkt vorstellen: eine minimalistische Lern-App. Sie ist genau auf den Lehrplan für die Niveaus A2, B1 und B2 abgestimmt. Die App kombiniert wissenschaftliche Lernmethoden mit Gamifikation und deckt Hören, Lesen, Schreiben und Grammatik ab.",
+        "uk": "З власного досвіду я знаю важливий принцип: завдання виконується найкраще, коли є лише один варіант. Сьогодні я хочу представити вам інноваційний продукт: мінімалістичний застосунок для вивчення мови. Він точно відповідає навчальній програмі для рівнів A2, B1 та B2. Застосунок поєднує наукові методи навчання з гейміфікацією та охоплює аудіювання, читання, письмо й граматику.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss1",
+        "de": "Ich habe die Adresse mova.now gewählt, weil „Mova\" auf Ukrainisch „Sprache\" bedeutet und weil es keinen besseren Moment zum Lernen gibt als jetzt. Aktuell ist das Produkt komplett kostenlos und ohne Werbung im Internet verfügbar. Der größte Nutzen für die Kunden liegt in der gezielten Prüfungsvorbereitung, der einfachen Bedienung und der enormen Zeitersparnis.",
+        "uk": "Я обрав адресу mova.now, тому що «мова» українською означає «Sprache», а кращого моменту для навчання, ніж зараз, не буває. Наразі продукт повністю безкоштовний і доступний в інтернеті без реклами. Найбільша користь для клієнтів полягає в цілеспрямованій підготовці до іспиту, простоті використання та величезній економії часу.",
+        "en": "",
+        "ru": ""
+      }
+    ]
+  },
+  {
+    "id": "story_008",
+    "cat": "Story",
+    "name": "de_m_david",
+    "topic": {
+      "de": "Geschäftsidee: eine Lern-App",
+      "uk": "Бізнес-ідея: застосунок для вивчення мови",
+      "en": "",
+      "ru": ""
+    },
+    "task": {
+      "de": "Thema 8: Sie möchten sich selbstständig machen. Beschreiben Sie Ihre Geschäftsidee.<br><br>Mögliche Fragen:<br>Sich selbstständig machen womit?<br>Eigene Firma?<br>Welche Branche?<br>Wie Kunden gewinnen?<br>Wie sind Sie auf diese Idee gekommen?<br>Brauchen Sie Mitarbeiter?<br>Wie finanzieren?<br>Wo gibt es Unterstützung?<br>Gibt es bereits ähnliche Ideen/Firmen?",
+      "uk": "Тема 8: Ви хочете стати самозайнятим. Опишіть свою бізнес-ідею.<br><br>Можливі запитання:<br>Чим саме займатися самостійно?<br>Власна фірма?<br>Яка галузь?<br>Як залучати клієнтів?<br>Як ви прийшли до цієї ідеї?<br>Чи потрібні вам співробітники?<br>Як фінансувати?<br>Де можна отримати підтримку?<br>Чи є вже подібні ідеї/фірми?",
+      "en": "",
+      "ru": ""
+    },
+    "parts": [
+      {
+        "role": "einleitung",
+        "de": "Ich habe das Thema Selbstständigkeit gewählt.",
+        "uk": "Я обрав тему «Самозайнятість».",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil1",
+        "de": "Ich habe 18 Jahre lang ein eigenes Unternehmen in der Ukraine geleitet. Als IT-Ingenieur habe ich Erfahrung mit der Entwicklung komplexer Systeme und der Kundengewinnung. Nach meiner Ankunft in Deutschland stand ich vor einer neuen Herausforderung: dem intensiven Sprachenlernen auf dem Niveau B2.",
+        "uk": "Я 18 років керував власною компанією в Україні. Як ІТ-інженер, я маю досвід розробки складних систем та залучення клієнтів. Після приїзду до Німеччини переді мною постав новий виклик: інтенсивне вивчення мови на рівні B2.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil2",
+        "de": "Dabei ist mir ein großes Problem aufgefallen: Die meisten Sprach-Apps bieten nur allgemeine Inhalte. Wenn man aber ein festes Ziel und eine Prüfung hat, verliert man mit solchen Apps zu viel Zeit. Außerdem steht man oft vor der Frage: Was soll ich heute lernen? Wenn das Gehirn zu viele Optionen hat, verschiebt man die Aufgabe leicht auf morgen.",
+        "uk": "При цьому я помітив велику проблему: більшість мовних застосунків пропонують лише загальний контент. Але якщо в тебе є конкретна мета та іспит, з такими застосунками втрачаєш забагато часу. Крім того, часто постає питання: що вчити сьогодні? Коли мозок має забагато варіантів, легко відкласти завдання на завтра.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil3",
+        "de": "Aus meiner Erfahrung kenne ich ein wichtiges Prinzip: Eine Aufgabe wird am besten erledigt, wenn man nur eine einzige Option hat. Deshalb habe ich eine minimalistische App entwickelt. Sie ist genau auf den Lehrplan für die Niveaus A2, B1 und B2 abgestimmt. Die App kombiniert wissenschaftliche Lernmethoden mit Gamifikation und deckt Hören, Lesen, Schreiben und Grammatik ab.",
+        "uk": "З власного досвіду я знаю важливий принцип: завдання виконується найкраще, коли є лише один варіант. Тому я розробив мінімалістичний застосунок. Він точно відповідає навчальній програмі для рівнів A2, B1 та B2. Застосунок поєднує наукові методи навчання з гейміфікацією та охоплює аудіювання, читання, письмо й граматику.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss1",
+        "de": "Ich habe die Adresse mova.now gewählt, weil „Mova\" auf Ukrainisch „Sprache\" bedeutet und weil es keinen besseren Moment zum Lernen gibt als JETZT. Aktuell ist die App komplett kostenlos und ohne Werbung erreichbar. In Zukunft möchte ich aus dieser Idee ein eigenes Unternehmen in Deutschland aufbauen und mich damit selbstständig machen.",
+        "uk": "Я обрав адресу mova.now, тому що «мова» українською означає «Sprache», а кращого моменту для навчання, ніж ЗАРАЗ, не буває. Наразі застосунок повністю безкоштовний і доступний без реклами. У майбутньому я хочу з цієї ідеї побудувати власну компанію в Німеччині та стати завдяки цьому самозайнятим.",
+        "en": "",
+        "ru": ""
+      }
+    ]
   }
 ];
