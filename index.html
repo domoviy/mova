@@ -3712,6 +3712,23 @@ body.lesson-active .vocab-top{
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
       <div class="srow-label"><label>🎤 Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією). Кожна тема — окремою кнопкою.</small></div>
       <div id="debug-story-topics" style="display:flex;flex-direction:column;gap:6px"></div>
+      <button class="btn btn-s" onclick="toggleCustomStoryForm()">➕ Додати свою тему</button>
+      <div id="story-custom-form" style="display:none;flex-direction:column;gap:6px;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:10px">
+        <input type="text" id="story-custom-topic" placeholder="Тема (напр. Мій робочий день)"
+          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
+        <textarea id="story-custom-task" placeholder="Завдання (умова — про що розповісти)" rows="2"
+          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+        <textarea id="story-custom-einleitung" placeholder="Вступ (Einleitung) — необов'язково" rows="2"
+          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+        <textarea id="story-custom-hauptteil" placeholder="Основна частина (Hauptteil)" rows="4"
+          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+        <textarea id="story-custom-schluss" placeholder="Висновок (Schluss) — необов'язково" rows="2"
+          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+        <div style="display:flex;gap:6px">
+          <button class="btn btn-s" style="flex:1" onclick="saveCustomStoryTopic()">💾 Зберегти тему</button>
+          <button class="btn btn-s" style="flex:1" onclick="toggleCustomStoryForm(false)">Скасувати</button>
+        </div>
+      </div>
     </div>
     </div>
     </div>
@@ -3752,7 +3769,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '582-dd24b1b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9427,31 +9444,99 @@ function toggleDebugSection(headerEl){
   }
 }
 
-// Кнопки — по одній на кожну тему var STORY поточного курсу (а не одна
-// спільна кнопка, що гортала всі теми підряд і по колу) — щоб можна
-// було відкрити КОНКРЕТНУ тему усного іспиту одразу, не чекаючи на
-// попередні. Рендеримо динамічно (а не хардкодимо 8 кнопок у HTML),
-// бо реальний список тем/їх кількість залежить від курсу (STORY
-// приходить з файлу курсу, не з index.html).
+// Кнопки — по одній на кожну тему (вбудовані STORY курсу + власні
+// теми користувача, див. _getAllStoryCards), а не одна спільна кнопка,
+// що гортала всі теми підряд і по колу — щоб можна було відкрити
+// КОНКРЕТНУ тему усного іспиту одразу, не чекаючи на попередні.
+// Рендеримо динамічно (а не хардкодимо кнопки у HTML), бо реальний
+// список тем/їх кількість залежить від курсу (STORY приходить з файлу
+// курсу) і від того, скільки власних тем додав користувач.
+function _escapeHtmlText(s){
+  return String(s==null?'':s).replace(/[&<>"']/g, function(c){
+    return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];
+  });
+}
 function debugRenderStoryTopics(){
   var container = document.getElementById('debug-story-topics');
   if(!container) return;
-  var cards = (typeof STORY !== 'undefined') ? STORY : [];
-  if(!cards.length){
-    container.innerHTML = '<div style="color:var(--muted);font-size:var(--fs-utility)">Немає жодної картки STORY у поточному курсі</div>';
-    return;
-  }
+  var cards = _getAllStoryCards();
   var pl = typeof primaryLang === 'function' ? primaryLang() : 'de';
   var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  container.innerHTML = cards.map(function(card, i){
+  var rowsHtml = cards.length ? cards.map(function(card, i){
     var rawLabel = (typeof _lfBilingualLabel === 'function' && card.topic) ? _lfBilingualLabel(card.topic, pl, ul) : '';
     // Топіки в принципі короткі описові фрази без розмітки, але про
     // всяк випадок прибираємо будь-які теги (<r>/<g> трапляються в
-    // ТЕКСТІ реплік, не в topic, але дешево підстрахуватись і тут).
-    var label = rawLabel ? rawLabel.replace(/<[^>]*>/g,'') : ('Тема '+(i+1));
-    return '<button class="btn btn-s" style="text-align:left" onclick="debugOpenStory('+i+')">🎤 '+(i+1)+'. '+label+'</button>';
-  }).join('');
+    // ТЕКСТІ реплік, не в topic, але дешево підстрахуватись і тут) і
+    // екрануємо решту — це вже може бути текст, який ввів користувач.
+    var label = _escapeHtmlText(rawLabel ? rawLabel.replace(/<[^>]*>/g,'') : ('Тема '+(i+1)));
+    var icon = card.custom ? '📝' : '🎤';
+    var btn = '<button class="btn btn-s" style="text-align:left;flex:1" onclick="debugOpenStory('+i+')">'+icon+' '+(i+1)+'. '+label+'</button>';
+    if(!card.custom) return btn;
+    return '<div style="display:flex;gap:6px">'+btn+
+      '<button class="btn btn-s" style="flex:0 0 auto;padding-left:14px;padding-right:14px" onclick="removeCustomStoryTopicByIndex('+i+')" title="Видалити тему">🗑</button>'+
+    '</div>';
+  }).join('') : '<div style="color:var(--muted);font-size:var(--fs-utility)">Немає жодної картки STORY у поточному курсі</div>';
+  container.innerHTML = rowsHtml;
 }
+
+function removeCustomStoryTopicByIndex(i){
+  var card = _getAllStoryCards()[i];
+  if(!card || !card.custom) return;
+  var pl = typeof primaryLang === 'function' ? primaryLang() : 'de';
+  var label = (card.topic && (card.topic[pl] || card.topic.de)) || '';
+  if(!confirm('Видалити тему'+(label ? ' "'+label+'"' : '')+'?')) return;
+  deleteCustomStoryCard(card.id);
+  debugRenderStoryTopics();
+}
+
+// ── Форма додавання власної теми (Debug → Mündliche Prüfung Teil 1) ──
+// Озвучення для власних тем поки НЕ реалізоване (див. коментар біля
+// getAudioText у _lfStoryHandlers) — навмисне рішення: спершу
+// зберігання й форма, TTS для власного тексту — окремий наступний крок.
+function toggleCustomStoryForm(show){
+  var form = document.getElementById('story-custom-form');
+  if(!form) return;
+  var next = (typeof show === 'boolean') ? show : (form.style.display === 'none');
+  form.style.display = next ? 'flex' : 'none';
+  if(next){
+    ['story-custom-topic','story-custom-task','story-custom-einleitung','story-custom-hauptteil','story-custom-schluss'].forEach(function(id){
+      var el = document.getElementById(id);
+      if(el) el.value = '';
+    });
+  }
+}
+
+function saveCustomStoryTopic(){
+  var pl = primaryLang();
+  var topic       = (document.getElementById('story-custom-topic')?.value || '').trim();
+  var task        = (document.getElementById('story-custom-task')?.value || '').trim();
+  var einleitung  = (document.getElementById('story-custom-einleitung')?.value || '').trim();
+  var hauptteil   = (document.getElementById('story-custom-hauptteil')?.value || '').trim();
+  var schluss     = (document.getElementById('story-custom-schluss')?.value || '').trim();
+
+  if(!topic || !task || !hauptteil){
+    notify('⚠️ Заповніть щонайменше тему, завдання й основну частину');
+    return;
+  }
+
+  var parts = [];
+  if(einleitung) parts.push({ role:'einleitung', [pl]: einleitung });
+  parts.push({ role:'hauptteil', [pl]: hauptteil });
+  if(schluss) parts.push({ role:'schluss', [pl]: schluss });
+
+  addCustomStoryCard({
+    id: 'custom_'+Date.now(),
+    custom: true,
+    topic: { [pl]: topic },
+    task: { [pl]: task },
+    parts: parts,
+  });
+
+  toggleCustomStoryForm(false);
+  debugRenderStoryTopics();
+  notify('✅ Тему додано');
+}
+
 
 // Прямий доступ до тестових вправ Vocab (🔗🎯🧩❓🔍🎤), прибраних з
 // основної vtab-bar (лишились там тільки 🃏 Картки і 📋 Список) — щоб
@@ -13435,18 +13520,30 @@ var _lfStoryHandlers = {
       // давши прочитати (часто довгий) текст умови.
       return [];
     }
+    // Користувацькі теми (card.custom, див. addCustomStoryCard) —
+    // текст, який людина щойно ввела сама, для нього НЕМАЄ і не може
+    // бути pregen-аудіо (озвучення для власних тем поки не реалізоване
+    // навмисно — рішення відкладено). Порожній масив тут — так само,
+    // як і для story_intro — рушій просто показує текст без спроби
+    // озвучити (і без зайвого 404-запиту в мережу).
+    if(card.custom) return [];
     return [{ text: unit.part[pl]||'', field: unit.part.role }];
   },
 
   getSecondaryButtons: function(unit){
     if(unit.kind === 'story_intro') return []; // без аудіо — нема що повторювати
-    var buttons = [{
-      icon: '🔊',
-      onClick: function(){
-        var items = _lfStoryHandlers.getAudioText(unit) || [];
-        _lfUnitPlay(items, function(){});
-      }
-    }];
+    var buttons = [];
+    // 🔊-кнопка повтору має сенс лише там, де реально є аудіо —
+    // для власних (custom) тем його поки нема (див. getAudioText вище).
+    if(!unit.card.custom){
+      buttons.push({
+        icon: '🔊',
+        onClick: function(){
+          var items = _lfStoryHandlers.getAudioText(unit) || [];
+          _lfUnitPlay(items, function(){});
+        }
+      });
+    }
     var pl = primaryLang();
     var partText = unit.kind === 'story_intro'
       ? ((unit.card.task && unit.card.task[pl]) || '')
@@ -16221,14 +16318,54 @@ function _onDialogueUnitsDone(){
   if(D.queue.length) startDialogueCardMode();
 }
 
-// Mündliche Prüfung — Teil 1 (var STORY) — той самий принцип, що й
-// Dialogue (_runDialogueQueueAsUnits/startDialogueCardMode вище):
-// самостійний перегляд одним рушієм lfRunUnitStep, лише інше джерело
-// карток і handlers-об'єкт (_storyCardsToUnits/_lfStoryHandlers).
-// topicIndex (опційно) — індекс КОНКРЕТНОЇ теми в STORY: кожна з
-// восьми debug-кнопок (див. debugRenderStoryTopics) відкриває лише
-// свою тему, а не всі підряд. Без topicIndex — стара поведінка (усі
-// теми одна за одною) лишається доступною для виклику з коду напряму.
+// ── Користувацькі теми Mündliche Prüfung Teil 1 ──────────────────
+// Зберігаються локально під ключем mova_custom_story_cards — той самий
+// принцип mova_-префіксу, що й увесь інший прогрес, тож ці теми
+// АВТОМАТИЧНО потрапляють у хмарний бекап/відновлення
+// (_cloudCollectBackupData на початку файлу бере ВСІ localStorage-ключі
+// з префіксом mova_/srs_, без явного списку — нову фічу не треба
+// окремо реєструвати там). Формат картки — 1:1 як у вбудованих темах
+// STORY (topic/task/parts[]), плюс card.custom:true — прапорець, за
+// яким _lfStoryHandlers.getAudioText() і getSecondaryButtons() вище
+// розпізнають "свою" тему й не намагаються знайти для неї pregen-аудіо
+// (озвучення власних тем — окрема, поки не реалізована фіча).
+var STORY_CUSTOM_KEY = 'mova_custom_story_cards';
+
+function getCustomStoryCards(){
+  try{
+    var raw = localStorage.getItem(STORY_CUSTOM_KEY);
+    var arr = raw ? JSON.parse(raw) : [];
+    return Array.isArray(arr) ? arr : [];
+  }catch(e){ return []; }
+}
+function saveCustomStoryCards(cards){
+  try{ localStorage.setItem(STORY_CUSTOM_KEY, JSON.stringify(cards||[])); }catch(e){}
+}
+function addCustomStoryCard(card){
+  var cards = getCustomStoryCards();
+  cards.push(card);
+  saveCustomStoryCards(cards);
+}
+function deleteCustomStoryCard(id){
+  saveCustomStoryCards(getCustomStoryCards().filter(function(c){ return c.id !== id; }));
+}
+// Вбудовані теми курсу (STORY, однакові для всіх) + власні теми
+// користувача — в одному спільному списку, з яким далі працює решта
+// рушія (рендер кнопок, відкриття за індексом, порожня-чи-ні перевірка).
+function _getAllStoryCards(){
+  var builtin = (typeof STORY !== 'undefined') ? STORY : [];
+  return builtin.concat(getCustomStoryCards());
+}
+
+// Mündliche Prüfung — Teil 1 (var STORY + власні теми користувача) —
+// той самий принцип, що й Dialogue (_runDialogueQueueAsUnits/
+// startDialogueCardMode вище): самостійний перегляд одним рушієм
+// lfRunUnitStep, лише інше джерело карток і handlers-об'єкт
+// (_storyCardsToUnits/_lfStoryHandlers).
+// topicIndex (опційно) — індекс КОНКРЕТНОЇ теми в _getAllStoryCards():
+// кожна кнопка (див. debugRenderStoryTopics) відкриває лише свою тему,
+// а не всі підряд. Без topicIndex — стара поведінка (усі теми одна за
+// одною) лишається доступною для виклику з коду напряму.
 function _runStoryQueueAsUnits(topicIndex){
   var fcArea = document.getElementById('dlg-fc-area');
   if(fcArea) fcArea.style.display = 'none';
@@ -16237,14 +16374,14 @@ function _runStoryQueueAsUnits(topicIndex){
 
   _relocateUnitCard('dlg-panel-card');
 
-  var allCards = (typeof STORY !== 'undefined') ? STORY : [];
+  var allCards = _getAllStoryCards();
   var cards = (typeof topicIndex === 'number' && allCards[topicIndex]) ? [allCards[topicIndex]] : allCards;
   var units = _storyCardsToUnits(cards);
   lfRunUnitStep(units, _lfStoryHandlers, function(){ _onStoryUnitsDone(topicIndex); });
 }
 
 function startStoryMode(topicIndex){
-  if(typeof STORY === 'undefined' || !STORY.length){
+  if(!_getAllStoryCards().length){
     notify('Немає жодної картки Mündliche Prüfung — Teil 1 (var STORY) у поточному курсі');
     return;
   }
@@ -16257,7 +16394,7 @@ function startStoryMode(topicIndex){
 // список: кнопка з Debug-меню має відкривати саме ту тему, яку
 // натиснули, а не з'їжджати на наступну.
 function _onStoryUnitsDone(topicIndex){
-  if(typeof STORY !== 'undefined' && STORY.length) startStoryMode(topicIndex);
+  if(_getAllStoryCards().length) startStoryMode(topicIndex);
 }
 
 function debugOpenStory(topicIndex){
