@@ -3710,8 +3710,8 @@ body.lesson-active .vocab-top{
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>🎤 Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією)</small></div>
-      <button class="btn btn-s" style="text-align:left" onclick="debugOpenStory()">🎤 Mündliche Prüfung – Teil 1</button>
+      <div class="srow-label"><label>🎤 Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією). Кожна тема — окремою кнопкою.</small></div>
+      <div id="debug-story-topics" style="display:flex;flex-direction:column;gap:6px"></div>
     </div>
     </div>
     </div>
@@ -3752,7 +3752,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '581-e61f5d7';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9419,7 +9419,38 @@ function toggleDebugSection(headerEl){
   if(!isOpen){
     const unlockToggle = document.getElementById('debug-unlock-all-toggle');
     if(unlockToggle) unlockToggle.checked = debugIsUnlockAllActive();
+    // Кнопки тем Mündliche Prüfung Teil 1 — так само перерендерюємо
+    // щоразу при розгортанні секції (не лише при завантаженні сторінки),
+    // бо STORY залежить від активного курсу і міг ще не бути завантажений
+    // у момент першого рендеру DOM.
+    debugRenderStoryTopics();
   }
+}
+
+// Кнопки — по одній на кожну тему var STORY поточного курсу (а не одна
+// спільна кнопка, що гортала всі теми підряд і по колу) — щоб можна
+// було відкрити КОНКРЕТНУ тему усного іспиту одразу, не чекаючи на
+// попередні. Рендеримо динамічно (а не хардкодимо 8 кнопок у HTML),
+// бо реальний список тем/їх кількість залежить від курсу (STORY
+// приходить з файлу курсу, не з index.html).
+function debugRenderStoryTopics(){
+  var container = document.getElementById('debug-story-topics');
+  if(!container) return;
+  var cards = (typeof STORY !== 'undefined') ? STORY : [];
+  if(!cards.length){
+    container.innerHTML = '<div style="color:var(--muted);font-size:var(--fs-utility)">Немає жодної картки STORY у поточному курсі</div>';
+    return;
+  }
+  var pl = typeof primaryLang === 'function' ? primaryLang() : 'de';
+  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  container.innerHTML = cards.map(function(card, i){
+    var rawLabel = (typeof _lfBilingualLabel === 'function' && card.topic) ? _lfBilingualLabel(card.topic, pl, ul) : '';
+    // Топіки в принципі короткі описові фрази без розмітки, але про
+    // всяк випадок прибираємо будь-які теги (<r>/<g> трапляються в
+    // ТЕКСТІ реплік, не в topic, але дешево підстрахуватись і тут).
+    var label = rawLabel ? rawLabel.replace(/<[^>]*>/g,'') : ('Тема '+(i+1));
+    return '<button class="btn btn-s" style="text-align:left" onclick="debugOpenStory('+i+')">🎤 '+(i+1)+'. '+label+'</button>';
+  }).join('');
 }
 
 // Прямий доступ до тестових вправ Vocab (🔗🎯🧩❓🔍🎤), прибраних з
@@ -14169,11 +14200,13 @@ function _lfUnitShow(){
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit){ _lfUnitStepDone(); return; }
 
-  // Нова картка STORY (Mündliche Prüfung Teil 1) починається з нуля —
-  // так само, як реальна тема на іспиті. story_intro сам без аудіо
-  // (умова завдання), тож годинник тут ще прихований — з'явиться щойно
-  // почне звучати перша репліка (story_part, див. _lfUnitPlay вище).
-  if(unit.kind === 'story_intro' && unit.isFirstOfCard) _storyTimerReset();
+  // Нова НЕЗАЛЕЖНА картка — STORY (Mündliche Prüfung Teil 1) або
+  // звичайний Діалог (dlg_001, dlg_002 і т.д.) — починає відлік з нуля,
+  // так само, як реальна тема/розмова на іспиті. Завдання (story_intro/
+  // dlg_task) саме по собі в підрахунок НЕ йде (див. фільтр у
+  // _lfUnitPlay нижче) — годинник просто ще прихований, поки не
+  // почнеться перша СПРАВЖНЯ репліка.
+  if(unit.isFirstOfCard && (unit.kind === 'story_intro' || unit.kind === 'dlg_task' || unit.kind === 'dlg')) _storyTimerReset();
 
   // #lf-unit-card ховається (display:none) у кількох місцях виходу з
   // unit-режиму (exitLessonFlow і т.д.) — інлайн-стилем, який ніщо
@@ -14261,17 +14294,19 @@ function _lfUnitShow(){
 }
 
 // ── Таймер чистого часу проговорювання — Mündliche Prüfung Teil 1 ──
-// (STORY, див. _lfStoryHandlers/_storyCardsToUnits вище). Показує
-// годинник у правому верхньому кутку картки (#lf-unit-timer) РІВНО в
-// момент, коли фактично почалось озвучення першої репліки картки
-// (onStart з playPregenAudio — не момент виклику speak(), а реальний
-// старт відтворення), і рахує лише "чистий" час: коли одна репліка
-// дограла — час зупиняється, коли починається озвучення наступної —
+// (STORY) і звичайний Діалог (kind 'dlg', той самий рушій
+// lfRunUnitStep/_lfUnitPlay). Показує годинник у правому верхньому
+// кутку картки (#lf-unit-timer) РІВНО в момент, коли фактично почалось
+// озвучення першої СПРАВЖНЬОЇ репліки картки (onStart з
+// playPregenAudio — не момент виклику speak(), а реальний старт
+// відтворення), і рахує лише "чистий" час: коли одна репліка дограла —
+// час зупиняється, коли починається озвучення наступної —
 // продовжується. Пауза (переклад, кнопка "Далі") у підрахунок НЕ йде.
-// Скидається на кожній новій картці STORY (перший unit картки —
-// story_intro, який сам без аудіо — див. getAudioText у
-// _lfStoryHandlers) — так само, як реальний іспит починається "з нуля"
-// на кожній новій темі.
+// Умова завдання (story_intro/dlg_task) НІКОЛИ не рахується — навіть
+// якщо в неї є власне озвучення (як у dlg_task), таймер стартує лише з
+// першої репліки ПІСЛЯ завдання. Скидається на кожній новій НЕЗАЛЕЖНІЙ
+// картці (STORY-тема чи окремий dlg_00N) — так само, як реальна
+// розмова/тема починається "з нуля".
 var _storyTimer = { elapsedMs: 0, startTs: null, intervalId: null };
 
 function _storyTimerFormat(ms){
@@ -14329,15 +14364,18 @@ function _lfUnitPlay(items, onDone){
     // її не проставив, highlightEl буде null і speak() просто програє без
     // підсвітки (нічого не ламається, підсвітка — суто адитивна фіча).
     var highlightEl = document.querySelector('#lf-unit-card [data-audio-field="'+item.field+'"]');
-    // Таймер Mündliche Prüfung Teil 1 — рахуємо тільки репліки STORY
-    // (kind 'story_part'; 'story_intro' — умова завдання, без аудіо).
+    // Таймер рахує лише СПРАВЖНІ репліки — STORY (kind 'story_part') і
+    // звичайний Діалог (kind 'dlg'); умови завдання (story_intro/
+    // dlg_task) у підрахунок НЕ йдуть, навіть якщо dlg_task теж має
+    // власне озвучення (введення до діалогу) — рахуємо тільки чистий
+    // час проговорювання самих реплік.
     var _curUnit = _lfUnit.units[_lfUnit.idx];
-    var _isStoryPart = _curUnit && _curUnit.kind === 'story_part';
+    var _isTimedUnit = _curUnit && (_curUnit.kind === 'story_part' || _curUnit.kind === 'dlg');
     speak(item.text, item.lang || primaryLang(), function(){
-      if(_isStoryPart) _storyTimerPause();
+      if(_isTimedUnit) _storyTimerPause();
       if(myToken !== _lfUnitPlayToken) return;
       setTimeout(next, V.pause);
-    }, _curUnit.cardId, item.field, false, highlightEl, _isStoryPart ? _storyTimerStart : null);
+    }, _curUnit.cardId, item.field, false, highlightEl, _isTimedUnit ? _storyTimerStart : null);
   }
   next();
 }
@@ -16187,7 +16225,11 @@ function _onDialogueUnitsDone(){
 // Dialogue (_runDialogueQueueAsUnits/startDialogueCardMode вище):
 // самостійний перегляд одним рушієм lfRunUnitStep, лише інше джерело
 // карток і handlers-об'єкт (_storyCardsToUnits/_lfStoryHandlers).
-function _runStoryQueueAsUnits(){
+// topicIndex (опційно) — індекс КОНКРЕТНОЇ теми в STORY: кожна з
+// восьми debug-кнопок (див. debugRenderStoryTopics) відкриває лише
+// свою тему, а не всі підряд. Без topicIndex — стара поведінка (усі
+// теми одна за одною) лишається доступною для виклику з коду напряму.
+function _runStoryQueueAsUnits(topicIndex){
   var fcArea = document.getElementById('dlg-fc-area');
   if(fcArea) fcArea.style.display = 'none';
   var vprogrow = document.querySelector('#dlg-panel-card .vprogrow-flow');
@@ -16195,26 +16237,30 @@ function _runStoryQueueAsUnits(){
 
   _relocateUnitCard('dlg-panel-card');
 
-  var cards = (typeof STORY !== 'undefined') ? STORY : [];
+  var allCards = (typeof STORY !== 'undefined') ? STORY : [];
+  var cards = (typeof topicIndex === 'number' && allCards[topicIndex]) ? [allCards[topicIndex]] : allCards;
   var units = _storyCardsToUnits(cards);
-  lfRunUnitStep(units, _lfStoryHandlers, _onStoryUnitsDone);
+  lfRunUnitStep(units, _lfStoryHandlers, function(){ _onStoryUnitsDone(topicIndex); });
 }
 
-function startStoryMode(){
+function startStoryMode(topicIndex){
   if(typeof STORY === 'undefined' || !STORY.length){
     notify('Немає жодної картки Mündliche Prüfung — Teil 1 (var STORY) у поточному курсі');
     return;
   }
-  _runStoryQueueAsUnits();
+  _runStoryQueueAsUnits(topicIndex);
 }
 
 // Черга закінчилась — як і Forumsbeitrag, самостійний перегляд просто
-// починає її знову (безкінечний перегляд).
-function _onStoryUnitsDone(){
-  if(typeof STORY !== 'undefined' && STORY.length) startStoryMode();
+// починає її знову (безкінечний перегляд). Якщо відкривали КОНКРЕТНУ
+// тему (topicIndex задано) — по колу йде знову ТА САМА тема, а не весь
+// список: кнопка з Debug-меню має відкривати саме ту тему, яку
+// натиснули, а не з'їжджати на наступну.
+function _onStoryUnitsDone(topicIndex){
+  if(typeof STORY !== 'undefined' && STORY.length) startStoryMode(topicIndex);
 }
 
-function debugOpenStory(){
+function debugOpenStory(topicIndex){
   _lfUnitTeardown();
   if(typeof LF !== 'undefined' && LF) abandonLessonFlow();
   document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
@@ -16225,7 +16271,7 @@ function debugOpenStory(){
   document.getElementById('dlg-panel-browse').style.display = 'none';
   var chips = document.getElementById('dlgchips');
   if(chips) chips.style.display = 'none';
-  startStoryMode();
+  startStoryMode(topicIndex);
 }
 
 // Спільний рядок-картка для списків "Усі картки"/Закладки (Vocab,
