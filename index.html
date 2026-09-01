@@ -2240,6 +2240,12 @@ body.lesson-active .vocab-top{
 .lf-unit-fav:active{border-color:var(--gold);transform:scale(1.2)}
 .lf-unit-fav.active{background:var(--gold-dim);border-color:var(--gold);color:var(--gold)}
 .lf-unit-cat{font-size:var(--fs-tertiary);font-weight:700;color:var(--gold);background:var(--gold-dim);padding:3px 9px;border-radius:8px}
+/* Годинник чистого часу проговорювання — лише для Mündliche Prüfung
+   Teil 1 (STORY, див. _storyTimer* нижче). margin-left:auto притискає
+   його у правий верхній кут шапки картки, незалежно від того, показана
+   зараз .lf-unit-cat чи ні. Прихований за замовчуванням — з'являється
+   рівно в момент старту озвучення першої репліки картки. */
+.lf-unit-timer{margin-left:auto;font-size:var(--fs-tertiary);font-weight:700;font-variant-numeric:tabular-nums;color:var(--ink);background:var(--soft);border:1px solid var(--border);padding:3px 9px;border-radius:8px;flex-shrink:0}
 /* Знизу картки плаває фіксована кнопка "Далі" (.lf-next-row, position:fixed,
    поза потоком картки) — резервуємо під неї місце тут, інакше контент, що
    "прилипає" до низу (месенджер-ефект у Dialogue) або просто довгий текст
@@ -3253,6 +3259,7 @@ body.lesson-active .vocab-top{
           <div class="lf-unit-header">
             <button class="lf-unit-fav" id="lf-unit-fav"></button>
             <span class="lf-unit-cat" id="lf-unit-cat"></span>
+            <span class="lf-unit-timer" id="lf-unit-timer" style="display:none">0:00</span>
           </div>
           <div class="lf-unit-body" id="lf-unit-body"></div>
           <div class="lf-unit-hint" id="lf-unit-hint"></div>
@@ -3745,7 +3752,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '580-b2f637e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6839,7 +6846,7 @@ function _runWordHighlight(audioEl, spanGroups, words, gen){
   _ttsHighlightRAF = requestAnimationFrame(tick);
 }
 
-async function playPregenAudio(url, onEnd, gen, highlightEl){
+async function playPregenAudio(url, onEnd, gen, highlightEl, onStart){
   // Зупиняємо попереднє відтворення
   const a = getSharedAudio();
   a.pause();
@@ -6934,6 +6941,7 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
   if(playP){
     playP.then(()=>{
       logErr('audio:playing','▶',fname);
+      onStart && onStart();
       if(highlightGroups) _runWordHighlight(a, highlightGroups, wordTiming, gen);
     })
          .catch(e=>{
@@ -6944,12 +6952,17 @@ async function playPregenAudio(url, onEnd, gen, highlightEl){
            fallback.onerror = ()=>finish('fb-err');
            currentAudio = fallback;
            fallback.play().then(()=>{
+             onStart && onStart();
              if(highlightGroups) _runWordHighlight(fallback, highlightGroups, wordTiming, gen);
            }).catch(e2=>{
              logErr('audio:fb-play',e2.message,fname);
              finish('fb-play-err');
            });
          });
+  } else {
+    // Старі браузери, де a.play() не повертає Promise — відтворення вже
+    // почалось синхронно, тож стартуємо таймер одразу.
+    onStart && onStart();
   }
 }
 
@@ -6968,7 +6981,7 @@ function _waitForPriorityClear(){
   });
 }
 
-async function speak(text, lang, onEnd, cardId, field, silent, highlightEl){
+async function speak(text, lang, onEnd, cardId, field, silent, highlightEl, onStart){
   stopTTS();
   const gen = playGen;
   let _ended = false;
@@ -6999,7 +7012,7 @@ async function speak(text, lang, onEnd, cardId, field, silent, highlightEl){
   if(cachedAndValid){
     logErr('speak','cached → pregen',fname);
     markAudioPlayedForCard(cardId);
-    playPregenAudio(url, safeEnd, gen, highlightEl);
+    playPregenAudio(url, safeEnd, gen, highlightEl, onStart);
     return;
   }
 
@@ -7018,7 +7031,7 @@ async function speak(text, lang, onEnd, cardId, field, silent, highlightEl){
   if(blobUrl){
     logErr('speak','blob→ pregen',fname);
     markAudioPlayedForCard(cardId);
-    playPregenAudio(url, safeEnd, gen, highlightEl);
+    playPregenAudio(url, safeEnd, gen, highlightEl, onStart);
   } else {
     logErr('speak','fetch failed → no audio',fname);
     failSilently();
@@ -14156,6 +14169,12 @@ function _lfUnitShow(){
   var unit = _lfUnit.units[_lfUnit.idx];
   if(!unit){ _lfUnitStepDone(); return; }
 
+  // Нова картка STORY (Mündliche Prüfung Teil 1) починається з нуля —
+  // так само, як реальна тема на іспиті. story_intro сам без аудіо
+  // (умова завдання), тож годинник тут ще прихований — з'явиться щойно
+  // почне звучати перша репліка (story_part, див. _lfUnitPlay вище).
+  if(unit.kind === 'story_intro' && unit.isFirstOfCard) _storyTimerReset();
+
   // #lf-unit-card ховається (display:none) у кількох місцях виходу з
   // unit-режиму (exitLessonFlow і т.д.) — інлайн-стилем, який ніщо
   // потім не скидає. Наступний вхід у unit-режим (напр. клік по картці
@@ -14241,6 +14260,55 @@ function _lfUnitShow(){
   _lfUnitPlay(items, afterPlay);
 }
 
+// ── Таймер чистого часу проговорювання — Mündliche Prüfung Teil 1 ──
+// (STORY, див. _lfStoryHandlers/_storyCardsToUnits вище). Показує
+// годинник у правому верхньому кутку картки (#lf-unit-timer) РІВНО в
+// момент, коли фактично почалось озвучення першої репліки картки
+// (onStart з playPregenAudio — не момент виклику speak(), а реальний
+// старт відтворення), і рахує лише "чистий" час: коли одна репліка
+// дограла — час зупиняється, коли починається озвучення наступної —
+// продовжується. Пауза (переклад, кнопка "Далі") у підрахунок НЕ йде.
+// Скидається на кожній новій картці STORY (перший unit картки —
+// story_intro, який сам без аудіо — див. getAudioText у
+// _lfStoryHandlers) — так само, як реальний іспит починається "з нуля"
+// на кожній новій темі.
+var _storyTimer = { elapsedMs: 0, startTs: null, intervalId: null };
+
+function _storyTimerFormat(ms){
+  var totalSec = Math.floor(ms/1000);
+  var m = Math.floor(totalSec/60);
+  var s = totalSec%60;
+  return m+':'+(s<10?'0':'')+s;
+}
+function _storyTimerRender(){
+  var el = document.getElementById('lf-unit-timer');
+  if(!el) return;
+  var extra = _storyTimer.startTs ? (Date.now()-_storyTimer.startTs) : 0;
+  el.textContent = _storyTimerFormat(_storyTimer.elapsedMs + extra);
+}
+function _storyTimerStart(){
+  var el = document.getElementById('lf-unit-timer');
+  if(el) el.style.display = '';
+  if(_storyTimer.startTs) return; // вже йде — нічого не робимо
+  _storyTimer.startTs = Date.now();
+  if(!_storyTimer.intervalId) _storyTimer.intervalId = setInterval(_storyTimerRender, 250);
+  _storyTimerRender();
+}
+function _storyTimerPause(){
+  if(_storyTimer.startTs){
+    _storyTimer.elapsedMs += Date.now() - _storyTimer.startTs;
+    _storyTimer.startTs = null;
+  }
+  if(_storyTimer.intervalId){ clearInterval(_storyTimer.intervalId); _storyTimer.intervalId = null; }
+  _storyTimerRender();
+}
+function _storyTimerReset(){
+  _storyTimerPause();
+  _storyTimer.elapsedMs = 0;
+  var el = document.getElementById('lf-unit-timer');
+  if(el){ el.style.display = 'none'; el.textContent = '0:00'; }
+}
+
 var _lfUnitPlayToken = 0;
 function _lfUnitPlay(items, onDone){
   // ВАЖЛИВО: власний токен, НЕ playGen! speak() сама викликає stopTTS()
@@ -14261,10 +14329,15 @@ function _lfUnitPlay(items, onDone){
     // її не проставив, highlightEl буде null і speak() просто програє без
     // підсвітки (нічого не ламається, підсвітка — суто адитивна фіча).
     var highlightEl = document.querySelector('#lf-unit-card [data-audio-field="'+item.field+'"]');
+    // Таймер Mündliche Prüfung Teil 1 — рахуємо тільки репліки STORY
+    // (kind 'story_part'; 'story_intro' — умова завдання, без аудіо).
+    var _curUnit = _lfUnit.units[_lfUnit.idx];
+    var _isStoryPart = _curUnit && _curUnit.kind === 'story_part';
     speak(item.text, item.lang || primaryLang(), function(){
+      if(_isStoryPart) _storyTimerPause();
       if(myToken !== _lfUnitPlayToken) return;
       setTimeout(next, V.pause);
-    }, _lfUnit.units[_lfUnit.idx].cardId, item.field, false, highlightEl);
+    }, _curUnit.cardId, item.field, false, highlightEl, _isStoryPart ? _storyTimerStart : null);
   }
   next();
 }
@@ -14352,6 +14425,7 @@ function _lfUnitAdvance(){
 }
 
 function _lfUnitStepDone(){
+  _storyTimerReset();
   _lfUnitPlayToken++;
   playGen++;
   if(currentAudio){ currentAudio.pause(); currentAudio = null; }
@@ -14373,6 +14447,7 @@ function _lfUnitStepDone(){
 // висіти поверх геть іншої вкладки — нічого раніше не прибирало їх при
 // простій навігації.
 function _lfUnitTeardown(){
+  _storyTimerReset();
   _lfUnitPlayToken++;
   playGen++;
   if(currentAudio){ currentAudio.pause(); currentAudio = null; }
