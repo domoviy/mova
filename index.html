@@ -3713,17 +3713,33 @@ body.lesson-active .vocab-top{
       <div class="srow-label"><label>🎤 Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією). Кожна тема — окремою кнопкою.</small></div>
       <div id="debug-story-topics" style="display:flex;flex-direction:column;gap:6px"></div>
       <button class="btn btn-s" onclick="toggleCustomStoryForm()">➕ Додати свою тему</button>
-      <div id="story-custom-form" style="display:none;flex-direction:column;gap:6px;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:10px">
-        <input type="text" id="story-custom-topic" placeholder="Тема (напр. Мій робочий день)"
-          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <textarea id="story-custom-task" placeholder="Завдання (умова — про що розповісти)" rows="2"
-          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
-        <textarea id="story-custom-einleitung" placeholder="Вступ (Einleitung) — необов'язково" rows="2"
-          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
-        <textarea id="story-custom-hauptteil" placeholder="Основна частина (Hauptteil)" rows="4"
-          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
-        <textarea id="story-custom-schluss" placeholder="Висновок (Schluss) — необов'язково" rows="2"
-          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+      <div id="story-custom-form" style="display:none;flex-direction:column;gap:10px;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:10px">
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <input type="text" id="story-custom-topic" maxlength="80" oninput="_storyCustomUpdateCounter(this)" placeholder="Тема (напр. Мій робочий день)"
+            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
+          <small id="story-custom-topic-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 80</small>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <textarea id="story-custom-task" maxlength="400" oninput="_storyCustomUpdateCounter(this)" placeholder="Завдання (умова — про що розповісти)" rows="2"
+            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+          <small id="story-custom-task-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 400</small>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <textarea id="story-custom-einleitung" maxlength="500" oninput="_storyCustomUpdateCounter(this)" placeholder="Вступ (Einleitung) — необов'язково" rows="2"
+            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+          <small id="story-custom-einleitung-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 500</small>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <textarea id="story-custom-hauptteil" maxlength="2000" oninput="_storyCustomUpdateCounter(this)" placeholder="Основна частина (Hauptteil)" rows="4"
+            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+          <small id="story-custom-hauptteil-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 2000</small>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <textarea id="story-custom-schluss" maxlength="500" oninput="_storyCustomUpdateCounter(this)" placeholder="Висновок (Schluss) — необов'язково" rows="2"
+            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
+          <small id="story-custom-schluss-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 500</small>
+        </div>
+        <small style="color:var(--muted)">Дозволені літери, цифри, пробіли й звичайні розділові знаки — без символів на кшталт &lt; &gt; &amp; { } [ ] \ ~ ^ та емодзі (можуть зламати генерацію озвучення).</small>
         <div style="display:flex;gap:6px">
           <button class="btn btn-s" style="flex:1" onclick="saveCustomStoryTopic()">💾 Зберегти тему</button>
           <button class="btn btn-s" style="flex:1" onclick="toggleCustomStoryForm(false)">Скасувати</button>
@@ -3769,7 +3785,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '583-ee4483f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9493,6 +9509,81 @@ function removeCustomStoryTopicByIndex(i){
 // Озвучення для власних тем поки НЕ реалізоване (див. коментар біля
 // getAudioText у _lfStoryHandlers) — навмисне рішення: спершу
 // зберігання й форма, TTS для власного тексту — окремий наступний крок.
+//
+// Ліміти довжини й дозволених символів — щоб застрахуватись від
+// помилок при МАЙБУТНІЙ генерації озвучення (Edge TTS): (1) довгий
+// монолог = довгий SSML-запит і довший файл, тож обмежуємо кожне поле
+// окремо і сумарно; (2) символи на кшталт < > & { } [ ] \ ~ ^ можуть
+// зламати SSML-розмітку чи парсинг тексту в gen_audio.py — прибираємо
+// їх ще на етапі введення, а не намагаємось екранувати пізніше.
+var STORY_CUSTOM_LIMITS = {
+  topic:      { min: 3,  max: 80   },
+  task:       { min: 10, max: 400  },
+  einleitung: { min: 0,  max: 500  }, // необов'язкове поле
+  hauptteil:  { min: 20, max: 2000 },
+  schluss:    { min: 0,  max: 500  }, // необов'язкове поле
+};
+// Сумарна довжина по всіх полях — орієнтир на розумну тривалість
+// одного монологу для TTS (телс-формат Teil 1 — 3-5 хв мовлення).
+var STORY_CUSTOM_TOTAL_MAX = 3000;
+// Спільний "символьний клас" — літери (будь-якою мовою) + цифри +
+// пробіли/переноси рядків + звичайні розділові знаки, включно з
+// типографськими лапками. Свідомо БЕЗ < > & { } [ ] \ ~ ^ $ % # @ * —
+// символів, що можуть зламати SSML чи сплутатись зі службовою
+// розміткою (<r>/<g>, яку рушій використовує у вбудованому контенті).
+// ОДНЕ джерело правди для обох регулярок нижче (дозволено/заборонено),
+// щоб вони фізично не могли розійтися між собою при майбутніх правках.
+var STORY_CUSTOM_CHAR_CLASS = "\\p{L}\\p{N}\\s.,!?;:'\"()\\-–—„“”«»/";
+var STORY_CUSTOM_ALLOWED_RE   = new RegExp('^['+STORY_CUSTOM_CHAR_CLASS+']*$', 'u');
+var STORY_CUSTOM_FORBIDDEN_RE = new RegExp('[^'+STORY_CUSTOM_CHAR_CLASS+']', 'gu');
+
+// Унікальний, у порядку появи, список заборонених символів у тексті
+// (або [], якщо їх нема) — використовується і для живої підказки під
+// полем, і для повідомлення при спробі зберегти.
+function _storyCustomForbiddenChars(text){
+  var found = text.match(STORY_CUSTOM_FORBIDDEN_RE);
+  return found ? Array.from(new Set(found)) : [];
+}
+
+// Жива перевірка "на льоту" (подія 'oninput' — спрацьовує і при
+// звичайному наборі, і при вставці): підсвічує рамку поля червоним і
+// показує ПІД полем, які саме символи заборонені, замість лічильника.
+// Щойно заборонені символи прибрано — рамка й лічильник повертаються
+// до звичайного вигляду.
+function _storyCustomUpdateCounter(el){
+  var counter = document.getElementById(el.id+'-counter');
+  var max = el.getAttribute('maxlength');
+  var forbidden = _storyCustomForbiddenChars(el.value);
+  if(forbidden.length){
+    el.style.borderColor = 'var(--red)';
+    if(counter){
+      counter.style.color = 'var(--red)';
+      counter.textContent = 'Заборонені символи: ' + forbidden.join(' ');
+    }
+  } else {
+    el.style.borderColor = '';
+    if(counter){
+      counter.style.color = 'var(--muted)';
+      counter.textContent = el.value.length + (max ? ' / '+max : '');
+    }
+  }
+}
+
+// null — усе гаразд; інакше — готовий текст помилки для notify().
+function _validateStoryCustomField(text, limits, label){
+  if(text.length < limits.min){
+    return 'Поле «'+label+'»: мінімум '+limits.min+' символів (зараз '+text.length+')';
+  }
+  if(text.length > limits.max){
+    return 'Поле «'+label+'»: максимум '+limits.max+' символів (зараз '+text.length+')';
+  }
+  var forbidden = _storyCustomForbiddenChars(text);
+  if(forbidden.length){
+    return 'Поле «'+label+'»: заборонені символи — ' + forbidden.join(' ');
+  }
+  return null;
+}
+
 function toggleCustomStoryForm(show){
   var form = document.getElementById('story-custom-form');
   if(!form) return;
@@ -9501,7 +9592,7 @@ function toggleCustomStoryForm(show){
   if(next){
     ['story-custom-topic','story-custom-task','story-custom-einleitung','story-custom-hauptteil','story-custom-schluss'].forEach(function(id){
       var el = document.getElementById(id);
-      if(el) el.value = '';
+      if(el){ el.value = ''; _storyCustomUpdateCounter(el); }
     });
   }
 }
@@ -9516,6 +9607,29 @@ function saveCustomStoryTopic(){
 
   if(!topic || !task || !hauptteil){
     notify('⚠️ Заповніть щонайменше тему, завдання й основну частину');
+    return;
+  }
+
+  // Довжина й дозволені символи — окремо на кожне поле (порожні
+  // необов'язкові поля просто пропускаємо, min:0 для них і так означає
+  // "можна не заповнювати").
+  var fieldsToCheck = [
+    { text: topic,      limits: STORY_CUSTOM_LIMITS.topic,      label: 'Тема' },
+    { text: task,       limits: STORY_CUSTOM_LIMITS.task,       label: 'Завдання' },
+    { text: einleitung, limits: STORY_CUSTOM_LIMITS.einleitung, label: 'Вступ' },
+    { text: hauptteil,  limits: STORY_CUSTOM_LIMITS.hauptteil,  label: 'Основна частина' },
+    { text: schluss,    limits: STORY_CUSTOM_LIMITS.schluss,    label: 'Висновок' },
+  ];
+  for(var i=0; i<fieldsToCheck.length; i++){
+    var f = fieldsToCheck[i];
+    if(!f.text && f.limits.min === 0) continue;
+    var err = _validateStoryCustomField(f.text, f.limits, f.label);
+    if(err){ notify('⚠️ '+err); return; }
+  }
+
+  var totalLen = topic.length + task.length + einleitung.length + hauptteil.length + schluss.length;
+  if(totalLen > STORY_CUSTOM_TOTAL_MAX){
+    notify('⚠️ Забагато тексту загалом ('+totalLen+' із '+STORY_CUSTOM_TOTAL_MAX+' символів) — скоротіть якесь із полів');
     return;
   }
 
