@@ -52,7 +52,7 @@
 if(location.protocol === 'https:'){
   try{
     const {initializeApp} = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
-    const {getAnalytics,logEvent,setUserId} = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js');
+    const {getAnalytics,logEvent,setUserId,setUserProperty} = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js');
     const app  = initializeApp({
       apiKey:"AIzaSyAxY0dxMiCDtpQBsDgrrOm2Q7tTZWfe98c",
       authDomain:"mova-b.firebaseapp.com",
@@ -74,6 +74,68 @@ if(location.protocol === 'https:'){
         logEvent(anal,'session_end',{session_id:sid,duration_sec:Math.round((Date.now()-start)/1000)});
     });
     window.mlog=(e,p={})=>{try{logEvent(anal,e,{session_id:sid,...p});}catch(_){}};
+    // window.mprop — User Properties: стабільні "виміри" користувача
+    // (не подія на мить, а атрибут, що чіпляється до ВСІХ наступних
+    // подій, доки не зміниться) — саме так у Firebase Analytics
+    // з'являються фільтри/сегменти на кшталт "курс = B2-Beruf" чи
+    // "платформа = iOS" у стандартних звітах, без потреби парсити
+    // кожну подію окремо.
+    window.mprop=(name,value)=>{try{setUserProperty(anal,name,String(value));}catch(_){}};
+
+    // ── Платформа (ОС) — визначаємо один раз при старті ────────────
+    // Це PWA в браузері, не нативний застосунок, тож "ОС" тут — не
+    // installer-based детекція (Capacitor/Cordova тут нема), а
+    // розбір navigator.userAgent/platform. iOS свідомо перевіряємо
+    // ПЕРШИМ: iPadOS з увімкненим "Desktop site" видає себе за Mac
+    // (maxTouchPoints — єдина надійна відмінність від справжнього
+    // десктопного Safari, в якого дотику нема).
+    function _mDetectPlatform(){
+      var ua = navigator.userAgent || '';
+      if(/iPhone|iPod/.test(ua)) return 'ios';
+      if(/iPad/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1)) return 'ios';
+      if(/Android/.test(ua)) return 'android';
+      if(/Windows/.test(ua)) return 'windows';
+      if(/Macintosh/.test(ua)) return 'macos';
+      if(/Linux/.test(ua)) return 'linux';
+      return 'other';
+    }
+    window.mprop('platform', _mDetectPlatform());
+    // Мова інтерфейсу — читаємо напряму з localStorage (а не з `uiLang`
+    // з головного скрипта нижче): цей модуль виконується РАНІШЕ і
+    // незалежно від нього, а ключ 'mova_ui_lang' — те саме єдине
+    // джерело правди, яким користується setUiLang() (див. нижче) —
+    // просто дублюємо дефолт 'de' звідти ж.
+    window.mprop('ui_language', localStorage.getItem('mova_ui_lang') || 'de');
+
+    // ── PWA-інсталяція ───────────────────────────────────────────
+    // Це PWA, не застосунок з App Store — без цього незрозуміло, скільки
+    // людей реально "встановили" на головний екран проти тих, хто просто
+    // тримає вкладку браузера (а для утримання це зазвичай НАЙсильніший
+    // сигнал з усіх). display-mode:standalone — Android/Chrome/Edge/
+    // десктоп, коли вже запущено як встановлений застосунок.
+    // navigator.standalone — те саме, але для iOS Safari: там
+    // matchMedia('display-mode: standalone') не спрацьовує, це єдина
+    // (нестандартна, але робоча) ознака.
+    function _mIsStandalone(){
+      return (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches) ||
+             window.navigator.standalone === true;
+    }
+    window.mprop('pwa_installed', _mIsStandalone());
+    // beforeinstallprompt — браузер ПРОПОНУЄ встановити (лише Chrome/
+    // Edge/Android; iOS Safari цю подію взагалі не підтримує — там
+    // інсталяція виключно вручну через "Поділитись"→"На екран Домівки",
+    // без жодного програмного сигналу ДО факту встановлення).
+    window.addEventListener('beforeinstallprompt', ()=>{
+      window.mlog('pwa_install_prompted', {});
+    });
+    // appinstalled — фактичний момент встановлення (Android/Chrome/Edge).
+    // На iOS такої події нема — там про факт інсталяції дізнаємось лише
+    // непрямо, через 'pwa_installed' user property при НАСТУПНОМУ
+    // відкритті вже встановленого застосунку (коли standalone вже true).
+    window.addEventListener('appinstalled', ()=>{
+      window.mprop('pwa_installed', true);
+      window.mlog('pwa_installed', {});
+    });
 
     // ── Хмарний бекап/відновлення (Firebase Auth + Firestore) ──────
     // ЕКСПЕРИМЕНТАЛЬНО: навмисно доступно лише з Налаштування → Debug
@@ -3785,7 +3847,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '584-03fae40';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4215,6 +4277,12 @@ function loadCourseScript(courseId){
       }catch(e){ console.log('⏱ [splash-perf] course-script timing недоступний:', e); }
 
       activeCourse = course;
+      // Аналітика: 'course' — user property (а не подія), бо це
+      // стабільний "вимір" на весь час, доки людина не перемкне курс —
+      // саме тут (а не в switchCourse()) спрацьовує і при холодному
+      // старті додатку, і при явному перемиканні (обидва шляхи ведуть
+      // сюди через loadCourseScript).
+      if(typeof window.mprop === 'function') window.mprop('course', course.id);
       // Перебудовуємо LESSONS у session-sized суб-уроки (buildLearningPath) —
       // ДО будь-чого, що читає LESSONS (Lernpfad, findCurrentLesson і т.д.).
       // Курс без LESSONS (напр. майбутній суто-словниковий курс) — no-op.
@@ -4731,6 +4799,12 @@ function targetText(card){ return card.term?.[primaryLang()] || ''; }
 function setUiLang(lang){
   uiLang = lang;
   localStorage.setItem('mova_ui_lang', lang);
+  // Аналітика: user property (стабільний вимір — з якою мовою
+  // інтерфейсу людина користується застосунком загалом) + окрема
+  // подія (щоб бачити САМ факт і момент перемикання, не лише
+  // поточний стан).
+  if(typeof window.mprop === 'function') window.mprop('ui_language', lang);
+  if(typeof window.mlog === 'function') window.mlog('ui_language_changed', { language: lang });
   syncLangsToVisible();
   applyI18n();
   applyVocabLangUI();
@@ -4906,6 +4980,11 @@ function syncSpeedButtons(){
   // на нормальний темп, інакше жодна кнопка не підсвітиться.
   let val = V.langSpeed[pl] || pair.normal;
   if(val!==pair.normal && val!==pair.slow){ val=pair.normal; V.langSpeed[pl]=pair.normal; }
+  // Аналітика: user property 'audio_speed' ('slow'/'normal') — саме тут,
+  // а не лише в setLangSpeed(), бо ця функція й так перераховує
+  // ЕФЕКТИВНЕ значення (з фолбеком вище) при кожній зміні швидкості
+  // ТА при кожному перемиканні курсу — один хук покриває обидва шляхи.
+  if(typeof window.mprop === 'function') window.mprop('audio_speed', val===pair.slow ? 'slow' : 'normal');
   document.querySelectorAll(`.sp-btn[data-val]`).forEach(b=>{
     b.classList.toggle('active', b.dataset.val===val);
   });
@@ -5892,10 +5971,17 @@ function srOnDateChange(val){
 }
 
 function srUpdateHeaderChip(){
-  const chip = document.getElementById('sr-days-chip');
-  if(!chip) return;
   const state = srLoadState();
   const um = srGetUrgency(state.examDate);
+  // Аналітика: user properties для сегментації за "тиском дедлайну" —
+  // чи справді "гарячі" юзери (іспит за тиждень) завершують курс
+  // частіше за "холодних". Бакети — те саме um.id, яким уже керується
+  // daily-план (factor у SR_URGENCY_MODES): не вигадуємо паралельну
+  // шкалу, а перевикористовуємо вже наявний словник продукту.
+  window.mprop?.('has_exam_date', !!state.examDate);
+  window.mprop?.('days_to_exam_bucket', state.examDate ? um.id : 'none');
+  const chip = document.getElementById('sr-days-chip');
+  if(!chip) return;
   if(!state.examDate || um.daysLeft === null){
     chip.style.display = 'none';
     return;
@@ -5914,7 +6000,12 @@ function checkExamDateOnboarding(){
 
 function selectOnboardExamDate(){
   const inp = document.getElementById('sr-ob-date-input');
-  if(inp && inp.value) srSetExamDate(inp.value);
+  const hasDate = !!(inp && inp.value);
+  if(hasDate) srSetExamDate(inp.value);
+  // has_date:false — рідкісний край (натиснули "Зберегти" з порожнім
+  // полем), але вартий окремого прапорця: по суті це той самий "не
+  // вказав дату", що й skip, просто іншою кнопкою.
+  window.mlog?.('onboarding_step', {step:'examdate', action:'completed', has_date: hasDate});
   const ob = document.getElementById('sr-exam-onboarding');
   if(ob){ ob.style.transition='opacity .3s'; ob.style.opacity='0'; setTimeout(()=>ob.style.display='none',320); }
   srUpdateHeaderChip();
@@ -5922,6 +6013,7 @@ function selectOnboardExamDate(){
 }
 
 function skipExamDateOnboarding(){
+  window.mlog?.('onboarding_step', {step:'examdate', action:'skipped'});
   const ob = document.getElementById('sr-exam-onboarding');
   if(ob){ ob.style.transition='opacity .3s'; ob.style.opacity='0'; setTimeout(()=>ob.style.display='none',320); }
   // Запам'ятовуємо що пропустили для ЦЬОГО курсу (не питаємо знову для
@@ -8230,6 +8322,45 @@ function startChapterDialogueBonus(chapterNum){
 // Використовує той самий LF/lfGoStep/lfShowResult/srRecordLesson, що й
 // звичайний урок — тому стрік і запис у SM-2 працюють без жодних
 // додаткових змін (див. lfShowResult()).
+// Аналітика: спільний хук для "урок почато" — викликається одразу
+// після конструювання LF в ОБОХ місцях, де це відбувається
+// (_runBonusLessonFlow нижче й _runLessonFlow далі у файлі), щоб не
+// дублювати логіку. course/chapter/module — саме event-параметри (не
+// user property), бо це змінюється щоуроку, а не стабільний вимір
+// користувача, на відміну від 'course' у loadCourseScript() вище
+// (там — активний КУРС ЦІЛОМ, тут — конкретний урок усередині нього).
+// ── Лічильник уроків "почато/завершено СЬОГОДНІ" ─────────────────
+// localStorage, той самий принцип дати (YYYY-MM-DD), що й ключ
+// mova_today_ у switchCourse() вище. Свідомо НЕ окрема щоденна подія —
+// число йде РАЗОМ із самою lesson_start/lesson_complete подією: так
+// "це N-й почат[ий]/заверш[ений] урок сьогодні" видно одразу в самій
+// події (навіть у сирому списку подій Firebase, без BigQuery/SQL) —
+// не треба вручну рахувати по годинах чи писати запит.
+var DAILY_LESSON_COUNTS_KEY = 'mova_daily_lesson_counts';
+function _mBumpDailyLessonCount(kind){
+  var today = new Date().toISOString().slice(0,10);
+  var data = { date: today, started: 0, completed: 0 };
+  try{
+    var raw = JSON.parse(localStorage.getItem(DAILY_LESSON_COUNTS_KEY) || 'null');
+    if(raw && raw.date === today) data = raw;
+  }catch(e){}
+  data[kind] = (data[kind]||0) + 1;
+  try{ localStorage.setItem(DAILY_LESSON_COUNTS_KEY, JSON.stringify(data)); }catch(e){}
+  return data;
+}
+
+function _mLogLessonStart(lesson){
+  if(typeof window.mlog !== 'function') return;
+  var daily = _mBumpDailyLessonCount('started');
+  window.mlog('lesson_start', {
+    course:    (typeof activeCourse !== 'undefined' && activeCourse) ? activeCourse.id : '',
+    chapter:   lesson.chapter || 0,
+    module:    lesson.module || 0,
+    lesson_id: lesson.id || '',
+    lessons_started_today: daily.started,
+  });
+}
+
 function _runBonusLessonFlow(lesson){
   stopVocab();
   // КРИТИЧНО: так само, як на старті lfRunUnitStep() — скасовуємо будь-
@@ -8266,6 +8397,7 @@ function _runBonusLessonFlow(lesson){
     _grammarBonusPool: lesson._grammarBonusPool,
     _xpAtStart: xpGetTotal(),
   };
+  _mLogLessonStart(lesson);
   window._xpDisplayFrozen = true;
   V.lessonId    = lesson.id;
   V.lessonCards = [];
@@ -8496,6 +8628,7 @@ function _runLessonFlow(lesson, allCards){
     startTime: Date.now(),
     _xpAtStart: xpGetTotal(),
   };
+  _mLogLessonStart(lesson);
   window._xpDisplayFrozen = true;
 
   V.lessonId    = lesson.id;
@@ -9502,6 +9635,11 @@ function removeCustomStoryTopicByIndex(i){
   var label = (card.topic && (card.topic[pl] || card.topic.de)) || '';
   if(!confirm('Видалити тему'+(label ? ' "'+label+'"' : '')+'?')) return;
   deleteCustomStoryCard(card.id);
+  // Аналітика: та сама метрика адопції, що й при додаванні (нижче) —
+  // видалення одразу після створення означає "спробували й не
+  // прижилось", інакше сигнал за самим лише "додано" виглядав би
+  // завищено оптимістично.
+  window.mlog?.('custom_story_topic_deleted', { total_custom_topics: getCustomStoryCards().length });
   debugRenderStoryTopics();
 }
 
@@ -9644,6 +9782,15 @@ function saveCustomStoryTopic(){
     topic: { [pl]: topic },
     task: { [pl]: task },
     parts: parts,
+  });
+  // Аналітика: головний сигнал адопції фічі "власні теми" — саме він
+  // визначить, чи варто вкладатись у Cloud Function+Edge TTS для
+  // озвучення власного тексту (обговорювали раніше), чи попит замалий.
+  window.mlog?.('custom_story_topic_added', {
+    total_chars:    totalLen,
+    has_einleitung: !!einleitung,
+    has_schluss:    !!schluss,
+    total_custom_topics: getCustomStoryCards().length,
   });
 
   toggleCustomStoryForm(false);
@@ -10263,11 +10410,17 @@ function checkOnboarding(){
   if(!localStorage.getItem('mova_ui_lang')){
     const ob = document.getElementById('onboarding');
     if(ob) ob.style.display = 'flex';
+    // Аналітика: перший крок воронки онбордингу (мова→курс→дата іспиту).
+    // Той самий event 'onboarding_step' на всіх кроках (step+action як
+    // параметри, не окремі назви подій) — так один Funnel Exploration
+    // у Firebase покриває всю воронку без ручного перелічування подій.
+    window.mlog?.('onboarding_step', {step:'lang', action:'shown'});
   }
 }
 
 function selectOnboardLang(lang){ unlockAudioCtx();
   setUiLang(lang);
+  window.mlog?.('onboarding_step', {step:'lang', action:'completed', language: lang});
   const ob = document.getElementById('onboarding');
   if(ob){
     ob.style.transition = 'opacity .35s ease';
@@ -10280,6 +10433,7 @@ function selectOnboardLang(lang){ unlockAudioCtx();
       if(cob){
         cob.style.opacity = '1';
         cob.style.display = 'flex';
+        window.mlog?.('onboarding_step', {step:'course', action:'shown'});
       }
     }, 380);
   }
@@ -10312,6 +10466,7 @@ function renderCourseOnboardingCards(){
 
 async function selectOnboardCourse(courseId){ unlockAudioCtx();
   saveCourseId(courseId);
+  window.mlog?.('onboarding_step', {step:'course', action:'completed', course: courseId});
   if(activeCourse?.id !== courseId){
     try{ await switchCourse(courseId); }catch(e){ console.error('selectOnboardCourse:', e); }
   }
@@ -10325,7 +10480,10 @@ async function selectOnboardCourse(courseId){ unlockAudioCtx();
       if(!localStorage.getItem('mova_sr_ob_skipped_'+(activeCourse?.id||getSavedCourseId())) && !srLoadState().examDate){
         srApplyExamObI18n();
         const eob = document.getElementById('sr-exam-onboarding');
-        if(eob) eob.style.display='flex';
+        if(eob){
+          eob.style.display='flex';
+          window.mlog?.('onboarding_step', {step:'examdate', action:'shown'});
+        }
       }
     }, 380);
   }
@@ -15366,6 +15524,18 @@ function lfShowResult(){
   let celebrationPending = false;
   if(LF && !LF._recorded){
     LF._recorded = true;
+    // Аналітика: "дійшов до кінця уроку" — саме тут, у тому самому
+    // guard'і, що й XP/стрік нижче (LF._recorded і тут відсікає
+    // повторні виклики lfShowResult(), тож подія летить рівно один
+    // раз за урок, синхронно з реальним зарахуванням).
+    if(typeof window.mlog === 'function') window.mlog('lesson_complete', {
+      course:      (typeof activeCourse !== 'undefined' && activeCourse) ? activeCourse.id : '',
+      chapter:     LF.lesson.chapter || 0,
+      module:      LF.lesson.module || 0,
+      lesson_id:   LF._bonusForLessonId || LF.lessonId || LF.lesson.id || '',
+      duration_sec: Math.round((Date.now() - LF.startTime) / 1000),
+      lessons_completed_today: _mBumpDailyLessonCount('completed').completed,
+    });
     // Бонус за завершення уроку — фіксований, однаковий на всіх рівнях
     // (див. XP_LESSON_COMPLETE_BONUS вище). Саме тут, а не раніше —
     // guard LF._recorded відсікає повторні виклики lfShowResult() так
@@ -15782,6 +15952,26 @@ function _quizShowResult(){
 // прибирання з exitLessonFlow(), без srRecordLesson().
 function abandonLessonFlow(){
   if(!LF) return;
+  // Аналітика: "закрив урок, не дійшовши до кінця" — лише якщо
+  // lfShowResult() ще НЕ зарахував його (LF._recorded), інакше це не
+  // покидання уроку, а звичайна навігація вже ПІСЛЯ завершення
+  // (екран результату сам собою теж проходить через цю функцію).
+  if(!LF._recorded && typeof window.mlog === 'function'){
+    window.mlog('lesson_abandon', {
+      course:      (typeof activeCourse !== 'undefined' && activeCourse) ? activeCourse.id : '',
+      chapter:     LF.lesson.chapter || 0,
+      module:      LF.lesson.module || 0,
+      lesson_id:   LF._bonusForLessonId || LF.lessonId || LF.lesson.id || '',
+      duration_sec: Math.round((Date.now() - LF.startTime) / 1000),
+      // На ЯКОМУ кроці (vocab-картки/граматика/matching/dlg_learn/tiles/
+      // sb_prac...) саме покинули урок — головне, чого не вистачало в
+      // самій лише події без цього параметра: "покинули" й "на чому
+      // саме застрягли" — це різні питання для продукту.
+      step:        LF.steps && LF.steps[LF.step] || '',
+      step_index:  LF.step || 0,
+      step_total:  LF.steps ? LF.steps.length : 0,
+    });
+  }
   stopVocab();
   sbStopPlay();
   // Якщо вихід посеред уроку — розморожуємо хедер негайно (інакше
@@ -16512,6 +16702,18 @@ function _onStoryUnitsDone(topicIndex){
 }
 
 function debugOpenStory(topicIndex){
+  // Аналітика: фіксуємо САМ КЛІК по конкретній темі (а не кожен тихий
+  // повтор циклу з _onStoryUnitsDone) — це відповідає на питання "чи
+  // взагалі практикують власні теми, і як часто відносно вбудованих"
+  // (is_custom: true/false) — доповнення до custom_story_topic_added/
+  // _deleted вище: ті показують СТВОРЕННЯ, ця подія — РЕАЛЬНЕ використання.
+  if(typeof topicIndex === 'number'){
+    var openedCard = _getAllStoryCards()[topicIndex];
+    if(openedCard) window.mlog?.('story_topic_opened', {
+      is_custom: !!openedCard.custom,
+      topic_index: topicIndex,
+    });
+  }
   _lfUnitTeardown();
   if(typeof LF !== 'undefined' && LF) abandonLessonFlow();
   document.querySelectorAll('.view').forEach(function(v){ v.classList.remove('active'); });
