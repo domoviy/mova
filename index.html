@@ -3151,6 +3151,52 @@ body.lesson-active .vocab-top{
   </div>
 </div>
 
+<!-- ══ Симуляція письмової частини іспиту (Forumsbeitrag) ══════════
+     Умови/час/бланк — з бази курсу (var EXAM_SIM), НЕ хардкод тут —
+     див. debugOpenExamSimForumsbeitrag() і _examSim* нижче. Той самий
+     "повноекранний оверлей" принцип, що й #sr-exam-onboarding вище
+     (position:fixed;inset:0), навмисно ОКРЕМИЙ рушій від lf-unit-card:
+     тут нема озвучення/karaoke/перекладу — лише текст завдання
+     (primary_lang, без перекладу — саме як на реальному папері іспиту)
+     і зворотний відлік. Два екрани:
+     1) #exam-sim-briefing — час, умови формату, рекомендація роздрукувати
+        бланк, кнопка "Почати тест" (та сама .btn-lesson-sb-next, що й
+        звичайна "Далі" в уроках).
+     2) #exam-sim-test — саме завдання й таймер, що рахує ВНИЗ; по нулю —
+        звуковий сигнал (синтезований Web Audio API, без окремого файлу). -->
+<div id="exam-sim-briefing" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
+  <button onclick="closeExamSimBriefing()" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
+  <div style="width:100%;max-width:380px;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:24px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;max-height:80vh;overflow-y:auto">
+    <div style="text-align:center">
+      <div style="font-size:36px;margin-bottom:10px">✍️</div>
+      <h2 style="color:#fff;font-size:22px;margin:0 0 6px" id="exam-sim-title">Forumsbeitrag</h2>
+      <p style="color:rgba(255,255,255,.6);font-size:14px;margin:0">Симуляція письмової частини іспиту</p>
+    </div>
+    <div style="width:100%;background:rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;text-align:center">
+      <div style="color:rgba(255,255,255,.55);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">У вас буде</div>
+      <div style="color:var(--gold);font-size:32px;font-weight:800"><span id="exam-sim-time">20</span> <span style="font-size:16px;font-weight:600">хв</span></div>
+    </div>
+    <p id="exam-sim-instructions" style="color:rgba(255,255,255,.8);font-size:14px;line-height:1.5;margin:0;text-align:left;width:100%"></p>
+    <div id="exam-sim-blank-row" style="display:none;width:100%;flex-direction:column;gap:8px;background:rgba(255,255,255,.05);border:1px dashed rgba(201,168,76,.4);border-radius:14px;padding:14px">
+      <p style="color:rgba(255,255,255,.75);font-size:13px;margin:0">📝 Візьміть аркуш паперу, або роздрукуйте бланк для відповіді:</p>
+      <a id="exam-sim-blank-link" href="#" target="_blank" rel="noopener" style="text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px;color:#fff;text-decoration:none;font-size:14px;font-weight:600">⬇️ Завантажити бланк (PDF)</a>
+    </div>
+    <button onclick="startExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;width:100%">Почати тест →</button>
+  </div>
+</div>
+
+<div id="exam-sim-test" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:stretch;padding:0">
+  <div style="display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 16px) 20px 12px">
+    <button onclick="closeExamSimTest()" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
+    <div id="exam-sim-countdown" style="color:var(--gold);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">20:00</div>
+    <div style="width:34px"></div>
+  </div>
+  <div id="exam-sim-timeup-banner" style="display:none;margin:0 20px 4px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:10px 14px;text-align:center;color:var(--gold);font-weight:700">⏰ Час вийшов!</div>
+  <div style="flex:1;overflow-y:auto;padding:8px 24px 32px;display:flex;flex-direction:column;gap:12px">
+    <div id="exam-sim-topic" style="color:var(--gold);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px"></div>
+    <div id="exam-sim-task" style="color:#fff;font-size:17px;line-height:1.6;white-space:pre-wrap"></div>
+  </div>
+</div>
 
 <!-- ══ MAIN COL ══ -->
 <div id="main-col">
@@ -3808,6 +3854,11 @@ body.lesson-active .vocab-top{
         </div>
       </div>
     </div>
+
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
+      <div class="srow-label"><label>✍️ Schreiben — Forumsbeitrag (симуляція іспиту)</label><small>Умови й ліміт часу — з бази курсу (var EXAM_SIM), не з index.html. Показує брифінг (час, рекомендація роздрукувати бланк) → "Почати тест" → завдання без перекладу й зворотний відлік, зі звуковим сигналом по завершенню.</small></div>
+      <div id="debug-examsim-forum-topics" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
     </div>
     </div>
     </div><!-- /ГРУПА 4 -->
@@ -3847,7 +3898,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '587-9348e7e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9624,6 +9675,8 @@ function toggleDebugSection(headerEl){
     // бо STORY залежить від активного курсу і міг ще не бути завантажений
     // у момент першого рендеру DOM.
     debugRenderStoryTopics();
+    // Те саме для тем Forumsbeitrag (var SCHREIBEN) — симуляція іспиту.
+    debugRenderExamSimForumTopics();
   }
 }
 
@@ -9660,6 +9713,199 @@ function debugRenderStoryTopics(){
     '</div>';
   }).join('') : '<div style="color:var(--muted);font-size:var(--fs-utility)">Немає жодної картки STORY у поточному курсі</div>';
   container.innerHTML = rowsHtml;
+}
+
+// ══ Симуляція письмової частини іспиту — Forumsbeitrag (var SCHREIBEN) ══
+//
+// Умови формату (скільки часу, який файл бланку, текст інструкції) —
+// НЕ хардкод тут, а очікуються з бази курсу, окремою змінною:
+//
+//   var EXAM_SIM = {
+//     Forumsbeitrag: {
+//       time_min: 20,                              // хвилин на завдання
+//       blank_pdf: 'blanks/forumsbeitrag-b2.pdf',   // готовий шлях/URL до PDF
+//       instructions: {                             // текст умов (мовою інтерфейсу)
+//         uk: 'Ви отримаєте допис на форумі...',
+//         de: '...', en: '...', ru: '...'
+//       }
+//     }
+//   };
+//
+// Це той самий принцип, що вже застосований до тем Mündliche Prüfung
+// Teil 1 (STORY) — конкретний контент і формат іспиту належать курсу,
+// не index.html, бо різні рівні (A2/B1/B2-Beruf) мають різний ліміт
+// часу й різний бланк відповіді.
+function _examSimConfig(part){
+  return (typeof EXAM_SIM !== 'undefined' && EXAM_SIM && EXAM_SIM[part]) ? EXAM_SIM[part] : null;
+}
+
+function debugRenderExamSimForumTopics(){
+  var container = document.getElementById('debug-examsim-forum-topics');
+  if(!container) return;
+  var cards = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN : [];
+  if(!cards.length){
+    container.innerHTML = '<div style="color:var(--muted);font-size:var(--fs-utility)">Немає жодної картки Forumsbeitrag (var SCHREIBEN) у поточному курсі</div>';
+    return;
+  }
+  var pl = typeof primaryLang === 'function' ? primaryLang() : 'de';
+  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  container.innerHTML = cards.map(function(card, i){
+    var rawLabel = (typeof _lfBilingualLabel === 'function' && card.topic) ? _lfBilingualLabel(card.topic, pl, ul) : '';
+    var label = _escapeHtmlText(rawLabel ? rawLabel.replace(/<[^>]*>/g,'') : ('Тема '+(i+1)));
+    return '<button class="btn btn-s" style="text-align:left" onclick="debugOpenExamSimForumsbeitrag('+i+')">✍️ '+(i+1)+'. '+label+'</button>';
+  }).join('');
+}
+
+// Стан однієї "спроби" симуляції — картка, обраний part (тип іспиту),
+// таймер зворотного відліку і AudioContext для сигналу по завершенню.
+// AudioContext створюємо/розблоковуємо в startExamSimTest() — це
+// СПРАВЖНІЙ жест користувача (клік "Почати тест"), і саме на ньому
+// тримається можливість відтворити сигнал ПІЗНІШЕ, коли час вийде,
+// без нового жесту (браузери зазвичай дозволяють подальше відтворення
+// в контексті, вже розблокованому раніше жестом).
+var _examSimState = { part: null, timeMin: 20, card: null, timerId: null, endsAt: null, audioCtx: null };
+
+function debugOpenExamSimForumsbeitrag(topicIndex){
+  var cards = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN : [];
+  var card = cards[topicIndex];
+  if(!card){ notify('⚠️ Немає такої картки Forumsbeitrag'); return; }
+  _examSimState.card = card;
+  _examSimShowBriefing('Forumsbeitrag');
+}
+
+function _examSimShowBriefing(part){
+  var cfg = _examSimConfig(part) || {};
+  var timeMin = cfg.time_min || 20;
+  _examSimState.part = part;
+  _examSimState.timeMin = timeMin;
+
+  var timeEl = document.getElementById('exam-sim-time');
+  if(timeEl) timeEl.textContent = timeMin;
+
+  var instrEl = document.getElementById('exam-sim-instructions');
+  if(instrEl){
+    var instr = cfg.instructions ? (cfg.instructions[uiLang] || cfg.instructions.en || cfg.instructions.de || '') : '';
+    instrEl.textContent = instr;
+    instrEl.style.display = instr ? '' : 'none';
+  }
+
+  var blankRow = document.getElementById('exam-sim-blank-row');
+  var blankLink = document.getElementById('exam-sim-blank-link');
+  if(blankRow && blankLink){
+    if(cfg.blank_pdf){
+      blankLink.href = cfg.blank_pdf;
+      blankRow.style.display = 'flex';
+    } else {
+      blankRow.style.display = 'none';
+    }
+  }
+
+  var titleEl = document.getElementById('exam-sim-title');
+  if(titleEl) titleEl.textContent = part;
+
+  var el = document.getElementById('exam-sim-briefing');
+  if(el) el.style.display = 'flex';
+}
+
+function closeExamSimBriefing(){
+  var el = document.getElementById('exam-sim-briefing');
+  if(el) el.style.display = 'none';
+  _examSimState.card = null;
+}
+
+function startExamSimTest(){
+  _examSimUnlockBeepCtx();
+
+  var briefing = document.getElementById('exam-sim-briefing');
+  if(briefing) briefing.style.display = 'none';
+
+  var card = _examSimState.card;
+  var pl = primaryLang();
+  var topicEl = document.getElementById('exam-sim-topic');
+  var taskEl  = document.getElementById('exam-sim-task');
+  // Завдання показуємо ЛИШЕ primary_lang, без перекладу — на реальному
+  // папері іспиту перекладу теж нема, і мета симуляції саме в цьому.
+  if(topicEl) topicEl.textContent = (card && card.topic && card.topic[pl]) || '';
+  if(taskEl)  taskEl.textContent  = (card && card.task  && card.task[pl])  || '';
+
+  var totalSec = (_examSimState.timeMin || 20) * 60;
+  _examSimState.endsAt = Date.now() + totalSec * 1000;
+  var banner = document.getElementById('exam-sim-timeup-banner');
+  if(banner) banner.style.display = 'none';
+  _examSimRenderCountdown(totalSec * 1000);
+
+  if(_examSimState.timerId) clearInterval(_examSimState.timerId);
+  _examSimState.timerId = setInterval(_examSimTick, 250);
+
+  var testEl = document.getElementById('exam-sim-test');
+  if(testEl) testEl.style.display = 'flex';
+}
+
+function _examSimTick(){
+  var msLeft = _examSimState.endsAt - Date.now();
+  if(msLeft <= 0){
+    clearInterval(_examSimState.timerId);
+    _examSimState.timerId = null;
+    _examSimRenderCountdown(0);
+    var banner = document.getElementById('exam-sim-timeup-banner');
+    if(banner) banner.style.display = 'block';
+    _examSimPlayBeep();
+    return;
+  }
+  _examSimRenderCountdown(msLeft);
+}
+
+function _examSimRenderCountdown(msLeft){
+  var totalSec = Math.max(0, Math.ceil(msLeft/1000));
+  var m = Math.floor(totalSec/60), s = totalSec%60;
+  var el = document.getElementById('exam-sim-countdown');
+  if(el) el.textContent = m+':'+(s<10?'0':'')+s;
+}
+
+function closeExamSimTest(){
+  if(_examSimState.timerId){ clearInterval(_examSimState.timerId); _examSimState.timerId = null; }
+  var el = document.getElementById('exam-sim-test');
+  if(el) el.style.display = 'none';
+  _examSimState.card = null;
+}
+
+// Розблоковуємо/готуємо AudioContext саме в момент кліку "Почати тест"
+// (реальний жест користувача) — щоб сигнал по завершенню часу міг
+// відтворитись пізніше без нової взаємодії.
+function _examSimUnlockBeepCtx(){
+  try{
+    var Ctx = window.AudioContext || window.webkitAudioContext;
+    if(!Ctx) return;
+    if(!_examSimState.audioCtx) _examSimState.audioCtx = new Ctx();
+    if(_examSimState.audioCtx.state === 'suspended') _examSimState.audioCtx.resume();
+  }catch(e){}
+}
+
+// Синтезований сигнал (Web Audio API, без окремого mp3-файлу) — три
+// коротких гудки, впізнавано як "час вийшов", а не одна нота.
+function _examSimPlayBeep(){
+  try{
+    var ctx = _examSimState.audioCtx;
+    if(!ctx) return;
+    if(ctx.state === 'suspended') ctx.resume();
+    var playTone = function(freq, startTime, duration){
+      var osc = ctx.createOscillator();
+      var gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.value = freq;
+      gain.gain.setValueAtTime(0.0001, startTime);
+      gain.gain.exponentialRampToValueAtTime(0.35, startTime + 0.02);
+      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(startTime);
+      osc.stop(startTime + duration + 0.05);
+    };
+    var now = ctx.currentTime;
+    playTone(880, now,      0.18);
+    playTone(880, now+0.25, 0.18);
+    playTone(880, now+0.50, 0.4);
+  }catch(e){}
 }
 
 function removeCustomStoryTopicByIndex(i){
