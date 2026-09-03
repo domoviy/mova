@@ -3847,7 +3847,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '585-f593f94';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5641,6 +5641,28 @@ function srStabilityScore(cardState, part){
     weightTotal += weight;
   });
   return weightedSum / weightTotal;
+}
+
+// На відміну від srStabilityScore(cardState, part) — яка дивиться лише
+// в ОДНУ конкретну частину — ця бере НАЙКРАЩУ стабільність з УСІХ
+// частин, які картка реально накопичила в partHistory. Картка могла
+// активно повторюватись через Sprachbausteine-свайпи, Tiles чи іншу
+// вправу з власною examPart (не 'Lesen') — SM-2-розклад (nextReview)
+// це коректно враховує (він спільний для картки незалежно від
+// частини), а перевірка "яка стабільна, яка ні" мусить так само не
+// прив'язуватись до однієї конкретної частини, інакше добре засвоєна
+// картка (нехай і не через 'Lesen') виглядає як "найслабша" — 0, бо
+// саме в 'Lesen' її просто ще не торкались — і застрягає в постійному
+// повторенні, хоча реально давно вивчена.
+function srBestStabilityScore(cardState){
+  const ph = cardState?.partHistory;
+  if(!ph) return 0;
+  let best = 0;
+  for(const part in ph){
+    const s = srStabilityScore(cardState, part);
+    if(s > best) best = s;
+  }
+  return best;
 }
 
 // "Добре закріплена" для відображення прогресу — м'якший і чесніший
@@ -8471,9 +8493,14 @@ function _runLessonFlow(lesson, allCards){
   // повертає ту саму "найменш далеку" п'ятірку щоразу, що на практиці
   // виглядає як "застрягання" на одних і тих самих добре відомих
   // картках — модуль неможливо "пройти" повторно змістовно. У цьому
-  // випадку перемикаємось на srStabilityScore(): шукаємо 5 card
-  // НАЙСЛАБШИХ за накопиченою стабільністю (Lesen), навіть якщо
-  // формально всі "знає" — це дає змістовне повторення найслабших
+  // випадку перемикаємось на srBestStabilityScore(): шукаємо 5 card
+  // НАЙСЛАБШИХ за накопиченою стабільністю (по УСІХ частинах картки,
+  // не лише 'Lesen' — картка могла активно повторюватись через
+  // Sprachbausteine/Tiles/іншу вправу з власною examPart, і тоді саме
+  // там лежить її реальна стабільність, а не у 'Lesen'; раніше
+  // хардкоджене 'Lesen' тут ігнорувало таку історію повністю й
+  // назавжди позначало добре вивчену картку як "найслабшу"), навіть
+  // якщо формально всі "знає" — це дає змістовне повторення найслабших
   // місць модуля замість випадкового зависання на одній п'ятірці.
   const state = srLoadState();
   const anyDueOrNew = validCards.some(c => srPriorityFromState(state,c.id) >= 0); // >=0: due або прострочено
@@ -8481,8 +8508,8 @@ function _runLessonFlow(lesson, allCards){
   const sorted = anyDueOrNew
     ? [...validCards].sort((a,b)=>srPriorityFromState(state,b.id)-srPriorityFromState(state,a.id))
     : [...validCards].sort((a,b)=>{
-        const sa = srStabilityScore(state.cards[a.id], 'Lesen');
-        const sb = srStabilityScore(state.cards[b.id], 'Lesen');
+        const sa = srBestStabilityScore(state.cards[a.id]);
+        const sb = srBestStabilityScore(state.cards[b.id]);
         return sa - sb; // найслабша стабільність — першою
       });
 
