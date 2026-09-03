@@ -3847,7 +3847,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '586-628642d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7981,12 +7981,6 @@ function matchMakeBtn(cardId, side, text, lang){
     _handled = true;
     e.preventDefault(); // блокує наступний click
     matchHandleClick(btn);
-    if(side === 'term'){
-      const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===cardId);
-      if(card && !btn.classList.contains('matched')){
-        if(card.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term', true);
-      }
-    }
   }, {passive:false});
   // click — тільки якщо НЕ було touchend (desktop)
   btn.addEventListener('click', (e)=>{
@@ -8014,6 +8008,19 @@ function matchHandleClick(btn){
   if(btn.classList.contains('matched')) return;
   if(btn.classList.contains('error'))   return;
 
+  // Озвучуємо термін (лише сторона 'term' — вимова цільового слова, а
+  // не перекладу) на КОЖЕН клік по ще не заматченій картці — включно з
+  // повторним кліком на вже вибрану (замість знімати з неї виділення,
+  // просто чуємо слово ще раз) і з перемиканням між картками того
+  // самого стовпця. Раніше цей виклик жив лише в touchend-обробнику
+  // matchMakeBtn() — тобто на desktop (звичайний mouse-клік) звук не
+  // програвався ВЗАГАЛІ; тепер один спільний виклик тут покриває і
+  // дотик, і клік однаково.
+  if(btn.dataset.side === 'term'){
+    const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===btn.dataset.cardId);
+    if(card?.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term', true);
+  }
+
   const sel = matchState.selected;
 
   // Якщо попередній вибір вже matched (гонка станів) — скидаємо
@@ -8023,10 +8030,10 @@ function matchHandleClick(btn){
 
   const selNow = matchState.selected;
 
-  // Якщо натиснули на вже виділений — знімаємо виділення
+  // Натиснули на вже виділену картку — ЛИШАЄМО її виділеною (озвучення
+  // вже відбулось вище). Знімати виділення тут безглуздо: людина явно
+  // хотіла перепослухати слово, а не скасувати свій вибір.
   if(selNow && selNow.el === btn){
-    btn.classList.remove('selected');
-    matchState.selected = null;
     return;
   }
 
@@ -8043,7 +8050,7 @@ function matchHandleClick(btn){
   // Є вибраний і натискаємо другий
   // Перевіряємо: різні сторони (term і short) і однаковий cardId
   if(selNow.side === btn.dataset.side){
-    // Та сама сторона — перемикаємо вибір
+    // Та сама сторона (той самий стовпчик) — перемикаємо активну картку
     selNow.el.classList.remove('selected');
     btn.classList.add('selected');
     matchState.selected = { el:btn, cardId:btn.dataset.cardId, side:btn.dataset.side };
@@ -17198,6 +17205,24 @@ function renderStreakUI(pulse=false){
   // p.streak більше ніде не показується (лишається лише внутрішньо в
   // mova_progress, про всяк випадок до майбутнього редизайну гейміфікації).
   const streak = (typeof srLoadState === 'function' ? (srLoadState().streak || 0) : (p.streak||0));
+  // Аналітика: user property — стабільний вимір "скільки днів підряд"
+  // для сегментації в Firebase (чи довший стрік справді корелює з
+  // кращим завершенням курсу/меншим відтоком). Саме тут, а не окремою
+  // подією — ця функція й так викликається з УСІХ місць, де стрік може
+  // змінитись (старт застосунку, зміна курсу, завершення уроку, зміна
+  // денної цілі), тож значення завжди актуальне без окремого хука.
+  // Бакети — щоб не плодити сотні унікальних значень user property:
+  // 0 (ще не почав) / 1-2 / 3-6 / 7-13 / 14-29 / 30+.
+  if(typeof window.mprop === 'function'){
+    window.mprop('streak_days', streak);
+    window.mprop('streak_bucket',
+      streak <= 0 ? '0' :
+      streak < 3  ? '1-2' :
+      streak < 7  ? '3-6' :
+      streak < 14 ? '7-13' :
+      streak < 30 ? '14-29' : '30+'
+    );
+  }
   // "done" (вогонь кольоровий) раніше рахувався ЛИШЕ по p.todayCards>=goal
   // (окремий, старіший лічильник карток із trackCardToday). Але число
   // стріку вище вже читається з ІНШОГО джерела — srLoadState().streak,
