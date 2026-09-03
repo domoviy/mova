@@ -955,6 +955,60 @@ body{
 .lp-node-progress{
   font-size:10px;font-weight:700;color:var(--muted);
 }
+/* "Підготовка до екзамену" — звичайний послідовний список рядків з
+   назвою (renderExamPrepRow), не звивиста стежка з іконками-гемами
+   (.lp-node вище): тут головне — прочитати конкретну назву діалогу/
+   форуму/e-mail і свідомо обрати саме той, який хочеш повторити, а не
+   пройти по порядку зигзагом. Кольори іконки за типом повторюють ті
+   самі акценти, що .lp-node-smalltalk/-problemsolving/-forum/-email,
+   але написані ОКРЕМО (не через ті самі класи) — там колір прив'язаний
+   до кругової "геми" (.lp-node), якої в рядку-списку немає. */
+.lp-examprep-list{
+  display:flex;flex-direction:column;gap:8px;padding:2px;
+}
+.lp-examprep-row{
+  display:flex;align-items:center;gap:12px;
+  background:#fff;border:1px solid var(--border);border-radius:14px;
+  padding:12px 14px;cursor:pointer;
+  transition:transform .12s, box-shadow .12s, border-color .12s;
+}
+.lp-examprep-row:active{ transform:scale(.98); }
+.lp-examprep-row-icon{
+  width:42px;height:42px;border-radius:12px;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  font-size:20px;background:var(--forest);
+}
+.lp-examprep-row.lp-node-smalltalk .lp-examprep-row-icon{ background:var(--accent, #4a7c9d); }
+.lp-examprep-row.lp-node-problemsolving .lp-examprep-row-icon{ background:#7c5cb0; }
+.lp-examprep-row.lp-node-forum .lp-examprep-row-icon{ background:#c07a2e; }
+.lp-examprep-row.lp-node-email .lp-examprep-row-icon{ background:#8a2f3f; }
+.lp-examprep-row-body{ flex:1;min-width:0; }
+.lp-examprep-row-title{
+  font-size:var(--fs-tertiary);font-weight:700;color:var(--ink);
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
+}
+.lp-examprep-row-meta{
+  font-size:11px;color:var(--muted);margin-top:2px;
+}
+.lp-examprep-row-arrow{
+  font-size:20px;color:var(--muted);flex-shrink:0;
+}
+.lp-examprep-row-check{
+  font-size:16px;font-weight:800;color:var(--gold);flex-shrink:0;
+}
+.lp-examprep-row-chip{
+  font-size:11px;font-weight:800;color:var(--forest);
+  background:var(--gold);padding:5px 10px;border-radius:8px;flex-shrink:0;
+  white-space:nowrap;
+}
+/* Заблокований — так само, як .lp-node.locked: іконка сіріє, але
+   лишається клікабельною (showLockedLessonModal() у clickHandler). */
+.lp-examprep-row.locked{ opacity:.6; }
+.lp-examprep-row.locked .lp-examprep-row-icon{ filter:grayscale(1) opacity(.7); background:var(--border); }
+.lp-examprep-row.done .lp-examprep-row-icon{ background:var(--gold); }
+.lp-examprep-row.current{
+  border-color:var(--gold); box-shadow:0 0 0 2px rgba(201,168,76,.25);
+}
 /* Модуль — ЗГОРТНА секція (не просто розділювач-текст). Непочаті
    модулі за замовчуванням закриті — у довгій главі з 5-7 модулями
    інакше важко зорієнтуватись, у якому саме модулі ти зараз. */
@@ -3188,13 +3242,22 @@ body.lesson-active .vocab-top{
 <div id="exam-sim-test" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:stretch;padding:0">
   <div style="display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 16px) 20px 12px">
     <button onclick="closeExamSimTest()" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
-    <div id="exam-sim-countdown" style="color:var(--gold);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">20:00</div>
+    <div id="exam-sim-countdown" style="color:var(--gold);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">1:00</div>
     <div style="width:34px"></div>
   </div>
   <div id="exam-sim-timeup-banner" style="display:none;margin:0 20px 4px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:10px 14px;text-align:center;color:var(--gold);font-weight:700">⏰ Час вийшов!</div>
-  <div style="flex:1;overflow-y:auto;padding:8px 24px 32px;display:flex;flex-direction:column;gap:12px">
+  <div style="flex:1;overflow-y:auto;padding:8px 24px 100px;display:flex;flex-direction:column;gap:12px">
     <div id="exam-sim-topic" style="color:var(--gold);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px"></div>
     <div id="exam-sim-task" style="color:#fff;font-size:17px;line-height:1.6;white-space:pre-wrap"></div>
+  </div>
+  <!-- З'являється лише ПІСЛЯ завершення часу (_examSimTick нижче) — той
+       самий візуальний рушій, що звичайний рядок "Далі"+"Повторити" в
+       уроках (lf-repeat-btn/btn-lesson-sb-next, ті самі класи), тільки
+       з власним bottom-offset без var(--nav-h): цей екран повноекранний
+       і нижньої навігації під собою не має. -->
+  <div id="exam-sim-timeup-actions" style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;gap:10px;z-index:201">
+    <button onclick="examSimShowExample()" class="lf-repeat-btn" title="Подивитися приклад">👁</button>
+    <button onclick="closeExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;flex:1">Завершити</button>
   </div>
 </div>
 
@@ -3898,7 +3961,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '588-f48d78a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8900,15 +8963,29 @@ function renderLernpfad(){
       // непочатий і повністю пройдений модуль однаково згорнуті.
       const isModuleOpen = hasModuleCurrent;
 
+      // "Підготовка до екзамену" — НЕ звивиста стежка з іконками-гемами
+      // (renderPathNode): там кожен вузол — окремий діалог/форум/e-mail
+      // для ПОВТОРЕННЯ, і головне — швидко ЗНАЙТИ й обрати саме
+      // потрібний за назвою, а не пройти по порядку. Тому тут — звичайний
+      // послідовний список рядків з назвою (renderExamPrepRow), той самий
+      // принцип "акордеону", що вже є на рівні модуля (renderModuleDivider/
+      // lp-module-section) вище, лише тепер і всередині кожного модуля.
       let pathHtml = '';
-      grp.nodes.forEach(function(m){
-        pathHtml += renderPathNode(m, nodeIdx);
-        nodeIdx++;
-      });
+      if(ch.isExamPrep){
+        grp.nodes.forEach(function(m){
+          pathHtml += renderExamPrepRow(m);
+        });
+      } else {
+        grp.nodes.forEach(function(m){
+          pathHtml += renderPathNode(m, nodeIdx);
+          nodeIdx++;
+        });
+      }
+      const pathWrapClass = ch.isExamPrep ? 'lp-examprep-list' : 'lp-path';
 
       return `<div class="lp-module-section ${isModuleOpen?'open':''}">
         ${renderModuleDivider(grp, ch, doneCount)}
-        <div class="lp-module-section-body"><div class="lp-path">${pathHtml}</div></div>
+        <div class="lp-module-section-body"><div class="${pathWrapClass}">${pathHtml}</div></div>
       </div>`;
     }).join('');
 
@@ -9137,6 +9214,44 @@ function renderPathNode(node, idx){
     </div>
     ${isCurrent ? `<div class="lp-node-label">${chipLabel}</div>`
       : (unlocked && !isDone ? `<div class="lp-node-progress">${done}/${total}</div>` : '')}
+  </div>`;
+}
+
+// Рядок глави "Підготовка до екзамену" — той самий unlock/статус/
+// клік-роутинг, що й renderPathNode вище (locked → showLockedLessonModal,
+// dialogue/forum/email → відповідний startModule*Bonus, інакше —
+// startLessonFlow), але БЕЗ звивистої стежки й БЕЗ іконки замість назви:
+// тут головне — прочитати НАЗВУ конкретного діалогу/форуму/e-mail і
+// свідомо обрати саме його для повторення, а не пройти по порядку.
+function renderExamPrepRow(node){
+  const {done, total, pct} = lessonProgress(node);
+  const unlocked  = lessonUnlocked(node);
+  const isDone    = pct >= 80;
+  const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
+  const isDialogue = node.type === 'dialogue';
+  const isForum = node.type === 'forum';
+  const isEmail = node.type === 'email';
+  const visual = _lpNodeVisual(node);
+  const statusClass = !unlocked ? 'locked' : isDone ? 'done' : isCurrent ? 'current' : '';
+  const clickHandler = !unlocked
+    ? 'showLockedLessonModal()'
+    : isDialogue ? `startModuleDialogueBonus('${node.id}')`
+    : isForum ? `startModuleForumBonus('${node.id}')`
+    : isEmail ? `startModuleEmailBonus('${node.id}')`
+    : `startLessonFlow('${node.id}')`;
+  const title = node.title ? (node.title[uiLang]||node.title[primaryLang()]||node.title.en||node.title.de) : '';
+  const chipLabel = pct > 0
+    ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
+    : ({uk:'▶ Почати',     en:'▶ Start',    ru:'▶ Начать',     de:'▶ Starten'}[uiLang] || '▶ Starten');
+  return `<div class="lp-examprep-row ${visual.cls} ${statusClass}" id="${isCurrent?'lp-current-module':''}"
+      onclick="${clickHandler}">
+    <div class="lp-examprep-row-icon">${visual.icon}</div>
+    <div class="lp-examprep-row-body">
+      <div class="lp-examprep-row-title">${title}</div>
+      <div class="lp-examprep-row-meta">${!unlocked ? t('lp_locked') : done+' '+t('lp_of')+' '+total+' '+t('lp_cards')}</div>
+    </div>
+    ${isCurrent ? `<div class="lp-examprep-row-chip">${chipLabel}</div>`
+      : (isDone ? '<div class="lp-examprep-row-check">✓</div>' : '<div class="lp-examprep-row-arrow">›</div>')}
   </div>`;
 }
 
@@ -9775,7 +9890,11 @@ function debugOpenExamSimForumsbeitrag(topicIndex){
 
 function _examSimShowBriefing(part){
   var cfg = _examSimConfig(part) || {};
-  var timeMin = cfg.time_min || 20;
+  // ⚠️ ТИМЧАСОВО 1 хв замість 20 — для швидкого тестування без
+  // очікування. Повернути на 20 (чи прибрати зовсім, коли в усіх
+  // курсах буде свій var EXAM_SIM.Forumsbeitrag.time_min), коли
+  // тестування завершено.
+  var timeMin = cfg.time_min || 1;
   _examSimState.part = part;
   _examSimState.timeMin = timeMin;
 
@@ -9832,6 +9951,8 @@ function startExamSimTest(){
   _examSimState.endsAt = Date.now() + totalSec * 1000;
   var banner = document.getElementById('exam-sim-timeup-banner');
   if(banner) banner.style.display = 'none';
+  var actions = document.getElementById('exam-sim-timeup-actions');
+  if(actions) actions.style.display = 'none';
   _examSimRenderCountdown(totalSec * 1000);
 
   if(_examSimState.timerId) clearInterval(_examSimState.timerId);
@@ -9849,6 +9970,8 @@ function _examSimTick(){
     _examSimRenderCountdown(0);
     var banner = document.getElementById('exam-sim-timeup-banner');
     if(banner) banner.style.display = 'block';
+    var actions = document.getElementById('exam-sim-timeup-actions');
+    if(actions) actions.style.display = 'flex';
     _examSimPlayBeep();
     return;
   }
@@ -9867,6 +9990,31 @@ function closeExamSimTest(){
   var el = document.getElementById('exam-sim-test');
   if(el) el.style.display = 'none';
   _examSimState.card = null;
+}
+
+// "👁 Подивитися приклад" — з'являється лише ПІСЛЯ завершення часу (див.
+// #exam-sim-timeup-actions). Запускає ТОЙ САМИЙ рушій моделі-відповіді,
+// що й startModuleForumBonus() при кліку по звичайному path-вузлу
+// (_runBonusLessonFlow, кроки frm_learn→result) — тут просто напряму з
+// однією конкретною карткою (_examSimState.card), без проміжного
+// пошуку lessonId у LESSONS: людина щойно писала відповідь саме на
+// ЦЕ завдання, тож приклад має бути саме до нього, а не довільний.
+function examSimShowExample(){
+  var card = _examSimState.card;
+  if(!card){ closeExamSimTest(); return; }
+  const pl = primaryLang();
+  const title = {
+    de:'Forumsbeitrag: '+(card.topic?.de||''), uk:'Допис на форумі: '+(card.topic?.uk||''),
+    en:'Forum post: '+(card.topic?.en||''), ru:'Пост на форуме: '+(card.topic?.ru||''),
+  };
+  closeExamSimTest();
+  _runBonusLessonFlow({
+    id: '_frm_examsim_'+card.id,
+    title,
+    _isBonusLesson: true,
+    steps: ['frm_learn', 'result'],
+    _frmBonusPool: [card],
+  });
 }
 
 // Розблоковуємо/готуємо AudioContext саме в момент кліку "Почати тест"
