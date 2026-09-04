@@ -3961,7 +3961,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '589-13ea509';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9878,7 +9878,7 @@ function debugRenderExamSimForumTopics(){
 // тримається можливість відтворити сигнал ПІЗНІШЕ, коли час вийде,
 // без нового жесту (браузери зазвичай дозволяють подальше відтворення
 // в контексті, вже розблокованому раніше жестом).
-var _examSimState = { part: null, timeMin: 20, card: null, timerId: null, endsAt: null, audioCtx: null };
+var _examSimState = { part: null, timeMin: 20, card: null, timerId: null, endsAt: null, audioCtx: null, audioDest: null, audioEl: null, warned5: false, warned1: false, wakeLock: null };
 
 function debugOpenExamSimForumsbeitrag(topicIndex){
   var cards = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN : [];
@@ -9890,11 +9890,11 @@ function debugOpenExamSimForumsbeitrag(topicIndex){
 
 function _examSimShowBriefing(part){
   var cfg = _examSimConfig(part) || {};
-  // ⚠️ ТИМЧАСОВО 1 хв замість 20 — для швидкого тестування без
+  // ⚠️ ТИМЧАСОВО 6 хв замість 20 — для швидкого тестування без
   // очікування. Повернути на 20 (чи прибрати зовсім, коли в усіх
   // курсах буде свій var EXAM_SIM.Forumsbeitrag.time_min), коли
   // тестування завершено.
-  var timeMin = cfg.time_min || 1;
+  var timeMin = cfg.time_min || 6;
   _examSimState.part = part;
   _examSimState.timeMin = timeMin;
 
@@ -9949,6 +9949,8 @@ function startExamSimTest(){
 
   var totalSec = (_examSimState.timeMin || 20) * 60;
   _examSimState.endsAt = Date.now() + totalSec * 1000;
+  _examSimState.warned5 = false;
+  _examSimState.warned1 = false;
   var banner = document.getElementById('exam-sim-timeup-banner');
   if(banner) banner.style.display = 'none';
   var actions = document.getElementById('exam-sim-timeup-actions');
@@ -9958,12 +9960,31 @@ function startExamSimTest(){
   if(_examSimState.timerId) clearInterval(_examSimState.timerId);
   _examSimState.timerId = setInterval(_examSimTick, 250);
 
+  _examSimRequestWakeLock();
+
   var testEl = document.getElementById('exam-sim-test');
   if(testEl) testEl.style.display = 'flex';
 }
 
 function _examSimTick(){
   var msLeft = _examSimState.endsAt - Date.now();
+
+  // Попереджувальні сигнали — по одному разу за спробу (прапорці
+  // скидаються в startExamSimTest()). Кожен — лише якщо загальний час
+  // тесту взагалі ДОВШИЙ за відповідний поріг: інакше "лишилось 5 хв"
+  // не має сенсу для короткого (тестового) таймера в кілька хвилин.
+  var totalMs = (_examSimState.timeMin || 20) * 60000;
+  if(msLeft > 0){
+    if(totalMs > 5*60000 && !_examSimState.warned5 && msLeft <= 5*60000){
+      _examSimState.warned5 = true;
+      _examSimPlayWarningBeep();
+    }
+    if(totalMs > 60000 && !_examSimState.warned1 && msLeft <= 60000){
+      _examSimState.warned1 = true;
+      _examSimPlayWarningBeep();
+    }
+  }
+
   if(msLeft <= 0){
     clearInterval(_examSimState.timerId);
     _examSimState.timerId = null;
@@ -9990,7 +10011,43 @@ function closeExamSimTest(){
   var el = document.getElementById('exam-sim-test');
   if(el) el.style.display = 'none';
   _examSimState.card = null;
+  _examSimReleaseWakeLock();
 }
+
+// Screen Wake Lock — не даємо екрану згаснути/заблокуватись під час
+// тесту (так само, як під час перегляду відео). Підтримка є в Chrome/
+// Edge/Android і в Safari з версії 16.4 (iOS і macOS); де API немає —
+// просто нічого не робимо (тест і без нього повністю працює, екран
+// може згаснути сам за таймаутом пристрою — некритично).
+async function _examSimRequestWakeLock(){
+  try{
+    if('wakeLock' in navigator){
+      _examSimState.wakeLock = await navigator.wakeLock.request('screen');
+    }
+  }catch(e){
+    // Відмова — нормальна річ (немає HTTPS, батарея в режимі
+    // збереження, чи браузер узагалі не підтримує) — не показуємо
+    // помилку користувачу.
+    _examSimState.wakeLock = null;
+  }
+}
+function _examSimReleaseWakeLock(){
+  if(_examSimState.wakeLock){
+    try{ _examSimState.wakeLock.release(); }catch(e){}
+    _examSimState.wakeLock = null;
+  }
+}
+// Браузер САМ знімає wake lock, щойно вкладка йде у фон (перемкнули
+// застосунок, заблокували екран вручну) — повертаємо його назад, коли
+// людина відкриває вкладку знову, ЯКЩО екран тесту й досі відкритий.
+document.addEventListener('visibilitychange', function(){
+  if(document.visibilityState === 'visible'){
+    var testEl = document.getElementById('exam-sim-test');
+    if(testEl && testEl.style.display !== 'none' && !_examSimState.wakeLock){
+      _examSimRequestWakeLock();
+    }
+  }
+});
 
 // "👁 Подивитися приклад" — з'являється лише ПІСЛЯ завершення часу (див.
 // #exam-sim-timeup-actions). Запускає ТОЙ САМИЙ рушій моделі-відповіді,
@@ -10024,35 +10081,100 @@ function _examSimUnlockBeepCtx(){
   try{
     var Ctx = window.AudioContext || window.webkitAudioContext;
     if(!Ctx) return;
-    if(!_examSimState.audioCtx) _examSimState.audioCtx = new Ctx();
+    if(!_examSimState.audioCtx){
+      _examSimState.audioCtx = new Ctx();
+      // AudioSession API — поки лише в Safari й експериментальна, але
+      // саме для цього й існує: прямо каже браузеру "це відтворення
+      // медіа", а не системний сигнал — такий тип, за специфікацією,
+      // ігнорує перемикач "Дзвінок/Тиша" на iPhone. Дешево спробувати,
+      // навіть якщо API ще не скрізь підтримане.
+      try{ if('audioSession' in navigator) navigator.audioSession.type = 'playback'; }catch(e){}
+      // ── Обхід перемикача "Дзвінок/Тиша" на iPhone ──────────────────
+      // На iOS Safari звук з Web Audio API, виведений НАПРЯМУ в
+      // ctx.destination (як було раніше), глушиться фізичним
+      // перемикачем гучності — це задокументована поведінка Safari, не
+      // баг у коді: сторінка з відео чи <audio> цей перемикач ІГНОРУЄ,
+      // а "голий" Web Audio — ні. Тому виводимо сигнал не напряму в
+      // колонки контексту, а через MediaStreamAudioDestinationNode →
+      // справжній <audio>-елемент: iOS тоді сприймає це як звичайне
+      // відтворення медіа, як і решта озвучення в застосунку (яке вже
+      // йде через <audio>-теги і так само не глушиться).
+      try{
+        _examSimState.audioDest = _examSimState.audioCtx.createMediaStreamDestination();
+        var beepEl = document.createElement('audio');
+        beepEl.srcObject = _examSimState.audioDest.stream;
+        beepEl.setAttribute('playsinline', '');
+        beepEl.play().catch(function(){});
+        _examSimState.audioEl = beepEl;
+      }catch(e){
+        // Не підтримується — граємо напряму в ctx.destination, як
+        // раніше (спрацює на десктопі й Android; на iOS у режимі тиші
+        // просто мовчатиме, як і було).
+        _examSimState.audioDest = null;
+      }
+    }
     if(_examSimState.audioCtx.state === 'suspended') _examSimState.audioCtx.resume();
   }catch(e){}
 }
 
 // Синтезований сигнал (Web Audio API, без окремого mp3-файлу) — три
 // коротких гудки, впізнавано як "час вийшов", а не одна нота.
+// Один тон — спільний "будівельний блок" і для фінального сигналу,
+// і для попереджувального нижче (щоб не дублювати osc/gain-код).
+function _examSimPlayTone(ctx, freq, startTime, duration, peakGain){
+  var osc = ctx.createOscillator();
+  var gain = ctx.createGain();
+  osc.type = 'sine';
+  osc.frequency.value = freq;
+  gain.gain.setValueAtTime(0.0001, startTime);
+  gain.gain.exponentialRampToValueAtTime(peakGain||0.35, startTime + 0.02);
+  gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+  osc.connect(gain);
+  // audioDest (MediaStreamAudioDestinationNode → <audio>-елемент) —
+  // якщо доступний, саме через нього йде звук (обхід перемикача "Дзвінок/
+  // Тиша" на iPhone, див. _examSimUnlockBeepCtx вище); інакше — як
+  // раніше, напряму в колонки контексту.
+  gain.connect(_examSimState.audioDest || ctx.destination);
+  osc.start(startTime);
+  osc.stop(startTime + duration + 0.05);
+}
+
+// Один "залп" — три коротких гудки (той самий візерунок, що був раніше
+// єдиним фінальним сигналом). Повертає його тривалість у секундах, щоб
+// можна було порахувати, коли стартувати наступний повтор.
+function _examSimPlayBurst(ctx, startTime){
+  _examSimPlayTone(ctx, 880, startTime,      0.18);
+  _examSimPlayTone(ctx, 880, startTime+0.25, 0.18);
+  _examSimPlayTone(ctx, 880, startTime+0.50, 0.4);
+  return 0.50 + 0.4;
+}
+
+// Фінальний сигнал (час вийшов) — той самий "залп", повторений ТРИЧІ з
+// паузою між повторами, щоб точно почули, навіть якщо перший пропустили
+// повз вуха (довший і помітніший за одноразовий сигнал, як просили).
 function _examSimPlayBeep(){
   try{
     var ctx = _examSimState.audioCtx;
     if(!ctx) return;
     if(ctx.state === 'suspended') ctx.resume();
-    var playTone = function(freq, startTime, duration){
-      var osc = ctx.createOscillator();
-      var gain = ctx.createGain();
-      osc.type = 'sine';
-      osc.frequency.value = freq;
-      gain.gain.setValueAtTime(0.0001, startTime);
-      gain.gain.exponentialRampToValueAtTime(0.35, startTime + 0.02);
-      gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-      osc.start(startTime);
-      osc.stop(startTime + duration + 0.05);
-    };
-    var now = ctx.currentTime;
-    playTone(880, now,      0.18);
-    playTone(880, now+0.25, 0.18);
-    playTone(880, now+0.50, 0.4);
+    var t = ctx.currentTime;
+    var gap = 0.35;
+    for(var i=0; i<3; i++){
+      var dur = _examSimPlayBurst(ctx, t);
+      t += dur + gap;
+    }
+  }catch(e){}
+}
+
+// Короткий попереджувальний сигнал (за 5 хв і за 1 хв до завершення) —
+// один коротший тон іншої (нижчої) висоти й тихіший, ніж фінальний
+// сигнал, щоб їх не можна було сплутати між собою.
+function _examSimPlayWarningBeep(){
+  try{
+    var ctx = _examSimState.audioCtx;
+    if(!ctx) return;
+    if(ctx.state === 'suspended') ctx.resume();
+    _examSimPlayTone(ctx, 660, ctx.currentTime, 0.3, 0.28);
   }catch(e){}
 }
 
