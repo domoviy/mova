@@ -253,6 +253,16 @@ if(location.protocol === 'https:'){
   --border:#e7e3dc; --soft:#f5f2eb; --red:#c0392b;
   --g-accent:#a8503f; /* теплий цегляний акцент для <g> (граматичні маркери в def) —
                           відмінний від --red, щоб не читався як "помилка" */
+  --c-accent:#96751f; /* <c> — "скопійовано із завдання" (Forumsbeitrag/E-Mail).
+                          Темний бурштиново-гірчичний — той самий "жовтий" настрій, що
+                          просили (гіпотеза "маркер-виділення"), але як КОЛІР ТЕКСТУ, не
+                          фон: не --gold напряму (той зарезервований під CTA/XP/стрік —
+                          збіг кольору читався б як "це кнопка/нагорода"), і достатньо
+                          темний для контрасту на білому/кремовому фоні картки. */
+  --k-accent:#6b4c93; /* <k> — Konnektoren/Nebensätze (зв'язки речень у листах).
+                          Фіолетовий — 4-та чітко відмінна від g(цегляний)/r(синій)/
+                          c(бурштиновий) і від --gold барва, щоб жоден з чотирьох
+                          маркерів не зливався візуально з іншими. */
   --nav-h:64px;
   --hdr-h:56px;
   --prog-h:44px;  /* висота vprogrow */
@@ -299,6 +309,27 @@ html{height:100%}
    бо <g> зустрічається в кількох різних контейнерах (.fc-def,
    .lf-unit-term, .lf-unit-short, тощо) по всьому додатку. */
 g{font-weight:700;color:var(--g-accent)}
+
+/* <c> — "скопійовано із завдання" (Forumsbeitrag/E-Mail): підсвічуємо
+   фрагмент, який людина має дослівно перенести з умови завдання у свою
+   відповідь. КОЛІР ТЕКСТУ, а не фон-"маркер": та сама причина, з якої
+   <r> (Redemittel, нижче) уже позбувся власної підложки — фон конфліктував
+   би з фоном karaoke-підсвітки слів під час озвучення (.tts-word.active),
+   даючи два накладені прямокутники одночасно замість одного. Той самий
+   принцип, що й <g> — глобальне правило, застосовується скрізь, де
+   реально є в тексті картки. */
+c{font-weight:700;color:var(--c-accent)}
+
+/* <k> — Konnektoren/Nebensätze: зв'язки між реченнями (deshalb, obwohl,
+   außerdem…) у Forumsbeitrag/E-Mail. НАВМИСНО окремий тег від <g>, не
+   те саме значення: <g> — граматична змінна/конструкція з "проваленим"
+   слотом (SB-генератор фраз із пропуском буквально ВИРІЗАЄ перший
+   <g>…</g> в {{BLANK}} — переплутати теги означало б випадково зробити
+   з конектора "пропуск для вгадування", хоча мета тут протилежна:
+   ПОКАЗАТИ зв'язок, не приховати його). Живе окремо — і залишає <g>
+   вільним для майбутньої окремої граматики з поясненнями, як і
+   планувалось. */
+k{font-weight:700;color:var(--k-accent)}
 
 body{
   font-family:'Inter',sans-serif;
@@ -2860,6 +2891,22 @@ body.lesson-active .vocab-top{
 .grammar-rule-fs-body g{font-weight:700;color:var(--g-accent)}
 .grammar-rule-fs-body b{color:var(--ink)}
 
+/* Легенда маркерів <c>/<k>/<g>/<r> (ℹ️-кнопка, _lfMarkerLegendButton) —
+   той самий "повноекранний рідер" каркас, що й grammar-rule-fullscreen
+   вище (шапка з ← і заголовком, прокрутне тіло), лише контент — фіксовані
+   4 рядки "кольоровий квадратик + назва + пояснення", а не текст з таблиці
+   GRAMMAR. */
+.marker-legend-row{
+  display:flex; align-items:flex-start; gap:14px;
+  padding:14px 0; border-bottom:1px solid var(--border);
+}
+.marker-legend-row:last-child{ border-bottom:none; }
+.marker-legend-swatch{
+  width:18px; height:18px; border-radius:5px; flex-shrink:0; margin-top:3px;
+}
+.marker-legend-label{ font-weight:800; font-size:var(--fs-secondary); margin-bottom:3px; }
+.marker-legend-desc{ color:var(--warm); font-size:var(--fs-tertiary); line-height:1.5; }
+
 /* mc-options used in practice/exam: make buttons work as answer tiles */
 #sb-prac-options .mc-opt, #sb-exam-options .mc-opt {
   cursor:pointer; transition:border-color .15s, background .15s;
@@ -3961,7 +4008,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '590-9a8de34';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14119,6 +14166,7 @@ var _lfFrmHandlers = {
     }
 
     _lfDlgAppendBubble(body, buildBubble());
+    _lfMaybeAutoShowMarkerLegend(text);
 
     requestAnimationFrame(function(){
       body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
@@ -14158,6 +14206,8 @@ var _lfFrmHandlers = {
       : ((unit.part && unit.part[pl]) || '');
     var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
     if(gramBtn) buttons.push(gramBtn);
+    var legendBtn = _lfMarkerLegendButton(partText);
+    if(legendBtn) buttons.push(legendBtn);
     return buttons;
   },
 
@@ -14372,6 +14422,8 @@ var _lfStoryHandlers = {
       : ((unit.part && unit.part[pl]) || '');
     var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
     if(gramBtn) buttons.push(gramBtn);
+    var legendBtn = _lfMarkerLegendButton(partText);
+    if(legendBtn) buttons.push(legendBtn);
     return buttons;
   },
 
@@ -14514,6 +14566,7 @@ function _lfEmlRenderMailOrPart(body, unit){
   '</div>';
 
   _lfDlgAppendBubble(body, bubble);
+  _lfMaybeAutoShowMarkerLegend(text);
 }
 
 // card.questions[] — 2 MC-питання про зміст mail_client, БЕЗ аудіо
@@ -14675,6 +14728,15 @@ var _lfEmlHandlers = {
     var partText = unit.kind === 'eml_part' ? ((unit.part && unit.part[pl]) || '') : '';
     var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
     if(gramBtn) buttons.push(gramBtn);
+    // ℹ️-легенда — ширша перевірка, ніж gramBtn вище: <c>/<k>/<r> цілком
+    // можуть трапитись і у вступних листах (mail_boss/mail_client), не
+    // лише в eml_part, на відміну від 📖 (навмисно вузько прив'язаний до
+    // card.gram у конкретній репліці).
+    var legendText = unit.kind === 'eml_boss'   ? ((unit.card.mail_boss   && unit.card.mail_boss[pl])   || '')
+      : unit.kind === 'eml_client' ? ((unit.card.mail_client && unit.card.mail_client[pl]) || '')
+      : partText;
+    var legendBtn = _lfMarkerLegendButton(legendText);
+    if(legendBtn) buttons.push(legendBtn);
     return buttons;
   },
 
@@ -14935,6 +14997,96 @@ function _lfGrammarButton(card){
   if(!card || !card.gram) return null;
   if(!getGrammarRule(card.gram)) return null; // id є, а правила нема — тихо ігноруємо
   return { icon: '📖', onClick: function(){ showGrammarModal(card.gram); } };
+}
+
+// ── Легенда кольорових маркерів <c>/<k>/<g>/<r> ─────────────────────
+// ℹ️-кнопка (не 💡 — та іконка вже зайнята: SB-обробник вище використовує
+// 💡 в цьому самому рядку кнопок для геть іншого — розкрити пояснення
+// вправи; той самий значок з іншим сенсом поруч зі 🔊 плутав би).
+// З'являється лише там, де в тексті ПОТОЧНОГО кроку реально є хоч один
+// із чотирьох тегів — та сама ідея, що й у 📖 (_lfGrammarButton вище):
+// контекстна кнопка, не захаращує решту застосунку.
+var LF_MARKER_TAGS_RE = /<[cgkr]>/;
+var LF_MARKER_LEGEND_SEEN_KEY = 'mova_marker_legend_seen';
+
+var LF_MARKER_LEGEND_ITEMS = [
+  { accent:'var(--c-accent)',
+    label:{uk:'Скопіювати із завдання', de:'Aus der Aufgabe übernehmen', en:'Copy from the task', ru:'Скопировать из задания'},
+    desc: {uk:"Цей фрагмент варто перенести з умови завдання дослівно у свою відповідь.",
+           de:'Diesen Ausdruck sollten Sie wörtlich aus der Aufgabenstellung übernehmen.',
+           en:'Take this exact phrase from the task and use it in your own answer.',
+           ru:'Этот фрагмент стоит перенести из условия задания дословно в свой ответ.'} },
+  { accent:'var(--k-accent)',
+    label:{uk:'Konnektoren / Nebensätze', de:'Konnektoren / Nebensätze', en:'Connectors / subordinate clauses', ru:'Коннекторы / придаточные предложения'},
+    desc: {uk:"Слово чи конструкція, що зв'язує кілька речень в одне — на це варто звернути увагу.",
+           de:'Ein Wort oder eine Konstruktion, die mehrere Sätze zu einem verbindet.',
+           en:'A word or construction linking several sentences into one.',
+           ru:'Слово или конструкция, которая связывает несколько предложений в одно.'} },
+  { accent:'var(--g-accent)',
+    label:{uk:'Граматична конструкція', de:'Grammatische Konstruktion', en:'Grammar construction', ru:'Грамматическая конструкция'},
+    desc: {uk:'Зразок граматичної конструкції — місце, куди можна підставити своє.',
+           de:'Zeigt eine grammatische Konstruktion — eine Stelle, die Sie durch eigene Wörter ersetzen können.',
+           en:'Shows a grammar construction — a slot where you can substitute your own words.',
+           ru:'Здесь показан образец грамматической конструкции — место, куда можно подставить своё.'} },
+  { accent:'#4a90d9',
+    label:{uk:'Усталений вислів', de:'Feste Redewendung', en:'Fixed expression', ru:'Устойчивое выражение'},
+    desc: {uk:"Готова фраза, яку варто запам'ятати цілком, як є.",
+           de:'Eine feste Wendung, die man als Ganzes auswendig lernen sollte.',
+           en:'A ready-made phrase worth memorizing exactly as it is.',
+           ru:'Готовая фраза, которую стоит запомнить целиком, как есть.'} },
+];
+
+function _lfMarkerLegendButton(text){
+  if(!text || !LF_MARKER_TAGS_RE.test(text)) return null;
+  return { icon: 'ℹ️', onClick: showMarkerLegend };
+}
+
+function showMarkerLegend(){
+  closeGrammarModal();
+  closeGrammarRuleFullscreen();
+  closeMarkerLegend();
+  var titleText = {uk:'Що означають кольори', de:'Was die Farben bedeuten', en:'What the colors mean', ru:'Что означают цвета'}[uiLang] || 'Що означають кольори';
+  var rowsHtml = LF_MARKER_LEGEND_ITEMS.map(function(item){
+    var label = item.label[uiLang] || item.label.en || item.label.de || '';
+    var desc  = item.desc[uiLang]  || item.desc.en  || item.desc.de  || '';
+    return '<div class="marker-legend-row">'+
+      '<div class="marker-legend-swatch" style="background:'+item.accent+'"></div>'+
+      '<div>'+
+        '<div class="marker-legend-label" style="color:'+item.accent+'">'+label+'</div>'+
+        '<div class="marker-legend-desc">'+desc+'</div>'+
+      '</div>'+
+    '</div>';
+  }).join('');
+  var el = document.createElement('div');
+  el.id = 'marker-legend-fullscreen';
+  el.className = 'grammar-rule-fullscreen';
+  el.innerHTML =
+    '<div class="grammar-rule-fs-header">'+
+      '<button class="grammar-rule-fs-back" onclick="closeMarkerLegend()">←</button>'+
+      '<div class="grammar-rule-fs-title-wrap">'+
+        '<div class="grammar-rule-fs-title">'+titleText+'</div>'+
+      '</div>'+
+    '</div>'+
+    '<div class="grammar-rule-fs-body">'+rowsHtml+'</div>';
+  document.body.appendChild(el);
+  haptic.light();
+  try{ localStorage.setItem(LF_MARKER_LEGEND_SEEN_KEY, '1'); }catch(e){}
+}
+
+function closeMarkerLegend(){
+  var el = document.getElementById('marker-legend-fullscreen');
+  if(el) el.remove();
+}
+
+// Автопоказ ОДИН РАЗ — при першому дописі/листі, де реально є хоч один
+// маркер (не при завантаженні застосунку взагалі — тоді легенда була б
+// без контексту). Далі кнопка ℹ️ лишається для довідки завжди, як і 📖.
+function _lfMaybeAutoShowMarkerLegend(text){
+  if(!text || !LF_MARKER_TAGS_RE.test(text)) return;
+  try{ if(localStorage.getItem(LF_MARKER_LEGEND_SEEN_KEY)) return; }catch(e){ return; }
+  // Невелика затримка — щоб не зʼявлялось поверх ще незавершеної
+  // анімації появи бульбашки (lf-bubble-in).
+  setTimeout(function(){ showMarkerLegend(); }, 600);
 }
 
 // Куди має "жити" #lf-unit-card прямо зараз — єдиний спільний елемент,
