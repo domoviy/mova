@@ -32853,7 +32853,7 @@
   "Deutsch-B2-Beruf/de/085/uns/uns_107_term_de_085": "d134f2e744+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_107_short_de_085": "26fbe02aae+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_107_def_de_085": "582cfb155a+t",
-  "Deutsch-B2-Beruf/de/085/uns/uns_108_term_de_085": "82c44e78a4+t",
+  "Deutsch-B2-Beruf/de/085/uns/uns_108_term_de_085": "98c90643cc+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_108_short_de_085": "5041b11877+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_108_def_de_085": "10a8dee9c8+t",
   "Deutsch-B2-Beruf/de/085/uns/uns_109_term_de_085": "f706790e34+t",
@@ -36957,7 +36957,7 @@
   "Deutsch-B2-Beruf/de/085/ges/ges_188_def_de_085": "487d7d364d+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_189_term_de_085": "1d8d36f3ee+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_189_short_de_085": "42af6f03d8+t",
-  "Deutsch-B2-Beruf/de/085/ges/ges_189_def_de_085": "60245cef88+t",
+  "Deutsch-B2-Beruf/de/085/ges/ges_189_def_de_085": "8a1c28ae55+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_190_term_de_085": "5dead0af3a+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_190_short_de_085": "a5a2450c94+t",
   "Deutsch-B2-Beruf/de/085/ges/ges_190_def_de_085": "21b939b24f+t",
@@ -40735,5 +40735,8 @@
   "Deutsch-B2-Beruf/de/100/gram/gram_word_welchen_de_100": "73db827251",
   "Deutsch-B2-Beruf/de/100/gram/gram_word_welches_de_100": "e8b1f50364",
   "Deutsch-B2-Beruf/de/100/gram/gram_word_wo_de_100": "9195920b8d",
-  "Deutsch-B2-Beruf/de/100/gram/gram_word_zeigt_de_100": "71b286be34"
+  "Deutsch-B2-Beruf/de/100/gram/gram_word_zeigt_de_100": "71b286be34",
+  "Deutsch-B2-Beruf/de/085/tlc/tlc_001_term_de_085": "2e1114b8d3+t",
+  "Deutsch-B2-Beruf/de/085/tlc/tlc_001_short_de_085": "1f56ac26f4+t",
+  "Deutsch-B2-Beruf/de/085/tlc/tlc_001_def_de_085": "e533c54531+t"
 }
