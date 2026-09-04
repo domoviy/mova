@@ -40720,5 +40720,10 @@
   "Deutsch-B2-Beruf/de/100/tlc/tlc_482_short_de_100": "896901a1b2+t",
   "Deutsch-B2-Beruf/de/100/tlc/tlc_482_def_de_100": "a7b49b982f+t",
   "Deutsch-B2-Beruf/de/100/tlc/tlc_483_term_de_100": "f2faacd0df+t",
-  "Deutsch-B2-Beruf/de/100/tlc/tlc_483_short_de_100": "bc4fadd431+t"
+  "Deutsch-B2-Beruf/de/100/tlc/tlc_483_short_de_100": "bc4fadd431+t",
+  "Deutsch-B2-Beruf/de/100/tlc/tlc_483_def_de_100": "4ec2549ac8+t",
+  "Deutsch-B2-Beruf/de/100/gram/gram_word_außerhalb_de_100": "6ef72cac48",
+  "Deutsch-B2-Beruf/de/100/gram/gram_word_innerhalb_de_100": "f961352d78",
+  "Deutsch-B2-Beruf/de/100/gram/gram_word_interesse_de_100": "ea55d09e5d",
+  "Deutsch-B2-Beruf/de/100/gram/gram_word_durch_de_100": "36ac057dcd"
 }
