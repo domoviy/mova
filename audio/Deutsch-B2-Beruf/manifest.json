@@ -42183,5 +42183,10 @@
   "Deutsch-B2-Beruf/de/085/tlc/tlc_482_short_de_085": "8aa225c8d3+t",
   "Deutsch-B2-Beruf/de/085/tlc/tlc_482_def_de_085": "29ba3da3f0+t",
   "Deutsch-B2-Beruf/de/085/tlc/tlc_483_term_de_085": "9ade97bb65+t",
-  "Deutsch-B2-Beruf/de/085/tlc/tlc_483_short_de_085": "6e490cfad0+t"
+  "Deutsch-B2-Beruf/de/085/tlc/tlc_483_short_de_085": "6e490cfad0+t",
+  "Deutsch-B2-Beruf/de/085/tlc/tlc_483_def_de_085": "4b1bb14851+t",
+  "Deutsch-B2-Beruf/de/085/gram/gram_word_außerhalb_de_085": "938187f3dc",
+  "Deutsch-B2-Beruf/de/085/gram/gram_word_innerhalb_de_085": "5766a15134",
+  "Deutsch-B2-Beruf/de/085/gram/gram_word_interesse_de_085": "732b05d11d",
+  "Deutsch-B2-Beruf/de/085/gram/gram_word_durch_de_085": "a93f5222a2"
 }
