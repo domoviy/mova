@@ -1013,6 +1013,11 @@ body{
 .lp-examprep-row.lp-node-problemsolving .lp-examprep-row-icon{ background:#7c5cb0; }
 .lp-examprep-row.lp-node-forum .lp-examprep-row-icon{ background:#c07a2e; }
 .lp-examprep-row.lp-node-email .lp-examprep-row-icon{ background:#8a2f3f; }
+/* examsim — навмисно --gold (той самий колір, що основні CTA-кнопки
+   застосунку), а не ще один довільний відтінок: це "флагманська" вправа
+   глави (справжня симуляція іспиту, не звичайне повторення картки), і
+   золотий тут читається як "особливе", узгоджено з рештою застосунку. */
+.lp-examprep-row.lp-node-examsim .lp-examprep-row-icon{ background:var(--gold); }
 .lp-examprep-row-body{ flex:1;min-width:0; }
 .lp-examprep-row-title{
   font-size:var(--fs-tertiary);font-weight:700;color:var(--ink);
@@ -2919,13 +2924,17 @@ body.lesson-active .vocab-top{
 .exam-sim-pick-card:active{ transform:scale(.98); border-color:var(--gold); }
 .exam-sim-pick-badge{
   align-self:flex-start; background:rgba(201,168,76,.15); color:var(--gold);
-  font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.5px;
+  font-size:var(--fs-utility); font-weight:800; text-transform:uppercase; letter-spacing:.5px;
   padding:3px 9px; border-radius:8px;
 }
-.exam-sim-pick-topic-title{ color:#fff; font-size:16px; font-weight:800; line-height:1.3; }
+/* Той самий розмір, що й #exam-sim-topic/#exam-sim-task у режимі
+   написання (fs-tertiary/fs-card) — і те, й інше зав'язане на глобальну
+   шкалу шрифтів із налаштувань додатку, тож при кліку на картку текст
+   не "стрибає" в розмірі і масштабується разом з рештою застосунку. */
+.exam-sim-pick-topic-title{ color:#fff; font-size:var(--fs-tertiary); font-weight:800; line-height:1.3; }
 .exam-sim-pick-topic-text{
-  color:rgba(255,255,255,.65); font-size:13px; line-height:1.5;
-  display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+  color:rgba(255,255,255,.65); font-size:var(--fs-card); line-height:1.6;
+  display:-webkit-box; -webkit-line-clamp:5; -webkit-box-orient:vertical; overflow:hidden;
 }
 
 /* mc-options used in practice/exam: make buttons work as answer tiles */
@@ -3275,7 +3284,7 @@ body.lesson-active .vocab-top{
 
 <!-- ══ Симуляція письмової частини іспиту (Forumsbeitrag) ══════════
      Умови/час/бланк — з бази курсу (var EXAM_SIM), НЕ хардкод тут —
-     див. debugOpenExamSimForumsbeitrag() і _examSim* нижче. Той самий
+     див. openExamSimForumsbeitrag() і _examSim* нижче. Той самий
      "повноекранний оверлей" принцип, що й #sr-exam-onboarding вище
      (position:fixed;inset:0), навмисно ОКРЕМИЙ рушій від lf-unit-card:
      тут нема озвучення/karaoke/перекладу — лише текст завдання
@@ -3302,7 +3311,7 @@ body.lesson-active .vocab-top{
     </div>
     <div style="width:100%;background:rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;text-align:center">
       <div style="color:rgba(255,255,255,.55);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">У вас буде</div>
-      <div style="color:var(--gold);font-size:32px;font-weight:800" id="exam-sim-time">7:30</div>
+      <div style="color:var(--gold);font-size:32px;font-weight:800" id="exam-sim-time">20 хв</div>
     </div>
     <p id="exam-sim-instructions" style="color:rgba(255,255,255,.8);font-size:14px;line-height:1.5;margin:0;text-align:left;width:100%"></p>
     <div id="exam-sim-blank-row" style="display:none;width:100%;flex-direction:column;gap:8px;background:rgba(255,255,255,.05);border:1px dashed rgba(201,168,76,.4);border-radius:14px;padding:14px">
@@ -3316,7 +3325,7 @@ body.lesson-active .vocab-top{
 <div id="exam-sim-test" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:stretch;padding:0">
   <div style="display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 16px) 20px 12px">
     <div style="width:34px"></div>
-    <div id="exam-sim-countdown" style="color:var(--gold);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">7:30</div>
+    <div id="exam-sim-countdown" style="color:var(--gold);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">20:00</div>
     <button onclick="closeExamSimTest()" title="Закрити завдання" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
   </div>
   <div id="exam-sim-timeup-banner" style="display:none;margin:0 20px 4px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:10px 14px;text-align:center;color:var(--gold);font-weight:700">⏰ Час вийшов!</div>
@@ -3338,8 +3347,8 @@ body.lesson-active .vocab-top{
 
   <!-- Стадія 2 — написання: обрана тема на весь екран. -->
   <div id="exam-sim-write" style="display:none;flex:1;overflow-y:auto;padding:8px 24px 100px;flex-direction:column;gap:12px">
-    <div id="exam-sim-topic" style="color:var(--gold);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px"></div>
-    <div id="exam-sim-task" style="color:#fff;font-size:17px;line-height:1.6;white-space:pre-wrap"></div>
+    <div id="exam-sim-topic" style="color:var(--gold);font-size:var(--fs-tertiary);font-weight:700;text-transform:uppercase;letter-spacing:.5px"></div>
+    <div id="exam-sim-task" style="color:#fff;font-size:var(--fs-card);line-height:1.6;white-space:pre-wrap"></div>
   </div>
 
   <!-- "Обрати іншу тему" — лише в стадії write, і лише перші 2 хв від
@@ -4012,11 +4021,6 @@ body.lesson-active .vocab-top{
         </div>
       </div>
     </div>
-
-    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>✍️ Schreiben — Forumsbeitrag (симуляція іспиту)</label><small>Умови й ліміт часу — з бази курсу (var EXAM_SIM), не з index.html. Показує брифінг (час, рекомендація роздрукувати бланк) → "Почати тест" → дві випадкові теми на вибір → обрана на весь екран, зворотний відлік, зі звуковим сигналом по завершенню.</small></div>
-      <button class="btn btn-s" onclick="debugOpenExamSimForumsbeitrag()">✍️ Почати тест</button>
-    </div>
     </div>
     </div>
     </div><!-- /ГРУПА 4 -->
@@ -4056,7 +4060,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '594-98da709';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9260,6 +9264,9 @@ function _lpNodeVisual(node){
   if(node.type === 'email'){
     return { icon: '📧', cls: 'lp-node-email' };
   }
+  if(node.type === 'examsim'){
+    return { icon: '✍️', cls: 'lp-node-examsim' };
+  }
   return { icon: '📖', cls: 'lp-node-lesson' };
 }
 
@@ -9319,10 +9326,16 @@ function renderPathNode(node, idx){
 // тут головне — прочитати НАЗВУ конкретного діалогу/форуму/e-mail і
 // свідомо обрати саме його для повторення, а не пройти по порядку.
 function renderExamPrepRow(node){
+  const isExamSim = node.type === 'examsim';
   const {done, total, pct} = lessonProgress(node);
   const unlocked  = lessonUnlocked(node);
-  const isDone    = pct >= 80;
-  const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
+  // examsim — не "картки, що заповнюються" (немає cardIds), а повторювана
+  // спроба; done/pct із lessonProgress() тут завжди 0 (порожній cardIds) —
+  // навмисно ніколи не показуємо як "done", інакше вузол одного разу
+  // назавжди позначився б ✓ і виглядав "пройденим", хоча спробу можна й
+  // варто повторювати скільки завгодно.
+  const isDone    = !isExamSim && pct >= 80;
+  const isCurrent = !isExamSim && !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
   const isForum = node.type === 'forum';
   const isEmail = node.type === 'email';
@@ -9330,22 +9343,29 @@ function renderExamPrepRow(node){
   const statusClass = !unlocked ? 'locked' : isDone ? 'done' : isCurrent ? 'current' : '';
   const clickHandler = !unlocked
     ? 'showLockedLessonModal()'
+    : isExamSim ? `examSimOpenFromNodeId('${node.id}')`
     : isDialogue ? `startModuleDialogueBonus('${node.id}')`
     : isForum ? `startModuleForumBonus('${node.id}')`
     : isEmail ? `startModuleEmailBonus('${node.id}')`
     : `startLessonFlow('${node.id}')`;
   const title = node.title ? (node.title[uiLang]||node.title[primaryLang()]||node.title.en||node.title.de) : '';
-  const chipLabel = pct > 0
-    ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
-    : ({uk:'▶ Почати',     en:'▶ Start',    ru:'▶ Начать',     de:'▶ Starten'}[uiLang] || '▶ Starten');
+  const metaText = !unlocked ? t('lp_locked')
+    : isExamSim ? ({uk:'Симуляція іспиту — необмежена к-сть спроб', en:'Exam simulation — unlimited attempts', ru:'Симуляция экзамена — неограниченно попыток', de:'Prüfungssimulation — beliebig oft wiederholbar'}[uiLang] || 'Симуляція іспиту')
+    : done+' '+t('lp_of')+' '+total+' '+t('lp_cards');
+  const chipLabel = isExamSim
+    ? ({uk:'▶ Почати тест', en:'▶ Start test', ru:'▶ Начать тест', de:'▶ Test starten'}[uiLang] || '▶ Test starten')
+    : pct > 0
+      ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
+      : ({uk:'▶ Почати',     en:'▶ Start',    ru:'▶ Начать',     de:'▶ Starten'}[uiLang] || '▶ Starten');
   return `<div class="lp-examprep-row ${visual.cls} ${statusClass}" id="${isCurrent?'lp-current-module':''}"
       onclick="${clickHandler}">
     <div class="lp-examprep-row-icon">${visual.icon}</div>
     <div class="lp-examprep-row-body">
       <div class="lp-examprep-row-title">${title}</div>
-      <div class="lp-examprep-row-meta">${!unlocked ? t('lp_locked') : done+' '+t('lp_of')+' '+total+' '+t('lp_cards')}</div>
+      <div class="lp-examprep-row-meta">${metaText}</div>
     </div>
-    ${isCurrent ? `<div class="lp-examprep-row-chip">${chipLabel}</div>`
+    ${isExamSim ? `<div class="lp-examprep-row-chip">${chipLabel}</div>`
+      : isCurrent ? `<div class="lp-examprep-row-chip">${chipLabel}</div>`
       : (isDone ? '<div class="lp-examprep-row-check">✓</div>' : '<div class="lp-examprep-row-arrow">›</div>')}
   </div>`;
 }
@@ -9963,8 +9983,11 @@ var _examSimState = {
 // Дві РІЗНІ випадкові теми з усіх наявних — та сама механіка "виберіть
 // одне з двох завдань", що на реальному telc/DTB Schreiben. Вибір між
 // ними відбувається вже ВСЕРЕДИНІ симуляції (examSimPickCard нижче),
-// не тут.
-function debugOpenExamSimForumsbeitrag(){
+// не тут. Раніше — debugOpenExamSimForumsbeitrag(), викликалась лише з
+// Debug-кнопки; тепер це вже не debug-фіча, а реальний вузол у главі
+// "Підготовка до екзамену" (renderExamPrepRow → examSimOpenFromNode
+// нижче), тож і назва без префіксу debug.
+function openExamSimForumsbeitrag(){
   var cards = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN.slice() : [];
   if(cards.length < 2){
     notify('⚠️ Потрібно щонайменше 2 картки Forumsbeitrag (var SCHREIBEN) у поточному курсі');
@@ -9979,6 +10002,26 @@ function debugOpenExamSimForumsbeitrag(){
   _examSimShowBriefing('Forumsbeitrag');
 }
 
+// Спільна точка входу для ВСІХ вузлів симуляції іспиту в Lernpfad
+// (renderExamPrepRow нижче передає сюди node.simPart із бази курсу) —
+// один роутер, а не окрема функція на кожен вузол, щоб додавання нової
+// симуляції (напр. Mündliche Prüfung Teil 1 чи E-Mail) означало лише
+// новий case тут + новий запис у курсовій LESSONS, без правок рендеру.
+function examSimOpenFromNode(node){
+  var part = (node && node.simPart) || 'Forumsbeitrag';
+  if(part === 'Forumsbeitrag'){ openExamSimForumsbeitrag(); return; }
+  notify('⚠️ Симуляція для "'+part+'" ще не реалізована');
+}
+
+// onclick у renderExamPrepRow передає лише id (той самий патерн, що й
+// startModuleDialogueBonus/startModuleForumBonus нижче) — сам вузол
+// шукаємо тут, а не серіалізуємо цілий об'єкт у HTML-атрибут.
+function examSimOpenFromNodeId(nodeId){
+  var lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
+  var node = lessons.find(function(l){ return l.id === nodeId; });
+  examSimOpenFromNode(node);
+}
+
 // Формат "7:30 хв" замість "7.5 хв" — timeMin може бути дробовим
 // (тестовий режим), тож показуємо як хв:сек, коли є залишок секунд.
 function _examSimFormatMinutes(timeMin){
@@ -9989,14 +10032,8 @@ function _examSimFormatMinutes(timeMin){
 
 function _examSimShowBriefing(part){
   var cfg = _examSimConfig(part) || {};
-  // ⚠️ ТИМЧАСОВО 7:30 замість 20 хв — для швидкого тестування без
-  // очікування (7:30 обрано навмисно — вкладає в себе і поріг "2 хв"
-  // (зникнення "Обрати іншу тему"), і поріг "5 хв" (рання кнопка "Текст
-  // готовий"), і саме завершення часу — усе можна перевірити за один
-  // прогін). Повернути на 20 (чи прибрати зовсім, коли в усіх курсах
-  // буде свій var EXAM_SIM.Forumsbeitrag.time_min), коли тестування
-  // завершено.
-  var timeMin = cfg.time_min || 7.5;
+  // Дефолт 20 хв, якщо в курсі ще нема свого var EXAM_SIM.<part>.time_min.
+  var timeMin = cfg.time_min || 20;
   _examSimState.part = part;
   _examSimState.timeMin = timeMin;
 
