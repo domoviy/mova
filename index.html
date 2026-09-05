@@ -4060,7 +4060,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '595-793c15a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9042,7 +9042,13 @@ function renderLernpfad(){
     let curGroup = null;
     ch.modules.forEach(function(m){
       if(!curGroup || curGroup.parentId !== m._parentModuleId){
-        curGroup = { parentId: m._parentModuleId, moduleNum: m.module, title: m.title, nodes: [], lastLesson: null };
+        // moduleTitle (опційне) — окрема назва САМЕ модуля, окремо від
+        // title вузла (назва рядка). Потрібно там, де модуль складається
+        // з ОДНОГО вузла з іншою власною назвою — напр. модуль "Симуляція
+        // іспиту" містить один рядок "Forumsbeitrag": заголовок модуля і
+        // назва рядка мають розрізнятись. Без moduleTitle — стара
+        // поведінка (заголовок = title першого вузла групи), без змін.
+        curGroup = { parentId: m._parentModuleId, moduleNum: m.module, title: m.moduleTitle || m.title, nodes: [], lastLesson: null };
         moduleGroups.push(curGroup);
       }
       curGroup.nodes.push(m);
@@ -9055,7 +9061,13 @@ function renderLernpfad(){
 
     let nodeIdx = 0;
     const modulesHtml = moduleGroups.map(function(grp){
-      const doneCount = grp.nodes.filter(n=>lessonProgress(n).pct>=80).length;
+      // examsim (симуляція іспиту) — НЕ рахуємо в дробі прогресу модуля:
+      // це не картки для проходження, а повторювана спроба (немає
+      // cardIds, lessonProgress завжди {pct:0}) — якби рахувати її в
+      // знаменнику nodes.length, дріб типу "39/40" ніколи не дійшов би
+      // до 100%, хоча реально всі СПРАВЖНІ картки модуля пройдені.
+      const countableNodes = grp.nodes.filter(n => n.type !== 'examsim');
+      const doneCount = countableNodes.filter(n=>lessonProgress(n).pct>=80).length;
       const hasModuleCurrent = grp.nodes.some(n=>findCurrentLesson()?.id===n.id);
       // Той самий принцип, що глава вище: розгорнутий лише модуль з
       // АКТИВНИМ уроком, а не будь-який модуль з хоч якимось прогресом —
@@ -9083,7 +9095,7 @@ function renderLernpfad(){
       const pathWrapClass = ch.isExamPrep ? 'lp-examprep-list' : 'lp-path';
 
       return `<div class="lp-module-section ${isModuleOpen?'open':''}">
-        ${renderModuleDivider(grp, ch, doneCount)}
+        ${renderModuleDivider(grp, ch, doneCount, countableNodes.length)}
         <div class="lp-module-section-body"><div class="${pathWrapClass}">${pathHtml}</div></div>
       </div>`;
     }).join('');
@@ -9182,14 +9194,19 @@ function _lpZigzagOffset(i){
 // між кроками стежки). Дублює й ГЛАВУ (номер+назва) поруч з модулем:
 // у довгій розгорнутій главі з кількома модулями інакше губиться
 // орієнтир "де я зараз", коли скролиш глибоко вниз повз шапку глави.
-function renderModuleDivider(grp, ch, doneCount){
+function renderModuleDivider(grp, ch, doneCount, countableTotal){
   const title = grp.title[uiLang]||grp.title[primaryLang()]||grp.title.en||grp.title.de;
   const chTitle = ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de;
+  const total = (typeof countableTotal === 'number') ? countableTotal : grp.nodes.length;
+  // total===0 — модуль складається ЛИШЕ з examsim-вузлів (немає жодної
+  // картки, що рахується) — "0/0" виглядав би як помилка, тож просто не
+  // показуємо дріб замість нього.
+  const metaHtml = total > 0 ? `<span class="lp-module-divider-meta">${doneCount}/${total}</span>` : '';
   return `<div class="lp-module-divider ${ch.isExamPrep?'examprep':''}" onclick="this.closest('.lp-module-section').classList.toggle('open')">
     <div class="lp-module-divider-crumb">${t('lp_chapter_prefix')} ${ch.num} · ${chTitle}</div>
     <div class="lp-module-divider-main">
       <span class="lp-module-divider-text">${t('lp_module_prefix')} ${grp.moduleNum} · ${title}</span>
-      <span class="lp-module-divider-meta">${doneCount}/${grp.nodes.length}</span>
+      ${metaHtml}
       ${renderModuleDividerVocabBtn(grp.lastLesson)}
       ${renderModuleDividerGramBtn(grp.lastLesson)}
       <span class="lp-module-divider-arrow">▼</span>

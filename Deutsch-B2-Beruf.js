@@ -9555,6 +9555,38 @@ var LESSONS = [
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 48,
     "_subTotal": 48
+  },
+  {
+    "id": "examsim_forumsbeitrag",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 5,
+    "moduleTitle": {
+      "de": "Prüfungssimulation",
+      "uk": "Симуляція іспиту",
+      "en": "Exam simulation",
+      "ru": "Симуляция экзамена"
+    },
+    "title": {
+      "de": "Forumsbeitrag",
+      "uk": "Forumsbeitrag",
+      "en": "Forumsbeitrag",
+      "ru": "Forumsbeitrag"
+    },
+    "type": "examsim",
+    "simPart": "Forumsbeitrag",
+    "cardIds": [],
+    "frmCards": [],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": null,
+    "_parentModuleId": "examsim_module"
   }
 ];
 
