@@ -2907,6 +2907,27 @@ body.lesson-active .vocab-top{
 .marker-legend-label{ font-weight:800; font-size:var(--fs-secondary); margin-bottom:3px; }
 .marker-legend-desc{ color:var(--warm); font-size:var(--fs-tertiary); line-height:1.5; }
 
+/* Симуляція іспиту Forumsbeitrag — дві картки вибору теми
+   (#exam-sim-picker/examSimPickCard), кожна ~половина доступної області
+   (flex:1 в column-контейнері з двома дітьми). */
+.exam-sim-pick-card{
+  flex:1; display:flex; flex-direction:column; justify-content:center; gap:8px;
+  background:rgba(255,255,255,.07); border:1px solid rgba(201,168,76,.25);
+  border-radius:18px; padding:20px; cursor:pointer; overflow:hidden;
+  transition:transform .12s, border-color .12s;
+}
+.exam-sim-pick-card:active{ transform:scale(.98); border-color:var(--gold); }
+.exam-sim-pick-badge{
+  align-self:flex-start; background:rgba(201,168,76,.15); color:var(--gold);
+  font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.5px;
+  padding:3px 9px; border-radius:8px;
+}
+.exam-sim-pick-topic-title{ color:#fff; font-size:16px; font-weight:800; line-height:1.3; }
+.exam-sim-pick-topic-text{
+  color:rgba(255,255,255,.65); font-size:13px; line-height:1.5;
+  display:-webkit-box; -webkit-line-clamp:4; -webkit-box-orient:vertical; overflow:hidden;
+}
+
 /* mc-options used in practice/exam: make buttons work as answer tiles */
 #sb-prac-options .mc-opt, #sb-exam-options .mc-opt {
   cursor:pointer; transition:border-color .15s, background .15s;
@@ -3263,10 +3284,16 @@ body.lesson-active .vocab-top{
      1) #exam-sim-briefing — час, умови формату, рекомендація роздрукувати
         бланк, кнопка "Почати тест" (та сама .btn-lesson-sb-next, що й
         звичайна "Далі" в уроках).
-     2) #exam-sim-test — саме завдання й таймер, що рахує ВНИЗ; по нулю —
-        звуковий сигнал (синтезований Web Audio API, без окремого файлу). -->
+     2) #exam-sim-test — дві стадії:
+        - #exam-sim-picker: ДВІ випадкові теми ("картки" по ~половині
+          екрана) — вибір теми так само входить у відведений час, як і на
+          реальному telc/DTB Schreiben.
+        - #exam-sim-write: обрана тема на весь екран + "↺ Обрати іншу
+          тему" (зникає через 2 хв від старту — вибір стає остаточним).
+        Таймер рахує ВНИЗ від старту (не від вибору теми); звуковий
+        сигнал по завершенню (синтезований Web Audio API). -->
 <div id="exam-sim-briefing" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
-  <button onclick="closeExamSimBriefing()" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
+  <button onclick="closeExamSimBriefing()" title="Закрити" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
   <div style="width:100%;max-width:380px;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:24px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;max-height:80vh;overflow-y:auto">
     <div style="text-align:center">
       <div style="font-size:36px;margin-bottom:10px">✍️</div>
@@ -3275,7 +3302,7 @@ body.lesson-active .vocab-top{
     </div>
     <div style="width:100%;background:rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;text-align:center">
       <div style="color:rgba(255,255,255,.55);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">У вас буде</div>
-      <div style="color:var(--gold);font-size:32px;font-weight:800"><span id="exam-sim-time">20</span> <span style="font-size:16px;font-weight:600">хв</span></div>
+      <div style="color:var(--gold);font-size:32px;font-weight:800" id="exam-sim-time">7:30</div>
     </div>
     <p id="exam-sim-instructions" style="color:rgba(255,255,255,.8);font-size:14px;line-height:1.5;margin:0;text-align:left;width:100%"></p>
     <div id="exam-sim-blank-row" style="display:none;width:100%;flex-direction:column;gap:8px;background:rgba(255,255,255,.05);border:1px dashed rgba(201,168,76,.4);border-radius:14px;padding:14px">
@@ -3288,23 +3315,44 @@ body.lesson-active .vocab-top{
 
 <div id="exam-sim-test" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:stretch;padding:0">
   <div style="display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 16px) 20px 12px">
-    <button onclick="closeExamSimTest()" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
-    <div id="exam-sim-countdown" style="color:var(--gold);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">1:00</div>
     <div style="width:34px"></div>
+    <div id="exam-sim-countdown" style="color:var(--gold);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">7:30</div>
+    <button onclick="closeExamSimTest()" title="Закрити завдання" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
   </div>
   <div id="exam-sim-timeup-banner" style="display:none;margin:0 20px 4px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:10px 14px;text-align:center;color:var(--gold);font-weight:700">⏰ Час вийшов!</div>
-  <div style="flex:1;overflow-y:auto;padding:8px 24px 100px;display:flex;flex-direction:column;gap:12px">
+
+  <!-- Стадія 1 — вибір теми: дві картки, кожна ~половина області.
+       Клік по картці переводить у стадію "write" (examSimPickCard). -->
+  <div id="exam-sim-picker" style="display:none;flex:1;flex-direction:column;gap:12px;padding:8px 20px 24px">
+    <div class="exam-sim-pick-card" onclick="examSimPickCard(0)">
+      <div class="exam-sim-pick-badge">Тема 1</div>
+      <div class="exam-sim-pick-topic-title" id="exam-sim-pick-topic-0"></div>
+      <div class="exam-sim-pick-topic-text" id="exam-sim-pick-task-0"></div>
+    </div>
+    <div class="exam-sim-pick-card" onclick="examSimPickCard(1)">
+      <div class="exam-sim-pick-badge">Тема 2</div>
+      <div class="exam-sim-pick-topic-title" id="exam-sim-pick-topic-1"></div>
+      <div class="exam-sim-pick-topic-text" id="exam-sim-pick-task-1"></div>
+    </div>
+  </div>
+
+  <!-- Стадія 2 — написання: обрана тема на весь екран. -->
+  <div id="exam-sim-write" style="display:none;flex:1;overflow-y:auto;padding:8px 24px 100px;flex-direction:column;gap:12px">
     <div id="exam-sim-topic" style="color:var(--gold);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:.5px"></div>
     <div id="exam-sim-task" style="color:#fff;font-size:17px;line-height:1.6;white-space:pre-wrap"></div>
   </div>
-  <!-- З'являється лише ПІСЛЯ завершення часу (_examSimTick нижче) — той
-       самий візуальний рушій, що звичайний рядок "Далі"+"Повторити" в
-       уроках (lf-repeat-btn/btn-lesson-sb-next, ті самі класи), тільки
-       з власним bottom-offset без var(--nav-h): цей екран повноекранний
-       і нижньої навігації під собою не має. -->
+
+  <!-- "Обрати іншу тему" — лише в стадії write, і лише перші 2 хв від
+       старту (_examSimUpdateRepickVisibility) — потім вибір остаточний. -->
+  <button id="exam-sim-repick-btn" onclick="examSimBackToPicker()"
+    style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:14px;font-size:var(--fs-card);font-weight:700;cursor:pointer;font-family:inherit;z-index:200">↺ Обрати іншу тему</button>
+
+  <!-- З'являється двічі: рано (5 хв від старту, ще є час — м'яке "Текст
+       готовий") і по завершенню часу ("Завершити") — той самий блок,
+       лише напис основної кнопки міняється (_examSimShowFinishBlock). -->
   <div id="exam-sim-timeup-actions" style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;gap:10px;z-index:201">
     <button onclick="examSimShowExample()" class="lf-repeat-btn" title="Подивитися приклад">👁</button>
-    <button onclick="closeExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;flex:1">Завершити</button>
+    <button id="exam-sim-finish-btn" onclick="closeExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;flex:1">Завершити</button>
   </div>
 </div>
 
@@ -3966,8 +4014,8 @@ body.lesson-active .vocab-top{
     </div>
 
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>✍️ Schreiben — Forumsbeitrag (симуляція іспиту)</label><small>Умови й ліміт часу — з бази курсу (var EXAM_SIM), не з index.html. Показує брифінг (час, рекомендація роздрукувати бланк) → "Почати тест" → завдання без перекладу й зворотний відлік, зі звуковим сигналом по завершенню.</small></div>
-      <div id="debug-examsim-forum-topics" style="display:flex;flex-direction:column;gap:6px"></div>
+      <div class="srow-label"><label>✍️ Schreiben — Forumsbeitrag (симуляція іспиту)</label><small>Умови й ліміт часу — з бази курсу (var EXAM_SIM), не з index.html. Показує брифінг (час, рекомендація роздрукувати бланк) → "Почати тест" → дві випадкові теми на вибір → обрана на весь екран, зворотний відлік, зі звуковим сигналом по завершенню.</small></div>
+      <button class="btn btn-s" onclick="debugOpenExamSimForumsbeitrag()">✍️ Почати тест</button>
     </div>
     </div>
     </div>
@@ -4008,7 +4056,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '593-bd68b07';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9837,8 +9885,6 @@ function toggleDebugSection(headerEl){
     // бо STORY залежить від активного курсу і міг ще не бути завантажений
     // у момент першого рендеру DOM.
     debugRenderStoryTopics();
-    // Те саме для тем Forumsbeitrag (var SCHREIBEN) — симуляція іспиту.
-    debugRenderExamSimForumTopics();
   }
 }
 
@@ -9901,52 +9947,61 @@ function _examSimConfig(part){
   return (typeof EXAM_SIM !== 'undefined' && EXAM_SIM && EXAM_SIM[part]) ? EXAM_SIM[part] : null;
 }
 
-function debugRenderExamSimForumTopics(){
-  var container = document.getElementById('debug-examsim-forum-topics');
-  if(!container) return;
-  var cards = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN : [];
-  if(!cards.length){
-    container.innerHTML = '<div style="color:var(--muted);font-size:var(--fs-utility)">Немає жодної картки Forumsbeitrag (var SCHREIBEN) у поточному курсі</div>';
+// Стан однієї "спроби" симуляції — дві випадкові кандидатські картки,
+// стадія ('pick'|'write'), обрана картка (після вибору), таймер і
+// AudioContext для сигналу по завершенню. AudioContext створюємо/
+// розблоковуємо в startExamSimTest() — це СПРАВЖНІЙ жест користувача
+// (клік "Почати тест"), і саме на ньому тримається можливість
+// відтворити сигнал ПІЗНІШЕ, коли час вийде, без нового жесту.
+var _examSimState = {
+  part: null, timeMin: 20, candidateCards: [], card: null, stage: 'pick',
+  timerId: null, startedAt: null, endsAt: null,
+  audioCtx: null, audioDest: null, audioEl: null,
+  warned5: false, warned1: false, earlyFinishShown: false, wakeLock: null,
+};
+
+// Дві РІЗНІ випадкові теми з усіх наявних — та сама механіка "виберіть
+// одне з двох завдань", що на реальному telc/DTB Schreiben. Вибір між
+// ними відбувається вже ВСЕРЕДИНІ симуляції (examSimPickCard нижче),
+// не тут.
+function debugOpenExamSimForumsbeitrag(){
+  var cards = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN.slice() : [];
+  if(cards.length < 2){
+    notify('⚠️ Потрібно щонайменше 2 картки Forumsbeitrag (var SCHREIBEN) у поточному курсі');
     return;
   }
-  var pl = typeof primaryLang === 'function' ? primaryLang() : 'de';
-  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  container.innerHTML = cards.map(function(card, i){
-    var rawLabel = (typeof _lfBilingualLabel === 'function' && card.topic) ? _lfBilingualLabel(card.topic, pl, ul) : '';
-    var label = _escapeHtmlText(rawLabel ? rawLabel.replace(/<[^>]*>/g,'') : ('Тема '+(i+1)));
-    return '<button class="btn btn-s" style="text-align:left" onclick="debugOpenExamSimForumsbeitrag('+i+')">✍️ '+(i+1)+'. '+label+'</button>';
-  }).join('');
+  var i = Math.floor(Math.random() * cards.length);
+  var a = cards[i];
+  var rest = cards.filter(function(c){ return c.id !== a.id; });
+  var b = rest[Math.floor(Math.random() * rest.length)];
+  _examSimState.candidateCards = [a, b];
+  _examSimState.card = null;
+  _examSimShowBriefing('Forumsbeitrag');
 }
 
-// Стан однієї "спроби" симуляції — картка, обраний part (тип іспиту),
-// таймер зворотного відліку і AudioContext для сигналу по завершенню.
-// AudioContext створюємо/розблоковуємо в startExamSimTest() — це
-// СПРАВЖНІЙ жест користувача (клік "Почати тест"), і саме на ньому
-// тримається можливість відтворити сигнал ПІЗНІШЕ, коли час вийде,
-// без нового жесту (браузери зазвичай дозволяють подальше відтворення
-// в контексті, вже розблокованому раніше жестом).
-var _examSimState = { part: null, timeMin: 20, card: null, timerId: null, endsAt: null, audioCtx: null, audioDest: null, audioEl: null, warned5: false, warned1: false, wakeLock: null };
-
-function debugOpenExamSimForumsbeitrag(topicIndex){
-  var cards = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN : [];
-  var card = cards[topicIndex];
-  if(!card){ notify('⚠️ Немає такої картки Forumsbeitrag'); return; }
-  _examSimState.card = card;
-  _examSimShowBriefing('Forumsbeitrag');
+// Формат "7:30 хв" замість "7.5 хв" — timeMin може бути дробовим
+// (тестовий режим), тож показуємо як хв:сек, коли є залишок секунд.
+function _examSimFormatMinutes(timeMin){
+  var totalSec = Math.round(timeMin * 60);
+  var m = Math.floor(totalSec / 60), s = totalSec % 60;
+  return s === 0 ? (m + ' хв') : (m + ':' + (s < 10 ? '0' : '') + s);
 }
 
 function _examSimShowBriefing(part){
   var cfg = _examSimConfig(part) || {};
-  // ⚠️ ТИМЧАСОВО 6 хв замість 20 — для швидкого тестування без
-  // очікування. Повернути на 20 (чи прибрати зовсім, коли в усіх
-  // курсах буде свій var EXAM_SIM.Forumsbeitrag.time_min), коли
-  // тестування завершено.
-  var timeMin = cfg.time_min || 6;
+  // ⚠️ ТИМЧАСОВО 7:30 замість 20 хв — для швидкого тестування без
+  // очікування (7:30 обрано навмисно — вкладає в себе і поріг "2 хв"
+  // (зникнення "Обрати іншу тему"), і поріг "5 хв" (рання кнопка "Текст
+  // готовий"), і саме завершення часу — усе можна перевірити за один
+  // прогін). Повернути на 20 (чи прибрати зовсім, коли в усіх курсах
+  // буде свій var EXAM_SIM.Forumsbeitrag.time_min), коли тестування
+  // завершено.
+  var timeMin = cfg.time_min || 7.5;
   _examSimState.part = part;
   _examSimState.timeMin = timeMin;
 
   var timeEl = document.getElementById('exam-sim-time');
-  if(timeEl) timeEl.textContent = timeMin;
+  if(timeEl) timeEl.textContent = _examSimFormatMinutes(timeMin);
 
   var instrEl = document.getElementById('exam-sim-instructions');
   if(instrEl){
@@ -9985,24 +10040,21 @@ function startExamSimTest(){
   var briefing = document.getElementById('exam-sim-briefing');
   if(briefing) briefing.style.display = 'none';
 
-  var card = _examSimState.card;
-  var pl = primaryLang();
-  var topicEl = document.getElementById('exam-sim-topic');
-  var taskEl  = document.getElementById('exam-sim-task');
-  // Завдання показуємо ЛИШЕ primary_lang, без перекладу — на реальному
-  // папері іспиту перекладу теж нема, і мета симуляції саме в цьому.
-  if(topicEl) topicEl.textContent = (card && card.topic && card.topic[pl]) || '';
-  if(taskEl)  taskEl.textContent  = (card && card.task  && card.task[pl])  || '';
+  _examSimState.card = null;
+  _examSimRenderPicker();
 
   var totalSec = (_examSimState.timeMin || 20) * 60;
-  _examSimState.endsAt = Date.now() + totalSec * 1000;
+  _examSimState.startedAt = Date.now();
+  _examSimState.endsAt = _examSimState.startedAt + totalSec * 1000;
   _examSimState.warned5 = false;
   _examSimState.warned1 = false;
+  _examSimState.earlyFinishShown = false;
   var banner = document.getElementById('exam-sim-timeup-banner');
   if(banner) banner.style.display = 'none';
   var actions = document.getElementById('exam-sim-timeup-actions');
   if(actions) actions.style.display = 'none';
   _examSimRenderCountdown(totalSec * 1000);
+  _examSimShowStage('pick');
 
   if(_examSimState.timerId) clearInterval(_examSimState.timerId);
   _examSimState.timerId = setInterval(_examSimTick, 250);
@@ -10013,8 +10065,82 @@ function startExamSimTest(){
   if(testEl) testEl.style.display = 'flex';
 }
 
+// Заповнює дві картки-теми даними з _examSimState.candidateCards —
+// лише topic + task, primary_lang, без перекладу (як і скрізь у цій
+// симуляції).
+function _examSimRenderPicker(){
+  var pl = primaryLang();
+  _examSimState.candidateCards.forEach(function(card, i){
+    var topicEl = document.getElementById('exam-sim-pick-topic-'+i);
+    var taskEl  = document.getElementById('exam-sim-pick-task-'+i);
+    if(topicEl) topicEl.textContent = (card.topic && card.topic[pl]) || '';
+    if(taskEl)  taskEl.textContent  = (card.task  && card.task[pl])  || '';
+  });
+}
+
+// Перемикач стадій pick/write — керує лише видимістю двох контейнерів;
+// самі дані вже заповнені (_examSimRenderPicker при старті,
+// examSimPickCard нижче — при виборі).
+function _examSimShowStage(stage){
+  _examSimState.stage = stage;
+  var picker = document.getElementById('exam-sim-picker');
+  var write  = document.getElementById('exam-sim-write');
+  if(picker) picker.style.display = stage === 'pick' ? 'flex' : 'none';
+  if(write)  write.style.display  = stage === 'write' ? 'flex' : 'none';
+  _examSimUpdateRepickVisibility();
+}
+
+// Клік по одній з двох карток — обираємо тему, розгортаємо на весь
+// екран (стадія write).
+function examSimPickCard(i){
+  var card = _examSimState.candidateCards[i];
+  if(!card) return;
+  _examSimState.card = card;
+  var pl = primaryLang();
+  var topicEl = document.getElementById('exam-sim-topic');
+  var taskEl  = document.getElementById('exam-sim-task');
+  // Завдання показуємо ЛИШЕ primary_lang, без перекладу — на реальному
+  // папері іспиту перекладу теж нема, і мета симуляції саме в цьому.
+  if(topicEl) topicEl.textContent = (card.topic && card.topic[pl]) || '';
+  if(taskEl)  taskEl.textContent  = (card.task  && card.task[pl])  || '';
+  _examSimShowStage('write');
+}
+
+// "↺ Обрати іншу тему" — повертає до тих самих двох карток (не генерує
+// нову пару), щоб можна було передумати між ОБОМА варіантами, що вже
+// показали, а не отримати випадково третій.
+function examSimBackToPicker(){
+  _examSimState.card = null;
+  _examSimShowStage('pick');
+}
+
+// Кнопка "Обрати іншу тему" видима лише в стадії write, і лише перші
+// 2 хв ВІД СТАРТУ (не від моменту вибору теми) — після цього вибір
+// вважається остаточним, як і на реальному іспиті: трохи часу
+// подумати, а не гортати варіанти всю відведену годину.
+function _examSimUpdateRepickVisibility(){
+  var btn = document.getElementById('exam-sim-repick-btn');
+  if(!btn) return;
+  var elapsed = Date.now() - (_examSimState.startedAt || Date.now());
+  btn.style.display = (_examSimState.stage === 'write' && elapsed < 2*60000) ? 'block' : 'none';
+}
+
 function _examSimTick(){
   var msLeft = _examSimState.endsAt - Date.now();
+  var elapsed = Date.now() - (_examSimState.startedAt || Date.now());
+
+  // "Обрати іншу тему" зникає через 2 хв ВІД СТАРТУ (лише актуально в
+  // стадії write — у pick її й так нема на екрані).
+  _examSimUpdateRepickVisibility();
+
+  // Рання кнопка "Текст готовий" — за 5 хв ВІД СТАРТУ (елапсед!), на
+  // відміну від попереджувальних сигналів нижче, які рахують від
+  // ЗАЛИШКУ часу до кінця — це геть інший відлік і геть інша мета:
+  // "у тебе вже було достатньо часу, можеш здати раніше, якщо готов(-a)".
+  if(!_examSimState.earlyFinishShown && elapsed >= 5*60000 && msLeft > 0){
+    _examSimState.earlyFinishShown = true;
+    _examSimShowFinishBlock(false);
+  }
 
   // Попереджувальні сигнали — по одному разу за спробу (прапорці
   // скидаються в startExamSimTest()). Кожен — лише якщо загальний час
@@ -10038,12 +10164,27 @@ function _examSimTick(){
     _examSimRenderCountdown(0);
     var banner = document.getElementById('exam-sim-timeup-banner');
     if(banner) banner.style.display = 'block';
-    var actions = document.getElementById('exam-sim-timeup-actions');
-    if(actions) actions.style.display = 'flex';
+    var repick = document.getElementById('exam-sim-repick-btn');
+    if(repick) repick.style.display = 'none';
+    _examSimShowFinishBlock(true);
     _examSimPlayBeep();
     return;
   }
   _examSimRenderCountdown(msLeft);
+}
+
+// Один і той самий блок кнопок (👁 + основна) для ДВОХ різних моментів —
+// напис основної кнопки залежить від того, звідки викликано:
+// - isTimeUp=false (5 хв від старту, час ще є) — м'яке "Текст готовий":
+//   людина сама вирішила, що вже написала.
+// - isTimeUp=true (0:00) — "Завершити": час справді вийшов.
+// Формулювання навмисно без дієслова минулого часу від першої особи
+// ("написав"/"написала") — щоб не прив'язуватись до роду того, хто пише.
+function _examSimShowFinishBlock(isTimeUp){
+  var actions = document.getElementById('exam-sim-timeup-actions');
+  if(actions) actions.style.display = 'flex';
+  var finishBtn = document.getElementById('exam-sim-finish-btn');
+  if(finishBtn) finishBtn.textContent = isTimeUp ? 'Завершити' : 'Текст готовий';
 }
 
 function _examSimRenderCountdown(msLeft){
@@ -10104,7 +10245,7 @@ document.addEventListener('visibilitychange', function(){
 // пошуку lessonId у LESSONS: людина щойно писала відповідь саме на
 // ЦЕ завдання, тож приклад має бути саме до нього, а не довільний.
 function examSimShowExample(){
-  var card = _examSimState.card;
+  var card = _examSimState.card || _examSimState.candidateCards[0];
   if(!card){ closeExamSimTest(); return; }
   const pl = primaryLang();
   const title = {
