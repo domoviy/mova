@@ -23114,37 +23114,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf den Fehler in unserer <c>Rechnung Nr. 2026-0847</c> hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the error in our invoice no. 2026-0847.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на помилку в нашому рахунку № 2026-0847.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на ошибку в нашем счёте № 2026-0847."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the error in our invoice no. 2026-0847.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на помилку в нашому рахунку № 2026-0847.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на ошибку в нашем счёте № 2026-0847."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Bedauerlicherweise ist uns ein Fehler unterlaufen, für den wir uns hiermit entschuldigen möchten.</r> Es tut uns sehr leid, dass dadurch bei Ihnen zusätzlicher Aufwand entstanden ist.",
-        "en": "Unfortunately, a mistake was made on our part, for which we would like to apologise. We are very sorry that this caused you additional effort.",
-        "uk": "На жаль, з нашого боку сталася помилка, за яку ми хочемо перепросити. Нам дуже прикро, що це спричинило для Вас додаткові клопоти.",
-        "ru": "К сожалению, с нашей стороны была допущена ошибка, за которую мы хотим извиниться. Нам очень жаль, что это создало для Вас дополнительные хлопоты."
+        "en": "<r>Unfortunately, a mistake was made on our part, for which we would like to apologise.</r> We are very sorry that this caused you additional effort.",
+        "uk": "<r>На жаль, з нашого боку сталася помилка, за яку ми хочемо перепросити.</r> Нам дуже прикро, що це спричинило для Вас додаткові клопоти.",
+        "ru": "<r>К сожалению, с нашей стороны была допущена ошибка, за которую мы хотим извиниться.</r> Нам очень жаль, что это создало для Вас дополнительные хлопоты."
       },
       {
         "role": "grund",
-        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es bei der Umstellung auf unsere neue Abrechnungssoftware zu Fehlern gekommen ist. <k>Dabei</k> wurde <g>weder</g> der vereinbarte Mengenrabatt korrekt hinterlegt, <g>noch</g> die Umsatzsteuer auf den richtigen Nettobetrag berechnet.",
-        "en": "We have since found out that errors occurred during the switch to our new billing software. In the process, neither was the agreed volume discount applied correctly, nor was VAT calculated on the correct net amount.",
-        "uk": "Ми вже з'ясували, що під час переходу на нове програмне забезпечення для виставлення рахунків сталися помилки. При цьому не було ні правильно застосовано узгоджену оптову знижку, ні правильно розраховано ПДВ на правильну суму нетто.",
-        "ru": "Мы уже выяснили, что при переходе на новое программное обеспечение для выставления счетов произошли ошибки. При этом не была ни правильно применена согласованная оптовая скидка, ни правильно рассчитан НДС на верную сумму нетто."
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es bei der Umstellung auf unsere neue Abrechnungssoftware zu Fehlern gekommen ist. <g>Dabei</g> wurde <k>weder</k> der vereinbarte Mengenrabatt korrekt hinterlegt, <k>noch</k> die Umsatzsteuer auf den richtigen Nettobetrag berechnet.",
+        "en": "<r>We have since found out that</r> errors occurred during the switch to our new billing software. In the process, neither was the agreed volume discount applied correctly, nor was VAT calculated on the correct net amount.",
+        "uk": "<r>Ми вже з'ясували, що</r> під час переходу на нове програмне забезпечення для виставлення рахунків сталися помилки. При цьому не було ні правильно застосовано узгоджену оптову знижку, ні правильно розраховано ПДВ на правильну суму нетто.",
+        "ru": "<r>Мы уже выяснили, что</r> при переходе на новое программное обеспечение для выставления счетов произошли ошибки. При этом не была ни правильно применена согласованная оптовая скидка, ни правильно рассчитан НДС на верную сумму нетто."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung erhalten Sie von uns</r> eine korrigierte Rechnung mit dem vereinbarten Mengenrabatt sowie zusätzlich eine Gutschrift in Höhe von 50 Euro auf Ihrem Kundenkonto für die entstandenen Unannehmlichkeiten. <r>Zusätzlich bieten wir Ihnen an,</r> die Zahlungsfrist für die korrigierte Rechnung um zwei Wochen zu verlängern.",
-        "en": "As compensation, you will receive from us a corrected invoice with the agreed volume discount, as well as an additional credit of €50 on your customer account for the inconvenience caused. In addition, we offer to extend the payment deadline for the corrected invoice by two weeks.",
-        "uk": "Як компенсацію Ви отримаєте від нас виправлений рахунок з узгодженою оптовою знижкою, а також додатково гутшрифт у розмірі 50 євро на Вашому клієнтському рахунку за завдані незручності. Крім того, пропонуємо продовжити термін оплати виправленого рахунку на два тижні.",
-        "ru": "В качестве компенсации Вы получите от нас исправленный счёт с согласованной оптовой скидкой, а также дополнительно кредит-ноту в размере 50 евро на Вашем клиентском счёте за причинённые неудобства. Кроме того, предлагаем продлить срок оплаты исправленного счёта на две недели."
+        "de": "<r>Als Entschädigung erhalten Sie von uns</r> eine korrigierte Rechnung mit dem vereinbarten Mengenrabatt sowie zusätzlich eine Gutschrift in Höhe von 50 Euro auf Ihrem Kundenkonto für die entstandenen Unannehmlichkeiten. <r>Zusätzlich bieten wir Ihnen an,</r> die Zahlungsfrist für die korrigierte Rechnung um zwei Wochen zu verlängern.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation, you will receive from us</r> a corrected invoice with the agreed volume discount, as well as an additional credit of €50 on your customer account for the inconvenience caused. <r>In addition, we offer</r> to extend the payment deadline for the corrected invoice by two weeks.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію Ви отримаєте від нас</r> виправлений рахунок з узгодженою оптовою знижкою, а також додатково гутшрифт у розмірі 50 євро на Вашому клієнтському рахунку за завдані незручності. <r>Крім того, пропонуємо</r> продовжити термін оплати виправленого рахунку на два тижні.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации Вы получите от нас</r> исправленный счёт с согласованной оптовой скидкой, а также дополнительно кредит-ноту в размере 50 евро на Вашем клиентском счёте за причинённые неудобства. <r>Кроме того, предлагаем</r> продлить срок оплаты исправленного счёта на две недели.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -23272,38 +23272,38 @@ var EMAILS = [
       },
       {
         "role": "bezugnahme",
-        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die ausstehende Lieferung Ihrer Bestellung hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the outstanding delivery of your order.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на невиконану поставку Вашого замовлення.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на невыполненную поставку Вашего заказа."
+        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die <g>ausstehende</g> Lieferung Ihrer Bestellung hingewiesen haben.",
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the outstanding delivery of your order.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на невиконану поставку Вашого замовлення.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на невыполненную поставку Вашего заказа."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Wir möchten uns in aller Form für diese Verzögerung entschuldigen.</r> Uns ist bewusst, wie wichtig eine pünktliche Lieferung gerade vor der Eröffnung Ihres Restaurants für Sie ist.",
-        "en": "We would like to formally apologise for this delay. We are aware how important a punctual delivery is for you, especially right before your restaurant's opening.",
-        "uk": "Ми хочемо офіційно перепросити за цю затримку. Ми усвідомлюємо, наскільки важливою для Вас є своєчасна поставка, особливо напередодні відкриття Вашого ресторану.",
-        "ru": "Мы хотим официально извиниться за эту задержку. Мы осознаём, насколько важна для Вас своевременная поставка, особенно накануне открытия Вашего ресторана."
+        "en": "<r>We would like to formally apologise for this delay.</r> We are aware how important a punctual delivery is for you, especially right before your restaurant's opening.",
+        "uk": "<r>Ми хочемо офіційно перепросити за цю затримку.</r> Ми усвідомлюємо, наскільки важливою для Вас є своєчасна поставка, особливо напередодні відкриття Вашого ресторану.",
+        "ru": "<r>Мы хотим официально извиниться за эту задержку.</r> Мы осознаём, насколько важна для Вас своевременная поставка, особенно накануне открытия Вашего ресторана."
       },
       {
         "role": "grund",
         "de": "<r>Leider wurde uns ein Teil der Rohstoffe zu spät geliefert,</r> <k>sodass</k> sich die Fertigung Ihrer <g>eigens angefertigten</g> <c>Edelstahl-Arbeitsplatten</c> verzögert hat.",
-        "en": "Unfortunately, some of the raw materials were delivered to us too late, so the production of your specially made stainless steel worktops was delayed.",
-        "uk": "На жаль, частину сировини нам доставили із запізненням, тому виготовлення Ваших спеціально виготовлених сталевих стільниць затрималося.",
-        "ru": "К сожалению, часть сырья была доставлена нам с опозданием, поэтому изготовление Ваших специально изготовленных стальных столешниц задержалось."
+        "en": "<r>Unfortunately, some of the raw materials were delivered to us too late,</r> so the production of your specially made stainless steel worktops was delayed.",
+        "uk": "<r>На жаль, частину сировини нам доставили із запізненням,</r> тому виготовлення Ваших спеціально виготовлених сталевих стільниць затрималося.",
+        "ru": "<r>К сожалению, часть сырья была доставлена нам с опозданием,</r> поэтому изготовление Ваших специально изготовленных стальных столешниц задержалось."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung erhalten Sie von uns</r> einen Gutschein im Wert von 150 Euro für Ihre nächste Bestellung. <r>Deswegen schlagen wir Ihnen vor,</r> die bereits <g>versandbereiten</g> Geräte noch heute per Express zu liefern, sodass alles rechtzeitig vor Ihrer Eröffnung bei Ihnen eintrifft.",
-        "en": "As compensation, you will receive from us a voucher worth €150 for your next order. That is why we suggest delivering the already ready-to-ship equipment to you by express today, so that everything arrives in time before your opening.",
-        "uk": "Як компенсацію Ви отримаєте від нас ваучер на суму 150 євро для наступного замовлення. Тому ми пропонуємо доставити Вам уже готове до відправлення обладнання експрес-доставкою сьогодні, щоб усе прибуло вчасно до Вашого відкриття.",
-        "ru": "В качестве компенсации Вы получите от нас ваучер на сумму 150 евро для следующего заказа. Поэтому мы предлагаем доставить Вам уже готовое к отправке оборудование экспресс-доставкой уже сегодня, чтобы всё прибыло вовремя до Вашего открытия."
+        "de": "<r>Als Entschädigung erhalten Sie von uns</r> einen Gutschein im Wert von 150 Euro für Ihre nächste Bestellung. <r>Deswegen schlagen wir Ihnen vor,</r> die bereits versandbereiten Geräte noch heute per Express zu liefern, sodass alles rechtzeitig vor Ihrer Eröffnung bei Ihnen eintrifft.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation, you will receive from us</r> a voucher worth €150 for your next order. <r>That is why we suggest</r> delivering the already ready-to-ship equipment to you by express today, so that everything arrives in time before your opening.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію Ви отримаєте від нас</r> ваучер на суму 150 євро для наступного замовлення. <r>Тому ми пропонуємо</r> доставити Вам уже готове до відправлення обладнання експрес-доставкою сьогодні, щоб усе прибуло вчасно до Вашого відкриття.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации Вы получите от нас</r> ваучер на сумму 150 евро для следующего заказа. <r>Поэтому мы предлагаем</r> доставить Вам уже готовое к отправке оборудование экспресс-доставкой уже сегодня, чтобы всё прибыло вовремя до Вашего открытия.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
