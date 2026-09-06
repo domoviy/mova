@@ -35789,7 +35789,7 @@
   "Deutsch-B2-Beruf/de/085/email/email_003_entschuldigung_de_085": "732f6eb33a+t",
   "Deutsch-B2-Beruf/de/085/email/email_003_grund_de_085": "bcb6a6f40b+t",
   "Deutsch-B2-Beruf/de/085/email/email_003_loesung_de_085": "e0f74f37ff+t",
-  "Deutsch-B2-Beruf/de/085/email/email_003_grussformel_de_085": "fdce47e1a9+t",
+  "Deutsch-B2-Beruf/de/085/email/email_003_grussformel_de_085": "471e68640a+t",
   "Deutsch-B2-Beruf/de/085/email/email_003_unterschrift_de_085": "27649942bd+t",
   "Deutsch-B2-Beruf/de/085/email/email_004_mail_boss_de_085": "3fe3d41877+t",
   "Deutsch-B2-Beruf/de/085/email/email_004_mail_client_de_085": "d9e77dc131+t",
@@ -35797,8 +35797,8 @@
   "Deutsch-B2-Beruf/de/085/email/email_004_bezugnahme_de_085": "4388eb8619+t",
   "Deutsch-B2-Beruf/de/085/email/email_004_entschuldigung_de_085": "5e74b7cd22+t",
   "Deutsch-B2-Beruf/de/085/email/email_004_grund_de_085": "72544e5ec4+t",
-  "Deutsch-B2-Beruf/de/085/email/email_004_loesung_de_085": "8478ccc908+t",
-  "Deutsch-B2-Beruf/de/085/email/email_004_grussformel_de_085": "c0f46de055+t",
+  "Deutsch-B2-Beruf/de/085/email/email_004_loesung_de_085": "e41593092e+t",
+  "Deutsch-B2-Beruf/de/085/email/email_004_grussformel_de_085": "d337fd9b7a+t",
   "Deutsch-B2-Beruf/de/085/email/email_004_unterschrift_de_085": "0062646aa0+t",
   "Deutsch-B2-Beruf/de/100/email/email_005_mail_boss_de_100": "05246dbc02+t",
   "Deutsch-B2-Beruf/de/100/email/email_005_mail_client_de_100": "6b151b24bf+t",
@@ -43619,5 +43619,7 @@
   "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil1_de_100": "9aab4a1a07+t",
   "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil2_de_100": "5d448ad108+t",
   "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil3_de_100": "6b2e133a45+t",
-  "Deutsch-B2-Beruf/de/100/story/story_008_schluss1_de_100": "9963ab7708+t"
+  "Deutsch-B2-Beruf/de/100/story/story_008_schluss1_de_100": "9963ab7708+t",
+  "Deutsch-B2-Beruf/de/085/story/story_003_einleitung_de_085": "45d352f0f1+t",
+  "Deutsch-B2-Beruf/de/085/story/story_003_hauptteil1_de_085": "130e1085e4+t"
 }
