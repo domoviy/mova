@@ -72,7 +72,7 @@ self.addEventListener('fetch', event => {
   // для самих mp3-файлів, тому, на відміну від звичайних ресурсів,
   // ми НЕ показуємо стару версію поки паралельно йде оновлення —
   // чекаємо мережу і лише при її відсутності падаємо в кеш (офлайн).
-  if (url.pathname.endsWith('/audio/manifest.json')) {
+  if (/\/audio\/[^/]+\/manifest\.json$/.test(url.pathname)) {
     event.respondWith(
       fetch(event.request)
         .then(res => {
