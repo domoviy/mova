@@ -35770,7 +35770,7 @@
   "Deutsch-B2-Beruf/de/085/email/email_001_bezugnahme_de_085": "a9259ba169+t",
   "Deutsch-B2-Beruf/de/085/email/email_001_entschuldigung_de_085": "edcd68b3bb+t",
   "Deutsch-B2-Beruf/de/085/email/email_001_grund_de_085": "c2263f4d22+t",
-  "Deutsch-B2-Beruf/de/085/email/email_001_loesung_de_085": "67d45d823c+t",
+  "Deutsch-B2-Beruf/de/085/email/email_001_loesung_de_085": "1fccbeb17a+t",
   "Deutsch-B2-Beruf/de/085/email/email_001_grussformel_de_085": "f8cf104493+t",
   "Deutsch-B2-Beruf/de/085/email/email_001_unterschrift_de_085": "92d574a54d+t",
   "Deutsch-B2-Beruf/de/085/email/email_002_mail_boss_de_085": "490b5abac5+t",
@@ -39255,9 +39255,9 @@
   "Deutsch-B2-Beruf/de/100/story/story_007_schluss1_de_100": "f76cbef750+t",
   "Deutsch-B2-Beruf/de/100/story/story_008_einleitung_de_100": "93fc3cab60+t",
   "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil1_de_100": "9aab4a1a07+t",
-  "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil2_de_100": "9218bbbe88+t",
-  "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil3_de_100": "e223c6ed42+t",
-  "Deutsch-B2-Beruf/de/100/story/story_008_schluss1_de_100": "8eb60278cc+t",
+  "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil2_de_100": "5d448ad108+t",
+  "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil3_de_100": "6b2e133a45+t",
+  "Deutsch-B2-Beruf/de/100/story/story_008_schluss1_de_100": "9963ab7708+t",
   "Deutsch-B2-Beruf/de/085/story/story_006_einleitung_de_085": "5d6c45f9de+t",
   "Deutsch-B2-Beruf/de/085/story/story_006_hauptteil1_de_085": "db8a44562d+t",
   "Deutsch-B2-Beruf/de/085/story/story_006_hauptteil2_de_085": "ecfb092ab6+t",
@@ -43632,5 +43632,6 @@
   "Deutsch-B2-Beruf/uk/100/tlc/tlc_252_def_uk_100": "e26fb7793c",
   "Deutsch-B2-Beruf/uk/100/tlc/tlc_253_def_uk_100": "9627fa8a67",
   "Deutsch-B2-Beruf/uk/100/tlc/tlc_254_def_uk_100": "e144d94349",
-  "Deutsch-B2-Beruf/uk/100/tlc/tlc_255_def_uk_100": "4819e5704d"
+  "Deutsch-B2-Beruf/uk/100/tlc/tlc_255_def_uk_100": "4819e5704d",
+  "Deutsch-B2-Beruf/de/100/story/story_008_schluss2_de_100": "44efc6243f+t"
 }
