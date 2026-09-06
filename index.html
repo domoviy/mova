@@ -4066,7 +4066,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '602-2439946';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6637,12 +6637,16 @@ function srsDaysUntil(id, side){
   return Math.ceil((d.dueDate - Date.now()) / 86400000);
 }
 
-// Рейтинг картки для сортування черги SM-2
+// Рейтинг картки для сортування черги SM-2 — та сама логіка, що й
+// srPriorityFromState() вище: нові першими, далі due перед not-due,
+// а всередині кожної групи менший interval означає вищий пріоритет
+// (див. коментар над srPriorityFromState для деталей і причини зміни).
 function srsPriority(id, side){
   const d = srsLoad(id, side);
-  if(!d.dueDate) return 999;           // нові — першими
-  const overdue = Date.now() - d.dueDate;
-  return overdue / 86400000;           // більше прострочено → вище
+  if(!d.dueDate) return 1e15;          // нові — завжди першими (скінченний сентінел, див. srPriorityFromState)
+  const isDue = Date.now() >= d.dueDate;
+  const interval = d.interval || 1;
+  return (isDue ? 1e9 : 0) - interval;
 }
 
 // ── Batch-варіанти srsDue()/srsPriority() для сортування черг ───
@@ -6660,11 +6664,30 @@ function srDueFromState(state, id){
   if(!root || !root.nextReview) return true; // нова картка — завжди показуємо
   return Date.now() >= srStartOfDay(new Date(root.nextReview)).getTime();
 }
+// Пріоритет картки: (1) нові — завжди найвищий пріоритет; (2) серед
+// РЕШТИ спершу йдуть due-картки, а вже ПОТІМ not-due (навіть якщо
+// вибірку доведеться "добивати" ще не due картками, бо в модулі
+// не вистачає due/нових — див. _runLessonFlow); (3) і в due-, і в
+// not-due-групі менший interval означає ВИЩИЙ пріоритет — слабша
+// картка з коротким циклом повторення (interval=1,2,3 дні) йде
+// перед добре вивченою карткою з довгим циклом (роки), навіть якщо
+// та формально "прострочена на більшу кількість днів". Раніше
+// сортування велось за "скільки днів прострочено" — це залежало від
+// випадкового збігу дат останнього перегляду, а не від того, яка
+// картка справді потребує частішого повторення, тож давно вивчені
+// картки з величезним interval могли випадково "прострочитись" на
+// більшу кількість днів, ніж свіжі слабкі картки, і перебивати їх
+// у черзі Vocab/Tiles/Matching (усі троє читають цю саму функцію).
 function srPriorityFromState(state, id){
   const root = state.cards?.[id];
-  if(!root || !root.nextReview) return 999; // нові — першими
+  // 1e15 — скінченний сентінел (НЕ Infinity: два нових id дали б
+  // Infinity-Infinity=NaN у компараторах .sort(), що поводиться
+  // непередбачувано в різних рушіях).
+  if(!root || !root.nextReview) return 1e15; // нові — завжди першими
   const dueDate = srStartOfDay(new Date(root.nextReview)).getTime();
-  return (Date.now() - dueDate) / 86400000; // більше прострочено → вище
+  const isDue = Date.now() >= dueDate;
+  const interval = root.interval || 1;
+  return (isDue ? 1e9 : 0) - interval;
 }
 
 // Чи слово взагалі ще ЖОДНОГО разу не показувалось користувачу (totalPlays

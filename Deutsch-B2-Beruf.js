@@ -20193,7 +20193,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass bei jedem internen Stellenwechsel künftig ein aktualisierter Lebenslauf eingereicht werden muss. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass bei jedem internen Stellenwechsel künftig <c>ein aktualisierter Lebenslauf eingereicht werden muss</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning that an updated CV will have to be submitted for every internal job change in the future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб надалі при кожному внутрішньому переведенні подавалося оновлене резюме. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы впредь при каждом внутреннем переводе подавалось обновлённое резюме. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20214,7 +20214,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> müssen <g>manche</g> Kolleginnen und Kollegen ihren Lebenslauf kaum je aktualisieren, weil sich an ihrer Tätigkeit über Jahre hinweg nichts ändert. <g>Trotzdem</g> sollen offenbar alle regelmäßig dieselbe Arbeit erledigen, was wenig einheitlich wirkt.",
+        "de": "<r>Andererseits</r> müssen <g>manche</g> Kolleginnen und Kollegen ihren Lebenslauf kaum je aktualisieren, <k>weil</k> sich an ihrer Tätigkeit über Jahre hinweg nichts ändert. Trotzdem <g>sollen</g> offenbar alle regelmäßig dieselbe Arbeit erledigen, was wenig einheitlich wirkt.",
         "en": "On the other hand, some colleagues hardly ever need to update their CV, because nothing changes about their job for years. Nevertheless, everyone is apparently supposed to do the same task regularly, which doesn't seem very consistent.",
         "uk": "З іншого боку, деяким колегам майже ніколи не доводиться оновлювати резюме, бо в їхній діяльності роками нічого не змінюється. Попри це, усі, вочевидь, мають регулярно виконувати одну й ту саму роботу, що виглядає не надто послідовно.",
         "ru": "С другой стороны, некоторым коллегам почти никогда не приходится обновлять резюме, потому что в их деятельности годами ничего не меняется. Несмотря на это, все, видимо, должны регулярно выполнять одну и ту же работу, что выглядит не слишком последовательно."
@@ -20269,7 +20269,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, künftig verstärkt eigene Azubis auszubilden, <g>anstatt</g> fertige Fachkräfte einzustellen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>künftig verstärkt eigene Azubis auszubilden</c>, <k>anstatt</k> fertige Fachkräfte einzustellen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to train more of its own apprentices in the future, instead of hiring ready-made specialists. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує надалі активніше навчати власних учнів, замість наймати вже готових фахівців. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует впредь активнее обучать собственных учеников, вместо того чтобы нанимать уже готовых специалистов. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20283,21 +20283,21 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
-        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir die Azubis von Anfang an nach unseren eigenen Standards ausbilden können, <g>ohne</g> später aufwendig nachschulen zu müssen. <g>Wer</g> die Berufsschule mit guten Noten abschließt, hat zudem oft schon während der Ausbildung realistische Übernahmechancen.",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir die Azubis von Anfang an nach unseren eigenen Standards ausbilden können, <k>ohne</k> später aufwendig nachschulen zu müssen. <g>Wer</g> die Berufsschule mit guten Noten abschließt, hat zudem oft schon während der Ausbildung realistische Übernahmechancen.",
         "en": "One advantage would undoubtedly be that we can train apprentices according to our own standards from the very beginning, without having to retrain them extensively later. Anyone who finishes vocational school with good grades also often already has realistic chances of being taken on during the apprenticeship.",
         "uk": "Однією з переваг, безсумнівно, було б те, що ми можемо з самого початку навчати учнів за власними стандартами, без потреби згодом складно перенавчати їх. До того ж, той, хто закінчує професійне училище з хорошими оцінками, часто вже під час навчання має реальні шанси на працевлаштування.",
         "ru": "Одним из преимуществ, несомненно, было бы то, что мы можем с самого начала обучать учеников по собственным стандартам, без необходимости впоследствии сложно переучивать их. К тому же тот, кто заканчивает профессиональное училище с хорошими оценками, часто уже во время обучения имеет реальные шансы на трудоустройство."
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> kostet eine duale Ausbildung die Firma über mehrere Jahre hinweg Zeit und Geld, und nicht jeder Azubi bleibt am Ende auch wirklich im Betrieb. <g>Je länger</g> die Ausbildung dauert, <g>desto größer</g> wird zudem das Risiko, dass gut ausgebildete Azubis nach dem Abschluss zu einem anderen Arbeitgeber wechseln.",
+        "de": "<r>Andererseits</r> kostet eine duale Ausbildung die Firma über mehrere Jahre hinweg Zeit und Geld, und nicht jeder Azubi bleibt am Ende auch wirklich im Betrieb. <k>Je länger</k> die Ausbildung dauert, <k>desto größer</k> wird zudem das Risiko, dass gut ausgebildete Azubis nach dem Abschluss zu einem anderen Arbeitgeber wechseln.",
         "en": "On the other hand, a dual apprenticeship costs the company time and money over several years, and not every apprentice actually stays with the company in the end. The longer the training takes, the greater the risk also becomes that well-trained apprentices will switch to a different employer after completing it.",
         "uk": "З іншого боку, дуальна освіта коштує фірмі часу й грошей упродовж кількох років, і не кожен учень зрештою справді залишається в компанії. Що довше триває навчання, то більшим стає ризик, що добре навчені учні після завершення перейдуть до іншого роботодавця.",
         "ru": "С другой стороны, дуальное образование стоит фирме времени и денег в течение нескольких лет, и не каждый ученик в итоге действительно остаётся в компании. Чем дольше длится обучение, тем больше становится риск, что хорошо обученные ученики после завершения перейдут к другому работодателю."
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> wir uns stärker um den Kontakt zu Berufsschulen bemühen, <g>um</g> frühzeitig für unseren Ausbildungsbetrieb zu werben, statt erst kurz vor Ausbildungsende <g>in Betracht zu ziehen</g>, wer übernommen wird.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir uns stärker um den Kontakt zu Berufsschulen bemühen, <k>um</k> frühzeitig für unseren Ausbildungsbetrieb zu werben, <k>statt</k> erst kurz vor Ausbildungsende <g>in Betracht zu ziehen</g>, wer übernommen wird.",
         "en": "That's why I suggest that we make more of an effort to stay in contact with vocational schools, in order to promote our training company early on, instead of only considering who will be taken on shortly before the end of the apprenticeship.",
         "uk": "Тому я пропоную, щоб ми активніше підтримували контакт із професійними училищами, щоб заздалегідь рекламувати наше підприємство як місце навчання, замість того щоб розглядати питання працевлаштування лише незадовго до завершення навчання.",
         "ru": "Поэтому я предлагаю, чтобы мы активнее поддерживали контакт с профессиональными училищами, чтобы заранее рекламировать наше предприятие как место обучения, вместо того чтобы рассматривать вопрос трудоустройства только незадолго до завершения обучения."
@@ -20345,7 +20345,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein einheitliches Onboarding-Programm für alle neuen Mitarbeitenden. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung <c>ein einheitliches Onboarding-Programm für alle neuen Mitarbeitenden</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning a uniform onboarding program for all new employees. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує єдину програму адаптації для всіх нових співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует единую программу адаптации для всех новых сотрудников. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20359,21 +20359,21 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
-        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass neue Mitarbeitende <g>während der Einarbeitungsphase</g> von Anfang an dieselben Grundlagen erhalten und sich dadurch schneller im Unternehmen zurechtfinden. <g>Indem</g> wir feste Weiterbildungsmaßnahmen einplanen, sorgen wir außerdem für eine gleichbleibende Qualität der Einarbeitung.",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass neue Mitarbeitende <g>während der Einarbeitungsphase</g> von Anfang an dieselben Grundlagen erhalten und sich dadurch schneller im Unternehmen zurechtfinden. <k>Indem</k> wir feste Weiterbildungsmaßnahmen einplanen, sorgen wir außerdem für eine gleichbleibende Qualität der Einarbeitung.",
         "en": "One advantage would undoubtedly be that new employees receive the same basics from the very beginning during the induction phase, and thus find their way around the company more quickly. By planning fixed training measures, we also ensure a consistent quality of induction.",
         "uk": "Однією з переваг, безсумнівно, було б те, що нові співробітники з самого початку отримують ту саму базову інформацію під час етапу введення в посаду і завдяки цьому швидше орієнтуються в компанії. Плануючи чіткі заходи підвищення кваліфікації, ми також забезпечуємо стабільну якість введення в посаду.",
         "ru": "Одним из преимуществ, несомненно, было бы то, что новые сотрудники с самого начала получают одну и ту же базовую информацию во время этапа введения в должность и благодаря этому быстрее ориентируются в компании. Планируя чёткие мероприятия по повышению квалификации, мы также обеспечиваем стабильное качество введения в должность."
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> wirkt ein einheitliches Programm für erfahrene Quereinsteiger schnell so, <g>als ob</g> sie noch nichts vom Berufsleben wüssten. Wer bereits jahrelange Berufserfahrung mitbringt, braucht <g>wohl</g> kaum dieselbe ausführliche Einführung wie ein Praktikant ohne Vorkenntnisse.",
+        "de": "<r>Andererseits</r> wirkt ein einheitliches Programm für erfahrene Quereinsteiger schnell so, <k>als ob</k> sie noch nichts vom Berufsleben <g>wüssten</g>. Wer bereits jahrelange Berufserfahrung mitbringt, braucht <g>wohl</g> kaum dieselbe ausführliche Einführung wie ein Praktikant ohne Vorkenntnisse.",
         "en": "On the other hand, a uniform program quickly makes experienced career-changers feel as if they didn't know anything about working life yet. Anyone who already brings years of professional experience probably hardly needs the same detailed introduction as an intern without prior knowledge.",
         "uk": "З іншого боку, єдина програма швидко змушує досвідчених людей, які змінили професію, почуватися так, ніби вони ще нічого не знають про робоче життя. Той, хто вже має багаторічний професійний досвід, навряд чи потребує такого ж детального введення, як стажист без попередніх знань.",
         "ru": "С другой стороны, единая программа быстро заставляет опытных людей, сменивших профессию, чувствовать себя так, будто они ещё ничего не знают о трудовой жизни. Тот, кто уже имеет многолетний профессиональный опыт, вряд ли нуждается в таком же подробном введении, как стажёр без предварительных знаний."
       },
       {
         "role": "vorschlag",
-        "de": "Die Personalabteilung betont zwar, <g>das Programm sei</g> für alle gleich sinnvoll. <r>Deshalb schlage ich vor, dass</r> sie es dennoch je nach Vorerfahrung individuell anpasst, anstatt allen dieselbe Einarbeitungsphase vorzuschreiben.",
+        "de": "Die Personalabteilung betont zwar, <g>das Programm sei</g> für alle gleich sinnvoll. <r>Deshalb schlage ich vor, dass</r> sie es dennoch je nach Vorerfahrung individuell anpasst, <k>anstatt</k> allen dieselbe Einarbeitungsphase vorzuschreiben.",
         "en": "HR does point out that the program is said to be equally useful for everyone. That's why I suggest that they nevertheless adapt it individually according to prior experience, instead of prescribing the same induction phase for everyone.",
         "uk": "Відділ кадрів наголошує, що програма нібито однаково корисна для всіх. Тому я пропоную, щоб вони все ж адаптували її індивідуально залежно від попереднього досвіду, замість того щоб приписувати всім однаковий етап введення в посаду.",
         "ru": "Отдел кадров подчёркивает, что программа якобы одинаково полезна для всех. Поэтому я предлагаю, чтобы они всё же адаптировали её индивидуально в зависимости от предыдущего опыта, вместо того чтобы предписывать всем одинаковый этап введения в должность."
@@ -20421,7 +20421,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, alle Einzelbüros abzuschaffen und stattdessen ein großes Großraumbüro einzurichten. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>alle Einzelbüros abzuschaffen und stattdessen ein großes Großraumbüro einzurichten</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to abolish all individual offices and set up one large open-plan office instead. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує скасувати всі окремі кабінети й натомість облаштувати один великий офіс відкритого типу. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует упразднить все отдельные кабинеты и вместо этого обустроить один большой офис открытого типа. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20435,14 +20435,14 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
-        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir uns im Großraumbüro schneller austauschen können und spontane Besprechungen viel einfacher werden. <g>Je offener</g> der Raum gestaltet ist, <g>desto leichter</g> fällt uns die Zusammenarbeit zwischen den Abteilungen.",
+        "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir uns im Großraumbüro schneller austauschen können und spontane Besprechungen viel einfacher werden. <k>Je offener</k> der Raum gestaltet ist, <k>desto leichter</k> fällt uns die Zusammenarbeit zwischen den Abteilungen.",
         "en": "One advantage would undoubtedly be that we can exchange ideas more quickly in the open-plan office and spontaneous meetings become much easier. The more open the space is designed, the easier collaboration between departments becomes for us.",
         "uk": "Однією з переваг, безсумнівно, було б те, що у відкритому офісі ми можемо швидше обмінюватися думками, а спонтанні наради стають набагато простішими. Що відкритіший простір, то легше нам співпрацювати між відділами.",
         "ru": "Одним из преимуществ, несомненно, было бы то, что в открытом офисе мы можем быстрее обмениваться мнениями, а спонтанные совещания становятся намного проще. Чем более открытым спроектировано пространство, тем легче нам сотрудничать между отделами."
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> steigt in einem Großraumbüro meist auch der Lärmpegel deutlich an, und nicht jeder fühlt sich dort gleich wohl. <g>Vor allem für konzentriertes Arbeiten</g> fehlt uns dann oft ein ruhiger Rückzugsort.",
+        "de": "<r>Andererseits</r> steigt in einem Großraumbüro meist auch der Lärmpegel deutlich an, und nicht jeder fühlt sich dort gleich wohl. Vor allem für konzentriertes Arbeiten <g>fehlt</g> uns dann oft ein ruhiger Rückzugsort.",
         "en": "On the other hand, the noise level in an open-plan office usually also rises significantly, and not everyone feels equally comfortable there. Especially for concentrated work, we then often lack a quiet retreat.",
         "uk": "З іншого боку, у відкритому офісі зазвичай також помітно зростає рівень шуму, і не кожному там однаково комфортно. Особливо для зосередженої роботи нам тоді часто бракує тихого куточка.",
         "ru": "С другой стороны, в открытом офисе обычно также заметно возрастает уровень шума, и не каждому там одинаково комфортно. Особенно для сосредоточенной работы нам тогда часто не хватает тихого уголка."
@@ -20497,7 +20497,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon gehört habt, plant die Geschäftsleitung</r>, ein Buddy-Programm für neue Mitarbeiterinnen und Mitarbeiter einzuführen. <r>Auch ich möchte heute in unserem Blog etwas dazu</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon gehört habt, plant die Geschäftsleitung</r>, <c>ein Buddy-Programm für neue Mitarbeiterinnen und Mitarbeiter einzuführen</c>. <r>Auch ich möchte heute in unserem Blog etwas dazu</r> schreiben.",
         "en": "as you have probably already heard, management is planning to introduce a buddy program for new employees. I would also like to write something about this in our blog today.",
         "uk": "як ви, напевно, вже чули, керівництво планує запровадити buddy-програму для нових співробітників. Я теж хочу сьогодні написати про це кілька слів у нашому блозі.",
         "ru": "как вы, наверное, уже слышали, руководство планирует ввести buddy-программу для новых сотрудников. Я тоже хочу сегодня написать об этом несколько слов в нашем блоге."
@@ -20518,14 +20518,14 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> haben nicht alle Kolleginnen und Kollegen genug Zeit, <g>um</g> sich zusätzlich <g>um</g> eine neue Person zu kümmern, ohne dass die eigene Arbeit darunter leidet. Zudem passt nicht jede Buddy-Person automatisch zum Charakter des neuen Mitarbeiters, was die Unterhaltung anfangs eher formell statt locker wirken lassen könnte.",
+        "de": "<r>Andererseits</r> haben nicht alle Kolleginnen und Kollegen genug Zeit, <k>um</k> sich zusätzlich <g>um</g> eine neue Person zu kümmern, ohne dass die eigene Arbeit darunter leidet. Zudem passt nicht jede Buddy-Person automatisch zum Charakter des neuen Mitarbeiters, was die Unterhaltung anfangs eher formell statt locker wirken lassen könnte.",
         "en": "On the other hand, not all colleagues have enough time to additionally take care of a new person without their own work suffering. Moreover, not every buddy automatically matches the character of the new employee, which could make the conversation feel rather formal instead of relaxed at first.",
         "uk": "З іншого боку, не всі колеги мають достатньо часу, щоб додатково опікуватися новою людиною, без того щоб не постраждала їхня власна робота. Крім того, не кожна buddy-особа автоматично підходить за характером новому співробітнику, через що спілкування спочатку може здаватися радше формальним, ніж невимушеним.",
         "ru": "С другой стороны, не у всех коллег достаточно времени, чтобы дополнительно заботиться о новом человеке, чтобы при этом не пострадала их собственная работа. Кроме того, не каждый buddy автоматически подходит по характеру новому сотруднику, из-за чего общение поначалу может казаться скорее формальным, чем непринуждённым."
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> die Buddy-Person und die neue Kollegin oder der neue Kollege vorher kurz befragt <g>werden</g>, damit die Zuständigkeit zu beiden passt und das Gespräch von Anfang an offen und taktvoll verläuft.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die Buddy-Person und die neue Kollegin oder der neue Kollege vorher kurz befragt <g>werden</g>, <k>damit</k> die Zuständigkeit zu beiden passt und das Gespräch von Anfang an offen und taktvoll verläuft.",
         "en": "That's why I suggest that the buddy and the new colleague be briefly asked in advance, so that they are a good match for each other and the conversation goes smoothly, openly and tactfully from the start.",
         "uk": "Тому я пропоную, щоб buddy і нового колегу заздалегідь коротко опитували, щоб відповідність підходила обом і розмова від самого початку проходила відкрито й тактовно.",
         "ru": "Поэтому я предлагаю, чтобы buddy и нового коллегу заранее коротко опрашивали, чтобы соответствие подходило обоим и разговор с самого начала проходил открыто и тактично."
@@ -20573,7 +20573,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst, möchte die Geschäftsleitung</r> ein neues Tool für Arbeitsaufträge einführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst, möchte die Geschäftsleitung</r> <c>ein neues Tool für Arbeitsaufträge einführen</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management wants to introduce a new tool for work tasks. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво хоче запровадити новий інструмент для робочих завдань. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство хочет ввести новый инструмент для рабочих заданий. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20594,14 +20594,14 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> nimmt die zusätzliche Dokumentation Zeit <g>in Anspruch</g>, die uns dann für die eigentliche Arbeit fehlt. Zudem befürchten manche Kolleginnen und Kollegen, dass spontane, kurze Absprachen dadurch komplizierter <g>würden</g>.",
+        "de": "<r>Andererseits</r> <g>nimmt</g> die zusätzliche Dokumentation Zeit <g>in Anspruch</g>, die uns dann für die eigentliche Arbeit fehlt. Zudem befürchten manche Kolleginnen und Kollegen, dass spontane, kurze Absprachen dadurch komplizierter <g>würden</g>.",
         "en": "On the other hand, the additional documentation takes up time that we then lack for the actual work. Moreover, some colleagues fear that spontaneous, short arrangements would become more complicated as a result.",
         "uk": "З іншого боку, додаткова документація забирає час, якого нам тоді бракує для самої роботи. Крім того, деякі колеги побоюються, що спонтанні, короткі домовленості через це стали б складнішими.",
         "ru": "С другой стороны, дополнительная документация отнимает время, которого нам тогда не хватает для самой работы. Кроме того, некоторые коллеги опасаются, что спонтанные, короткие договорённости из-за этого стали бы сложнее."
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> wir das Tool nur für größere oder dringende Arbeitsaufträge <g>einsetzen</g> und kleinere Absprachen weiterhin mündlich klären dürfen, sofern sie kurz im Protokoll <g>festgehalten werden</g>.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir das Tool nur für größere oder dringende Arbeitsaufträge einsetzen und kleinere Absprachen weiterhin mündlich klären dürfen, <k>sofern</k> sie kurz im Protokoll <g>festgehalten werden</g>.",
         "en": "That's why I suggest that we use the tool only for larger or urgent tasks and that we may continue to clarify smaller arrangements verbally, as long as they are briefly noted in the log.",
         "uk": "Тому я пропоную використовувати цей інструмент лише для більших або термінових завдань, а менші домовленості й надалі можна буде узгоджувати усно, якщо їх коротко фіксувати в протоколі.",
         "ru": "Поэтому я предлагаю использовать этот инструмент только для более крупных или срочных заданий, а меньшие договорённости и впредь можно будет согласовывать устно, если их коротко фиксировать в протоколе."
@@ -20649,7 +20649,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon gehört habt, plant die Geschäftsleitung</r>, eine Pflichtzertifizierung für Hard Skills einzuführen. <r>Auch ich möchte heute in unserem Blog etwas dazu</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon gehört habt, plant die Geschäftsleitung</r>, <c>eine Pflichtzertifizierung für Hard Skills einzuführen</c>. <r>Auch ich möchte heute in unserem Blog etwas dazu</r> schreiben.",
         "en": "as you have probably already heard, management is planning to introduce mandatory certification for hard skills. I would also like to write something about this in our blog today.",
         "uk": "як ви, напевно, вже чули, керівництво планує запровадити обов'язкову сертифікацію hard skills. Я теж хочу сьогодні написати про це кілька слів у нашому блозі.",
         "ru": "как вы, наверное, уже слышали, руководство планирует ввести обязательную сертификацию hard skills. Я тоже хочу сегодня написать об этом несколько слов в нашем блоге."
@@ -20663,7 +20663,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
-        "de": "<r>Ein Vorteil wäre</r> sicherlich, dass wir dadurch mit der digitalen Transformation Schritt halten und unsere Fähigkeiten anwenden könnten, ohne den Anschluss zu verlieren. Außerdem hat, wer eine Zertifizierung vorweisen kann, bei internen Bewerbungen oft bessere Chancen.",
+        "de": "<r>Ein Vorteil wäre</r> sicherlich, dass wir dadurch mit der digitalen Transformation Schritt halten und unsere Fähigkeiten anwenden könnten, <k>ohne</k> den Anschluss zu verlieren. Außerdem hat, <g>wer</g> eine Zertifizierung vorweisen kann, bei internen Bewerbungen oft bessere Chancen.",
         "en": "One advantage would certainly be that this would let us keep pace with digital transformation and apply our skills without losing touch. In addition, whoever can present a certification often has better chances with internal applications.",
         "uk": "Однією з переваг, безумовно, було б те, що завдяки цьому ми йшли б в ногу з цифровою трансформацією і могли б застосовувати свої навички, не втрачаючи зв'язку з новими тенденціями. Крім того, той, хто може підтвердити сертифікацію, часто має кращі шанси при внутрішніх заявках на посаду.",
         "ru": "Одним из преимуществ, безусловно, было бы то, что благодаря этому мы шли бы в ногу с цифровой трансформацией и могли бы применять свои навыки, не теряя связь с новыми тенденциями. Кроме того, тот, кто может подтвердить сертификацию, часто имеет лучшие шансы при внутренних заявках на должность."
@@ -20725,7 +20725,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, feste Meetingregeln einzuführen, damit unser Jour fixe künftig produktiver abläuft. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>feste Meetingregeln einzuführen</c>, <k>damit</k> unser Jour fixe künftig produktiver abläuft. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce fixed meeting rules so that our regular meetings run more productively in future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити чіткі правила нарад, щоб наш регулярний Jour fixe надалі проходив продуктивніше. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует ввести чёткие правила совещаний, чтобы наш регулярный Jour fixe в дальнейшем проходил продуктивнее. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20753,7 +20753,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> die Moderation zusätzliche Redezeit vergeben kann — <g>je</g> komplexer das Thema ist, <g>desto</g> mehr Flexibilität sollte sie haben. Zudem fände ich hybride Meetings mit Videokonferenz sinnvoll, damit alle auf dem Laufenden bleiben.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die Moderation zusätzliche Redezeit vergeben kann — <k>je</k> komplexer das Thema ist, <k>desto</k> mehr Flexibilität sollte sie haben. Zudem fände ich hybride Meetings mit Videokonferenz sinnvoll, damit alle auf dem Laufenden bleiben.",
         "en": "That is why I propose that the moderator should be able to grant extra speaking time — the more complex the topic, the more flexibility they should have. I would also find it useful to keep hybrid meetings with video conferencing, so that everyone stays up to date.",
         "uk": "Тому я пропоную, щоб модератор міг надавати додатковий час виступу — чим складніша тема, тим більше гнучкості йому потрібно мати. Крім того, я вважаю доцільним зберегти гібридні наради з відеоконференцією, щоб усі були в курсі справ.",
         "ru": "Поэтому я предлагаю, чтобы модератор мог предоставлять дополнительное время для выступления — чем сложнее тема, тем больше гибкости ему нужно иметь. Кроме того, я считаю целесообразным сохранить гибридные совещания с видеоконференцией, чтобы все были в курсе дел."
@@ -20801,14 +20801,14 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon gehört habt</r>, plant die Geschäftsleitung, ein verpflichtendes Konfliktmanagement-Training für alle Mitarbeitenden einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon gehört habt</r>, plant die Geschäftsleitung, <c>ein verpflichtendes Konfliktmanagement-Training für alle Mitarbeitenden einzuführen</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you've probably already heard, management is planning to introduce mandatory conflict management training for all employees. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже чули, керівництво планує запровадити обов'язковий тренінг з управління конфліктами для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже слышали, руководство планирует ввести обязательный тренинг по управлению конфликтами для всех сотрудников. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
       },
       {
         "role": "meinung",
-        "de": "<r>Ich bin der Meinung, dass</r> ein solches Training wirklich notwendig ist, denn in letzter Zeit tun manche Kolleginnen und Kollegen so, <g>als ob es gar keine Spannungen im Team gäbe</g>, obwohl der Umgangston oft schon unangemessen ist.",
+        "de": "<r>Ich bin der Meinung, dass</r> ein solches Training wirklich notwendig ist, denn in letzter Zeit tun manche Kolleginnen und Kollegen so, <k>als ob</k> es gar keine Spannungen im Team <g>gäbe</g>, obwohl der Umgangston oft schon unangemessen ist.",
         "en": "I am of the opinion that this kind of training is really necessary, because lately some colleagues act as if there were no tension in the team at all, even though the tone is often already inappropriate.",
         "uk": "Я вважаю, що такий тренінг справді необхідний, адже останнім часом деякі колеги поводяться так, ніби в команді взагалі немає напруження, хоча тон спілкування вже часто буває неприйнятним.",
         "ru": "Я считаю, что такой тренинг действительно необходим, ведь в последнее время некоторые коллеги ведут себя так, будто в команде вообще нет напряжённости, хотя тон общения уже нередко бывает неуместным."
@@ -20822,14 +20822,14 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein einzelnes Training kaum ausreicht, um <g>eskalierende</g> Spannungen dauerhaft zu deeskalieren, wenn sich am Betriebsklima insgesamt nichts ändert.",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein einzelnes Training kaum ausreicht, <k>um</k> <g>eskalierende</g> Spannungen dauerhaft zu deeskalieren, wenn sich am Betriebsklima insgesamt nichts ändert.",
         "en": "On the other hand, one should also consider that a single training session is hardly enough to permanently defuse escalating tensions if nothing changes about the overall workplace climate.",
         "uk": "З іншого боку, варто також враховувати, що одного тренінгу навряд чи достатньо, щоб надовго знизити напруження, яке загострюється, якщо загалом нічого не зміниться в атмосфері колективу.",
         "ru": "С другой стороны, стоит также учитывать, что одного тренинга вряд ли достаточно, чтобы надолго снизить обостряющуюся напряжённость, если в целом ничего не изменится в атмосфере коллектива."
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> zusätzlich feste Feedback-Gespräche eingeführt werden, damit <g>jeder</g> frühzeitig Rückmeldung geben und Kritik konstruktiv äußern kann, bevor aus einem Missverständnis ein offener Streit wird.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> zusätzlich feste Feedback-Gespräche eingeführt werden, <k>damit</k> <g>jeder</g> frühzeitig Rückmeldung geben und Kritik konstruktiv äußern kann, <k>bevor</k> aus einem Missverständnis ein offener Streit wird.",
         "en": "That is why I propose that regular feedback meetings also be introduced, so that everyone can give feedback early and voice criticism constructively before a misunderstanding turns into an open dispute.",
         "uk": "Тому я пропоную додатково запровадити регулярні бесіди зі зворотним зв'язком, щоб кожен міг вчасно дати зворотний зв'язок і конструктивно висловити критику, перш ніж непорозуміння переросте у відкриту сварку.",
         "ru": "Поэтому я предлагаю дополнительно ввести регулярные беседы с обратной связью, чтобы каждый мог своевременно давать обратную связь и конструктивно высказывать критику, прежде чем недоразумение перерастёт в открытый спор."
@@ -20877,7 +20877,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, einen einheitlichen Übergabebericht für alle Mitarbeitenden einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>einen einheitlichen Übergabebericht für alle Mitarbeitenden einzuführen</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce a standardized handover report for all employees. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити єдиний звіт про передачу справ для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует ввести единый отчёт о передаче дел для всех сотрудников. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20898,14 +20898,14 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein zusätzliches Formular manchmal lästig wirkt und der eigentliche Zweck — nämlich Ruhe zu bewahren, statt Aufgaben ungeklärt liegen zu lassen — <g>dabei</g> leicht aus dem Blick gerät.",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein zusätzliches Formular manchmal lästig wirkt und der eigentliche Zweck — nämlich Ruhe zu bewahren, <k>statt</k> Aufgaben ungeklärt liegen zu lassen — <g>dabei</g> leicht aus dem Blick gerät.",
         "en": "On the other hand, one should also consider that an additional form sometimes feels tedious, and the actual purpose — namely staying calm instead of leaving tasks unresolved — can easily get lost in the process.",
         "uk": "З іншого боку, варто також враховувати, що додатковий формуляр іноді сприймається як тягар, і справжня мета — а саме зберегти спокій замість того, щоб залишати завдання нез'ясованими — при цьому легко губиться з поля зору.",
         "ru": "С другой стороны, стоит также учитывать, что дополнительный формуляр иногда воспринимается как обуза, и настоящая цель — а именно сохранить спокойствие вместо того, чтобы оставлять задачи невыясненными — при этом легко теряется из виду."
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> in jedem Team klar geregelt wird, wer <g>verantwortlich ist für</g> welchen Teilbereich der Übergabe, und dass offene Punkte regelmäßig in einer gemeinsamen Aufgabenliste zur Sprache kommen.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> in jedem Team klar geregelt wird, wer <g>verantwortlich ist für</g> welchen Teilbereich der Übergabe, und dass offene Punkte regelmäßig in einer gemeinsamen Aufgabenliste <g>zur Sprache kommen</g>.",
         "en": "That is why I propose that each team clearly define who is responsible for which part of the handover, and that open points be raised regularly in a shared task list.",
         "uk": "Тому я пропоную, щоб у кожній команді було чітко визначено, хто відповідає за яку частину передачі справ, і щоб відкриті питання регулярно порушувалися в спільному списку завдань.",
         "ru": "Поэтому я предлагаю, чтобы в каждой команде было чётко определено, кто отвечает за какую часть передачи дел, и чтобы открытые вопросы регулярно поднимались в общем списке задач."
@@ -20953,7 +20953,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, einen Leitfaden für eine positive und wertschätzende E-Mail-Kommunikation einzuführen, damit unser Arbeitsumfeld insgesamt angenehmer wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>einen Leitfaden für eine positive und wertschätzende E-Mail-Kommunikation einzuführen</c>, <k>damit</k> unser Arbeitsumfeld insgesamt angenehmer wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce guidelines for positive and appreciative email communication, so that our workplace becomes more pleasant overall. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити посібник з позитивного та шанобливого спілкування електронною поштою, щоб загалом зробити наше робоче середовище приємнішим. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует ввести руководство по позитивному и уважительному общению по электронной почте, чтобы в целом сделать нашу рабочую среду приятнее. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20967,7 +20967,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
-        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> sich viele Missverständnisse vermeiden lassen, <g>indem man Betreff und Anrede von Anfang an klarer formuliert</g> und wichtige Personen konsequent in Kopie setzt.",
+        "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> sich viele Missverständnisse vermeiden lassen, <k>indem</k> man Betreff und Anrede von Anfang an klarer formuliert und wichtige Personen konsequent in Kopie setzt.",
         "en": "A very important argument in favor is that many misunderstandings can be avoided by formulating the subject line and salutation more clearly from the start and consistently cc'ing important people.",
         "uk": "Дуже важливий аргумент на користь цього — те, що багатьох непорозумінь можна уникнути, якщо з самого початку чіткіше формулювати тему листа й звертання та послідовно ставити важливих людей у копію.",
         "ru": "Очень важный аргумент в пользу этого — то, что многих недоразумений можно избежать, если с самого начала чётче формулировать тему письма и обращение и последовательно ставить важных людей в копию."
@@ -20981,7 +20981,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> wir gemeinsam ein paar Beispielformulierungen sammeln, <g>um Missverständnisse von vornherein zu vermeiden</g> und dabei trotzdem sachlich und diplomatisch zu bleiben.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir gemeinsam ein paar Beispielformulierungen sammeln, <k>um</k> Missverständnisse von vornherein zu vermeiden und dabei trotzdem sachlich und diplomatisch zu bleiben.",
         "en": "That is why I propose that we collect a few example phrases together, in order to avoid misunderstandings from the outset while still remaining factual and diplomatic.",
         "uk": "Тому я пропоную разом зібрати кілька прикладів формулювань, щоб від самого початку уникати непорозумінь і водночас залишатися об'єктивними та дипломатичними.",
         "ru": "Поэтому я предлагаю вместе собрать несколько примеров формулировок, чтобы с самого начала избегать недоразумений и при этом оставаться объективными и дипломатичными."
@@ -21029,14 +21029,14 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, das Firmenprofil auf unserer Website komplett zu überarbeiten und dabei die Unternehmenskultur stärker in den Vordergrund zu stellen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>das Firmenprofil auf unserer Website komplett zu überarbeiten und dabei die Unternehmenskultur stärker in den Vordergrund zu stellen</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to completely revise the company profile on our website and place greater emphasis on the company culture. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує повністю переробити профіль компанії на нашому сайті й приділити більше уваги корпоративній культурі. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует полностью переработать профиль компании на нашем сайте и уделить больше внимания корпоративной культуре. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
       },
       {
         "role": "meinung",
-        "de": "<r>Ich bin der Meinung, dass</r> diese Überarbeitung längst überfällig ist, denn unser Unternehmen <g>wird</g> online oft nur nach Umsatz und Gewinn <g>beurteilt</g>, obwohl uns als Arbeitgeber eigentlich viel mehr ausmacht.",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Überarbeitung längst überfällig ist, denn unser Unternehmen <g>wird</g> online oft nur nach Umsatz und Gewinn <g>beurteilt</g>, <k>obwohl</k> uns als Arbeitgeber eigentlich viel mehr ausmacht.",
         "en": "I am of the opinion that this revision is long overdue, because our company is often judged online only by revenue and profit, even though there is much more to us as an employer.",
         "uk": "Я вважаю, що ця переробка давно назріла, адже нашу компанію онлайн часто оцінюють лише за оборотом і прибутком, хоча як роботодавця нас характеризує набагато більше.",
         "ru": "Я считаю, что эта переработка давно назрела, ведь нашу компанию онлайн часто оценивают только по обороту и прибыли, хотя как работодателя нас характеризует гораздо больше."
@@ -21057,7 +21057,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> <g>man</g> Mitarbeitende aus verschiedenen Abteilungen aktiv in den Prozess einbezieht, damit das neue Firmenprofil unsere Werte und unsere Kernkompetenzen wirklich authentisch widerspiegelt.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> <g>man</g> Mitarbeitende aus verschiedenen Abteilungen aktiv in den Prozess einbezieht, <k>damit</k> das neue Firmenprofil unsere Werte und unsere Kernkompetenzen wirklich authentisch widerspiegelt.",
         "en": "That is why I propose that employees from different departments be actively involved in the process, so that the new company profile really authentically reflects our values and core competencies.",
         "uk": "Тому я пропоную активно залучати до цього процесу співробітників з різних відділів, щоб новий профіль компанії справді автентично відображав наші цінності та ключові компетенції.",
         "ru": "Поэтому я предлагаю активно привлекать к этому процессу сотрудников из разных отделов, чтобы новый профиль компании действительно аутентично отражал наши ценности и ключевые компетенции."
