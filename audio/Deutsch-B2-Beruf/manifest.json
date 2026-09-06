@@ -35752,8 +35752,8 @@
   "Deutsch-B2-Beruf/de/100/email/email_003_bezugnahme_de_100": "e31db7c558+t",
   "Deutsch-B2-Beruf/de/100/email/email_003_entschuldigung_de_100": "77e9315018+t",
   "Deutsch-B2-Beruf/de/100/email/email_003_grund_de_100": "5ece8b3fa5+t",
-  "Deutsch-B2-Beruf/de/100/email/email_003_loesung_de_100": "4c0f9a5926+t",
-  "Deutsch-B2-Beruf/de/100/email/email_003_grussformel_de_100": "e599c117df+t",
+  "Deutsch-B2-Beruf/de/100/email/email_003_loesung_de_100": "d0be0e195a+t",
+  "Deutsch-B2-Beruf/de/100/email/email_003_grussformel_de_100": "a5a1ed2573+t",
   "Deutsch-B2-Beruf/de/100/email/email_003_unterschrift_de_100": "094f2a42a7+t",
   "Deutsch-B2-Beruf/de/100/email/email_004_mail_boss_de_100": "812de07184+t",
   "Deutsch-B2-Beruf/de/100/email/email_004_mail_client_de_100": "c0657c1c17+t",
@@ -35761,8 +35761,8 @@
   "Deutsch-B2-Beruf/de/100/email/email_004_bezugnahme_de_100": "a4536951dd+t",
   "Deutsch-B2-Beruf/de/100/email/email_004_entschuldigung_de_100": "b0fa133eff+t",
   "Deutsch-B2-Beruf/de/100/email/email_004_grund_de_100": "3a42f5d242+t",
-  "Deutsch-B2-Beruf/de/100/email/email_004_loesung_de_100": "a626bb02e3+t",
-  "Deutsch-B2-Beruf/de/100/email/email_004_grussformel_de_100": "ce044e8aec+t",
+  "Deutsch-B2-Beruf/de/100/email/email_004_loesung_de_100": "07873c208e+t",
+  "Deutsch-B2-Beruf/de/100/email/email_004_grussformel_de_100": "e473e73f3e+t",
   "Deutsch-B2-Beruf/de/100/email/email_004_unterschrift_de_100": "5d1d07ee1e+t",
   "Deutsch-B2-Beruf/de/085/email/email_001_mail_boss_de_085": "c555ad9232+t",
   "Deutsch-B2-Beruf/de/085/email/email_001_mail_client_de_085": "775e32d569+t",
@@ -43604,5 +43604,6 @@
   "Deutsch-B2-Beruf/uk/100/tlc/tlc_254_def_uk_100": "e144d94349",
   "Deutsch-B2-Beruf/uk/100/tlc/tlc_255_def_uk_100": "4819e5704d",
   "Deutsch-B2-Beruf/de/100/story/story_008_schluss2_de_100": "44efc6243f+t",
-  "Deutsch-B2-Beruf/de/085/story/story_008_schluss2_de_085": "377c6c5a7c+t"
+  "Deutsch-B2-Beruf/de/085/story/story_008_schluss2_de_085": "377c6c5a7c+t",
+  "Deutsch-B2-Beruf/de/100/story/story_003_einleitung_de_100": "cb95d0207c+t"
 }
