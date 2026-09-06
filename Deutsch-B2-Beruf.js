@@ -19661,14 +19661,14 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr bestimmt schon wisst</r>, möchte die Geschäftsleitung den Standort unserer Firma verlegen. Alle Mitarbeiterinnen und Mitarbeiter sollen umziehen oder pendeln.",
+        "de": "<r>wie ihr bestimmt schon wisst</r>, möchte die Geschäftsleitung den Standort unserer Firma verlegen. <c>Alle Mitarbeiterinnen und Mitarbeiter sollen umziehen oder pendeln</c>.",
         "en": "as you probably already know, management wants to relocate our company's site. All employees are expected to either move or commute.",
         "uk": "як ви, напевно, вже знаєте, керівництво хоче перенести локацію нашої фірми. Усі співробітники мають або переїхати, або їздити на роботу.",
         "ru": "как вы, наверное, уже знаете, руководство хочет перенести местоположение нашей фирмы. Все сотрудники должны либо переехать, либо ездить на работу."
       },
       {
         "role": "meinung",
-        "de": "<r>Diese Idee finde ich nicht gut.</r> <g>Obwohl</g> diese Situation viele Möglichkeiten für uns bietet, macht sie unseren Arbeitsalltag sehr kompliziert.",
+        "de": "<r>Diese Idee finde ich nicht gut.</r> <k>Obwohl</k> diese Situation viele Möglichkeiten für uns bietet, macht sie unseren Arbeitsalltag sehr kompliziert.",
         "en": "I don't think this idea is good. Although this situation offers us many opportunities, it makes our everyday work life very complicated.",
         "uk": "Ця ідея мені не подобається. Хоча ця ситуація дає нам багато можливостей, вона дуже ускладнює наше повсякденне робоче життя.",
         "ru": "Эта идея мне не нравится. Хотя эта ситуация даёт нам много возможностей, она очень усложняет наши рабочие будни."
@@ -19682,7 +19682,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> verlieren wir viel Zeit, <g>wenn</g> wir jeden Tag zwei Stunden zur Arbeit pendeln müssen. Viele Mitarbeiter haben Familien und möchten ihre Freizeit mit ihren Kindern verbringen. Außerdem sind die hohen Fahrtkosten ein Argument, das gegen das Pendeln spricht. Darüber hinaus wäre ein Umzug für Familien mit Kindern sehr schwierig, da die Kinder den Kindergarten oder die Schule <g>wechseln müssten</g>.",
+        "de": "<r>Andererseits</r> verlieren wir viel Zeit, <k>wenn</k> wir jeden Tag zwei Stunden zur Arbeit pendeln müssen. Viele Mitarbeiter haben Familien und möchten ihre Freizeit mit ihren Kindern verbringen. Außerdem sind die hohen Fahrtkosten ein Argument, das gegen das Pendeln spricht. Darüber hinaus wäre ein Umzug für Familien mit Kindern sehr schwierig, da die Kinder den Kindergarten oder die Schule <g>wechseln müssten</g>.",
         "en": "On the other hand, we lose a lot of time if we have to commute two hours to work every day. Many employees have families and want to spend their free time with their children. In addition, the high travel costs are an argument against commuting. Moreover, moving would be very difficult for families with children, since the children would have to change kindergarten or school.",
         "uk": "З іншого боку, ми втрачаємо багато часу, якщо щодня мусимо їхати на роботу дві години. У багатьох співробітників є сім'ї, і вони хочуть проводити вільний час зі своїми дітьми. Крім того, високі витрати на дорогу — це аргумент проти їзди на роботу. Більше того, переїзд був би дуже складним для родин з дітьми, оскільки дітям довелося б змінити садочок або школу.",
         "ru": "С другой стороны, мы теряем много времени, если каждый день должны добираться на работу два часа. У многих сотрудников есть семьи, и они хотят проводить свободное время со своими детьми. Кроме того, высокие транспортные расходы — это аргумент против поездок на работу. Более того, переезд был бы очень сложным для семей с детьми, поскольку детям пришлось бы сменить детский сад или школу."
@@ -19737,7 +19737,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, Dienstreisen unter 800 Kilometern künftig nur noch mit der Bahn durchführen zu lassen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>Dienstreisen unter 800 Kilometern künftig nur noch mit der Bahn</c> durchführen zu lassen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to have business trips under 800 kilometers carried out only by train in the future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб відрядження на відстань до 800 кілометрів надалі здійснювались лише потягом. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы командировки на расстояние до 800 километров впредь осуществлялись только поездом. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -19765,7 +19765,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> wir bei der <g>Umsetzung</g> Ausnahmen zulassen, wenn eine Zugfahrt aus zeitlichen Gründen wirklich nicht in Frage kommt.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir bei der <g>Umsetzung</g> Ausnahmen zulassen, <k>wenn</k> eine Zugfahrt aus zeitlichen Gründen wirklich nicht in Frage kommt.",
         "en": "That's why I suggest that we allow exceptions in the implementation, when a train journey is really not an option for time reasons.",
         "uk": "Тому я пропоную, щоб при впровадженні ми допускали винятки, якщо поїздка потягом справді не підходить через брак часу.",
         "ru": "Поэтому я предлагаю, чтобы при внедрении мы допускали исключения, если поездка на поезде действительно не подходит по причине нехватки времени."
@@ -19813,7 +19813,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein wöchentliches Fitnessprogramm für alle Mitarbeitenden. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung <c>ein wöchentliches Fitnessprogramm</c> für alle Mitarbeitenden. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning a weekly fitness program for all employees. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує щотижневу фітнес-програму для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует еженедельную фитнес-программу для всех сотрудников. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -19834,7 +19834,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> bedeutet eine Stunde Betriebssport pro Woche auch eine Stunde weniger für die eigentliche Arbeit, wodurch sich <g>die Arbeitsbelastung</g> an anderer Stelle erhöhen könnte. Zudem haben nicht alle Kolleginnen und Kollegen dieselbe körperliche Fitness, sodass ein verpflichtendes Programm manche eher überfordern als entlasten würde.",
+        "de": "<r>Andererseits</r> bedeutet eine Stunde Betriebssport pro Woche auch eine Stunde weniger für die eigentliche Arbeit, wodurch sich <g>die Arbeitsbelastung</g> an anderer Stelle erhöhen könnte. Zudem haben nicht alle Kolleginnen und Kollegen dieselbe körperliche Fitness, <k>sodass</k> ein verpflichtendes Programm manche eher überfordern als entlasten würde.",
         "en": "On the other hand, one hour of company sports per week also means one hour less for actual work, which could increase the workload elsewhere. Moreover, not all colleagues have the same physical fitness, so a mandatory program would overwhelm rather than relieve some of them.",
         "uk": "З іншого боку, одна година корпоративного спорту на тиждень означає й на одну годину менше часу на власне роботу, через що навантаження могло б зрости десь-інде. Крім того, не всі колеги мають однакову фізичну підготовку, тож обов'язкова програма радше перевантажувала б декого, ніж розвантажувала.",
         "ru": "С другой стороны, один час корпоративного спорта в неделю означает и на один час меньше времени для собственно работы, из-за чего нагрузка могла бы вырасти в другом месте. Кроме того, не у всех коллег одинаковая физическая подготовка, поэтому обязательная программа скорее перегружала бы некоторых, чем разгружала."
@@ -19889,10 +19889,10 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein neues Förderprogramm für Kolleginnen und Kollegen, deren Berufsabschluss aus dem Ausland noch nicht anerkannt ist. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is planning a new support program for colleagues whose professional qualification from abroad is not yet recognized. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво планує нову програму підтримки для колег, чия закордонна кваліфікація ще не визнана. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство планирует новую программу поддержки для коллег, чья иностранная квалификация ещё не признана. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein neues Förderprogramm: <c>Kolleginnen und Kollegen mit ausländischem Berufsabschluss sollen während des Anerkennungsverfahrens befristet in einer anderen Abteilung eingesetzt werden</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning a new support program: colleagues with a foreign professional qualification are to be temporarily assigned to a different department during the recognition procedure. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує нову програму підтримки: колег із закордонною професійною кваліфікацією мають тимчасово залучати до іншого відділу на час процедури визнання. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует новую программу поддержки: коллег с иностранной профессиональной квалификацией должны временно привлекать к другому отделу на время процедуры признания. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
       },
       {
         "role": "meinung",
@@ -19910,7 +19910,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> ist ein befristeter Einsatz in einer fremden Abteilung nicht für jeden einfach: Wer einen Antrag auf Anerkennung seiner Berufsqualifikation gestellt hat, muss ohnehin schon zahlreiche Dokumente aus dem Herkunftsland einreichen, und solange der Antrag noch nicht <g>bearbeitet ist</g>, könnte die zusätzliche Umstellung am Arbeitsplatz manche eher verunsichern als entlasten.",
+        "de": "<r>Andererseits</r> ist ein befristeter Einsatz in einer fremden Abteilung nicht für jeden einfach: Wer einen Antrag auf Anerkennung seiner Berufsqualifikation gestellt hat, muss ohnehin schon zahlreiche Dokumente aus dem Herkunftsland einreichen, und <k>solange</k> der Antrag noch nicht <g>bearbeitet ist</g>, könnte die zusätzliche Umstellung am Arbeitsplatz manche eher verunsichern als entlasten.",
         "en": "On the other hand, a temporary assignment to an unfamiliar department isn't easy for everyone: anyone who has submitted an application for recognition of their professional qualification often already has to submit numerous documents from their country of origin, and as long as the application hasn't been processed yet, the additional adjustment at work could unsettle some people rather than relieve them.",
         "uk": "З іншого боку, тимчасове переведення до незнайомого відділу не для кожного просте: той, хто подав заявку на визнання своєї професійної кваліфікації, часто й так має подати чимало документів із країни походження, а поки заявку ще не опрацьовано, додаткова зміна на роботі радше могла б декого дезорієнтувати, ніж розвантажити.",
         "ru": "С другой стороны, временное назначение в незнакомый отдел не для каждого просто: тот, кто подал заявку на признание своей профессиональной квалификации, часто и так должен подать немало документов из страны происхождения, а пока заявка ещё не обработана, дополнительное изменение на работе скорее могло бы кого-то дезориентировать, чем разгрузить."
@@ -19965,14 +19965,14 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass jede Nebentätigkeit künftig vorab genehmigt werden muss. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass <c>jede Nebentätigkeit künftig vorab genehmigt werden muss</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning that every side job will have to be approved in advance in the future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб кожен підробіток надалі попередньо погоджувався. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы каждая подработка впредь предварительно согласовывалась. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
       },
       {
         "role": "meinung",
-        "de": "<r>Ich bin der Meinung, dass</r> diese Regelung nachvollziehbar ist, auch wenn sie für manche Kolleginnen und Kollegen zusätzlichen Aufwand bedeutet.",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Regelung nachvollziehbar ist, <k>auch wenn</k> sie für manche Kolleginnen und Kollegen zusätzlichen Aufwand bedeutet.",
         "en": "I am of the opinion that this policy is understandable, even if it means extra effort for some colleagues.",
         "uk": "Я вважаю, що це правило зрозуміле, навіть якщо воно означає додаткові клопоти для деяких колег.",
         "ru": "Я считаю, что это правило понятно, даже если оно означает дополнительные хлопоты для некоторых коллег."
@@ -20041,7 +20041,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein jährliches 360-Grad-Feedback zu unseren Schlüsselqualifikationen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung <c>ein jährliches 360-Grad-Feedback</c> zu unseren Schlüsselqualifikationen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning an annual 360-degree feedback on our key qualifications. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує щорічний 360-градусний зворотний зв'язок щодо наших ключових компетенцій. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует ежегодную 360-градусную обратную связь по нашим ключевым компетенциям. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
@@ -20062,7 +20062,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> ist anonymes Feedback <g>nicht immer konstruktiv</g>: Manche Rückmeldungen könnten unfair oder gar nicht nachvollziehbar sein und dadurch sogar das Arbeitsklima belasten, wenn <g>niemand</g> die Kritik näher begründen muss.",
+        "de": "<r>Andererseits</r> ist anonymes Feedback <g>nicht immer konstruktiv</g>: Manche Rückmeldungen könnten unfair oder gar nicht nachvollziehbar sein und dadurch sogar das Arbeitsklima belasten, <k>wenn</k> <g>niemand</g> die Kritik näher begründen muss.",
         "en": "On the other hand, anonymous feedback isn't always constructive: some comments could be unfair or not comprehensible at all and could even harm the working atmosphere, if no one has to justify the criticism in more detail.",
         "uk": "З іншого боку, анонімний зворотний зв'язок не завжди конструктивний: деякі відгуки можуть бути несправедливими або взагалі незрозумілими і навіть погіршити атмосферу в колективі, якщо ніхто не мусить детальніше обґрунтувати критику.",
         "ru": "С другой стороны, анонимная обратная связь не всегда конструктивна: некоторые отзывы могут быть несправедливыми или вообще непонятными и даже ухудшить атмосферу в коллективе, если никто не должен подробнее обосновать критику."
@@ -20117,14 +20117,14 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass jede offene Stelle künftig zunächst intern <g>ausgeschrieben wird</g>, bevor sie extern auf Jobportalen veröffentlicht wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is planning that every open position will first be posted internally in the future, before it is published externally on job portals. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб кожна вакансія надалі спершу оголошувалась всередині компанії, перш ніж публікуватись зовні на джоб-порталах. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы каждая вакансия впредь сначала объявлялась внутри компании, прежде чем публиковаться извне на джоб-порталах. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass jede offene Stelle künftig zunächst <c>zwei Wochen lang</c> intern <g>ausgeschrieben wird</g>, bevor sie extern auf Jobportalen veröffentlicht wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "en": "as you probably already know, management is planning that every open position will first be posted internally for two weeks in the future, before it is published externally on job portals. I would also like to write something on this topic in our blog today.",
+        "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб кожна вакансія надалі спершу два тижні оголошувалась всередині компанії, перш ніж публікуватись зовні на джоб-порталах. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
+        "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы каждая вакансия впредь сначала две недели объявлялась внутри компании, прежде чем публиковаться извне на джоб-порталах. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
       },
       {
         "role": "meinung",
-        "de": "<r>Ich bin der Meinung, dass</r> diese Regelung fair ist, weil sie allen Kolleginnen und Kollegen die gleiche Chance gibt, sich auf eine neue Stelle zu bewerben.",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Regelung fair ist, <k>weil</k> sie allen Kolleginnen und Kollegen die gleiche Chance gibt, sich auf eine neue Stelle zu bewerben.",
         "en": "I am of the opinion that this policy is fair, because it gives all colleagues the same chance to apply for a new position.",
         "uk": "Я вважаю, що це правило справедливе, бо воно дає всім колегам однаковий шанс податися на нову вакансію.",
         "ru": "Я считаю, что это правило справедливо, потому что оно даёт всем коллегам одинаковый шанс подать заявку на новую должность."
@@ -22868,7 +22868,7 @@ var EMAILS = [
       "betreff": {
         "de": "Reklamation E-Scooter Reg.-Nr. 2P787-03, -04, -07, -09",
         "en": "Complaint E-scooters Reg. No. 2P787-03, -04, -07, -09",
-        "uk": "Рекламація е-скутерів рег. № 2P787-03, -04, -07, -09",
+        "uk": "Рекламація е-скутерів реєстраційний № 2P787-03, -04, -07, -09",
         "ru": "Претензия по электросамокатам рег. № 2P787-03, -04, -07, -09"
       },
       "de": "Sehr geehrte Frau Haruna,<br><br>wie eben telefonisch besprochen folgt hier unsere schriftliche Reklamation bezüglich der o.g. E-Scooter. Nachdem wir eine verspätete Lieferung von sechs Wochen akzeptiert hatten, mussten wir nun feststellen, dass bei vier der zehn Roller die Akkus defekt sind. Nach Ihrer Auskunft können die Akkus nicht ausgetauscht werden und kurzfristig stehen nur Ersatzroller ohne unser Firmenlogo zur Verfügung. Da die Roller zu Werbezwecken eingesetzt werden, haben sie ohne Logo keinen Mehrwert für uns. Das bedeutet, dass wir zwei bis drei weitere Wochen auf die Lieferung warten müssen. Damit sind wir nur einverstanden, wenn Sie uns für die defekten Roller einen Preisnachlass von je 100 Euro gewähren plus einmalig 100 Euro für die weitere Verzögerung bei der Lieferung. Ursprünglich war ein Preis von 5.000 Euro für zehn Roller vereinbart. Wir gehen davon aus, dass Sie einen Endpreis von 4.500 Euro akzeptieren werden.<br><br>Mit freundlichen Grüßen,<br>Matthias Schrödinger<br>Leitung Außendienst",
@@ -23017,32 +23017,32 @@ var EMAILS = [
         "uk": "Скарга щодо рахунку – прошу перевірити",
         "ru": "Претензия по счёту – прошу проверить"
       },
-      "de": "Hallo David,<br><br>könnten Sie sich bitte um die beigefügte Reklamation von Herrn Yıldız kümmern? Bei der letzten Rechnung wurde offenbar der vereinbarte Mengenrabatt nicht berücksichtigt, und auch die Umsatzsteuer scheint falsch berechnet worden zu sein. Bitte klären Sie das schnell und bieten Sie ihm als Ausgleich eine kleine Gutschrift an, damit die Geschäftsbeziehung nicht leidet.<br><br>Danke und Grüße,<br>Sabine Bergmann<br>Teamleiterin Buchhaltung",
-      "en": "Hi David,<br><br>could you please take care of the attached complaint from Mr Yıldız? It seems that the agreed volume discount was not taken into account in the last invoice, and the VAT also appears to have been calculated incorrectly. Please clarify this quickly and offer him a small credit note as compensation so the business relationship doesn't suffer.<br><br>Thanks and regards,<br>Sabine Bergmann<br>Accounting Team Leader",
-      "uk": "Привіт, Девіде,<br><br>чи не могли б Ви розібратися з доданою скаргою пана Йилдиза? Схоже, в останньому рахунку не було враховано узгоджену оптову знижку, а ПДВ, здається, теж розраховано неправильно. Будь ласка, швидко з'ясуйте це і запропонуйте йому невелику гутшрифт (кредит) як компенсацію, щоб ділові стосунки не постраждали.<br><br>Дякую і вітання,<br>Сабіне Бергманн<br>керівниця відділу бухгалтерії",
-      "ru": "Привет, Давид,<br><br>не мог бы ты заняться приложенной жалобой господина Йылдыза? Похоже, в последнем счёте не была учтена согласованная оптовая скидка, а НДС, кажется, тоже рассчитан неверно. Пожалуйста, быстро проясни это и предложи ему небольшую кредит-ноту в качестве компенсации, чтобы деловые отношения не пострадали.<br><br>Спасибо и привет,<br>Сабина Бергманн<br>руководитель отдела бухгалтерии"
+      "de": "Hallo David,<br><br>könnten Sie sich bitte um die beigefügte Reklamation von Herrn Weber kümmern? Bei der letzten Rechnung wurde offenbar der vereinbarte Mengenrabatt nicht berücksichtigt, und auch die Umsatzsteuer scheint falsch berechnet worden zu sein. Bitte klären Sie das schnell und bieten Sie ihm als Ausgleich eine kleine Gutschrift an, damit die Geschäftsbeziehung nicht leidet.<br><br>Danke und Grüße,<br>Sabine Bergmann<br>Teamleiterin Buchhaltung",
+      "en": "Hi David,<br><br>could you please take care of the attached complaint from Mr Weber? It seems that the agreed volume discount was not taken into account in the last invoice, and the VAT also appears to have been calculated incorrectly. Please clarify this quickly and offer him a small credit note as compensation so the business relationship doesn't suffer.<br><br>Thanks and regards,<br>Sabine Bergmann<br>Accounting Team Leader",
+      "uk": "Привіт, Девіде,<br><br>чи не могли б Ви розібратися з доданою скаргою пана Вебера? Схоже, в останньому рахунку не було враховано узгоджену оптову знижку, а ПДВ, здається, теж розраховано неправильно. Будь ласка, швидко з'ясуйте це і запропонуйте йому невелику гутшрифт (кредит) як компенсацію, щоб ділові стосунки не постраждали.<br><br>Дякую і вітання,<br>Сабіне Бергманн<br>керівниця відділу бухгалтерії",
+      "ru": "Привет, Давид,<br><br>не мог бы ты заняться приложенной жалобой господина Вебера? Похоже, в последнем счёте не была учтена согласованная оптовая скидка, а НДС, кажется, тоже рассчитан неверно. Пожалуйста, быстро проясни это и предложи ему небольшую кредит-ноту в качестве компенсации, чтобы деловые отношения не пострадали.<br><br>Спасибо и привет,<br>Сабина Бергманн<br>руководитель отдела бухгалтерии"
     },
     "mail_client": {
-      "von": "Kaan Yıldız, Einkaufsleiter, Yıldız Elektrotechnik GmbH",
+      "von": "Thomas Weber, Einkaufsleiter, Weber Elektrotechnik GmbH",
       "betreff": {
         "de": "Reklamation zu Rechnung Nr. 2026-0847",
         "en": "Complaint regarding invoice no. 2026-0847",
         "uk": "Скарга щодо рахунку № 2026-0847",
         "ru": "Претензия по счёту № 2026-0847"
       },
-      "de": "Sehr geehrte Damen und Herren,<br><br>bei der Prüfung Ihrer Rechnung Nr. 2026-0847 zu unserer letzten Bestellung ist mir aufgefallen, dass der vereinbarte Mengenrabatt von acht Prozent nicht abgezogen wurde. Außerdem wurde die Umsatzsteuer offensichtlich auf den falschen Nettobetrag berechnet, sodass der Rechnungsbetrag deutlich zu hoch ausfällt. Ich bitte um umgehende Bearbeitung und um eine korrigierte Rechnung mit korrektem Netto- und Bruttobetrag. Bis zur Klärung sehe ich mich leider gezwungen, die Zahlung zurückzuhalten. Ich erwarte eine baldige Lösung, spätestens innerhalb einer Woche, da wir sonst unsere weiteren Bestellungen bei Ihnen überdenken müssen.<br><br>Mit freundlichen Grüßen,<br>Kaan Yıldız<br>Einkaufsleiter<br>Yıldız Elektrotechnik GmbH",
-      "en": "Dear Sir or Madam,<br><br>while checking your invoice no. 2026-0847 for our last order, I noticed that the agreed eight percent volume discount was not deducted. In addition, VAT was apparently calculated on the wrong net amount, so the invoice total is significantly too high. I ask for prompt processing and a corrected invoice with the correct net and gross amounts. Until this is clarified, I unfortunately feel compelled to withhold payment. I expect a swift solution, within a week at the latest, otherwise we will have to reconsider our further orders with you.<br><br>Best regards,<br>Kaan Yıldız<br>Head of Purchasing<br>Yıldız Elektrotechnik GmbH",
-      "uk": "Шановні пані та панове,<br><br>під час перевірки Вашого рахунку № 2026-0847 за наше останнє замовлення я помітив, що узгоджену восьмивідсоткову оптову знижку не було враховано. Крім того, ПДВ, вочевидь, було розраховано на неправильну суму нетто, тому загальна сума рахунку значно завищена. Прошу негайно опрацювати це питання і надати виправлений рахунок з коректними сумами нетто й брутто. До з'ясування ситуації я, на жаль, змушений затримати оплату. Очікую на швидке вирішення, щонайпізніше протягом тижня, інакше нам доведеться переглянути наші подальші замовлення у Вас.<br><br>З повагою,<br>Каан Йилдиз<br>керівник відділу закупівель<br>Yıldız Elektrotechnik GmbH",
-      "ru": "Уважаемые дамы и господа,<br><br>при проверке Вашего счёта № 2026-0847 за наш последний заказ я заметил, что согласованная восьмипроцентная оптовая скидка не была учтена. Кроме того, НДС, очевидно, был рассчитан на неверную сумму нетто, поэтому итоговая сумма счёта значительно завышена. Прошу срочно рассмотреть этот вопрос и предоставить исправленный счёт с корректными суммами нетто и брутто. До выяснения ситуации я, к сожалению, вынужден задержать оплату. Ожидаю быстрого решения, самое позднее в течение недели, иначе нам придётся пересмотреть наши дальнейшие заказы у Вас.<br><br>С уважением,<br>Каан Йылдыз<br>руководитель отдела закупок<br>Yıldız Elektrotechnik GmbH"
+      "de": "Sehr geehrte Damen und Herren,<br><br>bei der Prüfung Ihrer Rechnung Nr. 2026-0847 zu unserer letzten Bestellung ist mir aufgefallen, dass der vereinbarte Mengenrabatt von acht Prozent nicht abgezogen wurde. Außerdem wurde die Umsatzsteuer offensichtlich auf den falschen Nettobetrag berechnet, sodass der Rechnungsbetrag deutlich zu hoch ausfällt. Ich bitte um umgehende Bearbeitung und um eine korrigierte Rechnung mit korrektem Netto- und Bruttobetrag. Bis zur Klärung sehe ich mich leider gezwungen, die Zahlung zurückzuhalten. Ich erwarte eine baldige Lösung, spätestens innerhalb einer Woche, da wir sonst unsere weiteren Bestellungen bei Ihnen überdenken müssen.<br><br>Mit freundlichen Grüßen,<br>Thomas Weber<br>Einkaufsleiter<br>Weber Elektrotechnik GmbH",
+      "en": "Dear Sir or Madam,<br><br>while checking your invoice no. 2026-0847 for our last order, I noticed that the agreed eight percent volume discount was not deducted. In addition, VAT was apparently calculated on the wrong net amount, so the invoice total is significantly too high. I ask for prompt processing and a corrected invoice with the correct net and gross amounts. Until this is clarified, I unfortunately feel compelled to withhold payment. I expect a swift solution, within a week at the latest, otherwise we will have to reconsider our further orders with you.<br><br>Best regards,<br>Thomas Weber<br>Head of Purchasing<br>Weber Elektrotechnik GmbH",
+      "uk": "Шановні пані та панове,<br><br>під час перевірки Вашого рахунку № 2026-0847 за наше останнє замовлення я помітив, що узгоджену восьмивідсоткову оптову знижку не було враховано. Крім того, ПДВ, вочевидь, було розраховано на неправильну суму нетто, тому загальна сума рахунку значно завищена. Прошу негайно опрацювати це питання і надати виправлений рахунок з коректними сумами нетто й брутто. До з'ясування ситуації я, на жаль, змушений затримати оплату. Очікую на швидке вирішення, щонайпізніше протягом тижня, інакше нам доведеться переглянути наші подальші замовлення у Вас.<br><br>З повагою,<br>Томас Вебер<br>керівник відділу закупівель<br>Weber Elektrotechnik GmbH",
+      "ru": "Уважаемые дамы и господа,<br><br>при проверке Вашего счёта № 2026-0847 за наш последний заказ я заметил, что согласованная восьмипроцентная оптовая скидка не была учтена. Кроме того, НДС, очевидно, был рассчитан на неверную сумму нетто, поэтому итоговая сумма счёта значительно завышена. Прошу срочно рассмотреть этот вопрос и предоставить исправленный счёт с корректными суммами нетто и брутто. До выяснения ситуации я, к сожалению, вынужден задержать оплату. Ожидаю быстрого решения, самое позднее в течение недели, иначе нам придётся пересмотреть наши дальнейшие заказы у Вас.<br><br>С уважением,<br>Томас Вебер<br>руководитель отдела закупок<br>Weber Elektrotechnik GmbH"
     },
     "questions": [
       {
         "id": "q1",
         "prompt": {
-          "de": "Herr Yıldız reklamiert, weil …",
-          "en": "Mr Yıldız is complaining because …",
-          "uk": "Пан Йилдиз подає рекламацію, тому що …",
-          "ru": "Господин Йылдыз подаёт претензию, потому что …"
+          "de": "Herr Weber reklamiert, weil …",
+          "en": "Mr Weber is complaining because …",
+          "uk": "Пан Вебер подає рекламацію, тому що …",
+          "ru": "Господин Вебер подаёт претензию, потому что …"
         },
         "options": [
           {
@@ -23072,10 +23072,10 @@ var EMAILS = [
       {
         "id": "q2",
         "prompt": {
-          "de": "Herr Yıldız …",
-          "en": "Mr Yıldız …",
-          "uk": "Пан Йилдиз …",
-          "ru": "Господин Йылдыз …"
+          "de": "Herr Weber …",
+          "en": "Mr Weber …",
+          "uk": "Пан Вебер …",
+          "ru": "Господин Вебер …"
         },
         "options": [
           {
@@ -23106,10 +23106,10 @@ var EMAILS = [
     "parts": [
       {
         "role": "anrede",
-        "de": "Sehr geehrter Herr Yıldız,",
-        "en": "Dear Mr Yıldız,",
-        "uk": "Шановний пане Йилдизе,",
-        "ru": "Уважаемый господин Йылдыз,"
+        "de": "Sehr geehrter Herr Weber,",
+        "en": "Dear Mr Weber,",
+        "uk": "Шановний пане Вебере,",
+        "ru": "Уважаемый господин Вебер,"
       },
       {
         "role": "bezugnahme",
@@ -24544,10 +24544,10 @@ var EMAILS = [
       },
       {
         "role": "bezugnahme",
-        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die abweichende Garantiezeit in unserem Kaufvertrag hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the differing warranty period in our purchase contract.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на розбіжність у гарантійному терміні в нашому договорі купівлі-продажу.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на расхождение в гарантийном сроке в нашем договоре купли-продажи."
+        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die abweichende Garantiezeit für den <c>Großformatdrucker XL-900</c> in unserem Kaufvertrag hingewiesen haben.",
+        "en": "thank you very much for your email, in which you pointed out the differing warranty period for the large-format printer XL-900 in our purchase contract.",
+        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на розбіжність у гарантійному терміні для широкоформатного принтера XL-900 в нашому договорі купівлі-продажу.",
+        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на расхождение в гарантийном сроке для широкоформатного принтера XL-900 в нашем договоре купли-продажи."
       },
       {
         "role": "entschuldigung",
@@ -24558,10 +24558,10 @@ var EMAILS = [
       },
       {
         "role": "grund",
-        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> bei der Vertragserstellung die Standardvorlage verwendet wurde, ohne die in Ihrem Angebot enthaltene Sonderaktion zu berücksichtigen. <g>Wer</g> ein schriftliches Angebot mit erweiterter Garantie erhält, <g>dem</g> steht diese natürlich auch vertraglich zu.",
-        "en": "We have since found out that the standard template was used when drawing up the contract, without taking into account the special promotion included in your offer. Whoever receives a written offer with an extended warranty is of course also contractually entitled to it.",
-        "uk": "Ми вже з'ясували, що під час укладання договору використали стандартний шаблон, не врахувавши спеціальну акцію, зазначену у Вашій пропозиції. Хто отримує письмову пропозицію з розширеною гарантією, той, звісно, має право на неї й за договором.",
-        "ru": "Мы уже выяснили, что при составлении договора использовался стандартный шаблон, без учёта специальной акции, указанной в Вашем предложении. Кто получает письменное предложение с расширенной гарантией, тот, конечно, имеет право на неё и по договору."
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> bei der Vertragserstellung die Standardvorlage verwendet wurde, <k>sodass</k> die in Ihrem Angebot enthaltene Sonderaktion nicht berücksichtigt wurde. <g>Wer</g> ein schriftliches Angebot mit erweiterter Garantie erhält, <g>dem</g> steht diese natürlich auch vertraglich zu.",
+        "en": "We have since found out that the standard template was used when drawing up the contract, so that the special promotion included in your offer was not taken into account. Whoever receives a written offer with an extended warranty is of course also contractually entitled to it.",
+        "uk": "Ми вже з'ясували, що під час укладання договору використали стандартний шаблон, через що спеціальну акцію, зазначену у Вашій пропозиції, не було враховано. Хто отримує письмову пропозицію з розширеною гарантією, той, звісно, має право на неї й за договором.",
+        "ru": "Мы уже выяснили, что при составлении договора использовался стандартный шаблон, из-за чего специальная акция, указанная в Вашем предложении, не была учтена. Кто получает письменное предложение с расширенной гарантией, тот, конечно, имеет право на неё и по договору."
       },
       {
         "role": "loesung",
@@ -24703,10 +24703,10 @@ var EMAILS = [
       },
       {
         "role": "bezugnahme",
-        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die abweichende Farbe der gelieferten T-Shirts hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the discrepancy in the colour of the delivered T-shirts.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на невідповідність кольору доставлених футболок.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на несоответствие цвета доставленных футболок."
+        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die abweichende Farbe der gelieferten T-Shirts (<c>Art.-Nr. TX-224-Navy</c>) hingewiesen haben.",
+        "en": "thank you very much for your email, in which you pointed out the discrepancy in the colour of the delivered T-shirts (item no. TX-224-Navy).",
+        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на невідповідність кольору доставлених футболок (арт. № TX-224-Navy).",
+        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на несоответствие цвета доставленных футболок (арт. № TX-224-Navy)."
       },
       {
         "role": "entschuldigung",
@@ -24724,7 +24724,7 @@ var EMAILS = [
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung liefern wir Ihnen</r> die korrekten marineblauen T-Shirts noch in dieser Woche per Express, ohne dass Ihnen dafür zusätzliche Kosten entstehen. <r>Als kleines Geschenk</r> legen wir zusätzlich zehn weitere T-Shirts kostenlos bei.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
+        "de": "<r>Als Entschädigung liefern wir Ihnen</r> die korrekten marineblauen T-Shirts noch in dieser Woche per Express, <k>ohne dass</k> Ihnen dafür zusätzliche Kosten entstehen. <r>Als kleines Geschenk</r> legen wir zusätzlich zehn weitere T-Shirts kostenlos bei.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
         "en": "As compensation, we will deliver the correct navy blue T-shirts to you by express this week, at no additional cost to you. As a small gift, we will also include ten extra T-shirts free of charge.<br>We hope that you agree with this solution and thank you for your understanding.",
         "uk": "Як компенсацію ми доставимо Вам правильні темно-сині футболки експрес-доставкою вже цього тижня, без будь-яких додаткових витрат для Вас. Як невеликий подарунок ми також додамо десять додаткових футболок безкоштовно.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
         "ru": "В качестве компенсации мы доставим Вам правильные тёмно-синие футболки экспресс-доставкой уже на этой неделе, без каких-либо дополнительных расходов для Вас. В качестве небольшого подарка мы также добавим десять дополнительных футболок бесплатно.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
@@ -24862,14 +24862,14 @@ var EMAILS = [
       },
       {
         "role": "bezugnahme",
-        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf den fehlenden Frühbucherrabatt in unserer Rechnung hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the missing early-bird discount in our invoice.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на відсутність знижки за раннє бронювання в нашому рахунку.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на отсутствие скидки за раннее бронирование в нашем счёте."
+        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf den fehlenden Frühbucherrabatt aus Angebot <c>AN-2026-057</c> in unserer Rechnung hingewiesen haben.",
+        "en": "thank you very much for your email, in which you pointed out the missing early-bird discount from offer AN-2026-057 in our invoice.",
+        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на відсутність знижки за раннє бронювання з пропозиції AN-2026-057 в нашому рахунку.",
+        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на отсутствие скидки за раннее бронирование из предложения AN-2026-057 в нашем счёте."
       },
       {
         "role": "entschuldigung",
-        "de": "<r>Es tut uns sehr leid, dass</r> Ihnen der volle Preis in Rechnung gestellt wurde, obwohl Sie fristgerecht gebucht hatten.",
+        "de": "<r>Es tut uns sehr leid, dass</r> Ihnen der volle Preis in Rechnung gestellt wurde, <k>obwohl</k> Sie fristgerecht gebucht hatten.",
         "en": "We are very sorry that you were invoiced the full price even though you had booked on time.",
         "uk": "Нам дуже прикро, що Вам виставили повну ціну, попри те, що Ви забронювали вчасно.",
         "ru": "Нам очень жаль, что Вам выставили полную цену, несмотря на то что Вы забронировали вовремя."
@@ -25021,10 +25021,10 @@ var EMAILS = [
       },
       {
         "role": "bezugnahme",
-        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die wiederholten automatisierten Antworten hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the repeated automated replies.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на повторювані автоматичні відповіді.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на повторяющиеся автоматические ответы."
+        "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die <c>dreimal</c> erhaltenen automatisierten Standardantworten hingewiesen haben.",
+        "en": "thank you very much for your email, in which you pointed out the three automated standard replies you received.",
+        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на три отримані автоматичні стандартні відповіді.",
+        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на три полученных автоматических стандартных ответа."
       },
       {
         "role": "entschuldigung",
@@ -25035,7 +25035,7 @@ var EMAILS = [
       },
       {
         "role": "grund",
-        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> unser automatisiertes Antwortsystem in den letzten Wochen deutlich häufiger ausgelöst wurde, <g>als es eigentlich vorgesehen war</g>, sodass individuelle Anfragen wie Ihre liegen blieben.",
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> unser automatisiertes Antwortsystem in den letzten Wochen deutlich häufiger ausgelöst wurde, <g>als es eigentlich vorgesehen war</g>, <k>sodass</k> individuelle Anfragen wie Ihre liegen blieben.",
         "en": "We have since found out that our automated reply system was triggered noticeably more often in recent weeks than actually intended, so individual inquiries like yours were left unanswered.",
         "uk": "Ми вже з'ясували, що наша автоматична система відповідей останніми тижнями спрацьовувала значно частіше, ніж це насправді було передбачено, через що індивідуальні запити, як Ваш, залишалися без відповіді.",
         "ru": "Мы уже выяснили, что наша автоматическая система ответов в последние недели срабатывала заметно чаще, чем это было изначально предусмотрено, из-за чего индивидуальные запросы, подобные Вашему, оставались без ответа."
@@ -25187,7 +25187,7 @@ var EMAILS = [
       },
       {
         "role": "entschuldigung",
-        "de": "<r>Es tut uns sehr leid, dass</r> der Kompressor nicht den im Angebot AN-2026-142 zugesagten Betriebsdruck von 8 bar erreicht.",
+        "de": "<r>Es tut uns sehr leid, dass</r> der Kompressor nicht den im Angebot <c>AN-2026-142</c> zugesagten Betriebsdruck von 8 bar erreicht.",
         "en": "We are very sorry that the compressor does not reach the operating pressure of 8 bar promised in offer AN-2026-142.",
         "uk": "Нам дуже прикро, що компресор не досягає робочого тиску 8 бар, обіцяного в пропозиції AN-2026-142.",
         "ru": "Нам очень жаль, что компрессор не достигает рабочего давления 8 бар, обещанного в предложении AN-2026-142."
@@ -25201,10 +25201,10 @@ var EMAILS = [
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung schicken wir Ihnen</r> noch in dieser Woche einen Techniker vorbei, der den Druckregler kostenlos vor Ort neu einstellt. Sollte der Kompressor danach weiterhin nicht die zugesagte Leistung erreichen, tauschen wir das Gerät selbstverständlich gegen ein neues Modell aus.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
-        "en": "As compensation, we will send a technician to you this week, who will readjust the pressure regulator on site free of charge. Should the compressor still not reach the promised performance afterwards, we will of course exchange the unit for a new model.<br>We hope that you agree with this solution and thank you for your understanding.",
-        "uk": "Як компенсацію ми надішлемо до Вас техніка вже цього тижня, який безкоштовно налаштує регулятор тиску на місці. Якщо після цього компресор і надалі не досягатиме обіцяної продуктивності, ми, звісно, замінимо пристрій на нову модель.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
-        "ru": "В качестве компенсации мы направим к Вам техника уже на этой неделе, который бесплатно перенастроит регулятор давления на месте. Если после этого компрессор всё же не будет достигать обещанной производительности, мы, конечно, заменим устройство на новую модель.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
+        "de": "<r>Als Entschädigung schicken wir Ihnen</r> noch in dieser Woche einen Techniker vorbei, der den Druckregler kostenlos vor Ort neu einstellt, <k>damit</k> der Kompressor den zugesagten Druck von 8 bar erreicht. Sollte er danach weiterhin nicht die volle Leistung erreichen, tauschen wir das Gerät selbstverständlich gegen ein neues Modell aus.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
+        "en": "As compensation, we will send a technician to you this week, who will readjust the pressure regulator on site free of charge so that the compressor reaches the promised pressure of 8 bar. Should it still not reach full performance afterwards, we will of course exchange the unit for a new model.<br>We hope that you agree with this solution and thank you for your understanding.",
+        "uk": "Як компенсацію ми надішлемо до Вас техніка вже цього тижня, який безкоштовно налаштує регулятор тиску на місці, щоб компресор досягав обіцяного тиску 8 бар. Якщо після цього він і надалі не досягатиме повної продуктивності, ми, звісно, замінимо пристрій на нову модель.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
+        "ru": "В качестве компенсации мы направим к Вам техника уже на этой неделе, который бесплатно перенастроит регулятор давления на месте, чтобы компрессор достигал обещанного давления 8 бар. Если после этого он всё же не будет достигать полной производительности, мы, конечно, заменим устройство на новую модель.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
       },
       {
         "role": "grussformel",
@@ -25346,7 +25346,7 @@ var EMAILS = [
       },
       {
         "role": "entschuldigung",
-        "de": "<r>Es tut uns sehr leid, dass</r> sich die Lieferung der bestellten Schreibtische Modell ED-310 weiter verzögert.",
+        "de": "<r>Es tut uns sehr leid, dass</r> sich die Lieferung der bestellten Schreibtische Modell <c>ED-310</c> weiter verzögert.",
         "en": "We are very sorry that the delivery of the ordered ED-310 desks continues to be delayed.",
         "uk": "Нам дуже прикро, що поставка замовлених столів моделі ED-310 і надалі затримується.",
         "ru": "Нам очень жаль, что поставка заказанных столов модели ED-310 продолжает задерживаться."
@@ -25360,7 +25360,7 @@ var EMAILS = [
       },
       {
         "role": "loesung",
-        "de": "<r>Als Alternative bieten wir Ihnen</r> das Modell ED-330 an, das über vergleichbare Maße und Ausstattung verfügt und sofort verfügbar ist – selbstverständlich zum ursprünglich vereinbarten Preis. Gerne senden wir Ihnen vorab Produktfotos zu, damit Sie sich ein genaues Bild machen können.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
+        "de": "<r>Als Alternative bieten wir Ihnen</r> das Modell ED-330 an, das über vergleichbare Maße und Ausstattung verfügt und sofort verfügbar ist – selbstverständlich zum ursprünglich vereinbarten Preis. Gerne senden wir Ihnen vorab Produktfotos zu, <k>damit</k> Sie sich ein genaues Bild machen können.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
         "en": "As an alternative, we offer you the ED-330 model, which has comparable dimensions and features and is immediately available – of course at the originally agreed price. We would be happy to send you product photos in advance so that you can get a precise picture.<br>We hope that you agree with this solution and thank you for your understanding.",
         "uk": "Як альтернативу пропонуємо Вам модель ED-330, яка має порівнянні розміри та комплектацію і доступна одразу — звісно, за первісно узгодженою ціною. Із задоволенням заздалегідь надішлемо Вам фото продукту, щоб Ви могли скласти точне уявлення.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
         "ru": "В качестве альтернативы предлагаем Вам модель ED-330, которая имеет сопоставимые размеры и комплектацию и доступна сразу — конечно, по первоначально согласованной цене. С удовольствием заранее вышлем Вам фотографии продукта, чтобы Вы могли составить точное представление.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
@@ -25505,7 +25505,7 @@ var EMAILS = [
       },
       {
         "role": "entschuldigung",
-        "de": "<r>Zunächst möchten wir uns bei Ihnen dafür entschuldigen, dass</r> Sie statt des bestellten Modells FP-220 das Modell FP-180 erhalten haben.",
+        "de": "<r>Zunächst möchten wir uns bei Ihnen dafür entschuldigen, dass</r> Sie statt des bestellten Modells <c>FP-220</c> das Modell FP-180 erhalten haben.",
         "en": "First of all, we would like to apologise to you for the fact that you received model FP-180 instead of the ordered model FP-220.",
         "uk": "Насамперед хочемо перепросити Вас за те, що замість замовленої моделі FP-220 Ви отримали модель FP-180.",
         "ru": "Прежде всего, мы хотим извиниться перед Вами за то, что вместо заказанной модели FP-220 Вы получили модель FP-180."
@@ -25519,7 +25519,7 @@ var EMAILS = [
       },
       {
         "role": "loesung",
-        "de": "<r>Da Sie das Problem, wie Sie schreiben, bereits anderweitig gelöst haben, erstatten wir Ihnen</r> selbstverständlich den vollen Rechnungsbetrag für die falsch gelieferten Filterpatronen zurück. Eine Abholung der Ware organisieren wir auf unsere Kosten.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
+        "de": "<k>Da</k> Sie das Problem, wie Sie schreiben, bereits anderweitig gelöst haben, <r>erstatten wir Ihnen</r> selbstverständlich den vollen Rechnungsbetrag für die falsch gelieferten Filterpatronen zurück. Eine Abholung der Ware organisieren wir auf unsere Kosten.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
         "en": "Since you have already solved the problem elsewhere, as you write, we will of course refund you the full invoice amount for the incorrectly delivered filter cartridges. We will arrange collection of the goods at our expense.<br>We hope that you agree with this solution and thank you for your understanding.",
         "uk": "Оскільки Ви, як пишете, уже вирішили проблему в інший спосіб, ми, звісно, повністю повернемо Вам суму рахунку за помилково доставлені фільтрувальні патрони. Забір товару ми організуємо за наш рахунок.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
         "ru": "Поскольку Вы, как пишете, уже решили проблему другим способом, мы, конечно, полностью вернём Вам сумму счёта за ошибочно доставленные фильтрующие патроны. Забор товара мы организуем за наш счёт.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
@@ -25664,7 +25664,7 @@ var EMAILS = [
       },
       {
         "role": "entschuldigung",
-        "de": "<r>Es tut uns sehr leid, dass</r> dadurch bei Ihnen Unsicherheit bezüglich der zugesagten Leistung entstanden ist.",
+        "de": "<r>Es tut uns sehr leid, dass</r> <k>dadurch</k> bei Ihnen Unsicherheit bezüglich der zugesagten Leistung entstanden ist.",
         "en": "We are very sorry that this caused you uncertainty regarding the promised service.",
         "uk": "Нам дуже прикро, що через це у Вас виникла невпевненість щодо обіцяної послуги.",
         "ru": "Нам очень жаль, что из-за этого у Вас возникла неуверенность относительно обещанной услуги."
@@ -25678,7 +25678,7 @@ var EMAILS = [
       },
       {
         "role": "loesung",
-        "de": "<r>Hiermit bestätigen wir Ihnen ausdrücklich</r> die im Angebot AN-2026-201 zugesagte kostenlose Wartung für ein Jahr. Als zusätzliche Wiedergutmachung für die entstandene Unsicherheit verlängern wir außerdem die Garantie auf der Etikettiermaschine um weitere sechs Monate.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
+        "de": "<r>Hiermit bestätigen wir Ihnen ausdrücklich</r> die im Angebot <c>AN-2026-201</c> zugesagte kostenlose Wartung für ein Jahr. Als zusätzliche Wiedergutmachung für die entstandene Unsicherheit verlängern wir außerdem die Garantie auf der Etikettiermaschine um weitere sechs Monate.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
         "en": "We hereby expressly confirm the free one-year maintenance promised in offer AN-2026-201. As additional compensation for the uncertainty caused, we are also extending the warranty on the labelling machine by a further six months.<br>We hope that you agree with this solution and thank you for your understanding.",
         "uk": "Цим ми офіційно підтверджуємо безкоштовне обслуговування протягом одного року, обіцяне в пропозиції AN-2026-201. Як додаткову компенсацію за спричинену невпевненість ми також продовжуємо гарантію на етикетувальну машину ще на шість місяців.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
         "ru": "Настоящим мы официально подтверждаем бесплатное обслуживание в течение одного года, обещанное в предложении AN-2026-201. В качестве дополнительной компенсации за причинённую неуверенность мы также продлеваем гарантию на этикетировочную машину ещё на шесть месяцев.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
@@ -25823,7 +25823,7 @@ var EMAILS = [
       },
       {
         "role": "entschuldigung",
-        "de": "<r>Es tut uns sehr leid, dass</r> das dritte Modul der Schulung nicht wie vereinbart durchgeführt wurde.",
+        "de": "<r>Es tut uns sehr leid, dass</r> das <c>dritte Modul</c> der Schulung nicht wie vereinbart durchgeführt wurde.",
         "en": "We are very sorry that the third module of the training was not delivered as agreed.",
         "uk": "Нам дуже прикро, що третій модуль тренінгу не було проведено, як було узгоджено.",
         "ru": "Нам очень жаль, что третий модуль тренинга не был проведён, как было согласовано."
@@ -25837,7 +25837,7 @@ var EMAILS = [
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung erstatten wir Ihnen</r> anteilig 30 Prozent des Schulungspreises zurück, da das dritte Modul nicht durchgeführt wurde. Gerne bieten wir zusätzlich an, dieses Modul in einem separaten, kostenlosen Kurztermin für Ihre Führungskräfte nachzuholen.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
+        "de": "<r>Als Entschädigung erstatten wir Ihnen</r> anteilig 30 Prozent des Schulungspreises zurück, <k>da</k> das dritte Modul nicht durchgeführt wurde. Gerne bieten wir zusätzlich an, dieses Modul in einem separaten, kostenlosen Kurztermin für Ihre Führungskräfte nachzuholen.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
         "en": "As compensation, we will refund you 30 percent of the training price on a pro-rata basis, since the third module was not delivered. We would also be happy to offer to make up this module in a separate, free short session for your managers.<br>We hope that you agree with this solution and thank you for your understanding.",
         "uk": "Як компенсацію ми повернемо Вам пропорційно 30 відсотків вартості тренінгу, оскільки третій модуль не було проведено. Крім того, із задоволенням пропонуємо провести цей модуль окремо, безкоштовно, коротким заняттям для Ваших керівників.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
         "ru": "В качестве компенсации мы вернём Вам пропорционально 30 процентов стоимости тренинга, поскольку третий модуль не был проведён. Кроме того, с удовольствием предлагаем провести этот модуль отдельно, бесплатно, коротким занятием для Ваших руководителей.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
