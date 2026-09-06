@@ -21105,14 +21105,14 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, unseren Messeauftritt für die nächste Fachmesse neu zu gestalten und dabei stärker auf persönliche Beratung statt auf reine Werbematerialien zu setzen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>unseren Messeauftritt für die nächste Fachmesse neu zu gestalten und dabei stärker auf persönliche Beratung</c> <k>statt</k> auf reine Werbematerialien zu setzen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to redesign our trade fair presence for the next industry fair, focusing more on personal consulting rather than pure promotional materials. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує оновити наш формат участі у виставці на наступному галузевому заході, роблячи більший акцент на особистих консультаціях, а не на самих лише рекламних матеріалах. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует обновить наш формат участия в выставке на следующем отраслевом мероприятии, делая больший акцент на персональных консультациях, а не только на рекламных материалах. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
       },
       {
         "role": "meinung",
-        "de": "<r>Ich bin der Meinung, dass</r> unser Messestand sich künftig stärker <g>durch persönliche Beratung auszeichnen</g> sollte, statt vor allem mit Give-aways und Broschüren zu punkten.",
+        "de": "<r>Ich bin der Meinung, dass</r> unser Messestand sich künftig stärker <g>durch persönliche Beratung auszeichnen</g> sollte, <k>statt</k> vor allem mit Give-aways und Broschüren zu punkten.",
         "en": "I am of the opinion that our booth should stand out more through personal consulting in the future, instead of scoring mainly with give-aways and brochures.",
         "uk": "Я вважаю, що наш стенд надалі має вирізнятися насамперед особистими консультаціями, а не переважно подарунками й брошурами.",
         "ru": "Я считаю, что наш стенд в дальнейшем должен выделяться прежде всего персональными консультациями, а не в основном подарками и брошюрами."
@@ -21126,14 +21126,14 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
-        "de": "<r>Andererseits</r> sollte man auch bedenken, dass es <g>während der Messe</g> oft hektisch zugeht und nicht immer genug Standdienst zur Verfügung steht, um jedem Fachbesucher ausführlich Zeit zu widmen.",
+        "de": "<r>Andererseits</r> sollte man auch bedenken, dass es <g>während der Messe</g> oft hektisch zugeht und nicht immer genug Standdienst zur Verfügung steht, <k>um</k> jedem Fachbesucher ausführlich Zeit zu widmen.",
         "en": "On the other hand, one should also consider that things often get hectic during the trade fair and there isn't always enough booth staff available to devote extensive time to every trade visitor.",
         "uk": "З іншого боку, варто також враховувати, що під час виставки часто буває напружено, і не завжди вистачає персоналу на стенді, щоб приділити достатньо часу кожному фаховому відвідувачу.",
         "ru": "С другой стороны, стоит также учитывать, что во время выставки часто бывает напряжённо, и не всегда хватает персонала на стенде, чтобы уделить достаточно времени каждому профессиональному посетителю."
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> wir <g>dazu</g> ein kurzes, strukturiertes Beratungsgespräch mit drei festen Fragen entwickeln, damit wir auch bei vollem Andrang schnell das Interesse der Besucher wecken und Kontakt knüpfen können.",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir <g>dazu</g> ein kurzes, strukturiertes Beratungsgespräch mit drei festen Fragen entwickeln, <k>damit</k> wir auch bei vollem Andrang schnell das Interesse der Besucher wecken und Kontakt knüpfen können.",
         "en": "That is why I propose that we develop a short, structured consulting conversation with three fixed questions, so that even during a full rush we can quickly spark visitors' interest and make contact.",
         "uk": "Тому я пропоную розробити коротку структуровану консультаційну бесіду з трьома фіксованими запитаннями, щоб навіть при великому напливі відвідувачів ми могли швидко зацікавити їх і встановити контакт.",
         "ru": "Поэтому я предлагаю разработать короткую структурированную консультационную беседу с тремя фиксированными вопросами, чтобы даже при большом наплыве посетителей мы могли быстро заинтересовать их и установить контакт."
@@ -22796,37 +22796,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre Nachricht.</r>",
-        "en": "thank you very much for your message.",
-        "uk": "щиро дякуємо за Ваше повідомлення.",
-        "ru": "большое спасибо за Ваше сообщение."
+        "en": "<r>thank you very much for your message.</r>",
+        "uk": "<r>щиро дякуємо за Ваше повідомлення.</r>",
+        "ru": "<r>большое спасибо за Ваше сообщение.</r>"
       },
       {
         "role": "entschuldigung",
         "de": "<r>Zunächst möchten wir uns bei Ihnen dafür entschuldigen, dass</r> es bei den bestellten Waschbecken zu einer fehlerhaften Lieferung gekommen ist.",
-        "en": "First of all, we would like to apologise to you for the fact that there was a faulty delivery of the sinks you ordered.",
-        "uk": "Насамперед хочемо перепросити Вас за те, що із замовленими умивальниками сталася помилкова поставка.",
-        "ru": "Прежде всего, мы хотим извиниться перед Вами за то, что с заказанными раковинами произошла ошибочная поставка."
+        "en": "<r>First of all, we would like to apologise to you for the fact that</r> there was a faulty delivery of the sinks you ordered.",
+        "uk": "<r>Насамперед хочемо перепросити Вас за те, що</r> із замовленими умивальниками сталася помилкова поставка.",
+        "ru": "<r>Прежде всего, мы хотим извиниться перед Вами за то, что</r> с заказанными раковинами произошла ошибочная поставка."
       },
       {
         "role": "grund",
         "de": "<r>Leider kam es zu einer Verwechslung bei den Bestellungen.</r> Beim Verpacken <g>wurden</g> die <c>Waschbecken</c> versehentlich <g>vertauscht</g>. <r>Wir versichern Ihnen, dass sich dieser Fehler nicht wiederholen wird.</r> Die korrekten Waschbecken werden wir Ihnen noch heute zustellen <k>und gleichzeitig</k> die falsch gelieferte Ware bei Ihnen abholen.",
-        "en": "Unfortunately, there was a mix-up with the orders. During packing, the sinks were accidentally swapped. We assure you that this mistake will not happen again. We will deliver the correct sinks to you today and collect the wrongly delivered goods from you at the same time.",
-        "uk": "На жаль, сталася плутанина із замовленнями. Під час пакування умивальники були помилково переплутані. Запевняємо Вас, що ця помилка більше не повториться. Правильні умивальники ми доставимо Вам уже сьогодні й одночасно заберемо помилково доставлений товар.",
-        "ru": "К сожалению, произошла путаница с заказами. При упаковке раковины были случайно перепутаны. Заверяем Вас, что эта ошибка больше не повторится. Правильные раковины мы доставим Вам уже сегодня и одновременно заберём ошибочно доставленный товар."
+        "en": "<r>Unfortunately, there was a mix-up with the orders.</r> During packing, the sinks were accidentally swapped. <r>We assure you that this mistake will not happen again.</r> We will deliver the correct sinks to you today and collect the wrongly delivered goods from you at the same time.",
+        "uk": "<r>На жаль, сталася плутанина із замовленнями.</r> Під час пакування умивальники були помилково переплутані. <r>Запевняємо Вас, що ця помилка більше не повториться.</r> Правильні умивальники ми доставимо Вам уже сьогодні й одночасно заберемо помилково доставлений товар.",
+        "ru": "<r>К сожалению, произошла путаница с заказами.</r> При упаковке раковины были случайно перепутаны. <r>Заверяем Вас, что эта ошибка больше не повторится.</r> Правильные раковины мы доставим Вам уже сегодня и одновременно заберём ошибочно доставленный товар."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung können wir Ihnen</r> einen Preisnachlass von 50 Euro je Waschbecken anbieten sowie eine kostenlose Lieferung bei Ihrer nächsten Bestellung.",
-        "en": "As compensation, we can offer you a discount of €50 per sink as well as free delivery on your next order.",
-        "uk": "Як компенсацію ми можемо запропонувати Вам знижку в 50 євро за кожен умивальник, а також безкоштовну доставку при наступному замовленні.",
-        "ru": "В качестве компенсации мы можем предложить Вам скидку в 50 евро за каждую раковину, а также бесплатную доставку при следующем заказе."
+        "de": "<r>Als Entschädigung können wir Ihnen</r> einen Preisnachlass von 50 Euro je Waschbecken anbieten sowie eine kostenlose Lieferung bei Ihrer nächsten Bestellung.<br><r>Wir hoffen, dass Sie mit dieser Lösung zufrieden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation, we can offer you</r> a discount of €50 per sink as well as free delivery on your next order.<br><r>We hope that you are satisfied with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію ми можемо запропонувати Вам</r> знижку в 50 євро за кожен умивальник, а також безкоштовну доставку при наступному замовленні.<br><r>Сподіваємось, що це рішення Вас задовольнить, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации мы можем предложить Вам</r> скидку в 50 евро за каждую раковину, а также бесплатную доставку при следующем заказе.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung zufrieden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you are satisfied with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас задовольнить, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -22955,37 +22955,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> die Probleme mit den <c>Akkus</c> der E-Scooter geschildert haben.",
-        "en": "thank you very much for your email, in which you described the problems with the e-scooter batteries.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви описали проблеми з акумуляторами е-скутерів.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы описали проблемы с аккумуляторами электросамокатов."
+        "en": "<r>thank you very much for your email, in which you</r> described the problems with the e-scooter batteries.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> описали проблеми з акумуляторами е-скутерів.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> описали проблемы с аккумуляторами электросамокатов."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Wir bedauern sehr, dass</r> es zu Problemen mit den Akkus der E-Scooter gekommen ist. Auch dass wir Ihnen nicht sofort Ersatzroller mit Firmenlogo zur Verfügung stellen können, <r>tut uns sehr leid.</r>",
-        "en": "We very much regret that there have been problems with the e-scooter batteries. We are also very sorry that we cannot immediately provide you with replacement scooters bearing your company logo.",
-        "uk": "Ми дуже шкодуємо, що виникли проблеми з акумуляторами е-скутерів. Нам також дуже прикро, що ми не можемо одразу надати Вам скутери на заміну з логотипом Вашої фірми.",
-        "ru": "Мы очень сожалеем, что возникли проблемы с аккумуляторами электросамокатов. Нам также очень жаль, что мы не можем сразу предоставить Вам самокаты на замену с логотипом Вашей фирмы."
+        "en": "<r>We very much regret that</r> there have been problems with the e-scooter batteries. <r>We are also very sorry that</r> we cannot immediately provide you with replacement scooters bearing your company logo.",
+        "uk": "<r>Ми дуже шкодуємо, що</r> виникли проблеми з акумуляторами е-скутерів. <r>Нам також дуже прикро, що</r> ми не можемо одразу надати Вам скутери на заміну з логотипом Вашої фірми.",
+        "ru": "<r>Мы очень сожалеем, что</r> возникли проблемы с аккумуляторами электросамокатов. <r>Нам также очень жаль, что</r> мы не можем сразу предоставить Вам самокаты на замену с логотипом Вашей фирмы."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es tatsächlich bei der Herstellung der Akkus vereinzelt <g>zu Fehlern gekommen ist</g>.",
-        "en": "We have since found out that isolated errors actually occurred during the production of the batteries.",
-        "uk": "Ми вже з'ясували, що під час виробництва акумуляторів дійсно траплялися поодинокі помилки.",
-        "ru": "Мы уже выяснили, что при производстве аккумуляторов действительно случались отдельные ошибки."
+        "en": "<r>We have since found out that</r> isolated errors actually occurred during the production of the batteries.",
+        "uk": "<r>Ми вже з'ясували, що</r> під час виробництва акумуляторів дійсно траплялися поодинокі помилки.",
+        "ru": "<r>Мы уже выяснили, что</r> при производстве аккумуляторов действительно случались отдельные ошибки."
       },
       {
         "role": "loesung",
-        "de": "<r>Wir verstehen sehr gut, dass</r> Sie unter diesen Umständen einen Preisnachlass wünschen. <r>Leider können wir diesen nicht in der geforderten Höhe gewähren, da</r> Sie bereits einen Mengenrabatt von zehn Prozent bei der Bestellung erhalten haben. Es ist aber möglich, den Preis pro defektem Roller um 50 Euro zu reduzieren, <k>sodass</k> wir Ihnen für die E-Scooter insgesamt 4.750 Euro in Rechnung stellen werden. Zusätzlich bieten wir Ihnen an, die Garantie um ein weiteres Jahr auf drei Jahre zu verlängern.",
-        "en": "We understand very well that under these circumstances you would like a discount. Unfortunately, we cannot grant it in the amount requested, since you already received a ten percent volume discount on the order. However, it is possible to reduce the price per defective scooter by €50, so that we will invoice you a total of €4,750 for the e-scooters. In addition, we offer to extend the warranty by a further year to three years.",
-        "uk": "Ми чудово розуміємо, що за таких обставин Ви бажаєте отримати знижку. На жаль, ми не можемо надати її в необхідному розмірі, оскільки Ви вже отримали десятивідсоткову оптову знижку при замовленні. Однак ми можемо зменшити ціну за кожен несправний скутер на 50 євро, тож виставимо Вам за е-скутери загальний рахунок на 4750 євро. Додатково пропонуємо продовжити гарантію ще на один рік — до трьох років.",
-        "ru": "Мы прекрасно понимаем, что в этих обстоятельствах Вы хотели бы получить скидку. К сожалению, мы не можем предоставить её в требуемом размере, поскольку Вы уже получили десятипроцентную оптовую скидку при заказе. Однако мы можем снизить цену за каждый неисправный самокат на 50 евро, так что выставим Вам за электросамокаты общий счёт на 4750 евро. Дополнительно предлагаем продлить гарантию ещё на один год — до трёх лет."
+        "de": "<r>Wir verstehen sehr gut, dass</r> Sie unter diesen Umständen einen Preisnachlass wünschen. <r>Leider können wir diesen nicht in der geforderten Höhe gewähren, da</r> Sie bereits einen Mengenrabatt von zehn Prozent bei der Bestellung erhalten haben. Es ist aber möglich, den Preis pro defektem Roller um 50 Euro zu reduzieren, <k>sodass</k> wir Ihnen für die E-Scooter insgesamt 4.750 Euro in Rechnung stellen werden. Zusätzlich bieten wir Ihnen an, die Garantie um ein weiteres Jahr auf drei Jahre zu verlängern.<br><r>Wir hoffen, Sie sind mit dieser Lösung einverstanden, und verbleiben.</r>",
+        "en": "<r>We understand very well that</r> under these circumstances you would like a discount. <r>Unfortunately, we cannot grant it in the amount requested, since</r> you already received a ten percent volume discount on the order. However, it is possible to reduce the price per defective scooter by €50, so that we will invoice you a total of €4,750 for the e-scooters. In addition, we offer to extend the warranty by a further year to three years.<br><r>We hope you agree with this solution, and remain.</r>",
+        "uk": "<r>Ми чудово розуміємо, що</r> за таких обставин Ви бажаєте отримати знижку. <r>На жаль, ми не можемо надати її в необхідному розмірі, оскільки</r> Ви вже отримали десятивідсоткову оптову знижку при замовленні. Однак ми можемо зменшити ціну за кожен несправний скутер на 50 євро, тож виставимо Вам за е-скутери загальний рахунок на 4750 євро. Додатково пропонуємо продовжити гарантію ще на один рік — до трьох років.<br><r>Сподіваємось, що Ви погодитеся з цим рішенням, і залишаємось.</r>",
+        "ru": "<r>Мы прекрасно понимаем, что</r> в этих обстоятельствах Вы хотели бы получить скидку. <r>К сожалению, мы не можем предоставить её в требуемом размере, поскольку</r> Вы уже получили десятипроцентную оптовую скидку при заказе. Однако мы можем снизить цену за каждый неисправный самокат на 50 евро, так что выставим Вам за электросамокаты общий счёт на 4750 евро. Дополнительно предлагаем продлить гарантию ещё на один год — до трёх лет.<br><r>Надеемся, что Вы согласитесь с этим решением, и остаёмся.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, Sie sind mit dieser Lösung einverstanden</r>, und verbleiben.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope you agree with this solution, and remain.<br><br>Best regards,",
-        "uk": "Сподіваємось, що Ви погодитеся з цим рішенням, і залишаємось.<br><br>З повагою,",
-        "ru": "Надеемся, что Вы согласитесь с этим решением, и остаёмся.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -26071,38 +26071,38 @@ var STORY = [
     "parts": [
       {
         "role": "einleitung",
-        "de": "Wenn ich an ein berufliches Vorbild denke, fällt mir sofort mein Großvater Anatolij ein. Er war Chefingenieur und leitete den Bau zahlreicher Erdölraffinerien in verschiedenen Ländern – eine Karriere, die sowohl technisches Können als auch außergewöhnliche Führungsqualitäten erforderte.",
-        "uk": "Коли я думаю про професійний взірець, мені одразу спадає на думку мій дідусь Анатолій. Він був головним інженером і керував будівництвом численних нафтопереробних заводів у різних країнах — кар'єра, яка вимагала як технічної майстерності, так і виняткових лідерських якостей.",
-        "en": "When I think of a professional role model, my grandfather Anatoliy immediately comes to mind. He was a chief engineer and directed the construction of numerous oil refineries in various countries – a career that required both technical skill and exceptional leadership qualities.",
-        "ru": "Когда я думаю о профессиональном образце для подражания, мне сразу приходит на ум мой дедушка Анатолий. Он был главным инженером и руководил строительством многочисленных нефтеперерабатывающих заводов в разных странах — карьера, которая требовала как технического мастерства, так и исключительных лидерских качеств."
+        "de": "Ich möchte heute über mein berufliches Vorbild sprechen. Wenn ich an ein berufliches Vorbild denke, fällt mir sofort mein Großvater Anatolij ein. Er war Chefingenieur und leitete den Bau zahlreicher Erdölraffinerien – eine Karriere, die technisches Können und starke Führung erforderte.",
+        "uk": "Сьогодні я хочу поговорити про свій професійний взірець. Коли я думаю про професійний взірець, мені одразу спадає на думку мій дідусь Анатолій. Він був головним інженером і керував будівництвом численних нафтопереробних заводів — кар'єра, яка вимагала технічної майстерності та сильного лідерства.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil1",
-        "de": "Als Kind verbrachte ich jeden Sommer bei ihm. Wir angelten gemeinsam, fuhren Boot, streiften durch Felder – und er erzählte mir dabei geduldig von Tieren, Pflanzen und der Welt um uns herum. Für meine endlosen Fragen hatte er stets eine Antwort. Nebenher bauten oder reparierten wir irgendetwas; es schien, als würde mein Großvater nie untätig sein. Diese Beobachtung hat sich tief in mir eingeprägt: Arbeit war für ihn keine Pflicht, sondern eine Lebensweise.",
-        "uk": "У дитинстві я проводив у нього кожне літо. Ми разом рибалили, каталися на човні, блукали полями — і він терпляче розповідав мені про тварин, рослини та світ навколо нас. На мої нескінченні запитання він завжди мав відповідь. Паралельно ми щось будували чи ремонтували; здавалося, що мій дідусь ніколи не сидів без діла. Це спостереження глибоко закарбувалося в мені: робота для нього була не обов'язком, а способом життя.",
-        "en": "As a child, I spent every summer with him. We went fishing together, went boating, wandered through fields – and he patiently told me about animals, plants, and the world around us. He always had an answer for my endless questions. Alongside that, we were always building or repairing something; it seemed my grandfather was never idle. This observation left a deep impression on me: work was not a duty for him, but a way of life.",
-        "ru": "В детстве я проводил у него каждое лето. Мы вместе рыбачили, катались на лодке, бродили по полям — и он терпеливо рассказывал мне о животных, растениях и мире вокруг нас. На мои бесконечные вопросы у него всегда был ответ. Параллельно мы что-то строили или ремонтировали; казалось, мой дедушка никогда не сидел без дела. Это наблюдение глубоко врезалось в мою память: работа была для него не обязанностью, а образом жизни."
+        "de": "Als Kind verbrachte ich die Sommer bei ihm. Wir bauten oder reparierten immer etwas, und er beantwortete geduldig alle meine Fragen. Für ihn war Arbeit keine Pflicht, sondern eine Lebensweise.",
+        "uk": "У дитинстві я проводив літо у нього. Ми завжди щось будували або ремонтували, і він терпляче відповідав на всі мої запитання. Для нього праця була не обов'язком, а способом життя.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Besonders beeindruckt hat mich seine unerschöpfliche Neugier. Selbst mit 82 Jahren erlernte er den Umgang mit einem Smartphone und führte Videoanrufe durch – ein eindrucksvolles Zeugnis seiner Überzeugung, dass Lernen kein Ablaufdatum hat. Er pflegte zu sagen, dass alles mit dem Setzen eines Ziels beginnt – und dass man danach unweigerlich den Weg und die Mittel findet, es zu verwirklichen. Dieser Gedanke begleitet mich bis heute.",
-        "uk": "Особливо мене вразила його невичерпна допитливість. Навіть у 82 роки він навчився користуватися смартфоном і здійснював відеодзвінки — вражаюче свідчення його переконання, що навчання не має терміну придатності. Він любив говорити, що все починається з постановки мети — а потім неминуче знаходиш шлях і засоби для її втілення. Ця думка супроводжує мене й донині.",
-        "en": "I was especially impressed by his inexhaustible curiosity. Even at 82, he learned to use a smartphone and made video calls – an impressive testament to his conviction that learning has no expiration date. He used to say that everything begins with setting a goal – and that afterward you inevitably find the way and the means to achieve it. This idea still accompanies me today.",
-        "ru": "Особенно меня впечатлило его неисчерпаемое любопытство. Даже в 82 года он научился пользоваться смартфоном и совершал видеозвонки — впечатляющее свидетельство его убеждения, что обучение не имеет срока годности. Он любил говорить, что всё начинается с постановки цели — а затем неизбежно находишь путь и средства для её осуществления. Эта мысль сопровождает меня и по сей день."
+        "de": "Besonders beeindruckt hat mich seine Neugier. Selbst mit 82 Jahren erlernte er den Umgang mit dem Smartphone. Er pflegte zu sagen: Alles beginnt mit einem Ziel – den Weg dazu findet man immer. Dieser Gedanke begleitet mich bis heute.",
+        "uk": "Особливо вразила мене його допитливість. Навіть у 82 роки він навчився користуватися смартфоном. Він любив казати: все починається з цілі — а шлях до неї завжди знайдеться. Ця думка супроводжує мене донині.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "schluss1",
-        "de": "Mein Großvater Anatolij hat mir gezeigt, dass ein echter Profi nicht nur durch Fachwissen glänzt, sondern durch Neugier, Ausdauer und die Fähigkeit, andere zu inspirieren. Ich bin überzeugt, dass ich diese Werte – bewusst oder unbewusst – in meinen eigenen beruflichen Entscheidungen trage.",
-        "uk": "Мій дідусь Анатолій показав мені, що справжній професіонал вирізняється не лише фаховими знаннями, а й допитливістю, наполегливістю та здатністю надихати інших. Я переконаний, що несу ці цінності — свідомо чи несвідомо — у своїх власних професійних рішеннях.",
-        "en": "My grandfather Anatoliy showed me that a true professional shines not only through expertise, but through curiosity, perseverance, and the ability to inspire others. I am convinced that I carry these values – consciously or unconsciously – in my own professional decisions.",
-        "ru": "Мой дедушка Анатолий показал мне, что настоящий профессионал блистает не только благодаря профессиональным знаниям, но и благодаря любопытству, упорству и способности вдохновлять других. Я убеждён, что несу эти ценности — сознательно или бессознательно — в своих собственных профессиональных решениях."
+        "de": "Mein Großvater hat mir gezeigt, dass ein echter Profi nicht nur durch Fachwissen glänzt, sondern durch Neugier, Ausdauer und die Fähigkeit, andere zu inspirieren. Diese Werte prägen auch meine beruflichen Entscheidungen.",
+        "uk": "Мій дідусь показав мені, що справжній професіонал вирізняється не лише фаховими знаннями, а й допитливістю, наполегливістю та вмінням надихати інших. Ці цінності формують і мої професійні рішення.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "schluss2",
         "de": "Vielen Dank für Ihre Aufmerksamkeit!",
-        "uk": "Дякую за увагу!",
-        "en": "Thank you for your attention!",
-        "ru": "Спасибо за внимание!"
+        "uk": "Дякую за вашу увагу!",
+        "en": "",
+        "ru": ""
       }
     ]
   },
@@ -26251,38 +26251,45 @@ var STORY = [
     "parts": [
       {
         "role": "einleitung",
-        "de": "Ich habe das Thema Selbstständigkeit gewählt.",
-        "uk": "Я обрав тему «Самозайнятість».",
-        "en": "I have chosen the topic of self-employment.",
-        "ru": "Я выбрал тему «Самозанятость»."
+        "de": "Ich möchte heute über das Thema Selbstständigkeit sprechen.",
+        "uk": "Сьогодні я хочу поговорити про тему самозайнятості.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil1",
-        "de": "Ich habe 18 Jahre lang ein eigenes Unternehmen in der Ukraine geleitet. Als IT-Ingenieur habe ich Erfahrung mit der Entwicklung komplexer Systeme und der Kundengewinnung. Nach meiner Ankunft in Deutschland stand ich vor einer neuen Herausforderung: dem intensiven Sprachenlernen auf dem Niveau B2.",
-        "uk": "Я 18 років керував власною компанією в Україні. Як ІТ-інженер, я маю досвід розробки складних систем та залучення клієнтів. Після приїзду до Німеччини переді мною постав новий виклик: інтенсивне вивчення мови на рівні B2.",
-        "en": "I ran my own company in Ukraine for 18 years. As an IT engineer, I have experience developing complex systems and acquiring customers. After arriving in Germany, I faced a new challenge: intensive language learning at the B2 level.",
-        "ru": "Я 18 лет руководил собственной компанией в Украине. Как ИТ-инженер, я имею опыт разработки сложных систем и привлечения клиентов. После приезда в Германию передо мной встал новый вызов: интенсивное изучение языка на уровне B2."
+        "de": "17 Jahre lang habe ich ein eigenes Unternehmen in der Ukraine geleitet. Als diplomierter IT-Ingenieur und erfahrener Business Development Manager verfüge ich über Erfahrung in der Entwicklung komplexer Systeme sowie in den Bereichen Marketing und Vertrieb.",
+        "uk": "Протягом 17 років я керував власним підприємством в Україні. Як IT-інженер за освітою та менеджер з розвитку бізнесу з великим досвідом, я маю досвід розробки складних систем, а також у сферах маркетингу та продажів.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Dabei ist mir ein großes Problem aufgefallen: Die meisten Sprach-Apps bieten nur allgemeine Inhalte. Wenn man aber ein festes Ziel und eine Prüfung hat, verliert man mit solchen Apps zu viel Zeit. Außerdem steht man oft vor der Frage: Was soll ich heute lernen? Wenn das Gehirn zu viele Optionen hat, verschiebt man die Aufgabe leicht auf morgen.",
-        "uk": "При цьому я помітив велику проблему: більшість мовних застосунків пропонують лише загальний контент. Але якщо в тебе є конкретна мета та іспит, з такими застосунками втрачаєш забагато часу. Крім того, часто постає питання: що вчити сьогодні? Коли мозок має забагато варіантів, легко відкласти завдання на завтра.",
-        "en": "In doing so, I noticed a major problem: most language apps only offer general content. But if you have a fixed goal and an exam, you lose too much time with such apps. In addition, you often face the question: what should I study today? When the brain has too many options, it's easy to put the task off until tomorrow.",
-        "ru": "При этом я заметил большую проблему: большинство языковых приложений предлагают лишь общий контент. Но если у тебя есть конкретная цель и экзамен, с такими приложениями теряешь слишком много времени. Кроме того, часто встаёт вопрос: что учить сегодня? Когда у мозга слишком много вариантов, легко отложить задачу на завтра."
+        "de": "Nach meiner Ankunft in Deutschland stand ich vor einer neuen Herausforderung: dem intensiven Erlernen der deutschen Sprache in sehr kurzer Zeit. Ich habe schnell gemerkt, dass traditionelle Lehrbücher und herkömmliche Apps für eine schnelle Prüfungsvorbereitung nicht effektiv genug sind. Bücher trainieren das Sprechen kaum, und Apps bieten meist nur allgemeine Inhalte, wodurch man viel wertvolle Zeit verliert.",
+        "uk": "Після прибуття до Німеччини я зіткнувся з новим викликом — інтенсивним вивченням німецької мови в дуже короткий час. Я зрозумів, що традиційні підручники та звичайні застосунки недостатньо ефективні для швидкої підготовки до іспиту. Книги майже не тренують говоріння, а застосунки здебільшого пропонують лише загальний контент, через що втрачається багато дорогоцінного часу.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil3",
-        "de": "Aus meiner Erfahrung kenne ich ein wichtiges Prinzip: Eine Aufgabe wird am besten erledigt, wenn man nur eine einzige Option hat. Deshalb habe ich eine minimalistische App entwickelt. Sie ist genau auf den Lehrplan für die Niveaus A2, B1 und B2 abgestimmt. Die App kombiniert wissenschaftliche Lernmethoden mit Gamifikation und deckt Hören, Lesen, Schreiben und Grammatik ab.",
-        "uk": "З власного досвіду я знаю важливий принцип: завдання виконується найкраще, коли є лише один варіант. Тому я розробив мінімалістичний застосунок. Він точно відповідає навчальній програмі для рівнів A2, B1 та B2. Застосунок поєднує наукові методи навчання з гейміфікацією та охоплює аудіювання, читання, письмо й граматику.",
-        "en": "From my own experience, I know an important principle: a task is best accomplished when you have only a single option. That's why I developed a minimalist app. It is precisely tailored to the curriculum for levels A2, B1, and B2. The app combines scientific learning methods with gamification and covers listening, reading, writing, and grammar.",
-        "ru": "Из своего опыта я знаю важный принцип: задача выполняется лучше всего, когда есть только один вариант. Поэтому я разработал минималистичное приложение. Оно точно соответствует учебной программе для уровней A2, B1 и B2. Приложение сочетает научные методы обучения с геймификацией и охватывает аудирование, чтение, письмо и грамматику."
+        "de": "Aus diesem Grund habe ich eine moderne mobile App für Zuwanderer entwickelt, die präzise auf den Lehrplan der Niveaustufen A2, B1 und B2 abgestimmt ist. Sie kombiniert wissenschaftliche Lernmethoden mit Gamification und deckt die Bereiche Hörverstehen, Leseverstehen, Schreiben und Grammatik ab. Die App ist auf Deutsch, Englisch, Ukrainisch und Russisch verfügbar.",
+        "uk": "Тому я розробив сучасний мобільний застосунок для іммігрантів, який чітко адаптований до навчальної програми рівнів A2, B1 та B2. Він поєднує наукові методи навчання з гейміфікацією та охоплює аудіювання, читання, письмо й граматику. Застосунок доступний німецькою, англійською, українською та російською мовами.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "schluss1",
-        "de": "Ich habe die Adresse mova.now gewählt, weil „Mova\" auf Ukrainisch „Sprache\" bedeutet und weil es keinen besseren Moment zum Lernen gibt als JETZT. Aktuell ist die App komplett kostenlos und ohne Werbung erreichbar. In Zukunft möchte ich aus dieser Idee ein eigenes Unternehmen in Deutschland aufbauen und mich damit selbstständig machen.",
-        "uk": "Я обрав адресу mova.now, тому що «мова» українською означає «Sprache», а кращого моменту для навчання, ніж ЗАРАЗ, не буває. Наразі застосунок повністю безкоштовний і доступний без реклами. У майбутньому я хочу з цієї ідеї побудувати власну компанію в Німеччині та стати завдяки цьому самозайнятим.",
-        "en": "I chose the address mova.now because \"Mova\" means \"language\" in Ukrainian, and because there is no better time to learn than NOW. Currently, the app is completely free and accessible without advertising. In the future, I would like to build my own company in Germany from this idea and become self-employed with it.",
-        "ru": "Я выбрал адрес mova.now, потому что «мова» по-украински означает «язык», а лучшего момента для обучения, чем СЕЙЧАС, не бывает. В настоящее время приложение полностью бесплатно и доступно без рекламы. В будущем я хочу построить из этой идеи собственную компанию в Германии и таким образом стать самозанятым."
+        "de": "Derzeit ist die App kostenlos und unter der Adresse mova.now erreichbar. Diesen Namen habe ich gewählt, weil „Mova\" auf Ukrainisch „Sprache\" bedeutet und weil es keinen besseren Moment zum Lernen gibt als JETZT. In Zukunft möchte ich aus diesem Projekt ein erfolgreiches Unternehmen in Deutschland aufbauen und mich hier selbstständig machen.",
+        "uk": "Наразі застосунок безкоштовний і доступний за адресою mova.now. Цю назву я обрав, оскільки «Mova» українською означає «Sprache», і тому що немає кращого моменту для навчання, ніж зараз. У майбутньому я хочу розвинути цей проєкт у успішне підприємство в Німеччині та стати тут самостійно зайнятим.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss2",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit!",
+        "uk": "Дякую за вашу увагу!",
+        "en": "",
+        "ru": ""
       }
     ]
   }
