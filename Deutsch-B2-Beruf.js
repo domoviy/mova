@@ -22816,7 +22816,7 @@ var EMAILS = [
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung können wir Ihnen</r> einen Preisnachlass von 50,- € je Waschbecken anbieten sowie eine kostenlose Lieferung bei Ihrer nächsten Bestellung.",
+        "de": "<r>Als Entschädigung können wir Ihnen</r> einen Preisnachlass von 50 Euro je Waschbecken anbieten sowie eine kostenlose Lieferung bei Ihrer nächsten Bestellung.",
         "en": "As compensation, we can offer you a discount of €50 per sink as well as free delivery on your next order.",
         "uk": "Як компенсацію ми можемо запропонувати Вам знижку в 50 євро за кожен умивальник, а також безкоштовну доставку при наступному замовленні.",
         "ru": "В качестве компенсации мы можем предложить Вам скидку в 50 евро за каждую раковину, а также бесплатную доставку при следующем заказе."
