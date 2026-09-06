@@ -2938,19 +2938,10 @@ body.lesson-active .vocab-top{
 }
 
 /* Симуляція іспиту E-Mail — обидва вхідні листи (mail_boss/mail_client)
-   у режимі написання (_examSimBuildEmailTaskHtml). Ті самі fs-* змінні,
-   що й решта симуляції — масштабується разом із загальним розміром
-   шрифту з налаштувань додатку. */
-.exam-sim-mail-block{
-  background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12);
-  border-radius:14px; padding:14px 16px; margin-bottom:14px;
-}
-.exam-sim-mail-label{
-  color:var(--gold); font-size:var(--fs-tertiary); font-weight:800;
-  text-transform:uppercase; letter-spacing:.5px; margin-bottom:6px;
-}
-.exam-sim-mail-meta{ color:rgba(255,255,255,.55); font-size:var(--fs-utility); margin-bottom:2px; }
-.exam-sim-mail-body{ color:#fff; font-size:var(--fs-card); line-height:1.6; margin-top:8px; }
+   у режимі написання (_examSimBuildEmailTaskHtml) рендеряться ТІЄЮ Ж
+   розміткою/класами, що й у звичайному уроці E-Mail (.lf-dlg-task
+   .eml-mail-card, .eml-mail-header тощо, вище в файлі) — жодного
+   окремого CSS тут не треба, лише без рядка перекладу (lf-unit-tr-row). */
 
 /* mc-options used in practice/exam: make buttons work as answer tiles */
 #sb-prac-options .mc-opt, #sb-exam-options .mc-opt {
@@ -4075,7 +4066,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '599-09d2631';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -10038,18 +10029,21 @@ function openExamSimForumsbeitrag(){
   _examSimShowBriefing('Forumsbeitrag');
 }
 
-// Той самий принцип, що й Forumsbeitrag вище, лише картки з var EMAILS —
-// і, на відміну від Forumsbeitrag (topic+task, голий текст), "завданням"
-// тут є ОБИДВА вхідні листи (mail_boss + mail_client) — рушій розрізняє
-// це за _examSimState.simPart у _examSimRenderPicker()/examSimPickCard()
-// нижче.
+// На відміну від Forumsbeitrag (вибір з ДВОХ варіантів) — для E-Mail
+// лише ОДИН варіант завдання, обраний випадково: тут немає екрана
+// вибору теми взагалі (startExamSimTest() нижче переходить одразу в
+// стадію write, коли candidateCards.length === 1) і немає кнопки
+// "Обрати іншу тему" (_examSimUpdateRepickVisibility() теж дивиться на
+// candidateCards.length, не на назву частини). "Завданням" тут — ОБИДВА
+// вхідні листи (mail_boss + mail_client), рушій розрізняє це за
+// _examSimState.part у _examSimRenderPicker()/examSimPickCard() нижче.
 function openExamSimEmail(){
   var cards = typeof EMAILS !== 'undefined' ? EMAILS.slice() : [];
-  if(cards.length < 2){
-    notify('⚠️ Потрібно щонайменше 2 картки E-Mail (var EMAILS) у поточному курсі');
+  if(!cards.length){
+    notify('⚠️ Потрібна хоча б 1 картка E-Mail (var EMAILS) у поточному курсі');
     return;
   }
-  _examSimState.candidateCards = _examSimPickTwoRandom(cards);
+  _examSimState.candidateCards = [ cards[Math.floor(Math.random() * cards.length)] ];
   _examSimState.card = null;
   _examSimShowBriefing('E-Mail');
 }
@@ -10131,7 +10125,6 @@ function startExamSimTest(){
   if(briefing) briefing.style.display = 'none';
 
   _examSimState.card = null;
-  _examSimRenderPicker();
 
   var totalSec = (_examSimState.timeMin || 20) * 60;
   _examSimState.startedAt = Date.now();
@@ -10144,7 +10137,16 @@ function startExamSimTest(){
   var actions = document.getElementById('exam-sim-timeup-actions');
   if(actions) actions.style.display = 'none';
   _examSimRenderCountdown(totalSec * 1000);
-  _examSimShowStage('pick');
+
+  // Один кандидат (E-Mail) — немає сенсу у виборі: показуємо одразу
+  // повноекранне завдання, минаючи стадію pick. Двоє кандидатів
+  // (Forumsbeitrag) — як і раніше, спершу екран вибору теми.
+  if(_examSimState.candidateCards.length === 1){
+    examSimPickCard(0);
+  } else {
+    _examSimRenderPicker();
+    _examSimShowStage('pick');
+  }
 
   if(_examSimState.timerId) clearInterval(_examSimState.timerId);
   _examSimState.timerId = setInterval(_examSimTick, 250);
@@ -10156,25 +10158,17 @@ function startExamSimTest(){
 }
 
 // Заповнює дві картки-теми даними з _examSimState.candidateCards —
-// topic завжди однаково, а "прев'ю завдання" залежить від типу
-// симуляції (_examSimState.part): Forumsbeitrag — голий task-текст
-// (textContent), E-Mail — лист клієнта (mail_client вже містить <br>,
-// тож тут innerHTML, а не textContent). Завжди primary_lang, без
-// перекладу — як і скрізь у цій симуляції.
+// topic + task, primary_lang, без перекладу. Лише для симуляцій із
+// ДВОМА варіантами (Forumsbeitrag) — E-Mail сюди більше не заходить
+// узагалі (рівно один кандидат, startExamSimTest() веде його одразу в
+// examSimPickCard(0), минаючи стадію pick).
 function _examSimRenderPicker(){
   var pl = primaryLang();
-  var isEmail = _examSimState.part === 'E-Mail';
   _examSimState.candidateCards.forEach(function(card, i){
     var topicEl = document.getElementById('exam-sim-pick-topic-'+i);
     var taskEl  = document.getElementById('exam-sim-pick-task-'+i);
     if(topicEl) topicEl.textContent = (card.topic && card.topic[pl]) || '';
-    if(taskEl){
-      if(isEmail){
-        taskEl.innerHTML = (card.mail_client && card.mail_client[pl]) || '';
-      } else {
-        taskEl.textContent = (card.task && card.task[pl]) || '';
-      }
-    }
+    if(taskEl)  taskEl.textContent  = (card.task  && card.task[pl])  || '';
   });
 }
 
@@ -10191,25 +10185,41 @@ function _examSimShowStage(stage){
 }
 
 // Для E-Mail "завданням" є ОБИДВА вхідні листи разом (mail_boss —
-// доручення від керівника, mail_client — скарга клієнта), з відправником
-// і темою — так само, як реальний іспит видає весь пакет одразу, а не
-// голий текст умови (на відміну від Forumsbeitrag, де такого пакету
-// нема, лише один task).
+// доручення від керівника, mail_client — скарга клієнта) — так само, як
+// реальний іспит видає весь пакет одразу. Розмітка — 1:1 та сама, що й
+// у звичайному уроці E-Mail (_lfEmlRenderMailOrPart: eyebrow-мітка +
+// .lf-dlg-task.eml-mail-card з аватаркою-ініціалом/From/Betreff), лише
+// БЕЗ рядка перекладу (lf-unit-tr-row) — тут винятково primary_lang,
+// як і скрізь у цій симуляції ("без перекладу, як на реальному папері").
 function _examSimBuildEmailTaskHtml(card, pl){
-  function renderMail(mail, label){
+  function renderMail(mail, field, icon, label){
     if(!mail) return '';
-    var betreff = (mail.betreff && mail.betreff[pl]) || '';
-    var body = mail[pl] || '';
-    return '<div class="exam-sim-mail-block">'+
-      '<div class="exam-sim-mail-label">'+label+'</div>'+
-      (mail.von ? '<div class="exam-sim-mail-meta">Von: '+_escapeHtmlText(mail.von)+'</div>' : '')+
-      (betreff ? '<div class="exam-sim-mail-meta">Betreff: '+_escapeHtmlText(betreff)+'</div>' : '')+
-      '<div class="exam-sim-mail-body">'+body+'</div>'+
+    var text = mail[pl] || '';
+    var from = mail.von || '';
+    var subject = (mail.betreff && (mail.betreff[pl] || mail.betreff.de)) || '';
+    var initial = (from||'?').trim().charAt(0).toUpperCase() || '✉';
+    var eyebrow = '<div class="lf-dlg-exam-badge">'+
+      '<span class="lf-dlg-exam-icon">'+icon+'</span>'+
+      '<span class="lf-dlg-exam-label">'+_escapeHtmlText(label)+'</span>'+
+    '</div>';
+    var headerHtml = '<div class="eml-mail-header">'+
+      '<div class="eml-mail-avatar">'+_escapeHtmlText(initial)+'</div>'+
+      '<div class="eml-mail-meta">'+
+        '<div class="eml-mail-from">'+_escapeHtmlText(from)+'</div>'+
+        '<div class="eml-mail-subj">'+_escapeHtmlText(subject)+'</div>'+
+      '</div>'+
+    '</div>';
+    return eyebrow+'<div class="lf-dlg-task eml-mail-card">'+
+      headerHtml+
+      '<div class="lf-unit-main-row">'+
+        '<div class="lf-unit-sentence" data-audio-field="'+field+'">'+text+'</div>'+
+      '</div>'+
     '</div>';
   }
-  var bossLabel = {uk:'Лист від керівника', de:'E-Mail vom Vorgesetzten', en:'Email from your manager', ru:'Письмо от руководителя'}[uiLang] || 'Лист від керівника';
-  var clientLabel = {uk:'Лист від клієнта', de:'E-Mail vom Kunden', en:'Email from the client', ru:'Письмо от клиента'}[uiLang] || 'Лист від клієнта';
-  return renderMail(card.mail_boss, bossLabel) + renderMail(card.mail_client, clientLabel);
+  var bossLabel   = EML_INTRO_LABELS.boss[pl]   || EML_INTRO_LABELS.boss.de;
+  var clientLabel = EML_INTRO_LABELS.client[pl] || EML_INTRO_LABELS.client.de;
+  return renderMail(card.mail_boss, 'mail_boss', '👔', bossLabel) +
+         renderMail(card.mail_client, 'mail_client', '📨', clientLabel);
 }
 
 // Клік по одній з двох карток — обираємо тему, розгортаємо на весь
@@ -10242,15 +10252,17 @@ function examSimBackToPicker(){
   _examSimShowStage('pick');
 }
 
-// Кнопка "Обрати іншу тему" видима лише в стадії write, і лише перші
-// 2 хв ВІД СТАРТУ (не від моменту вибору теми) — після цього вибір
-// вважається остаточним, як і на реальному іспиті: трохи часу
-// подумати, а не гортати варіанти всю відведену годину.
+// Кнопка "Обрати іншу тему" видима лише в стадії write, лише перші
+// 2 хв ВІД СТАРТУ (після цього вибір остаточний, як і на реальному
+// іспиті), і лише якщо ВЗАГАЛІ було з чого обирати (candidateCards.length
+// > 1) — для E-Mail варіант рівно один, тож кнопці нема сенсу з'являтись
+// узагалі.
 function _examSimUpdateRepickVisibility(){
   var btn = document.getElementById('exam-sim-repick-btn');
   if(!btn) return;
   var elapsed = Date.now() - (_examSimState.startedAt || Date.now());
-  btn.style.display = (_examSimState.stage === 'write' && elapsed < 2*60000) ? 'block' : 'none';
+  var hasChoice = _examSimState.candidateCards.length > 1;
+  btn.style.display = (hasChoice && _examSimState.stage === 'write' && elapsed < 2*60000) ? 'block' : 'none';
 }
 
 function _examSimTick(){
