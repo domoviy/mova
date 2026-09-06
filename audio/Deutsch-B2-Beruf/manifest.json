@@ -35788,7 +35788,7 @@
   "Deutsch-B2-Beruf/de/085/email/email_003_bezugnahme_de_085": "67b89e2e51+t",
   "Deutsch-B2-Beruf/de/085/email/email_003_entschuldigung_de_085": "732f6eb33a+t",
   "Deutsch-B2-Beruf/de/085/email/email_003_grund_de_085": "bcb6a6f40b+t",
-  "Deutsch-B2-Beruf/de/085/email/email_003_loesung_de_085": "a4ed91e6d2+t",
+  "Deutsch-B2-Beruf/de/085/email/email_003_loesung_de_085": "e0f74f37ff+t",
   "Deutsch-B2-Beruf/de/085/email/email_003_grussformel_de_085": "fdce47e1a9+t",
   "Deutsch-B2-Beruf/de/085/email/email_003_unterschrift_de_085": "27649942bd+t",
   "Deutsch-B2-Beruf/de/085/email/email_004_mail_boss_de_085": "3fe3d41877+t",
@@ -43615,5 +43615,9 @@
   "Deutsch-B2-Beruf/de/100/story/story_004_hauptteil2_de_100": "d2cf22226e+t",
   "Deutsch-B2-Beruf/de/100/story/story_004_schluss1_de_100": "8e561ca94f+t",
   "Deutsch-B2-Beruf/de/100/story/story_004_schluss2_de_100": "44efc6243f+t",
-  "Deutsch-B2-Beruf/de/100/story/story_008_einleitung_de_100": "93fc3cab60+t"
+  "Deutsch-B2-Beruf/de/100/story/story_008_einleitung_de_100": "93fc3cab60+t",
+  "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil1_de_100": "9aab4a1a07+t",
+  "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil2_de_100": "5d448ad108+t",
+  "Deutsch-B2-Beruf/de/100/story/story_008_hauptteil3_de_100": "6b2e133a45+t",
+  "Deutsch-B2-Beruf/de/100/story/story_008_schluss1_de_100": "9963ab7708+t"
 }
