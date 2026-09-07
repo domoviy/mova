@@ -23432,37 +23432,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> Ihre Erfahrungen mit unserem Kundenservice geschildert haben.",
-        "en": "thank you very much for your email, in which you described your experiences with our customer service.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви описали свій досвід спілкування з нашою службою підтримки.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы описали свой опыт общения с нашей службой поддержки."
+        "en": "<r>thank you very much for your email, in which you</r> described your experiences with our customer service.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> описали свій досвід спілкування з нашою службою підтримки.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> описали свой опыт общения с нашей службой поддержки."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> Sie trotz mehrfacher Anrufe keine Rückmeldung von uns erhalten haben. <r>Wir können Ihren Ärger gut nachvollziehen</r> und werden die Fehler lückenlos aufarbeiten.",
-        "en": "We are very sorry that, despite several calls, you did not receive any response from us. We fully understand your frustration and will thoroughly address these mistakes.",
-        "uk": "Нам дуже прикро, що, попри кілька дзвінків, Ви не отримали від нас жодної відповіді. Ми чудово розуміємо Ваше обурення й ретельно опрацюємо ці помилки.",
-        "ru": "Нам очень жаль, что, несмотря на несколько звонков, Вы не получили от нас никакого ответа. Мы прекрасно понимаем Ваше возмущение и тщательно проработаем эти ошибки."
+        "en": "<r>We are very sorry that</r>, despite several calls, you did not receive any response from us. <r>We fully understand your frustration</r> and will thoroughly address these mistakes.",
+        "uk": "<r>Нам дуже прикро, що</r>, попри кілька дзвінків, Ви не отримали від нас жодної відповіді. <r>Ми чудово розуміємо Ваше обурення</r> й ретельно опрацюємо ці помилки.",
+        "ru": "<r>Нам очень жаль, что</r>, несмотря на несколько звонков, Вы не получили от нас никакого ответа. <r>Мы прекрасно понимаем Ваше возмущение</r> и тщательно проработаем эти ошибки."
       },
       {
         "role": "grund",
-        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es in den vergangenen Wochen krankheitsbedingt zu Personalengpässen in unserem Support-Team gekommen ist. <g>Dadurch, dass</g> zu wenige Mitarbeitende gleichzeitig verfügbar waren, konnten die versprochenen Rückrufe leider nicht erfolgen.",
-        "en": "We have since found out that, due to illness, there were staff shortages in our support team over the past weeks. Because too few employees were available at the same time, the promised callbacks unfortunately could not be made.",
-        "uk": "Ми вже з'ясували, що останніми тижнями через хвороби виникла нестача персоналу в нашій команді підтримки. Через те, що одночасно було доступно замало співробітників, обіцяні дзвінки, на жаль, не могли відбутися.",
-        "ru": "Мы уже выяснили, что в последние недели из-за болезней возникла нехватка персонала в нашей команде поддержки. Из-за того, что одновременно было доступно слишком мало сотрудников, обещанные звонки, к сожалению, не могли состояться."
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es in den vergangenen Wochen krankheitsbedingt zu Personalengpässen in unserem Support-Team gekommen ist. <k>Dadurch, dass</k> zu wenige Mitarbeitende gleichzeitig verfügbar waren, konnten die versprochenen Rückrufe leider nicht erfolgen.",
+        "en": "<r>We have since found out that</r>, due to illness, there were staff shortages in our support team over the past weeks. Because too few employees were available at the same time, the promised callbacks unfortunately could not be made.",
+        "uk": "<r>Ми вже з'ясували, що</r> останніми тижнями через хвороби виникла нестача персоналу в нашій команді підтримки. Через те, що одночасно було доступно замало співробітників, обіцяні дзвінки, на жаль, не могли відбутися.",
+        "ru": "<r>Мы уже выяснили, что</r> в последние недели из-за болезней возникла нехватка персонала в нашей команде поддержки. Из-за того, что одновременно было доступно слишком мало сотрудников, обещанные звонки, к сожалению, не могли состояться."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung möchten wir Ihnen</r> die Verlängerung Ihres <c>Premium-Support-Vertrags</c> um drei Monate kostenlos anbieten. <r>Außerdem bieten wir Ihnen an,</r> Ihnen ab sofort eine feste Ansprechpartnerin zuzuweisen, <k>sodass</k> Sie künftig nicht mehr in der allgemeinen Warteschlange landen.",
-        "en": "As compensation, we would like to offer you a free three-month extension of your premium support contract. In addition, we offer to assign you a fixed contact person from now on, so that in future you will no longer end up in the general queue.",
-        "uk": "Як компенсацію ми хочемо запропонувати Вам безкоштовне продовження Вашого преміум-контракту на підтримку на три місяці. Крім того, пропонуємо з цього моменту закріпити за Вами постійну контактну особу, щоб надалі Ви більше не потрапляли до загальної черги.",
-        "ru": "В качестве компенсации мы хотим предложить Вам бесплатное продление Вашего премиум-контракта на поддержку на три месяца. Кроме того, предлагаем с этого момента закрепить за Вами постоянного контактного специалиста, чтобы в будущем Вы больше не попадали в общую очередь."
+        "de": "<r>Als Entschädigung möchten wir Ihnen</r> die Verlängerung Ihres <c>Premium-Support-Vertrags</c> um drei Monate kostenlos anbieten. <r>Außerdem bieten wir Ihnen an,</r> Ihnen ab sofort eine feste Ansprechpartnerin zuzuweisen, <k>sodass</k> Sie künftig nicht mehr in der allgemeinen Warteschlange landen.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation, we would like to offer you</r> a free three-month extension of your premium support contract. <r>In addition, we offer</r> to assign you a fixed contact person from now on, so that in future you will no longer end up in the general queue.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію ми хочемо запропонувати Вам</r> безкоштовне продовження Вашого преміум-контракту на підтримку на три місяці. <r>Крім того, пропонуємо</r> з цього моменту закріпити за Вами постійну контактну особу, щоб надалі Ви більше не потрапляли до загальної черги.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации мы хотим предложить Вам</r> бесплатное продление Вашего премиум-контракта на поддержку на три месяца. <r>Кроме того, предлагаем</r> с этого момента закрепить за Вами постоянного контактного специалиста, чтобы в будущем Вы больше не попадали в общую очередь.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -23591,37 +23591,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die beschädigten <c>Bürostühle</c> hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the damaged office chairs.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на пошкоджені офісні крісла.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на повреждённые офисные кресла."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the damaged office chairs.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на пошкоджені офісні крісла.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на повреждённые офисные кресла."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> drei der gelieferten Stühle einen Defekt an der Höhenverstellung aufweisen. <r>Seien Sie versichert, dass es uns sehr unangenehm ist</r>, dass Sie kurz vor dem Start Ihrer neuen Mitarbeitenden mit diesem Problem konfrontiert wurden.",
-        "en": "We are very sorry that three of the delivered chairs have a defect in the height adjustment. Please be assured that we find it very uncomfortable that you were confronted with this problem shortly before your new employees start.",
-        "uk": "Нам дуже прикро, що три з доставлених крісел мають дефект механізму регулювання висоти. Запевняємо Вас, що нам дуже прикро, що Ви зіткнулися з цією проблемою якраз перед виходом на роботу Ваших нових співробітників.",
-        "ru": "Нам очень жаль, что три из доставленных кресел имеют дефект механизма регулировки высоты. Заверяем Вас, что нам очень неприятно, что Вы столкнулись с этой проблемой как раз перед выходом на работу Ваших новых сотрудников."
+        "en": "<r>We are very sorry that</r> three of the delivered chairs have a defect in the height adjustment. <r>Please be assured that we find it very uncomfortable</r> that you were confronted with this problem shortly before your new employees start.",
+        "uk": "<r>Нам дуже прикро, що</r> три з доставлених крісел мають дефект механізму регулювання висоти. <r>Запевняємо Вас, що нам дуже прикро</r>, що Ви зіткнулися з цією проблемою якраз перед виходом на роботу Ваших нових співробітників.",
+        "ru": "<r>Нам очень жаль, что</r> три из доставленных кресел имеют дефект механизма регулировки высоты. <r>Заверяем Вас, что нам очень неприятно</r>, что Вы столкнулись с этой проблемой как раз перед выходом на работу Ваших новых сотрудников."
       },
       {
         "role": "grund",
         "de": "<r>Leider konnte der Mangel bei unserer Qualitätskontrolle nicht entdeckt werden.</r> Die betroffene Charge stammt von einem neuen Zulieferer. <g>Folglich</g> wurde die Qualität bislang noch nicht ausreichend geprüft.",
-        "en": "Unfortunately, the defect could not be detected during our quality control. The affected batch comes from a new supplier. As a result, the quality has not yet been sufficiently checked.",
-        "uk": "На жаль, дефект не вдалося виявити під час нашого контролю якості. Уражена партія походить від нового постачальника. Відповідно, якість поки що не була достатньо перевірена.",
-        "ru": "К сожалению, дефект не удалось обнаружить в ходе нашего контроля качества. Затронутая партия поступила от нового поставщика. Соответственно, качество пока ещё не было достаточно проверено."
+        "en": "<r>Unfortunately, the defect could not be detected during our quality control.</r> The affected batch comes from a new supplier. As a result, the quality has not yet been sufficiently checked.",
+        "uk": "<r>На жаль, дефект не вдалося виявити під час нашого контролю якості.</r> Уражена партія походить від нового постачальника. Відповідно, якість поки що не була достатньо перевірена.",
+        "ru": "<r>К сожалению, дефект не удалось обнаружить в ходе нашего контроля качества.</r> Затронутая партия поступила от нового поставщика. Соответственно, качество пока ещё не было достаточно проверено."
       },
       {
         "role": "loesung",
-        "de": "<r>Wir tauschen</r> die drei defekten Stühle selbstverständlich kostenlos gegen neue, geprüfte Modelle um. <g>Diese</g> werden wir Ihnen noch in dieser Woche per Express liefern, <k>sodass</k> Ihre neuen Mitarbeitenden pünktlich einen funktionierenden Arbeitsplatz vorfinden.",
-        "en": "We will of course exchange the three defective chairs free of charge for new, tested models. We will deliver these to you by express this week, so that your new employees will find a fully functioning workstation on time.",
-        "uk": "Ми, звісно, безкоштовно обміняємо три несправні крісла на нові, перевірені моделі. Ми доставимо їх Вам експрес-доставкою вже цього тижня, щоб Ваші нові співробітники вчасно отримали справне робоче місце.",
-        "ru": "Мы, конечно, бесплатно обменяем три неисправных кресла на новые, проверенные модели. Мы доставим их Вам экспресс-доставкой уже на этой неделе, чтобы Ваши новые сотрудники вовремя получили исправное рабочее место."
+        "de": "<r>Wir tauschen</r> die drei defekten Stühle selbstverständlich kostenlos gegen neue, geprüfte Modelle um. <g>Diese</g> werden wir Ihnen noch in dieser Woche per Express liefern, <k>sodass</k> Ihre neuen Mitarbeitenden pünktlich einen funktionierenden Arbeitsplatz vorfinden.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>We will of course exchange</r> the three defective chairs free of charge for new, tested models. We will deliver these to you by express this week, so that your new employees will find a fully functioning workstation on time.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Ми, звісно, безкоштовно обміняємо</r> три несправні крісла на нові, перевірені моделі. Ми доставимо їх Вам експрес-доставкою вже цього тижня, щоб Ваші нові співробітники вчасно отримали справне робоче місце.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>Мы, конечно, бесплатно обменяем</r> три неисправных кресла на новые, проверенные модели. Мы доставим их Вам экспресс-доставкой уже на этой неделе, чтобы Ваши новые сотрудники вовремя получили исправное рабочее место.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -23750,37 +23750,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die verspätete Lieferung Ihres Werbematerials hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the delayed delivery of your promotional material.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на затримку доставки Ваших рекламних матеріалів.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на задержку доставки Ваших рекламных материалов."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the delayed delivery of your promotional material.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на затримку доставки Ваших рекламних матеріалів.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на задержку доставки Ваших рекламных материалов."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Wir bedauern aufs äußerste, dass</r> die Banner und Broschüren erst nach dem Ende der <c>Hannover Messe</c> bei Ihnen eingetroffen sind. <r>Dieser Fehler ist außerordentlich bedauerlich,</r> <k>zumal</k> wir um den engen Zeitrahmen wussten.",
-        "en": "We deeply regret that the banners and brochures only arrived at your premises after the Hannover Fair had ended. This mistake is extremely regrettable, especially since we were aware of the tight timeframe.",
-        "uk": "Ми надзвичайно шкодуємо, що банери та брошури прибули до Вас лише після завершення Hannover Messe. Ця помилка вкрай прикра, тим більше що ми знали про жорсткі часові рамки.",
-        "ru": "Мы крайне сожалеем, что баннеры и брошюры прибыли к Вам только после окончания Hannover Messe. Эта ошибка крайне досадна, тем более что мы знали о жёстких временных рамках."
+        "en": "<r>We deeply regret that</r> the banners and brochures only arrived at your premises after the Hannover Fair had ended. <r>This mistake is extremely regrettable,</r> especially since we were aware of the tight timeframe.",
+        "uk": "<r>Ми надзвичайно шкодуємо, що</r> банери та брошури прибули до Вас лише після завершення Hannover Messe. <r>Ця помилка вкрай прикра,</r> тим більше що ми знали про жорсткі часові рамки.",
+        "ru": "<r>Мы крайне сожалеем, что</r> баннеры и брошюры прибыли к Вам только после окончания Hannover Messe. <r>Эта ошибка крайне досадна,</r> тем более что мы знали о жёстких временных рамках."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es in unserem Lager zu einem Engpass gekommen ist. Unser Lagerleiter teilte mit, <g>das zuständige Team sei</g> durch mehrere Großaufträge gleichzeitig überlastet <g>gewesen</g>.",
-        "en": "We have since found out that there was a bottleneck in our warehouse. Our warehouse manager reported that the responsible team had been overloaded by several large orders at the same time.",
-        "uk": "Ми вже з'ясували, що на нашому складі виникло затримання. Наш керівник складу повідомив, що відповідальна команда була одночасно перевантажена кількома великими замовленнями.",
-        "ru": "Мы уже выяснили, что на нашем складе возникла задержка. Наш руководитель склада сообщил, что ответственная команда была одновременно перегружена несколькими крупными заказами."
+        "en": "<r>We have since found out that</r> there was a bottleneck in our warehouse. Our warehouse manager reported that the responsible team had been overloaded by several large orders at the same time.",
+        "uk": "<r>Ми вже з'ясували, що</r> на нашому складі виникло затримання. Наш керівник складу повідомив, що відповідальна команда була одночасно перевантажена кількома великими замовленнями.",
+        "ru": "<r>Мы уже выяснили, что</r> на нашем складе возникла задержка. Наш руководитель склада сообщил, что ответственная команда была одновременно перегружена несколькими крупными заказами."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung erstatten wir Ihnen</r> den vollen Rechnungsbetrag für das nicht mehr nutzbare Werbematerial zurück. <r>Zusätzlich bieten wir Ihnen an,</r> Ihre nächste Bestellung mit Priorität und kostenfreiem Express-Versand zu bearbeiten.",
-        "en": "As compensation, we will refund you the full invoice amount for the promotional material that can no longer be used. In addition, we offer to process your next order with priority and free express shipping.",
-        "uk": "Як компенсацію ми повернемо Вам повну суму рахунку за рекламні матеріали, які більше не можна використати. Крім того, пропонуємо обробити Ваше наступне замовлення з пріоритетом і безкоштовною експрес-доставкою.",
-        "ru": "В качестве компенсации мы вернём Вам полную сумму счёта за рекламные материалы, которые больше нельзя использовать. Кроме того, предлагаем обработать Ваш следующий заказ с приоритетом и бесплатной экспресс-доставкой."
+        "de": "<r>Als Entschädigung erstatten wir Ihnen</r> den vollen Rechnungsbetrag für das nicht mehr nutzbare Werbematerial zurück. <r>Zusätzlich bieten wir Ihnen an,</r> Ihre nächste Bestellung mit Priorität und kostenfreiem Express-Versand zu bearbeiten.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation, we will refund you</r> the full invoice amount for the promotional material that can no longer be used. <r>In addition, we offer</r> to process your next order with priority and free express shipping.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію ми повернемо Вам</r> повну суму рахунку за рекламні матеріали, які більше не можна використати. <r>Крім того, пропонуємо</r> обробити Ваше наступне замовлення з пріоритетом і безкоштовною експрес-доставкою.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации мы вернём Вам</r> полную сумму счёта за рекламные материалы, которые больше нельзя использовать. <r>Кроме того, предлагаем</r> обработать Ваш следующий заказ с приоритетом и бесплатной экспресс-доставкой.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -23909,37 +23909,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf das technische Problem bei drei Ihrer <c>Kaffeevollautomaten</c> hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the technical problem with three of your coffee machines.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на технічну проблему з трьома Вашими кавовими автоматами.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на техническую проблему с тремя Вашими кофемашинами."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the technical problem with three of your coffee machines.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на технічну проблему з трьома Вашими кавовими автоматами.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на техническую проблему с тремя Вашими кофемашинами."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> die Brühgruppe bei einigen Geräten undicht ist und dadurch der Betrieb in Ihren Büros beeinträchtigt wird.",
-        "en": "We are very sorry that the brewing unit is leaking on some of the machines, disrupting operations in your offices.",
-        "uk": "Нам дуже прикро, що варильний блок протікає в деяких апаратах, через що порушується робота у Ваших офісах.",
-        "ru": "Нам очень жаль, что заварочный блок протекает в некоторых аппаратах, из-за чего нарушается работа в Ваших офисах."
+        "en": "<r>We are very sorry that</r> the brewing unit is leaking on some of the machines, disrupting operations in your offices.",
+        "uk": "<r>Нам дуже прикро, що</r> варильний блок протікає в деяких апаратах, через що порушується робота у Ваших офісах.",
+        "ru": "<r>Нам очень жаль, что</r> заварочный блок протекает в некоторых аппаратах, из-за чего нарушается работа в Ваших офисах."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> die Undichtigkeit <g>auf eine fehlerhafte Dichtung in der Brühgruppe zurückzuführen ist</g>. Dieses Problem war bei der Auslieferung leider noch nicht bekannt.",
-        "en": "We have since found out that the leak is due to a faulty seal in the brewing unit. Unfortunately, this problem was not yet known at the time of delivery.",
-        "uk": "Ми вже з'ясували, що причина протікання — несправна прокладка у варильному блоці. На жаль, під час поставки ця проблема ще не була відома.",
-        "ru": "Мы уже выяснили, что причина протечки — неисправная прокладка в заварочном блоке. К сожалению, на момент поставки эта проблема ещё не была известна."
+        "en": "<r>We have since found out that</r> the leak is due to a faulty seal in the brewing unit. Unfortunately, this problem was not yet known at the time of delivery.",
+        "uk": "<r>Ми вже з'ясували, що</r> причина протікання — несправна прокладка у варильному блоці. На жаль, під час поставки ця проблема ще не була відома.",
+        "ru": "<r>Мы уже выяснили, что</r> причина протечки — неисправная прокладка в заварочном блоке. К сожалению, на момент поставки эта проблема ещё не была известна."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung</r> reparieren wir die betroffenen Automaten kostenlos direkt bei Ihnen vor Ort. Bis zur Reparatur stellen wir Ihnen <g>auf Wunsch</g> Leihgeräte zur Verfügung, <k>damit</k> der Betrieb in Ihren Büros nicht beeinträchtigt wird.",
-        "en": "As compensation, we will repair the affected machines free of charge directly on-site with you. Until the repair is completed, we will provide you with loaner machines upon request, so that operations in your offices are not affected.",
-        "uk": "Як компенсацію ми безкоштовно відремонтуємо несправні апарати безпосередньо на Вашому місці. До завершення ремонту, за бажанням, ми надамо Вам тимчасові апарати, щоб робота у Ваших офісах не порушувалася.",
-        "ru": "В качестве компенсации мы бесплатно отремонтируем неисправные аппараты непосредственно у Вас на месте. До завершения ремонта, по желанию, мы предоставим Вам временные аппараты, чтобы работа в Ваших офисах не нарушалась."
+        "de": "<r>Als Entschädigung</r> reparieren wir die betroffenen Automaten kostenlos direkt bei Ihnen vor Ort. Bis zur Reparatur stellen wir Ihnen <g>auf Wunsch</g> Leihgeräte zur Verfügung, <k>damit</k> der Betrieb in Ihren Büros nicht beeinträchtigt wird.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation,</r> we will repair the affected machines free of charge directly on-site with you. Until the repair is completed, we will provide you with loaner machines upon request, so that operations in your offices are not affected.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію</r> ми безкоштовно відремонтуємо несправні апарати безпосередньо на Вашому місці. До завершення ремонту, за бажанням, ми надамо Вам тимчасові апарати, щоб робота у Ваших офісах не порушувалася.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации</r> мы бесплатно отремонтируем неисправные аппараты непосредственно у Вас на месте. До завершения ремонта, по желанию, мы предоставим Вам временные аппараты, чтобы работа в Ваших офисах не нарушалась.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
