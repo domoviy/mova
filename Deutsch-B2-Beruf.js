@@ -24938,10 +24938,10 @@ var EMAILS = [
         "uk": "Скарга: лише автоматичні відповіді на мої запити",
         "ru": "Жалоба: только автоматические ответы на мои запросы"
       },
-      "de": "Sehr geehrte Damen und Herren,<br><br>in den letzten zwei Wochen habe ich Ihnen dreimal geschrieben, um die Verfügbarkeit einer größeren Bestellung zu klären. Jedes Mal erhielt ich jedoch nur eine automatisierte Standardantwort, die auf meine konkreten Fragen überhaupt nicht einging. Als langjähriger Geschäftspartner erwarte ich einen persönlicheren und schnelleren Austausch. Ich bitte Sie um eine individuelle Antwort auf meine ursprüngliche Anfrage sowie um eine Erklärung, wie es zu dieser Häufung an Standardantworten kommen konnte.<br><br>Mit freundlichen Grüßen,<br>Sven Krämer<br>Einkaufsleiter<br>Krämer Baustoffe GmbH",
-      "en": "Dear Sir or Madam,<br><br>over the past two weeks I have written to you three times to clarify the availability of a larger order. Each time, however, I only received an automated standard reply that did not address my specific questions at all. As a long-standing business partner, I expect a more personal and faster exchange. I ask you for an individual response to my original inquiry, as well as an explanation of how this accumulation of standard replies could have occurred.<br><br>Best regards,<br>Sven Krämer<br>Head of Purchasing<br>Krämer Baustoffe GmbH",
-      "uk": "Шановні пані та панове,<br><br>за останні два тижні я тричі писав Вам, щоб з'ясувати наявність більшого замовлення. Однак щоразу я отримував лише автоматичну стандартну відповідь, яка взагалі не стосувалася моїх конкретних запитань. Як давній діловий партнер, я очікую більш особистого й швидкого спілкування. Прошу Вас надати індивідуальну відповідь на мій первісний запит, а також пояснити, як могло виникнути таке накопичення стандартних відповідей.<br><br>З повагою,<br>Свен Крамер<br>керівник відділу закупівель<br>Krämer Baustoffe GmbH",
-      "ru": "Уважаемые дамы и господа,<br><br>за последние две недели я трижды писал Вам, чтобы выяснить наличие более крупного заказа. Однако каждый раз я получал только автоматический стандартный ответ, который вообще не касался моих конкретных вопросов. Как давний деловой партнёр, я ожидаю более личного и быстрого общения. Прошу Вас предоставить индивидуальный ответ на мой первоначальный запрос, а также объяснить, как могло возникнуть такое накопление стандартных ответов.<br><br>С уважением,<br>Свен Крамер<br>руководитель отдела закупок<br>Krämer Baustoffe GmbH"
+      "de": "Sehr geehrte Damen und Herren,<br><br>in den letzten zwei Wochen habe ich Ihnen dreimal geschrieben, am 3., 10. und 17. September, um die Verfügbarkeit einer größeren Bestellung von Baustoffen für ein laufendes Projekt zu klären. Jedes Mal erhielt ich jedoch nur eine automatisierte Standardantwort mit der Ticketnummer TCK-4471, die auf meine konkreten Fragen überhaupt nicht einging. Da unser Projekt einen engen Zeitplan hat, benötige ich dringend eine verbindliche Auskunft. Als langjähriger Geschäftspartner erwarte ich einen persönlicheren und schnelleren Austausch als bisher. Ich bitte Sie um eine individuelle Antwort auf meine ursprüngliche Anfrage sowie um eine Erklärung, wie es zu dieser Häufung an Standardantworten kommen konnte.<br><br>Mit freundlichen Grüßen,<br>Sven Krämer<br>Einkaufsleiter<br>Krämer Baustoffe GmbH",
+      "en": "Dear Sir or Madam,<br><br>over the past two weeks I have written to you three times, on 3, 10 and 17 September, to clarify the availability of a larger order of building materials for an ongoing project. Each time, however, I only received an automated standard reply with ticket number TCK-4471 that did not address my specific questions at all. Since our project is on a tight schedule, I urgently need a binding answer. As a long-standing business partner, I expect a more personal and faster exchange than before. I ask you for an individual response to my original inquiry, as well as an explanation of how this accumulation of standard replies could have occurred.<br><br>Best regards,<br>Sven Krämer<br>Head of Purchasing<br>Krämer Baustoffe GmbH",
+      "uk": "Шановні пані та панове,<br><br>за останні два тижні я тричі писав Вам — 3, 10 та 17 вересня, щоб з'ясувати наявність більшого замовлення будівельних матеріалів для поточного проєкту. Однак щоразу я отримував лише автоматичну стандартну відповідь із номером заявки TCK-4471, яка взагалі не стосувалася моїх конкретних запитань. Оскільки наш проєкт має жорсткі терміни, мені терміново потрібна чітка відповідь. Як давній діловий партнер, я очікую більш особистого й швидкого спілкування, ніж раніше. Прошу Вас надати індивідуальну відповідь на мій первісний запит, а також пояснити, як могло виникнути таке накопичення стандартних відповідей.<br><br>З повагою,<br>Свен Крамер<br>керівник відділу закупівель<br>Krämer Baustoffe GmbH",
+      "ru": "Уважаемые дамы и господа,<br><br>за последние две недели я трижды писал Вам — 3, 10 и 17 сентября, чтобы выяснить наличие более крупного заказа строительных материалов для текущего проекта. Однако каждый раз я получал только автоматический стандартный ответ с номером заявки TCK-4471, который вообще не касался моих конкретных вопросов. Поскольку наш проект имеет жёсткие сроки, мне срочно нужен чёткий ответ. Как давний деловой партнёр, я ожидаю более личного и быстрого общения, чем раньше. Прошу Вас предоставить индивидуальный ответ на мой первоначальный запрос, а также объяснить, как могло возникнуть такое накопление стандартных ответов.<br><br>С уважением,<br>Свен Крамер<br>руководитель отдела закупок<br>Krämer Baustoffe GmbH"
     },
     "questions": [
       {
@@ -25022,37 +25022,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die <c>dreimal</c> erhaltenen automatisierten Standardantworten hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the three automated standard replies you received.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на три отримані автоматичні стандартні відповіді.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на три полученных автоматических стандартных ответа."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the three automated standard replies you received.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на три отримані автоматичні стандартні відповіді.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на три полученных автоматических стандартных ответа."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> Sie auf Ihre konkreten Fragen keine individuelle Antwort erhalten haben. <r>Wir können Ihren Ärger gut nachvollziehen</r> und werden die Fehler lückenlos aufarbeiten.",
-        "en": "We are very sorry that you did not receive an individual response to your specific questions. We fully understand your frustration and will thoroughly address these mistakes.",
-        "uk": "Нам дуже прикро, що Ви не отримали індивідуальної відповіді на свої конкретні запитання. Ми чудово розуміємо Ваше обурення й ретельно опрацюємо ці помилки.",
-        "ru": "Нам очень жаль, что Вы не получили индивидуального ответа на свои конкретные вопросы. Мы прекрасно понимаем Ваше возмущение и тщательно проработаем эти ошибки."
+        "en": "<r>We are very sorry that</r> you did not receive an individual response to your specific questions. <r>We fully understand your frustration</r> and will thoroughly address these mistakes.",
+        "uk": "<r>Нам дуже прикро, що</r> Ви не отримали індивідуальної відповіді на свої конкретні запитання. <r>Ми чудово розуміємо Ваше обурення</r> й ретельно опрацюємо ці помилки.",
+        "ru": "<r>Нам очень жаль, что</r> Вы не получили индивидуального ответа на свои конкретные вопросы. <r>Мы прекрасно понимаем Ваше возмущение</r> и тщательно проработаем эти ошибки."
       },
       {
         "role": "grund",
-        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> unser automatisiertes Antwortsystem in den letzten Wochen deutlich häufiger ausgelöst wurde, <g>als es eigentlich vorgesehen war</g>, <k>sodass</k> individuelle Anfragen wie Ihre liegen blieben.",
-        "en": "We have since found out that our automated reply system was triggered noticeably more often in recent weeks than actually intended, so individual inquiries like yours were left unanswered.",
-        "uk": "Ми вже з'ясували, що наша автоматична система відповідей останніми тижнями спрацьовувала значно частіше, ніж це насправді було передбачено, через що індивідуальні запити, як Ваш, залишалися без відповіді.",
-        "ru": "Мы уже выяснили, что наша автоматическая система ответов в последние недели срабатывала заметно чаще, чем это было изначально предусмотрено, из-за чего индивидуальные запросы, подобные Вашему, оставались без ответа."
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> unser automatisiertes Antwortsystem in den letzten Wochen deutlich häufiger ausgelöst wurde, <k>als</k> es eigentlich <g>vorgesehen war</g>, <k>sodass</k> individuelle Anfragen wie Ihre liegen blieben.",
+        "en": "<r>We have since found out that</r> our automated reply system was triggered noticeably more often in recent weeks than actually intended, so individual inquiries like yours were left unanswered.",
+        "uk": "<r>Ми вже з'ясували, що</r> наша автоматична система відповідей останніми тижнями спрацьовувала значно частіше, ніж це насправді було передбачено, через що індивідуальні запити, як Ваш, залишалися без відповіді.",
+        "ru": "<r>Мы уже выяснили, что</r> наша автоматическая система ответов в последние недели срабатывала заметно чаще, чем это было изначально предусмотрено, из-за чего индивидуальные запросы, подобные Вашему, оставались без ответа."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung erhalten Sie von uns</r> eine Gutschrift in Höhe von 200 Euro auf Ihrem Kundenkonto. <g>Je größer eine Bestellung, desto wichtiger</g> ist uns eine persönliche Betreuung – deshalb erhalten Sie ab sofort eine feste Ansprechperson für alle weiteren Anliegen.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
-        "en": "As compensation, you will receive a credit of €200 on your customer account from us. The larger an order, the more important personal support is to us – that is why, from now on, you will have a fixed contact person for all further matters.<br>We hope that you agree with this solution and thank you for your understanding.",
-        "uk": "Як компенсацію Ви отримаєте від нас гутшрифт у розмірі 200 євро на Вашому клієнтському рахунку. Чим більше замовлення, тим важливіший для нас особистий супровід — тому відтепер у Вас буде постійна контактна особа для всіх подальших питань.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
-        "ru": "В качестве компенсации Вы получите от нас кредит-ноту в размере 200 евро на Вашем клиентском счёте. Чем больше заказ, тем важнее для нас личное сопровождение — поэтому отныне у Вас будет постоянный контактный специалист для всех дальнейших вопросов.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
+        "de": "<r>Als Entschädigung erhalten Sie von uns</r> eine Gutschrift in Höhe von 200 Euro auf Ihrem Kundenkonto. <k>Je</k> größer eine Bestellung, <k>desto</k> wichtiger ist uns eine persönliche Betreuung – deshalb erhalten Sie ab sofort eine feste Ansprechperson für alle weiteren Anliegen.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
+        "en": "<r>As compensation, you will receive from us</r> a credit of €200 on your customer account. The larger an order, the more important personal support is to us – that is why, from now on, you will have a fixed contact person for all further matters.<br><r>We hope that you agree with this solution</r> and thank you for your understanding.",
+        "uk": "<r>Як компенсацію Ви отримаєте від нас</r> кредит-ноту в розмірі 200 євро на Ваш клієнтський рахунок. Чим більше замовлення, тим важливіший для нас особистий супровід — тому відтепер у Вас буде постійна контактна особа для всіх подальших питань.<br><r>Сподіваємось, що це рішення Вас влаштує</r>, і дякуємо за розуміння.",
+        "ru": "<r>В качестве компенсации Вы получите от нас</r> кредит-ноту в размере 200 евро на Вашем клиентском счёте. Чем больше заказ, тем важнее для нас личное сопровождение — поэтому отныне у Вас будет постоянный контактный специалист для всех дальнейших вопросов.<br><r>Надеемся, что это решение Вас устроит</r>, и благодарим за понимание."
       },
       {
         "role": "grussformel",
         "de": "Mit freundlichen Grüßen",
-        "en": "Best regards",
-        "uk": "З повагою",
-        "ru": "С уважением"
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -25097,10 +25097,10 @@ var EMAILS = [
         "uk": "Скарга: компресор не досягає обіцяного робочого тиску",
         "ru": "Жалоба: компрессор не достигает обещанного рабочего давления"
       },
-      "de": "Sehr geehrte Damen und Herren,<br><br>gemäß Ihrem Angebot AN-2026-142 sollte der bestellte Kompressor Modell K-800 einen maximalen Betriebsdruck von 8 bar erreichen. Nach der Installation haben wir jedoch festgestellt, dass das Gerät lediglich einen Druck von etwa 6 bar aufbaut. Für den Betrieb unserer pneumatischen Werkzeuge ist dieser Druck nicht ausreichend. Ich bitte Sie um eine schnelle Klärung dieses Problems sowie um eine entsprechende Lösung, damit der Kompressor die im Angebot zugesagte Leistung tatsächlich erreicht.<br><br>Mit freundlichen Grüßen,<br>Sabrina Kaufmann<br>Werkstattleiterin<br>Kaufmann Kfz-Technik",
-      "en": "Dear Sir or Madam,<br><br>according to your offer AN-2026-142, the ordered compressor model K-800 was supposed to reach a maximum operating pressure of 8 bar. After installation, however, we found that the device only builds up a pressure of about 6 bar. This pressure is not sufficient for operating our pneumatic tools. I ask you for a quick clarification of this problem, as well as an appropriate solution so that the compressor actually reaches the performance promised in the offer.<br><br>Best regards,<br>Sabrina Kaufmann<br>Workshop Manager<br>Kaufmann Kfz-Technik",
-      "uk": "Шановні пані та панове,<br><br>згідно з Вашою пропозицією AN-2026-142, замовлений компресор моделі K-800 мав досягати максимального робочого тиску 8 бар. Однак після встановлення ми виявили, що пристрій створює тиск лише близько 6 бар. Для роботи наших пневматичних інструментів цього тиску недостатньо. Прошу Вас швидко з'ясувати цю проблему, а також знайти відповідне рішення, щоб компресор дійсно досягав продуктивності, обіцяної в пропозиції.<br><br>З повагою,<br>Сабріна Кауфманн<br>керівниця майстерні<br>Kaufmann Kfz-Technik",
-      "ru": "Уважаемые дамы и господа,<br><br>согласно Вашему предложению AN-2026-142, заказанный компрессор модели K-800 должен был достигать максимального рабочего давления 8 бар. Однако после установки мы обнаружили, что устройство создаёт давление лишь около 6 бар. Для работы наших пневматических инструментов этого давления недостаточно. Прошу Вас быстро прояснить эту проблему, а также найти соответствующее решение, чтобы компрессор действительно достигал производительности, обещанной в предложении.<br><br>С уважением,<br>Сабрина Кауфманн<br>руководитель мастерской<br>Kaufmann Kfz-Technik"
+      "de": "Sehr geehrte Damen und Herren,<br><br>gemäß Ihrem Angebot AN-2026-142 sollte der am 12. August gelieferte Kompressor Modell K-800 einen maximalen Betriebsdruck von 8 bar erreichen. Nach der Installation haben wir jedoch bei mehreren Testläufen festgestellt, dass das Gerät lediglich einen Druck von etwa 6 bar aufbaut. Wir haben die Einstellungen bereits selbst überprüft, konnten die Ursache dafür jedoch nicht finden. Für den Betrieb unserer pneumatischen Werkzeuge in der Werkstatt ist dieser Druck nicht ausreichend, sodass wir derzeit einige Arbeiten nur eingeschränkt durchführen können. Ich bitte Sie um eine schnelle Klärung dieses Problems sowie um eine entsprechende Lösung, damit der Kompressor die im Angebot zugesagte Leistung tatsächlich erreicht.<br><br>Mit freundlichen Grüßen,<br>Sabrina Kaufmann<br>Werkstattleiterin<br>Kaufmann Kfz-Technik",
+      "en": "Dear Sir or Madam,<br><br>according to your offer AN-2026-142, the compressor model K-800 delivered on 12 August was supposed to reach a maximum operating pressure of 8 bar. After installation, however, we found during several test runs that the device only builds up a pressure of about 6 bar. We have already checked the settings ourselves but were unable to find the cause. This pressure is not sufficient for operating our pneumatic tools in the workshop, so we are currently only able to carry out some tasks to a limited extent. I ask you for a quick clarification of this problem, as well as an appropriate solution so that the compressor actually reaches the performance promised in the offer.<br><br>Best regards,<br>Sabrina Kaufmann<br>Workshop Manager<br>Kaufmann Kfz-Technik",
+      "uk": "Шановні пані та панове,<br><br>згідно з Вашою пропозицією AN-2026-142, компресор моделі K-800, доставлений 12 серпня, мав досягати максимального робочого тиску 8 бар. Однак після встановлення під час кількох тестових пусків ми виявили, що пристрій створює тиск лише близько 6 бар. Ми вже самостійно перевірили налаштування, проте причину виявити не змогли. Для роботи наших пневматичних інструментів у майстерні цього тиску недостатньо, тож наразі ми можемо виконувати деякі роботи лише в обмеженому обсязі. Прошу Вас швидко з'ясувати цю проблему, а також знайти відповідне рішення, щоб компресор дійсно досягав продуктивності, обіцяної в пропозиції.<br><br>З повагою,<br>Сабріна Кауфманн<br>керівниця майстерні<br>Kaufmann Kfz-Technik",
+      "ru": "Уважаемые дамы и господа,<br><br>согласно Вашему предложению AN-2026-142, компрессор модели K-800, доставленный 12 августа, должен был достигать максимального рабочего давления 8 бар. Однако после установки в ходе нескольких тестовых запусков мы обнаружили, что устройство создаёт давление лишь около 6 бар. Мы уже самостоятельно проверили настройки, однако причину найти не смогли. Для работы наших пневматических инструментов в мастерской этого давления недостаточно, поэтому в настоящее время мы можем выполнять некоторые работы лишь в ограниченном объёме. Прошу Вас быстро прояснить эту проблему, а также найти соответствующее решение, чтобы компрессор действительно достигал производительности, обещанной в предложении.<br><br>С уважением,<br>Сабрина Кауфманн<br>руководитель мастерской<br>Kaufmann Kfz-Technik"
     },
     "questions": [
       {
@@ -25181,37 +25181,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die unzureichende Leistung des gelieferten Kompressors hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the insufficient performance of the delivered compressor.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на недостатню продуктивність доставленого компресора.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на недостаточную производительность доставленного компрессора."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the insufficient performance of the delivered compressor.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на недостатню продуктивність доставленого компресора.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на недостаточную производительность доставленного компрессора."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> der Kompressor nicht den im Angebot <c>AN-2026-142</c> zugesagten Betriebsdruck von 8 bar erreicht.",
-        "en": "We are very sorry that the compressor does not reach the operating pressure of 8 bar promised in offer AN-2026-142.",
-        "uk": "Нам дуже прикро, що компресор не досягає робочого тиску 8 бар, обіцяного в пропозиції AN-2026-142.",
-        "ru": "Нам очень жаль, что компрессор не достигает рабочего давления 8 бар, обещанного в предложении AN-2026-142."
+        "en": "<r>We are very sorry that</r> the compressor does not reach the operating pressure of 8 bar promised in offer AN-2026-142.",
+        "uk": "<r>Нам дуже прикро, що</r> компресор не досягає робочого тиску 8 бар, обіцяного в пропозиції AN-2026-142.",
+        "ru": "<r>Нам очень жаль, что</r> компрессор не достигает рабочего давления 8 бар, обещанного в предложении AN-2026-142."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> <g>es</g> bei der Werkseinstellung des Druckreglers zu einem Fehler gekommen ist. <g>Es</g> handelt sich dabei um ein bekanntes, gut behebbares Problem.",
-        "en": "We have since found out that a mistake occurred in the factory setting of the pressure regulator. This is a known and easily fixable problem.",
-        "uk": "Ми вже з'ясували, що під час заводського налаштування регулятора тиску сталася помилка. Це відома й легко усувна проблема.",
-        "ru": "Мы уже выяснили, что при заводской настройке регулятора давления произошла ошибка. Это известная и легко устранимая проблема."
+        "en": "<r>We have since found out that</r> a mistake occurred in the factory setting of the pressure regulator. This is a known and easily fixable problem.",
+        "uk": "<r>Ми вже з'ясували, що</r> під час заводського налаштування регулятора тиску сталася помилка. Це відома й легко усувна проблема.",
+        "ru": "<r>Мы уже выяснили, что</r> при заводской настройке регулятора давления произошла ошибка. Это известная и легко устранимая проблема."
       },
       {
         "role": "loesung",
         "de": "<r>Als Entschädigung schicken wir Ihnen</r> noch in dieser Woche einen Techniker vorbei, der den Druckregler kostenlos vor Ort neu einstellt, <k>damit</k> der Kompressor den zugesagten Druck von 8 bar erreicht. Sollte er danach weiterhin nicht die volle Leistung erreichen, tauschen wir das Gerät selbstverständlich gegen ein neues Modell aus.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
-        "en": "As compensation, we will send a technician to you this week, who will readjust the pressure regulator on site free of charge so that the compressor reaches the promised pressure of 8 bar. Should it still not reach full performance afterwards, we will of course exchange the unit for a new model.<br>We hope that you agree with this solution and thank you for your understanding.",
-        "uk": "Як компенсацію ми надішлемо до Вас техніка вже цього тижня, який безкоштовно налаштує регулятор тиску на місці, щоб компресор досягав обіцяного тиску 8 бар. Якщо після цього він і надалі не досягатиме повної продуктивності, ми, звісно, замінимо пристрій на нову модель.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
-        "ru": "В качестве компенсации мы направим к Вам техника уже на этой неделе, который бесплатно перенастроит регулятор давления на месте, чтобы компрессор достигал обещанного давления 8 бар. Если после этого он всё же не будет достигать полной производительности, мы, конечно, заменим устройство на новую модель.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
+        "en": "<r>As compensation, we will send you</r> a technician this week, who will readjust the pressure regulator on site free of charge so that the compressor reaches the promised pressure of 8 bar. Should it still not reach full performance afterwards, we will of course exchange the unit for a new model.<br><r>We hope that you agree with this solution</r> and thank you for your understanding.",
+        "uk": "<r>Як компенсацію ми надішлемо до Вас</r> техніка вже цього тижня, який безкоштовно налаштує регулятор тиску на місці, щоб компресор досягав обіцяного тиску 8 бар. Якщо після цього він і надалі не досягатиме повної продуктивності, ми, звісно, замінимо пристрій на нову модель.<br><r>Сподіваємось, що це рішення Вас влаштує</r>, і дякуємо за розуміння.",
+        "ru": "<r>В качестве компенсации мы направим к Вам</r> техника уже на этой неделе, который бесплатно перенастроит регулятор давления на месте, чтобы компрессор достигал обещанного давления 8 бар. Если после этого он всё же не будет достигать полной производительности, мы, конечно, заменим устройство на новую модель.<br><r>Надеемся, что это решение Вас устроит</r>, и благодарим за понимание."
       },
       {
         "role": "grussformel",
         "de": "Mit freundlichen Grüßen",
-        "en": "Best regards",
-        "uk": "З повагою",
-        "ru": "С уважением"
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -25256,10 +25256,10 @@ var EMAILS = [
         "uk": "Скарга: столи досі не доставлено",
         "ru": "Жалоба: столы до сих пор не доставлены"
       },
-      "de": "Sehr geehrte Damen und Herren,<br><br>in unserer schriftlichen Bestellung vom 15. April hatten wir 20 Schreibtische des Modells ED-310 mit einem vereinbarten Liefertermin zum 20. Mai bestellt. Bis heute ist die Lieferung jedoch nicht bei uns eingetroffen, und auch auf telefonische Nachfrage konnte uns niemand einen verlässlichen neuen Termin nennen. Da meine eigenen Kundinnen und Kunden bereits auf die Schreibtische warten, ist diese Situation für mein Geschäft sehr belastend. Ich bitte Sie dringend um eine schnelle Lösung, sei es durch Lieferung der bestellten Modelle oder durch ein geeignetes Alternativangebot.<br><br>Mit freundlichen Grüßen,<br>Julia Sommer<br>Inhaberin<br>Büro und Design Sommer",
-      "en": "Dear Sir or Madam,<br><br>in our written order of 15 April, we ordered 20 desks of the ED-310 model with an agreed delivery date of 20 May. However, the delivery has still not arrived with us to this day, and even on telephone inquiry, no one was able to give us a reliable new date. Since my own customers are already waiting for the desks, this situation is very stressful for my business. I urgently ask you for a quick solution, whether by delivering the ordered models or through a suitable alternative offer.<br><br>Best regards,<br>Julia Sommer<br>Owner<br>Büro und Design Sommer",
-      "uk": "Шановні пані та панове,<br><br>у нашому письмовому замовленні від 15 квітня ми замовили 20 столів моделі ED-310 з узгодженим терміном поставки 20 травня. Однак досі поставка до нас не надійшла, і навіть за телефонним запитом ніхто не зміг назвати нам надійний новий термін. Оскільки мої власні клієнти вже чекають на столи, ця ситуація дуже обтяжлива для мого бізнесу. Прошу Вас терміново знайти швидке рішення — чи то шляхом поставки замовлених моделей, чи через відповідну альтернативну пропозицію.<br><br>З повагою,<br>Юлія Зоммер<br>власниця<br>Büro und Design Sommer",
-      "ru": "Уважаемые дамы и господа,<br><br>в нашем письменном заказе от 15 апреля мы заказали 20 столов модели ED-310 с согласованным сроком поставки 20 мая. Однако до сих пор поставка к нам не поступила, и даже по телефонному запросу никто не смог назвать нам надёжный новый срок. Поскольку мои собственные клиенты уже ждут столы, эта ситуация очень обременительна для моего бизнеса. Прошу Вас срочно найти быстрое решение — будь то путём поставки заказанных моделей или через подходящее альтернативное предложение.<br><br>С уважением,<br>Юлия Зоммер<br>владелица<br>Büro und Design Sommer"
+      "de": "Sehr geehrte Damen und Herren,<br><br>in unserer schriftlichen Bestellung vom 15. April hatten wir 20 Schreibtische des Modells ED-310 mit einem vereinbarten Liefertermin zum 20. Mai bestellt. Bis heute, dem 12. Juni, ist die Lieferung jedoch nicht bei uns eingetroffen, und auch auf telefonische Nachfrage konnte uns niemand einen verlässlichen neuen Termin nennen. Da meine eigenen Kundinnen und Kunden bereits auf die fertig eingerichteten Büros warten, ist diese Verzögerung für mein Geschäft sehr belastend und könnte mich sogar Aufträge kosten. Ich bitte Sie dringend um eine schnelle Lösung, sei es durch Lieferung der bestellten Modelle oder durch ein geeignetes Alternativangebot.<br><br>Mit freundlichen Grüßen,<br>Julia Sommer<br>Inhaberin<br>Büro und Design Sommer",
+      "en": "Dear Sir or Madam,<br><br>in our written order of 15 April, we ordered 20 desks of the ED-310 model with an agreed delivery date of 20 May. However, as of today, 12 June, the delivery has still not arrived with us, and even on telephone inquiry, no one was able to give us a reliable new date. Since my own customers are already waiting for their fully furnished offices, this delay is very stressful for my business and could even cost me orders. I urgently ask you for a quick solution, whether by delivering the ordered models or through a suitable alternative offer.<br><br>Best regards,<br>Julia Sommer<br>Owner<br>Büro und Design Sommer",
+      "uk": "Шановні пані та панове,<br><br>у нашому письмовому замовленні від 15 квітня ми замовили 20 столів моделі ED-310 з узгодженим терміном поставки 20 травня. Однак станом на сьогодні, 12 червня, поставка до нас так і не надійшла, і навіть за телефонним запитом ніхто не зміг назвати нам надійний новий термін. Оскільки мої власні клієнти вже чекають на повністю облаштовані офіси, ця затримка дуже обтяжлива для мого бізнесу і може навіть коштувати мені замовлень. Прошу Вас терміново знайти швидке рішення — чи то шляхом поставки замовлених моделей, чи через відповідну альтернативну пропозицію.<br><br>З повагою,<br>Юлія Зоммер<br>власниця<br>Büro und Design Sommer",
+      "ru": "Уважаемые дамы и господа,<br><br>в нашем письменном заказе от 15 апреля мы заказали 20 столов модели ED-310 с согласованным сроком поставки 20 мая. Однако по состоянию на сегодня, 12 июня, поставка к нам так и не поступила, и даже по телефонному запросу никто не смог назвать нам надёжный новый срок. Поскольку мои собственные клиенты уже ждут полностью обустроенные офисы, эта задержка очень обременительна для моего бизнеса и может даже стоить мне заказов. Прошу Вас срочно найти быстрое решение — будь то путём поставки заказанных моделей или через подходящее альтернативное предложение.<br><br>С уважением,<br>Юлия Зоммер<br>владелица<br>Büro und Design Sommer"
     },
     "questions": [
       {
@@ -25340,37 +25340,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die weiterhin ausstehende Lieferung der Schreibtische hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the still outstanding delivery of the desks.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на досі невиконану поставку столів.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на до сих пор невыполненную поставку столов."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the still outstanding delivery of the desks.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на досі невиконану поставку столів.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на до сих пор невыполненную поставку столов."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> sich die Lieferung der bestellten Schreibtische Modell <c>ED-310</c> weiter verzögert.",
-        "en": "We are very sorry that the delivery of the ordered ED-310 desks continues to be delayed.",
-        "uk": "Нам дуже прикро, що поставка замовлених столів моделі ED-310 і надалі затримується.",
-        "ru": "Нам очень жаль, что поставка заказанных столов модели ED-310 продолжает задерживаться."
+        "en": "<r>We are very sorry that</r> the delivery of the ordered ED-310 desks continues to be delayed.",
+        "uk": "<r>Нам дуже прикро, що</r> поставка замовлених столів моделі ED-310 і надалі затримується.",
+        "ru": "<r>Нам очень жаль, что</r> поставка заказанных столов модели ED-310 продолжает задерживаться."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es bei unserem Zulieferer zu einem anhaltenden Rohstoffmangel gekommen ist. Leider konnten wir bislang <g>niemanden</g> erreichen, der uns einen verbindlichen neuen Liefertermin nennen konnte.",
-        "en": "We have since found out that our supplier is experiencing an ongoing raw material shortage. Unfortunately, we have so far not been able to reach anyone who could give us a firm new delivery date.",
-        "uk": "Ми вже з'ясували, що в нашого постачальника триває дефіцит сировини. На жаль, досі нам не вдалося зв'язатися з кимось, хто міг би назвати нам чіткий новий термін поставки.",
-        "ru": "Мы уже выяснили, что у нашего поставщика продолжается дефицит сырья. К сожалению, до сих пор нам не удалось связаться ни с кем, кто мог бы назвать нам чёткий новый срок поставки."
+        "en": "<r>We have since found out that</r> our supplier is experiencing an ongoing raw material shortage. Unfortunately, we have so far not been able to reach anyone who could give us a firm new delivery date.",
+        "uk": "<r>Ми вже з'ясували, що</r> в нашого постачальника триває дефіцит сировини. На жаль, досі нам не вдалося зв'язатися з кимось, хто міг би назвати нам чіткий новий термін поставки.",
+        "ru": "<r>Мы уже выяснили, что</r> у нашего поставщика продолжается дефицит сырья. К сожалению, до сих пор нам не удалось связаться ни с кем, кто мог бы назвать нам чёткий новый срок поставки."
       },
       {
         "role": "loesung",
         "de": "<r>Als Alternative bieten wir Ihnen</r> das Modell ED-330 an, das über vergleichbare Maße und Ausstattung verfügt und sofort verfügbar ist – selbstverständlich zum ursprünglich vereinbarten Preis. Gerne senden wir Ihnen vorab Produktfotos zu, <k>damit</k> Sie sich ein genaues Bild machen können.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
-        "en": "As an alternative, we offer you the ED-330 model, which has comparable dimensions and features and is immediately available – of course at the originally agreed price. We would be happy to send you product photos in advance so that you can get a precise picture.<br>We hope that you agree with this solution and thank you for your understanding.",
-        "uk": "Як альтернативу пропонуємо Вам модель ED-330, яка має порівнянні розміри та комплектацію і доступна одразу — звісно, за первісно узгодженою ціною. Із задоволенням заздалегідь надішлемо Вам фото продукту, щоб Ви могли скласти точне уявлення.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
-        "ru": "В качестве альтернативы предлагаем Вам модель ED-330, которая имеет сопоставимые размеры и комплектацию и доступна сразу — конечно, по первоначально согласованной цене. С удовольствием заранее вышлем Вам фотографии продукта, чтобы Вы могли составить точное представление.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
+        "en": "<r>As an alternative, we offer you</r> the ED-330 model, which has comparable dimensions and features and is immediately available – of course at the originally agreed price. We would be happy to send you product photos in advance so that you can get a precise picture.<br><r>We hope that you agree with this solution</r> and thank you for your understanding.",
+        "uk": "<r>Як альтернативу пропонуємо Вам</r> модель ED-330, яка має порівнянні розміри та комплектацію і доступна одразу — звісно, за первісно узгодженою ціною. Із задоволенням заздалегідь надішлемо Вам фото продукту, щоб Ви могли скласти точне уявлення.<br><r>Сподіваємось, що це рішення Вас влаштує</r>, і дякуємо за розуміння.",
+        "ru": "<r>В качестве альтернативы предлагаем Вам</r> модель ED-330, которая имеет сопоставимые размеры и комплектацию и доступна сразу — конечно, по первоначально согласованной цене. С удовольствием заранее вышлем Вам фотографии продукта, чтобы Вы могли составить точное представление.<br><r>Надеемся, что это решение Вас устроит</r>, и благодарим за понимание."
       },
       {
         "role": "grussformel",
         "de": "Mit freundlichen Grüßen",
-        "en": "Best regards",
-        "uk": "З повагою",
-        "ru": "С уважением"
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
