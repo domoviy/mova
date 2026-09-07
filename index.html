@@ -4066,7 +4066,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '611-d4852f8';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12957,11 +12957,27 @@ let audioManifest = null;
 // переживає перезавантаження — інакше довелось би звіряти кожен файл
 // з мережею повторно після кожного refresh.
 const AUDIO_HASH_REGISTRY_KEY = 'mova_audio_hash_registry';
+// Версія СХЕМИ реєстру — не плутати з APP_VERSION/CACHE_VERSION (ті
+// бампаються на КОЖЕН деплой). Ця версія бампається лише тоді, коли
+// сам формат/довіра до вже накопичених записів реєстру ламається і
+// треба одноразово скинути все. Конкретний випадок: до фіксу
+// fetchBlobUrl (див. коментар там) баг міг записати "хеш підтверджено"
+// для СТАРОГО блоба, який фактично лежав у Cache Storage — фальшиве
+// підтвердження, що саме по собі неможливо відрізнити від правдивого
+// (обидва — просто "hash X підтверджено"). Єдиний надійний лік —
+// одноразово обнулити ВЕСЬ реєстр для всіх, тоді все перевіриться
+// заново з нуля вже за виправленою логікою.
+const AUDIO_HASH_REGISTRY_SCHEMA = '2';
+const AUDIO_HASH_REGISTRY_SCHEMA_KEY = 'mova_audio_hash_registry_schema';
 let audioHashRegistry = null;
 
 function loadAudioHashRegistry(){
   if(audioHashRegistry) return audioHashRegistry;
   try{
+    if(localStorage.getItem(AUDIO_HASH_REGISTRY_SCHEMA_KEY) !== AUDIO_HASH_REGISTRY_SCHEMA){
+      localStorage.removeItem(AUDIO_HASH_REGISTRY_KEY);
+      localStorage.setItem(AUDIO_HASH_REGISTRY_SCHEMA_KEY, AUDIO_HASH_REGISTRY_SCHEMA);
+    }
     audioHashRegistry = JSON.parse(localStorage.getItem(AUDIO_HASH_REGISTRY_KEY) || '{}');
   }catch(e){
     audioHashRegistry = {};
