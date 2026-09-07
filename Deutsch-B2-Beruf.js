@@ -12430,10 +12430,10 @@ var DIALOGE = [
     "id": "dlg_001",
     "cat": "Telefongespräch",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Telefongespräch – „Könnten Sie mich bitte mit Herrn / Frau … verbinden?“",
+      "en": "Topic: Phone call – „Could you please connect me with Mr. / Ms. …?“",
+      "uk": "Тема: Телефонна розмова – «Чи не могли б ви з'єднати мене з паном / пані …?»",
+      "ru": "Тема: Телефонный разговор – «Не могли бы вы соединить меня с господином / госпожой …?»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12455,10 +12455,10 @@ var DIALOGE = [
     "id": "dlg_002",
     "cat": "Telefongespräch",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Telefongespräch – „Ich glaube, ich habe nicht die richtige Durchwahl. Ich suche Herrn / Frau …“",
+      "en": "Topic: Phone call – „I think I have the wrong extension. I'm looking for Mr. / Ms. …“",
+      "uk": "Тема: Телефонна розмова – «Здається, у мене не той додатковий номер. Я шукаю пана / пані …»",
+      "ru": "Тема: Телефонный разговор – «Кажется, у меня не тот добавочный номер. Я ищу господина / госпожу …»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12480,10 +12480,10 @@ var DIALOGE = [
     "id": "dlg_003",
     "cat": "Telefongespräch",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Telefongespräch – „Könnten Sie Frau … etwas ausrichten?“",
+      "en": "Topic: Phone call – „Could you pass a message to Ms. …?“",
+      "uk": "Тема: Телефонна розмова – «Чи могли б ви передати щось пані …?»",
+      "ru": "Тема: Телефонный разговор – «Не могли бы вы передать кое-что госпоже …?»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12505,10 +12505,10 @@ var DIALOGE = [
     "id": "dlg_004",
     "cat": "Telefongespräch",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Telefongespräch – „Ich bin mir nicht ganz sicher, ob ich Sie richtig verstanden habe. Könnten Sie das bitte wiederholen?“",
+      "en": "Topic: Phone call – „I'm not quite sure I understood you correctly. Could you please repeat that?“",
+      "uk": "Тема: Телефонна розмова – «Я не зовсім впевнений, чи правильно я вас зрозумів. Не могли б ви повторити?»",
+      "ru": "Тема: Телефонный разговор – «Я не совсем уверен, правильно ли я вас понял. Не могли бы вы повторить?»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12530,10 +12530,10 @@ var DIALOGE = [
     "id": "dlg_005",
     "cat": "Telefongespräch",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Telefongespräch – „Melden Sie sich gerne wieder, wenn Sie weitere Auskünfte benötigen.“",
+      "en": "Topic: Phone call – „Feel free to contact us again if you need further information.“",
+      "uk": "Тема: Телефонна розмова – «Звертайтеся знову, якщо вам знадобиться додаткова інформація.»",
+      "ru": "Тема: Телефонный разговор – «Обращайтесь снова, если вам понадобится дополнительная информация.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12555,10 +12555,10 @@ var DIALOGE = [
     "id": "dlg_006",
     "cat": "Messe",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Messe – „Kann ich Ihnen behilflich sein?“",
+      "en": "Topic: Trade fair – „Can I help you?“",
+      "uk": "Тема: Виставка – «Чи можу я вам чимось допомогти?»",
+      "ru": "Тема: Выставка – «Могу ли я вам чем-нибудь помочь?»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12580,10 +12580,10 @@ var DIALOGE = [
     "id": "dlg_007",
     "cat": "Messe",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Messe – „Kommen Sie auch aus dem … bereich / der … branche?“",
+      "en": "Topic: Trade fair – „Are you also from the … sector / industry?“",
+      "uk": "Тема: Виставка – «Ви також із галузі …?»",
+      "ru": "Тема: Выставка – «Вы тоже из сферы …?»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12605,10 +12605,10 @@ var DIALOGE = [
     "id": "dlg_008",
     "cat": "Messe",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Messe – „Wir haben hier etwas ganz Besonderes. Es hat den Vorteil, dass …“",
+      "en": "Topic: Trade fair – „We have something very special here. It has the advantage that …“",
+      "uk": "Тема: Виставка – «У нас тут є щось особливе. Воно має ту перевагу, що …»",
+      "ru": "Тема: Выставка – «У нас здесь есть кое-что особенное. Оно имеет то преимущество, что …»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12630,10 +12630,10 @@ var DIALOGE = [
     "id": "dlg_009",
     "cat": "Messe",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Messe – „Ich kann Ihnen das gerne mal vorführen / demonstrieren.“",
+      "en": "Topic: Trade fair – „I'd be happy to demonstrate it for you.“",
+      "uk": "Тема: Виставка – «Я із задоволенням продемонструю вам це.»",
+      "ru": "Тема: Выставка – «Я с удовольствием продемонстрирую вам это.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12655,10 +12655,10 @@ var DIALOGE = [
     "id": "dlg_010",
     "cat": "Messe",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Messe – „Das Material ist aus … und hat besondere Eigenschaften.“",
+      "en": "Topic: Trade fair – „The material is made of … and has special properties.“",
+      "uk": "Тема: Виставка – «Матеріал виготовлений з … і має особливі властивості.»",
+      "ru": "Тема: Выставка – «Материал сделан из … и имеет особые свойства.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12680,10 +12680,10 @@ var DIALOGE = [
     "id": "dlg_011",
     "cat": "Messe",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Messe – „Kann ich Ihnen eine kleine Erfrischung anbieten?“",
+      "en": "Topic: Trade fair – „Can I offer you a small refreshment?“",
+      "uk": "Тема: Виставка – «Чи можу я запропонувати вам напої або перекусити?»",
+      "ru": "Тема: Выставка – «Могу ли я предложить вам что-нибудь освежиться?»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12705,10 +12705,10 @@ var DIALOGE = [
     "id": "dlg_012",
     "cat": "Messe",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Messe – „Dürfen wir Sie auch über neue Produkte informieren?“",
+      "en": "Topic: Trade fair – „May we also inform you about new products?“",
+      "uk": "Тема: Виставка – «Чи можемо ми інформувати вас про нові продукти?»",
+      "ru": "Тема: Выставка – «Можем ли мы информировать вас о новых продуктах?»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12730,10 +12730,10 @@ var DIALOGE = [
     "id": "dlg_013",
     "cat": "Messe",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Messe – „Könnten Sie mir bitte bei / mit … weiterhelfen?“",
+      "en": "Topic: Trade fair – „Could you please help me with …?“",
+      "uk": "Тема: Виставка – «Чи не могли б ви мені допомогти з …?»",
+      "ru": "Тема: Выставка – «Не могли бы вы помочь мне с …?»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -12755,10 +12755,10 @@ var DIALOGE = [
     "id": "dlg_014",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Wir haben die Herausforderung, dass die Lieferzeiten sich ständig verzögern.“",
+      "en": "Topic: Discussing solutions – „We have the challenge that delivery times keep getting delayed.“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Терміни доставки постійно затримуються.»",
+      "ru": "Тема: Обсуждение путей решения – «Сроки доставки постоянно задерживаются.»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12817,10 +12817,10 @@ var DIALOGE = [
     "id": "dlg_015",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Welche Folgen hätte es, wenn wir das Problem nicht lösen?“",
+      "en": "Topic: Discussing solutions – „What consequences would it have if we don't solve the problem?“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Які наслідки будуть, якщо ми не вирішимо проблему?»",
+      "ru": "Тема: Обсуждение путей решения – «Какие последствия будут, если мы не решим проблему?»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12843,10 +12843,10 @@ var DIALOGE = [
     "id": "dlg_016",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Wir könnten einen zweiten Lieferanten als Backup einplanen.“",
+      "en": "Topic: Discussing solutions – „We could plan a second supplier as a backup.“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Ми могли б запланувати другого постачальника як резервний варіант.»",
+      "ru": "Тема: Обсуждение путей решения – «Мы могли бы запланировать второго поставщика в качестве резерва.»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12869,10 +12869,10 @@ var DIALOGE = [
     "id": "dlg_017",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Was hältst du davon, beide Maßnahmen gleichzeitig umzusetzen?“",
+      "en": "Topic: Discussing solutions – „What do you think about implementing both measures at the same time?“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Що ти думаєш про те, щоб реалізувати обидва заходи одночасно?»",
+      "ru": "Тема: Обсуждение путей решения – «Что ты думаешь о том, чтобы реализовать обе меры одновременно?»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12895,10 +12895,10 @@ var DIALOGE = [
     "id": "dlg_018",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Wärst du damit einverstanden, beide Schritte parallel zu starten?“",
+      "en": "Topic: Discussing solutions – „Would you agree to start both steps in parallel?“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Ти був би згоден розпочати обидва кроки паралельно?»",
+      "ru": "Тема: Обсуждение путей решения – «Ты был бы согласен начать оба шага параллельно?»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12921,10 +12921,10 @@ var DIALOGE = [
     "id": "dlg_019",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Wir sollten zuerst einen kurzen Bericht vorbereiten.“",
+      "en": "Topic: Discussing solutions – „We should first prepare a short report.“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Спочатку нам слід підготувати короткий звіт.»",
+      "ru": "Тема: Обсуждение путей решения – «Сначала нам нужно подготовить короткий отчёт.»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12947,10 +12947,10 @@ var DIALOGE = [
     "id": "dlg_020",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Wer übernimmt welche Aufgabe, und bis wann?“",
+      "en": "Topic: Discussing solutions – „Who takes on which task, and by when?“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Хто бере на себе яке завдання і до якого терміну?»",
+      "ru": "Тема: Обсуждение путей решения – «Кто берёт на себя какую задачу и к какому сроку?»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12973,10 +12973,10 @@ var DIALOGE = [
     "id": "dlg_021",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Wir könnten einen Mittelweg finden, indem wir den Bericht gemeinsam schreiben.“",
+      "en": "Topic: Discussing solutions – „We could find a middle ground by writing the report together.“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Ми могли б знайти золоту середину, якщо напишемо звіт спільно.»",
+      "ru": "Тема: Обсуждение путей решения – «Мы могли бы найти золотую середину, если напишем отчёт совместно.»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12999,10 +12999,10 @@ var DIALOGE = [
     "id": "dlg_022",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Lösungswege diskutieren – „Was meinst du genau mit ‚fertigstellen'?“",
+      "en": "Topic: Discussing solutions – „What exactly do you mean by 'finalize'?“",
+      "uk": "Тема: Обговорення шляхів вирішення – «Що саме ти маєш на увазі під словом завершити?»",
+      "ru": "Тема: Обсуждение путей решения – «Что именно ты имеешь в виду под словом завершить?»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -13025,10 +13025,10 @@ var DIALOGE = [
     "id": "dlg_023",
     "cat": "Etwas reklamieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Etwas reklamieren – „Es ist sehr ärgerlich, dass die Lieferung erneut zu spät angekommen ist.“",
+      "en": "Topic: Making a complaint – „It's quite annoying that the delivery arrived late again.“",
+      "uk": "Тема: Подання скарги – «Дуже прикро, що доставка знову прийшла із запізненням.»",
+      "ru": "Тема: Подача жалобы – «Очень досадно, что доставка снова пришла с опозданием.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -13050,10 +13050,10 @@ var DIALOGE = [
     "id": "dlg_024",
     "cat": "Etwas reklamieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Etwas reklamieren – „Wir sind sehr unzufrieden, weil die gelieferte Ware nicht der Bestellung entspricht.“",
+      "en": "Topic: Making a complaint – „We are very dissatisfied because the delivered goods do not match the order.“",
+      "uk": "Тема: Подання скарги – «Ми дуже незадоволені, тому що доставлений товар не відповідає замовленню.»",
+      "ru": "Тема: Подача жалобы – «Мы очень недовольны, потому что доставленный товар не соответствует заказу.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -13075,10 +13075,10 @@ var DIALOGE = [
     "id": "dlg_025",
     "cat": "Etwas reklamieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Etwas reklamieren – „Mehrere Artikel sind beschädigt bei uns angekommen.“",
+      "en": "Topic: Making a complaint – „Several items arrived damaged.“",
+      "uk": "Тема: Подання скарги – «Кілька товарів прийшли до нас пошкодженими.»",
+      "ru": "Тема: Подача жалобы – «Несколько товаров пришли к нам повреждёнными.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -13100,10 +13100,10 @@ var DIALOGE = [
     "id": "dlg_026",
     "cat": "Etwas reklamieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Etwas reklamieren – „Ich gehe davon aus, dass Sie das Problem schnell lösen.“",
+      "en": "Topic: Making a complaint – „I assume that you will solve the problem quickly.“",
+      "uk": "Тема: Подання скарги – «Я виходжу з того, що ви швидко вирішите цю проблему.»",
+      "ru": "Тема: Подача жалобы – «Я исхожу из того, что вы быстро решите эту проблему.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -13125,10 +13125,10 @@ var DIALOGE = [
     "id": "dlg_027",
     "cat": "Etwas reklamieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Etwas reklamieren – „Wir bitten um eine schnelle Lösung, da wir die Ware dringend benötigen.“",
+      "en": "Topic: Making a complaint – „We ask for a quick solution, as we urgently need the goods.“",
+      "uk": "Тема: Подання скарги – «Прошу швидкого вирішення, оскільки товар нам терміново потрібен.»",
+      "ru": "Тема: Подача жалобы – «Прошу быстрого решения, так как товар нам срочно нужен.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -13150,10 +13150,10 @@ var DIALOGE = [
     "id": "dlg_028",
     "cat": "Etwas reklamieren",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Etwas reklamieren – „Wir erwarten, dass Sie die Qualitätskontrolle verbessern.“",
+      "en": "Topic: Making a complaint – „We expect that you will improve the quality control.“",
+      "uk": "Тема: Подання скарги – «Ми очікуємо, що ви покращите контроль якості.»",
+      "ru": "Тема: Подача жалобы – «Мы ожидаем, что вы улучшите контроль качества.»"
     },
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
@@ -13297,10 +13297,10 @@ var DIALOGE = [
     "id": "dlg_030",
     "cat": "Bei der Agentur für Arbeit",
     "task": {
-      "de": "",
-      "en": "",
-      "uk": "",
-      "ru": ""
+      "de": "Thema: Bei der Agentur für Arbeit – „Die Sozialversicherungsnummer und die Arbeitserlaubnis unserer neuen Kollegin sind noch nicht angekommen.“",
+      "en": "Topic: At the employment agency – „Our new colleague's social security number and work permit still haven't arrived.“",
+      "uk": "Тема: У службі зайнятості – «Номер соціального страхування та дозвіл на роботу нашої нової колеги досі не прийшли.»",
+      "ru": "Тема: В центре занятости – «Номер социального страхования и разрешение на работу нашей новой коллеги до сих пор не пришли.»"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -24779,10 +24779,10 @@ var EMAILS = [
         "uk": "Скарга: у рахунку відсутня знижка за раннє бронювання",
         "ru": "Жалоба: в счёте отсутствует скидка за раннее бронирование"
       },
-      "de": "Sehr geehrte Damen und Herren,<br><br>wir hatten Ihr Angebot AN-2026-057 für ein Kommunikationstraining mit 15 Teilnehmenden angenommen, das bei einer Buchung bis zum 30. April einen Frühbucherrabatt von 15 Prozent vorsah. Wir haben fristgerecht am 22. April gebucht. Die nun erhaltene Rechnung weist jedoch den vollen Preis ohne jeglichen Rabatt aus. Ich bitte Sie um eine korrigierte Rechnung unter Berücksichtigung des vereinbarten Rabatts sowie um eine kurze Erklärung, wie es zu diesem Fehler kommen konnte.<br><br>Mit freundlichen Grüßen,<br>Petra Lehmann<br>Personalentwicklung<br>KomTech Solutions GmbH",
-      "en": "Dear Sir or Madam,<br><br>we had accepted your offer AN-2026-057 for a communication training for 15 participants, which included a 15 percent early-bird discount if booked by 30 April. We booked on time on 22 April. However, the invoice we have now received shows the full price without any discount. I ask you for a corrected invoice taking the agreed discount into account, as well as a brief explanation of how this mistake could have occurred.<br><br>Best regards,<br>Petra Lehmann<br>Human Resources Development<br>KomTech Solutions GmbH",
-      "uk": "Шановні пані та панове,<br><br>ми прийняли Вашу пропозицію AN-2026-057 на комунікаційний тренінг для 15 учасників, яка передбачала знижку за раннє бронювання в 15 відсотків за умови бронювання до 30 квітня. Ми забронювали вчасно, 22 квітня. Однак отриманий тепер рахунок показує повну ціну без жодної знижки. Прошу Вас надати виправлений рахунок з урахуванням узгодженої знижки, а також коротке пояснення, як могла виникнути ця помилка.<br><br>З повагою,<br>Петра Леманн<br>розвиток персоналу<br>KomTech Solutions GmbH",
-      "ru": "Уважаемые дамы и господа,<br><br>мы приняли Ваше предложение AN-2026-057 на коммуникационный тренинг для 15 участников, которое предусматривало скидку за раннее бронирование в 15 процентов при бронировании до 30 апреля. Мы забронировали вовремя, 22 апреля. Однако полученный теперь счёт показывает полную цену без какой-либо скидки. Прошу Вас предоставить исправленный счёт с учётом согласованной скидки, а также краткое объяснение, как могла возникнуть эта ошибка.<br><br>С уважением,<br>Петра Леманн<br>развитие персонала<br>KomTech Solutions GmbH"
+      "de": "Sehr geehrte Damen und Herren,<br><br>wir hatten Ihr Angebot AN-2026-057 für ein Kommunikationstraining mit 15 Teilnehmenden angenommen, das bei einer Buchung bis zum 30. April einen Frühbucherrabatt von 15 Prozent vorsah. Wir haben fristgerecht am 22. April gebucht und zudem eine Bestätigungsmail erhalten, in der genau dieser Rabatt noch einmal ausdrücklich bestätigt wurde. Die nun erhaltene Rechnung Nr. 2026-1183 weist jedoch den vollen Preis ohne jeglichen Rabatt aus. Da unsere Buchhaltung Rechnungen innerhalb von 14 Tagen begleicht, benötigen wir umgehend eine korrigierte Fassung. Ich bitte Sie daher um eine korrigierte Rechnung unter Berücksichtigung des vereinbarten Rabatts sowie um eine kurze Erklärung, wie es zu diesem Fehler kommen konnte.<br><br>Mit freundlichen Grüßen,<br>Petra Lehmann<br>Personalentwicklung<br>KomTech Solutions GmbH",
+      "en": "Dear Sir or Madam,<br><br>we had accepted your offer AN-2026-057 for a communication training for 15 participants, which included a 15 percent early-bird discount if booked by 30 April. We booked on time on 22 April and also received a confirmation email in which exactly this discount was explicitly confirmed once again. However, the invoice we have now received, no. 2026-1183, shows the full price without any discount. Since our accounting department settles invoices within 14 days, we urgently need a corrected version. I therefore ask you for a corrected invoice taking the agreed discount into account, as well as a brief explanation of how this mistake could have occurred.<br><br>Best regards,<br>Petra Lehmann<br>Human Resources Development<br>KomTech Solutions GmbH",
+      "uk": "Шановні пані та панове,<br><br>ми прийняли Вашу пропозицію AN-2026-057 на комунікаційний тренінг для 15 учасників, яка передбачала знижку за раннє бронювання в 15 відсотків за умови бронювання до 30 квітня. Ми забронювали вчасно, 22 квітня, і додатково отримали лист-підтвердження, в якому саме цю знижку було ще раз чітко підтверджено. Однак отриманий тепер рахунок № 2026-1183 показує повну ціну без жодної знижки. Оскільки наша бухгалтерія оплачує рахунки протягом 14 днів, нам терміново потрібна виправлена версія. Тому прошу Вас надати виправлений рахунок з урахуванням узгодженої знижки, а також коротке пояснення, як могла виникнути ця помилка.<br><br>З повагою,<br>Петра Леманн<br>розвиток персоналу<br>KomTech Solutions GmbH",
+      "ru": "Уважаемые дамы и господа,<br><br>мы приняли Ваше предложение AN-2026-057 на коммуникационный тренинг для 15 участников, которое предусматривало скидку за раннее бронирование в 15 процентов при бронировании до 30 апреля. Мы забронировали вовремя, 22 апреля, и дополнительно получили письмо-подтверждение, в котором именно эта скидка была ещё раз чётко подтверждена. Однако полученный теперь счёт № 2026-1183 показывает полную цену без какой-либо скидки. Поскольку наша бухгалтерия оплачивает счета в течение 14 дней, нам срочно нужна исправленная версия. Поэтому прошу Вас предоставить исправленный счёт с учётом согласованной скидки, а также краткое объяснение, как могла возникнуть эта ошибка.<br><br>С уважением,<br>Петра Леманн<br>развитие персонала<br>KomTech Solutions GmbH"
     },
     "questions": [
       {
