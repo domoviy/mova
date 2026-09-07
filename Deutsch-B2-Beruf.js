@@ -24068,37 +24068,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die Abweichung zwischen Ihrer schriftlichen Bestellung und der gelieferten Ware hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the discrepancy between your written order and the delivered goods.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на розбіжність між Вашим письмовим замовленням і доставленим товаром.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на расхождение между Вашим письменным заказом и доставленным товаром."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the discrepancy between your written order and the delivered goods.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на розбіжність між Вашим письмовим замовленням і доставленим товаром.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на расхождение между Вашим письменным заказом и доставленным товаром."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Zunächst möchten wir uns bei Ihnen dafür entschuldigen, dass</r> Sie statt des bestellten Modells SM-450 das Modell <c>SM-380</c> erhalten haben.",
-        "en": "First of all, we would like to apologise to you for the fact that you received model SM-380 instead of the ordered model SM-450.",
-        "uk": "Насамперед хочемо перепросити Вас за те, що замість замовленої моделі SM-450 Ви отримали модель SM-380.",
-        "ru": "Прежде всего, мы хотим извиниться перед Вами за то, что вместо заказанной модели SM-450 Вы получили модель SM-380."
+        "en": "<r>First of all, we would like to apologise to you for the fact that</r> you received model SM-380 instead of the ordered model SM-450.",
+        "uk": "<r>Насамперед хочемо перепросити Вас за те, що</r> замість замовленої моделі SM-450 Ви отримали модель SM-380.",
+        "ru": "<r>Прежде всего, мы хотим извиниться перед Вами за то, что</r> вместо заказанной модели SM-450 Вы получили модель SM-380."
       },
       {
         "role": "grund",
-        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> das Modell SM-450 kurz vor Bearbeitung Ihrer Bestellung vom Hersteller eingestellt wurde, <g>ohne</g> uns rechtzeitig <g>zu informieren</g>.",
-        "en": "We have since found out that model SM-450 was discontinued by the manufacturer shortly before your order was processed, without informing us in time.",
-        "uk": "Ми вже з'ясували, що модель SM-450 була знята виробником з виробництва незадовго до обробки Вашого замовлення, без своєчасного повідомлення нас про це.",
-        "ru": "Мы уже выяснили, что модель SM-450 была снята производителем с производства незадолго до обработки Вашего заказа, без своевременного уведомления нас об этом."
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> das Modell SM-450 kurz vor Bearbeitung Ihrer Bestellung vom Hersteller eingestellt wurde, <k>ohne</k> uns rechtzeitig zu informieren.",
+        "en": "<r>We have since found out that</r> model SM-450 was discontinued by the manufacturer shortly before your order was processed, without informing us in time.",
+        "uk": "<r>Ми вже з'ясували, що</r> модель SM-450 була знята виробником з виробництва незадовго до обробки Вашого замовлення, без своєчасного повідомлення нас про це.",
+        "ru": "<r>Мы уже выяснили, что</r> модель SM-450 была снята производителем с производства незадолго до обработки Вашего заказа, без своевременного уведомления нас об этом."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Alternative bieten wir Ihnen</r> das Nachfolgemodell SM-500 an, das über alle Stichfunktionen des SM-450 verfügt und <k>außerdem</k> zusätzliche Programme bietet – selbstverständlich zum ursprünglich vereinbarten Preis. Gerne senden wir Ihnen vorab ein Testgerät zu, <g>um</g> Ihnen die Entscheidung <g>zu erleichtern</g>.",
-        "en": "As an alternative, we offer you the successor model SM-500, which has all the stitch functions of the SM-450 and also offers additional programs – of course at the originally agreed price. We would be happy to send you a test device in advance, in order to make the decision easier for you.",
-        "uk": "Як альтернативу пропонуємо Вам модель-наступницю SM-500, яка має всі функції строчок SM-450 і також пропонує додаткові програми — звісно, за первісно узгодженою ціною. Із задоволенням надішлемо Вам заздалегідь тестовий пристрій, щоб полегшити Ваше рішення.",
-        "ru": "В качестве альтернативы предлагаем Вам модель-преемницу SM-500, которая имеет все функции строчек SM-450 и также предлагает дополнительные программы — конечно, по первоначально согласованной цене. С удовольствием заранее вышлем Вам тестовое устройство, чтобы облегчить Ваше решение."
+        "de": "<r>Als Alternative bieten wir Ihnen</r> das Nachfolgemodell SM-500 an, das über alle Stichfunktionen des SM-450 verfügt und außerdem zusätzliche Programme bietet – selbstverständlich zum ursprünglich vereinbarten Preis. Gerne senden wir Ihnen vorab ein Testgerät zu, <k>um</k> Ihnen die Entscheidung zu erleichtern.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As an alternative, we offer you</r> the successor model SM-500, which has all the stitch functions of the SM-450 and also offers additional programs – of course at the originally agreed price. We would be happy to send you a test device in advance, in order to make the decision easier for you.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як альтернативу пропонуємо Вам</r> модель-наступницю SM-500, яка має всі функції строчок SM-450 і також пропонує додаткові програми — звісно, за первісно узгодженою ціною. Із задоволенням надішлемо Вам заздалегідь тестовий пристрій, щоб полегшити Ваше рішення.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве альтернативы предлагаем Вам</r> модель-преемницу SM-500, которая имеет все функции строчек SM-450 и также предлагает дополнительные программы — конечно, по первоначально согласованной цене. С удовольствием заранее вышлем Вам тестовое устройство, чтобы облегчить Ваше решение.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -24227,37 +24227,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die Abweichung zwischen unserem Angebot und der erhaltenen Rechnung hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the discrepancy between our offer and the invoice you received.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на розбіжність між нашою пропозицією та отриманим рахунком.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на расхождение между нашим предложением и полученным счётом."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the discrepancy between our offer and the invoice you received.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на розбіжність між нашою пропозицією та отриманим рахунком.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на расхождение между нашим предложением и полученным счётом."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> Ihnen ein höherer Betrag als im Angebot <c>AN-2026-114</c> vereinbart in Rechnung gestellt wurde.",
-        "en": "We are very sorry that you were invoiced a higher amount than agreed in offer AN-2026-114.",
-        "uk": "Нам дуже прикро, що Вам виставили рахунок на суму, вищу за узгоджену в пропозиції AN-2026-114.",
-        "ru": "Нам очень жаль, что Вам выставили счёт на сумму, превышающую согласованную в предложении AN-2026-114."
+        "en": "<r>We are very sorry that</r> you were invoiced a higher amount than agreed in offer AN-2026-114.",
+        "uk": "<r>Нам дуже прикро, що</r> Вам виставили рахунок на суму, вищу за узгоджену в пропозиції AN-2026-114.",
+        "ru": "<r>Нам очень жаль, что</r> Вам выставили счёт на сумму, превышающую согласованную в предложении AN-2026-114."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es bei <g>der Übermittlung</g> des Angebots an unsere Buchhaltung zu einem Missverständnis kam. Durch <g>die fehlerhafte Zuordnung</g> einer zusätzlichen Leistungsposition wurde der Rechnungsbetrag falsch berechnet.",
-        "en": "We have since found out that a misunderstanding occurred when the offer was passed on to our accounting department. Due to the incorrect assignment of an additional service item, the invoice amount was calculated incorrectly.",
-        "uk": "Ми вже з'ясували, що під час передачі пропозиції до нашої бухгалтерії виникло непорозуміння. Через неправильне віднесення додаткової позиції послуги сума рахунку була розрахована неправильно.",
-        "ru": "Мы уже выяснили, что при передаче предложения в нашу бухгалтерию возникло недоразумение. Из-за неправильного отнесения дополнительной позиции услуги сумма счёта была рассчитана неверно."
+        "en": "<r>We have since found out that</r> a misunderstanding occurred when the offer was passed on to our accounting department. Due to the incorrect assignment of an additional service item, the invoice amount was calculated incorrectly.",
+        "uk": "<r>Ми вже з'ясували, що</r> під час передачі пропозиції до нашої бухгалтерії виникло непорозуміння. Через неправильне віднесення додаткової позиції послуги сума рахунку була розрахована неправильно.",
+        "ru": "<r>Мы уже выяснили, что</r> при передаче предложения в нашу бухгалтерию возникло недоразумение. Из-за неправильного отнесения дополнительной позиции услуги сумма счёта была рассчитана неверно."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung erstatten wir Ihnen</r> die Differenz von 650 Euro zwischen Angebot und Rechnung vollständig zurück, <k>sodass</k> Ihnen keine zusätzlichen Kosten entstehen. Selbstverständlich gilt für Sie weiterhin ausschließlich der im Angebot vereinbarte Festpreis von 3.200 Euro pro Jahr.",
-        "en": "As compensation, we will fully refund you the difference of €650 between the offer and the invoice, so that you incur no additional costs. Of course, only the fixed price of €3,200 per year agreed in the offer continues to apply to you.",
-        "uk": "Як компенсацію ми повністю повернемо Вам різницю в 650 євро між пропозицією та рахунком, щоб Ви не понесли жодних додаткових витрат. Звісно, для Вас надалі діє виключно фіксована ціна в 3200 євро на рік, узгоджена в пропозиції.",
-        "ru": "В качестве компенсации мы полностью вернём Вам разницу в 650 евро между предложением и счётом, чтобы Вы не понесли никаких дополнительных расходов. Разумеется, для Вас и далее действует исключительно фиксированная цена в 3200 евро в год, согласованная в предложении."
+        "de": "<r>Als Entschädigung erstatten wir Ihnen</r> die Differenz von 650 Euro zwischen Angebot und Rechnung vollständig zurück, <k>sodass</k> Ihnen keine zusätzlichen Kosten entstehen. Selbstverständlich gilt für Sie weiterhin ausschließlich der im Angebot vereinbarte Festpreis von 3.200 Euro pro Jahr.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation, we will fully refund you</r> the difference of €650 between the offer and the invoice, so that you incur no additional costs. Of course, only the fixed price of €3,200 per year agreed in the offer continues to apply to you.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію ми повністю повернемо Вам</r> різницю в 650 євро між пропозицією та рахунком, щоб Ви не понесли жодних додаткових витрат. Звісно, для Вас надалі діє виключно фіксована ціна в 3200 євро на рік, узгоджена в пропозиції.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации мы полностью вернём Вам</r> разницу в 650 евро между предложением и счётом, чтобы Вы не понесли никаких дополнительных расходов. Разумеется, для Вас и далее действует исключительно фиксированная цена в 3200 евро в год, согласованная в предложении.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -24386,37 +24386,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die noch ausstehende Lieferung der <c>USB-Sticks</c> hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the still outstanding delivery of the USB sticks.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на ще незавершену поставку USB-накопичувачів.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на ещё незавершённую поставку USB-накопителей."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the still outstanding delivery of the USB sticks.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на ще незавершену поставку USB-накопичувачів.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на ещё незавершённую поставку USB-накопителей."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> die USB-Sticks nicht rechtzeitig vor Ihrer Konferenz bei Ihnen eingetroffen sind.",
-        "en": "We are very sorry that the USB sticks did not arrive at your premises in time before your conference.",
-        "uk": "Нам дуже прикро, що USB-накопичувачі не прибули до Вас вчасно перед Вашою конференцією.",
-        "ru": "Нам очень жаль, что USB-накопители не прибыли к Вам вовремя перед Вашей конференцией."
+        "en": "<r>We are very sorry that</r> the USB sticks did not arrive at your premises in time before your conference.",
+        "uk": "<r>Нам дуже прикро, що</r> USB-накопичувачі не прибули до Вас вчасно перед Вашою конференцією.",
+        "ru": "<r>Нам очень жаль, что</r> USB-накопители не прибыли к Вам вовремя перед Вашей конференцией."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> es <g>während der Vorbereitung</g> der Bestellung zu einem Lieferengpass bei unserem Zulieferer für USB-Sticks gekommen ist.",
-        "en": "We have since found out that a supply shortage with our USB stick supplier occurred during the preparation of the order.",
-        "uk": "Ми вже з'ясували, що під час підготовки замовлення виник дефіцит поставок у нашого постачальника USB-накопичувачів.",
-        "ru": "Мы уже выяснили, что во время подготовки заказа возник дефицит поставок у нашего поставщика USB-накопителей."
+        "en": "<r>We have since found out that</r> a supply shortage with our USB stick supplier occurred during the preparation of the order.",
+        "uk": "<r>Ми вже з'ясували, що</r> під час підготовки замовлення виник дефіцит поставок у нашого постачальника USB-накопичувачів.",
+        "ru": "<r>Мы уже выяснили, что</r> во время подготовки заказа возник дефицит поставок у нашего поставщика USB-накопителей."
       },
       {
         "role": "loesung",
-        "de": "<r>Wie von Ihnen gewünscht, streichen wir</r> die Position der USB-Sticks vollständig aus Ihrer Bestellung. Sie erhalten ausschließlich für die gelieferten Notizblöcke eine entsprechend reduzierte Rechnung. <k>Zusätzlich</k> möchten wir uns für die Unannehmlichkeiten entschuldigen und bieten Ihnen bei Ihrer nächsten Bestellung <g>während der Hauptsaison</g> eine bevorzugte Bearbeitung an.",
-        "en": "As requested, we will completely remove the USB stick item from your order. You will receive a correspondingly reduced invoice solely for the notepads delivered. In addition, we would like to apologise for the inconvenience and offer you priority processing for your next order during peak season.",
-        "uk": "Як Ви й просили, ми повністю видаляємо позицію USB-накопичувачів з Вашого замовлення. Ви отримаєте відповідно зменшений рахунок виключно за доставлені блокноти. Крім того, хочемо перепросити за незручності й пропонуємо Вам пріоритетну обробку наступного замовлення в період високого сезону.",
-        "ru": "Как Вы и просили, мы полностью удаляем позицию USB-накопителей из Вашего заказа. Вы получите соответственно уменьшенный счёт исключительно за доставленные блокноты. Кроме того, хотим извиниться за неудобства и предлагаем Вам приоритетную обработку следующего заказа в период высокого сезона."
+        "de": "<r>Wie von Ihnen gewünscht, streichen wir</r> die Position der USB-Sticks vollständig aus Ihrer Bestellung. Sie erhalten ausschließlich für die gelieferten Notizblöcke eine entsprechend reduzierte Rechnung, <k>sodass</k> Ihnen keine Kosten für die nicht gelieferten USB-Sticks entstehen. Zusätzlich möchten wir uns für die Unannehmlichkeiten entschuldigen und bieten Ihnen bei Ihrer nächsten Bestellung <g>während der Hauptsaison</g> eine bevorzugte Bearbeitung an.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As requested, we will remove</r> the USB stick item completely from your order. You will receive a correspondingly reduced invoice solely for the notepads delivered, so that you incur no costs for the undelivered USB sticks. In addition, we would like to apologise for the inconvenience and offer you priority processing for your next order during peak season.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як Ви й просили, ми видаляємо</r> позицію USB-накопичувачів повністю з Вашого замовлення. Ви отримаєте відповідно зменшений рахунок виключно за доставлені блокноти, тож Ви не понесете витрат за недоставлені USB-накопичувачі. Крім того, хочемо перепросити за незручності й пропонуємо Вам пріоритетну обробку наступного замовлення в період високого сезону.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>Как Вы и просили, мы удаляем</r> позицию USB-накопителей полностью из Вашего заказа. Вы получите соответственно уменьшенный счёт исключительно за доставленные блокноты, так что Вы не понесёте расходов за недоставленные USB-накопители. Кроме того, хотим извиниться за неудобства и предлагаем Вам приоритетную обработку следующего заказа в период высокого сезона.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
-        "de": "<r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.<br><br>Mit freundlichen Grüßen",
-        "en": "We hope that you agree with this solution and thank you for your understanding.<br><br>Best regards,",
-        "uk": "Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.<br><br>З повагою,",
-        "ru": "Надеемся, что это решение Вас устроит, и благодарим за понимание.<br><br>С уважением,"
+        "de": "Mit freundlichen Grüßen",
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -24545,37 +24545,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die abweichende Garantiezeit für den <c>Großformatdrucker XL-900</c> in unserem Kaufvertrag hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the differing warranty period for the large-format printer XL-900 in our purchase contract.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на розбіжність у гарантійному терміні для широкоформатного принтера XL-900 в нашому договорі купівлі-продажу.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на расхождение в гарантийном сроке для широкоформатного принтера XL-900 в нашем договоре купли-продажи."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the differing warranty period for the large-format printer XL-900 in our purchase contract.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на розбіжність у гарантійному терміні для широкоформатного принтера XL-900 в нашому договорі купівлі-продажу.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на расхождение в гарантийном сроке для широкоформатного принтера XL-900 в нашем договоре купли-продажи."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> im Kaufvertrag versehentlich nur eine einjährige Garantie angegeben wurde.",
-        "en": "We are very sorry that only a one-year warranty was mistakenly stated in the purchase contract.",
-        "uk": "Нам дуже прикро, що в договорі купівлі-продажу помилково зазначено лише однорічну гарантію.",
-        "ru": "Нам очень жаль, что в договоре купли-продажи по ошибке указана только годовая гарантия."
+        "en": "<r>We are very sorry that</r> only a one-year warranty was mistakenly stated in the purchase contract.",
+        "uk": "<r>Нам дуже прикро, що</r> в договорі купівлі-продажу помилково зазначено лише однорічну гарантію.",
+        "ru": "<r>Нам очень жаль, что</r> в договоре купли-продажи по ошибке указана только годовая гарантия."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> bei der Vertragserstellung die Standardvorlage verwendet wurde, <k>sodass</k> die in Ihrem Angebot enthaltene Sonderaktion nicht berücksichtigt wurde. <g>Wer</g> ein schriftliches Angebot mit erweiterter Garantie erhält, <g>dem</g> steht diese natürlich auch vertraglich zu.",
-        "en": "We have since found out that the standard template was used when drawing up the contract, so that the special promotion included in your offer was not taken into account. Whoever receives a written offer with an extended warranty is of course also contractually entitled to it.",
-        "uk": "Ми вже з'ясували, що під час укладання договору використали стандартний шаблон, через що спеціальну акцію, зазначену у Вашій пропозиції, не було враховано. Хто отримує письмову пропозицію з розширеною гарантією, той, звісно, має право на неї й за договором.",
-        "ru": "Мы уже выяснили, что при составлении договора использовался стандартный шаблон, из-за чего специальная акция, указанная в Вашем предложении, не была учтена. Кто получает письменное предложение с расширенной гарантией, тот, конечно, имеет право на неё и по договору."
+        "en": "<r>We have since found out that</r> the standard template was used when drawing up the contract, so that the special promotion included in your offer was not taken into account. Whoever receives a written offer with an extended warranty is of course also contractually entitled to it.",
+        "uk": "<r>Ми вже з'ясували, що</r> під час укладання договору використали стандартний шаблон, через що спеціальну акцію, зазначену у Вашій пропозиції, не було враховано. Хто отримує письмову пропозицію з розширеною гарантією, той, звісно, має право на неї й за договором.",
+        "ru": "<r>Мы уже выяснили, что</r> при составлении договора использовался стандартный шаблон, из-за чего специальная акция, указанная в Вашем предложении, не была учтена. Кто получает письменное предложение с расширенной гарантией, тот, конечно, имеет право на неё и по договору."
       },
       {
         "role": "loesung",
-        "de": "<r>Wir bestätigen Ihnen hiermit ausdrücklich</r> die im Angebot AN-2026-089 zugesagte dreijährige Herstellergarantie. Eine korrigierte Vertragsversion mit der richtigen Garantiezeit erhalten Sie noch heute per E-Mail.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
-        "en": "We hereby expressly confirm the three-year manufacturer's warranty promised in offer AN-2026-089. You will receive a corrected version of the contract with the correct warranty period by email today.<br>We hope that you agree with this solution and thank you for your understanding.",
-        "uk": "Цим ми офіційно підтверджуємо трирічну гарантію виробника, обіцяну в пропозиції AN-2026-089. Виправлену версію договору з правильним гарантійним терміном Ви отримаєте електронною поштою вже сьогодні.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
-        "ru": "Настоящим мы официально подтверждаем трёхлетнюю гарантию производителя, обещанную в предложении AN-2026-089. Исправленную версию договора с правильным гарантийным сроком Вы получите по электронной почте уже сегодня.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
+        "de": "<r>Wir bestätigen Ihnen hiermit ausdrücklich</r> die im Angebot AN-2026-089 zugesagte dreijährige Herstellergarantie. Eine korrigierte Vertragsversion mit der richtigen Garantiezeit erhalten Sie noch heute per E-Mail.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>We hereby expressly confirm</r> the three-year manufacturer's warranty promised in offer AN-2026-089. You will receive a corrected version of the contract with the correct warranty period by email today.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Цим ми офіційно підтверджуємо</r> трирічну гарантію виробника, обіцяну в пропозиції AN-2026-089. Виправлену версію договору з правильним гарантійним терміном Ви отримаєте електронною поштою вже сьогодні.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>Настоящим мы официально подтверждаем</r> трёхлетнюю гарантию производителя, обещанную в предложении AN-2026-089. Исправленную версию договора с правильным гарантийным сроком Вы получите по электронной почте уже сегодня.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
         "de": "Mit freundlichen Grüßen",
-        "en": "Best regards",
-        "uk": "З повагою",
-        "ru": "С уважением"
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -24704,37 +24704,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf die abweichende Farbe der gelieferten T-Shirts (<c>Art.-Nr. TX-224-Navy</c>) hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the discrepancy in the colour of the delivered T-shirts (item no. TX-224-Navy).",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на невідповідність кольору доставлених футболок (арт. № TX-224-Navy).",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на несоответствие цвета доставленных футболок (арт. № TX-224-Navy)."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the discrepancy in the colour of the delivered T-shirts (item no. TX-224-Navy).",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на невідповідність кольору доставлених футболок (арт. № TX-224-Navy).",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на несоответствие цвета доставленных футболок (арт. № TX-224-Navy)."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Zunächst möchten wir uns bei Ihnen dafür entschuldigen, dass</r> Sie statt der bestellten marineblauen T-Shirts die hellblaue Variante erhalten haben.",
-        "en": "First of all, we would like to apologise to you for the fact that you received the light blue variant instead of the ordered navy blue T-shirts.",
-        "uk": "Насамперед хочемо перепросити Вас за те, що замість замовлених темно-синіх футболок Ви отримали світло-блакитний варіант.",
-        "ru": "Прежде всего, мы хотим извиниться перед Вами за то, что вместо заказанных тёмно-синих футболок Вы получили светло-голубой вариант."
+        "en": "<r>First of all, we would like to apologise to you for the fact that</r> you received the light blue variant instead of the ordered navy blue T-shirts.",
+        "uk": "<r>Насамперед хочемо перепросити Вас за те, що</r> замість замовлених темно-синіх футболок Ви отримали світло-блакитний варіант.",
+        "ru": "<r>Прежде всего, мы хотим извиниться перед Вами за то, что</r> вместо заказанных тёмно-синих футболок Вы получили светло-голубой вариант."
       },
       {
         "role": "grund",
         "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> der Fehler <g>sich auf eine Verwechslung zweier Artikelnummern im Lager zurückführen lässt</g>.",
-        "en": "We have since found out that the mistake can be traced back to a mix-up of two article numbers in the warehouse.",
-        "uk": "Ми вже з'ясували, що помилку можна пояснити плутаниною двох артикулів на складі.",
-        "ru": "Мы уже выяснили, что ошибку можно объяснить путаницей двух артикулов на складе."
+        "en": "<r>We have since found out that</r> the mistake can be traced back to a mix-up of two article numbers in the warehouse.",
+        "uk": "<r>Ми вже з'ясували, що</r> помилку можна пояснити плутаниною двох артикулів на складі.",
+        "ru": "<r>Мы уже выяснили, что</r> ошибку можно объяснить путаницей двух артикулов на складе."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung liefern wir Ihnen</r> die korrekten marineblauen T-Shirts noch in dieser Woche per Express, <k>ohne dass</k> Ihnen dafür zusätzliche Kosten entstehen. <r>Als kleines Geschenk</r> legen wir zusätzlich zehn weitere T-Shirts kostenlos bei.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
-        "en": "As compensation, we will deliver the correct navy blue T-shirts to you by express this week, at no additional cost to you. As a small gift, we will also include ten extra T-shirts free of charge.<br>We hope that you agree with this solution and thank you for your understanding.",
-        "uk": "Як компенсацію ми доставимо Вам правильні темно-сині футболки експрес-доставкою вже цього тижня, без будь-яких додаткових витрат для Вас. Як невеликий подарунок ми також додамо десять додаткових футболок безкоштовно.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
-        "ru": "В качестве компенсации мы доставим Вам правильные тёмно-синие футболки экспресс-доставкой уже на этой неделе, без каких-либо дополнительных расходов для Вас. В качестве небольшого подарка мы также добавим десять дополнительных футболок бесплатно.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
+        "de": "<r>Als Entschädigung liefern wir Ihnen</r> die korrekten marineblauen T-Shirts noch in dieser Woche per Express, <k>ohne dass</k> Ihnen dafür zusätzliche Kosten entstehen. <r>Als kleines Geschenk</r> legen wir zusätzlich zehn weitere T-Shirts kostenlos bei.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation, we will deliver to you</r> the correct navy blue T-shirts by express this week, at no additional cost to you. <r>As a small gift,</r> we will also include ten extra T-shirts free of charge.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію ми доставимо Вам</r> правильні темно-сині футболки експрес-доставкою вже цього тижня, без будь-яких додаткових витрат для Вас. <r>Як невеликий подарунок</r> ми також додамо десять додаткових футболок безкоштовно.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации мы доставим Вам</r> правильные тёмно-синие футболки экспресс-доставкой уже на этой неделе, без каких-либо дополнительных расходов для Вас. <r>В качестве небольшого подарка</r> мы также добавим десять дополнительных футболок бесплатно.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
         "de": "Mit freundlichen Grüßen",
-        "en": "Best regards",
-        "uk": "З повагою",
-        "ru": "С уважением"
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
@@ -24863,37 +24863,37 @@ var EMAILS = [
       {
         "role": "bezugnahme",
         "de": "<r>vielen Dank für Ihre E-Mail, in der Sie</r> auf den fehlenden Frühbucherrabatt aus Angebot <c>AN-2026-057</c> in unserer Rechnung hingewiesen haben.",
-        "en": "thank you very much for your email, in which you pointed out the missing early-bird discount from offer AN-2026-057 in our invoice.",
-        "uk": "щиро дякуємо за Ваш лист, у якому Ви вказали на відсутність знижки за раннє бронювання з пропозиції AN-2026-057 в нашому рахунку.",
-        "ru": "большое спасибо за Ваше письмо, в котором Вы указали на отсутствие скидки за раннее бронирование из предложения AN-2026-057 в нашем счёте."
+        "en": "<r>thank you very much for your email, in which you</r> pointed out the missing early-bird discount from offer AN-2026-057 in our invoice.",
+        "uk": "<r>щиро дякуємо за Ваш лист, у якому Ви</r> вказали на відсутність знижки за раннє бронювання з пропозиції AN-2026-057 в нашому рахунку.",
+        "ru": "<r>большое спасибо за Ваше письмо, в котором Вы</r> указали на отсутствие скидки за раннее бронирование из предложения AN-2026-057 в нашем счёте."
       },
       {
         "role": "entschuldigung",
         "de": "<r>Es tut uns sehr leid, dass</r> Ihnen der volle Preis in Rechnung gestellt wurde, <k>obwohl</k> Sie fristgerecht gebucht hatten.",
-        "en": "We are very sorry that you were invoiced the full price even though you had booked on time.",
-        "uk": "Нам дуже прикро, що Вам виставили повну ціну, попри те, що Ви забронювали вчасно.",
-        "ru": "Нам очень жаль, что Вам выставили полную цену, несмотря на то что Вы забронировали вовремя."
+        "en": "<r>We are very sorry that</r> you were invoiced the full price even though you had booked on time.",
+        "uk": "<r>Нам дуже прикро, що</r> Вам виставили повну ціну, попри те, що Ви забронювали вчасно.",
+        "ru": "<r>Нам очень жаль, что</r> Вам выставили полную цену, несмотря на то что Вы забронировали вовремя."
       },
       {
         "role": "grund",
-        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> unser neues Abrechnungssystem Frühbucherrabatte aus Angeboten derzeit noch nicht automatisch übernimmt. Es wirkt tatsächlich, <g>als wäre</g> Ihr Rabatt bei der Rechnungsstellung schlicht <g>übersehen worden</g>.",
-        "en": "We have since found out that our new billing system currently does not yet automatically apply early-bird discounts from offers. It does indeed look as if your discount had simply been overlooked when the invoice was issued.",
-        "uk": "Ми вже з'ясували, що наша нова система обліку наразі ще не застосовує автоматично знижки за раннє бронювання з пропозицій. Дійсно виглядає так, ніби Вашу знижку просто не помітили під час виставлення рахунку.",
-        "ru": "Мы уже выяснили, что наша новая система учёта в настоящее время ещё не применяет автоматически скидки за раннее бронирование из предложений. Действительно выглядит так, будто Вашу скидку просто не заметили при выставлении счёта."
+        "de": "<r>Wir haben mittlerweile herausgefunden, dass</r> unser neues Abrechnungssystem Frühbucherrabatte aus Angeboten derzeit noch nicht automatisch übernimmt. Es wirkt tatsächlich, <k>als</k> <g>wäre</g> Ihr Rabatt bei der Rechnungsstellung schlicht <g>übersehen worden</g>.",
+        "en": "<r>We have since found out that</r> our new billing system currently does not yet automatically apply early-bird discounts from offers. It does indeed look as if your discount had simply been overlooked when the invoice was issued.",
+        "uk": "<r>Ми вже з'ясували, що</r> наша нова система обліку наразі ще не застосовує автоматично знижки за раннє бронювання з пропозицій. Дійсно виглядає так, ніби Вашу знижку просто не помітили під час виставлення рахунку.",
+        "ru": "<r>Мы уже выяснили, что</r> наша новая система учёта в настоящее время ещё не применяет автоматически скидки за раннее бронирование из предложений. Действительно выглядит так, будто Вашу скидку просто не заметили при выставлении счёта."
       },
       {
         "role": "loesung",
-        "de": "<r>Als Entschädigung erhalten Sie von uns</r> die korrigierte Rechnung mit dem vollen Rabatt von 15 Prozent sowie zusätzlich einen Gutschein im Wert von 100 Euro für eine zukünftige Schulung.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind</r> und bedanken uns für Ihr Verständnis.",
-        "en": "As compensation, you will receive from us the corrected invoice with the full 15 percent discount, as well as an additional voucher worth €100 for a future training.<br>We hope that you agree with this solution and thank you for your understanding.",
-        "uk": "Як компенсацію Ви отримаєте від нас виправлений рахунок із повною знижкою 15 відсотків, а також додатково ваучер на суму 100 євро для майбутнього тренінгу.<br>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.",
-        "ru": "В качестве компенсации Вы получите от нас исправленный счёт с полной скидкой 15 процентов, а также дополнительно ваучер на сумму 100 евро для будущего тренинга.<br>Надеемся, что это решение Вас устроит, и благодарим за понимание."
+        "de": "<r>Als Entschädigung erhalten Sie von uns</r> die korrigierte Rechnung mit dem vollen Rabatt von 15 Prozent sowie zusätzlich einen Gutschein im Wert von 100 Euro für eine zukünftige Schulung.<br><r>Wir hoffen, dass Sie mit dieser Lösung einverstanden sind und bedanken uns für Ihr Verständnis.</r>",
+        "en": "<r>As compensation, you will receive from us</r> the corrected invoice with the full 15 percent discount, as well as an additional voucher worth €100 for a future training.<br><r>We hope that you agree with this solution and thank you for your understanding.</r>",
+        "uk": "<r>Як компенсацію Ви отримаєте від нас</r> виправлений рахунок із повною знижкою 15 відсотків, а також додатково ваучер на суму 100 євро для майбутнього тренінгу.<br><r>Сподіваємось, що це рішення Вас влаштує, і дякуємо за розуміння.</r>",
+        "ru": "<r>В качестве компенсации Вы получите от нас</r> исправленный счёт с полной скидкой 15 процентов, а также дополнительно ваучер на сумму 100 евро для будущего тренинга.<br><r>Надеемся, что это решение Вас устроит, и благодарим за понимание.</r>"
       },
       {
         "role": "grussformel",
         "de": "Mit freundlichen Grüßen",
-        "en": "Best regards",
-        "uk": "З повагою",
-        "ru": "С уважением"
+        "en": "Best regards,",
+        "uk": "З повагою,",
+        "ru": "С уважением,"
       },
       {
         "role": "unterschrift",
