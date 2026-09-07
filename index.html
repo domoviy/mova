@@ -4066,7 +4066,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '608-293ec6c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -13100,11 +13100,21 @@ function initAudioUnlock(){
 const _inFlightFetches = new Map();
 
 async function fetchBlobUrl(url, timeoutMs=8000, mkey=null){
-  if(mkey && audioBlobCache.has(url) && !isAudioCacheValid(url, mkey)){
+  // ВАЖЛИВО: перевірка хеша тут НЕ залежить від audioBlobCache.has(url).
+  // audioBlobCache живе лише в пам'яті сторінки й порожній при кожному
+  // новому відкритті застосунку — якщо гейтити інвалідацію ним, перший
+  // fetch кожної сесії ніколи не звіряв хеш і сліпо повертав те, що вже
+  // лежить у ПЕРСИСТЕНТНОМУ Cache Storage (керує sw.js, живе між
+  // сесіями/пристроями) — навіть застарілий вміст. Гірше — після такого
+  // "сліпого" фетчу код нижче однаково писав у audioHashRegistry
+  // ПРАВИЛЬНИЙ хеш для СТАРОГО блоба, самозакріплюючи баг у localStorage.
+  if(mkey && !isAudioCacheValid(url, mkey)){
     logErr('audio:stale-hash','invalidating',url.split('/').slice(-1)[0]);
-    const oldBlobUrl = audioBlobCache.get(url);
-    try{ URL.revokeObjectURL(oldBlobUrl); }catch(e){}
-    audioBlobCache.delete(url);
+    if(audioBlobCache.has(url)){
+      const oldBlobUrl = audioBlobCache.get(url);
+      try{ URL.revokeObjectURL(oldBlobUrl); }catch(e){}
+      audioBlobCache.delete(url);
+    }
     audioExistsCache.delete(url);
     await invalidateAudioCacheEntry(url);
   }
