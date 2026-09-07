@@ -1021,8 +1021,7 @@ body{
 .lp-examprep-row-body{ flex:1;min-width:0; }
 .lp-examprep-row-title{
   font-size:var(--fs-tertiary);font-weight:700;color:var(--ink);
-  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;
-  overflow:hidden;text-overflow:ellipsis;white-space:normal;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
 .lp-examprep-row-meta{
   font-size:11px;color:var(--muted);margin-top:2px;
@@ -1051,7 +1050,7 @@ body{
    інакше важко зорієнтуватись, у якому саме модулі ти зараз. */
 .lp-module-section{ margin-bottom:10px; }
 .lp-module-section-body{
-  display:none; overflow:hidden; margin-top:10px;
+  display:none; overflow:hidden;
 }
 .lp-module-section.open .lp-module-section-body{ display:block; }
 .lp-module-divider{
@@ -4067,7 +4066,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '613-67cdf77';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9372,53 +9371,6 @@ function renderPathNode(node, idx){
 // startLessonFlow), але БЕЗ звивистої стежки й БЕЗ іконки замість назви:
 // тут головне — прочитати НАЗВУ конкретного діалогу/форуму/e-mail і
 // свідомо обрати саме його для повторення, а не пройти по порядку.
-// examprep-рядки Forumsbeitrag/E-Mail мають ОДНАКОВУ родову назву
-// ("Forumsbeitrag"/"E-Mail") для кожного з десятків рядків списку —
-// це node.title з бази (однаковий для всіх examprep_forumsbeitrag_N/
-// examprep_email_N підряд). Додаємо конкретну тему картки (card.topic
-// — те саме поле, яке вже використовує startModuleForumBonus/
-// startModuleEmailBonus для заголовка сесії після кліку) — дані вже є
-// в базі, нових даних не треба.
-function examPrepCardTopic(node){
-  var id, pool;
-  if(node.type === 'forum' && node.frmCards && node.frmCards[0]){
-    id = node.frmCards[0];
-    pool = (typeof SCHREIBEN !== 'undefined') ? SCHREIBEN : [];
-  } else if(node.type === 'email' && node.emlCards && node.emlCards[0]){
-    id = node.emlCards[0];
-    pool = (typeof EMAILS !== 'undefined') ? EMAILS : [];
-  } else if(node.type === 'dialogue' && node.dlgCards && node.dlgCards[0]){
-    id = node.dlgCards[0];
-    pool = (typeof DIALOGE !== 'undefined') ? DIALOGE : [];
-  } else {
-    return '';
-  }
-  var card = pool.find(function(c){ return c.id === id; });
-  if(!card) return '';
-  if(card.topic){
-    return card.topic[uiLang] || card.topic[primaryLang()] || card.topic.de || '';
-  }
-  // dlg_XXX (Mündliche Prüfung Teil 2/3) не мають card.topic — лише
-  // card.task, і формат ЦЬОГО поля різний залежно від типу картки:
-  //  - smalltalk (dlg_037 і под.): "Thema: <Категорія> – „<Питання>“"
-  //    (нім/англ лапки „…“, укр/рос «…») — короткий однорядковий текст,
-  //    з якого дістаємо саме питання.
-  //  - problemsolving (prob_XXX): task — довгий багатоабзацний текст із
-  //    <br> (ситуація + список пунктів), БЕЗ лапок і БЕЗ короткого
-  //    "Thema: ..." формату. Спроба так само різати по тире дала б у
-  //    результаті ввесь цей блок цілком (нема на що розрізати) — саме
-  //    це й трапилось раніше (див. скріншот бага). Тому екстракцію
-  //    робимо, лише якщо в тексті справді є одна з очікуваних лапок —
-  //    інакше одразу падаємо на card.cat (родова категорія).
-  var taskText = card.task ? (card.task[uiLang] || card.task[primaryLang()] || card.task.de || '') : '';
-  if(taskText && (taskText.indexOf('„') !== -1 || taskText.indexOf('«') !== -1)){
-    var afterDash = taskText.split(/\s[–—-]\s/).pop();
-    var cleaned = afterDash.replace(/^[„«"]+|[“»"]+$/g, '').trim();
-    if(cleaned) return cleaned;
-  }
-  return card.cat || '';
-}
-
 function renderExamPrepRow(node){
   const isExamSim = node.type === 'examsim';
   const {done, total, pct} = lessonProgress(node);
@@ -9443,20 +9395,9 @@ function renderExamPrepRow(node){
     : isEmail ? `startModuleEmailBonus('${node.id}')`
     : `startLessonFlow('${node.id}')`;
   const title = node.title ? (node.title[uiLang]||node.title[primaryLang()]||node.title.en||node.title.de) : '';
-  const cardTopic = examPrepCardTopic(node);
-  // Родовий тип ("Mündliche Prüfung – Teil 2"/"Forumsbeitrag"/"E-Mail")
-  // майже нічого не додає (він і так видно з іконки/кольору рядка) і
-  // з'їдав майже весь доступний рядок — тепер показуємо ЛИШЕ конкретну
-  // тему картки, а родовий title лишається тільки як fallback, якщо
-  // examPrepCardTopic() повернула порожній рядок.
-  const fullTitle = cardTopic || title;
-  // "X з Y карток" тут завжди 0/1 чи 1/1 (кожен рядок — рівно одна
-  // картка) — саме число не несе користі, статус і так видно з
-  // ✓/▶/🔒 праворуч. Лишаємо метадані лише там, де вони РЕАЛЬНО щось
-  // повідомляють: заблоковано, чи (examsim) що спроб необмежено.
   const metaText = !unlocked ? t('lp_locked')
     : isExamSim ? ({uk:'Симуляція іспиту — необмежена к-сть спроб', en:'Exam simulation — unlimited attempts', ru:'Симуляция экзамена — неограниченно попыток', de:'Prüfungssimulation — beliebig oft wiederholbar'}[uiLang] || 'Симуляція іспиту')
-    : '';
+    : done+' '+t('lp_of')+' '+total+' '+t('lp_cards');
   const chipLabel = isExamSim
     ? ({uk:'▶ Почати тест', en:'▶ Start test', ru:'▶ Начать тест', de:'▶ Test starten'}[uiLang] || '▶ Test starten')
     : pct > 0
@@ -9466,8 +9407,8 @@ function renderExamPrepRow(node){
       onclick="${clickHandler}">
     <div class="lp-examprep-row-icon">${visual.icon}</div>
     <div class="lp-examprep-row-body">
-      <div class="lp-examprep-row-title">${fullTitle}</div>
-      ${metaText?`<div class="lp-examprep-row-meta">${metaText}</div>`:''}
+      <div class="lp-examprep-row-title">${title}</div>
+      <div class="lp-examprep-row-meta">${metaText}</div>
     </div>
     ${isExamSim ? `<div class="lp-examprep-row-chip">${chipLabel}</div>`
       : isCurrent ? `<div class="lp-examprep-row-chip">${chipLabel}</div>`
@@ -13022,8 +12963,10 @@ const AUDIO_HASH_REGISTRY_KEY = 'mova_audio_hash_registry';
 // треба одноразово скинути все. Конкретний випадок: до фіксу
 // fetchBlobUrl (див. коментар там) баг міг записати "хеш підтверджено"
 // для СТАРОГО блоба, який фактично лежав у Cache Storage — фальшиве
-// підтвердження, що саме по собі неможливо відрізнити від правдивого.
-// Єдиний надійний лік — одноразово обнулити ВЕСЬ реєстр для всіх.
+// підтвердження, що саме по собі неможливо відрізнити від правдивого
+// (обидва — просто "hash X підтверджено"). Єдиний надійний лік —
+// одноразово обнулити ВЕСЬ реєстр для всіх, тоді все перевіриться
+// заново з нуля вже за виправленою логікою.
 const AUDIO_HASH_REGISTRY_SCHEMA = '2';
 const AUDIO_HASH_REGISTRY_SCHEMA_KEY = 'mova_audio_hash_registry_schema';
 let audioHashRegistry = null;
@@ -13189,22 +13132,7 @@ async function fetchBlobUrl(url, timeoutMs=8000, mkey=null){
       audioBlobCache.delete(url);
     }
     audioExistsCache.delete(url);
-    // Захисний таймаут (той самий принцип, що вже є нижче для самого
-    // фетчу/blob/watchdog) — caches.keys()/caches.open()/.delete() тут
-    // раніше не мали жодного ліміту часу. Це виявилось критичним:
-    // після скидання audioHashRegistry (міграція схеми) буквально
-    // ЖОДЕН mkey не "підтверджений", тож ЦЯ гілка виконується на
-    // кожному першому програванні слова за сесію — а гра "Знайди пару"
-    // (matchPrefetchAudio) одразу на старті раунду паралельно запускає
-    // її для ВСІХ 5 слів одночасно. Без ліміту повільний/перевантажений
-    // Cache Storage (тисячі закешованих mp3) міг зависнути на цьому
-    // await НАЗАВЖДИ — саме це й спричинило зависання вправи. Найгірший
-    // наслідок пропущеного дедлайну — застарілий файл прослухається ще
-    // один раз, не критично.
-    await Promise.race([
-      invalidateAudioCacheEntry(url),
-      new Promise(res => setTimeout(res, 1500))
-    ]);
+    await invalidateAudioCacheEntry(url);
   }
 
   if(audioBlobCache.has(url)) return audioBlobCache.get(url);
