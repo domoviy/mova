@@ -35950,7 +35950,7 @@
   "Deutsch-B2-Beruf/de/100/email/email_013_grussformel_de_100": "f1a320e834+t",
   "Deutsch-B2-Beruf/de/100/email/email_013_unterschrift_de_100": "b802d5bbf5+t",
   "Deutsch-B2-Beruf/de/100/email/email_014_mail_boss_de_100": "e1fbd9336e+t",
-  "Deutsch-B2-Beruf/de/100/email/email_014_mail_client_de_100": "dcdc261a15+t",
+  "Deutsch-B2-Beruf/de/100/email/email_014_mail_client_de_100": "f15acc16ca+t",
   "Deutsch-B2-Beruf/de/100/email/email_014_anrede_de_100": "01011ed0e3+t",
   "Deutsch-B2-Beruf/de/100/email/email_014_bezugnahme_de_100": "584dbe144a+t",
   "Deutsch-B2-Beruf/de/100/email/email_014_entschuldigung_de_100": "6a9ce020e5+t",
@@ -43659,5 +43659,9 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_022_task_de_100": "94d9693ffb+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_023_task_de_100": "5189337bd0+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_024_task_de_100": "70a303246e+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_025_task_de_100": "91144bde74+t"
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_025_task_de_100": "91144bde74+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_026_task_de_100": "072bda44de+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_027_task_de_100": "30a3bc264a+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_028_task_de_100": "3dd4e60c22+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_030_task_de_100": "ee161f4b40+t"
 }
