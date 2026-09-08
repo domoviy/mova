@@ -339,10 +339,8 @@ c{font-weight:700;color:var(--c-accent)}
    з конектора "пропуск для вгадування", хоча мета тут протилежна:
    ПОКАЗАТИ зв'язок, не приховати його). Живе окремо — і залишає <g>
    вільним для майбутньої окремої граматики з поясненнями, як і
-   планувалось. Єдиний з чотирьох маркерів із підкресленням (за проханням
-   користувача) — штрихове, другий (некольоровий) сигнал саме для
-   конекторів, решта (g/c/r) лишаються без підкреслення. */
-k{font-weight:700;color:var(--k-accent);border-bottom:1.5px dashed var(--k-accent);padding-bottom:1px}
+   планувалось. */
+k{font-weight:700;color:var(--k-accent)}
 
 body{
   font-family:'Inter',sans-serif;
@@ -419,7 +417,6 @@ body{
 .h-logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
 .h-logo-icon{height:26px;width:46px;flex-shrink:0}
 .h-logo-icon svg{width:46px;height:26px;display:block}
-.h-logo-text{font-family:'Inter',sans-serif;font-weight:800;font-size:21px;color:var(--gold);letter-spacing:1px;line-height:1}
 /* Кнопки хедера (вогонь + налаштування) */
 .h-right-btns{
   display:flex;align-items:center;gap:4px;margin-left:auto;flex-shrink:0;
@@ -478,7 +475,6 @@ body{
 @keyframes firePop{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
 #bn-streak-count{font-size:14px;font-weight:700;color:var(--muted);line-height:1}
 .bn-streak.done #bn-streak-count{color:var(--forest)}
-.bn-streak-bar{width:28px;height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin-top:1px}
 .bn-streak-pbf{height:100%;background:var(--gold);border-radius:2px;transition:width .5s}
 
 /* ══ SHARED ══ */
@@ -627,7 +623,6 @@ body{
   padding:3px 9px;border-radius:5px;text-transform:uppercase;letter-spacing:.3px;
 }
 .fc-num{font-family:'Inter',monospace;font-size:var(--fs-utility);color:rgba(255,255,255,.28);margin-left:auto}
-.fc-num-back{font-family:'Inter',monospace;font-size:var(--fs-utility);color:var(--muted);margin-left:auto}
 .fc-body{padding:14px 16px 0;display:flex;flex-direction:column;gap:7px;flex:1;overflow:hidden}
 .fc-lang-row{display:flex;align-items:baseline;gap:9px;margin-bottom:5px}
 .fc-flag{font-size:20px;flex-shrink:0}
@@ -638,15 +633,6 @@ body{
 #vocab-panel-match{
   flex:1;min-height:0;display:flex;flex-direction:column;
   padding:12px 14px 106px 14px;
-}
-.match-header{
-  text-align:center;margin-bottom:16px;
-}
-.match-header h3{
-  font-size:15px;font-weight:700;color:var(--ink);margin:0 0 4px;
-}
-.match-header small{
-  font-size:14px;color:var(--muted);
 }
 .match-grid{
   display:grid;
@@ -895,7 +881,6 @@ body{
   position:relative;
 }
 .lp-chapter.open .lp-modules{display:flex;}
-.lp-module-group{ position:relative; z-index:1; }
 
 /* ── Звивиста стежка (Duolingo-стиль): кругла "гема" на крок, ─────
    зигзаг-зсув по горизонталі, розділювач-назва перед кожним модулем.
@@ -1129,25 +1114,6 @@ body{
 .lp-chapter-head.current .lp-mini-btn{ background:rgba(255,255,255,.14);border-color:rgba(255,255,255,.25); }
 .lp-chapter-head.current .lp-mini-btn-icon,
 .lp-chapter-head.current .lp-mini-btn-label{ color:#fff; }
-.lp-bonus-row{
-  display:flex;flex-direction:column;gap:8px;
-  padding:4px 10px 0;
-}
-/* Групуємо картки ОДНОГО модуля (Урок, Діалог, Граматика-бонус,
-   Словник-бонус) тісніше одна до одної (4px), а .lp-modules{gap:14px}
-   вище лишається відстанню МІЖ різними модулями — той самий принцип
-   Gestalt-близькості, що й у групах Settings: тісне = "одна тема".
-   Понад саму лише відстань — ще й видима "оболонка": легкий золотий
-   тон + рамка навколо всього кластера, третій шар глибини (фон глави
-   --soft → оболонка модуля → білі картки всередині), щоб групування
-   читалось одразу, а не здогадувалось із самих проміжків. */
-.lp-module-group{
-  display:flex;flex-direction:column;gap:4px;
-  background:rgba(13,43,26,.035);
-  border:1px solid rgba(13,43,26,.08);
-  border-radius:16px;
-  padding:6px;
-}
 
 /* Модуль — картка уроку */
 .lp-module{
@@ -1264,10 +1230,6 @@ body{
   margin-bottom:32px;
 }
 .ob-logo svg{ height:36px;width:auto;display:block; }
-.ob-logo-text{
-  font-family:'Inter',sans-serif;font-weight:800;
-  font-size:32px;color:var(--gold);letter-spacing:3px;
-}
 .ob-subtitle{
   font-size:14px;color:rgba(255,255,255,.5);
   text-align:center;margin-bottom:36px;
@@ -1330,11 +1292,6 @@ body{
 .mc-q-row{display:flex;align-items:center;gap:8px;justify-content:center;}
 .mc-q-term{font-size:var(--fs-card);font-weight:400;color:#fff;
   font-family:'Inter',sans-serif;line-height:1.3;}
-.mc-q-audio{background:none;border:none;
-  color:rgba(255,255,255,.55);font-size:18px;cursor:pointer;
-  padding:4px 6px;border-radius:8px;flex-shrink:0;
-  transition:color .15s;-webkit-tap-highlight-color:transparent;}
-.mc-q-audio:active{color:var(--gold);}
 .mc-options{display:flex;flex-direction:column;gap:8px;}
 .mc-opt{
   padding:11px 14px;border-radius:12px;
@@ -2237,14 +2194,6 @@ body{
   height:auto;
   display:block;
 }
-/* Lesson mode: блокуємо pull-to-scroll налаштувань */
-body.lesson-active #view-vocab{
-  overflow:hidden;
-  overscroll-behavior:none;
-}
-body.lesson-active .vocab-top{
-  overscroll-behavior:none;
-}
 
 /* fly-out — запускається JS-ом */
 #splash.fly-out{
@@ -2318,7 +2267,6 @@ body.lesson-active .vocab-top{
 .sb-review-correct   { padding:2px 8px; border-radius:6px; font-size:14px; font-weight:700; background:rgba(201,168,76,.15); color:var(--warm); }
 
 /* Sentence with blank — matches mc-q-term style */
-.sb-sentence { font-size:16px; color:var(--ink); line-height:1.3; font-weight:500; font-family:'Inter',sans-serif; }
 .sb-blank { display:inline-block; min-width:70px; border-bottom:2.5px solid var(--gold); padding:0 4px; color:var(--muted); font-style:italic; }
 
 /* Feedback block */
@@ -2985,28 +2933,12 @@ body.lesson-active .vocab-top{
 
 
 /* ══ SMART REVIEW ══ */
-.sr-profile-card{background:var(--forest);border-radius:16px;padding:16px;margin-bottom:12px;color:#fff;position:relative;overflow:hidden}
-.sr-profile-card::before{content:'';position:absolute;top:-30px;right:-30px;width:120px;height:120px;background:radial-gradient(circle,rgba(201,168,76,.18) 0%,transparent 70%);pointer-events:none}
-.sr-profile-title{font-size:var(--fs-tertiary);font-weight:700;color:var(--gold);letter-spacing:.8px;text-transform:uppercase;margin-bottom:10px}
-.sr-profile-row{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px}
-.sr-profile-label{font-size:var(--fs-utility);color:rgba(255,255,255,.65);white-space:nowrap}
-.sr-profile-val{font-size:var(--fs-tertiary);font-weight:700;color:#fff}
 .sr-date-input{background:rgba(255,255,255,.1);border:1px solid rgba(201,168,76,.3);border-radius:8px;padding:6px 10px;color:#fff;font-size:var(--fs-tertiary);font-family:inherit;outline:none;cursor:pointer;min-width:140px;text-align:right;colorscheme:dark}
 .sr-date-input:focus{border-color:var(--gold)}
-.sr-mode-badge{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:20px;font-size:var(--fs-tertiary);font-weight:700;background:rgba(201,168,76,.2);color:var(--gold-lt);border:1px solid rgba(201,168,76,.3)}
-.sr-days-left{font-size:var(--fs-utility);color:rgba(255,255,255,.5)}
 
 /* Daily Plan */
 .sr-plan-card{background:var(--paper);border-radius:14px;border:1px solid var(--border);padding:14px;margin-bottom:12px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
-.sr-plan-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
-.sr-plan-title{font-size:var(--fs-tertiary);font-weight:700;color:var(--ink)}
 .sr-plan-meta{font-size:var(--fs-utility);color:var(--muted);display:flex;align-items:center;gap:6px}
-.sr-plan-row{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--soft)}
-.sr-plan-row:last-child{border-bottom:none}
-.sr-plan-part{display:flex;align-items:center;gap:7px;font-size:var(--fs-tertiary);font-weight:600;color:var(--ink)}
-.sr-plan-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.sr-plan-count{font-size:var(--fs-utility);font-weight:700;color:var(--muted);font-family:'Inter',monospace}
-.sr-plan-footer{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid var(--soft)}
 .sr-plan-streak{font-size:var(--fs-utility);color:var(--muted)}
 .sr-plan-start{background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);border:none;border-radius:10px;padding:10px 18px;font-size:var(--fs-tertiary);font-weight:700;font-family:inherit;cursor:pointer;display:flex;align-items:center;gap:6px}
 .sr-plan-start:active{transform:scale(.97)}
@@ -4080,7 +4012,7 @@ body.lesson-active .vocab-top{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '618-8003690';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
