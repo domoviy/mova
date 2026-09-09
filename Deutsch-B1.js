@@ -1272,7 +1272,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -1291,6 +1292,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_065"
+    ],
+    "frmCards": [
+      "brief_001"
     ]
   },
   {
@@ -1311,7 +1315,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Lesen"
+      "Lesen",
+      "Schreiben"
     ],
     "grammar": "wechselpraepositionen_wdh_b1",
     "cardIds": [
@@ -1334,6 +1339,9 @@ var LESSONS = [
       "dlg_003",
       "dlg_004",
       "dlg_066"
+    ],
+    "frmCards": [
+      "brief_002"
     ]
   },
   {
@@ -1354,7 +1362,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "hoefliche_bitten_konjunktiv_b1",
     "cardIds": [
@@ -1373,6 +1382,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_067"
+    ],
+    "frmCards": [
+      "brief_003"
     ]
   },
   {
@@ -1412,6 +1424,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_068"
+    ],
+    "frmCards": [
+      "brief_004"
     ]
   },
   {
@@ -1432,7 +1447,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "modalverben_wdh_b1",
     "cardIds": [
@@ -1451,6 +1467,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_069"
+    ],
+    "frmCards": [
+      "brief_005"
     ]
   },
   {
@@ -1471,7 +1490,8 @@ var LESSONS = [
     },
     "skills": [
       "Hören",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "sowohl_als_auch_weder_noch",
     "cardIds": [
@@ -1490,6 +1510,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_070"
+    ],
+    "frmCards": [
+      "brief_006"
     ]
   },
   {
@@ -32664,6 +32687,183 @@ var DIALOGE = [
       "ru": "Да, конечно! Итак, мы идём от хостела к достопримечательности, заботимся о собственной безопасности, посещаем памятник в старом городе, садимся в трамвай и один раз пересаживаемся, помним нужную остановку для выхода, сосредотачиваемся на самой красивой архитектуре, убегаем в музей, если пойдёт дождь, и в конце выносим вердикт о нашем любимом месте. Я уже жду этот день! Спасибо за идею, Алекс!"
     },
     "gram": ""
+  }
+];
+
+var SCHREIBEN = [
+  {
+    "id": "brief_001",
+    "cat": "Beschwerde / Reklamation",
+    "format": "brief_formell",
+    "topic": {
+      "de": "Lärm im Treppenhaus",
+      "en": "Noise in the stairwell",
+      "uk": "Шум у під’їзді",
+      "ru": "Шум в подъезде"
+    },
+    "task": {
+      "de": "Sie wohnen in einem Mehrfamilienhaus. Seit einigen Wochen gibt es abends im Treppenhaus sehr laute Musik und Streit. Sie schreiben an die Hausverwaltung.<br><br>1. Grund für Ihr Schreiben<br>2. Seit wann und wie oft der Lärm auftritt<br>3. Welche Folgen der Lärm für Sie hat<br>4. Was Sie von der Hausverwaltung erwarten",
+      "en": "You live in an apartment building. For a few weeks now, there has been very loud music and arguing in the stairwell in the evenings. You are writing to the property management.<br><br>1. Reason for your letter<br>2. Since when and how often the noise occurs<br>3. What consequences the noise has for you<br>4. What you expect from the property management",
+      "uk": "Ви живете в багатоквартирному будинку. Уже кілька тижнів увечері в під’їзді дуже гучна музика та сварки. Ви пишете до управління будинком.<br><br>1. Причина Вашого звернення<br>2. Відколи і як часто виникає шум<br>3. Які наслідки шум має для Вас<br>4. Чого Ви очікуєте від управління будинком",
+      "ru": "Вы живёте в многоквартирном доме. Уже несколько недель по вечерам в подъезде очень громкая музыка и ссоры. Вы пишете в управление домом.<br><br>1. Причина Вашего обращения<br>2. С каких пор и как часто возникает шум<br>3. Какие последствия шум имеет для Вас<br>4. Что Вы ожидаете от управления домом"
+    },
+    "name": "de_w_julia",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Leipzig, den 15. Januar 2025", "en": "Leipzig, 15 January 2025", "uk": "Лейпциг, 15 січня 2025 р.", "ru": "Лейпциг, 15 января 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "komposita_nomen_nomen", "de": "<r>Ich schreibe Ihnen, weil</r> es in unserem <g>Mehrfamilienhaus</g> im <c>Treppenhaus</c> abends sehr laute Musik und Streit gibt.", "en": "<r>I am writing to you because</r> there is very loud music and arguing in the stairwell of our apartment building in the evenings.", "uk": "<r>Пишу Вам, тому що</r> у нашому багатоквартирному будинку в під’їзді ввечері дуже гучна музика та сварки.", "ru": "<r>Пишу Вам, потому что</r> в нашем многоквартирном доме в подъезде по вечерам очень громкая музыка и ссоры." },
+      { "role": "punkt2", "gram": "nebensatz_seit_seitdem", "de": "<k>Seitdem</k> ein neuer Nachbar im dritten Stockwerk <g>eingezogen ist</g>, höre ich <r>fast jeden Abend</r> laute Musik aus dem Treppenhaus.", "en": "Ever since a new neighbor moved in on the third floor, I have heard loud music from the stairwell <r>almost every evening</r>.", "uk": "Відтоді як на третьому поверсі оселився новий сусід, я чую гучну музику з під’їзду <r>майже щовечора</r>.", "ru": "С тех пор как на третьем этаже поселился новый сосед, я слышу громкую музыку из подъезда <r>почти каждый вечер</r>." },
+      { "role": "punkt3", "gram": "perfekt_wdh_b1", "de": "<r>Das bedeutet für mich, dass</r> ich abends nicht mehr zur Ruhe komme <k>und</k> deshalb schon oft schlecht <g>geschlafen habe</g>.", "en": "<r>This means for me that</r> I can no longer relax in the evenings and have often slept badly because of it.", "uk": "<r>Для мене це означає, що</r> я більше не можу відпочити ввечері і через це вже часто погано спала.", "ru": "<r>Для меня это означает, что</r> я больше не могу отдохнуть вечером и из-за этого уже часто плохо спала." },
+      { "role": "punkt4", "gram": "hoefliche_bitten_konjunktiv_b1", "de": "<r>Ich bitte Sie deshalb,</r> mit dem Nachbarn zu sprechen. <k>Außerdem</k> <g>wären Sie</g> sehr freundlich, wenn Sie ihn an die Hausordnung erinnern könnten.", "en": "<r>I therefore ask you to</r> speak with the neighbor. It would also be very kind of you to remind him of the house rules.", "uk": "<r>Тому прошу Вас</r> поговорити із сусідом. Крім того, буду вдячна, якщо Ви нагадаєте йому про правила будинку.", "ru": "<r>Поэтому прошу Вас</r> поговорить с соседом. Кроме того, буду благодарна, если Вы напомните ему о правилах дома." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich hoffe auf eine baldige Antwort von Ihnen.</r>", "en": "<r>I hope to hear back from you soon.</r>", "uk": "<r>Сподіваюся на Вашу швидку відповідь.</r>", "ru": "<r>Надеюсь на Ваш скорый ответ.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
+    ]
+  },
+  {
+    "id": "brief_002",
+    "cat": "Einladung",
+    "format": "email_informell",
+    "topic": {
+      "de": "Ein Fest im Hof",
+      "en": "A party in the courtyard",
+      "uk": "Свято у дворі",
+      "ru": "Праздник во дворе"
+    },
+    "task": {
+      "de": "Sie wollen die Nachbarn in Ihrem Haus besser kennenlernen und organisieren ein kleines Nachbarschaftsfest im Hof. Schreiben Sie eine E-Mail an die Nachbarn.<br><br>1. Grund für Ihr Schreiben<br>2. Wann und wo das Fest stattfindet<br>3. Was jeder mitbringen kann<br>4. Bitte um Rückmeldung, wer kommt",
+      "en": "You want to get to know the neighbors in your building better and are organizing a small neighborhood party in the courtyard. Write an email to the neighbors.<br><br>1. Reason for your email<br>2. When and where the party takes place<br>3. What everyone can bring<br>4. A request to let you know who is coming",
+      "uk": "Ви хочете краще познайомитися із сусідами у своєму будинку й організовуєте невелике сусідське свято у дворі. Напишіть електронного листа сусідам.<br><br>1. Причина Вашого листа<br>2. Коли і де відбудеться свято<br>3. Що кожен може принести<br>4. Прохання повідомити, хто прийде",
+      "ru": "Вы хотите лучше познакомиться с соседями в своём доме и организуете небольшой соседский праздник во дворе. Напишите электронное письмо соседям.<br><br>1. Причина Вашего письма<br>2. Когда и где состоится праздник<br>3. Что каждый может принести<br>4. Просьба сообщить, кто придёт"
+    },
+    "name": "de_m_mark",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Kleines Fest im Hof am Samstag", "en": "Subject: Small party in the courtyard on Saturday", "uk": "Тема: Невелике свято у дворі в суботу", "ru": "Тема: Небольшой праздник во дворе в субботу" },
+      { "role": "anrede", "gram": "", "de": "Liebe Nachbarn,", "en": "Dear neighbors,", "uk": "Дорогі сусіди,", "ru": "Дорогие соседи," },
+      { "role": "einleitung", "gram": "wechselpraepositionen_wdh_b1", "de": "<r>Ich möchte euch herzlich zu einem kleinen Fest einladen</r>, damit wir uns als <c>Nachbarn im Haus</c> endlich besser kennenlernen <k>und</k> gemeinsam <g>im Hof</g> feiern können.", "en": "<r>I would like to warmly invite you all to a small party</r> so that we as neighbors in the building can finally get to know each other better and celebrate together in the courtyard.", "uk": "<r>Хочу щиро запросити вас усіх на невелике свято</r>, щоб ми, сусіди в будинку, нарешті краще познайомилися і разом відсвяткували у дворі.", "ru": "<r>Хочу тепло пригласить вас всех на небольшой праздник</r>, чтобы мы, соседи в доме, наконец лучше познакомились и вместе отпраздновали во дворе." },
+      { "role": "punkt2", "gram": "futur_werden", "de": "<r>Die Feier findet am Samstag, den 20. September, um 15 Uhr statt.</r> Falls es regnet, <g>werden</g> wir stattdessen im Gemeinschaftsraum feiern.", "en": "<r>The party will take place on Saturday, 20 September, at 3 p.m.</r> If it rains, we will celebrate in the community room instead.", "uk": "<r>Свято відбудеться в суботу, 20 вересня, о 15:00.</r> Якщо піде дощ, ми натомість відсвяткуємо у спільній кімнаті.", "ru": "<r>Праздник состоится в субботу, 20 сентября, в 15:00.</r> Если пойдёт дождь, мы вместо этого отпразднуем в общей комнате." },
+      { "role": "punkt3", "gram": "modalverben_wdh_b1", "de": "<r>Ich wäre euch sehr dankbar, wenn</r> jeder etwas zu essen oder zu trinken mitbringen <g>kann</g>, <k>damit</k> wir gemeinsam ein kleines Buffet haben.", "en": "<r>I would be very grateful if</r> everyone could bring something to eat or drink, so that we have a small buffet together.", "uk": "<r>Я був би вам дуже вдячний, якби</r> кожен міг принести щось поїсти чи попити, щоб у нас разом вийшов невеликий фуршет.", "ru": "<r>Я был бы вам очень благодарен, если бы</r> каждый мог принести что-нибудь поесть или попить, чтобы у нас получился небольшой фуршет." },
+      { "role": "punkt4", "gram": "konjunktiv2_wuensche_b1", "de": "<r>Ich würde mich sehr freuen, wenn</r> ihr mir bis Freitag kurz <g>Bescheid geben würdet</g>, ob ihr kommt.", "en": "<r>I would be very happy if</r> you could let me know by Friday whether you're coming.", "uk": "<r>Я був би дуже радий, якби</r> ви повідомили мені до п’ятниці, чи прийдете.", "ru": "<r>Я был бы очень рад, если бы</r> вы сообщили мне до пятницы, придёте ли вы." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich schon auf einen schönen Nachmittag mit euch.</r>", "en": "<r>I'm already looking forward to a nice afternoon with you all.</r>", "uk": "<r>Уже тішуся гарному дню з вами.</r>", "ru": "<r>Уже радуюсь приятному дню с вами.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Liebe Grüße", "en": "Best,", "uk": "Теплі вітання,", "ru": "Тёплые пожелания," },
+      { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
+    ]
+  },
+  {
+    "id": "brief_003",
+    "cat": "Bitte um Hilfe",
+    "format": "brief_informell",
+    "topic": {
+      "de": "Eine Bitte vor dem Urlaub",
+      "en": "A favor before the holiday",
+      "uk": "Прохання перед відпусткою",
+      "ru": "Просьба перед отпуском"
+    },
+    "task": {
+      "de": "Sie fahren für zwei Wochen in den Urlaub und möchten Ihre Nachbarin um einen Gefallen bitten. Schreiben Sie ihr einen Brief.<br><br>1. Grund für Ihr Schreiben<br>2. Worum Sie sie bitten<br>3. Wo der Schlüssel ist und was zu tun ist<br>4. Wie Sie sich bedanken möchten",
+      "en": "You are going on a two-week holiday and want to ask your neighbor for a favor. Write her a letter.<br><br>1. Reason for your letter<br>2. What you are asking her to do<br>3. Where the key is and what needs to be done<br>4. How you would like to thank her",
+      "uk": "Ви їдете на два тижні у відпустку і хочете попросити сусідку про послугу. Напишіть їй листа.<br><br>1. Причина Вашого листа<br>2. Про що Ви її просите<br>3. Де ключ і що потрібно робити<br>4. Як Ви хочете їй подякувати",
+      "ru": "Вы едете на две недели в отпуск и хотите попросить соседку об услуге. Напишите ей письмо.<br><br>1. Причина Вашего письма<br>2. О чём Вы её просите<br>3. Где ключ и что нужно делать<br>4. Как Вы хотите её отблагодарить"
+    },
+    "name": "de_w_anna",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Hamburg, den 3. Juli 2025", "en": "Hamburg, 3 July 2025", "uk": "Гамбург, 3 липня 2025 р.", "ru": "Гамбург, 3 июля 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Liebe Sabine,", "en": "Dear Sabine,", "uk": "Люба Сабіно,", "ru": "Дорогая Сабина," },
+      { "role": "einleitung", "gram": "hoefliche_bitten_konjunktiv_b1", "de": "<r>Ich habe eine Bitte an dich</r>: Ich fahre ab morgen für zwei Wochen <c>in den Urlaub</c>, <k>und</k> <g>könntest du</g> mir vielleicht helfen?", "en": "<r>I have a favor to ask you</r>: I'm leaving for a two-week holiday tomorrow, and could you possibly help me?", "uk": "<r>У мене до тебе прохання</r>: завтра я їду на два тижні у відпустку, і чи не могла б ти мені допомогти?", "ru": "<r>У меня к тебе просьба</r>: завтра я еду на две недели в отпуск, и не могла бы ты мне помочь?" },
+      { "role": "punkt2", "gram": "trennbare_verben_praefixe_wdh_b1", "de": "<r>Kannst du mir bitte</r> zweimal die Woche die Blumen gießen? <k>Außerdem</k> <g>holst du bitte auch kurz die Post ab</g>.", "en": "<r>Could you please</r> water the flowers twice a week? Also, could you pick up the mail briefly, too?", "uk": "<r>Чи не могла б ти</r> двічі на тиждень поливати квіти? Крім того, забирай, будь ласка, і пошту.", "ru": "<r>Не могла бы ты</r> два раза в неделю поливать цветы? Кроме того, забирай, пожалуйста, и почту." },
+      { "role": "punkt3", "gram": "nebensatz_mit_waehrend", "de": "Den Ersatzschlüssel findest du im Briefkasten. <k>Während</k> <g>ich im Urlaub bin</g>, <r>brauchst du dich um nichts anderes zu kümmern</r>.", "en": "You'll find the spare key in the mailbox. While I'm on holiday, you don't need to worry about anything else.", "uk": "Запасний ключ ти знайдеш у поштовій скриньці. Поки я у відпустці, тобі не потрібно більше ні про що турбуватися.", "ru": "Запасной ключ ты найдёшь в почтовом ящике. Пока я в отпуске, тебе больше не о чем беспокоиться." },
+      { "role": "punkt4", "gram": "nebensatz_mit_damit_wdh_b1", "de": "<r>Als Dank bringe ich dir</r> ein kleines Geschenk aus dem Urlaub mit, <k>damit</k> du <g>weißt, wie dankbar ich bin</g>.", "en": "<r>As a thank you, I'll bring you</r> a small gift from my holiday, so that you know how grateful I am.", "uk": "<r>На знак подяки я привезу тобі</r> невеликий подарунок з відпустки, щоб ти знала, наскільки я вдячна.", "ru": "<r>В знак благодарности я привезу тебе</r> небольшой подарок из отпуска, чтобы ты знала, насколько я благодарна." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich melde mich, sobald ich zurück bin.</r>", "en": "<r>I'll be in touch as soon as I'm back.</r>", "uk": "<r>Дам знати, щойно повернуся.</r>", "ru": "<r>Дам знать, как только вернусь.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Всього найкращого,", "ru": "Всего наилучшего," },
+      { "role": "name", "gram": "", "de": "Anna Vogel", "en": "Anna Vogel", "uk": "Анна Фогель", "ru": "Анна Фогель" }
+    ]
+  },
+  {
+    "id": "brief_004",
+    "cat": "Wohnen und Nachbarschaft",
+    "format": "email_formell",
+    "topic": {
+      "de": "Ein Putzplan fürs Treppenhaus",
+      "en": "A cleaning schedule for the stairwell",
+      "uk": "Графік прибирання під’їзду",
+      "ru": "График уборки подъезда"
+    },
+    "task": {
+      "de": "In Ihrem Mehrfamilienhaus putzt bisher niemand regelmäßig das Treppenhaus. Sie schlagen den Mieterinnen und Mietern einen gemeinsamen Putzplan vor. Schreiben Sie eine E-Mail an alle Mieter.<br><br>1. Grund für Ihr Schreiben<br>2. Warum ein Putzplan sinnvoll ist<br>3. Wie der Plan aussehen soll<br>4. Bitte um Rückmeldung",
+      "en": "In your apartment building, no one has been cleaning the stairwell regularly so far. You propose a shared cleaning schedule to the tenants. Write an email to all tenants.<br><br>1. Reason for your email<br>2. Why a cleaning schedule makes sense<br>3. What the plan should look like<br>4. A request for feedback",
+      "uk": "У Вашому багатоквартирному будинку досі ніхто регулярно не прибирає під’їзд. Ви пропонуєте мешканцям спільний графік прибирання. Напишіть електронного листа всім мешканцям.<br><br>1. Причина Вашого листа<br>2. Чому графік прибирання має сенс<br>3. Яким має бути план<br>4. Прохання про відповідь",
+      "ru": "В Вашем многоквартирном доме до сих пор никто регулярно не убирает подъезд. Вы предлагаете жильцам общий график уборки. Напишите электронное письмо всем жильцам.<br><br>1. Причина Вашего письма<br>2. Почему график уборки имеет смысл<br>3. Каким должен быть план<br>4. Просьба о ответе"
+    },
+    "name": "de_m_david",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Vorschlag für einen Putzplan im Treppenhaus", "en": "Subject: Proposal for a cleaning schedule in the stairwell", "uk": "Тема: Пропозиція графіка прибирання під’їзду", "ru": "Тема: Предложение графика уборки подъезда" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "infinitiv_mit_zu", "de": "<r>Ich möchte Ihnen mitteilen, dass</r> es in unserem Haus schwierig ist, das <c>Treppenhaus</c> regelmäßig sauber <g>zu halten</g>, <k>weil</k> sich bisher niemand richtig darum kümmert.", "en": "<r>I would like to let you know that</r> it is difficult to keep the stairwell in our building clean regularly, because so far no one really takes care of it.", "uk": "<r>Хочу повідомити Вам, що</r> у нашому будинку складно регулярно підтримувати під’їзд у чистоті, тому що досі ніхто цим по-справжньому не займається.", "ru": "<r>Хочу сообщить Вам, что</r> в нашем доме сложно регулярно поддерживать подъезд в чистоте, потому что до сих пор никто этим по-настоящему не занимается." },
+      { "role": "punkt2", "gram": "satz_mit_um_zu", "de": "<r>Deshalb schlage ich vor,</r> einen festen Plan zu machen, <g>um die Kosten für eine Reinigungsfirma zu sparen</g> <k>und</k> die Verantwortung fair zu teilen.", "en": "<r>I therefore suggest</r> making a fixed schedule in order to save the cost of a cleaning company and share the responsibility fairly.", "uk": "<r>Тому пропоную</r> зробити чіткий графік, щоб заощадити на послугах клінінгової компанії і справедливо розподілити відповідальність.", "ru": "<r>Поэтому предлагаю</r> составить чёткий график, чтобы сэкономить на услугах клининговой компании и справедливо распределить ответственность." },
+      { "role": "punkt3", "gram": "relativsatz_akkusativ_b1", "de": "<r>Ich stelle mir vor, dass</r> jede Familie eine Woche <g>übernimmt, die wir gemeinsam festlegen</g>, <k>und</k> danach an die nächste Familie weitergibt.", "en": "<r>I imagine that</r> each family takes on a week, which we determine together, and then passes it on to the next family.", "uk": "<r>Я уявляю це так, що</r> кожна родина бере на себе тиждень, який ми визначимо разом, і потім передає наступній родині.", "ru": "<r>Я представляю это так, что</r> каждая семья берёт на себя неделю, которую мы определим вместе, и затем передаёт следующей семье." },
+      { "role": "punkt4", "gram": "deshalb_deswegen_trotzdem", "de": "<r>Ich wäre Ihnen sehr dankbar, wenn</r> Sie mir kurz Ihre Meinung mitteilen. <k>Deshalb</k> <g>bitte ich Sie</g> um eine Antwort bis Ende des Monats.", "en": "<r>I would be very grateful if</r> you could share your opinion with me briefly. That's why I am asking you to reply by the end of the month.", "uk": "<r>Я був би Вам дуже вдячний, якби</r> Ви коротко повідомили свою думку. Тому прошу Вас відповісти до кінця місяця.", "ru": "<r>Я был бы Вам очень благодарен, если бы</r> Вы коротко сообщили своё мнение. Поэтому прошу Вас ответить до конца месяца." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf Ihre Antwort.</r>", "en": "<r>I look forward to your reply.</r>", "uk": "<r>Із нетерпінням чекаю Вашої відповіді.</r>", "ru": "<r>С нетерпением жду Вашего ответа.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "David Berger", "en": "David Berger", "uk": "Давид Бергер", "ru": "Давид Бергер" }
+    ]
+  },
+  {
+    "id": "brief_005",
+    "cat": "Anfrage / Bitte um Auskunft",
+    "format": "brief_formell",
+    "topic": {
+      "de": "Fragen zur Hausordnung",
+      "en": "Questions about the house rules",
+      "uk": "Запитання щодо правил будинку",
+      "ru": "Вопросы о правилах дома"
+    },
+    "task": {
+      "de": "Sie sind vor Kurzem in ein neues Mehrfamilienhaus gezogen und haben einige Fragen zur Hausordnung. Sie schreiben an die Hausverwaltung.<br><br>1. Grund für Ihr Schreiben<br>2. Was Sie zu den Ruhezeiten wissen möchten<br>3. Was Sie zur Mülltrennung und zum Parken wissen möchten<br>4. Bitte um eine schriftliche Antwort",
+      "en": "You recently moved into a new apartment building and have some questions about the house rules. You are writing to the property management.<br><br>1. Reason for your letter<br>2. What you would like to know about the quiet hours<br>3. What you would like to know about waste separation and parking<br>4. A request for a written reply",
+      "uk": "Ви нещодавно переїхали до нового багатоквартирного будинку і маєте кілька запитань щодо правил будинку. Ви пишете до управління будинком.<br><br>1. Причина Вашого листа<br>2. Що Ви хочете дізнатися про години тиші<br>3. Що Ви хочете дізнатися про сортування сміття та паркування<br>4. Прохання про письмову відповідь",
+      "ru": "Вы недавно переехали в новый многоквартирный дом и у Вас есть несколько вопросов о правилах дома. Вы пишете в управление домом.<br><br>1. Причина Вашего письма<br>2. Что Вы хотите узнать о часах тишины<br>3. Что Вы хотите узнать о сортировке мусора и парковке<br>4. Просьба о письменном ответе"
+    },
+    "name": "de_w_nina",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "München, den 12. Februar 2025", "en": "Munich, 12 February 2025", "uk": "Мюнхен, 12 лютого 2025 р.", "ru": "Мюнхен, 12 февраля 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "modalverben_wdh_b1", "de": "<r>Ich schreibe Ihnen, weil</r> ich vor Kurzem in Ihr Haus gezogen bin <k>und</k> noch einige Fragen zur <c>Hausordnung</c> habe, die ich gerne <g>klären möchte</g>.", "en": "<r>I am writing to you because</r> I recently moved into your building and still have a few questions about the house rules that I would like to clarify.", "uk": "<r>Пишу Вам, тому що</r> я нещодавно переїхала до Вашого будинку і маю ще кілька запитань щодо правил будинку, які хотіла б з’ясувати.", "ru": "<r>Пишу Вам, потому что</r> я недавно переехала в Ваш дом и у меня есть ещё несколько вопросов о правилах дома, которые я хотела бы прояснить." },
+      { "role": "punkt2", "gram": "fragewoerter_wor_dar", "de": "<r>Ich möchte Sie fragen,</r> <g>woran</g> ich mich bei den Ruhezeiten genau halten muss, <k>denn</k> in der Hausordnung steht dazu leider nichts Genaues.", "en": "<r>I would like to ask you</r> exactly what I need to follow regarding the quiet hours, because unfortunately the house rules don't say anything specific about that.", "uk": "<r>Хочу запитати Вас</r>, чого саме мені слід дотримуватися щодо годин тиші, бо в правилах будинку про це, на жаль, нічого конкретного не написано.", "ru": "<r>Хочу спросить Вас</r>, чего именно мне следует придерживаться в отношении часов тишины, потому что в правилах дома об этом, к сожалению, ничего конкретного не написано." },
+      { "role": "punkt3", "gram": "relativsatz_mit_praeposition", "de": "<r>Außerdem interessiert mich,</r> ob es feste Regeln gibt, <g>an die ich mich bei der Mülltrennung und beim Parken halten muss</g>.", "en": "<r>I would also like to know</r> whether there are fixed rules that I need to follow regarding waste separation and parking.", "uk": "<r>Крім того, мені цікаво,</r> чи є чіткі правила, яких я маю дотримуватися щодо сортування сміття та паркування.", "ru": "<r>Кроме того, мне интересно,</r> есть ли чёткие правила, которых мне нужно придерживаться в отношении сортировки мусора и парковки." },
+      { "role": "punkt4", "gram": "verben_praep_dass_satz", "de": "<r>Ich bitte Sie deshalb,</r> mir die vollständige Hausordnung schriftlich zuzusenden. <k>Außerdem</k> <g>würde ich mich darüber freuen, dass</g> ich dann alle Regeln auf einen Blick habe.", "en": "<r>I therefore ask you to</r> send me the complete house rules in writing. I would also be glad to have all the rules at a glance then.", "uk": "<r>Тому прошу Вас</r> надіслати мені повні правила будинку письмово. Крім того, я була б рада мати тоді всі правила в одному місці.", "ru": "<r>Поэтому прошу Вас</r> прислать мне полные правила дома в письменном виде. Кроме того, я была бы рада иметь тогда все правила в одном месте." },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank im Voraus für Ihre Mühe.</r>", "en": "<r>Thank you in advance for your effort.</r>", "uk": "<r>Заздалегідь дякую за Ваші старання.</r>", "ru": "<r>Заранее благодарю за Ваши старания.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
+    ]
+  },
+  {
+    "id": "brief_006",
+    "cat": "Beschwerde / Reklamation",
+    "format": "email_informell",
+    "topic": {
+      "de": "Die Party am Wochenende",
+      "en": "The weekend party",
+      "uk": "Вечірка на вихідних",
+      "ru": "Вечеринка на выходных"
+    },
+    "task": {
+      "de": "Ihr Nachbar hat am Wochenende eine laute Party bis spät in die Nacht gefeiert. Sie schreiben ihm eine E-Mail.<br><br>1. Grund für Ihr Schreiben<br>2. Was Sie am Wochenende erlebt haben<br>3. Warum Sie das stört<br>4. Vorschlag für einen Kompromiss",
+      "en": "Your neighbor had a loud party until late at night over the weekend. You write him an email.<br><br>1. Reason for your email<br>2. What you experienced over the weekend<br>3. Why this bothers you<br>4. A suggestion for a compromise",
+      "uk": "Ваш сусід влаштував гучну вечірку до пізньої ночі на вихідних. Ви пишете йому електронного листа.<br><br>1. Причина Вашого листа<br>2. Що Ви пережили на вихідних<br>3. Чому це Вас турбує<br>4. Пропозиція компромісу",
+      "ru": "Ваш сосед устроил громкую вечеринку до поздней ночи на выходных. Вы пишете ему электронное письмо.<br><br>1. Причина Вашего письма<br>2. Что Вы пережили на выходных<br>3. Почему это Вас беспокоит<br>4. Предложение компромисса"
+    },
+    "name": "de_m_alex",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Die Party am Wochenende", "en": "Subject: The party over the weekend", "uk": "Тема: Вечірка на вихідних", "ru": "Тема: Вечеринка на выходных" },
+      { "role": "anrede", "gram": "", "de": "Hallo Tom,", "en": "Hi Tom,", "uk": "Привіт, Томе,", "ru": "Привет, Том," },
+      { "role": "einleitung", "gram": "sowohl_als_auch_weder_noch", "de": "<r>Ich wollte dir kurz sagen, dass</r> ich <g>weder streiten noch</g> unhöflich sein möchte, <k>aber</k> ich muss mit dir über die <c>Party am Wochenende</c> sprechen.", "en": "<r>I wanted to quickly tell you that</r> I want neither to argue nor to be rude, but I need to talk to you about the party over the weekend.", "uk": "<r>Хочу тобі коротко сказати, що</r> я не хочу ні сваритися, ні бути грубим, але мушу поговорити з тобою про вечірку на вихідних.", "ru": "<r>Хочу тебе коротко сказать, что</r> я не хочу ни ссориться, ни быть грубым, но должен поговорить с тобой о вечеринке на выходных." },
+      { "role": "punkt2", "gram": "praeteritum_wdh_b1", "de": "<r>Am Samstag</r> habt ihr bis fast drei Uhr nachts gefeiert, <k>und</k> die Musik <g>war</g> die ganze Zeit sehr laut.", "en": "<r>On Saturday</r> you all partied until almost three in the morning, and the music was very loud the whole time.", "uk": "<r>У суботу</r> ви святкували майже до третьої ночі, і музика весь час була дуже гучна.", "ru": "<r>В субботу</r> вы праздновали почти до трёх ночи, и музыка всё время была очень громкая." },
+      { "role": "punkt3", "gram": "adjektive_mit_un", "de": "<r>Das bedeutet für mich, dass</r> ich die ganze Nacht nicht schlafen konnte, <k>und</k> das fand ich wirklich <g>unangenehm</g> und ein bisschen rücksichtslos.", "en": "<r>This means for me that</r> I couldn't sleep all night, and I found that really unpleasant and a bit inconsiderate.", "uk": "<r>Для мене це означає, що</r> я не міг заснути всю ніч, і я вважаю це справді неприємним і трохи нечемним.", "ru": "<r>Для меня это означает, что</r> я не мог заснуть всю ночь, и я считаю это действительно неприятным и немного бестактным." },
+      { "role": "punkt4", "gram": "nicht_nur_sondern_auch", "de": "<r>Ich schlage vor, dass</r> wir uns <g>nicht nur kurz absprechen, sondern auch beim nächsten Mal vorher Bescheid geben</g>.", "en": "<r>I suggest that</r> we not only talk briefly but also let each other know in advance next time.", "uk": "<r>Пропоную, щоб</r> ми не тільки коротко домовилися, а й наступного разу заздалегідь попереджали одне одного.", "ru": "<r>Предлагаю, чтобы</r> мы не только коротко договорились, но и в следующий раз заранее предупреждали друг друга." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich hoffe, du verstehst, wie ich das meine.</r>", "en": "<r>I hope you understand what I mean.</r>", "uk": "<r>Сподіваюся, ти розумієш, що я маю на увазі.</r>", "ru": "<r>Надеюсь, ты понимаешь, что я имею в виду.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Liebe Grüße", "en": "Take care,", "uk": "Теплі вітання,", "ru": "Тёплые пожелания," },
+      { "role": "name", "gram": "", "de": "Alex Berg", "en": "Alex Berg", "uk": "Алекс Берг", "ru": "Алекс Берг" }
+    ]
   }
 ];
 

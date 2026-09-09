@@ -4008,7 +4008,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '621-b4e0c48';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4188,11 +4188,11 @@ function _lpDialogueNodeType(dlgCardIds, isFirst){
 }
 
 // Список id, придатних для окремого вузла-Forumsbeitrag на стежці — той
-// самий принцип, що _lpEligibleDialogueIds вище, але простіший: типів
-// лише один (жодного розгалуження на smalltalk/problemsolving), тож
-// єдина умова — картка справді існує у var SCHREIBEN і має
-// cat:"Forumsbeitrag" (захист від помилково вписаного id чи майбутніх
-// інших типів у тому самому масиві).
+// самий принцип, що _lpEligibleDialogueIds вище. Дві визнані форми:
+// старий/єдиний формат B2 (cat завжди буквально "Forumsbeitrag") і новий
+// формат Brief/E-Mail B1, де cat вільний під конкретну категорію листа
+// (Beschwerde/Einladung/...), тож розпізнаємо його за префіксом id
+// (`brief_XXX`) — той самий виняток, що вже є в buildModuleForumPool.
 function _lpEligibleForumIds(frmCardIds){
   if(typeof SCHREIBEN === 'undefined' || !Array.isArray(SCHREIBEN)) return [];
   var ids = new Set(frmCardIds || []);
@@ -4200,7 +4200,7 @@ function _lpEligibleForumIds(frmCardIds){
   SCHREIBEN.forEach(function(c){ if(ids.has(c.id)) byId[c.id] = c; });
   return (frmCardIds || []).filter(function(id){
     var c = byId[id];
-    return c && c.cat === 'Forumsbeitrag';
+    return c && (c.cat === 'Forumsbeitrag' || c.id.indexOf('brief_') === 0);
   });
 }
 
@@ -9560,7 +9560,11 @@ function buildModuleForumPool(lesson){
   const allFrm = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN : [];
   if(!allFrm.length || !(lesson.frmCards||[]).length) return [];
   const ids = new Set(lesson.frmCards);
-  return allFrm.filter(c => ids.has(c.id) && c.cat === 'Forumsbeitrag');
+  // c.cat === 'Forumsbeitrag' — старий/єдиний формат B2 (cat завжди цей
+  // самий рядок). Для нового формату Brief/E-Mail B1 (`brief_XXX`) `cat`
+  // тепер вільний під КОНКРЕТНУ категорію листа (Beschwerde/Einladung/...),
+  // тож формат там розпізнаємо за префіксом id, а не за значенням cat.
+  return allFrm.filter(c => ids.has(c.id) && (c.cat === 'Forumsbeitrag' || c.id.startsWith('brief_')));
 }
 
 // Точка входу з кліку по вузлу шляху type:'forum' (renderPathNode) — той
@@ -9993,7 +9997,7 @@ function debugRenderStoryTopics(){
   var pl = typeof primaryLang === 'function' ? primaryLang() : 'de';
   var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   var rowsHtml = cards.length ? cards.map(function(card, i){
-    var rawLabel = (typeof _lfBilingualLabel === 'function' && card.topic) ? _lfBilingualLabel(card.topic, pl, ul) : '';
+    var rawLabel = (typeof _lfBilingualLabel === 'function') ? _lfBilingualLabel(storyCardTopic(card) || {}, pl, ul) : '';
     // Топіки в принципі короткі описові фрази без розмітки, але про
     // всяк випадок прибираємо будь-які теги (<r>/<g> трапляються в
     // ТЕКСТІ реплік, не в topic, але дешево підстрахуватись і тут) і
@@ -14391,13 +14395,24 @@ var _lfDlgHandlers = {
 // назва структурного блоку (Anrede/Einleitung/Meinung/Pro/Kontra/
 // Vorschlag/Schluss/Name, див. FRM_ROLE_LABELS).
 var FRM_ROLE_LABELS = {
+  // ort_datum/betreff/punkt2/punkt3/punkt4/grussformel — нові ролі
+  // формату Brief/E-Mail DTZ B1 (`brief_XXX`), який тепер теж проходить
+  // через цей самий рендер (та сама SCHREIBEN, той самий frm_intro/
+  // frm_part). anrede/einleitung/schluss/name — спільні з Forumsbeitrag,
+  // meinung/pro/kontra/vorschlag — специфічні для Forumsbeitrag (B2).
+  ort_datum:  {de:'Ort, Datum',        en:'Place, date',    uk:'Місце, дата',          ru:'Место, дата'},
+  betreff:    {de:'Betreff',           en:'Subject',        uk:'Тема листа',           ru:'Тема письма'},
   anrede:     {de:'Anrede',            en:'Salutation',    uk:'Звертання',            ru:'Обращение'},
   einleitung: {de:'Einleitung',        en:'Introduction',  uk:'Вступ',                ru:'Введение'},
   meinung:    {de:'Eigene Meinung',    en:'Your opinion',  uk:'Власна думка',         ru:'Своё мнение'},
   pro:        {de:'Pro-Argumente',     en:'Pro arguments', uk:'Аргументи «за»',       ru:'Аргументы «за»'},
   kontra:     {de:'Kontra-Argumente',  en:'Contra arguments', uk:'Аргументи «проти»', ru:'Аргументы «против»'},
   vorschlag:  {de:'Eigener Vorschlag', en:'Your suggestion', uk:'Власна пропозиція',  ru:'Своё предложение'},
+  punkt2:     {de:'Punkt 2',           en:'Point 2',        uk:'Пункт 2',              ru:'Пункт 2'},
+  punkt3:     {de:'Punkt 3',           en:'Point 3',        uk:'Пункт 3',              ru:'Пункт 3'},
+  punkt4:     {de:'Punkt 4',           en:'Point 4',        uk:'Пункт 4',              ru:'Пункт 4'},
   schluss:    {de:'Schlusssatz',       en:'Closing sentence', uk:'Прикінцеве речення',ru:'Заключительное предложение'},
+  grussformel:{de:'Grußformel',        en:'Closing phrase', uk:'Формула прощання',    ru:'Формула прощания'},
   name:       {de:'Unterschrift',      en:'Signature',      uk:'Підпис',              ru:'Подпись'},
 };
 
@@ -14581,7 +14596,12 @@ var _lfFrmHandlers = {
     var partText = unit.kind === 'frm_intro'
       ? ((unit.card.task && unit.card.task[pl]) || '')
       : ((unit.part && unit.part[pl]) || '');
-    var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
+    // gram тепер живе в кожному блоці parts (нова структура — і B2
+    // Forumsbeitrag, і B1 Brief), а не на рівні картки. Фолбек на
+    // unit.card.gram — для карток, згенерованих ще ДО цієї зміни
+    // (перехідний період, поки стара база не переписана).
+    var gramSource = (unit.part && unit.part.gram) ? unit.part : unit.card;
+    var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(gramSource) : null;
     if(gramBtn) buttons.push(gramBtn);
     var legendBtn = _lfMarkerLegendButton(partText);
     if(legendBtn) buttons.push(legendBtn);
@@ -14618,6 +14638,46 @@ var STORY_ROLE_LABELS = {
 // Кожна картка STORY завжди має topic+task (той самий принцип, що
 // SCHREIBEN) — тож перший юніт (kind:'story_intro') показуємо
 // безумовно, для кожної картки.
+//
+// ОНОВЛЕНО: після розділення бази на var STORY_TASK (умова завдання,
+// одна картка НА ТЕМУ — 8 тем у B2) і var STORY (сама розповідь, FK на
+// тему через card.topicNum) — topic/task для ВБУДОВАНИХ карток більше
+// не лежать на самій картці, а шукаються в STORY_TASK. Власні
+// (card.custom, addCustomStoryCard) теми — виняток: вони й далі носять
+// topic/task ПРЯМО на собі (у користувача нема "номера теми", кожна
+// його тема — сама собі унікальна), тому обидва helpers нижче спочатку
+// перевіряють card.custom і лише для НЕ-custom карток лізуть у
+// STORY_TASK. Це єдине місце, де існує ця різниця — решта коду працює
+// через ці дві функції, не знаючи, звідки саме взялись дані.
+function _storyTaskFor(card){
+  if(card.custom) return null;
+  return (typeof STORY_TASK !== 'undefined')
+    ? STORY_TASK.find(function(t){ return t.topicNum === card.topicNum; })
+    : null;
+}
+function storyCardTopic(card){
+  if(card.custom) return card.topic || null;
+  var t = _storyTaskFor(card);
+  return t ? t.topic : null;
+}
+// Повертає task+tips ОБ'ЄДНАНИМИ в один текст (той самий вигляд, що
+// був у полі 'task' ДО розділення бази — task і "Mögliche Fragen"-
+// підказки одним блоком через <br><br>), щоб екран вступу виглядав
+// так само, як і раніше: сам UI поки не отримав окремого місця під
+// tips — коли з'явиться (разом із блоком питань екзаменатора), можна
+// буде рендерити tips окремо й прибрати конкатенацію тут.
+function storyCardTaskFull(card){
+  if(card.custom) return card.task || null;
+  var t = _storyTaskFor(card);
+  if(!t) return null;
+  var out = {};
+  ['de','en','uk','ru'].forEach(function(lang){
+    var task = (t.task && t.task[lang]) || '';
+    var tips = (t.tips && t.tips[lang]) || '';
+    out[lang] = tips ? (task + '<br><br>' + tips) : task;
+  });
+  return out;
+}
 function _storyCardsToUnits(cards){
   const units = [];
   (cards||[]).forEach(function(card){
@@ -14696,11 +14756,12 @@ var _lfStoryHandlers = {
     var text, textTr, audioField, eyebrowIcon, eyebrowLabel;
 
     if(isIntro){
-      text        = card.task?.[pl] || '';
-      textTr      = ul !== pl ? (card.task?.[ul] || '') : '';
+      var taskFull    = storyCardTaskFull(card) || {};
+      text        = taskFull[pl] || '';
+      textTr      = ul !== pl ? (taskFull[ul] || '') : '';
       audioField  = null; // 'task' — без аудіо (див. getAudioText), нічого підсвічувати
       eyebrowIcon = '🎤';
-      eyebrowLabel = _lfBilingualLabel(card.topic, pl, ul);
+      eyebrowLabel = _lfBilingualLabel(storyCardTopic(card) || {}, pl, ul);
     } else {
       var part = unit.part;
       text        = part[pl] || '';
@@ -14795,7 +14856,7 @@ var _lfStoryHandlers = {
     }
     var pl = primaryLang();
     var partText = unit.kind === 'story_intro'
-      ? ((unit.card.task && unit.card.task[pl]) || '')
+      ? ((storyCardTaskFull(unit.card) || {})[pl] || '')
       : ((unit.part && unit.part[pl]) || '');
     var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
     if(gramBtn) buttons.push(gramBtn);
