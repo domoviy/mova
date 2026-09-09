@@ -131,6 +131,10 @@ CATEGORIES_WITH_TIMING = {
     # Mündliche Prüfung Teil 1 (story_XXX) — той самий принцип, що forum:
     # усі поля (task + кожен блок розповіді), лише PRIMARY_LANG.
     "story":       None,
+    # Brief/E-Mail B1 (brief_XXX, var SCHREIBEN) — структурно ідентична
+    # forum_XXX (task + parts, один автор card['name']), тому той самий
+    # принцип: усі поля, лише PRIMARY_LANG.
+    "brief":       None,
 }
 
 def field_wants_timing(internal_cat, field, lang, primary_lang):
@@ -217,6 +221,13 @@ VOICE_MAPPING = {
     # цей запис — лише запасний варіант.
     "story": {
         "post": {"de": "de-DE-FlorianMultilingualNeural", "uk": "uk-UA-OstapNeural", "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
+    },
+    # Brief/E-Mail B1 (brief_XXX, var SCHREIBEN) — структурно ідентична
+    # forum_XXX (один автор card['name'] на весь лист, а не 2 ролі),
+    # тому той самий принцип: голос шукаємо СПЕРШУ за card.name, цей
+    # запис — лише запасний варіант, якщо персонажа не вдалось знайти.
+    "brief": {
+        "post": {"de": "de-DE-KatjaNeural", "uk": "uk-UA-PolinaNeural", "en": "en-US-JennyNeural", "ru": "ru-RU-SvetlanaNeural"}
     },
     # E-Mail (email_XXX) — на відміну від forum (один автор на весь
     # допис), тут природно ТРИ різні "голоси": керівник (mail_boss),
@@ -1529,6 +1540,19 @@ async def main():
             # (голос card['name'], як forum). Див. eml_fields()/
             # eml_field_text() і окрему гілку нижче.
             internal_cat = "email"
+        elif item_id.startswith("brief_"):
+            # Brief/E-Mail B1 (var SCHREIBEN) — структурно ІДЕНТИЧНА
+            # forum_XXX (один автор card['name'] на весь лист, репліки
+            # лежать у card['parts'], кожна — {role, de,en,uk,ru}), тому
+            # переюзаємо forum_fields()/forum_field_text() без змін —
+            # єдина різниця з "forum" нижче: internal_cat/cat_lower інші
+            # (окрема папка audio/brief/…), голос-фолбек — VOICE_MAPPING
+            # ["brief"]["post"] замість ["forum"]["post"]. НЕ плутати з
+            # "email_" щойно вище — той префікс належить зовсім іншій,
+            # незалежній фічі (var EMAILS, mail_boss/mail_client), формат
+            # листа тут (brief_formell/email_informell/…) — лише текстове
+            # поле card['format'], не id-префікс.
+            internal_cat = "brief"
         elif item_id.startswith(("dlg_", "red_", "talk_", "prob_")):
             # Діалоги тепер розділені за префіксом id на 3 функціональні
             # типи — окремі папки в audio/ (той самий механізм, що вже
@@ -1604,6 +1628,68 @@ async def main():
             # primary_lang) — переходимо до наступної картки, без
             # generic циклу нижче (розрахований на top-level поля
             # картки, яких forum-картка в такому вигляді не має).
+            continue
+
+        if internal_cat == "brief":
+            # ── Brief/E-Mail B1 (var SCHREIBEN): точна копія гілки
+            # "forum" щойно вище — один голос-автор на ВЕСЬ лист
+            # (card['name'] — id персонажа з characters.js), лише
+            # PRIMARY_LANG. Структура parts (role/de/en/uk/ru) в
+            # brief_XXX ідентична forum_XXX, тому переюзаємо
+            # forum_fields()/forum_field_text() без змін — окрема копія
+            # тут лише через інший internal_cat/cat_lower (папка
+            # audio/brief/… замість audio/forum/…) і інший
+            # голос-фолбек (VOICE_MAPPING["brief"]["post"]).
+            if primary_lang in audio_config:
+                persona_id = item.get("name")
+                voice = resolve_character_voice(characters_list, persona_id, primary_lang)
+                if not voice:
+                    voice = get_voice_id("brief", "post", primary_lang)
+                rates = audio_config.get(primary_lang, ["100"])
+
+                for field in forum_fields(item):
+                    field_obj = forum_field_text(item, field)
+                    text = field_obj.get(primary_lang) if isinstance(field_obj, dict) else None
+                    if text is None: continue
+                    if isinstance(text, str) and not text.strip(): continue
+
+                    cleaned = clean_text(text, primary_lang)
+                    if not cleaned:
+                        continue
+
+                    want_timing = field_wants_timing("brief", field, primary_lang, primary_lang)
+
+                    for rate in rates:
+                        filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
+                        mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
+
+                        content_hash = compute_content_hash(cleaned, voice, rate)
+                        existing_value = manifest_data.get(mkey)
+                        existing_hash = manifest_hash_part(existing_value)
+
+                        if existing_value != manifest_value(content_hash, want_timing):
+                            tasks.append({
+                                "id": item_id,
+                                "course": course,
+                                "audio_base": audio_base,
+                                "internal_cat": internal_cat,
+                                "cat_lower": cat_lower,
+                                "sub": field,
+                                "lang": primary_lang,
+                                "rate": rate,
+                                "cleaned": cleaned,
+                                "voice": voice,
+                                "filename": filename,
+                                "mkey": mkey,
+                                "content_hash": content_hash,
+                                "existing_hash": existing_hash,
+                                "want_timing": want_timing,
+                                "primary_lang": primary_lang
+                            })
+            # brief_XXX повністю оброблено вище (task+parts, лише
+            # primary_lang) — переходимо до наступної картки, без
+            # generic циклу нижче (розрахований на top-level поля
+            # картки, яких brief-картка в такому вигляді не має).
             continue
 
         if internal_cat == "story":
