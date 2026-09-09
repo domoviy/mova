@@ -1926,6 +1926,14 @@ body{
   font-size:18px;color:var(--gold);
   font-family:'Inter',sans-serif;margin-top:2px;
 }
+/* Підпис "врятовано заморозкою" — з'являється лише коли showStreakCelebration()
+   отримала opts.frozenDaysUsed > 0 (див. srUpdateStreak). */
+.streak-cel-frozen-note{
+  font-size:14px;color:#bfe3ff;
+  font-family:'Inter',sans-serif;margin-top:8px;
+  background:rgba(191,227,255,.14);border-radius:20px;
+  padding:4px 12px;display:inline-block;
+}
 @keyframes streakCelPop{
   0%{ transform:scale(.4); opacity:0; }
   60%{ transform:scale(1.08); opacity:1; }
@@ -2752,6 +2760,51 @@ body{
 }
 .locked-modal-cta:active{opacity:.85;}
 
+/* Модалка "Стрік і заморозки" — той самий bottom-sheet принцип, що й
+   .locked-modal вище, окремі класи для незалежного стилювання. */
+.streak-modal-overlay{
+  position:fixed;inset:0;z-index:300;
+  display:flex;align-items:flex-end;
+  padding:0;background:rgba(0,0,0,.4);
+}
+.streak-modal{
+  position:relative;z-index:1;
+  width:100%;background:var(--paper);
+  border-radius:20px 20px 0 0;
+  padding:24px 20px calc(env(safe-area-inset-bottom,0px) + 16px);
+  box-shadow:0 -4px 32px rgba(0,0,0,.18);
+  border-top:3px solid var(--border);
+  text-align:center;
+}
+.streak-modal-icon{
+  width:56px;height:56px;border-radius:50%;margin:0 auto 10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:26px;background:var(--soft);
+}
+.streak-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);margin-bottom:4px}
+.streak-modal-sub{font-size:var(--fs-secondary);color:var(--warm);margin-bottom:18px}
+.streak-modal-freeze-box{
+  background:var(--soft);border-radius:14px;padding:14px 16px;margin-bottom:16px;text-align:left;
+}
+.streak-modal-freeze-row{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:6px;
+}
+.streak-modal-freeze-count{font-weight:800;color:var(--ink);font-size:var(--fs-secondary);white-space:nowrap}
+.streak-modal-freeze-info{font-size:13px;color:var(--warm);line-height:1.4;margin-bottom:0}
+.streak-modal-buy-btn{
+  width:100%;padding:11px;border:none;border-radius:12px;margin-top:10px;
+  background:var(--gold);color:#2a2210;font-weight:800;font-size:14px;
+  font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.streak-modal-buy-btn:active{opacity:.85;}
+.streak-modal-buy-btn:disabled{background:var(--border);color:var(--warm);opacity:.7;cursor:default;}
+.streak-modal-cta{
+  width:100%;padding:14px;border:none;border-radius:14px;
+  background:var(--forest);color:#fff;font-weight:800;font-size:var(--fs-secondary);
+  font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
+}
+.streak-modal-cta:active{opacity:.85;}
+
 /* ── Форма "Повідомити про помилку" ──────────────────────────────
    Той самий bottom-sheet патерн, що й .locked-modal вище (узгоджено
    візуально з рештою модалок застосунку), але зі справжньою формою:
@@ -3378,7 +3431,7 @@ body{
         <span id="h-xp" class="h-icon-glyph" style="color:var(--gold);font-weight:700;font-size:20px">𐌌</span>
         <span id="h-xp-count" class="h-chip-counter">0</span>
       </button>
-      <button class="h-icon-btn" onclick="showStreakInfo()" title="Streak">
+      <button class="h-icon-btn" onclick="showStreakInfoModal()" title="Streak">
         <span class="bn-fire h-icon-glyph" id="h-fire" style="font-size:22px">🔥</span>
         <span id="h-streak-count" class="h-chip-counter">0</span>
       </button>
@@ -3414,6 +3467,7 @@ body{
           </div>
           <div class="streak-cel-num" id="streak-cel-num">1</div>
           <div class="streak-cel-label" id="streak-cel-label"></div>
+          <div class="streak-cel-frozen-note" id="streak-cel-frozen-note" style="display:none"></div>
         </div>
       </div>
 
@@ -3849,6 +3903,10 @@ body{
     <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_today">M heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-today">0</span></div>
     <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_total">M gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-total">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
+    <div class="srow" onclick="showStreakInfoModal()" style="cursor:pointer">
+      <div class="srow-label"><span style="color:var(--gold);font-weight:700">🧊</span> <label data-i18n="sec_streak_freeze">Streak-Schutz</label></div>
+      <span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-freeze-count">3</span>
+    </div>
     </div>
     </div><!-- /ГРУПА 2 -->
 
@@ -4008,7 +4066,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '626-a7b0e16';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4602,6 +4660,11 @@ const I18N = {
     sec_data:'Daten',
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
     sr_readiness_info:'Zeigt, wie gut Karten verankert sind (≥2 richtige Wiederholungen, noch nicht fällig) — nicht nur ob sie schon gesehen wurden.',
+    sec_streak_freeze:'Streak-Schutz', streak_freeze_info:'Ein Streak-Schutz bewahrt deine Serie automatisch, wenn du einen Tag verpasst. Du hast 3 kostenlos erhalten — weitere kannst du mit M-Punkten kaufen.',
+    btn_buy_freeze:'Weiteren kaufen (+1)', btn_freeze_max:'Maximum erreicht',
+    msg_freeze_no_m:'Nicht genug M-Punkte (benötigt: {cost} 𐌌)', msg_freeze_bought:'🧊 Streak-Schutz hinzugefügt!', msg_freeze_max:'Du hast bereits die maximale Anzahl an Streak-Schutz',
+    msg_streak_broken:'Deine Serie ist abgerissen 😔 Wir starten neu — heute hast du schon den ersten Schritt gemacht!',
+    streak_frozen_note:'🧊 Durch Streak-Schutz gerettet', streak_modal_close:'Verstanden',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
@@ -4690,6 +4753,11 @@ const I18N = {
     sec_data:'Дані',
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
     sr_readiness_info:'Показує, наскільки добре закріплені картки (≥2 правильні повторення, ще не due) — а не просто факт, що їх переглянули.',
+    sec_streak_freeze:'Заморозка стріку', streak_freeze_info:'Заморозка автоматично рятує твій стрік, якщо пропустиш день. Перші 3 — безкоштовно, далі можна докупити за М-бали.',
+    btn_buy_freeze:'Докупити ще (+1)', btn_freeze_max:'Максимум досягнуто',
+    msg_freeze_no_m:'Замало М-балів (потрібно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку додано!', msg_freeze_max:'У тебе вже максимум заморозок',
+    msg_streak_broken:'Стрік перервався 😔 Починаємо занову — але сьогодні ти вже зробив перший крок!',
+    streak_frozen_note:'🧊 Врятовано заморозкою', streak_modal_close:'Зрозуміло',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
@@ -4773,6 +4841,11 @@ const I18N = {
     sec_data:'Data',
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
     sr_readiness_info:'Shows how well cards are retained (≥2 correct repetitions, not due yet) — not just whether you have seen them.',
+    sec_streak_freeze:'Streak Freeze', streak_freeze_info:'A streak freeze automatically saves your streak if you miss a day. You get 3 for free — you can buy more with M points.',
+    btn_buy_freeze:'Buy another (+1)', btn_freeze_max:'Maximum reached',
+    msg_freeze_no_m:'Not enough M points (needs {cost} 𐌌)', msg_freeze_bought:'🧊 Streak freeze added!', msg_freeze_max:'You already have the maximum freezes',
+    msg_streak_broken:'Your streak broke 😔 Starting fresh — but you already took the first step today!',
+    streak_frozen_note:'🧊 Saved by a freeze', streak_modal_close:'Got it',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
@@ -4857,6 +4930,11 @@ const I18N = {
     sec_data:'Данные',
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
     sr_readiness_info:'Показывает, насколько хорошо закреплены карточки (≥2 правильных повторения, ещё не due) — а не просто факт, что их просмотрели.',
+    sec_streak_freeze:'Заморозка стрика', streak_freeze_info:'Заморозка автоматически спасает твой стрик, если пропустишь день. Первые 3 — бесплатно, дальше можно докупить за М-баллы.',
+    btn_buy_freeze:'Докупить ещё (+1)', btn_freeze_max:'Достигнут максимум',
+    msg_freeze_no_m:'Недостаточно М-баллов (нужно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку добавили!', msg_freeze_max:'У тебя уже максимум заморозок',
+    msg_streak_broken:'Стрик прервался 😔 Начинаем заново — но сегодня ты уже сделал первый шаг!',
+    streak_frozen_note:'🧊 Спасено заморозкой', streak_modal_close:'Понятно',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
@@ -5235,6 +5313,50 @@ function srLoadGlobalStreak(){
 }
 function srSaveGlobalStreak(streak, lastSessionDate){
   try{ localStorage.setItem(SR_GLOBAL_STREAK_KEY, JSON.stringify({streak, lastSessionDate})); }catch(e){}
+}
+
+// ── ЗАМОРОЗКИ СТРІКУ (streak freeze) ──────────────────────────────
+// Захищають стрік від згорання: якщо між останньою сесією і сьогодні є
+// повністю пропущені дні, srUpdateStreak() автоматично списує по одній
+// заморозці за кожен такий день (якщо вистачає) замість того, щоб
+// скинути стрік у 0. Кожен новий користувач/пристрій отримує
+// STREAK_FREEZE_DEFAULT безкоштовно РІВНО ОДИН РАЗ (прапорець
+// STREAK_FREEZE_GRANTED_KEY) — далі докупити можна за М-бали
+// (buyStreakFreeze), до STREAK_FREEZE_MAX одночасно.
+const STREAK_FREEZE_KEY = "mova_streak_freezes";
+const STREAK_FREEZE_GRANTED_KEY = "mova_streak_freeze_granted_v1";
+const STREAK_FREEZE_DEFAULT = 3;
+const STREAK_FREEZE_MAX = 5;
+const STREAK_FREEZE_COST = 50; // М-балів за одну додаткову заморозку
+
+function srLoadFreezes(){
+  try{
+    if(!localStorage.getItem(STREAK_FREEZE_GRANTED_KEY)){
+      localStorage.setItem(STREAK_FREEZE_KEY, String(STREAK_FREEZE_DEFAULT));
+      localStorage.setItem(STREAK_FREEZE_GRANTED_KEY, '1');
+      return STREAK_FREEZE_DEFAULT;
+    }
+    const r = localStorage.getItem(STREAK_FREEZE_KEY);
+    return r!=null ? Math.max(0, parseInt(r,10)||0) : STREAK_FREEZE_DEFAULT;
+  }catch(e){ return STREAK_FREEZE_DEFAULT; }
+}
+function srSaveFreezes(n){ try{ localStorage.setItem(STREAK_FREEZE_KEY, String(Math.max(0,n))); }catch(e){} }
+
+// Купівля додаткової заморозки за М-бали. Викликається з кнопки в
+// showStreakInfoModal(). Повертає true при успіху (для оновлення UI).
+function buyStreakFreeze(){
+  const freezes = srLoadFreezes();
+  if(freezes >= STREAK_FREEZE_MAX){ notify(t('msg_freeze_max')); return false; }
+  const xp = xpLoad();
+  if((xp.total||0) < STREAK_FREEZE_COST){ notify(t('msg_freeze_no_m').replace('{cost}', STREAK_FREEZE_COST)); return false; }
+  xp.total = (xp.total||0) - STREAK_FREEZE_COST;
+  xpSave(xp);
+  srSaveFreezes(freezes+1);
+  if(typeof haptic !== 'undefined') haptic.success();
+  notify(t('msg_freeze_bought'));
+  if(typeof renderStreakUI === 'function') renderStreakUI();
+  showStreakInfoModal(); // перерендерити модалку зі свіжими числами
+  return true;
 }
 
 // ── ГЕЙМІФІКАЦІЯ: БАЛИ (XP) ──────────────────────────────────────────
@@ -5944,12 +6066,40 @@ function srUpdateStreak(){
   const today = srToISO(new Date());
   const last = state.lastSessionDate;
   const prevStreak = state.streak ?? 0;
+  let frozenDaysUsed = 0;
+  let streakBroken = false;
+
   if(last !== today){
-    state.streak = prevStreak + 1;
+    if(!last){
+      // Перший урок узагалі на цьому пристрої — стрік стартує з 1,
+      // заморозки тут ні до чого (нема попередньої дати для розриву).
+      state.streak = 1;
+    } else {
+      // Скільки ПОВНІСТЮ пропущених днів між останньою сесією і сьогодні
+      // (0, якщо вчора теж займались — нормальне продовження стріку).
+      const missedDays = srDaysBetween(last, today) - 1;
+      if(missedDays <= 0){
+        state.streak = prevStreak + 1;
+      } else {
+        const freezes = srLoadFreezes();
+        if(freezes >= missedDays){
+          // Заморозок вистачає, щоб покрити ВЕСЬ пропуск — стрік рятуємо
+          // і рахуємо як звичайне продовження.
+          srSaveFreezes(freezes - missedDays);
+          frozenDaysUsed = missedDays;
+          state.streak = prevStreak + 1;
+        } else {
+          // Заморозок не вистачає — стрік згорає. Сьогоднішній урок вже
+          // пройдено, тож стартуємо новий відлік з 1, а не з 0.
+          state.streak = 1;
+          streakBroken = prevStreak > 0;
+        }
+      }
+    }
   }
   state.lastSessionDate = today;
   srSaveState(state);
-  return { streak: state.streak, increased: state.streak > prevStreak, prevStreak };
+  return { streak: state.streak, increased: state.streak > prevStreak, prevStreak, frozenDaysUsed, streakBroken };
 }
 
 // Dashboard stats
@@ -11142,6 +11292,18 @@ function showStreakCelebration(streak, prevStreak, opts){
   }
   const lbl = {'de':'Tage in Folge!','uk':'днів поспіль!','en':'day streak!','ru':'дней подряд!'}[uiLang] || 'days!';
   if(lblEl) lblEl.textContent = lbl;
+  // Якщо цей приріст стріку відбувся ЗАВДЯКИ заморозці (пропущений день
+  // покрито mova_streak_freezes) — показуємо про це окремий рядок, щоб
+  // не виглядало, ніби користувач помилково "не помітив" пропуску.
+  const frozenNote = document.getElementById('streak-cel-frozen-note');
+  if(frozenNote){
+    if(opts.frozenDaysUsed > 0){
+      frozenNote.textContent = t('streak_frozen_note');
+      frozenNote.style.display = '';
+    } else {
+      frozenNote.style.display = 'none';
+    }
+  }
   _restartStreakFlameAnim();
 
   el.classList.remove('fade-out');
@@ -16710,9 +16872,13 @@ function lfShowResult(){
     const xpEarnedThisLesson = xpGetTotal() - (LF._xpAtStart || 0);
     if(streakResult && streakResult.increased){
       showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson, timeStr: timeStr,
-        onDone: () => showStreakCelebration(streakResult.streak, streakResult.prevStreak, { onDone: goToLernpfadActivePoint })
+        onDone: () => showStreakCelebration(streakResult.streak, streakResult.prevStreak, { onDone: goToLernpfadActivePoint, frozenDaysUsed: streakResult.frozenDaysUsed })
       });
     } else {
+      // Стрік не зріс (нема increased → без вогняного святкування), але
+      // якщо він щойно згорів через пропуск без достатньої кількості
+      // заморозок — повідомляємо про це окремо, тихим тостом, а не мовчки.
+      if(streakResult && streakResult.streakBroken) notify(t('msg_streak_broken'));
       showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson, timeStr: timeStr, onDone: goToLernpfadActivePoint });
     }
   }
@@ -18385,13 +18551,59 @@ function renderStreakUI(pulse=false){
   const sxt=document.getElementById('st-xp-today'); if(sxt) sxt.textContent = (xp.todayDate===today ? xp.todayPoints : 0)||0;
   const sxtot=document.getElementById('st-xp-total'); if(sxtot) sxtot.textContent = xp.total||0;
   const sl=document.getElementById('daily-goal');if(sl){sl.value=goal;document.getElementById('daily-goal-v').textContent=goal;}
+  // Лічильник заморозок стріку в Налаштуваннях (див. showStreakInfoModal
+  // для повного пояснення+кнопки купівлі) — тут лише коротке число.
+  const fc=document.getElementById('st-freeze-count'); if(fc && typeof srLoadFreezes==='function') fc.textContent = srLoadFreezes();
 }
-function showStreakInfo(){
-  const p=loadProgress();const today=todayStr();
-  const todayN=(p.todayDate===today?p.todayCards:0)||0;
+// Модалка "Стрік і заморозки" — замінює стару showStreakInfo() (яка була
+// коротким тостом фіксовано німецькою, незалежно від uiLang). Показує
+// поточний стрік/прогрес дня, скільки заморозок лишилось і пояснення
+// як вони працюють, з можливістю докупити ще за М-бали.
+function showStreakInfoModal(){
+  closeStreakInfoModal();
+  const p = loadProgress();
+  const today = todayStr();
+  const todayN = (p.todayDate===today ? p.todayCards : 0) || 0;
   const streak = (typeof srLoadState === 'function' ? (srLoadState().streak || 0) : (p.streak||0));
-  notify(`🔥 ${streak} Tage · ${todayN}/${getGoal()} heute · ${p.totalCards||0} gesamt`);
+  const freezes = (typeof srLoadFreezes === 'function') ? srLoadFreezes() : STREAK_FREEZE_DEFAULT;
+  const atMax = freezes >= STREAK_FREEZE_MAX;
+  const xpTotal = xpLoad().total || 0;
+  const canAfford = xpTotal >= STREAK_FREEZE_COST;
+
+  const overlay = document.createElement('div');
+  overlay.id = 'streak-modal-overlay';
+  overlay.className = 'streak-modal-overlay';
+  overlay.onclick = function(e){ if(e.target === overlay) closeStreakInfoModal(); };
+
+  const buyBtnDisabled = atMax || !canAfford;
+  const buyBtnLabel = atMax ? t('btn_freeze_max') : t('btn_buy_freeze') + ' — ' + STREAK_FREEZE_COST + ' 𐌌';
+
+  overlay.innerHTML =
+    '<div class="streak-modal">' +
+      '<div class="streak-modal-icon">🔥</div>' +
+      '<div class="streak-modal-title">' + streak + ' ' + ({'de':'Tage in Folge','uk':'днів поспіль','en':'day streak','ru':'дней подряд'}[uiLang] || 'days') + '</div>' +
+      '<div class="streak-modal-sub">' + todayN + '/' + getGoal() + ' ' + t('lbl_today').toLowerCase() + ' · ' + t('lbl_total') + ': ' + (p.totalCards||0) + '</div>' +
+      '<div class="streak-modal-freeze-box">' +
+        '<div class="streak-modal-freeze-row">' +
+          '<span>🧊 ' + t('sec_streak_freeze') + '</span>' +
+          '<span class="streak-modal-freeze-count">' + freezes + ' / ' + STREAK_FREEZE_MAX + '</span>' +
+        '</div>' +
+        '<div class="streak-modal-freeze-info">' + t('streak_freeze_info') + '</div>' +
+        '<button class="streak-modal-buy-btn" onclick="buyStreakFreeze()" ' + (buyBtnDisabled ? 'disabled' : '') + '>' + buyBtnLabel + '</button>' +
+      '</div>' +
+      '<button class="streak-modal-cta" onclick="closeStreakInfoModal()">' + t('streak_modal_close') + '</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  if(typeof haptic !== 'undefined') haptic.light();
 }
+
+function closeStreakInfoModal(){
+  const el = document.getElementById('streak-modal-overlay');
+  if(el) el.remove();
+}
+// Стара назва лишається робочою (виклик зі старого коду/кешу onclick
+// у ще не оновленому DOM), просто делегує на нову модалку.
+function showStreakInfo(){ showStreakInfoModal(); }
 
 // ── BROWSE ────────────────────────────────────────────────────
 function switchVocabTab(tab){
