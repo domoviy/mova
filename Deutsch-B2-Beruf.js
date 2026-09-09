@@ -19649,11 +19649,11 @@ var SCHREIBEN = [
       "uk": "Усі співробітники мають переїхати або їздити на роботу, оскільки ваша фірма відкриває нову локацію. Локація оснащена найсучаснішою технікою, але розташована за 75 км від теперішньої.",
       "ru": "Все сотрудники должны переехать или ездить на работу, поскольку ваша фирма открывает новую локацию. Локация оснащена самой современной техникой, но находится в 75 км от нынешней."
     },
-    "gram": "wortstellung",
     "name": "de_w_anna",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -19661,6 +19661,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr bestimmt schon wisst</r>, möchte die Geschäftsleitung den Standort unserer Firma verlegen. <c>Alle Mitarbeiterinnen und Mitarbeiter sollen umziehen oder pendeln</c>.",
         "en": "as you probably already know, management wants to relocate our company's site. All employees are expected to either move or commute.",
         "uk": "як ви, напевно, вже знаєте, керівництво хоче перенести локацію нашої фірми. Усі співробітники мають або переїхати, або їздити на роботу.",
@@ -19668,6 +19669,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "",
         "de": "<r>Diese Idee finde ich nicht gut.</r> <k>Obwohl</k> diese Situation viele Möglichkeiten für uns bietet, macht sie unseren Arbeitsalltag sehr kompliziert.",
         "en": "I don't think this idea is good. Although this situation offers us many opportunities, it makes our everyday work life very complicated.",
         "uk": "Ця ідея мені не подобається. Хоча ця ситуація дає нам багато можливостей, вона дуже ускладнює наше повсякденне робоче життя.",
@@ -19675,6 +19677,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "",
         "de": "<r>Einerseits</r> gibt es am neuen Standort modernste Technik, was sich positiv auf unsere Firma auswirkt. Wir können dort neue Erfahrungen sammeln, Weiterbildungen absolvieren und Karriere machen.",
         "en": "On the one hand, the new site has state-of-the-art technology, which has a positive effect on our company. There we can gain new experience, take further training and build a career.",
         "uk": "З одного боку, на новій локації є найсучасніша техніка, що позитивно впливає на нашу фірму. Там ми зможемо здобути новий досвід, пройти підвищення кваліфікації та зробити карʼєру.",
@@ -19682,6 +19685,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "konjunktiv2_als_ob",
         "de": "<r>Andererseits</r> verlieren wir viel Zeit, <k>wenn</k> wir jeden Tag zwei Stunden zur Arbeit pendeln müssen. Viele Mitarbeiter haben Familien und möchten ihre Freizeit mit ihren Kindern verbringen. Außerdem sind die hohen Fahrtkosten ein Argument, das gegen das Pendeln spricht. Darüber hinaus wäre ein Umzug für Familien mit Kindern sehr schwierig, da die Kinder den Kindergarten oder die Schule <g>wechseln müssten</g>.",
         "en": "On the other hand, we lose a lot of time if we have to commute two hours to work every day. Many employees have families and want to spend their free time with their children. In addition, the high travel costs are an argument against commuting. Moreover, moving would be very difficult for families with children, since the children would have to change kindergarten or school.",
         "uk": "З іншого боку, ми втрачаємо багато часу, якщо щодня мусимо їхати на роботу дві години. У багатьох співробітників є сім'ї, і вони хочуть проводити вільний час зі своїми дітьми. Крім того, високі витрати на дорогу — це аргумент проти їзди на роботу. Більше того, переїзд був би дуже складним для родин з дітьми, оскільки дітям довелося б змінити садочок або школу.",
@@ -19689,6 +19693,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "wortstellung",
         "de": "<r>Deshalb schlage ich vor, dass</r> die Mitarbeiter zwischen Homeoffice und Pendeln wählen <g>können</g>. So könnten die Mitarbeiter eine Woche in der Firma und eine Woche zu Hause arbeiten, was Fahrtkosten und Zeit spart.",
         "en": "That's why I suggest that employees be able to choose between working from home and commuting. This way, employees could work one week at the company and one week at home, which would save travel costs and time.",
         "uk": "Тому я пропоную, щоб співробітники могли обирати між роботою з дому та їздою на роботу. Так співробітники могли б один тиждень працювати у фірмі, а один тиждень — вдома, що заощадило б витрати на дорогу і час.",
@@ -19696,6 +19701,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinungen.</r>",
         "en": "What do you think about this? I'm curious to hear your opinions.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на ваші думки.",
@@ -19703,6 +19709,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Anna",
         "en": "Anna",
         "uk": "Анна",
@@ -19725,11 +19732,11 @@ var SCHREIBEN = [
       "uk": "З екологічних причин відрядження на відстань до 800 кілометрів мають надалі здійснюватися лише потягом, а не літаком. Поїздка потягом часто триває значно довше, ніж політ.",
       "ru": "По экологическим причинам командировки на расстояние до 800 километров должны впредь осуществляться только поездом, а не самолётом. Поездка на поезде часто занимает значительно больше времени, чем перелёт."
     },
-    "gram": "nominalisierung",
     "name": "de_w_julia",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -19737,6 +19744,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>Dienstreisen unter 800 Kilometern künftig nur noch mit der Bahn</c> durchführen zu lassen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to have business trips under 800 kilometers carried out only by train in the future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб відрядження на відстань до 800 кілометрів надалі здійснювались лише потягом. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -19744,6 +19752,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "",
         "de": "<r>Ich bin der Meinung, dass</r> diese Regelung grundsätzlich sinnvoll ist, auch wenn sie im Alltag nicht immer einfach umzusetzen sein wird.",
         "en": "I am of the opinion that this policy basically makes sense, even if it won't always be easy to implement in everyday life.",
         "uk": "Я вважаю, що це правило в принципі має сенс, навіть якщо його не завжди буде легко втілити в повсякденному житті.",
@@ -19751,6 +19760,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "nominalisierung",
         "de": "<r>Ein Vorteil wäre</r> zweifellos <g>die Reduzierung</g> unseres CO2-Ausstoßes, denn die Bahn ist deutlich umweltfreundlicher als das Flugzeug. Außerdem lässt sich die Fahrtzeit oft produktiv für die Vorbereitung von Terminen nutzen.",
         "en": "One advantage would undoubtedly be the reduction of our CO2 emissions, since trains are much more environmentally friendly than planes. In addition, travel time can often be used productively to prepare for appointments.",
         "uk": "Однією з переваг, безсумнівно, було б скорочення наших викидів CO2, адже потяг набагато екологічніший за літак. Крім того, час у дорозі часто можна продуктивно використати для підготовки до зустрічей.",
@@ -19758,6 +19768,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "",
         "de": "<r>Andererseits</r> bedeutet eine längere Anreise auch mehr Zeit, die uns für die eigentliche Arbeit fehlt. Bei kurzfristigen Terminen könnte eine Zugverspätung zudem zu ernsthaften Problemen führen.",
         "en": "On the other hand, a longer journey also means less time for our actual work. In the case of short-notice appointments, a delayed train could also lead to serious problems.",
         "uk": "З іншого боку, довша дорога означає й менше часу на власне роботу. У випадку термінових зустрічей запізнення потяга також могло б призвести до серйозних проблем.",
@@ -19765,6 +19776,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "nominalisierung",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir bei der <g>Umsetzung</g> Ausnahmen zulassen, <k>wenn</k> eine Zugfahrt aus zeitlichen Gründen wirklich nicht in Frage kommt.",
         "en": "That's why I suggest that we allow exceptions in the implementation, when a train journey is really not an option for time reasons.",
         "uk": "Тому я пропоную, щоб при впровадженні ми допускали винятки, якщо поїздка потягом справді не підходить через брак часу.",
@@ -19772,6 +19784,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -19779,6 +19792,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Julia",
         "en": "Julia",
         "uk": "Юлія",
@@ -19801,11 +19815,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити щотижневу фітнес-програму, в якій усі співробітники мають брати участь у робочий час, щоб посилити оздоровлення на робочому місці.",
       "ru": "Руководство хочет ввести еженедельную фитнес-программу, в которой все сотрудники должны участвовать в рабочее время, чтобы усилить оздоровление на рабочем месте."
     },
-    "gram": "nominalisierung",
     "name": "de_m_mark",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -19813,6 +19827,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung <c>ein wöchentliches Fitnessprogramm</c> für alle Mitarbeitenden. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning a weekly fitness program for all employees. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує щотижневу фітнес-програму для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -19820,6 +19835,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "nominalisierung",
         "de": "<r>Ich bin der Meinung, dass</r> <g>die Einführung</g> eines solchen Programms grundsätzlich sinnvoll ist, auch wenn die konkrete Umsetzung nicht für jede Abteilung gleich einfach sein wird.",
         "en": "I am of the opinion that introducing such a program basically makes sense, even if the concrete implementation won't be equally easy for every department.",
         "uk": "Я вважаю, що запровадження такої програми в принципі має сенс, навіть якщо конкретна реалізація буде не для кожного відділу однаково простою.",
@@ -19827,6 +19843,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "nominalisierung",
         "de": "<r>Ein Vorteil wäre</r> zweifellos <g>der Stressabbau</g>: Betriebssport während der Arbeitszeit fördert die Bewegung und verbessert nachweislich die Konzentrationsfähigkeit. Darüber hinaus kann ein regelmäßiges Fitnessprogramm die Krankheitsrate langfristig senken.",
         "en": "One advantage would undoubtedly be stress relief: company sports during working hours promote movement and demonstrably improve the ability to concentrate. In addition, a regular fitness program can lower the sickness rate in the long term.",
         "uk": "Однією з переваг, безсумнівно, було б зниження стресу: корпоративний спорт у робочий час сприяє руху та доведено покращує здатність до концентрації. Крім того, регулярна фітнес-програма може довгостроково знизити рівень захворюваності.",
@@ -19834,6 +19851,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "nominalisierung",
         "de": "<r>Andererseits</r> bedeutet eine Stunde Betriebssport pro Woche auch eine Stunde weniger für die eigentliche Arbeit, wodurch sich <g>die Arbeitsbelastung</g> an anderer Stelle erhöhen könnte. Zudem haben nicht alle Kolleginnen und Kollegen dieselbe körperliche Fitness, <k>sodass</k> ein verpflichtendes Programm manche eher überfordern als entlasten würde.",
         "en": "On the other hand, one hour of company sports per week also means one hour less for actual work, which could increase the workload elsewhere. Moreover, not all colleagues have the same physical fitness, so a mandatory program would overwhelm rather than relieve some of them.",
         "uk": "З іншого боку, одна година корпоративного спорту на тиждень означає й на одну годину менше часу на власне роботу, через що навантаження могло б зрости десь-інде. Крім того, не всі колеги мають однакову фізичну підготовку, тож обов'язкова програма радше перевантажувала б декого, ніж розвантажувала.",
@@ -19841,6 +19859,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "nominalisierung",
         "de": "<r>Deshalb schlage ich vor, dass</r> <g>die Teilnahme</g> am Fitnessprogramm freiwillig bleibt und stattdessen auch andere Formen der Gesundheitsförderung angeboten werden, etwa ergonomische Bildschirmarbeitsplätze oder eine bessere Pausenregelung.",
         "en": "That's why I suggest that participation in the fitness program remain voluntary, and that other forms of health promotion be offered instead, such as ergonomic screen workstations or better break arrangements.",
         "uk": "Тому я пропоную, щоб участь у фітнес-програмі лишалась добровільною, а натомість пропонувались і інші форми оздоровлення, наприклад ергономічні робочі місця з екраном або краще регулювання перерв.",
@@ -19848,6 +19867,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -19855,6 +19875,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Mark",
         "en": "Mark",
         "uk": "Марк",
@@ -19877,11 +19898,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити внутрішню програму підтримки: нових співробітників із закордонною кваліфікацією мають тимчасово залучати до іншого відділу на час процедури визнання, доки їхню кваліфікацію офіційно не визнають.",
       "ru": "Руководство хочет ввести внутреннюю программу поддержки: новых сотрудников с иностранной квалификацией должны временно привлекать к другому отделу на время процедуры признания, пока их квалификация официально не будет признана."
     },
-    "gram": "passiv_mit_sein",
     "name": "de_w_nina",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -19889,6 +19910,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung ein neues Förderprogramm: <c>Kolleginnen und Kollegen mit ausländischem Berufsabschluss sollen während des Anerkennungsverfahrens befristet in einer anderen Abteilung eingesetzt werden</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning a new support program: colleagues with a foreign professional qualification are to be temporarily assigned to a different department during the recognition procedure. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує нову програму підтримки: колег із закордонною професійною кваліфікацією мають тимчасово залучати до іншого відділу на час процедури визнання. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -19896,6 +19918,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "passiv_mit_sein",
         "de": "<r>Ich bin der Meinung, dass</r> diese Unterstützung längst überfällig war – vor allem für alle, deren Qualifikation hierzulande noch nicht <g>anerkannt ist</g>.",
         "en": "I am of the opinion that this support was long overdue – especially for everyone whose qualification is not yet recognized here.",
         "uk": "Я вважаю, що ця підтримка давно назріла — особливо для всіх, чия кваліфікація тут ще не визнана.",
@@ -19903,6 +19926,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "",
         "de": "<r>Ein Vorteil wäre</r> zweifellos, dass die betroffenen Kolleginnen und Kollegen während der oft langwierigen Anerkennung nicht einfach warten müssten, sondern schon jetzt praktische Erfahrung sammeln und sich in einer neuen Abteilung spezialisieren könnten – etwa in der IT-Abteilung oder in der Logistik.",
         "en": "One advantage would undoubtedly be that those affected wouldn't simply have to wait during the often lengthy recognition process, but could already gain practical experience and specialize in a new department – for example in the IT department or in logistics.",
         "uk": "Однією з переваг, безсумнівно, було б те, що постраждалим не довелося б просто чекати під час часто тривалого визнання, а вже зараз здобувати практичний досвід і спеціалізуватися в новому відділі — наприклад, в ІТ-відділі чи в логістиці.",
@@ -19910,6 +19934,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "passiv_mit_sein",
         "de": "<r>Andererseits</r> ist ein befristeter Einsatz in einer fremden Abteilung nicht für jeden einfach: Wer einen Antrag auf Anerkennung seiner Berufsqualifikation gestellt hat, muss ohnehin schon zahlreiche Dokumente aus dem Herkunftsland einreichen, und <k>solange</k> der Antrag noch nicht <g>bearbeitet ist</g>, könnte die zusätzliche Umstellung am Arbeitsplatz manche eher verunsichern als entlasten.",
         "en": "On the other hand, a temporary assignment to an unfamiliar department isn't easy for everyone: anyone who has submitted an application for recognition of their professional qualification often already has to submit numerous documents from their country of origin, and as long as the application hasn't been processed yet, the additional adjustment at work could unsettle some people rather than relieve them.",
         "uk": "З іншого боку, тимчасове переведення до незнайомого відділу не для кожного просте: той, хто подав заявку на визнання своєї професійної кваліфікації, часто й так має подати чимало документів із країни походження, а поки заявку ще не опрацьовано, додаткова зміна на роботі радше могла б декого дезорієнтувати, ніж розвантажити.",
@@ -19917,6 +19942,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "",
         "de": "<r>Deshalb schlage ich vor, dass</r> jeder betroffenen Person ein fester Ansprechpartner zur Seite gestellt wird, der beratend tätig ist und bei Fragen zum Verfahren sofort zuständig ist.",
         "en": "That's why I suggest that every affected person be assigned a fixed contact person who provides advice and is immediately responsible for questions about the procedure.",
         "uk": "Тому я пропоную, щоб кожній причетній особі призначили постійного контактного співробітника, який консультує і відразу відповідає за питання щодо процедури.",
@@ -19924,6 +19950,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -19931,6 +19958,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Nina",
         "en": "Nina",
         "uk": "Ніна",
@@ -19953,11 +19981,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити правило, що кожен підробіток надалі має бути письмово погоджений заздалегідь, щоб уникнути можливих перетинів з основною посадою згідно з тарифною угодою.",
       "ru": "Руководство хочет ввести правило, что каждая подработка впредь должна быть письменно согласована заранее, чтобы избежать возможных пересечений с основной должностью согласно тарифному договору."
     },
-    "gram": "konnektoren_zweiteilig",
     "name": "de_m_david",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -19965,6 +19993,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass <c>jede Nebentätigkeit künftig vorab genehmigt werden muss</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning that every side job will have to be approved in advance in the future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб кожен підробіток надалі попередньо погоджувався. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -19972,6 +20001,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "",
         "de": "<r>Ich bin der Meinung, dass</r> diese Regelung nachvollziehbar ist, <k>auch wenn</k> sie für manche Kolleginnen und Kollegen zusätzlichen Aufwand bedeutet.",
         "en": "I am of the opinion that this policy is understandable, even if it means extra effort for some colleagues.",
         "uk": "Я вважаю, що це правило зрозуміле, навіть якщо воно означає додаткові клопоти для деяких колег.",
@@ -19979,6 +20009,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "konnektoren_zweiteilig",
         "de": "<r>Ein Vorteil wäre</r> zweifellos, dass so <g>sowohl</g> die Work-Life-Balance der Mitarbeitenden <g>als auch</g> die Einhaltung des Tarifvertrags im Blick behalten werden. Wer bereits unter Zeitdruck steht, wird auf diese Weise vor einer zu großen Verantwortung geschützt.",
         "en": "One advantage would undoubtedly be that this way both the employees' work-life balance and compliance with the collective agreement are kept in view. Anyone already under time pressure is thus protected from taking on too much responsibility.",
         "uk": "Однією з переваг, безсумнівно, було б те, що так враховується і баланс роботи й особистого життя співробітників, і дотримання тарифної угоди. Той, хто вже й так перебуває під тиском часу, у такий спосіб захищений від надто великої відповідальності.",
@@ -19986,6 +20017,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "konnektoren_zweiteilig",
         "de": "<r>Andererseits</r> ist eine Nebentätigkeit für viele <g>nicht nur</g> eine finanzielle Notwendigkeit, <g>sondern auch</g> eine Möglichkeit, sich in einem anderen Bereich zu qualifizieren. Eine zusätzliche Genehmigungspflicht könnte manche eher abschrecken, als sie zu unterstützen.",
         "en": "On the other hand, for many a side job is not only a financial necessity but also a chance to gain qualifications in another field. An additional approval requirement could discourage some people rather than support them.",
         "uk": "З іншого боку, для багатьох підробіток — це не лише фінансова необхідність, а й можливість здобути кваліфікацію в іншій сфері. Додатковий обов'язок погодження радше міг би відлякати декого, ніж підтримати.",
@@ -19993,6 +20025,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "",
         "de": "<r>Deshalb schlage ich vor, dass</r> die Genehmigung nur bei einer tatsächlichen Überschneidung mit der Hauptstelle erforderlich ist, und nicht generell für jede Nebentätigkeit.",
         "en": "That's why I suggest that approval only be required in the case of an actual overlap with the main position, and not generally for every side job.",
         "uk": "Тому я пропоную, щоб погодження вимагалося лише у випадку реального перетину з основною посадою, а не загалом для кожного підробітку.",
@@ -20000,6 +20033,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20007,6 +20041,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "David",
         "en": "David",
         "uk": "Давид",
@@ -20029,11 +20064,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити щорічний 360-градусний зворотний зв'язок: колеги мають оцінювати одне одного за ключовими компетенціями, як-от здатність працювати в команді, комунікативні навички та стресостійкість.",
       "ru": "Руководство хочет ввести ежегодную 360-градусную обратную связь: коллеги должны оценивать друг друга по ключевым компетенциям, таким как способность работать в команде, коммуникативные навыки и стрессоустойчивость."
     },
-    "gram": "negation",
     "name": "de_m_alex",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20041,6 +20076,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung <c>ein jährliches 360-Grad-Feedback</c> zu unseren Schlüsselqualifikationen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning an annual 360-degree feedback on our key qualifications. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує щорічний 360-градусний зворотний зв'язок щодо наших ключових компетенцій. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20048,6 +20084,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "negation",
         "de": "<r>Ich bin der Meinung, dass</r> ein solches Feedback zu Eigenschaften wie Zuverlässigkeit oder Lernbereitschaft grundsätzlich hilfreich sein kann, auch wenn es <g>kein Ersatz</g> für ein persönliches Gespräch mit der Führungskraft sein sollte.",
         "en": "I am of the opinion that such feedback on qualities like reliability or willingness to learn can basically be helpful, even though it should be no substitute for a personal conversation with one's manager.",
         "uk": "Я вважаю, що такий зворотний зв'язок щодо таких якостей, як надійність чи готовність вчитися, в принципі може бути корисним, хоча він не повинен замінювати особисту розмову з керівником.",
@@ -20055,6 +20092,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "",
         "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir so ehrlicher erfahren, wie unsere Teamfähigkeit, unsere Kommunikationsfähigkeit, unsere Eigeninitiative oder unsere Belastbarkeit von den Kolleginnen und Kollegen wahrgenommen wird – Aspekte, die man selbst oft gar nicht einschätzen kann.",
         "en": "One advantage would undoubtedly be that we find out more honestly how our teamwork skills, our communication skills, our initiative or our resilience are perceived by colleagues – aspects that one often can't assess in oneself at all.",
         "uk": "Однією з переваг, безсумнівно, було б те, що ми чесніше дізнаємося, як колеги сприймають нашу здатність працювати в команді, комунікативні навички, ініціативність чи стресостійкість — аспекти, які самому оцінити часто взагалі неможливо.",
@@ -20062,6 +20100,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "negation",
         "de": "<r>Andererseits</r> ist anonymes Feedback <g>nicht immer konstruktiv</g>: Manche Rückmeldungen könnten unfair oder gar nicht nachvollziehbar sein und dadurch sogar das Arbeitsklima belasten, <k>wenn</k> <g>niemand</g> die Kritik näher begründen muss.",
         "en": "On the other hand, anonymous feedback isn't always constructive: some comments could be unfair or not comprehensible at all and could even harm the working atmosphere, if no one has to justify the criticism in more detail.",
         "uk": "З іншого боку, анонімний зворотний зв'язок не завжди конструктивний: деякі відгуки можуть бути несправедливими або взагалі незрозумілими і навіть погіршити атмосферу в колективі, якщо ніхто не мусить детальніше обґрунтувати критику.",
@@ -20069,6 +20108,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "negation",
         "de": "<r>Deshalb schlage ich vor, dass</r> jede Rückmeldung kurz schriftlich begründet werden muss, damit <g>keine</g> Bewertung ohne konkretes Beispiel abgegeben wird.",
         "en": "That's why I suggest that every comment has to be briefly justified in writing, so that no assessment is given without a concrete example.",
         "uk": "Тому я пропоную, щоб кожен відгук коротко обґрунтовувався письмово, щоб жодна оцінка не давалася без конкретного прикладу.",
@@ -20076,6 +20116,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20083,6 +20124,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Alex",
         "en": "Alex",
         "uk": "Алекс",
@@ -20105,11 +20147,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити правило, що кожна вакансія спершу два тижні оголошується всередині компанії, перш ніж зовнішнє оголошення публікується на джоб-порталах.",
       "ru": "Руководство хочет ввести правило, что каждая вакансия сначала две недели объявляется внутри компании, прежде чем внешнее объявление публикуется на джоб-порталах."
     },
-    "gram": "konnektoren_zweiteilig",
     "name": "de_w_julia",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20117,13 +20159,15 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
-        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass jede offene Stelle künftig zunächst <c>zwei Wochen lang</c> intern <g>ausgeschrieben wird</g>, bevor sie extern auf Jobportalen veröffentlicht wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
+        "gram": "",
+        "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass jede offene Stelle künftig zunächst <c>zwei Wochen lang</c> intern ausgeschrieben wird, bevor sie extern auf Jobportalen veröffentlicht wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning that every open position will first be posted internally for two weeks in the future, before it is published externally on job portals. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб кожна вакансія надалі спершу два тижні оголошувалась всередині компанії, перш ніж публікуватись зовні на джоб-порталах. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
         "ru": "как вы, наверное, уже знаете, руководство планирует, чтобы каждая вакансия впредь сначала две недели объявлялась внутри компании, прежде чем публиковаться извне на джоб-порталах. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
       },
       {
         "role": "meinung",
+        "gram": "",
         "de": "<r>Ich bin der Meinung, dass</r> diese Regelung fair ist, <k>weil</k> sie allen Kolleginnen und Kollegen die gleiche Chance gibt, sich auf eine neue Stelle zu bewerben.",
         "en": "I am of the opinion that this policy is fair, because it gives all colleagues the same chance to apply for a new position.",
         "uk": "Я вважаю, що це правило справедливе, бо воно дає всім колегам однаковий шанс податися на нову вакансію.",
@@ -20131,6 +20175,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "konnektoren_zweiteilig",
         "de": "<r>Ein Vorteil wäre</r> zweifellos, dass <g>sowohl</g> unsere Erfahrung im Unternehmen <g>als auch</g> unsere Kenntnis der internen Abläufe endlich stärker berücksichtigt werden. <g>Je früher</g> man sich intern bewirbt, <g>desto größer</g> sind die Chancen, wirklich gehört zu werden.",
         "en": "One advantage would undoubtedly be that both our experience in the company and our knowledge of internal processes are finally given greater consideration. The earlier one applies internally, the greater the chances of really being heard.",
         "uk": "Однією з переваг, безсумнівно, було б те, що нарешті більше враховуватиметься і наш досвід у компанії, і наше знання внутрішніх процесів. Що раніше подаєшся всередині компанії, то більші шанси, що тебе справді почують.",
@@ -20138,6 +20183,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "relativsatz_wer",
         "de": "<r>Andererseits</r> ist nicht jede Stelle für interne Kolleginnen und Kollegen interessant, und <g>wer</g> schon lange auf eine bestimmte Position wartet, könnte trotzdem leer ausgehen, wenn die Anforderungen <g>weder</g> mit der eigenen Erfahrung <g>noch</g> mit der gewünschten Weiterentwicklung übereinstimmen.",
         "en": "On the other hand, not every position is interesting for internal colleagues, and anyone who has been waiting a long time for a certain position could still end up empty-handed if the requirements match neither their own experience nor their desired development.",
         "uk": "З іншого боку, не кожна вакансія цікава внутрішнім колегам, і той, хто вже давно чекає на певну посаду, все одно міг би лишитися ні з чим, якщо вимоги не збігаються ні з власним досвідом, ні з бажаним розвитком.",
@@ -20145,6 +20191,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "konnektoren_infinitiv",
         "de": "<r>Deshalb schlage ich vor, dass</r> die interne Ausschreibung <g>nicht nur</g> online im Intranet sichtbar ist, <g>sondern auch</g> in den Teambesprechungen aktiv angesprochen wird, <g>um</g> wirklich alle zu erreichen.",
         "en": "That's why I suggest that the internal posting not only be visible online on the intranet, but also actively mentioned in team meetings, in order to really reach everyone.",
         "uk": "Тому я пропоную, щоб внутрішнє оголошення було не лише видимим онлайн в інтранеті, а й активно згадувалось на командних зустрічах, щоб справді дійти до всіх.",
@@ -20152,6 +20199,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20159,6 +20207,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Julia",
         "en": "Julia",
         "uk": "Юлія",
@@ -20181,11 +20230,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити правило, що всі співробітники при переведенні всередині компанії мають подавати оновлене табличне резюме з даними про кар'єрний шлях, освіту, а також знання ІТ та мов.",
       "ru": "Руководство хочет ввести правило, что все сотрудники при переводе внутри компании должны подавать обновлённое табличное резюме с данными о карьерном пути, образовании, а также знании ИТ и языков."
     },
-    "gram": "nominalisierung",
     "name": "de_w_anna",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20193,6 +20242,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, dass bei jedem internen Stellenwechsel künftig <c>ein aktualisierter Lebenslauf eingereicht werden muss</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning that an updated CV will have to be submitted for every internal job change in the future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує, щоб надалі при кожному внутрішньому переведенні подавалося оновлене резюме. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20200,6 +20250,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "nominalisierung",
         "de": "<r>Ich bin der Meinung, dass</r> diese <g>Aktualisierung</g> grundsätzlich sinnvoll ist, denn ein veralteter Lebenslauf mit falschen Angaben zur Ausbildung oder zu den Sprachkenntnissen wirkt wenig seriös.",
         "en": "I am of the opinion that this update basically makes sense, because an outdated CV with incorrect information about one's education or language skills doesn't look very serious.",
         "uk": "Я вважаю, що це оновлення в принципі має сенс, адже застаріле резюме з неправильними даними про освіту чи знання мов виглядає не надто серйозно.",
@@ -20207,6 +20258,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "partizipien_als_adjektive",
         "de": "<r>Ein Vorteil wäre</r> zweifellos, dass die Personalabteilung so jederzeit einen gut <g>gepflegten</g> Überblick über unseren Werdegang, unsere Abschlüsse und unsere EDV-Kenntnisse hat – gerade bei internen Bewerbungen spart das viel Zeit. Außerdem sind wir dann auch selbst <g>verantwortlich für</g> unsere eigenen Angaben.",
         "en": "One advantage would undoubtedly be that HR always has a well-maintained overview of our career history, our qualifications and our IT skills – which saves a lot of time especially for internal applications. Besides, we then also become responsible for our own information ourselves.",
         "uk": "Однією з переваг, безсумнівно, було б те, що відділ кадрів завжди мав би добре впорядкований огляд нашого кар'єрного шляху, наших кваліфікацій та знань ІТ — це особливо економить час при внутрішніх заявках. Крім того, тоді ми самі відповідаємо за власні дані.",
@@ -20214,6 +20266,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "indefinitpronomen",
         "de": "<r>Andererseits</r> müssen <g>manche</g> Kolleginnen und Kollegen ihren Lebenslauf kaum je aktualisieren, <k>weil</k> sich an ihrer Tätigkeit über Jahre hinweg nichts ändert. Trotzdem <g>sollen</g> offenbar alle regelmäßig dieselbe Arbeit erledigen, was wenig einheitlich wirkt.",
         "en": "On the other hand, some colleagues hardly ever need to update their CV, because nothing changes about their job for years. Nevertheless, everyone is apparently supposed to do the same task regularly, which doesn't seem very consistent.",
         "uk": "З іншого боку, деяким колегам майже ніколи не доводиться оновлювати резюме, бо в їхній діяльності роками нічого не змінюється. Попри це, усі, вочевидь, мають регулярно виконувати одну й ту саму роботу, що виглядає не надто послідовно.",
@@ -20221,6 +20274,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "es_pronomen",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir <g>es</g> uns einfacher machen und künftig nur die relevanten Angaben zum aktuellen Abschluss oder zu neuen Sprachkenntnissen aktualisieren müssen.",
         "en": "That's why I suggest that we make it easier for ourselves and in future only have to update the relevant information about our current qualification or new language skills.",
         "uk": "Тому я пропоную, щоб ми спростили собі це і надалі оновлювали лише актуальні дані про останню кваліфікацію чи нові знання мов.",
@@ -20228,6 +20282,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20235,6 +20290,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Anna",
         "en": "Anna",
         "uk": "Анна",
@@ -20257,11 +20313,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче надалі активніше навчати власних учнів у рамках дуальної освіти, замість наймати вже кваліфікованих фахівців ззовні.",
       "ru": "Руководство хочет впредь активнее обучать собственных учеников в рамках дуального образования, вместо того чтобы нанимать уже квалифицированных специалистов извне."
     },
-    "gram": "konnektoren_infinitiv",
     "name": "de_w_nina",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20269,6 +20325,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>künftig verstärkt eigene Azubis auszubilden</c>, <k>anstatt</k> fertige Fachkräfte einzustellen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to train more of its own apprentices in the future, instead of hiring ready-made specialists. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує надалі активніше навчати власних учнів, замість наймати вже готових фахівців. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20276,6 +20333,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "",
         "de": "<r>Ich bin der Meinung, dass</r> diese Entscheidung langfristig klug ist, auch wenn eine duale Ausbildung am Anfang mehr Zeit und Betreuung erfordert als die Einstellung fertiger Fachkräfte.",
         "en": "I am of the opinion that this decision is wise in the long run, even though a dual apprenticeship requires more time and supervision at the beginning than hiring ready-made specialists.",
         "uk": "Я вважаю, що це рішення далекоглядне, навіть якщо дуальна освіта на початку вимагає більше часу й супроводу, ніж наймання готових фахівців.",
@@ -20283,6 +20341,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "relativsatz_wer",
         "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir die Azubis von Anfang an nach unseren eigenen Standards ausbilden können, <k>ohne</k> später aufwendig nachschulen zu müssen. <g>Wer</g> die Berufsschule mit guten Noten abschließt, hat zudem oft schon während der Ausbildung realistische Übernahmechancen.",
         "en": "One advantage would undoubtedly be that we can train apprentices according to our own standards from the very beginning, without having to retrain them extensively later. Anyone who finishes vocational school with good grades also often already has realistic chances of being taken on during the apprenticeship.",
         "uk": "Однією з переваг, безсумнівно, було б те, що ми можемо з самого початку навчати учнів за власними стандартами, без потреби згодом складно перенавчати їх. До того ж, той, хто закінчує професійне училище з хорошими оцінками, часто вже під час навчання має реальні шанси на працевлаштування.",
@@ -20290,6 +20349,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "",
         "de": "<r>Andererseits</r> kostet eine duale Ausbildung die Firma über mehrere Jahre hinweg Zeit und Geld, und nicht jeder Azubi bleibt am Ende auch wirklich im Betrieb. <k>Je länger</k> die Ausbildung dauert, <k>desto größer</k> wird zudem das Risiko, dass gut ausgebildete Azubis nach dem Abschluss zu einem anderen Arbeitgeber wechseln.",
         "en": "On the other hand, a dual apprenticeship costs the company time and money over several years, and not every apprentice actually stays with the company in the end. The longer the training takes, the greater the risk also becomes that well-trained apprentices will switch to a different employer after completing it.",
         "uk": "З іншого боку, дуальна освіта коштує фірмі часу й грошей упродовж кількох років, і не кожен учень зрештою справді залишається в компанії. Що довше триває навчання, то більшим стає ризик, що добре навчені учні після завершення перейдуть до іншого роботодавця.",
@@ -20297,6 +20357,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "nomen_verb_verbindungen",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir uns stärker um den Kontakt zu Berufsschulen bemühen, <k>um</k> frühzeitig für unseren Ausbildungsbetrieb zu werben, <k>statt</k> erst kurz vor Ausbildungsende <g>in Betracht zu ziehen</g>, wer übernommen wird.",
         "en": "That's why I suggest that we make more of an effort to stay in contact with vocational schools, in order to promote our training company early on, instead of only considering who will be taken on shortly before the end of the apprenticeship.",
         "uk": "Тому я пропоную, щоб ми активніше підтримували контакт із професійними училищами, щоб заздалегідь рекламувати наше підприємство як місце навчання, замість того щоб розглядати питання працевлаштування лише незадовго до завершення навчання.",
@@ -20304,6 +20365,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20311,6 +20373,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Nina",
         "en": "Nina",
         "uk": "Ніна",
@@ -20333,11 +20396,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити єдину програму адаптації: усі нові співробітники — незалежно від того, чи це постійна посада, строковий контракт, чи стажування — мають надалі проходити той самий структурований етап введення в посаду з визначеними заходами підвищення кваліфікації.",
       "ru": "Руководство хочет ввести единую программу адаптации: все новые сотрудники — независимо от того, постоянная это должность, срочный контракт или стажировка — должны впредь проходить тот же структурированный этап введения в должность с определёнными мероприятиями по повышению квалификации."
     },
-    "gram": "modalsatz_dadurch_indem",
     "name": "de_m_david",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20345,6 +20408,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung <c>ein einheitliches Onboarding-Programm für alle neuen Mitarbeitenden</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning a uniform onboarding program for all new employees. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує єдину програму адаптації для всіх нових співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20352,6 +20416,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "",
         "de": "<r>Ich bin der Meinung, dass</r> diese Idee grundsätzlich gut ist, auch wenn eine einheitliche Einarbeitungsphase nicht für jede Position gleich sinnvoll sein wird.",
         "en": "I am of the opinion that this idea is basically good, even though a uniform induction phase won't be equally useful for every position.",
         "uk": "Я вважаю, що ця ідея загалом хороша, навіть якщо єдиний етап введення в посаду буде не для кожної позиції однаково доречним.",
@@ -20359,6 +20424,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "waehrend_genitiv_praeposition",
         "de": "<r>Ein Vorteil wäre</r> zweifellos, dass neue Mitarbeitende <g>während der Einarbeitungsphase</g> von Anfang an dieselben Grundlagen erhalten und sich dadurch schneller im Unternehmen zurechtfinden. <k>Indem</k> wir feste Weiterbildungsmaßnahmen einplanen, sorgen wir außerdem für eine gleichbleibende Qualität der Einarbeitung.",
         "en": "One advantage would undoubtedly be that new employees receive the same basics from the very beginning during the induction phase, and thus find their way around the company more quickly. By planning fixed training measures, we also ensure a consistent quality of induction.",
         "uk": "Однією з переваг, безсумнівно, було б те, що нові співробітники з самого початку отримують ту саму базову інформацію під час етапу введення в посаду і завдяки цьому швидше орієнтуються в компанії. Плануючи чіткі заходи підвищення кваліфікації, ми також забезпечуємо стабільну якість введення в посаду.",
@@ -20366,6 +20432,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "konjunktiv2_als_ob",
         "de": "<r>Andererseits</r> wirkt ein einheitliches Programm für erfahrene Quereinsteiger schnell so, <k>als ob</k> sie noch nichts vom Berufsleben <g>wüssten</g>. Wer bereits jahrelange Berufserfahrung mitbringt, braucht <g>wohl</g> kaum dieselbe ausführliche Einführung wie ein Praktikant ohne Vorkenntnisse.",
         "en": "On the other hand, a uniform program quickly makes experienced career-changers feel as if they didn't know anything about working life yet. Anyone who already brings years of professional experience probably hardly needs the same detailed introduction as an intern without prior knowledge.",
         "uk": "З іншого боку, єдина програма швидко змушує досвідчених людей, які змінили професію, почуватися так, ніби вони ще нічого не знають про робоче життя. Той, хто вже має багаторічний професійний досвід, навряд чи потребує такого ж детального введення, як стажист без попередніх знань.",
@@ -20373,6 +20440,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "indirekte_rede_konjunktiv1",
         "de": "Die Personalabteilung betont zwar, <g>das Programm sei</g> für alle gleich sinnvoll. <r>Deshalb schlage ich vor, dass</r> sie es dennoch je nach Vorerfahrung individuell anpasst, <k>anstatt</k> allen dieselbe Einarbeitungsphase vorzuschreiben.",
         "en": "HR does point out that the program is said to be equally useful for everyone. That's why I suggest that they nevertheless adapt it individually according to prior experience, instead of prescribing the same induction phase for everyone.",
         "uk": "Відділ кадрів наголошує, що програма нібито однаково корисна для всіх. Тому я пропоную, щоб вони все ж адаптували її індивідуально залежно від попереднього досвіду, замість того щоб приписувати всім однаковий етап введення в посаду.",
@@ -20380,6 +20448,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20387,6 +20456,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "David",
         "en": "David",
         "uk": "Давид",
@@ -20409,11 +20479,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче скасувати всі окремі кабінети й натомість облаштувати єдиний офіс відкритого типу, де всі співробітники ділитимуть спільний робочий простір.",
       "ru": "Руководство хочет упразднить все отдельные кабинеты и вместо этого обустроить единый офис открытого типа, где все сотрудники будут делить общее рабочее пространство."
     },
-    "gram": "vergleichssaetze_als_wie_je_desto",
     "name": "de_m_alex",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20421,6 +20491,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>alle Einzelbüros abzuschaffen und stattdessen ein großes Großraumbüro einzurichten</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to abolish all individual offices and set up one large open-plan office instead. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує скасувати всі окремі кабінети й натомість облаштувати один великий офіс відкритого типу. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20428,6 +20499,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "",
         "de": "<r>Ich bin der Meinung, dass</r> diese Umstellung gut gemeint ist, auch wenn die Ergonomie am Arbeitsplatz dabei nicht für jeden gleich gut berücksichtigt werden kann.",
         "en": "I am of the opinion that this change is well-intentioned, even though workplace ergonomics can't be considered equally well for everyone in the process.",
         "uk": "Я вважаю, що ця зміна продумана з добрими намірами, навіть якщо ергономіку робочого місця при цьому не можна врахувати однаково добре для кожного.",
@@ -20435,6 +20507,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "",
         "de": "<r>Ein Vorteil wäre</r> zweifellos, dass wir uns im Großraumbüro schneller austauschen können und spontane Besprechungen viel einfacher werden. <k>Je offener</k> der Raum gestaltet ist, <k>desto leichter</k> fällt uns die Zusammenarbeit zwischen den Abteilungen.",
         "en": "One advantage would undoubtedly be that we can exchange ideas more quickly in the open-plan office and spontaneous meetings become much easier. The more open the space is designed, the easier collaboration between departments becomes for us.",
         "uk": "Однією з переваг, безсумнівно, було б те, що у відкритому офісі ми можемо швидше обмінюватися думками, а спонтанні наради стають набагато простішими. Що відкритіший простір, то легше нам співпрацювати між відділами.",
@@ -20442,6 +20515,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "wortstellung",
         "de": "<r>Andererseits</r> steigt in einem Großraumbüro meist auch der Lärmpegel deutlich an, und nicht jeder fühlt sich dort gleich wohl. Vor allem für konzentriertes Arbeiten <g>fehlt</g> uns dann oft ein ruhiger Rückzugsort.",
         "en": "On the other hand, the noise level in an open-plan office usually also rises significantly, and not everyone feels equally comfortable there. Especially for concentrated work, we then often lack a quiet retreat.",
         "uk": "З іншого боку, у відкритому офісі зазвичай також помітно зростає рівень шуму, і не кожному там однаково комфортно. Особливо для зосередженої роботи нам тоді часто бракує тихого куточка.",
@@ -20449,6 +20523,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "nomen_verb_verbindungen",
         "de": "<r>Deshalb schlage ich vor, dass</r> die Geschäftsleitung diese <g>Entscheidung</g> nicht allein <g>trifft</g>, sondern uns vorher noch einmal befragt. So könnten neben dem Großraumbüro auch einige kleinere Rückzugsräume für konzentriertes Arbeiten oder vertrauliche Gespräche erhalten bleiben.",
         "en": "That's why I suggest that management not make this decision alone, but ask us again beforehand. That way, in addition to the open-plan office, some smaller retreat rooms for concentrated work or confidential conversations could also be kept.",
         "uk": "Тому я пропоную, щоб керівництво не приймало це рішення самостійно, а заздалегідь ще раз запитало нашу думку. Так, окрім офісу відкритого типу, могли б зберегтися і кілька менших приміщень для зосередженої роботи чи конфіденційних розмов.",
@@ -20456,6 +20531,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20463,6 +20539,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Alex",
         "en": "Alex",
         "uk": "Алекс",
@@ -25861,11 +25938,10 @@ var EMAILS = [
 ];
 
 
-var STORY = [
+var STORY_TASK = [
   {
-    "id": "story_001",
-    "cat": "Story",
-    "name": "de_m_david",
+    "id": "story_task_001",
+    "topicNum": 1,
     "topic": {
       "de": "Beschreibung eines Arbeitgebers",
       "uk": "Опис роботодавця",
@@ -25873,11 +25949,188 @@ var STORY = [
       "ru": "Описание работодателя"
     },
     "task": {
-      "de": "Thema 1: Beschreiben Sie einen Arbeitgeber, für den Sie gearbeitet haben oder arbeiten möchten.<br><br>Mögliche Fragen:<br>Firma? Wo?<br>Welche Branche?<br>Welche Abteilung / en?<br>Was waren meine Aufgaben?<br>Welche Produkte oder Dienstleistungen wurden angeboten?<br>Wie war das Arbeitsklima?<br>Wie war der Chef?<br>Wie waren die Kollegen?<br>Herausforderungen?<br>Was hat mir in der Firma besonders gefallen?<br>Weiterbildungen? Fortbildungen?",
-      "uk": "Тема 1: Опишіть роботодавця, на якого ви працювали або хотіли б працювати.<br><br>Можливі запитання:<br>Фірма? Де?<br>Яка галузь?<br>Який(і) відділ(и)?<br>Якими були мої обов'язки?<br>Які продукти чи послуги пропонувались?<br>Яка була атмосфера в колективі?<br>Яким був керівник?<br>Якими були колеги?<br>Труднощі?<br>Що мені найбільше сподобалось у фірмі?<br>Підвищення кваліфікації? Навчання?",
-      "en": "Topic 1: Describe an employer you have worked for or would like to work for.<br><br>Possible questions:<br>Company? Where?<br>Which industry?<br>Which department(s)?<br>What were my tasks?<br>What products or services were offered?<br>What was the working atmosphere like?<br>What was the boss like?<br>What were the colleagues like?<br>Challenges?<br>What did I like most about the company?<br>Further training? Professional development?",
-      "ru": "Тема 1: Опишите работодателя, на которого вы работали или хотели бы работать.<br><br>Возможные вопросы:<br>Фирма? Где?<br>Какая отрасль?<br>Какой(ие) отдел(ы)?<br>Какими были мои обязанности?<br>Какие продукты или услуги предлагались?<br>Какая была атмосфера в коллективе?<br>Каким был руководитель?<br>Какими были коллеги?<br>Трудности?<br>Что мне больше всего понравилось в фирме?<br>Повышение квалификации? Обучение?"
+      "de": "Beschreiben Sie einen Arbeitgeber, für den Sie gearbeitet haben oder arbeiten möchten.",
+      "uk": "Опишіть роботодавця, на якого ви працювали або хотіли б працювати.",
+      "en": "Describe an employer you have worked for or would like to work for.",
+      "ru": "Опишите работодателя, на которого вы работали или хотели бы работать."
     },
+    "tips": {
+      "de": "Mögliche Fragen:<br>Firma? Wo?<br>Welche Branche?<br>Welche Abteilung / en?<br>Was waren meine Aufgaben?<br>Welche Produkte oder Dienstleistungen wurden angeboten?<br>Wie war das Arbeitsklima?<br>Wie war der Chef?<br>Wie waren die Kollegen?<br>Herausforderungen?<br>Was hat mir in der Firma besonders gefallen?<br>Weiterbildungen? Fortbildungen?",
+      "uk": "Можливі запитання:<br>Фірма? Де?<br>Яка галузь?<br>Який(і) відділ(и)?<br>Якими були мої обов'язки?<br>Які продукти чи послуги пропонувались?<br>Яка була атмосфера в колективі?<br>Яким був керівник?<br>Якими були колеги?<br>Труднощі?<br>Що мені найбільше сподобалось у фірмі?<br>Підвищення кваліфікації? Навчання?",
+      "en": "Possible questions:<br>Company? Where?<br>Which industry?<br>Which department(s)?<br>What were my tasks?<br>What products or services were offered?<br>What was the working atmosphere like?<br>What was the boss like?<br>What were the colleagues like?<br>Challenges?<br>What did I like most about the company?<br>Further training? Professional development?",
+      "ru": "Возможные вопросы:<br>Фирма? Где?<br>Какая отрасль?<br>Какой(ие) отдел(ы)?<br>Какими были мои обязанности?<br>Какие продукты или услуги предлагались?<br>Какая была атмосфера в коллективе?<br>Каким был руководитель?<br>Какими были коллеги?<br>Трудности?<br>Что мне больше всего понравилось в фирме?<br>Повышение квалификации? Обучение?"
+    },
+    "questions": []
+  },
+  {
+    "id": "story_task_002",
+    "topicNum": 2,
+    "topic": {
+      "de": "Ein gutes Arbeitsumfeld",
+      "uk": "Гарне робоче середовище",
+      "en": "A good working environment",
+      "ru": "Хорошая рабочая среда"
+    },
+    "task": {
+      "de": "Beschreiben Sie, wie Sie sich ein gutes Arbeitsumfeld vorstellen.",
+      "uk": "Опишіть, яким ви уявляєте собі гарне робоче середовище.",
+      "en": "Describe how you imagine a good working environment.",
+      "ru": "Опишите, какой вы представляете себе хорошую рабочую среду."
+    },
+    "tips": {
+      "de": "Mögliche Fragen:<br>Jobsicherheit?<br>Lohn / Gehalt?<br>Wie sind die Karrierechancen?<br>Wie ist die Kommunikation in der Firma?<br>Arbeitsklima?<br>Arbeitszeit?<br>Weiterbildungen? Fortbildungen?<br>Was möchte ich nicht?<br>Wo könnte es dieses Umfeld geben?<br>Beispiele aus ihrer Berufserfahrung",
+      "uk": "Можливі запитання:<br>Гарантія зайнятості?<br>Заробітна плата?<br>Які кар'єрні перспективи?<br>Яка комунікація у фірмі?<br>Атмосфера в колективі?<br>Робочий час?<br>Підвищення кваліфікації? Навчання?<br>Чого я не хочу?<br>Де могло б існувати таке середовище?<br>Приклади з вашого професійного досвіду",
+      "en": "Possible questions:<br>Job security?<br>Wages / salary?<br>What are the career opportunities like?<br>What is communication like in the company?<br>Working atmosphere?<br>Working hours?<br>Further training? Professional development?<br>What don't I want?<br>Where could this environment exist?<br>Examples from your professional experience",
+      "ru": "Возможные вопросы:<br>Гарантия занятости?<br>Заработная плата?<br>Какие карьерные перспективы?<br>Какая коммуникация в компании?<br>Атмосфера в коллективе?<br>Рабочее время?<br>Повышение квалификации? Обучение?<br>Чего я не хочу?<br>Где могла бы существовать такая среда?<br>Примеры из вашего профессионального опыта"
+    },
+    "questions": []
+  },
+  {
+    "id": "story_task_003",
+    "topicNum": 3,
+    "topic": {
+      "de": "Ereignisse und Erfahrungen, die die Berufswahl beeinflusst haben",
+      "uk": "Події та досвід, що вплинули на вибір професії",
+      "en": "Events and experiences that influenced the choice of profession",
+      "ru": "События и опыт, повлиявшие на выбор профессии"
+    },
+    "task": {
+      "de": "Beschreiben Sie Ereignisse und Erfahrungen, die Ihre Berufswahl beeinflusst haben.",
+      "uk": "Опишіть події та досвід, які вплинули на ваш вибір професії.",
+      "en": "Describe events and experiences that influenced your choice of profession.",
+      "ru": "Опишите события и опыт, повлиявшие на ваш выбор профессии."
+    },
+    "tips": {
+      "de": "Mögliche Fragen:<br>Stationen (Schulabschluss, Ausbildung / Studium, …)<br>Träume, Begabungen, Talente<br>Wichtige Personen für die Berufswahl?<br>Motivation?<br>Folgen?<br>Würden Sie diesen Beruf wieder wählen?",
+      "uk": "Можливі запитання:<br>Етапи (закінчення школи, навчання / навчання у виші, …)<br>Мрії, здібності, таланти<br>Важливі люди для вибору професії?<br>Мотивація?<br>Наслідки?<br>Чи обрали б ви цю професію знову?",
+      "en": "Possible questions:<br>Stages (school graduation, training / studies, …)<br>Dreams, aptitudes, talents<br>Important people for your career choice?<br>Motivation?<br>Consequences?<br>Would you choose this profession again?",
+      "ru": "Возможные вопросы:<br>Этапы (окончание школы, обучение / учёба в вузе, …)<br>Мечты, способности, таланты<br>Важные люди для выбора профессии?<br>Мотивация?<br>Последствия?<br>Выбрали бы вы эту профессию снова?"
+    },
+    "questions": []
+  },
+  {
+    "id": "story_task_004",
+    "topicNum": 4,
+    "topic": {
+      "de": "Ein berufliches Vorbild",
+      "uk": "Професійний взірець",
+      "en": "A professional role model",
+      "ru": "Профессиональный образец для подражания"
+    },
+    "task": {
+      "de": "Beschreiben Sie eine Person aus Ihrem Umfeld, die für Sie ein berufliches Vorbild ist.",
+      "uk": "Опишіть людину з вашого оточення, яка є для вас професійним взірцем.",
+      "en": "Describe a person in your life who is a professional role model for you.",
+      "ru": "Опишите человека из вашего окружения, который является для вас профессиональным образцом для подражания."
+    },
+    "tips": {
+      "de": "Mögliche Fragen:<br>Welche Person?<br>Wie ist die Beziehung zu dieser Person?<br>Welche positiven Eigenschaften besitzt diese Person?<br>Welchen Einfluss hat / hatte diese Person auf Sie?",
+      "uk": "Можливі запитання:<br>Яка людина?<br>Які стосунки з цією людиною?<br>Якими позитивними якостями володіє ця людина?<br>Який вплив має / мала ця людина на вас?",
+      "en": "Possible questions:<br>Which person?<br>What is your relationship with this person?<br>What positive qualities does this person have?<br>What influence does / did this person have on you?",
+      "ru": "Возможные вопросы:<br>Какой человек?<br>Какие у вас отношения с этим человеком?<br>Какими положительными качествами обладает этот человек?<br>Какое влияние оказывает / оказывал этот человек на вас?"
+    },
+    "questions": []
+  },
+  {
+    "id": "story_task_005",
+    "topicNum": 5,
+    "topic": {
+      "de": "Vorgehen bei der Arbeitssuche",
+      "uk": "Порядок дій під час пошуку роботи",
+      "en": "Approach to job searching",
+      "ru": "Порядок действий при поиске работы"
+    },
+    "task": {
+      "de": "Beschreiben Sie das Vorgehen bei der Arbeitssuche für ein Land Ihrer Wahl.",
+      "uk": "Опишіть порядок дій під час пошуку роботи в обраній вами країні.",
+      "en": "Describe the process of job searching for a country of your choice.",
+      "ru": "Опишите порядок действий при поиске работы в выбранной вами стране."
+    },
+    "tips": {
+      "de": "Mögliche Fragen:<br>Wo suchen Sie nach Angeboten? (Zeitung, Internet, Jobbörse, Messen)<br>Welche Unterlagen benötigen Sie?<br>Was sollte im Bewerbungsschreiben stehen?<br>Was sollte im Lebenslauf stehen?<br>Wie bereiten Sie sich auf das Vorstellungsgespräch vor?",
+      "uk": "Можливі запитання:<br>Де ви шукаєте вакансії? (газета, інтернет, біржа праці, ярмарки вакансій)<br>Які документи вам потрібні?<br>Що має бути у супровідному листі?<br>Що має бути у резюме?<br>Як ви готуєтесь до співбесіди?",
+      "en": "Possible questions:<br>Where do you look for job offers? (newspaper, internet, job board, fairs)<br>What documents do you need?<br>What should be included in the cover letter?<br>What should be included in the CV?<br>How do you prepare for the job interview?",
+      "ru": "Возможные вопросы:<br>Где вы ищете вакансии? (газета, интернет, биржа труда, ярмарки)<br>Какие документы вам нужны?<br>Что должно быть в сопроводительном письме?<br>Что должно быть в резюме?<br>Как вы готовитесь к собеседованию?"
+    },
+    "questions": []
+  },
+  {
+    "id": "story_task_006",
+    "topicNum": 6,
+    "topic": {
+      "de": "Worauf es bei einem Bewerbungsgespräch ankommt",
+      "uk": "Що важливо на співбесіді",
+      "en": "What matters in a job interview",
+      "ru": "Что важно на собеседовании"
+    },
+    "task": {
+      "de": "Beschreiben Sie, worauf es bei einem Bewerbungsgespräch ankommt. Sprechen Sie über ein Land Ihrer Wahl.",
+      "uk": "Опишіть, що є важливим під час співбесіди. Розкажіть про обрану вами країну.",
+      "en": "Describe what matters in a job interview. Talk about a country of your choice.",
+      "ru": "Опишите, что важно на собеседовании. Расскажите о выбранной вами стране."
+    },
+    "tips": {
+      "de": "Mögliche Fragen:<br>Weg zur Firma?<br>Für welchen Beruf?<br>Wie bereitet man sich vor?<br>Kleidung?<br>Verhalten?<br>Gehaltsvorstellungen?",
+      "uk": "Можливі запитання:<br>Шлях до фірми?<br>На яку професію?<br>Як готуються до співбесіди?<br>Одяг?<br>Поведінка?<br>Очікування щодо зарплати?",
+      "en": "Possible questions:<br>Getting to the company?<br>For which profession?<br>How do you prepare?<br>Clothing?<br>Behavior?<br>Salary expectations?",
+      "ru": "Возможные вопросы:<br>Дорога до фирмы?<br>На какую профессию?<br>Как готовятся к собеседованию?<br>Одежда?<br>Поведение?<br>Ожидания по зарплате?"
+    },
+    "questions": []
+  },
+  {
+    "id": "story_task_007",
+    "topicNum": 7,
+    "topic": {
+      "de": "Eine minimalistische Lern-App",
+      "uk": "Мінімалістичний застосунок для вивчення мови",
+      "en": "A minimalist learning app",
+      "ru": "Минималистичное приложение для обучения"
+    },
+    "task": {
+      "de": "Beschreiben Sie ein Produkt / eine Dienstleistung Ihrer Wahl.",
+      "uk": "Опишіть продукт / послугу на ваш вибір.",
+      "en": "Describe a product / service of your choice.",
+      "ru": "Опишите продукт / услугу по вашему выбору."
+    },
+    "tips": {
+      "de": "Mögliche Fragen:<br>Welches Produkt?<br>Welche Merkmale?<br>Wo gibt es das?<br>Seit wann gibt es das Produkt?<br>Für was ist es gut bzw. welchen Nutzen hat es für den Kunden?<br>Vorteile?<br>Nachteile?<br>Erfolg?<br>Marketing? Veränderungen?",
+      "uk": "Можливі запитання:<br>Який продукт?<br>Які особливості?<br>Де це можна знайти?<br>Відколи існує цей продукт?<br>Для чого він потрібен, яку користь має для клієнта?<br>Переваги?<br>Недоліки?<br>Успіх?<br>Маркетинг? Зміни?",
+      "en": "Possible questions:<br>Which product?<br>What features?<br>Where is it available?<br>Since when has the product existed?<br>What is it good for, or what benefit does it offer the customer?<br>Advantages?<br>Disadvantages?<br>Success?<br>Marketing? Changes?",
+      "ru": "Возможные вопросы:<br>Какой продукт?<br>Какие особенности?<br>Где его можно найти?<br>С каких пор существует этот продукт?<br>Для чего он нужен, какую пользу приносит клиенту?<br>Преимущества?<br>Недостатки?<br>Успех?<br>Маркетинг? Изменения?"
+    },
+    "questions": []
+  },
+  {
+    "id": "story_task_008",
+    "topicNum": 8,
+    "topic": {
+      "de": "Geschäftsidee: eine Lern-App",
+      "uk": "Бізнес-ідея: застосунок для вивчення мови",
+      "en": "Business idea: a learning app",
+      "ru": "Бизнес-идея: приложение для обучения"
+    },
+    "task": {
+      "de": "Sie möchten sich selbstständig machen. Beschreiben Sie Ihre Geschäftsidee.",
+      "uk": "Ви хочете стати самозайнятим. Опишіть свою бізнес-ідею.",
+      "en": "You want to become self-employed. Describe your business idea.",
+      "ru": "Вы хотите стать самозанятым. Опишите свою бизнес-идею."
+    },
+    "tips": {
+      "de": "Mögliche Fragen:<br>Sich selbstständig machen womit?<br>Eigene Firma?<br>Welche Branche?<br>Wie Kunden gewinnen?<br>Wie sind Sie auf diese Idee gekommen?<br>Brauchen Sie Mitarbeiter?<br>Wie finanzieren?<br>Wo gibt es Unterstützung?<br>Gibt es bereits ähnliche Ideen / Firmen?",
+      "uk": "Можливі запитання:<br>Чим саме займатися самостійно?<br>Власна фірма?<br>Яка галузь?<br>Як залучати клієнтів?<br>Як ви прийшли до цієї ідеї?<br>Чи потрібні вам співробітники?<br>Як фінансувати?<br>Де можна отримати підтримку?<br>Чи є вже подібні ідеї / фірми?",
+      "en": "Possible questions:<br>Become self-employed doing what?<br>Own company?<br>Which industry?<br>How to attract customers?<br>How did you come up with this idea?<br>Do you need employees?<br>How to finance it?<br>Where is support available?<br>Are there already similar ideas / companies?",
+      "ru": "Возможные вопросы:<br>Чем именно заниматься самостоятельно?<br>Собственная фирма?<br>Какая отрасль?<br>Как привлекать клиентов?<br>Как вы пришли к этой идее?<br>Нужны ли вам сотрудники?<br>Как финансировать?<br>Где можно получить поддержку?<br>Есть ли уже похожие идеи / фирмы?"
+    },
+    "questions": []
+  }
+];
+
+var STORY = [
+  {
+    "id": "story_001",
+    "topicNum": 1,
+    "cat": "Story",
+    "name": "de_m_david",
     "parts": [
       {
         "role": "einleitung",
@@ -25942,24 +26195,15 @@ var STORY = [
         "en": "Thank you for your attention!",
         "ru": "Спасибо за внимание!"
       }
-    ]
+    ],
+    "answers": [],
+    "customQA": []
   },
   {
     "id": "story_002",
+    "topicNum": 2,
     "cat": "Story",
     "name": "de_m_david",
-    "topic": {
-      "de": "Ein gutes Arbeitsumfeld",
-      "uk": "Гарне робоче середовище",
-      "en": "A good working environment",
-      "ru": "Хорошая рабочая среда"
-    },
-    "task": {
-      "de": "Thema 2: Beschreiben Sie, wie Sie sich ein gutes Arbeitsumfeld vorstellen.<br><br>Mögliche Fragen:<br>Jobsicherheit?<br>Lohn / Gehalt?<br>Wie sind die Karrierechancen?<br>Wie ist die Kommunikation in der Firma?<br>Arbeitsklima?<br>Arbeitszeit?<br>Weiterbildungen? Fortbildungen?<br>Was möchte ich nicht?<br>Wo könnte es dieses Umfeld geben?<br>Beispiele aus ihrer Berufserfahrung",
-      "uk": "Тема 2: Опишіть, яким ви уявляєте собі гарне робоче середовище.<br><br>Можливі запитання:<br>Гарантія зайнятості?<br>Заробітна плата?<br>Які кар'єрні перспективи?<br>Яка комунікація у фірмі?<br>Атмосфера в колективі?<br>Робочий час?<br>Підвищення кваліфікації? Навчання?<br>Чого я не хочу?<br>Де могло б існувати таке середовище?<br>Приклади з вашого професійного досвіду",
-      "en": "Topic 2: Describe how you imagine a good working environment.<br><br>Possible questions:<br>Job security?<br>Wages / salary?<br>What are the career opportunities like?<br>What is communication like in the company?<br>Working atmosphere?<br>Working hours?<br>Further training? Professional development?<br>What don't I want?<br>Where could this environment exist?<br>Examples from your professional experience",
-      "ru": "Тема 2: Опишите, какой вы представляете себе хорошую рабочую среду.<br><br>Возможные вопросы:<br>Гарантия занятости?<br>Заработная плата?<br>Какие карьерные перспективы?<br>Какая коммуникация в компании?<br>Атмосфера в коллективе?<br>Рабочее время?<br>Повышение квалификации? Обучение?<br>Чего я не хочу?<br>Где могла бы существовать такая среда?<br>Примеры из вашего профессионального опыта"
-    },
     "parts": [
       {
         "role": "einleitung",
@@ -25996,24 +26240,15 @@ var STORY = [
         "en": "Thank you for your attention.",
         "ru": "Спасибо за внимание."
       }
-    ]
+    ],
+    "answers": [],
+    "customQA": []
   },
   {
     "id": "story_003",
+    "topicNum": 3,
     "cat": "Story",
     "name": "de_m_david",
-    "topic": {
-      "de": "Ereignisse und Erfahrungen, die die Berufswahl beeinflusst haben",
-      "uk": "Події та досвід, що вплинули на вибір професії",
-      "en": "Events and experiences that influenced the choice of profession",
-      "ru": "События и опыт, повлиявшие на выбор профессии"
-    },
-    "task": {
-      "de": "Thema 3: Beschreiben Sie Ereignisse und Erfahrungen, die Ihre Berufswahl beeinflusst haben.<br><br>Mögliche Fragen:<br>Stationen (Schulabschluss, Ausbildung / Studium, …)<br>Träume, Begabungen, Talente<br>Wichtige Personen für die Berufswahl?<br>Motivation?<br>Folgen?<br>Würden Sie diesen Beruf wieder wählen?",
-      "uk": "Тема 3: Опишіть події та досвід, які вплинули на ваш вибір професії.<br><br>Можливі запитання:<br>Етапи (закінчення школи, навчання / навчання у виші, …)<br>Мрії, здібності, таланти<br>Важливі люди для вибору професії?<br>Мотивація?<br>Наслідки?<br>Чи обрали б ви цю професію знову?",
-      "en": "Topic 3: Describe events and experiences that influenced your choice of profession.<br><br>Possible questions:<br>Stages (school graduation, training / studies, …)<br>Dreams, aptitudes, talents<br>Important people for your career choice?<br>Motivation?<br>Consequences?<br>Would you choose this profession again?",
-      "ru": "Тема 3: Опишите события и опыт, повлиявшие на ваш выбор профессии.<br><br>Возможные вопросы:<br>Этапы (окончание школы, обучение / учёба в вузе, …)<br>Мечты, способности, таланты<br>Важные люди для выбора профессии?<br>Мотивация?<br>Последствия?<br>Выбрали бы вы эту профессию снова?"
-    },
     "parts": [
       {
         "role": "einleitung",
@@ -26050,24 +26285,15 @@ var STORY = [
         "en": "",
         "ru": ""
       }
-    ]
+    ],
+    "answers": [],
+    "customQA": []
   },
   {
     "id": "story_004",
+    "topicNum": 4,
     "cat": "Story",
     "name": "de_m_david",
-    "topic": {
-      "de": "Ein berufliches Vorbild",
-      "uk": "Професійний взірець",
-      "en": "A professional role model",
-      "ru": "Профессиональный образец для подражания"
-    },
-    "task": {
-      "de": "Thema 4: Beschreiben Sie eine Person aus Ihrem Umfeld, die für Sie ein berufliches Vorbild ist.<br><br>Mögliche Fragen:<br>Welche Person?<br>Wie ist die Beziehung zu dieser Person?<br>Welche positiven Eigenschaften besitzt diese Person?<br>Welchen Einfluss hat / hatte diese Person auf Sie?",
-      "uk": "Тема 4: Опишіть людину з вашого оточення, яка є для вас професійним взірцем.<br><br>Можливі запитання:<br>Яка людина?<br>Які стосунки з цією людиною?<br>Якими позитивними якостями володіє ця людина?<br>Який вплив має / мала ця людина на вас?",
-      "en": "Topic 4: Describe a person in your life who is a professional role model for you.<br><br>Possible questions:<br>Which person?<br>What is your relationship with this person?<br>What positive qualities does this person have?<br>What influence does / did this person have on you?",
-      "ru": "Тема 4: Опишите человека из вашего окружения, который является для вас профессиональным образцом для подражания.<br><br>Возможные вопросы:<br>Какой человек?<br>Какие у вас отношения с этим человеком?<br>Какими положительными качествами обладает этот человек?<br>Какое влияние оказывает / оказывал этот человек на вас?"
-    },
     "parts": [
       {
         "role": "einleitung",
@@ -26104,42 +26330,24 @@ var STORY = [
         "en": "",
         "ru": ""
       }
-    ]
+    ],
+    "answers": [],
+    "customQA": []
   },
   {
     "id": "story_005",
+    "topicNum": 5,
     "cat": "Story",
     "name": "de_m_david",
-    "topic": {
-      "de": "Vorgehen bei der Arbeitssuche",
-      "uk": "Порядок дій під час пошуку роботи",
-      "en": "Approach to job searching",
-      "ru": "Порядок действий при поиске работы"
-    },
-    "task": {
-      "de": "Thema 5: Beschreiben Sie das Vorgehen bei der Arbeitssuche für ein Land Ihrer Wahl.<br><br>Mögliche Fragen:<br>Wo suchen Sie nach Angeboten? (Zeitung, Internet, Jobbörse, Messen)<br>Welche Unterlagen benötigen Sie?<br>Was sollte im Bewerbungsschreiben stehen?<br>Was sollte im Lebenslauf stehen?<br>Wie bereiten Sie sich auf das Vorstellungsgespräch vor?",
-      "uk": "Тема 5: Опишіть порядок дій під час пошуку роботи в обраній вами країні.<br><br>Можливі запитання:<br>Де ви шукаєте вакансії? (газета, інтернет, біржа праці, ярмарки вакансій)<br>Які документи вам потрібні?<br>Що має бути у супровідному листі?<br>Що має бути у резюме?<br>Як ви готуєтесь до співбесіди?",
-      "en": "Topic 5: Describe the process of job searching for a country of your choice.<br><br>Possible questions:<br>Where do you look for job offers? (newspaper, internet, job board, fairs)<br>What documents do you need?<br>What should be included in the cover letter?<br>What should be included in the CV?<br>How do you prepare for the job interview?",
-      "ru": "Тема 5: Опишите порядок действий при поиске работы в выбранной вами стране.<br><br>Возможные вопросы:<br>Где вы ищете вакансии? (газета, интернет, биржа труда, ярмарки)<br>Какие документы вам нужны?<br>Что должно быть в сопроводительном письме?<br>Что должно быть в резюме?<br>Как вы готовитесь к собеседованию?"
-    },
-    "parts": []
+    "parts": [],
+    "answers": [],
+    "customQA": []
   },
   {
     "id": "story_006",
+    "topicNum": 6,
     "cat": "Story",
     "name": "de_m_david",
-    "topic": {
-      "de": "Worauf es bei einem Bewerbungsgespräch ankommt",
-      "uk": "Що важливо на співбесіді",
-      "en": "What matters in a job interview",
-      "ru": "Что важно на собеседовании"
-    },
-    "task": {
-      "de": "Thema 6: Beschreiben Sie, worauf es bei einem Bewerbungsgespräch ankommt. Sprechen Sie über ein Land Ihrer Wahl.<br><br>Mögliche Fragen:<br>Weg zur Firma?<br>Für welchen Beruf?<br>Wie bereitet man sich vor?<br>Kleidung?<br>Verhalten?<br>Gehaltsvorstellungen?",
-      "uk": "Тема 6: Опишіть, що є важливим під час співбесіди. Розкажіть про обрану вами країну.<br><br>Можливі запитання:<br>Шлях до фірми?<br>На яку професію?<br>Як готуються до співбесіди?<br>Одяг?<br>Поведінка?<br>Очікування щодо зарплати?",
-      "en": "Topic 6: Describe what matters in a job interview. Talk about a country of your choice.<br><br>Possible questions:<br>Getting to the company?<br>For which profession?<br>How do you prepare?<br>Clothing?<br>Behavior?<br>Salary expectations?",
-      "ru": "Тема 6: Опишите, что важно на собеседовании. Расскажите о выбранной вами стране.<br><br>Возможные вопросы:<br>Дорога до фирмы?<br>На какую профессию?<br>Как готовятся к собеседованию?<br>Одежда?<br>Поведение?<br>Ожидания по зарплате?"
-    },
     "parts": [
       {
         "role": "einleitung",
@@ -26176,24 +26384,15 @@ var STORY = [
         "en": "Thank you for your attention.",
         "ru": "Спасибо за внимание."
       }
-    ]
+    ],
+    "answers": [],
+    "customQA": []
   },
   {
     "id": "story_007",
+    "topicNum": 7,
     "cat": "Story",
     "name": "de_m_david",
-    "topic": {
-      "de": "Eine minimalistische Lern-App",
-      "uk": "Мінімалістичний застосунок для вивчення мови",
-      "en": "A minimalist learning app",
-      "ru": "Минималистичное приложение для обучения"
-    },
-    "task": {
-      "de": "Thema 7: Beschreiben Sie ein Produkt / eine Dienstleistung Ihrer Wahl.<br><br>Mögliche Fragen:<br>Welches Produkt?<br>Welche Merkmale?<br>Wo gibt es das?<br>Seit wann gibt es das Produkt?<br>Für was ist es gut bzw. welchen Nutzen hat es für den Kunden?<br>Vorteile?<br>Nachteile?<br>Erfolg?<br>Marketing? Veränderungen?",
-      "uk": "Тема 7: Опишіть продукт / послугу на ваш вибір.<br><br>Можливі запитання:<br>Який продукт?<br>Які особливості?<br>Де це можна знайти?<br>Відколи існує цей продукт?<br>Для чого він потрібен, яку користь має для клієнта?<br>Переваги?<br>Недоліки?<br>Успіх?<br>Маркетинг? Зміни?",
-      "en": "Topic 7: Describe a product / service of your choice.<br><br>Possible questions:<br>Which product?<br>What features?<br>Where is it available?<br>Since when has the product existed?<br>What is it good for, or what benefit does it offer the customer?<br>Advantages?<br>Disadvantages?<br>Success?<br>Marketing? Changes?",
-      "ru": "Тема 7: Опишите продукт / услугу по вашему выбору.<br><br>Возможные вопросы:<br>Какой продукт?<br>Какие особенности?<br>Где его можно найти?<br>С каких пор существует этот продукт?<br>Для чего он нужен, какую пользу приносит клиенту?<br>Преимущества?<br>Недостатки?<br>Успех?<br>Маркетинг? Изменения?"
-    },
     "parts": [
       {
         "role": "einleitung",
@@ -26230,24 +26429,15 @@ var STORY = [
         "en": "I chose the address mova.now because \"Mova\" means \"language\" in Ukrainian, and because there is no better time to learn than now. The product is currently completely free and available online without advertising. The greatest benefit for customers lies in targeted exam preparation, ease of use, and enormous time savings.",
         "ru": "Я выбрал адрес mova.now, потому что «мова» по-украински означает «язык», а лучшего момента для обучения, чем сейчас, не бывает. В настоящее время продукт полностью бесплатен и доступен в интернете без рекламы. Наибольшая польза для клиентов заключается в целенаправленной подготовке к экзамену, простоте использования и огромной экономии времени."
       }
-    ]
+    ],
+    "answers": [],
+    "customQA": []
   },
   {
     "id": "story_008",
+    "topicNum": 8,
     "cat": "Story",
     "name": "de_m_david",
-    "topic": {
-      "de": "Geschäftsidee: eine Lern-App",
-      "uk": "Бізнес-ідея: застосунок для вивчення мови",
-      "en": "Business idea: a learning app",
-      "ru": "Бизнес-идея: приложение для обучения"
-    },
-    "task": {
-      "de": "Thema 8: Sie möchten sich selbstständig machen. Beschreiben Sie Ihre Geschäftsidee.<br><br>Mögliche Fragen:<br>Sich selbstständig machen womit?<br>Eigene Firma?<br>Welche Branche?<br>Wie Kunden gewinnen?<br>Wie sind Sie auf diese Idee gekommen?<br>Brauchen Sie Mitarbeiter?<br>Wie finanzieren?<br>Wo gibt es Unterstützung?<br>Gibt es bereits ähnliche Ideen / Firmen?",
-      "uk": "Тема 8: Ви хочете стати самозайнятим. Опишіть свою бізнес-ідею.<br><br>Можливі запитання:<br>Чим саме займатися самостійно?<br>Власна фірма?<br>Яка галузь?<br>Як залучати клієнтів?<br>Як ви прийшли до цієї ідеї?<br>Чи потрібні вам співробітники?<br>Як фінансувати?<br>Де можна отримати підтримку?<br>Чи є вже подібні ідеї / фірми?",
-      "en": "Topic 8: You want to become self-employed. Describe your business idea.<br><br>Possible questions:<br>Become self-employed doing what?<br>Own company?<br>Which industry?<br>How to attract customers?<br>How did you come up with this idea?<br>Do you need employees?<br>How to finance it?<br>Where is support available?<br>Are there already similar ideas / companies?",
-      "ru": "Тема 8: Вы хотите стать самозанятым. Опишите свою бизнес-идею.<br><br>Возможные вопросы:<br>Чем именно заниматься самостоятельно?<br>Собственная фирма?<br>Какая отрасль?<br>Как привлекать клиентов?<br>Как вы пришли к этой идее?<br>Нужны ли вам сотрудники?<br>Как финансировать?<br>Где можно получить поддержку?<br>Есть ли уже похожие идеи / фирмы?"
-    },
     "parts": [
       {
         "role": "einleitung",
@@ -26291,6 +26481,8 @@ var STORY = [
         "en": "",
         "ru": ""
       }
-    ]
+    ],
+    "answers": [],
+    "customQA": []
   }
 ];
