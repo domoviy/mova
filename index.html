@@ -4008,7 +4008,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '625-3132c3b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -10153,7 +10153,16 @@ function _examSimShowBriefing(part){
   }
 
   var titleEl = document.getElementById('exam-sim-title');
-  if(titleEl) titleEl.textContent = part;
+  if(titleEl){
+    // cfg.label (нове, опційне поле var EXAM_SIM.<part>.label) — щоб курс
+    // міг показати власну назву замість "сирого" routing-key part
+    // ("Forumsbeitrag"/"E-Mail" — терміни з курсу B2-Beruf, де немає
+    // цього поля взагалі; там fallback на part лишає стару поведінку
+    // без жодних змін). Приклад: DTZ B1 показує тут "Brief / E-Mail",
+    // бо "Forumsbeitrag" — завдання, якого в DTZ немає.
+    var pl = primaryLang();
+    titleEl.textContent = (cfg.label && (cfg.label[uiLang] || cfg.label[pl] || cfg.label.de)) || part;
+  }
 
   var el = document.getElementById('exam-sim-briefing');
   if(el) el.style.display = 'flex';

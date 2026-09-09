@@ -20562,11 +20562,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити buddy-програму: кожен новий співробітник має отримати в перші тижні постійну контактну особу з команди, яка допомагатиме з входженням у роботу.",
       "ru": "Руководство хочет ввести buddy-программу: каждый новый сотрудник должен получить в первые недели постоянное контактное лицо из команды, которое будет помогать с началом работы."
     },
-    "gram": "es_pronomen",
     "name": "de_m_mark",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Hallo zusammen,",
         "en": "Hello everyone,",
         "uk": "Привіт усім,",
@@ -20574,6 +20574,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon gehört habt, plant die Geschäftsleitung</r>, <c>ein Buddy-Programm für neue Mitarbeiterinnen und Mitarbeiter einzuführen</c>. <r>Auch ich möchte heute in unserem Blog etwas dazu</r> schreiben.",
         "en": "as you have probably already heard, management is planning to introduce a buddy program for new employees. I would also like to write something about this in our blog today.",
         "uk": "як ви, напевно, вже чули, керівництво планує запровадити buddy-програму для нових співробітників. Я теж хочу сьогодні написати про це кілька слів у нашому блозі.",
@@ -20581,6 +20582,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "es_pronomen",
         "de": "<r>Ich bin der Meinung, dass</r> <g>es</g> für neue Kolleginnen und Kollegen am Anfang oft schwer ist, das Eis zu brechen und eine vertraute Atmosphäre im Team zu finden.",
         "en": "I am of the opinion that it is often difficult for new colleagues at the beginning to break the ice and find a familiar atmosphere in the team.",
         "uk": "Я вважаю, що новим колегам спочатку часто буває важко розтопити лід і знайти довірливу атмосферу в команді.",
@@ -20588,6 +20590,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "nominalisierung",
         "de": "<r>Ein Vorteil wäre</r> sicherlich, dass das <g>Kennenlernen</g> durch eine feste Ansprechperson deutlich leichter <g>würde</g> und der erste Kontakt zum Team viel angenehmer wäre. Außerdem könnte die Buddy-Person beim Small Talk in der Pause helfen und so echtes Interesse am neuen Kollegen zeigen.",
         "en": "One advantage would certainly be that getting to know each other would become much easier with a fixed contact person, and the first contact with the team would be much more pleasant. In addition, the buddy could help with small talk during breaks and thus show genuine interest in the new colleague.",
         "uk": "Однією з переваг, безумовно, було б те, що знайомство з командою стало б набагато легшим завдяки постійній контактній особі, а перший контакт з командою був би набагато приємнішим. Крім того, buddy міг би допомагати зі small talk під час перерви і тим самим виявляти щирий інтерес до нового колеги.",
@@ -20595,6 +20598,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "praepositionen_nomen_verb_adjektiv",
         "de": "<r>Andererseits</r> haben nicht alle Kolleginnen und Kollegen genug Zeit, <k>um</k> sich zusätzlich <g>um</g> eine neue Person zu kümmern, ohne dass die eigene Arbeit darunter leidet. Zudem passt nicht jede Buddy-Person automatisch zum Charakter des neuen Mitarbeiters, was die Unterhaltung anfangs eher formell statt locker wirken lassen könnte.",
         "en": "On the other hand, not all colleagues have enough time to additionally take care of a new person without their own work suffering. Moreover, not every buddy automatically matches the character of the new employee, which could make the conversation feel rather formal instead of relaxed at first.",
         "uk": "З іншого боку, не всі колеги мають достатньо часу, щоб додатково опікуватися новою людиною, без того щоб не постраждала їхня власна робота. Крім того, не кожна buddy-особа автоматично підходить за характером новому співробітнику, через що спілкування спочатку може здаватися радше формальним, ніж невимушеним.",
@@ -20602,13 +20606,15 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> die Buddy-Person und die neue Kollegin oder der neue Kollege vorher kurz befragt <g>werden</g>, <k>damit</k> die Zuständigkeit zu beiden passt und das Gespräch von Anfang an offen und taktvoll verläuft.",
+        "gram": "",
+        "de": "<r>Deshalb schlage ich vor, dass</r> die Buddy-Person und die neue Kollegin oder der neue Kollege vorher kurz befragt werden, <k>damit</k> die Zuständigkeit zu beiden passt und das Gespräch von Anfang an offen und taktvoll verläuft.",
         "en": "That's why I suggest that the buddy and the new colleague be briefly asked in advance, so that they are a good match for each other and the conversation goes smoothly, openly and tactfully from the start.",
         "uk": "Тому я пропоную, щоб buddy і нового колегу заздалегідь коротко опитували, щоб відповідність підходила обом і розмова від самого початку проходила відкрито й тактовно.",
         "ru": "Поэтому я предлагаю, чтобы buddy и нового коллегу заранее коротко опрашивали, чтобы соответствие подходило обоим и разговор с самого начала проходил открыто и тактично."
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20616,6 +20622,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Mark",
         "en": "Mark",
         "uk": "Марк",
@@ -20638,11 +20645,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити цифровий інструмент, за допомогою якого всі робочі завдання надалі видаватимуться письмово, матимуть дедлайн і пріоритет та будуть документуватися. Досі багато завдань делегували лише усно, мимохідь.",
       "ru": "Руководство хочет ввести цифровой инструмент, с помощью которого все рабочие задания впредь будут выдаваться письменно, получать дедлайн и приоритет и документироваться. До сих пор многие задания делегировали только устно, мимоходом."
     },
-    "gram": "nomen_verb_verbindungen",
     "name": "de_w_julia",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "An alle,",
         "en": "To everyone,",
         "uk": "Всім,",
@@ -20650,6 +20657,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst, möchte die Geschäftsleitung</r> <c>ein neues Tool für Arbeitsaufträge einführen</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management wants to introduce a new tool for work tasks. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво хоче запровадити новий інструмент для робочих завдань. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20657,6 +20665,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "nomen_verb_verbindungen",
         "de": "<r>Ich bin der Meinung, dass</r> diese Idee <g>Sinn macht</g>, weil mündliche Anweisungen oft zu Missverständnissen führen.",
         "en": "I am of the opinion that this idea makes sense, because verbal instructions often lead to misunderstandings.",
         "uk": "Я вважаю, що ця ідея має сенс, оскільки усні вказівки часто призводять до непорозумінь.",
@@ -20664,6 +20673,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "nomen_verb_verbindungen",
         "de": "<r>Ein Vorteil wäre</r> sicherlich, dass die Zuständigkeit für jeden Arbeitsauftrag klar dokumentiert wird und wir bei Rückfragen sofort <g>Bescheid wissen</g>, wer wofür verantwortlich ist. Außerdem sehen wir Priorität und Deadline dann auf einen Blick.",
         "en": "One advantage would certainly be that responsibility for each task is clearly documented, and in case of queries we immediately know who is responsible for what. In addition, we then see the priority and deadline at a glance.",
         "uk": "Однією з переваг, безумовно, було б те, що відповідальність за кожне завдання чітко документується, і при уточненнях ми одразу знаємо, хто за що відповідає. Крім того, ми тоді бачимо пріоритет і дедлайн одним поглядом.",
@@ -20671,6 +20681,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "konjunktiv2_als_ob",
         "de": "<r>Andererseits</r> <g>nimmt</g> die zusätzliche Dokumentation Zeit <g>in Anspruch</g>, die uns dann für die eigentliche Arbeit fehlt. Zudem befürchten manche Kolleginnen und Kollegen, dass spontane, kurze Absprachen dadurch komplizierter <g>würden</g>.",
         "en": "On the other hand, the additional documentation takes up time that we then lack for the actual work. Moreover, some colleagues fear that spontaneous, short arrangements would become more complicated as a result.",
         "uk": "З іншого боку, додаткова документація забирає час, якого нам тоді бракує для самої роботи. Крім того, деякі колеги побоюються, що спонтанні, короткі домовленості через це стали б складнішими.",
@@ -20678,13 +20689,15 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
-        "de": "<r>Deshalb schlage ich vor, dass</r> wir das Tool nur für größere oder dringende Arbeitsaufträge einsetzen und kleinere Absprachen weiterhin mündlich klären dürfen, <k>sofern</k> sie kurz im Protokoll <g>festgehalten werden</g>.",
+        "gram": "",
+        "de": "<r>Deshalb schlage ich vor, dass</r> wir das Tool nur für größere oder dringende Arbeitsaufträge einsetzen und kleinere Absprachen weiterhin mündlich klären dürfen, <k>sofern</k> sie kurz im Protokoll festgehalten werden.",
         "en": "That's why I suggest that we use the tool only for larger or urgent tasks and that we may continue to clarify smaller arrangements verbally, as long as they are briefly noted in the log.",
         "uk": "Тому я пропоную використовувати цей інструмент лише для більших або термінових завдань, а менші домовленості й надалі можна буде узгоджувати усно, якщо їх коротко фіксувати в протоколі.",
         "ru": "Поэтому я предлагаю использовать этот инструмент только для более крупных или срочных заданий, а меньшие договорённости и впредь можно будет согласовывать устно, если их коротко фиксировать в протоколе."
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20692,6 +20705,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Julia",
         "en": "Julia",
         "uk": "Юлія",
@@ -20714,11 +20728,11 @@ var SCHREIBEN = [
       "uk": "Керівництво планує, щоб співробітники надалі кожні два роки підтверджували сертифікацію принаймні в одній сфері hard skills, як-от аналіз даних, цифрова трансформація чи трудове право.",
       "ru": "Руководство планирует, чтобы сотрудники впредь каждые два года подтверждали сертификацию хотя бы в одной сфере hard skills, такой как анализ данных, цифровая трансформация или трудовое право."
     },
-    "gram": "relativsatz_wer",
     "name": "de_w_anna",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Дорогі колеги,",
@@ -20726,6 +20740,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon gehört habt, plant die Geschäftsleitung</r>, <c>eine Pflichtzertifizierung für Hard Skills einzuführen</c>. <r>Auch ich möchte heute in unserem Blog etwas dazu</r> schreiben.",
         "en": "as you have probably already heard, management is planning to introduce mandatory certification for hard skills. I would also like to write something about this in our blog today.",
         "uk": "як ви, напевно, вже чули, керівництво планує запровадити обов'язкову сертифікацію hard skills. Я теж хочу сьогодні написати про це кілька слів у нашому блозі.",
@@ -20733,6 +20748,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "relativsatz_wer",
         "de": "<r>Ich bin der Meinung, dass</r> <g>wer</g> seine Kenntnisse regelmäßig auffrischt, davon langfristig profitiert, auch wenn eine Pflicht anfangs unangenehm wirken kann.",
         "en": "I am of the opinion that whoever regularly refreshes their knowledge benefits from it in the long run, even if an obligation may seem unpleasant at first.",
         "uk": "Я вважаю, що той, хто регулярно оновлює свої знання, зрештою від цього виграє, навіть якщо обов'язковість спочатку може здаватися неприємною.",
@@ -20740,6 +20756,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "relativsatz_wer",
         "de": "<r>Ein Vorteil wäre</r> sicherlich, dass wir dadurch mit der digitalen Transformation Schritt halten und unsere Fähigkeiten anwenden könnten, <k>ohne</k> den Anschluss zu verlieren. Außerdem hat, <g>wer</g> eine Zertifizierung vorweisen kann, bei internen Bewerbungen oft bessere Chancen.",
         "en": "One advantage would certainly be that this would let us keep pace with digital transformation and apply our skills without losing touch. In addition, whoever can present a certification often has better chances with internal applications.",
         "uk": "Однією з переваг, безумовно, було б те, що завдяки цьому ми йшли б в ногу з цифровою трансформацією і могли б застосовувати свої навички, не втрачаючи зв'язку з новими тенденціями. Крім того, той, хто може підтвердити сертифікацію, часто має кращі шанси при внутрішніх заявках на посаду.",
@@ -20747,6 +20764,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "relativsatz_wer",
         "de": "<r>Andererseits</r> sollte die Geschäftsleitung bedenken, dass nicht jede Abteilung dieselben Hard Skills braucht, und <g>wer</g> zum Beispiel im Arbeitsschutz arbeitet, benötigt kaum eine Zertifizierung in Marktforschung. Zudem müssten die Kurse in der Arbeitszeit stattfinden, sonst würde die Belastung zu groß.",
         "en": "On the other hand, management should consider that not every department needs the same hard skills, and whoever works in occupational safety, for example, hardly needs certification in market research. Moreover, the courses would have to take place during working hours, otherwise the burden would become too great.",
         "uk": "З іншого боку, керівництву варто врахувати, що не кожному відділу потрібні однакові hard skills, і той, хто, наприклад, працює в галузі охорони праці, навряд чи потребує сертифікації з маркетингових досліджень. Крім того, курси мали б проходити в робочий час, інакше навантаження було б занадто великим.",
@@ -20754,6 +20772,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "",
         "de": "<r>Deshalb schlage ich vor, dass</r> jede Abteilung selbst festlegt, welche Hard Skills wirklich relevant sind, und dass die Zertifizierung freiwillig bleibt, aber finanziell und zeitlich unterstützt wird.",
         "en": "That's why I suggest that each department determine for itself which hard skills are really relevant, and that certification remain voluntary but be supported financially and in terms of time.",
         "uk": "Тому я пропоную, щоб кожен відділ сам визначав, які hard skills дійсно актуальні, а сертифікація залишалася добровільною, але підтримувалася фінансово й у робочому часі.",
@@ -20761,6 +20780,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20768,6 +20788,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Anna",
         "en": "Anna",
         "uk": "Анна",
@@ -20790,11 +20811,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче надалі запровадити чіткі правила проведення нарад, наприклад обов'язковий порядок денний і обмежений час виступу для кожного учасника. Досі багато нарад проходили без чіткої структури й часто тривали довше запланованого.",
       "ru": "Руководство хочет в дальнейшем ввести чёткие правила проведения совещаний, например, обязательную повестку дня и ограниченное время выступления для каждого участника. До сих пор многие совещания проходили без чёткой структуры и часто длились дольше запланированного."
     },
-    "gram": "relativsatz_wer",
     "name": "de_m_david",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20802,6 +20823,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>feste Meetingregeln einzuführen</c>, <k>damit</k> unser Jour fixe künftig produktiver abläuft. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce fixed meeting rules so that our regular meetings run more productively in future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити чіткі правила нарад, щоб наш регулярний Jour fixe надалі проходив продуктивніше. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20809,6 +20831,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "konjunktiv2_als_ob",
         "de": "<r>Ich bin der Meinung, dass</r> klare Regeln unserer Meetingkultur <g>guttun würden</g>, denn aktuell erscheinen viele Teilnehmer nicht pünktlich, und die Moderation muss sich Mühe geben, damit die Tagesordnung eingehalten wird.",
         "en": "I am of the opinion that clear rules would do our meeting culture good, because currently many participants don't arrive on time, and the moderator has to make a real effort to keep the agenda on track.",
         "uk": "Я вважаю, що чіткі правила пішли б на користь нашій культурі нарад, адже наразі багато учасників не приходять вчасно, і модератору доводиться докладати чимало зусиль, щоб дотримуватися порядку денного.",
@@ -20816,6 +20839,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "nominalisierung",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> eine feste Agenda und eine begrenzte Redezeit <g>die Einhaltung der Tagesordnungspunkte</g> erleichtern. Außerdem könnte die Gesprächsleitung das Ergebnis am Ende klarer festhalten und bei Bedarf eine Abstimmung durchführen.",
         "en": "A very important argument in favor is that a fixed agenda and limited speaking time make it easier to stick to the agenda items. In addition, the moderator could record the outcome more clearly at the end and hold a vote if needed.",
         "uk": "Дуже важливий аргумент на користь цього — те, що чіткий порядок денний і обмежений час виступу полегшують дотримання пунктів порядку денного. Крім того, модератор міг би наприкінці чіткіше фіксувати результат і за потреби провести голосування.",
@@ -20823,6 +20847,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "relativsatz_wer",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass nicht jede Diskussion in eine starre Zeitvorgabe passt: <g>Wer</g> ein komplexes Thema erklären muss, <g>der</g> braucht manchmal einfach mehr Redezeit.",
         "en": "On the other hand, one should also consider that not every discussion fits into a rigid time limit: whoever has to explain a complex topic sometimes simply needs more speaking time.",
         "uk": "З іншого боку, варто також враховувати, що не кожна дискусія вписується в жорсткий часовий ліміт: хто мусить пояснити складну тему, той іноді просто потребує більше часу на виступ.",
@@ -20830,6 +20855,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "",
         "de": "<r>Deshalb schlage ich vor, dass</r> die Moderation zusätzliche Redezeit vergeben kann — <k>je</k> komplexer das Thema ist, <k>desto</k> mehr Flexibilität sollte sie haben. Zudem fände ich hybride Meetings mit Videokonferenz sinnvoll, damit alle auf dem Laufenden bleiben.",
         "en": "That is why I propose that the moderator should be able to grant extra speaking time — the more complex the topic, the more flexibility they should have. I would also find it useful to keep hybrid meetings with video conferencing, so that everyone stays up to date.",
         "uk": "Тому я пропоную, щоб модератор міг надавати додатковий час виступу — чим складніша тема, тим більше гнучкості йому потрібно мати. Крім того, я вважаю доцільним зберегти гібридні наради з відеоконференцією, щоб усі були в курсі справ.",
@@ -20837,6 +20863,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20844,6 +20871,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "David",
         "en": "David",
         "uk": "Давід",
@@ -20866,11 +20894,11 @@ var SCHREIBEN = [
       "uk": "Керівництво планує запровадити обов'язковий тренінг з управління конфліктами для всіх співробітників після того, як у кількох відділах виникли напруження та невирішені конфлікти. Досі не було єдиних правил щодо того, як поводитися з конфліктами на робочому місці.",
       "ru": "Руководство планирует ввести обязательный тренинг по управлению конфликтами для всех сотрудников после того, как в нескольких отделах возникли напряжённость и неразрешённые конфликты. До сих пор не было единых правил относительно того, как обращаться с конфликтами на рабочем месте."
     },
-    "gram": "konjunktiv2_als_ob",
     "name": "de_w_nina",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20878,6 +20906,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon gehört habt</r>, plant die Geschäftsleitung, <c>ein verpflichtendes Konfliktmanagement-Training für alle Mitarbeitenden einzuführen</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you've probably already heard, management is planning to introduce mandatory conflict management training for all employees. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже чули, керівництво планує запровадити обов'язковий тренінг з управління конфліктами для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20885,6 +20914,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "konjunktiv2_als_ob",
         "de": "<r>Ich bin der Meinung, dass</r> ein solches Training wirklich notwendig ist, denn in letzter Zeit tun manche Kolleginnen und Kollegen so, <k>als ob</k> es gar keine Spannungen im Team <g>gäbe</g>, obwohl der Umgangston oft schon unangemessen ist.",
         "en": "I am of the opinion that this kind of training is really necessary, because lately some colleagues act as if there were no tension in the team at all, even though the tone is often already inappropriate.",
         "uk": "Я вважаю, що такий тренінг справді необхідний, адже останнім часом деякі колеги поводяться так, ніби в команді взагалі немає напруження, хоча тон спілкування вже часто буває неприйнятним.",
@@ -20892,6 +20922,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "waehrend_genitiv_praeposition",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> viele Missverständnisse <g>während eines Konflikts</g> einfach eskalieren, weil niemand die Verantwortung übernehmen will. Ein Mediator könnte in solchen Fällen frühzeitig schlichten und eine faire Lösung finden.",
         "en": "A very important argument in favor is that many misunderstandings simply escalate during a conflict because nobody wants to take responsibility. A mediator could step in early in such cases and find a fair solution.",
         "uk": "Дуже важливий аргумент на користь цього — те, що багато непорозумінь просто загострюються під час конфлікту, бо ніхто не хоче брати на себе відповідальність. Медіатор міг би в таких випадках вчасно втрутитися й знайти справедливе рішення.",
@@ -20899,6 +20930,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "partizipien_als_adjektive",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein einzelnes Training kaum ausreicht, <k>um</k> <g>eskalierende</g> Spannungen dauerhaft zu deeskalieren, wenn sich am Betriebsklima insgesamt nichts ändert.",
         "en": "On the other hand, one should also consider that a single training session is hardly enough to permanently defuse escalating tensions if nothing changes about the overall workplace climate.",
         "uk": "З іншого боку, варто також враховувати, що одного тренінгу навряд чи достатньо, щоб надовго знизити напруження, яке загострюється, якщо загалом нічого не зміниться в атмосфері колективу.",
@@ -20906,6 +20938,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "indefinitpronomen",
         "de": "<r>Deshalb schlage ich vor, dass</r> zusätzlich feste Feedback-Gespräche eingeführt werden, <k>damit</k> <g>jeder</g> frühzeitig Rückmeldung geben und Kritik konstruktiv äußern kann, <k>bevor</k> aus einem Missverständnis ein offener Streit wird.",
         "en": "That is why I propose that regular feedback meetings also be introduced, so that everyone can give feedback early and voice criticism constructively before a misunderstanding turns into an open dispute.",
         "uk": "Тому я пропоную додатково запровадити регулярні бесіди зі зворотним зв'язком, щоб кожен міг вчасно дати зворотний зв'язок і конструктивно висловити критику, перш ніж непорозуміння переросте у відкриту сварку.",
@@ -20913,6 +20946,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20920,6 +20954,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Nina",
         "en": "Nina",
         "uk": "Ніна",
@@ -20942,11 +20977,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити єдиний звіт про передачу справ для всіх співробітників, який потрібно заповнювати при зміні посади або перед тривалою відпусткою. Досі не було чітких вимог щодо того, як документувати передачу завдань.",
       "ru": "Руководство хочет ввести единый отчёт о передаче дел для всех сотрудников, который нужно заполнять при смене должности или перед длительным отпуском. До сих пор не было чётких требований к тому, как документировать передачу задач."
     },
-    "gram": "nomen_verb_verbindungen",
     "name": "de_m_alex",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -20954,6 +20989,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>einen einheitlichen Übergabebericht für alle Mitarbeitenden einzuführen</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce a standardized handover report for all employees. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити єдиний звіт про передачу справ для всіх співробітників. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -20961,6 +20997,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "nomen_verb_verbindungen",
         "de": "<r>Ich bin der Meinung, dass</r> jeder für seine Aufgaben klar <g>Verantwortung tragen</g> sollte, denn bisher blieb der Arbeitsstand oft unklar, wenn jemand die Stelle wechselte oder in den Urlaub ging.",
         "en": "I am of the opinion that everyone should clearly take responsibility for their own tasks, because until now the state of the work often remained unclear when someone changed positions or went on leave.",
         "uk": "Я вважаю, що кожен має чітко нести відповідальність за свої завдання, адже досі стан роботи часто залишався незрозумілим, коли хтось змінював посаду чи йшов у відпустку.",
@@ -20968,6 +21005,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "passiv_passiversatz",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> der Arbeitsstand mit einem festen Formular viel leichter <g>nachzuvollziehen ist</g>, weil der Nachfolger sofort einen Überblick über offene und abgeschlossene Aufgaben bekommt.",
         "en": "A very important argument in favor is that the state of the work is much easier to follow with a fixed form, because the successor immediately gets an overview of open and completed tasks.",
         "uk": "Дуже важливий аргумент на користь цього — те, що з фіксованим формуляром стан роботи набагато легше прослідкувати, адже наступник одразу отримує огляд відкритих і завершених завдань.",
@@ -20975,6 +21013,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "textzusammenhang",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein zusätzliches Formular manchmal lästig wirkt und der eigentliche Zweck — nämlich Ruhe zu bewahren, <k>statt</k> Aufgaben ungeklärt liegen zu lassen — <g>dabei</g> leicht aus dem Blick gerät.",
         "en": "On the other hand, one should also consider that an additional form sometimes feels tedious, and the actual purpose — namely staying calm instead of leaving tasks unresolved — can easily get lost in the process.",
         "uk": "З іншого боку, варто також враховувати, що додатковий формуляр іноді сприймається як тягар, і справжня мета — а саме зберегти спокій замість того, щоб залишати завдання нез'ясованими — при цьому легко губиться з поля зору.",
@@ -20982,6 +21021,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "praepositionen_nomen_verb_adjektiv",
         "de": "<r>Deshalb schlage ich vor, dass</r> in jedem Team klar geregelt wird, wer <g>verantwortlich ist für</g> welchen Teilbereich der Übergabe, und dass offene Punkte regelmäßig in einer gemeinsamen Aufgabenliste <g>zur Sprache kommen</g>.",
         "en": "That is why I propose that each team clearly define who is responsible for which part of the handover, and that open points be raised regularly in a shared task list.",
         "uk": "Тому я пропоную, щоб у кожній команді було чітко визначено, хто відповідає за яку частину передачі справ, і щоб відкриті питання регулярно порушувалися в спільному списку завдань.",
@@ -20989,6 +21029,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -20996,6 +21037,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Alex",
         "en": "Alex",
         "uk": "Алекс",
@@ -21018,11 +21060,11 @@ var SCHREIBEN = [
       "uk": "Керівництво помітило, що багато внутрішніх листів сформульовано занадто негативно чи недружньо, що часто призводить до непорозумінь. Тому планується запровадити посібник з позитивного та шанобливого спілкування електронною поштою.",
       "ru": "Руководство заметило, что многие внутренние письма сформулированы слишком негативно или недружелюбно, что часто приводит к недоразумениям. Поэтому планируется ввести руководство по позитивному и уважительному общению по электронной почте."
     },
-    "gram": "indirekte_rede_konjunktiv1",
     "name": "de_m_mark",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21030,6 +21072,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>einen Leitfaden für eine positive und wertschätzende E-Mail-Kommunikation einzuführen</c>, <k>damit</k> unser Arbeitsumfeld insgesamt angenehmer wird. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce guidelines for positive and appreciative email communication, so that our workplace becomes more pleasant overall. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити посібник з позитивного та шанобливого спілкування електронною поштою, щоб загалом зробити наше робоче середовище приємнішим. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21037,6 +21080,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "indirekte_rede_konjunktiv1",
         "de": "<r>Ich bin der Meinung, dass</r> ein solcher Leitfaden wirklich sinnvoll ist, denn mehrere Kolleginnen und Kollegen haben mir zuletzt erzählt, der Ton in manchen internen Mails <g>sei</g> oft zu schroff und wenig wertschätzend.",
         "en": "I am of the opinion that these guidelines really make sense, because several colleagues recently told me that the tone in some internal emails is often too harsh and not very appreciative.",
         "uk": "Я вважаю, що такий посібник справді доцільний, адже кілька колег нещодавно розповіли мені, що тон деяких внутрішніх листів часто буває занадто різким і мало шанобливим.",
@@ -21044,6 +21088,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> sich viele Missverständnisse vermeiden lassen, <k>indem</k> man Betreff und Anrede von Anfang an klarer formuliert und wichtige Personen konsequent in Kopie setzt.",
         "en": "A very important argument in favor is that many misunderstandings can be avoided by formulating the subject line and salutation more clearly from the start and consistently cc'ing important people.",
         "uk": "Дуже важливий аргумент на користь цього — те, що багатьох непорозумінь можна уникнути, якщо з самого початку чіткіше формулювати тему листа й звертання та послідовно ставити важливих людей у копію.",
@@ -21051,6 +21096,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "nomen_verb_verbindungen",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass nicht jeder sofort <g>Verständnis aufbringt für</g> einen neuen Leitfaden, besonders wenn die vorgeschlagenen Formulierungen als zu förmlich oder unpersönlich empfunden werden.",
         "en": "On the other hand, one should also consider that not everyone immediately shows understanding for new guidelines, especially when the suggested phrasing feels too formal or impersonal.",
         "uk": "З іншого боку, варто також враховувати, що не кожен одразу з розумінням поставиться до нового посібника, особливо якщо запропоновані формулювання сприймаються як занадто офіційні чи безособові.",
@@ -21058,6 +21104,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir gemeinsam ein paar Beispielformulierungen sammeln, <k>um</k> Missverständnisse von vornherein zu vermeiden und dabei trotzdem sachlich und diplomatisch zu bleiben.",
         "en": "That is why I propose that we collect a few example phrases together, in order to avoid misunderstandings from the outset while still remaining factual and diplomatic.",
         "uk": "Тому я пропоную разом зібрати кілька прикладів формулювань, щоб від самого початку уникати непорозумінь і водночас залишатися об'єктивними та дипломатичними.",
@@ -21065,6 +21112,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21072,6 +21120,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Mark",
         "en": "Mark",
         "uk": "Марк",
@@ -21094,11 +21143,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче повністю переробити профіль компанії на корпоративному сайті, роблячи більший акцент на корпоративній культурі та цінностях компанії. Досі увага зосереджувалась переважно на ринковій позиції з цифрами обороту й прибутку.",
       "ru": "Руководство хочет полностью переработать профиль компании на корпоративном сайте, делая больший акцент на корпоративной культуре и ценностях компании. До сих пор внимание было сосредоточено в основном на рыночной позиции с цифрами оборота и прибыли."
     },
-    "gram": "passiv_passiversatz",
     "name": "de_w_julia",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21106,6 +21155,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>das Firmenprofil auf unserer Website komplett zu überarbeiten und dabei die Unternehmenskultur stärker in den Vordergrund zu stellen</c>. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to completely revise the company profile on our website and place greater emphasis on the company culture. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує повністю переробити профіль компанії на нашому сайті й приділити більше уваги корпоративній культурі. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21113,13 +21163,15 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
-        "de": "<r>Ich bin der Meinung, dass</r> diese Überarbeitung längst überfällig ist, denn unser Unternehmen <g>wird</g> online oft nur nach Umsatz und Gewinn <g>beurteilt</g>, <k>obwohl</k> uns als Arbeitgeber eigentlich viel mehr ausmacht.",
+        "gram": "",
+        "de": "<r>Ich bin der Meinung, dass</r> diese Überarbeitung längst überfällig ist, denn unser Unternehmen wird online oft nur nach Umsatz und Gewinn beurteilt, <k>obwohl</k> uns als Arbeitgeber eigentlich viel mehr ausmacht.",
         "en": "I am of the opinion that this revision is long overdue, because our company is often judged online only by revenue and profit, even though there is much more to us as an employer.",
         "uk": "Я вважаю, що ця переробка давно назріла, адже нашу компанію онлайн часто оцінюють лише за оборотом і прибутком, хоча як роботодавця нас характеризує набагато більше.",
         "ru": "Я считаю, что эта переработка давно назрела, ведь нашу компанию онлайн часто оценивают только по обороту и прибыли, хотя как работодателя нас характеризует гораздо больше."
       },
       {
         "role": "pro",
+        "gram": "passiv_passiversatz",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> sich unsere Unternehmenskultur kaum in reinen Zahlen <g>ausdrücken lässt</g>, sondern eher durch konkrete Beispiele aus dem Arbeitsalltag und den Werten der Mitarbeiter sichtbar wird.",
         "en": "A very important argument in favor is that our company culture can hardly be expressed in pure numbers, but rather becomes visible through concrete examples from everyday work and the employees' values.",
         "uk": "Дуже важливий аргумент на користь цього — те, що нашу корпоративну культуру навряд чи можна виразити суто цифрами, вона стає видимою радше через конкретні приклади з робочих буднів і цінності співробітників.",
@@ -21127,6 +21179,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "passiv_passiversatz",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass ein überzeugendes Leitbild nicht von heute auf morgen <g>zu verfassen ist</g>, sondern gründlich vorbereitet und mit der Geschäftsführung abgestimmt werden muss.",
         "en": "On the other hand, one should also consider that a convincing mission statement cannot be written overnight, but must be carefully prepared and coordinated with management.",
         "uk": "З іншого боку, варто також враховувати, що переконливий кодекс цінностей неможливо написати за один день — його потрібно ретельно підготувати й узгодити з керівництвом.",
@@ -21134,6 +21187,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "indefinitpronomen",
         "de": "<r>Deshalb schlage ich vor, dass</r> <g>man</g> Mitarbeitende aus verschiedenen Abteilungen aktiv in den Prozess einbezieht, <k>damit</k> das neue Firmenprofil unsere Werte und unsere Kernkompetenzen wirklich authentisch widerspiegelt.",
         "en": "That is why I propose that employees from different departments be actively involved in the process, so that the new company profile really authentically reflects our values and core competencies.",
         "uk": "Тому я пропоную активно залучати до цього процесу співробітників з різних відділів, щоб новий профіль компанії справді автентично відображав наші цінності та ключові компетенції.",
@@ -21141,6 +21195,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21148,6 +21203,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Julia",
         "en": "Julia",
         "uk": "Юлія",
@@ -21170,11 +21226,11 @@ var SCHREIBEN = [
       "uk": "Керівництво планує оновити формат участі у виставці на наступному галузевому заході, роблячи більший акцент на особистих консультаціях, а не лише на рекламних матеріалах. Досі увага зосереджувалась переважно на подарунках і брошурах на стенді.",
       "ru": "Руководство планирует обновить формат участия в выставке на следующем отраслевом мероприятии, делая больший акцент на персональных консультациях, а не только на рекламных материалах. До сих пор внимание было сосредоточено в основном на подарках и брошюрах на стенде."
     },
-    "gram": "praepositionen_nomen_verb_adjektiv",
     "name": "de_w_nina",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21182,6 +21238,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, <c>unseren Messeauftritt für die nächste Fachmesse neu zu gestalten und dabei stärker auf persönliche Beratung</c> <k>statt</k> auf reine Werbematerialien zu setzen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to redesign our trade fair presence for the next industry fair, focusing more on personal consulting rather than pure promotional materials. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує оновити наш формат участі у виставці на наступному галузевому заході, роблячи більший акцент на особистих консультаціях, а не на самих лише рекламних матеріалах. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21189,6 +21246,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "praepositionen_nomen_verb_adjektiv",
         "de": "<r>Ich bin der Meinung, dass</r> unser Messestand sich künftig stärker <g>durch persönliche Beratung auszeichnen</g> sollte, <k>statt</k> vor allem mit Give-aways und Broschüren zu punkten.",
         "en": "I am of the opinion that our booth should stand out more through personal consulting in the future, instead of scoring mainly with give-aways and brochures.",
         "uk": "Я вважаю, що наш стенд надалі має вирізнятися насамперед особистими консультаціями, а не переважно подарунками й брошурами.",
@@ -21196,6 +21254,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "indefinitpronomen",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>jeder</g> Besucher individuell beraten werden könnte, wenn wir weniger Zeit für das bloße Verteilen von Prospekten aufwenden.",
         "en": "A very important argument in favor is that every visitor could be advised individually if we spent less time simply handing out brochures.",
         "uk": "Дуже важливий аргумент на користь цього — те, що кожного відвідувача можна було б консультувати індивідуально, якби ми витрачали менше часу на просту роздачу проспектів.",
@@ -21203,6 +21262,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "waehrend_genitiv_praeposition",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass es <g>während der Messe</g> oft hektisch zugeht und nicht immer genug Standdienst zur Verfügung steht, <k>um</k> jedem Fachbesucher ausführlich Zeit zu widmen.",
         "en": "On the other hand, one should also consider that things often get hectic during the trade fair and there isn't always enough booth staff available to devote extensive time to every trade visitor.",
         "uk": "З іншого боку, варто також враховувати, що під час виставки часто буває напружено, і не завжди вистачає персоналу на стенді, щоб приділити достатньо часу кожному фаховому відвідувачу.",
@@ -21210,6 +21270,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "textzusammenhang",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir <g>dazu</g> ein kurzes, strukturiertes Beratungsgespräch mit drei festen Fragen entwickeln, <k>damit</k> wir auch bei vollem Andrang schnell das Interesse der Besucher wecken und Kontakt knüpfen können.",
         "en": "That is why I propose that we develop a short, structured consulting conversation with three fixed questions, so that even during a full rush we can quickly spark visitors' interest and make contact.",
         "uk": "Тому я пропоную розробити коротку структуровану консультаційну бесіду з трьома фіксованими запитаннями, щоб навіть при великому напливі відвідувачів ми могли швидко зацікавити їх і встановити контакт.",
@@ -21217,6 +21278,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21224,6 +21286,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Nina",
         "en": "Nina",
         "uk": "Ніна",
@@ -21246,11 +21309,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити для запуску нового продукту на ринок єдину структуру внутрішніх презентацій із чітким вступом, основною частиною та висновком, а також обов'язковими діаграмами для наочного зображення характеристик продукту. Досі кожен відділ оформлював свої презентації повністю на власний розсуд.",
       "ru": "Руководство хочет ввести для вывода нового продукта на рынок единую структуру внутренних презентаций с чётким вступлением, основной частью и заключением, а также обязательными диаграммами для наглядного представления характеристик продукта. До сих пор каждый отдел оформлял свои презентации полностью по своему усмотрению."
     },
-    "gram": "modalpartikeln",
     "name": "de_m_david",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21258,6 +21321,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, für die Markteinführung unseres neuen Produkts eine einheitliche Struktur für interne Präsentationen einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce a standardized structure for internal presentations for our new product's market launch. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити єдину структуру внутрішніх презентацій для запуску нашого нового продукту. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21265,6 +21329,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "modalpartikeln",
         "de": "<r>Ich bin der Meinung, dass</r> eine einheitliche Gliederung <g>ja</g> grundsätzlich eine gute Idee ist, denn bisher hat jede Abteilung ihre Präsentationen völlig unterschiedlich aufgebaut, und das Publikum musste sich jedes Mal neu orientieren.",
         "en": "I am of the opinion that a standardized structure is, as we all know, a good idea in principle, because until now every department has organized its presentations completely differently, and the audience had to reorient itself every time.",
         "uk": "Я вважаю, що єдина структура — це, звісно, слушна ідея, адже досі кожен відділ по-своєму вибудовував презентації, і аудиторії щоразу доводилося заново орієнтуватися.",
@@ -21272,6 +21337,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "wortstellung",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>gerade bei komplexen Produkteigenschaften helfen</g> Diagramme und Statistiken, den Überblick zu behalten und die wichtigsten Vorteile gegenüber unseren Mitbewerbern klar zu veranschaulichen.",
         "en": "A very important argument in favor is that especially with complex product features, diagrams and statistics help to keep an overview and clearly illustrate the main advantages over our competitors.",
         "uk": "Дуже важливий аргумент на користь цього — те, що особливо у випадку складних характеристик продукту діаграми й статистика допомагають зберегти огляд і чітко продемонструвати головні переваги перед конкурентами.",
@@ -21279,6 +21345,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "es_pronomen",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass <g>es nicht immer leicht ist</g>, jede Präsentation exakt gleich aufzubauen, wenn sich die Produkte inhaltlich stark voneinander unterscheiden.",
         "en": "On the other hand, one should also consider that it is not always easy to structure every presentation exactly the same way when the products differ greatly in content.",
         "uk": "З іншого боку, варто також враховувати, що не завжди легко вибудувати кожну презентацію абсолютно однаково, коли продукти суттєво відрізняються за змістом.",
@@ -21286,6 +21353,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "negation",
         "de": "<r>Deshalb schlage ich vor, dass</r> die neuen Vorgaben <g>kein starres Korsett</g> sind, sondern nur einen groben Rahmen mit Einstieg, Hauptteil und Schluss bieten, den jede Abteilung flexibel füllen kann.",
         "en": "That is why I propose that the new guidelines not be a rigid corset, but only offer a rough framework with an introduction, main part and conclusion that each department can fill flexibly.",
         "uk": "Тому я пропоную, щоб нові вимоги не були жорстким корсетом, а лише пропонували загальний каркас із вступом, основною частиною та висновком, який кожен відділ міг би гнучко наповнювати.",
@@ -21293,6 +21361,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21300,6 +21369,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "David",
         "en": "David",
         "uk": "Давід",
@@ -21322,11 +21392,11 @@ var SCHREIBEN = [
       "uk": "Керівництво розглядає можливість офіційно додати вміння працювати в команді як критерій до щорічної оцінки ефективності, щоб більше цінувати співпрацю та командний дух. Досі оцінювались переважно індивідуальні досягнення.",
       "ru": "Руководство рассматривает возможность официально добавить умение работать в команде как критерий в ежегодную оценку эффективности, чтобы больше ценить сотрудничество и командный дух. До сих пор оценивались в основном индивидуальные достижения."
     },
-    "gram": "konjunktiv2_als_ob",
     "name": "de_w_anna",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21334,6 +21404,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, überlegt die Geschäftsleitung, Teamfähigkeit künftig offiziell als Kriterium in die jährliche Leistungsbeurteilung aufzunehmen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is considering officially adding team spirit as a criterion in the annual performance review in future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво розглядає можливість надалі офіційно додати вміння працювати в команді як критерій до щорічної оцінки ефективності. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21341,6 +21412,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "konjunktiv2_als_ob",
         "de": "<r>Ich bin der Meinung, dass</r> diese Änderung wirklich überfällig ist, denn manche Kolleginnen und Kollegen verhalten sich im Alltag so, <g>als ob Teamarbeit reine Zeitverschwendung wäre</g>, obwohl gemeinsame Ziele uns doch alle betreffen.",
         "en": "I am of the opinion that this change is really overdue, because in everyday life some colleagues act as if teamwork were a pure waste of time, even though shared goals concern all of us.",
         "uk": "Я вважаю, що ця зміна справді назріла, адже в буденній роботі деякі колеги поводяться так, ніби командна робота — суцільна втрата часу, хоча спільні цілі стосуються всіх нас.",
@@ -21348,6 +21420,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "passiv_mit_sein",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> die Zusammenarbeit deutlich reibungsloser läuft, wenn Rollen und Aufgaben im Team klar <g>verteilt sind</g> und jeder genau weiß, wofür er verantwortlich ist.",
         "en": "A very important argument in favor is that collaboration runs much more smoothly when roles and tasks within the team are clearly assigned and everyone knows exactly what they are responsible for.",
         "uk": "Дуже важливий аргумент на користь цього — те, що співпраця проходить набагато плавніше, коли ролі й завдання в команді чітко розподілені і кожен точно знає, за що він відповідає.",
@@ -21355,6 +21428,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "vergleichssaetze_als_wie_je_desto",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass mit einer offiziellen Bewertung vielleicht ein unangenehmer Druck entsteht: <g>Je</g> stärker Teamfähigkeit bewertet wird, <g>desto</g> mehr könnten manche Kolleginnen und Kollegen nur noch nach außen hilfsbereit wirken wollen.",
         "en": "On the other hand, one should also consider that an official evaluation might create uncomfortable pressure: the more strongly team spirit is assessed, the more some colleagues might just want to appear helpful on the surface.",
         "uk": "З іншого боку, варто також враховувати, що офіційна оцінка може створити неприємний тиск: чим сильніше оцінюватиметься вміння працювати в команді, тим більше деякі колеги можуть прагнути лише зовні здаватися готовими допомогти.",
@@ -21362,6 +21436,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "modalsatz_dadurch_indem",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir gemeinsam klare, faire Kriterien entwickeln, <g>indem wir regelmäßig offen miteinander kommunizieren</g> und uns gegenseitig ehrliches Feedback auf Augenhöhe geben.",
         "en": "That is why I propose that we jointly develop clear, fair criteria by communicating openly with each other regularly and giving each other honest feedback as equals.",
         "uk": "Тому я пропоную розробити разом чіткі й справедливі критерії, регулярно відкрито спілкуючись один з одним і даючи чесний зворотний зв'язок на рівних.",
@@ -21369,6 +21444,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21376,6 +21452,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Anna",
         "en": "Anna",
         "uk": "Анна",
@@ -21398,11 +21475,11 @@ var SCHREIBEN = [
       "uk": "Керівництво планує запровадити єдиний посібник для телефонних розмов з клієнтами, включно з фіксованою формулою привітання та чіткими правилами доступності й зворотного дзвінка. Досі кожен відділ по-своєму опрацьовував дзвінки.",
       "ru": "Руководство планирует ввести единое руководство для телефонных разговоров с клиентами, включая фиксированную формулу приветствия и чёткие правила доступности и обратного звонка. До сих пор каждый отдел по-своему обрабатывал звонки."
     },
-    "gram": "es_pronomen",
     "name": "de_m_alex",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21410,6 +21487,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, für Telefonate mit Kunden einen einheitlichen Gesprächsleitfaden einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce a standardized guide for customer phone calls. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити єдиний посібник для телефонних розмов з клієнтами. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21417,6 +21495,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "es_pronomen",
         "de": "<r>Ich bin der Meinung, dass</r> <g>es wirklich an der Zeit ist</g>, einheitlich zu telefonieren, denn bisher hat jede Abteilung Anrufe ganz unterschiedlich gehandhabt und manche Kunden wussten am Ende nicht einmal, mit wem sie eigentlich sprachen.",
         "en": "I am of the opinion that it is really about time we handled phone calls uniformly, because until now every department has handled calls quite differently, and some customers didn't even know in the end who they were actually speaking to.",
         "uk": "Я вважаю, що вже справді час телефонувати однаково, адже досі кожен відділ по-різному опрацьовував дзвінки, і деякі клієнти в підсумку навіть не знали, з ким саме розмовляли.",
@@ -21424,6 +21503,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "negation",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>kein Kunde</g> mehr das Gefühl haben sollte, falsch verbunden zu sein oder lange auf eine Antwort warten zu müssen.",
         "en": "A very important argument in favor is that no customer should feel like they've been misconnected or have to wait a long time for an answer anymore.",
         "uk": "Дуже важливий аргумент на користь цього — те, що жоден клієнт більше не повинен відчувати, ніби його з'єднали не туди чи що йому доводиться довго чекати на відповідь.",
@@ -21431,6 +21511,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "konnektoren_infinitiv",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass es nicht immer leicht ist, einen Anruf sofort korrekt weiterzuleiten, <g>ohne den Kunden lange in der Warteschleife zu lassen</g>.",
         "en": "On the other hand, one should also consider that it is not always easy to forward a call correctly right away without leaving the customer waiting in the queue for a long time.",
         "uk": "З іншого боку, варто також враховувати, що не завжди легко одразу правильно перенаправити дзвінок, не залишаючи клієнта надовго в черзі очікування.",
@@ -21438,6 +21519,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "wortstellung",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir uns auf eine kurze, freundliche Begrüßungsformel mit Namen und Abteilung einigen. <g>Besonders am Anfang jedes Telefonats entscheidet sich</g> nämlich, ob sich die Kundschaft gut betreut fühlt.",
         "en": "That is why I propose that we agree on a short, friendly greeting formula with name and department. Especially at the beginning of each phone call, it is decided whether the customer feels well looked after.",
         "uk": "Тому я пропоную домовитися про коротку, привітну формулу привітання з іменем та назвою відділу. Адже саме на початку кожного телефонного дзвінка вирішується, чи відчує клієнт гарне обслуговування.",
@@ -21445,6 +21527,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21452,6 +21535,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Alex",
         "en": "Alex",
         "uk": "Алекс",
@@ -21474,11 +21558,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити чіткі правила для дискусій у команді, щоб різні думки висловлювалися поважно, а конфлікти вирішувалися конструктивно. Досі чітких вимог щодо цього не було, і деякі дискусії проходили доволі хаотично.",
       "ru": "Руководство хочет ввести чёткие правила для дискуссий в команде, чтобы разные мнения высказывались уважительно, а конфликты решались конструктивно. До сих пор чётких требований на этот счёт не было, и некоторые дискуссии проходили довольно хаотично."
     },
-    "gram": "passiv_mit_sein",
     "name": "de_m_mark",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21486,6 +21570,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, feste Regeln für Diskussionen im Team einzuführen, damit unterschiedliche Meinungen respektvoll geäußert werden können. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce fixed rules for discussions in the team, so that different opinions can be expressed respectfully. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити чіткі правила для дискусій у команді, щоб різні думки могли висловлюватися поважно. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21493,6 +21578,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "passiv_mit_sein",
         "de": "<r>Ich bin der Meinung, dass</r> solche Regeln wirklich hilfreich sind, denn wenn eine Meinung <g>gut begründet ist</g>, sollte sie auch in Ruhe angehört werden, statt sofort unterbrochen zu werden.",
         "en": "I am of the opinion that such rules are really helpful, because when an opinion is well-founded, it should also be listened to calmly instead of being interrupted right away.",
         "uk": "Я вважаю, що такі правила справді корисні, адже якщо думка добре обґрунтована, її варто вислухати спокійно, а не одразу переривати.",
@@ -21500,6 +21586,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "konnektoren_zweiteilig",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>nicht nur die Diskussionen selbst, sondern auch die Ergebnisse</g> dadurch deutlich klarer würden, weil jeder seinen Standpunkt strukturiert vertreten könnte.",
         "en": "A very important argument in favor is that not only the discussions themselves, but also the results would become much clearer, because everyone could present their position in a structured way.",
         "uk": "Дуже важливий аргумент на користь цього — те, що завдяки цьому не лише самі дискусії, а й їхні результати стали б набагато чіткішими, адже кожен міг би структуровано відстоювати свою позицію.",
@@ -21507,6 +21594,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "relativsatz_wer",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass feste Regeln manche Kolleginnen und Kollegen einschüchtern könnten: <g>Wer</g> sich ohnehin nicht traut, offen zu widersprechen, <g>der</g> bringt am Ende vielleicht noch weniger eigene Argumente ein.",
         "en": "On the other hand, one should also consider that fixed rules might intimidate some colleagues: whoever doesn't dare to openly disagree in the first place might end up contributing even fewer of their own arguments.",
         "uk": "З іншого боку, варто також враховувати, що чіткі правила можуть декого з колег залякати: хто й так не наважується відкрито заперечувати, той наприкінці, можливо, наведе ще менше власних аргументів.",
@@ -21514,6 +21602,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "nomen_verb_verbindungen",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir uns bemühen, jedem genug Redebedarf einzuräumen und gemeinsam <g>das Für und Wider abzuwägen</g>, bevor eine endgültige Entscheidung getroffen wird.",
         "en": "That is why I propose that we make an effort to give everyone enough room to speak and to weigh the pros and cons together before a final decision is made.",
         "uk": "Тому я пропоную докладати зусиль, щоб надавати кожному достатньо часу для висловлювання і разом зважувати всі за і проти, перш ніж ухвалювати остаточне рішення.",
@@ -21521,6 +21610,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21528,6 +21618,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Mark",
         "en": "Mark",
         "uk": "Марк",
@@ -21550,11 +21641,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити обов'язковий чек-лист для онлайн-конференцій, за яким мікрофон, камеру та інтернет-з'єднання потрібно перевіряти перед кожною нарадою. Досі часто виникали технічні проблеми, що коштували цінного часу.",
       "ru": "Руководство хочет ввести обязательный чек-лист для онлайн-конференций, по которому микрофон, камеру и интернет-соединение нужно проверять перед каждым совещанием. До сих пор часто возникали технические проблемы, которые стоили ценного времени."
     },
-    "gram": "vergleichssaetze_als_wie_je_desto",
     "name": "de_w_julia",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21562,6 +21653,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, für Online-Konferenzen eine verbindliche Checkliste einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce a mandatory checklist for online conferences. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити обов'язковий чек-лист для онлайн-конференцій. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21569,6 +21661,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "vergleichssaetze_als_wie_je_desto",
         "de": "<r>Ich bin der Meinung, dass</r> eine solche Checkliste wirklich sinnvoll ist, denn <g>je</g> öfter die Verbindung mitten im Gespräch unterbrochen wird, <g>desto</g> mehr Zeit verlieren wir alle und desto frustrierter wird das ganze Team.",
         "en": "I am of the opinion that such a checklist really makes sense, because the more often the connection is interrupted in the middle of a conversation, the more time we all lose and the more frustrated the whole team becomes.",
         "uk": "Я вважаю, що такий чек-лист справді доцільний, адже чим частіше з'єднання переривається посеред розмови, тим більше часу ми всі втрачаємо і тим більше розчаровується вся команда.",
@@ -21576,6 +21669,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "konnektoren_infinitiv",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> sich viele technische Probleme vermeiden lassen, wenn wir Mikrofon, Kamera und Internetverbindung schon ein paar Minuten vorher testen, <g>um solche Unterbrechungen von vornherein zu vermeiden</g>.",
         "en": "A very important argument in favor is that many technical problems can be avoided if we test the microphone, camera and internet connection a few minutes beforehand, in order to prevent such interruptions from the outset.",
         "uk": "Дуже важливий аргумент на користь цього — те, що багатьох технічних проблем можна уникнути, якщо перевіряти мікрофон, камеру та інтернет-з'єднання за кілька хвилин наперед, щоб від самого початку запобігти таким перериванням.",
@@ -21583,6 +21677,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "modalsatz_dadurch_indem",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass sich nicht jedes Problem <g>dadurch lösen lässt, dass man vorher alles testet</g>, denn manchmal bricht die Verbindung auch mitten im Gespräch einfach ab.",
         "en": "On the other hand, one should also consider that not every problem can be solved by testing everything beforehand, because sometimes the connection simply drops in the middle of the conversation anyway.",
         "uk": "З іншого боку, варто також враховувати, що не кожну проблему можна вирішити тим, що все перевірити заздалегідь, адже іноді з'єднання просто розривається й посеред розмови.",
@@ -21590,6 +21685,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "praepositionen_nomen_verb_adjektiv",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir uns alle etwas besser <g>auf technische Probleme vorbereiten</g>, zum Beispiel mit einem Headset als Ersatz und den Kontaktdaten vom technischen Support griffbereit.",
         "en": "That is why I propose that we all prepare a bit better for technical problems, for example by having a backup headset and the technical support contact details ready at hand.",
         "uk": "Тому я пропоную, щоб ми всі трохи краще готувалися до технічних проблем, наприклад маючи запасну гарнітуру та контакти технічної підтримки напоготові.",
@@ -21597,6 +21693,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21604,6 +21701,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Julia",
         "en": "Julia",
         "uk": "Юлія",
@@ -21626,11 +21724,11 @@ var SCHREIBEN = [
       "uk": "Керівництво хоче запровадити для зовнішнього ділового листування єдиний шаблон із фіксованим бланком та чіткими вимогами щодо звертання й формули прощання. Досі кожен відділ оформлював листи на свій смак, і деякі тексти звучали радше сухо чи занадто офіційно.",
       "ru": "Руководство хочет ввести для внешней деловой переписки единый шаблон с фиксированным бланком и чёткими требованиями к обращению и формуле прощания. До сих пор каждый отдел оформлял письма на свой вкус, и некоторые тексты звучали довольно сухо или слишком казённо."
     },
-    "gram": "textzusammenhang",
     "name": "de_w_nina",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21638,6 +21736,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, für die externe Geschäftskorrespondenz eine einheitliche Vorlage mit festem Briefkopf und klaren Vorgaben für Anrede und Grußformel einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is planning to introduce a standardized template with a fixed letterhead and clear rules for salutations and closing formulas for external business correspondence. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити для зовнішнього ділового листування єдиний шаблон із фіксованим бланком та чіткими вимогами щодо звертання й формули прощання. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21645,6 +21744,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "textzusammenhang",
         "de": "<r>Ich bin der Meinung, dass</r> eine solche Vorlage wirklich hilfreich wäre, denn <g>dabei</g> geht es nicht nur um Formalitäten, sondern auch um einen professionellen ersten Eindruck bei unserer Kundschaft.",
         "en": "I am of the opinion that such a template would really be helpful, because this is not just about formalities, but also about making a professional first impression on our customers.",
         "uk": "Я вважаю, що такий шаблон справді був би корисним, адже йдеться не лише про формальності, а й про професійне перше враження на наших клієнтів.",
@@ -21652,6 +21752,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "nominalisierung",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>die Vereinheitlichung von Anrede und Grußformel</g> für mehr Konsistenz sorgt, sodass unsere E-Mails nach außen wie aus einem Guss wirken.",
         "en": "A very important argument in favor is that standardizing the salutation and closing formula ensures more consistency, so that our emails appear uniform from an outside perspective.",
         "uk": "Дуже важливий аргумент на користь цього — те, що уніфікація звертання та формули прощання забезпечує більшу узгодженість, тож наші листи виглядають зовні цілісно.",
@@ -21659,6 +21760,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "konnektoren_zweiteilig",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass feste Vorgaben <g>zwar</g> hilfreich sind, <g>aber</g> nicht dazu führen sollten, dass unsere Mails am Ende wie reines Amtsdeutsch klingen.",
         "en": "On the other hand, one should also consider that fixed rules are indeed helpful, but should not end up making our emails sound like pure bureaucratic jargon.",
         "uk": "З іншого боку, варто також враховувати, що чіткі вимоги, хоч і корисні, не повинні призводити до того, щоб наші листи зрештою звучали як суцільна канцелярщина.",
@@ -21666,6 +21768,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "praepositionen_nomen_verb_adjektiv",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir uns bei der neuen Vorlage <g>in Bezug auf</g> Ton und Wortwahl an konkreten Beispielen orientieren, damit die Texte einladend statt abschreckend wirken.",
         "en": "That is why I propose that when creating the new template, we base ourselves on concrete examples regarding tone and word choice, so that the texts feel inviting instead of off-putting.",
         "uk": "Тому я пропоную, щоб щодо тону та вибору слів у новому шаблоні ми орієнтувалися на конкретні приклади, щоб тексти справляли привабливе, а не відштовхуюче враження.",
@@ -21673,6 +21776,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21680,6 +21784,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "Nina",
         "en": "Nina",
         "uk": "Ніна",
@@ -21702,11 +21807,11 @@ var SCHREIBEN = [
       "uk": "Керівництво розглядає можливість дозволити співробітникам відділу продажів надалі самостійно вирішувати щодо знижок та особливих умов у пропозиціях у встановлених межах, не консультуючись щоразу з керівництвом. Досі кожну знижку потрібно було погоджувати окремо.",
       "ru": "Руководство рассматривает возможность позволить сотрудникам отдела продаж в дальнейшем самостоятельно принимать решения о скидках и особых условиях в предложениях в установленных рамках, не консультируясь каждый раз с руководством. До сих пор каждую скидку нужно было согласовывать отдельно."
     },
-    "gram": "negation",
     "name": "de_m_david",
     "parts": [
       {
         "role": "anrede",
+        "gram": "",
         "de": "Liebe Kolleginnen und Kollegen,",
         "en": "Dear colleagues,",
         "uk": "Любі колеги,",
@@ -21714,6 +21819,7 @@ var SCHREIBEN = [
       },
       {
         "role": "einleitung",
+        "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, überlegt die Geschäftsleitung, ob Vertriebsmitarbeitende künftig selbst über Rabatte im Angebotsschreiben entscheiden dürfen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
         "en": "as you probably already know, management is considering whether sales staff should be allowed to decide on discounts in offer letters themselves in future. I would also like to write something on this topic in our blog today.",
         "uk": "як ви, напевно, вже знаєте, керівництво розглядає можливість дозволити співробітникам відділу продажів надалі самостійно вирішувати щодо знижок у комерційних пропозиціях. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
@@ -21721,6 +21827,7 @@ var SCHREIBEN = [
       },
       {
         "role": "meinung",
+        "gram": "negation",
         "de": "<r>Ich bin der Meinung, dass</r> es <g>keinen Sinn</g> macht, für jeden kleinen Rabatt extra Rücksprache mit der Geschäftsleitung zu halten, denn dadurch verlieren wir im Verkaufsgespräch oft wertvolle Zeit.",
         "en": "I am of the opinion that it makes no sense to consult management specifically for every small discount, because this often costs us valuable time during the sales conversation.",
         "uk": "Я вважаю, що немає сенсу щоразу окремо консультуватися з керівництвом через кожну невелику знижку, адже це часто коштує нам цінного часу під час перемовин з клієнтом.",
@@ -21728,6 +21835,7 @@ var SCHREIBEN = [
       },
       {
         "role": "pro",
+        "gram": "",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> wir viel schneller auf individuelle Kundenwünsche reagieren könnten, zum Beispiel bei Sonderpreisen, Skonto oder den Zahlungsbedingungen, statt erst tagelang auf eine Genehmigung zu warten.",
         "en": "A very important argument in favor is that we could react much faster to individual customer requests, for example regarding special prices, cash discounts or payment terms, instead of waiting for approval for days.",
         "uk": "Дуже важливий аргумент на користь цього — те, що ми могли б набагато швидше реагувати на індивідуальні побажання клієнтів, наприклад щодо спеціальних цін, знижки за оплату готівкою чи умов оплати, замість того щоб чекати на погодження днями.",
@@ -21735,6 +21843,7 @@ var SCHREIBEN = [
       },
       {
         "role": "kontra",
+        "gram": "indirekte_rede_konjunktiv1",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass manche Kolleginnen und Kollegen aus der Finanzabteilung mir gesagt haben, zu viel Freiheit bei den Konditionen <g>sei</g> riskant für unsere Kalkulation und die Gewinnmarge.",
         "en": "On the other hand, one should also consider that some colleagues from the finance department told me that too much freedom with terms and conditions would be risky for our calculations and profit margin.",
         "uk": "З іншого боку, варто також враховувати, що деякі колеги з фінансового відділу казали мені, що надто велика свобода щодо умов буде ризикованою для наших розрахунків і маржі прибутку.",
@@ -21742,6 +21851,7 @@ var SCHREIBEN = [
       },
       {
         "role": "vorschlag",
+        "gram": "modalsatz_dadurch_indem",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir beides verbinden, <g>indem wir</g> für Rabatte und Lieferbedingungen eine klare Ober- und Untergrenze festlegen, innerhalb derer Vertriebsmitarbeitende dann eigenständig entscheiden dürfen.",
         "en": "That is why I propose that we combine both approaches by setting clear upper and lower limits for discounts and delivery terms, within which sales staff can then decide independently.",
         "uk": "Тому я пропоную поєднати обидва підходи, встановивши чіткі верхню та нижню межі для знижок і умов поставки, у межах яких співробітники відділу продажів зможуть ухвалювати рішення самостійно.",
@@ -21749,6 +21859,7 @@ var SCHREIBEN = [
       },
       {
         "role": "schluss",
+        "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
         "en": "What do you think about this? I'm curious to hear your opinion.",
         "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
@@ -21756,6 +21867,7 @@ var SCHREIBEN = [
       },
       {
         "role": "name",
+        "gram": "",
         "de": "David",
         "en": "David",
         "uk": "Давід",

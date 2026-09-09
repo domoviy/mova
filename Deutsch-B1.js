@@ -1576,7 +1576,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "reflexivpronomen_akkusativ_wdh_b1",
     "cardIds": [
@@ -1599,6 +1600,9 @@ var LESSONS = [
       "dlg_007",
       "dlg_008",
       "dlg_072"
+    ],
+    "frmCards": [
+      "brief_008"
     ]
   },
   {
@@ -4778,8 +4782,3133 @@ var LESSONS = [
     "dlgCards": [
       "dlg_152"
     ]
+  },
+  {
+    "id": "examprep_muendlich_teil3_1",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_065"
+    ],
+    "dlgCards": [
+      "dlg_065"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": null,
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 1,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_2",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_066"
+    ],
+    "dlgCards": [
+      "dlg_066"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_1",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 2,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_3",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_067"
+    ],
+    "dlgCards": [
+      "dlg_067"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_2",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 3,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_4",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_068"
+    ],
+    "dlgCards": [
+      "dlg_068"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_3",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 4,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_5",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_069"
+    ],
+    "dlgCards": [
+      "dlg_069"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_4",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 5,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_6",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_070"
+    ],
+    "dlgCards": [
+      "dlg_070"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_5",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 6,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_7",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_071"
+    ],
+    "dlgCards": [
+      "dlg_071"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_6",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 7,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_8",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_072"
+    ],
+    "dlgCards": [
+      "dlg_072"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_7",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 8,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_9",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_073"
+    ],
+    "dlgCards": [
+      "dlg_073"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_8",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 9,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_10",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_074"
+    ],
+    "dlgCards": [
+      "dlg_074"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_9",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 10,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_11",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_075"
+    ],
+    "dlgCards": [
+      "dlg_075"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_10",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 11,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_12",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_076"
+    ],
+    "dlgCards": [
+      "dlg_076"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_11",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 12,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_13",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_077"
+    ],
+    "dlgCards": [
+      "dlg_077"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_12",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 13,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_14",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_078"
+    ],
+    "dlgCards": [
+      "dlg_078"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_13",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 14,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_15",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_079"
+    ],
+    "dlgCards": [
+      "dlg_079"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_14",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 15,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_16",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_080"
+    ],
+    "dlgCards": [
+      "dlg_080"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_15",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 16,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_17",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_081"
+    ],
+    "dlgCards": [
+      "dlg_081"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_16",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 17,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_18",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_082"
+    ],
+    "dlgCards": [
+      "dlg_082"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_17",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 18,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_19",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_083"
+    ],
+    "dlgCards": [
+      "dlg_083"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_18",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 19,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_20",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_084"
+    ],
+    "dlgCards": [
+      "dlg_084"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_19",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 20,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_21",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_085"
+    ],
+    "dlgCards": [
+      "dlg_085"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_20",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 21,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_22",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_086"
+    ],
+    "dlgCards": [
+      "dlg_086"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_21",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 22,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_23",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_087"
+    ],
+    "dlgCards": [
+      "dlg_087"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_22",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 23,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_24",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_088"
+    ],
+    "dlgCards": [
+      "dlg_088"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_23",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 24,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_25",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_089"
+    ],
+    "dlgCards": [
+      "dlg_089"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_24",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 25,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_26",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_090"
+    ],
+    "dlgCards": [
+      "dlg_090"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_25",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 26,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_27",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_091"
+    ],
+    "dlgCards": [
+      "dlg_091"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_26",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 27,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_28",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_092"
+    ],
+    "dlgCards": [
+      "dlg_092"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_27",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 28,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_29",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_093"
+    ],
+    "dlgCards": [
+      "dlg_093"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_28",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 29,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_30",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_094"
+    ],
+    "dlgCards": [
+      "dlg_094"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_29",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 30,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_31",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_095"
+    ],
+    "dlgCards": [
+      "dlg_095"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_30",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 31,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_32",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_096"
+    ],
+    "dlgCards": [
+      "dlg_096"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_31",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 32,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_33",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_097"
+    ],
+    "dlgCards": [
+      "dlg_097"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_32",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 33,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_34",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_098"
+    ],
+    "dlgCards": [
+      "dlg_098"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_33",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 34,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_35",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_099"
+    ],
+    "dlgCards": [
+      "dlg_099"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_34",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 35,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_36",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_100"
+    ],
+    "dlgCards": [
+      "dlg_100"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_35",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 36,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_37",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_101"
+    ],
+    "dlgCards": [
+      "dlg_101"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_36",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 37,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_38",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_102"
+    ],
+    "dlgCards": [
+      "dlg_102"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_37",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 38,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_39",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_103"
+    ],
+    "dlgCards": [
+      "dlg_103"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_38",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 39,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_40",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_104"
+    ],
+    "dlgCards": [
+      "dlg_104"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_39",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 40,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_41",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_105"
+    ],
+    "dlgCards": [
+      "dlg_105"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_40",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 41,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_42",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_106"
+    ],
+    "dlgCards": [
+      "dlg_106"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_41",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 42,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_43",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_107"
+    ],
+    "dlgCards": [
+      "dlg_107"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_42",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 43,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_44",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_108"
+    ],
+    "dlgCards": [
+      "dlg_108"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_43",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 44,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_45",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_109"
+    ],
+    "dlgCards": [
+      "dlg_109"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_44",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 45,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_46",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_110"
+    ],
+    "dlgCards": [
+      "dlg_110"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_45",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 46,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_47",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_111"
+    ],
+    "dlgCards": [
+      "dlg_111"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_46",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 47,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_48",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_112"
+    ],
+    "dlgCards": [
+      "dlg_112"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_47",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 48,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_49",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_113"
+    ],
+    "dlgCards": [
+      "dlg_113"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_48",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 49,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_50",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_114"
+    ],
+    "dlgCards": [
+      "dlg_114"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_49",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 50,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_51",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_115"
+    ],
+    "dlgCards": [
+      "dlg_115"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_50",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 51,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_52",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_116"
+    ],
+    "dlgCards": [
+      "dlg_116"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_51",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 52,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_53",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_117"
+    ],
+    "dlgCards": [
+      "dlg_117"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_52",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 53,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_54",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_118"
+    ],
+    "dlgCards": [
+      "dlg_118"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_53",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 54,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_55",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_119"
+    ],
+    "dlgCards": [
+      "dlg_119"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_54",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 55,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_56",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_120"
+    ],
+    "dlgCards": [
+      "dlg_120"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_55",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 56,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_57",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_121"
+    ],
+    "dlgCards": [
+      "dlg_121"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_56",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 57,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_58",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_122"
+    ],
+    "dlgCards": [
+      "dlg_122"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_57",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 58,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_59",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_123"
+    ],
+    "dlgCards": [
+      "dlg_123"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_58",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 59,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_60",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_124"
+    ],
+    "dlgCards": [
+      "dlg_124"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_59",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 60,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_61",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_125"
+    ],
+    "dlgCards": [
+      "dlg_125"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_60",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 61,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_62",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_126"
+    ],
+    "dlgCards": [
+      "dlg_126"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_61",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 62,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_63",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_127"
+    ],
+    "dlgCards": [
+      "dlg_127"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_62",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 63,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_64",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_128"
+    ],
+    "dlgCards": [
+      "dlg_128"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_63",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 64,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_65",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_129"
+    ],
+    "dlgCards": [
+      "dlg_129"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_64",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 65,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_66",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_130"
+    ],
+    "dlgCards": [
+      "dlg_130"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_65",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 66,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_67",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_131"
+    ],
+    "dlgCards": [
+      "dlg_131"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_66",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 67,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_68",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_132"
+    ],
+    "dlgCards": [
+      "dlg_132"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_67",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 68,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_69",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_133"
+    ],
+    "dlgCards": [
+      "dlg_133"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_68",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 69,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_70",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_134"
+    ],
+    "dlgCards": [
+      "dlg_134"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_69",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 70,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_71",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_135"
+    ],
+    "dlgCards": [
+      "dlg_135"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_70",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 71,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_72",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_136"
+    ],
+    "dlgCards": [
+      "dlg_136"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_71",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 72,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_73",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_137"
+    ],
+    "dlgCards": [
+      "dlg_137"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_72",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 73,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_74",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_138"
+    ],
+    "dlgCards": [
+      "dlg_138"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_73",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 74,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_75",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_139"
+    ],
+    "dlgCards": [
+      "dlg_139"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_74",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 75,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_76",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_140"
+    ],
+    "dlgCards": [
+      "dlg_140"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_75",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 76,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_77",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_141"
+    ],
+    "dlgCards": [
+      "dlg_141"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_76",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 77,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_78",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_142"
+    ],
+    "dlgCards": [
+      "dlg_142"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_77",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 78,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_79",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_143"
+    ],
+    "dlgCards": [
+      "dlg_143"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_78",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 79,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_80",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_144"
+    ],
+    "dlgCards": [
+      "dlg_144"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_79",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 80,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_81",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_145"
+    ],
+    "dlgCards": [
+      "dlg_145"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_80",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 81,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_82",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_146"
+    ],
+    "dlgCards": [
+      "dlg_146"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_81",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 82,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_83",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_147"
+    ],
+    "dlgCards": [
+      "dlg_147"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_82",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 83,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_84",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_148"
+    ],
+    "dlgCards": [
+      "dlg_148"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_83",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 84,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_85",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_149"
+    ],
+    "dlgCards": [
+      "dlg_149"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_84",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 85,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_86",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_150"
+    ],
+    "dlgCards": [
+      "dlg_150"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_85",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 86,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_87",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_151"
+    ],
+    "dlgCards": [
+      "dlg_151"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_86",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 87,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_muendlich_teil3_88",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 1,
+    "title": {
+      "de": "Mündliche Prüfung – Teil 3",
+      "uk": "Mündliche Prüfung – Teil 3",
+      "en": "Mündliche Prüfung – Teil 3",
+      "ru": "Mündliche Prüfung – Teil 3"
+    },
+    "type": "dialogue",
+    "dlgType": "problemsolving",
+    "cardIds": [
+      "dlg_152"
+    ],
+    "dlgCards": [
+      "dlg_152"
+    ],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_muendlich_teil3_87",
+    "_parentModuleId": "examprep_muendlich_teil3",
+    "_subIndex": 88,
+    "_subTotal": 88
+  },
+  {
+    "id": "examprep_brief_1",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_001"
+    ],
+    "frmCards": [
+      "brief_001"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": null,
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 1,
+    "_subTotal": 8
+  },
+  {
+    "id": "examprep_brief_2",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_002"
+    ],
+    "frmCards": [
+      "brief_002"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_1",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 2,
+    "_subTotal": 8
+  },
+  {
+    "id": "examprep_brief_3",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_003"
+    ],
+    "frmCards": [
+      "brief_003"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_2",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 3,
+    "_subTotal": 8
+  },
+  {
+    "id": "examprep_brief_4",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_004"
+    ],
+    "frmCards": [
+      "brief_004"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_3",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 4,
+    "_subTotal": 8
+  },
+  {
+    "id": "examprep_brief_5",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_005"
+    ],
+    "frmCards": [
+      "brief_005"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_4",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 5,
+    "_subTotal": 8
+  },
+  {
+    "id": "examprep_brief_6",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_006"
+    ],
+    "frmCards": [
+      "brief_006"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_5",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 6,
+    "_subTotal": 8
+  },
+  {
+    "id": "examprep_brief_7",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_007"
+    ],
+    "frmCards": [
+      "brief_007"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_6",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 7,
+    "_subTotal": 8
+  },
+  {
+    "id": "examprep_brief_8",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_008"
+    ],
+    "frmCards": [
+      "brief_008"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_7",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 8,
+    "_subTotal": 8
+  },
+  {
+    "id": "examsim_brief",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 3,
+    "moduleTitle": {
+      "de": "Prüfungssimulation",
+      "uk": "Симуляція іспиту",
+      "en": "Exam simulation",
+      "ru": "Симуляция экзамена"
+    },
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "examsim",
+    "simPart": "Forumsbeitrag",
+    "cardIds": [],
+    "frmCards": [],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": null,
+    "_parentModuleId": "examsim_module"
   }
 ];
+
+// ── Симуляція письмової частини іспиту (Schreiben: Brief/E-Mail) ──
+// Ключ "Forumsbeitrag" — навмисно ТОЙ САМИЙ routing-key, що очікує
+// examSimOpenFromNode()/openExamSimForumsbeitrag() в index.html (спільний
+// рушій з курсу B2-Beruf): DTZ Schreiben теж видає ДВІ теми на вибір
+// (Aufgabe A/B — кандидат позначає на бланку, яку з двох виконав), тож
+// це саме той механізм "2 випадкові картки з var SCHREIBEN → вибір
+// однієї", а не однотемний openExamSimEmail(). "label" — щоб екран
+// брифінгу показував "Brief / E-Mail" замість дефолтного "Forumsbeitrag"
+// (те слово тут узагалі не з нашого курсу, лишилось як фолбек для B2).
+// Час і формулювання — з офіційних матеріалів DTZ (g.a.s.t./Goethe-
+// Institut, Schreiben: 30 хв, halbformelle/formelle Mitteilung).
+var EXAM_SIM = {
+  Forumsbeitrag: {
+    time_min: 30,
+    label: {
+      de: "Brief / E-Mail",
+      uk: "Лист / E-Mail",
+      en: "Letter / Email",
+      ru: "Письмо / E-Mail"
+    },
+    instructions: {
+      de: "Sie bekommen zwei Themen (A und B). Wählen Sie eines aus und schreiben Sie eine halbformelle oder formelle Mitteilung als Brief oder E-Mail. Gehen Sie auf alle vier Punkte in der Aufgabe ein.",
+      uk: "Ви отримаєте дві теми (A і B). Оберіть одну й напишіть напівформальний або формальний лист чи e-mail. Розкрийте всі чотири пункти завдання.",
+      en: "You will get two topics (A and B). Choose one and write a semi-formal or formal letter or email. Address all four points in the task.",
+      ru: "Вы получите две темы (A и B). Выберите одну и напишите полуформальное или формальное письмо или e-mail. Раскройте все четыре пункта задания."
+    }
+  }
+};
 
 var VOCAB = [
   {
@@ -32896,6 +36025,35 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihr Verständnis.</r>", "en": "<r>Thank you for your understanding.</r>", "uk": "<r>Дякую за розуміння.</r>", "ru": "<r>Спасибо за понимание.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
       { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
+    ]
+  },
+  {
+    "id": "brief_008",
+    "cat": "Entschuldigung / Absage",
+    "format": "brief_informell",
+    "topic": {
+      "de": "Eine Verabredung absagen",
+      "en": "Cancelling a get-together",
+      "uk": "Скасування зустрічі",
+      "ru": "Отмена встречи"
+    },
+    "task": {
+      "de": "Sie hatten sich mit einem Freund für Samstag zum Einkaufsbummel verabredet. Jetzt müssen Sie den Termin leider absagen. Schreiben Sie ihm einen Brief.<br><br>1. Grund für Ihr Schreiben<br>2. Warum Sie absagen müssen<br>3. Entschuldigung<br>4. Vorschlag für einen neuen Termin",
+      "en": "You had arranged with a friend to go shopping together on Saturday. Now you unfortunately have to cancel. Write him a letter.<br><br>1. Reason for your letter<br>2. Why you have to cancel<br>3. An apology<br>4. A suggestion for a new date",
+      "uk": "Ви домовилися з другом піти разом за покупками в суботу. Тепер Вам, на жаль, доведеться скасувати зустріч. Напишіть йому листа.<br><br>1. Причина Вашого листа<br>2. Чому Ви маєте скасувати зустріч<br>3. Вибачення<br>4. Пропозиція нової дати",
+      "ru": "Вы договорились с другом пойти вместе за покупками в субботу. Теперь Вам, к сожалению, придётся отменить встречу. Напишите ему письмо.<br><br>1. Причина Вашего письма<br>2. Почему Вы должны отменить встречу<br>3. Извинение<br>4. Предложение новой даты"
+    },
+    "name": "de_m_mark",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Berlin, den 8. März 2025", "en": "Berlin, 8 March 2025", "uk": "Берлін, 8 березня 2025 р.", "ru": "Берлин, 8 марта 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Lieber Tom,", "en": "Dear Tom,", "uk": "Любий Томе,", "ru": "Дорогой Том," },
+      { "role": "einleitung", "gram": "reflexivpronomen_akkusativ_wdh_b1", "de": "<r>Ich muss dir leider schreiben, dass</r> ich unser Treffen am <c>Samstag</c> nicht wie geplant einhalten kann, <k>weil</k> ich <g>mich total verplant habe</g>.", "en": "<r>I unfortunately have to write and tell you that</r> I can't keep our Saturday plan as arranged, because I've completely overbooked myself.", "uk": "<r>Мушу, на жаль, написати тобі, що</r> я не можу дотримати нашої домовленості на суботу, бо я геть переплутав свій розклад.", "ru": "<r>Должен, к сожалению, написать тебе, что</r> я не могу сдержать нашу договорённость на субботу, потому что я совсем запутался в своём расписании." },
+      { "role": "punkt2", "gram": "nebensatz_mit_obwohl", "de": "<r>Der Grund ist, dass</r> ich am Samstag doch arbeiten muss, <k>obwohl</k> <g>ich eigentlich frei haben sollte</g>.", "en": "<r>The reason is that</r> I have to work on Saturday after all, even though I was actually supposed to have the day off.", "uk": "<r>Причина в тому, що</r> мені все ж доведеться працювати в суботу, хоча взагалі-то в мене мав бути вихідний.", "ru": "<r>Причина в том, что</r> мне всё же придётся работать в субботу, хотя вообще-то у меня должен был быть выходной." },
+      { "role": "punkt3", "gram": "verben_mit_praep_wdh_b1", "de": "<r>Es tut mir wirklich leid,</r> <k>und</k> ich <g>entschuldige mich vielmals dafür</g>.", "en": "<r>I'm really sorry about that,</r> and I apologize sincerely for it.", "uk": "<r>Мені справді дуже шкода,</r> і я щиро вибачаюся за це.", "ru": "<r>Мне действительно очень жаль,</r> и я искренне извиняюсь за это." },
+      { "role": "punkt4", "gram": "praepositionaladverbien_b1", "de": "<r>Wie wäre es,</r> wenn wir uns stattdessen nächstes Wochenende treffen? <k>Denn</k> <g>darauf</g> würde ich mich sehr freuen.", "en": "<r>How about</r> we meet next weekend instead? Because I would really look forward to that.", "uk": "<r>Як щодо того,</r> щоб натомість зустрітися наступного вихідного? Адже я був би цьому дуже радий.", "ru": "<r>Как насчёт того,</r> чтобы вместо этого встретиться в следующие выходные? Ведь я был бы этому очень рад." },
+      { "role": "schluss", "gram": "", "de": "<r>Bis bald und nochmals Entschuldigung.</r>", "en": "<r>See you soon, and sorry again.</r>", "uk": "<r>До зустрічі, і ще раз вибач.</r>", "ru": "<r>До встречи, и ещё раз извини.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
     ]
   }
 ];
