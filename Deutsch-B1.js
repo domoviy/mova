@@ -1533,7 +1533,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -1552,6 +1553,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_071"
+    ],
+    "frmCards": [
+      "brief_007"
     ]
   },
   {
@@ -32863,6 +32867,35 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Ich hoffe, du verstehst, wie ich das meine.</r>", "en": "<r>I hope you understand what I mean.</r>", "uk": "<r>Сподіваюся, ти розумієш, що я маю на увазі.</r>", "ru": "<r>Надеюсь, ты понимаешь, что я имею в виду.</r>" },
       { "role": "grussformel", "gram": "", "de": "Liebe Grüße", "en": "Take care,", "uk": "Теплі вітання,", "ru": "Тёплые пожелания," },
       { "role": "name", "gram": "", "de": "Alex Berg", "en": "Alex Berg", "uk": "Алекс Берг", "ru": "Алекс Берг" }
+    ]
+  },
+  {
+    "id": "brief_007",
+    "cat": "Termin vereinbaren oder verschieben",
+    "format": "email_formell",
+    "topic": {
+      "de": "Ein verschobener Abholtermin",
+      "en": "A postponed pickup appointment",
+      "uk": "Перенесений термін отримання товару",
+      "ru": "Перенесённый срок получения товара"
+    },
+    "task": {
+      "de": "Sie haben letzte Woche ein Sonderangebot im Geschäft reserviert und wollten es heute abholen. Sie können den Termin aber nicht einhalten. Schreiben Sie eine E-Mail an den Kundenservice.<br><br>1. Grund für Ihr Schreiben<br>2. Warum Sie den Termin nicht einhalten können<br>3. Wann Sie den Artikel stattdessen abholen möchten<br>4. Bitte um Bestätigung",
+      "en": "You reserved a special offer item in a shop last week and wanted to pick it up today. However, you cannot keep the appointment. Write an email to customer service.<br><br>1. Reason for your email<br>2. Why you cannot keep the appointment<br>3. When you would like to pick up the item instead<br>4. A request for confirmation",
+      "uk": "Ви минулого тижня зарезервували товар за спеціальною пропозицією в магазині і хотіли забрати його сьогодні. Однак Ви не можете дотримати домовленості. Напишіть електронного листа до служби підтримки клієнтів.<br><br>1. Причина Вашого листа<br>2. Чому Ви не можете дотримати домовленого терміну<br>3. Коли Ви хотіли б натомість забрати товар<br>4. Прохання про підтвердження",
+      "ru": "Вы на прошлой неделе зарезервировали товар по специальному предложению в магазине и хотели забрать его сегодня. Однако Вы не можете сдержать договорённость. Напишите электронное письмо в службу поддержки клиентов.<br><br>1. Причина Вашего письма<br>2. Почему Вы не можете сдержать договорённый срок<br>3. Когда Вы хотели бы вместо этого забрать товар<br>4. Просьба о подтверждении"
+    },
+    "name": "de_w_julia",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Verschiebung meines Abholtermins", "en": "Subject: Postponement of my pickup appointment", "uk": "Тема: Перенесення терміну отримання товару", "ru": "Тема: Перенос срока получения товара" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "relativsatz_akkusativ_b1", "de": "<r>Ich schreibe Ihnen wegen meiner Reservierung,</r> <g>die ich letzte Woche gemacht habe</g>, <k>denn</k> ich kann den <c>Abholtermin</c> heute leider nicht einhalten.", "en": "<r>I am writing to you regarding my reservation</r>, which I made last week, because I unfortunately cannot keep the pickup appointment today.", "uk": "<r>Пишу Вам щодо моєї резервації</r>, яку я зробила минулого тижня, бо, на жаль, не можу сьогодні дотримати термін отримання товару.", "ru": "<r>Пишу Вам по поводу моей резервации</r>, которую я сделала на прошлой неделе, потому что, к сожалению, не могу сегодня сдержать срок получения товара." },
+      { "role": "punkt2", "gram": "nebensatz_mit_bevor", "de": "<r>Leider kann ich den Termin nicht einhalten,</r> <k>weil</k> ich heute kurzfristig zu einem Arzttermin muss. <g>Bevor ich zu Ihnen komme, ist der Laden schon geschlossen.</g>", "en": "<r>Unfortunately, I cannot keep the appointment</r> because I have to go to a short-notice doctor's appointment today. Before I can come to you, the shop will already be closed.", "uk": "<r>На жаль, я не можу дотримати термін,</r> тому що сьогодні мені раптово потрібно до лікаря. Перш ніж я встигну до Вас прийти, магазин уже буде зачинений.", "ru": "<r>К сожалению, я не могу сдержать срок,</r> потому что сегодня мне срочно нужно к врачу. Прежде чем я успею к Вам прийти, магазин уже будет закрыт." },
+      { "role": "punkt3", "gram": "verben_als_nomen", "de": "<r>Ich würde den Artikel gerne</r> <g>am Freitagnachmittag zum Abholen</g> vorbeikommen, <k>falls</k> das für Sie möglich ist.", "en": "<r>I would like to</r> come by to pick up the item on Friday afternoon instead, if that's possible for you.", "uk": "<r>Я хотіла б</r> натомість зайти забрати товар у п’ятницю вдень, якщо це для Вас можливо.", "ru": "<r>Я хотела бы</r> вместо этого зайти забрать товар в пятницу днём, если это для Вас возможно." },
+      { "role": "punkt4", "gram": "nicht_brauchen_zu", "de": "<r>Ich wäre Ihnen dankbar, wenn</r> Sie mir kurz Bescheid geben könnten. <k>Dafür</k> <g>brauchen Sie nicht extra anzurufen</g>, eine kurze E-Mail reicht völlig.", "en": "<r>I would be grateful if</r> you could let me know briefly. You don't need to call specially for that — a short email is completely enough.", "uk": "<r>Я була б Вам вдячна, якби</r> Ви коротко повідомили мене. Для цього не потрібно окремо телефонувати, достатньо короткого листа.", "ru": "<r>Я была бы Вам благодарна, если бы</r> Вы коротко сообщили мне. Для этого не нужно отдельно звонить, достаточно короткого письма." },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihr Verständnis.</r>", "en": "<r>Thank you for your understanding.</r>", "uk": "<r>Дякую за розуміння.</r>", "ru": "<r>Спасибо за понимание.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
     ]
   }
 ];
