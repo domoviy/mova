@@ -460,28 +460,90 @@ def forum_field_text(item, field):
             return {k: v for k, v in part.items() if k != 'role'}
     return {}
 
+STORY_EXAMINER_PERSONA_ID = "de_w_nina"
+# Фіксований голос "екзаменатора" для запитань Mündliche Prüfung —
+# Teil 1 (як у var STORY_TASK.questions, так і у var STORY[].customQA[].q).
+# de_w_nina — повторне використання наявного персонажа (не новий запис
+# у characters.js): жіночий голос, максимальний контраст із de_m_david
+# (голос розповідача STORY), і найменш "зайнятий" серед жіночих голосів
+# в існуючих діалогах курсу. Той самий id для ВСІХ тем/прикладів —
+# екзаменатор один і той самий, на відміну від розповідача (card['name']),
+# який може відрізнятись від картки до картки.
+
+def story_task_fields(item):
+    """var STORY_TASK — умова завдання на ОДНУ тему (8 тем у B2).
+    Озвучуються лише questions[] (стандартизовані запитання
+    екзаменатора) — topic/task/tips лишаються текстом без аудіо, той
+    самий принцип, що й 'task' у story_fields() нижче."""
+    fields = []
+    for q in item.get('questions') or []:
+        qid = q.get('id') if isinstance(q, dict) else None
+        if qid:
+            fields.append(qid)
+    return fields
+
+def story_task_field_text(item, field):
+    for q in item.get('questions') or []:
+        if isinstance(q, dict) and q.get('id') == field:
+            return {k: v for k, v in q.items() if k != 'id'}
+    return {}
+
 def story_fields(item):
     """Mündliche Prüfung — Teil 1 (var STORY). На відміну від forum_fields()
-    вище, 'task' (умова завдання — довгий текст із переліком "Mögliche
-    Fragen") СВІДОМО не входить: це умова, яку читають, а не репліка для
-    відтворення — тому без аудіо. Синхронізовано з _storyCardsToUnits()/
-    _lfStoryHandlers.getAudioText() в index.html — там 'task' так само
-    не очікує аудіо (getAudioText повертає [] для story_intro)."""
+    вище, 'task' (умова завдання) сюди НЕ входить — тепер він взагалі
+    живе в іншій картці (var STORY_TASK), не тут. Окрім parts[] (сама
+    усна розповідь), сюди входять:
+      - answers[]  — відповіді розповідача на СТАНДАРТИЗОВАНІ запитання
+                     екзаменатора (qId відповідає questions[].id у
+                     відповідній картці var STORY_TASK з тим самим
+                     topicNum) — голос той самий, що й parts (наратор).
+      - customQA[] — індивідуальні запитання+відповіді ЛИШЕ до цього
+                     конкретного прикладу (не переюзаються іншими
+                     прикладами тієї ж теми, на відміну від answers[]) —
+                     кожен запис дає ДВА поля: власне запитання (голос
+                     екзаменатора) і відповідь (голос наратора). Див.
+                     story_field_persona() нижче — саме тому voice для
+                     "story" тепер залежить від КОНКРЕТНОГО field, а не
+                     єдиний на всю картку, як було раніше."""
     fields = []
     for part in item.get('parts') or []:
         role = part.get('role') if isinstance(part, dict) else None
         if role:
             fields.append(role)
+    for a in item.get('answers') or []:
+        qid = a.get('qId') if isinstance(a, dict) else None
+        if qid:
+            fields.append(qid)
+    for i, qa in enumerate(item.get('customQA') or [], start=1):
+        if isinstance(qa, dict):
+            if qa.get('q'): fields.append(f"cqa{i}_q")
+            if qa.get('a'): fields.append(f"cqa{i}_a")
     return fields
 
 def story_field_text(item, field):
-    """Точна копія forum_field_text() щойно вище, для var STORY."""
-    if field == 'task':
-        return item.get('task') or {}
     for part in item.get('parts') or []:
         if isinstance(part, dict) and part.get('role') == field:
             return {k: v for k, v in part.items() if k != 'role'}
+    for a in item.get('answers') or []:
+        if isinstance(a, dict) and a.get('qId') == field:
+            return {k: v for k, v in a.items() if k != 'qId'}
+    m = re.match(r'^cqa(\d+)_([qa])$', field)
+    if m:
+        idx, which = int(m.group(1)), m.group(2)
+        custom = item.get('customQA') or []
+        if 1 <= idx <= len(custom) and isinstance(custom[idx-1], dict):
+            return custom[idx-1].get(which) or {}
     return {}
+
+def story_field_persona(item, field):
+    """Яким голосом озвучувати КОНКРЕТНЕ поле картки var STORY: голос
+    розповідача (card['name']) для parts[]/answers[]/customQA[].a, або
+    фіксований голос екзаменатора для customQA[].q. Questions у самій
+    var STORY_TASK завжди йдуть голосом екзаменатора без цієї функції
+    (там єдиний тип поля на всю картку — окрема гілка в main())."""
+    if field.endswith('_q') and re.match(r'^cqa\d+_q$', field):
+        return STORY_EXAMINER_PERSONA_ID
+    return item.get("name")
 
 def eml_fields(item):
     """Впорядкований список полів-'реплік' ОДНІЄЇ картки email_XXX —
@@ -1438,12 +1500,26 @@ async def main():
             # "field_obj = item.get(field)" цикл, розрахований на
             # top-level поля) — див. коментар у forum_fields().
             internal_cat = "forum"
+        elif item_id.startswith("story_task_"):
+            # Mündliche Prüfung — Teil 1, умови завдань (var STORY_TASK,
+            # одна картка на тему, 8 тем у B2). ПЕРЕВІРКА МАЄ ЙТИ ПЕРЕД
+            # "story_" нижче: "story_task_001".startswith("story_") теж
+            # True, тож без цієї гілки вище story_task_XXX помилково
+            # потрапляв би в обробку story_XXX (яка чекає на parts/name,
+            # яких тут нема). Єдине, що тут озвучується, — questions[]
+            # (стандартизовані запитання екзаменатора після розповіді);
+            # topic/task/tips — текст для читання, без аудіо (той самий
+            # принцип, що й 'task' у гілці "story" нижче).
+            internal_cat = "story_task"
         elif item_id.startswith("story_"):
             # Mündliche Prüfung — Teil 1 (var STORY) — структурно
-            # ідентична forum_XXX (task + card['parts'] з {role,
-            # de,en,uk,ru}, один розповідач card['name']), тому окрема
-            # гілка нижче — точна копія forum, лише інші voice/fields-
-            # функції (story_fields()/story_field_text()).
+            # ідентична forum_XXX (card['parts'] з {role, de,en,uk,ru},
+            # один розповідач card['name']), тому окрема гілка нижче —
+            # точна копія forum, лише інші voice/fields-функції
+            # (story_fields()/story_field_text()). Тепер ТАКОЖ містить
+            # answers[]/customQA[] (відповіді на запитання екзаменатора,
+            # додано разом зі story_task_ вище) — голос відповідей інший
+            # від голосу запитань, див. story_field_persona().
             internal_cat = "story"
         elif item_id.startswith("email_"):
             # E-Mail (var EMAILS) — той самий принцип, що forum щойно
@@ -1531,18 +1607,75 @@ async def main():
             continue
 
         if internal_cat == "story":
-            # ── Mündliche Prüfung Teil 1: точна копія гілки forum щойно
-            # вище (один голос-розповідач card['name'], лише PRIMARY_LANG),
-            # лише story_fields()/story_field_text() замість forum-аналогів.
+            # ── Mündliche Prüfung Teil 1: той самий принцип "голос
+            # залежить від поля", що вже є в гілці email вище — тут
+            # story_field_persona() вирішує, чи це наратор (card['name']),
+            # чи фіксований екзаменатор (customQA[].q). Лише PRIMARY_LANG.
             if primary_lang in audio_config:
-                persona_id = item.get("name")
-                voice = resolve_character_voice(characters_list, persona_id, primary_lang)
-                if not voice:
-                    voice = get_voice_id("story", "post", primary_lang)
+                narrator_voice = resolve_character_voice(characters_list, item.get("name"), primary_lang)
+                if not narrator_voice:
+                    narrator_voice = get_voice_id("story", "post", primary_lang)
+                examiner_voice = resolve_character_voice(characters_list, STORY_EXAMINER_PERSONA_ID, primary_lang)
+                if not examiner_voice:
+                    examiner_voice = get_voice_id("story", "post", primary_lang)
                 rates = audio_config.get(primary_lang, ["100"])
 
                 for field in story_fields(item):
                     field_obj = story_field_text(item, field)
+                    text = field_obj.get(primary_lang) if isinstance(field_obj, dict) else None
+                    if text is None: continue
+                    if isinstance(text, str) and not text.strip(): continue
+
+                    cleaned = clean_text(text, primary_lang)
+                    if not cleaned:
+                        continue
+
+                    voice = examiner_voice if story_field_persona(item, field) == STORY_EXAMINER_PERSONA_ID else narrator_voice
+                    want_timing = field_wants_timing("story", field, primary_lang, primary_lang)
+
+                    for rate in rates:
+                        filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
+                        mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
+
+                        content_hash = compute_content_hash(cleaned, voice, rate)
+                        existing_value = manifest_data.get(mkey)
+                        existing_hash = manifest_hash_part(existing_value)
+
+                        if existing_value != manifest_value(content_hash, want_timing):
+                            tasks.append({
+                                "id": item_id,
+                                "course": course,
+                                "audio_base": audio_base,
+                                "internal_cat": internal_cat,
+                                "cat_lower": cat_lower,
+                                "sub": field,
+                                "lang": primary_lang,
+                                "rate": rate,
+                                "cleaned": cleaned,
+                                "voice": voice,
+                                "filename": filename,
+                                "mkey": mkey,
+                                "content_hash": content_hash,
+                                "existing_hash": existing_hash,
+                                "want_timing": want_timing,
+                                "primary_lang": primary_lang
+                            })
+            # story_XXX повністю оброблено вище — переходимо до наступної
+            # картки, без generic циклу нижче.
+            continue
+
+        if internal_cat == "story_task":
+            # ── Mündliche Prüfung Teil 1, умови завдань (var STORY_TASK):
+            # єдиний тип поля на всю картку (questions[]) — завжди голос
+            # екзаменатора, без per-field розгалуження, як у "story" вище.
+            if primary_lang in audio_config:
+                voice = resolve_character_voice(characters_list, STORY_EXAMINER_PERSONA_ID, primary_lang)
+                if not voice:
+                    voice = get_voice_id("story", "post", primary_lang)
+                rates = audio_config.get(primary_lang, ["100"])
+
+                for field in story_task_fields(item):
+                    field_obj = story_task_field_text(item, field)
                     text = field_obj.get(primary_lang) if isinstance(field_obj, dict) else None
                     if text is None: continue
                     if isinstance(text, str) and not text.strip(): continue
@@ -1580,8 +1713,8 @@ async def main():
                                 "want_timing": want_timing,
                                 "primary_lang": primary_lang
                             })
-            # story_XXX повністю оброблено вище — переходимо до наступної
-            # картки, без generic циклу нижче.
+            # story_task_XXX повністю оброблено вище — переходимо до
+            # наступної картки, без generic циклу нижче.
             continue
 
         if internal_cat == "email":
