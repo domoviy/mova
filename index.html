@@ -4103,7 +4103,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '630-ce87678';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9283,10 +9283,18 @@ function renderReviewCard(chapterNums, labelKey, isUnlocked){
   </div>`;
 }
 
-function renderLernpfad(){
+function renderLernpfad(opts){
+  opts = opts || {};
   // Скидаємо кеш "поточного" уроку — прогрес міг змінитись з
   // попереднього рендеру (щойно пройдений урок тощо).
-  _lpCurrentLessonCache = undefined;
+  //
+  // ВИНЯТОК: opts.keepCurrentOverride — використовується лише
+  // goToLernpfadActivePoint() для першої фази переходу після уроку:
+  // на секунду навмисно показуємо ЩОЙНО ЗАВЕРШЕНИЙ урок як "активний"
+  // (_lpCurrentLessonCache вже виставлений викликачем ДО цього виклику),
+  // а вже тоді другим рендером (без опції) переходимо на справжній
+  // наступний.
+  if(!opts.keepCurrentOverride) _lpCurrentLessonCache = undefined;
   // Smart Review: рендеримо Daily Plan
   try{ srRenderDailyPlan(); }catch(e){ console.warn('[SR] renderDailyPlan:', e); }
   const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
@@ -17016,13 +17024,40 @@ function lfShowResult(){
   // Раніше тут показувались 3 кнопки ("Наступний урок"/"Наступний
   // діалог"/"До списку уроків") після завершення святкування. Тепер —
   // без кнопок: після завершення СВЯТКУВАННЯ (і вогню стріку, якщо він
-  // сьогодні зростав) автоматично повертаємось у Lernpfad, до активної
-  // точки, де користувач зараз навчається. showView('lernpfad') сам
-  // викликає renderLernpfad(), який сам скролить до #lp-current-module
-  // (findCurrentLesson — уже враховує щойно завершений урок/діалог,
-  // тож "активна точка" — це наступний РОЗБЛОКОВАНИЙ невиконаний крок).
+  // сьогодні зростав) автоматично повертаємось у Lernpfad.
+  //
+  // ДВОФАЗНИЙ ПЕРЕХІД (замість миттєвого "телепорту" одразу на новий
+  // урок, що й створювало відчуття "нічого не змінилось"):
+  //   Фаза 1 — рендеримо шлях зі ЩОЙНО ЗАВЕРШЕНИМ уроком все ще
+  //            позначеним як "активний" (золоте кільце), скролимо
+  //            саме до нього — коротка мить "так, це той, що я
+  //            щойно зробив".
+  //   Фаза 2 — за ~900мс перерендерюємо вже по-справжньому: кеш
+  //            скидається, findCurrentLesson() рахує РЕАЛЬНИЙ
+  //            наступний урок, і сторінка плавно (scrollIntoView
+  //            behavior:'smooth', це вже було в lernpfadScrollToLastLesson)
+  //            "з'їжджає" до нього — саме той "рух лінії уроків на
+  //            один крок вгору", що й потрібен.
   function goToLernpfadActivePoint(){
     showView('lernpfad');
+
+    let lastCompletedId = null;
+    try{ lastCompletedId = localStorage.getItem('mova_last_completed_lesson'); }catch(e){}
+    const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
+    const prevLesson = lastCompletedId ? lessons.find(l => l.id === lastCompletedId) : null;
+
+    // Якщо щойно завершений урок не знайдено (бонусний крок поза
+    // основною лінією, самий останній урок курсу тощо) — просто
+    // показуємо справжній поточний одразу, без штучної затримки.
+    if(!prevLesson) return;
+
+    _lpCurrentLessonCache = prevLesson;
+    renderLernpfad({ keepCurrentOverride: true });
+
+    setTimeout(() => {
+      _lpCurrentLessonCache = undefined; // фаза 2 — рахуємо по-справжньому
+      renderLernpfad();
+    }, 900);
   }
 
   let celebrationPending = false;
@@ -17052,8 +17087,18 @@ function lfShowResult(){
     // бонусних уроків (forum/email/dialogue, див. _runBonusLessonFlow):
     // LF.id там синтетичний ("_eml_module_..."), не знайдеться в LESSONS,
     // а _bonusForLessonId — це якраз реальний id вузла шляху.
+    //
+    // БАГ (виправлено): тут стояло "LF.id", якого в об'єкті LF НІКОЛИ не
+    // існує (обидва місця створення LF={...} задають ЛИШЕ lessonId, не
+    // id) — тож для ЗВИЧАЙНИХ (не бонусних) уроків completedId завжди
+    // виходив undefined, і localStorage.setItem() мовчки записував
+    // ЛІТЕРАЛЬНИЙ РЯДОК "undefined". Через це findCurrentLesson() ніколи
+    // не знаходив збіг за id і завжди падав на слабший фолбек (перший
+    // урок з прогресом <80% де завгодно) — який іноді знову вказував на
+    // щойно пройдений урок. Саме це й виглядало як "на лінії лишився
+    // той самий урок".
     try{
-      const completedId = LF._bonusForLessonId || LF.id;
+      const completedId = LF._bonusForLessonId || LF.lessonId;
       if(completedId) localStorage.setItem('mova_last_completed_lesson', completedId);
     }catch(e){}
     celebrationPending = true;
