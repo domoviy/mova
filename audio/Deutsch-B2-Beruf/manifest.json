@@ -39215,8 +39215,8 @@
   "Deutsch-B2-Beruf/uk/100/ssk/ssk_059_def_uk_100": "5a84c8acfa",
   "Deutsch-B2-Beruf/de/100/story/story_002_einleitung_de_100": "32b9f7e9f1+t",
   "Deutsch-B2-Beruf/de/100/story/story_002_einleitung2_de_100": "d8e29ee4de+t",
-  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil1_de_100": "e66d263fad+t",
-  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil2_de_100": "9d7c668a47+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil1_de_100": "c9af40aa8b+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil2_de_100": "51f516e89a+t",
   "Deutsch-B2-Beruf/de/100/story/story_002_schluss2_de_100": "ef69ac3fa7+t",
   "Deutsch-B2-Beruf/de/085/story/story_002_einleitung_de_085": "75c38e0425+t",
   "Deutsch-B2-Beruf/de/085/story/story_002_einleitung2_de_085": "245d9fbcf6+t",
@@ -43692,5 +43692,8 @@
   "Deutsch-B2-Beruf/de/085/dlg/dlg_026_task_de_085": "96509200de+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_027_task_de_085": "583a7afab3+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_028_task_de_085": "bbf6c29eb8+t",
-  "Deutsch-B2-Beruf/de/085/dlg/dlg_030_task_de_085": "51cee11f1d+t"
+  "Deutsch-B2-Beruf/de/085/dlg/dlg_030_task_de_085": "51cee11f1d+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil3_de_100": "e2abad7de3+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil4_de_100": "94e57f67a3+t",
+  "Deutsch-B2-Beruf/de/100/story/story_002_hauptteil5_de_100": "e6e2ea308e+t"
 }
