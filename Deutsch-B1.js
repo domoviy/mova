@@ -1623,7 +1623,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "relativsatz_nominativ_sondern",
     "cardIds": [
@@ -1642,6 +1643,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_073"
+    ],
+    "frmCards": [
+      "brief_009"
     ]
   },
   {
@@ -1662,7 +1666,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "komposita_nomen_nomen",
     "cardIds": [
@@ -1681,6 +1686,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_074"
+    ],
+    "frmCards": [
+      "brief_010"
     ]
   },
   {
@@ -1720,6 +1728,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_075"
+    ],
+    "frmCards": [
+      "brief_011"
     ]
   },
   {
@@ -1740,7 +1751,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -1759,6 +1771,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_076"
+    ],
+    "frmCards": [
+      "brief_012"
     ]
   },
   {
@@ -7628,7 +7643,7 @@ var LESSONS = [
     "unlockAfter": null,
     "_parentModuleId": "examprep_brief",
     "_subIndex": 1,
-    "_subTotal": 8
+    "_subTotal": 12
   },
   {
     "id": "examprep_brief_2",
@@ -7659,7 +7674,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_1",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 2,
-    "_subTotal": 8
+    "_subTotal": 12
   },
   {
     "id": "examprep_brief_3",
@@ -7690,7 +7705,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_2",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 3,
-    "_subTotal": 8
+    "_subTotal": 12
   },
   {
     "id": "examprep_brief_4",
@@ -7721,7 +7736,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_3",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 4,
-    "_subTotal": 8
+    "_subTotal": 12
   },
   {
     "id": "examprep_brief_5",
@@ -7752,7 +7767,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_4",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 5,
-    "_subTotal": 8
+    "_subTotal": 12
   },
   {
     "id": "examprep_brief_6",
@@ -7783,7 +7798,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_5",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 6,
-    "_subTotal": 8
+    "_subTotal": 12
   },
   {
     "id": "examprep_brief_7",
@@ -7814,7 +7829,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_6",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 7,
-    "_subTotal": 8
+    "_subTotal": 12
   },
   {
     "id": "examprep_brief_8",
@@ -7845,7 +7860,131 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_7",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 8,
-    "_subTotal": 8
+    "_subTotal": 12
+  },
+  {
+    "id": "examprep_brief_9",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_009"
+    ],
+    "frmCards": [
+      "brief_009"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_8",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 9,
+    "_subTotal": 12
+  },
+  {
+    "id": "examprep_brief_10",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_010"
+    ],
+    "frmCards": [
+      "brief_010"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_9",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 10,
+    "_subTotal": 12
+  },
+  {
+    "id": "examprep_brief_11",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_011"
+    ],
+    "frmCards": [
+      "brief_011"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_10",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 11,
+    "_subTotal": 12
+  },
+  {
+    "id": "examprep_brief_12",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_012"
+    ],
+    "frmCards": [
+      "brief_012"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_11",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 12,
+    "_subTotal": 12
   },
   {
     "id": "examsim_brief",
@@ -36054,6 +36193,122 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Bis bald und nochmals Entschuldigung.</r>", "en": "<r>See you soon, and sorry again.</r>", "uk": "<r>До зустрічі, і ще раз вибач.</r>", "ru": "<r>До встречи, и ещё раз извини.</r>" },
       { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
       { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
+    ]
+  },
+  {
+    "id": "brief_009",
+    "cat": "Beschwerde / Reklamation",
+    "format": "email_formell",
+    "topic": {
+      "de": "Beschädigte Kaffeemaschine",
+      "en": "Damaged coffee machine",
+      "uk": "Пошкоджена кавоварка",
+      "ru": "Повреждённая кофемашина"
+    },
+    "task": {
+      "de": "Sie haben vor einer Woche online eine Kaffeemaschine bestellt. Heute kam das Paket an, aber die Maschine ist beschädigt. Schreiben Sie eine E-Mail an den Kundenservice.<br><br>1. Grund für Ihr Schreiben<br>2. Was mit der Ware nicht stimmt<br>3. Was Sie stattdessen erwarten<br>4. Bitte um schnelle Reaktion",
+      "en": "You ordered a coffee machine online a week ago. Today the package arrived, but the machine is damaged. Write an email to customer service.<br><br>1. Reason for your email<br>2. What is wrong with the item<br>3. What you expect instead<br>4. A request for a quick reaction",
+      "uk": "Тиждень тому Ви замовили онлайн кавоварку. Сьогодні прийшла посилка, але кавоварка пошкоджена. Напишіть електронного листа до служби підтримки клієнтів.<br><br>1. Причина Вашого листа<br>2. Що не так із товаром<br>3. Чого Ви очікуєте натомість<br>4. Прохання про швидку реакцію",
+      "ru": "Неделю назад Вы заказали онлайн кофемашину. Сегодня пришла посылка, но кофемашина повреждена. Напишите электронное письмо в службу поддержки клиентов.<br><br>1. Причина Вашего письма<br>2. Что не так с товаром<br>3. Чего Вы ожидаете вместо этого<br>4. Просьба о быстрой реакции"
+    },
+    "name": "de_w_anna",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Reklamation – beschädigte Kaffeemaschine", "en": "Subject: Complaint – damaged coffee machine", "uk": "Тема: Рекламація — пошкоджена кавоварка", "ru": "Тема: Рекламация — повреждённая кофемашина" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "relativsatz_nominativ_sondern", "de": "<r>Ich möchte hiermit eine Reklamation einreichen,</r> <k>denn</k> ich habe nicht die bestellte Maschine bekommen, <g>sondern</g> ein <c>beschädigtes Paket</c>.", "en": "<r>I would like to file a complaint</r>, because I did not receive the machine I ordered, but instead a damaged package.", "uk": "<r>Хочу подати рекламацію</r>, бо я отримала не замовлену кавоварку, а пошкоджену посилку.", "ru": "<r>Хочу подать рекламацию</r>, потому что я получила не заказанную кофемашину, а повреждённую посылку." },
+      { "role": "punkt2", "gram": "passiv_praesens_b1", "de": "<r>Genauer gesagt,</r> der Deckel ist gesprungen, <k>obwohl</k> laut Ihrer Werbung jedes Gerät vor dem Versand <g>sorgfältig geprüft wird</g>.", "en": "<r>More specifically,</r> the lid is cracked, even though according to your advertising every device is carefully checked before shipping.", "uk": "<r>Точніше кажучи,</r> кришка тріснута, хоча за Вашою рекламою кожен пристрій ретельно перевіряється перед відправкою.", "ru": "<r>Точнее говоря,</r> крышка треснула, хотя, по Вашей рекламе, каждое устройство тщательно проверяется перед отправкой." },
+      { "role": "punkt3", "gram": "praepositionen_mit_genitiv", "de": "<r>Ich erwarte deshalb,</r> dass Sie mir <g>trotz des Transportschadens</g> schnell Ersatz schicken, <k>denn</k> ich brauche die Maschine dringend.", "en": "<r>I therefore expect</r> that, despite the transport damage, you will send me a replacement quickly, because I urgently need the machine.", "uk": "<r>Тому очікую,</r> що, попри пошкодження під час транспортування, Ви швидко надішлете мені заміну, бо кавоварка мені терміново потрібна.", "ru": "<r>Поэтому ожидаю,</r> что, несмотря на повреждение при транспортировке, Вы быстро пришлёте мне замену, так как кофемашина мне срочно нужна." },
+      { "role": "punkt4", "gram": "plusquamperfekt", "de": "<r>Ich bitte Sie deshalb,</r> schnell zu reagieren, <k>denn</k> ich <g>hatte mir extra dieses Modell ausgesucht</g>.", "en": "<r>I therefore ask you to</r> react quickly, because I had specifically chosen this model.", "uk": "<r>Тому прошу Вас</r> швидко відреагувати, бо я спеціально обрала саме цю модель.", "ru": "<r>Поэтому прошу Вас</r> быстро отреагировать, так как я специально выбрала именно эту модель." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich erwarte Ihre Rückmeldung innerhalb weniger Tage.</r>", "en": "<r>I expect your response within a few days.</r>", "uk": "<r>Очікую Вашої відповіді протягом кількох днів.</r>", "ru": "<r>Ожидаю Вашего ответа в течение нескольких дней.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Anna Vogel", "en": "Anna Vogel", "uk": "Анна Фогель", "ru": "Анна Фогель" }
+    ]
+  },
+  {
+    "id": "brief_010",
+    "cat": "Anfrage / Bitte um Auskunft",
+    "format": "brief_formell",
+    "topic": {
+      "de": "Verspätete Lieferung",
+      "en": "Delayed delivery",
+      "uk": "Затримка доставки",
+      "ru": "Задержка доставки"
+    },
+    "task": {
+      "de": "Sie haben vor zehn Tagen etwas online bestellt, aber die Lieferung ist noch nicht angekommen. Schreiben Sie einen Brief an den Kundenservice.<br><br>1. Grund für Ihr Schreiben<br>2. Angaben zu Ihrer Bestellung<br>3. Warum Ihnen die Lieferzeit wichtig ist<br>4. Bitte um Auskunft",
+      "en": "You ordered something online ten days ago, but the delivery still hasn't arrived. Write a letter to customer service.<br><br>1. Reason for your letter<br>2. Details about your order<br>3. Why the delivery time matters to you<br>4. A request for information",
+      "uk": "Десять днів тому Ви замовили щось онлайн, але доставка досі не прийшла. Напишіть листа до служби підтримки клієнтів.<br><br>1. Причина Вашого листа<br>2. Дані про Ваше замовлення<br>3. Чому для Вас важливий термін доставки<br>4. Прохання про інформацію",
+      "ru": "Десять дней назад Вы заказали что-то онлайн, но доставка до сих пор не пришла. Напишите письмо в службу поддержки клиентов.<br><br>1. Причина Вашего письма<br>2. Данные о Вашем заказе<br>3. Почему для Вас важен срок доставки<br>4. Просьба о информации"
+    },
+    "name": "de_m_david",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Frankfurt, den 20. April 2025", "en": "Frankfurt, 20 April 2025", "uk": "Франкфурт, 20 квітня 2025 р.", "ru": "Франкфурт, 20 апреля 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "komposita_nomen_nomen", "de": "<r>Ich schreibe Ihnen, weil</r> ich vor zehn Tagen bei Ihnen bestellt habe, <k>aber</k> die Lieferung ist <c>noch nicht angekommen</c>, obwohl die <g>Lieferzeit</g> längst abgelaufen ist.", "en": "<r>I am writing to you because</r> I placed an order with you ten days ago, but the delivery has not yet arrived, even though the delivery time has long since expired.", "uk": "<r>Пишу Вам, тому що</r> я зробив замовлення у Вас десять днів тому, але доставка досі не прийшла, хоча термін доставки вже давно минув.", "ru": "<r>Пишу Вам, потому что</r> я сделал заказ у Вас десять дней назад, но доставка до сих пор не пришла, хотя срок доставки уже давно истёк." },
+      { "role": "punkt2", "gram": "nomen_auf_ung", "de": "<r>Zu Ihrer Information:</r> Meine <g>Bestellung</g> trägt die Nummer 48213, <k>und</k> ich habe sie am 10. April aufgegeben.", "en": "<r>For your information:</r> my order has the number 48213, and I placed it on 10 April.", "uk": "<r>Для Вашої інформації:</r> моє замовлення має номер 48213, і я оформив його 10 квітня.", "ru": "<r>Для Вашей информации:</r> мой заказ имеет номер 48213, и я оформил его 10 апреля." },
+      { "role": "punkt3", "gram": "nebensatz_mit_nachdem", "de": "<r>Das ist mir wichtig, weil</r> ich den Artikel dringend brauche. <k>Nachdem</k> <g>ich schon zehn Tage gewartet habe</g>, wird es wirklich Zeit.", "en": "<r>This matters to me because</r> I urgently need the item. After having waited ten days already, it's really time.", "uk": "<r>Для мене це важливо, бо</r> я терміново потребую цей товар. Після того як я вже чекав десять днів, це справді на часі.", "ru": "<r>Для меня это важно, потому что</r> мне срочно нужен этот товар. После того как я уже прождал десять дней, это действительно пора." },
+      { "role": "punkt4", "gram": "interesse_denn_eigentlich", "de": "<r>Könnten Sie mir bitte sagen,</r> wo sich meine Bestellung <g>eigentlich</g> gerade befindet? <k>Außerdem</k> interessiert mich, wann ich sie endlich erwarten kann.", "en": "<r>Could you please tell me</r> where my order actually is right now? I would also like to know when I can finally expect it.", "uk": "<r>Чи не могли б Ви сказати мені,</r> де саме зараз перебуває моє замовлення? Крім того, мені цікаво, коли я нарешті можу його очікувати.", "ru": "<r>Не могли бы Вы сказать мне,</r> где именно сейчас находится мой заказ? Кроме того, мне интересно, когда я наконец могу его ожидать." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf eine schnelle Antwort.</r>", "en": "<r>I look forward to a quick reply.</r>", "uk": "<r>Із нетерпінням чекаю на швидку відповідь.</r>", "ru": "<r>С нетерпением жду быстрого ответа.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "David Berger", "en": "David Berger", "uk": "Давид Бергер", "ru": "Давид Бергер" }
+    ]
+  },
+  {
+    "id": "brief_011",
+    "cat": "Beschwerde / Reklamation",
+    "format": "email_formell",
+    "topic": {
+      "de": "Eine unerwartete Mahnung",
+      "en": "An unexpected reminder",
+      "uk": "Несподіване нагадування про оплату",
+      "ru": "Неожиданное напоминание об оплате"
+    },
+    "task": {
+      "de": "Sie haben eine Zahlungserinnerung für eine Rechnung bekommen, die Sie schon vor zwei Wochen bezahlt haben. Schreiben Sie eine E-Mail an das Unternehmen.<br><br>1. Grund für Ihr Schreiben<br>2. Wann und wie Sie bezahlt haben<br>3. Warum die Mahnung Sie überrascht hat<br>4. Bitte um Überprüfung",
+      "en": "You received a payment reminder for an invoice that you already paid two weeks ago. Write an email to the company.<br><br>1. Reason for your email<br>2. When and how you paid<br>3. Why the reminder surprised you<br>4. A request for a review",
+      "uk": "Ви отримали нагадування про оплату рахунку, який Ви вже сплатили два тижні тому. Напишіть електронного листа компанії.<br><br>1. Причина Вашого листа<br>2. Коли і як Ви заплатили<br>3. Чому нагадування Вас здивувало<br>4. Прохання про перевірку",
+      "ru": "Вы получили напоминание об оплате счёта, который Вы уже оплатили две недели назад. Напишите электронное письмо компании.<br><br>1. Причина Вашего письма<br>2. Когда и как Вы заплатили<br>3. Почему напоминание Вас удивило<br>4. Просьба о проверке"
+    },
+    "name": "de_w_nina",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Zahlungserinnerung – bereits bezahlt", "en": "Subject: Payment reminder – already paid", "uk": "Тема: Нагадування про оплату — вже сплачено", "ru": "Тема: Напоминание об оплате — уже оплачено" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "relativsatz_akkusativ_b1", "de": "<r>Ich schreibe Ihnen, weil</r> ich heute eine <c>Zahlungserinnerung</c> für eine Rechnung bekommen habe, <g>die</g> ich schon vor zwei Wochen bezahlt habe.", "en": "<r>I am writing to you because</r> I received a payment reminder today for an invoice that I already paid two weeks ago.", "uk": "<r>Пишу Вам, тому що</r> я сьогодні отримала нагадування про оплату рахунку, який я вже сплатила два тижні тому.", "ru": "<r>Пишу Вам, потому что</r> я сегодня получила напоминание об оплате счёта, который я уже оплатила две недели назад." },
+      { "role": "punkt2", "gram": "genitiv", "de": "<r>Zu Ihrer Information:</r> Ich habe den Betrag bereits <g>Ende des Monats</g> per Überweisung bezahlt, <k>und</k> ich habe dafür auch einen Beleg.", "en": "<r>For your information:</r> I already paid the amount by bank transfer at the end of the month, and I also have a receipt for it.", "uk": "<r>Для Вашої інформації:</r> я вже оплатила суму банківським переказом наприкінці місяця, і в мене є квитанція про це.", "ru": "<r>Для Вашей информации:</r> я уже оплатила сумму банковским переводом в конце месяца, и у меня есть квитанция об этом." },
+      { "role": "punkt3", "gram": "modalverben_vermutung", "de": "<r>Ich war deshalb sehr überrascht,</r> <k>denn</k> die Zahlung <g>müsste</g> längst bei Ihnen angekommen sein.", "en": "<r>I was therefore very surprised,</r> because the payment should have reached you long ago.", "uk": "<r>Тому я була дуже здивована,</r> бо оплата, мабуть, уже давно мала до Вас надійти.", "ru": "<r>Поэтому я была очень удивлена,</r> потому что оплата, должно быть, уже давно к Вам поступила." },
+      { "role": "punkt4", "gram": "entweder_oder", "de": "<r>Ich bitte Sie deshalb,</r> das zu überprüfen: <g>Entweder wurde die Zahlung noch nicht verbucht, oder es liegt ein Irrtum vor</g>.", "en": "<r>I therefore ask you to</r> check this: either the payment has not yet been recorded, or there is a mistake.", "uk": "<r>Тому прошу Вас</r> це перевірити: або оплату ще не зареєстровано, або сталася помилка.", "ru": "<r>Поэтому прошу Вас</r> это проверить: либо оплата ещё не зарегистрирована, либо произошла ошибка." },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihre schnelle Klärung.</r>", "en": "<r>Thank you for clarifying this quickly.</r>", "uk": "<r>Дякую за швидке з'ясування.</r>", "ru": "<r>Спасибо за быстрое выяснение.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
+    ]
+  },
+  {
+    "id": "brief_012",
+    "cat": "Glückwunsch und Dank",
+    "format": "brief_informell",
+    "topic": {
+      "de": "Danke für den Einkaufstipp",
+      "en": "Thanks for the shopping tip",
+      "uk": "Дякую за пораду щодо покупок",
+      "ru": "Спасибо за совет по покупкам"
+    },
+    "task": {
+      "de": "Eine Freundin hat Ihnen einen Tipp für ein Geschäft mit tollen Rabatten gegeben. Sie haben dort eingekauft und viel Geld gespart. Schreiben Sie ihr einen Brief.<br><br>1. Grund für Ihr Schreiben<br>2. Was Sie gekauft haben<br>3. Wie viel Sie gespart haben<br>4. Dank für den Tipp",
+      "en": "A friend gave you a tip about a shop with great discounts. You shopped there and saved a lot of money. Write her a letter.<br><br>1. Reason for your letter<br>2. What you bought<br>3. How much you saved<br>4. Thanks for the tip",
+      "uk": "Подруга порадила Вам магазин із чудовими знижками. Ви зробили там покупки і заощадили багато грошей. Напишіть їй листа.<br><br>1. Причина Вашого листа<br>2. Що Ви купили<br>3. Скільки Ви заощадили<br>4. Подяка за пораду",
+      "ru": "Подруга посоветовала Вам магазин с отличными скидками. Вы сделали там покупки и сэкономили много денег. Напишите ей письмо.<br><br>1. Причина Вашего письма<br>2. Что Вы купили<br>3. Сколько Вы сэкономили<br>4. Благодарность за совет"
+    },
+    "name": "de_m_alex",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Köln, den 5. Mai 2025", "en": "Cologne, 5 May 2025", "uk": "Кельн, 5 травня 2025 р.", "ru": "Кёльн, 5 мая 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Liebe Sabine,", "en": "Dear Sabine,", "uk": "Люба Сабіно,", "ru": "Дорогая Сабина," },
+      { "role": "einleitung", "gram": "komparativ_superlativ_vor_nomen", "de": "<r>Ich wollte dir unbedingt schreiben, dass</r> ich in dem <c>Geschäft mit den tollen Rabatten</c> war, <k>und</k> es war wirklich <g>der beste Tipp</g> von dir!", "en": "<r>I just had to write and tell you that</r> I went to the shop you recommended, and it was really the best tip from you!", "uk": "<r>Мушу неодмінно написати тобі, що</r> я був у магазині, який ти мені порадила, і це справді була найкраща порада від тебе!", "ru": "<r>Должен обязательно написать тебе, что</r> я был в магазине, который ты мне посоветовала, и это действительно был лучший совет от тебя!" },
+      { "role": "punkt2", "gram": "partizip2_als_adjektiv", "de": "<r>Ich habe mir</r> die <g>reduzierten Schuhe</g> gekauft, <k>und</k> sie passen mir perfekt.", "en": "<r>I bought myself</r> the discounted shoes, and they fit me perfectly.", "uk": "<r>Я купив собі</r> ті уцінені кросівки, і вони сидять на мені ідеально.", "ru": "<r>Я купил себе</r> те уценённые кроссовки, и они сидят на мне идеально." },
+      { "role": "punkt3", "gram": "adjektive_super_hoch_ueber_extra", "de": "<r>Stell dir vor,</r> ich habe dabei <g>super viel Geld</g> gespart, <k>denn</k> die Schuhe waren um fast fünfzig Prozent reduziert.", "en": "<r>Just imagine,</r> I saved a ton of money doing it, because the shoes were almost fifty percent off.", "uk": "<r>Уяви собі,</r> я заощадив на цьому купу грошей, бо кросівки були зі знижкою майже п'ятдесят відсотків.", "ru": "<r>Представь себе,</r> я сэкономил на этом кучу денег, потому что кроссовки были со скидкой почти пятьдесят процентов." },
+      { "role": "punkt4", "gram": "verben_praep_personen_sachen", "de": "<r>Ich möchte mich deshalb ganz herzlich</r> <g>bei dir für diesen Tipp bedanken</g>, <k>denn</k> ohne dich hätte ich das Geschäft nie gefunden.", "en": "<r>I therefore want to</r> thank you very much for this tip, because without you I would never have found the shop.", "uk": "<r>Тому хочу</r> щиро подякувати тобі за цю пораду, бо без тебе я б ніколи не знайшов цей магазин.", "ru": "<r>Поэтому хочу</r> искренне поблагодарить тебя за этот совет, потому что без тебя я бы никогда не нашёл этот магазин." },
+      { "role": "schluss", "gram": "", "de": "<r>Lass uns bald wieder zusammen einkaufen gehen!</r>", "en": "<r>Let's go shopping together again soon!</r>", "uk": "<r>Давай незабаром знову підемо разом за покупками!</r>", "ru": "<r>Давай скоро снова сходим вместе за покупками!</r>" },
+      { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Alex Berg", "en": "Alex Berg", "uk": "Алекс Берг", "ru": "Алекс Берг" }
     ]
   }
 ];

@@ -4066,7 +4066,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '627-2e968c4';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4269,13 +4269,25 @@ function buildLearningPath(rawLessons, courseLevel){
   var state = (typeof srLoadState === 'function') ? (function(){ try{ return srLoadState(); }catch(e){ return null; } })() : null;
 
   // Прострочені по SM-2 — спершу; картки без srsState (щойно бачені) — в кінці.
+  //
+  // РАНІШЕ тут було "return ta - tb", де ta/tb — це ISO-РЯДКИ дат
+  // (наприклад "2026-03-15"). Віднімання рядків у JS іде через ToNumber,
+  // а Number("2026-03-15") = NaN — тобто компаратор ПРАКТИЧНО ЗАВЖДИ
+  // повертав NaN (крім порівняння з Infinity для нових карток). На
+  // JavaScriptCore (iOS Safari) сортування з NaN-компаратором не
+  // гарантує ні стабільність, ні початковий порядок — і давно вивчене
+  // слово з величезним nextReview могло випадково опинитись на початку
+  // черги, переганяючи справді прострочені слабкі картки (саме так це
+  // й виглядало: "Insolvenz"/"Werkzeug" з інтервалом у багато днів
+  // раптово потрапляли в урок). Тепер — та сама, вже перевірена формула
+  // пріоритету, що й у Vocab/Tiles/Matching (srPriorityFromState,
+  // визначена нижче за файлом, але доступна тут завдяки hoisting
+  // function-декларацій): нові — найвищий пріоритет, далі due перед
+  // not-due, а всередині групи менший interval — вищий пріоритет.
   function dueFirst(ids){
     if(!state || !state.cards) return ids.slice();
     return ids.slice().sort(function(a,b){
-      var ca = state.cards[a], cb = state.cards[b];
-      var ta = (ca && ca.nextReview) ? ca.nextReview : Infinity;
-      var tb = (cb && cb.nextReview) ? cb.nextReview : Infinity;
-      return ta - tb;
+      return srPriorityFromState(state, b) - srPriorityFromState(state, a);
     });
   }
 
@@ -5580,8 +5592,29 @@ const SR_PASSIVE_EVENTS = new Set([
 ]);
 
 function srStartOfDay(d){ const x=new Date(d); x.setHours(0,0,0,0); return x; }
-function srToISO(d){ return d.toISOString().split('T')[0]; }
-function srAddDays(d,n){ const x=new Date(d); x.setDate(x.getDate()+n); return x; }
+// srToISO/srAddDays — останній рубіж захисту від Invalid Date. srSm2() вже
+// захищає interval/easeFactor від NaN на вході (див. коментар там), але
+// це не єдине джерело дат у застосунку (легасі-міграції, ef-repair тощо) —
+// і якщо БУДЬ-ЯКЕ з них хоч раз віддасть невалідну дату, .toISOString()
+// кидає RangeError, який обриває весь виклик-ланцюжок і "заморожує"
+// вправу посередині (саме так це й виглядало в звіті користувача: урок
+// не завершується, тільки закривається). Тут — те саме "одноразове
+// самолікування", що й у srSm2(): тихо підставляємо сьогодні замість
+// падіння. Це НЕ виправляє причину зіпсованих даних вище по стеку, лише
+// гарантує, що жодна з них більше не зможе обвалити застосунок.
+function srToISO(d){
+  if(!(d instanceof Date) || isNaN(d.getTime())){
+    console.warn('[srToISO] Invalid Date на вході, фолбек на сьогодні', d);
+    d = new Date();
+  }
+  return d.toISOString().split('T')[0];
+}
+function srAddDays(d,n){
+  const x = new Date(d);
+  const days = Number.isFinite(n) ? n : 1; // NaN/Infinity днів → 1 замість Invalid Date
+  x.setDate(x.getDate()+days);
+  return x;
+}
 function srDaysBetween(a,b){ return Math.round((srStartOfDay(new Date(b))-srStartOfDay(new Date(a)))/86400000); }
 
 function srSm2(cs, rating){
@@ -5702,38 +5735,64 @@ const PROGRESS_SCHEMA_KEY = 'mova_progress_schema_v';
 // [1.3, 2.5] і перебудовує interval/nextReview заново на основі
 // repetitions — так, наче картка щойно отримала свою останню оцінку
 // з уже коректним EF, а не з накопиченим зіпсованим значенням.
-const EF_REPAIR_VERSION = 1;
+//
+// v1→v2: перша версія перевіряла ЛИШЕ кореневий рівень картки
+// (state.cards[id]) — жодного разу не заглядала в cs.sides (окрема
+// SM-2-грань 'def' і т.д., див. срRecordAnswer). Слово з визначенням
+// (Werkzeug, Insolvenz...) якраз зберігає свій розклад повторення САМЕ
+// в sides.def — тож зіпсований там EF/interval ніколи не потрапляв під
+// цей репейр і продовжував "воскресати" навіть після v1. v2 проходить
+// і по root, і по кожній грані в sides, і додатково ловить NaN/Infinity
+// в interval (не лише вихід EF за межі [1.3,2.5]) — саме ту комбінацію,
+// що й давала Invalid Date/RangeError у srToISO() при наступній спробі
+// побудувати nextReview для такої картки.
+const EF_REPAIR_VERSION = 2;
 const EF_REPAIR_KEY = 'mova_ef_repair_v';
 
 function repairCorruptedEaseFactors(){
   const currentVersion = +localStorage.getItem(EF_REPAIR_KEY) || 0;
   if(currentVersion >= EF_REPAIR_VERSION) return;
 
+  // Перебудовує ОДНУ грань (root або sides[x]) на місці (мутація cs),
+  // повертає true, якщо щось справді виправлено — щоб можна було
+  // порахувати repairedCount і для root, і для кожної sides-грані.
+  function repairOne(cs){
+    if(!cs || typeof cs.easeFactor !== 'number') return false;
+    const efOk = cs.easeFactor <= 2.5 && cs.easeFactor >= 1.3;
+    const intervalOk = Number.isFinite(cs.interval);
+    if(efOk && intervalOk) return false; // вже в межах — нічого робити
+
+    // Перебудовуємо картку, ПОВТОРНО ПРОГРАВШИ srSm2() стільки разів,
+    // скільки в неї repetitions — це точно відтворює, де мав би бути
+    // interval, якби EF завжди коректно обмежувався з першої оцінки,
+    // замість підбору формулою (яка через ту саму експоненту все одно
+    // дає астрономічні числа для repetitions=7-8).
+    let replay = {};
+    const reps = Math.max(0, cs.repetitions || 0);
+    for(let i=0; i<reps; i++) replay = srSm2(replay, 5); // 5 = "знаю", бо це й привело до високого repetitions
+
+    cs.easeFactor = replay.easeFactor;
+    cs.interval = replay.interval;
+    cs.nextReview = srToISO(srAddDays(new Date(), replay.interval));
+    return true;
+  }
+
   try{
     const state = srLoadState();
     let repairedCount = 0;
     Object.keys(state.cards || {}).forEach(id=>{
       const cs = state.cards[id];
-      if(!cs || typeof cs.easeFactor !== 'number') return;
-      if(cs.easeFactor <= 2.5 && cs.easeFactor >= 1.3) return; // вже в межах — нічого робити
-
-      // Перебудовуємо картку, ПОВТОРНО ПРОГРАВШИ srSm2() стільки разів,
-      // скільки в неї repetitions — це точно відтворює, де мав би бути
-      // interval, якби EF завжди коректно обмежувався з першої оцінки,
-      // замість підбору формулою (яка через ту саму експоненту все одно
-      // дає астрономічні числа для repetitions=7-8).
-      let replay = {};
-      const reps = Math.max(0, cs.repetitions || 0);
-      for(let i=0; i<reps; i++) replay = srSm2(replay, 5); // 5 = "знаю", бо це й привело до високого repetitions
-
-      cs.easeFactor = replay.easeFactor;
-      cs.interval = replay.interval;
-      cs.nextReview = srToISO(srAddDays(new Date(), replay.interval));
-      repairedCount++;
+      if(!cs) return;
+      if(repairOne(cs)) repairedCount++;
+      if(cs.sides){
+        Object.keys(cs.sides).forEach(side=>{
+          if(repairOne(cs.sides[side])) repairedCount++;
+        });
+      }
     });
     if(repairedCount > 0){
       srSaveState(state);
-      console.log('[ef-repair] Виправлено карток з неконтрольованим EF:', repairedCount);
+      console.log('[ef-repair] Виправлено карток (root+sides) з неконтрольованим EF/interval:', repairedCount);
     }
   }catch(e){
     console.warn('[ef-repair] Помилка виправлення:', e);
