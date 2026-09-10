@@ -1793,7 +1793,8 @@ var LESSONS = [
       "ru": "Что можно с этим сделать?"
     },
     "skills": [
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "modalverben_vermutung",
     "cardIds": [
@@ -1812,6 +1813,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_077"
+    ],
+    "frmCards": [
+      "brief_013"
     ]
   },
   {
@@ -7643,7 +7647,7 @@ var LESSONS = [
     "unlockAfter": null,
     "_parentModuleId": "examprep_brief",
     "_subIndex": 1,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_2",
@@ -7674,7 +7678,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_1",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 2,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_3",
@@ -7705,7 +7709,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_2",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 3,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_4",
@@ -7736,7 +7740,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_3",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 4,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_5",
@@ -7767,7 +7771,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_4",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 5,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_6",
@@ -7798,7 +7802,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_5",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 6,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_7",
@@ -7829,7 +7833,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_6",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 7,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_8",
@@ -7860,7 +7864,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_7",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 8,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_9",
@@ -7891,7 +7895,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_8",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 9,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_10",
@@ -7922,7 +7926,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_9",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 10,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_11",
@@ -7953,7 +7957,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_10",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 11,
-    "_subTotal": 12
+    "_subTotal": 13
   },
   {
     "id": "examprep_brief_12",
@@ -7984,7 +7988,38 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_11",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 12,
-    "_subTotal": 12
+    "_subTotal": 13
+  },
+  {
+    "id": "examprep_brief_13",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_013"
+    ],
+    "frmCards": [
+      "brief_013"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_12",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 13,
+    "_subTotal": 13
   },
   {
     "id": "examsim_brief",
@@ -36309,6 +36344,35 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Lass uns bald wieder zusammen einkaufen gehen!</r>", "en": "<r>Let's go shopping together again soon!</r>", "uk": "<r>Давай незабаром знову підемо разом за покупками!</r>", "ru": "<r>Давай скоро снова сходим вместе за покупками!</r>" },
       { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
       { "role": "name", "gram": "", "de": "Alex Berg", "en": "Alex Berg", "uk": "Алекс Берг", "ru": "Алекс Берг" }
+    ]
+  },
+  {
+    "id": "brief_013",
+    "cat": "Termin vereinbaren oder verschieben",
+    "format": "email_formell",
+    "topic": {
+      "de": "Ein Termin zur Kontoeröffnung",
+      "en": "An appointment to open an account",
+      "uk": "Запис на відкриття рахунку",
+      "ru": "Запись на открытие счёта"
+    },
+    "task": {
+      "de": "Sie möchten ein Girokonto eröffnen, aber das Online-Formular funktioniert nicht. Schreiben Sie eine E-Mail an die Bank und bitten Sie um einen Termin in der Filiale.<br><br>1. Grund für Ihr Schreiben<br>2. Was das Problem ist<br>3. Wann Sie Zeit hätten<br>4. Bitte um Bestätigung des Termins",
+      "en": "You want to open a checking account, but the online form doesn't work. Write an email to the bank and ask for an appointment at the branch.<br><br>1. Reason for your email<br>2. What the problem is<br>3. When you would have time<br>4. A request to confirm the appointment",
+      "uk": "Ви хочете відкрити поточний рахунок, але онлайн-форма не працює. Напишіть електронного листа до банку і попросіть про запис у відділенні.<br><br>1. Причина Вашого листа<br>2. У чому проблема<br>3. Коли у Вас був би час<br>4. Прохання підтвердити запис",
+      "ru": "Вы хотите открыть текущий счёт, но онлайн-форма не работает. Напишите электронное письмо в банк и попросите о записи в отделении.<br><br>1. Причина Вашего письма<br>2. В чём проблема<br>3. Когда у Вас было бы время<br>4. Просьба подтвердить запись"
+    },
+    "name": "de_w_julia",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Terminwunsch zur Kontoeröffnung", "en": "Subject: Appointment request for opening an account", "uk": "Тема: Прохання про запис для відкриття рахунку", "ru": "Тема: Просьба о записи для открытия счёта" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "modalverben_vermutung", "de": "<r>Ich schreibe Ihnen, weil</r> ich gerne ein <c>Girokonto</c> eröffnen möchte, <k>aber</k> das Online-Formular funktioniert leider nicht – es <g>dürfte</g> an einem technischen Fehler liegen.", "en": "<r>I am writing to you because</r> I would like to open a checking account, but the online form unfortunately doesn't work — it might be due to a technical error.", "uk": "<r>Пишу Вам, тому що</r> я хотіла б відкрити поточний рахунок, але онлайн-форма, на жаль, не працює — можливо, через технічну помилку.", "ru": "<r>Пишу Вам, потому что</r> я хотела бы открыть текущий счёт, но онлайн-форма, к сожалению, не работает — возможно, из-за технической ошибки." },
+      { "role": "punkt2", "gram": "passiv_mit_modalverben", "de": "<r>Genauer gesagt,</r> die Seite bleibt beim letzten Schritt hängen, <k>und</k> meine Daten <g>können nicht gespeichert werden</g>.", "en": "<r>More specifically,</r> the page gets stuck at the last step, and my data cannot be saved.", "uk": "<r>Точніше кажучи,</r> сторінка зависає на останньому кроці, і мої дані не можуть бути збережені.", "ru": "<r>Точнее говоря,</r> страница зависает на последнем шаге, и мои данные не могут быть сохранены." },
+      { "role": "punkt3", "gram": "nebensatz_mit_bis", "de": "<r>Ich hätte am liebsten</r> noch diese Woche einen Termin, <k>denn</k> <g>bis ich in den Urlaub fahre, habe ich noch Zeit</g>.", "en": "<r>I would prefer</r> an appointment this week, because I still have time until I go on holiday.", "uk": "<r>Найбільше мені підійшов би</r> запис на цьому тижні, бо в мене ще є час, поки я не поїду у відпустку.", "ru": "<r>Больше всего мне подошла бы</r> запись на этой неделе, потому что у меня ещё есть время, пока я не уеду в отпуск." },
+      { "role": "punkt4", "gram": "infinitiv_als_nomen", "de": "<r>Ich bitte Sie deshalb,</r> mir <g>das Bestätigen des Termins</g> kurz per E-Mail mitzuteilen. <k>Außerdem</k> freue ich mich schon auf das Gespräch.", "en": "<r>I therefore ask you to</r> let me know briefly by email that the appointment is confirmed. I am already looking forward to the meeting.", "uk": "<r>Тому прошу Вас</r> коротко повідомити мені електронною поштою про підтвердження запису. Я вже тішуся розмові.", "ru": "<r>Поэтому прошу Вас</r> коротко сообщить мне по электронной почте о подтверждении записи. Я уже жду встречи." },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihre Mühe.</r>", "en": "<r>Thank you for your effort.</r>", "uk": "<r>Дякую за Ваші старання.</r>", "ru": "<r>Спасибо за Ваши старания.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
     ]
   }
 ];
