@@ -490,6 +490,29 @@ body{
 }
 .notif.show{transform:translateX(-50%) translateY(0);opacity:1}
 
+/* Спалах по краях екрана для правильної/неправильної відповіді —
+   м'який vignette-градієнт від країв, а не суцільна заливка, щоб не
+   перекривати контент по центру. Дуже короткий (320мс) і непрозорий
+   лише по периметру — доповнює, а не перебиває локальний фідбек
+   конкретної вправи (кольори кнопок, matched-flash, тремтіння). */
+#feedback-flash{
+  position:fixed;inset:0;z-index:400;pointer-events:none;
+  opacity:0;
+}
+#feedback-flash.flash-correct{
+  background:radial-gradient(ellipse at center, transparent 55%, rgba(107,191,110,.35) 100%);
+  animation: feedbackFlashPulse .32s ease-out;
+}
+#feedback-flash.flash-wrong{
+  background:radial-gradient(ellipse at center, transparent 55%, rgba(214,80,80,.35) 100%);
+  animation: feedbackFlashPulse .32s ease-out;
+}
+@keyframes feedbackFlashPulse{
+  0%{opacity:0}
+  25%{opacity:1}
+  100%{opacity:0}
+}
+
 #view-favs.active,#view-settings.active,#view-lernpfad.active{padding-bottom:calc(64px + env(safe-area-inset-bottom,0px) + 16px)}
 .vplayer{
   background:var(--paper);border-radius:14px;border:1px solid var(--border);
@@ -3907,6 +3930,13 @@ body{
       <div class="srow-label"><span style="color:var(--gold);font-weight:700">🧊</span> <label data-i18n="sec_streak_freeze">Streak-Schutz</label></div>
       <span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-freeze-count">3</span>
     </div>
+    <div class="srow">
+      <div class="srow-label"><span style="color:var(--gold);font-weight:700">🔊</span> <label data-i18n="sec_sfx" for="sfx-toggle">Soundeffekte</label><small data-i18n="sub_sfx">Bei richtig/falsch</small></div>
+      <label class="dbg-switch">
+        <input type="checkbox" id="sfx-toggle" checked onchange="setSfxEnabled(this.checked)">
+        <span class="dbg-switch-track"></span>
+      </label>
+    </div>
     </div>
     </div><!-- /ГРУПА 2 -->
 
@@ -4055,6 +4085,13 @@ body{
 
 <div class="notif" id="notif"></div>
 
+<!-- Тонкий, ненав'язливий спалах по краях екрана при правильній/неправильній
+     відповіді — доповнює локальний фідбек кожної вправи (кольори кнопок,
+     тремтіння картки тощо), однаковий для ВСІХ типів вправ, включно з
+     тими, де досі не було жодної візуальної реакції (Speech, Sprachbausteine,
+     Grammatik-Trainer). Керується flashFeedback(isCorrect) — див. JS. -->
+<div id="feedback-flash" aria-hidden="true"></div>
+
 <!-- ══ COURSE SWITCH MODAL — показує прогрес завантаження курсу ══ -->
 <div id="course-switch-modal" style="display:none">
   <div class="cs-modal-box">
@@ -4066,7 +4103,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '629-b3a2d7f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4677,6 +4714,7 @@ const I18N = {
     msg_freeze_no_m:'Nicht genug M-Punkte (benötigt: {cost} 𐌌)', msg_freeze_bought:'🧊 Streak-Schutz hinzugefügt!', msg_freeze_max:'Du hast bereits die maximale Anzahl an Streak-Schutz',
     msg_streak_broken:'Deine Serie ist abgerissen 😔 Wir starten neu — heute hast du schon den ersten Schritt gemacht!',
     streak_frozen_note:'🧊 Durch Streak-Schutz gerettet', streak_modal_close:'Verstanden',
+    sec_sfx:'Soundeffekte', sub_sfx:'Bei richtig/falsch',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
@@ -4770,6 +4808,7 @@ const I18N = {
     msg_freeze_no_m:'Замало М-балів (потрібно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку додано!', msg_freeze_max:'У тебе вже максимум заморозок',
     msg_streak_broken:'Стрік перервався 😔 Починаємо занову — але сьогодні ти вже зробив перший крок!',
     streak_frozen_note:'🧊 Врятовано заморозкою', streak_modal_close:'Зрозуміло',
+    sec_sfx:'Звукові ефекти', sub_sfx:'При правильній/неправильній відповіді',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
@@ -4858,6 +4897,7 @@ const I18N = {
     msg_freeze_no_m:'Not enough M points (needs {cost} 𐌌)', msg_freeze_bought:'🧊 Streak freeze added!', msg_freeze_max:'You already have the maximum freezes',
     msg_streak_broken:'Your streak broke 😔 Starting fresh — but you already took the first step today!',
     streak_frozen_note:'🧊 Saved by a freeze', streak_modal_close:'Got it',
+    sec_sfx:'Sound effects', sub_sfx:'On correct/wrong answers',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
@@ -4947,6 +4987,7 @@ const I18N = {
     msg_freeze_no_m:'Недостаточно М-баллов (нужно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку добавили!', msg_freeze_max:'У тебя уже максимум заморозок',
     msg_streak_broken:'Стрик прервался 😔 Начинаем заново — но сегодня ты уже сделал первый шаг!',
     streak_frozen_note:'🧊 Спасено заморозкой', streak_modal_close:'Понятно',
+    sec_sfx:'Звуковые эффекты', sub_sfx:'При правильном/неправильном ответе',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
@@ -6879,6 +6920,93 @@ const haptic = {
   error:   ()=>navigator.vibrate?.([20, 40, 20, 40, 20]),
 };
 
+// ── SFX: короткі звукові сигнали "правильно"/"неправильно" ──────
+// Синтезуються на льоту через Web Audio API (осцилятор) — жодних
+// mp3-файлів і мережі не треба (узгоджено з offline-first PWA), і це
+// НЕ плутається з TTS-системою (<audio>/blob-кеш), яка озвучує самі
+// слова — окремий, набагато легший шлях відтворення.
+//
+// AudioContext ліниво створюється при ПЕРШОМУ реальному виклику
+// (створення ДО user-gesture браузери або блокують, або одразу
+// підвішують у стані 'suspended' — тож не робимо цього на init()).
+let _sfxCtx = null;
+function _sfxGetCtx(){
+  if(!_sfxCtx){
+    try{ _sfxCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+    catch(e){ return null; }
+  }
+  if(_sfxCtx.state === 'suspended') _sfxCtx.resume().catch(()=>{});
+  return _sfxCtx;
+}
+// Одна коротка нота з м'якою атакою/спадом (щоб не клацало на межах).
+function _sfxTone(ctx, freq, startTime, duration, type, peakGain){
+  const osc = ctx.createOscillator();
+  const gain = ctx.createGain();
+  osc.type = type || 'sine';
+  osc.frequency.setValueAtTime(freq, startTime);
+  gain.gain.setValueAtTime(0.0001, startTime);
+  gain.gain.exponentialRampToValueAtTime(peakGain, startTime + 0.012);
+  gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+  osc.connect(gain); gain.connect(ctx.destination);
+  osc.start(startTime); osc.stop(startTime + duration + 0.02);
+}
+const SFX_ENABLED_KEY = 'mova_sfx_enabled';
+// За замовчуванням увімкнено (на відміну від haptic, звук чутно і в
+// публічних місцях — метро, аудиторія — тож даємо явний тумблер у
+// Settings, а не просто ввімкнено назавжди без вибору).
+function sfxEnabled(){
+  const v = localStorage.getItem(SFX_ENABLED_KEY);
+  return v === null ? true : v === '1';
+}
+function setSfxEnabled(on){
+  try{ localStorage.setItem(SFX_ENABLED_KEY, on ? '1' : '0'); }catch(e){}
+}
+const sfx = {
+  success(){
+    if(!sfxEnabled()) return;
+    const ctx = _sfxGetCtx(); if(!ctx) return;
+    const t = ctx.currentTime;
+    // Короткий висхідний "дзинь" — дві ноти (мажорна терція вгору):
+    // маленька заохочувальна мелодія, а не різкий писк.
+    _sfxTone(ctx, 880,     t,      0.11, 'sine', 0.16);
+    _sfxTone(ctx, 1174.66, t+0.09, 0.16, 'sine', 0.14);
+  },
+  error(){
+    if(!sfxEnabled()) return;
+    const ctx = _sfxGetCtx(); if(!ctx) return;
+    const t = ctx.currentTime;
+    // Один короткий низький "бемп" (трикутна хвиля — м'якший тембр,
+    // навмисно не різкий/образливий сигнал: аудиторія — дорослі, що
+    // й так нервують перед іспитом, тут не потрібен "звук помилки"
+    // зі шкільного тесту).
+    _sfxTone(ctx, 196, t, 0.18, 'triangle', 0.13);
+  },
+};
+
+// ── Спалах по краях екрана (див. #feedback-flash у розмітці й CSS) ──
+// Спільний, дуже короткий (320мс) візуальний сигнал для ВСІХ типів
+// вправ одразу — доповнює локальний фідбек кожної (кольори кнопок,
+// matched-flash, тремтіння), а не замінює його.
+let _flashTimer = null;
+function flashFeedback(isCorrect){
+  const el = document.getElementById('feedback-flash');
+  if(!el) return;
+  el.classList.remove('flash-correct','flash-wrong');
+  // Форсуємо reflow, щоб анімація перезапустилась навіть якщо попередній
+  // спалах ще не встиг зникнути (швидкі відповіді підряд).
+  void el.offsetWidth;
+  el.classList.add(isCorrect ? 'flash-correct' : 'flash-wrong');
+  clearTimeout(_flashTimer);
+  _flashTimer = setTimeout(()=>{ el.classList.remove('flash-correct','flash-wrong'); }, 340);
+}
+// Один виклик замість трьох (haptic+sfx+flash) у кожному місці, де
+// раніше стояв лише haptic[...](). Лишаємо й haptic-виклики на місці
+// (не займаємо їх) — просто додаємо цей поруч.
+function answerFeedback(isCorrect){
+  sfx[isCorrect ? 'success' : 'error']();
+  flashFeedback(isCorrect);
+}
+
 // Ховає кнопку нижнього меню Sprachbau, якщо у курсу немає відповідних
 // даних (SPRACHBAUSTEINE) — інакше вона веде у порожній екран без
 // жодного контенту. Dialogue-таб прибрано з нав-бару взагалі (діалоги
@@ -7964,8 +8092,8 @@ function initSwipe(){
       });
     },
 
-    onUp:   () => { haptic.error();   srsSwipe(1); },
-    onDown: () => { haptic.success(); srsSwipe(5); },
+    onUp:   () => { haptic.error();   answerFeedback(false); srsSwipe(1); },
+    onDown: () => { haptic.success(); answerFeedback(true);  srsSwipe(5); },
   });
 
   // ВИДАЛЕНО дублюючу ініціалізацію fav-кнопок fc-fav-front/-back, яка
@@ -8483,6 +8611,7 @@ function matchHandleClick(btn){
     const isLastPairNoChoice = matchState.matched === roundSize - 1;
     matchState.matched++;
     haptic.success();
+    answerFeedback(true);
 
     // Прогрес усього уроку — оновлюємо ЖИВЦЕМ, одразу по кожній парі
     // (не чекаючи завершення всього раунду matching).
@@ -8512,6 +8641,7 @@ function matchHandleClick(btn){
       setTimeout(() => el.classList.remove('error'), 400);
     });
     haptic.error();
+    answerFeedback(false);
     matchState.selected = null;
 
     // Помилка з обома картками — позначаємо для підсумкового запису
@@ -11767,6 +11897,7 @@ function mcAnswer(btn, chosen, correct, card){
   });
 
   haptic[isCorrect?'success':'error']();
+  answerFeedback(isCorrect);
 
   // Автоперехід через 1.2с
   setTimeout(()=>{
@@ -12326,6 +12457,7 @@ function tilesCheck(){
   ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
   recordCardEvent(tilesState.current.id, isOk ? 'task_correct' : 'task_wrong');
   haptic[isOk?'success':'error']();
+  answerFeedback(isOk);
 
   // Показуємо модальний результат — кнопка "Далі" в ньому прихована до
   // завершення озвучення (tilesRevealResultBtn нижче).
@@ -12621,6 +12753,7 @@ function defCheck(){
 
   recordCardEvent(defState.current.id, isOk ? 'task_correct' : 'task_wrong');
   haptic[isOk ? 'success' : 'error']();
+  answerFeedback(isOk);
 
   // Показуємо модальний результат — кнопка "Далі" прихована до
   // завершення озвучення (tilesRevealResultBtn — та сама, що й у Tiles,
@@ -13011,6 +13144,7 @@ function spShowResult(heardText, card){
 
   recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
   haptic[isOk ? 'success' : 'error']();
+  answerFeedback(isOk);
 }
 
 function spNext(){
@@ -15843,8 +15977,8 @@ function lfRunUnitStep(units, handlers, onAllDone, opts){
       onTap:   function(){ /* заблоковано — навігація лише через "Далі" */ },
       onLeft:  function(){ /* заблоковано */ },
       onRight: function(){ /* заблоковано */ },
-      onUp:    function(){ haptic.error();   _lfUnitSwipe('up'); },
-      onDown:  function(){ haptic.success(); _lfUnitSwipe('down'); },
+      onUp:    function(){ haptic.error();   answerFeedback(false); _lfUnitSwipe('up'); },
+      onDown:  function(){ haptic.success(); answerFeedback(true);  _lfUnitSwipe('down'); },
     });
   }, 50);
 
@@ -17262,6 +17396,7 @@ function _quizAnswer(btn, chosen, answers, q){
   });
 
   haptic[isCorrect ? 'success' : 'error']();
+  answerFeedback(isCorrect);
 
   // Автоперехід через 1.4с
   setTimeout(()=>{
@@ -17810,8 +17945,8 @@ function initDialogueSwipe(){
         if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').textContent='⏸'; document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
       }, 'dlg-fc-area');
     },
-    onUp:   ()=>{ haptic.error();   dlgSrsSwipe(1); },
-    onDown: ()=>{ haptic.success(); dlgSrsSwipe(5); },
+    onUp:   ()=>{ haptic.error();   answerFeedback(false); dlgSrsSwipe(1); },
+    onDown: ()=>{ haptic.success(); answerFeedback(true);  dlgSrsSwipe(5); },
   });
 }
 
@@ -18613,6 +18748,10 @@ function renderStreakUI(pulse=false){
   // Лічильник заморозок стріку в Налаштуваннях (див. showStreakInfoModal
   // для повного пояснення+кнопки купівлі) — тут лише коротке число.
   const fc=document.getElementById('st-freeze-count'); if(fc && typeof srLoadFreezes==='function') fc.textContent = srLoadFreezes();
+  // Тумблер звукових ефектів — синхронізуємо чекбокс із реальним
+  // збереженим станом (HTML має checked за замовчуванням лише як
+  // початкове значення до першого рендеру).
+  const sfxT=document.getElementById('sfx-toggle'); if(sfxT && typeof sfxEnabled==='function') sfxT.checked = sfxEnabled();
 }
 // Модалка "Стрік і заморозки" — замінює стару showStreakInfo() (яка була
 // коротким тостом фіксовано німецькою, незалежно від uiLang). Показує
@@ -19359,6 +19498,7 @@ function sbLearnSwipeHard() {
   var days = 1;
   try{ days = recordCardEvent(card.id, 'swipe_dontknow', 'Sprachbausteine'); }catch(e){}
   if(typeof haptic!=='undefined') haptic.error();
+  if(typeof answerFeedback==='function') answerFeedback(false);
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(192,57,43,.08)'; setTimeout(function(){ area.style.background=''; },300); }
   if(typeof showSrsHint==='function'){
@@ -19380,6 +19520,7 @@ function sbLearnSwipeEasy() {
   var days = 1;
   try{ days = recordCardEvent(card.id, 'swipe_know', 'Sprachbausteine'); }catch(e){}
   if(typeof haptic!=='undefined') haptic.success();
+  if(typeof answerFeedback==='function') answerFeedback(true);
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(46,204,113,.08)'; setTimeout(function(){ area.style.background=''; },300); }
   if(typeof showSrsHint==='function'){
@@ -19835,6 +19976,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   var card=SB.pracQueue[SB.pracIdx]; if(!card||card.id!==cardId) return;
   var ok=chosen===sbA(card,primaryLang()); // дистрактори завжди PRIMARY_LANG
   if(typeof haptic!=='undefined') ok?haptic.success():haptic.error();
+  if(typeof answerFeedback==='function') answerFeedback(ok);
 
   document.querySelectorAll('#sb-prac-options .mc-opt').forEach(function(b){
     b.classList.add('disabled');
