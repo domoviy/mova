@@ -1836,7 +1836,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Lesen"
+      "Lesen",
+      "Schreiben"
     ],
     "grammar": "genitiv",
     "cardIds": [
@@ -1855,6 +1856,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_078"
+    ],
+    "frmCards": [
+      "brief_014"
     ]
   },
   {
@@ -1875,7 +1879,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -1894,6 +1899,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_079"
+    ],
+    "frmCards": [
+      "brief_015"
     ]
   },
   {
@@ -1914,7 +1922,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "nebensatz_mit_obwohl",
     "cardIds": [
@@ -1933,6 +1942,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_080"
+    ],
+    "frmCards": [
+      "brief_016"
     ]
   },
   {
@@ -1972,6 +1984,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_081"
+    ],
+    "frmCards": [
+      "brief_017"
     ]
   },
   {
@@ -1992,7 +2007,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "konnektoren_wdh_b1",
     "cardIds": [
@@ -2015,6 +2031,9 @@ var LESSONS = [
       "dlg_011",
       "dlg_012",
       "dlg_082"
+    ],
+    "frmCards": [
+      "brief_018"
     ]
   },
   {
@@ -2034,7 +2053,8 @@ var LESSONS = [
       "ru": "Привычки питания"
     },
     "skills": [
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -2053,6 +2073,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_083"
+    ],
+    "frmCards": [
+      "brief_019"
     ]
   },
   {
@@ -2073,7 +2096,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "praeteritum_wdh_b1",
     "cardIds": [
@@ -2092,6 +2116,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_084"
+    ],
+    "frmCards": [
+      "brief_020"
     ]
   },
   {
@@ -7647,7 +7674,7 @@ var LESSONS = [
     "unlockAfter": null,
     "_parentModuleId": "examprep_brief",
     "_subIndex": 1,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_2",
@@ -7678,7 +7705,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_1",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 2,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_3",
@@ -7709,7 +7736,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_2",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 3,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_4",
@@ -7740,7 +7767,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_3",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 4,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_5",
@@ -7771,7 +7798,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_4",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 5,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_6",
@@ -7802,7 +7829,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_5",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 6,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_7",
@@ -7833,7 +7860,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_6",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 7,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_8",
@@ -7864,7 +7891,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_7",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 8,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_9",
@@ -7895,7 +7922,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_8",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 9,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_10",
@@ -7926,7 +7953,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_9",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 10,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_11",
@@ -7957,7 +7984,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_10",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 11,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_12",
@@ -7988,7 +8015,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_11",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 12,
-    "_subTotal": 13
+    "_subTotal": 20
   },
   {
     "id": "examprep_brief_13",
@@ -8019,7 +8046,224 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_12",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 13,
-    "_subTotal": 13
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_brief_14",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_014"
+    ],
+    "frmCards": [
+      "brief_014"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_13",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 14,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_brief_15",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_015"
+    ],
+    "frmCards": [
+      "brief_015"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_14",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 15,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_brief_16",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_016"
+    ],
+    "frmCards": [
+      "brief_016"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_15",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 16,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_brief_17",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_017"
+    ],
+    "frmCards": [
+      "brief_017"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_16",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 17,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_brief_18",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_018"
+    ],
+    "frmCards": [
+      "brief_018"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_17",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 18,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_brief_19",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_019"
+    ],
+    "frmCards": [
+      "brief_019"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_18",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 19,
+    "_subTotal": 20
+  },
+  {
+    "id": "examprep_brief_20",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_020"
+    ],
+    "frmCards": [
+      "brief_020"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_19",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 20,
+    "_subTotal": 20
   },
   {
     "id": "examsim_brief",
@@ -8942,8 +9186,8 @@ var VOCAB = [
     "term": {
       "de": "abholen",
       "en": "to pick up, to collect",
-      "uk": "забирати (когось/щось)",
-      "ru": "забирать (кого-то/что-то)"
+      "uk": "забирати (когось / щось)",
+      "ru": "забирать (кого-то / что-то)"
     },
     "short": {
       "de": "irgendwohin gehen, um jemanden oder etwas von dort mitzunehmen",
@@ -8992,7 +9236,7 @@ var VOCAB = [
       "ru": "заботиться (о)"
     },
     "short": {
-      "de": "sich um jemanden oder etwas kümmern, damit es ihm/ihr gut geht",
+      "de": "sich um jemanden oder etwas kümmern, damit es ihm / ihr gut geht",
       "en": "to look after someone or something so that they are okay",
       "uk": "піклуватися про когось чи щось",
       "ru": "заботиться о ком-то или чём-то"
@@ -9429,10 +9673,10 @@ var VOCAB = [
       "ru": "раздражающий"
     },
     "short": {
-      "de": "wenn etwas oder jemand einen stört und man es nicht mehr hören/sehen möchte",
-      "en": "when something or someone bothers you and you don't want to hear/see it anymore",
-      "uk": "коли щось чи хтось дратує і ти більше не хочеш це чути/бачити",
-      "ru": "когда что-то или кто-то раздражает и ты больше не хочешь это слышать/видеть"
+      "de": "wenn etwas oder jemand einen stört und man es nicht mehr hören / sehen möchte",
+      "en": "when something or someone bothers you and you don't want to hear / see it anymore",
+      "uk": "коли щось чи хтось дратує і ти більше не хочеш це чути / бачити",
+      "ru": "когда что-то или кто-то раздражает и ты больше не хочешь это слышать / видеть"
     },
     "def": {
       "de": "Der Lärm vom Nachbarn ist <g>weder</g> laut <g>noch</g> gefährlich, aber trotzdem sehr <b>nervig</b>.",
@@ -10671,10 +10915,10 @@ var VOCAB = [
       "ru": "напоминать (о)"
     },
     "short": {
-      "de": "jemandem sagen, dass er/sie an etwas denken soll",
+      "de": "jemandem sagen, dass er / sie an etwas denken soll",
       "en": "to tell someone to think of something",
-      "uk": "казати комусь, щоб він/вона про щось не забув(-ла)",
-      "ru": "говорить кому-то, чтобы он/она не забыл(-а) о чём-то"
+      "uk": "казати комусь, щоб він / вона про щось не забув(-ла)",
+      "ru": "говорить кому-то, чтобы он / она не забыл(-а) о чём-то"
     },
     "def": {
       "de": "Die E-Mail, <g>die</g> ich heute Morgen bekommen habe, hat mich an die Zahlung <b>erinnert</b>.",
@@ -12612,7 +12856,7 @@ var VOCAB = [
       "de": "Ich merke, <g>dass</g> ich großen <b>Hunger</b> habe.",
       "en": "I notice <g>that</g> I'm very <b>hungry</b>.",
       "uk": "Я помічаю, <g>що</g> дуже <b>голодний(-а)</b>.",
-      "ru": "Я замечаю, <g>что</g> очень <b>голоден/голодна</b>."
+      "ru": "Я замечаю, <g>что</g> очень <b>голоден / голодна</b>."
     },
     "gram": "konnektoren_wdh_b1"
   },
@@ -17406,8 +17650,8 @@ var VOCAB = [
     "term": {
       "de": "die Züchtung",
       "en": "breeding",
-      "uk": "виведення (порід/сортів)",
-      "ru": "выведение (пород/сортов)"
+      "uk": "виведення (порід / сортів)",
+      "ru": "выведение (пород / сортов)"
     },
     "short": {
       "de": "wenn man Tiere oder Pflanzen gezielt vermehrt, um bestimmte Eigenschaften zu bekommen",
@@ -19359,7 +19603,7 @@ var VOCAB = [
     "id": "k9_011",
     "cat": "k9",
     "term": {
-      "de": "der/die Angestellte, -n",
+      "de": "der / die Angestellte, -n",
       "en": "employee",
       "uk": "службовець / службовиця",
       "ru": "служащий / служащая"
@@ -21268,7 +21512,7 @@ var VOCAB = [
     "id": "k10_044",
     "cat": "k10",
     "term": {
-      "de": "der/die Freiwillige",
+      "de": "der / die Freiwillige",
       "en": "volunteer",
       "uk": "волонтер",
       "ru": "волонтёр"
@@ -21913,7 +22157,7 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "wickeln",
-      "en": "to change a nappy/diaper",
+      "en": "to change a nappy / diaper",
       "uk": "переодягати підгузок",
       "ru": "менять подгузник"
     },
@@ -22305,8 +22549,8 @@ var VOCAB = [
     "term": {
       "de": "sich beweisen",
       "en": "to prove oneself",
-      "uk": "доводити щось (собі/іншим)",
-      "ru": "доказывать что-то (себе/другим)"
+      "uk": "доводити щось (собі / іншим)",
+      "ru": "доказывать что-то (себе / другим)"
     },
     "short": {
       "de": "anderen zeigen, dass man etwas gut kann, um Anerkennung zu bekommen",
@@ -27455,7 +27699,7 @@ var VOCAB = [
     "id": "k16_003",
     "cat": "k16",
     "term": {
-      "de": "sich freuen (auf/über)",
+      "de": "sich freuen (auf / über)",
       "en": "to look forward to / to be happy about",
       "uk": "радіти (чомусь)",
       "ru": "радоваться (чему-то)"
@@ -28078,8 +28322,8 @@ var VOCAB = [
     "term": {
       "de": "abholen",
       "en": "to pick up",
-      "uk": "забирати (когось/щось)",
-      "ru": "забирать (кого-то/что-то)"
+      "uk": "забирати (когось / щось)",
+      "ru": "забирать (кого-то / что-то)"
     },
     "short": {
       "de": "zu einem Ort gehen oder fahren, um jemanden oder etwas von dort mitzunehmen",
@@ -28122,7 +28366,7 @@ var VOCAB = [
     "id": "k16_032",
     "cat": "k16",
     "term": {
-      "de": "der/die Verdächtige, -n",
+      "de": "der / die Verdächtige, -n",
       "en": "suspect",
       "uk": "підозрюваний",
       "ru": "подозреваемый"
@@ -36373,6 +36617,209 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihre Mühe.</r>", "en": "<r>Thank you for your effort.</r>", "uk": "<r>Дякую за Ваші старання.</r>", "ru": "<r>Спасибо за Ваши старания.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
       { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
+    ]
+  },
+  {
+    "id": "brief_014",
+    "cat": "Bitte um Hilfe",
+    "format": "brief_informell",
+    "topic": {
+      "de": "Unklare Kontogebühren",
+      "en": "Unclear account fees",
+      "uk": "Незрозумілі комісії за рахунок",
+      "ru": "Непонятные комиссии по счёту"
+    },
+    "task": {
+      "de": "Ihr Freund arbeitet bei einer Bank. Sie verstehen die Kontogebühren und Zinsen auf Ihrem letzten Kontoauszug nicht. Schreiben Sie ihm einen Brief.<br><br>1. Grund für Ihr Schreiben<br>2. Was genau Sie nicht verstehen<br>3. Warum Ihnen das wichtig ist<br>4. Bitte um ein Treffen oder einen Anruf",
+      "en": "Your friend works at a bank. You don't understand the account fees and interest on your latest bank statement. Write him a letter.<br><br>1. Reason for your letter<br>2. What exactly you don't understand<br>3. Why this matters to you<br>4. A request for a meeting or a call",
+      "uk": "Ваш друг працює в банку. Ви не розумієте комісій за рахунок і відсотків у Вашій останній виписці. Напишіть йому листа.<br><br>1. Причина Вашого листа<br>2. Що саме Ви не розумієте<br>3. Чому це для Вас важливо<br>4. Прохання про зустріч або дзвінок",
+      "ru": "Ваш друг работает в банке. Вы не понимаете комиссий по счёту и процентов в Вашей последней выписке. Напишите ему письмо.<br><br>1. Причина Вашего письма<br>2. Что именно Вы не понимаете<br>3. Почему это для Вас важно<br>4. Просьба о встрече или звонке"
+    },
+    "name": "de_m_mark",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Stuttgart, den 14. Juni 2025", "en": "Stuttgart, 14 June 2025", "uk": "Штутгарт, 14 червня 2025 р.", "ru": "Штутгарт, 14 июня 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Lieber Tobias,", "en": "Dear Tobias,", "uk": "Любий Тобіасе,", "ru": "Дорогой Тобиас," },
+      { "role": "einleitung", "gram": "genitiv", "de": "<r>Ich habe eine Bitte an dich,</r> <k>denn</k> ich verstehe <g>wegen der komplizierten Kontogebühren</g> meinen letzten <c>Kontoauszug</c> nicht.", "en": "<r>I have a favor to ask you</r>, because due to the complicated account fees I don't understand my latest bank statement.", "uk": "<r>У мене до тебе прохання</r>, бо через складні комісії за рахунок я не розумію своєї останньої виписки.", "ru": "<r>У меня к тебе просьба</r>, потому что из-за сложных комиссий по счёту я не понимаю свою последнюю выписку." },
+      { "role": "punkt2", "gram": "indefinitpronomen_possessivpronomen", "de": "<r>Genauer gesagt,</r> <g>manche Posten</g> mit den Zinsen sind für mich völlig unklar, <k>und</k> ich weiß nicht, wofür sie stehen.", "en": "<r>More specifically,</r> some of the items with the interest are completely unclear to me, and I don't know what they stand for.", "uk": "<r>Точніше кажучи,</r> деякі пункти з відсотками для мене абсолютно незрозумілі, і я не знаю, що вони означають.", "ru": "<r>Точнее говоря,</r> некоторые пункты с процентами для меня совершенно непонятны, и я не знаю, что они означают." },
+      { "role": "punkt3", "gram": "nomen_auf_heit_keit", "de": "<r>Das ist mir wichtig, weil</r> ich <g>Klarheit</g> über mein Geld haben möchte, <k>und</k> du kennst dich damit viel besser aus als ich.", "en": "<r>This matters to me because</r> I want to have clarity about my money, and you know much more about this than I do.", "uk": "<r>Для мене це важливо, бо</r> я хочу мати ясність щодо своїх грошей, а ти розумієшся на цьому набагато краще за мене.", "ru": "<r>Для меня это важно, потому что</r> я хочу иметь ясность в отношении своих денег, а ты разбираешься в этом намного лучше меня." },
+      { "role": "punkt4", "gram": "relativpronomen_dativ_wdh_b1", "de": "<r>Könntest du dir vielleicht Zeit nehmen</r> <k>und</k> mich anrufen? Du bist der Einzige, <g>dem</g> ich das zutraue.", "en": "<r>Could you maybe take some time</r> and call me? You're the only one I would trust with this.", "uk": "<r>Чи не міг би ти виділити трохи часу</r> і зателефонувати мені? Ти єдиний, кому я можу це довірити.", "ru": "<r>Не мог бы ты выделить немного времени</r> и позвонить мне? Ты единственный, кому я могу это доверить." },
+      { "role": "schluss", "gram": "", "de": "<r>Danke schon mal im Voraus!</r>", "en": "<r>Thanks in advance!</r>", "uk": "<r>Дякую заздалегідь!</r>", "ru": "<r>Спасибо заранее!</r>" },
+      { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
+    ]
+  },
+  {
+    "id": "brief_015",
+    "cat": "Anfrage / Bitte um Auskunft",
+    "format": "email_formell",
+    "topic": {
+      "de": "Bankkarte gestohlen",
+      "en": "Bank card stolen",
+      "uk": "Викрадена банківська картка",
+      "ru": "Украдена банковская карта"
+    },
+    "task": {
+      "de": "Ihre Bankkarte wurde gestern gestohlen. Sie haben sie sofort telefonisch sperren lassen. Schreiben Sie eine E-Mail an Ihre Bank.<br><br>1. Grund für Ihr Schreiben<br>2. Was genau passiert ist<br>3. Was Sie bereits unternommen haben<br>4. Bitte um eine Ersatzkarte",
+      "en": "Your bank card was stolen yesterday. You immediately had it blocked by phone. Write an email to your bank.<br><br>1. Reason for your email<br>2. What exactly happened<br>3. What you have already done<br>4. A request for a replacement card",
+      "uk": "Учора у Вас викрали банківську картку. Ви одразу заблокували її по телефону. Напишіть електронного листа до Вашого банку.<br><br>1. Причина Вашого листа<br>2. Що саме сталося<br>3. Що Ви вже зробили<br>4. Прохання про видачу нової картки",
+      "ru": "Вчера у Вас украли банковскую карту. Вы сразу заблокировали её по телефону. Напишите электронное письмо в Ваш банк.<br><br>1. Причина Вашего письма<br>2. Что именно произошло<br>3. Что Вы уже сделали<br>4. Просьба о выдаче новой карты"
+    },
+    "name": "de_w_anna",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Diebstahl meiner Bankkarte", "en": "Subject: Theft of my bank card", "uk": "Тема: Крадіжка моєї банківської картки", "ru": "Тема: Кража моей банковской карты" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "praeteritum_wdh_b1", "de": "<r>Ich schreibe Ihnen, weil</r> mir gestern Abend meine <c>Bankkarte</c> <g>gestohlen wurde</g>.", "en": "<r>I am writing to you because</r> my bank card was stolen from me yesterday evening.", "uk": "<r>Пишу Вам, тому що</r> вчора ввечері в мене вкрали банківську картку.", "ru": "<r>Пишу Вам, потому что</r> вчера вечером у меня украли банковскую карту." },
+      { "role": "punkt2", "gram": "komposita_verb_nomen", "de": "<r>Genauer gesagt,</r> ich habe sofort beim <g>Sperrnotruf</g> angerufen, <k>und</k> die Karte ist inzwischen gesperrt.", "en": "<r>More specifically,</r> I immediately called the card-blocking hotline, and the card is now blocked.", "uk": "<r>Точніше кажучи,</r> я одразу зателефонувала на гарячу лінію блокування карток, і картку вже заблоковано.", "ru": "<r>Точнее говоря,</r> я сразу позвонила на горячую линию блокировки карт, и карта уже заблокирована." },
+      { "role": "punkt3", "gram": "relativsatz_wo_was", "de": "<r>Außerdem habe ich</r> bereits die Polizei informiert <k>und</k> eine Anzeige erstattet, <g>was</g> hoffentlich hilft, den Fall schnell zu klären.", "en": "<r>I have also</r> already informed the police and filed a report, which will hopefully help clarify the case quickly.", "uk": "<r>Крім того, я вже</r> повідомила поліцію і подала заяву, що, сподіваюся, допоможе швидко з'ясувати справу.", "ru": "<r>Кроме того, я уже</r> сообщила в полицию и подала заявление, что, надеюсь, поможет быстро прояснить дело." },
+      { "role": "punkt4", "gram": "adjektive_auf_bar_los", "de": "<r>Ich bitte Sie deshalb,</r> mir schnell eine Ersatzkarte zu schicken. <k>Außerdem</k> möchte ich wissen, ob das <g>kostenlos</g> ist.", "en": "<r>I therefore ask you to</r> send me a replacement card quickly. I would also like to know whether that is free of charge.", "uk": "<r>Тому прошу Вас</r> швидко надіслати мені нову картку. Крім того, хотіла б знати, чи це безкоштовно.", "ru": "<r>Поэтому прошу Вас</r> быстро прислать мне новую карту. Кроме того, хотела бы знать, бесплатно ли это." },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihre schnelle Hilfe.</r>", "en": "<r>Thank you for your quick help.</r>", "uk": "<r>Дякую за Вашу швидку допомогу.</r>", "ru": "<r>Спасибо за Вашу быструю помощь.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Anna Vogel", "en": "Anna Vogel", "uk": "Анна Фогель", "ru": "Анна Фогель" }
+    ]
+  },
+  {
+    "id": "brief_016",
+    "cat": "Entschuldigung / Absage",
+    "format": "brief_formell",
+    "topic": {
+      "de": "Kündigung der Hausratversicherung",
+      "en": "Cancelling the home contents insurance",
+      "uk": "Розірвання договору страхування майна",
+      "ru": "Расторжение договора страхования имущества"
+    },
+    "task": {
+      "de": "Sie möchten Ihre Hausratversicherung kündigen, weil Sie einen günstigeren Anbieter gefunden haben. Schreiben Sie einen Brief an die Versicherung.<br><br>1. Grund für Ihr Schreiben<br>2. Zu welchem Datum Sie kündigen möchten<br>3. Warum Sie wechseln<br>4. Bitte um eine schriftliche Bestätigung",
+      "en": "You want to cancel your home contents insurance because you found a cheaper provider. Write a letter to the insurance company.<br><br>1. Reason for your letter<br>2. The date you want to cancel<br>3. Why you are switching<br>4. A request for written confirmation",
+      "uk": "Ви хочете розірвати договір страхування майна, бо знайшли дешевшого страховика. Напишіть листа до страхової компанії.<br><br>1. Причина Вашого листа<br>2. З якої дати Ви хочете розірвати договір<br>3. Чому Ви переходите до іншого страховика<br>4. Прохання про письмове підтвердження",
+      "ru": "Вы хотите расторгнуть договор страхования имущества, потому что нашли более дешёвого страховщика. Напишите письмо в страховую компанию.<br><br>1. Причина Вашего письма<br>2. С какой даты Вы хотите расторгнуть договор<br>3. Почему Вы переходите к другому страховщику<br>4. Просьба о письменном подтверждении"
+    },
+    "name": "de_m_david",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Dresden, den 2. November 2025", "en": "Dresden, 2 November 2025", "uk": "Дрезден, 2 листопада 2025 р.", "ru": "Дрезден, 2 ноября 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "nebensatz_mit_obwohl", "de": "<r>Hiermit kündige ich meinen Vertrag,</r> <k>obwohl</k> <g>ich mit Ihrem Versicherungsschutz bisher zufrieden war</g>.", "en": "<r>I hereby cancel my contract</r>, even though I have been satisfied with your insurance coverage so far.", "uk": "<r>Цим я розриваю свій договір</r>, хоча досі був задоволений Вашим страховим захистом.", "ru": "<r>Настоящим я расторгаю свой договор</r>, хотя до сих пор был доволен Вашей страховой защитой." },
+      { "role": "punkt2", "gram": "komposita_fugenelemente", "de": "<r>Ich kündige</r> <g>meinen Versicherungsschutz</g> zum 31. Dezember, <k>also</k> zum Ende dieses Jahres.", "en": "<r>I am cancelling</r> my insurance coverage as of 31 December, that is, at the end of this year.", "uk": "<r>Я розриваю</r> свій страховий захист з 31 грудня, тобто наприкінці цього року.", "ru": "<r>Я расторгаю</r> свою страховую защиту с 31 декабря, то есть в конце этого года." },
+      { "role": "punkt3", "gram": "praepositionen_mit_genitiv", "de": "<r>Der Grund dafür ist,</r> dass ich <g>innerhalb der Kündigungsfrist</g> einen <c>günstigeren Anbieter</c> gefunden habe, <k>und</k> ich möchte dadurch Geld sparen.", "en": "<r>The reason for this is</r> that I found a cheaper provider within the notice period, and I want to save money by doing so.", "uk": "<r>Причина цього в тому,</r> що я в межах терміну розірвання знайшов дешевшого страховика, і хочу таким чином заощадити гроші.", "ru": "<r>Причина этого в том,</r> что я в пределах срока расторжения нашёл более дешёвого страховщика, и хочу таким образом сэкономить деньги." },
+      { "role": "punkt4", "gram": "adjektive_als_nomen", "de": "<r>Ich bitte Sie deshalb,</r> mir die Kündigung schriftlich zu bestätigen. <k>Außerdem</k> ist <g>das Wichtigste</g> für mich, dass alles pünktlich erledigt wird.", "en": "<r>I therefore ask you to</r> confirm the cancellation in writing. Also, the most important thing for me is that everything is done on time.", "uk": "<r>Тому прошу Вас</r> письмово підтвердити розірвання договору. Крім того, найважливіше для мене — щоб усе було зроблено вчасно.", "ru": "<r>Поэтому прошу Вас</r> письменно подтвердить расторжение договора. Кроме того, самое важное для меня — чтобы всё было сделано вовремя." },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihr Verständnis.</r>", "en": "<r>Thank you for your understanding.</r>", "uk": "<r>Дякую за розуміння.</r>", "ru": "<r>Спасибо за понимание.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "David Berger", "en": "David Berger", "uk": "Давид Бергер", "ru": "Давид Бергер" }
+    ]
+  },
+  {
+    "id": "brief_017",
+    "cat": "Antwort auf eine Einladung",
+    "format": "email_formell",
+    "topic": {
+      "de": "Antwort auf die Einladung zum Beratungsgespräch",
+      "en": "Reply to the invitation for a consultation",
+      "uk": "Відповідь на запрошення на консультацію",
+      "ru": "Ответ на приглашение на консультацию"
+    },
+    "task": {
+      "de": "Ihre Versicherung hat Sie zu einem kostenlosen Beratungsgespräch eingeladen. Sie möchten teilnehmen, aber ein anderes Datum vorschlagen. Schreiben Sie eine E-Mail als Antwort.<br><br>1. Dank für die Einladung<br>2. Warum der vorgeschlagene Termin nicht passt<br>3. Ihr Terminvorschlag<br>4. Bitte um Bestätigung",
+      "en": "Your insurance company invited you to a free consultation. You want to attend, but suggest a different date. Write an email in reply.<br><br>1. Thanks for the invitation<br>2. Why the proposed date doesn't work<br>3. Your suggested date<br>4. A request for confirmation",
+      "uk": "Ваша страхова компанія запросила Вас на безкоштовну консультацію. Ви хочете взяти участь, але пропонуєте іншу дату. Напишіть електронного листа у відповідь.<br><br>1. Подяка за запрошення<br>2. Чому запропонована дата не підходить<br>3. Ваша пропозиція щодо дати<br>4. Прохання про підтвердження",
+      "ru": "Ваша страховая компания пригласила Вас на бесплатную консультацию. Вы хотите принять участие, но предлагаете другую дату. Напишите электронное письмо в ответ.<br><br>1. Благодарность за приглашение<br>2. Почему предложенная дата не подходит<br>3. Ваше предложение по дате<br>4. Просьба о подтверждении"
+    },
+    "name": "de_w_nina",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Antwort auf Ihre Einladung zum Beratungsgespräch", "en": "Subject: Reply to your invitation for a consultation", "uk": "Тема: Відповідь на запрошення на консультацію", "ru": "Тема: Ответ на приглашение на консультацию" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Frau Weber,", "en": "Dear Ms. Weber,", "uk": "Шановна пані Вебер,", "ru": "Уважаемая госпожа Вебер," },
+      { "role": "einleitung", "gram": "komposita_verb_nomen", "de": "<r>Vielen Dank für Ihre Einladung</r> zum <g>Beratungsgespräch</g>, <k>und</k> ich möchte gerne daran teilnehmen.", "en": "<r>Thank you very much for your invitation</r> to the consultation, and I would love to take part.", "uk": "<r>Щиро дякую за Ваше запрошення</r> на консультацію, і я з радістю візьму в ній участь.", "ru": "<r>Большое спасибо за Ваше приглашение</r> на консультацию, и я с радостью приму в ней участие." },
+      { "role": "punkt2", "gram": "nebensatz_mit_bevor", "de": "<r>Leider passt mir der vorgeschlagene Termin nicht,</r> <k>denn</k> <g>bevor ich zu Ihnen kommen kann, habe ich an dem Tag bereits einen Arzttermin</g>.", "en": "<r>Unfortunately, the proposed date doesn't work for me,</r> because I already have a doctor's appointment that day before I could come to you.", "uk": "<r>На жаль, запропонована дата мені не підходить,</r> бо того дня в мене вже є запис до лікаря, перш ніж я зможу до Вас прийти.", "ru": "<r>К сожалению, предложенная дата мне не подходит,</r> потому что в тот день у меня уже есть запись к врачу, прежде чем я смогу к Вам прийти." },
+      { "role": "punkt3", "gram": "adjektivdeklination_ohne_artikel", "de": "<r>Wäre es möglich,</r> <c>ein anderes Datum</c> zu finden, <g>an kommendem Freitag</g> zum Beispiel? <k>Dann</k> hätte ich definitiv Zeit.", "en": "<r>Would it be possible</r> to find a different date, next Friday for example? Then I would definitely have time.", "uk": "<r>Чи можливо було б</r> знайти іншу дату, наприклад, наступної п'ятниці? Тоді в мене точно був би час.", "ru": "<r>Было бы возможно</r> найти другую дату, например, в следующую пятницу? Тогда у меня точно было бы время." },
+      { "role": "punkt4", "gram": "adjektivendung_genitiv", "de": "<r>Ich bitte Sie deshalb,</r> mir kurz zu bestätigen, ob der neue Termin möglich ist. <g>Trotz meines vollen Terminkalenders</g> würde ich mir dafür gerne Zeit nehmen.", "en": "<r>I therefore ask you to</r> confirm briefly whether the new date is possible. Despite my full schedule, I would gladly make time for it.", "uk": "<r>Тому прошу Вас</r> коротко підтвердити, чи можлива нова дата. Попри свій завантажений графік, я з радістю виділю на це час.", "ru": "<r>Поэтому прошу Вас</r> коротко подтвердить, возможна ли новая дата. Несмотря на свой загруженный график, я с радостью выделю на это время." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf unser Gespräch.</r>", "en": "<r>I look forward to our conversation.</r>", "uk": "<r>Із нетерпінням чекаю на нашу розмову.</r>", "ru": "<r>С нетерпением жду нашего разговора.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
+    ]
+  },
+  {
+    "id": "brief_018",
+    "cat": "Beschwerde / Reklamation",
+    "format": "email_formell",
+    "topic": {
+      "de": "Trotz Kündigung weiterhin Abbuchungen",
+      "en": "Charges continuing despite cancellation",
+      "uk": "Списання коштів попри розірвання договору",
+      "ru": "Списания несмотря на расторжение договора"
+    },
+    "task": {
+      "de": "Sie haben Ihren Vertrag rechtzeitig gekündigt, aber die Firma zieht weiterhin Geld von Ihrem Konto ab. Schreiben Sie eine E-Mail an die Firma.<br><br>1. Grund für Ihr Schreiben<br>2. Wann und wie Sie gekündigt haben<br>3. Was seitdem passiert ist<br>4. Bitte um sofortige Rückerstattung",
+      "en": "You cancelled your contract on time, but the company keeps withdrawing money from your account. Write an email to the company.<br><br>1. Reason for your email<br>2. When and how you cancelled<br>3. What has happened since then<br>4. A request for an immediate refund",
+      "uk": "Ви вчасно розірвали договір, але компанія й далі знімає гроші з Вашого рахунку. Напишіть електронного листа компанії.<br><br>1. Причина Вашого листа<br>2. Коли і як Ви розірвали договір<br>3. Що сталося відтоді<br>4. Прохання про негайне повернення коштів",
+      "ru": "Вы вовремя расторгли договор, но компания продолжает снимать деньги с Вашего счёта. Напишите электронное письмо компании.<br><br>1. Причина Вашего письма<br>2. Когда и как Вы расторгли договор<br>3. Что произошло с тех пор<br>4. Просьба о немедленном возврате средств"
+    },
+    "name": "de_m_alex",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Fortgesetzte Abbuchungen trotz Kündigung", "en": "Subject: Continued charges despite cancellation", "uk": "Тема: Продовження списань попри розірвання договору", "ru": "Тема: Продолжающиеся списания несмотря на расторжение" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "konnektoren_wdh_b1", "de": "<r>Ich schreibe Ihnen, weil</r> Sie weiterhin Geld von meinem <c>Konto</c> abbuchen, <g>obwohl ich rechtzeitig gekündigt habe</g>.", "en": "<r>I am writing to you because</r> you keep withdrawing money from my account, even though I cancelled on time.", "uk": "<r>Пишу Вам, тому що</r> Ви й далі знімаєте гроші з мого рахунку, хоча я вчасно розірвав договір.", "ru": "<r>Пишу Вам, потому что</r> Вы продолжаете снимать деньги с моего счёта, хотя я вовремя расторг договор." },
+      { "role": "punkt2", "gram": "perfekt_wdh_b1", "de": "<r>Zu Ihrer Information:</r> Ich habe meinen Vertrag bereits vor sechs Wochen <g>schriftlich gekündigt</g>, <k>und</k> ich habe dafür auch eine Bestätigung erhalten.", "en": "<r>For your information:</r> I already cancelled my contract in writing six weeks ago, and I also received a confirmation for it.", "uk": "<r>Для Вашої інформації:</r> я вже шість тижнів тому розірвав договір письмово, і я отримав підтвердження цього.", "ru": "<r>Для Вашей информации:</r> я уже шесть недель назад расторг договор письменно, и я получил подтверждение этого." },
+      { "role": "punkt3", "gram": "nebensatz_seit_seitdem", "de": "<r>Trotzdem wurde</r> <k>seitdem</k> <g>noch zweimal Geld von meinem Konto abgebucht</g>.", "en": "<r>Nevertheless,</r> money has still been withdrawn from my account twice since then.", "uk": "<r>Попри це,</r> відтоді з мого рахунку двічі знімали гроші.", "ru": "<r>Несмотря на это,</r> с тех пор с моего счёта дважды снимали деньги." },
+      { "role": "punkt4", "gram": "partizip1_als_adjektiv", "de": "<r>Ich bitte Sie deshalb,</r> mir die <g>fehlenden Beträge</g> umgehend zurückzuerstatten. <k>Außerdem</k> möchte ich eine schriftliche Bestätigung der Kündigung erhalten.", "en": "<r>I therefore ask you to</r> refund the missing amounts immediately. I would also like to receive written confirmation of the cancellation.", "uk": "<r>Тому прошу Вас</r> негайно повернути зняті суми. Крім того, хотів би отримати письмове підтвердження розірвання договору.", "ru": "<r>Поэтому прошу Вас</r> немедленно вернуть списанные суммы. Кроме того, хотел бы получить письменное подтверждение расторжения договора." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich erwarte Ihre Antwort innerhalb einer Woche.</r>", "en": "<r>I expect your reply within one week.</r>", "uk": "<r>Очікую Вашої відповіді протягом тижня.</r>", "ru": "<r>Ожидаю Вашего ответа в течение недели.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Alex Berg", "en": "Alex Berg", "uk": "Алекс Берг", "ru": "Алекс Берг" }
+    ]
+  },
+  {
+    "id": "brief_019",
+    "cat": "Krankmeldung",
+    "format": "email_informell",
+    "topic": {
+      "de": "Krankmeldung nach dem Essen vom Imbiss",
+      "en": "Sick note after eating at a snack stand",
+      "uk": "Довідка про хворобу після їжі в кіоску",
+      "ru": "Больничный после еды в киоске"
+    },
+    "task": {
+      "de": "Sie haben gestern Abend etwas von einem Imbiss gegessen und fühlen sich seitdem sehr schlecht. Sie können heute nicht zur Arbeit kommen. Schreiben Sie eine E-Mail an Ihren Chef.<br><br>1. Grund für Ihr Schreiben<br>2. Was Sie gegessen haben<br>3. Was der Arzt gesagt hat<br>4. Bis wann Sie voraussichtlich fehlen",
+      "en": "You ate something from a snack stand yesterday evening and have felt very unwell ever since. You cannot come to work today. Write an email to your boss.<br><br>1. Reason for your email<br>2. What you ate<br>3. What the doctor said<br>4. Until when you will probably be absent",
+      "uk": "Учора ввечері Ви поїли щось у кіоску з фастфудом і відтоді почуваєтеся дуже погано. Сьогодні Ви не можете вийти на роботу. Напишіть електронного листа своєму керівнику.<br><br>1. Причина Вашого листа<br>2. Що Ви їли<br>3. Що сказав лікар<br>4. До якого часу Ви, ймовірно, будете відсутні",
+      "ru": "Вчера вечером Вы поели что-то в киоске быстрого питания и с тех пор чувствуете себя очень плохо. Сегодня Вы не можете выйти на работу. Напишите электронное письмо своему руководителю.<br><br>1. Причина Вашего письма<br>2. Что Вы ели<br>3. Что сказал врач<br>4. До какого времени Вы, вероятно, будете отсутствовать"
+    },
+    "name": "de_w_julia",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Krankmeldung für heute", "en": "Subject: Sick note for today", "uk": "Тема: Довідка про хворобу на сьогодні", "ru": "Тема: Больничный на сегодня" },
+      { "role": "anrede", "gram": "", "de": "Hallo Tom,", "en": "Hi Tom,", "uk": "Привіт, Томе,", "ru": "Привет, Том," },
+      { "role": "einleitung", "gram": "nebensatz_wenn_konjunktiv2_irreal", "de": "<r>Ich muss dir leider mitteilen, dass</r> ich heute nicht zur Arbeit kommen kann. <g>Wenn ich gewusst hätte, wie schlecht mir wird, hätte ich das Essen gestern nicht angerührt.</g>", "en": "<r>I unfortunately have to let you know that</r> I can't come to work today. If I had known how sick I would feel, I wouldn't have touched the food yesterday.", "uk": "<r>Мушу, на жаль, повідомити тобі, що</r> сьогодні я не можу прийти на роботу. Якби я знала, як мені стане погано, я б учора не торкалася тієї їжі.", "ru": "<r>Должна, к сожалению, сообщить тебе, что</r> сегодня я не могу прийти на работу. Если бы я знала, как мне станет плохо, я бы вчера не притронулась к этой еде." },
+      { "role": "punkt2", "gram": "nomen_auf_chen", "de": "<r>Genauer gesagt,</r> ich habe gestern Abend ein <g>Würstchen</g> <c>vom Imbiss</c> gegessen, <k>und</k> seitdem geht es mir richtig schlecht.", "en": "<r>More specifically,</r> I ate a sausage from the snack stand yesterday evening, and I've felt really bad ever since.", "uk": "<r>Точніше кажучи,</r> учора ввечері я з'їла сосиску в кіоску, і відтоді почуваюся справді погано.", "ru": "<r>Точнее говоря,</r> вчера вечером я съела сосиску в киоске, и с тех пор чувствую себя действительно плохо." },
+      { "role": "punkt3", "gram": "adjektive_auf_ig_isch", "de": "<r>Der Arzt hat gesagt,</r> dass es sich vermutlich um eine leichte Vergiftung handelt, <k>und</k> ich mich deshalb <g>schwindelig</g> und schwach fühle.", "en": "<r>The doctor said</r> that it's probably a mild case of food poisoning, and that's why I feel dizzy and weak.", "uk": "<r>Лікар сказав,</r> що це, ймовірно, легке отруєння, тому в мене паморочиться в голові і я почуваюся слабко.", "ru": "<r>Врач сказал,</r> что это, вероятно, лёгкое отравление, поэтому у меня кружится голова и я чувствую слабость." },
+      { "role": "punkt4", "gram": "n_deklination", "de": "<r>Ich denke,</r> dass ich meinem <g>Kollegen</g> Bescheid geben sollte, <k>denn</k> ich werde wahrscheinlich bis Freitag fehlen.", "en": "<r>I think</r> I should let my colleague know, because I will probably be absent until Friday.", "uk": "<r>Гадаю,</r> що варто повідомити мого колегу, бо я, ймовірно, буду відсутня до п'ятниці.", "ru": "<r>Думаю,</r> что стоит сообщить моему коллеге, потому что я, вероятно, буду отсутствовать до пятницы." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich melde mich, sobald es mir besser geht.</r>", "en": "<r>I'll be in touch as soon as I feel better.</r>", "uk": "<r>Дам знати, щойно почуватимусь краще.</r>", "ru": "<r>Дам знать, как только почувствую себя лучше.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
+    ]
+  },
+  {
+    "id": "brief_020",
+    "cat": "Einladung",
+    "format": "brief_informell",
+    "topic": {
+      "de": "Erinnerung an die Schulpizza",
+      "en": "Memory of school pizza",
+      "uk": "Спогад про шкільну піцу",
+      "ru": "Воспоминание о школьной пицце"
+    },
+    "task": {
+      "de": "Sie haben neulich an die gemeinsame Schulzeit mit Ihrem Freund gedacht, als es oft Pizza in der Kantine gab. Sie laden ihn zu einem Kochabend bei Ihnen ein. Schreiben Sie ihm einen Brief.<br><br>1. Grund für Ihr Schreiben<br>2. Woran Sie sich erinnert haben<br>3. Was Sie gemeinsam kochen möchten<br>4. Wann er vorbeikommen kann",
+      "en": "You recently thought about your school days with your friend, when there was often pizza in the cafeteria. You invite him to a cooking evening at your place. Write him a letter.<br><br>1. Reason for your letter<br>2. What you remembered<br>3. What you would like to cook together<br>4. When he can come over",
+      "uk": "Ви нещодавно згадали шкільні часи разом із другом, коли в їдальні часто була піца. Ви запрошуєте його на вечір кулінарії у Вас удома. Напишіть йому листа.<br><br>1. Причина Вашого листа<br>2. Що Ви згадали<br>3. Що Ви хотіли б приготувати разом<br>4. Коли він може прийти",
+      "ru": "Вы недавно вспомнили школьные времена вместе с другом, когда в столовой часто была пицца. Вы приглашаете его на кулинарный вечер у Вас дома. Напишите ему письмо.<br><br>1. Причина Вашего письма<br>2. Что Вы вспомнили<br>3. Что Вы хотели бы приготовить вместе<br>4. Когда он может прийти"
+    },
+    "name": "de_m_mark",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Bremen, den 9. Oktober 2025", "en": "Bremen, 9 October 2025", "uk": "Бремен, 9 жовтня 2025 р.", "ru": "Бремен, 9 октября 2025 г." },
+      { "role": "anrede", "gram": "", "de": "Lieber Felix,", "en": "Dear Felix,", "uk": "Любий Феліксе,", "ru": "Дорогой Феликс," },
+      { "role": "einleitung", "gram": "praeteritum_wdh_b1", "de": "<r>Ich musste neulich an dich denken, weil</r> ich an unsere <c>Schulzeit</c> dachte, <k>als</k> es in der Kantine ständig Pizza <g>gab</g>.", "en": "<r>I recently had to think of you because</r> I was thinking about our school days, when there was always pizza in the cafeteria.", "uk": "<r>Нещодавно я про тебе згадав, тому що</r> думав про наші шкільні часи, коли в їдальні завжди була піца.", "ru": "<r>Недавно я о тебе вспомнил, потому что</r> думал о наших школьных временах, когда в столовой всегда была пицца." },
+      { "role": "punkt2", "gram": "genitiv_alternativen", "de": "<r>Weißt du noch,</r> wie gut uns damals der Geschmack <g>von der Pizza</g> geschmeckt hat? <k>Und</k> wie wir immer zusammen gelacht haben?", "en": "<r>Do you remember</r> how much we loved the taste of that pizza back then? And how we always laughed together?", "uk": "<r>Пам'ятаєш,</r> як нам тоді дуже смакувала та піца? І як ми завжди разом сміялися?", "ru": "<r>Помнишь,</r> как нам тогда очень нравился вкус той пиццы? И как мы всегда вместе смеялись?" },
+      { "role": "punkt3", "gram": "adjektivdeklination_bestimmter_artikel", "de": "<r>Ich würde gerne</r> mit dir <g>die berühmte Pizza</g> von damals nachkochen, <k>denn</k> ich habe endlich ein gutes Rezept gefunden.", "en": "<r>I would love to</r> recreate that famous pizza from back then with you, because I finally found a good recipe.", "uk": "<r>Я хотів би</r> разом з тобою приготувати ту знамениту піцу з тих часів, бо я нарешті знайшов хороший рецепт.", "ru": "<r>Я хотел бы</r> вместе с тобой приготовить ту знаменитую пиццу из тех времён, потому что я наконец нашёл хороший рецепт." },
+      { "role": "punkt4", "gram": "satzverbindungen_ueberblick", "de": "<r>Wärst du dieses Wochenende frei?</r> <g>Ich könnte am Samstag kochen, du müsstest aber vorher kurz Bescheid geben, damit ich rechtzeitig einkaufen kann.</g>", "en": "<r>Would you be free this weekend?</r> I could cook on Saturday, but you'd need to let me know briefly beforehand so I can shop in time.", "uk": "<r>Чи був би ти вільний цих вихідних?</r> Я міг би готувати в суботу, але тобі потрібно заздалегідь коротко повідомити, щоб я встиг вчасно закупитися.", "ru": "<r>Ты был бы свободен в эти выходные?</r> Я мог бы готовить в субботу, но тебе нужно заранее коротко сообщить, чтобы я успел вовремя закупиться." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich schon auf unseren Kochabend!</r>", "en": "<r>I'm already looking forward to our cooking evening!</r>", "uk": "<r>Уже тішуся нашому кулінарному вечору!</r>", "ru": "<r>Уже радуюсь нашему кулинарному вечеру!</r>" },
+      { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
     ]
   }
 ];

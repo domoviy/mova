@@ -26152,10 +26152,10 @@ var STORY_TASK = [
       "ru": "Описание работодателя"
     },
     "task": {
-      "de": "Beschreiben Sie einen Arbeitgeber, für den Sie gearbeitet haben oder arbeiten möchten.",
-      "uk": "Опишіть роботодавця, на якого ви працювали або хотіли б працювати.",
-      "en": "Describe an employer you have worked for or would like to work for.",
-      "ru": "Опишите работодателя, на которого вы работали или хотели бы работать."
+      "de": "Beschreiben Sie einen Arbeitgeber, für den Sie gearbeitet haben oder arbeiten möchten<br>(z. B. Branche, Produkte und Dienstleistungen, Abteilungen und ihre Aufgaben, Besonderheiten).",
+      "uk": "Опишіть роботодавця, на якого ви працювали або хотіли б працювати<br>(наприклад, галузь, продукти та послуги, відділи та їхні завдання, особливості).",
+      "en": "Describe an employer you have worked for or would like to work for<br>(e.g., industry, products and services, departments and their tasks, special features).",
+      "ru": "Опишите работодателя, на которого вы работали или хотели бы работать<br>(например, отрасль, продукты и услуги, отделы и их задачи, особенности)."
     },
     "tips": {
       "de": "Mögliche Fragen:<br>Firma? Wo?<br>Welche Branche?<br>Welche Abteilung / en?<br>Was waren meine Aufgaben?<br>Welche Produkte oder Dienstleistungen wurden angeboten?<br>Wie war das Arbeitsklima?<br>Wie war der Chef?<br>Wie waren die Kollegen?<br>Herausforderungen?<br>Was hat mir in der Firma besonders gefallen?<br>Weiterbildungen? Fortbildungen?",
@@ -26175,10 +26175,10 @@ var STORY_TASK = [
       "ru": "Хорошая рабочая среда"
     },
     "task": {
-      "de": "Beschreiben Sie, wie Sie sich ein gutes Arbeitsumfeld vorstellen.",
-      "uk": "Опишіть, яким ви уявляєте собі гарне робоче середовище.",
-      "en": "Describe how you imagine a good working environment.",
-      "ru": "Опишите, какой вы представляете себе хорошую рабочую среду."
+      "de": "Beschreiben Sie, wie Sie sich ein gutes Arbeitsumfeld vorstellen<br>(z. B. Jobsicherheit, Lohn/Gehalt, Karrierechancen, Kommunikation in der Firma, Beispiele aus Ihrer Berufserfahrung).",
+      "uk": "Опишіть, яким ви уявляєте собі гарне робоче середовище<br>(наприклад, гарантія зайнятості, заробітна плата, кар'єрні можливості, комунікація у фірмі, приклади з вашого професійного досвіду).",
+      "en": "Describe how you imagine a good working environment<br>(e.g., job security, wages/salary, career opportunities, communication within the company, examples from your professional experience).",
+      "ru": "Опишите, какой вы представляете себе хорошую рабочую среду<br>(например, гарантия занятости, заработная плата, карьерные возможности, коммуникация в компании, примеры из вашего профессионального опыта)."
     },
     "tips": {
       "de": "Mögliche Fragen:<br>Jobsicherheit?<br>Lohn / Gehalt?<br>Wie sind die Karrierechancen?<br>Wie ist die Kommunikation in der Firma?<br>Arbeitsklima?<br>Arbeitszeit?<br>Weiterbildungen? Fortbildungen?<br>Was möchte ich nicht?<br>Wo könnte es dieses Umfeld geben?<br>Beispiele aus ihrer Berufserfahrung",
@@ -26198,10 +26198,10 @@ var STORY_TASK = [
       "ru": "События и опыт, повлиявшие на выбор профессии"
     },
     "task": {
-      "de": "Beschreiben Sie Ereignisse und Erfahrungen, die Ihre Berufswahl beeinflusst haben.",
-      "uk": "Опишіть події та досвід, які вплинули на ваш вибір професії.",
-      "en": "Describe events and experiences that influenced your choice of profession.",
-      "ru": "Опишите события и опыт, повлиявшие на ваш выбор профессии."
+      "de": "Beschreiben Sie die Ereignisse und Erfahrungen, die Ihre Berufswahl beeinflusst haben<br>(z. B. Stationen, wichtige Personen, Motivation, Folgen).",
+      "uk": "Опишіть події та досвід, які вплинули на ваш вибір професії<br>(наприклад, етапи, важливі люди, мотивація, наслідки).",
+      "en": "Describe the events and experiences that influenced your choice of profession<br>(e.g., stages, important people, motivation, consequences).",
+      "ru": "Опишите события и опыт, повлиявшие на ваш выбор профессии<br>(например, этапы, важные люди, мотивация, последствия)."
     },
     "tips": {
       "de": "Mögliche Fragen:<br>Stationen (Schulabschluss, Ausbildung / Studium, …)<br>Träume, Begabungen, Talente<br>Wichtige Personen für die Berufswahl?<br>Motivation?<br>Folgen?<br>Würden Sie diesen Beruf wieder wählen?",
@@ -26221,10 +26221,10 @@ var STORY_TASK = [
       "ru": "Профессиональный образец для подражания"
     },
     "task": {
-      "de": "Beschreiben Sie eine Person aus Ihrem Umfeld, die für Sie ein berufliches Vorbild ist.",
-      "uk": "Опишіть людину з вашого оточення, яка є для вас професійним взірцем.",
-      "en": "Describe a person in your life who is a professional role model for you.",
-      "ru": "Опишите человека из вашего окружения, который является для вас профессиональным образцом для подражания."
+      "de": "Beschreiben Sie eine Person aus Ihrem Umfeld, die für Sie ein berufliches Vorbild ist<br>(z. B. Beziehung zu dieser Person, Eigenschaften, Einfluss auf Sie).",
+      "uk": "Опишіть людину з вашого оточення, яка є для вас професійним взірцем<br>(наприклад, стосунки з цією людиною, якості, вплив на вас).",
+      "en": "Describe a person in your life who is a professional role model for you<br>(e.g., your relationship with this person, qualities, their influence on you).",
+      "ru": "Опишите человека из вашего окружения, который является для вас профессиональным образцом для подражания<br>(например, отношения с этим человеком, качества, влияние на вас)."
     },
     "tips": {
       "de": "Mögliche Fragen:<br>Welche Person?<br>Wie ist die Beziehung zu dieser Person?<br>Welche positiven Eigenschaften besitzt diese Person?<br>Welchen Einfluss hat / hatte diese Person auf Sie?",
@@ -26244,10 +26244,10 @@ var STORY_TASK = [
       "ru": "Порядок действий при поиске работы"
     },
     "task": {
-      "de": "Beschreiben Sie das Vorgehen bei der Arbeitssuche für ein Land Ihrer Wahl.",
-      "uk": "Опишіть порядок дій під час пошуку роботи в обраній вами країні.",
-      "en": "Describe the process of job searching for a country of your choice.",
-      "ru": "Опишите порядок действий при поиске работы в выбранной вами стране."
+      "de": "Beschreiben Sie das Vorgehen bei der Arbeitssuche für ein Land Ihrer Wahl<br>(z. B. Angebote finden, Erstkontakt, Bewerbungsunterlagen oder -gespräch).",
+      "uk": "Опишіть порядок дій під час пошуку роботи в обраній вами країні<br>(наприклад, пошук вакансій, перший контакт, документи для подання заявки або співбесіда).",
+      "en": "Describe the process of job searching for a country of your choice<br>(e.g., finding job offers, first contact, application documents or interview).",
+      "ru": "Опишите порядок действий при поиске работы в выбранной вами стране<br>(например, поиск вакансий, первый контакт, документы для подачи заявки или собеседование)."
     },
     "tips": {
       "de": "Mögliche Fragen:<br>Wo suchen Sie nach Angeboten? (Zeitung, Internet, Jobbörse, Messen)<br>Welche Unterlagen benötigen Sie?<br>Was sollte im Bewerbungsschreiben stehen?<br>Was sollte im Lebenslauf stehen?<br>Wie bereiten Sie sich auf das Vorstellungsgespräch vor?",
@@ -26267,10 +26267,10 @@ var STORY_TASK = [
       "ru": "Что важно на собеседовании"
     },
     "task": {
-      "de": "Beschreiben Sie, worauf es bei einem Bewerbungsgespräch ankommt. Sprechen Sie über ein Land Ihrer Wahl.",
-      "uk": "Опишіть, що є важливим під час співбесіди. Розкажіть про обрану вами країну.",
-      "en": "Describe what matters in a job interview. Talk about a country of your choice.",
-      "ru": "Опишите, что важно на собеседовании. Расскажите о выбранной вами стране."
+      "de": "Beschreiben Sie, worauf es bei einem Bewerbungsgespräch ankommt. Sprechen Sie über ein Land Ihrer Wahl<br>(z. B. Berufsfeld, Vorbereitung, Kleidung, typische Fragen).",
+      "uk": "Опишіть, що є важливим під час співбесіди. Розкажіть про обрану вами країну<br>(наприклад, професійна сфера, підготовка, одяг, типові запитання).",
+      "en": "Describe what matters in a job interview. Talk about a country of your choice<br>(e.g., professional field, preparation, clothing, typical questions).",
+      "ru": "Опишите, что важно на собеседовании. Расскажите о выбранной вами стране<br>(например, профессиональная сфера, подготовка, одежда, типичные вопросы)."
     },
     "tips": {
       "de": "Mögliche Fragen:<br>Weg zur Firma?<br>Für welchen Beruf?<br>Wie bereitet man sich vor?<br>Kleidung?<br>Verhalten?<br>Gehaltsvorstellungen?",
@@ -26290,10 +26290,10 @@ var STORY_TASK = [
       "ru": "Минималистичное приложение для обучения"
     },
     "task": {
-      "de": "Beschreiben Sie ein Produkt / eine Dienstleistung Ihrer Wahl.",
-      "uk": "Опишіть продукт / послугу на ваш вибір.",
-      "en": "Describe a product / service of your choice.",
-      "ru": "Опишите продукт / услугу по вашему выбору."
+      "de": "Beschreiben Sie ein Produkt /eine Dienstleistung Ihrer Wahl<br>(z. B. Merkmale, Nutzen für Kunden, Vor- und Nachteile, Erfolg).",
+      "uk": "Опишіть продукт / послугу на ваш вибір<br>(наприклад, особливості, користь для клієнтів, переваги та недоліки, успіх).",
+      "en": "Describe a product / service of your choice<br>(e.g., features, benefits for customers, advantages and disadvantages, success).",
+      "ru": "Опишите продукт / услугу по вашему выбору<br>(например, особенности, польза для клиентов, преимущества и недостатки, успех)."
     },
     "tips": {
       "de": "Mögliche Fragen:<br>Welches Produkt?<br>Welche Merkmale?<br>Wo gibt es das?<br>Seit wann gibt es das Produkt?<br>Für was ist es gut bzw. welchen Nutzen hat es für den Kunden?<br>Vorteile?<br>Nachteile?<br>Erfolg?<br>Marketing? Veränderungen?",
@@ -26313,10 +26313,10 @@ var STORY_TASK = [
       "ru": "Бизнес-идея: приложение для обучения"
     },
     "task": {
-      "de": "Sie möchten sich selbstständig machen. Beschreiben Sie Ihre Geschäftsidee.",
-      "uk": "Ви хочете стати самозайнятим. Опишіть свою бізнес-ідею.",
-      "en": "You want to become self-employed. Describe your business idea.",
-      "ru": "Вы хотите стать самозанятым. Опишите свою бизнес-идею."
+      "de": "Sie möchten sich selbstständig machen. Beschreiben Sie Ihre Geschäftsidee<br>(z. B. welches Produkt/welche Dienstleistung, Besonderheiten, Zielgruppe).",
+      "uk": "Ви хочете стати самозайнятим. Опишіть свою бізнес-ідею<br>(наприклад, який продукт/яка послуга, особливості, цільова аудиторія).",
+      "en": "You want to become self-employed. Describe your business idea<br>(e.g., what product/service, special features, target group).",
+      "ru": "Вы хотите стать самозанятым. Опишите свою бизнес-идею<br>(например, какой продукт/услуга, особенности, целевая аудитория)."
     },
     "tips": {
       "de": "Mögliche Fragen:<br>Sich selbstständig machen womit?<br>Eigene Firma?<br>Welche Branche?<br>Wie Kunden gewinnen?<br>Wie sind Sie auf diese Idee gekommen?<br>Brauchen Sie Mitarbeiter?<br>Wie finanzieren?<br>Wo gibt es Unterstützung?<br>Gibt es bereits ähnliche Ideen / Firmen?",
@@ -26337,66 +26337,66 @@ var STORY = [
     "parts": [
       {
         "role": "einleitung",
-        "de": "Ich möchte einen Arbeitgeber beschreiben, bei dem ich als Direktor der AIR Academy gearbeitet habe. AIR ist ein internationaler Medienkonzern und offizieller YouTube-Partner im Bereich Content und Creator-Management. Das Unternehmen ist weltweit tätig und hatte damals den Hauptsitz in der Ukraine.",
-        "uk": "Я хотів би описати роботодавця, у якого я працював директором AIR Academy. AIR — це міжнародний медіахолдинг і офіційний партнер YouTube у сфері контенту та управління креаторами. Компанія працює по всьому світу, а на той час її головний офіс знаходився в Україні.",
-        "en": "I would like to describe an employer where I worked as director of AIR Academy. AIR is an international media company and an official YouTube partner in content and creator management. The company operates worldwide and, at the time, had its headquarters in Ukraine.",
-        "ru": "Я хотел бы описать работодателя, у которого я работал директором AIR Academy. AIR — это международный медиахолдинг и официальный партнёр YouTube в сфере контента и управления креаторами. Компания работает по всему миру, а в то время её головной офис находился в Украине."
+        "de": "Ich möchte heute über meinen früheren Arbeitgeber sprechen.",
+        "uk": "Сьогодні я хочу розповісти про свого колишнього роботодавця.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "einleitung2",
-        "de": "Ich wurde persönlich vom CEO und Mitgesellschafter des Unternehmens eingeladen, diesen jungen, aber verlustbringenden Bereich zu leiten.",
-        "uk": "Мене особисто запросив генеральний директор і співвласник компанії очолити цей молодий, але збитковий напрямок.",
-        "en": "I was personally invited by the CEO and co-owner of the company to lead this young but loss-making department.",
-        "ru": "Меня лично пригласил генеральный директор и совладелец компании возглавить это молодое, но убыточное направление."
+        "de": "Ich habe als Direktor der AIR Academy gearbeitet. AIR ist ein internationaler Medienkonzern und offizieller YouTube-Partner im Bereich Content und Creator-Management. Das Unternehmen ist weltweit tätig und hatte damals seinen Hauptsitz in der Ukraine.",
+        "uk": "Я працював директором AIR Academy. AIR — це міжнародний медіаконцерн та офіційний партнер YouTube у сфері контенту та роботи з креаторами. Компанія працює по всьому світу і тоді мала головний офіс в Україні.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil1",
-        "de": "Die größte Herausforderung war, dass es praktisch weder Marketing noch ein strukturiertes Vertriebssystem in diesem Bereich gab.",
-        "uk": "Найбільшим викликом було те, що в цьому напрямку практично не було ні маркетингу, ні структурованої системи продажів.",
-        "en": "The biggest challenge was that there was practically neither marketing nor a structured sales system in this area.",
-        "ru": "Самым большим вызовом было то, что в этом направлении практически не было ни маркетинга, ни структурированной системы продаж."
+        "de": "Ich wurde persönlich vom CEO und Mitgesellschafter des Unternehmens eingeladen, diesen jungen, aber verlustbringenden Bereich zu leiten.",
+        "uk": "Мене особисто запросив CEO та співвласник компанії, щоб я очолив цей молодий, але збитковий напрямок.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Deshalb mussten wir in kurzer Zeit alles von Grund auf aufbauen: Marketingmaterialien erstellen, eine neue Website entwickeln und klare Vertriebsprozesse einführen.",
-        "uk": "Тому нам довелося за короткий час вибудувати все з нуля: створити маркетингові матеріали, розробити новий сайт і впровадити чіткі процеси продажів.",
-        "en": "That's why we had to build everything from scratch in a short time: create marketing materials, develop a new website, and introduce clear sales processes.",
-        "ru": "Поэтому нам пришлось за короткое время выстроить всё с нуля: создать маркетинговые материалы, разработать новый сайт и внедрить чёткие процессы продаж."
+        "de": "Die größte Herausforderung war, dass es praktisch weder Marketing noch ein strukturiertes Vertriebssystem gab.",
+        "uk": "Найбільшим викликом було те, що фактично не існувало ані маркетингу, ані структурованої системи продажів.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil3",
-        "de": "Nach etwa einem Monat intensiver Vorbereitung haben wir bereits im zweiten Monat mehr Umsatz erzielt als im gesamten Vorjahr zusammen.",
-        "uk": "Після приблизно місяця інтенсивної підготовки вже на другий місяць ми отримали більше доходу, ніж за весь попередній рік разом узятий.",
-        "en": "After about a month of intensive preparation, we generated more revenue in the second month than in the entire previous year combined.",
-        "ru": "После примерно месяца интенсивной подготовки уже на второй месяц мы получили больше выручки, чем за весь предыдущий год вместе взятый."
+        "de": "Deshalb mussten wir in kurzer Zeit alles von Grund auf aufbauen: Marketingmaterialien erstellen, eine neue Website entwickeln und klare Vertriebsprozesse einführen.",
+        "uk": "Тому за короткий час потрібно було з нуля створити маркетингові матеріали, розробити новий сайт і вибудувати чіткі процеси продажів.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil4",
-        "de": "Besonders gefallen hat mir die Arbeit mit kreativen Menschen in einem internationalen Umfeld sowie der Kontakt zu großen Influencern und der schnelle, messbare Erfolg.",
-        "uk": "Мені особливо сподобалась робота з творчими людьми в міжнародному середовищі, а також контакт з великими інфлюенсерами та швидкий, вимірюваний успіх.",
-        "en": "What I particularly enjoyed was working with creative people in an international environment, as well as contact with major influencers and the fast, measurable success.",
-        "ru": "Мне особенно понравилась работа с творческими людьми в международной среде, а также контакт с крупными инфлюенсерами и быстрый, измеримый успех."
+        "de": "Nach etwa einem Monat intensiver Vorbereitung haben wir bereits im zweiten Monat mehr Umsatz erzielt als im gesamten Vorjahr zusammen.",
+        "uk": "Після приблизно місяця інтенсивної підготовки вже на другий місяць ми досягли результату: продажі були вищими, ніж за весь попередній рік разом.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil5",
-        "de": "Ich konnte in dieser Zeit sehr viel praktische Erfahrung in den Bereichen Vertrieb, Marketing und Prozessaufbau sammeln.",
-        "uk": "За цей час я зміг накопичити дуже багато практичного досвіду у сферах продажів, маркетингу та побудови процесів.",
-        "en": "During this time, I was able to gain a great deal of practical experience in sales, marketing, and process development.",
-        "ru": "За это время я смог накопить очень много практического опыта в сферах продаж, маркетинга и построения процессов."
+        "de": "Besonders gefallen hat mir die Arbeit mit kreativen Menschen in einem internationalen Umfeld sowie der schnelle, messbare Erfolg. Ich konnte in dieser Zeit sehr viel praktische Erfahrung sammeln.",
+        "uk": "Особливо мені подобалася робота з креативними людьми в міжнародному середовищі, а також швидкий і вимірюваний результат. У цей період я отримав дуже багато практичного досвіду.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "schluss1",
-        "de": "Insgesamt war es eine sehr intensive und lehrreiche Zeit, die meine berufliche Entwicklung stark geprägt hat.",
-        "uk": "Загалом це був дуже інтенсивний і повчальний період, який суттєво вплинув на мій професійний розвиток.",
-        "en": "Overall, it was a very intense and instructive time that strongly shaped my professional development.",
-        "ru": "В целом это был очень интенсивный и поучительный период, который существенно повлиял на моё профессиональное развитие."
+        "de": "Insgesamt war es eine sehr intensive Zeit, die meine berufliche Entwicklung stark geprägt hat.",
+        "uk": "Загалом це був дуже інтенсивний період, який сильно вплинув на мій професійний розвиток.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "schluss2",
         "de": "Vielen Dank für Ihre Aufmerksamkeit!",
-        "uk": "Дякую за увагу!",
-        "en": "Thank you for your attention!",
-        "ru": "Спасибо за внимание!"
+        "uk": "Дякую за вашу увагу!",
+        "en": "",
+        "ru": ""
       }
     ],
     "answers": [],
@@ -26410,38 +26410,66 @@ var STORY = [
     "parts": [
       {
         "role": "einleitung",
-        "de": "Guten Tag allerseits. Heute möchte ich über ein Thema sprechen, das für den langfristigen Erfolg jedes Unternehmens von entscheidender Bedeutung ist: das ideale Arbeitsumfeld. Ich bin fest davon überzeugt, dass echte Synergien in einem Team nur dann entstehen können, wenn bestimmte Bedingungen erfüllt sind. Wenn das Umfeld stimmt, kann das Ergebnis die Summe der Einzelteile weit übertreffen – sozusagen nach dem Prinzip, dass eins plus eins nicht zwei, sondern zehn, hundert oder gar tausend ergibt. Glücklicherweise gibt es heute bereits viele fortschrittliche Unternehmen, denen es gelungen ist, ein solches motivierendes Umfeld zu schaffen.",
-        "uk": "Доброго дня всім. Сьогодні я хотів би поговорити на тему, яка має вирішальне значення для довгострокового успіху будь-якої компанії: ідеальне робоче середовище. Я твердо переконаний, що справжня синергія в команді може виникнути лише тоді, коли виконані певні умови. Якщо середовище правильне, результат може значно перевищити суму окремих частин — так би мовити, за принципом, що один плюс один дорівнює не двом, а десяти, ста чи навіть тисячі. На щастя, сьогодні вже є багато прогресивних компаній, яким вдалося створити таке мотивуюче середовище.",
-        "en": "Good day, everyone. Today I would like to talk about a topic that is crucial to the long-term success of any company: the ideal working environment. I am firmly convinced that real synergy in a team can only arise when certain conditions are met. When the environment is right, the result can far exceed the sum of its parts – so to speak, according to the principle that one plus one doesn't equal two, but ten, a hundred, or even a thousand. Fortunately, there are already many forward-thinking companies today that have succeeded in creating such a motivating environment.",
-        "ru": "Добрый день всем. Сегодня я хотел бы поговорить на тему, которая имеет решающее значение для долгосрочного успеха любой компании: идеальная рабочая среда. Я твёрдо убеждён, что настоящая синергия в команде может возникнуть только тогда, когда выполнены определённые условия. Если среда правильная, результат может значительно превысить сумму отдельных частей — так сказать, по принципу, что один плюс один равняется не двум, а десяти, ста или даже тысяче. К счастью, сегодня уже есть много прогрессивных компаний, которым удалось создать такую мотивирующую среду."
+        "de": "Guten Tag allerseits.",
+        "uk": "Доброго дня всім.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "einleitung2",
-        "de": "In diesem Zusammenhang gefällt mir das bekannte Konzept von Jim Collins aus seinem Buch „Der Weg zu den Besten“ besonders gut: „Erst wer, dann was“. Das bedeutet, dass die Mitglieder eines Teams in erster Linie bei den Werten übereinstimmen müssen. Ein hochqualifizierter, aber menschlich unpassender Mitarbeiter kann die Leistung und das Arbeitsklima des gesamten Teams negativ beeinflussen. Im Laufe meiner Karriere habe ich bestimmte Kriterien definiert, die für mich in einem idealen Arbeitsumfeld absolut unverzichtbar sind.",
-        "uk": "У цьому контексті мені особливо подобається відома концепція Джима Коллінза з його книги «Від хорошого до величного»: «Спочатку хто, потім що». Це означає, що члени команди повинні насамперед збігатися за цінностями. Висококваліфікований, але не підхожий за особистісними якостями співробітник може негативно вплинути на продуктивність і атмосферу в усій команді. За час своєї кар'єри я визначив певні критерії, які є для мене абсолютно необхідними в ідеальному робочому середовищі.",
-        "en": "In this context, I particularly like the well-known concept from Jim Collins's book \"Good to Great\": \"First who, then what.\" This means that team members must primarily align on values. A highly qualified employee who is a poor personal fit can negatively affect the performance and atmosphere of the entire team. Over the course of my career, I have defined certain criteria that are, for me, absolutely essential in an ideal working environment.",
-        "ru": "В этом контексте мне особенно нравится известная концепция Джима Коллинза из его книги «От хорошего к великому»: «Сначала кто, потом что». Это означает, что члены команды должны в первую очередь совпадать по ценностям. Высококвалифицированный, но не подходящий по человеческим качествам сотрудник может негативно повлиять на результативность и атмосферу всей команды. За время своей карьеры я определил определённые критерии, которые для меня абсолютно необходимы в идеальной рабочей среде."
+        "de": "Heute möchte ich über ein Thema sprechen, das für den Erfolg jedes Unternehmens von entscheidender Bedeutung ist: das ideale Arbeitsumfeld.",
+        "uk": "Сьогодні я хотів би поговорити на тему, яка має вирішальне значення для успіху будь-якої компанії: ідеальне робоче середовище.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil1",
-        "de": "Erstens muss die Arbeit eine Berufung sein. Ich möchte von meiner Tätigkeit so begeistert sein, dass ich bereit wäre, mich ihr vollzeitlich zu widmen. Das nennt man intrinsische Motivation. Zweitens muss die finanzielle Frage komplett geklärt und sozusagen „vom Tisch“ sein. Nur wenn ein Mitarbeiter angemessen bezahlt wird und keine Existenzsorgen hat, kann er nach Feierabend richtig entspannen und neue, kreative Ideen für das Unternehmen entwickeln. Niemand sollte gezwungen sein, nach einem Nebenjob zu suchen, um über die Runden zu kommen.",
-        "uk": "По-перше, робота повинна бути покликанням. Я хочу бути настільки захопленим своєю діяльністю, щоб бути готовим присвятити їй весь свій час. Це називається внутрішньою мотивацією. По-друге, фінансове питання має бути повністю вирішене і, так би мовити, «зняте з порядку денного». Лише коли співробітнику платять належним чином і він не має фінансових турбот, він може після роботи по-справжньому відпочити і генерувати нові креативні ідеї для компанії. Ніхто не повинен бути змушений шукати підробіток, щоб зводити кінці з кінцями.",
-        "en": "First, work has to be a calling. I want to be so enthusiastic about what I do that I would be willing to devote myself to it full-time. This is called intrinsic motivation. Second, the financial question must be completely settled and, so to speak, \"off the table.\" Only when an employee is paid fairly and has no existential worries can they truly relax after work and come up with new, creative ideas for the company. No one should be forced to look for a side job just to make ends meet.",
-        "ru": "Во-первых, работа должна быть призванием. Я хочу быть настолько увлечён своей деятельностью, чтобы быть готовым посвятить ей всё своё время. Это называется внутренней мотивацией. Во-вторых, финансовый вопрос должен быть полностью решён и, так сказать, «снят с повестки дня». Только когда сотруднику платят достойно и у него нет материальных забот, он может по-настоящему отдохнуть после работы и генерировать новые творческие идеи для компании. Никто не должен быть вынужден искать подработку, чтобы сводить концы с концами."
+        "de": "Ich bin fest davon überzeugt, dass echte Synergien in einem Team nur dann entstehen, wenn bestimmte Bedingungen erfüllt sind. Das wichtigste Fundament dafür sind gemeinsame Werte. Ein Team funktioniert nur dann nachhaltig, wenn alle Mitglieder dieselbe Vision teilen.",
+        "uk": "Я твердо переконаний, що справжня синергія в команді виникає лише тоді, коли виконані певні умови. Найважливіший фундамент для цього — спільні цінності. Команда працює довгостроково лише тоді, коли всі члени поділяють одне бачення.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Schließlich ist für die meisten Menschen die Anerkennung ihrer Leistung und das Gefühl der Zugehörigkeit zu etwas Großem von zentraler Bedeutung. Die ideale Atmosphäre in einem Unternehmen entsteht für mich dann, wenn alle Teammitglieder ein echtes „Ownership-Denken“ entwickeln. Sie sollten für ihre Aufgaben brennen, als wäre es ihr eigenes Unternehmen. Wenn diese Faktoren – gemeinsame Werte, intrinsische Motivation, finanzielle Sicherheit und gegenseitige Wertschätzung – zusammenkommen, entsteht ein Umfeld, in dem Spitzenleistungen erbracht werden können.",
-        "uk": "Нарешті, для більшості людей центральне значення має визнання їхніх досягнень і відчуття причетності до чогось великого. Ідеальна атмосфера в компанії виникає для мене тоді, коли всі члени команди розвивають справжнє «мислення власника». Вони повинні горіти своїми завданнями так, ніби це їхня власна компанія. Коли ці фактори — спільні цінності, внутрішня мотивація, фінансова стабільність і взаємна повага — поєднуються, виникає середовище, в якому можна досягати найвищих результатів.",
-        "en": "Finally, for most people, recognition of their achievements and a sense of belonging to something bigger are of central importance. For me, the ideal atmosphere in a company arises when all team members develop a genuine \"ownership mindset.\" They should be passionate about their tasks as if it were their own company. When these factors – shared values, intrinsic motivation, financial security, and mutual appreciation – come together, an environment is created in which top performance becomes possible.",
-        "ru": "Наконец, для большинства людей центральное значение имеет признание их заслуг и ощущение причастности к чему-то большему. Идеальная атмосфера в компании возникает для меня тогда, когда все члены команды развивают настоящее «мышление собственника». Они должны гореть своими задачами так, будто это их собственная компания. Когда эти факторы — общие ценности, внутренняя мотивация, финансовая стабильность и взаимное уважение — соединяются, возникает среда, в которой можно достигать наивысших результатов."
+        "de": "Darüber hinaus erfordert ein ideales Arbeitsumfeld drei wesentliche Faktoren:",
+        "uk": "Крім того, ідеальне робоче середовище вимагає трьох ключових факторів:",
+        "en": "",
+        "ru": ""
       },
       {
-        "role": "schluss2",
-        "de": "Vielen Dank für Ihre Aufmerksamkeit.",
-        "uk": "Дякую за увагу.",
-        "en": "Thank you for your attention.",
-        "ru": "Спасибо за внимание."
+        "role": "hauptteil3",
+        "de": "Erstens, intrinsische Motivation und Begeisterung für die Aufgaben.",
+        "uk": "По-перше, внутрішньої мотивації та захоплення завданнями.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil4",
+        "de": "Zweitens, angemessene Bezahlung und finanzielle Sicherheit, damit man sich voll auf die Ergebnisse konzentrieren kann.",
+        "uk": "По-друге, гідної оплати та фінансової безпеки, щоб повністю зосередитися на результатах.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil5",
+        "de": "Und drittens, gegenseitige Wertschätzung.",
+        "uk": "І по-третє, взаємного визнання.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil6",
+        "de": "Wenn diese Faktoren zusammenkommen, entwickeln Mitarbeiter ein echtes „Ownership-Denken\" und brennen für ihre Arbeit, als wäre es ihr eigenes Unternehmen. Genau in einem solchen Umfeld entstehen herausragende Ergebnisse.",
+        "uk": "Коли ці фактори поєднуються, співробітники розвивають справжнє «підприємницьке мислення» та горять своєю роботою, ніби це їхній власний бізнес. Саме в такому середовищі народжуються видатні результати.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss1",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit!",
+        "uk": "Щиро дякую за увагу!",
+        "en": "",
+        "ru": ""
       }
     ],
     "answers": [],
@@ -26462,15 +26490,36 @@ var STORY = [
       },
       {
         "role": "hauptteil1",
-        "de": "An der Universität studierte ich Computersysteme und -netzwerke. Nach dem Abschluss gründete ich mein erstes eigenes Unternehmen im Dienstleistungsbereich. In den folgenden 17 Jahren eignete ich mir umfangreiche Kenntnisse in Management, Marketing, ERP-Systemen und Business Development an.",
-        "uk": "В університеті я навчався за спеціальністю «Комп'ютерні системи та мережі». Після випуску я заснував власну компанію у сфері послуг. Протягом наступних 17 років я опанував глибокі знання з менеджменту, маркетингу, ERP-систем та розвитку бізнесу.",
+        "de": "An der Universität studierte ich Computersysteme und -netzwerke.",
+        "uk": "В університеті я навчався за спеціальністю «Комп'ютерні системи та мережі».",
         "en": "",
         "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Nach meiner Ankunft in Deutschland analysierte ich den Arbeitsmarkt und erkannte die perfekte Schnittstelle zwischen meiner IT-Qualifikation und meiner unternehmerischen Erfahrung: die SAP-Beratung. Derzeit absolviere ich eine Weiterbildung zum SAP Finance Berater und lerne intensiv Deutsch.",
-        "uk": "Після прибуття до Німеччини я проаналізував ринок праці та зрозумів ідеальний перетин моєї IT-кваліфікації та підприємницького досвіду — це SAP-консалтинг. Наразі я проходжу Weiterbildung на SAP Finance Berater та інтенсивно вивчаю німецьку мову.",
+        "de": "Nach dem Abschluss gründete ich mein erstes eigenes Unternehmen im Dienstleistungsbereich.",
+        "uk": "Після випуску я заснував власну компанію у сфері послуг.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil3",
+        "de": "In den folgenden 17 Jahren eignete ich mir umfangreiche Kenntnisse in Management, Marketing, ERP-Systemen und Business Development an.",
+        "uk": "Протягом наступних 17 років я опанував глибокі знання з менеджменту, маркетингу, ERP-систем та розвитку бізнесу.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil4",
+        "de": "Nach meiner Ankunft in Deutschland analysierte ich den Arbeitsmarkt und erkannte die perfekte Schnittstelle zwischen meiner IT-Qualifikation und meiner unternehmerischen Erfahrung: die SAP-Beratung.",
+        "uk": "Після прибуття до Німеччини я проаналізував ринок праці та зрозумів ідеальний перетин моєї IT-кваліфікації та підприємницького досвіду — це SAP-консалтинг.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil5",
+        "de": "Derzeit absolviere ich eine Weiterbildung zum SAP Finance Berater und lerne intensiv Deutsch.",
+        "uk": "Наразі я проходжу Weiterbildung на SAP Finance Berater та інтенсивно вивчаю німецьку мову.",
         "en": "",
         "ru": ""
       },
@@ -26500,34 +26549,69 @@ var STORY = [
     "parts": [
       {
         "role": "einleitung",
-        "de": "Ich möchte heute über mein berufliches Vorbild sprechen. Wenn ich an ein berufliches Vorbild denke, fällt mir sofort mein Großvater Anatolij ein. Er war Chefingenieur und leitete den Bau zahlreicher Erdölraffinerien – eine Karriere, die technisches Können und starke Führung erforderte.",
-        "uk": "Сьогодні я хочу поговорити про свій професійний взірець. Коли я думаю про професійний взірець, мені одразу спадає на думку мій дідусь Анатолій. Він був головним інженером і керував будівництвом численних нафтопереробних заводів — кар'єра, яка вимагала технічної майстерності та сильного лідерства.",
+        "de": "Ich möchte heute über mein berufliches Vorbild sprechen.",
+        "uk": "Сьогодні я хочу поговорити про свій професійний взірець.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "einleitung2",
+        "de": "Wenn ich an ein berufliches Vorbild denke, fällt mir sofort mein Großvater Anatolij ein. Er war Chefingenieur und leitete den Bau zahlreicher Erdölraffinerien – eine Karriere, die technisches Können und starke Führung erforderte.",
+        "uk": "Коли я думаю про професійний взірець, мені одразу спадає на думку мій дідусь Анатолій. Він був головним інженером і керував будівництвом численних нафтопереробних заводів — кар'єра, яка вимагала технічної майстерності та сильного лідерства.",
         "en": "",
         "ru": ""
       },
       {
         "role": "hauptteil1",
-        "de": "Als Kind verbrachte ich die Sommer bei ihm. Wir bauten oder reparierten immer etwas, und er beantwortete geduldig alle meine Fragen. Für ihn war Arbeit keine Pflicht, sondern eine Lebensweise.",
-        "uk": "У дитинстві я проводив літо у нього. Ми завжди щось будували або ремонтували, і він терпляче відповідав на всі мої запитання. Для нього праця була не обов'язком, а способом життя.",
+        "de": "Als Kind verbrachte ich die Sommer bei ihm. Wir bauten oder reparierten immer etwas, und er beantwortete geduldig alle meine Fragen.",
+        "uk": "У дитинстві я проводив літо у нього. Ми завжди щось будували або ремонтували, і він терпляче відповідав на всі мої запитання.",
         "en": "",
         "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Besonders beeindruckt hat mich seine Neugier. Selbst mit 82 Jahren erlernte er den Umgang mit dem Smartphone. Er pflegte zu sagen: Alles beginnt mit einem Ziel – den Weg dazu findet man immer. Dieser Gedanke begleitet mich bis heute.",
-        "uk": "Особливо вразила мене його допитливість. Навіть у 82 роки він навчився користуватися смартфоном. Він любив казати: все починається з цілі — а шлях до неї завжди знайдеться. Ця думка супроводжує мене донині.",
+        "de": "Für ihn war Arbeit keine Pflicht, sondern eine Lebensweise.",
+        "uk": "Для нього праця була не обов'язком, а способом життя.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil3",
+        "de": "Besonders beeindruckt hat mich seine Neugier. Selbst mit 82 Jahren erlernte er den Umgang mit dem Smartphone.",
+        "uk": "Особливо вразила мене його допитливість. Навіть у 82 роки він навчився користуватися смартфоном.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil4",
+        "de": "Er pflegte zu sagen: Alles beginnt mit einem Ziel – den Weg dazu findet man immer.",
+        "uk": "Він любив казати: все починається з цілі — а шлях до неї завжди знайдеться.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil5",
+        "de": "Dieser Gedanke begleitet mich bis heute.",
+        "uk": "Ця думка супроводжує мене донині.",
         "en": "",
         "ru": ""
       },
       {
         "role": "schluss1",
-        "de": "Mein Großvater hat mir gezeigt, dass ein echter Profi nicht nur durch Fachwissen glänzt, sondern durch Neugier, Ausdauer und die Fähigkeit, andere zu inspirieren. Diese Werte prägen auch meine beruflichen Entscheidungen.",
-        "uk": "Мій дідусь показав мені, що справжній професіонал вирізняється не лише фаховими знаннями, а й допитливістю, наполегливістю та вмінням надихати інших. Ці цінності формують і мої професійні рішення.",
+        "de": "Mein Großvater hat mir gezeigt, dass ein echter Profi nicht nur durch Fachwissen glänzt, sondern durch Neugier, Ausdauer und die Fähigkeit, andere zu inspirieren.",
+        "uk": "Мій дідусь показав мені, що справжній професіонал вирізняється не лише фаховими знаннями, а й допитливістю, наполегливістю та вмінням надихати інших.",
         "en": "",
         "ru": ""
       },
       {
         "role": "schluss2",
+        "de": "Diese Werte prägen auch meine beruflichen Entscheidungen.",
+        "uk": "Ці цінності формують і мої професійні рішення.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss3",
         "de": "Vielen Dank für Ihre Aufmerksamkeit!",
         "uk": "Дякую за вашу увагу!",
         "en": "",
@@ -26554,38 +26638,87 @@ var STORY = [
     "parts": [
       {
         "role": "einleitung",
-        "de": "Guten Tag allerseits. Heute möchte ich über ein sehr wichtiges Thema sprechen, und zwar darüber, worauf es bei einem Bewerbungsgespräch ankommt. Da ich selbst 18 Jahre lang mein eigener Chef war und ein erfolgreiches Unternehmen geleitet habe, betrachte ich diese Situation aus einer besonderen Perspektive. Ich habe in meinem Leben über 3000 Vorstellungsgespräche als Arbeitgeber geführt und weiß genau, worauf es ankommt. Wenn man sich auf eine Führungsposition bewirbt, beginnt der Prozess oft schon vor dem eigentlichen Gespräch. In Deutschland spricht man in diesem Zusammenhang häufig von „Vitamin B\" – also von wertvollen Beziehungen und Netzwerken, die einem die Tür zu einem Projekt öffnen können.",
-        "uk": "Доброго дня всім. Сьогодні я хотів би поговорити на дуже важливу тему, а саме про те, що є важливим під час співбесіди. Оскільки я сам 18 років був власним начальником і керував успішною компанією, я розглядаю цю ситуацію з особливої перспективи. За своє життя я провів понад 3000 співбесід як роботодавець і точно знаю, на що звертати увагу. Коли претендуєш на керівну посаду, процес часто починається ще до самої співбесіди. У Німеччині в цьому контексті часто говорять про «вітамін Б» — тобто про цінні зв'язки та мережі контактів, які можуть відкрити двері до проєкту.",
-        "en": "Good day, everyone. Today I would like to talk about a very important topic, namely what matters in a job interview. Since I was my own boss for 18 years and ran a successful company, I look at this situation from a particular perspective. Over my life, I have conducted more than 3,000 job interviews as an employer and know exactly what matters. When applying for a leadership position, the process often begins even before the actual interview. In Germany, people often refer to this as \"Vitamin B\" in this context – meaning valuable connections and networks that can open the door to a project.",
-        "ru": "Добрый день всем. Сегодня я хотел бы поговорить на очень важную тему, а именно о том, что важно на собеседовании. Поскольку я сам 18 лет был собственным начальником и руководил успешной компанией, я рассматриваю эту ситуацию с особой точки зрения. За свою жизнь я провёл более 3000 собеседований в качестве работодателя и точно знаю, на что обращать внимание. Когда претендуешь на руководящую должность, процесс часто начинается ещё до самого собеседования. В Германии в этом контексте часто говорят о «витамине Б» — то есть о ценных связях и сетях контактов, которые могут открыть дверь к проекту."
+        "de": "Guten Tag allerseits.",
+        "uk": "Доброго дня всім.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "einleitung2",
+        "de": "Heute möchte ich über ein sehr wichtiges Thema sprechen, und zwar darüber, worauf es bei einem Bewerbungsgespräch ankommt.",
+        "uk": "Сьогодні я хотів би поговорити на дуже важливу тему, а саме про те, що є принципово важливим під час співбесіди.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil1",
-        "de": "Aus meiner Erfahrung als Arbeitgeber kann ich bestätigen, dass die ersten Minuten eines Gesprächs entscheidend sind. Viele Bewerber erhalten innerlich bereits in den ersten Sekunden ein klares „Nein\", und das restliche Gespräch wird nur noch aus Höflichkeit fortgesetzt. Um das zu vermeiden, muss der erste Eindruck absolut stimmen. Hier gilt das bekannte Sprichwort: „Kleider machen Leute\". Das äußere Erscheinungsbild muss absolut relevant für die angestrebte Rolle sein. Dazu gehören nicht nur die passende Kleidung, sondern auch eine freundliche Ausstrahlung, ein echtes Duchenne-Lächeln, bei dem das ganze Gesicht strahlt, und eine selbstbewusste Körpersprache.",
-        "uk": "Виходячи зі свого досвіду роботодавця, можу підтвердити, що перші хвилини співбесіди є вирішальними. Багато кандидатів вже в перші секунди подумки отримують чітке «ні», і решта розмови триває лише з ввічливості. Щоб цього уникнути, перше враження має бути бездоганним. Тут діє відоме прислів'я: «Зустрічають по одягу». Зовнішній вигляд має бути повністю релевантним бажаній ролі. Сюди належить не лише відповідний одяг, а й доброзичлива аура, справжня усмішка Дюшенна, коли сяє все обличчя, та впевнена мова тіла.",
-        "en": "From my experience as an employer, I can confirm that the first minutes of an interview are decisive. Many candidates receive a clear internal \"no\" already within the first seconds, and the rest of the conversation continues only out of politeness. To avoid this, the first impression must be absolutely right. The well-known saying applies here: \"Clothes make the man.\" One's outward appearance must be entirely relevant to the desired role. This includes not only appropriate clothing, but also a friendly presence, a genuine Duchenne smile in which the whole face lights up, and confident body language.",
-        "ru": "Исходя из своего опыта работодателя, могу подтвердить, что первые минуты собеседования являются решающими. Многие кандидаты уже в первые секунды внутренне получают чёткое «нет», и остальная часть разговора продолжается лишь из вежливости. Чтобы этого избежать, первое впечатление должно быть безупречным. Здесь действует известная поговорка: «Встречают по одёжке». Внешний вид должен быть полностью релевантным желаемой роли. Сюда относится не только подходящая одежда, но и доброжелательная аура, настоящая улыбка Дюшенна, когда сияет всё лицо, и уверенный язык тела."
+        "de": "Da ich selbst 18 Jahre lang mein eigener Chef war und ein erfolgreiches Unternehmen geleitet habe, betrachte ich diese Situation aus einer besonderen Perspektive.",
+        "uk": "Оскільки я сам протягом 18 років був керівником власного бізнесу та успішно ним керував, я розглядаю цю ситуацію з особливої перспективи.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Ein weiterer unverzichtbarer Punkt ist die gründliche Vorbereitung, denn wie man so schön sagt: „Übung macht den Meister\". Man sollte im Voraus das Unternehmen gründlich recherchieren, um zu verstehen, dass man dessen Werte teilt. Es ist wichtig zu verstehen, welche eigenen Stärken für diese spezifische Rolle wertvoll sind. Ein erfolgreicher Kandidat muss in der Lage sein, dem Arbeitgeber präzise zu vermitteln, warum genau sein Profil und sein Hintergrund einen großen Mehrwert für das Team darstellen. Man muss eine klare und überzeugende Botschaft senden.",
-        "uk": "Ще одним необхідним пунктом є ретельна підготовка, адже, як гарно кажуть: «Практика робить майстра». Слід заздалегідь ретельно дослідити компанію, щоб зрозуміти, чи поділяєш ти її цінності. Важливо усвідомлювати, які власні сильні сторони є цінними саме для цієї ролі. Успішний кандидат повинен вміти чітко донести до роботодавця, чому саме його профіль і досвід становлять велику додану цінність для команди. Потрібно надіслати чітке й переконливе послання.",
-        "en": "Another essential point is thorough preparation, because as the saying goes: \"Practice makes perfect.\" You should thoroughly research the company in advance to understand that you share its values. It's important to understand which of your own strengths are valuable for this specific role. A successful candidate must be able to precisely convey to the employer why exactly their profile and background represent great added value for the team. You need to send a clear and convincing message.",
-        "ru": "Ещё одним необходимым пунктом является тщательная подготовка, ведь, как хорошо говорят: «Практика делает мастера». Следует заранее тщательно изучить компанию, чтобы понять, что разделяешь её ценности. Важно понимать, какие собственные сильные стороны ценны именно для этой роли. Успешный кандидат должен уметь точно донести до работодателя, почему именно его профиль и опыт представляют большую добавленную ценность для команды. Нужно отправить чёткое и убедительное послание."
+        "de": "Ich habe über 3000 Vorstellungsgespräche geführt und weiß genau, worauf es ankommt.",
+        "uk": "Я провів понад 3000 співбесід і точно знаю, що має значення.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil3",
+        "de": "Aus meiner Erfahrung sind die ersten Minuten entscheidend. Hier gilt das Sprichwort: „Kleider machen Leute\".",
+        "uk": "З мого досвіду перші хвилини є вирішальними. Тут діє прислів'я: «Одяг створює людей».",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil4",
+        "de": "Das äußere Erscheinungsbild muss zur Rolle passen.",
+        "uk": "Зовнішній вигляд повинен відповідати ролі.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil5",
+        "de": "Dazu gehören nicht nur angemessene Kleidung, sondern auch eine freundliche Ausstrahlung und eine selbstbewusste Körpersprache.",
+        "uk": "Сюди належать не лише відповідний одяг, але й привітне випромінювання та впевнена мова тіла.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "schluss1",
-        "de": "Zusammenfassend lässt sich sagen, dass ein Bewerbungsgespräch für mich keine Prüfung, sondern eine Verhandlung über eine langfristige Kooperation ist. Eine dauerhafte und erfolgreiche Zusammenarbeit ist meiner Meinung nach nur dann möglich, wenn es sich um eine Win-Win-Situation handelt, von der beide Seiten profitieren. Wenn am Ende der Verhandlungen beide Parteien genau wissen, warum sie miteinander arbeiten möchten, dann ist das konkrete Jobangebot nur noch eine Frage der Zeit.",
-        "uk": "Підсумовуючи, можна сказати, що співбесіда для мене — це не іспит, а переговори про довгострокову співпрацю. На мою думку, тривала й успішна співпраця можлива лише тоді, коли це ситуація «win-win», з якої виграють обидві сторони. Якщо наприкінці переговорів обидві сторони точно знають, чому вони хочуть працювати разом, то конкретна пропозиція роботи — це лише питання часу.",
-        "en": "In summary, for me, a job interview is not an exam, but a negotiation about long-term cooperation. In my opinion, lasting and successful collaboration is only possible when it's a win-win situation from which both sides benefit. If, at the end of the negotiations, both parties know exactly why they want to work together, then the concrete job offer is only a matter of time.",
-        "ru": "Подводя итог, можно сказать, что собеседование для меня — это не экзамен, а переговоры о долгосрочном сотрудничестве. На мой взгляд, длительное и успешное сотрудничество возможно только тогда, когда это ситуация «выигрыш-выигрыш», от которой выигрывают обе стороны. Если в конце переговоров обе стороны точно знают, почему они хотят работать вместе, то конкретное предложение о работе — это лишь вопрос времени."
+        "de": "Ein weiterer wichtiger Punkt ist die gründliche Vorbereitung, denn: „Übung macht den Meister\".",
+        "uk": "Наступним важливим пунктом є ґрунтовна підготовка, адже: «Практика робить майстром».",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "schluss2",
-        "de": "Vielen Dank für Ihre Aufmerksamkeit.",
-        "uk": "Дякую за увагу.",
-        "en": "Thank you for your attention.",
-        "ru": "Спасибо за внимание."
+        "de": "Man sollte das Unternehmen recherchieren und verstehen, wie man mit seinen eigenen Stärken einen echten Mehrwert für das Team schaffen kann.",
+        "uk": "Слід дослідити компанію та розуміти, як за допомогою власних сильних сторін можна створити реальну додаткову цінність для команди.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss3",
+        "de": "Zusammenfassend ist ein Bewerbungsgespräch für mich kein Test, sondern eine Verhandlung über eine Win-Win-Situation, von der beide Seiten profitieren.",
+        "uk": "Підсумовуючи, співбесіда для мене — це не тестування, а переговори про ситуацію взаємного виграшу (Win-Win), від якої виграють обидві сторони.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss4",
+        "de": "Wenn beide Parteien diesen Mehrwert sehen, ist ein Jobangebot nur eine Frage der Zeit.",
+        "uk": "Якщо обидві сторони бачать цю цінність, пропозиція роботи — це лише питання часу.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss5",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit!",
+        "uk": "Щиро дякую за увагу!",
+        "en": "",
+        "ru": ""
       }
     ],
     "answers": [],
@@ -26651,34 +26784,83 @@ var STORY = [
       },
       {
         "role": "hauptteil1",
-        "de": "17 Jahre lang habe ich ein eigenes Unternehmen in der Ukraine geleitet. Als diplomierter IT-Ingenieur und erfahrener Business Development Manager verfüge ich über Erfahrung in der Entwicklung komplexer Systeme sowie in den Bereichen Marketing und Vertrieb.",
-        "uk": "Протягом 17 років я керував власним підприємством в Україні. Як IT-інженер за освітою та менеджер з розвитку бізнесу з великим досвідом, я маю досвід розробки складних систем, а також у сферах маркетингу та продажів.",
+        "de": "17 Jahre lang habe ich ein eigenes Unternehmen in der Ukraine geleitet.",
+        "uk": "Протягом 17 років я керував власним підприємством в Україні.",
         "en": "",
         "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Nach meiner Ankunft in Deutschland stand ich vor einer neuen Herausforderung: dem intensiven Erlernen der deutschen Sprache in sehr kurzer Zeit. Ich habe schnell gemerkt, dass traditionelle Lehrbücher und herkömmliche Apps für eine schnelle Prüfungsvorbereitung nicht effektiv genug sind. Bücher trainieren das Sprechen kaum, und Apps bieten meist nur allgemeine Inhalte, wodurch man viel wertvolle Zeit verliert.",
-        "uk": "Після прибуття до Німеччини я зіткнувся з новим викликом — інтенсивним вивченням німецької мови в дуже короткий час. Я зрозумів, що традиційні підручники та звичайні застосунки недостатньо ефективні для швидкої підготовки до іспиту. Книги майже не тренують говоріння, а застосунки здебільшого пропонують лише загальний контент, через що втрачається багато дорогоцінного часу.",
+        "de": "Als diplomierter IT-Ingenieur und erfahrener Business Development Manager verfüge ich über Erfahrung in der Entwicklung komplexer Systeme sowie in den Bereichen Marketing und Vertrieb.",
+        "uk": "Як IT-інженер за освітою та менеджер з розвитку бізнесу з великим досвідом, я маю досвід розробки складних систем, а також у сферах маркетингу та продажів.",
         "en": "",
         "ru": ""
       },
       {
         "role": "hauptteil3",
-        "de": "Aus diesem Grund habe ich eine moderne mobile App für Zuwanderer entwickelt, die präzise auf den Lehrplan der Niveaustufen A2, B1 und B2 abgestimmt ist. Sie kombiniert wissenschaftliche Lernmethoden mit Gamification und deckt die Bereiche Hörverstehen, Leseverstehen, Schreiben und Grammatik ab. Die App ist auf Deutsch, Englisch, Ukrainisch und Russisch verfügbar.",
-        "uk": "Тому я розробив сучасний мобільний застосунок для іммігрантів, який чітко адаптований до навчальної програми рівнів A2, B1 та B2. Він поєднує наукові методи навчання з гейміфікацією та охоплює аудіювання, читання, письмо й граматику. Застосунок доступний німецькою, англійською, українською та російською мовами.",
+        "de": "Nach meiner Ankunft in Deutschland stand ich vor einer neuen Herausforderung: dem intensiven Erlernen der deutschen Sprache in sehr kurzer Zeit.",
+        "uk": "Після прибуття до Німеччини я зіткнувся з новим викликом — інтенсивним вивченням німецької мови в дуже короткий час.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil4",
+        "de": "Ich habe schnell gemerkt, dass traditionelle Lehrbücher und herkömmliche Apps für eine schnelle Prüfungsvorbereitung nicht effektiv genug sind.",
+        "uk": "Я зрозумів, що традиційні підручники та звичайні застосунки недостатньо ефективні для швидкої підготовки до іспиту.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil5",
+        "de": "Bücher trainieren das Sprechen kaum, und Apps bieten meist nur allgemeine Inhalte, wodurch man viel wertvolle Zeit verliert.",
+        "uk": "Книги майже не тренують говоріння, а застосунки здебільшого пропонують лише загальний контент, через що втрачається багато дорогоцінного часу.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil6",
+        "de": "Aus diesem Grund habe ich eine moderne mobile App für Zuwanderer entwickelt, die präzise auf den Lehrplan der Niveaustufen A2, B1 und B2 abgestimmt ist.",
+        "uk": "Тому я розробив сучасний мобільний застосунок для іммігрантів, який чітко адаптований до навчальної програми рівнів A2, B1 та B2.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil7",
+        "de": "Sie kombiniert wissenschaftliche Lernmethoden mit Gamification und deckt die Bereiche Hörverstehen, Leseverstehen, Schreiben und Grammatik ab.",
+        "uk": "Він поєднує наукові методи навчання з гейміфікацією та охоплює аудіювання, читання, письмо й граматику.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil8",
+        "de": "Die App ist auf Deutsch, Englisch, Ukrainisch und Russisch verfügbar.",
+        "uk": "Застосунок доступний німецькою, англійською, українською та російською мовами.",
         "en": "",
         "ru": ""
       },
       {
         "role": "schluss1",
-        "de": "Derzeit ist die App kostenlos und unter der Adresse mova.now erreichbar. Diesen Namen habe ich gewählt, weil „Mova\" auf Ukrainisch „Sprache\" bedeutet und weil es keinen besseren Moment zum Lernen gibt als JETZT. In Zukunft möchte ich aus diesem Projekt ein erfolgreiches Unternehmen in Deutschland aufbauen und mich hier selbstständig machen.",
-        "uk": "Наразі застосунок безкоштовний і доступний за адресою mova.now. Цю назву я обрав, оскільки «Mova» українською означає «Sprache», і тому що немає кращого моменту для навчання, ніж зараз. У майбутньому я хочу розвинути цей проєкт у успішне підприємство в Німеччині та стати тут самостійно зайнятим.",
+        "de": "Derzeit ist die App kostenlos und unter der Adresse mova.now erreichbar.",
+        "uk": "Наразі застосунок безкоштовний і доступний за адресою mova.now.",
         "en": "",
         "ru": ""
       },
       {
         "role": "schluss2",
+        "de": "Diesen Namen habe ich gewählt, weil „Mova\" auf Ukrainisch „Sprache\" bedeutet und weil es keinen besseren Moment zum Lernen gibt als JETZT.",
+        "uk": "Цю назву я обрав, оскільки «Mova» українською означає «Sprache», і тому що немає кращого моменту для навчання, ніж зараз.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss3",
+        "de": "In Zukunft möchte ich aus diesem Projekt ein erfolgreiches Unternehmen in Deutschland aufbauen und mich hier selbstständig machen.",
+        "uk": "У майбутньому я хочу розвинути цей проєкт у успішне підприємство в Німеччині та стати тут самостійно зайнятим.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss4",
         "de": "Vielen Dank für Ihre Aufmerksamkeit!",
         "uk": "Дякую за вашу увагу!",
         "en": "",
