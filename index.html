@@ -793,14 +793,24 @@ body{
 }
 .lp-header{
   background:var(--forest);
-  padding:16px 16px 14px;
+  padding:10px 0;
   position:sticky;top:0;z-index:10;
   flex-shrink:0;
   border-radius:0 0 20px 20px;
+  border:1px solid rgba(212,175,55,.16);border-top:none;
+  display:flex;flex-direction:column;gap:8px;
+  overflow:hidden;
+}
+.lp-header-body{
+  padding:0 16px;
+}
+.lp-header-toprow{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
 }
 .lp-header h2{
   font-family:'Inter',sans-serif;font-weight:800;
-  font-size:var(--fs-card);color:var(--gold);margin:0 0 2px;
+  font-size:var(--fs-card);color:var(--gold);margin:0;
+  display:flex;align-items:center;gap:6px;white-space:nowrap;
 }
 /* 🎓 на більшості платформ — переважно чорна шапочка (Apple/Google), тож
    на темно-зеленому --forest (майже чорному) фоні хедера силует губиться
@@ -812,16 +822,61 @@ body{
 .lp-header-emoji{
   filter: drop-shadow(0 0 1.5px rgba(255,255,255,.9)) drop-shadow(0 0 1.5px rgba(255,255,255,.9));
 }
-.lp-header small{
-  font-size:var(--fs-tertiary);color:rgba(255,255,255,.55);
+/* Компактна пігулка-бейдж "142/320 · 44%" — раніше це був окремий рядок
+   <small> під заголовком (зайва висота блоку); тепер сидить одразу
+   поруч із назвою в тому самому рядку, як власний маленький елемент
+   дизайну, а не другорядний підпис. */
+.lp-header-stats{
+  font-family:'Inter',sans-serif;font-size:12px;font-weight:700;
+  color:var(--gold);background:rgba(212,175,55,.14);
+  border:1px solid rgba(212,175,55,.32);
+  padding:4px 11px;border-radius:20px;white-space:nowrap;
+  flex-shrink:0;
 }
+/* Рядок орієнтації "Розділ X · назва › Модуль Y · назва" — одним
+   рядком з ellipsis, щоб довгі німецькі назви глав не ламали висоту
+   блоку навіть на вузьких екранах. */
+.lp-header-location{
+  margin-top:7px;
+  font-family:'Inter',sans-serif;font-size:12.5px;font-weight:500;
+  color:rgba(255,255,255,.68);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  min-height:16px; /* стабільна висота навіть коли порожньо (курс повністю пройдено) */
+}
+.lp-header-location b{ color:var(--gold-lt); font-weight:700; }
+.lp-header-location .sep{ margin:0 6px; color:rgba(255,255,255,.32); }
+/* Обидва бари тепер НЕ впритул до країв блоку (margin:0 16px — той
+   самий відступ, що й .lp-header-body), а завдяки flex+gap на
+   .lp-header рівновіддалені від контенту зверху й знизу. Разом вони
+   читаються як єдине золоте "обрамлення" навколо тексту, а не дві
+   випадкові лінії з країв картки. Заокруглені кінці (border-radius:4px
+   на треку ще й) підсилюють враження "стрічки", а не сирої лінії. */
 .lp-progress-bar{
-  height:3px;background:rgba(255,255,255,.15);
-  border-radius:2px;margin-top:10px;overflow:hidden;
+  height:4px;margin:0 16px;border-radius:4px;
+  background:rgba(255,255,255,.14);
+  overflow:hidden;position:relative;
 }
 .lp-progress-fill{
-  height:100%;background:var(--gold);
-  border-radius:2px;transition:width .4s ease;
+  height:100%;border-radius:4px;background:var(--gold);
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+  position:relative;
+}
+/* Верхній бар — прогрес ВСЬОГО КУРСУ: з м'яким сяйвом на межі
+   заповненої частини ("живий край"). */
+.lp-progress-overall .lp-progress-fill{
+  background:linear-gradient(90deg, #a8842f, var(--gold));
+}
+.lp-progress-overall .lp-progress-fill::after{
+  content:'';position:absolute;right:0;top:0;bottom:0;width:12px;
+  background:linear-gradient(90deg, transparent, rgba(255,255,255,.6));
+}
+/* Нижній бар — прогрес МОДУЛЯ, у якому користувач ЗАРАЗ: трохи товщий і
+   світліший (акцент саме на найближчій конкретній меті, а не всьому
+   курсу), з помітним сяйвом — найяскравіший елемент усього блоку. */
+.lp-progress-module{ height:5px; background:rgba(255,255,255,.16); }
+.lp-progress-module .lp-progress-fill{
+  background:linear-gradient(90deg, #d9c37a, #fdf0ce);
+  box-shadow:0 0 10px rgba(253,240,206,.55);
 }
 .lp-chapter{
   margin:10px 0 0;
@@ -3739,9 +3794,24 @@ body{
       <!-- Smart Review: Daily Plan + Profile -->
       <div id="sr-daily-plan"></div>
       <div class="lp-header">
-        <h2><span class="lp-header-emoji">🎓</span> <span data-i18n="nav_lernpfad">Lernen</span></h2>
-        <small id="lp-overall-text"></small>
-        <div class="lp-progress-bar"><div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div></div>
+        <!-- Прогрес ВСЬОГО КУРСУ — верхня золота смужка "обрамлення"
+             (відступ від краю через flex+gap на .lp-header, див. CSS),
+             завжди на очах, незалежно від того, в якому розділі
+             зараз користувач. -->
+        <div class="lp-progress-bar lp-progress-overall"><div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div></div>
+        <div class="lp-header-body">
+          <div class="lp-header-toprow">
+            <h2><span class="lp-header-emoji">🎓</span> <span data-i18n="nav_lernpfad">Lernen</span></h2>
+            <small class="lp-header-stats" id="lp-overall-text"></small>
+          </div>
+          <!-- "Ти тут": розділ + модуль поточного уроку — для орієнтації
+               в просторі курсу без потреби скролити шлях нижче. -->
+          <div class="lp-header-location" id="lp-header-location"></div>
+        </div>
+        <!-- Прогрес МОДУЛЯ, у якому користувач зараз — нижня, яскравіша
+             смужка "обрамлення". Разом із верхньою утворює візуальну
+             рамку навколо тексту, а не дві лінії впритул до країв. -->
+        <div class="lp-progress-bar lp-progress-module"><div class="lp-progress-fill" id="lp-module-fill" style="width:0%"></div></div>
       </div>
       <div id="lp-chapters"></div>
       <div class="lp-bottom-gap"></div>
@@ -4141,7 +4211,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '632-d230ce9';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4786,6 +4856,7 @@ const I18N = {
     lp_no_lessons:'Keine Lektionen verfügbar',
     lp_module_prefix:'Modul',
     lp_chapter_prefix:'Kapitel',
+    lp_all_done:'Kurs abgeschlossen!',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -4876,6 +4947,7 @@ const I18N = {
     lp_no_lessons:'Уроки недоступні',
     lp_module_prefix:'Модуль',
     lp_chapter_prefix:'Розділ',
+    lp_all_done:'Курс завершено!',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -4965,6 +5037,7 @@ const I18N = {
     lp_no_lessons:'No lessons available',
     lp_module_prefix:'Module',
     lp_chapter_prefix:'Chapter',
+    lp_all_done:'Course completed!',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -5055,6 +5128,7 @@ const I18N = {
     lp_no_lessons:'Уроки недоступны',
     lp_module_prefix:'Модуль',
     lp_chapter_prefix:'Раздел',
+    lp_all_done:'Курс завершён!',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -9335,14 +9409,59 @@ function renderLernpfad(opts){
     return;
   }
 
-  // Загальний прогрес
+  // Загальний прогрес — тепер компактним бейджем поруч із заголовком
+  // (раніше окремий рядок <small> під ним, зайва висота блоку).
   let totalDone=0, totalCards=0;
   lessons.forEach(l=>{ const p=lessonProgress(l); totalDone+=p.done; totalCards+=p.total; });
   const overallPct = totalCards ? Math.round(totalDone/totalCards*100) : 0;
   const fillEl = document.getElementById('lp-overall-fill');
   const textEl = document.getElementById('lp-overall-text');
   if(fillEl) fillEl.style.width = overallPct+'%';
-  if(textEl) textEl.textContent = totalDone+' '+t('lp_of')+' '+totalCards+' '+t('lp_cards')+' · '+overallPct+'%';
+  // Числа самі по собі не потребують перекладу (на відміну з "з"/"карток"
+  // словами раніше) — у тісній пігулці поруч із заголовком компактний
+  // формат "142/320 · 44%" читається однаково зрозуміло на будь-якій мові.
+  if(textEl) textEl.textContent = totalDone+'/'+totalCards+' · '+overallPct+'%';
+
+  // "Ти тут" — розділ і модуль ПОТОЧНОГО уроку (findCurrentLesson, той
+  // самий, що вже рахує #lp-current-module нижче) + окремий прогрес-бар
+  // саме для цього модуля (не всього курсу) — для орієнтації, коли
+  // користувач лише глянув у Lernpfad, ще не скролячи сам шлях.
+  const curLesson = findCurrentLesson();
+  const locEl = document.getElementById('lp-header-location');
+  const modFillEl = document.getElementById('lp-module-fill');
+  if(curLesson){
+    const chTitle = curLesson.chapterTitle
+      ? (curLesson.chapterTitle[uiLang]||curLesson.chapterTitle[primaryLang()]||curLesson.chapterTitle.en||curLesson.chapterTitle.de)
+      : '';
+    const modTitleObj = curLesson.moduleTitle || curLesson.title;
+    const modTitle = modTitleObj
+      ? (modTitleObj[uiLang]||modTitleObj[primaryLang()]||modTitleObj.en||modTitleObj.de)
+      : '';
+    if(locEl){
+      // Без слів "Розділ"/"Модуль" — просто номер + назва з обох боків
+      // роздільника "›", компактніше й легше сканується оком, ніж
+      // повторення тих самих службових слів щоразу.
+      locEl.innerHTML = `📍 <b>${curLesson.chapter}.</b> ${chTitle}`
+        + `<span class="sep">›</span><b>${curLesson.module}.</b> ${modTitle}`;
+    }
+    // Прогрес МОДУЛЯ — сума по всіх вузлах з тим самим _parentModuleId
+    // (та сама група, що об'єднує renderModuleDivider нижче: одна
+    // "лекція" могла розпастись на кілька вузлів шляху — vocab/dialogue/
+    // forum/email в межах одного модуля — рахуємо їх РАЗОМ, а не лише
+    // сам curLesson).
+    if(modFillEl){
+      let modDone=0, modTotal=0;
+      lessons
+        .filter(l => l.chapter===curLesson.chapter && l._parentModuleId===curLesson._parentModuleId)
+        .forEach(l=>{ const p=lessonProgress(l); modDone+=p.done; modTotal+=p.total; });
+      modFillEl.style.width = (modTotal ? Math.round(modDone/modTotal*100) : 0)+'%';
+    }
+  } else {
+    // Курс повністю пройдено (немає жодного "поточного" уроку) —
+    // порожній рядок замість "Розділ undefined", бар модуля — повний.
+    if(locEl) locEl.innerHTML = '🎉 ' + t('lp_all_done');
+    if(modFillEl) modFillEl.style.width = '100%';
+  }
 
   // Групуємо по розділах
   const chapters = {};
