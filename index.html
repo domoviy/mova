@@ -999,6 +999,44 @@ body{
   0%,100%{ transform:scale(1); opacity:.55; }
   50%{ transform:scale(1.15); opacity:.1; }
 }
+
+/* ── Перехід "урок завершено → наступний активний" (goToLernpfadActivePoint) ──
+   Три елементи одної історії: 1) ✓ спалахує на щойно завершеному вузлі,
+   2) золота іскра видимо летить по шляху від нього до наступного,
+   3) наступний вузол "приземляється" (пружний bounce), а не просто
+   з'являється статично. */
+.lp-just-completed-pop{ position:relative; }
+.lp-just-completed-pop::after{
+  content:'✓';
+  position:absolute;top:-10px;right:-10px;width:26px;height:26px;
+  background:#3f9142;color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:15px;font-weight:900;
+  border:2px solid var(--paper);
+  box-shadow:0 2px 8px rgba(0,0,0,.25);
+  animation: lpCheckPop .5s cubic-bezier(.34,1.56,.64,1) both;
+  z-index:5;
+}
+@keyframes lpCheckPop{
+  0%{ transform:scale(0); opacity:0; }
+  60%{ transform:scale(1.25); opacity:1; }
+  100%{ transform:scale(1); opacity:1; }
+}
+.lp-travel-spark{
+  position:fixed;width:14px;height:14px;margin:-7px 0 0 -7px;
+  border-radius:50%;background:var(--gold);
+  box-shadow:0 0 14px 4px rgba(212,175,55,.75), 0 0 26px 10px rgba(212,175,55,.3);
+  z-index:600;pointer-events:none;opacity:1;
+  transition: left .7s cubic-bezier(.4,0,.2,1), top .7s cubic-bezier(.4,0,.2,1), opacity .25s ease .5s;
+}
+.lp-node.current.lp-just-arrived{
+  animation: lpNodePopIn .5s cubic-bezier(.34,1.56,.64,1) both, lpNodeBreathe 1.8s ease-in-out .5s infinite;
+}
+@keyframes lpNodePopIn{
+  0%{ transform:scale(.35); }
+  65%{ transform:scale(1.16); }
+  100%{ transform:scale(1); }
+}
 .lp-node-label{
   font-size:12px;font-weight:800;color:var(--forest);
   background:var(--gold);padding:4px 12px;border-radius:10px;
@@ -4103,7 +4141,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '631-482b014';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9287,14 +9325,7 @@ function renderLernpfad(opts){
   opts = opts || {};
   // Скидаємо кеш "поточного" уроку — прогрес міг змінитись з
   // попереднього рендеру (щойно пройдений урок тощо).
-  //
-  // ВИНЯТОК: opts.keepCurrentOverride — використовується лише
-  // goToLernpfadActivePoint() для першої фази переходу після уроку:
-  // на секунду навмисно показуємо ЩОЙНО ЗАВЕРШЕНИЙ урок як "активний"
-  // (_lpCurrentLessonCache вже виставлений викликачем ДО цього виклику),
-  // а вже тоді другим рендером (без опції) переходимо на справжній
-  // наступний.
-  if(!opts.keepCurrentOverride) _lpCurrentLessonCache = undefined;
+  _lpCurrentLessonCache = undefined;
   // Smart Review: рендеримо Daily Plan
   try{ srRenderDailyPlan(); }catch(e){ console.warn('[SR] renderDailyPlan:', e); }
   const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
@@ -9491,8 +9522,13 @@ function renderLernpfad(opts){
   const navLabel = document.getElementById('lp-nav-label');
   if(navLabel) navLabel.textContent = t('nav_lernpfad');
 
-  // Скролимо до останнього уроку після рендеру
-  requestAnimationFrame(()=> lernpfadScrollToLastLesson());
+  // Скролимо до останнього уроку після рендеру — ЯКЩО викликач сам не
+  // хоче керувати скролом (goToLernpfadActivePoint() ставить
+  // skipAutoScroll:true, щоб спершу показати ✓ на завершеному уроці й
+  // політ іскри до наступного, а вже тоді проскролити — інакше цей
+  // автоскрол миттєво "телепортує" екран одразу на наступний урок,
+  // ще ДО того, як встигне зіграти анімація переходу).
+  if(!opts.skipAutoScroll) requestAnimationFrame(()=> lernpfadScrollToLastLesson());
 }
 
 function lernpfadScrollToLastLesson(){
@@ -9519,6 +9555,34 @@ function lernpfadScrollToLastLesson(){
       el.scrollIntoView({ behavior:'smooth', block:'center' });
     }, 80);
   }catch(e){}
+}
+
+// Золота "іскра", що видимо пролітає по екрану від одного вузла шляху
+// до іншого — використовується в goToLernpfadActivePoint() (нижче, у
+// lfShowResult) для переходу "щойно завершений урок → наступний
+// активний": пряме, зрозуміле "ось куди рухається прогрес" замість
+// абстрактної паузи+стрибка. position:fixed елемент, що не залежить
+// від перерендерів #lp-chapters (додається напряму в body).
+function _lpAnimateTravelSpark(fromEl, toEl){
+  const fromR = fromEl.getBoundingClientRect();
+  const toR = toEl.getBoundingClientRect();
+  // Захист: якщо вузол реально прихований (згорнутий розділ/модуль,
+  // rect нульового розміру) — анімувати нема чого, тихо виходимо.
+  if(!fromR.width || !toR.width) return;
+  const spark = document.createElement('div');
+  spark.className = 'lp-travel-spark';
+  spark.style.left = (fromR.left + fromR.width/2) + 'px';
+  spark.style.top  = (fromR.top  + fromR.height/2) + 'px';
+  document.body.appendChild(spark);
+  // Читаємо rect ЗАРАЗ, а тоді (наступним кадром) міняємо координати —
+  // саме ЦЕ і запускає CSS-transition на left/top (класичний FLIP-прийом).
+  void spark.offsetWidth;
+  requestAnimationFrame(()=>{
+    spark.style.left = (toR.left + toR.width/2) + 'px';
+    spark.style.top  = (toR.top  + toR.height/2) + 'px';
+    spark.style.opacity = '0'; // згасає (transition delay .5s у CSS) саме на фініші польоту
+  });
+  setTimeout(()=> spark.remove(), 800);
 }
 
 // Зигзаг-зсув по горизонталі для кожного кроку стежки — те саме
@@ -17026,38 +17090,54 @@ function lfShowResult(){
   // без кнопок: після завершення СВЯТКУВАННЯ (і вогню стріку, якщо він
   // сьогодні зростав) автоматично повертаємось у Lernpfad.
   //
-  // ДВОФАЗНИЙ ПЕРЕХІД (замість миттєвого "телепорту" одразу на новий
-  // урок, що й створювало відчуття "нічого не змінилось"):
-  //   Фаза 1 — рендеримо шлях зі ЩОЙНО ЗАВЕРШЕНИМ уроком все ще
-  //            позначеним як "активний" (золоте кільце), скролимо
-  //            саме до нього — коротка мить "так, це той, що я
-  //            щойно зробив".
-  //   Фаза 2 — за ~900мс перерендерюємо вже по-справжньому: кеш
-  //            скидається, findCurrentLesson() рахує РЕАЛЬНИЙ
-  //            наступний урок, і сторінка плавно (scrollIntoView
-  //            behavior:'smooth', це вже було в lernpfadScrollToLastLesson)
-  //            "з'їжджає" до нього — саме той "рух лінії уроків на
-  //            один крок вгору", що й потрібен.
+  // ІСТОРІЯ ФІКСУ: перша версія цього переходу намагалась "штучно"
+  // тримати щойно завершений урок у стані current (через override
+  // кешу findCurrentLesson), сподіваючись на паузу перед стрибком до
+  // наступного. Це НЕ спрацьовувало як задумано: сам шаблон вузла
+  // (renderPathNode) блокує isCurrent, якщо isDone===true, а щойно
+  // пройдений урок ПРАКТИЧНО ЗАВЖДИ вже isDone до цього моменту — тож
+  // пауза була, але візуально в ній нічого не мінялось (звідси й
+  // скарга "неінформативно"). Тепер — чесніший підхід: рендеримо ОДИН
+  // раз по-справжньому (попередній урок і так коректно вийде "done",
+  // наступний — "current"), і замість підробленого стану анімуємо сам
+  // ПЕРЕХІД між ними: ✓ на завершеному → іскра летить до наступного →
+  // наступний "приземляється" з пружним bounce.
   function goToLernpfadActivePoint(){
-    showView('lernpfad');
+    showView('lernpfad'); // рендерить ЧЕСНИЙ фінальний стан і одразу автоскролить до нього — цей автоскрол нижче свідомо перевизначаємо через skipAutoScroll на повторному рендері
 
     let lastCompletedId = null;
     try{ lastCompletedId = localStorage.getItem('mova_last_completed_lesson'); }catch(e){}
     const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
     const prevLesson = lastCompletedId ? lessons.find(l => l.id === lastCompletedId) : null;
+    if(!prevLesson) return; // нема кого анімувати (бонусний крок поза лінією тощо) — showView вище вже все коректно показав
 
-    // Якщо щойно завершений урок не знайдено (бонусний крок поза
-    // основною лінією, самий останній урок курсу тощо) — просто
-    // показуємо справжній поточний одразу, без штучної затримки.
-    if(!prevLesson) return;
+    // Перерендерюємо БЕЗ автоскролу — самі керуємо послідовністю: спершу
+    // показуємо завершений урок, а вже тоді переводимо погляд на наступний.
+    renderLernpfad({ skipAutoScroll: true });
 
-    _lpCurrentLessonCache = prevLesson;
-    renderLernpfad({ keepCurrentOverride: true });
+    const prevEl = document.querySelector(`#lp-chapters [onclick*="${prevLesson.id}"]`);
+    const nextEl = document.getElementById('lp-current-module');
+    if(!prevEl || !nextEl || prevEl === nextEl){
+      lernpfadScrollToLastLesson(); // фолбек — штатний скрол до поточного, без ефектів
+      return;
+    }
+
+    const prevChapter = prevEl.closest('.lp-chapter');
+    if(prevChapter && !prevChapter.classList.contains('open')) prevChapter.classList.add('open');
+
+    // Спершу — миттєво (не smooth, це не той рух, який має бути помітним)
+    // показуємо ЗАВЕРШЕНИЙ урок по центру екрана.
+    prevEl.scrollIntoView({ behavior:'auto', block:'center' });
 
     setTimeout(() => {
-      _lpCurrentLessonCache = undefined; // фаза 2 — рахуємо по-справжньому
-      renderLernpfad();
-    }, 900);
+      prevEl.classList.add('lp-just-completed-pop'); // ✓ спалахує
+      _lpAnimateTravelSpark(prevEl, nextEl);           // іскра летить далі по шляху
+    }, 150);
+
+    setTimeout(() => {
+      nextEl.classList.add('lp-just-arrived');         // пружне "приземлення"
+      nextEl.scrollIntoView({ behavior:'smooth', block:'center' });
+    }, 950);
   }
 
   let celebrationPending = false;
