@@ -2271,7 +2271,8 @@ var LESSONS = [
     },
     "skills": [
       "Hören",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -2290,6 +2291,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_088"
+    ],
+    "frmCards": [
+      "brief_024"
     ]
   },
   {
@@ -2310,7 +2314,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "nebensatz_seit_seitdem",
     "cardIds": [
@@ -2329,6 +2334,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_089"
+    ],
+    "frmCards": [
+      "brief_025"
     ]
   },
   {
@@ -2349,7 +2357,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Lesen"
+      "Lesen",
+      "Schreiben"
     ],
     "grammar": "verben_praep_personen_sachen",
     "cardIds": [
@@ -2368,6 +2377,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_090"
+    ],
+    "frmCards": [
+      "brief_026"
     ]
   },
   {
@@ -7685,7 +7697,7 @@ var LESSONS = [
     "unlockAfter": null,
     "_parentModuleId": "examprep_brief",
     "_subIndex": 1,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_2",
@@ -7716,7 +7728,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_1",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 2,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_3",
@@ -7747,7 +7759,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_2",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 3,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_4",
@@ -7778,7 +7790,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_3",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 4,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_5",
@@ -7809,7 +7821,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_4",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 5,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_6",
@@ -7840,7 +7852,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_5",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 6,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_7",
@@ -7871,7 +7883,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_6",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 7,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_8",
@@ -7902,7 +7914,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_7",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 8,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_9",
@@ -7933,7 +7945,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_8",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 9,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_10",
@@ -7964,7 +7976,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_9",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 10,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_11",
@@ -7995,7 +8007,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_10",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 11,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_12",
@@ -8026,7 +8038,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_11",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 12,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_13",
@@ -8057,7 +8069,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_12",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 13,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_14",
@@ -8088,7 +8100,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_13",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 14,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_15",
@@ -8119,7 +8131,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_14",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 15,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_16",
@@ -8150,7 +8162,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_15",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 16,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_17",
@@ -8181,7 +8193,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_16",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 17,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_18",
@@ -8212,7 +8224,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_17",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 18,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_19",
@@ -8243,7 +8255,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_18",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 19,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_20",
@@ -8274,7 +8286,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_19",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 20,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_21",
@@ -8305,7 +8317,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_20",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 21,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_22",
@@ -8336,7 +8348,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_21",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 22,
-    "_subTotal": 23
+    "_subTotal": 26
   },
   {
     "id": "examprep_brief_23",
@@ -8367,7 +8379,100 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_22",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 23,
-    "_subTotal": 23
+    "_subTotal": 26
+  },
+  {
+    "id": "examprep_brief_24",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_024"
+    ],
+    "frmCards": [
+      "brief_024"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_23",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 24,
+    "_subTotal": 26
+  },
+  {
+    "id": "examprep_brief_25",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_025"
+    ],
+    "frmCards": [
+      "brief_025"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_24",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 25,
+    "_subTotal": 26
+  },
+  {
+    "id": "examprep_brief_26",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_026"
+    ],
+    "frmCards": [
+      "brief_026"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_25",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 26,
+    "_subTotal": 26
   },
   {
     "id": "examsim_brief",
@@ -37011,6 +37116,93 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Vielen Dank im Voraus.</r>", "en": "<r>Thank you in advance.</r>", "uk": "<r>Заздалегідь дякую.</r>", "ru": "<r>Заранее благодарю.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
       { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
+    ]
+  },
+  {
+    "id": "brief_024",
+    "cat": "Anfrage / Bitte um Auskunft",
+    "format": "brief_formell",
+    "topic": {
+      "de": "Fragen zur neuen Snack-Regel",
+      "en": "Questions about the new snack rule",
+      "uk": "Запитання щодо нового правила про перекуси",
+      "ru": "Вопросы о новом правиле насчёт перекусов"
+    },
+    "task": {
+      "de": "Die Schule Ihres Kindes hat eine neue Regel eingeführt: Nur noch gesunde Snacks sind in der Pause erlaubt. Sie sind sich nicht sicher, was das genau bedeutet. Schreiben Sie einen Brief an die Klassenlehrerin.<br><br>1. Grund für Ihr Schreiben<br>2. Was Sie bisher mitgegeben haben<br>3. Was Sie noch wissen möchten<br>4. Bitte um eine Liste erlaubter Snacks",
+      "en": "Your child's school has introduced a new rule: only healthy snacks are allowed during the break. You are not sure exactly what that means. Write a letter to the class teacher.<br><br>1. Reason for your letter<br>2. What you have packed so far<br>3. What you would still like to know<br>4. A request for a list of allowed snacks",
+      "uk": "Школа Вашої дитини запровадила нове правило: на перерві дозволені лише здорові перекуси. Ви не зовсім впевнені, що саме це означає. Напишіть листа класній керівниці.<br><br>1. Причина Вашого листа<br>2. Що Ви досі давали дитині з собою<br>3. Що Ви ще хотіли б знати<br>4. Прохання надіслати список дозволених перекусів",
+      "ru": "Школа Вашего ребёнка ввела новое правило: на перемене разрешены только здоровые перекусы. Вы не совсем уверены, что именно это означает. Напишите письмо классному руководителю.<br><br>1. Причина Вашего письма<br>2. Что Вы до сих пор давали ребёнку с собой<br>3. Что Вы ещё хотели бы знать<br>4. Просьба прислать список разрешённых перекусов"
+    },
+    "name": "de_m_alex",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Köln, den 21. Januar 2026", "en": "Cologne, 21 January 2026", "uk": "Кельн, 21 січня 2026 р.", "ru": "Кёльн, 21 января 2026 г." },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Frau Klein,", "en": "Dear Ms. Klein,", "uk": "Шановна пані Кляйн,", "ru": "Уважаемая госпожа Кляйн," },
+      { "role": "einleitung", "gram": "trennbare_verben_praefixe_wdh_b1", "de": "<r>Ich schreibe Ihnen, weil</r> ich bezüglich der neuen Regel zu <c>gesunden Snacks</c> eine Frage habe, <k>und</k> ich meinem Sohn nicht mehr sicher <g>mitgeben</g> kann, was erlaubt ist.", "en": "<r>I am writing to you because</r> I have a question about the new rule on healthy snacks, and I'm no longer sure what I can pack for my son.", "uk": "<r>Пишу Вам, тому що</r> у мене є запитання щодо нового правила про здорові перекуси, і я вже не впевнений, що можу давати синові з собою.", "ru": "<r>Пишу Вам, потому что</r> у меня есть вопрос о новом правиле насчёт здоровых перекусов, и я уже не уверен, что могу давать сыну с собой." },
+      { "role": "punkt2", "gram": "partizip2_als_adjektiv", "de": "<r>Bisher habe ich ihm</r> meistens <g>abgepackte Kekse</g> mitgegeben, <k>aber</k> ich bin mir jetzt nicht sicher, ob das noch in Ordnung ist.", "en": "<r>So far I have usually</r> given him packaged cookies, but now I'm not sure whether that's still okay.", "uk": "<r>Досі я зазвичай</r> давав йому запаковане печиво, але тепер не впевнений, чи це ще прийнятно.", "ru": "<r>До сих пор я обычно</r> давал ему упакованное печенье, но теперь не уверен, приемлемо ли это ещё." },
+      { "role": "punkt3", "gram": "indefinitpronomen_possessivpronomen", "de": "<r>Mich würde interessieren,</r> ob <g>manche Süßigkeiten</g> trotzdem noch erlaubt sind, <k>denn</k> mein Sohn isst nicht gerne Obst.", "en": "<r>I would be interested to know</r> whether some sweets are still allowed, because my son doesn't like eating fruit.", "uk": "<r>Мені було б цікаво дізнатися,</r> чи все ж дозволені деякі солодощі, бо мій син не любить їсти фрукти.", "ru": "<r>Мне было бы интересно узнать,</r> разрешены ли всё же некоторые сладости, потому что мой сын не любит есть фрукты." },
+      { "role": "punkt4", "gram": "relativsatz_wo_was", "de": "<r>Ich wäre Ihnen dankbar, wenn</r> Sie mir eine Liste schicken könnten, <g>was</g> genau als gesunder Snack gilt. <k>Außerdem</k> würde ich mich über Vorschläge freuen.", "en": "<r>I would be grateful if</r> you could send me a list of what exactly counts as a healthy snack. I would also welcome some suggestions.", "uk": "<r>Я був би Вам вдячний, якби</r> Ви могли надіслати список того, що саме вважається здоровим перекусом. Крім того, я був би радий пропозиціям.", "ru": "<r>Я был бы Вам благодарен, если бы</r> Вы могли прислать список того, что именно считается здоровым перекусом. Кроме того, я был бы рад предложениям." },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihre Mühe.</r>", "en": "<r>Thank you for your effort.</r>", "uk": "<r>Дякую за Ваші старання.</r>", "ru": "<r>Спасибо за Ваши старания.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Alex Berg", "en": "Alex Berg", "uk": "Алекс Берг", "ru": "Алекс Берг" }
+    ]
+  },
+  {
+    "id": "brief_025",
+    "cat": "Einladung",
+    "format": "email_informell",
+    "topic": {
+      "de": "Eine kulturelle Überraschung",
+      "en": "A cultural surprise",
+      "uk": "Культурний сюрприз",
+      "ru": "Культурный сюрприз"
+    },
+    "task": {
+      "de": "Sie leben jetzt seit einigen Monaten in Deutschland, und eine bestimmte Regel hat Sie am Anfang sehr überrascht. Sie schreiben einer Freundin in der Heimat darüber und laden sie zu Besuch ein. Schreiben Sie ihr eine E-Mail.<br><br>1. Grund für Ihr Schreiben<br>2. Was Sie überrascht hat<br>3. Wie Sie sich inzwischen daran gewöhnt haben<br>4. Einladung, Sie zu besuchen",
+      "en": "You have now been living in Germany for a few months, and a certain rule surprised you a lot at first. You write to a friend back home about it and invite her to visit. Write her an email.<br><br>1. Reason for your email<br>2. What surprised you<br>3. How you have gotten used to it by now<br>4. An invitation for her to visit",
+      "uk": "Ви вже кілька місяців живете в Німеччині, і одне конкретне правило спочатку дуже Вас здивувало. Ви пишете про це подрузі на батьківщині й запрошуєте її в гості. Напишіть їй електронного листа.<br><br>1. Причина Вашого листа<br>2. Що Вас здивувало<br>3. Як Ви відтоді до цього звикли<br>4. Запрошення відвідати Вас",
+      "ru": "Вы уже несколько месяцев живёте в Германии, и одно определённое правило сначала очень Вас удивило. Вы пишете об этом подруге на родине и приглашаете её в гости. Напишите ей электронное письмо.<br><br>1. Причина Вашего письма<br>2. Что Вас удивило<br>3. Как Вы с тех пор к этому привыкли<br>4. Приглашение навестить Вас"
+    },
+    "name": "de_w_julia",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Du wirst nicht glauben, was mich hier überrascht hat!", "en": "Subject: You won't believe what surprised me here!", "uk": "Тема: Ти не повіриш, що мене тут здивувало!", "ru": "Тема: Ты не поверишь, что меня здесь удивило!" },
+      { "role": "anrede", "gram": "", "de": "Liebe Katja,", "en": "Dear Katja,", "uk": "Люба Катю,", "ru": "Дорогая Катя," },
+      { "role": "einleitung", "gram": "nebensatz_seit_seitdem", "de": "<r>Ich muss dir unbedingt erzählen, dass</r> ich schon <c>seit einigen Monaten</c> hier in Deutschland wohne, <k>und</k> <g>seitdem hat mich vieles überrascht</g>.", "en": "<r>I absolutely have to tell you that</r> I've been living here in Germany for a few months now, and since then a lot of things have surprised me.", "uk": "<r>Мушу неодмінно розповісти тобі, що</r> я вже кілька місяців живу тут, у Німеччині, і відтоді мене здивувало багато чого.", "ru": "<r>Должна обязательно рассказать тебе, что</r> я уже несколько месяцев живу здесь, в Германии, и с тех пор меня удивило многое." },
+      { "role": "punkt2", "gram": "adjektive_super_hoch_ueber_extra", "de": "<r>Am meisten hat mich überrascht,</r> wie <g>super streng</g> die Regeln zur Mülltrennung hier sind, <k>und</k> wie ernst alle das nehmen.", "en": "<r>What surprised me most</r> was how super strict the rules on waste separation are here, and how seriously everyone takes it.", "uk": "<r>Найбільше мене здивувало,</r> наскільки суворі тут правила сортування сміття, і наскільки серйозно всі до цього ставляться.", "ru": "<r>Больше всего меня удивило,</r> насколько строгие здесь правила сортировки мусора, и насколько серьёзно все к этому относятся." },
+      { "role": "punkt3", "gram": "verben_mit_praep_wdh_b1", "de": "<r>Inzwischen habe ich mich</r> <g>an die Regeln gewöhnt</g>, <k>und</k> ich finde es sogar praktisch.", "en": "<r>By now I have</r> gotten used to the rules, and I even find it practical.", "uk": "<r>Наразі я вже</r> звикла до цих правил, і навіть вважаю це практичним.", "ru": "<r>К настоящему моменту я уже</r> привыкла к этим правилам, и даже считаю это практичным." },
+      { "role": "punkt4", "gram": "futur_werden", "de": "<r>Ich möchte dich herzlich einladen,</r> mich zu besuchen. <k>Dann</k> <g>wirst du das alles selbst sehen</g>.", "en": "<r>I would like to warmly invite you</r> to visit me. Then you will see it all for yourself.", "uk": "<r>Хочу щиро запросити тебе</r> відвідати мене. Тоді ти все це побачиш на власні очі.", "ru": "<r>Хочу тепло пригласить тебя</r> навестить меня. Тогда ты всё это увидишь своими глазами." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich schon riesig auf deinen Besuch.</r>", "en": "<r>I'm already really looking forward to your visit.</r>", "uk": "<r>Уже страшенно тішуся твоєму візиту.</r>", "ru": "<r>Уже безумно радуюсь твоему визиту.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Ganz liebe Grüße", "en": "Lots of love,", "uk": "З теплом,", "ru": "С теплом," },
+      { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
+    ]
+  },
+  {
+    "id": "brief_026",
+    "cat": "Termin vereinbaren oder verschieben",
+    "format": "brief_formell",
+    "topic": {
+      "de": "Anmeldung für einen Englischkurs",
+      "en": "Registration for an English course",
+      "uk": "Запис на курс англійської",
+      "ru": "Запись на курс английского"
+    },
+    "task": {
+      "de": "Sie möchten an der Volkshochschule einen weiteren Sprachkurs beginnen, brauchen aber vorher einen Einstufungstest. Schreiben Sie einen Brief und bitten Sie um einen Termin.<br><br>1. Grund für Ihr Schreiben<br>2. Welche Sprache Sie lernen möchten<br>3. Warum Ihnen das wichtig ist<br>4. Wann Sie Zeit für den Test hätten",
+      "en": "You want to start another language course at the adult education center, but first need a placement test. Write a letter and ask for an appointment.<br><br>1. Reason for your letter<br>2. Which language you want to learn<br>3. Why this is important to you<br>4. When you would have time for the test",
+      "uk": "Ви хочете почати ще один мовний курс у народному університеті (Volkshochschule), але спершу потрібен тест на визначення рівня. Напишіть листа і попросіть про запис.<br><br>1. Причина Вашого листа<br>2. Яку мову Ви хочете вивчати<br>3. Чому це для Вас важливо<br>4. Коли у Вас був би час на тест",
+      "ru": "Вы хотите начать ещё один языковой курс в народном университете (Volkshochschule), но сначала нужен тест на определение уровня. Напишите письмо и попросите о записи.<br><br>1. Причина Вашего письма<br>2. Какой язык Вы хотите изучать<br>3. Почему это для Вас важно<br>4. Когда у Вас было бы время для теста"
+    },
+    "name": "de_m_mark",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Essen, den 6. Mai 2026", "en": "Essen, 6 May 2026", "uk": "Ессен, 6 травня 2026 р.", "ru": "Эссен, 6 мая 2026 г." },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "verben_praep_personen_sachen", "de": "<r>Ich schreibe Ihnen, weil</r> ich schon lange <g>daran denke</g>, einen <c>weiteren Sprachkurs</c> zu beginnen, <k>und</k> jetzt möchte ich es endlich tun.", "en": "<r>I am writing to you because</r> I have been thinking about starting another language course for a long time, and now I would finally like to do it.", "uk": "<r>Пишу Вам, тому що</r> я вже давно думаю про те, щоб почати ще один мовний курс, і тепер хочу нарешті це зробити.", "ru": "<r>Пишу Вам, потому что</r> я уже давно думаю о том, чтобы начать ещё один языковой курс, и теперь хочу наконец это сделать." },
+      { "role": "punkt2", "gram": "praepositionen_mit_genitiv", "de": "<r>Ich würde gerne</r> Englisch lernen, <g>wegen meiner neuen Arbeitsstelle</g>, <k>denn</k> dort spricht man hauptsächlich Englisch.", "en": "<r>I would like to</r> learn English, because of my new job, since English is mainly spoken there.", "uk": "<r>Я хотів би</r> вивчати англійську через мою нову роботу, бо там переважно розмовляють англійською.", "ru": "<r>Я хотел бы</r> изучать английский из-за моей новой работы, так как там в основном говорят по-английски." },
+      { "role": "punkt3", "gram": "nomen_auf_heit_keit", "de": "<r>Das ist mir wichtig, weil</r> ich mehr <g>Sicherheit</g> im Gespräch mit meinen Kollegen haben möchte, <k>und</k> das würde mir sehr helfen.", "en": "<r>This matters to me because</r> I would like to have more confidence in conversations with my colleagues, and that would help me a lot.", "uk": "<r>Для мене це важливо, бо</r> я хотів би мати більше впевненості в розмовах з колегами, і це дуже допомогло б мені.", "ru": "<r>Для меня это важно, потому что</r> я хотел бы иметь больше уверенности в разговорах с коллегами, и это очень помогло бы мне." },
+      { "role": "punkt4", "gram": "adjektivdeklination_bestimmter_artikel", "de": "<r>Ich hätte am liebsten</r> <g>den nächsten freien Termin</g> in dieser Woche. <k>Außerdem</k> bin ich fast jeden Nachmittag verfügbar.", "en": "<r>I would prefer</r> the next available appointment this week. I'm also available almost every afternoon.", "uk": "<r>Найбільше мені підійшов би</r> найближчий вільний термін цього тижня. Крім того, я вільний майже щодня по обіді.", "ru": "<r>Больше всего мне подошла бы</r> ближайшая свободная запись на этой неделе. Кроме того, я свободен почти каждый день после обеда." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf Ihre Rückmeldung.</r>", "en": "<r>I look forward to your reply.</r>", "uk": "<r>Із нетерпінням чекаю на Вашу відповідь.</r>", "ru": "<r>С нетерпением жду Вашего ответа.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
     ]
   }
 ];
