@@ -872,11 +872,27 @@ body{
 }
 /* Нижній бар — прогрес МОДУЛЯ, у якому користувач ЗАРАЗ: трохи товщий і
    світліший (акцент саме на найближчій конкретній меті, а не всьому
-   курсу), з помітним сяйвом — найяскравіший елемент усього блоку. */
-.lp-progress-module{ height:5px; background:rgba(255,255,255,.16); }
+   курсу), з помітним сяйвом — найяскравіший елемент усього блоку.
+   overflow:visible (перекриває :hidden з .lp-progress-bar) — щоб іскра
+   "бенгальського вогника" (нижче) могла трохи виступати за межі
+   тонкого 5px треку, не обрізаючись. */
+.lp-progress-module{ height:5px; background:rgba(255,255,255,.16); overflow:visible; }
 .lp-progress-module .lp-progress-fill{
   background:linear-gradient(90deg, #d9c37a, #fdf0ce);
   box-shadow:0 0 10px rgba(253,240,206,.55);
+}
+/* "Бенгальський вогник" на прогрес-барі модуля — з'являється лише під
+   час goToLernpfadActivePoint() (_animateModuleProgressSparkle, JS):
+   яскрава крапка біжить по краю заповнення, поки бар росте від
+   старого значення до нового, і згасає, щойно доїде до фінішу — той
+   самий золотисто-кремовий тон, що й сам бар, лише яскравіший центр,
+   для відчуття "живого вогника", а не просто прогрес-бару, що росте. */
+.lp-progress-spark-tip{
+  position:absolute; top:50%; left:0; width:9px; height:9px;
+  margin:-4.5px 0 0 -4.5px;
+  border-radius:50%; background:#fff8e6;
+  box-shadow:0 0 6px 2px rgba(255,248,230,.95), 0 0 16px 7px rgba(253,215,120,.6);
+  pointer-events:none; opacity:0;
 }
 .lp-chapter{
   margin:10px 0 0;
@@ -1968,8 +1984,14 @@ body{
 /* .cel-fire всередині картки стріку масштабуємо через transform (не
    width/height) — самі "язики полум'я" всередині мають фіксовані
    пікселі й margin-left для центрування, transform:scale() зменшує їх
-   пропорційно без потреби перевизначати кожен окремо. */
-.lr-streak-card .cel-fire{ transform:scale(.6); transform-origin:center bottom; margin:0 auto -22px; }
+   пропорційно без потреби перевизначати кожен окремо.
+   transform-origin:center TOP (а не bottom) — щоб зменшений вогник
+   "тримався" верху свого 130px-блоку, а порожній простір лишався
+   ЗНИЗУ, перед цифрою. Було навпаки (origin:bottom + від'ємний
+   margin-bottom), тож вогонь фактично впирався у нижній край блоку, і
+   від'ємний відступ ще й підтягував цифру просто НА нього — звідси
+   накладання. */
+.lr-streak-card .cel-fire{ transform:scale(.6); transform-origin:center top; margin:0 auto 6px; }
 .lr-streak-num{
   font-size:36px;font-weight:800;color:#fff;
   font-family:'Inter',sans-serif;
@@ -4176,7 +4198,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '635-13f6a43';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9765,6 +9787,52 @@ function _lpAnimateTravelSpark(fromEl, toEl){
   setTimeout(()=> spark.remove(), 800);
 }
 
+// "Бенгальський вогник" прогрес-бару поточного модуля (.lp-progress-module
+// в хедері Lernpfad) — використовується в goToLernpfadActivePoint(),
+// ПЕРЕД переходом по самій лінії уроків (_lpAnimateTravelSpark вище):
+// спершу бачимо, наскільки просунулись у модулі, а вже тоді — який
+// урок далі. Бар росте від fromPct до toPct, а яскрава крапка "біжить"
+// по краю заповнення й згасає точно на фініші — той самий FLIP-прийом
+// (миттєво ставимо старе значення без transition, тоді наступним
+// кадром — нове, вже з transition), що й у _lpAnimateTravelSpark, лише
+// тут анімується width/left у межах самого бару, а не політ по екрану.
+function _animateModuleProgressSparkle(fromPct, toPct, duration){
+  const track = document.querySelector('.lp-progress-module');
+  const fill  = document.getElementById('lp-module-fill');
+  if(!track || !fill) return;
+  duration = duration || 1100;
+
+  let tip = track.querySelector('.lp-progress-spark-tip');
+  if(!tip){
+    tip = document.createElement('span');
+    tip.className = 'lp-progress-spark-tip';
+    track.appendChild(tip);
+  }
+
+  // Миттєво (без transition) повертаємо бар і вогник на СТАРТОВУ
+  // позицію — навіть якщо renderLernpfad() щойно виставив #lp-module-fill
+  // одразу на нове значення (він не знає про цю анімацію).
+  fill.style.transition = 'none';
+  fill.style.width = fromPct + '%';
+  tip.style.transition = 'none';
+  tip.style.left = fromPct + '%';
+  tip.style.opacity = '1';
+  void fill.offsetWidth; // форсуємо reflow, інакше наступна зміна не запустить transition
+
+  requestAnimationFrame(()=>{
+    fill.style.transition = `width ${duration}ms cubic-bezier(.22,.61,.36,1)`;
+    fill.style.width = toPct + '%';
+    tip.style.transition = `left ${duration}ms cubic-bezier(.22,.61,.36,1), opacity .4s ease ${Math.max(0,duration-250)}ms`;
+    tip.style.left = toPct + '%';
+    tip.style.opacity = '0'; // "прогорає" й згасає саме на фініші росту бару
+  });
+
+  // Повертаємо inline transition на порожній рядок після завершення —
+  // щоб звичайні (не-анімовані) виклики renderLernpfad() згодом знову
+  // просто миттєво виставляли ширину, як і скрізь по застосунку.
+  setTimeout(()=>{ fill.style.transition = ''; }, duration + 60);
+}
+
 // Зигзаг-зсув по горизонталі для кожного кроку стежки — те саме
 // відчуття "звивистого шляху", що й у Duolingo, без важкої SVG-кривої.
 function _lpZigzagOffset(i){
@@ -11811,7 +11879,10 @@ function _lrProceedAfterStats(el, delay){
   el._celTimer2 = setTimeout(()=>{
     if(el._streakQueued){
       _lrShowStreakCard(el._streakQueued, el._frozenDaysUsed);
-      el._celTimer2 = setTimeout(()=> _finishLessonCelebration(el), 2400);
+      // 2400 → 3400мс: користувачі не встигали прочитати число+підпис
+      // (і бонусну нотатку про заморозку за віху, якщо вона є) за
+      // старий час показу — додав рівно секунду.
+      el._celTimer2 = setTimeout(()=> _finishLessonCelebration(el), 3400);
     } else {
       _finishLessonCelebration(el);
     }
@@ -17122,6 +17193,15 @@ function _lfInjectSBNextBtn(onNext, labelOverride){
 function lfShowResult(){
   if(!LF) return;
 
+  // Захоплюємо СТАРЕ значення прогрес-бару поточного модуля ДО того, як
+  // щось нижче встигне його перерахувати (є фоновий
+  // setTimeout(renderLernpfad,300) далі в цій же функції, який оновлює
+  // #lp-module-fill ще ДО завершення всієї анімації святкування). Це
+  // значення знадобиться в goToLernpfadActivePoint() (нижче, у кінці
+  // цієї функції) для "бенгальського вогника" — анімації росту бару від
+  // старого до нового значення.
+  const _lpModuleFillBeforeLesson = parseFloat(document.getElementById('lp-module-fill')?.style.width) || 0;
+
   // Захисно зупиняємо будь-яке відтворення від попереднього кроку —
   // 'sb_prac' (Sprachbausteine) має ВЛАСНУ, окрему від lf-unit-card
   // систему черги/показу (SB.pracQueue/sbRenderPrac), яку до цього
@@ -17271,11 +17351,28 @@ function lfShowResult(){
     try{ lastCompletedId = localStorage.getItem('mova_last_completed_lesson'); }catch(e){}
     const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
     const prevLesson = lastCompletedId ? lessons.find(l => l.id === lastCompletedId) : null;
-    if(!prevLesson) return; // нема кого анімувати (бонусний крок поза лінією тощо) — showView вище вже все коректно показав
 
     // Перерендерюємо БЕЗ автоскролу — самі керуємо послідовністю: спершу
     // показуємо завершений урок, а вже тоді переводимо погляд на наступний.
     renderLernpfad({ skipAutoScroll: true });
+
+    // "Бенгальський вогник" прогрес-бару ПОТОЧНОГО МОДУЛЯ — йде ПЕРШИМ,
+    // до переходу по самій лінії уроків нижче: спершу бачимо, наскільки
+    // просунулись у модулі, а вже тоді дивимось, який урок далі.
+    // _lpModuleFillBeforeLesson захоплено на самому вході в lfShowResult(),
+    // ДО того, як фоновий renderLernpfad() (там-таки, через setTimeout)
+    // встиг би тихо перезаписати бар новим значенням раніше часу.
+    const modFillEl = document.getElementById('lp-module-fill');
+    let baseDelay = 0;
+    if(modFillEl){
+      const newModulePct = parseFloat(modFillEl.style.width) || 0;
+      if(newModulePct > _lpModuleFillBeforeLesson){
+        _animateModuleProgressSparkle(_lpModuleFillBeforeLesson, newModulePct, 1100);
+        baseDelay = 1250; // трохи довше за саму анімацію (1100мс), щоб вогник встиг згаснути
+      }
+    }
+
+    if(!prevLesson) return; // нема кого анімувати по лінії (бонусний крок поза нею тощо) — вогник бару вище вже відпрацював, і цього достатньо
 
     const prevEl = document.querySelector(`#lp-chapters [onclick*="${prevLesson.id}"]`);
     const nextEl = document.getElementById('lp-current-module');
@@ -17288,18 +17385,20 @@ function lfShowResult(){
     if(prevChapter && !prevChapter.classList.contains('open')) prevChapter.classList.add('open');
 
     // Спершу — миттєво (не smooth, це не той рух, який має бути помітним)
-    // показуємо ЗАВЕРШЕНИЙ урок по центру екрана.
+    // показуємо ЗАВЕРШЕНИЙ урок по центру екрана. Це можна робити одразу,
+    // не чекаючи на вогник бару вище — хедер зі шкалами прогресу
+    // sticky (завжди видимий зверху) незалежно від скролу самого шляху.
     prevEl.scrollIntoView({ behavior:'auto', block:'center' });
 
     setTimeout(() => {
       prevEl.classList.add('lp-just-completed-pop'); // ✓ спалахує
       _lpAnimateTravelSpark(prevEl, nextEl);           // іскра летить далі по шляху
-    }, 150);
+    }, baseDelay + 150);
 
     setTimeout(() => {
       nextEl.classList.add('lp-just-arrived');         // пружне "приземлення"
       nextEl.scrollIntoView({ behavior:'smooth', block:'center' });
-    }, 950);
+    }, baseDelay + 950);
   }
 
   // XP-плитка для lr-stats — та сама формула (persisted total мінус знімок
