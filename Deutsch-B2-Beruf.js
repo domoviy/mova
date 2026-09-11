@@ -27859,38 +27859,94 @@ var STORY = [
     "parts": [
       {
         "role": "einleitung",
-        "de": "Ich habe das Thema Produkt gewählt.",
-        "uk": "Я обрав тему «Продукт».",
-        "en": "I have chosen the topic of product.",
-        "ru": "Я выбрал тему «Продукт»."
+        "de": "Ich möchte heute ein Produkt vorstellen, das ich selbst entwickelt habe.",
+        "uk": "Сьогодні я хочу презентувати продукт, який я розробив особисто.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil1",
-        "de": "Ich habe 18 Jahre lang ein eigenes Unternehmen in der Ukraine geleitet. Als IT-Ingenieur habe ich Erfahrung mit der Entwicklung komplexer Systeme und der Kundengewinnung. Nach meiner Ankunft in Deutschland stand ich vor einer neuen Herausforderung: dem intensiven Sprachenlernen auf dem Niveau B2.",
-        "uk": "Я 18 років керував власною компанією в Україні. Як ІТ-інженер, я маю досвід розробки складних систем та залучення клієнтів. Після приїзду до Німеччини переді мною постав новий виклик: інтенсивне вивчення мови на рівні B2.",
-        "en": "I ran my own company in Ukraine for 18 years. As an IT engineer, I have experience developing complex systems and acquiring customers. After arriving in Germany, I faced a new challenge: intensive language learning at the B2 level.",
-        "ru": "Я 18 лет руководил собственной компанией в Украине. Как ИТ-инженер, я имею опыт разработки сложных систем и привлечения клиентов. После приезда в Германию передо мной встал новый вызов: интенсивное изучение языка на уровне B2."
+        "de": "Nach meiner Ankunft in Deutschland stand ich vor der Herausforderung, schnell Deutsch zu lernen.",
+        "uk": "Після прибуття до Німеччини я зіткнувся з викликом швидко вивчити німецьку.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil2",
-        "de": "Dabei ist mir ein großes Problem aufgefallen: Die meisten Sprach-Apps bieten nur allgemeine Inhalte. Wenn man aber ein festes Ziel und eine Prüfung hat, verliert man mit solchen Apps zu viel Zeit. Außerdem steht man oft vor der Frage: Was soll ich heute lernen? Wenn das Gehirn zu viele Optionen hat, verschiebt man die Aufgabe leicht auf morgen.",
-        "uk": "При цьому я помітив велику проблему: більшість мовних застосунків пропонують лише загальний контент. Але якщо в тебе є конкретна мета та іспит, з такими застосунками втрачаєш забагато часу. Крім того, часто постає питання: що вчити сьогодні? Коли мозок має забагато варіантів, легко відкласти завдання на завтра.",
-        "en": "In doing so, I noticed a major problem: most language apps only offer general content. But if you have a fixed goal and an exam, you lose too much time with such apps. In addition, you often face the question: what should I study today? When the brain has too many options, it's easy to put the task off until tomorrow.",
-        "ru": "При этом я заметил большую проблему: большинство языковых приложений предлагают лишь общий контент. Но если у тебя есть конкретная цель и экзамен, с такими приложениями теряешь слишком много времени. Кроме того, часто встаёт вопрос: что учить сегодня? Когда у мозга слишком много вариантов, легко отложить задачу на завтра."
+        "de": "Dabei habe ich gemerkt: Viele Sprach-Apps bieten nur allgemeine Inhalte und man verliert viel Zeit mit der Frage, was man heute lernen soll.",
+        "uk": "При цьому я помітив: багато мовних застосунків пропонують лише загальний контент, і втрачається багато часу на питання, що вчити сьогодні.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "hauptteil3",
-        "de": "Aus meiner Erfahrung kenne ich ein wichtiges Prinzip: Eine Aufgabe wird am besten erledigt, wenn man nur eine einzige Option hat. Heute möchte ich Ihnen ein innovatives Produkt vorstellen: eine minimalistische Lern-App. Sie ist genau auf den Lehrplan für die Niveaus A2, B1 und B2 abgestimmt. Die App kombiniert wissenschaftliche Lernmethoden mit Gamifikation und deckt Hören, Lesen, Schreiben und Grammatik ab.",
-        "uk": "З власного досвіду я знаю важливий принцип: завдання виконується найкраще, коли є лише один варіант. Сьогодні я хочу представити вам інноваційний продукт: мінімалістичний застосунок для вивчення мови. Він точно відповідає навчальній програмі для рівнів A2, B1 та B2. Застосунок поєднує наукові методи навчання з гейміфікацією та охоплює аудіювання, читання, письмо й граматику.",
-        "en": "From my own experience, I know an important principle: a task is best accomplished when you have only a single option. Today I would like to introduce you to an innovative product: a minimalist learning app. It is precisely tailored to the curriculum for levels A2, B1, and B2. The app combines scientific learning methods with gamification and covers listening, reading, writing, and grammar.",
-        "ru": "Из своего опыта я знаю важный принцип: задача выполняется лучше всего, когда есть только один вариант. Сегодня я хочу представить вам инновационный продукт: минималистичное приложение для обучения. Оно точно соответствует учебной программе для уровней A2, B1 и B2. Приложение сочетает научные методы обучения с геймификацией и охватывает аудирование, чтение, письмо и грамматику."
+        "de": "Aus diesem Grund habe ich eine innovative Lern-App entwickelt, die unter mova.now kostenlos verfügbar ist.",
+        "uk": "З цієї причини я розробив інноваційний мовний застосунок, який безкоштовно доступний за адресою mova.now.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil4",
+        "de": "Sie ist auf Deutsch, Englisch, Ukrainisch und Russisch verfügbar.",
+        "uk": "Він доступний німецькою, англійською, українською та російською мовами.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil5",
+        "de": "Der Content ist präzise auf die Integrationskurse von A2 bis B1 sowie den Berufssprachkurs B2 abgestimmt.",
+        "uk": "Контент чітко адаптований до інтеграційних курсів від A2 до B1 та професійного курсу B2.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil6",
+        "de": "So verschwendet man keine Zeit mit unnötigen Informationen.",
+        "uk": "Завдяки цьому час не витрачається на непотрібну інформацію.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil7",
+        "de": "Das Herzstück der App ist eine Technologie, die auf wissenschaftlichen Gedächtnisstudien basiert.",
+        "uk": "Серцем застосунку є технологія, базована на наукових дослідженнях пам'яті.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil8",
+        "de": "Der Nutzer klickt einfach auf „Lernen\", während das System im Hintergrund Fehler analysiert und die Lektionen dynamisch anpasst.",
+        "uk": "Користувач просто натискає «Вчитися», поки система у фоновому режимі аналізує помилки та динамічно адаптує уроки.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil9",
+        "de": "Jeder Nutzer erhält einen einzigartigen Lernpfad und fokussiert sich nur auf seine Schwachstellen.",
+        "uk": "Кожен користувач отримує унікальну траєкторію навчання та концентрується лише на своїх слабких місцях.",
+        "en": "",
+        "ru": ""
       },
       {
         "role": "schluss1",
-        "de": "Ich habe die Adresse mova.now gewählt, weil „Mova\" auf Ukrainisch „Sprache\" bedeutet und weil es keinen besseren Moment zum Lernen gibt als jetzt. Aktuell ist das Produkt komplett kostenlos und ohne Werbung im Internet verfügbar. Der größte Nutzen für die Kunden liegt in der gezielten Prüfungsvorbereitung, der einfachen Bedienung und der enormen Zeitersparnis.",
-        "uk": "Я обрав адресу mova.now, тому що «мова» українською означає «Sprache», а кращого моменту для навчання, ніж зараз, не буває. Наразі продукт повністю безкоштовний і доступний в інтернеті без реклами. Найбільша користь для клієнтів полягає в цілеспрямованій підготовці до іспиту, простоті використання та величезній економії часу.",
-        "en": "I chose the address mova.now because \"Mova\" means \"language\" in Ukrainian, and because there is no better time to learn than now. The product is currently completely free and available online without advertising. The greatest benefit for customers lies in targeted exam preparation, ease of use, and enormous time savings.",
-        "ru": "Я выбрал адрес mova.now, потому что «мова» по-украински означает «язык», а лучшего момента для обучения, чем сейчас, не бывает. В настоящее время продукт полностью бесплатен и доступен в интернете без рекламы. Наибольшая польза для клиентов заключается в целенаправленной подготовке к экзамену, простоте использования и огромной экономии времени."
+        "de": "Zusätzlich trainieren sechs verschiedene Stimmen das Hörverstehen, um das Verstehen unterschiedlicher Akzente im Alltag zu erleichtern.",
+        "uk": "Крім того, шість різних голосів тренують аудіювання, щоб полегшити розуміння різних акцентів у повсякденному житті.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss2",
+        "de": "Mein Produkt bietet also eine enorme Zeitersparnis, maximale Personalisierung und gezielte Prüfungsvorbereitung.",
+        "uk": "Отже, мій продукт пропонує величезну економію часу, максимальну персоналізацію та цільову підготовку до іспиту.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss3",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit!",
+        "uk": "Дякую за вашу увагу!",
+        "en": "",
+        "ru": ""
       }
     ],
     "answers": [],
