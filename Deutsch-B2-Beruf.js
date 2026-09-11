@@ -26163,7 +26163,150 @@ var STORY_TASK = [
       "en": "Possible questions:<br>Company? Where?<br>Which industry?<br>Which department(s)?<br>What were my tasks?<br>What products or services were offered?<br>What was the working atmosphere like?<br>What was the boss like?<br>What were the colleagues like?<br>Challenges?<br>What did I like most about the company?<br>Further training? Professional development?",
       "ru": "Возможные вопросы:<br>Фирма? Где?<br>Какая отрасль?<br>Какой(ие) отдел(ы)?<br>Какими были мои обязанности?<br>Какие продукты или услуги предлагались?<br>Какая была атмосфера в коллективе?<br>Каким был руководитель?<br>Какими были коллеги?<br>Трудности?<br>Что мне больше всего понравилось в фирме?<br>Повышение квалификации? Обучение?"
     },
-    "questions": []
+    "questions": [
+      {
+        "id": "q_01",
+        "de": "Können Sie mir ein konkretes Beispiel aus Ihrem Arbeitsalltag bei diesem Arbeitgeber nennen?",
+        "uk": "Чи можете ви навести конкретний приклад з вашого робочого дня у цього роботодавця?",
+        "en": "Can you give me a specific example from your everyday work at this employer?",
+        "ru": "Можете привести конкретный пример из вашей повседневной работы у этого работодателя?"
+      },
+      {
+        "id": "q_02",
+        "de": "Warum haben Sie sich gerade für diesen Arbeitgeber entschieden?",
+        "uk": "Чому ви обрали саме цього роботодавця?",
+        "en": "Why did you choose this particular employer?",
+        "ru": "Почему вы выбрали именно этого работодателя?"
+      },
+      {
+        "id": "q_03",
+        "de": "Welche Herausforderungen gab es bei dieser Arbeit, und wie sind Sie damit umgegangen?",
+        "uk": "Які виклики виникали на цій роботі і як ви з ними впорались?",
+        "en": "What challenges did you face in this job, and how did you deal with them?",
+        "ru": "Какие трудности возникали на этой работе и как вы с ними справлялись?"
+      },
+      {
+        "id": "q_04",
+        "de": "Was hat Ihnen an diesem Arbeitgeber am besten gefallen?",
+        "uk": "Що вам найбільше подобалось у цього роботодавця?",
+        "en": "What did you like most about this employer?",
+        "ru": "Что вам больше всего понравилось у этого работодателя?"
+      },
+      {
+        "id": "q_05",
+        "de": "Gab es auch etwas, das Sie an dieser Firma nicht so gut fanden?",
+        "uk": "Чи було щось, що вам не подобалось у цій компанії?",
+        "en": "Was there also something you didn't like so much about this company?",
+        "ru": "Было ли что-то, что вам не так уж нравилось в этой компании?"
+      },
+      {
+        "id": "q_06",
+        "de": "Wie war die Zusammenarbeit mit Ihren Kolleginnen und Kollegen?",
+        "uk": "Якою була співпраця з колегами?",
+        "en": "What was the collaboration with your colleagues like?",
+        "ru": "Какой была работа с коллегами?"
+      },
+      {
+        "id": "q_07",
+        "de": "Was haben Sie während dieser Zeit gelernt, das Ihnen auch heute noch nützt?",
+        "uk": "Чого ви навчились за цей час, що досі вам корисно?",
+        "en": "What did you learn during this time that is still useful to you today?",
+        "ru": "Чему вы научились за это время, что до сих пор вам полезно?"
+      },
+      {
+        "id": "q_08",
+        "de": "Würden Sie wieder für diesen Arbeitgeber arbeiten? Warum oder warum nicht?",
+        "uk": "Чи працювали б ви знову на цього роботодавця? Чому так чи ні?",
+        "en": "Would you work for this employer again? Why or why not?",
+        "ru": "Стали бы вы снова работать у этого работодателя? Почему да или нет?"
+      },
+      {
+        "id": "q_09",
+        "de": "Wie unterscheidet sich dieser Arbeitgeber von anderen, bei denen Sie gearbeitet haben?",
+        "uk": "Чим цей роботодавець відрізняється від інших, де ви працювали?",
+        "en": "How does this employer differ from others you have worked for?",
+        "ru": "Чем этот работодатель отличается от других, где вы работали?"
+      },
+      {
+        "id": "q_10",
+        "de": "Was würden Sie jemandem raten, der bei diesem Arbeitgeber (oder einer ähnlichen Firma) anfangen möchte?",
+        "uk": "Що б ви порадили тому, хто хоче почати працювати у цього роботодавця (або подібної компанії)?",
+        "en": "What would you advise someone who wants to start working for this employer (or a similar company)?",
+        "ru": "Что бы вы посоветовали тому, кто хочет начать работать у этого работодателя (или подобной компании)?"
+      }
+    ],
+    "answers": [
+      {
+        "id": "a_01",
+        "de": "Ein gutes Beispiel ist der Aufbau der Marketing- und Vertriebsstruktur von Grund auf: Wir haben Marketingmaterialien erstellt, eine neue Website entwickelt und klare Vertriebsprozesse eingeführt. Bereits im zweiten Monat haben wir dadurch mehr Umsatz erzielt als im gesamten Vorjahr.",
+        "uk": "Хороший приклад — це побудова маркетингової та збутової структури з нуля: ми створили маркетингові матеріали, розробили новий сайт і впровадили чіткі процеси продажів. Вже на другий місяць завдяки цьому ми отримали більше доходу, ніж за весь попередній рік.",
+        "en": "A good example is building the marketing and sales structure from scratch: we created marketing materials, developed a new website, and introduced clear sales processes. Already in the second month, this generated more revenue than the entire previous year.",
+        "ru": "Хороший пример — это построение маркетинговой и сбытовой структуры с нуля: мы создали маркетинговые материалы, разработали новый сайт и внедрили чёткие процессы продаж. Уже на второй месяц благодаря этому мы получили больше выручки, чем за весь предыдущий год."
+      },
+      {
+        "id": "a_02",
+        "de": "Ich wurde persönlich vom CEO und Mitgesellschafter des Unternehmens eingeladen, diesen jungen, aber verlustbringenden Bereich zu leiten. Das Vertrauen und die Herausforderung haben mich sofort überzeugt.",
+        "uk": "Мене особисто запросив CEO та співвласник компанії, щоб я очолив цей молодий, але збитковий напрямок. Довіра та виклик одразу переконали мене.",
+        "en": "I was personally invited by the CEO and co-owner of the company to lead this young but loss-making department. The trust shown and the challenge convinced me right away.",
+        "ru": "Меня лично пригласил CEO и совладелец компании возглавить это молодое, но убыточное направление. Доверие и вызов сразу убедили меня."
+      },
+      {
+        "id": "a_03",
+        "de": "Die größte Herausforderung war, dass es praktisch weder Marketing noch ein strukturiertes Vertriebssystem gab. Wir mussten deshalb in kurzer Zeit alles von Grund auf aufbauen.",
+        "uk": "Найбільшим викликом було те, що фактично не існувало ані маркетингу, ані структурованої системи продажів. Тому нам довелося за короткий час створити все з нуля.",
+        "en": "The biggest challenge was that there was practically neither marketing nor a structured sales system. So we had to build everything from scratch in a short time.",
+        "ru": "Самым большим вызовом было то, что фактически не существовало ни маркетинга, ни структурированной системы продаж. Поэтому нам пришлось за короткое время создать всё с нуля."
+      },
+      {
+        "id": "a_04",
+        "de": "Besonders gefallen hat mir die Arbeit mit kreativen Menschen in einem internationalen Umfeld sowie der schnelle, messbare Erfolg unserer Arbeit.",
+        "uk": "Особливо мені подобалася робота з креативними людьми в міжнародному середовищі, а також швидкий і вимірюваний результат нашої роботи.",
+        "en": "What I liked most was working with creative people in an international environment, as well as the fast, measurable success of our work.",
+        "ru": "Особенно мне понравилась работа с креативными людьми в международной среде, а также быстрый и измеримый результат нашей работы."
+      },
+      {
+        "id": "a_05",
+        "de": "In der Anfangsphase gab es kaum feste Strukturen, sodass wir vieles improvisieren mussten. Das war anstrengend, hat mich aber auch sehr viel gelehrt.",
+        "uk": "На початковому етапі майже не було усталених структур, тому багато чого доводилось імпровізувати. Це було виснажливо, але водночас навчило мене дуже багато.",
+        "en": "In the early phase, there were hardly any fixed structures, so we had to improvise a lot. It was exhausting, but it also taught me a great deal.",
+        "ru": "На начальном этапе почти не было устойчивых структур, поэтому многое приходилось импровизировать. Это было изнурительно, но одновременно многому меня научило."
+      },
+      {
+        "id": "a_06",
+        "de": "Die Zusammenarbeit war sehr eng und kreativ. Gemeinsam mit dem Team haben wir die Marketingmaterialien erstellt, die Website entwickelt und die Vertriebsprozesse aufgebaut.",
+        "uk": "Співпраця була дуже тісною і креативною. Разом із командою ми створювали маркетингові матеріали, розробляли сайт і вибудовували процеси продажів.",
+        "en": "The collaboration was very close and creative. Together with the team, we created the marketing materials, developed the website, and built up the sales processes.",
+        "ru": "Сотрудничество было очень тесным и творческим. Вместе с командой мы создавали маркетинговые материалы, разрабатывали сайт и выстраивали процессы продаж."
+      },
+      {
+        "id": "a_07",
+        "de": "Ich konnte in dieser Zeit sehr viel praktische Erfahrung sammeln – vor allem darin, wie man in kurzer Zeit Strukturen von Grund auf aufbaut. Dieses Wissen nützt mir bis heute.",
+        "uk": "За цей час я отримав дуже багато практичного досвіду — насамперед у тому, як за короткий час побудувати структури з нуля. Ці знання досі мені корисні.",
+        "en": "During this time, I gained a great deal of practical experience — especially in how to build structures from scratch in a short time. This knowledge is still useful to me today.",
+        "ru": "За это время я получил очень много практического опыта — прежде всего в том, как за короткое время построить структуры с нуля. Эти знания до сих пор мне полезны."
+      },
+      {
+        "id": "a_08",
+        "de": "Ja, ich würde wieder dort arbeiten. Es war eine sehr intensive Zeit, die meine berufliche Entwicklung stark geprägt hat.",
+        "uk": "Так, я б знову там працював. Це був дуже інтенсивний період, який сильно вплинув на мій професійний розвиток.",
+        "en": "Yes, I would work there again. It was a very intense time that strongly shaped my professional development.",
+        "ru": "Да, я бы снова там работал. Это был очень интенсивный период, который сильно повлиял на моё профессиональное развитие."
+      },
+      {
+        "id": "a_09",
+        "de": "AIR ist ein internationaler Medienkonzern und offizieller YouTube-Partner im Bereich Content und Creator-Management. Im Vergleich zu anderen Arbeitgebern war das Umfeld deutlich internationaler und kreativer geprägt.",
+        "uk": "AIR — це міжнародний медіаконцерн та офіційний партнер YouTube у сфері контенту та роботи з креаторами. Порівняно з іншими роботодавцями середовище було значно міжнароднішим і креативнішим.",
+        "en": "AIR is an international media company and an official YouTube partner in content and creator management. Compared to other employers, the environment was noticeably more international and creative.",
+        "ru": "AIR — это международный медиаконцерн и официальный партнёр YouTube в сфере контента и работы с креаторами. По сравнению с другими работодателями среда была заметно более международной и креативной."
+      },
+      {
+        "id": "a_10",
+        "de": "Ich würde raten, offen für schnelle Veränderungen zu sein und bereit, Strukturen von Grund auf aufzubauen. Wer in einem kreativen, internationalen Umfeld arbeiten möchte, wird dort viele spannende Möglichkeiten finden.",
+        "uk": "Я б порадив бути відкритим до швидких змін і готовим будувати структури з нуля. Той, хто хоче працювати в креативному міжнародному середовищі, знайде там багато цікавих можливостей.",
+        "en": "I would advise being open to rapid change and ready to build structures from scratch. Anyone who wants to work in a creative, international environment will find many exciting opportunities there.",
+        "ru": "Я бы посоветовал быть открытым к быстрым изменениям и готовым строить структуры с нуля. Тот, кто хочет работать в творческой международной среде, найдёт там много интересных возможностей."
+      }
+    ]
   },
   {
     "id": "story_task_002",
@@ -26186,7 +26329,150 @@ var STORY_TASK = [
       "en": "Possible questions:<br>Job security?<br>Wages / salary?<br>What are the career opportunities like?<br>What is communication like in the company?<br>Working atmosphere?<br>Working hours?<br>Further training? Professional development?<br>What don't I want?<br>Where could this environment exist?<br>Examples from your professional experience",
       "ru": "Возможные вопросы:<br>Гарантия занятости?<br>Заработная плата?<br>Какие карьерные перспективы?<br>Какая коммуникация в компании?<br>Атмосфера в коллективе?<br>Рабочее время?<br>Повышение квалификации? Обучение?<br>Чего я не хочу?<br>Где могла бы существовать такая среда?<br>Примеры из вашего профессионального опыта"
     },
-    "questions": []
+    "questions": [
+      {
+        "id": "q_01",
+        "de": "Können Sie mir ein konkretes Beispiel für ein gutes Arbeitsumfeld nennen?",
+        "uk": "Чи можете ви навести конкретний приклад доброго робочого середовища?",
+        "en": "Can you give me a specific example of a good working environment?",
+        "ru": "Можете привести конкретный пример хорошей рабочей среды?"
+      },
+      {
+        "id": "q_02",
+        "de": "Warum ist Ihnen gerade dieser Aspekt des Arbeitsumfelds so wichtig?",
+        "uk": "Чому саме цей аспект робочого середовища для вас такий важливий?",
+        "en": "Why is this particular aspect of the working environment so important to you?",
+        "ru": "Почему именно этот аспект рабочей среды так важен для вас?"
+      },
+      {
+        "id": "q_03",
+        "de": "Welche Erfahrungen haben Sie selbst mit einem guten oder schlechten Arbeitsumfeld gemacht?",
+        "uk": "Який досвід ви самі мали з добрим чи поганим робочим середовищем?",
+        "en": "What experiences have you had yourself with a good or bad working environment?",
+        "ru": "Какой опыт у вас был с хорошей или плохой рабочей средой?"
+      },
+      {
+        "id": "q_04",
+        "de": "Was würden Sie tun, wenn das Arbeitsumfeld nicht Ihren Vorstellungen entspricht?",
+        "uk": "Що б ви зробили, якби робоче середовище не відповідало вашим очікуванням?",
+        "en": "What would you do if the working environment didn't match your expectations?",
+        "ru": "Что бы вы сделали, если бы рабочая среда не соответствовала вашим ожиданиям?"
+      },
+      {
+        "id": "q_05",
+        "de": "Wie beeinflusst ein gutes Arbeitsumfeld die Leistung der Mitarbeiter?",
+        "uk": "Як добре робоче середовище впливає на продуктивність співробітників?",
+        "en": "How does a good working environment affect employee performance?",
+        "ru": "Как хорошая рабочая среда влияет на производительность сотрудников?"
+      },
+      {
+        "id": "q_06",
+        "de": "Was ist für Sie wichtiger: ein hohes Gehalt oder ein gutes Arbeitsklima? Warum?",
+        "uk": "Що для вас важливіше: висока зарплата чи гарний клімат у колективі? Чому?",
+        "en": "What is more important to you: a high salary or a good working atmosphere? Why?",
+        "ru": "Что для вас важнее: высокая зарплата или хороший климат в коллективе? Почему?"
+      },
+      {
+        "id": "q_07",
+        "de": "Wie sollte Ihrer Meinung nach die Kommunikation zwischen Chef und Mitarbeitern aussehen?",
+        "uk": "Якою, на вашу думку, має бути комунікація між керівником і співробітниками?",
+        "en": "In your opinion, what should communication between the boss and employees look like?",
+        "ru": "Какой, по-вашему, должна быть коммуникация между руководителем и сотрудниками?"
+      },
+      {
+        "id": "q_08",
+        "de": "Was würden Sie als Führungskraft tun, um ein gutes Arbeitsumfeld zu schaffen?",
+        "uk": "Що б ви зробили як керівник, щоб створити хороше робоче середовище?",
+        "en": "What would you do as a manager to create a good working environment?",
+        "ru": "Что бы вы сделали как руководитель, чтобы создать хорошую рабочую среду?"
+      },
+      {
+        "id": "q_09",
+        "de": "Gibt es Unterschiede im Arbeitsumfeld zwischen Deutschland und Ihrem Heimatland?",
+        "uk": "Чи є відмінності в робочому середовищі між Німеччиною та вашою батьківщиною?",
+        "en": "Are there differences in the working environment between Germany and your home country?",
+        "ru": "Есть ли различия в рабочей среде между Германией и вашей родной страной?"
+      },
+      {
+        "id": "q_10",
+        "de": "Was würden Sie jemandem raten, der ein schlechtes Arbeitsumfeld hat?",
+        "uk": "Що б ви порадили тому, у кого погане робоче середовище?",
+        "en": "What would you advise someone who has a bad working environment?",
+        "ru": "Что бы вы посоветовали тому, у кого плохая рабочая среда?"
+      }
+    ],
+    "answers": [
+      {
+        "id": "a_01",
+        "de": "Ein gutes Beispiel ist ein Team, in dem alle Mitglieder dieselbe Vision teilen, intrinsisch motiviert sind, angemessen bezahlt werden und sich gegenseitig wertschätzen. In einem solchen Umfeld entwickeln Mitarbeiter ein echtes „Ownership-Denken\" und erzielen herausragende Ergebnisse.",
+        "uk": "Хороший приклад — команда, в якій усі учасники поділяють одне бачення, мають внутрішню мотивацію, отримують гідну оплату і виявляють взаємну повагу. У такому середовищі співробітники розвивають справжнє «підприємницьке мислення» та досягають видатних результатів.",
+        "en": "A good example is a team where all members share the same vision, are intrinsically motivated, are paid fairly, and show mutual appreciation. In such an environment, employees develop a real 'ownership mindset' and achieve outstanding results.",
+        "ru": "Хороший пример — команда, в которой все участники разделяют одно видение, обладают внутренней мотивацией, получают достойную оплату и проявляют взаимное уважение. В такой среде сотрудники развивают настоящее «предпринимательское мышление» и достигают выдающихся результатов."
+      },
+      {
+        "id": "a_02",
+        "de": "Weil ohne gemeinsame Werte kein Team langfristig nachhaltig funktionieren kann. Für mich sind gemeinsame Werte das wichtigste Fundament, auf dem alles andere aufbaut.",
+        "uk": "Тому що без спільних цінностей жодна команда не може функціонувати довгостроково. Для мене спільні цінності — це найважливіший фундамент, на якому будується все інше.",
+        "en": "Because without shared values, no team can function sustainably in the long run. For me, shared values are the most important foundation on which everything else is built.",
+        "ru": "Потому что без общих ценностей ни одна команда не может функционировать долгосрочно. Для меня общие ценности — это важнейший фундамент, на котором строится всё остальное."
+      },
+      {
+        "id": "a_03",
+        "de": "Ich habe selbst erlebt, dass Teams ohne gemeinsame Vision oft ins Stocken geraten, während Teams, in denen alle drei Faktoren – Motivation, Bezahlung und Wertschätzung – zusammenkommen, ein echtes Ownership-Denken entwickeln.",
+        "uk": "Я сам бачив, що команди без спільного бачення часто буксують, тоді як команди, у яких поєднуються всі три фактори — мотивація, оплата та визнання — розвивають справжнє підприємницьке мислення.",
+        "en": "I have seen myself that teams without a shared vision often stall, while teams where all three factors — motivation, pay, and appreciation — come together develop a real ownership mindset.",
+        "ru": "Я сам видел, что команды без общего видения часто буксуют, тогда как команды, в которых сочетаются все три фактора — мотивация, оплата и признание — развивают настоящее предпринимательское мышление."
+      },
+      {
+        "id": "a_04",
+        "de": "Ich würde das offen ansprechen und versuchen, gemeinsam mit der Führungsebene Lösungen zu finden. Wenn sich langfristig nichts ändert, würde ich mich nach einem Umfeld umsehen, das besser zu meinen Werten passt.",
+        "uk": "Я б відкрито порушив це питання і спробував разом із керівництвом знайти рішення. Якщо довгостроково нічого не змінюється, я б почав шукати середовище, яке краще відповідає моїм цінностям.",
+        "en": "I would address this openly and try to find solutions together with the leadership. If nothing changes in the long run, I would look for an environment that better matches my values.",
+        "ru": "Я бы открыто обсудил это и попытался вместе с руководством найти решения. Если в долгосрочной перспективе ничего не меняется, я бы начал искать среду, которая лучше соответствует моим ценностям."
+      },
+      {
+        "id": "a_05",
+        "de": "Ein gutes Arbeitsumfeld steigert die Motivation der Mitarbeiter enorm. Wenn sie sich mit dem Unternehmen identifizieren und wertgeschätzt fühlen, entsteht ein echtes Ownership-Denken, das zu herausragenden Ergebnissen führt.",
+        "uk": "Хороше робоче середовище значно підвищує мотивацію співробітників. Коли вони ідентифікують себе з компанією та відчувають визнання, виникає справжнє підприємницьке мислення, яке призводить до видатних результатів.",
+        "en": "A good working environment greatly boosts employee motivation. When employees identify with the company and feel appreciated, a real ownership mindset develops, leading to outstanding results.",
+        "ru": "Хорошая рабочая среда значительно повышает мотивацию сотрудников. Когда они отождествляют себя с компанией и чувствуют признание, возникает настоящее предпринимательское мышление, которое приводит к выдающимся результатам."
+      },
+      {
+        "id": "a_06",
+        "de": "Für mich ist ein gutes Arbeitsklima die Grundlage, aber ohne angemessene Bezahlung fehlt die finanzielle Sicherheit, um sich voll auf die Arbeit konzentrieren zu können. Beide Faktoren gehören für mich untrennbar zusammen.",
+        "uk": "Для мене гарний клімат у колективі — це основа, але без гідної оплати бракує фінансової стабільності, щоб повністю зосередитись на роботі. Обидва фактори для мене нерозривно пов'язані.",
+        "en": "For me, a good working atmosphere is the foundation, but without fair pay, financial security is missing, which is needed to fully focus on work. For me, both factors are inseparably linked.",
+        "ru": "Для меня хороший климат в коллективе — это основа, но без достойной оплаты не хватает финансовой стабильности, чтобы полностью сосредоточиться на работе. Оба фактора для меня неразрывно связаны."
+      },
+      {
+        "id": "a_07",
+        "de": "Die Kommunikation zwischen Chef und Mitarbeitern sollte offen, respektvoll und von gegenseitiger Wertschätzung geprägt sein. Nur so können Vertrauen und echtes Ownership-Denken entstehen.",
+        "uk": "Комунікація між керівником і співробітниками має бути відкритою, шанобливою і базуватися на взаємному визнанні. Лише так може виникнути довіра та справжнє підприємницьке мислення.",
+        "en": "Communication between the boss and employees should be open, respectful, and characterized by mutual appreciation. Only in this way can trust and a real ownership mindset develop.",
+        "ru": "Коммуникация между руководителем и сотрудниками должна быть открытой, уважительной и основанной на взаимном признании. Только так может возникнуть доверие и настоящее предпринимательское мышление."
+      },
+      {
+        "id": "a_08",
+        "de": "Als Führungskraft würde ich zuerst dafür sorgen, dass das Team gemeinsame Werte teilt. Danach würde ich auf faire Bezahlung, intrinsische Motivation und regelmäßige Wertschätzung achten, damit ein echtes Ownership-Denken entstehen kann.",
+        "uk": "Як керівник, я насамперед подбав би про те, щоб команда поділяла спільні цінності. Потім я звернув би увагу на справедливу оплату, внутрішню мотивацію та регулярне визнання, щоб могло виникнути справжнє підприємницьке мислення.",
+        "en": "As a manager, I would first make sure the team shares common values. Then I would focus on fair pay, intrinsic motivation, and regular appreciation, so that a real ownership mindset can develop.",
+        "ru": "Как руководитель, я бы прежде всего позаботился о том, чтобы команда разделяла общие ценности. Затем я обратил бы внимание на справедливую оплату, внутреннюю мотивацию и регулярное признание, чтобы могло возникнуть настоящее предпринимательское мышление."
+      },
+      {
+        "id": "a_09",
+        "de": "Ich denke, die grundlegenden Prinzipien – gemeinsame Werte, Motivation, faire Bezahlung und Wertschätzung – gelten überall gleich. Unterschiede gibt es eher in der Art, wie Kommunikation und Hierarchien gelebt werden.",
+        "uk": "Я вважаю, що основні принципи — спільні цінності, мотивація, справедлива оплата та визнання — діють однаково скрізь. Відмінності радше стосуються того, як реалізуються комунікація та ієрархія.",
+        "en": "I think the basic principles — shared values, motivation, fair pay, and appreciation — apply the same everywhere. Differences tend to lie more in how communication and hierarchy are practiced.",
+        "ru": "Я думаю, что основные принципы — общие ценности, мотивация, справедливая оплата и признание — действуют одинаково везде. Различия скорее касаются того, как реализуются коммуникация и иерархия."
+      },
+      {
+        "id": "a_10",
+        "de": "Ich würde raten, zuerst herauszufinden, welcher der drei Faktoren fehlt – Motivation, Bezahlung oder Wertschätzung – und das Gespräch mit der Führungsebene zu suchen. Wenn sich nichts ändert, sollte man den Mut haben, sich zu verändern.",
+        "uk": "Я б порадив спочатку з'ясувати, якого саме з трьох факторів бракує — мотивації, оплати чи визнання — і поговорити з керівництвом. Якщо нічого не змінюється, варто мати сміливість щось змінити.",
+        "en": "I would advise first identifying which of the three factors is missing — motivation, pay, or appreciation — and having a conversation with leadership. If nothing changes, one should have the courage to make a change.",
+        "ru": "Я бы посоветовал сначала выяснить, какого именно из трёх факторов не хватает — мотивации, оплаты или признания — и поговорить с руководством. Если ничего не меняется, стоит набраться смелости что-то изменить."
+      }
+    ]
   },
   {
     "id": "story_task_003",
@@ -26209,7 +26495,150 @@ var STORY_TASK = [
       "en": "Possible questions:<br>Stages (school graduation, training / studies, …)<br>Dreams, aptitudes, talents<br>Important people for your career choice?<br>Motivation?<br>Consequences?<br>Would you choose this profession again?",
       "ru": "Возможные вопросы:<br>Этапы (окончание школы, обучение / учёба в вузе, …)<br>Мечты, способности, таланты<br>Важные люди для выбора профессии?<br>Мотивация?<br>Последствия?<br>Выбрали бы вы эту профессию снова?"
     },
-    "questions": []
+    "questions": [
+      {
+        "id": "q_01",
+        "de": "Können Sie ein konkretes Ereignis nennen, das Ihre Berufswahl beeinflusst hat?",
+        "uk": "Чи можете ви назвати конкретну подію, яка вплинула на ваш вибір професії?",
+        "en": "Can you name a specific event that influenced your choice of career?",
+        "ru": "Можете назвать конкретное событие, которое повлияло на ваш выбор профессии?"
+      },
+      {
+        "id": "q_02",
+        "de": "Welche Person hat den größten Einfluss auf Ihre Berufswahl gehabt und warum?",
+        "uk": "Яка людина мала найбільший вплив на ваш вибір професії і чому?",
+        "en": "Which person had the greatest influence on your choice of career, and why?",
+        "ru": "Какой человек оказал наибольшее влияние на ваш выбор профессии и почему?"
+      },
+      {
+        "id": "q_03",
+        "de": "Gab es auch Zweifel oder Umwege auf Ihrem Weg zu diesem Beruf?",
+        "uk": "Чи були сумніви або обхідні шляхи на вашому шляху до цієї професії?",
+        "en": "Were there also doubts or detours on your path to this profession?",
+        "ru": "Были ли сомнения или обходные пути на вашем пути к этой профессии?"
+      },
+      {
+        "id": "q_04",
+        "de": "Wie hat sich Ihre Motivation im Laufe der Zeit verändert?",
+        "uk": "Як змінювалась ваша мотивація з часом?",
+        "en": "How has your motivation changed over time?",
+        "ru": "Как менялась ваша мотивация со временем?"
+      },
+      {
+        "id": "q_05",
+        "de": "Was würden Sie rückblickend anders machen?",
+        "uk": "Що б ви зробили інакше, озираючись назад?",
+        "en": "What would you do differently in hindsight?",
+        "ru": "Что бы вы сделали иначе, оглядываясь назад?"
+      },
+      {
+        "id": "q_06",
+        "de": "Welche Konsequenzen hatte diese Entscheidung für Ihr weiteres Leben?",
+        "uk": "Які наслідки мало це рішення для вашого подальшого життя?",
+        "en": "What consequences did this decision have for your future life?",
+        "ru": "Какие последствия это решение имело для вашей дальнейшей жизни?"
+      },
+      {
+        "id": "q_07",
+        "de": "Was würden Sie jungen Menschen raten, die vor einer ähnlichen Berufswahl stehen?",
+        "uk": "Що б ви порадили молодим людям, які стоять перед подібним вибором професії?",
+        "en": "What would you advise young people who are facing a similar career choice?",
+        "ru": "Что бы вы посоветовали молодым людям, стоящим перед похожим выбором профессии?"
+      },
+      {
+        "id": "q_08",
+        "de": "Wie hat Ihr Umfeld (Familie, Freunde) auf Ihre Entscheidung reagiert?",
+        "uk": "Як ваше оточення (сім'я, друзі) відреагувало на ваше рішення?",
+        "en": "How did your environment (family, friends) react to your decision?",
+        "ru": "Как ваше окружение (семья, друзья) отреагировало на ваше решение?"
+      },
+      {
+        "id": "q_09",
+        "de": "Was war der schwierigste Moment auf diesem Weg?",
+        "uk": "Який момент на цьому шляху був найважчим?",
+        "en": "What was the most difficult moment on this path?",
+        "ru": "Какой момент на этом пути был самым сложным?"
+      },
+      {
+        "id": "q_10",
+        "de": "Würden Sie sich heute wieder für denselben Beruf entscheiden? Warum?",
+        "uk": "Чи обрали б ви сьогодні знову ту саму професію? Чому?",
+        "en": "Would you choose the same profession again today? Why?",
+        "ru": "Выбрали бы вы сегодня снова ту же профессию? Почему?"
+      }
+    ],
+    "answers": [
+      {
+        "id": "a_01",
+        "de": "Ein entscheidendes Ereignis war der Besuch eines mathematisch-physikalischen Lyzeums, das meine Leidenschaft für exakte Wissenschaften enorm verstärkt hat.",
+        "uk": "Вирішальною подією було навчання у фізико-математичному ліцеї, яке значно посилило мою пристрасть до точних наук.",
+        "en": "A decisive event was attending a mathematics and physics lyceum, which greatly intensified my passion for exact sciences.",
+        "ru": "Решающим событием стало обучение в физико-математическом лицее, которое значительно усилило мою страсть к точным наукам."
+      },
+      {
+        "id": "a_02",
+        "de": "Den größten Einfluss hatten meine Lehrer am mathematisch-physikalischen Lyzeum, die meine Faszination für Mathematik, Physik und Computer gefördert haben.",
+        "uk": "Найбільший вплив мали мої вчителі у фізико-математичному ліцеї, які розвинули моє захоплення математикою, фізикою та комп'ютерами.",
+        "en": "The greatest influence came from my teachers at the mathematics and physics lyceum, who nurtured my fascination with mathematics, physics, and computers.",
+        "ru": "Наибольшее влияние оказали мои учителя в физико-математическом лицее, которые развили моё увлечение математикой, физикой и компьютерами."
+      },
+      {
+        "id": "a_03",
+        "de": "Ja, nach 17 Jahren als Unternehmer in der Ukraine musste ich in Deutschland komplett neu anfangen und meinen Weg im IT-Bereich neu finden.",
+        "uk": "Так, після 17 років підприємництва в Україні мені довелося повністю почати заново в Німеччині та по-новому знайти свій шлях в IT-сфері.",
+        "en": "Yes, after 17 years as an entrepreneur in Ukraine, I had to start completely from scratch in Germany and find my way in the IT field anew.",
+        "ru": "Да, после 17 лет предпринимательства в Украине мне пришлось полностью начать заново в Германии и по-новому найти свой путь в IT-сфере."
+      },
+      {
+        "id": "a_04",
+        "de": "Am Anfang war meine Motivation rein wissenschaftlich geprägt, später kam der unternehmerische Ehrgeiz dazu, und heute treibt mich vor allem der Wunsch an, mich als SAP-Berater weiterzuentwickeln.",
+        "uk": "Спочатку моя мотивація мала суто наукову природу, згодом додався підприємницький азарт, а сьогодні мене насамперед рухає бажання розвиватися як SAP-консультант.",
+        "en": "At first, my motivation was purely scientific; later, entrepreneurial ambition was added, and today I am mainly driven by the desire to develop as an SAP consultant.",
+        "ru": "Сначала моя мотивация была чисто научной, позже добавился предпринимательский азарт, а сегодня меня прежде всего движет желание развиваться как SAP-консультант."
+      },
+      {
+        "id": "a_05",
+        "de": "Rückblickend hätte ich vielleicht früher mit dem Erlernen der deutschen Sprache begonnen, um den Einstieg in den deutschen Arbeitsmarkt zu erleichtern.",
+        "uk": "Озираючись назад, можливо, варто було раніше почати вивчати німецьку мову, щоб полегшити вихід на німецький ринок праці.",
+        "en": "In hindsight, I might have started learning German earlier to make it easier to enter the German job market.",
+        "ru": "Оглядываясь назад, возможно, стоило раньше начать изучать немецкий язык, чтобы облегчить выход на немецкий рынок труда."
+      },
+      {
+        "id": "a_06",
+        "de": "Die Entscheidung, Computersysteme zu studieren, hat mir ermöglicht, später ein eigenes Unternehmen zu gründen und umfangreiche Erfahrung in Management und Business Development zu sammeln.",
+        "uk": "Рішення вивчати комп'ютерні системи дозволило мені пізніше заснувати власну компанію та накопичити великий досвід у менеджменті й розвитку бізнесу.",
+        "en": "The decision to study computer systems later enabled me to found my own company and gain extensive experience in management and business development.",
+        "ru": "Решение изучать компьютерные системы позволило мне позже основать собственную компанию и накопить большой опыт в менеджменте и развитии бизнеса."
+      },
+      {
+        "id": "a_07",
+        "de": "Ich würde jungen Menschen raten, ihrer Leidenschaft zu folgen und früh in Bereiche wie Mathematik oder IT einzutauchen, da diese Grundlagen später viele Türen öffnen.",
+        "uk": "Я б порадив молодим людям слідувати своїй пристрасті та раніше зануритись у такі сфери, як математика чи IT, адже ці основи згодом відкривають багато дверей.",
+        "en": "I would advise young people to follow their passion and dive early into fields like mathematics or IT, as this foundation opens many doors later.",
+        "ru": "Я бы посоветовал молодым людям следовать своей страсти и раньше погрузиться в такие сферы, как математика или IT, ведь эта основа впоследствии открывает много дверей."
+      },
+      {
+        "id": "a_08",
+        "de": "Meine Familie hat meine Begeisterung für exakte Wissenschaften von Anfang an unterstützt und mich ermutigt, das mathematisch-physikalische Lyzeum zu besuchen.",
+        "uk": "Моя родина з самого початку підтримувала моє захоплення точними науками і заохочувала мене навчатися у фізико-математичному ліцеї.",
+        "en": "My family supported my passion for exact sciences from the very beginning and encouraged me to attend the mathematics and physics lyceum.",
+        "ru": "Моя семья с самого начала поддерживала моё увлечение точными науками и поощряла меня учиться в физико-математическом лицее."
+      },
+      {
+        "id": "a_09",
+        "de": "Der schwierigste Moment war die Ankunft in Deutschland, als ich den Arbeitsmarkt neu analysieren und meine 17 Jahre Erfahrung in einen neuen Kontext übersetzen musste.",
+        "uk": "Найважчим моментом був приїзд до Німеччини, коли мені довелося заново аналізувати ринок праці та перекласти свій 17-річний досвід у новий контекст.",
+        "en": "The hardest moment was arriving in Germany, when I had to re-analyze the job market and translate my 17 years of experience into a new context.",
+        "ru": "Самым сложным моментом стал приезд в Германию, когда мне пришлось заново анализировать рынок труда и перевести свой 17-летний опыт в новый контекст."
+      },
+      {
+        "id": "a_10",
+        "de": "Ja, ich würde mich wieder für diesen Weg entscheiden, denn die Kombination aus technischem Fundament und unternehmerischem Denken ist genau das, was mich heute als angehenden SAP-Berater auszeichnet.",
+        "uk": "Так, я б знову обрав цей шлях, адже поєднання технічної бази та підприємницького мислення — саме те, що вирізняє мене сьогодні як майбутнього SAP-консультанта.",
+        "en": "Yes, I would choose this path again, because the combination of a technical foundation and entrepreneurial thinking is exactly what distinguishes me today as an aspiring SAP consultant.",
+        "ru": "Да, я бы снова выбрал этот путь, ведь сочетание технической базы и предпринимательского мышления — именно то, что отличает меня сегодня как будущего SAP-консультанта."
+      }
+    ]
   },
   {
     "id": "story_task_004",
@@ -26232,7 +26661,150 @@ var STORY_TASK = [
       "en": "Possible questions:<br>Which person?<br>What is your relationship with this person?<br>What positive qualities does this person have?<br>What influence does / did this person have on you?",
       "ru": "Возможные вопросы:<br>Какой человек?<br>Какие у вас отношения с этим человеком?<br>Какими положительными качествами обладает этот человек?<br>Какое влияние оказывает / оказывал этот человек на вас?"
     },
-    "questions": []
+    "questions": [
+      {
+        "id": "q_01",
+        "de": "Können Sie mir ein konkretes Beispiel nennen, wie diese Person Sie beeinflusst hat?",
+        "uk": "Чи можете ви навести конкретний приклад того, як ця людина вплинула на вас?",
+        "en": "Can you give me a specific example of how this person influenced you?",
+        "ru": "Можете привести конкретный пример того, как этот человек повлиял на вас?"
+      },
+      {
+        "id": "q_02",
+        "de": "Wie oft haben Sie Kontakt zu dieser Person?",
+        "uk": "Як часто ви спілкуєтесь із цією людиною?",
+        "en": "How often do you have contact with this person?",
+        "ru": "Как часто вы общаетесь с этим человеком?"
+      },
+      {
+        "id": "q_03",
+        "de": "Welche Eigenschaft dieser Person bewundern Sie am meisten und warum?",
+        "uk": "Яка риса цієї людини викликає у вас найбільше захоплення і чому?",
+        "en": "Which quality of this person do you admire most, and why?",
+        "ru": "Какое качество этого человека вызывает у вас наибольшее восхищение и почему?"
+      },
+      {
+        "id": "q_04",
+        "de": "Gab es eine Situation, in der Sie sich besonders an diese Person erinnert haben?",
+        "uk": "Чи була ситуація, коли ви особливо згадували цю людину?",
+        "en": "Was there a situation where you particularly remembered this person?",
+        "ru": "Была ли ситуация, когда вы особенно вспоминали этого человека?"
+      },
+      {
+        "id": "q_05",
+        "de": "Wie hat diese Person Ihre beruflichen Entscheidungen konkret beeinflusst?",
+        "uk": "Як конкретно ця людина вплинула на ваші професійні рішення?",
+        "en": "How exactly did this person influence your professional decisions?",
+        "ru": "Как конкретно этот человек повлиял на ваши профессиональные решения?"
+      },
+      {
+        "id": "q_06",
+        "de": "Was würden Sie tun, um dieser Person ähnlicher zu werden?",
+        "uk": "Що б ви робили, щоб стати більш схожим на цю людину?",
+        "en": "What would you do to become more like this person?",
+        "ru": "Что бы вы делали, чтобы стать более похожим на этого человека?"
+      },
+      {
+        "id": "q_07",
+        "de": "Hat diese Person auch Schwächen, die Sie bemerkt haben?",
+        "uk": "Чи має ця людина слабкі сторони, які ви помітили?",
+        "en": "Does this person also have weaknesses that you have noticed?",
+        "ru": "Есть ли у этого человека слабые стороны, которые вы заметили?"
+      },
+      {
+        "id": "q_08",
+        "de": "Wie unterscheidet sich Ihr Vorbild von anderen Menschen in Ihrem Umfeld?",
+        "uk": "Чим ваш взірець відрізняється від інших людей у вашому оточенні?",
+        "en": "How does your role model differ from other people around you?",
+        "ru": "Чем ваш образец для подражания отличается от других людей в вашем окружении?"
+      },
+      {
+        "id": "q_09",
+        "de": "Was würden Sie dieser Person sagen, wenn Sie die Möglichkeit dazu hätten?",
+        "uk": "Що б ви сказали цій людині, якби мали таку можливість?",
+        "en": "What would you say to this person if you had the chance?",
+        "ru": "Что бы вы сказали этому человеку, если бы у вас была такая возможность?"
+      },
+      {
+        "id": "q_10",
+        "de": "Welchen Rat von dieser Person haben Sie am meisten verinnerlicht?",
+        "uk": "Яку пораду цієї людини ви найбільше засвоїли?",
+        "en": "Which piece of advice from this person have you taken to heart the most?",
+        "ru": "Какой совет этого человека вы больше всего усвоили?"
+      }
+    ],
+    "answers": [
+      {
+        "id": "a_01",
+        "de": "Ein konkretes Beispiel ist, wie mein Großvater mir als Kind beim gemeinsamen Bauen und Reparieren geduldig alles erklärt hat, was mir gezeigt hat, dass echtes Wissen durch praktisches Tun entsteht.",
+        "uk": "Конкретний приклад — це те, як мій дідусь у дитинстві терпляче пояснював мені все під час спільного будівництва та ремонту, що показало мені: справжні знання народжуються через практичну діяльність.",
+        "en": "A concrete example is how my grandfather patiently explained everything to me as a child while we built and repaired things together, showing me that real knowledge comes from hands-on practice.",
+        "ru": "Конкретный пример — это то, как мой дедушка в детстве терпеливо объяснял мне всё во время совместного строительства и ремонта, что показало мне: настоящие знания рождаются через практическую деятельность."
+      },
+      {
+        "id": "a_02",
+        "de": "Als Kind hatte ich durch unsere gemeinsamen Sommer sehr engen Kontakt zu ihm; auch heute halten wir trotz der Entfernung durch regelmäßige Gespräche Kontakt.",
+        "uk": "У дитинстві я мав дуже тісний контакт з ним завдяки спільним літам; і сьогодні, попри відстань, ми підтримуємо зв'язок через регулярні розмови.",
+        "en": "As a child, I had very close contact with him thanks to our summers together; even today, despite the distance, we stay connected through regular conversations.",
+        "ru": "В детстве у меня был очень тесный контакт с ним благодаря совместным летам; и сегодня, несмотря на расстояние, мы поддерживаем связь через регулярные разговоры."
+      },
+      {
+        "id": "a_03",
+        "de": "Am meisten bewundere ich seine Neugier – selbst mit 82 Jahren hat er noch gelernt, ein Smartphone zu bedienen.",
+        "uk": "Найбільше я захоплююсь його допитливістю — навіть у 82 роки він навчився користуватися смартфоном.",
+        "en": "What I admire most is his curiosity — even at the age of 82, he learned how to use a smartphone.",
+        "ru": "Больше всего я восхищаюсь его любознательностью — даже в 82 года он научился пользоваться смартфоном."
+      },
+      {
+        "id": "a_04",
+        "de": "Besonders erinnere ich mich an den Moment, als er mit 82 Jahren stolz sein erstes Smartphone bediente – das zeigte mir, dass man nie aufhören sollte zu lernen.",
+        "uk": "Особливо мені запам'ятався момент, коли він у 82 роки з гордістю користувався своїм першим смартфоном — це показало мені, що навчатись ніколи не пізно.",
+        "en": "I particularly remember the moment when, at 82, he proudly used his first smartphone — it showed me that you should never stop learning.",
+        "ru": "Особенно мне запомнился момент, когда в 82 года он с гордостью пользовался своим первым смартфоном — это показало мне, что учиться никогда не поздно."
+      },
+      {
+        "id": "a_05",
+        "de": "Sein Leitsatz, dass alles mit einem Ziel beginnt und man den Weg dazu immer findet, begleitet mich bis heute bei jeder beruflichen Entscheidung.",
+        "uk": "Його життєве кредо про те, що все починається з мети, а шлях до неї завжди знайдеться, супроводжує мене й донині в кожному професійному рішенні.",
+        "en": "His life motto that everything begins with a goal and the path to it can always be found still accompanies me in every professional decision.",
+        "ru": "Его жизненное кредо о том, что всё начинается с цели, а путь к ней всегда найдётся, сопровождает меня и сегодня в каждом профессиональном решении."
+      },
+      {
+        "id": "a_06",
+        "de": "Ich versuche, genauso neugierig und ausdauernd zu bleiben wie er, indem ich stets offen für Neues bin und nicht so schnell aufgebe.",
+        "uk": "Я намагаюсь бути таким же допитливим і наполегливим, як він, залишаючись відкритим до нового і не здаючись занадто швидко.",
+        "en": "I try to be as curious and persistent as he is, staying open to new things and not giving up too quickly.",
+        "ru": "Я стараюсь быть таким же любознательным и настойчивым, как он, оставаясь открытым к новому и не сдаваясь слишком быстро."
+      },
+      {
+        "id": "a_07",
+        "de": "Wie jeder Mensch hatte auch er seine Schwächen, aber seine Stärken – Neugier, Ausdauer und die Fähigkeit, andere zu inspirieren – haben mich weit mehr geprägt.",
+        "uk": "Як і кожна людина, він мав свої слабкі сторони, але його сильні риси — допитливість, наполегливість і вміння надихати — вплинули на мене значно більше.",
+        "en": "Like every person, he also had his weaknesses, but his strengths — curiosity, persistence, and the ability to inspire others — shaped me far more.",
+        "ru": "Как и каждый человек, он имел свои слабые стороны, но его сильные качества — любознательность, настойчивость и умение вдохновлять — повлияли на меня гораздо больше."
+      },
+      {
+        "id": "a_08",
+        "de": "Im Gegensatz zu vielen anderen Menschen in meinem Umfeld hat er nie aufgehört, Neues zu lernen, selbst im hohen Alter.",
+        "uk": "На відміну від багатьох інших людей у моєму оточенні, він ніколи не переставав навчатися новому, навіть у похилому віці.",
+        "en": "Unlike many other people in my life, he never stopped learning new things, even at an advanced age.",
+        "ru": "В отличие от многих других людей в моём окружении, он никогда не переставал учиться новому, даже в преклонном возрасте."
+      },
+      {
+        "id": "a_09",
+        "de": "Ich würde ihm sagen, dass seine Werte – Neugier, Ausdauer und die Fähigkeit, andere zu inspirieren – mich bis heute in meinen beruflichen Entscheidungen prägen.",
+        "uk": "Я б сказав йому, що його цінності — допитливість, наполегливість і вміння надихати інших — і донині формують мої професійні рішення.",
+        "en": "I would tell him that his values — curiosity, persistence, and the ability to inspire others — still shape my professional decisions today.",
+        "ru": "Я бы сказал ему, что его ценности — любознательность, настойчивость и умение вдохновлять других — до сих пор формируют мои профессиональные решения."
+      },
+      {
+        "id": "a_10",
+        "de": "Der Satz, der mich am meisten geprägt hat, ist: Alles beginnt mit einem Ziel – den Weg dazu findet man immer.",
+        "uk": "Фраза, яка вплинула на мене найбільше: усе починається з мети — а шлях до неї завжди знайдеться.",
+        "en": "The phrase that influenced me the most is: everything begins with a goal — you will always find the way to it.",
+        "ru": "Фраза, которая повлияла на меня больше всего: всё начинается с цели — путь к ней всегда найдётся."
+      }
+    ]
   },
   {
     "id": "story_task_005",
@@ -26255,7 +26827,150 @@ var STORY_TASK = [
       "en": "Possible questions:<br>Where do you look for job offers? (newspaper, internet, job board, fairs)<br>What documents do you need?<br>What should be included in the cover letter?<br>What should be included in the CV?<br>How do you prepare for the job interview?",
       "ru": "Возможные вопросы:<br>Где вы ищете вакансии? (газета, интернет, биржа труда, ярмарки)<br>Какие документы вам нужны?<br>Что должно быть в сопроводительном письме?<br>Что должно быть в резюме?<br>Как вы готовитесь к собеседованию?"
     },
-    "questions": []
+    "questions": [
+      {
+        "id": "q_01",
+        "de": "Können Sie den Ablauf der Arbeitssuche in diesem Land genauer beschreiben?",
+        "uk": "Чи можете ви детальніше описати процес пошуку роботи в цій країні?",
+        "en": "Can you describe the job search process in this country in more detail?",
+        "ru": "Можете подробнее описать процесс поиска работы в этой стране?"
+      },
+      {
+        "id": "q_02",
+        "de": "Welche Herausforderungen gibt es bei der Arbeitssuche in diesem Land?",
+        "uk": "Які виклики існують під час пошуку роботи в цій країні?",
+        "en": "What challenges are there when searching for a job in this country?",
+        "ru": "Какие трудности существуют при поиске работы в этой стране?"
+      },
+      {
+        "id": "q_03",
+        "de": "Wie unterscheidet sich die Arbeitssuche dort von der in Ihrem Heimatland?",
+        "uk": "Чим пошук роботи там відрізняється від пошуку роботи у вашій батьківщині?",
+        "en": "How does job searching there differ from job searching in your home country?",
+        "ru": "Чем поиск работы там отличается от поиска работы на вашей родине?"
+      },
+      {
+        "id": "q_04",
+        "de": "Welche Rolle spielen persönliche Kontakte oder Netzwerke bei der Arbeitssuche?",
+        "uk": "Яку роль відіграють особисті контакти чи мережі при пошуку роботи?",
+        "en": "What role do personal contacts or networks play in the job search?",
+        "ru": "Какую роль играют личные контакты или связи при поиске работы?"
+      },
+      {
+        "id": "q_05",
+        "de": "Was sollte man bei den Bewerbungsunterlagen in diesem Land besonders beachten?",
+        "uk": "На що варто особливо звернути увагу при підготовці документів для подання заявки в цій країні?",
+        "en": "What should you pay special attention to with application documents in this country?",
+        "ru": "На что стоит обратить особое внимание при подготовке документов для подачи заявки в этой стране?"
+      },
+      {
+        "id": "q_06",
+        "de": "Wie lange dauert es üblicherweise, bis man eine Stelle findet?",
+        "uk": "Скільки зазвичай часу потрібно, щоб знайти роботу?",
+        "en": "How long does it usually take to find a job?",
+        "ru": "Сколько обычно времени нужно, чтобы найти работу?"
+      },
+      {
+        "id": "q_07",
+        "de": "Welche Online-Plattformen oder Ressourcen würden Sie für die Arbeitssuche empfehlen?",
+        "uk": "Які онлайн-платформи чи ресурси ви б порекомендували для пошуку роботи?",
+        "en": "Which online platforms or resources would you recommend for job searching?",
+        "ru": "Какие онлайн-платформы или ресурсы вы бы порекомендовали для поиска работы?"
+      },
+      {
+        "id": "q_08",
+        "de": "Was würden Sie jemandem raten, der gerade mit der Arbeitssuche beginnt?",
+        "uk": "Що б ви порадили тому, хто щойно починає пошук роботи?",
+        "en": "What would you advise someone who is just starting their job search?",
+        "ru": "Что бы вы посоветовали тому, кто только начинает поиск работы?"
+      },
+      {
+        "id": "q_09",
+        "de": "Welche Fehler sollte man bei der Arbeitssuche vermeiden?",
+        "uk": "Яких помилок варто уникати під час пошуку роботи?",
+        "en": "What mistakes should you avoid when searching for a job?",
+        "ru": "Каких ошибок следует избегать при поиске работы?"
+      },
+      {
+        "id": "q_10",
+        "de": "Wie wichtig sind Sprachkenntnisse bei der Arbeitssuche in diesem Land?",
+        "uk": "Наскільки важливими є знання мови при пошуку роботи в цій країні?",
+        "en": "How important are language skills when searching for a job in this country?",
+        "ru": "Насколько важны знания языка при поиске работы в этой стране?"
+      }
+    ],
+    "answers": [
+      {
+        "id": "a_01",
+        "de": "In Deutschland beginnt die Arbeitssuche meist mit der Recherche auf Jobportalen wie Indeed oder der Agentur für Arbeit, gefolgt von einer schriftlichen Bewerbung mit Lebenslauf und Anschreiben.",
+        "uk": "У Німеччині пошук роботи зазвичай починається з дослідження на порталах вакансій, таких як Indeed чи Агентство з працевлаштування (Agentur für Arbeit), після чого подається письмова заявка з резюме та супровідним листом.",
+        "en": "In Germany, the job search usually begins with researching job portals like Indeed or the Federal Employment Agency, followed by a written application with a CV and cover letter.",
+        "ru": "В Германии поиск работы обычно начинается с изучения порталов вакансий, таких как Indeed или Агентство по трудоустройству (Agentur für Arbeit), после чего подаётся письменная заявка с резюме и сопроводительным письмом."
+      },
+      {
+        "id": "a_02",
+        "de": "Eine große Herausforderung sind oft die Sprachanforderungen sowie die Anerkennung ausländischer Abschlüsse und Qualifikationen.",
+        "uk": "Великим викликом часто є мовні вимоги, а також визнання іноземних дипломів і кваліфікацій.",
+        "en": "A major challenge is often the language requirements as well as the recognition of foreign degrees and qualifications.",
+        "ru": "Большим вызовом часто являются языковые требования, а также признание иностранных дипломов и квалификаций."
+      },
+      {
+        "id": "a_03",
+        "de": "In Deutschland sind vollständige und formell korrekte Bewerbungsunterlagen viel wichtiger als in meinem Heimatland, wo oft persönliche Kontakte ausreichen.",
+        "uk": "У Німеччині повні та формально правильно оформлені документи для подання заявки набагато важливіші, ніж у моїй країні, де часто достатньо особистих контактів.",
+        "en": "In Germany, complete and formally correct application documents are much more important than in my home country, where personal contacts are often enough.",
+        "ru": "В Германии полные и формально правильно оформленные документы для подачи заявки гораздо важнее, чем в моей стране, где часто достаточно личных связей."
+      },
+      {
+        "id": "a_04",
+        "de": "Persönliche Kontakte und Netzwerke, das sogenannte „Vitamin B\", spielen auch in Deutschland eine wichtige Rolle, besonders bei kleineren Unternehmen.",
+        "uk": "Особисті контакти та мережі, так званий «вітамін Б», відіграють важливу роль і в Німеччині, особливо в невеликих компаніях.",
+        "en": "Personal contacts and networks, the so-called 'Vitamin B', also play an important role in Germany, especially at smaller companies.",
+        "ru": "Личные контакты и связи, так называемый «витамин Б», играют важную роль и в Германии, особенно в небольших компаниях."
+      },
+      {
+        "id": "a_05",
+        "de": "Man sollte auf ein vollständiges Bewerbungsdossier mit Lebenslauf, Anschreiben und relevanten Zeugnissen sowie auf ein professionelles Bewerbungsfoto achten.",
+        "uk": "Слід звернути увагу на повний пакет документів із резюме, супровідним листом та відповідними довідками, а також на професійне фото для резюме.",
+        "en": "You should pay attention to a complete application file with a CV, cover letter, and relevant certificates, as well as a professional application photo.",
+        "ru": "Следует обратить внимание на полный пакет документов с резюме, сопроводительным письмом и соответствующими справками, а также на профессиональное фото для резюме."
+      },
+      {
+        "id": "a_06",
+        "de": "Je nach Branche und Qualifikation kann die Arbeitssuche in Deutschland zwischen wenigen Wochen und mehreren Monaten dauern.",
+        "uk": "Залежно від галузі та кваліфікації, пошук роботи в Німеччині може тривати від кількох тижнів до кількох місяців.",
+        "en": "Depending on the industry and qualifications, the job search in Germany can take anywhere from a few weeks to several months.",
+        "ru": "В зависимости от отрасли и квалификации поиск работы в Германии может занять от нескольких недель до нескольких месяцев."
+      },
+      {
+        "id": "a_07",
+        "de": "Ich würde Plattformen wie die Agentur für Arbeit, Indeed, StepStone und LinkedIn empfehlen.",
+        "uk": "Я б порекомендував такі платформи, як Agentur für Arbeit, Indeed, StepStone та LinkedIn.",
+        "en": "I would recommend platforms like the Federal Employment Agency, Indeed, StepStone, and LinkedIn.",
+        "ru": "Я бы порекомендовал такие платформы, как Agentur für Arbeit, Indeed, StepStone и LinkedIn."
+      },
+      {
+        "id": "a_08",
+        "de": "Ich würde raten, frühzeitig mit der Vorbereitung der Unterlagen zu beginnen und sich gezielt über die jeweilige Branche zu informieren.",
+        "uk": "Я б порадив якомога раніше почати готувати документи та цілеспрямовано дізнаватись про відповідну галузь.",
+        "en": "I would advise starting to prepare the documents early and researching the relevant industry specifically.",
+        "ru": "Я бы посоветовал как можно раньше начать готовить документы и целенаправленно узнавать о соответствующей отрасли."
+      },
+      {
+        "id": "a_09",
+        "de": "Man sollte unvollständige oder fehlerhafte Bewerbungsunterlagen sowie mangelnde Vorbereitung auf Vorstellungsgespräche vermeiden.",
+        "uk": "Варто уникати неповних чи помилкових документів для подання заявки, а також недостатньої підготовки до співбесіди.",
+        "en": "You should avoid incomplete or incorrect application documents, as well as insufficient preparation for interviews.",
+        "ru": "Следует избегать неполных или ошибочных документов для подачи заявки, а также недостаточной подготовки к собеседованию."
+      },
+      {
+        "id": "a_10",
+        "de": "Sprachkenntnisse sind in Deutschland sehr wichtig, da viele Arbeitgeber mindestens ein B2-Niveau in Deutsch erwarten.",
+        "uk": "Знання мови в Німеччині дуже важливі, оскільки багато роботодавців очікують принаймні рівня B2 з німецької.",
+        "en": "Language skills are very important in Germany, as many employers expect at least a B2 level of German.",
+        "ru": "Знания языка в Германии очень важны, так как многие работодатели ожидают как минимум уровень B2 по немецкому."
+      }
+    ]
   },
   {
     "id": "story_task_006",
@@ -26278,7 +26993,150 @@ var STORY_TASK = [
       "en": "Possible questions:<br>Getting to the company?<br>For which profession?<br>How do you prepare?<br>Clothing?<br>Behavior?<br>Salary expectations?",
       "ru": "Возможные вопросы:<br>Дорога до фирмы?<br>На какую профессию?<br>Как готовятся к собеседованию?<br>Одежда?<br>Поведение?<br>Ожидания по зарплате?"
     },
-    "questions": []
+    "questions": [
+      {
+        "id": "q_01",
+        "de": "Können Sie ein Beispiel für eine typische Frage in einem Bewerbungsgespräch in diesem Land nennen?",
+        "uk": "Чи можете ви навести приклад типового запитання на співбесіді в цій країні?",
+        "en": "Can you give an example of a typical question in a job interview in this country?",
+        "ru": "Можете привести пример типичного вопроса на собеседовании в этой стране?"
+      },
+      {
+        "id": "q_02",
+        "de": "Wie sollte man sich auf ein Bewerbungsgespräch am besten vorbereiten?",
+        "uk": "Як найкраще підготуватися до співбесіди?",
+        "en": "What is the best way to prepare for a job interview?",
+        "ru": "Как лучше всего подготовиться к собеседованию?"
+      },
+      {
+        "id": "q_03",
+        "de": "Welche Kleidung ist bei einem Bewerbungsgespräch in diesem Land angemessen?",
+        "uk": "Який одяг є прийнятним на співбесіді в цій країні?",
+        "en": "What clothing is appropriate for a job interview in this country?",
+        "ru": "Какая одежда уместна на собеседовании в этой стране?"
+      },
+      {
+        "id": "q_04",
+        "de": "Was sind die größten Fehler, die man in einem Bewerbungsgespräch machen kann?",
+        "uk": "Які найбільші помилки можна зробити на співбесіді?",
+        "en": "What are the biggest mistakes you can make in a job interview?",
+        "ru": "Какие самые большие ошибки можно допустить на собеседовании?"
+      },
+      {
+        "id": "q_05",
+        "de": "Wie wichtig ist der erste Eindruck bei einem Bewerbungsgespräch?",
+        "uk": "Наскільки важливим є перше враження на співбесіді?",
+        "en": "How important is the first impression in a job interview?",
+        "ru": "Насколько важно первое впечатление на собеседовании?"
+      },
+      {
+        "id": "q_06",
+        "de": "Welche Fragen sollte man selbst dem Arbeitgeber stellen?",
+        "uk": "Які запитання варто самому поставити роботодавцю?",
+        "en": "What questions should you ask the employer yourself?",
+        "ru": "Какие вопросы стоит самому задать работодателю?"
+      },
+      {
+        "id": "q_07",
+        "de": "Wie geht man mit schwierigen oder unangenehmen Fragen um?",
+        "uk": "Як варто поводитись зі складними чи неприємними запитаннями?",
+        "en": "How do you deal with difficult or uncomfortable questions?",
+        "ru": "Как следует вести себя со сложными или неприятными вопросами?"
+      },
+      {
+        "id": "q_08",
+        "de": "Was unterscheidet ein erfolgreiches von einem erfolglosen Bewerbungsgespräch?",
+        "uk": "Чим успішна співбесіда відрізняється від неуспішної?",
+        "en": "What distinguishes a successful interview from an unsuccessful one?",
+        "ru": "Чем успешное собеседование отличается от неуспешного?"
+      },
+      {
+        "id": "q_09",
+        "de": "Wie wichtig ist Körpersprache in einem Bewerbungsgespräch?",
+        "uk": "Наскільки важливою є мова тіла на співбесіді?",
+        "en": "How important is body language in a job interview?",
+        "ru": "Насколько важен язык тела на собеседовании?"
+      },
+      {
+        "id": "q_10",
+        "de": "Was würden Sie jemandem raten, der sehr nervös vor einem Bewerbungsgespräch ist?",
+        "uk": "Що б ви порадили тому, хто дуже нервує перед співбесідою?",
+        "en": "What would you advise someone who is very nervous before a job interview?",
+        "ru": "Что бы вы посоветовали тому, кто очень нервничает перед собеседованием?"
+      }
+    ],
+    "answers": [
+      {
+        "id": "a_01",
+        "de": "Eine typische Frage in Deutschland ist zum Beispiel: „Warum haben Sie sich gerade bei uns beworben?\" oder „Was können Sie zum Erfolg unseres Teams beitragen?\"",
+        "uk": "Типове запитання в Німеччині, наприклад: «Чому ви подали заявку саме до нас?» або «Що ви можете зробити для успіху нашої команди?»",
+        "en": "A typical question in Germany is, for example: 'Why did you apply to us specifically?' or 'What can you contribute to our team's success?'",
+        "ru": "Типичный вопрос в Германии, например: «Почему вы подали заявку именно к нам?» или «Что вы можете сделать для успеха нашей команды?»"
+      },
+      {
+        "id": "a_02",
+        "de": "Man sollte das Unternehmen gründlich recherchieren und verstehen, wie man mit den eigenen Stärken einen echten Mehrwert für das Team schaffen kann.",
+        "uk": "Слід ретельно дослідити компанію та зрозуміти, як за допомогою власних сильних сторін можна створити реальну додаткову цінність для команди.",
+        "en": "You should thoroughly research the company and understand how you can create real added value for the team using your own strengths.",
+        "ru": "Следует тщательно изучить компанию и понять, как с помощью собственных сильных сторон можно создать реальную дополнительную ценность для команды."
+      },
+      {
+        "id": "a_03",
+        "de": "In Deutschland sollte die Kleidung zur angestrebten Rolle passen – meist gepflegt und eher konservativ, denn wie man so sagt: Kleider machen Leute.",
+        "uk": "У Німеччині одяг повинен відповідати бажаній ролі — здебільшого охайний і скоріше консервативний, адже, як кажуть: одяг створює людей.",
+        "en": "In Germany, clothing should match the desired role — usually neat and rather conservative, since, as they say, clothes make the man.",
+        "ru": "В Германии одежда должна соответствовать желаемой роли — обычно опрятная и довольно консервативная, ведь, как говорится, встречают по одёжке."
+      },
+      {
+        "id": "a_04",
+        "de": "Einer der größten Fehler ist mangelnde Vorbereitung, da man dann nicht überzeugend erklären kann, warum das eigene Profil einen Mehrwert für das Team darstellt.",
+        "uk": "Однією з найбільших помилок є недостатня підготовка, через що не вдається переконливо пояснити, чому власний профіль становить додаткову цінність для команди.",
+        "en": "One of the biggest mistakes is insufficient preparation, which means you cannot convincingly explain why your profile represents added value for the team.",
+        "ru": "Одна из самых больших ошибок — недостаточная подготовка, из-за чего не удаётся убедительно объяснить, почему собственный профиль представляет дополнительную ценность для команды."
+      },
+      {
+        "id": "a_05",
+        "de": "Der erste Eindruck ist entscheidend, denn die ersten Minuten eines Gesprächs prägen oft den gesamten weiteren Verlauf.",
+        "uk": "Перше враження є вирішальним, адже перші хвилини розмови часто визначають увесь подальший її перебіг.",
+        "en": "The first impression is decisive, as the first minutes of the conversation often shape the entire rest of it.",
+        "ru": "Первое впечатление является решающим, ведь первые минуты разговора часто определяют весь его дальнейший ход."
+      },
+      {
+        "id": "a_06",
+        "de": "Man sollte Fragen stellen, die zeigen, dass man sich mit dem Unternehmen beschäftigt hat, zum Beispiel zu den Werten oder den Herausforderungen des Teams.",
+        "uk": "Варто ставити запитання, які показують, що ви вивчили компанію, наприклад про її цінності чи виклики, з якими стикається команда.",
+        "en": "You should ask questions that show you have researched the company, for example about its values or the challenges the team faces.",
+        "ru": "Стоит задавать вопросы, которые показывают, что вы изучили компанию, например о её ценностях или вызовах, с которыми сталкивается команда."
+      },
+      {
+        "id": "a_07",
+        "de": "Bei schwierigen Fragen hilft es, ruhig zu bleiben und ehrlich zu antworten, statt auszuweichen.",
+        "uk": "У складних запитаннях допомагає залишатися спокійним і відповідати чесно, замість того щоб ухилятися.",
+        "en": "With difficult questions, it helps to stay calm and answer honestly rather than avoiding them.",
+        "ru": "В сложных вопросах помогает оставаться спокойным и отвечать честно, вместо того чтобы уклоняться."
+      },
+      {
+        "id": "a_08",
+        "de": "Ein erfolgreiches Gespräch entsteht, wenn beide Seiten den gegenseitigen Mehrwert erkennen – dann ist ein Jobangebot nur eine Frage der Zeit.",
+        "uk": "Успішна співбесіда виникає тоді, коли обидві сторони бачать взаємну цінність — тоді пропозиція роботи є лише питанням часу.",
+        "en": "A successful interview happens when both sides recognize the mutual value — then a job offer is just a matter of time.",
+        "ru": "Успешное собеседование возникает тогда, когда обе стороны видят взаимную ценность — тогда предложение о работе является лишь вопросом времени."
+      },
+      {
+        "id": "a_09",
+        "de": "Körpersprache ist sehr wichtig, da eine selbstbewusste Haltung und eine freundliche Ausstrahlung einen großen Unterschied machen.",
+        "uk": "Мова тіла дуже важлива, адже впевнена постава та привітне випромінювання суттєво впливають на враження.",
+        "en": "Body language is very important, since a confident posture and a friendly presence make a significant difference.",
+        "ru": "Язык тела очень важен, ведь уверенная осанка и доброжелательная аура существенно влияют на впечатление."
+      },
+      {
+        "id": "a_10",
+        "de": "Ich würde raten, sich gut vorzubereiten und sich bewusst zu machen, dass ein Bewerbungsgespräch keine Prüfung, sondern eine Verhandlung über eine Win-Win-Situation ist.",
+        "uk": "Я б порадив добре підготуватися та усвідомити, що співбесіда — це не іспит, а переговори про ситуацію взаємного виграшу.",
+        "en": "I would advise preparing well and realizing that a job interview is not an exam, but a negotiation about a win-win situation.",
+        "ru": "Я бы посоветовал хорошо подготовиться и осознать, что собеседование — это не экзамен, а переговоры о ситуации взаимного выигрыша."
+      }
+    ]
   },
   {
     "id": "story_task_007",
@@ -26301,7 +27159,78 @@ var STORY_TASK = [
       "en": "Possible questions:<br>Which product?<br>What features?<br>Where is it available?<br>Since when has the product existed?<br>What is it good for, or what benefit does it offer the customer?<br>Advantages?<br>Disadvantages?<br>Success?<br>Marketing? Changes?",
       "ru": "Возможные вопросы:<br>Какой продукт?<br>Какие особенности?<br>Где его можно найти?<br>С каких пор существует этот продукт?<br>Для чего он нужен, какую пользу приносит клиенту?<br>Преимущества?<br>Недостатки?<br>Успех?<br>Маркетинг? Изменения?"
     },
-    "questions": []
+    "questions": [
+      {
+        "id": "q_01",
+        "de": "Können Sie die Hauptmerkmale dieses Produkts/dieser Dienstleistung genauer beschreiben?",
+        "uk": "Чи можете ви детальніше описати основні характеристики цього продукту/послуги?",
+        "en": "Can you describe the main features of this product/service in more detail?",
+        "ru": "Можете подробнее описать основные характеристики этого продукта/услуги?"
+      },
+      {
+        "id": "q_02",
+        "de": "Welchen konkreten Nutzen hat dieses Produkt/diese Dienstleistung für die Kunden?",
+        "uk": "Яку конкретну користь цей продукт/послуга приносить клієнтам?",
+        "en": "What specific benefit does this product/service offer customers?",
+        "ru": "Какую конкретную пользу этот продукт/услуга приносит клиентам?"
+      },
+      {
+        "id": "q_03",
+        "de": "Was unterscheidet dieses Produkt von ähnlichen Angeboten auf dem Markt?",
+        "uk": "Чим цей продукт відрізняється від подібних пропозицій на ринку?",
+        "en": "What sets this product apart from similar offerings on the market?",
+        "ru": "Чем этот продукт отличается от подобных предложений на рынке?"
+      },
+      {
+        "id": "q_04",
+        "de": "Welche Vor- und Nachteile hat dieses Produkt aus Ihrer Sicht?",
+        "uk": "Які переваги та недоліки має цей продукт, на вашу думку?",
+        "en": "What advantages and disadvantages does this product have, in your view?",
+        "ru": "Какие преимущества и недостатки есть у этого продукта, на ваш взгляд?"
+      },
+      {
+        "id": "q_05",
+        "de": "Wie erfolgreich ist dieses Produkt/diese Dienstleistung auf dem Markt?",
+        "uk": "Наскільки успішним є цей продукт/послуга на ринку?",
+        "en": "How successful is this product/service on the market?",
+        "ru": "Насколько успешен этот продукт/услуга на рынке?"
+      },
+      {
+        "id": "q_06",
+        "de": "Für welche Zielgruppe ist dieses Produkt besonders geeignet?",
+        "uk": "Для якої цільової аудиторії цей продукт особливо підходить?",
+        "en": "Which target group is this product particularly suited for?",
+        "ru": "Для какой целевой аудитории этот продукт особенно подходит?"
+      },
+      {
+        "id": "q_07",
+        "de": "Wie hat sich dieses Produkt im Laufe der Zeit weiterentwickelt?",
+        "uk": "Як цей продукт розвивався з часом?",
+        "en": "How has this product developed over time?",
+        "ru": "Как этот продукт развивался со временем?"
+      },
+      {
+        "id": "q_08",
+        "de": "Was würden Sie an diesem Produkt verbessern, wenn Sie könnten?",
+        "uk": "Що б ви покращили в цьому продукті, якби мали таку можливість?",
+        "en": "What would you improve about this product if you could?",
+        "ru": "Что бы вы улучшили в этом продукте, если бы могли?"
+      },
+      {
+        "id": "q_09",
+        "de": "Wie wird dieses Produkt beworben oder vermarktet?",
+        "uk": "Як цей продукт рекламується чи просувається на ринку?",
+        "en": "How is this product advertised or marketed?",
+        "ru": "Как этот продукт рекламируется или продвигается на рынке?"
+      },
+      {
+        "id": "q_10",
+        "de": "Würden Sie dieses Produkt weiterempfehlen? Warum oder warum nicht?",
+        "uk": "Чи порекомендували б ви цей продукт іншим? Чому так чи ні?",
+        "en": "Would you recommend this product to others? Why or why not?",
+        "ru": "Порекомендовали бы вы этот продукт другим? Почему да или нет?"
+      }
+    ]
   },
   {
     "id": "story_task_008",
@@ -26324,7 +27253,78 @@ var STORY_TASK = [
       "en": "Possible questions:<br>Become self-employed doing what?<br>Own company?<br>Which industry?<br>How to attract customers?<br>How did you come up with this idea?<br>Do you need employees?<br>How to finance it?<br>Where is support available?<br>Are there already similar ideas / companies?",
       "ru": "Возможные вопросы:<br>Чем именно заниматься самостоятельно?<br>Собственная фирма?<br>Какая отрасль?<br>Как привлекать клиентов?<br>Как вы пришли к этой идее?<br>Нужны ли вам сотрудники?<br>Как финансировать?<br>Где можно получить поддержку?<br>Есть ли уже похожие идеи / фирмы?"
     },
-    "questions": []
+    "questions": [
+      {
+        "id": "q_01",
+        "de": "Können Sie Ihre Geschäftsidee noch etwas genauer beschreiben?",
+        "uk": "Чи можете ви детальніше описати свою бізнес-ідею?",
+        "en": "Can you describe your business idea in a bit more detail?",
+        "ru": "Можете подробнее описать свою бизнес-идею?"
+      },
+      {
+        "id": "q_02",
+        "de": "Wer ist die Zielgruppe für Ihr Produkt oder Ihre Dienstleistung?",
+        "uk": "Хто є цільовою аудиторією для вашого продукту чи послуги?",
+        "en": "Who is the target group for your product or service?",
+        "ru": "Кто является целевой аудиторией для вашего продукта или услуги?"
+      },
+      {
+        "id": "q_03",
+        "de": "Was macht Ihre Geschäftsidee besonders oder einzigartig?",
+        "uk": "Що робить вашу бізнес-ідею особливою чи унікальною?",
+        "en": "What makes your business idea special or unique?",
+        "ru": "Что делает вашу бизнес-идею особенной или уникальной?"
+      },
+      {
+        "id": "q_04",
+        "de": "Welche Herausforderungen erwarten Sie bei der Umsetzung dieser Idee?",
+        "uk": "Яких труднощів ви очікуєте при реалізації цієї ідеї?",
+        "en": "What challenges do you expect when implementing this idea?",
+        "ru": "Какие трудности вы ожидаете при реализации этой идеи?"
+      },
+      {
+        "id": "q_05",
+        "de": "Wie wollen Sie Ihr Unternehmen finanzieren?",
+        "uk": "Як ви плануєте фінансувати своє підприємство?",
+        "en": "How do you plan to finance your business?",
+        "ru": "Как вы планируете финансировать свой бизнес?"
+      },
+      {
+        "id": "q_06",
+        "de": "Welche Konkurrenz gibt es bereits auf dem Markt?",
+        "uk": "Яка конкуренція вже існує на ринку?",
+        "en": "What competition already exists in the market?",
+        "ru": "Какая конкуренция уже существует на рынке?"
+      },
+      {
+        "id": "q_07",
+        "de": "Wie wollen Sie Kunden auf Ihr Angebot aufmerksam machen?",
+        "uk": "Як ви плануєте привернути увагу клієнтів до своєї пропозиції?",
+        "en": "How do you plan to attract customers' attention to your offer?",
+        "ru": "Как вы планируете привлечь внимание клиентов к своему предложению?"
+      },
+      {
+        "id": "q_08",
+        "de": "Welche Rolle spielt Nachhaltigkeit oder Digitalisierung in Ihrer Geschäftsidee?",
+        "uk": "Яку роль відіграє сталий розвиток чи цифровізація у вашій бізнес-ідеї?",
+        "en": "What role does sustainability or digitalization play in your business idea?",
+        "ru": "Какую роль играет устойчивое развитие или цифровизация в вашей бизнес-идее?"
+      },
+      {
+        "id": "q_09",
+        "de": "Was wäre Ihr erster Schritt zur Umsetzung dieser Idee?",
+        "uk": "Яким був би ваш перший крок до реалізації цієї ідеї?",
+        "en": "What would be your first step in implementing this idea?",
+        "ru": "Каким был бы ваш первый шаг к реализации этой идеи?"
+      },
+      {
+        "id": "q_10",
+        "de": "Wie stellen Sie sich Ihr Unternehmen in fünf Jahren vor?",
+        "uk": "Яким ви уявляєте своє підприємство через п'ять років?",
+        "en": "How do you imagine your business in five years?",
+        "ru": "Каким вы представляете свой бизнес через пять лет?"
+      }
+    ]
   }
 ];
 

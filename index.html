@@ -1866,114 +1866,126 @@ body{
 }
 .lf-step-label span{ font-weight:600;color:rgba(255,255,255,.7); }
 
-/* Повноекранна анімація збільшення стріку — з'являється при
-   srUpdateStreak(), коли стрік дійсно зріс (не при повторному записі
-   того самого дня). Анімуються лише transform/opacity (composite-потік,
-   не потребує головного потоку) — той самий урок, що й зі сплеш-екраном
-   раніше цієї сесії: filter лишається СТАТИЧНИМ (drop-shadow полум'я не
-   анімується сам по собі, лише transform навколо нього). */
-#streak-celebration{
-  position:fixed;inset:0;z-index:9700;
-  display:none;align-items:center;justify-content:center;
-  background:rgba(20,16,8,.72);
-  -webkit-backdrop-filter:blur(2px);backdrop-filter:blur(2px);
+/* ══ ЄДИНИЙ ЕКРАН РЕЗУЛЬТАТУ УРОКУ/ДІАЛОГУ/ГРАМАТИКИ ══════════════════
+   РАНІШЕ це були ТРИ окремі шари: статичний #lesson-result (заголовок +
+   статистика) → повноекранний попап #lesson-celebration ПОВЕРХ нього з
+   ДУБЛЬОВАНИМИ заголовком/часом/M-балами (бо картка попапу перекривала
+   оригінал — і саме тому їх дублювали, а не показували раз) → іноді ще
+   й окремий повноекранний попап #streak-celebration (вогонь стріку)
+   ПОВЕРХ ОБОХ. Тепер — один екран (#lesson-result), що сам розкривається
+   в кілька стадій анімацією (showLessonCelebration в JS): іконка
+   спалахує → заголовок і статистика (M-бали рахуються вгору й летять у
+   хедер) → за потреби, за секунду-другу, знизу виїжджає картка стріку.
+   Кожен факт видно РІВНО ОДИН РАЗ. */
+#lesson-result{
+  display:none;flex-direction:column;align-items:center;
+  padding:36px 20px 120px;text-align:center;
+  flex:1;overflow-y:auto;
+  cursor:pointer; /* тап будь-де — пропустити анімацію (_dismissLessonCelebration) */
 }
-#streak-celebration.show{ display:flex; }
-#streak-celebration.fade-out{ transition:opacity .35s ease; opacity:0; }
+#lesson-result.show{ display:flex; }
 
-/* ── #lesson-celebration — ІНША анімація, ніж вогонь стріку ──────────
-   Вогонь (#streak-celebration) — 1 раз на день, коли стрік реально
-   зростає. Це — після КОЖНОГО завершення уроку/довгого діалогу/
-   граматики в Навчанні, тож навмисно спокійніша й швидша: кільце, що
-   розходиться пульсом, і галочка замість мерехтливого полум'я з
-   лічильником-одометром — щоб не зливалась із вогнем і не набридала
-   при частому повторенні. */
-#lesson-celebration{
-  position:fixed;inset:0;z-index:9700;
-  display:none;align-items:center;justify-content:center;
-  /* Навмисно БЕЗ затемнення/блюру фону (раніше було rgba(20,16,8,.72)+blur) —
-     під цим оверлеєм лишається видимим щойно показаний #lesson-result
-     (заголовок, час уроку, "M зароблено" в lr-stats), і затемнення
-     ховало б його на весь час святкування. pointer-events на самому
-     контейнері вимкнені (крізь порожній фон можна тапати), а на .lc-inner
-     повернені — клік по картці святкування, як і раніше, закриває його. */
-  pointer-events:none;
-}
-#lesson-celebration .lc-inner{ pointer-events:auto; }
-#lesson-celebration.show{ display:flex; }
-#lesson-celebration.fade-out{ transition:opacity .35s ease; opacity:0; }
-.lc-inner{
-  text-align:center;
-  animation: streakCelPop .45s cubic-bezier(.34,1.56,.64,1);
-}
-/* Картка-підложка — раніше легкість читання .lc-label забезпечувало
-   темне затемнення всього фону; тепер фону-затемнення нема (щоб час
-   уроку в #lesson-result лишався видимим позаду), тож самій анімації
-   потрібна власна непрозора "земля" під ногами, інакше золотий текст/
-   кільце губилися б на строкатому фоні статистики позаду. */
-.lc-card{
-  background:var(--card,#fff);
-  border-radius:20px;
-  padding:28px 32px 24px;
-  box-shadow:0 12px 40px rgba(20,16,8,.22), 0 2px 10px rgba(20,16,8,.12);
-  border:1px solid var(--border,rgba(0,0,0,.06));
-}
-.lc-burst{
-  position:relative;width:120px;height:120px;margin:0 auto;
+.lr-burst{
+  position:relative;width:112px;height:112px;margin:0 auto 6px;
   display:flex;align-items:center;justify-content:center;
+  animation: lrPopIn .5s cubic-bezier(.34,1.56,.64,1);
 }
-.lc-burst-ring{
+.lr-burst-ring{
   position:absolute;inset:0;border-radius:50%;
   border:3px solid var(--gold);
-  animation:lcRingPulse 1s cubic-bezier(.16,.84,.44,1) infinite;
+  animation:lcRingPulse 1.1s cubic-bezier(.16,.84,.44,1) infinite;
 }
-.lc-burst-icon{
-  position:relative;font-size:56px;line-height:1;color:var(--gold);
-  filter:drop-shadow(0 0 18px rgba(201,168,76,.55));
+.lr-burst-icon{
+  position:relative;font-size:54px;line-height:1;
+  filter:drop-shadow(0 0 16px rgba(201,168,76,.45));
 }
 @keyframes lcRingPulse{
   0%{ transform:scale(.6); opacity:.9; }
   100%{ transform:scale(1.35); opacity:0; }
 }
-.lc-label{
-  font-size:19px;font-weight:700;color:var(--ink);
-  font-family:'Inter',sans-serif;margin-top:14px;
-}
-/* Час виконання уроку — статистика, яку раніше було видно лише на
-   #lesson-result ПІД цим оверлеєм (затемнення фону нема, але картка
-   святкування (.lc-card) все одно своїм фоном перекриває той рядок).
-   Дублюємо тут же, у самій картці — надійніше й простіше, ніж
-   позиціювати оверлей відносно координат конкретного рядка на іншому
-   екрані (яка ще й скролиться/змінює позицію залежно від довжини
-   контенту над нею). */
-.lc-time-row{
-  margin-top:6px;font-size:13px;color:var(--muted);
-  font-family:'Inter',sans-serif;
-}
-/* Рядок "Зароблено N 𐌌" — сам текст статичний (не літає), летить лише
-   КЛОН цього елемента (createFlyingXPClone нижче), а оригінал ховається
-   на час польоту (visibility:hidden) і повертається видимим при
-   наступному показі святкування. */
-.lc-xp-row{
-  margin-top:10px;font-size:17px;font-weight:700;color:var(--gold);
-  font-family:'Inter',sans-serif;
-  display:flex;align-items:center;justify-content:center;gap:6px;
-  animation: lcXpPop .4s cubic-bezier(.34,1.56,.64,1) .15s backwards;
-}
-@keyframes lcXpPop{
-  0%{ transform:scale(.5); opacity:0; }
+@keyframes lrPopIn{
+  0%{ transform:scale(.3); opacity:0; }
+  60%{ transform:scale(1.12); opacity:1; }
   100%{ transform:scale(1); opacity:1; }
 }
-.streak-cel-inner{
-  text-align:center;
-  animation: streakCelPop .5s cubic-bezier(.34,1.56,.64,1);
+.lr-title{
+  font-size:24px;font-weight:800;color:var(--ink);
+  font-family:'Inter',sans-serif;margin-bottom:4px;
+  animation: lrFadeUp .45s ease .1s backwards;
 }
-.streak-cel-flame{
-  width:130px;height:130px;margin:0 auto;
-  display:flex;align-items:center;justify-content:center;
-  filter: drop-shadow(0 0 24px rgba(255,140,0,.55));
-  animation: streakCelBounce 1.1s ease-in-out infinite;
+.lr-sub{
+  font-size:var(--fs-tertiary);color:var(--muted);margin-bottom:26px;
+  animation: lrFadeUp .45s ease .18s backwards;
 }
+@keyframes lrFadeUp{
+  0%{ transform:translateY(8px); opacity:0; }
+  100%{ transform:translateY(0); opacity:1; }
+}
+
+/* Картки статистики — 2 колонки замість плаского списку рядків: кожна
+   цифра власна маленька "нагородна картка" з іконкою. XP-картка трохи
+   виділена (золота рамка+сяйво), бо саме вона за секунду "полетить" у
+   хедер (_flyXpToHeader, JS) — той самий летючий FLIP-клон, що й раніше,
+   лише тепер джерело — реальна картка статистики, а не окремий рядок
+   попапу, який дублював те саме число вдруге. */
+.lr-stats{
+  width:100%;max-width:340px;
+  display:grid;grid-template-columns:1fr 1fr;gap:10px;
+  margin-bottom:16px;
+  animation: lrFadeUp .45s ease .26s backwards;
+}
+.lr-stat-tile{
+  background:var(--card);border-radius:14px;
+  border:1px solid var(--border);padding:12px 10px;
+  display:flex;flex-direction:column;align-items:center;gap:2px;
+}
+.lr-stat-tile-icon{ font-size:18px;margin-bottom:2px; }
+.lr-stat-tile-val{ font-size:19px;font-weight:800;color:var(--ink);font-family:'Inter',sans-serif; }
+.lr-stat-tile-label{ font-size:11.5px;color:var(--muted);font-family:'Inter',sans-serif; }
+.lr-stat-tile.xp{
+  border-color:rgba(201,168,76,.4);
+  background:linear-gradient(160deg, rgba(201,168,76,.1), var(--card));
+}
+.lr-stat-tile.xp .lr-stat-tile-val{ color:var(--gold); }
+
+/* Картка стріку — вбудована в той самий екран (раніше окремий
+   повноекранний попап #streak-celebration із затемненим фоном на весь
+   екран). Виїжджає знизу вже ПІСЛЯ того, як користувач встиг прочитати
+   основну статистику вище — власна "бонусна" мить у тій самій стрічці
+   подій, а не окремий, візуально не пов'язаний екран. */
+.lr-streak-card{
+  width:100%;max-width:340px;
+  background:linear-gradient(160deg, #2a2015, var(--forest));
+  border-radius:18px;padding:16px 20px 14px;margin-bottom:14px;
+  border:1px solid rgba(255,180,60,.3);
+  box-shadow:0 8px 24px rgba(0,0,0,.18);
+  animation: lrStreakSlideIn .5s cubic-bezier(.34,1.56,.64,1) backwards;
+}
+@keyframes lrStreakSlideIn{
+  0%{ transform:translateY(16px) scale(.92); opacity:0; }
+  100%{ transform:translateY(0) scale(1); opacity:1; }
+}
+/* .cel-fire всередині картки стріку масштабуємо через transform (не
+   width/height) — самі "язики полум'я" всередині мають фіксовані
+   пікселі й margin-left для центрування, transform:scale() зменшує їх
+   пропорційно без потреби перевизначати кожен окремо. */
+.lr-streak-card .cel-fire{ transform:scale(.6); transform-origin:center bottom; margin:0 auto -22px; }
+.lr-streak-num{
+  font-size:36px;font-weight:800;color:#fff;
+  font-family:'Inter',sans-serif;
+}
+.lr-streak-label{ font-size:15px;color:var(--gold-lt);font-family:'Inter',sans-serif; }
+.lr-streak-frozen-note{
+  font-size:13px;color:#bfe3ff;font-family:'Inter',sans-serif;margin-top:8px;
+  background:rgba(191,227,255,.14);border-radius:20px;
+  padding:4px 12px;display:inline-block;
+}
+.lr-continue-hint{
+  font-size:12.5px;color:var(--muted);font-family:'Inter',sans-serif;
+  margin-top:2px;opacity:.7;
+  animation: lrFadeUp .4s ease .55s backwards;
+}
+
 /* Вогонь на чистому CSS (без зовнішніх залежностей/мережі — раніше тут
    був Lottie з CDN, який міг просто не завантажитись при відсутній
    мережі чи заблокованому CDN). Три шари "полум'я" різного розміру й
@@ -2000,8 +2012,8 @@ body{
   background: radial-gradient(circle at 50% 85%, #fff6d8 0%, #ffe27a 55%, #ffb347 100%);
 }
 /* Клас cel-fire-anim перемикається JS-функцією _restartStreakFlameAnim()
-   при кожному показі celebration-екрана — щоб анімація завжди
-   стартувала з нуля, а не продовжувала довільну фазу з минулого разу. */
+   при кожному показі картки стріку — щоб анімація завжди стартувала з
+   нуля, а не продовжувала довільну фазу з минулого разу. */
 .cel-fire-anim .cel-fire-flame-1{ animation: celFlameFlicker1 1.6s ease-in-out infinite; }
 .cel-fire-anim .cel-fire-flame-2{ animation: celFlameFlicker2 1.3s ease-in-out infinite; }
 .cel-fire-anim .cel-fire-flame-3{ animation: celFlameFlicker3 1s ease-in-out infinite; }
@@ -2020,10 +2032,6 @@ body{
   0%,100%{ transform:scaleY(1) translateY(0) rotate(0deg); }
   50%{ transform:scaleY(1.18) translateY(-4px) rotate(-2deg); }
 }
-.streak-cel-num{
-  font-size:64px;font-weight:800;color:#fff;
-  font-family:'Inter',sans-serif;margin-top:4px;
-}
 /* Лічильник-одометр: кожна цифра — вертикальна "стрічка" з послідовністю
    0-9, що прокручується від СТАРОГО значення до НОВОГО (animateOdometer()),
    як лічильник пробігу старого автомобіля. */
@@ -2038,53 +2046,9 @@ body{
   will-change:transform;
 }
 .odo-strip span{ display:block; height:1em; line-height:1; }
-.streak-cel-label{
-  font-size:18px;color:var(--gold);
-  font-family:'Inter',sans-serif;margin-top:2px;
-}
-/* Підпис "врятовано заморозкою" — з'являється лише коли showStreakCelebration()
-   отримала opts.frozenDaysUsed > 0 (див. srUpdateStreak). */
-.streak-cel-frozen-note{
-  font-size:14px;color:#bfe3ff;
-  font-family:'Inter',sans-serif;margin-top:8px;
-  background:rgba(191,227,255,.14);border-radius:20px;
-  padding:4px 12px;display:inline-block;
-}
-@keyframes streakCelPop{
-  0%{ transform:scale(.4); opacity:0; }
-  60%{ transform:scale(1.08); opacity:1; }
-  100%{ transform:scale(1); opacity:1; }
-}
-@keyframes streakCelBounce{
-  0%,100%{ transform:translateY(0) scale(1); }
-  50%{ transform:translateY(-10px) scale(1.06); }
-}
 
-/* Результат уроку */
-#lesson-result{
-  display:none;flex-direction:column;align-items:center;
-  padding:28px 20px 120px;text-align:center;
-  flex:1;overflow-y:auto;
-}
-#lesson-result.show{ display:flex; }
-.lr-emoji{ font-size:56px;margin-bottom:8px; }
-.lr-title{ font-size:22px;font-weight:800;color:var(--ink);
-  font-family:'Inter',sans-serif;margin-bottom:4px; }
-.lr-sub{ font-size:var(--fs-tertiary);color:var(--muted);margin-bottom:24px; }
-.lr-stats{
-  width:100%;max-width:320px;
-  background:var(--card);border-radius:16px;
-  border:1px solid var(--border);padding:16px;
-  margin-bottom:20px;
-}
-.lr-stat-row{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:6px 0;border-bottom:1px solid var(--border);font-size:14px;
-}
-.lr-stat-row:last-child{border-bottom:none;}
-.lr-stat-val{ font-weight:700;color:var(--gold); }
-
-/* Кнопки результату уроку */
+/* Кнопки результату уроку (перевикористовуються й деінде — favorites
+   empty-state, lfNextStep) */
 .lr-btn-primary{
   display:block;width:100%;max-width:320px;
   padding:17px 20px;border-radius:16px;border:none;
@@ -3571,48 +3535,46 @@ body{
 
     <!-- VOKABELN -->
     <div id="view-vocab" class="view active card-view">
-      <!-- Повноекранна анімація збільшення стріку (див. showStreakCelebration) -->
-      <div id="streak-celebration" onclick="_dismissStreakCelebration()">
-        <div class="streak-cel-inner">
-          <div class="streak-cel-flame" id="streak-cel-flame">
-            <div class="cel-fire cel-fire-anim">
-              <div class="cel-fire-flame cel-fire-flame-1"></div>
-              <div class="cel-fire-flame cel-fire-flame-2"></div>
-              <div class="cel-fire-flame cel-fire-flame-3"></div>
-            </div>
-          </div>
-          <div class="streak-cel-num" id="streak-cel-num">1</div>
-          <div class="streak-cel-label" id="streak-cel-label"></div>
-          <div class="streak-cel-frozen-note" id="streak-cel-frozen-note" style="display:none"></div>
+      <!-- ЄДИНИЙ повноекранний екран результату уроку/діалогу/граматики.
+           РАНІШЕ це були ТРИ окремі шари: статичний #lesson-result
+           (заголовок+статистика) → повноекранний попап #lesson-celebration
+           ПОВЕРХ нього з ДУБЛЬОВАНИМИ заголовком/часом/M-балами (бо картка
+           попапу перекривала оригінал — і саме ЦЕ дублювання й було
+           потрібно прибрати) → іноді ще й окремий повноекранний попап
+           #streak-celebration (вогонь стріку) ПОВЕРХ ОБОХ. Тепер —
+           один екран, що сам розкривається в кілька стадій анімацією
+           (showLessonCelebration нижче): іконка спалахує → заголовок і
+           статистика (M-бали рахуються вгору й летять у хедер) → за
+           потреби, за секунду-другу, знизу виїжджає картка стріку. Кожен
+           факт видно РІВНО ОДИН РАЗ. Тап будь-де — пропустити анімацію
+           й перейти одразу. -->
+      <div id="lesson-result" onclick="_dismissLessonCelebration()">
+        <div class="lr-burst" id="lr-burst">
+          <span class="lr-burst-ring"></span>
+          <span class="lr-burst-icon" id="lr-emoji">✓</span>
         </div>
-      </div>
-
-      <!-- Повноекранне святкування "урок/діалог/граматика завершено" —
-           ІНША анімація, ніж вогонь стріку (той — 1 раз на день, це —
-           після КОЖНОГО завершення уроку/довгого діалогу/граматики).
-           Візуально самостійний компонент, не режим вогню. -->
-      <div id="lesson-celebration" onclick="_dismissLessonCelebration()">
-        <div class="lc-inner">
-          <div class="lc-card">
-            <div class="lc-burst" id="lc-burst">
-              <span class="lc-burst-ring"></span>
-              <span class="lc-burst-icon" id="lc-burst-icon">✓</span>
-            </div>
-            <div class="lc-label" id="lc-label"></div>
-            <div class="lc-time-row" id="lc-time-row" style="display:none"></div>
-            <div class="lc-xp-row" id="lc-xp-row" style="display:none">
-              <span id="lc-xp-text"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Результат уроку -->
-      <div id="lesson-result">
-        <div class="lr-emoji" id="lr-emoji">🎉</div>
         <div class="lr-title" id="lr-title"></div>
         <div class="lr-sub" id="lr-sub"></div>
         <div class="lr-stats" id="lr-stats"></div>
+        <!-- З'являється лише якщо стрік СЬОГОДНІ реально зріс
+             (srUpdateStreak → streakResult.increased) — той самий
+             вогонь+одометр, що раніше жив в окремому #streak-celebration,
+             тепер вбудований у той самий екран власною карткою. -->
+        <div class="lr-streak-card" id="lr-streak-card" style="display:none">
+          <div class="cel-fire cel-fire-anim" id="lr-streak-flame">
+            <span class="cel-fire-flame cel-fire-flame-1"></span>
+            <span class="cel-fire-flame cel-fire-flame-2"></span>
+            <span class="cel-fire-flame cel-fire-flame-3"></span>
+          </div>
+          <div class="lr-streak-num" id="lr-streak-num">1</div>
+          <div class="lr-streak-label" id="lr-streak-label"></div>
+          <div class="lr-streak-frozen-note" id="lr-streak-frozen-note" style="display:none"></div>
+          <!-- Бонусна заморозка за віху 3/7 днів (srUpdateStreak) —
+               окремий рядок від "врятовано заморозкою" вище (різні,
+               хоч і рідко коли одночасні, причини). -->
+          <div class="lr-streak-frozen-note" id="lr-streak-milestone-note" style="display:none"></div>
+        </div>
+        <div class="lr-continue-hint" id="lr-continue-hint" data-i18n="lr_continue_hint">Weiter geht's gleich…</div>
       </div>
 
       <div class="vocab-top">
@@ -4062,8 +4024,9 @@ body{
     </div>
     </div><!-- /ГРУПА 3 -->
 
-    <!-- ГРУПА 4: Технічне ────────────────────────────────────── -->
-    <div class="ssec-group">
+    <!-- ГРУПА 4: Технічне — прихована за замовчуванням (лише Debug), -->
+    <!-- розблоковується 5 тапами по версії застосунку внизу (_debugVersionTap) -->
+    <div class="ssec-group" id="settings-group-technical" style="display:none">
     <div class="ssec-group-title">🛠 <span data-i18n="grp_technical">Technisch</span><span class="ssec-group-line"></span></div>
 
     <!-- 8. Налагодження — згорнуто за замовчуванням, клік по заголовку розгортає -->
@@ -4169,8 +4132,10 @@ body{
     </div>
     </div><!-- /ГРУПА 4 -->
 
-    <!-- Версія додатку -->
-    <div class="app-footer-version">
+    <!-- Версія додатку — 5 тапів поспіль розблоковують приховану секцію
+         "Технічне"/Debug вище (_debugVersionTap). Навмисно без жодного
+         візуального натяку — це прихований жест, а не видима кнопка. -->
+    <div class="app-footer-version" onclick="_debugVersionTap()">
     MOVA v<span id="app-ver"></span>
     </div>
     </div>
@@ -4211,7 +4176,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '634-20c4704';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4817,11 +4782,12 @@ const I18N = {
     sec_data:'Daten',
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
     sr_readiness_info:'Zeigt, wie gut Karten verankert sind (≥2 richtige Wiederholungen, noch nicht fällig) — nicht nur ob sie schon gesehen wurden.',
-    sec_streak_freeze:'Streak-Schutz', streak_freeze_info:'Ein Streak-Schutz bewahrt deine Serie automatisch, wenn du einen Tag verpasst. Du hast 3 kostenlos erhalten — weitere kannst du mit M-Punkten kaufen.',
+    sec_streak_freeze:'Streak-Schutz', streak_freeze_info:'Ein Streak-Schutz bewahrt deine Serie automatisch, wenn du einen Tag verpasst. Du startest mit 3 kostenlos, +1 an Tag 3 und +1 an Tag 7 deiner Serie — weitere kannst du mit M-Punkten kaufen.',
     btn_buy_freeze:'Weiteren kaufen (+1)', btn_freeze_max:'Maximum erreicht',
     msg_freeze_no_m:'Nicht genug M-Punkte (benötigt: {cost} 𐌌)', msg_freeze_bought:'🧊 Streak-Schutz hinzugefügt!', msg_freeze_max:'Du hast bereits die maximale Anzahl an Streak-Schutz',
     msg_streak_broken:'Deine Serie ist abgerissen 😔 Wir starten neu — heute hast du schon den ersten Schritt gemacht!',
     streak_frozen_note:'🧊 Durch Streak-Schutz gerettet', streak_modal_close:'Verstanden',
+    streak_milestone_freeze:'🎁 +1 Streak-Schutz als Belohnung!',
     sec_sfx:'Soundeffekte', sub_sfx:'Bei richtig/falsch',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
@@ -4857,6 +4823,7 @@ const I18N = {
     lp_module_prefix:'Modul',
     lp_chapter_prefix:'Kapitel',
     lp_all_done:'Kurs abgeschlossen!',
+    lr_continue_hint:'Weiter geht\'s gleich…',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -4912,11 +4879,12 @@ const I18N = {
     sec_data:'Дані',
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
     sr_readiness_info:'Показує, наскільки добре закріплені картки (≥2 правильні повторення, ще не due) — а не просто факт, що їх переглянули.',
-    sec_streak_freeze:'Заморозка стріку', streak_freeze_info:'Заморозка автоматично рятує твій стрік, якщо пропустиш день. Перші 3 — безкоштовно, далі можна докупити за М-бали.',
+    sec_streak_freeze:'Заморозка стріку', streak_freeze_info:'Заморозка автоматично рятує твій стрік, якщо пропустиш день. Стартуєш з 3 безкоштовних, +1 на 3-й день стріку і +1 на 7-й — далі можна докупити за М-бали.',
     btn_buy_freeze:'Докупити ще (+1)', btn_freeze_max:'Максимум досягнуто',
     msg_freeze_no_m:'Замало М-балів (потрібно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку додано!', msg_freeze_max:'У тебе вже максимум заморозок',
     msg_streak_broken:'Стрік перервався 😔 Починаємо занову — але сьогодні ти вже зробив перший крок!',
     streak_frozen_note:'🧊 Врятовано заморозкою', streak_modal_close:'Зрозуміло',
+    streak_milestone_freeze:'🎁 +1 заморозка в нагороду!',
     sec_sfx:'Звукові ефекти', sub_sfx:'При правильній/неправильній відповіді',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
@@ -4948,6 +4916,7 @@ const I18N = {
     lp_module_prefix:'Модуль',
     lp_chapter_prefix:'Розділ',
     lp_all_done:'Курс завершено!',
+    lr_continue_hint:'Продовжуємо…',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -5002,11 +4971,12 @@ const I18N = {
     sec_data:'Data',
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
     sr_readiness_info:'Shows how well cards are retained (≥2 correct repetitions, not due yet) — not just whether you have seen them.',
-    sec_streak_freeze:'Streak Freeze', streak_freeze_info:'A streak freeze automatically saves your streak if you miss a day. You get 3 for free — you can buy more with M points.',
+    sec_streak_freeze:'Streak Freeze', streak_freeze_info:'A streak freeze automatically saves your streak if you miss a day. You start with 3 free, +1 on day 3 and +1 on day 7 of your streak — you can buy more with M points.',
     btn_buy_freeze:'Buy another (+1)', btn_freeze_max:'Maximum reached',
     msg_freeze_no_m:'Not enough M points (needs {cost} 𐌌)', msg_freeze_bought:'🧊 Streak freeze added!', msg_freeze_max:'You already have the maximum freezes',
     msg_streak_broken:'Your streak broke 😔 Starting fresh — but you already took the first step today!',
     streak_frozen_note:'🧊 Saved by a freeze', streak_modal_close:'Got it',
+    streak_milestone_freeze:'🎁 +1 streak freeze as a reward!',
     sec_sfx:'Sound effects', sub_sfx:'On correct/wrong answers',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
@@ -5038,6 +5008,7 @@ const I18N = {
     lp_module_prefix:'Module',
     lp_chapter_prefix:'Chapter',
     lp_all_done:'Course completed!',
+    lr_continue_hint:'Continuing…',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -5093,11 +5064,12 @@ const I18N = {
     sec_data:'Данные',
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
     sr_readiness_info:'Показывает, насколько хорошо закреплены карточки (≥2 правильных повторения, ещё не due) — а не просто факт, что их просмотрели.',
-    sec_streak_freeze:'Заморозка стрика', streak_freeze_info:'Заморозка автоматически спасает твой стрик, если пропустишь день. Первые 3 — бесплатно, дальше можно докупить за М-баллы.',
+    sec_streak_freeze:'Заморозка стрика', streak_freeze_info:'Заморозка автоматически спасает твой стрик, если пропустишь день. Начинаешь с 3 бесплатных, +1 на 3-й день стрика и +1 на 7-й — дальше можно докупить за М-баллы.',
     btn_buy_freeze:'Докупить ещё (+1)', btn_freeze_max:'Достигнут максимум',
     msg_freeze_no_m:'Недостаточно М-баллов (нужно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку добавили!', msg_freeze_max:'У тебя уже максимум заморозок',
     msg_streak_broken:'Стрик прервался 😔 Начинаем заново — но сегодня ты уже сделал первый шаг!',
     streak_frozen_note:'🧊 Спасено заморозкой', streak_modal_close:'Понятно',
+    streak_milestone_freeze:'🎁 +1 заморозка в награду!',
     sec_sfx:'Звуковые эффекты', sub_sfx:'При правильном/неправильном ответе',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
@@ -5129,6 +5101,7 @@ const I18N = {
     lp_module_prefix:'Модуль',
     lp_chapter_prefix:'Раздел',
     lp_all_done:'Курс завершён!',
+    lr_continue_hint:'Продолжаем…',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -6268,11 +6241,11 @@ function srBuildDailyPlan(allCards){
   return result;
 }
 
-// Оновити streak після сесії. Повертає {streak, increased, prevStreak} —
-// increased=true лише якщо число ЗРОСЛО (не при повторному виклику того
-// самого дня). НЕ обнулюється при пропущеному дні — рахує кожен день,
-// коли умову виконано, кумулятивно (тимчасове рішення до того, як
-// зробимо повноцінну гейміфікацію/пояснення механіки стріку).
+// Оновити streak після сесії. Повертає {streak, increased, prevStreak,
+// frozenDaysUsed, streakBroken, milestoneFreezeGranted}. increased=true
+// лише якщо число ЗРОСЛО (не при повторному виклику того самого дня).
+// Стрік ЗГОРАЄ при пропущеному дні без достатньої кількості заморозок
+// (див. STREAK_FREEZE_* вище) — детально в кожній гілці нижче.
 function srUpdateStreak(){
   const state = srLoadState();
   const today = srToISO(new Date());
@@ -6280,38 +6253,78 @@ function srUpdateStreak(){
   const prevStreak = state.streak ?? 0;
   let frozenDaysUsed = 0;
   let streakBroken = false;
+  // "Відлік до наступної бонусної заморозки" (freezeMilestoneStreak) —
+  // ОКРЕМИЙ від основного streak лічильник. Навіщо окремий: streak може
+  // йти собі й далі (50-й день поспіль), а заморозку могли щойно
+  // витратити на покриття пропуску — і саме ТОДІ, а не на 50-й
+  // абсолютний день стріку, має знову початись відлік "3 дні → +1,
+  // 7 днів → +1". Тобто цей лічильник скидається на кожному
+  // freeze-покритому пропуску (і на повному розриві стріку теж), а
+  // основний streak — лише на повному розриві.
+  let freezeMilestoneStreak = state.freezeMilestoneStreak ?? prevStreak;
 
   if(last !== today){
     if(!last){
       // Перший урок узагалі на цьому пристрої — стрік стартує з 1,
       // заморозки тут ні до чого (нема попередньої дати для розриву).
       state.streak = 1;
+      freezeMilestoneStreak = 1;
     } else {
       // Скільки ПОВНІСТЮ пропущених днів між останньою сесією і сьогодні
       // (0, якщо вчора теж займались — нормальне продовження стріку).
       const missedDays = srDaysBetween(last, today) - 1;
       if(missedDays <= 0){
         state.streak = prevStreak + 1;
+        freezeMilestoneStreak += 1;
       } else {
         const freezes = srLoadFreezes();
         if(freezes >= missedDays){
           // Заморозок вистачає, щоб покрити ВЕСЬ пропуск — стрік рятуємо
-          // і рахуємо як звичайне продовження.
+          // і рахуємо як звичайне продовження. Але саме ЗАРАЗ заморозку
+          // реально ВИТРАТИЛИ — тож відлік до наступної бонусної
+          // скидаємо на "1" (сьогодні — перший день нового відліку),
+          // а не продовжуємо, як робимо з основним streak.
           srSaveFreezes(freezes - missedDays);
           frozenDaysUsed = missedDays;
           state.streak = prevStreak + 1;
+          freezeMilestoneStreak = 1;
         } else {
           // Заморозок не вистачає — стрік згорає. Сьогоднішній урок вже
           // пройдено, тож стартуємо новий відлік з 1, а не з 0.
           state.streak = 1;
+          freezeMilestoneStreak = 1;
           streakBroken = prevStreak > 0;
         }
       }
     }
   }
+
+  // ── БОНУСНІ ЗАМОРОЗКИ ЗА РАННІ ВІХИ (3 і 7 днів ВІД ОСТАННЬОГО
+  //    СКИДАННЯ, не від абсолютного початку стріку) ─────────────────
+  // Свідомо НЕ "щодня" — Duolingo теж не роздає заморозку щодня, вони
+  // переважно КУПУЮТЬСЯ за ігрову валюту, і лише кілька великих віх
+  // дають бонус. Якщо давати +1 щодня — вже на 2-й день (при 3
+  // безкоштовних за замовчуванням) впремося у STREAK_FREEZE_MAX, і сама
+  // механіка миттєво знецінюється. Натомість — дві віхи, СКОНЦЕНТРОВАНІ
+  // саме в найризикованішому вікні утримання: 3 і 7 днів ПОСПІЛЬ БЕЗ
+  // витрати заморозки. Прив'язка саме до freezeMilestoneStreak (а не до
+  // state.streak) означає: якщо в користувача був період повного запасу
+  // заморозок (5/5), потім пропуск і заморозку витратили — відлік до
+  // наступної бонусної починається заново з наступного дня, незалежно
+  // від того, що сам streak як був 50-м днем, так і лишається.
+  let milestoneFreezeGranted = false;
+  if(freezeMilestoneStreak === 3 || freezeMilestoneStreak === 7){
+    const freezes = srLoadFreezes();
+    if(freezes < STREAK_FREEZE_MAX){
+      srSaveFreezes(freezes + 1);
+      milestoneFreezeGranted = true;
+    }
+  }
+
   state.lastSessionDate = today;
+  state.freezeMilestoneStreak = freezeMilestoneStreak;
   srSaveState(state);
-  return { streak: state.streak, increased: state.streak > prevStreak, prevStreak, frozenDaysUsed, streakBroken };
+  return { streak: state.streak, increased: state.streak > prevStreak, prevStreak, frozenDaysUsed, streakBroken, milestoneFreezeGranted };
 }
 
 // Dashboard stats
@@ -8868,6 +8881,54 @@ function debugToggleUnlockAll(checked){
   // перебудовуємо Lernpfad прямо зараз.
   if(typeof renderLernpfad === 'function') renderLernpfad();
   notify(checked ? '🔓 Усі уроки розблоковано (debug)' : '🔒 Розблокування вимкнено');
+}
+
+// ── Прихована секція "Технічне"/Debug: 5 тапів по версії застосунку ──
+// Debug-панель раніше була видима ВСІМ користувачам окремою секцією в
+// Settings, хоча призначена лише для розробника/тестування. Ховаємо її
+// зі звичайного інтерфейсу (розмітка лишається — просто display:none),
+// відкриваючи доступ прихованим жестом: 5 тапів поспіль по номеру
+// версії внизу Settings (типовий патерн "About"-екранів для
+// розробницьких опцій). Розблокування запам'ятовується (localStorage),
+// щоб не тапати заново щоразу при вході в Settings.
+const DEBUG_UNLOCK_KEY = 'mova_debug_unlocked';
+let _debugTapCount = 0;
+let _debugTapResetTimer = null;
+
+function debugIsUnlocked(){
+  try{ return localStorage.getItem(DEBUG_UNLOCK_KEY) === '1'; }catch(e){ return false; }
+}
+
+// Показує секцію, якщо вона вже була розблокована раніше — викликається
+// один раз при завантаженні застосунку (DOMContentLoaded нижче), щоб
+// розблокування не "забувалось" між сесіями.
+function debugRevealTechnicalGroupIfUnlocked(){
+  if(!debugIsUnlocked()) return;
+  const grp = document.getElementById('settings-group-technical');
+  if(grp) grp.style.display = '';
+}
+
+function _debugVersionTap(){
+  if(debugIsUnlocked()) return; // вже розблоковано — тапати більше нема сенсу
+  clearTimeout(_debugTapResetTimer);
+  _debugTapCount++;
+  if(_debugTapCount >= 5){
+    _debugTapCount = 0;
+    try{ localStorage.setItem(DEBUG_UNLOCK_KEY, '1'); }catch(e){}
+    const grp = document.getElementById('settings-group-technical');
+    if(grp){
+      grp.style.display = '';
+      setTimeout(()=> grp.scrollIntoView({behavior:'smooth', block:'start'}), 150);
+    }
+    if(typeof haptic !== 'undefined') haptic.success();
+    notify('🛠 Debug розблоковано');
+    return;
+  }
+  // Скидаємо лічильник, якщо між тапами пройшло занадто багато часу —
+  // інакше випадкові поодинокі тапи по версії протягом дня теж рано чи
+  // пізно накопичились би до 5.
+  _debugTapResetTimer = setTimeout(()=>{ _debugTapCount = 0; }, 2000);
+  if(typeof haptic !== 'undefined') haptic.light();
 }
 
 function lessonUnlocked(lesson){
@@ -11577,17 +11638,14 @@ function logPerf(msg){
   console.log('⏱ [splash-perf]', msg);
 }
 
-// ── Повноекранна анімація "стрік зріс" ──────────────────────────
+// ── Святкування "стрік зріс" (вбудована картка, див. _lrShowStreakCard) ──
 // Викликається лише коли srUpdateStreak() повернула increased:true
 // (див. srRecordLesson) — тобто рівно один раз на день, при завершенні
-// першого повного уроку. Автоматично зникає через 2.2с, або по тапу.
-// Лічильник-одометр: прокручує #streak-cel-num зі СТАРОГО значення (fromNum)
-// на НОВЕ (toNum) по цифрових "стрічках", як лічильник пробігу старого
-// авто. Для кожної позиції цифри будуємо послідовність від старої цифри
-// до нової (по колу через 9→0, якщо потрібно) і зсуваємо стрічку вгору,
-// щоб приземлитись рівно на новій цифрі. Якщо кількість цифр зросла
-// (напр. 9→10) — molодша позиція просто рахує з "0" (як зайве, поки
-// невидиме колесо одометра, що щойно з'явилось).
+// першого повного уроку.
+// Лічильник-одометр: прокручує будь-який переданий елемент зі СТАРОГО
+// значення (fromNum) на НОВЕ (toNum) по цифрових "стрічках", як лічильник
+// пробігу старого авто (використовується і для стріку, і для XP в хедері,
+// і для XP-плитки на екрані результату — el передається викликачем).
 function animateOdometer(el, fromNum, toNum){
   if(!el) return;
   const toStr = String(toNum);
@@ -11634,86 +11692,23 @@ function animateOdometer(el, fromNum, toNum){
   }
 }
 
-// Перезапускає CSS keyframe-анімацію вогню (streak-cel-flame): просто
+// Перезапускає CSS keyframe-анімацію вогню (lr-streak-flame): просто
 // перемикаючи клас, браузер лише "продовжив" би вже поточну фазу
 // анімації (вона infinite, ніколи не зупиняється). Тому щоразу форсуємо
 // reflow (читання offsetWidth) між removeClass/addClass — це змушує
 // браузер справді почати анімацію з нуля, а не з довільної фази.
 function _restartStreakFlameAnim(){
-  const el = document.getElementById('streak-cel-flame');
+  const el = document.getElementById('lr-streak-flame');
   if(!el) return;
   el.classList.remove('cel-fire-anim');
   void el.offsetWidth; // форсуємо reflow
   el.classList.add('cel-fire-anim');
 }
 
-// opts.generic:true — святкування БЕЗ конкретного числа (не перший урок
-// дня, або завершення діалогу): 🎉-іконка замість полум'я+одометра,
-// довільний текст замість "N днів поспіль". opts.onDone — викликається
-// ПІСЛЯ закриття анімації (авто через 2.2с, або одразу тапом) — для
-// сценаріїв, де після святкування треба ЩОСЬ ЗРОБИТИ (напр. одразу
-// перейти до наступного діалогу), а не просто показати кнопки.
-// Виключно вогонь стріку — 1 раз на день, коли стрік реально зростає
-// (streakResult.increased у lfShowResult вирішує, чи взагалі викликати
-// цю функцію). opts.onDone — колбек ПІСЛЯ закриття (авто через 2.2с або
-// тапом) — потрібен, щоб дочекатись цієї анімації перед показом
-// #lesson-celebration нижче, якщо обидві мають спрацювати того самого
-// дня (не накладати їх одна на одну).
-function showStreakCelebration(streak, prevStreak, opts){
-  opts = opts || {};
-  const el = document.getElementById('streak-celebration');
-  if(!el) return;
-  const numEl = document.getElementById('streak-cel-num');
-  const lblEl = document.getElementById('streak-cel-label');
-
-  if(numEl){
-    const from = (typeof prevStreak === 'number' && prevStreak >= 0) ? prevStreak : Math.max(0, streak-1);
-    animateOdometer(numEl, from, streak);
-  }
-  const lbl = {'de':'Tage in Folge!','uk':'днів поспіль!','en':'day streak!','ru':'дней подряд!'}[uiLang] || 'days!';
-  if(lblEl) lblEl.textContent = lbl;
-  // Якщо цей приріст стріку відбувся ЗАВДЯКИ заморозці (пропущений день
-  // покрито mova_streak_freezes) — показуємо про це окремий рядок, щоб
-  // не виглядало, ніби користувач помилково "не помітив" пропуску.
-  const frozenNote = document.getElementById('streak-cel-frozen-note');
-  if(frozenNote){
-    if(opts.frozenDaysUsed > 0){
-      frozenNote.textContent = t('streak_frozen_note');
-      frozenNote.style.display = '';
-    } else {
-      frozenNote.style.display = 'none';
-    }
-  }
-  _restartStreakFlameAnim();
-
-  el.classList.remove('fade-out');
-  el.classList.add('show');
-
-  clearTimeout(el._autoDismissTimer);
-  el._onDoneCallback = typeof opts.onDone === 'function' ? opts.onDone : null;
-  el._autoDismissTimer = setTimeout(_dismissStreakCelebration, 2200);
-
-  if(typeof haptic !== 'undefined') haptic.medium?.();
-}
-
-function _dismissStreakCelebration(){
-  const el = document.getElementById('streak-celebration');
-  if(!el || !el.classList.contains('show')) return;
-  clearTimeout(el._autoDismissTimer);
-  el.classList.add('fade-out');
-  const cb = el._onDoneCallback;
-  el._onDoneCallback = null;
-  setTimeout(()=>{
-    el.classList.remove('show','fade-out');
-    if(cb) cb();
-  }, 350);
-}
-
-// Летючий клон XP-рядка: FLIP-технікою (без бібліотек) переносить
+// Летючий клон XP-картки: FLIP-технікою (без бібліотек) переносить
 // візуальну копію елемента з поточної позиції в позицію хедер-іконки
 // балів (#h-xp), плавно зменшуючись і розчиняючись по дорозі. Оригінал
-// на час польоту ховається (visibility:hidden) — видно тільки клон,
-// сам #lesson-celebration лишається на місці й далі показує ✓ і підпис.
+// на час польоту ховається (visibility:hidden) — видно тільки клон.
 function _flyXpToHeader(sourceEl, onArrive){
   const targetEl = document.getElementById('h-xp');
   if(!sourceEl || !targetEl){ onArrive && onArrive(); return; }
@@ -11752,103 +11747,148 @@ function _flyXpToHeader(sourceEl, onArrive){
   }, 620);
 }
 
-// ІНША анімація, ніж вогонь стріку — після КОЖНОГО завершення уроку,
-// довгого діалогу (Dialogue Bonus) чи граматики (Grammar Bonus) у
-// Навчанні, незалежно від того, зростав сьогодні стрік чи ні.
-// opts.onDone — той самий патерн колбека, що й у showStreakCelebration,
-// для послідовного ланцюжка (напр. "Наступний діалог": дочекатись
-// анімації → потім перейти).
-// opts.xpEarned (опційно) — скільки балів нараховано за цей урок: якщо
-// > 0, після паузи "прочитати" запускається _flyXpToHeader() — число
-// летить у хедер, і ЛИШЕ ПІСЛЯ прильоту хедер розморожується
-// (window._xpDisplayFrozen, виставлений на старті уроку — див.
-// LF-конструктори) і одометр-анімацією рахує від старого total до нового
-// (щоб "летить, ПОТІМ збільшується", а не одразу видно фінальне число).
+// ══ ЄДИНИЙ ЕКРАН РЕЗУЛЬТАТУ (#lesson-result) ═══════════════════════
+// РАНІШЕ це були ТРИ окремі функції/шари (showLessonCelebration
+// відкривала попап #lesson-celebration ПОВЕРХ статичного #lesson-result
+// з ДУБЛЬОВАНИМИ заголовком/часом/XP, а showStreakCelebration —
+// ще один попап #streak-celebration ПОВЕРХ ОБОХ). Тепер showLessonCelebration
+// сама керує ЄДИНИМ екраном #lesson-result у кілька стадій:
+//   1) іконка спалахує одразу (CSS pop-in на #lr-burst, вже в розмітці)
+//   2) за паузу "прочитати" (900мс) — якщо є XP — картка XP рахує вгору
+//      й летить у хедер (_flyXpToHeader), хедер розморожується
+//   3) якщо стрік СЬОГОДНІ реально зріс (opts.streakResult.increased,
+//      обчислено в lfShowResult) — за ще одну паузу знизу виїжджає
+//      картка стріку (вогонь+одометр, раніше окремий повноекранний
+//      попап) на власний час "прочитати"
+//   4) opts.onDone викликається після ПОВНОЇ послідовності — або одразу,
+//      якщо користувач тапнув по екрану раніше (_dismissLessonCelebration)
+// opts: { xpEarned, streakResult, frozenDaysUsed, onDone }
 function showLessonCelebration(opts){
   opts = opts || {};
-  const el = document.getElementById('lesson-celebration');
+  const el = document.getElementById('lesson-result');
   if(!el) return;
-  const iconEl   = document.getElementById('lc-burst-icon');
-  const lblEl    = document.getElementById('lc-label');
-  const timeEl   = document.getElementById('lc-time-row');
-  const xpRowEl  = document.getElementById('lc-xp-row');
-  const xpTxtEl  = document.getElementById('lc-xp-text');
 
-  if(iconEl) iconEl.textContent = opts.icon || '✓';
-  if(lblEl)  lblEl.textContent  = opts.label ||
-    (uiLang==='uk'?'Урок завершено!':uiLang==='en'?'Lesson completed!':uiLang==='ru'?'Урок завершён!':'Lektion abgeschlossen!');
+  // Перезапускаємо pop-in іконки навіть якщо елемент лишився в DOM з
+  // попереднього уроку (той самий reflow-прийом, що й у вогні стріку).
+  const burstEl = document.getElementById('lr-burst');
+  if(burstEl){ burstEl.style.animation = 'none'; void burstEl.offsetWidth; burstEl.style.animation = ''; }
 
-  if(timeEl){
-    if(opts.timeStr){
-      const prefix = uiLang==='uk'?'Час: ':uiLang==='en'?'Time: ':uiLang==='ru'?'Время: ':'Zeit: ';
-      timeEl.textContent = prefix + opts.timeStr;
-      timeEl.style.display = '';
-    } else {
-      timeEl.style.display = 'none';
-    }
-  }
+  clearTimeout(el._celTimer1);
+  clearTimeout(el._celTimer2);
+  el._onDoneCallback = typeof opts.onDone === 'function' ? opts.onDone : null;
+  el._streakQueued   = (opts.streakResult && opts.streakResult.increased) ? opts.streakResult : null;
+  el._frozenDaysUsed = opts.frozenDaysUsed || 0;
 
   const xpEarned = opts.xpEarned|0;
-  if(xpRowEl){
-    if(xpEarned > 0){
-      xpTxtEl.innerHTML = (uiLang==='uk'?'Зароблено ':uiLang==='en'?'Earned ':uiLang==='ru'?'Заработано ':'Verdient ')
-        + '+'+xpEarned+' <span style="color:var(--gold)">𐌌</span>';
-      xpRowEl.style.display = '';
-      xpRowEl.style.visibility = ''; // на випадок якщо лишилось hidden від попереднього польоту
-    } else {
-      xpRowEl.style.display = 'none';
-    }
-  }
-
-  el.classList.remove('fade-out');
-  el.classList.add('show');
-
-  clearTimeout(el._autoDismissTimer);
-  el._onDoneCallback = typeof opts.onDone === 'function' ? opts.onDone : null;
-
-  if(xpEarned > 0 && xpRowEl){
-    // Даємо секунду "прочитати", тоді летимо, тоді розморожуємо хедер.
-    setTimeout(()=>{
-      _flyXpToHeader(xpRowEl, ()=>{
-        const before = Math.max(0, xpGetTotal() - xpEarned);
+  const xpTile = document.querySelector('#lr-stats .lr-stat-tile.xp .lr-stat-tile-val');
+  if(xpEarned > 0 && xpTile){
+    // Стартове значення картки — те, що БУЛО до цього уроку (щойно
+    // нарахований бонус візуально ще не показуємо), даємо секунду
+    // прочитати заголовок/картки, тоді рахуємо вгору й летимо в хедер.
+    const before = Math.max(0, xpGetTotal() - xpEarned);
+    xpTile.textContent = before;
+    el._celTimer1 = setTimeout(()=>{
+      animateOdometer(xpTile, before, before+xpEarned);
+      const xpTileCard = document.querySelector('#lr-stats .lr-stat-tile.xp');
+      _flyXpToHeader(xpTileCard, ()=>{
         window._xpDisplayFrozen = false;
         const hxc = document.getElementById('h-xp-count');
         if(hxc && typeof animateOdometer === 'function') animateOdometer(hxc, before, xpGetTotal());
         else if(hxc) hxc.textContent = xpGetTotal();
       });
-    }, 1050);
-    el._autoDismissTimer = setTimeout(_dismissLessonCelebration, 2300);
-  } else {
-    // Без балів (не мало б траплятись — бонус за урок нараховується
-    // завжди — але про всяк випадок лишаємо коротший старий таймінг).
-    el._autoDismissTimer = setTimeout(_dismissLessonCelebration, 1600);
+    }, 900);
   }
+
+  _lrProceedAfterStats(el, xpEarned > 0 ? 2100 : 1200);
 
   if(typeof haptic !== 'undefined') haptic.medium?.();
 }
 
-function _dismissLessonCelebration(){
-  const el = document.getElementById('lesson-celebration');
-  if(!el || !el.classList.contains('show')) return;
-  clearTimeout(el._autoDismissTimer);
-  el.classList.add('fade-out');
+// Наступна стадія після того, як основна статистика встигла "прожитись":
+// або показуємо картку стріку (і фінішуємо вже ПІСЛЯ неї), або одразу
+// завершуємо всю послідовність.
+function _lrProceedAfterStats(el, delay){
+  el._celTimer2 = setTimeout(()=>{
+    if(el._streakQueued){
+      _lrShowStreakCard(el._streakQueued, el._frozenDaysUsed);
+      el._celTimer2 = setTimeout(()=> _finishLessonCelebration(el), 2400);
+    } else {
+      _finishLessonCelebration(el);
+    }
+  }, delay);
+}
+
+// Картка стріку — вбудована в #lesson-result (раніше окремий
+// повноекранний попап #streak-celebration з темним затемненням фону).
+function _lrShowStreakCard(streakResult, frozenDaysUsed){
+  const card = document.getElementById('lr-streak-card');
+  if(!card) return;
+  const numEl = document.getElementById('lr-streak-num');
+  const lblEl = document.getElementById('lr-streak-label');
+  const frozenEl = document.getElementById('lr-streak-frozen-note');
+  const milestoneEl = document.getElementById('lr-streak-milestone-note');
+
+  if(numEl){
+    const from = (typeof streakResult.prevStreak === 'number' && streakResult.prevStreak >= 0)
+      ? streakResult.prevStreak : Math.max(0, streakResult.streak-1);
+    numEl.textContent = from;
+    animateOdometer(numEl, from, streakResult.streak);
+  }
+  if(lblEl) lblEl.textContent = {'de':'Tage in Folge!','uk':'днів поспіль!','en':'day streak!','ru':'дней подряд!'}[uiLang] || 'days!';
+  // Якщо цей приріст стріку відбувся ЗАВДЯКИ заморозці (пропущений день
+  // покрито mova_streak_freezes) — показуємо про це окремий рядок, щоб
+  // не виглядало, ніби користувач помилково "не помітив" пропуску.
+  if(frozenEl){
+    if(frozenDaysUsed > 0){ frozenEl.textContent = t('streak_frozen_note'); frozenEl.style.display = ''; }
+    else frozenEl.style.display = 'none';
+  }
+  // Бонусна заморозка за віху 3/7 днів (див. srUpdateStreak) — окрема
+  // нотатка, щоб користувач одразу зрозумів ЗВІДКИ взялась додаткова
+  // заморозка, а не дізнавався про це лише випадково зайшовши в Settings.
+  if(milestoneEl){
+    if(streakResult.milestoneFreezeGranted){ milestoneEl.textContent = t('streak_milestone_freeze'); milestoneEl.style.display = ''; }
+    else milestoneEl.style.display = 'none';
+  }
+
+  card.style.display = '';
+  card.style.animation = 'none'; void card.offsetWidth; card.style.animation = ''; // перезапуск slide-in навіть якщо елемент лишився в DOM
+  _restartStreakFlameAnim();
+  if(typeof haptic !== 'undefined') haptic.medium?.();
+}
+
+// Кінець усієї послідовності — ховаємо картку стріку (якщо була) й
+// віддаємо керування далі (goToLernpfadActivePoint зазвичай).
+// #lesson-result сам НЕ ховається тут: switchView('lernpfad'), який
+// зазвичай прилітає з onDone, сам ховає весь #view-vocab перемиканням
+// .active-класу — а abandonLessonFlow()/exitLessonFlow() прибирають
+// клас .show з #lesson-result окремо, при старті наступного уроку.
+function _finishLessonCelebration(el){
   const cb = el._onDoneCallback;
   el._onDoneCallback = null;
-  setTimeout(()=>{
-    el.classList.remove('show','fade-out');
-    // Якщо закрито тапом РАНІШЕ, ніж долетів клон (_flyXpToHeader ще не
-    // встиг повернути видимість оригіналу) — примусово повертаємо, і
-    // на випадок дострокового закриття теж розморожуємо хедер тут,
-    // а не лишаємо його застряглим назавжди.
-    const xpRowEl = document.getElementById('lc-xp-row');
-    if(xpRowEl) xpRowEl.style.visibility = '';
-    if(window._xpDisplayFrozen){
-      window._xpDisplayFrozen = false;
-      if(typeof renderStreakUI === 'function') renderStreakUI();
-    }
-    if(cb) cb();
-  }, 350);
+  const card = document.getElementById('lr-streak-card');
+  if(card) card.style.display = 'none';
+  if(window._xpDisplayFrozen){
+    window._xpDisplayFrozen = false;
+    if(typeof renderStreakUI === 'function') renderStreakUI();
+  }
+  if(cb) cb();
 }
+
+// Тап будь-де по екрану результату — пропустити залишок анімації й
+// одразу перейти далі (для нетерплячих; той самий onDone, що спрацював
+// би й наприкінці природної послідовності).
+function _dismissLessonCelebration(){
+  const el = document.getElementById('lesson-result');
+  if(!el) return;
+  clearTimeout(el._celTimer1);
+  clearTimeout(el._celTimer2);
+  // Якщо тапнули РАНІШЕ, ніж долетів клон XP (_flyXpToHeader ще не
+  // встиг повернути видимість оригіналу) — примусово повертаємо.
+  const xpTile = document.querySelector('#lr-stats .lr-stat-tile.xp');
+  if(xpTile) xpTile.style.visibility = '';
+  _finishLessonCelebration(el);
+}
+
 
 
 function showPerfLog(){
@@ -17150,6 +17190,16 @@ function lfShowResult(){
   // на бонусний урок призначається лише один із чотирьох пулів).
   const isEmlOnly = LF.cards.length === 0 && (LF.emlCards||[]).length > 0;
 
+  // Той самий принцип для граматичного бонусного уроку (Grammar Bonus) —
+  // LF.cards порожній, лише _grammarBonusPool. РАНІШЕ ця перевірка була
+  // ВІДСУТНЯ саме тут (рахувалась лише нижче для дубльованого lcIcon/
+  // lcLabel попапу #lesson-celebration) — тож граматичний урок провалювався
+  // в generic pct-гілку нижче з LF.cards.length===0, даючи
+  // Math.round(0/0*100)=NaN і як наслідок завжди emoji='💪'/"Продовжуй!"
+  // замість власного "Граматику завершено!📚". Тепер перевірка тут, ДО
+  // titleText/emoji — і граматичний урок отримує свій власний підпис.
+  const isGrammarOnly = LF.cards.length === 0 && !isDlgOnly && !isFrmOnly && !isEmlOnly && (LF._grammarBonusPool||[]).length > 0;
+
   let improved = 0, pct = 0, emoji, titleText;
   if(isFrmOnly){
     emoji = '📰';
@@ -17160,6 +17210,9 @@ function lfShowResult(){
   } else if(isDlgOnly){
     emoji = '💬';
     titleText = uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!';
+  } else if(isGrammarOnly){
+    emoji = '📚';
+    titleText = uiLang==='uk'?'Граматику завершено!':uiLang==='en'?'Grammar completed!':uiLang==='ru'?'Грамматика завершена!':'Grammatik abgeschlossen!';
   } else {
     // Рахуємо покращення SM-2
     improved = LF.cards.filter(c=>{
@@ -17187,23 +17240,13 @@ function lfShowResult(){
   // до Lernpfad нижче — це просто подальша навігація, не додаткове
   // підтвердження. LF._recorded і тут захищає від подвійного зарахування
   // (exitLessonFlow() перевіряє той самий прапорець).
-  // #lesson-celebration — ПЕРША: це нагорода за сам факт завершення
-  // ЦЬОГО уроку/діалогу/граматики, тож логічно йде одразу. Вогонь
-  // (#streak-celebration) — ДРУГИЙ, лише коли стрік реально зростає (1
-  // раз на день): зростання стріку — це НАСЛІДОК завершеного уроку, тож
-  // показується вже ПІСЛЯ нагороди за сам урок, а не раніше.
-  const isGrammarOnly = LF.cards.length === 0 && !isDlgOnly && !isFrmOnly && !isEmlOnly && (LF._grammarBonusPool||[]).length > 0;
-  const lcIcon  = isFrmOnly ? '📰' : isEmlOnly ? '📧' : isDlgOnly ? '💬' : isGrammarOnly ? '📚' : '✓';
-  const lcLabel = isFrmOnly
-    ? (uiLang==='uk'?'Допис завершено!':uiLang==='en'?'Forum post completed!':uiLang==='ru'?'Пост завершён!':'Beitrag abgeschlossen!')
-    : isEmlOnly
-    ? (uiLang==='uk'?'Лист завершено!':uiLang==='en'?'E-mail completed!':uiLang==='ru'?'Письмо завершено!':'E-Mail abgeschlossen!')
-    : isDlgOnly
-    ? (uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!')
-    : isGrammarOnly
-      ? (uiLang==='uk'?'Граматику завершено!':uiLang==='en'?'Grammar completed!':uiLang==='ru'?'Грамматика завершена!':'Grammatik abgeschlossen!')
-      : (uiLang==='uk'?'Урок завершено!':uiLang==='en'?'Lesson completed!':uiLang==='ru'?'Урок завершён!':'Lektion abgeschlossen!');
-
+  //
+  // РАНІШЕ тут ще й окремо рахувались lcIcon/lcLabel для попапу
+  // #lesson-celebration — майже той самий текст, що emoji/titleText
+  // вище, лише трохи іншими словами. Тепер #lesson-celebration як
+  // окремий шар не існує — emoji/titleText вище вже встановлені в
+  // #lr-emoji/#lr-title, і showLessonCelebration() нижче лише АНІМУЄ
+  // появу вже готового екрана, нічого не перезаписуючи.
   // Раніше тут показувались 3 кнопки ("Наступний урок"/"Наступний
   // діалог"/"До списку уроків") після завершення святкування. Тепер —
   // без кнопок: після завершення СВЯТКУВАННЯ (і вогню стріку, якщо він
@@ -17259,6 +17302,40 @@ function lfShowResult(){
     }, 950);
   }
 
+  // XP-плитка для lr-stats — та сама формула (persisted total мінус знімок
+  // на старті уроку). ВАЖЛИВО: цей блок має відпрацювати ДО виклику
+  // showLessonCelebration() нижче — та функція одразу шукає в DOM
+  // ".lr-stat-tile.xp .lr-stat-tile-val", щоб узяти звідти "стартове"
+  // значення для рахунку вгору й польоту в хедер.
+  //
+  // Формат кожного рядка тепер [іконка, підпис, значення, css-клас?] —
+  // рендериться як картка-плитка (.lr-stat-tile), а не рядок таблиці.
+  // XP-плитка позначена класом 'xp'.
+  const xpEarnedThisLesson = xpGetTotal() - (LF._xpAtStart || 0);
+  const statsEl = document.getElementById('lr-stats');
+  if(statsEl){
+    const xpRow = ['𐌌', uiLang==='uk'?'M зароблено':uiLang==='en'?'M earned':uiLang==='ru'?'M заработано':'M verdient', xpEarnedThisLesson, 'xp'];
+    const timeRow = ['⏱', uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr];
+    const rows = isFrmOnly ? [
+      ['📰', uiLang==='uk'?'Дописів':uiLang==='en'?'Forum posts':uiLang==='ru'?'Постов':'Beiträge', LF.frmCards.length],
+      timeRow, xpRow,
+    ] : isEmlOnly ? [
+      ['📧', uiLang==='uk'?'Листів':uiLang==='en'?'E-mails':uiLang==='ru'?'Писем':'E-Mails', LF.emlCards.length],
+      timeRow, xpRow,
+    ] : isDlgOnly ? [
+      ['💬', uiLang==='uk'?'Діалогів':uiLang==='en'?'Dialogues':uiLang==='ru'?'Диалогов':'Dialoge', LF.dlgCards.length],
+      ['💭', uiLang==='uk'?'Реплік':uiLang==='en'?'Turns':uiLang==='ru'?'Реплик':'Repliken', totalTurns],
+      timeRow, xpRow,
+    ] : [
+      ['🗂', uiLang==='uk'?'Карток пройдено':uiLang==='en'?'Cards covered':'Karten', LF.cards.length],
+      ['📈', uiLang==='uk'?'Покращено':uiLang==='en'?'Improved':'Verbessert', improved+'/'+LF.cards.length],
+      timeRow, xpRow,
+    ];
+    statsEl.innerHTML = rows.map(([icon,l,v,cls])=>
+      `<div class="lr-stat-tile${cls?' '+cls:''}"><span class="lr-stat-tile-icon">${icon}</span><span class="lr-stat-tile-val">${v}</span><span class="lr-stat-tile-label">${l}</span></div>`
+    ).join('');
+  }
+
   let celebrationPending = false;
   if(LF && !LF._recorded){
     LF._recorded = true;
@@ -17301,58 +17378,25 @@ function lfShowResult(){
       if(completedId) localStorage.setItem('mova_last_completed_lesson', completedId);
     }catch(e){}
     celebrationPending = true;
-    // ПОВНА сума за урок — картки (нараховані інкрементально в srsRate()
-    // по ходу уроку) + щойно нарахований бонус завершення вище. Саме це
-    // число (а не сам лише бонус) летить у святкуванні й показується в
-    // lr-stats нижче — обидва мають узгоджуватись з тим, на скільки
-    // реально зросте лічильник у хедері.
-    const xpEarnedThisLesson = xpGetTotal() - (LF._xpAtStart || 0);
-    if(streakResult && streakResult.increased){
-      showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson, timeStr: timeStr,
-        onDone: () => showStreakCelebration(streakResult.streak, streakResult.prevStreak, { onDone: goToLernpfadActivePoint, frozenDaysUsed: streakResult.frozenDaysUsed })
-      });
-    } else {
-      // Стрік не зріс (нема increased → без вогняного святкування), але
-      // якщо він щойно згорів через пропуск без достатньої кількості
-      // заморозок — повідомляємо про це окремо, тихим тостом, а не мовчки.
-      if(streakResult && streakResult.streakBroken) notify(t('msg_streak_broken'));
-      showLessonCelebration({ icon: lcIcon, label: lcLabel, xpEarned: xpEarnedThisLesson, timeStr: timeStr, onDone: goToLernpfadActivePoint });
+    // Якщо стрік НЕ зріс, але щойно згорів через пропуск без достатньої
+    // кількості заморозок — повідомляємо про це окремо, тихим тостом
+    // (незалежно від showLessonCelebration нижче, яка сама вирішує,
+    // чи додавати картку стріку — лише коли streakResult.increased).
+    if(streakResult && !streakResult.increased && streakResult.streakBroken){
+      notify(t('msg_streak_broken'));
     }
-  }
-
-  // XP-рядок для lr-stats — та сама формула (persisted total мінус знімок
-  // на старті уроку), рахуємо тут же ще раз: при ПЕРШОМУ виклику це дасть
-  // те саме число, що й xpEarnedThisLesson вище (обчислення чисте,
-  // total між цими двома рядками не змінюється); при ПОВТОРНОМУ виклику
-  // lfShowResult() (LF._recorded вже true, блок вище пропущено) — це
-  // єдине місце, де число взагалі рахується, і воно так само стабільне,
-  // бо читається з persisted total, а не рахується наново з нуля.
-  const xpEarned = xpGetTotal() - (LF._xpAtStart || 0);
-  const statsEl = document.getElementById('lr-stats');
-  if(statsEl){
-    const xpRow = [uiLang==='uk'?'M зароблено':uiLang==='en'?'M earned':uiLang==='ru'?'M заработано':'M verdient', '<span style="color:var(--gold)">𐌌</span> '+xpEarned];
-    const rows = isFrmOnly ? [
-      [uiLang==='uk'?'Дописів':uiLang==='en'?'Forum posts':uiLang==='ru'?'Постов':'Beiträge', LF.frmCards.length],
-      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
-      xpRow,
-    ] : isEmlOnly ? [
-      [uiLang==='uk'?'Листів':uiLang==='en'?'E-mails':uiLang==='ru'?'Писем':'E-Mails', LF.emlCards.length],
-      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
-      xpRow,
-    ] : isDlgOnly ? [
-      [uiLang==='uk'?'Діалогів':uiLang==='en'?'Dialogues':uiLang==='ru'?'Диалогов':'Dialoge', LF.dlgCards.length],
-      [uiLang==='uk'?'Реплік':uiLang==='en'?'Turns':uiLang==='ru'?'Реплик':'Repliken', totalTurns],
-      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
-      xpRow,
-    ] : [
-      [uiLang==='uk'?'Карток пройдено':uiLang==='en'?'Cards covered':'Karten', LF.cards.length],
-      [uiLang==='uk'?'Покращено':uiLang==='en'?'Improved':'Verbessert', improved+'/'+LF.cards.length],
-      [uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr],
-      xpRow,
-    ];
-    statsEl.innerHTML = rows.map(([l,v])=>
-      `<div class="lr-stat-row"><span>${l}</span><span class="lr-stat-val">${v}</span></div>`
-    ).join('');
+    // ОДИН виклик керує ВСІЄЮ послідовністю: іконка → XP рахує вгору й
+    // летить у хедер → (якщо streakResult.increased) картка стріку →
+    // onDone. Раніше тут було два вкладені виклики (showLessonCelebration,
+    // а всередині її onDone — ще й showStreakCelebration) для двох
+    // окремих повноекранних попапів; тепер showLessonCelebration сама
+    // знає про стрік через опцію streakResult.
+    showLessonCelebration({
+      xpEarned: xpEarnedThisLesson,
+      streakResult: streakResult,
+      frozenDaysUsed: streakResult ? streakResult.frozenDaysUsed : 0,
+      onDone: goToLernpfadActivePoint,
+    });
   }
 
   // Оновлюємо прогрес Lernpfad
@@ -18557,6 +18601,7 @@ function setDialogueCat(id,btn){
 window.addEventListener('DOMContentLoaded', ()=>{
   const el = document.getElementById('app-ver');
   if(el) el.textContent = APP_VERSION;
+  debugRevealTechnicalGroupIfUnlocked(); // показати "Технічне"/Debug, якщо вже розблоковано раніше (5 тапів по версії)
   srMigrateOldState(); // Smart Review: міграція зі старого SM-2
   srUpdateHeaderChip(); // Chip з кількістю днів у хедері
   initAudioUnlock();   // iOS: розблоковуємо audio при першому дотику
