@@ -4198,7 +4198,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '640-a3027c7';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4325,7 +4325,11 @@ function loadCharactersScript(){
 // в Deutsch-A2), що дозволяють проходити частини курсу незалежно.
 // Наступні суб-уроки того самого модуля просто йдуть один за одним.
 var PATH_CONFIG = {
-  A2:         { newWordsPerLesson: 4, reviewMix: 3 },
+  // 4→3: той самий модуль (10 слів) тепер дає 4 суб-уроки замість 3
+  // (чанки [3,3,3,1] замість [4,4,2]) — природний спосіб дати кожному
+  // новому слову більше окремих сесій-контактів, БЕЗ штучного padding
+  // "порожніми" уроками повторення. Ідея не моя — обґрунтування нижче.
+  A2:         { newWordsPerLesson: 3, reviewMix: 3 },
   // Було newWordsPerLesson: 5 — нижча щільність суб-уроків, ніж в A2,
   // хоча суб'єктивна складність слів A2 і B1 для користувача приблизно
   // однакова (не факт, що B1-слово засвоюється в 1.25 раза легше за
@@ -4333,7 +4337,7 @@ var PATH_CONFIG = {
   // рівно 10 карток/модуль — тож саме це число (4 замість 5) і визначало
   // різницю у видимій кількості вузлів лінії (192 у A2 проти 176 у B1,
   // попри те що в B1 модулів і слів більше). Тепер однаково з A2.
-  B1:         { newWordsPerLesson: 4, reviewMix: 3 },
+  B1:         { newWordsPerLesson: 3, reviewMix: 3 },
   B2:         { newWordsPerLesson: 7, reviewMix: 3 },
   Foundations:{ newWordsPerLesson: 6, reviewMix: 3 },
 };
@@ -4460,7 +4464,19 @@ function buildLearningPath(rawLessons, courseLevel){
 
     var chunks = [];
     for(var i=0; i<ids.length; i+=cap) chunks.push(ids.slice(i, i+cap));
-    var n = chunks.length, half = Math.ceil(n/2);
+    var n = chunks.length;
+    // РАНІШЕ: half = Math.ceil(n/2) — повторення підмішувалось лише в
+    // ДРУГІЙ половині суб-уроків модуля. Наслідок: слово з 1-го суб-уроку
+    // не отримувало ЖОДНОГО повторного контакту в межах цього модуля —
+    // одразу йшло "в холодну" чергу SM-2 з інтервалом лише 1 день, а
+    // ефект розподіленого повторення (spacing effect) працює тим краще,
+    // чим РАНІШЕ й ЧАСТІШЕ трапляється хоч би один додатковий контакт
+    // до першого "офіційного" повторення завтра. Тепер поріг зсунуто на
+    // урок раніше (мінімум 1 — ніколи не з самого першого суб-уроку,
+    // бо там ще просто нема чого повторювати): для n=3 було
+    // half=2 (лише 3-й урок), стало half=1 (2-й і 3-й);
+    // для n=4 було half=2 (3-й,4-й), стало half=1 (2-й,3-й,4-й).
+    var half = Math.max(1, Math.ceil(n/2) - 1);
     // Пул повторення для ЦЬОГО модуля = усі попередні модулі (allCardIdsSoFar,
     // ще без поточного — див. коментар вище) + слова, які ЦЕЙ модуль уже
     // встиг показати як нові в РАНІШИХ своїх суб-уроках (shownThisModule
@@ -9340,9 +9356,32 @@ function _runLessonFlow(lesson, allCards){
   const hasDefFill = flowCards.some(c => c.def?.[pLang] && c.def[pLang].includes('<b>'));
 
   // Окремий пул для вправи "Знайди пару" — завжди до 5 карток за SM-2
-  // пріоритетом з усього модуля (НЕ ті самі 4, що в vocab-кроці; matching
-  // потребує власної, не прив'язаної до них кількості — узгоджено окремо).
-  const matchPool = sorted.filter(c =>
+  // пріоритетом, НЕЗАЛЕЖНО від того, скільки нових слів у САМЕ ЦЬОМУ
+  // суб-уроці (validCards/sorted вище — вони обмежені лише lesson.cardIds
+  // цього суб-уроку, тому й давали лише 3 пари після зменшення
+  // newWordsPerLesson). Тепер пул складається з УСЬОГО МОДУЛЯ — усіх
+  // суб-уроків з тим самим _parentModuleId (та сама група, що й у
+  // _lpGetModuleProgress для прогрес-бару модуля) — а не лише поточного.
+  // "Ще не бачені" слова з ПІЗНІШИХ суб-уроків цього модуля тут
+  // навмисно ДОПУСТИМІ (за прямим запитом): Matching — просте
+  // впізнавання пари термін↔означення, раннє "підглядання" наступного
+  // слова тут не шкодить так, як зашкодило б у вправах на активне
+  // продукування (Tiles/Speech), де вимагається totalPlays>0.
+  // srPriorityFromState() і так природно ставить нові (ще не бачені)
+  // картки на найвищий пріоритет — тож вони підтягуються самі, коли
+  // в модулі ще замало введених слів.
+  const lessonsAll = typeof LESSONS !== 'undefined' ? LESSONS : [];
+  const moduleLessons = lesson._parentModuleId
+    ? lessonsAll.filter(l => l.chapter===lesson.chapter && l._parentModuleId===lesson._parentModuleId)
+    : [lesson];
+  const moduleCardIdSet = new Set();
+  moduleLessons.forEach(l => (l.cardIds||[]).forEach(id=>moduleCardIdSet.add(id)));
+  const moduleVocabPool = (typeof VOCAB!=='undefined'?VOCAB:[]).filter(v=>moduleCardIdSet.has(v.id));
+  // Фолбек на validCards цього суб-уроку — якщо з якоїсь причини модуль
+  // виявився геть малий (менше 5 слів навіть по всьому модулю разом).
+  const matchPoolSource = moduleVocabPool.length >= 5 ? moduleVocabPool : validCards;
+  const matchPoolSorted = [...matchPoolSource].sort((a,b)=>srPriorityFromState(state,b.id)-srPriorityFromState(state,a.id));
+  const matchPool = matchPoolSorted.filter(c =>
     c.term?.[primaryLang()] && c.term?.[uiLang] && (uiLang!==primaryLang() || c.short?.[primaryLang()])
   );
   let matchCards = matchPool.slice(0, Math.min(5, matchPool.length));
@@ -20262,12 +20301,26 @@ function sbRenderPrac() {
 
   // Options: correct answer + all 4 distractors = 5 options total.
   // Дистрактори і правильна відповідь у Sprachbau завжди мовою курсу (primaryLang()).
+  //
+  // Якщо пропуск стоїть на самому початку речення — німецька граматика
+  // вимагає писати перше слово з великої літери, незалежно від того,
+  // іменник це чи ні. У базі так і збережено card.answer (з великої, якщо
+  // на початку речення), а от card.distractors — це просто альтернативні
+  // слова в базовій формі (мала літера, якщо це не іменник). Наслідок:
+  // серед варіантів відповіді ЄДИНЕ слово з великої літери — саме
+  // правильне, і відповідь видно без потреби думати. Виправляємо: якщо
+  // правильна відповідь дійсно починається з великої — так само пишемо
+  // (лише для показу на кнопці, у базі нічого не міняємо) і всі
+  // дистрактори теж.
+  var correctText = sbA(card,primaryLang());
+  var needsCapitalize = /^\p{Lu}/u.test(correctText); // \p{Lu} — Unicode "літера у верхньому регістрі", працює і для Ä/Ö/Ü, не лише A-Z
+  function _sbCapFirst(s){ return needsCapitalize ? s.charAt(0).toUpperCase()+s.slice(1) : s; }
   // Поле аудіо ('answer'/'distractors_N') прив'язуємо ДО перемішування,
   // інакше після sort() індекс i вказує на позицію в перемішаному масиві,
   // а не на реальний номер дистрактора — і клік по кнопці програє чуже аудіо.
   var distractors = card.distractors.slice(0,4);
-  var opts = [{text: sbA(card,primaryLang()), field:'answer'}]
-    .concat(distractors.map(function(d,idx){ return {text:d, field:'distractors_'+(idx+1)}; }))
+  var opts = [{text: correctText, field:'answer'}]
+    .concat(distractors.map(function(d,idx){ return {text:_sbCapFirst(d), field:'distractors_'+(idx+1)}; }))
     .sort(function(){ return Math.random()-.5; });
 
   var optEl=document.getElementById('sb-prac-options');
