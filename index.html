@@ -1011,27 +1011,31 @@ body{
   box-shadow:0 5px 0 rgba(60,40,90,.4), 0 7px 12px rgba(60,40,90,.18);
 }
 /* Forumsbeitrag — окремий вузол шляху (той самий принцип, що dialogue:
-   💬/🧩 вище), теплий бурштиновий акцент, щоб не плутати з жодним із
+   💬/🤝 вище), теплий бурштиновий акцент, щоб не плутати з жодним із
    двох типів діалогу — це монолог-текст, не розмова. */
 .lp-node.lp-node-forum{
   background:#c07a2e;
   box-shadow:0 5px 0 rgba(120,70,20,.4), 0 7px 12px rgba(120,70,20,.18);
 }
-/* E-Mail — другий формат Schreiben поряд з Forumsbeitrag щойно вище,
-   тому свідомо РІДНИЙ, але відмінний акцент: бордовий (той самий
-   принцип, що вся глава "Підготовка до екзамену", .lp-chapter-head.
-   examprep нижче) замість бурштинового forum — одразу видно "теж
-   Schreiben, але інший формат". */
+/* E-Mail — другий формат Schreiben поряд з Forumsbeitrag щойно вище.
+   ОНОВЛЕНО: був бордовий #8a2f3f (той самий принцип, що вся глава
+   "Підготовка до екзамену", .lp-chapter-head.examprep нижче) — замінено
+   на зелений #27ae60 (той самий, що позначає правильну відповідь у
+   модалці Sprachbausteine) за прямим запитом, щоб не зливатися з
+   бурштиновим forum у сусідній парі "теж Schreiben, інший формат".
+   .lp-module-divider.examprep НАВМИСНО лишається бордовим — це окрема,
+   не пов'язана з E-Mail тема глави, просто раніше випадково збігалась
+   кольором. */
 .lp-node.lp-node-email{
-  background:#8a2f3f;
-  box-shadow:0 5px 0 rgba(90,25,35,.4), 0 7px 12px rgba(90,25,35,.18);
+  background:#27ae60;
+  box-shadow:0 5px 0 rgba(23,104,58,.4), 0 7px 12px rgba(23,104,58,.18);
 }
 .lp-node.done{
   background:var(--gold);
   box-shadow:0 5px 0 rgba(160,128,40,.4), 0 7px 12px rgba(160,128,40,.16);
 }
 /* Заблокований — гема сіріє (фон), а ІКОНКА лишається тією ж самою
-   (📖/💬/🧩), лише знебарвлюється grayscale-фільтром: користувач бачить
+   (📖/💬/🤝), лише знебарвлюється grayscale-фільтром: користувач бачить
    ЯКИЙ тип кроку на нього чекає, навіть недоступний. cursor:pointer —
    клік і далі щось робить (showLockedLessonModal), тому лишаємо звичну
    натискну анімацію (:active успадковується від .lp-node вище). */
@@ -1055,7 +1059,7 @@ body{
   box-shadow:0 7px 0 rgba(120,70,20,.4), 0 10px 18px rgba(120,70,20,.22);
 }
 .lp-node.lp-node-email.current{
-  box-shadow:0 7px 0 rgba(90,25,35,.4), 0 10px 18px rgba(90,25,35,.24);
+  box-shadow:0 7px 0 rgba(23,104,58,.4), 0 10px 18px rgba(23,104,58,.24);
 }
 .lp-node.current .lp-node-current-ring{ inset:-12px; border-width:4px; }
 @keyframes lpNodeBreathe{
@@ -1142,7 +1146,7 @@ body{
 .lp-examprep-row.lp-node-smalltalk .lp-examprep-row-icon{ background:var(--accent, #4a7c9d); }
 .lp-examprep-row.lp-node-problemsolving .lp-examprep-row-icon{ background:#7c5cb0; }
 .lp-examprep-row.lp-node-forum .lp-examprep-row-icon{ background:#c07a2e; }
-.lp-examprep-row.lp-node-email .lp-examprep-row-icon{ background:#8a2f3f; }
+.lp-examprep-row.lp-node-email .lp-examprep-row-icon{ background:#27ae60; }
 /* examsim — навмисно --gold (той самий колір, що основні CTA-кнопки
    застосунку), а не ще один довільний відтінок: це "флагманська" вправа
    глави (справжня симуляція іспиту, не звичайне повторення картки), і
@@ -1827,8 +1831,6 @@ body{
 .sp-result-count{font-size:var(--fs-tertiary);color:var(--muted);margin-top:4px}
 .app-footer-version{text-align:center;padding:20px 0 8px;opacity:.45;font-size:var(--fs-tertiary);font-family:'Inter',monospace;letter-spacing:.5px}
 .quiz-no-data-text{font-size:var(--fs-tertiary);line-height:1.3}
-.sb-prac-result-de{font-size:var(--fs-card);line-height:1.3}
-.sb-prac-result-translation{font-size:var(--fs-secondary);color:var(--muted);line-height:1.3;margin-top:4px}
 .tiles-result-btn{
   width:100%;max-width:320px;padding:15px;border-radius:14px;border:none;
   font-size:var(--fs-card);font-weight:700;font-family:inherit;cursor:pointer;
@@ -2735,10 +2737,6 @@ body{
 }
 .sb-prac-feedback-modal-icon{font-size:24px;}
 .sb-prac-feedback-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);}
-.sb-prac-feedback-modal-expl{
-  font-size:14px;color:var(--warm);line-height:1.3;margin-bottom:16px;
-}
-.sb-prac-feedback-modal-expl.hidden{ display:none; }
 .sb-prac-modal-actions{ display:flex; gap:10px; }
 .sb-prac-modal-actions .sb-prac-feedback-modal-next{ flex:1; width:auto; }
 .sb-prac-modal-secondary-btn{
@@ -3013,7 +3011,7 @@ body{
 .grammar-rule-fs-body g{font-weight:700;color:var(--g-accent)}
 .grammar-rule-fs-body b{color:var(--ink)}
 
-/* Легенда маркерів <c>/<k>/<g>/<r> (ℹ️-кнопка, _lfMarkerLegendButton) —
+/* Легенда маркерів <c>/<k>/<g>/<r> (💡-кнопка, _lfMarkerLegendButton) —
    той самий "повноекранний рідер" каркас, що й grammar-rule-fullscreen
    вище (шапка з ← і заголовком, прокрутне тіло), лише контент — фіксовані
    4 рядки "кольоровий квадратик + назва + пояснення", а не текст з таблиці
@@ -4198,7 +4196,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '641-2404bca';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4343,7 +4341,7 @@ var PATH_CONFIG = {
 };
 
 // Підтип діалогового вузла для іконки на стежці: 'smalltalk' (💬,
-// невимушена розмова) чи 'problemsolving' (🧩, вирішення конкретної
+// невимушена розмова) чи 'problemsolving' (🤝, вирішення конкретної
 // ситуації/конфлікту). Реальні значення `type` в базах (перевірено на
 // даних): B2 вже має конкретні теги "Small Talk"/"Lösungswege
 // diskutieren"; A2/B1 поки позначені узагальненим "Gemeinsam etwas
@@ -4862,6 +4860,7 @@ const I18N = {
     lp_chapter_prefix:'Kapitel',
     lp_all_done:'Kurs abgeschlossen!',
     lr_continue_hint:'Weiter geht\'s gleich…',
+    card_expl_modal_title:'Erklärung',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -4955,6 +4954,7 @@ const I18N = {
     lp_chapter_prefix:'Розділ',
     lp_all_done:'Курс завершено!',
     lr_continue_hint:'Продовжуємо…',
+    card_expl_modal_title:'Пояснення',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -5047,6 +5047,7 @@ const I18N = {
     lp_chapter_prefix:'Chapter',
     lp_all_done:'Course completed!',
     lr_continue_hint:'Continuing…',
+    card_expl_modal_title:'Explanation',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -5140,6 +5141,7 @@ const I18N = {
     lp_chapter_prefix:'Раздел',
     lp_all_done:'Курс завершён!',
     lr_continue_hint:'Продолжаем…',
+    card_expl_modal_title:'Объяснение',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -9964,8 +9966,11 @@ function renderChapterDividerGramBtn(chapterNum, chapterLessons, unlocked){
 
 // Візуальний профіль вузла стежки по типу: іконка + клас кольору. Три
 // типи: звичайний урок (📖 книга — вивчення нового), small talk (💬
-// репліка — невимушена розмова) і пошук рішення (🧩 пазл — треба
-// зібрати рішення конкретної ситуації, а не просто побалакати).
+// репліка — невимушена розмова) і пошук рішення (🤝 рукостискання —
+// домовитись/владнати конкретну ситуацію через розмову, а не просто
+// побалакати). РАНІШЕ тут був 🧩 (пазл) — замінено за прямим фідбеком:
+// пазл асоціюється з абстрактною головоломкою/грою, а не з розмовою
+// між людьми; рукостискання одразу читається як "залагодили питання".
 // Іконка НЕ підмінюється на 🔒 при блокуванні (раніше було так) —
 // користувач має бачити ЯКИЙ саме крок на нього чекає, навіть
 // заблокований; замість цього іконка й гема просто сіріють (клас
@@ -9973,7 +9978,7 @@ function renderChapterDividerGramBtn(chapterNum, chapterLessons, unlocked){
 function _lpNodeVisual(node){
   if(node.type === 'dialogue'){
     return node.dlgType === 'problemsolving'
-      ? { icon: '🧩', cls: 'lp-node-problemsolving' }
+      ? { icon: '🤝', cls: 'lp-node-problemsolving' }
       : { icon: '💬', cls: 'lp-node-smalltalk' };
   }
   if(node.type === 'forum'){
@@ -10000,7 +10005,7 @@ function renderPathNode(node, idx){
   const isForum = node.type === 'forum';
   const isEmail = node.type === 'email';
   const visual = _lpNodeVisual(node);
-  // Іконка типу (📖/💬/🧩/📰) лишається однаковою і на пройденому уроці —
+  // Іконка типу (📖/💬/🤝/📰) лишається однаковою і на пройденому уроці —
   // ЗМІНЮЄТЬСЯ лише колір (через .lp-node.done → золотий фон, CSS
   // нижче), не сама іконка. Раніше пройдений урок ставав ★ незалежно
   // від типу — і тоді неможливо було на око знайти, скажімо, конкретний
@@ -14491,7 +14496,7 @@ function lfStartDef(){
 function _lfSBBuildUnits(){
   var cards = SB.learnQueue || [];
   return cards.map(function(card){
-    return { kind:'sb', cardId: card.id, side:'main', card: card, explShown: false };
+    return { kind:'sb', cardId: card.id, side:'main', card: card };
   });
 }
 
@@ -14571,14 +14576,6 @@ var _lfSBHandlers = {
         '</div>'
       : '');
 
-    if(unit.explShown){
-      var expl = sbL(card.explanation, ul);
-      html +=
-        '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-sentence">'+expl+'</div>'+
-        '</div>';
-    }
-
     body.innerHTML = html;
 
     var cardEl = document.getElementById('lf-unit-card');
@@ -14601,16 +14598,28 @@ var _lfSBHandlers = {
           _lfUnitPlay(items, function(){});
         }
       },
-      {
-        icon: '💡',
-        onClick: function(){
-          unit.explShown = true;
-          _lfSBHandlers.render(unit);
-        }
-      },
     ];
-    var gramBtn = _lfGrammarButton(unit.card);
-    if(gramBtn) buttons.push(gramBtn);
+    // Та сама логіка, що й у sbShowFeedbackModal (після відповіді) —
+    // РІВНО одна кнопка-книжка, зміст модалки залежить від типу картки.
+    // Раніше 💡 тут просто дописувала card.explanation в ТУ Ж картку
+    // (unit.explShown), а 📖 (якщо була) відкривала showGrammarModal —
+    // для Grammatik-Trainer карток (_isGram) це було ДОСЛІВНО те саме
+    // поле GRAMMAR-теми в обох місцях.
+    var card = unit.card;
+    var isAutoGenExpl = !!(card && card._isGram);
+    var explText = card ? sbL(card.explanation, uiLang) : '';
+    var hasExpl = !!(explText && explText.trim());
+    var gramBtn = _lfGrammarButton(card);
+    if(isAutoGenExpl && gramBtn){
+      buttons.push(gramBtn);
+    } else if(hasExpl){
+      buttons.push({
+        icon: '📖',
+        onClick: function(){ showCardExplanationModal(explText); }
+      });
+    } else if(gramBtn){
+      buttons.push(gramBtn);
+    }
     return buttons;
   },
 
@@ -15883,7 +15892,7 @@ var _lfEmlHandlers = {
     var partText = unit.kind === 'eml_part' ? ((unit.part && unit.part[pl]) || '') : '';
     var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
     if(gramBtn) buttons.push(gramBtn);
-    // ℹ️-легенда — ширша перевірка, ніж gramBtn вище: <c>/<k>/<r> цілком
+    // 💡-легенда — ширша перевірка, ніж gramBtn вище: <c>/<k>/<r> цілком
     // можуть трапитись і у вступних листах (mail_boss/mail_client), не
     // лише в eml_part, на відміну від 📖 (навмисно вузько прив'язаний до
     // card.gram у конкретній репліці).
@@ -16083,6 +16092,41 @@ function closeGrammarModal(){
   if(el) el.remove();
 }
 
+// Модалка для УНІКАЛЬНОГО пояснення картки (card.explanation, авторський
+// текст саме цієї вправи) — та сама "технологія", що й showGrammarModal
+// (окремий overlay, а не inline-розгортання в тій самій картці), але без
+// підрозділу "Правило": тут нема окремого поля повного правила, лише
+// сам текст пояснення. Раніше цю роль виконувала кнопка 💡, що просто
+// відкривала прихований <div> у ТОМУ Ж модальному вікні — замінено на
+// повноцінну окрему модалку за прямим запитом, для єдиної "мови"
+// взаємодії з обома кнопками (завжди книжка → завжди окреме вікно).
+function showCardExplanationModal(explText){
+  if(!explText) return;
+  closeCardExplanationModal();
+  var overlay = document.createElement('div');
+  overlay.id = 'card-expl-modal-overlay';
+  overlay.className = 'grammar-modal-overlay';
+  overlay.onclick = function(e){ if(e.target === overlay) closeCardExplanationModal(); };
+  overlay.innerHTML =
+    '<div class="grammar-modal">' +
+      '<div class="grammar-modal-header">' +
+        '<span class="grammar-modal-icon">📖</span>' +
+        '<div class="grammar-modal-title-wrap">' +
+          '<div class="grammar-modal-title">'+t('card_expl_modal_title')+'</div>' +
+        '</div>' +
+        '<button class="grammar-modal-close" onclick="closeCardExplanationModal()">✕</button>' +
+      '</div>' +
+      '<div class="grammar-modal-body">'+explText+'</div>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  if(typeof haptic !== 'undefined') haptic.light();
+}
+
+function closeCardExplanationModal(){
+  var el = document.getElementById('card-expl-modal-overlay');
+  if(el) el.remove();
+}
+
 // Модалка при кліку на заблокований вузол стежки — пояснює ЧОМУ
 // заблоковано і мотивує повернутись/завершити попередній крок, а не
 // просто мовчки ігнорувати клік (як було раніше).
@@ -16155,9 +16199,10 @@ function _lfGrammarButton(card){
 }
 
 // ── Легенда кольорових маркерів <c>/<k>/<g>/<r> ─────────────────────
-// ℹ️-кнопка (не 💡 — та іконка вже зайнята: SB-обробник вище використовує
-// 💡 в цьому самому рядку кнопок для геть іншого — розкрити пояснення
-// вправи; той самий значок з іншим сенсом поруч зі 🔊 плутав би).
+// 💡-кнопка (раніше була ℹ️: 💡 була зайнята іншою кнопкою в цьому ж
+// рядку — розкривала пояснення вправи. Той функціонал переїхав на 📖
+// (showCardExplanationModal/showGrammarModal), тож 💡 звільнилась і
+// підходить сюди краще за змістом, ніж нейтральна ℹ️).
 // З'являється лише там, де в тексті ПОТОЧНОГО кроку реально є хоч один
 // із чотирьох тегів — та сама ідея, що й у 📖 (_lfGrammarButton вище):
 // контекстна кнопка, не захаращує решту застосунку.
@@ -16193,7 +16238,7 @@ var LF_MARKER_LEGEND_ITEMS = [
 
 function _lfMarkerLegendButton(text){
   if(!text || !LF_MARKER_TAGS_RE.test(text)) return null;
-  return { icon: 'ℹ️', onClick: showMarkerLegend };
+  return { icon: '💡', onClick: showMarkerLegend };
 }
 
 function showMarkerLegend(){
@@ -16235,7 +16280,7 @@ function closeMarkerLegend(){
 
 // Автопоказ ОДИН РАЗ — при першому дописі/листі, де реально є хоч один
 // маркер (не при завантаженні застосунку взагалі — тоді легенда була б
-// без контексту). Далі кнопка ℹ️ лишається для довідки завжди, як і 📖.
+// без контексту). Далі кнопка 💡 лишається для довідки завжди, як і 📖.
 function _lfMaybeAutoShowMarkerLegend(text){
   if(!text || !LF_MARKER_TAGS_RE.test(text)) return;
   try{ if(localStorage.getItem(LF_MARKER_LEGEND_SEEN_KEY)) return; }catch(e){ return; }
@@ -20064,9 +20109,15 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
 
   // Будуємо рядки речення: 1) мова курсу (primaryLang) з виділеною
   // відповіддю, 2) мова інтерфейсу (якщо відрізняється від мови курсу)
+  //
+  // Стилі (.lf-unit-sentence/.lf-unit-sentence-tr) — ТІ САМІ класи, що й
+  // у звичайному кроці SB Lernen (_lfSBHandlers.render) та інших вправах,
+  // а не власні sb-prac-result-de/-translation — для візуальної єдності.
+  // Прапори мов (🇩🇪/🇺🇦/…) прибрано з тієї ж причини: в жодній іншій
+  // вправі речення/переклад прапорами не позначені, тож тут вони лише
+  // виділялись на тлі решти застосунку, а не несли окремого сенсу.
   var sentenceHtml = '';
   if(card){
-    var langFlags = {de:'🇩🇪',uk:'🇺🇦',en:'🇬🇧',ru:'🇷🇺'};
     var answerColor = ok ? '#27ae60' : 'var(--red)';
     var rows = [];
     var pLang = primaryLang();
@@ -20084,7 +20135,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
     // під час озвучення повного речення в sbPracAnswer: підсвітка має
     // йти САМЕ тут, у модалці, а не в #sb-prac-sentence під нею (той
     // захований під bottom-sheet і користувачу не видний).
-    rows.push('<div class="sb-prac-result-de" id="sb-modal-sentence-de">'+(langFlags[pLang]||'🇩🇪')+' '+deFilled+'</div>');
+    rows.push('<div class="lf-unit-main-row"><div class="lf-unit-sentence" id="sb-modal-sentence-de">'+deFilled+'</div></div>');
     // Якщо мова інтерфейсу відрізняється від мови курсу — додаємо переклад
     var ifLang = typeof uiLang !== 'undefined' ? uiLang : pLang;
     if(ifLang !== pLang){
@@ -20099,33 +20150,53 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
         var gramDefRaw = srcVocab && srcVocab.def ? (srcVocab.def[ifLang] || '') : '';
         var gramDefClean = gramDefRaw.replace(/<\/?[gb]>/g, '');
         if(gramDefClean){
-          rows.push('<div class="sb-prac-result-translation">'+(langFlags[ifLang]||'')+' '+gramDefClean+'</div>');
+          rows.push('<div class="lf-unit-main-row"><div class="lf-unit-sentence-tr">'+gramDefClean+'</div></div>');
         }
       } else {
         var ifRaw = sbL(card.sentence, ifLang);
         var ifAns = sbA(card, ifLang);
         if(ifRaw && ifRaw !== deRaw){
           var ifFilled = ifRaw.replace('{{BLANK}}', '<span style="color:'+answerColor+'">'+ifAns+'</span>');
-          rows.push('<div class="sb-prac-result-translation">'+langFlags[ifLang]+' '+ifFilled+'</div>');
+          rows.push('<div class="lf-unit-main-row"><div class="lf-unit-sentence-tr">'+ifFilled+'</div></div>');
         }
       }
     }
-    sentenceHtml = '<div style="margin:10px 0;padding:10px 12px;background:var(--soft);border-radius:10px;display:flex;flex-direction:column;gap:2px">'+rows.join('')+'</div>';
+    sentenceHtml = '<div style="margin:10px 0">'+rows.join('')+'</div>';
   }
 
-  // Пояснення (expl) БІЛЬШЕ НЕ показуємо одразу разом з модалкою —
-  // користувач спершу бачить лише правильно/неправильно, а вирішує сам,
-  // чи розкривати пояснення (💡), і, якщо є повне граматичне правило в
-  // базі (card.gram), чи відкривати його цілком (📖) — той самий патерн,
-  // що вже є на кроці SB Lernen (_lfSBHandlers.getSecondaryButtons).
+  // Пояснення БІЛЬШЕ НЕ показуємо одразу разом з модалкою — користувач
+  // спершу бачить лише правильно/неправильно, а вирішує сам, чи
+  // розкривати деталі. РІВНО ОДНА кнопка-книжка (📖), що завжди відкриває
+  // ОКРЕМЕ модальне вікно — яке саме, залежить від типу картки:
+  //
+  //  • Grammatik-Trainer (card._isGram, автогенеровано з VOCAB+GRAMMAR):
+  //    card.explanation тут БУКВАЛЬНО те саме поле GRAMMAR-теми, яке й
+  //    так показує showGrammarModal(card.gram) — колишня 💡 просто
+  //    дублювала перший екран того, що вже відкриває 📖 (плюс 📖 ще й
+  //    дає кнопку "Правило" на повний текст). Тож для таких карток —
+  //    лише стандартна книжка на тему, лампочку прибрано зовсім.
+  //
+  //  • Звичайні картки Sprachbausteine з ВЛАСНИМ унікальним поясненням
+  //    (card.explanation — авторський текст саме цієї вправи, НЕ з
+  //    GRAMMAR-таблиці): стандартну "книжку на тему" (яка вела б на
+  //    ЗАГАЛЬНУ тему граматики, а не на це конкретне пояснення) тут НЕ
+  //    показуємо — замість неї єдина кнопка, теж із іконкою книжки, але
+  //    відкриває showCardExplanationModal() із власним текстом картки.
+  //    Та сама "технологія" (окреме модальне вікно), просто інший
+  //    контент і інша функція відкриття.
+  //
+  //  • Немає власного пояснення, але є card.gram — стандартна книжка на
+  //    тему (як і раніше).
   var hasExpl = !!(expl && expl.trim());
+  var isAutoGenExpl = !!(card && card._isGram);
   var gramBtn = card ? _lfGrammarButton(card) : null;
 
   var secondaryBtns = '';
-  if(hasExpl){
-    secondaryBtns += '<button class="sb-prac-modal-secondary-btn" id="sb-modal-expl-btn" type="button">💡</button>';
-  }
-  if(gramBtn){
+  if(isAutoGenExpl && gramBtn){
+    secondaryBtns += '<button class="sb-prac-modal-secondary-btn" id="sb-modal-gram-btn" type="button">📖</button>';
+  } else if(hasExpl){
+    secondaryBtns += '<button class="sb-prac-modal-secondary-btn" id="sb-modal-uniqueexpl-btn" type="button">📖</button>';
+  } else if(gramBtn){
     secondaryBtns += '<button class="sb-prac-modal-secondary-btn" id="sb-modal-gram-btn" type="button">📖</button>';
   }
 
@@ -20140,7 +20211,6 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
         '<span class="sb-prac-feedback-modal-title">'+title+'</span>' +
       '</div>' +
       sentenceHtml +
-      '<div class="sb-prac-feedback-modal-expl hidden" id="sb-modal-expl">'+expl+'</div>' +
       '<div class="sb-prac-modal-actions">' +
         secondaryBtns +
         '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn" style="visibility:hidden">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
@@ -20160,20 +20230,17 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
 
   document.getElementById('sb-modal-next-btn').onclick = onNext;
 
-  var explBtn = document.getElementById('sb-modal-expl-btn');
-  if(explBtn){
-    explBtn.onclick = function(){
-      document.getElementById('sb-modal-expl')?.classList.remove('hidden');
-      explBtn.disabled = true;
-      explBtn.style.opacity = '.5';
-    };
+  // Кнопка унікального пояснення — відкриває ОКРЕМУ модалку (не inline-
+  // розгортання, як робила стара 💡).
+  var uniqueExplBtn = document.getElementById('sb-modal-uniqueexpl-btn');
+  if(uniqueExplBtn){
+    uniqueExplBtn.onclick = function(){ showCardExplanationModal(expl); };
   }
   var gramModalBtn = document.getElementById('sb-modal-gram-btn');
   if(gramModalBtn && gramBtn){
     gramModalBtn.onclick = gramBtn.onClick;
   }
 }
-
 // Кнопка "Далі" в модалці ховається до завершення озвучення правильного
 // речення (sbPracAnswer викликає це з onEnd колбека speak()) — а не
 // одразу разом з модалкою. speak() викликає onEnd і в разі успіху, і

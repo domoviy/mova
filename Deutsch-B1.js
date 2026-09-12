@@ -2486,7 +2486,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": "praepositionaladverbien_b1",
     "cardIds": [
@@ -2509,6 +2510,9 @@ var LESSONS = [
       "dlg_019",
       "dlg_020",
       "dlg_093"
+    ],
+    "frmCards": [
+      "brief_029"
     ]
   },
   {
@@ -2529,7 +2533,8 @@ var LESSONS = [
     },
     "skills": [
       "Hören",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -2548,6 +2553,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_094"
+    ],
+    "frmCards": [
+      "brief_030"
     ]
   },
   {
@@ -7705,7 +7713,7 @@ var LESSONS = [
     "unlockAfter": null,
     "_parentModuleId": "examprep_brief",
     "_subIndex": 1,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_2",
@@ -7736,7 +7744,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_1",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 2,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_3",
@@ -7767,7 +7775,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_2",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 3,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_4",
@@ -7798,7 +7806,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_3",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 4,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_5",
@@ -7829,7 +7837,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_4",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 5,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_6",
@@ -7860,7 +7868,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_5",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 6,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_7",
@@ -7891,7 +7899,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_6",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 7,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_8",
@@ -7922,7 +7930,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_7",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 8,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_9",
@@ -7953,7 +7961,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_8",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 9,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_10",
@@ -7984,7 +7992,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_9",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 10,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_11",
@@ -8015,7 +8023,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_10",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 11,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_12",
@@ -8046,7 +8054,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_11",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 12,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_13",
@@ -8077,7 +8085,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_12",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 13,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_14",
@@ -8108,7 +8116,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_13",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 14,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_15",
@@ -8139,7 +8147,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_14",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 15,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_16",
@@ -8170,7 +8178,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_15",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 16,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_17",
@@ -8201,7 +8209,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_16",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 17,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_18",
@@ -8232,7 +8240,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_17",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 18,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_19",
@@ -8263,7 +8271,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_18",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 19,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_20",
@@ -8294,7 +8302,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_19",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 20,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_21",
@@ -8325,7 +8333,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_20",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 21,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_22",
@@ -8356,7 +8364,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_21",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 22,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_23",
@@ -8387,7 +8395,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_22",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 23,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_24",
@@ -8418,7 +8426,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_23",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 24,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_25",
@@ -8449,7 +8457,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_24",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 25,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_26",
@@ -8480,7 +8488,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_25",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 26,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_27",
@@ -8511,7 +8519,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_26",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 27,
-    "_subTotal": 28
+    "_subTotal": 30
   },
   {
     "id": "examprep_brief_28",
@@ -8542,7 +8550,69 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_27",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 28,
-    "_subTotal": 28
+    "_subTotal": 30
+  },
+  {
+    "id": "examprep_brief_29",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_029"
+    ],
+    "frmCards": [
+      "brief_029"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_28",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 29,
+    "_subTotal": 30
+  },
+  {
+    "id": "examprep_brief_30",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_030"
+    ],
+    "frmCards": [
+      "brief_030"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_29",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 30,
+    "_subTotal": 30
   },
   {
     "id": "examsim_brief",
@@ -37331,6 +37401,64 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Vielen Dank im Voraus für Ihre Hilfe.</r>", "en": "<r>Thank you in advance for your help.</r>", "uk": "<r>Заздалегідь дякую за Вашу допомогу.</r>", "ru": "<r>Заранее благодарю за Вашу помощь.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
       { "role": "name", "gram": "", "de": "David Berger", "en": "David Berger", "uk": "Давид Бергер", "ru": "Давид Бергер" }
+    ]
+  },
+  {
+    "id": "brief_029",
+    "cat": "Entschuldigung / Absage",
+    "format": "email_informell",
+    "topic": {
+      "de": "Ein Missverständnis klären",
+      "en": "Clearing up a misunderstanding",
+      "uk": "З'ясувати непорозуміння",
+      "ru": "Прояснить недоразумение"
+    },
+    "task": {
+      "de": "Es gab neulich ein Missverständnis zwischen Ihnen und einem Kollegen, über das Sie sich geärgert haben. Sie möchten das klären. Schreiben Sie ihm eine E-Mail.<br><br>1. Grund für Ihr Schreiben<br>2. Worüber Sie sich geärgert haben<br>3. Wie es zu dem Missverständnis kam<br>4. Vorschlag, wie Sie es klären können",
+      "en": "There was recently a misunderstanding between you and a colleague that annoyed you. You want to clear it up. Write him an email.<br><br>1. Reason for your email<br>2. What annoyed you<br>3. How the misunderstanding happened<br>4. A suggestion for how to clear it up",
+      "uk": "Нещодавно між Вами й колегою виникло непорозуміння, через яке Ви розсердилися. Ви хочете це з'ясувати. Напишіть йому електронного листа.<br><br>1. Причина Вашого листа<br>2. Через що Ви розсердилися<br>3. Як виникло це непорозуміння<br>4. Пропозиція, як це з'ясувати",
+      "ru": "Недавно между Вами и коллегой возникло недоразумение, из-за которого Вы разозлились. Вы хотите это прояснить. Напишите ему электронное письмо.<br><br>1. Причина Вашего письма<br>2. Из-за чего Вы разозлились<br>3. Как возникло это недоразумение<br>4. Предложение, как это прояснить"
+    },
+    "name": "de_w_nina",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Lass uns das kurz klären", "en": "Subject: Let's quickly clear this up", "uk": "Тема: Давай швидко це з'ясуємо", "ru": "Тема: Давай быстро это проясним" },
+      { "role": "anrede", "gram": "", "de": "Hallo Ben,", "en": "Hi Ben,", "uk": "Привіт, Бене,", "ru": "Привет, Бен," },
+      { "role": "einleitung", "gram": "praepositionaladverbien_b1", "de": "<r>Ich muss ehrlich sagen,</r> <g>darüber</g> habe ich mich wegen des <c>Missverständnisses</c> ziemlich geärgert, <k>und</k> ich möchte das gerne klären.", "en": "<r>I have to be honest,</r> I was quite annoyed about that because of the misunderstanding, and I would like to clear it up.", "uk": "<r>Маю чесно сказати,</r> я через це непорозуміння досить розсердилася, і хочу це з'ясувати.", "ru": "<r>Должна честно сказать,</r> я из-за этого недоразумения довольно разозлилась, и хочу это прояснить." },
+      { "role": "punkt2", "gram": "n_deklination", "de": "<r>Genauer gesagt,</r> ich habe mich darüber geärgert, dass du in der Besprechung nichts gesagt hast, <k>obwohl</k> du meinem <g>Kollegen</g> genau davon erzählt hast.", "en": "<r>More specifically,</r> I was annoyed that you said nothing in the meeting, even though you had told my colleague exactly about it.", "uk": "<r>Точніше кажучи,</r> мене роздратувало те, що ти нічого не сказав на нараді, хоча моєму колезі розповів про це якраз усе.", "ru": "<r>Точнее говоря,</r> меня разозлило то, что ты ничего не сказал на совещании, хотя моему коллеге рассказал об этом как раз всё." },
+      { "role": "punkt3", "gram": "indefinitpronomen_possessivpronomen", "de": "<r>Ich glaube,</r> <g>jemand</g> hat unser Gespräch falsch verstanden <k>und</k> es dann falsch weitergegeben.", "en": "<r>I think</r> someone misunderstood our conversation and then passed it on incorrectly.", "uk": "<r>Гадаю,</r> хтось неправильно зрозумів нашу розмову і потім неправильно її переказав.", "ru": "<r>Думаю,</r> кто-то неправильно понял наш разговор и потом неправильно его передал." },
+      { "role": "punkt4", "gram": "satz_mit_um_zu", "de": "<r>Lass uns doch kurz telefonieren,</r> <g>um alles in Ruhe zu klären</g>. <k>Dann</k> können wir das schnell aus der Welt schaffen.", "en": "<r>Let's just have a quick phone call</r> to sort everything out calmly. Then we can quickly get this out of the way.", "uk": "<r>Давай коротко зателефонуємо одне одному,</r> щоб спокійно все з'ясувати. Тоді ми зможемо швидко це владнати.", "ru": "<r>Давай коротко созвонимся,</r> чтобы спокойно всё прояснить. Тогда мы сможем быстро это уладить." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich bin sicher, das ist schnell aus der Welt.</r>", "en": "<r>I'm sure this will be sorted out quickly.</r>", "uk": "<r>Я впевнена, що це швидко владнається.</r>", "ru": "<r>Я уверена, что это быстро уладится.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Liebe Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
+    ]
+  },
+  {
+    "id": "brief_030",
+    "cat": "Bitte um Hilfe",
+    "format": "brief_informell",
+    "topic": {
+      "de": "Tipps für die Familienfeier",
+      "en": "Tips for the family celebration",
+      "uk": "Поради щодо сімейного свята",
+      "ru": "Советы по семейному празднику"
+    },
+    "task": {
+      "de": "Sie sind zu einer Familienfeier eingeladen und kennen die lokalen Bräuche noch nicht genau. Schreiben Sie einer Kollegin einen Brief und bitten Sie um Tipps.<br><br>1. Grund für Ihr Schreiben<br>2. Wozu Sie eingeladen sind<br>3. Was Sie nicht wissen<br>4. Bitte um Ratschläge zur Etikette",
+      "en": "You have been invited to a family celebration and don't yet know the local customs exactly. Write a letter to a colleague and ask for tips.<br><br>1. Reason for your letter<br>2. What you are invited to<br>3. What you don't know<br>4. A request for advice on etiquette",
+      "uk": "Вас запросили на сімейне свято, а Ви ще не зовсім знаєте місцевих звичаїв. Напишіть листа колезі й попросіть поради.<br><br>1. Причина Вашого листа<br>2. На що Вас запросили<br>3. Чого Ви не знаєте<br>4. Прохання про поради щодо етикету",
+      "ru": "Вас пригласили на семейный праздник, а Вы ещё не совсем знаете местных обычаев. Напишите письмо коллеге и попросите советов.<br><br>1. Причина Вашего письма<br>2. На что Вас пригласили<br>3. Чего Вы не знаете<br>4. Просьба о советах по этикету"
+    },
+    "name": "de_m_alex",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Mainz, den 30. September 2026", "en": "Mainz, 30 September 2026", "uk": "Майнц, 30 вересня 2026 р.", "ru": "Майнц, 30 сентября 2026 г." },
+      { "role": "anrede", "gram": "", "de": "Liebe Petra,", "en": "Dear Petra,", "uk": "Люба Петро,", "ru": "Дорогая Петра," },
+      { "role": "einleitung", "gram": "adjektive_auf_ig_isch", "de": "<r>Ich habe eine Bitte an dich,</r> <k>denn</k> ich bin mir bei den <c>lokalen Bräuchen</c> hier noch unsicher, was <g>typisch</g> ist und was nicht.", "en": "<r>I have a favor to ask you</r>, because I'm still unsure about the local customs here, what's typical and what isn't.", "uk": "<r>У мене до тебе прохання</r>, бо я ще не впевнений щодо місцевих звичаїв тут, що типово, а що ні.", "ru": "<r>У меня к тебе просьба</r>, потому что я ещё не уверен насчёт местных обычаев здесь, что типично, а что нет." },
+      { "role": "punkt2", "gram": "komposita_nomen_nomen", "de": "<r>Ich bin nämlich zu einer</r> <g>Familienfeier</g> eingeladen, <k>und</k> ich möchte dort nichts falsch machen.", "en": "<r>I've actually been invited to</r> a family celebration, and I don't want to do anything wrong there.", "uk": "<r>Мене якраз запросили на</r> сімейне свято, і я не хочу там нічого зробити не так.", "ru": "<r>Меня как раз пригласили на</r> семейный праздник, и я не хочу там ничего сделать не так." },
+      { "role": "punkt3", "gram": "fragewoerter_wor_dar", "de": "<r>Ich weiß zum Beispiel nicht,</r> <g>worauf</g> ich beim Begrüßen achten soll, <k>denn</k> ich will niemanden vor den Kopf stoßen.", "en": "<r>For example, I don't know</r> what I should pay attention to when greeting people, because I don't want to offend anyone.", "uk": "<r>Наприклад, я не знаю,</r> на що звертати увагу під час привітання, бо не хочу нікого образити.", "ru": "<r>Например, я не знаю,</r> на что обращать внимание при приветствии, потому что не хочу никого обидеть." },
+      { "role": "punkt4", "gram": "relativsatz_mit_praeposition", "de": "<r>Ich wäre dir dankbar für</r> ein paar Tipps, <g>auf die ich mich verlassen kann</g>. <k>Außerdem</k> würde ich mich über ein kurzes Gespräch vorher freuen.", "en": "<r>I would be grateful for</r> a few tips that I can rely on. I would also welcome a short conversation beforehand.", "uk": "<r>Я був би вдячний за</r> кілька порад, на які я можу покластися. Крім того, я був би радий короткій розмові заздалегідь.", "ru": "<r>Я был бы благодарен за</r> несколько советов, на которые я могу положиться. Кроме того, я был бы рад короткой беседе заранее." },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank schon mal für deine Hilfe.</r>", "en": "<r>Thanks in advance for your help.</r>", "uk": "<r>Дякую заздалегідь за твою допомогу.</r>", "ru": "<r>Спасибо заранее за твою помощь.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Alex Berg", "en": "Alex Berg", "uk": "Алекс Берг", "ru": "Алекс Берг" }
     ]
   }
 ];

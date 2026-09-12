@@ -8040,10 +8040,10 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_001"
+      "dlg_014"
     ],
     "dlgCards": [
-      "dlg_001"
+      "dlg_014"
     ],
     "frmCards": [],
     "sbCards": [],
@@ -8328,10 +8328,10 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_023"
+      "dlg_029"
     ],
     "dlgCards": [
-      "dlg_023"
+      "dlg_029"
     ],
     "frmCards": [],
     "sbCards": [],
