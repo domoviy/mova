@@ -700,11 +700,16 @@ body{
   width:74%;
   max-width:74%;
   align-self:flex-start;
-  text-align:left;
+  /* text-align — навмисно НЕ перевизначаємо тут (раніше було left):
+     базове .match-btn{text-align:center} нижче лишається чинним, щоб
+     текст завжди центрувався в кнопці, а не лише коли він в один
+     рядок (на кількох рядках left/right давало "зигзаг" — саме це й
+     просили прибрати). Зигзаг самого РОЗТАШУВАННЯ кнопок (лівий край/
+     правий край) лишається через align-self нижче — міняється тільки
+     вирівнювання ТЕКСТУ всередині кожної кнопки. */
 }
 .match-grid.stagger .match-btn.side-short{
   align-self:flex-end;
-  text-align:right;
 }
 .match-btn{
   padding:12px 10px;
@@ -1883,6 +1888,59 @@ body{
   font-size:14px;color:rgba(255,255,255,.45);margin-top:4px;
 }
 .lf-step-label span{ font-weight:600;color:rgba(255,255,255,.7); }
+
+/* ══ СВЯТКУВАННЯ ЗАВЕРШЕННЯ МОДУЛЯ ═══════════════════════════════════
+   Окрема, ВІЗУАЛЬНО ВАЖЧА подія за звичайне завершення уроку (темний
+   фон на весь екран + конфеті + кубок) — щоб один раз на модуль (не
+   щоуроку) відчувалось як справжня віха, а не рутинне продовження.
+   showModuleCelebration()/JS вирішує, коли її показувати. */
+#module-celebration{
+  position:fixed;inset:0;z-index:700;
+  display:none;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 42%, #234a37, #0f1f18 78%);
+  overflow:hidden;
+  opacity:0;transition:opacity .3s ease;
+}
+#module-celebration.show{ display:flex; opacity:1; }
+.mc-confetti{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.mc-confetti-piece{
+  position:absolute; top:-12px; border-radius:2px; opacity:.95;
+  animation-name:mcFall; animation-timing-function:cubic-bezier(.4,.1,.6,.9); animation-fill-mode:forwards;
+}
+@keyframes mcFall{
+  0%{ transform:translateY(0) rotate(0deg); }
+  100%{ transform:translateY(112vh) rotate(560deg); opacity:.15; }
+}
+.mc-inner{
+  position:relative;text-align:center;padding:20px;
+  animation: mcPopIn .55s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes mcPopIn{
+  0%{ transform:scale(.4); opacity:0; }
+  60%{ transform:scale(1.1); opacity:1; }
+  100%{ transform:scale(1); opacity:1; }
+}
+.mc-trophy{
+  font-size:76px;margin-bottom:10px;line-height:1;
+  filter:drop-shadow(0 0 26px rgba(212,175,55,.55));
+  animation: mcTrophyBounce 1.7s ease-in-out .5s infinite;
+}
+@keyframes mcTrophyBounce{
+  0%,100%{ transform:translateY(0) rotate(0deg); }
+  50%{ transform:translateY(-9px) rotate(-3deg); }
+}
+.mc-title{
+  font-size:26px;font-weight:800;color:#fff;
+  font-family:'Inter',sans-serif;margin-bottom:6px;
+}
+.mc-module-name{
+  font-size:16px;font-weight:600;color:var(--gold-lt);
+  font-family:'Inter',sans-serif;margin-bottom:22px;
+}
+.mc-hint{
+  font-size:12.5px;color:rgba(255,255,255,.5);
+  font-family:'Inter',sans-serif;
+}
 
 /* ══ ЄДИНИЙ ЕКРАН РЕЗУЛЬТАТУ УРОКУ/ДІАЛОГУ/ГРАМАТИКИ ══════════════════
    РАНІШЕ це були ТРИ окремі шари: статичний #lesson-result (заголовок +
@@ -3555,10 +3613,30 @@ body{
 
     <!-- VOKABELN -->
     <div id="view-vocab" class="view active card-view">
+      <!-- Повноекранне святкування ЗАВЕРШЕННЯ ЦІЛОГО МОДУЛЯ — окрема,
+           більша подія за звичайне завершення уроку: конфеті + кубок.
+           З'являється ЛИШЕ коли щойно пройдений урок був ОСТАННІМ, що
+           бракувало модулю до 100% (showModuleCelebration нижче),
+           ланцюжком ПІСЛЯ звичайного святкування уроку й ПЕРЕД переходом
+           у Lernpfad — де "закриття" щойно завершеного модуля й
+           "відкриття" наступного відбувається вже саме собою (модуль з
+           активним уроком автоматично розгорнутий, renderLernpfad →
+           isModuleOpen), тож тут лише даємо це ВІДЧУТИ, а не просто
+           тихо перемикаємо клас. -->
+      <div id="module-celebration" onclick="_dismissModuleCelebration()">
+        <div class="mc-confetti" id="mc-confetti"></div>
+        <div class="mc-inner">
+          <div class="mc-trophy">🏆</div>
+          <div class="mc-title" id="mc-title"></div>
+          <div class="mc-module-name" id="mc-module-name"></div>
+          <div class="mc-hint" id="mc-hint"></div>
+        </div>
+      </div>
+
       <!-- ЄДИНИЙ повноекранний екран результату уроку/діалогу/граматики.
            РАНІШЕ це були ТРИ окремі шари: статичний #lesson-result
            (заголовок+статистика) → повноекранний попап #lesson-celebration
-           ПОВЕРХ нього з ДУБЛЬОВАНИМИ заголовком/часом/M-балами (бо картка
+           ПОВЕРХ нього з ДУБЛЬОВАНИМИ заголовком/часом/M-балами (бо card
            попапу перекривала оригінал — і саме ЦЕ дублювання й було
            потрібно прибрати) → іноді ще й окремий повноекранний попап
            #streak-celebration (вогонь стріку) ПОВЕРХ ОБОХ. Тепер —
@@ -4196,7 +4274,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '642-b1c2d9c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4861,6 +4939,7 @@ const I18N = {
     lp_all_done:'Kurs abgeschlossen!',
     lr_continue_hint:'Weiter geht\'s gleich…',
     card_expl_modal_title:'Erklärung',
+    module_complete_title:'🏆 Modul geschafft!',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -4955,6 +5034,7 @@ const I18N = {
     lp_all_done:'Курс завершено!',
     lr_continue_hint:'Продовжуємо…',
     card_expl_modal_title:'Пояснення',
+    module_complete_title:'🏆 Модуль завершено!',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -5048,6 +5128,7 @@ const I18N = {
     lp_all_done:'Course completed!',
     lr_continue_hint:'Continuing…',
     card_expl_modal_title:'Explanation',
+    module_complete_title:'🏆 Module complete!',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -5142,6 +5223,7 @@ const I18N = {
     lp_all_done:'Курс завершён!',
     lr_continue_hint:'Продолжаем…',
     card_expl_modal_title:'Объяснение',
+    module_complete_title:'🏆 Модуль завершён!',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -11887,6 +11969,72 @@ function _flyXpToHeader(sourceEl, onArrive){
 //   4) opts.onDone викликається після ПОВНОЇ послідовності — або одразу,
 //      якщо користувач тапнув по екрану раніше (_dismissLessonCelebration)
 // opts: { xpEarned, streakResult, frozenDaysUsed, onDone }
+// ══ СВЯТКУВАННЯ ЗАВЕРШЕННЯ МОДУЛЯ ═══════════════════════════════════
+// Показується ЛИШЕ коли щойно пройдений урок був ОСТАННІМ, що бракувало
+// модулю до 100% (моду completed-перевірку робить lfShowResult, до
+// цієї функції долітає вже готовий opts). onDone — викликається після
+// того, як користувач подивився/тапнув, щоб пропустити (зазвичай це
+// goToLernpfadActivePoint — саме там "закриття" щойно завершеного
+// модуля й "відкриття" наступного відбувається вже само собою:
+// renderLernpfad() автоматично розгортає лише модуль з активним уроком).
+function showModuleCelebration(opts, onDone){
+  var el = document.getElementById('module-celebration');
+  if(!el){ if(onDone) onDone(); return; }
+
+  var titleEl = document.getElementById('mc-title');
+  var nameEl  = document.getElementById('mc-module-name');
+  var hintEl  = document.getElementById('mc-hint');
+  if(titleEl) titleEl.textContent = t('module_complete_title');
+  if(nameEl)  nameEl.textContent  = t('lp_chapter_prefix')+' '+opts.chapterNum+' · '+opts.moduleNum+'. '+opts.moduleTitle;
+  if(hintEl)  hintEl.textContent  = t('lr_continue_hint');
+
+  _mcSpawnConfetti();
+  el.classList.add('show');
+  el._onDone = typeof onDone === 'function' ? onDone : null;
+  clearTimeout(el._mcTimer);
+  el._mcTimer = setTimeout(_dismissModuleCelebration, 3600);
+  if(typeof haptic !== 'undefined') haptic.success();
+}
+
+function _dismissModuleCelebration(){
+  var el = document.getElementById('module-celebration');
+  if(!el) return;
+  clearTimeout(el._mcTimer);
+  el.classList.remove('show');
+  var cb = el._onDone;
+  el._onDone = null;
+  var confetti = document.getElementById('mc-confetti');
+  if(confetti) confetti.innerHTML = '';
+  if(cb) cb();
+}
+
+// Конфеті на чистому CSS/JS (без бібліотек чи мережі — той самий
+// принцип, що й вогонь стріку раніше): генеруємо N смужок з випадковою
+// позицією/кольором/тривалістю падіння, кожна падає й обертається
+// власним keyframe (mcFall у CSS), запускаючись з невеликою затримкою
+// одна за одною для природнішого "вибуху", а не синхронного залпу.
+function _mcSpawnConfetti(){
+  var wrap = document.getElementById('mc-confetti');
+  if(!wrap) return;
+  wrap.innerHTML = '';
+  var colors = ['#c9a84c','#e8c96a','#6bbf6e','#e07a5f','#5aa9e6','#ffffff'];
+  var n = 46;
+  var frag = document.createDocumentFragment();
+  for(var i=0; i<n; i++){
+    var p = document.createElement('span');
+    p.className = 'mc-confetti-piece';
+    var size = 6 + Math.random()*6;
+    p.style.left = (Math.random()*100)+'%';
+    p.style.background = colors[i % colors.length];
+    p.style.width = size+'px';
+    p.style.height = (size*0.4)+'px';
+    p.style.animationDelay = (Math.random()*0.5)+'s';
+    p.style.animationDuration = (2.1 + Math.random()*1.3)+'s';
+    frag.appendChild(p);
+  }
+  wrap.appendChild(frag);
+}
+
 function showLessonCelebration(opts){
   opts = opts || {};
   const el = document.getElementById('lesson-result');
@@ -17298,6 +17446,34 @@ function lfShowResult(){
   // старого до нового значення.
   const _lpModuleFillBeforeLesson = parseFloat(document.getElementById('lp-module-fill')?.style.width) || 0;
 
+  // Чи ЩОЙНО завершений урок закрив увесь МОДУЛЬ (для окремого,
+  // більшого святкування нижче, showModuleCelebration) — рахуємо
+  // напряму з актуальних даних (усі картки цього уроку вже зараховані
+  // на момент показу результату), а не чекаємо на рендер хедера.
+  // "До" беремо з того самого DOM-знімка вище (_lpModuleFillBeforeLesson):
+  // якщо ДО цього уроку модуль не був повним, а ПІСЛЯ — повний, це й є
+  // момент завершення модуля.
+  let _moduleJustCompleted = false;
+  let _moduleCompletedInfo = null;
+  if(LF.lesson && LF.lesson._parentModuleId && _lpModuleFillBeforeLesson < 100){
+    const _lessonsAll = typeof LESSONS !== 'undefined' ? LESSONS : [];
+    const _siblingLessons = _lessonsAll.filter(l => l.chapter===LF.lesson.chapter && l._parentModuleId===LF.lesson._parentModuleId);
+    if(_siblingLessons.length){
+      let _mDone=0, _mTotal=0;
+      _siblingLessons.forEach(l=>{ const p=lessonProgress(l); _mDone+=p.done; _mTotal+=p.total; });
+      const _newModulePct = _mTotal ? Math.round(_mDone/_mTotal*100) : 0;
+      if(_newModulePct >= 100){
+        _moduleJustCompleted = true;
+        const _mt = LF.lesson.moduleTitle || LF.lesson.title;
+        _moduleCompletedInfo = {
+          chapterNum: LF.lesson.chapter,
+          moduleNum:  LF.lesson.module,
+          moduleTitle: _mt ? (_mt[uiLang]||_mt[primaryLang()]||_mt.en||_mt.de) : '',
+        };
+      }
+    }
+  }
+
   // Захисно зупиняємо будь-яке відтворення від попереднього кроку —
   // 'sb_prac' (Sprachbausteine) має ВЛАСНУ, окрему від lf-unit-card
   // систему черги/показу (SB.pracQueue/sbRenderPrac), яку до цього
@@ -17592,11 +17768,18 @@ function lfShowResult(){
     // а всередині її onDone — ще й showStreakCelebration) для двох
     // окремих повноекранних попапів; тепер showLessonCelebration сама
     // знає про стрік через опцію streakResult.
+    //
+    // Якщо ЦЕЙ урок ще й закрив увесь модуль (_moduleJustCompleted вище) —
+    // між святкуванням уроку й переходом у Lernpfad вставляємо ЩЕ ОДНЕ,
+    // більше святкування (showModuleCelebration) — власна віха модуля,
+    // а не просто ще один урок.
     showLessonCelebration({
       xpEarned: xpEarnedThisLesson,
       streakResult: streakResult,
       frozenDaysUsed: streakResult ? streakResult.frozenDaysUsed : 0,
-      onDone: goToLernpfadActivePoint,
+      onDone: _moduleJustCompleted
+        ? function(){ showModuleCelebration(_moduleCompletedInfo, goToLernpfadActivePoint); }
+        : goToLernpfadActivePoint,
     });
   }
 
