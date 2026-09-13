@@ -1889,6 +1889,68 @@ body{
 }
 .lf-step-label span{ font-weight:600;color:rgba(255,255,255,.7); }
 
+/* ══ СВЯТКУВАННЯ ЗАВЕРШЕННЯ РОЗДІЛУ (ГЛАВИ) ══════════════════════════
+   НАЙВАЖЧА подія з трьох рівнів (урок → модуль → розділ) — усе те саме,
+   що й у модульного святкування, але посилено: корона замість кубка,
+   промені-спалах позаду неї (.cc-rays, obertання), більше конфеті (70,
+   і трохи "зірок" серед смужок), довша тривалість показу. */
+#chapter-celebration{
+  position:fixed;inset:0;z-index:750;
+  display:none;align-items:center;justify-content:center;
+  background:radial-gradient(circle at 50% 40%, #2c4a2a, #0a1810 82%);
+  overflow:hidden;
+  opacity:0;transition:opacity .35s ease;
+}
+#chapter-celebration.show{ display:flex; opacity:1; }
+.cc-confetti{ position:absolute; inset:0; pointer-events:none; overflow:hidden; }
+.cc-confetti-piece{
+  position:absolute; top:-14px; border-radius:2px; opacity:.95;
+  animation-name:mcFall; animation-timing-function:cubic-bezier(.4,.1,.6,.9); animation-fill-mode:forwards;
+}
+/* Промені-спалах позаду корони — повільно обертаються, щоб фон не
+   здавався статичним навіть поки конфеті вже долетіло донизу. Чистий
+   CSS: repeating-conic-gradient замість SVG/картинки. */
+.cc-rays{
+  position:absolute; top:50%; left:50%; width:520px; height:520px;
+  margin:-260px 0 0 -260px;
+  background:repeating-conic-gradient(rgba(255,215,120,.16) 0deg 8deg, transparent 8deg 20deg);
+  border-radius:50%;
+  animation: ccRaysSpin 14s linear infinite;
+  pointer-events:none;
+}
+@keyframes ccRaysSpin{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+.cc-inner{
+  position:relative;text-align:center;padding:20px;
+  animation: ccPopIn .6s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes ccPopIn{
+  0%{ transform:scale(.35) rotate(-8deg); opacity:0; }
+  60%{ transform:scale(1.14) rotate(3deg); opacity:1; }
+  100%{ transform:scale(1) rotate(0deg); opacity:1; }
+}
+.cc-crown{
+  font-size:92px;margin-bottom:10px;line-height:1;
+  filter:drop-shadow(0 0 32px rgba(255,215,120,.65));
+  animation: ccCrownBounce 1.8s ease-in-out .6s infinite;
+}
+@keyframes ccCrownBounce{
+  0%,100%{ transform:translateY(0) rotate(0deg); }
+  50%{ transform:translateY(-11px) rotate(-4deg); }
+}
+.cc-title{
+  font-size:29px;font-weight:800;color:#fff;
+  font-family:'Inter',sans-serif;margin-bottom:6px;
+  text-shadow:0 0 18px rgba(255,215,120,.4);
+}
+.cc-chapter-name{
+  font-size:17px;font-weight:600;color:#ffd980;
+  font-family:'Inter',sans-serif;margin-bottom:24px;
+}
+.cc-hint{
+  font-size:12.5px;color:rgba(255,255,255,.55);
+  font-family:'Inter',sans-serif;
+}
+
 /* ══ СВЯТКУВАННЯ ЗАВЕРШЕННЯ МОДУЛЯ ═══════════════════════════════════
    Окрема, ВІЗУАЛЬНО ВАЖЧА подія за звичайне завершення уроку (темний
    фон на весь екран + конфеті + кубок) — щоб один раз на модуль (не
@@ -3613,6 +3675,24 @@ body{
 
     <!-- VOKABELN -->
     <div id="view-vocab" class="view active card-view">
+      <!-- Повноекранне святкування ЗАВЕРШЕННЯ ЦІЛОГО РОЗДІЛУ (глави) —
+           НАЙБІЛЬША подія з усіх трьох рівнів (урок → модуль → розділ):
+           корона + промені-спалах позаду неї + більше конфеті й довша
+           тривалість, ніж showModuleCelebration. З'являється ЛИШЕ коли
+           щойно завершений модуль (див. module-celebration) був ОСТАННІМ
+           у своєму розділі — тобто розділ теж щойно закрився. Показується
+           ПІСЛЯ святкування модуля, ПЕРЕД переходом у Lernpfad. -->
+      <div id="chapter-celebration" onclick="_dismissChapterCelebration()">
+        <div class="cc-confetti" id="cc-confetti"></div>
+        <div class="cc-rays"></div>
+        <div class="cc-inner">
+          <div class="cc-crown">👑</div>
+          <div class="cc-title" id="cc-title"></div>
+          <div class="cc-chapter-name" id="cc-chapter-name"></div>
+          <div class="cc-hint" id="cc-hint"></div>
+        </div>
+      </div>
+
       <!-- Повноекранне святкування ЗАВЕРШЕННЯ ЦІЛОГО МОДУЛЯ — окрема,
            більша подія за звичайне завершення уроку: конфеті + кубок.
            З'являється ЛИШЕ коли щойно пройдений урок був ОСТАННІМ, що
@@ -4274,7 +4354,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '643-46ff9e3';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4940,6 +5020,7 @@ const I18N = {
     lr_continue_hint:'Weiter geht\'s gleich…',
     card_expl_modal_title:'Erklärung',
     module_complete_title:'🏆 Modul geschafft!',
+    chapter_complete_title:'👑 Kapitel geschafft!',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -5035,6 +5116,7 @@ const I18N = {
     lr_continue_hint:'Продовжуємо…',
     card_expl_modal_title:'Пояснення',
     module_complete_title:'🏆 Модуль завершено!',
+    chapter_complete_title:'👑 Розділ завершено!',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -5129,6 +5211,7 @@ const I18N = {
     lr_continue_hint:'Continuing…',
     card_expl_modal_title:'Explanation',
     module_complete_title:'🏆 Module complete!',
+    chapter_complete_title:'👑 Chapter complete!',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -5224,6 +5307,7 @@ const I18N = {
     lr_continue_hint:'Продолжаем…',
     card_expl_modal_title:'Объяснение',
     module_complete_title:'🏆 Модуль завершён!',
+    chapter_complete_title:'👑 Раздел завершён!',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -11969,6 +12053,73 @@ function _flyXpToHeader(sourceEl, onArrive){
 //   4) opts.onDone викликається після ПОВНОЇ послідовності — або одразу,
 //      якщо користувач тапнув по екрану раніше (_dismissLessonCelebration)
 // opts: { xpEarned, streakResult, frozenDaysUsed, onDone }
+// ══ СВЯТКУВАННЯ ЗАВЕРШЕННЯ РОЗДІЛУ (ГЛАВИ) ══════════════════════════
+// НАЙБІЛЬША подія з трьох (урок → модуль → розділ). Показується ПІСЛЯ
+// showModuleCelebration (щойно завершений модуль був ОСТАННІМ у своєму
+// розділі — lfShowResult вирішує це заздалегідь і передає готові opts).
+function showChapterCelebration(opts, onDone){
+  var el = document.getElementById('chapter-celebration');
+  if(!el){ if(onDone) onDone(); return; }
+
+  var titleEl = document.getElementById('cc-title');
+  var nameEl  = document.getElementById('cc-chapter-name');
+  var hintEl  = document.getElementById('cc-hint');
+  if(titleEl) titleEl.textContent = t('chapter_complete_title');
+  if(nameEl)  nameEl.textContent  = t('lp_chapter_prefix')+' '+opts.chapterNum+' · '+opts.chapterTitle;
+  if(hintEl)  hintEl.textContent  = t('lr_continue_hint');
+
+  _ccSpawnConfetti();
+  el.classList.add('show');
+  el._onDone = typeof onDone === 'function' ? onDone : null;
+  clearTimeout(el._ccTimer);
+  el._ccTimer = setTimeout(_dismissChapterCelebration, 4400);
+  if(typeof haptic !== 'undefined') haptic.success();
+}
+
+function _dismissChapterCelebration(){
+  var el = document.getElementById('chapter-celebration');
+  if(!el) return;
+  clearTimeout(el._ccTimer);
+  el.classList.remove('show');
+  var cb = el._onDone;
+  el._onDone = null;
+  var confetti = document.getElementById('cc-confetti');
+  if(confetti) confetti.innerHTML = '';
+  if(cb) cb();
+}
+
+// Те саме, що й _mcSpawnConfetti, але більше частинок (70 проти 46) і
+// частина з них — маленькі "зірочки" (⭐, кутовий текстовий гліф замість
+// прямокутника), для відчутно щедрішого, "вагомішого" ефекту.
+function _ccSpawnConfetti(){
+  var wrap = document.getElementById('cc-confetti');
+  if(!wrap) return;
+  wrap.innerHTML = '';
+  var colors = ['#c9a84c','#ffd980','#6bbf6e','#e07a5f','#5aa9e6','#ffffff'];
+  var n = 70;
+  var frag = document.createDocumentFragment();
+  for(var i=0; i<n; i++){
+    var isStar = i % 5 === 0;
+    var p = document.createElement('span');
+    p.className = 'cc-confetti-piece';
+    if(isStar){
+      p.textContent = '⭐';
+      p.style.fontSize = (10 + Math.random()*8)+'px';
+      p.style.background = 'transparent';
+    } else {
+      var size = 6 + Math.random()*7;
+      p.style.width = size+'px';
+      p.style.height = (size*0.4)+'px';
+      p.style.background = colors[i % colors.length];
+    }
+    p.style.left = (Math.random()*100)+'%';
+    p.style.animationDelay = (Math.random()*0.6)+'s';
+    p.style.animationDuration = (2.4 + Math.random()*1.6)+'s';
+    frag.appendChild(p);
+  }
+  wrap.appendChild(frag);
+}
+
 // ══ СВЯТКУВАННЯ ЗАВЕРШЕННЯ МОДУЛЯ ═══════════════════════════════════
 // Показується ЛИШЕ коли щойно пройдений урок був ОСТАННІМ, що бракувало
 // модулю до 100% (моду completed-перевірку робить lfShowResult, до
@@ -17455,8 +17606,8 @@ function lfShowResult(){
   // момент завершення модуля.
   let _moduleJustCompleted = false;
   let _moduleCompletedInfo = null;
+  let _lessonsAll = typeof LESSONS !== 'undefined' ? LESSONS : [];
   if(LF.lesson && LF.lesson._parentModuleId && _lpModuleFillBeforeLesson < 100){
-    const _lessonsAll = typeof LESSONS !== 'undefined' ? LESSONS : [];
     const _siblingLessons = _lessonsAll.filter(l => l.chapter===LF.lesson.chapter && l._parentModuleId===LF.lesson._parentModuleId);
     if(_siblingLessons.length){
       let _mDone=0, _mTotal=0;
@@ -17471,6 +17622,28 @@ function lfShowResult(){
           moduleTitle: _mt ? (_mt[uiLang]||_mt[primaryLang()]||_mt.en||_mt.de) : '',
         };
       }
+    }
+  }
+
+  // Чи ЩОЙНО завершений модуль (вище) був ОСТАННІМ у своєму РОЗДІЛІ —
+  // розділ логічно не може щойно завершитись, якщо не завершився щойно
+  // й котрийсь із його модулів, тож перевіряємо це ЛИШЕ якщо
+  // _moduleJustCompleted true (уникає зайвого проходу по всіх уроках
+  // розділу на кожному звичайному завершенні уроку).
+  let _chapterJustCompleted = false;
+  let _chapterCompletedInfo = null;
+  if(_moduleJustCompleted){
+    const _chapterLessons = _lessonsAll.filter(l => l.chapter===LF.lesson.chapter);
+    let _cDone=0, _cTotal=0;
+    _chapterLessons.forEach(l=>{ const p=lessonProgress(l); _cDone+=p.done; _cTotal+=p.total; });
+    const _chapterPct = _cTotal ? Math.round(_cDone/_cTotal*100) : 0;
+    if(_chapterPct >= 100){
+      _chapterJustCompleted = true;
+      const _ct = LF.lesson.chapterTitle;
+      _chapterCompletedInfo = {
+        chapterNum: LF.lesson.chapter,
+        chapterTitle: _ct ? (_ct[uiLang]||_ct[primaryLang()]||_ct.en||_ct.de) : '',
+      };
     }
   }
 
@@ -17772,14 +17945,23 @@ function lfShowResult(){
     // Якщо ЦЕЙ урок ще й закрив увесь модуль (_moduleJustCompleted вище) —
     // між святкуванням уроку й переходом у Lernpfad вставляємо ЩЕ ОДНЕ,
     // більше святкування (showModuleCelebration) — власна віха модуля,
-    // а не просто ще один урок.
+    // а не просто ще один урок. А якщо цей модуль ще й був останнім у
+    // своєму розділі (_chapterJustCompleted) — після модульного йде ще
+    // й НАЙБІЛЬШЕ, роздільне святкування (showChapterCelebration).
     showLessonCelebration({
       xpEarned: xpEarnedThisLesson,
       streakResult: streakResult,
       frozenDaysUsed: streakResult ? streakResult.frozenDaysUsed : 0,
-      onDone: _moduleJustCompleted
-        ? function(){ showModuleCelebration(_moduleCompletedInfo, goToLernpfadActivePoint); }
-        : goToLernpfadActivePoint,
+      onDone: function(){
+        if(!_moduleJustCompleted){ goToLernpfadActivePoint(); return; }
+        showModuleCelebration(_moduleCompletedInfo, function(){
+          if(_chapterJustCompleted){
+            showChapterCelebration(_chapterCompletedInfo, goToLernpfadActivePoint);
+          } else {
+            goToLernpfadActivePoint();
+          }
+        });
+      },
     });
   }
 
