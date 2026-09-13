@@ -1008,12 +1008,15 @@ body{
   background:var(--accent, #4a7c9d);
   box-shadow:0 5px 0 rgba(30,70,95,.4), 0 7px 12px rgba(30,70,95,.18);
 }
-/* Пошук рішення — окремий, "важчий" колір (сливовий), щоб відрізнявся
-   від small talk з першого погляду: інший тип задачі — не просто
-   побалакати, а розв'язати конкретну ситуацію. */
+/* Пошук рішення — окремий, "важчий" колір, щоб відрізнявся від small
+   talk з першого погляду: інший тип задачі — не просто побалакати, а
+   розв'язати конкретну ситуацію. ОНОВЛЕНО: був фіолетовий #7c5cb0 —
+   випадав з решти палітри застосунку (ліс/золото/бурштин/земляні
+   тони), замінено на теракотовий/цегляний — теплий і "серйозний" за
+   відчуттям, але в тій самій родині кольорів, що й решта вузлів. */
 .lp-node.lp-node-problemsolving{
-  background:#7c5cb0;
-  box-shadow:0 5px 0 rgba(60,40,90,.4), 0 7px 12px rgba(60,40,90,.18);
+  background:#b0503f;
+  box-shadow:0 5px 0 rgba(106,48,38,.4), 0 7px 12px rgba(106,48,38,.18);
 }
 /* Forumsbeitrag — окремий вузол шляху (той самий принцип, що dialogue:
    💬/🤝 вище), теплий бурштиновий акцент, щоб не плутати з жодним із
@@ -1058,7 +1061,7 @@ body{
   box-shadow:0 7px 0 rgba(30,70,95,.4), 0 10px 18px rgba(30,70,95,.22);
 }
 .lp-node.lp-node-problemsolving.current{
-  box-shadow:0 7px 0 rgba(60,40,90,.4), 0 10px 18px rgba(60,40,90,.22);
+  box-shadow:0 7px 0 rgba(106,48,38,.4), 0 10px 18px rgba(106,48,38,.22);
 }
 .lp-node.lp-node-forum.current{
   box-shadow:0 7px 0 rgba(120,70,20,.4), 0 10px 18px rgba(120,70,20,.22);
@@ -1149,7 +1152,7 @@ body{
   font-size:20px;background:var(--forest);
 }
 .lp-examprep-row.lp-node-smalltalk .lp-examprep-row-icon{ background:var(--accent, #4a7c9d); }
-.lp-examprep-row.lp-node-problemsolving .lp-examprep-row-icon{ background:#7c5cb0; }
+.lp-examprep-row.lp-node-problemsolving .lp-examprep-row-icon{ background:#b0503f; }
 .lp-examprep-row.lp-node-forum .lp-examprep-row-icon{ background:#c07a2e; }
 .lp-examprep-row.lp-node-email .lp-examprep-row-icon{ background:#27ae60; }
 /* examsim — навмисно --gold (той самий колір, що основні CTA-кнопки
@@ -3586,7 +3589,7 @@ body{
        лише напис основної кнопки міняється (_examSimShowFinishBlock). -->
   <div id="exam-sim-timeup-actions" style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;gap:10px;z-index:201">
     <button onclick="examSimShowExample()" class="lf-repeat-btn" title="Подивитися приклад">👁</button>
-    <button id="exam-sim-finish-btn" onclick="closeExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;flex:1">Завершити</button>
+    <button id="exam-sim-finish-btn" onclick="examSimFinishClicked()" class="btn btn-lesson-sb-next" style="position:static;flex:1">Завершити</button>
   </div>
 </div>
 
@@ -4215,6 +4218,10 @@ body{
     </h3>
     <div id="debug-section-content" style="display:none;margin-top:12px">
     <div class="srow">
+      <div class="srow-label"><label>🎤 Усний іспит (пошук рішення)</label><small>Симуляція: завдання з діалогу типу "muendlich_teil3" + таймер 4 хв. Поки що debug-фіча — реального вузла на лінії уроків ще немає.</small></div>
+      <button class="btn btn-s" onclick="openExamSimSpeaking()">▶️ Тест</button>
+    </div>
+    <div class="srow">
       <div class="srow-label"><label>🔓 <span data-i18n="lbl_unlock_all">Розблокувати усі уроки</span></label><small data-i18n="sub_unlock_all">Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!</small></div>
       <label class="dbg-switch">
         <input type="checkbox" id="debug-unlock-all-toggle" onchange="debugToggleUnlockAll(this.checked)">
@@ -4354,7 +4361,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '646-b53562b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5021,6 +5028,9 @@ const I18N = {
     card_expl_modal_title:'Erklärung',
     module_complete_title:'🏆 Modul geschafft!',
     chapter_complete_title:'👑 Kapitel geschafft!',
+    exam_sim_speaking_default_instr:'Lies die Situation und diskutiere laut, wie du sie lösen würdest — so, als würdest du mit einem Prüfungspartner sprechen. Du hast 4 Minuten.',
+    exam_sim_speaking_done_title:'Mündliche Prüfung geschafft!',
+    exam_sim_speaking_done_sub:'Simulation — Lösungswege diskutieren',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -5117,6 +5127,9 @@ const I18N = {
     card_expl_modal_title:'Пояснення',
     module_complete_title:'🏆 Модуль завершено!',
     chapter_complete_title:'👑 Розділ завершено!',
+    exam_sim_speaking_default_instr:'Прочитайте ситуацію і вголос обговоріть, як би ви її вирішили — так, ніби говорите з партнером на іспиті. У вас 4 хвилини.',
+    exam_sim_speaking_done_title:'Усний іспит завершено!',
+    exam_sim_speaking_done_sub:'Симуляція — пошук рішення',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -5212,6 +5225,9 @@ const I18N = {
     card_expl_modal_title:'Explanation',
     module_complete_title:'🏆 Module complete!',
     chapter_complete_title:'👑 Chapter complete!',
+    exam_sim_speaking_default_instr:'Read the situation and discuss out loud how you would solve it — as if speaking with an exam partner. You have 4 minutes.',
+    exam_sim_speaking_done_title:'Speaking exam complete!',
+    exam_sim_speaking_done_sub:'Simulation — problem-solving discussion',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -5308,6 +5324,9 @@ const I18N = {
     card_expl_modal_title:'Объяснение',
     module_complete_title:'🏆 Модуль завершён!',
     chapter_complete_title:'👑 Раздел завершён!',
+    exam_sim_speaking_default_instr:'Прочитайте ситуацию и вслух обсудите, как бы вы её решили — так, будто говорите с партнёром на экзамене. У вас 4 минуты.',
+    exam_sim_speaking_done_title:'Устный экзамен завершён!',
+    exam_sim_speaking_done_sub:'Симуляция — поиск решения',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -10928,8 +10947,18 @@ var _examSimState = {
   part: null, timeMin: 20, candidateCards: [], card: null, stage: 'pick',
   timerId: null, startedAt: null, endsAt: null,
   audioCtx: null, audioDest: null, audioEl: null,
-  warned5: false, warned1: false, earlyFinishShown: false, wakeLock: null,
+  warnedThresholds: [], earlyFinishShown: false, wakeLock: null,
 };
+
+// Пороги попереджувального сигналу (мс до кінця) — залежать від типу
+// завдання. Стандартні 5хв/1хв — для довгих письмових (Forumsbeitrag/
+// E-Mail, 20+ хв повного часу). Для Sprechen (усний, 4 хв повністю)
+// "лишилось 5 хв" не має сенсу — це майже весь час завдання; натомість
+// один сигнал за 15с до кінця — природне "готуйся закінчувати" для
+// короткої розмови.
+function _examSimWarnThresholds(part){
+  return part === 'Sprechen' ? [15000] : [5*60000, 60000];
+}
 
 // Дві РІЗНІ випадкові картки з переданого масиву — спільний хелпер для
 // ВСІХ типів симуляції (Forumsbeitrag/E-Mail/…), щоб не дублювати
@@ -10976,6 +11005,32 @@ function openExamSimEmail(){
   _examSimShowBriefing('E-Mail');
 }
 
+// Усний іспит "пошук рішення" (telc B2 Mündliche Prüfung Teil 3) —
+// джерело карток: DIALOGE з type === 'muendlich_teil3' (та сама
+// картка-вступ dlg_task, що вже показується перед звичайним діалогом
+// "problemsolving" у Lernpfad — тут просто витягнута окремо, як
+// самостійне завдання для тренування "наговорити" відповідь на час).
+// НАРАЗІ DEBUG-ЛИШЕ фіча (кнопка в Settings → Технічне) — на відміну
+// від Forumsbeitrag/E-Mail, ще немає власного вузла в Lernpfad; коли
+// з'явиться — досить додати case 'Sprechen' у examSimOpenFromNode
+// (він уже є нижче) і сам вузол у курсовій LESSONS.
+//
+// Один кандидат (як E-Mail, не як Forumsbeitrag із вибором двох тем) —
+// у реальному іспиті співрозмовники теж не обирають тему, а отримують
+// готову ситуацію.
+function openExamSimSpeaking(){
+  var cards = (typeof DIALOGE !== 'undefined' ? DIALOGE : []).filter(function(c){
+    return c.type === 'muendlich_teil3' && c.task && (c.task[primaryLang()] || c.task.de);
+  });
+  if(!cards.length){
+    notify('⚠️ Потрібна хоча б 1 картка усної частини (type: "muendlich_teil3", var DIALOGE) у поточному курсі');
+    return;
+  }
+  _examSimState.candidateCards = [ cards[Math.floor(Math.random() * cards.length)] ];
+  _examSimState.card = null;
+  _examSimShowBriefing('Sprechen');
+}
+
 // Спільна точка входу для ВСІХ вузлів симуляції іспиту в Lernpfad
 // (renderExamPrepRow нижче передає сюди node.simPart із бази курсу) —
 // один роутер, а не окрема функція на кожен вузол, щоб додавання нової
@@ -10985,6 +11040,7 @@ function examSimOpenFromNode(node){
   var part = (node && node.simPart) || 'Forumsbeitrag';
   if(part === 'Forumsbeitrag'){ openExamSimForumsbeitrag(); return; }
   if(part === 'E-Mail'){ openExamSimEmail(); return; }
+  if(part === 'Sprechen'){ openExamSimSpeaking(); return; }
   notify('⚠️ Симуляція для "'+part+'" ще не реалізована');
 }
 
@@ -11005,10 +11061,19 @@ function _examSimFormatMinutes(timeMin){
   return s === 0 ? (m + ' хв') : (m + ':' + (s < 10 ? '0' : '') + s);
 }
 
+// Дефолтний час завдання, якщо курс ще не задав власний
+// EXAM_SIM.<part>.time_min — 20хв для довгих письмових (як і було), і
+// 4хв для Sprechen (усний, набагато коротший за формою реального
+// іспиту telc B2 Mündliche Prüfung Teil 3).
+function _examSimDefaultTimeMin(part){
+  return part === 'Sprechen' ? 4 : 20;
+}
+
 function _examSimShowBriefing(part){
   var cfg = _examSimConfig(part) || {};
-  // Дефолт 20 хв, якщо в курсі ще нема свого var EXAM_SIM.<part>.time_min.
-  var timeMin = cfg.time_min || 20;
+  // Дефолт залежить від типу (_examSimDefaultTimeMin), якщо в курсі ще
+  // нема свого var EXAM_SIM.<part>.time_min.
+  var timeMin = cfg.time_min || _examSimDefaultTimeMin(part);
   _examSimState.part = part;
   _examSimState.timeMin = timeMin;
 
@@ -11017,7 +11082,13 @@ function _examSimShowBriefing(part){
 
   var instrEl = document.getElementById('exam-sim-instructions');
   if(instrEl){
-    var instr = cfg.instructions ? (cfg.instructions[uiLang] || cfg.instructions.en || cfg.instructions.de || '') : '';
+    // Дефолтний текст інструкції для Sprechen, якщо курс ще не задав
+    // власний EXAM_SIM.Sprechen.instructions — щоб фіча працювала одразу
+    // "з коробки" в будь-якому курсі з картками muendlich_teil3, без
+    // обов'язкового авторського тексту.
+    var instr = cfg.instructions
+      ? (cfg.instructions[uiLang] || cfg.instructions.en || cfg.instructions.de || '')
+      : (part === 'Sprechen' ? t('exam_sim_speaking_default_instr') : '');
     instrEl.textContent = instr;
     instrEl.style.display = instr ? '' : 'none';
   }
@@ -11066,8 +11137,7 @@ function startExamSimTest(){
   var totalSec = (_examSimState.timeMin || 20) * 60;
   _examSimState.startedAt = Date.now();
   _examSimState.endsAt = _examSimState.startedAt + totalSec * 1000;
-  _examSimState.warned5 = false;
-  _examSimState.warned1 = false;
+  _examSimState.warnedThresholds = [];
   _examSimState.earlyFinishShown = false;
   var banner = document.getElementById('exam-sim-timeup-banner');
   if(banner) banner.style.display = 'none';
@@ -11220,19 +11290,18 @@ function _examSimTick(){
   }
 
   // Попереджувальні сигнали — по одному разу за спробу (прапорці
-  // скидаються в startExamSimTest()). Кожен — лише якщо загальний час
-  // тесту взагалі ДОВШИЙ за відповідний поріг: інакше "лишилось 5 хв"
-  // не має сенсу для короткого (тестового) таймера в кілька хвилин.
+  // скидаються в startExamSimTest()). Кожен поріг — лише якщо загальний
+  // час тесту взагалі ДОВШИЙ за нього: інакше "лишилось 5 хв" не має
+  // сенсу для короткого таймера в кілька хвилин (див. _examSimWarnThresholds
+  // — для Sprechen поріг геть інший, 15с, а не 5хв/1хв).
   var totalMs = (_examSimState.timeMin || 20) * 60000;
   if(msLeft > 0){
-    if(totalMs > 5*60000 && !_examSimState.warned5 && msLeft <= 5*60000){
-      _examSimState.warned5 = true;
-      _examSimPlayWarningBeep();
-    }
-    if(totalMs > 60000 && !_examSimState.warned1 && msLeft <= 60000){
-      _examSimState.warned1 = true;
-      _examSimPlayWarningBeep();
-    }
+    _examSimWarnThresholds(_examSimState.part).forEach(function(th){
+      if(totalMs > th && _examSimState.warnedThresholds.indexOf(th) === -1 && msLeft <= th){
+        _examSimState.warnedThresholds.push(th);
+        _examSimPlayWarningBeep();
+      }
+    });
   }
 
   if(msLeft <= 0){
@@ -11277,6 +11346,71 @@ function closeExamSimTest(){
   if(el) el.style.display = 'none';
   _examSimState.card = null;
   _examSimReleaseWakeLock();
+}
+
+// Клік по головній кнопці "Завершити" в exam-sim-timeup-actions —
+// поведінка залежить від типу. Forumsbeitrag/E-Mail: як і раніше, просто
+// закриває тест (там уже написаний ТЕКСТ — самé це і є результат,
+// зберігати більше нічого). Sprechen: окрема гілка нижче — на відміну
+// від письмових симуляцій, це поки debug-фіча без власного вузла в
+// Lernpfad, тож "нагорода" за спробу — єдиний видимий результат.
+function examSimFinishClicked(){
+  if(_examSimState.part === 'Sprechen'){ _examSimFinishSpeaking(); return; }
+  closeExamSimTest();
+}
+
+// Бали за спробу усного іспиту — фіксований бонус (не залежить від
+// якості відповіді, яку застосунок жодним чином не оцінює: це просто
+// таймер+завдання для самостійного тренування вголос).
+var XP_EXAM_SIM_SPEAKING_BONUS = 15;
+
+// Завершення Sprechen: закриваємо тест, нараховуємо бали, і показуємо
+// ТОЙ САМИЙ єдиний екран святкування, що й після звичайного уроку
+// (showLessonCelebration) — тут напряму, без LF (це не вузол
+// Lernpfad), тож наповнюємо #lr-* мінімально самі: лише час спроби й
+// зароблені бали (нема "карток"/"покращено" — тут немає такого поняття).
+function _examSimFinishSpeaking(){
+  var timeSpentSec = Math.round((Date.now() - (_examSimState.startedAt || Date.now())) / 1000);
+  closeExamSimTest();
+
+  xpAward(XP_EXAM_SIM_SPEAKING_BONUS);
+  var xpEarned = XP_EXAM_SIM_SPEAKING_BONUS;
+
+  var emojiEl = document.getElementById('lr-emoji');
+  var titleEl = document.getElementById('lr-title');
+  var subEl   = document.getElementById('lr-sub');
+  var statsEl = document.getElementById('lr-stats');
+  if(emojiEl) emojiEl.textContent = '🎤';
+  if(titleEl) titleEl.textContent = t('exam_sim_speaking_done_title');
+  if(subEl)   subEl.textContent   = t('exam_sim_speaking_done_sub');
+  if(statsEl){
+    var m = Math.floor(timeSpentSec/60), s = timeSpentSec%60;
+    var timeStr = m+':'+(s<10?'0':'')+s;
+    var timeLabel = uiLang==='uk'?'Час':uiLang==='en'?'Time':uiLang==='ru'?'Время':'Zeit';
+    var xpLabel = uiLang==='uk'?'M зароблено':uiLang==='en'?'M earned':uiLang==='ru'?'M заработано':'M verdient';
+    var rows = [
+      ['⏱', timeLabel, timeStr],
+      ['𐌌', xpLabel, xpEarned, 'xp'],
+    ];
+    statsEl.innerHTML = rows.map(function(r){
+      return '<div class="lr-stat-tile'+(r[3]?' '+r[3]:'')+'"><span class="lr-stat-tile-icon">'+r[0]+'</span><span class="lr-stat-tile-val">'+r[2]+'</span><span class="lr-stat-tile-label">'+r[1]+'</span></div>';
+    }).join('');
+  }
+
+  // #lesson-result живе всередині #view-vocab — має бути активним
+  // екраном, інакше після закриття exam-sim-test користувач побачив би
+  // не святкування, а те, що було активним ДО тесту (напр. Settings).
+  showView('vocab');
+  var resultEl = document.getElementById('lesson-result');
+  if(resultEl) resultEl.classList.add('show');
+
+  showLessonCelebration({
+    xpEarned: xpEarned,
+    onDone: function(){
+      var el = document.getElementById('lesson-result');
+      if(el) el.classList.remove('show');
+    },
+  });
 }
 
 // Screen Wake Lock — не даємо екрану згаснути/заблокуватись під час
@@ -11326,6 +11460,14 @@ function examSimShowExample(){
   if(!card){ closeExamSimTest(); return; }
   const pl = primaryLang();
   closeExamSimTest();
+  if(_examSimState.part === 'Sprechen'){
+    // Показ "зразкової розмови" вимагав би зібрати всі репліки діалогу
+    // за тим самим dlgId і відтворити їх послідовно — окрема задача, не
+    // зроблена в цьому debug-проході. Чесно повідомляємо, а не
+    // показуємо щось напівпрацююче чи неправильне.
+    notify('👁 Приклад розмови для цього типу поки не додано');
+    return;
+  }
   if(_examSimState.part === 'E-Mail'){
     const title = {
       de:'E-Mail: '+(card.topic?.de||''), uk:'E-Mail: '+(card.topic?.uk||''),

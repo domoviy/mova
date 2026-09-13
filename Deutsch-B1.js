@@ -2903,6 +2903,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_102"
+    ],
+    "frmCards": [
+      "brief_038"
     ]
   },
   {
@@ -7740,7 +7743,7 @@ var LESSONS = [
     "unlockAfter": null,
     "_parentModuleId": "examprep_brief",
     "_subIndex": 1,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_2",
@@ -7771,7 +7774,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_1",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 2,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_3",
@@ -7802,7 +7805,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_2",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 3,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_4",
@@ -7833,7 +7836,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_3",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 4,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_5",
@@ -7864,7 +7867,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_4",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 5,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_6",
@@ -7895,7 +7898,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_5",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 6,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_7",
@@ -7926,7 +7929,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_6",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 7,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_8",
@@ -7957,7 +7960,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_7",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 8,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_9",
@@ -7988,7 +7991,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_8",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 9,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_10",
@@ -8019,7 +8022,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_9",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 10,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_11",
@@ -8050,7 +8053,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_10",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 11,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_12",
@@ -8081,7 +8084,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_11",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 12,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_13",
@@ -8112,7 +8115,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_12",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 13,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_14",
@@ -8143,7 +8146,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_13",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 14,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_15",
@@ -8174,7 +8177,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_14",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 15,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_16",
@@ -8205,7 +8208,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_15",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 16,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_17",
@@ -8236,7 +8239,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_16",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 17,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_18",
@@ -8267,7 +8270,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_17",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 18,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_19",
@@ -8298,7 +8301,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_18",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 19,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_20",
@@ -8329,7 +8332,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_19",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 20,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_21",
@@ -8360,7 +8363,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_20",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 21,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_22",
@@ -8391,7 +8394,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_21",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 22,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_23",
@@ -8422,7 +8425,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_22",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 23,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_24",
@@ -8453,7 +8456,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_23",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 24,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_25",
@@ -8484,7 +8487,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_24",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 25,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_26",
@@ -8515,7 +8518,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_25",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 26,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_27",
@@ -8546,7 +8549,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_26",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 27,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_28",
@@ -8577,7 +8580,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_27",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 28,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_29",
@@ -8608,7 +8611,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_28",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 29,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_30",
@@ -8639,7 +8642,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_29",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 30,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_31",
@@ -8670,7 +8673,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_30",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 31,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_32",
@@ -8701,7 +8704,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_31",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 32,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_33",
@@ -8732,7 +8735,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_32",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 33,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_34",
@@ -8763,7 +8766,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_33",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 34,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_35",
@@ -8794,7 +8797,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_34",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 35,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_36",
@@ -8825,7 +8828,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_35",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 36,
-    "_subTotal": 37
+    "_subTotal": 38
   },
   {
     "id": "examprep_brief_37",
@@ -8856,7 +8859,38 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_36",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 37,
-    "_subTotal": 37
+    "_subTotal": 38
+  },
+  {
+    "id": "examprep_brief_38",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_038"
+    ],
+    "frmCards": [
+      "brief_038"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_37",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 38,
+    "_subTotal": 38
   },
   {
     "id": "examsim_brief",
@@ -37906,6 +37940,35 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf eure Antworten.</r>", "en": "<r>I look forward to your replies.</r>", "uk": "<r>Із нетерпінням чекаю на ваші відповіді.</r>", "ru": "<r>С нетерпением жду ваших ответов.</r>" },
       { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
       { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
+    ]
+  },
+  {
+    "id": "brief_038",
+    "cat": "Beschwerde / Reklamation",
+    "format": "email_formell",
+    "topic": {
+      "de": "Energieverschwendung durch schlechte Isolierung",
+      "en": "Energy waste due to poor insulation",
+      "uk": "Марнування енергії через погану ізоляцію",
+      "ru": "Растрата энергии из-за плохой изоляции"
+    },
+    "task": {
+      "de": "In Ihrer Wohnung wird viel Energie verschwendet, weil die Fenster schlecht isoliert sind. Schreiben Sie eine E-Mail an Ihren Vermieter.<br><br>1. Grund für Ihr Schreiben<br>2. Was genau das Problem ist<br>3. Seit wann Sie das bemerkt haben<br>4. Vorschlag zur Lösung",
+      "en": "A lot of energy is being wasted in your apartment because the windows are poorly insulated. Write an email to your landlord.<br><br>1. Reason for your email<br>2. What exactly the problem is<br>3. Since when you have noticed this<br>4. A suggestion for a solution",
+      "uk": "У Вашій квартирі витрачається багато енергії, бо вікна погано ізольовані. Напишіть електронного листа своєму орендодавцю.<br><br>1. Причина Вашого листа<br>2. У чому саме проблема<br>3. Відколи Ви це помітили<br>4. Пропозиція щодо вирішення",
+      "ru": "В Вашей квартире тратится много энергии, потому что окна плохо изолированы. Напишите электронное письмо своему арендодателю.<br><br>1. Причина Вашего письма<br>2. В чём именно проблема<br>3. С каких пор Вы это заметили<br>4. Предложение по решению"
+    },
+    "name": "de_m_mark",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Energieverschwendung wegen schlechter Fensterisolierung", "en": "Subject: Energy waste due to poor window insulation", "uk": "Тема: Марнування енергії через погану ізоляцію вікон", "ru": "Тема: Растрата энергии из-за плохой изоляции окон" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrter Herr Bauer,", "en": "Dear Mr. Bauer,", "uk": "Шановний пане Бауере,", "ru": "Уважаемый господин Бауэр," },
+      { "role": "einleitung", "gram": "passiv_praesens_b1", "de": "<r>Ich schreibe Ihnen, weil</r> in meiner <c>Wohnung</c> viel <g>Energie verschwendet wird</g>.", "en": "<r>I am writing to you because</r> a lot of energy is being wasted in my apartment.", "uk": "<r>Пишу Вам, тому що</r> у моїй квартирі витрачається багато енергії.", "ru": "<r>Пишу Вам, потому что</r> в моей квартире тратится много энергии." },
+      { "role": "punkt2", "gram": "adjektivdeklination_ohne_artikel", "de": "<r>Genauer gesagt,</r> <g>schlecht isolierte Fenster</g> lassen im Winter viel Wärme nach draußen entweichen, <k>und</k> das macht sich deutlich auf der Rechnung bemerkbar.", "en": "<r>More specifically,</r> poorly insulated windows let a lot of warmth escape outside in winter, and that shows up clearly on the bill.", "uk": "<r>Точніше кажучи,</r> погано ізольовані вікна взимку випускають багато тепла назовні, і це помітно позначається на рахунку.", "ru": "<r>Точнее говоря,</r> плохо изолированные окна зимой выпускают много тепла наружу, и это заметно отражается на счёте." },
+      { "role": "punkt3", "gram": "nebensatz_seit_seitdem", "de": "<r>Mir ist das aufgefallen,</r> <k>seitdem</k> <g>die Heizkosten im letzten Winter stark gestiegen sind</g>.", "en": "<r>I noticed this</r> since the heating costs rose sharply last winter.", "uk": "<r>Я помітив це,</r> відколи минулої зими різко зросли витрати на опалення.", "ru": "<r>Я заметил это,</r> с тех пор как прошлой зимой резко выросли расходы на отопление." },
+      { "role": "punkt4", "gram": "passiv_mit_modalverben", "de": "<r>Ich schlage deshalb vor,</r> dass <g>die Fenster neu isoliert werden sollten</g>. <k>Außerdem</k> wäre eine Solaranlage auf dem Dach eine gute Investition.", "en": "<r>I therefore suggest</r> that the windows should be re-insulated. A solar panel on the roof would also be a good investment.", "uk": "<r>Тому пропоную,</r> щоб вікна заново ізолювали. Крім того, сонячна панель на даху була б гарною інвестицією.", "ru": "<r>Поэтому предлагаю,</r> чтобы окна заново изолировали. Кроме того, солнечная панель на крыше была бы хорошей инвестицией." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich hoffe auf eine baldige Lösung.</r>", "en": "<r>I hope for a quick solution.</r>", "uk": "<r>Сподіваюся на швидке вирішення.</r>", "ru": "<r>Надеюсь на скорое решение.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
     ]
   }
 ];
