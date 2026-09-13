@@ -13409,10 +13409,10 @@ var DIALOGE = [
     "id": "dlg_031",
     "cat": "Schlüsselqualifikationen",
     "task": {
-      "de": "Für ein neues Kundenprojekt braucht Ihr Team jemanden mit Verhandlungskompetenz und Erfahrung im Risikomanagement, aber im Moment hat niemand im Team beides. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "For a new client project your team needs someone with negotiation skills and experience in risk management, but right now nobody on the team has both. Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Для нового клієнтського проєкту вашій команді потрібна людина з навичками ведення переговорів і досвідом у ризик-менеджменті, але наразі в команді немає нікого з обома навичками одразу. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Для нового клиентского проекта вашей команде нужен человек с навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого с обоими навыками сразу. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Für ein neues Kundenprojekt braucht Ihr Team jemanden mit Verhandlungskompetenz und Erfahrung im Risikomanagement, aber im Moment hat niemand im Team beides.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "For a new client project your team needs someone with negotiation skills and experience in risk management, but right now nobody on the team has both.<br><br>Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Для нового клієнтського проєкту вашій команді потрібна людина з навичками ведення переговорів і досвідом у ризик-менеджменті, але наразі в команді немає нікого з обома навичками одразу.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Для нового клиентского проекта вашей команде нужен человек с навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого с обоими навыками сразу.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
@@ -13531,10 +13531,10 @@ var DIALOGE = [
     "id": "dlg_032",
     "cat": "Anerkennung",
     "task": {
-      "de": "Ein Kollege möchte seine im Ausland erworbene Berufsqualifikation anerkennen lassen, weiß aber nicht genau, welche Unterlagen dafür nötig sind. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie ihm helfen können.",
-      "en": "A colleague wants to have his professional qualification, earned abroad, officially recognized, but doesn't know exactly which documents are needed for that. Discuss with your conversation partner how you could help him.",
-      "uk": "Колега хоче визнати свою професійну кваліфікацію, здобуту за кордоном, але не знає точно, які документи для цього потрібні. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете йому допомогти.",
-      "ru": "Коллега хочет признать свою профессиональную квалификацию, полученную за границей, но не знает точно, какие документы для этого нужны. Обсудите со своим собеседником или собеседницей, как вы можете ему помочь."
+      "de": "Ein Kollege möchte seine im Ausland erworbene Berufsqualifikation anerkennen lassen, weiß aber nicht genau, welche Unterlagen dafür nötig sind.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie ihm helfen können.",
+      "en": "A colleague wants to have his professional qualification, earned abroad, officially recognized, but doesn't know exactly which documents are needed for that.<br><br>Discuss with your conversation partner how you could help him.",
+      "uk": "Колега хоче визнати свою професійну кваліфікацію, здобуту за кордоном, але не знає точно, які документи для цього потрібні.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете йому допомогти.",
+      "ru": "Коллега хочет признать свою профессиональную квалификацию, полученную за границей, но не знает точно, какие документы для этого нужны.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете ему помочь."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_mark",
@@ -13653,10 +13653,10 @@ var DIALOGE = [
     "id": "dlg_033",
     "cat": "Auf Jobsuche",
     "task": {
-      "de": "Für eine offene Stelle haben Sie schon mehrere Stellenanzeigen geschaltet, aber es kommen kaum passende Bewerbungen. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie die Stelle besetzen können.",
-      "en": "For an open position you have already placed several job ads, but hardly any suitable applications are coming in. Discuss with your conversation partner how you could fill the position.",
-      "uk": "Для відкритої вакансії ви вже розмістили кілька оголошень, але майже не надходить відповідних відгуків. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете закрити цю вакансію.",
-      "ru": "Для открытой вакансии вы уже разместили несколько объявлений, но почти не поступает подходящих откликов. Обсудите со своим собеседником или собеседницей, как вы можете закрыть эту вакансию."
+      "de": "Für eine offene Stelle haben Sie schon mehrere Stellenanzeigen geschaltet, aber es kommen kaum passende Bewerbungen.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie die Stelle besetzen können.",
+      "en": "For an open position you have already placed several job ads, but hardly any suitable applications are coming in.<br><br>Discuss with your conversation partner how you could fill the position.",
+      "uk": "Для відкритої вакансії ви вже розмістили кілька оголошень, але майже не надходить відповідних відгуків.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете закрити цю вакансію.",
+      "ru": "Для открытой вакансии вы уже разместили несколько объявлений, но почти не поступает подходящих откликов.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете закрыть эту вакансию."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_david",
@@ -13775,10 +13775,10 @@ var DIALOGE = [
     "id": "dlg_034",
     "cat": "Lebenslauf",
     "task": {
-      "de": "Der Lebenslauf einer Kollegin muss noch heute für eine Bewerbung überarbeitet werden, aber die Datumsangaben sind uneinheitlich und die Sprachkenntnisse sind nicht genau beschrieben. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Lebenslauf verbessern können.",
-      "en": "A colleague's CV still needs to be revised today for an application, but the dates are inconsistent and the language skills aren't described precisely. Discuss with your conversation partner how you could improve the CV.",
-      "uk": "Резюме колеги потрібно доопрацювати вже сьогодні для заявки, але дати вказані непослідовно, а мовні навички описані неточно. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете покращити резюме.",
-      "ru": "Резюме коллеги нужно доработать сегодня же для заявки, но даты указаны непоследовательно, а языковые навыки описаны неточно. Обсудите со своим собеседником или собеседницей, как вы можете улучшить резюме."
+      "de": "Der Lebenslauf einer Kollegin muss noch heute für eine Bewerbung überarbeitet werden, aber die Datumsangaben sind uneinheitlich und die Sprachkenntnisse sind nicht genau beschrieben.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Lebenslauf verbessern können.",
+      "en": "A colleague's CV still needs to be revised today for an application, but the dates are inconsistent and the language skills aren't described precisely.<br><br>Discuss with your conversation partner how you could improve the CV.",
+      "uk": "Резюме колеги потрібно доопрацювати вже сьогодні для заявки, але дати вказані непослідовно, а мовні навички описані неточно.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете покращити резюме.",
+      "ru": "Резюме коллеги нужно доработать сегодня же для заявки, но даты указаны непоследовательно, а языковые навыки описаны неточно.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете улучшить резюме."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_david",
@@ -13897,10 +13897,10 @@ var DIALOGE = [
     "id": "dlg_035",
     "cat": "Ausbildung",
     "task": {
-      "de": "Für zwei freie Ausbildungsplätze haben sich bisher kaum passende Bewerberinnen und Bewerber gemeldet. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie mehr Auszubildende finden können.",
-      "en": "For two open apprenticeship places, hardly any suitable applicants have come forward so far. Discuss with your conversation partner how you could find more trainees.",
-      "uk": "На два вільні місця для навчання поки що відгукнулося дуже мало відповідних кандидатів. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете знайти більше учнів.",
-      "ru": "На два свободных места для обучения пока откликнулось очень мало подходящих кандидатов. Обсудите со своим собеседником или собеседницей, как вы можете найти больше учеников."
+      "de": "Für zwei freie Ausbildungsplätze haben sich bisher kaum passende Bewerberinnen und Bewerber gemeldet.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie mehr Auszubildende finden können.",
+      "en": "For two open apprenticeship places, hardly any suitable applicants have come forward so far.<br><br>Discuss with your conversation partner how you could find more trainees.",
+      "uk": "На два вільні місця для навчання поки що відгукнулося дуже мало відповідних кандидатів.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете знайти більше учнів.",
+      "ru": "На два свободных места для обучения пока откликнулось очень мало подходящих кандидатов.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете найти больше учеников."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_mark",
@@ -14019,10 +14019,10 @@ var DIALOGE = [
     "id": "dlg_036",
     "cat": "Bewerbung",
     "task": {
-      "de": "Ein Bewerber hat sich schon mehrmals nach dem Stand seiner Initiativbewerbung erkundigt, aber Sie haben sein Bewerbungsschreiben noch nicht geprüft. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "An applicant has already asked several times about the status of his unsolicited application, but you haven't reviewed his cover letter yet. Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Кандидат уже кілька разів запитував про статус своєї ініціативної заявки, а ви ще не переглянули його супровідний лист. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Кандидат уже несколько раз спрашивал о статусе своей инициативной заявки, а вы ещё не рассмотрели его сопроводительное письмо. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ein Bewerber hat sich schon mehrmals nach dem Stand seiner Initiativbewerbung erkundigt, aber Sie haben sein Bewerbungsschreiben noch nicht geprüft.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "An applicant has already asked several times about the status of his unsolicited application, but you haven't reviewed his cover letter yet.<br><br>Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Кандидат уже кілька разів запитував про статус своєї ініціативної заявки, а ви ще не переглянули його супровідний лист.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Кандидат уже несколько раз спрашивал о статусе своей инициативной заявки, а вы ещё не рассмотрели его сопроводительное письмо.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
@@ -14241,10 +14241,10 @@ var DIALOGE = [
     "id": "dlg_039",
     "cat": "Der erste Arbeitstag",
     "task": {
-      "de": "Ihre neue Kollegin fängt heute an, aber ihr Passwort und ihr Schlüssel für den Arbeitsplatz sind noch nicht bereit. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "Your new colleague starts today, but her password and her key for the workplace aren't ready yet. Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Ваша нова колега сьогодні починає роботу, але її пароль і ключ від робочого місця ще не готові. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Ваша новая коллега сегодня начинает работу, но её пароль и ключ от рабочего места ещё не готовы. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ihre neue Kollegin fängt heute an, aber ihr Passwort und ihr Schlüssel für den Arbeitsplatz sind noch nicht bereit.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "Your new colleague starts today, but her password and her key for the workplace aren't ready yet.<br><br>Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Ваша нова колега сьогодні починає роботу, але її пароль і ключ від робочого місця ще не готові.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Ваша новая коллега сегодня начинает работу, но её пароль и ключ от рабочего места ещё не готовы.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_david",
@@ -14363,10 +14363,10 @@ var DIALOGE = [
     "id": "dlg_040",
     "cat": "Herzlich willkommen",
     "task": {
-      "de": "Eine neue Kollegin ist sehr zurückhaltend und beteiligt sich kaum an Gesprächen in der Pause. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "A new colleague is very reserved and hardly takes part in conversations during breaks. Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Нова колега дуже стримана і майже не бере участі в розмовах під час перерв. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Новая коллега очень сдержанная и почти не участвует в разговорах во время перерывов. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Eine neue Kollegin ist sehr zurückhaltend und beteiligt sich kaum an Gesprächen in der Pause.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "A new colleague is very reserved and hardly takes part in conversations during breaks.<br><br>Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Нова колега дуже стримана і майже не бере участі в розмовах під час перерв.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Новая коллега очень сдержанная и почти не участвует в разговорах во время перерывов.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -14485,10 +14485,10 @@ var DIALOGE = [
     "id": "dlg_041",
     "cat": "Arbeitsaufträge",
     "task": {
-      "de": "Ein Kollege hat drei neue Arbeitsaufträge bekommen, obwohl er schon zwei dringende Deadlines hat. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "A colleague has received three new work assignments even though he already has two urgent deadlines. Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Колега отримав три нових робочих доручення, хоча в нього вже є два термінові дедлайни. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Коллега получил три новых рабочих поручения, хотя у него уже есть два срочных дедлайна. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ein Kollege hat drei neue Arbeitsaufträge bekommen, obwohl er schon zwei dringende Deadlines hat.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "A colleague has received three new work assignments even though he already has two urgent deadlines.<br><br>Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Колега отримав три нових робочих доручення, хоча в нього вже є два термінові дедлайни.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Коллега получил три новых рабочих поручения, хотя у него уже есть два срочных дедлайна.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_mark",
@@ -14607,10 +14607,10 @@ var DIALOGE = [
     "id": "dlg_042",
     "cat": "Hard Skills",
     "task": {
-      "de": "Ein neuer Kollege soll sich in eine wichtige Software einarbeiten, aber ihm fehlen die Zugangsdaten, und eine Mentorenschaft ist noch nicht offiziell geregelt. Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "A new colleague is supposed to get trained in an important piece of software, but he's missing the login credentials, and a mentorship hasn't been officially arranged yet. Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Новий колега має навчитися працювати з важливою програмою, але йому бракує даних для входу, а наставництво ще офіційно не оформлене. Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Новый коллега должен научиться работать с важной программой, но ему не хватает данных для входа, а наставничество ещё официально не оформлено. Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ein neuer Kollege soll sich in eine wichtige Software einarbeiten, aber ihm fehlen die Zugangsdaten, und eine Mentorenschaft ist noch nicht offiziell geregelt.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
+      "en": "A new colleague is supposed to get trained in an important piece of software, but he's missing the login credentials, and a mentorship hasn't been officially arranged yet.<br><br>Discuss with your conversation partner how you would respond to this situation.",
+      "uk": "Новий колега має навчитися працювати з важливою програмою, але йому бракує даних для входу, а наставництво ще офіційно не оформлене.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
+      "ru": "Новый коллега должен научиться работать с важной программой, но ему не хватает данных для входа, а наставничество ещё официально не оформлено.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
@@ -27743,7 +27743,78 @@ var STORY = [
     "topicNum": 5,
     "cat": "Story",
     "name": "de_m_david",
-    "parts": [],
+    "parts": [
+      {
+        "role": "einleitung",
+        "de": "Ich möchte heute über die Arbeitssuche sprechen und Erfahrungen aus der Ukraine mit Deutschland vergleichen.",
+        "uk": "Сьогодні я хочу поговорити про пошук роботи та порівняти досвід з України та Німеччини.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "einleitung2",
+        "de": "In der Ukraine habe ich als Unternehmer gearbeitet und Stellen eher über persönliche Kontakte und meinen Ruf erhalten.",
+        "uk": "В Україні я працював як підприємець і отримував посади радше через особисті контакти та свою репутацію.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil1",
+        "de": "In Deutschland habe ich durch Job-Coaching gelernt, wie wichtig digitale Werkzeuge und ein professionelles LinkedIn-Profil sind.",
+        "uk": "У Німеччині завдяки джоб-коучингу я дізнався, наскільки важливі цифрові інструменти та професійний профіль у LinkedIn.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil2",
+        "de": "Ein wichtiger Aspekt heutzutage ist, dass oft KI-Systeme die ersten Bewerbungen scannen.",
+        "uk": "Важливим аспектом сьогодення є те, що часто ШІ-системи сканують первинні резюме.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil3",
+        "de": "Deshalb muss die Bewerbung passende Schlüsselwörter enthalten.",
+        "uk": "Тому резюме має містити відповідні ключові слова.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil4",
+        "de": "Aus diesem Grund nutzt man in Deutschland meist einen einfachen, tabellarischen Lebenslauf, den diese Software problemlos auslesen kann.",
+        "uk": "З цієї причини в Німеччині найчастіше використовують простий табличний резюме, який це програмне забезпечення може без проблем зчитати.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil5",
+        "de": "Außerdem ist in Deutschland eine sogenannte „Initiativbewerbung\" sehr populär.",
+        "uk": "Крім того, у Німеччині дуже популярною є так звана «ініціативна подача резюме».",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "hauptteil6",
+        "de": "Man wartet nicht nur auf offene Stellenanzeigen, sondern schickt seine Unterlagen direkt an ein Wunschunternehmen.",
+        "uk": "Ви не чекаєте лише на відкриті вакансії, а надсилаєте свої документи безпосередньо компанії мрії.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss1",
+        "de": "Zusammenfassend erfordert die Arbeitssuche heute eine gute Mischung aus klaren, KI-freundlichen Dokumenten und Eigeninitiative.",
+        "uk": "Підсумовуючи, пошук роботи сьогодні вимагає доброго поєднання чітких, адаптованих до ШІ документів та власної ініціативи.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss2",
+        "de": "Vielen Dank für Ihre Aufmerksamkeit!",
+        "uk": "Дякую за вашу увагу!",
+        "en": "",
+        "ru": ""
+      }
+    ],
     "answers": [],
     "customQA": []
   },
