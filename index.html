@@ -4218,7 +4218,7 @@ body{
     </h3>
     <div id="debug-section-content" style="display:none;margin-top:12px">
     <div class="srow">
-      <div class="srow-label"><label>🎤 Усний іспит (пошук рішення)</label><small>Симуляція: завдання з діалогу типу "muendlich_teil3" + таймер 4 хв. Поки що debug-фіча — реального вузла на лінії уроків ще немає.</small></div>
+      <div class="srow-label"><label>🎤 Усний іспит (пошук рішення)</label><small>Симуляція: завдання з діалогу типу "Lösungswege diskutieren" + таймер 4 хв. Поки що debug-фіча — реального вузла на лінії уроків ще немає.</small></div>
       <button class="btn btn-s" onclick="openExamSimSpeaking()">▶️ Тест</button>
     </div>
     <div class="srow">
@@ -4361,7 +4361,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '647-f39900e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11006,10 +11006,14 @@ function openExamSimEmail(){
 }
 
 // Усний іспит "пошук рішення" (telc B2 Mündliche Prüfung Teil 3) —
-// джерело карток: DIALOGE з type === 'muendlich_teil3' (та сама
-// картка-вступ dlg_task, що вже показується перед звичайним діалогом
-// "problemsolving" у Lernpfad — тут просто витягнута окремо, як
-// самостійне завдання для тренування "наговорити" відповідь на час).
+// джерело карток: DIALOGE з type === 'Lösungswege diskutieren' (та
+// сама картка-вступ dlg_task, що вже показується перед звичайним
+// діалогом "problemsolving" у Lernpfad — тут просто витягнута окремо,
+// як самостійне завдання для тренування "наговорити" відповідь на час).
+// Реальне значення поля перевірено на даних курсу (той самий рядок,
+// що вже розпізнає _lpDialogueNodeType() для позначки вузла 🤝 на
+// стежці) — раніше тут стояло вигадане "muendlich_teil3", яке в базі
+// просто не існувало (звідси й "не відкривається").
 // НАРАЗІ DEBUG-ЛИШЕ фіча (кнопка в Settings → Технічне) — на відміну
 // від Forumsbeitrag/E-Mail, ще немає власного вузла в Lernpfad; коли
 // з'явиться — досить додати case 'Sprechen' у examSimOpenFromNode
@@ -11020,10 +11024,10 @@ function openExamSimEmail(){
 // готову ситуацію.
 function openExamSimSpeaking(){
   var cards = (typeof DIALOGE !== 'undefined' ? DIALOGE : []).filter(function(c){
-    return c.type === 'muendlich_teil3' && c.task && (c.task[primaryLang()] || c.task.de);
+    return c.type === 'Lösungswege diskutieren' && c.task && (c.task[primaryLang()] || c.task.de);
   });
   if(!cards.length){
-    notify('⚠️ Потрібна хоча б 1 картка усної частини (type: "muendlich_teil3", var DIALOGE) у поточному курсі');
+    notify('⚠️ Потрібна хоча б 1 картка усної частини (type: "Lösungswege diskutieren", var DIALOGE) у поточному курсі');
     return;
   }
   _examSimState.candidateCards = [ cards[Math.floor(Math.random() * cards.length)] ];
@@ -11084,7 +11088,7 @@ function _examSimShowBriefing(part){
   if(instrEl){
     // Дефолтний текст інструкції для Sprechen, якщо курс ще не задав
     // власний EXAM_SIM.Sprechen.instructions — щоб фіча працювала одразу
-    // "з коробки" в будь-якому курсі з картками muendlich_teil3, без
+    // "з коробки" в будь-якому курсі з картками "Lösungswege diskutieren", без
     // обов'язкового авторського тексту.
     var instr = cfg.instructions
       ? (cfg.instructions[uiLang] || cfg.instructions.en || cfg.instructions.de || '')
@@ -11175,7 +11179,10 @@ function _examSimRenderPicker(){
     var topicEl = document.getElementById('exam-sim-pick-topic-'+i);
     var taskEl  = document.getElementById('exam-sim-pick-task-'+i);
     if(topicEl) topicEl.textContent = (card.topic && card.topic[pl]) || '';
-    if(taskEl)  taskEl.textContent  = (card.task  && card.task[pl])  || '';
+    // innerHTML (не textContent) — картки бази можуть містити <br> для
+    // переносу рядка в довгому завданні; textContent показав би теги
+    // буквально текстом замість переходу на новий рядок.
+    if(taskEl)  taskEl.innerHTML  = (card.task  && card.task[pl])  || '';
   });
 }
 
@@ -11245,7 +11252,10 @@ function examSimPickCard(i){
     if(_examSimState.part === 'E-Mail'){
       taskEl.innerHTML = _examSimBuildEmailTaskHtml(card, pl);
     } else {
-      taskEl.textContent = (card.task && card.task[pl]) || '';
+      // innerHTML (не textContent) — та сама причина, що й у
+      // _examSimRenderPicker вище: <br> у базі мають рендеритись як
+      // перенос рядка, а не показуватись текстом тегу.
+      taskEl.innerHTML = (card.task && card.task[pl]) || '';
     }
   }
   _examSimShowStage('write');
@@ -15168,12 +15178,12 @@ function _dlgCardTurns(card){
 // видима, щоб було зрозуміло, що це за завдання), і окрема ⓘ-кнопка з
 // повними умовами (лише за тапом — щоб не повторювати довгий текст
 // умов щоразу і не напружувати користувача). Ключ — card.type.
-// ⚠️ Мапа поки заповнена ОДНИМ прикладом (усна частина 3, telc B2 Beruf —
-// парна розмова/спільне вирішення завдання). Якщо реальні значення
-// card.type у базі інші — підправ ключі тут, решта механізму (badge,
-// ⓘ-інфо) спрацює для будь-якого нового запису так само.
+// Значення ключа перевірено на реальних даних курсу (те саме, що вже
+// розпізнає _lpDialogueNodeType() для 🤝-позначки на стежці, і те саме,
+// що фільтрує openExamSimSpeaking() для симуляції усного іспиту) —
+// раніше тут стояв вигаданий "muendlich_teil3", якого в базі не існує.
 var EXAM_PART_INFO = {
-  'muendlich_teil3': {
+  'Lösungswege diskutieren': {
     icon: '🎤',
     label: {de:'Mündliche Prüfung – Teil 3', uk:'Усна частина 3', en:'Oral exam – Part 3', ru:'Устная часть 3'},
     info: {
