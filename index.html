@@ -4361,7 +4361,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '649-018ae45';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15812,6 +15812,15 @@ var STORY_ROLE_LABELS = {
   schluss:    {de:'Schluss',       en:'Conclusion',    uk:'Висновок',        ru:'Заключение'},
 };
 
+// Питання екзаменатора (STORY_TASK[].questions, id q_NN/a_NN) — після
+// показу всіх частин розповіді (story_intro + parts) показуємо по
+// черзі: питання → (Далі) → відповідь → (Далі) → наступне питання...
+// Той самий "бульбашковий" рушій, що й сама розповідь (просто ще два
+// kind у тій самій черзі units), тому окремого onClick/перевірки не
+// треба — кнопка "Далі" вже сама рухає чергу.
+var STORY_QA_Q_LABEL = {de:'Frage',  en:'Question', uk:'Запитання', ru:'Вопрос'};
+var STORY_QA_A_LABEL = {de:'Antwort', en:'Answer',   uk:'Відповідь', ru:'Ответ'};
+
 // Кожна картка STORY завжди має topic+task (той самий принцип, що
 // SCHREIBEN) — тож перший юніт (kind:'story_intro') показуємо
 // безумовно, для кожної картки.
@@ -15855,12 +15864,45 @@ function storyCardTaskFull(card){
   });
   return out;
 }
+// STORY_TASK[].questions — плаский список {id:'q_01',...}/{id:'a_01',...}
+// впереміш (завжди строго q_NN одразу за нею a_NN у базі, але тут це
+// НЕ припускаємо і збираємо пари за номером у id, щоб порядок у самій
+// базі міг бути будь-яким і пропуски (питання без відповіді) не ламали
+// решту пар). Власні (custom) теми — виняток, як і всюди в цьому
+// файлі: у них немає STORY_TASK-запису, тож пар питань нема (порожній
+// масив), і Mündliche Prüfung Teil 1 для них лишається без питань.
+function _storyQnaPairs(card){
+  var t = _storyTaskFor(card);
+  var qs = (t && t.questions) || [];
+  var byNum = {};
+  qs.forEach(function(item){
+    var m = /^([qa])_(\d+)$/.exec(item.id || '');
+    if(!m) return;
+    var num = m[2];
+    byNum[num] = byNum[num] || {};
+    byNum[num][m[1]] = item;
+  });
+  return Object.keys(byNum)
+    .sort(function(a,b){ return parseInt(a,10) - parseInt(b,10); })
+    .map(function(num){ return { q: byNum[num].q, a: byNum[num].a }; })
+    .filter(function(pair){ return pair.q; });
+}
 function _storyCardsToUnits(cards){
   const units = [];
   (cards||[]).forEach(function(card){
     units.push({ kind: 'story_intro', cardId: card.id, card: card, isFirstOfCard: true });
     (card.parts||[]).forEach(function(part){
       units.push({ kind: 'story_part', cardId: card.id, card: card, part: part, isFirstOfCard: false });
+    });
+    // Після всіх частин розповіді — питання екзаменатора по черзі:
+    // питання (kind story_qa_q), потім (після "Далі") відповідь на
+    // нього (kind story_qa_a), потім наступне питання, і так до кінця.
+    var pairs = _storyQnaPairs(card);
+    pairs.forEach(function(pair, i){
+      units.push({ kind: 'story_qa_q', cardId: card.id, card: card, qa: pair, qIndex: i, qTotal: pairs.length, isFirstOfCard: false });
+      if(pair.a){
+        units.push({ kind: 'story_qa_a', cardId: card.id, card: card, qa: pair, qIndex: i, qTotal: pairs.length, isFirstOfCard: false });
+      }
     });
   });
   return units;
@@ -15930,6 +15972,8 @@ var _lfStoryHandlers = {
     body.classList.add('lf-dlg-mode');
 
     var isIntro = unit.kind === 'story_intro';
+    var isQaQ   = unit.kind === 'story_qa_q';
+    var isQaA   = unit.kind === 'story_qa_a';
     var text, textTr, audioField, eyebrowIcon, eyebrowLabel;
 
     if(isIntro){
@@ -15939,6 +15983,15 @@ var _lfStoryHandlers = {
       audioField  = null; // 'task' — без аудіо (див. getAudioText), нічого підсвічувати
       eyebrowIcon = '🎤';
       eyebrowLabel = _lfBilingualLabel(storyCardTopic(card) || {}, pl, ul);
+    } else if(isQaQ || isQaA){
+      // Питання/відповідь екзаменатора — без аудіо (див. getAudioText),
+      // просто текст+переклад тим самим рушієм бульбашок, що й parts.
+      var qaItem  = isQaQ ? unit.qa.q : unit.qa.a;
+      text        = (qaItem && qaItem[pl]) || '';
+      textTr      = ul !== pl ? ((qaItem && qaItem[ul]) || '') : '';
+      audioField  = null;
+      eyebrowIcon = isQaQ ? '❓' : '💬';
+      eyebrowLabel = _lfBilingualLabel(isQaQ ? STORY_QA_Q_LABEL : STORY_QA_A_LABEL, pl, ul) + ' ' + (unit.qIndex+1) + '/' + unit.qTotal;
     } else {
       var part = unit.part;
       text        = part[pl] || '';
@@ -15998,13 +16051,15 @@ var _lfStoryHandlers = {
   getAudioText: function(unit){
     var card = unit.card;
     var pl = primaryLang();
-    if(unit.kind === 'story_intro'){
+    if(unit.kind === 'story_intro' || unit.kind === 'story_qa_q' || unit.kind === 'story_qa_a'){
       // 'task' свідомо без аудіо (умова завдання, а не репліка для
       // відтворення — див. story_fields() у gen_audio.py). Порожній
       // масив (а не текст із полем 'task', якого тепер ніхто не
       // генерує) — інакше рушій намагався б завантажити 404-файл і,
       // за фолбеком на відсутнє аудіо, миттєво перейшов би далі, не
-      // давши прочитати (часто довгий) текст умови.
+      // давши прочитати (часто довгий) текст умови. Питання/відповіді
+      // екзаменатора (story_qa_q/story_qa_a) — так само без pregen-
+      // аудіо, той самий принцип.
       return [];
     }
     // Користувацькі теми (card.custom, див. addCustomStoryCard) —
@@ -16018,7 +16073,7 @@ var _lfStoryHandlers = {
   },
 
   getSecondaryButtons: function(unit){
-    if(unit.kind === 'story_intro') return []; // без аудіо — нема що повторювати
+    if(unit.kind === 'story_intro' || unit.kind === 'story_qa_q' || unit.kind === 'story_qa_a') return []; // без аудіо — нема що повторювати
     var buttons = [];
     // 🔊-кнопка повтору має сенс лише там, де реально є аудіо —
     // для власних (custom) тем його поки нема (див. getAudioText вище).
