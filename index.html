@@ -3573,8 +3573,15 @@ body{
     </div>
   </div>
 
-  <!-- Стадія 2 — написання: обрана тема на весь екран. -->
-  <div id="exam-sim-write" style="display:none;flex:1;overflow-y:auto;padding:8px 24px 100px;flex-direction:column;gap:12px">
+  <!-- Стадія 2 — написання: обрана тема на весь екран.
+       padding-bottom: з запасом, щоб останній рядок завдання завжди
+       можна було доскролити ПОВНІСТЮ вище фіксованих кнопок знизу
+       ("Завершити"/"Текст готовий" у #exam-sim-timeup-actions, а для
+       усних симуляцій — ще й "▶ Почати" з #exam-sim-speak-start-btn,
+       яка через .btn-lesson-sb-next сидить ще вище, з урахуванням
+       --nav-h; лишній відступ для письмових безпечний — просто трохи
+       більше порожнього місця в кінці скролу). -->
+  <div id="exam-sim-write" style="display:none;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 24px calc(env(safe-area-inset-bottom,0px) + 160px);flex-direction:column;gap:12px">
     <div id="exam-sim-topic" style="color:var(--gold);font-size:var(--fs-tertiary);font-weight:700;text-transform:uppercase;letter-spacing:.5px"></div>
     <div id="exam-sim-task" style="color:#fff;font-size:var(--fs-card);line-height:1.6;white-space:pre-wrap"></div>
   </div>
@@ -4369,7 +4376,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '654-6682774';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
