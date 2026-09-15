@@ -2115,8 +2115,14 @@ body{
    ЗНИЗУ, перед цифрою. Було навпаки (origin:bottom + від'ємний
    margin-bottom), тож вогонь фактично впирався у нижній край блоку, і
    від'ємний відступ ще й підтягував цифру просто НА нього — звідси
-   накладання. */
-.lr-streak-card .cel-fire{ transform:scale(.6); transform-origin:center top; margin:0 auto 6px; }
+   накладання.
+   height:78px (= 130px*.6, реальна ВІЗУАЛЬНА висота після scale) —
+   transform НЕ змінює місце, яке блок займає в layout (лишається
+   130px), тож без цього override під зменшеним вогником лишалось би
+   ще ~52px порожнього незайнятого простору ПЕРЕД margin-bottom:6px —
+   звідси й був відчутно більший відступ вогонь↔цифра, ніж
+   вогонь↔край/цифра↔край. */
+.lr-streak-card .cel-fire{ transform:scale(.6); transform-origin:center top; height:78px; margin:0 auto 6px; }
 .lr-streak-num{
   font-size:36px;font-weight:800;color:#fff;
   font-family:'Inter',sans-serif;
@@ -4376,7 +4382,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '655-05e7c7c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7308,8 +7314,27 @@ function _sfxGetCtx(){
     try{ _sfxCtx = new (window.AudioContext || window.webkitAudioContext)(); }
     catch(e){ return null; }
   }
-  if(_sfxCtx.state === 'suspended') _sfxCtx.resume().catch(()=>{});
   return _sfxCtx;
+}
+// Мобільні браузери (особливо iOS) інколи ПРИЗУПИНЯЮТЬ саме цей
+// AudioContext, поки одночасно грає TTS-аудіо картки (<audio>-елемент,
+// окрема audio-сесія) — то й пояснює "іноді є звук при свайпі, іноді
+// нема": ctx.state==='suspended' саме в момент свайпу. Стара версія
+// викликала ctx.resume() (асинхронно, без очікування) і одразу ж
+// синхронно читала ctx.currentTime та планувала ноту — а на
+// призупиненому контексті currentTime "застиглий", тож нота планувалась
+// на вже застарілий момент і браузер її просто мовчки не програвав,
+// доки resume() десь по факту не завершувався. Тепер: якщо контекст
+// призупинено, ЧЕКАЄМО на реальне відновлення (await/.then) і лише
+// ПІСЛЯ цього читаємо currentTime і плануємо ноту.
+function _sfxPlay(playFn){
+  const ctx = _sfxGetCtx();
+  if(!ctx) return;
+  if(ctx.state === 'suspended'){
+    ctx.resume().then(function(){ try{ playFn(ctx); }catch(e){} }).catch(function(){});
+  } else {
+    playFn(ctx);
+  }
 }
 // Одна коротка нота з м'якою атакою/спадом (щоб не клацало на межах).
 function _sfxTone(ctx, freq, startTime, duration, type, peakGain){
@@ -7337,22 +7362,24 @@ function setSfxEnabled(on){
 const sfx = {
   success(){
     if(!sfxEnabled()) return;
-    const ctx = _sfxGetCtx(); if(!ctx) return;
-    const t = ctx.currentTime;
-    // Короткий висхідний "дзинь" — дві ноти (мажорна терція вгору):
-    // маленька заохочувальна мелодія, а не різкий писк.
-    _sfxTone(ctx, 880,     t,      0.11, 'sine', 0.16);
-    _sfxTone(ctx, 1174.66, t+0.09, 0.16, 'sine', 0.14);
+    _sfxPlay(function(ctx){
+      const t = ctx.currentTime;
+      // Короткий висхідний "дзинь" — дві ноти (мажорна терція вгору):
+      // маленька заохочувальна мелодія, а не різкий писк.
+      _sfxTone(ctx, 880,     t,      0.11, 'sine', 0.16);
+      _sfxTone(ctx, 1174.66, t+0.09, 0.16, 'sine', 0.14);
+    });
   },
   error(){
     if(!sfxEnabled()) return;
-    const ctx = _sfxGetCtx(); if(!ctx) return;
-    const t = ctx.currentTime;
-    // Один короткий низький "бемп" (трикутна хвиля — м'якший тембр,
-    // навмисно не різкий/образливий сигнал: аудиторія — дорослі, що
-    // й так нервують перед іспитом, тут не потрібен "звук помилки"
-    // зі шкільного тесту).
-    _sfxTone(ctx, 196, t, 0.18, 'triangle', 0.13);
+    _sfxPlay(function(ctx){
+      const t = ctx.currentTime;
+      // Один короткий низький "бемп" (трикутна хвиля — м'якший тембр,
+      // навмисно не різкий/образливий сигнал: аудиторія — дорослі, що
+      // й так нервують перед іспитом, тут не потрібен "звук помилки"
+      // зі шкільного тесту).
+      _sfxTone(ctx, 196, t, 0.18, 'triangle', 0.13);
+    });
   },
 };
 
@@ -14928,6 +14955,19 @@ function lfSetLessonMode(active){
   document.querySelectorAll('.h-icon-btn').forEach(btn => {
     btn.style.display = active ? 'none' : '';
   });
+  // Лічильник днів до іспиту (#sr-days-chip) — окремий елемент, НЕ
+  // всередині .h-icon-btn, тож цикл вище його не чіпає. Ховаємо на час
+  // уроку (той самий принцип: під час навчання нічого не має
+  // відволікати чи нагадувати про дедлайн), а по виході — не просто
+  // показуємо, а перераховуємо через srUpdateHeaderChip(): чіп і так
+  // мав бути прихований, якщо дата іспиту не встановлена, і безумовний
+  // display='' показав би порожній/застарілий чіп замість цього.
+  if(active){
+    const daysChip = document.getElementById('sr-days-chip');
+    if(daysChip) daysChip.style.display = 'none';
+  } else if(typeof srUpdateHeaderChip === 'function'){
+    srUpdateHeaderChip();
+  }
 }
 
 function lfGoStep(stepIdx){
@@ -16711,6 +16751,10 @@ function _lfEmlLearnDone(){
 // і ніяк не змінює UI/навігацію — лише фідбек (showSrsHint) + SM-2.
 
 var _lfUnit = { units: [], idx: 0, handlers: null, onAllDone: null };
+// Токен покоління прив'язки SwipeManager у lfRunUnitStep() нижче — див.
+// коментар прямо там (setTimeout race між кроками, що стартують швидко
+// один за одним).
+var _lfUnitSwipeBindGen = 0;
 
 // ── ГРАМАТИЧНІ ПРАВИЛА (GRAMMAR) ────────────────────────────────
 // Опціональна таблиця курсу (як DIALOGE/SPRACHBAUSTEINE — не кожен курс
@@ -17015,6 +17059,18 @@ function lfRunUnitStep(units, handlers, onAllDone, opts){
   // вже поверх геть іншого екрана (напр. після завершення уроку).
   _lfUnitPlayToken++;
   playGen++;
+  // Той самий принцип токена — але для прив'язки SwipeManager нижче
+  // (setTimeout(...,50), єдиний раз на ВЕСЬ крок, а не на кожну картку
+  // всередині нього). Без цього токена: якщо ЦЕЙ крок стартує одразу
+  // услід за іншим (напр. короткий діалог/історія → картки словника),
+  // ДВА таких setTimeout можуть спрацювати не в тому порядку — і
+  // SwipeManager.destroy() від СТАРОГО (щойно завершеного) кроку
+  // виконається ПІСЛЯ SwipeManager.init() цього, знявши щойно прив'язані
+  // слухачі — і оскільки прив'язка відбувається лише ОДИН раз на крок,
+  // свайп лишався б мертвим аж до наступного уроку (наступного виклику
+  // lfRunUnitStep() з власним свіжим токеном). Токен гарантує, що
+  // реально спрацює лише НАЙСВІЖІШИЙ запланований виклик.
+  var _swipeBindGen = ++_lfUnitSwipeBindGen;
   if(currentAudio){ currentAudio.pause(); currentAudio = null; }
   document.getElementById('lf-next-row')?.remove();
   // autoAdvance (опційно) — режим пасивного прослуховування: після
@@ -17055,6 +17111,7 @@ function lfRunUnitStep(units, handlers, onAllDone, opts){
   if(LF) lfRenderBar();
 
   setTimeout(function(){
+    if(_swipeBindGen !== _lfUnitSwipeBindGen) return; // випереджено новішим кроком — ця прив'язка вже застаріла, ігноруємо
     var el = document.getElementById('lf-unit-card');
     if(!el) return;
     // Діалог — свайп вгору/вниз для SM-2-оцінки тут навмисно ВИМКНЕНО:
