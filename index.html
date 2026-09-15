@@ -3584,6 +3584,13 @@ body{
   <button id="exam-sim-repick-btn" onclick="examSimBackToPicker()"
     style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:14px;font-size:var(--fs-card);font-weight:700;cursor:pointer;font-family:inherit;z-index:200">↺ Обрати іншу тему</button>
 
+  <!-- Друга кнопка "Почати" — лише Sprechen (openExamSimSpeaking), під
+       час 60с підготовки перед власне відповіддю (див. EXAM_SIM_SPEAK_PREP_MS
+       і _examSimTickSpeaking нижче). Дозволяє почати раніше, не чекаючи
+       природного нуля — та сама дія (сигнал + перехід на рахунок часу
+       відповіді вгору), що й по спливанню 60с, див. _examSimSpeakStartNow(). -->
+  <button id="exam-sim-speak-start-btn" onclick="_examSimSpeakStartNow()" class="btn btn-lesson-sb-next" style="display:none">▶ Почати</button>
+
   <!-- З'являється двічі: рано (5 хв від старту, ще є час — м'яке "Текст
        готовий") і по завершенню часу ("Завершити") — той самий блок,
        лише напис основної кнопки міняється (_examSimShowFinishBlock). -->
@@ -4361,7 +4368,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '651-fb54ffb';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -10948,17 +10955,31 @@ var _examSimState = {
   timerId: null, startedAt: null, endsAt: null,
   audioCtx: null, audioDest: null, audioEl: null,
   warnedThresholds: [], earlyFinishShown: false, wakeLock: null,
+  speakPrepBeeped: false, speakWarnBeeped: false, speakStartedAt: null, // лише Sprechen — див. _examSimTickSpeaking нижче
 };
 
-// Пороги попереджувального сигналу (мс до кінця) — залежать від типу
-// завдання. Стандартні 5хв/1хв — для довгих письмових (Forumsbeitrag/
-// E-Mail, 20+ хв повного часу). Для Sprechen (усний, 4 хв повністю)
-// "лишилось 5 хв" не має сенсу — це майже весь час завдання; натомість
-// один сигнал за 15с до кінця — природне "готуйся закінчувати" для
-// короткої розмови.
+// Пороги попереджувального сигналу (мс до кінця) — для довгих письмових
+// (Forumsbeitrag/E-Mail, 20+ хв повного часу): 5хв і 1хв до кінця.
+// Sprechen сюди більше не заходить — має власну логіку (40с підготовки +
+// рахунок вгору + сигнал за 10с до кінця) у _examSimTickSpeaking нижче.
 function _examSimWarnThresholds(part){
-  return part === 'Sprechen' ? [15000] : [5*60000, 60000];
+  return [5*60000, 60000];
 }
+
+// Лише для Sprechen: 60с видимого відліку підготовки ПЕРЕД стартом
+// власне відповіді (0:60=1:00 → 0:00) — завершується АБО природно по
+// нулю, АБО раніше по кліку другої кнопки "▶ Почати" (обидва шляхи —
+// одна й та сама дія, _examSimSpeakStartNow(), включно зі звуковим
+// сигналом). Далі той самий бейдж БЕЗ скидання продовжує рахувати, але
+// тепер ВГОРУ від 0:00 до timeMin (типово 4хв) — сумарна послідовність:
+//   1:00 → ... → 0:00 (сигнал "почали", або клік кнопки — той самий
+//   сигнал) → 0:01 → ... → 3:50 (сигнал, лишилось 10с) → 3:51 → ... →
+//   4:00 (фінальний сигнал, як і раніше).
+// Завдання (текст) з'являється одразу після кліку "Почати тест" (як і
+// зараз, через examSimPickCard у startExamSimTest()) — і лишається на
+// екрані незмінним всю дорогу; рухається лише сам бейдж-таймер.
+var EXAM_SIM_SPEAK_PREP_MS = 60000;
+var EXAM_SIM_SPEAK_WARN_BEFORE_END_MS = 10000;
 
 // Дві РІЗНІ випадкові картки з переданого масиву — спільний хелпер для
 // ВСІХ типів симуляції (Forumsbeitrag/E-Mail/…), щоб не дублювати
@@ -11143,11 +11164,21 @@ function startExamSimTest(){
   _examSimState.endsAt = _examSimState.startedAt + totalSec * 1000;
   _examSimState.warnedThresholds = [];
   _examSimState.earlyFinishShown = false;
+  _examSimState.speakPrepBeeped = false;
+  _examSimState.speakWarnBeeped = false;
+  _examSimState.speakStartedAt = null;
   var banner = document.getElementById('exam-sim-timeup-banner');
   if(banner) banner.style.display = 'none';
   var actions = document.getElementById('exam-sim-timeup-actions');
   if(actions) actions.style.display = 'none';
-  _examSimRenderCountdown(totalSec * 1000);
+  // Sprechen починає з видимого відліку 60с підготовки (1:00), а не з
+  // повного часу відповіді (4:00) — див. _examSimTickSpeaking нижче.
+  _examSimRenderCountdown(_examSimState.part === 'Sprechen' ? EXAM_SIM_SPEAK_PREP_MS : totalSec * 1000);
+  // Друга кнопка "▶ Почати" (дозволяє почати раніше, не чекаючи 60с) —
+  // лише для Sprechen, і лише на час підготовки (ховається сама в
+  // _examSimSpeakStartNow(), щойно підготовка завершується).
+  var speakStartBtn = document.getElementById('exam-sim-speak-start-btn');
+  if(speakStartBtn) speakStartBtn.style.display = (_examSimState.part === 'Sprechen') ? 'block' : 'none';
 
   // Один кандидат (E-Mail) — немає сенсу у виборі: показуємо одразу
   // повноекранне завдання, минаючи стадію pick. Двоє кандидатів
@@ -11283,6 +11314,7 @@ function _examSimUpdateRepickVisibility(){
 }
 
 function _examSimTick(){
+  if(_examSimState.part === 'Sprechen'){ _examSimTickSpeaking(); return; }
   var msLeft = _examSimState.endsAt - Date.now();
   var elapsed = Date.now() - (_examSimState.startedAt || Date.now());
 
@@ -11302,8 +11334,7 @@ function _examSimTick(){
   // Попереджувальні сигнали — по одному разу за спробу (прапорці
   // скидаються в startExamSimTest()). Кожен поріг — лише якщо загальний
   // час тесту взагалі ДОВШИЙ за нього: інакше "лишилось 5 хв" не має
-  // сенсу для короткого таймера в кілька хвилин (див. _examSimWarnThresholds
-  // — для Sprechen поріг геть інший, 15с, а не 5хв/1хв).
+  // сенсу для короткого таймера в кілька хвилин.
   var totalMs = (_examSimState.timeMin || 20) * 60000;
   if(msLeft > 0){
     _examSimWarnThresholds(_examSimState.part).forEach(function(th){
@@ -11327,6 +11358,79 @@ function _examSimTick(){
     return;
   }
   _examSimRenderCountdown(msLeft);
+}
+
+// Форматування "M:SS" з підлогою (floor), а НЕ зі стелею (ceil), як у
+// _examSimRenderCountdown вище — той підхід правильний для ЗВОРОТНОГО
+// відліку залишку (0:60→0:59→...→0:00 без завчасного переходу на
+// 0:00), а тут частина шляху йде ВГОРУ (елапсед), де потрібна саме
+// підлога (0:00 одразу після старту, 0:01 через повну секунду, і т.д.).
+function _examSimSpeakBadgeText(ms){
+  var totalSec = Math.floor(ms/1000);
+  var m = Math.floor(totalSec/60), s = totalSec%60;
+  return m+':'+(s<10?'0':'')+s;
+}
+
+// Sprechen: єдиний безперервний відлік у тому самому бейджі
+// #exam-sim-countdown — спершу ВНИЗ (підготовка, 40с), потім ВГОРУ
+// (власне відповідь, до timeMin) — див. пояснення й послідовність
+// сигналів у коментарі над EXAM_SIM_SPEAK_PREP_MS вище. Один
+// setInterval/один startedAt (без перезапуску таймера на межі 0:00) —
+// щоб не було стрибка/розсинхрону в момент переходу між фазами.
+function _examSimTickSpeaking(){
+  var examMs = (_examSimState.timeMin || 4) * 60000;
+
+  if(!_examSimState.speakPrepBeeped){
+    // Ще триває підготовка (60с, вниз до 0:00) — рахуємо від startedAt
+    // (момент кліку "Почати тест"). Друга кнопка "▶ Почати" може
+    // завершити цю фазу раніше — див. _examSimSpeakStartNow().
+    var prepElapsed = Date.now() - (_examSimState.startedAt || Date.now());
+    var el0 = document.getElementById('exam-sim-countdown');
+    if(el0) el0.textContent = _examSimSpeakBadgeText(Math.max(0, EXAM_SIM_SPEAK_PREP_MS - prepElapsed));
+    if(prepElapsed >= EXAM_SIM_SPEAK_PREP_MS){
+      _examSimSpeakStartNow(); // природний нуль — та сама дія, що й клік кнопки
+    }
+    return;
+  }
+
+  // Підготовка вже завершена (природно чи по кліку) — рахуємо ВГОРУ від
+  // speakStartedAt (момент фактичного старту відповіді, а НЕ від
+  // startedAt — інакше дострокове натискання кнопки зробило б цю фазу
+  // довшою за timeMin).
+  var speakElapsed = Date.now() - _examSimState.speakStartedAt;
+  var el = document.getElementById('exam-sim-countdown');
+  if(el) el.textContent = _examSimSpeakBadgeText(Math.min(speakElapsed, examMs));
+
+  if(!_examSimState.speakWarnBeeped && speakElapsed >= examMs - EXAM_SIM_SPEAK_WARN_BEFORE_END_MS){
+    _examSimState.speakWarnBeeped = true;
+    _examSimPlayWarningBeep(); // за 10с до кінця
+  }
+
+  if(speakElapsed >= examMs){
+    clearInterval(_examSimState.timerId);
+    _examSimState.timerId = null;
+    var banner = document.getElementById('exam-sim-timeup-banner');
+    if(banner) banner.style.display = 'block';
+    _examSimShowFinishBlock(true);
+    _examSimPlayBeep(); // фінальний сигнал — той самий "залп x3", що й у письмових симуляціях
+  }
+}
+
+// Спільна дія для ОБОХ шляхів завершення підготовки — природного нуля
+// (виклик з _examSimTickSpeaking вище) і кліку другої кнопки "▶ Почати"
+// (onclick у розмітці #exam-sim-speak-start-btn): той самий звуковий
+// сигнал, що раніше лунав рівно на нулі, і той самий перехід на
+// рахунок часу відповіді вгору (від МОМЕНТУ ЦЬОГО ВИКЛИКУ, а не від
+// startedAt) — раннє натискання кнопки не "з'їдає" час відповіді.
+function _examSimSpeakStartNow(){
+  if(_examSimState.speakPrepBeeped) return; // вже почалось — ігноруємо повторний клік/виклик
+  _examSimState.speakPrepBeeped = true;
+  _examSimState.speakStartedAt = Date.now();
+  _examSimPlaySpeakStartBeep();
+  var btn = document.getElementById('exam-sim-speak-start-btn');
+  if(btn) btn.style.display = 'none';
+  var el = document.getElementById('exam-sim-countdown');
+  if(el) el.textContent = _examSimSpeakBadgeText(0);
 }
 
 // Один і той самий блок кнопок (👁 + основна) для ДВОХ різних моментів —
@@ -11597,15 +11701,31 @@ function _examSimPlayBeep(){
   }catch(e){}
 }
 
-// Короткий попереджувальний сигнал (за 5 хв і за 1 хв до завершення) —
-// один коротший тон іншої (нижчої) висоти й тихіший, ніж фінальний
-// сигнал, щоб їх не можна було сплутати між собою.
+// Короткий попереджувальний сигнал (за 5 хв і за 1 хв до завершення для
+// письмових; за 10с до кінця для Sprechen) — один коротший тон іншої
+// (нижчої) висоти й тихіший, ніж фінальний сигнал, щоб їх не можна було
+// сплутати між собою.
 function _examSimPlayWarningBeep(){
   try{
     var ctx = _examSimState.audioCtx;
     if(!ctx) return;
     if(ctx.state === 'suspended') ctx.resume();
     _examSimPlayTone(ctx, 660, ctx.currentTime, 0.3, 0.28);
+  }catch(e){}
+}
+
+// Сигнал "почали!" — лише Sprechen, рівно на межі між 40с підготовки і
+// стартом самої відповіді (див. _examSimTickSpeaking). Два висхідних
+// тони — свідомо інакший візерунок, ніж попереджувальний (один тон) чи
+// фінальний (три гудки), щоб усі три сигнали не плутались між собою.
+function _examSimPlaySpeakStartBeep(){
+  try{
+    var ctx = _examSimState.audioCtx;
+    if(!ctx) return;
+    if(ctx.state === 'suspended') ctx.resume();
+    var t = ctx.currentTime;
+    _examSimPlayTone(ctx, 784,    t,      0.14, 0.3);
+    _examSimPlayTone(ctx, 1046.5, t+0.16, 0.28, 0.3);
   }catch(e){}
 }
 
