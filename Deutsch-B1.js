@@ -3534,7 +3534,8 @@ var LESSONS = [
     },
     "skills": [
       "Lesen",
-      "Sprechen"
+      "Sprechen",
+      "Schreiben"
     ],
     "grammar": null,
     "cardIds": [
@@ -3553,6 +3554,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_117"
+    ],
+    "frmCards": [
+      "brief_053"
     ]
   },
   {
@@ -3573,7 +3577,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "nebensatz_mit_bevor",
     "cardIds": [
@@ -3596,6 +3601,9 @@ var LESSONS = [
       "dlg_039",
       "dlg_040",
       "dlg_118"
+    ],
+    "frmCards": [
+      "brief_054"
     ]
   },
   {
@@ -3616,7 +3624,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Lesen"
+      "Lesen",
+      "Schreiben"
     ],
     "grammar": "adjektivdeklination_bestimmter_artikel",
     "cardIds": [
@@ -3635,6 +3644,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_119"
+    ],
+    "frmCards": [
+      "brief_055"
     ]
   },
   {
@@ -3655,7 +3667,8 @@ var LESSONS = [
     },
     "skills": [
       "Sprechen",
-      "Hören"
+      "Hören",
+      "Schreiben"
     ],
     "grammar": "komparativ_superlativ_vor_nomen",
     "cardIds": [
@@ -3674,6 +3687,9 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_120"
+    ],
+    "frmCards": [
+      "brief_056"
     ]
   },
   {
@@ -7796,7 +7812,7 @@ var LESSONS = [
     "unlockAfter": null,
     "_parentModuleId": "examprep_brief",
     "_subIndex": 1,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_2",
@@ -7827,7 +7843,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_1",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 2,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_3",
@@ -7858,7 +7874,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_2",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 3,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_4",
@@ -7889,7 +7905,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_3",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 4,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_5",
@@ -7920,7 +7936,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_4",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 5,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_6",
@@ -7951,7 +7967,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_5",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 6,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_7",
@@ -7982,7 +7998,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_6",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 7,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_8",
@@ -8013,7 +8029,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_7",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 8,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_9",
@@ -8044,7 +8060,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_8",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 9,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_10",
@@ -8075,7 +8091,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_9",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 10,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_11",
@@ -8106,7 +8122,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_10",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 11,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_12",
@@ -8137,7 +8153,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_11",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 12,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_13",
@@ -8168,7 +8184,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_12",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 13,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_14",
@@ -8199,7 +8215,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_13",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 14,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_15",
@@ -8230,7 +8246,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_14",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 15,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_16",
@@ -8261,7 +8277,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_15",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 16,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_17",
@@ -8292,7 +8308,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_16",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 17,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_18",
@@ -8323,7 +8339,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_17",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 18,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_19",
@@ -8354,7 +8370,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_18",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 19,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_20",
@@ -8385,7 +8401,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_19",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 20,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_21",
@@ -8416,7 +8432,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_20",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 21,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_22",
@@ -8447,7 +8463,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_21",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 22,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_23",
@@ -8478,7 +8494,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_22",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 23,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_24",
@@ -8509,7 +8525,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_23",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 24,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_25",
@@ -8540,7 +8556,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_24",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 25,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_26",
@@ -8571,7 +8587,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_25",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 26,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_27",
@@ -8602,7 +8618,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_26",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 27,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_28",
@@ -8633,7 +8649,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_27",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 28,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_29",
@@ -8664,7 +8680,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_28",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 29,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_30",
@@ -8695,7 +8711,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_29",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 30,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_31",
@@ -8726,7 +8742,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_30",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 31,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_32",
@@ -8757,7 +8773,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_31",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 32,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_33",
@@ -8788,7 +8804,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_32",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 33,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_34",
@@ -8819,7 +8835,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_33",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 34,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_35",
@@ -8850,7 +8866,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_34",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 35,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_36",
@@ -8881,7 +8897,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_35",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 36,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_37",
@@ -8912,7 +8928,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_36",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 37,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_38",
@@ -8943,7 +8959,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_37",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 38,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_39",
@@ -8974,7 +8990,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_38",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 39,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_40",
@@ -9005,7 +9021,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_39",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 40,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_41",
@@ -9036,7 +9052,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_40",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 41,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_42",
@@ -9067,7 +9083,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_41",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 42,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_43",
@@ -9098,7 +9114,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_42",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 43,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_44",
@@ -9129,7 +9145,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_43",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 44,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_45",
@@ -9160,7 +9176,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_44",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 45,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_46",
@@ -9191,7 +9207,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_45",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 46,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_47",
@@ -9222,7 +9238,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_46",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 47,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_48",
@@ -9253,7 +9269,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_47",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 48,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_49",
@@ -9284,7 +9300,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_48",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 49,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_50",
@@ -9315,7 +9331,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_49",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 50,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_51",
@@ -9346,7 +9362,7 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_50",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 51,
-    "_subTotal": 52
+    "_subTotal": 56
   },
   {
     "id": "examprep_brief_52",
@@ -9377,7 +9393,131 @@ var LESSONS = [
     "unlockAfter": "examprep_brief_51",
     "_parentModuleId": "examprep_brief",
     "_subIndex": 52,
-    "_subTotal": 52
+    "_subTotal": 56
+  },
+  {
+    "id": "examprep_brief_53",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_053"
+    ],
+    "frmCards": [
+      "brief_053"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_52",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 53,
+    "_subTotal": 56
+  },
+  {
+    "id": "examprep_brief_54",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_054"
+    ],
+    "frmCards": [
+      "brief_054"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_53",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 54,
+    "_subTotal": 56
+  },
+  {
+    "id": "examprep_brief_55",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_055"
+    ],
+    "frmCards": [
+      "brief_055"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_54",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 55,
+    "_subTotal": 56
+  },
+  {
+    "id": "examprep_brief_56",
+    "chapter": 17,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 2,
+    "title": {
+      "de": "Brief / E-Mail",
+      "uk": "Brief / E-Mail",
+      "en": "Brief / E-Mail",
+      "ru": "Brief / E-Mail"
+    },
+    "type": "forum",
+    "cardIds": [
+      "brief_056"
+    ],
+    "frmCards": [
+      "brief_056"
+    ],
+    "dlgCards": [],
+    "sbCards": [],
+    "unlockAfter": "examprep_brief_55",
+    "_parentModuleId": "examprep_brief",
+    "_subIndex": 56,
+    "_subTotal": 56
   },
   {
     "id": "examsim_brief",
@@ -38862,6 +39002,122 @@ var SCHREIBEN = [
       { "role": "schluss", "gram": "", "de": "<r>Bis bald!</r>", "en": "<r>See you soon!</r>", "uk": "<r>До зустрічі!</r>", "ru": "<r>До скорой встречи!</r>" },
       { "role": "grussformel", "gram": "", "de": "Liebe Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
       { "role": "name", "gram": "", "de": "David Berger", "en": "David Berger", "uk": "Давид Бергер", "ru": "Давид Бергер" }
+    ]
+  },
+  {
+    "id": "brief_053",
+    "cat": "Krankmeldung",
+    "format": "brief_formell",
+    "topic": {
+      "de": "Krankmeldung mit Übergabe der Aufgaben",
+      "en": "Sick leave with handover of tasks",
+      "uk": "Повідомлення про хворобу з передачею завдань",
+      "ru": "Уведомление о болезни с передачей задач"
+    },
+    "task": {
+      "de": "Sie sind krank und können nicht zu Ihrem Arbeitsplatz kommen. Schreiben Sie Ihrer Chefin einen Brief.<br><br>1. Grund für Ihr Schreiben<br>2. Seit wann Sie krank sind<br>3. Wer Ihre Aufgaben übernehmen kann<br>4. Wann Sie wieder arbeiten können",
+      "en": "You are sick and can't come to your workplace. Write your boss a letter.<br><br>1. Reason for your letter<br>2. Since when you've been ill<br>3. Who can take over your tasks<br>4. When you'll be able to work again",
+      "uk": "Ви хворі й не можете прийти на робоче місце. Напишіть начальниці листа.<br><br>1. Причина Вашого листа<br>2. Відколи Ви хворі<br>3. Хто може взяти на себе Ваші завдання<br>4. Коли Ви зможете знову працювати",
+      "ru": "Вы больны и не можете прийти на рабочее место. Напишите руководительнице письмо.<br><br>1. Причина Вашего письма<br>2. С каких пор Вы больны<br>3. Кто может взять на себя Ваши задачи<br>4. Когда Вы сможете снова работать"
+    },
+    "name": "de_w_nina",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Düsseldorf, den 18. September 2026", "en": "Düsseldorf, 18 September 2026", "uk": "Дюссельдорф, 18 вересня 2026 р.", "ru": "Дюссельдорф, 18 сентября 2026 г." },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Frau Hoffmann,", "en": "Dear Ms. Hoffmann,", "uk": "Шановна пані Гоффманн,", "ru": "Уважаемая госпожа Хоффманн," },
+      { "role": "einleitung", "gram": "praeteritum_wdh_b1", "de": "<r>Ich schreibe Ihnen, um Ihnen mitzuteilen,</r> dass ich leider krank bin <k>und</k> deshalb nicht an meinen <c>Arbeitsplatz</c> kommen kann. Gestern Abend <g>fühlte</g> ich mich plötzlich sehr schlecht.", "en": "<r>I'm writing to let you know</r> that I'm unfortunately sick and therefore can't come to my workplace. Yesterday evening I suddenly felt very unwell.", "uk": "<r>Пишу, щоб повідомити Вам,</r> що я, на жаль, хвора і тому не можу прийти на робоче місце. Вчора ввечері я раптом почувалася дуже погано.", "ru": "<r>Пишу, чтобы сообщить Вам,</r> что я, к сожалению, больна и поэтому не могу прийти на рабочее место. Вчера вечером я вдруг почувствовала себя очень плохо." },
+      { "role": "punkt2", "gram": "nebensatz_seit_seitdem", "de": "<r>Mir geht es</r> <g>seitdem gestern Abend</g> nicht gut, <k>und</k> heute Morgen war das Fieber sogar noch höher.", "en": "<r>I haven't felt well</r> since yesterday evening, and this morning the fever was even higher.", "uk": "<r>Мені нездужається</r> ще з учорашнього вечора, а сьогодні вранці температура була навіть ще вищою.", "ru": "<r>Мне нездоровится</r> ещё со вчерашнего вечера, а сегодня утром температура была даже ещё выше." },
+      { "role": "punkt3", "gram": "genitiv_alternativen", "de": "<r>Was meine Aufgaben betrifft,</r> denke ich, dass <g>die Verantwortung von meiner Kollegin Frau Klein</g> übernommen werden könnte, <k>falls</k> das nötig ist.", "en": "<r>As for my tasks,</r> I think the responsibility could be taken over by my colleague Ms. Klein, if that's necessary.", "uk": "<r>Щодо моїх завдань,</r> думаю, що відповідальність могла б узяти на себе моя колега пані Кляйн, якщо це буде потрібно.", "ru": "<r>Что касается моих задач,</r> думаю, что ответственность могла бы взять на себя моя коллега госпожа Кляйн, если это будет нужно." },
+      { "role": "punkt4", "gram": "futur_werden", "de": "<r>Ich hoffe,</r> dass ich bald wieder gesund bin, <k>denn</k> übermorgen <g>werde ich hoffentlich wieder arbeiten können</g>.", "en": "<r>I hope</r> that I'll be healthy again soon, because the day after tomorrow I'll hopefully be able to work again.", "uk": "<r>Сподіваюся,</r> що незабаром одужаю, бо післязавтра я, сподіваюся, вже зможу знову працювати.", "ru": "<r>Надеюсь,</r> что скоро поправлюсь, потому что послезавтра я, надеюсь, уже смогу снова работать." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich melde mich, sobald es mir besser geht.</r>", "en": "<r>I'll be in touch as soon as I feel better.</r>", "uk": "<r>Я дам знати, щойно мені стане краще.</r>", "ru": "<r>Я дам знать, как только мне станет лучше.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
+    ]
+  },
+  {
+    "id": "brief_054",
+    "cat": "Wohnen und Nachbarschaft",
+    "format": "brief_informell",
+    "topic": {
+      "de": "Nachbarschaftslauf am Wochenende",
+      "en": "Neighborhood run this weekend",
+      "uk": "Забіг сусідства у вихідні",
+      "ru": "Соседский забег в выходные"
+    },
+    "task": {
+      "de": "In eurer Straße findet am Wochenende ein kleiner Nachbarschaftslauf statt, dafür wird die Straße kurz gesperrt. Du schreibst deinem Nachbarn einen Brief darüber.<br><br>1. Grund für deinen Brief<br>2. Was beim Wettkampf passiert (Zeiten, Straßensperrung)<br>3. Ob du selbst mitmachst und wie du dich vorbereitest<br>4. Einladung, auch mitzumachen oder zuzuschauen",
+      "en": "A small neighborhood run is taking place on your street this weekend, for which the street will be briefly closed. You write your neighbor a letter about it.<br><br>1. Reason for your letter<br>2. What happens during the race (times, street closure)<br>3. Whether you're taking part yourself and how you're preparing<br>4. An invitation to join in or watch",
+      "uk": "У вашій вулиці на вихідних відбудеться невеликий сусідський забіг, через що вулицю ненадовго перекриють. Ти пишеш сусіду листа про це.<br><br>1. Причина твого листа<br>2. Що відбудеться під час забігу (час, перекриття вулиці)<br>3. Чи береш ти участь і як готуєшся<br>4. Запрошення теж узяти участь або подивитися",
+      "ru": "На вашей улице в выходные пройдёт небольшой соседский забег, из-за чего улицу ненадолго перекроют. Ты пишешь соседу письмо об этом.<br><br>1. Причина твоего письма<br>2. Что произойдёт во время забега (время, перекрытие улицы)<br>3. Участвуешь ли ты сам и как готовишься<br>4. Приглашение тоже поучаствовать или посмотреть"
+    },
+    "name": "de_m_alex",
+    "parts": [
+      { "role": "ort_datum", "gram": "", "de": "Köln, den 20. September 2026", "en": "Cologne, 20 September 2026", "uk": "Кельн, 20 вересня 2026 р.", "ru": "Кёльн, 20 сентября 2026 г." },
+      { "role": "anrede", "gram": "", "de": "Lieber Tobias,", "en": "Dear Tobias,", "uk": "Любий Тобіасе,", "ru": "Дорогой Тобиас," },
+      { "role": "einleitung", "gram": "nebensatz_mit_bevor", "de": "<r>Ich schreibe dir, weil</r> am Wochenende in unserer Straße ein kleiner <c>Nachbarschaftslauf</c> stattfindet, <k>und</k> <g>bevor der Wettkampf beginnt, wird die Straße für zwei Stunden gesperrt</g>.", "en": "<r>I'm writing to you because</r> there's a small neighborhood run taking place on our street this weekend, and before the race starts, the street will be closed for two hours.", "uk": "<r>Пишу тобі, бо</r> на вихідних на нашій вулиці відбудеться невеликий сусідський забіг, і перш ніж змагання почнеться, вулицю перекриють на дві години.", "ru": "<r>Пишу тебе, потому что</r> на выходных на нашей улице пройдёт небольшой соседский забег, и прежде чем начнётся соревнование, улицу перекроют на два часа." },
+      { "role": "punkt2", "gram": "praepositionen_mit_genitiv", "de": "<r>Der Lauf beginnt um 10 Uhr,</r> <k>und</k> <g>während des gesamten Wettkampfs</g> darfst du leider nicht mit dem Auto durch unsere Straße fahren.", "en": "<r>The run starts at 10 am,</r> and during the entire race you unfortunately can't drive through our street.", "uk": "<r>Забіг почнеться о 10 годині,</r> і протягом усього змагання, на жаль, не можна буде проїхати нашою вулицею на машині.", "ru": "<r>Забег начнётся в 10 часов,</r> и в течение всего соревнования, к сожалению, нельзя будет проехать по нашей улице на машине." },
+      { "role": "punkt3", "gram": "reflexivpronomen_akkusativ_wdh_b1", "de": "<r>Ich mache übrigens dieses Jahr selbst mit,</r> <k>und</k> deshalb <g>wärme ich mich schon seit ein paar Tagen vor jedem Training gründlich auf</g>.", "en": "<r>By the way, I'm actually taking part myself this year,</r> and that's why I've been warming up thoroughly before every training session for a few days already.", "uk": "<r>До речі, цього року я сам беру участь,</r> тому вже кілька днів ретельно розминаюся перед кожним тренуванням.", "ru": "<r>Кстати, в этом году я сам участвую,</r> поэтому уже несколько дней тщательно разминаюсь перед каждой тренировкой." },
+      { "role": "punkt4", "gram": "adjektive_als_nomen", "de": "<r>Ich würde mich riesig freuen,</r> wenn du auch vorbeikommst, <k>entweder</k> als Läufer <g>oder einfach als interessierter Zuschauender</g>.", "en": "<r>I would be really happy</r> if you came by too, either as a runner or simply as an interested spectator.", "uk": "<r>Я був би дуже радий,</r> якби ти теж завітав, чи то як бігун, чи просто як зацікавлений глядач.", "ru": "<r>Я был бы очень рад,</r> если бы ты тоже пришёл, либо как бегун, либо просто как заинтересованный зритель." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf deine Antwort.</r>", "en": "<r>I look forward to your reply.</r>", "uk": "<r>Чекаю на твою відповідь.</r>", "ru": "<r>Жду твоего ответа.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Liebe Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Alex Berg", "en": "Alex Berg", "uk": "Алекс Берг", "ru": "Алекс Берг" }
+    ]
+  },
+  {
+    "id": "brief_055",
+    "cat": "Antwort auf eine Einladung",
+    "format": "email_formell",
+    "topic": {
+      "de": "Zusage zur Begrüßungsfeier für den neuen Trainer",
+      "en": "Accepting the invitation to the welcome event for the new coach",
+      "uk": "Згода на святкування привітання нового тренера",
+      "ru": "Согласие на праздник приветствия нового тренера"
+    },
+    "task": {
+      "de": "Ihr Sportverein hat Sie zu einer Begrüßungsfeier für den neuen Trainer eingeladen. Schreiben Sie eine E-Mail an den Verein.<br><br>1. Dank für die Einladung und Zusage<br>2. Warum Sie sich auf den neuen Trainer freuen<br>3. Was Sie zur Feier beitragen möchten<br>4. Frage zu den Details",
+      "en": "Your sports club invited you to a welcome celebration for the new coach. Write an email to the club.<br><br>1. Thanks for the invitation and your acceptance<br>2. Why you're looking forward to the new coach<br>3. What you'd like to contribute to the celebration<br>4. A question about the details",
+      "uk": "Ваш спортивний клуб запросив Вас на святкування з нагоди привітання нового тренера. Напишіть листа до клубу.<br><br>1. Подяка за запрошення та згода прийти<br>2. Чому Ви чекаєте на нового тренера<br>3. Що Ви хочете внести у святкування<br>4. Запитання про деталі",
+      "ru": "Ваш спортивный клуб пригласил Вас на праздник в честь приветствия нового тренера. Напишите письмо в клуб.<br><br>1. Благодарность за приглашение и согласие прийти<br>2. Почему Вы ждёте нового тренера<br>3. Что Вы хотите внести в праздник<br>4. Вопрос о деталях"
+    },
+    "name": "de_w_julia",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Zusage zur Begrüßungsfeier", "en": "Subject: Accepting the welcome celebration", "uk": "Тема: Згода на святкування", "ru": "Тема: Согласие на праздник" },
+      { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
+      { "role": "einleitung", "gram": "adjektivdeklination_bestimmter_artikel", "de": "<r>Vielen Dank für die Einladung</r> zur Feier für <g>den neuen Trainer</g> unseres Vereins, <k>und</k> ich sage gerne <c>zur Begrüßungsfeier</c> zu.", "en": "<r>Thank you so much for the invitation</r> to the celebration for our club's new coach, and I'm happy to say yes to the welcome celebration.", "uk": "<r>Дуже дякую за запрошення</r> на свято з нагоди нового тренера нашого клубу, і я із задоволенням погоджуюся прийти на святкування.", "ru": "<r>Большое спасибо за приглашение</r> на праздник в честь нового тренера нашего клуба, и я с удовольствием соглашаюсь прийти на праздник." },
+      { "role": "punkt2", "gram": "genitiv", "de": "<r>Ich freue mich schon riesig darauf,</r> <k>denn</k> ich habe schon sehr viel <g>über die großen Erfolge des neuen Trainers</g> gehört.", "en": "<r>I'm already really looking forward to it,</r> because I've already heard a lot about the great successes of the new coach.", "uk": "<r>Я вже дуже сильно чекаю на це,</r> бо я вже дуже багато чула про великі успіхи нового тренера.", "ru": "<r>Я уже очень сильно жду этого,</r> потому что уже очень много слышала о больших успехах нового тренера." },
+      { "role": "punkt3", "gram": "komposita_nomen_nomen", "de": "<r>Ich habe fest vor,</r> ein kleines <g>Mannschaftsfoto</g> von uns allen mitzubringen, <k>damit</k> wir uns auch später noch gut daran erinnern können.", "en": "<r>I'm firmly planning</r> to bring a small team photo of all of us, so that we can still remember it well later on.", "uk": "<r>Я твердо планую</r> принести невелике командне фото нас усіх, щоб ми могли ще довго добре це пам'ятати.", "ru": "<r>Я твёрдо планирую</r> принести небольшое командное фото всех нас, чтобы мы могли ещё долго хорошо это вспоминать." },
+      { "role": "punkt4", "gram": "interesse_denn_eigentlich", "de": "<r>Ich habe noch eine kurze Frage:</r> <g>Wie lange dauert die Feier eigentlich genau</g>, <k>und</k> muss ich mich vorher irgendwo dafür anmelden?", "en": "<r>I still have a quick question:</r> how long does the celebration actually last, and do I need to register somewhere beforehand?", "uk": "<r>У мене ще одне коротке запитання:</r> скільки взагалі триватиме свято, і чи треба мені десь заздалегідь зареєструватися?", "ru": "<r>У меня ещё один короткий вопрос:</r> сколько вообще будет длиться праздник, и нужно ли мне где-то заранее зарегистрироваться?" },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf die Feier.</r>", "en": "<r>I'm looking forward to the celebration.</r>", "uk": "<r>Чекаю на це свято.</r>", "ru": "<r>Жду этого праздника.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
+      { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
+    ]
+  },
+  {
+    "id": "brief_056",
+    "cat": "Bitte um Hilfe",
+    "format": "email_informell",
+    "topic": {
+      "de": "Bitte um Trainingstipps vor der Meisterschaft",
+      "en": "Asking for training tips before the championship",
+      "uk": "Прохання про поради з тренувань перед чемпіонатом",
+      "ru": "Просьба о советах по тренировкам перед чемпионатом"
+    },
+    "task": {
+      "de": "Sie machen bei einer Laufmeisterschaft mit, aber Ihre Ausdauer ist noch zu schwach. Schreiben Sie einem erfahrenen Freund eine E-Mail und bitten Sie um Hilfe.<br><br>1. Grund für Ihr Schreiben<br>2. Welches Problem Sie haben<br>3. Was Sie schon versucht haben<br>4. Bitte um konkrete Tipps",
+      "en": "You're taking part in a running championship, but your endurance is still too weak. Write an experienced friend an email and ask for help.<br><br>1. Reason for your email<br>2. What problem you have<br>3. What you've already tried<br>4. A request for concrete tips",
+      "uk": "Ви берете участь у бігових змаганнях, але Ваша витривалість ще слабка. Напишіть досвідченому другу електронного листа і попросіть про допомогу.<br><br>1. Причина Вашого листа<br>2. Яка у Вас проблема<br>3. Що Ви вже спробували<br>4. Прохання про конкретні поради",
+      "ru": "Вы участвуете в беговом чемпионате, но Ваша выносливость ещё слаба. Напишите опытному другу электронное письмо и попросите о помощи.<br><br>1. Причина Вашего письма<br>2. Какая у Вас проблема<br>3. Что Вы уже пробовали<br>4. Просьба о конкретных советах"
+    },
+    "name": "de_m_mark",
+    "parts": [
+      { "role": "betreff", "gram": "", "de": "Betreff: Kannst du mir helfen?", "en": "Subject: Can you help me?", "uk": "Тема: Чи можеш ти мені допомогти?", "ru": "Тема: Можешь ли ты мне помочь?" },
+      { "role": "anrede", "gram": "", "de": "Lieber Jonas,", "en": "Dear Jonas,", "uk": "Любий Йонасе,", "ru": "Дорогой Йонас," },
+      { "role": "einleitung", "gram": "komparativ_superlativ_vor_nomen", "de": "<r>Ich schreibe dir, weil</r> ich Hilfe brauche: Bald ist die <c>Laufmeisterschaft</c>, <k>und</k> ich merke, dass ich <g>der schwächste Läufer</g> im ganzen Team bin.", "en": "<r>I'm writing to you because</r> I need help: the running championship is coming up soon, and I'm noticing that I'm the weakest runner in the whole team.", "uk": "<r>Пишу тобі, бо</r> мені потрібна допомога: скоро бігові змагання, і я помічаю, що я найслабший бігун у всій команді.", "ru": "<r>Пишу тебе, потому что</r> мне нужна помощь: скоро беговой чемпионат, и я замечаю, что я самый слабый бегун во всей команде." },
+      { "role": "punkt2", "gram": "trennbare_verben_praefixe_wdh_b1", "de": "<r>Mein Problem ist,</r> dass ich die letzten Kilometer der Strecke einfach nicht <g>durchhalte</g>, <k>und</k> mein Tempo wird dann viel zu langsam.", "en": "<r>My problem is</r> that I simply can't keep going through the last kilometers of the route, and my pace then becomes way too slow.", "uk": "<r>Моя проблема в тому,</r> що я просто не витримую останні кілометри дистанції, і мій темп тоді стає надто повільним.", "ru": "<r>Моя проблема в том,</r> что я просто не выдерживаю последние километры дистанции, и мой темп тогда становится слишком медленным." },
+      { "role": "punkt3", "gram": "plusquamperfekt", "de": "<r>Ich habe schon versucht,</r> jeden Tag eine kleine Runde zu laufen, <k>bevor</k> ich mit dem intensiveren Training <g>begonnen hatte</g>.", "en": "<r>I already tried</r> running a short lap every day, before I had started the more intensive training.", "uk": "<r>Я вже намагався</r> щодня бігати невелике коло, перш ніж я почав інтенсивніші тренування.", "ru": "<r>Я уже пытался</r> ежедневно пробегать небольшой круг, прежде чем я начал более интенсивные тренировки." },
+      { "role": "punkt4", "gram": "verben_mit_praep_wdh_b1", "de": "<r>Kannst du mir bitte helfen?</r> Du <g>kennst dich ja super mit dem Ausdauertraining aus</g>, <k>und</k> deine Tipps würden mir sicher weiterhelfen.", "en": "<r>Can you please help me?</r> You really know your way around endurance training, and your tips would surely help me a lot.", "uk": "<r>Чи можеш ти мені, будь ласка, допомогти?</r> Ти ж чудово розбираєшся в тренуванні витривалості, і твої поради точно мені допоможуть.", "ru": "<r>Можешь ли ты мне, пожалуйста, помочь?</r> Ты же отлично разбираешься в тренировке выносливости, и твои советы точно мне помогут." },
+      { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf deine Antwort.</r>", "en": "<r>I look forward to your reply.</r>", "uk": "<r>Чекаю на твою відповідь.</r>", "ru": "<r>Жду твоего ответа.</r>" },
+      { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
+      { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
     ]
   }
 ];

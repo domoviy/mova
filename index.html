@@ -3584,11 +3584,12 @@ body{
   <button id="exam-sim-repick-btn" onclick="examSimBackToPicker()"
     style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:14px;font-size:var(--fs-card);font-weight:700;cursor:pointer;font-family:inherit;z-index:200">↺ Обрати іншу тему</button>
 
-  <!-- Друга кнопка "Почати" — лише Sprechen (openExamSimSpeaking), під
-       час 60с підготовки перед власне відповіддю (див. EXAM_SIM_SPEAK_PREP_MS
-       і _examSimTickSpeaking нижче). Дозволяє почати раніше, не чекаючи
-       природного нуля — та сама дія (сигнал + перехід на рахунок часу
-       відповіді вгору), що й по спливанню 60с, див. _examSimSpeakStartNow(). -->
+  <!-- Друга кнопка "Почати" — для усних симуляцій (Sprechen/SprechenTeil2),
+       під час підготовки перед власне відповіддю (див.
+       EXAM_SIM_SPEAK_PREP_MS_BY_PART і _examSimTickSpeaking нижче).
+       Дозволяє почати раніше, не чекаючи природного нуля — та сама дія
+       (сигнал + перехід на рахунок часу відповіді вгору), що й по
+       спливанню часу підготовки, див. _examSimSpeakStartNow(). -->
   <button id="exam-sim-speak-start-btn" onclick="_examSimSpeakStartNow()" class="btn btn-lesson-sb-next" style="display:none">▶ Почати</button>
 
   <!-- З'являється двічі: рано (5 хв від старту, ще є час — м'яке "Текст
@@ -4225,8 +4226,8 @@ body{
     </h3>
     <div id="debug-section-content" style="display:none;margin-top:12px">
     <div class="srow">
-      <div class="srow-label"><label>🎤 Усний іспит (пошук рішення)</label><small>Симуляція: завдання з діалогу типу "Lösungswege diskutieren" + таймер 4 хв. Поки що debug-фіча — реального вузла на лінії уроків ще немає.</small></div>
-      <button class="btn btn-s" onclick="openExamSimSpeaking()">▶️ Тест</button>
+      <div class="srow-label"><label>🎤 Усний іспит – Teil 2 (Smalltalk)</label><small>Симуляція: завдання з діалогу типу "Small Talk" + 15с підготовки + таймер 1:30. Поки що debug-фіча — реального вузла на лінії уроків ще немає.</small></div>
+      <button class="btn btn-s" onclick="openExamSimSpeakingTeil2()">▶️ Тест</button>
     </div>
     <div class="srow">
       <div class="srow-label"><label>🔓 <span data-i18n="lbl_unlock_all">Розблокувати усі уроки</span></label><small data-i18n="sub_unlock_all">Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!</small></div>
@@ -4368,7 +4369,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '653-a6aa951';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5036,8 +5037,10 @@ const I18N = {
     module_complete_title:'🏆 Modul geschafft!',
     chapter_complete_title:'👑 Kapitel geschafft!',
     exam_sim_speaking_default_instr:'Lies die Situation und diskutiere laut, wie du sie lösen würdest — so, als würdest du mit einem Prüfungspartner sprechen. Du hast 4 Minuten.',
+    exam_sim_speaking_teil2_default_instr:'Lies das Thema und führe laut ein kurzes Smalltalk-Gespräch dazu — so, als würdest du mit einem Prüfungspartner sprechen. Du hast 15 Sekunden Vorbereitung und 1:30 Minuten Sprechzeit.',
     exam_sim_speaking_done_title:'Mündliche Prüfung geschafft!',
     exam_sim_speaking_done_sub:'Simulation — Lösungswege diskutieren',
+    exam_sim_speaking_teil2_done_sub:'Simulation — Smalltalk',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -5135,8 +5138,10 @@ const I18N = {
     module_complete_title:'🏆 Модуль завершено!',
     chapter_complete_title:'👑 Розділ завершено!',
     exam_sim_speaking_default_instr:'Прочитайте ситуацію і вголос обговоріть, як би ви її вирішили — так, ніби говорите з партнером на іспиті. У вас 4 хвилини.',
+    exam_sim_speaking_teil2_default_instr:'Прочитайте тему і вголос проведіть коротку розмову-smalltalk на неї — так, ніби говорите з партнером на іспиті. У вас 15 секунд на підготовку і 1:30 хвилини на розмову.',
     exam_sim_speaking_done_title:'Усний іспит завершено!',
     exam_sim_speaking_done_sub:'Симуляція — пошук рішення',
+    exam_sim_speaking_teil2_done_sub:'Симуляція — Smalltalk',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -5233,8 +5238,10 @@ const I18N = {
     module_complete_title:'🏆 Module complete!',
     chapter_complete_title:'👑 Chapter complete!',
     exam_sim_speaking_default_instr:'Read the situation and discuss out loud how you would solve it — as if speaking with an exam partner. You have 4 minutes.',
+    exam_sim_speaking_teil2_default_instr:'Read the topic and have a short smalltalk conversation about it out loud — as if speaking with an exam partner. You have 15 seconds to prepare and 1:30 minutes to speak.',
     exam_sim_speaking_done_title:'Speaking exam complete!',
     exam_sim_speaking_done_sub:'Simulation — problem-solving discussion',
+    exam_sim_speaking_teil2_done_sub:'Simulation — Smalltalk',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -5332,8 +5339,10 @@ const I18N = {
     module_complete_title:'🏆 Модуль завершён!',
     chapter_complete_title:'👑 Раздел завершён!',
     exam_sim_speaking_default_instr:'Прочитайте ситуацию и вслух обсудите, как бы вы её решили — так, будто говорите с партнёром на экзамене. У вас 4 минуты.',
+    exam_sim_speaking_teil2_default_instr:'Прочитайте тему и вслух проведите короткий разговор-smalltalk на неё — так, будто говорите с партнёром на экзамене. У вас 15 секунд на подготовку и 1:30 минуты на разговор.',
     exam_sim_speaking_done_title:'Устный экзамен завершён!',
     exam_sim_speaking_done_sub:'Симуляция — поиск решения',
+    exam_sim_speaking_teil2_done_sub:'Симуляция — Smalltalk',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -10966,20 +10975,25 @@ function _examSimWarnThresholds(part){
   return [5*60000, 60000];
 }
 
-// Лише для Sprechen: 60с видимого відліку підготовки ПЕРЕД стартом
-// власне відповіді (0:60=1:00 → 0:00) — завершується АБО природно по
-// нулю, АБО раніше по кліку другої кнопки "▶ Почати" (обидва шляхи —
-// одна й та сама дія, _examSimSpeakStartNow(), включно зі звуковим
-// сигналом). Далі той самий бейдж БЕЗ скидання продовжує рахувати, але
-// тепер ВГОРУ від 0:00 до timeMin (типово 4хв) — сумарна послідовність:
-//   1:00 → ... → 0:00 (сигнал "почали", або клік кнопки — той самий
-//   сигнал) → 0:01 → ... → 3:50 (сигнал, лишилось 10с) → 3:51 → ... →
-//   4:00 (фінальний сигнал, як і раніше).
-// Завдання (текст) з'являється одразу після кліку "Почати тест" (як і
-// зараз, через examSimPickCard у startExamSimTest()) — і лишається на
-// екрані незмінним всю дорогу; рухається лише сам бейдж-таймер.
-var EXAM_SIM_SPEAK_PREP_MS = 60000;
+// Час підготовки (мс) для КОЖНОЇ усної симуляції окремо — Sprechen
+// (Teil 3, "пошук рішення") і SprechenTeil2 (Teil 2, Smalltalk) обидва
+// йдуть через _examSimTickSpeaking() нижче, лише з різними числами:
+// Teil 3 — 60с підготовки / 4хв відповіді; Teil 2 — 15с підготовки /
+// 1:30 відповіді (сам діалог-зразок коротший за формою реального
+// іспиту, тож і часу менше). Довжина ВІДПОВІДІ (examMs) окремо тут не
+// дублюється — вона й так іде через звичайний _examSimState.timeMin
+// (див. _examSimDefaultTimeMin нижче), як і в письмових симуляціях.
+var EXAM_SIM_SPEAK_PREP_MS_BY_PART = {
+  'Sprechen': 60000,
+  'SprechenTeil2': 15000,
+};
 var EXAM_SIM_SPEAK_WARN_BEFORE_END_MS = 10000;
+function _examSimIsSpeaking(part){
+  return Object.prototype.hasOwnProperty.call(EXAM_SIM_SPEAK_PREP_MS_BY_PART, part);
+}
+function _examSimSpeakPrepMs(part){
+  return EXAM_SIM_SPEAK_PREP_MS_BY_PART[part] != null ? EXAM_SIM_SPEAK_PREP_MS_BY_PART[part] : 60000;
+}
 
 // Дві РІЗНІ випадкові картки з переданого масиву — спільний хелпер для
 // ВСІХ типів симуляції (Forumsbeitrag/E-Mail/…), щоб не дублювати
@@ -11035,10 +11049,9 @@ function openExamSimEmail(){
 // що вже розпізнає _lpDialogueNodeType() для позначки вузла 🤝 на
 // стежці) — раніше тут стояло вигадане "muendlich_teil3", яке в базі
 // просто не існувало (звідси й "не відкривається").
-// НАРАЗІ DEBUG-ЛИШЕ фіча (кнопка в Settings → Технічне) — на відміну
-// від Forumsbeitrag/E-Mail, ще немає власного вузла в Lernpfad; коли
-// з'явиться — досить додати case 'Sprechen' у examSimOpenFromNode
-// (він уже є нижче) і сам вузол у курсовій LESSONS.
+// Має власний вузол у курсовій LESSONS (examsim_sprechen, simPart:
+// "Sprechen") — вже не debug-лише фіча, на відміну від SprechenTeil2
+// нижче.
 //
 // Один кандидат (як E-Mail, не як Forumsbeitrag із вибором двох тем) —
 // у реальному іспиті співрозмовники теж не обирають тему, а отримують
@@ -11056,6 +11069,31 @@ function openExamSimSpeaking(){
   _examSimShowBriefing('Sprechen');
 }
 
+// Усний іспит "Smalltalk" (telc B2 Mündliche Prüfung Teil 2) — той
+// самий підхід, що й Teil 3 вище (openExamSimSpeaking), лише інше
+// джерело карток (DIALOGE з type === 'Small Talk' замість "Lösungswege
+// diskutieren") і геть інший хронометраж: 15с підготовки замість 60с,
+// 1:30 відповіді замість 4хв (див. EXAM_SIM_SPEAK_PREP_MS_BY_PART і
+// _examSimDefaultTimeMin вище) — реальний формат Teil 2 значно
+// коротший за Teil 3.
+// НАРАЗІ DEBUG-ЛИШЕ фіча (кнопка в Settings → Debug), як і Teil 3 було
+// до додавання власного вузла в Lernpfad — коли дійде черга додати
+// такий самий вузол і сюди, досить прибрати debug-кнопку (як щойно
+// зроблено для Teil 3) без жодних інших правок: case 'SprechenTeil2' у
+// examSimOpenFromNode нижче вже готовий.
+function openExamSimSpeakingTeil2(){
+  var cards = (typeof DIALOGE !== 'undefined' ? DIALOGE : []).filter(function(c){
+    return c.type === 'Small Talk' && c.task && (c.task[primaryLang()] || c.task.de);
+  });
+  if(!cards.length){
+    notify('⚠️ Потрібна хоча б 1 картка Smalltalk (type: "Small Talk", var DIALOGE) у поточному курсі');
+    return;
+  }
+  _examSimState.candidateCards = [ cards[Math.floor(Math.random() * cards.length)] ];
+  _examSimState.card = null;
+  _examSimShowBriefing('SprechenTeil2');
+}
+
 // Спільна точка входу для ВСІХ вузлів симуляції іспиту в Lernpfad
 // (renderExamPrepRow нижче передає сюди node.simPart із бази курсу) —
 // один роутер, а не окрема функція на кожен вузол, щоб додавання нової
@@ -11066,6 +11104,7 @@ function examSimOpenFromNode(node){
   if(part === 'Forumsbeitrag'){ openExamSimForumsbeitrag(); return; }
   if(part === 'E-Mail'){ openExamSimEmail(); return; }
   if(part === 'Sprechen'){ openExamSimSpeaking(); return; }
+  if(part === 'SprechenTeil2'){ openExamSimSpeakingTeil2(); return; }
   notify('⚠️ Симуляція для "'+part+'" ще не реалізована');
 }
 
@@ -11087,11 +11126,14 @@ function _examSimFormatMinutes(timeMin){
 }
 
 // Дефолтний час завдання, якщо курс ще не задав власний
-// EXAM_SIM.<part>.time_min — 20хв для довгих письмових (як і було), і
-// 4хв для Sprechen (усний, набагато коротший за формою реального
-// іспиту telc B2 Mündliche Prüfung Teil 3).
+// EXAM_SIM.<part>.time_min — 20хв для довгих письмових (як і було),
+// 4хв для Sprechen (Teil 3, "пошук рішення") і 1:30 для SprechenTeil2
+// (Teil 2, Smalltalk — коротший формат, і сам зразок-діалог набагато
+// коротший за дискусію Teil 3).
 function _examSimDefaultTimeMin(part){
-  return part === 'Sprechen' ? 4 : 20;
+  if(part === 'Sprechen') return 4;
+  if(part === 'SprechenTeil2') return 1.5;
+  return 20;
 }
 
 function _examSimShowBriefing(part){
@@ -11107,13 +11149,15 @@ function _examSimShowBriefing(part){
 
   var instrEl = document.getElementById('exam-sim-instructions');
   if(instrEl){
-    // Дефолтний текст інструкції для Sprechen, якщо курс ще не задав
-    // власний EXAM_SIM.Sprechen.instructions — щоб фіча працювала одразу
-    // "з коробки" в будь-якому курсі з картками "Lösungswege diskutieren", без
-    // обов'язкового авторського тексту.
+    // Дефолтний текст інструкції для усних симуляцій, якщо курс ще не
+    // задав власний EXAM_SIM.<part>.instructions — щоб фіча працювала
+    // одразу "з коробки" в будь-якому курсі з відповідними картками
+    // DIALOGE, без обов'язкового авторського тексту.
     var instr = cfg.instructions
       ? (cfg.instructions[uiLang] || cfg.instructions.en || cfg.instructions.de || '')
-      : (part === 'Sprechen' ? t('exam_sim_speaking_default_instr') : '');
+      : (part === 'Sprechen' ? t('exam_sim_speaking_default_instr')
+        : part === 'SprechenTeil2' ? t('exam_sim_speaking_teil2_default_instr')
+        : '');
     instrEl.textContent = instr;
     instrEl.style.display = instr ? '' : 'none';
   }
@@ -11171,14 +11215,16 @@ function startExamSimTest(){
   if(banner) banner.style.display = 'none';
   var actions = document.getElementById('exam-sim-timeup-actions');
   if(actions) actions.style.display = 'none';
-  // Sprechen починає з видимого відліку 60с підготовки (1:00), а не з
-  // повного часу відповіді (4:00) — див. _examSimTickSpeaking нижче.
-  _examSimRenderCountdown(_examSimState.part === 'Sprechen' ? EXAM_SIM_SPEAK_PREP_MS : totalSec * 1000);
-  // Друга кнопка "▶ Почати" (дозволяє почати раніше, не чекаючи 60с) —
-  // лише для Sprechen, і лише на час підготовки (ховається сама в
-  // _examSimSpeakStartNow(), щойно підготовка завершується).
+  // Усні симуляції (Sprechen/SprechenTeil2) починають з видимого
+  // відліку підготовки (60с чи 15с — залежно від частини), а не з
+  // повного часу відповіді — див. _examSimTickSpeaking нижче.
+  _examSimRenderCountdown(_examSimIsSpeaking(_examSimState.part) ? _examSimSpeakPrepMs(_examSimState.part) : totalSec * 1000);
+  // Друга кнопка "▶ Почати" (дозволяє почати раніше, не чекаючи
+  // природного нуля) — лише для усних симуляцій, і лише на час
+  // підготовки (ховається сама в _examSimSpeakStartNow(), щойно
+  // підготовка завершується).
   var speakStartBtn = document.getElementById('exam-sim-speak-start-btn');
-  if(speakStartBtn) speakStartBtn.style.display = (_examSimState.part === 'Sprechen') ? 'block' : 'none';
+  if(speakStartBtn) speakStartBtn.style.display = _examSimIsSpeaking(_examSimState.part) ? 'block' : 'none';
 
   // Один кандидат (E-Mail) — немає сенсу у виборі: показуємо одразу
   // повноекранне завдання, минаючи стадію pick. Двоє кандидатів
@@ -11314,7 +11360,7 @@ function _examSimUpdateRepickVisibility(){
 }
 
 function _examSimTick(){
-  if(_examSimState.part === 'Sprechen'){ _examSimTickSpeaking(); return; }
+  if(_examSimIsSpeaking(_examSimState.part)){ _examSimTickSpeaking(); return; }
   var msLeft = _examSimState.endsAt - Date.now();
   var elapsed = Date.now() - (_examSimState.startedAt || Date.now());
 
@@ -11371,23 +11417,26 @@ function _examSimSpeakBadgeText(ms){
   return m+':'+(s<10?'0':'')+s;
 }
 
-// Sprechen: єдиний безперервний відлік у тому самому бейджі
-// #exam-sim-countdown — спершу ВНИЗ (підготовка, 40с), потім ВГОРУ
-// (власне відповідь, до timeMin) — див. пояснення й послідовність
-// сигналів у коментарі над EXAM_SIM_SPEAK_PREP_MS вище. Один
-// setInterval/один startedAt (без перезапуску таймера на межі 0:00) —
-// щоб не було стрибка/розсинхрону в момент переходу між фазами.
+// Усні симуляції (Sprechen/SprechenTeil2): єдиний безперервний відлік
+// у тому самому бейджі #exam-sim-countdown — спершу ВНИЗ (підготовка,
+// свій час для кожної частини — EXAM_SIM_SPEAK_PREP_MS_BY_PART), потім
+// ВГОРУ (власне відповідь, до timeMin, теж свій для кожної частини) —
+// див. пояснення й послідовність сигналів у коментарі над
+// EXAM_SIM_SPEAK_PREP_MS_BY_PART вище. Один setInterval/один startedAt
+// (без перезапуску таймера на межі 0:00) — щоб не було стрибка/
+// розсинхрону в момент переходу між фазами.
 function _examSimTickSpeaking(){
+  var prepMs = _examSimSpeakPrepMs(_examSimState.part);
   var examMs = (_examSimState.timeMin || 4) * 60000;
 
   if(!_examSimState.speakPrepBeeped){
-    // Ще триває підготовка (60с, вниз до 0:00) — рахуємо від startedAt
+    // Ще триває підготовка (вниз до 0:00) — рахуємо від startedAt
     // (момент кліку "Почати тест"). Друга кнопка "▶ Почати" може
     // завершити цю фазу раніше — див. _examSimSpeakStartNow().
     var prepElapsed = Date.now() - (_examSimState.startedAt || Date.now());
     var el0 = document.getElementById('exam-sim-countdown');
-    if(el0) el0.textContent = _examSimSpeakBadgeText(Math.max(0, EXAM_SIM_SPEAK_PREP_MS - prepElapsed));
-    if(prepElapsed >= EXAM_SIM_SPEAK_PREP_MS){
+    if(el0) el0.textContent = _examSimSpeakBadgeText(Math.max(0, prepMs - prepElapsed));
+    if(prepElapsed >= prepMs){
       _examSimSpeakStartNow(); // природний нуль — та сама дія, що й клік кнопки
     }
     return;
@@ -11465,11 +11514,11 @@ function closeExamSimTest(){
 // Клік по головній кнопці "Завершити" в exam-sim-timeup-actions —
 // поведінка залежить від типу. Forumsbeitrag/E-Mail: як і раніше, просто
 // закриває тест (там уже написаний ТЕКСТ — самé це і є результат,
-// зберігати більше нічого). Sprechen: окрема гілка нижче — на відміну
-// від письмових симуляцій, це поки debug-фіча без власного вузла в
-// Lernpfad, тож "нагорода" за спробу — єдиний видимий результат.
+// зберігати більше нічого). Sprechen/SprechenTeil2: окрема гілка нижче
+// (_examSimFinishSpeaking) — з анімацією/балами/стріком, як після
+// звичайного уроку.
 function examSimFinishClicked(){
-  if(_examSimState.part === 'Sprechen'){ _examSimFinishSpeaking(); return; }
+  if(_examSimIsSpeaking(_examSimState.part)){ _examSimFinishSpeaking(); return; }
   closeExamSimTest();
 }
 
@@ -11490,13 +11539,31 @@ function _examSimFinishSpeaking(){
   xpAward(XP_EXAM_SIM_SPEAKING_BONUS);
   var xpEarned = XP_EXAM_SIM_SPEAKING_BONUS;
 
+  // Стрік — та сама логіка, що й після звичайного уроку (там це робить
+  // srRecordLesson(), викликаючи всередині srUpdateStreak()); тут —
+  // напряму, БЕЗ srRecordLesson(), бо та очікує LF з lf.cards/lf.sbCards
+  // для оцінки карток по SRS, а тут немає карток узагалі — це вільна
+  // усна вправа без списку на оцінку. srUpdateStreak() сама по собі
+  // самодостатня (не залежить від LF) і ідемпотентна: якщо стрік уже
+  // враховано сьогодні (звичайний урок раніше або друга спроба цієї ж
+  // вправи), streakResult.increased буде false, і зайвої картки стріку
+  // просто не покаже (лінива обробка нижче в showLessonCelebration).
+  var streakResult = null;
+  try{
+    streakResult = srUpdateStreak();
+    if(typeof renderStreakUI === 'function') renderStreakUI();
+  }catch(e){ console.warn('[examSim] srUpdateStreak:', e); }
+  if(streakResult && !streakResult.increased && streakResult.streakBroken){
+    notify(t('msg_streak_broken'));
+  }
+
   var emojiEl = document.getElementById('lr-emoji');
   var titleEl = document.getElementById('lr-title');
   var subEl   = document.getElementById('lr-sub');
   var statsEl = document.getElementById('lr-stats');
   if(emojiEl) emojiEl.textContent = '🎤';
   if(titleEl) titleEl.textContent = t('exam_sim_speaking_done_title');
-  if(subEl)   subEl.textContent   = t('exam_sim_speaking_done_sub');
+  if(subEl)   subEl.textContent   = t(_examSimState.part === 'SprechenTeil2' ? 'exam_sim_speaking_teil2_done_sub' : 'exam_sim_speaking_done_sub');
   if(statsEl){
     var m = Math.floor(timeSpentSec/60), s = timeSpentSec%60;
     var timeStr = m+':'+(s<10?'0':'')+s;
@@ -11520,6 +11587,8 @@ function _examSimFinishSpeaking(){
 
   showLessonCelebration({
     xpEarned: xpEarned,
+    streakResult: streakResult,
+    frozenDaysUsed: streakResult ? streakResult.frozenDaysUsed : 0,
     onDone: function(){
       var el = document.getElementById('lesson-result');
       if(el) el.classList.remove('show');
@@ -11574,7 +11643,7 @@ function examSimShowExample(){
   if(!card){ closeExamSimTest(); return; }
   const pl = primaryLang();
   closeExamSimTest();
-  if(_examSimState.part === 'Sprechen'){
+  if(_examSimIsSpeaking(_examSimState.part)){
     // Показ "зразкової розмови" вимагав би зібрати всі репліки діалогу
     // за тим самим dlgId і відтворити їх послідовно — окрема задача, не
     // зроблена в цьому debug-проході. Чесно повідомляємо, а не
