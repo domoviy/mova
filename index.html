@@ -4239,10 +4239,6 @@ body{
     </h3>
     <div id="debug-section-content" style="display:none;margin-top:12px">
     <div class="srow">
-      <div class="srow-label"><label>🎤 Усний іспит – Teil 2 (Smalltalk)</label><small>Симуляція: завдання з діалогу типу "Small Talk" + 15с підготовки + таймер 1:30. Поки що debug-фіча — реального вузла на лінії уроків ще немає.</small></div>
-      <button class="btn btn-s" onclick="openExamSimSpeakingTeil2()">▶️ Тест</button>
-    </div>
-    <div class="srow">
       <div class="srow-label"><label>🔓 <span data-i18n="lbl_unlock_all">Розблокувати усі уроки</span></label><small data-i18n="sub_unlock_all">Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!</small></div>
       <label class="dbg-switch">
         <input type="checkbox" id="debug-unlock-all-toggle" onchange="debugToggleUnlockAll(this.checked)">
@@ -4382,7 +4378,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '657-b8b33c8';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11119,11 +11115,8 @@ function openExamSimSpeaking(){
 // 1:30 відповіді замість 4хв (див. EXAM_SIM_SPEAK_PREP_MS_BY_PART і
 // _examSimDefaultTimeMin вище) — реальний формат Teil 2 значно
 // коротший за Teil 3.
-// НАРАЗІ DEBUG-ЛИШЕ фіча (кнопка в Settings → Debug), як і Teil 3 було
-// до додавання власного вузла в Lernpfad — коли дійде черга додати
-// такий самий вузол і сюди, досить прибрати debug-кнопку (як щойно
-// зроблено для Teil 3) без жодних інших правок: case 'SprechenTeil2' у
-// examSimOpenFromNode нижче вже готовий.
+// Має власний вузол у курсовій LESSONS (examsim_sprechen_teil2, simPart:
+// "SprechenTeil2") — вже не debug-лише фіча, як і Teil 3.
 function openExamSimSpeakingTeil2(){
   var cards = (typeof DIALOGE !== 'undefined' ? DIALOGE : []).filter(function(c){
     return c.type === 'Small Talk' && c.task && (c.task[primaryLang()] || c.task.de);

@@ -9322,6 +9322,38 @@ var LESSONS = [
     "_subTotal": 41
   },
   {
+    "id": "examsim_sprechen_teil2",
+    "chapter": 11,
+    "chapterTitle": {
+      "de": "Prüfungsvorbereitung",
+      "uk": "Підготовка до екзамену",
+      "en": "Exam Preparation",
+      "ru": "Подготовка к экзамену"
+    },
+    "chapterType": "examprep",
+    "module": 5,
+    "moduleTitle": {
+      "de": "Prüfungssimulation",
+      "uk": "Симуляція іспиту",
+      "en": "Exam simulation",
+      "ru": "Симуляция экзамена"
+    },
+    "title": {
+      "de": "Mündliche Prüfung – Teil 2",
+      "uk": "Mündliche Prüfung – Teil 2",
+      "en": "Mündliche Prüfung – Teil 2",
+      "ru": "Mündliche Prüfung – Teil 2"
+    },
+    "type": "examsim",
+    "simPart": "SprechenTeil2",
+    "cardIds": [],
+    "dlgCards": [],
+    "frmCards": [],
+    "sbCards": [],
+    "unlockAfter": null,
+    "_parentModuleId": "examsim_module"
+  },
+  {
     "id": "examsim_sprechen",
     "chapter": 11,
     "chapterTitle": {
