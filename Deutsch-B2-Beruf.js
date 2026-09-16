@@ -2828,13 +2828,6 @@ var LESSONS = [
     "dlgCards": [
       "dlg_014",
       "dlg_015",
-      "dlg_016",
-      "dlg_017",
-      "dlg_018",
-      "dlg_019",
-      "dlg_020",
-      "dlg_021",
-      "dlg_022",
       "dlg_064"
     ]
   },
@@ -8016,7 +8009,7 @@ var LESSONS = [
     "_subIndex": 41,
     "_subTotal": 41
   },
-  {
+                {
     "id": "examprep_muendlich_teil3_1",
     "chapter": 11,
     "chapterTitle": {
@@ -8046,9 +8039,9 @@ var LESSONS = [
     "unlockAfter": null,
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 1,
-    "_subTotal": 48
+    "_subTotal": 41
   },
-  {
+{
     "id": "examprep_muendlich_teil3_2",
     "chapter": 11,
     "chapterTitle": {
@@ -8078,9 +8071,9 @@ var LESSONS = [
     "unlockAfter": "examprep_muendlich_teil3_1",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 2,
-    "_subTotal": 48
+    "_subTotal": 41
   },
-  {
+{
     "id": "examprep_muendlich_teil3_3",
     "chapter": 11,
     "chapterTitle": {
@@ -8100,17 +8093,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_016"
+      "dlg_029"
     ],
     "dlgCards": [
-      "dlg_016"
+      "dlg_029"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_2",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 3,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_4",
@@ -8132,17 +8125,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_017"
+      "dlg_030"
     ],
     "dlgCards": [
-      "dlg_017"
+      "dlg_030"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_3",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 4,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_5",
@@ -8164,17 +8157,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_018"
+      "dlg_031"
     ],
     "dlgCards": [
-      "dlg_018"
+      "dlg_031"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_4",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 5,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_6",
@@ -8196,17 +8189,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_019"
+      "dlg_032"
     ],
     "dlgCards": [
-      "dlg_019"
+      "dlg_032"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_5",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 6,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_7",
@@ -8228,17 +8221,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_020"
+      "dlg_033"
     ],
     "dlgCards": [
-      "dlg_020"
+      "dlg_033"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_6",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 7,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_8",
@@ -8260,17 +8253,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_021"
+      "dlg_034"
     ],
     "dlgCards": [
-      "dlg_021"
+      "dlg_034"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_7",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 8,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_9",
@@ -8292,17 +8285,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_022"
+      "dlg_035"
     ],
     "dlgCards": [
-      "dlg_022"
+      "dlg_035"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_8",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 9,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_10",
@@ -8324,17 +8317,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_029"
+      "dlg_036"
     ],
     "dlgCards": [
-      "dlg_029"
+      "dlg_036"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_9",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 10,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_11",
@@ -8356,17 +8349,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_030"
+      "dlg_039"
     ],
     "dlgCards": [
-      "dlg_030"
+      "dlg_039"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_10",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 11,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_12",
@@ -8388,17 +8381,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_031"
+      "dlg_040"
     ],
     "dlgCards": [
-      "dlg_031"
+      "dlg_040"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_11",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 12,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_13",
@@ -8420,17 +8413,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_032"
+      "dlg_041"
     ],
     "dlgCards": [
-      "dlg_032"
+      "dlg_041"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_12",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 13,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_14",
@@ -8452,17 +8445,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_033"
+      "dlg_042"
     ],
     "dlgCards": [
-      "dlg_033"
+      "dlg_042"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_13",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 14,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_15",
@@ -8484,17 +8477,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_034"
+      "dlg_082"
     ],
     "dlgCards": [
-      "dlg_034"
+      "dlg_082"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_14",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 15,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_16",
@@ -8516,17 +8509,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_035"
+      "dlg_083"
     ],
     "dlgCards": [
-      "dlg_035"
+      "dlg_083"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_15",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 16,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_17",
@@ -8548,17 +8541,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_036"
+      "dlg_084"
     ],
     "dlgCards": [
-      "dlg_036"
+      "dlg_084"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_16",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 17,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_18",
@@ -8580,17 +8573,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_039"
+      "dlg_085"
     ],
     "dlgCards": [
-      "dlg_039"
+      "dlg_085"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_17",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 18,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_19",
@@ -8612,17 +8605,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_040"
+      "dlg_086"
     ],
     "dlgCards": [
-      "dlg_040"
+      "dlg_086"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_18",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 19,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_20",
@@ -8644,17 +8637,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_041"
+      "dlg_087"
     ],
     "dlgCards": [
-      "dlg_041"
+      "dlg_087"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_19",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 20,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_21",
@@ -8676,17 +8669,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_042"
+      "dlg_088"
     ],
     "dlgCards": [
-      "dlg_042"
+      "dlg_088"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_20",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 21,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_22",
@@ -8708,17 +8701,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_082"
+      "dlg_089"
     ],
     "dlgCards": [
-      "dlg_082"
+      "dlg_089"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_21",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 22,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_23",
@@ -8740,17 +8733,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_083"
+      "dlg_090"
     ],
     "dlgCards": [
-      "dlg_083"
+      "dlg_090"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_22",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 23,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_24",
@@ -8772,17 +8765,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_084"
+      "dlg_091"
     ],
     "dlgCards": [
-      "dlg_084"
+      "dlg_091"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_23",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 24,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_25",
@@ -8804,17 +8797,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_085"
+      "dlg_092"
     ],
     "dlgCards": [
-      "dlg_085"
+      "dlg_092"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_24",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 25,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_26",
@@ -8836,17 +8829,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_086"
+      "dlg_093"
     ],
     "dlgCards": [
-      "dlg_086"
+      "dlg_093"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_25",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 26,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_27",
@@ -8868,17 +8861,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_087"
+      "dlg_094"
     ],
     "dlgCards": [
-      "dlg_087"
+      "dlg_094"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_26",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 27,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_28",
@@ -8900,17 +8893,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_088"
+      "dlg_095"
     ],
     "dlgCards": [
-      "dlg_088"
+      "dlg_095"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_27",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 28,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_29",
@@ -8932,17 +8925,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_089"
+      "dlg_096"
     ],
     "dlgCards": [
-      "dlg_089"
+      "dlg_096"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_28",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 29,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_30",
@@ -8964,17 +8957,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_090"
+      "dlg_097"
     ],
     "dlgCards": [
-      "dlg_090"
+      "dlg_097"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_29",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 30,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_31",
@@ -8996,17 +8989,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_091"
+      "dlg_098"
     ],
     "dlgCards": [
-      "dlg_091"
+      "dlg_098"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_30",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 31,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_32",
@@ -9028,17 +9021,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_092"
+      "dlg_099"
     ],
     "dlgCards": [
-      "dlg_092"
+      "dlg_099"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_31",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 32,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_33",
@@ -9060,17 +9053,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_093"
+      "dlg_100"
     ],
     "dlgCards": [
-      "dlg_093"
+      "dlg_100"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_32",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 33,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_34",
@@ -9092,17 +9085,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_094"
+      "dlg_101"
     ],
     "dlgCards": [
-      "dlg_094"
+      "dlg_101"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_33",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 34,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_35",
@@ -9124,17 +9117,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_095"
+      "dlg_102"
     ],
     "dlgCards": [
-      "dlg_095"
+      "dlg_102"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_34",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 35,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_36",
@@ -9156,17 +9149,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_096"
+      "dlg_103"
     ],
     "dlgCards": [
-      "dlg_096"
+      "dlg_103"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_35",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 36,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_37",
@@ -9188,17 +9181,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_097"
+      "dlg_104"
     ],
     "dlgCards": [
-      "dlg_097"
+      "dlg_104"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_36",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 37,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_38",
@@ -9220,17 +9213,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_098"
+      "dlg_105"
     ],
     "dlgCards": [
-      "dlg_098"
+      "dlg_105"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_37",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 38,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_39",
@@ -9252,17 +9245,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_099"
+      "dlg_106"
     ],
     "dlgCards": [
-      "dlg_099"
+      "dlg_106"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_38",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 39,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_40",
@@ -9284,17 +9277,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_100"
+      "dlg_107"
     ],
     "dlgCards": [
-      "dlg_100"
+      "dlg_107"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_39",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 40,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examprep_muendlich_teil3_41",
@@ -9316,241 +9309,17 @@ var LESSONS = [
     "type": "dialogue",
     "dlgType": "problemsolving",
     "cardIds": [
-      "dlg_101"
+      "dlg_108"
     ],
     "dlgCards": [
-      "dlg_101"
+      "dlg_108"
     ],
     "frmCards": [],
     "sbCards": [],
     "unlockAfter": "examprep_muendlich_teil3_40",
     "_parentModuleId": "examprep_muendlich_teil3",
     "_subIndex": 41,
-    "_subTotal": 48
-  },
-  {
-    "id": "examprep_muendlich_teil3_42",
-    "chapter": 11,
-    "chapterTitle": {
-      "de": "Prüfungsvorbereitung",
-      "uk": "Підготовка до екзамену",
-      "en": "Exam Preparation",
-      "ru": "Подготовка к экзамену"
-    },
-    "chapterType": "examprep",
-    "module": 2,
-    "title": {
-      "de": "Mündliche Prüfung – Teil 3",
-      "uk": "Mündliche Prüfung – Teil 3",
-      "en": "Mündliche Prüfung – Teil 3",
-      "ru": "Mündliche Prüfung – Teil 3"
-    },
-    "type": "dialogue",
-    "dlgType": "problemsolving",
-    "cardIds": [
-      "dlg_102"
-    ],
-    "dlgCards": [
-      "dlg_102"
-    ],
-    "frmCards": [],
-    "sbCards": [],
-    "unlockAfter": "examprep_muendlich_teil3_41",
-    "_parentModuleId": "examprep_muendlich_teil3",
-    "_subIndex": 42,
-    "_subTotal": 48
-  },
-  {
-    "id": "examprep_muendlich_teil3_43",
-    "chapter": 11,
-    "chapterTitle": {
-      "de": "Prüfungsvorbereitung",
-      "uk": "Підготовка до екзамену",
-      "en": "Exam Preparation",
-      "ru": "Подготовка к экзамену"
-    },
-    "chapterType": "examprep",
-    "module": 2,
-    "title": {
-      "de": "Mündliche Prüfung – Teil 3",
-      "uk": "Mündliche Prüfung – Teil 3",
-      "en": "Mündliche Prüfung – Teil 3",
-      "ru": "Mündliche Prüfung – Teil 3"
-    },
-    "type": "dialogue",
-    "dlgType": "problemsolving",
-    "cardIds": [
-      "dlg_103"
-    ],
-    "dlgCards": [
-      "dlg_103"
-    ],
-    "frmCards": [],
-    "sbCards": [],
-    "unlockAfter": "examprep_muendlich_teil3_42",
-    "_parentModuleId": "examprep_muendlich_teil3",
-    "_subIndex": 43,
-    "_subTotal": 48
-  },
-  {
-    "id": "examprep_muendlich_teil3_44",
-    "chapter": 11,
-    "chapterTitle": {
-      "de": "Prüfungsvorbereitung",
-      "uk": "Підготовка до екзамену",
-      "en": "Exam Preparation",
-      "ru": "Подготовка к экзамену"
-    },
-    "chapterType": "examprep",
-    "module": 2,
-    "title": {
-      "de": "Mündliche Prüfung – Teil 3",
-      "uk": "Mündliche Prüfung – Teil 3",
-      "en": "Mündliche Prüfung – Teil 3",
-      "ru": "Mündliche Prüfung – Teil 3"
-    },
-    "type": "dialogue",
-    "dlgType": "problemsolving",
-    "cardIds": [
-      "dlg_104"
-    ],
-    "dlgCards": [
-      "dlg_104"
-    ],
-    "frmCards": [],
-    "sbCards": [],
-    "unlockAfter": "examprep_muendlich_teil3_43",
-    "_parentModuleId": "examprep_muendlich_teil3",
-    "_subIndex": 44,
-    "_subTotal": 48
-  },
-  {
-    "id": "examprep_muendlich_teil3_45",
-    "chapter": 11,
-    "chapterTitle": {
-      "de": "Prüfungsvorbereitung",
-      "uk": "Підготовка до екзамену",
-      "en": "Exam Preparation",
-      "ru": "Подготовка к экзамену"
-    },
-    "chapterType": "examprep",
-    "module": 2,
-    "title": {
-      "de": "Mündliche Prüfung – Teil 3",
-      "uk": "Mündliche Prüfung – Teil 3",
-      "en": "Mündliche Prüfung – Teil 3",
-      "ru": "Mündliche Prüfung – Teil 3"
-    },
-    "type": "dialogue",
-    "dlgType": "problemsolving",
-    "cardIds": [
-      "dlg_105"
-    ],
-    "dlgCards": [
-      "dlg_105"
-    ],
-    "frmCards": [],
-    "sbCards": [],
-    "unlockAfter": "examprep_muendlich_teil3_44",
-    "_parentModuleId": "examprep_muendlich_teil3",
-    "_subIndex": 45,
-    "_subTotal": 48
-  },
-  {
-    "id": "examprep_muendlich_teil3_46",
-    "chapter": 11,
-    "chapterTitle": {
-      "de": "Prüfungsvorbereitung",
-      "uk": "Підготовка до екзамену",
-      "en": "Exam Preparation",
-      "ru": "Подготовка к экзамену"
-    },
-    "chapterType": "examprep",
-    "module": 2,
-    "title": {
-      "de": "Mündliche Prüfung – Teil 3",
-      "uk": "Mündliche Prüfung – Teil 3",
-      "en": "Mündliche Prüfung – Teil 3",
-      "ru": "Mündliche Prüfung – Teil 3"
-    },
-    "type": "dialogue",
-    "dlgType": "problemsolving",
-    "cardIds": [
-      "dlg_106"
-    ],
-    "dlgCards": [
-      "dlg_106"
-    ],
-    "frmCards": [],
-    "sbCards": [],
-    "unlockAfter": "examprep_muendlich_teil3_45",
-    "_parentModuleId": "examprep_muendlich_teil3",
-    "_subIndex": 46,
-    "_subTotal": 48
-  },
-  {
-    "id": "examprep_muendlich_teil3_47",
-    "chapter": 11,
-    "chapterTitle": {
-      "de": "Prüfungsvorbereitung",
-      "uk": "Підготовка до екзамену",
-      "en": "Exam Preparation",
-      "ru": "Подготовка к экзамену"
-    },
-    "chapterType": "examprep",
-    "module": 2,
-    "title": {
-      "de": "Mündliche Prüfung – Teil 3",
-      "uk": "Mündliche Prüfung – Teil 3",
-      "en": "Mündliche Prüfung – Teil 3",
-      "ru": "Mündliche Prüfung – Teil 3"
-    },
-    "type": "dialogue",
-    "dlgType": "problemsolving",
-    "cardIds": [
-      "dlg_107"
-    ],
-    "dlgCards": [
-      "dlg_107"
-    ],
-    "frmCards": [],
-    "sbCards": [],
-    "unlockAfter": "examprep_muendlich_teil3_46",
-    "_parentModuleId": "examprep_muendlich_teil3",
-    "_subIndex": 47,
-    "_subTotal": 48
-  },
-  {
-    "id": "examprep_muendlich_teil3_48",
-    "chapter": 11,
-    "chapterTitle": {
-      "de": "Prüfungsvorbereitung",
-      "uk": "Підготовка до екзамену",
-      "en": "Exam Preparation",
-      "ru": "Подготовка к экзамену"
-    },
-    "chapterType": "examprep",
-    "module": 2,
-    "title": {
-      "de": "Mündliche Prüfung – Teil 3",
-      "uk": "Mündliche Prüfung – Teil 3",
-      "en": "Mündliche Prüfung – Teil 3",
-      "ru": "Mündliche Prüfung – Teil 3"
-    },
-    "type": "dialogue",
-    "dlgType": "problemsolving",
-    "cardIds": [
-      "dlg_108"
-    ],
-    "dlgCards": [
-      "dlg_108"
-    ],
-    "frmCards": [],
-    "sbCards": [],
-    "unlockAfter": "examprep_muendlich_teil3_47",
-    "_parentModuleId": "examprep_muendlich_teil3",
-    "_subIndex": 48,
-    "_subTotal": 48
+    "_subTotal": 41
   },
   {
     "id": "examsim_sprechen",
@@ -12766,10 +12535,10 @@ var DIALOGE = [
     "id": "dlg_014",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "Thema: Lösungswege diskutieren – „Wir haben die Herausforderung, dass die Lieferzeiten sich ständig verzögern.“",
-      "en": "Topic: Discussing solutions – „We have the challenge that delivery times keep getting delayed.“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Терміни доставки постійно затримуються.»",
-      "ru": "Тема: Обсуждение путей решения – «Сроки доставки постоянно задерживаются.»"
+      "de": "In eurem Unternehmen kommt es immer wieder zu Lieferverzögerungen, weil der Lieferant nicht zuverlässig informiert.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Ursache: Worin liegt das Hauptproblem?<br>Lösung: Wie lässt sich die Kommunikation mit dem Lieferanten verbessern?<br>Zeitpunkt: Wann sollte das Gespräch stattfinden?<br>Nächste Schritte: Wer übernimmt welche Aufgabe, und bis wann?",
+      "en": "In your company, delivery delays keep occurring because the supplier doesn't inform you reliably.<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Cause: What is the main problem?<br>Solution: How can communication with the supplier be improved?<br>Timing: When should the conversation take place?<br>Next steps: Who takes on which task, and by when?",
+      "uk": "У вашій компанії постійно виникають затримки доставки, тому що постачальник не надає надійної інформації.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Причина: У чому полягає головна проблема?<br>Рішення: Як можна покращити комунікацію з постачальником?<br>Час: Коли має відбутися розмова?<br>Наступні кроки: Хто за що відповідає і до якого терміну?",
+      "ru": "В вашей компании постоянно возникают задержки доставки, потому что поставщик не предоставляет надёжной информации.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Причина: В чём заключается главная проблема?<br>Решение: Как можно улучшить коммуникацию с поставщиком?<br>Время: Когда должен состояться разговор?<br>Следующие шаги: Кто за что отвечает и до какого срока?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12828,10 +12597,10 @@ var DIALOGE = [
     "id": "dlg_015",
     "cat": "Lösungswege diskutieren",
     "task": {
-      "de": "Thema: Lösungswege diskutieren – „Welche Folgen hätte es, wenn wir das Problem nicht lösen?“",
-      "en": "Topic: Discussing solutions – „What consequences would it have if we don't solve the problem?“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Які наслідки будуть, якщо ми не вирішимо проблему?»",
-      "ru": "Тема: Обсуждение путей решения – «Какие последствия будут, если мы не решим проблему?»"
+      "de": "In eurem Unternehmen gibt es wiederholt Probleme mit einem Lieferanten, und die Geschäftsführung muss über mögliche Gegenmaßnahmen informiert werden.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation vorgehen.<br><br>Diese Stichpunkte helfen Ihnen.<br>Folgen: Welche Folgen hätte es, das Problem nicht zu lösen?<br>Absicherung: Wie lässt sich eine Absicherung gegen künftige Lieferengpässe finden?<br>Bericht: Wie bereitet ihr einen Bericht für die Geschäftsführung vor?<br>Aufgabenteilung: Wer übernimmt welche Aufgabe, und bis wann?",
+      "en": "In your company, there are recurring problems with a supplier, and management needs to be informed about possible countermeasures.<br><br>Discuss with your conversation partner how you would proceed in this situation.<br><br>These points can help you.<br>Consequences: What consequences would it have not to solve the problem?<br>Safeguard: How can you find a safeguard against future supply shortages?<br>Report: How do you prepare a report for management?<br>Task division: Who takes on which task, and by when?",
+      "uk": "У вашій компанії постійно виникають проблеми з постачальником, і керівництво потрібно поінформувати про можливі контрзаходи.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви діятимете в цій ситуації.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Наслідки: Які наслідки матиме невирішення проблеми?<br>Підстраховка: Як знайти підстраховку на випадок майбутніх перебоїв із постачанням?<br>Звіт: Як підготувати звіт для керівництва?<br>Розподіл завдань: Хто за що відповідає і до якого терміну?",
+      "ru": "В вашей компании постоянно возникают проблемы с поставщиком, и руководство нужно проинформировать о возможных контрмерах.<br><br>Обсудите со своим собеседником или собеседницей, как вы будете действовать в этой ситуации.<br><br>Вот несколько пунктов, которые могут помочь.<br>Последствия: Какие последствия будет иметь нерешение проблемы?<br>Подстраховка: Как найти подстраховку на случай будущих перебоев с поставками?<br>Отчёт: Как подготовить отчёт для руководства?<br>Распределение задач: Кто за что отвечает и к какому сроку?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -12848,189 +12617,91 @@ var DIALOGE = [
       "uk": "Що ми могли б зробити в цій ситуації? Чи маєш ти пропозицію, як нам варто діяти?",
       "ru": "Что мы могли бы сделать в этой ситуации? Есть ли у тебя предложение, как нам следует действовать?"
     },
-    "gram": ""
-  },
-{
-    "id": "dlg_016",
-    "cat": "Lösungswege diskutieren",
-    "task": {
-      "de": "Thema: Lösungswege diskutieren – „Wir könnten einen zweiten Lieferanten als Backup einplanen.“",
-      "en": "Topic: Discussing solutions – „We could plan a second supplier as a backup.“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Ми могли б запланувати другого постачальника як резервний варіант.»",
-      "ru": "Тема: Обсуждение путей решения – «Мы могли бы запланировать второго поставщика в качестве резерва.»"
-    },
-    "type": "Lösungswege diskutieren",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
-    "q": {
+    "q1": {
       "de": "Ich habe eine Idee bzw. einen Vorschlag: Wir könnten zum Beispiel einen zweiten Lieferanten als Backup einplanen.",
       "en": "I have an idea or a suggestion: we could, for example, plan a second supplier as a backup.",
       "uk": "У мене є ідея або пропозиція: ми могли б, наприклад, запланувати другого постачальника як резервний варіант.",
       "ru": "У меня есть идея или предложение: мы могли бы, например, запланировать второго поставщика в качестве резерва."
     },
-    "a": {
+    "a1": {
       "de": "Sinnvoll wäre <g>es</g>, wenn wir das kurzfristig testen. Eine Alternative wäre auch, die Lagerbestände zu erhöhen.",
       "en": "<g>It</g> would make sense if we tested that in the short term. An alternative would also be to increase stock levels.",
       "uk": "Було б доцільно, якби ми перевірили це в короткостроковій перспективі. Альтернативою було б також збільшити запаси на складі.",
       "ru": "Было бы целесообразно, если бы мы проверили это в краткосрочной перспективе. Альтернативой также было бы увеличить запасы на складе."
     },
-    "gram": "es_pronomen"
-  },
-{
-    "id": "dlg_017",
-    "cat": "Lösungswege diskutieren",
-    "task": {
-      "de": "Thema: Lösungswege diskutieren – „Was hältst du davon, beide Maßnahmen gleichzeitig umzusetzen?“",
-      "en": "Topic: Discussing solutions – „What do you think about implementing both measures at the same time?“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Що ти думаєш про те, щоб реалізувати обидва заходи одночасно?»",
-      "ru": "Тема: Обсуждение путей решения – «Что ты думаешь о том, чтобы реализовать обе меры одновременно?»"
-    },
-    "type": "Lösungswege diskutieren",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
-    "q": {
+    "q2": {
       "de": "Was hältst du davon, beide Maßnahmen gleichzeitig umzusetzen? Wie siehst du das?",
       "en": "What do you think about implementing both measures at the same time? How do you see it?",
       "uk": "Що ти думаєш про те, щоб реалізувати обидва заходи одночасно? Як ти це бачиш?",
       "ru": "Что ты думаешь о том, чтобы реализовать обе меры одновременно? Как ты это видишь?"
     },
-    "a": {
+    "a2": {
       "de": "Ich bin der Meinung, dass das zu viel auf einmal wäre. Aus meiner Sicht spricht dafür, dass wir erst den zweiten Lieferanten testen.",
       "en": "I think that would be too much at once. From my point of view, it speaks in favor of first testing the second supplier.",
       "uk": "Я вважаю, що це було б занадто багато одночасно. На мою думку, на користь цього говорить те, що варто спочатку перевірити другого постачальника.",
       "ru": "Я считаю, что это было бы слишком много одновременно. На мой взгляд, в пользу этого говорит то, что нужно сначала проверить второго поставщика."
     },
-    "gram": ""
-  },
-{
-    "id": "dlg_018",
-    "cat": "Lösungswege diskutieren",
-    "task": {
-      "de": "Thema: Lösungswege diskutieren – „Wärst du damit einverstanden, beide Schritte parallel zu starten?“",
-      "en": "Topic: Discussing solutions – „Would you agree to start both steps in parallel?“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Ти був би згоден розпочати обидва кроки паралельно?»",
-      "ru": "Тема: Обсуждение путей решения – «Ты был бы согласен начать оба шага параллельно?»"
-    },
-    "type": "Lösungswege diskutieren",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
-    "q": {
+    "q3": {
       "de": "Dagegen spricht aber, dass uns das Zeit kostet. Wärst du damit einverstanden, beide Schritte parallel zu starten?",
       "en": "But the argument against that is that it costs us time. Would you agree to start both steps in parallel?",
       "uk": "Але проти цього говорить те, що це коштує нам часу. Ти був би з цим згоден розпочати обидва кроки паралельно?",
       "ru": "Но против этого говорит то, что это стоит нам времени. Ты был бы согласен начать оба шага параллельно?"
     },
-    "a": {
+    "a3": {
       "de": "Das klingt überzeugend. Damit bin ich einverstanden, weil wir so schneller eine Lösung finden.",
       "en": "That sounds convincing. I agree with that, because that way we'll find a solution faster.",
       "uk": "Це звучить переконливо. Я з цим згоден, тому що так ми швидше знайдемо рішення.",
       "ru": "Это звучит убедительно. Я с этим согласен, потому что так мы быстрее найдём решение."
     },
-    "gram": ""
-  },
-{
-    "id": "dlg_019",
-    "cat": "Lösungswege diskutieren",
-    "task": {
-      "de": "Thema: Lösungswege diskutieren – „Wir sollten zuerst einen kurzen Bericht vorbereiten.“",
-      "en": "Topic: Discussing solutions – „We should first prepare a short report.“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Спочатку нам слід підготувати короткий звіт.»",
-      "ru": "Тема: Обсуждение путей решения – «Сначала нам нужно подготовить короткий отчёт.»"
-    },
-    "type": "Lösungswege diskutieren",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
-    "q": {
+    "q4": {
       "de": "Gute Idee, allerdings sollten wir auch bedenken, dass die Geschäftsführung zustimmen muss. Ich sehe das anders: Wir sollten zuerst einen kurzen Bericht vorbereiten.",
       "en": "Good idea, however we should also consider that management has to agree. I see it differently: we should first prepare a short report.",
       "uk": "Гарна ідея, проте нам також слід врахувати, що керівництво має погодитися. Я бачу це інакше: спочатку нам слід підготувати короткий звіт.",
       "ru": "Хорошая идея, однако нам также следует учесть, что руководство должно дать согласие. Я вижу это иначе: сначала нам нужно подготовить короткий отчёт."
     },
-    "a": {
+    "a4": {
       "de": "Lass uns folgende Punkte festhalten: Bericht, Kostenübersicht und Zeitplan. Worauf können wir uns einigen?",
       "en": "Let's note down the following points: report, cost overview and schedule. What can we agree on?",
       "uk": "Давай зафіксуємо такі пункти: звіт, огляд витрат і графік. На чому ми можемо домовитися?",
       "ru": "Давай зафиксируем следующие пункты: отчёт, обзор расходов и график. О чём мы можем договориться?"
     },
-    "gram": ""
-  },
-{
-    "id": "dlg_020",
-    "cat": "Lösungswege diskutieren",
-    "task": {
-      "de": "Thema: Lösungswege diskutieren – „Wer übernimmt welche Aufgabe, und bis wann?“",
-      "en": "Topic: Discussing solutions – „Who takes on which task, and by when?“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Хто бере на себе яке завдання і до якого терміну?»",
-      "ru": "Тема: Обсуждение путей решения – «Кто берёт на себя какую задачу и к какому сроку?»"
-    },
-    "type": "Lösungswege diskutieren",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
-    "q": {
+    "q5": {
       "de": "Wir priorisieren zuerst den Bericht, danach den Zeitplan. Wer übernimmt welche Aufgabe? Bis wann?",
       "en": "We prioritize the report first, then the schedule. Who takes on which task? By when?",
       "uk": "Ми спочатку надаємо пріоритет звіту, потім графіку. Хто бере на себе яке завдання? До якого терміну?",
       "ru": "Мы сначала отдаём приоритет отчёту, затем графику. Кто берёт на себя какую задачу? К какому сроку?"
     },
-    "a": {
+    "a5": {
       "de": "Als Kompromiss könnten wir die Aufgaben zu zweit aufteilen. Wenn wir bis Freitag liefern, wäre das für dich akzeptabel?",
       "en": "As a compromise, we could split the tasks between the two of us. If we deliver by Friday, would that be acceptable for you?",
       "uk": "Як компроміс, ми могли б розподілити завдання на двох. Якщо ми зробимо це до п'ятниці, це буде для тебе прийнятно?",
       "ru": "В качестве компромисса мы могли бы разделить задачи на двоих. Если мы сдадим к пятнице, это будет для тебя приемлемо?"
     },
-    "gram": ""
-  },
-{
-    "id": "dlg_021",
-    "cat": "Lösungswege diskutieren",
-    "task": {
-      "de": "Thema: Lösungswege diskutieren – „Wir könnten einen Mittelweg finden, indem wir den Bericht gemeinsam schreiben.“",
-      "en": "Topic: Discussing solutions – „We could find a middle ground by writing the report together.“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Ми могли б знайти золоту середину, якщо напишемо звіт спільно.»",
-      "ru": "Тема: Обсуждение путей решения – «Мы могли бы найти золотую середину, если напишем отчёт совместно.»"
-    },
-    "type": "Lösungswege diskutieren",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
-    "q": {
+    "q6": {
       "de": "Wir könnten einen Mittelweg finden, <g>indem</g> wir den Bericht gemeinsam schreiben und den Zeitplan getrennt erstellen.",
       "en": "We could find a middle ground <g>by</g> writing the report together and creating the schedule separately.",
       "uk": "Ми могли б знайти золоту середину, якщо напишемо звіт спільно, а графік складемо окремо.",
       "ru": "Мы могли бы найти золотую середину, если напишем отчёт совместно, а график составим раздельно."
     },
-    "a": {
+    "a6": {
       "de": "Fassen wir zusammen: Wir werden den Bericht zusammen schreiben. Also, wir machen das jetzt so: Ich kümmere mich um den Zeitplan.",
       "en": "Let's summarize: we will write the report together. So, this is how we'll do it now: I'll take care of the schedule.",
       "uk": "Підсумуємо: ми будемо писати звіт разом. Отже, ми зробимо так: я займуся графіком.",
       "ru": "Подведём итог: мы будем писать отчёт вместе. Итак, мы сделаем так: я займусь графиком."
     },
-    "gram": "modalsatz_dadurch_indem"
-  },
-{
-    "id": "dlg_022",
-    "cat": "Lösungswege diskutieren",
-    "task": {
-      "de": "Thema: Lösungswege diskutieren – „Was meinst du genau mit ‚fertigstellen'?“",
-      "en": "Topic: Discussing solutions – „What exactly do you mean by 'finalize'?“",
-      "uk": "Тема: Обговорення шляхів вирішення – «Що саме ти маєш на увазі під словом завершити?»",
-      "ru": "Тема: Обсуждение путей решения – «Что именно ты имеешь в виду под словом завершить?»"
-    },
-    "type": "Lösungswege diskutieren",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
-    "q": {
+    "q7": {
       "de": "Nächste Schritte sind: Bericht fertigstellen, verantwortlich ist Herr Schmidt, Termin: Freitag. Was meinst du genau mit ‚fertigstellen'?",
       "en": "Next steps are: finalize the report, Mr. Schmidt is responsible, deadline: Friday. What exactly do you mean by 'finalize'?",
       "uk": "Наступні кроки: завершити звіт, відповідальний — пан Шмідт, термін: п'ятниця. Що саме ти маєш на увазі під «завершити»?",
       "ru": "Следующие шаги: завершить отчёт, ответственный — господин Шмидт, срок: пятница. Что именно ты имеешь в виду под «завершить»?"
     },
-    "a": {
+    "a7": {
       "de": "Damit meine ich, dass alle Zahlen <g>geprüft</g> und das Dokument an die Geschäftsführung <g>gesendet wurde</g>. Danke, dann sind wir uns einig.",
       "en": "By that I mean that all the figures <g>have been checked</g> and the document <g>has been sent</g> to management. Thank you, then we agree.",
       "uk": "Цим я маю на увазі, що всі цифри <g>перевірені</g> й документ <g>надіслано</g> керівництву. Дякую, тоді ми домовилися.",
       "ru": "Этим я имею в виду, что все цифры <g>проверены</g> и документ <g>отправлен</g> руководству. Спасибо, тогда мы договорились."
     },
-    "gram": "passiv_passiversatz"
+    "gram": ""
   },
 {
     "id": "dlg_023",
@@ -13186,10 +12857,10 @@ var DIALOGE = [
     "id": "dlg_029",
     "cat": "Mein Beruf",
     "task": {
-      "de": "Ihr Betrieb verlegt den Standort, und der neue Arbeitsweg ist für viele Kolleginnen und Kollegen deutlich weiter (fast 60 Kilometer).<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "Your company is relocating, and the new commute is much longer for many colleagues (almost 60 kilometers).<br><br>Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Ваша компанія переносить офіс, і новий шлях на роботу для багатьох колег значно довший (майже 60 кілометрів).<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Ваша компания переезжает, и новый путь на работу для многих коллег значительно длиннее (почти 60 километров).<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ihr Betrieb verlegt den Standort, und der neue Arbeitsweg ist für viele Kolleginnen und Kollegen deutlich weiter (fast 60 Kilometer).<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Folgen: Welche Folgen hätte es für das Team, wenn nichts unternommen wird?<br>Homeoffice: Könnte ein Vorschlag zum Homeoffice helfen?<br>Gleitzeit: Wäre flexible Gleitzeit eine zusätzliche Lösung?<br>Kompromiss: Wie lässt sich ein Kompromiss zwischen Büro und Homeoffice finden?",
+      "en": "Your company is relocating, and the new commute is much longer for many colleagues (almost 60 kilometers).<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Consequences: What consequences would it have for the team if nothing is done?<br>Home office: Could a home office proposal help?<br>Flextime: Would flexible flextime be an additional solution?<br>Compromise: How can a compromise between office and home office be found?",
+      "uk": "Ваша компанія переносить офіс, і новий шлях на роботу для багатьох колег значно довший (майже 60 кілометрів).<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Наслідки: Які наслідки це матиме для команди, якщо нічого не зробити?<br>Домашній офіс: Чи міг би допомогти дозвіл на роботу з дому?<br>Гнучкий графік: Чи міг би гнучкий графік стати додатковим рішенням?<br>Компроміс: Як знайти компроміс між роботою в офісі та вдома?",
+      "ru": "Ваша компания переезжает, и новый путь на работу для многих коллег значительно длиннее (почти 60 километров).<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Последствия: Какие последствия это будет иметь для команды, если ничего не предпринять?<br>Домашний офис: Мог бы помочь разрешение на работу из дома?<br>Гибкий график: Мог бы гибкий график стать дополнительным решением?<br>Компромисс: Как найти компромисс между работой в офисе и дома?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
@@ -13308,10 +12979,10 @@ var DIALOGE = [
     "id": "dlg_030",
     "cat": "Bei der Agentur für Arbeit",
     "task": {
-      "de": "Thema: Bei der Agentur für Arbeit – „Die Sozialversicherungsnummer und die Arbeitserlaubnis unserer neuen Kollegin sind noch nicht angekommen.“",
-      "en": "Topic: At the employment agency – „Our new colleague's social security number and work permit still haven't arrived.“",
-      "uk": "Тема: У службі зайнятості – «Номер соціального страхування та дозвіл на роботу нашої нової колеги досі не прийшли.»",
-      "ru": "Тема: В центре занятости – «Номер социального страхования и разрешение на работу нашей новой коллеги до сих пор не пришли.»"
+      "de": "Thema: Bei der Agentur für Arbeit – „Die Sozialversicherungsnummer und die Arbeitserlaubnis unserer neuen Kollegin sind noch nicht angekommen.“<br><br>Diese Stichpunkte helfen Ihnen.<br>Folgen: Welche Folgen hätte eine Verzögerung für das Team?<br>Übergangslösung: Könnte eine vorübergehende Teilzeitstelle helfen?<br>Unterstützung: Wie kann man sie bei der Agentur für Arbeit unterstützen?<br>Aufgabenteilung: Wie lässt sich die Begleitung im Team organisieren?",
+      "en": "Topic: At the employment agency – „Our new colleague's social security number and work permit still haven't arrived.“<br><br>These points can help you.<br>Consequences: What consequences would a delay have for the team?<br>Interim solution: Could a temporary part-time position help?<br>Support: How can she be supported at the employment agency?<br>Task-sharing: How can accompanying her be organized within the team?",
+      "uk": "Тема: У службі зайнятості – «Номер соціального страхування та дозвіл на роботу нашої нової колеги досі не прийшли.»<br><br>Ось кілька пунктів, які можуть допомогти.<br>Наслідки: Які наслідки матиме затримка для команди?<br>Тимчасове рішення: Чи могла б допомогти тимчасова робота на неповний день?<br>Підтримка: Як можна підтримати її у службі зайнятості?<br>Розподіл завдань: Як організувати супровід у команді?",
+      "ru": "Тема: В центре занятости – «Номер социального страхования и разрешение на работу нашей новой коллеги до сих пор не пришли.»<br><br>Вот несколько пунктов, которые могут помочь.<br>Последствия: Какие последствия будет иметь задержка для команды?<br>Временное решение: Могла бы помочь временная работа на неполный день?<br>Поддержка: Как можно поддержать её в центре занятости?<br>Распределение задач: Как организовать сопровождение в команде?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -13430,10 +13101,10 @@ var DIALOGE = [
     "id": "dlg_031",
     "cat": "Schlüsselqualifikationen",
     "task": {
-      "de": "Für ein neues Kundenprojekt braucht Ihr Team jemanden mit Verhandlungskompetenz und Erfahrung im Risikomanagement, aber im Moment hat niemand im Team beides.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "For a new client project your team needs someone with negotiation skills and experience in risk management, but right now nobody on the team has both.<br><br>Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Для нового клієнтського проєкту вашій команді потрібна людина з навичками ведення переговорів і досвідом у ризик-менеджменті, але наразі в команді немає нікого з обома навичками одразу.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Для нового клиентского проекта вашей команде нужен человек с навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого с обоими навыками сразу.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Für ein neues Kundenprojekt braucht Ihr Team jemanden mit Verhandlungskompetenz und Erfahrung im Risikomanagement, aber im Moment hat niemand im Team beides.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Folgen: Was passiert, wenn das Projekt ohne die nötigen Kompetenzen startet?<br>Aufgabenteilung: Wie lassen sich die Aufgaben nach Stärken verteilen?<br>Kundenbetreuung: Wer übernimmt die Kundenbetreuung, wenn Aufgaben umverteilt werden?<br>Lösung: Wie lässt sich das Problem insgesamt lösen?",
+      "en": "For a new client project your team needs someone with negotiation skills and experience in risk management, but right now nobody on the team has both.<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Consequences: What happens if the project starts without the necessary skills?<br>Task division: How can tasks be divided according to strengths?<br>Client support: Who takes over client support if tasks are reassigned?<br>Solution: How can the problem be solved overall?",
+      "uk": "Для нового клієнтського проєкту вашій команді потрібна людина з навичками ведення переговорів і досвідом у ризик-менеджменті, але наразі в команді немає нікого з обома навичками одразу.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Наслідки: Що станеться, якщо проєкт розпочнеться без потрібних компетенцій?<br>Розподіл завдань: Як розподілити завдання відповідно до сильних сторін?<br>Обслуговування клієнтів: Хто займеться клієнтами, якщо завдання перерозподілять?<br>Рішення: Як вирішити проблему загалом?",
+      "ru": "Для нового клиентского проекта вашей команде нужен человек с навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого с обоими навыками сразу.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Последствия: Что произойдёт, если проект начнётся без нужных компетенций?<br>Распределение задач: Как распределить задачи в соответствии с сильными сторонами?<br>Работа с клиентами: Кто займётся клиентами, если задачи перераспределят?<br>Решение: Как решить проблему в целом?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
@@ -13552,10 +13223,10 @@ var DIALOGE = [
     "id": "dlg_032",
     "cat": "Anerkennung",
     "task": {
-      "de": "Ein Kollege möchte seine im Ausland erworbene Berufsqualifikation anerkennen lassen, weiß aber nicht genau, welche Unterlagen dafür nötig sind.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie ihm helfen können.",
-      "en": "A colleague wants to have his professional qualification, earned abroad, officially recognized, but doesn't know exactly which documents are needed for that.<br><br>Discuss with your conversation partner how you could help him.",
-      "uk": "Колега хоче визнати свою професійну кваліфікацію, здобуту за кордоном, але не знає точно, які документи для цього потрібні.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете йому допомогти.",
-      "ru": "Коллега хочет признать свою профессиональную квалификацию, полученную за границей, но не знает точно, какие документы для этого нужны.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете ему помочь."
+      "de": "Ein Kollege möchte seine im Ausland erworbene Berufsqualifikation anerkennen lassen, weiß aber nicht genau, welche Unterlagen dafür nötig sind.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie ihm helfen können.<br><br>Diese Stichpunkte helfen Ihnen.<br>Verfahren: Welche Informationen fehlen zum Anerkennungsverfahren?<br>Fristen: Wie kann eine Fristverlängerung für fehlende Dokumente helfen?<br>Förderung: Welches Förderprogramm könnte die Kosten decken?<br>Alternative: Was ist, wenn der Abschluss nicht vollständig anerkannt wird?",
+      "en": "A colleague wants to have his professional qualification, earned abroad, officially recognized, but doesn't know exactly which documents are needed for that.<br><br>Discuss with your conversation partner how you could help him.<br><br>These points can help you.<br>Procedure: What information is missing about the recognition procedure?<br>Deadlines: How can a deadline extension for missing documents help?<br>Funding: Which funding program could cover the costs?<br>Alternative: What if the qualification isn't fully recognized?",
+      "uk": "Колега хоче визнати свою професійну кваліфікацію, здобуту за кордоном, але не знає точно, які документи для цього потрібні.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете йому допомогти.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Процедура: Якої інформації бракує про процедуру визнання?<br>Терміни: Як може допомогти продовження терміну для відсутніх документів?<br>Фінансування: Яка програма підтримки могла б покрити витрати?<br>Альтернатива: Що робити, якщо диплом визнають не повністю?",
+      "ru": "Коллега хочет признать свою профессиональную квалификацию, полученную за границей, но не знает точно, какие документы для этого нужны.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете ему помочь.<br><br>Вот несколько пунктов, которые могут помочь.<br>Процедура: Какой информации не хватает о процедуре признания?<br>Сроки: Как может помочь продление срока для недостающих документов?<br>Финансирование: Какая программа поддержки могла бы покрыть расходы?<br>Альтернатива: Что делать, если диплом признают не полностью?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_mark",
@@ -13674,10 +13345,10 @@ var DIALOGE = [
     "id": "dlg_033",
     "cat": "Auf Jobsuche",
     "task": {
-      "de": "Für eine offene Stelle haben Sie schon mehrere Stellenanzeigen geschaltet, aber es kommen kaum passende Bewerbungen.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie die Stelle besetzen können.",
-      "en": "For an open position you have already placed several job ads, but hardly any suitable applications are coming in.<br><br>Discuss with your conversation partner how you could fill the position.",
-      "uk": "Для відкритої вакансії ви вже розмістили кілька оголошень, але майже не надходить відповідних відгуків.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете закрити цю вакансію.",
-      "ru": "Для открытой вакансии вы уже разместили несколько объявлений, но почти не поступает подходящих откликов.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете закрыть эту вакансию."
+      "de": "Für eine offene Stelle haben Sie schon mehrere Stellenanzeigen geschaltet, aber es kommen kaum passende Bewerbungen.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie die Stelle besetzen können.<br><br>Diese Stichpunkte helfen Ihnen.<br>Folgen: Welche Folgen hätte eine längere Vakanz?<br>Headhunter: Lohnt sich die Beauftragung eines Headhunters?<br>Soziale Netzwerke: Welche Vor- und Nachteile hat die Verbreitung über soziale Netzwerke?<br>Zusätzliche Kanäle: Welche weiteren Kanäle könnten helfen?",
+      "en": "For an open position you have already placed several job ads, but hardly any suitable applications are coming in.<br><br>Discuss with your conversation partner how you could fill the position.<br><br>These points can help you.<br>Consequences: What consequences would a longer vacancy have?<br>Headhunter: Is it worth hiring a headhunter?<br>Social media: What are the pros and cons of spreading it via social media?<br>Additional channels: Which other channels could help?",
+      "uk": "Для відкритої вакансії ви вже розмістили кілька оголошень, але майже не надходить відповідних відгуків.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете закрити цю вакансію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Наслідки: Які наслідки матиме тривала вакансія?<br>Хедхантер: Чи варто звернутися до хедхантера?<br>Соціальні мережі: Які переваги й недоліки поширення через соціальні мережі?<br>Додаткові канали: Які ще канали могли б допомогти?",
+      "ru": "Для открытой вакансии вы уже разместили несколько объявлений, но почти не поступает подходящих откликов.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете закрыть эту вакансию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Последствия: Какие последствия будет иметь длительная вакансия?<br>Хедхантер: Стоит ли обратиться к хедхантеру?<br>Социальные сети: Какие плюсы и минусы распространения через социальные сети?<br>Дополнительные каналы: Какие ещё каналы могли бы помочь?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_david",
@@ -13796,10 +13467,10 @@ var DIALOGE = [
     "id": "dlg_034",
     "cat": "Lebenslauf",
     "task": {
-      "de": "Der Lebenslauf einer Kollegin muss noch heute für eine Bewerbung überarbeitet werden, aber die Datumsangaben sind uneinheitlich und die Sprachkenntnisse sind nicht genau beschrieben.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Lebenslauf verbessern können.",
-      "en": "A colleague's CV still needs to be revised today for an application, but the dates are inconsistent and the language skills aren't described precisely.<br><br>Discuss with your conversation partner how you could improve the CV.",
-      "uk": "Резюме колеги потрібно доопрацювати вже сьогодні для заявки, але дати вказані непослідовно, а мовні навички описані неточно.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете покращити резюме.",
-      "ru": "Резюме коллеги нужно доработать сегодня же для заявки, но даты указаны непоследовательно, а языковые навыки описаны неточно.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете улучшить резюме."
+      "de": "Der Lebenslauf einer Kollegin muss noch heute für eine Bewerbung überarbeitet werden, aber die Datumsangaben sind uneinheitlich und die Sprachkenntnisse sind nicht genau beschrieben.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Lebenslauf verbessern können.<br><br>Diese Stichpunkte helfen Ihnen.<br>Eindruck: Welchen Eindruck macht ein uneinheitlicher Lebenslauf?<br>Sprachniveaus: Wie lassen sich die Sprachkenntnisse genauer angeben?<br>Einheitliches Format: Wie lassen sich die Datumsangaben vereinheitlichen?<br>Umsetzung: Wie lässt sich das schnell und professionell erledigen?",
+      "en": "A colleague's CV still needs to be revised today for an application, but the dates are inconsistent and the language skills aren't described precisely.<br><br>Discuss with your conversation partner how you could improve the CV.<br><br>These points can help you.<br>Impression: What impression does an inconsistent CV make?<br>Language levels: How can language skills be specified more precisely?<br>Consistent format: How can the dates be made consistent?<br>Implementation: How can this be done quickly and professionally?",
+      "uk": "Резюме колеги потрібно доопрацювати вже сьогодні для заявки, але дати вказані непослідовно, а мовні навички описані неточно.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете покращити резюме.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Враження: Яке враження справляє неоднорідне резюме?<br>Рівні мов: Як точніше вказати рівень володіння мовами?<br>Єдиний формат: Як уніфікувати вказівку дат?<br>Реалізація: Як зробити це швидко і професійно?",
+      "ru": "Резюме коллеги нужно доработать сегодня же для заявки, но даты указаны непоследовательно, а языковые навыки описаны неточно.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете улучшить резюме.<br><br>Вот несколько пунктов, которые могут помочь.<br>Впечатление: Какое впечатление производит неоднородное резюме?<br>Уровни языков: Как точнее указать уровень владения языками?<br>Единый формат: Как унифицировать указание дат?<br>Реализация: Как сделать это быстро и профессионально?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_david",
@@ -13918,10 +13589,10 @@ var DIALOGE = [
     "id": "dlg_035",
     "cat": "Ausbildung",
     "task": {
-      "de": "Für zwei freie Ausbildungsplätze haben sich bisher kaum passende Bewerberinnen und Bewerber gemeldet.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie mehr Auszubildende finden können.",
-      "en": "For two open apprenticeship places, hardly any suitable applicants have come forward so far.<br><br>Discuss with your conversation partner how you could find more trainees.",
-      "uk": "На два вільні місця для навчання поки що відгукнулося дуже мало відповідних кандидатів.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете знайти більше учнів.",
-      "ru": "На два свободных места для обучения пока откликнулось очень мало подходящих кандидатов.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете найти больше учеников."
+      "de": "Für zwei freie Ausbildungsplätze haben sich bisher kaum passende Bewerberinnen und Bewerber gemeldet.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie mehr Auszubildende finden können.<br><br>Diese Stichpunkte helfen Ihnen.<br>Folgen: Welche Folgen hätte es, die Plätze nicht zu besetzen?<br>Berufsschule: Wie kann Kontakt zur Berufsschule helfen?<br>Vergütung: Sollte die Ausbildungsvergütung erhöht werden?<br>Duales Studium: Könnte ein duales Studium zusätzlich angeboten werden?",
+      "en": "For two open apprenticeship places, hardly any suitable applicants have come forward so far.<br><br>Discuss with your conversation partner how you could find more trainees.<br><br>These points can help you.<br>Consequences: What consequences would it have not to fill the places?<br>Vocational school: How can contact with the vocational school help?<br>Pay: Should the training pay be increased?<br>Dual studies: Could dual studies be offered additionally?",
+      "uk": "На два вільні місця для навчання поки що відгукнулося дуже мало відповідних кандидатів.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви можете знайти більше учнів.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Наслідки: Які наслідки матиме те, що місця залишаться незайнятими?<br>Профшкола: Як може допомогти контакт із профшколою?<br>Оплата: Чи варто підвищити оплату навчання?<br>Дуальне навчання: Чи можна додатково запропонувати дуальне навчання?",
+      "ru": "На два свободных места для обучения пока откликнулось очень мало подходящих кандидатов.<br><br>Обсудите со своим собеседником или собеседницей, как вы можете найти больше учеников.<br><br>Вот несколько пунктов, которые могут помочь.<br>Последствия: Какие последствия будет иметь то, что места останутся незанятыми?<br>Профшкола: Как может помочь контакт с профшколой?<br>Оплата: Стоит ли повысить оплату обучения?<br>Дуальное обучение: Можно ли дополнительно предложить дуальное обучение?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_mark",
@@ -14040,10 +13711,10 @@ var DIALOGE = [
     "id": "dlg_036",
     "cat": "Bewerbung",
     "task": {
-      "de": "Ein Bewerber hat sich schon mehrmals nach dem Stand seiner Initiativbewerbung erkundigt, aber Sie haben sein Bewerbungsschreiben noch nicht geprüft.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "An applicant has already asked several times about the status of his unsolicited application, but you haven't reviewed his cover letter yet.<br><br>Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Кандидат уже кілька разів запитував про статус своєї ініціативної заявки, а ви ще не переглянули його супровідний лист.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Кандидат уже несколько раз спрашивал о статусе своей инициативной заявки, а вы ещё не рассмотрели его сопроводительное письмо.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ein Bewerber hat sich schon mehrmals nach dem Stand seiner Initiativbewerbung erkundigt, aber Sie haben sein Bewerbungsschreiben noch nicht geprüft.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Eindruck: Welchen Eindruck hinterlässt eine späte Rückmeldung?<br>Prüfung: Wie lässt sich das Bewerbungsschreiben schnell gemeinsam prüfen?<br>Vorstellungsgespräch: Sollte er trotzdem eingeladen werden?<br>Rückmeldung: Wie und wann sollte er informiert werden?",
+      "en": "An applicant has already asked several times about the status of his unsolicited application, but you haven't reviewed his cover letter yet.<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Impression: What impression does a late response leave?<br>Review: How can the cover letter be reviewed together quickly?<br>Interview: Should he be invited anyway?<br>Feedback: How and when should he be informed?",
+      "uk": "Кандидат уже кілька разів запитував про статус своєї ініціативної заявки, а ви ще не переглянули його супровідний лист.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Враження: Яке враження справляє пізня відповідь?<br>Перевірка: Як швидко спільно перевірити супровідний лист?<br>Співбесіда: Чи варто все ж запросити його на співбесіду?<br>Відповідь: Як і коли варто його поінформувати?",
+      "ru": "Кандидат уже несколько раз спрашивал о статусе своей инициативной заявки, а вы ещё не рассмотрели его сопроводительное письмо.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Впечатление: Какое впечатление производит поздний ответ?<br>Проверка: Как быстро совместно проверить сопроводительное письмо?<br>Собеседование: Стоит ли всё же пригласить его на собеседование?<br>Ответ: Как и когда его следует проинформировать?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
@@ -14262,10 +13933,10 @@ var DIALOGE = [
     "id": "dlg_039",
     "cat": "Der erste Arbeitstag",
     "task": {
-      "de": "Ihre neue Kollegin fängt heute an, aber ihr Passwort und ihr Schlüssel für den Arbeitsplatz sind noch nicht bereit.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "Your new colleague starts today, but her password and her key for the workplace aren't ready yet.<br><br>Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Ваша нова колега сьогодні починає роботу, але її пароль і ключ від робочого місця ще не готові.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Ваша новая коллега сегодня начинает работу, но её пароль и ключ от рабочего места ещё не готовы.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ihre neue Kollegin fängt heute an, aber ihr Passwort und ihr Schlüssel für den Arbeitsplatz sind noch nicht bereit.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Eindruck: Welchen Eindruck macht ein chaotischer erster Arbeitstag?<br>IT-Abteilung: Wie kann die IT-Abteilung schnell helfen?<br>Schlüssel: Könnte ein geliehener Schlüssel eine Übergangslösung sein?<br>Lösung: Wie lässt sich das Problem schnell klären?",
+      "en": "Your new colleague starts today, but her password and her key for the workplace aren't ready yet.<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Impression: What impression does a chaotic first day make?<br>IT department: How can the IT department help quickly?<br>Key: Could a borrowed key be a temporary solution?<br>Solution: How can the problem be resolved quickly?",
+      "uk": "Ваша нова колега сьогодні починає роботу, але її пароль і ключ від робочого місця ще не готові.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Враження: Яке враження справляє хаотичний перший робочий день?<br>IT-відділ: Як IT-відділ може швидко допомогти?<br>Ключ: Чи міг би позичений ключ стати тимчасовим рішенням?<br>Рішення: Як швидко вирішити цю проблему?",
+      "ru": "Ваша новая коллега сегодня начинает работу, но её пароль и ключ от рабочего места ещё не готовы.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Впечатление: Какое впечатление производит хаотичный первый рабочий день?<br>IT-отдел: Как IT-отдел может быстро помочь?<br>Ключ: Мог бы одолженный ключ стать временным решением?<br>Решение: Как быстро решить эту проблему?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_david",
@@ -14384,10 +14055,10 @@ var DIALOGE = [
     "id": "dlg_040",
     "cat": "Herzlich willkommen",
     "task": {
-      "de": "Eine neue Kollegin ist sehr zurückhaltend und beteiligt sich kaum an Gesprächen in der Pause.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "A new colleague is very reserved and hardly takes part in conversations during breaks.<br><br>Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Нова колега дуже стримана і майже не бере участі в розмовах під час перерв.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Новая коллега очень сдержанная и почти не участвует в разговорах во время перерывов.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Eine neue Kollegin ist sehr zurückhaltend und beteiligt sich kaum an Gesprächen in der Pause.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Ursache: Woran könnte es liegen, dass sie sich nicht integriert fühlt?<br>Спільна тема: Wie lässt sich ein gemeinsames Gesprächsthema finden?<br>Ansprache: Wie taktvoll lässt sie sich auf ihre Interessen ansprechen?<br>Zeit: Wie viel Zeit sollte man ihr geben, sich zu öffnen?",
+      "en": "A new colleague is very reserved and hardly takes part in conversations during breaks.<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Cause: What could be the reason she doesn't feel integrated?<br>Common ground: How can a shared topic of conversation be found?<br>Approach: How can she be tactfully asked about her interests?<br>Time: How much time should be given for her to open up?",
+      "uk": "Нова колега дуже стримана і майже не бере участі в розмовах під час перерв.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Причина: Через що вона може почуватися невключеною в команду?<br>Спільна тема: Як знайти спільну тему для розмови?<br>Звернення: Як тактовно запитати про її інтереси?<br>Час: Скільки часу варто дати їй, щоб розкритися?",
+      "ru": "Новая коллега очень сдержанная и почти не участвует в разговорах во время перерывов.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Причина: Из-за чего она может чувствовать себя невключённой в команду?<br>Общая тема: Как найти общую тему для разговора?<br>Обращение: Как тактично спросить о её интересах?<br>Время: Сколько времени стоит дать ей, чтобы раскрыться?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_julia",
@@ -14506,10 +14177,10 @@ var DIALOGE = [
     "id": "dlg_041",
     "cat": "Arbeitsaufträge",
     "task": {
-      "de": "Ein Kollege hat drei neue Arbeitsaufträge bekommen, obwohl er schon zwei dringende Deadlines hat.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "A colleague has received three new work assignments even though he already has two urgent deadlines.<br><br>Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Колега отримав три нових робочих доручення, хоча в нього вже є два термінові дедлайни.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Коллега получил три новых рабочих поручения, хотя у него уже есть два срочных дедлайна.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ein Kollege hat drei neue Arbeitsaufträge bekommen, obwohl er schon zwei dringende Deadlines hat.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Folgen: Was passiert, wenn er versucht, alles gleichzeitig zu erledigen?<br>Prioritäten: Wie lassen sich die Aufträge nach Priorität ordnen?<br>Delegation: Welche Aufgaben lassen sich an andere delegieren?<br>Aufteilung: Wie lässt sich die Arbeit sinnvoll aufteilen?",
+      "en": "A colleague has received three new work assignments even though he already has two urgent deadlines.<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Consequences: What happens if he tries to do everything at once?<br>Priorities: How can the tasks be ordered by priority?<br>Delegation: Which tasks can be delegated to others?<br>Distribution: How can the work be divided sensibly?",
+      "uk": "Колега отримав три нових робочих доручення, хоча в нього вже є два термінові дедлайни.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Наслідки: Що станеться, якщо він спробує зробити все одразу?<br>Пріоритети: Як розставити пріоритети серед завдань?<br>Делегування: Які завдання можна делегувати іншим?<br>Розподіл: Як розумно розподілити роботу?",
+      "ru": "Коллега получил три новых рабочих поручения, хотя у него уже есть два срочных дедлайна.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Последствия: Что произойдёт, если он попытается сделать всё сразу?<br>Приоритеты: Как расставить приоритеты среди заданий?<br>Делегирование: Какие задачи можно делегировать другим?<br>Распределение: Как разумно распределить работу?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_m_mark",
@@ -14628,10 +14299,10 @@ var DIALOGE = [
     "id": "dlg_042",
     "cat": "Hard Skills",
     "task": {
-      "de": "Ein neuer Kollege soll sich in eine wichtige Software einarbeiten, aber ihm fehlen die Zugangsdaten, und eine Mentorenschaft ist noch nicht offiziell geregelt.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.",
-      "en": "A new colleague is supposed to get trained in an important piece of software, but he's missing the login credentials, and a mentorship hasn't been officially arranged yet.<br><br>Discuss with your conversation partner how you would respond to this situation.",
-      "uk": "Новий колега має навчитися працювати з важливою програмою, але йому бракує даних для входу, а наставництво ще офіційно не оформлене.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.",
-      "ru": "Новый коллега должен научиться работать с важной программой, но ему не хватает данных для входа, а наставничество ещё официально не оформлено.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию."
+      "de": "Ein neuer Kollege soll sich in eine wichtige Software einarbeiten, aber ihm fehlen die Zugangsdaten, und eine Mentorenschaft ist noch nicht offiziell geregelt.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Folgen: Was passiert, wenn die Situation nicht schnell geklärt wird?<br>Zugangsdaten: Wie lassen sich die Zugangsdaten schnell besorgen?<br>Mentorenschaft: Wer könnte die Mentorenschaft übernehmen?<br>Aufteilung: Wie lässt sich die Mentorenschaft aufteilen?",
+      "en": "A new colleague is supposed to get trained in an important piece of software, but he's missing the login credentials, and a mentorship hasn't been officially arranged yet.<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Consequences: What happens if the situation isn't resolved quickly?<br>Login credentials: How can the login credentials be obtained quickly?<br>Mentorship: Who could take on the mentorship?<br>Sharing: How can the mentorship be shared?",
+      "uk": "Новий колега має навчитися працювати з важливою програмою, але йому бракує даних для входу, а наставництво ще офіційно не оформлене.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Наслідки: Що станеться, якщо ситуацію швидко не вирішити?<br>Дані для входу: Як швидко отримати дані для входу?<br>Наставництво: Хто міг би взяти на себе наставництво?<br>Розподіл: Як розподілити наставництво?",
+      "ru": "Новый коллега должен научиться работать с важной программой, но ему не хватает данных для входа, а наставничество ещё официально не оформлено.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Последствия: Что произойдёт, если ситуацию быстро не решить?<br>Данные для входа: Как быстро получить данные для входа?<br>Наставничество: Кто мог бы взять на себя наставничество?<br>Распределение: Как распределить наставничество?"
     },
     "type": "Lösungswege diskutieren",
     "name_q": "de_w_anna",
