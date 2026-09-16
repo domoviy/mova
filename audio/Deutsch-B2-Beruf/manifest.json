@@ -43604,7 +43604,7 @@
   "Deutsch-B2-Beruf/uk/100/tlc/tlc_254_def_uk_100": "e144d94349",
   "Deutsch-B2-Beruf/uk/100/tlc/tlc_255_def_uk_100": "4819e5704d",
   "Deutsch-B2-Beruf/de/100/story/story_008_schluss2_de_100": "f03f164911+t",
-  "Deutsch-B2-Beruf/de/085/story/story_008_schluss2_de_085": "8e69be12aa+t",
+  "Deutsch-B2-Beruf/de/085/story/story_008_schluss2_de_085": "0f5ddfc57b+t",
   "Deutsch-B2-Beruf/de/100/story/story_003_einleitung_de_100": "cb95d0207c+t",
   "Deutsch-B2-Beruf/de/100/story/story_003_hauptteil1_de_100": "3e4cc4a47a+t",
   "Deutsch-B2-Beruf/de/100/story/story_003_hauptteil2_de_100": "c5cf1f9130+t",
@@ -43741,12 +43741,12 @@
   "Deutsch-B2-Beruf/de/085/story/story_006_schluss4_de_085": "10c88904a3+t",
   "Deutsch-B2-Beruf/de/085/story/story_006_schluss5_de_085": "377c6c5a7c+t",
   "Deutsch-B2-Beruf/de/085/story/story_008_hauptteil4_de_085": "3cdc862416+t",
-  "Deutsch-B2-Beruf/de/085/story/story_008_hauptteil5_de_085": "ae742e163b+t",
+  "Deutsch-B2-Beruf/de/085/story/story_008_hauptteil5_de_085": "42c8c2cb5b+t",
   "Deutsch-B2-Beruf/de/085/story/story_008_hauptteil6_de_085": "0708807522+t",
   "Deutsch-B2-Beruf/de/085/story/story_008_hauptteil7_de_085": "fa3ee4f693+t",
   "Deutsch-B2-Beruf/de/085/story/story_008_hauptteil8_de_085": "d3cc4ee813+t",
   "Deutsch-B2-Beruf/de/085/story/story_008_schluss3_de_085": "8fbfdd40fb+t",
-  "Deutsch-B2-Beruf/de/085/story/story_008_schluss4_de_085": "377c6c5a7c+t",
+  "Deutsch-B2-Beruf/de/085/story/story_008_schluss4_de_085": "f9667f61d5+t",
   "Deutsch-B2-Beruf/de/100/story/story_task_001_q_01_de_100": "a787424289+t",
   "Deutsch-B2-Beruf/de/100/story/story_task_001_q_02_de_100": "e360e9061e+t",
   "Deutsch-B2-Beruf/de/100/story/story_task_001_q_03_de_100": "34ca5ff2f2+t",
@@ -44132,5 +44132,7 @@
   "Deutsch-B2-Beruf/de/085/dlg/dlg_015_q7_de_085": "adbf02d1ea+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_015_a7_de_085": "3b972fd0a7+t",
   "Deutsch-B2-Beruf/de/100/story/story_008_schluss5_de_100": "48e93e69eb+t",
-  "Deutsch-B2-Beruf/de/100/story/story_008_schluss6_de_100": "8e5de090d1+t"
+  "Deutsch-B2-Beruf/de/100/story/story_008_schluss6_de_100": "8e5de090d1+t",
+  "Deutsch-B2-Beruf/de/100/story/story_008_schluss7_de_100": "44efc6243f+t",
+  "Deutsch-B2-Beruf/de/085/story/story_008_schluss5_de_085": "4384e8f8c2+t"
 }
