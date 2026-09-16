@@ -36034,9 +36034,9 @@
   "Deutsch-B2-Beruf/de/085/email/email_009_mail_client_de_085": "0ce5887dde+t",
   "Deutsch-B2-Beruf/de/085/email/email_012_mail_client_de_085": "28520d9320+t",
   "Deutsch-B2-Beruf/de/085/email/email_017_mail_client_de_085": "b167156931+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_029_task_de_100": "6620746111+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_031_task_de_100": "6003344247+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_032_task_de_100": "e0e8ed0615+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_029_task_de_100": "1fe8c72ab7+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_031_task_de_100": "a9d48a7ada+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_032_task_de_100": "95d068b1e3+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_033_task_de_100": "5540b4addd+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_034_task_de_100": "5ed101fc93+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_035_task_de_100": "8e4a0c5876+t",
@@ -43663,7 +43663,7 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_026_task_de_100": "072bda44de+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_027_task_de_100": "30a3bc264a+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_028_task_de_100": "3dd4e60c22+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_030_task_de_100": "ee161f4b40+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_030_task_de_100": "fb94142c92+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_001_task_de_085": "21e55018e4+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_002_task_de_085": "a51fff16e3+t",
   "Deutsch-B2-Beruf/de/085/dlg/dlg_003_task_de_085": "ed96efabc0+t",
@@ -44115,5 +44115,6 @@
   "Deutsch-B2-Beruf/de/100/dlg/dlg_015_a5_de_100": "1a630e22e6+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_015_q6_de_100": "734454746a+t",
   "Deutsch-B2-Beruf/de/100/dlg/dlg_015_a6_de_100": "ba7fe3b451+t",
-  "Deutsch-B2-Beruf/de/100/dlg/dlg_015_q7_de_100": "2e75fa9c3b+t"
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_015_q7_de_100": "2e75fa9c3b+t",
+  "Deutsch-B2-Beruf/de/100/dlg/dlg_015_a7_de_100": "75f3bb2b58+t"
 }
