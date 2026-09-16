@@ -12238,7 +12238,7 @@ var VOCAB = [
 {"id": "tlc_483", "cat": "Telefongespräch", "term": {"de": "einen Termin übernehmen", "en": "to take over an appointment", "uk": "взяти на себе зустріч замість когось", "ru": "взять на себя приём"}, "short": {"de": "für jemanden zu einem Termin gehen", "en": "to go to an appointment for someone", "uk": "піти на зустріч замість когось", "ru": "пойти на встречу вместо кого-то"}, "def": {"de": "Wegen der plötzlichen <g>Erkrankung</g> der Kollegin musste ein anderer Zahnarzt <b>einen Termin übernehmen</b>.", "en": "Due to the colleagueʼs sudden <g>illness</g>, another dentist had to <b>take over an appointment</b>.", "uk": "Через раптове <g>захворювання</g> колежанки інший стоматолог мав <b>взяти на себе зустріч</b>.", "ru": "Из-за внезапного <g>заболевания</g> коллеги другому стоматологу пришлось <b>взять на себя приём</b>."}, "gram": "nominalisierung"}
 ];
 var DIALOGE = [
-{
+  {
     "id": "dlg_001",
     "cat": "Telefongespräch",
     "task": {
@@ -12253,17 +12253,18 @@ var DIALOGE = [
       "de": "Könnten Sie mich bitte mit Herrn / Frau … verbinden?",
       "en": "Could you please connect me with Mr. / Ms. …?",
       "uk": "Чи не могли б ви з'єднати мене з паном / пані …?",
-      "ru": "Не могли бы вы соединить меня с господином / госпожой …?"
+      "ru": "Не могли бы вы соединить меня с господином / госпожой …?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, natürlich. Einen Moment bitte, ich verbinde Sie.",
       "en": "Yes, of course. One moment please, I'll connect you.",
       "uk": "Так, звичайно. Хвилинку, будь ласка, я вас з'єдную.",
-      "ru": "Да, конечно. Одну минуту, я вас соединяю."
-    },
-    "gram": ""
+      "ru": "Да, конечно. Одну минуту, я вас соединяю.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_002",
     "cat": "Telefongespräch",
     "task": {
@@ -12278,17 +12279,18 @@ var DIALOGE = [
       "de": "Ich glaube, ich habe nicht die richtige Durchwahl. Ich suche Herrn / Frau …",
       "en": "I think I have the wrong extension. I'm looking for Mr. / Ms. …",
       "uk": "Здається, у мене не той додатковий номер. Я шукаю пана / пані …",
-      "ru": "Кажется, у меня не тот добавочный номер. Я ищу господина / госпожу …"
+      "ru": "Кажется, у меня не тот добавочный номер. Я ищу господина / госпожу …",
+      "gram": ""
     },
     "a": {
       "de": "Kein Problem. Ich stelle Sie durch. Bitte bleiben Sie in der Leitung.",
       "en": "No problem. I'll transfer you. Please hold the line.",
       "uk": "Не проблема. Я вас переключу. Будь ласка, залишайтеся на лінії.",
-      "ru": "Не проблема. Я вас переключу. Пожалуйста, оставайтесь на линии."
-    },
-    "gram": ""
+      "ru": "Не проблема. Я вас переключу. Пожалуйста, оставайтесь на линии.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_003",
     "cat": "Telefongespräch",
     "task": {
@@ -12303,17 +12305,18 @@ var DIALOGE = [
       "de": "Könnten Sie Frau … etwas ausrichten? Sie ist leider gerade nicht erreichbar.",
       "en": "Could you pass a message to Ms. …? She is unfortunately not available right now.",
       "uk": "Чи могли б ви передати щось пані …? На жаль, вона зараз недоступна.",
-      "ru": "Не могли бы вы передать кое-что госпоже …? К сожалению, она сейчас недоступна."
+      "ru": "Не могли бы вы передать кое-что госпоже …? К сожалению, она сейчас недоступна.",
+      "gram": ""
     },
     "a": {
       "de": "Ja, selbstverständlich. Was soll ich ihr ausrichten?",
       "en": "Yes, of course. What would you like me to tell her?",
       "uk": "Так, звичайно. Що мені їй передати?",
-      "ru": "Да, конечно. Что мне ей передать?"
-    },
-    "gram": ""
+      "ru": "Да, конечно. Что мне ей передать?",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_004",
     "cat": "Telefongespräch",
     "task": {
@@ -12328,17 +12331,18 @@ var DIALOGE = [
       "de": "Ich bin mir nicht ganz sicher, ob ich Sie richtig verstanden habe. Könnten Sie das bitte wiederholen?",
       "en": "I'm not quite sure I understood you correctly. Could you please repeat that?",
       "uk": "Я не зовсім впевнений, чи правильно я вас зрозумів. Не могли б ви повторити?",
-      "ru": "Я не совсем уверен, правильно ли я вас понял. Не могли бы вы повторить?"
+      "ru": "Я не совсем уверен, правильно ли я вас понял. Не могли бы вы повторить?",
+      "gram": ""
     },
     "a": {
       "de": "Natürlich. Ich sagte: … Ist das jetzt verständlich?",
       "en": "Of course. I said: … Is that clear now?",
       "uk": "Звичайно. Я сказав: … Тепер зрозуміло?",
-      "ru": "Конечно. Я сказал: … Теперь понятно?"
-    },
-    "gram": ""
+      "ru": "Конечно. Я сказал: … Теперь понятно?",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_005",
     "cat": "Telefongespräch",
     "task": {
@@ -12353,17 +12357,18 @@ var DIALOGE = [
       "de": "Melden Sie sich gerne wieder, wenn Sie weitere Auskünfte benötigen.",
       "en": "Feel free to contact us again if you need further information.",
       "uk": "Звертайтеся знову, якщо вам знадобиться додаткова інформація.",
-      "ru": "Обращайтесь снова, если вам понадобится дополнительная информация."
+      "ru": "Обращайтесь снова, если вам понадобится дополнительная информация.",
+      "gram": ""
     },
     "a": {
       "de": "Vielen Dank, das werde ich tun. Auf Wiederhören!",
       "en": "Thank you very much, I will do that. Goodbye!",
       "uk": "Дуже дякую, обов'язково. До побачення!",
-      "ru": "Большое спасибо, так и сделаю. До свидания!"
-    },
-    "gram": ""
+      "ru": "Большое спасибо, так и сделаю. До свидания!",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_006",
     "cat": "Messe",
     "task": {
@@ -12378,17 +12383,18 @@ var DIALOGE = [
       "de": "Kann ich Ihnen behilflich sein?",
       "en": "Can I help you?",
       "uk": "Чи можу я вам чимось допомогти?",
-      "ru": "Могу ли я вам чем-нибудь помочь?"
+      "ru": "Могу ли я вам чем-нибудь помочь?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, gerne. Ich interessiere mich <g>für</g> … Können Sie mir mehr darüber erzählen?",
       "en": "Yes, please. I'm interested <g>in</g> … Can you tell me more about it?",
       "uk": "Так, із задоволенням. Мене цікавить … Можете розповісти докладніше?",
-      "ru": "Да, с удовольствием. Меня интересует … Можете рассказать подробнее?"
-    },
-    "gram": "praepositionen_nomen_verb_adjektiv"
+      "ru": "Да, с удовольствием. Меня интересует … Можете рассказать подробнее?",
+      "gram": "praepositionen_nomen_verb_adjektiv"
+    }
   },
-{
+  {
     "id": "dlg_007",
     "cat": "Messe",
     "task": {
@@ -12403,17 +12409,18 @@ var DIALOGE = [
       "de": "Kommen Sie auch aus dem … bereich / der … branche?",
       "en": "Are you also from the … sector / industry?",
       "uk": "Ви також із галузі …?",
-      "ru": "Вы тоже из сферы …?"
+      "ru": "Вы тоже из сферы …?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, genau. Wir sind im Bereich … tätig. Und Sie?",
       "en": "Yes, exactly. We work in the … sector. And you?",
       "uk": "Так, саме так. Ми працюємо у сфері … А ви?",
-      "ru": "Да, именно. Мы работаем в сфере … А вы?"
-    },
-    "gram": ""
+      "ru": "Да, именно. Мы работаем в сфере … А вы?",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_008",
     "cat": "Messe",
     "task": {
@@ -12428,17 +12435,18 @@ var DIALOGE = [
       "de": "Wir haben hier etwas ganz Besonderes. Es hat den Vorteil, dass …",
       "en": "We have something very special here. It has the advantage that …",
       "uk": "У нас тут є щось особливе. Воно має ту перевагу, що …",
-      "ru": "У нас здесь есть кое-что особенное. Оно имеет то преимущество, что …"
+      "ru": "У нас здесь есть кое-что особенное. Оно имеет то преимущество, что …",
+      "gram": ""
     },
     "a": {
       "de": "Das klingt interessant. Können Sie mir das genauer erklären?",
       "en": "That sounds interesting. Could you explain that in more detail?",
       "uk": "Це звучить цікаво. Чи могли б ви пояснити детальніше?",
-      "ru": "Это звучит интересно. Не могли бы вы объяснить подробнее?"
-    },
-    "gram": ""
+      "ru": "Это звучит интересно. Не могли бы вы объяснить подробнее?",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_009",
     "cat": "Messe",
     "task": {
@@ -12453,17 +12461,18 @@ var DIALOGE = [
       "de": "Ich kann Ihnen das gerne mal vorführen / demonstrieren. Sie dürfen es auch gerne ausprobieren.",
       "en": "I'd be happy to demonstrate it for you. You're also welcome to try it out.",
       "uk": "Я із задоволенням продемонструю вам це. Ви також можете спробувати.",
-      "ru": "Я с удовольствием продемонстрирую вам это. Вы также можете попробовать."
+      "ru": "Я с удовольствием продемонстрирую вам это. Вы также можете попробовать.",
+      "gram": ""
     },
     "a": {
       "de": "Oh, sehr gerne! Das würde mich sehr interessieren.",
       "en": "Oh, I'd love that! I'm very interested.",
       "uk": "О, із задоволенням! Мені це дуже цікаво.",
-      "ru": "О, с удовольствием! Мне это очень интересно."
-    },
-    "gram": ""
+      "ru": "О, с удовольствием! Мне это очень интересно.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_010",
     "cat": "Messe",
     "task": {
@@ -12478,17 +12487,18 @@ var DIALOGE = [
       "de": "Wir haben damit sehr gute Erfahrungen gemacht. Das Material ist aus … und hat besondere Eigenschaften.",
       "en": "We have had very good experience with this. The material is made of … and has special properties.",
       "uk": "Ми маємо дуже хороший досвід роботи з цим. Матеріал виготовлений з … і має особливі властивості.",
-      "ru": "У нас очень хороший опыт работы с этим. Материал сделан из … и имеет особые свойства."
+      "ru": "У нас очень хороший опыт работы с этим. Материал сделан из … и имеет особые свойства.",
+      "gram": ""
     },
     "a": {
       "de": "Das ist beeindruckend. Gibt es das auch in anderen Ausführungen?",
       "en": "That's impressive. Is it also available in other versions?",
       "uk": "Це вражає. Чи є воно в інших варіантах виконання?",
-      "ru": "Это впечатляет. Есть ли оно в других исполнениях?"
-    },
-    "gram": ""
+      "ru": "Это впечатляет. Есть ли оно в других исполнениях?",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_011",
     "cat": "Messe",
     "task": {
@@ -12503,17 +12513,18 @@ var DIALOGE = [
       "de": "Kann ich Ihnen eine kleine Erfrischung anbieten?",
       "en": "Can I offer you a small refreshment?",
       "uk": "Чи можу я запропонувати вам напої або перекусити?",
-      "ru": "Могу ли я предложить вам что-нибудь освежиться?"
+      "ru": "Могу ли я предложить вам что-нибудь освежиться?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, gerne. Vielen Dank für das Angebot.",
       "en": "Yes, please. Thank you very much for the offer.",
       "uk": "Так, із задоволенням. Дуже дякую за пропозицію.",
-      "ru": "Да, с удовольствием. Большое спасибо за предложение."
-    },
-    "gram": ""
+      "ru": "Да, с удовольствием. Большое спасибо за предложение.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_012",
     "cat": "Messe",
     "task": {
@@ -12528,17 +12539,18 @@ var DIALOGE = [
       "de": "Wenn Sie möchten, kann ich Ihnen gerne Informationsmaterial zuschicken. Dürfen wir Sie auch über neue Produkte informieren?",
       "en": "If you'd like, I can send you some information material. May we also inform you about new products?",
       "uk": "Якщо бажаєте, я можу надіслати вам інформаційні матеріали. Чи можемо ми інформувати вас про нові продукти?",
-      "ru": "Если хотите, я могу выслать вам информационные материалы. Можем ли мы информировать вас о новых продуктах?"
+      "ru": "Если хотите, я могу выслать вам информационные материалы. Можем ли мы информировать вас о новых продуктах?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, das wäre sehr nett. Hier ist meine Visitenkarte.",
       "en": "Yes, that would be very kind. Here is my business card.",
       "uk": "Так, це було б дуже люб'язно. Ось моя візитка.",
-      "ru": "Да, это было бы очень любезно. Вот моя визитная карточка."
-    },
-    "gram": ""
+      "ru": "Да, это было бы очень любезно. Вот моя визитная карточка.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_013",
     "cat": "Messe",
     "task": {
@@ -12553,17 +12565,18 @@ var DIALOGE = [
       "de": "Könnten Sie mir bitte bei / mit … weiterhelfen?",
       "en": "Could you please help me with …?",
       "uk": "Чи не могли б ви мені допомогти з …?",
-      "ru": "Не могли бы вы помочь мне с …?"
+      "ru": "Не могли бы вы помочь мне с …?",
+      "gram": ""
     },
     "a": {
       "de": "Selbstverständlich, das mache ich gerne. Womit genau kann ich Ihnen helfen?",
       "en": "Of course, I'd be happy to. What exactly can I help you with?",
       "uk": "Звичайно, із задоволенням. З чим саме я можу вам допомогти?",
-      "ru": "Конечно, с удовольствием. Чем именно я могу вам помочь?"
-    },
-    "gram": ""
+      "ru": "Конечно, с удовольствием. Чем именно я могу вам помочь?",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_014",
     "cat": "Lösungswege diskutieren",
     "task": {
@@ -12579,53 +12592,60 @@ var DIALOGE = [
       "de": "Also, wir haben die Herausforderung, dass die Lieferzeiten sich ständig verzögern. Das Hauptproblem sehe ich darin, dass der Lieferant nicht zuverlässig informiert.",
       "en": "So, we have the challenge that delivery times keep getting delayed. I see the main problem in the fact that the supplier doesn't inform us reliably.",
       "uk": "Отже, ми маємо таку проблему, що терміни доставки постійно затримуються. Головну проблему я бачу в тому, що постачальник не надає надійної інформації.",
-      "ru": "Итак, у нас такая проблема, что сроки доставки постоянно задерживаются. Главную проблему я вижу в том, что поставщик не предоставляет надёжной информации."
+      "ru": "Итак, у нас такая проблема, что сроки доставки постоянно задерживаются. Главную проблему я вижу в том, что поставщик не предоставляет надёжной информации.",
+      "gram": ""
     },
     "a": {
       "de": "Habe ich dich richtig verstanden: Es geht also vor allem um die schlechte Kommunikation mit dem Lieferanten?",
       "en": "Did I understand you correctly: it's mainly about the poor communication with the supplier?",
       "uk": "Я правильно тебе зрозумів: отже, йдеться передусім про погану комунікацію з постачальником?",
-      "ru": "Я правильно тебя понял: значит, речь идёт прежде всего о плохой коммуникации с поставщиком?"
+      "ru": "Я правильно тебя понял: значит, речь идёт прежде всего о плохой коммуникации с поставщиком?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, das trifft es gut. Was denkst du, könnten wir dagegen unternehmen?",
       "en": "Exactly, that captures it well. What do you think we could do about it?",
       "uk": "Саме так, це точно передає суть. Як ти думаєш, що ми могли б із цим зробити?",
-      "ru": "Именно так, это точно передаёт суть. Как ты думаешь, что мы могли бы с этим сделать?"
+      "ru": "Именно так, это точно передаёт суть. Как ты думаешь, что мы могли бы с этим сделать?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich würde vorschlagen, dass wir einen festen Ansprechpartner beim Lieferanten anfragen, der uns regelmäßig informiert.",
       "en": "I would suggest that we request a fixed contact person at the supplier who informs us regularly.",
       "uk": "Я б запропонувала звернутися до постачальника з проханням призначити постійного контактного співробітника, який регулярно нас інформуватиме.",
-      "ru": "Я бы предложила обратиться к поставщику с просьбой назначить постоянного контактного сотрудника, который будет регулярно нас информировать."
+      "ru": "Я бы предложила обратиться к поставщику с просьбой назначить постоянного контактного сотрудника, который будет регулярно нас информировать.",
+      "gram": ""
     },
     "q2": {
       "de": "Das klingt sinnvoll. Sollen wir das gleich diese Woche mit dem Lieferanten besprechen?",
       "en": "That sounds sensible. Should we discuss that with the supplier this week already?",
       "uk": "Звучить розумно. Чи варто обговорити це з постачальником уже цього тижня?",
-      "ru": "Звучит разумно. Стоит ли обсудить это с поставщиком уже на этой неделе?"
+      "ru": "Звучит разумно. Стоит ли обсудить это с поставщиком уже на этой неделе?",
+      "gram": ""
     },
     "a2": {
       "de": "Ja, ich vereinbare gerne einen Termin und schicke dir die Einladung.",
       "en": "Yes, I'll gladly arrange an appointment and send you the invitation.",
       "uk": "Так, я із задоволенням домовлюся про зустріч і надішлю тобі запрошення.",
-      "ru": "Да, я с удовольствием договорюсь о встрече и пришлю тебе приглашение."
+      "ru": "Да, я с удовольствием договорюсь о встрече и пришлю тебе приглашение.",
+      "gram": ""
     },
     "q3": {
       "de": "Gut, dann lass uns die nächsten Schritte festhalten: <r>Wer übernimmt welche Aufgabe? Bis wann?</r>",
       "en": "Good, then let's note down the next steps: <r>Who takes on which task? By when?</r>",
       "uk": "Добре, тоді давай зафіксуємо наступні кроки: <r>Хто за що відповідає? До якого терміну?</r>",
-      "ru": "Хорошо, тогда давай зафиксируем следующие шаги: <r>Кто за что отвечает? До какого срока?</r>"
+      "ru": "Хорошо, тогда давай зафиксируем следующие шаги: <r>Кто за что отвечает? До какого срока?</r>",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Nächste Schritte sind: Du vereinbarst den Termin mit dem Lieferanten, ich bereite die Unterlagen vor. Termin: bis Freitag dieser Woche.</r>",
       "en": "<r>The next steps are: you arrange the appointment with the supplier, I prepare the documents. Deadline: by Friday this week.</r>",
       "uk": "<r>Наступні кроки такі: ти домовляєшся про зустріч із постачальником, я готую документи. Термін: до п'ятниці цього тижня.</r>",
-      "ru": "<r>Следующие шаги таковы: ты договариваешься о встрече с поставщиком, я готовлю документы. Срок: до пятницы этой недели.</r>"
-    },
-    "gram": ""
+      "ru": "<r>Следующие шаги таковы: ты договариваешься о встрече с поставщиком, я готовлю документы. Срок: до пятницы этой недели.</r>",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_015",
     "cat": "Lösungswege diskutieren",
     "task": {
@@ -12641,101 +12661,116 @@ var DIALOGE = [
       "de": "Genau. Welche Folgen hätte das deiner Meinung nach, wenn wir das Problem nicht lösen?",
       "en": "Exactly. What consequences do you think this would have if we don't solve the problem?",
       "uk": "Саме так. Які наслідки це матиме, на твою думку, якщо ми не вирішимо проблему?",
-      "ru": "Именно так. Какие последствия это будет иметь, по-твоему, если мы не решим проблему?"
+      "ru": "Именно так. Какие последствия это будет иметь, по-твоему, если мы не решим проблему?",
+      "gram": ""
     },
     "a": {
       "de": "Was könnten wir in dieser Situation machen? Hast du einen Vorschlag, wie wir vorgehen sollten?",
       "en": "What could we do in this situation? Do you have a suggestion on how we should proceed?",
       "uk": "Що ми могли б зробити в цій ситуації? Чи маєш ти пропозицію, як нам варто діяти?",
-      "ru": "Что мы могли бы сделать в этой ситуации? Есть ли у тебя предложение, как нам следует действовать?"
+      "ru": "Что мы могли бы сделать в этой ситуации? Есть ли у тебя предложение, как нам следует действовать?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich habe eine Idee bzw. einen Vorschlag: Wir könnten zum Beispiel einen zweiten Lieferanten als Backup einplanen.",
       "en": "I have an idea or a suggestion: we could, for example, plan a second supplier as a backup.",
       "uk": "У мене є ідея або пропозиція: ми могли б, наприклад, запланувати другого постачальника як резервний варіант.",
-      "ru": "У меня есть идея или предложение: мы могли бы, например, запланировать второго поставщика в качестве резерва."
+      "ru": "У меня есть идея или предложение: мы могли бы, например, запланировать второго поставщика в качестве резерва.",
+      "gram": ""
     },
     "a1": {
       "de": "Sinnvoll wäre <g>es</g>, wenn wir das kurzfristig testen. Eine Alternative wäre auch, die Lagerbestände zu erhöhen.",
       "en": "<g>It</g> would make sense if we tested that in the short term. An alternative would also be to increase stock levels.",
       "uk": "Було б доцільно, якби ми перевірили це в короткостроковій перспективі. Альтернативою було б також збільшити запаси на складі.",
-      "ru": "Было бы целесообразно, если бы мы проверили это в краткосрочной перспективе. Альтернативой также было бы увеличить запасы на складе."
+      "ru": "Было бы целесообразно, если бы мы проверили это в краткосрочной перспективе. Альтернативой также было бы увеличить запасы на складе.",
+      "gram": ""
     },
     "q2": {
       "de": "Was hältst du davon, beide Maßnahmen gleichzeitig umzusetzen? Wie siehst du das?",
       "en": "What do you think about implementing both measures at the same time? How do you see it?",
       "uk": "Що ти думаєш про те, щоб реалізувати обидва заходи одночасно? Як ти це бачиш?",
-      "ru": "Что ты думаешь о том, чтобы реализовать обе меры одновременно? Как ты это видишь?"
+      "ru": "Что ты думаешь о том, чтобы реализовать обе меры одновременно? Как ты это видишь?",
+      "gram": ""
     },
     "a2": {
       "de": "Ich bin der Meinung, dass das zu viel auf einmal wäre. Aus meiner Sicht spricht dafür, dass wir erst den zweiten Lieferanten testen.",
       "en": "I think that would be too much at once. From my point of view, it speaks in favor of first testing the second supplier.",
       "uk": "Я вважаю, що це було б занадто багато одночасно. На мою думку, на користь цього говорить те, що варто спочатку перевірити другого постачальника.",
-      "ru": "Я считаю, что это было бы слишком много одновременно. На мой взгляд, в пользу этого говорит то, что нужно сначала проверить второго поставщика."
+      "ru": "Я считаю, что это было бы слишком много одновременно. На мой взгляд, в пользу этого говорит то, что нужно сначала проверить второго поставщика.",
+      "gram": ""
     },
     "q3": {
       "de": "Dagegen spricht aber, dass uns das Zeit kostet. Wärst du damit einverstanden, beide Schritte parallel zu starten?",
       "en": "But the argument against that is that it costs us time. Would you agree to start both steps in parallel?",
       "uk": "Але проти цього говорить те, що це коштує нам часу. Ти був би з цим згоден розпочати обидва кроки паралельно?",
-      "ru": "Но против этого говорит то, что это стоит нам времени. Ты был бы согласен начать оба шага параллельно?"
+      "ru": "Но против этого говорит то, что это стоит нам времени. Ты был бы согласен начать оба шага параллельно?",
+      "gram": ""
     },
     "a3": {
       "de": "Das klingt überzeugend. Damit bin ich einverstanden, weil wir so schneller eine Lösung finden.",
       "en": "That sounds convincing. I agree with that, because that way we'll find a solution faster.",
       "uk": "Це звучить переконливо. Я з цим згоден, тому що так ми швидше знайдемо рішення.",
-      "ru": "Это звучит убедительно. Я с этим согласен, потому что так мы быстрее найдём решение."
+      "ru": "Это звучит убедительно. Я с этим согласен, потому что так мы быстрее найдём решение.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee, allerdings sollten wir auch bedenken, dass die Geschäftsführung zustimmen muss. Ich sehe das anders: Wir sollten zuerst einen kurzen Bericht vorbereiten.",
       "en": "Good idea, however we should also consider that management has to agree. I see it differently: we should first prepare a short report.",
       "uk": "Гарна ідея, проте нам також слід врахувати, що керівництво має погодитися. Я бачу це інакше: спочатку нам слід підготувати короткий звіт.",
-      "ru": "Хорошая идея, однако нам также следует учесть, что руководство должно дать согласие. Я вижу это иначе: сначала нам нужно подготовить короткий отчёт."
+      "ru": "Хорошая идея, однако нам также следует учесть, что руководство должно дать согласие. Я вижу это иначе: сначала нам нужно подготовить короткий отчёт.",
+      "gram": ""
     },
     "a4": {
       "de": "Lass uns folgende Punkte festhalten: Bericht, Kostenübersicht und Zeitplan. Worauf können wir uns einigen?",
       "en": "Let's note down the following points: report, cost overview and schedule. What can we agree on?",
       "uk": "Давай зафіксуємо такі пункти: звіт, огляд витрат і графік. На чому ми можемо домовитися?",
-      "ru": "Давай зафиксируем следующие пункты: отчёт, обзор расходов и график. О чём мы можем договориться?"
+      "ru": "Давай зафиксируем следующие пункты: отчёт, обзор расходов и график. О чём мы можем договориться?",
+      "gram": ""
     },
     "q5": {
       "de": "Wir priorisieren zuerst den Bericht, danach den Zeitplan. Wer übernimmt welche Aufgabe? Bis wann?",
       "en": "We prioritize the report first, then the schedule. Who takes on which task? By when?",
       "uk": "Ми спочатку надаємо пріоритет звіту, потім графіку. Хто бере на себе яке завдання? До якого терміну?",
-      "ru": "Мы сначала отдаём приоритет отчёту, затем графику. Кто берёт на себя какую задачу? К какому сроку?"
+      "ru": "Мы сначала отдаём приоритет отчёту, затем графику. Кто берёт на себя какую задачу? К какому сроку?",
+      "gram": ""
     },
     "a5": {
       "de": "Als Kompromiss könnten wir die Aufgaben zu zweit aufteilen. Wenn wir bis Freitag liefern, wäre das für dich akzeptabel?",
       "en": "As a compromise, we could split the tasks between the two of us. If we deliver by Friday, would that be acceptable for you?",
       "uk": "Як компроміс, ми могли б розподілити завдання на двох. Якщо ми зробимо це до п'ятниці, це буде для тебе прийнятно?",
-      "ru": "В качестве компромисса мы могли бы разделить задачи на двоих. Если мы сдадим к пятнице, это будет для тебя приемлемо?"
+      "ru": "В качестве компромисса мы могли бы разделить задачи на двоих. Если мы сдадим к пятнице, это будет для тебя приемлемо?",
+      "gram": ""
     },
     "q6": {
       "de": "Wir könnten einen Mittelweg finden, <g>indem</g> wir den Bericht gemeinsam schreiben und den Zeitplan getrennt erstellen.",
       "en": "We could find a middle ground <g>by</g> writing the report together and creating the schedule separately.",
       "uk": "Ми могли б знайти золоту середину, якщо напишемо звіт спільно, а графік складемо окремо.",
-      "ru": "Мы могли бы найти золотую середину, если напишем отчёт совместно, а график составим раздельно."
+      "ru": "Мы могли бы найти золотую середину, если напишем отчёт совместно, а график составим раздельно.",
+      "gram": ""
     },
     "a6": {
       "de": "Fassen wir zusammen: Wir werden den Bericht zusammen schreiben. Also, wir machen das jetzt so: Ich kümmere mich um den Zeitplan.",
       "en": "Let's summarize: we will write the report together. So, this is how we'll do it now: I'll take care of the schedule.",
       "uk": "Підсумуємо: ми будемо писати звіт разом. Отже, ми зробимо так: я займуся графіком.",
-      "ru": "Подведём итог: мы будем писать отчёт вместе. Итак, мы сделаем так: я займусь графиком."
+      "ru": "Подведём итог: мы будем писать отчёт вместе. Итак, мы сделаем так: я займусь графиком.",
+      "gram": ""
     },
     "q7": {
       "de": "Nächste Schritte sind: Bericht fertigstellen, verantwortlich ist Herr Schmidt, Termin: Freitag. Was meinst du genau mit ‚fertigstellen'?",
       "en": "Next steps are: finalize the report, Mr. Schmidt is responsible, deadline: Friday. What exactly do you mean by 'finalize'?",
       "uk": "Наступні кроки: завершити звіт, відповідальний — пан Шмідт, термін: п'ятниця. Що саме ти маєш на увазі під «завершити»?",
-      "ru": "Следующие шаги: завершить отчёт, ответственный — господин Шмидт, срок: пятница. Что именно ты имеешь в виду под «завершить»?"
+      "ru": "Следующие шаги: завершить отчёт, ответственный — господин Шмидт, срок: пятница. Что именно ты имеешь в виду под «завершить»?",
+      "gram": ""
     },
     "a7": {
       "de": "Damit meine ich, dass alle Zahlen <g>geprüft</g> und das Dokument an die Geschäftsführung <g>gesendet wurde</g>. Danke, dann sind wir uns einig.",
       "en": "By that I mean that all the figures <g>have been checked</g> and the document <g>has been sent</g> to management. Thank you, then we agree.",
       "uk": "Цим я маю на увазі, що всі цифри <g>перевірені</g> й документ <g>надіслано</g> керівництву. Дякую, тоді ми домовилися.",
-      "ru": "Этим я имею в виду, что все цифры <g>проверены</g> и документ <g>отправлен</g> руководству. Спасибо, тогда мы договорились."
-    },
-    "gram": ""
+      "ru": "Этим я имею в виду, что все цифры <g>проверены</g> и документ <g>отправлен</g> руководству. Спасибо, тогда мы договорились.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_023",
     "cat": "Etwas reklamieren",
     "task": {
@@ -12750,17 +12785,18 @@ var DIALOGE = [
       "de": "Ich finde <g>es</g> schon sehr ärgerlich, dass die Lieferung erneut zu spät angekommen ist.",
       "en": "I find <g>it</g> quite annoying that the delivery arrived late again.",
       "uk": "Мене дуже дратує, що доставка знову прийшла із запізненням.",
-      "ru": "Меня очень раздражает, что доставка снова пришла с опозданием."
+      "ru": "Меня очень раздражает, что доставка снова пришла с опозданием.",
+      "gram": "es_pronomen"
     },
     "a": {
       "de": "Das ist außerordentlich bedauerlich. Ich entschuldige mich noch einmal für die Verzögerung.",
       "en": "That is extremely regrettable. I apologize once again for the delay.",
       "uk": "Це надзвичайно прикро. Я ще раз перепрошую за затримку.",
-      "ru": "Это чрезвычайно прискорбно. Я ещё раз прошу прощения за задержку."
-    },
-    "gram": "es_pronomen"
+      "ru": "Это чрезвычайно прискорбно. Я ещё раз прошу прощения за задержку.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_024",
     "cat": "Etwas reklamieren",
     "task": {
@@ -12775,17 +12811,18 @@ var DIALOGE = [
       "de": "Wir sind sehr unzufrieden, weil die <g>gelieferte</g> Ware nicht der Bestellung entspricht.",
       "en": "We are very dissatisfied because the <g>delivered</g> goods do not match the order.",
       "uk": "Ми дуже незадоволені, тому що <g>доставлений</g> товар не відповідає замовленню.",
-      "ru": "Мы очень недовольны, потому что <g>доставленный</g> товар не соответствует заказу."
+      "ru": "Мы очень недовольны, потому что <g>доставленный</g> товар не соответствует заказу.",
+      "gram": "partizipien_als_adjektive"
     },
     "a": {
       "de": "Wir bedauern sehr, dass es zu Problemen mit Ihrer Bestellung gekommen ist. Der Grund dafür war ein interner Fehler im Lager.",
       "en": "We very much regret that problems have arisen with your order. The reason for this was an internal error in the warehouse.",
       "uk": "Ми дуже шкодуємо, що з вашим замовленням виникли проблеми. Причиною цього була внутрішня помилка на складі.",
-      "ru": "Мы очень сожалеем, что с вашим заказом возникли проблемы. Причиной этого была внутренняя ошибка на складе."
-    },
-    "gram": "partizipien_als_adjektive"
+      "ru": "Мы очень сожалеем, что с вашим заказом возникли проблемы. Причиной этого была внутренняя ошибка на складе.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_025",
     "cat": "Etwas reklamieren",
     "task": {
@@ -12800,17 +12837,18 @@ var DIALOGE = [
       "de": "Wir mussten feststellen, dass mehrere Artikel beschädigt bei uns angekommen sind. Das bedeutet, dass wir die gesamte Lieferung nicht verwenden können.",
       "en": "We had to determine that several items arrived damaged. That means we cannot use the entire delivery.",
       "uk": "Ми змушені були встановити, що кілька товарів прийшли до нас пошкодженими. Це означає, що ми не можемо використати всю партію.",
-      "ru": "Мы были вынуждены установить, что несколько товаров пришли к нам повреждёнными. Это означает, что мы не можем использовать всю партию."
+      "ru": "Мы были вынуждены установить, что несколько товаров пришли к нам повреждёнными. Это означает, что мы не можем использовать всю партию.",
+      "gram": ""
     },
     "a": {
       "de": "Auch das tut uns sehr leid. Wir haben mittlerweile herausgefunden, dass es beim Transport zu Beschädigungen gekommen ist.",
       "en": "We are very sorry about that too. We have since found out that the damage occurred during transport.",
       "uk": "Нам це теж дуже прикро. Тим часом ми з'ясували, що пошкодження сталися під час транспортування.",
-      "ru": "Нам это тоже очень жаль. Тем временем мы выяснили, что повреждения произошли во время транспортировки."
-    },
-    "gram": ""
+      "ru": "Нам это тоже очень жаль. Тем временем мы выяснили, что повреждения произошли во время транспортировки.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_026",
     "cat": "Etwas reklamieren",
     "task": {
@@ -12825,17 +12863,18 @@ var DIALOGE = [
       "de": "Ich gehe davon aus, dass Sie uns hier entgegenkommen und das Problem schnell lösen.",
       "en": "I assume that you will accommodate us here and solve the problem quickly.",
       "uk": "Я виходжу з того, що ви підете нам назустріч і швидко вирішите цю проблему.",
-      "ru": "Я исхожу из того, что вы пойдёте нам навстречу и быстро решите эту проблему."
+      "ru": "Я исхожу из того, что вы пойдёте нам навстречу и быстро решите эту проблему.",
+      "gram": ""
     },
     "a": {
       "de": "Wir verstehen sehr gut, dass Sie eine schnelle Lösung wünschen. Wären Sie mit einem kostenlosen Ersatzprodukt als Ausgleich einverstanden?",
       "en": "We understand very well that you want a quick solution. Would you agree to a free replacement product as compensation?",
       "uk": "Ми дуже добре розуміємо, що ви хочете швидкого рішення. Чи погодилися б ви на безкоштовний замінний товар як компенсацію?",
-      "ru": "Мы очень хорошо понимаем, что вы хотите быстрого решения. Согласились бы вы на бесплатный замещающий товар в качестве компенсации?"
-    },
-    "gram": ""
+      "ru": "Мы очень хорошо понимаем, что вы хотите быстрого решения. Согласились бы вы на бесплатный замещающий товар в качестве компенсации?",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_027",
     "cat": "Etwas reklamieren",
     "task": {
@@ -12850,17 +12889,18 @@ var DIALOGE = [
       "de": "Damit sind wir nur einverstanden, wenn Sie uns zusätzlich die Versandkosten erstatten. Ich bitte um eine schnelle Lösung, da wir die Ware dringend benötigen.",
       "en": "We can only agree to that if you also reimburse us for the shipping costs. I ask for a quick solution, as we urgently need the goods.",
       "uk": "Ми погодимося на це лише за умови, що ви додатково відшкодуєте нам вартість доставки. Прошу швидкого вирішення, оскільки товар нам терміново потрібен.",
-      "ru": "Мы согласимся на это только при условии, что вы дополнительно возместите нам стоимость доставки. Прошу быстрого решения, так как товар нам срочно нужен."
+      "ru": "Мы согласимся на это только при условии, что вы дополнительно возместите нам стоимость доставки. Прошу быстрого решения, так как товар нам срочно нужен.",
+      "gram": ""
     },
     "a": {
       "de": "Das ist möglich. Zusätzlich bieten wir Ihnen an, die Versandkosten zu reduzieren und die Ersatzlieferung express zu versenden.",
       "en": "That is possible. In addition, we offer to reduce the shipping costs and send the replacement delivery by express.",
       "uk": "Це можливо. Додатково ми пропонуємо вам зменшити вартість доставки та надіслати замінну партію експрес-доставкою.",
-      "ru": "Это возможно. Дополнительно мы предлагаем вам снизить стоимость доставки и отправить замещающую партию экспресс-доставкой."
-    },
-    "gram": ""
+      "ru": "Это возможно. Дополнительно мы предлагаем вам снизить стоимость доставки и отправить замещающую партию экспресс-доставкой.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_028",
     "cat": "Etwas reklamieren",
     "task": {
@@ -12875,17 +12915,18 @@ var DIALOGE = [
       "de": "Dann erwarte ich aber, dass so etwas in Zukunft nicht mehr vorkommt. Wir gehen davon aus, dass Sie die Qualitätskontrolle verbessern.",
       "en": "But then I expect that something like this won't happen again in the future. We assume that you will improve the quality control.",
       "uk": "Тоді я очікую, що в майбутньому подібного більше не повториться. Ми виходимо з того, що ви покращите контроль якості.",
-      "ru": "Тогда я ожидаю, что в будущем подобное больше не повторится. Мы исходим из того, что вы улучшите контроль качества."
+      "ru": "Тогда я ожидаю, что в будущем подобное больше не повторится. Мы исходим из того, что вы улучшите контроль качества.",
+      "gram": ""
     },
     "a": {
       "de": "Als Entschädigung kann ich Ihnen außerdem einen Gutschein für die nächste Bestellung anbieten. Wir werden alles tun, <g>damit</g> sich das nicht wiederholt.",
       "en": "As compensation, I can also offer you a voucher for your next order. We will do everything to ensure this does not happen again.",
       "uk": "Як компенсацію я можу також запропонувати вам ваучер на наступне замовлення. Ми зробимо все, <g>щоб</g> це не повторилося.",
-      "ru": "В качестве компенсации я могу также предложить вам ваучер на следующий заказ. Мы сделаем всё, <g>чтобы</g> это не повторилось."
-    },
-    "gram": "konnektoren_infinitiv"
+      "ru": "В качестве компенсации я могу также предложить вам ваучер на следующий заказ. Мы сделаем всё, <g>чтобы</g> это не повторилось.",
+      "gram": "konnektoren_infinitiv"
+    }
   },
-{
+  {
     "id": "dlg_029",
     "cat": "Mein Beruf",
     "task": {
@@ -12901,113 +12942,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Die Geschäftsführung hat entschieden, dass unser Standort ab nächstem Jahr in einen anderen Vorort verlegt wird. Die Entfernung zum neuen Arbeitsort beträgt fast 60 Kilometer, und viele Kolleginnen und Kollegen wissen jetzt nicht, ob sie pendeln oder umziehen sollen.",
       "en": "We have a problem: management has decided that our location will be moved to another suburb starting next year. The distance to the new workplace is almost 60 kilometers, and many colleagues don't know now whether they should commute or relocate.",
       "uk": "У нас проблема: керівництво вирішило, що з наступного року наш офіс перенесуть в інше передмістя. Відстань до нового місця роботи становить майже 60 кілометрів, і багато колег тепер не знають, чи їм їздити щодня, чи переїжджати.",
-      "ru": "У нас проблема: руководство решило, что с следующего года наш офис перенесут в другой пригород. Расстояние до нового места работы составляет почти 60 километров, и многие коллеги теперь не знают, ездить ли им каждый день или переезжать."
+      "ru": "У нас проблема: руководство решило, что с следующего года наш офис перенесут в другой пригород. Расстояние до нового места работы составляет почти 60 километров, и многие коллеги теперь не знают, ездить ли им каждый день или переезжать.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass der neue Standort für viele Mitarbeitende zu weit entfernt ist?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that the new location is too far away for many employees?",
       "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що нове місце розташування занадто далеко для багатьох співробітників?",
-      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что новое расположение слишком далеко для многих сотрудников?"
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что новое расположение слишком далеко для многих сотрудников?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das für das Team, wenn wir nichts unternehmen?",
       "en": "Exactly. What do you think, what consequences would that have for the team if we do nothing?",
       "uk": "Саме так. Як ти думаєш, які наслідки це матиме для команди, якщо ми нічого не зробимо?",
-      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь для команды, если мы ничего не предпримем?"
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь для команды, если мы ничего не предпримем?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich bin der Meinung, dass</r> mehrere erfahrene Fachkräfte kündigen würden, <g>weil</g> ihnen die tägliche Pendelzeit zu lang <g>wäre</g>.",
       "en": "<r>I think that</r> several experienced specialists would resign, because the daily commuting time would be too long for them.",
       "uk": "<r>Я вважаю, що</r> кілька досвідчених фахівців звільнилися б, оскільки щоденний час на дорогу був би для них занадто довгим.",
-      "ru": "<r>Я считаю, что</r> несколько опытных специалистов уволились бы, потому что ежедневное время на дорогу было бы для них слишком долгим."
+      "ru": "<r>Я считаю, что</r> несколько опытных специалистов уволились бы, потому что ежедневное время на дорогу было бы для них слишком долгим.",
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> der Geschäftsführung vorschlagen, dass Mitarbeitende an zwei Tagen pro Woche im Homeoffice arbeiten dürfen?",
       "en": "<r>How about we</r> suggest to management that employees be allowed to work from home two days a week?",
       "uk": "<r>Що якщо ми</r> запропонуємо керівництву дозволити співробітникам працювати з дому два дні на тиждень?",
-      "ru": "<r>Что если мы</r> предложим руководству разрешить сотрудникам работать из дома два дня в неделю?"
+      "ru": "<r>Что если мы</r> предложим руководству разрешить сотрудникам работать из дома два дня в неделю?",
+      "gram": ""
     },
     "a2": {
       "de": "Das <r>ist sicherlich sinnvoll, da</r> man sich dann nicht sofort an einen neuen Wohnort gewöhnen müsste. Wir sollten aber vorher klären, ob das für alle Abteilungen überhaupt in Frage kommt.",
       "en": "That <r>certainly makes sense</r>, since then people wouldn't have to get used to a new place of residence right away. But we should first clarify whether that's even an option for all departments.",
       "uk": "Це, <r>безумовно, розумно</r>, адже тоді не довелося б одразу звикати до нового місця проживання. Але спершу варто з'ясувати, чи це взагалі можливо для всіх відділів.",
-      "ru": "Это, <r>безусловно, разумно</r>, так как тогда не пришлось бы сразу привыкать к новому месту жительства. Но сначала нужно выяснить, возможно ли это вообще для всех отделов."
+      "ru": "Это, <r>безусловно, разумно</r>, так как тогда не пришлось бы сразу привыкать к новому месту жительства. Но сначала нужно выяснить, возможно ли это вообще для всех отделов.",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, zusätzlich eine flexible Gleitzeit mit fester Kernarbeitszeit einzuführen. <r>Was hältst du davon</r>?",
       "en": "Another suggestion would be to also introduce flexible working hours with a fixed core time. <r>What do you think about that</r>?",
       "uk": "Ще одна пропозиція - додатково впровадити гнучкий графік із фіксованим основним робочим часом. <r>Що ти про це думаєш</r>?",
-      "ru": "Еще одно предложение - дополнительно ввести гибкий график с фиксированным основным рабочим временем. <r>Что ты об этом думаешь</r>?"
+      "ru": "Еще одно предложение - дополнительно ввести гибкий график с фиксированным основным рабочим временем. <r>Что ты об этом думаешь</r>?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass nicht jede Abteilung im Homeoffice arbeiten kann - die Buchhaltung zum Beispiel braucht oft persönlichen Kundenkontakt vor Ort.",
       "en": "<r>One argument against that is</r> that not every department can work from home - accounting, for example, often needs personal contact with clients on-site.",
       "uk": "<r>Аргумент проти цього</r> полягає в тому, що не кожен відділ може працювати з дому - бухгалтерія, наприклад, часто потребує особистого контакту з клієнтами на місці.",
-      "ru": "<r>Аргумент против этого</r> в том, что не каждый отдел может работать из дома - бухгалтерия, например, часто нуждается в личном контакте с клиентами на месте."
+      "ru": "<r>Аргумент против этого</r> в том, что не каждый отдел может работать из дома - бухгалтерия, например, часто нуждается в личном контакте с клиентами на месте.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, <g>indem</g></r> man abwechselnd im Büro und im Homeoffice <g>arbeitet</g>.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> working alternately in the office and from home.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо працювати почергово в офісі та вдома.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если работать поочередно в офисе и дома."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если работать поочередно в офисе и дома.",
+      "gram": "wortstellung"
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir überhaupt nicht vorstellen, dass die Geschäftsführung dagegen wäre, wenn wir zeigen, dass die Produktivität dadurch nicht sinkt.",
       "en": "<r>I completely agree with you</r>. I really can't imagine that management would be against it if we show that productivity doesn't decrease as a result.",
       "uk": "<r>Тут я з тобою цілком згоден</r>. Я взагалі не можу собі уявити, що керівництво було б проти, якщо ми покажемо, що продуктивність через це не знижується.",
-      "ru": "<r>Тут я с тобой полностью согласен</r>. Я вообще не могу себе представить, что руководство было бы против, если мы покажем, что производительность из-за этого не снижается."
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Я вообще не могу себе представить, что руководство было бы против, если мы покажем, что производительность из-за этого не снижается.",
+      "gram": ""
     },
     "q5": {
       "de": "Sollten wir auch vorschlagen, eine Änderung an den befristeten Arbeitsverträgen vorzunehmen und sie in unbefristete Verträge umzuwandeln, damit sich die Fachkräfte am neuen Standort sicherer fühlen?",
       "en": "Should we also suggest making a change to the fixed-term employment contracts and converting them into permanent ones, so that the specialists feel more secure at the new location?",
       "uk": "Чи варто нам також запропонувати внести зміну до строкових трудових договорів і перетворити їх на безстрокові, щоб фахівці почувалися впевненіше на новому місці?",
-      "ru": "Стоит ли нам также предложить внести изменение в срочные трудовые договоры и превратить их в бессрочные, чтобы специалисты чувствовали себя увереннее на новом месте?"
+      "ru": "Стоит ли нам также предложить внести изменение в срочные трудовые договоры и превратить их в бессрочные, чтобы специалисты чувствовали себя увереннее на новом месте?",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>, <g>weil</g> es Vertrauen <g>schafft</g>. Zusätzlich könnten wir eine kleine Umzugshilfe für alle anbieten, die tatsächlich umziehen möchten.",
       "en": "<r>I think that's a good point</r>, because it builds trust. In addition, we could offer everyone who actually wants to relocate a small relocation allowance.",
       "uk": "<r>Вважаю це гарною думкою</r>, бо це створює довіру. Крім того, ми могли б запропонувати невелику допомогу з переїздом усім, хто справді хоче переїхати.",
-      "ru": "<r>Считаю это хорошей мыслью</r>, потому что это создаёт доверие. Кроме того, мы могли бы предложить небольшую помощь с переездом всем, кто действительно хочет переехать."
+      "ru": "<r>Считаю это хорошей мыслью</r>, потому что это создаёт доверие. Кроме того, мы могли бы предложить небольшую помощь с переездом всем, кто действительно хочет переехать.",
+      "gram": "wortstellung"
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich bereite einen kurzen Bericht über die Homeoffice-Möglichkeiten vor, und du kümmerst dich um die Zahlen zur Umzugshilfe. Einverstanden?",
       "en": "Let's split up the tasks: I'll prepare a short report on the home office options, and you take care of the figures for the relocation allowance. Agreed?",
       "uk": "Давай розподілимо завдання: я підготую короткий звіт про можливості роботи з дому, а ти займешся цифрами щодо допомоги з переїздом. Домовились?",
-      "ru": "Давай разделим задачи: я подготовлю короткий отчёт о возможностях работы из дома, а ты займёшься цифрами по помощи с переездом. Договорились?"
+      "ru": "Давай разделим задачи: я подготовлю короткий отчёт о возможностях работы из дома, а ты займёшься цифрами по помощи с переездом. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, deinen Teil schon bis Mittwoch fertigzustellen, damit wir noch Zeit für Korrekturen haben?",
       "en": "Agreed. Do you intend to finish your part by Wednesday, so we still have time for corrections?",
       "uk": "Домовились. Ти маєш намір завершити свою частину вже до середи, щоб у нас залишився час на виправлення?",
-      "ru": "Договорились. Ты намерена завершить свою часть уже к среде, чтобы у нас осталось время на исправления?"
+      "ru": "Договорились. Ты намерена завершить свою часть уже к среде, чтобы у нас осталось время на исправления?",
+      "gram": ""
     },
     "q7": {
       "de": "Wäre es realistisch, wenn wir den Vorschlag bis Ende der Woche fertigstellen und ihn nächsten Montag im Meeting vorstellen?",
       "en": "Would it be realistic if we finish the proposal by the end of the week and present it at the meeting next Monday?",
       "uk": "Чи буде реалістично, якщо ми завершимо пропозицію до кінця тижня та представимо її наступного понеділка на нараді?",
-      "ru": "Будет ли реалистично, если мы завершим предложение к концу недели и представим его в следующий понедельник на совещании?"
+      "ru": "Будет ли реалистично, если мы завершим предложение к концу недели и представим его в следующий понедельник на совещании?",
+      "gram": ""
     },
     "a7": {
       "de": "Ja, das sollte machbar sein, wenn wir uns morgen noch einmal kurz austauschen, um die letzten Details zu klären.",
       "en": "Yes, that should be feasible if we quickly touch base again tomorrow to clarify the last details.",
       "uk": "Так, це має бути здійсненно, якщо ми завтра ще раз коротко обговоримо й уточнимо останні деталі.",
-      "ru": "Да, это должно быть выполнимо, если мы завтра ещё раз коротко обсудим и уточним последние детали."
+      "ru": "Да, это должно быть выполнимо, если мы завтра ещё раз коротко обсудим и уточним последние детали.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir schlagen flexibles Homeoffice, eine faire Gleitzeitregelung und eine Umzugshilfe vor, damit niemand wegen des neuen Standorts kündigen muss.",
       "en": "Let's summarize: we're proposing flexible home office, a fair flextime arrangement, and a relocation allowance, so that nobody has to resign because of the new location.",
       "uk": "Підсумуємо: ми пропонуємо гнучку роботу з дому, справедливий гнучкий графік і допомогу з переїздом, щоб нікому не довелося звільнятися через нове місце розташування.",
-      "ru": "Подведём итог: мы предлагаем гибкую работу из дома, справедливый гибкий график и помощь с переездом, чтобы никому не пришлось увольняться из-за нового местоположения."
+      "ru": "Подведём итог: мы предлагаем гибкую работу из дома, справедливый гибкий график и помощь с переездом, чтобы никому не пришлось увольняться из-за нового местоположения.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, so erfüllen wir auch die Anforderung, alle Mitarbeitenden fair zu behandeln - unser Vorschlag wird bei der Geschäftsführung sicher Anerkennung finden. Ich schreibe das Protokoll und schicke es dir heute noch.",
       "en": "Exactly. I think that way we also meet the requirement to treat all employees fairly - our proposal will surely gain recognition from management. I'll write up the minutes and send them to you today.",
       "uk": "Саме так. Гадаю, так ми ще й виконуємо вимогу справедливо ставитися до всіх співробітників - наша пропозиція точно знайде визнання в керівництва. Я напишу протокол і надішлю тобі його ще сьогодні.",
-      "ru": "Именно так. Думаю, так мы ещё и выполняем требование справедливо относиться ко всем сотрудникам - наше предложение точно найдёт признание у руководства. Я напишу протокол и отправлю его тебе ещё сегодня."
-    },
-    "gram": "wortstellung"
+      "ru": "Именно так. Думаю, так мы ещё и выполняем требование справедливо относиться ко всем сотрудникам - наше предложение точно найдёт признание у руководства. Я напишу протокол и отправлю его тебе ещё сегодня.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_030",
     "cat": "Bei der Agentur für Arbeit",
     "task": {
@@ -13023,113 +13081,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Unsere neue Kollegin, Frau Klein, ist Quereinsteigerin und hat sich rechtzeitig arbeitslos gemeldet, aber ihre Sozialversicherungsnummer und die Arbeitserlaubnis sind noch nicht angekommen, weil bei der Agentur für Arbeit einige Unterlagen fehlen.",
       "en": "We have a problem: our new colleague, Ms. Klein, is a career changer and registered as unemployed on time, but her social security number and work permit still haven't arrived, because some documents are missing at the employment agency.",
       "uk": "У нас проблема: наша нова колега, пані Кляйн, прийшла в професію з іншої сфери і вчасно стала на облік як безробітна, але її номер соціального страхування та дозвіл на роботу досі не прийшли, бо в агентстві зайнятості бракує деяких документів.",
-      "ru": "У нас проблема: наша новая коллега, госпожа Кляйн, пришла в профессию из другой сферы и вовремя встала на учёт как безработная, но её номер социального страхования и разрешение на работу до сих пор не пришли, потому что в агентстве занятости не хватает некоторых документов."
+      "ru": "У нас проблема: наша новая коллега, госпожа Кляйн, пришла в профессию из другой сферы и вовремя встала на учёт как безработная, но её номер социального страхования и разрешение на работу до сих пор не пришли, потому что в агентстве занятости не хватает некоторых документов.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass sie ohne diese Nummer nicht offiziell bei uns anfangen kann?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that she can't officially start with us without that number?",
       "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що без цього номера вона не може офіційно розпочати роботу в нас?",
-      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что без этого номера она не может официально начать работу у нас?"
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что без этого номера она не может официально начать работу у нас?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das für das Team, wenn sie nicht pünktlich anfangen kann?",
       "en": "Exactly. What do you think, what consequences would that have for the team if she can't start on time?",
       "uk": "Саме так. Як ти думаєш, які наслідки це матиме для команди, якщо вона не зможе почати вчасно?",
-      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь для команды, если она не сможет начать вовремя?"
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь для команды, если она не сможет начать вовремя?",
+      "gram": ""
     },
     "a1": {
       "de": "Ehrlich gesagt macht mir das ein bisschen Angst, weil das Projekt dann ohne sie starten müsste und die anderen Kolleginnen und Kollegen zusätzliche Aufgaben übernehmen müssten.",
       "en": "Honestly, that worries me a bit, because the project would then have to start without her and the other colleagues would have to take on extra tasks.",
       "uk": "Чесно кажучи, мене це трохи лякає, бо тоді проєкт довелося б починати без неї, а іншим колегам - брати на себе додаткові завдання.",
-      "ru": "Честно говоря, меня это немного пугает, потому что тогда проект пришлось бы начинать без неё, а другим коллегам - брать на себя дополнительные задачи."
+      "ru": "Честно говоря, меня это немного пугает, потому что тогда проект пришлось бы начинать без неё, а другим коллегам - брать на себя дополнительные задачи.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> ihr ein Angebot machen und sie zunächst auf einer Teilzeitstelle mitarbeiten lassen, bis alle Unterlagen vollständig sind?",
       "en": "<r>How about we</r> make her an offer and let her work part-time at first, until all the documents are complete?",
       "uk": "<r>Що якщо ми</r> зробимо їй пропозицію і дозволимо спочатку працювати на неповну ставку, поки всі документи не будуть готові?",
-      "ru": "<r>Что если мы</r> сделаем ей предложение и разрешим сначала работать на неполную ставку, пока все документы не будут готовы?"
+      "ru": "<r>Что если мы</r> сделаем ей предложение и разрешим сначала работать на неполную ставку, пока все документы не будут готовы?",
+      "gram": ""
     },
     "a2": {
       "de": "Das klingt sinnvoll, aber wir sollten vorher klären, ob das ohne gültige Arbeitserlaubnis überhaupt in Frage kommt.",
       "en": "That sounds sensible, but we should first clarify whether that's even an option without a valid work permit.",
       "uk": "Звучить розумно, але спершу варто з'ясувати, чи це взагалі можливо без дійсного дозволу на роботу.",
-      "ru": "Звучит разумно, но сначала нужно выяснить, возможно ли это вообще без действующего разрешения на работу."
+      "ru": "Звучит разумно, но сначала нужно выяснить, возможно ли это вообще без действующего разрешения на работу.",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, eine Anfrage an die Agentur für Arbeit zu stellen, ob wir sie zu ihrem nächsten Termin begleiten dürfen, damit sie ihn sicher wahrnimmt und alles schneller geht.",
       "en": "Another suggestion would be to submit a request to the employment agency about whether we can accompany her to her next appointment, so she attends it for sure and everything goes faster.",
       "uk": "Ще одна пропозиція - надіслати запит до агентства зайнятості, чи можемо ми супроводити її на наступний прийом, щоб вона точно на нього потрапила і все пройшло швидше.",
-      "ru": "Ещё одно предложение - отправить запрос в агентство занятости, можем ли мы сопроводить её на следующий приём, чтобы она точно на него попала и всё прошло быстрее."
+      "ru": "Ещё одно предложение - отправить запрос в агентство занятости, можем ли мы сопроводить её на следующий приём, чтобы она точно на него попала и всё прошло быстрее.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass wir dafür während der Arbeitszeit jemanden freistellen müssten.",
       "en": "<r>One argument against that is</r> that we'd have to free someone up during working hours for that.",
       "uk": "<r>Аргумент проти цього</r> полягає в тому, що для цього нам довелося б звільнити когось від роботи на якийсь час.",
-      "ru": "<r>Аргумент против этого</r> в том, что для этого нам пришлось бы освободить кого-то от работы на время."
+      "ru": "<r>Аргумент против этого</r> в том, что для этого нам пришлось бы освободить кого-то от работы на время.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir uns die Begleitung im Team aufteilen.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> splitting the accompanying duty within the team.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, розподіливши супровід між членами команди.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, распределив сопровождение между членами команды."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, распределив сопровождение между членами команды.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir überhaupt nicht vorstellen, dass das für einen Vormittag ein großes Problem wäre.",
       "en": "<r>I completely agree with you</r>. I really can't imagine that being a big problem for just one morning.",
       "uk": "<r>Тут я з тобою цілком згоден</r>. Я взагалі не можу собі уявити, що це стане великою проблемою заради одного ранку.",
-      "ru": "<r>Тут я с тобой полностью согласен</r>. Я вообще не могу себе представить, что это станет большой проблемой ради одного утра."
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Я вообще не могу себе представить, что это станет большой проблемой ради одного утра.",
+      "gram": ""
     },
     "q5": {
       "de": "Zusätzlich könnten wir ihr die Reisekosten für die Fahrten zum Amt erstatten - ich glaube, sie hat sogar Anspruch darauf, wenn sie dafür extra fahren muss.",
       "en": "In addition, we could reimburse her travel costs for the trips to the agency - I think she's even entitled to it, since she has to make the extra trip.",
       "uk": "Крім того, ми могли б відшкодувати їй витрати на поїздки до відомства - гадаю, вона навіть має на це право, якщо їй доводиться їхати додатково.",
-      "ru": "Кроме того, мы могли бы возместить ей расходы на поездки в ведомство - думаю, она даже имеет на это право, раз ей приходится ехать дополнительно."
+      "ru": "Кроме того, мы могли бы возместить ей расходы на поездки в ведомство - думаю, она даже имеет на это право, раз ей приходится ехать дополнительно.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. Wir könnten außerdem ihre Probezeit erst mit dem tatsächlichen Arbeitsbeginn starten lassen, damit ihr nichts verloren geht.",
       "en": "<r>I think that's a good point</r>. We could also only start her probationary period from her actual start date, so she doesn't lose anything.",
       "uk": "<r>Вважаю це гарною думкою</r>. Ми також могли б почати відлік її випробувального терміну лише з фактичного початку роботи, щоб вона нічого не втратила.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы начать отсчёт её испытательного срока только с фактического начала работы, чтобы она ничего не потеряла."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы начать отсчёт её испытательного срока только с фактического начала работы, чтобы она ничего не потеряла.",
+      "gram": ""
     },
     "q6": {
       "de": "Lass uns die Aufgaben in Angriff nehmen und aufteilen: Ich kläre die Sache mit der Personalabteilung, und du sprichst mit Frau Klein über den neuen Zeitplan. Einverstanden?",
       "en": "Let's tackle and split up the tasks: I'll sort things out with HR, and you talk to Ms. Klein about the new schedule. Agreed?",
       "uk": "Давай візьмемося за завдання і розподілимо їх: я з'ясую питання з відділом кадрів, а ти поговориш із пані Кляйн про новий графік. Домовились?",
-      "ru": "Давай возьмёмся за задачи и разделим их: я выясню вопрос с отделом кадров, а ты поговоришь с госпожой Кляйн о новом графике. Договорились?"
+      "ru": "Давай возьмёмся за задачи и разделим их: я выясню вопрос с отделом кадров, а ты поговоришь с госпожой Кляйн о новом графике. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, das noch diese Woche mit der Personalabteilung zu klären?",
       "en": "Agreed. Do you intend to sort that out with HR this week already?",
       "uk": "Домовились. Ти маєш намір з'ясувати це з відділом кадрів уже цього тижня?",
-      "ru": "Договорились. Ты намерена выяснить это с отделом кадров уже на этой неделе?"
+      "ru": "Договорились. Ты намерена выяснить это с отделом кадров уже на этой неделе?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn ich das bis Donnerstag erledige und wir uns am Freitag noch einmal kurz austauschen?",
       "en": "Yes, would it be realistic if I get that done by Thursday and we touch base briefly again on Friday?",
       "uk": "Так, чи буде реалістично, якщо я зроблю це до четверга, а в п'ятницю ми ще раз коротко обговоримо?",
-      "ru": "Да, будет ли реалистично, если я сделаю это до четверга, а в пятницу мы ещё раз коротко обсудим?"
+      "ru": "Да, будет ли реалистично, если я сделаю это до четверга, а в пятницу мы ещё раз коротко обсудим?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein. Ich informiere Frau Klein dann am Freitagnachmittag über die Lösung.",
       "en": "That should be feasible. I'll then inform Ms. Klein about the solution on Friday afternoon.",
       "uk": "Це має бути здійсненно. Тоді я повідомлю пані Кляйн про рішення в п'ятницю після обіду.",
-      "ru": "Это должно быть выполнимо. Тогда я сообщу госпоже Кляйн о решении в пятницу после обеда."
+      "ru": "Это должно быть выполнимо. Тогда я сообщу госпоже Кляйн о решении в пятницу после обеда.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Frau Klein arbeitet vorerst in Teilzeit, wir begleiten sie zum Amt, erstatten ihr die Reisekosten und verschieben den Beginn ihrer Probezeit, damit ihr keine Nachteile entstehen.",
       "en": "Let's summarize: Ms. Klein will work part-time for now, we'll accompany her to the agency, reimburse her travel costs, and postpone the start of her probationary period, so she isn't disadvantaged.",
       "uk": "Підсумуємо: пані Кляйн поки що працюватиме на неповну ставку, ми супроводимо її до відомства, відшкодуємо їй витрати на поїздки та відкладемо початок випробувального терміну, щоб вона не мала жодних недоліків.",
-      "ru": "Подведём итог: госпожа Кляйн пока будет работать на неполную ставку, мы сопроводим её в ведомство, возместим ей расходы на поездки и отложим начало испытательного срока, чтобы у неё не было никаких недостатков."
+      "ru": "Подведём итог: госпожа Кляйн пока будет работать на неполную ставку, мы сопроводим её в ведомство, возместим ей расходы на поездки и отложим начало испытательного срока, чтобы у неё не было никаких недостатков.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, damit erfüllen wir auch die Anforderung, neue Kolleginnen und Kollegen fair zu behandeln - diese Lösung wird bei Frau Klein sicher Anerkennung finden. Ich schreibe die wichtigsten Punkte kurz zusammen und schicke sie euch beiden noch heute.",
       "en": "Exactly. I think that way we also meet the requirement to treat new colleagues fairly - this solution will surely gain recognition from Ms. Klein. I'll summarize the key points and send them to both of you today.",
       "uk": "Саме так. Гадаю, так ми ще й виконуємо вимогу справедливо ставитися до нових колег - це рішення точно знайде визнання в пані Кляйн. Я коротко підсумую головні пункти і надішлю їх вам обом уже сьогодні.",
-      "ru": "Именно так. Думаю, так мы ещё и выполняем требование справедливо относиться к новым коллегам - это решение точно найдёт признание у госпожи Кляйн. Я коротко подведу итоги и отправлю их вам обоим сегодня же."
-    },
-    "gram": ""
+      "ru": "Именно так. Думаю, так мы ещё и выполняем требование справедливо относиться к новым коллегам - это решение точно найдёт признание у госпожи Кляйн. Я коротко подведу итоги и отправлю их вам обоим сегодня же.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_031",
     "cat": "Schlüsselqualifikationen",
     "task": {
@@ -13145,113 +13220,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Für das neue Kundenprojekt brauchen wir jemanden mit ausgeprägter Verhandlungskompetenz und Erfahrung im Risikomanagement, aber im Team hat das aktuell niemand in Kombination.",
       "en": "We have a problem: for the new client project we need someone with strong negotiation skills and experience in risk management, but right now nobody on the team has both.",
       "uk": "У нас проблема: для нового клієнтського проєкту нам потрібна людина з вираженими навичками ведення переговорів і досвідом у ризик-менеджменті, але наразі в команді немає нікого, хто мав би обидва навички одночасно.",
-      "ru": "У нас проблема: для нового клиентского проекта нам нужен человек с выраженными навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого, кто обладал бы обоими навыками одновременно."
+      "ru": "У нас проблема: для нового клиентского проекта нам нужен человек с выраженными навыками ведения переговоров и опытом в риск-менеджменте, но сейчас в команде нет никого, кто обладал бы обоими навыками одновременно.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass wir intern nicht die passende Kombination an Fachkompetenzen haben?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that internally we don't have the right combination of expertise?",
       "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що всередині команди в нас немає потрібного поєднання компетенцій?",
-      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что внутри команды у нас нет нужного сочетания компетенций?"
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что внутри команды у нас нет нужного сочетания компетенций?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir das Projekt trotzdem ohne die nötigen Kompetenzen starten?",
       "en": "Exactly. What do you think, what consequences would that have if we start the project anyway without the necessary skills?",
       "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо ми все одно почнемо проєкт без потрібних навичок?",
-      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы всё равно начнём проект без нужных навыков?"
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы всё равно начнём проект без нужных навыков?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, das wäre <g>keine</g> gute Idee, weil wir dann bei Problemen <g>nicht</g> schnell genug reagieren könnten.",
       "en": "I think that would be a bad idea, because then we wouldn't be able to react quickly enough to problems.",
       "uk": "Гадаю, це була б погана ідея, бо тоді ми не змогли б достатньо швидко реагувати на проблеми.",
-      "ru": "Думаю, это была бы плохая идея, потому что тогда мы не смогли бы достаточно быстро реагировать на проблемы."
+      "ru": "Думаю, это была бы плохая идея, потому что тогда мы не смогли бы достаточно быстро реагировать на проблемы.",
+      "gram": "negation"
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> die Aufgaben nach unseren Stärken aufteilen? Du hast doch ziemlich viel Verhandlungskompetenz, oder?",
       "en": "<r>How about we</r> split the tasks according to our strengths? You do have quite a lot of negotiation skills, don't you?",
       "uk": "<r>Що якщо ми</r> розподілимо завдання за нашими сильними сторонами? У тебе ж непогані навички ведення переговорів, чи не так?",
-      "ru": "<r>Что если мы</r> распределим задачи по нашим сильным сторонам? У тебя же неплохие навыки ведения переговоров, разве нет?"
+      "ru": "<r>Что если мы</r> распределим задачи по нашим сильным сторонам? У тебя же неплохие навыки ведения переговоров, разве нет?",
+      "gram": ""
     },
     "a2": {
       "de": "Das stimmt, aber ich habe leider überhaupt <g>keine</g> Erfahrung im Risikomanagement - das liegt mir wirklich <g>nicht</g>.",
       "en": "That's true, but unfortunately I have no experience at all in risk management - it's really not my thing.",
       "uk": "Це правда, але, на жаль, у мене взагалі немає досвіду в ризик-менеджменті - це справді не моє.",
-      "ru": "Это правда, но, к сожалению, у меня вообще нет опыта в риск-менеджменте - это правда не моё."
+      "ru": "Это правда, но, к сожалению, у меня вообще нет опыта в риск-менеджменте - это правда не моё.",
+      "gram": "negation"
     },
     "q3": {
       "de": "Kein Problem, dafür bin ich in Zeitmanagement und Problemlösung ziemlich stark - das könnte ich übernehmen.",
       "en": "No problem, I'm pretty strong in time management and problem solving instead - I could take that on.",
       "uk": "Не проблема, натомість я досить сильна в тайм-менеджменті та вирішенні проблем - це я могла б узяти на себе.",
-      "ru": "Не проблема, зато я довольно сильна в тайм-менеджменте и решении проблем - это я могла бы взять на себя."
+      "ru": "Не проблема, зато я довольно сильна в тайм-менеджменте и решении проблем - это я могла бы взять на себя.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass dann niemand mehr für die Kundenbetreuung da wäre, weil du die momentan auch übernimmst.",
       "en": "<r>One argument against that is</r> that then there'd be nobody left for customer service, since you're currently handling that too.",
       "uk": "<r>Аргумент проти цього</r> полягає в тому, що тоді нікому було б займатися обслуговуванням клієнтів, адже наразі цим займаєшся ти.",
-      "ru": "<r>Аргумент против этого</r> в том, что тогда некому было бы заниматься обслуживанием клиентов, ведь сейчас этим занимаешься ты."
+      "ru": "<r>Аргумент против этого</r> в том, что тогда некому было бы заниматься обслуживанием клиентов, ведь сейчас этим занимаешься ты.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem vielleicht lösen, indem</r> nicht nur ich, sondern auch ein Kollege aus dem anderen Team die Kundenbetreuung übernimmt.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> having not only me, but also a colleague from the other team take over customer service.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо обслуговування клієнтів візьму на себе не лише я, а й колега з іншої команди.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если обслуживание клиентов возьму на себя не только я, но и коллега из другой команды."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если обслуживание клиентов возьму на себя не только я, но и коллега из другой команды.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich glaube nicht, dass das ein Problem wäre, wenn wir das rechtzeitig ankündigen.",
       "en": "<r>I completely agree with you</r>. I don't think that would be a problem if we announce it in good time.",
       "uk": "<r>Тут я з тобою цілком згоден</r>. Не думаю, що це стане проблемою, якщо ми повідомимо про це заздалегідь.",
-      "ru": "<r>Тут я с тобой полностью согласен</r>. Не думаю, что это станет проблемой, если мы сообщим об этом заранее."
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Не думаю, что это станет проблемой, если мы сообщим об этом заранее.",
+      "gram": ""
     },
     "q5": {
       "de": "Zusätzlich könnten wir eine externe Schulung im Risikomanagement für dich vorschlagen, damit du beim nächsten Mal nicht mehr auf uns angewiesen bist.",
       "en": "In addition, we could suggest an external risk management training for you, so that next time you're not dependent on us anymore.",
       "uk": "Крім того, ми могли б запропонувати тобі зовнішнє навчання з ризик-менеджменту, щоб наступного разу ти вже не залежав від нас.",
-      "ru": "Кроме того, мы могли бы предложить тебе внешнее обучение по риск-менеджменту, чтобы в следующий раз ты уже не зависел от нас."
+      "ru": "Кроме того, мы могли бы предложить тебе внешнее обучение по риск-менеджменту, чтобы в следующий раз ты уже не зависел от нас.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. Ich habe übrigens auch keine Angst davor, mich in ein neues Thema einzuarbeiten.",
       "en": "<r>I think that's a good point</r>. By the way, I'm also not afraid of getting into a new topic.",
       "uk": "<r>Вважаю це гарною думкою</r>. До речі, я також анітрохи не боюся розбиратися в новій темі.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Кстати, я тоже совершенно не боюсь разбираться в новой теме."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Кстати, я тоже совершенно не боюсь разбираться в новой теме.",
+      "gram": ""
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um die Übergabe der Kundenbetreuung, und du meldest dich für die Risikomanagement-Schulung an. Einverstanden?",
       "en": "Let's split up the tasks: I'll take care of handing over customer service, and you sign up for the risk management training. Agreed?",
       "uk": "Давай розподілимо завдання: я займуся передачею обслуговування клієнтів, а ти запишешся на навчання з ризик-менеджменту. Домовились?",
-      "ru": "Давай разделим задачи: я займусь передачей обслуживания клиентов, а ты запишешься на обучение по риск-менеджменту. Договорились?"
+      "ru": "Давай разделим задачи: я займусь передачей обслуживания клиентов, а ты запишешься на обучение по риск-менеджменту. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Ich habe nicht vor, das auf die lange Bank zu schieben - ich melde mich noch diese Woche an.",
       "en": "Agreed. I don't intend to put that off - I'll sign up this week already.",
       "uk": "Домовились. Я не збираюся відкладати це в довгий ящик - запишуся вже цього тижня.",
-      "ru": "Договорились. Я не собираюсь откладывать это в долгий ящик - запишусь уже на этой неделе."
+      "ru": "Договорились. Я не собираюсь откладывать это в долгий ящик - запишусь уже на этой неделе.",
+      "gram": ""
     },
     "q7": {
       "de": "Wäre es realistisch, wenn wir das Projekt trotzdem schon nächste Woche starten, auch wenn deine Schulung noch nicht abgeschlossen ist?",
       "en": "Would it be realistic if we start the project next week anyway, even if your training isn't finished yet?",
       "uk": "Чи буде реалістично, якщо ми все одно почнемо проєкт уже наступного тижня, навіть якщо твоє навчання ще не завершиться?",
-      "ru": "Будет ли реалистично, если мы всё равно начнём проект уже на следующей неделе, даже если твоё обучение ещё не завершится?"
+      "ru": "Будет ли реалистично, если мы всё равно начнём проект уже на следующей неделе, даже если твоё обучение ещё не завершится?",
+      "gram": ""
     },
     "a7": {
       "de": "Ja, das sollte kein Problem sein, solange wir am Anfang keine risikobehafteten Entscheidungen treffen müssen.",
       "en": "Yes, that should be no problem, as long as we don't have to make any risky decisions at the very start.",
       "uk": "Так, це не повинно стати проблемою, поки на початку нам не доведеться приймати ризикованих рішень.",
-      "ru": "Да, это не должно стать проблемой, пока в начале нам не придётся принимать рискованных решений."
+      "ru": "Да, это не должно стать проблемой, пока в начале нам не придётся принимать рискованных решений.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir teilen die Aufgaben nach unseren Stärken auf, du machst die Risikomanagement-Schulung, und die Kundenbetreuung geht nicht nur an mich, sondern auch an einen Kollegen aus dem anderen Team.",
       "en": "Let's summarize: we split the tasks according to our strengths, you do the risk management training, and customer service goes not only to me, but also to a colleague from the other team.",
       "uk": "Підсумуємо: ми розподіляємо завдання за нашими сильними сторонами, ти проходиш навчання з ризик-менеджменту, а обслуговування клієнтів переходить не лише до мене, а й до колеги з іншої команди.",
-      "ru": "Подведём итог: мы распределяем задачи по нашим сильным сторонам, ты проходишь обучение по риск-менеджменту, а обслуживание клиентов переходит не только ко мне, но и к коллеге из другой команды."
+      "ru": "Подведём итог: мы распределяем задачи по нашим сильным сторонам, ты проходишь обучение по риск-менеджменту, а обслуживание клиентов переходит не только ко мне, но и к коллеге из другой команды.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, so erfüllen wir die Anforderungen des Projekts, ohne dass jemand von uns überfordert ist - diese Lösung wird beim Kunden sicher gut ankommen. Ich schreibe die Aufgabenverteilung kurz auf und schicke sie dir noch heute. <r>Lass uns außerdem nächsten Montag kurz zusammenkommen, um zu prüfen, ob alles wie geplant läuft.</r>",
       "en": "Exactly. I think that way we meet the project's requirements without either of us being overwhelmed - this solution will surely go down well with the client. I'll write up the task distribution and send it to you today. <r>Let's also get together briefly next Monday to check whether everything is going as planned.</r>",
       "uk": "Саме так. Гадаю, так ми виконуємо вимоги проєкту, і при цьому ніхто з нас не буде перевантажений - це рішення точно сподобається клієнту. Я коротко запишу розподіл завдань і надішлю тобі його ще сьогодні. <r>Крім того, давай коротко зустрінемося наступного понеділка, щоб перевірити, чи все йде за планом.</r>",
-      "ru": "Именно так. Думаю, так мы выполняем требования проекта, и при этом никто из нас не будет перегружен - это решение точно понравится клиенту. Я коротко запишу распределение задач и отправлю его тебе сегодня же. <r>Кроме того, давай коротко встретимся в следующий понедельник, чтобы проверить, всё ли идёт по плану.</r>"
-    },
-    "gram": "negation"
+      "ru": "Именно так. Думаю, так мы выполняем требования проекта, и при этом никто из нас не будет перегружен - это решение точно понравится клиенту. Я коротко запишу распределение задач и отправлю его тебе сегодня же. <r>Кроме того, давай коротко встретимся в следующий понедельник, чтобы проверить, всё ли идёт по плану.</r>",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_032",
     "cat": "Anerkennung",
     "task": {
@@ -13267,113 +13359,130 @@ var DIALOGE = [
       "de": "Ich muss dir kurz von einem Kollegen erzählen: Herr Boateng <r>hat mir erzählt, dass</r> er in seinem Herkunftsland als Ingenieur gearbeitet hat und jetzt einen Antrag auf Anerkennung seiner Berufsqualifikation stellen möchte, aber er weiß nicht, welche Dokumente dafür erforderlich sind.",
       "en": "I have to quickly tell you about a colleague: Mr. Boateng <r>told me that</r> he worked as an engineer in his home country and now wants to apply for recognition of his professional qualification, but he doesn't know which documents are required for that.",
       "uk": "Мушу коротко розповісти тобі про одного колегу: пан Боатенг <r>розповів мені, що</r> на батьківщині працював інженером і тепер хоче подати заявку на визнання своєї професійної кваліфікації, але не знає, які документи для цього потрібні.",
-      "ru": "Должен коротко рассказать тебе об одном коллеге: господин Боатенг <r>рассказал мне, что</r> на родине работал инженером и теперь хочет подать заявку на признание своей профессиональной квалификации, но не знает, какие документы для этого нужны."
+      "ru": "Должен коротко рассказать тебе об одном коллеге: господин Боатенг <r>рассказал мне, что</r> на родине работал инженером и теперь хочет подать заявку на признание своей профессиональной квалификации, но не знает, какие документы для этого нужны.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass ihm die Informationen zum Verfahren fehlen?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that he's missing information about the procedure?",
       "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться про те, що йому бракує інформації про саму процедуру?",
-      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что ему не хватает информации о самой процедуре?"
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что ему не хватает информации о самой процедуре?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. <r>Sein Ziel ist es,</r> so schnell wie möglich in seinem eigentlichen Beruf zu arbeiten. Was denkst du, wie wir ihm helfen könnten?",
       "en": "Exactly. <r>His goal is</r> to work in his actual profession as soon as possible. What do you think, how could we help him?",
       "uk": "Саме так. <r>Його мета</r> - якомога швидше почати працювати за фахом. Як ти думаєш, чим ми могли б йому допомогти?",
-      "ru": "Именно так. <r>Его цель</r> - как можно скорее начать работать по специальности. Как ты думаешь, чем мы могли бы ему помочь?"
+      "ru": "Именно так. <r>Его цель</r> - как можно скорее начать работать по специальности. Как ты думаешь, чем мы могли бы ему помочь?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich würde vorschlagen, dass wir uns zusammen an die zuständige Stelle wenden und für ihn Informationen einholen.",
       "en": "I would suggest that we contact the relevant office together and gather information for him.",
       "uk": "Я б запропонувала разом звернутися до відповідної установи і зібрати для нього інформацію.",
-      "ru": "Я бы предложила вместе обратиться в соответствующее учреждение и собрать для него информацию."
+      "ru": "Я бы предложила вместе обратиться в соответствующее учреждение и собрать для него информацию.",
+      "gram": ""
     },
     "q2": {
       "de": "Das ist eine gute Idee. Er hat übrigens auch <r>gesagt, dass</r> ihm noch einige Dokumente aus seinem Herkunftsland fehlen.",
       "en": "That's a good idea. By the way, he also <r>said that</r> he's still missing some documents from his home country.",
       "uk": "Гарна ідея. До речі, він також <r>казав, що</r> йому досі бракує кількох документів з батьківщини.",
-      "ru": "Хорошая идея. Кстати, он также <r>говорил, что</r> ему всё ещё не хватает нескольких документов с родины."
+      "ru": "Хорошая идея. Кстати, он также <r>говорил, что</r> ему всё ещё не хватает нескольких документов с родины.",
+      "gram": ""
     },
     "a2": {
       "de": "Dann sollten wir ihm empfehlen, einen Antrag auf Fristverlängerung zu stellen, damit er die fehlenden Unterlagen in Ruhe nachreichen kann.",
       "en": "Then we should recommend that he apply for an extension of the deadline, so he can submit the missing documents calmly.",
       "uk": "Тоді варто порадити йому подати заяву на продовження терміну, щоб він міг спокійно донести відсутні документи.",
-      "ru": "Тогда стоит посоветовать ему подать заявление на продление срока, чтобы он мог спокойно донести недостающие документы."
+      "ru": "Тогда стоит посоветовать ему подать заявление на продление срока, чтобы он мог спокойно донести недостающие документы.",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, ihm ein Förderprogramm zu empfehlen - damit könnte er die Kosten für die Übersetzung der Dokumente decken.",
       "en": "Another suggestion would be to recommend a funding programme to him - that could cover the costs of translating the documents.",
       "uk": "Ще одна пропозиція - порадити йому програму підтримки: вона могла б покрити витрати на переклад документів.",
-      "ru": "Ещё одно предложение - посоветовать ему программу поддержки: она могла бы покрыть расходы на перевод документов."
+      "ru": "Ещё одно предложение - посоветовать ему программу поддержки: она могла бы покрыть расходы на перевод документов.",
+      "gram": ""
     },
     "a3": {
       "de": "Ein Argument dafür ist sicherlich, dass viele Kolleginnen und Kollegen genau dieses Programm schon erfolgreich in Anspruch genommen haben.",
       "en": "One argument in favor of that is certainly that many colleagues have already successfully made use of exactly this programme.",
       "uk": "Аргумент на користь цього, безумовно, полягає в тому, що багато колег вже успішно скористалися саме цією програмою.",
-      "ru": "Аргумент в пользу этого, безусловно, в том, что многие коллеги уже успешно воспользовались именно этой программой."
+      "ru": "Аргумент в пользу этого, безусловно, в том, что многие коллеги уже успешно воспользовались именно этой программой.",
+      "gram": ""
     },
     "q4": {
       "de": "Stimmt, aber er hat auch <r>erwähnt, dass</r> er Angst hat, dass sein Abschluss am Ende nicht vollständig anerkannt wird.",
       "en": "True, but he also <r>mentioned that</r> he's afraid his qualification won't be fully recognized in the end.",
       "uk": "Це правда, але він також <r>згадав, що</r> боїться, що його кваліфікацію в результаті визнають не повністю.",
-      "ru": "Это правда, но он также <r>упомянул, что</r> боится, что его квалификацию в итоге признают не полностью."
+      "ru": "Это правда, но он также <r>упомянул, что</r> боится, что его квалификацию в итоге признают не полностью.",
+      "gram": ""
     },
     "a4": {
       "de": "Das verstehe ich. Aber selbst wenn nicht alles anerkannt wird, könnte er einen Anpassungslehrgang machen, um die restliche Qualifikation nachzuholen.",
       "en": "I understand that. But even if not everything is recognized, he could do an adaptation course to make up the remaining qualification.",
       "uk": "Я це розумію. Але навіть якщо визнають не все, він міг би пройти адаптаційний курс, щоб надолужити решту кваліфікації.",
-      "ru": "Я это понимаю. Но даже если признают не всё, он мог бы пройти адаптационный курс, чтобы наверстать остальную квалификацию."
+      "ru": "Я это понимаю. Но даже если признают не всё, он мог бы пройти адаптационный курс, чтобы наверстать остальную квалификацию.",
+      "gram": ""
     },
     "q5": {
       "de": "Gute Idee. Ich weiß, dass er sich sehr für seinen Beruf interessiert - <r>er hätte bestimmt Lust</r>, so einen Lehrgang zu machen, wenn es nötig wäre.",
       "en": "Good idea. I know he's very interested in his profession - he <r>would definitely feel like</r> doing such a course if it were necessary.",
       "uk": "Гарна ідея. Я знаю, що він дуже захоплений своєю професією - <r>йому точно захотілося б</r> пройти такий курс, якби це знадобилося.",
-      "ru": "Хорошая идея. Я знаю, что он очень увлечён своей профессией - <r>ему бы точно захотелось</r> пройти такой курс, если бы это понадобилось."
+      "ru": "Хорошая идея. Я знаю, что он очень увлечён своей профессией - <r>ему бы точно захотелось</r> пройти такой курс, если бы это понадобилось.",
+      "gram": ""
     },
     "a5": {
       "de": "Dann sollten wir ihm vorschlagen, schon jetzt eine Anfrage bei der zuständigen Stelle einzuleiten, auch wenn noch nicht alle Dokumente vollständig sind.",
       "en": "Then we should suggest that he initiate an inquiry with the relevant office already now, even if not all the documents are complete yet.",
       "uk": "Тоді варто запропонувати йому вже зараз ініціювати запит до відповідної установи, навіть якщо ще не всі документи готові.",
-      "ru": "Тогда стоит предложить ему уже сейчас инициировать запрос в соответствующее учреждение, даже если ещё не все документы готовы."
+      "ru": "Тогда стоит предложить ему уже сейчас инициировать запрос в соответствующее учреждение, даже если ещё не все документы готовы.",
+      "gram": ""
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich rede noch heute mit ihm über seine Situation, und du informierst dich über das Förderprogramm. Einverstanden?",
       "en": "Let's split up the tasks: I'll talk to him about his situation today, and you find out about the funding programme. Agreed?",
       "uk": "Давай розподілимо завдання: я сьогодні ж поговорю з ним про його ситуацію, а ти дізнаєшся більше про програму підтримки. Домовились?",
-      "ru": "Давай разделим задачи: я сегодня же поговорю с ним о его ситуации, а ты узнаешь больше о программе поддержки. Договорились?"
+      "ru": "Давай разделим задачи: я сегодня же поговорю с ним о его ситуации, а ты узнаешь больше о программе поддержки. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, ihm auch gleich zu sagen, dass wir ihn beim Antrag unterstützen?",
       "en": "Agreed. Do you intend to tell him right away that we'll support him with the application?",
       "uk": "Згодна. Ти маєш намір одразу сказати йому, що ми підтримаємо його із заявкою?",
-      "ru": "Согласна. Ты намерен сразу сказать ему, что мы поддержим его с заявкой?"
+      "ru": "Согласна. Ты намерен сразу сказать ему, что мы поддержим его с заявкой?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, <r>genau das habe ich vor</r>. Wäre es realistisch, wenn wir uns übermorgen zu dritt zusammensetzen, um alles zu besprechen?",
       "en": "Yes, <r>that's exactly what I intend to do</r>. Would it be realistic if the three of us sit down the day after tomorrow to discuss everything?",
       "uk": "Так, <r>саме це я і маю намір зробити</r>. Чи буде реалістично, якщо післязавтра ми зберемося втрьох, щоб усе обговорити?",
-      "ru": "Да, <r>именно это я и намерен сделать</r>. Будет ли реалистично, если послезавтра мы соберёмся втроём, чтобы всё обсудить?"
+      "ru": "Да, <r>именно это я и намерен сделать</r>. Будет ли реалистично, если послезавтра мы соберёмся втроём, чтобы всё обсудить?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein. Ich bereite bis dahin schon ein paar Informationen zum Förderprogramm vor.",
       "en": "That should be feasible. I'll prepare some information about the funding programme by then.",
       "uk": "Це має бути здійсненно. До того часу я підготую трохи інформації про програму підтримки.",
-      "ru": "Это должно быть выполнимо. К тому времени я подготовлю немного информации о программе поддержки."
+      "ru": "Это должно быть выполнимо. К тому времени я подготовлю немного информации о программе поддержки.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir helfen Herrn Boateng beim Antrag auf Anerkennung, informieren ihn über das Förderprogramm und einen möglichen Anpassungslehrgang, und in zwei Tagen besprechen wir alles gemeinsam.",
       "en": "Let's summarize: we help Mr. Boateng with the recognition application, inform him about the funding programme and a possible adaptation course, and discuss everything together in two days.",
       "uk": "Підсумуємо: ми допомагаємо пану Боатенгу з заявкою на визнання, інформуємо його про програму підтримки та можливий адаптаційний курс, а за два дні обговоримо все разом.",
-      "ru": "Подведём итог: мы помогаем господину Боатенгу с заявкой на признание, информируем его о программе поддержки и возможном адаптационном курсе, а через два дня обсудим всё вместе."
+      "ru": "Подведём итог: мы помогаем господину Боатенгу с заявкой на признание, информируем его о программе поддержки и возможном адаптационном курсе, а через два дня обсудим всё вместе.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, so erfüllen wir seinen Wunsch, möglichst schnell wieder in seinem Beruf zu arbeiten - das wird ihm sicher sehr helfen. Ich schreibe die wichtigsten Punkte kurz zusammen und schicke sie euch beiden noch heute.",
       "en": "Exactly. I think that way we fulfil his wish to work in his profession again as soon as possible - that will surely help him a lot. I'll summarize the key points and send them to both of you today.",
       "uk": "Саме так. Гадаю, так ми виконуємо його бажання якомога швидше знову працювати за фахом - це точно йому дуже допоможе. Я коротко підсумую головні пункти і надішлю їх вам обом уже сьогодні.",
-      "ru": "Именно так. Думаю, так мы исполняем его желание как можно скорее снова работать по специальности - это точно очень ему поможет. Я коротко подведу итоги и отправлю их вам обоим сегодня же."
-    },
-    "gram": ""
+      "ru": "Именно так. Думаю, так мы исполняем его желание как можно скорее снова работать по специальности - это точно очень ему поможет. Я коротко подведу итоги и отправлю их вам обоим сегодня же.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_033",
     "cat": "Auf Jobsuche",
     "task": {
@@ -13389,113 +13498,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Für die offene Stelle als Bauzeichner haben wir schon drei Stellenanzeigen auf verschiedenen Jobportalen geschaltet, aber wir haben <g>weder</g> genug <g>noch</g> wirklich passende Bewerbungen bekommen.",
       "en": "We have a problem: for the open position as a draughtsperson we've already placed three job ads on different job portals, but we've gotten neither enough nor really suitable applications.",
       "uk": "У нас проблема: для відкритої вакансії кресляра-будівельника ми вже розмістили три оголошення на різних джоб-порталах, але не отримали ні достатньої кількості, ні справді відповідних відгуків.",
-      "ru": "У нас проблема: для открытой вакансии чертёжника-строителя мы уже разместили три объявления на разных джоб-порталах, но не получили ни достаточного количества, ни действительно подходящих откликов."
+      "ru": "У нас проблема: для открытой вакансии чертёжника-строителя мы уже разместили три объявления на разных джоб-порталах, но не получили ни достаточного количества, ни действительно подходящих откликов.",
+      "gram": "konnektoren_zweiteilig"
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass die klassischen Jobportale für diese Stelle einfach nicht mehr ausreichen?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that the classic job portals just aren't enough anymore for this position?",
       "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться про те, що класичні джоб-портали для цієї вакансії вже просто недостатні?",
-      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что классические джоб-порталы для этой вакансии уже просто недостаточны?"
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что классические джоб-порталы для этой вакансии уже просто недостаточны?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir die Stelle noch länger nicht besetzen können?",
       "en": "Exactly. What do you think, what consequences would that have if we can't fill the position for even longer?",
       "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо ми ще довше не зможемо закрити вакансію?",
-      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы ещё дольше не сможем закрыть вакансию?"
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы ещё дольше не сможем закрыть вакансию?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, dass dann <g>sowohl</g> die Kolleginnen und Kollegen im Team <g>als auch</g> unsere Kunden darunter leiden würden, weil die Aufträge liegen bleiben.",
       "en": "I think that then both the colleagues on the team and our clients would suffer, because the orders would pile up.",
       "uk": "Гадаю, тоді постраждають як колеги в команді, так і наші клієнти, бо замовлення накопичуватимуться.",
-      "ru": "Думаю, тогда пострадают как коллеги в команде, так и наши клиенты, потому что заказы будут накапливаться."
+      "ru": "Думаю, тогда пострадают как коллеги в команде, так и наши клиенты, потому что заказы будут накапливаться.",
+      "gram": "konnektoren_zweiteilig"
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> zusätzlich einen Headhunter beauftragen, der gezielt passende Kandidatinnen und Kandidaten anwirbt?",
       "en": "<r>How about we</r> additionally hire a headhunter who specifically recruits suitable candidates?",
       "uk": "<r>Що якщо ми</r> додатково залучимо хедхантера, який цілеспрямовано шукатиме відповідних кандидатів?",
-      "ru": "<r>Что если мы</r> дополнительно привлечём хедхантера, который целенаправленно будет искать подходящих кандидатов?"
+      "ru": "<r>Что если мы</r> дополнительно привлечём хедхантера, который целенаправленно будет искать подходящих кандидатов?",
+      "gram": ""
     },
     "a2": {
       "de": "Das ist eine gute Idee, aber das kostet natürlich auch einiges - wir sollten also vorher klären, ob sich das für uns lohnt.",
       "en": "That's a good idea, but of course that costs something too - we should clarify beforehand whether it's worth it for us.",
       "uk": "Це гарна ідея, але це, звісно, коштуватиме грошей - варто спершу з'ясувати, чи виправдає це себе для нас.",
-      "ru": "Это хорошая идея, но это, конечно, будет стоить денег - стоит сначала выяснить, оправдает ли это себя для нас."
+      "ru": "Это хорошая идея, но это, конечно, будет стоить денег - стоит сначала выяснить, оправдает ли это себя для нас.",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, die Stelle zusätzlich über unser soziales Netzwerk zu verbreiten - viele gute Bewerbungen kommen doch inzwischen genau darüber.",
       "en": "Another suggestion would be to also spread the job posting through our social network - a lot of good applications come through exactly that channel these days.",
       "uk": "Ще одна пропозиція - додатково поширити вакансію через нашу соціальну мережу: багато гарних відгуків нині надходить саме звідти.",
-      "ru": "Ещё одно предложение - дополнительно распространить вакансию через нашу социальную сеть: сейчас многие хорошие отклики приходят именно оттуда."
+      "ru": "Ещё одно предложение - дополнительно распространить вакансию через нашу социальную сеть: сейчас многие хорошие отклики приходят именно оттуда.",
+      "gram": ""
     },
     "a3": {
       "de": "Ein Argument dafür ist sicherlich, dass das nichts kostet. Ein Argument dagegen ist aber, dass wir dort eher jüngere Zielgruppen erreichen, die noch keinen abgeschlossenen beruflichen Werdegang haben.",
       "en": "One argument for that is certainly that it doesn't cost anything. One argument against it, though, is that we tend to reach younger target groups there who don't have a completed career path yet.",
       "uk": "Аргумент на користь цього, безумовно, у тому, що це нічого не коштує. Але аргумент проти - те, що там ми радше досягаємо молодшої аудиторії, яка ще не має завершеного професійного шляху.",
-      "ru": "Аргумент в пользу этого, безусловно, в том, что это ничего не стоит. Но аргумент против - в том, что там мы скорее охватываем более молодую аудиторию, у которой ещё нет завершённого профессионального пути."
+      "ru": "Аргумент в пользу этого, безусловно, в том, что это ничего не стоит. Но аргумент против - в том, что там мы скорее охватываем более молодую аудиторию, у которой ещё нет завершённого профессионального пути.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem vielleicht lösen, indem</r> wir <g>entweder</g> gezielt in Fachgruppen posten <g>oder</g> direkt ehemalige Praktikanten ansprechen.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> either posting specifically in professional groups or reaching out directly to former interns.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми або цілеспрямовано публікуватимемо оголошення у фахових групах, або звернемося напряму до колишніх практикантів.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы либо целенаправленно будем публиковать объявления в профессиональных группах, либо обратимся напрямую к бывшим практикантам."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы либо целенаправленно будем публиковать объявления в профессиональных группах, либо обратимся напрямую к бывшим практикантам.",
+      "gram": "konnektoren_zweiteilig"
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. <g>Je</g> mehr Kanäle wir nutzen, <g>desto</g> größer ist die Chance, die richtige Person zu finden.",
       "en": "<r>I completely agree with you</r>. The more channels we use, the greater the chance of finding the right person.",
       "uk": "<r>Тут я з тобою цілком згодна</r>. Чим більше каналів ми використовуємо, тим більший шанс знайти потрібну людину.",
-      "ru": "<r>Тут я с тобой полностью согласна</r>. Чем больше каналов мы используем, тем больше шанс найти нужного человека."
+      "ru": "<r>Тут я с тобой полностью согласна</r>. Чем больше каналов мы используем, тем больше шанс найти нужного человека.",
+      "gram": "konnektoren_zweiteilig"
     },
     "q5": {
       "de": "Zusätzlich könnten wir bei der Arbeitsvermittlung nachfragen, ob dort passende Profile vorliegen.",
       "en": "In addition, we could ask the job placement service whether they have suitable profiles.",
       "uk": "Крім того, ми могли б запитати в агентства зайнятості, чи є в них відповідні профілі.",
-      "ru": "Кроме того, мы могли бы спросить в агентстве занятости, есть ли у них подходящие профили."
+      "ru": "Кроме того, мы могли бы спросить в агентстве занятости, есть ли у них подходящие профили.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. Wir sollten aber <g>nicht nur</g> auf Fachkenntnisse, <g>sondern auch</g> auf die Motivation der Bewerber achten.",
       "en": "<r>I think that's a good point</r>. We should pay attention not only to technical skills, but also to the applicants' motivation.",
       "uk": "<r>Вважаю це гарною думкою</r>. Нам варто звертати увагу не лише на фахові знання, а й на мотивацію кандидатів.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Нам стоит обращать внимание не только на профессиональные знания, но и на мотивацию кандидатов."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Нам стоит обращать внимание не только на профессиональные знания, но и на мотивацию кандидатов.",
+      "gram": "konnektoren_zweiteilig"
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um den Kontakt mit dem Headhunter, und du postest die Stelle in unserem sozialen Netzwerk. Einverstanden?",
       "en": "Let's split up the tasks: I'll take care of contacting the headhunter, and you post the position on our social network. Agreed?",
       "uk": "Давай розподілимо завдання: я займуся контактом із хедхантером, а ти опублікуєш вакансію в нашій соціальній мережі. Домовились?",
-      "ru": "Давай разделим задачи: я займусь контактом с хедхантером, а ты опубликуешь вакансию в нашей социальной сети. Договорились?"
+      "ru": "Давай разделим задачи: я займусь контактом с хедхантером, а ты опубликуешь вакансию в нашей социальной сети. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, den Headhunter schon diese Woche zu kontaktieren?",
       "en": "Agreed. Do you intend to contact the headhunter already this week?",
       "uk": "Згодна. Ти маєш намір зв'язатися з хедхантером уже цього тижня?",
-      "ru": "Согласна. Ты намерен связаться с хедхантером уже на этой неделе?"
+      "ru": "Согласна. Ты намерен связаться с хедхантером уже на этой неделе?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn wir uns nächste Woche schon die ersten Rückmeldungen ansehen?",
       "en": "Yes, would it be realistic if we already look at the first responses next week?",
       "uk": "Так, чи буде реалістично, якщо ми вже наступного тижня подивимося перші відгуки?",
-      "ru": "Да, будет ли реалистично, если мы уже на следующей неделе посмотрим первые отклики?"
+      "ru": "Да, будет ли реалистично, если мы уже на следующей неделе посмотрим первые отклики?",
+      "gram": ""
     },
     "a7": {
       "de": "<g>Zwar</g> ist eine Woche ziemlich knapp, <g>aber</g> das sollte machbar sein, wenn beide Kanäle gleichzeitig laufen.",
       "en": "A week is admittedly quite tight, but that should be feasible if both channels run at the same time.",
       "uk": "Тиждень, щоправда, доволі стислий термін, але це має бути здійсненно, якщо обидва канали працюватимуть одночасно.",
-      "ru": "Неделя, правда, довольно сжатый срок, но это должно быть выполнимо, если оба канала будут работать одновременно."
+      "ru": "Неделя, правда, довольно сжатый срок, но это должно быть выполнимо, если оба канала будут работать одновременно.",
+      "gram": "konnektoren_zweiteilig"
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir beauftragen einen Headhunter, nutzen zusätzlich unser soziales Netzwerk und fragen bei der Arbeitsvermittlung nach, damit wir die Stelle endlich besetzen können.",
       "en": "Let's summarize: we hire a headhunter, additionally use our social network, and ask the job placement service, so we can finally fill the position.",
       "uk": "Підсумуємо: ми залучаємо хедхантера, додатково використовуємо нашу соціальну мережу і запитуємо в агентства зайнятості, щоб нарешті закрити вакансію.",
-      "ru": "Подведём итог: мы привлекаем хедхантера, дополнительно используем нашу социальную сеть и спрашиваем в агентстве занятости, чтобы наконец закрыть вакансию."
+      "ru": "Подведём итог: мы привлекаем хедхантера, дополнительно используем нашу социальную сеть и спрашиваем в агентстве занятости, чтобы наконец закрыть вакансию.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, mit dieser Kombination haben wir gute Chancen, <g>sowohl</g> schnell <g>als auch</g> die richtige Person zu finden. Ich schreibe die Aufgabenverteilung kurz auf und schicke sie dir noch heute. <r>Lass uns außerdem in zwei Wochen kurz zusammensitzen, um die eingegangenen Bewerbungen gemeinsam zu besprechen.</r>",
       "en": "Exactly. I think with this combination we have a good chance of both moving quickly and finding the right person. I'll write up the task distribution and send it to you today. <r>Let's also sit down together in two weeks to discuss the applications we've received.</r>",
       "uk": "Саме так. Гадаю, з такою комбінацією в нас гарні шанси і швидко, і правильно знайти потрібну людину. Я коротко запишу розподіл завдань і надішлю тобі його ще сьогодні. <r>Крім того, давай зберемося через два тижні, щоб разом обговорити відгуки, які надійдуть.</r>",
-      "ru": "Именно так. Думаю, с такой комбинацией у нас хорошие шансы и быстро, и правильно найти нужного человека. Я коротко запишу распределение задач и отправлю его тебе сегодня же. <r>Кроме того, давай соберёмся через две недели, чтобы вместе обсудить поступившие отклики.</r>"
-    },
-    "gram": "konnektoren_zweiteilig"
+      "ru": "Именно так. Думаю, с такой комбинацией у нас хорошие шансы и быстро, и правильно найти нужного человека. Я коротко запишу распределение задач и отправлю его тебе сегодня же. <r>Кроме того, давай соберёмся через две недели, чтобы вместе обсудить поступившие отклики.</r>",
+      "gram": "konnektoren_zweiteilig"
+    }
   },
-{
+  {
     "id": "dlg_034",
     "cat": "Lebenslauf",
     "task": {
@@ -13511,113 +13637,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Wir müssen den Lebenslauf von Frau Petrenko für die Bewerbung noch heute überarbeiten, aber die Datumsangaben sind nicht einheitlich, und bei den Sprachkenntnissen steht nur 'gut', ohne genaues Niveau.",
       "en": "We have a problem: we need to revise Ms. Petrenko's CV for the application today, but the dates aren't formatted consistently, and for language skills it just says 'good', without a precise level.",
       "uk": "У нас проблема: нам треба сьогодні ж доопрацювати резюме пані Петренко для заявки, але дати вказані непослідовно, а біля мовних навичок написано лише 'добре', без чіткого рівня.",
-      "ru": "У нас проблема: нам нужно сегодня же доработать резюме госпожи Петренко для заявки, но даты указаны непоследовательно, а у языковых навыков написано просто 'хорошо', без точного уровня."
+      "ru": "У нас проблема: нам нужно сегодня же доработать резюме госпожи Петренко для заявки, но даты указаны непоследовательно, а у языковых навыков написано просто 'хорошо', без точного уровня.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um die Formatierung und um genauere Angaben zu den Sprachkenntnissen?",
       "en": "<r>Did I understand you correctly</r>: so it's mainly about the formatting and about giving more precise information on the language skills?",
       "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться передусім про форматування і про точніші дані щодо мовних навичок?",
-      "ru": "<r>Я правильно тебя поняла</r>: значит, речь прежде всего о форматировании и о более точных данных по языковым навыкам?"
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь прежде всего о форматировании и о более точных данных по языковым навыкам?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welchen Eindruck macht das auf einen Personaler, wenn der Lebenslauf nicht einheitlich wirkt?",
       "en": "Exactly. What do you think, what impression does that make on a recruiter if the CV doesn't look consistent?",
       "uk": "Саме так. Як ти думаєш, яке враження це справляє на кадровика, якщо резюме виглядає непослідовно?",
-      "ru": "Именно так. Как ты думаешь, какое впечатление это производит на кадровика, если резюме выглядит непоследовательно?"
+      "ru": "Именно так. Как ты думаешь, какое впечатление это производит на кадровика, если резюме выглядит непоследовательно?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, dass ein uneinheitlicher tabellarischer Lebenslauf schnell unseriös wirkt, auch wenn die Qualifikationen eigentlich sehr gut sind.",
       "en": "I think an inconsistent tabular CV quickly looks unprofessional, even if the qualifications themselves are actually very good.",
       "uk": "Гадаю, непослідовне табличне резюме швидко виглядає несерйозно, навіть якщо кваліфікація насправді дуже хороша.",
-      "ru": "Думаю, непоследовательное табличное резюме быстро выглядит несерьёзно, даже если квалификация на самом деле очень хорошая."
+      "ru": "Думаю, непоследовательное табличное резюме быстро выглядит несерьёзно, даже если квалификация на самом деле очень хорошая.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> bei den Sprachkenntnissen konkrete Niveaus angeben, also zum Beispiel 'Englisch: verhandlungssicher' statt einfach nur 'gut'?",
       "en": "<r>How about we</r> state concrete levels for the language skills, so for example 'English: proficient to negotiation level' instead of just 'good'?",
       "uk": "<r>Що якщо ми</r> вкажемо конкретні рівні мовних навичок, наприклад 'англійська: вільне володіння на рівні переговорів' замість просто 'добре'?",
-      "ru": "<r>Что если мы</r> укажем конкретные уровни языковых навыков, например 'английский: свободное владение на уровне переговоров' вместо просто 'хорошо'?"
+      "ru": "<r>Что если мы</r> укажем конкретные уровни языковых навыков, например 'английский: свободное владение на уровне переговоров' вместо просто 'хорошо'?",
+      "gram": ""
     },
     "a2": {
       "de": "Das ist sinnvoll, aber wir sollten sie vorher fragen, ob sie ihr Englisch wirklich als verhandlungssicher einschätzt, sonst wirkt das übertrieben.",
       "en": "That makes sense, but we should first ask her whether she really rates her English as negotiation-level, otherwise it looks exaggerated.",
       "uk": "Це розумно, але спершу варто запитати в неї, чи справді вона оцінює свою англійську на такому рівні, інакше це виглядатиме перебільшено.",
-      "ru": "Это разумно, но сначала стоит спросить у неё, действительно ли она оценивает свой английский на таком уровне, иначе это будет выглядеть преувеличенно."
+      "ru": "Это разумно, но сначала стоит спросить у неё, действительно ли она оценивает свой английский на таком уровне, иначе это будет выглядеть преувеличенно.",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, alle Datumsangaben einheitlich im gleichen Format zu schreiben, also entweder überall Monat und Jahr oder überall nur das Jahr.",
       "en": "Another suggestion would be to write all the dates in the same format throughout - so either month and year everywhere, or just the year everywhere.",
       "uk": "Ще одна пропозиція - написати всі дати в одному форматі: або скрізь місяць і рік, або скрізь лише рік.",
-      "ru": "Ещё одно предложение - написать все даты в одном формате: либо везде месяц и год, либо везде только год."
+      "ru": "Ещё одно предложение - написать все даты в одном формате: либо везде месяц и год, либо везде только год.",
+      "gram": ""
     },
     "a3": {
       "de": "Ein Argument dafür ist sicherlich, dass das viel professioneller wirkt. Ein Argument dagegen wäre höchstens, dass das noch etwas Zeit kostet.",
       "en": "One argument for that is certainly that it looks much more professional. One argument against it would be, at most, that it takes some extra time.",
       "uk": "Аргумент на користь цього, безумовно, у тому, що це виглядає набагато професійніше. Аргумент проти хіба що в тому, що це забере трохи часу.",
-      "ru": "Аргумент в пользу этого, безусловно, в том, что это выглядит намного профессиональнее. Аргумент против разве что в том, что это займёт немного времени."
+      "ru": "Аргумент в пользу этого, безусловно, в том, что это выглядит намного профессиональнее. Аргумент против разве что в том, что это займёт немного времени.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem lösen, indem</r> wir die Vorlage einmal komplett durchgehen und die Formatierung automatisch anpassen.",
       "en": "<r>That's true, but</r> <r>we could solve the problem by</r> going through the template once completely and adjusting the formatting automatically.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми один раз повністю пройдемося по шаблону і автоматично виправимо форматування.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы один раз полностью пройдёмся по шаблону и автоматически исправим форматирование."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы один раз полностью пройдёмся по шаблону и автоматически исправим форматирование.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir gut vorstellen, dass das in einer halben Stunde erledigt ist, wenn wir es zusammen machen.",
       "en": "<r>I completely agree with you</r>. I can well imagine that being done in half an hour if we do it together.",
       "uk": "<r>Тут я з тобою цілком згодна</r>. Я цілком можу уявити, що ми впораємося за півгодини, якщо зробимо це разом.",
-      "ru": "<r>Тут я с тобой полностью согласна</r>. Я вполне могу представить, что мы справимся за полчаса, если сделаем это вместе."
+      "ru": "<r>Тут я с тобой полностью согласна</r>. Я вполне могу представить, что мы справимся за полчаса, если сделаем это вместе.",
+      "gram": ""
     },
     "q5": {
       "de": "Zusätzlich fehlt noch die Unterschrift unter dem Lebenslauf - das sollten wir sie auch noch ergänzen lassen.",
       "en": "In addition, the signature under the CV is still missing - we should have her add that too.",
       "uk": "Крім того, під резюме досі бракує підпису - варто попросити її і це додати.",
-      "ru": "Кроме того, под резюме всё ещё не хватает подписи - стоит попросить её и это добавить."
+      "ru": "Кроме того, под резюме всё ещё не хватает подписи - стоит попросить её и это добавить.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. Wir könnten ihr außerdem empfehlen, ihren beruflichen Werdegang etwas klarer zu strukturieren, mit genauen Angaben zur Tätigkeit bei jeder Station.",
       "en": "<r>I think that's a good point</r>. We could also recommend that she structure her career path a bit more clearly, with precise details on the role at each position.",
       "uk": "<r>Вважаю це гарною думкою</r>. Ми також могли б порадити їй чіткіше структурувати свій професійний шлях, із точними даними про діяльність на кожній посаді.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы посоветовать ей чётче структурировать свой профессиональный путь, с точными данными о деятельности на каждой должности."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы посоветовать ей чётче структурировать свой профессиональный путь, с точными данными о деятельности на каждой должности.",
+      "gram": ""
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um die Formatierung und die Datumsangaben, und du sprichst mit Frau Petrenko über die Sprachkenntnisse und die Unterschrift. Einverstanden?",
       "en": "Let's split up the tasks: I'll take care of the formatting and the dates, and you talk to Ms. Petrenko about the language skills and the signature. Agreed?",
       "uk": "Давай розподілимо завдання: я займуся форматуванням і датами, а ти поговориш з пані Петренко про мовні навички і підпис. Домовились?",
-      "ru": "Давай разделим задачи: я займусь форматированием и датами, а ты поговоришь с госпожой Петренко о языковых навыках и подписи. Договорились?"
+      "ru": "Давай разделим задачи: я займусь форматированием и датами, а ты поговоришь с госпожой Петренко о языковых навыках и подписи. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, die überarbeitete Version noch heute Abend an sie zu schicken?",
       "en": "Agreed. Do you intend to send her the revised version already this evening?",
       "uk": "Згодна. Ти маєш намір надіслати їй доопрацьовану версію вже сьогодні ввечері?",
-      "ru": "Согласна. Ты намерен отправить ей доработанную версию уже сегодня вечером?"
+      "ru": "Согласна. Ты намерен отправить ей доработанную версию уже сегодня вечером?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn wir bis siebzehn Uhr fertig sind und sie dann gleich Rückfragen stellen kann?",
       "en": "Yes, would it be realistic if we're done by five p.m. so she can ask follow-up questions right away?",
       "uk": "Так, чи буде реалістично, якщо ми закінчимо до сімнадцятої години, щоб вона одразу могла поставити уточнювальні запитання?",
-      "ru": "Да, будет ли реалистично, если мы закончим к семнадцати часам, чтобы она сразу могла задать уточняющие вопросы?"
+      "ru": "Да, будет ли реалистично, если мы закончим к семнадцати часам, чтобы она сразу могла задать уточняющие вопросы?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein. Ich rufe sie gleich an und bespreche mit ihr die letzten Details.",
       "en": "That should be feasible. I'll call her right away and discuss the last details with her.",
       "uk": "Це має бути здійсненно. Я одразу їй подзвоню і обговорю останні деталі.",
-      "ru": "Это должно быть выполнимо. Я сразу же ей позвоню и обсужу последние детали."
+      "ru": "Это должно быть выполнимо. Я сразу же ей позвоню и обсужу последние детали.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir vereinheitlichen das Datumsformat, ergänzen konkrete Sprachniveaus und die Unterschrift, und strukturieren den beruflichen Werdegang klarer, damit der Lebenslauf seriös wirkt.",
       "en": "Let's summarize: we'll standardize the date format, add concrete language levels and the signature, and structure the career path more clearly, so the CV looks professional.",
       "uk": "Підсумуємо: ми уніфікуємо формат дат, додаємо конкретні мовні рівні та підпис, і чіткіше структуруємо професійний шлях, щоб резюме виглядало серйозно.",
-      "ru": "Подведём итог: мы унифицируем формат дат, добавляем конкретные языковые уровни и подпись, и чётче структурируем профессиональный путь, чтобы резюме выглядело серьёзно."
+      "ru": "Подведём итог: мы унифицируем формат дат, добавляем конкретные языковые уровни и подпись, и чётче структурируем профессиональный путь, чтобы резюме выглядело серьёзно.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, damit hat Frau Petrenko jetzt einen wirklich professionellen tabellarischen Lebenslauf - das wird bei den Personalern sicher gut ankommen. Ich schreibe ihr kurz eine Nachricht und schicke ihr die überarbeitete Version noch heute. <r>Lass uns morgen früh kurz telefonieren, um zu klären, ob sie noch Rückfragen zur Bewerbung hat.</r>",
       "en": "Exactly. I think that gives Ms. Petrenko a really professional tabular CV now - recruiters will surely respond well to that. I'll write her a quick message and send her the revised version today. <r>Let's have a quick call tomorrow morning to clarify whether she still has any questions about the application.</r>",
       "uk": "Саме так. Гадаю, тепер у пані Петренко справді професійне табличне резюме - кадровикам це точно сподобається. Я напишу їй коротке повідомлення і надішлю доопрацьовану версію ще сьогодні. <r>Давай завтра вранці коротко зателефонуємо одне одному, щоб з'ясувати, чи не залишилися в неї запитання щодо заявки.</r>",
-      "ru": "Именно так. Думаю, теперь у госпожи Петренко действительно профессиональное табличное резюме - кадровикам это точно понравится. Я напишу ей короткое сообщение и отправлю доработанную версию сегодня же. <r>Давай завтра утром коротко созвонимся, чтобы выяснить, не осталось ли у неё вопросов по заявке.</r>"
-    },
-    "gram": ""
+      "ru": "Именно так. Думаю, теперь у госпожи Петренко действительно профессиональное табличное резюме - кадровикам это точно понравится. Я напишу ей короткое сообщение и отправлю доработанную версию сегодня же. <r>Давай завтра утром коротко созвонимся, чтобы выяснить, не осталось ли у неё вопросов по заявке.</r>",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_035",
     "cat": "Ausbildung",
     "task": {
@@ -13633,113 +13776,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Wir haben zwei freie Ausbildungsplätze für die duale Ausbildung als Elektroniker, aber es haben sich bisher nur zwei Bewerber gemeldet, und keiner davon hat wirklich Interesse am Handwerk gezeigt.",
       "en": "We have a problem: we have two open apprenticeship places for the dual training as an electronics technician, but so far only two applicants have come forward, and neither of them has really shown interest in the trade.",
       "uk": "У нас проблема: у нас є два вільні місця для дуальної освіти за фахом електронник, але поки що відгукнулися лише двоє кандидатів, і жоден з них не виявив справжнього інтересу до цього ремесла.",
-      "ru": "У нас проблема: у нас есть два свободных места для дуального обучения по специальности электронщик, но пока откликнулись только два кандидата, и ни один из них не проявил настоящего интереса к этому ремеслу."
+      "ru": "У нас проблема: у нас есть два свободных места для дуального обучения по специальности электронщик, но пока откликнулись только два кандидата, и ни один из них не проявил настоящего интереса к этому ремеслу.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass wir kaum passende Azubis für die freien Plätze finden?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that we can hardly find suitable apprentices for the open places?",
       "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться про те, що ми майже не можемо знайти відповідних учнів на вільні місця?",
-      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что мы почти не можем найти подходящих учеников на свободные места?"
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что мы почти не можем найти подходящих учеников на свободные места?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir die Plätze dieses Jahr gar nicht besetzen können?",
       "en": "Exactly. What do you think, what consequences would that have if we can't fill the places at all this year?",
       "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо ми взагалі не зможемо заповнити місця цього року?",
-      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы вообще не сможем заполнить места в этом году?"
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы вообще не сможем заполнить места в этом году?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, dass wir dann im Ausbildungsbetrieb personell zu knapp dastehen würden, <g>um</g> alle anfallenden Aufgaben <g>zu</g> erledigen.",
       "en": "I think that then we'd be too short-staffed in the training company to handle all the tasks that come up.",
       "uk": "Гадаю, тоді нам бракуватиме персоналу на підприємстві, щоб виконувати всі поточні завдання.",
-      "ru": "Думаю, тогда нам будет не хватать персонала на предприятии, чтобы выполнять все текущие задачи."
+      "ru": "Думаю, тогда нам будет не хватать персонала на предприятии, чтобы выполнять все текущие задачи.",
+      "gram": "konnektoren_infinitiv"
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> direkt mit der örtlichen Berufsschule Kontakt aufnehmen, um dort für unsere Ausbildungsplätze zu werben?",
       "en": "<r>How about we</r> get in touch directly with the local vocational school, in order to promote our apprenticeship places there?",
       "uk": "<r>Що якщо ми</r> звернемося безпосередньо до місцевого професійного училища, щоб розповісти там про наші вакантні місця?",
-      "ru": "<r>Что если мы</r> обратимся напрямую в местное профессиональное училище, чтобы рассказать там о наших вакантных местах?"
+      "ru": "<r>Что если мы</r> обратимся напрямую в местное профессиональное училище, чтобы рассказать там о наших вакантных местах?",
+      "gram": ""
     },
     "a2": {
       "de": "Das ist eine gute Idee, aber wir sollten die Schüler nicht nur kurz ansprechen, <g>ohne</g> ihnen die Vorteile der dualen Ausbildung genau <g>zu</g> erklären.",
       "en": "That's a good idea, but we shouldn't just briefly approach the students without explaining the advantages of the dual training in detail.",
       "uk": "Це гарна ідея, але не варто просто коротко звертатися до учнів, не пояснивши їм детально переваги дуальної освіти.",
-      "ru": "Это хорошая идея, но не стоит просто коротко обращаться к ученикам, не объяснив им подробно преимущества дуального обучения."
+      "ru": "Это хорошая идея, но не стоит просто коротко обращаться к ученикам, не объяснив им подробно преимущества дуального обучения.",
+      "gram": "konnektoren_infinitiv"
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, die Ausbildungsvergütung etwas zu erhöhen, um für Bewerber attraktiver zu werden.",
       "en": "Another suggestion would be to raise the trainee allowance a bit, in order to become more attractive to applicants.",
       "uk": "Ще одна пропозиція - трохи підвищити стипендію учня, щоб стати привабливішими для кандидатів.",
-      "ru": "Ещё одно предложение - немного повысить стипендию ученика, чтобы стать привлекательнее для кандидатов."
+      "ru": "Ещё одно предложение - немного повысить стипендию ученика, чтобы стать привлекательнее для кандидатов.",
+      "gram": ""
     },
     "a3": {
       "de": "Ein Argument dafür ist sicherlich, dass Geld für viele junge Leute wichtig ist. Ein Argument dagegen ist aber, dass wir das Budget dafür erst noch klären müssten.",
       "en": "One argument for that is certainly that money matters to a lot of young people. One argument against it, though, is that we'd first have to clarify the budget for that.",
       "uk": "Аргумент на користь цього, безумовно, у тому, що гроші важливі для багатьох молодих людей. Аргумент проти - те, що нам спершу довелося б з'ясувати бюджет на це.",
-      "ru": "Аргумент в пользу этого, безусловно, в том, что деньги важны для многих молодых людей. Аргумент против - в том, что нам сначала пришлось бы выяснить бюджет на это."
+      "ru": "Аргумент в пользу этого, безусловно, в том, что деньги важны для многих молодых людей. Аргумент против - в том, что нам сначала пришлось бы выяснить бюджет на это.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem vielleicht auch lösen, indem</r> wir zusätzlich ein duales Studium statt der klassischen Ausbildung anbieten.",
       "en": "<r>That's true, but</r> <r>we could perhaps also solve the problem by</r> additionally offering a dual study programme instead of the classic apprenticeship.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r> й тим, що ми додатково запропонуємо дуальне навчання в університеті замість класичного учнівства.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r> и тем, что мы дополнительно предложим дуальное обучение в университете вместо классического ученичества."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r> и тем, что мы дополнительно предложим дуальное обучение в университете вместо классического ученичества.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. <g>Anstatt</g> nur auf die klassische Ausbildung <g>zu</g> setzen, sollten wir wirklich beide Wege parallel anbieten.",
       "en": "<r>I completely agree with you</r>. Instead of relying only on the classic apprenticeship, we should really offer both paths in parallel.",
       "uk": "<r>Тут я з тобою цілком згодна</r>. Замість того, щоб покладатися лише на класичне учнівство, нам справді варто пропонувати обидва шляхи паралельно.",
-      "ru": "<r>Тут я с тобой полностью согласна</r>. Вместо того чтобы полагаться только на классическое ученичество, нам действительно стоит предлагать оба пути параллельно."
+      "ru": "<r>Тут я с тобой полностью согласна</r>. Вместо того чтобы полагаться только на классическое ученичество, нам действительно стоит предлагать оба пути параллельно.",
+      "gram": "konnektoren_infinitiv"
     },
     "q5": {
       "de": "Zusätzlich könnten wir bei einer Umschulung ansetzen - vielleicht gibt es Interessierte, die schon einen anderen Beruf gelernt haben, aber wechseln möchten.",
       "en": "In addition, we could look into retraining - maybe there are interested people who've already learned a different profession but want to switch.",
       "uk": "Крім того, ми могли б звернути увагу на перекваліфікацію - можливо, є зацікавлені люди, які вже здобули іншу професію, але хочуть змінити напрямок.",
-      "ru": "Кроме того, мы могли бы обратить внимание на переквалификацию - возможно, есть заинтересованные люди, которые уже получили другую профессию, но хотят сменить направление."
+      "ru": "Кроме того, мы могли бы обратить внимание на переквалификацию - возможно, есть заинтересованные люди, которые уже получили другую профессию, но хотят сменить направление.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. Wir sollten das Ziel klar kommunizieren: Wer die duale Ausbildung erfolgreich abschließt, hat bei uns gute Übernahmechancen.",
       "en": "<r>I think that's a good point</r>. We should clearly communicate the goal: whoever successfully completes the dual training has good chances of being taken on permanently with us.",
       "uk": "<r>Вважаю це гарною думкою</r>. Нам варто чітко донести мету: хто успішно завершить дуальну освіту, має в нас хороші шанси залишитися на постійній роботі.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Нам стоит чётко донести цель: кто успешно завершит дуальное обучение, имеет у нас хорошие шансы остаться на постоянной работе."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Нам стоит чётко донести цель: кто успешно завершит дуальное обучение, имеет у нас хорошие шансы остаться на постоянной работе.",
+      "gram": ""
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um den Kontakt zur Berufsschule, und du sprichst mit der Geschäftsführung über die Ausbildungsvergütung. Einverstanden?",
       "en": "Let's split up the tasks: I'll take care of contacting the vocational school, and you talk to management about the trainee allowance. Agreed?",
       "uk": "Давай розподілимо завдання: я займуся контактом із професійним училищем, а ти поговориш з керівництвом про стипендію учнів. Домовились?",
-      "ru": "Давай разделим задачи: я займусь контактом с профессиональным училищем, а ты поговоришь с руководством о стипендии учеников. Договорились?"
+      "ru": "Давай разделим задачи: я займусь контактом с профессиональным училищем, а ты поговоришь с руководством о стипендии учеников. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, die Berufsschule schon diese Woche zu kontaktieren?",
       "en": "Agreed. Do you intend to contact the vocational school already this week?",
       "uk": "Згодна. Ти маєш намір звернутися до училища вже цього тижня?",
-      "ru": "Согласна. Ты намерен обратиться в училище уже на этой неделе?"
+      "ru": "Согласна. Ты намерен обратиться в училище уже на этой неделе?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn wir uns in zwei Wochen schon die ersten Rückmeldungen ansehen?",
       "en": "Yes, would it be realistic if we already look at the first responses in two weeks?",
       "uk": "Так, чи буде реалістично, якщо ми вже за два тижні подивимося перші відгуки?",
-      "ru": "Да, будет ли реалистично, если мы уже через две недели посмотрим первые отклики?"
+      "ru": "Да, будет ли реалистично, если мы уже через две недели посмотрим первые отклики?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein, solange wir jetzt gleich anfangen, ohne noch länger zu warten.",
       "en": "That should be feasible, as long as we start right away now, without waiting any longer.",
       "uk": "Це має бути здійсненно, якщо ми почнемо прямо зараз, не чекаючи довше.",
-      "ru": "Это должно быть выполнимо, если мы начнём прямо сейчас, не дожидаясь дольше."
+      "ru": "Это должно быть выполнимо, если мы начнём прямо сейчас, не дожидаясь дольше.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir kontaktieren die Berufsschule, prüfen eine höhere Ausbildungsvergütung und bieten zusätzlich ein duales Studium an, um die freien Plätze endlich zu besetzen.",
       "en": "Let's summarize: we'll contact the vocational school, check on a higher trainee allowance, and additionally offer a dual study programme, in order to finally fill the open places.",
       "uk": "Підсумуємо: ми звертаємося до професійного училища, розглядаємо підвищення стипендії учнів і додатково пропонуємо дуальне навчання, щоб нарешті заповнити вільні місця.",
-      "ru": "Подведём итог: мы обращаемся в профессиональное училище, рассматриваем повышение стипендии учеников и дополнительно предлагаем дуальное обучение, чтобы наконец заполнить свободные места."
+      "ru": "Подведём итог: мы обращаемся в профессиональное училище, рассматриваем повышение стипендии учеников и дополнительно предлагаем дуальное обучение, чтобы наконец заполнить свободные места.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, mit diesen Maßnahmen haben wir gute Chancen, die Ausbildungsplätze noch in diesem Jahr zu besetzen. Ich schreibe die Aufgabenverteilung kurz auf und schicke sie dir noch heute. <r>Lass uns außerdem in zwei Wochen kurz zusammenkommen, um die ersten Rückmeldungen gemeinsam zu besprechen.</r>",
       "en": "Exactly. I think with these measures we have a good chance of filling the apprenticeship places still this year. I'll write up the task distribution and send it to you today. <r>Let's also get together briefly in two weeks to discuss the first responses.</r>",
       "uk": "Саме так. Гадаю, з цими заходами в нас гарні шанси заповнити місця вже цього року. Я коротко запишу розподіл завдань і надішлю тобі його ще сьогодні. <r>Крім того, давай зберемося через два тижні, щоб разом обговорити перші відгуки.</r>",
-      "ru": "Именно так. Думаю, с этими мерами у нас хорошие шансы заполнить места уже в этом году. Я коротко запишу распределение задач и отправлю его тебе сегодня же. <r>Кроме того, давай соберёмся через две недели, чтобы вместе обсудить первые отклики.</r>"
-    },
-    "gram": "konnektoren_infinitiv"
+      "ru": "Именно так. Думаю, с этими мерами у нас хорошие шансы заполнить места уже в этом году. Я коротко запишу распределение задач и отправлю его тебе сегодня же. <r>Кроме того, давай соберёмся через две недели, чтобы вместе обсудить первые отклики.</r>",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_036",
     "cat": "Bewerbung",
     "task": {
@@ -13755,113 +13915,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Herr Nowak hat uns eine Initiativbewerbung geschickt und heute schon zweimal angerufen, um den aktuellen Stand zu erfragen, aber wir haben sein Bewerbungsschreiben noch gar nicht richtig geprüft.",
       "en": "We have a problem: Mr. Nowak sent us an unsolicited application and has already called twice today to ask about the current status, but we haven't even properly reviewed his cover letter yet.",
       "uk": "У нас проблема: пан Новак надіслав нам ініціативну заявку і вже двічі сьогодні телефонував, щоб дізнатися про поточний стан справи, а ми ще навіть не переглянули як слід його супровідний лист.",
-      "ru": "У нас проблема: господин Новак прислал нам инициативную заявку и уже дважды сегодня звонил, чтобы узнать о текущем статусе, а мы ещё даже не рассмотрели как следует его сопроводительное письмо."
+      "ru": "У нас проблема: господин Новак прислал нам инициативную заявку и уже дважды сегодня звонил, чтобы узнать о текущем статусе, а мы ещё даже не рассмотрели как следует его сопроводительное письмо.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass wir ihm noch keine Rückmeldung geben konnten, obwohl er schon nachfragt?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that we haven't been able to give him any feedback yet, even though he's already asking?",
       "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що ми ще не змогли дати йому жодної відповіді, хоча він уже цікавиться?",
-      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что мы ещё не смогли дать ему никакого ответа, хотя он уже интересуется?"
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что мы ещё не смогли дать ему никакого ответа, хотя он уже интересуется?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welchen Eindruck macht das auf ihn, wenn wir ihn noch länger warten lassen?",
       "en": "Exactly. What do you think, what impression does that make on him if we keep him waiting even longer?",
       "uk": "Саме так. Як ти думаєш, яке враження це на нього справляє, якщо ми змушуємо його чекати ще довше?",
-      "ru": "Именно так. Как ты думаешь, какое впечатление это на него производит, если мы заставляем его ждать ещё дольше?"
+      "ru": "Именно так. Как ты думаешь, какое впечатление это на него производит, если мы заставляем его ждать ещё дольше?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, dass das ziemlich schlecht ankommt, weil viele Bewerber genau daran messen, wie professionell wir als Unternehmen wirken.",
       "en": "I think that comes across pretty badly, because a lot of applicants judge exactly that - how professional we seem as a company.",
       "uk": "Гадаю, це справляє доволі погане враження, бо багато кандидатів судять саме за цим, наскільки професійно виглядає наша компанія.",
-      "ru": "Думаю, это производит довольно плохое впечатление, потому что многие кандидаты судят именно по этому, насколько профессионально выглядит наша компания."
+      "ru": "Думаю, это производит довольно плохое впечатление, потому что многие кандидаты судят именно по этому, насколько профессионально выглядит наша компания.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> uns sein Anschreiben jetzt gemeinsam ansehen und schnell entscheiden, ob es zu unserem Anforderungsprofil passt?",
       "en": "<r>How about we</r> look at his cover letter together right now and quickly decide whether it matches our job requirements profile?",
       "uk": "<r>Що якщо ми</r> зараз разом подивимося на його супровідний лист і швидко вирішимо, чи відповідає він нашому профілю вимог?",
-      "ru": "<r>Что если мы</r> сейчас вместе посмотрим на его сопроводительное письмо и быстро решим, соответствует ли оно нашему профилю требований?"
+      "ru": "<r>Что если мы</r> сейчас вместе посмотрим на его сопроводительное письмо и быстро решим, соответствует ли оно нашему профилю требований?",
+      "gram": ""
     },
     "a2": {
       "de": "Gute Idee. Seine Einleitung finde ich stark, aber sein Schlusssatz wirkt für meinen Geschmack etwas zu selbstbewusst, fast schon arrogant.",
       "en": "Good idea. I find his introduction strong, but his closing sentence strikes me as a bit too self-confident, almost arrogant.",
       "uk": "Гарна ідея. Його вступ мені здається сильним, але заключне речення видається мені трохи занадто самовпевненим, майже зухвалим.",
-      "ru": "Хорошая идея. Его вступление мне кажется сильным, но заключительное предложение выглядит для меня немного слишком самоуверенным, почти дерзким."
+      "ru": "Хорошая идея. Его вступление мне кажется сильным, но заключительное предложение выглядит для меня немного слишком самоуверенным, почти дерзким.",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, ihn trotzdem zu einem Vorstellungstermin einzuladen - im persönlichen Gespräch wirkt so etwas oft ganz anders.",
       "en": "Another suggestion would be to invite him to an interview anyway - in person, things like that often come across quite differently.",
       "uk": "Ще одна пропозиція - все одно запросити його на співбесіду: наживо таке часто справляє зовсім інше враження.",
-      "ru": "Ещё одно предложение - всё равно пригласить его на собеседование: вживую такое часто производит совсем другое впечатление."
+      "ru": "Ещё одно предложение - всё равно пригласить его на собеседование: вживую такое часто производит совсем другое впечатление.",
+      "gram": ""
     },
     "a3": {
       "de": "Ein Argument dafür ist sicherlich, dass seine Berufserfahrung wirklich zu uns passt. Ein Argument dagegen ist aber, dass wir dafür kurzfristig einen Termin finden müssten.",
       "en": "One argument for that is certainly that his professional experience really fits us. One argument against it, though, is that we'd have to find a slot on short notice for that.",
       "uk": "Аргумент на користь цього, безумовно, у тому, що його досвід роботи дійсно нам підходить. Аргумент проти - те, що нам довелося б швидко знайти час для цього.",
-      "ru": "Аргумент в пользу этого, безусловно, в том, что его опыт работы действительно нам подходит. Аргумент против - в том, что нам пришлось бы быстро найти время для этого."
+      "ru": "Аргумент в пользу этого, безусловно, в том, что его опыт работы действительно нам подходит. Аргумент против - в том, что нам пришлось бы быстро найти время для этого.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem lösen, indem</r> wir ihm heute noch kurz Bescheid geben und einen Termin für nächste Woche vorschlagen.",
       "en": "<r>That's true, but</r> <r>we could solve the problem by</r> letting him know briefly today and suggesting an appointment for next week.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми ще сьогодні коротко повідомимо йому і запропонуємо термін на наступний тиждень.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы ещё сегодня коротко сообщим ему и предложим срок на следующей неделе."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы ещё сегодня коротко сообщим ему и предложим срок на следующей неделе.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Dann hat er wenigstens eine klare Rückmeldung und muss nicht weiter im Unklaren bleiben.",
       "en": "<r>I completely agree with you</r>. Then at least he'll have a clear response and won't have to stay in the dark any longer.",
       "uk": "<r>Тут я з тобою цілком згоден</r>. Тоді він принаймні матиме чітку відповідь і не залишиться в невизначеності.",
-      "ru": "<r>Тут я с тобой полностью согласен</r>. Тогда у него хотя бы будет чёткий ответ, и он не останется в неопределённости."
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Тогда у него хотя бы будет чёткий ответ, и он не останется в неопределённости.",
+      "gram": ""
     },
     "q5": {
       "de": "Zusätzlich könnten wir ihm in der Einladung schon unsere Gehaltsvorstellung für die Stelle nennen, damit von Anfang an Klarheit herrscht.",
       "en": "In addition, we could already mention our salary expectations for the position in the invitation, so there's clarity from the start.",
       "uk": "Крім того, ми могли б вже в запрошенні назвати нашу очікувану зарплату для цієї посади, щоб від самого початку була ясність.",
-      "ru": "Кроме того, мы могли бы уже в приглашении назвать наши ожидания по зарплате для этой должности, чтобы с самого начала была ясность."
+      "ru": "Кроме того, мы могли бы уже в приглашении назвать наши ожидания по зарплате для этой должности, чтобы с самого начала была ясность.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. So kann er sich auch besser vorbereiten und uns im Gespräch seine eigenen Erwartungen nennen.",
       "en": "<r>I think that's a good point</r>. That way he can prepare better too, and tell us his own expectations in the interview.",
       "uk": "<r>Вважаю це гарною думкою</r>. Так він зможе краще підготуватися і озвучити нам на співбесіді власні очікування.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Так он сможет лучше подготовиться и озвучить нам на собеседовании свои собственные ожидания."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Так он сможет лучше подготовиться и озвучить нам на собеседовании свои собственные ожидания.",
+      "gram": ""
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich rufe ihn zurück und vereinbare den Termin, und du bereitest schon mal die Checkliste für das Gespräch vor. Einverstanden?",
       "en": "Let's split up the tasks: I'll call him back and arrange the appointment, and you prepare the checklist for the interview. Agreed?",
       "uk": "Давай розподілимо завдання: я передзвоню йому і домовлюся про термін, а ти підготуй чекліст для співбесіди. Домовились?",
-      "ru": "Давай разделим задачи: я перезвоню ему и договорюсь о встрече, а ты подготовь чек-лист для собеседования. Договорились?"
+      "ru": "Давай разделим задачи: я перезвоню ему и договорюсь о встрече, а ты подготовь чек-лист для собеседования. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, ihn noch heute Nachmittag anzurufen?",
       "en": "Agreed. Do you intend to call him already this afternoon?",
       "uk": "Згоден. Ти маєш намір зателефонувати йому вже сьогодні пополудні?",
-      "ru": "Согласен. Ты намерена позвонить ему уже сегодня после обеда?"
+      "ru": "Согласен. Ты намерена позвонить ему уже сегодня после обеда?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn wir den Termin schon für Donnerstag festlegen?",
       "en": "Yes, would it be realistic if we set the appointment for Thursday already?",
       "uk": "Так, чи буде реалістично, якщо ми вже призначимо термін на четвер?",
-      "ru": "Да, будет ли реалистично, если мы уже назначим встречу на четверг?"
+      "ru": "Да, будет ли реалистично, если мы уже назначим встречу на четверг?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein, solange der Raum für Vorstellungsgespräche noch frei ist.",
       "en": "That should be feasible, as long as the interview room is still free.",
       "uk": "Це має бути здійсненно, поки кімната для співбесід ще вільна.",
-      "ru": "Это должно быть выполнимо, пока комната для собеседований ещё свободна."
+      "ru": "Это должно быть выполнимо, пока комната для собеседований ещё свободна.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir rufen Herrn Nowak heute noch zurück, laden ihn für Donnerstag zum Vorstellungstermin ein und bereiten die Checkliste sowie unsere Gehaltsvorstellung vor.",
       "en": "Let's summarize: we'll call Mr. Nowak back today, invite him for an interview on Thursday, and prepare the checklist as well as our salary expectations.",
       "uk": "Підсумуємо: ми сьогодні ж передзвонимо пану Новаку, запросимо його на співбесіду в четвер і підготуємо чекліст та нашу очікувану зарплату.",
-      "ru": "Подведём итог: мы сегодня же перезвоним господину Новаку, пригласим его на собеседование в четверг и подготовим чек-лист и наши ожидания по зарплате."
+      "ru": "Подведём итог: мы сегодня же перезвоним господину Новаку, пригласим его на собеседование в четверг и подготовим чек-лист и наши ожидания по зарплате.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, so zeigen wir ihm, dass wir seine Initiativbewerbung ernst nehmen - das hinterlässt sicher einen guten Eindruck. Ich schreibe die wichtigsten Punkte kurz zusammen und schicke sie dir noch heute.",
       "en": "Exactly. I think that way we show him that we take his unsolicited application seriously - that will surely leave a good impression. I'll summarize the key points and send them to you today.",
       "uk": "Саме так. Гадаю, так ми покажемо йому, що серйозно ставимося до його ініціативної заявки - це точно залишить гарне враження. Я коротко підсумую головні пункти і надішлю їх тобі ще сьогодні.",
-      "ru": "Именно так. Думаю, так мы покажем ему, что серьёзно относимся к его инициативной заявке - это точно оставит хорошее впечатление. Я коротко подведу итоги и отправлю их тебе сегодня же."
-    },
-    "gram": ""
+      "ru": "Именно так. Думаю, так мы покажем ему, что серьёзно относимся к его инициативной заявке - это точно оставит хорошее впечатление. Я коротко подведу итоги и отправлю их тебе сегодня же.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_037",
     "cat": "Arbeitsweg",
     "task": {
@@ -13877,41 +14054,46 @@ var DIALOGE = [
       "de": "Sag mal, wie kommst du eigentlich jeden Tag zur Arbeit? Fährst du mit dem Auto oder nimmst du die Bahn?",
       "en": "Tell me, how do you actually get to work every day? Do you drive or take the train?",
       "uk": "Скажи, а як ти взагалі щодня добираєшся до роботи? Їздиш на машині чи потягом?",
-      "ru": "Скажи, а как ты вообще каждый день добираешься до работы? На машине или на поезде?"
+      "ru": "Скажи, а как ты вообще каждый день добираешься до работы? На машине или на поезде?",
+      "gram": ""
     },
     "a": {
       "de": "Ich fahre meistens mit dem Zug, das dauert ungefähr vierzig Minuten. Ehrlich gesagt lese ich in der Zeit ganz gern oder höre einen Podcast. Und wie sieht das bei dir aus, fährst du auch mit dem Zug?",
       "en": "I mostly take the train, it takes about forty minutes. Honestly, I quite like reading during that time, or I listen to a podcast. What about you, do you take the train too?",
       "uk": "Я здебільшого їжджу потягом, це займає хвилин сорок. Чесно кажучи, я люблю в цей час почитати або послухати подкаст. А в тебе як, теж потягом їздиш?",
-      "ru": "Я в основном езжу на поезде, это занимает минут сорок. Честно говоря, я люблю в это время почитать или послушать подкаст. А у тебя как, тоже на поезде?"
+      "ru": "Я в основном езжу на поезде, это занимает минут сорок. Честно говоря, я люблю в это время почитать или послушать подкаст. А у тебя как, тоже на поезде?",
+      "gram": ""
     },
     "q1": {
       "de": "Nein, ich wohne relativ nah am Büro, deshalb fahre ich meistens mit dem Fahrrad, wenn das Wetter mitspielt. Bei Regen nehme ich den Bus. Stört es dich eigentlich nicht, dass die Fahrt jeden Tag so lange dauert?",
       "en": "No, I live pretty close to the office, so I mostly ride my bike when the weather cooperates. When it rains I take the bus. Doesn't it bother you that the ride takes so long every day?",
       "uk": "Ні, я живу досить близько до офісу, тому здебільшого їжджу на велосипеді, якщо погода дозволяє. А коли дощить, їду автобусом. А тебе не дратує, що дорога щодня займає стільки часу?",
-      "ru": "Нет, я живу довольно близко к офису, поэтому обычно езжу на велосипеде, если погода позволяет. А когда дождь, еду на автобусе. А тебя не раздражает, что дорога каждый день занимает так много времени?"
+      "ru": "Нет, я живу довольно близко к офису, поэтому обычно езжу на велосипеде, если погода позволяет. А когда дождь, еду на автобусе. А тебя не раздражает, что дорога каждый день занимает так много времени?",
+      "gram": ""
     },
     "a1": {
       "de": "Am Anfang fand ich das schon anstrengend, aber mittlerweile habe ich mich richtig daran gewöhnt. Ich nutze die Zeit einfach produktiv. Radfahren klingt aber auch toll, das hält bestimmt fit, oder?",
       "en": "At first I found it pretty exhausting, but by now I've really gotten used to it. I just use the time productively. Biking sounds great too though, that must keep you fit, right?",
       "uk": "Спочатку мені було це важкувато, але зараз я вже цілком звик. Просто використовую цей час продуктивно. Але велосипед - це теж класно, це, мабуть, тримає тебе у формі, так?",
-      "ru": "Сначала мне было это тяжеловато, но сейчас я уже полностью привык. Просто использую это время продуктивно. Но велосипед - это тоже здорово, это, наверное, держит тебя в форме, да?"
+      "ru": "Сначала мне было это тяжеловато, но сейчас я уже полностью привык. Просто использую это время продуктивно. Но велосипед - это тоже здорово, это, наверное, держит тебя в форме, да?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, total, und ich spare mir dadurch sogar den Weg ins Fitnessstudio. Aber bei Schnee oder Glätte im Winter wird es schon manchmal ungemütlich.",
       "en": "Yeah, totally, and it even saves me a trip to the gym. But when there's snow or ice in winter it does get a bit unpleasant sometimes.",
       "uk": "Так, дуже, і я навіть заощаджую на поході в спортзал. Але взимку, коли сніг чи ожеледиця, буває доволі неприємно.",
-      "ru": "Да, очень, и я даже экономлю на походе в спортзал. Но зимой, когда снег или гололёд, бывает довольно неприятно."
+      "ru": "Да, очень, и я даже экономлю на походе в спортзал. Но зимой, когда снег или гололёд, бывает довольно неприятно.",
+      "gram": ""
     },
     "a2": {
       "de": "Das kann ich mir vorstellen. Ich bin froh, dass ich im Winter einfach im warmen Zug sitzen kann und mich um nichts kümmern muss.",
       "en": "I can imagine. I'm glad that in winter I can just sit in the warm train and not have to worry about anything.",
       "uk": "Можу собі уявити. Я радий, що взимку можу просто сидіти в теплому потязі і ні про що не переживати.",
-      "ru": "Могу себе представить. Я рад, что зимой могу просто сидеть в тёплом поезде и ни о чём не переживать."
-    },
-    "gram": ""
+      "ru": "Могу себе представить. Я рад, что зимой могу просто сидеть в тёплом поезде и ни о чём не переживать.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_038",
     "cat": "Wochenende",
     "task": {
@@ -13927,41 +14109,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du schon Pläne für dieses Wochenende?",
       "en": "Tell me, do you already have plans for this weekend?",
       "uk": "Скажи, у тебе вже є плани на ці вихідні?",
-      "ru": "Скажи, у тебя уже есть планы на эти выходные?"
+      "ru": "Скажи, у тебя уже есть планы на эти выходные?",
+      "gram": ""
     },
     "a": {
       "de": "Am Samstag fahre ich mit meiner Familie zu meinen Eltern aufs Land, das machen wir eigentlich fast jedes zweite Wochenende. Am Sonntag will ich dann aber wirklich mal ausschlafen und es mir zu Hause gemütlich machen. Und du, hast du schon etwas vor?",
       "en": "On Saturday I'm going to the countryside with my family to visit my parents, we actually do that almost every other weekend. On Sunday though I really want to sleep in and just relax at home. What about you, do you have anything planned already?",
       "uk": "У суботу ми з родиною їдемо за місто до моїх батьків, ми взагалі робимо це майже кожні вихідні через одні. А в неділю я справді хочу виспатися і просто відпочити вдома. А в тебе вже є якісь плани?",
-      "ru": "В субботу мы с семьёй едем за город к моим родителям, мы вообще делаем это почти каждые вторые выходные. А в воскресенье я действительно хочу выспаться и просто отдохнуть дома. А у тебя уже есть какие-то планы?"
+      "ru": "В субботу мы с семьёй едем за город к моим родителям, мы вообще делаем это почти каждые вторые выходные. А в воскресенье я действительно хочу выспаться и просто отдохнуть дома. А у тебя уже есть какие-то планы?",
+      "gram": ""
     },
     "q1": {
       "de": "Noch nicht wirklich konkret, aber ich möchte auf jeden Fall etwas draußen unternehmen, weil das Wetter so schön werden soll. Vielleicht gehe ich wandern oder treffe mich einfach mit Freunden im Park.",
       "en": "Not really anything concrete yet, but I definitely want to do something outdoors since the weather's supposed to be nice. Maybe I'll go hiking or just meet up with friends in the park.",
       "uk": "Поки що нічого конкретного, але я точно хочу щось зробити на свіжому повітрі, бо погода начебто буде гарна. Може, піду в похід або просто зустрінуся з друзями в парку.",
-      "ru": "Пока ничего конкретного, но я точно хочу сделать что-то на свежем воздухе, потому что погода вроде обещает быть хорошей. Может, пойду в поход или просто встречусь с друзьями в парке."
+      "ru": "Пока ничего конкретного, но я точно хочу сделать что-то на свежем воздухе, потому что погода вроде обещает быть хорошей. Может, пойду в поход или просто встречусь с друзьями в парке.",
+      "gram": ""
     },
     "a1": {
       "de": "Das klingt nach einem schönen Ausgleich zur Arbeitswoche. Kochst du dann sonntags auch gerne, oder bestellt ihr euch eher etwas?",
       "en": "That sounds like a nice balance to the work week. Do you enjoy cooking on Sundays too, or do you usually order something instead?",
       "uk": "Звучить як гарний баланс після робочого тижня. А в неділю ти любиш готувати, чи ви радше щось замовляєте?",
-      "ru": "Звучит как хороший баланс после рабочей недели. А в воскресенье ты любишь готовить, или вы скорее что-то заказываете?"
+      "ru": "Звучит как хороший баланс после рабочей недели. А в воскресенье ты любишь готовить, или вы скорее что-то заказываете?",
+      "gram": ""
     },
     "q2": {
       "de": "Sonntags koche ich total gerne, meistens etwas Einfaches. Das ist für mich fast schon ein kleines Ritual geworden. Und was machst du normalerweise, wenn du mal so richtig entspannen willst?",
       "en": "I really enjoy cooking on Sundays, usually something simple. It's become almost a little ritual for me. And what do you usually do when you really want to relax?",
       "uk": "У неділю я дуже люблю готувати, зазвичай щось просте. Це для мене вже стало майже маленьким ритуалом. А що зазвичай робиш ти, коли хочеш по-справжньому відпочити?",
-      "ru": "По воскресеньям я очень люблю готовить, обычно что-то простое. Это для меня уже стало почти маленьким ритуалом. А что обычно делаешь ты, когда хочешь по-настоящему отдохнуть?"
+      "ru": "По воскресеньям я очень люблю готовить, обычно что-то простое. Это для меня уже стало почти маленьким ритуалом. А что обычно делаешь ты, когда хочешь по-настоящему отдохнуть?",
+      "gram": ""
     },
     "a2": {
       "de": "Ich lese auch total gerne, am liebsten mit einer Tasse Kaffee auf dem Balkon, wenn die Sonne scheint. Das ist für mich der perfekte Ausgleich nach einer stressigen Woche.",
       "en": "I also love reading, ideally with a cup of coffee on the balcony when the sun's out. That's the perfect balance for me after a stressful week.",
       "uk": "Я теж дуже люблю читати, найкраще з чашкою кави на балконі, коли світить сонце. Для мене це ідеальний спосіб відновитися після напруженого тижня.",
-      "ru": "Я тоже очень люблю читать, лучше всего с чашкой кофе на балконе, когда светит солнце. Для меня это идеальный способ восстановиться после напряжённой недели."
-    },
-    "gram": ""
+      "ru": "Я тоже очень люблю читать, лучше всего с чашкой кофе на балконе, когда светит солнце. Для меня это идеальный способ восстановиться после напряжённой недели.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_039",
     "cat": "Der erste Arbeitstag",
     "task": {
@@ -13977,117 +14164,134 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Die neue Kollegin, Frau Yilmaz, fängt heute an, aber ihr Passwort für den Computer ist noch nicht eingerichtet, und ihren Schlüssel für den Arbeitsplatz hat sie auch noch nicht bekommen.",
       "en": "We have a problem: our new colleague, Ms. Yilmaz, starts today, but her password for the computer hasn't been set up yet, and she hasn't received her key for the workplace either.",
       "uk": "У нас проблема: наша нова колега, пані Йилмаз, сьогодні виходить на роботу, але її пароль для комп'ютера ще не налаштований, і ключ від робочого місця вона теж ще не отримала.",
-      "ru": "У нас проблема: наша новая коллега, госпожа Йилмаз, сегодня выходит на работу, но её пароль для компьютера ещё не настроен, и ключ от рабочего места она тоже ещё не получила."
+      "ru": "У нас проблема: наша новая коллега, госпожа Йилмаз, сегодня выходит на работу, но её пароль для компьютера ещё не настроен, и ключ от рабочего места она тоже ещё не получила.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass sie an ihrem ersten Tag weder ins System noch ins Büro richtig reinkommt?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that on her first day she can get into neither the system nor the office properly?",
       "uk": "<r>Я правильно тебе зрозуміла</r>: отже, йдеться про те, що в перший день вона не може нормально потрапити ні в систему, ні в офіс?",
-      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что в первый день она не может нормально попасть ни в систему, ни в офис?"
+      "ru": "<r>Я правильно тебя поняла</r>: значит, речь о том, что в первый день она не может нормально попасть ни в систему, ни в офис?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welchen Eindruck macht das auf sie, wenn ihr erster Arbeitstag so chaotisch beginnt?",
       "en": "Exactly. What do you think, what impression does that make on her if her first day starts off so chaotically?",
       "uk": "Саме так. Як ти думаєш, яке враження це на неї справить, якщо перший робочий день почнеться так хаотично?",
-      "ru": "Именно так. Как ты думаешь, какое впечатление это на неё произведёт, если первый рабочий день начнётся так хаотично?"
+      "ru": "Именно так. Как ты думаешь, какое впечатление это на неё произведёт, если первый рабочий день начнётся так хаотично?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, das ist schlimmer, <g>als</g> wir denken - der erste Eindruck bleibt meistens lange im Gedächtnis.",
       "en": "I think that's worse than we think - the first impression usually stays in someone's memory for a long time.",
       "uk": "Гадаю, це гірше, ніж ми думаємо - перше враження зазвичай надовго залишається в пам'яті.",
-      "ru": "Думаю, это хуже, чем мы думаем - первое впечатление обычно надолго остаётся в памяти."
+      "ru": "Думаю, это хуже, чем мы думаем - первое впечатление обычно надолго остаётся в памяти.",
+      "gram": "vergleichssaetze_als_wie_je_desto"
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> sofort die IT-Abteilung anrufen und um eine schnelle Genehmigung für ein vorläufiges Passwort bitten?",
       "en": "<r>How about we</r> call IT right away and ask for quick approval for a temporary password?",
       "uk": "<r>Що якщо ми</r> одразу зателефонуємо в ІТ-відділ і попросимо швидкий дозвіл на тимчасовий пароль?",
-      "ru": "<r>Что если мы</r> сразу позвоним в ИТ-отдел и попросим быстрое разрешение на временный пароль?"
+      "ru": "<r>Что если мы</r> сразу позвоним в ИТ-отдел и попросим быстрое разрешение на временный пароль?",
+      "gram": ""
     },
     "a2": {
       "de": "Das <r>ist sicherlich sinnvoll, da</r> sie sonst den ganzen Vormittag nichts machen kann. Ich hoffe nur, das geht genauso schnell <g>wie</g> beim letzten Mal.",
       "en": "That <r>certainly makes sense</r>, since otherwise she can't do anything all morning. I just hope it goes as quickly as it did last time.",
       "uk": "Це, <r>безумовно, розумно</r>, бо інакше вона нічого не зможе робити цілий ранок. Сподіваюся тільки, що це піде так само швидко, як минулого разу.",
-      "ru": "Это, <r>безусловно, разумно</r>, иначе она ничего не сможет делать всё утро. Надеюсь только, что это пройдёт так же быстро, как в прошлый раз."
+      "ru": "Это, <r>безусловно, разумно</r>, иначе она ничего не сможет делать всё утро. Надеюсь только, что это пройдёт так же быстро, как в прошлый раз.",
+      "gram": "vergleichssaetze_als_wie_je_desto"
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, ihr vorübergehend meinen Schlüssel zu leihen, bis die Rezeption einen neuen für sie ausgestellt hat.",
       "en": "Another suggestion would be to lend her my key temporarily, until reception has issued a new one for her.",
       "uk": "Ще одна пропозиція - тимчасово позичити їй мій ключ, поки на рецепції не видадуть їй новий.",
-      "ru": "Ещё одно предложение - временно одолжить ей мой ключ, пока на ресепшене не выдадут ей новый."
+      "ru": "Ещё одно предложение - временно одолжить ей мой ключ, пока на ресепшене не выдадут ей новый.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass du dann selbst nicht mehr an deinen Arbeitsplatz kommst, wenn du den Schlüssel abgibst.",
       "en": "<r>One argument against that is</r> that you yourself won't be able to get into your own workplace anymore if you hand over your key.",
       "uk": "<r>Аргумент проти цього</r> полягає в тому, що ти сам тоді не зможеш потрапити на своє робоче місце, якщо віддаси ключ.",
-      "ru": "<r>Аргумент против этого</r> в том, что ты сам тогда не сможешь попасть на своё рабочее место, если отдашь ключ."
+      "ru": "<r>Аргумент против этого</r> в том, что ты сам тогда не сможешь попасть на своё рабочее место, если отдашь ключ.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> die Rezeption uns kurzfristig einen Ersatzschlüssel ausleiht.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> having reception lend us a spare key on short notice.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо рецепція терміново позичить нам запасний ключ.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если ресепшен срочно одолжит нам запасной ключ."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если ресепшен срочно одолжит нам запасной ключ.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. <g>Je</g> schneller wir das klären, <g>desto</g> entspannter kann ihr erster Tag noch werden.",
       "en": "<r>I completely agree with you</r>. The faster we sort this out, the more relaxed her first day can still become.",
       "uk": "<r>Тут я з тобою цілком згодна</r>. Чим швидше ми це владнаємо, тим спокійнішим ще може стати її перший день.",
-      "ru": "<r>Тут я с тобой полностью согласна</r>. Чем быстрее мы это уладим, тем спокойнее ещё может стать её первый день."
+      "ru": "<r>Тут я с тобой полностью согласна</r>. Чем быстрее мы это уладим, тем спокойнее ещё может стать её первый день.",
+      "gram": "vergleichssaetze_als_wie_je_desto"
     },
     "q5": {
       "de": "Zusätzlich sollten wir ihr auch gleich das Organigramm und den Dienstplan zeigen, damit sie einen Überblick über die Abteilung bekommt.",
       "en": "In addition, we should also show her the org chart and the duty roster right away, so she gets an overview of the department.",
       "uk": "Крім того, варто одразу показати їй органіграму та графік чергувань, щоб вона отримала уявлення про відділ.",
-      "ru": "Кроме того, стоит сразу показать ей органиграмму и график дежурств, чтобы она получила представление об отделе."
+      "ru": "Кроме того, стоит сразу показать ей органиграмму и график дежурств, чтобы она получила представление об отделе.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. Wir könnten ihr auch gleich die wichtigsten Sicherheitsvorschriften erklären, bevor sie sich im Großraumbüro einlebt.",
       "en": "<r>I think that's a good point</r>. We could also explain the most important safety rules to her right away, before she settles into the open-plan office.",
       "uk": "<r>Вважаю це гарною думкою</r>. Ми також могли б одразу пояснити їй найважливіші правила безпеки, перш ніж вона освоїться у відкритому офісі.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы сразу объяснить ей самые важные правила безопасности, прежде чем она освоится в открытом офисе."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы сразу объяснить ей самые важные правила безопасности, прежде чем она освоится в открытом офисе.",
+      "gram": ""
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich kümmere mich um das Passwort und den Schlüssel, und du zeigst ihr das Gebäude und die Abteilung. Einverstanden?",
       "en": "Let's split up the tasks: I'll take care of the password and the key, and you show her the building and the department. Agreed?",
       "uk": "Давай розподілимо завдання: я займуся паролем і ключем, а ти покажеш їй будівлю і відділ. Домовились?",
-      "ru": "Давай разделим задачи: я займусь паролем и ключом, а ты покажешь ей здание и отдел. Договорились?"
+      "ru": "Давай разделим задачи: я займусь паролем и ключом, а ты покажешь ей здание и отдел. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, die IT-Abteilung noch vor der Begrüßung anzurufen?",
       "en": "Agreed. Do you intend to call IT already before the welcome?",
       "uk": "Згодна. Ти маєш намір зателефонувати в ІТ-відділ ще до привітання?",
-      "ru": "Согласна. Ты намерен позвонить в ИТ-отдел ещё до приветствия?"
+      "ru": "Согласна. Ты намерен позвонить в ИТ-отдел ещё до приветствия?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn wir das in den nächsten zehn Minuten klären, bevor sie ankommt?",
       "en": "Yes, would it be realistic if we sort that out in the next ten minutes, before she arrives?",
       "uk": "Так, чи буде реалістично, якщо ми владнаємо це за наступні десять хвилин, до її приходу?",
-      "ru": "Да, будет ли реалистично, если мы уладим это за следующие десять минут, до её прихода?"
+      "ru": "Да, будет ли реалистично, если мы уладим это за следующие десять минут, до её прихода?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein, solange die IT-Abteilung schneller reagiert, als wir befürchten.",
       "en": "That should be feasible, as long as IT reacts faster than we fear.",
       "uk": "Це має бути здійсненно, якщо ІТ-відділ відреагує швидше, ніж ми побоюємося.",
-      "ru": "Это должно быть выполнимо, если ИТ-отдел отреагирует быстрее, чем мы опасаемся."
+      "ru": "Это должно быть выполнимо, если ИТ-отдел отреагирует быстрее, чем мы опасаемся.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir organisieren sofort Passwort und Schlüssel, zeigen ihr das Organigramm und die Sicherheitsvorschriften, damit ihr erster Arbeitstag trotzdem gut beginnt.",
       "en": "Let's summarize: we'll organize the password and key right away, show her the org chart and the safety rules, so her first day still starts off well.",
       "uk": "Підсумуємо: ми одразу організовуємо пароль і ключ, показуємо їй органіграму та правила безпеки, щоб її перший робочий день все ж почався добре.",
-      "ru": "Подведём итог: мы сразу организуем пароль и ключ, покажем ей органиграмму и правила безопасности, чтобы её первый рабочий день всё же начался хорошо."
+      "ru": "Подведём итог: мы сразу организуем пароль и ключ, покажем ей органиграмму и правила безопасности, чтобы её первый рабочий день всё же начался хорошо.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, so fühlt sie sich von Anfang an willkommen - eine gute Willkommenskultur ist schließlich mindestens so wichtig wie die Formalitäten selbst. Ich schreibe der Rezeption kurz Bescheid und kümmere mich gleich darum. <r>Lass uns sie außerdem in der Mittagspause kurz treffen, um zu hören, wie ihr erster Tag bisher läuft.</r>",
       "en": "Exactly. I think that way she'll feel welcome from the start - after all, a good welcome culture is at least as important as the formalities themselves. I'll quickly let reception know and take care of it right away. <r>Let's also meet up with her briefly at lunch to hear how her first day is going so far.</r>",
       "uk": "Саме так. Гадаю, так вона відчує себе бажаною гостею з самого початку - зрештою, гарна культура привітання щонайменше настільки ж важлива, як і самі формальності. Я коротко повідомлю рецепцію і одразу цим займуся. <r>Крім того, давай коротко зустрінемося з нею на обідній перерві, щоб дізнатися, як минає її перший день.</r>",
-      "ru": "Именно так. Думаю, так она почувствует себя желанной гостьей с самого начала - в конце концов, хорошая культура приветствия как минимум так же важна, как и сами формальности. Я коротко сообщу ресепшену и сразу этим займусь. <r>Кроме того, давай коротко встретимся с ней на обеденном перерыве, чтобы узнать, как проходит её первый день.</r>"
-    },
-    "gram": "vergleichssaetze_als_wie_je_desto"
+      "ru": "Именно так. Думаю, так она почувствует себя желанной гостьей с самого начала - в конце концов, хорошая культура приветствия как минимум так же важна, как и сами формальности. Я коротко сообщу ресепшену и сразу этим займусь. <r>Кроме того, давай коротко встретимся с ней на обеденном перерыве, чтобы узнать, как проходит её первый день.</r>",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_040",
     "cat": "Herzlich willkommen",
     "task": {
-      "de": "Eine neue Kollegin ist sehr zurückhaltend und beteiligt sich kaum an Gesprächen in der Pause.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Ursache: Woran könnte es liegen, dass sie sich nicht integriert fühlt?<br>Спільна тема: Wie lässt sich ein gemeinsames Gesprächsthema finden?<br>Ansprache: Wie taktvoll lässt sie sich auf ihre Interessen ansprechen?<br>Zeit: Wie viel Zeit sollte man ihr geben, sich zu öffnen?",
+      "de": "Eine neue Kollegin ist sehr zurückhaltend und beteiligt sich kaum an Gesprächen in der Pause.<br><br>Überlegen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie in dieser Situation reagieren.<br><br>Diese Stichpunkte helfen Ihnen.<br>Ursache: Woran könnte es liegen, dass sie sich nicht integriert fühlt?<br>Gemeinsamkeit: Wie lässt sich ein gemeinsames Gesprächsthema finden?<br>Ansprache: Wie taktvoll lässt sie sich auf ihre Interessen ansprechen?<br>Zeit: Wie viel Zeit sollte man ihr geben, sich zu öffnen?",
       "en": "A new colleague is very reserved and hardly takes part in conversations during breaks.<br><br>Discuss with your conversation partner how you would respond to this situation.<br><br>These points can help you.<br>Cause: What could be the reason she doesn't feel integrated?<br>Common ground: How can a shared topic of conversation be found?<br>Approach: How can she be tactfully asked about her interests?<br>Time: How much time should be given for her to open up?",
       "uk": "Нова колега дуже стримана і майже не бере участі в розмовах під час перерв.<br><br>Обговоріть зі своїм співрозмовником чи співрозмовницею, як ви відреагуєте на цю ситуацію.<br><br>Ось кілька пунктів, які можуть допомогти.<br>Причина: Через що вона може почуватися невключеною в команду?<br>Спільна тема: Як знайти спільну тему для розмови?<br>Звернення: Як тактовно запитати про її інтереси?<br>Час: Скільки часу варто дати їй, щоб розкритися?",
       "ru": "Новая коллега очень сдержанная и почти не участвует в разговорах во время перерывов.<br><br>Обсудите со своим собеседником или собеседницей, как вы отреагируете на эту ситуацию.<br><br>Вот несколько пунктов, которые могут помочь.<br>Причина: Из-за чего она может чувствовать себя невключённой в команду?<br>Общая тема: Как найти общую тему для разговора?<br>Обращение: Как тактично спросить о её интересах?<br>Время: Сколько времени стоит дать ей, чтобы раскрыться?"
@@ -14099,113 +14303,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Unsere neue Kollegin, Frau Berger, ist sehr zurückhaltend und beteiligt sich in der Kaffeepause fast nie an der Unterhaltung. Ich glaube, <g>es</g> fällt ihr schwer, sich bei uns wirklich wohlzufühlen.",
       "en": "We have a problem: our new colleague, Ms. Berger, is very reserved and almost never joins the conversation during the coffee break. I think it's hard for her to really feel comfortable with us.",
       "uk": "У нас проблема: наша нова колега, пані Бергер, дуже стримана і майже ніколи не бере участі в розмові під час кавової перерви. Гадаю, їй важко по-справжньому відчути себе комфортно серед нас.",
-      "ru": "У нас проблема: наша новая коллега, госпожа Бергер, очень сдержанная и почти никогда не участвует в разговоре во время кофе-паузы. Думаю, ей трудно по-настоящему почувствовать себя комфортно среди нас."
+      "ru": "У нас проблема: наша новая коллега, госпожа Бергер, очень сдержанная и почти никогда не участвует в разговоре во время кофе-паузы. Думаю, ей трудно по-настоящему почувствовать себя комфортно среди нас.",
+      "gram": "es_pronomen"
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: <g>Es</g> geht also darum, dass wir sie noch nicht richtig ins Team integriert haben?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that we haven't really integrated her into the team yet?",
       "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що ми ще не по-справжньому інтегрували її в команду?",
-      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что мы ещё по-настоящему не интегрировали её в команду?"
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что мы ещё по-настоящему не интегрировали её в команду?",
+      "gram": "es_pronomen"
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn sie sich weiterhin so ausgeschlossen fühlt?",
       "en": "Exactly. What do you think, what consequences would that have if she keeps feeling excluded like this?",
       "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо вона й надалі почуватиметься так відсторонено?",
-      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если она и дальше будет чувствовать себя так отстранённо?"
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если она и дальше будет чувствовать себя так отстранённо?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, dass sie sich dann irgendwann innerlich vom Team distanziert, obwohl ihre fachliche Arbeit eigentlich sehr gut ist.",
       "en": "I think that at some point she'll distance herself internally from the team, even though her professional work is actually very good.",
       "uk": "Гадаю, тоді вона з часом внутрішньо віддалиться від команди, хоча її фахова робота насправді дуже гарна.",
-      "ru": "Думаю, тогда она со временем внутренне отдалится от команды, хотя её профессиональная работа на самом деле очень хорошая."
+      "ru": "Думаю, тогда она со временем внутренне отдалится от команды, хотя её профессиональная работа на самом деле очень хорошая.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> versuchen, eine Gemeinsamkeit zu finden, über die wir mit ihr ins Gespräch kommen können?",
       "en": "<r>How about we</r> try to find some common ground we could use to start a conversation with her?",
       "uk": "<r>Що якщо ми</r> спробуємо знайти якусь спільну тему, через яку зможемо з нею розговоритися?",
-      "ru": "<r>Что если мы</r> попробуем найти какую-то общую тему, через которую сможем с ней разговориться?"
+      "ru": "<r>Что если мы</r> попробуем найти какую-то общую тему, через которую сможем с ней разговориться?",
+      "gram": ""
     },
     "a2": {
       "de": "Das <r>ist sicherlich sinnvoll, da</r> ein gemeinsames Thema oft hilft, das Eis zu brechen. Weißt du eigentlich, wofür sie sich interessiert?",
       "en": "That <r>certainly makes sense</r>, since a shared topic often helps break the ice. Do you actually know what she's interested in?",
       "uk": "Це, <r>безумовно, розумно</r>, бо спільна тема часто допомагає розтопити кригу. А ти взагалі знаєш, чим вона цікавиться?",
-      "ru": "Это, <r>безусловно, разумно</r>, потому что общая тема часто помогает растопить лёд. А ты вообще знаешь, чем она интересуется?"
+      "ru": "Это, <r>безусловно, разумно</r>, потому что общая тема часто помогает растопить лёд. А ты вообще знаешь, чем она интересуется?",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, sie einfach mal ganz offen und taktvoll auf ihre Interessen anzusprechen, ohne zu aufdringlich zu wirken.",
       "en": "Another suggestion would be to just openly and tactfully ask her about her interests, without coming across as too pushy.",
       "uk": "Ще одна пропозиція - просто відкрито й тактовно запитати про її інтереси, не виглядаючи занадто нав'язливо.",
-      "ru": "Ещё одно предложение - просто открыто и тактично спросить о её интересах, не выглядя слишком навязчиво."
+      "ru": "Ещё одно предложение - просто открыто и тактично спросить о её интересах, не выглядя слишком навязчиво.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass manche Menschen es als unangenehm empfinden, direkt nach Persönlichem gefragt zu werden.",
       "en": "<r>One argument against that is</r> that some people find it uncomfortable to be asked directly about personal things.",
       "uk": "<r>Аргумент проти цього</r> полягає в тому, що деяким людям неприємно, коли їх прямо запитують про особисте.",
-      "ru": "<r>Аргумент против этого</r> в том, что некоторым людям неприятно, когда их напрямую спрашивают о личном."
+      "ru": "<r>Аргумент против этого</r> в том, что некоторым людям неприятно, когда их напрямую спрашивают о личном.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir erst mal eine lockere, informelle Atmosphäre schaffen, ohne sie sofort etwas Persönliches zu fragen.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> first creating a relaxed, informal atmosphere, without immediately asking her anything personal.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми спершу створимо невимушену, неформальну атмосферу, не запитуючи одразу нічого особистого.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы сначала создадим непринуждённую, неформальную атмосферу, не спрашивая сразу ничего личного."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы сначала создадим непринуждённую, неформальную атмосферу, не спрашивая сразу ничего личного.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. <g>Es</g> ist wichtig, ihr Zeit zu lassen, damit sie sich von selbst öffnet.",
       "en": "<r>I completely agree with you</r>. It's important to give her time, so she can open up on her own.",
       "uk": "<r>Тут я з тобою цілком згоден</r>. Важливо дати їй час, щоб вона розкрилася сама.",
-      "ru": "<r>Тут я с тобой полностью согласен</r>. Важно дать ей время, чтобы она раскрылась сама."
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Важно дать ей время, чтобы она раскрылась сама.",
+      "gram": "es_pronomen"
     },
     "q5": {
       "de": "Zusätzlich könnten wir sie aktiv zu unseren informellen Teamaktivitäten einladen, ohne dabei zu viel Druck aufzubauen.",
       "en": "In addition, we could actively invite her to our informal team activities, without putting too much pressure on her.",
       "uk": "Крім того, ми могли б активно запрошувати її на наші неформальні командні заходи, не створюючи при цьому зайвого тиску.",
-      "ru": "Кроме того, мы могли бы активно приглашать её на наши неформальные командные мероприятия, не создавая при этом лишнего давления."
+      "ru": "Кроме того, мы могли бы активно приглашать её на наши неформальные командные мероприятия, не создавая при этом лишнего давления.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. <g>Es</g> gibt bestimmt kleine Gesten, die eine Verbindung herstellen, ohne dass es ihr unangenehm wird.",
       "en": "<r>I think that's a good point</r>. There are surely small gestures that can establish a connection without making her uncomfortable.",
       "uk": "<r>Вважаю це гарною думкою</r>. Напевно, є маленькі жести, які можуть створити зв'язок, не змушуючи її почуватися незручно.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Наверняка есть маленькие жесты, которые могут создать связь, не заставляя её чувствовать себя неловко."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Наверняка есть маленькие жесты, которые могут создать связь, не заставляя её чувствовать себя неловко.",
+      "gram": "es_pronomen"
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich spreche sie morgen in der Pause ganz beiläufig auf ihre Freizeit an, und du lädst sie zum gemeinsamen Mittagessen ein. Einverstanden?",
       "en": "Let's split up the tasks: tomorrow I'll casually ask her about her free time during the break, and you invite her to have lunch together. Agreed?",
       "uk": "Давай розподілимо завдання: завтра я невимушено запитаю в неї про дозвілля під час перерви, а ти запросиш її на спільний обід. Домовились?",
-      "ru": "Давай разделим задачи: завтра я непринуждённо спрошу у неё о досуге во время перерыва, а ты пригласишь её на совместный обед. Договорились?"
+      "ru": "Давай разделим задачи: завтра я непринуждённо спрошу у неё о досуге во время перерыва, а ты пригласишь её на совместный обед. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, das schon morgen früh zu machen?",
       "en": "Agreed. Do you intend to do that already tomorrow morning?",
       "uk": "Згоден. Ти маєш намір зробити це вже завтра вранці?",
-      "ru": "Согласен. Ты намерена сделать это уже завтра утром?"
+      "ru": "Согласен. Ты намерена сделать это уже завтра утром?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn wir das schon in der ersten Pause versuchen?",
       "en": "Yes, would it be realistic if we try that already during the first break?",
       "uk": "Так, чи буде реалістично, якщо ми спробуємо це вже під час першої перерви?",
-      "ru": "Да, будет ли реалистично, если мы попробуем это уже во время первого перерыва?"
+      "ru": "Да, будет ли реалистично, если мы попробуем это уже во время первого перерыва?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein, solange wir dabei wirklich locker und offen bleiben.",
       "en": "That should be feasible, as long as we really stay relaxed and open about it.",
       "uk": "Це має бути здійсненно, якщо ми справді залишимося невимушеними й відкритими.",
-      "ru": "Это должно быть выполнимо, если мы действительно останемся непринуждёнными и открытыми."
+      "ru": "Это должно быть выполнимо, если мы действительно останемся непринуждёнными и открытыми.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir schaffen eine entspannte Atmosphäre, sprechen sie taktvoll auf gemeinsame Interessen an und laden sie zu informellen Aktivitäten ein, damit sie sich im Team wohler fühlt.",
       "en": "Let's summarize: we'll create a relaxed atmosphere, tactfully ask her about shared interests, and invite her to informal activities, so she feels more comfortable on the team.",
       "uk": "Підсумуємо: ми створюємо невимушену атмосферу, тактовно запитуємо про спільні інтереси і запрошуємо її на неформальні заходи, щоб вона почувалася комфортніше в команді.",
-      "ru": "Подведём итог: мы создаём непринуждённую атмосферу, тактично спрашиваем об общих интересах и приглашаем её на неформальные мероприятия, чтобы она чувствовала себя комфортнее в команде."
+      "ru": "Подведём итог: мы создаём непринуждённую атмосферу, тактично спрашиваем об общих интересах и приглашаем её на неформальные мероприятия, чтобы она чувствовала себя комфортнее в команде.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, so zeigen wir ihr echtes Interesse, ohne sie zu bedrängen - das dürfte langfristig eine gute Verbindung schaffen. Ich spreche gleich morgen mit ihr über das Mittagessen. <r>Lass uns außerdem am Freitag kurz austauschen, wie es gelaufen ist.</r>",
       "en": "Exactly. I think that way we show her genuine interest without pressuring her - that should build a good connection in the long run. I'll talk to her about lunch first thing tomorrow. <r>Let's also touch base briefly on Friday to see how it went.</r>",
       "uk": "Саме так. Гадаю, так ми покажемо їй щирий інтерес, не тиснучи на неї - це має з часом створити гарний зв'язок. Я поговорю з нею про обід уже завтра вранці. <r>Крім того, давай у п'ятницю коротко обміняємося враженнями, як усе пройшло.</r>",
-      "ru": "Именно так. Думаю, так мы покажем ей искренний интерес, не давя на неё - это должно со временем создать хорошую связь. Я поговорю с ней об обеде уже завтра утром. <r>Кроме того, давай в пятницу коротко обменяемся впечатлениями, как всё прошло.</r>"
-    },
-    "gram": "es_pronomen"
+      "ru": "Именно так. Думаю, так мы покажем ей искренний интерес, не давя на неё - это должно со временем создать хорошую связь. Я поговорю с ней об обеде уже завтра утром. <r>Кроме того, давай в пятницу коротко обменяемся впечатлениями, как всё прошло.</r>",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_041",
     "cat": "Arbeitsaufträge",
     "task": {
@@ -14221,113 +14442,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Herr Meier hat unserem Kollegen Lukas heute drei neue Arbeitsaufträge gegeben, obwohl der bis Freitag schon zwei dringende Deadlines hat. Sein Arbeitspensum ist jetzt einfach zu hoch.",
       "en": "We have a problem: Mr. Meier gave our colleague Lukas three new work assignments today, even though he already has two urgent deadlines by Friday. His workload is now simply too high.",
       "uk": "У нас проблема: пан Майєр сьогодні дав нашому колезі Лукасу три нових робочих доручення, хоча в того вже є два термінові дедлайни до п'ятниці. Його навантаження зараз просто зашкалює.",
-      "ru": "У нас проблема: господин Майер сегодня дал нашему коллеге Лукасу три новых рабочих поручения, хотя у того уже есть два срочных дедлайна до пятницы. Его нагрузка сейчас просто зашкаливает."
+      "ru": "У нас проблема: господин Майер сегодня дал нашему коллеге Лукасу три новых рабочих поручения, хотя у того уже есть два срочных дедлайна до пятницы. Его нагрузка сейчас просто зашкаливает.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass die Prioritäten der einzelnen Aufträge gar nicht klar sind?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that the priorities of the individual assignments aren't clear at all?",
       "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що пріоритети окремих доручень взагалі не зрозумілі?",
-      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что приоритеты отдельных поручений вообще не ясны?"
+      "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что приоритеты отдельных поручений вообще не ясны?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn Lukas versucht, alles gleichzeitig fristgerecht zu erledigen?",
       "en": "Exactly. What do you think, what consequences would that have if Lukas tries to finish everything on time at the same time?",
       "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо Лукас спробує виконати все одночасно й вчасно?",
-      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если Лукас попробует выполнить всё одновременно и вовремя?"
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если Лукас попробует выполнить всё одновременно и вовремя?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, dass dann am Ende gar nichts richtig fertig wird, weil er ständig zwischen den Aufgaben hin- und herspringen müsste.",
       "en": "I think that in the end nothing would really get finished properly, because he'd constantly have to jump back and forth between the tasks.",
       "uk": "Гадаю, тоді врешті-решт нічого не буде зроблено як слід, бо йому доведеться постійно перемикатися між завданнями.",
-      "ru": "Думаю, тогда в итоге ничего не будет сделано как следует, потому что ему придётся постоянно переключаться между задачами."
+      "ru": "Думаю, тогда в итоге ничего не будет сделано как следует, потому что ему придётся постоянно переключаться между задачами.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> mit Herrn Meier sprechen und ihn bitten, die neuen Aufträge nach Priorität zu ordnen?",
       "en": "<r>How about we</r> talk to Mr. Meier and ask him to rank the new assignments by priority?",
       "uk": "<r>Що якщо ми</r> поговоримо з паном Майєром і попросимо його розставити нові доручення за пріоритетом?",
-      "ru": "<r>Что если мы</r> поговорим с господином Майером и попросим его расставить новые поручения по приоритету?"
+      "ru": "<r>Что если мы</r> поговорим с господином Майером и попросим его расставить новые поручения по приоритету?",
+      "gram": ""
     },
     "a2": {
       "de": "Das <r>ist sicherlich sinnvoll, da</r> Lukas dann wenigstens weiß, was zuerst erledigt werden muss. Weißt du, bis wann die neuen Aufträge fertig sein sollen?",
       "en": "That <r>certainly makes sense</r>, since then Lukas would at least know what needs to be done first. Do you know by when the new assignments are supposed to be done?",
       "uk": "Це, <r>безумовно, розумно</r>, бо тоді Лукас хоча б знатиме, що робити першим. Ти знаєш, до якого терміну мають бути готові нові доручення?",
-      "ru": "Это, <r>безусловно, разумно</r>, потому что тогда Лукас хотя бы будет знать, что делать в первую очередь. Ты знаешь, к какому сроку должны быть готовы новые поручения?"
+      "ru": "Это, <r>безусловно, разумно</r>, потому что тогда Лукас хотя бы будет знать, что делать в первую очередь. Ты знаешь, к какому сроку должны быть готовы новые поручения?",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, dass wir einen Teil der Aufgaben an andere Kolleginnen und Kollegen delegieren, die gerade weniger zu tun haben.",
       "en": "Another suggestion would be for us to delegate some of the tasks to other colleagues who currently have less to do.",
       "uk": "Ще одна пропозиція - делегувати частину завдань іншим колегам, у яких зараз менше роботи.",
-      "ru": "Ещё одно предложение - делегировать часть задач другим коллегам, у которых сейчас меньше работы."
+      "ru": "Ещё одно предложение - делегировать часть задач другим коллегам, у которых сейчас меньше работы.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass sich dann jemand erst in ein fremdes Thema einarbeiten müsste, was auch wieder Zeit kostet.",
       "en": "<r>One argument against that is</r> that someone would first have to get familiar with an unfamiliar topic, which also costs time.",
       "uk": "<r>Аргумент проти цього</r> полягає в тому, що комусь довелося б спершу розібратися в незнайомій темі, а це теж займає час.",
-      "ru": "<r>Аргумент против этого</r> в том, что кому-то сначала пришлось бы разобраться в незнакомой теме, а это тоже занимает время."
+      "ru": "<r>Аргумент против этого</r> в том, что кому-то сначала пришлось бы разобраться в незнакомой теме, а это тоже занимает время.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir nur die einfacheren Teilaufgaben delegieren und Lukas die komplexeren Aufträge selbst bearbeiten lässt.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> only delegating the simpler subtasks and letting Lukas handle the more complex assignments himself.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми делегуємо лише простіші підзавдання, а складніші доручення Лукас виконає сам.",
-      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы делегируем только более простые подзадачи, а более сложные поручения Лукас выполнит сам."
+      "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы делегируем только более простые подзадачи, а более сложные поручения Лукас выполнит сам.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. So bleibt die Zuständigkeit klar, und trotzdem wird das Arbeitspensum spürbar kleiner.",
       "en": "<r>I completely agree with you</r>. That way responsibility stays clear, and the workload still gets noticeably smaller.",
       "uk": "<r>Тут я з тобою цілком згоден</r>. Так зона відповідальності залишається чіткою, а навантаження все одно помітно зменшується.",
-      "ru": "<r>Тут я с тобой полностью согласен</r>. Так зона ответственности остаётся чёткой, а нагрузка всё равно заметно уменьшается."
+      "ru": "<r>Тут я с тобой полностью согласен</r>. Так зона ответственности остаётся чёткой, а нагрузка всё равно заметно уменьшается.",
+      "gram": ""
     },
     "q5": {
       "de": "Zusätzlich sollten wir Herrn Meier bitten, neue Anweisungen künftig lieber schriftlich statt nur mündlich zu geben, damit nichts untergeht.",
       "en": "In addition, we should ask Mr. Meier to give new instructions in writing rather than just verbally from now on, so nothing gets lost.",
       "uk": "Крім того, варто попросити пана Майєра надалі давати нові інструкції письмово, а не лише усно, щоб нічого не загубилося.",
-      "ru": "Кроме того, стоит попросить господина Майера впредь давать новые инструкции письменно, а не только устно, чтобы ничего не терялось."
+      "ru": "Кроме того, стоит попросить господина Майера впредь давать новые инструкции письменно, а не только устно, чтобы ничего не терялось.",
+      "gram": ""
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. Dann können wir auch besser überprüfen, was schon erledigt ist und was noch aussteht.",
       "en": "<r>I think that's a good point</r>. Then we can also better check what's already done and what's still outstanding.",
       "uk": "<r>Вважаю це гарною думкою</r>. Тоді ми також зможемо краще перевіряти, що вже зроблено, а що ще залишається.",
-      "ru": "<r>Считаю это хорошей мыслью</r>. Тогда мы также сможем лучше проверять, что уже сделано, а что ещё остаётся."
+      "ru": "<r>Считаю это хорошей мыслью</r>. Тогда мы также сможем лучше проверять, что уже сделано, а что ещё остаётся.",
+      "gram": ""
     },
     "q6": {
       "de": "Lass uns die Aufgaben aufteilen: Ich spreche mit Herrn Meier über die Prioritäten, und du fragst im Team nach, wer aktuell Kapazität für zusätzliche Aufgaben hat. Einverstanden?",
       "en": "Let's split up the tasks: I'll talk to Mr. Meier about the priorities, and you ask around the team who currently has capacity for additional tasks. Agreed?",
       "uk": "Давай розподілимо завдання: я поговорю з паном Майєром про пріоритети, а ти запитаєш у команди, хто зараз має ресурс для додаткових завдань. Домовились?",
-      "ru": "Давай разделим задачи: я поговорю с господином Майером о приоритетах, а ты спросишь у команды, у кого сейчас есть ресурс для дополнительных задач. Договорились?"
+      "ru": "Давай разделим задачи: я поговорю с господином Майером о приоритетах, а ты спросишь у команды, у кого сейчас есть ресурс для дополнительных задач. Договорились?",
+      "gram": ""
     },
     "a6": {
       "de": "Einverstanden. Hast du die Absicht, das Gespräch noch heute zu führen?",
       "en": "Agreed. Do you intend to have that conversation already today?",
       "uk": "Домовились. Ти маєш намір провести цю розмову вже сьогодні?",
-      "ru": "Договорились. Ты намерен провести этот разговор уже сегодня?"
+      "ru": "Договорились. Ты намерен провести этот разговор уже сегодня?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn wir das noch vor der Teambesprechung klären?",
       "en": "Yes, would it be realistic if we sort that out before the team meeting?",
       "uk": "Так, чи буде реалістично, якщо ми владнаємо це ще до наради команди?",
-      "ru": "Да, будет ли реалистично, если мы уладим это ещё до совещания команды?"
+      "ru": "Да, будет ли реалистично, если мы уладим это ещё до совещания команды?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein, solange Herr Meier heute Nachmittag noch Zeit hat.",
       "en": "That should be feasible, as long as Mr. Meier still has time this afternoon.",
       "uk": "Це має бути здійсненно, якщо в пана Майєра ще є час сьогодні пополудні.",
-      "ru": "Это должно быть выполнимо, если у господина Майера ещё есть время сегодня после обеда."
+      "ru": "Это должно быть выполнимо, если у господина Майера ещё есть время сегодня после обеда.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir klären die Prioritäten mit Herrn Meier, delegieren die einfacheren Teilaufgaben und bitten künftig um schriftliche Anweisungen, damit Lukas' Arbeitspensum wieder machbar wird.",
       "en": "Let's summarize: we'll clarify the priorities with Mr. Meier, delegate the simpler subtasks, and ask for written instructions from now on, so Lukas's workload becomes manageable again.",
       "uk": "Підсумуємо: ми узгоджуємо пріоритети з паном Майєром, делегуємо простіші підзавдання і надалі просимо письмові інструкції, щоб навантаження Лукаса знову стало посильним.",
-      "ru": "Подведём итог: мы согласовываем приоритеты с господином Майером, делегируем более простые подзадачи и впредь просим письменные инструкции, чтобы нагрузка Лукаса снова стала посильной."
+      "ru": "Подведём итог: мы согласовываем приоритеты с господином Майером, делегируем более простые подзадачи и впредь просим письменные инструкции, чтобы нагрузка Лукаса снова стала посильной.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, so behält Lukas den Überblick, ohne dass die Deadlines gefährdet sind. Ich notiere die wichtigsten Punkte im Protokoll und schicke sie dir gleich nach dem Gespräch. <r>Lass uns außerdem am Mittwoch kurz zusammenkommen, um zu prüfen, ob die neue Aufteilung funktioniert.</r>",
       "en": "Exactly. I think that way Lukas keeps an overview without the deadlines being at risk. I'll note the key points in the minutes and send them to you right after the conversation. <r>Let's also get together briefly on Wednesday to check whether the new arrangement is working.</r>",
       "uk": "Саме так. Гадаю, так Лукас збереже контроль над ситуацією, а дедлайни не постраждають. Я занотую головні пункти в протоколі і надішлю тобі одразу після розмови. <r>Крім того, давай зберемося коротко в середу, щоб перевірити, чи спрацював новий розподіл.</r>",
-      "ru": "Именно так. Думаю, так Лукас сохранит контроль над ситуацией, а дедлайны не пострадают. Я запишу главные пункты в протокол и отправлю тебе сразу после разговора. <r>Кроме того, давай соберёмся коротко в среду, чтобы проверить, сработало ли новое распределение.</r>"
-    },
-    "gram": ""
+      "ru": "Именно так. Думаю, так Лукас сохранит контроль над ситуацией, а дедлайны не пострадают. Я запишу главные пункты в протокол и отправлю тебе сразу после разговора. <r>Кроме того, давай соберёмся коротко в среду, чтобы проверить, сработало ли новое распределение.</r>",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_042",
     "cat": "Hard Skills",
     "task": {
@@ -14343,113 +14581,130 @@ var DIALOGE = [
       "de": "Wir haben ein Problem: Unser neuer Kollege, Herr Fischer, soll sich in die Datenanalyse-Software einarbeiten, aber ihm fehlen noch die Zugangsdaten, und eine Mentorenschaft wurde bisher auch nicht offiziell vertraglich festgelegt.",
       "en": "We have a problem: our new colleague, Mr. Fischer, is supposed to get trained in the data analysis software, but he's still missing the login credentials, and a mentorship hasn't been officially set up in his contract yet either.",
       "uk": "У нас проблема: наш новий колега, пан Фішер, має навчитися працювати з програмою аналізу даних, але йому досі бракує логіна й пароля, і наставництво також офіційно ще не закріплене в договорі.",
-      "ru": "У нас проблема: наш новый коллега, господин Фишер, должен научиться работать с программой анализа данных, но ему всё ещё не хватает логина и пароля, и наставничество тоже официально ещё не закреплено в договоре."
+      "ru": "У нас проблема: наш новый коллега, господин Фишер, должен научиться работать с программой анализа данных, но ему всё ещё не хватает логина и пароля, и наставничество тоже официально ещё не закреплено в договоре.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Ach so</r>, das heißt, er weiß eigentlich gar nicht genau, wer ihn einarbeiten soll und womit er überhaupt arbeiten kann?",
       "en": "<r>Ah, I see</r> - so that means he doesn't actually know who's supposed to train him or what he can even work with?",
       "uk": "<r>Ага, зрозуміло</r> - тобто він, по суті, навіть не знає, хто має його навчати і з чим він взагалі може працювати?",
-      "ru": "<r>А, понятно</r> - то есть он, по сути, даже не знает, кто должен его обучать и с чем он вообще может работать?"
+      "ru": "<r>А, понятно</r> - то есть он, по сути, даже не знает, кто должен его обучать и с чем он вообще может работать?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Was denkst du, welche Folgen hätte das, wenn wir das nicht schnell klären?",
       "en": "Exactly. What do you think, what consequences would that have if we don't sort this out quickly?",
       "uk": "Саме так. Як ти думаєш, які наслідки це матиме, якщо ми швидко це не владнаємо?",
-      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы быстро это не уладим?"
+      "ru": "Именно так. Как ты думаешь, какие последствия это будет иметь, если мы быстро это не уладим?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich glaube, dass er sich dann ziemlich verloren fühlt und seine ersten Wochen nicht wirklich produktiv nutzen kann.",
       "en": "I think he'd feel pretty lost then and wouldn't really be able to use his first weeks productively.",
       "uk": "Гадаю, тоді він почуватиметься доволі загубленим і не зможе по-справжньому продуктивно використати свої перші тижні.",
-      "ru": "Думаю, тогда он будет чувствовать себя довольно потерянным и не сможет по-настоящему продуктивно использовать свои первые недели."
+      "ru": "Думаю, тогда он будет чувствовать себя довольно потерянным и не сможет по-настоящему продуктивно использовать свои первые недели.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> sofort die IT-Abteilung kontaktieren und um die Zugangsdaten für die Software bitten?",
       "en": "<r>How about we</r> contact IT right away and ask for the login credentials for the software?",
       "uk": "<r>Що якщо ми</r> одразу звернемося в ІТ-відділ і попросимо дані для входу в програму?",
-      "ru": "<r>Что если мы</r> сразу обратимся в ИТ-отдел и попросим данные для входа в программу?"
+      "ru": "<r>Что если мы</r> сразу обратимся в ИТ-отдел и попросим данные для входа в программу?",
+      "gram": ""
     },
     "a2": {
       "de": "Das <r>ist sicherlich sinnvoll, da</r> er ohne Zugang gar nicht üben kann. <r>Mir ist nicht ganz klar</r>, wer eigentlich für die Freigabe zuständig ist.",
       "en": "That <r>certainly makes sense</r>, since he can't practice at all without access. <r>I'm not entirely clear on</r> who's actually responsible for the approval, though.",
       "uk": "Це, <r>безумовно, розумно</r>, бо без доступу він взагалі не зможе практикуватися. <r>Мені, щоправда, не зовсім зрозуміло</r>, хто саме відповідає за надання дозволу.",
-      "ru": "Это, <r>безусловно, разумно</r>, потому что без доступа он вообще не сможет практиковаться. <r>Мне, правда, не совсем понятно</r>, кто именно отвечает за предоставление разрешения."
+      "ru": "Это, <r>безусловно, разумно</r>, потому что без доступа он вообще не сможет практиковаться. <r>Мне, правда, не совсем понятно</r>, кто именно отвечает за предоставление разрешения.",
+      "gram": ""
     },
     "q3": {
       "de": "Ein weiterer Vorschlag wäre, dass ich seine Mentorin werde, weil ich mit der Software am besten vertraut bin.",
       "en": "Another suggestion would be for me to become his mentor, since I'm most familiar with the software.",
       "uk": "Ще одна пропозиція - я стану його наставницею, бо найкраще знайома з програмою.",
-      "ru": "Ещё одно предложение - я стану его наставницей, потому что лучше всех знакома с программой."
+      "ru": "Ещё одно предложение - я стану его наставницей, потому что лучше всех знакома с программой.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass du selbst gerade ziemlich ausgelastet bist und kaum Zeit für eine Mentorenschaft hättest.",
       "en": "<r>One argument against that is</r> that you yourself are pretty overloaded right now and would hardly have time for a mentorship.",
       "uk": "<r>Аргумент проти цього</r> полягає в тому, що ти сама зараз досить завантажена й навряд чи матимеш час на наставництво.",
-      "ru": "<r>Аргумент против этого</r> в том, что ты сама сейчас довольно загружена и вряд ли будешь иметь время на наставничество."
+      "ru": "<r>Аргумент против этого</r> в том, что ты сама сейчас довольно загружена и вряд ли будешь иметь время на наставничество.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir uns die Mentorenschaft zu zweit teilen.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> splitting the mentorship between the two of us.",
       "uk": "<r>Це правда, але</r> <r>цю проблему можна було б вирішити</r>, якщо ми розділимо наставництво між нами двома.",
-      "ru": "<r>Это верно, но</r> <r>эту проблему можно было бы решить</r>, если мы разделим наставничество между нами двоими."
+      "ru": "<r>Это верно, но</r> <r>эту проблему можно было бы решить</r>, если мы разделим наставничество между нами двоими.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. <r>Okay, dann mache ich also Folgendes</r>: Ich übernehme die ersten zwei Wochen, und danach übernimmst du.",
       "en": "<r>I completely agree with you</r>. <r>Okay, so here's what I'll do</r>: I'll take the first two weeks, and after that you take over.",
       "uk": "<r>Тут я з тобою цілком згоден</r>. <r>Гаразд, тоді я зроблю так</r>: я візьму перші два тижні, а потім ти.",
-      "ru": "<r>Тут я с тобой полностью согласен</r>. <r>Хорошо, тогда я сделаю так</r>: я возьму первые две недели, а потом ты."
+      "ru": "<r>Тут я с тобой полностью согласен</r>. <r>Хорошо, тогда я сделаю так</r>: я возьму первые две недели, а потом ты.",
+      "gram": ""
     },
     "q5": {
       "de": "Gut. <r>Achte bitte darauf, dass</r> du ihm zuerst die Grundfunktionen zeigst, dann erst die komplexeren Analysen - Schritt für Schritt eben.",
       "en": "Good. <r>Please make sure</r> you show him the basic functions first, then the more complex analyses - step by step.",
       "uk": "Добре. <r>Простеж, будь ласка, щоб</r> спочатку показати йому основні функції, а вже потім складніші аналізи - крок за кроком.",
-      "ru": "Хорошо. <r>Проследи, пожалуйста, чтобы</r> сначала показать ему основные функции, а уже потом более сложные анализы - шаг за шагом."
+      "ru": "Хорошо. <r>Проследи, пожалуйста, чтобы</r> сначала показать ему основные функции, а уже потом более сложные анализы - шаг за шагом.",
+      "gram": ""
     },
     "a5": {
       "de": "<r>In Ordnung, ich muss also</r> zuerst die Grundlagen erklären und außerdem darauf achten, dass er alles wirklich versteht, bevor wir weitermachen.",
       "en": "<r>Alright, so I need to</r> explain the basics first and also make sure he really understands everything before we move on.",
       "uk": "<r>Гаразд, тобто</r> спочатку я маю пояснити основи, а також стежити, щоб він справді все розумів, перш ніж ми йдемо далі.",
-      "ru": "<r>Хорошо, то есть</r> сначала я должен объяснить основы, а также следить, чтобы он действительно всё понимал, прежде чем мы пойдём дальше."
+      "ru": "<r>Хорошо, то есть</r> сначала я должен объяснить основы, а также следить, чтобы он действительно всё понимал, прежде чем мы пойдём дальше.",
+      "gram": ""
     },
     "q6": {
       "de": "Genau. Und <r>ganz wichtig ist, dass</r> die Mentorenschaft am besten offiziell vertraglich festgelegt wird, damit es später keine Missverständnisse gibt.",
       "en": "Exactly. And <r>it's also really important that</r> the mentorship gets officially set up in the contract, so there are no misunderstandings later.",
       "uk": "Саме так. І ще <r>дуже важливо, щоб</r> наставництво було офіційно закріплене в договорі, щоб потім не виникало непорозумінь.",
-      "ru": "Именно так. И ещё <r>очень важно, чтобы</r> наставничество было официально закреплено в договоре, чтобы потом не возникало недоразумений."
+      "ru": "Именно так. И ещё <r>очень важно, чтобы</r> наставничество было официально закреплено в договоре, чтобы потом не возникало недоразумений.",
+      "gram": ""
     },
     "a6": {
       "de": "Das leuchtet ein. Kümmerst du dich darum, das mit der Personalabteilung zu klären?",
       "en": "That makes sense. Will you take care of clarifying that with HR?",
       "uk": "Логічно. Ти візьмеш на себе з'ясувати це з відділом кадрів?",
-      "ru": "Логично. Ты возьмёшь на себя выяснить это с отделом кадров?"
+      "ru": "Логично. Ты возьмёшь на себя выяснить это с отделом кадров?",
+      "gram": ""
     },
     "q7": {
       "de": "Ja, wäre es realistisch, wenn ich das noch heute Nachmittag anspreche?",
       "en": "Yes, would it be realistic if I bring it up already this afternoon?",
       "uk": "Так, чи буде реалістично, якщо я підніму це питання вже сьогодні пополудні?",
-      "ru": "Да, будет ли реалистично, если я подниму этот вопрос уже сегодня после обеда?"
+      "ru": "Да, будет ли реалистично, если я подниму этот вопрос уже сегодня после обеда?",
+      "gram": ""
     },
     "a7": {
       "de": "Das sollte machbar sein, solange die Personalabteilung heute noch erreichbar ist.",
       "en": "That should be feasible, as long as HR is still reachable today.",
       "uk": "Це має бути здійсненно, якщо відділ кадрів сьогодні ще на місці.",
-      "ru": "Это должно быть выполнимо, если отдел кадров сегодня ещё на месте."
+      "ru": "Это должно быть выполнимо, если отдел кадров сегодня ещё на месте.",
+      "gram": ""
     },
     "q8": {
       "de": "Fassen wir zusammen: Wir kümmern uns um die Zugangsdaten, teilen uns die Mentorenschaft und lassen sie offiziell festlegen, damit Herr Fischer gut in seine neue Aufgabe startet.",
       "en": "Let's summarize: we'll take care of the login credentials, split the mentorship between us, and have it officially set up, so Mr. Fischer gets off to a good start in his new role.",
       "uk": "Підсумуємо: ми займаємося даними для входу, ділимо наставництво між собою і закріплюємо це офіційно, щоб пан Фішер добре стартував на новій посаді.",
-      "ru": "Подведём итог: мы занимаемся данными для входа, делим наставничество между собой и закрепляем это официально, чтобы господин Фишер хорошо стартовал на новой должности."
+      "ru": "Подведём итог: мы занимаемся данными для входа, делим наставничество между собой и закрепляем это официально, чтобы господин Фишер хорошо стартовал на новой должности.",
+      "gram": ""
     },
     "a8": {
       "de": "Genau. Ich denke, so hat er von Anfang an eine klare Struktur und weiß, an wen er sich wenden kann. Ich schreibe der IT-Abteilung gleich wegen der Zugangsdaten. <r>Lass uns außerdem in einer Woche kurz zusammensetzen, um zu sehen, wie er sich eingelebt hat.</r>",
       "en": "Exactly. I think that way he'll have a clear structure from the start and know who to turn to. I'll write to IT right away about the login credentials. <r>Let's also sit down together again in a week to see how he's settling in.</r>",
       "uk": "Саме так. Гадаю, так у нього з самого початку буде чітка структура, і він знатиме, до кого звертатися. Я одразу напишу в ІТ-відділ щодо даних для входу. <r>Крім того, давай зберемося ще раз через тиждень, щоб подивитися, як він освоївся.</r>",
-      "ru": "Именно так. Думаю, так у него с самого начала будет чёткая структура, и он будет знать, к кому обращаться. Я сразу напишу в ИТ-отдел насчёт данных для входа. <r>Кроме того, давай соберёмся ещё раз через неделю, чтобы посмотреть, как он освоился.</r>"
-    },
-    "gram": ""
+      "ru": "Именно так. Думаю, так у него с самого начала будет чёткая структура, и он будет знать, к кому обращаться. Я сразу напишу в ИТ-отдел насчёт данных для входа. <r>Кроме того, давай соберёмся ещё раз через неделю, чтобы посмотреть, как он освоился.</r>",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_043",
     "cat": "Freizeitgestaltung",
     "task": {
@@ -14465,41 +14720,46 @@ var DIALOGE = [
       "de": "Sag mal, was machst du eigentlich gerne in deiner Freizeit?",
       "en": "Tell me, what do you actually enjoy doing in your free time?",
       "uk": "Скажи, а що ти взагалі любиш робити у вільний час?",
-      "ru": "Скажи, а что ты вообще любишь делать в свободное время?"
+      "ru": "Скажи, а что ты вообще любишь делать в свободное время?",
+      "gram": ""
     },
     "a": {
       "de": "Ich spiele seit ein paar Jahren in einer Band Gitarre, das ist eigentlich mein liebstes Hobby. Wir proben meistens dienstags abends. Und du, hast du auch ein Hobby, dem du regelmäßig nachgehst?",
       "en": "I've been playing guitar in a band for a few years now, that's actually my favorite hobby. We usually rehearse on Tuesday evenings. What about you, do you have a hobby you do regularly too?",
       "uk": "Я вже кілька років граю на гітарі в гурті, це, власне, моє улюблене хобі. Ми зазвичай репетируємо у вівторок увечері. А в тебе теж є хобі, яким ти регулярно займаєшся?",
-      "ru": "Я уже несколько лет играю на гитаре в группе, это, собственно, моё любимое хобби. Мы обычно репетируем по вторникам вечером. А у тебя тоже есть хобби, которым ты регулярно занимаешься?"
+      "ru": "Я уже несколько лет играю на гитаре в группе, это, собственно, моё любимое хобби. Мы обычно репетируем по вторникам вечером. А у тебя тоже есть хобби, которым ты регулярно занимаешься?",
+      "gram": ""
     },
     "q1": {
       "de": "Ja, ich gehe total gerne klettern, am liebsten draußen im Sommer, aber im Winter auch in der Kletterhalle. Wie lange spielst du eigentlich schon Gitarre?",
       "en": "Yes, I really love climbing, ideally outdoors in summer, but in the climbing gym in winter too. How long have you actually been playing guitar?",
       "uk": "Так, я дуже люблю скелелазіння, найкраще на природі влітку, але взимку теж ходжу в скеледром. До речі, як довго ти вже граєш на гітарі?",
-      "ru": "Да, я очень люблю скалолазание, лучше всего на природе летом, но зимой тоже хожу в скалодром. Кстати, как долго ты уже играешь на гитаре?"
+      "ru": "Да, я очень люблю скалолазание, лучше всего на природе летом, но зимой тоже хожу в скалодром. Кстати, как долго ты уже играешь на гитаре?",
+      "gram": ""
     },
     "a1": {
       "de": "Schon seit meiner Schulzeit, also bestimmt fünfzehn Jahre. Klettern klingt aber auch spannend - hast du davor eigentlich keine Angst?",
       "en": "Since my school days, so probably fifteen years. Climbing sounds exciting too though - aren't you actually scared of it?",
       "uk": "Ще зі шкільних часів, тобто вже років п'ятнадцять. Скелелазіння теж звучить захопливо - тобі взагалі не страшно?",
-      "ru": "Ещё со школьных времён, то есть уже лет пятнадцать. Скалолазание тоже звучит увлекательно - тебе вообще не страшно?"
+      "ru": "Ещё со школьных времён, то есть уже лет пятнадцать. Скалолазание тоже звучит увлекательно - тебе вообще не страшно?",
+      "gram": ""
     },
     "q2": {
       "de": "Am Anfang schon ein bisschen, aber mittlerweile fühle ich mich damit sehr sicher, vor allem weil ich immer mit erfahrenen Leuten unterwegs bin. Tretet ihr mit der Band eigentlich auch mal live auf?",
       "en": "At first a little, but by now I feel very safe with it, especially because I'm always out with experienced people. Do you and the band actually ever perform live?",
       "uk": "Спочатку трохи було, але зараз я почуваюся дуже впевнено, особливо тому що завжди їжджу з досвідченими людьми. А ви з гуртом взагалі виступаєте наживо?",
-      "ru": "Сначала немного было, но сейчас я чувствую себя очень уверенно, особенно потому что всегда езжу с опытными людьми. А вы с группой вообще выступаете вживую?"
+      "ru": "Сначала немного было, но сейчас я чувствую себя очень уверенно, особенно потому что всегда езжу с опытными людьми. А вы с группой вообще выступаете вживую?",
+      "gram": ""
     },
     "a2": {
       "de": "Ja, ein paarmal im Jahr, meistens auf kleineren Veranstaltungen in der Stadt. Das macht total viel Spaß, auch wenn ich vorher immer ziemlich nervös bin.",
       "en": "Yes, a few times a year, usually at smaller events in the city. It's a lot of fun, even though I'm always pretty nervous beforehand.",
       "uk": "Так, кілька разів на рік, зазвичай на невеликих заходах у місті. Це дуже весело, хоча перед виступом я завжди досить нервую.",
-      "ru": "Да, несколько раз в год, обычно на небольших мероприятиях в городе. Это очень весело, хотя перед выступлением я всегда довольно нервничаю."
-    },
-    "gram": ""
+      "ru": "Да, несколько раз в год, обычно на небольших мероприятиях в городе. Это очень весело, хотя перед выступлением я всегда довольно нервничаю.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_044",
     "cat": "Urlaub",
     "task": {
@@ -14515,41 +14775,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du eigentlich schon Pläne für deinen nächsten Urlaub?",
       "en": "Tell me, do you already have plans for your next vacation?",
       "uk": "Скажи, у тебе вже є плани на наступну відпустку?",
-      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?"
+      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, ich fliege im August für zwei Wochen nach Portugal, ans Meer. Ich freue mich schon total darauf, einfach mal abzuschalten. Und du, fährst du dieses Jahr auch irgendwohin?",
       "en": "Yes, in August I'm flying to Portugal for two weeks, to the coast. I'm really looking forward to just switching off for a while. What about you, are you going anywhere this year too?",
       "uk": "Так, у серпні я лечу на два тижні до Португалії, на узбережжя. Я вже дуже чекаю просто відключитися від усього. А в тебе, ти теж кудись поїдеш цього року?",
-      "ru": "Да, в августе я лечу на две недели в Португалию, на побережье. Я уже очень жду просто отключиться от всего. А у тебя, ты тоже куда-нибудь поедешь в этом году?"
+      "ru": "Да, в августе я лечу на две недели в Португалию, на побережье. Я уже очень жду просто отключиться от всего. А у тебя, ты тоже куда-нибудь поедешь в этом году?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich bin mir noch nicht ganz sicher, aber ich überlege, ob ich lieber wieder in die Berge fahre oder dieses Mal etwas ganz Neues ausprobiere. Warst du schon mal in Portugal?",
       "en": "I'm not quite sure yet, but I'm thinking about whether to go back to the mountains or try something completely new this time. Have you been to Portugal before?",
       "uk": "Я ще не зовсім впевнена, але думаю, чи поїхати знову в гори, чи спробувати цього разу щось зовсім нове. Ти вже бував у Португалії?",
-      "ru": "Я ещё не совсем уверена, но думаю, поехать ли снова в горы или попробовать в этот раз что-то совсем новое. Ты уже бывал в Португалии?"
+      "ru": "Я ещё не совсем уверена, но думаю, поехать ли снова в горы или попробовать в этот раз что-то совсем новое. Ты уже бывал в Португалии?",
+      "gram": ""
     },
     "a1": {
       "de": "Nein, das ist tatsächlich mein erstes Mal dort. Ein Kollege hat es mir total empfohlen, wegen der Strände und dem guten Essen. Fährst du eigentlich lieber allein oder mit Familie in den Urlaub?",
       "en": "No, this is actually my first time there. A colleague really recommended it to me, because of the beaches and the good food. Do you actually prefer traveling alone or with family on vacation?",
       "uk": "Ні, це насправді мій перший раз там. Колега мені дуже радив - через пляжі і хорошу їжу. А ти взагалі любиш їздити у відпустку сама чи з родиною?",
-      "ru": "Нет, это на самом деле мой первый раз там. Коллега мне очень советовал - из-за пляжей и хорошей еды. А ты вообще любишь ездить в отпуск один или с семьёй?"
+      "ru": "Нет, это на самом деле мой первый раз там. Коллега мне очень советовал - из-за пляжей и хорошей еды. А ты вообще любишь ездить в отпуск один или с семьёй?",
+      "gram": ""
     },
     "q2": {
       "de": "Meistens mit meinem Partner, aber dieses Jahr überlegen wir, ob wir vielleicht auch ein paar Tage mit Freunden zusammen verreisen. Wie lange bist du insgesamt weg?",
       "en": "Mostly with my partner, but this year we're thinking about maybe also traveling with friends for a few days. How long are you away in total?",
       "uk": "Здебільшого з партнером, але цього року ми думаємо, можливо, поїхати ще на кілька днів разом з друзями. А ти на скільки загалом їдеш?",
-      "ru": "В основном с партнёром, но в этом году мы думаем, может, поехать ещё на несколько дней вместе с друзьями. А ты на сколько всего уезжаешь?"
+      "ru": "В основном с партнёром, но в этом году мы думаем, может, поехать ещё на несколько дней вместе с друзьями. А ты на сколько всего уезжаешь?",
+      "gram": ""
     },
     "a2": {
       "de": "Genau zwei Wochen, das reicht meistens, um wirklich zur Ruhe zu kommen. Danach freue ich mich aber auch schon wieder ein bisschen auf die Arbeit, ehrlich gesagt.",
       "en": "Exactly two weeks, that's usually enough to really unwind. But after that I'm honestly already a little looking forward to work again too.",
       "uk": "Рівно на два тижні, зазвичай цього вистачає, щоб справді відпочити. Але потім я, чесно кажучи, вже трохи чекаю знову на роботу.",
-      "ru": "Ровно на две недели, обычно этого хватает, чтобы действительно отдохнуть. Но потом я, честно говоря, уже немного жду снова работу."
-    },
-    "gram": ""
+      "ru": "Ровно на две недели, обычно этого хватает, чтобы действительно отдохнуть. Но потом я, честно говоря, уже немного жду снова работу.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_045",
     "cat": "Sportaktivitäten",
     "task": {
@@ -14565,41 +14830,46 @@ var DIALOGE = [
       "de": "Sag mal, treibst du eigentlich regelmäßig Sport?",
       "en": "Tell me, do you actually exercise regularly?",
       "uk": "Скажи, а ти взагалі регулярно займаєшся спортом?",
-      "ru": "Скажи, а ты вообще регулярно занимаешься спортом?"
+      "ru": "Скажи, а ты вообще регулярно занимаешься спортом?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, ich gehe seit letztem Jahr dreimal die Woche joggen, meistens früh morgens vor der Arbeit. Das gibt mir richtig Energie für den ganzen Tag. Und du, machst du auch irgendeinen Sport?",
       "en": "Yes, I've been going jogging three times a week since last year, usually early in the morning before work. It really gives me energy for the whole day. What about you, do you do any sport too?",
       "uk": "Так, я з минулого року бігаю тричі на тиждень, зазвичай рано вранці перед роботою. Це справді дає мені енергію на цілий день. А в тебе, ти теж якимось спортом займаєшся?",
-      "ru": "Да, я с прошлого года бегаю трижды в неделю, обычно рано утром перед работой. Это действительно даёт мне энергию на весь день. А у тебя, ты тоже каким-то спортом занимаешься?"
+      "ru": "Да, я с прошлого года бегаю трижды в неделю, обычно рано утром перед работой. Это действительно даёт мне энергию на весь день. А у тебя, ты тоже каким-то спортом занимаешься?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich gehe zweimal pro Woche zum Yoga, das hilft mir total, nach der Arbeit abzuschalten. Läufst du eigentlich draußen oder lieber auf dem Laufband?",
       "en": "I go to yoga twice a week, it really helps me switch off after work. Do you actually run outside or do you prefer the treadmill?",
       "uk": "Я двічі на тиждень ходжу на йогу, це дуже допомагає мені відключитися після роботи. А ти взагалі бігаєш надворі чи радше на біговій доріжці?",
-      "ru": "Я дважды в неделю хожу на йогу, это очень помогает мне отключиться после работы. А ты вообще бегаешь на улице или предпочитаешь беговую дорожку?"
+      "ru": "Я дважды в неделю хожу на йогу, это очень помогает мне отключиться после работы. А ты вообще бегаешь на улице или предпочитаешь беговую дорожку?",
+      "gram": ""
     },
     "a1": {
       "de": "Fast immer draußen, außer bei richtig schlechtem Wetter. Ich mag es einfach, dabei ein bisschen die Natur zu sehen. Wie lange machst du schon Yoga?",
       "en": "Almost always outside, except in really bad weather. I just like seeing a bit of nature while I do it. How long have you been doing yoga?",
       "uk": "Майже завжди надворі, хіба що в дуже погану погоду. Мені просто подобається бачити трохи природи під час бігу. Як довго ти вже займаєшся йогою?",
-      "ru": "Почти всегда на улице, разве что в очень плохую погоду. Мне просто нравится видеть немного природы во время бега. Как долго ты уже занимаешься йогой?"
+      "ru": "Почти всегда на улице, разве что в очень плохую погоду. Мне просто нравится видеть немного природы во время бега. Как долго ты уже занимаешься йогой?",
+      "gram": ""
     },
     "q2": {
       "de": "Ungefähr zwei Jahre jetzt, ich habe damit nach einer stressigen Zeit im Job angefangen. Hast du eigentlich schon mal an einem Lauf oder Marathon teilgenommen?",
       "en": "About two years now, I started after a stressful time at work. Have you actually ever taken part in a race or a marathon?",
       "uk": "Уже приблизно два роки, я почала після напруженого періоду на роботі. А ти взагалі колись брав участь у забігу чи марафоні?",
-      "ru": "Уже примерно два года, я начала после напряжённого периода на работе. А ты вообще когда-нибудь участвовал в забеге или марафоне?"
+      "ru": "Уже примерно два года, я начала после напряжённого периода на работе. А ты вообще когда-нибудь участвовал в забеге или марафоне?",
+      "gram": ""
     },
     "a2": {
       "de": "Ja, letztes Jahr habe ich meinen ersten Halbmarathon gemacht, das war eine echte Herausforderung, aber auch total motivierend. Dieses Jahr will ich es vielleicht sogar noch mal versuchen.",
       "en": "Yes, last year I did my first half marathon, that was a real challenge, but also really motivating. This year I might even try it again.",
       "uk": "Так, минулого року я пробіг свій перший напівмарафон, це було справжнім викликом, але й дуже мотивувало. Цього року я, можливо, навіть спробую ще раз.",
-      "ru": "Да, в прошлом году я пробежал свой первый полумарафон, это было настоящим вызовом, но и очень мотивировало. В этом году я, возможно, даже попробую ещё раз."
-    },
-    "gram": ""
+      "ru": "Да, в прошлом году я пробежал свой первый полумарафон, это было настоящим вызовом, но и очень мотивировало. В этом году я, возможно, даже попробую ещё раз.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_046",
     "cat": "Arbeitszeiten",
     "task": {
@@ -14615,41 +14885,46 @@ var DIALOGE = [
       "de": "Sag mal, wie sind eigentlich deine Arbeitszeiten geregelt? Hast du feste Zeiten oder Gleitzeit?",
       "en": "Tell me, how are your working hours actually arranged? Do you have fixed hours or flextime?",
       "uk": "Скажи, а як у тебе взагалі влаштований робочий графік? У тебе фіксований час чи гнучкий?",
-      "ru": "Скажи, а как у тебя вообще устроен рабочий график? У тебя фиксированное время или гибкое?"
+      "ru": "Скажи, а как у тебя вообще устроен рабочий график? У тебя фиксированное время или гибкое?",
+      "gram": ""
     },
     "a": {
       "de": "Ich habe Gleitzeit, meistens fange ich so gegen halb neun an und höre dann gegen halb sechs auf. Das passt gut zu mir, weil ich morgens sowieso nicht so früh aus dem Bett komme. Und wie sieht das bei dir aus?",
       "en": "I have flextime, I usually start around half past eight and finish around half past five. That suits me well, because I don't get out of bed that early in the morning anyway. What's it like for you?",
       "uk": "У мене гнучкий графік, зазвичай я починаю приблизно о пів на дев'яту і закінчую десь о пів на шосту. Мені це підходить, бо вранці я все одно не дуже рано прокидаюся. А в тебе як?",
-      "ru": "У меня гибкий график, обычно я начинаю примерно в половине девятого и заканчиваю где-то в половине шестого. Мне это подходит, потому что утром я всё равно не очень рано просыпаюсь. А у тебя как?"
+      "ru": "У меня гибкий график, обычно я начинаю примерно в половине девятого и заканчиваю где-то в половине шестого. Мне это подходит, потому что утром я всё равно не очень рано просыпаюсь. А у тебя как?",
+      "gram": ""
     },
     "q1": {
       "de": "Bei mir ist es ähnlich, aber ich fange meistens schon um acht an, damit ich nachmittags früher fertig bin. Nutzt du die Gleitzeit eigentlich auch mal für private Termine?",
       "en": "It's similar for me, but I usually start already at eight, so I'm done earlier in the afternoon. Do you actually sometimes use the flextime for personal appointments too?",
       "uk": "У мене схоже, але я зазвичай починаю вже о восьмій, щоб раніше закінчити пополудні. А ти взагалі іноді використовуєш гнучкий графік для особистих справ?",
-      "ru": "У меня похоже, но я обычно начинаю уже в восемь, чтобы раньше закончить после обеда. А ты вообще иногда используешь гибкий график для личных дел?"
+      "ru": "У меня похоже, но я обычно начинаю уже в восемь, чтобы раньше закончить после обеда. А ты вообще иногда используешь гибкий график для личных дел?",
+      "gram": ""
     },
     "a1": {
       "de": "Ja, total gerne, letzte Woche hatte ich zum Beispiel einen Arzttermin am Vormittag und habe die Zeit einfach abends nachgeholt. Machst du eigentlich manchmal Überstunden?",
       "en": "Yes, gladly, last week for example I had a doctor's appointment in the morning and just made up the time in the evening. Do you actually sometimes work overtime?",
       "uk": "Так, залюбки, наприклад минулого тижня в мене був прийом у лікаря вранці, і я просто доробила ці години ввечері. А ти взагалі іноді працюєш понаднормово?",
-      "ru": "Да, с удовольствием, например на прошлой неделе у меня был приём у врача утром, и я просто доработала эти часы вечером. А ты вообще иногда работаешь сверхурочно?"
+      "ru": "Да, с удовольствием, например на прошлой неделе у меня был приём у врача утром, и я просто доработала эти часы вечером. А ты вообще иногда работаешь сверхурочно?",
+      "gram": ""
     },
     "q2": {
       "de": "Ab und zu schon, vor allem wenn ein Projekt kurz vor der Deadline steht. Meistens kann ich mir die Stunden dann aber später wieder freinehmen. Arbeitest du eigentlich auch manchmal im Homeoffice?",
       "en": "Every now and then, especially when a project is close to its deadline. But usually I can take the hours off again later. Do you actually sometimes work from home too?",
       "uk": "Час від часу так, особливо коли проєкт наближається до дедлайну. Але зазвичай я потім можу взяти ці години як відгул. А ти взагалі іноді працюєш з дому?",
-      "ru": "Время от времени да, особенно когда проект приближается к дедлайну. Но обычно я потом могу взять эти часы как отгул. А ты вообще иногда работаешь из дома?"
+      "ru": "Время от времени да, особенно когда проект приближается к дедлайну. Но обычно я потом могу взять эти часы как отгул. А ты вообще иногда работаешь из дома?",
+      "gram": ""
     },
     "a2": {
       "de": "Ja, zwei Tage die Woche, meistens montags und freitags. Das finde ich echt praktisch, vor allem weil ich mir dann den Arbeitsweg spare und konzentrierter arbeiten kann.",
       "en": "Yes, two days a week, usually Mondays and Fridays. I find that really practical, especially because I save the commute and can work more focused.",
       "uk": "Так, два дні на тиждень, зазвичай у понеділок і п'ятницю. Мені це дуже зручно, особливо тому що я тоді економлю на дорозі й можу працювати зосередженіше.",
-      "ru": "Да, два дня в неделю, обычно по понедельникам и пятницам. Мне это очень удобно, особенно потому что я тогда экономлю на дороге и могу работать сосредоточеннее."
-    },
-    "gram": ""
+      "ru": "Да, два дня в неделю, обычно по понедельникам и пятницам. Мне это очень удобно, особенно потому что я тогда экономлю на дороге и могу работать сосредоточеннее.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_047",
     "cat": "Kinderbetreuung",
     "task": {
@@ -14665,41 +14940,46 @@ var DIALOGE = [
       "de": "Sag mal, wie organisierst du eigentlich die Kinderbetreuung neben der Arbeit? Das stelle ich mir ziemlich stressig vor.",
       "en": "Tell me, how do you actually organize childcare alongside work? I imagine that's pretty stressful.",
       "uk": "Скажи, а як ти взагалі організовуєш догляд за дітьми поряд з роботою? Мені здається, це доволі напружено.",
-      "ru": "Скажи, а как ты вообще организуешь уход за детьми наряду с работой? Мне кажется, это довольно напряжённо."
+      "ru": "Скажи, а как ты вообще организуешь уход за детьми наряду с работой? Мне кажется, это довольно напряжённо.",
+      "gram": ""
     },
     "a": {
       "de": "Ehrlich gesagt ist es manchmal schon eine Herausforderung. Meine Tochter ist vormittags in der Kita, und nachmittags springt meistens meine Mutter ein, wenn ich noch arbeiten muss. Hast du eigentlich selbst Kinder?",
       "en": "Honestly, it can be a real challenge sometimes. My daughter is at daycare in the mornings, and my mother usually steps in during the afternoon if I still have to work. Do you actually have kids yourself?",
       "uk": "Чесно кажучи, іноді це справжній виклик. Моя донька зранку в садочку, а пополудні зазвичай виручає моя мама, якщо мені ще треба працювати. А в тебе взагалі є діти?",
-      "ru": "Честно говоря, иногда это настоящий вызов. Моя дочь по утрам в садике, а после обеда обычно выручает моя мама, если мне ещё нужно работать. А у тебя вообще есть дети?"
+      "ru": "Честно говоря, иногда это настоящий вызов. Моя дочь по утрам в садике, а после обеда обычно выручает моя мама, если мне ещё нужно работать. А у тебя вообще есть дети?",
+      "gram": ""
     },
     "q1": {
       "de": "Nein, noch nicht, aber meine Schwester hat einen zweijährigen Sohn, und ich sehe, wie viel Organisation das braucht. Ist die Kita eigentlich ganztags geöffnet?",
       "en": "No, not yet, but my sister has a two-year-old son, and I see how much organizing that takes. Is the daycare actually open all day?",
       "uk": "Ні, ще немає, але в моєї сестри дворічний син, і я бачу, скільки організації це вимагає. А садочок взагалі працює цілий день?",
-      "ru": "Нет, пока нет, но у моей сестры двухлетний сын, и я вижу, сколько организации это требует. А садик вообще работает целый день?"
+      "ru": "Нет, пока нет, но у моей сестры двухлетний сын, и я вижу, сколько организации это требует. А садик вообще работает целый день?",
+      "gram": ""
     },
     "a1": {
       "de": "Ja, zum Glück bis siebzehn Uhr, das passt meistens ganz gut mit meinen Arbeitszeiten zusammen. Nur wenn ich mal länger arbeiten muss, wird es wirklich knapp. Hilft dir eigentlich jemand aus deiner Familie mit deiner Nichte oder deinem Neffen?",
       "en": "Yes, thankfully until five p.m., that usually fits pretty well with my working hours. It only really gets tight when I have to work longer sometimes. Does anyone in your family actually help with your niece or nephew?",
       "uk": "Так, на щастя, до сімнадцятої, це зазвичай непогано узгоджується з моїм робочим графіком. Тільки коли мені треба довше попрацювати, стає справді тісно. А тобі допомагає хтось із родини з твоєю племінницею чи племінником?",
-      "ru": "Да, к счастью, до семнадцати часов, это обычно неплохо согласуется с моим рабочим графиком. Только когда мне нужно поработать подольше, становится действительно тесно. А тебе помогает кто-то из семьи с твоей племянницей или племянником?"
+      "ru": "Да, к счастью, до семнадцати часов, это обычно неплохо согласуется с моим рабочим графиком. Только когда мне нужно поработать подольше, становится действительно тесно. А тебе помогает кто-то из семьи с твоей племянницей или племянником?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, meine Eltern springen ab und zu ein, wenn meine Schwester einen Termin hat. Ich finde es total schön zu sehen, wie die ganze Familie irgendwie zusammenhält. Nimmst du dir eigentlich manchmal auch bewusst Zeit nur für dich?",
       "en": "Yes, my parents step in every now and then when my sister has an appointment. I really love seeing how the whole family sort of holds together. Do you actually sometimes deliberately make time just for yourself?",
       "uk": "Так, мої батьки час від часу виручають, коли в моєї сестри є якась справа. Мені дуже приємно бачити, як уся родина якось тримається разом. А ти взагалі іноді свідомо виділяєш час тільки для себе?",
-      "ru": "Да, мои родители время от времени выручают, когда у моей сестры какое-то дело. Мне очень приятно видеть, как вся семья как-то держится вместе. А ты вообще иногда сознательно выделяешь время только для себя?"
+      "ru": "Да, мои родители время от времени выручают, когда у моей сестры какое-то дело. Мне очень приятно видеть, как вся семья как-то держится вместе. А ты вообще иногда сознательно выделяешь время только для себя?",
+      "gram": ""
     },
     "a2": {
       "de": "Ehrlich gesagt eher selten, aber ich versuche, mir wenigstens einmal die Woche einen Abend für mich freizuhalten. Das brauche ich einfach, um wieder Energie zu tanken.",
       "en": "Honestly, rarely, but I try to at least keep one evening a week free just for myself. I just need that to recharge my energy.",
       "uk": "Чесно кажучи, досить рідко, але я намагаюся хоча б раз на тиждень залишати вечір вільним для себе. Це мені просто потрібно, щоб знову набратися енергії.",
-      "ru": "Честно говоря, довольно редко, но я стараюсь хотя бы раз в неделю оставлять вечер свободным для себя. Это мне просто нужно, чтобы снова набраться энергии."
-    },
-    "gram": ""
+      "ru": "Честно говоря, довольно редко, но я стараюсь хотя бы раз в неделю оставлять вечер свободным для себя. Это мне просто нужно, чтобы снова набраться энергии.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_048",
     "cat": "Arbeitsweg",
     "task": {
@@ -14715,41 +14995,46 @@ var DIALOGE = [
       "de": "Sag mal, wie kommst du eigentlich normalerweise zur Arbeit? Wohnst du weit weg vom Büro?",
       "en": "Tell me, how do you usually get to work actually? Do you live far from the office?",
       "uk": "Скажи, а як ти взагалі зазвичай добираєшся до роботи? Ти далеко живеш від офісу?",
-      "ru": "Скажи, а как ты вообще обычно добираешься до работы? Ты далеко живёшь от офиса?"
+      "ru": "Скажи, а как ты вообще обычно добираешься до работы? Ты далеко живёшь от офиса?",
+      "gram": ""
     },
     "a": {
       "de": "Eigentlich nicht so weit, ich fahre meistens mit dem Auto, das dauert ungefähr zwanzig Minuten. Manchmal nehme ich aber auch den E-Scooter, wenn das Wetter gut ist. Und du, wie sieht das bei dir aus?",
       "en": "Actually not that far, I mostly drive, it takes about twenty minutes. But sometimes I also take an e-scooter when the weather's good. What about you, what's it like for you?",
       "uk": "Взагалі не дуже далеко, я здебільшого їжджу машиною, це займає хвилин двадцять. Але іноді їжджу й на електросамокаті, якщо гарна погода. А в тебе як?",
-      "ru": "Вообще не очень далеко, я в основном езжу на машине, это занимает минут двадцать. Но иногда езжу и на электросамокате, если хорошая погода. А у тебя как?"
+      "ru": "Вообще не очень далеко, я в основном езжу на машине, это занимает минут двадцать. Но иногда езжу и на электросамокате, если хорошая погода. А у тебя как?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich fahre eigentlich fast immer mit dem Auto, aber seit Kurzem teile ich mir eine Fahrgemeinschaft mit einem Kollegen aus der Nachbarschaft. Wie findest du eigentlich den E-Scooter im Vergleich zum Auto?",
       "en": "I actually drive almost always too, but recently I've been carpooling with a colleague from the neighborhood. How do you actually find the e-scooter compared to the car?",
       "uk": "Я взагалі майже завжди їжджу машиною, але останнім часом я їжджу разом із колегою із сусіднього району по черзі. До речі, як тобі електросамокат порівняно з машиною?",
-      "ru": "Я вообще почти всегда езжу на машине, но в последнее время я езжу вместе с коллегой из соседнего района по очереди. Кстати, как тебе электросамокат по сравнению с машиной?"
+      "ru": "Я вообще почти всегда езжу на машине, но в последнее время я езжу вместе с коллегой из соседнего района по очереди. Кстати, как тебе электросамокат по сравнению с машиной?",
+      "gram": ""
     },
     "a1": {
       "de": "Der macht wirklich Spaß, vor allem im Sommer, aber bei Regen nutze ich ihn natürlich nicht. Eine Fahrgemeinschaft klingt aber auch praktisch - spart ihr euch dadurch viele Kosten?",
       "en": "It's really fun, especially in summer, but of course I don't use it when it rains. Carpooling sounds practical too though - does it save you a lot of costs?",
       "uk": "Це справді весело, особливо влітку, але в дощ я його, звісно, не використовую. А спільні поїздки теж звучать практично - це заощаджує вам чимало коштів?",
-      "ru": "Это действительно весело, особенно летом, но в дождь я его, конечно, не использую. А совместные поездки тоже звучат практично - это экономит вам немало денег?"
+      "ru": "Это действительно весело, особенно летом, но в дождь я его, конечно, не использую. А совместные поездки тоже звучат практично - это экономит вам немало денег?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, ziemlich viel sogar, wir teilen uns Benzin und Parkgebühren, und ich muss nur jede zweite Woche wirklich fahren. Gibt es eigentlich viele Parkplätze bei euch in der Nähe?",
       "en": "Yes, quite a lot actually, we split the gas and parking fees, and I only really have to drive every other week. Are there actually a lot of parking spots near you?",
       "uk": "Так, доволі багато, ми ділимо витрати на бензин і паркування, і мені реально треба їхати лише кожен другий тиждень. А у вас поблизу багато паркомісць?",
-      "ru": "Да, довольно много, мы делим расходы на бензин и парковку, и мне реально нужно ехать только через неделю. А у вас поблизости много парковочных мест?"
+      "ru": "Да, довольно много, мы делим расходы на бензин и парковку, и мне реально нужно ехать только через неделю. А у вас поблизости много парковочных мест?",
+      "gram": ""
     },
     "a2": {
       "de": "Leider nicht wirklich, ich suche morgens manchmal ziemlich lange nach einem freien Platz. Deshalb überlege ich eigentlich schon länger, öfter mit dem E-Scooter oder sogar mit dem Fahrrad zu fahren.",
       "en": "Unfortunately not really, in the mornings I sometimes have to look for a free spot for quite a while. That's actually why I've been thinking for a while about riding the e-scooter more often, or even a bike.",
       "uk": "На жаль, не дуже, вранці я іноді досить довго шукаю вільне місце. Тому я взагалі вже давно думаю частіше їздити на електросамокаті або навіть на велосипеді.",
-      "ru": "К сожалению, не очень, утром я иногда довольно долго ищу свободное место. Поэтому я вообще уже давно думаю чаще ездить на электросамокате или даже на велосипеде."
-    },
-    "gram": ""
+      "ru": "К сожалению, не очень, утром я иногда довольно долго ищу свободное место. Поэтому я вообще уже давно думаю чаще ездить на электросамокате или даже на велосипеде.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_049",
     "cat": "Wochenende",
     "task": {
@@ -14765,41 +15050,46 @@ var DIALOGE = [
       "de": "Sag mal, was hast du eigentlich dieses Wochenende vor?",
       "en": "Tell me, what do you actually have planned for this weekend?",
       "uk": "Скажи, а що ти взагалі плануєш на ці вихідні?",
-      "ru": "Скажи, а что ты вообще планируешь на эти выходные?"
+      "ru": "Скажи, а что ты вообще планируешь на эти выходные?",
+      "gram": ""
     },
     "a": {
       "de": "Ich wollte eigentlich schon lange mal mein Wohnzimmer neu streichen, also nutze ich das Wochenende wahrscheinlich dafür. Das wird bestimmt anstrengend, aber ich freue mich schon darauf, wie es danach aussieht. Und du, hast du schon was geplant?",
       "en": "I've actually been wanting to repaint my living room for a long time, so I'll probably use the weekend for that. It's bound to be exhausting, but I'm already looking forward to how it'll look afterward. What about you, have you planned anything yet?",
       "uk": "Я вже давно хотіла перефарбувати вітальню, тож, мабуть, використаю вихідні саме для цього. Це точно буде виснажливо, але я вже зараз рада, як усе виглядатиме потім. А в тебе вже є якісь плани?",
-      "ru": "Я уже давно хотела перекрасить гостиную, так что, наверное, использую выходные именно для этого. Это точно будет утомительно, но я уже сейчас рада тому, как всё будет выглядеть потом. А у тебя уже есть какие-то планы?"
+      "ru": "Я уже давно хотела перекрасить гостиную, так что, наверное, использую выходные именно для этого. Это точно будет утомительно, но я уже сейчас рада тому, как всё будет выглядеть потом. А у тебя уже есть какие-то планы?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich treffe mich am Samstag mit einer alten Freundin, die ich schon ewig nicht mehr gesehen habe. Wir wollen zusammen brunchen gehen und dann vielleicht noch shoppen. Welche Farbe hast du dir eigentlich für dein Wohnzimmer ausgesucht?",
       "en": "I'm meeting an old friend on Saturday whom I haven't seen in ages. We want to go for brunch together and then maybe do some shopping. What color have you actually picked for your living room?",
       "uk": "У суботу я зустрічаюся зі старою подругою, яку не бачила вже цілу вічність. Ми хочемо разом поснідати, а потім, може, ще й пройтися магазинами. До речі, який колір ти обрала для вітальні?",
-      "ru": "В субботу я встречаюсь со старой подругой, которую не видела уже целую вечность. Мы хотим вместе позавтракать, а потом, может, ещё и пройтись по магазинам. Кстати, какой цвет ты выбрала для гостиной?"
+      "ru": "В субботу я встречаюсь со старой подругой, которую не видела уже целую вечность. Мы хотим вместе позавтракать, а потом, может, ещё и пройтись по магазинам. Кстати, какой цвет ты выбрала для гостиной?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich überlege noch zwischen einem hellen Grau und einem warmen Beige, kann mich aber einfach nicht entscheiden. Klingt aber schön, dass ihr euch nach so langer Zeit mal wiedertrefft - worüber unterhaltet ihr euch dann meistens?",
       "en": "I'm still deciding between a light gray and a warm beige, but I just can't make up my mind. Sounds nice though that you two are meeting up again after so long - what do you usually talk about then?",
       "uk": "Я ще думаю між світло-сірим і теплим бежевим, але ніяк не можу вирішити. Але звучить приємно, що ви знову зустрічаєтеся після такої перерви - про що ви зазвичай розмовляєте?",
-      "ru": "Я ещё думаю между светло-серым и тёплым бежевым, но никак не могу решить. Но звучит приятно, что вы снова встречаетесь после такого перерыва - о чём вы обычно разговариваете?"
+      "ru": "Я ещё думаю между светло-серым и тёплым бежевым, но никак не могу решить. Но звучит приятно, что вы снова встречаетесь после такого перерыва - о чём вы обычно разговариваете?",
+      "gram": ""
     },
     "q2": {
       "de": "Eigentlich über alles Mögliche, meistens aber über die Arbeit oder was sich bei uns beiden gerade so tut. Am Sonntag will ich dann aber wirklich nichts machen und einfach nur entspannen. Hast du eigentlich schon eine Idee, wie du das Wochenende ausklingen lässt?",
       "en": "Actually about all sorts of things, but mostly about work or what's going on with each of us right now. On Sunday though I really don't want to do anything and just relax. Do you actually have an idea yet how you'll wind down the weekend?",
       "uk": "Взагалі про все підряд, але здебільшого про роботу або про те, що відбувається в нас обох. А в неділю я справді нічого не хочу робити і просто хочу відпочити. А в тебе вже є ідея, як ти завершиш вихідні?",
-      "ru": "Вообще обо всём подряд, но в основном о работе или о том, что происходит у нас обеих. А в воскресенье я действительно ничего не хочу делать и просто хочу отдохнуть. А у тебя уже есть идея, как ты завершишь выходные?"
+      "ru": "Вообще обо всём подряд, но в основном о работе или о том, что происходит у нас обеих. А в воскресенье я действительно ничего не хочу делать и просто хочу отдохнуть. А у тебя уже есть идея, как ты завершишь выходные?",
+      "gram": ""
     },
     "a2": {
       "de": "Am Sonntag will ich wahrscheinlich einfach nur auf dem Sofa liegen und eine Serie schauen, nachdem ich mich beim Streichen bestimmt total ausgepowert habe.",
       "en": "On Sunday I'll probably just lie on the couch and watch a series, after I've completely worn myself out with the painting.",
       "uk": "У неділю я, напевно, просто ляжу на диван і подивлюся серіал, бо точно повністю виснажуся після фарбування.",
-      "ru": "В воскресенье я, наверное, просто лягу на диван и посмотрю сериал, потому что точно полностью вымотаюсь после покраски."
-    },
-    "gram": ""
+      "ru": "В воскресенье я, наверное, просто лягу на диван и посмотрю сериал, потому что точно полностью вымотаюсь после покраски.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_050",
     "cat": "Freizeitgestaltung",
     "task": {
@@ -14815,41 +15105,46 @@ var DIALOGE = [
       "de": "Sag mal, was machst du eigentlich am liebsten, wenn du mal ein bisschen Zeit für dich hast?",
       "en": "Tell me, what do you actually like doing most when you have a bit of time for yourself?",
       "uk": "Скажи, а що ти взагалі найбільше любиш робити, коли маєш трохи часу для себе?",
-      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть немного времени для себя?"
+      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть немного времени для себя?",
+      "gram": ""
     },
     "a": {
       "de": "Ich gehe seit ein paar Monaten in einen Malkurs, das war schon lange ein Traum von mir. Wir treffen uns immer mittwochs abends und malen zusammen mit Acrylfarben. Und du, wie verbringst du deine freie Zeit am liebsten?",
       "en": "I've been going to a painting class for a few months now, that's been a dream of mine for a long time. We meet every Wednesday evening and paint together with acrylics. What about you, how do you like to spend your free time most?",
       "uk": "Я вже кілька місяців ходжу на курси малювання, це вже давно було моєю мрією. Ми зустрічаємося щосереди ввечері і малюємо разом акриловими фарбами. А в тебе як, як ти найбільше любиш проводити вільний час?",
-      "ru": "Я уже несколько месяцев хожу на курсы рисования, это уже давно было моей мечтой. Мы встречаемся каждую среду вечером и рисуем вместе акриловыми красками. А у тебя как, как ты больше всего любишь проводить свободное время?"
+      "ru": "Я уже несколько месяцев хожу на курсы рисования, это уже давно было моей мечтой. Мы встречаемся каждую среду вечером и рисуем вместе акриловыми красками. А у тебя как, как ты больше всего любишь проводить свободное время?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich bin eigentlich in einem Buchclub, wir lesen jeden Monat ein neues Buch und treffen uns dann, um darüber zu diskutieren. Bist du eigentlich schon gut im Malen geworden, oder fängst du gerade erst an?",
       "en": "I'm actually in a book club, we read a new book every month and then meet up to discuss it. Have you actually gotten pretty good at painting already, or are you just starting out?",
       "uk": "Я взагалі в книжковому клубі, ми щомісяця читаємо нову книжку, а потім зустрічаємося, щоб її обговорити. А ти вже добре навчилася малювати, чи тільки починаєш?",
-      "ru": "Я вообще в книжном клубе, мы каждый месяц читаем новую книгу, а потом встречаемся, чтобы её обсудить. А ты уже хорошо научилась рисовать, или только начинаешь?"
+      "ru": "Я вообще в книжном клубе, мы каждый месяц читаем новую книгу, а потом встречаемся, чтобы её обсудить. А ты уже хорошо научилась рисовать, или только начинаешь?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich würde sagen, ich mache schon Fortschritte, auch wenn ich noch lange kein Profi bin. Ein Buchclub klingt aber auch total spannend - welches Buch lest ihr gerade?",
       "en": "I'd say I'm making progress, even though I'm still far from a professional. A book club sounds really exciting too though - what book are you reading right now?",
       "uk": "Я б сказала, що вже прогресую, хоча до професіонала мені ще далеко. Книжковий клуб теж звучить дуже цікаво - яку книжку ви зараз читаєте?",
-      "ru": "Я бы сказала, что уже прогрессирую, хотя до профессионала мне ещё далеко. Книжный клуб тоже звучит очень интересно - какую книгу вы сейчас читаете?"
+      "ru": "Я бы сказала, что уже прогрессирую, хотя до профессионала мне ещё далеко. Книжный клуб тоже звучит очень интересно - какую книгу вы сейчас читаете?",
+      "gram": ""
     },
     "q2": {
       "de": "Gerade lesen wir einen Kriminalroman, der in Berlin spielt, das macht wirklich Spaß. Stellst du deine Bilder eigentlich irgendwo aus, oder malst du nur für dich selbst?",
       "en": "Right now we're reading a crime novel set in Berlin, it's really fun. Do you actually exhibit your paintings anywhere, or do you just paint for yourself?",
       "uk": "Зараз ми читаємо детектив, дія якого відбувається в Берліні, це справді захопливо. А ти виставляєш свої картини десь, чи малюєш лише для себе?",
-      "ru": "Сейчас мы читаем детектив, действие которого происходит в Берлине, это действительно увлекательно. А ты выставляешь свои картины где-то, или рисуешь только для себя?"
+      "ru": "Сейчас мы читаем детектив, действие которого происходит в Берлине, это действительно увлекательно. А ты выставляешь свои картины где-то, или рисуешь только для себя?",
+      "gram": ""
     },
     "a2": {
       "de": "Bisher nur für mich, aber ein paar aus dem Kurs haben letztes Jahr eine kleine Ausstellung gemacht. Vielleicht traue ich mich das ja auch irgendwann mal.",
       "en": "So far just for myself, but a few people from the class did a small exhibition last year. Maybe I'll work up the courage to do that too someday.",
       "uk": "Поки що лише для себе, але декілька людей з курсу минулого року зробили невелику виставку. Може, колись і я наважуся.",
-      "ru": "Пока только для себя, но несколько человек с курса в прошлом году сделали небольшую выставку. Может, когда-нибудь и я решусь."
-    },
-    "gram": ""
+      "ru": "Пока только для себя, но несколько человек с курса в прошлом году сделали небольшую выставку. Может, когда-нибудь и я решусь.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_051",
     "cat": "Urlaub",
     "task": {
@@ -14865,41 +15160,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du eigentlich schon Pläne für den Sommer? Fährst du irgendwohin in den Urlaub?",
       "en": "Tell me, do you actually already have plans for the summer? Are you going anywhere on vacation?",
       "uk": "Скажи, а в тебе вже є плани на літо? Ти кудись поїдеш у відпустку?",
-      "ru": "Скажи, а у тебя уже есть планы на лето? Ты куда-нибудь поедешь в отпуск?"
+      "ru": "Скажи, а у тебя уже есть планы на лето? Ты куда-нибудь поедешь в отпуск?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, ich fahre für eine Woche mit dem Wohnmobil durch Norwegen, das wollte ich schon lange mal machen. Ich freue mich total auf die Natur dort und die vielen Fjorde. Und du, hast du auch schon was vor?",
       "en": "Yes, I'm taking a camper van through Norway for a week, I've wanted to do that for a long time. I'm really looking forward to the nature there and the many fjords. What about you, do you have anything planned too?",
       "uk": "Так, я на тиждень їду на кемпері через Норвегію, я вже давно хотів це зробити. Дуже чекаю на природу там і численні фʼорди. А в тебе теж уже є якісь плани?",
-      "ru": "Да, я на неделю еду на кемпере через Норвегию, я уже давно хотел это сделать. Очень жду природу там и множество фьордов. А у тебя тоже уже есть какие-то планы?"
+      "ru": "Да, я на неделю еду на кемпере через Норвегию, я уже давно хотел это сделать. Очень жду природу там и множество фьордов. А у тебя тоже уже есть какие-то планы?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich glaube, ich bleibe dieses Jahr eher zu Hause und mache eine Art Staycation, also einfach ein paar freie Tage ohne konkrete Pläne. Warst du eigentlich schon mal mit dem Wohnmobil unterwegs?",
       "en": "I think I'll actually stay home this year and do a kind of staycation, so just a few free days without any concrete plans. Have you actually traveled by camper van before?",
       "uk": "Гадаю, цього року я радше залишуся вдома і зроблю щось на кшталт стейкейшену, тобто просто кілька вільних днів без конкретних планів. А ти вже колись подорожував на кемпері?",
-      "ru": "Думаю, в этом году я скорее останусь дома и сделаю что-то вроде стейкейшена, то есть просто несколько свободных дней без конкретных планов. А ты уже когда-нибудь путешествовал на кемпере?"
+      "ru": "Думаю, в этом году я скорее останусь дома и сделаю что-то вроде стейкейшена, то есть просто несколько свободных дней без конкретных планов. А ты уже когда-нибудь путешествовал на кемпере?",
+      "gram": ""
     },
     "a1": {
       "de": "Nein, das ist tatsächlich mein erstes Mal, ich bin schon ein bisschen aufgeregt, wie das wird. Eine Staycation klingt aber auch total entspannt - was machst du dann normalerweise an so freien Tagen?",
       "en": "No, this is actually my first time, I'm already a bit excited about how it'll turn out. A staycation sounds really relaxing too though - what do you usually do on days off like that?",
       "uk": "Ні, це насправді мій перший раз, я вже трохи хвилююся, як воно буде. Але стейкейшен теж звучить дуже розслаблено - що ти зазвичай робиш у такі вільні дні?",
-      "ru": "Нет, это на самом деле мой первый раз, я уже немного волнуюсь, как это будет. Но стейкейшен тоже звучит очень расслабленно - что ты обычно делаешь в такие свободные дни?"
+      "ru": "Нет, это на самом деле мой первый раз, я уже немного волнуюсь, как это будет. Но стейкейшен тоже звучит очень расслабленно - что ты обычно делаешь в такие свободные дни?",
+      "gram": ""
     },
     "q2": {
       "de": "Meistens schlafe ich einfach länger aus und treffe mich mit Freunden, die auch gerade Zeit haben. Manchmal fahre ich auch spontan für einen Tag irgendwohin. Wie lange bist du eigentlich mit dem Wohnmobil unterwegs?",
       "en": "Mostly I just sleep in and meet up with friends who also have time then. Sometimes I also spontaneously drive somewhere for a day. How long are you actually traveling by camper van?",
       "uk": "Здебільшого я просто довше висипаюся і зустрічаюся з друзями, у яких теж є час. Іноді спонтанно їду кудись на день. А скільки ти взагалі подорожуєш на кемпері?",
-      "ru": "В основном я просто дольше высыпаюсь и встречаюсь с друзьями, у которых тоже есть время. Иногда спонтанно еду куда-нибудь на день. А сколько ты вообще путешествуешь на кемпере?"
+      "ru": "В основном я просто дольше высыпаюсь и встречаюсь с друзьями, у которых тоже есть время. Иногда спонтанно еду куда-нибудь на день. А сколько ты вообще путешествуешь на кемпере?",
+      "gram": ""
     },
     "a2": {
       "de": "Genau eine Woche, das reicht meiner Meinung nach gerade richtig, um ein paar Orte zu sehen, ohne total im Stress zu sein.",
       "en": "Exactly one week, in my opinion that's just about right to see a few places without being totally stressed.",
       "uk": "Рівно тиждень, на мою думку, цього якраз досить, щоб побачити кілька місць, не перебуваючи в постійному стресі.",
-      "ru": "Ровно неделю, по-моему, этого как раз достаточно, чтобы увидеть несколько мест, не находясь в постоянном стрессе."
-    },
-    "gram": ""
+      "ru": "Ровно неделю, по-моему, этого как раз достаточно, чтобы увидеть несколько мест, не находясь в постоянном стрессе.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_052",
     "cat": "Sportaktivitäten",
     "task": {
@@ -14915,41 +15215,46 @@ var DIALOGE = [
       "de": "Sag mal, treibst du eigentlich Sport, oder eher gar nicht so?",
       "en": "Tell me, do you actually do sports, or not really?",
       "uk": "Скажи, а ти взагалі займаєшся спортом, чи радше ні?",
-      "ru": "Скажи, а ты вообще занимаешься спортом, или скорее нет?"
+      "ru": "Скажи, а ты вообще занимаешься спортом, или скорее нет?",
+      "gram": ""
     },
     "a": {
       "de": "Doch, ich spiele seit der Schulzeit Fußball, mittlerweile in einer kleinen Freizeitliga hier in der Stadt. Wir trainieren zweimal die Woche und haben am Wochenende meistens ein Spiel. Und du, machst du auch etwas Sportliches?",
       "en": "Actually yes, I've been playing football since school, these days in a small recreational league here in the city. We train twice a week and usually have a match on the weekend. What about you, do you do anything sporty too?",
       "uk": "Ні, навпаки, я граю у футбол ще зі шкільних часів, зараз у невеликій аматорській лізі тут у місті. Ми тренуємося двічі на тиждень, і зазвичай на вихідних маємо матч. А в тебе, ти теж чимось спортивним займаєшся?",
-      "ru": "Нет, наоборот, я играю в футбол ещё со школьных времён, сейчас в небольшой любительской лиге здесь в городе. Мы тренируемся дважды в неделю, и обычно на выходных у нас матч. А у тебя, ты тоже чем-то спортивным занимаешься?"
+      "ru": "Нет, наоборот, я играю в футбол ещё со школьных времён, сейчас в небольшой любительской лиге здесь в городе. Мы тренируемся дважды в неделю, и обычно на выходных у нас матч. А у тебя, ты тоже чем-то спортивным занимаешься?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich gehe eigentlich dreimal die Woche ins Fitnessstudio, hauptsächlich Krafttraining. Ich finde es total befriedigend, wenn man sieht, wie man langsam stärker wird. Wie läuft's eigentlich mit eurer Liga, seid ihr gerade erfolgreich?",
       "en": "I actually go to the gym three times a week, mainly strength training. I find it really satisfying when you see yourself slowly getting stronger. How's it going with your league actually, are you doing well right now?",
       "uk": "Я взагалі тричі на тиждень ходжу в спортзал, здебільшого силові тренування. Мені дуже приємно, коли бачиш, як поступово стаєш сильнішим. До речі, як справи з вашою лігою, у вас зараз успішно йде?",
-      "ru": "Я вообще трижды в неделю хожу в спортзал, в основном силовые тренировки. Мне очень приятно, когда видишь, как постепенно становишься сильнее. Кстати, как дела с вашей лигой, у вас сейчас успешно идёт?"
+      "ru": "Я вообще трижды в неделю хожу в спортзал, в основном силовые тренировки. Мне очень приятно, когда видишь, как постепенно становишься сильнее. Кстати, как дела с вашей лигой, у вас сейчас успешно идёт?",
+      "gram": ""
     },
     "a1": {
       "de": "Ziemlich gut sogar, wir stehen momentan auf Platz zwei. Krafttraining klingt aber auch spannend - hast du dir eigentlich schon konkrete Ziele gesetzt?",
       "en": "Pretty well actually, we're currently in second place. Strength training sounds exciting too though - have you actually set yourself any concrete goals?",
       "uk": "Навіть доволі добре, зараз ми на другому місці. Силові тренування теж звучать цікаво - а ти вже поставив собі конкретні цілі?",
-      "ru": "Даже довольно хорошо, сейчас мы на втором месте. Силовые тренировки тоже звучат интересно - а ты уже поставил себе конкретные цели?"
+      "ru": "Даже довольно хорошо, сейчас мы на втором месте. Силовые тренировки тоже звучат интересно - а ты уже поставил себе конкретные цели?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, ich möchte bis Ende des Jahres eigentlich mein Gewicht beim Kniebeugen deutlich steigern. Das motiviert mich total, regelmäßig hinzugehen. Verletzt du dich beim Fußball eigentlich manchmal?",
       "en": "Yes, I actually want to significantly increase my squat weight by the end of the year. That really motivates me to go regularly. Do you actually sometimes get injured playing football?",
       "uk": "Так, я взагалі хочу до кінця року суттєво збільшити вагу в присіданнях. Це мене дуже мотивує регулярно ходити. А ти взагалі іноді травмуєшся у футболі?",
-      "ru": "Да, я вообще хочу к концу года существенно увеличить вес в приседаниях. Это меня очень мотивирует регулярно ходить. А ты вообще иногда травмируешься в футболе?"
+      "ru": "Да, я вообще хочу к концу года существенно увеличить вес в приседаниях. Это меня очень мотивирует регулярно ходить. А ты вообще иногда травмируешься в футболе?",
+      "gram": ""
     },
     "a2": {
       "de": "Zum Glück bisher nur kleinere Sachen, aber ein Teamkollege hat sich letztes Jahr das Knie verletzt und musste ziemlich lange pausieren. Deshalb wärme ich mich inzwischen immer besonders gründlich auf.",
       "en": "Fortunately only minor things so far, but a teammate injured his knee last year and had to take a pretty long break. That's why I always warm up especially thoroughly these days.",
       "uk": "На щастя, поки що лише дрібниці, але один товариш по команді минулого року травмував коліно і мусив довго пропустити. Тому тепер я завжди особливо ретельно розминаюся.",
-      "ru": "К счастью, пока только мелочи, но один товарищ по команде в прошлом году травмировал колено и должен был долго пропустить. Поэтому теперь я всегда особенно тщательно разминаюсь."
-    },
-    "gram": ""
+      "ru": "К счастью, пока только мелочи, но один товарищ по команде в прошлом году травмировал колено и должен был долго пропустить. Поэтому теперь я всегда особенно тщательно разминаюсь.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_053",
     "cat": "Arbeitszeiten",
     "task": {
@@ -14965,41 +15270,46 @@ var DIALOGE = [
       "de": "Sag mal, wie sieht das eigentlich bei dir mit den Arbeitszeiten aus? Arbeitest du Vollzeit oder Teilzeit?",
       "en": "Tell me, what's it actually like for you with the working hours? Do you work full-time or part-time?",
       "uk": "Скажи, а як у тебе взагалі з робочим часом? Ти працюєш повний день чи неповний?",
-      "ru": "Скажи, а как у тебя вообще с рабочим временем? Ты работаешь полный день или неполный?"
+      "ru": "Скажи, а как у тебя вообще с рабочим временем? Ты работаешь полный день или неполный?",
+      "gram": ""
     },
     "a": {
       "de": "Ich arbeite seit letztem Jahr in Teilzeit, ungefähr dreißig Stunden die Woche. Das war eine bewusste Entscheidung, damit ich mehr Zeit für mich habe. Und du, wie ist das bei dir geregelt?",
       "en": "I've been working part-time since last year, about thirty hours a week. That was a deliberate decision, so I'd have more time for myself. What about you, how is that arranged for you?",
       "uk": "Я з минулого року працюю неповний день, приблизно тридцять годин на тиждень. Це було свідоме рішення, щоб мати більше часу для себе. А в тебе як це влаштовано?",
-      "ru": "Я с прошлого года работаю неполный день, примерно тридцать часов в неделю. Это было осознанное решение, чтобы иметь больше времени для себя. А у тебя как это устроено?"
+      "ru": "Я с прошлого года работаю неполный день, примерно тридцать часов в неделю. Это было осознанное решение, чтобы иметь больше времени для себя. А у тебя как это устроено?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich arbeite Vollzeit, aber dafür habe ich relativ flexible Kernarbeitszeiten. Wie hast du das eigentlich mit deinem Chef ausgehandelt, die Reduzierung auf Teilzeit?",
       "en": "I work full-time, but I have relatively flexible core hours. How did you actually negotiate reducing to part-time with your boss?",
       "uk": "Я працюю повний день, але зате в мене відносно гнучкий основний робочий час. До речі, як ти домовилася зі своїм керівником про скорочення до неповного дня?",
-      "ru": "Я работаю полный день, но зато у меня относительно гибкое основное рабочее время. Кстати, как ты договорилась со своим руководителем о сокращении до неполного дня?"
+      "ru": "Я работаю полный день, но зато у меня относительно гибкое основное рабочее время. Кстати, как ты договорилась со своим руководителем о сокращении до неполного дня?",
+      "gram": ""
     },
     "a1": {
       "de": "Das war tatsächlich einfacher als gedacht, ich musste nur begründen, warum ich das möchte, und dann haben wir gemeinsam einen Plan gemacht. Vermisst du eigentlich manchmal, mehr freie Tage zu haben?",
       "en": "That was actually easier than I thought, I just had to explain why I wanted it, and then we made a plan together. Do you actually sometimes miss having more days off?",
       "uk": "Це насправді було простіше, ніж я думала, треба було лише пояснити, чому я цього хочу, а потім ми разом склали план. А тобі часом не бракує більшої кількості вільних днів?",
-      "ru": "Это на самом деле было проще, чем я думала, нужно было только объяснить, почему я этого хочу, а потом мы вместе составили план. А тебе иногда не хватает большего количества свободных дней?"
+      "ru": "Это на самом деле было проще, чем я думала, нужно было только объяснить, почему я этого хочу, а потом мы вместе составили план. А тебе иногда не хватает большего количества свободных дней?",
+      "gram": ""
     },
     "q2": {
       "de": "Ehrlich gesagt schon ein bisschen, vor allem wenn ich sehe, wie entspannt du wirkst. Aber ich brauche das Gehalt einer Vollzeitstelle im Moment noch. Wünschst du dir eigentlich, irgendwann wieder Vollzeit zu arbeiten?",
       "en": "Honestly, a little bit, especially when I see how relaxed you seem. But I still need the salary of a full-time position right now. Do you actually wish you'd go back to full-time at some point?",
       "uk": "Чесно кажучи, трохи бракує, особливо коли бачу, яка ти розслаблена. Але мені поки що потрібна зарплата повної ставки. А ти взагалі хотіла б колись знову працювати повний день?",
-      "ru": "Честно говоря, немного не хватает, особенно когда вижу, какая ты расслабленная. Но мне пока нужна зарплата полной ставки. А ты вообще хотела бы когда-нибудь снова работать полный день?"
+      "ru": "Честно говоря, немного не хватает, особенно когда вижу, какая ты расслабленная. Но мне пока нужна зарплата полной ставки. А ты вообще хотела бы когда-нибудь снова работать полный день?",
+      "gram": ""
     },
     "a2": {
       "de": "Momentan eigentlich nicht, ich genieße die zusätzliche Zeit einfach zu sehr. Aber vielleicht ändert sich das ja nochmal, wenn sich meine Lebenssituation verändert.",
       "en": "Not really at the moment, I just enjoy the extra time too much. But maybe that'll change again if my life situation changes.",
       "uk": "Наразі взагалі ні, мені просто дуже подобається додатковий час. Але, можливо, це ще зміниться, якщо зміниться моя життєва ситуація.",
-      "ru": "Сейчас вообще нет, мне просто очень нравится дополнительное время. Но, возможно, это ещё изменится, если изменится моя жизненная ситуация."
-    },
-    "gram": ""
+      "ru": "Сейчас вообще нет, мне просто очень нравится дополнительное время. Но, возможно, это ещё изменится, если изменится моя жизненная ситуация.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_054",
     "cat": "Kinderbetreuung",
     "task": {
@@ -15015,41 +15325,46 @@ var DIALOGE = [
       "de": "Sag mal, wie handhabt ihr das eigentlich mit der Kinderbetreuung, wenn ihr beide arbeitet?",
       "en": "Tell me, how do you actually handle childcare when you're both working?",
       "uk": "Скажи, а як ви взагалі справляєтеся з доглядом за дітьми, якщо ви обоє працюєте?",
-      "ru": "Скажи, а как вы вообще справляетесь с уходом за детьми, если вы оба работаете?"
+      "ru": "Скажи, а как вы вообще справляетесь с уходом за детьми, если вы оба работаете?",
+      "gram": ""
     },
     "a": {
       "de": "Wir teilen uns das eigentlich ziemlich gut auf: Ich bringe die Kinder morgens zur Schule, und mein Partner holt sie meistens nachmittags ab. An den Tagen, an denen er länger arbeiten muss, springt zum Glück der Hort ein. Und bei euch, wie läuft das?",
       "en": "We actually split it up pretty well: I take the kids to school in the morning, and my partner usually picks them up in the afternoon. On the days he has to work longer, luckily the after-school club steps in. What about you, how does that work for you?",
       "uk": "Ми, власне, доволі непогано це розподіляємо: я вранці відводжу дітей до школи, а мій партнер зазвичай забирає їх пополудні. У ті дні, коли йому треба довше працювати, на щастя, виручає група продовженого дня. А у вас як це відбувається?",
-      "ru": "Мы, собственно, довольно неплохо это распределяем: я утром отвожу детей в школу, а мой партнёр обычно забирает их после обеда. В те дни, когда ему нужно дольше работать, к счастью, выручает группа продлённого дня. А у вас как это происходит?"
+      "ru": "Мы, собственно, довольно неплохо это распределяем: я утром отвожу детей в школу, а мой партнёр обычно забирает их после обеда. В те дни, когда ему нужно дольше работать, к счастью, выручает группа продлённого дня. А у вас как это происходит?",
+      "gram": ""
     },
     "q1": {
       "de": "Bei uns ist es ähnlich, nur dass wir keinen Partner haben, der sich das teilt - ich mache das meistens allein, mit Unterstützung von meiner Nachbarin. Wie alt sind eure Kinder eigentlich?",
       "en": "For us it's similar, except we don't have a partner to share it with - I mostly do it alone, with support from my neighbor. How old are your kids actually?",
       "uk": "У нас схоже, тільки в нас немає партнера, який би це ділив - я здебільшого роблю це сама, за підтримки моєї сусідки. До речі, скільки років вашим дітям?",
-      "ru": "У нас похоже, только у нас нет партнёра, который бы это делил - я в основном делаю это одна, при поддержке моей соседки. Кстати, сколько лет вашим детям?"
+      "ru": "У нас похоже, только у нас нет партнёра, который бы это делил - я в основном делаю это одна, при поддержке моей соседки. Кстати, сколько лет вашим детям?",
+      "gram": ""
     },
     "a1": {
       "de": "Meine Tochter ist sieben und mein Sohn ist zehn, die beiden gehen inzwischen zum Glück auch schon relativ selbstständig zur Schule. Das muss aber schon anstrengend sein, das alles allein zu organisieren - hast du eigentlich viel Unterstützung von der Familie?",
       "en": "My daughter is seven and my son is ten, luckily they're both already relatively independent getting to school by now. That must be exhausting though, organizing all of that alone - do you actually get a lot of support from family?",
       "uk": "Моїй доньці сім, а синові десять, обидва вже, на щастя, доволі самостійно ходять до школи. Але це, мабуть, важко - організовувати все самій, - тобі допомагає родина?",
-      "ru": "Моей дочери семь, а сыну десять, оба уже, к счастью, довольно самостоятельно ходят в школу. Но это, наверное, тяжело - организовывать всё одной, - тебе помогает семья?"
+      "ru": "Моей дочери семь, а сыну десять, оба уже, к счастью, довольно самостоятельно ходят в школу. Но это, наверное, тяжело - организовывать всё одной, - тебе помогает семья?",
+      "gram": ""
     },
     "q2": {
       "de": "Zum Glück ja, meine Eltern wohnen ganz in der Nähe und springen ein, wenn es mal eng wird. Ohne die beiden wäre es wirklich schwierig. Nehmt ihr eigentlich auch mal Urlaubstage, nur um Zeit mit den Kindern zu verbringen?",
       "en": "Fortunately yes, my parents live very close by and step in whenever things get tight. Without the two of them it would really be difficult. Do you actually sometimes take vacation days just to spend time with the kids?",
       "uk": "На щастя, так, мої батьки живуть зовсім поруч і виручають, коли стає складно. Без них двох було б справді важко. А ви взагалі берете відпустку тільки для того, щоб провести час з дітьми?",
-      "ru": "К счастью, да, мои родители живут совсем рядом и выручают, когда становится сложно. Без них двоих было бы действительно тяжело. А вы вообще берёте отпуск только для того, чтобы провести время с детьми?"
+      "ru": "К счастью, да, мои родители живут совсем рядом и выручают, когда становится сложно. Без них двоих было бы действительно тяжело. А вы вообще берёте отпуск только для того, чтобы провести время с детьми?",
+      "gram": ""
     },
     "a2": {
       "de": "Ja, das versuchen wir schon regelmäßig zu machen, gerade in den Schulferien. Das ist uns beiden wirklich wichtig, auch wenn es manchmal schwierig ist, das mit der Arbeit unter einen Hut zu bringen.",
       "en": "Yes, we do try to do that regularly, especially during school holidays. It's really important to both of us, even if it's sometimes hard to juggle with work.",
       "uk": "Так, ми стараємося робити це регулярно, особливо на шкільних канікулах. Це справді важливо для нас обох, хоча іноді складно поєднувати це з роботою.",
-      "ru": "Да, мы стараемся делать это регулярно, особенно на школьных каникулах. Это действительно важно для нас обоих, хотя иногда сложно совмещать это с работой."
-    },
-    "gram": ""
+      "ru": "Да, мы стараемся делать это регулярно, особенно на школьных каникулах. Это действительно важно для нас обоих, хотя иногда сложно совмещать это с работой.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_055",
     "cat": "Arbeitsweg",
     "task": {
@@ -15065,41 +15380,46 @@ var DIALOGE = [
       "de": "Sag mal, wie lange brauchst du eigentlich bis zur Arbeit, und wie kommst du dahin?",
       "en": "Tell me, how long does it actually take you to get to work, and how do you get there?",
       "uk": "Скажи, а скільки часу тобі взагалі потрібно, щоб дістатися до роботи, і як ти туди добираєшся?",
-      "ru": "Скажи, а сколько времени тебе вообще нужно, чтобы добраться до работы, и как ты туда добираешься?"
+      "ru": "Скажи, а сколько времени тебе вообще нужно, чтобы добраться до работы, и как ты туда добираешься?",
+      "gram": ""
     },
     "a": {
       "de": "Ich laufe tatsächlich zu Fuß, das dauert ungefähr fünfundzwanzig Minuten. Ich wohne zum Glück ziemlich zentral, deshalb lohnt sich für mich weder Auto noch Bahn. Und du, wie sieht das bei dir aus?",
       "en": "I actually walk, it takes about twenty-five minutes. Luckily I live pretty centrally, so neither a car nor the train is really worth it for me. What about you, what's it like for you?",
       "uk": "Я насправді ходжу пішки, це займає приблизно двадцять п'ять хвилин. На щастя, я живу досить близько до центру, тому мені немає сенсу користуватися ні машиною, ні потягом. А в тебе як?",
-      "ru": "Я на самом деле хожу пешком, это занимает примерно двадцать пять минут. К счастью, я живу довольно близко к центру, поэтому мне нет смысла пользоваться ни машиной, ни поездом. А у тебя как?"
+      "ru": "Я на самом деле хожу пешком, это занимает примерно двадцать пять минут. К счастью, я живу довольно близко к центру, поэтому мне нет смысла пользоваться ни машиной, ни поездом. А у тебя как?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich fahre mit dem Bus, das dauert normalerweise etwa dreißig Minuten, aber wenn es Verspätungen gibt, kann es auch mal eine Stunde werden. Genießt du es eigentlich, jeden Tag zu Fuß zu gehen?",
       "en": "I take the bus, it usually takes about thirty minutes, but if there are delays it can even take an hour sometimes. Do you actually enjoy walking every day?",
       "uk": "Я їжджу автобусом, зазвичай це займає хвилин тридцять, але коли бувають затримки, може вийти й ціла година. А тобі подобається щодня ходити пішки?",
-      "ru": "Я езжу на автобусе, обычно это занимает минут тридцать, но когда бывают задержки, может выйти и целый час. А тебе нравится каждый день ходить пешком?"
+      "ru": "Я езжу на автобусе, обычно это занимает минут тридцать, но когда бывают задержки, может выйти и целый час. А тебе нравится каждый день ходить пешком?",
+      "gram": ""
     },
     "a1": {
       "de": "Ja, total, das ist für mich schon fast wie ein kleiner Spaziergang zum Aufwachen. Bei Regen ist es natürlich weniger angenehm, aber das nehme ich gerne in Kauf. Ärgerst du dich eigentlich oft über die Verspätungen beim Bus?",
       "en": "Yes, totally, for me it's almost like a little walk to wake up. In the rain it's obviously less pleasant, but I gladly put up with that. Do you actually often get annoyed about the bus delays?",
       "uk": "Так, дуже, для мене це майже як маленька прогулянка, щоб прокинутися. У дощ це, звісно, менш приємно, але я на це залюбки погоджуюся. А тебе часто дратують затримки автобуса?",
-      "ru": "Да, очень, для меня это почти как маленькая прогулка, чтобы проснуться. В дождь это, конечно, менее приятно, но я на это охотно соглашаюсь. А тебя часто раздражают задержки автобуса?"
+      "ru": "Да, очень, для меня это почти как маленькая прогулка, чтобы проснуться. В дождь это, конечно, менее приятно, но я на это охотно соглашаюсь. А тебя часто раздражают задержки автобуса?",
+      "gram": ""
     },
     "q2": {
       "de": "Ehrlich gesagt schon manchmal, vor allem wenn ich dadurch zu spät zu einem Meeting komme. Ich habe mir mittlerweile angewöhnt, immer einen Puffer einzuplanen. Gehst du eigentlich auch bei richtig schlechtem Wetter zu Fuß, oder nimmst du dann ein Taxi?",
       "en": "Honestly, sometimes yes, especially when it makes me late for a meeting because of it. By now I've gotten used to always planning in a buffer. Do you actually also walk in really bad weather, or do you take a taxi then?",
       "uk": "Чесно кажучи, іноді так, особливо коли через це я запізнююся на нараду. Тепер я вже звик завжди закладати запас часу. А ти взагалі ходиш пішки й у зовсім погану погоду, чи тоді береш таксі?",
-      "ru": "Честно говоря, иногда да, особенно когда из-за этого я опаздываю на совещание. Теперь я уже привык всегда закладывать запас времени. А ты вообще ходишь пешком и в совсем плохую погоду, или тогда берёшь такси?"
+      "ru": "Честно говоря, иногда да, особенно когда из-за этого я опаздываю на совещание. Теперь я уже привык всегда закладывать запас времени. А ты вообще ходишь пешком и в совсем плохую погоду, или тогда берёшь такси?",
+      "gram": ""
     },
     "a2": {
       "de": "Nein, ich gehe eigentlich immer zu Fuß, egal bei welchem Wetter, ich habe einfach eine gute Regenjacke. Das ist mir lieber, als mich auf ein Taxi oder Öffis verlassen zu müssen.",
       "en": "No, I actually always walk, no matter the weather, I just have a good rain jacket. I prefer that to having to rely on a taxi or public transport.",
       "uk": "Ні, я взагалі завжди ходжу пішки, незалежно від погоди, у мене просто хороший дощовик. Мені це більше подобається, ніж покладатися на таксі чи громадський транспорт.",
-      "ru": "Нет, я вообще всегда хожу пешком, независимо от погоды, у меня просто хороший дождевик. Мне это больше нравится, чем полагаться на такси или общественный транспорт."
-    },
-    "gram": ""
+      "ru": "Нет, я вообще всегда хожу пешком, независимо от погоды, у меня просто хороший дождевик. Мне это больше нравится, чем полагаться на такси или общественный транспорт.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_056",
     "cat": "Wochenende",
     "task": {
@@ -15115,41 +15435,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du eigentlich schon was für dieses Wochenende geplant?",
       "en": "Tell me, do you actually have anything planned for this weekend?",
       "uk": "Скажи, а в тебе вже є плани на ці вихідні?",
-      "ru": "Скажи, а у тебя уже есть планы на эти выходные?"
+      "ru": "Скажи, а у тебя уже есть планы на эти выходные?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, meine Nichte hat am Samstag Geburtstag, deshalb feiern wir bei meiner Schwester im Garten, falls das Wetter mitspielt. Ich muss noch ein Geschenk besorgen. Und du, was steht bei dir an?",
       "en": "Yes, my niece's birthday is on Saturday, so we're celebrating at my sister's place in the garden, if the weather cooperates. I still need to get a present. What about you, what's on your agenda?",
       "uk": "Так, у моєї племінниці в суботу день народження, тож ми святкуємо в саду в моєї сестри, якщо погода дозволить. Мені ще треба купити подарунок. А в тебе що заплановано?",
-      "ru": "Да, у моей племянницы в субботу день рождения, поэтому мы празднуем в саду у моей сестры, если погода позволит. Мне ещё нужно купить подарок. А у тебя что запланировано?"
+      "ru": "Да, у моей племянницы в субботу день рождения, поэтому мы празднуем в саду у моей сестры, если погода позволит. Мне ещё нужно купить подарок. А у тебя что запланировано?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich wollte eigentlich auf den Wochenmarkt gehen, den gibt es hier nur samstags, und danach vielleicht noch ins Café. Hast du eigentlich schon eine Idee, was du ihr schenken könntest?",
       "en": "I actually wanted to go to the farmers' market, it's only here on Saturdays, and maybe to a café afterward. Do you actually have an idea yet what you could give her?",
       "uk": "Я взагалі хотіла піти на щотижневий ринок, він тут тільки по суботах, а потім, може, ще в кафе. А в тебе вже є ідея, що їй подарувати?",
-      "ru": "Я вообще хотела пойти на еженедельный рынок, он здесь только по субботам, а потом, может, ещё в кафе. А у тебя уже есть идея, что ей подарить?"
+      "ru": "Я вообще хотела пойти на еженедельный рынок, он здесь только по субботам, а потом, может, ещё в кафе. А у тебя уже есть идея, что ей подарить?",
+      "gram": ""
     },
     "a1": {
       "de": "Ich überlege, ob ich ihr ein Buch oder lieber etwas zum Malen kaufe, sie ist total kreativ im Moment. Der Wochenmarkt klingt aber auch schön - kaufst du da eigentlich öfter ein?",
       "en": "I'm thinking about whether to get her a book or maybe something for painting instead, she's really into being creative right now. The farmers' market sounds nice too though - do you actually shop there often?",
       "uk": "Я думаю, чи купити їй книжку, чи щось для малювання, вона зараз дуже захоплена творчістю. А ринок теж звучить приємно - ти там часто щось купуєш?",
-      "ru": "Я думаю, купить ли ей книгу или что-то для рисования, она сейчас очень увлечена творчеством. А рынок тоже звучит приятно - ты там часто что-то покупаешь?"
+      "ru": "Я думаю, купить ли ей книгу или что-то для рисования, она сейчас очень увлечена творчеством. А рынок тоже звучит приятно - ты там часто что-то покупаешь?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, fast jede Woche, ich mag es einfach, das Gemüse und Obst frisch direkt von den Ständen zu holen. Wie alt wird deine Nichte eigentlich?",
       "en": "Yes, almost every week, I just like getting the vegetables and fruit fresh directly from the stalls. How old is your niece actually going to turn?",
       "uk": "Так, майже щотижня, мені просто подобається брати овочі й фрукти свіжими прямо з прилавків. А скільки років виповнюється твоїй племінниці?",
-      "ru": "Да, почти каждую неделю, мне просто нравится брать овощи и фрукты свежими прямо с прилавков. А сколько лет исполняется твоей племяннице?"
+      "ru": "Да, почти каждую неделю, мне просто нравится брать овощи и фрукты свежими прямо с прилавков. А сколько лет исполняется твоей племяннице?",
+      "gram": ""
     },
     "a2": {
       "de": "Sie wird sechs, die Zeit vergeht wirklich wie im Flug. Ich freue mich schon total darauf, alle Kinder auf der Feier zusammen spielen zu sehen.",
       "en": "She's turning six, time really does fly by. I'm already really looking forward to seeing all the kids play together at the party.",
       "uk": "Їй виповнюється шість, час справді летить. Я вже дуже чекаю побачити, як усі діти разом граються на святі.",
-      "ru": "Ей исполняется шесть, время действительно летит. Я уже очень жду увидеть, как все дети вместе играют на празднике."
-    },
-    "gram": ""
+      "ru": "Ей исполняется шесть, время действительно летит. Я уже очень жду увидеть, как все дети вместе играют на празднике.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_057",
     "cat": "Freizeitgestaltung",
     "task": {
@@ -15165,41 +15490,46 @@ var DIALOGE = [
       "de": "Sag mal, was machst du eigentlich am liebsten, wenn du frei hast?",
       "en": "Tell me, what do you actually like doing most when you have free time?",
       "uk": "Скажи, а що ти взагалі найбільше любиш робити, коли маєш вільний час?",
-      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть свободное время?"
+      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть свободное время?",
+      "gram": ""
     },
     "a": {
       "de": "Ich fotografiere total gerne, meistens am Wochenende gehe ich raus und suche nach schönen Motiven in der Natur. Das entspannt mich total. Und du, hast du auch ein Hobby, das dir wichtig ist?",
       "en": "I really love photography, usually on weekends I go out and look for beautiful subjects in nature. It really relaxes me. What about you, do you have a hobby that's important to you too?",
       "uk": "Я дуже люблю фотографувати, зазвичай на вихідних виходжу й шукаю гарні сюжети на природі. Це мене дуже заспокоює. А в тебе теж є хобі, яке для тебе важливе?",
-      "ru": "Я очень люблю фотографировать, обычно по выходным выхожу и ищу красивые сюжеты на природе. Это меня очень успокаивает. А у тебя тоже есть хобби, которое для тебя важно?"
+      "ru": "Я очень люблю фотографировать, обычно по выходным выхожу и ищу красивые сюжеты на природе. Это меня очень успокаивает. А у тебя тоже есть хобби, которое для тебя важно?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich backe wahnsinnig gerne, vor allem Brot mit Sauerteig, das mache ich schon seit über einem Jahr. Was fotografierst du eigentlich am liebsten?",
       "en": "I love baking, especially sourdough bread, I've been doing that for over a year now. What do you actually like photographing most?",
       "uk": "Я дуже люблю пекти, особливо хліб на заквасці, я вже займаюся цим більше року. А що ти найбільше любиш фотографувати?",
-      "ru": "Я очень люблю печь, особенно хлеб на закваске, я уже занимаюсь этим больше года. А что ты больше всего любишь фотографировать?"
+      "ru": "Я очень люблю печь, особенно хлеб на закваске, я уже занимаюсь этим больше года. А что ты больше всего любишь фотографировать?",
+      "gram": ""
     },
     "a1": {
       "de": "Am liebsten Landschaften, besonders bei Sonnenaufgang oder Sonnenuntergang, das Licht ist dann einfach unglaublich. Sauerteigbrot backen klingt aber auch spannend - ist das nicht ziemlich aufwendig?",
       "en": "Mostly landscapes, especially at sunrise or sunset, the light is just incredible then. Baking sourdough bread sounds exciting too though - isn't that pretty labor-intensive?",
       "uk": "Найбільше пейзажі, особливо на світанку чи заході сонця, світло тоді просто неймовірне. Хліб на заквасці теж звучить цікаво - це, мабуть, доволі клопітно?",
-      "ru": "Больше всего пейзажи, особенно на рассвете или закате, свет тогда просто невероятный. Хлеб на закваске тоже звучит интересно - это, наверное, довольно хлопотно?"
+      "ru": "Больше всего пейзажи, особенно на рассвете или закате, свет тогда просто невероятный. Хлеб на закваске тоже звучит интересно - это, наверное, довольно хлопотно?",
+      "gram": ""
     },
     "q2": {
       "de": "Am Anfang war es das schon, man muss den Sauerteig ja regelmäßig füttern, aber mittlerweile ist das für mich schon Routine geworden. Stellst du deine Fotos eigentlich irgendwo online, oder behältst du sie für dich?",
       "en": "At first it was, you have to feed the sourdough starter regularly, but by now it's become routine for me. Do you actually post your photos somewhere online, or do you keep them to yourself?",
       "uk": "Спочатку так і було, треба регулярно годувати закваску, але зараз для мене це вже стало рутиною. А ти викладаєш свої фото десь онлайн, чи залишаєш їх лише для себе?",
-      "ru": "Сначала так и было, нужно регулярно кормить закваску, но сейчас для меня это уже стало рутиной. А ты выкладываешь свои фото где-то онлайн, или оставляешь их только для себя?"
+      "ru": "Сначала так и было, нужно регулярно кормить закваску, но сейчас для меня это уже стало рутиной. А ты выкладываешь свои фото где-то онлайн, или оставляешь их только для себя?",
+      "gram": ""
     },
     "a2": {
       "de": "Ich poste ab und zu was auf einem kleinen Account, hauptsächlich für Freunde und Familie. Es macht mir einfach Spaß, die Momente festzuhalten, auch wenn nicht viele Leute das sehen.",
       "en": "I post something every now and then on a small account, mainly for friends and family. I just enjoy capturing the moments, even if not many people see it.",
       "uk": "Я час від часу щось публікую на невеликому акаунті, здебільшого для друзів і родини. Мені просто подобається фіксувати ці моменти, навіть якщо це бачить небагато людей.",
-      "ru": "Я время от времени что-то публикую на небольшом аккаунте, в основном для друзей и семьи. Мне просто нравится фиксировать эти моменты, даже если это видит немного людей."
-    },
-    "gram": ""
+      "ru": "Я время от времени что-то публикую на небольшом аккаунте, в основном для друзей и семьи. Мне просто нравится фиксировать эти моменты, даже если это видит немного людей.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_058",
     "cat": "Urlaub",
     "task": {
@@ -15215,41 +15545,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du eigentlich schon Pläne für deinen nächsten Urlaub?",
       "en": "Tell me, do you already have plans for your next vacation?",
       "uk": "Скажи, у тебе вже є плани на наступну відпустку?",
-      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?"
+      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, ich fliege im Herbst für ein paar Tage nach Wien, ich war noch nie dort und wollte die Stadt schon lange mal sehen. Und du, hast du auch schon was vor?",
       "en": "Yes, in the fall I'm flying to Vienna for a few days, I've never been there and have wanted to see the city for a long time. What about you, do you have anything planned too?",
       "uk": "Так, восени я лечу на кілька днів до Відня, я там ще ніколи не був і вже давно хотів побачити це місто. А в тебе теж уже є якісь плани?",
-      "ru": "Да, осенью я лечу на несколько дней в Вену, я там ещё никогда не был и уже давно хотел увидеть этот город. А у тебя тоже уже есть какие-то планы?"
+      "ru": "Да, осенью я лечу на несколько дней в Вену, я там ещё никогда не был и уже давно хотел увидеть этот город. А у тебя тоже уже есть какие-то планы?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich fahre eigentlich zu meiner Familie nach Polen, das mache ich fast jedes Jahr im Sommer. Freust du dich eigentlich schon besonders auf etwas Bestimmtes in Wien?",
       "en": "I actually go visit my family in Poland, I do that almost every year in summer. Are you actually especially looking forward to something specific in Vienna?",
       "uk": "Я взагалі їжджу до своєї родини в Польщу, роблю це майже щороку влітку. А ти вже особливо чекаєш на щось конкретне у Відні?",
-      "ru": "Я вообще езжу к своей семье в Польшу, делаю это почти каждый год летом. А ты уже особенно ждёшь чего-то конкретного в Вене?"
+      "ru": "Я вообще езжу к своей семье в Польшу, делаю это почти каждый год летом. А ты уже особенно ждёшь чего-то конкретного в Вене?",
+      "gram": ""
     },
     "a1": {
       "de": "Total, ich will unbedingt die Kaffeehäuser dort ausprobieren und vielleicht auch ein Konzert besuchen. Ist es eigentlich schön, die Familie so regelmäßig zu besuchen?",
       "en": "Totally, I definitely want to try the coffee houses there and maybe go to a concert too. Is it actually nice to visit family that regularly?",
       "uk": "Дуже, я обов'язково хочу спробувати тамтешні кав'ярні, а може, й сходити на концерт. А тобі приємно так регулярно відвідувати родину?",
-      "ru": "Очень, я обязательно хочу попробовать тамошние кофейни, а может, и сходить на концерт. А тебе приятно так регулярно навещать семью?"
+      "ru": "Очень, я обязательно хочу попробовать тамошние кофейни, а может, и сходить на концерт. А тебе приятно так регулярно навещать семью?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, sehr, auch wenn die Fahrt manchmal etwas anstrengend ist. Aber es lohnt sich total, meine Großeltern und Cousins wiederzusehen. Fliegst du eigentlich allein nach Wien, oder kommt jemand mit?",
       "en": "Yes, very, even though the trip is sometimes a bit exhausting. But it's really worth it to see my grandparents and cousins again. Are you actually flying to Vienna alone, or is someone coming with you?",
       "uk": "Так, дуже, навіть якщо дорога іноді трохи виснажлива. Але це того варте - знову побачити бабусю з дідусем і кузенів. А ти летиш до Відня сам, чи хтось поїде з тобою?",
-      "ru": "Да, очень, даже если дорога иногда немного утомительна. Но это того стоит - снова увидеть бабушку с дедушкой и кузенов. А ты летишь в Вену один, или кто-то поедет с тобой?"
+      "ru": "Да, очень, даже если дорога иногда немного утомительна. Но это того стоит - снова увидеть бабушку с дедушкой и кузенов. А ты летишь в Вену один, или кто-то поедет с тобой?",
+      "gram": ""
     },
     "a2": {
       "de": "Ich fliege dieses Mal allein, ich finde es eigentlich ganz schön, ab und zu auch mal Zeit für mich zu haben und alles in meinem eigenen Tempo zu erkunden.",
       "en": "I'm flying alone this time, I actually think it's quite nice to have time for myself now and then and explore everything at my own pace.",
       "uk": "Цього разу я лечу сам, мені взагалі здається доволі приємним іноді мати час для себе й досліджувати все у власному темпі.",
-      "ru": "На этот раз я лечу один, мне вообще кажется довольно приятным иногда иметь время для себя и исследовать всё в своём темпе."
-    },
-    "gram": ""
+      "ru": "На этот раз я лечу один, мне вообще кажется довольно приятным иногда иметь время для себя и исследовать всё в своём темпе.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_059",
     "cat": "Sportaktivitäten",
     "task": {
@@ -15265,41 +15600,46 @@ var DIALOGE = [
       "de": "Sag mal, machst du eigentlich regelmäßig Sport, oder eher unregelmäßig?",
       "en": "Tell me, do you actually do sports regularly, or more irregularly?",
       "uk": "Скажи, а ти взагалі регулярно займаєшся спортом, чи радше нерегулярно?",
-      "ru": "Скажи, а ты вообще регулярно занимаешься спортом, или скорее нерегулярно?"
+      "ru": "Скажи, а ты вообще регулярно занимаешься спортом, или скорее нерегулярно?",
+      "gram": ""
     },
     "a": {
       "de": "Ich schwimme seit ein paar Jahren zweimal die Woche, meistens früh morgens, bevor viele Leute im Schwimmbad sind. Das ist für mich total meditativ. Und du, treibst du auch Sport?",
       "en": "I've been swimming twice a week for a few years now, usually early in the morning before there are a lot of people at the pool. It's really meditative for me. What about you, do you do sports too?",
       "uk": "Я вже кілька років плаваю двічі на тиждень, зазвичай рано вранці, поки в басейні мало людей. Для мене це справжня медитація. А в тебе як, ти теж займаєшся спортом?",
-      "ru": "Я уже несколько лет плаваю дважды в неделю, обычно рано утром, пока в бассейне мало людей. Для меня это настоящая медитация. А у тебя как, ты тоже занимаешься спортом?"
+      "ru": "Я уже несколько лет плаваю дважды в неделю, обычно рано утром, пока в бассейне мало людей. Для меня это настоящая медитация. А у тебя как, ты тоже занимаешься спортом?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich spiele eigentlich Tennis, einmal die Woche mit einem Freund, und samstags gehe ich manchmal noch Rad fahren. Schwimmst du eigentlich lieber im Schwimmbad oder im See?",
       "en": "I actually play tennis, once a week with a friend, and on Saturdays I sometimes go cycling too. Do you actually prefer swimming in the pool or in the lake?",
       "uk": "Я взагалі граю в теніс, раз на тиждень з другом, а по суботах іноді ще катаюся на велосипеді. А ти плаваєш радше в басейні чи в озері?",
-      "ru": "Я вообще играю в теннис, раз в неделю с другом, а по субботам иногда ещё катаюсь на велосипеде. А ты плаваешь скорее в бассейне или в озере?"
+      "ru": "Я вообще играю в теннис, раз в неделю с другом, а по субботам иногда ещё катаюсь на велосипеде. А ты плаваешь скорее в бассейне или в озере?",
+      "gram": ""
     },
     "a1": {
       "de": "Eigentlich beides, im Sommer gehe ich total gerne in den See, das ist noch entspannender als das Schwimmbad. Wie lange spielt ihr eigentlich schon zusammen Tennis?",
       "en": "Actually both, in summer I really love going to the lake, that's even more relaxing than the pool. How long have you actually been playing tennis together?",
       "uk": "Взагалі і те, і те, влітку я дуже люблю ходити на озеро, це навіть розслабленіше, ніж басейн. До речі, як довго ви вже граєте в теніс разом?",
-      "ru": "Вообще и то, и то, летом я очень люблю ходить на озеро, это даже расслабленнее, чем бассейн. Кстати, как долго вы уже играете в теннис вместе?"
+      "ru": "Вообще и то, и то, летом я очень люблю ходить на озеро, это даже расслабленнее, чем бассейн. Кстати, как долго вы уже играете в теннис вместе?",
+      "gram": ""
     },
     "q2": {
       "de": "Schon seit über drei Jahren, wir sind mittlerweile richtig gut eingespielt. Fährst du eigentlich auch längere Strecken mit dem Rad, oder eher kurze Touren?",
       "en": "For over three years now, we're really well coordinated by now. Do you actually also ride longer distances by bike, or more short tours?",
       "uk": "Уже понад три роки, ми вже дуже добре зіграні. А ти взагалі їздиш і на довші дистанції на велосипеді, чи радше на короткі маршрути?",
-      "ru": "Уже больше трёх лет, мы уже очень хорошо сыграны. А ты вообще ездишь и на более длинные дистанции на велосипеде, или скорее на короткие маршруты?"
+      "ru": "Уже больше трёх лет, мы уже очень хорошо сыграны. А ты вообще ездишь и на более длинные дистанции на велосипеде, или скорее на короткие маршруты?",
+      "gram": ""
     },
     "a2": {
       "de": "Meistens kurze Touren am Wochenende, aber letztes Jahr bin ich einmal eine richtig lange Strecke gefahren, das war eine echte Herausforderung, aber auch total befriedigend.",
       "en": "Mostly short tours on the weekend, but last year I once rode a really long distance, that was a real challenge, but also really satisfying.",
       "uk": "Здебільшого короткі маршрути на вихідних, але минулого року я одного разу проїхав справді довгу дистанцію, це був справжній виклик, але й дуже приємно.",
-      "ru": "В основном короткие маршруты на выходных, но в прошлом году я однажды проехал действительно длинную дистанцию, это был настоящий вызов, но и очень приятно."
-    },
-    "gram": ""
+      "ru": "В основном короткие маршруты на выходных, но в прошлом году я однажды проехал действительно длинную дистанцию, это был настоящий вызов, но и очень приятно.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_060",
     "cat": "Arbeitszeiten",
     "task": {
@@ -15315,41 +15655,46 @@ var DIALOGE = [
       "de": "Sag mal, wie sind eigentlich deine Arbeitszeiten geregelt? Arbeitest du auch manchmal im Schichtdienst?",
       "en": "Tell me, how are your working hours actually arranged? Do you actually sometimes work shifts too?",
       "uk": "Скажи, а як у тебе взагалі влаштований робочий графік? Ти теж іноді працюєш позмінно?",
-      "ru": "Скажи, а как у тебя вообще устроен рабочий график? Ты тоже иногда работаешь посменно?"
+      "ru": "Скажи, а как у тебя вообще устроен рабочий график? Ты тоже иногда работаешь посменно?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, tatsächlich, ich arbeite abwechselnd Früh- und Spätschicht, das wechselt wöchentlich. Am Anfang war das schon ziemlich ungewohnt für meinen Rhythmus. Und du, wie sieht das bei dir aus?",
       "en": "Yes, actually, I work alternating early and late shifts, that changes weekly. At first that was pretty unusual for my rhythm. What about you, what's it like for you?",
       "uk": "Так, справді, я працюю по черзі в ранкову й вечірню зміни, це змінюється щотижня. Спочатку це було доволі незвично для мого ритму. А в тебе як?",
-      "ru": "Да, действительно, я работаю поочерёдно в утреннюю и вечернюю смены, это меняется еженедельно. Сначала это было довольно непривычно для моего ритма. А у тебя как?"
+      "ru": "Да, действительно, я работаю поочерёдно в утреннюю и вечернюю смены, это меняется еженедельно. Сначала это было довольно непривычно для моего ритма. А у тебя как?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich habe eigentlich ganz normale Bürozeiten, meistens von neun bis siebzehn Uhr. Wie kommst du eigentlich mit dem ständigen Wechsel zwischen den Schichten klar?",
       "en": "I actually have pretty normal office hours, usually from nine to five. How do you actually cope with the constant switching between shifts?",
       "uk": "У мене взагалі звичайний офісний графік, зазвичай з дев'ятої до сімнадцятої. А як ти справляєшся з постійною зміною змін?",
-      "ru": "У меня вообще обычный офисный график, обычно с девяти до семнадцати. А как ты справляешься с постоянной сменой смен?"
+      "ru": "У меня вообще обычный офисный график, обычно с девяти до семнадцати. А как ты справляешься с постоянной сменой смен?",
+      "gram": ""
     },
     "a1": {
       "de": "Mittlerweile ziemlich gut, ich habe mir feste Routinen fürs Schlafen angewöhnt, egal in welcher Schicht ich gerade bin. Findest du deine festen Bürozeiten eigentlich manchmal auch langweilig?",
       "en": "Pretty well by now, I've gotten used to fixed sleep routines, no matter which shift I'm currently on. Do you actually sometimes find your fixed office hours boring too?",
       "uk": "Зараз уже доволі добре, я звикла до чіткого режиму сну, незалежно від того, в якій я зараз зміні. А тобі часом не буває нудно від фіксованого офісного графіка?",
-      "ru": "Сейчас уже довольно хорошо, я привыкла к чёткому режиму сна, независимо от того, в какой я сейчас смене. А тебе иногда не бывает скучно от фиксированного офисного графика?"
+      "ru": "Сейчас уже довольно хорошо, я привыкла к чёткому режиму сна, независимо от того, в какой я сейчас смене. А тебе иногда не бывает скучно от фиксированного офисного графика?",
+      "gram": ""
     },
     "q2": {
       "de": "Manchmal schon, ehrlich gesagt, aber ich schätze auch die Planbarkeit, weil ich immer genau weiß, wann ich frei habe. Bekommst du für die Spätschicht eigentlich einen Zuschlag?",
       "en": "Sometimes, honestly, but I also appreciate the predictability, because I always know exactly when I have time off. Do you actually get a bonus for the late shift?",
       "uk": "Чесно кажучи, часом буває, але я також ціную передбачуваність, бо завжди точно знаю, коли в мене вихідний. А тобі за вечірню зміну взагалі платять надбавку?",
-      "ru": "Честно говоря, иногда бывает, но я также ценю предсказуемость, потому что всегда точно знаю, когда у меня выходной. А тебе за вечернюю смену вообще платят надбавку?"
+      "ru": "Честно говоря, иногда бывает, но я также ценю предсказуемость, потому что всегда точно знаю, когда у меня выходной. А тебе за вечернюю смену вообще платят надбавку?",
+      "gram": ""
     },
     "a2": {
       "de": "Ja, zum Glück, das gleicht die Unbequemlichkeit zumindest finanziell ein bisschen aus. Ohne den Zuschlag würde sich das ehrlich gesagt kaum lohnen.",
       "en": "Yes, fortunately, that at least financially compensates for the inconvenience a bit. Without the bonus, honestly, it would hardly be worth it.",
       "uk": "Так, на щастя, це хоча б фінансово трохи компенсує незручність. Чесно кажучи, без надбавки це навряд чи було б вигідно.",
-      "ru": "Да, к счастью, это хотя бы финансово немного компенсирует неудобство. Честно говоря, без надбавки это вряд ли было бы выгодно."
-    },
-    "gram": ""
+      "ru": "Да, к счастью, это хотя бы финансово немного компенсирует неудобство. Честно говоря, без надбавки это вряд ли было бы выгодно.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_061",
     "cat": "Kinderbetreuung",
     "task": {
@@ -15365,41 +15710,46 @@ var DIALOGE = [
       "de": "Sag mal, wie ist das eigentlich bei dir mit der Kinderbetreuung, jetzt wo dein Sohn schon älter ist?",
       "en": "Tell me, how is it actually with childcare for you now that your son is older?",
       "uk": "Скажи, а як у тебе взагалі з доглядом за дітьми, тепер коли твій син уже старший?",
-      "ru": "Скажи, а как у тебя вообще с уходом за детьми, теперь когда твой сын уже старше?"
+      "ru": "Скажи, а как у тебя вообще с уходом за детьми, теперь когда твой сын уже старше?",
+      "gram": ""
     },
     "a": {
       "de": "Ehrlich gesagt wird es eigentlich einfacher, mein Sohn ist jetzt vierzehn und kommt schon ziemlich gut allein klar. Ich muss ihn nicht mehr überall hinbringen, das spart total viel Zeit. Und du, wie handhabt ihr das mit euren Kindern?",
       "en": "Honestly, it's actually getting easier, my son is fourteen now and manages pretty well on his own. I don't have to take him everywhere anymore, that really saves a lot of time. What about you, how do you handle it with your kids?",
       "uk": "Чесно кажучи, стає взагалі простіше, моєму синові вже чотирнадцять, і він доволі добре справляється сам. Мені вже не треба всюди його возити, це справді заощаджує багато часу. А в тебе як з дітьми?",
-      "ru": "Честно говоря, становится вообще проще, моему сыну уже четырнадцать, и он довольно хорошо справляется сам. Мне уже не нужно везде его возить, это действительно экономит много времени. А у тебя как с детьми?"
+      "ru": "Честно говоря, становится вообще проще, моему сыну уже четырнадцать, и он довольно хорошо справляется сам. Мне уже не нужно везде его возить, это действительно экономит много времени. А у тебя как с детьми?",
+      "gram": ""
     },
     "q1": {
       "de": "Meine sind noch klein, drei und fünf, da ist es schon noch ziemlich aufwendig. Wir haben eine Tagesmutter, die zweimal die Woche einspringt. Vermisst du eigentlich manchmal die Zeit, als er noch kleiner war?",
       "en": "Mine are still little, three and five, so it's still pretty demanding. We have a childminder who steps in twice a week. Do you actually sometimes miss the time when he was younger?",
       "uk": "Мої ще маленькі, три й п'ять, тож там ще доволі клопітно. У нас є нянька, яка виручає двічі на тиждень. А тобі часом не бракує того часу, коли він був меншим?",
-      "ru": "Мои ещё маленькие, три и пять, так что там ещё довольно хлопотно. У нас есть няня, которая выручает дважды в неделю. А тебе иногда не хватает того времени, когда он был младше?"
+      "ru": "Мои ещё маленькие, три и пять, так что там ещё довольно хлопотно. У нас есть няня, которая выручает дважды в неделю. А тебе иногда не хватает того времени, когда он был младше?",
+      "gram": ""
     },
     "a1": {
       "de": "Manchmal schon, ehrlich gesagt, aber ich genieße auch, dass ich jetzt wieder mehr Freizeit für mich habe. Eine Tagesmutter klingt aber praktisch - wie habt ihr die eigentlich gefunden?",
       "en": "Sometimes, honestly, but I also enjoy having more free time for myself again now. A childminder sounds practical though - how did you actually find her?",
       "uk": "Чесно кажучи, іноді бракує, але мені й подобається, що зараз у мене знову більше вільного часу для себе. Нянька звучить практично - а як ви її взагалі знайшли?",
-      "ru": "Честно говоря, иногда не хватает, но мне и нравится, что сейчас у меня снова больше свободного времени для себя. Няня звучит практично - а как вы её вообще нашли?"
+      "ru": "Честно говоря, иногда не хватает, но мне и нравится, что сейчас у меня снова больше свободного времени для себя. Няня звучит практично - а как вы её вообще нашли?",
+      "gram": ""
     },
     "q2": {
       "de": "Über eine Empfehlung von Freunden, wir hatten großes Glück. Ist dein Sohn eigentlich schon oft allein zu Hause, oder ist da noch jemand bei ihm?",
       "en": "Through a recommendation from friends, we got really lucky. Is your son actually home alone often already, or is someone with him?",
       "uk": "За рекомендацією друзів, нам дуже пощастило. А твій син уже часто сам вдома, чи з ним ще хтось є?",
-      "ru": "По рекомендации друзей, нам очень повезло. А твой сын уже часто один дома, или с ним ещё кто-то есть?"
+      "ru": "По рекомендации друзей, нам очень повезло. А твой сын уже часто один дома, или с ним ещё кто-то есть?",
+      "gram": ""
     },
     "a2": {
       "de": "Inzwischen schon öfter, aber ich rufe trotzdem immer mal zwischendurch an, nur um sicherzugehen, dass alles in Ordnung ist.",
       "en": "More often by now, but I still call in between sometimes, just to make sure everything's okay.",
       "uk": "Зараз уже частіше, але я все одно завжди телефоную, просто щоб переконатися, що все гаразд.",
-      "ru": "Сейчас уже чаще, но я всё равно всегда звоню, просто чтобы убедиться, что всё в порядке."
-    },
-    "gram": ""
+      "ru": "Сейчас уже чаще, но я всё равно всегда звоню, просто чтобы убедиться, что всё в порядке.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_062",
     "cat": "Arbeitsweg",
     "task": {
@@ -15415,41 +15765,46 @@ var DIALOGE = [
       "de": "Sag mal, wie weit ist es eigentlich bei dir bis zur Arbeit? Pendelst du viel?",
       "en": "Tell me, how far is it actually to work for you? Do you commute a lot?",
       "uk": "Скажи, а як далеко в тебе взагалі до роботи? Ти багато їздиш?",
-      "ru": "Скажи, а как далеко у тебя вообще до работы? Ты много ездишь?"
+      "ru": "Скажи, а как далеко у тебя вообще до работы? Ты много ездишь?",
+      "gram": ""
     },
     "a": {
       "de": "Ehrlich gesagt ziemlich weit, ich fahre mit dem Motorrad, das dauert ungefähr fünfundvierzig Minuten. Im Sommer macht das richtig Spaß, im Winter ist es aber schon eine Herausforderung. Und du, wie sieht dein Arbeitsweg aus?",
       "en": "Honestly, pretty far, I ride a motorcycle, it takes about forty-five minutes. In summer that's really fun, but in winter it's quite a challenge. What about you, what's your commute like?",
       "uk": "Чесно кажучи, доволі далеко, я їжджу на мотоциклі, це займає хвилин сорок п'ять. Влітку це справді весело, а взимку це вже виклик. А в тебе яка дорога на роботу?",
-      "ru": "Честно говоря, довольно далеко, я езжу на мотоцикле, это занимает минут сорок пять. Летом это действительно весело, а зимой это уже вызов. А у тебя какая дорога на работу?"
+      "ru": "Честно говоря, довольно далеко, я езжу на мотоцикле, это занимает минут сорок пять. Летом это действительно весело, а зимой это уже вызов. А у тебя какая дорога на работу?",
+      "gram": ""
     },
     "q1": {
       "de": "Bei mir sind es nur zehn Minuten mit der Straßenbahn, ich habe wirklich Glück, dass ich so zentral wohne. Fährst du eigentlich auch im Winter mit dem Motorrad, oder steigst du dann um?",
       "en": "For me it's only ten minutes by tram, I'm really lucky to live so centrally. Do you actually also ride the motorcycle in winter, or do you switch then?",
       "uk": "У мене лише десять хвилин трамваєм, мені справді пощастило жити так близько до центру. А ти взагалі теж їздиш на мотоциклі взимку, чи тоді пересідаєш?",
-      "ru": "У меня всего десять минут на трамвае, мне действительно повезло жить так близко к центру. А ты вообще тоже ездишь на мотоцикле зимой, или тогда пересаживаешься?"
+      "ru": "У меня всего десять минут на трамвае, мне действительно повезло жить так близко к центру. А ты вообще тоже ездишь на мотоцикле зимой, или тогда пересаживаешься?",
+      "gram": ""
     },
     "a1": {
       "de": "Bei Schnee oder Eis steige ich dann tatsächlich auf die Bahn um, das ist mir dann doch zu riskant. Zehn Minuten klingt aber wirklich traumhaft - warst du eigentlich schon mal woanders mit einem längeren Arbeitsweg?",
       "en": "In snow or ice I actually switch to the train, that's just too risky for me then. Ten minutes sounds really dreamy though - have you actually ever had a longer commute somewhere else?",
       "uk": "У сніг чи ожеледицю я справді пересідаю на потяг, це для мене вже надто ризиковано. Десять хвилин звучить просто чудово - а ти взагалі колись мав довшу дорогу на роботу деінде?",
-      "ru": "В снег или гололёд я действительно пересаживаюсь на поезд, это для меня уже слишком рискованно. Десять минут звучит просто прекрасно - а у тебя вообще когда-нибудь была более долгая дорога на работу в другом месте?"
+      "ru": "В снег или гололёд я действительно пересаживаюсь на поезд, это для меня уже слишком рискованно. Десять минут звучит просто прекрасно - а у тебя вообще когда-нибудь была более долгая дорога на работу в другом месте?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, in meinem letzten Job musste ich eine Stunde fahren, das war schon ziemlich anstrengend auf Dauer. Deshalb habe ich mich bei der Wohnungssuche auch bewusst für die Nähe zur Arbeit entschieden. Überlegst du eigentlich manchmal, näher an die Arbeit zu ziehen?",
       "en": "Yes, in my last job I had to travel an hour, that was pretty exhausting in the long run. That's why when I was looking for an apartment I deliberately chose to be close to work. Do you actually sometimes think about moving closer to work?",
       "uk": "Так, на попередній роботі мені треба було їхати годину, це було доволі виснажливо в довгостроковій перспективі. Тому під час пошуку квартири я свідомо обрав близькість до роботи. А ти взагалі іноді думаєш переїхати ближче до роботи?",
-      "ru": "Да, на предыдущей работе мне нужно было ехать час, это было довольно изнурительно в долгосрочной перспективе. Поэтому при поиске квартиры я сознательно выбрал близость к работе. А ты вообще иногда думаешь переехать ближе к работе?"
+      "ru": "Да, на предыдущей работе мне нужно было ехать час, это было довольно изнурительно в долгосрочной перспективе. Поэтому при поиске квартиры я сознательно выбрал близость к работе. А ты вообще иногда думаешь переехать ближе к работе?",
+      "gram": ""
     },
     "a2": {
       "de": "Ehrlich gesagt schon öfter, aber ich hänge einfach zu sehr an meiner jetzigen Wohnung und der Nachbarschaft, um wirklich umzuziehen.",
       "en": "Honestly, quite often, but I'm just too attached to my current apartment and the neighborhood to actually move.",
       "uk": "Чесно кажучи, доволі часто, але я просто занадто прив'язана до своєї теперішньої квартири й району, щоб справді переїхати.",
-      "ru": "Честно говоря, довольно часто, но я просто слишком привязана к своей нынешней квартире и району, чтобы действительно переехать."
-    },
-    "gram": ""
+      "ru": "Честно говоря, довольно часто, но я просто слишком привязана к своей нынешней квартире и району, чтобы действительно переехать.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_063",
     "cat": "Wochenende",
     "task": {
@@ -15465,41 +15820,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du eigentlich schon was für dieses Wochenende vor?",
       "en": "Tell me, do you actually have anything planned for this weekend?",
       "uk": "Скажи, а в тебе вже є плани на ці вихідні?",
-      "ru": "Скажи, а у тебя уже есть планы на эти выходные?"
+      "ru": "Скажи, а у тебя уже есть планы на эти выходные?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, ich engagiere mich seit ein paar Monaten ehrenamtlich in einem Tierheim, und samstags helfe ich dort meistens beim Gassigehen mit den Hunden. Das macht mir richtig Freude. Und du, hast du schon Pläne?",
       "en": "Yes, I've been volunteering at an animal shelter for a few months now, and on Saturdays I usually help there by walking the dogs. That really brings me joy. What about you, do you have plans already?",
       "uk": "Так, я вже кілька місяців волонтерю в притулку для тварин, і по суботах здебільшого допомагаю там вигулювати собак. Це мені справді приносить радість. А в тебе вже є плани?",
-      "ru": "Да, я уже несколько месяцев волонтёрю в приюте для животных, и по субботам обычно помогаю там выгуливать собак. Это мне действительно приносит радость. А у тебя уже есть планы?"
+      "ru": "Да, я уже несколько месяцев волонтёрю в приюте для животных, и по субботам обычно помогаю там выгуливать собак. Это мне действительно приносит радость. А у тебя уже есть планы?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich wollte eigentlich eine Wanderung machen, es gibt hier in der Nähe einen schönen Weg durch den Wald, den ich schon lange mal ausprobieren wollte. Wie bist du eigentlich auf die Idee mit dem Tierheim gekommen?",
       "en": "I actually wanted to go hiking, there's a nice trail through the forest nearby that I've wanted to try for a long time. How did you actually come up with the idea of the animal shelter?",
       "uk": "Я взагалі хотів піти в похід, тут поблизу є гарна стежка через ліс, яку я вже давно хотів спробувати. А як ти взагалі прийшла до ідеї з притулком?",
-      "ru": "Я вообще хотел пойти в поход, здесь поблизости есть красивая тропа через лес, которую я уже давно хотел попробовать. А как ты вообще пришла к идее с приютом?"
+      "ru": "Я вообще хотел пойти в поход, здесь поблизости есть красивая тропа через лес, которую я уже давно хотел попробовать. А как ты вообще пришла к идее с приютом?",
+      "gram": ""
     },
     "a1": {
       "de": "Eine Freundin hat mich mal mitgenommen, und seitdem bin ich einfach dabeigeblieben. Es ist wirklich schön zu sehen, wie sich manche Hunde nach ein paar Wochen verändern. Gehst du eigentlich alleine wandern, oder nimmst du jemanden mit?",
       "en": "A friend took me along once, and I've just stuck with it since. It's really nice to see how some dogs change after a few weeks. Do you actually go hiking alone, or do you take someone with you?",
       "uk": "Подруга якось узяла мене з собою, і відтоді я просто залишилася. Це справді приємно бачити, як деякі собаки змінюються через кілька тижнів. А ти взагалі ходиш у похід сам, чи береш когось із собою?",
-      "ru": "Подруга как-то взяла меня с собой, и с тех пор я просто осталась. Это действительно приятно видеть, как некоторые собаки меняются через несколько недель. А ты вообще ходишь в поход один, или берёшь кого-то с собой?"
+      "ru": "Подруга как-то взяла меня с собой, и с тех пор я просто осталась. Это действительно приятно видеть, как некоторые собаки меняются через несколько недель. А ты вообще ходишь в поход один, или берёшь кого-то с собой?",
+      "gram": ""
     },
     "q2": {
       "de": "Meistens alleine, ich finde das total entspannend, einfach mit meinen eigenen Gedanken unterwegs zu sein. Wie viele Stunden verbringst du eigentlich normalerweise im Tierheim?",
       "en": "Mostly alone, I find it really relaxing to just be out with my own thoughts. How many hours do you actually usually spend at the shelter?",
       "uk": "Здебільшого сам, мені дуже подобається просто побути наодинці зі своїми думками. А скільки годин ти зазвичай проводиш у притулку?",
-      "ru": "В основном один, мне очень нравится просто побыть наедине со своими мыслями. А сколько часов ты обычно проводишь в приюте?"
+      "ru": "В основном один, мне очень нравится просто побыть наедине со своими мыслями. А сколько часов ты обычно проводишь в приюте?",
+      "gram": ""
     },
     "a2": {
       "de": "So ungefähr drei bis vier Stunden, das reicht meistens, um wirklich etwas zu bewirken, ohne dass es mir zu anstrengend wird.",
       "en": "About three to four hours, that's usually enough to really make a difference, without it becoming too exhausting for me.",
       "uk": "Десь три-чотири години, зазвичай цього достатньо, щоб справді щось змінити, і водночас це не надто виснажує.",
-      "ru": "Где-то три-четыре часа, обычно этого достаточно, чтобы действительно что-то изменить, и при этом это не слишком утомляет."
-    },
-    "gram": ""
+      "ru": "Где-то три-четыре часа, обычно этого достаточно, чтобы действительно что-то изменить, и при этом это не слишком утомляет.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_064",
     "cat": "Freizeitgestaltung",
     "task": {
@@ -15515,41 +15875,46 @@ var DIALOGE = [
       "de": "Sag mal, was machst du eigentlich am liebsten, wenn du frei hast?",
       "en": "Tell me, what do you actually like doing most when you have free time?",
       "uk": "Скажи, а що ти взагалі найбільше любиш робити, коли маєш вільний час?",
-      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть свободное время?"
+      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть свободное время?",
+      "gram": ""
     },
     "a": {
       "de": "Ich gärtnere total gerne, ich habe seit letztem Jahr einen kleinen Schrebergarten und verbringe dort echt viel Zeit. Gerade pflanze ich Tomaten und Kräuter an. Und du, wie verbringst du am liebsten deine Freizeit?",
       "en": "I really love gardening, I've had a small allotment garden since last year and spend a lot of time there. Right now I'm planting tomatoes and herbs. What about you, how do you like to spend your free time most?",
       "uk": "Я дуже люблю садівництво, у мене з минулого року є невеликий садовий наділ, і я проводжу там справді багато часу. Зараз саджаю томати й трави. А в тебе як, як ти найбільше любиш проводити вільний час?",
-      "ru": "Я очень люблю садоводство, у меня с прошлого года есть небольшой садовый участок, и я провожу там действительно много времени. Сейчас сажаю томаты и травы. А у тебя как, как ты больше всего любишь проводить свободное время?"
+      "ru": "Я очень люблю садоводство, у меня с прошлого года есть небольшой садовый участок, и я провожу там действительно много времени. Сейчас сажаю томаты и травы. А у тебя как, как ты больше всего любишь проводить свободное время?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich spiele eigentlich ziemlich viel am Computer, meistens abends mit Freunden online. Das entspannt mich total nach der Arbeit. Was baust du eigentlich alles in deinem Garten an?",
       "en": "I actually play a lot on the computer, mostly in the evenings online with friends. It really relaxes me after work. What do you actually grow in your garden?",
       "uk": "Я взагалі доволі багато граю на комп'ютері, зазвичай увечері онлайн з друзями. Це мене дуже розслабляє після роботи. А що ти взагалі вирощуєш у своєму саду?",
-      "ru": "Я вообще довольно много играю на компьютере, обычно вечером онлайн с друзьями. Это меня очень расслабляет после работы. А что ты вообще выращиваешь в своём саду?"
+      "ru": "Я вообще довольно много играю на компьютере, обычно вечером онлайн с друзьями. Это меня очень расслабляет после работы. А что ты вообще выращиваешь в своём саду?",
+      "gram": ""
     },
     "a1": {
       "de": "Hauptsächlich Gemüse, aber auch ein paar Blumen für die Bienen. Es macht mir richtig Spaß zu sehen, wie alles wächst. Spielt ihr eigentlich immer dasselbe Spiel, oder wechselt ihr öfter?",
       "en": "Mainly vegetables, but also a few flowers for the bees. I really enjoy seeing everything grow. Do you actually always play the same game, or do you switch often?",
       "uk": "Здебільшого овочі, але й трохи квітів для бджіл. Мені справді приємно бачити, як усе росте. А ви завжди граєте в одну й ту саму гру, чи часто змінюєте?",
-      "ru": "В основном овощи, но и немного цветов для пчёл. Мне действительно приятно видеть, как всё растёт. А вы всегда играете в одну и ту же игру, или часто меняете?"
+      "ru": "В основном овощи, но и немного цветов для пчёл. Мне действительно приятно видеть, как всё растёт. А вы всегда играете в одну и ту же игру, или часто меняете?",
+      "gram": ""
     },
     "q2": {
       "de": "Meistens dasselbe, wir sind schon seit Jahren in einem Team zusammen, das macht einfach mehr Spaß, wenn man sich gut kennt. Erntest du eigentlich schon etwas aus deinem Garten, oder ist es noch zu früh?",
       "en": "Mostly the same one, we've been on a team together for years now, it's just more fun when you know each other well. Are you actually already harvesting anything from your garden, or is it still too early?",
       "uk": "Здебільшого одну й ту саму, ми вже роками разом в одній команді, це просто веселіше, коли добре знаєш одне одного. А ти вже щось збираєш зі свого саду, чи ще зарано?",
-      "ru": "В основном одну и ту же, мы уже годами вместе в одной команде, это просто веселее, когда хорошо знаешь друг друга. А ты уже что-то собираешь со своего сада, или ещё рано?"
+      "ru": "В основном одну и ту же, мы уже годами вместе в одной команде, это просто веселее, когда хорошо знаешь друг друга. А ты уже что-то собираешь со своего сада, или ещё рано?",
+      "gram": ""
     },
     "a2": {
       "de": "Die ersten Kräuter kann ich schon ernten, aber auf die Tomaten muss ich noch ein paar Wochen warten. Ich freue mich aber jetzt schon total darauf.",
       "en": "I can already harvest the first herbs, but I still have to wait a few weeks for the tomatoes. But I'm already really looking forward to it.",
       "uk": "Перші трави я вже можу збирати, але на томати мені ще треба почекати кілька тижнів. Але я вже дуже цього чекаю.",
-      "ru": "Первые травы я уже могу собирать, но томатов мне ещё нужно подождать несколько недель. Но я уже очень этого жду."
-    },
-    "gram": ""
+      "ru": "Первые травы я уже могу собирать, но томатов мне ещё нужно подождать несколько недель. Но я уже очень этого жду.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_065",
     "cat": "Urlaub",
     "task": {
@@ -15565,41 +15930,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du eigentlich schon Pläne für den Winterurlaub?",
       "en": "Tell me, do you actually already have plans for the winter vacation?",
       "uk": "Скажи, а в тебе вже є плани на зимову відпустку?",
-      "ru": "Скажи, а у тебя уже есть планы на зимний отпуск?"
+      "ru": "Скажи, а у тебя уже есть планы на зимний отпуск?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, ich fahre im Januar für eine Woche zum Skifahren in die Alpen, das mache ich eigentlich jedes Jahr mit meinen Geschwistern. Und du, hast du auch schon was vor?",
       "en": "Yes, in January I'm going skiing in the Alps for a week, I actually do that every year with my siblings. What about you, do you have anything planned too?",
       "uk": "Так, у січні я їду на тиждень кататися на лижах в Альпи, я взагалі роблю це щороку з братами й сестрами. А в тебе теж уже є якісь плани?",
-      "ru": "Да, в январе я еду на неделю кататься на лыжах в Альпы, я вообще делаю это каждый год с братьями и сёстрами. А у тебя тоже уже есть какие-то планы?"
+      "ru": "Да, в январе я еду на неделю кататься на лыжах в Альпы, я вообще делаю это каждый год с братьями и сёстрами. А у тебя тоже уже есть какие-то планы?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich glaube, ich bleibe dieses Jahr eher zu Hause, ich bin ehrlich gesagt kein großer Fan von Kälte. Fahrt ihr eigentlich immer in dasselbe Skigebiet, oder wechselt ihr auch mal?",
       "en": "I think I'll rather stay home this year, honestly I'm not a big fan of the cold. Do you actually always go to the same ski resort, or do you switch sometimes too?",
       "uk": "Гадаю, цього року я радше залишуся вдома, чесно кажучи, я не дуже люблю холод. А ви завжди їздите в один і той самий гірськолижний курорт, чи іноді змінюєте?",
-      "ru": "Думаю, в этом году я скорее останусь дома, честно говоря, я не очень люблю холод. А вы всегда ездите на один и тот же горнолыжный курорт, или иногда меняете?"
+      "ru": "Думаю, в этом году я скорее останусь дома, честно говоря, я не очень люблю холод. А вы всегда ездите на один и тот же горнолыжный курорт, или иногда меняете?",
+      "gram": ""
     },
     "a1": {
       "de": "Meistens fahren wir ins gleiche Gebiet, weil wir die Pisten dort schon richtig gut kennen. Kälte ist tatsächlich nicht jedermanns Sache - was machst du dann stattdessen, wenn du zu Hause bleibst?",
       "en": "We mostly go to the same area, because we already know the slopes really well there. Cold really isn't for everyone - what do you do instead when you stay home then?",
       "uk": "Здебільшого їздимо в той самий район, бо ми там уже дуже добре знаємо траси. Холод справді підходить не всім - а що ти тоді робиш замість цього, коли залишаєшся вдома?",
-      "ru": "В основном ездим в один и тот же район, потому что мы там уже очень хорошо знаем трассы. Холод действительно подходит не всем - а что ты тогда делаешь вместо этого, когда остаёшься дома?"
+      "ru": "В основном ездим в один и тот же район, потому что мы там уже очень хорошо знаем трассы. Холод действительно подходит не всем - а что ты тогда делаешь вместо этого, когда остаёшься дома?",
+      "gram": ""
     },
     "q2": {
       "de": "Ich nutze die Zeit meistens, um mich einfach mal richtig auszuruhen und vielleicht ein paar Bücher zu lesen, die schon lange auf meinem Stapel liegen. Bist du eigentlich schon lange am Skifahren, oder hast du das erst als Erwachsener gelernt?",
       "en": "I usually use the time to really rest and maybe read a few books that have been sitting on my pile for a long time. Have you actually been skiing for a long time, or did you only learn as an adult?",
       "uk": "Я зазвичай використовую цей час, щоб справді добре відпочити й, можливо, почитати кілька книжок, які вже давно лежать у моїй стопці. А ти взагалі давно катаєшся на лижах, чи навчився вже дорослим?",
-      "ru": "Я обычно использую это время, чтобы действительно хорошо отдохнуть и, возможно, почитать несколько книг, которые уже давно лежат в моей стопке. А ты вообще давно катаешься на лыжах, или научился уже взрослым?"
+      "ru": "Я обычно использую это время, чтобы действительно хорошо отдохнуть и, возможно, почитать несколько книг, которые уже давно лежат в моей стопке. А ты вообще давно катаешься на лыжах, или научился уже взрослым?",
+      "gram": ""
     },
     "a2": {
       "de": "Schon seit ich klein bin, meine Eltern haben mich quasi auf die Ski gestellt, sobald ich laufen konnte. Deshalb ist das für mich einfach ein fester Teil vom Winter.",
       "en": "Since I was little, my parents basically put me on skis as soon as I could walk. That's why it's just a fixed part of winter for me.",
       "uk": "Ще з дитинства, мої батьки практично поставили мене на лижі, щойно я навчився ходити. Тому для мене це просто невід'ємна частина зими.",
-      "ru": "Ещё с детства, мои родители практически поставили меня на лыжи, как только я научился ходить. Поэтому для меня это просто неотъемлемая часть зимы."
-    },
-    "gram": ""
+      "ru": "Ещё с детства, мои родители практически поставили меня на лыжи, как только я научился ходить. Поэтому для меня это просто неотъемлемая часть зимы.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_066",
     "cat": "Sportaktivitäten",
     "task": {
@@ -15615,41 +15985,46 @@ var DIALOGE = [
       "de": "Sag mal, machst du eigentlich Sport, oder ist das eher nicht so dein Ding?",
       "en": "Tell me, do you actually do sports, or is that more not your thing?",
       "uk": "Скажи, а ти взагалі займаєшся спортом, чи це радше не твоє?",
-      "ru": "Скажи, а ты вообще занимаешься спортом, или это скорее не твоё?"
+      "ru": "Скажи, а ты вообще занимаешься спортом, или это скорее не твоё?",
+      "gram": ""
     },
     "a": {
       "de": "Doch, ich tanze seit ein paar Jahren, hauptsächlich Salsa, das mache ich einmal die Woche in einem Kurs. Das macht wirklich Spaß und man lernt dabei auch total nette Leute kennen. Und du, machst du auch etwas Sportliches?",
       "en": "Actually yes, I've been dancing for a few years now, mainly salsa, I do that once a week in a class. It's really fun and you get to meet really nice people too. What about you, do you do anything sporty too?",
       "uk": "Ні, навпаки, я вже кілька років танцюю, здебільшого сальсу, роблю це раз на тиждень на курсах. Це справді весело, і при цьому знайомишся з дуже приємними людьми. А в тебе, ти теж чимось спортивним займаєшся?",
-      "ru": "Нет, наоборот, я уже несколько лет танцую, в основном сальсу, делаю это раз в неделю на курсах. Это действительно весело, и при этом знакомишься с очень приятными людьми. А у тебя, ты тоже чем-то спортивным занимаешься?"
+      "ru": "Нет, наоборот, я уже несколько лет танцую, в основном сальсу, делаю это раз в неделю на курсах. Это действительно весело, и при этом знакомишься с очень приятными людьми. А у тебя, ты тоже чем-то спортивным занимаешься?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich mache eigentlich Kampfsport, genauer gesagt Judo, das trainiere ich schon seit meiner Jugend. Wie schwer war es eigentlich am Anfang, die Schritte beim Salsa zu lernen?",
       "en": "I actually do martial arts, specifically judo, I've been training that since my youth. How hard was it actually at first to learn the steps in salsa?",
       "uk": "Я взагалі займаюся бойовими мистецтвами, точніше дзюдо, тренуюся ще з юності. А наскільки важко було на початку вивчити кроки сальси?",
-      "ru": "Я вообще занимаюсь боевыми искусствами, точнее дзюдо, тренируюсь ещё с юности. А насколько тяжело было в начале выучить шаги сальсы?"
+      "ru": "Я вообще занимаюсь боевыми искусствами, точнее дзюдо, тренируюсь ещё с юности. А насколько тяжело было в начале выучить шаги сальсы?",
+      "gram": ""
     },
     "a1": {
       "de": "Ehrlich gesagt am Anfang ziemlich schwer, ich hatte zwei linke Füße, aber mit der Zeit wird es wirklich besser. Judo klingt aber auch spannend - hast du da eigentlich schon einen bestimmten Gürtelgrad erreicht?",
       "en": "Honestly, pretty hard at first, I had two left feet, but it really gets better over time. Judo sounds exciting too though - have you actually reached a certain belt rank yet?",
       "uk": "Чесно кажучи, спочатку доволі важко, у мене були дві ліві ноги, але з часом справді стає краще. А дзюдо теж звучить цікаво - ти вже досяг певного рівня поясу?",
-      "ru": "Честно говоря, сначала довольно тяжело, у меня были две левые ноги, но со временем действительно становится лучше. А дзюдо тоже звучит интересно - ты уже достиг определённого уровня пояса?"
+      "ru": "Честно говоря, сначала довольно тяжело, у меня были две левые ноги, но со временем действительно становится лучше. А дзюдо тоже звучит интересно - ты уже достиг определённого уровня пояса?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, ich bin mittlerweile beim braunen Gürtel, der schwarze ist aber noch ein ganzes Stück entfernt. Tanzt du eigentlich immer mit demselben Partner, oder wechselt ihr im Kurs?",
       "en": "Yes, I'm at brown belt by now, but black is still quite a way off. Do you actually always dance with the same partner, or do you switch in the class?",
       "uk": "Так, я вже маю коричневий пояс, але до чорного ще доволі далеко. А ти завжди танцюєш з тим самим партнером, чи змінюєте на курсах?",
-      "ru": "Да, у меня уже коричневый пояс, но до чёрного ещё довольно далеко. А ты всегда танцуешь с одним и тем же партнёром, или меняете на курсах?"
+      "ru": "Да, у меня уже коричневый пояс, но до чёрного ещё довольно далеко. А ты всегда танцуешь с одним и тем же партнёром, или меняете на курсах?",
+      "gram": ""
     },
     "a2": {
       "de": "Wir wechseln eigentlich ständig, das gehört beim Salsa irgendwie dazu. Am Anfang war mir das etwas unangenehm, aber jetzt genieße ich es total.",
       "en": "We actually switch constantly, that's just part of salsa somehow. At first that felt a bit awkward to me, but now I really enjoy it.",
       "uk": "Ми взагалі постійно змінюємо, це якось само собою зрозуміло в сальсі. Спочатку мені було трохи незручно, але тепер я цим дуже насолоджуюся.",
-      "ru": "Мы вообще постоянно меняем, это как-то само собой разумеется в сальсе. Сначала мне было немного неловко, но теперь я этим очень наслаждаюсь."
-    },
-    "gram": ""
+      "ru": "Мы вообще постоянно меняем, это как-то само собой разумеется в сальсе. Сначала мне было немного неловко, но теперь я этим очень наслаждаюсь.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_067",
     "cat": "Arbeitszeiten",
     "task": {
@@ -15665,41 +16040,46 @@ var DIALOGE = [
       "de": "Sag mal, wie sind eigentlich deine Arbeitszeiten geregelt? Arbeitest du klassisch fünf Tage die Woche?",
       "en": "Tell me, how are your working hours actually arranged? Do you work the classic five days a week?",
       "uk": "Скажи, а як у тебе взагалі влаштований робочий графік? Ти працюєш класично п'ять днів на тиждень?",
-      "ru": "Скажи, а как у тебя вообще устроен рабочий график? Ты работаешь классически пять дней в неделю?"
+      "ru": "Скажи, а как у тебя вообще устроен рабочий график? Ты работаешь классически пять дней в неделю?",
+      "gram": ""
     },
     "a": {
       "de": "Nein, tatsächlich nicht, wir haben seit ein paar Monaten eine Vier-Tage-Woche eingeführt, ich arbeite also nur noch Montag bis Donnerstag. Und du, wie sieht das bei dir aus?",
       "en": "No, actually not, we introduced a four-day week a few months ago, so I only work Monday to Thursday now. What about you, what's it like for you?",
       "uk": "Ні, насправді ні, у нас кілька місяців тому запровадили чотириденний робочий тиждень, тож я тепер працюю лише з понеділка по четвер. А в тебе як?",
-      "ru": "Нет, на самом деле нет, у нас несколько месяцев назад ввели четырёхдневную рабочую неделю, так что я теперь работаю только с понедельника по четверг. А у тебя как?"
+      "ru": "Нет, на самом деле нет, у нас несколько месяцев назад ввели четырёхдневную рабочую неделю, так что я теперь работаю только с понедельника по четверг. А у тебя как?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich arbeite eigentlich noch klassisch fünf Tage, aber dafür mit relativ kurzen Tagen. Wie hat sich die Vier-Tage-Woche eigentlich auf deine Produktivität ausgewirkt?",
       "en": "I actually still work the classic five days, but with relatively short days. How has the four-day week actually affected your productivity?",
       "uk": "Я взагалі ще працюю класично п'ять днів, але зате з відносно короткими днями. А як чотириденний тиждень вплинув на твою продуктивність?",
-      "ru": "Я вообще ещё работаю классически пять дней, но зато с относительно короткими днями. А как четырёхдневная неделя повлияла на твою продуктивность?"
+      "ru": "Я вообще ещё работаю классически пять дней, но зато с относительно короткими днями. А как четырёхдневная неделя повлияла на твою продуктивность?",
+      "gram": ""
     },
     "a1": {
       "de": "Ehrlich gesagt bin ich sogar produktiver geworden, weil ich mich an den vier Tagen mehr konzentriere. Fünf kürzere Tage klingt aber auch angenehm - wie lange arbeitest du eigentlich pro Tag?",
       "en": "Honestly, I've actually become more productive, because I concentrate more on the four days. Five shorter days sounds nice too though - how long do you actually work per day?",
       "uk": "Чесно кажучи, я навіть став продуктивнішим, бо за ці чотири дні більше концентруюся. Але п'ять коротших днів теж звучить приємно - скільки годин ти взагалі працюєш на день?",
-      "ru": "Честно говоря, я даже стал продуктивнее, потому что за эти четыре дня больше концентрируюсь. Но пять более коротких дней тоже звучит приятно - сколько часов ты вообще работаешь в день?"
+      "ru": "Честно говоря, я даже стал продуктивнее, потому что за эти четыре дня больше концентрируюсь. Но пять более коротких дней тоже звучит приятно - сколько часов ты вообще работаешь в день?",
+      "gram": ""
     },
     "q2": {
       "de": "Meistens so sechs Stunden, das reicht für mich völlig aus. Verdienst du eigentlich bei der Vier-Tage-Woche genauso viel wie vorher, oder wurde das Gehalt angepasst?",
       "en": "Usually about six hours, that's completely enough for me. Do you actually earn just as much with the four-day week as before, or was the salary adjusted?",
       "uk": "Зазвичай близько шести годин, мені цього цілком вистачає. А ти при чотириденному тижні заробляєш стільки ж, скільки й раніше, чи зарплату скоригували?",
-      "ru": "Обычно около шести часов, мне этого вполне хватает. А ты при четырёхдневной неделе зарабатываешь столько же, сколько и раньше, или зарплату скорректировали?"
+      "ru": "Обычно около шести часов, мне этого вполне хватает. А ты при четырёхдневной неделе зарабатываешь столько же, сколько и раньше, или зарплату скорректировали?",
+      "gram": ""
     },
     "a2": {
       "de": "Zum Glück genauso viel, das war eine der wichtigsten Bedingungen bei der Einführung. Ohne den vollen Lohnausgleich hätte ich ehrlich gesagt auch nicht mitgemacht.",
       "en": "Fortunately just as much, that was one of the most important conditions when it was introduced. Without full pay compensation, honestly, I wouldn't have gone along with it either.",
       "uk": "На щастя, стільки ж, це була одна з найважливіших умов при впровадженні. Без повної компенсації зарплати я б, чесно кажучи, теж не погодився.",
-      "ru": "К счастью, столько же, это было одно из самых важных условий при внедрении. Без полной компенсации зарплаты я бы, честно говоря, тоже не согласился."
-    },
-    "gram": ""
+      "ru": "К счастью, столько же, это было одно из самых важных условий при внедрении. Без полной компенсации зарплаты я бы, честно говоря, тоже не согласился.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_068",
     "cat": "Kinderbetreuung",
     "task": {
@@ -15715,41 +16095,46 @@ var DIALOGE = [
       "de": "Sag mal, wie handhabt ihr das eigentlich in den Sommerferien mit der Kinderbetreuung? Das sind ja sechs Wochen ohne Schule.",
       "en": "Tell me, how do you actually handle childcare during the summer holidays? That's six weeks without school after all.",
       "uk": "Скажи, а як ви взагалі справляєтеся з доглядом за дітьми на літніх канікулах? Це ж шість тижнів без школи.",
-      "ru": "Скажи, а как вы вообще справляетесь с уходом за детьми на летних каникулах? Это же шесть недель без школы."
+      "ru": "Скажи, а как вы вообще справляетесь с уходом за детьми на летних каникулах? Это же шесть недель без школы.",
+      "gram": ""
     },
     "a": {
       "de": "Ehrlich gesagt ist das immer die größte Herausforderung im Jahr. Wir schicken unsere Tochter für drei Wochen in ein Ferienlager, und die restliche Zeit teilen wir uns zwischen meinem Mann und mir auf. Und ihr, wie macht ihr das?",
       "en": "Honestly, that's always the biggest challenge of the year. We send our daughter to a summer camp for three weeks, and split the rest of the time between my husband and me. What about you, how do you handle it?",
       "uk": "Чесно кажучи, це завжди найбільший виклик року. Ми відправляємо доньку на три тижні в літній табір, а решту часу розподіляємо між моїм чоловіком і мною. А ви як це робите?",
-      "ru": "Честно говоря, это всегда самый большой вызов года. Мы отправляем дочь на три недели в летний лагерь, а остальное время распределяем между моим мужем и мной. А вы как это делаете?"
+      "ru": "Честно говоря, это всегда самый большой вызов года. Мы отправляем дочь на три недели в летний лагерь, а остальное время распределяем между моим мужем и мной. А вы как это делаете?",
+      "gram": ""
     },
     "q1": {
       "de": "Bei uns übernimmt meistens meine Mutter ein paar Wochen, sie freut sich total, ihre Enkel mal länger um sich zu haben. Was macht deine Tochter eigentlich im Ferienlager, hat sie ein bestimmtes Programm?",
       "en": "For us, my mother usually takes over for a few weeks, she's really happy to have her grandkids around longer. What does your daughter actually do at the summer camp, does she have a specific program?",
       "uk": "У нас зазвичай кілька тижнів бере на себе моя мама, вона дуже рада мати онуків довше поруч. А що робить твоя донька в таборі, у неї є якась конкретна програма?",
-      "ru": "У нас обычно несколько недель берёт на себя моя мама, она очень рада подольше побыть с внуками. А что делает твоя дочь в лагере, у неё есть какая-то конкретная программа?"
+      "ru": "У нас обычно несколько недель берёт на себя моя мама, она очень рада подольше побыть с внуками. А что делает твоя дочь в лагере, у неё есть какая-то конкретная программа?",
+      "gram": ""
     },
     "a1": {
       "de": "Es ist ein Sportcamp, sie macht dort verschiedene Aktivitäten wie Schwimmen, Klettern und Ballspiele. Sie liebt es total und freut sich schon das ganze Jahr darauf. Wie alt sind eigentlich deine Enkel - äh, ich meine, deine Kinder?",
       "en": "It's a sports camp, she does various activities there like swimming, climbing and ball games. She loves it and looks forward to it the whole year. How old are your grandkids actually - uh, I mean your kids?",
       "uk": "Це спортивний табір, вона там займається різними активностями - плаванням, скелелазінням, іграми з м'ячем. Вона це просто обожнює і чекає на це весь рік. А скільки років твоїм онукам - ой, тобто твоїм дітям?",
-      "ru": "Это спортивный лагерь, она там занимается разными активностями - плаванием, скалолазанием, играми с мячом. Она это просто обожает и ждёт этого весь год. А сколько лет твоим внукам - ой, то есть твоим детям?"
+      "ru": "Это спортивный лагерь, она там занимается разными активностями - плаванием, скалолазанием, играми с мячом. Она это просто обожает и ждёт этого весь год. А сколько лет твоим внукам - ой, то есть твоим детям?",
+      "gram": ""
     },
     "q2": {
       "de": "Kein Problem, meine sind sechs und neun. Wart ihr eigentlich schon mal in Sorge, dass eure Tochter Heimweh im Ferienlager bekommt?",
       "en": "No problem, mine are six and nine. Have you actually ever worried that your daughter might get homesick at the camp?",
       "uk": "Нічого страшного, моїм шість і дев'ять. А ви взагалі колись переживали, що донька почне сумувати за домом у таборі?",
-      "ru": "Ничего страшного, моим шесть и девять. А вы вообще когда-нибудь переживали, что дочь начнёт скучать по дому в лагере?"
+      "ru": "Ничего страшного, моим шесть и девять. А вы вообще когда-нибудь переживали, что дочь начнёт скучать по дому в лагере?",
+      "gram": ""
     },
     "a2": {
       "de": "Am Anfang schon ein bisschen, aber sie hat sich erstaunlich schnell eingewöhnt und ruft uns kaum an, was eigentlich ein gutes Zeichen ist.",
       "en": "A little at first, but she settled in surprisingly quickly and hardly calls us, which is actually a good sign.",
       "uk": "Спочатку трохи, але вона напрочуд швидко звикла і майже не телефонує нам, що взагалі-то хороша ознака.",
-      "ru": "Сначала немного, но она на удивление быстро освоилась и почти не звонит нам, что вообще-то хороший знак."
-    },
-    "gram": ""
+      "ru": "Сначала немного, но она на удивление быстро освоилась и почти не звонит нам, что вообще-то хороший знак.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_069",
     "cat": "Arbeitsweg",
     "task": {
@@ -15765,41 +16150,46 @@ var DIALOGE = [
       "de": "Sag mal, wie kommst du eigentlich normalerweise zur Arbeit? Hast du einen festen Weg?",
       "en": "Tell me, how do you actually usually get to work? Do you have a fixed route?",
       "uk": "Скажи, а як ти взагалі зазвичай добираєшся до роботи? У тебе є фіксований маршрут?",
-      "ru": "Скажи, а как ты вообще обычно добираешься до работы? У тебя есть фиксированный маршрут?"
+      "ru": "Скажи, а как ты вообще обычно добираешься до работы? У тебя есть фиксированный маршрут?",
+      "gram": ""
     },
     "a": {
       "de": "Eigentlich nicht wirklich, das ist bei mir total unterschiedlich. Manchmal nehme ich die U-Bahn, manchmal fahre ich mit einer Mitfahr-App mit, je nachdem, was gerade am besten passt. Und du, hast du einen festen Arbeitsweg?",
       "en": "Actually not really, it's quite different for me. Sometimes I take the subway, sometimes I ride with a ride-sharing app, depending on what fits best at the time. What about you, do you have a fixed commute?",
       "uk": "Взагалі ні, у мене це дуже по-різному. Іноді їду метро, іноді їду через застосунок для спільних поїздок, залежно від того, що зараз найкраще підходить. А в тебе є фіксований шлях на роботу?",
-      "ru": "Вообще нет, у меня это очень по-разному. Иногда еду на метро, иногда еду через приложение для совместных поездок, в зависимости от того, что сейчас лучше подходит. А у тебя есть фиксированный путь на работу?"
+      "ru": "Вообще нет, у меня это очень по-разному. Иногда еду на метро, иногда еду через приложение для совместных поездок, в зависимости от того, что сейчас лучше подходит. А у тебя есть фиксированный путь на работу?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich fahre eigentlich immer mit der U-Bahn, das ist für mich am zuverlässigsten. Wie funktioniert das eigentlich mit der Mitfahr-App, findest du da immer schnell jemanden?",
       "en": "I actually always take the subway, that's the most reliable for me. How does it actually work with the ride-sharing app, do you always find someone quickly?",
       "uk": "Я взагалі завжди їжджу метро, для мене це найнадійніше. А як взагалі працює цей застосунок для спільних поїздок, ти завжди швидко когось знаходиш?",
-      "ru": "Я вообще всегда езжу на метро, для меня это самое надёжное. А как вообще работает это приложение для совместных поездок, ты всегда быстро кого-то находишь?"
+      "ru": "Я вообще всегда езжу на метро, для меня это самое надёжное. А как вообще работает это приложение для совместных поездок, ты всегда быстро кого-то находишь?",
+      "gram": ""
     },
     "a1": {
       "de": "Meistens schon, gerade zu den Stoßzeiten gibt es viele Leute, die dieselbe Strecke fahren. Es ist auch günstiger als alleine mit dem Auto zu fahren. Fährst du eigentlich auch mal mit dem Fahrrad, wenn das Wetter gut ist?",
       "en": "Mostly yes, especially during rush hour there are a lot of people going the same route. It's also cheaper than driving alone by car. Do you actually sometimes ride a bike too, when the weather's good?",
       "uk": "Здебільшого так, особливо в години пік багато людей їдуть тим самим маршрутом. Це ще й дешевше, ніж їхати самій на машині. А ти взагалі іноді їздиш на велосипеді, коли гарна погода?",
-      "ru": "В основном да, особенно в часы пик много людей едут тем же маршрутом. Это ещё и дешевле, чем ехать одной на машине. А ты вообще иногда ездишь на велосипеде, когда хорошая погода?"
+      "ru": "В основном да, особенно в часы пик много людей едут тем же маршрутом. Это ещё и дешевле, чем ехать одной на машине. А ты вообще иногда ездишь на велосипеде, когда хорошая погода?",
+      "gram": ""
     },
     "q2": {
       "de": "Manchmal schon, aber ehrlich gesagt bin ich da eher inkonsequent, meistens bleibe ich dann doch bei der U-Bahn. Redest du eigentlich viel mit den Leuten, mit denen du mitfährst?",
       "en": "Sometimes, but honestly I'm rather inconsistent about it, mostly I end up sticking with the subway anyway. Do you actually talk a lot with the people you ride with?",
       "uk": "Іноді так, але чесно кажучи, я в цьому доволі непослідовна, здебільшого все одно залишаюся на метро. А ти взагалі багато розмовляєш з людьми, з якими їдеш?",
-      "ru": "Иногда да, но честно говоря, я в этом довольно непоследовательна, в основном всё равно остаюсь на метро. А ты вообще много разговариваешь с людьми, с которыми едешь?"
+      "ru": "Иногда да, но честно говоря, я в этом довольно непоследовательна, в основном всё равно остаюсь на метро. А ты вообще много разговариваешь с людьми, с которыми едешь?",
+      "gram": ""
     },
     "a2": {
       "de": "Kommt drauf an, manchmal unterhalte ich mich richtig gut mit ihnen, manchmal hört jeder einfach nur seine eigene Musik. Beides ist eigentlich völlig in Ordnung für mich.",
       "en": "Depends, sometimes I have a really good conversation with them, sometimes everyone just listens to their own music. Both are actually completely fine with me.",
       "uk": "Залежить, іноді ми справді добре спілкуємося, іноді кожен просто слухає свою музику. Обидва варіанти для мене цілком нормальні.",
-      "ru": "Зависит, иногда мы действительно хорошо общаемся, иногда каждый просто слушает свою музыку. Оба варианта для меня совершенно нормальные."
-    },
-    "gram": ""
+      "ru": "Зависит, иногда мы действительно хорошо общаемся, иногда каждый просто слушает свою музыку. Оба варианта для меня совершенно нормальные.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_070",
     "cat": "Wochenende",
     "task": {
@@ -15815,41 +16205,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du eigentlich schon was für dieses Wochenende vor?",
       "en": "Tell me, do you actually have anything planned for this weekend?",
       "uk": "Скажи, а в тебе вже є плани на ці вихідні?",
-      "ru": "Скажи, а у тебя уже есть планы на эти выходные?"
+      "ru": "Скажи, а у тебя уже есть планы на эти выходные?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, ich möchte endlich mein neues Regal aufbauen, das steht schon seit zwei Wochen unausgepackt in meiner Wohnung. Das wird bestimmt den ganzen Samstag dauern. Und du, was hast du vor?",
       "en": "Yes, I finally want to assemble my new shelf, it's been sitting unpacked in my apartment for two weeks now. That'll probably take the whole Saturday. What about you, what are you up to?",
       "uk": "Так, я нарешті хочу зібрати свою нову полицю, вона вже два тижні стоїть нерозпакована в моїй квартирі. Це, мабуть, займе всю суботу. А в тебе які плани?",
-      "ru": "Да, я наконец хочу собрать свою новую полку, она уже две недели стоит нераспакованная в моей квартире. Это, наверное, займёт всю субботу. А у тебя какие планы?"
+      "ru": "Да, я наконец хочу собрать свою новую полку, она уже две недели стоит нераспакованная в моей квартире. Это, наверное, займёт всю субботу. А у тебя какие планы?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich wollte eigentlich auf den Flohmarkt gehen, der findet hier einmal im Monat statt, und ich suche schon lange nach ein paar alten Büchern. Ist das Regal eigentlich schwer aufzubauen, oder hast du da schon Erfahrung mit?",
       "en": "I actually wanted to go to the flea market, it takes place here once a month, and I've been looking for some old books for a long time. Is the shelf actually hard to assemble, or do you already have experience with that?",
       "uk": "Я взагалі хотів піти на блошиний ринок, він тут проходить раз на місяць, і я вже давно шукаю кілька старих книжок. А цю полицю взагалі важко збирати, чи в тебе вже є досвід?",
-      "ru": "Я вообще хотел пойти на блошиный рынок, он здесь проходит раз в месяц, и я уже давно ищу несколько старых книг. А эту полку вообще тяжело собирать, или у тебя уже есть опыт?"
+      "ru": "Я вообще хотел пойти на блошиный рынок, он здесь проходит раз в месяц, и я уже давно ищу несколько старых книг. А эту полку вообще тяжело собирать, или у тебя уже есть опыт?",
+      "gram": ""
     },
     "a1": {
       "de": "Ehrlich gesagt bin ich nicht besonders geschickt darin, aber zum Glück hilft mir ein Freund dabei. Ohne ihn würde das wahrscheinlich ewig dauern. Findest du auf dem Flohmarkt eigentlich oft, wonach du suchst?",
       "en": "Honestly, I'm not particularly skilled at it, but luckily a friend is helping me with it. Without him it would probably take forever. Do you actually often find what you're looking for at the flea market?",
       "uk": "Чесно кажучи, я не дуже вправна в цьому, але на щастя мені допомагає друг. Без нього це, напевно, тривало б вічність. А ти на блошиному ринку часто знаходиш те, що шукаєш?",
-      "ru": "Честно говоря, я не особо ловкая в этом, но, к счастью, мне помогает друг. Без него это, наверное, длилось бы вечность. А ты на блошином рынке часто находишь то, что ищешь?"
+      "ru": "Честно говоря, я не особо ловкая в этом, но, к счастью, мне помогает друг. Без него это, наверное, длилось бы вечность. А ты на блошином рынке часто находишь то, что ищешь?",
+      "gram": ""
     },
     "q2": {
       "de": "Manchmal schon, manchmal aber auch gar nichts, das ist immer ein bisschen Glückssache. Was für ein Regal habt ihr euch eigentlich ausgesucht, ein einfaches oder etwas Ausgefalleneres?",
       "en": "Sometimes, but sometimes nothing at all too, it's always a bit of luck. What kind of shelf did you choose actually, a simple one or something fancier?",
       "uk": "Іноді так, а іноді взагалі нічого, це завжди трохи справа удачі. А яку полицю ви взагалі обрали, просту чи щось незвичніше?",
-      "ru": "Иногда да, а иногда вообще ничего, это всегда немного дело удачи. А какую полку вы вообще выбрали, простую или что-то более необычное?"
+      "ru": "Иногда да, а иногда вообще ничего, это всегда немного дело удачи. А какую полку вы вообще выбрали, простую или что-то более необычное?",
+      "gram": ""
     },
     "a2": {
       "de": "Etwas Ausgefalleneres, es hat viele kleine Fächer und sieht wirklich schön aus. Deshalb dauert der Aufbau wahrscheinlich auch länger als bei einem normalen Regal.",
       "en": "Something fancier, it has lots of small compartments and looks really nice. That's why the assembly probably takes longer than with a normal shelf too.",
       "uk": "Щось незвичніше, у неї багато маленьких відділень, і виглядає вона справді гарно. Тому збирання, напевно, займе довше, ніж зі звичайною полицею.",
-      "ru": "Что-то более необычное, у неё много маленьких отделений, и выглядит она действительно красиво. Поэтому сборка, наверное, займёт дольше, чем с обычной полкой."
-    },
-    "gram": ""
+      "ru": "Что-то более необычное, у неё много маленьких отделений, и выглядит она действительно красиво. Поэтому сборка, наверное, займёт дольше, чем с обычной полкой.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_071",
     "cat": "Freizeitgestaltung",
     "task": {
@@ -15865,41 +16260,46 @@ var DIALOGE = [
       "de": "Sag mal, was machst du eigentlich am liebsten, wenn du mal Zeit für dich hast?",
       "en": "Tell me, what do you actually like doing most when you have time for yourself?",
       "uk": "Скажи, а що ти взагалі найбільше любиш робити, коли маєш час для себе?",
-      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть время для себя?"
+      "ru": "Скажи, а что ты вообще больше всего любишь делать, когда у тебя есть время для себя?",
+      "gram": ""
     },
     "a": {
       "de": "Ich töpfere seit ein paar Monaten, ich habe einen Kurs in einer kleinen Werkstatt in der Nähe gefunden. Es ist total meditativ, mit den Händen zu arbeiten. Und du, wie verbringst du deine Freizeit am liebsten?",
       "en": "I've been doing pottery for a few months now, I found a class in a small workshop nearby. It's really meditative working with your hands. What about you, how do you like to spend your free time most?",
       "uk": "Я вже кілька місяців займаюся гончарством, знайшла курси в невеликій майстерні поблизу. Це справді медитативно - працювати руками. А в тебе як, як ти найбільше любиш проводити вільний час?",
-      "ru": "Я уже несколько месяцев занимаюсь гончарным делом, нашла курсы в небольшой мастерской неподалёку. Это действительно медитативно - работать руками. А у тебя как, как ты больше всего любишь проводить свободное время?"
+      "ru": "Я уже несколько месяцев занимаюсь гончарным делом, нашла курсы в небольшой мастерской неподалёку. Это действительно медитативно - работать руками. А у тебя как, как ты больше всего любишь проводить свободное время?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich spiele eigentlich sehr gerne Schach, meistens online, aber manchmal auch mit meinem Opa, der ist wirklich gut darin. Was stellst du eigentlich alles beim Töpfern her?",
       "en": "I actually really like playing chess, mostly online, but sometimes also with my grandpa, he's really good at it. What do you actually make with pottery?",
       "uk": "Я взагалі дуже люблю грати в шахи, здебільшого онлайн, але іноді й з дідусем, він справді дуже добре грає. А що ти взагалі виготовляєш, коли займаєшся гончарством?",
-      "ru": "Я вообще очень люблю играть в шахматы, в основном онлайн, но иногда и с дедушкой, он действительно очень хорошо играет. А что ты вообще изготавливаешь, когда занимаешься гончарным делом?"
+      "ru": "Я вообще очень люблю играть в шахматы, в основном онлайн, но иногда и с дедушкой, он действительно очень хорошо играет. А что ты вообще изготавливаешь, когда занимаешься гончарным делом?",
+      "gram": ""
     },
     "a1": {
       "de": "Hauptsächlich Schalen und Tassen, aber ich probiere mich auch langsam an komplizierteren Formen. Spielst du eigentlich schon lange Schach, oder hast du das erst kürzlich angefangen?",
       "en": "Mainly bowls and cups, but I'm also slowly trying my hand at more complicated shapes. Have you actually been playing chess for a long time, or did you only start recently?",
       "uk": "Здебільшого миски й чашки, але я поступово пробую й складніші форми. А ти вже давно граєш у шахи, чи почала нещодавно?",
-      "ru": "В основном миски и чашки, но я постепенно пробую и более сложные формы. А ты уже давно играешь в шахматы, или начала недавно?"
+      "ru": "В основном миски и чашки, но я постепенно пробую и более сложные формы. А ты уже давно играешь в шахматы, или начала недавно?",
+      "gram": ""
     },
     "q2": {
       "de": "Schon seit meiner Kindheit, mein Opa hat es mir beigebracht, als ich ungefähr acht war. Wie lange dauert es eigentlich, bis so eine Tasse fertig ist?",
       "en": "Since my childhood actually, my grandpa taught me when I was about eight. How long does it actually take until a cup like that is finished?",
       "uk": "Ще з дитинства, дідусь навчив мене, коли мені було років вісім. А скільки часу взагалі йде на виготовлення такої чашки?",
-      "ru": "Ещё с детства, дедушка научил меня, когда мне было около восьми. А сколько времени вообще уходит на изготовление такой чашки?"
+      "ru": "Ещё с детства, дедушка научил меня, когда мне было около восьми. А сколько времени вообще уходит на изготовление такой чашки?",
+      "gram": ""
     },
     "a2": {
       "de": "Von der ersten Formung bis zum fertigen Brand vergehen meistens zwei bis drei Wochen, weil alles trocknen und gebrannt werden muss. Das erfordert schon eine ganze Portion Geduld.",
       "en": "From the first shaping to the finished firing it usually takes two to three weeks, because everything has to dry and be fired. That really requires quite a bit of patience.",
       "uk": "Від першого формування до готового виробу зазвичай минає два-три тижні, бо все має висохнути й пройти випал. Це вимагає чималого терпіння.",
-      "ru": "От первой формовки до готового изделия обычно проходит две-три недели, потому что всё должно высохнуть и пройти обжиг. Это требует изрядного терпения."
-    },
-    "gram": ""
+      "ru": "От первой формовки до готового изделия обычно проходит две-три недели, потому что всё должно высохнуть и пройти обжиг. Это требует изрядного терпения.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_072",
     "cat": "Urlaub",
     "task": {
@@ -15915,41 +16315,46 @@ var DIALOGE = [
       "de": "Sag mal, hast du eigentlich schon Pläne für deinen nächsten Urlaub?",
       "en": "Tell me, do you actually already have plans for your next vacation?",
       "uk": "Скажи, у тебе вже є плани на наступну відпустку?",
-      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?"
+      "ru": "Скажи, у тебя уже есть планы на следующий отпуск?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, ich mache im Sommer zum ersten Mal eine Kreuzfahrt durchs Mittelmeer, das war schon lange mein Traum. Ich freue mich total darauf, verschiedene Häfen zu besuchen. Und du, hast du auch schon was vor?",
       "en": "Yes, in summer I'm going on a Mediterranean cruise for the first time, that's been my dream for a long time. I'm really looking forward to visiting different ports. What about you, do you have anything planned too?",
       "uk": "Так, влітку я вперше вирушаю в круїз по Середземному морю, це була моя давня мрія. Я дуже чекаю відвідати різні порти. А в тебе теж уже є якісь плани?",
-      "ru": "Да, летом я впервые отправляюсь в круиз по Средиземному морю, это была моя давняя мечта. Я очень жду посетить разные порты. А у тебя тоже уже есть какие-то планы?"
+      "ru": "Да, летом я впервые отправляюсь в круиз по Средиземному морю, это была моя давняя мечта. Я очень жду посетить разные порты. А у тебя тоже уже есть какие-то планы?",
+      "gram": ""
     },
     "q1": {
       "de": "Ich wollte eigentlich mit dem Rucksack durch Südostasien reisen, so richtig planlos und spontan. Was erhoffst du dir eigentlich am meisten von der Kreuzfahrt?",
       "en": "I actually wanted to backpack through Southeast Asia, really planless and spontaneous. What are you actually hoping for most from the cruise?",
       "uk": "Я взагалі хотів помандрувати з рюкзаком по Південно-Східній Азії, зовсім без плану й спонтанно. А чого ти найбільше очікуєш від круїзу?",
-      "ru": "Я вообще хотел попутешествовать с рюкзаком по Юго-Восточной Азии, совсем без плана и спонтанно. А чего ты больше всего ожидаешь от круиза?"
+      "ru": "Я вообще хотел попутешествовать с рюкзаком по Юго-Восточной Азии, совсем без плана и спонтанно. А чего ты больше всего ожидаешь от круиза?",
+      "gram": ""
     },
     "a1": {
       "de": "Vor allem, dass ich mich mal so richtig entspannen kann, ohne mich um irgendetwas kümmern zu müssen. Alles ist ja schon organisiert. Backpacking klingt aber auch total spannend - hast du das eigentlich schon mal gemacht?",
       "en": "Mostly that I can really relax without having to worry about anything. Everything's already organized after all. Backpacking sounds really exciting too though - have you actually done that before?",
       "uk": "Найбільше того, що я справді зможу відпочити, не турбуючись ні про що. Все ж уже організовано. Але бекпекінг теж звучить дуже цікаво - ти вже колись таке робив?",
-      "ru": "Больше всего того, что я действительно смогу отдохнуть, не беспокоясь ни о чём. Всё же уже организовано. Но бэкпекинг тоже звучит очень интересно - ты уже когда-нибудь такое делал?"
+      "ru": "Больше всего того, что я действительно смогу отдохнуть, не беспокоясь ни о чём. Всё же уже организовано. Но бэкпекинг тоже звучит очень интересно - ты уже когда-нибудь такое делал?",
+      "gram": ""
     },
     "q2": {
       "de": "Ja, vor ein paar Jahren, das war eine der besten Erfahrungen meines Lebens. Man lernt dabei wirklich, mit sehr wenig auszukommen. Wie lange dauert deine Kreuzfahrt eigentlich?",
       "en": "Yes, a few years ago, that was one of the best experiences of my life. You really learn to get by with very little. How long does your cruise actually last?",
       "uk": "Так, кілька років тому, це був один із найкращих досвідів мого життя. Там справді вчишся обходитися дуже малим. А скільки взагалі триває твій круїз?",
-      "ru": "Да, несколько лет назад, это было одно из лучших впечатлений моей жизни. Там действительно учишься обходиться очень малым. А сколько вообще длится твой круиз?"
+      "ru": "Да, несколько лет назад, это было одно из лучших впечатлений моей жизни. Там действительно учишься обходиться очень малым. А сколько вообще длится твой круиз?",
+      "gram": ""
     },
     "a2": {
       "de": "Zwei Wochen, das ist für mich genau die richtige Länge, um wirklich abzuschalten, ohne dass es mir am Ende zu lang wird.",
       "en": "Two weeks, that's exactly the right length for me to really switch off, without it getting too long in the end.",
       "uk": "Два тижні, для мене це саме та тривалість, щоб справді відпочити, і водночас це не стає занадто довго.",
-      "ru": "Две недели, для меня это как раз та продолжительность, чтобы действительно отдохнуть, и при этом это не становится слишком долго."
-    },
-    "gram": ""
+      "ru": "Две недели, для меня это как раз та продолжительность, чтобы действительно отдохнуть, и при этом это не становится слишком долго.",
+      "gram": ""
+    }
   },
-{
+  {
     "id": "dlg_073",
     "cat": "Sportaktivitäten",
     "task": {
@@ -15965,39 +16370,44 @@ var DIALOGE = [
       "de": "Sag mal, ich würde gern mit dem Klettern anfangen. <r>Wie siehst du das</r>?",
       "en": "Tell me, I'd like to start climbing. <r>What do you think</r>?",
       "uk": "Скажи, я б хотіла почати займатися скелелазінням. <r>Як ти на це дивишся</r>?",
-      "ru": "Скажи, я бы хотела начать заниматься скалолазанием. <r>Как ты на это смотришь</r>?"
+      "ru": "Скажи, я бы хотела начать заниматься скалолазанием. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, <r>das finde ich eine gute Idee</r>, das soll super für die Kondition sein. <r>Hast du schon Erfahrungen damit gemacht</r>, oder wäre das komplett neu für dich?",
       "en": "Yes, <r>I think that's a good idea</r>, it's supposed to be great for fitness. <r>Have you had any experience with it</r> already, or would that be completely new for you?",
       "uk": "Так, <r>я вважаю це гарною ідеєю</r>, кажуть, це чудово для фізичної форми. <r>У тебе вже є досвід у цьому</r>, чи для тебе це було б зовсім нове?",
-      "ru": "Да, <r>я считаю это хорошей идеей</r>, говорят, это отлично для физической формы. <r>У тебя уже есть опыт в этом</r>, или для тебя это было бы совсем новым?"
+      "ru": "Да, <r>я считаю это хорошей идеей</r>, говорят, это отлично для физической формы. <r>У тебя уже есть опыт в этом</r>, или для тебя это было бы совсем новым?",
+      "gram": ""
     },
     "q1": {
       "de": "Komplett neu, ehrlich gesagt. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, ob ich mutig genug dafür bin. Denkst du, das ist wirklich so anstrengend, wie alle sagen?",
       "en": "Completely new, honestly. <r>I don't know, I'm not sure</r> if I'm brave enough for it. Do you think it's really as exhausting as everyone says?",
       "uk": "Чесно кажучи, зовсім нове. <r>Я не знаю, я не впевнена</r>, чи достатньо я смілива для цього. Ти думаєш, це справді так виснажливо, як усі кажуть?",
-      "ru": "Честно говоря, совсем новое. <r>Я не знаю, я не уверена</r>, достаточно ли я смелая для этого. Ты думаешь, это действительно так утомительно, как все говорят?"
+      "ru": "Честно говоря, совсем новое. <r>Я не знаю, я не уверена</r>, достаточно ли я смелая для этого. Ты думаешь, это действительно так утомительно, как все говорят?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Es hängt davon ab, ob</r> du in einer Kletterhalle anfängst oder gleich draußen am Fels. In der Halle ist es viel einfacher für Anfänger. <r>Aber man sollte es versuchen</r>.",
       "en": "<r>It depends on whether</r> you start in a climbing gym or straight outdoors on real rock. In the gym it's much easier for beginners. <r>But you should just try it</r>.",
       "uk": "<r>Залежить, чи</r> почнеш ти в скеледромі, чи одразу на справжній скелі надворі. У залі це значно простіше для початківців. <r>Але варто просто спробувати</r>.",
-      "ru": "<r>Зависит от того</r>, начнёшь ли ты в скалодроме, или сразу на настоящей скале на улице. В зале это намного проще для начинающих. <r>Но стоит просто попробовать</r>."
+      "ru": "<r>Зависит от того</r>, начнёшь ли ты в скалодроме, или сразу на настоящей скале на улице. В зале это намного проще для начинающих. <r>Но стоит просто попробовать</r>.",
+      "gram": ""
     },
     "q2": {
       "de": "Das stimmt wahrscheinlich. <r>Was denkst du</r>, sollte ich lieber allein anfangen oder gleich mit jemandem zusammen?",
       "en": "That's probably true. <r>What do you think</r>, should I rather start alone or right away together with someone?",
       "uk": "Мабуть, це правда. <r>Як ти думаєш</r>, мені краще почати самій чи одразу з кимось разом?",
-      "ru": "Наверное, это правда. <r>Как ты думаешь</r>, мне лучше начать одной или сразу с кем-то вместе?"
+      "ru": "Наверное, это правда. <r>Как ты думаешь</r>, мне лучше начать одной или сразу с кем-то вместе?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ich bin der Meinung, dass</r> es am Anfang leichter ist, mit jemand Erfahrenem zu gehen, der einem die Grundlagen zeigt. Ich könnte dich zum Beispiel mal mitnehmen, wenn du magst.",
       "en": "<r>I think that</r> it's easier at the start to go with someone experienced who shows you the basics. I could take you along sometime, for example, if you'd like.",
       "uk": "<r>Я вважаю, що</r> на початку легше піти з кимось досвідченим, хто покаже основи. Я могла б, наприклад, колись узяти тебе з собою, якщо хочеш.",
-      "ru": "<r>Я считаю, что</r> вначале легче пойти с кем-то опытным, кто покажет основы. Я могла бы, например, как-нибудь взять тебя с собой, если хочешь."
-    },
-    "gram": ""
+      "ru": "<r>Я считаю, что</r> вначале легче пойти с кем-то опытным, кто покажет основы. Я могла бы, например, как-нибудь взять тебя с собой, если хочешь.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_074",
@@ -16015,39 +16425,44 @@ var DIALOGE = [
       "de": "Sag mal, was könnte man eigentlich tun, um im Arbeitsalltag mehr in <g>Bewegung</g> zu bleiben? Ich sitze den ganzen Tag nur am Schreibtisch.",
       "en": "Tell me, what could we actually do to get more <g>movement</g> into the workday? I just sit at my desk all day.",
       "uk": "Скажи, а що взагалі можна зробити, щоб більше <g>рухатися</g> протягом робочого дня? Я цілий день просто сиджу за столом.",
-      "ru": "Скажи, а что вообще можно сделать, чтобы больше <g>двигаться</g> в течение рабочего дня? Я целый день просто сижу за столом."
+      "ru": "Скажи, а что вообще можно сделать, чтобы больше <g>двигаться</g> в течение рабочего дня? Я целый день просто сижу за столом.",
+      "gram": "nominalisierung"
     },
     "a": {
       "de": "<r>Das finde ich eine gute Idee</r>, darüber nachzudenken. <r>Man könnte vielleicht</r> in der Mittagspause einen kurzen Spaziergang machen, das hilft schon beim <g>Stressabbau</g>.",
       "en": "<r>I think that's a good idea</r> to think about. <r>We could</r> maybe take a short walk during the lunch break, that already helps with <g>stress relief</g>.",
       "uk": "<r>Я вважаю це гарною ідеєю</r> — подумати над цим. <r>Можна було б</r>, наприклад, робити коротку прогулянку в обідню перерву, це вже допомагає зі <g>зняттям стресу</g>.",
-      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r>, например, делать короткую прогулку в обеденный перерыв, это уже помогает со <g>снятием стресса</g>."
+      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r>, например, делать короткую прогулку в обеденный перерыв, это уже помогает со <g>снятием стресса</g>.",
+      "gram": "nominalisierung"
     },
     "q1": {
       "de": "Stimmt, das mache ich manchmal schon. <r>Es gibt auch die Möglichkeit</r>, die Treppe statt den Aufzug zu nehmen, oder? Kleine Dinge, die sich gut in den Alltag einbauen lassen.",
       "en": "True, I sometimes already do that. <r>There's also the option</r> of taking the stairs instead of the elevator, right? Small things that fit easily into everyday life.",
       "uk": "Точно, я іноді так і роблю. <r>Є ще й така можливість</r> - ходити сходами замість ліфта, правда? Дрібниці, які легко вписати в повсякденне життя.",
-      "ru": "Точно, я иногда так и делаю. <r>Есть ещё и такая возможность</r> - ходить по лестнице вместо лифта, правда? Мелочи, которые легко вписать в повседневную жизнь."
+      "ru": "Точно, я иногда так и делаю. <r>Есть ещё и такая возможность</r> - ходить по лестнице вместо лифта, правда? Мелочи, которые легко вписать в повседневную жизнь.",
+      "gram": ""
     },
     "a1": {
       "de": "Genau, und manche Firmen bieten ja auch Entspannungsübungen oder einen Fitnessraum an. <r>Hättest du eine andere Idee</r>, wie man das im Team umsetzen könnte?",
       "en": "Exactly, and some companies also offer relaxation exercises or a fitness room. <r>Would you have another idea</r> how we could do that as a team?",
       "uk": "Саме так, і деякі фірми пропонують ще й вправи на розслаблення чи спортзал. <r>У тебе є інша ідея</r>, як це можна впровадити в команді?",
-      "ru": "Именно так, и некоторые фирмы предлагают ещё и упражнения на расслабление или спортзал. <r>У тебя есть другая идея</r>, как это можно внедрить в команде?"
+      "ru": "Именно так, и некоторые фирмы предлагают ещё и упражнения на расслабление или спортзал. <r>У тебя есть другая идея</r>, как это можно внедрить в команде?",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Vielleicht könnte man auch</r> ein gemeinsames Sportangebot organisieren, zum Beispiel einmal pro Woche Yoga nach der Arbeit. <r>Was denkst du</r>, würde sowas bei den Kollegen ankommen?",
       "en": "<r>Maybe we could also</r> organize a team sports activity, for example yoga once a week after work. <r>What do you think</r>, would that appeal to our colleagues?",
       "uk": "<r>Можливо, можна було б ще</r> організувати спільну спортивну активність, наприклад, раз на тиждень йогу після роботи. <r>Як ти думаєш</r>, чи сподобалося б це колегам?",
-      "ru": "<r>Возможно, можно было бы ещё</r> организовать совместную спортивную активность, например, раз в неделю йогу после работы. <r>Как ты думаешь</r>, понравилось бы это коллегам?"
+      "ru": "<r>Возможно, можно было бы ещё</r> организовать совместную спортивную активность, например, раз в неделю йогу после работы. <r>Как ты думаешь</r>, понравилось бы это коллегам?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ich bin der Meinung, dass</r> viele das gern machen würden, gerade zur <g>Prävention</g> von Rückenschmerzen. <r>Das wäre mein Vorschlag</r>: Wir sprechen einfach mal die Chefin darauf an.",
       "en": "<r>I think that</r> a lot of people would enjoy that, especially for <g>preventing</g> back pain. <r>That would be my suggestion</r>: let's just ask the boss about it.",
       "uk": "<r>Я вважаю, що</r> багато хто із задоволенням би це робив, особливо для <g>профілактики</g> болю в спині. <r>Ось моя пропозиція</r>: давай просто запитаємо про це начальницю.",
-      "ru": "<r>Я считаю, что</r> многие с удовольствием бы это делали, особенно для <g>профилактики</g> боли в спине. <r>Вот моё предложение</r>: давай просто спросим об этом начальницу."
-    },
-    "gram": "nominalisierung"
+      "ru": "<r>Я считаю, что</r> многие с удовольствием бы это делали, особенно для <g>профилактики</g> боли в спине. <r>Вот моё предложение</r>: давай просто спросим об этом начальницу.",
+      "gram": "nominalisierung"
+    }
   },
   {
     "id": "dlg_075",
@@ -16065,39 +16480,44 @@ var DIALOGE = [
       "de": "Sag mal, ich würde gern öfter im Homeoffice arbeiten. <r>Wie siehst du das</r>?",
       "en": "Tell me, I'd like to work from home more often. <r>What do you think</r>?",
       "uk": "Скажи, я б хотіла частіше працювати з дому. <r>Як ти на це дивишся</r>?",
-      "ru": "Скажи, я бы хотела чаще работать из дома. <r>Как ты на это смотришь</r>?"
+      "ru": "Скажи, я бы хотела чаще работать из дома. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, <r>das sehe ich auch so</r>, gerade an Tagen, an denen man sich gut konzentrieren muss, ist das echt praktisch. Hast du schon mal mit deiner Chefin darüber gesprochen?",
       "en": "Yes, <r>I think so too</r>, especially on days when you need to concentrate, it's really practical. Have you talked to your boss about it yet?",
       "uk": "Так, <r>я теж так вважаю</r>, особливо в дні, коли треба добре зосередитися, це справді зручно. Ти вже говорила зі своєю начальницею про це?",
-      "ru": "Да, <r>я тоже так считаю</r>, особенно в дни, когда нужно хорошо сосредоточиться, это действительно удобно. Ты уже говорила со своей начальницей об этом?"
+      "ru": "Да, <r>я тоже так считаю</r>, особенно в дни, когда нужно хорошо сосредоточиться, это действительно удобно. Ты уже говорила со своей начальницей об этом?",
+      "gram": ""
     },
     "q1": {
       "de": "Noch nicht direkt, aber ich überlege es mir. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, ob das bei uns im Team überhaupt möglich wäre. Wie handhabt ihr das eigentlich in deiner Abteilung?",
       "en": "Not directly yet, but I'm thinking about it. <r>I don't know, I'm not sure</r> if that would even be possible in our team. How do you actually handle that in your department?",
       "uk": "Ще ні напряму, але я про це думаю. <r>Я не знаю, я не впевнена</r>, чи це взагалі можливо в нашій команді. До речі, як це влаштовано у вашому відділі?",
-      "ru": "Ещё не напрямую, но я об этом думаю. <r>Я не знаю, я не уверена</r>, возможно ли это вообще в нашей команде. Кстати, как это устроено в вашем отделе?"
+      "ru": "Ещё не напрямую, но я об этом думаю. <r>Я не знаю, я не уверена</r>, возможно ли это вообще в нашей команде. Кстати, как это устроено в вашем отделе?",
+      "gram": ""
     },
     "a1": {
       "de": "Bei uns ist das inzwischen ziemlich flexibel – wir können uns zwei Tage pro Woche frei aussuchen. <r>Es hängt davon ab, ob</r> gerade wichtige Meetings anstehen, aber sonst klappt das gut.",
       "en": "For us it's pretty flexible now – we can choose two days a week freely. <r>It depends on whether</r> there are important meetings coming up, but otherwise it works well.",
       "uk": "У нас це вже доволі гнучко - можна самим обирати два дні на тиждень. <r>Залежить від того, чи</r> заплановані важливі зустрічі, але загалом це добре працює.",
-      "ru": "У нас это уже довольно гибко - можно самим выбирать два дня в неделю. <r>Зависит от того, есть ли</r> важные встречи, но в остальном это хорошо работает."
+      "ru": "У нас это уже довольно гибко - можно самим выбирать два дня в неделю. <r>Зависит от того, есть ли</r> важные встречи, но в остальном это хорошо работает.",
+      "gram": ""
     },
     "q2": {
       "de": "Das klingt gut. <r>Was denkst du</r>, sollte ich das lieber schriftlich beantragen oder erstmal informell ansprechen?",
       "en": "That sounds good. <r>What do you think</r>, should I rather apply in writing or bring it up informally first?",
       "uk": "Звучить непогано. <r>Як ти думаєш</r>, мені краще подати письмову заяву чи спершу поговорити неформально?",
-      "ru": "Звучит неплохо. <r>Как ты думаешь</r>, мне лучше подать письменное заявление или сначала поговорить неформально?"
+      "ru": "Звучит неплохо. <r>Как ты думаешь</r>, мне лучше подать письменное заявление или сначала поговорить неформально?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ich würde dir empfehlen</r>, erstmal informell nachzufragen, das wirkt weniger förmlich. Wenn sie offen dafür ist, könnt ihr das später schriftlich festhalten.",
       "en": "<r>I'd recommend</r> asking informally first, that feels less formal. If she's open to it, you can put it in writing later.",
       "uk": "<r>Я б порадив тобі</r> спершу запитати неформально, це виглядає менш офіційно. Якщо вона буде відкрита до цього, потім можна оформити письмово.",
-      "ru": "<r>Я бы посоветовал тебе</r> сначала спросить неформально, это выглядит менее официально. Если она будет открыта к этому, потом можно оформить письменно."
-    },
-    "gram": ""
+      "ru": "<r>Я бы посоветовал тебе</r> сначала спросить неформально, это выглядит менее официально. Если она будет открыта к этому, потом можно оформить письменно.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_076",
@@ -16115,39 +16535,44 @@ var DIALOGE = [
       "de": "Sag <g>mal</g>, was könnte man eigentlich tun, damit sich Arbeit und Kinderbetreuung besser vereinbaren lassen? Wie machst du <g>denn</g> das mit deinen Kindern?",
       "en": "Tell me — <g>just</g> out of curiosity — what could actually be done to make it easier to combine work and childcare? How do you <g>actually</g> manage that with your kids?",
       "uk": "Скажи-<g>но</g>, що взагалі можна зробити, щоб краще поєднувати роботу й догляд за дітьми? А як ти <g>власне</g> це робиш зі своїми дітьми?",
-      "ru": "Скажи-<g>ка</g>, а что вообще можно сделать, чтобы лучше совмещать работу и уход за детьми? А как ты <g>вообще-то</g> это делаешь со своими детьми?"
+      "ru": "Скажи-<g>ка</g>, а что вообще можно сделать, чтобы лучше совмещать работу и уход за детьми? А как ты <g>вообще-то</g> это делаешь со своими детьми?",
+      "gram": "modalpartikeln"
     },
     "a": {
       "de": "Das ist eine gute Frage. <r>Man könnte vielleicht</r> flexiblere Arbeitszeiten anbieten, dann könnte man die Kinder morgens selbst zur Schule bringen.",
       "en": "That's a good question. <r>We could maybe</r> offer more flexible working hours, then people could take their kids to school themselves in the morning.",
       "uk": "Гарне запитання. <r>Можна було б</r> запропонувати гнучкіший робочий графік, тоді можна було б самим відводити дітей до школи вранці.",
-      "ru": "Хороший вопрос. <r>Можно было бы</r> предложить более гибкий график работы, тогда можно было бы самим отводить детей в школу утром."
+      "ru": "Хороший вопрос. <r>Можно было бы</r> предложить более гибкий график работы, тогда можно было бы самим отводить детей в школу утром.",
+      "gram": ""
     },
     "q1": {
       "de": "Stimmt, das wäre ein guter Anfang. <r>Es gibt auch die Möglichkeit</r>, dass die Firma einen Betriebskindergarten anbietet, oder?",
       "en": "True, that would be a good start. <r>There's also the option</r> of the company offering an on-site daycare, right?",
       "uk": "Точно, це був би непоганий початок. <r>Є ще й така можливість</r>, що фірма пропонує власний дитячий садок, правда?",
-      "ru": "Точно, это был бы неплохой старт. <r>Есть ещё и такая возможность</r>, что фирма предлагает собственный детский сад, верно?"
+      "ru": "Точно, это был бы неплохой старт. <r>Есть ещё и такая возможность</r>, что фирма предлагает собственный детский сад, верно?",
+      "gram": ""
     },
     "a1": {
       "de": "Ja, genau, manche größeren Firmen bieten das inzwischen an. <r>Hättest du eine andere Idee</r>, wie man das im Alltag erleichtern könnte?",
       "en": "Yes, exactly, some bigger companies already offer that. <r>Would you have another idea</r> how to make everyday life easier?",
       "uk": "Так, саме так, деякі більші фірми вже це пропонують. <r>У тебе є інша ідея</r>, як полегшити це в повсякденному житті?",
-      "ru": "Да, именно так, некоторые крупные фирмы уже это предлагают. <r>У тебя есть другая идея</r>, как облегчить это в повседневной жизни?"
+      "ru": "Да, именно так, некоторые крупные фирмы уже это предлагают. <r>У тебя есть другая идея</r>, как облегчить это в повседневной жизни?",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Vielleicht könnte man auch</r> im Homeoffice arbeiten, wenn ein Kind krank ist. <r>Was denkst du</r>, würde das bei euch funktionieren?",
       "en": "<r>Maybe we could also</r> work from home when a child is sick. <r>What do you think</r>, would that work at your place?",
       "uk": "<r>Можливо, можна було б ще</r> працювати з дому, коли дитина хворіє. <r>Як ти думаєш</r>, чи спрацювало б це у вас?",
-      "ru": "<r>Возможно, можно было бы ещё</r> работать из дома, когда ребёнок болеет. <r>Как ты думаешь</r>, сработало бы это у вас?"
+      "ru": "<r>Возможно, можно было бы ещё</r> работать из дома, когда ребёнок болеет. <r>Как ты думаешь</r>, сработало бы это у вас?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ich bin der Meinung, dass</r> das auf jeden Fall helfen würde. Das wird <g>schon</g> klappen, wenn man mit dem Chef offen darüber spricht.",
       "en": "<r>I think that</r> would definitely help. It'll work out <g>just fine</g> if you talk to your boss openly about it.",
       "uk": "<r>Я вважаю, що</r> це точно допомогло б. Усе <g>обов'язково</g> вийде, якщо відкрито поговорити з начальником.",
-      "ru": "<r>Я считаю, что</r> это точно помогло бы. Всё <g>обязательно</g> получится, если открыто поговорить с начальником."
-    },
-    "gram": "modalpartikeln"
+      "ru": "<r>Я считаю, что</r> это точно помогло бы. Всё <g>обязательно</g> получится, если открыто поговорить с начальником.",
+      "gram": "modalpartikeln"
+    }
   },
   {
     "id": "dlg_077",
@@ -16165,39 +16590,44 @@ var DIALOGE = [
       "de": "Sag mal, ich würde gern öfter kurze Kurzurlaube machen, statt einmal im Jahr lange wegzufahren. <r>Wie siehst du das</r>?",
       "en": "Tell me, I'd like to take short getaways more often instead of one long trip a year. <r>What do you think</r>?",
       "uk": "Скажи, я б хотіла частіше брати короткі відпустки замість однієї довгої поїздки на рік. <r>Як ти на це дивишся</r>?",
-      "ru": "Скажи, я бы хотела чаще брать короткие отпуска вместо одной долгой поездки в год. <r>Как ты на это смотришь</r>?"
+      "ru": "Скажи, я бы хотела чаще брать короткие отпуска вместо одной долгой поездки в год. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, <r>das sehe ich auch so</r>, so hat man öfter im Jahr etwas, worauf man sich freuen kann. <r>Hast du schon Erfahrungen damit gemacht</r>?",
       "en": "Yes, <r>I think so too</r>, that way you have something to look forward to more often throughout the year. <r>Have you had any experience with that</r>?",
       "uk": "Так, <r>я теж так вважаю</r>, тоді протягом року частіше є на що чекати з нетерпінням. <r>У тебе вже є досвід у цьому</r>?",
-      "ru": "Да, <r>я тоже так считаю</r>, тогда в течение года чаще есть, чего ждать с нетерпением. <r>У тебя уже есть опыт в этом</r>?"
+      "ru": "Да, <r>я тоже так считаю</r>, тогда в течение года чаще есть, чего ждать с нетерпением. <r>У тебя уже есть опыт в этом</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "Ja, letztes Jahr war ich zweimal für ein verlängertes Wochenende weg, das war richtig erholsam. Machst du das auch öfter mal so?",
       "en": "Yes, last year I went away twice for a long weekend, that was really relaxing. Do you do that more often too?",
       "uk": "Так, торік я двічі їздила на подовжений вихідний, це було справді розслабляюче. Ти теж так частіше робиш?",
-      "ru": "Да, в прошлом году я дважды ездила на продлённые выходные, это было действительно расслабляюще. Ты тоже так чаще делаешь?"
+      "ru": "Да, в прошлом году я дважды ездила на продлённые выходные, это было действительно расслабляюще. Ты тоже так чаще делаешь?",
+      "gram": ""
     },
     "a1": {
       "de": "Bisher eher selten, ich nehme meistens einen großen Urlaub im Sommer. <r>Es hängt davon ab, ob</r> ich genug Urlaubstage übrighabe für so etwas Spontanes.",
       "en": "So far rather rarely, I usually take one big vacation in summer. <r>It depends on whether</r> I have enough vacation days left for something spontaneous like that.",
       "uk": "Поки що рідко, я зазвичай беру одну велику відпустку влітку. <r>Залежить від того, чи</r> в мене залишилося достатньо відпускних днів на щось спонтанне.",
-      "ru": "Пока что редко, я обычно беру один большой отпуск летом. <r>Зависит от того, есть ли</r> у меня достаточно отпускных дней на что-то спонтанное."
+      "ru": "Пока что редко, я обычно беру один большой отпуск летом. <r>Зависит от того, есть ли</r> у меня достаточно отпускных дней на что-то спонтанное.",
+      "gram": ""
     },
     "q2": {
       "de": "Das verstehe ich. <r>Was denkst du</r>, würde es sich lohnen, den Jahresurlaub aufzuteilen?",
       "en": "I understand. <r>What do you think</r>, would it be worth splitting up the annual leave?",
       "uk": "Розумію. <r>Як ти думаєш</r>, чи варто було б розділити річну відпустку?",
-      "ru": "Понимаю. <r>Как ты думаешь</r>, стоило бы разделить годовой отпуск?"
+      "ru": "Понимаю. <r>Как ты думаешь</r>, стоило бы разделить годовой отпуск?",
+      "gram": ""
     },
     "a2": {
       "de": "Ich glaube schon, gerade um zwischendurch mal richtig abzuschalten. Ich werde das nächstes Jahr auf jeden Fall mal ausprobieren.",
       "en": "I think so, especially to really switch off in between. I'll definitely try that out next year.",
       "uk": "Мабуть, так, особливо щоб час від часу справді відпочивати від усього. Наступного року я точно спробую це зробити.",
-      "ru": "Наверное, да, особенно чтобы время от времени по-настоящему отключаться. В следующем году я точно попробую это сделать."
-    },
-    "gram": ""
+      "ru": "Наверное, да, особенно чтобы время от времени по-настоящему отключаться. В следующем году я точно попробую это сделать.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_078",
@@ -16215,39 +16645,44 @@ var DIALOGE = [
       "de": "Sag mal, was könnte man eigentlich tun, um den Arbeitsweg entspannter zu gestalten? Ich stehe morgens ständig im <g>stockenden</g> Verkehr.",
       "en": "Tell me, what could actually be done to make the commute to work less stressful? I'm stuck in <g>backed-up</g> traffic every morning.",
       "uk": "Скажи, а що взагалі можна зробити, щоб дорога на роботу була менш напруженою? Я щоранку стою в <g>заблокованому</g> русі.",
-      "ru": "Скажи, а что вообще можно сделать, чтобы дорога на работу была менее напряжённой? Я каждое утро стою в <g>заблокированном</g> движении."
+      "ru": "Скажи, а что вообще можно сделать, чтобы дорога на работу была менее напряжённой? Я каждое утро стою в <g>заблокированном</g> движении.",
+      "gram": "partizipien_als_adjektive"
     },
     "a": {
       "de": "<r>Das finde ich eine gute Idee</r>, darüber nachzudenken. <r>Man könnte vielleicht</r> öfter mit dem Fahrrad fahren, gerade bei <g>steigenden</g> Spritpreisen lohnt sich das.",
       "en": "<r>I think that's a good idea</r> to think about. <r>We could maybe</r> cycle more often, especially with <g>rising</g> fuel prices that's worth it.",
       "uk": "<r>Я вважаю це гарною ідеєю</r> — подумати над цим. <r>Можна було б</r> частіше їздити на велосипеді, особливо при <g>зростаючих</g> цінах на пальне це варте того.",
-      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r> чаще ездить на велосипеде, особенно при <g>растущих</g> ценах на бензин это того стоит."
+      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r> чаще ездить на велосипеде, особенно при <g>растущих</g> ценах на бензин это того стоит.",
+      "gram": "partizipien_als_adjektive"
     },
     "q1": {
       "de": "Stimmt, das mache ich im Sommer schon manchmal. <r>Es gibt auch die Möglichkeit</r>, eine Fahrgemeinschaft zu bilden, oder?",
       "en": "True, I sometimes already do that in summer. <r>There's also the option</r> of forming a carpool, right?",
       "uk": "Точно, я іноді так роблю влітку. <r>Є ще й така можливість</r> — організувати спільні поїздки з колегами, правда?",
-      "ru": "Точно, я иногда так делаю летом. <r>Есть ещё и такая возможность</r> - организовать совместные поездки с коллегами, верно?"
+      "ru": "Точно, я иногда так делаю летом. <r>Есть ещё и такая возможность</r> - организовать совместные поездки с коллегами, верно?",
+      "gram": ""
     },
     "a1": {
       "de": "Ja, genau, das würde auch den wachsenden Stau auf der Autobahn ein bisschen entlasten. <r>Hättest du noch eine andere Idee</r>?",
       "en": "Yes, exactly, that would also ease the growing traffic jams on the highway a bit. <r>Would you have another idea</r>?",
       "uk": "Так, саме так, це б трохи розвантажило й зростаючі затори на автомагістралі. <r>У тебе є ще якась ідея</r>?",
-      "ru": "Да, именно так, это бы немного разгрузило и растущие пробки на автомагистрали. <r>У тебя есть ещё какая-то идея</r>?"
+      "ru": "Да, именно так, это бы немного разгрузило и растущие пробки на автомагистрали. <r>У тебя есть ещё какая-то идея</r>?",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Vielleicht könnte man auch</r> früher losfahren, um den stärksten Berufsverkehr zu vermeiden. <r>Was denkst du</r>, würde das bei dir funktionieren?",
       "en": "<r>Maybe we could also</r> leave earlier to avoid the worst rush-hour traffic. <r>What do you think</r>, would that work for you?",
       "uk": "<r>Можливо, можна було б ще</r> виїжджати раніше, щоб уникнути найбільшого затору в годину пік. <r>Як ти думаєш</r>, чи спрацювало б це у тебе?",
-      "ru": "<r>Возможно, можно было бы ещё</r> выезжать пораньше, чтобы избежать самого сильного затора в час пик. <r>Как ты думаешь</r>, сработало бы это у тебя?"
+      "ru": "<r>Возможно, можно было бы ещё</r> выезжать пораньше, чтобы избежать самого сильного затора в час пик. <r>Как ты думаешь</r>, сработало бы это у тебя?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ich bin der Meinung, dass</r> das auf jeden Fall helfen würde. Mit einem gut <g>geplanten</g> Zeitpuffer kommt man viel entspannter an.",
       "en": "<r>I think that</r> would definitely help. With a well-<g>planned</g> time buffer, you arrive much more relaxed.",
       "uk": "<r>Я вважаю, що</r> це точно допомогло б. З добре <g>спланованим</g> запасом часу приїжджаєш набагато спокійніше.",
-      "ru": "<r>Я считаю, что</r> это точно помогло бы. С хорошо <g>спланированным</g> запасом времени приезжаешь намного спокойнее."
-    },
-    "gram": "partizipien_als_adjektive"
+      "ru": "<r>Я считаю, что</r> это точно помогло бы. С хорошо <g>спланированным</g> запасом времени приезжаешь намного спокойнее.",
+      "gram": "partizipien_als_adjektive"
+    }
   },
   {
     "id": "dlg_079",
@@ -16265,39 +16700,44 @@ var DIALOGE = [
       "de": "Sag mal, ich würde gern öfter am Wochenende einen Kurs oder Workshop machen, statt nur zu Hause zu bleiben. <r>Wie siehst du das</r>?",
       "en": "Tell me, I'd like to do a course or workshop more often on weekends instead of just staying home. <r>What do you think</r>?",
       "uk": "Скажи, я б хотіла частіше проводити вихідні на курсах чи майстер-класах, а не просто вдома. <r>Як ти на це дивишся</r>?",
-      "ru": "Скажи, я бы хотела чаще проводить выходные на курсах или мастер-классах, а не просто дома. <r>Как ты на это смотришь</r>?"
+      "ru": "Скажи, я бы хотела чаще проводить выходные на курсах или мастер-классах, а не просто дома. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, <r>das sehe ich auch so</r>, man lernt dabei ja auch immer etwas Neues. <r>Hast du schon Erfahrungen damit gemacht</r>?",
       "en": "Yes, <r>I think so too</r>, you always learn something new that way. <r>Have you had any experience with that</r>?",
       "uk": "Так, <r>я теж так вважаю</r>, там завжди можна навчитися чогось нового. <r>У тебе вже є досвід у цьому</r>?",
-      "ru": "Да, <r>я тоже так считаю</r>, там всегда можно узнать что-то новое. <r>У тебя уже есть опыт в этом</r>?"
+      "ru": "Да, <r>я тоже так считаю</r>, там всегда можно узнать что-то новое. <r>У тебя уже есть опыт в этом</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "Ja, ich war letztes Jahr bei einem Töpferkurs, das hat richtig Spaß gemacht. Machst du auch manchmal sowas?",
       "en": "Yes, last year I did a pottery course, that was really fun. Do you sometimes do something like that too?",
       "uk": "Так, торік я була на курсі гончарства, це було дуже весело. Ти теж іноді так робиш?",
-      "ru": "Да, в прошлом году я была на курсе гончарного дела, это было очень весело. Ты тоже иногда так делаешь?"
+      "ru": "Да, в прошлом году я была на курсе гончарного дела, это было очень весело. Ты тоже иногда так делаешь?",
+      "gram": ""
     },
     "a1": {
       "de": "Bisher eher selten, ich verbringe die Wochenenden meistens einfach mit Freunden. <r>Es hängt davon ab, ob</r> ich Lust auf etwas Neues habe oder mich lieber entspannen möchte.",
       "en": "So far rather rarely, I usually just spend weekends with friends. <r>It depends on whether</r> I feel like trying something new or would rather relax.",
       "uk": "Поки що рідко, я зазвичай просто проводжу вихідні з друзями. <r>Залежить від того, чи</r> в мене є настрій спробувати щось нове, чи я краще відпочину.",
-      "ru": "Пока что редко, я обычно просто провожу выходные с друзьями. <r>Зависит от того, есть ли</r> у меня настроение попробовать что-то новое, или я лучше отдохну."
+      "ru": "Пока что редко, я обычно просто провожу выходные с друзьями. <r>Зависит от того, есть ли</r> у меня настроение попробовать что-то новое, или я лучше отдохну.",
+      "gram": ""
     },
     "q2": {
       "de": "Das verstehe ich gut. <r>Was denkst du</r>, hättest du Interesse, mal zusammen einen Kochkurs auszuprobieren?",
       "en": "I get that. <r>What do you think</r>, would you be interested in trying a cooking class together sometime?",
       "uk": "Розумію. <r>Як ти думаєш</r>, чи було б тобі цікаво якось разом спробувати кулінарний курс?",
-      "ru": "Понимаю. <r>Как ты думаешь</r>, было бы тебе интересно как-нибудь вместе попробовать кулинарный курс?"
+      "ru": "Понимаю. <r>Как ты думаешь</r>, было бы тебе интересно как-нибудь вместе попробовать кулинарный курс?",
+      "gram": ""
     },
     "a2": {
       "de": "Ich glaube schon, das klingt nach einer guten Idee. Lass uns das nächste Wochenende mal in Angriff nehmen.",
       "en": "I think so, that sounds like a good idea. Let's give it a try next weekend.",
       "uk": "Мабуть, так, звучить як гарна ідея. Давай спробуємо наступні вихідні.",
-      "ru": "Наверное, да, звучит как хорошая идея. Давай попробуем в следующие выходные."
-    },
-    "gram": ""
+      "ru": "Наверное, да, звучит как хорошая идея. Давай попробуем в следующие выходные.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_080",
@@ -16315,39 +16755,44 @@ var DIALOGE = [
       "de": "Sag mal, was könnte man eigentlich an einem regnerischen Wochenende unternehmen? Ich hab schon oft keine Idee, wenn's draußen so schlecht ist.",
       "en": "Tell me, what could you actually do on a rainy weekend? I often have no idea what to do when the weather's that bad outside.",
       "uk": "Скажи, а що взагалі можна робити в дощові вихідні? У мене часто немає ідей, коли надворі так погано.",
-      "ru": "Скажи, а что вообще можно делать в дождливые выходные? У меня часто нет идей, когда на улице так плохо."
+      "ru": "Скажи, а что вообще можно делать в дождливые выходные? У меня часто нет идей, когда на улице так плохо.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Das finde ich eine gute Idee</r>. <r>Man könnte vielleicht</r> ins Kino gehen, <g>wegen des</g> schlechten Wetters ist das ja gerade perfekt.",
       "en": "<r>I think that's a good idea</r> to think about. <r>We could maybe</r> go to the cinema, <g>because of</g> the bad weather that's actually perfect.",
       "uk": "<r>Я вважаю це гарною ідеєю</r> — подумати над цим. <r>Можна було б</r> піти в кіно, <g>через</g> погану погоду це якраз ідеально.",
-      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r> пойти в кино, <g>из-за</g> плохой погоды это как раз идеально."
+      "ru": "<r>Я считаю это хорошей идеей</r> - подумать об этом. <r>Можно было бы</r> пойти в кино, <g>из-за</g> плохой погоды это как раз идеально.",
+      "gram": "waehrend_genitiv_praeposition"
     },
     "q1": {
       "de": "Stimmt, das mache ich manchmal auch. <r>Es gibt auch die Möglichkeit</r>, einfach zu Hause zu backen, oder?",
       "en": "True, I sometimes do that too. <r>There's also the option</r> of just baking at home, right?",
       "uk": "Точно, я іноді теж так роблю. <r>Є ще й така можливість</r> — просто випікати щось удома, правда?",
-      "ru": "Точно, я иногда тоже так делаю. <r>Есть ещё и такая возможность</r> - просто печь что-то дома, верно?"
+      "ru": "Точно, я иногда тоже так делаю. <r>Есть ещё и такая возможность</r> - просто печь что-то дома, верно?",
+      "gram": ""
     },
     "a1": {
       "de": "Ja, genau, das mache ich <g>während</g> des Regens sehr gern, das ist richtig gemütlich. <r>Hättest du noch eine andere Idee</r>?",
       "en": "Yes, exactly, I really like doing that <g>during</g> the rain, it's really cozy. <r>Would you have another idea</r>?",
       "uk": "Так, саме так, я дуже люблю робити це <g>під час</g> дощу, це дуже затишно. <r>У тебе є ще якась ідея</r>?",
-      "ru": "Да, именно так, я очень люблю делать это <g>во время</g> дождя, это очень уютно. <r>У тебя есть ещё какая-то идея</r>?"
+      "ru": "Да, именно так, я очень люблю делать это <g>во время</g> дождя, это очень уютно. <r>У тебя есть ещё какая-то идея</r>?",
+      "gram": "waehrend_genitiv_praeposition"
     },
     "q2": {
       "de": "<r>Vielleicht könnte man auch</r> ins Museum gehen, <g>trotz des</g> Wetters ist da drinnen ja alles trocken. <r>Was denkst du</r>, würde dir das gefallen?",
       "en": "<r>Maybe we could also</r> go to a museum, <g>despite</g> the weather it's all dry in there. <r>What do you think</r>, would you like that?",
       "uk": "<r>Можливо, можна було б ще</r> піти в музей, <g>попри</g> погоду там усередині все сухо. <r>Як ти думаєш</r>, тобі б це сподобалося?",
-      "ru": "<r>Возможно, можно было бы ещё</r> пойти в музей, <g>несмотря на</g> погоду там внутри всё сухо. <r>Как ты думаешь</r>, тебе бы это понравилось?"
+      "ru": "<r>Возможно, можно было бы ещё</r> пойти в музей, <g>несмотря на</g> погоду там внутри всё сухо. <r>Как ты думаешь</r>, тебе бы это понравилось?",
+      "gram": "waehrend_genitiv_praeposition"
     },
     "a2": {
       "de": "<r>Ich bin der Meinung, dass</r> das eine super Idee wäre. Lass uns das am nächsten verregneten Wochenende einfach mal ausprobieren.",
       "en": "<r>I think that</r> would be a great idea. Let's just try that out on the next rainy weekend.",
       "uk": "<r>Я вважаю, що</r> це була б чудова ідея. Давай спробуємо це на наступних дощових вихідних.",
-      "ru": "<r>Я считаю, что</r> это была бы отличная идея. Давай попробуем это в следующие дождливые выходные."
-    },
-    "gram": "waehrend_genitiv_praeposition"
+      "ru": "<r>Я считаю, что</r> это была бы отличная идея. Давай попробуем это в следующие дождливые выходные.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_081",
@@ -16365,39 +16810,44 @@ var DIALOGE = [
       "de": "Sag mal, ich würde gern nach der Elternzeit in Teilzeit weiterarbeiten. <r>Wie siehst du das</r>?",
       "en": "Tell me, I'd like to keep working part-time after parental leave. <r>What do you think</r>?",
       "uk": "Скажи, я б хотіла продовжити працювати на неповну ставку після декретної відпустки. <r>Як ти на це дивишся</r>?",
-      "ru": "Скажи, я бы хотела продолжить работать неполный день после декретного отпуска. <r>Как ты на это смотришь</r>?"
+      "ru": "Скажи, я бы хотела продолжить работать неполный день после декретного отпуска. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a": {
       "de": "Ja, <r>das sehe ich auch so</r>, so kann man Familie und Beruf besser miteinander verbinden. Hast du schon mit deiner Chefin darüber gesprochen?",
       "en": "Yes, <r>I think so too</r>, that way you can combine family and work better. Have you talked to your boss about it yet?",
       "uk": "Так, <r>я теж так вважаю</r>, так можна краще поєднувати сім'ю й роботу. Ти вже говорила зі своєю начальницею про це?",
-      "ru": "Да, <r>я тоже так считаю</r>, так можно лучше совмещать семью и работу. Ты уже говорила со своей начальницей об этом?"
+      "ru": "Да, <r>я тоже так считаю</r>, так можно лучше совмещать семью и работу. Ты уже говорила со своей начальницей об этом?",
+      "gram": ""
     },
     "q1": {
       "de": "Noch nicht, aber ich überlege es mir. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, wie viele Stunden ich realistisch schaffen würde.",
       "en": "Not yet, but I'm thinking about it. <r>I don't know, I'm not sure</r> how many hours I could realistically manage.",
       "uk": "Ще ні, але я про це думаю. <r>Я не знаю, я не впевнена</r>, скільки годин я реально зможу справлятися.",
-      "ru": "Ещё нет, но я об этом думаю. <r>Я не знаю, я не уверена</r>, сколько часов я реально смогу выдержать."
+      "ru": "Ещё нет, но я об этом думаю. <r>Я не знаю, я не уверена</r>, сколько часов я реально смогу выдержать.",
+      "gram": ""
     },
     "a1": {
       "de": "Das verstehe ich gut. <r>Es hängt davon ab, ob</r> eure Kita auch flexible Betreuungszeiten anbietet, oder?",
       "en": "I understand that. <r>It depends on whether</r> your daycare also offers flexible hours, right?",
       "uk": "Розумію тебе. <r>Залежить від того, чи</r> ваш садочок теж пропонує гнучкий графік, правда?",
-      "ru": "Понимаю тебя. <r>Зависит от того, есть ли</r> у вашего садика тоже гибкий график, верно?"
+      "ru": "Понимаю тебя. <r>Зависит от того, есть ли</r> у вашего садика тоже гибкий график, верно?",
+      "gram": ""
     },
     "q2": {
       "de": "Genau, das ist bei uns leider noch nicht klar. <r>Was denkst du</r>, sollte ich erstmal mit der Kita sprechen oder mit meinem Arbeitgeber?",
       "en": "Exactly, that's not clear yet for us unfortunately. <r>What do you think</r>, should I talk to the daycare first or to my employer?",
       "uk": "Точно, у нас це, на жаль, ще не зрозуміло. <r>Як ти думаєш</r>, мені спершу поговорити з садочком чи з роботодавцем?",
-      "ru": "Точно, у нас это, к сожалению, ещё не ясно. <r>Как ты думаешь</r>, мне сначала поговорить с садиком или с работодателем?"
+      "ru": "Точно, у нас это, к сожалению, ещё не ясно. <r>Как ты думаешь</r>, мне сначала поговорить с садиком или с работодателем?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ich würde dir empfehlen</r>, erstmal die Kita-Frage zu klären, dann kannst du deinem Arbeitgeber konkrete Zeiten vorschlagen.",
       "en": "<r>I'd recommend</r> clarifying the daycare question first, then you can suggest specific hours to your employer.",
       "uk": "<r>Я б порадив тобі</r> спершу з'ясувати питання з садочком, а потім ти зможеш запропонувати роботодавцю конкретні години.",
-      "ru": "<r>Я бы посоветовал тебе</r> сначала выяснить вопрос с садиком, а потом ты сможешь предложить работодателю конкретные часы."
-    },
-    "gram": ""
+      "ru": "<r>Я бы посоветовал тебе</r> сначала выяснить вопрос с садиком, а потом ты сможешь предложить работодателю конкретные часы.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_082",
@@ -16415,87 +16865,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: Unsere wöchentlichen Team-Meetings dauern inzwischen fast immer viel länger als geplant, und oft schaffen wir es nicht, alle Punkte auf der Tagesordnung zu besprechen.",
       "en": "<r>We should talk about a problem</r>: our weekly team meetings almost always take much longer than planned now, and we often don't manage to cover every item on the agenda.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: наші щотижневі командні наради тепер майже завжди тривають набагато довше, ніж заплановано, і часто ми не встигаємо обговорити всі пункти порядку денного.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: наши еженедельные командные совещания теперь почти всегда длятся намного дольше, чем запланировано, и часто мы не успеваем обсудить все пункты повестки дня."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: наши еженедельные командные совещания теперь почти всегда длятся намного дольше, чем запланировано, и часто мы не успеваем обсудить все пункты повестки дня.",
+      "gram": ""
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also vor allem darum, dass wir die Zeit im Meeting nicht gut genug einteilen?",
       "en": "<r>Did I understand you correctly</r>: so the main issue is that we're not managing our time well enough during the meeting?",
       "uk": "<r>Я правильно тебе зрозумів</r>: тобто головна проблема в тому, що ми недостатньо добре розподіляємо час на нараді?",
-      "ru": "<r>Я правильно тебя понял</r>: то есть главная проблема в том, что мы недостаточно хорошо распределяем время на совещании?"
+      "ru": "<r>Я правильно тебя понял</r>: то есть главная проблема в том, что мы недостаточно хорошо распределяем время на совещании?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und dazu kommt, dass sich manche ständig gegenseitig unterbrechen, bevor jemand seinen Gedanken zu Ende bringen kann. <r>Welche Möglichkeiten siehst du</r>, um das zu ändern?",
       "en": "Exactly, and on top of that, some people keep interrupting each other before anyone can finish their thought. <r>What options do you see</r> for changing that?",
       "uk": "Саме так, і до того ж дехто постійно перебиває одне одного, перш ніж хтось встигне договорити свою думку. <r>Які можливості ти бачиш</r>, щоб це змінити?",
-      "ru": "Именно так, и к тому же кое-кто постоянно перебивает друг друга, прежде чем кто-то успеет договорить свою мысль. <r>Какие возможности ты видишь</r>, чтобы это изменить?"
+      "ru": "Именно так, и к тому же кое-кто постоянно перебивает друг друга, прежде чем кто-то успеет договорить свою мысль. <r>Какие возможности ты видишь</r>, чтобы это изменить?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten für jeden Tagesordnungspunkt eine feste Redezeit einplanen, zum Beispiel fünf Minuten. <r>Was hältst du davon</r>?",
       "en": "<r>I have an idea</r>: we could set a fixed speaking time for each agenda item, say five minutes. <r>What do you think about that</r>?",
       "uk": "<r>У мене є ідея</r>: ми могли б виділити фіксований час на виступ для кожного пункту порядку денного, наприклад п'ять хвилин. <r>Що ти про це думаєш</r>?",
-      "ru": "<r>У меня есть идея</r>: мы могли бы выделить фиксированное время на выступление для каждого пункта повестки дня, например пять минут. <r>Что ты об этом думаешь</r>?"
+      "ru": "<r>У меня есть идея</r>: мы могли бы выделить фиксированное время на выступление для каждого пункта повестки дня, например пять минут. <r>Что ты об этом думаешь</r>?",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt vernünftig</r>. <g>Wer</g> die Redezeit überschreitet, <g>der</g> sollte dann höflich daran erinnert werden, oder?",
       "en": "<r>That sounds reasonable</r>. <g>Whoever</g> goes over their speaking time should be reminded politely, right?",
       "uk": "<r>Це звучить розумно</r>. <g>Хто</g> перевищує час на виступ, <g>того</g> ввічливо про це нагадають, добре?",
-      "ru": "<r>Это звучит разумно</r>. <g>Кто</g> превышает время на выступление, <g>того</g> вежливо об этом напомнят, хорошо?"
+      "ru": "<r>Это звучит разумно</r>. <g>Кто</g> превышает время на выступление, <g>того</g> вежливо об этом напомнят, хорошо?",
+      "gram": "relativsatz_wer"
     },
     "a2": {
       "de": "Ja, genau, das könnte zum Beispiel die Person übernehmen, die das Meeting moderiert. Wer moderiert eigentlich bei euch normalerweise?",
       "en": "Yes, exactly, the person moderating the meeting could take care of that, for example. Who usually moderates in your team, actually?",
       "uk": "Так, точно, це, наприклад, могла б робити людина, яка модерує нараду. До речі, хто у вас зазвичай модерує?",
-      "ru": "Да, точно, это, например, могла бы делать модерирующая совещание сторона. Кстати, кто у вас обычно модерирует?"
+      "ru": "Да, точно, это, например, могла бы делать модерирующая совещание сторона. Кстати, кто у вас обычно модерирует?",
+      "gram": ""
     },
     "q3": {
       "de": "Bisher niemand richtig, wir fangen einfach an. <r>Vielleicht wäre es sinnvoll, wenn</r> wir die Moderation reihum übernehmen?",
       "en": "No one really, so far we just start. <r>Maybe it would make sense if</r> we took turns moderating?",
       "uk": "Поки що ніхто конкретно, ми просто починаємо. <r>Можливо, було б доречно, якщо</r> ми будемо по черзі брати на себе модерацію?",
-      "ru": "Пока никто конкретно, мы просто начинаем. <r>Возможно, было бы разумно, если бы</r> мы по очереди брали на себя модерацию?"
+      "ru": "Пока никто конкретно, мы просто начинаем. <r>Возможно, было бы разумно, если бы</r> мы по очереди брали на себя модерацию?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das finde ich eine gute Idee, allerdings sollten wir auch bedenken, dass</r> die moderierende Person sich vorher gut vorbereiten muss, damit die Tagesordnung wirklich eingehalten wird.",
       "en": "<r>I think that's a good idea, though we should also keep in mind that</r> the person moderating needs to prepare well beforehand so the agenda is actually followed.",
       "uk": "<r>Я вважаю це гарною ідеєю, хоча варто також враховувати, що</r> людина, яка модерує, має добре підготуватися заздалегідь, щоб порядок денний справді дотримувався.",
-      "ru": "<r>Я считаю это хорошей идеей, хотя стоит также учитывать, что</r> модерирующему человеку нужно хорошо подготовиться заранее, чтобы повестка дня действительно соблюдалась."
+      "ru": "<r>Я считаю это хорошей идеей, хотя стоит также учитывать, что</r> модерирующему человеку нужно хорошо подготовиться заранее, чтобы повестка дня действительно соблюдалась.",
+      "gram": ""
     },
     "q4": {
       "de": "Stimmt. <r>Wie wäre es, wenn wir</r> die Tagesordnung schon einen Tag vorher verschicken, damit sich alle vorbereiten können?",
       "en": "True. <r>How about if we</r> send out the agenda a day in advance, so everyone can prepare?",
       "uk": "Правда. <r>Що якщо ми</r> будемо надсилати порядок денний за день наперед, щоб усі могли підготуватися?",
-      "ru": "Верно. <r>Что если мы</r> будем отправлять повестку дня за день до совещания, чтобы все могли подготовиться?"
+      "ru": "Верно. <r>Что если мы</r> будем отправлять повестку дня за день до совещания, чтобы все могли подготовиться?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Damit bin ich einverstanden</r>. Und <g>wer</g> dann noch zusätzliche Punkte einbringen möchte, <g>der</g> kann das vorher der moderierenden Person mitteilen.",
       "en": "<r>I agree with that</r>. And <g>whoever</g> wants to bring up additional points can let the person moderating know beforehand.",
       "uk": "<r>Я з цим згоден</r>. А <g>хто</g> захоче додати ще якісь пункти, <g>той</g> може попередньо повідомити про це модератора.",
-      "ru": "<r>Я с этим согласен</r>. А <g>кто</g> захочет добавить ещё какие-то пункты, <g>тот</g> может заранее сообщить об этом модератору."
+      "ru": "<r>Я с этим согласен</r>. А <g>кто</g> захочет добавить ещё какие-то пункты, <g>тот</g> может заранее сообщить об этом модератору.",
+      "gram": "relativsatz_wer"
     },
     "q5": {
       "de": "Gut, dann <r>könnten wir</r> auch gleich eine feste Meetingdauer von 45 Minuten festlegen, damit wir uns alle daran halten.",
       "en": "Good, then <r>we could</r> also set a fixed meeting length of 45 minutes, so we all stick to it.",
       "uk": "Добре, тоді <r>ми могли б</r> ще й встановити фіксовану тривалість наради — 45 хвилин, щоб усі цього дотримувалися.",
-      "ru": "Хорошо, тогда <r>мы могли бы</r> ещё установить фиксированную продолжительность совещания — 45 минут, чтобы все этого придерживались."
+      "ru": "Хорошо, тогда <r>мы могли бы</r> ещё установить фиксированную продолжительность совещания — 45 минут, чтобы все этого придерживались.",
+      "gram": ""
     },
     "a5": {
       "de": "<r>Das halte ich für einen guten Vorschlag</r>. Falls ein Thema mehr Zeit braucht, könnten wir dafür extra einen Termin vereinbaren, statt das Meeting zu verlängern.",
       "en": "<r>I think that's a good suggestion</r>. If a topic needs more time, we could just schedule a separate appointment for it instead of extending the meeting.",
       "uk": "<r>Я вважаю це гарною пропозицією</r>. Якщо якійсь темі потрібно більше часу, ми могли б просто призначити для неї окрему зустріч, замість того щоб продовжувати нараду.",
-      "ru": "<r>Я считаю это хорошим предложением</r>. Если какой-то теме нужно больше времени, мы могли бы просто назначить для неё отдельную встречу, вместо того чтобы продлевать совещание."
+      "ru": "<r>Я считаю это хорошим предложением</r>. Если какой-то теме нужно больше времени, мы могли бы просто назначить для неё отдельную встречу, вместо того чтобы продлевать совещание.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir führen eine feste Redezeit, eine reihum wechselnde Moderation und eine vorab verschickte Tagesordnung ein, und die Meetings sollen künftig maximal 45 Minuten dauern.",
       "en": "<r>Let's summarize</r>: we'll introduce a fixed speaking time, rotating moderation, and an agenda sent out in advance, and meetings should be a maximum of 45 minutes going forward.",
       "uk": "<r>Підсумуємо</r>: ми запроваджуємо фіксований час на виступ, модерацію по черзі та завчасно надісланий порядок денний, і наради надалі мають тривати максимум 45 хвилин.",
-      "ru": "<r>Подведём итог</r>: мы вводим фиксированное время на выступление, модерацию по очереди и заранее отправленную повестку дня, и совещания впредь должны длиться максимум 45 минут."
+      "ru": "<r>Подведём итог</r>: мы вводим фиксированное время на выступление, модерацию по очереди и заранее отправленную повестку дня, и совещания впредь должны длиться максимум 45 минут.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau. Ich denke, so werden unsere Meetings deutlich effizienter. Ich schreibe die neuen Regeln zusammen und schicke sie noch heute an das ganze Team.",
       "en": "Exactly. I think that will make our meetings a lot more efficient. I'll put the new rules together and send them to the whole team today.",
       "uk": "Саме так. Гадаю, так наші наради стануть значно ефективнішими. Я складу нові правила і надішлю їх усій команді ще сьогодні.",
-      "ru": "Именно так. Думаю, так наши совещания станут значительно эффективнее. Я составлю новые правила и отправлю их всей команде ещё сегодня."
-    },
-    "gram": "relativsatz_wer"
+      "ru": "Именно так. Думаю, так наши совещания станут значительно эффективнее. Я составлю новые правила и отправлю их всей команде ещё сегодня.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_083",
@@ -16513,87 +16976,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: <r>Mir ist aufgefallen, dass</r> es zwischen Sarah und Tom in letzter Zeit ziemlich angespannt ist. Sarah hat mir erzählt, dass sie sich in Meetings ständig von ihm unterbrochen fühlt.",
       "en": "<r>We should talk about a problem</r>: <r>I've noticed that</r> things have been pretty tense between Sarah and Tom lately. Sarah told me she feels constantly interrupted by him in meetings.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: <r>я помітила, що</r> останнім часом між Сарою і Томом досить напружено. Сара розповіла мені, що постійно відчуває, ніби він її перебиває на нарадах.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: <r>я заметила, что</r> в последнее время между Сарой и Томом довольно напряжённо. Сара рассказала мне, что постоянно чувствует, будто он её перебивает на совещаниях."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: <r>я заметила, что</r> в последнее время между Сарой и Томом довольно напряжённо. Сара рассказала мне, что постоянно чувствует, будто он её перебивает на совещаниях.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Sie hat das Gefühl, dass ihre Vorschläge dadurch gar nicht richtig gehört werden?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: she feels her suggestions aren't really being heard because of that?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: вона відчуває, що через це її пропозиції насправді не почуті?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: она чувствует, что из-за этого её предложения на самом деле не слышат?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: она чувствует, что из-за этого её предложения на самом деле не слышат?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und das belastet sie ziemlich. <r>Was könnten wir in dieser Situation machen</r>, ohne dass es unangenehm für alle wird?",
       "en": "Exactly, and it's really weighing on her. <r>What could we do in this situation</r> without making it uncomfortable for everyone?",
       "uk": "Саме так, і це її досить сильно пригнічує. <r>Що ми могли б зробити в цій ситуації</r>, щоб це не було неприємно для всіх?",
-      "ru": "Именно так, и это её довольно сильно угнетает. <r>Что мы могли бы сделать в этой ситуации</r>, чтобы это не было неприятно для всех?"
+      "ru": "Именно так, и это её довольно сильно угнетает. <r>Что мы могли бы сделать в этой ситуации</r>, чтобы это не было неприятно для всех?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Vielleicht könnten wir zuerst mit Tom unter vier Augen sprechen, statt das gleich vor dem ganzen Team anzusprechen.",
       "en": "<r>I have an idea</r>: maybe we could talk to Tom privately first, instead of bringing it up in front of the whole team right away.",
       "uk": "<r>У мене є ідея</r>: можливо, спершу нам варто поговорити з Томом віч-на-віч, а не одразу піднімати це перед усією командою.",
-      "ru": "<r>У меня есть идея</r>: возможно, сначала нам стоит поговорить с Томом наедине, а не сразу поднимать это перед всей командой."
+      "ru": "<r>У меня есть идея</r>: возможно, сначала нам стоит поговорить с Томом наедине, а не сразу поднимать это перед всей командой.",
+      "gram": ""
     },
     "q2": {
       "de": "Das finde ich gut. <r>Ich kann gut nachvollziehen, dass</r> ihm das gar nicht bewusst ist. <r>Was hältst du davon, wenn</r> wir ihm einfach sagen: 'Uns ist aufgefallen, dass...'?",
       "en": "I think that's good. <r>I can understand that</r> he's probably not even aware of it. <r>What do you think if</r> we just tell him: 'We've noticed that...'?",
       "uk": "Гарна думка. <r>Я цілком розумію, що</r> він, напевно, навіть не усвідомлює цього. <r>Як ти дивишся на те, якщо</r> ми просто скажемо йому: «Ми помітили, що...»?",
-      "ru": "Хорошая мысль. <r>Я вполне понимаю, что</r> он, наверное, даже не осознаёт этого. <r>Как ты смотришь на то, если</r> мы просто скажем ему: «Мы заметили, что...»?"
+      "ru": "Хорошая мысль. <r>Я вполне понимаю, что</r> он, наверное, даже не осознаёт этого. <r>Как ты смотришь на то, если</r> мы просто скажем ему: «Мы заметили, что...»?",
+      "gram": ""
     },
     "a2": {
       "de": "Ja, <r>das klingt vernünftig</r>. Wir sollten ihm auch sagen, dass sein Verhalten für das Team unangenehm ist, aber ohne Vorwürfe zu machen.",
       "en": "Yes, <r>that sounds reasonable</r>. We should also tell him that his behavior is uncomfortable for the team, but without making accusations.",
       "uk": "Так, <r>це звучить розумно</r>. Варто також сказати йому, що його поведінка неприємна для команди, але без звинувачень.",
-      "ru": "Да, <r>это звучит разумно</r>. Стоит также сказать ему, что его поведение неприятно для команды, но без обвинений."
+      "ru": "Да, <r>это звучит разумно</r>. Стоит также сказать ему, что его поведение неприятно для команды, но без обвинений.",
+      "gram": ""
     },
     "q3": {
       "de": "Gute Idee. Zusätzlich könnten wir vorschlagen, feste Meetingregeln einzuführen, zum Beispiel, dass man sich gegenseitig ausreden lässt.",
       "en": "Good idea. On top of that, we could suggest introducing fixed meeting rules, for example letting each other finish speaking.",
       "uk": "Гарна ідея. Крім того, ми могли б запропонувати ввести фіксовані правила для нарад, наприклад, дозволяти одне одному договорювати думку до кінця.",
-      "ru": "Хорошая идея. Кроме того, мы могли бы предложить ввести фиксированные правила для совещаний, например, давать друг другу договаривать мысль до конца."
+      "ru": "Хорошая идея. Кроме того, мы могли бы предложить ввести фиксированные правила для совещаний, например, давать друг другу договаривать мысль до конца.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Dazu könnten wir noch eine Randnotiz oder ein Zeichen einführen, wenn jemand unterbrochen wird.",
       "en": "<r>I think that's an excellent solution</r>. We could also introduce a small note or signal for when someone gets interrupted.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>. Ще ми могли б запровадити невеличкий знак чи сигнал, коли когось перебивають.",
-      "ru": "<r>Я считаю это отличным решением</r>. Ещё мы могли бы ввести небольшой знак или сигнал, когда кого-то перебивают."
+      "ru": "<r>Я считаю это отличным решением</r>. Ещё мы могли бы ввести небольшой знак или сигнал, когда кого-то перебивают.",
+      "gram": ""
     },
     "q4": {
       "de": "Und wie stellen wir sicher, dass sich das wirklich verbessert und nicht nach ein paar Tagen wieder vergessen wird?",
       "en": "And how do we make sure this actually improves and isn't forgotten again after a few days?",
       "uk": "А як нам переконатися, що це справді покращиться, а не забудеться через кілька днів?",
-      "ru": "А как нам убедиться, что это действительно улучшится, а не забудется через несколько дней?"
+      "ru": "А как нам убедиться, что это действительно улучшится, а не забудется через несколько дней?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das Thema einfach in ein paar Wochen noch einmal ansprechen und nachfragen, wie es beiden damit geht.",
       "en": "<r>Maybe we could</r> just bring the topic up again in a few weeks and ask both of them how things are going.",
       "uk": "<r>Можливо, ми могли б</r> просто підняти цю тему знову через кілька тижнів і запитати в обох, як справи.",
-      "ru": "<r>Возможно, мы могли бы</r> просто поднять эту тему снова через несколько недель и спросить у обоих, как дела."
+      "ru": "<r>Возможно, мы могли бы</r> просто поднять эту тему снова через несколько недель и спросить у обоих, как дела.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir das Gespräch mit Tom diese Woche noch führen, damit sich die Situation nicht weiter zuspitzt?",
       "en": "Good point. Should we have the conversation with Tom this week, so the situation doesn't escalate further?",
       "uk": "Слушна думка. Проведемо розмову з Томом цього тижня, щоб ситуація не загострилася далі?",
-      "ru": "Дельная мысль. Проведём разговор с Томом на этой неделе, чтобы ситуация не обострилась дальше?"
+      "ru": "Дельная мысль. Проведём разговор с Томом на этой неделе, чтобы ситуация не обострилась дальше?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte das übernehmen, wenn du danach mit Sarah sprichst, damit sie weiß, dass wir uns darum kümmern.",
       "en": "Yes, that would make sense. I could take care of that, if you talk to Sarah afterward, so she knows we're taking care of it.",
       "uk": "Так, це було б розумно. Я міг би взяти це на себе, якщо ти після цього поговориш із Сарою, щоб вона знала, що ми цим займаємося.",
-      "ru": "Да, это было бы разумно. Я мог бы взять это на себя, если ты после этого поговоришь с Сарой, чтобы она знала, что мы этим занимаемся."
+      "ru": "Да, это было бы разумно. Я мог бы взять это на себя, если ты после этого поговоришь с Сарой, чтобы она знала, что мы этим занимаемся.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Du sprichst zeitnah mit Tom, ich rede mit Sarah, und wir führen gemeinsam feste Regeln fürs Meeting ein. In vier Wochen schauen wir noch mal, ob sich etwas verändert hat.",
       "en": "<r>Let's summarize</r>: you'll talk to Tom soon, I'll talk to Sarah, and together we'll introduce fixed meeting rules. In four weeks we'll check whether anything has changed.",
       "uk": "<r>Підсумуємо</r>: ти найближчим часом поговориш з Томом, я поговорю з Сарою, і разом ми запровадимо фіксовані правила для нарад. Через чотири тижні перевіримо, чи щось змінилося.",
-      "ru": "<r>Подведём итог</r>: ты в ближайшее время поговоришь с Томом, я поговорю с Сарой, и вместе мы введём фиксированные правила для совещаний. Через четыре недели проверим, изменилось ли что-то."
+      "ru": "<r>Подведём итог</r>: ты в ближайшее время поговоришь с Томом, я поговорю с Сарой, и вместе мы введём фиксированные правила для совещаний. Через четыре недели проверим, изменилось ли что-то.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so können wir die Situation lösen, ohne dass sich jemand bloßgestellt fühlt.",
       "en": "Exactly, that's what we'll do. I think that way we can resolve the situation without anyone feeling put on the spot.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми зможемо вирішити ситуацію, не змушуючи нікого почуватися ніяково.",
-      "ru": "Именно так, так и сделаем. Думаю, так мы сможем решить ситуацию, не заставляя никого чувствовать себя неловко."
-    },
-    "gram": ""
+      "ru": "Именно так, так и сделаем. Думаю, так мы сможем решить ситуацию, не заставляя никого чувствовать себя неловко.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_084",
@@ -16611,87 +17087,100 @@ var DIALOGE = [
       "de": "<r>Wir haben ein Problem</r>: Frau Meier verlässt in zwei Wochen unsere Abteilung, aber wir haben ihre Übergabe bisher noch nicht richtig <g>zur Sprache gebracht</g> - es gibt weder eine vollständige Aufgabenliste noch feste Termine für die Einarbeitung ihres Nachfolgers.",
       "en": "<r>We have a problem</r>: Ms. Meier is leaving our department in two weeks, but we still haven't really <g>brought up</g> her handover - there's neither a complete task list nor fixed dates for training her successor.",
       "uk": "<r>У нас проблема</r>: пані Маєр залишає наш відділ через два тижні, але ми досі по-справжньому не <g>підняли</g> тему її передачі справ - немає ні повного списку завдань, ні чітких термінів для введення в курс справи наступника.",
-      "ru": "<r>У нас проблема</r>: госпожа Майер покидает наш отдел через две недели, но мы до сих пор по-настоящему не <g>подняли</g> тему её передачи дел - нет ни полного списка задач, ни чётких сроков для введения преемника в курс дела."
+      "ru": "<r>У нас проблема</r>: госпожа Майер покидает наш отдел через две недели, но мы до сих пор по-настоящему не <g>подняли</g> тему её передачи дел - нет ни полного списка задач, ни чётких сроков для введения преемника в курс дела.",
+      "gram": "nomen_verb_verbindungen"
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es besteht also die Gefahr, dass wichtige Informationen verloren gehen, wenn wir jetzt nicht schnell handeln?",
       "en": "<r>Did I understand you correctly</r>: so there's a risk that important information gets lost if we don't act quickly now?",
       "uk": "<r>Я правильно тебе зрозумів</r>: тобто є ризик, що важлива інформація загубиться, якщо ми зараз не діятимемо швидко?",
-      "ru": "<r>Я правильно тебя понял</r>: то есть есть риск, что важная информация потеряется, если мы сейчас не будем действовать быстро?"
+      "ru": "<r>Я правильно тебя понял</r>: то есть есть риск, что важная информация потеряется, если мы сейчас не будем действовать быстро?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, das würde den ganzen Projektfortschritt <g>aufs Spiel setzen</g>. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, that would <g>put</g> the whole project progress <g>at risk</g>. <r>What could we do in this situation</r>?",
       "uk": "Саме так, це <g>поставило б під загрозу</g> весь прогрес проєкту. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, это <g>поставило бы под угрозу</g> весь прогресс проекта. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, это <g>поставило бы под угрозу</g> весь прогресс проекта. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": "nomen_verb_verbindungen"
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten zusammen mit ihr sofort eine Aufgabenliste erstellen, in der alle laufenden Projekte und offenen Punkte stehen.",
       "en": "<r>I have an idea</r>: we could sit down with her right away and create a task list with all ongoing projects and open items.",
       "uk": "<r>У мене є ідея</r>: ми могли б одразу разом з нею скласти список завдань, у якому будуть усі поточні проєкти й відкриті питання.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы сразу вместе с ней составить список задач, в котором будут все текущие проекты и открытые вопросы."
+      "ru": "<r>У меня есть идея</r>: мы могли бы сразу вместе с ней составить список задач, в котором будут все текущие проекты и открытые вопросы.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt vernünftig</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich feste Einarbeitungstermine für den Nachfolger festlegen, damit nichts vergessen wird?",
       "en": "<r>That sounds reasonable</r>. <r>What do you think if</r> we also set fixed training dates for the successor, so nothing gets forgotten?",
       "uk": "<r>Це звучить розумно</r>. <r>Як ти дивишся на те, якщо</r> ми додатково встановимо чіткі терміни для введення наступника в курс справи, щоб нічого не забути?",
-      "ru": "<r>Это звучит разумно</r>. <r>Как ты смотришь на то, если</r> мы дополнительно установим чёткие сроки для введения преемника в курс дела, чтобы ничего не забыть?"
+      "ru": "<r>Это звучит разумно</r>. <r>Как ты смотришь на то, если</r> мы дополнительно установим чёткие сроки для введения преемника в курс дела, чтобы ничего не забыть?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. Wir sollten dabei auch klären, welche Unterlagen <g>zur Verfügung stehen</g> müssen, bevor Frau Meier geht.",
       "en": "<r>Yes, I think that's a good idea</r>. We should also clarify which documents need to <g>be available</g> before Ms. Meier leaves.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Варто також з'ясувати, які документи мають <g>бути в наявності</g>, перш ніж пані Маєр піде.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Стоит также выяснить, какие документы должны <g>быть в наличии</g>, прежде чем госпожа Майер уйдёт."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Стоит также выяснить, какие документы должны <g>быть в наличии</g>, прежде чем госпожа Майер уйдёт.",
+      "gram": "nomen_verb_verbindungen"
     },
     "q3": {
       "de": "Stimmt. Und ich denke, wir sollten möglichst bald neue Regeln zur Übergabe einführen, damit sowas nicht wieder passiert.",
       "en": "True. And I think we should introduce new handover rules as soon as possible, so this doesn't happen again.",
       "uk": "Правда. І я думаю, нам варто якнайшвидше запровадити нові правила щодо передачі справ, щоб таке більше не повторювалося.",
-      "ru": "Верно. И я думаю, нам стоит как можно скорее ввести новые правила передачи дел, чтобы такое больше не повторялось."
+      "ru": "Верно. И я думаю, нам стоит как можно скорее ввести новые правила передачи дел, чтобы такое больше не повторялось.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Dazu könnten wir noch eine Checkliste erstellen, die wir bei jeder künftigen Übergabe verwenden.",
       "en": "<r>I think that's an excellent solution</r>. On top of that, we could create a checklist that we use for every future handover.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>. Крім того, ми могли б скласти чекліст, який використовуватимемо для кожної майбутньої передачі справ.",
-      "ru": "<r>Я считаю это отличным решением</r>. Кроме того, мы могли бы составить чек-лист, который будем использовать для каждой будущей передачи дел."
+      "ru": "<r>Я считаю это отличным решением</r>. Кроме того, мы могли бы составить чек-лист, который будем использовать для каждой будущей передачи дел.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Wer sollte dem Nachfolger denn nach der offiziellen Übergabe bei Fragen zur Seite stehen, falls doch noch etwas unklar ist?",
       "en": "Good idea. Who should be available to the successor for questions after the official handover, in case something's still unclear?",
       "uk": "Гарна ідея. А хто має бути доступний для наступника із запитаннями після офіційної передачі справ, якщо щось усе ж залишиться незрозумілим?",
-      "ru": "Хорошая идея. А кто должен быть доступен для преемника с вопросами после официальной передачи дел, если что-то всё же останется неясным?"
+      "ru": "Хорошая идея. А кто должен быть доступен для преемника с вопросами после официальной передачи дел, если что-то всё же останется неясным?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnte</r> Frau Meier noch für die ersten zwei Wochen als Ansprechpartnerin per E-Mail erreichbar bleiben, auch wenn sie schon in der neuen Abteilung ist.",
       "en": "<r>Maybe</r> Ms. Meier could stay reachable by email as a contact person for the first two weeks, even after she's already in the new department.",
       "uk": "<r>Можливо</r>, пані Маєр могла б залишатися доступною електронною поштою як контактна особа перші два тижні, навіть якщо вона вже буде у новому відділі.",
-      "ru": "<r>Возможно</r>, госпожа Майер могла бы оставаться доступной по электронной почте как контактное лицо первые две недели, даже если она уже будет в новом отделе."
+      "ru": "<r>Возможно</r>, госпожа Майер могла бы оставаться доступной по электронной почте как контактное лицо первые две недели, даже если она уже будет в новом отделе.",
+      "gram": ""
     },
     "q5": {
       "de": "Das wäre hilfreich. Sollen wir das gleich mit ihr besprechen, damit wir keine Zeit mehr verlieren?",
       "en": "That would help. Should we talk to her about this right away, so we don't lose any more time?",
       "uk": "Це було б корисно. Обговоримо це з нею одразу, щоб не втрачати більше часу?",
-      "ru": "Это было бы полезно. Обсудим это с ней сразу, чтобы не терять больше времени?"
+      "ru": "Это было бы полезно. Обсудим это с ней сразу, чтобы не терять больше времени?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte das Gespräch mit ihr heute noch führen, wenn du in der Zwischenzeit die Checkliste vorbereitest.",
       "en": "Yes, that would make sense. I could have that conversation with her today, if you prepare the checklist in the meantime.",
       "uk": "Так, це було б розумно. Я міг би провести цю розмову з нею вже сьогодні, якщо ти тим часом підготуєш чекліст.",
-      "ru": "Да, это было бы разумно. Я мог бы провести этот разговор с ней уже сегодня, если ты тем временем подготовишь чек-лист."
+      "ru": "Да, это было бы разумно. Я мог бы провести этот разговор с ней уже сегодня, если ты тем временем подготовишь чек-лист.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir erstellen eine vollständige Aufgabenliste, legen feste Einarbeitungstermine fest, und Frau Meier bleibt zwei Wochen lang als Ansprechpartnerin erreichbar.",
       "en": "<r>Let's summarize</r>: we'll create a complete task list, set fixed training dates, and Ms. Meier will stay reachable as a contact person for two weeks.",
       "uk": "<r>Підсумуємо</r>: ми складемо повний список завдань, встановимо чіткі терміни для введення в курс справи, і пані Маєр залишатиметься доступною як контактна особа два тижні.",
-      "ru": "<r>Подведём итог</r>: мы составим полный список задач, установим чёткие сроки для введения в курс дела, и госпожа Майер будет оставаться доступной как контактное лицо две недели."
+      "ru": "<r>Подведём итог</r>: мы составим полный список задач, установим чёткие сроки для введения в курс дела, и госпожа Майер будет оставаться доступной как контактное лицо две недели.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so kann die Übergabe reibungslos gelingen, ohne dass wichtige Informationen verloren gehen.",
       "en": "Exactly, that's what we'll do. I think that way the handover can go smoothly without losing any important information.",
       "uk": "Саме так, так і зробимо. Гадаю, так передача справ пройде без проблем і без втрати важливої інформації.",
-      "ru": "Именно так, так и сделаем. Думаю, так передача дел пройдёт без проблем и без потери важной информации."
-    },
-    "gram": "nomen_verb_verbindungen"
+      "ru": "Именно так, так и сделаем. Думаю, так передача дел пройдёт без проблем и без потери важной информации.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_085",
@@ -16709,87 +17198,100 @@ var DIALOGE = [
       "de": "<r>Ich bin der Meinung, dass</r> wir über ein Problem sprechen sollten: Ein Kollege hat sich kürzlich beschwert, dass er sich durch eine interne Mail persönlich angegriffen gefühlt hat, weil sie sehr knapp und unfreundlich formuliert war.",
       "en": "<r>I think that</r> we should talk about a problem: a colleague recently complained that he felt personally attacked by an internal email, because it was phrased very tersely and unkindly.",
       "uk": "<r>Я вважаю, що</r> нам варто обговорити одну проблему: нещодавно один колега поскаржився, що почувався особисто ображеним через внутрішній лист, бо він був написаний дуже стисло й недружньо.",
-      "ru": "<r>Я считаю, что</r> нам стоит обсудить одну проблему: недавно один коллега пожаловался, что почувствовал себя лично задетым из-за внутреннего письма, потому что оно было написано очень кратко и недружелюбно."
+      "ru": "<r>Я считаю, что</r> нам стоит обсудить одну проблему: недавно один коллега пожаловался, что почувствовал себя лично задетым из-за внутреннего письма, потому что оно было написано очень кратко и недружелюбно.",
+      "gram": ""
     },
     "a": {
       "de": "Das kann ich gut nachvollziehen. <r>Meinst du damit, dass</r> wir generell zu direkt und wenig freundlich schreiben, wenn es mal stressig wird?",
       "en": "I can understand that. <r>Do you mean that</r> we generally write too bluntly and not very kindly when things get stressful?",
       "uk": "Я це цілком розумію. <r>Ти маєш на увазі, що</r> ми загалом пишемо занадто прямо й не дуже дружньо, коли буває стресово?",
-      "ru": "Я это вполне понимаю. <r>Ты имеешь в виду, что</r> мы в целом пишем слишком прямо и не очень дружелюбно, когда бывает стрессово?"
+      "ru": "Я это вполне понимаю. <r>Ты имеешь в виду, что</r> мы в целом пишем слишком прямо и не очень дружелюбно, когда бывает стрессово?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. <r>Was hältst du davon, wenn</r> wir gemeinsam ein paar Formulierungshilfen für positivere Mails erarbeiten?",
       "en": "Exactly. <r>What do you think if</r> we work out some phrasing tips together for more positive emails?",
       "uk": "Саме так. <r>Як ти дивишся на те, якщо</r> ми разом розробимо кілька підказок для більш позитивних листів?",
-      "ru": "Именно так. <r>Как ты смотришь на то, если</r> мы вместе разработаем несколько подсказок для более позитивных писем?"
+      "ru": "Именно так. <r>Как ты смотришь на то, если</r> мы вместе разработаем несколько подсказок для более позитивных писем?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Das sehe ich genauso wie du</r>. <r>Ich schlage vor, dass</r> wir zuerst ein paar typische Sätze sammeln, die häufig missverständlich wirken.",
       "en": "<r>I see it exactly the same way</r>. <r>I suggest that</r> we first collect a few typical sentences that often come across as misleading.",
       "uk": "<r>Я бачу це так само, як і ти</r>. <r>Я пропоную, щоб</r> ми спершу зібрали кілька типових речень, які часто справляють неоднозначне враження.",
-      "ru": "<r>Я вижу это так же, как и ты</r>. <r>Я предлагаю, чтобы</r> мы сначала собрали несколько типичных фраз, которые часто производят неоднозначное впечатление."
+      "ru": "<r>Я вижу это так же, как и ты</r>. <r>Я предлагаю, чтобы</r> мы сначала собрали несколько типичных фраз, которые часто производят неоднозначное впечатление.",
+      "gram": ""
     },
     "q2": {
       "de": "Gute Idee. <r>Ich hätte auch einen Vorschlag</r>: Wir könnten negative Formulierungen wie 'Das ist falsch' durch etwas Sachlicheres ersetzen, zum Beispiel 'Könnten wir das noch einmal prüfen?'.",
       "en": "Good idea. <r>I have a suggestion too</r>: we could replace negative phrases like 'That's wrong' with something more neutral, for example 'Could we check that again?'.",
       "uk": "Гарна ідея. <r>У мене теж є пропозиція</r>: ми могли б замінити негативні формулювання на кшталт «Це неправильно» на щось більш нейтральне, наприклад «Чи могли б ми це ще раз перевірити?».",
-      "ru": "Хорошая идея. <r>У меня тоже есть предложение</r>: мы могли бы заменить негативные формулировки вроде «Это неправильно» на что-то более нейтральное, например «Могли бы мы это ещё раз проверить?»."
+      "ru": "Хорошая идея. <r>У меня тоже есть предложение</r>: мы могли бы заменить негативные формулировки вроде «Это неправильно» на что-то более нейтральное, например «Могли бы мы это ещё раз проверить?».",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Das halte ich für richtig, allerdings sollten wir auch bedenken, dass</r> es bei Protokollen etwas anders ist - da muss es ja vor allem sachlich und knapp bleiben.",
       "en": "<r>I think that's right, though we should also keep in mind that</r> minutes are a bit different - there it needs to stay factual and concise above all.",
       "uk": "<r>Я вважаю це правильним, хоча варто також враховувати, що</r> з протоколами трохи інакше - там передусім має залишатися об'єктивність і стислість.",
-      "ru": "<r>Я считаю это правильным, хотя стоит также учитывать, что</r> с протоколами немного иначе - там прежде всего должна оставаться объективность и краткость."
+      "ru": "<r>Я считаю это правильным, хотя стоит также учитывать, что</r> с протоколами немного иначе - там прежде всего должна оставаться объективность и краткость.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt, aber auch ein Protokoll kann freundlich klingen, ohne unpräzise zu werden. <r>Ich denke, es wäre besser, wenn</r> wir Ergebnisse neutral, aber nicht kalt formulieren.",
       "en": "True, but even minutes can sound friendly without becoming imprecise. <r>I think it would be better if</r> we phrase results neutrally, but not coldly.",
       "uk": "Правда, але навіть протокол може звучати доброзичливо, не втрачаючи точності. <r>Я думаю, було б краще, якщо</r> ми формулюватимемо результати нейтрально, але не холодно.",
-      "ru": "Верно, но даже протокол может звучать доброжелательно, не теряя точности. <r>Я думаю, было бы лучше, если бы</r> мы формулировали результаты нейтрально, но не холодно."
+      "ru": "Верно, но даже протокол может звучать доброжелательно, не теряя точности. <r>Я думаю, было бы лучше, если бы</r> мы формулировали результаты нейтрально, но не холодно.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Vielleicht könnten wir eine kleine Vorlage erstellen, an der sich alle orientieren können.",
       "en": "<r>I completely agree with you</r>. Maybe we could create a small template that everyone can use as a guide.",
       "uk": "<r>Я цілком з тобою згоден</r>. Можливо, ми могли б створити невеликий шаблон, на який усі могли б орієнтуватися.",
-      "ru": "<r>Я полностью с тобой согласен</r>. Возможно, мы могли бы создать небольшой шаблон, на который все могли бы ориентироваться."
+      "ru": "<r>Я полностью с тобой согласен</r>. Возможно, мы могли бы создать небольшой шаблон, на который все могли бы ориентироваться.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Sollen wir das direkt im nächsten Meeting vorstellen, damit alle Bescheid wissen?",
       "en": "Good idea. Should we present that directly at the next meeting, so everyone knows about it?",
       "uk": "Гарна ідея. Представимо це одразу на наступній нараді, щоб усі знали?",
-      "ru": "Хорошая идея. Представим это сразу на следующем совещании, чтобы все знали?"
+      "ru": "Хорошая идея. Представим это сразу на следующем совещании, чтобы все знали?",
+      "gram": ""
     },
     "a4": {
       "de": "Ja, das wäre sinnvoll. Ich könnte die Vorlage bis dahin fertig vorbereiten, wenn du schon mal ein paar Beispielsätze sammelst.",
       "en": "Yes, that would make sense. I could have the template ready by then, if you collect a few example sentences in the meantime.",
       "uk": "Так, це було б розумно. Я міг би підготувати шаблон до того часу, якщо ти тим часом збереш кілька прикладів речень.",
-      "ru": "Да, это было бы разумно. Я мог бы подготовить шаблон к тому времени, если ты тем временем соберёшь несколько примеров фраз."
+      "ru": "Да, это было бы разумно. Я мог бы подготовить шаблон к тому времени, если ты тем временем соберёшь несколько примеров фраз.",
+      "gram": ""
     },
     "q5": {
       "de": "Gerne. Dann können wir das Thema gleich zu Beginn des nächsten Meetings ansprechen, bevor es sonst wieder in Vergessenheit gerät.",
       "en": "Sure. Then we can bring the topic up right at the start of the next meeting, before it gets forgotten again.",
       "uk": "Із задоволенням. Тоді ми зможемо підняти цю тему одразу на початку наступної наради, поки вона знову не забулася.",
-      "ru": "С удовольствием. Тогда мы сможем поднять эту тему сразу в начале следующего совещания, пока она снова не забылась."
+      "ru": "С удовольствием. Тогда мы сможем поднять эту тему сразу в начале следующего совещания, пока она снова не забылась.",
+      "gram": ""
     },
     "a5": {
       "de": "Einverstanden. Ich denke, so vermeiden wir zukünftig ähnliche Missverständnisse im Team.",
       "en": "Agreed. I think that way we'll avoid similar misunderstandings in the team in the future.",
       "uk": "Домовились. Гадаю, так ми уникнемо подібних непорозумінь у команді в майбутньому.",
-      "ru": "Договорились. Думаю, так мы избежим подобных недопониманий в команде в будущем."
+      "ru": "Договорились. Думаю, так мы избежим подобных недопониманий в команде в будущем.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Dann können wir also festhalten</r>: Du bereitest die Vorlage vor, ich sammle Beispielsätze, und wir stellen beides im nächsten Meeting vor.",
       "en": "<r>Then we can note down</r>: you'll prepare the template, I'll collect example sentences, and we'll present both at the next meeting.",
       "uk": "<r>Тоді можемо зафіксувати</r>: ти готуєш шаблон, я збираю приклади речень, і ми представимо обидва на наступній нараді.",
-      "ru": "<r>Тогда можем зафиксировать</r>: ты готовишь шаблон, я собираю примеры фраз, и мы представим оба на следующем совещании."
+      "ru": "<r>Тогда можем зафиксировать</r>: ты готовишь шаблон, я собираю примеры фраз, и мы представим оба на следующем совещании.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau. Ich bin überzeugt, dass unsere Kommunikation dadurch spürbar freundlicher und klarer wird.",
       "en": "Exactly. I'm convinced our communication will be noticeably friendlier and clearer because of it.",
       "uk": "Саме так. Я переконаний, що наша комунікація через це стане помітно доброзичливішою і зрозумілішою.",
-      "ru": "Именно так. Я убеждён, что наша коммуникация от этого станет заметно дружелюбнее и понятнее."
-    },
-    "gram": ""
+      "ru": "Именно так. Я убеждён, что наша коммуникация от этого станет заметно дружелюбнее и понятнее.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_086",
@@ -16807,87 +17309,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: Mir ist aufgefallen, dass unsere 'Über uns'-Seite seit Jahren nicht mehr <g>aktualisiert worden</g> ist. Da fehlen die neuen Standorte und die aktuellen Produkte.",
       "en": "<r>We should talk about a problem</r>: I've noticed that our 'About us' page hasn't <g>been updated</g> in years. It's missing our new locations and current products.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: я помітила, що наша сторінка «Про нас» уже роками не <g>оновлювалася</g>. Там бракує наших нових локацій і актуальних продуктів.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: я заметила, что наша страница «О нас» уже годами не <g>обновлялась</g>. Там не хватает наших новых локаций и актуальных продуктов."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: я заметила, что наша страница «О нас» уже годами не <g>обновлялась</g>. Там не хватает наших новых локаций и актуальных продуктов.",
+      "gram": "passiv_passiversatz"
     },
     "a": {
       "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Der Text muss also komplett überarbeitet werden?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so the text needs to be completely revised?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто текст потрібно повністю переробити?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть текст нужно полностью переработать?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть текст нужно полностью переработать?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. <r>Was könnten wir in dieser Situation machen</r>, damit die Seite wieder aktuell ist?",
       "en": "Exactly. <r>What could we do in this situation</r> to bring the page up to date again?",
       "uk": "Саме так. <r>Що ми могли б зробити в цій ситуації</r>, щоб сторінка знову стала актуальною?",
-      "ru": "Именно так. <r>Что мы могли бы сделать в этой ситуации</r>, чтобы страница снова стала актуальной?"
+      "ru": "Именно так. <r>Что мы могли бы сделать в этой ситуации</r>, чтобы страница снова стала актуальной?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Die veralteten Zahlen können wir relativ schnell aktualisieren, dafür brauchen wir nur die neuen Umsatzzahlen aus der Buchhaltung.",
       "en": "<r>I have an idea</r>: we can update the outdated figures fairly quickly, we just need the new revenue numbers from accounting for that.",
       "uk": "<r>У мене є ідея</r>: застарілі цифри ми можемо оновити доволі швидко, для цього потрібні лише нові дані про обіг з бухгалтерії.",
-      "ru": "<r>У меня есть идея</r>: устаревшие цифры мы можем обновить довольно быстро, для этого нужны только новые данные об обороте из бухгалтерии."
+      "ru": "<r>У меня есть идея</r>: устаревшие цифры мы можем обновить довольно быстро, для этого нужны только новые данные об обороте из бухгалтерии.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich noch ein Foto von unserem neuen Standort einfügen?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also add a photo of our new location?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково додамо фото нашої нової локації?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно добавим фото нашей новой локации?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно добавим фото нашей новой локации?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. Der ganze Abschnitt über unsere Produkte ist außerdem noch einmal genau <g>zu prüfen</g>, weil wir seit letztem Jahr auch die neue Serie anbieten.",
       "en": "<r>Yes, I think that's a good idea</r>. The whole section about our products also <g>needs to be reviewed</g> again, since we've been offering the new series since last year.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Весь розділ про наші продукти теж <g>треба ще раз перевірити</g>, бо з минулого року ми пропонуємо й нову серію.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Весь раздел о наших продуктах тоже <g>нужно ещё раз проверить</g>, потому что с прошлого года мы предлагаем и новую серию."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Весь раздел о наших продуктах тоже <g>нужно ещё раз проверить</g>, потому что с прошлого года мы предлагаем и новую серию.",
+      "gram": "passiv_passiversatz"
     },
     "q3": {
       "de": "Stimmt. Wer sollte den Text denn am Ende schreiben - vielleicht jemand aus dem Marketing?",
       "en": "True. Who should actually write the text in the end - maybe someone from marketing?",
       "uk": "Правда. А хто зрештою має написати текст - можливо, хтось із маркетингу?",
-      "ru": "Верно. А кто в итоге должен написать текст - может, кто-то из маркетинга?"
+      "ru": "Верно. А кто в итоге должен написать текст - может, кто-то из маркетинга?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Marketing kennt sich mit einer professionellen Formulierung am besten aus, und dort wird der Text sicher auch noch mal gegengelesen.",
       "en": "<r>I think that's an excellent solution</r>. Marketing knows best how to phrase things professionally, and the text will surely get proofread there too.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>. У маркетингу найкраще вміють професійно формулювати текст, та й там його точно ще раз вичитають.",
-      "ru": "<r>Я считаю это отличным решением</r>. В маркетинге лучше всего умеют профессионально формулировать текст, да и там его точно ещё раз вычитают."
+      "ru": "<r>Я считаю это отличным решением</r>. В маркетинге лучше всего умеют профессионально формулировать текст, да и там его точно ещё раз вычитают.",
+      "gram": ""
     },
     "q4": {
       "de": "Gut. Und bis wann sollten wir das realistisch schaffen? Ich möchte nicht, dass sich das wieder monatelang hinzieht.",
       "en": "Good. And by when should we realistically get this done? I don't want it to drag on for months again.",
       "uk": "Добре. А до якого часу нам реально це варто встигнути? Не хочу, щоб це знову тяглося місяцями.",
-      "ru": "Хорошо. А к какому времени нам реально стоит успеть? Не хочу, чтобы это снова тянулось месяцами."
+      "ru": "Хорошо. А к какому времени нам реально стоит успеть? Не хочу, чтобы это снова тянулось месяцами.",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir uns</r> auf vier Wochen einigen. In der Zeit <g>lässt sich</g> ein guter Text sicher erstellen, ohne dass jemand unter Druck gerät.",
       "en": "<r>Maybe we could agree</r> on four weeks. A good text can definitely <g>be written</g> in that time without putting anyone under pressure.",
       "uk": "<r>Можливо, ми могли б домовитися</r> на чотири тижні. За цей час цілком <g>можна написати</g> хороший текст, не змушуючи нікого поспішати.",
-      "ru": "<r>Возможно, мы могли бы договориться</r> на четыре недели. За это время вполне <g>можно написать</g> хороший текст, не заставляя никого спешить."
+      "ru": "<r>Возможно, мы могли бы договориться</r> на четыре недели. За это время вполне <g>можно написать</g> хороший текст, не заставляя никого спешить.",
+      "gram": "passiv_passiversatz"
     },
     "q5": {
       "de": "Einverstanden. Sollen wir das Marketingteam gleich diese Woche informieren, damit sie rechtzeitig anfangen können?",
       "en": "Agreed. Should we inform the marketing team this week, so they can start in time?",
       "uk": "Домовились. Повідомимо маркетинговій команді вже цього тижня, щоб вони могли вчасно почати?",
-      "ru": "Договорились. Сообщим маркетинговой команде уже на этой неделе, чтобы они могли вовремя начать?"
+      "ru": "Договорились. Сообщим маркетинговой команде уже на этой неделе, чтобы они могли вовремя начать?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich schreibe ihnen noch heute eine kurze Übersicht mit allem, was aktualisiert werden muss.",
       "en": "Yes, that would make sense. I'll send them a short overview today with everything that needs to be updated.",
       "uk": "Так, це було б розумно. Я напишу їм сьогодні коротенький огляд усього, що потрібно оновити.",
-      "ru": "Да, это было бы разумно. Я напишу им сегодня короткий обзор всего, что нужно обновить."
+      "ru": "Да, это было бы разумно. Я напишу им сегодня короткий обзор всего, что нужно обновить.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir sammeln die neuen Zahlen und Fotos, das Marketingteam schreibt den neuen Text, und in vier Wochen soll die aktualisierte Seite online sein.",
       "en": "<r>Let's summarize</r>: we'll gather the new figures and photos, the marketing team will write the new text, and the updated page should be online in four weeks.",
       "uk": "<r>Підсумуємо</r>: ми зберемо нові цифри й фото, маркетингова команда напише новий текст, і через чотири тижні оновлена сторінка має бути онлайн.",
-      "ru": "<r>Подведём итог</r>: мы соберём новые цифры и фото, маркетинговая команда напишет новый текст, и через четыре недели обновлённая страница должна быть онлайн."
+      "ru": "<r>Подведём итог</r>: мы соберём новые цифры и фото, маркетинговая команда напишет новый текст, и через четыре недели обновлённая страница должна быть онлайн.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so bekommt unser Unternehmen endlich wieder ein zeitgemäßes Bild nach außen.",
       "en": "Exactly, that's what we'll do. I think that way our company will finally have an up-to-date image again.",
       "uk": "Саме так, так і зробимо. Гадаю, так наша компанія нарешті знову матиме сучасний вигляд для зовнішнього світу.",
-      "ru": "Именно так, так и сделаем. Думаю, так наша компания наконец снова будет выглядеть современно для внешнего мира."
-    },
-    "gram": "passiv_passiversatz"
+      "ru": "Именно так, так и сделаем. Думаю, так наша компания наконец снова будет выглядеть современно для внешнего мира.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_087",
@@ -16905,87 +17420,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: Am Stand ist gerade richtig viel los, aber wir sind nur zu zweit, und die Prospekte sind fast alle weg.",
       "en": "<r>We should talk about a problem</r>: there's a lot going on at the booth right now, but there are only two of us, and the brochures are almost all gone.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: біля стенду зараз справді багато людей, а нас лише двоє, і буклети майже всі закінчилися.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: у стенда сейчас действительно много людей, а нас всего двое, и буклеты почти все закончились."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: у стенда сейчас действительно много людей, а нас всего двое, и буклеты почти все закончились.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon gemerkt. <r>Habe ich dich richtig verstanden</r>: Wir schaffen es also gerade nicht, alle Besucher ordentlich zu beraten?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so we're currently not managing to properly advise all the visitors?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто зараз ми не встигаємо як слід консультувати всіх відвідувачів?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть сейчас мы не успеваем как следует консультировать всех посетителей?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть сейчас мы не успеваем как следует консультировать всех посетителей?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, einige mussten schon eine Weile warten. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, some have already had to wait a while. <r>What could we do in this situation</r>?",
       "uk": "Саме так, дехто вже змушений був почекати. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, кое-кому уже пришлось подождать. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, кое-кому уже пришлось подождать. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten kurz beim Nachbarstand anrufen, ob jemand aus unserem Team dort spontan aushelfen kann.",
       "en": "<r>I have an idea</r>: we could quickly call the neighboring booth to see if someone from their team can spontaneously help out.",
       "uk": "<r>У мене є ідея</r>: ми могли б швидко зателефонувати на сусідній стенд і запитати, чи хтось з їхньої команди міг би спонтанно допомогти.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы быстро позвонить на соседний стенд и спросить, может ли кто-то из их команды спонтанно помочь."
+      "ru": "<r>У меня есть идея</r>: мы могли бы быстро позвонить на соседний стенд и спросить, может ли кто-то из их команды спонтанно помочь.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich die Prospekte digital anbieten, zum Beispiel per QR-Code?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also offer the brochures digitally, for example via QR code?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково запропонуємо буклети в цифровому вигляді, наприклад через QR-код?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно предложим буклеты в цифровом виде, например через QR-код?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно предложим буклеты в цифровом виде, например через QR-код?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. Dann können sich die Besucher die Unterlagen selbst herunterladen, auch wenn wir gerade keine mehr haben.",
       "en": "<r>Yes, I think that's a good idea</r>. Then visitors can download the materials themselves, even if we don't have any left right now.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Тоді відвідувачі зможуть самі завантажити матеріали, навіть якщо в нас зараз немає жодного буклета.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Тогда посетители смогут сами скачать материалы, даже если у нас сейчас не осталось ни одного буклета."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Тогда посетители смогут сами скачать материалы, даже если у нас сейчас не осталось ни одного буклета.",
+      "gram": ""
     },
     "q3": {
       "de": "Gute Idee. Und wie gehen wir mit den wartenden Besuchern um? Sollen wir uns zuerst um die kümmern, die konkretes Interesse zeigen?",
       "en": "Good idea. And how do we handle the waiting visitors? Should we take care of the ones showing concrete interest first?",
       "uk": "Гарна ідея. А як нам бути з відвідувачами, які чекають? Може, спершу займемося тими, хто показує конкретний інтерес?",
-      "ru": "Хорошая идея. А как нам быть с ожидающими посетителями? Может, сначала займёмся теми, кто проявляет конкретный интерес?"
+      "ru": "Хорошая идея. А как нам быть с ожидающими посетителями? Может, сначала займёмся теми, кто проявляет конкретный интерес?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Wer nur kurz vorbeischaut, kann sich erst mal die Neuheiten ansehen, während wir uns um die ernsthaften Anfragen kümmern.",
       "en": "<r>I think that's an excellent solution</r>. Anyone just briefly stopping by can look at the new products first, while we take care of the serious inquiries.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>. Ті, хто просто заглянув на хвилинку, можуть спершу подивитися на новинки, поки ми займаємося серйозними запитами.",
-      "ru": "<r>Я считаю это отличным решением</r>. Те, кто просто заглянул на минутку, могут сначала посмотреть новинки, пока мы занимаемся серьёзными запросами."
+      "ru": "<r>Я считаю это отличным решением</r>. Те, кто просто заглянул на минутку, могут сначала посмотреть новинки, пока мы занимаемся серьёзными запросами.",
+      "gram": ""
     },
     "q4": {
       "de": "Stimmt. Und was machen wir, wenn wir trotzdem jemanden übersehen und er wieder geht, ohne beraten worden zu sein?",
       "en": "True. And what do we do if we still miss someone and they leave without being advised?",
       "uk": "Правда. А що робити, якщо ми все одно когось пропустимо і людина піде, так і не отримавши консультації?",
-      "ru": "Верно. А что делать, если мы всё равно кого-то упустим и человек уйдёт, так и не получив консультации?"
+      "ru": "Верно. А что делать, если мы всё равно кого-то упустим и человек уйдёт, так и не получив консультации?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> eine kleine Liste führen, in die wir Namen und Kontaktdaten eintragen, damit wir uns danach persönlich bei allen melden können.",
       "en": "<r>Maybe we could</r> keep a short list where we write down names and contact details, so we can follow up with everyone personally afterward.",
       "uk": "<r>Можливо, ми могли б</r> вести невеликий список, куди записуватимемо імена й контактні дані, щоб потім особисто зв'язатися з усіма.",
-      "ru": "<r>Возможно, мы могли бы</r> вести небольшой список, куда будем записывать имена и контактные данные, чтобы потом лично связаться со всеми."
+      "ru": "<r>Возможно, мы могли бы</r> вести небольшой список, куда будем записывать имена и контактные данные, чтобы потом лично связаться со всеми.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir das gleich so machen, damit uns das nicht wieder passiert?",
       "en": "Good point. Should we do that right away, so this doesn't happen to us again?",
       "uk": "Слушна думка. Зробимо це одразу, щоб таке більше не повторювалося?",
-      "ru": "Дельная мысль. Сделаем это сразу, чтобы такое больше не повторялось?"
+      "ru": "Дельная мысль. Сделаем это сразу, чтобы такое больше не повторялось?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich lege die Liste sofort an, während du beim Nachbarstand nach Unterstützung fragst.",
       "en": "Yes, that would make sense. I'll set up the list right now, while you ask the neighboring booth for support.",
       "uk": "Так, це було б розумно. Я одразу заведу список, поки ти запитаєш на сусідньому стенді про допомогу.",
-      "ru": "Да, это было бы разумно. Я сразу заведу список, пока ты спросишь на соседнем стенде о помощи."
+      "ru": "Да, это было бы разумно. Я сразу заведу список, пока ты спросишь на соседнем стенде о помощи.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir holen kurzfristig Unterstützung, bieten die Prospekte zusätzlich digital an und führen eine Liste für Besucher, die wir nicht sofort beraten konnten.",
       "en": "<r>Let's summarize</r>: we'll get short-term support, also offer the brochures digitally, and keep a list for visitors we couldn't advise right away.",
       "uk": "<r>Підсумуємо</r>: ми отримаємо тимчасову підтримку, додатково запропонуємо буклети в цифровому вигляді і вестимемо список відвідувачів, яких не встигли одразу проконсультувати.",
-      "ru": "<r>Подведём итог</r>: мы получим временную поддержку, дополнительно предложим буклеты в цифровом виде и будем вести список посетителей, которых не успели сразу проконсультировать."
+      "ru": "<r>Подведём итог</r>: мы получим временную поддержку, дополнительно предложим буклеты в цифровом виде и будем вести список посетителей, которых не успели сразу проконсультировать.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so können wir den Rest des Messetages trotzdem gut meistern.",
       "en": "Exactly, that's what we'll do. I think that way we can still handle the rest of the trade fair day well.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми зможемо гідно впоратися з рештою виставкового дня.",
-      "ru": "Именно так, так и сделаем. Думаю, так мы сможем достойно справиться с остатком выставочного дня."
-    },
-    "gram": ""
+      "ru": "Именно так, так и сделаем. Думаю, так мы сможем достойно справиться с остатком выставочного дня.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_088",
@@ -17003,87 +17531,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: In den letzten Monaten haben mehrere Kolleginnen und Kollegen ihren Anschlusszug verpasst, weil die Durchsagen am Bahnhof zu spät oder unklar waren.",
       "en": "<r>We should talk about a problem</r>: over the last few months, several colleagues have missed their connecting train, because the announcements at the station were too late or unclear.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: за останні кілька місяців кілька колег пропустили свій пересадковий потяг, бо оголошення на вокзалі були надто пізніми або незрозумілими.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: за последние несколько месяцев несколько коллег пропустили свой пересадочный поезд, потому что объявления на вокзале были слишком поздними или непонятными."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: за последние несколько месяцев несколько коллег пропустили свой пересадочный поезд, потому что объявления на вокзале были слишком поздними или непонятными.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um die schlechte Information am Bahnhof selbst?",
       "en": "I've heard about that too. <r>Did I understand you correctly</r>: so it's mainly about the poor information at the station itself?",
       "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про погане інформування безпосередньо на вокзалі?",
-      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о плохом информировании непосредственно на вокзале?"
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о плохом информировании непосредственно на вокзале?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und dadurch kamen einige mehrmals zu spät zu wichtigen Kundenterminen. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, and because of that some were repeatedly late for important client meetings. <r>What could we do in this situation</r>?",
       "uk": "Саме так, і через це дехто кілька разів запізнювався на важливі зустрічі з клієнтами. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, и из-за этого кое-кто несколько раз опаздывал на важные встречи с клиентами. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, и из-за этого кое-кто несколько раз опаздывал на важные встречи с клиентами. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: <g>Jeder</g>, der auf Dienstreise geht, könnte vorher eine Zug-App mit Echtzeit-Informationen einrichten, dann verpasst <g>niemand</g> mehr eine wichtige Durchsage.",
       "en": "<r>I have an idea</r>: <g>everyone</g> going on a business trip could set up a train app with real-time information beforehand, then <g>no one</g> misses an important announcement anymore.",
       "uk": "<r>У мене є ідея</r>: <g>кожен</g>, хто їде у відрядження, міг би заздалегідь встановити застосунок потягів із даними в реальному часі, тоді <g>ніхто</g> більше не пропустить важливе оголошення.",
-      "ru": "<r>У меня есть идея</r>: <g>каждый</g>, кто едет в командировку, мог бы заранее установить приложение поездов с данными в реальном времени, тогда <g>никто</g> больше не пропустит важное объявление."
+      "ru": "<r>У меня есть идея</r>: <g>каждый</g>, кто едет в командировку, мог бы заранее установить приложение поездов с данными в реальном времени, тогда <g>никто</g> больше не пропустит важное объявление.",
+      "gram": "indefinitpronomen"
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich mehr Pufferzeit zwischen den Verbindungen einplanen, damit auch bei kleinen Verspätungen noch etwas Zeit bleibt?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also plan more buffer time between connections, so there's still some time left even with small delays?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково закладемо більше запасу часу між пересадками, щоб навіть при невеликих затримках залишався час?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно заложим больше запаса времени между пересадками, чтобы даже при небольших задержках оставалось время?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно заложим больше запаса времени между пересадками, чтобы даже при небольших задержках оставалось время?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. <g>Manche</g> Verbindungen sind einfach zu knapp geplant, da reicht schon eine kleine Verzögerung, und man verpasst alles.",
       "en": "<r>Yes, I think that's a good idea</r>. <g>Some</g> connections are simply planned too tightly, a small delay is already enough and you miss everything.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. <g>Деякі</g> пересадки просто заплановані надто щільно, вистачає невеликої затримки, і пропускаєш усе.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. <g>Некоторые</g> пересадки просто спланированы слишком плотно, хватает небольшой задержки, и пропускаешь всё."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. <g>Некоторые</g> пересадки просто спланированы слишком плотно, хватает небольшой задержки, и пропускаешь всё.",
+      "gram": "indefinitpronomen"
     },
     "q3": {
       "de": "Stimmt. Und was machen wir, wenn trotzdem mal jemand zu spät zu einem Kundentermin kommt?",
       "en": "True. And what do we do if someone still ends up being late for a client meeting?",
       "uk": "Правда. А що робити, якщо хтось усе ж запізниться на зустріч з клієнтом?",
-      "ru": "Верно. А что делать, если кто-то всё же опоздает на встречу с клиентом?"
+      "ru": "Верно. А что делать, если кто-то всё же опоздает на встречу с клиентом?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>: Diese Person sollte sofort im Büro Bescheid sagen, damit jemand anderes den Kunden rechtzeitig informieren kann.",
       "en": "<r>I think that's an excellent solution</r>: that person should immediately let the office know, so someone else can inform the client in time.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>: ця людина має одразу повідомити в офіс, щоб хтось інший вчасно поінформував клієнта.",
-      "ru": "<r>Я считаю это отличным решением</r>: этот человек должен сразу сообщить в офис, чтобы кто-то другой вовремя проинформировал клиента."
+      "ru": "<r>Я считаю это отличным решением</r>: этот человек должен сразу сообщить в офис, чтобы кто-то другой вовремя проинформировал клиента.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Sollten wir das am besten gleich fest in unseren Reiserichtlinien festhalten, damit es alle wissen?",
       "en": "Good idea. Should we write that directly into our travel guidelines, so everyone knows about it?",
       "uk": "Гарна ідея. Може, одразу закріпимо це в наших правилах для відряджень, щоб усі знали?",
-      "ru": "Хорошая идея. Может, сразу закрепим это в наших правилах для командировок, чтобы все знали?"
+      "ru": "Хорошая идея. Может, сразу закрепим это в наших правилах для командировок, чтобы все знали?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das im nächsten Teammeeting vorstellen, dann wissen wirklich alle Bescheid, und niemand kann sagen, er hätte nichts davon gewusst.",
       "en": "<r>Maybe we could</r> present that at the next team meeting, then everyone really knows about it, and no one can say they knew nothing about it.",
       "uk": "<r>Можливо, ми могли б</r> представити це на наступній нараді команди, тоді справді всі будуть в курсі, і ніхто не зможе сказати, що нічого не знав.",
-      "ru": "<r>Возможно, мы могли бы</r> представить это на следующем собрании команды, тогда действительно все будут в курсе, и никто не сможет сказать, что ничего не знал."
+      "ru": "<r>Возможно, мы могли бы</r> представить это на следующем собрании команды, тогда действительно все будут в курсе, и никто не сможет сказать, что ничего не знал.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir die neuen Regeln gleich diese Woche noch aufschreiben?",
       "en": "Good point. Should we write down the new rules this week?",
       "uk": "Слушна думка. Запишемо нові правила вже цього тижня?",
-      "ru": "Дельная мысль. Запишем новые правила уже на этой неделе?"
+      "ru": "Дельная мысль. Запишем новые правила уже на этой неделе?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte einen kurzen Entwurf vorbereiten, wenn du schon mal ein paar gute Apps für die Zugverbindungen heraussuchst.",
       "en": "Yes, that would make sense. I could prepare a short draft, if you look up a few good apps for train connections in the meantime.",
       "uk": "Так, це було б розумно. Я міг би підготувати короткий проєкт, якщо ти тим часом підбереш кілька хороших застосунків для потягів.",
-      "ru": "Да, это было бы разумно. Я мог бы подготовить короткий проект, если ты тем временем подберёшь несколько хороших приложений для поездов."
+      "ru": "Да, это было бы разумно. Я мог бы подготовить короткий проект, если ты тем временем подберёшь несколько хороших приложений для поездов.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Jeder nutzt künftig eine Echtzeit-App, wir planen mehr Pufferzeit ein, und wer trotzdem zu spät kommt, meldet sich sofort im Büro.",
       "en": "<r>Let's summarize</r>: everyone will use a real-time app going forward, we'll plan more buffer time, and whoever's still running late will contact the office right away.",
       "uk": "<r>Підсумуємо</r>: кожен користуватиметься застосунком у реальному часі, ми закладаємо більше запасу часу, а хто все ж запізниться, одразу зв'яжеться з офісом.",
-      "ru": "<r>Подведём итог</r>: каждый будет пользоваться приложением в реальном времени, мы закладываем больше запаса времени, а кто всё же опоздает, сразу свяжется с офисом."
+      "ru": "<r>Подведём итог</r>: каждый будет пользоваться приложением в реальном времени, мы закладываем больше запаса времени, а кто всё же опоздает, сразу свяжется с офисом.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so verpasst hoffentlich niemand mehr einen wichtigen Termin wegen einer verpassten Zugverbindung.",
       "en": "Exactly, that's what we'll do. I think that way hopefully no one will miss an important appointment because of a missed train connection again.",
       "uk": "Саме так, так і зробимо. Гадаю, так, сподіваюся, ніхто більше не пропустить важливу зустріч через пропущену пересадку.",
-      "ru": "Именно так, так и сделаем. Думаю, так, надеюсь, никто больше не пропустит важную встречу из-за пропущенной пересадки."
-    },
-    "gram": "indefinitpronomen"
+      "ru": "Именно так, так и сделаем. Думаю, так, надеюсь, никто больше не пропустит важную встречу из-за пропущенной пересадки.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_089",
@@ -17101,87 +17642,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: In einer Woche müssen wir das neue Produkt vor wichtigen Kunden präsentieren, aber die aktuelle Präsentation ist sehr technisch und enthält kaum Bilder.",
       "en": "<r>We should talk about a problem</r>: in a week we have to present the new product to important clients, but the current presentation is very technical and has hardly any images.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: через тиждень нам потрібно презентувати новий продукт важливим клієнтам, а нинішня презентація дуже технічна й майже без зображень.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: через неделю нам нужно представить новый продукт важным клиентам, а нынешняя презентация очень техничная и почти без изображений."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: через неделю нам нужно представить новый продукт важным клиентам, а нынешняя презентация очень техничная и почти без изображений.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon gesehen. <r>Habe ich dich richtig verstanden</r>: Die Vorteile des Produkts kommen dadurch nicht richtig zur Geltung?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so the product's advantages don't really come across because of that?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто через це переваги продукту не виглядають чіткими?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть из-за этого преимущества продукта выглядят нечёткими?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть из-за этого преимущества продукта выглядят нечёткими?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, im Moment stehen vor allem technische Details im Zentrum, aber nicht der Nutzen für die Kunden. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, right now technical details are mostly at the center of it, but not the benefit for customers. <r>What could we do in this situation</r>?",
       "uk": "Саме так, наразі в центрі уваги переважно технічні деталі, а не користь для клієнтів. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, сейчас в центре внимания в основном технические детали, а не польза для клиентов. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, сейчас в центре внимания в основном технические детали, а не польза для клиентов. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten die Präsentation neu aufbauen und zuerst den konkreten Nutzen zeigen, bevor wir auf die technischen Details eingehen.",
       "en": "<r>I have an idea</r>: we could restructure the presentation and show the concrete benefit first, before getting into the technical details.",
       "uk": "<r>У мене є ідея</r>: ми могли б перебудувати презентацію і спершу показати конкретну користь, перш ніж переходити до технічних деталей.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы перестроить презентацию и сначала показать конкретную пользу, прежде чем переходить к техническим деталям."
+      "ru": "<r>У меня есть идея</r>: мы могли бы перестроить презентацию и сначала показать конкретную пользу, прежде чем переходить к техническим деталям.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich noch ein paar Produktfotos und eine kurze Grafik einfügen, damit es nicht so trocken wirkt?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also add a few product photos and a short graphic, so it doesn't come across so dry?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково додамо кілька фото продукту й невелику графіку, щоб це не виглядало так сухо?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно добавим несколько фото продукта и небольшую графику, чтобы это не выглядело так сухо?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно добавим несколько фото продукта и небольшую графику, чтобы это не выглядело так сухо?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. Wir könnten auch ein kurzes Video zeigen, das im Zusammenhang mit der Anwendung des Produkts steht.",
       "en": "<r>Yes, I think that's a good idea</r>. We could also show a short video connected to how the product is used.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Ми могли б також показати коротке відео, пов'язане з використанням продукту.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Мы могли бы также показать короткое видео, связанное с использованием продукта."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Мы могли бы также показать короткое видео, связанное с использованием продукта.",
+      "gram": ""
     },
     "q3": {
       "de": "Gute Idee. Und wie sollten wir uns am besten auf den eigentlichen Vortrag vorbereiten?",
       "en": "Good idea. And how should we best prepare for the actual talk?",
       "uk": "Гарна ідея. А як нам найкраще підготуватися до самого виступу?",
-      "ru": "Хорошая идея. А как нам лучше всего подготовиться к самому выступлению?"
+      "ru": "Хорошая идея. А как нам лучше всего подготовиться к самому выступлению?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Vielleicht könnten wir vorher einmal vor dem Team üben und um ehrliches Feedback bitten.",
       "en": "<r>I think that's an excellent solution</r>. Maybe we could practice in front of the team beforehand and ask for honest feedback.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>. Можливо, ми могли б заздалегідь потренуватися перед командою і попросити чесний відгук.",
-      "ru": "<r>Я считаю это отличным решением</r>. Возможно, мы могли бы заранее потренироваться перед командой и попросить честный отзыв."
+      "ru": "<r>Я считаю это отличным решением</r>. Возможно, мы могли бы заранее потренироваться перед командой и попросить честный отзыв.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Sollen wir das gleich diese Woche noch machen, damit wir genug Zeit für Änderungen haben?",
       "en": "Good idea. Should we do that this week, so we have enough time for changes?",
       "uk": "Гарна ідея. Зробимо це вже цього тижня, щоб у нас було достатньо часу на зміни?",
-      "ru": "Хорошая идея. Сделаем это уже на этой неделе, чтобы у нас было достаточно времени на изменения?"
+      "ru": "Хорошая идея. Сделаем это уже на этой неделе, чтобы у нас было достаточно времени на изменения?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das schon übermorgen machen, dann bleiben uns noch ein paar Tage, um alles anzupassen.",
       "en": "<r>Maybe we could</r> do that the day after tomorrow, that would leave us a few days to adjust everything.",
       "uk": "<r>Можливо, ми могли б</r> зробити це вже післязавтра, тоді в нас залишиться кілька днів, щоб усе доопрацювати.",
-      "ru": "<r>Возможно, мы могли бы</r> сделать это уже послезавтра, тогда у нас останется пара дней, чтобы всё доработать."
+      "ru": "<r>Возможно, мы могли бы</r> сделать это уже послезавтра, тогда у нас останется пара дней, чтобы всё доработать.",
+      "gram": ""
     },
     "q5": {
       "de": "Einverstanden. Wer kümmert sich denn um die neuen Bilder und das Video?",
       "en": "Agreed. Who's going to take care of the new pictures and the video?",
       "uk": "Домовились. А хто займеться новими фото й відео?",
-      "ru": "Договорились. А кто займётся новыми фото и видео?"
+      "ru": "Договорились. А кто займётся новыми фото и видео?",
+      "gram": ""
     },
     "a5": {
       "de": "Ich könnte mich um die Bilder kümmern, wenn du in der Zwischenzeit die Präsentation inhaltlich überarbeitest.",
       "en": "I could take care of the pictures, if you revise the content of the presentation in the meantime.",
       "uk": "Я міг би зайнятися фото, якщо ти тим часом доопрацюєш зміст презентації.",
-      "ru": "Я мог бы заняться фото, если ты тем временем доработаешь содержание презентации."
+      "ru": "Я мог бы заняться фото, если ты тем временем доработаешь содержание презентации.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Ich überarbeite den Inhalt, du sammelst Bilder und ein Video, und übermorgen üben wir gemeinsam vor dem Team.",
       "en": "<r>Let's summarize</r>: I'll revise the content, you'll gather pictures and a video, and the day after tomorrow we'll practice together in front of the team.",
       "uk": "<r>Підсумуємо</r>: я доопрацюю зміст, ти збереш фото й відео, і післязавтра ми разом потренуємося перед командою.",
-      "ru": "<r>Подведём итог</r>: я доработаю содержание, ты соберёшь фото и видео, и послезавтра мы вместе потренируемся перед командой."
+      "ru": "<r>Подведём итог</r>: я доработаю содержание, ты соберёшь фото и видео, и послезавтра мы вместе потренируемся перед командой.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so wird die Präsentation deutlich überzeugender für unsere Kunden.",
       "en": "Exactly, that's what we'll do. I think that way the presentation will be a lot more convincing for our clients.",
       "uk": "Саме так, так і зробимо. Гадаю, так презентація стане значно переконливішою для наших клієнтів.",
-      "ru": "Именно так, так и сделаем. Думаю, так презентация станет значительно убедительнее для наших клиентов."
-    },
-    "gram": ""
+      "ru": "Именно так, так и сделаем. Думаю, так презентация станет значительно убедительнее для наших клиентов.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_090",
@@ -17199,87 +17753,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: Mir ist aufgefallen, dass sich Paul in letzter Zeit so verhält, <g>als ob</g> er für alle Entscheidungen allein zuständig <g>wäre</g>.",
       "en": "<r>We should talk about a problem</r>: I've noticed that Paul has been behaving lately <g>as if</g> he alone <g>were</g> responsible for all decisions.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: я помітила, що Пауль останнім часом поводиться так, <g>ніби</g> він один <g>відповідає</g> за всі рішення.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: я заметила, что Пауль в последнее время ведёт себя так, <g>будто</g> он один <g>отвечает</g> за все решения."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: я заметила, что Пауль в последнее время ведёт себя так, <g>будто</g> он один <g>отвечает</g> за все решения.",
+      "gram": "konjunktiv2_als_ob"
     },
     "a": {
       "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Er hört den anderen im Team kaum noch richtig zu?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: he barely listens to the others in the team anymore?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: він майже не слухає інших у команді?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: он почти не слушает других в команде?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: он почти не слушает других в команде?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und manchmal tut er so, <g>als</g> <g>wüsste</g> er sowieso schon alles besser. Das belastet ziemlich den Teamgeist. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, and sometimes he acts <g>as if</g> he already <g>knew</g> everything better anyway. That's really straining the team spirit. <r>What could we do in this situation</r>?",
       "uk": "Саме так, і іноді він поводиться так, <g>ніби</g> вже й так усе <g>знає</g> краще за всіх. Це досить сильно тисне на командний дух. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, и иногда он ведёт себя так, <g>будто</g> уже и так всё <g>знает</g> лучше всех. Это довольно сильно давит на командный дух. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, и иногда он ведёт себя так, <g>будто</g> уже и так всё <g>знает</g> лучше всех. Это довольно сильно давит на командный дух. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": "konjunktiv2_als_ob"
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Vielleicht sollten wir zuerst mit ihm unter vier Augen sprechen, statt das gleich vor dem ganzen Team anzusprechen.",
       "en": "<r>I have an idea</r>: maybe we should talk to him privately first, instead of bringing it up in front of the whole team right away.",
       "uk": "<r>У мене є ідея</r>: можливо, спершу нам варто поговорити з ним віч-на-віч, а не одразу піднімати це перед усією командою.",
-      "ru": "<r>У меня есть идея</r>: возможно, сначала нам стоит поговорить с ним наедине, а не сразу поднимать это перед всей командой."
+      "ru": "<r>У меня есть идея</r>: возможно, сначала нам стоит поговорить с ним наедине, а не сразу поднимать это перед всей командой.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir ihm konkrete Beispiele nennen, damit er versteht, wie sein Verhalten bei uns ankommt?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we give him concrete examples, so he understands how his behavior comes across to us?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми наведемо йому конкретні приклади, щоб він зрозумів, як його поведінка сприймається нами?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы приведём ему конкретные примеры, чтобы он понял, как его поведение воспринимается нами?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы приведём ему конкретные примеры, чтобы он понял, как его поведение воспринимается нами?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. <r>Ich kann gut nachvollziehen, dass</r> ihm gar nicht bewusst ist, dass er so wirkt, <g>als würde</g> er die Meinung der anderen nicht ernst nehmen.",
       "en": "<r>Yes, I think that's a good idea</r>. <r>I can well understand that</r> he's probably not even aware he comes across <g>as if</g> he <g>didn't</g> take the others' opinions seriously.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. <r>Я цілком розумію, що</r> він, напевно, навіть не усвідомлює, що справляє враження, <g>ніби</g> він <g>не сприймає</g> серйозно думку інших.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. <r>Я вполне понимаю, что</r> он, наверное, даже не осознаёт, что производит впечатление, <g>будто</g> он <g>не воспринимает</g> всерьёз мнение других."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. <r>Я вполне понимаю, что</r> он, наверное, даже не осознаёт, что производит впечатление, <g>будто</g> он <g>не воспринимает</g> всерьёз мнение других.",
+      "gram": "konjunktiv2_als_ob"
     },
     "q3": {
       "de": "Stimmt, das könnte tatsächlich unabsichtlich sein. Wie können wir denn den Teamgeist insgesamt wieder stärken, unabhängig von Paul?",
       "en": "True, that could actually be unintentional. How can we strengthen the team spirit overall, regardless of Paul?",
       "uk": "Правда, це справді могло бути ненавмисно. А як нам загалом зміцнити командний дух, незалежно від Пауля?",
-      "ru": "Верно, это действительно могло быть непреднамеренно. А как нам в целом укрепить командный дух, независимо от Пауля?"
+      "ru": "Верно, это действительно могло быть непреднамеренно. А как нам в целом укрепить командный дух, независимо от Пауля?",
+      "gram": ""
     },
     "a3": {
       "de": "Das ist eine ausgezeichnete Frage. Vielleicht könnten wir regelmäßige Feedbackrunden einführen, in denen jeder kurz seine Sichtweise teilen kann.",
       "en": "That's an excellent question. Maybe we could introduce regular feedback rounds where everyone can briefly share their perspective.",
       "uk": "Це чудове запитання. Можливо, ми могли б запровадити регулярні раунди зворотного зв'язку, де кожен міг би коротко поділитися своєю думкою.",
-      "ru": "Это отличный вопрос. Возможно, мы могли бы ввести регулярные раунды обратной связи, где каждый мог бы коротко поделиться своим мнением."
+      "ru": "Это отличный вопрос. Возможно, мы могли бы ввести регулярные раунды обратной связи, где каждый мог бы коротко поделиться своим мнением.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Und wie überprüfen wir, ob sich danach wirklich etwas verändert hat?",
       "en": "Good idea. And how do we check whether anything has actually changed afterward?",
       "uk": "Гарна ідея. А як нам перевірити, чи щось справді змінилося після цього?",
-      "ru": "Хорошая идея. А как нам проверить, изменилось ли что-то на самом деле после этого?"
+      "ru": "Хорошая идея. А как нам проверить, изменилось ли что-то на самом деле после этого?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das Thema in ein paar Wochen noch einmal im Team ansprechen und fragen, wie es allen damit geht.",
       "en": "<r>Maybe we could</r> bring the topic up again in the team in a few weeks and ask everyone how they feel about it.",
       "uk": "<r>Можливо, ми могли б</r> підняти цю тему знову в команді через кілька тижнів і запитати в усіх, як їм із цим.",
-      "ru": "<r>Возможно, мы могли бы</r> поднять эту тему снова в команде через несколько недель и спросить у всех, как им с этим."
+      "ru": "<r>Возможно, мы могли бы</r> поднять эту тему снова в команде через несколько недель и спросить у всех, как им с этим.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir das Gespräch mit Paul gleich diese Woche führen, damit sich nichts weiter festsetzt?",
       "en": "Good point. Should we have the conversation with Paul this week, so nothing gets more entrenched?",
       "uk": "Слушна думка. Проведемо розмову з Паулем цього тижня, щоб нічого не закріпилося далі?",
-      "ru": "Дельная мысль. Проведём разговор с Паулем на этой неделе, чтобы ничего не закрепилось дальше?"
+      "ru": "Дельная мысль. Проведём разговор с Паулем на этой неделе, чтобы ничего не закрепилось дальше?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte das übernehmen, wenn du in der Zwischenzeit die Feedbackrunden vorbereitest.",
       "en": "Yes, that would make sense. I could take care of that, if you prepare the feedback rounds in the meantime.",
       "uk": "Так, це було б розумно. Я міг би взяти це на себе, якщо ти тим часом підготуєш раунди зворотного зв'язку.",
-      "ru": "Да, это было бы разумно. Я мог бы взять это на себя, если ты тем временем подготовишь раунды обратной связи."
+      "ru": "Да, это было бы разумно. Я мог бы взять это на себя, если ты тем временем подготовишь раунды обратной связи.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Du sprichst zeitnah mit Paul, ich bereite die Feedbackrunden vor, und in vier Wochen schauen wir, ob sich die Stimmung im Team verbessert hat.",
       "en": "<r>Let's summarize</r>: you'll talk to Paul soon, I'll prepare the feedback rounds, and in four weeks we'll see whether the mood in the team has improved.",
       "uk": "<r>Підсумуємо</r>: ти найближчим часом поговориш з Паулем, я підготую раунди зворотного зв'язку, і через чотири тижні подивимося, чи покращилася атмосфера в команді.",
-      "ru": "<r>Подведём итог</r>: ты в ближайшее время поговоришь с Паулем, я подготовлю раунды обратной связи, и через четыре недели посмотрим, улучшилась ли атмосфера в команде."
+      "ru": "<r>Подведём итог</r>: ты в ближайшее время поговоришь с Паулем, я подготовлю раунды обратной связи, и через четыре недели посмотрим, улучшилась ли атмосфера в команде.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so können wir den Teamgeist wieder stärken, ohne dass sich Paul bloßgestellt fühlt.",
       "en": "Exactly, that's what we'll do. I think that way we can strengthen the team spirit again without Paul feeling put on the spot.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми зможемо знову зміцнити командний дух, не змушуючи Пауля почуватися ніяково.",
-      "ru": "Именно так, так и сделаем. Думаю, так мы сможем снова укрепить командный дух, не заставляя Пауля чувствовать себя неловко."
-    },
-    "gram": "konjunktiv2_als_ob"
+      "ru": "Именно так, так и сделаем. Думаю, так мы сможем снова укрепить командный дух, не заставляя Пауля чувствовать себя неловко.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_091",
@@ -17297,87 +17864,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: Mehrere Kundinnen und Kunden haben sich beschwert, dass sie am Telefon mehrmals falsch verbunden werden, bevor sie die richtige Ansprechperson erreichen.",
       "en": "<r>We should talk about a problem</r>: several customers have complained that they get transferred to the wrong person multiple times on the phone before reaching the right contact.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: кілька клієнтів поскаржилися, що їх по телефону кілька разів неправильно з'єднують, перш ніж вони досягають потрібної людини.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: несколько клиентов пожаловались, что их по телефону несколько раз неправильно соединяют, прежде чем они достигают нужного человека."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: несколько клиентов пожаловались, что их по телефону несколько раз неправильно соединяют, прежде чем они достигают нужного человека.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Das Problem liegt also vor allem bei der Weiterleitung am Anfang des Gesprächs?",
       "en": "I've heard about that too. <r>Did I understand you correctly</r>: so the problem is mainly with the transfer at the beginning of the call?",
       "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: тобто проблема передусім у переадресації на початку розмови?",
-      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: то есть проблема прежде всего в переадресации в начале разговора?"
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: то есть проблема прежде всего в переадресации в начале разговора?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und das kostet die Kunden viel Zeit und sorgt für Frust. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, and that costs customers a lot of time and causes frustration. <r>What could we do in this situation</r>?",
       "uk": "Саме так, і це забирає у клієнтів багато часу та викликає роздратування. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, и это отнимает у клиентов много времени и вызывает раздражение. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, и это отнимает у клиентов много времени и вызывает раздражение. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten am Empfang eine kurze Übersicht aufhängen, wer für welches Thema zuständig ist, damit gleich richtig verbunden wird.",
       "en": "<r>I have an idea</r>: we could put up a short overview at reception showing who's responsible for which topic, so calls get transferred correctly right away.",
       "uk": "<r>У мене є ідея</r>: ми могли б повісити на рецепції коротку схему, хто за яку тему відповідає, щоб одразу правильно з'єднувати.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы повесить на ресепшене короткую схему, кто за какую тему отвечает, чтобы сразу правильно соединять."
+      "ru": "<r>У меня есть идея</r>: мы могли бы повесить на ресепшене короткую схему, кто за какую тему отвечает, чтобы сразу правильно соединять.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich eine feste Standardfrage einführen, zum Beispiel 'Worum geht es genau, damit ich Sie richtig verbinden kann?'",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also introduce a standard question, for example 'What is this regarding, so I can transfer you correctly?'",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково впровадимо стандартне запитання, наприклад «Про що йдеться, щоб я міг(-ла) правильно вас з'єднати?»",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём стандартный вопрос, например «По какому вопросу вы звоните, чтобы я мог(-ла) правильно вас соединить?»"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём стандартный вопрос, например «По какому вопросу вы звоните, чтобы я мог(-ла) правильно вас соединить?»",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. So können die Kolleginnen und Kollegen am Empfang gezielter fragen, statt einfach zu raten.",
       "en": "<r>Yes, I think that's a good idea</r>. That way the colleagues at reception can ask more specifically instead of just guessing.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так колеги на рецепції зможуть запитувати більш цілеспрямовано, а не просто вгадувати.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так коллеги на ресепшене смогут спрашивать более целенаправленно, а не просто угадывать."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так коллеги на ресепшене смогут спрашивать более целенаправленно, а не просто угадывать.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt. Und was machen wir, wenn eine Anfrage trotzdem bei der falschen Person landet?",
       "en": "True. And what do we do if a request still ends up with the wrong person?",
       "uk": "Правда. А що робити, якщо запит все ж потрапить не до тієї людини?",
-      "ru": "Верно. А что делать, если запрос всё же попадёт не к тому человеку?"
+      "ru": "Верно. А что делать, если запрос всё же попадёт не к тому человеку?",
+      "gram": ""
     },
     "a3": {
       "de": "Das halte ich für eine ausgezeichnete Frage. Die Person könnte dann höflich sagen: <r>'Entschuldigung, da sind Sie bei mir leider nicht richtig, ich verbinde Sie sofort weiter.'</r>",
       "en": "That's an excellent question. That person could then politely say: <r>'I'm sorry, you've reached the wrong person, I'll transfer you right away.'</r>",
       "uk": "Це чудове запитання. Ця людина могла б тоді ввічливо сказати: <r>«Вибачте, ви потрапили не туди, я одразу з'єдную вас далі»</r>.",
-      "ru": "Это отличный вопрос. Этот человек мог бы тогда вежливо сказать: <r>«Извините, вы попали не туда, я сразу же соединю вас дальше»</r>."
+      "ru": "Это отличный вопрос. Этот человек мог бы тогда вежливо сказать: <r>«Извините, вы попали не туда, я сразу же соединю вас дальше»</r>.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Sollten wir das auch als kleine Schulung für alle am Empfang anbieten?",
       "en": "Good idea. Should we also offer that as a short training for everyone at reception?",
       "uk": "Гарна ідея. Може, запропонуємо це ще й як коротке навчання для всіх на рецепції?",
-      "ru": "Хорошая идея. Может, предложим это ещё и как короткое обучение для всех на ресепшене?"
+      "ru": "Хорошая идея. Может, предложим это ещё и как короткое обучение для всех на ресепшене?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> eine kurze Einweisung machen, in der alle typische Sätze für solche Situationen gemeinsam üben.",
       "en": "<r>Maybe we could</r> hold a short briefing where everyone practices typical sentences for such situations together.",
       "uk": "<r>Можливо, ми могли б</r> провести короткий інструктаж, де всі разом потренуються на типових фразах для таких ситуацій.",
-      "ru": "<r>Возможно, мы могли бы</r> провести короткий инструктаж, где все вместе потренируются на типичных фразах для таких ситуаций."
+      "ru": "<r>Возможно, мы могли бы</r> провести короткий инструктаж, где все вместе потренируются на типичных фразах для таких ситуаций.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir das gleich in den nächsten zwei Wochen organisieren?",
       "en": "Good point. Should we organize that in the next two weeks?",
       "uk": "Слушна думка. Організуємо це найближчі два тижні?",
-      "ru": "Дельная мысль. Организуем это в ближайшие две недели?"
+      "ru": "Дельная мысль. Организуем это в ближайшие две недели?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte die Übersicht vorbereiten, wenn du dich um die Schulungstermine kümmerst.",
       "en": "Yes, that would make sense. I could prepare the overview, if you take care of the training dates.",
       "uk": "Так, це було б розумно. Я міг би підготувати схему, якщо ти займешся термінами навчання.",
-      "ru": "Да, это было бы разумно. Я мог бы подготовить схему, если ты займёшься датами обучения."
+      "ru": "Да, это было бы разумно. Я мог бы подготовить схему, если ты займёшься датами обучения.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir erstellen eine Übersicht, führen eine Standardfrage ein, und alle am Empfang bekommen eine kurze Schulung zum Umleiten von Anrufen.",
       "en": "<r>Let's summarize</r>: we'll create an overview, introduce a standard question, and everyone at reception will get a short training on transferring calls.",
       "uk": "<r>Підсумуємо</r>: ми складемо схему, впровадимо стандартне запитання, і всі на рецепції пройдуть коротке навчання з переадресації дзвінків.",
-      "ru": "<r>Подведём итог</r>: мы составим схему, введём стандартный вопрос, и все на ресепшене пройдут короткое обучение по переадресации звонков."
+      "ru": "<r>Подведём итог</r>: мы составим схему, введём стандартный вопрос, и все на ресепшене пройдут короткое обучение по переадресации звонков.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so werden unsere Kunden künftig deutlich schneller richtig verbunden.",
       "en": "Exactly, that's what we'll do. I think that way our customers will be transferred to the right person much faster in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, так наші клієнти будуть значно швидше потрапляти до потрібної людини.",
-      "ru": "Именно так, так и сделаем. Думаю, так наши клиенты будут значительно быстрее попадать к нужному человеку."
-    },
-    "gram": ""
+      "ru": "Именно так, так и сделаем. Думаю, так наши клиенты будут значительно быстрее попадать к нужному человеку.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_092",
@@ -17395,87 +17975,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: In unseren Online-Meetings gibt es fast jede Woche technische Probleme, zum Beispiel bricht die Verbindung ab oder jemand vergisst, die Stummschaltung aufzuheben.",
       "en": "<r>We should talk about a problem</r>: in our online meetings there are technical problems almost every week, for example the connection drops or someone forgets to unmute.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: у наших онлайн-нарадах майже щотижня трапляються технічні проблеми, наприклад зв'язок обривається або хтось забуває увімкнути мікрофон.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: на наших онлайн-совещаниях почти каждую неделю случаются технические проблемы, например связь обрывается или кто-то забывает включить микрофон."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: на наших онлайн-совещаниях почти каждую неделю случаются технические проблемы, например связь обрывается или кто-то забывает включить микрофон.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Dadurch geht in fast jedem Meeting Zeit verloren?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so time gets wasted in almost every meeting because of that?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто через це майже в кожній нараді втрачається час?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть из-за этого почти в каждом совещании теряется время?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть из-за этого почти в каждом совещании теряется время?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, manchmal sogar zehn Minuten am Anfang. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, sometimes even ten minutes at the start. <r>What could we do in this situation</r>?",
       "uk": "Саме так, іноді навіть десять хвилин на початку. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, иногда даже десять минут в начале. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, иногда даже десять минут в начале. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten alle bitten, fünf Minuten vor Beginn schon online zu sein und ihre Technik kurz zu testen.",
       "en": "<r>I have an idea</r>: we could ask everyone to be online five minutes before the start and quickly test their tech.",
       "uk": "<r>У мене є ідея</r>: ми могли б попросити всіх бути онлайн за п'ять хвилин до початку і швидко перевірити техніку.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы попросить всех быть онлайн за пять минут до начала и быстро проверить технику."
+      "ru": "<r>У меня есть идея</r>: мы могли бы попросить всех быть онлайн за пять минут до начала и быстро проверить технику.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich eine feste Regel einführen, dass alle außer der sprechenden Person stummgeschaltet bleiben?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also introduce a fixed rule that everyone except the person speaking stays muted?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково запровадимо чітке правило, що всі, крім того, хто говорить, залишаються з вимкненим мікрофоном?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём чёткое правило, что все, кроме говорящего, остаются с выключенным микрофоном?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём чёткое правило, что все, кроме говорящего, остаются с выключенным микрофоном?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. Das würde auch die Hintergrundgeräusche deutlich reduzieren, die uns sonst oft ablenken.",
       "en": "<r>Yes, I think that's a good idea</r>. That would also significantly reduce the background noise that often distracts us.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Це також значно зменшило б фонові шуми, які часто нас відволікають.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Это также значительно уменьшило бы фоновые шумы, которые часто нас отвлекают."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Это также значительно уменьшило бы фоновые шумы, которые часто нас отвлекают.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt. Und was machen wir, wenn trotzdem mal jemand technische Probleme hat, zum Beispiel eine schlechte Verbindung?",
       "en": "True. And what do we do if someone still has technical problems, for example a bad connection?",
       "uk": "Правда. А що робити, якщо в когось усе ж будуть технічні проблеми, наприклад поганий зв'язок?",
-      "ru": "Верно. А что делать, если у кого-то всё же будут технические проблемы, например плохая связь?"
+      "ru": "Верно. А что делать, если у кого-то всё же будут технические проблемы, например плохая связь?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>: Diese Person könnte kurz in den Chat schreiben, dann fassen wir für sie am Ende die wichtigsten Punkte zusammen.",
       "en": "<r>I think that's an excellent solution</r>: that person could quickly write in the chat, and we'll summarize the key points for them at the end.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>: ця людина могла б швидко написати в чат, а ми наприкінці підсумуємо для неї найважливіші моменти.",
-      "ru": "<r>Я считаю это отличным решением</r>: этот человек мог бы быстро написать в чат, а мы в конце подытожим для него самые важные моменты."
+      "ru": "<r>Я считаю это отличным решением</r>: этот человек мог бы быстро написать в чат, а мы в конце подытожим для него самые важные моменты.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Sollten wir außerdem jemanden bestimmen, der sich beim technischen Support meldet, falls es größere Probleme gibt?",
       "en": "Good idea. Should we also designate someone to contact technical support if there are bigger problems?",
       "uk": "Гарна ідея. Може, ще призначимо когось, хто звертатиметься до техпідтримки, якщо виникнуть більші проблеми?",
-      "ru": "Хорошая идея. Может, ещё назначим кого-то, кто будет обращаться в техподдержку, если возникнут более серьёзные проблемы?"
+      "ru": "Хорошая идея. Может, ещё назначим кого-то, кто будет обращаться в техподдержку, если возникнут более серьёзные проблемы?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das reihum machen, dann ist es nicht immer dieselbe Person, die sich darum kümmern muss.",
       "en": "<r>Maybe we could</r> take turns doing that, so it's not always the same person who has to deal with it.",
       "uk": "<r>Можливо, ми могли б</r> робити це по черзі, щоб не завжди одна й та сама людина цим займалася.",
-      "ru": "<r>Возможно, мы могли бы</r> делать это по очереди, чтобы не всегда один и тот же человек этим занимался."
+      "ru": "<r>Возможно, мы могли бы</r> делать это по очереди, чтобы не всегда один и тот же человек этим занимался.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir diese Regeln gleich im nächsten Meeting vorstellen, damit alle Bescheid wissen?",
       "en": "Good point. Should we present these rules right at the next meeting, so everyone knows about them?",
       "uk": "Слушна думка. Представимо ці правила одразу на наступній нараді, щоб усі знали?",
-      "ru": "Дельная мысль. Представим эти правила сразу на следующем совещании, чтобы все знали?"
+      "ru": "Дельная мысль. Представим эти правила сразу на следующем совещании, чтобы все знали?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte eine kurze Übersicht schreiben, wenn du das im Kalender für alle ankündigst.",
       "en": "Yes, that would make sense. I could write a short overview, if you announce it in the calendar for everyone.",
       "uk": "Так, це було б розумно. Я міг би написати коротку схему, якщо ти оголосиш це в календарі для всіх.",
-      "ru": "Да, это было бы разумно. Я мог бы написать короткую схему, если ты объявишь это в календаре для всех."
+      "ru": "Да, это было бы разумно. Я мог бы написать короткую схему, если ты объявишь это в календаре для всех.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Alle testen vorher ihre Technik, bleiben standardmäßig stummgeschaltet, und bei Problemen schreibt man in den Chat oder wendet sich reihum an den Support.",
       "en": "<r>Let's summarize</r>: everyone tests their tech beforehand, stays muted by default, and if there are problems, people write in the chat or take turns contacting support.",
       "uk": "<r>Підсумуємо</r>: усі заздалегідь перевіряють техніку, за замовчуванням залишаються з вимкненим мікрофоном, а при проблемах пишуть у чат або по черзі звертаються до техпідтримки.",
-      "ru": "<r>Подведём итог</r>: все заранее проверяют технику, по умолчанию остаются с выключенным микрофоном, а при проблемах пишут в чат или по очереди обращаются в техподдержку."
+      "ru": "<r>Подведём итог</r>: все заранее проверяют технику, по умолчанию остаются с выключенным микрофоном, а при проблемах пишут в чат или по очереди обращаются в техподдержку.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so verlieren wir künftig deutlich weniger Zeit mit technischen Problemen.",
       "en": "Exactly, that's what we'll do. I think that way we'll lose a lot less time to technical problems in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми надалі втрачатимемо значно менше часу через технічні проблеми.",
-      "ru": "Именно так, так и сделаем. Думаю, так мы впредь будем терять значительно меньше времени из-за технических проблем."
-    },
-    "gram": ""
+      "ru": "Именно так, так и сделаем. Думаю, так мы впредь будем терять значительно меньше времени из-за технических проблем.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_093",
@@ -17493,87 +18086,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: Mir ist aufgefallen, dass im Team jeder E-Mails an Kunden ein bisschen anders schreibt. Manche sind sehr steif, andere fast zu locker.",
       "en": "<r>We should talk about a problem</r>: I've noticed that everyone in the team writes emails to customers a bit differently. Some are very stiff, others almost too casual.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: я помітила, що в команді кожен пише листи клієнтам трохи по-своєму. Одні дуже сухі, інші майже занадто невимушені.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: я заметила, что в команде каждый пишет письма клиентам немного по-своему. Одни очень сухие, другие почти слишком неформальные."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: я заметила, что в команде каждый пишет письма клиентам немного по-своему. Одни очень сухие, другие почти слишком неформальные.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: <g>Dadurch</g> wirkt unser Auftritt nach außen nicht einheitlich?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: <g>as a result</g> our image comes across as inconsistent?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: <g>через це</g> наш образ виглядає неоднорідним ззовні?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: <g>из-за этого</g> наш образ выглядит неоднородным снаружи?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: <g>из-за этого</g> наш образ выглядит неоднородным снаружи?",
+      "gram": "textzusammenhang"
     },
     "q1": {
       "de": "Genau, und das kann bei Kunden einen unprofessionellen Eindruck hinterlassen. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, and that can leave an unprofessional impression on customers. <r>What could we do in this situation</r>?",
       "uk": "Саме так, і це може справити на клієнтів непрофесійне враження. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, и это может произвести на клиентов непрофессиональное впечатление. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, и это может произвести на клиентов непрофессиональное впечатление. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten eine kleine Vorlage für Standard-Mails erstellen, <g>dazu</g> gehören zum Beispiel feste Formulierungen für Anrede und Schluss.",
       "en": "<r>I have an idea</r>: we could create a small template for standard emails, <g>that includes</g>, for example, fixed phrases for the greeting and closing.",
       "uk": "<r>У мене є ідея</r>: ми могли б створити невеликий шаблон для стандартних листів, <g>до нього входять</g>, наприклад, фіксовані формулювання для звернення й завершення.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы создать небольшой шаблон для стандартных писем, <g>в него входят</g>, например, фиксированные формулировки для обращения и завершения."
+      "ru": "<r>У меня есть идея</r>: мы могли бы создать небольшой шаблон для стандартных писем, <g>в него входят</g>, например, фиксированные формулировки для обращения и завершения.",
+      "gram": "textzusammenhang"
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir dabei auch ein paar Beispiele für einen freundlichen, aber nicht zu lockeren Ton sammeln?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also collect a few examples for a friendly but not too casual tone while we're at it?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми заразом зберемо ще й кілька прикладів для доброзичливого, але не занадто невимушеного тону?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы заодно соберём ещё и несколько примеров для дружелюбного, но не слишком неформального тона?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы заодно соберём ещё и несколько примеров для дружелюбного, но не слишком неформального тона?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. Davon könnten vor allem die neuen Kolleginnen und Kollegen profitieren, die sich noch nicht so sicher fühlen.",
       "en": "<r>Yes, I think that's a good idea</r>. The new colleagues who don't feel so confident yet could especially benefit from that.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Особливо від цього могли б виграти нові колеги, які ще не почуваються достатньо впевнено.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Особенно от этого могли бы выиграть новые коллеги, которые ещё не чувствуют себя достаточно уверенно."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Особенно от этого могли бы выиграть новые коллеги, которые ещё не чувствуют себя достаточно уверенно.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt. Und wie führen wir die Vorlage am besten im Team ein?",
       "en": "True. And how do we best introduce the template to the team?",
       "uk": "Правда. А як нам краще впровадити шаблон у команді?",
-      "ru": "Верно. А как нам лучше внедрить шаблон в команде?"
+      "ru": "Верно. А как нам лучше внедрить шаблон в команде?",
+      "gram": ""
     },
     "a3": {
       "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir sie im nächsten Meeting kurz vorstellen und <g>damit</g> gleich zeigen, wie man sie in der Praxis benutzt.",
       "en": "That's an excellent question. Maybe we could present it briefly at the next meeting and use it to show right away how it works in practice.",
       "uk": "Це чудове запитання. Можливо, ми могли б коротко представити його на наступній нараді і одразу показати, як користуватися ним на практиці.",
-      "ru": "Это отличный вопрос. Возможно, мы могли бы коротко представить его на следующем совещании и сразу показать, как пользоваться им на практике."
+      "ru": "Это отличный вопрос. Возможно, мы могли бы коротко представить его на следующем совещании и сразу показать, как пользоваться им на практике.",
+      "gram": "textzusammenhang"
     },
     "q4": {
       "de": "Gute Idee. Und wie stellen wir sicher, dass sich am Ende auch wirklich alle daran halten?",
       "en": "Good idea. And how do we make sure everyone actually sticks to it in the end?",
       "uk": "Гарна ідея. А як нам переконатися, що зрештою всі справді цього дотримуються?",
-      "ru": "Хорошая идея. А как нам убедиться, что в итоге все действительно этого придерживаются?"
+      "ru": "Хорошая идея. А как нам убедиться, что в итоге все действительно этого придерживаются?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> uns gegenseitig ab und zu eine Mail zur Kontrolle schicken, bevor sie an den Kunden rausgeht.",
       "en": "<r>Maybe we could</r> occasionally send each other an email for a quick check before it goes out to the customer.",
       "uk": "<r>Можливо, ми могли б</r> час від часу надсилати одне одному лист для перевірки, перш ніж він піде до клієнта.",
-      "ru": "<r>Возможно, мы могли бы</r> время от времени отправлять друг другу письмо для проверки, прежде чем оно уйдёт к клиенту."
+      "ru": "<r>Возможно, мы могли бы</r> время от времени отправлять друг другу письмо для проверки, прежде чем оно уйдёт к клиенту.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir die Vorlage gleich diese Woche fertig machen, damit wir bald damit starten können?",
       "en": "Good point. Should we finish the template this week, so we can get started soon?",
       "uk": "Слушна думка. Завершимо шаблон цього тижня, щоб швидко почати ним користуватися?",
-      "ru": "Дельная мысль. Завершим шаблон на этой неделе, чтобы быстро начать им пользоваться?"
+      "ru": "Дельная мысль. Завершим шаблон на этой неделе, чтобы быстро начать им пользоваться?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte einen ersten Entwurf schreiben, wenn du schon mal ein paar gute Beispiel-Mails heraussuchst.",
       "en": "Yes, that would make sense. I could write a first draft, if you look up a few good example emails in the meantime.",
       "uk": "Так, це було б розумно. Я міг би написати перший варіант, якщо ти тим часом підбереш кілька хороших прикладів листів.",
-      "ru": "Да, это было бы разумно. Я мог бы написать первый вариант, если ты тем временем подберёшь несколько хороших примеров писем."
+      "ru": "Да, это было бы разумно. Я мог бы написать первый вариант, если ты тем временем подберёшь несколько хороших примеров писем.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir erstellen eine gemeinsame Vorlage, stellen sie im nächsten Meeting vor, und wir schicken uns anfangs gegenseitig Mails zur Kontrolle.",
       "en": "<r>Let's summarize</r>: we'll create a shared template, present it at the next meeting, and at first we'll send each other emails for a quick check.",
       "uk": "<r>Підсумуємо</r>: ми створимо спільний шаблон, представимо його на наступній нараді, і спершу надсилатимемо одне одному листи для перевірки.",
-      "ru": "<r>Подведём итог</r>: мы создадим общий шаблон, представим его на следующем совещании, и сначала будем отправлять друг другу письма для проверки."
+      "ru": "<r>Подведём итог</r>: мы создадим общий шаблон, представим его на следующем совещании, и сначала будем отправлять друг другу письма для проверки.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, damit wirken unsere E-Mails künftig deutlich einheitlicher und professioneller.",
       "en": "Exactly, that's what we'll do. I think that way our emails will come across as much more consistent and professional in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, так наші листи стануть значно більш однорідними та професійними.",
-      "ru": "Именно так, так и сделаем. Думаю, так наши письма станут значительно более единообразными и профессиональными."
-    },
-    "gram": "textzusammenhang"
+      "ru": "Именно так, так и сделаем. Думаю, так наши письма станут значительно более единообразными и профессиональными.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_094",
@@ -17591,87 +18197,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: Einer Kundin wurde letzte Woche ein Angebot mit einem falschen Preis geschickt, und die Versandkosten fehlten komplett.",
       "en": "<r>We should talk about a problem</r>: last week a customer was sent an offer with an incorrect price, and the shipping costs were missing entirely.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: минулого тижня клієнтці надіслали пропозицію з неправильною ціною, а вартість доставки взагалі була відсутня.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: на прошлой неделе клиентке отправили предложение с неправильной ценой, а стоимость доставки вообще отсутствовала."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: на прошлой неделе клиентке отправили предложение с неправильной ценой, а стоимость доставки вообще отсутствовала.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Die Kundin hat den Fehler selbst bemerkt und ist jetzt verunsichert?",
       "en": "I've heard about that too. <r>Did I understand you correctly</r>: the customer noticed the mistake herself and is now unsettled?",
       "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: клієнтка сама помітила помилку і тепер почувається невпевнено?",
-      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: клиентка сама заметила ошибку и теперь чувствует себя неуверенно?"
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: клиентка сама заметила ошибку и теперь чувствует себя неуверенно?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und das wirkt natürlich nicht besonders professionell. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, and that naturally doesn't come across as very professional. <r>What could we do in this situation</r>?",
       "uk": "Саме так, і це, звісно, виглядає не дуже професійно. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, и это, конечно, выглядит не очень профессионально. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, и это, конечно, выглядит не очень профессионально. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir sollten der Kundin so schnell wie möglich ein korrigiertes Angebot schicken und uns kurz für den Fehler entschuldigen.",
       "en": "<r>I have an idea</r>: we should send the customer a corrected offer as soon as possible and briefly apologize for the mistake.",
       "uk": "<r>У мене є ідея</r>: нам варто якнайшвидше надіслати клієнтці виправлену пропозицію і коротко вибачитися за помилку.",
-      "ru": "<r>У меня есть идея</r>: нам стоит как можно скорее отправить клиентке исправленное предложение и коротко извиниться за ошибку."
+      "ru": "<r>У меня есть идея</r>: нам стоит как можно скорее отправить клиентке исправленное предложение и коротко извиниться за ошибку.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir ihr zusätzlich einen kleinen Rabatt anbieten, um den Fehler wiedergutzumachen?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also offer her a small discount to make up for the mistake?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково запропонуємо їй невелику знижку, щоб компенсувати помилку?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно предложим ей небольшую скидку, чтобы компенсировать ошибку?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно предложим ей небольшую скидку, чтобы компенсировать ошибку?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. Das würde bestimmt zeigen, dass wir den Fehler ernst nehmen und die Kundin nicht verlieren wollen.",
       "en": "<r>Yes, I think that's a good idea</r>. That would definitely show that we take the mistake seriously and don't want to lose the customer.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Це точно покаже, що ми серйозно ставимося до помилки і не хочемо втрачати клієнтку.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Это точно покажет, что мы серьёзно относимся к ошибке и не хотим терять клиентку."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Это точно покажет, что мы серьёзно относимся к ошибке и не хотим терять клиентку.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt. Und wie verhindern wir, dass sowas noch einmal passiert?",
       "en": "True. And how do we prevent this from happening again?",
       "uk": "Правда. А як нам запобігти тому, щоб таке повторилося?",
-      "ru": "Верно. А как нам предотвратить повторение такого?"
+      "ru": "Верно. А как нам предотвратить повторение такого?",
+      "gram": ""
     },
     "a3": {
       "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir einführen, dass jedes Angebot vor dem Versand noch von einer zweiten Person kurz gegengelesen wird.",
       "en": "That's an excellent question. Maybe we could introduce a rule that every offer gets briefly proofread by a second person before it's sent out.",
       "uk": "Це чудове запитання. Можливо, ми могли б запровадити правило, що кожну пропозицію перед відправленням коротко перевіряє друга людина.",
-      "ru": "Это отличный вопрос. Возможно, мы могли бы ввести правило, что каждое предложение перед отправкой коротко проверяет второй человек."
+      "ru": "Это отличный вопрос. Возможно, мы могли бы ввести правило, что каждое предложение перед отправкой коротко проверяет второй человек.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Und sollten wir dafür vielleicht auch eine kleine Checkliste erstellen, mit Preis, Menge, Konditionen und Versandkosten?",
       "en": "Good idea. And should we maybe also create a small checklist for that, with price, quantity, terms, and shipping costs?",
       "uk": "Гарна ідея. А може, ще й створимо для цього невеликий чекліст із ціною, кількістю, умовами й вартістю доставки?",
-      "ru": "Хорошая идея. А может, ещё создадим для этого небольшой чек-лист с ценой, количеством, условиями и стоимостью доставки?"
+      "ru": "Хорошая идея. А может, ещё создадим для этого небольшой чек-лист с ценой, количеством, условиями и стоимостью доставки?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das sogar in unsere Angebotsvorlage direkt einbauen, dann wird nichts mehr vergessen.",
       "en": "<r>Maybe we could</r> even build that directly into our offer template, then nothing gets forgotten anymore.",
       "uk": "<r>Можливо, ми могли б</r> навіть вбудувати це прямо в наш шаблон пропозиції, тоді нічого більше не забудеться.",
-      "ru": "<r>Возможно, мы могли бы</r> даже встроить это прямо в наш шаблон предложения, тогда ничего больше не забудется."
+      "ru": "<r>Возможно, мы могли бы</r> даже встроить это прямо в наш шаблон предложения, тогда ничего больше не забудется.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir das gleich diese Woche umsetzen, damit wir schnell wieder sicherer sind?",
       "en": "Good point. Should we implement that this week, so we feel more confident again quickly?",
       "uk": "Слушна думка. Впровадимо це цього тижня, щоб швидко знову почуватися впевненіше?",
-      "ru": "Дельная мысль. Внедрим это на этой неделе, чтобы быстро снова чувствовать себя увереннее?"
+      "ru": "Дельная мысль. Внедрим это на этой неделе, чтобы быстро снова чувствовать себя увереннее?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte die Checkliste erstellen, wenn du dich um das korrigierte Angebot für die Kundin kümmerst.",
       "en": "Yes, that would make sense. I could create the checklist, if you take care of the corrected offer for the customer.",
       "uk": "Так, це було б розумно. Я міг би створити чекліст, якщо ти займешся виправленою пропозицією для клієнтки.",
-      "ru": "Да, это было бы разумно. Я мог бы создать чек-лист, если ты займёшься исправленным предложением для клиентки."
+      "ru": "Да, это было бы разумно. Я мог бы создать чек-лист, если ты займёшься исправленным предложением для клиентки.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Du schickst der Kundin heute noch ein korrigiertes Angebot mit Rabatt, und ich erstelle eine Checkliste fürs Gegenlesen künftiger Angebote.",
       "en": "<r>Let's summarize</r>: you'll send the customer a corrected offer with a discount today, and I'll create a checklist for proofreading future offers.",
       "uk": "<r>Підсумуємо</r>: ти сьогодні ж надішлеш клієнтці виправлену пропозицію зі знижкою, а я створю чекліст для перевірки майбутніх пропозицій.",
-      "ru": "<r>Подведём итог</r>: ты сегодня же отправишь клиентке исправленное предложение со скидкой, а я создам чек-лист для проверки будущих предложений."
+      "ru": "<r>Подведём итог</r>: ты сегодня же отправишь клиентке исправленное предложение со скидкой, а я создам чек-лист для проверки будущих предложений.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so gewinnen wir das Vertrauen der Kundin zurück und vermeiden solche Fehler in Zukunft.",
       "en": "Exactly, that's what we'll do. I think that way we'll win back the customer's trust and avoid mistakes like this in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми повернемо довіру клієнтки і уникнемо подібних помилок у майбутньому.",
-      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентки и избежим подобных ошибок в будущем."
-    },
-    "gram": ""
+      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентки и избежим подобных ошибок в будущем.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_095",
@@ -17689,87 +18308,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: In den letzten Wochen waren mehrere schriftliche Bestellungen von Kunden unvollständig, es fehlten zum Beispiel Angaben zur Menge oder zum Liefertermin.",
       "en": "<r>We should talk about a problem</r>: over the last few weeks several written customer orders have been incomplete, for example information about quantity or delivery date was missing.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: останніми тижнями кілька письмових замовлень клієнтів були неповними, наприклад бракувало даних про кількість або термін доставки.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последние недели несколько письменных заказов клиентов были неполными, например не хватало данных о количестве или сроке доставки."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последние недели несколько письменных заказов клиентов были неполными, например не хватало данных о количестве или сроке доставки.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Das führt dann zu Verzögerungen, weil wir erst nachfragen müssen?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: that leads to delays because we have to ask first?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: через це виникають затримки, бо нам спершу доводиться уточнювати?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: из-за этого возникают задержки, потому что нам сначала приходится уточнять?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: из-за этого возникают задержки, потому что нам сначала приходится уточнять?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und das kostet uns jedes Mal wertvolle Zeit. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, and that costs us valuable time every time. <r>What could we do in this situation</r>?",
       "uk": "Саме так, і це щоразу забирає в нас цінний час. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, и это каждый раз отнимает у нас ценное время. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, и это каждый раз отнимает у нас ценное время. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten das Problem lösen, <g>indem</g> wir ein festes Bestellformular mit Pflichtfeldern einführen.",
       "en": "<r>I have an idea</r>: we could solve the problem <g>by</g> introducing a fixed order form with required fields.",
       "uk": "<r>У мене є ідея</r>: ми могли б вирішити проблему, <g>запровадивши</g> фіксований бланк замовлення з обов'язковими полями.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы решить проблему, <g>введя</g> фиксированный бланк заказа с обязательными полями."
+      "ru": "<r>У меня есть идея</r>: мы могли бы решить проблему, <g>введя</g> фиксированный бланк заказа с обязательными полями.",
+      "gram": "modalsatz_dadurch_indem"
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich <g>dadurch, dass</g> wir eine automatische Bestätigungsmail einrichten, den Kunden gleich zeigen, welche Angaben noch fehlen?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also show customers right away which information is still missing <g>by setting up</g> an automatic confirmation email?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково, <g>налаштувавши</g> автоматичний лист-підтвердження, одразу показуватимемо клієнтам, яких даних ще бракує?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно, <g>настроив</g> автоматическое письмо-подтверждение, сразу будем показывать клиентам, каких данных ещё не хватает?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно, <g>настроив</g> автоматическое письмо-подтверждение, сразу будем показывать клиентам, каких данных ещё не хватает?",
+      "gram": "modalsatz_dadurch_indem"
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. So merken die Kunden sofort, wenn etwas unvollständig ist, und wir müssen nicht extra nachfassen.",
       "en": "<r>Yes, I think that's a good idea</r>. That way customers notice immediately if something's incomplete, and we don't have to follow up separately.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так клієнти одразу помітять, якщо чогось бракує, і нам не доведеться додатково уточнювати.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так клиенты сразу заметят, если чего-то не хватает, и нам не придётся дополнительно уточнять."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так клиенты сразу заметят, если чего-то не хватает, и нам не придётся дополнительно уточнять.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt. Und was machen wir, wenn trotzdem mal eine Bestellung unvollständig bei uns ankommt?",
       "en": "True. And what do we do if an order still arrives incomplete?",
       "uk": "Правда. А що робити, якщо замовлення все ж прийде до нас неповним?",
-      "ru": "Верно. А что делать, если заказ всё же придёт к нам неполным?"
+      "ru": "Верно. А что делать, если заказ всё же придёт к нам неполным?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>: Dann sollten wir sofort und höflich nachfragen, am besten telefonisch, damit es keine langen Verzögerungen gibt.",
       "en": "<r>I think that's an excellent solution</r>: then we should ask right away and politely, ideally by phone, so there aren't any long delays.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>: тоді нам варто одразу й ввічливо уточнити, найкраще телефоном, щоб не було довгих затримок.",
-      "ru": "<r>Я считаю это отличным решением</r>: тогда нам стоит сразу и вежливо уточнить, лучше всего по телефону, чтобы не было долгих задержек."
+      "ru": "<r>Я считаю это отличным решением</r>: тогда нам стоит сразу и вежливо уточнить, лучше всего по телефону, чтобы не было долгих задержек.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Und wie stellen wir sicher, dass sich das Formular am Ende auch wirklich durchsetzt?",
       "en": "Good idea. And how do we make sure the form actually gets used consistently in the end?",
       "uk": "Гарна ідея. А як нам переконатися, що бланк зрештою справді почнуть використовувати?",
-      "ru": "Хорошая идея. А как нам убедиться, что бланк в итоге действительно начнут использовать?"
+      "ru": "Хорошая идея. А как нам убедиться, что бланк в итоге действительно начнут использовать?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> es <g>dadurch einführen, dass</g> wir es allen Kunden aktiv in der nächsten Bestellbestätigung mitschicken.",
       "en": "<r>Maybe we could</r> introduce it <g>by</g> actively sending it to all customers with the next order confirmation.",
       "uk": "<r>Можливо, ми могли б</r> впровадити його, <g>активно надсилаючи</g> його всім клієнтам разом із наступним підтвердженням замовлення.",
-      "ru": "<r>Возможно, мы могли бы</r> внедрить его, <g>активно отправляя</g> его всем клиентам вместе со следующим подтверждением заказа."
+      "ru": "<r>Возможно, мы могли бы</r> внедрить его, <g>активно отправляя</g> его всем клиентам вместе со следующим подтверждением заказа.",
+      "gram": "modalsatz_dadurch_indem"
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir das Formular gleich diese Woche fertig machen, damit wir bald starten können?",
       "en": "Good point. Should we finish the form this week, so we can get started soon?",
       "uk": "Слушна думка. Завершимо бланк цього тижня, щоб швидко почати?",
-      "ru": "Дельная мысль. Завершим бланк на этой неделе, чтобы быстро начать?"
+      "ru": "Дельная мысль. Завершим бланк на этой неделе, чтобы быстро начать?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte einen ersten Entwurf erstellen, wenn du schon mal die wichtigsten Pflichtfelder zusammenstellst.",
       "en": "Yes, that would make sense. I could create a first draft, if you put together the most important required fields in the meantime.",
       "uk": "Так, це було б розумно. Я міг би підготувати перший варіант, якщо ти тим часом складеш найважливіші обов'язкові поля.",
-      "ru": "Да, это было бы разумно. Я мог бы подготовить первый вариант, если ты тем временем соберёшь самые важные обязательные поля."
+      "ru": "Да, это было бы разумно. Я мог бы подготовить первый вариант, если ты тем временем соберёшь самые важные обязательные поля.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir erstellen ein Bestellformular mit Pflichtfeldern, richten eine automatische Bestätigungsmail ein, und bei fehlenden Angaben fragen wir sofort telefonisch nach.",
       "en": "<r>Let's summarize</r>: we'll create an order form with required fields, set up an automatic confirmation email, and if information is missing, we'll call right away.",
       "uk": "<r>Підсумуємо</r>: ми створимо бланк замовлення з обов'язковими полями, налаштуємо автоматичний лист-підтвердження, а при відсутніх даних одразу телефонуватимемо.",
-      "ru": "<r>Подведём итог</r>: мы создадим бланк заказа с обязательными полями, настроим автоматическое письмо-подтверждение, а при отсутствующих данных сразу будем звонить."
+      "ru": "<r>Подведём итог</r>: мы создадим бланк заказа с обязательными полями, настроим автоматическое письмо-подтверждение, а при отсутствующих данных сразу будем звонить.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, indem wir das konsequent umsetzen, werden Bestellungen künftig deutlich seltener unvollständig sein.",
       "en": "Exactly, that's what we'll do. I think that by implementing this consistently, orders will be incomplete much less often in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, послідовно це впроваджуючи, замовлення надалі будуть неповними значно рідше.",
-      "ru": "Именно так, так и сделаем. Думаю, последовательно это внедряя, заказы впредь будут неполными значительно реже."
-    },
-    "gram": "modalsatz_dadurch_indem"
+      "ru": "Именно так, так и сделаем. Думаю, последовательно это внедряя, заказы впредь будут неполными значительно реже.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_096",
@@ -17787,87 +18419,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: In letzter Zeit häufen sich die Reklamationen, und einige Kunden beschweren sich, dass wir zu spät antworten und wenig Verständnis zeigen.",
       "en": "<r>We should talk about a problem</r>: complaints have been piling up recently, and some customers say we respond too late and show little understanding.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: останнім часом зростає кількість скарг, і деякі клієнти кажуть, що ми відповідаємо занадто пізно й проявляємо мало розуміння.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время растёт количество жалоб, и некоторые клиенты говорят, что мы отвечаем слишком поздно и проявляем мало понимания."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время растёт количество жалоб, и некоторые клиенты говорят, что мы отвечаем слишком поздно и проявляем мало понимания.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Manche Kunden überlegen deswegen sogar, den Anbieter zu wechseln?",
       "en": "I've heard about that too. <r>Did I understand you correctly</r>: some customers are even considering switching to another provider because of this?",
       "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: через це деякі клієнти навіть подумують перейти до іншого постачальника?",
-      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: из-за этого некоторые клиенты даже подумывают перейти к другому поставщику?"
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: из-за этого некоторые клиенты даже подумывают перейти к другому поставщику?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und das können wir uns natürlich nicht leisten. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, and we obviously can't afford that. <r>What could we do in this situation</r>?",
       "uk": "Саме так, і ми, звісно, не можемо собі цього дозволити. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, и мы, конечно, не можем себе этого позволить. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, и мы, конечно, не можем себе этого позволить. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten uns eine feste Reaktionszeit setzen, zum Beispiel innerhalb von 24 Stunden auf jede Reklamation zu antworten.",
       "en": "<r>I have an idea</r>: we could set a fixed response time, for example responding to every complaint within 24 hours.",
       "uk": "<r>У мене є ідея</r>: ми могли б встановити чіткий час реакції, наприклад відповідати на кожну скаргу протягом 24 годин.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы установить чёткое время реакции, например отвечать на каждую жалобу в течение 24 часов."
+      "ru": "<r>У меня есть идея</r>: мы могли бы установить чёткое время реакции, например отвечать на каждую жалобу в течение 24 часов.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich ein paar feste Formulierungen für die ersten Sätze einer Antwort sammeln, etwa <r>'Wir bedauern sehr, dass es zu Problemen gekommen ist'</r>?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also collect a few fixed phrases for the opening lines of a response, like <r>'We're very sorry that problems have occurred'</r>?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково зберемо кілька фіксованих фраз для перших речень відповіді, наприклад <r>«Нам дуже прикро, що виникли проблеми»</r>?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно соберём несколько фиксированных фраз для первых предложений ответа, например <r>«Нам очень жаль, что возникли проблемы»</r>?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно соберём несколько фиксированных фраз для первых предложений ответа, например <r>«Нам очень жаль, что возникли проблемы»</r>?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. So klingt jede Antwort gleich einfühlsamer, auch wenn es mal stressig ist.",
       "en": "<r>Yes, I think that's a good idea</r>. That way every response sounds more empathetic right away, even when things get stressful.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так кожна відповідь одразу звучатиме зрозуміліше, навіть коли буває напружено.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так каждый ответ сразу будет звучать более чутко, даже когда бывает напряжённо."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так каждый ответ сразу будет звучать более чутко, даже когда бывает напряжённо.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt. Und was bieten wir den Kunden an, wenn wirklich ein Fehler auf unserer Seite vorliegt?",
       "en": "True. And what do we offer customers if there really is a mistake on our end?",
       "uk": "Правда. А що ми пропонуємо клієнтам, якщо помилка справді на нашій стороні?",
-      "ru": "Верно. А что мы предлагаем клиентам, если ошибка действительно на нашей стороне?"
+      "ru": "Верно. А что мы предлагаем клиентам, если ошибка действительно на нашей стороне?",
+      "gram": ""
     },
     "a3": {
       "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir zum Beispiel einen Rabatt oder einen Gutschein als Entschädigung anbieten.",
       "en": "That's an excellent question. Maybe we could offer a discount or a voucher as compensation, for example.",
       "uk": "Це чудове запитання. Можливо, ми могли б запропонувати, наприклад, знижку чи ваучер як компенсацію.",
-      "ru": "Это отличный вопрос. Возможно, мы могли бы предложить, например, скидку или ваучер в качестве компенсации."
+      "ru": "Это отличный вопрос. Возможно, мы могли бы предложить, например, скидку или ваучер в качестве компенсации.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Und wie stellen wir sicher, dass die Kunden am Ende trotzdem zufrieden bleiben?",
       "en": "Good idea. And how do we make sure customers stay satisfied in the end?",
       "uk": "Гарна ідея. А як нам переконатися, що клієнти зрештою залишаться задоволеними?",
-      "ru": "Хорошая идея. А как нам убедиться, что клиенты в итоге останутся довольны?"
+      "ru": "Хорошая идея. А как нам убедиться, что клиенты в итоге останутся довольны?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> uns ein oder zwei Wochen später noch einmal kurz melden und fragen, ob jetzt alles in Ordnung ist.",
       "en": "<r>Maybe we could</r> check in briefly again a week or two later and ask if everything's fine now.",
       "uk": "<r>Можливо, ми могли б</r> через тиждень-два коротко зв'язатися знову і запитати, чи все тепер гаразд.",
-      "ru": "<r>Возможно, мы могли бы</r> через неделю-две коротко связаться снова и спросить, всё ли теперь в порядке."
+      "ru": "<r>Возможно, мы могли бы</r> через неделю-две коротко связаться снова и спросить, всё ли теперь в порядке.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir diese neuen Regeln gleich im nächsten Meeting mit dem ganzen Team besprechen?",
       "en": "Good point. Should we discuss these new rules with the whole team at the next meeting?",
       "uk": "Слушна думка. Обговоримо ці нові правила з усією командою на наступній нараді?",
-      "ru": "Дельная мысль. Обсудим эти новые правила со всей командой на следующем совещании?"
+      "ru": "Дельная мысль. Обсудим эти новые правила со всей командой на следующем совещании?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte eine kurze Übersicht mit den Formulierungen vorbereiten, wenn du dich um die Reaktionszeiten kümmerst.",
       "en": "Yes, that would make sense. I could prepare a short overview with the phrases, if you take care of the response times.",
       "uk": "Так, це було б розумно. Я міг би підготувати коротку схему з фразами, якщо ти займешся часом реакції.",
-      "ru": "Да, это было бы разумно. Я мог бы подготовить короткую схему с фразами, если ты займёшься временем реакции."
+      "ru": "Да, это было бы разумно. Я мог бы подготовить короткую схему с фразами, если ты займёшься временем реакции.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir setzen eine feste Reaktionszeit, nutzen einfühlsame Formulierungen, bieten bei Fehlern eine Entschädigung an, und wir melden uns später noch einmal bei den Kunden.",
       "en": "<r>Let's summarize</r>: we'll set a fixed response time, use empathetic phrases, offer compensation for mistakes, and follow up with customers afterward.",
       "uk": "<r>Підсумуємо</r>: ми встановлюємо чіткий час реакції, використовуємо співчутливі фрази, пропонуємо компенсацію за помилки й пізніше знову зв'язуємося з клієнтами.",
-      "ru": "<r>Подведём итог</r>: мы устанавливаем чёткое время реакции, используем чуткие фразы, предлагаем компенсацию за ошибки и позже снова связываемся с клиентами."
+      "ru": "<r>Подведём итог</r>: мы устанавливаем чёткое время реакции, используем чуткие фразы, предлагаем компенсацию за ошибки и позже снова связываемся с клиентами.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so gewinnen wir das Vertrauen der Kunden zurück und verlieren künftig weniger Kunden durch Reklamationen.",
       "en": "Exactly, that's what we'll do. I think that way we'll win back the customers' trust and lose fewer customers to complaints in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми повернемо довіру клієнтів і надалі втрачатимемо менше клієнтів через скарги.",
-      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентов и впредь будем терять меньше клиентов из-за жалоб."
-    },
-    "gram": ""
+      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентов и впредь будем терять меньше клиентов из-за жалоб.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_097",
@@ -17885,87 +18530,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: In letzter Zeit haben sich mehrere Kolleginnen und Kollegen nach der Elternzeit <g>für</g> Teilzeit oder flexiblere Arbeitszeiten interessiert, aber wir haben dafür noch keine einheitlichen Regeln.",
       "en": "<r>We should talk about a problem</r>: recently several colleagues have shown interest <g>in</g> working part-time or with more flexible hours after parental leave, but we don't have any consistent rules for that yet.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: останнім часом кілька колег зацікавилися неповним днем чи гнучкішим графіком після декретної відпустки, але в нас поки що немає жодних єдиних правил щодо цього.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время несколько коллег заинтересовались неполным днём или более гибким графиком после декретного отпуска, но у нас пока нет никаких единых правил на этот счёт."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время несколько коллег заинтересовались неполным днём или более гибким графиком после декретного отпуска, но у нас пока нет никаких единых правил на этот счёт.",
+      "gram": "praepositionen_nomen_verb_adjektiv"
     },
     "a": {
       "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Bisher entscheiden wir das eher von Fall zu Fall?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so far we're deciding that more on a case-by-case basis?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: поки що ми вирішуємо це радше в кожному окремому випадку?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: пока что мы решаем это скорее в каждом отдельном случае?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: пока что мы решаем это скорее в каждом отдельном случае?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, und das kann schnell ungerecht wirken. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, and that can quickly come across as unfair. <r>What could we do in this situation</r>?",
       "uk": "Саме так, і це може швидко виглядати несправедливо. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, и это может быстро выглядеть несправедливо. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, и это может быстро выглядеть несправедливо. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten klare Kriterien festlegen, wonach sich ein Anspruch auf Teilzeit richtet, zum Beispiel abhängig <g>von</g> der Stelle und den Aufgaben.",
       "en": "<r>I have an idea</r>: we could set clear criteria for what determines entitlement to part-time work, for example depending <g>on</g> the position and tasks.",
       "uk": "<r>У мене є ідея</r>: ми могли б встановити чіткі критерії того, від чого залежить право на неповний день, наприклад залежно від посади й завдань.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы установить чёткие критерии того, от чего зависит право на неполный день, например в зависимости от должности и задач."
+      "ru": "<r>У меня есть идея</r>: мы могли бы установить чёткие критерии того, от чего зависит право на неполный день, например в зависимости от должности и задач.",
+      "gram": "praepositionen_nomen_verb_adjektiv"
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich alle Mitarbeitenden aktiv über ihre Möglichkeiten informieren, statt dass sie sich selbst darum kümmern müssen?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also actively inform all employees about their options, instead of them having to look into it themselves?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково активно інформуватимемо всіх співробітників про їхні можливості, замість того щоб вони самі про це дізнавалися?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно активно будем информировать всех сотрудников об их возможностях, вместо того чтобы они сами об этом узнавали?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно активно будем информировать всех сотрудников об их возможностях, вместо того чтобы они сами об этом узнавали?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. So müssen sich die Kolleginnen und Kollegen nicht selbst <g>um</g> das Thema kümmern, sondern bekommen die Informationen direkt.",
       "en": "<r>Yes, I think that's a good idea</r>. That way colleagues don't have to take care <g>of</g> the topic themselves, but get the information directly.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так колегам не доведеться самим перейматися цією темою, а вони одразу отримають інформацію.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так коллегам не придётся самим заботиться об этой теме, а они сразу получат информацию."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так коллегам не придётся самим заботиться об этой теме, а они сразу получат информацию.",
+      "gram": "praepositionen_nomen_verb_adjektiv"
     },
     "q3": {
       "de": "Stimmt. Und wie stellen wir sicher, dass am Ende auch wirklich alle gleich behandelt werden?",
       "en": "True. And how do we make sure everyone actually ends up being treated equally?",
       "uk": "Правда. А як нам переконатися, що зрештою до всіх справді ставляться однаково?",
-      "ru": "Верно. А как нам убедиться, что в итоге ко всем действительно относятся одинаково?"
+      "ru": "Верно. А как нам убедиться, что в итоге ко всем действительно относятся одинаково?",
+      "gram": ""
     },
     "a3": {
       "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir eine kleine Checkliste erstellen, die für jede Anfrage einheitlich angewendet wird.",
       "en": "That's an excellent question. Maybe we could create a short checklist that gets applied consistently to every request.",
       "uk": "Це чудове запитання. Можливо, ми могли б створити короткий чекліст, який однаково застосовуватиметься до кожного запиту.",
-      "ru": "Это отличный вопрос. Возможно, мы могли бы создать короткий чек-лист, который будет одинаково применяться к каждому запросу."
+      "ru": "Это отличный вопрос. Возможно, мы могли бы создать короткий чек-лист, который будет одинаково применяться к каждому запросу.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Und wie führen wir die neuen Regeln am besten im Team ein?",
       "en": "Good idea. And how do we best introduce the new rules to the team?",
       "uk": "Гарна ідея. А як нам краще впровадити нові правила в команді?",
-      "ru": "Хорошая идея. А как нам лучше внедрить новые правила в команде?"
+      "ru": "Хорошая идея. А как нам лучше внедрить новые правила в команде?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> sie im nächsten Meeting vorstellen und uns dabei auch auf ein paar konkrete Beispiele stützen.",
       "en": "<r>Maybe we could</r> present them at the next meeting and also base them on a few concrete examples.",
       "uk": "<r>Можливо, ми могли б</r> представити їх на наступній нараді й спиратися при цьому на кілька конкретних прикладів.",
-      "ru": "<r>Возможно, мы могли бы</r> представить их на следующем совещании и опираться при этом на несколько конкретных примеров."
+      "ru": "<r>Возможно, мы могли бы</r> представить их на следующем совещании и опираться при этом на несколько конкретных примеров.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir die Kriterien gleich diese Woche ausarbeiten, damit wir schnell starten können?",
       "en": "Good point. Should we work out the criteria this week, so we can get started quickly?",
       "uk": "Слушна думка. Розробимо критерії цього тижня, щоб швидко почати?",
-      "ru": "Дельная мысль. Разработаем критерии на этой неделе, чтобы быстро начать?"
+      "ru": "Дельная мысль. Разработаем критерии на этой неделе, чтобы быстро начать?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte einen ersten Entwurf schreiben, wenn du dich um die Beispiele kümmerst.",
       "en": "Yes, that would make sense. I could write a first draft, if you take care of the examples.",
       "uk": "Так, це було б розумно. Я міг би написати перший варіант, якщо ти займешся прикладами.",
-      "ru": "Да, это было бы разумно. Я мог бы написать первый вариант, если ты займёшься примерами."
+      "ru": "Да, это было бы разумно. Я мог бы написать первый вариант, если ты займёшься примерами.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir legen klare Kriterien fest, informieren alle aktiv, erstellen eine Checkliste, und stellen das Ganze im nächsten Meeting vor.",
       "en": "<r>Let's summarize</r>: we'll set clear criteria, actively inform everyone, create a checklist, and present it all at the next meeting.",
       "uk": "<r>Підсумуємо</r>: ми встановлюємо чіткі критерії, активно інформуємо всіх, створюємо чекліст і представляємо все це на наступній нараді.",
-      "ru": "<r>Подведём итог</r>: мы устанавливаем чёткие критерии, активно информируем всех, создаём чек-лист и представляем всё это на следующем совещании."
+      "ru": "<r>Подведём итог</r>: мы устанавливаем чёткие критерии, активно информируем всех, создаём чек-лист и представляем всё это на следующем совещании.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so behandeln wir künftig alle Anfragen fair und einheitlich.",
       "en": "Exactly, that's what we'll do. I think that way we'll handle all requests fairly and consistently in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми надалі розглядатимемо всі запити справедливо й однаково.",
-      "ru": "Именно так, так и сделаем. Думаю, так мы впредь будем рассматривать все запросы справедливо и одинаково."
-    },
-    "gram": "praepositionen_nomen_verb_adjektiv"
+      "ru": "Именно так, так и сделаем. Думаю, так мы впредь будем рассматривать все запросы справедливо и одинаково.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_098",
@@ -17983,87 +18641,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: In letzter Zeit gab es mehrere Fehlbedienungen, weil neue Mitarbeitende die Geräte in der Produktion nicht richtig erklärt bekommen.",
       "en": "<r>We should talk about a problem</r>: recently there have been several operating mistakes because new employees don't get the equipment in production properly explained to them.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: останнім часом сталося кілька помилок в керуванні, бо новим співробітникам не пояснюють належно обладнання у виробництві.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время произошло несколько ошибок в управлении, потому что новым сотрудникам не объясняют должным образом оборудование на производстве."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: в последнее время произошло несколько ошибок в управлении, потому что новым сотрудникам не объясняют должным образом оборудование на производстве.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Die vorhandene Bedienungsanleitung ist einfach zu kompliziert geschrieben?",
       "en": "I've heard about that too. <r>Did I understand you correctly</r>: the existing manual is simply written too complicated?",
       "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: наявна інструкція просто написана занадто складно?",
-      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: имеющаяся инструкция просто написана слишком сложно?"
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: имеющаяся инструкция просто написана слишком сложно?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau, da stehen viele Fachbegriffe drin, die für neue Kolleginnen und Kollegen schwer zu verstehen sind. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, it's full of technical terms that are hard for new colleagues to understand. <r>What could we do in this situation</r>?",
       "uk": "Саме так, там багато фахових термінів, які важко зрозуміти новим колегам. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, там много специальных терминов, которые трудно понять новым коллегам. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, там много специальных терминов, которые трудно понять новым коллегам. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten eine einfachere Kurzanleitung mit Bildern erstellen, die die wichtigsten Schritte zeigt.",
       "en": "<r>I have an idea</r>: we could create a simpler quick-start guide with pictures showing the most important steps.",
       "uk": "<r>У мене є ідея</r>: ми могли б створити простішу коротку інструкцію із зображеннями, що показує найважливіші кроки.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы создать более простую краткую инструкцию с изображениями, показывающими самые важные шаги."
+      "ru": "<r>У меня есть идея</r>: мы могли бы создать более простую краткую инструкцию с изображениями, показывающими самые важные шаги.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich neue Mitarbeitende die Geräte immer erst unter Aufsicht ausprobieren lassen, bevor sie allein damit arbeiten?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also always have new employees try out the equipment under supervision first, before working with it alone?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково завжди даватимемо новим співробітникам спробувати обладнання під наглядом, перш ніж вони працюватимуть самостійно?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно всегда будем давать новым сотрудникам попробовать оборудование под присмотром, прежде чем они будут работать самостоятельно?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно всегда будем давать новым сотрудникам попробовать оборудование под присмотром, прежде чем они будут работать самостоятельно?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. So können erfahrene Kolleginnen und Kollegen direkt zeigen, wozu die einzelnen Funktionen dienen.",
       "en": "<r>Yes, I think that's a good idea</r>. That way experienced colleagues can show directly what each function is for.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так досвідчені колеги зможуть одразу показати, для чого призначена кожна функція.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так опытные коллеги смогут сразу показать, для чего предназначена каждая функция."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так опытные коллеги смогут сразу показать, для чего предназначена каждая функция.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt. Und wie stellen wir sicher, dass die Sicherheit dabei nicht zu kurz kommt?",
       "en": "True. And how do we make sure safety doesn't get neglected in the process?",
       "uk": "Правда. А як нам переконатися, що безпека при цьому не постраждає?",
-      "ru": "Верно. А как нам убедиться, что безопасность при этом не пострадает?"
+      "ru": "Верно. А как нам убедиться, что безопасность при этом не пострадает?",
+      "gram": ""
     },
     "a3": {
       "de": "Das halte ich für eine ausgezeichnete Frage. Vielleicht könnten wir die wichtigsten Sicherheitshinweise extra farbig markieren, damit sie sofort auffallen.",
       "en": "That's an excellent question. Maybe we could highlight the most important safety instructions in color, so they stand out immediately.",
       "uk": "Це чудове запитання. Можливо, ми могли б виділити найважливіші вказівки з безпеки кольором, щоб вони одразу впадали в очі.",
-      "ru": "Это отличный вопрос. Возможно, мы могли бы выделить самые важные указания по безопасности цветом, чтобы они сразу бросались в глаза."
+      "ru": "Это отличный вопрос. Возможно, мы могли бы выделить самые важные указания по безопасности цветом, чтобы они сразу бросались в глаза.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Und sollten wir vielleicht auch eine kurze Einweisung als Pflicht für alle neuen Mitarbeitenden einführen?",
       "en": "Good idea. And should we maybe also make a short briefing mandatory for all new employees?",
       "uk": "Гарна ідея. А чи не варто нам також зробити короткий інструктаж обов'язковим для всіх нових співробітників?",
-      "ru": "Хорошая идея. А не стоит ли нам также сделать короткий инструктаж обязательным для всех новых сотрудников?"
+      "ru": "Хорошая идея. А не стоит ли нам также сделать короткий инструктаж обязательным для всех новых сотрудников?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das sogar mit einer kleinen praktischen Prüfung verbinden, bevor jemand allein an einem Gerät arbeitet.",
       "en": "<r>Maybe we could</r> even combine that with a short practical test, before anyone works alone on a device.",
       "uk": "<r>Можливо, ми могли б</r> навіть поєднати це з коротким практичним тестом, перш ніж хтось працюватиме самостійно з пристроєм.",
-      "ru": "<r>Возможно, мы могли бы</r> даже объединить это с коротким практическим тестом, прежде чем кто-то будет работать самостоятельно с устройством."
+      "ru": "<r>Возможно, мы могли бы</r> даже объединить это с коротким практическим тестом, прежде чем кто-то будет работать самостоятельно с устройством.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir die neue Kurzanleitung gleich diese Woche fertig machen, damit wir bald starten können?",
       "en": "Good point. Should we finish the new quick-start guide this week, so we can get started soon?",
       "uk": "Слушна думка. Завершимо нову коротку інструкцію цього тижня, щоб швидко почати?",
-      "ru": "Дельная мысль. Завершим новую краткую инструкцию на этой неделе, чтобы быстро начать?"
+      "ru": "Дельная мысль. Завершим новую краткую инструкцию на этой неделе, чтобы быстро начать?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte den Text schreiben, wenn du dich um die passenden Bilder kümmerst.",
       "en": "Yes, that would make sense. I could write the text, if you take care of the matching pictures.",
       "uk": "Так, це було б розумно. Я міг би написати текст, якщо ти займешся відповідними зображеннями.",
-      "ru": "Да, это было бы разумно. Я мог бы написать текст, если ты займёшься подходящими изображениями."
+      "ru": "Да, это было бы разумно. Я мог бы написать текст, если ты займёшься подходящими изображениями.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir erstellen eine einfache Kurzanleitung mit Bildern, führen eine Einweisung mit Übung ein, und markieren die wichtigsten Sicherheitshinweise deutlich.",
       "en": "<r>Let's summarize</r>: we'll create a simple quick-start guide with pictures, introduce a briefing with practice, and clearly highlight the most important safety instructions.",
       "uk": "<r>Підсумуємо</r>: ми створимо просту коротку інструкцію із зображеннями, впровадимо інструктаж із практикою і чітко виділимо найважливіші вказівки з безпеки.",
-      "ru": "<r>Подведём итог</r>: мы создадим простую краткую инструкцию с изображениями, введём инструктаж с практикой и чётко выделим самые важные указания по безопасности."
+      "ru": "<r>Подведём итог</r>: мы создадим простую краткую инструкцию с изображениями, введём инструктаж с практикой и чётко выделим самые важные указания по безопасности.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so verstehen neue Mitarbeitende die Geräte künftig deutlich schneller und sicherer.",
       "en": "Exactly, that's what we'll do. I think that way new employees will understand the equipment much faster and more safely in the future.",
       "uk": "Саме так, так і зробимо. Гадаю, так нові співробітники надалі розумітимуть обладнання значно швидше й безпечніше.",
-      "ru": "Именно так, так и сделаем. Думаю, так новые сотрудники впредь будут понимать оборудование значительно быстрее и безопаснее."
-    },
-    "gram": ""
+      "ru": "Именно так, так и сделаем. Думаю, так новые сотрудники впредь будут понимать оборудование значительно быстрее и безопаснее.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_099",
@@ -18081,87 +18752,100 @@ var DIALOGE = [
       "de": "<r>Wir sollten über ein Problem sprechen</r>: Bei der externen Qualitätsprüfung sagte der Prüfer, die Fehlerquote <g>sei</g> in den letzten Monaten deutlich gestiegen.",
       "en": "<r>We should talk about a problem</r>: during the external quality inspection, the inspector said the error rate <g>had risen</g> significantly in recent months.",
       "uk": "<r>Нам варто обговорити одну проблему</r>: під час зовнішньої перевірки якості перевіряючий сказав, що відсоток браку за останні місяці <g>помітно зріс</g>.",
-      "ru": "<r>Нам стоит обсудить одну проблему</r>: во время внешней проверки качества проверяющий сказал, что процент брака за последние месяцы <g>заметно вырос</g>."
+      "ru": "<r>Нам стоит обсудить одну проблему</r>: во время внешней проверки качества проверяющий сказал, что процент брака за последние месяцы <g>заметно вырос</g>.",
+      "gram": "indirekte_rede_konjunktiv1"
     },
     "a": {
       "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Mehrere Kunden <g>hätten</g> sich deswegen schon beschwert?",
       "en": "I've heard about that too. <r>Did I understand you correctly</r>: several customers <g>had</g> already <g>complained</g> because of that?",
       "uk": "Я теж про це чув. <r>Я правильно тебе зрозумів</r>: кілька клієнтів через це вже <g>поскаржилися</g>?",
-      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: несколько клиентов из-за этого уже <g>пожаловались</g>?"
+      "ru": "Я тоже об этом слышал. <r>Я правильно тебя понял</r>: несколько клиентов из-за этого уже <g>пожаловались</g>?",
+      "gram": "indirekte_rede_konjunktiv1"
     },
     "q1": {
       "de": "Genau, das hat er auch erwähnt. <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "Exactly, he mentioned that too. <r>What could we do in this situation</r>?",
       "uk": "Саме так, він теж це згадав. <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Именно так, он тоже это упомянул. <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Именно так, он тоже это упомянул. <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Ich hätte eine Idee</r>: Wir könnten zuerst genau analysieren, an welcher Stelle in der Produktion die meisten Fehler entstehen.",
       "en": "<r>I have an idea</r>: we could first analyze exactly where in production most of the defects occur.",
       "uk": "<r>У мене є ідея</r>: ми могли б спершу точно проаналізувати, на якому етапі виробництва виникає найбільше дефектів.",
-      "ru": "<r>У меня есть идея</r>: мы могли бы сначала точно проанализировать, на каком этапе производства возникает больше всего дефектов."
+      "ru": "<r>У меня есть идея</r>: мы могли бы сначала точно проанализировать, на каком этапе производства возникает больше всего дефектов.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich eine zweite Qualitätskontrolle vor dem Versand einführen?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also introduce a second quality check before shipping?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково впровадимо другу перевірку якості перед відправленням?",
-      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём вторую проверку качества перед отправкой?"
+      "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём вторую проверку качества перед отправкой?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. So würden fehlerhafte Produkte gar nicht erst zum Kunden gelangen.",
       "en": "<r>Yes, I think that's a good idea</r>. That way faulty products wouldn't even reach the customer in the first place.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так браковані продукти взагалі не потраплятимуть до клієнта.",
-      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так бракованные продукты вообще не будут попадать к клиенту."
+      "ru": "<r>Да, я считаю это хорошей идеей</r>. Так бракованные продукты вообще не будут попадать к клиенту.",
+      "gram": ""
     },
     "q3": {
       "de": "Stimmt. Und wie gehen wir mit den Kunden um, die sich schon beschwert haben?",
       "en": "True. And how do we deal with the customers who have already complained?",
       "uk": "Правда. А як нам бути з клієнтами, які вже поскаржилися?",
-      "ru": "Верно. А как нам быть с клиентами, которые уже пожаловались?"
+      "ru": "Верно. А как нам быть с клиентами, которые уже пожаловались?",
+      "gram": ""
     },
     "a3": {
       "de": "Das halte ich für eine ausgezeichnete Frage. Der Prüfer meinte, viele Kunden <g>würden</g> vor allem eine schnelle Reaktion und einen kostenlosen Ersatz <g>erwarten</g>.",
       "en": "That's an excellent question. The inspector said many customers <g>would</g> mainly <g>expect</g> a quick response and a free replacement.",
       "uk": "Це чудове запитання. Перевіряючий сказав, що багато клієнтів <g>очікували б</g> передусім швидкої реакції та безкоштовної заміни.",
-      "ru": "Это отличный вопрос. Проверяющий сказал, что многие клиенты <g>ожидали бы</g> прежде всего быстрой реакции и бесплатной замены."
+      "ru": "Это отличный вопрос. Проверяющий сказал, что многие клиенты <g>ожидали бы</g> прежде всего быстрой реакции и бесплатной замены.",
+      "gram": "indirekte_rede_konjunktiv1"
     },
     "q4": {
       "de": "Gute Idee. Sollten wir uns dann direkt bei diesen Kunden melden und uns entschuldigen?",
       "en": "Good idea. Should we then contact those customers directly and apologize?",
       "uk": "Гарна ідея. Може, нам одразу зв'язатися з цими клієнтами й вибачитися?",
-      "ru": "Хорошая идея. Может, нам сразу связаться с этими клиентами и извиниться?"
+      "ru": "Хорошая идея. Может, нам сразу связаться с этими клиентами и извиниться?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das sogar heute noch machen, dann zeigen wir, dass wir das Problem ernst nehmen.",
       "en": "<r>Maybe we could</r> even do that today, then we'd show that we're taking the problem seriously.",
       "uk": "<r>Можливо, ми могли б</r> навіть зробити це сьогодні ж, тоді ми покажемо, що серйозно ставимося до проблеми.",
-      "ru": "<r>Возможно, мы могли бы</r> даже сделать это сегодня же, тогда мы покажем, что серьёзно относимся к проблеме."
+      "ru": "<r>Возможно, мы могли бы</r> даже сделать это сегодня же, тогда мы покажем, что серьёзно относимся к проблеме.",
+      "gram": ""
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir die neue Kontrolle gleich diese Woche einführen, damit wir schnell wieder sicherer werden?",
       "en": "Good point. Should we introduce the new check this week, so we feel more confident again quickly?",
       "uk": "Слушна думка. Впровадимо нову перевірку цього тижня, щоб швидко знову почуватися впевненіше?",
-      "ru": "Дельная мысль. Внедрим новую проверку на этой неделе, чтобы быстро снова чувствовать себя увереннее?"
+      "ru": "Дельная мысль. Внедрим новую проверку на этой неделе, чтобы быстро снова чувствовать себя увереннее?",
+      "gram": ""
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte den Ablauf dafür entwerfen, wenn du dich um die Kommunikation mit den Kunden kümmerst.",
       "en": "Yes, that would make sense. I could design the process for that, if you take care of the communication with the customers.",
       "uk": "Так, це було б розумно. Я міг би розробити процес для цього, якщо ти займешся комунікацією з клієнтами.",
-      "ru": "Да, это было бы разумно. Я мог бы разработать процесс для этого, если ты займёшься коммуникацией с клиентами."
+      "ru": "Да, это было бы разумно. Я мог бы разработать процесс для этого, если ты займёшься коммуникацией с клиентами.",
+      "gram": ""
     },
     "q6": {
       "de": "<r>Fassen wir zusammen</r>: Wir analysieren die Fehlerquellen, führen eine zweite Qualitätskontrolle ein, und wir melden uns noch heute bei den betroffenen Kunden.",
       "en": "<r>Let's summarize</r>: we'll analyze the sources of the defects, introduce a second quality check, and contact the affected customers today.",
       "uk": "<r>Підсумуємо</r>: ми проаналізуємо джерела дефектів, впровадимо другу перевірку якості й зв'яжемося з постраждалими клієнтами ще сьогодні.",
-      "ru": "<r>Подведём итог</r>: мы проанализируем источники дефектов, введём вторую проверку качества и свяжемся с пострадавшими клиентами сегодня же."
+      "ru": "<r>Подведём итог</r>: мы проанализируем источники дефектов, введём вторую проверку качества и свяжемся с пострадавшими клиентами сегодня же.",
+      "gram": ""
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so gewinnen wir das Vertrauen der Kunden zurück und verbessern die Qualität nachhaltig.",
       "en": "Exactly, that's what we'll do. I think that way we'll win back the customers' trust and improve quality sustainably.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми повернемо довіру клієнтів і стало покращимо якість.",
-      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентов и стабильно улучшим качество."
-    },
-    "gram": "indirekte_rede_konjunktiv1"
+      "ru": "Именно так, так и сделаем. Думаю, так мы вернём доверие клиентов и стабильно улучшим качество.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_100",
@@ -18179,75 +18863,86 @@ var DIALOGE = [
       "de": "David, ich muss dir kurz etwas sagen: Sabine hat sich heute Morgen krankgeschrieben und fällt damit für die Nachtschicht morgen aus. <r>Wir haben also die Herausforderung, dass</r> wir bis morgen früh jemanden für den Schichtdienst finden müssen. <r>Wie sollten wir vorgehen</r>?",
       "en": "David, I need to tell you something quickly: Sabine called in sick this morning, so she won't be able to work tomorrow's night shift. <r>So we have the challenge that</r> we need to find someone for the shift by tomorrow morning. <r>How should we proceed</r>?",
       "uk": "Девіде, мушу тобі дещо швидко сказати: Сабіна сьогодні вранці взяла лікарняний, тому не зможе вийти на нічну зміну завтра. <r>Отже, у нас є проблема, що</r> нам потрібно знайти когось на зміну до завтрашнього ранку. <r>Як нам діяти</r>?",
-      "ru": "Давид, мне нужно быстро сказать тебе кое-что: Сабина сегодня утром взяла больничный, поэтому не сможет выйти на ночную смену завтра. <r>Итак, у нас есть проблема, что</r> нам нужно найти кого-то на смену до завтрашнего утра. <r>Как нам действовать</r>?"
+      "ru": "Давид, мне нужно быстро сказать тебе кое-что: Сабина сегодня утром взяла больничный, поэтому не сможет выйти на ночную смену завтра. <r>Итак, у нас есть проблема, что</r> нам нужно найти кого-то на смену до завтрашнего утра. <r>Как нам действовать</r>?",
+      "gram": ""
     },
     "a": {
       "de": "Oh nein, das ist wirklich ungünstig. <r>Habe ich dich richtig verstanden</r>: Wir haben also noch niemanden für die Nachtschicht? Wer könnte deiner Meinung nach kurzfristig einspringen?",
       "en": "Oh no, that's really inconvenient. <r>Did I understand you correctly</r>: so we don't have anyone for the night shift yet? Who do you think could step in at short notice?",
       "uk": "О ні, це справді незручно. <r>Я правильно тебе зрозумів</r>: тобто в нас поки що немає нікого на нічну зміну? Хто, на твою думку, міг би терміново підмінити?",
-      "ru": "О нет, это действительно неудобно. <r>Я правильно тебя понял</r>: то есть у нас пока нет никого на ночную смену? Кто, по-твоему, мог бы срочно подменить?"
+      "ru": "О нет, это действительно неудобно. <r>Я правильно тебя понял</r>: то есть у нас пока нет никого на ночную смену? Кто, по-твоему, мог бы срочно подменить?",
+      "gram": ""
     },
     "q1": {
       "de": "<r>Ich hätte eine Idee</r>: Thomas hat neulich erwähnt, dass er morgen Nachmittag flexibel ist. Vielleicht könnten wir ihn fragen, ob er einspringen kann.",
       "en": "<r>I have an idea</r>: Thomas mentioned recently that he's flexible tomorrow afternoon. Maybe we could ask him if he can step in.",
       "uk": "<r>У мене є ідея</r>: Томас нещодавно казав, що завтра після обіду він вільний. Можливо, варто запитати, чи зможе він підмінити.",
-      "ru": "<r>У меня есть идея</r>: Томас недавно говорил, что завтра после обеда он свободен. Может, стоит спросить, сможет ли он подменить."
+      "ru": "<r>У меня есть идея</r>: Томас недавно говорил, что завтра после обеда он свободен. Может, стоит спросить, сможет ли он подменить.",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Das ist zwar kein schlechter Vorschlag, aber</r> Thomas ist in den letzten Wochen schon zweimal für andere eingesprungen. Ich finde, wir sollten die Vertretungen nicht immer auf dieselben Leute abwälzen.",
       "en": "<r>That's not a bad suggestion, but</r> Thomas has already covered for others twice in the past few weeks. I think we shouldn't keep putting the cover shifts on the same people.",
       "uk": "<r>Це непогана пропозиція, але</r> Томас за останні тижні вже двічі підміняв інших. Мені здається, не варто постійно перекладати заміни на тих самих людей.",
-      "ru": "<r>Это неплохое предложение, но</r> Томас за последние недели уже дважды подменял других. Мне кажется, не стоит постоянно перекладывать замены на одних и тех же людей."
+      "ru": "<r>Это неплохое предложение, но</r> Томас за последние недели уже дважды подменял других. Мне кажется, не стоит постоянно перекладывать замены на одних и тех же людей.",
+      "gram": ""
     },
     "q2": {
       "de": "Du hast recht. <r>Vielleicht könnten wir das Problem lösen, indem</r> wir eine Liste mit Freiwilligen für kurzfristige Vertretungen erstellen, in die sich alle freiwillig eintragen können. <r>Was hältst du davon</r>?",
       "en": "You're right. <r>Maybe we could solve the problem by</r> creating a list of volunteers for short-notice cover, where everyone can sign up voluntarily. <r>What do you think</r>?",
       "uk": "Ти маєш рацію. <r>Можливо, ми могли б вирішити проблему, якщо</r> створимо список добровольців для термінових замін, куди кожен зможе записатися за бажанням. <r>Як ти на це дивишся</r>?",
-      "ru": "Ты прав. <r>Возможно, мы могли бы решить проблему, если</r> создадим список добровольцев для срочных замен, куда каждый сможет записаться по желанию. <r>Как ты на это смотришь</r>?"
+      "ru": "Ты прав. <r>Возможно, мы могли бы решить проблему, если</r> создадим список добровольцев для срочных замен, куда каждый сможет записаться по желанию. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Das klingt überzeugend</r>. Wir müssen aber auch daran denken, dass manche Kolleginnen und Kollegen mit Kindern nicht immer spontan einspringen können. <r>Ich finde es besser, wenn</r> wir die Freiwilligenliste mit einem festen Vertretungsplan kombinieren, der die familiäre Situation berücksichtigt.",
       "en": "<r>That sounds convincing</r>. But we also need to remember that some colleagues with children can't always step in spontaneously. <r>I think it's better if</r> we combine the volunteer list with a fixed stand-in plan that takes family circumstances into account.",
       "uk": "<r>Звучить переконливо</r>. Але треба також пам'ятати, що деякі колеги з дітьми не завжди можуть спонтанно підмінити когось. <r>Гадаю, краще, якщо</r> ми поєднаємо список добровольців із постійним планом підміни, який враховує сімейну ситуацію.",
-      "ru": "<r>Звучит убедительно</r>. Но нужно также помнить, что некоторые коллеги с детьми не всегда могут спонтанно подменить кого-то. <r>Думаю, лучше, если</r> мы объединим список добровольцев с постоянным планом подмены, который учитывает семейную ситуацию."
+      "ru": "<r>Звучит убедительно</r>. Но нужно также помнить, что некоторые коллеги с детьми не всегда могут спонтанно подменить кого-то. <r>Думаю, лучше, если</r> мы объединим список добровольцев с постоянным планом подмены, который учитывает семейную ситуацию.",
+      "gram": ""
     },
     "q3": {
       "de": "Guter Punkt. Wir könnten außerdem eine Art Rufbereitschaft einführen – allerdings nur freiwillig und mit einem Ausgleich, zum Beispiel einem freien Tag später. <r>Wie siehst du das</r>?",
       "en": "Good point. We could also introduce a kind of on-call system – but only voluntary and with compensation, for example a day off later. <r>What do you think</r>?",
       "uk": "Слушна думка. Ми могли б також запровадити щось на кшталт чергування на виклик — але лише за бажанням і з компенсацією, наприклад, вихідним пізніше. <r>Як ти на це дивишся</r>?",
-      "ru": "Дельная мысль. Мы могли бы также ввести что-то вроде дежурства по вызову — но только добровольно и с компенсацией, например, выходным позже. <r>Как ты на это смотришь</r>?"
+      "ru": "Дельная мысль. Мы могли бы также ввести что-то вроде дежурства по вызову — но только добровольно и с компенсацией, например, выходным позже. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Dem kann ich nur zustimmen</r>. Ein Ausgleich ist mir wichtig. Lass uns den Vorschlag beim nächsten Teammeeting vorstellen, damit alle mitreden können, bevor wir etwas endgültig festlegen.",
       "en": "<r>I can only agree with that</r>. Compensation matters to me. Let's present the proposal at the next team meeting so everyone can have a say before we finalize anything.",
       "uk": "<r>Не можу не погодитися</r>. Компенсація для мене важлива. Пропоную представити пропозицію на наступній командній нараді, щоб усі могли висловитися, перш ніж ми щось остаточно вирішимо.",
-      "ru": "<r>Не могу не согласиться</r>. Компенсация для меня важна. Предлагаю представить предложение на следующем командном собрании, чтобы все могли высказаться, прежде чем мы что-то окончательно решим."
+      "ru": "<r>Не могу не согласиться</r>. Компенсация для меня важна. Предлагаю представить предложение на следующем командном собрании, чтобы все могли высказаться, прежде чем мы что-то окончательно решим.",
+      "gram": ""
     },
     "q4": {
       "de": "Gute Idee. Wir sollten außerdem klären, wie wir das ganze Team schnell über kurzfristige Änderungen informieren – vielleicht über eine gemeinsame Chatgruppe?",
       "en": "Good idea. We should also clarify how we quickly inform the whole team about short-notice changes – maybe through a shared chat group?",
       "uk": "Гарна ідея. Нам також варто з'ясувати, як швидко інформувати всю команду про термінові зміни — можливо, через спільну групу в чаті?",
-      "ru": "Хорошая идея. Нам также стоит выяснить, как быстро информировать всю команду о срочных изменениях — может быть, через общую группу в чате?"
+      "ru": "Хорошая идея. Нам также стоит выяснить, как быстро информировать всю команду о срочных изменениях — может быть, через общую группу в чате?",
+      "gram": ""
     },
     "a4": {
       "de": "<r>Das halte ich für eine sehr gute Idee</r>. Eine Chatgruppe wäre praktisch, und zusätzlich könnten wir den Dienstplan digital pflegen, damit jeder ihn jederzeit einsehen kann.",
       "en": "<r>I think that's a very good idea</r>. A chat group would be practical, and we could also keep the shift schedule digital so everyone can check it anytime.",
       "uk": "<r>Вважаю це дуже гарною ідеєю</r>. Група в чаті була б практичною, і ми могли б додатково вести графік чергувань в електронному вигляді, щоб кожен міг переглянути його будь-коли.",
-      "ru": "<r>Считаю это очень хорошей идеей</r>. Группа в чате была бы удобной, и мы могли бы дополнительно вести график дежурств в электронном виде, чтобы каждый мог посмотреть его в любое время."
+      "ru": "<r>Считаю это очень хорошей идеей</r>. Группа в чате была бы удобной, и мы могли бы дополнительно вести график дежурств в электронном виде, чтобы каждый мог посмотреть его в любое время.",
+      "gram": ""
     },
     "q5": {
       "de": "<r>Dann lass uns folgende Punkte festhalten</r>: Für morgen fragen wir Thomas, ob er einspringen kann, und außerdem bereiten wir den Vorschlag für Freiwilligenliste, Vertretungsplan und Chatgruppe fürs Teammeeting vor.",
       "en": "<r>Then let's note down the following points</r>: for tomorrow we'll ask Thomas if he can step in, and we'll also prepare the proposal for the volunteer list, stand-in plan and chat group for the team meeting.",
       "uk": "<r>Тоді зафіксуймо такі пункти</r>: на завтра ми запитаємо Томаса, чи зможе він підмінити, а також підготуємо пропозицію щодо списку добровольців, плану підміни й групи в чаті для командної наради.",
-      "ru": "<r>Тогда зафиксируем такие пункты</r>: на завтра мы спросим Томаса, сможет ли он подменить, а также подготовим предложение по списку добровольцев, плану подмены и группе в чате для командного собрания."
+      "ru": "<r>Тогда зафиксируем такие пункты</r>: на завтра мы спросим Томаса, сможет ли он подменить, а также подготовим предложение по списку добровольцев, плану подмены и группе в чате для командного собрания.",
+      "gram": ""
     },
     "a5": {
       "de": "<r>Einverstanden, das ist eine gute Lösung</r>. Ich kümmere mich um die schriftliche Zusammenfassung, und du sprichst kurz mit Thomas wegen morgen.",
       "en": "<r>Agreed, that's a good solution</r>. I'll take care of the written summary, and you have a quick word with Thomas about tomorrow.",
       "uk": "<r>Погоджуюся, це гарне рішення</r>. Я подбаю про письмове резюме, а ти коротко поговориш із Томасом щодо завтра.",
-      "ru": "<r>Согласен, это хорошее решение</r>. Я позабочусь о письменном резюме, а ты коротко поговоришь с Томасом насчёт завтра."
-    },
-    "gram": ""
+      "ru": "<r>Согласен, это хорошее решение</r>. Я позабочусь о письменном резюме, а ты коротко поговоришь с Томасом насчёт завтра.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_101",
@@ -18265,75 +18960,86 @@ var DIALOGE = [
       "de": "Nina, hast du kurz Zeit? <r>Wir haben die Herausforderung, dass</r> die Krankheitsrate im Team in den letzten Monaten deutlich gestiegen ist. Nach <g>Auswertung</g> der Krankmeldungen sehe ich vor allem Rückenschmerzen und Erschöpfung als Hauptursachen.",
       "en": "Nina, do you have a moment? <r>We have the challenge that</r> the sickness rate in the team has risen noticeably in the last few months. After <g>analyzing</g> the sick notes, I mainly see back pain and exhaustion as the main causes.",
       "uk": "Ніно, у тебе є хвилинка? <r>У нас є проблема, що</r> рівень захворюваності в команді за останні місяці помітно зріс. Після <g>аналізу</g> лікарняних я бачу передусім біль у спині та виснаження як основні причини.",
-      "ru": "Нина, у тебя есть минутка? <r>У нас есть проблема, что</r> уровень заболеваемости в команде за последние месяцы заметно вырос. После <g>анализа</g> больничных листов я вижу прежде всего боли в спине и истощение как основные причины."
+      "ru": "Нина, у тебя есть минутка? <r>У нас есть проблема, что</r> уровень заболеваемости в команде за последние месяцы заметно вырос. После <g>анализа</g> больничных листов я вижу прежде всего боли в спине и истощение как основные причины.",
+      "gram": "nominalisierung"
     },
     "a": {
       "de": "Das habe ich auch schon gemerkt. <r>Habe ich dich richtig verstanden</r>: Die Fehlzeiten hängen also vor allem mit Rückenschmerzen und Erschöpfung zusammen? <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "I noticed that too. <r>Did I understand you correctly</r>: so the absences are mainly related to back pain and exhaustion? <r>What could we do in this situation</r>?",
       "uk": "Я теж це помітила. <r>Я правильно тебе зрозуміла</r>: тобто відсутності пов'язані передусім із болем у спині та виснаженням? <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Я тоже это заметила. <r>Я правильно тебя поняла</r>: то есть отсутствия связаны прежде всего с болями в спине и истощением? <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Я тоже это заметила. <r>Я правильно тебя поняла</r>: то есть отсутствия связаны прежде всего с болями в спине и истощением? <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "<r>Ich hätte einen Vorschlag</r>: Durch die <g>Verbesserung</g> der Ergonomie an den Bildschirmarbeitsplätzen könnten wir die Rückenschmerzen sicher reduzieren. Höhenverstellbare Tische wären zum Beispiel eine Möglichkeit.",
       "en": "<r>I'd have a suggestion</r>: through the <g>improvement</g> of ergonomics at the screen workstations, we could probably reduce the back pain. Height-adjustable desks would be one option, for example.",
       "uk": "<r>У мене була б пропозиція</r>: завдяки <g>покращенню</g> ергономіки на робочих місцях з екранами ми могли б, напевно, зменшити біль у спині. Столи з регульованою висотою, наприклад, були б одним із варіантів.",
-      "ru": "<r>У меня было бы предложение</r>: благодаря <g>улучшению</g> эргономики на рабочих местах с экранами мы могли бы, наверное, уменьшить боли в спине. Столы с регулируемой высотой, например, были бы одним из вариантов."
+      "ru": "<r>У меня было бы предложение</r>: благодаря <g>улучшению</g> эргономики на рабочих местах с экранами мы могли бы, наверное, уменьшить боли в спине. Столы с регулируемой высотой, например, были бы одним из вариантов.",
+      "gram": "nominalisierung"
     },
     "a1": {
       "de": "<r>Das klingt vernünftig</r>, aber ich glaube, das allein reicht nicht. Die Arbeitsbelastung ist einfach zu hoch, und viele schaffen es kaum, überhaupt Pausen zu machen.",
       "en": "<r>That sounds reasonable</r>, but I don't think that alone is enough. The workload is simply too high, and many people barely manage to take breaks at all.",
       "uk": "<r>Звучить розумно</r>, але, гадаю, самого цього недостатньо. Робоче навантаження просто занадто високе, і багатьом навряд чи вдається взагалі робити перерви.",
-      "ru": "<r>Звучит разумно</r>, но, думаю, одного этого недостаточно. Рабочая нагрузка просто слишком высокая, и многим едва удаётся вообще делать перерывы."
+      "ru": "<r>Звучит разумно</r>, но, думаю, одного этого недостаточно. Рабочая нагрузка просто слишком высокая, и многим едва удаётся вообще делать перерывы.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Da hast du recht</r>. <r>Wie wäre es, wenn</r> wir eine feste Pausenregelung einführen und zusätzlich ein Fitnessprogramm mit Entspannungsübungen anbieten? <r>Was hältst du davon</r>?",
       "en": "<r>You're right about that</r>. <r>How about</r> we introduce a fixed break schedule and also offer a fitness programme with relaxation exercises? <r>What do you think</r>?",
       "uk": "<r>Тут ти маєш рацію</r>. <r>Як щодо того, щоб</r> ми запровадили чіткий графік перерв і додатково запропонували фітнес-програму з вправами на розслаблення? <r>Як ти на це дивишся</r>?",
-      "ru": "<r>Тут ты прав</r>. <r>Как насчёт того, чтобы</r> мы ввели чёткий график перерывов и дополнительно предложили фитнес-программу с упражнениями на расслабление? <r>Как ты на это смотришь</r>?"
+      "ru": "<r>Тут ты прав</r>. <r>Как насчёт того, чтобы</r> мы ввели чёткий график перерывов и дополнительно предложили фитнес-программу с упражнениями на расслабление? <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Das gefällt mir</r>. Wir dürfen aber nicht vergessen, dass nicht jeder gleich Lust auf Sport hat. Vielleicht könnten wir zusätzlich ein Präventionsseminar zum Thema Stressmanagement anbieten.",
       "en": "<r>I like that</r>. But we mustn't forget that not everyone feels like doing sports. Maybe we could also offer a prevention seminar on stress management.",
       "uk": "<r>Мені це подобається</r>. Але не варто забувати, що не кожен одразу захоче займатися спортом. Можливо, ми могли б додатково запропонувати семінар з профілактики на тему управління стресом.",
-      "ru": "<r>Мне это нравится</r>. Но не стоит забывать, что не каждый сразу захочет заниматься спортом. Может быть, мы могли бы дополнительно предложить семинар по профилактике на тему управления стрессом."
+      "ru": "<r>Мне это нравится</r>. Но не стоит забывать, что не каждый сразу захочет заниматься спортом. Может быть, мы могли бы дополнительно предложить семинар по профилактике на тему управления стрессом.",
+      "gram": ""
     },
     "q3": {
       "de": "Gute Ergänzung. Und was ist mit der Ernährung? Ich habe gehört, dass sich viele über das Kantinenessen beschweren.",
       "en": "Good addition. And what about food? I've heard that a lot of people complain about the canteen food.",
       "uk": "Гарне доповнення. А як щодо харчування? Я чув, що багато хто скаржиться на їжу в їдальні.",
-      "ru": "Хорошее дополнение. А как насчёт питания? Я слышал, что многие жалуются на еду в столовой."
+      "ru": "Хорошее дополнение. А как насчёт питания? Я слышал, что многие жалуются на еду в столовой.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Ich bin deiner Meinung</r>. <r>Eine Möglichkeit wäre zum Beispiel</r>, mit der Kantine ein ausgewogenes Angebot und einen nachhaltigen Speiseplan zu entwickeln, mit mehr frischem Gemüse und weniger Fertiggerichten.",
       "en": "<r>I agree with you</r>. <r>One option would be, for example,</r> to develop a balanced range and a sustainable meal plan with the canteen, with more fresh vegetables and fewer ready meals.",
       "uk": "<r>Я цілком з тобою згодна</r>. <r>Одним із варіантів було б, наприклад,</r> розробити разом з їдальнею збалансоване меню та сталий план харчування, з більшою кількістю свіжих овочів і меншою кількістю напівфабрикатів.",
-      "ru": "<r>Я полностью с тобой согласна</r>. <r>Одним из вариантов было бы, например,</r> разработать вместе со столовой сбалансированное меню и устойчивый план питания, с большим количеством свежих овощей и меньшим количеством полуфабрикатов."
+      "ru": "<r>Я полностью с тобой согласна</r>. <r>Одним из вариантов было бы, например,</r> разработать вместе со столовой сбалансированное меню и устойчивый план питания, с большим количеством свежих овощей и меньшим количеством полуфабрикатов.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Gut, dann fassen wir zusammen</r>: Durch die <g>Einführung</g> eines Fitnessprogramms, eine feste Pausenregelung, ein Präventionsseminar und ein gesünderes Kantinenangebot wollen wir die Krankheitsrate senken.",
       "en": "<r>Alright, let's summarize</r>: through the <g>introduction</g> of a fitness programme, a fixed break schedule, a prevention seminar, and a healthier canteen offering, we want to bring the sickness rate down.",
       "uk": "<r>Гаразд, тоді підсумуємо</r>: завдяки <g>впровадженню</g> фітнес-програми, чіткого графіка перерв, семінару з профілактики та здоровішого меню в їдальні ми хочемо знизити рівень захворюваності.",
-      "ru": "<r>Хорошо, тогда подведём итог</r>: благодаря <g>внедрению</g> фитнес-программы, чёткого графика перерывов, семинара по профилактике и более здорового меню в столовой мы хотим снизить уровень заболеваемости."
+      "ru": "<r>Хорошо, тогда подведём итог</r>: благодаря <g>внедрению</g> фитнес-программы, чёткого графика перерывов, семинара по профилактике и более здорового меню в столовой мы хотим снизить уровень заболеваемости.",
+      "gram": "nominalisierung"
     },
     "a4": {
       "de": "Genau, so machen wir es. Ich spreche mit der Kantine wegen des Speiseplans, und du kümmerst dich um das Angebot für das Fitnessprogramm und das Seminar.",
       "en": "Exactly, that's what we'll do. I'll talk to the canteen about the meal plan, and you take care of the offer for the fitness programme and the seminar.",
       "uk": "Саме так, так і зробимо. Я поговорю з їдальнею щодо плану харчування, а ти займешся пропозицією щодо фітнес-програми та семінару.",
-      "ru": "Именно так, так и сделаем. Я поговорю со столовой насчёт плана питания, а ты займёшься предложением по фитнес-программе и семинару."
+      "ru": "Именно так, так и сделаем. Я поговорю со столовой насчёт плана питания, а ты займёшься предложением по фитнес-программе и семинару.",
+      "gram": ""
     },
     "q5": {
       "de": "Sollten wir das Ganze auch der Geschäftsführung vorstellen, bevor wir loslegen?",
       "en": "Should we also present the whole thing to management before we start?",
       "uk": "Може, варто представити все це керівництву, перш ніж почати?",
-      "ru": "Может, стоит представить всё это руководству, прежде чем начинать?"
+      "ru": "Может, стоит представить всё это руководству, прежде чем начинать?",
+      "gram": ""
     },
     "a5": {
       "de": "Gute Idee. Wir fassen die Vorschläge kurz zusammen und stellen sie nächste Woche im Meeting vor, dann können wir gleich mit der Umsetzung beginnen.",
       "en": "Good idea. We'll briefly summarize the proposals and present them at next week's meeting, then we can start implementing right away.",
       "uk": "Гарна ідея. Ми коротко підсумуємо пропозиції й представимо їх на нараді наступного тижня, тоді зможемо одразу почати впровадження.",
-      "ru": "Хорошая идея. Мы коротко подведём итог предложений и представим их на собрании на следующей неделе, тогда сможем сразу начать внедрение."
-    },
-    "gram": "nominalisierung"
+      "ru": "Хорошая идея. Мы коротко подведём итог предложений и представим их на собрании на следующей неделе, тогда сможем сразу начать внедрение.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_102",
@@ -18351,75 +19057,86 @@ var DIALOGE = [
       "de": "Alex, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Beim letzten Teammeeting haben mehrere Kolleginnen und Kollegen gesagt, dass unsere Kurzvorträge oft schwer zu verfolgen sind.",
       "en": "Alex, do you have a moment? <r>We should talk about a problem</r>: at the last team meeting, several colleagues said that our short presentations are often hard to follow.",
       "uk": "Алексе, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: на останній командній нараді кілька колег сказали, що наші короткі доповіді часто важко сприймати.",
-      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: на последнем командном собрании несколько коллег сказали, что наши короткие доклады часто трудно воспринимать."
+      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: на последнем командном собрании несколько коллег сказали, что наши короткие доклады часто трудно воспринимать.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon gehört. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um die Struktur der Vorträge? <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "I've heard that too. <r>Did I understand you correctly</r>: so it's mainly about the structure of the talks? <r>What could we do in this situation</r>?",
       "uk": "Я теж це чув. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про структуру доповідей? <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Я тоже это слышал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о структуре докладов? <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Я тоже это слышал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о структуре докладов? <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "<r>Aus meiner Sicht spricht dafür, dass</r> oft eine klare Einleitung fehlt und viele direkt mitten ins Thema einsteigen, ohne zu sagen, worum es überhaupt geht.",
       "en": "<r>From my point of view, an argument for that is that</r> a clear introduction is often missing, and many people dive straight into the topic without saying what it's actually about.",
       "uk": "<r>На мою думку, на користь цього свідчить те, що</r> часто бракує чіткого вступу, і багато хто одразу занурюється в тему, не пояснивши, про що взагалі йдеться.",
-      "ru": "<r>На мой взгляд, в пользу этого говорит то, что</r> часто не хватает чёткого вступления, и многие сразу погружаются в тему, не объяснив, о чём вообще идёт речь."
+      "ru": "<r>На мой взгляд, в пользу этого говорит то, что</r> часто не хватает чёткого вступления, и многие сразу погружаются в тему, не объяснив, о чём вообще идёт речь.",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Da stimme ich dir zu</r>. Meiner Erfahrung nach hilft es außerdem sehr, wenn man am Ende die Schlüsselbotschaft noch einmal hervorhebt. Das ist mir besonders wichtig, weil die Zuhörer sonst oft nicht wissen, was sie eigentlich mitnehmen sollen.",
       "en": "<r>I agree with you on that</r>. In my experience it also helps a lot if you highlight the key message again at the end. That's particularly important to me, because otherwise listeners often don't know what they're actually supposed to take away.",
       "uk": "<r>Тут я з тобою згодна</r>. За моїм досвідом, ще дуже допомагає, якщо наприкінці ще раз підкреслити ключову думку. Для мене це особливо важливо, бо інакше слухачі часто не розуміють, що їм узагалі варто винести з доповіді.",
-      "ru": "<r>Тут я с тобой согласна</r>. По моему опыту, также очень помогает, если в конце ещё раз подчеркнуть ключевую мысль. Для меня это особенно важно, потому что иначе слушатели часто не понимают, что им вообще нужно вынести из доклада."
+      "ru": "<r>Тут я с тобой согласна</r>. По моему опыту, также очень помогает, если в конце ещё раз подчеркнуть ключевую мысль. Для меня это особенно важно, потому что иначе слушатели часто не понимают, что им вообще нужно вынести из доклада.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten eine kurze Checkliste erstellen – mit festen Redemitteln zum Einleiten, zum Übergehen zu einem neuen Punkt und zum Abschließen. Ich bevorzuge dabei eine möglichst kurze Version, die man sich schnell merken kann. <r>Was hältst du davon</r>?",
       "en": "<r>I'd have a suggestion</r>: we could create a short checklist – with fixed phrases for the introduction, for moving on to a new point, and for the conclusion. I prefer as short a version as possible, one people can memorize quickly. <r>What do you think</r>?",
       "uk": "<r>У мене була б пропозиція</r>: ми могли б створити коротку пам'ятку — з фіксованими фразами для вступу, для переходу до нового пункту й для завершення. При цьому я віддаю перевагу максимально короткій версії, яку можна швидко запам'ятати. <r>Як ти на це дивишся</r>?",
-      "ru": "<r>У меня было бы предложение</r>: мы могли бы создать короткую памятку — с фиксированными фразами для вступления, для перехода к новому пункту и для завершения. При этом я предпочитаю максимально короткую версию, которую можно быстро запомнить. <r>Как ты на это смотришь</r>?"
+      "ru": "<r>У меня было бы предложение</r>: мы могли бы создать короткую памятку — с фиксированными фразами для вступления, для перехода к новому пункту и для завершения. При этом я предпочитаю максимально короткую версию, которую можно быстро запомнить. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Das gefällt mir</r>. Wir dürfen aber nicht vergessen, dass ein Vortrag auch mit einem passenden Schaubild viel verständlicher wird. Außerdem könnten wir dafür ein konkretes Beispiel zeigen.",
       "en": "<r>I like that</r>. But we mustn't forget that a talk also becomes much clearer with a suitable diagram. We could also show a concrete example for that.",
       "uk": "<r>Мені це подобається</r>. Але не варто забувати, що доповідь стає значно зрозумілішою й з відповідною схемою. Крім того, ми могли б показати для цього конкретний приклад.",
-      "ru": "<r>Мне это нравится</r>. Но не стоит забывать, что доклад становится намного понятнее и с подходящей схемой. Кроме того, мы могли бы показать для этого конкретный пример."
+      "ru": "<r>Мне это нравится</r>. Но не стоит забывать, что доклад становится намного понятнее и с подходящей схемой. Кроме того, мы могли бы показать для этого конкретный пример.",
+      "gram": ""
     },
     "q3": {
       "de": "Guter Punkt. Zum einen könnten wir die Checkliste mit Beispielsätzen versehen, zum anderen könnten wir vor dem Vortrag kurz Feedback von einer Kollegin oder einem Kollegen einholen.",
       "en": "Good point. For one thing, we could add example sentences to the checklist; for another, we could briefly get feedback from a colleague before the talk.",
       "uk": "Слушна думка. З одного боку, ми могли б доповнити пам'ятку прикладами речень, з іншого — могли б перед доповіддю коротко отримати відгук від колеги.",
-      "ru": "Дельная мысль. С одной стороны, мы могли бы дополнить памятку примерами предложений, с другой — могли бы перед докладом коротко получить обратную связь от коллеги."
+      "ru": "Дельная мысль. С одной стороны, мы могли бы дополнить памятку примерами предложений, с другой — могли бы перед докладом коротко получить обратную связь от коллеги.",
+      "gram": ""
     },
     "a3": {
       "de": "Guter Punkt, jedoch sollten wir das Ganze nicht zu kompliziert machen, sonst hat am Ende niemand mehr Lust, überhaupt einen Vortrag zu halten. Für mich ist die Praxistauglichkeit ausschlaggebend.",
       "en": "Good point, however we shouldn't make the whole thing too complicated, otherwise nobody will feel like giving a talk at all in the end. For me, practicality is the decisive factor.",
       "uk": "Слушна думка, однак нам не варто робити з цього щось надто складне, бо інакше врешті-решт нікому вже не захочеться виступати з доповіддю взагалі. Для мене вирішальним є практичність.",
-      "ru": "Дельная мысль, однако нам не стоит делать из этого что-то слишком сложное, иначе в конце концов никому уже не захочется выступать с докладом вообще. Для меня решающим является практичность."
+      "ru": "Дельная мысль, однако нам не стоит делать из этого что-то слишком сложное, иначе в конце концов никому уже не захочется выступать с докладом вообще. Для меня решающим является практичность.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Gut, dann fassen wir zusammen</r>: Wir erstellen eine einfache Checkliste mit Redemitteln für Einleitung, Hauptteil und Schluss, dazu ein Beispiel mit Schaubild, und wir bieten kurzes Feedback vor dem Vortrag an.",
       "en": "<r>Alright, let's summarize</r>: we'll create a simple checklist with phrases for the introduction, main part, and conclusion, plus an example with a diagram, and we'll offer brief feedback before the talk.",
       "uk": "<r>Гаразд, тоді підсумуємо</r>: ми створимо просту пам'ятку з фразами для вступу, основної частини й завершення, додамо приклад зі схемою і запропонуємо короткий відгук перед доповіддю.",
-      "ru": "<r>Хорошо, тогда подведём итог</r>: мы создадим простую памятку с фразами для вступления, основной части и завершения, добавим пример со схемой и предложим короткую обратную связь перед докладом."
+      "ru": "<r>Хорошо, тогда подведём итог</r>: мы создадим простую памятку с фразами для вступления, основной части и завершения, добавим пример со схемой и предложим короткую обратную связь перед докладом.",
+      "gram": ""
     },
     "a4": {
       "de": "Genau, so machen wir es. Ich kümmere mich um die Checkliste, und du erstellst das Beispiel mit dem Schaubild.",
       "en": "Exactly, that's what we'll do. I'll take care of the checklist, and you put together the example with the diagram.",
       "uk": "Саме так, так і зробимо. Я подбаю про пам'ятку, а ти підготуєш приклад зі схемою.",
-      "ru": "Именно так, так и сделаем. Я позабочусь о памятке, а ты подготовишь пример со схемой."
+      "ru": "Именно так, так и сделаем. Я позабочусь о памятке, а ты подготовишь пример со схемой.",
+      "gram": ""
     },
     "q5": {
       "de": "Sollten wir das den Kolleginnen und Kollegen auch kurz beim nächsten Meeting vorstellen?",
       "en": "Should we also present this briefly to the colleagues at the next meeting?",
       "uk": "Може, варто коротко представити це колегам на наступній нараді?",
-      "ru": "Может, стоит коротко представить это коллегам на следующем собрании?"
+      "ru": "Может, стоит коротко представить это коллегам на следующем собрании?",
+      "gram": ""
     },
     "a5": {
       "de": "Gute Idee. Dann wissen alle gleich, worauf es ankommt, und wir können die Checkliste ab dem nächsten Kurzvortrag ausprobieren.",
       "en": "Good idea. That way everyone will immediately know what matters, and we can try out the checklist starting with the next short presentation.",
       "uk": "Гарна ідея. Тоді всі одразу знатимуть, на що звертати увагу, і ми зможемо випробувати пам'ятку вже з наступної короткої доповіді.",
-      "ru": "Хорошая идея. Тогда все сразу будут знать, на что обращать внимание, и мы сможем опробовать памятку уже со следующего короткого доклада."
-    },
-    "gram": ""
+      "ru": "Хорошая идея. Тогда все сразу будут знать, на что обращать внимание, и мы сможем опробовать памятку уже со следующего короткого доклада.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_103",
@@ -18437,75 +19154,86 @@ var DIALOGE = [
       "de": "David, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Mir ist aufgefallen, dass es in letzter Zeit im Team mehrere Missverständnisse gab, weil Nachrichten im Chat oft sehr direkt oder unklar formuliert waren.",
       "en": "David, do you have a moment? <r>We should talk about a problem</r>: I've noticed that there have been several misunderstandings in the team lately, because chat messages were often phrased very directly or unclearly.",
       "uk": "Девіде, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: я помітила, що останнім часом у команді сталося кілька непорозумінь, бо повідомлення в чаті часто були сформульовані дуже прямо або незрозуміло.",
-      "ru": "Давид, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: я заметила, что в последнее время в команде было несколько недоразумений, потому что сообщения в чате часто формулировались очень прямо или непонятно."
+      "ru": "Давид, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: я заметила, что в последнее время в команде было несколько недоразумений, потому что сообщения в чате часто формулировались очень прямо или непонятно.",
+      "gram": ""
     },
     "a": {
       "de": "Stimmt, das ist mir <g>ja</g> auch schon aufgefallen. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um den Ton in unserer schriftlichen Kommunikation?",
       "en": "True, I've <g>actually</g> noticed that too. <r>Did I understand you correctly</r>: so it's mainly about the tone in our written communication?",
       "uk": "Правда, я, <g>знаєш</g>, теж це вже помітив. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про тон нашого письмового спілкування?",
-      "ru": "Верно, я, <g>знаешь</g>, тоже это уже заметил. <r>Я правильно тебя понял</r>: то есть речь прежде всего о тоне нашего письменного общения?"
+      "ru": "Верно, я, <g>знаешь</g>, тоже это уже заметил. <r>Я правильно тебя понял</r>: то есть речь прежде всего о тоне нашего письменного общения?",
+      "gram": "modalpartikeln"
     },
     "q1": {
       "de": "Genau. Julia hat letzte Woche eine Nachricht als ziemlich barsch empfunden, obwohl das bestimmt nicht so gemeint war. Im Chat schreibt man halt oft schnell, ohne an den Ton zu denken.",
       "en": "Exactly. Julia found a message pretty blunt last week, even though it certainly wasn't meant that way. In chat, people just write quickly without thinking about the tone.",
       "uk": "Саме так. Юлія минулого тижня сприйняла одне повідомлення як доволі різке, хоча воно точно не так задумувалося. У чаті просто пишуть швидко, не думаючи про тон.",
-      "ru": "Именно. Юлия на прошлой неделе восприняла одно сообщение как довольно резкое, хотя оно точно не так задумывалось. В чате просто пишут быстро, не думая о тоне."
+      "ru": "Именно. Юлия на прошлой неделе восприняла одно сообщение как довольно резкое, хотя оно точно не так задумывалось. В чате просто пишут быстро, не думая о тоне.",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Das kann ich nachvollziehen</r>. Vielleicht sollten wir uns mal überlegen, wann eine Nachricht im Chat überhaupt sinnvoll ist und wann man lieber kurz persönlich vorbeigeht oder anruft.",
       "en": "<r>I can understand that</r>. Maybe we should think about when a chat message actually makes sense and when it's better to just stop by or call instead.",
       "uk": "<r>Я це розумію</r>. Можливо, варто подумати, коли повідомлення в чаті взагалі має сенс, а коли краще просто підійти особисто або зателефонувати.",
-      "ru": "<r>Я это понимаю</r>. Возможно, стоит подумать, когда сообщение в чате вообще имеет смысл, а когда лучше просто зайти лично или позвонить."
+      "ru": "<r>Я это понимаю</r>. Возможно, стоит подумать, когда сообщение в чате вообще имеет смысл, а когда лучше просто зайти лично или позвонить.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten <g>doch</g> vereinbaren, dass wichtige oder heikle Themen grundsätzlich im Gespräch geklärt werden, nicht nur schriftlich. Da sieht man wenigstens die Körpersprache und kann Missverständnisse gleich klären. <r>Was hältst du davon</r>?",
       "en": "<r>I'd have a suggestion</r>: we could, <g>after all</g>, agree that important or sensitive topics should generally be clarified in conversation, not just in writing. That way you at least see the body language and can clear up misunderstandings right away. <r>What do you think</r>?",
       "uk": "<r>У мене була б пропозиція</r>: ми <g>ж</g> могли б домовитися, що важливі чи делікатні теми в принципі з'ясовуються в розмові, а не лише письмово. Так принаймні видно мову тіла і можна одразу прояснити непорозуміння. <r>Як ти на це дивишся</r>?",
-      "ru": "<r>У меня было бы предложение</r>: мы <g>же</g> могли бы договориться, что важные или деликатные темы в принципе проясняются в разговоре, а не только письменно. Так хотя бы видно язык тела и можно сразу прояснить недоразумения. <r>Как ты на это смотришь</r>?"
+      "ru": "<r>У меня было бы предложение</r>: мы <g>же</g> могли бы договориться, что важные или деликатные темы в принципе проясняются в разговоре, а не только письменно. Так хотя бы видно язык тела и можно сразу прояснить недоразумения. <r>Как ты на это смотришь</r>?",
+      "gram": "modalpartikeln"
     },
     "a2": {
       "de": "<r>Das gefällt mir</r>. Wir sollten uns außerdem angewöhnen, den anderen erst ausreden zu lassen und nachzufragen, bevor man etwas hinterfragt oder kritisiert.",
       "en": "<r>I like that</r>. We should also get into the habit of letting the other person finish first and asking follow-up questions before questioning or criticizing something.",
       "uk": "<r>Мені це подобається</r>. Ще нам варто привчити себе спершу давати іншому договорити й перепитувати, перш ніж щось піддавати сумніву чи критикувати.",
-      "ru": "<r>Мне это нравится</r>. Ещё нам стоит приучить себя сначала давать другому договорить и переспрашивать, прежде чем что-то подвергать сомнению или критиковать."
+      "ru": "<r>Мне это нравится</r>. Ещё нам стоит приучить себя сначала давать другому договорить и переспрашивать, прежде чем что-то подвергать сомнению или критиковать.",
+      "gram": ""
     },
     "q3": {
       "de": "Guter Punkt. Und beim Schreiben könnten wir versuchen, Dinge höflicher zu formulieren, statt direkt zu sagen, was uns stört – also nicht um den heißen Brei reden, aber eben auch nicht zu schroff.",
       "en": "Good point. And when writing, we could try to phrase things more politely instead of saying directly what bothers us – so not beating around the bush, but also not too blunt.",
       "uk": "Слушна думка. А під час написання ми могли б намагатися формулювати речі ввічливіше, замість того щоб прямо казати, що нас турбує — тобто не ходити навколо та навколо, але й не занадто різко.",
-      "ru": "Дельная мысль. А при написании мы могли бы стараться формулировать вещи вежливее, вместо того чтобы прямо говорить, что нас беспокоит — то есть не ходить вокруг да около, но и не слишком резко."
+      "ru": "Дельная мысль. А при написании мы могли бы стараться формулировать вещи вежливее, вместо того чтобы прямо говорить, что нас беспокоит — то есть не ходить вокруг да около, но и не слишком резко.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Da stimme ich dir zu</r>. Wie sollten wir das denn im Team kommunizieren, ohne dass es wie eine Belehrung wirkt?",
       "en": "<r>I agree with you on that</r>. How should we actually communicate that to the team without it sounding like a lecture?",
       "uk": "<r>Тут я з тобою згоден</r>. Як нам це власне донести до команди, щоб це не звучало як повчання?",
-      "ru": "<r>Тут я с тобой согласен</r>. Как нам это, собственно, донести до команды, чтобы это не звучало как нравоучение?"
+      "ru": "<r>Тут я с тобой согласен</r>. Как нам это, собственно, донести до команды, чтобы это не звучало как нравоучение?",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Gut, dann fassen wir zusammen</r>: Wir vereinbaren, heikle Themen persönlich zu klären, den anderen ausreden zu lassen und Nachrichten höflicher zu formulieren. Das stellen wir kurz beim nächsten Meeting vor.",
       "en": "<r>Alright, let's summarize</r>: we'll agree to clarify sensitive topics in person, let others finish speaking, and phrase messages more politely. We'll present that briefly at the next meeting.",
       "uk": "<r>Гаразд, тоді підсумуємо</r>: ми домовляємося з'ясовувати делікатні теми особисто, давати іншому договорити та формулювати повідомлення ввічливіше. Це коротко представимо на наступній нараді.",
-      "ru": "<r>Хорошо, тогда подведём итог</r>: мы договариваемся прояснять деликатные темы лично, давать другому договорить и формулировать сообщения вежливее. Это коротко представим на следующем собрании."
+      "ru": "<r>Хорошо, тогда подведём итог</r>: мы договариваемся прояснять деликатные темы лично, давать другому договорить и формулировать сообщения вежливее. Это коротко представим на следующем собрании.",
+      "gram": ""
     },
     "a4": {
       "de": "Genau, so machen wir es. Ich fasse die Punkte kurz zusammen, und du sprichst das beim Meeting an.",
       "en": "Exactly, that's what we'll do. I'll summarize the points briefly, and you bring it up at the meeting.",
       "uk": "Саме так, так і зробимо. Я коротко підсумую пункти, а ти піднімеш це питання на нараді.",
-      "ru": "Именно так, так и сделаем. Я коротко подведу итог пунктов, а ты поднимешь это на собрании."
+      "ru": "Именно так, так и сделаем. Я коротко подведу итог пунктов, а ты поднимешь это на собрании.",
+      "gram": ""
     },
     "q5": {
       "de": "Denkst du, das reicht, um die Stimmung im Team wieder zu verbessern?",
       "en": "Do you think that's enough to improve the mood in the team again?",
       "uk": "Як гадаєш, цього достатньо, щоб знову покращити атмосферу в команді?",
-      "ru": "Как думаешь, этого достаточно, чтобы снова улучшить атмосферу в команде?"
+      "ru": "Как думаешь, этого достаточно, чтобы снова улучшить атмосферу в команде?",
+      "gram": ""
     },
     "a5": {
       "de": "Das wird <g>schon</g> klappen, wenn alle ein bisschen aufmerksamer mit dem Ton umgehen. Die Gesprächsatmosphäre wird sich sicher verbessern.",
       "en": "It'll work out <g>just fine</g> if everyone pays a bit more attention to their tone. The conversational atmosphere will definitely improve.",
       "uk": "Усе <g>обов'язково</g> вийде, якщо всі трохи уважніше стежитимуть за тоном. Атмосфера спілкування точно покращиться.",
-      "ru": "Всё <g>обязательно</g> получится, если все будут немного внимательнее к тону. Атмосфера общения точно улучшится."
-    },
-    "gram": "modalpartikeln"
+      "ru": "Всё <g>обязательно</g> получится, если все будут немного внимательнее к тону. Атмосфера общения точно улучшится.",
+      "gram": "modalpartikeln"
+    }
   },
   {
     "id": "dlg_104",
@@ -18523,75 +19251,86 @@ var DIALOGE = [
       "de": "Julia, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Ich muss demnächst ein Gespräch mit Tom führen, weil er in letzter Zeit mehrmals wichtige Fristen verpasst hat und die Übergaben unvollständig waren.",
       "en": "Julia, do you have a moment? <r>We should talk about a problem</r>: I need to have a conversation with Tom soon, because he's missed several important deadlines recently and the handovers were incomplete.",
       "uk": "Юліє, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: скоро мені треба провести розмову з Томом, бо він останнім часом кілька разів пропустив важливі дедлайни, а передачі були неповними.",
-      "ru": "Юлия, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: скоро мне нужно провести разговор с Томом, потому что он в последнее время несколько раз пропустил важные сроки, а передачи были неполными."
+      "ru": "Юлия, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: скоро мне нужно провести разговор с Томом, потому что он в последнее время несколько раз пропустил важные сроки, а передачи были неполными.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch schon mitbekommen. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um seine Unzuverlässigkeit bei Projektübergaben? <r>Was könntest du in dieser Situation machen</r>?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so it's mainly about his unreliability with project handovers? <r>What could you do in this situation</r>?",
       "uk": "Я теж це помітила. <r>Я правильно тебе зрозуміла</r>: тобто йдеться передусім про його ненадійність при передачі проєктів? <r>Що ти міг би зробити в цій ситуації</r>?",
-      "ru": "Я тоже это заметила. <r>Я правильно тебя поняла</r>: то есть речь прежде всего о его ненадёжности при передаче проектов? <r>Что ты мог бы сделать в этой ситуации</r>?"
+      "ru": "Я тоже это заметила. <r>Я правильно тебя поняла</r>: то есть речь прежде всего о его ненадёжности при передаче проектов? <r>Что ты мог бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Das Problem ist, dass sich das Team mittlerweile nicht mehr richtig auf ihn verlassen kann, und das macht mir schon Sorgen wegen der Auswirkungen auf die anderen Projekte.",
       "en": "Exactly. The problem is that the team can no longer really rely on him, and that already worries me because of the impact on the other projects.",
       "uk": "Саме так. Проблема в тому, що команда більше не може по-справжньому на нього покластися, і це вже мене турбує через вплив на інші проєкти.",
-      "ru": "Именно. Проблема в том, что команда больше не может по-настоящему на него положиться, и это уже меня беспокоит из-за влияния на другие проекты."
+      "ru": "Именно. Проблема в том, что команда больше не может по-настоящему на него положиться, и это уже меня беспокоит из-за влияния на другие проекты.",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Das kann ich nachvollziehen</r>. Wichtig ist aber, dass du das Gespräch sachlich führst und ihn nicht vor anderen bloßstellst. <r>Ich hätte einen Vorschlag</r>: Formuliere lieber Ich-Botschaften, also zum Beispiel „Ich habe wahrgenommen, dass…“ statt „Du machst immer…“.",
       "en": "<r>I can understand that</r>. But it's important that you handle the conversation objectively and don't embarrass him in front of others. <r>I'd have a suggestion</r>: use I-statements instead, for example „I've noticed that…“ rather than „You always…“.",
       "uk": "<r>Я це розумію</r>. Але важливо, щоб ти вів розмову об'єктивно й не принижував його перед іншими. <r>У мене була б пропозиція</r>: краще формулюй Я-повідомлення, наприклад, «Я помітив, що…» замість «Ти завжди…».",
-      "ru": "<r>Я это понимаю</r>. Но важно, чтобы ты вёл разговор объективно и не унижал его перед другими. <r>У меня было бы предложение</r>: лучше формулируй Я-высказывания, например, «Я заметил, что…» вместо «Ты всегда…»."
+      "ru": "<r>Я это понимаю</r>. Но важно, чтобы ты вёл разговор объективно и не унижал его перед другими. <r>У меня было бы предложение</r>: лучше формулируй Я-высказывания, например, «Я заметил, что…» вместо «Ты всегда…».",
+      "gram": ""
     },
     "q2": {
       "de": "Guter Punkt. Und ich sollte wahrscheinlich auch versuchen, seine Perspektive einzunehmen – vielleicht steckt ja ein anderes Problem dahinter. <r>Was hältst du davon</r>, wenn ich ihn zuerst einfach frage, wie es ihm gerade geht?",
       "en": "Good point. And I should probably also try to see it from his perspective – maybe there's another issue behind it. <r>What do you think</r> if I just start by asking how he's doing?",
       "uk": "Слушна думка. І, мабуть, мені варто спробувати подивитися на це з його перспективи — можливо, за цим стоїть щось інше. <r>Як ти на це дивишся</r>, якщо я спершу просто запитаю, як у нього справи?",
-      "ru": "Дельная мысль. И, наверное, мне стоит попробовать посмотреть на это с его точки зрения — возможно, за этим стоит что-то другое. <r>Как ты на это смотришь</r>, если я сначала просто спрошу, как у него дела?"
+      "ru": "Дельная мысль. И, наверное, мне стоит попробовать посмотреть на это с его точки зрения — возможно, за этим стоит что-то другое. <r>Как ты на это смотришь</r>, если я сначала просто спрошу, как у него дела?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Das gefällt mir</r>. So zeigst du gleich, dass es dir nicht nur um Kritik geht. Danach könntest du konkret ansprechen, welche Fristen betroffen waren und welche Auswirkungen das hatte.",
       "en": "<r>I like that</r>. That way you immediately show that it's not only about criticism. After that, you could specifically address which deadlines were affected and what impact that had.",
       "uk": "<r>Мені це подобається</r>. Так ти одразу покажеш, що йдеться не лише про критику. Після цього ти міг би конкретно порушити, які дедлайни постраждали і які це мало наслідки.",
-      "ru": "<r>Мне это нравится</r>. Так ты сразу покажешь, что дело не только в критике. После этого ты мог бы конкретно обозначить, какие сроки пострадали и какие это имело последствия."
+      "ru": "<r>Мне это нравится</r>. Так ты сразу покажешь, что дело не только в критике. После этого ты мог бы конкретно обозначить, какие сроки пострадали и какие это имело последствия.",
+      "gram": ""
     },
     "q3": {
       "de": "Und am Ende sollten wir wahrscheinlich gemeinsam nach Lösungen suchen, oder? Zum Beispiel mehr Transparenz bei der Kalkulation der Fristen, damit klar ist, wie viel Zeit realistisch nötig ist.",
       "en": "And in the end we should probably look for solutions together, right? For example, more transparency in calculating deadlines, so it's clear how much time is realistically needed.",
       "uk": "І, напевно, наприкінці нам варто разом пошукати рішення? Наприклад, більше прозорості в розрахунку дедлайнів, щоб було зрозуміло, скільки часу реально потрібно.",
-      "ru": "И, наверное, в конце нам стоит вместе поискать решения? Например, больше прозрачности в расчёте сроков, чтобы было понятно, сколько времени реально нужно."
+      "ru": "И, наверное, в конце нам стоит вместе поискать решения? Например, больше прозрачности в расчёте сроков, чтобы было понятно, сколько времени реально нужно.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Ihr könntet auch vereinbaren, dass er bei Problemen frühzeitig Bescheid gibt, statt die Frist einfach verstreichen zu lassen. Das würde Konflikten in Zukunft vorbeugen.",
       "en": "<r>I completely agree with you</r>. You could also agree that he lets you know early if there's a problem, instead of just letting the deadline pass. That would help prevent conflicts in the future.",
       "uk": "<r>Тут я цілком з тобою згодна</r>. Ви також могли б домовитися, що він завчасно попереджатиме про проблеми, замість того щоб просто дати дедлайну спливти. Це допомогло б запобігти конфліктам у майбутньому.",
-      "ru": "<r>Тут я полностью с тобой согласна</r>. Вы также могли бы договориться, что он заранее предупредит о проблемах, вместо того чтобы просто дать сроку пройти. Это помогло бы предотвратить конфликты в будущем."
+      "ru": "<r>Тут я полностью с тобой согласна</r>. Вы также могли бы договориться, что он заранее предупредит о проблемах, вместо того чтобы просто дать сроку пройти. Это помогло бы предотвратить конфликты в будущем.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Gut, dann fasse ich zusammen</r>: Ich frage zuerst nach seiner Situation, spreche die Fristen sachlich mit Ich-Botschaften an und schlage mehr Transparenz sowie frühzeitige Rückmeldungen als Lösung vor.",
       "en": "<r>Alright, let me summarize</r>: I'll first ask about his situation, address the deadlines objectively using I-statements, and suggest more transparency plus early feedback as a solution.",
       "uk": "<r>Гаразд, тоді підсумую</r>: спершу я запитаю про його ситуацію, об'єктивно порушу питання дедлайнів через Я-повідомлення й запропоную більше прозорості та завчасний зворотний зв'язок як рішення.",
-      "ru": "<r>Хорошо, тогда подведу итог</r>: сначала я спрошу о его ситуации, объективно подниму вопрос сроков через Я-высказывания и предложу больше прозрачности и раннюю обратную связь как решение."
+      "ru": "<r>Хорошо, тогда подведу итог</r>: сначала я спрошу о его ситуации, объективно подниму вопрос сроков через Я-высказывания и предложу больше прозрачности и раннюю обратную связь как решение.",
+      "gram": ""
     },
     "a4": {
       "de": "Genau, so machst du es am besten. Wenn du willst, kann ich vorher noch einmal mit dir üben, wie du die Sätze am besten formulierst.",
       "en": "Exactly, that's the best way to do it. If you want, I can practice the wording with you beforehand.",
       "uk": "Саме так, це найкращий варіант. Якщо хочеш, я можу заздалегідь потренувати з тобою формулювання.",
-      "ru": "Именно так, это лучший вариант. Если хочешь, я могу заранее потренировать с тобой формулировки."
+      "ru": "Именно так, это лучший вариант. Если хочешь, я могу заранее потренировать с тобой формулировки.",
+      "gram": ""
     },
     "q5": {
       "de": "Das wäre super. Und was mache ich, wenn er das Problem einfach abstreitet?",
       "en": "That would be great. And what do I do if he simply denies the problem?",
       "uk": "Це було б чудово. А що робити, якщо він просто заперечуватиме проблему?",
-      "ru": "Это было бы здорово. А что делать, если он просто будет отрицать проблему?"
+      "ru": "Это было бы здорово. А что делать, если он просто будет отрицать проблему?",
+      "gram": ""
     },
     "a5": {
       "de": "Dann bleib ruhig und sachlich und nenne konkrete Beispiele – so lässt sich schwer widersprechen. Am Ende zählt vor allem, dass ihr gemeinsam eine Lösung findet.",
       "en": "Then stay calm and factual and give concrete examples – that's hard to argue with. In the end, what matters most is that you find a solution together.",
       "uk": "Тоді залишайся спокійним та об'єктивним і наводь конкретні приклади — це важко заперечити. Зрештою, найважливіше — щоб ви разом знайшли рішення.",
-      "ru": "Тогда оставайся спокойным и объективным и приводи конкретные примеры — это трудно оспорить. В конце концов, самое важное — чтобы вы вместе нашли решение."
-    },
-    "gram": ""
+      "ru": "Тогда оставайся спокойным и объективным и приводи конкретные примеры — это трудно оспорить. В конце концов, самое важное — чтобы вы вместе нашли решение.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_105",
@@ -18609,75 +19348,86 @@ var DIALOGE = [
       "de": "Alex, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Die Geschäftsführung möchte mehr automatisierte Prozesse und KI-gestützte Tools einführen, aber im Team gibt es einige Bedenken.",
       "en": "Alex, do you have a moment? <r>We should talk about a problem</r>: management wants to introduce more automated processes and AI-supported tools, but there are some concerns in the team.",
       "uk": "Алексе, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: керівництво хоче впроваджувати більше автоматизованих процесів та інструментів на основі ШІ, але в команді є певні побоювання.",
-      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: руководство хочет внедрять больше автоматизированных процессов и инструментов на основе ИИ, но в команде есть определённые опасения."
+      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: руководство хочет внедрять больше автоматизированных процессов и инструментов на основе ИИ, но в команде есть определённые опасения.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch gehört. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um Unsicherheit gegenüber der Automatisierung? <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "I've heard that too. <r>Did I understand you correctly</r>: so it's mainly about uncertainty regarding automation? <r>What could we do in this situation</r>?",
       "uk": "Я теж це чув. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про невпевненість щодо автоматизації? <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Я тоже это слышал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о неуверенности насчёт автоматизации? <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Я тоже это слышал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о неуверенности насчёт автоматизации? <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Manche haben Angst, dass die neu <g>eingeführten</g> Tools ihre Aufgaben komplett übernehmen und Arbeitsplätze wegfallen könnten.",
       "en": "Exactly. Some people are worried that the newly <g>introduced</g> tools will completely take over their tasks and that jobs could disappear.",
       "uk": "Саме так. Дехто боїться, що нещодавно <g>впроваджені</g> інструменти повністю замінять їхні завдання і робочі місця можуть зникнути.",
-      "ru": "Именно. Некоторые боятся, что недавно <g>внедрённые</g> инструменты полностью заменят их задачи и рабочие места могут исчезнуть."
+      "ru": "Именно. Некоторые боятся, что недавно <g>внедрённые</g> инструменты полностью заменят их задачи и рабочие места могут исчезнуть.",
+      "gram": "partizipien_als_adjektive"
     },
     "a1": {
       "de": "<r>Das kann ich nachvollziehen</r>. Wichtig wäre es, klar zu kommunizieren, dass die Automatisierung vor allem repetitive Aufgaben übernehmen soll, damit mehr Zeit für anspruchsvollere Arbeit bleibt.",
       "en": "<r>I can understand that</r>. It would be important to clearly communicate that automation is mainly meant to take over repetitive tasks, so there's more time for more demanding work.",
       "uk": "<r>Я це розумію</r>. Важливо було б чітко донести, що автоматизація насамперед має брати на себе повторювані завдання, щоб залишалося більше часу на складнішу роботу.",
-      "ru": "<r>Я это понимаю</r>. Было бы важно чётко донести, что автоматизация прежде всего должна брать на себя повторяющиеся задачи, чтобы оставалось больше времени на более сложную работу."
+      "ru": "<r>Я это понимаю</r>. Было бы важно чётко донести, что автоматизация прежде всего должна брать на себя повторяющиеся задачи, чтобы оставалось больше времени на более сложную работу.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten ein kleines Pilotprojekt starten, zum Beispiel mit der stark <g>wachsenden</g> Zahl an Anfragen im Kundenservice, und die Ergebnisse dann transparent zeigen. <r>Was hältst du davon</r>?",
       "en": "<r>I'd have a suggestion</r>: we could start a small pilot project, for example with the rapidly <g>growing</g> number of customer service requests, and then show the results transparently. <r>What do you think</r>?",
       "uk": "<r>У мене була б пропозиція</r>: ми могли б запустити невеликий пілотний проєкт, наприклад із швидко <g>зростаючою</g> кількістю запитів у службі підтримки клієнтів, а потім прозоро показати результати. <r>Як ти на це дивишся</r>?",
-      "ru": "<r>У меня было бы предложение</r>: мы могли бы запустить небольшой пилотный проект, например с быстро <g>растущим</g> количеством запросов в службе поддержки клиентов, а потом прозрачно показать результаты. <r>Как ты на это смотришь</r>?"
+      "ru": "<r>У меня было бы предложение</r>: мы могли бы запустить небольшой пилотный проект, например с быстро <g>растущим</g> количеством запросов в службе поддержки клиентов, а потом прозрачно показать результаты. <r>Как ты на это смотришь</r>?",
+      "gram": "partizipien_als_adjektive"
     },
     "a2": {
       "de": "<r>Das gefällt mir</r>. Wir sollten aber auch die Cybersicherheit im Blick behalten – etwa durch Verschlüsselung, regelmäßige Backups und Zwei-Faktor-Authentifizierung, damit keine Datenschutzprobleme entstehen.",
       "en": "<r>I like that</r>. But we should also keep cybersecurity in mind – for example through encryption, regular backups, and two-factor authentication, so that no data protection issues arise.",
       "uk": "<r>Мені це подобається</r>. Але нам також варто пам'ятати про кібербезпеку — наприклад, шифрування, регулярні резервні копії та двофакторну автентифікацію, щоб не виникло проблем із захистом даних.",
-      "ru": "<r>Мне это нравится</r>. Но нам также стоит помнить о кибербезопасности — например, шифрование, регулярные резервные копии и двухфакторная аутентификация, чтобы не возникло проблем с защитой данных."
+      "ru": "<r>Мне это нравится</r>. Но нам также стоит помнить о кибербезопасности — например, шифрование, регулярные резервные копии и двухфакторная аутентификация, чтобы не возникло проблем с защитой данных.",
+      "gram": ""
     },
     "q3": {
       "de": "Guter Punkt. Und die gut <g>dokumentierten</g> Ergebnisse aus dem Pilotprojekt könnten wir dann beim nächsten Meeting vorstellen, damit alle sehen, was sich wirklich verbessert.",
       "en": "Good point. And we could present the well <g>documented</g> results of the pilot project at the next meeting, so everyone can see what's actually improving.",
       "uk": "Слушна думка. А добре <g>задокументовані</g> результати пілотного проєкту ми могли б представити на наступній нараді, щоб усі бачили, що дійсно покращується.",
-      "ru": "Дельная мысль. А хорошо <g>задокументированные</g> результаты пилотного проекта мы могли бы представить на следующем собрании, чтобы все видели, что действительно улучшается."
+      "ru": "Дельная мысль. А хорошо <g>задокументированные</g> результаты пилотного проекта мы могли бы представить на следующем собрании, чтобы все видели, что действительно улучшается.",
+      "gram": "partizipien_als_adjektive"
     },
     "a3": {
       "de": "<r>Da stimme ich dir zu</r>. Außerdem sollten wir Schulungen anbieten, damit sich alle sicher im Umgang mit den neuen digitalen Tools fühlen.",
       "en": "<r>I agree with you on that</r>. We should also offer training so everyone feels confident using the new digital tools.",
       "uk": "<r>Тут я з тобою згоден</r>. Крім того, варто запропонувати навчання, щоб усі почувалися впевнено, працюючи з новими цифровими інструментами.",
-      "ru": "<r>Тут я с тобой согласен</r>. Кроме того, стоит предложить обучение, чтобы все чувствовали себя уверенно при работе с новыми цифровыми инструментами."
+      "ru": "<r>Тут я с тобой согласен</r>. Кроме того, стоит предложить обучение, чтобы все чувствовали себя уверенно при работе с новыми цифровыми инструментами.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Gut, dann fassen wir zusammen</r>: Wir starten ein Pilotprojekt im Kundenservice, achten auf Datenschutz und Cybersicherheit, dokumentieren die Ergebnisse und bieten passende Schulungen an.",
       "en": "<r>Alright, let's summarize</r>: we'll start a pilot project in customer service, pay attention to data protection and cybersecurity, document the results, and offer suitable training.",
       "uk": "<r>Гаразд, тоді підсумуємо</r>: ми запускаємо пілотний проєкт у службі підтримки клієнтів, дбаємо про захист даних і кібербезпеку, документуємо результати й пропонуємо відповідне навчання.",
-      "ru": "<r>Хорошо, тогда подведём итог</r>: мы запускаем пилотный проект в службе поддержки клиентов, заботимся о защите данных и кибербезопасности, документируем результаты и предлагаем подходящее обучение."
+      "ru": "<r>Хорошо, тогда подведём итог</r>: мы запускаем пилотный проект в службе поддержки клиентов, заботимся о защите данных и кибербезопасности, документируем результаты и предлагаем подходящее обучение.",
+      "gram": ""
     },
     "a4": {
       "de": "Genau, so machen wir es. Ich kümmere mich um die technische Seite, und du sprichst mit der Geschäftsführung wegen der Schulungen.",
       "en": "Exactly, that's what we'll do. I'll take care of the technical side, and you talk to management about the training.",
       "uk": "Саме так, так і зробимо. Я подбаю про технічну сторону, а ти поговориш із керівництвом щодо навчання.",
-      "ru": "Именно так, так и сделаем. Я позабочусь о технической стороне, а ты поговоришь с руководством насчёт обучения."
+      "ru": "Именно так, так и сделаем. Я позабочусь о технической стороне, а ты поговоришь с руководством насчёт обучения.",
+      "gram": ""
     },
     "q5": {
       "de": "Sollten wir das Team auch regelmäßig über den Fortschritt informieren?",
       "en": "Should we also keep the team regularly informed about the progress?",
       "uk": "Може, варто також регулярно інформувати команду про прогрес?",
-      "ru": "Может, стоит также регулярно информировать команду о прогрессе?"
+      "ru": "Может, стоит также регулярно информировать команду о прогрессе?",
+      "gram": ""
     },
     "a5": {
       "de": "Auf jeden Fall. So bleibt alles transparent, und die anfangs skeptischen Kolleginnen und Kollegen sehen, dass ihre Bedenken ernst genommen werden.",
       "en": "Definitely. That keeps everything transparent, and the colleagues who were initially skeptical will see that their concerns are being taken seriously.",
       "uk": "Обов'язково. Так усе залишатиметься прозорим, і спочатку скептично налаштовані колеги побачать, що їхні побоювання беруть до уваги.",
-      "ru": "Обязательно. Так всё останется прозрачным, и изначально скептически настроенные коллеги увидят, что их опасения принимают всерьёз."
-    },
-    "gram": "partizipien_als_adjektive"
+      "ru": "Обязательно. Так всё останется прозрачным, и изначально скептически настроенные коллеги увидят, что их опасения принимают всерьёз.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_106",
@@ -18695,75 +19445,86 @@ var DIALOGE = [
       "de": "Mark, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: David überlegt, sich selbstständig zu machen und ein eigenes Beratungsunternehmen mit internationalen Kunden aufzubauen, ist sich aber total unsicher.",
       "en": "Mark, do you have a moment? <r>We should talk about a problem</r>: David is thinking about going self-employed and building his own consulting business with international clients, but he's totally unsure.",
       "uk": "Марку, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: Давид розмірковує над тим, щоб відкрити власну консалтингову компанію з міжнародними клієнтами, але він зовсім не впевнений.",
-      "ru": "Марк, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: Давид размышляет о том, чтобы открыть собственную консалтинговую компанию с международными клиентами, но он совсем не уверен."
+      "ru": "Марк, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: Давид размышляет о том, чтобы открыть собственную консалтинговую компанию с международными клиентами, но он совсем не уверен.",
+      "gram": ""
     },
     "a": {
       "de": "Das hat er mir auch schon erzählt. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um die finanzielle Seite? <r>Was könnten wir ihm in dieser Situation raten</r>?",
       "en": "He's told me that too. <r>Did I understand you correctly</r>: so it's mainly about the financial side? <r>What could we advise him in this situation</r>?",
       "uk": "Він і мені про це розповідав. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про фінансовий бік? <r>Що ми могли б йому порадити в цій ситуації</r>?",
-      "ru": "Он и мне об этом рассказывал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о финансовой стороне? <r>Что мы могли бы ему посоветовать в этой ситуации</r>?"
+      "ru": "Он и мне об этом рассказывал. <r>Я правильно тебя понял</r>: то есть речь прежде всего о финансовой стороне? <r>Что мы могли бы ему посоветовать в этой ситуации</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Er fragt sich, ob er das finanziell überhaupt stemmen kann, wenn er den sicheren Job und den Kündigungsschutz aufgibt.",
       "en": "Exactly. He's wondering whether he can even afford it financially if he gives up his secure job and protection against dismissal.",
       "uk": "Саме так. Він переймається, чи потягне це фінансово, якщо відмовиться від стабільної роботи та захисту від звільнення.",
-      "ru": "Именно. Он переживает, потянет ли это финансово, если откажется от стабильной работы и защиты от увольнения."
+      "ru": "Именно. Он переживает, потянет ли это финансово, если откажется от стабильной работы и защиты от увольнения.",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Das kann ich nachvollziehen</r>. Er sollte sich vorher genau ansehen, wie es dann mit Krankenversicherung und Arbeitslosenversicherung aussieht – als Selbstständiger muss man sich ja meistens selbst darum kümmern.",
       "en": "<r>I can understand that</r>. He should take a close look beforehand at how health insurance and unemployment insurance would work – as a self-employed person, you usually have to sort that out yourself.",
       "uk": "<r>Я це розумію</r>. Йому варто заздалегідь детально розібратися, як тоді буде зі страхуванням здоров'я та на випадок безробіття — самозайнятому зазвичай доводиться дбати про це самому.",
-      "ru": "<r>Я это понимаю</r>. Ему стоит заранее подробно разобраться, как тогда будет со страхованием здоровья и на случай безработицы — самозанятому обычно приходится заботиться об этом самому."
+      "ru": "<r>Я это понимаю</r>. Ему стоит заранее подробно разобраться, как тогда будет со страхованием здоровья и на случай безработицы — самозанятому обычно приходится заботиться об этом самому.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Ich hätte einen Vorschlag</r>: Er könnte sich erst einmal einen Finanzpuffer für sechs bis zwölf Monate zurücklegen, bevor er kündigt. <r>Was hältst du davon</r>?",
       "en": "<r>I'd have a suggestion</r>: he could set aside a financial buffer for six to twelve months before quitting. <r>What do you think</r>?",
       "uk": "<r>У мене була б пропозиція</r>: перед звільненням він міг би відкласти фінансову подушку на шість-дванадцять місяців. <r>Як ти на це дивишся</r>?",
-      "ru": "<r>У меня было бы предложение</r>: перед увольнением он мог бы отложить финансовую подушку на шесть-двенадцать месяцев. <r>Как ты на это смотришь</r>?"
+      "ru": "<r>У меня было бы предложение</r>: перед увольнением он мог бы отложить финансовую подушку на шесть-двенадцать месяцев. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Das gefällt mir</r>. Außerdem sollte er sich überlegen, welchen Zielmarkt er überhaupt ansprechen will – gerade bei internationalen Kunden spielen ja auch Sprachbarrieren und kulturelle Unterschiede eine Rolle.",
       "en": "<r>I like that</r>. He should also think about which target market he actually wants to address – especially with international clients, language barriers and cultural differences play a role too.",
       "uk": "<r>Мені це подобається</r>. Йому також варто подумати, який цільовий ринок він взагалі хоче охопити — особливо з міжнародними клієнтами важливу роль відіграють мовні бар'єри й культурні відмінності.",
-      "ru": "<r>Мне это нравится</r>. Ему также стоит подумать, какой целевой рынок он вообще хочет охватить — особенно с международными клиентами важную роль играют языковые барьеры и культурные различия."
+      "ru": "<r>Мне это нравится</r>. Ему также стоит подумать, какой целевой рынок он вообще хочет охватить — особенно с международными клиентами важную роль играют языковые барьеры и культурные различия.",
+      "gram": ""
     },
     "q3": {
       "de": "Guter Punkt. Und er sollte sich auch mit dem Wettbewerb in seiner Branche beschäftigen, damit er weiß, wie er wettbewerbsfähig bleiben kann.",
       "en": "Good point. And he should also look at the competition in his industry, so he knows how to stay competitive.",
       "uk": "Слушна думка. І йому варто придивитися до конкуренції у своїй галузі, щоб знати, як залишатися конкурентоспроможним.",
-      "ru": "Дельная мысль. И ему стоит присмотреться к конкуренции в своей отрасли, чтобы знать, как оставаться конкурентоспособным."
+      "ru": "Дельная мысль. И ему стоит присмотреться к конкуренции в своей отрасли, чтобы знать, как оставаться конкурентоспособным.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Da stimme ich dir zu</r>. Vielleicht könnte er auch mit der Handelskammer sprechen – die beraten oft kostenlos zu solchen Fragen.",
       "en": "<r>I agree with you on that</r>. Maybe he could also talk to the chamber of commerce – they often offer free advice on such questions.",
       "uk": "<r>Тут я з тобою згоден</r>. Можливо, він міг би також поговорити з торговою палатою — вони часто безкоштовно консультують із таких питань.",
-      "ru": "<r>Тут я с тобой согласен</r>. Возможно, он мог бы также поговорить с торговой палатой — там часто бесплатно консультируют по таким вопросам."
+      "ru": "<r>Тут я с тобой согласен</r>. Возможно, он мог бы также поговорить с торговой палатой — там часто бесплатно консультируют по таким вопросам.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Gut, dann fassen wir zusammen</r>: Er sollte einen Finanzpuffer aufbauen, sich um Versicherungen kümmern, einen passenden Zielmarkt wählen und sich bei der Handelskammer beraten lassen.",
       "en": "<r>Alright, let's summarize</r>: he should build a financial buffer, sort out his insurance, choose a suitable target market, and get advice from the chamber of commerce.",
       "uk": "<r>Гаразд, тоді підсумуємо</r>: йому варто створити фінансову подушку, розібратися зі страхуванням, обрати відповідний цільовий ринок і проконсультуватися в торговій палаті.",
-      "ru": "<r>Хорошо, тогда подведём итог</r>: ему стоит создать финансовую подушку, разобраться со страхованием, выбрать подходящий целевой рынок и проконсультироваться в торговой палате."
+      "ru": "<r>Хорошо, тогда подведём итог</r>: ему стоит создать финансовую подушку, разобраться со страхованием, выбрать подходящий целевой рынок и проконсультироваться в торговой палате.",
+      "gram": ""
     },
     "a4": {
       "de": "Genau, das würde ich ihm auch so vorschlagen. Ich kann ihm gern die Kontaktdaten von der Handelskammer schicken.",
       "en": "Exactly, that's what I'd suggest to him too. I'm happy to send him the chamber of commerce's contact details.",
       "uk": "Саме так, я б порадив йому те саме. Я можу надіслати йому контакти торгової палати.",
-      "ru": "Именно так, я бы посоветовал ему то же самое. Я могу отправить ему контакты торговой палаты."
+      "ru": "Именно так, я бы посоветовал ему то же самое. Я могу отправить ему контакты торговой палаты.",
+      "gram": ""
     },
     "q5": {
       "de": "Das wäre super. Denkst du, wir sollten ihm auch von jemandem berichten, der das schon gemacht hat?",
       "en": "That would be great. Do you think we should also tell him about someone who's already done this?",
       "uk": "Це було б чудово. Як гадаєш, чи варто розповісти йому про когось, хто вже це зробив?",
-      "ru": "Это было бы здорово. Как думаешь, стоит ли рассказать ему о ком-то, кто уже это сделал?"
+      "ru": "Это было бы здорово. Как думаешь, стоит ли рассказать ему о ком-то, кто уже это сделал?",
+      "gram": ""
     },
     "a5": {
       "de": "Auf jeden Fall. Ein persönliches Gespräch mit jemandem, der bereits selbstständig ist, hilft meistens mehr als jede Checkliste.",
       "en": "Definitely. A personal conversation with someone who's already self-employed usually helps more than any checklist.",
       "uk": "Обов'язково. Особиста розмова з кимось, хто вже працює самостійно, зазвичай допомагає більше за будь-який чек-лист.",
-      "ru": "Обязательно. Личный разговор с кем-то, кто уже работает самостоятельно, обычно помогает больше любого чек-листа."
-    },
-    "gram": ""
+      "ru": "Обязательно. Личный разговор с кем-то, кто уже работает самостоятельно, обычно помогает больше любого чек-листа.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_107",
@@ -18781,75 +19542,86 @@ var DIALOGE = [
       "de": "Alex, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: <g>Aufgrund</g> des neuen Lieferkettengesetzes muss unser Unternehmen ab nächstem Jahr einen ausführlichen Nachhaltigkeitsbericht erstellen, und bisher hat sich bei uns niemand mit CSR-Themen beschäftigt.",
       "en": "Alex, do you have a moment? <r>We should talk about a problem</r>: <g>due to</g> the new supply chain due diligence act, our company has to produce a detailed sustainability report starting next year, and so far no one here has dealt with CSR topics.",
       "uk": "Алексе, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: <g>через</g> новий закон про ланцюги постачання наша компанія з наступного року має готувати детальний звіт зі сталого розвитку, а досі в нас ніхто не займався темами CSR.",
-      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: <g>из-за</g> нового закона о цепочках поставок наша компания с следующего года должна готовить подробный отчёт об устойчивом развитии, а до сих пор у нас никто не занимался темами CSR."
+      "ru": "Алекс, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: <g>из-за</g> нового закона о цепочках поставок наша компания с следующего года должна готовить подробный отчёт об устойчивом развитии, а до сих пор у нас никто не занимался темами CSR.",
+      "gram": "waehrend_genitiv_praeposition"
     },
     "a": {
       "de": "Das ist mir auch schon aufgefallen. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um fehlendes Fachwissen im Team? <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so it's mainly about a lack of expertise in the team? <r>What could we do in this situation</r>?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто йдеться передусім про брак фахових знань у команді? <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть речь прежде всего о нехватке экспертизы в команде? <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть речь прежде всего о нехватке экспертизы в команде? <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Und die Frist rückt näher – wir müssten den ersten Bericht <g>innerhalb</g> der nächsten sechs Monate vorbereiten.",
       "en": "Exactly. And the deadline is getting closer – we'd need to prepare the first report <g>within</g> the next six months.",
       "uk": "Саме так. І дедлайн наближається — перший звіт нам треба підготувати <g>протягом</g> наступних шести місяців.",
-      "ru": "Именно. И срок приближается — первый отчёт нам нужно подготовить <g>в течение</g> следующих шести месяцев."
+      "ru": "Именно. И срок приближается — первый отчёт нам нужно подготовить <g>в течение</g> следующих шести месяцев.",
+      "gram": "waehrend_genitiv_praeposition"
     },
     "a1": {
       "de": "<r>Das kann ich nachvollziehen</r>. Vielleicht sollten wir jemanden aus dem Team fragen, ob er oder sie sich auf das Thema Nachhaltigkeit spezialisieren möchte, statt komplett neue Leute einzustellen.",
       "en": "<r>I can understand that</r>. Maybe we should ask someone on the team whether they'd like to specialize in sustainability, instead of hiring completely new people.",
       "uk": "<r>Я це розумію</r>. Можливо, варто запитати когось із команди, чи не хотів би він чи вона спеціалізуватися на темі сталого розвитку, замість того щоб наймати абсолютно нових людей.",
-      "ru": "<r>Я это понимаю</r>. Возможно, стоит спросить кого-то из команды, не хотел бы он или она специализироваться на теме устойчивого развития, вместо того чтобы нанимать совершенно новых людей."
+      "ru": "<r>Я это понимаю</r>. Возможно, стоит спросить кого-то из команды, не хотел бы он или она специализироваться на теме устойчивого развития, вместо того чтобы нанимать совершенно новых людей.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten eine passende Fortbildung suchen und der Person dann auch neue Aufstiegsmöglichkeiten als CSR-Beauftragte oder CSR-Beauftragter anbieten. <r>Was hältst du davon</r>?",
       "en": "<r>I'd have a suggestion</r>: we could look for a suitable training course and then also offer that person new promotion prospects as a CSR officer. <r>What do you think</r>?",
       "uk": "<r>У мене була б пропозиція</r>: ми могли б знайти відповідне навчання і потім запропонувати цій людині нові можливості для кар'єрного зростання як CSR-фахівця. <r>Як ти на це дивишся</r>?",
-      "ru": "<r>У меня было бы предложение</r>: мы могли бы найти подходящее обучение и потом предложить этому человеку новые возможности карьерного роста в качестве CSR-специалиста. <r>Как ты на это смотришь</r>?"
+      "ru": "<r>У меня было бы предложение</r>: мы могли бы найти подходящее обучение и потом предложить этому человеку новые возможности карьерного роста в качестве CSR-специалиста. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Das gefällt mir</r>. Wir sollten außerdem prüfen, ob wir uns externe Unterstützung holen, zum Beispiel eine Beraterin oder einen Berater, die bzw. der uns beim ersten Bericht begleitet.",
       "en": "<r>I like that</r>. We should also check whether we should bring in external support, for example a consultant who can guide us through the first report.",
       "uk": "<r>Мені це подобається</r>. Нам також варто перевірити, чи не залучити зовнішню підтримку, наприклад консультанта, який супроводжуватиме нас у роботі над першим звітом.",
-      "ru": "<r>Мне это нравится</r>. Нам также стоит проверить, не привлечь ли внешнюю поддержку, например консультанта, который будет сопровождать нас при подготовке первого отчёта."
+      "ru": "<r>Мне это нравится</r>. Нам также стоит проверить, не привлечь ли внешнюю поддержку, например консультанта, который будет сопровождать нас при подготовке первого отчёта.",
+      "gram": ""
     },
     "q3": {
       "de": "Guter Punkt. Und <g>trotz</g> des engen Zeitplans sollten wir uns auch gleich um Themen wie Diversität und Barrierefreiheit kümmern, weil das auch Teil der Berichtspflicht ist.",
       "en": "Good point. And <g>despite</g> the tight schedule, we should also start dealing with topics like diversity and accessibility right away, since that's also part of the reporting obligation.",
       "uk": "Слушна думка. І <g>попри</g> щільний графік, нам варто одразу зайнятися й такими темами, як різноманіття та доступність, адже це теж частина обов'язку зі звітності.",
-      "ru": "Дельная мысль. И <g>несмотря на</g> плотный график, нам стоит сразу заняться и такими темами, как разнообразие и доступность, ведь это тоже часть обязанности по отчётности."
+      "ru": "Дельная мысль. И <g>несмотря на</g> плотный график, нам стоит сразу заняться и такими темами, как разнообразие и доступность, ведь это тоже часть обязанности по отчётности.",
+      "gram": "waehrend_genitiv_praeposition"
     },
     "a3": {
       "de": "<r>Da stimme ich dir zu</r>. Das könnte langfristig sogar zu einer ganz neuen Stelle im Unternehmen führen – gerade solche Berufe werden in Zukunft immer wichtiger.",
       "en": "<r>I agree with you on that</r>. That could even lead to a whole new position in the company in the long run – jobs like that are becoming increasingly important.",
       "uk": "<r>Тут я з тобою згоден</r>. Це навіть може згодом привести до появи цілком нової посади в компанії — такі професії стають дедалі важливішими.",
-      "ru": "<r>Тут я с тобой согласен</r>. Это даже может со временем привести к появлению совершенно новой должности в компании — такие профессии становятся всё важнее."
+      "ru": "<r>Тут я с тобой согласен</r>. Это даже может со временем привести к появлению совершенно новой должности в компании — такие профессии становятся всё важнее.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Gut, dann fassen wir zusammen</r>: Wir suchen jemanden aus dem Team für eine Fortbildung im Bereich Nachhaltigkeit, holen uns bei Bedarf externe Unterstützung und kümmern uns rechtzeitig um Diversität und Barrierefreiheit.",
       "en": "<r>Alright, let's summarize</r>: we'll look for someone on the team for training in sustainability, bring in external support if needed, and take care of diversity and accessibility in good time.",
       "uk": "<r>Гаразд, тоді підсумуємо</r>: ми шукаємо когось із команди для навчання зі сталого розвитку, за потреби залучаємо зовнішню підтримку і вчасно займаємося різноманіттям і доступністю.",
-      "ru": "<r>Хорошо, тогда подведём итог</r>: мы ищем кого-то из команды для обучения в области устойчивого развития, при необходимости привлекаем внешнюю поддержку и вовремя занимаемся разнообразием и доступностью."
+      "ru": "<r>Хорошо, тогда подведём итог</r>: мы ищем кого-то из команды для обучения в области устойчивого развития, при необходимости привлекаем внешнюю поддержку и вовремя занимаемся разнообразием и доступностью.",
+      "gram": ""
     },
     "a4": {
       "de": "Genau, so machen wir es. Ich frage im Team herum, wer Interesse an der Spezialisierung hätte.",
       "en": "Exactly, that's what we'll do. I'll ask around the team who'd be interested in specializing.",
       "uk": "Саме так, так і зробимо. Я запитаю в команді, хто зацікавлений у такій спеціалізації.",
-      "ru": "Именно так, так и сделаем. Я спрошу в команде, кто заинтересован в такой специализации."
+      "ru": "Именно так, так и сделаем. Я спрошу в команде, кто заинтересован в такой специализации.",
+      "gram": ""
     },
     "q5": {
       "de": "Denkst du, die Geschäftsführung wird das unterstützen?",
       "en": "Do you think management will support this?",
       "uk": "Як гадаєш, керівництво це підтримає?",
-      "ru": "Как думаешь, руководство это поддержит?"
+      "ru": "Как думаешь, руководство это поддержит?",
+      "gram": ""
     },
     "a5": {
       "de": "Bestimmt, vor allem, wenn wir zeigen, dass daraus langfristig auch neue Karrierechancen für das Team entstehen können.",
       "en": "Definitely, especially if we show that it could also create new career opportunities for the team in the long run.",
       "uk": "Точно, особливо якщо ми покажемо, що з цього також можуть виникнути нові кар'єрні можливості для команди.",
-      "ru": "Точно, особенно если мы покажем, что из этого также могут возникнуть новые карьерные возможности для команды."
-    },
-    "gram": "waehrend_genitiv_praeposition"
+      "ru": "Точно, особенно если мы покажем, что из этого также могут возникнуть новые карьерные возможности для команды.",
+      "gram": ""
+    }
   },
   {
     "id": "dlg_108",
@@ -18867,75 +19639,86 @@ var DIALOGE = [
       "de": "Anna, hast du kurz Zeit? <r>Wir sollten über ein Problem sprechen</r>: Das Unternehmen möchte ab nächstem Quartal auf agiles Arbeiten mit Scrum umstellen, aber einige Kolleginnen und Kollegen sind ziemlich unsicher.",
       "en": "Anna, do you have a moment? <r>We should talk about a problem</r>: starting next quarter, the company wants to switch to agile working with Scrum, but several colleagues are quite unsure about it.",
       "uk": "Анно, у тебе є хвилинка? <r>Нам варто обговорити одну проблему</r>: з наступного кварталу компанія хоче перейти на гнучку роботу за Scrum, але кілька колег доволі невпевнені щодо цього.",
-      "ru": "Анна, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: с следующего квартала компания хочет перейти на гибкую работу по Scrum, но несколько коллег довольно не уверены в этом."
+      "ru": "Анна, у тебя есть минутка? <r>Нам стоит обсудить одну проблему</r>: с следующего квартала компания хочет перейти на гибкую работу по Scrum, но несколько коллег довольно не уверены в этом.",
+      "gram": ""
     },
     "a": {
       "de": "Das habe ich auch gehört. <r>Habe ich dich richtig verstanden</r>: Es geht also vor allem um fehlende Erfahrung mit der neuen Arbeitsweise? <r>Was könnten wir in dieser Situation machen</r>?",
       "en": "I've heard that too. <r>Did I understand you correctly</r>: so it's mainly about a lack of experience with the new way of working? <r>What could we do in this situation</r>?",
       "uk": "Я теж це чула. <r>Я правильно тебе зрозуміла</r>: тобто йдеться передусім про брак досвіду з новим способом роботи? <r>Що ми могли б зробити в цій ситуації</r>?",
-      "ru": "Я тоже это слышала. <r>Я правильно тебя поняла</r>: то есть речь прежде всего о нехватке опыта с новым способом работы? <r>Что мы могли бы сделать в этой ситуации</r>?"
+      "ru": "Я тоже это слышала. <r>Я правильно тебя поняла</r>: то есть речь прежде всего о нехватке опыта с новым способом работы? <r>Что мы могли бы сделать в этой ситуации</r>?",
+      "gram": ""
     },
     "q1": {
       "de": "Genau. Viele haben das Gefühl, dass ihnen wichtige Zukunftskompetenzen fehlen – zum Beispiel Agilität, Verhandlungsgeschick oder der Umgang mit Datenanalyse.",
       "en": "Exactly. Many feel like they're missing important future skills – for example agility, negotiation skills, or working with data analysis.",
       "uk": "Саме так. Багатьом здається, що їм бракує важливих компетенцій майбутнього — наприклад, гнучкості, навичок ведення переговорів або роботи з аналізом даних.",
-      "ru": "Именно. Многим кажется, что им не хватает важных компетенций будущего — например, гибкости, навыков ведения переговоров или работы с анализом данных."
+      "ru": "Именно. Многим кажется, что им не хватает важных компетенций будущего — например, гибкости, навыков ведения переговоров или работы с анализом данных.",
+      "gram": ""
     },
     "a1": {
       "de": "<r>Das kann ich nachvollziehen</r>. Man lernt das ja nicht von heute auf morgen. Vielleicht sollten wir erst einmal herausfinden, welche Kompetenzen im Team schon vorhanden sind und wo genau die Lücken liegen.",
       "en": "<r>I can understand that</r>. You don't learn that overnight, after all. Maybe we should first find out what skills already exist in the team and where exactly the gaps are.",
       "uk": "<r>Я це розумію</r>. Це ж не вивчиш за один день. Можливо, спершу варто з'ясувати, які компетенції в команді вже є, а де саме прогалини.",
-      "ru": "<r>Я это понимаю</r>. Это ведь не выучишь за один день. Возможно, сначала стоит выяснить, какие компетенции в команде уже есть, а где именно пробелы."
+      "ru": "<r>Я это понимаю</r>. Это ведь не выучишь за один день. Возможно, сначала стоит выяснить, какие компетенции в команде уже есть, а где именно пробелы.",
+      "gram": ""
     },
     "q2": {
       "de": "<r>Ich hätte einen Vorschlag</r>: Wir könnten eine kurze Weiterbildung zu Scrum und Kanban anbieten, bevor wir richtig umstellen. <r>Was hältst du davon</r>?",
       "en": "<r>I'd have a suggestion</r>: we could offer a short training course on Scrum and Kanban before we actually switch over. <r>What do you think</r>?",
       "uk": "<r>У мене була б пропозиція</r>: ми могли б запропонувати коротке навчання зі Scrum і Kanban, перш ніж дійсно переходити на нову систему. <r>Як ти на це дивишся</r>?",
-      "ru": "<r>У меня было бы предложение</r>: мы могли бы предложить короткое обучение по Scrum и Kanban, прежде чем действительно переходить на новую систему. <r>Как ты на это смотришь</r>?"
+      "ru": "<r>У меня было бы предложение</r>: мы могли бы предложить короткое обучение по Scrum и Kanban, прежде чем действительно переходить на новую систему. <r>Как ты на это смотришь</r>?",
+      "gram": ""
     },
     "a2": {
       "de": "<r>Das gefällt mir</r>. Zusätzlich könnten wir erst mit einem kleinen Pilotteam einen Sprint testen, damit alle in der Praxis erproben können, wie agiles Arbeiten funktioniert.",
       "en": "<r>I like that</r>. In addition, we could first test a sprint with a small pilot team, so everyone can try out in practice how agile working actually works.",
       "uk": "<r>Мені це подобається</r>. Крім того, ми могли б спершу протестувати спринт із невеликою пілотною командою, щоб усі на практиці спробували, як насправді працює гнучкий підхід.",
-      "ru": "<r>Мне это нравится</r>. Кроме того, мы могли бы сначала протестировать спринт с небольшой пилотной командой, чтобы все на практике попробовали, как на самом деле работает гибкий подход."
+      "ru": "<r>Мне это нравится</r>. Кроме того, мы могли бы сначала протестировать спринт с небольшой пилотной командой, чтобы все на практике попробовали, как на самом деле работает гибкий подход.",
+      "gram": ""
     },
     "q3": {
       "de": "Guter Punkt. Und vielleicht könnte jemand mit Erfahrung, zum Beispiel aus einem Startup, das Team am Anfang begleiten und Fragen beantworten.",
       "en": "Good point. And maybe someone with experience, for example from a startup, could support the team at the start and answer questions.",
       "uk": "Слушна думка. І, можливо, хтось із досвідом, наприклад зі стартапу, міг би на початку супроводжувати команду й відповідати на запитання.",
-      "ru": "Дельная мысль. И, возможно, кто-то с опытом, например из стартапа, мог бы вначале сопровождать команду и отвечать на вопросы."
+      "ru": "Дельная мысль. И, возможно, кто-то с опытом, например из стартапа, мог бы вначале сопровождать команду и отвечать на вопросы.",
+      "gram": ""
     },
     "a3": {
       "de": "<r>Da stimme ich dir zu</r>. Das würde die Kolleginnen und Kollegen entlasten und den Kulturwandel hin zu flacheren Hierarchien sicher erleichtern.",
       "en": "<r>I agree with you on that</r>. That would take some of the pressure off colleagues and definitely make the cultural shift toward flatter hierarchies easier.",
       "uk": "<r>Тут я з тобою згодна</r>. Це зняло б частину напруги з колег і точно полегшило б культурні зміни в бік пласкіших ієрархій.",
-      "ru": "<r>Тут я с тобой согласна</r>. Это сняло бы часть напряжения с коллег и точно облегчило бы культурные изменения в сторону более плоских иерархий."
+      "ru": "<r>Тут я с тобой согласна</r>. Это сняло бы часть напряжения с коллег и точно облегчило бы культурные изменения в сторону более плоских иерархий.",
+      "gram": ""
     },
     "q4": {
       "de": "<r>Gut, dann fassen wir zusammen</r>: Wir ermitteln zuerst die Kompetenzlücken, bieten eine Weiterbildung zu Scrum und Kanban an, testen die neue Arbeitsweise mit einem Pilotteam und holen uns erfahrene Begleitung.",
       "en": "<r>Alright, let's summarize</r>: we'll first identify the skill gaps, offer training on Scrum and Kanban, test the new way of working with a pilot team, and get experienced support.",
       "uk": "<r>Гаразд, тоді підсумуємо</r>: спочатку визначаємо прогалини в компетенціях, пропонуємо навчання зі Scrum і Kanban, тестуємо новий спосіб роботи з пілотною командою і залучаємо досвідчений супровід.",
-      "ru": "<r>Хорошо, тогда подведём итог</r>: сначала определяем пробелы в компетенциях, предлагаем обучение по Scrum и Kanban, тестируем новый способ работы с пилотной командой и привлекаем опытное сопровождение."
+      "ru": "<r>Хорошо, тогда подведём итог</r>: сначала определяем пробелы в компетенциях, предлагаем обучение по Scrum и Kanban, тестируем новый способ работы с пилотной командой и привлекаем опытное сопровождение.",
+      "gram": ""
     },
     "a4": {
       "de": "Genau, so machen wir es. Ich frage mal in unserem Netzwerk nach, wer als Mentorin oder Mentor infrage käme.",
       "en": "Exactly, that's what we'll do. I'll ask around in our network who might work as a mentor.",
       "uk": "Саме так, так і зробимо. Я запитаю в нашій мережі контактів, хто міг би стати ментором.",
-      "ru": "Именно так, так и сделаем. Я спрошу в нашей сети контактов, кто мог бы стать наставником."
+      "ru": "Именно так, так и сделаем. Я спрошу в нашей сети контактов, кто мог бы стать наставником.",
+      "gram": ""
     },
     "q5": {
       "de": "Denkst du, das reicht, damit sich alle im Team sicherer fühlen?",
       "en": "Do you think that's enough to make everyone in the team feel more confident?",
       "uk": "Як гадаєш, цього достатньо, щоб уся команда почувалася впевненіше?",
-      "ru": "Как думаешь, этого достаточно, чтобы вся команда почувствовала себя увереннее?"
+      "ru": "Как думаешь, этого достаточно, чтобы вся команда почувствовала себя увереннее?",
+      "gram": ""
     },
     "a5": {
       "de": "Auf jeden Fall, vor allem wenn wir zeigen, dass Weiterbildung hier kontinuierlich möglich ist und man wirklich nie ausgelernt hat.",
       "en": "Definitely, especially if we show that continuous training is possible here and that you really never stop learning.",
       "uk": "Обов'язково, особливо якщо ми покажемо, що постійне навчання тут можливе і що вчитися насправді ніколи не пізно.",
-      "ru": "Обязательно, особенно если мы покажем, что постоянное обучение здесь возможно и что учиться на самом деле никогда не поздно."
-    },
-    "gram": ""
+      "ru": "Обязательно, особенно если мы покажем, что постоянное обучение здесь возможно и что учиться на самом деле никогда не поздно.",
+      "gram": ""
+    }
   }
 ];
 

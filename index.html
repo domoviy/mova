@@ -3955,8 +3955,10 @@ body{
 
     <!-- LERNPFAD -->
     <div id="view-lernpfad" class="view">
-      <!-- Smart Review: Daily Plan + Profile -->
-      <div id="sr-daily-plan"></div>
+      <!-- Smart Review: Daily Plan + Profile — прихований за замовчуванням
+           (debug-перемикач "🗓 Daily Plan" у кінці Debug-секції), видимість
+           контролює сама srRenderDailyPlan() через debugIsDailyPlanVisible(). -->
+      <div id="sr-daily-plan" style="display:none"></div>
       <div class="lp-header">
         <!-- Прогрес ВСЬОГО КУРСУ — верхня золота смужка "обрамлення"
              (відступ від краю через flex+gap на .lp-header, див. CSS),
@@ -4330,6 +4332,13 @@ body{
         </div>
       </div>
     </div>
+    <div class="srow">
+      <div class="srow-label"><label>🗓 Daily Plan</label><small>Картка "Продовжити навчання" (#sr-daily-plan) над лінією уроків — прихована за замовчуванням (дублює чіп "Продовжити" на поточному модулі й стрік у шапці). Лише для тестування.</small></div>
+      <label class="dbg-switch">
+        <input type="checkbox" id="debug-daily-plan-toggle" onchange="debugToggleDailyPlan(this.checked)">
+        <span class="dbg-switch-track"></span>
+      </label>
+    </div>
     </div>
     </div>
     </div><!-- /ГРУПА 4 -->
@@ -4378,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '658-5e49585';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6733,6 +6742,13 @@ function srRenderDailyPlan(){
   // користі.
   const el = document.getElementById('sr-daily-plan');
   if(!el) return;
+  // Приховано за замовчуванням (див. debugIsDailyPlanVisible нижче) —
+  // картка дублює те, що й так є на Lernpfad (чіп "Продовжити" на
+  // поточному модулі, стрік у шапці), тож у звичайному інтерфейсі лише
+  // займає місце. Лишаємо доступною через debug-перемикач для тестування;
+  // коли прихована — просто виходимо, не витрачаючи час на innerHTML.
+  if(!debugIsDailyPlanVisible()){ el.style.display = 'none'; return; }
+  el.style.display = '';
 
   const state  = srLoadState();
   const streak = state.streak || 0;
@@ -9166,6 +9182,19 @@ function debugToggleUnlockAll(checked){
   notify(checked ? '🔓 Усі уроки розблоковано (debug)' : '🔒 Розблокування вимкнено');
 }
 
+// ── DEBUG: показ картки "Daily Plan" (#sr-daily-plan) ────────────────
+// Прихована за замовчуванням (дублює чіп "Продовжити" на поточному
+// модулі й стрік у шапці — у звичайному інтерфейсі просто зайва) —
+// той самий підхід, що й debugIsUnlockAllActive вище.
+function debugIsDailyPlanVisible(){
+  try{ return localStorage.getItem('mova_debug_show_daily_plan') === '1'; }catch(e){ return false; }
+}
+function debugToggleDailyPlan(checked){
+  try{ localStorage.setItem('mova_debug_show_daily_plan', checked ? '1' : '0'); }catch(e){}
+  if(typeof srRenderDailyPlan === 'function') srRenderDailyPlan();
+  notify(checked ? '🗓 Daily Plan показано (debug)' : '🗓 Daily Plan приховано');
+}
+
 // ── Прихована секція "Технічне"/Debug: 5 тапів по версії застосунку ──
 // Debug-панель раніше була видима ВСІМ користувачам окремою секцією в
 // Settings, хоча призначена лише для розробника/тестування. Ховаємо її
@@ -10925,6 +10954,8 @@ function toggleDebugSection(headerEl){
   if(!isOpen){
     const unlockToggle = document.getElementById('debug-unlock-all-toggle');
     if(unlockToggle) unlockToggle.checked = debugIsUnlockAllActive();
+    const dailyPlanToggle = document.getElementById('debug-daily-plan-toggle');
+    if(dailyPlanToggle) dailyPlanToggle.checked = debugIsDailyPlanVisible();
     // Кнопки тем Mündliche Prüfung Teil 1 — так само перерендерюємо
     // щоразу при розгортанні секції (не лише при завантаженні сторінки),
     // бо STORY залежить від активного курсу і міг ще не бути завантажений
@@ -15757,16 +15788,28 @@ var _lfDlgHandlers = {
   },
 
   // 🔊-кнопка повтору звуку — той самий патерн, що й у Sprachbausteine/
-  // Vocab (getAudioText(unit) ще раз у _lfUnitPlay). Кнопку граматики
-  // (📖) прибрано з діалогу — тут вона зайва, є в Grammar Bonus.
+  // Vocab (getAudioText(unit) ще раз у _lfUnitPlay).
+  // 📖-кнопка граматики — ЗА РЕПЛІКОЮ, а не за всією карткою: q/a/q1/a1/...
+  // кожен може мати ВЛАСНЕ поле gram (раніше було одне спільне card.gram
+  // на всю "розмову" — не мало сенсу, бо <g>-розмітка насправді трапляється
+  // лише в КОНКРЕТНИХ репліках, а не завжди в обох одразу). Фолбек на
+  // card.gram — лише для курсів/карток старого формату, які ще не
+  // мігровані на поле в самій репліці.
   getSecondaryButtons: function(unit){
-    return [{
+    var buttons = [{
       icon: '🔊',
       onClick: function(){
         var items = _lfDlgHandlers.getAudioText(unit) || [];
         _lfUnitPlay(items, function(){});
       }
     }];
+    if(unit.kind !== 'dlg_task'){
+      var turn = unit.card[unit.field];
+      var gramSource = (turn && turn.gram) ? turn : unit.card;
+      var gramBtn = _lfGrammarButton(gramSource);
+      if(gramBtn) buttons.push(gramBtn);
+    }
+    return buttons;
   },
 
   // onSwipeUp/onSwipeDown свідомо ПРИБРАНО: SwipeManager для діалогу
