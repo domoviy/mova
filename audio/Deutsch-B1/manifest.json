@@ -16761,5 +16761,10 @@
   "Deutsch-B1/de/100/brief/brief_065_name_de_100": "b802d5bbf5+t",
   "Deutsch-B1/de/080/brief/brief_060_task_de_080": "3cb8cc32f6+t",
   "Deutsch-B1/de/080/brief/brief_060_ort_datum_de_080": "00dc6b1ff1+t",
-  "Deutsch-B1/de/080/brief/brief_060_anrede_de_080": "2c09a1bb83+t"
+  "Deutsch-B1/de/080/brief/brief_060_anrede_de_080": "2c09a1bb83+t",
+  "Deutsch-B1/de/080/brief/brief_060_einleitung_de_080": "d611dacfac+t",
+  "Deutsch-B1/de/080/brief/brief_060_punkt2_de_080": "47812448a1+t",
+  "Deutsch-B1/de/080/brief/brief_060_punkt3_de_080": "ab1758e071+t",
+  "Deutsch-B1/de/080/brief/brief_060_punkt4_de_080": "ece0664ea7+t",
+  "Deutsch-B1/de/080/brief/brief_060_schluss_de_080": "6978aa681e+t"
 }
