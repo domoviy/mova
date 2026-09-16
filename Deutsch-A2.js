@@ -3895,11 +3895,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Seit wann arbeiten Sie in dieser Firma?",
-      "en": "Since when have you been working at this company?",
-      "uk": "Відколи ви працюєте у цій фірмі?",
-      "ru": "С каких пор вы работаете в этой фирме?",
-      "gram": ""
+      "de": "<g>Seit wann</g> arbeiten Sie in dieser Firma?",
+      "en": "<g>Since when</g> have you been working at this company?",
+      "uk": "<g>Відколи</g> ви працюєте у цій фірмі?",
+      "ru": "<g>С каких пор</g> вы работаете в этой фирме?",
+      "gram": "temporale_praepositionen"
     },
     "a": {
       "de": "Ich arbeite erst seit <g>einer Woche</g> hier. Ich bin noch neu im Team.",
@@ -3915,11 +3915,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Duzen wir uns oder sollen wir uns siezen?",
-      "en": "Shall we use „du“ with each other, or should we use „Sie“?",
+      "de": "Duzen wir uns oder <g>sollen</g> wir uns <g>siezen</g>?",
+      "en": "Shall we use „du“ with each other, or <g>should</g> we <g>use</g> „Sie“?",
       "uk": "Ми говоримо на «ти» чи краще на «ви»?",
       "ru": "Мы на «ты» друг с другом или лучше на «вы»?",
-      "gram": ""
+      "gram": "modalverben"
     },
     "a": {
       "de": "Wir duzen uns hier im Team, das ist ganz normal.",
@@ -3942,11 +3942,11 @@ var DIALOGE = [
       "gram": "modalverben"
     },
     "a": {
-      "de": "Ja, natürlich. Ich zeige Ihnen gern den Weg.",
-      "en": "Yes, of course. I will gladly show you the way.",
-      "uk": "Так, звичайно. Я із задоволенням покажу вам дорогу.",
-      "ru": "Да, конечно. Я с удовольствием покажу вам дорогу.",
-      "gram": ""
+      "de": "Ja, natürlich. Ich zeige <g>Ihnen</g> gern <g>den Weg</g>.",
+      "en": "Yes, of course. I will gladly show <g>you</g> <g>the way</g>.",
+      "uk": "Так, звичайно. Я із задоволенням покажу <g>вам</g> <g>дорогу</g>.",
+      "ru": "Да, конечно. Я с удовольствием покажу <g>вам</g> <g>дорогу</g>.",
+      "gram": "dativ_akkusativ_verben"
     }
   },
   {
@@ -3962,11 +3962,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Meine alte Wohnung ist zu klein, deshalb suche ich ein größeres Zimmer.",
-      "en": "My old apartment is too small, that's why I am looking for a bigger room.",
-      "uk": "Моя стара квартира замала, тому я шукаю більшу кімнату.",
-      "ru": "Моя старая квартира слишком маленькая, поэтому я ищу комнату побольше.",
-      "gram": ""
+      "de": "Meine alte Wohnung ist zu klein, <g>deshalb suche</g> ich ein größeres Zimmer.",
+      "en": "My old apartment is too small, <g>that's why I am looking</g> for a bigger room.",
+      "uk": "Моя стара квартира замала, <g>тому я шукаю</g> більшу кімнату.",
+      "ru": "Моя старая квартира слишком маленькая, <g>поэтому я ищу</g> комнату побольше.",
+      "gram": "satz_mit_deshalb"
     }
   },
   {
@@ -3975,11 +3975,11 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_david",
     "q": {
-      "de": "Wo soll ich den Schrank hinstellen?",
-      "en": "Where should I put the cupboard?",
-      "uk": "Куди мені поставити шафу?",
-      "ru": "Куда мне поставить шкаф?",
-      "gram": ""
+      "de": "Wo <g>soll</g> ich den Schrank <g>hinstellen</g>?",
+      "en": "Where <g>should</g> I <g>put</g> the cupboard?",
+      "uk": "Куди <g>мені поставити</g> шафу?",
+      "ru": "Куда <g>мне поставить</g> шкаф?",
+      "gram": "modalverben"
     },
     "a": {
       "de": "Stell ihn bitte <g>neben das Fenster</g>, da ist genug Platz.",
@@ -4035,18 +4035,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_david",
     "q": {
-      "de": "Was machst du in deiner Freizeit am liebsten?",
-      "en": "What do you like to do most in your free time?",
-      "uk": "Що ти найбільше любиш робити у вільний час?",
-      "ru": "Что ты больше всего любишь делать в свободное время?",
-      "gram": ""
+      "de": "Was machst du in deiner Freizeit <g>am liebsten</g>?",
+      "en": "What do you like to do <g>most</g> in your free time?",
+      "uk": "Що ти <g>найбільше</g> любиш робити у вільний час?",
+      "ru": "Что ты <g>больше всего</g> любишь делать в свободное время?",
+      "gram": "superlativ"
     },
     "a": {
-      "de": "Ich spiele gern Fußball und treffe mich mit Freunden.",
-      "en": "I like to play football and meet up with friends.",
-      "uk": "Я люблю грати у футбол і зустрічатися з друзями.",
-      "ru": "Я люблю играть в футбол и встречаться с друзьями.",
-      "gram": ""
+      "de": "Ich spiele gern Fußball und <g>treffe mich mit</g> Freunden.",
+      "en": "I like to play football and <g>meet up with</g> friends.",
+      "uk": "Я люблю грати у футбол і <g>зустрічатися з</g> друзями.",
+      "ru": "Я люблю играть в футбол и <g>встречаться с</g> друзьями.",
+      "gram": "praepositionalverben"
     }
   },
   {
@@ -4095,11 +4095,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_david",
     "q": {
-      "de": "Warum kommst du heute später zur Arbeit?",
-      "en": "Why are you coming to work later today?",
-      "uk": "Чому ти сьогодні прийдеш на роботу пізніше?",
-      "ru": "Почему ты сегодня придёшь на работу позже?",
-      "gram": ""
+      "de": "Warum kommst du heute später <g>zur Arbeit</g>?",
+      "en": "Why are you coming <g>to work</g> later today?",
+      "uk": "Чому ти сьогодні прийдеш <g>на роботу</g> пізніше?",
+      "ru": "Почему ты сегодня придёшь <g>на работу</g> позже?",
+      "gram": "lokale_praepositionen"
     },
     "a": {
       "de": "Ich komme später, <g>weil</g> ich einen Arzttermin habe.",
@@ -4115,18 +4115,18 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Kann ich Ihnen helfen? Suchen Sie etwas Bestimmtes?",
-      "en": "Can I help you? Are you looking for something specific?",
-      "uk": "Чи можу я вам допомогти? Ви шукаєте щось конкретне?",
-      "ru": "Могу я вам помочь? Вы ищете что-то конкретное?",
-      "gram": ""
+      "de": "<g>Kann</g> ich Ihnen <g>helfen</g>? Suchen Sie etwas Bestimmtes?",
+      "en": "<g>Can</g> I <g>help</g> you? Are you looking for something specific?",
+      "uk": "Чи <g>можу</g> я вам <g>допомогти</g>? Ви шукаєте щось конкретне?",
+      "ru": "<g>Могу</g> я вам <g>помочь</g>? Вы ищете что-то конкретное?",
+      "gram": "modalverben"
     },
     "a": {
-      "de": "Ja, ich suche eine Hose in Größe 40, am liebsten in Blau.",
-      "en": "Yes, I am looking for trousers in size 40, preferably in blue.",
-      "uk": "Так, я шукаю штани розміру 40, бажано сині.",
-      "ru": "Да, я ищу брюки размера 40, желательно синие.",
-      "gram": ""
+      "de": "Ja, ich suche eine Hose in Größe 40, <g>am liebsten</g> in Blau.",
+      "en": "Yes, I am looking for trousers in size 40, <g>preferably</g> in blue.",
+      "uk": "Так, я шукаю штани розміру 40, <g>бажано</g> сині.",
+      "ru": "Да, я ищу брюки размера 40, <g>желательно</g> синие.",
+      "gram": "superlativ"
     }
   },
   {
@@ -4142,11 +4142,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ich glaube, Größe M passt mir am besten.",
-      "en": "I think size M fits me best.",
-      "uk": "Гадаю, розмір M пасує мені найкраще.",
-      "ru": "Думаю, размер M подходит мне лучше всего.",
-      "gram": ""
+      "de": "Ich glaube, Größe M passt mir <g>am besten</g>.",
+      "en": "I think size M fits me <g>best</g>.",
+      "uk": "Гадаю, розмір M пасує мені <g>найкраще</g>.",
+      "ru": "Думаю, размер M подходит мне <g>лучше всего</g>.",
+      "gram": "superlativ"
     }
   },
   {
@@ -4155,18 +4155,18 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wie gefällt Ihnen das Kleid?",
-      "en": "How do you like the dress?",
-      "uk": "Як вам ця сукня?",
-      "ru": "Как вам это платье?",
-      "gram": ""
+      "de": "Wie gefällt <g>Ihnen</g> das Kleid?",
+      "en": "How do <g>you</g> like the dress?",
+      "uk": "Як <g>вам</g> ця сукня?",
+      "ru": "Как <g>вам</g> это платье?",
+      "gram": "dativ_verben"
     },
     "a": {
-      "de": "Es gefällt mir gut, aber es ist mir ein bisschen zu eng.",
+      "de": "Es gefällt <g>mir</g> gut, aber es ist mir ein bisschen zu eng.",
       "en": "I like it, but it is a bit too tight for me.",
-      "uk": "Мені подобається, але вона трохи вузька для мене.",
-      "ru": "Мне нравится, но оно немного узковато для меня.",
-      "gram": ""
+      "uk": "<g>Мені</g> подобається, але вона трохи вузька для мене.",
+      "ru": "<g>Мне</g> нравится, но оно немного узковато для меня.",
+      "gram": "dativ_verben"
     }
   },
   {
@@ -4182,11 +4182,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Die Umkleidekabine ist gleich hier links neben der Kasse.",
-      "en": "The fitting room is right here on the left, next to the checkout.",
-      "uk": "Примірочна тут ліворуч, біля каси.",
-      "ru": "Примерочная здесь слева, рядом с кассой.",
-      "gram": ""
+      "de": "Die Umkleidekabine ist gleich hier links <g>neben der Kasse</g>.",
+      "en": "The fitting room is right here on the left, <g>next to the checkout</g>.",
+      "uk": "Примірочна тут ліворуч, <g>біля каси</g>.",
+      "ru": "Примерочная здесь слева, <g>рядом с кассой</g>.",
+      "gram": "wechselpraepositionen"
     }
   },
   {
@@ -4195,11 +4195,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_w_anna",
     "q": {
-      "de": "Wie kommst du normalerweise zur Arbeit?",
-      "en": "How do you normally get to work?",
-      "uk": "Як ти зазвичай добираєшся на роботу?",
-      "ru": "Как ты обычно добираешься до работы?",
-      "gram": ""
+      "de": "Wie kommst du normalerweise <g>zur Arbeit</g>?",
+      "en": "How do you normally get <g>to work</g>?",
+      "uk": "Як ти зазвичай добираєшся <g>на роботу</g>?",
+      "ru": "Как ты обычно добираешься <g>до работы</g>?",
+      "gram": "lokale_praepositionen"
     },
     "a": {
       "de": "Ich fahre meistens mit dem Fahrrad, das ist <g>schneller als</g> der Bus.",
@@ -4215,18 +4215,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_w_anna",
     "q": {
-      "de": "Fährt dieser Bus zum Hauptbahnhof?",
-      "en": "Does this bus go to the main station?",
-      "uk": "Цей автобус їде до центрального вокзалу?",
-      "ru": "Этот автобус едет до главного вокзала?",
-      "gram": ""
+      "de": "Fährt dieser Bus <g>zum Hauptbahnhof</g>?",
+      "en": "Does this bus go <g>to the main station</g>?",
+      "uk": "Цей автобус їде <g>до центрального вокзалу</g>?",
+      "ru": "Этот автобус едет <g>до главного вокзала</g>?",
+      "gram": "lokale_praepositionen"
     },
     "a": {
-      "de": "Ja, dieser Bus fährt direkt zum Hauptbahnhof, in circa zehn Minuten.",
-      "en": "Yes, this bus goes directly to the main station, in about ten minutes.",
-      "uk": "Так, цей автобус їде прямо до центрального вокзалу, приблизно за десять хвилин.",
-      "ru": "Да, этот автобус едет прямо до главного вокзала, примерно за десять минут.",
-      "gram": ""
+      "de": "Ja, dieser Bus fährt direkt <g>zum Hauptbahnhof</g>, in circa zehn Minuten.",
+      "en": "Yes, this bus goes directly <g>to the main station</g>, in about ten minutes.",
+      "uk": "Так, цей автобус їде прямо <g>до центрального вокзалу</g>, приблизно за десять хвилин.",
+      "ru": "Да, этот автобус едет прямо <g>до главного вокзала</g>, примерно за десять минут.",
+      "gram": "lokale_praepositionen"
     }
   },
   {
@@ -4262,11 +4262,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ja, es gibt einen Aufzug, deshalb ist die Station auch mit dem Rollstuhl gut erreichbar.",
-      "en": "Yes, there is a lift, so the station is also easily accessible by wheelchair.",
-      "uk": "Так, тут є ліфт, тому станція також добре доступна з інвалідним візком.",
-      "ru": "Да, здесь есть лифт, поэтому станция также хорошо доступна с инвалидной коляской.",
-      "gram": ""
+      "de": "Ja, es gibt einen Aufzug, <g>deshalb ist</g> die Station auch mit dem Rollstuhl gut erreichbar.",
+      "en": "Yes, there is a lift, <g>so</g> the station is also easily accessible by wheelchair.",
+      "uk": "Так, тут є ліфт, <g>тому</g> станція також добре доступна з інвалідним візком.",
+      "ru": "Да, здесь есть лифт, <g>поэтому</g> станция также хорошо доступна с инвалидной коляской.",
+      "gram": "satz_mit_deshalb"
     }
   },
   {
@@ -4295,11 +4295,11 @@ var DIALOGE = [
     "name_q": "de_m_mark",
     "name_a": "de_m_david",
     "q": {
-      "de": "Wann sind Sie nach Deutschland gekommen?",
-      "en": "When did you come to Germany?",
-      "uk": "Коли ви приїхали до Німеччини?",
-      "ru": "Когда вы приехали в Германию?",
-      "gram": ""
+      "de": "Wann sind Sie <g>nach Deutschland</g> gekommen?",
+      "en": "When did you come <g>to Germany</g>?",
+      "uk": "Коли ви приїхали <g>до Німеччини</g>?",
+      "ru": "Когда вы приехали <g>в Германию</g>?",
+      "gram": "lokale_praepositionen"
     },
     "a": {
       "de": "Ich bin <g>vor drei Jahren</g> nach Deutschland gekommen.",
@@ -4342,11 +4342,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ich fliege einmal im Jahr nach Hause, um meine Familie zu besuchen.",
-      "en": "I fly home once a year to visit my family.",
-      "uk": "Я раз на рік літаю додому, щоб відвідати свою родину.",
-      "ru": "Я раз в год летаю домой, чтобы навестить свою семью.",
-      "gram": ""
+      "de": "Ich fliege einmal im Jahr <g>nach Hause</g>, um meine Familie zu besuchen.",
+      "en": "I fly <g>home</g> once a year to visit my family.",
+      "uk": "Я раз на рік літаю <g>додому</g>, щоб відвідати свою родину.",
+      "ru": "Я раз в год летаю <g>домой</g>, чтобы навестить свою семью.",
+      "gram": "lokale_praepositionen"
     }
   },
   {
@@ -4375,18 +4375,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wie wird das Wetter am Samstag?",
-      "en": "What will the weather be like on Saturday?",
-      "uk": "Якою буде погода в суботу?",
-      "ru": "Какая погода будет в субботу?",
-      "gram": ""
+      "de": "Wie <g>wird</g> das Wetter am Samstag?",
+      "en": "What <g>will</g> the weather be like on Saturday?",
+      "uk": "Якою <g>буде</g> погода в суботу?",
+      "ru": "Какая погода <g>будет</g> в субботу?",
+      "gram": "verb_werden"
     },
     "a": {
-      "de": "Laut Wetterbericht wird es sonnig und warm.",
-      "en": "According to the weather forecast, it will be sunny and warm.",
-      "uk": "Згідно з прогнозом погоди, буде сонячно і тепло.",
-      "ru": "Согласно прогнозу погоды, будет солнечно и тепло.",
-      "gram": ""
+      "de": "Laut Wetterbericht <g>wird</g> es sonnig und warm.",
+      "en": "According to the weather forecast, it <g>will</g> be sunny and warm.",
+      "uk": "Згідно з прогнозом погоди, <g>буде</g> сонячно і тепло.",
+      "ru": "Согласно прогнозу погоды, <g>будет</g> солнечно и тепло.",
+      "gram": "verb_werden"
     }
   },
   {
@@ -4395,18 +4395,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wo wart ihr letztes Wochenende?",
-      "en": "Where were you last weekend?",
-      "uk": "Де ви були минулих вихідних?",
-      "ru": "Где вы были в прошлые выходные?",
-      "gram": ""
+      "de": "Wo <g>wart</g> ihr letztes Wochenende?",
+      "en": "Where <g>were</g> you last weekend?",
+      "uk": "Де ви <g>були</g> минулих вихідних?",
+      "ru": "Где вы <g>были</g> в прошлые выходные?",
+      "gram": "praeteritum"
     },
     "a": {
-      "de": "Wir waren im Park und haben dort ein Picknick gemacht.",
-      "en": "We were in the park and had a picnic there.",
-      "uk": "Ми були в парку і влаштували там пікнік.",
-      "ru": "Мы были в парке и устроили там пикник.",
-      "gram": ""
+      "de": "Wir waren im Park und <g>haben</g> dort ein Picknick <g>gemacht</g>.",
+      "en": "We were in the park and <g>had</g> a picnic there.",
+      "uk": "Ми були в парку і <g>влаштували</g> там пікнік.",
+      "ru": "Мы были в парке и <g>устроили</g> там пикник.",
+      "gram": "perfekt"
     }
   },
   {
@@ -4415,18 +4415,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Sollen wir für den Ausflug ein Hotel buchen?",
-      "en": "Should we book a hotel for the trip?",
-      "uk": "Чи варто нам забронювати готель для екскурсії?",
-      "ru": "Стоит ли нам забронировать отель для поездки?",
-      "gram": ""
+      "de": "<g>Sollen</g> wir für den Ausflug ein Hotel <g>buchen</g>?",
+      "en": "<g>Should</g> we <g>book</g> a hotel for the trip?",
+      "uk": "Чи <g>варто</g> нам <g>забронювати</g> готель для екскурсії?",
+      "ru": "<g>Стоит</g> ли нам <g>забронировать</g> отель для поездки?",
+      "gram": "modalverben"
     },
     "a": {
-      "de": "Nein, das ist nicht nötig, wir fahren nur für einen Tag.",
-      "en": "No, that's not necessary, we are only going for one day.",
-      "uk": "Ні, це не потрібно, ми їдемо лише на один день.",
-      "ru": "Нет, это не нужно, мы едем только на один день.",
-      "gram": ""
+      "de": "Nein, das ist nicht nötig, wir fahren nur <g>für einen Tag</g>.",
+      "en": "No, that's not necessary, we are only going <g>for one day</g>.",
+      "uk": "Ні, це не потрібно, ми їдемо лише <g>на один день</g>.",
+      "ru": "Нет, это не нужно, мы едем только <g>на один день</g>.",
+      "gram": "temporale_praepositionen"
     }
   },
   {
@@ -4435,11 +4435,11 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_david",
     "q": {
-      "de": "Entschuldigung, wie komme ich zum Brandenburger Tor?",
-      "en": "Excuse me, how do I get to the Brandenburg Gate?",
-      "uk": "Перепрошую, як мені дістатися до Бранденбурзьких воріт?",
-      "ru": "Извините, как мне добраться до Бранденбургских ворот?",
-      "gram": ""
+      "de": "Entschuldigung, wie komme ich <g>zum Brandenburger Tor</g>?",
+      "en": "Excuse me, how do I get <g>to the Brandenburg Gate</g>?",
+      "uk": "Перепрошую, як мені дістатися <g>до Бранденбурзьких воріт</g>?",
+      "ru": "Извините, как мне добраться <g>до Бранденбургских ворот</g>?",
+      "gram": "lokale_praepositionen"
     },
     "a": {
       "de": "Gehen Sie hier geradeaus und dann <g>an der Ampel</g> links.",
@@ -4455,11 +4455,11 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_david",
     "q": {
-      "de": "Ist es weit von hier bis zum Museum?",
-      "en": "Is it far from here to the museum?",
-      "uk": "Чи далеко звідси до музею?",
-      "ru": "Далеко отсюда до музея?",
-      "gram": ""
+      "de": "Ist es weit von hier bis <g>zum Museum</g>?",
+      "en": "Is it far from here <g>to the museum</g>?",
+      "uk": "Чи далеко звідси <g>до музею</g>?",
+      "ru": "Далеко отсюда <g>до музея</g>?",
+      "gram": "lokale_praepositionen"
     },
     "a": {
       "de": "Nein, es ist nicht weit, nur fünf Minuten zu Fuß.",
@@ -4475,11 +4475,11 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_david",
     "q": {
-      "de": "Wo ist hier in der Nähe eine Apotheke?",
-      "en": "Where is there a pharmacy nearby?",
-      "uk": "Де тут поблизу аптека?",
-      "ru": "Где здесь поблизости аптека?",
-      "gram": ""
+      "de": "Wo ist hier <g>in der Nähe</g> eine Apotheke?",
+      "en": "Where is there a pharmacy <g>nearby</g>?",
+      "uk": "Де тут <g>поблизу</g> аптека?",
+      "ru": "Где здесь <g>поблизости</g> аптека?",
+      "gram": "wechselpraepositionen"
     },
     "a": {
       "de": "Die nächste Apotheke ist gleich um die Ecke, <g>neben dem Supermarkt</g>.",
@@ -4495,18 +4495,18 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_david",
     "q": {
-      "de": "Welche U-Bahn fährt zum Alexanderplatz?",
-      "en": "Which subway goes to Alexanderplatz?",
-      "uk": "Яке метро їде до Александерплац?",
-      "ru": "Какое метро едет до Александерплац?",
-      "gram": ""
+      "de": "Welche U-Bahn fährt <g>zum Alexanderplatz</g>?",
+      "en": "Which subway goes <g>to Alexanderplatz</g>?",
+      "uk": "Яке метро їде <g>до Александерплац</g>?",
+      "ru": "Какое метро едет <g>до Александерплац</g>?",
+      "gram": "lokale_praepositionen"
     },
     "a": {
-      "de": "Sie müssen die Linie 2 nehmen, die fährt direkt dorthin.",
-      "en": "You have to take line 2, it goes directly there.",
+      "de": "Sie <g>müssen</g> die Linie 2 <g>nehmen</g>, die fährt direkt dorthin.",
+      "en": "You <g>have to</g> <g>take</g> line 2, it goes directly there.",
       "uk": "Вам потрібна лінія 2, вона їде прямо туди.",
       "ru": "Вам нужна линия 2, она едет прямо туда.",
-      "gram": ""
+      "gram": "modalverben"
     }
   },
   {
@@ -4515,18 +4515,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_david",
     "q": {
-      "de": "Wie war der erste Schultag deines Sohnes?",
-      "en": "How was your son's first day at school?",
+      "de": "Wie <g>war</g> der erste Schultag deines Sohnes?",
+      "en": "How <g>was</g> your son's first day at school?",
       "uk": "Як пройшов перший день у школі твого сина?",
       "ru": "Как прошёл первый день в школе у твоего сына?",
-      "gram": ""
+      "gram": "praeteritum"
     },
     "a": {
-      "de": "Er hat sich sehr gefreut, aber am Anfang war er auch ein bisschen nervös.",
+      "de": "Er <g>hat</g> sich sehr <g>gefreut</g>, aber am Anfang war er auch ein bisschen nervös.",
       "en": "He was very happy, but at the beginning he was also a bit nervous.",
       "uk": "Він дуже зрадів, але спочатку трохи нервував.",
       "ru": "Он очень обрадовался, но сначала немного нервничал.",
-      "gram": ""
+      "gram": "perfekt"
     }
   },
   {
@@ -4535,11 +4535,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_david",
     "q": {
-      "de": "Interessiert sich Ihre Tochter für Naturwissenschaften?",
-      "en": "Is your daughter interested in natural sciences?",
+      "de": "<g><b>Interessiert sich</b></g> Ihre Tochter <g>für</g> Naturwissenschaften?",
+      "en": "Is your daughter <g>interested in</g> natural sciences?",
       "uk": "Ваша донька цікавиться природничими науками?",
       "ru": "Ваша дочь интересуется естественными науками?",
-      "gram": ""
+      "gram": "praepositionalverben"
     },
     "a": {
       "de": "Ja, sie <g><b>interessiert sich sehr für</b></g> Biologie und Chemie.",
@@ -4575,18 +4575,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_david",
     "q": {
-      "de": "Wie war der Elternsprechtag?",
-      "en": "How was the parent-teacher conference?",
+      "de": "Wie <g>war</g> der Elternsprechtag?",
+      "en": "How <g>was</g> the parent-teacher conference?",
       "uk": "Як пройшли батьківські збори?",
       "ru": "Как прошло родительское собрание?",
-      "gram": ""
+      "gram": "praeteritum"
     },
     "a": {
-      "de": "Gut, die Lehrerin hat uns viel über die Fortschritte unseres Sohnes erzählt.",
-      "en": "Good, the teacher told us a lot about our son's progress.",
-      "uk": "Добре, вчителька багато розповіла нам про успіхи нашого сина.",
-      "ru": "Хорошо, учительница много рассказала нам об успехах нашего сына.",
-      "gram": ""
+      "de": "Gut, die Lehrerin <g>hat</g> uns viel über die Fortschritte unseres Sohnes <g>erzählt</g>.",
+      "en": "Good, the teacher <g>told</g> us a lot about our son's progress.",
+      "uk": "Добре, вчителька багато <g>розповіла</g> нам про успіхи нашого сина.",
+      "ru": "Хорошо, учительница много <g>рассказала</g> нам об успехах нашего сына.",
+      "gram": "perfekt"
     }
   },
   {
@@ -4595,11 +4595,11 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Warum streiten sich die Nachbarn schon wieder?",
-      "en": "Why are the neighbours arguing again?",
+      "de": "Warum <g><b>streiten sich</b></g> die Nachbarn schon wieder?",
+      "en": "Why <g><b>are</b></g> the neighbours <g><b>arguing</b></g> again?",
       "uk": "Чому сусіди знову сваряться?",
       "ru": "Почему соседи снова ссорятся?",
-      "gram": ""
+      "gram": "reflexivpronomen_akkusativ"
     },
     "a": {
       "de": "Sie <g><b>streiten sich</b></g> wegen des Lärms am Wochenende.",
@@ -4622,11 +4622,11 @@ var DIALOGE = [
       "gram": "hoeflichkeit_konjunktiv_a22"
     },
     "a": {
-      "de": "Natürlich, worum geht es?",
+      "de": "Natürlich, <g>worum</g> geht es?",
       "en": "Of course, what is it about?",
       "uk": "Звичайно, у чому справа?",
       "ru": "Конечно, в чём дело?",
-      "gram": ""
+      "gram": "praepositionalverben"
     }
   },
   {
@@ -4635,18 +4635,18 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wie hast du dich bei ihr entschuldigt?",
+      "de": "Wie <g>hast</g> du dich bei ihr <g>entschuldigt</g>?",
       "en": "How did you apologise to her?",
-      "uk": "Як ти перед нею вибачився?",
-      "ru": "Как ты перед ней извинился?",
-      "gram": ""
+      "uk": "Як ти перед нею <g>вибачився</g>?",
+      "ru": "Как ты перед ней <g>извинился</g>?",
+      "gram": "perfekt"
     },
     "a": {
-      "de": "Ich habe ihr eine ehrliche Entschuldigung geschrieben.",
-      "en": "I wrote her an honest apology.",
-      "uk": "Я написав їй щире вибачення.",
-      "ru": "Я написал ей честное извинение.",
-      "gram": ""
+      "de": "Ich habe <g>ihr</g> <g>eine ehrliche Entschuldigung</g> geschrieben.",
+      "en": "I wrote <g>her</g> <g>an honest apology</g>.",
+      "uk": "Я написав <g>їй</g> <g>щире вибачення</g>.",
+      "ru": "Я написал <g>ей</g> <g>честное извинение</g>.",
+      "gram": "dativ_akkusativ_verben"
     }
   },
   {
@@ -4655,18 +4655,18 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wie habt ihr den Konflikt gelöst?",
+      "de": "Wie <g>habt</g> ihr den Konflikt <g>gelöst</g>?",
       "en": "How did you resolve the conflict?",
-      "uk": "Як ви розвʼязали конфлікт?",
-      "ru": "Как вы разрешили конфликт?",
-      "gram": ""
+      "uk": "Як ви <g>розвʼязали</g> конфлікт?",
+      "ru": "Как вы <g>разрешили</g> конфликт?",
+      "gram": "perfekt"
     },
     "a": {
-      "de": "Wir haben uns endlich geeinigt und beide Seiten sind zufrieden.",
-      "en": "We finally agreed, and both sides are satisfied.",
-      "uk": "Ми нарешті домовилися, і обидві сторони задоволені.",
-      "ru": "Мы наконец договорились, и обе стороны довольны.",
-      "gram": ""
+      "de": "Wir <g>haben</g> uns endlich <g>geeinigt</g> und beide Seiten sind zufrieden.",
+      "en": "We finally <g>agreed</g>, and both sides are satisfied.",
+      "uk": "Ми нарешті <g>домовилися</g>, і обидві сторони задоволені.",
+      "ru": "Мы наконец <g>договорились</g>, и обе стороны довольны.",
+      "gram": "perfekt"
     }
   },
   {

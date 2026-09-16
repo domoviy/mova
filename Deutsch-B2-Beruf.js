@@ -12276,11 +12276,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Ich glaube, ich habe nicht die richtige Durchwahl. Ich suche Herrn / Frau …",
+      "de": "Ich glaube, ich habe <g>nicht</g> die richtige Durchwahl. Ich suche Herrn / Frau …",
       "en": "I think I have the wrong extension. I'm looking for Mr. / Ms. …",
       "uk": "Здається, у мене не той додатковий номер. Я шукаю пана / пані …",
       "ru": "Кажется, у меня не тот добавочный номер. Я ищу господина / госпожу …",
-      "gram": ""
+      "gram": "negation"
     },
     "a": {
       "de": "Kein Problem. Ich stelle Sie durch. Bitte bleiben Sie in der Leitung.",
@@ -12302,11 +12302,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Könnten Sie Frau … etwas ausrichten? Sie ist leider gerade nicht erreichbar.",
+      "de": "Könnten Sie Frau … etwas ausrichten? Sie ist leider gerade <g>nicht</g> erreichbar.",
       "en": "Could you pass a message to Ms. …? She is unfortunately not available right now.",
       "uk": "Чи могли б ви передати щось пані …? На жаль, вона зараз недоступна.",
       "ru": "Не могли бы вы передать кое-что госпоже …? К сожалению, она сейчас недоступна.",
-      "gram": ""
+      "gram": "negation"
     },
     "a": {
       "de": "Ja, selbstverständlich. Was soll ich ihr ausrichten?",
@@ -12328,11 +12328,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Ich bin mir nicht ganz sicher, ob ich Sie richtig verstanden habe. Könnten Sie das bitte wiederholen?",
+      "de": "Ich bin mir nicht ganz sicher, <g>ob</g> ich Sie richtig <g>verstanden habe</g>. Könnten Sie das bitte wiederholen?",
       "en": "I'm not quite sure I understood you correctly. Could you please repeat that?",
       "uk": "Я не зовсім впевнений, чи правильно я вас зрозумів. Не могли б ви повторити?",
       "ru": "Я не совсем уверен, правильно ли я вас понял. Не могли бы вы повторить?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
       "de": "Natürlich. Ich sagte: … Ist das jetzt verständlich?",
@@ -12354,11 +12354,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Melden Sie sich gerne wieder, wenn Sie weitere Auskünfte benötigen.",
+      "de": "Melden Sie sich gerne wieder, <g>wenn</g> Sie weitere Auskünfte <g>benötigen</g>.",
       "en": "Feel free to contact us again if you need further information.",
       "uk": "Звертайтеся знову, якщо вам знадобиться додаткова інформація.",
       "ru": "Обращайтесь снова, если вам понадобится дополнительная информация.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
       "de": "Vielen Dank, das werde ich tun. Auf Wiederhören!",
@@ -12432,11 +12432,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wir haben hier etwas ganz Besonderes. Es hat den Vorteil, dass …",
+      "de": "Wir haben hier <g>etwas</g> ganz <g>Besonderes</g>. Es hat den Vorteil, dass …",
       "en": "We have something very special here. It has the advantage that …",
       "uk": "У нас тут є щось особливе. Воно має ту перевагу, що …",
       "ru": "У нас здесь есть кое-что особенное. Оно имеет то преимущество, что …",
-      "gram": ""
+      "gram": "indefinitpronomen"
     },
     "a": {
       "de": "Das klingt interessant. Können Sie mir das genauer erklären?",
@@ -12458,11 +12458,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Ich kann Ihnen das gerne mal vorführen / demonstrieren. Sie dürfen es auch gerne ausprobieren.",
+      "de": "Ich kann Ihnen das gerne <g>mal</g> vorführen / demonstrieren. Sie dürfen es auch gerne ausprobieren.",
       "en": "I'd be happy to demonstrate it for you. You're also welcome to try it out.",
       "uk": "Я із задоволенням продемонструю вам це. Ви також можете спробувати.",
       "ru": "Я с удовольствием продемонстрирую вам это. Вы также можете попробовать.",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "a": {
       "de": "Oh, sehr gerne! Das würde mich sehr interessieren.",
@@ -12491,11 +12491,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Das ist beeindruckend. Gibt es das auch in anderen Ausführungen?",
+      "de": "Das ist beeindruckend. Gibt <g>es</g> das auch in anderen Ausführungen?",
       "en": "That's impressive. Is it also available in other versions?",
       "uk": "Це вражає. Чи є воно в інших варіантах виконання?",
       "ru": "Это впечатляет. Есть ли оно в других исполнениях?",
-      "gram": ""
+      "gram": "es_pronomen"
     }
   },
   {
@@ -12536,11 +12536,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wenn Sie möchten, kann ich Ihnen gerne Informationsmaterial zuschicken. Dürfen wir Sie auch über neue Produkte informieren?",
+      "de": "<g>Wenn</g> Sie <g>möchten</g>, kann ich Ihnen gerne Informationsmaterial zuschicken. Dürfen wir Sie auch über neue Produkte informieren?",
       "en": "If you'd like, I can send you some information material. May we also inform you about new products?",
       "uk": "Якщо бажаєте, я можу надіслати вам інформаційні матеріали. Чи можемо ми інформувати вас про нові продукти?",
       "ru": "Если хотите, я могу выслать вам информационные материалы. Можем ли мы информировать вас о новых продуктах?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
       "de": "Ja, das wäre sehr nett. Hier ist meine Visitenkarte.",
@@ -12589,18 +12589,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Also, wir haben die Herausforderung, dass die Lieferzeiten sich ständig verzögern. Das Hauptproblem sehe ich darin, dass der Lieferant nicht zuverlässig informiert.",
+      "de": "Also, wir haben die Herausforderung, dass die Lieferzeiten sich ständig verzögern. Das Hauptproblem sehe ich darin, <g>dass</g> der Lieferant nicht zuverlässig <g>informiert</g>.",
       "en": "So, we have the challenge that delivery times keep getting delayed. I see the main problem in the fact that the supplier doesn't inform us reliably.",
       "uk": "Отже, ми маємо таку проблему, що терміни доставки постійно затримуються. Головну проблему я бачу в тому, що постачальник не надає надійної інформації.",
       "ru": "Итак, у нас такая проблема, что сроки доставки постоянно задерживаются. Главную проблему я вижу в том, что поставщик не предоставляет надёжной информации.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
-      "de": "Habe ich dich richtig verstanden: Es geht also vor allem um die schlechte Kommunikation mit dem Lieferanten?",
+      "de": "Habe ich dich richtig verstanden: <g>Es</g> geht also vor allem um die schlechte Kommunikation mit dem Lieferanten?",
       "en": "Did I understand you correctly: it's mainly about the poor communication with the supplier?",
       "uk": "Я правильно тебе зрозумів: отже, йдеться передусім про погану комунікацію з постачальником?",
       "ru": "Я правильно тебя понял: значит, речь идёт прежде всего о плохой коммуникации с поставщиком?",
-      "gram": ""
+      "gram": "es_pronomen"
     },
     "q1": {
       "de": "Genau, das trifft es gut. Was denkst du, könnten wir dagegen unternehmen?",
@@ -12683,7 +12683,7 @@ var DIALOGE = [
       "en": "<g>It</g> would make sense if we tested that in the short term. An alternative would also be to increase stock levels.",
       "uk": "Було б доцільно, якби ми перевірили це в короткостроковій перспективі. Альтернативою було б також збільшити запаси на складі.",
       "ru": "Было бы целесообразно, если бы мы проверили это в краткосрочной перспективе. Альтернативой также было бы увеличить запасы на складе.",
-      "gram": ""
+      "gram": "es_pronomen"
     },
     "q2": {
       "de": "Was hältst du davon, beide Maßnahmen gleichzeitig umzusetzen? Wie siehst du das?",
@@ -12746,7 +12746,7 @@ var DIALOGE = [
       "en": "We could find a middle ground <g>by</g> writing the report together and creating the schedule separately.",
       "uk": "Ми могли б знайти золоту середину, якщо напишемо звіт спільно, а графік складемо окремо.",
       "ru": "Мы могли бы найти золотую середину, если напишем отчёт совместно, а график составим раздельно.",
-      "gram": ""
+      "gram": "modalsatz_dadurch_indem"
     },
     "a6": {
       "de": "Fassen wir zusammen: Wir werden den Bericht zusammen schreiben. Also, wir machen das jetzt so: Ich kümmere mich um den Zeitplan.",
@@ -12767,7 +12767,7 @@ var DIALOGE = [
       "en": "By that I mean that all the figures <g>have been checked</g> and the document <g>has been sent</g> to management. Thank you, then we agree.",
       "uk": "Цим я маю на увазі, що всі цифри <g>перевірені</g> й документ <g>надіслано</g> керівництву. Дякую, тоді ми домовилися.",
       "ru": "Этим я имею в виду, что все цифры <g>проверены</g> и документ <g>отправлен</g> руководству. Спасибо, тогда мы договорились.",
-      "gram": ""
+      "gram": "passiv_passiversatz"
     }
   },
   {
@@ -28563,8 +28563,8 @@ var STORY = [
       },
       {
         "role": "hauptteil5",
-        "de": "Bücher trainieren das Sprechen kaum, und Apps bieten meist nur allgemeine Inhalte, wodurch man viel wertvolle Zeit verliert.",
-        "uk": "Книги майже не тренують говоріння, а застосунки здебільшого пропонують лише загальний контент, через що втрачається багато дорогоцінного часу.",
+        "de": "Bücher trainieren das Sprechen und Hören kaum, und Apps bieten meist nur allgemeine Inhalte, wodurch man viel wertvolle Zeit verliert.",
+        "uk": "Книги майже не тренують говоріння і слухання, а застосунки здебільшого пропонують лише загальний контент, через що втрачається багато дорогоцінного часу.",
         "en": "",
         "ru": ""
       },
@@ -28598,8 +28598,8 @@ var STORY = [
       },
       {
         "role": "schluss2",
-        "de": "Diesen Namen habe ich gewählt, weil „Mova\" auf Ukrainisch „Sprache\" bedeutet und weil es keinen besseren Moment zum Lernen gibt als JETZT.",
-        "uk": "Цю назву я обрав, оскільки «Mova» українською означає «Sprache», і тому що немає кращого моменту для навчання, ніж зараз.",
+        "de": "Bisher finanziere ich alle Kosten aus eigener Tasche und entwickle die App komplett in Eigenregie.",
+        "uk": "Наразі я фінансую всі витрати з власних коштів і розробляю застосунок повністю самостійно.",
         "en": "",
         "ru": ""
       },
@@ -28612,6 +28612,27 @@ var STORY = [
       },
       {
         "role": "schluss4",
+        "de": "Nach der Veröffentlichung im App Store und im Play Store möchte ich die App über Social-Media-Influencer bewerben.",
+        "uk": "Після публікації застосунку в App Store та Play Store я хочу рекламувати його через інфлюенсерів у соціальних мережах.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss5",
+        "de": "Sobald ich genügend Stammnutzer gewonnen habe, wechsle ich zu einem Freemium-Modell.",
+        "uk": "Щойно я отримаю достатньо постійних користувачів, я перейду на модель Freemium.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss6",
+        "de": "Die Nutzer erhalten zunächst vollen Zugang und müssen später ein Abonnement abschließen, um ihn zu behalten.",
+        "uk": "Спочатку користувачі отримують повний доступ, а згодом мають оформити підписку, щоб зберегти його.",
+        "en": "",
+        "ru": ""
+      },
+      {
+        "role": "schluss7",
         "de": "Vielen Dank für Ihre Aufmerksamkeit!",
         "uk": "Дякую за вашу увагу!",
         "en": "",
