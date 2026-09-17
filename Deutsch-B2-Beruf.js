@@ -16381,18 +16381,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Komplett neu, ehrlich gesagt. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, ob ich mutig genug dafür bin. Denkst du, das ist wirklich so anstrengend, wie alle sagen?",
+      "de": "Komplett neu, ehrlich gesagt. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, ob ich mutig genug dafür bin. Denkst du, das ist wirklich <g>so</g> anstrengend, <g>wie</g> alle sagen?",
       "en": "Completely new, honestly. <r>I don't know, I'm not sure</r> if I'm brave enough for it. Do you think it's really as exhausting as everyone says?",
       "uk": "Чесно кажучи, зовсім нове. <r>Я не знаю, я не впевнена</r>, чи достатньо я смілива для цього. Ти думаєш, це справді так виснажливо, як усі кажуть?",
       "ru": "Честно говоря, совсем новое. <r>Я не знаю, я не уверена</r>, достаточно ли я смелая для этого. Ты думаешь, это действительно так утомительно, как все говорят?",
-      "gram": ""
+      "gram": "vergleichssaetze_als_wie_je_desto"
     },
     "a1": {
-      "de": "<r>Es hängt davon ab, ob</r> du in einer Kletterhalle anfängst oder gleich draußen am Fels. In der Halle ist es viel einfacher für Anfänger. <r>Aber man sollte es versuchen</r>.",
+      "de": "<r>Es hängt davon ab, ob</r> du in einer Kletterhalle <g>anfängst</g> oder gleich draußen am Fels. In der Halle ist es viel einfacher für Anfänger. <r>Aber man sollte es versuchen</r>.",
       "en": "<r>It depends on whether</r> you start in a climbing gym or straight outdoors on real rock. In the gym it's much easier for beginners. <r>But you should just try it</r>.",
       "uk": "<r>Залежить, чи</r> почнеш ти в скеледромі, чи одразу на справжній скелі надворі. У залі це значно простіше для початківців. <r>Але варто просто спробувати</r>.",
       "ru": "<r>Зависит от того</r>, начнёшь ли ты в скалодроме, или сразу на настоящей скале на улице. В зале это намного проще для начинающих. <r>Но стоит просто попробовать</r>.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "Das stimmt wahrscheinlich. <r>Was denkst du</r>, sollte ich lieber allein anfangen oder gleich mit jemandem zusammen?",
@@ -16402,11 +16402,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "<r>Ich bin der Meinung, dass</r> es am Anfang leichter ist, mit jemand Erfahrenem zu gehen, der einem die Grundlagen zeigt. Ich könnte dich zum Beispiel mal mitnehmen, wenn du magst.",
+      "de": "<r>Ich bin der Meinung, dass</r> es am Anfang leichter <g>ist</g>, mit jemand Erfahrenem zu gehen, der einem die Grundlagen zeigt. Ich könnte dich zum Beispiel mal mitnehmen, wenn du magst.",
       "en": "<r>I think that</r> it's easier at the start to go with someone experienced who shows you the basics. I could take you along sometime, for example, if you'd like.",
       "uk": "<r>Я вважаю, що</r> на початку легше піти з кимось досвідченим, хто покаже основи. Я могла б, наприклад, колись узяти тебе з собою, якщо хочеш.",
       "ru": "<r>Я считаю, что</r> вначале легче пойти с кем-то опытным, кто покажет основы. Я могла бы, например, как-нибудь взять тебя с собой, если хочешь.",
-      "gram": ""
+      "gram": "wortstellung"
     }
   },
   {
@@ -16491,18 +16491,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Noch nicht direkt, aber ich überlege es mir. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, ob das bei uns im Team überhaupt möglich wäre. Wie handhabt ihr das eigentlich in deiner Abteilung?",
+      "de": "Noch nicht direkt, aber ich überlege es mir. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, ob das bei uns im Team überhaupt möglich <g>wäre</g>. Wie handhabt ihr das eigentlich in deiner Abteilung?",
       "en": "Not directly yet, but I'm thinking about it. <r>I don't know, I'm not sure</r> if that would even be possible in our team. How do you actually handle that in your department?",
       "uk": "Ще ні напряму, але я про це думаю. <r>Я не знаю, я не впевнена</r>, чи це взагалі можливо в нашій команді. До речі, як це влаштовано у вашому відділі?",
       "ru": "Ещё не напрямую, но я об этом думаю. <r>Я не знаю, я не уверена</r>, возможно ли это вообще в нашей команде. Кстати, как это устроено в вашем отделе?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a1": {
-      "de": "Bei uns ist das inzwischen ziemlich flexibel – wir können uns zwei Tage pro Woche frei aussuchen. <r>Es hängt davon ab, ob</r> gerade wichtige Meetings anstehen, aber sonst klappt das gut.",
+      "de": "Bei uns ist das inzwischen ziemlich flexibel – wir können uns zwei Tage pro Woche frei aussuchen. <r>Es hängt davon ab, ob</r> gerade wichtige Meetings <g>anstehen</g>, aber sonst klappt das gut.",
       "en": "For us it's pretty flexible now – we can choose two days a week freely. <r>It depends on whether</r> there are important meetings coming up, but otherwise it works well.",
       "uk": "У нас це вже доволі гнучко - можна самим обирати два дні на тиждень. <r>Залежить від того, чи</r> заплановані важливі зустрічі, але загалом це добре працює.",
       "ru": "У нас это уже довольно гибко - можно самим выбирать два дня в неделю. <r>Зависит от того, есть ли</r> важные встречи, но в остальном это хорошо работает.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "Das klingt gut. <r>Was denkst du</r>, sollte ich das lieber schriftlich beantragen oder erstmal informell ansprechen?",
@@ -16601,18 +16601,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Ja, letztes Jahr war ich zweimal für ein verlängertes Wochenende weg, das war richtig erholsam. Machst du das auch öfter mal so?",
+      "de": "Ja, letztes Jahr war ich zweimal für ein verlängertes Wochenende weg, das war richtig erholsam. Machst du das auch öfter <g>mal</g> so?",
       "en": "Yes, last year I went away twice for a long weekend, that was really relaxing. Do you do that more often too?",
       "uk": "Так, торік я двічі їздила на подовжений вихідний, це було справді розслабляюче. Ти теж так частіше робиш?",
       "ru": "Да, в прошлом году я дважды ездила на продлённые выходные, это было действительно расслабляюще. Ты тоже так чаще делаешь?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "a1": {
-      "de": "Bisher eher selten, ich nehme meistens einen großen Urlaub im Sommer. <r>Es hängt davon ab, ob</r> ich genug Urlaubstage übrighabe für so etwas Spontanes.",
+      "de": "Bisher eher selten, ich nehme meistens einen großen Urlaub im Sommer. <r>Es hängt davon ab, ob</r> ich genug Urlaubstage <g>übrighabe</g> für so etwas Spontanes.",
       "en": "So far rather rarely, I usually take one big vacation in summer. <r>It depends on whether</r> I have enough vacation days left for something spontaneous like that.",
       "uk": "Поки що рідко, я зазвичай беру одну велику відпустку влітку. <r>Залежить від того, чи</r> в мене залишилося достатньо відпускних днів на щось спонтанне.",
       "ru": "Пока что редко, я обычно беру один большой отпуск летом. <r>Зависит от того, есть ли</r> у меня достаточно отпускных дней на что-то спонтанное.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "Das verstehe ich. <r>Was denkst du</r>, würde es sich lohnen, den Jahresurlaub aufzuteilen?",
@@ -16622,11 +16622,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Ich glaube schon, gerade um zwischendurch mal richtig abzuschalten. Ich werde das nächstes Jahr auf jeden Fall mal ausprobieren.",
-      "en": "I think so, especially to really switch off in between. I'll definitely try that out next year.",
+      "de": "Ich glaube schon, gerade <g>um</g> zwischendurch mal richtig ab<g>zu</g>schalten. Ich werde das nächstes Jahr auf jeden Fall mal ausprobieren.",
+      "en": "I think so, especially <g>to</g> really switch off in between. I'll definitely try that out next year.",
       "uk": "Мабуть, так, особливо щоб час від часу справді відпочивати від усього. Наступного року я точно спробую це зробити.",
       "ru": "Наверное, да, особенно чтобы время от времени по-настоящему отключаться. В следующем году я точно попробую это сделать.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -16704,11 +16704,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ja, <r>das sehe ich auch so</r>, man lernt dabei ja auch immer etwas Neues. <r>Hast du schon Erfahrungen damit gemacht</r>?",
+      "de": "Ja, <r>das sehe ich auch so</r>, man lernt dabei ja auch immer <g>etwas</g> <g>Neues</g>. <r>Hast du schon Erfahrungen damit gemacht</r>?",
       "en": "Yes, <r>I think so too</r>, you always learn something new that way. <r>Have you had any experience with that</r>?",
       "uk": "Так, <r>я теж так вважаю</r>, там завжди можна навчитися чогось нового. <r>У тебе вже є досвід у цьому</r>?",
       "ru": "Да, <r>я тоже так считаю</r>, там всегда можно узнать что-то новое. <r>У тебя уже есть опыт в этом</r>?",
-      "gram": ""
+      "gram": "indefinitpronomen"
     },
     "q1": {
       "de": "Ja, ich war letztes Jahr bei einem Töpferkurs, das hat richtig Spaß gemacht. Machst du auch manchmal sowas?",
@@ -16718,11 +16718,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Bisher eher selten, ich verbringe die Wochenenden meistens einfach mit Freunden. <r>Es hängt davon ab, ob</r> ich Lust auf etwas Neues habe oder mich lieber entspannen möchte.",
+      "de": "Bisher eher selten, ich verbringe die Wochenenden meistens einfach mit Freunden. <r>Es hängt davon ab, ob</r> ich Lust auf etwas Neues <g>habe</g> oder mich lieber entspannen möchte.",
       "en": "So far rather rarely, I usually just spend weekends with friends. <r>It depends on whether</r> I feel like trying something new or would rather relax.",
       "uk": "Поки що рідко, я зазвичай просто проводжу вихідні з друзями. <r>Залежить від того, чи</r> в мене є настрій спробувати щось нове, чи я краще відпочину.",
       "ru": "Пока что редко, я обычно просто провожу выходные с друзьями. <r>Зависит от того, есть ли</r> у меня настроение попробовать что-то новое, или я лучше отдохну.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "Das verstehe ich gut. <r>Was denkst du</r>, hättest du Interesse, mal zusammen einen Kochkurs auszuprobieren?",
@@ -16821,18 +16821,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Noch nicht, aber ich überlege es mir. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, wie viele Stunden ich realistisch schaffen würde.",
+      "de": "Noch nicht, aber ich überlege es mir. <r>Ich weiß nicht, ich bin mir nicht sicher</r>, wie viele Stunden ich realistisch schaffen <g>würde</g>.",
       "en": "Not yet, but I'm thinking about it. <r>I don't know, I'm not sure</r> how many hours I could realistically manage.",
       "uk": "Ще ні, але я про це думаю. <r>Я не знаю, я не впевнена</r>, скільки годин я реально зможу справлятися.",
       "ru": "Ещё нет, но я об этом думаю. <r>Я не знаю, я не уверена</r>, сколько часов я реально смогу выдержать.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a1": {
-      "de": "Das verstehe ich gut. <r>Es hängt davon ab, ob</r> eure Kita auch flexible Betreuungszeiten anbietet, oder?",
+      "de": "Das verstehe ich gut. <r>Es hängt davon ab, ob</r> eure Kita auch flexible Betreuungszeiten <g>anbietet</g>, oder?",
       "en": "I understand that. <r>It depends on whether</r> your daycare also offers flexible hours, right?",
       "uk": "Розумію тебе. <r>Залежить від того, чи</r> ваш садочок теж пропонує гнучкий графік, правда?",
       "ru": "Понимаю тебя. <r>Зависит от того, есть ли</r> у вашего садика тоже гибкий график, верно?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "Genau, das ist bei uns leider noch nicht klar. <r>Was denkst du</r>, sollte ich erstmal mit der Kita sprechen oder mit meinem Arbeitgeber?",
@@ -16987,18 +16987,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Genau, und das belastet sie ziemlich. <r>Was könnten wir in dieser Situation machen</r>, ohne dass es unangenehm für alle wird?",
-      "en": "Exactly, and it's really weighing on her. <r>What could we do in this situation</r> without making it uncomfortable for everyone?",
+      "de": "Genau, und das belastet sie ziemlich. <r>Was könnten wir in dieser Situation machen</r>, <g>ohne dass</g> es unangenehm für alle wird?",
+      "en": "Exactly, and it's really weighing on her. <r>What could we do in this situation</r> <g>without</g> it becoming uncomfortable for everyone?",
       "uk": "Саме так, і це її досить сильно пригнічує. <r>Що ми могли б зробити в цій ситуації</r>, щоб це не було неприємно для всіх?",
       "ru": "Именно так, и это её довольно сильно угнетает. <r>Что мы могли бы сделать в этой ситуации</r>, чтобы это не было неприятно для всех?",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "a1": {
-      "de": "<r>Ich hätte eine Idee</r>: Vielleicht könnten wir zuerst mit Tom unter vier Augen sprechen, statt das gleich vor dem ganzen Team anzusprechen.",
-      "en": "<r>I have an idea</r>: maybe we could talk to Tom privately first, instead of bringing it up in front of the whole team right away.",
+      "de": "<r>Ich hätte eine Idee</r>: Vielleicht könnten wir zuerst mit Tom unter vier Augen sprechen, <g>statt</g> das gleich vor dem ganzen Team an<g>zu</g>sprechen.",
+      "en": "<r>I have an idea</r>: maybe we could talk to Tom privately first, <g>instead of</g> bringing it up in front of the whole team right away.",
       "uk": "<r>У мене є ідея</r>: можливо, спершу нам варто поговорити з Томом віч-на-віч, а не одразу піднімати це перед усією командою.",
       "ru": "<r>У меня есть идея</r>: возможно, сначала нам стоит поговорить с Томом наедине, а не сразу поднимать это перед всей командой.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "q2": {
       "de": "Das finde ich gut. <r>Ich kann gut nachvollziehen, dass</r> ihm das gar nicht bewusst ist. <r>Was hältst du davon, wenn</r> wir ihm einfach sagen: 'Uns ist aufgefallen, dass...'?",
@@ -17064,11 +17064,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a6": {
-      "de": "Genau, so machen wir es. Ich denke, so können wir die Situation lösen, ohne dass sich jemand bloßgestellt fühlt.",
-      "en": "Exactly, that's what we'll do. I think that way we can resolve the situation without anyone feeling put on the spot.",
+      "de": "Genau, so machen wir es. Ich denke, so können wir die Situation lösen, <g>ohne dass</g> sich jemand bloßgestellt fühlt.",
+      "en": "Exactly, that's what we'll do. I think that way we can resolve the situation <g>without</g> anyone feeling put on the spot.",
       "uk": "Саме так, так і зробимо. Гадаю, так ми зможемо вирішити ситуацію, не змушуючи нікого почуватися ніяково.",
       "ru": "Именно так, так и сделаем. Думаю, так мы сможем решить ситуацию, не заставляя никого чувствовать себя неловко.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -17202,11 +17202,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Das kann ich gut nachvollziehen. <r>Meinst du damit, dass</r> wir generell zu direkt und wenig freundlich schreiben, wenn es mal stressig wird?",
+      "de": "Das kann ich gut nachvollziehen. <r>Meinst du damit, dass</r> wir generell zu direkt und wenig freundlich schreiben, <g>wenn</g> es mal stressig <g>wird</g>?",
       "en": "I can understand that. <r>Do you mean that</r> we generally write too bluntly and not very kindly when things get stressful?",
       "uk": "Я це цілком розумію. <r>Ти маєш на увазі, що</r> ми загалом пишемо занадто прямо й не дуже дружньо, коли буває стресово?",
       "ru": "Я это вполне понимаю. <r>Ты имеешь в виду, что</r> мы в целом пишем слишком прямо и не очень дружелюбно, когда бывает стрессово?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q1": {
       "de": "Genau. <r>Was hältst du davon, wenn</r> wir gemeinsam ein paar Formulierungshilfen für positivere Mails erarbeiten?",
@@ -17251,11 +17251,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "Gute Idee. Sollen wir das direkt im nächsten Meeting vorstellen, damit alle Bescheid wissen?",
+      "de": "Gute Idee. Sollen wir das direkt im nächsten Meeting vorstellen, <g>damit</g> alle Bescheid <g>wissen</g>?",
       "en": "Good idea. Should we present that directly at the next meeting, so everyone knows about it?",
       "uk": "Гарна ідея. Представимо це одразу на наступній нараді, щоб усі знали?",
       "ru": "Хорошая идея. Представим это сразу на следующем совещании, чтобы все знали?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a4": {
       "de": "Ja, das wäre sinnvoll. Ich könnte die Vorlage bis dahin fertig vorbereiten, wenn du schon mal ein paar Beispielsätze sammelst.",
@@ -17265,11 +17265,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q5": {
-      "de": "Gerne. Dann können wir das Thema gleich zu Beginn des nächsten Meetings ansprechen, bevor es sonst wieder in Vergessenheit gerät.",
+      "de": "Gerne. Dann können wir das Thema gleich zu Beginn des nächsten Meetings ansprechen, <g>bevor</g> es sonst wieder in Vergessenheit <g>gerät</g>.",
       "en": "Sure. Then we can bring the topic up right at the start of the next meeting, before it gets forgotten again.",
       "uk": "Із задоволенням. Тоді ми зможемо підняти цю тему одразу на початку наступної наради, поки вона знову не забулася.",
       "ru": "С удовольствием. Тогда мы сможем поднять эту тему сразу в начале следующего совещания, пока она снова не забылась.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a5": {
       "de": "Einverstanden. Ich denke, so vermeiden wir zukünftig ähnliche Missverständnisse im Team.",
@@ -17438,11 +17438,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "<r>Ich hätte eine Idee</r>: Wir könnten kurz beim Nachbarstand anrufen, ob jemand aus unserem Team dort spontan aushelfen kann.",
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten kurz beim Nachbarstand anrufen, <g>ob</g> jemand aus unserem Team dort spontan aushelfen <g>kann</g>.",
       "en": "<r>I have an idea</r>: we could quickly call the neighboring booth to see if someone from their team can spontaneously help out.",
       "uk": "<r>У мене є ідея</r>: ми могли б швидко зателефонувати на сусідній стенд і запитати, чи хтось з їхньої команди міг би спонтанно допомогти.",
       "ru": "<r>У меня есть идея</r>: мы могли бы быстро позвонить на соседний стенд и спросить, может ли кто-то из их команды спонтанно помочь.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich die Prospekte digital anbieten, zum Beispiel per QR-Code?",
@@ -17466,25 +17466,25 @@ var DIALOGE = [
       "gram": ""
     },
     "a3": {
-      "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Wer nur kurz vorbeischaut, kann sich erst mal die Neuheiten ansehen, während wir uns um die ernsthaften Anfragen kümmern.",
+      "de": "<r>Das halte ich für eine ausgezeichnete Lösung</r>. Wer nur kurz vorbeischaut, kann sich erst mal die Neuheiten ansehen, <g>während</g> wir uns um die ernsthaften Anfragen <g>kümmern</g>.",
       "en": "<r>I think that's an excellent solution</r>. Anyone just briefly stopping by can look at the new products first, while we take care of the serious inquiries.",
       "uk": "<r>Я вважаю це чудовим рішенням</r>. Ті, хто просто заглянув на хвилинку, можуть спершу подивитися на новинки, поки ми займаємося серйозними запитами.",
       "ru": "<r>Я считаю это отличным решением</r>. Те, кто просто заглянул на минутку, могут сначала посмотреть новинки, пока мы занимаемся серьёзными запросами.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q4": {
-      "de": "Stimmt. Und was machen wir, wenn wir trotzdem jemanden übersehen und er wieder geht, ohne beraten worden zu sein?",
-      "en": "True. And what do we do if we still miss someone and they leave without being advised?",
+      "de": "Stimmt. Und was machen wir, wenn wir trotzdem jemanden übersehen und er wieder geht, <g>ohne</g> beraten worden <g>zu</g> sein?",
+      "en": "True. And what do we do if we still miss someone and they leave <g>without</g> being advised?",
       "uk": "Правда. А що робити, якщо ми все одно когось пропустимо і людина піде, так і не отримавши консультації?",
       "ru": "Верно. А что делать, если мы всё равно кого-то упустим и человек уйдёт, так и не получив консультации?",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "a4": {
-      "de": "<r>Vielleicht könnten wir</r> eine kleine Liste führen, in die wir Namen und Kontaktdaten eintragen, damit wir uns danach persönlich bei allen melden können.",
+      "de": "<r>Vielleicht könnten wir</r> eine kleine Liste führen, in die wir Namen und Kontaktdaten eintragen, <g>damit</g> wir uns danach persönlich bei allen <g>melden können</g>.",
       "en": "<r>Maybe we could</r> keep a short list where we write down names and contact details, so we can follow up with everyone personally afterward.",
       "uk": "<r>Можливо, ми могли б</r> вести невеликий список, куди записуватимемо імена й контактні дані, щоб потім особисто зв'язатися з усіма.",
       "ru": "<r>Возможно, мы могли бы</r> вести небольшой список, куда будем записывать имена и контактные данные, чтобы потом лично связаться со всеми.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q5": {
       "de": "Guter Punkt. Sollen wir das gleich so machen, damit uns das nicht wieder passiert?",
@@ -17612,11 +17612,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q6": {
-      "de": "<r>Fassen wir zusammen</r>: Jeder nutzt künftig eine Echtzeit-App, wir planen mehr Pufferzeit ein, und wer trotzdem zu spät kommt, meldet sich sofort im Büro.",
+      "de": "<r>Fassen wir zusammen</r>: Jeder nutzt künftig eine Echtzeit-App, wir planen mehr Pufferzeit ein, und <g>wer</g> trotzdem zu spät kommt, <g>meldet sich</g> sofort im Büro.",
       "en": "<r>Let's summarize</r>: everyone will use a real-time app going forward, we'll plan more buffer time, and whoever's still running late will contact the office right away.",
       "uk": "<r>Підсумуємо</r>: кожен користуватиметься застосунком у реальному часі, ми закладаємо більше запасу часу, а хто все ж запізниться, одразу зв'яжеться з офісом.",
       "ru": "<r>Подведём итог</r>: каждый будет пользоваться приложением в реальном времени, мы закладываем больше запаса времени, а кто всё же опоздает, сразу свяжется с офисом.",
-      "gram": ""
+      "gram": "relativsatz_wer"
     },
     "a6": {
       "de": "Genau, so machen wir es. Ich denke, so verpasst hoffentlich niemand mehr einen wichtigen Termin wegen einer verpassten Zugverbindung.",
@@ -17646,11 +17646,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Das habe ich auch schon gesehen. <r>Habe ich dich richtig verstanden</r>: Die Vorteile des Produkts kommen dadurch nicht richtig zur Geltung?",
+      "de": "Das habe ich auch schon gesehen. <r>Habe ich dich richtig verstanden</r>: Die Vorteile des Produkts kommen <g>dadurch</g> nicht richtig zur Geltung?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so the product's advantages don't really come across because of that?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто через це переваги продукту не виглядають чіткими?",
       "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть из-за этого преимущества продукта выглядят нечёткими?",
-      "gram": ""
+      "gram": "textzusammenhang"
     },
     "q1": {
       "de": "Genau, im Moment stehen vor allem technische Details im Zentrum, aber nicht der Nutzen für die Kunden. <r>Was könnten wir in dieser Situation machen</r>?",
@@ -17660,18 +17660,18 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "<r>Ich hätte eine Idee</r>: Wir könnten die Präsentation neu aufbauen und zuerst den konkreten Nutzen zeigen, bevor wir auf die technischen Details eingehen.",
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten die Präsentation neu aufbauen und zuerst den konkreten Nutzen zeigen, <g>bevor</g> wir auf die technischen Details <g>eingehen</g>.",
       "en": "<r>I have an idea</r>: we could restructure the presentation and show the concrete benefit first, before getting into the technical details.",
       "uk": "<r>У мене є ідея</r>: ми могли б перебудувати презентацію і спершу показати конкретну користь, перш ніж переходити до технічних деталей.",
       "ru": "<r>У меня есть идея</r>: мы могли бы перестроить презентацию и сначала показать конкретную пользу, прежде чем переходить к техническим деталям.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
-      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich noch ein paar Produktfotos und eine kurze Grafik einfügen, damit es nicht so trocken wirkt?",
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich noch ein paar Produktfotos und eine kurze Grafik einfügen, <g>damit</g> es nicht so trocken <g>wirkt</g>?",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also add a few product photos and a short graphic, so it doesn't come across so dry?",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково додамо кілька фото продукту й невелику графіку, щоб це не виглядало так сухо?",
       "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно добавим несколько фото продукта и небольшую графику, чтобы это не выглядело так сухо?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a2": {
       "de": "<r>Ja, das finde ich eine gute Idee</r>. Wir könnten auch ein kurzes Video zeigen, das im Zusammenhang mit der Anwendung des Produkts steht.",
@@ -17709,11 +17709,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q5": {
-      "de": "Einverstanden. Wer kümmert sich denn um die neuen Bilder und das Video?",
-      "en": "Agreed. Who's going to take care of the new pictures and the video?",
+      "de": "Einverstanden. Wer kümmert sich <g>denn</g> um die neuen Bilder und das Video?",
+      "en": "Agreed. So who's actually going to take care of the new pictures and the video?",
       "uk": "Домовились. А хто займеться новими фото й відео?",
       "ru": "Договорились. А кто займётся новыми фото и видео?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "a5": {
       "de": "Ich könnte mich um die Bilder kümmern, wenn du in der Zwischenzeit die Präsentation inhaltlich überarbeitest.",
@@ -17882,25 +17882,25 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "<r>Ich hätte eine Idee</r>: Wir könnten am Empfang eine kurze Übersicht aufhängen, wer für welches Thema zuständig ist, damit gleich richtig verbunden wird.",
+      "de": "<r>Ich hätte eine Idee</r>: Wir könnten am Empfang eine kurze Übersicht aufhängen, wer für welches Thema zuständig ist, <g>damit</g> gleich richtig <g>verbunden wird</g>.",
       "en": "<r>I have an idea</r>: we could put up a short overview at reception showing who's responsible for which topic, so calls get transferred correctly right away.",
       "uk": "<r>У мене є ідея</r>: ми могли б повісити на рецепції коротку схему, хто за яку тему відповідає, щоб одразу правильно з'єднувати.",
       "ru": "<r>У меня есть идея</r>: мы могли бы повесить на ресепшене короткую схему, кто за какую тему отвечает, чтобы сразу правильно соединять.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
-      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich eine feste Standardfrage einführen, zum Beispiel 'Worum geht es genau, damit ich Sie richtig verbinden kann?'",
+      "de": "<r>Das klingt gut</r>. <r>Was hältst du davon, wenn</r> wir zusätzlich eine feste Standardfrage einführen, zum Beispiel 'Worum geht es genau, <g>damit</g> ich Sie richtig verbinden <g>kann</g>?'",
       "en": "<r>That sounds good</r>. <r>What do you think if</r> we also introduce a standard question, for example 'What is this regarding, so I can transfer you correctly?'",
       "uk": "<r>Звучить непогано</r>. <r>Як ти дивишся на те, якщо</r> ми додатково впровадимо стандартне запитання, наприклад «Про що йдеться, щоб я міг(-ла) правильно вас з'єднати?»",
       "ru": "<r>Звучит неплохо</r>. <r>Как ты смотришь на то, если</r> мы дополнительно введём стандартный вопрос, например «По какому вопросу вы звоните, чтобы я мог(-ла) правильно вас соединить?»",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a2": {
-      "de": "<r>Ja, das finde ich eine gute Idee</r>. So können die Kolleginnen und Kollegen am Empfang gezielter fragen, statt einfach zu raten.",
-      "en": "<r>Yes, I think that's a good idea</r>. That way the colleagues at reception can ask more specifically instead of just guessing.",
+      "de": "<r>Ja, das finde ich eine gute Idee</r>. So können die Kolleginnen und Kollegen am Empfang gezielter fragen, <g>statt</g> einfach <g>zu</g> raten.",
+      "en": "<r>Yes, I think that's a good idea</r>. That way the colleagues at reception can ask more specifically <g>instead of</g> just guessing.",
       "uk": "<r>Так, я вважаю це гарною ідеєю</r>. Так колеги на рецепції зможуть запитувати більш цілеспрямовано, а не просто вгадувати.",
       "ru": "<r>Да, я считаю это хорошей идеей</r>. Так коллеги на ресепшене смогут спрашивать более целенаправленно, а не просто угадывать.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "q3": {
       "de": "Stimmt. Und was machen wir, wenn eine Anfrage trotzdem bei der falschen Person landet?",
@@ -17979,11 +17979,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: Dadurch geht in fast jedem Meeting Zeit verloren?",
+      "de": "Das habe ich auch schon bemerkt. <r>Habe ich dich richtig verstanden</r>: <g>Dadurch</g> geht in fast jedem Meeting Zeit verloren?",
       "en": "I've noticed that too. <r>Did I understand you correctly</r>: so time gets wasted in almost every meeting because of that?",
       "uk": "Я теж це помітив. <r>Я правильно тебе зрозумів</r>: тобто через це майже в кожній нараді втрачається час?",
       "ru": "Я тоже это заметил. <r>Я правильно тебя понял</r>: то есть из-за этого почти в каждом совещании теряется время?",
-      "gram": ""
+      "gram": "textzusammenhang"
     },
     "q1": {
       "de": "Genau, manchmal sogar zehn Minuten am Anfang. <r>Was könnten wir in dieser Situation machen</r>?",
@@ -18028,11 +18028,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "Gute Idee. Sollten wir außerdem jemanden bestimmen, der sich beim technischen Support meldet, falls es größere Probleme gibt?",
+      "de": "Gute Idee. Sollten wir außerdem jemanden bestimmen, der sich beim technischen Support meldet, <g>falls</g> es größere Probleme <g>gibt</g>?",
       "en": "Good idea. Should we also designate someone to contact technical support if there are bigger problems?",
       "uk": "Гарна ідея. Може, ще призначимо когось, хто звертатиметься до техпідтримки, якщо виникнуть більші проблеми?",
       "ru": "Хорошая идея. Может, ещё назначим кого-то, кто будет обращаться в техподдержку, если возникнут более серьёзные проблемы?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a4": {
       "de": "<r>Vielleicht könnten wir</r> das reihum machen, dann ist es nicht immer dieselbe Person, die sich darum kümmern muss.",
@@ -18042,11 +18042,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q5": {
-      "de": "Guter Punkt. Sollen wir diese Regeln gleich im nächsten Meeting vorstellen, damit alle Bescheid wissen?",
+      "de": "Guter Punkt. Sollen wir diese Regeln gleich im nächsten Meeting vorstellen, <g>damit</g> alle Bescheid <g>wissen</g>?",
       "en": "Good point. Should we present these rules right at the next meeting, so everyone knows about them?",
       "uk": "Слушна думка. Представимо ці правила одразу на наступній нараді, щоб усі знали?",
       "ru": "Дельная мысль. Представим эти правила сразу на следующем совещании, чтобы все знали?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a5": {
       "de": "Ja, das wäre sinnvoll. Ich könnte eine kurze Übersicht schreiben, wenn du das im Kalender für alle ankündigst.",
