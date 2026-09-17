@@ -31,13 +31,65 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  generate:
+  # Легка перевірка ПЕРЕД важким джобом генерації: чи змінився в коміті,
+  # що задеплоївся, хоч один файл, від якого реально залежить аудіо
+  # (бази курсів "<COURSE>.js" + спільний characters.js). Оновлення
+  # index.html, sw.js чи будь-чого іншого не додає нових карток/фраз для
+  # озвучення — раніше в таких випадках generate все одно запускався й
+  # проходив повний скрипт (checkout, install deps, скан усіх баз) лише
+  # щоб дійти висновку "генерувати нічого", а це і є той довгий даремний
+  # запуск, від якого ми тут відмовляємось.
+  check-db-changes:
     runs-on: ubuntu-latest
-    # Запускаємо, якщо це ручний запуск АБО деплой (бамп версії) завершився
-    # успішно (при провалі — генерацію аудіо пропускаємо).
+    if: github.event_name == 'workflow_run'
+    permissions:
+      contents: read
+    outputs:
+      changed: ${{ steps.check.outputs.changed }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          fetch-depth: 0   # потрібна історія, щоб продиффити з батьківським комітом
+
+      - id: check
+        name: Diff deployed commit against its parent
+        run: |
+          SHA="${{ github.event.workflow_run.head_sha }}"
+
+          # Список файлів баз курсів беремо прямо з COURSES у gen_audio.py
+          # (а не дублюємо вручну тут) — щоб при додаванні нового курсу в
+          # скрипті цей перелік не розійшовся й сам собою лишався точним.
+          COURSE_FILES=$(sed -n '/^COURSES = \[/,/\]/p' gen_audio.py \
+            | grep -oE "'[^']+'" | tr -d "'" | sed 's/$/.js/')
+          WATCH_FILES=$(printf 'characters.js\n%s' "$COURSE_FILES")
+          echo "Файли, що впливають на аудіо:"
+          echo "$WATCH_FILES"
+
+          CHANGED=$(git diff --name-only "$SHA^" "$SHA" -- $WATCH_FILES)
+          if [ -n "$CHANGED" ]; then
+            echo "Змінились файли баз:"; echo "$CHANGED"
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "Жодна база курсу/characters.js не змінилась — генерацію аудіо пропускаємо"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  generate:
+    needs: check-db-changes
+    runs-on: ubuntu-latest
+    # Запускаємо, якщо це ручний запуск (завжди) АБО деплой (бамп версії)
+    # завершився успішно І в задеплоєному коміті справді змінився хоч один
+    # файл бази/characters.js (див. check-db-changes вище). always() —
+    # бо check-db-changes навмисно пропускається (skip) для
+    # workflow_dispatch, а без always() дефолтна поведінка GitHub Actions
+    # так само пропустила б і generate, побачивши "потрібний job не success".
     if: >-
-      github.event_name == 'workflow_dispatch' ||
-      github.event.workflow_run.conclusion == 'success'
+      always() &&
+      (github.event_name == 'workflow_dispatch' ||
+       (github.event.workflow_run.conclusion == 'success' &&
+        needs.check-db-changes.outputs.changed == 'true'))
 
     permissions:
       contents: write   # Потрібно для коміту аудіофайлів назад у репозиторій
