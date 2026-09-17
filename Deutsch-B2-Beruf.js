@@ -12834,11 +12834,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wir mussten feststellen, dass mehrere Artikel beschädigt bei uns angekommen sind. Das bedeutet, dass wir die gesamte Lieferung nicht verwenden können.",
+      "de": "Wir mussten feststellen, dass mehrere Artikel beschädigt bei uns angekommen sind. Das bedeutet, <g>dass</g> wir die gesamte Lieferung nicht <g>verwenden können</g>.",
       "en": "We had to determine that several items arrived damaged. That means we cannot use the entire delivery.",
       "uk": "Ми змушені були встановити, що кілька товарів прийшли до нас пошкодженими. Це означає, що ми не можемо використати всю партію.",
       "ru": "Мы были вынуждены установить, что несколько товаров пришли к нам повреждёнными. Это означает, что мы не можем использовать всю партию.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
       "de": "Auch das tut uns sehr leid. Wir haben mittlerweile herausgefunden, dass es beim Transport zu Beschädigungen gekommen ist.",
@@ -12860,11 +12860,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Ich gehe davon aus, dass Sie uns hier entgegenkommen und das Problem schnell lösen.",
+      "de": "Ich gehe davon aus, <g>dass</g> Sie uns hier entgegenkommen und das Problem schnell <g>lösen</g>.",
       "en": "I assume that you will accommodate us here and solve the problem quickly.",
       "uk": "Я виходжу з того, що ви підете нам назустріч і швидко вирішите цю проблему.",
       "ru": "Я исхожу из того, что вы пойдёте нам навстречу и быстро решите эту проблему.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
       "de": "Wir verstehen sehr gut, dass Sie eine schnelle Lösung wünschen. Wären Sie mit einem kostenlosen Ersatzprodukt als Ausgleich einverstanden?",
@@ -12886,11 +12886,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Damit sind wir nur einverstanden, wenn Sie uns zusätzlich die Versandkosten erstatten. Ich bitte um eine schnelle Lösung, da wir die Ware dringend benötigen.",
+      "de": "Damit sind wir nur einverstanden, <g>wenn</g> Sie uns zusätzlich die Versandkosten <g>erstatten</g>. Ich bitte um eine schnelle Lösung, da wir die Ware dringend benötigen.",
       "en": "We can only agree to that if you also reimburse us for the shipping costs. I ask for a quick solution, as we urgently need the goods.",
       "uk": "Ми погодимося на це лише за умови, що ви додатково відшкодуєте нам вартість доставки. Прошу швидкого вирішення, оскільки товар нам терміново потрібен.",
       "ru": "Мы согласимся на это только при условии, что вы дополнительно возместите нам стоимость доставки. Прошу быстрого решения, так как товар нам срочно нужен.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
       "de": "Das ist möglich. Zusätzlich bieten wir Ihnen an, die Versandkosten zu reduzieren und die Ersatzlieferung express zu versenden.",
@@ -12912,11 +12912,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Dann erwarte ich aber, dass so etwas in Zukunft nicht mehr vorkommt. Wir gehen davon aus, dass Sie die Qualitätskontrolle verbessern.",
+      "de": "Dann erwarte ich aber, dass so etwas in Zukunft nicht mehr vorkommt. Wir gehen davon aus, <g>dass</g> Sie die Qualitätskontrolle <g>verbessern</g>.",
       "en": "But then I expect that something like this won't happen again in the future. We assume that you will improve the quality control.",
       "uk": "Тоді я очікую, що в майбутньому подібного більше не повториться. Ми виходимо з того, що ви покращите контроль якості.",
       "ru": "Тогда я ожидаю, что в будущем подобное больше не повторится. Мы исходим из того, что вы улучшите контроль качества.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
       "de": "Als Entschädigung kann ich Ihnen außerdem einen Gutschein für die nächste Bestellung anbieten. Wir werden alles tun, <g>damit</g> sich das nicht wiederholt.",
@@ -13099,11 +13099,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Ehrlich gesagt macht mir das ein bisschen Angst, weil das Projekt dann ohne sie starten müsste und die anderen Kolleginnen und Kollegen zusätzliche Aufgaben übernehmen müssten.",
+      "de": "Ehrlich gesagt macht mir das ein bisschen Angst, <g>weil</g> das Projekt dann ohne sie <g>starten müsste</g> und die anderen Kolleginnen und Kollegen zusätzliche Aufgaben übernehmen müssten.",
       "en": "Honestly, that worries me a bit, because the project would then have to start without her and the other colleagues would have to take on extra tasks.",
       "uk": "Чесно кажучи, мене це трохи лякає, бо тоді проєкт довелося б починати без неї, а іншим колегам - брати на себе додаткові завдання.",
       "ru": "Честно говоря, меня это немного пугает, потому что тогда проект пришлось бы начинать без неё, а другим коллегам - брать на себя дополнительные задачи.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> ihr ein Angebot machen und sie zunächst auf einer Teilzeitstelle mitarbeiten lassen, bis alle Unterlagen vollständig sind?",
@@ -13134,11 +13134,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir uns die Begleitung im Team aufteilen.",
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir uns die Begleitung im Team <g>aufteilen</g>.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> splitting the accompanying duty within the team.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, розподіливши супровід між членами команди.",
       "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, распределив сопровождение между членами команды.",
-      "gram": ""
+      "gram": "modalsatz_dadurch_indem"
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir überhaupt nicht vorstellen, dass das für einen Vormittag ein großes Problem wäre.",
@@ -13155,11 +13155,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a5": {
-      "de": "Das <r>halte ich für einen guten Punkt</r>. Wir könnten außerdem ihre Probezeit erst mit dem tatsächlichen Arbeitsbeginn starten lassen, damit ihr nichts verloren geht.",
+      "de": "Das <r>halte ich für einen guten Punkt</r>. Wir könnten außerdem ihre Probezeit erst mit dem tatsächlichen Arbeitsbeginn starten lassen, <g>damit</g> ihr nichts verloren <g>geht</g>.",
       "en": "<r>I think that's a good point</r>. We could also only start her probationary period from her actual start date, so she doesn't lose anything.",
       "uk": "<r>Вважаю це гарною думкою</r>. Ми також могли б почати відлік її випробувального терміну лише з фактичного початку роботи, щоб вона нічого не втратила.",
       "ru": "<r>Считаю это хорошей мыслью</r>. Мы также могли бы начать отсчёт её испытательного срока только с фактического начала работы, чтобы она ничего не потеряла.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q6": {
       "de": "Lass uns die Aufgaben in Angriff nehmen und aufteilen: Ich kläre die Sache mit der Personalabteilung, und du sprichst mit Frau Klein über den neuen Zeitplan. Einverstanden?",
@@ -13273,11 +13273,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem vielleicht lösen, indem</r> nicht nur ich, sondern auch ein Kollege aus dem anderen Team die Kundenbetreuung übernimmt.",
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem vielleicht lösen, indem</r> nicht nur ich, sondern auch ein Kollege aus dem anderen Team die Kundenbetreuung <g>übernimmt</g>.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> having not only me, but also a colleague from the other team take over customer service.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо обслуговування клієнтів візьму на себе не лише я, а й колега з іншої команди.",
       "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если обслуживание клиентов возьму на себя не только я, но и коллега из другой команды.",
-      "gram": ""
+      "gram": "modalsatz_dadurch_indem"
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich glaube nicht, dass das ein Problem wäre, wenn wir das rechtzeitig ankündigen.",
@@ -13370,11 +13370,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Genau. <r>Sein Ziel ist es,</r> so schnell wie möglich in seinem eigentlichen Beruf zu arbeiten. Was denkst du, wie wir ihm helfen könnten?",
+      "de": "Genau. <r>Sein Ziel ist es,</r> <g>so</g> schnell <g>wie</g> möglich in seinem eigentlichen Beruf zu arbeiten. Was denkst du, wie wir ihm helfen könnten?",
       "en": "Exactly. <r>His goal is</r> to work in his actual profession as soon as possible. What do you think, how could we help him?",
       "uk": "Саме так. <r>Його мета</r> - якомога швидше почати працювати за фахом. Як ти думаєш, чим ми могли б йому допомогти?",
       "ru": "Именно так. <r>Его цель</r> - как можно скорее начать работать по специальности. Как ты думаешь, чем мы могли бы ему помочь?",
-      "gram": ""
+      "gram": "vergleichssaetze_als_wie_je_desto"
     },
     "a1": {
       "de": "Ich würde vorschlagen, dass wir uns zusammen an die zuständige Stelle wenden und für ihn Informationen einholen.",
@@ -13419,18 +13419,18 @@ var DIALOGE = [
       "gram": ""
     },
     "a4": {
-      "de": "Das verstehe ich. Aber selbst wenn nicht alles anerkannt wird, könnte er einen Anpassungslehrgang machen, um die restliche Qualifikation nachzuholen.",
-      "en": "I understand that. But even if not everything is recognized, he could do an adaptation course to make up the remaining qualification.",
+      "de": "Das verstehe ich. Aber selbst wenn nicht alles anerkannt wird, könnte er einen Anpassungslehrgang machen, <g>um</g> die restliche Qualifikation nach<g>zu</g>holen.",
+      "en": "I understand that. But even if not everything is recognized, he could do an adaptation course <g>to</g> make up the remaining qualification.",
       "uk": "Я це розумію. Але навіть якщо визнають не все, він міг би пройти адаптаційний курс, щоб надолужити решту кваліфікації.",
       "ru": "Я это понимаю. Но даже если признают не всё, он мог бы пройти адаптационный курс, чтобы наверстать остальную квалификацию.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "q5": {
-      "de": "Gute Idee. Ich weiß, dass er sich sehr für seinen Beruf interessiert - <r>er hätte bestimmt Lust</r>, so einen Lehrgang zu machen, wenn es nötig wäre.",
-      "en": "Good idea. I know he's very interested in his profession - he <r>would definitely feel like</r> doing such a course if it were necessary.",
+      "de": "Gute Idee. Ich weiß, dass er sich sehr <g>für</g> seinen Beruf interessiert - <r>er hätte bestimmt Lust</r>, so einen Lehrgang zu machen, wenn es nötig wäre.",
+      "en": "Good idea. I know he's very interested <g>in</g> his profession - he <r>would definitely feel like</r> doing such a course if it were necessary.",
       "uk": "Гарна ідея. Я знаю, що він дуже захоплений своєю професією - <r>йому точно захотілося б</r> пройти такий курс, якби це знадобилося.",
       "ru": "Хорошая идея. Я знаю, что он очень увлечён своей профессией - <r>ему бы точно захотелось</r> пройти такой курс, если бы это понадобилось.",
-      "gram": ""
+      "gram": "praepositionen_nomen_verb_adjektiv"
     },
     "a5": {
       "de": "Dann sollten wir ihm vorschlagen, schon jetzt eine Anfrage bei der zuständigen Stelle einzuleiten, auch wenn noch nicht alle Dokumente vollständig sind.",
@@ -13655,11 +13655,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Ich glaube, dass ein uneinheitlicher tabellarischer Lebenslauf schnell unseriös wirkt, auch wenn die Qualifikationen eigentlich sehr gut sind.",
+      "de": "Ich glaube, dass ein uneinheitlicher tabellarischer Lebenslauf schnell unseriös wirkt, <g>auch wenn</g> die Qualifikationen eigentlich sehr gut <g>sind</g>.",
       "en": "I think an inconsistent tabular CV quickly looks unprofessional, even if the qualifications themselves are actually very good.",
       "uk": "Гадаю, непослідовне табличне резюме швидко виглядає несерйозно, навіть якщо кваліфікація насправді дуже хороша.",
       "ru": "Думаю, непоследовательное табличное резюме быстро выглядит несерьёзно, даже если квалификация на самом деле очень хорошая.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "<r>Wie wäre es, wenn wir</r> bei den Sprachkenntnissen konkrete Niveaus angeben, also zum Beispiel 'Englisch: verhandlungssicher' statt einfach nur 'gut'?",
@@ -13676,11 +13676,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q3": {
-      "de": "Ein weiterer Vorschlag wäre, alle Datumsangaben einheitlich im gleichen Format zu schreiben, also entweder überall Monat und Jahr oder überall nur das Jahr.",
+      "de": "Ein weiterer Vorschlag wäre, alle Datumsangaben einheitlich im gleichen Format zu schreiben, also <g>entweder</g> überall Monat und Jahr <g>oder</g> überall nur das Jahr.",
       "en": "Another suggestion would be to write all the dates in the same format throughout - so either month and year everywhere, or just the year everywhere.",
       "uk": "Ще одна пропозиція - написати всі дати в одному форматі: або скрізь місяць і рік, або скрізь лише рік.",
       "ru": "Ещё одно предложение - написать все даты в одном формате: либо везде месяц и год, либо везде только год.",
-      "gram": ""
+      "gram": "konnektoren_zweiteilig"
     },
     "a3": {
       "de": "Ein Argument dafür ist sicherlich, dass das viel professioneller wirkt. Ein Argument dagegen wäre höchstens, dass das noch etwas Zeit kostet.",
@@ -13690,18 +13690,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem lösen, indem</r> wir die Vorlage einmal komplett durchgehen und die Formatierung automatisch anpassen.",
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem lösen, indem</r> wir die Vorlage einmal komplett durchgehen und die Formatierung automatisch <g>anpassen</g>.",
       "en": "<r>That's true, but</r> <r>we could solve the problem by</r> going through the template once completely and adjusting the formatting automatically.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми один раз повністю пройдемося по шаблону і автоматично виправимо форматування.",
       "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы один раз полностью пройдёмся по шаблону и автоматически исправим форматирование.",
-      "gram": ""
+      "gram": "modalsatz_dadurch_indem"
     },
     "a4": {
-      "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir gut vorstellen, dass das in einer halben Stunde erledigt ist, wenn wir es zusammen machen.",
+      "de": "<r>Da bin ich ganz deiner Meinung</r>. Ich kann mir gut vorstellen, dass das in einer halben Stunde <g>erledigt ist</g>, wenn wir es zusammen machen.",
       "en": "<r>I completely agree with you</r>. I can well imagine that being done in half an hour if we do it together.",
       "uk": "<r>Тут я з тобою цілком згодна</r>. Я цілком можу уявити, що ми впораємося за півгодини, якщо зробимо це разом.",
       "ru": "<r>Тут я с тобой полностью согласна</r>. Я вполне могу представить, что мы справимся за полчаса, если сделаем это вместе.",
-      "gram": ""
+      "gram": "passiv_mit_sein"
     },
     "q5": {
       "de": "Zusätzlich fehlt noch die Unterschrift unter dem Lebenslauf - das sollten wir sie auch noch ergänzen lassen.",
@@ -13919,11 +13919,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass wir ihm noch keine Rückmeldung geben konnten, obwohl er schon nachfragt?",
+      "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass wir ihm noch keine Rückmeldung geben konnten, <g>obwohl</g> er schon <g>nachfragt</g>?",
       "en": "<r>Did I understand you correctly</r>: so the issue is that we haven't been able to give him any feedback yet, even though he's already asking?",
       "uk": "<r>Я правильно тебе зрозумів</r>: отже, йдеться про те, що ми ще не змогли дати йому жодної відповіді, хоча він уже цікавиться?",
       "ru": "<r>Я правильно тебя понял</r>: значит, речь о том, что мы ещё не смогли дать ему никакого ответа, хотя он уже интересуется?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q1": {
       "de": "Genau. Was denkst du, welchen Eindruck macht das auf ihn, wenn wir ihn noch länger warten lassen?",
@@ -13968,11 +13968,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem lösen, indem</r> wir ihm heute noch kurz Bescheid geben und einen Termin für nächste Woche vorschlagen.",
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem lösen, indem</r> wir ihm heute noch kurz Bescheid geben und einen Termin für nächste Woche <g>vorschlagen</g>.",
       "en": "<r>That's true, but</r> <r>we could solve the problem by</r> letting him know briefly today and suggesting an appointment for next week.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми ще сьогодні коротко повідомимо йому і запропонуємо термін на наступний тиждень.",
       "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы ещё сегодня коротко сообщим ему и предложим срок на следующей неделе.",
-      "gram": ""
+      "gram": "modalsatz_dadurch_indem"
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. Dann hat er wenigstens eine klare Rückmeldung und muss nicht weiter im Unklaren bleiben.",
@@ -13982,11 +13982,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q5": {
-      "de": "Zusätzlich könnten wir ihm in der Einladung schon unsere Gehaltsvorstellung für die Stelle nennen, damit von Anfang an Klarheit herrscht.",
+      "de": "Zusätzlich könnten wir ihm in der Einladung schon unsere Gehaltsvorstellung für die Stelle nennen, <g>damit</g> von Anfang an Klarheit <g>herrscht</g>.",
       "en": "In addition, we could already mention our salary expectations for the position in the invitation, so there's clarity from the start.",
       "uk": "Крім того, ми могли б вже в запрошенні назвати нашу очікувану зарплату для цієї посади, щоб від самого початку була ясність.",
       "ru": "Кроме того, мы могли бы уже в приглашении назвать наши ожидания по зарплате для этой должности, чтобы с самого начала была ясность.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a5": {
       "de": "Das <r>halte ich für einen guten Punkt</r>. So kann er sich auch besser vorbereiten und uns im Gespräch seine eigenen Erwartungen nennen.",
@@ -14065,11 +14065,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Nein, ich wohne relativ nah am Büro, deshalb fahre ich meistens mit dem Fahrrad, wenn das Wetter mitspielt. Bei Regen nehme ich den Bus. Stört es dich eigentlich nicht, dass die Fahrt jeden Tag so lange dauert?",
-      "en": "No, I live pretty close to the office, so I mostly ride my bike when the weather cooperates. When it rains I take the bus. Doesn't it bother you that the ride takes so long every day?",
+      "de": "Nein, ich wohne relativ nah am Büro, deshalb fahre ich meistens mit dem Fahrrad, wenn das Wetter mitspielt. Bei Regen nehme ich den Bus. Stört <g>es</g> dich eigentlich nicht, dass die Fahrt jeden Tag so lange dauert?",
+      "en": "No, I live pretty close to the office, so I mostly ride my bike when the weather cooperates. When it rains I take the bus. Doesn't <g>it</g> bother you that the ride takes so long every day?",
       "uk": "Ні, я живу досить близько до офісу, тому здебільшого їжджу на велосипеді, якщо погода дозволяє. А коли дощить, їду автобусом. А тебе не дратує, що дорога щодня займає стільки часу?",
       "ru": "Нет, я живу довольно близко к офису, поэтому обычно езжу на велосипеде, если погода позволяет. А когда дождь, еду на автобусе. А тебя не раздражает, что дорога каждый день занимает так много времени?",
-      "gram": ""
+      "gram": "es_pronomen"
     },
     "a1": {
       "de": "Am Anfang fand ich das schon anstrengend, aber mittlerweile habe ich mich richtig daran gewöhnt. Ich nutze die Zeit einfach produktiv. Radfahren klingt aber auch toll, das hält bestimmt fit, oder?",
@@ -14079,11 +14079,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Ja, total, und ich spare mir dadurch sogar den Weg ins Fitnessstudio. Aber bei Schnee oder Glätte im Winter wird es schon manchmal ungemütlich.",
+      "de": "Ja, total, und ich spare mir <g>dadurch</g> sogar den Weg ins Fitnessstudio. Aber bei Schnee oder Glätte im Winter wird es schon manchmal ungemütlich.",
       "en": "Yeah, totally, and it even saves me a trip to the gym. But when there's snow or ice in winter it does get a bit unpleasant sometimes.",
       "uk": "Так, дуже, і я навіть заощаджую на поході в спортзал. Але взимку, коли сніг чи ожеледиця, буває доволі неприємно.",
       "ru": "Да, очень, и я даже экономлю на походе в спортзал. Но зимой, когда снег или гололёд, бывает довольно неприятно.",
-      "gram": ""
+      "gram": "textzusammenhang"
     },
     "a2": {
       "de": "Das kann ich mir vorstellen. Ich bin froh, dass ich im Winter einfach im warmen Zug sitzen kann und mich um nichts kümmern muss.",
@@ -14113,18 +14113,18 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Am Samstag fahre ich mit meiner Familie zu meinen Eltern aufs Land, das machen wir eigentlich fast jedes zweite Wochenende. Am Sonntag will ich dann aber wirklich mal ausschlafen und es mir zu Hause gemütlich machen. Und du, hast du schon etwas vor?",
+      "de": "Am Samstag fahre ich mit meiner Familie zu meinen Eltern aufs Land, das machen wir eigentlich fast jedes zweite Wochenende. Am Sonntag will ich dann aber wirklich <g>mal</g> ausschlafen und es mir zu Hause gemütlich machen. Und du, hast du schon etwas vor?",
       "en": "On Saturday I'm going to the countryside with my family to visit my parents, we actually do that almost every other weekend. On Sunday though I really want to sleep in and just relax at home. What about you, do you have anything planned already?",
       "uk": "У суботу ми з родиною їдемо за місто до моїх батьків, ми взагалі робимо це майже кожні вихідні через одні. А в неділю я справді хочу виспатися і просто відпочити вдома. А в тебе вже є якісь плани?",
       "ru": "В субботу мы с семьёй едем за город к моим родителям, мы вообще делаем это почти каждые вторые выходные. А в воскресенье я действительно хочу выспаться и просто отдохнуть дома. А у тебя уже есть какие-то планы?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "q1": {
-      "de": "Noch nicht wirklich konkret, aber ich möchte auf jeden Fall etwas draußen unternehmen, weil das Wetter so schön werden soll. Vielleicht gehe ich wandern oder treffe mich einfach mit Freunden im Park.",
+      "de": "Noch nicht wirklich konkret, aber ich möchte auf jeden Fall etwas draußen unternehmen, <g>weil</g> das Wetter so schön <g>werden soll</g>. Vielleicht gehe ich wandern oder treffe mich einfach mit Freunden im Park.",
       "en": "Not really anything concrete yet, but I definitely want to do something outdoors since the weather's supposed to be nice. Maybe I'll go hiking or just meet up with friends in the park.",
       "uk": "Поки що нічого конкретного, але я точно хочу щось зробити на свіжому повітрі, бо погода начебто буде гарна. Може, піду в похід або просто зустрінуся з друзями в парку.",
       "ru": "Пока ничего конкретного, но я точно хочу сделать что-то на свежем воздухе, потому что погода вроде обещает быть хорошей. Может, пойду в поход или просто встречусь с друзьями в парке.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a1": {
       "de": "Das klingt nach einem schönen Ausgleich zur Arbeitswoche. Kochst du dann sonntags auch gerne, oder bestellt ihr euch eher etwas?",
@@ -14439,11 +14439,11 @@ var DIALOGE = [
     "name_q": "de_m_mark",
     "name_a": "de_m_david",
     "q": {
-      "de": "Wir haben ein Problem: Herr Meier hat unserem Kollegen Lukas heute drei neue Arbeitsaufträge gegeben, obwohl der bis Freitag schon zwei dringende Deadlines hat. Sein Arbeitspensum ist jetzt einfach zu hoch.",
+      "de": "Wir haben ein Problem: Herr Meier hat unserem Kollegen Lukas heute drei neue Arbeitsaufträge gegeben, <g>obwohl</g> der bis Freitag schon zwei dringende Deadlines <g>hat</g>. Sein Arbeitspensum ist jetzt einfach zu hoch.",
       "en": "We have a problem: Mr. Meier gave our colleague Lukas three new work assignments today, even though he already has two urgent deadlines by Friday. His workload is now simply too high.",
       "uk": "У нас проблема: пан Майєр сьогодні дав нашому колезі Лукасу три нових робочих доручення, хоча в того вже є два термінові дедлайни до п'ятниці. Його навантаження зараз просто зашкалює.",
       "ru": "У нас проблема: господин Майер сегодня дал нашему коллеге Лукасу три новых рабочих поручения, хотя у того уже есть два срочных дедлайна до пятницы. Его нагрузка сейчас просто зашкаливает.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a": {
       "de": "<r>Habe ich dich richtig verstanden</r>: Es geht also darum, dass die Prioritäten der einzelnen Aufträge gar nicht klar sind?",
@@ -14495,11 +14495,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir nur die einfacheren Teilaufgaben delegieren und Lukas die komplexeren Aufträge selbst bearbeiten lässt.",
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir nur die einfacheren Teilaufgaben delegieren und Lukas die komplexeren Aufträge selbst <g>bearbeiten lässt</g>.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> only delegating the simpler subtasks and letting Lukas handle the more complex assignments himself.",
       "uk": "<r>Це правда, але</r> цю проблему <r>можна було б вирішити</r>, якщо ми делегуємо лише простіші підзавдання, а складніші доручення Лукас виконає сам.",
       "ru": "<r>Это верно, но</r> эту проблему <r>можно было бы решить</r>, если мы делегируем только более простые подзадачи, а более сложные поручения Лукас выполнит сам.",
-      "gram": ""
+      "gram": "modalsatz_dadurch_indem"
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. So bleibt die Zuständigkeit klar, und trotzdem wird das Arbeitspensum spürbar kleiner.",
@@ -14558,11 +14558,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a8": {
-      "de": "Genau. Ich denke, so behält Lukas den Überblick, ohne dass die Deadlines gefährdet sind. Ich notiere die wichtigsten Punkte im Protokoll und schicke sie dir gleich nach dem Gespräch. <r>Lass uns außerdem am Mittwoch kurz zusammenkommen, um zu prüfen, ob die neue Aufteilung funktioniert.</r>",
-      "en": "Exactly. I think that way Lukas keeps an overview without the deadlines being at risk. I'll note the key points in the minutes and send them to you right after the conversation. <r>Let's also get together briefly on Wednesday to check whether the new arrangement is working.</r>",
+      "de": "Genau. Ich denke, so behält Lukas den Überblick, <g>ohne dass</g> die Deadlines gefährdet sind. Ich notiere die wichtigsten Punkte im Protokoll und schicke sie dir gleich nach dem Gespräch. <r>Lass uns außerdem am Mittwoch kurz zusammenkommen, um zu prüfen, ob die neue Aufteilung funktioniert.</r>",
+      "en": "Exactly. I think that way Lukas keeps an overview <g>without</g> the deadlines being at risk. I'll note the key points in the minutes and send them to you right after the conversation. <r>Let's also get together briefly on Wednesday to check whether the new arrangement is working.</r>",
       "uk": "Саме так. Гадаю, так Лукас збереже контроль над ситуацією, а дедлайни не постраждають. Я занотую головні пункти в протоколі і надішлю тобі одразу після розмови. <r>Крім того, давай зберемося коротко в середу, щоб перевірити, чи спрацював новий розподіл.</r>",
       "ru": "Именно так. Думаю, так Лукас сохранит контроль над ситуацией, а дедлайны не пострадают. Я запишу главные пункты в протокол и отправлю тебе сразу после разговора. <r>Кроме того, давай соберёмся коротко в среду, чтобы проверить, сработало ли новое распределение.</r>",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -14578,11 +14578,11 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_david",
     "q": {
-      "de": "Wir haben ein Problem: Unser neuer Kollege, Herr Fischer, soll sich in die Datenanalyse-Software einarbeiten, aber ihm fehlen noch die Zugangsdaten, und eine Mentorenschaft wurde bisher auch nicht offiziell vertraglich festgelegt.",
+      "de": "Wir haben ein Problem: Unser neuer Kollege, Herr Fischer, soll sich in die Datenanalyse-Software einarbeiten, aber ihm fehlen noch die Zugangsdaten, und eine Mentorenschaft <g>wurde</g> bisher auch nicht offiziell vertraglich <g>festgelegt</g>.",
       "en": "We have a problem: our new colleague, Mr. Fischer, is supposed to get trained in the data analysis software, but he's still missing the login credentials, and a mentorship hasn't been officially set up in his contract yet either.",
       "uk": "У нас проблема: наш новий колега, пан Фішер, має навчитися працювати з програмою аналізу даних, але йому досі бракує логіна й пароля, і наставництво також офіційно ще не закріплене в договорі.",
       "ru": "У нас проблема: наш новый коллега, господин Фишер, должен научиться работать с программой анализа данных, но ему всё ещё не хватает логина и пароля, и наставничество тоже официально ещё не закреплено в договоре.",
-      "gram": ""
+      "gram": "passiv_passiversatz"
     },
     "a": {
       "de": "<r>Ach so</r>, das heißt, er weiß eigentlich gar nicht genau, wer ihn einarbeiten soll und womit er überhaupt arbeiten kann?",
@@ -14620,11 +14620,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q3": {
-      "de": "Ein weiterer Vorschlag wäre, dass ich seine Mentorin werde, weil ich mit der Software am besten vertraut bin.",
+      "de": "Ein weiterer Vorschlag wäre, dass ich seine Mentorin werde, <g>weil</g> ich mit der Software am besten vertraut <g>bin</g>.",
       "en": "Another suggestion would be for me to become his mentor, since I'm most familiar with the software.",
       "uk": "Ще одна пропозиція - я стану його наставницею, бо найкраще знайома з програмою.",
       "ru": "Ещё одно предложение - я стану его наставницей, потому что лучше всех знакома с программой.",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a3": {
       "de": "<r>Ein Argument, das dagegen spricht, ist</r>, dass du selbst gerade ziemlich ausgelastet bist und kaum Zeit für eine Mentorenschaft hättest.",
@@ -14634,11 +14634,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir uns die Mentorenschaft zu zweit teilen.",
+      "de": "<r>Das stimmt zwar, aber</r> <r>man könnte das Problem eventuell lösen, indem</r> wir uns die Mentorenschaft zu zweit <g>teilen</g>.",
       "en": "<r>That's true, but</r> <r>we could perhaps solve the problem by</r> splitting the mentorship between the two of us.",
       "uk": "<r>Це правда, але</r> <r>цю проблему можна було б вирішити</r>, якщо ми розділимо наставництво між нами двома.",
       "ru": "<r>Это верно, но</r> <r>эту проблему можно было бы решить</r>, если мы разделим наставничество между нами двоими.",
-      "gram": ""
+      "gram": "modalsatz_dadurch_indem"
     },
     "a4": {
       "de": "<r>Da bin ich ganz deiner Meinung</r>. <r>Okay, dann mache ich also Folgendes</r>: Ich übernehme die ersten zwei Wochen, und danach übernimmst du.",
