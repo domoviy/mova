@@ -14745,11 +14745,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Am Anfang schon ein bisschen, aber mittlerweile fühle ich mich damit sehr sicher, vor allem weil ich immer mit erfahrenen Leuten unterwegs bin. Tretet ihr mit der Band eigentlich auch mal live auf?",
+      "de": "Am Anfang schon ein bisschen, aber mittlerweile fühle ich mich damit sehr sicher, vor allem <g>weil</g> ich immer mit erfahrenen Leuten unterwegs <g>bin</g>. Tretet ihr mit der Band eigentlich auch mal live auf?",
       "en": "At first a little, but by now I feel very safe with it, especially because I'm always out with experienced people. Do you and the band actually ever perform live?",
       "uk": "Спочатку трохи було, але зараз я почуваюся дуже впевнено, особливо тому що завжди їжджу з досвідченими людьми. А ви з гуртом взагалі виступаєте наживо?",
       "ru": "Сначала немного было, но сейчас я чувствую себя очень уверенно, особенно потому что всегда езжу с опытными людьми. А вы с группой вообще выступаете вживую?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a2": {
       "de": "Ja, ein paarmal im Jahr, meistens auf kleineren Veranstaltungen in der Stadt. Das macht total viel Spaß, auch wenn ich vorher immer ziemlich nervös bin.",
@@ -14779,18 +14779,18 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ja, ich fliege im August für zwei Wochen nach Portugal, ans Meer. Ich freue mich schon total darauf, einfach mal abzuschalten. Und du, fährst du dieses Jahr auch irgendwohin?",
+      "de": "Ja, ich fliege im August für zwei Wochen nach Portugal, ans Meer. Ich freue mich schon total darauf, einfach <g>mal</g> abzuschalten. Und du, fährst du dieses Jahr auch irgendwohin?",
       "en": "Yes, in August I'm flying to Portugal for two weeks, to the coast. I'm really looking forward to just switching off for a while. What about you, are you going anywhere this year too?",
       "uk": "Так, у серпні я лечу на два тижні до Португалії, на узбережжя. Я вже дуже чекаю просто відключитися від усього. А в тебе, ти теж кудись поїдеш цього року?",
       "ru": "Да, в августе я лечу на две недели в Португалию, на побережье. Я уже очень жду просто отключиться от всего. А у тебя, ты тоже куда-нибудь поедешь в этом году?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "q1": {
-      "de": "Ich bin mir noch nicht ganz sicher, aber ich überlege, ob ich lieber wieder in die Berge fahre oder dieses Mal etwas ganz Neues ausprobiere. Warst du schon mal in Portugal?",
+      "de": "Ich bin mir noch nicht ganz sicher, aber ich überlege, ob ich lieber wieder in die Berge fahre oder dieses Mal <g>etwas</g> ganz <g>Neues</g> ausprobiere. Warst du schon mal in Portugal?",
       "en": "I'm not quite sure yet, but I'm thinking about whether to go back to the mountains or try something completely new this time. Have you been to Portugal before?",
       "uk": "Я ще не зовсім впевнена, але думаю, чи поїхати знову в гори, чи спробувати цього разу щось зовсім нове. Ти вже бував у Португалії?",
       "ru": "Я ещё не совсем уверена, но думаю, поехать ли снова в горы или попробовать в этот раз что-то совсем новое. Ты уже бывал в Португалии?",
-      "gram": ""
+      "gram": "indefinitpronomen"
     },
     "a1": {
       "de": "Nein, das ist tatsächlich mein erstes Mal dort. Ein Kollege hat es mir total empfohlen, wegen der Strände und dem guten Essen. Fährst du eigentlich lieber allein oder mit Familie in den Urlaub?",
@@ -14807,11 +14807,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Genau zwei Wochen, das reicht meistens, um wirklich zur Ruhe zu kommen. Danach freue ich mich aber auch schon wieder ein bisschen auf die Arbeit, ehrlich gesagt.",
-      "en": "Exactly two weeks, that's usually enough to really unwind. But after that I'm honestly already a little looking forward to work again too.",
+      "de": "Genau zwei Wochen, das reicht meistens, <g>um</g> wirklich zur Ruhe <g>zu</g> kommen. Danach freue ich mich aber auch schon wieder ein bisschen auf die Arbeit, ehrlich gesagt.",
+      "en": "Exactly two weeks, that's usually enough <g>to</g> really unwind. But after that I'm honestly already a little looking forward to work again too.",
       "uk": "Рівно на два тижні, зазвичай цього вистачає, щоб справді відпочити. Але потім я, чесно кажучи, вже трохи чекаю знову на роботу.",
       "ru": "Ровно на две недели, обычно этого хватает, чтобы действительно отдохнуть. Но потом я, честно говоря, уже немного жду снова работу.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -14848,18 +14848,18 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Fast immer draußen, außer bei richtig schlechtem Wetter. Ich mag es einfach, dabei ein bisschen die Natur zu sehen. Wie lange machst du schon Yoga?",
+      "de": "Fast immer draußen, außer bei richtig schlechtem Wetter. Ich mag es einfach, <g>dabei</g> ein bisschen die Natur zu sehen. Wie lange machst du schon Yoga?",
       "en": "Almost always outside, except in really bad weather. I just like seeing a bit of nature while I do it. How long have you been doing yoga?",
       "uk": "Майже завжди надворі, хіба що в дуже погану погоду. Мені просто подобається бачити трохи природи під час бігу. Як довго ти вже займаєшся йогою?",
       "ru": "Почти всегда на улице, разве что в очень плохую погоду. Мне просто нравится видеть немного природы во время бега. Как долго ты уже занимаешься йогой?",
-      "gram": ""
+      "gram": "textzusammenhang"
     },
     "q2": {
-      "de": "Ungefähr zwei Jahre jetzt, ich habe damit nach einer stressigen Zeit im Job angefangen. Hast du eigentlich schon mal an einem Lauf oder Marathon teilgenommen?",
+      "de": "Ungefähr zwei Jahre jetzt, ich habe <g>damit</g> nach einer stressigen Zeit im Job angefangen. Hast du eigentlich schon mal an einem Lauf oder Marathon teilgenommen?",
       "en": "About two years now, I started after a stressful time at work. Have you actually ever taken part in a race or a marathon?",
       "uk": "Уже приблизно два роки, я почала після напруженого періоду на роботі. А ти взагалі колись брав участь у забігу чи марафоні?",
       "ru": "Уже примерно два года, я начала после напряжённого периода на работе. А ты вообще когда-нибудь участвовал в забеге или марафоне?",
-      "gram": ""
+      "gram": "textzusammenhang"
     },
     "a2": {
       "de": "Ja, letztes Jahr habe ich meinen ersten Halbmarathon gemacht, das war eine echte Herausforderung, aber auch total motivierend. Dieses Jahr will ich es vielleicht sogar noch mal versuchen.",
@@ -14889,18 +14889,18 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ich habe Gleitzeit, meistens fange ich so gegen halb neun an und höre dann gegen halb sechs auf. Das passt gut zu mir, weil ich morgens sowieso nicht so früh aus dem Bett komme. Und wie sieht das bei dir aus?",
+      "de": "Ich habe Gleitzeit, meistens fange ich so gegen halb neun an und höre dann gegen halb sechs auf. Das passt gut zu mir, <g>weil</g> ich morgens sowieso nicht so früh aus dem Bett <g>komme</g>. Und wie sieht das bei dir aus?",
       "en": "I have flextime, I usually start around half past eight and finish around half past five. That suits me well, because I don't get out of bed that early in the morning anyway. What's it like for you?",
       "uk": "У мене гнучкий графік, зазвичай я починаю приблизно о пів на дев'яту і закінчую десь о пів на шосту. Мені це підходить, бо вранці я все одно не дуже рано прокидаюся. А в тебе як?",
       "ru": "У меня гибкий график, обычно я начинаю примерно в половине девятого и заканчиваю где-то в половине шестого. Мне это подходит, потому что утром я всё равно не очень рано просыпаюсь. А у тебя как?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q1": {
-      "de": "Bei mir ist es ähnlich, aber ich fange meistens schon um acht an, damit ich nachmittags früher fertig bin. Nutzt du die Gleitzeit eigentlich auch mal für private Termine?",
+      "de": "Bei mir ist es ähnlich, aber ich fange meistens schon um acht an, <g>damit</g> ich nachmittags früher fertig <g>bin</g>. Nutzt du die Gleitzeit eigentlich auch mal für private Termine?",
       "en": "It's similar for me, but I usually start already at eight, so I'm done earlier in the afternoon. Do you actually sometimes use the flextime for personal appointments too?",
       "uk": "У мене схоже, але я зазвичай починаю вже о восьмій, щоб раніше закінчити пополудні. А ти взагалі іноді використовуєш гнучкий графік для особистих справ?",
       "ru": "У меня похоже, но я обычно начинаю уже в восемь, чтобы раньше закончить после обеда. А ты вообще иногда используешь гибкий график для личных дел?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a1": {
       "de": "Ja, total gerne, letzte Woche hatte ich zum Beispiel einen Arzttermin am Vormittag und habe die Zeit einfach abends nachgeholt. Machst du eigentlich manchmal Überstunden?",
@@ -14958,11 +14958,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Ja, zum Glück bis siebzehn Uhr, das passt meistens ganz gut mit meinen Arbeitszeiten zusammen. Nur wenn ich mal länger arbeiten muss, wird es wirklich knapp. Hilft dir eigentlich jemand aus deiner Familie mit deiner Nichte oder deinem Neffen?",
+      "de": "Ja, zum Glück bis siebzehn Uhr, das passt meistens ganz gut mit meinen Arbeitszeiten zusammen. Nur wenn ich <g>mal</g> länger arbeiten muss, wird es wirklich knapp. Hilft dir eigentlich jemand aus deiner Familie mit deiner Nichte oder deinem Neffen?",
       "en": "Yes, thankfully until five p.m., that usually fits pretty well with my working hours. It only really gets tight when I have to work longer sometimes. Does anyone in your family actually help with your niece or nephew?",
       "uk": "Так, на щастя, до сімнадцятої, це зазвичай непогано узгоджується з моїм робочим графіком. Тільки коли мені треба довше попрацювати, стає справді тісно. А тобі допомагає хтось із родини з твоєю племінницею чи племінником?",
       "ru": "Да, к счастью, до семнадцати часов, это обычно неплохо согласуется с моим рабочим графиком. Только когда мне нужно поработать подольше, становится действительно тесно. А тебе помогает кто-то из семьи с твоей племянницей или племянником?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "q2": {
       "de": "Ja, meine Eltern springen ab und zu ein, wenn meine Schwester einen Termin hat. Ich finde es total schön zu sehen, wie die ganze Familie irgendwie zusammenhält. Nimmst du dir eigentlich manchmal auch bewusst Zeit nur für dich?",
@@ -14972,11 +14972,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Ehrlich gesagt eher selten, aber ich versuche, mir wenigstens einmal die Woche einen Abend für mich freizuhalten. Das brauche ich einfach, um wieder Energie zu tanken.",
-      "en": "Honestly, rarely, but I try to at least keep one evening a week free just for myself. I just need that to recharge my energy.",
+      "de": "Ehrlich gesagt eher selten, aber ich versuche, mir wenigstens einmal die Woche einen Abend für mich freizuhalten. Das brauche ich einfach, <g>um</g> wieder Energie <g>zu</g> tanken.",
+      "en": "Honestly, rarely, but I try to at least keep one evening a week free just for myself. I just need that <g>to</g> recharge my energy.",
       "uk": "Чесно кажучи, досить рідко, але я намагаюся хоча б раз на тиждень залишати вечір вільним для себе. Це мені просто потрібно, щоб знову набратися енергії.",
       "ru": "Честно говоря, довольно редко, но я стараюсь хотя бы раз в неделю оставлять вечер свободным для себя. Это мне просто нужно, чтобы снова набраться энергии.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -15013,11 +15013,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Der macht wirklich Spaß, vor allem im Sommer, aber bei Regen nutze ich ihn natürlich nicht. Eine Fahrgemeinschaft klingt aber auch praktisch - spart ihr euch dadurch viele Kosten?",
+      "de": "Der macht wirklich Spaß, vor allem im Sommer, aber bei Regen nutze ich ihn natürlich nicht. Eine Fahrgemeinschaft klingt aber auch praktisch - spart ihr euch <g>dadurch</g> viele Kosten?",
       "en": "It's really fun, especially in summer, but of course I don't use it when it rains. Carpooling sounds practical too though - does it save you a lot of costs?",
       "uk": "Це справді весело, особливо влітку, але в дощ я його, звісно, не використовую. А спільні поїздки теж звучать практично - це заощаджує вам чимало коштів?",
       "ru": "Это действительно весело, особенно летом, но в дождь я его, конечно, не использую. А совместные поездки тоже звучат практично - это экономит вам немало денег?",
-      "gram": ""
+      "gram": "textzusammenhang"
     },
     "q2": {
       "de": "Ja, ziemlich viel sogar, wir teilen uns Benzin und Parkgebühren, und ich muss nur jede zweite Woche wirklich fahren. Gibt es eigentlich viele Parkplätze bei euch in der Nähe?",
@@ -15054,11 +15054,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ich wollte eigentlich schon lange mal mein Wohnzimmer neu streichen, also nutze ich das Wochenende wahrscheinlich dafür. Das wird bestimmt anstrengend, aber ich freue mich schon darauf, wie es danach aussieht. Und du, hast du schon was geplant?",
+      "de": "Ich wollte eigentlich schon lange <g>mal</g> mein Wohnzimmer neu streichen, also nutze ich das Wochenende wahrscheinlich dafür. Das wird bestimmt anstrengend, aber ich freue mich schon darauf, wie es danach aussieht. Und du, hast du schon was geplant?",
       "en": "I've actually been wanting to repaint my living room for a long time, so I'll probably use the weekend for that. It's bound to be exhausting, but I'm already looking forward to how it'll look afterward. What about you, have you planned anything yet?",
       "uk": "Я вже давно хотіла перефарбувати вітальню, тож, мабуть, використаю вихідні саме для цього. Це точно буде виснажливо, але я вже зараз рада, як усе виглядатиме потім. А в тебе вже є якісь плани?",
       "ru": "Я уже давно хотела перекрасить гостиную, так что, наверное, использую выходные именно для этого. Это точно будет утомительно, но я уже сейчас рада тому, как всё будет выглядеть потом. А у тебя уже есть какие-то планы?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "q1": {
       "de": "Ich treffe mich am Samstag mit einer alten Freundin, die ich schon ewig nicht mehr gesehen habe. Wir wollen zusammen brunchen gehen und dann vielleicht noch shoppen. Welche Farbe hast du dir eigentlich für dein Wohnzimmer ausgesucht?",
@@ -15068,11 +15068,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Ich überlege noch zwischen einem hellen Grau und einem warmen Beige, kann mich aber einfach nicht entscheiden. Klingt aber schön, dass ihr euch nach so langer Zeit mal wiedertrefft - worüber unterhaltet ihr euch dann meistens?",
+      "de": "Ich überlege noch zwischen einem hellen Grau und einem warmen Beige, kann mich aber einfach nicht entscheiden. Klingt aber schön, <g>dass</g> ihr euch nach so langer Zeit mal <g>wiedertrefft</g> - worüber unterhaltet ihr euch dann meistens?",
       "en": "I'm still deciding between a light gray and a warm beige, but I just can't make up my mind. Sounds nice though that you two are meeting up again after so long - what do you usually talk about then?",
       "uk": "Я ще думаю між світло-сірим і теплим бежевим, але ніяк не можу вирішити. Але звучить приємно, що ви знову зустрічаєтеся після такої перерви - про що ви зазвичай розмовляєте?",
       "ru": "Я ещё думаю между светло-серым и тёплым бежевым, но никак не могу решить. Но звучит приятно, что вы снова встречаетесь после такого перерыва - о чём вы обычно разговариваете?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "Eigentlich über alles Mögliche, meistens aber über die Arbeit oder was sich bei uns beiden gerade so tut. Am Sonntag will ich dann aber wirklich nichts machen und einfach nur entspannen. Hast du eigentlich schon eine Idee, wie du das Wochenende ausklingen lässt?",
@@ -15116,18 +15116,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Ich bin eigentlich in einem Buchclub, wir lesen jeden Monat ein neues Buch und treffen uns dann, um darüber zu diskutieren. Bist du eigentlich schon gut im Malen geworden, oder fängst du gerade erst an?",
-      "en": "I'm actually in a book club, we read a new book every month and then meet up to discuss it. Have you actually gotten pretty good at painting already, or are you just starting out?",
+      "de": "Ich bin eigentlich in einem Buchclub, wir lesen jeden Monat ein neues Buch und treffen uns dann, <g>um</g> darüber <g>zu</g> diskutieren. Bist du eigentlich schon gut im Malen geworden, oder fängst du gerade erst an?",
+      "en": "I'm actually in a book club, we read a new book every month and then meet up <g>to</g> discuss it. Have you actually gotten pretty good at painting already, or are you just starting out?",
       "uk": "Я взагалі в книжковому клубі, ми щомісяця читаємо нову книжку, а потім зустрічаємося, щоб її обговорити. А ти вже добре навчилася малювати, чи тільки починаєш?",
       "ru": "Я вообще в книжном клубе, мы каждый месяц читаем новую книгу, а потом встречаемся, чтобы её обсудить. А ты уже хорошо научилась рисовать, или только начинаешь?",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "a1": {
-      "de": "Ich würde sagen, ich mache schon Fortschritte, auch wenn ich noch lange kein Profi bin. Ein Buchclub klingt aber auch total spannend - welches Buch lest ihr gerade?",
+      "de": "Ich würde sagen, ich mache schon Fortschritte, <g>auch wenn</g> ich noch lange kein Profi <g>bin</g>. Ein Buchclub klingt aber auch total spannend - welches Buch lest ihr gerade?",
       "en": "I'd say I'm making progress, even though I'm still far from a professional. A book club sounds really exciting too though - what book are you reading right now?",
       "uk": "Я б сказала, що вже прогресую, хоча до професіонала мені ще далеко. Книжковий клуб теж звучить дуже цікаво - яку книжку ви зараз читаєте?",
       "ru": "Я бы сказала, что уже прогрессирую, хотя до профессионала мне ещё далеко. Книжный клуб тоже звучит очень интересно - какую книгу вы сейчас читаете?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "Gerade lesen wir einen Kriminalroman, der in Berlin spielt, das macht wirklich Spaß. Stellst du deine Bilder eigentlich irgendwo aus, oder malst du nur für dich selbst?",
@@ -15137,11 +15137,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Bisher nur für mich, aber ein paar aus dem Kurs haben letztes Jahr eine kleine Ausstellung gemacht. Vielleicht traue ich mich das ja auch irgendwann mal.",
+      "de": "Bisher nur für mich, aber ein paar aus dem Kurs haben letztes Jahr eine kleine Ausstellung gemacht. Vielleicht traue ich mich das <g>ja</g> auch irgendwann <g>mal</g>.",
       "en": "So far just for myself, but a few people from the class did a small exhibition last year. Maybe I'll work up the courage to do that too someday.",
       "uk": "Поки що лише для себе, але декілька людей з курсу минулого року зробили невелику виставку. Може, колись і я наважуся.",
       "ru": "Пока только для себя, но несколько человек с курса в прошлом году сделали небольшую выставку. Может, когда-нибудь и я решусь.",
-      "gram": ""
+      "gram": "modalpartikeln"
     }
   },
   {
@@ -15164,11 +15164,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ja, ich fahre für eine Woche mit dem Wohnmobil durch Norwegen, das wollte ich schon lange mal machen. Ich freue mich total auf die Natur dort und die vielen Fjorde. Und du, hast du auch schon was vor?",
+      "de": "Ja, ich fahre für eine Woche mit dem Wohnmobil durch Norwegen, das wollte ich schon lange <g>mal</g> machen. Ich freue mich total auf die Natur dort und die vielen Fjorde. Und du, hast du auch schon was vor?",
       "en": "Yes, I'm taking a camper van through Norway for a week, I've wanted to do that for a long time. I'm really looking forward to the nature there and the many fjords. What about you, do you have anything planned too?",
       "uk": "Так, я на тиждень їду на кемпері через Норвегію, я вже давно хотів це зробити. Дуже чекаю на природу там і численні фʼорди. А в тебе теж уже є якісь плани?",
       "ru": "Да, я на неделю еду на кемпере через Норвегию, я уже давно хотел это сделать. Очень жду природу там и множество фьордов. А у тебя тоже уже есть какие-то планы?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "q1": {
       "de": "Ich glaube, ich bleibe dieses Jahr eher zu Hause und mache eine Art Staycation, also einfach ein paar freie Tage ohne konkrete Pläne. Warst du eigentlich schon mal mit dem Wohnmobil unterwegs?",
@@ -15192,11 +15192,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Genau eine Woche, das reicht meiner Meinung nach gerade richtig, um ein paar Orte zu sehen, ohne total im Stress zu sein.",
-      "en": "Exactly one week, in my opinion that's just about right to see a few places without being totally stressed.",
+      "de": "Genau eine Woche, das reicht meiner Meinung nach gerade richtig, <g>um</g> ein paar Orte <g>zu</g> sehen, <g>ohne</g> total im Stress <g>zu</g> sein.",
+      "en": "Exactly one week, in my opinion that's just about right <g>to</g> see a few places <g>without</g> being totally stressed.",
       "uk": "Рівно тиждень, на мою думку, цього якраз досить, щоб побачити кілька місць, не перебуваючи в постійному стресі.",
       "ru": "Ровно неделю, по-моему, этого как раз достаточно, чтобы увидеть несколько мест, не находясь в постоянном стрессе.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -15219,11 +15219,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Doch, ich spiele seit der Schulzeit Fußball, mittlerweile in einer kleinen Freizeitliga hier in der Stadt. Wir trainieren zweimal die Woche und haben am Wochenende meistens ein Spiel. Und du, machst du auch etwas Sportliches?",
+      "de": "<g>Doch</g>, ich spiele seit der Schulzeit Fußball, mittlerweile in einer kleinen Freizeitliga hier in der Stadt. Wir trainieren zweimal die Woche und haben am Wochenende meistens ein Spiel. Und du, machst du auch etwas Sportliches?",
       "en": "Actually yes, I've been playing football since school, these days in a small recreational league here in the city. We train twice a week and usually have a match on the weekend. What about you, do you do anything sporty too?",
       "uk": "Ні, навпаки, я граю у футбол ще зі шкільних часів, зараз у невеликій аматорській лізі тут у місті. Ми тренуємося двічі на тиждень, і зазвичай на вихідних маємо матч. А в тебе, ти теж чимось спортивним займаєшся?",
       "ru": "Нет, наоборот, я играю в футбол ещё со школьных времён, сейчас в небольшой любительской лиге здесь в городе. Мы тренируемся дважды в неделю, и обычно на выходных у нас матч. А у тебя, ты тоже чем-то спортивным занимаешься?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "q1": {
       "de": "Ich gehe eigentlich dreimal die Woche ins Fitnessstudio, hauptsächlich Krafttraining. Ich finde es total befriedigend, wenn man sieht, wie man langsam stärker wird. Wie läuft's eigentlich mit eurer Liga, seid ihr gerade erfolgreich?",
@@ -15274,11 +15274,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ich arbeite seit letztem Jahr in Teilzeit, ungefähr dreißig Stunden die Woche. Das war eine bewusste Entscheidung, damit ich mehr Zeit für mich habe. Und du, wie ist das bei dir geregelt?",
+      "de": "Ich arbeite seit letztem Jahr in Teilzeit, ungefähr dreißig Stunden die Woche. Das war eine bewusste Entscheidung, <g>damit</g> ich mehr Zeit für mich <g>habe</g>. Und du, wie ist das bei dir geregelt?",
       "en": "I've been working part-time since last year, about thirty hours a week. That was a deliberate decision, so I'd have more time for myself. What about you, how is that arranged for you?",
       "uk": "Я з минулого року працюю неповний день, приблизно тридцять годин на тиждень. Це було свідоме рішення, щоб мати більше часу для себе. А в тебе як це влаштовано?",
       "ru": "Я с прошлого года работаю неполный день, примерно тридцать часов в неделю. Это было осознанное решение, чтобы иметь больше времени для себя. А у тебя как это устроено?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q1": {
       "de": "Ich arbeite Vollzeit, aber dafür habe ich relativ flexible Kernarbeitszeiten. Wie hast du das eigentlich mit deinem Chef ausgehandelt, die Reduzierung auf Teilzeit?",
@@ -15336,11 +15336,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Bei uns ist es ähnlich, nur dass wir keinen Partner haben, der sich das teilt - ich mache das meistens allein, mit Unterstützung von meiner Nachbarin. Wie alt sind eure Kinder eigentlich?",
+      "de": "Bei uns ist es ähnlich, nur dass wir <g>keinen</g> Partner haben, der sich das teilt - ich mache das meistens allein, mit Unterstützung von meiner Nachbarin. Wie alt sind eure Kinder eigentlich?",
       "en": "For us it's similar, except we don't have a partner to share it with - I mostly do it alone, with support from my neighbor. How old are your kids actually?",
       "uk": "У нас схоже, тільки в нас немає партнера, який би це ділив - я здебільшого роблю це сама, за підтримки моєї сусідки. До речі, скільки років вашим дітям?",
       "ru": "У нас похоже, только у нас нет партнёра, который бы это делил - я в основном делаю это одна, при поддержке моей соседки. Кстати, сколько лет вашим детям?",
-      "gram": ""
+      "gram": "negation"
     },
     "a1": {
       "de": "Meine Tochter ist sieben und mein Sohn ist zehn, die beiden gehen inzwischen zum Glück auch schon relativ selbstständig zur Schule. Das muss aber schon anstrengend sein, das alles allein zu organisieren - hast du eigentlich viel Unterstützung von der Familie?",
@@ -15350,11 +15350,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Zum Glück ja, meine Eltern wohnen ganz in der Nähe und springen ein, wenn es mal eng wird. Ohne die beiden wäre es wirklich schwierig. Nehmt ihr eigentlich auch mal Urlaubstage, nur um Zeit mit den Kindern zu verbringen?",
-      "en": "Fortunately yes, my parents live very close by and step in whenever things get tight. Without the two of them it would really be difficult. Do you actually sometimes take vacation days just to spend time with the kids?",
+      "de": "Zum Glück ja, meine Eltern wohnen ganz in der Nähe und springen ein, wenn es mal eng wird. Ohne die beiden wäre es wirklich schwierig. Nehmt ihr eigentlich auch mal Urlaubstage, nur <g>um</g> Zeit mit den Kindern <g>zu</g> verbringen?",
+      "en": "Fortunately yes, my parents live very close by and step in whenever things get tight. Without the two of them it would really be difficult. Do you actually sometimes take vacation days just <g>to</g> spend time with the kids?",
       "uk": "На щастя, так, мої батьки живуть зовсім поруч і виручають, коли стає складно. Без них двох було б справді важко. А ви взагалі берете відпустку тільки для того, щоб провести час з дітьми?",
       "ru": "К счастью, да, мои родители живут совсем рядом и выручают, когда становится сложно. Без них двоих было бы действительно тяжело. А вы вообще берёте отпуск только для того, чтобы провести время с детьми?",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "a2": {
       "de": "Ja, das versuchen wir schon regelmäßig zu machen, gerade in den Schulferien. Das ist uns beiden wirklich wichtig, auch wenn es manchmal schwierig ist, das mit der Arbeit unter einen Hut zu bringen.",
@@ -15384,11 +15384,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ich laufe tatsächlich zu Fuß, das dauert ungefähr fünfundzwanzig Minuten. Ich wohne zum Glück ziemlich zentral, deshalb lohnt sich für mich weder Auto noch Bahn. Und du, wie sieht das bei dir aus?",
+      "de": "Ich laufe tatsächlich zu Fuß, das dauert ungefähr fünfundzwanzig Minuten. Ich wohne zum Glück ziemlich zentral, deshalb lohnt sich für mich <g>weder</g> Auto <g>noch</g> Bahn. Und du, wie sieht das bei dir aus?",
       "en": "I actually walk, it takes about twenty-five minutes. Luckily I live pretty centrally, so neither a car nor the train is really worth it for me. What about you, what's it like for you?",
       "uk": "Я насправді ходжу пішки, це займає приблизно двадцять п'ять хвилин. На щастя, я живу досить близько до центру, тому мені немає сенсу користуватися ні машиною, ні потягом. А в тебе як?",
       "ru": "Я на самом деле хожу пешком, это занимает примерно двадцать пять минут. К счастью, я живу довольно близко к центру, поэтому мне нет смысла пользоваться ни машиной, ни поездом. А у тебя как?",
-      "gram": ""
+      "gram": "konnektoren_zweiteilig"
     },
     "q1": {
       "de": "Ich fahre mit dem Bus, das dauert normalerweise etwa dreißig Minuten, aber wenn es Verspätungen gibt, kann es auch mal eine Stunde werden. Genießt du es eigentlich, jeden Tag zu Fuß zu gehen?",
@@ -15412,11 +15412,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Nein, ich gehe eigentlich immer zu Fuß, egal bei welchem Wetter, ich habe einfach eine gute Regenjacke. Das ist mir lieber, als mich auf ein Taxi oder Öffis verlassen zu müssen.",
+      "de": "Nein, ich gehe eigentlich immer zu Fuß, egal bei welchem Wetter, ich habe einfach eine gute Regenjacke. Das ist mir <g>lieber</g>, <g>als</g> mich auf ein Taxi oder Öffis verlassen zu müssen.",
       "en": "No, I actually always walk, no matter the weather, I just have a good rain jacket. I prefer that to having to rely on a taxi or public transport.",
       "uk": "Ні, я взагалі завжди ходжу пішки, незалежно від погоди, у мене просто хороший дощовик. Мені це більше подобається, ніж покладатися на таксі чи громадський транспорт.",
       "ru": "Нет, я вообще всегда хожу пешком, независимо от погоды, у меня просто хороший дождевик. Мне это больше нравится, чем полагаться на такси или общественный транспорт.",
-      "gram": ""
+      "gram": "vergleichssaetze_als_wie_je_desto"
     }
   },
   {
@@ -15439,11 +15439,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ja, meine Nichte hat am Samstag Geburtstag, deshalb feiern wir bei meiner Schwester im Garten, falls das Wetter mitspielt. Ich muss noch ein Geschenk besorgen. Und du, was steht bei dir an?",
+      "de": "Ja, meine Nichte hat am Samstag Geburtstag, deshalb feiern wir bei meiner Schwester im Garten, <g>falls</g> das Wetter <g>mitspielt</g>. Ich muss noch ein Geschenk besorgen. Und du, was steht bei dir an?",
       "en": "Yes, my niece's birthday is on Saturday, so we're celebrating at my sister's place in the garden, if the weather cooperates. I still need to get a present. What about you, what's on your agenda?",
       "uk": "Так, у моєї племінниці в суботу день народження, тож ми святкуємо в саду в моєї сестри, якщо погода дозволить. Мені ще треба купити подарунок. А в тебе що заплановано?",
       "ru": "Да, у моей племянницы в субботу день рождения, поэтому мы празднуем в саду у моей сестры, если погода позволит. Мне ещё нужно купить подарок. А у тебя что запланировано?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q1": {
       "de": "Ich wollte eigentlich auf den Wochenmarkt gehen, den gibt es hier nur samstags, und danach vielleicht noch ins Café. Hast du eigentlich schon eine Idee, was du ihr schenken könntest?",
@@ -15515,18 +15515,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Am Anfang war es das schon, man muss den Sauerteig ja regelmäßig füttern, aber mittlerweile ist das für mich schon Routine geworden. Stellst du deine Fotos eigentlich irgendwo online, oder behältst du sie für dich?",
+      "de": "Am Anfang war es das schon, man muss den Sauerteig <g>ja</g> regelmäßig füttern, aber mittlerweile ist das für mich schon Routine geworden. Stellst du deine Fotos eigentlich irgendwo online, oder behältst du sie für dich?",
       "en": "At first it was, you have to feed the sourdough starter regularly, but by now it's become routine for me. Do you actually post your photos somewhere online, or do you keep them to yourself?",
       "uk": "Спочатку так і було, треба регулярно годувати закваску, але зараз для мене це вже стало рутиною. А ти викладаєш свої фото десь онлайн, чи залишаєш їх лише для себе?",
       "ru": "Сначала так и было, нужно регулярно кормить закваску, но сейчас для меня это уже стало рутиной. А ты выкладываешь свои фото где-то онлайн, или оставляешь их только для себя?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "a2": {
-      "de": "Ich poste ab und zu was auf einem kleinen Account, hauptsächlich für Freunde und Familie. Es macht mir einfach Spaß, die Momente festzuhalten, auch wenn nicht viele Leute das sehen.",
+      "de": "Ich poste ab und zu was auf einem kleinen Account, hauptsächlich für Freunde und Familie. Es macht mir einfach Spaß, die Momente festzuhalten, <g>auch wenn</g> nicht viele Leute das <g>sehen</g>.",
       "en": "I post something every now and then on a small account, mainly for friends and family. I just enjoy capturing the moments, even if not many people see it.",
       "uk": "Я час від часу щось публікую на невеликому акаунті, здебільшого для друзів і родини. Мені просто подобається фіксувати ці моменти, навіть якщо це бачить небагато людей.",
       "ru": "Я время от времени что-то публикую на небольшом аккаунте, в основном для друзей и семьи. Мне просто нравится фиксировать эти моменты, даже если это видит немного людей.",
-      "gram": ""
+      "gram": "wortstellung"
     }
   },
   {
@@ -15570,11 +15570,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Ja, sehr, auch wenn die Fahrt manchmal etwas anstrengend ist. Aber es lohnt sich total, meine Großeltern und Cousins wiederzusehen. Fliegst du eigentlich allein nach Wien, oder kommt jemand mit?",
+      "de": "Ja, sehr, <g>auch wenn</g> die Fahrt manchmal etwas anstrengend <g>ist</g>. Aber es lohnt sich total, meine Großeltern und Cousins wiederzusehen. Fliegst du eigentlich allein nach Wien, oder kommt jemand mit?",
       "en": "Yes, very, even though the trip is sometimes a bit exhausting. But it's really worth it to see my grandparents and cousins again. Are you actually flying to Vienna alone, or is someone coming with you?",
       "uk": "Так, дуже, навіть якщо дорога іноді трохи виснажлива. Але це того варте - знову побачити бабусю з дідусем і кузенів. А ти летиш до Відня сам, чи хтось поїде з тобою?",
       "ru": "Да, очень, даже если дорога иногда немного утомительна. Но это того стоит - снова увидеть бабушку с дедушкой и кузенов. А ты летишь в Вену один, или кто-то поедет с тобой?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a2": {
       "de": "Ich fliege dieses Mal allein, ich finde es eigentlich ganz schön, ab und zu auch mal Zeit für mich zu haben und alles in meinem eigenen Tempo zu erkunden.",
@@ -15604,11 +15604,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ich schwimme seit ein paar Jahren zweimal die Woche, meistens früh morgens, bevor viele Leute im Schwimmbad sind. Das ist für mich total meditativ. Und du, treibst du auch Sport?",
+      "de": "Ich schwimme seit ein paar Jahren zweimal die Woche, meistens früh morgens, <g>bevor</g> viele Leute im Schwimmbad <g>sind</g>. Das ist für mich total meditativ. Und du, treibst du auch Sport?",
       "en": "I've been swimming twice a week for a few years now, usually early in the morning before there are a lot of people at the pool. It's really meditative for me. What about you, do you do sports too?",
       "uk": "Я вже кілька років плаваю двічі на тиждень, зазвичай рано вранці, поки в басейні мало людей. Для мене це справжня медитація. А в тебе як, ти теж займаєшся спортом?",
       "ru": "Я уже несколько лет плаваю дважды в неделю, обычно рано утром, пока в бассейне мало людей. Для меня это настоящая медитация. А у тебя как, ты тоже занимаешься спортом?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q1": {
       "de": "Ich spiele eigentlich Tennis, einmal die Woche mit einem Freund, und samstags gehe ich manchmal noch Rad fahren. Schwimmst du eigentlich lieber im Schwimmbad oder im See?",
@@ -15618,11 +15618,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Eigentlich beides, im Sommer gehe ich total gerne in den See, das ist noch entspannender als das Schwimmbad. Wie lange spielt ihr eigentlich schon zusammen Tennis?",
+      "de": "Eigentlich beides, im Sommer gehe ich total gerne in den See, das ist noch <g>entspannender</g> <g>als</g> das Schwimmbad. Wie lange spielt ihr eigentlich schon zusammen Tennis?",
       "en": "Actually both, in summer I really love going to the lake, that's even more relaxing than the pool. How long have you actually been playing tennis together?",
       "uk": "Взагалі і те, і те, влітку я дуже люблю ходити на озеро, це навіть розслабленіше, ніж басейн. До речі, як довго ви вже граєте в теніс разом?",
       "ru": "Вообще и то, и то, летом я очень люблю ходить на озеро, это даже расслабленнее, чем бассейн. Кстати, как долго вы уже играете в теннис вместе?",
-      "gram": ""
+      "gram": "vergleichssaetze_als_wie_je_desto"
     },
     "q2": {
       "de": "Schon seit über drei Jahren, wir sind mittlerweile richtig gut eingespielt. Fährst du eigentlich auch längere Strecken mit dem Rad, oder eher kurze Touren?",
@@ -15680,11 +15680,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Manchmal schon, ehrlich gesagt, aber ich schätze auch die Planbarkeit, weil ich immer genau weiß, wann ich frei habe. Bekommst du für die Spätschicht eigentlich einen Zuschlag?",
+      "de": "Manchmal schon, ehrlich gesagt, aber ich schätze auch die Planbarkeit, <g>weil</g> ich immer genau <g>weiß</g>, wann ich frei habe. Bekommst du für die Spätschicht eigentlich einen Zuschlag?",
       "en": "Sometimes, honestly, but I also appreciate the predictability, because I always know exactly when I have time off. Do you actually get a bonus for the late shift?",
       "uk": "Чесно кажучи, часом буває, але я також ціную передбачуваність, бо завжди точно знаю, коли в мене вихідний. А тобі за вечірню зміну взагалі платять надбавку?",
       "ru": "Честно говоря, иногда бывает, но я также ценю предсказуемость, потому что всегда точно знаю, когда у меня выходной. А тебе за вечернюю смену вообще платят надбавку?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a2": {
       "de": "Ja, zum Glück, das gleicht die Unbequemlichkeit zumindest finanziell ein bisschen aus. Ohne den Zuschlag würde sich das ehrlich gesagt kaum lohnen.",
@@ -15721,11 +15721,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "Meine sind noch klein, drei und fünf, da ist es schon noch ziemlich aufwendig. Wir haben eine Tagesmutter, die zweimal die Woche einspringt. Vermisst du eigentlich manchmal die Zeit, als er noch kleiner war?",
+      "de": "Meine sind noch klein, drei und fünf, da ist es schon noch ziemlich aufwendig. Wir haben eine Tagesmutter, die zweimal die Woche einspringt. Vermisst du eigentlich manchmal die Zeit, <g>als</g> er noch kleiner <g>war</g>?",
       "en": "Mine are still little, three and five, so it's still pretty demanding. We have a childminder who steps in twice a week. Do you actually sometimes miss the time when he was younger?",
       "uk": "Мої ще маленькі, три й п'ять, тож там ще доволі клопітно. У нас є нянька, яка виручає двічі на тиждень. А тобі часом не бракує того часу, коли він був меншим?",
       "ru": "Мои ещё маленькие, три и пять, так что там ещё довольно хлопотно. У нас есть няня, которая выручает дважды в неделю. А тебе иногда не хватает того времени, когда он был младше?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a1": {
       "de": "Manchmal schon, ehrlich gesagt, aber ich genieße auch, dass ich jetzt wieder mehr Freizeit für mich habe. Eine Tagesmutter klingt aber praktisch - wie habt ihr die eigentlich gefunden?",
@@ -15742,11 +15742,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Inzwischen schon öfter, aber ich rufe trotzdem immer mal zwischendurch an, nur um sicherzugehen, dass alles in Ordnung ist.",
-      "en": "More often by now, but I still call in between sometimes, just to make sure everything's okay.",
+      "de": "Inzwischen schon öfter, aber ich rufe trotzdem immer mal zwischendurch an, nur <g>um</g> sicher<g>zu</g>gehen, dass alles in Ordnung ist.",
+      "en": "More often by now, but I still call in between sometimes, just <g>to</g> make sure everything's okay.",
       "uk": "Зараз уже частіше, але я все одно завжди телефоную, просто щоб переконатися, що все гаразд.",
       "ru": "Сейчас уже чаще, но я всё равно всегда звоню, просто чтобы убедиться, что всё в порядке.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -15783,11 +15783,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Bei Schnee oder Eis steige ich dann tatsächlich auf die Bahn um, das ist mir dann doch zu riskant. Zehn Minuten klingt aber wirklich traumhaft - warst du eigentlich schon mal woanders mit einem längeren Arbeitsweg?",
+      "de": "Bei Schnee oder Eis steige ich dann tatsächlich auf die Bahn um, das ist mir dann <g>doch</g> zu riskant. Zehn Minuten klingt aber wirklich traumhaft - warst du eigentlich schon mal woanders mit einem längeren Arbeitsweg?",
       "en": "In snow or ice I actually switch to the train, that's just too risky for me then. Ten minutes sounds really dreamy though - have you actually ever had a longer commute somewhere else?",
       "uk": "У сніг чи ожеледицю я справді пересідаю на потяг, це для мене вже надто ризиковано. Десять хвилин звучить просто чудово - а ти взагалі колись мав довшу дорогу на роботу деінде?",
       "ru": "В снег или гололёд я действительно пересаживаюсь на поезд, это для меня уже слишком рискованно. Десять минут звучит просто прекрасно - а у тебя вообще когда-нибудь была более долгая дорога на работу в другом месте?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "q2": {
       "de": "Ja, in meinem letzten Job musste ich eine Stunde fahren, das war schon ziemlich anstrengend auf Dauer. Deshalb habe ich mich bei der Wohnungssuche auch bewusst für die Nähe zur Arbeit entschieden. Überlegst du eigentlich manchmal, näher an die Arbeit zu ziehen?",
@@ -15797,11 +15797,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Ehrlich gesagt schon öfter, aber ich hänge einfach zu sehr an meiner jetzigen Wohnung und der Nachbarschaft, um wirklich umzuziehen.",
-      "en": "Honestly, quite often, but I'm just too attached to my current apartment and the neighborhood to actually move.",
+      "de": "Ehrlich gesagt schon öfter, aber ich hänge einfach zu sehr an meiner jetzigen Wohnung und der Nachbarschaft, <g>um</g> wirklich um<g>zu</g>ziehen.",
+      "en": "Honestly, quite often, but I'm just too attached to my current apartment and the neighborhood <g>to</g> actually move.",
       "uk": "Чесно кажучи, доволі часто, але я просто занадто прив'язана до своєї теперішньої квартири й району, щоб справді переїхати.",
       "ru": "Честно говоря, довольно часто, но я просто слишком привязана к своей нынешней квартире и району, чтобы действительно переехать.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -15852,11 +15852,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "So ungefähr drei bis vier Stunden, das reicht meistens, um wirklich etwas zu bewirken, ohne dass es mir zu anstrengend wird.",
-      "en": "About three to four hours, that's usually enough to really make a difference, without it becoming too exhausting for me.",
+      "de": "So ungefähr drei bis vier Stunden, das reicht meistens, <g>um</g> wirklich etwas <g>zu</g> bewirken, <g>ohne dass</g> es mir zu anstrengend wird.",
+      "en": "About three to four hours, that's usually enough <g>to</g> really make a difference, <g>without</g> it becoming too exhausting for me.",
       "uk": "Десь три-чотири години, зазвичай цього достатньо, щоб справді щось змінити, і водночас це не надто виснажує.",
       "ru": "Где-то три-четыре часа, обычно этого достаточно, чтобы действительно что-то изменить, и при этом это не слишком утомляет.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
@@ -15900,11 +15900,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Meistens dasselbe, wir sind schon seit Jahren in einem Team zusammen, das macht einfach mehr Spaß, wenn man sich gut kennt. Erntest du eigentlich schon etwas aus deinem Garten, oder ist es noch zu früh?",
+      "de": "Meistens dasselbe, wir sind schon seit Jahren in einem Team zusammen, das macht einfach mehr Spaß, <g>wenn</g> man sich gut <g>kennt</g>. Erntest du eigentlich schon etwas aus deinem Garten, oder ist es noch zu früh?",
       "en": "Mostly the same one, we've been on a team together for years now, it's just more fun when you know each other well. Are you actually already harvesting anything from your garden, or is it still too early?",
       "uk": "Здебільшого одну й ту саму, ми вже роками разом в одній команді, це просто веселіше, коли добре знаєш одне одного. А ти вже щось збираєш зі свого саду, чи ще зарано?",
       "ru": "В основном одну и ту же, мы уже годами вместе в одной команде, это просто веселее, когда хорошо знаешь друг друга. А ты уже что-то собираешь со своего сада, или ещё рано?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a2": {
       "de": "Die ersten Kräuter kann ich schon ernten, aber auf die Tomaten muss ich noch ein paar Wochen warten. Ich freue mich aber jetzt schon total darauf.",
@@ -15948,18 +15948,18 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Meistens fahren wir ins gleiche Gebiet, weil wir die Pisten dort schon richtig gut kennen. Kälte ist tatsächlich nicht jedermanns Sache - was machst du dann stattdessen, wenn du zu Hause bleibst?",
+      "de": "Meistens fahren wir ins gleiche Gebiet, <g>weil</g> wir die Pisten dort schon richtig gut <g>kennen</g>. Kälte ist tatsächlich nicht jedermanns Sache - was machst du dann stattdessen, wenn du zu Hause bleibst?",
       "en": "We mostly go to the same area, because we already know the slopes really well there. Cold really isn't for everyone - what do you do instead when you stay home then?",
       "uk": "Здебільшого їздимо в той самий район, бо ми там уже дуже добре знаємо траси. Холод справді підходить не всім - а що ти тоді робиш замість цього, коли залишаєшся вдома?",
       "ru": "В основном ездим в один и тот же район, потому что мы там уже очень хорошо знаем трассы. Холод действительно подходит не всем - а что ты тогда делаешь вместо этого, когда остаёшься дома?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
-      "de": "Ich nutze die Zeit meistens, um mich einfach mal richtig auszuruhen und vielleicht ein paar Bücher zu lesen, die schon lange auf meinem Stapel liegen. Bist du eigentlich schon lange am Skifahren, oder hast du das erst als Erwachsener gelernt?",
-      "en": "I usually use the time to really rest and maybe read a few books that have been sitting on my pile for a long time. Have you actually been skiing for a long time, or did you only learn as an adult?",
+      "de": "Ich nutze die Zeit meistens, <g>um</g> mich einfach mal richtig aus<g>zu</g>ruhen und vielleicht ein paar Bücher zu lesen, die schon lange auf meinem Stapel liegen. Bist du eigentlich schon lange am Skifahren, oder hast du das erst als Erwachsener gelernt?",
+      "en": "I usually use the time <g>to</g> really rest and maybe read a few books that have been sitting on my pile for a long time. Have you actually been skiing for a long time, or did you only learn as an adult?",
       "uk": "Я зазвичай використовую цей час, щоб справді добре відпочити й, можливо, почитати кілька книжок, які вже давно лежать у моїй стопці. А ти взагалі давно катаєшся на лижах, чи навчився вже дорослим?",
       "ru": "Я обычно использую это время, чтобы действительно хорошо отдохнуть и, возможно, почитать несколько книг, которые уже давно лежат в моей стопке. А ты вообще давно катаешься на лыжах, или научился уже взрослым?",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "a2": {
       "de": "Schon seit ich klein bin, meine Eltern haben mich quasi auf die Ski gestellt, sobald ich laufen konnte. Deshalb ist das für mich einfach ein fester Teil vom Winter.",
@@ -15989,11 +15989,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Doch, ich tanze seit ein paar Jahren, hauptsächlich Salsa, das mache ich einmal die Woche in einem Kurs. Das macht wirklich Spaß und man lernt dabei auch total nette Leute kennen. Und du, machst du auch etwas Sportliches?",
+      "de": "<g>Doch</g>, ich tanze seit ein paar Jahren, hauptsächlich Salsa, das mache ich einmal die Woche in einem Kurs. Das macht wirklich Spaß und man lernt dabei auch total nette Leute kennen. Und du, machst du auch etwas Sportliches?",
       "en": "Actually yes, I've been dancing for a few years now, mainly salsa, I do that once a week in a class. It's really fun and you get to meet really nice people too. What about you, do you do anything sporty too?",
       "uk": "Ні, навпаки, я вже кілька років танцюю, здебільшого сальсу, роблю це раз на тиждень на курсах. Це справді весело, і при цьому знайомишся з дуже приємними людьми. А в тебе, ти теж чимось спортивним займаєшся?",
       "ru": "Нет, наоборот, я уже несколько лет танцую, в основном сальсу, делаю это раз в неделю на курсах. Это действительно весело, и при этом знакомишься с очень приятными людьми. А у тебя, ты тоже чем-то спортивным занимаешься?",
-      "gram": ""
+      "gram": "modalpartikeln"
     },
     "q1": {
       "de": "Ich mache eigentlich Kampfsport, genauer gesagt Judo, das trainiere ich schon seit meiner Jugend. Wie schwer war es eigentlich am Anfang, die Schritte beim Salsa zu lernen?",
@@ -16017,11 +16017,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Wir wechseln eigentlich ständig, das gehört beim Salsa irgendwie dazu. Am Anfang war mir das etwas unangenehm, aber jetzt genieße ich es total.",
+      "de": "Wir wechseln eigentlich ständig, das gehört beim Salsa irgendwie <g>dazu</g>. Am Anfang war mir das etwas unangenehm, aber jetzt genieße ich es total.",
       "en": "We actually switch constantly, that's just part of salsa somehow. At first that felt a bit awkward to me, but now I really enjoy it.",
       "uk": "Ми взагалі постійно змінюємо, це якось само собою зрозуміло в сальсі. Спочатку мені було трохи незручно, але тепер я цим дуже насолоджуюся.",
       "ru": "Мы вообще постоянно меняем, это как-то само собой разумеется в сальсе. Сначала мне было немного неловко, но теперь я этим очень наслаждаюсь.",
-      "gram": ""
+      "gram": "textzusammenhang"
     }
   },
   {
@@ -16058,11 +16058,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Ehrlich gesagt bin ich sogar produktiver geworden, weil ich mich an den vier Tagen mehr konzentriere. Fünf kürzere Tage klingt aber auch angenehm - wie lange arbeitest du eigentlich pro Tag?",
+      "de": "Ehrlich gesagt bin ich sogar produktiver geworden, <g>weil</g> ich mich an den vier Tagen mehr <g>konzentriere</g>. Fünf kürzere Tage klingt aber auch angenehm - wie lange arbeitest du eigentlich pro Tag?",
       "en": "Honestly, I've actually become more productive, because I concentrate more on the four days. Five shorter days sounds nice too though - how long do you actually work per day?",
       "uk": "Чесно кажучи, я навіть став продуктивнішим, бо за ці чотири дні більше концентруюся. Але п'ять коротших днів теж звучить приємно - скільки годин ти взагалі працюєш на день?",
       "ru": "Честно говоря, я даже стал продуктивнее, потому что за эти четыре дня больше концентрируюсь. Но пять более коротких дней тоже звучит приятно - сколько часов ты вообще работаешь в день?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "q2": {
       "de": "Meistens so sechs Stunden, das reicht für mich völlig aus. Verdienst du eigentlich bei der Vier-Tage-Woche genauso viel wie vorher, oder wurde das Gehalt angepasst?",
@@ -16120,11 +16120,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Kein Problem, meine sind sechs und neun. Wart ihr eigentlich schon mal in Sorge, dass eure Tochter Heimweh im Ferienlager bekommt?",
+      "de": "Kein Problem, meine sind sechs und neun. Wart ihr eigentlich schon mal in Sorge, <g>dass</g> eure Tochter Heimweh im Ferienlager <g>bekommt</g>?",
       "en": "No problem, mine are six and nine. Have you actually ever worried that your daughter might get homesick at the camp?",
       "uk": "Нічого страшного, моїм шість і дев'ять. А ви взагалі колись переживали, що донька почне сумувати за домом у таборі?",
       "ru": "Ничего страшного, моим шесть и девять. А вы вообще когда-нибудь переживали, что дочь начнёт скучать по дому в лагере?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a2": {
       "de": "Am Anfang schon ein bisschen, aber sie hat sich erstaunlich schnell eingewöhnt und ruft uns kaum an, was eigentlich ein gutes Zeichen ist.",
@@ -16168,11 +16168,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Meistens schon, gerade zu den Stoßzeiten gibt es viele Leute, die dieselbe Strecke fahren. Es ist auch günstiger als alleine mit dem Auto zu fahren. Fährst du eigentlich auch mal mit dem Fahrrad, wenn das Wetter gut ist?",
+      "de": "Meistens schon, gerade zu den Stoßzeiten gibt es viele Leute, die dieselbe Strecke fahren. Es ist auch <g>günstiger</g> <g>als</g> alleine mit dem Auto zu fahren. Fährst du eigentlich auch mal mit dem Fahrrad, wenn das Wetter gut ist?",
       "en": "Mostly yes, especially during rush hour there are a lot of people going the same route. It's also cheaper than driving alone by car. Do you actually sometimes ride a bike too, when the weather's good?",
       "uk": "Здебільшого так, особливо в години пік багато людей їдуть тим самим маршрутом. Це ще й дешевше, ніж їхати самій на машині. А ти взагалі іноді їздиш на велосипеді, коли гарна погода?",
       "ru": "В основном да, особенно в часы пик много людей едут тем же маршрутом. Это ещё и дешевле, чем ехать одной на машине. А ты вообще иногда ездишь на велосипеде, когда хорошая погода?",
-      "gram": ""
+      "gram": "vergleichssaetze_als_wie_je_desto"
     },
     "q2": {
       "de": "Manchmal schon, aber ehrlich gesagt bin ich da eher inkonsequent, meistens bleibe ich dann doch bei der U-Bahn. Redest du eigentlich viel mit den Leuten, mit denen du mitfährst?",
@@ -16237,11 +16237,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Etwas Ausgefalleneres, es hat viele kleine Fächer und sieht wirklich schön aus. Deshalb dauert der Aufbau wahrscheinlich auch länger als bei einem normalen Regal.",
+      "de": "Etwas Ausgefalleneres, es hat viele kleine Fächer und sieht wirklich schön aus. Deshalb dauert der Aufbau wahrscheinlich auch <g>länger</g> <g>als</g> bei einem normalen Regal.",
       "en": "Something fancier, it has lots of small compartments and looks really nice. That's why the assembly probably takes longer than with a normal shelf too.",
       "uk": "Щось незвичніше, у неї багато маленьких відділень, і виглядає вона справді гарно. Тому збирання, напевно, займе довше, ніж зі звичайною полицею.",
       "ru": "Что-то более необычное, у неё много маленьких отделений, и выглядит она действительно красиво. Поэтому сборка, наверное, займёт дольше, чем с обычной полкой.",
-      "gram": ""
+      "gram": "vergleichssaetze_als_wie_je_desto"
     }
   },
   {
@@ -16285,18 +16285,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "Schon seit meiner Kindheit, mein Opa hat es mir beigebracht, als ich ungefähr acht war. Wie lange dauert es eigentlich, bis so eine Tasse fertig ist?",
+      "de": "Schon seit meiner Kindheit, mein Opa hat es mir beigebracht, <g>als</g> ich ungefähr acht <g>war</g>. Wie lange dauert es eigentlich, bis so eine Tasse fertig ist?",
       "en": "Since my childhood actually, my grandpa taught me when I was about eight. How long does it actually take until a cup like that is finished?",
       "uk": "Ще з дитинства, дідусь навчив мене, коли мені було років вісім. А скільки часу взагалі йде на виготовлення такої чашки?",
       "ru": "Ещё с детства, дедушка научил меня, когда мне было около восьми. А сколько времени вообще уходит на изготовление такой чашки?",
-      "gram": ""
+      "gram": "wortstellung"
     },
     "a2": {
-      "de": "Von der ersten Formung bis zum fertigen Brand vergehen meistens zwei bis drei Wochen, weil alles trocknen und gebrannt werden muss. Das erfordert schon eine ganze Portion Geduld.",
+      "de": "Von der ersten Formung bis zum fertigen Brand vergehen meistens zwei bis drei Wochen, weil alles trocknen und <g>gebrannt</g> <g>werden</g> muss. Das erfordert schon eine ganze Portion Geduld.",
       "en": "From the first shaping to the finished firing it usually takes two to three weeks, because everything has to dry and be fired. That really requires quite a bit of patience.",
       "uk": "Від першого формування до готового виробу зазвичай минає два-три тижні, бо все має висохнути й пройти випал. Це вимагає чималого терпіння.",
       "ru": "От первой формовки до готового изделия обычно проходит две-три недели, потому что всё должно высохнуть и пройти обжиг. Это требует изрядного терпения.",
-      "gram": ""
+      "gram": "passiv_passiversatz"
     }
   },
   {
@@ -16333,11 +16333,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "Vor allem, dass ich mich mal so richtig entspannen kann, ohne mich um irgendetwas kümmern zu müssen. Alles ist ja schon organisiert. Backpacking klingt aber auch total spannend - hast du das eigentlich schon mal gemacht?",
-      "en": "Mostly that I can really relax without having to worry about anything. Everything's already organized after all. Backpacking sounds really exciting too though - have you actually done that before?",
+      "de": "Vor allem, dass ich mich mal so richtig entspannen kann, <g>ohne</g> mich um irgendetwas kümmern <g>zu</g> müssen. Alles ist ja schon organisiert. Backpacking klingt aber auch total spannend - hast du das eigentlich schon mal gemacht?",
+      "en": "Mostly that I can really relax <g>without</g> having <g>to</g> worry about anything. Everything's already organized after all. Backpacking sounds really exciting too though - have you actually done that before?",
       "uk": "Найбільше того, що я справді зможу відпочити, не турбуючись ні про що. Все ж уже організовано. Але бекпекінг теж звучить дуже цікаво - ти вже колись таке робив?",
       "ru": "Больше всего того, что я действительно смогу отдохнуть, не беспокоясь ни о чём. Всё же уже организовано. Но бэкпекинг тоже звучит очень интересно - ты уже когда-нибудь такое делал?",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     },
     "q2": {
       "de": "Ja, vor ein paar Jahren, das war eine der besten Erfahrungen meines Lebens. Man lernt dabei wirklich, mit sehr wenig auszukommen. Wie lange dauert deine Kreuzfahrt eigentlich?",
@@ -16347,11 +16347,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "Zwei Wochen, das ist für mich genau die richtige Länge, um wirklich abzuschalten, ohne dass es mir am Ende zu lang wird.",
-      "en": "Two weeks, that's exactly the right length for me to really switch off, without it getting too long in the end.",
+      "de": "Zwei Wochen, das ist für mich genau die richtige Länge, <g>um</g> wirklich ab<g>zu</g>schalten, <g>ohne dass</g> es mir am Ende zu lang wird.",
+      "en": "Two weeks, that's exactly the right length for me <g>to</g> really switch off, <g>without</g> it getting too long in the end.",
       "uk": "Два тижні, для мене це саме та тривалість, щоб справді відпочити, і водночас це не стає занадто довго.",
       "ru": "Две недели, для меня это как раз та продолжительность, чтобы действительно отдохнуть, и при этом это не становится слишком долго.",
-      "gram": ""
+      "gram": "konnektoren_infinitiv"
     }
   },
   {
