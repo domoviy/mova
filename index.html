@@ -4387,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '667-d561726';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -13998,6 +13998,20 @@ let spState = {
   correctCount: 0, totalCount: 0, SR: null
 };
 
+// iOS Safari: доки активне розпізнавання мовлення (webkitSpeechRecognition
+// потребує мікрофон), аудіо-сесія сторінки перемикається в режим
+// "play-and-record" — і ВСЕ аудіо сторінки (включно з наступними TTS-
+// фразами картки) звучить як голосовий дзвінок: стиснене, оброблене
+// ехоподавленням, "гучний зв'язок". Safari сам НЕ повертає сесію назад у
+// звичайний режим програвання після завершення розпізнавання — треба
+// явно попросити через navigator.audioSession (Safari 16.4+). Викликаємо
+// це в КОЖНІЙ точці, де розпізнавання остаточно завершується (успіх,
+// помилка, таймаут чи ручна зупинка), щоб наступне відтворення фрази
+// знову звучало нормально, а не "по-телефонному".
+function spRestoreAudioSession(){
+  try{ if('audioSession' in navigator) navigator.audioSession.type = 'playback'; }catch(e){}
+}
+
 function startSpeech(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   spState.SR = SR || null;
@@ -14143,6 +14157,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
       spL(`final: "${final}"`);
       spState.recognition = null;
       spState.recording = false;
+      spRestoreAudioSession();
       spShowResult(final, spState.cards[spState.idx]);
     }
   };
@@ -14155,12 +14170,14 @@ function spTryStart(SR, mb, lbl, ul, attempt){
       spL(`using lastInterim: "${_lastInterim}"`);
       spState.recognition = null;
       spState.recording = false;
+      spRestoreAudioSession();
       spShowResult(_lastInterim, spState.cards[spState.idx]);
       return;
     }
     if(e.error === 'aborted') return;
     spState.recording = false;
     spState.recognition = null;
+    spRestoreAudioSession();
     if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
     const msg = e.error === 'no-speech'
       ? (ul==='uk'?'Нічого не почуто — спробуй ще':'No speech detected')
@@ -14183,6 +14200,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
       }
       if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
       if(lbl) lbl.textContent = ul==='uk'?'Натисни щоб говорити':'Tap to speak';
+      spRestoreAudioSession();
     }
   };
 
@@ -14202,6 +14220,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 function spStopRecord(){
   if(spState.recognition){ try{ spState.recognition.abort(); }catch(e){} spState.recognition = null; }
   spState.recording = false;
+  spRestoreAudioSession();
 }
 function spCleanup(){ spStopRecord(); }
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') spCleanup(); });
