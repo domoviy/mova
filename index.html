@@ -4387,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '668-f9c045a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14155,9 +14155,18 @@ function spTryStart(SR, mb, lbl, ul, attempt){
     if(final && !_done){
       _done = true;
       spL(`final: "${final}"`);
+      // Явно просимо зупинити розпізнавання ЗАРАЗ, а не чекати, поки
+      // воно "само" завершиться (continuous=false мало б це робити
+      // автоматично, але на iOS це часто відбувається із затримкою або
+      // й зовсім ненадійно) — це і є справжня причина, чому мікрофон
+      // лишався активним між вправами, і чому скидання аудіо-сесії
+      // нижче (у onend) не встигало спрацювати вчасно для НАСТУПНОЇ
+      // фрази: доки rec.stop() не викликано, сесія мікрофона все ще
+      // технічно "жива", тож повернути audioSession у 'playback' було
+      // зарано — iOS просто ігнорував це, поки запис де-факто триває.
+      try{ rec.stop(); }catch(e){}
       spState.recognition = null;
       spState.recording = false;
-      spRestoreAudioSession();
       spShowResult(final, spState.cards[spState.idx]);
     }
   };
@@ -14170,14 +14179,12 @@ function spTryStart(SR, mb, lbl, ul, attempt){
       spL(`using lastInterim: "${_lastInterim}"`);
       spState.recognition = null;
       spState.recording = false;
-      spRestoreAudioSession();
       spShowResult(_lastInterim, spState.cards[spState.idx]);
       return;
     }
     if(e.error === 'aborted') return;
     spState.recording = false;
     spState.recognition = null;
-    spRestoreAudioSession();
     if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
     const msg = e.error === 'no-speech'
       ? (ul==='uk'?'Нічого не почуто — спробуй ще':'No speech detected')
@@ -14196,12 +14203,18 @@ function spTryStart(SR, mb, lbl, ul, attempt){
         spL(`quick-end, retry in 1000ms`);
         spState.recording = true;
         setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 1000);
-        return;
+        return; // зараз рестартуємо розпізнавання — сесію ще не звільняємо
       }
       if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
       if(lbl) lbl.textContent = ul==='uk'?'Натисни щоб говорити':'Tap to speak';
-      spRestoreAudioSession();
     }
+    // 'end' — єдина подія Web Speech API, що гарантовано означає:
+    // мікрофон/аудіо-сесія розпізнавання дійсно закриті (на відміну від
+    // 'result'/'error', які можуть спрацювати РАНІШЕ фактичного закриття
+    // сесії). Тому саме тут, а не в onresult/onerror, повертаємо
+    // audioSession у звичайний режим програвання — інакше iOS ще
+    // "бачить" активний запис і мовчки ігнорує зміну типу сесії.
+    spRestoreAudioSession();
   };
 
   try{ rec.start(); spL(`rec.start() OK`); }
