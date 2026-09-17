@@ -4387,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '665-0d8d63d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9115,6 +9115,70 @@ function matchShowResult(){
 // Кешуємо результат на поточний рендер Lernpfad (renderLernpfad
 // скидає кеш на початку) — щоб не пересортовувати LESSONS на кожен
 // виклик renderModuleCard всередині циклу глав/модулів.
+// Ключ "модуля" вузла шляху: усі суб-уроки/діалоги/forum-вузли одного
+// оригінального модуля (нарізані в buildLearningPath) діляться спільним
+// _parentModuleId. Службові вузли без карток (passthrough у
+// buildLearningPath) або записи поза buildLearningPath (напр. examprep)
+// не мають _parentModuleId — тоді вважаємо, що вузол сам собі "модуль"
+// (група з одного елемента).
+function _lpModuleKeyOf(lesson){
+  return lesson._parentModuleId || lesson.id;
+}
+
+// Наступний крок ПІСЛЯ щойно завершеного вузла completedId:
+//  1) якщо в тому самому модулі є наступний вузол (суб-урок/діалог/forum) —
+//     переходимо саме туди, незалежно від lessonUnlocked/pct: він щойно
+//     розблокований завершенням попереднього кроку цього ж модуля, і це
+//     єдиний коректний "наступний крок" усередині модуля;
+//  2) якщо щойно завершений вузол був ОСТАННІМ у своєму модулі —
+//     переходимо до першого НЕзавершеного вузла НАСТУПНОГО модуля
+//     (за порядком курсу; звичайно це відразу наступний модуль, але якщо
+//     він вже повністю пройдено раніше — шукаємо далі).
+// Повертає null, якщо completedId не знайдено в LESSONS, або якщо після
+// нього в курсі більше нічого не лишилось незавершеного.
+function _findNextLessonAfterCompletion(completedId){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const idx = lessons.findIndex(l=>l.id===completedId);
+  if(idx === -1) return null;
+
+  // Якщо щойно завершений урок САМ ще не набрав 80% — лишаємось на
+  // ньому. Один прохід lesson-flow показує щонайбільше 4 картки за
+  // раз (див. _runLessonFlow: flowCards обмежені до 4), тож якщо в
+  // уроці більше карток (chunk + review-домішка), одного проходу може
+  // бути замало для 80%. unlockAfter НАСТУПНОГО вузла модуля вимагає
+  // саме pct≥80 цього уроку — тож пропонувати вже "наступний" вузол,
+  // поки сам він ще технічно заблокований, не можна: рендер (окремо
+  // перевіряє lessonUnlocked() для кожного вузла) відмовиться
+  // позначити його isCurrent, і лінія лишиться зовсім БЕЗ підсвітки.
+  if(lessonProgress(lessons[idx]).pct < 80){
+    return lessons[idx];
+  }
+
+  const completedModuleKey = _lpModuleKeyOf(lessons[idx]);
+
+  // 1) Ще один вузол ТОГО Ж модуля відразу після щойно завершеного —
+  //    вузли одного модуля завжди йдуть у buildLearningPath суцільним
+  //    блоком (chunk→chunk→dlg→frm...), тож досить перевірити лише
+  //    наступний елемент масиву. Розблокований гарантовано (щойно
+  //    завершений урок дав pct≥80 вище), але перевіряємо явно — про
+  //    всяк випадок, і щоб pct<80 самого наступного теж був дотриманий
+  //    (може вже бути пройдений раніше, напр. через debug-перемикач).
+  if(idx+1 < lessons.length && _lpModuleKeyOf(lessons[idx+1]) === completedModuleKey
+     && lessonUnlocked(lessons[idx+1]) && lessonProgress(lessons[idx+1]).pct < 80){
+    return lessons[idx+1];
+  }
+
+  // 2) Модуль щойно завершено повністю — перший незавершений
+  //    РОЗБЛОКОВАНИЙ вузол наступного модуля (може бути й через кілька
+  //    модулів, якщо найближчий уже пройдений, напр. debug-розблокування).
+  for(let i=idx+1; i<lessons.length; i++){
+    if(lessonUnlocked(lessons[i]) && lessonProgress(lessons[i]).pct < 80){
+      return lessons[i];
+    }
+  }
+  return null;
+}
+
 let _lpCurrentLessonCache;
 function findCurrentLesson(){
   if(_lpCurrentLessonCache !== undefined) return _lpCurrentLessonCache;
@@ -9127,17 +9191,33 @@ function findCurrentLesson(){
   // першого незавершеного в УСЬОМУ курсі — той міг лишитись позаду, поки
   // користувач проходив щось поза основною лінійною послідовністю (бонусний
   // урок, розділ підготовки до екзамену тощо).
+  //
+  // ВАЖЛИВО: раніше тут був прямий forward-скан "перший unlocked && pct<80
+  // будь-де далі в масиві" від позиції завершеного уроку. Це виглядало
+  // правильно в більшості випадків (вузли одного модуля й так ідуть
+  // підряд), але ламалось, щойно один із НАСТУПНИХ вузлів ЦЬОГО Ж модуля
+  // випадково вже мав pct>=80 (напр. його cardIds — здебільшого "review"-
+  // картки з попередніх модулів, які вже давно вивчені: lessonProgress
+  // рахує % за ВСІМА cardIds, тож пороги переповнюються словами-
+  // повтореннями, а не лише новими) — скан просто пропускав такий вузол,
+  // а разом з ним і решту модуля, стрибаючи одразу в наступний модуль
+  // (той відкритий, бо перший урок нового розділу/модуля розблокований
+  // незалежно від прогресу). Саме так лінія уроків "перестрибувала"
+  // непройдені уроки чи цілі модулі.
+  //
+  // Тепер навігація явно модуль-обізнана (_findNextLessonAfterCompletion):
+  //  • якщо щойно завершений урок САМ ще <80% (один прохід lesson-flow
+  //    показує макс. 4 картки — може бути замало) — лишаємось на ньому;
+  //  • інакше в межах модуля — рівно наступний вузол (гарантовано
+  //    розблокований);
+  //  • і лише після ОСТАННЬОГО вузла модуля — пошук по наступних модулях.
   let lastCompletedId = null;
   try{ lastCompletedId = localStorage.getItem('mova_last_completed_lesson'); }catch(e){}
   if(lastCompletedId){
-    const idx = lessons.findIndex(l=>l.id===lastCompletedId);
-    if(idx !== -1){
-      for(let i=idx+1; i<lessons.length; i++){
-        if(lessonUnlocked(lessons[i]) && lessonProgress(lessons[i]).pct < 80){
-          _lpCurrentLessonCache = lessons[i];
-          return _lpCurrentLessonCache;
-        }
-      }
+    const next = _findNextLessonAfterCompletion(lastCompletedId);
+    if(next){
+      _lpCurrentLessonCache = next;
+      return _lpCurrentLessonCache;
     }
   }
 
