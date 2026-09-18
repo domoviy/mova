@@ -4387,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '671-8321717';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14009,7 +14009,31 @@ let spState = {
 // помилка, таймаут чи ручна зупинка), щоб наступне відтворення фрази
 // знову звучало нормально, а не "по-телефонному".
 function spRestoreAudioSession(){
-  try{ if('audioSession' in navigator) navigator.audioSession.type = 'playback'; }catch(e){}
+  try{
+    if(!('audioSession' in navigator)){
+      spL('audioSession: API not supported (pre-16.4 Safari?)');
+      return;
+    }
+    const before = navigator.audioSession.type;
+    navigator.audioSession.type = 'playback';
+    // Одразу читаємо значення НАЗАД — якщо iOS мовчки проігнорував
+    // запис (саме це ми й підозрюємо), тут буде видно, що type
+    // лишився попереднім, а не став 'playback'.
+    const after = navigator.audioSession.type;
+    spL(`audioSession: ${before} → set 'playback' → actual '${after}'`);
+  }catch(e){ spL(`audioSession: restore ERROR ${e.name}: ${e.message}`); }
+}
+function spSetRecordAudioSession(){
+  try{
+    if(!('audioSession' in navigator)){
+      spL('audioSession: API not supported (pre-16.4 Safari?)');
+      return;
+    }
+    const before = navigator.audioSession.type;
+    navigator.audioSession.type = 'play-and-record';
+    const after = navigator.audioSession.type;
+    spL(`audioSession: ${before} → set 'play-and-record' → actual '${after}'`);
+  }catch(e){ spL(`audioSession: set play-and-record ERROR ${e.name}: ${e.message}`); }
 }
 
 function startSpeech(){
@@ -14073,6 +14097,7 @@ function spShowCard(){
 
   // mp3
   const url = getAudioUrl(card.id, 'term', primaryLang());
+  spL(`play phrase: ${card.id}`);
   playPregenAudio(url, null, ++playGen);
 }
 
@@ -14120,7 +14145,7 @@ function spStartRecord(){
   // виявилось потрібним: без цього виклику iOS в деяких випадках взагалі
   // ігнорував наступне встановлення 'playback', ніби "не бачив", що
   // сесія раніше була змінена саме через цей API.
-  try{ if('audioSession' in navigator) navigator.audioSession.type = 'play-and-record'; }catch(e){}
+  spSetRecordAudioSession();
 
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const mb = document.getElementById('sp-mic-btn');
