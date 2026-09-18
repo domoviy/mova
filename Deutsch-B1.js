@@ -30155,11 +30155,11 @@ var DIALOGE = [
       "gram": "hoefliche_bitten_konjunktiv_b1"
     },
     "a": {
-      "de": "Entschuldigung, das wusste ich nicht. Ich mache sofort leiser.",
-      "en": "Sorry, I didn't know that. I'll be quieter right away.",
-      "uk": "Вибачте, я не знав цього. Я одразу стану тихішим.",
-      "ru": "Извините, я не знал этого. Я сразу стану тише.",
-      "gram": ""
+      "de": "Entschuldigung, das <g>wusste</g> ich nicht. Ich mache sofort leiser.",
+      "en": "Sorry, I <g>didn't know</g> that. I'll be quieter right away.",
+      "uk": "Вибачте, я <g>не знав</g> цього. Я одразу стану тихішим.",
+      "ru": "Извините, я <g>не знал</g> этого. Я сразу стану тише.",
+      "gram": "praeteritum_wdh_b1"
     }
   },
   {
@@ -30175,11 +30175,11 @@ var DIALOGE = [
       "gram": "modalverben_wdh_b1"
     },
     "a": {
-      "de": "Am besten im Keller, im Treppenhaus darfst du ihn leider nicht lassen.",
-      "en": "Best in the basement; unfortunately you can't leave it in the stairwell.",
-      "uk": "Найкраще в підвалі, у підʼїзді, на жаль, не можна її залишати.",
-      "ru": "Лучше всего в подвале, в подъезде, к сожалению, нельзя её оставлять.",
-      "gram": ""
+      "de": "Am besten im Keller, im Treppenhaus <g>darfst</g> du ihn leider nicht lassen.",
+      "en": "Best in the basement; unfortunately you <g>can't</g> leave it in the stairwell.",
+      "uk": "Найкраще в підвалі, у підʼїзді, на жаль, <g>не можна</g> її залишати.",
+      "ru": "Лучше всего в подвале, в подъезде, к сожалению, <g>нельзя</g> её оставлять.",
+      "gram": "modalverben_wdh_b1"
     }
   },
   {
@@ -30255,11 +30255,11 @@ var DIALOGE = [
       "gram": "relativsatz_akkusativ_b1"
     },
     "a": {
-      "de": "Das tut mir leid! Hast du schon die Quittung gesucht?",
-      "en": "I'm sorry! Have you already looked for the receipt?",
-      "uk": "Мені шкода! Ти вже шукав квитанцію?",
-      "ru": "Мне жаль! Ты уже искал квитанцию?",
-      "gram": ""
+      "de": "Das tut mir leid! <g>Hast</g> du schon die Quittung <g>gesucht</g>?",
+      "en": "I'm sorry! <g>Have</g> you already <g>looked</g> for the receipt?",
+      "uk": "Мені шкода! Ти вже <g>шукав</g> квитанцію?",
+      "ru": "Мне жаль! Ты уже <g>искал</g> квитанцию?",
+      "gram": "perfekt_wdh_b1"
     }
   },
   {
@@ -30275,11 +30275,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Weil das Paket beschädigt angekommen ist und ich mein Geld zurückwill.",
-      "en": "Because the package arrived damaged and I want my money back.",
-      "uk": "Тому що посилка прийшла пошкодженою, і я хочу повернути гроші.",
-      "ru": "Потому что посылка пришла повреждённой, и я хочу вернуть деньги.",
-      "gram": ""
+      "de": "<g>Weil</g> das Paket beschädigt angekommen ist und ich mein Geld zurückwill.",
+      "en": "<g>Because</g> the package arrived damaged and I want my money back.",
+      "uk": "<g>Тому що</g> посилка прийшла пошкодженою, і я хочу повернути гроші.",
+      "ru": "<g>Потому что</g> посылка пришла повреждённой, и я хочу вернуть деньги.",
+      "gram": "konnektoren_wdh_b1"
     }
   },
   {
@@ -30288,11 +30288,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Kannst du mir kurz helfen, das Formular für den Umtausch auszufüllen?",
-      "en": "Can you help me for a moment to fill in the exchange form?",
-      "uk": "Можеш мені трохи допомогти заповнити формуляр для обміну?",
-      "ru": "Можешь мне немного помочь заполнить формуляр для обмена?",
-      "gram": ""
+      "de": "Kannst du mir kurz helfen, das Formular für den Umtausch <g>auszufüllen</g>?",
+      "en": "Can you help me for a moment <g>to fill in</g> the exchange form?",
+      "uk": "Можеш мені трохи допомогти <g>заповнити</g> формуляр для обміну?",
+      "ru": "Можешь мне немного помочь <g>заполнить</g> формуляр для обмена?",
+      "gram": "infinitiv_mit_zu"
     },
     "a": {
       "de": "Klar, das mache ich gern für dich.",
@@ -30328,11 +30328,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wessen Konto ist das eigentlich?",
-      "en": "Whose account is that, actually?",
-      "uk": "Взагалі, чий це рахунок?",
-      "ru": "Вообще, чей это счёт?",
-      "gram": ""
+      "de": "<g>Wessen</g> Konto ist das eigentlich?",
+      "en": "<g>Whose</g> account is that, actually?",
+      "uk": "Взагалі, <g>чий</g> це рахунок?",
+      "ru": "Вообще, <g>чей</g> это счёт?",
+      "gram": "genitiv"
     },
     "a": {
       "de": "Das ist das Konto <g>meiner Tochter</g>, ich verwalte es nur.",
@@ -30355,11 +30355,11 @@ var DIALOGE = [
       "gram": "nebensatz_mit_obwohl"
     },
     "a": {
-      "de": "Weil der Service leider sehr schlecht war.",
-      "en": "Because the service was unfortunately very bad.",
-      "uk": "Тому що сервіс, на жаль, був дуже поганим.",
-      "ru": "Потому что сервис, к сожалению, был очень плохим.",
-      "gram": ""
+      "de": "<g>Weil</g> der Service leider sehr schlecht war.",
+      "en": "<g>Because</g> the service was unfortunately very bad.",
+      "uk": "<g>Тому що</g> сервіс, на жаль, був дуже поганим.",
+      "ru": "<g>Потому что</g> сервис, к сожалению, был очень плохим.",
+      "gram": "konnektoren_wdh_b1"
     }
   },
   {
@@ -30368,18 +30368,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hast du schon die Verbraucherzentrale angerufen?",
-      "en": "Have you already called the consumer advice centre?",
-      "uk": "Ти вже дзвонив у центр захисту прав споживачів?",
-      "ru": "Ты уже звонил в центр защиты прав потребителей?",
-      "gram": ""
+      "de": "<g>Hast</g> du schon die Verbraucherzentrale <g>angerufen</g>?",
+      "en": "<g>Have</g> you already <g>called</g> the consumer advice centre?",
+      "uk": "Ти вже <g>дзвонив</g> у центр захисту прав споживачів?",
+      "ru": "Ты уже <g>звонил</g> в центр защиты прав потребителей?",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
-      "de": "Nein, noch nicht, aber ich werde es morgen machen.",
-      "en": "No, not yet, but I will do it tomorrow.",
-      "uk": "Ні, ще ні, але я зроблю це завтра.",
-      "ru": "Нет, ещё нет, но я сделаю это завтра.",
-      "gram": ""
+      "de": "Nein, noch nicht, aber ich <g>werde</g> es morgen <g>machen</g>.",
+      "en": "No, not yet, but I <g>will do</g> it tomorrow.",
+      "uk": "Ні, ще ні, але я <g>зроблю</g> це завтра.",
+      "ru": "Нет, ещё нет, но я <g>сделаю</g> это завтра.",
+      "gram": "futur_werden"
     }
   },
   {
@@ -30428,11 +30428,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Warum hast du so lange auf das Rezept gewartet?",
-      "en": "Why did you wait so long for the recipe?",
-      "uk": "Чому ти так довго чекав з рецептом?",
-      "ru": "Почему ты так долго ждал с рецептом?",
-      "gram": ""
+      "de": "Warum <g>hast</g> du so lange auf das Rezept <g>gewartet</g>?",
+      "en": "Why <g>did</g> you <g>wait</g> so long for the recipe?",
+      "uk": "Чому ти так довго <g>чекав</g> з рецептом?",
+      "ru": "Почему ты так долго <g>ждал</g> с рецептом?",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
       "de": "Ich habe gewartet, <g>bis</g> ich alle Zutaten im Kühlschrank hatte.",
@@ -30448,11 +30448,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Was waren die Ergebnisse der Umfrage über Essgewohnheiten?",
-      "en": "What were the results of the survey on eating habits?",
-      "uk": "Якими були результати опитування щодо харчових звичок?",
-      "ru": "Какими были результаты опроса о привычках питания?",
-      "gram": ""
+      "de": "Was <g>waren</g> die Ergebnisse der Umfrage über Essgewohnheiten?",
+      "en": "What <g>were</g> the results of the survey on eating habits?",
+      "uk": "Якими <g>були</g> результати опитування щодо харчових звичок?",
+      "ru": "Какими <g>были</g> результаты опроса о привычках питания?",
+      "gram": "praeteritum_wdh_b1"
     },
     "a": {
       "de": "Die meisten Leute essen heute weniger Fleisch als früher.",
@@ -30475,11 +30475,11 @@ var DIALOGE = [
       "gram": "praepositionaladverbien_b1"
     },
     "a": {
-      "de": "Darüber, dass die Grammatik so kompliziert ist.",
-      "en": "About how complicated the grammar is.",
-      "uk": "Через те, що граматика така складна.",
-      "ru": "Из-за того, что грамматика такая сложная.",
-      "gram": ""
+      "de": "<g>Darüber</g>, dass die Grammatik so kompliziert ist.",
+      "en": "<g>About</g> how complicated the grammar is.",
+      "uk": "<g>Через те</g>, що граматика така складна.",
+      "ru": "<g>Из-за того</g>, что грамматика такая сложная.",
+      "gram": "praepositionaladverbien_b1"
     }
   },
   {
@@ -30528,18 +30528,18 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Was hat dich am meisten überrascht, als du hierhergekommen bist?",
-      "en": "What surprised you most when you came here?",
-      "uk": "Що тебе найбільше здивувало, коли ти сюди приїхав?",
-      "ru": "Что тебя больше всего удивило, когда ты сюда приехал?",
-      "gram": ""
+      "de": "Was <g>hat</g> dich am meisten <g>überrascht</g>, als du <g>hierhergekommen</g> <g>bist</g>?",
+      "en": "What <g>surprised</g> you most when you <g>came</g> here?",
+      "uk": "Що тебе найбільше <g>здивувало</g>, коли ти сюди <g>приїхав</g>?",
+      "ru": "Что тебя больше всего <g>удивило</g>, когда ты сюда <g>приехал</g>?",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
-      "de": "Dass die Geschäfte sonntags geschlossen sind.",
-      "en": "That the shops are closed on Sundays.",
-      "uk": "Те, що магазини зачинені по неділях.",
-      "ru": "То, что магазины закрыты по воскресеньям.",
-      "gram": ""
+      "de": "<g>Dass</g> die Geschäfte sonntags geschlossen sind.",
+      "en": "<g>That</g> the shops are closed on Sundays.",
+      "uk": "<g>Те, що</g> магазини зачинені по неділях.",
+      "ru": "<g>То, что</g> магазины закрыты по воскресеньям.",
+      "gram": "konnektoren_wdh_b1"
     }
   },
   {
@@ -30568,11 +30568,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Warum bist du in die Notaufnahme gegangen?",
-      "en": "Why did you go to the emergency room?",
-      "uk": "Чому ти пішов у приймальне відділення?",
-      "ru": "Почему ты пошёл в приёмный покой?",
-      "gram": ""
+      "de": "Warum <g>bist</g> du in die Notaufnahme <g>gegangen</g>?",
+      "en": "Why <g>did</g> you <g>go</g> to the emergency room?",
+      "uk": "Чому ти <g>пішов</g> у приймальне відділення?",
+      "ru": "Почему ты <g>пошёл</g> в приёмный покой?",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
       "de": "Ich habe mich beim Sport <g>nicht nur</g> am Knie, <g>sondern auch</g> am Arm verletzt.",
@@ -30588,11 +30588,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wozu brauchst du dieses Formular?",
-      "en": "What do you need this form for?",
-      "uk": "Для чого тобі потрібен цей формуляр?",
-      "ru": "Для чего тебе нужен этот формуляр?",
-      "gram": ""
+      "de": "<g>Wozu</g> brauchst du dieses Formular?",
+      "en": "What do you need this form <g>for</g>?",
+      "uk": "<g>Для чого</g> тобі потрібен цей формуляр?",
+      "ru": "<g>Для чего</g> тебе нужен этот формуляр?",
+      "gram": "praepositionaladverbien_b1"
     },
     "a": {
       "de": "Ich brauche es, <g>um</g> mich in der Klinik <g>anzumelden</g>.",
@@ -30628,11 +30628,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Wird der Müll hier eigentlich richtig getrennt?",
-      "en": "Is the rubbish actually sorted properly here?",
+      "de": "<g>Wird</g> der Müll hier eigentlich richtig <g>getrennt</g>?",
+      "en": "<g>Is</g> the rubbish actually <g>sorted</g> properly here?",
       "uk": "Тут взагалі правильно сортують сміття?",
       "ru": "Здесь вообще правильно сортируют мусор?",
-      "gram": ""
+      "gram": "passiv_praesens_b1"
     },
     "a": {
       "de": "Ja, der Abfall <g>wird</g> in drei verschiedene Tonnen <g>sortiert</g>.",
@@ -30648,11 +30648,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Habt ihr in diesem Jahr schon Energie gespart?",
-      "en": "Have you already saved energy this year?",
-      "uk": "Ви вже цього року економили енергію?",
-      "ru": "Вы уже в этом году экономили энергию?",
-      "gram": ""
+      "de": "<g>Habt</g> ihr in diesem Jahr schon Energie <g>gespart</g>?",
+      "en": "<g>Have</g> you already <g>saved</g> energy this year?",
+      "uk": "Ви вже цього року <g>економили</g> енергію?",
+      "ru": "Вы уже в этом году <g>экономили</g> энергию?",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
       "de": "Ja, wir <g>haben</g> unsere alten Lampen durch LED-Lampen <g>ersetzt</g>.",
@@ -30675,11 +30675,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Weil das besser für die Umwelt und meistens auch billiger ist.",
-      "en": "Because it's better for the environment and usually cheaper too.",
-      "uk": "Тому що це краще для довкілля і зазвичай ще й дешевше.",
-      "ru": "Потому что это лучше для окружающей среды и обычно ещё и дешевле.",
-      "gram": ""
+      "de": "<g>Weil</g> das besser für die Umwelt und meistens auch billiger ist.",
+      "en": "<g>Because</g> it's better for the environment and usually cheaper too.",
+      "uk": "<g>Тому що</g> це краще для довкілля і зазвичай ще й дешевше.",
+      "ru": "<g>Потому что</g> это лучше для окружающей среды и обычно ещё и дешевле.",
+      "gram": "konnektoren_wdh_b1"
     }
   },
   {
@@ -30755,11 +30755,11 @@ var DIALOGE = [
       "gram": "interesse_denn_eigentlich"
     },
     "a": {
-      "de": "Richtig interessant, wir haben viel über alte Bücher gelernt.",
-      "en": "Really interesting, we learned a lot about old books.",
-      "uk": "Дуже цікаво, ми дізналися багато про старі книжки.",
-      "ru": "Очень интересно, мы узнали много о старых книгах.",
-      "gram": ""
+      "de": "Richtig interessant, wir <g>haben</g> viel über alte Bücher <g>gelernt</g>.",
+      "en": "Really interesting, we <g>learned</g> a lot about old books.",
+      "uk": "Дуже цікаво, ми <g>дізналися</g> багато про старі книжки.",
+      "ru": "Очень интересно, мы <g>узнали</g> много о старых книгах.",
+      "gram": "perfekt_wdh_b1"
     }
   },
   {
@@ -30768,11 +30768,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Kannst du mir ein gutes Straßenfestival empfehlen?",
-      "en": "Can you recommend a good street festival to me?",
-      "uk": "Можеш порекомендувати мені хороший вуличний фестиваль?",
-      "ru": "Можешь порекомендовать мне хороший уличный фестиваль?",
-      "gram": ""
+      "de": "<g>Kannst</g> du mir ein gutes Straßenfestival empfehlen?",
+      "en": "<g>Can</g> you recommend a good street festival to me?",
+      "uk": "<g>Можеш</g> порекомендувати мені хороший вуличний фестиваль?",
+      "ru": "<g>Можешь</g> порекомендовать мне хороший уличный фестиваль?",
+      "gram": "modalverben_wdh_b1"
     },
     "a": {
       "de": "Klar, das Sommerfest in der Altstadt ist jedes Jahr super.",
@@ -30835,11 +30835,11 @@ var DIALOGE = [
       "gram": "nebensatz_wenn_konjunktiv2_irreal"
     },
     "a": {
-      "de": "Dann würde ich mich einfach bei einer anderen Firma bewerben.",
-      "en": "Then I would simply apply to another company.",
-      "uk": "Тоді я просто подав би заявку в іншу фірму.",
-      "ru": "Тогда я бы просто подал заявку в другую фирму.",
-      "gram": ""
+      "de": "Dann <g>würde</g> ich mich einfach bei einer anderen Firma <g>bewerben</g>.",
+      "en": "Then I <g>would</g> simply <g>apply</g> to another company.",
+      "uk": "Тоді я просто <g>подав би</g> заявку в іншу фірму.",
+      "ru": "Тогда я <g>бы</g> просто <g>подал</g> заявку в другую фирму.",
+      "gram": "nebensatz_wenn_konjunktiv2_irreal"
     }
   },
   {
@@ -30855,11 +30855,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ganz gut, ich glaube, sie haben sich für mich entschieden.",
+      "de": "Ganz gut, ich glaube, sie haben <g>sich</g> für mich entschieden.",
       "en": "Pretty good, I think they've decided to hire me.",
       "uk": "Досить добре, здається, вони обрали мене.",
       "ru": "Довольно хорошо, кажется, они выбрали меня.",
-      "gram": ""
+      "gram": "reflexivpronomen_akkusativ_wdh_b1"
     }
   },
   {
@@ -30895,11 +30895,11 @@ var DIALOGE = [
       "gram": "komparativ_superlativ_vor_nomen"
     },
     "a": {
-      "de": "Das war Lukas, er ist wirklich in Top-Form.",
-      "en": "That was Lukas, he's really in top form.",
-      "uk": "Це був Лукас, він справді у чудовій формі.",
-      "ru": "Это был Лукас, он действительно в отличной форме.",
-      "gram": ""
+      "de": "Das <g>war</g> Lukas, er ist wirklich in Top-Form.",
+      "en": "That <g>was</g> Lukas, he's really in top form.",
+      "uk": "Це <g>був</g> Лукас, він справді у чудовій формі.",
+      "ru": "Это <g>был</g> Лукас, он действительно в отличной форме.",
+      "gram": "praeteritum_wdh_b1"
     }
   },
   {
@@ -30915,11 +30915,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Klar, ich habe schon meine Startnummer abgeholt.",
-      "en": "Sure, I've already picked up my start number.",
-      "uk": "Звісно, я вже забрав свій стартовий номер.",
-      "ru": "Конечно, я уже забрал свой стартовый номер.",
-      "gram": ""
+      "de": "Klar, ich <g>habe</g> schon meine Startnummer <g>abgeholt</g>.",
+      "en": "Sure, <g>I've</g> already <g>picked up</g> my start number.",
+      "uk": "Звісно, я вже <g>забрав</g> свій стартовий номер.",
+      "ru": "Конечно, я уже <g>забрал</g> свой стартовый номер.",
+      "gram": "perfekt_wdh_b1"
     }
   },
   {
@@ -30935,11 +30935,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Weil ich mich danach einfach viel besser fühle.",
-      "en": "Because I simply feel much better afterwards.",
-      "uk": "Тому що після цього я почуваюся набагато краще.",
-      "ru": "Потому что после этого я чувствую себя намного лучше.",
-      "gram": ""
+      "de": "<g>Weil</g> ich mich danach einfach viel besser fühle.",
+      "en": "<g>Because</g> I simply feel much better afterwards.",
+      "uk": "<g>Тому що</g> після цього я почуваюся набагато краще.",
+      "ru": "<g>Потому что</g> после этого я чувствую себя намного лучше.",
+      "gram": "konnektoren_wdh_b1"
     }
   },
   {
@@ -30955,11 +30955,11 @@ var DIALOGE = [
       "gram": "nebensatz_mit_waehrend"
     },
     "a": {
-      "de": "Ich kann das übernehmen, kein Problem.",
-      "en": "I can take care of that, no problem.",
-      "uk": "Я можу цим зайнятися, без проблем.",
-      "ru": "Я могу этим заняться, без проблем.",
-      "gram": ""
+      "de": "Ich <g>kann</g> das übernehmen, kein Problem.",
+      "en": "I <g>can</g> take care of that, no problem.",
+      "uk": "Я <g>можу</g> цим зайнятися, без проблем.",
+      "ru": "Я <g>могу</g> этим заняться, без проблем.",
+      "gram": "modalverben_wdh_b1"
     }
   },
   {
@@ -30968,11 +30968,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Muss ich den Kita-Platz schon jetzt beantragen?",
-      "en": "Do I have to apply for the daycare place already now?",
-      "uk": "Чи потрібно мені вже зараз подавати заявку на місце в садку?",
-      "ru": "Нужно ли мне уже сейчас подавать заявку на место в детском саду?",
-      "gram": ""
+      "de": "<g>Muss</g> ich den Kita-Platz schon jetzt beantragen?",
+      "en": "Do I <g>have to</g> apply for the daycare place already now?",
+      "uk": "Чи <g>потрібно</g> мені вже зараз подавати заявку на місце в садку?",
+      "ru": "<g>Нужно</g> ли мне уже сейчас подавать заявку на место в детском саду?",
+      "gram": "modalverben_wdh_b1"
     },
     "a": {
       "de": "Du <g>brauchst</g> das <g>nicht</g> sofort <g>zu</g> machen, aber warte nicht zu lange.",
@@ -31048,11 +31048,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hattest du vor dem Interview schon mal in Deutschland gearbeitet?",
-      "en": "Had you worked in Germany before the interview?",
-      "uk": "Ти вже працював у Німеччині до співбесіди?",
-      "ru": "Ты уже работал в Германии до собеседования?",
-      "gram": ""
+      "de": "<g>Hattest</g> du vor dem Interview schon mal in Deutschland <g>gearbeitet</g>?",
+      "en": "<g>Had</g> you <g>worked</g> in Germany before the interview?",
+      "uk": "Ти вже <g>працював</g> у Німеччині до співбесіди?",
+      "ru": "Ты уже <g>работал</g> в Германии до собеседования?",
+      "gram": "plusquamperfekt"
     },
     "a": {
       "de": "Nein, aber ich <g>hatte</g> vorher schon viel Erfahrung <g>gesammelt</g> in meinem Heimatland.",
@@ -31095,11 +31095,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Sehr nett, sie haben mir am ersten Tag total geholfen.",
-      "en": "Very nice, they really helped me on the first day.",
-      "uk": "Дуже приємні, вони дуже допомогли мені першого дня.",
-      "ru": "Очень приятные, они очень помогли мне в первый день.",
-      "gram": ""
+      "de": "Sehr nett, sie <g>haben</g> mir am ersten Tag total <g>geholfen</g>.",
+      "en": "Very nice, they really <g>helped</g> me on the first day.",
+      "uk": "Дуже приємні, вони дуже <g>допомогли</g> мені першого дня.",
+      "ru": "Очень приятные, они очень <g>помогли</g> мне в первый день.",
+      "gram": "perfekt_wdh_b1"
     }
   },
   {
@@ -31175,11 +31175,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ich wollte einfach etwas für die Gemeinschaft zurückgeben.",
-      "en": "I just wanted to give something back to the community.",
-      "uk": "Я просто хотів віддячити спільноті.",
-      "ru": "Я просто хотел отблагодарить сообщество.",
-      "gram": ""
+      "de": "Ich <g>wollte</g> einfach etwas für die Gemeinschaft zurückgeben.",
+      "en": "I just <g>wanted</g> to give something back to the community.",
+      "uk": "Я просто <g>хотів</g> віддячити спільноті.",
+      "ru": "Я просто <g>хотел</g> отблагодарить сообщество.",
+      "gram": "praeteritum_wdh_b1"
     }
   },
   {
@@ -31195,11 +31195,11 @@ var DIALOGE = [
       "gram": "relativsatz_mit_praeposition"
     },
     "a": {
-      "de": "Genau die, ich hoffe wirklich, dass ich sie bekomme.",
+      "de": "Genau die, ich hoffe wirklich, <g>dass</g> ich sie bekomme.",
       "en": "Exactly that one, I really hope I get it.",
-      "uk": "Саме вона, я справді сподіваюся, що отримаю її.",
-      "ru": "Именно она, я действительно надеюсь, что получу её.",
-      "gram": ""
+      "uk": "Саме вона, я справді сподіваюся, <g>що</g> отримаю її.",
+      "ru": "Именно она, я действительно надеюсь, <g>что</g> получу её.",
+      "gram": "konnektoren_wdh_b1"
     }
   },
   {
@@ -31215,11 +31215,11 @@ var DIALOGE = [
       "gram": "relativsatz_wo_was"
     },
     "a": {
-      "de": "Ja, am Stadtrand gibt es noch einige bezahlbare Wohnungen.",
-      "en": "Yes, there are still some affordable flats on the outskirts.",
+      "de": "Ja, am Stadtrand gibt es noch einige <g>bezahlbare</g> Wohnungen.",
+      "en": "Yes, there are still some <g>affordable</g> flats on the outskirts.",
       "uk": "Так, на околиці є ще кілька доступних за ціною квартир.",
       "ru": "Да, на окраине есть ещё несколько доступных по цене квартир.",
-      "gram": ""
+      "gram": "adjektive_auf_bar_los"
     }
   },
   {
@@ -31235,11 +31235,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Zum Glück nicht so hoch, weil das Haus gut isoliert ist.",
-      "en": "Luckily not too high, because the house is well insulated.",
-      "uk": "На щастя, не дуже високі, бо будинок добре ізольований.",
-      "ru": "К счастью, не очень высокие, потому что дом хорошо изолирован.",
-      "gram": ""
+      "de": "Zum Glück nicht so hoch, <g>weil</g> das Haus gut isoliert ist.",
+      "en": "Luckily not too high, <g>because</g> the house is well insulated.",
+      "uk": "На щастя, не дуже високі, <g>бо</g> будинок добре ізольований.",
+      "ru": "К счастью, не очень высокие, <g>потому что</g> дом хорошо изолирован.",
+      "gram": "konnektoren_wdh_b1"
     }
   },
   {
@@ -31255,11 +31255,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Schon nächste Woche, wir freuen uns riesig darauf.",
-      "en": "Already next week, we're really looking forward to it.",
-      "uk": "Вже наступного тижня, ми дуже цього чекаємо.",
-      "ru": "Уже на следующей неделе, мы очень этого ждём.",
-      "gram": ""
+      "de": "Schon nächste Woche, wir freuen uns riesig <g>darauf</g>.",
+      "en": "Already next week, we're really looking forward <g>to it</g>.",
+      "uk": "Вже наступного тижня, ми дуже <g>цього</g> чекаємо.",
+      "ru": "Уже на следующей неделе, мы очень <g>этого</g> ждём.",
+      "gram": "verben_mit_praep_wdh_b1"
     }
   },
   {
@@ -31275,11 +31275,11 @@ var DIALOGE = [
       "gram": "partizip2_als_adjektiv"
     },
     "a": {
-      "de": "Genau, ich habe heute Morgen alles fertig gemacht.",
-      "en": "Exactly, I finished everything this morning.",
-      "uk": "Саме так, я закінчив усе сьогодні вранці.",
-      "ru": "Именно так, я закончил всё сегодня утром.",
-      "gram": ""
+      "de": "Genau, ich <g>habe</g> heute Morgen alles fertig <g>gemacht</g>.",
+      "en": "Exactly, I <g>finished</g> everything this morning.",
+      "uk": "Саме так, я <g>закінчив</g> усе сьогодні вранці.",
+      "ru": "Именно так, я <g>закончил</g> всё сегодня утром.",
+      "gram": "perfekt_wdh_b1"
     }
   },
   {
@@ -31295,11 +31295,11 @@ var DIALOGE = [
       "gram": "entweder_oder"
     },
     "a": {
-      "de": "Am besten bringst du gleich beide Dokumente mit.",
-      "en": "It's best if you bring both documents with you.",
+      "de": "Am besten <g>bringst</g> du gleich beide Dokumente <g>mit</g>.",
+      "en": "It's best if you <g>bring</g> both documents <g>with you</g>.",
       "uk": "Найкраще одразу візьми обидва документи.",
       "ru": "Лучше всего сразу возьми оба документа.",
-      "gram": ""
+      "gram": "trennbare_verben_praefixe_wdh_b1"
     }
   },
   {
@@ -31315,11 +31315,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Bei mir hat er ungefähr acht Monate gedauert.",
-      "en": "For me it took about eight months.",
-      "uk": "У мене він тривав приблизно вісім місяців.",
-      "ru": "У меня он длился примерно восемь месяцев.",
-      "gram": ""
+      "de": "Bei mir <g>hat</g> er ungefähr acht Monate <g>gedauert</g>.",
+      "en": "For me it <g>took</g> about eight months.",
+      "uk": "У мене він <g>тривав</g> приблизно вісім місяців.",
+      "ru": "У меня он <g>длился</g> примерно восемь месяцев.",
+      "gram": "perfekt_wdh_b1"
     }
   },
   {
@@ -31335,11 +31335,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ja, ich glaube, ich bin wirklich angekommen.",
-      "en": "Yes, I think I've really arrived.",
-      "uk": "Так, думаю, я справді тут прижився.",
-      "ru": "Да, думаю, я действительно здесь освоился.",
-      "gram": ""
+      "de": "Ja, ich glaube, ich <g>bin</g> wirklich <g>angekommen</g>.",
+      "en": "Yes, I think <g>I've</g> really <g>arrived</g>.",
+      "uk": "Так, думаю, я справді тут <g>прижився</g>.",
+      "ru": "Да, думаю, я действительно здесь <g>освоился</g>.",
+      "gram": "perfekt_wdh_b1"
     }
   },
   {
