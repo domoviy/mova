@@ -4387,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '670-681a521';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14112,6 +14112,16 @@ function spStartRecord(){
   // Зупиняємо аудіо перед SR
   try{ const a = getSharedAudio(); if(a){ a.pause(); a.src=''; } playGen++; }catch(e){}
 
+  // Явно переводимо аудіо-сесію в 'play-and-record' ПЕРЕД стартом
+  // розпізнавання (а не покладаємось лише на автоматичне перемикання
+  // iOS при доступі до мікрофона) — той самий navigator.audioSession API,
+  // яким ми користуємось для повернення в 'playback' (див.
+  // spRestoreAudioSession нижче). Симетричне явне керування в обидва боки
+  // виявилось потрібним: без цього виклику iOS в деяких випадках взагалі
+  // ігнорував наступне встановлення 'playback', ніби "не бачив", що
+  // сесія раніше була змінена саме через цей API.
+  try{ if('audioSession' in navigator) navigator.audioSession.type = 'play-and-record'; }catch(e){}
+
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const mb = document.getElementById('sp-mic-btn');
   const lbl = document.getElementById('sp-mic-label');
@@ -14214,7 +14224,16 @@ function spTryStart(SR, mb, lbl, ul, attempt){
     // сесії). Тому саме тут, а не в onresult/onerror, повертаємо
     // audioSession у звичайний режим програвання — інакше iOS ще
     // "бачить" активний запис і мовчки ігнорує зміну типу сесії.
-    spRestoreAudioSession();
+    //
+    // І навіть тут — з невеликою затримкою: подія 'end' на iOS
+    // спрацьовує в JS ще ДО того, як нативна аудіо-сесія фактично
+    // деактивується на рівні ОС (та ж причина, чому старт розпізнавання
+    // вище теж робиться через setTimeout(150), а не одразу). Без цієї
+    // паузи 'playback' виставляється на сесію, яку iOS усередині ще
+    // вважає активною "play-and-record" — і мовчки ігнорує зміну, тому
+    // "гучний зв'язок" лишався для НАСТУПНИХ фраз навіть після того, як
+    // мікрофон уже видимо вимкнувся.
+    setTimeout(spRestoreAudioSession, 300);
   };
 
   try{ rec.start(); spL(`rec.start() OK`); }
@@ -14233,7 +14252,10 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 function spStopRecord(){
   if(spState.recognition){ try{ spState.recognition.abort(); }catch(e){} spState.recognition = null; }
   spState.recording = false;
-  spRestoreAudioSession();
+  // Та сама затримка, що й у rec.onend — якщо розпізнавання щойно
+  // перервано тут (напр. користувач одразу тисне "Далі"), нативна
+  // аудіо-сесія ще могла не встигнути деактивуватись у цю ж мілісекунду.
+  setTimeout(spRestoreAudioSession, 300);
 }
 function spCleanup(){ spStopRecord(); }
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') spCleanup(); });
