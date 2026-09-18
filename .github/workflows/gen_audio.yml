@@ -51,7 +51,23 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_sha }}
-          fetch-depth: 0   # потрібна історія, щоб продиффити з батьківським комітом
+          # РАНІШЕ тут був fetch-depth: 0 (уся історія) — і саме це, а не
+          # сама перевірка, займало >2хв: репозиторій має 44k+ аудіофайлів
+          # у audio/, і "вся історія" тягне за собою кожну їхню стару
+          # версію з кожного минулого коміту. Нам же для diff з батьком
+          # потрібні лише 2 останні коміти (сам SHA + його прямий батько).
+          fetch-depth: 2
+          # filter:blob:none — не завантажуємо вміст файлів одразу (лише
+          # дерева/коміти); git diff --name-only порівнює хеші дерев і
+          # взагалі не потребує вмісту блобів.
+          filter: blob:none
+          # sparse-checkout — на диск матеріалізуємо лише кореневі *.js/
+          # *.py (для читання COURSES із gen_audio.py нижче), а не весь
+          # важезний audio/ (саме тому, заради чого й існує ця перевірка).
+          sparse-checkout: |
+            *.js
+            *.py
+          sparse-checkout-cone-mode: false
 
       - id: check
         name: Diff deployed commit against its parent
