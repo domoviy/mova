@@ -14012,16 +14012,45 @@ function spRestoreAudioSession(){
   try{
     if(!('audioSession' in navigator)){
       spL('audioSession: API not supported (pre-16.4 Safari?)');
-      return;
+    } else {
+      const before = navigator.audioSession.type;
+      navigator.audioSession.type = 'playback';
+      // Одразу читаємо значення НАЗАД — якщо iOS мовчки проігнорував
+      // запис, тут буде видно, що type лишився попереднім, а не став
+      // 'playback'. (За фактом: iOS ЧЕСНО повертає 'playback', але
+      // звук усе одно лишається "телефонним" — тобто сама категорія
+      // тут не при чому, спрацьовує глибший voice-processing тег,
+      // який ставить розпізнавання; звідси й експериментальний крок
+      // нижче.)
+      const after = navigator.audioSession.type;
+      spL(`audioSession: ${before} → set 'playback' → actual '${after}'`);
     }
-    const before = navigator.audioSession.type;
-    navigator.audioSession.type = 'playback';
-    // Одразу читаємо значення НАЗАД — якщо iOS мовчки проігнорував
-    // запис (саме це ми й підозрюємо), тут буде видно, що type
-    // лишився попереднім, а не став 'playback'.
-    const after = navigator.audioSession.type;
-    spL(`audioSession: ${before} → set 'playback' → actual '${after}'`);
   }catch(e){ spL(`audioSession: restore ERROR ${e.name}: ${e.message}`); }
+
+  // ЕКСПЕРИМЕНТАЛЬНО: navigator.audioSession.type міняє лише категорію
+  // сесії, але не знімає voice-processing (ехоподавлення/AGC), який iOS
+  // вмикає на апаратному аудіо-юніті саме тому, що розпізнавання мовлення
+  // просило мікрофон із цими обробками. Це і є та "телефонна" обробка,
+  // яка грає голосно незалежно від повзунка гучності та перемикача
+  // "тиша" — типова ознака voice-call аудіо-маршруту. Спроба "змити" цей
+  // тег: миттєво запросити мікрофон із ЯВНО вимкненими echoCancellation/
+  // noiseSuppression/autoGainControl і одразу зупинити потік — якщо iOS
+  // перебудує апаратний I/O під ці (нові) параметри, звичайний
+  // programний рух до "playback" вище повинен нарешті прижитись. Дозвіл
+  // на мікрофон уже надано (розпізнавання щойно його використовувало),
+  // тож повторного запиту в користувача не буде — можливе лише коротке
+  // миготіння індикатора мікрофона.
+  spTryFlushVoiceProcessing();
+}
+async function spTryFlushVoiceProcessing(){
+  try{
+    if(!navigator.mediaDevices?.getUserMedia) return;
+    const stream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation:false, noiseSuppression:false, autoGainControl:false }
+    });
+    stream.getTracks().forEach(t => t.stop());
+    spL('audioSession: flushed voice-processing via plain getUserMedia');
+  }catch(e){ spL(`audioSession: flush attempt failed ${e.name}: ${e.message}`); }
 }
 function spSetRecordAudioSession(){
   try{
@@ -14275,12 +14304,20 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 }
 
 function spStopRecord(){
-  if(spState.recognition){ try{ spState.recognition.abort(); }catch(e){} spState.recognition = null; }
+  // Якщо розпізнавання ще активне тут — обриваємо його і плануємо
+  // відновлення сесії (той самий шлях, що й у rec.onend). Якщо воно вже
+  // null — onend уже сам це зробив за нас, і повторний виклик тут був
+  // би лише зайвим дублем (ще один непотрібний зблиск мікрофона через
+  // spTryFlushVoiceProcessing).
+  const wasActive = !!spState.recognition;
+  if(wasActive){ try{ spState.recognition.abort(); }catch(e){} spState.recognition = null; }
   spState.recording = false;
-  // Та сама затримка, що й у rec.onend — якщо розпізнавання щойно
-  // перервано тут (напр. користувач одразу тисне "Далі"), нативна
-  // аудіо-сесія ще могла не встигнути деактивуватись у цю ж мілісекунду.
-  setTimeout(spRestoreAudioSession, 300);
+  if(wasActive){
+    // Та сама затримка, що й у rec.onend — якщо розпізнавання щойно
+    // перервано тут (напр. користувач одразу тисне "Далі"), нативна
+    // аудіо-сесія ще могла не встигнути деактивуватись у цю ж мілісекунду.
+    setTimeout(spRestoreAudioSession, 300);
+  }
 }
 function spCleanup(){ spStopRecord(); }
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') spCleanup(); });
