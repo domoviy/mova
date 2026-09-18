@@ -4387,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '675-bf74a5c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8199,6 +8199,17 @@ function showView(id, opts){
   // не побачив" — вона таки програвалась, просто conкуруючий автоскрол
   // одразу ж перебивав кадр.
   opts = opts || {};
+  // Той самий guard, що й у switchVocabTab() — але тут ловимо вихід із
+  // "Вимова" НЕ на іншу вкладку Словника, а на будь-який ІНШИЙ екран
+  // застосунку (Дім, Налаштування тощо) через нижню навігацію — це
+  // ПРОХОДИТЬ повз switchVocabTab() і без цієї перевірки тут лишало б
+  // забруднену аудіо-сесію непоміченою.
+  const leavingSpeechView = id !== 'vocab' &&
+    document.getElementById('vocab-panel-speech')?.style.display === 'flex';
+  if(leavingSpeechView && typeof _spMicUsedThisSession !== 'undefined' && _spMicUsedThisSession){
+    location.reload();
+    return;
+  }
   // Скасовуємо будь-яку активну сесію рушія карток (аудіо, кнопка
   // "Далі"/"Повторити") — БЕЗУМОВНО, на кожному переході, незалежно від
   // того, звідки й куди саме йде навігація. Це найчастіше джерело бага
@@ -14002,12 +14013,29 @@ let spState = {
 // потребує мікрофон), аудіо-сесія сторінки перемикається в режим
 // "play-and-record" — і ВСЕ аудіо сторінки (включно з наступними TTS-
 // фразами картки) звучить як голосовий дзвінок: стиснене, оброблене
-// ехоподавленням, "гучний зв'язок". Safari сам НЕ повертає сесію назад у
-// звичайний режим програвання після завершення розпізнавання — треба
-// явно попросити через navigator.audioSession (Safari 16.4+). Викликаємо
-// це в КОЖНІЙ точці, де розпізнавання остаточно завершується (успіх,
-// помилка, таймаут чи ручна зупинка), щоб наступне відтворення фрази
-// знову звучало нормально, а не "по-телефонному".
+// ехоподавленням, "гучний зв'язок", що ігнорує повзунок гучності й
+// перемикач "тиша" (типова ознака voice-call аудіо-маршруту, а не
+// "просто гучно"). navigator.audioSession.type = 'playback' ЧЕСНО
+// записується і чесно читається назад (перевірено логами) — але, за
+// фактом тестування на пристрої, це НЕ знімає сам voice-processing тег,
+// який iOS вже встановив на апаратному аудіо-юніті. Спроба "змити" це
+// через миттєвий getUserMedia з вимкненими echoCancellation/
+// noiseSuppression не спрацювала: iOS відмовляє в захопленні мікрофона,
+// щойно категорія вже 'playback' (InvalidStateError: "AudioSession
+// category is not compatible with audio capture") — тобто сам порядок
+// дій логічно суперечливий, і код видалено.
+//
+// Те, що проблема лишається аж до РУЧНОГО перезавантаження застосунку
+// (і поширюється на ІНШІ вправи, не лише на "Вимову") — це вже не
+// властивість одного <audio>-елемента чи одного екрана, а забруднення
+// нативної аудіо-сесії ЦІЛОЇ вкладки на рівні ОС, для якого публічного
+// JS API скинути стан немає. Єдине, що на практиці гарантовано лікує —
+// повне перезавантаження сторінки (нове завантаження = нова аудіо-сесія
+// з нуля). Тому нижче — SP_MIC_USED прапорець + автоматичний reload
+// саме в момент виходу з екрана "Вимова" (де це найменш нав'язливо: весь
+// прогрес уже збережено, користувач сам вирішив, що з мікрофоном на
+// зараз закінчив).
+let _spMicUsedThisSession = false;
 function spRestoreAudioSession(){
   try{
     if(!('audioSession' in navigator)){
@@ -14015,44 +14043,13 @@ function spRestoreAudioSession(){
     } else {
       const before = navigator.audioSession.type;
       navigator.audioSession.type = 'playback';
-      // Одразу читаємо значення НАЗАД — якщо iOS мовчки проігнорував
-      // запис, тут буде видно, що type лишився попереднім, а не став
-      // 'playback'. (За фактом: iOS ЧЕСНО повертає 'playback', але
-      // звук усе одно лишається "телефонним" — тобто сама категорія
-      // тут не при чому, спрацьовує глибший voice-processing тег,
-      // який ставить розпізнавання; звідси й експериментальний крок
-      // нижче.)
       const after = navigator.audioSession.type;
       spL(`audioSession: ${before} → set 'playback' → actual '${after}'`);
     }
   }catch(e){ spL(`audioSession: restore ERROR ${e.name}: ${e.message}`); }
-
-  // ЕКСПЕРИМЕНТАЛЬНО: navigator.audioSession.type міняє лише категорію
-  // сесії, але не знімає voice-processing (ехоподавлення/AGC), який iOS
-  // вмикає на апаратному аудіо-юніті саме тому, що розпізнавання мовлення
-  // просило мікрофон із цими обробками. Це і є та "телефонна" обробка,
-  // яка грає голосно незалежно від повзунка гучності та перемикача
-  // "тиша" — типова ознака voice-call аудіо-маршруту. Спроба "змити" цей
-  // тег: миттєво запросити мікрофон із ЯВНО вимкненими echoCancellation/
-  // noiseSuppression/autoGainControl і одразу зупинити потік — якщо iOS
-  // перебудує апаратний I/O під ці (нові) параметри, звичайний
-  // programний рух до "playback" вище повинен нарешті прижитись. Дозвіл
-  // на мікрофон уже надано (розпізнавання щойно його використовувало),
-  // тож повторного запиту в користувача не буде — можливе лише коротке
-  // миготіння індикатора мікрофона.
-  spTryFlushVoiceProcessing();
-}
-async function spTryFlushVoiceProcessing(){
-  try{
-    if(!navigator.mediaDevices?.getUserMedia) return;
-    const stream = await navigator.mediaDevices.getUserMedia({
-      audio: { echoCancellation:false, noiseSuppression:false, autoGainControl:false }
-    });
-    stream.getTracks().forEach(t => t.stop());
-    spL('audioSession: flushed voice-processing via plain getUserMedia');
-  }catch(e){ spL(`audioSession: flush attempt failed ${e.name}: ${e.message}`); }
 }
 function spSetRecordAudioSession(){
+  _spMicUsedThisSession = true;
   try{
     if(!('audioSession' in navigator)){
       spL('audioSession: API not supported (pre-16.4 Safari?)');
@@ -20361,6 +20358,21 @@ function showStreakInfo(){ showStreakInfoModal(); }
 
 // ── BROWSE ────────────────────────────────────────────────────
 function switchVocabTab(tab){
+  // Виходимо з "Вимова" (tab 7) на щось інше — якщо мікрофон реально
+  // використовувався в цій сесії, аудіо-сесія сторінки могла лишитись
+  // "забрудненою" на рівні ОС (той самий "гучний зв'язок", що
+  // навіть при коректному navigator.audioSession.type='playback' не
+  // лікується інакше, ніж повним перезавантаженням — див. коментар
+  // біля _spMicUsedThisSession/spRestoreAudioSession). Робимо це саме
+  // тут: прогрес до цього моменту вже збережено як завжди, користувач
+  // сам вирішив покинути мікрофонний екран — найменш нав'язливий момент
+  // для reload з усіх можливих.
+  const leavingSpeech = tab !== 7 &&
+    document.getElementById('vocab-panel-speech')?.style.display === 'flex';
+  if(leavingSpeech && _spMicUsedThisSession){
+    location.reload();
+    return;
+  }
   // Зупиняємо запис при переключенні
   if(typeof spState!=='undefined' && spState.recording) spStopRecord();
   // Йдемо геть з картки (tab!==0) — прибираємо активну сесію рушія

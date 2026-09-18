@@ -31355,11 +31355,11 @@ var DIALOGE = [
       "gram": "satzverbindungen_ueberblick"
     },
     "a": {
-      "de": "Ich würde am liebsten mal wieder verreisen.",
-      "en": "I'd most like to travel somewhere again.",
-      "uk": "Я б найбільше хотів знову кудись поїхати.",
-      "ru": "Я бы больше всего хотел снова куда-то поехать.",
-      "gram": ""
+      "de": "Ich <g>würde</g> am liebsten mal wieder <g>verreisen</g>.",
+      "en": "I'd <g>most like to travel</g> somewhere again.",
+      "uk": "Я <g>б</g> найбільше <g>хотів</g> знову кудись поїхати.",
+      "ru": "Я <g>бы</g> больше всего <g>хотел</g> снова куда-то поехать.",
+      "gram": "konjunktiv2_wuensche_b1"
     }
   },
   {
@@ -31375,11 +31375,11 @@ var DIALOGE = [
       "gram": "trennbare_verben_praefixe_wdh_b1"
     },
     "a": {
-      "de": "Nächsten Sonntag, ich freue mich schon aufs Auspacken.",
-      "en": "Next Sunday, I'm already looking forward to unpacking.",
-      "uk": "Наступної неділі, я вже чекаю на розпакування речей.",
-      "ru": "В следующее воскресенье, я уже жду распаковки вещей.",
-      "gram": ""
+      "de": "Nächsten Sonntag, ich freue mich schon <g>aufs</g> Auspacken.",
+      "en": "Next Sunday, I'm already looking forward <g>to</g> unpacking.",
+      "uk": "Наступної неділі, я вже чекаю <g>на</g> розпакування речей.",
+      "ru": "В следующее воскресенье, я уже жду <g>распаковки</g> вещей.",
+      "gram": "verben_mit_praep_wdh_b1"
     }
   },
   {
@@ -31395,11 +31395,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ja, letztes Jahr, das war wirklich günstig und gemütlich.",
-      "en": "Yes, last year, it was really cheap and cosy.",
-      "uk": "Так, минулого року, там було справді недорого й затишно.",
-      "ru": "Да, в прошлом году, там было действительно недорого и уютно.",
-      "gram": ""
+      "de": "Ja, letztes Jahr, das <g>war</g> wirklich günstig und gemütlich.",
+      "en": "Yes, last year, it <g>was</g> really cheap and cosy.",
+      "uk": "Так, минулого року, там <g>було</g> справді недорого й затишно.",
+      "ru": "Да, в прошлом году, там <g>было</g> действительно недорого и уютно.",
+      "gram": "praeteritum_wdh_b1"
     }
   },
   {
@@ -31415,11 +31415,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "Ja, zum Glück konnte die Polizei den Einbrecher schnell festnehmen.",
-      "en": "Yes, luckily the police were able to arrest the burglar quickly.",
-      "uk": "Так, на щастя, поліція змогла швидко затримати грабіжника.",
-      "ru": "Да, к счастью, полиция смогла быстро задержать грабителя.",
-      "gram": ""
+      "de": "Ja, zum Glück <g>konnte</g> die Polizei den Einbrecher schnell festnehmen.",
+      "en": "Yes, luckily the police <g>were able to</g> arrest the burglar quickly.",
+      "uk": "Так, на щастя, поліція <g>змогла</g> швидко затримати грабіжника.",
+      "ru": "Да, к счастью, полиция <g>смогла</g> быстро задержать грабителя.",
+      "gram": "praeteritum_wdh_b1"
     }
   },
   {
@@ -31435,11 +31435,11 @@ var DIALOGE = [
     "name_q": "de_m_mark",
     "name_a": "de_w_julia",
     "q": {
-      "de": "Hallo, Julia! Schön, dass wir das zusammen planen können. Der Keller und das Treppenhaus sehen wirklich chaotisch aus – wir sollten das mal aufräumen.",
-      "en": "Hi, Julia! It's great that we can plan this together. The basement and the stairwell really look chaotic – we should tidy them up.",
-      "uk": "Привіт, Юліє! Добре, що ми можемо це спланувати разом. Підвал і підʼїзд справді виглядають безладно – треба це прибрати.",
-      "ru": "Привет, Юлия! Хорошо, что мы можем это спланировать вместе. Подвал и подъезд действительно выглядят беспорядочно – надо это убрать.",
-      "gram": ""
+      "de": "Hallo, Julia! Schön, <g>dass</g> wir das zusammen planen können. Der Keller und das Treppenhaus sehen wirklich chaotisch aus – wir sollten das mal aufräumen.",
+      "en": "Hi, Julia! It's great <g>that</g> we can plan this together. The basement and the stairwell really look chaotic – we should tidy them up.",
+      "uk": "Привіт, Юліє! Добре, <g>що</g> ми можемо це спланувати разом. Підвал і підʼїзд справді виглядають безладно – треба це прибрати.",
+      "ru": "Привет, Юлия! Хорошо, <g>что</g> мы можем это спланировать вместе. Подвал и подъезд действительно выглядят беспорядочно – надо это убрать.",
+      "gram": "konnektoren_wdh_b1"
     },
     "a": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> das am Samstagvormittag machen?<br><r>Passt dir das so</r>, Mark?",
@@ -31456,11 +31456,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Kinderwagen im Keller bedenken.<br><r>Wir könnten doch</r> einen festen Platz dafür finden.<br><r>Wie findest du das?</r>",
-      "en": "<r>That sounds good, but maybe we should also</r> think about the baby strollers in the basement.<br><r>We could</r> find a fixed spot for them.<br><r>How do you find that?</r>",
-      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про дитячі коляски в підвалі.<br><r>Ми могли б</r> знайти для них постійне місце.<br><r>Як тобі така ідея?</r>",
-      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о детских колясках в подвале.<br><r>Мы могли бы</r> найти для них постоянное место.<br><r>Как тебе такая идея?</r>",
-      "gram": ""
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Kinderwagen im Keller bedenken.<br><r>Wir könnten doch</r> einen festen Platz <g>dafür</g> finden.<br><r>Wie findest du das?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> think about the baby strollers in the basement.<br><r>We could</r> find a fixed spot <g>for them</g>.<br><r>How do you find that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про дитячі коляски в підвалі.<br><r>Ми могли б</r> знайти <g>для них</g> постійне місце.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о детских колясках в подвале.<br><r>Мы могли бы</r> найти <g>для них</g> постоянное место.<br><r>Как тебе такая идея?</r>",
+      "gram": "praepositionaladverbien_b1"
     },
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> Handschuhe und Müllsäcke mitbringen.<br><r>Bist du damit einverstanden?</r>",
@@ -31470,11 +31470,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir schreiben einen Zettel für die Briefkästen, damit alle Bescheid wissen.<br><r>Was hältst du davon?</r>",
-      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we write a note for the mailboxes so everyone knows.<br><r>What do you think of that?</r>",
-      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми напишемо записку для поштових скриньок, щоб усі знали.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы напишем записку для почтовых ящиков, чтобы все знали.<br><r>Что ты на это скажешь?</r>",
-      "gram": ""
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir schreiben einen Zettel für die Briefkästen, <g>damit</g> alle Bescheid wissen.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we write a note for the mailboxes <g>so that</g> everyone knows.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми напишемо записку для поштових скриньок, <g>щоб</g> усі знали.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы напишем записку для почтовых ящиков, <g>чтобы</g> все знали.<br><r>Что ты на это скажешь?</r>",
+      "gram": "nebensatz_mit_damit_wdh_b1"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob das wirklich jeder liest.<br><r>Vielleicht wäre es am besten, wenn wir</r> zusätzlich im Treppenhaus einen Aushang machen.<br><r>Wäre das okay für dich?</r>",
@@ -31498,11 +31498,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, wir machen es so: Samstag um 10 Uhr am Keller, wir bringen Handschuhe und Müllsäcke mit, und ich schreibe den Zettel für die Briefkästen. Ich freue mich schon darauf! Bis Samstag!",
-      "en": "Yes, good idea! So, we'll do it like this: Saturday at 10 o'clock at the basement, we'll bring gloves and garbage bags, and I'll write the note for the mailboxes. I'm already looking forward to it! See you Saturday!",
-      "uk": "Так, гарна ідея! Отже, зробимо так: субота о 10 годині біля підвалу, ми візьмемо рукавички та сміттєві мішки, а я напишу записку для поштових скриньок. Уже тішуся! До суботи!",
-      "ru": "Да, хорошая идея! Итак, сделаем так: суббота в 10 часов у подвала, мы возьмём перчатки и мусорные мешки, а я напишу записку для почтовых ящиков. Уже жду с нетерпением! До субботы!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, wir machen es so: Samstag um 10 Uhr am Keller, wir <g>bringen</g> Handschuhe und Müllsäcke <g>mit</g>, und ich schreibe den Zettel für die Briefkästen. Ich freue mich schon darauf! Bis Samstag!",
+      "en": "Yes, good idea! So, we'll do it like this: Saturday at 10 o'clock at the basement, we'll <g>bring</g> gloves and garbage bags <g>along</g>, and I'll write the note for the mailboxes. I'm already looking forward to it! See you Saturday!",
+      "uk": "Так, гарна ідея! Отже, зробимо так: субота о 10 годині біля підвалу, ми <g>візьмемо</g> рукавички та сміттєві мішки, а я напишу записку для поштових скриньок. Уже тішуся! До суботи!",
+      "ru": "Да, хорошая идея! Итак, сделаем так: суббота в 10 часов у подвала, мы <g>возьмём</g> перчатки и мусорные мешки, а я напишу записку для почтовых ящиков. Уже жду с нетерпением! До субботы!",
+      "gram": "trennbare_verben_praefixe_wdh_b1"
     }
   },
   {
@@ -31518,11 +31518,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_david",
     "q": {
-      "de": "Hallo, David! Wollen wir zusammen das Fest für unsere Nachbarschaft planen? Ich finde, das wird eine schöne Gelegenheit, die neuen Nachbarn kennenzulernen.",
-      "en": "Hi, David! Shall we plan the party for our neighbourhood together? I think it'll be a nice chance to get to know the new neighbours.",
-      "uk": "Привіт, Девіде! Хочеш, сплануємо разом свято для нашого сусідства? Думаю, це буде гарна нагода познайомитися з новими сусідами.",
-      "ru": "Привет, Дэвид! Давай спланируем вместе праздник для нашего района? Думаю, это будет хорошая возможность познакомиться с новыми соседями.",
-      "gram": ""
+      "de": "Hallo, David! Wollen wir zusammen das Fest für unsere Nachbarschaft planen? Ich finde, das wird eine schöne Gelegenheit, die neuen Nachbarn <g>kennenzulernen</g>.",
+      "en": "Hi, David! Shall we plan the party for our neighbourhood together? I think it'll be a nice chance <g>to get to know</g> the new neighbours.",
+      "uk": "Привіт, Девіде! Хочеш, сплануємо разом свято для нашого сусідства? Думаю, це буде гарна нагода <g>познайомитися</g> з новими сусідами.",
+      "ru": "Привет, Дэвид! Давай спланируем вместе праздник для нашего района? Думаю, это будет хорошая возможность <g>познакомиться</g> с новыми соседями.",
+      "gram": "infinitiv_mit_zu"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Wie wäre es, wenn wir</r> das am nächsten Samstagnachmittag machen?<br><r>Was denkst du</r>, Julia?",
@@ -31581,11 +31581,11 @@ var DIALOGE = [
       "gram": "wechselpraepositionen_wdh_b1"
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, wir treffen uns Samstagvormittag im Hof, stellen die Tische dorthin, die Kinder spielen auf dem Spielplatz, ich bringe die Musik mit und du die Getränke. Ich freue mich schon auf unser Fest! Bis Samstag!",
-      "en": "Yes, good idea! So, we'll meet Saturday morning in the courtyard, put the tables there, the children will play at the playground, I'll bring the music and you the drinks. I'm already looking forward to our party! See you Saturday!",
-      "uk": "Так, гарна ідея! Отже, зустрічаємося в суботу вранці у дворі, ставимо столи там, діти граються на майданчику, я приношу музику, а ти напої. Уже тішуся нашому святу! До суботи!",
-      "ru": "Да, хорошая идея! Итак, встречаемся в субботу утром во дворе, ставим столы там, дети играют на площадке, я приношу музыку, а ты напитки. Уже жду с нетерпением наш праздник! До субботы!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, wir treffen uns Samstagvormittag im Hof, stellen die Tische dorthin, die Kinder spielen auf dem Spielplatz, ich bringe die Musik mit und du die Getränke. Ich freue mich schon <g>auf unser Fest</g>! Bis Samstag!",
+      "en": "Yes, good idea! So, we'll meet Saturday morning in the courtyard, put the tables there, the children will play at the playground, I'll bring the music and you the drinks. I'm already looking forward <g>to our party</g>! See you Saturday!",
+      "uk": "Так, гарна ідея! Отже, зустрічаємося в суботу вранці у дворі, ставимо столи там, діти граються на майданчику, я приношу музику, а ти напої. Уже тішуся <g>нашому святу</g>! До суботи!",
+      "ru": "Да, хорошая идея! Итак, встречаемся в субботу утром во дворе, ставим столы там, дети играют на площадке, я приношу музыку, а ты напитки. Уже жду с нетерпением <g>наш праздник</g>! До субботы!",
+      "gram": "verben_mit_praep_wdh_b1"
     }
   },
   {
@@ -31601,11 +31601,11 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo, Mark! Ich hätte eine Bitte an dich: Ich fahre nächste Woche zehn Tage in den Urlaub und wollte mit dir zusammen planen, wie wir das am besten organisieren.",
-      "en": "Hi, Mark! I have a favour to ask you: I'm going on vacation for ten days next week and wanted to plan with you how we can best organize it.",
-      "uk": "Привіт, Марку! У мене є до тебе прохання: наступного тижня я їду на десять днів у відпустку і хотів разом з тобою спланувати, як нам це краще організувати.",
-      "ru": "Привет, Марк! У меня к тебе просьба: на следующей неделе я еду на десять дней в отпуск и хотел вместе с тобой спланировать, как нам это лучше организовать.",
-      "gram": ""
+      "de": "Hallo, Mark! Ich <g>hätte</g> eine Bitte an dich: Ich fahre nächste Woche zehn Tage in den Urlaub und wollte mit dir zusammen planen, wie wir das am besten organisieren.",
+      "en": "Hi, Mark! I <g>have</g> a favour to ask you: I'm going on vacation for ten days next week and wanted to plan with you how we can best organize it.",
+      "uk": "Привіт, Марку! У мене <g>є</g> до тебе прохання: наступного тижня я їду на десять днів у відпустку і хотів разом з тобою спланувати, як нам це краще організувати.",
+      "ru": "Привет, Марк! У меня <g>есть</g> к тебе просьба: на следующей неделе я еду на десять дней в отпуск и хотел вместе с тобой спланировать, как нам это лучше организовать.",
+      "gram": "konjunktiv2_wuensche_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass</r> ich mich jeden Tag um deine Blumen <g>kümmern könnte</g>.<br><r>Ist dir das recht</r>, Anna?",
@@ -31664,11 +31664,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, ich gieße jeden Tag deine Blumen, hole die Post und die Pakete ab, und du bringst mir morgen den Schlüssel und leihst mir dein Werkzeug fürs Regal. Ich freue mich schon darauf, dir zu helfen! Bis morgen!",
-      "en": "Yes, good idea! So, I'll water your flowers every day, pick up the mail and packages, and you'll bring me the key tomorrow and lend me your tools for the shelf. I'm already looking forward to helping you! See you tomorrow!",
-      "uk": "Так, гарна ідея! Отже, я поливаю твої квіти щодня, забираю пошту й посилки, а ти приносиш мені завтра ключ і позичаєш свій інструмент для полиці. Уже тішуся, що зможу тобі допомогти! До завтра!",
-      "ru": "Да, хорошая идея! Итак, я поливаю твои цветы каждый день, забираю почту и посылки, а ты приносишь мне завтра ключ и одалживаешь свой инструмент для полки. Уже жду с нетерпением, что смогу тебе помочь! До завтра!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, ich gieße jeden Tag deine Blumen, hole die Post und die Pakete ab, und du bringst mir morgen den Schlüssel und leihst mir dein Werkzeug fürs Regal. Ich freue mich schon darauf, dir <g>zu helfen</g>! Bis morgen!",
+      "en": "Yes, good idea! So, I'll water your flowers every day, pick up the mail and packages, and you'll bring me the key tomorrow and lend me your tools for the shelf. I'm already looking forward <g>to helping</g> you! See you tomorrow!",
+      "uk": "Так, гарна ідея! Отже, я поливаю твої квіти щодня, забираю пошту й посилки, а ти приносиш мені завтра ключ і позичаєш свій інструмент для полиці. Уже тішуся, що зможу тобі <g>допомогти</g>! До завтра!",
+      "ru": "Да, хорошая идея! Итак, я поливаю твои цветы каждый день, забираю почту и посылки, а ты приносишь мне завтра ключ и одалживаешь свой инструмент для полки. Уже жду с нетерпением, что смогу тебе <g>помочь</g>! До завтра!",
+      "gram": "infinitiv_mit_zu"
     }
   },
   {
@@ -31684,11 +31684,11 @@ var DIALOGE = [
     "name_q": "de_w_nina",
     "name_a": "de_m_alex",
     "q": {
-      "de": "Hallo, Alex! Ich finde, wir sollten mal eine Hausversammlung organisieren, damit wir als Gemeinschaft besser zusammenleben. Hast du Lust, das mit mir zu planen?",
-      "en": "Hi, Alex! I think we should organize a house meeting so we can live together better as a community. Do you feel like planning that with me?",
-      "uk": "Привіт, Алексе! Думаю, нам варто організувати збори мешканців будинку, щоб краще жити разом як спільнота. Маєш бажання спланувати це зі мною?",
-      "ru": "Привет, Алекс! Думаю, нам стоит организовать собрание жильцов дома, чтобы лучше жить вместе как сообщество. У тебя есть желание спланировать это со мной?",
-      "gram": ""
+      "de": "Hallo, Alex! Ich finde, wir sollten mal eine Hausversammlung organisieren, <g>damit</g> wir als Gemeinschaft besser zusammenleben. Hast du Lust, das mit mir zu planen?",
+      "en": "Hi, Alex! I think we should organize a house meeting <g>so that</g> we can live together better as a community. Do you feel like planning that with me?",
+      "uk": "Привіт, Алексе! Думаю, нам варто організувати збори мешканців будинку, <g>щоб</g> краще жити разом як спільнота. Маєш бажання спланувати це зі мною?",
+      "ru": "Привет, Алекс! Думаю, нам стоит организовать собрание жильцов дома, <g>чтобы</g> лучше жить вместе как сообщество. У тебя есть желание спланировать это со мной?",
+      "gram": "nebensatz_mit_damit_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> versuchen, <g>einen Termin zu finden</g>, der für alle Mieter passt.<br><r>Was denkst du</r>, Nina?",
@@ -31733,11 +31733,11 @@ var DIALOGE = [
       "gram": "infinitiv_mit_zu"
     },
     "a3": {
-      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> die Aufgaben teilen: Ich kümmere mich darum, den Raum zu organisieren, und du übernimmst die Einladung.<br><r>Passt dir das so?</r>",
-      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> share the tasks: I'll take care of organizing the room, and you handle the invitations.<br><r>Does that work for you?</r>",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> поділимо завдання: я подбаю про організацію приміщення, а ти візьмеш на себе запрошення.<br><r>Тобі так підходить?</r>",
-      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> разделим задачи: я позабочусь об организации помещения, а ты возьмёшь на себя приглашения.<br><r>Тебе так подходит?</r>",
-      "gram": ""
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> die Aufgaben teilen: Ich kümmere mich darum, den Raum <g>zu organisieren</g>, und du übernimmst die Einladung.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> share the tasks: I'll take care <g>of organizing</g> the room, and you handle the invitations.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> поділимо завдання: я подбаю про <g>організацію</g> приміщення, а ти візьмеш на себе запрошення.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> разделим задачи: я позабочусь об <g>организации</g> помещения, а ты возьмёшь на себя приглашения.<br><r>Тебе так подходит?</r>",
+      "gram": "infinitiv_mit_zu"
     },
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> versuchen, <g>ein kurzes Protokoll zu schreiben</g>, damit alle informiert sind.<br><r>Können wir uns darauf einigen?</r>",
@@ -31747,11 +31747,11 @@ var DIALOGE = [
       "gram": "infinitiv_mit_zu"
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, wir suchen einen Termin, der für alle passt, ich organisiere den Raum, du lädst die Mieter ein, und am Ende einigen wir uns gemeinsam auf eine Hausordnung. Ich freue mich schon auf die Versammlung! Bis dann!",
-      "en": "Yes, good idea! So, we'll find a date that works for everyone, I'll organize the room, you'll invite the tenants, and in the end we'll agree together on house rules. I'm already looking forward to the meeting! See you then!",
-      "uk": "Так, гарна ідея! Отже, ми знайдемо дату, яка підходить усім, я організую приміщення, ти запросиш орендарів, і зрештою ми разом домовимося про правила будинку. Уже тішуся зборам! До зустрічі!",
-      "ru": "Да, хорошая идея! Итак, мы найдём дату, которая подойдёт всем, я организую помещение, ты пригласишь арендаторов, и в итоге мы вместе договоримся о правилах дома. Уже жду с нетерпением собрания! До встречи!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, wir suchen einen Termin, der für alle passt, ich organisiere den Raum, du lädst die Mieter ein, und am Ende einigen wir uns gemeinsam auf eine Hausordnung. Ich freue mich schon <g>auf die Versammlung</g>! Bis dann!",
+      "en": "Yes, good idea! So, we'll find a date that works for everyone, I'll organize the room, you'll invite the tenants, and in the end we'll agree together on house rules. I'm already looking forward <g>to the meeting</g>! See you then!",
+      "uk": "Так, гарна ідея! Отже, ми знайдемо дату, яка підходить усім, я організую приміщення, ти запросиш орендарів, і зрештою ми разом домовимося про правила будинку. Уже тішуся <g>зборам</g>! До зустрічі!",
+      "ru": "Да, хорошая идея! Итак, мы найдём дату, которая подойдёт всем, я организую помещение, ты пригласишь арендаторов, и в итоге мы вместе договоримся о правилах дома. Уже жду с нетерпением <g>собрания</g>! До встречи!",
+      "gram": "verben_mit_praep_wdh_b1"
     }
   },
   {
@@ -31767,11 +31767,11 @@ var DIALOGE = [
     "name_q": "de_m_david",
     "name_a": "de_w_anna",
     "q": {
-      "de": "Hallo, Anna! Ich wollte fragen, ob wir zusammen ein kleines Grillfest im Garten planen können. Was meinst du?",
-      "en": "Hi, Anna! I wanted to ask whether we could plan a little barbecue in the garden together. What do you think?",
-      "uk": "Привіт, Анно! Хотів запитати, чи не могли б ми разом спланувати невеличкий грильфест у саду. Що ти думаєш?",
-      "ru": "Привет, Анна! Хотел спросить, не могли бы мы вместе спланировать небольшой шашлык в саду. Что ты думаешь?",
-      "gram": ""
+      "de": "Hallo, Anna! Ich <g>wollte</g> fragen, ob wir zusammen ein kleines Grillfest im Garten planen können. Was meinst du?",
+      "en": "Hi, Anna! I <g>wanted</g> to ask whether we could plan a little barbecue in the garden together. What do you think?",
+      "uk": "Привіт, Анно! <g>Хотів</g> запитати, чи не могли б ми разом спланувати невеличкий грильфест у саду. Що ти думаєш?",
+      "ru": "Привет, Анна! <g>Хотел</g> спросить, не могли бы мы вместе спланировать небольшой шашлык в саду. Что ты думаешь?",
+      "gram": "praeteritum_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> das an einem Samstag machen, aber wir <g>müssen</g> die Ruhezeit ab 22 Uhr beachten.<br><r>Was denkst du</r>, David?",
@@ -31823,18 +31823,18 @@ var DIALOGE = [
       "gram": "modalverben_wdh_b1"
     },
     "q4": {
-      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> am Ende noch kurz lüften, damit alles wieder frisch riecht.<br><r>Können wir uns darauf einigen?</r>",
-      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we air out the room briefly at the end so everything smells fresh again.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми наприкінці ще трохи провітрили приміщення, щоб усе знову пахло свіжістю.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы в конце ещё немного проветрили помещение, чтобы всё снова пахло свежестью.<br><r>Мы можем об этом договориться?</r>",
-      "gram": ""
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> am Ende noch kurz lüften, <g>damit</g> alles wieder frisch riecht.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we air out the room briefly at the end <g>so that</g> everything smells fresh again.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми наприкінці ще трохи провітрили приміщення, <g>щоб</g> усе знову пахло свіжістю.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы в конце ещё немного проветрили помещение, <g>чтобы</g> всё снова пахло свежестью.<br><r>Мы можем об этом договориться?</r>",
+      "gram": "nebensatz_mit_damit_wdh_b1"
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, wir grillen am Samstag auf der Terrasse, informieren vorher alle Nachbarn, jeder bringt etwas mit, und danach putzen wir zusammen. Ich freue mich schon auf unser Fest! Bis Samstag!",
-      "en": "Yes, good idea! So, we'll grill on the terrace on Saturday, inform all the neighbours beforehand, everyone brings something, and afterwards we'll clean up together. I'm already looking forward to our party! See you Saturday!",
-      "uk": "Так, гарна ідея! Отже, ми смажимо на терасі в суботу, заздалегідь повідомляємо всіх сусідів, кожен щось приносить, а потім ми прибираємо разом. Уже тішуся нашому святу! До суботи!",
-      "ru": "Да, хорошая идея! Итак, мы жарим на террасе в субботу, заранее сообщаем всем соседям, каждый что-то приносит, а потом мы убираем вместе. Уже жду с нетерпением наш праздник! До субботы!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, wir grillen am Samstag auf der Terrasse, informieren vorher alle Nachbarn, jeder <g>bringt</g> etwas <g>mit</g>, und danach putzen wir zusammen. Ich freue mich schon auf unser Fest! Bis Samstag!",
+      "en": "Yes, good idea! So, we'll grill on the terrace on Saturday, inform all the neighbours beforehand, everyone <g>brings</g> something <g>along</g>, and afterwards we'll clean up together. I'm already looking forward to our party! See you Saturday!",
+      "uk": "Так, гарна ідея! Отже, ми смажимо на терасі в суботу, заздалегідь повідомляємо всіх сусідів, кожен щось <g>приносить</g>, а потім ми прибираємо разом. Уже тішуся нашому святу! До суботи!",
+      "ru": "Да, хорошая идея! Итак, мы жарим на террасе в субботу, заранее сообщаем всем соседям, каждый что-то <g>приносит</g>, а потом мы убираем вместе. Уже жду с нетерпением наш праздник! До субботы!",
+      "gram": "trennbare_verben_praefixe_wdh_b1"
     }
   },
   {
@@ -31850,11 +31850,11 @@ var DIALOGE = [
     "name_q": "de_m_mark",
     "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo, Nina! Ich wollte mit dir besprechen, wie wir mit unserem lauten Nachbarn reden können. Der Lärm wird wirklich zu viel.",
-      "en": "Hi, Nina! I wanted to talk to you about how we can speak with our loud neighbour. The noise is really getting to be too much.",
-      "uk": "Привіт, Ніно! Хотіла з тобою обговорити, як нам поговорити з нашим шумним сусідом. Шум справді вже занадто.",
-      "ru": "Привет, Нина! Хотела с тобой обсудить, как нам поговорить с нашим шумным соседом. Шум уже действительно чересчур.",
-      "gram": ""
+      "de": "Hallo, Nina! Ich <g>wollte</g> mit dir besprechen, wie wir mit unserem lauten Nachbarn reden können. Der Lärm wird wirklich zu viel.",
+      "en": "Hi, Nina! I <g>wanted</g> to talk to you about how we can speak with our loud neighbour. The noise is really getting to be too much.",
+      "uk": "Привіт, Ніно! <g>Хотіла</g> з тобою обговорити, як нам поговорити з нашим шумним сусідом. Шум справді вже занадто.",
+      "ru": "Привет, Нина! <g>Хотела</g> с тобой обсудить, как нам поговорить с нашим шумным соседом. Шум уже действительно чересчур.",
+      "gram": "praeteritum_wdh_b1"
     },
     "a": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich schlage vor, dass wir</r> ihn zusammen ansprechen, denn er ist <g>sowohl</g> abends <g>als auch</g> am Wochenende laut.<br><r>Was denkst du</r>, Mark?",
@@ -31954,11 +31954,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a1": {
-      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> schauen, was wir noch zu Hause haben.<br><r>Wir könnten doch</r> erst unsere Vorräte prüfen, bevor wir losgehen.<br><r>Was meinst du dazu?</r>",
-      "en": "<r>That sounds good, but maybe we should also</r> check what we already have at home.<br><r>We could</r> check our supplies first before we go.<br><r>What do you think about that?</r>",
-      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подивитися, що в нас уже є вдома.<br><r>Ми могли б</r> спершу перевірити наші запаси, перш ніж іти.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> посмотреть, что у нас уже есть дома.<br><r>Мы могли бы</r> сначала проверить наши запасы, прежде чем идти.<br><r>Что ты на это скажешь?</r>",
-      "gram": ""
+      "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> schauen, was wir noch zu Hause haben.<br><r>Wir könnten doch</r> erst unsere Vorräte prüfen, <g>bevor</g> wir losgehen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>That sounds good, but maybe we should also</r> check what we already have at home.<br><r>We could</r> check our supplies first <g>before</g> we go.<br><r>What do you think about that?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подивитися, що в нас уже є вдома.<br><r>Ми могли б</r> спершу перевірити наші запаси, <g>перш ніж</g> іти.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> посмотреть, что у нас уже есть дома.<br><r>Мы могли бы</r> сначала проверить наши запасы, <g>прежде чем</g> идти.<br><r>Что ты на это скажешь?</r>",
+      "gram": "nebensatz_mit_bevor"
     },
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> in den Supermarkt gehen, wo es gerade Sonderangebote gibt.<br><r>Bist du damit einverstanden?</r>",
@@ -31989,18 +31989,18 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> gleich morgen Nachmittag losgehen, bevor es zu voll wird.<br><r>Können wir uns darauf einigen?</r>",
-      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we go tomorrow afternoon, before it gets too crowded.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми пішли завтра вдень, поки не надто людно.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы пошли завтра днём, пока не слишком людно.<br><r>Мы можем об этом договориться?</r>",
-      "gram": ""
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> gleich morgen Nachmittag losgehen, <g>bevor</g> es zu voll wird.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we go tomorrow afternoon, <g>before</g> it gets too crowded.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми пішли завтра вдень, <g>поки</g> не надто людно.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы пошли завтра днём, <g>пока</g> не слишком людно.<br><r>Мы можем об этом договориться?</r>",
+      "gram": "nebensatz_mit_bevor"
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, wir schreiben zuerst die Liste, prüfen unsere Vorräte, gehen morgen Nachmittag in den Supermarkt mit den besten Angeboten, und teilen die Kosten an der Kasse. Ich freue mich schon aufs Einkaufen! Bis morgen!",
-      "en": "Yes, good idea! So, we'll write the list first, check our supplies, go to the supermarket with the best deals tomorrow afternoon, and split the cost at the checkout. I'm already looking forward to shopping! See you tomorrow!",
-      "uk": "Так, гарна ідея! Отже, спершу пишемо список, перевіряємо запаси, завтра вдень ідемо в супермаркет із найкращими пропозиціями, і ділимо витрати на касі. Уже тішуся закупам! До завтра!",
-      "ru": "Да, хорошая идея! Итак, сначала пишем список, проверяем запасы, завтра днём идём в супермаркет с лучшими предложениями, и делим расходы на кассе. Уже жду с нетерпением покупок! До завтра!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, wir schreiben zuerst die Liste, prüfen unsere Vorräte, gehen morgen Nachmittag in den Supermarkt mit den besten Angeboten, und teilen die Kosten an der Kasse. Ich freue mich schon <g>aufs</g> Einkaufen! Bis morgen!",
+      "en": "Yes, good idea! So, we'll write the list first, check our supplies, go to the supermarket with the best deals tomorrow afternoon, and split the cost at the checkout. I'm already looking forward <g>to</g> shopping! See you tomorrow!",
+      "uk": "Так, гарна ідея! Отже, спершу пишемо список, перевіряємо запаси, завтра вдень ідемо в супермаркет із найкращими пропозиціями, і ділимо витрати на касі. Уже тішуся <g>закупам</g>! До завтра!",
+      "ru": "Да, хорошая идея! Итак, сначала пишем список, проверяем запасы, завтра днём идём в супермаркет с лучшими предложениями, и делим расходы на кассе. Уже жду с нетерпением <g>покупок</g>! До завтра!",
+      "gram": "verben_mit_praep_wdh_b1"
     }
   },
   {
@@ -32016,11 +32016,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo, Mark! Ich wollte mit dir eine gemeinsame Bestellung planen, dann sparen wir uns die Versandkosten. Hast du Lust?",
-      "en": "Hi, Mark! I wanted to plan a joint order with you, that way we save on shipping costs. Are you up for it?",
-      "uk": "Привіт, Марку! Хотіла спланувати з тобою спільне замовлення, так ми заощадимо на доставці. Маєш бажання?",
-      "ru": "Привет, Марк! Хотела спланировать с тобой совместный заказ, так мы сэкономим на доставке. Есть желание?",
-      "gram": ""
+      "de": "Hallo, Mark! Ich <g>wollte</g> mit dir eine gemeinsame Bestellung planen, dann sparen wir uns die Versandkosten. Hast du Lust?",
+      "en": "Hi, Mark! I <g>wanted</g> to plan a joint order with you, that way we save on shipping costs. Are you up for it?",
+      "uk": "Привіт, Марку! <g>Хотіла</g> спланувати з тобою спільне замовлення, так ми заощадимо на доставці. Маєш бажання?",
+      "ru": "Привет, Марк! <g>Хотела</g> спланировать с тобой совместный заказ, так мы сэкономим на доставке. Есть желание?",
+      "gram": "praeteritum_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> <g>uns</g> zuerst überlegen, was wir wirklich bestellen wollen.<br><r>Was denkst du</r>, Julia?",
@@ -32065,11 +32065,11 @@ var DIALOGE = [
       "gram": "reflexivpronomen_akkusativ_wdh_b1"
     },
     "a3": {
-      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> am Freitagnachmittag treffen, um das Paket gemeinsam abzuholen.<br><r>Passt dir das so?</r>",
-      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> meet on Friday afternoon to pick up the package together.<br><r>Does that work for you?</r>",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> зустрінемося в п'ятницю вдень, щоб разом забрати посилку.<br><r>Тобі так підходить?</r>",
-      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> встретимся в пятницу днём, чтобы вместе забрать посылку.<br><r>Тебе так подходит?</r>",
-      "gram": ""
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> am Freitagnachmittag treffen, <g>um</g> das Paket gemeinsam <g>abzuholen</g>.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> meet on Friday afternoon <g>to</g> pick up the package together.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> зустрінемося в п'ятницю вдень, <g>щоб</g> разом забрати посилку.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> встретимся в пятницу днём, <g>чтобы</g> вместе забрать посылку.<br><r>Тебе так подходит?</r>",
+      "gram": "satz_mit_um_zu"
     },
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass</r> ich <g>mich</g> schon jetzt auf das neue Produkt freue und die Bestellung gleich abschicke.<br><r>Können wir uns darauf einigen?</r>",
@@ -32079,11 +32079,11 @@ var DIALOGE = [
       "gram": "reflexivpronomen_akkusativ_wdh_b1"
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, wir entscheiden uns für die günstigere Marke, ich bestelle heute Abend, und wir treffen uns am Freitagnachmittag, um das Paket abzuholen. Ich freue mich schon darauf! Bis Freitag!",
-      "en": "Yes, good idea! So, we'll decide on the cheaper brand, I'll order it this evening, and we'll meet on Friday afternoon to pick up the package. I'm already looking forward to it! See you Friday!",
-      "uk": "Так, гарна ідея! Отже, ми обираємо дешевшу марку, я замовляю сьогодні ввечері, і зустрічаємося в п'ятницю вдень, щоб забрати посилку. Уже тішуся цьому! До п'ятниці!",
-      "ru": "Да, хорошая идея! Итак, мы выбираем более дешёвую марку, я заказываю сегодня вечером, и встречаемся в пятницу днём, чтобы забрать посылку. Уже жду этого с нетерпением! До пятницы!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, wir entscheiden uns für die günstigere Marke, ich bestelle heute Abend, und wir treffen uns am Freitagnachmittag, <g>um</g> das Paket <g>abzuholen</g>. Ich freue mich schon darauf! Bis Freitag!",
+      "en": "Yes, good idea! So, we'll decide on the cheaper brand, I'll order it this evening, and we'll meet on Friday afternoon <g>to</g> pick up the package. I'm already looking forward to it! See you Friday!",
+      "uk": "Так, гарна ідея! Отже, ми обираємо дешевшу марку, я замовляю сьогодні ввечері, і зустрічаємося в п'ятницю вдень, <g>щоб</g> забрати посилку. Уже тішуся цьому! До п'ятниці!",
+      "ru": "Да, хорошая идея! Итак, мы выбираем более дешёвую марку, я заказываю сегодня вечером, и встречаемся в пятницу днём, <g>чтобы</g> забрать посылку. Уже жду этого с нетерпением! До пятницы!",
+      "gram": "satz_mit_um_zu"
     }
   },
   {
@@ -32099,11 +32099,11 @@ var DIALOGE = [
     "name_q": "de_w_anna",
     "name_a": "de_m_david",
     "q": {
-      "de": "Hallo, David! Hast du das Paket schon aufgemacht? Ich glaube, da ist leider ein Fehler – das Produkt, das wir bestellt haben, ist beschädigt.",
-      "en": "Hi, David! Have you already opened the package? I think there's unfortunately a mistake – the product we ordered is damaged.",
-      "uk": "Привіт, Девіде! Ти вже відкривала посилку? Думаю, на жаль, тут помилка – товар, який ми замовили, пошкоджений.",
-      "ru": "Привет, Дэвид! Ты уже открывала посылку? Думаю, к сожалению, здесь ошибка – товар, который мы заказали, повреждён.",
-      "gram": ""
+      "de": "Hallo, David! <g>Hast</g> du das Paket schon <g>aufgemacht</g>? Ich glaube, da ist leider ein Fehler – das Produkt, das wir bestellt <g>haben</g>, ist beschädigt.",
+      "en": "Hi, David! <g>Have</g> you already <g>opened</g> the package? I think there's unfortunately a mistake – the product we <g>ordered</g> is damaged.",
+      "uk": "Привіт, Девіде! Ти вже <g>відкривала</g> посилку? Думаю, на жаль, тут помилка – товар, який ми <g>замовили</g>, пошкоджений.",
+      "ru": "Привет, Дэвид! Ты уже <g>открывала</g> посылку? Думаю, к сожалению, здесь ошибка – товар, который мы <g>заказали</g>, повреждён.",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich schlage vor, dass wir</r> sofort eine Reklamation schreiben, denn das ist ja nicht unser Fehler, <g>sondern</g> ein Fehler vom Versand.<br><r>Was denkst du</r>, Anna?",
@@ -32162,11 +32162,11 @@ var DIALOGE = [
       "gram": "relativsatz_nominativ_sondern"
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, wir machen ein Foto, schreiben eine schriftliche Reklamation, schicken das beschädigte Produkt zurück und bitten um einen Ersatz. Ich hoffe, das klappt schnell! Bis später!",
-      "en": "Yes, good idea! So, we'll take a photo, write a formal complaint, send the damaged product back, and ask for a replacement. I hope it works out quickly! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, ми робимо фото, пишемо письмову рекламацію, відправляємо пошкоджений товар назад і просимо заміну. Сподіваюся, все вирішиться швидко! До зв'язку!",
-      "ru": "Да, хорошая идея! Итак, мы делаем фото, пишем письменную претензию, отправляем повреждённый товар обратно и просим замену. Надеюсь, всё решится быстро! До связи!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, wir machen ein Foto, schreiben eine schriftliche Reklamation, <g>schicken</g> das beschädigte Produkt <g>zurück</g> und bitten um einen Ersatz. Ich hoffe, das klappt schnell! Bis später!",
+      "en": "Yes, good idea! So, we'll take a photo, write a formal complaint, <g>send</g> the damaged product <g>back</g>, and ask for a replacement. I hope it works out quickly! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, ми робимо фото, пишемо письмову рекламацію, <g>відправляємо</g> пошкоджений товар <g>назад</g> і просимо заміну. Сподіваюся, все вирішиться швидко! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, мы делаем фото, пишем письменную претензию, <g>отправляем</g> повреждённый товар <g>обратно</g> и просим замену. Надеюсь, всё решится быстро! До связи!",
+      "gram": "trennbare_verben_praefixe_wdh_b1"
     }
   },
   {
@@ -32182,11 +32182,11 @@ var DIALOGE = [
     "name_q": "de_w_nina",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo, Mark! Ich wollte mit dir ein Geschenk für Anna bestellen. Hast du Zeit, das mit mir zu planen?",
-      "en": "Hi, Mark! I wanted to order a present for Anna with you. Do you have time to plan that with me?",
-      "uk": "Привіт, Марку! Хотіла з тобою замовити подарунок для Анни. Маєш час спланувати це зі мною?",
-      "ru": "Привет, Марк! Хотела с тобой заказать подарок для Анны. Есть время спланировать это со мной?",
-      "gram": ""
+      "de": "Hallo, Mark! Ich <g>wollte</g> mit dir ein Geschenk für Anna bestellen. Hast du Zeit, das mit mir zu planen?",
+      "en": "Hi, Mark! I <g>wanted</g> to order a present for Anna with you. Do you have time to plan that with me?",
+      "uk": "Привіт, Марку! <g>Хотіла</g> з тобою замовити подарунок для Анни. Маєш час спланувати це зі мною?",
+      "ru": "Привет, Марк! <g>Хотела</g> с тобой заказать подарок для Анны. Есть время спланировать это со мной?",
+      "gram": "praeteritum_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst etwas Passendes in den <g>Warenkorb</g> legen.<br><r>Was denkst du</r>, Nina?",
@@ -32265,11 +32265,11 @@ var DIALOGE = [
     "name_q": "de_m_david",
     "name_a": "de_w_julia",
     "q": {
-      "de": "Hallo, Julia! Ich habe die Rechnung bekommen, die wir zusammen bezahlen müssen. Wollen wir kurz planen, wie wir das machen?",
-      "en": "Hi, Julia! I got the invoice that we need to pay together. Do you want to quickly plan how we'll do that?",
-      "uk": "Привіт, Юліє! Я отримав рахунок, який нам треба оплатити разом. Хочеш швидко спланувати, як ми це зробимо?",
-      "ru": "Привет, Юлия! Я получил счёт, который нам нужно оплатить вместе. Хочешь быстро спланировать, как мы это сделаем?",
-      "gram": ""
+      "de": "Hallo, Julia! Ich habe die Rechnung bekommen, <g>die</g> wir zusammen bezahlen müssen. Wollen wir kurz planen, wie wir das machen?",
+      "en": "Hi, Julia! I got the invoice <g>that</g> we need to pay together. Do you want to quickly plan how we'll do that?",
+      "uk": "Привіт, Юліє! Я отримав рахунок, <g>який</g> нам треба оплатити разом. Хочеш швидко спланувати, як ми це зробимо?",
+      "ru": "Привет, Юлия! Я получил счёт, <g>который</g> нам нужно оплатить вместе. Хочешь быстро спланировать, как мы это сделаем?",
+      "gram": "relativsatz_akkusativ_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst den Betrag prüfen, <g>den</g> wir zahlen müssen.<br><r>Was denkst du</r>, David?",
@@ -32383,11 +32383,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a2": {
-      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sparen noch eine Woche, dann haben wir genug Geld für ein besseres Modell.<br><r>Was hältst du davon?</r>",
-      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we save for one more week, then we'll have enough money for a better model.<br><r>What do you think of that?</r>",
-      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми ще тиждень поекономимо, тоді в нас буде достатньо грошей на кращу модель.<br><r>Що ти на це скажеш?</r>",
-      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы ещё неделю поэкономим, тогда у нас будет достаточно денег на лучшую модель.<br><r>Что ты на это скажешь?</r>",
-      "gram": ""
+      "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir sparen noch eine Woche, dann haben wir genug Geld für ein <g>besseres</g> Modell.<br><r>Was hältst du davon?</r>",
+      "en": "<r>Agreed, that works well</r>.<br><r>I'd have a suggestion:</r> we save for one more week, then we'll have enough money for a <g>better</g> model.<br><r>What do you think of that?</r>",
+      "uk": "<r>Погоджуюся, це підходить</r>.<br><r>У мене є пропозиція:</r> ми ще тиждень поекономимо, тоді в нас буде достатньо грошей на <g>кращу</g> модель.<br><r>Що ти на це скажеш?</r>",
+      "ru": "<r>Согласна, это подходит</r>.<br><r>У меня есть предложение:</r> мы ещё неделю поэкономим, тогда у нас будет достаточно денег на <g>лучшую</g> модель.<br><r>Что ты на это скажешь?</r>",
+      "gram": "komparativ_superlativ_vor_nomen"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir so lange warten sollten.<br><r>Vielleicht wäre es am besten, wenn wir</r> die Quittung gut aufbewahren, falls wir es umtauschen müssen.<br><r>Wäre das okay für dich?</r>",
@@ -32431,11 +32431,11 @@ var DIALOGE = [
     "name_q": "de_m_alex",
     "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo, Nina! Wollen wir zusammen zur Bank gehen und ein gemeinsames Konto eröffnen? Ich glaube, das wäre praktisch für uns.",
-      "en": "Hi, Nina! Should we go to the bank together and open a joint account? I think that would be practical for us.",
-      "uk": "Привіт, Ніно! Може, підемо разом у банк і відкриємо спільний рахунок? Думаю, це було б зручно для нас.",
-      "ru": "Привет, Нина! Может, пойдём вместе в банк и откроем совместный счёт? Думаю, это было бы удобно для нас.",
-      "gram": ""
+      "de": "Hallo, Nina! Wollen wir zusammen zur Bank gehen und ein gemeinsames Konto eröffnen? Ich glaube, das <g>wäre</g> praktisch für uns.",
+      "en": "Hi, Nina! Should we go to the bank together and open a joint account? I think that <g>would be</g> practical for us.",
+      "uk": "Привіт, Ніно! Може, підемо разом у банк і відкриємо спільний рахунок? Думаю, це <g>було б</g> зручно для нас.",
+      "ru": "Привет, Нина! Может, пойдём вместе в банк и откроем совместный счёт? Думаю, это <g>было бы</g> удобно для нас.",
+      "gram": "konjunktiv2_wuensche_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> morgen früh gehen, die Bankfiliale <g>müsste</g> um neun Uhr öffnen.<br><r>Was denkst du</r>, Alex?",
@@ -32514,11 +32514,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_w_anna",
     "q": {
-      "de": "Hallo, Anna! Ich brauche jetzt auch ein eigenes Konto. Kannst du mir helfen, die Angebote zu vergleichen?",
-      "en": "Hi, Anna! I need my own account now too. Can you help me compare the offers?",
-      "uk": "Привіт, Анно! Мені теж тепер потрібен власний рахунок. Можеш допомогти мені порівняти пропозиції?",
-      "ru": "Привет, Анна! Мне тоже теперь нужен собственный счёт. Можешь помочь мне сравнить предложения?",
-      "gram": ""
+      "de": "Hallo, Anna! Ich brauche jetzt auch ein eigenes Konto. Kannst du mir helfen, die Angebote <g>zu vergleichen</g>?",
+      "en": "Hi, Anna! I need my own account now too. Can you help me <g>compare</g> the offers?",
+      "uk": "Привіт, Анно! Мені теж тепер потрібен власний рахунок. Можеш допомогти мені <g>порівняти</g> пропозиції?",
+      "ru": "Привет, Анна! Мне тоже теперь нужен собственный счёт. Можешь помочь мне <g>сравнить</g> предложения?",
+      "gram": "infinitiv_mit_zu"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Höhe <g>der Kontogebühr</g> vergleichen.<br><r>Was denkst du</r>, Julia?",
@@ -32597,11 +32597,11 @@ var DIALOGE = [
     "name_q": "de_m_david",
     "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo, Nina! Ich kann meine Bankkarte nicht mehr finden. Kannst du mir helfen, zu überlegen, was ich jetzt tun soll?",
-      "en": "Hi, Nina! I can't find my bank card anymore. Can you help me think about what to do now?",
-      "uk": "Привіт, Ніно! Я ніяк не можу знайти свою банківську картку. Можеш допомогти мені подумати, що робити?",
-      "ru": "Привет, Нина! Я никак не могу найти свою банковскую карту. Можешь помочь мне подумать, что делать?",
-      "gram": ""
+      "de": "Hallo, Nina! Ich kann meine Bankkarte nicht mehr finden. Kannst du mir helfen, <g>zu überlegen</g>, was ich jetzt tun soll?",
+      "en": "Hi, Nina! I can't find my bank card anymore. Can you help me <g>think</g> about what to do now?",
+      "uk": "Привіт, Ніно! Я ніяк не можу знайти свою банківську картку. Можеш допомогти мені <g>подумати</g>, що робити?",
+      "ru": "Привет, Нина! Я никак не могу найти свою банковскую карту. Можешь помочь мне <g>подумать</g>, что делать?",
+      "gram": "infinitiv_mit_zu"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst den Sperrnotruf anrufen, damit niemand dein Geld abheben kann.<br><r>Was denkst du</r>, David?",
@@ -32611,11 +32611,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q1": {
-      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> überlegen, ob die Karte gestohlen wurde oder ob ich sie einfach verloren habe.<br><r>Wie findest du das?</r>",
-      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we think about whether the card was stolen or whether I just lost it.<br><r>How do you find that?</r>",
-      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми подумали, чи картку вкрали, чи я просто її загубив.<br><r>Як тобі така ідея?</r>",
-      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы подумали, украли карту или я просто её потерял.<br><r>Как тебе такая идея?</r>",
-      "gram": ""
+      "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> überlegen, ob die Karte gestohlen wurde oder ob ich sie einfach <g>verloren habe</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we think about whether the card was stolen or whether I just <g>lost</g> it.<br><r>How do you find that?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми подумали, чи картку вкрали, чи я просто її <g>загубив</g>.<br><r>Як тобі така ідея?</r>",
+      "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы подумали, украли карту или я просто её <g>потерял</g>.<br><r>Как тебе такая идея?</r>",
+      "gram": "perfekt_wdh_b1"
     },
     "a1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Polizei denken.<br><r>Wir könnten doch</r> eine Anzeige bei der Polizei erstatten, falls die Karte gestohlen wurde.<br><r>Was meinst du dazu?</r>",
@@ -32653,11 +32653,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q4": {
-      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> gleich jetzt beim Sperrnotruf anrufen, bevor wir losgehen.<br><r>Können wir uns darauf einigen?</r>",
-      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we call the emergency blocking hotline right now, before we go.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми зателефонували на гарячу лінію просто зараз, перш ніж підемо.<br><r>Ми можемо про це домовитися?</r>",
-      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы позвонили на горячую линию прямо сейчас, прежде чем пойдём.<br><r>Мы можем об этом договориться?</r>",
-      "gram": ""
+      "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> gleich jetzt beim Sperrnotruf anrufen, <g>bevor</g> wir losgehen.<br><r>Können wir uns darauf einigen?</r>",
+      "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we call the emergency blocking hotline right now, <g>before</g> we go.<br><r>Can we agree on that?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми зателефонували на гарячу лінію просто зараз, <g>перш ніж</g> підемо.<br><r>Ми можемо про це домовитися?</r>",
+      "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы позвонили на горячую линию прямо сейчас, <g>прежде чем</g> пойдём.<br><r>Мы можем об этом договориться?</r>",
+      "gram": "nebensatz_mit_bevor"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir rufen jetzt den Sperrnotruf an, gehen dann zusammen zur Bankfiliale, und du erstattest eine Anzeige, falls die Karte gestohlen wurde. Ich bin bei dir! Bis gleich!",
@@ -32680,11 +32680,11 @@ var DIALOGE = [
     "name_q": "de_m_mark",
     "name_a": "de_m_alex",
     "q": {
-      "de": "Hallo, Alex! Ich habe über unsere Hausratversicherung nachgedacht. Sollen wir zusammen überlegen, ob wir sie wirklich brauchen?",
-      "en": "Hi, Alex! I've been thinking about our home contents insurance. Should we think together about whether we really need it?",
-      "uk": "Привіт, Алексе! Я думала про наше страхування майна. Може, разом подумаємо, чи справді воно нам потрібне?",
-      "ru": "Привет, Алекс! Я думала о нашей страховке имущества. Может, вместе подумаем, действительно ли она нам нужна?",
-      "gram": ""
+      "de": "Hallo, Alex! Ich <g>habe</g> über unsere Hausratversicherung <g>nachgedacht</g>. Sollen wir zusammen überlegen, ob wir sie wirklich brauchen?",
+      "en": "Hi, Alex! I've been <g>thinking</g> about our home contents insurance. Should we think together about whether we really need it?",
+      "uk": "Привіт, Алексе! Я <g>думала</g> про наше страхування майна. Може, разом подумаємо, чи справді воно нам потрібне?",
+      "ru": "Привет, Алекс! Я <g>думала</g> о нашей страховке имущества. Может, вместе подумаем, действительно ли она нам нужна?",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sie behalten, <g>obwohl</g> sie extra Geld kostet, denn sie schützt uns bei einem Einbruch.<br><r>Was denkst du</r>, Mark?",
@@ -32846,11 +32846,11 @@ var DIALOGE = [
     "name_q": "de_w_nina",
     "name_a": "de_m_david",
     "q": {
-      "de": "Hallo, David! Ich habe gerade gesehen, dass trotzdem eine Gebühr von meinem Konto abgebucht wurde, obwohl ich rechtzeitig gekündigt habe. Kannst du mir helfen, das zu klären?",
-      "en": "Hi, David! I just saw that a fee was still charged from my account, although I cancelled in time. Can you help me sort this out?",
-      "uk": "Привіт, Девіде! Я щойно побачила, що з мого рахунку все одно списали плату, хоча я вчасно розірвала договір. Можеш допомогти мені це з'ясувати?",
-      "ru": "Привет, Дэвид! Я только что увидела, что с моего счёта всё равно списали плату, хотя я вовремя расторгла договор. Можешь помочь мне это выяснить?",
-      "gram": ""
+      "de": "Hallo, David! Ich habe gerade gesehen, <g>dass</g> trotzdem eine Gebühr von meinem Konto abgebucht wurde, obwohl ich rechtzeitig gekündigt habe. Kannst du mir helfen, das zu klären?",
+      "en": "Hi, David! I just saw <g>that</g> a fee was still charged from my account, although I cancelled in time. Can you help me sort this out?",
+      "uk": "Привіт, Девіде! Я щойно побачила, <g>що</g> з мого рахунку все одно списали плату, хоча я вчасно розірвала договір. Можеш допомогти мені це з'ясувати?",
+      "ru": "Привет, Дэвид! Я только что увидела, <g>что</g> с моего счёта всё равно списали плату, хотя я вовремя расторгла договор. Можешь помочь мне это выяснить?",
+      "gram": "konnektoren_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Bestätigung suchen, <g>denn</g> die brauchen wir als Nachweis.<br><r>Was denkst du</r>, Nina?",
@@ -32929,11 +32929,11 @@ var DIALOGE = [
     "name_q": "de_m_alex",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo, Mark! Wollen wir am Wochenende zusammen frühstücken? Ich würde gern mal unsere Essgewohnheiten vergleichen.",
-      "en": "Hi, Mark! Should we have breakfast together this weekend? I'd like to compare our eating habits sometime.",
-      "uk": "Привіт, Марку! Може, поснідаємо разом на вихідних? Хотів би порівняти наші харчові звички.",
-      "ru": "Привет, Марк! Может, позавтракаем вместе на выходных? Хотел бы сравнить наши привычки питания.",
-      "gram": ""
+      "de": "Hallo, Mark! Wollen wir am Wochenende zusammen frühstücken? Ich <g>würde</g> gern mal unsere Essgewohnheiten <g>vergleichen</g>.",
+      "en": "Hi, Mark! Should we have breakfast together this weekend? I<g>'d like</g> to <g>compare</g> our eating habits sometime.",
+      "uk": "Привіт, Марку! Може, поснідаємо разом на вихідних? <g>Хотів би</g> порівняти наші харчові звички.",
+      "ru": "Привет, Марк! Может, позавтракаем вместе на выходных? <g>Хотел бы</g> сравнить наши привычки питания.",
+      "gram": "konjunktiv2_wuensche_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> sowohl etwas Süßes als auch etwas Salziges machen, dann ist für jeden etwas dabei.<br><r>Was denkst du</r>, Alex?",
@@ -32978,11 +32978,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a3": {
-      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> genug machen, damit wir am Ende alle richtig satt sind.<br><r>Passt dir das so?</r>",
-      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> make enough so we're all really full at the end.<br><r>Does that work for you?</r>",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> приготуємо достатньо, щоб усі наприкінці були ситі.<br><r>Тобі так підходить?</r>",
-      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> приготовим достаточно, чтобы все в конце были сыты.<br><r>Тебе так подходит?</r>",
-      "gram": ""
+      "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> genug machen, <g>damit</g> wir am Ende alle richtig satt sind.<br><r>Passt dir das so?</r>",
+      "en": "<r>I like that a lot</r>.<br><r>Let's just</r> make enough <g>so that</g> we're all really full at the end.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> приготуємо достатньо, <g>щоб</g> усі наприкінці були ситі.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> приготовим достаточно, <g>чтобы</g> все в конце были сыты.<br><r>Тебе так подходит?</r>",
+      "gram": "nebensatz_mit_damit_wdh_b1"
     },
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> schon heute Abend gemeinsam einkaufen gehen.<br><r>Können wir uns darauf einigen?</r>",
@@ -33012,11 +33012,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_w_nina",
     "q": {
-      "de": "Hallo, Nina! Ich habe neulich an unsere Kindheit gedacht. Weißt du noch, was es bei euch zu Hause oft zu essen gab? Wollen wir einen Kochabend planen und ein paar alte Gerichte nachkochen?",
-      "en": "Hi, Nina! I was thinking about our childhood recently. Do you remember what you often used to eat at home? Should we plan a cooking night and recreate a few old dishes?",
-      "uk": "Привіт, Ніно! Я нещодавно згадувала наше дитинство. Пам'ятаєш, що у вас удома часто їли? Може, сплануємо вечір кулінарії і приготуємо кілька старих страв?",
-      "ru": "Привет, Нина! Я недавно вспоминала наше детство. Помнишь, что у вас дома часто ели? Может, спланируем кулинарный вечер и приготовим несколько старых блюд?",
-      "gram": ""
+      "de": "Hallo, Nina! Ich <g>habe</g> neulich an unsere Kindheit <g>gedacht</g>. Weißt du noch, was es bei euch zu Hause oft zu essen gab? Wollen wir einen Kochabend planen und ein paar alte Gerichte nachkochen?",
+      "en": "Hi, Nina! I've <g>been thinking</g> about our childhood recently. Do you remember what you often used to eat at home? Should we plan a cooking night and recreate a few old dishes?",
+      "uk": "Привіт, Ніно! Я нещодавно <g>згадувала</g> наше дитинство. Пам'ятаєш, що у вас удома часто їли? Може, сплануємо вечір кулінарії і приготуємо кілька старих страв?",
+      "ru": "Привет, Нина! Я недавно <g>вспоминала</g> наше детство. Помнишь, что у вас дома часто ели? Может, спланируем кулинарный вечер и приготовим несколько старых блюд?",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst überlegen, was es bei uns damals oft <g>gab</g>, zum Beispiel Kartoffelsuppe.<br><r>Was denkst du</r>, Julia?",
@@ -33095,11 +33095,11 @@ var DIALOGE = [
     "name_q": "de_m_david",
     "name_a": "de_m_alex",
     "q": {
-      "de": "Hallo, Alex! Ich habe in letzter Zeit ziemlich zugenommen. Sollen wir zusammen planen, wie wir uns gesünder ernähren?",
-      "en": "Hi, Alex! I've gained quite a bit of weight lately. Should we plan together how to eat more healthily?",
-      "uk": "Привіт, Алексе! Останнім часом я досить набрав вагу. Може, сплануємо разом, як харчуватися здоровіше?",
-      "ru": "Привет, Алекс! В последнее время я довольно сильно набрал вес. Может, спланируем вместе, как питаться здоровее?",
-      "gram": ""
+      "de": "Hallo, Alex! Ich <g>habe</g> in letzter Zeit ziemlich <g>zugenommen</g>. Sollen wir zusammen planen, wie wir uns gesünder ernähren?",
+      "en": "Hi, Alex! I've <g>gained</g> quite a bit of weight lately. Should we plan together how to eat more healthily?",
+      "uk": "Привіт, Алексе! Останнім часом я досить <g>набрав</g> вагу. Може, сплануємо разом, як харчуватися здоровіше?",
+      "ru": "Привет, Алекс! В последнее время я довольно сильно <g>набрал</g> вес. Может, спланируем вместе, как питаться здоровее?",
+      "gram": "perfekt_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> uns regelmäßig treffen, <g>deshalb</g> würde ich sagen: jeden Mittwoch.<br><r>Was denkst du</r>, David?",
@@ -33261,11 +33261,11 @@ var DIALOGE = [
     "name_q": "de_m_mark",
     "name_a": "de_m_david",
     "q": {
-      "de": "Hallo, David! Ich würde gern eine Umfrage zu unseren Essgewohnheiten machen. Hast du Lust, das mit mir zu planen?",
-      "en": "Hi, David! I'd like to do a survey about our eating habits. Do you feel like planning that with me?",
-      "uk": "Привіт, Девіде! Хотів би провести опитування про наші харчові звички. Маєш бажання спланувати це зі мною?",
-      "ru": "Привет, Дэвид! Хотел бы провести опрос о наших привычках питания. Есть желание спланировать это со мной?",
-      "gram": ""
+      "de": "Hallo, David! Ich <g>würde</g> gern eine Umfrage zu unseren Essgewohnheiten <g>machen</g>. Hast du Lust, das mit mir zu planen?",
+      "en": "Hi, David! I<g>'d like</g> to <g>do</g> a survey about our eating habits. Do you feel like planning that with me?",
+      "uk": "Привіт, Девіде! <g>Хотів би</g> провести опитування про наші харчові звички. Маєш бажання спланувати це зі мною?",
+      "ru": "Привет, Дэвид! <g>Хотел бы</g> провести опрос о наших привычках питания. Есть желание спланировать это со мной?",
+      "gram": "konjunktiv2_wuensche_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Meinung <g>der Mehrheit</g> herausfinden wollen, also fragen wir viele Leute.<br><r>Was denkst du</r>, Mark?",
@@ -33372,11 +33372,11 @@ var DIALOGE = [
       "gram": ""
     },
     "q2": {
-      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> genug Frischhaltedosen kaufen, bevor wir anfangen.<br><r>Bist du damit einverstanden?</r>",
-      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we buy enough food storage containers before we start.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми купили достатньо контейнерів для зберігання їжі, перш ніж почати.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы купили достаточно контейнеров для хранения еды, прежде чем начать.<br><r>Ты согласна с этим?</r>",
-      "gram": ""
+      "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> genug Frischhaltedosen kaufen, <g>bevor</g> wir anfangen.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we buy enough food storage containers <g>before</g> we start.<br><r>Do you agree with that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми купили достатньо контейнерів для зберігання їжі, <g>перш ніж</g> почати.<br><r>Ти згодна з цим?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы купили достаточно контейнеров для хранения еды, <g>прежде чем</g> начать.<br><r>Ты согласна с этим?</r>",
+      "gram": "nebensatz_mit_bevor"
     },
     "a2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir achten auf genug Ballaststoffe, zum Beispiel mit Vollkornreis.<br><r>Was hältst du davon?</r>",
@@ -33490,11 +33490,11 @@ var DIALOGE = [
       "gram": ""
     },
     "a4": {
-      "de": "Ja, gute Idee! Also, wir erklären ihr die wichtigsten Regeln, zeigen ihr die Stadt, und laden sie nächste Woche zum Mittagessen ein. Ich freue mich schon darauf, sie besser kennenzulernen! Bis bald!",
-      "en": "Yes, good idea! So, we'll explain the most important rules to her, show her around the city, and invite her for lunch next week. I'm already looking forward to getting to know her better! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, пояснюємо їй найважливіші правила, показуємо місто, і запрошуємо на обід наступного тижня. Уже тішуся ближче з нею познайомитися! До зв'язку!",
-      "ru": "Да, хорошая идея! Итак, объясняем ей самые важные правила, показываем город, и приглашаем на обед на следующей неделе. Уже жду с нетерпением узнать её лучше! До связи!",
-      "gram": ""
+      "de": "Ja, gute Idee! Also, wir erklären ihr die wichtigsten Regeln, zeigen ihr die Stadt, und laden sie nächste Woche zum Mittagessen ein. Ich freue mich schon darauf, sie besser <g>kennenzulernen</g>! Bis bald!",
+      "en": "Yes, good idea! So, we'll explain the most important rules to her, show her around the city, and invite her for lunch next week. I'm already looking forward <g>to getting to know</g> her better! Talk soon!",
+      "uk": "Так, гарна ідея! Отже, пояснюємо їй найважливіші правила, показуємо місто, і запрошуємо на обід наступного тижня. Уже тішуся ближче з нею <g>познайомитися</g>! До зв'язку!",
+      "ru": "Да, хорошая идея! Итак, объясняем ей самые важные правила, показываем город, и приглашаем на обед на следующей неделе. Уже жду с нетерпением <g>узнать</g> её лучше! До связи!",
+      "gram": "infinitiv_mit_zu"
     }
   },
   {
@@ -33510,11 +33510,11 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_alex",
     "q": {
-      "de": "Hallo, Alex! Ich wollte einen Abend organisieren, an dem wir alle über unsere Sprachbiografien sprechen. Hast du Lust, das mit mir zu planen?",
-      "en": "Hi, Alex! I wanted to organize an evening where we all talk about our language biographies. Do you feel like planning that with me?",
-      "uk": "Привіт, Алексе! Я хотіла організувати вечір, на якому ми всі розповімо про свої мовні біографії. Маєш бажання спланувати це зі мною?",
-      "ru": "Привет, Алекс! Я хотела организовать вечер, на котором мы все расскажем о своих языковых биографиях. Есть желание спланировать это со мной?",
-      "gram": ""
+      "de": "Hallo, Alex! Ich <g>wollte</g> einen Abend organisieren, an dem wir alle über unsere Sprachbiografien sprechen. Hast du Lust, das mit mir zu planen?",
+      "en": "Hi, Alex! I <g>wanted</g> to organize an evening where we all talk about our language biographies. Do you feel like planning that with me?",
+      "uk": "Привіт, Алексе! Я <g>хотіла</g> організувати вечір, на якому ми всі розповімо про свої мовні біографії. Маєш бажання спланувати це зі мною?",
+      "ru": "Привет, Алекс! Я <g>хотела</g> организовать вечер, на котором мы все расскажем о своих языковых биографиях. Есть желание спланировать это со мной?",
+      "gram": "praeteritum_wdh_b1"
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst überlegen, <g>worüber</g> die Teilnehmer am liebsten sprechen möchten.<br><r>Was denkst du</r>, Julia?",
