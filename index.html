@@ -4284,6 +4284,10 @@ body{
         <option value="on">«Промивання» звуку: завжди</option>
         <option value="off">«Промивання» звуку: ніколи</option>
       </select>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn btn-s" onclick="spMicDot('ON')">🟠 точка мікрофона горить</button>
+        <button class="btn btn-s" onclick="spMicDot('OFF')">⚪ точка згасла</button>
+      </div>
       <div style="display:flex;gap:8px;align-items:center">
         <button class="btn btn-s" onclick="spPreloadModel()">⬇️ Завантажити модель</button>
         <span id="sp-preload-status" style="font-size:12px;color:var(--muted)"></span>
@@ -4417,7 +4421,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '681-c61abf1';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14310,7 +14314,7 @@ function spCapRecord(opts){
     noise: 0, calib: [], thr: 0.0035, peak: 0, maxRms: 0, weak: false, firstSpeechAt: -1,
     trace: '', bucketMs: 0, bucketMax: 0,
     stream: null, ctx: null, src: null, node: null, sink: null,
-    ended: false, errorName: null, startedAt: performance.now()
+    ended: false, errorName: null, startedAt: performance.now(), gotFirst: false
   };
   let resolveRes;
   const result = new Promise(res => { resolveRes = res; });
@@ -14354,6 +14358,11 @@ function spCapRecord(opts){
 
   const onChunk = (f32) => {
     if(s.ended) return;
+    if(!s.gotFirst){
+      s.gotFirst = true;
+      spL(`first audio chunk +${Math.round(performance.now() - s.startedAt)}ms after start`);
+      try{ opts.onFirstChunk && opts.onFirstChunk(); }catch(e){}
+    }
     s.chunks.push(f32); s.total += f32.length;
     let sum = 0;
     for(let i = 0; i < f32.length; i++){ const v = f32[i]; sum += v * v; const a = v < 0 ? -v : v; if(a > s.peak) s.peak = a; }
@@ -14718,10 +14727,17 @@ function spEnsureDiagRow(){
     row.innerHTML = '<span class="sp-label">🔊 Звук цієї фрази:</span>' +
       '<button class="btn btn-s" onclick="spVerdict(\'NORMAL\')">норм</button>' +
       '<button class="btn btn-s" onclick="spVerdict(\'CALL\')">📞 як дзвінок</button>' +
-      '<button class="btn btn-s" onclick="spVerdict(\'QUIET\')">🔈 тихо</button>';
+      '<button class="btn btn-s" onclick="spVerdict(\'QUIET\')">🔈 тихо</button>' +
+      '<button class="btn btn-s" onclick="spMicDot(\'ON\')">🟠 точка горить</button>' +
+      '<button class="btn btn-s" onclick="spMicDot(\'OFF\')">⚪ точка згасла</button>';
     card.insertAdjacentElement('afterend', row);
   }
   row.style.display = 'flex';
+}
+// Ручна відмітка: чи горить індикатор мікрофона ЗАРАЗ (можна натискати й після виходу з вправи).
+function spMicDot(v){
+  spL(`MICDOT ${v}  active=${_spActive} phase=${_spPhase} AS=${spAS()} sinceRelease=${_spLastReleaseAt ? Math.round((Date.now() - _spLastReleaseAt) / 1000) + 's' : '—'}`);
+  notify('📝 MICDOT ' + v);
 }
 function spVerdict(v){
   const since = _spLastReleaseAt ? Math.round((Date.now() - _spLastReleaseAt) / 1000) + 's' : '—';
@@ -15080,7 +15096,12 @@ function spTryStart(SR, mb, lbl, ul, attempt){
     spSrEnded();
   };
 
-  rec.onaudiostart = () => spL(`SR audiostart AS=${spAS()}`);
+  rec.onaudiostart = () => {
+    const d = Date.now() - _startTime;
+    // холодний старт мікрофона на iOS ≈ 0.8–1.2 с; кілька мс означає, що аудіоблок
+    // УЖЕ працював (мікрофон не був вимкнений після попереднього циклу)
+    spL(`SR audiostart +${d}ms after start() ${d < 150 ? '⚠ HOT-MIC (unit already running)' : '(cold start, OK)'} AS=${spAS()}`);
+  };
   rec.onaudioend = () => spL(`SR audioend AS=${spAS()}`);
   try{ rec.start(); spL(`rec.start() OK`); }
   catch(ex){
@@ -15125,12 +15146,19 @@ function spAfterSR(){
   }
   _spFlushCancel = false;
   return (async () => {
-    await new Promise(r => setTimeout(r, 400));               // дати SR остаточно завершитись
+    await new Promise(r => setTimeout(r, 800));               // дати SR остаточно звільнити аудіоблок
     if(_spFlushCancel){ spL('flush: cancelled (new recording/exit)'); return; }
     spL(`flush: start AS=${spAS()}`);
-    const rec = spCapRecord({});
+    // Раніше запис зупинявся через ~170 мс після старту — аудіоблок iOS ще
+    // не встигав завестись, і зупинка не спрацьовувала (мікрофон лишався
+    // "гарячим" до кінця вправи: SR audiostart через 2 мс замість ~1 с).
+    // Тепер чекаємо, поки пішли РЕАЛЬНІ аудіо-дані, ще тримаємо 350 мс — і лише тоді зупиняємо.
+    let firstOk; const gotFirst = new Promise(res => { firstOk = res; });
+    const rec = spCapRecord({ onFirstChunk: () => firstOk(true) });
     _spFlushRec = rec;
-    await new Promise(r => setTimeout(r, 450));
+    const first = await Promise.race([ gotFirst, new Promise(r => setTimeout(() => r(false), 1800)) ]);
+    if(!first) spL('flush: WARNING no audio chunk within 1.8s');
+    await new Promise(r => setTimeout(r, 350));
     rec.abort();
     await rec.result;
     _spFlushRec = null;
