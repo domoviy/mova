@@ -4280,10 +4280,18 @@ body{
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-ec" onchange="spCfgSet('ec',this.checked)"> ехопридушення (EC/NS/AGC) під час запису</label>
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-diag" onchange="spCfgSet('diag',this.checked)"> кнопки оцінки звуку у вправі (🔊 норм / 📞 дзвінок)</label>
       <select id="sp-cfg-flush" onchange="spCfgSet('flush',this.value)" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <option value="auto">«Промивання» звуку після розпізнавання: auto (так на iOS)</option>
-        <option value="on">«Промивання» звуку: завжди</option>
-        <option value="off">«Промивання» звуку: ніколи</option>
+        <option value="off">«Промивання» звуку після розпізнавання: вимкнено (рекомендовано)</option>
+        <option value="on">«Промивання» звуку: ввімкнено (лишає мікрофон гарячим — лише для тестів!)</option>
       </select>
+      <div class="srow-label" style="margin-top:6px"><label>🎙 Тест мікрофона (точка на екрані)</label><small>Натисни тест → мікрофон ВКЛ на 3 с → зупинка → дивись на точку ~5 с → відміть «горить»/«згасла».</small></div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="btn btn-s" onclick="spMicTest('gum-raw')">1 · gUM без обробки</button>
+        <button class="btn btn-s" onclick="spMicTest('gum-default')">2 · gUM стандартний</button>
+        <button class="btn btn-s" onclick="spMicTest('gum-ctx')">3 · gUM + AudioContext</button>
+        <button class="btn btn-s" onclick="spMicTest('gum-ctx-order')">4 · те саме, інший порядок</button>
+        <button class="btn btn-s" onclick="spMicTest('sr')">5 · лише SpeechRecognition</button>
+      </div>
+      <div id="sp-mictest-status" style="font-size:12px;color:var(--muted);min-height:16px"></div>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <button class="btn btn-s" onclick="spMicDot('ON')">🟠 точка мікрофона горить</button>
         <button class="btn btn-s" onclick="spMicDot('OFF')">⚪ точка згасла</button>
@@ -4421,7 +4429,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '682-bff77de';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14109,12 +14117,16 @@ const SP_CFG_DEF = {
   postDelay: 300,               // мс між закриттям мікрофона і поверненням типу
   ec: false,                    // EC/NS/AGC у getUserMedia (вимкнено — сирий сигнал)
   diag: false,                  // кнопки "звук норм / як дзвінок" у вправі
-  flush: 'auto',                // 'webspeech': "промити" аудіо-сесію коротким записом після SR. 'auto' = так на iOS; 'on' | 'off'
+  flush: 'off',                 // 'webspeech': "промити" сесію коротким записом після SR. УВАГА: на iOS лишало мікрофон "гарячим" — за замовчуванням ВИМКНЕНО
   model: 'Xenova/whisper-base'  // ~77 МБ (q8); 'Xenova/whisper-tiny' ~41 МБ
 };
 function spCfg(){
   let c = {};
   try{ c = JSON.parse(localStorage.getItem(SP_CFG_KEY) || '{}') || {}; }catch(e){}
+  if(c.v !== 2){                       // міграція: небезпечне "промивання" вимикаємо примусово
+    c.v = 2; c.flush = 'off';
+    try{ localStorage.setItem(SP_CFG_KEY, JSON.stringify(c)); }catch(e){}
+  }
   return Object.assign({}, SP_CFG_DEF, c);
 }
 function spCfgSet(k, v){
@@ -14134,7 +14146,7 @@ function spCfgSyncUI(){
   set('sp-cfg-pre',    el => { el.checked = !!c.preRecord; });
   set('sp-cfg-ec',     el => { el.checked = !!c.ec; });
   set('sp-cfg-diag',   el => { el.checked = !!c.diag; });
-  set('sp-cfg-flush',  el => { el.value = (c.flush === true || c.flush === 'on') ? 'on' : (c.flush === false || c.flush === 'off') ? 'off' : 'auto'; });
+  set('sp-cfg-flush',  el => { el.value = (c.flush === true || c.flush === 'on') ? 'on' : 'off'; });
   set('sp-cfg-info',   el => { el.textContent = 'Активний рушій: ' + spEngine() + (_spIsIOS() ? ' (iOS)' : ''); });
 }
 function _spIsIOS(){
@@ -14152,9 +14164,7 @@ function spEngine(){
 }
 function spFlushEnabled(){
   const f = spCfg().flush;
-  if(f === true || f === 'on') return true;
-  if(f === false || f === 'off') return false;
-  return _spIsIOS();
+  return f === true || f === 'on';     // лише свідомо ввімкнене (експеримент)
 }
 function spT(uk, en, de, ru){
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
@@ -14204,6 +14214,39 @@ function _spLogHeader(){
 window.addEventListener('pagehide', spLogFlush);
 document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'hidden') spLogFlush(); });
 
+// ── СТОРОЖ МІКРОФОНА ─────────────────────────────────────────────
+// Реєструє КОЖЕН getUserMedia-потік сторінки й примусово зупиняє живі треки:
+// при виході з вправи, при згортанні/закритті застосунку, після кожного
+// розпізнавання та кожні 3 с, якщо мікрофон "висить" без активного запису.
+// Це страхує від витоків на рівні JS. Витік на рівні iOS/WebKit (треки вже
+// 'ended', а апаратний мікрофон працює) з JS не лікується — його виявляє
+// рядок 'SR audiostart … HOT-MIC' і тест мікрофона в Debug.
+const _spStreams = new Set(), _spCtxs = new Set();
+(function(){
+  try{
+    const md = navigator.mediaDevices;
+    if(md && md.getUserMedia && !md.__spWrapped){
+      const orig = md.getUserMedia.bind(md);
+      md.getUserMedia = function(c){ return orig(c).then(st => { _spStreams.add(st); return st; }); };
+      md.__spWrapped = true;
+    }
+  }catch(e){}
+})();
+function spMicLive(){
+  let n = 0;
+  _spStreams.forEach(st => { try{ st.getTracks().forEach(t => { if(t.readyState === 'live') n++; }); }catch(e){} });
+  return n;
+}
+function spKillAllMic(reason){
+  let n = 0;
+  _spStreams.forEach(st => { try{ st.getTracks().forEach(t => { if(t.readyState === 'live'){ try{ t.stop(); }catch(_){} n++; } }); }catch(e){} });
+  _spStreams.clear();
+  _spCtxs.forEach(c => { try{ if(c.state !== 'closed') c.close(); }catch(e){} });
+  _spCtxs.clear();
+  if(n) spL(`MIC WATCHDOG (${reason}): stopped ${n} leaked track(s)`);
+  return n;
+}
+
 // ── Діагностика аварійних перезавантажень ────────────────────────
 // Якщо iOS вбиває сторінку (нестача пам'яті), pagehide НЕ спрацьовує. Тому
 // пишемо "серцебиття" (фаза + час) і на наступному завантаженні порівнюємо:
@@ -14220,7 +14263,12 @@ function spHb(phase){
     }));
   }catch(e){}
 }
-setInterval(() => { if(_spActive) spHb(); }, 3000);
+setInterval(() => {
+  if(_spActive) spHb();
+  // мікрофон живий, а запису/холостого запису немає — це витік
+  const busyRec = (typeof spState !== 'undefined' && (spState.recording || spState.busy)) || _spFlushRec || _spTestBusy;
+  if(!busyRec && spMicLive() > 0){ spL(`MIC LEAK: ${spMicLive()} live track(s) without active recording`); spKillAllMic('leak-check'); }
+}, 3000);
 let _spBootInfo = '';
 (function(){
   let prev = null;
@@ -14349,7 +14397,7 @@ function spCapRecord(opts){
 
   // iOS відмовляє в getUserMedia, коли тип сесії вже 'playback' (InvalidStateError)
   if(cfg.preRecord || cfg.postType === 'playback') spSetType('play-and-record', 'pre');
-  try{ s.ctx = new Ctx(); }
+  try{ s.ctx = new Ctx(); _spCtxs.add(s.ctx); }
   catch(e){ spL('AudioContext ERROR ' + e.message); s.errorName = 'audioctx'; finish('error'); return { result, stop(){}, abort(){} }; }
   try{ if(s.ctx.resume) s.ctx.resume(); }catch(e){}
 
@@ -14734,6 +14782,51 @@ function spEnsureDiagRow(){
   }
   row.style.display = 'flex';
 }
+// Ізольований тест: який СПОСІБ доступу до мікрофона на цьому iPhone вимикається чисто.
+// Кожен тест: мікрофон ВКЛ на 3 с → зупинка → дивись на точку ~5 с → натисни «горить»/«згасла».
+let _spTestBusy = false;
+async function spMicTest(kind){
+  if(_spTestBusy) return;
+  _spTestBusy = true;
+  const st = document.getElementById('sp-mictest-status');
+  const say = (t) => { if(st) st.textContent = t; };
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  spL(`MICTEST ${kind}: begin AS=${spAS()}`);
+  let stream = null, ctx = null, rec = null;
+  try{
+    if(kind === 'sr'){
+      const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if(!SR){ say('SR недоступний'); return; }
+      rec = new SR(); rec.lang = (LC[primaryLang()] || {}).code || 'de-DE'; rec.continuous = false; rec.interimResults = true;
+      rec.onaudiostart = () => spL('MICTEST sr: audiostart');
+      rec.onend = () => { spL('MICTEST sr: END'); say('SR завершено. Дивись на точку 5 с → «горить»/«згасла».'); };
+      rec.onerror = (e) => spL('MICTEST sr: error ' + e.error);
+      rec.start(); say('SR: говори 2–3 с…');
+      await sleep(3500); try{ rec.stop(); }catch(e){}
+      await sleep(1500);
+      return;
+    }
+    const raw = { echoCancellation: false, noiseSuppression: false, autoGainControl: false };
+    const wantCtx = (kind === 'gum-ctx' || kind === 'gum-ctx-order');
+    if(wantCtx){ const C = window.AudioContext || window.webkitAudioContext; ctx = new C(); _spCtxs.add(ctx); try{ ctx.resume(); }catch(e){} }
+    stream = await navigator.mediaDevices.getUserMedia({ audio: kind === 'gum-default' ? true : raw });
+    spL(`MICTEST ${kind}: gUM OK`); say('Мікрофон ВКЛ (3 с)…');
+    if(wantCtx){
+      const src = ctx.createMediaStreamSource(stream), g = ctx.createGain(); g.gain.value = 0;
+      src.connect(g); g.connect(ctx.destination);
+    }
+    await sleep(3000);
+    if(kind === 'gum-ctx-order'){ await ctx.close(); stream.getTracks().forEach(t => t.stop()); }
+    else { stream.getTracks().forEach(t => t.stop()); if(ctx) await ctx.close(); }
+    spL(`MICTEST ${kind}: STOPPED tracks=[${stream.getTracks().map(t => t.readyState).join(',')}] AS=${spAS()}`);
+    say('Зупинено. Дивись на точку 5 с → «горить»/«згасла».');
+  }catch(e){
+    spL(`MICTEST ${kind}: ERROR ${e.name}: ${e.message}`); say('Помилка: ' + e.name);
+  }finally{
+    _spTestBusy = false;
+  }
+}
+
 // Ручна відмітка: чи горить індикатор мікрофона ЗАРАЗ (можна натискати й після виходу з вправи).
 function spMicDot(v){
   spL(`MICDOT ${v}  active=${_spActive} phase=${_spPhase} AS=${spAS()} sinceRelease=${_spLastReleaseAt ? Math.round((Date.now() - _spLastReleaseAt) / 1000) + 's' : '—'}`);
@@ -14776,6 +14869,7 @@ function spExit(){
   if(!_spActive) return;
   spStopRecord();
   spFlushCancel();
+  spKillAllMic('exit');
   spWorkerTerminate();
   _spActive = false;
   spSetStatus('');
@@ -15128,6 +15222,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 let _spRepairResolve = null;
 function spRepairBegin(){ _spRestoreP = new Promise(res => { _spRepairResolve = res; }); }
 function spSrEnded(){
+  spKillAllMic('sr-end');
   const P = spAfterSR();
   _spRestoreP = P;
   if(_spRepairResolve){ _spRepairResolve(P); _spRepairResolve = null; }
@@ -15182,6 +15277,8 @@ function spStopRecord(){
 function spCleanup(){
   const was = spState.recording || spState.busy;
   spStopRecord();
+  spFlushCancel();
+  spKillAllMic('hidden/pagehide');
   if(was && _spActive) spReset();
 }
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') spCleanup(); });
