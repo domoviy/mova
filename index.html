@@ -4279,6 +4279,7 @@ body{
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-pre" onchange="spCfgSet('preRecord',this.checked)"> явний play-and-record перед записом</label>
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-ec" onchange="spCfgSet('ec',this.checked)"> ехопридушення (EC/NS/AGC) під час запису</label>
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-diag" onchange="spCfgSet('diag',this.checked)"> кнопки оцінки звуку у вправі (🔊 норм / 📞 дзвінок)</label>
+      <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-flush" onchange="spCfgSet('flush',this.checked)"> «промивати» звук після браузерного розпізнавання (експеримент, лише рушій webspeech)</label>
       <div style="display:flex;gap:8px;align-items:center">
         <button class="btn btn-s" onclick="spPreloadModel()">⬇️ Завантажити модель</button>
         <span id="sp-preload-status" style="font-size:12px;color:var(--muted)"></span>
@@ -4412,7 +4413,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '678-2c4a768';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14100,6 +14101,7 @@ const SP_CFG_DEF = {
   postDelay: 300,               // мс між закриттям мікрофона і поверненням типу
   ec: false,                    // EC/NS/AGC у getUserMedia (вимкнено — сирий сигнал)
   diag: false,                  // кнопки "звук норм / як дзвінок" у вправі
+  flush: false,                 // 'webspeech': після розпізнавання "промити" аудіо-сесію коротким записом (експеримент)
   model: 'Xenova/whisper-base'  // ~77 МБ (q8); 'Xenova/whisper-tiny' ~41 МБ
 };
 function spCfg(){
@@ -14124,6 +14126,7 @@ function spCfgSyncUI(){
   set('sp-cfg-pre',    el => { el.checked = !!c.preRecord; });
   set('sp-cfg-ec',     el => { el.checked = !!c.ec; });
   set('sp-cfg-diag',   el => { el.checked = !!c.diag; });
+  set('sp-cfg-flush',  el => { el.checked = !!c.flush; });
   set('sp-cfg-info',   el => { el.textContent = 'Активний рушій: ' + spEngine() + (_spIsIOS() ? ' (iOS)' : ''); });
 }
 function _spIsIOS(){
@@ -14172,6 +14175,7 @@ function _spLogHeader(){
   let standalone = false;
   try{ standalone = (window.matchMedia && matchMedia('(display-mode: standalone)').matches) || n.standalone === true; }catch(e){}
   _spLogPush(`════ SESSION ${new Date().toISOString()} ════`);
+  _spLogPush(_spBootInfo);
   _spLogPush(`env: ${n.userAgent}`);
   _spLogPush(`env: standalone=${standalone} audioSession=${('audioSession' in n) ? spAS() : 'n/a'} gUM=${!!(n.mediaDevices && n.mediaDevices.getUserMedia)} ` +
     `worklet=${typeof AudioWorkletNode !== 'undefined'} SR=${!!(window.SpeechRecognition || window.webkitSpeechRecognition)} ` +
@@ -14184,6 +14188,50 @@ function _spLogHeader(){
 }
 window.addEventListener('pagehide', spLogFlush);
 document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'hidden') spLogFlush(); });
+
+// ── Діагностика аварійних перезавантажень ────────────────────────
+// Якщо iOS вбиває сторінку (нестача пам'яті), pagehide НЕ спрацьовує. Тому
+// пишемо "серцебиття" (фаза + час) і на наступному завантаженні порівнюємо:
+// був pagehide → звичайне перезавантаження/навігація; не було → сторінку
+// вбито (у лозі буде остання фаза та чи була сторінка у фоні).
+const SP_HB_KEY = 'mova_sp_hb';
+let _spPhase = 'idle';
+function spHb(phase){
+  if(phase) _spPhase = phase;
+  try{
+    localStorage.setItem(SP_HB_KEY, JSON.stringify({
+      t: Date.now(), phase: _spPhase, vis: document.visibilityState,
+      engine: _spActive ? spEngine() : '-', model: spCfg().model
+    }));
+  }catch(e){}
+}
+setInterval(() => { if(_spActive) spHb(); }, 3000);
+let _spBootInfo = '';
+(function(){
+  let prev = null;
+  try{ prev = JSON.parse(localStorage.getItem(SP_HB_KEY) || 'null'); }catch(e){}
+  let nav = null;
+  try{ nav = performance.getEntriesByType('navigation')[0]; }catch(e){}
+  _spBootInfo = `load: navType=${nav ? nav.type : '?'} wasDiscarded=${document.wasDiscarded === true}`;
+  if(prev){
+    const age = Math.round((Date.now() - prev.t) / 1000);
+    if(prev.phase === 'unloaded') _spBootInfo += ` | prev page: unloaded normally (pagehide) ${age}s ago, last phase=${prev.last}`;
+    else if(prev.phase === 'idle' || prev.phase === 'exited') _spBootInfo += ` | prev page: clean (${prev.phase}) ${age}s ago`;
+    else _spBootInfo += ` | ⚠ PREV PAGE DIED WITHOUT pagehide: phase=${prev.phase} vis=${prev.vis} engine=${prev.engine} model=${prev.model} ${age}s ago → process killed (memory?) or crash`;
+  }
+  try{ localStorage.setItem(SP_HB_KEY, JSON.stringify({ t: Date.now(), phase: 'idle', vis: document.visibilityState })); }catch(e){}
+  try{
+    if('serviceWorker' in navigator) navigator.serviceWorker.addEventListener('controllerchange', () => {
+      _spLogPush('SW controllerchange → застосунок сам перезавантажиться (оновлення версії)'); spLogFlush();
+    });
+  }catch(e){}
+})();
+window.addEventListener('pagehide', (e) => {
+  try{ localStorage.setItem(SP_HB_KEY, JSON.stringify({ t: Date.now(), phase: 'unloaded', last: _spPhase, persisted: !!e.persisted })); }catch(_){}
+});
+document.addEventListener('visibilitychange', () => {
+  if(_spActive){ spL('visibility: ' + document.visibilityState + ' (phase=' + _spPhase + ')'); spHb(); }
+});
 
 // ── Аудіо-сесія (iOS Audio Session API) ───────────────────────────
 function spAS(){
@@ -14248,7 +14296,7 @@ function spCapRecord(opts){
   const Ctx = window.AudioContext || window.webkitAudioContext;
   const s = {
     chunks: [], total: 0, rate: 0, hadSpeech: false, speechMs: 0, lastSpeechAt: 0,
-    noise: 0, calib: [], thr: 0.0035, peak: 0, maxRms: 0, weak: false,
+    noise: 0, calib: [], thr: 0.0035, peak: 0, maxRms: 0, weak: false, firstSpeechAt: -1,
     trace: '', bucketMs: 0, bucketMax: 0,
     stream: null, ctx: null, src: null, node: null, sink: null,
     ended: false, errorName: null, startedAt: performance.now()
@@ -14273,7 +14321,8 @@ function spCapRecord(opts){
     resolveRes({
       pcm, rate: s.rate, hadSpeech: s.hadSpeech, reason, aborted: reason === 'abort',
       error: s.errorName, durMs: Math.round(performance.now() - s.startedAt), peak: s.peak,
-      thr: s.thr, noise: s.noise, maxRms: s.maxRms, weak: s.weak
+      thr: s.thr, noise: s.noise, maxRms: s.maxRms, weak: s.weak,
+      firstSpeechAt: s.firstSpeechAt, lastSpeechAt: s.lastSpeechAt
     });
   };
 
@@ -14321,6 +14370,7 @@ function spCapRecord(opts){
       spL(`vad calibrated: noise=${s.noise.toFixed(4)} thr=${s.thr.toFixed(4)}`);
     }
     if(rms > s.thr){
+      if(s.firstSpeechAt < 0) s.firstSpeechAt = elapsed - chunkMs;
       s.speechMs += chunkMs; s.lastSpeechAt = elapsed;
       if(s.speechMs >= 120) s.hadSpeech = true;
     }
@@ -14391,25 +14441,47 @@ async function spCapRelease(s){
   _spLastReleaseAt = Date.now();
   spL(`release: tracks=[${tracks}] ctx=${s.ctx ? s.ctx.state : '-'} in ${Math.round(performance.now() - t0)}ms AS=${spAS()} sfx=${_spSfxInfo()}`);
   const cfg = spCfg();
-  _spRestoreP = new Promise(res => {
+  const mine = new Promise(res => {
     setTimeout(() => { if(cfg.postType !== 'none') spSetType(cfg.postType, 'post'); res(); }, cfg.postDelay | 0);
   });
+  _spRestoreP = _spRestoreP ? Promise.all([_spRestoreP, mine]) : mine;
   setTimeout(() => spL('AS +1.5s after release: ' + spAS()), 1500);
 }
 
-// Ресемплінг до 16 кГц (вимога Whisper): усереднення вікна = простий
-// low-pass при зменшенні частоти, лінійна інтерполяція при збільшенні.
+// Ресемплінг до 16 кГц (вимога Whisper). При зменшенні частоти — віконний
+// sinc-фільтр (зріз ≈ 0.46·вихідної частоти): без "накладання" спектру.
+// Раніше було усереднення 3 семплів — воно майже не гасить шум вище 8 кГц
+// (10 кГц лише −6 дБ), і той шум "складався" в мовну смугу.
+const _spKernCache = {};
+function _spKernel(half, fc){
+  const key = half + '|' + fc.toFixed(5);
+  if(_spKernCache[key]) return _spKernCache[key];
+  const OS = 64, n = 2 * half * OS + 1, tab = new Float32Array(n);
+  for(let j = 0; j < n; j++){
+    const t = (j - half * OS) / OS;
+    const w = 0.5 + 0.5 * Math.cos(Math.PI * t / half);
+    tab[j] = (t === 0 ? 2 * fc : Math.sin(2 * Math.PI * fc * t) / (Math.PI * t)) * w;
+  }
+  return (_spKernCache[key] = { tab, OS });
+}
 function spResample(x, from, to){
   if(from === to) return x;
   const ratio = from / to;
   const n = Math.floor(x.length / ratio);
   const y = new Float32Array(n);
   if(ratio > 1){
+    const fc = 0.46 / ratio, half = Math.ceil(10 * ratio);
+    const { tab, OS } = _spKernel(half, fc);
+    const last = x.length - 1;
     for(let i = 0; i < n; i++){
-      const a = Math.floor(i * ratio);
-      const b = Math.min(x.length, Math.max(a + 1, Math.floor((i + 1) * ratio)));
-      let sum = 0; for(let j = a; j < b; j++) sum += x[j];
-      y[i] = sum / (b - a);
+      const c = i * ratio;
+      const k0 = Math.max(0, Math.ceil(c - half)), k1 = Math.min(last, Math.floor(c + half));
+      let sum = 0, wsum = 0;
+      for(let k = k0; k <= k1; k++){
+        const h = tab[Math.round((k - c) * OS) + half * OS];
+        sum += x[k] * h; wsum += h;
+      }
+      y[i] = wsum !== 0 ? sum / wsum : 0;
     }
   } else {
     for(let i = 0; i < n; i++){
@@ -14420,9 +14492,20 @@ function spResample(x, from, to){
   }
   return y;
 }
-// 16 кГц + нормалізація гучності (сирий сигнал без AGC тихий).
-function spPrepPcm(pcm, rate){
-  const x = spResample(pcm, rate, 16000);
+// 16 кГц + прибрати зсув постійної складової + обрізати довгу тишу навколо
+// слова (шум перед словом провокує вигадки Whisper) + нормалізація гучності.
+function spPrepPcm(pcm, rate, firstAt, lastAt){
+  let x = spResample(pcm, rate, 16000);
+  let mean = 0; for(let i = 0; i < x.length; i++) mean += x[i];
+  mean /= Math.max(1, x.length);
+  for(let i = 0; i < x.length; i++) x[i] -= mean;
+  if(firstAt >= 0 && lastAt > firstAt){
+    let a = Math.max(0, Math.floor((firstAt - 400) / 1000 * 16000));
+    let b = Math.min(x.length, Math.ceil((lastAt + 500) / 1000 * 16000));
+    const minLen = 16000;                      // не коротше 1 с
+    if(b - a < minLen){ const d = minLen - (b - a); a = Math.max(0, a - Math.floor(d / 2)); b = Math.min(x.length, a + minLen); }
+    x = x.slice(a, b);
+  }
   let peak = 0;
   for(let i = 0; i < x.length; i++){ const a = x[i] < 0 ? -x[i] : x[i]; if(a > peak) peak = a; }
   if(peak > 0.0005){
@@ -14506,7 +14589,7 @@ function spEngineInit(onProg){
 
   w.readyP = new Promise((resolve, reject) => {
     let settled = false;
-    const ok = () => { if(!settled){ settled = true; resolve(); } };
+    const ok = () => { if(!settled){ settled = true; w.ready = true; resolve(); } };
     const fail = (e) => { if(!settled){ settled = true; reject(e); } };
     try{
       const url = URL.createObjectURL(new Blob([SP_WORKER_SRC], { type: 'text/javascript' }));
@@ -14539,6 +14622,7 @@ function spEngineInit(onProg){
     try{ w.worker && w.worker.terminate(); }catch(_){}
     w.worker = null; w.mode = 'main';
     await _spMainInit(w, model, emit);
+    w.ready = true;
     spL(`model ready (main) in ${Math.round(performance.now() - t0)}ms`);
   }).catch((e) => {
     spL('engine init FAILED: ' + (e && e.message));
@@ -14547,6 +14631,8 @@ function spEngineInit(onProg){
   });
   return w.readyP;
 }
+
+function spEngineReady(){ return !!(_spW && _spW.ready); }
 
 function spEngineRun(pcm16, lang){
   const w = _spW;
@@ -14592,7 +14678,7 @@ function spWarmup(){
   spEngineInit(pct => {
     if(_spActive) spSetStatus(spT(`Завантаження моделі ${pct}% (лише вперше)`, `Downloading model ${pct}% (first time only)`,
       `Modell wird geladen ${pct}% (nur beim ersten Mal)`, `Загрузка модели ${pct}% (только в первый раз)`));
-  }).then(() => { if(_spActive) spSetStatus(''); })
+  }).then(() => { if(_spActive){ spSetStatus(''); const l = document.getElementById('sp-mic-label'); if(l && /завантажується|loading|lädt|загружается/.test(l.textContent)) spReset(); } })
     .catch(() => { if(_spActive) spSetStatus(spT('⚠️ Модель розпізнавання не завантажилась (потрібен інтернет при першому запуску)',
       '⚠️ Recognition model failed to load (internet needed on first run)',
       '⚠️ Erkennungsmodell konnte nicht geladen werden (beim ersten Start Internet nötig)',
@@ -14651,6 +14737,7 @@ function startSpeech(){
   spAttachAudioDiag();
   const eng = spEngine();
   spL(`startSpeech: engine=${eng} cards=${cards.length} AS=${spAS()} sfx=${_spSfxInfo()}`);
+  spHb('exercise');
   if(eng === 'capture') spWarmup(); else spSetStatus('');
   spShowCard();
 }
@@ -14663,6 +14750,7 @@ function spExit(){
   spWorkerTerminate();
   _spActive = false;
   spSetStatus('');
+  spHb('exited');
   spL('exit speech');
 }
 
@@ -14761,11 +14849,20 @@ function spStartRecord(){
 function spStartCapture(){
   const card = spState.cards[spState.idx];
   if(!card) return;
+  // Не пишемо, поки модель завантажується/ініціалізується: одночасне
+  // завантаження + розпізнавання — пік пам'яті, на iOS це може вбити сторінку.
+  if(!spEngineReady()){
+    spWarmup();
+    const l0 = document.getElementById('sp-mic-label');
+    if(l0) l0.textContent = spT('Модель ще завантажується — зачекай…', 'Model is still loading — wait…', 'Modell lädt noch – bitte warten…', 'Модель ещё загружается — подожди…');
+    return;
+  }
   try{ stopTTS(); }catch(e){}
   const mb = document.getElementById('sp-mic-btn');
   const lbl = document.getElementById('sp-mic-label');
   const tok = ++_spTok;
   const cycle = ++spState.cycle;
+  spHb('recording');
   spL(`▶ cycle #${cycle} card=${card ? card.id : '?'} idx=${spState.idx} AS=${spAS()} sfx=${_spSfxInfo()} sinceRelease=${_spLastReleaseAt ? (Date.now() - _spLastReleaseAt) + 'ms' : '—'}`);
 
   spState.recording = true;
@@ -14813,9 +14910,11 @@ async function spCaptureDone(r, tok, card){
   }
 
   spState.busy = true;
+  spHb('transcribing');
   try{
     const lang = SP_WHISPER_LANG[primaryLang()] || primaryLang();
-    const x = spPrepPcm(r.pcm, r.rate);
+    const x = spPrepPcm(r.pcm, r.rate, r.weak ? -1 : r.firstSpeechAt, r.lastSpeechAt);
+    spL(`prep: ${(x.length / 16000).toFixed(2)}s @16k (speech ${Math.round(r.firstSpeechAt)}–${Math.round(r.lastSpeechAt)}ms)`);
     await spEngineInit(pct => {
       const l = lbl();
       if(tok === _spTok && spState.busy && l) l.textContent = spT(`Завантаження моделі ${pct}%…`, `Downloading model ${pct}%…`, `Modell wird geladen ${pct}%…`, `Загрузка модели ${pct}%…`);
@@ -14835,6 +14934,7 @@ async function spCaptureDone(r, tok, card){
     const text = spCleanTranscript(res.text, target);
     spL(`whisper: "${res.text}" → "${text}" in ${Math.round(performance.now() - t0)}ms (mode=${_spW ? _spW.mode : '?'})`);
     spState.busy = false;
+    spHb('exercise');
     if(!text){
       say(spT('Не вдалося розпізнати — спробуй ще', 'Could not recognise — try again', 'Nicht erkannt – nochmal', 'Не удалось распознать — попробуй ещё'));
       return;
@@ -14959,9 +15059,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
     // 'end' — єдина подія Web Speech API, що гарантовано означає закриття
     // мікрофона; сесію повертаємо з невеликою паузою (iOS деактивує
     // нативну сесію трохи пізніше за JS-подію).
-    _spLastReleaseAt = Date.now();
-    const d = spCfg().postDelay | 0;
-    _spRestoreP = new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, d));
+    _spRestoreP = spAfterSR();
   };
 
   try{ rec.start(); spL(`rec.start() OK`); }
@@ -14977,6 +15075,30 @@ function spTryStart(SR, mb, lbl, ul, attempt){
   }
 }
 
+// Після браузерного SpeechRecognition: повернути аудіо-сесію. Режим
+// cfg.flush — експеримент: SR на iOS лишає сесію в режимі запису, а ми
+// бачили, що звичайний цикл getUserMedia→stop→'auto' її нормалізує.
+// Тож робимо ДУЖЕ короткий "холостий" запис (spCapRecord) і лише потім
+// повертаємо тип сесії. Розпізнає, як і раніше, рідний рушій iOS.
+function spAfterSR(){
+  const cfg = spCfg();
+  _spLastReleaseAt = Date.now();
+  if(!cfg.flush){
+    return new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, cfg.postDelay | 0));
+  }
+  return (async () => {
+    await new Promise(r => setTimeout(r, 400));               // дати SR остаточно завершитись
+    spL(`flush: start AS=${spAS()}`);
+    const rec = spCapRecord({});
+    await new Promise(r => setTimeout(r, 450));
+    rec.abort();
+    await rec.result;
+    await new Promise(r => setTimeout(r, cfg.postDelay | 0));
+    spRestoreAudioSession();
+    spL(`flush: done AS=${spAS()}`);
+  })().catch(e => spL('flush ERROR ' + (e && e.message)));
+}
+
 // Скасувати запис/розпізнавання "тихо" (без результату): обидва рушії.
 function spStopRecord(){
   _spTok++;                                   // відкидаємо результат, що ще в дорозі
@@ -14985,11 +15107,7 @@ function spStopRecord(){
   const wasActive = !!spState.recognition;
   if(wasActive){ try{ spState.recognition.abort(); }catch(e){} spState.recognition = null; }
   spState.recording = false;
-  if(wasActive){
-    _spLastReleaseAt = Date.now();
-    const d = spCfg().postDelay | 0;
-    _spRestoreP = new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, d));
-  }
+  if(wasActive) _spRestoreP = spAfterSR();
 }
 function spCleanup(){
   const was = spState.recording || spState.busy;
