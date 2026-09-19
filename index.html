@@ -4412,7 +4412,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '677-e0e598d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14248,7 +14248,8 @@ function spCapRecord(opts){
   const Ctx = window.AudioContext || window.webkitAudioContext;
   const s = {
     chunks: [], total: 0, rate: 0, hadSpeech: false, speechMs: 0, lastSpeechAt: 0,
-    noise: 0, noiseN: 0, thr: 0.012, peak: 0,
+    noise: 0, calib: [], thr: 0.0035, peak: 0, maxRms: 0, weak: false,
+    trace: '', bucketMs: 0, bucketMax: 0,
     stream: null, ctx: null, src: null, node: null, sink: null,
     ended: false, errorName: null, startedAt: performance.now()
   };
@@ -14259,13 +14260,20 @@ function spCapRecord(opts){
     if(s.ended) return;
     s.ended = true;
     try{ opts.onEnding && opts.onEnding(reason); }catch(e){}
+    // Слабкий сигнал: сирий мікрофон iPhone (без AGC) тихий; якщо пік рівня
+    // помітно вищий за шум — краще віддати Whisper, ніж тихо відкинути.
+    if(!s.hadSpeech && reason !== 'abort' && reason !== 'error' && s.calib.length &&
+       s.maxRms > Math.max(0.003, s.noise * 3)){ s.hadSpeech = true; s.weak = true; }
     await spCapRelease(s);
+    if(reason !== 'abort' && s.trace)
+      spL(`levels(250ms/char; '.'<½thr '-'<thr digit=×thr) thr=${s.thr.toFixed(4)} noise=${s.noise.toFixed(4)} max=${s.maxRms.toFixed(4)} weak=${s.weak}: ${s.trace}`);
     const pcm = new Float32Array(s.total);
     let o = 0; for(const c of s.chunks){ pcm.set(c, o); o += c.length; }
     s.chunks = [];
     resolveRes({
       pcm, rate: s.rate, hadSpeech: s.hadSpeech, reason, aborted: reason === 'abort',
-      error: s.errorName, durMs: Math.round(performance.now() - s.startedAt), peak: s.peak
+      error: s.errorName, durMs: Math.round(performance.now() - s.startedAt), peak: s.peak,
+      thr: s.thr, noise: s.noise, maxRms: s.maxRms, weak: s.weak
     });
   };
 
@@ -14291,18 +14299,32 @@ function spCapRecord(opts){
     const rms = Math.sqrt(sum / f32.length);
     const elapsed = s.total / s.rate * 1000;            // мс аудіо-часу
     const chunkMs = f32.length / s.rate * 1000;
+    if(rms > s.maxRms) s.maxRms = rms;
     try{ opts.onLevel && opts.onLevel(rms); }catch(e){}
-    // калібрування шуму: перші 350 мс (тап по кнопці + тиша)
-    if(elapsed < 350){
-      s.noise += rms; s.noiseN++;
-      s.thr = Math.min(0.04, Math.max(0.010, (s.noise / s.noiseN) * 3.5));
-      return;
+    // трасування рівня для логу: 1 символ на 250 мс
+    s.bucketMax = Math.max(s.bucketMax, rms); s.bucketMs += chunkMs;
+    if(s.bucketMs >= 250){
+      const r = s.bucketMax / s.thr;
+      s.trace += r < 0.5 ? '.' : r < 1 ? '-' : String(Math.min(9, Math.floor(r)));
+      s.bucketMax = 0; s.bucketMs = 0;
+    }
+    // калібрування шуму: перші 350 мс. Поріг — від НИЖЧОЇ половини вимірів
+    // (щоб слово, яке почалось одразу, не задерло поріг), із низькою
+    // абсолютною стелею: сирий сигнал iPhone без AGC має RMS мовлення ~0.005–0.015.
+    if(elapsed < 350){ s.calib.push(rms); return; }
+    if(!s.thrSet){
+      const c = s.calib.slice().sort((a, b) => a - b);
+      const low = c.slice(0, Math.max(1, Math.ceil(c.length / 2)));
+      s.noise = low.reduce((a, b) => a + b, 0) / low.length;
+      s.thr = Math.min(0.006, Math.max(0.0025, s.noise * 4));
+      s.thrSet = true;
+      spL(`vad calibrated: noise=${s.noise.toFixed(4)} thr=${s.thr.toFixed(4)}`);
     }
     if(rms > s.thr){
       s.speechMs += chunkMs; s.lastSpeechAt = elapsed;
       if(s.speechMs >= 120) s.hadSpeech = true;
     }
-    if(s.hadSpeech && elapsed - s.lastSpeechAt > 900) finish('vad-end');
+    if(s.hadSpeech && elapsed - s.lastSpeechAt > 700) finish('vad-end');
     else if(!s.hadSpeech && elapsed > 7000) finish('no-speech');
     else if(elapsed > 10000) finish('max');
   };
@@ -14340,7 +14362,8 @@ function spCapRecord(opts){
       s.node = sp;
       s.src.connect(sp); sp.connect(s.sink); s.sink.connect(s.ctx.destination);
     }
-    spL(`capture started (${usedWorklet ? 'worklet' : 'scriptprocessor'})`);
+    spL(`capture started (${usedWorklet ? 'worklet' : 'scriptprocessor'}) ${Math.round(performance.now() - s.startedAt)}ms after tap`);
+    try{ opts.onStarted && opts.onStarted(); }catch(e){}
   }).catch((err) => {
     spL(`gUM ERROR ${err && err.name}: ${err && err.message}`);
     if(!s.ended){ s.errorName = (err && err.name) || 'error'; finish('error'); }
@@ -14747,11 +14770,17 @@ function spStartCapture(){
 
   spState.recording = true;
   if(mb){ mb.classList.add('recording'); mb.textContent = '⏹'; }
-  if(lbl) lbl.textContent = spT('Слухаю… говоріть зараз', 'Listening… speak now', 'Sprechen Sie jetzt…', 'Слушаю… говорите');
+  if(lbl) lbl.textContent = spT('Вмикаю мікрофон…', 'Starting microphone…', 'Mikrofon wird gestartet…', 'Включаю микрофон…');
   try{ haptic.light(); }catch(e){}
 
   const rec = spCapRecord({
-    onLevel: (rms) => { if(tok === _spTok && mb) mb.style.transform = 'scale(' + (1 + Math.min(rms * 5, 0.22)).toFixed(3) + ')'; },
+    // "Слухаю" — лише коли запис РЕАЛЬНО пішов (перший раз iOS питає дозвіл, це до 1.5 с)
+    onStarted: () => {
+      if(tok !== _spTok) return;
+      if(lbl) lbl.textContent = spT('Слухаю… говоріть зараз', 'Listening… speak now', 'Sprechen Sie jetzt…', 'Слушаю… говорите');
+      try{ haptic.light(); }catch(e){}
+    },
+    onLevel: (rms) => { if(tok === _spTok && mb) mb.style.transform = 'scale(' + (1 + Math.min(rms * 25, 0.25)).toFixed(3) + ')'; },
     onEnding: () => {
       if(tok !== _spTok) return;
       spState.recording = false;
@@ -14769,7 +14798,7 @@ async function spCaptureDone(r, tok, card){
   spState.cap = null; spState.recording = false;
   const lbl = () => document.getElementById('sp-mic-label');
   const say = (msg) => { spReset(); const l = lbl(); if(l) l.textContent = msg; };
-  spL(`captured: reason=${r.reason} dur=${r.durMs}ms samples=${r.pcm.length} rate=${r.rate} speech=${r.hadSpeech} peak=${(r.peak || 0).toFixed(3)} err=${r.error || '-'}`);
+  spL(`captured: reason=${r.reason} dur=${r.durMs}ms samples=${r.pcm.length} rate=${r.rate} speech=${r.hadSpeech}${r.weak ? '(weak)' : ''} peak=${(r.peak || 0).toFixed(3)} err=${r.error || '-'}`);
 
   if(r.error){
     say(r.error === 'NotAllowedError' || r.error === 'SecurityError'
@@ -14792,10 +14821,15 @@ async function spCaptureDone(r, tok, card){
       if(tok === _spTok && spState.busy && l) l.textContent = spT(`Завантаження моделі ${pct}%…`, `Downloading model ${pct}%…`, `Modell wird geladen ${pct}%…`, `Загрузка модели ${pct}%…`);
     });
     if(tok !== _spTok) return;
-    const l = lbl();
-    if(l) l.textContent = spT('Розпізнаю…', 'Recognising…', 'Erkenne…', 'Распознаю…');
     const t0 = performance.now();
-    const res = await spEngineRun(x, lang);
+    const tick = () => {
+      const l2 = lbl(); if(!l2 || tok !== _spTok) return;
+      const sec = Math.round((performance.now() - t0) / 1000);
+      l2.textContent = spT(`Розпізнаю… ${sec} с`, `Recognising… ${sec}s`, `Erkenne… ${sec} s`, `Распознаю… ${sec} с`);
+    };
+    tick(); const ivT = setInterval(tick, 500);
+    let res;
+    try{ res = await spEngineRun(x, lang); } finally { clearInterval(ivT); }
     if(tok !== _spTok) return;
     const target = card.term?.[primaryLang()] || '';
     const text = spCleanTranscript(res.text, target);
