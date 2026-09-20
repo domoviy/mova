@@ -4421,7 +4421,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '689-ec3f5ca';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14115,6 +14115,10 @@ const SP_CFG_DEF = {
 function spCfg(){
   let c = {};
   try{ c = JSON.parse(localStorage.getItem(SP_CFG_KEY) || '{}') || {}; }catch(e){}
+  if(c.v !== 5){        // одноразово повертаємо перевірену конфігурацію (як у робочому тесті)
+    c.v = 5; c.postType = 'auto'; c.preRecord = false; c.flush = 'auto';
+    try{ localStorage.setItem(SP_CFG_KEY, JSON.stringify(c)); }catch(e){}
+  }
   return Object.assign({}, SP_CFG_DEF, c);
 }
 function spCfgSet(k, v){
@@ -14776,11 +14780,32 @@ function spExit(){
   if(!_spActive) return;
   spStopRecord();
   spFlushCancel();
+  spShutdownMic('exit');
   spWorkerTerminate();
   _spActive = false;
   spSetStatus('');
   spHb('exited');
   spL('exit speech');
+}
+
+// ── Вимкнення мікрофона ПІСЛЯ вправи ─────────────────────────────
+// Під час вправи "тепла" аудіосесія потрібна: за логами розпізнавання стартує надійно лише
+// поки аудіоблок iOS живий (тому мікрофон між фразами лишається). Але після вправи він має
+// вимкнутись. Спостереження з попередніх тестів: поки AudioContext звукових ефектів застосунку
+// (_sfxCtx) запущений, спільний аудіоблок не зупиняється; коли його приспано — точка гасне.
+// Тому наприкінці вправи цей контекст закриваємо (наступний звук створить новий сам).
+function spShutdownMic(tag){
+  spFlushCancel();
+  let info = 'none';
+  try{
+    if(typeof _sfxCtx !== 'undefined' && _sfxCtx){
+      const c = _sfxCtx; info = c.state;
+      _sfxCtx = null;
+      try{ c.close(); }catch(e){ try{ c.suspend(); }catch(_){} }
+    }
+  }catch(e){}
+  spL(`mic-off[${tag}]: SFX AudioContext was ${info} → closed; AS=${spAS()}`);
+  setTimeout(() => spL(`mic-off[${tag}] +1.5s AS=${spAS()}`), 1500);
 }
 
 function spRenderTermWords(card){
@@ -15100,7 +15125,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
     const d = Date.now() - _startTime;
     // холодний старт мікрофона на iOS ≈ 0.8–1.2 с; кілька мс означає, що аудіоблок
     // УЖЕ працював (мікрофон не був вимкнений після попереднього циклу)
-    spL(`SR audiostart +${d}ms after start() ${d < 150 ? '⚠ HOT-MIC (unit already running)' : '(cold start, OK)'} AS=${spAS()}`);
+    spL(`SR audiostart +${d}ms after start() ${d < 150 ? '(warm start)' : '(cold start)'} AS=${spAS()}`);
   };
   rec.onaudioend = () => spL(`SR audioend AS=${spAS()}`);
   try{ rec.start(); spL(`rec.start() OK`); }
@@ -15283,6 +15308,9 @@ function spRetry(){
 
 function spShowFinish(){
   spCleanup();
+  // остання фраза: дочекатись завершення "промивання" і вимкнути мікрофон (не чекаємо довше 4 с)
+  Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(r, 4000)) ])
+    .then(() => { if(_spActive) spShutdownMic('finish'); });
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const pct = spState.totalCount ? Math.round(spState.correctCount / spState.totalCount * 100) : 0;
   // Показуємо overlay поверх панелі — не перезаписуємо innerHTML (інакше губляться id елементів)
