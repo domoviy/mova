@@ -2553,6 +2553,8 @@ body{
   z-index:200;
 }
 .lf-next-row .btn-lesson-sb-next{ position:static; flex:1; }
+/* вправа «Вимова» в уроці: місце під фіксований рядок «Завершити» */
+#vocab-panel-speech.sp-lesson{ padding-bottom:calc(56px + var(--fs-card) * 1.2 + 28px); }
 .lf-repeat-btn{
   flex-shrink:0;width:54px;
   display:flex;align-items:center;justify-content:center;
@@ -4386,7 +4388,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '692-d018e0c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9653,11 +9655,20 @@ function _runLessonFlow(lesson, allCards){
   const fresh = sorted.filter(c => !seenToday.includes(c.id));
   // Беремо нові (ще не бачені сьогодні в цьому уроці), якщо їх достатньо;
   // якщо пул вичерпано — довивчуємо рештою (весь урок вже пройдено сьогодні).
-  let flowCards = (fresh.length >= Math.min(4, sorted.length) ? fresh : sorted)
-    .slice(0, Math.min(4, sorted.length));
+  const basePool = (fresh.length >= Math.min(4, sorted.length) ? fresh : sorted);
+  let flowCards = basePool.slice(0, Math.min(4, sorted.length));
+
+  // Вправа "Вимова" (🎤) в кінці уроку: слова САМЕ цього уроку (flowCards) + п'яте, обране ТИМ САМИМ
+  // алгоритмом вибірки: наступне за SM-2 пріоритетом у тому ж пулі; якщо "нових" (не бачених
+  // сьогодні) не вистачає — наступне з решти відсортованого пулу, якого ще нема у вибірці.
+  const speechCards = flowCards.slice();
+  if(speechCards.length < 5){
+    const fifth = basePool.slice(flowCards.length).concat(sorted).find(c => !speechCards.some(x => x.id === c.id));
+    if(fifth) speechCards.push(fifth);
+  }
 
   try{
-    const updatedIds = Array.from(new Set([...seenToday, ...flowCards.map(c=>c.id)]));
+    const updatedIds = Array.from(new Set([...seenToday, ...speechCards.map(c=>c.id)]));
     localStorage.setItem(seenKey, JSON.stringify({date: today, ids: updatedIds}));
   }catch(e){}
 
@@ -9784,12 +9795,15 @@ function _runLessonFlow(lesson, allCards){
   steps.push('matching');
   if(dlgCardForLesson) steps.push('dlg_learn');
   if(hasTiles) steps.push('tiles');
+  // Вимова — лише де є штатне розпізнавання мовлення; інакше крок просто не додається
+  if(speechCards.length && spSpeechSupported()) steps.push('speech');
   steps.push('result');
 
   LF = {
     lessonId:  lesson.id,
     lesson,
     cards:     flowCards,
+    speechCards,
     matchCards,
     matchExtraPools: {},
     tilesCards: hasTiles ? tilesCards : [],
@@ -14289,21 +14303,37 @@ async function spMicPulseRelease(s){
 }
 
 // ── Старт / потік вправи ──────────────────────────────────────────
+function spSpeechSupported(){ return !!(window.SpeechRecognition || window.webkitSpeechRecognition); }
+
 function startSpeech(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-  const cf = document.getElementById('vf-cat')?.value || 'all';
-  let pool = (typeof VOCAB !== 'undefined' ? VOCAB : [])
-    .filter(v => cf === 'all' || v.cat === cf);
-  const _srState = srLoadState();
-  pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
-  const cards = pool.slice(0, Math.min(21, pool.length))
-    .sort(() => Math.random() - .5).slice(0, 7);
-  if(!cards.length){ return; }
+  // Крок «Вимова» уроку: слова цього уроку (LF.speechCards), у порядку вибірки уроку.
+  // Окрема вкладка «Вимова»: випадкові 7 карток за SM-2 пріоритетом, як і раніше.
+  const inLesson = !!(LF && LF.steps && LF.steps[LF.step] === 'speech' && LF.speechCards);
+  let cards;
+  if(inLesson){
+    cards = LF.speechCards.filter(c => c.term && c.term[primaryLang()]);
+  } else {
+    const cf = document.getElementById('vf-cat')?.value || 'all';
+    let pool = (typeof VOCAB !== 'undefined' ? VOCAB : [])
+      .filter(v => cf === 'all' || v.cat === cf);
+    const _srState = srLoadState();
+    pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
+    cards = pool.slice(0, Math.min(21, pool.length))
+      .sort(() => Math.random() - .5).slice(0, 7);
+  }
+  if(!cards.length){ if(inLesson) lfStepDone('speech', 1); return; }
   spStopRecord();
   _spActive = true;
   spState = { SR: SR || null, cards, idx: 0, recognition: null, recording: false,
-              correctCount: 0, totalCount: 0, cycle: 0 };
+              correctCount: 0, totalCount: 0, cycle: 0, lesson: inLesson };
+  const spPanel = document.getElementById('vocab-panel-speech');
+  if(spPanel) spPanel.classList.toggle('sp-lesson', inLesson);
+  if(inLesson){
+    const vp = document.querySelector('#view-vocab .vplayer');
+    if(vp) vp.style.display = 'none';     // як у tiles/def: плеєр не потрібен
+  }
   spAttachAudioDiag();
   spL(`startSpeech: cards=${cards.length} AS=${spAS()} sfx=${_spSfxInfo()}`);
   spHb('exercise');
@@ -14392,13 +14422,14 @@ function spReplay(){
 
 function spShowCard(){
   const card = spState.cards[spState.idx];
-  if(!card){ spFinishExercise(); return; }
+  if(!card){ if(spState.lesson) spLessonFinish(); else spFinishExercise(); return; }
 
   // Прогрес
   const counter = document.getElementById('sp-counter');
   if(counter) counter.textContent = `${spState.idx + 1} / ${spState.cards.length}`;
   const chip = document.getElementById('sp-score-chip');
   if(chip) chip.textContent = spState.totalCount ? `✓ ${spState.correctCount}/${spState.totalCount}` : '';
+  if(spState.lesson && LF){ LF.unitProgress = { done: spState.idx, total: spState.cards.length }; lfRenderBar(); }
 
   spRenderTermWords(card);
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
@@ -14410,6 +14441,7 @@ function spShowCard(){
 }
 
 function spReset(){
+  document.getElementById('lf-next-row')?.remove();
   const rb = document.getElementById('sp-result-box');
   const ab = document.getElementById('sp-actions');
   const nb = document.getElementById('sp-next-btn');
@@ -14437,6 +14469,7 @@ function spStartRecord(){
   const SR = spState.SR || window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR){
     alert(t('sp_not_supported'));
+    spOfferSkip();
     return;
   }
   if(spState.recording) return;
@@ -14520,6 +14553,7 @@ function spTryStart(SR, mb, lbl, attempt){
       : (e.error === 'not-allowed' || e.error === 'service-not-allowed') ? t('sp_mic_denied')
       : '❌ ' + t('sp_error');
     if(lbl) lbl.textContent = msg;
+    if(e.error === 'not-allowed' || e.error === 'service-not-allowed') spOfferSkip();
   };
 
   rec.onend = () => {
@@ -14689,10 +14723,15 @@ function spShowResult(heardText, card){
 
   const ab = document.getElementById('sp-actions');
   const nb = document.getElementById('sp-next-btn');
+  const isLast = spState.idx >= spState.cards.length - 1;
   if(ab) ab.style.display = 'flex';
   if(nb){
-    nb.style.display = 'block';
-    nb.textContent = t(spState.idx >= spState.cards.length - 1 ? 'sp_result_btn' : 'sp_next');
+    if(spState.lesson && isLast){ nb.style.display = 'none'; }
+    else { nb.style.display = 'block'; nb.textContent = t(isLast ? 'sp_result_btn' : 'sp_next'); }
+  }
+  if(spState.lesson){
+    if(LF){ LF.unitProgress = { done: spState.idx + 1, total: spState.cards.length }; lfRenderBar(); }
+    if(isLast) spLessonShowFinish();
   }
 
   recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
@@ -14712,8 +14751,42 @@ function spRetry(){
   if(spState.correctCount > 0) spState.correctCount--;
   spRenderTermWords(spState.cards[spState.idx]);
   spReset();
-  const url = getAudioUrl(spState.cards[spState.idx].id, 'term', primaryLang());
-  playPregenAudio(url, null, ++playGen);
+  spPlayPhrase(spState.cards[spState.idx], 'retry');
+}
+
+// ── Вправа у складі уроку ─────────────────────────────────────────
+// Після останньої фрази — СТАНДАРТНА кнопка уроку «✓ Завершити» (той самий нижній рядок
+// .lf-next-row і той самий текст btn_dlg_finish, що й в інших кроках). Показуємо її, коли
+// "промивання" останньої фрази вже завершилось: клік вимикає мікрофон, і обривати ремонт звуку не можна.
+function spLessonShowFinish(){
+  if(!spState.lesson) return;
+  const tok = _spTok;
+  Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(r, 4000)) ]).then(() => {
+    if(!_spActive || !spState.lesson || tok !== _spTok) return;    // за цей час натиснули «ще раз»/вийшли
+    if(document.getElementById('lf-next-row')) return;
+    const row = document.createElement('div');
+    row.id = 'lf-next-row'; row.className = 'lf-next-row';
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-lesson-sb-next';
+    btn.textContent = t('btn_dlg_finish');
+    btn.onclick = () => { row.remove(); spLessonFinish(); };
+    row.appendChild(btn);
+    document.body.appendChild(row);
+  });
+}
+// «Завершити»: вимкнути мікрофон і перейти до підсумку уроку.
+function spLessonFinish(){
+  const score = spState.totalCount ? spState.correctCount / spState.totalCount : 1;
+  spExit();                                   // мікрофон вимкнено (spShutdownMic)
+  if(LF){ LF.results.speech = score; lfNextStep(); }
+}
+// Без мікрофона (немає дозволу / розпізнавання недоступне) в уроці не можна застрягти: дозволяємо йти далі.
+function spOfferSkip(){
+  if(!spState.lesson) return;
+  if(spState.idx >= spState.cards.length - 1){ spLessonShowFinish(); return; }
+  const ab = document.getElementById('sp-actions'), nb = document.getElementById('sp-next-btn');
+  if(ab) ab.style.display = 'flex';
+  if(nb){ nb.style.display = 'block'; nb.textContent = t('sp_next'); }
 }
 
 // Кнопка на останній фразі: показуємо підсумок і ВИМИКАЄМО мікрофон, щойно завершилось
@@ -15306,6 +15379,7 @@ const LF_STEP_ICONS = {
   frm_learn:'📰',
   eml_learn:'📧',
   sb_prac:  '🎯',
+  speech:   '🎤',
   result:   '🏁',
 };
 
@@ -15321,6 +15395,7 @@ const LF_STEP_LABELS = {
   frm_learn:{de:'Forumsbeitrag',  uk:'Допис на форумі',    en:'Forum post'},
   eml_learn:{de:'E-Mail',         uk:'E-Mail',             en:'E-Mail'},
   sb_prac:  {de:'Grammatik',       uk:'Граматика',          en:'Grammar'},
+  speech:   {de:'Aussprache',      uk:'Вимова',             en:'Pronunciation', ru:'Произношение'},
   result:   {de:'Ergebnis',       uk:'Результат',          en:'Result'},
 };
 
@@ -15592,6 +15667,8 @@ function lfGoStep(stepIdx){
     lfStartEmlLearn();
   } else if(step === 'sb_prac'){
     lfStartSBPrac();
+  } else if(step === 'speech'){
+    switchVocabTab(7);   // startSpeech() у режимі уроку бере LF.speechCards
   } else if(step === 'result'){
     lfShowResult();
   }
@@ -19317,6 +19394,7 @@ function _quizShowResult(){
 // геть іншої вкладки, бо LF ще не скидався в null. Дублює лише DOM/стан
 // прибирання з exitLessonFlow(), без srRecordLesson().
 function abandonLessonFlow(){
+  if(typeof spExit === 'function') spExit();
   if(!LF) return;
   // Аналітика: "закрив урок, не дійшовши до кінця" — лише якщо
   // lfShowResult() ще НЕ зарахував його (LF._recorded), інакше це не
@@ -19402,6 +19480,7 @@ function abandonLessonFlow(){
 }
 
 function exitLessonFlow(){
+  if(typeof spExit === 'function') spExit();   // вихід з уроку посеред вправи «Вимова»: вимкнути мікрофон
   // Зарахування уроку (стрік, subtestStats, час) відбувається ВИКЛЮЧНО в
   // lfShowResult() — рівно тоді, коли урок СПРАВДІ повністю пройдено
   // (дійшов до кроку 'result'). Ця функція викликається як з кнопки
