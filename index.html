@@ -4281,7 +4281,7 @@ body{
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-diag" onchange="spCfgSet('diag',this.checked)"> кнопки оцінки звуку у вправі (🔊 норм / 📞 дзвінок)</label>
       <select id="sp-cfg-flush" onchange="spCfgSet('flush',this.value)" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
         <option value="off">«Промивання» звуку після розпізнавання: вимкнено (рекомендовано)</option>
-        <option value="on">«Промивання» звуку: ввімкнено (лишає мікрофон гарячим — лише для тестів!)</option>
+        <option value="on">«Промивання» звуку: ввімкнено + приспати звукові ефекти (ЕКСПЕРИМЕНТ)</option>
       </select>
       <div class="srow-label" style="margin-top:6px"><label>🎙 Тест мікрофона (точка на екрані)</label><small>Натисни тест → мікрофон ВКЛ на 3 с → зупинка → дивись на точку ~5 с → відміть «горить»/«згасла».</small></div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
@@ -4429,7 +4429,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '683-e5b4337';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7385,9 +7385,10 @@ function _sfxPlay(playFn){
   const ctx = _sfxGetCtx();
   if(!ctx) return;
   if(ctx.state === 'suspended'){
-    ctx.resume().then(function(){ try{ playFn(ctx); }catch(e){} }).catch(function(){});
+    ctx.resume().then(function(){ try{ playFn(ctx); }catch(e){} if(typeof spQuietSfxSoon === 'function') spQuietSfxSoon(); }).catch(function(){});
   } else {
     playFn(ctx);
+    if(typeof spQuietSfxSoon === 'function') spQuietSfxSoon();
   }
 }
 // Одна коротка нота з м'якою атакою/спадом (щоб не клацало на межах).
@@ -14247,6 +14248,25 @@ function spKillAllMic(reason){
   return n;
 }
 
+// Звуковий AudioContext застосунку (_sfxCtx), раз запустившись, лишається 'running'
+// назавжди. Гіпотеза: разом із записом мікрофона він тримає спільний аудіоблок iOS
+// живим уже ПІСЛЯ зупинки треків ("гаряча" точка мікрофона). Тому "присипляємо" його,
+// коли він простоює. Наступний звук сам його розбудить (_sfxPlay → resume()).
+function spQuietSfx(tag){
+  try{
+    if(typeof _sfxCtx !== 'undefined' && _sfxCtx && _sfxCtx.state === 'running'){
+      spL(`sfx: suspend idle SFX AudioContext (${tag})`);
+      _sfxCtx.suspend().catch(() => {});
+    }
+  }catch(e){}
+}
+let _spQuietT = null;
+function spQuietSfxSoon(){
+  if(!_spActive) return;
+  clearTimeout(_spQuietT);
+  _spQuietT = setTimeout(() => spQuietSfx('after-tone'), 800);
+}
+
 // ── Діагностика аварійних перезавантажень ────────────────────────
 // Якщо iOS вбиває сторінку (нестача пам'яті), pagehide НЕ спрацьовує. Тому
 // пишемо "серцебиття" (фаза + час) і на наступному завантаженні порівнюємо:
@@ -14870,6 +14890,7 @@ function spExit(){
   spStopRecord();
   spFlushCancel();
   spKillAllMic('exit');
+  spQuietSfx('exit');
   spWorkerTerminate();
   _spActive = false;
   spSetStatus('');
@@ -15192,9 +15213,9 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 
   rec.onaudiostart = () => {
     const d = Date.now() - _startTime;
-    // холодний старт мікрофона на iOS ≈ 0.8–1.2 с; кілька мс означає, що аудіоблок
-    // УЖЕ працював (мікрофон не був вимкнений після попереднього циклу)
-    spL(`SR audiostart +${d}ms after start() ${d < 150 ? '⚠ HOT-MIC (unit already running)' : '(cold start, OK)'} AS=${spAS()}`);
+    // Холодний старт ≈ 1 с, "теплий" — кілька мс. УВАГА: це НЕ показник точки мікрофона —
+    // у тесті без "промивання" був "теплий" старт, а точка при цьому гасла. Істина — точка на екрані.
+    spL(`SR audiostart +${d}ms after start() ${d < 150 ? '(warm start)' : '(cold start)'} AS=${spAS()}`);
   };
   rec.onaudioend = () => spL(`SR audioend AS=${spAS()}`);
   try{ rec.start(); spL(`rec.start() OK`); }
@@ -15223,6 +15244,7 @@ let _spRepairResolve = null;
 function spRepairBegin(){ _spRestoreP = new Promise(res => { _spRepairResolve = res; }); }
 function spSrEnded(){
   spKillAllMic('sr-end');
+  spQuietSfx('sr-end');
   const P = spAfterSR();
   _spRestoreP = P;
   if(_spRepairResolve){ _spRepairResolve(P); _spRepairResolve = null; }
@@ -15257,8 +15279,10 @@ function spAfterSR(){
     rec.abort();
     await rec.result;
     _spFlushRec = null;
+    spQuietSfx('after-flush');
     if(_spFlushCancel){ spL('flush: aborted'); return; }
     await new Promise(r => setTimeout(r, cfg.postDelay | 0));
+    spQuietSfx('after-flush+post');
     spRestoreAudioSession();
     spL(`flush: done AS=${spAS()}`);
   })().catch(e => { _spFlushRec = null; spL('flush ERROR ' + (e && e.message)); });
@@ -15279,6 +15303,7 @@ function spCleanup(){
   spStopRecord();
   spFlushCancel();
   spKillAllMic('hidden/pagehide');
+  spQuietSfx('hidden/pagehide');
   if(was && _spActive) spReset();
 }
 document.addEventListener('visibilitychange', ()=>{ if(document.visibilityState==='hidden') spCleanup(); });
