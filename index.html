@@ -4260,37 +4260,11 @@ body{
       <button class="btn btn-s" onclick="showSpeechLog()">📋 Log</button>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>🎛 Speech: рушій і режими звуку</label><small>Для A/B-тестів на пристрої. Зміни діють одразу (з наступного запису).</small></div>
-      <div id="sp-cfg-info" style="font-size:12px;color:var(--muted)"></div>
-      <select id="sp-cfg-engine" onchange="spCfgSet('engine',this.value)" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <option value="auto">Рушій: auto (браузерний SpeechRecognition; власний запис — лише якщо SR недоступний)</option>
-        <option value="capture">Рушій: власний запис + Whisper</option>
-        <option value="webspeech">Рушій: браузерний SpeechRecognition</option>
-      </select>
-      <select id="sp-cfg-post" onchange="spCfgSet('postType',this.value)" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <option value="playback">Після запису: audioSession = playback</option>
-        <option value="auto">Після запису: audioSession = auto</option>
-        <option value="none">Після запису: не чіпати audioSession</option>
-      </select>
-      <select id="sp-cfg-model" onchange="spCfgSet('model',this.value)" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <option value="Xenova/whisper-base">Модель: whisper-base (~78 МБ, точніша)</option>
-        <option value="Xenova/whisper-tiny">Модель: whisper-tiny (~41 МБ, швидша)</option>
-      </select>
-      <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-pre" onchange="spCfgSet('preRecord',this.checked)"> явний play-and-record перед записом</label>
-      <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-ec" onchange="spCfgSet('ec',this.checked)"> ехопридушення (EC/NS/AGC) під час запису</label>
+      <div class="srow-label"><label>🎤 Speech: діагностика</label><small>Кнопки оцінки звуку у вправі та відмітка точки мікрофона — для 🎤 Speech Log.</small></div>
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-diag" onchange="spCfgSet('diag',this.checked)"> кнопки оцінки звуку у вправі (🔊 норм / 📞 дзвінок)</label>
-      <select id="sp-cfg-flush" onchange="spCfgSet('flush',this.value)" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <option value="auto">«Промивання» звуку після розпізнавання: auto (так на iOS)</option>
-        <option value="on">«Промивання» звуку: завжди</option>
-        <option value="off">«Промивання» звуку: ніколи</option>
-      </select>
       <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
         <button class="btn btn-s" onclick="spMicDot('ON')">🟠 точка мікрофона горить</button>
         <button class="btn btn-s" onclick="spMicDot('OFF')">⚪ точка згасла</button>
-      </div>
-      <div style="display:flex;gap:8px;align-items:center">
-        <button class="btn btn-s" onclick="spPreloadModel()">⬇️ Завантажити модель</button>
-        <span id="sp-preload-status" style="font-size:12px;color:var(--muted)"></span>
       </div>
     </div>
     <div class="srow">
@@ -4421,7 +4395,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '690-82bb4ba';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14065,101 +14039,55 @@ function defShowResult(){
     </div>`;
 }
 
-// ── SPEECH PRACTICE (tab 7) ───────────────────────────────────────
-// Розпізнавання мовлення → нечітке порівняння → % точності.
+// ── SPEECH PRACTICE (tab 7) ───────────────────────────────────
+// Розпізнавання мовлення (штатний SpeechRecognition) → нечітке порівняння → % точності.
 //
-// ДВА РУШІЇ (вибір — spEngine(), перемикається в Налаштування → Debug):
-//  • 'webspeech' — браузерний SpeechRecognition (Android, десктоп).
-//  • 'capture'   — ВЛАСНИЙ запис мікрофона (getUserMedia + Web Audio) і
-//    розпізнавання Whisper НА ПРИСТРОЇ (transformers.js у Web Worker).
-//    Дефолт для iOS.
-//
-// ЧОМУ 'capture' НА iOS. webkitSpeechRecognition на iOS переводить
-// аудіо-сесію всієї сторінки в режим запису ("гучний зв'язок"), а після
-// завершення НЕ повертає її назад — це відомий клас проблем WebKit (запис
-// "unset audio session category when finish capturing" досі відкритий);
-// navigator.audioSession.type='playback' на це не впливає. Життєвим
-// циклом SpeechRecognition ми не керуємо, тому єдиним "лікарством" був
-// reload сторінки — а він знищує стан уроку (LF) і робить неможливою
-// вставку вправи в урок.
-//
-// Власний запис дає детерміновану послідовність:
-//   [жест] AudioContext → getUserMedia → запис → VAD-стоп
-//   → track.stop() + ctx.close()  (мікрофон ЗАКРИТО ще ДО розпізнавання)
-//   → пауза → audioSession.type='playback'  (тривалість розпізнавання
-//   Whisper ховає цю паузу) → лише потім наступна TTS-фраза.
-// Reload не потрібен ніколи. Чи повертається звук у норму на конкретній
-// версії iOS — видно з 🎤 Speech Log (див. spAS(), AUDIO-події, VERDICT).
+// ПРОБЛЕМА iOS. webkitSpeechRecognition переводить аудіо-сесію сторінки в режим запису
+// ("гучний зв'язок") і після завершення не повертає її назад (відкрита помилка WebKit).
+// Що з цим робить код (перевірено на iPhone за логами 🎤 Speech Log):
+//  1) Після КОЖНОЇ фрази — "промивання": короткий холостий запис мікрофона (spMicPulse) з
+//     очікуванням реальних аудіо-даних. Це повертає звук у норму. Мікрофон між фразами
+//     свідомо лишається "теплим": лише так наступне розпізнавання стартує надійно.
+//  2) Наступна фраза озвучується тільки після "промивання" (ворота _spRestoreP).
+//  3) Мікрофон ВИМИКАЄТЬСЯ подіями (spShutdownMic): кнопка «Завершити» на останній фразі,
+//     вихід з вправи, перехід на наступний крок уроку («Далі»).
+// Reload застосунку не потрібен.
 
 let spState = {
   cards: [], idx: 0, recognition: null, recording: false,
-  correctCount: 0, totalCount: 0, SR: null, cycle: 0, busy: false, cap: null
+  correctCount: 0, totalCount: 0, SR: null, cycle: 0
 };
 let _spActive = false;        // екран "Вимова" зараз відкритий
-let _spTok = 0;               // інкремент скасовує запис/розпізнавання, що ще тривають
+let _spTok = 0;               // інкремент скасовує відкладені дії (озвучення фрази) після скасування розпізнавання
 let _spRestoreP = null;       // Promise: аудіо-сесію повернено в режим програвання
 let _spLastReleaseAt = 0;     // Date.now() останнього закриття мікрофона
 
-// ── Конфіг (для A/B-тестів на пристрої без перезбірки; Debug) ─────
+// ── Налаштування ──────────────────────────────────────────────────
+// Єдиний параметр — diag: кнопки оцінки звуку у вправі (Налаштування → Debug).
 const SP_CFG_KEY = 'mova_sp_cfg';
-const SP_CFG_DEF = {
-  engine: 'auto',               // 'auto' | 'webspeech' | 'capture'
-  preRecord: false,             // явно ставити 'play-and-record' перед записом (потрібно лише якщо postType='playback')
-  postType: 'auto',             // після запису: 'auto' | 'playback' | 'none'. 'auto' не блокує наступний getUserMedia
-  postDelay: 300,               // мс між закриттям мікрофона і поверненням типу
-  ec: false,                    // EC/NS/AGC у getUserMedia (вимкнено — сирий сигнал)
-  diag: false,                  // кнопки "звук норм / як дзвінок" у вправі
-  flush: 'auto',                // 'webspeech': "промити" аудіо-сесію коротким записом після SR. 'auto' = так на iOS; 'on' | 'off'
-  model: 'Xenova/whisper-base'  // ~77 МБ (q8); 'Xenova/whisper-tiny' ~41 МБ
-};
+const SP_POST_DELAY = 300;    // мс між закриттям мікрофона і поверненням типу аудіо-сесії
 function spCfg(){
   let c = {};
   try{ c = JSON.parse(localStorage.getItem(SP_CFG_KEY) || '{}') || {}; }catch(e){}
-  if(c.v !== 5){        // одноразово повертаємо перевірену конфігурацію (як у робочому тесті)
-    c.v = 5; c.postType = 'auto'; c.preRecord = false; c.flush = 'auto';
-    try{ localStorage.setItem(SP_CFG_KEY, JSON.stringify(c)); }catch(e){}
-  }
-  return Object.assign({}, SP_CFG_DEF, c);
+  return { diag: !!c.diag };
 }
 function spCfgSet(k, v){
-  const c = spCfg(); c[k] = v;
-  try{ localStorage.setItem(SP_CFG_KEY, JSON.stringify(c)); }catch(e){}
-  spL(`cfg: ${k}=${JSON.stringify(v)}`);
-  if(k === 'model') spWorkerTerminate();
-  if(k === 'diag' && _spActive) spEnsureDiagRow();
+  if(k !== 'diag') return;
+  try{ localStorage.setItem(SP_CFG_KEY, JSON.stringify({ diag: !!v })); }catch(e){}
+  spL(`cfg: diag=${!!v}`);
+  if(_spActive) spEnsureDiagRow();
   spCfgSyncUI();
 }
 function spCfgSyncUI(){
-  const c = spCfg();
-  const set = (id, fn) => { const el = document.getElementById(id); if(el) fn(el); };
-  set('sp-cfg-engine', el => { el.value = c.engine; });
-  set('sp-cfg-post',   el => { el.value = c.postType; });
-  set('sp-cfg-model',  el => { el.value = c.model; });
-  set('sp-cfg-pre',    el => { el.checked = !!c.preRecord; });
-  set('sp-cfg-ec',     el => { el.checked = !!c.ec; });
-  set('sp-cfg-diag',   el => { el.checked = !!c.diag; });
-  set('sp-cfg-flush',  el => { el.value = (c.flush === true || c.flush === 'on') ? 'on' : (c.flush === false || c.flush === 'off') ? 'off' : 'auto'; });
-  set('sp-cfg-info',   el => { el.textContent = 'Активний рушій: ' + spEngine() + (_spIsIOS() ? ' (iOS)' : ''); });
+  const el = document.getElementById('sp-cfg-diag');
+  if(el) el.checked = !!spCfg().diag;
 }
 function _spIsIOS(){
   const ua = navigator.userAgent || '';
   return /iPhone|iPod|iPad/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
 }
-// 'auto': завжди штатний SpeechRecognition (найкраща точність, живе підсвічування
-// слів); власний запис + Whisper — лише якщо SR недоступний або вибрано вручну.
-function spEngine(){
-  const e = spCfg().engine;
-  if(e === 'webspeech' || e === 'capture') return e;
-  const canCapture = !!(navigator.mediaDevices && navigator.mediaDevices.getUserMedia);
-  const hasSR = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
-  return hasSR ? 'webspeech' : (canCapture ? 'capture' : 'webspeech');
-}
-function spFlushEnabled(){
-  const f = spCfg().flush;
-  if(f === true || f === 'on') return true;
-  if(f === false || f === 'off') return false;
-  return _spIsIOS();
-}
+// "Промивання" звуку потрібне лише на iOS (Android/десктоп цієї проблеми не мають).
+function spFlushEnabled(){ return _spIsIOS(); }
 function spT(uk, en, de, ru){
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   return ul === 'uk' ? uk : ul === 'en' ? en : ul === 'ru' ? (ru || uk) : de;
@@ -14198,8 +14126,8 @@ function _spLogHeader(){
   _spLogPush(`env: ${n.userAgent}`);
   _spLogPush(`env: standalone=${standalone} audioSession=${('audioSession' in n) ? spAS() : 'n/a'} gUM=${!!(n.mediaDevices && n.mediaDevices.getUserMedia)} ` +
     `worklet=${typeof AudioWorkletNode !== 'undefined'} SR=${!!(window.SpeechRecognition || window.webkitSpeechRecognition)} ` +
-    `MediaRecorder=${typeof MediaRecorder !== 'undefined'} secure=${window.isSecureContext} coi=${window.crossOriginIsolated === true}`);
-  _spLogPush(`cfg: ${JSON.stringify(spCfg())} → engine=${spEngine()}`);
+    `secure=${window.isSecureContext}`);
+  _spLogPush(`cfg: diag=${spCfg().diag} flush=${spFlushEnabled()}`);
   try{
     if(n.audioSession && n.audioSession.addEventListener)
       n.audioSession.addEventListener('statechange', () => _spLogPush('AS event: statechange → ' + spAS()));
@@ -14219,8 +14147,7 @@ function spHb(phase){
   if(phase) _spPhase = phase;
   try{
     localStorage.setItem(SP_HB_KEY, JSON.stringify({
-      t: Date.now(), phase: _spPhase, vis: document.visibilityState,
-      engine: _spActive ? spEngine() : '-', model: spCfg().model
+      t: Date.now(), phase: _spPhase, vis: document.visibilityState
     }));
   }catch(e){}
 }
@@ -14236,7 +14163,7 @@ let _spBootInfo = '';
     const age = Math.round((Date.now() - prev.t) / 1000);
     if(prev.phase === 'unloaded') _spBootInfo += ` | prev page: unloaded normally (pagehide) ${age}s ago, last phase=${prev.last}`;
     else if(prev.phase === 'idle' || prev.phase === 'exited') _spBootInfo += ` | prev page: clean (${prev.phase}) ${age}s ago`;
-    else _spBootInfo += ` | ⚠ PREV PAGE DIED WITHOUT pagehide: phase=${prev.phase} vis=${prev.vis} engine=${prev.engine} model=${prev.model} ${age}s ago → process killed (memory?) or crash`;
+    else _spBootInfo += ` | ⚠ PREV PAGE DIED WITHOUT pagehide: phase=${prev.phase} vis=${prev.vis} ${age}s ago → process killed (memory?) or crash`;
   }
   try{ localStorage.setItem(SP_HB_KEY, JSON.stringify({ t: Date.now(), phase: 'idle', vis: document.visibilityState })); }catch(e){}
   try{
@@ -14272,14 +14199,8 @@ function _spSfxInfo(){
   try{ return (typeof _sfxCtx !== 'undefined' && _sfxCtx) ? (_sfxCtx.state + '/' + _sfxCtx.sampleRate) : 'none'; }
   catch(e){ return '?'; }
 }
-// Шлях 'webspeech': повернення в режим програвання (як і раніше, але
-// тепер з урахуванням cfg.postType).
-function spRestoreAudioSession(){
-  const t = spCfg().postType;
-  if(t === 'none'){ spL('AS[post]: skipped (cfg none)'); return; }
-  spSetType(t, 'post');
-}
-function spSetRecordAudioSession(){ spSetType('play-and-record', 'pre'); }
+// Повернення аудіо-сесії в режим програвання після розпізнавання.
+function spRestoreAudioSession(){ spSetType('auto', 'post'); }
 
 // Діагностика програвання TTS: події спільного <audio> у лог, лише поки
 // відкрита вправа "Вимова". vol/muted показують, що елемент сам у нормі —
@@ -14297,115 +14218,49 @@ function spAttachAudioDiag(){
   }));
 }
 
-// ── ВЛАСНИЙ ЗАПИС (рушій 'capture') ───────────────────────────────
+// ── "ПРОМИВАННЯ" МІКРОФОНА ────────────────────────────────────────
 const SP_WORKLET_SRC =
   'class SpCap extends AudioWorkletProcessor{constructor(){super();this.b=new Float32Array(2048);this.n=0;}' +
   'process(inp){const c=inp[0]&&inp[0][0];if(c){for(let i=0;i<c.length;i++){this.b[this.n++]=c[i];' +
   'if(this.n===2048){this.port.postMessage(this.b.slice(0));this.n=0;}}}return true;}}' +
   "registerProcessor('sp-cap',SpCap);";
 
-// Запускається СИНХРОННО з обробника кліку: AudioContext, створений поза
-// жестом, на iOS лишається suspended. Повертає {result, stop(), abort()}.
-// result resolve-иться ЗАВЖДИ (ніколи не reject) об'єктом
-// {pcm, rate, hadSpeech, reason, aborted, error, durMs, peak} — і лише
-// ПІСЛЯ того, як мікрофон і AudioContext закриті.
-function spCapRecord(opts){
+// Короткий холостий запис мікрофона (без обробки): getUserMedia → AudioContext → перший аудіо-блок.
+// AudioContext створюється СИНХРОННО. Повертає {result, abort()}; result resolve-иться ЗАВЖДИ
+// (ніколи не reject) — лише ПІСЛЯ того, як мікрофон і AudioContext закриті.
+function spMicPulse(opts){
   opts = opts || {};
-  const cfg = spCfg();
   const Ctx = window.AudioContext || window.webkitAudioContext;
-  const s = {
-    chunks: [], total: 0, rate: 0, hadSpeech: false, speechMs: 0, lastSpeechAt: 0,
-    noise: 0, calib: [], thr: 0.0035, peak: 0, maxRms: 0, weak: false, firstSpeechAt: -1,
-    trace: '', bucketMs: 0, bucketMax: 0,
-    stream: null, ctx: null, src: null, node: null, sink: null,
-    ended: false, errorName: null, startedAt: performance.now(), gotFirst: false
-  };
+  const s = { stream: null, ctx: null, src: null, node: null, sink: null,
+              ended: false, startedAt: performance.now(), gotFirst: false };
   let resolveRes;
   const result = new Promise(res => { resolveRes = res; });
-
   const finish = async (reason) => {
     if(s.ended) return;
     s.ended = true;
-    try{ opts.onEnding && opts.onEnding(reason); }catch(e){}
-    // Слабкий сигнал: сирий мікрофон iPhone (без AGC) тихий; якщо пік рівня
-    // помітно вищий за шум — краще віддати Whisper, ніж тихо відкинути.
-    if(!s.hadSpeech && reason !== 'abort' && reason !== 'error' && s.calib.length &&
-       s.maxRms > Math.max(0.003, s.noise * 3)){ s.hadSpeech = true; s.weak = true; }
-    await spCapRelease(s);
-    if(reason !== 'abort' && s.trace)
-      spL(`levels(250ms/char; '.'<½thr '-'<thr digit=×thr) thr=${s.thr.toFixed(4)} noise=${s.noise.toFixed(4)} max=${s.maxRms.toFixed(4)} weak=${s.weak}: ${s.trace}`);
-    const pcm = new Float32Array(s.total);
-    let o = 0; for(const c of s.chunks){ pcm.set(c, o); o += c.length; }
-    s.chunks = [];
-    resolveRes({
-      pcm, rate: s.rate, hadSpeech: s.hadSpeech, reason, aborted: reason === 'abort',
-      error: s.errorName, durMs: Math.round(performance.now() - s.startedAt), peak: s.peak,
-      thr: s.thr, noise: s.noise, maxRms: s.maxRms, weak: s.weak,
-      firstSpeechAt: s.firstSpeechAt, lastSpeechAt: s.lastSpeechAt
-    });
+    await spMicPulseRelease(s);
+    resolveRes({ reason });
   };
+  const none = { result, abort(){} };
 
   if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !Ctx){
-    spL('capture: unsupported (no getUserMedia/AudioContext)');
-    s.errorName = 'unsupported'; finish('error');
-    return { result, stop(){}, abort(){} };
+    spL('pulse: unsupported (no getUserMedia/AudioContext)');
+    finish('unsupported'); return none;
   }
-
-  // iOS відмовляє в getUserMedia, коли тип сесії вже 'playback' (InvalidStateError)
-  if(cfg.preRecord || cfg.postType === 'playback') spSetType('play-and-record', 'pre');
   try{ s.ctx = new Ctx(); }
-  catch(e){ spL('AudioContext ERROR ' + e.message); s.errorName = 'audioctx'; finish('error'); return { result, stop(){}, abort(){} }; }
+  catch(e){ spL('AudioContext ERROR ' + e.message); finish('error'); return none; }
   try{ if(s.ctx.resume) s.ctx.resume(); }catch(e){}
+  spL(`gUM → ec/ns/agc=false AS=${spAS()} ctx0=${s.ctx.state}/${s.ctx.sampleRate}`);
 
-  const ec = !!cfg.ec;
-  spL(`gUM → ec/ns/agc=${ec} AS=${spAS()} ctx0=${s.ctx.state}/${s.ctx.sampleRate}`);
-
-  const onChunk = (f32) => {
-    if(s.ended) return;
-    if(!s.gotFirst){
-      s.gotFirst = true;
-      spL(`first audio chunk +${Math.round(performance.now() - s.startedAt)}ms after start`);
-      try{ opts.onFirstChunk && opts.onFirstChunk(); }catch(e){}
-    }
-    s.chunks.push(f32); s.total += f32.length;
-    let sum = 0;
-    for(let i = 0; i < f32.length; i++){ const v = f32[i]; sum += v * v; const a = v < 0 ? -v : v; if(a > s.peak) s.peak = a; }
-    const rms = Math.sqrt(sum / f32.length);
-    const elapsed = s.total / s.rate * 1000;            // мс аудіо-часу
-    const chunkMs = f32.length / s.rate * 1000;
-    if(rms > s.maxRms) s.maxRms = rms;
-    try{ opts.onLevel && opts.onLevel(rms); }catch(e){}
-    // трасування рівня для логу: 1 символ на 250 мс
-    s.bucketMax = Math.max(s.bucketMax, rms); s.bucketMs += chunkMs;
-    if(s.bucketMs >= 250){
-      const r = s.bucketMax / s.thr;
-      s.trace += r < 0.5 ? '.' : r < 1 ? '-' : String(Math.min(9, Math.floor(r)));
-      s.bucketMax = 0; s.bucketMs = 0;
-    }
-    // калібрування шуму: перші 350 мс. Поріг — від НИЖЧОЇ половини вимірів
-    // (щоб слово, яке почалось одразу, не задерло поріг), із низькою
-    // абсолютною стелею: сирий сигнал iPhone без AGC має RMS мовлення ~0.005–0.015.
-    if(elapsed < 350){ s.calib.push(rms); return; }
-    if(!s.thrSet){
-      const c = s.calib.slice().sort((a, b) => a - b);
-      const low = c.slice(0, Math.max(1, Math.ceil(c.length / 2)));
-      s.noise = low.reduce((a, b) => a + b, 0) / low.length;
-      s.thr = Math.min(0.006, Math.max(0.0025, s.noise * 4));
-      s.thrSet = true;
-      spL(`vad calibrated: noise=${s.noise.toFixed(4)} thr=${s.thr.toFixed(4)}`);
-    }
-    if(rms > s.thr){
-      if(s.firstSpeechAt < 0) s.firstSpeechAt = elapsed - chunkMs;
-      s.speechMs += chunkMs; s.lastSpeechAt = elapsed;
-      if(s.speechMs >= 120) s.hadSpeech = true;
-    }
-    if(s.hadSpeech && elapsed - s.lastSpeechAt > 700) finish('vad-end');
-    else if(!s.hadSpeech && elapsed > 7000) finish('no-speech');
-    else if(elapsed > 10000) finish('max');
+  const onChunk = () => {
+    if(s.ended || s.gotFirst) return;
+    s.gotFirst = true;
+    spL(`first audio chunk +${Math.round(performance.now() - s.startedAt)}ms after start`);
+    try{ opts.onFirstChunk && opts.onFirstChunk(); }catch(e){}
   };
 
   navigator.mediaDevices.getUserMedia({
-    audio: { echoCancellation: ec, noiseSuppression: ec, autoGainControl: ec, channelCount: 1 }
+    audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false, channelCount: 1 }
   }).then(async (stream) => {
     if(s.ended){ stream.getTracks().forEach(t => t.stop()); return; }
     s.stream = stream;
@@ -14415,7 +14270,6 @@ function spCapRecord(opts){
     if(track) track.addEventListener('ended', () => { spL('track ended (external interruption)'); finish('track-ended'); });
     if(s.ctx.state !== 'running'){ try{ await s.ctx.resume(); }catch(e){} }
     if(s.ended) return;
-    s.rate = s.ctx.sampleRate;
     spL(`ctx: rate=${s.ctx.sampleRate} state=${s.ctx.state} baseLatency=${s.ctx.baseLatency} outputLatency=${s.ctx.outputLatency}`);
     s.src = s.ctx.createMediaStreamSource(stream);
     s.sink = s.ctx.createGain(); s.sink.gain.value = 0;
@@ -14426,31 +14280,29 @@ function spCapRecord(opts){
         await s.ctx.audioWorklet.addModule(url);
         URL.revokeObjectURL(url);
         s.node = new AudioWorkletNode(s.ctx, 'sp-cap', { numberOfInputs: 1, numberOfOutputs: 1, channelCount: 1 });
-        s.node.port.onmessage = (e) => onChunk(e.data);
+        s.node.port.onmessage = onChunk;
         s.src.connect(s.node); s.node.connect(s.sink); s.sink.connect(s.ctx.destination);
         usedWorklet = true;
       }catch(e){ spL('worklet failed → ScriptProcessor: ' + (e && e.message)); try{ s.src.disconnect(); }catch(_){} }
     }
     if(!usedWorklet){
       const sp = s.ctx.createScriptProcessor(4096, 1, 1);
-      sp.onaudioprocess = (e) => onChunk(new Float32Array(e.inputBuffer.getChannelData(0)));
+      sp.onaudioprocess = onChunk;
       s.node = sp;
       s.src.connect(sp); sp.connect(s.sink); s.sink.connect(s.ctx.destination);
     }
     spL(`capture started (${usedWorklet ? 'worklet' : 'scriptprocessor'}) ${Math.round(performance.now() - s.startedAt)}ms after tap`);
-    try{ opts.onStarted && opts.onStarted(); }catch(e){}
   }).catch((err) => {
     spL(`gUM ERROR ${err && err.name}: ${err && err.message}`);
-    if(!s.ended){ s.errorName = (err && err.name) || 'error'; finish('error'); }
+    finish('error');
   });
 
-  return { result, stop: (r) => finish(r || 'manual'), abort: () => finish('abort') };
+  return { result, abort: () => finish('abort') };
 }
 
-// ДЕТЕРМІНОВАНЕ закриття: вузли → треки → AudioContext. Після цього
-// (з паузою) повертаємо тип аудіо-сесії; _spRestoreP дозволяє наступній
-// TTS-фразі дочекатись цього моменту.
-async function spCapRelease(s){
+// ДЕТЕРМІНОВАНЕ закриття: вузли → треки → AudioContext. Потім (з паузою) тип аудіо-сесії
+// повертається в режим програвання; _spRestoreP дозволяє наступній фразі дочекатись цього.
+async function spMicPulseRelease(s){
   const t0 = performance.now();
   try{ if(s.node){ if(s.node.port) s.node.port.onmessage = null; if('onaudioprocess' in s.node) s.node.onaudioprocess = null; s.node.disconnect(); } }catch(e){}
   try{ s.src && s.src.disconnect(); }catch(e){}
@@ -14465,258 +14317,11 @@ async function spCapRelease(s){
   }catch(e){ spL('ctx.close ERROR ' + e.message); }
   _spLastReleaseAt = Date.now();
   spL(`release: tracks=[${tracks}] ctx=${s.ctx ? s.ctx.state : '-'} in ${Math.round(performance.now() - t0)}ms AS=${spAS()} sfx=${_spSfxInfo()}`);
-  const cfg = spCfg();
-  const mine = new Promise(res => {
-    setTimeout(() => { if(cfg.postType !== 'none') spSetType(cfg.postType, 'post'); res(); }, cfg.postDelay | 0);
-  });
+  const mine = new Promise(res => { setTimeout(() => { spSetType('auto', 'post'); res(); }, SP_POST_DELAY); });
   _spRestoreP = _spRestoreP ? Promise.all([_spRestoreP, mine]) : mine;
   setTimeout(() => spL('AS +1.5s after release: ' + spAS()), 1500);
 }
 
-// Ресемплінг до 16 кГц (вимога Whisper). При зменшенні частоти — віконний
-// sinc-фільтр (зріз ≈ 0.46·вихідної частоти): без "накладання" спектру.
-// Раніше було усереднення 3 семплів — воно майже не гасить шум вище 8 кГц
-// (10 кГц лише −6 дБ), і той шум "складався" в мовну смугу.
-const _spKernCache = {};
-function _spKernel(half, fc){
-  const key = half + '|' + fc.toFixed(5);
-  if(_spKernCache[key]) return _spKernCache[key];
-  const OS = 64, n = 2 * half * OS + 1, tab = new Float32Array(n);
-  for(let j = 0; j < n; j++){
-    const t = (j - half * OS) / OS;
-    const w = 0.5 + 0.5 * Math.cos(Math.PI * t / half);
-    tab[j] = (t === 0 ? 2 * fc : Math.sin(2 * Math.PI * fc * t) / (Math.PI * t)) * w;
-  }
-  return (_spKernCache[key] = { tab, OS });
-}
-function spResample(x, from, to){
-  if(from === to) return x;
-  const ratio = from / to;
-  const n = Math.floor(x.length / ratio);
-  const y = new Float32Array(n);
-  if(ratio > 1){
-    const fc = 0.46 / ratio, half = Math.ceil(10 * ratio);
-    const { tab, OS } = _spKernel(half, fc);
-    const last = x.length - 1;
-    for(let i = 0; i < n; i++){
-      const c = i * ratio;
-      const k0 = Math.max(0, Math.ceil(c - half)), k1 = Math.min(last, Math.floor(c + half));
-      let sum = 0, wsum = 0;
-      for(let k = k0; k <= k1; k++){
-        const h = tab[Math.round((k - c) * OS) + half * OS];
-        sum += x[k] * h; wsum += h;
-      }
-      y[i] = wsum !== 0 ? sum / wsum : 0;
-    }
-  } else {
-    for(let i = 0; i < n; i++){
-      const p = i * ratio, a = Math.floor(p), f = p - a;
-      const v0 = x[a], v1 = x[Math.min(a + 1, x.length - 1)];
-      y[i] = v0 + (v1 - v0) * f;
-    }
-  }
-  return y;
-}
-// 16 кГц + прибрати зсув постійної складової + обрізати довгу тишу навколо
-// слова (шум перед словом провокує вигадки Whisper) + нормалізація гучності.
-function spPrepPcm(pcm, rate, firstAt, lastAt){
-  let x = spResample(pcm, rate, 16000);
-  let mean = 0; for(let i = 0; i < x.length; i++) mean += x[i];
-  mean /= Math.max(1, x.length);
-  for(let i = 0; i < x.length; i++) x[i] -= mean;
-  if(firstAt >= 0 && lastAt > firstAt){
-    let a = Math.max(0, Math.floor((firstAt - 400) / 1000 * 16000));
-    let b = Math.min(x.length, Math.ceil((lastAt + 500) / 1000 * 16000));
-    const minLen = 16000;                      // не коротше 1 с
-    if(b - a < minLen){ const d = minLen - (b - a); a = Math.max(0, a - Math.floor(d / 2)); b = Math.min(x.length, a + minLen); }
-    x = x.slice(a, b);
-  }
-  let peak = 0;
-  for(let i = 0; i < x.length; i++){ const a = x[i] < 0 ? -x[i] : x[i]; if(a > peak) peak = a; }
-  if(peak > 0.0005){
-    const g = Math.min(0.9 / peak, 30);
-    if(g > 1.05) for(let i = 0; i < x.length; i++) x[i] *= g;
-  }
-  return x;
-}
-
-// ── Whisper на пристрої (transformers.js, Web Worker) ─────────────
-const SP_TF_URL = 'https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.8.1';
-const SP_MODEL_MB = { 'Xenova/whisper-tiny': 41, 'Xenova/whisper-base': 78 };
-const SP_WHISPER_LANG = { de: 'german', en: 'english', uk: 'ukrainian', ru: 'russian' };
-const SP_WORKER_SRC =
-  "import { pipeline, env } from '" + SP_TF_URL + "';\n" +
-  "env.allowLocalModels = false;\n" +
-  "let asr = null;\n" +
-  "self.onmessage = async (e) => {\n" +
-  "  const m = e.data;\n" +
-  "  try {\n" +
-  "    if (m.t === 'init') {\n" +
-  "      asr = await pipeline('automatic-speech-recognition', m.model, { dtype: 'q8', device: 'wasm',\n" +
-  "        progress_callback: (p) => self.postMessage({ t: 'prog', p }) });\n" +
-  "      self.postMessage({ t: 'ready' });\n" +
-  "    } else if (m.t === 'run') {\n" +
-  "      const t0 = Date.now();\n" +
-  "      const out = await asr(m.audio, { language: m.lang, task: 'transcribe', max_new_tokens: 48 });\n" +
-  "      self.postMessage({ t: 'res', id: m.id, text: (out && out.text) || '', ms: Date.now() - t0 });\n" +
-  "    }\n" +
-  "  } catch (err) { self.postMessage({ t: 'err', id: m.id, msg: String((err && err.message) || err) }); }\n" +
-  "};\n" +
-  "self.postMessage({ t: 'boot' });\n";
-
-let _spW = null;   // { worker, mode:'worker'|'main', readyP, pending, seq, onProg, booted, asr }
-
-function spWorkerTerminate(){
-  const w = _spW; _spW = null;
-  if(!w) return;
-  try{ w.worker && w.worker.terminate(); }catch(e){}
-  try{ w.pending.forEach(p => p.reject(new Error('terminated'))); }catch(e){}
-  spL('engine terminated');
-}
-
-function _spProgressCalc(w, model, p){
-  if(!p) return null;
-  if(p.status === 'progress_total' && typeof p.progress === 'number') return Math.min(99, Math.floor(p.progress));
-  if(p.status === 'progress' && p.file && p.total){
-    w.files[p.file] = { loaded: p.loaded || 0, total: p.total };
-    let l = 0, t = 0;
-    for(const k in w.files){ l += w.files[k].loaded; t += w.files[k].total; }
-    const denom = Math.max(t, (SP_MODEL_MB[model] || 0) * 1048576);
-    return Math.min(99, Math.floor(l / denom * 100));
-  }
-  return null;
-}
-
-async function _spMainInit(w, model, emit){
-  spL('main-thread init (dynamic import)');
-  const tf = await import(SP_TF_URL);
-  tf.env.allowLocalModels = false;
-  w.asr = await tf.pipeline('automatic-speech-recognition', model, { dtype: 'q8', device: 'wasm', progress_callback: emit });
-}
-
-function spEngineInit(onProg){
-  if(_spW && _spW.readyP){ if(onProg) _spW.onProg = onProg; return _spW.readyP; }
-  const model = spCfg().model;
-  const t0 = performance.now();
-  const w = { worker: null, mode: 'worker', pending: new Map(), seq: 0, onProg: onProg || null,
-              booted: false, files: {}, lastAct: Date.now(), lastLogged: -10, asr: null, readyP: null };
-  _spW = w;
-  try{ if(navigator.storage && navigator.storage.persist) navigator.storage.persist().then(ok => spL('storage.persist=' + ok)).catch(() => {}); }catch(e){}
-  spL(`engine init: model=${model}`);
-
-  const emit = (p) => {
-    w.lastAct = Date.now();
-    const pct = _spProgressCalc(w, model, p);
-    if(pct === null) return;
-    if(pct >= w.lastLogged + 10){ w.lastLogged = pct; spL(`model download ${pct}%`); }
-    try{ w.onProg && w.onProg(pct); }catch(e){}
-  };
-
-  w.readyP = new Promise((resolve, reject) => {
-    let settled = false;
-    const ok = () => { if(!settled){ settled = true; w.ready = true; resolve(); } };
-    const fail = (e) => { if(!settled){ settled = true; reject(e); } };
-    try{
-      const url = URL.createObjectURL(new Blob([SP_WORKER_SRC], { type: 'text/javascript' }));
-      const worker = new Worker(url, { type: 'module' });
-      w.worker = worker;
-      worker.onerror = (ev) => { spL('worker error: ' + (ev && ev.message || '?') + ' ' + (ev && ev.filename || '')); fail(new Error('worker-error')); };
-      worker.onmessage = (ev) => {
-        const m = ev.data || {}; w.lastAct = Date.now();
-        if(m.t === 'boot'){ w.booted = true; spL('worker booted'); worker.postMessage({ t: 'init', model }); }
-        else if(m.t === 'prog'){ emit(m.p); }
-        else if(m.t === 'ready'){ spL(`model ready (worker) in ${Math.round(performance.now() - t0)}ms`); ok(); }
-        else if(m.t === 'res'){ const p = w.pending.get(m.id); if(p){ w.pending.delete(m.id); p.resolve(m); } }
-        else if(m.t === 'err'){
-          spL('worker ERR: ' + m.msg);
-          if(m.id != null){ const p = w.pending.get(m.id); if(p){ w.pending.delete(m.id); p.reject(new Error(m.msg)); } }
-          else fail(new Error(m.msg));
-        }
-      };
-      const iv = setInterval(() => {
-        if(settled){ clearInterval(iv); return; }
-        if(Date.now() - w.lastAct > (w.booted ? 90000 : 15000)){ clearInterval(iv); fail(new Error('init-timeout')); }
-      }, 3000);
-    }catch(e){ fail(e); }
-  }).catch(async (e) => {
-    // Web Worker (module) не запрацював — пробуємо в основному потоці.
-    // Якщо воркер завантажився, але впала сама ініціалізація моделі
-    // (мережа) — повторювати в main марно.
-    if(w.booted) throw e;
-    spL('worker path failed: ' + (e && e.message) + ' → main-thread fallback');
-    try{ w.worker && w.worker.terminate(); }catch(_){}
-    w.worker = null; w.mode = 'main';
-    await _spMainInit(w, model, emit);
-    w.ready = true;
-    spL(`model ready (main) in ${Math.round(performance.now() - t0)}ms`);
-  }).catch((e) => {
-    spL('engine init FAILED: ' + (e && e.message));
-    if(_spW === w) _spW = null;
-    throw e;
-  });
-  return w.readyP;
-}
-
-function spEngineReady(){ return !!(_spW && _spW.ready); }
-
-function spEngineRun(pcm16, lang){
-  const w = _spW;
-  if(!w) return Promise.reject(new Error('engine-not-ready'));
-  const opts = { language: lang, task: 'transcribe', max_new_tokens: 48 };
-  let p;
-  if(w.mode === 'main'){
-    p = w.asr(pcm16, opts).then(o => ({ text: (o && o.text) || '' }));
-  } else {
-    const id = ++w.seq;
-    p = new Promise((resolve, reject) => {
-      w.pending.set(id, { resolve, reject });
-      w.worker.postMessage({ t: 'run', id, audio: pcm16, lang }, [pcm16.buffer]);
-    });
-  }
-  return Promise.race([ p, new Promise((_, rej) => setTimeout(() => rej(new Error('transcribe-timeout')), 45000)) ]);
-}
-
-// Whisper на коротких/тихих фрагментах іноді "вигадує" субтитри.
-const SP_HALLU = /(untertitel|amara\.org|vielen dank f[uü]r|copyright|subtitles? by|thanks? for watching|thank you for watching|дякуємо за перегляд|субтитр)/i;
-function spCleanTranscript(text, target){
-  const t = (text || '').replace(/\[[^\]]*\]|\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim();
-  if(!t) return '';
-  if(SP_HALLU.test(t) && spSimilarity(spNormalize(t), spNormalize(target)) < 0.5) return '';
-  return t;
-}
-
-// ── UI-допоміжні ──────────────────────────────────────────────────
-function spSetStatus(text){
-  let el = document.getElementById('sp-engine-status');
-  if(!el){
-    const lbl = document.getElementById('sp-mic-label');
-    if(!lbl) return;
-    el = document.createElement('div');
-    el.id = 'sp-engine-status'; el.className = 'sp-label';
-    el.style.cssText = 'text-align:center;font-size:12px;opacity:.7;min-height:16px';
-    lbl.insertAdjacentElement('afterend', el);
-  }
-  el.textContent = text || '';
-}
-function spWarmup(){
-  spSetStatus(spT('Готуємо розпізнавання…', 'Preparing recognition…', 'Erkennung wird vorbereitet…', 'Готовим распознавание…'));
-  spEngineInit(pct => {
-    if(_spActive) spSetStatus(spT(`Завантаження моделі ${pct}% (лише вперше)`, `Downloading model ${pct}% (first time only)`,
-      `Modell wird geladen ${pct}% (nur beim ersten Mal)`, `Загрузка модели ${pct}% (только в первый раз)`));
-  }).then(() => { if(_spActive){ spSetStatus(''); const l = document.getElementById('sp-mic-label'); if(l && /завантажується|loading|lädt|загружается/.test(l.textContent)) spReset(); } })
-    .catch(() => { if(_spActive) spSetStatus(spT('⚠️ Модель розпізнавання не завантажилась (потрібен інтернет при першому запуску)',
-      '⚠️ Recognition model failed to load (internet needed on first run)',
-      '⚠️ Erkennungsmodell konnte nicht geladen werden (beim ersten Start Internet nötig)',
-      '⚠️ Модель распознавания не загрузилась (нужен интернет при первом запуске)')); });
-}
-// Debug: попереднє завантаження моделі з Налаштувань.
-function spPreloadModel(){
-  const st = document.getElementById('sp-preload-status');
-  if(st) st.textContent = 'Завантаження…';
-  spEngineInit(pct => { if(st) st.textContent = 'Завантаження… ' + pct + '%'; })
-    .then(() => { if(st) st.textContent = '✅ Модель готова'; notify('✅ Модель готова'); if(!_spActive) spWorkerTerminate(); })
-    .catch(e => { if(st) st.textContent = '❌ ' + ((e && e.message) || 'помилка'); });
-}
 // Debug: кнопки суб'єктивної оцінки звуку — щоб лог містив не лише
 // стан сесії, а й те, що ЧУТИ користувач у цей момент.
 function spEnsureDiagRow(){
@@ -14765,12 +14370,10 @@ function startSpeech(){
   spStopRecord();
   _spActive = true;
   spState = { SR: SR || null, cards, idx: 0, recognition: null, recording: false,
-              correctCount: 0, totalCount: 0, cycle: 0, busy: false, cap: null };
+              correctCount: 0, totalCount: 0, cycle: 0 };
   spAttachAudioDiag();
-  const eng = spEngine();
-  spL(`startSpeech: engine=${eng} cards=${cards.length} AS=${spAS()} sfx=${_spSfxInfo()}`);
+  spL(`startSpeech: cards=${cards.length} AS=${spAS()} sfx=${_spSfxInfo()}`);
   spHb('exercise');
-  if(eng === 'capture') spWarmup(); else spSetStatus('');
   spShowCard();
 }
 
@@ -14781,9 +14384,7 @@ function spExit(){
   spStopRecord();
   spFlushCancel();
   spShutdownMic('exit');
-  spWorkerTerminate();
   _spActive = false;
-  spSetStatus('');
   spHb('exited');
   spL('exit speech');
 }
@@ -14848,7 +14449,7 @@ function spPlayPhrase(card, tag){
 
 function spShowCard(){
   const card = spState.cards[spState.idx];
-  if(!card){ spShowFinish(); return; }
+  if(!card){ spFinishExercise(); return; }
 
   // Прогрес
   const counter = document.getElementById('sp-counter');
@@ -14887,126 +14488,12 @@ function spReset(){
 }
 
 function spToggleRecord(){
-  if(spState.recording){
-    if(spState.cap){ spState.cap.stop('manual'); return; }   // capture: зупинити ТА розпізнати
-    spStopRecord(); return;
-  }
+  if(spState.recording){ spStopRecord(); return; }
   spStartRecord();
 }
 
+// ── Розпізнавання (штатний SpeechRecognition) ─────────────────────
 function spStartRecord(){
-  if(spState.recording || spState.busy) return;
-  if(spEngine() === 'capture') return spStartCapture();
-  return spStartRecordWebSpeech();
-}
-
-// ── Рушій 'capture': UI-потік ─────────────────────────────────────
-function spStartCapture(){
-  const card = spState.cards[spState.idx];
-  if(!card) return;
-  // Не пишемо, поки модель завантажується/ініціалізується: одночасне
-  // завантаження + розпізнавання — пік пам'яті, на iOS це може вбити сторінку.
-  if(!spEngineReady()){
-    spWarmup();
-    const l0 = document.getElementById('sp-mic-label');
-    if(l0) l0.textContent = spT('Модель ще завантажується — зачекай…', 'Model is still loading — wait…', 'Modell lädt noch – bitte warten…', 'Модель ещё загружается — подожди…');
-    return;
-  }
-  try{ stopTTS(); }catch(e){}
-  const mb = document.getElementById('sp-mic-btn');
-  const lbl = document.getElementById('sp-mic-label');
-  const tok = ++_spTok;
-  const cycle = ++spState.cycle;
-  spHb('recording');
-  spL(`▶ cycle #${cycle} card=${card ? card.id : '?'} idx=${spState.idx} AS=${spAS()} sfx=${_spSfxInfo()} sinceRelease=${_spLastReleaseAt ? (Date.now() - _spLastReleaseAt) + 'ms' : '—'}`);
-
-  spState.recording = true;
-  if(mb){ mb.classList.add('recording'); mb.textContent = '⏹'; }
-  if(lbl) lbl.textContent = spT('Вмикаю мікрофон…', 'Starting microphone…', 'Mikrofon wird gestartet…', 'Включаю микрофон…');
-  try{ haptic.light(); }catch(e){}
-
-  const rec = spCapRecord({
-    // "Слухаю" — лише коли запис РЕАЛЬНО пішов (перший раз iOS питає дозвіл, це до 1.5 с)
-    onStarted: () => {
-      if(tok !== _spTok) return;
-      if(lbl) lbl.textContent = spT('Слухаю… говоріть зараз', 'Listening… speak now', 'Sprechen Sie jetzt…', 'Слушаю… говорите');
-      try{ haptic.light(); }catch(e){}
-    },
-    onLevel: (rms) => { if(tok === _spTok && mb) mb.style.transform = 'scale(' + (1 + Math.min(rms * 25, 0.25)).toFixed(3) + ')'; },
-    onEnding: () => {
-      if(tok !== _spTok) return;
-      spState.recording = false;
-      if(mb){ mb.classList.remove('recording'); mb.style.transform = ''; mb.textContent = '⏳'; }
-      if(lbl) lbl.textContent = spT('Обробляю…', 'Processing…', 'Verarbeite…', 'Обрабатываю…');
-    }
-  });
-  spState.cap = rec;
-  rec.result.then(r => spCaptureDone(r, tok, card))
-    .catch(e => { spL('capture ERROR ' + (e && e.message)); if(tok === _spTok){ spState.recording = false; spState.cap = null; spReset(); } });
-}
-
-async function spCaptureDone(r, tok, card){
-  if(tok !== _spTok){ spL('capture result dropped (cancelled)'); return; }
-  spState.cap = null; spState.recording = false;
-  const lbl = () => document.getElementById('sp-mic-label');
-  const say = (msg) => { spReset(); const l = lbl(); if(l) l.textContent = msg; };
-  spL(`captured: reason=${r.reason} dur=${r.durMs}ms samples=${r.pcm.length} rate=${r.rate} speech=${r.hadSpeech}${r.weak ? '(weak)' : ''} peak=${(r.peak || 0).toFixed(3)} err=${r.error || '-'}`);
-
-  if(r.error){
-    say(r.error === 'NotAllowedError' || r.error === 'SecurityError'
-      ? spT('Немає доступу до мікрофона', 'Microphone denied', 'Kein Mikrofonzugriff', 'Нет доступа к микрофону')
-      : '❌ ' + r.error);
-    return;
-  }
-  if(r.aborted){ spReset(); return; }
-  if(!r.hadSpeech || r.pcm.length < r.rate * 0.25){
-    say(spT('Нічого не почуто — спробуй ще', 'No speech detected', 'Nichts gehört – nochmal', 'Ничего не слышно — попробуй ещё'));
-    return;
-  }
-
-  spState.busy = true;
-  spHb('transcribing');
-  try{
-    const lang = SP_WHISPER_LANG[primaryLang()] || primaryLang();
-    const x = spPrepPcm(r.pcm, r.rate, r.weak ? -1 : r.firstSpeechAt, r.lastSpeechAt);
-    spL(`prep: ${(x.length / 16000).toFixed(2)}s @16k (speech ${Math.round(r.firstSpeechAt)}–${Math.round(r.lastSpeechAt)}ms)`);
-    await spEngineInit(pct => {
-      const l = lbl();
-      if(tok === _spTok && spState.busy && l) l.textContent = spT(`Завантаження моделі ${pct}%…`, `Downloading model ${pct}%…`, `Modell wird geladen ${pct}%…`, `Загрузка модели ${pct}%…`);
-    });
-    if(tok !== _spTok) return;
-    const t0 = performance.now();
-    const tick = () => {
-      const l2 = lbl(); if(!l2 || tok !== _spTok) return;
-      const sec = Math.round((performance.now() - t0) / 1000);
-      l2.textContent = spT(`Розпізнаю… ${sec} с`, `Recognising… ${sec}s`, `Erkenne… ${sec} s`, `Распознаю… ${sec} с`);
-    };
-    tick(); const ivT = setInterval(tick, 500);
-    let res;
-    try{ res = await spEngineRun(x, lang); } finally { clearInterval(ivT); }
-    if(tok !== _spTok) return;
-    const target = card.term?.[primaryLang()] || '';
-    const text = spCleanTranscript(res.text, target);
-    spL(`whisper: "${res.text}" → "${text}" in ${Math.round(performance.now() - t0)}ms (mode=${_spW ? _spW.mode : '?'})`);
-    spState.busy = false;
-    spHb('exercise');
-    if(!text){
-      say(spT('Не вдалося розпізнати — спробуй ще', 'Could not recognise — try again', 'Nicht erkannt – nochmal', 'Не удалось распознать — попробуй ещё'));
-      return;
-    }
-    spShowResult(text, card);
-  }catch(e){
-    spL('transcribe ERROR: ' + (e && e.message));
-    if(tok === _spTok){
-      spState.busy = false;
-      say(spT('❌ Розпізнавання недоступне (перевір інтернет)', '❌ Recognition unavailable (check internet)',
-              '❌ Erkennung nicht verfügbar (Internet prüfen)', '❌ Распознавание недоступно (проверь интернет)'));
-    }
-  }
-}
-
-// ── Рушій 'webspeech' (Android/десктоп; на iOS — лише за ручним вибором) ──
-function spStartRecordWebSpeech(){
   const SR = spState.SR || window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR){
     const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
@@ -15018,12 +14505,10 @@ function spStartRecordWebSpeech(){
   // Зупиняємо аудіо перед SR
   try{ const a = getSharedAudio(); if(a){ a.pause(); a.src=''; } playGen++; }catch(e){}
 
-  const cfg = spCfg();
   spFlushCancel();                       // холостий запис ще триває? — звільняємо мікрофон для SR
   spRepairBegin();
   spHb('recording');
   spL(`▶ webspeech cycle #${++spState.cycle} AS=${spAS()} flush=${spFlushEnabled()}`);
-  if(cfg.preRecord) spSetRecordAudioSession();
 
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const mb = document.getElementById('sp-mic-btn');
@@ -15142,14 +14627,9 @@ function spTryStart(SR, mb, lbl, ul, attempt){
   }
 }
 
-// Після браузерного SpeechRecognition: повернути аудіо-сесію. Режим
-// cfg.flush — експеримент: SR на iOS лишає сесію в режимі запису, а ми
-// бачили, що звичайний цикл getUserMedia→stop→'auto' її нормалізує.
-// Тож робимо ДУЖЕ короткий "холостий" запис (spCapRecord) і лише потім
-// повертаємо тип сесії. Розпізнає, як і раніше, рідний рушій iOS.
-// Ворота "сесія відремонтована": створюються при СТАРТІ SR (ще до події end),
-// тож озвучення наступної фрази завжди чекає ремонту, навіть якщо користувач
-// натиснув "Далі" раніше, ніж браузер надіслав end.
+// ── Після розпізнавання: "промивання" звуку ───────────────────────
+// Ворота "сесія відремонтована" створюються при СТАРТІ SR (ще до події end): озвучення
+// наступної фрази завжди чекає ремонту, навіть якщо «Далі» натиснуто раніше за подію end.
 let _spRepairResolve = null;
 function spRepairBegin(){ _spRestoreP = new Promise(res => { _spRepairResolve = res; }); }
 function spSrEnded(){
@@ -15164,22 +14644,19 @@ function spFlushCancel(){
   if(_spFlushRec){ try{ _spFlushRec.abort(); }catch(e){} }
 }
 function spAfterSR(){
-  const cfg = spCfg();
   _spLastReleaseAt = Date.now();
   if(!spFlushEnabled()){
-    return new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, cfg.postDelay | 0));
+    return new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, SP_POST_DELAY));
   }
   _spFlushCancel = false;
   return (async () => {
     await new Promise(r => setTimeout(r, 800));               // дати SR остаточно звільнити аудіоблок
     if(_spFlushCancel){ spL('flush: cancelled (new recording/exit)'); return; }
     spL(`flush: start AS=${spAS()}`);
-    // Раніше запис зупинявся через ~170 мс після старту — аудіоблок iOS ще
-    // не встигав завестись, і зупинка не спрацьовувала (мікрофон лишався
-    // "гарячим" до кінця вправи: SR audiostart через 2 мс замість ~1 с).
-    // Тепер чекаємо, поки пішли РЕАЛЬНІ аудіо-дані, ще тримаємо 350 мс — і лише тоді зупиняємо.
+    // Чекаємо, поки пішли РЕАЛЬНІ аудіо-дані (аудіоблок iOS має встигнути завестись), тримаємо
+    // ще 350 мс і лише тоді зупиняємо — інакше зупинка не спрацьовує.
     let firstOk; const gotFirst = new Promise(res => { firstOk = res; });
-    const rec = spCapRecord({ onFirstChunk: () => firstOk(true) });
+    const rec = spMicPulse({ onFirstChunk: () => firstOk(true) });
     _spFlushRec = rec;
     const first = await Promise.race([ gotFirst, new Promise(r => setTimeout(() => r(false), 1800)) ]);
     if(!first) spL('flush: WARNING no audio chunk within 1.8s');
@@ -15188,24 +14665,22 @@ function spAfterSR(){
     await rec.result;
     _spFlushRec = null;
     if(_spFlushCancel){ spL('flush: aborted'); return; }
-    await new Promise(r => setTimeout(r, cfg.postDelay | 0));
+    await new Promise(r => setTimeout(r, SP_POST_DELAY));
     spRestoreAudioSession();
     spL(`flush: done AS=${spAS()}`);
   })().catch(e => { _spFlushRec = null; spL('flush ERROR ' + (e && e.message)); });
 }
 
-// Скасувати запис/розпізнавання "тихо" (без результату): обидва рушії.
+// Скасувати розпізнавання "тихо" (без результату).
 function spStopRecord(){
-  _spTok++;                                   // відкидаємо результат, що ще в дорозі
-  if(spState.cap){ try{ spState.cap.abort(); }catch(e){} spState.cap = null; }
-  spState.busy = false;
+  _spTok++;                                   // відкидаємо відкладені дії (озвучення)
   const wasActive = !!spState.recognition;
   if(wasActive){ try{ spState.recognition.abort(); }catch(e){} spState.recognition = null; }
   spState.recording = false;
   if(wasActive) spSrEnded();
 }
 function spCleanup(){
-  const was = spState.recording || spState.busy;
+  const was = spState.recording;
   spStopRecord();
   if(was && _spActive) spReset();
 }
@@ -15282,7 +14757,10 @@ function spShowResult(heardText, card){
   if(ab) ab.style.display = 'flex';
   if(nb){
     nb.style.display = 'block';
-    nb.textContent = ul==='uk'?'Далі →':ul==='en'?'Next →':'Weiter →';
+    const isLast = spState.idx >= spState.cards.length - 1;
+    nb.textContent = isLast
+      ? (ul==='uk'?'Завершити':ul==='en'?'Finish':ul==='ru'?'Завершить':'Fertig')
+      : (ul==='uk'?'Далі →':ul==='en'?'Next →':'Weiter →');
   }
 
   recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
@@ -15306,11 +14784,16 @@ function spRetry(){
   playPregenAudio(url, null, ++playGen);
 }
 
-function spShowFinish(){
-  spCleanup();
-  // остання фраза: дочекатись завершення "промивання" і вимкнути мікрофон (не чекаємо довше 4 с)
+// «Завершити» на останній фразі: показуємо підсумок і ВИМИКАЄМО мікрофон, щойно завершилось
+// "промивання" останньої фрази (чекаємо саму подію; 4 с — лише запобіжник від зависання).
+function spFinishExercise(){
+  spShowFinish();
   Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(r, 4000)) ])
     .then(() => { if(_spActive) spShutdownMic('finish'); });
+}
+
+function spShowFinish(){
+  spCleanup();
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const pct = spState.totalCount ? Math.round(spState.correctCount / spState.totalCount * 100) : 0;
   // Показуємо overlay поверх панелі — не перезаписуємо innerHTML (інакше губляться id елементів)
@@ -16086,6 +15569,8 @@ function lfSetLessonMode(active){
 
 function lfGoStep(stepIdx){
   if(!LF) return;
+  // «Далі» / перехід між кроками уроку: якщо це був крок «Вимова» — вимкнути мікрофон (no-op в інших випадках)
+  if(typeof spExit === 'function') spExit();
   LF.step = stepIdx;
   LF.unitProgress = null; // скидаємо — кожен крок сам встановлює, якщо unit-based (напр. vocab)
   lfRenderBar();
