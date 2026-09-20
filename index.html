@@ -4280,8 +4280,8 @@ body{
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-ec" onchange="spCfgSet('ec',this.checked)"> ехопридушення (EC/NS/AGC) під час запису</label>
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-diag" onchange="spCfgSet('diag',this.checked)"> кнопки оцінки звуку у вправі (🔊 норм / 📞 дзвінок)</label>
       <select id="sp-cfg-flush" onchange="spCfgSet('flush',this.value)" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <option value="off">«Промивання» звуку після розпізнавання: вимкнено (рекомендовано)</option>
-        <option value="on">«Промивання» звуку: ввімкнено + приспати звукові ефекти (ЕКСПЕРИМЕНТ)</option>
+        <option value="off">«Промивання» звуку після розпізнавання: вимкнено (звук як дзвінок)</option>
+        <option value="on">«Промивання» звуку: ввімкнено + приспати звукові ефекти (рекомендовано)</option>
       </select>
       <div class="srow-label" style="margin-top:6px"><label>🎙 Тест мікрофона (точка на екрані)</label><small>Натисни тест → мікрофон ВКЛ на 3 с → зупинка → дивись на точку ~5 с → відміть «горить»/«згасла».</small></div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
@@ -4429,7 +4429,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '684-c90d9ea';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14113,19 +14113,21 @@ let _spLastReleaseAt = 0;     // Date.now() останнього закритт�
 const SP_CFG_KEY = 'mova_sp_cfg';
 const SP_CFG_DEF = {
   engine: 'auto',               // 'auto' | 'webspeech' | 'capture'
-  preRecord: false,             // явно ставити 'play-and-record' перед записом (потрібно лише якщо postType='playback')
-  postType: 'auto',             // після запису: 'auto' | 'playback' | 'none'. 'auto' не блокує наступний getUserMedia
+  preRecord: true,              // явно ставити 'play-and-record' перед розпізнаванням (як у робочій версії)
+  postType: 'playback',         // після розпізнавання: 'playback' (як у робочій версії) | 'auto' | 'none'.
+                                // УВАГА: з 'auto' наступний SR на iOS стартує "мертвим" (audiostart є, аудіо немає)
   postDelay: 300,               // мс між закриттям мікрофона і поверненням типу
   ec: false,                    // EC/NS/AGC у getUserMedia (вимкнено — сирий сигнал)
   diag: false,                  // кнопки "звук норм / як дзвінок" у вправі
-  flush: 'off',                 // 'webspeech': "промити" сесію коротким записом після SR. УВАГА: на iOS лишало мікрофон "гарячим" — за замовчуванням ВИМКНЕНО
+  flush: 'on',                  // 'webspeech': "промити" сесію коротким записом після SR (лікує звук "як дзвінок").
+                                // Безпечне лише разом із приспаним AudioContext ефектів (spQuietSfx)
   model: 'Xenova/whisper-base'  // ~77 МБ (q8); 'Xenova/whisper-tiny' ~41 МБ
 };
 function spCfg(){
   let c = {};
   try{ c = JSON.parse(localStorage.getItem(SP_CFG_KEY) || '{}') || {}; }catch(e){}
-  if(c.v !== 2){                       // міграція: небезпечне "промивання" вимикаємо примусово
-    c.v = 2; c.flush = 'off';
+  if(c.v !== 3){                       // міграція v3: комбінація, що відповідає робочому старому файлу + безпечне "промивання"
+    c.v = 3; c.postType = 'playback'; c.preRecord = true; c.flush = 'on';
     try{ localStorage.setItem(SP_CFG_KEY, JSON.stringify(c)); }catch(e){}
   }
   return Object.assign({}, SP_CFG_DEF, c);
@@ -15095,6 +15097,8 @@ async function spCaptureDone(r, tok, card){
   }
 }
 
+let SP_DEAD_MS = 7000;   // SR "мертвий": start() пройшов, а ні звуку, ні результатів
+
 // ── Рушій 'webspeech' (Android/десктоп; на iOS — лише за ручним вибором) ──
 function spStartRecordWebSpeech(){
   const SR = spState.SR || window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -15147,8 +15151,20 @@ function spTryStart(SR, mb, lbl, ul, attempt){
   const _startTime = Date.now();
   let _done = false;
   let _lastInterim = '';
+  let _gotSound = false, _dead = false;
+  // Якщо за SP_DEAD_MS не було жодного звуку/результату — розпізнавання "мертве"
+  // (на iOS start() спрацьовує, audiostart є, але аудіо не тече). Перезапускаємо.
+  const _deadT = setTimeout(() => {
+    if(_done || _gotSound || spState.recognition !== rec) return;
+    spL(`SR DEAD: no sound/results ${Date.now() - _startTime}ms after start → abort & restart (attempt ${attempt})`);
+    _dead = true;
+    try{ rec.abort(); }catch(e){}
+  }, SP_DEAD_MS);
+  rec.onsoundstart = () => { _gotSound = true; spL(`SR soundstart +${Date.now() - _startTime}ms`); };
+  rec.onspeechstart = () => { _gotSound = true; };
 
   rec.onresult = (e) => {
+    _gotSound = true;
     let interim = '', final = '';
     for(let i = e.resultIndex; i < e.results.length; i++){
       const txt = e.results[i][0]?.transcript || '';
@@ -15193,8 +15209,22 @@ function spTryStart(SR, mb, lbl, ul, attempt){
 
   rec.onend = () => {
     const elapsed = Date.now() - _startTime;
-    spL(`onend done=${_done} elapsed=${elapsed}ms`);
+    clearTimeout(_deadT);
+    spL(`onend done=${_done} elapsed=${elapsed}ms${_dead ? ' (dead)' : ''}`);
     spState.recording = false;
+    if(_dead && !_done){
+      if(attempt < 2){
+        spState.recording = true;
+        spState.recognition = null;
+        spSetType('play-and-record', 'dead-retry');
+        setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 700);
+        return;
+      }
+      spSrEnded();
+      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+      if(lbl) lbl.textContent = spT('Мікрофон не запустився — спробуй ще', 'Microphone did not start — try again', 'Mikrofon startete nicht – nochmal', 'Микрофон не запустился — попробуй ещё');
+      return;
+    }
     if(!_done){
       if(elapsed < 800 && attempt < 3){
         spL(`quick-end, retry in 1000ms`);
@@ -15250,7 +15280,7 @@ function spSrEnded(){
   if(_spRepairResolve){ _spRepairResolve(P); _spRepairResolve = null; }
   return P;
 }
-let _spFlushRec = null, _spFlushCancel = false;
+let _spFlushRec = null, _spFlushCancel = false, _spFlushP = null;
 function spFlushCancel(){
   _spFlushCancel = true;
   if(_spFlushRec){ try{ _spFlushRec.abort(); }catch(e){} }
@@ -15261,8 +15291,9 @@ function spAfterSR(){
   if(!spFlushEnabled()){
     return new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, cfg.postDelay | 0));
   }
+  if(_spFlushP) return _spFlushCancel ? _spFlushP.then(() => spAfterSR()) : _spFlushP;   // не більше одного "промивання" одночасно
   _spFlushCancel = false;
-  return (async () => {
+  _spFlushP = (async () => {
     await new Promise(r => setTimeout(r, 800));               // дати SR остаточно звільнити аудіоблок
     if(_spFlushCancel){ spL('flush: cancelled (new recording/exit)'); return; }
     spL(`flush: start AS=${spAS()}`);
@@ -15285,7 +15316,8 @@ function spAfterSR(){
     spQuietSfx('after-flush+post');
     spRestoreAudioSession();
     spL(`flush: done AS=${spAS()}`);
-  })().catch(e => { _spFlushRec = null; spL('flush ERROR ' + (e && e.message)); });
+  })().catch(e => { _spFlushRec = null; spL('flush ERROR ' + (e && e.message)); }).finally(() => { _spFlushP = null; });
+  return _spFlushP;
 }
 
 // Скасувати запис/розпізнавання "тихо" (без результату): обидва рушії.
