@@ -3893,8 +3893,7 @@ body{
         </div>
 
         <!-- Картка з терміном -->
-        <div id="sp-card" style="background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">
-          <div id="sp-term-label" class="sp-label" style="color:rgba(255,255,255,.45)">Begriff</div>
+        <div id="sp-card" onclick="spReplay()" style="cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">
           <div id="sp-term" class="sp-term-main" style="color:#fff"></div>
           <div id="sp-transl" class="sp-secondary" style="color:rgba(255,255,255,.5);margin-top:2px"></div>
         </div>
@@ -3905,7 +3904,7 @@ body{
             style="width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent">
             🎤
           </button>
-          <div id="sp-mic-label" class="sp-label" style="text-align:center">Натисни щоб говорити</div>
+          <div id="sp-mic-label" class="sp-label" data-i18n="sp_tap_to_speak" style="text-align:center">Натисни щоб говорити</div>
         </div>
 
         <!-- Результат розпізнавання -->
@@ -4259,14 +4258,6 @@ body{
       <div class="srow-label"><label>🎤 Speech Log</label><small>Лог розпізнавання мови</small></div>
       <button class="btn btn-s" onclick="showSpeechLog()">📋 Log</button>
     </div>
-    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>🎤 Speech: діагностика</label><small>Кнопки оцінки звуку у вправі та відмітка точки мікрофона — для 🎤 Speech Log.</small></div>
-      <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-diag" onchange="spCfgSet('diag',this.checked)"> кнопки оцінки звуку у вправі (🔊 норм / 📞 дзвінок)</label>
-      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
-        <button class="btn btn-s" onclick="spMicDot('ON')">🟠 точка мікрофона горить</button>
-        <button class="btn btn-s" onclick="spMicDot('OFF')">⚪ точка згасла</button>
-      </div>
-    </div>
     <div class="srow">
       <div class="srow-label"><label>🐞 Повідомити про помилку</label><small>Тест форми звіту (тип помилки + коментар) — поки що тимчасово тут, згодом буде доступна прямо з вправ</small></div>
       <button class="btn btn-s" onclick="showBugReportModal()">🐞 Звіт</button>
@@ -4395,7 +4386,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '691-dd23ec5';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5075,7 +5066,7 @@ const I18N = {
     btn_dlg_finish:'✓ Abschließen',
     btn_to_lessons:'🎓 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
-    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter →', sp_result_btn:'Ergebnis →', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'🔄 Nochmal', sp_finish:'✓ Beenden', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -5176,7 +5167,7 @@ const I18N = {
     btn_dlg_finish:'✓ Завершити',
     btn_to_lessons:'🎓 До списку уроків',
     btn_check:'✓ Перевірити',
-    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі →', sp_result_btn:'Результат →', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'🔄 Ще раз', sp_finish:'✓ Завершити', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -5276,7 +5267,7 @@ const I18N = {
     btn_dlg_finish:'✓ Finish',
     btn_to_lessons:'🎓 Lesson List',
     btn_check:'✓ Check',
-    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next →', sp_result_btn:'Result →', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'🔄 Again', sp_finish:'✓ Finish', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -5376,7 +5367,7 @@ const I18N = {
     btn_dlg_finish:'✓ Завершить',
     btn_to_lessons:'🎓 К списку уроков',
     btn_check:'✓ Проверить',
-    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', tab_def_short:'Вставь', tab_speech:'Говорение',
+    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее →', sp_result_btn:'Результат →', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'🔄 Ещё раз', sp_finish:'✓ Завершить', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -11038,7 +11029,6 @@ function toggleDebugSection(headerEl){
   content.style.display = isOpen ? 'none' : '';
   const chevron = headerEl?.querySelector('.ssec-chevron');
   if(chevron) chevron.style.transform = isOpen ? 'rotate(0deg)' : 'rotate(90deg)';
-  if(!isOpen && typeof spCfgSyncUI === 'function') spCfgSyncUI();
   // На випадок якщо стан авторизації змінився (напр. Firebase вже
   // відновив сесію з IndexedDB) ДО того, як цю секцію вперше розгорнули —
   // модуль з cloudSignIn/onAuthStateChanged міг встигнути спрацювати
@@ -14049,8 +14039,8 @@ function defShowResult(){
 //     очікуванням реальних аудіо-даних. Це повертає звук у норму. Мікрофон між фразами
 //     свідомо лишається "теплим": лише так наступне розпізнавання стартує надійно.
 //  2) Наступна фраза озвучується тільки після "промивання" (ворота _spRestoreP).
-//  3) Мікрофон ВИМИКАЄТЬСЯ подіями (spShutdownMic): кнопка «Завершити» на останній фразі,
-//     вихід з вправи, перехід на наступний крок уроку («Далі»).
+//  3) Мікрофон ВИМИКАЄТЬСЯ подіями (spShutdownMic): кнопка «Результат» на останній фразі,
+//     «Завершити» на підсумку, вихід з вправи, перехід на наступний крок уроку («Далі»).
 // Reload застосунку не потрібен.
 
 let spState = {
@@ -14062,37 +14052,13 @@ let _spTok = 0;               // інкремент скасовує відкл�
 let _spRestoreP = null;       // Promise: аудіо-сесію повернено в режим програвання
 let _spLastReleaseAt = 0;     // Date.now() останнього закриття мікрофона
 
-// ── Налаштування ──────────────────────────────────────────────────
-// Єдиний параметр — diag: кнопки оцінки звуку у вправі (Налаштування → Debug).
-const SP_CFG_KEY = 'mova_sp_cfg';
 const SP_POST_DELAY = 300;    // мс між закриттям мікрофона і поверненням типу аудіо-сесії
-function spCfg(){
-  let c = {};
-  try{ c = JSON.parse(localStorage.getItem(SP_CFG_KEY) || '{}') || {}; }catch(e){}
-  return { diag: !!c.diag };
-}
-function spCfgSet(k, v){
-  if(k !== 'diag') return;
-  try{ localStorage.setItem(SP_CFG_KEY, JSON.stringify({ diag: !!v })); }catch(e){}
-  spL(`cfg: diag=${!!v}`);
-  if(_spActive) spEnsureDiagRow();
-  spCfgSyncUI();
-}
-function spCfgSyncUI(){
-  const el = document.getElementById('sp-cfg-diag');
-  if(el) el.checked = !!spCfg().diag;
-}
 function _spIsIOS(){
   const ua = navigator.userAgent || '';
   return /iPhone|iPod|iPad/.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
 }
 // "Промивання" звуку потрібне лише на iOS (Android/десктоп цієї проблеми не мають).
 function spFlushEnabled(){ return _spIsIOS(); }
-function spT(uk, en, de, ru){
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  return ul === 'uk' ? uk : ul === 'en' ? en : ul === 'ru' ? (ru || uk) : de;
-}
-
 // ── Лог (🎤 Speech Log) ───────────────────────────────────────────
 // Зберігається в localStorage: переживає reload/закриття застосунку (раніше
 // лог у RAM зникав саме тоді, коли він був найпотрібніший).
@@ -14127,7 +14093,7 @@ function _spLogHeader(){
   _spLogPush(`env: standalone=${standalone} audioSession=${('audioSession' in n) ? spAS() : 'n/a'} gUM=${!!(n.mediaDevices && n.mediaDevices.getUserMedia)} ` +
     `worklet=${typeof AudioWorkletNode !== 'undefined'} SR=${!!(window.SpeechRecognition || window.webkitSpeechRecognition)} ` +
     `secure=${window.isSecureContext}`);
-  _spLogPush(`cfg: diag=${spCfg().diag} flush=${spFlushEnabled()}`);
+  _spLogPush(`flush=${spFlushEnabled()}`);
   try{
     if(n.audioSession && n.audioSession.addEventListener)
       n.audioSession.addEventListener('statechange', () => _spLogPush('AS event: statechange → ' + spAS()));
@@ -14322,39 +14288,6 @@ async function spMicPulseRelease(s){
   setTimeout(() => spL('AS +1.5s after release: ' + spAS()), 1500);
 }
 
-// Debug: кнопки суб'єктивної оцінки звуку — щоб лог містив не лише
-// стан сесії, а й те, що ЧУТИ користувач у цей момент.
-function spEnsureDiagRow(){
-  const card = document.getElementById('sp-card');
-  if(!card) return;
-  let row = document.getElementById('sp-diag-row');
-  if(!spCfg().diag){ if(row) row.style.display = 'none'; return; }
-  if(!row){
-    row = document.createElement('div');
-    row.id = 'sp-diag-row';
-    row.style.cssText = 'display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap';
-    row.innerHTML = '<span class="sp-label">🔊 Звук цієї фрази:</span>' +
-      '<button class="btn btn-s" onclick="spVerdict(\'NORMAL\')">норм</button>' +
-      '<button class="btn btn-s" onclick="spVerdict(\'CALL\')">📞 як дзвінок</button>' +
-      '<button class="btn btn-s" onclick="spVerdict(\'QUIET\')">🔈 тихо</button>' +
-      '<button class="btn btn-s" onclick="spMicDot(\'ON\')">🟠 точка горить</button>' +
-      '<button class="btn btn-s" onclick="spMicDot(\'OFF\')">⚪ точка згасла</button>';
-    card.insertAdjacentElement('afterend', row);
-  }
-  row.style.display = 'flex';
-}
-// Ручна відмітка: чи горить індикатор мікрофона ЗАРАЗ (можна натискати й після виходу з вправи).
-function spMicDot(v){
-  spL(`MICDOT ${v}  active=${_spActive} phase=${_spPhase} AS=${spAS()} sinceRelease=${_spLastReleaseAt ? Math.round((Date.now() - _spLastReleaseAt) / 1000) + 's' : '—'}`);
-  notify('📝 MICDOT ' + v);
-}
-function spVerdict(v){
-  const since = _spLastReleaseAt ? Math.round((Date.now() - _spLastReleaseAt) / 1000) + 's' : '—';
-  spL(`VERDICT ${v}  card#${spState.idx + 1} micCycles=${spState.cycle} sinceRelease=${since} AS=${spAS()} sfx=${_spSfxInfo()}`);
-  notify('📝 ' + v);
-  try{ haptic.light(); }catch(e){}
-}
-
 // ── Старт / потік вправи ──────────────────────────────────────────
 function startSpeech(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -14447,6 +14380,16 @@ function spPlayPhrase(card, tag){
   });
 }
 
+// Тап по картці з текстом — повторити озвучення фрази мовою вивчення (primaryLang).
+// Під час розпізнавання не озвучуємо (звук заважав би мікрофону); після нього фраза чекає "промивання".
+function spReplay(){
+  if(!_spActive || spState.recording) return;
+  const card = spState.cards[spState.idx];
+  if(!card) return;
+  try{ haptic.light(); }catch(e){}
+  spPlayPhrase(card, 'tap');
+}
+
 function spShowCard(){
   const card = spState.cards[spState.idx];
   if(!card){ spFinishExercise(); return; }
@@ -14460,12 +14403,9 @@ function spShowCard(){
   spRenderTermWords(card);
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const transl = document.getElementById('sp-transl');
-  const label  = document.getElementById('sp-term-label');
   if(transl) transl.textContent = card.term?.[ul] || card.term?.uk || '';
-  if(label)  label.textContent  = ul==='uk'?'Термін':ul==='en'?'Term':ul==='ru'?'Термин':'Begriff';
 
   spReset();
-  spEnsureDiagRow();
   spPlayPhrase(card, 'show');
 }
 
@@ -14484,7 +14424,7 @@ function spReset(){
   }
   document.querySelectorAll('#sp-term .sp-tw').forEach(s => { s.style.color = '#fff'; });
   const lbl = document.getElementById('sp-mic-label');
-  if(lbl) lbl.textContent = spT('Натисни щоб говорити', 'Tap to speak', 'Tippe zum Sprechen', 'Нажми и говори');
+  if(lbl) lbl.textContent = t('sp_tap_to_speak');
 }
 
 function spToggleRecord(){
@@ -14496,8 +14436,7 @@ function spToggleRecord(){
 function spStartRecord(){
   const SR = spState.SR || window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR){
-    const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-    alert(ul==='uk'?'Розпізнавання не підтримується':'Speech recognition not supported');
+    alert(t('sp_not_supported'));
     return;
   }
   if(spState.recording) return;
@@ -14510,20 +14449,19 @@ function spStartRecord(){
   spHb('recording');
   spL(`▶ webspeech cycle #${++spState.cycle} AS=${spAS()} flush=${spFlushEnabled()}`);
 
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const mb = document.getElementById('sp-mic-btn');
   const lbl = document.getElementById('sp-mic-label');
 
   spState.recording = true;
   if(mb){ mb.classList.add('recording'); mb.textContent = '⏹'; }
-  if(lbl) lbl.textContent = ul==='uk'?'Слухаю… говоріть зараз':ul==='en'?'Listening… speak now':'Sprechen Sie jetzt…';
+  if(lbl) lbl.textContent = t('sp_listening');
   try{ haptic.light(); }catch(e){}
 
   // Невелика затримка щоб браузер закрив аудіо-сесію
-  setTimeout(() => spTryStart(SR, mb, lbl, ul, 0), 150);
+  setTimeout(() => spTryStart(SR, mb, lbl, 0), 150);
 }
 
-function spTryStart(SR, mb, lbl, ul, attempt){
+function spTryStart(SR, mb, lbl, attempt){
   if(!spState.recording) return;
   spL(`start attempt ${attempt}`);
 
@@ -14578,11 +14516,9 @@ function spTryStart(SR, mb, lbl, ul, attempt){
     spState.recording = false;
     spState.recognition = null;
     if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-    const msg = e.error === 'no-speech'
-      ? (ul==='uk'?'Нічого не почуто — спробуй ще':'No speech detected')
-      : e.error === 'not-allowed'
-      ? (ul==='uk'?'Немає доступу до мікрофона':'Microphone denied')
-      : `❌ ${e.error}`;
+    const msg = e.error === 'no-speech' ? t('sp_no_speech')
+      : (e.error === 'not-allowed' || e.error === 'service-not-allowed') ? t('sp_mic_denied')
+      : '❌ ' + t('sp_error');
     if(lbl) lbl.textContent = msg;
   };
 
@@ -14594,11 +14530,11 @@ function spTryStart(SR, mb, lbl, ul, attempt){
       if(elapsed < 800 && attempt < 3){
         spL(`quick-end, retry in 1000ms`);
         spState.recording = true;
-        setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 1000);
+        setTimeout(() => spTryStart(SR, mb, lbl, attempt + 1), 1000);
         return; // зараз рестартуємо розпізнавання — сесію ще не звільняємо
       }
       if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
-      if(lbl) lbl.textContent = ul==='uk'?'Натисни щоб говорити':'Tap to speak';
+      if(lbl) lbl.textContent = t('sp_tap_to_speak');
     }
     // 'end' — єдина подія Web Speech API, що гарантовано означає закриття
     // мікрофона; сесію повертаємо з невеликою паузою (iOS деактивує
@@ -14618,7 +14554,7 @@ function spTryStart(SR, mb, lbl, ul, attempt){
     spL(`rec.start() error: ${ex.name}`);
     spState.recognition = null;
     if(ex.name === 'InvalidStateError' && attempt < 3){
-      setTimeout(() => spTryStart(SR, mb, lbl, ul, attempt + 1), 300 * (attempt + 1));
+      setTimeout(() => spTryStart(SR, mb, lbl, attempt + 1), 300 * (attempt + 1));
     } else {
       spState.recording = false;
       if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
@@ -14753,14 +14689,10 @@ function spShowResult(heardText, card){
 
   const ab = document.getElementById('sp-actions');
   const nb = document.getElementById('sp-next-btn');
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   if(ab) ab.style.display = 'flex';
   if(nb){
     nb.style.display = 'block';
-    const isLast = spState.idx >= spState.cards.length - 1;
-    nb.textContent = isLast
-      ? (ul==='uk'?'Завершити':ul==='en'?'Finish':ul==='ru'?'Завершить':'Fertig')
-      : (ul==='uk'?'Далі →':ul==='en'?'Next →':'Weiter →');
+    nb.textContent = t(spState.idx >= spState.cards.length - 1 ? 'sp_result_btn' : 'sp_next');
   }
 
   recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
@@ -14784,7 +14716,7 @@ function spRetry(){
   playPregenAudio(url, null, ++playGen);
 }
 
-// «Завершити» на останній фразі: показуємо підсумок і ВИМИКАЄМО мікрофон, щойно завершилось
+// Кнопка на останній фразі: показуємо підсумок і ВИМИКАЄМО мікрофон, щойно завершилось
 // "промивання" останньої фрази (чекаємо саму подію; 4 с — лише запобіжник від зависання).
 function spFinishExercise(){
   spShowFinish();
@@ -14794,7 +14726,6 @@ function spFinishExercise(){
 
 function spShowFinish(){
   spCleanup();
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const pct = spState.totalCount ? Math.round(spState.correctCount / spState.totalCount * 100) : 0;
   // Показуємо overlay поверх панелі — не перезаписуємо innerHTML (інакше губляться id елементів)
   document.getElementById('tiles-result-overlay')?.remove();
@@ -14804,13 +14735,13 @@ function spShowFinish(){
   overlay.innerHTML = `
     <div class="tiles-result-sheet" style="gap:16px">
       <div style="font-size:56px">${pct>=80?'🏆':pct>=55?'💪':'🔄'}</div>
-      <div class="sp-result-title">${ul==='uk'?'Практика завершена!':ul==='en'?'Practice done!':'Fertig!'}</div>
+      <div class="sp-result-title">${t('sp_done_title')}</div>
       <div style="background:var(--soft);border-radius:16px;padding:12px 20px;width:100%;box-sizing:border-box;text-align:center">
         <div class="sp-result-pct" style="color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
-        <div class="sp-result-count">${ul==='uk'?`${spState.correctCount} з ${spState.totalCount}`:ul==='en'?`${spState.correctCount} of ${spState.totalCount}`:`${spState.correctCount} von ${spState.totalCount}`}</div>
+        <div class="sp-result-count">${t('sp_score_of').replace('{a}', spState.correctCount).replace('{b}', spState.totalCount)}</div>
       </div>
-      <button class="tiles-result-btn ok" id="sp-again-btn">🔄 ${ul==='uk'?'Ще раз':ul==='en'?'Again':'Nochmal'}</button>
-      <button class="tiles-result-btn nok" onclick="switchVocabTab(0);document.getElementById('tiles-result-overlay')?.remove()">📖 ${ul==='uk'?'Картки':ul==='en'?'Cards':'Karten'}</button>
+      <button class="tiles-result-btn ok" id="sp-again-btn">${t('sp_again')}</button>
+      <button class="tiles-result-btn nok" id="sp-finish-btn" onclick="document.getElementById('tiles-result-overlay')?.remove();switchVocabTab(0)">${t('sp_finish')}</button>
     </div>`;
   document.body.appendChild(overlay);
   document.getElementById('sp-again-btn')?.addEventListener('click', () => {
