@@ -4280,8 +4280,9 @@ body{
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-ec" onchange="spCfgSet('ec',this.checked)"> ехопридушення (EC/NS/AGC) під час запису</label>
       <label style="font-size:13px;display:flex;gap:8px;align-items:center"><input type="checkbox" id="sp-cfg-diag" onchange="spCfgSet('diag',this.checked)"> кнопки оцінки звуку у вправі (🔊 норм / 📞 дзвінок)</label>
       <select id="sp-cfg-flush" onchange="spCfgSet('flush',this.value)" style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <option value="off">«Промивання» звуку після розпізнавання: вимкнено (звук як дзвінок)</option>
-        <option value="on">«Промивання» звуку: ввімкнено + приспати звукові ефекти (рекомендовано)</option>
+        <option value="exit">Звук: «лікувати» один раз після вправи (рекомендовано)</option>
+        <option value="each">Звук: «лікувати» після кожної фрази (ламає наступне розпізнавання)</option>
+        <option value="off">Звук: не лікувати</option>
       </select>
       <div class="srow-label" style="margin-top:6px"><label>🎙 Тест мікрофона (точка на екрані)</label><small>Натисни тест → мікрофон ВКЛ на 3 с → зупинка → дивись на точку ~5 с → відміть «горить»/«згасла».</small></div>
       <div style="display:flex;gap:6px;flex-wrap:wrap">
@@ -4429,7 +4430,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '685-ccf76d5';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14119,15 +14120,14 @@ const SP_CFG_DEF = {
   postDelay: 300,               // мс між закриттям мікрофона і поверненням типу
   ec: false,                    // EC/NS/AGC у getUserMedia (вимкнено — сирий сигнал)
   diag: false,                  // кнопки "звук норм / як дзвінок" у вправі
-  flush: 'on',                  // 'webspeech': "промити" сесію коротким записом після SR (лікує звук "як дзвінок").
-                                // Безпечне лише разом із приспаним AudioContext ефектів (spQuietSfx)
+  flush: 'exit',                // 'exit' = один раз ПІСЛЯ вправи (за замовч.) | 'each' = після кожної фрази (ламає наступний SR) | 'off'
   model: 'Xenova/whisper-base'  // ~77 МБ (q8); 'Xenova/whisper-tiny' ~41 МБ
 };
 function spCfg(){
   let c = {};
   try{ c = JSON.parse(localStorage.getItem(SP_CFG_KEY) || '{}') || {}; }catch(e){}
-  if(c.v !== 3){                       // міграція v3: комбінація, що відповідає робочому старому файлу + безпечне "промивання"
-    c.v = 3; c.postType = 'playback'; c.preRecord = true; c.flush = 'on';
+  if(c.v !== 4){                       // міграція v4: SR як у робочому старому файлі; звук лікуємо один раз при виході
+    c.v = 4; c.postType = 'playback'; c.preRecord = true; c.flush = 'exit';
     try{ localStorage.setItem(SP_CFG_KEY, JSON.stringify(c)); }catch(e){}
   }
   return Object.assign({}, SP_CFG_DEF, c);
@@ -14149,7 +14149,7 @@ function spCfgSyncUI(){
   set('sp-cfg-pre',    el => { el.checked = !!c.preRecord; });
   set('sp-cfg-ec',     el => { el.checked = !!c.ec; });
   set('sp-cfg-diag',   el => { el.checked = !!c.diag; });
-  set('sp-cfg-flush',  el => { el.value = (c.flush === true || c.flush === 'on') ? 'on' : 'off'; });
+  set('sp-cfg-flush',  el => { el.value = spFlushMode(); });
   set('sp-cfg-info',   el => { el.textContent = 'Активний рушій: ' + spEngine() + (_spIsIOS() ? ' (iOS)' : ''); });
 }
 function _spIsIOS(){
@@ -14165,10 +14165,15 @@ function spEngine(){
   const hasSR = !!(window.SpeechRecognition || window.webkitSpeechRecognition);
   return hasSR ? 'webspeech' : (canCapture ? 'capture' : 'webspeech');
 }
-function spFlushEnabled(){
+function spFlushMode(){
   const f = spCfg().flush;
-  return f === true || f === 'on';     // лише свідомо ввімкнене (експеримент)
+  if(f === true || f === 'on' || f === 'each') return 'each';
+  if(f === 'exit') return 'exit';
+  return 'off';
 }
+function spFlushEnabled(){ return spFlushMode() === 'each'; }   // "промивання" після КОЖНОЇ фрази
+const _spSleep = (ms) => new Promise(r => setTimeout(r, ms));
+let _spUsedSR = false;
 function spT(uk, en, de, ru){
   const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   return ul === 'uk' ? uk : ul === 'en' ? en : ul === 'ru' ? (ru || uk) : de;
@@ -14874,6 +14879,7 @@ function startSpeech(){
     .sort(() => Math.random() - .5).slice(0, 7);
   if(!cards.length){ return; }
   spStopRecord();
+  spFlushCancel();
   _spActive = true;
   spState = { SR: SR || null, cards, idx: 0, recognition: null, recording: false,
               correctCount: 0, totalCount: 0, cycle: 0, busy: false, cap: null };
@@ -14887,17 +14893,45 @@ function startSpeech(){
 
 // Вихід з вправи (перехід на іншу вкладку/екран, teardown уроку).
 // Дешево, якщо вправа не відкрита. Reload більше НЕ потрібен.
+// Після ОСТАННЬОГО розпізнавання один раз "лікуємо" звук усього застосунку (spExitRepair):
+// далі розпізнавання вже не стартує, тож порушений стан SR нікому не шкодить.
 function spExit(){
   if(!_spActive) return;
+  const needRepair = _spUsedSR && spEngine() === 'webspeech' && spFlushMode() === 'exit';
   spStopRecord();
   spFlushCancel();
   spKillAllMic('exit');
   spQuietSfx('exit');
   spWorkerTerminate();
   _spActive = false;
+  _spUsedSR = false;
   spSetStatus('');
   spHb('exited');
   spL('exit speech');
+  if(needRepair) spExitRepair();
+}
+async function spExitRepair(){
+  try{
+    _spFlushCancel = false;
+    await _spSleep(500);                                       // дати SR остаточно завершитись
+    if(_spFlushCancel){ spL('exit-repair: cancelled'); return; }
+    spL(`exit-repair: start AS=${spAS()}`);
+    let firstOk; const gotFirst = new Promise(res => { firstOk = res; });
+    const rec = spCapRecord({ onFirstChunk: () => firstOk(true) });
+    _spFlushRec = rec;
+    const first = await Promise.race([ gotFirst, _spSleep(1800).then(() => false) ]);
+    if(!first) spL('exit-repair: WARNING no audio chunk within 1.8s');
+    await _spSleep(350);
+    rec.abort();
+    await rec.result;
+    _spFlushRec = null;
+    spQuietSfx('exit-repair');
+    if(_spFlushCancel){ spL('exit-repair: aborted (new exercise)'); return; }
+    await _spSleep(spCfg().postDelay | 0);
+    spSetType('auto', 'exit-repair');       // після вправи розпізнавання не стартує — 'auto' дає нормальний звук
+    spQuietSfx('exit-repair+post');
+    spL(`exit-repair: done AS=${spAS()}`);
+  }catch(e){ _spFlushRec = null; spL('exit-repair ERROR ' + (e && e.message)); }
 }
 
 function spRenderTermWords(card){
@@ -15114,6 +15148,7 @@ function spStartRecordWebSpeech(){
 
   const cfg = spCfg();
   spFlushCancel();                       // холостий запис ще триває? — звільняємо мікрофон для SR
+  _spUsedSR = true;
   spRepairBegin();
   spHb('recording');
   spL(`▶ webspeech cycle #${++spState.cycle} AS=${spAS()} flush=${spFlushEnabled()}`);
