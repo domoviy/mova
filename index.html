@@ -4387,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '695-ef4633a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4616,6 +4616,42 @@ function buildLearningPath(rawLessons, courseLevel){
     });
   }
 
+  // ПРОДУКТИВНІСТЬ СТАРТУ. Єдине місце виклику dueFirst (нижче, у циклі
+  // суб-уроків) бере з результату лише перші cfg.reviewMix (=3) id, але
+  // повне сортування ВСЬОГО накопиченого пулу (до ~3000 карток) робилося
+  // для кожного з сотень суб-уроків: ~600 000 викликів компаратора, у
+  // кожному 2×srPriorityFromState (2×new Date + setHours) — це і були
+  // ~800мс синхронного блоку на старті, поки грав splash-логотип (його
+  // stroke-dashoffset-анімація йде в головному потоці й "замерзала").
+  // Тепер: пріоритет кожної картки рахуємо ОДИН раз (prioCache — стан і
+  // "сьогодні" незмінні на час побудови), а замість сортування — один
+  // прохід, що тримає лише k найкращих. Результат ТОЙ САМИЙ, що й у
+  // dueFirst(ids).slice(0,k): за спаданням пріоритету, а при рівному —
+  // раніший в ids (стабільність сортування збережена).
+  var prioCache = Object.create(null);
+  function prio(id){
+    var p = prioCache[id];
+    if(p === undefined){
+      p = srPriorityFromState(state, id);
+      if(p !== p) p = -Infinity; // NaN (зіпсована дата) — найнижчий пріоритет
+      prioCache[id] = p;
+    }
+    return p;
+  }
+  function dueFirstTop(ids, k){
+    if(!state || !state.cards) return ids.slice(0, k);
+    var best = []; // [{id,p}] за спаданням p, не довше k
+    for(var i = 0; i < ids.length; i++){
+      var p = prio(ids[i]);
+      if(best.length === k && p <= best[k-1].p) continue; // не краще за k-те (при рівності раніший лишається)
+      var j = best.length;
+      while(j > 0 && best[j-1].p < p) j--;
+      best.splice(j, 0, {id: ids[i], p: p});
+      if(best.length > k) best.pop();
+    }
+    return best.map(function(b){ return b.id; });
+  }
+
   var out = [];
   var lastSubOf     = {}; // originalModuleId -> id останнього суб-уроку цього модуля
   var moduleCardIds = {}; // originalModuleId -> повний cardIds модуля (лишено для діагностики/сумісності)
@@ -4720,7 +4756,7 @@ function buildLearningPath(rawLessons, courseLevel){
       var reviewPool = prevModCards.length || shownThisModule.length
         ? prevModCards.concat(shownThisModule) : null;
       if(idx >= half && reviewPool){
-        subCardIds = subCardIds.concat(dueFirst(reviewPool).slice(0, cfg.reviewMix));
+        subCardIds = subCardIds.concat(dueFirstTop(reviewPool, cfg.reviewMix));
       }
       var subId = lesson.id + '_s' + (idx+1);
       var unlockAfter = idx === 0
@@ -19228,18 +19264,30 @@ function srTagVocab(){
     'vokabular':'Lesen','vokabel':'Lesen','nomen':'Lesen','verb':'Lesen',
   };
 
+  // Категорій у курсі десятки, карток — тисячі: результат залежить лише від
+  // cat, тож рахуємо його ОДИН раз на категорію (раніше Object.entries(MAP)
+  // — нова структура з ~60 пар — створювалась для кожної картки на старті).
+  const MAP_ENTRIES = Object.entries(MAP);
+  const byCat = Object.create(null);
   VOCAB.forEach(card=>{
     if(card.examPart) return; // вже є — не перезаписуємо
     const cat = (card.cat||'').toUpperCase();
-    // Спочатку пряме маппування по cat
-    if(DIRECT[cat]){ card.examPart = DIRECT[cat]; return; }
-    // Потім пошук по ключових словах у cat
-    const catLower = cat.toLowerCase().replace(/\s+/g,'').replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue');
-    let found = null;
-    for(const [key,part] of Object.entries(MAP)){
-      if(catLower.includes(key)){ found=part; break; }
+    let part = byCat[cat];
+    if(part === undefined){
+      // Спочатку пряме маппування по cat
+      if(DIRECT[cat]){ part = DIRECT[cat]; }
+      else {
+        // Потім пошук по ключових словах у cat
+        const catLower = cat.toLowerCase().replace(/\s+/g,'').replace(/ä/g,'ae').replace(/ö/g,'oe').replace(/ü/g,'ue');
+        let found = null;
+        for(let i=0;i<MAP_ENTRIES.length;i++){
+          if(catLower.includes(MAP_ENTRIES[i][0])){ found=MAP_ENTRIES[i][1]; break; }
+        }
+        part = found || 'Lesen'; // fallback: Lesen (Wortschatz)
+      }
+      byCat[cat] = part;
     }
-    card.examPart = found || 'Lesen'; // fallback: Lesen (Wortschatz)
+    card.examPart = part;
   });
   console.log('[SR] Tagged', VOCAB.length, 'cards with examPart');
 }
