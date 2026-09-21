@@ -438,7 +438,8 @@ body{
   padding:8px 4px;position:relative;
 }
 .bn-item:active{opacity:.7}
-.bn-icon{font-size:22px;line-height:1}
+.bn-icon{font-size:22px;line-height:1;display:flex}
+.bn-icon .mi{width:1.15em;height:1.15em;stroke-width:1.8}
 .bn-item.active{color:var(--forest)}
 .bn-item.active::after{
   content:'';position:absolute;bottom:0;left:50%;
@@ -825,8 +826,11 @@ body{
    не змінює власні кольори емодзі (золота китиця лишається золотою),
    лише додає силуету видиму межу проти темного фону. */
 .lp-header-emoji{
-  filter: drop-shadow(0 0 1.5px rgba(255,255,255,.9)) drop-shadow(0 0 1.5px rgba(255,255,255,.9));
+  /* монолінійна іконка (currentColor = золото заголовка) — біле "свічення"
+     для чорного емодзі більше не потрібне */
+  display:inline-flex;vertical-align:-.2em;
 }
+.lp-header-emoji .mi{ width:1.15em;height:1.15em; }
 /* Компактна пігулка-бейдж "142/320 · 44%" — раніше це був окремий рядок
    <small> під заголовком (зайва висота блоку); тепер сидить одразу
    поруч із назвою в тому самому рядку, як власний маленький елемент
@@ -937,6 +941,7 @@ body{
   display:flex;align-items:center;justify-content:center;
   flex-shrink:0;font-family:'Inter',sans-serif;
 }
+.lp-chapter-num .mi{ width:16px;height:16px;stroke-width:2.1; }
 .lp-chapter-num.done{
   background:var(--gold);color:var(--forest);
 }
@@ -988,10 +993,12 @@ body{
 .lp-path{
   display:flex;flex-direction:column;align-items:center;
   gap:20px;padding:20px 6px 6px;
+  position:relative; /* під хвилю-лінію (.lp-wave) */
 }
 .lp-path-node-wrap{
   display:flex;flex-direction:column;align-items:center;gap:6px;
   transition:transform .2s;
+  position:relative;z-index:1; /* вузли — НАД хвилею */
 }
 .lp-node{
   /* Діаметр геми — одна змінна, від неї рахується й розмір піктограми
@@ -1007,7 +1014,7 @@ body{
   transition:transform .12s, box-shadow .12s;
 }
 .lp-node:active{ transform:translateY(3px); box-shadow:0 2px 0 rgba(13,43,26,.35); }
-.lp-node-icon{ position:relative; z-index:1; line-height:1; filter:drop-shadow(0 2px 2px rgba(0,0,0,.22)); transition:filter .15s; }
+.lp-node-icon{ position:relative; z-index:1; line-height:1; display:flex; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); transition:filter .15s; }
 /* Small talk — невимушена розмова, синій акцент (як і раніше). */
 .lp-node.lp-node-smalltalk{
   background:var(--accent, #4a7c9d);
@@ -1056,7 +1063,16 @@ body{
   background:var(--border);
   box-shadow:0 5px 0 rgba(0,0,0,.10);
 }
-.lp-node.locked .lp-node-icon{ filter:grayscale(1) opacity(.55); }
+.lp-node.locked .lp-node-icon{ filter:none; }
+/* ── Монолінійні іконки (movaIcon) — колір задає стан гемы ────────
+   lesson (лісовий фон) — золото, як логотип; типові кольорові гемы —
+   біле; done (золотий фон) — лісове; locked — приглушене. */
+.mi{ width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block;flex-shrink:0; }
+.lp-node{ color:var(--gold); }
+.lp-node.lp-node-smalltalk,.lp-node.lp-node-problemsolving,.lp-node.lp-node-forum,.lp-node.lp-node-email{ color:#fff; }
+.lp-node.done{ color:var(--forest); }
+.lp-node.locked{ color:rgba(0,0,0,.38); }
+.lp-node .mi{ width:1.22em;height:1.22em; }
 .lp-node.current{
   --lp-node-d:110px;
   box-shadow:0 7px 0 rgba(13,43,26,.35), 0 10px 18px rgba(13,43,26,.2);
@@ -1132,7 +1148,22 @@ body{
 }
 .lp-node-progress{
   font-size:10px;font-weight:700;color:var(--muted);
+  position:relative;z-index:1;background:var(--soft);padding:0 6px;border-radius:6px; /* лінія проходить ПІД міткою */
 }
+.lp-node-label{ position:relative;z-index:1; }
+/* ── ХВИЛЯ-СТЕЖКА (lpDrawWave) ───────────────────────────────────
+   Суцільна SVG-лінія крізь центри гем: S-подібні сегменти з вертикальними
+   дотичними у вузлах (той самий зигзаг-зсув, що вже давав "хвилю").
+   Пройдене — золото (як штрих логотипу) з м'яким ореолом; попереду —
+   пунктир круглих крапок. .lp-wave-anim — одноразове "малювання" щойно
+   пройденої ділянки (pathLength=1 → dashoffset 1→0). */
+.lp-wave{ position:absolute;left:0;top:0;pointer-events:none;z-index:0;overflow:visible; }
+.lp-wave path{ fill:none;stroke-linecap:round;stroke-linejoin:round; }
+.lp-wave-ahead{ stroke:rgba(13,43,26,.3);stroke-width:6;stroke-dasharray:.1 12; }
+.lp-wave-glow{ stroke:var(--gold);stroke-width:18;opacity:.16; }
+.lp-wave-done{ stroke:var(--gold);stroke-width:8; }
+.lp-wave-anim{ stroke-dasharray:1;stroke-dashoffset:1;animation:lpWaveDraw 1.1s cubic-bezier(.4,0,.2,1) .25s forwards; }
+@keyframes lpWaveDraw{ to{ stroke-dashoffset:0; } }
 /* "Підготовка до екзамену" — звичайний послідовний список рядків з
    назвою (renderExamPrepRow), не звивиста стежка з іконками-гемами
    (.lp-node вище): тут головне — прочитати конкретну назву діалогу/
@@ -1165,6 +1196,15 @@ body{
    глави (справжня симуляція іспиту, не звичайне повторення картки), і
    золотий тут читається як "особливе", узгоджено з рештою застосунку. */
 .lp-examprep-row.lp-node-examsim .lp-examprep-row-icon{ background:var(--gold); }
+/* монолінійна іконка (movaIcon) — колір як у гемах шляху */
+.lp-examprep-row-icon{ color:var(--gold);font-size:22px; }
+.lp-examprep-row .mi{ width:1.1em;height:1.1em; }
+.lp-examprep-row.lp-node-smalltalk .lp-examprep-row-icon,
+.lp-examprep-row.lp-node-problemsolving .lp-examprep-row-icon,
+.lp-examprep-row.lp-node-forum .lp-examprep-row-icon,
+.lp-examprep-row.lp-node-email .lp-examprep-row-icon{ color:#fff; }
+.lp-examprep-row.lp-node-examsim .lp-examprep-row-icon,
+.lp-examprep-row.done .lp-examprep-row-icon{ color:var(--forest); }
 .lp-examprep-row-body{ flex:1;min-width:0; }
 .lp-examprep-row-title{
   font-size:var(--fs-tertiary);font-weight:700;color:var(--ink);
@@ -1189,6 +1229,7 @@ body{
    лишається клікабельною (showLockedLessonModal() у clickHandler). */
 .lp-examprep-row.locked{ opacity:.6; }
 .lp-examprep-row.locked .lp-examprep-row-icon{ filter:grayscale(1) opacity(.7); background:var(--border); }
+.lp-examprep-row.locked .lp-examprep-row-icon{ color:rgba(0,0,0,.38); }
 .lp-examprep-row.done .lp-examprep-row-icon{ background:var(--gold); }
 .lp-examprep-row.current{
   border-color:var(--gold); box-shadow:0 0 0 2px rgba(201,168,76,.25);
@@ -1254,7 +1295,8 @@ body{
   font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
 }
 .lp-mini-btn:active{ background:rgba(201,168,76,.28); }
-.lp-mini-btn-icon{ font-size:20px;line-height:1;font-weight:800;color:var(--gold); }
+.lp-mini-btn-icon{ font-size:20px;line-height:1;font-weight:800;color:var(--gold);display:flex;align-items:center;justify-content:center; }
+.lp-mini-btn-icon .mi{ width:1.05em;height:1.05em;stroke-width:2; }
 .lp-mini-btn-label{ font-size:8px;font-weight:700;color:var(--gold);line-height:1.05;white-space:normal;text-align:center; }
 /* На "ти тут"-банері глави (.lp-chapter-head.current) фон темний
    (forest-градієнт) — той самий gold-dim tint там губився б, тож
@@ -1896,6 +1938,8 @@ body{
   font-size:14px;color:rgba(255,255,255,.45);margin-top:4px;
 }
 .lf-step-label span{ font-weight:600;color:rgba(255,255,255,.7); }
+#lf-title .mi{ display:inline-block;width:1.15em;height:1.15em;vertical-align:-.25em;margin-right:7px; }
+#lf-step-name .mi{ display:inline-block;width:1.2em;height:1.2em;vertical-align:-.28em;margin-right:6px;color:var(--gold); }
 
 /* ══ СВЯТКУВАННЯ ЗАВЕРШЕННЯ РОЗДІЛУ (ГЛАВИ) ══════════════════════════
    НАЙВАЖЧА подія з трьох рівнів (урок → модуль → розділ) — усе те саме,
@@ -3169,6 +3213,17 @@ body{
 .marker-legend-label{ font-weight:800; font-size:var(--fs-secondary); margin-bottom:3px; }
 .marker-legend-desc{ color:var(--warm); font-size:var(--fs-tertiary); line-height:1.5; }
 
+.sp-wave{ width:100%;margin-top:14px; }
+.sp-wave svg{ display:block;width:100%;overflow:visible; }
+#sp-wave-svg{ height:44px; }
+.sp-wb{ stroke:rgba(201,168,76,.38);stroke-width:3;stroke-linecap:round;transition:stroke .18s; }
+.sp-wb.on{ stroke:var(--gold); }
+.sp-wb.ok{ stroke:#2ecc71; } .sp-wb.meh{ stroke:#e67e22; } .sp-wb.bad{ stroke:#e74c3c; }
+.sp-voice{ height:26px;margin-top:8px;opacity:0;transition:opacity .3s; }
+.sp-voice.on{ opacity:1; }
+#sp-voice-path{ fill:none;stroke:rgba(255,255,255,.9);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round; }
+#sp-mic-btn .mi{ width:1em;height:1em;stroke-width:1.8; }
+
 /* Симуляція іспиту Forumsbeitrag — дві картки вибору теми
    (#exam-sim-picker/examSimPickCard), кожна ~половина доступної області
    (flex:1 в column-контейнері з двома дітьми). */
@@ -3903,13 +3958,21 @@ body{
         <div id="sp-card" onclick="spReplay()" style="cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">
           <div id="sp-term" class="sp-term-main" style="color:#fff"></div>
           <div id="sp-transl" class="sp-secondary" style="color:rgba(255,255,255,.5);margin-top:2px"></div>
+          <!-- Хвиля голосу: ЗРАЗОК (обвідна справжнього озвучення фрази, з
+               рухомою позначкою під час програвання; після відповіді
+               розфарбовується по словах) + ВАШ ГОЛОС (жива лінія, що
+               реагує на розпізнавання). Див. spWave* нижче. -->
+          <div id="sp-wave" class="sp-wave" style="display:none">
+            <svg id="sp-wave-svg" viewBox="0 0 300 44" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
+            <svg id="sp-voice-svg" class="sp-voice" viewBox="0 0 300 26" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path id="sp-voice-path" d=""/></svg>
+          </div>
         </div>
 
         <!-- Кнопка запису -->
         <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
           <button id="sp-mic-btn" onclick="spToggleRecord()"
-            style="width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent">
-            🎤
+            style="width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;color:var(--forest)">
+            <svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.4a3 3 0 0 0-3 3v5.2a3 3 0 0 0 6 0V6.4a3 3 0 0 0-3-3z"/><path d="M5.6 11.2a6.4 6.4 0 0 0 12.8 0"/><path d="M12 17.6v3.2M8.8 20.8h6.4"/></svg>
           </button>
           <div id="sp-mic-label" class="sp-label" data-i18n="sp_tap_to_speak" style="text-align:center">Натисни щоб говорити</div>
         </div>
@@ -3973,7 +4036,7 @@ body{
         <div class="lp-progress-bar lp-progress-overall"><div class="lp-progress-fill" id="lp-overall-fill" style="width:0%"></div></div>
         <div class="lp-header-body">
           <div class="lp-header-toprow">
-            <h2><span class="lp-header-emoji">🎓</span> <span data-i18n="nav_lernpfad">Lernen</span></h2>
+            <h2><span class="lp-header-emoji"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.8 9.6 12 5l9.2 4.6L12 14.2z"/><path d="M6.6 11.8v4.4c1.4 1.5 3.3 2.2 5.4 2.2s4-.7 5.4-2.2v-4.4"/><path d="M21.2 9.6v5"/></svg></span> <span data-i18n="nav_lernpfad">Lernen</span></h2>
             <small class="lp-header-stats" id="lp-overall-text"></small>
           </div>
           <!-- "Ти тут": розділ + модуль поточного уроку — для орієнтації
@@ -4362,14 +4425,14 @@ body{
 <!-- BOTTOM NAV -->
 <div id="bottom-nav">
   <button class="bn-item" onclick="showView('lernpfad')" data-view="lernpfad">
-    <span class="bn-icon">🎓</span><span id="lp-nav-label">Lernen</span>
+    <span class="bn-icon"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.8 9.6 12 5l9.2 4.6L12 14.2z"/><path d="M6.6 11.8v4.4c1.4 1.5 3.3 2.2 5.4 2.2s4-.7 5.4-2.2v-4.4"/><path d="M21.2 9.6v5"/></svg></span><span id="lp-nav-label">Lernen</span>
   </button>
   <button class="bn-item" onclick="showView('favs')" data-view="favs">
-    <span class="bn-icon">★</span><span id="bn-favs-label">Закладки</span>
+    <span class="bn-icon"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.9l2.5 5.2 5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4 5.7-.8z"/></svg></span><span id="bn-favs-label">Закладки</span>
     <span class="bn-badge" id="nb-favs">0</span>
   </button>
   <button class="bn-item" onclick="openMainDictionary()" data-view="vocab">
-    <span class="bn-icon">📖</span><span id="bn-vocab-label">Словник</span>
+    <span class="bn-icon"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2C9.9 5.7 7 5.2 4 5.7v12.6c3-.5 5.9 0 8 1.5 2.1-1.5 5-2 8-1.5V5.7c-3-.5-5.9 0-8 1.5z"/><path d="M12 7.2v12.6"/></svg></span><span id="bn-vocab-label">Словник</span>
   </button>
 </div>
 
@@ -4393,7 +4456,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '697-3146c35';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5025,6 +5088,44 @@ async function switchCourse(courseId){
 }
 
 
+
+// ── MOVA ICONS: власний монолінійний набір ────────────────────────
+// Стиль логотипу (хвиляста монолінія, круглі закінчення): сітка 24×24,
+// stroke=currentColor, без заливки — колір задає контейнер (золото на лісовому
+// тлі, біле на кольорових, лісове на золотому). Замінює емодзі там, де вони
+// мають працювати як частина айдентики (гемa шляху, рядки "Підготовка до
+// екзамену", крок уроку, кнопка мікрофона): емодзі виглядають по-різному на
+// Apple/Android/Windows і "ламають" бренд. Розмір — через font-size батька
+// (.mi = 1em). Хвиля-сигнатура навмисно заходить у самі іконки (бульбашка,
+// лампа, олівець).
+var MOVA_ICONS = {
+  // урок / вивчення нового — розгорнута книга, сторінки "хвилею"
+  book:   '<path d="M12 7.2C9.9 5.7 7 5.2 4 5.7v12.6c3-.5 5.9 0 8 1.5 2.1-1.5 5-2 8-1.5V5.7c-3-.5-5.9 0-8 1.5z"/><path d="M12 7.2v12.6"/>',
+  // small talk — бульбашка з хвилею всередині
+  bubble: '<path d="M6 4.5h12A2.5 2.5 0 0 1 20.5 7v7A2.5 2.5 0 0 1 18 16.5h-6.2L7 20v-3.5H6A2.5 2.5 0 0 1 3.5 14V7A2.5 2.5 0 0 1 6 4.5z"/><path d="M7.5 10.5q1.5-3 3 0t3 0t3 0"/>',
+  // пошук рішення — лампа з хвилею-ниткою
+  bulb:   '<path d="M9.5 18.2h5M10.4 21h3.2"/><path d="M12 3.2a6 6 0 0 0-3.7 10.7c.7.6 1.2 1.4 1.2 2.3h5c0-.9.5-1.7 1.2-2.3A6 6 0 0 0 12 3.2z"/><path d="M9.6 10.6q1.2-2.1 2.4 0t2.4 0"/>',
+  // Forumsbeitrag — допис
+  post:   '<path d="M6.2 4.2h11.6a1.7 1.7 0 0 1 1.7 1.7v12.2a1.7 1.7 0 0 1-1.7 1.7H6.2a1.7 1.7 0 0 1-1.7-1.7V5.9a1.7 1.7 0 0 1 1.7-1.7z"/><path d="M8 8.6h8M8 12h8M8 15.4h4.6"/>',
+  // E-Mail — конверт
+  mail:   '<path d="M5 5.8h14a1.7 1.7 0 0 1 1.7 1.7v9a1.7 1.7 0 0 1-1.7 1.7H5a1.7 1.7 0 0 1-1.7-1.7v-9A1.7 1.7 0 0 1 5 5.8z"/><path d="M3.6 7.6 12 13.6l8.4-6"/>',
+  // симуляція письма — олівець + хвиля-лінійка
+  pen:    '<path d="M15.6 3.6l4.6 4.6L9.6 18.8H5v-4.6z"/><path d="M13.2 6l4.6 4.6"/><path d="M11 21.2q1.5-2 3 0t3 0t3 0"/>',
+  search: '<path d="M10.5 4a6.5 6.5 0 1 0 0 13 6.5 6.5 0 0 0 0-13z"/><path d="M15.4 15.4l5.1 5.1"/>',
+  link:   '<path d="M10.2 13.8l3.6-3.6"/><path d="M11.4 7.4l1-1a3.7 3.7 0 0 1 5.2 5.2l-1 1"/><path d="M12.6 16.6l-1 1a3.7 3.7 0 0 1-5.2-5.2l1-1"/>',
+  target: '<path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17z"/><path d="M12 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M12 12h.01"/>',
+  tiles:  '<path d="M5 4.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5A.5.5 0 0 1 5 4.5zM14 4.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5zM5 13.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5zM14 13.5h5a.5.5 0 0 1 .5.5v5a.5.5 0 0 1-.5.5h-5a.5.5 0 0 1-.5-.5v-5a.5.5 0 0 1 .5-.5z"/>',
+  quiz:   '<path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17z"/><path d="M9.4 9.7a2.7 2.7 0 0 1 5.2.9c0 1.8-2.6 2.2-2.6 3.9"/><path d="M12 17.1h.01"/>',
+  mic:    '<path d="M12 3.4a3 3 0 0 0-3 3v5.2a3 3 0 0 0 6 0V6.4a3 3 0 0 0-3-3z"/><path d="M5.6 11.2a6.4 6.4 0 0 0 12.8 0"/><path d="M12 17.6v3.2M8.8 20.8h6.4"/>',
+  flag:   '<path d="M5.4 21V4"/><path d="M5.4 5.2c3-1.6 5 1.6 8 0s4-1 5.2 0v8.2c-1.2-1-2.2-1.4-5.2 0s-5-1.6-8 0"/>',
+  stop:   '<path d="M8.2 6.5h7.6a1.7 1.7 0 0 1 1.7 1.7v7.6a1.7 1.7 0 0 1-1.7 1.7H8.2a1.7 1.7 0 0 1-1.7-1.7V8.2a1.7 1.7 0 0 1 1.7-1.7z"/>',
+  check:  '<path d="M5.2 12.6l4.3 4.3 9.3-9.6"/>',
+  cross:  '<path d="M6.4 6.4l11.2 11.2M17.6 6.4 6.4 17.6"/>',
+  cap:    '<path d="M2.8 9.6 12 5l9.2 4.6L12 14.2z"/><path d="M6.6 11.8v4.4c1.4 1.5 3.3 2.2 5.4 2.2s4-.7 5.4-2.2v-4.4"/><path d="M21.2 9.6v5"/>',
+  star:   '<path d="M12 3.9l2.5 5.2 5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4 5.7-.8z"/>',
+  repeat: '<path d="M4.5 11.5V10a3 3 0 0 1 3-3h10.6M15.6 4.4 18.4 7l-2.8 2.6"/><path d="M19.5 12.5V14a3 3 0 0 1-3 3H5.9M8.4 19.6 5.6 17l2.8-2.6"/>',
+};
+function movaIcon(name, cls){ var p = MOVA_ICONS[name]; if(!p) return ''; return '<svg class="mi'+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+p+'</svg>'; }
 
 // ── I18N ─────────────────────────────────────────────────────
 const I18N = {
@@ -10275,14 +10376,14 @@ function renderLernpfad(opts){
 
       return `<div class="lp-module-section ${isModuleOpen?'open':''}">
         ${renderModuleDivider(grp, ch, doneCount, countableNodes.length)}
-        <div class="lp-module-section-body"><div class="${pathWrapClass}">${pathHtml}</div></div>
+        <div class="lp-module-section-body"><div class="${pathWrapClass}" ${ch.isExamPrep ? '' : 'data-wave-key="'+grp.parentId+'"'}>${pathHtml}</div></div>
       </div>`;
     }).join('');
 
     chEl.className += ch.isExamPrep ? ' lp-chapter-examprep' : '';
     chEl.innerHTML = `
       <div class="lp-chapter-head ${allDone?'done':''} ${hasCurrent?'current':''} ${ch.isExamPrep?'examprep':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
-        <div class="lp-chapter-num ${allDone?'done':''} ${ch.isExamPrep?'examprep':''}">${ch.isExamPrep?'🎓':ch.num}</div>
+        <div class="lp-chapter-num ${allDone?'done':''} ${ch.isExamPrep?'examprep':''}">${ch.isExamPrep?movaIcon('cap'):ch.num}</div>
         <div class="lp-chapter-info">
           <div class="lp-chapter-title">${ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de}</div>
           <div class="lp-chapter-sub">${ch.modules.length} ${t('lp_module_prefix')} · ${
@@ -10318,7 +10419,7 @@ function renderLernpfad(opts){
   const {pct:cPct,done:cDone,total:cTotal} = reviewProgress(allChapterNums);
   courseReviewEl.innerHTML = `
     <div class="lp-chapter-head ${cPct>=80?'done':''}" onclick="this.closest('.lp-chapter').classList.toggle('open')">
-      <div class="lp-chapter-num" style="background:var(--gold);color:var(--forest)">🔁</div>
+      <div class="lp-chapter-num" style="background:var(--gold);color:var(--forest)">${movaIcon('repeat')}</div>
       <div class="lp-chapter-info">
         <div class="lp-chapter-title">${courseChTitle}</div>
         <div class="lp-chapter-sub">${courseChSub}</div>
@@ -10327,6 +10428,10 @@ function renderLernpfad(opts){
     </div>
     <div class="lp-modules">${courseRevCard}${renderCourseVocabCard(allChapterNums, courseUnlocked)}</div>`;
   container.appendChild(courseReviewEl);
+
+  // Хвиля-лінія крізь гемы кожного модуля (малюється за реальними
+  // позиціями вузлів; перемальовується сама при зміні розміру/розгортанні).
+  try{ lpAttachWaves(container); }catch(e){ console.warn('[wave]', e); }
 
   // Оновлюємо label навбару
   const navLabel = document.getElementById('lp-nav-label');
@@ -10482,7 +10587,7 @@ function renderModuleDividerVocabBtn(lesson){
   if(!lesson || !lessonUnlocked(lesson) || !(lesson.cardIds||[]).length) return '';
   const label = {de:'Wörter',uk:'Словник',en:'Words',ru:'Словарь'}[uiLang]||'Wörter';
   return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startModuleVocabBonus('${lesson.id}')">
-    <span class="lp-mini-btn-icon">📖</span><span class="lp-mini-btn-label">${label}</span>
+    <span class="lp-mini-btn-icon">${movaIcon('book')}</span><span class="lp-mini-btn-label">${label}</span>
   </button>`;
 }
 // Компактна заміна renderGrammarBonusCard(lesson) нижче — та сама умова
@@ -10506,7 +10611,7 @@ function renderChapterDividerVocabBtn(chapterNum, unlocked){
   if(!ids.length) return '';
   const label = {de:'Wörter',uk:'Словник',en:'Words',ru:'Словарь'}[uiLang]||'Wörter';
   return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startChapterVocabView(${chapterNum})">
-    <span class="lp-mini-btn-icon">📖</span><span class="lp-mini-btn-label">${label}</span>
+    <span class="lp-mini-btn-icon">${movaIcon('book')}</span><span class="lp-mini-btn-label">${label}</span>
   </button>`;
 }
 function renderChapterDividerGramBtn(chapterNum, chapterLessons, unlocked){
@@ -10517,6 +10622,76 @@ function renderChapterDividerGramBtn(chapterNum, chapterLessons, unlocked){
   return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startChapterGrammarBonus(${chapterNum})">
     <span class="lp-mini-btn-icon">G</span><span class="lp-mini-btn-label">${label}</span>
   </button>`;
+}
+
+// ── ХВИЛЯ-СТЕЖКА ───────────────────────────────────────────────────
+// Суцільна SVG-лінія крізь центри гем модуля. Позиції — ЗМІРЯНІ з DOM
+// (а не обчислені з _lpZigzagOffset), тож лінія лишається точною за будь-якої
+// ширини екрана, висоти підписів чи розміру активної геми. Модулі згорнуті
+// (display:none → розмір 0), тому перемальовуємо з ResizeObserver: він
+// спрацьовує і при першому розгортанні, і при повороті екрана.
+// Золотий сегмент = від ПРОЙДЕНОЇ геми до наступної НЕзаблокованої.
+var _lpWaveRO = null;
+var _lpWaveState = Object.create(null); // ключ модуля → к-сть золотих сегментів, що вже показувались
+
+function lpAttachWaves(root){
+  if(_lpWaveRO){ try{ _lpWaveRO.disconnect(); }catch(e){} _lpWaveRO = null; }
+  var paths = root.querySelectorAll('.lp-path[data-wave-key]');
+  if(!paths.length) return;
+  if(typeof ResizeObserver === 'undefined'){
+    Array.prototype.forEach.call(paths, lpDrawWave);
+    return;
+  }
+  _lpWaveRO = new ResizeObserver(function(entries){
+    entries.forEach(function(en){ lpDrawWave(en.target); });
+  });
+  Array.prototype.forEach.call(paths, function(p){ _lpWaveRO.observe(p); });
+}
+
+function lpDrawWave(pathEl){
+  var pr = pathEl.getBoundingClientRect();
+  if(!pr.width || !pr.height) return; // модуль згорнутий
+  var nodes = pathEl.querySelectorAll('.lp-node');
+  var old = pathEl.querySelector(':scope > svg.lp-wave');
+  if(nodes.length < 2){ if(old) old.remove(); return; }
+
+  var pts = [];
+  Array.prototype.forEach.call(nodes, function(n){
+    var r = n.getBoundingClientRect();
+    pts.push({
+      x: +(r.left + r.width/2 - pr.left).toFixed(1),
+      y: +(r.top + r.height/2 - pr.top).toFixed(1),
+      done: n.classList.contains('done'),
+      locked: n.classList.contains('locked'),
+    });
+  });
+
+  var gold = [], ahead = [];
+  for(var i = 0; i < pts.length - 1; i++){
+    var a = pts[i], b = pts[i+1];
+    var ym = +((a.y + b.y)/2).toFixed(1);
+    // S-подібний сегмент з вертикальними дотичними у вузлах: сусідні
+    // сегменти стикуються гладко, а зигзаг-зсув дає саме хвилю.
+    var seg = 'M'+a.x+' '+a.y+'C'+a.x+' '+ym+' '+b.x+' '+ym+' '+b.x+' '+b.y;
+    (a.done && !b.locked ? gold : ahead).push(seg);
+  }
+
+  var key = pathEl.getAttribute('data-wave-key');
+  var prev = _lpWaveState[key];
+  // Уже показані золоті сегменти лишаються статичними; нові (або всі, якщо
+  // модуль малюється вперше за сесію) — "домальовуються".
+  var still = prev === undefined ? 0 : Math.min(prev, gold.length);
+  var stillD = gold.slice(0, still).join('');
+  var newD   = gold.slice(still).join('');
+
+  var W = Math.round(pr.width), H = Math.round(pr.height);
+  var svg = '<svg class="lp-wave" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" aria-hidden="true">'
+    + (ahead.length ? '<path class="lp-wave-ahead" d="'+ahead.join('')+'"/>' : '')
+    + (stillD ? '<path class="lp-wave-glow" d="'+stillD+'"/><path class="lp-wave-done" d="'+stillD+'"/>' : '')
+    + (newD ? '<path class="lp-wave-glow lp-wave-anim" pathLength="1" d="'+newD+'"/><path class="lp-wave-done lp-wave-anim" pathLength="1" d="'+newD+'"/>' : '')
+    + '</svg>';
+  if(old) old.outerHTML = svg; else pathEl.insertAdjacentHTML('afterbegin', svg);
+  _lpWaveState[key] = gold.length;
 }
 
 // Візуальний профіль вузла стежки по типу: іконка + клас кольору. Три
@@ -10531,21 +10706,25 @@ function renderChapterDividerGramBtn(chapterNum, chapterLessons, unlocked){
 // заблокований; замість цього іконка й гема просто сіріють (клас
 // .locked нижче в CSS вимикає колір через grayscale-фільтр).
 function _lpNodeVisual(node){
+  // Іконки — власний монолінійний набір (movaIcon), а не емодзі. Пошук
+  // рішення тепер 💡-лампа ("знайти вихід") замість рукостискання: воно
+  // не має внятного монолінійного відповідника, а лампа з хвилею-ниткою
+  // читається одразу й лишається в стилі решти набору.
   if(node.type === 'dialogue'){
     return node.dlgType === 'problemsolving'
-      ? { icon: '🤝', cls: 'lp-node-problemsolving' }
-      : { icon: '💬', cls: 'lp-node-smalltalk' };
+      ? { icon: movaIcon('bulb'), cls: 'lp-node-problemsolving' }
+      : { icon: movaIcon('bubble'), cls: 'lp-node-smalltalk' };
   }
   if(node.type === 'forum'){
-    return { icon: '📰', cls: 'lp-node-forum' };
+    return { icon: movaIcon('post'), cls: 'lp-node-forum' };
   }
   if(node.type === 'email'){
-    return { icon: '📧', cls: 'lp-node-email' };
+    return { icon: movaIcon('mail'), cls: 'lp-node-email' };
   }
   if(node.type === 'examsim'){
-    return { icon: '✍️', cls: 'lp-node-examsim' };
+    return { icon: movaIcon('pen'), cls: 'lp-node-examsim' };
   }
-  return { icon: '📖', cls: 'lp-node-lesson' };
+  return { icon: movaIcon('book'), cls: 'lp-node-lesson' };
 }
 
 // Один крок звивистої стежки — кругла "гема". cardIds однакові для
@@ -14541,6 +14720,7 @@ function spExit(){
   if(!_spActive) return;
   spStopRecord();
   spFlushCancel();
+  try{ spWaveStop(); }catch(e){}
   spShutdownMic('exit');
   _spActive = false;
   spHb('exited');
@@ -14591,6 +14771,179 @@ function spHighlightLive(transcript){
   });
 }
 
+// ── ХВИЛЯ ГОЛОСУ (вправа на вимову) ───────────────────────────────
+// Два елементи в картці зі зразком (#sp-wave):
+//  1) ЗРАЗОК — обвідна (RMS) справжнього озвучення фрази: рахується з ТОГО
+//     САМОГО pregen-аудіо через OfflineAudioContext (він не чіпає аудіо-сесію
+//     iOS, на відміну від звичайного AudioContext). Під час програвання
+//     "паличок" підсвічується по мірі часу; після відповіді розфарбовується
+//     ПО СЛОВАХ (таймінг — .words.json, як у караоке; без нього — пропорційно
+//     довжині слів): зелене/помаранчеве/червоне — де саме вимова розійшлась
+//     зі зразком.
+//  2) ВАШ ГОЛОС — жива лінія під зразком, що "оживає" під час запису.
+//     СВІДОМО не з реального сигналу мікрофона: другий getUserMedia паралельно
+//     з Web Speech ламає розпізнавання (iOS — саме тому вище весь механізм
+//     "промивання" мікрофона; на Android — так само "audio-capture").
+//     Тому амплітуду веде ПОДІЯ розпізнавання: interim-результати та
+//     onspeechstart/onsoundstart — тобто лінія реагує на те, що голос реально
+//     почуто розпізнавачем, а не на випадковий шум.
+var SP_WAVE_N = 44;
+var _spWaveCache = Object.create(null); // url → {peaks, dur, words}
+var _spWaveTok = 0, _spWaveRAF = null, _spVoiceRAF = null, _spVoiceEnergy = 0;
+
+function _spWaveEl(){ return document.getElementById('sp-wave'); }
+
+function _spComputePeaks(buf, n){
+  var ch = buf.getChannelData(0), len = ch.length;
+  var size = Math.max(1, Math.floor(len / n)), out = [], max = 0;
+  for(var i = 0; i < n; i++){
+    var s = i * size, e = Math.min(len, s + size), sum = 0, cnt = 0;
+    for(var j = s; j < e; j += 3){ var v = ch[j]; sum += v * v; cnt++; }
+    var rms = Math.sqrt(sum / Math.max(1, cnt));
+    out.push(rms); if(rms > max) max = rms;
+  }
+  // нормалізація + гамма 0.7: тихі місця не зникають зовсім
+  return out.map(function(v){ return Math.pow(v / (max || 1), .7); });
+}
+
+function _spWaveDraw(peaks){
+  var svg = document.getElementById('sp-wave-svg'); if(!svg) return;
+  var W = 300, n = peaks.length, step = W / n, out = '';
+  for(var i = 0; i < n; i++){
+    var x = ((i + .5) * step).toFixed(1), h = Math.max(1.6, peaks[i] * 19);
+    out += '<line class="sp-wb" x1="'+x+'" x2="'+x+'" y1="'+(22 - h).toFixed(1)+'" y2="'+(22 + h).toFixed(1)+'"/>';
+  }
+  svg.innerHTML = out;
+}
+
+function spWaveClear(){
+  var w = _spWaveEl(); if(!w) return;
+  w.querySelectorAll('.sp-wb').forEach(function(b){ b.setAttribute('class', 'sp-wb'); });
+}
+
+async function spWaveLoad(card){
+  var wrap = _spWaveEl(); if(!wrap || !card) return;
+  var tok = ++_spWaveTok;
+  var url = getAudioUrl(card.id, 'term', primaryLang());
+  var mkey = urlToAudioMkey(url);
+  var data = _spWaveCache[url];
+  if(!data){
+    try{
+      var blobUrl = await fetchBlobUrl(url, 8000, mkey);
+      if(!blobUrl) throw new Error('no audio');
+      var ab = await (await fetch(blobUrl)).arrayBuffer();
+      var OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+      var oac = new OAC(1, 1, 44100);
+      // Safari старіших версій — лише callback-форма decodeAudioData
+      var buf = await new Promise(function(res, rej){
+        var p = oac.decodeAudioData(ab, res, rej);
+        if(p && p.then) p.then(res, rej);
+      });
+      data = { peaks: _spComputePeaks(buf, SP_WAVE_N), dur: buf.duration, words: null };
+      try{ data.words = await fetchWordTiming(url, mkey); }catch(e){}
+      _spWaveCache[url] = data;
+    }catch(e){ data = null; }
+  }
+  if(tok !== _spWaveTok) return; // вже інша картка
+  if(!data){ wrap.style.display = 'none'; wrap._data = null; return; }
+  wrap._data = data;
+  _spWaveDraw(data.peaks);
+  wrap.style.display = '';
+}
+
+// Позначка програвання: "палички" до поточного часу — золоті.
+function spWavePlay(){
+  if(_spWaveRAF){ cancelAnimationFrame(_spWaveRAF); _spWaveRAF = null; }
+  var wrap = _spWaveEl(); if(!wrap || !wrap._data) return;
+  var bars = wrap.querySelectorAll('.sp-wb'); if(!bars.length) return;
+  var a = currentAudio || getSharedAudio(), last = -1;
+  for(var i = 0; i < bars.length; i++) bars[i].classList.remove('on');
+  function tick(){
+    if(!a || a.paused || a.ended || !isFinite(a.duration) || a.duration <= 0){ _spWaveRAF = null; return; }
+    var idx = Math.floor(a.currentTime / a.duration * bars.length);
+    if(idx !== last){
+      for(var k = 0; k < bars.length; k++) bars[k].classList.toggle('on', k <= idx);
+      last = idx;
+    }
+    _spWaveRAF = requestAnimationFrame(tick);
+  }
+  _spWaveRAF = requestAnimationFrame(tick);
+}
+
+// Після відповіді: зразок розфарбовується по словах.
+function spWaveColorize(target, heardText){
+  var wrap = _spWaveEl(); if(!wrap || !wrap._data) return;
+  var bars = wrap.querySelectorAll('.sp-wb'), n = bars.length; if(!n) return;
+  var tw = (target || '').split(' ');
+  var hw = spNormalize(heardText).split(' ');
+  var status = tw.map(function(w){
+    var nw = spNormalize(w), best = 0;
+    if(!nw) return null;
+    hw.forEach(function(h){ var s = spSimilarity(nw, h); if(s > best) best = s; });
+    return best >= .85 ? 'ok' : best >= .5 ? 'meh' : 'bad';
+  });
+  var rank = { ok:0, meh:1, bad:2 };
+  var ranges = []; // {from,to (частки 0..1), cls}
+  var words = wrap._data.words, dur = wrap._data.dur;
+  var spans = Array.prototype.slice.call(document.querySelectorAll('#sp-term .sp-tw'));
+  if(words && words.length && dur && spans.length){
+    var groups = _alignWordsToSpans(words, spans);
+    words.forEach(function(w, i){
+      var g = groups[i]; if(!g) return;
+      var cls = null;
+      g.forEach(function(si){ var s = status[si]; if(s && (cls === null || rank[s] > rank[cls])) cls = s; });
+      if(cls) ranges.push({ from: w.start / dur, to: w.end / dur, cls: cls });
+    });
+  } else {
+    // Без таймінгу — пропорційно довжині слів
+    var lens = tw.map(function(w){ return spNormalize(w).length; });
+    var total = lens.reduce(function(s, x){ return s + x; }, 0) || 1, acc = 0;
+    tw.forEach(function(w, i){
+      var from = acc / total; acc += lens[i];
+      if(status[i]) ranges.push({ from: from, to: acc / total, cls: status[i] });
+    });
+  }
+  for(var j = 0; j < n; j++){
+    var c = (j + .5) / n, cls = '';
+    for(var r = 0; r < ranges.length; r++){ if(c >= ranges[r].from && c < ranges[r].to){ cls = ranges[r].cls; break; } }
+    bars[j].setAttribute('class', 'sp-wb' + (cls ? ' ' + cls : ' on'));
+  }
+}
+
+// ВАШ ГОЛОС — жива лінія, поки триває запис.
+function spVoiceStart(){
+  var svg = document.getElementById('sp-voice-svg'), path = document.getElementById('sp-voice-path');
+  if(!svg || !path) return;
+  if(_spVoiceRAF) cancelAnimationFrame(_spVoiceRAF);
+  svg.classList.add('on');
+  _spVoiceEnergy = .12;
+  var ph = 0, W = 300, mid = 13;
+  function frame(){
+    if(!spState.recording){
+      svg.classList.remove('on'); _spVoiceRAF = null;
+      return;
+    }
+    _spVoiceEnergy = Math.max(.12, _spVoiceEnergy * .955);
+    var amp = 1.5 + 9.5 * _spVoiceEnergy, d = '';
+    for(var x = 0; x <= W; x += 5){
+      var env = Math.sin(Math.PI * x / W);                    // затухання до країв
+      var y = mid + amp * env * Math.sin(x * .055 + ph) * (.75 + .25 * Math.sin(x * .13 - ph * 1.7));
+      d += (x ? 'L' : 'M') + x + ' ' + y.toFixed(1);
+    }
+    path.setAttribute('d', d);
+    ph += .16;
+    _spVoiceRAF = requestAnimationFrame(frame);
+  }
+  _spVoiceRAF = requestAnimationFrame(frame);
+}
+function spVoicePulse(){ _spVoiceEnergy = 1; }
+
+function spWaveStop(){
+  if(_spWaveRAF){ cancelAnimationFrame(_spWaveRAF); _spWaveRAF = null; }
+  if(_spVoiceRAF){ cancelAnimationFrame(_spVoiceRAF); _spVoiceRAF = null; }
+  var v = document.getElementById('sp-voice-svg'); if(v) v.classList.remove('on');
+}
+
 // Озвучення фрази — лише ПІСЛЯ того, як аудіо-сесію повернено в режим
 // програвання (_spRestoreP), інакше перші мс наступної фрази ще звучали б
 // у режимі запису.
@@ -14601,7 +14954,7 @@ function spPlayPhrase(card, tag){
   Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(() => r('timeout'), 3500)) ]).then((r) => {
     if(tok !== _spTok || !_spActive) return;
     spL(`play phrase[${tag}]: gate ${r === 'timeout' ? 'TIMEOUT' : 'released'} after ${Math.round(performance.now() - t0)}ms AS=${spAS()}`);
-    playPregenAudio(url, null, ++playGen);
+    playPregenAudio(url, null, ++playGen, null, spWavePlay);
   });
 }
 
@@ -14627,6 +14980,7 @@ function spShowCard(){
   if(transl) transl.textContent = card.term?.[ul] || card.term?.uk || '';
 
   spReset();
+  spWaveLoad(card);
   spPlayPhrase(card, 'show');
 }
 
@@ -14641,10 +14995,11 @@ function spReset(){
   if(nb) nb.style.display = 'none';
   if(mb){
     mb.className = '';
-    mb.style.cssText = 'width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent';
-    mb.textContent = '🎤';
+    mb.style.cssText = 'width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;color:var(--forest)';
+    mb.innerHTML = movaIcon('mic');
   }
   document.querySelectorAll('#sp-term .sp-tw').forEach(s => { s.style.color = '#fff'; });
+  spWaveClear();
   const lbl = document.getElementById('sp-mic-label');
   if(lbl) lbl.textContent = t('sp_tap_to_speak');
 }
@@ -14676,9 +15031,11 @@ function spStartRecord(){
   const lbl = document.getElementById('sp-mic-label');
 
   spState.recording = true;
-  if(mb){ mb.classList.add('recording'); mb.textContent = '⏹'; }
+  if(mb){ mb.classList.add('recording'); mb.innerHTML = movaIcon('stop'); mb.style.color = '#e74c3c'; }
   if(lbl) lbl.textContent = t('sp_listening');
   try{ haptic.light(); }catch(e){}
+  if(_spWaveRAF){ cancelAnimationFrame(_spWaveRAF); _spWaveRAF = null; }
+  spVoiceStart();
 
   // Невелика затримка щоб браузер закрив аудіо-сесію
   setTimeout(() => spTryStart(SR, mb, lbl, 0), 150);
@@ -14710,7 +15067,7 @@ function spTryStart(SR, mb, lbl, attempt){
       const txt = e.results[i][0]?.transcript || '';
       if(e.results[i].isFinal) final += txt; else interim += txt;
     }
-    if(interim){ _lastInterim = interim; spL(`interim: "${interim}"`); spHighlightLive(interim); }
+    if(interim){ _lastInterim = interim; spL(`interim: "${interim}"`); spHighlightLive(interim); spVoicePulse(); }
     if(final && !_done){
       _done = true;
       spL(`final: "${final}"`);
@@ -14738,7 +15095,7 @@ function spTryStart(SR, mb, lbl, attempt){
     if(e.error === 'aborted') return;
     spState.recording = false;
     spState.recognition = null;
-    if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+    if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
     const msg = e.error === 'no-speech' ? t('sp_no_speech')
       : (e.error === 'not-allowed' || e.error === 'service-not-allowed') ? t('sp_mic_denied')
       : '❌ ' + t('sp_error');
@@ -14757,7 +15114,7 @@ function spTryStart(SR, mb, lbl, attempt){
         setTimeout(() => spTryStart(SR, mb, lbl, attempt + 1), 1000);
         return; // зараз рестартуємо розпізнавання — сесію ще не звільняємо
       }
-      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+      if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
       if(lbl) lbl.textContent = t('sp_tap_to_speak');
     }
     // 'end' — єдина подія Web Speech API, що гарантовано означає закриття
@@ -14773,6 +15130,8 @@ function spTryStart(SR, mb, lbl, attempt){
     spL(`SR audiostart +${d}ms after start() ${d < 150 ? '(warm start)' : '(cold start)'} AS=${spAS()}`);
   };
   rec.onaudioend = () => spL(`SR audioend AS=${spAS()}`);
+  rec.onsoundstart = () => spVoicePulse();
+  rec.onspeechstart = () => spVoicePulse();
   try{ rec.start(); spL(`rec.start() OK`); }
   catch(ex){
     spL(`rec.start() error: ${ex.name}`);
@@ -14781,7 +15140,7 @@ function spTryStart(SR, mb, lbl, attempt){
       setTimeout(() => spTryStart(SR, mb, lbl, attempt + 1), 300 * (attempt + 1));
     } else {
       spState.recording = false;
-      if(mb){ mb.classList.remove('recording'); mb.textContent = '🎤'; }
+      if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
       spSrEnded();
     }
   }
@@ -14887,8 +15246,8 @@ function spShowResult(heardText, card){
   const mb = document.getElementById('sp-mic-btn');
   if(mb){
     mb.className = isOk ? 'success' : 'fail';
-    mb.textContent = isOk ? '✅' : '❌';
-    mb.style.cssText = `width:80px;height:80px;border-radius:50%;border:3px solid ${isOk?'#2ecc71':'#e74c3c'};background:${isOk?'rgba(46,204,113,.12)':'rgba(231,76,60,.10)'};font-size:32px;display:flex;align-items:center;justify-content:center`;
+    mb.innerHTML = movaIcon(isOk ? 'check' : 'cross');
+    mb.style.cssText = `width:80px;height:80px;border-radius:50%;border:3px solid ${isOk?'#2ecc71':'#e74c3c'};background:${isOk?'rgba(46,204,113,.12)':'rgba(231,76,60,.10)'};font-size:32px;display:flex;align-items:center;justify-content:center;color:${isOk?'#27ae60':'#e74c3c'}`;
   }
   const lbl = document.getElementById('sp-mic-label');
   if(lbl) lbl.textContent = '';
@@ -14906,6 +15265,7 @@ function spShowResult(heardText, card){
 
   const wdEl = document.getElementById('sp-word-diff');
   if(wdEl) wdEl.innerHTML = spWordDiff(target, heardText);
+  try{ spWaveColorize(target, heardText); }catch(e){}
 
   const ab = document.getElementById('sp-actions');
   const nb = document.getElementById('sp-next-btn');
@@ -15553,21 +15913,34 @@ function startPrefetchChain(fromIdx){
 // Стан активного lesson flow
 let LF = null;
 
+// Значення — назви іконок MOVA_ICONS (див. movaIcon), а не емодзі.
 const LF_STEP_ICONS = {
-  cards:    '📖',
-  def:      '🔍',
-  matching: '🔗',
-  choice:   '🎯',
-  tiles:    '🧩',
-  quiz:     '❓',
-  sb_learn: '📖',
-  dlg_learn:'💬',
-  frm_learn:'📰',
-  eml_learn:'📧',
-  sb_prac:  '🎯',
-  speech:   '🎤',
-  result:   '🏁',
+  cards:    'book',
+  def:      'search',
+  matching: 'link',
+  choice:   'target',
+  tiles:    'tiles',
+  quiz:     'quiz',
+  sb_learn: 'book',
+  dlg_learn:'bubble',
+  frm_learn:'post',
+  eml_learn:'mail',
+  sb_prac:  'target',
+  speech:   'mic',
+  result:   'flag',
 };
+// Назва кроку в смузі уроку: іконка (SVG) + текст. Текст — ЛИШЕ через
+// createTextNode (тип/тема картки приходять з бази курсу).
+function _lfSetStepName(el, stepKey, text){
+  el.textContent = '';
+  var ico = LF_STEP_ICONS[stepKey];
+  if(ico){
+    var w = document.createElement('span');
+    w.innerHTML = movaIcon(ico);
+    while(w.firstChild) el.appendChild(w.firstChild);
+  }
+  el.appendChild(document.createTextNode(text));
+}
 
 const LF_STEP_LABELS = {
   cards:    {de:'Karten',         uk:'Картки',             en:'Cards'},
@@ -15613,8 +15986,12 @@ function lfRenderBar(){
 
   // Заголовок
   const titleEl = document.getElementById('lf-title');
-  if(titleEl) titleEl.textContent =
-    '📚 '+(LF.lesson.title[uiLang]||LF.lesson.title[primaryLang()]||LF.lesson.title.en||LF.lesson.title.de);
+  if(titleEl){
+    titleEl.textContent = '';
+    var _tw = document.createElement('span'); _tw.innerHTML = movaIcon('cap');
+    while(_tw.firstChild) titleEl.appendChild(_tw.firstChild);
+    titleEl.appendChild(document.createTextNode(LF.lesson.title[uiLang]||LF.lesson.title[primaryLang()]||LF.lesson.title.en||LF.lesson.title.de));
+  }
 
   // Цільна смуга прогресу всього уроку: завершені кроки + частковий
   // прогрес поточного кроку (для unit-кроків типу vocab — частка
@@ -15660,16 +16037,16 @@ function lfRenderBar(){
       // що зараз грається. Фолбек на генеричну назву — якщо картка без
       // type (напр. звичайний Dialogue Bonus на уроці, не з path-вузла:
       // той механізм не фільтрує по type, як buildLearningPath).
-      nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' + LF.dlgCards[0].type;
+      _lfSetStepName(nameEl, cur, LF.dlgCards[0].type);
     } else if(cur === 'frm_learn' && LF.frmCards && LF.frmCards[0] && LF.frmCards[0].topic){
       // Той самий принцип, що dlg_learn щойно вище — замість статичного
       // "Forumsbeitrag" показуємо реальну тему картки (card.topic),
       // одразу зрозуміло, ПРО ЩО цей допис, не лише що це "допис".
       var frmTopic = LF.frmCards[0].topic[uiLang] || LF.frmCards[0].topic[primaryLang()] || LF.frmCards[0].topic.de || '';
-      nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' + frmTopic;
+      _lfSetStepName(nameEl, cur, frmTopic);
     } else {
-      nameEl.textContent = (LF_STEP_ICONS[cur]||'') + ' ' +
-        (LF_STEP_LABELS[cur]?.[uiLang] || LF_STEP_LABELS[cur]?.de || cur);
+      _lfSetStepName(nameEl, cur,
+        (LF_STEP_LABELS[cur]?.[uiLang] || LF_STEP_LABELS[cur]?.de || cur));
     }
   }
 }
