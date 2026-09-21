@@ -3888,12 +3888,6 @@ body{
       <!-- SPEECH PRACTICE (tab 7) -->
       <div id="vocab-panel-speech" style="display:none">
 
-        <!-- Прогрес -->
-        <div id="sp-progress" style="display:flex;justify-content:space-between;align-items:center">
-          <span id="sp-counter" class="sp-meta">1 / 7</span>
-          <span id="sp-score-chip" class="sp-meta" style="font-weight:700;color:var(--gold)"></span>
-        </div>
-
         <!-- Картка з терміном -->
         <div id="sp-card" onclick="spReplay()" style="cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">
           <div id="sp-term" class="sp-term-main" style="color:#fff"></div>
@@ -4388,7 +4382,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '693-f24af72';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5068,7 +5062,7 @@ const I18N = {
     btn_dlg_finish:'✓ Abschließen',
     btn_to_lessons:'🎓 Zur Lektionsliste',
     btn_check:'✓ Prüfen',
-    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter →', sp_result_btn:'Ergebnis →', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'🔄 Nochmal', sp_finish:'✓ Beenden', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter →', sp_result_btn:'Ergebnis →', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'🔄 Nochmal', sp_finish:'✓ Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -5169,7 +5163,7 @@ const I18N = {
     btn_dlg_finish:'✓ Завершити',
     btn_to_lessons:'🎓 До списку уроків',
     btn_check:'✓ Перевірити',
-    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі →', sp_result_btn:'Результат →', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'🔄 Ще раз', sp_finish:'✓ Завершити', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі →', sp_result_btn:'Результат →', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'🔄 Ще раз', sp_finish:'✓ Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -5269,7 +5263,7 @@ const I18N = {
     btn_dlg_finish:'✓ Finish',
     btn_to_lessons:'🎓 Lesson List',
     btn_check:'✓ Check',
-    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next →', sp_result_btn:'Result →', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'🔄 Again', sp_finish:'✓ Finish', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next →', sp_result_btn:'Result →', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'🔄 Again', sp_finish:'✓ Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -5369,7 +5363,7 @@ const I18N = {
     btn_dlg_finish:'✓ Завершить',
     btn_to_lessons:'🎓 К списку уроков',
     btn_check:'✓ Проверить',
-    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее →', sp_result_btn:'Результат →', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'🔄 Ещё раз', sp_finish:'✓ Завершить', tab_def_short:'Вставь', tab_speech:'Говорение',
+    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее →', sp_result_btn:'Результат →', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'🔄 Ещё раз', sp_finish:'✓ Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -6753,7 +6747,7 @@ function srRenderDailyPlan(){
 
   const state  = srLoadState();
   const streak = state.streak || 0;
-  const streakLbl = {'de':'Tage in Folge','uk':'днів поспіль','en':'day streak','ru':'дней подряд'}[uiLang] || 'days';
+  const streakLbl = t('streak_days');
   const streakHtml = streak > 0
     ? `<div class="sr-plan-streak" style="margin-bottom:10px;font-size:var(--fs-utility)">🔥 ${streak} ${streakLbl}</div>`
     : '';
@@ -11738,8 +11732,8 @@ function _examSimFinishSpeaking(){
   if(statsEl){
     var m = Math.floor(timeSpentSec/60), s = timeSpentSec%60;
     var timeStr = m+':'+(s<10?'0':'')+s;
-    var timeLabel = uiLang==='uk'?'Час':uiLang==='en'?'Time':uiLang==='ru'?'Время':'Zeit';
-    var xpLabel = uiLang==='uk'?'M зароблено':uiLang==='en'?'M earned':uiLang==='ru'?'M заработано':'M verdient';
+    var timeLabel = t('lr_l_time');
+    var xpLabel = t('lr_l_xp');
     var rows = [
       ['⏱', timeLabel, timeStr],
       ['𐌌', xpLabel, xpEarned, 'xp'],
@@ -12803,7 +12797,7 @@ function _lrShowStreakCard(streakResult, frozenDaysUsed){
     numEl.textContent = from;
     animateOdometer(numEl, from, streakResult.streak);
   }
-  if(lblEl) lblEl.textContent = {'de':'Tage in Folge!','uk':'днів поспіль!','en':'day streak!','ru':'дней подряд!'}[uiLang] || 'days!';
+  if(lblEl) lblEl.textContent = t('streak_days') + '!';
   // Якщо цей приріст стріку відбувся ЗАВДЯКИ заморозці (пропущений день
   // покрито mova_streak_freezes) — показуємо про це окремий рядок, щоб
   // не виглядало, ніби користувач помилково "не помітив" пропуску.
@@ -14424,11 +14418,6 @@ function spShowCard(){
   const card = spState.cards[spState.idx];
   if(!card){ if(spState.lesson) spLessonFinish(); else spFinishExercise(); return; }
 
-  // Прогрес
-  const counter = document.getElementById('sp-counter');
-  if(counter) counter.textContent = `${spState.idx + 1} / ${spState.cards.length}`;
-  const chip = document.getElementById('sp-score-chip');
-  if(chip) chip.textContent = spState.totalCount ? `✓ ${spState.correctCount}/${spState.totalCount}` : '';
   if(spState.lesson && LF){ LF.unitProgress = { done: spState.idx, total: spState.cards.length }; lfRenderBar(); }
 
   spRenderTermWords(card);
@@ -14702,10 +14691,6 @@ function spShowResult(heardText, card){
   }
   const lbl = document.getElementById('sp-mic-label');
   if(lbl) lbl.textContent = '';
-
-  // Прогрес
-  const chip = document.getElementById('sp-score-chip');
-  if(chip) chip.textContent = `✓ ${spState.correctCount}/${spState.totalCount}`;
 
   const rb = document.getElementById('sp-result-box');
   if(rb) rb.style.display = 'block';
@@ -18772,7 +18757,7 @@ function lfShowResult(){
   const elapsed  = Math.round((Date.now()-LF.startTime)/1000);
   const mins     = Math.floor(elapsed/60);
   const secs     = elapsed%60;
-  const timeStr  = mins>0 ? `${mins}хв ${secs}с` : `${secs}с`;
+  const timeStr  = mins>0 ? `${mins}${t('lr_u_min')} ${secs}${t('lr_u_sec')}` : `${secs}${t('lr_u_sec')}`;
 
   // Урок "тільки діалог" (Dialogue Bonus, LF.cards порожній — там нема
   // карток словника взагалі, лише репліки) — метрика "% покращено"
@@ -18808,16 +18793,16 @@ function lfShowResult(){
   let improved = 0, pct = 0, emoji, titleText;
   if(isFrmOnly){
     emoji = '📰';
-    titleText = uiLang==='uk'?'Допис завершено!':uiLang==='en'?'Forum post completed!':uiLang==='ru'?'Пост завершён!':'Beitrag abgeschlossen!';
+    titleText = t('lr_t_frm');
   } else if(isEmlOnly){
     emoji = '📧';
-    titleText = uiLang==='uk'?'Лист завершено!':uiLang==='en'?'E-mail completed!':uiLang==='ru'?'Письмо завершено!':'E-Mail abgeschlossen!';
+    titleText = t('lr_t_eml');
   } else if(isDlgOnly){
     emoji = '💬';
-    titleText = uiLang==='uk'?'Діалог завершено!':uiLang==='en'?'Dialogue completed!':uiLang==='ru'?'Диалог завершён!':'Dialog abgeschlossen!';
+    titleText = t('lr_t_dlg');
   } else if(isGrammarOnly){
     emoji = '📚';
-    titleText = uiLang==='uk'?'Граматику завершено!':uiLang==='en'?'Grammar completed!':uiLang==='ru'?'Грамматика завершена!':'Grammatik abgeschlossen!';
+    titleText = t('lr_t_gram');
   } else {
     // Рахуємо покращення SM-2
     improved = LF.cards.filter(c=>{
@@ -18826,10 +18811,7 @@ function lfShowResult(){
     }).length;
     pct = Math.round(improved/LF.cards.length*100);
     emoji = pct>=80?'🏆':pct>=50?'🎉':'💪';
-    titleText =
-      pct>=80 ? (uiLang==='uk'?'Чудово!':uiLang==='en'?'Excellent!':'Ausgezeichnet!') :
-      pct>=50 ? (uiLang==='uk'?'Добре!':uiLang==='en'?'Good job!':'Gut gemacht!') :
-                (uiLang==='uk'?'Продовжуй!':uiLang==='en'?'Keep going!':'Weiter so!');
+    titleText = t(pct>=80 ? 'lr_t_great' : pct>=50 ? 'lr_t_good' : 'lr_t_keep');
   }
 
   document.getElementById('lr-emoji').textContent = emoji;
@@ -18944,21 +18926,21 @@ function lfShowResult(){
   const xpEarnedThisLesson = xpGetTotal() - (LF._xpAtStart || 0);
   const statsEl = document.getElementById('lr-stats');
   if(statsEl){
-    const xpRow = ['𐌌', uiLang==='uk'?'M зароблено':uiLang==='en'?'M earned':uiLang==='ru'?'M заработано':'M verdient', xpEarnedThisLesson, 'xp'];
-    const timeRow = ['⏱', uiLang==='uk'?'Час':uiLang==='en'?'Time':'Zeit', timeStr];
+    const xpRow = ['𐌌', t('lr_l_xp'), xpEarnedThisLesson, 'xp'];
+    const timeRow = ['⏱', t('lr_l_time'), timeStr];
     const rows = isFrmOnly ? [
-      ['📰', uiLang==='uk'?'Дописів':uiLang==='en'?'Forum posts':uiLang==='ru'?'Постов':'Beiträge', LF.frmCards.length],
+      ['📰', t('lr_l_frm'), LF.frmCards.length],
       timeRow, xpRow,
     ] : isEmlOnly ? [
-      ['📧', uiLang==='uk'?'Листів':uiLang==='en'?'E-mails':uiLang==='ru'?'Писем':'E-Mails', LF.emlCards.length],
+      ['📧', t('lr_l_eml'), LF.emlCards.length],
       timeRow, xpRow,
     ] : isDlgOnly ? [
-      ['💬', uiLang==='uk'?'Діалогів':uiLang==='en'?'Dialogues':uiLang==='ru'?'Диалогов':'Dialoge', LF.dlgCards.length],
-      ['💭', uiLang==='uk'?'Реплік':uiLang==='en'?'Turns':uiLang==='ru'?'Реплик':'Repliken', totalTurns],
+      ['💬', t('lr_l_dlg'), LF.dlgCards.length],
+      ['💭', t('lr_l_turns'), totalTurns],
       timeRow, xpRow,
     ] : [
-      ['🗂', uiLang==='uk'?'Карток пройдено':uiLang==='en'?'Cards covered':'Karten', LF.cards.length],
-      ['📈', uiLang==='uk'?'Покращено':uiLang==='en'?'Improved':'Verbessert', improved+'/'+LF.cards.length],
+      ['🗂', t('lr_l_cards'), LF.cards.length],
+      ['📈', t('lr_l_improved'), improved+'/'+LF.cards.length],
       timeRow, xpRow,
     ];
     statsEl.innerHTML = rows.map(([icon,l,v,cls])=>
@@ -20716,7 +20698,7 @@ function showStreakInfoModal(){
   overlay.innerHTML =
     '<div class="streak-modal">' +
       '<div class="streak-modal-icon">🔥</div>' +
-      '<div class="streak-modal-title">' + streak + ' ' + ({'de':'Tage in Folge','uk':'днів поспіль','en':'day streak','ru':'дней подряд'}[uiLang] || 'days') + '</div>' +
+      '<div class="streak-modal-title">' + streak + ' ' + t('streak_days') + '</div>' +
       '<div class="streak-modal-sub">' + todayN + '/' + getGoal() + ' ' + t('lbl_today').toLowerCase() + ' · ' + t('lbl_total') + ': ' + (p.totalCards||0) + '</div>' +
       '<div class="streak-modal-freeze-box">' +
         '<div class="streak-modal-freeze-row">' +
