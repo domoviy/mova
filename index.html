@@ -457,7 +457,7 @@ body{
 
 /* ══ STREAK IN NAV ══ */
 .bn-streak{flex-direction:column;gap:2px;cursor:pointer}
-.bn-fire{font-size:22px;line-height:1;filter:grayscale(1) opacity(.35);transition:filter .4s}
+.bn-fire{font-size:22px;line-height:1;color:rgba(13,43,26,.3);transition:color .4s, filter .4s}
 /* Спільний бокс для іконки в шапці (🔥 emoji і 𐌌 unicode-гліф мають РІЗНІ
    внутрішні вертикальні метрики навіть при однаковому font-size — emoji
    традиційно "квадратні", текстовий гліф сидить на базовій лінії зі своїми
@@ -470,8 +470,14 @@ body{
 /* У шапці (темний #header) той самий тьмяний фільтр майже невидимий —
    світліший/непрозоріший варіант як дефолт, до того як JS (updateStreakUI)
    виставить inline hf.style.filter з тим самим значенням. */
-#header .bn-fire{filter:grayscale(1) brightness(1.9) opacity(.85);}
-.bn-streak.done .bn-fire{filter:none}
+/* Вогонь — монолінійна іконка (movaIcon('flame')): стан задає color, а не
+   filter на емодзі. Не виконано сьогодні — приглушений білий; виконано
+   (.lit, виставляє updateStreakUI) — золото, м'яке свічення й напівпрозора
+   заливка тіла полум'я. */
+#header .bn-fire{ color:rgba(255,255,255,.55); }
+#header .bn-fire.lit, .bn-streak.done .bn-fire{ color:var(--gold); filter:drop-shadow(0 0 5px rgba(201,168,76,.55)); }
+.bn-fire.lit .mi path:first-child, .bn-streak.done .bn-fire .mi path:first-child{ fill:rgba(201,168,76,.25); }
+#header .h-icon-btn:not(:has(.bn-fire)):not(:has(#h-xp)){ color:rgba(255,255,255,.72); }
 .bn-streak.pulse .bn-fire{animation:firePop .4s ease}
 @keyframes firePop{0%,100%{transform:scale(1)}50%{transform:scale(1.5)}}
 #bn-streak-count{font-size:14px;font-weight:700;color:var(--muted);line-height:1}
@@ -1068,6 +1074,8 @@ body{
    lesson (лісовий фон) — золото, як логотип; типові кольорові гемы —
    біле; done (золотий фон) — лісове; locked — приглушене. */
 .mi{ width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block;flex-shrink:0; }
+/* в потоці тексту (чіпи "▶ Почати", заголовки): іконка як перший "символ" рядка */
+.mi.mi-inline{ display:inline-block;width:.95em;height:.95em;vertical-align:-.14em;margin-right:.35em; }
 .lp-node{ color:var(--gold); }
 .lp-node.lp-node-smalltalk,.lp-node.lp-node-problemsolving,.lp-node.lp-node-forum,.lp-node.lp-node-email{ color:#fff; }
 .lp-node.done{ color:var(--forest); }
@@ -1449,6 +1457,7 @@ body{
 .ob-card-flag{
   font-size:36px;flex-shrink:0;
   width:48px;text-align:center;
+  display:flex;align-items:center;justify-content:center;color:var(--gold);
 }
 .ob-card-text{
   flex:1;
@@ -1851,7 +1860,8 @@ body{
 .tiles-result-label{font-size:var(--fs-tertiary);font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
 .tiles-result-correct{font-size:var(--fs-card);font-weight:400;color:var(--ink);text-align:center;line-height:1.3;}
 .tiles-result-translation{font-size:var(--fs-secondary);color:var(--muted);line-height:1.3;text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
-.course-emoji{font-size:24px}
+.course-emoji{font-size:24px;display:flex;color:var(--forest)}
+.course-btn.active .course-emoji{color:var(--gold)}
 .course-title{display:block;font-weight:700;font-size:var(--fs-tertiary);color:var(--ink)}
 .course-desc{display:block;font-size:var(--fs-utility);color:var(--muted);margin-top:1px}
 .course-level-badge{font-size:var(--fs-utility);font-weight:700;padding:2px 7px;border-radius:6px;background:rgba(201,168,76,.12);color:var(--gold)}
@@ -2410,6 +2420,15 @@ body{
 /* ══ SETTINGS ══ */
 .ssec{background:var(--paper);border-radius:13px;border:1px solid var(--border);padding:14px;margin-bottom:12px}
 .ssec h3{font-size:14px;font-weight:700;color:var(--muted);margin-bottom:12px;text-transform:uppercase;letter-spacing:.8px}
+/* Іконки Налаштувань (movaIcon): заголовки секцій — золотий акцент, у
+   рядках/кнопках — колір тексту */
+.ssec h3 .mi-inline, .sr-dash-title .mi-inline{ color:var(--gold);width:1.2em;height:1.2em;vertical-align:-.28em;margin-right:8px; }
+.ssec-group-title .mi{ width:1.3em;height:1.3em;flex-shrink:0; }
+.srow-ico{ display:inline-flex;color:var(--gold);vertical-align:middle; }
+.srow-ico .mi{ width:1.3em;height:1.3em; }
+.srow-label label .mi-inline{ color:var(--gold);width:1.15em;height:1.15em;vertical-align:-.22em;margin-right:6px; }
+.btn .mi-inline{ width:1.1em;height:1.1em;vertical-align:-.2em;margin-right:6px; }
+#cloud-auth-status .mi-inline{ vertical-align:-.2em; }
 /* Групи другого рівня в Settings: об'єднують кілька .ssec-карток однієї
    теми (Gestalt-принцип близькості). Заголовок групи — жирний, золотий,
    трохи більший за підзаголовки карток всередині — щоб при швидкому
@@ -2451,6 +2470,7 @@ body{
 .speed-toggle{display:flex;gap:6px}
 .sp-btn{flex:1;padding:6px 8px;border-radius:8px;border:1.5px solid var(--border);background:var(--soft);font-size:var(--fs-tertiary);font-weight:600;cursor:pointer;font-family:inherit;color:var(--muted);transition:.15s;white-space:nowrap;text-align:center}
 .sp-btn.active{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
+.sp-btn .mi-inline{ width:1.15em;height:1.15em;vertical-align:-.22em;margin-right:5px; }
 .sp-btn:active{opacity:.7}
 .sp-btn-unavailable{opacity:.35;cursor:not-allowed;pointer-events:none}
 .btn-s{background:var(--soft);color:var(--warm);border:1px solid var(--border)}
@@ -2611,6 +2631,7 @@ body{
   font-size:20px;cursor:pointer;font-family:inherit;color:var(--ink);
 }
 .lf-repeat-btn:active{opacity:.8;transform:scale(.96);background:var(--soft);}
+.lf-repeat-btn .mi{ width:1.15em;height:1.15em; }
 
 /* ── Універсальна картка-юніт уроку (без 3D-обертання — фронт/бек —
    це послідовні рендери одного контейнера, "різні картки") ── */
@@ -2962,7 +2983,7 @@ body{
   box-shadow:0 16px 56px rgba(0,0,0,.4);
   border-top:3px solid var(--gold);
 }
-.cs-modal-icon{font-size:48px;margin-bottom:16px;line-height:1;}
+.cs-modal-icon{font-size:48px;margin-bottom:16px;line-height:1;display:flex;justify-content:center;color:var(--gold);}
 .cs-modal-icon.spin{animation:csModalSpin 1s linear infinite;}
 @keyframes csModalSpin{ to{ transform:rotate(360deg); } }
 .cs-modal-icon.pop{animation:csModalPop .4s cubic-bezier(.34,1.56,.64,1);}
@@ -3065,8 +3086,10 @@ body{
 .streak-modal-icon{
   width:56px;height:56px;border-radius:50%;margin:0 auto 10px;
   display:flex;align-items:center;justify-content:center;
-  font-size:26px;background:var(--soft);
+  font-size:26px;background:var(--soft);color:var(--forest);
 }
+.streak-modal-icon .mi{ width:1.15em;height:1.15em; }
+.streak-modal-icon .mi path:first-child{ fill:rgba(201,168,76,.45); }
 .streak-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);margin-bottom:4px}
 .streak-modal-sub{font-size:var(--fs-secondary);color:var(--warm);margin-bottom:18px}
 .streak-modal-freeze-box{
@@ -3297,7 +3320,8 @@ body{
 /* Exam Dashboard */
 .sr-dashboard-ssec{background:var(--paper);border-radius:13px;border:1px solid var(--border);padding:14px;margin-bottom:12px}
 .sr-dash-title{font-size:var(--fs-tertiary);font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:12px}
-.sr-info-icon{cursor:pointer;font-size:var(--fs-utility);opacity:.55;text-transform:none;letter-spacing:0;font-weight:400;-webkit-tap-highlight-color:transparent}
+.sr-info-icon{cursor:pointer;font-size:var(--fs-utility);opacity:.55;text-transform:none;letter-spacing:0;font-weight:400;-webkit-tap-highlight-color:transparent;display:inline-flex;vertical-align:-.25em}
+.sr-info-icon .mi{ width:1.5em;height:1.5em; }
 .sr-info-icon:active{opacity:1}
 .sr-dash-row{display:flex;align-items:center;gap:8px;padding:7px 0;border-bottom:1px solid var(--soft)}
 .sr-dash-row:last-child{border-bottom:none}
@@ -3308,7 +3332,8 @@ body{
 .sr-dash-bar.yellow{background:var(--gold)}
 .sr-dash-bar.red{background:var(--red)}
 .sr-dash-pct{font-size:var(--fs-utility);font-weight:700;font-family:'Inter',monospace;color:var(--muted);min-width:36px;text-align:right}
-.sr-dash-warn{font-size:var(--fs-utility);color:var(--red);margin-left:2px}
+.sr-dash-warn{font-size:var(--fs-utility);color:var(--red);margin-left:2px;display:inline-flex}
+.sr-dash-warn .mi{ width:1.3em;height:1.3em; }
 .sr-dash-learned{text-align:center;padding:10px 0 0;font-size:var(--fs-utility);color:var(--muted)}
 .sr-dash-learned span{color:var(--gold);font-weight:700;font-family:'Inter',monospace}
 
@@ -3677,7 +3702,7 @@ body{
        готовий") і по завершенню часу ("Завершити") — той самий блок,
        лише напис основної кнопки міняється (_examSimShowFinishBlock). -->
   <div id="exam-sim-timeup-actions" style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;gap:10px;z-index:201">
-    <button onclick="examSimShowExample()" class="lf-repeat-btn" title="Подивитися приклад" data-i18n-title="exam_sim_view_example">👁</button>
+    <button onclick="examSimShowExample()" class="lf-repeat-btn" title="Подивитися приклад" data-i18n-title="exam_sim_view_example"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.8 12C4.8 8 8.2 5.8 12 5.8s7.2 2.2 9.2 6.2c-2 4-5.4 6.2-9.2 6.2S4.8 16 2.8 12z"/><path d="M12 9.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6z"/></svg></button>
     <button id="exam-sim-finish-btn" onclick="examSimFinishClicked()" class="btn btn-lesson-sb-next" style="position:static;flex:1">Завершити</button>
   </div>
 </div>
@@ -3744,10 +3769,10 @@ body{
         <span id="h-xp-count" class="h-chip-counter">0</span>
       </button>
       <button class="h-icon-btn" onclick="showStreakInfoModal()" title="Streak">
-        <span class="bn-fire h-icon-glyph" id="h-fire" style="font-size:22px">🔥</span>
+        <span class="bn-fire h-icon-glyph" id="h-fire" style="font-size:22px"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21.4C7.9 21.4 5.2 18.7 5.2 14.9c0-2.6 1.4-4.5 2.8-6.2.4 1.5 1.2 2.3 2.2 2.6-.7-3.7.8-6.6 3.4-8.7.3 2.9 2.4 4.6 3.8 6.8.9 1.4 1.4 3.3 1.4 5.5 0 3.8-2.7 6.5-6.8 6.5z"/><path d="M9.4 15.6c.1 1.6 1.2 2.7 2.6 2.7"/></svg></span>
         <span id="h-streak-count" class="h-chip-counter">0</span>
       </button>
-      <button class="h-icon-btn" onclick="showView('settings')" title="Settings">⚙️</button>
+      <button class="h-icon-btn" onclick="showView('settings')" title="Settings"><span class="h-icon-glyph" style="font-size:22px"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.45 5.28L10.63 2.80A9.3 9.3 0 0 1 13.37 2.80L13.55 5.28A6.9 6.9 0 0 1 15.66 6.15L15.66 6.15L17.53 4.52A9.3 9.3 0 0 1 19.48 6.47L17.85 8.34A6.9 6.9 0 0 1 18.72 10.45L18.72 10.45L21.20 10.63A9.3 9.3 0 0 1 21.20 13.37L18.72 13.55A6.9 6.9 0 0 1 17.85 15.66L17.85 15.66L19.48 17.53A9.3 9.3 0 0 1 17.53 19.48L15.66 17.85A6.9 6.9 0 0 1 13.55 18.72L13.55 18.72L13.37 21.20A9.3 9.3 0 0 1 10.63 21.20L10.45 18.72A6.9 6.9 0 0 1 8.34 17.85L8.34 17.85L6.47 19.48A9.3 9.3 0 0 1 4.52 17.53L6.15 15.66A6.9 6.9 0 0 1 5.28 13.55L5.28 13.55L2.80 13.37A9.3 9.3 0 0 1 2.80 10.63L5.28 10.45A6.9 6.9 0 0 1 6.15 8.34L6.15 8.34L4.52 6.47A9.3 9.3 0 0 1 6.47 4.52L8.34 6.15A6.9 6.9 0 0 1 10.45 5.28z"/><path d="M12 9.1a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8z"/></svg></span></button>
     </div>
   </div>
 
@@ -4196,15 +4221,15 @@ body{
     </div>
 
     <div id="view-settings" class="view">
-    <div class="sh"><h2>⚙️ <span data-i18n="sec_settings">Einstellungen</span></h2></div>
+    <div class="sh"><h2><svg class="mi mi-inline" viewBox="0 0 24 24" aria-hidden="true"><path d="M10.45 5.28L10.63 2.80A9.3 9.3 0 0 1 13.37 2.80L13.55 5.28A6.9 6.9 0 0 1 15.66 6.15L15.66 6.15L17.53 4.52A9.3 9.3 0 0 1 19.48 6.47L17.85 8.34A6.9 6.9 0 0 1 18.72 10.45L18.72 10.45L21.20 10.63A9.3 9.3 0 0 1 21.20 13.37L18.72 13.55A6.9 6.9 0 0 1 17.85 15.66L17.85 15.66L19.48 17.53A9.3 9.3 0 0 1 17.53 19.48L15.66 17.85A6.9 6.9 0 0 1 13.55 18.72L13.55 18.72L13.37 21.20A9.3 9.3 0 0 1 10.63 21.20L10.45 18.72A6.9 6.9 0 0 1 8.34 17.85L8.34 17.85L6.47 19.48A9.3 9.3 0 0 1 4.52 17.53L6.15 15.66A6.9 6.9 0 0 1 5.28 13.55L5.28 13.55L2.80 13.37A9.3 9.3 0 0 1 2.80 10.63L5.28 10.45A6.9 6.9 0 0 1 6.15 8.34L6.15 8.34L4.52 6.47A9.3 9.3 0 0 1 6.47 4.52L8.34 6.15A6.9 6.9 0 0 1 10.45 5.28z"/><path d="M12 9.1a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8z"/></svg><span data-i18n="sec_settings">Einstellungen</span></h2></div>
 
     <!-- ГРУПА 1: Курс і мова ─────────────────────────────────── -->
     <div class="ssec-group">
-    <div class="ssec-group-title">📚 <span data-i18n="grp_course_lang">Kurs &amp; Sprache</span><span class="ssec-group-line"></span></div>
+    <div class="ssec-group-title"><i data-mi="book" class=""></i><span data-i18n="grp_course_lang">Kurs &amp; Sprache</span><span class="ssec-group-line"></span></div>
 
     <!-- 1. Курс -->
     <div class="ssec" id="ssec-course">
-    <h3>📚 <span data-i18n="sec_course">Kurs</span></h3>
+    <h3><i data-mi="book" class="mi-inline"></i><span data-i18n="sec_course">Kurs</span></h3>
     <div id="course-list" style="display:flex;flex-direction:column;gap:8px;padding:4px 0">
       <!-- Рендериться через renderCourseList() при ініті -->
     </div>
@@ -4212,7 +4237,7 @@ body{
 
     <!-- 2. Мова інтерфейсу -->
     <div class="ssec" id="ssec-lang">
-    <h3>🌐 <span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
+    <h3><i data-mi="globe" class="mi-inline"></i><span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
     <div style="display:flex;gap:8px;padding:4px 0;flex-direction:column">
       <button class="btn ui-lang-btn ssec-btn active" data-lang="de" onclick="setUiLang('de')">🇩🇪 Deutsch</button>
       <button class="btn ui-lang-btn ssec-btn" data-lang="uk" onclick="setUiLang('uk')">🇺🇦 Українська</button>
@@ -4223,7 +4248,7 @@ body{
 
     <!-- 3. Розмір шрифту -->
     <div class="ssec" id="ssec-fontsize">
-    <h3>🔤 <span data-i18n="sec_fontsize">Schriftgröße</span></h3>
+    <h3><i data-mi="textsize" class="mi-inline"></i><span data-i18n="sec_fontsize">Schriftgröße</span></h3>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:10px">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <div class="srow-label" style="margin:0"><label data-i18n="lbl_fontsize_card">Kartengröße</label><small data-i18n="lbl_fontsize_card_sub">Begriff, Definition, Sätze, Kacheln</small></div>
@@ -4241,11 +4266,11 @@ body{
 
     <!-- ГРУПА 2: Прогрес і іспит ─────────────────────────────── -->
     <div class="ssec-group">
-    <div class="ssec-group-title">🎯 <span data-i18n="grp_progress_exam">Fortschritt &amp; Prüfung</span><span class="ssec-group-line"></span></div>
+    <div class="ssec-group-title"><i data-mi="target" class=""></i><span data-i18n="grp_progress_exam">Fortschritt &amp; Prüfung</span><span class="ssec-group-line"></span></div>
 
     <!-- 4. Готовність до іспиту -->
     <div class="sr-dashboard-ssec" id="ssec-sr-dashboard">
-    <div class="sr-dash-title">🎯 <span data-i18n="sec_readiness">Prüfungsbereitschaft</span> <span class="sr-info-icon" onclick="notify(t('sr_readiness_info'))" title="">ⓘ</span></div>
+    <div class="sr-dash-title"><i data-mi="target" class="mi-inline"></i><span data-i18n="sec_readiness">Prüfungsbereitschaft</span> <span class="sr-info-icon" onclick="notify(t('sr_readiness_info'))" title=""><i data-mi="info" class=""></i></span></div>
     <div id="sr-dashboard-rows">
       <div class="sr-plan-empty">Noch keine Daten. Beginne mit dem Lernen.</div>
     </div>
@@ -4254,7 +4279,7 @@ body{
 
     <!-- 5. Дата іспиту -->
     <div class="ssec" id="ssec-sr-examdate">
-    <h3>🗓️ <span data-i18n="sec_examdate">Prüfungsdatum</span></h3>
+    <h3><i data-mi="calendar" class="mi-inline"></i><span data-i18n="sec_examdate">Prüfungsdatum</span></h3>
     <div class="srow">
       <div class="srow-label"><label id="sr-settings-date-lbl">Prüfungstermin</label><small id="sr-settings-mode-lbl"></small></div>
       <input type="date" id="sr-settings-date-input" class="sr-date-input" style="background:var(--soft);border-color:var(--border);color:var(--ink);min-width:0;width:140px" onchange="srOnDateChange(this.value)">
@@ -4263,18 +4288,18 @@ body{
 
     <!-- 6. Ціль і дані -->
     <div class="ssec">
-    <h3>📊 <span data-i18n="sec_goal_data">Lernziel &amp; Daten</span></h3>
+    <h3><i data-mi="chart" class="mi-inline"></i><span data-i18n="sec_goal_data">Lernziel &amp; Daten</span></h3>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
     <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_today">M heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-today">0</span></div>
     <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_total">M gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-total">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
     <div class="srow" onclick="showStreakInfoModal()" style="cursor:pointer">
-      <div class="srow-label"><span style="color:var(--gold);font-weight:700">🧊</span> <label data-i18n="sec_streak_freeze">Streak-Schutz</label></div>
+      <div class="srow-label"><span class="srow-ico"><i data-mi="snowflake" class=""></i></span> <label data-i18n="sec_streak_freeze">Streak-Schutz</label></div>
       <span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-freeze-count">3</span>
     </div>
     <div class="srow">
-      <div class="srow-label"><span style="color:var(--gold);font-weight:700">🔊</span> <label data-i18n="sec_sfx" for="sfx-toggle">Soundeffekte</label><small data-i18n="sub_sfx">Bei richtig/falsch</small></div>
+      <div class="srow-label"><span class="srow-ico"><i data-mi="speaker" class=""></i></span> <label data-i18n="sec_sfx" for="sfx-toggle">Soundeffekte</label><small data-i18n="sub_sfx">Bei richtig/falsch</small></div>
       <label class="dbg-switch">
         <input type="checkbox" id="sfx-toggle" checked onchange="setSfxEnabled(this.checked)">
         <span class="dbg-switch-track"></span>
@@ -4285,11 +4310,11 @@ body{
 
     <!-- ГРУПА 3: Аудіо ───────────────────────────────────────── -->
     <div class="ssec-group">
-    <div class="ssec-group-title">🔊 <span data-i18n="grp_audio">Wiedergabe</span><span class="ssec-group-line"></span></div>
+    <div class="ssec-group-title"><i data-mi="speaker" class=""></i><span data-i18n="grp_audio">Wiedergabe</span><span class="ssec-group-line"></span></div>
 
     <!-- 7. Налаштування озвучування (Швидкість — перший пункт) -->
     <div class="ssec">
-    <h3>🔊 <span data-i18n="sec_playback">Wiedergabe</span></h3>
+    <h3><i data-mi="speaker" class="mi-inline"></i><span data-i18n="sec_playback">Wiedergabe</span></h3>
     <div class="srow" id="tempo-row"></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_pause">Pause</label><small data-i18n="sub_pause">Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
@@ -4300,17 +4325,17 @@ body{
     <!-- ГРУПА 4: Технічне — прихована за замовчуванням (лише Debug), -->
     <!-- розблоковується 5 тапами по версії застосунку внизу (_debugVersionTap) -->
     <div class="ssec-group" id="settings-group-technical" style="display:none">
-    <div class="ssec-group-title">🛠 <span data-i18n="grp_technical">Technisch</span><span class="ssec-group-line"></span></div>
+    <div class="ssec-group-title"><i data-mi="wrench" class=""></i><span data-i18n="grp_technical">Technisch</span><span class="ssec-group-line"></span></div>
 
     <!-- 8. Налагодження — згорнуто за замовчуванням, клік по заголовку розгортає -->
     <div class="ssec">
     <h3 onclick="toggleDebugSection(this)" style="cursor:pointer;display:flex;align-items:center;justify-content:space-between;margin-bottom:0">
-      <span>🛠 <span data-i18n="sec_debug">Debug</span></span>
-      <span class="ssec-chevron" style="font-size:12px;transition:transform .2s">▸</span>
+      <span><i data-mi="wrench" class="mi-inline"></i><span data-i18n="sec_debug">Debug</span></span>
+      <span class="ssec-chevron" style="font-size:16px;transition:transform .2s;display:flex"><i data-mi="chevron" class=""></i></span>
     </h3>
     <div id="debug-section-content" style="display:none;margin-top:12px">
     <div class="srow">
-      <div class="srow-label"><label>🔓 <span data-i18n="lbl_unlock_all">Розблокувати усі уроки</span></label><small data-i18n="sub_unlock_all">Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!</small></div>
+      <div class="srow-label"><label><i data-mi="unlock" class="mi-inline"></i><span data-i18n="lbl_unlock_all">Розблокувати усі уроки</span></label><small data-i18n="sub_unlock_all">Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!</small></div>
       <label class="dbg-switch">
         <input type="checkbox" id="debug-unlock-all-toggle" onchange="debugToggleUnlockAll(this.checked)">
         <span class="dbg-switch-track"></span>
@@ -4318,27 +4343,27 @@ body{
     </div>
     <div class="srow">
       <div class="srow-label"><label>Error Log</label><small>Переглянути помилки аудіо та JS</small></div>
-      <button class="btn btn-s" onclick="showErrorLog()">📋 Log</button>
+      <button class="btn btn-s" style="white-space:nowrap" onclick="showErrorLog()"><i data-mi="clipboard" class="mi-inline"></i>Log</button>
     </div>
     <div class="srow">
-      <div class="srow-label"><label>⏱ Perf Log</label><small>Заміри швидкості завантаження (сплеш-екран)</small></div>
-      <button class="btn btn-s" onclick="showPerfLog()">📋 Log</button>
+      <div class="srow-label"><label><i data-mi="timer" class="mi-inline"></i>Perf Log</label><small>Заміри швидкості завантаження (сплеш-екран)</small></div>
+      <button class="btn btn-s" style="white-space:nowrap" onclick="showPerfLog()"><i data-mi="clipboard" class="mi-inline"></i>Log</button>
     </div>
     <div class="srow">
-      <div class="srow-label"><label>🎤 Speech Log</label><small>Лог розпізнавання мови</small></div>
-      <button class="btn btn-s" onclick="showSpeechLog()">📋 Log</button>
+      <div class="srow-label"><label><i data-mi="mic" class="mi-inline"></i>Speech Log</label><small>Лог розпізнавання мови</small></div>
+      <button class="btn btn-s" style="white-space:nowrap" onclick="showSpeechLog()"><i data-mi="clipboard" class="mi-inline"></i>Log</button>
     </div>
     <div class="srow">
-      <div class="srow-label"><label>🐞 Повідомити про помилку</label><small>Тест форми звіту (тип помилки + коментар) — поки що тимчасово тут, згодом буде доступна прямо з вправ</small></div>
-      <button class="btn btn-s" onclick="showBugReportModal()">🐞 Звіт</button>
+      <div class="srow-label"><label><i data-mi="bug" class="mi-inline"></i>Повідомити про помилку</label><small>Тест форми звіту (тип помилки + коментар) — поки що тимчасово тут, згодом буде доступна прямо з вправ</small></div>
+      <button class="btn btn-s" style="white-space:nowrap" onclick="showBugReportModal()"><i data-mi="bug" class="mi-inline"></i>Звіт</button>
     </div>
     <div class="srow">
-      <div class="srow-label"><label>🔊 Аудіо-кеш</label><small>Видалити всі завантажені аудіофайли</small></div>
-      <button class="btn btn-s" onclick="clearAudioCache()">🗑 Очистити кеш аудіо</button>
+      <div class="srow-label"><label><i data-mi="speaker" class="mi-inline"></i>Аудіо-кеш</label><small>Видалити всі завантажені аудіофайли</small></div>
+      <button class="btn btn-s" onclick="clearAudioCache()"><i data-mi="trash" class="mi-inline"></i>Очистити кеш аудіо</button>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>☁️ Хмарний бекап (тест)</label><small>Firebase email+пароль — експериментально, ручний бекап/відновлення, без авто-синхронізації між пристроями</small></div>
-      <div id="cloud-auth-status" style="font-size:13px;color:var(--muted)">🔒 Не увійшли</div>
+      <div class="srow-label"><label><i data-mi="cloud" class="mi-inline"></i>Хмарний бекап (тест)</label><small>Firebase email+пароль — експериментально, ручний бекап/відновлення, без авто-синхронізації між пристроями</small></div>
+      <div id="cloud-auth-status" style="font-size:13px;color:var(--muted)"><i data-mi="lock" class="mi-inline"></i>Не увійшли</div>
       <div id="cloud-auth-form" style="display:flex;flex-direction:column;gap:6px">
         <input type="email" id="cloud-email" placeholder="Email" autocomplete="email"
           style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
@@ -4351,23 +4376,23 @@ body{
       </div>
       <div id="cloud-signed-in-actions" style="display:none;flex-direction:column;gap:6px">
         <div style="display:flex;gap:6px">
-          <button class="btn btn-s" style="flex:1" onclick="debugCloudBackup()">⬆️ Зберегти в хмару</button>
-          <button class="btn btn-s" style="flex:1" onclick="debugCloudRestore()">⬇️ Відновити з хмари</button>
+          <button class="btn btn-s" style="flex:1" onclick="debugCloudBackup()"><i data-mi="upload" class="mi-inline"></i>Зберегти в хмару</button>
+          <button class="btn btn-s" style="flex:1" onclick="debugCloudRestore()"><i data-mi="download" class="mi-inline"></i>Відновити з хмари</button>
         </div>
         <button class="btn btn-s" onclick="window.cloudSignOut?.()">Вийти з акаунту</button>
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>🃏 Вправи Vocab (тест)</label><small>Прямий доступ до вкладок, прибраних з основного UI</small></div>
+      <div class="srow-label"><label><i data-mi="tiles" class="mi-inline"></i>Вправи Vocab (тест)</label><small>Прямий доступ до вкладок, прибраних з основного UI</small></div>
       <div style="display:flex;flex-direction:column;gap:6px">
-        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)">❓ Квіз</button>
-        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)">🎤 Вимова</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)"><i data-mi="mic" class="mi-inline"></i>Вимова</button>
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label>🎤 Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією). Кожна тема — окремою кнопкою.</small></div>
+      <div class="srow-label"><label><i data-mi="mic" class="mi-inline"></i>Mündliche Prüfung – Teil 1 (тест)</label><small>Самостійний перегляд var STORY — той самий рушій: task-контекст, потім блоки усної розповіді крок-за-кроком (озвучення+karaoke, <r>/<g>, переклад з анімацією). Кожна тема — окремою кнопкою.</small></div>
       <div id="debug-story-topics" style="display:flex;flex-direction:column;gap:6px"></div>
-      <button class="btn btn-s" onclick="toggleCustomStoryForm()">➕ Додати свою тему</button>
+      <button class="btn btn-s" onclick="toggleCustomStoryForm()"><i data-mi="plus" class="mi-inline"></i>Додати свою тему</button>
       <div id="story-custom-form" style="display:none;flex-direction:column;gap:10px;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:10px">
         <div style="display:flex;flex-direction:column;gap:2px">
           <input type="text" id="story-custom-topic" maxlength="80" oninput="_storyCustomUpdateCounter(this)" placeholder="Тема (напр. Мій робочий день)"
@@ -4396,13 +4421,13 @@ body{
         </div>
         <small style="color:var(--muted)">Дозволені літери, цифри, пробіли й звичайні розділові знаки — без символів на кшталт &lt; &gt; &amp; { } [ ] \ ~ ^ та емодзі (можуть зламати генерацію озвучення).</small>
         <div style="display:flex;gap:6px">
-          <button class="btn btn-s" style="flex:1" onclick="saveCustomStoryTopic()">💾 Зберегти тему</button>
+          <button class="btn btn-s" style="flex:1" onclick="saveCustomStoryTopic()"><i data-mi="save" class="mi-inline"></i>Зберегти тему</button>
           <button class="btn btn-s" style="flex:1" onclick="toggleCustomStoryForm(false)">Скасувати</button>
         </div>
       </div>
     </div>
     <div class="srow">
-      <div class="srow-label"><label>🗓 Daily Plan</label><small>Картка "Продовжити навчання" (#sr-daily-plan) над лінією уроків — прихована за замовчуванням (дублює чіп "Продовжити" на поточному модулі й стрік у шапці). Лише для тестування.</small></div>
+      <div class="srow-label"><label><i data-mi="calendar" class="mi-inline"></i>Daily Plan</label><small>Картка "Продовжити навчання" (#sr-daily-plan) над лінією уроків — прихована за замовчуванням (дублює чіп "Продовжити" на поточному модулі й стрік у шапці). Лише для тестування.</small></div>
       <label class="dbg-switch">
         <input type="checkbox" id="debug-daily-plan-toggle" onchange="debugToggleDailyPlan(this.checked)">
         <span class="dbg-switch-track"></span>
@@ -4456,7 +4481,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '698-d801699';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4473,6 +4498,7 @@ const COURSES = [
     id:       'Deutsch-A2',
     title:    'A2 Deutsch',
     emoji:    '🏠',
+    icon:     'home',
     level:    'A2',
     langs:    ['de','uk','en'],
     desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
@@ -4481,6 +4507,7 @@ const COURSES = [
     id:       'Deutsch-B1',
     title:    'B1 Deutsch',
     emoji:    '💬',
+    icon:     'bubble',
     level:    'B1',
     langs:    ['de','uk','en'],
     desc:     { de:'Deutsch für Fortgeschrittene', uk:'Німецька для середнього рівня', en:'German for intermediate learners' },
@@ -4489,17 +4516,10 @@ const COURSES = [
     id:       'Deutsch-B2-Beruf',
     title:    'B2 Beruf',
     emoji:    '💼',
+    icon:     'briefcase',
     level:    'B2',
     langs:    ['de','uk','en'],
     desc:     { de:'Deutsch für den Beruf', uk:'Німецька для роботи', en:'German for Work' },
-  },
-  {
-    id:       'Financial-Accounting-Foundations',
-    title:    'Financial Accounting: Foundations',
-    emoji:    '💰',
-    level:    'Foundations',
-    langs:    ['en','uk'],
-    desc:     { de:'Grundlagen der Finanzbuchhaltung', uk:'Основи фінансового обліку', en:'Financial accounting fundamentals' },
   },
   // Приклад як додати новий курс:
   // {
@@ -4515,7 +4535,14 @@ const COURSES = [
 let activeCourse = null;  // поточний курс (об'єкт з COURSES)
 
 function getSavedCourseId(){
-  return localStorage.getItem('mova_course') || 'Deutsch-B2-Beruf';
+  const saved = localStorage.getItem('mova_course');
+  // Збережений курс міг бути прибраний зі списку COURSES (так було з
+  // Financial-Accounting-Foundations): тоді loadCourseScript відхиляв би
+  // "Course not found", і застосунок у такого користувача не стартував би.
+  // Дані прогресу під id видаленого курсу в localStorage лишаються —
+  // їх ніхто не стирає.
+  if(saved && COURSES.some(c=>c.id===saved)) return saved;
+  return 'Deutsch-B2-Beruf';
 }
 function saveCourseId(id){
   localStorage.setItem('mova_course', id);
@@ -4998,15 +5025,15 @@ function csShowModal(state, course){
   const name = course?.title || '';
   icon.classList.remove('spin','pop');
   if(state === 'loading'){
-    icon.textContent = course?.emoji || '📚';
+    icon.innerHTML = (course && course.icon) ? movaIcon(course.icon) : (course?.emoji || movaIcon('book'));
     icon.classList.add('spin');
     title.textContent = t('course_loading').replace('{course}', name);
   } else if(state === 'done'){
-    icon.textContent = '✅';
+    icon.innerHTML = movaIcon('check');
     icon.classList.add('pop');
     title.textContent = t('course_active').replace('{course}', name);
   } else if(state === 'error'){
-    icon.textContent = '⚠️';
+    icon.innerHTML = movaIcon('warn');
     icon.classList.add('pop');
     title.textContent = t('course_error') || 'Помилка завантаження курсу';
   }
@@ -5123,8 +5150,59 @@ var MOVA_ICONS = {
   cross:  '<path d="M6.4 6.4l11.2 11.2M17.6 6.4 6.4 17.6"/>',
   cap:    '<path d="M2.8 9.6 12 5l9.2 4.6L12 14.2z"/><path d="M6.6 11.8v4.4c1.4 1.5 3.3 2.2 5.4 2.2s4-.7 5.4-2.2v-4.4"/><path d="M21.2 9.6v5"/>',
   star:   '<path d="M12 3.9l2.5 5.2 5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4 5.7-.8z"/>',
+  flame:  '<path d="M12 21.4C7.9 21.4 5.2 18.7 5.2 14.9c0-2.6 1.4-4.5 2.8-6.2.4 1.5 1.2 2.3 2.2 2.6-.7-3.7.8-6.6 3.4-8.7.3 2.9 2.4 4.6 3.8 6.8.9 1.4 1.4 3.3 1.4 5.5 0 3.8-2.7 6.5-6.8 6.5z"/><path d="M9.4 15.6c.1 1.6 1.2 2.7 2.6 2.7"/>',
+  gear:   '<path d="M10.45 5.28L10.63 2.80A9.3 9.3 0 0 1 13.37 2.80L13.55 5.28A6.9 6.9 0 0 1 15.66 6.15L15.66 6.15L17.53 4.52A9.3 9.3 0 0 1 19.48 6.47L17.85 8.34A6.9 6.9 0 0 1 18.72 10.45L18.72 10.45L21.20 10.63A9.3 9.3 0 0 1 21.20 13.37L18.72 13.55A6.9 6.9 0 0 1 17.85 15.66L17.85 15.66L19.48 17.53A9.3 9.3 0 0 1 17.53 19.48L15.66 17.85A6.9 6.9 0 0 1 13.55 18.72L13.55 18.72L13.37 21.20A9.3 9.3 0 0 1 10.63 21.20L10.45 18.72A6.9 6.9 0 0 1 8.34 17.85L8.34 17.85L6.47 19.48A9.3 9.3 0 0 1 4.52 17.53L6.15 15.66A6.9 6.9 0 0 1 5.28 13.55L5.28 13.55L2.80 13.37A9.3 9.3 0 0 1 2.80 10.63L5.28 10.45A6.9 6.9 0 0 1 6.15 8.34L6.15 8.34L4.52 6.47A9.3 9.3 0 0 1 6.47 4.52L8.34 6.15A6.9 6.9 0 0 1 10.45 5.28z"/><path d="M12 9.1a2.9 2.9 0 1 0 0 5.8 2.9 2.9 0 0 0 0-5.8z"/>',
+  play:   '<path fill="currentColor" d="M8.3 5.5v13a.7.7 0 0 0 1.06.6l10.3-6.5a.7.7 0 0 0 0-1.2L9.36 4.9a.7.7 0 0 0-1.06.6z"/>',
+  grammar:'<path d="M2.9 18.4 7.6 5.9l4.7 12.5M4.7 13.8h5.8"/><path d="M19.9 15.6a2.9 2.9 0 1 1-5.8 0 2.9 2.9 0 0 1 5.8 0z"/><path d="M19.9 12.6v5.8"/>',
+  speaker:'<path d="M4 9.6h3.1L12 5.5v13L7.1 14.4H4z"/><path d="M15.4 9.3a4 4 0 0 1 0 5.4"/><path d="M18.2 6.6a7.7 7.7 0 0 1 0 10.8"/>',
+  eye:    '<path d="M2.8 12C4.8 8 8.2 5.8 12 5.8s7.2 2.2 9.2 6.2c-2 4-5.4 6.2-9.2 6.2S4.8 16 2.8 12z"/><path d="M12 9.2a2.8 2.8 0 1 0 0 5.6 2.8 2.8 0 0 0 0-5.6z"/>',
+  globe:   '<path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17z"/><path d="M12 3.5c-2.6 2.3-3.8 5.2-3.8 8.5s1.2 6.2 3.8 8.5c2.6-2.3 3.8-5.2 3.8-8.5S14.6 5.8 12 3.5z"/><path d="M3.6 12h16.8"/>',
+  textsize:'<path d="M3.3 18.6 8.4 5.8l5.1 12.8M5.2 14.2h6.4"/><path d="M15.4 18.6l2.9-7.3 2.9 7.3M16.5 16.1h3.6"/>',
+  calendar:'<path d="M5.7 5.6h12.6a1.7 1.7 0 0 1 1.7 1.7v11a1.7 1.7 0 0 1-1.7 1.7H5.7A1.7 1.7 0 0 1 4 18.3v-11a1.7 1.7 0 0 1 1.7-1.7z"/><path d="M4 10h16M8.4 3.6v3.6M15.6 3.6v3.6"/><path d="M8.4 14.2h.01M12 14.2h.01M15.6 14.2h.01"/>',
+  chart:   '<path d="M6 19.5v-6.2M12 19.5V5.5M18 19.5v-9.2"/>',
+  snowflake:'<path d="M12.00 3.00L12.00 21.00M12.00 6.40L10.62 4.43M12.00 6.40L13.38 4.43M12.00 17.60L13.38 19.57M12.00 17.60L10.62 19.57M19.79 7.50L4.21 16.50M16.85 9.20L17.86 7.02M16.85 9.20L19.24 9.41M7.15 14.80L6.14 16.98M7.15 14.80L4.76 14.59M19.79 16.50L4.21 7.50M16.85 14.80L19.24 14.59M16.85 14.80L17.86 16.98M7.15 9.20L4.76 9.41M7.15 9.20L6.14 7.02"/>',
+  wrench:  '<path d="M14.8 5.2a4.3 4.3 0 0 0-5.4 5.4l-5.3 5.3a1.9 1.9 0 0 0 2.7 2.7l5.3-5.3a4.3 4.3 0 0 0 5.4-5.4l-2.7 2.7-2.4-.6-.6-2.4z"/>',
+  lock:    '<path d="M6.7 10.5h10.6a1.7 1.7 0 0 1 1.7 1.7v6.1a1.7 1.7 0 0 1-1.7 1.7H6.7A1.7 1.7 0 0 1 5 18.3v-6.1a1.7 1.7 0 0 1 1.7-1.7z"/><path d="M8.2 10.5V8a3.8 3.8 0 0 1 7.6 0v2.5"/><path d="M12 14.4v2"/>',
+  unlock:  '<path d="M6.7 10.5h10.6a1.7 1.7 0 0 1 1.7 1.7v6.1a1.7 1.7 0 0 1-1.7 1.7H6.7A1.7 1.7 0 0 1 5 18.3v-6.1a1.7 1.7 0 0 1 1.7-1.7z"/><path d="M8.2 10.5V8a3.8 3.8 0 0 1 7.3-1.6"/><path d="M12 14.4v2"/>',
+  clipboard:'<path d="M9.3 4.5h5.4v2.4H9.3z"/><path d="M8.6 5.6H6.7A1.7 1.7 0 0 0 5 7.3v11A1.7 1.7 0 0 0 6.7 20h10.6a1.7 1.7 0 0 0 1.7-1.7v-11a1.7 1.7 0 0 0-1.7-1.7h-1.9"/><path d="M8.6 11.4h6.8M8.6 15h4.4"/>',
+  timer:   '<path d="M12 6.6a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/><path d="M12 10v3.6l2.3 1.4M9.6 3.5h4.8M12 3.5v3.1"/>',
+  bug:     '<path d="M12 8.6c-2.4 0-4 1.9-4 4.4v1.1c0 2.6 1.7 4.7 4 4.7s4-2.1 4-4.7V13c0-2.5-1.6-4.4-4-4.4z"/><path d="M9.5 7.7a2.5 2.5 0 0 1 5 0"/><path d="M12 8.6v10.2M8 12.2H4.4M16 12.2h3.6M8.3 16.4 5.6 18.2M15.7 16.4l2.7 1.8M8.6 9.8 6 7.8M15.4 9.8l2.6-2"/>',
+  trash:   '<path d="M4.5 7h15M9.5 7V4.9a1.3 1.3 0 0 1 1.3-1.3h2.4a1.3 1.3 0 0 1 1.3 1.3V7M6.7 7l.8 11.7a1.6 1.6 0 0 0 1.6 1.5h5.8a1.6 1.6 0 0 0 1.6-1.5L17.3 7M10.2 11v5.4M13.8 11v5.4"/>',
+  cloud:   '<path d="M7.2 18.6a4 4 0 0 1-.5-7.9 5.5 5.5 0 0 1 10.6 1.3 3.3 3.3 0 0 1-.6 6.6z"/>',
+  upload:  '<path d="M12 16.6V5.2M7.5 9.6 12 5.2l4.5 4.4M5 19.6h14"/>',
+  download:'<path d="M12 5v11.4M7.5 12 12 16.4l4.5-4.4M5 19.6h14"/>',
+  plus:    '<path d="M12 5.2v13.6M5.2 12h13.6"/>',
+  save:    '<path d="M5.7 4.5h9.9l3.9 3.9v9.9a1.7 1.7 0 0 1-1.7 1.7H5.7A1.7 1.7 0 0 1 4 18.3V6.2a1.7 1.7 0 0 1 1.7-1.7z"/><path d="M8 4.5v4.1h6.3V4.5M8 19.9v-5.4h8v5.4"/>',
+  info:    '<path d="M12 3.5a8.5 8.5 0 1 0 0 17 8.5 8.5 0 0 0 0-17z"/><path d="M12 11.2v5.2M12 7.9h.01"/>',
+  warn:    '<path d="M12 4.3 21 19.6H3z"/><path d="M12 10.2v4M12 16.8h.01"/>',
+  chevron: '<path d="M9.5 6.3 15.2 12l-5.7 5.7"/>',
+  home:    '<path d="M3.8 11.4 12 4.4l8.2 7M6 9.8v9.7h12V9.8M10.2 19.5v-5.4h3.6v5.4"/>',
+  briefcase:'<path d="M4.7 8h14.6a1.7 1.7 0 0 1 1.7 1.7v8.6a1.7 1.7 0 0 1-1.7 1.7H4.7A1.7 1.7 0 0 1 3 18.3V9.7A1.7 1.7 0 0 1 4.7 8z"/><path d="M9 8V6.4A1.4 1.4 0 0 1 10.4 5h3.2A1.4 1.4 0 0 1 15 6.4V8M3 13.2h18M11 13.2v1.7h2v-1.7"/>',
+  turtle:  '<path d="M4.4 16.4c0-4.3 3.2-7.4 7.2-7.4s7.2 3.1 7.2 7.4z"/><path d="M18.6 13.6c.6-1.3 2.1-1.9 3.2-1.1 1 .7 1 2.1.1 3"/><path d="M7.4 16.4v2.7M15.6 16.4v2.7M4.4 16.4 2.6 17.6"/><path d="M8.2 13q1.4-1.7 2.8 0t2.8 0"/>',
   repeat: '<path d="M4.5 11.5V10a3 3 0 0 1 3-3h10.6M15.6 4.4 18.4 7l-2.8 2.6"/><path d="M19.5 12.5V14a3 3 0 0 1-3 3H5.9M8.4 19.6 5.6 17l2.8-2.6"/>',
 };
+// "▶ Текст" з локалізованих рядків → монолінійна іконка play + текст.
+// Рядки лишаються з ▶ (їх використовують і textContent-місця), а в HTML-чіпи
+// Lernpfad префікс підмінюється SVG.
+function _playLabel(txt){
+  if(typeof txt !== 'string') return txt;
+  if(txt.indexOf('▶ ') === 0)  return movaIcon('play','mi mi-inline')   + txt.slice(2);
+  if(txt.indexOf('🐢 ') === 0) return movaIcon('turtle','mi mi-inline') + txt.slice(3); // «Повільно» у регуляторі темпу
+  return txt;
+}
+// Статична розмітка (Налаштування) містить <i data-mi="назва" class="…"></i>
+// замість повторюваних inline-SVG: одне джерело істини — MOVA_ICONS. Викликається
+// на початку init() (view-и на цей момент уже розібрані, але ще не показані).
+function hydrateMovaIcons(root){
+  (root || document).querySelectorAll('i[data-mi]').forEach(function(el){
+    var name = el.getAttribute('data-mi');
+    var cls = 'mi' + (el.className ? ' ' + el.className : '');
+    var tmp = document.createElement('span');
+    tmp.innerHTML = movaIcon(name, cls.replace(/^mi\s*/, ''));
+    var svg = tmp.firstChild;
+    if(svg) el.replaceWith(svg);
+  });
+}
 function movaIcon(name, cls){ var p = MOVA_ICONS[name]; if(!p) return ''; return '<svg class="mi'+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+p+'</svg>'; }
 
 // ── I18N ─────────────────────────────────────────────────────
@@ -5845,8 +5923,8 @@ function renderTempoRow(){
   row.innerHTML = `
     <div class="srow-label"><label>${t('lbl_tempo')}</label></div>
     <div class="speed-toggle" id="speed-primary">
-      <button onclick="setPrimaryLangSpeed('${pair.slow||pair.normal}')" class="sp-btn${pair.slow?'':' sp-btn-unavailable'}" data-val="${pair.slow||pair.normal}"${pair.slow?'':' disabled'}>${t('btn_slow')}</button>
-      <button onclick="setPrimaryLangSpeed('${pair.normal}')" class="sp-btn" data-val="${pair.normal}">${t('btn_normal')}</button>
+      <button onclick="setPrimaryLangSpeed('${pair.slow||pair.normal}')" class="sp-btn${pair.slow?'':' sp-btn-unavailable'}" data-val="${pair.slow||pair.normal}"${pair.slow?'':' disabled'}>${_playLabel(t('btn_slow'))}</button>
+      <button onclick="setPrimaryLangSpeed('${pair.normal}')" class="sp-btn" data-val="${pair.normal}">${_playLabel(t('btn_normal'))}</button>
     </div>`;
   syncSpeedButtons();
 }
@@ -6998,7 +7076,7 @@ function srRenderDailyPlan(){
   const streak = state.streak || 0;
   const streakLbl = t('streak_days');
   const streakHtml = streak > 0
-    ? `<div class="sr-plan-streak" style="margin-bottom:10px;font-size:var(--fs-utility)">🔥 ${streak} ${streakLbl}</div>`
+    ? `<div class="sr-plan-streak" style="margin-bottom:10px;font-size:var(--fs-utility)">${movaIcon('flame','mi mi-inline')}${streak} ${streakLbl}</div>`
     : '';
 
   const nextLesson = _srFindNextLesson();
@@ -7243,7 +7321,7 @@ function srRenderDashboard(){
   const rows = parts.map(p=>{
     const pct = stats.readiness[p] ?? 0;
     const cls = pct>=80?'green':pct>=60?'yellow':'red';
-    const warn = pct<60?'<span class="sr-dash-warn">⚠️</span>':'';
+    const warn = pct<60?'<span class="sr-dash-warn">'+movaIcon('warn')+'</span>':'';
     const color = SR_PART_COLOR[p]||'#78716c';
     return `<div class="sr-dash-row">
       <div class="sr-dash-part">${p}</div>
@@ -7697,6 +7775,7 @@ function answerFeedback(isCorrect){
 function updateBottomNavVisibility(){}
 
 async function init(){
+  try{ hydrateMovaIcons(); }catch(e){ console.warn('[icons]', e); }
   // ── ТИМЧАСОВЕ ІНСТРУМЕНТУВАННЯ ──────────────────────────────
   // Заміри реального часу кожного етапу — щоб побачити ЦИФРИ, а не
   // гадати далі. Прибрати після діагностики (шукайте "ТИМЧАСОВЕ").
@@ -9094,7 +9173,7 @@ function renderCourseList(){
                    border-radius:12px;border:1px solid var(--border);
                    background:var(--card);font-family:inherit;cursor:pointer;
                    text-align:left;transition:all .2s;width:100%">
-      <span class="course-emoji">${c.emoji}</span>
+      <span class="course-emoji">${c.icon ? movaIcon(c.icon) : c.emoji}</span>
       <span style="flex:1">
         <span class="course-title">${c.title}</span>
         <span class="course-desc">${c.desc[uiLang]||c.desc.en||c.desc.de}</span>
@@ -10598,7 +10677,7 @@ function renderModuleDividerGramBtn(lesson){
   if(!topic || !buildGrammarBonusPool([topic], _cardIdsUpToLesson(lesson)).length) return '';
   const label = {de:'Grammatik',uk:'Граматика',en:'Grammar',ru:'Грамматика'}[uiLang]||'Grammatik';
   return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startModuleGrammarBonus('${lesson.id}')">
-    <span class="lp-mini-btn-icon">G</span><span class="lp-mini-btn-label">${label}</span>
+    <span class="lp-mini-btn-icon">${movaIcon('grammar')}</span><span class="lp-mini-btn-label">${label}</span>
   </button>`;
 }
 // Компактні аналоги для плашки ГЛАВИ (.lp-chapter-head) — той самий
@@ -10620,7 +10699,7 @@ function renderChapterDividerGramBtn(chapterNum, chapterLessons, unlocked){
   if(!topicIds.length || !buildGrammarBonusPool(topicIds, _cardIdsUpToChapter(chapterNum)).length) return '';
   const label = {de:'Grammatik',uk:'Граматика',en:'Grammar',ru:'Грамматика'}[uiLang]||'Grammatik';
   return `<button type="button" class="lp-mini-btn" onclick="event.stopPropagation();startChapterGrammarBonus(${chapterNum})">
-    <span class="lp-mini-btn-icon">G</span><span class="lp-mini-btn-label">${label}</span>
+    <span class="lp-mini-btn-icon">${movaIcon('grammar')}</span><span class="lp-mini-btn-label">${label}</span>
   </button>`;
 }
 
@@ -10771,7 +10850,7 @@ function renderPathNode(node, idx){
       ${isCurrent ? '<div class="lp-node-current-ring"></div>' : ''}
       <span class="lp-node-icon">${icon}</span>
     </div>
-    ${isCurrent ? `<div class="lp-node-label">${chipLabel}</div>`
+    ${isCurrent ? `<div class="lp-node-label">${_playLabel(chipLabel)}</div>`
       : (unlocked && !isDone ? `<div class="lp-node-progress">${done}/${total}</div>` : '')}
   </div>`;
 }
@@ -10879,8 +10958,8 @@ function renderExamPrepRow(node){
       <div class="lp-examprep-row-title">${fullTitle}</div>
       ${metaText?`<div class="lp-examprep-row-meta">${metaText}</div>`:''}
     </div>
-    ${isExamSim ? `<div class="lp-examprep-row-chip">${chipLabel}</div>`
-      : isCurrent ? `<div class="lp-examprep-row-chip">${chipLabel}</div>`
+    ${isExamSim ? `<div class="lp-examprep-row-chip">${_playLabel(chipLabel)}</div>`
+      : isCurrent ? `<div class="lp-examprep-row-chip">${_playLabel(chipLabel)}</div>`
       : (isDone ? '<div class="lp-examprep-row-check">✓</div>' : '<div class="lp-examprep-row-arrow">›</div>')}
   </div>`;
 }
@@ -10914,7 +10993,7 @@ function renderModuleCard(lesson){
   const chipLabel = pct>0
     ? (uiLang==='uk'?'▶ Продовжити':uiLang==='en'?'▶ Continue':uiLang==='ru'?'▶ Продолжить':'▶ Weiter')
     : (uiLang==='uk'?'▶ Почати':uiLang==='en'?'▶ Start':uiLang==='ru'?'▶ Начать':'▶ Starten');
-  const currentChip = isCurrent ? `<div class="lp-module-current-chip">${chipLabel}</div>` : '';
+  const currentChip = isCurrent ? `<div class="lp-module-current-chip">${_playLabel(chipLabel)}</div>` : '';
 
   return `<div class="lp-module ${statusClass}" id="${isCurrent?'lp-current-module':''}"
     onclick="${unlocked?`startLessonFlow('${lesson.id}')`:''}"
@@ -11454,11 +11533,11 @@ function debugRenderStoryTopics(){
     // ТЕКСТІ реплік, не в topic, але дешево підстрахуватись і тут) і
     // екрануємо решту — це вже може бути текст, який ввів користувач.
     var label = _escapeHtmlText(rawLabel ? rawLabel.replace(/<[^>]*>/g,'') : ('Тема '+(i+1)));
-    var icon = card.custom ? '📝' : '🎤';
-    var btn = '<button class="btn btn-s" style="text-align:left;flex:1" onclick="debugOpenStory('+i+')">'+icon+' '+(i+1)+'. '+label+'</button>';
+    var icon = movaIcon(card.custom ? 'pen' : 'mic', 'mi mi-inline');
+    var btn = '<button class="btn btn-s" style="text-align:left;flex:1" onclick="debugOpenStory('+i+')">'+icon+(i+1)+'. '+label+'</button>';
     if(!card.custom) return btn;
     return '<div style="display:flex;gap:6px">'+btn+
-      '<button class="btn btn-s" style="flex:0 0 auto;padding-left:14px;padding-right:14px" onclick="removeCustomStoryTopicByIndex('+i+')" title="Видалити тему">🗑</button>'+
+      '<button class="btn btn-s" style="flex:0 0 auto;padding-left:14px;padding-right:14px" onclick="removeCustomStoryTopicByIndex('+i+')" title="Видалити тему">'+movaIcon('trash','mi mi-inline')+'</button>'+
     '</div>';
   }).join('') : '<div style="color:var(--muted);font-size:var(--fs-utility)">Немає жодної картки STORY у поточному курсі</div>';
   container.innerHTML = rowsHtml;
@@ -13317,7 +13396,7 @@ function renderCourseOnboardingCards(){
   if(!container) return;
   container.innerHTML = COURSES.map(c=>`
     <div class="ob-card" onclick="selectOnboardCourse('${c.id}')">
-      <div class="ob-card-flag">${c.emoji}</div>
+      <div class="ob-card-flag">${c.icon ? movaIcon(c.icon) : c.emoji}</div>
       <div class="ob-card-text">
         <div class="ob-card-lang">${c.title}</div>
         <div class="ob-card-desc">${c.desc[uiLang]||c.desc.en||c.desc.de}</div>
@@ -15784,11 +15863,11 @@ window._cloudRenderAuthUI = function(){
   if(!statusEl) return;
   const user = window._cloudUser;
   if(user){
-    statusEl.innerHTML = '✅ Увійшли як <b>'+user.email+'</b>';
+    statusEl.innerHTML = movaIcon('check','mi mi-inline')+'Увійшли як <b>'+user.email+'</b>';
     if(formEl) formEl.style.display = 'none';
     if(inEl)   inEl.style.display   = '';
   } else {
-    statusEl.textContent = '🔒 Не увійшли';
+    statusEl.innerHTML = movaIcon('lock','mi mi-inline')+'Не увійшли';
     if(formEl) formEl.style.display = '';
     if(inEl)   inEl.style.display   = 'none';
   }
@@ -18116,14 +18195,16 @@ function closeGrammarRuleFullscreen(){
   if(el) el.remove();
 }
 
-// Спільний білдер для 📖-кнопки, яку додають getSecondaryButtons()
+// Спільний білдер для кнопки граматики (іконка Aa), яку додають getSecondaryButtons()
 // обробники VOCAB/SB/Dialogue. card.gram — id у таблиці GRAMMAR; якщо
 // поле порожнє, курс не має таблиці GRAMMAR, або id не знайдено —
 // повертає null (кнопка просто не додається, нічого не ламається).
 function _lfGrammarButton(card){
   if(!card || !card.gram) return null;
   if(!getGrammarRule(card.gram)) return null; // id є, а правила нема — тихо ігноруємо
-  return { icon: '📖', onClick: function(){ showGrammarModal(card.gram); } };
+  // 'grammar' — назва іконки MOVA (Aa), та сама, що на кнопках "Граматика"
+  // в заголовках глав/модулів: одразу зрозуміло, що кнопка відкриває правило.
+  return { icon: 'grammar', onClick: function(){ showGrammarModal(card.gram); } };
 }
 
 // ── Легенда кольорових маркерів <c>/<k>/<g>/<r> ─────────────────────
@@ -18627,7 +18708,12 @@ function _lfUnitShowNextBtn(isFinish){
   secondaries.forEach(function(secondary){
     var secondaryBtn = document.createElement('button');
     secondaryBtn.className = 'lf-repeat-btn';
-    secondaryBtn.textContent = secondary.icon;
+    // Емодзі-іконки обробників → монолінійні (решта — як було, текстом)
+    // icon може бути й прямою назвою іконки MOVA_ICONS (напр. 'grammar')
+    var _secIco = MOVA_ICONS[secondary.icon] ? secondary.icon
+      : { '🔊':'speaker', '💡':'bulb', '📖':'book', '🎤':'mic' }[secondary.icon];
+    if(_secIco) secondaryBtn.innerHTML = movaIcon(_secIco);
+    else secondaryBtn.textContent = secondary.icon;
     secondaryBtn.onclick = secondary.onClick;
     row.appendChild(secondaryBtn);
   });
@@ -21235,7 +21321,7 @@ function renderStreakUI(pulse=false){
   // style і падає назад на CSS-клас .bn-fire, який сам по собі теж
   // сірий (#header .bn-fire нижче) — тобто вогонь у шапці міг НІКОЛИ
   // не показувати повний колір навіть при виконаній денній цілі.
-  const hf=document.getElementById('h-fire');if(hf)hf.style.filter=done?'none':'grayscale(1) brightness(1.9) opacity(.85)';
+  const hf=document.getElementById('h-fire');if(hf){ hf.style.filter=''; hf.classList.toggle('lit', !!done); }
   const st=document.getElementById('st-today');if(st)st.textContent=todayN;
   const stot=document.getElementById('st-total');if(stot)stot.textContent=totalN;
   // Бали (XP) — той самий глобальний, курсо-незалежний рахунок, що й
@@ -21289,12 +21375,12 @@ function showStreakInfoModal(){
 
   overlay.innerHTML =
     '<div class="streak-modal">' +
-      '<div class="streak-modal-icon">🔥</div>' +
+      '<div class="streak-modal-icon">' + movaIcon('flame') + '</div>' +
       '<div class="streak-modal-title">' + streak + ' ' + t('streak_days') + '</div>' +
       '<div class="streak-modal-sub">' + todayN + '/' + getGoal() + ' ' + t('lbl_today').toLowerCase() + ' · ' + t('lbl_total') + ': ' + (p.totalCards||0) + '</div>' +
       '<div class="streak-modal-freeze-box">' +
         '<div class="streak-modal-freeze-row">' +
-          '<span>🧊 ' + t('sec_streak_freeze') + '</span>' +
+          '<span>' + movaIcon('snowflake','mi mi-inline') + t('sec_streak_freeze') + '</span>' +
           '<span class="streak-modal-freeze-count">' + freezes + ' / ' + STREAK_FREEZE_MAX + '</span>' +
         '</div>' +
         '<div class="streak-modal-freeze-info">' + t('streak_freeze_info') + '</div>' +
