@@ -994,15 +994,20 @@ body{
   transition:transform .2s;
 }
 .lp-node{
-  width:60px;height:60px;border-radius:50%;flex-shrink:0;
+  /* Діаметр геми — одна змінна, від неї рахується й розмір піктограми
+     (55% діаметра): емодзі займає ≈65% кружка, тож широкі (🤝 📰 📧)
+     майже заповнюють його, але не впираються в край. Активна гема
+     лише перевизначає --lp-node-d нижче — пропорція зберігається. */
+  --lp-node-d:60px;
+  width:var(--lp-node-d);height:var(--lp-node-d);border-radius:50%;flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
-  font-size:24px;position:relative;cursor:pointer;
+  font-size:calc(var(--lp-node-d) * .55);position:relative;cursor:pointer;
   background:var(--forest);
   box-shadow:0 5px 0 rgba(13,43,26,.35), 0 7px 12px rgba(13,43,26,.16);
   transition:transform .12s, box-shadow .12s;
 }
 .lp-node:active{ transform:translateY(3px); box-shadow:0 2px 0 rgba(13,43,26,.35); }
-.lp-node-icon{ position:relative; z-index:1; filter:drop-shadow(0 1px 1px rgba(0,0,0,.2)); transition:filter .15s; }
+.lp-node-icon{ position:relative; z-index:1; line-height:1; filter:drop-shadow(0 2px 2px rgba(0,0,0,.22)); transition:filter .15s; }
 /* Small talk — невимушена розмова, синій акцент (як і раніше). */
 .lp-node.lp-node-smalltalk{
   background:var(--accent, #4a7c9d);
@@ -1053,7 +1058,7 @@ body{
 }
 .lp-node.locked .lp-node-icon{ filter:grayscale(1) opacity(.55); }
 .lp-node.current{
-  width:84px;height:84px;font-size:34px;
+  --lp-node-d:110px;
   box-shadow:0 7px 0 rgba(13,43,26,.35), 0 10px 18px rgba(13,43,26,.2);
   animation:lpNodeBreathe 1.8s ease-in-out infinite;
 }
@@ -3538,44 +3543,44 @@ body{
         Таймер рахує ВНИЗ від старту (не від вибору теми); звуковий
         сигнал по завершенню (синтезований Web Audio API). -->
 <div id="exam-sim-briefing" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
-  <button onclick="closeExamSimBriefing()" title="Закрити" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
+  <button onclick="closeExamSimBriefing()" title="Закрити" data-i18n-title="exam_sim_close" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
   <div style="width:100%;max-width:380px;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:24px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;max-height:80vh;overflow-y:auto">
     <div style="text-align:center">
       <div style="font-size:36px;margin-bottom:10px">✍️</div>
-      <h2 style="color:#fff;font-size:22px;margin:0 0 6px" id="exam-sim-title">Forumsbeitrag</h2>
-      <p style="color:rgba(255,255,255,.6);font-size:14px;margin:0">Симуляція письмової частини іспиту</p>
+      <h2 style="color:#fff;font-size:var(--fs-emphasis);font-weight:800;letter-spacing:-.3px;line-height:1.15;overflow-wrap:anywhere;margin:0 0 6px" id="exam-sim-title">Forumsbeitrag</h2>
+      <p id="exam-sim-subtitle" style="color:rgba(255,255,255,.65);font-size:var(--fs-tertiary);line-height:1.3;margin:0">Симуляція письмової частини іспиту</p>
     </div>
     <div style="width:100%;background:rgba(255,255,255,.08);border-radius:14px;padding:14px 16px;text-align:center">
-      <div style="color:rgba(255,255,255,.55);font-size:12px;text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">У вас буде</div>
-      <div style="color:var(--gold);font-size:32px;font-weight:800" id="exam-sim-time">20 хв</div>
+      <div data-i18n="exam_sim_you_have" style="color:rgba(255,255,255,.55);font-size:var(--fs-utility);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px">У вас буде</div>
+      <div style="color:var(--gold);font-size:var(--fs-emphasis);font-weight:800;line-height:1.15" id="exam-sim-time">20 хв</div>
     </div>
-    <p id="exam-sim-instructions" style="color:rgba(255,255,255,.8);font-size:14px;line-height:1.5;margin:0;text-align:left;width:100%"></p>
+    <p id="exam-sim-instructions" style="color:rgba(255,255,255,.8);font-size:var(--fs-tertiary);line-height:1.5;margin:0;text-align:left;width:100%"></p>
     <div id="exam-sim-blank-row" style="display:none;width:100%;flex-direction:column;gap:8px;background:rgba(255,255,255,.05);border:1px dashed rgba(201,168,76,.4);border-radius:14px;padding:14px">
-      <p style="color:rgba(255,255,255,.75);font-size:13px;margin:0">📝 Візьміть аркуш паперу, або роздрукуйте бланк для відповіді:</p>
-      <a id="exam-sim-blank-link" href="#" target="_blank" rel="noopener" style="text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px;color:#fff;text-decoration:none;font-size:14px;font-weight:600">⬇️ Завантажити бланк (PDF)</a>
+      <p data-i18n="exam_sim_blank_hint" style="color:rgba(255,255,255,.75);font-size:var(--fs-tertiary);line-height:1.4;margin:0">📝 Візьміть аркуш паперу, або роздрукуйте бланк для відповіді:</p>
+      <a id="exam-sim-blank-link" data-i18n="exam_sim_blank_download" href="#" target="_blank" rel="noopener" style="text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px;color:#fff;text-decoration:none;font-size:var(--fs-tertiary);font-weight:600">⬇️ Завантажити бланк (PDF)</a>
     </div>
-    <button onclick="startExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;width:100%">Почати тест →</button>
+    <button data-i18n="exam_sim_start_btn" onclick="startExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;width:100%">Почати тест →</button>
   </div>
 </div>
 
 <div id="exam-sim-test" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:stretch;padding:0">
   <div style="display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 16px) 20px 12px">
     <div style="width:34px"></div>
-    <div id="exam-sim-countdown" style="color:var(--gold);font-size:28px;font-weight:800;font-variant-numeric:tabular-nums">20:00</div>
-    <button onclick="closeExamSimTest()" title="Закрити завдання" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
+    <div id="exam-sim-countdown" style="color:var(--gold);font-size:var(--fs-emphasis);font-weight:800;font-variant-numeric:tabular-nums">20:00</div>
+    <button onclick="closeExamSimTest()" title="Закрити завдання" data-i18n-title="exam_sim_close_task" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
   </div>
-  <div id="exam-sim-timeup-banner" style="display:none;margin:0 20px 4px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:10px 14px;text-align:center;color:var(--gold);font-weight:700">⏰ Час вийшов!</div>
+  <div id="exam-sim-timeup-banner" data-i18n="exam_sim_timeup" style="display:none;font-size:var(--fs-tertiary);margin:0 20px 4px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:10px 14px;text-align:center;color:var(--gold);font-weight:700">⏰ Час вийшов!</div>
 
   <!-- Стадія 1 — вибір теми: дві картки, кожна ~половина області.
        Клік по картці переводить у стадію "write" (examSimPickCard). -->
   <div id="exam-sim-picker" style="display:none;flex:1;flex-direction:column;gap:12px;padding:8px 20px 24px">
     <div class="exam-sim-pick-card" onclick="examSimPickCard(0)">
-      <div class="exam-sim-pick-badge">Тема 1</div>
+      <div class="exam-sim-pick-badge"><span data-i18n="exam_sim_topic_label">Тема</span> 1</div>
       <div class="exam-sim-pick-topic-title" id="exam-sim-pick-topic-0"></div>
       <div class="exam-sim-pick-topic-text" id="exam-sim-pick-task-0"></div>
     </div>
     <div class="exam-sim-pick-card" onclick="examSimPickCard(1)">
-      <div class="exam-sim-pick-badge">Тема 2</div>
+      <div class="exam-sim-pick-badge"><span data-i18n="exam_sim_topic_label">Тема</span> 2</div>
       <div class="exam-sim-pick-topic-title" id="exam-sim-pick-topic-1"></div>
       <div class="exam-sim-pick-topic-text" id="exam-sim-pick-task-1"></div>
     </div>
@@ -3589,14 +3594,14 @@ body{
        яка через .btn-lesson-sb-next сидить ще вище, з урахуванням
        --nav-h; лишній відступ для письмових безпечний — просто трохи
        більше порожнього місця в кінці скролу). -->
-  <div id="exam-sim-write" style="display:none;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 24px calc(env(safe-area-inset-bottom,0px) + 160px);flex-direction:column;gap:12px">
+  <div id="exam-sim-write" style="display:none;flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:8px 24px calc(env(safe-area-inset-bottom,0px) + 120px + var(--fs-card) * 2.2);flex-direction:column;gap:12px">
     <div id="exam-sim-topic" style="color:var(--gold);font-size:var(--fs-tertiary);font-weight:700;text-transform:uppercase;letter-spacing:.5px"></div>
     <div id="exam-sim-task" style="color:#fff;font-size:var(--fs-card);line-height:1.6;white-space:pre-wrap"></div>
   </div>
 
   <!-- "Обрати іншу тему" — лише в стадії write, і лише перші 2 хв від
        старту (_examSimUpdateRepickVisibility) — потім вибір остаточний. -->
-  <button id="exam-sim-repick-btn" onclick="examSimBackToPicker()"
+  <button id="exam-sim-repick-btn" data-i18n="exam_sim_repick" onclick="examSimBackToPicker()"
     style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;background:rgba(255,255,255,.1);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:14px;font-size:var(--fs-card);font-weight:700;cursor:pointer;font-family:inherit;z-index:200">↺ Обрати іншу тему</button>
 
   <!-- Друга кнопка "Почати" — для усних симуляцій (Sprechen/SprechenTeil2),
@@ -3605,13 +3610,13 @@ body{
        Дозволяє почати раніше, не чекаючи природного нуля — та сама дія
        (сигнал + перехід на рахунок часу відповіді вгору), що й по
        спливанню часу підготовки, див. _examSimSpeakStartNow(). -->
-  <button id="exam-sim-speak-start-btn" onclick="_examSimSpeakStartNow()" class="btn btn-lesson-sb-next" style="display:none">▶ Почати</button>
+  <button id="exam-sim-speak-start-btn" data-i18n="exam_sim_speak_start" onclick="_examSimSpeakStartNow()" class="btn btn-lesson-sb-next" style="display:none">▶ Почати</button>
 
   <!-- З'являється двічі: рано (5 хв від старту, ще є час — м'яке "Текст
        готовий") і по завершенню часу ("Завершити") — той самий блок,
        лише напис основної кнопки міняється (_examSimShowFinishBlock). -->
   <div id="exam-sim-timeup-actions" style="display:none;position:fixed;bottom:calc(env(safe-area-inset-bottom,0px) + 16px);left:24px;right:24px;gap:10px;z-index:201">
-    <button onclick="examSimShowExample()" class="lf-repeat-btn" title="Подивитися приклад">👁</button>
+    <button onclick="examSimShowExample()" class="lf-repeat-btn" title="Подивитися приклад" data-i18n-title="exam_sim_view_example">👁</button>
     <button id="exam-sim-finish-btn" onclick="examSimFinishClicked()" class="btn btn-lesson-sb-next" style="position:static;flex:1">Завершити</button>
   </div>
 </div>
@@ -4382,7 +4387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '694-2ca109f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5054,6 +5059,30 @@ const I18N = {
     exam_sim_speaking_done_title:'Mündliche Prüfung geschafft!',
     exam_sim_speaking_done_sub:'Simulation — Lösungswege diskutieren',
     exam_sim_speaking_teil2_done_sub:'Simulation — Smalltalk',
+    exam_sim_subtitle_written:'Simulation des schriftlichen Prüfungsteils',
+    exam_sim_subtitle_oral:'Simulation des mündlichen Prüfungsteils',
+    exam_sim_you_have:'Du hast',
+    exam_sim_blank_hint:'📝 Nimm ein Blatt Papier oder drucke den Antwortbogen aus:',
+    exam_sim_blank_download:'⬇️ Antwortbogen herunterladen (PDF)',
+    exam_sim_start_btn:'Test starten →',
+    exam_sim_close:'Schließen',
+    exam_sim_close_task:'Aufgabe schließen',
+    exam_sim_timeup:'⏰ Die Zeit ist um!',
+    exam_sim_topic_label:'Thema',
+    exam_sim_repick:'↺ Anderes Thema wählen',
+    exam_sim_speak_start:'▶ Starten',
+    exam_sim_view_example:'Beispiel ansehen',
+    exam_sim_finish:'Beenden',
+    exam_sim_text_ready:'Text fertig',
+    exam_sim_min_unit:'Min.',
+    exam_sim_row_meta:'Prüfungssimulation — beliebig oft wiederholbar',
+    exam_sim_row_chip:'▶ Test starten',
+    exam_sim_err_forum_cards:'⚠️ Im aktuellen Kurs werden mindestens 2 Forumsbeitrag-Karten (var SCHREIBEN) benötigt',
+    exam_sim_err_email_cards:'⚠️ Im aktuellen Kurs wird mindestens 1 E-Mail-Karte (var EMAILS) benötigt',
+    exam_sim_err_speaking_cards:'⚠️ Im aktuellen Kurs wird mindestens 1 Karte für den mündlichen Teil (type: "Lösungswege diskutieren", var DIALOGE) benötigt',
+    exam_sim_err_smalltalk_cards:'⚠️ Im aktuellen Kurs wird mindestens 1 Smalltalk-Karte (type: "Small Talk", var DIALOGE) benötigt',
+    exam_sim_err_not_implemented:'⚠️ Simulation für „{part}“ ist noch nicht implementiert',
+    exam_sim_example_speaking_na:'👁 Für diesen Typ gibt es noch kein Gesprächsbeispiel',
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
@@ -5155,6 +5184,30 @@ const I18N = {
     exam_sim_speaking_done_title:'Усний іспит завершено!',
     exam_sim_speaking_done_sub:'Симуляція — пошук рішення',
     exam_sim_speaking_teil2_done_sub:'Симуляція — Smalltalk',
+    exam_sim_subtitle_written:'Симуляція письмової частини іспиту',
+    exam_sim_subtitle_oral:'Симуляція усної частини іспиту',
+    exam_sim_you_have:'У вас буде',
+    exam_sim_blank_hint:'📝 Візьміть аркуш паперу, або роздрукуйте бланк для відповіді:',
+    exam_sim_blank_download:'⬇️ Завантажити бланк (PDF)',
+    exam_sim_start_btn:'Почати тест →',
+    exam_sim_close:'Закрити',
+    exam_sim_close_task:'Закрити завдання',
+    exam_sim_timeup:'⏰ Час вийшов!',
+    exam_sim_topic_label:'Тема',
+    exam_sim_repick:'↺ Обрати іншу тему',
+    exam_sim_speak_start:'▶ Почати',
+    exam_sim_view_example:'Подивитися приклад',
+    exam_sim_finish:'Завершити',
+    exam_sim_text_ready:'Текст готовий',
+    exam_sim_min_unit:'хв',
+    exam_sim_row_meta:'Симуляція іспиту — необмежена к-сть спроб',
+    exam_sim_row_chip:'▶ Почати тест',
+    exam_sim_err_forum_cards:'⚠️ Потрібно щонайменше 2 картки Forumsbeitrag (var SCHREIBEN) у поточному курсі',
+    exam_sim_err_email_cards:'⚠️ Потрібна хоча б 1 картка E-Mail (var EMAILS) у поточному курсі',
+    exam_sim_err_speaking_cards:'⚠️ Потрібна хоча б 1 картка усної частини (type: "Lösungswege diskutieren", var DIALOGE) у поточному курсі',
+    exam_sim_err_smalltalk_cards:'⚠️ Потрібна хоча б 1 картка Smalltalk (type: "Small Talk", var DIALOGE) у поточному курсі',
+    exam_sim_err_not_implemented:'⚠️ Симуляція для "{part}" ще не реалізована',
+    exam_sim_example_speaking_na:'👁 Приклад розмови для цього типу поки не додано',
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
@@ -5255,6 +5308,30 @@ const I18N = {
     exam_sim_speaking_done_title:'Speaking exam complete!',
     exam_sim_speaking_done_sub:'Simulation — problem-solving discussion',
     exam_sim_speaking_teil2_done_sub:'Simulation — Smalltalk',
+    exam_sim_subtitle_written:'Written exam part simulation',
+    exam_sim_subtitle_oral:'Oral exam part simulation',
+    exam_sim_you_have:'You will have',
+    exam_sim_blank_hint:'📝 Grab a sheet of paper or print the answer sheet:',
+    exam_sim_blank_download:'⬇️ Download answer sheet (PDF)',
+    exam_sim_start_btn:'Start test →',
+    exam_sim_close:'Close',
+    exam_sim_close_task:'Close task',
+    exam_sim_timeup:'⏰ Time\'s up!',
+    exam_sim_topic_label:'Topic',
+    exam_sim_repick:'↺ Choose another topic',
+    exam_sim_speak_start:'▶ Start',
+    exam_sim_view_example:'View example',
+    exam_sim_finish:'Finish',
+    exam_sim_text_ready:'Text is ready',
+    exam_sim_min_unit:'min',
+    exam_sim_row_meta:'Exam simulation — unlimited attempts',
+    exam_sim_row_chip:'▶ Start test',
+    exam_sim_err_forum_cards:'⚠️ At least 2 Forumsbeitrag cards (var SCHREIBEN) are required in the current course',
+    exam_sim_err_email_cards:'⚠️ At least 1 E-Mail card (var EMAILS) is required in the current course',
+    exam_sim_err_speaking_cards:'⚠️ At least 1 speaking-part card (type: "Lösungswege diskutieren", var DIALOGE) is required in the current course',
+    exam_sim_err_smalltalk_cards:'⚠️ At least 1 Smalltalk card (type: "Small Talk", var DIALOGE) is required in the current course',
+    exam_sim_err_not_implemented:'⚠️ Simulation for "{part}" is not implemented yet',
+    exam_sim_example_speaking_na:'👁 No example conversation for this type yet',
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
@@ -5356,6 +5433,30 @@ const I18N = {
     exam_sim_speaking_done_title:'Устный экзамен завершён!',
     exam_sim_speaking_done_sub:'Симуляция — поиск решения',
     exam_sim_speaking_teil2_done_sub:'Симуляция — Smalltalk',
+    exam_sim_subtitle_written:'Симуляция письменной части экзамена',
+    exam_sim_subtitle_oral:'Симуляция устной части экзамена',
+    exam_sim_you_have:'У вас будет',
+    exam_sim_blank_hint:'📝 Возьмите лист бумаги или распечатайте бланк для ответа:',
+    exam_sim_blank_download:'⬇️ Скачать бланк (PDF)',
+    exam_sim_start_btn:'Начать тест →',
+    exam_sim_close:'Закрыть',
+    exam_sim_close_task:'Закрыть задание',
+    exam_sim_timeup:'⏰ Время вышло!',
+    exam_sim_topic_label:'Тема',
+    exam_sim_repick:'↺ Выбрать другую тему',
+    exam_sim_speak_start:'▶ Начать',
+    exam_sim_view_example:'Посмотреть пример',
+    exam_sim_finish:'Завершить',
+    exam_sim_text_ready:'Текст готов',
+    exam_sim_min_unit:'мин',
+    exam_sim_row_meta:'Симуляция экзамена — неограниченно попыток',
+    exam_sim_row_chip:'▶ Начать тест',
+    exam_sim_err_forum_cards:'⚠️ В текущем курсе нужно минимум 2 карточки Forumsbeitrag (var SCHREIBEN)',
+    exam_sim_err_email_cards:'⚠️ В текущем курсе нужна хотя бы 1 карточка E-Mail (var EMAILS)',
+    exam_sim_err_speaking_cards:'⚠️ В текущем курсе нужна хотя бы 1 карточка устной части (type: "Lösungswege diskutieren", var DIALOGE)',
+    exam_sim_err_smalltalk_cards:'⚠️ В текущем курсе нужна хотя бы 1 карточка Smalltalk (type: "Small Talk", var DIALOGE)',
+    exam_sim_err_not_implemented:'⚠️ Симуляция для "{part}" ещё не реализована',
+    exam_sim_example_speaking_na:'👁 Пример разговора для этого типа пока не добавлен',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
     btn_next_lesson:'▶ Следующий урок',
@@ -5475,6 +5576,11 @@ function applyI18n(){
   // Labels by data-i18n attribute (підхоплює і h3 span, і все інше)
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     el.textContent = t(el.dataset.i18n);
+  });
+  // Атрибут title (підказка при наведенні) — той самий принцип,
+  // окремим data-i18n-title, бо data-i18n змінює лише textContent.
+  document.querySelectorAll('[data-i18n-title]').forEach(el=>{
+    el.title = t(el.dataset.i18nTitle);
   });
   // Speed buttons
   renderTempoRow(); // data-val тепер динамічний (з AUDIO_CONFIG курсу), а не завжди "080"/"100" — перебудовуємо рядок цілком, а не шукаємо кнопки по старому фіксованому значенню
@@ -7317,9 +7423,11 @@ const haptic = {
 // підвішують у стані 'suspended' — тож не робимо цього на init()).
 let _sfxCtx = null;
 function _sfxGetCtx(){
-  if(!_sfxCtx){
+  // 'closed' — такий контекст уже не відновити, тож створюємо новий,
+  // а не мовчимо.
+  if(!_sfxCtx || _sfxCtx.state === 'closed'){
     try{ _sfxCtx = new (window.AudioContext || window.webkitAudioContext)(); }
-    catch(e){ return null; }
+    catch(e){ _sfxCtx = null; return null; }
   }
   return _sfxCtx;
 }
@@ -7337,12 +7445,32 @@ function _sfxGetCtx(){
 function _sfxPlay(playFn){
   const ctx = _sfxGetCtx();
   if(!ctx) return;
-  if(ctx.state === 'suspended'){
-    ctx.resume().then(function(){ try{ playFn(ctx); }catch(e){} }).catch(function(){});
-  } else {
+  // Грати одразу — лише коли контекст справді 'running'. Окрім 'suspended'
+  // на iOS є ще стан 'interrupted' (після іншого аудіо/дзвінка) — раніше він
+  // потрапляв у гілку "грати одразу", нота планувалась на нерухомий
+  // currentTime і губилась або лунала запізно.
+  if(ctx.state === 'running'){
     playFn(ctx);
+  } else {
+    ctx.resume().then(function(){ try{ playFn(ctx); }catch(e){} }).catch(function(){});
   }
 }
+// Ранній unlock: перший жест у застосунку створює й запускає AudioContext
+// (створення контексту на мобільних — десятки мс, і саме воно затримувало
+// ПЕРШИЙ звук відповіді); далі кожен наступний жест лише підхоплює контекст,
+// якщо його призупинено (iOS після TTS-аудіо) — resume() у жесті вкладається
+// у ті ~50-100мс між дотиком і кліком, а не додається до самого звуку.
+// Нового контексту після spShutdownMic (там _sfxCtx = null навмисно) цей
+// слухач НЕ створює — лише перший раз за сесію.
+(function(){
+  var created = false;
+  function onGesture(){
+    if(!sfxEnabled()) return;
+    if(!created){ created = true; var c = _sfxGetCtx(); if(c && c.state !== 'running'){ c.resume().catch(function(){}); } return; }
+    if(_sfxCtx && _sfxCtx.state !== 'running' && _sfxCtx.state !== 'closed'){ _sfxCtx.resume().catch(function(){}); }
+  }
+  document.addEventListener('pointerup', onGesture, {capture:true, passive:true});
+})();
 // Одна коротка нота з м'якою атакою/спадом (щоб не клацало на межах).
 function _sfxTone(ctx, freq, startTime, duration, type, peakGain){
   const osc = ctx.createOscillator();
@@ -8973,6 +9101,18 @@ function matchHandleClick(btn){
   if(btn.classList.contains('matched')) return;
   if(btn.classList.contains('error'))   return;
 
+  // Звук результату пари — ПЕРШИМ, ще до озвучення слова (speak() нижче
+  // стартує TTS-аудіо, що на мобільних і саме по собі забирає час, і на iOS
+  // може призупиняти AudioContext ефектів). Умови тут ДЗЕРКАЛЯТЬ гілки
+  // нижче (вибрана інша картка з ІНШОГО стовпця, ще не matched) — самі гілки
+  // звук більше не викликають.
+  var _pre = matchState.selected;
+  if(_pre && !_pre.el.classList.contains('matched') && _pre.el !== btn && _pre.side !== btn.dataset.side){
+    var _preOk = _pre.cardId === btn.dataset.cardId;
+    haptic[_preOk ? 'success' : 'error']();
+    answerFeedback(_preOk);
+  }
+
   // Озвучуємо термін (лише сторона 'term' — вимова цільового слова, а
   // не перекладу) на КОЖЕН клік по ще не заматченій картці — включно з
   // повторним кліком на вже вибрану (замість знімати з неї виділення,
@@ -9040,8 +9180,6 @@ function matchHandleClick(btn){
     const roundSize = matchState.cards.length;
     const isLastPairNoChoice = matchState.matched === roundSize - 1;
     matchState.matched++;
-    haptic.success();
-    answerFeedback(true);
 
     // Прогрес усього уроку — оновлюємо ЖИВЦЕМ, одразу по кожній парі
     // (не чекаючи завершення всього раунду matching).
@@ -9070,8 +9208,6 @@ function matchHandleClick(btn){
       el.classList.add('error');
       setTimeout(() => el.classList.remove('error'), 400);
     });
-    haptic.error();
-    answerFeedback(false);
     matchState.selected = null;
 
     // Помилка з обома картками — позначаємо для підсумкового запису
@@ -10498,10 +10634,10 @@ function renderExamPrepRow(node){
   // ✓/▶/🔒 праворуч. Лишаємо метадані лише там, де вони РЕАЛЬНО щось
   // повідомляють: заблоковано, чи (examsim) що спроб необмежено.
   const metaText = !unlocked ? t('lp_locked')
-    : isExamSim ? ({uk:'Симуляція іспиту — необмежена к-сть спроб', en:'Exam simulation — unlimited attempts', ru:'Симуляция экзамена — неограниченно попыток', de:'Prüfungssimulation — beliebig oft wiederholbar'}[uiLang] || 'Симуляція іспиту')
+    : isExamSim ? t('exam_sim_row_meta')
     : '';
   const chipLabel = isExamSim
-    ? ({uk:'▶ Почати тест', en:'▶ Start test', ru:'▶ Начать тест', de:'▶ Test starten'}[uiLang] || '▶ Test starten')
+    ? t('exam_sim_row_chip')
     : pct > 0
       ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
       : ({uk:'▶ Почати',     en:'▶ Start',    ru:'▶ Начать',     de:'▶ Starten'}[uiLang] || '▶ Starten');
@@ -11181,7 +11317,7 @@ function _examSimPickTwoRandom(cards){
 function openExamSimForumsbeitrag(){
   var cards = typeof SCHREIBEN !== 'undefined' ? SCHREIBEN.slice() : [];
   if(cards.length < 2){
-    notify('⚠️ Потрібно щонайменше 2 картки Forumsbeitrag (var SCHREIBEN) у поточному курсі');
+    notify(t('exam_sim_err_forum_cards'));
     return;
   }
   _examSimState.candidateCards = _examSimPickTwoRandom(cards);
@@ -11200,7 +11336,7 @@ function openExamSimForumsbeitrag(){
 function openExamSimEmail(){
   var cards = typeof EMAILS !== 'undefined' ? EMAILS.slice() : [];
   if(!cards.length){
-    notify('⚠️ Потрібна хоча б 1 картка E-Mail (var EMAILS) у поточному курсі');
+    notify(t('exam_sim_err_email_cards'));
     return;
   }
   _examSimState.candidateCards = [ cards[Math.floor(Math.random() * cards.length)] ];
@@ -11229,7 +11365,7 @@ function openExamSimSpeaking(){
     return c.type === 'Lösungswege diskutieren' && c.task && (c.task[primaryLang()] || c.task.de);
   });
   if(!cards.length){
-    notify('⚠️ Потрібна хоча б 1 картка усної частини (type: "Lösungswege diskutieren", var DIALOGE) у поточному курсі');
+    notify(t('exam_sim_err_speaking_cards'));
     return;
   }
   _examSimState.candidateCards = [ cards[Math.floor(Math.random() * cards.length)] ];
@@ -11251,7 +11387,7 @@ function openExamSimSpeakingTeil2(){
     return c.type === 'Small Talk' && c.task && (c.task[primaryLang()] || c.task.de);
   });
   if(!cards.length){
-    notify('⚠️ Потрібна хоча б 1 картка Smalltalk (type: "Small Talk", var DIALOGE) у поточному курсі');
+    notify(t('exam_sim_err_smalltalk_cards'));
     return;
   }
   _examSimState.candidateCards = [ cards[Math.floor(Math.random() * cards.length)] ];
@@ -11270,7 +11406,7 @@ function examSimOpenFromNode(node){
   if(part === 'E-Mail'){ openExamSimEmail(); return; }
   if(part === 'Sprechen'){ openExamSimSpeaking(); return; }
   if(part === 'SprechenTeil2'){ openExamSimSpeakingTeil2(); return; }
-  notify('⚠️ Симуляція для "'+part+'" ще не реалізована');
+  notify(t('exam_sim_err_not_implemented').replace('{part}', part));
 }
 
 // onclick у renderExamPrepRow передає лише id (той самий патерн, що й
@@ -11287,7 +11423,7 @@ function examSimOpenFromNodeId(nodeId){
 function _examSimFormatMinutes(timeMin){
   var totalSec = Math.round(timeMin * 60);
   var m = Math.floor(totalSec / 60), s = totalSec % 60;
-  return s === 0 ? (m + ' хв') : (m + ':' + (s < 10 ? '0' : '') + s);
+  return s === 0 ? (m + ' ' + t('exam_sim_min_unit')) : (m + ':' + (s < 10 ? '0' : '') + s);
 }
 
 // Дефолтний час завдання, якщо курс ще не задав власний
@@ -11311,6 +11447,11 @@ function _examSimShowBriefing(part){
 
   var timeEl = document.getElementById('exam-sim-time');
   if(timeEl) timeEl.textContent = _examSimFormatMinutes(timeMin);
+
+  // Підзаголовок залежить від типу: письмова vs усна частина (раніше
+  // завжди "письмової", навіть для Sprechen/SprechenTeil2).
+  var subEl = document.getElementById('exam-sim-subtitle');
+  if(subEl) subEl.textContent = t(_examSimIsSpeaking(part) ? 'exam_sim_subtitle_oral' : 'exam_sim_subtitle_written');
 
   var instrEl = document.getElementById('exam-sim-instructions');
   if(instrEl){
@@ -11658,7 +11799,7 @@ function _examSimShowFinishBlock(isTimeUp){
   var actions = document.getElementById('exam-sim-timeup-actions');
   if(actions) actions.style.display = 'flex';
   var finishBtn = document.getElementById('exam-sim-finish-btn');
-  if(finishBtn) finishBtn.textContent = isTimeUp ? 'Завершити' : 'Текст готовий';
+  if(finishBtn) finishBtn.textContent = t(isTimeUp ? 'exam_sim_finish' : 'exam_sim_text_ready');
 }
 
 function _examSimRenderCountdown(msLeft){
@@ -11813,7 +11954,7 @@ function examSimShowExample(){
     // за тим самим dlgId і відтворити їх послідовно — окрема задача, не
     // зроблена в цьому debug-проході. Чесно повідомляємо, а не
     // показуємо щось напівпрацююче чи неправильне.
-    notify('👁 Приклад розмови для цього типу поки не додано');
+    notify(t('exam_sim_example_speaking_na'));
     return;
   }
   if(_examSimState.part === 'E-Mail'){
@@ -13081,6 +13222,11 @@ function mcAnswer(btn, chosen, correct, card){
   mcState.answered = true;
 
   const isCorrect = chosen === correct;
+  // Звук + вібрація — ПЕРШИМИ, до recordCardEvent()/DOM: recordCardEvent
+  // синхронно серіалізує весь SM-2 стан у localStorage (десятки мс і більше
+  // на телефоні), і звук, поставлений ПІСЛЯ нього, чутно із запізненням.
+  haptic[isCorrect?'success':'error']();
+  answerFeedback(isCorrect);
   recordCardEvent(card.id, isCorrect ? 'task_correct' : 'task_wrong');
 
   // Підсвічуємо варіанти
@@ -13089,9 +13235,6 @@ function mcAnswer(btn, chosen, correct, card){
     else if(b === btn) b.classList.add('wrong');
     b.style.pointerEvents = 'none';
   });
-
-  haptic[isCorrect?'success':'error']();
-  answerFeedback(isCorrect);
 
   // Автоперехід через 1.2с
   setTimeout(()=>{
@@ -13645,13 +13788,16 @@ function tilesCheck(){
   const given   = tilesState.answer;
   const isOk = given.join(' ') === correct.join(' ');
   tilesState.checked = true;
+  // Звук + вібрація — ПЕРШИМИ, до recordCardEvent()/DOM: recordCardEvent
+  // синхронно серіалізує весь SM-2 стан у localStorage (десятки мс і більше
+  // на телефоні), і звук, поставлений ПІСЛЯ нього, чутно із запізненням.
+  haptic[isOk?'success':'error']();
+  answerFeedback(isOk);
   const mode = tilesState.currentMode || 'term';
 
   const ansEl = document.getElementById('tiles-answer');
   ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
   recordCardEvent(tilesState.current.id, isOk ? 'task_correct' : 'task_wrong');
-  haptic[isOk?'success':'error']();
-  answerFeedback(isOk);
 
   // Показуємо модальний результат — кнопка "Далі" в ньому прихована до
   // завершення озвучення (tilesRevealResultBtn нижче).
@@ -13937,6 +14083,11 @@ function defCheck(){
   const given   = defState.slots.map(s => s.word || '');
   const isOk = given.join(' ') === correct.join(' ');
   defState.checked = true;
+  // Звук + вібрація — ПЕРШИМИ, до recordCardEvent()/DOM: recordCardEvent
+  // синхронно серіалізує весь SM-2 стан у localStorage (десятки мс і більше
+  // на телефоні), і звук, поставлений ПІСЛЯ нього, чутно із запізненням.
+  haptic[isOk ? 'success' : 'error']();
+  answerFeedback(isOk);
 
   // Підсвічуємо кожен слот
   defState.slots.forEach((s, i) => {
@@ -13946,8 +14097,6 @@ function defCheck(){
   });
 
   recordCardEvent(defState.current.id, isOk ? 'task_correct' : 'task_wrong');
-  haptic[isOk ? 'success' : 'error']();
-  answerFeedback(isOk);
 
   // Показуємо модальний результат — кнопка "Далі" прихована до
   // завершення озвучення (tilesRevealResultBtn — та сама, що й у Tiles,
@@ -15353,7 +15502,7 @@ function startPrefetchChain(fromIdx){
 let LF = null;
 
 const LF_STEP_ICONS = {
-  cards:    '🃏',
+  cards:    '📖',
   def:      '🔍',
   matching: '🔗',
   choice:   '🎯',
@@ -19293,6 +19442,11 @@ function _quizAnswer(btn, chosen, answers, q){
 
   const isCorrect = !!chosen.correct;
   if(isCorrect) quizState.correct++;
+  // Звук + вібрація — ПЕРШИМИ, до recordCardEvent()/DOM: recordCardEvent
+  // синхронно серіалізує весь SM-2 стан у localStorage (десятки мс і більше
+  // на телефоні), і звук, поставлений ПІСЛЯ нього, чутно із запізненням.
+  haptic[isCorrect ? 'success' : 'error']();
+  answerFeedback(isCorrect);
 
   // SRS: оновлюємо картку якщо є cardId
   if(q.cardId){
@@ -19310,9 +19464,6 @@ function _quizAnswer(btn, chosen, answers, q){
       b.classList.add('wrong');
     }
   });
-
-  haptic[isCorrect ? 'success' : 'error']();
-  answerFeedback(isCorrect);
 
   // Автоперехід через 1.4с
   setTimeout(()=>{
@@ -21417,12 +21568,13 @@ function sbLearnPrev() {
 
 function sbLearnSwipeHard() {
   var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
+  // Звук — першим (див. пояснення в mcAnswer): recordCardEvent важкий.
+  if(typeof haptic!=='undefined') haptic.error();
+  if(typeof answerFeedback==='function') answerFeedback(false);
   // Smart Review: записуємо оцінку "не знаю" (це і визначає пріоритет
   // картки далі — sbSmPriority читає саме цей централізований стейт)
   var days = 1;
   try{ days = recordCardEvent(card.id, 'swipe_dontknow', 'Sprachbausteine'); }catch(e){}
-  if(typeof haptic!=='undefined') haptic.error();
-  if(typeof answerFeedback==='function') answerFeedback(false);
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(192,57,43,.08)'; setTimeout(function(){ area.style.background=''; },300); }
   if(typeof showSrsHint==='function'){
@@ -21438,13 +21590,14 @@ function sbLearnSwipeHard() {
 
 function sbLearnSwipeEasy() {
   var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
+  // Звук — першим (див. пояснення в mcAnswer): sbMarkLearned/recordCardEvent важкі.
+  if(typeof haptic!=='undefined') haptic.success();
+  if(typeof answerFeedback==='function') answerFeedback(true);
   sbMarkLearned(card.id);
   // Smart Review: записуємо оцінку "знаю" (визначає пріоритет далі —
   // sbSmPriority читає саме цей централізований стейт)
   var days = 1;
   try{ days = recordCardEvent(card.id, 'swipe_know', 'Sprachbausteine'); }catch(e){}
-  if(typeof haptic!=='undefined') haptic.success();
-  if(typeof answerFeedback==='function') answerFeedback(true);
   var area=document.getElementById('sb-fc-area');
   if(area){ area.style.background='rgba(46,204,113,.08)'; setTimeout(function(){ area.style.background=''; },300); }
   if(typeof showSrsHint==='function'){
