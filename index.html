@@ -558,6 +558,7 @@ body{
   color:var(--muted);display:flex;align-items:center;justify-content:center;gap:2px;
 }
 .vlang-btn.on{border-color:var(--gold);background:var(--gold-dim);color:var(--warm)}
+.vlang-btn .mf{ font-size:1.05em;margin-right:5px;vertical-align:-.16em; }
 .vlang-btn.off{opacity:.35;filter:grayscale(.9)}
 .vlang-btn.lang-unavailable{opacity:.25;filter:grayscale(1);cursor:not-allowed;pointer-events:none}
 
@@ -656,6 +657,11 @@ body{
 .fc-body{padding:14px 16px 0;display:flex;flex-direction:column;gap:7px;flex:1;overflow:hidden}
 .fc-lang-row{display:flex;align-items:baseline;gap:9px;margin-bottom:5px}
 .fc-flag{font-size:20px;flex-shrink:0}
+/* Намальований прапор (movaFlag): 7:5, скруглення й тонка обводка — без
+   clipPath, тож працює й у прихованих view. .mf-inline — у потоці тексту. */
+.mf{ display:inline-block;width:1.4em;height:1em;border-radius:.18em;overflow:hidden;box-shadow:0 0 0 1px rgba(0,0,0,.16);vertical-align:-.12em;flex-shrink:0; }
+.mf.mf-inline{ margin-right:.4em; }
+.fc-flag{ display:inline-flex;align-items:center; }
 .fc-term{font-size:var(--fs-card);font-weight:700;color:#fff;line-height:1.3}
 .fc-short{font-size:var(--fs-short);color:rgba(255,255,255,.42);margin-top:1px}
 
@@ -1459,6 +1465,7 @@ body{
   width:48px;text-align:center;
   display:flex;align-items:center;justify-content:center;color:var(--gold);
 }
+.ob-card-flag .mf{ font-size:.85em; }
 .ob-card-text{
   flex:1;
 }
@@ -2139,7 +2146,8 @@ body{
   border:1px solid var(--border);padding:12px 10px;
   display:flex;flex-direction:column;align-items:center;gap:2px;
 }
-.lr-stat-tile-icon{ font-size:18px;margin-bottom:2px; }
+.lr-stat-tile-icon{ font-size:20px;margin-bottom:2px;display:flex;justify-content:center;color:var(--forest); }
+.lr-stat-tile.xp .lr-stat-tile-icon{ color:var(--gold); }
 .lr-stat-tile-val{ font-size:19px;font-weight:800;color:var(--ink);font-family:'Inter',sans-serif; }
 .lr-stat-tile-label{ font-size:11.5px;color:var(--muted);font-family:'Inter',sans-serif; }
 .lr-stat-tile.xp{
@@ -2292,6 +2300,7 @@ body{
 .fc-srs-new{background:rgba(46,204,113,.1);color:#2ecc71;border-color:rgba(46,204,113,.3)}
 .ui-lang-btn{border:1px solid var(--border);background:var(--card);color:var(--ink);padding:7px 4px;border-radius:10px;cursor:pointer;transition:all .2s;font-family:inherit}
 .ui-lang-btn.ssec-btn{font-size:var(--fs-tertiary);text-align:left;padding:14px 18px}
+.ui-lang-btn .mf{ font-size:1.3em;margin-right:12px;vertical-align:-.25em; }
 .ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
 .fs-setting-val{font-weight:700;font-size:var(--fs-tertiary);color:var(--gold);min-width:36px;text-align:right}
 .fs-setting-scale{display:flex;justify-content:space-between;font-size:var(--fs-utility);color:var(--muted);margin-top:-4px}
@@ -3510,7 +3519,7 @@ body{
   <p class="ob-subtitle">Wählen Sie Ihre Sprache<br>Оберіть вашу мову<br>Choose your language<br>Выберите язык</p>
   <div class="ob-cards">
     <div class="ob-card" onclick="selectOnboardLang('de')">
-      <div class="ob-card-flag">🇩🇪</div>
+      <div class="ob-card-flag"><i data-flag="de"></i></div>
       <div class="ob-card-text">
         <div class="ob-card-lang">Deutsch</div>
         <div class="ob-card-desc">Ich möchte den Kurs auf Deutsch absolvieren</div>
@@ -3518,7 +3527,7 @@ body{
       <div class="ob-card-arrow">›</div>
     </div>
     <div class="ob-card" onclick="selectOnboardLang('uk')">
-      <div class="ob-card-flag">🇺🇦</div>
+      <div class="ob-card-flag"><i data-flag="uk"></i></div>
       <div class="ob-card-text">
         <div class="ob-card-lang">Українська</div>
         <div class="ob-card-desc">Я хочу проходити курс українською мовою</div>
@@ -3526,7 +3535,7 @@ body{
       <div class="ob-card-arrow">›</div>
     </div>
     <div class="ob-card" onclick="selectOnboardLang('en')">
-      <div class="ob-card-flag">🇬🇧</div>
+      <div class="ob-card-flag"><i data-flag="en"></i></div>
       <div class="ob-card-text">
         <div class="ob-card-lang">English</div>
         <div class="ob-card-desc">I want to take the course in English</div>
@@ -3534,7 +3543,7 @@ body{
       <div class="ob-card-arrow">›</div>
     </div>
     <div class="ob-card" onclick="selectOnboardLang('ru')">
-      <div class="ob-card-flag">🇷🇺</div>
+      <div class="ob-card-flag"><i data-flag="ru"></i></div>
       <div class="ob-card-text">
         <div class="ob-card-lang">Русский</div>
         <div class="ob-card-desc">Я хочу проходить курс на русском языке</div>
@@ -3765,7 +3774,7 @@ body{
     <!-- Вогонь і Налаштування у хедері замість stopbtn -->
     <div class="h-right-btns">
       <button class="h-icon-btn" onclick="showView('settings')" title="M">
-        <span id="h-xp" class="h-icon-glyph" style="color:var(--gold);font-weight:700;font-size:20px">𐌌</span>
+        <span id="h-xp" class="h-icon-glyph" style="color:var(--gold);font-size:22px"><i data-mi="mpoint" class=""></i></span>
         <span id="h-xp-count" class="h-chip-counter">0</span>
       </button>
       <button class="h-icon-btn" onclick="showStreakInfoModal()" title="Streak">
@@ -3879,10 +3888,10 @@ body{
           <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()">🧠</button>
           <button class="vlang-btn" id="vplayboth-btn" onclick="cycleVocabPlaySide()" title="Передня / обидві / задня">1️⃣</button>
           <div class="vlang-grp">
-            <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')">🇩🇪 DE</button>
-            <button class="vlang-btn on"  id="vlcard-en" onclick="toggleVocabLang('en')">🇬🇧 EN</button>
-            <button class="vlang-btn on"  id="vlcard-uk" onclick="toggleVocabLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn off" id="vlcard-ru" onclick="toggleVocabLang('ru')">🇷🇺 RU</button>
+            <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')"><i data-flag="de"></i>DE</button>
+            <button class="vlang-btn on"  id="vlcard-en" onclick="toggleVocabLang('en')"><i data-flag="en"></i>EN</button>
+            <button class="vlang-btn on"  id="vlcard-uk" onclick="toggleVocabLang('uk')"><i data-flag="uk"></i>UK</button>
+            <button class="vlang-btn off" id="vlcard-ru" onclick="toggleVocabLang('ru')"><i data-flag="ru"></i>RU</button>
           </div>
           <select id="vf-cat" onchange="resetVocabQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
@@ -4086,10 +4095,10 @@ body{
           <button class="vstop" onclick="sbStopPlay()">⏹</button>
           <button class="vseq smart" id="sb-vshuffle-btn" onclick="sbCycleSort()" title="Sortiermodus">🧠</button>
           <div class="vlang-grp">
-            <button class="vlang-btn on"  id="sblang-de" onclick="sbToggleLang('de')">🇩🇪 DE</button>
-            <button class="vlang-btn on"  id="sblang-en" onclick="sbToggleLang('en')">🇬🇧 EN</button>
-            <button class="vlang-btn on"  id="sblang-uk" onclick="sbToggleLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn off" id="sblang-ru" onclick="sbToggleLang('ru')">🇷🇺 RU</button>
+            <button class="vlang-btn on"  id="sblang-de" onclick="sbToggleLang('de')"><i data-flag="de"></i>DE</button>
+            <button class="vlang-btn on"  id="sblang-en" onclick="sbToggleLang('en')"><i data-flag="en"></i>EN</button>
+            <button class="vlang-btn on"  id="sblang-uk" onclick="sbToggleLang('uk')"><i data-flag="uk"></i>UK</button>
+            <button class="vlang-btn off" id="sblang-ru" onclick="sbToggleLang('ru')"><i data-flag="ru"></i>RU</button>
           </div>
         </div>
         <div class="vchips" id="sb-cat-chips"></div>
@@ -4186,10 +4195,10 @@ body{
           <button class="vstop" onclick="stopDialogue()">⏹</button>
           <button class="vseq smart" id="dlgshuffle-btn" onclick="cycleDialogueMode()">🧠</button>
           <div class="vlang-grp">
-            <button class="vlang-btn on"  id="dlglang-de" onclick="toggleDialogueLang('de')">🇩🇪 DE</button>
-            <button class="vlang-btn on"  id="dlglang-en" onclick="toggleDialogueLang('en')">🇬🇧 EN</button>
-            <button class="vlang-btn on"  id="dlglang-uk" onclick="toggleDialogueLang('uk')">🇺🇦 UK</button>
-            <button class="vlang-btn off" id="dlglang-ru" onclick="toggleDialogueLang('ru')">🇷🇺 RU</button>
+            <button class="vlang-btn on"  id="dlglang-de" onclick="toggleDialogueLang('de')"><i data-flag="de"></i>DE</button>
+            <button class="vlang-btn on"  id="dlglang-en" onclick="toggleDialogueLang('en')"><i data-flag="en"></i>EN</button>
+            <button class="vlang-btn on"  id="dlglang-uk" onclick="toggleDialogueLang('uk')"><i data-flag="uk"></i>UK</button>
+            <button class="vlang-btn off" id="dlglang-ru" onclick="toggleDialogueLang('ru')"><i data-flag="ru"></i>RU</button>
           </div>
           <select id="dlgf-cat" onchange="resetDialogueQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
@@ -4239,10 +4248,10 @@ body{
     <div class="ssec" id="ssec-lang">
     <h3><i data-mi="globe" class="mi-inline"></i><span data-i18n="sec_lang">Sprache / Мова / Language</span></h3>
     <div style="display:flex;gap:8px;padding:4px 0;flex-direction:column">
-      <button class="btn ui-lang-btn ssec-btn active" data-lang="de" onclick="setUiLang('de')">🇩🇪 Deutsch</button>
-      <button class="btn ui-lang-btn ssec-btn" data-lang="uk" onclick="setUiLang('uk')">🇺🇦 Українська</button>
-      <button class="btn ui-lang-btn ssec-btn" data-lang="en" onclick="setUiLang('en')">🇬🇧 English</button>
-      <button class="btn ui-lang-btn ssec-btn" data-lang="ru" onclick="setUiLang('ru')">🇷🇺 Русский</button>
+      <button class="btn ui-lang-btn ssec-btn active" data-lang="de" onclick="setUiLang('de')"><i data-flag="de"></i>Deutsch</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="uk" onclick="setUiLang('uk')"><i data-flag="uk"></i>Українська</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="en" onclick="setUiLang('en')"><i data-flag="en"></i>English</button>
+      <button class="btn ui-lang-btn ssec-btn" data-lang="ru" onclick="setUiLang('ru')"><i data-flag="ru"></i>Русский</button>
     </div>
     </div>
 
@@ -4291,8 +4300,8 @@ body{
     <h3><i data-mi="chart" class="mi-inline"></i><span data-i18n="sec_goal_data">Lernziel &amp; Daten</span></h3>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_today">Heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-today">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_total">Gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-total">0</span></div>
-    <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_today">M heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-today">0</span></div>
-    <div class="srow"><div class="srow-label"><span style="color:var(--gold);font-weight:700">𐌌</span> <label data-i18n="lbl_xp_total">M gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-total">0</span></div>
+    <div class="srow"><div class="srow-label"><span class="srow-ico"><i data-mi="mpoint" class=""></i></span> <label data-i18n="lbl_xp_today">M heute</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-today">0</span></div>
+    <div class="srow"><div class="srow-label"><span class="srow-ico"><i data-mi="mpoint" class=""></i></span> <label data-i18n="lbl_xp_total">M gesamt</label></div><span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-xp-total">0</span></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_goal">Tagesziel</label><small data-i18n="sub_goal">Karten pro Tag</small></div><div class="srow-ctrl"><input type="range" min="5" max="50" step="5" value="10" id="daily-goal" oninput="setDailyGoal(+this.value)"><span id="daily-goal-v">10</span></div></div>
     <div class="srow" onclick="showStreakInfoModal()" style="cursor:pointer">
       <div class="srow-label"><span class="srow-ico"><i data-mi="snowflake" class=""></i></span> <label data-i18n="sec_streak_freeze">Streak-Schutz</label></div>
@@ -4481,7 +4490,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '699-ff24bfd';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5179,6 +5188,9 @@ var MOVA_ICONS = {
   home:    '<path d="M3.8 11.4 12 4.4l8.2 7M6 9.8v9.7h12V9.8M10.2 19.5v-5.4h3.6v5.4"/>',
   briefcase:'<path d="M4.7 8h14.6a1.7 1.7 0 0 1 1.7 1.7v8.6a1.7 1.7 0 0 1-1.7 1.7H4.7A1.7 1.7 0 0 1 3 18.3V9.7A1.7 1.7 0 0 1 4.7 8z"/><path d="M9 8V6.4A1.4 1.4 0 0 1 10.4 5h3.2A1.4 1.4 0 0 1 15 6.4V8M3 13.2h18M11 13.2v1.7h2v-1.7"/>',
   turtle:  '<path d="M4.4 16.4c0-4.3 3.2-7.4 7.2-7.4s7.2 3.1 7.2 7.4z"/><path d="M18.6 13.6c.6-1.3 2.1-1.9 3.2-1.1 1 .7 1 2.1.1 3"/><path d="M7.4 16.4v2.7M15.6 16.4v2.7M4.4 16.4 2.6 17.6"/><path d="M8.2 13q1.4-1.7 2.8 0t2.8 0"/>',
+  mpoint:  '<path d="M12 3.4a8.6 8.6 0 1 0 0 17.2 8.6 8.6 0 0 0 0-17.2z"/><path d="M7.6 15.9 8.9 8.1 12 12.9l3.1-4.8 1.3 7.8"/>',
+  trend:   '<path d="M4 17.6 9.4 12l3.6 3.6L20 7.8"/><path d="M15 7.6h5.2v5.2"/>',
+  chat:    '<path d="M4.6 5.6h8.8a1.6 1.6 0 0 1 1.6 1.6v4.6a1.6 1.6 0 0 1-1.6 1.6H9.2l-3 2.4v-2.4H4.6A1.6 1.6 0 0 1 3 11.8V7.2a1.6 1.6 0 0 1 1.6-1.6z"/><path d="M17.4 10.2h2A1.6 1.6 0 0 1 21 11.8v4.6a1.6 1.6 0 0 1-1.6 1.6h-1.6v2.4l-3-2.4H11"/>',
   repeat: '<path d="M4.5 11.5V10a3 3 0 0 1 3-3h10.6M15.6 4.4 18.4 7l-2.8 2.6"/><path d="M19.5 12.5V14a3 3 0 0 1-3 3H5.9M8.4 19.6 5.6 17l2.8-2.6"/>',
 };
 // "▶ Текст" з локалізованих рядків → монолінійна іконка play + текст.
@@ -5194,6 +5206,11 @@ function _playLabel(txt){
 // замість повторюваних inline-SVG: одне джерело істини — MOVA_ICONS. Викликається
 // на початку init() (view-и на цей момент уже розібрані, але ще не показані).
 function hydrateMovaIcons(root){
+  (root || document).querySelectorAll('i[data-flag]').forEach(function(el){
+    var tmp = document.createElement('span');
+    tmp.innerHTML = movaFlag(el.getAttribute('data-flag'), el.className);
+    if(tmp.firstChild) el.replaceWith(tmp.firstChild);
+  });
   (root || document).querySelectorAll('i[data-mi]').forEach(function(el){
     var name = el.getAttribute('data-mi');
     var cls = 'mi' + (el.className ? ' ' + el.className : '');
@@ -5202,6 +5219,30 @@ function hydrateMovaIcons(root){
     var svg = tmp.firstChild;
     if(svg) el.replaceWith(svg);
   });
+}
+// ── ПРАПОРИ MOVA ────────────────────────────────────────────────────
+// Намальовані SVG (не емодзі): емодзі-прапори не рендеряться на Windows
+// (показуються літерами DE/UA…) і виглядають по-різному на Apple/Android.
+// Скруглення й тонка обводка — через CSS (.mf), без clipPath/id, тож
+// однаково працює всередині прихованих (display:none) view.
+const MOVA_FLAGS = {"de": "<rect width=\"28\" height=\"6.7\" fill=\"#1f1f1f\"/><rect y=\"6.6\" width=\"28\" height=\"6.8\" fill=\"#d6402f\"/><rect y=\"13.3\" width=\"28\" height=\"6.7\" fill=\"#f2b830\"/>", "uk": "<rect width=\"28\" height=\"10.1\" fill=\"#2f6bb6\"/><rect y=\"10\" width=\"28\" height=\"10\" fill=\"#f4c62e\"/>", "ru": "<rect width=\"28\" height=\"6.7\" fill=\"#f6f6f4\"/><rect y=\"6.6\" width=\"28\" height=\"6.8\" fill=\"#2e58a8\"/><rect y=\"13.3\" width=\"28\" height=\"6.7\" fill=\"#d5382f\"/>", "en": "<rect width=\"28\" height=\"20\" fill=\"#24408e\"/><path d=\"M0 0 28 20M28 0 0 20\" stroke=\"#fff\" stroke-width=\"4.2\"/><path d=\"M0 0 28 20M28 0 0 20\" stroke=\"#cf2e3a\" stroke-width=\"1.5\"/><path d=\"M14 0v20M0 10h28\" stroke=\"#fff\" stroke-width=\"6.6\"/><path d=\"M14 0v20M0 10h28\" stroke=\"#cf2e3a\" stroke-width=\"3.6\"/>"};
+function movaFlag(code, cls){
+  if(code === 'gb') code = 'en';
+  var p = MOVA_FLAGS[code]; if(!p) return '';
+  return '<svg class="mf'+(cls?' '+cls:'')+'" viewBox="0 0 28 20" aria-hidden="true" focusable="false">'+p+'</svg>';
+}
+// Рядок, що піде в innerHTML: екранує HTML і підміняє гліфи, які тепер є
+// намальованими іконками (бали М, заморозка, прапори). Для текстів з I18N,
+// які показуються через textContent/notify.
+function _iconizeText(msg){
+  var s = String(msg == null ? '' : msg).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  return s
+    .replace(/\uD800\uDF0C/g, movaIcon('mpoint','mi mi-inline'))   // 𐌌 U+1030C
+    .replace(/\uD83E\uDDCA/g, movaIcon('snowflake','mi mi-inline')) // 🧊
+    .replace(/\uD83C\uDDE9\uD83C\uDDEA/g, movaFlag('de','mf-inline'))
+    .replace(/\uD83C\uDDFA\uD83C\uDDE6/g, movaFlag('uk','mf-inline'))
+    .replace(/\uD83C\uDDEC\uD83C\uDDE7/g, movaFlag('en','mf-inline'))
+    .replace(/\uD83C\uDDF7\uD83C\uDDFA/g, movaFlag('ru','mf-inline'));
 }
 function movaIcon(name, cls){ var p = MOVA_ICONS[name]; if(!p) return ''; return '<svg class="mi'+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+p+'</svg>'; }
 
@@ -5844,7 +5885,7 @@ var LC = {
   uk: {code:'uk-UA', ms:['Ostap','Polina']},
   ru: {code:'ru-RU', ms:['Irina','Pavel','Dmitry']}
 };
-var F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪', ru:'🇷🇺'};
+var F  = {en:movaFlag('en'), uk:movaFlag('uk'), de:movaFlag('de'), ru:movaFlag('ru')};
 var LN = {en:'English', uk:'Українська', de:'Deutsch', ru:'Русский'};
 
 // Відновлюємо всі збережені налаштування
@@ -8615,7 +8656,7 @@ function showView(id, opts){
 }
 
 // ── SETTINGS ──────────────────────────────────────────────────
-function notify(msg){const e=document.getElementById('notif');e.textContent=msg;e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
+function notify(msg){const e=document.getElementById('notif');e.innerHTML=_iconizeText(msg);e.classList.add('show');setTimeout(()=>e.classList.remove('show'),2500);}
 
 // Чи реально прозвучало аудіо для поточної картки (хоч би для одного
 // поля). Використовується srGetExamPart(), щоб Hören рахувався лише
@@ -8752,7 +8793,7 @@ function renderVocabCard(){
   document.getElementById('fc-back-inner').innerHTML=`
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${fav?'★':'☆'}</button>
-      <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||'🇩🇪'}</span>
+      <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||F.de}</span>
       <span class="fc-back-term">${v.term?.[primaryLang()]||''}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
     </div>
@@ -12186,8 +12227,8 @@ function _examSimFinishSpeaking(){
     var timeLabel = t('lr_l_time');
     var xpLabel = t('lr_l_xp');
     var rows = [
-      ['⏱', timeLabel, timeStr],
-      ['𐌌', xpLabel, xpEarned, 'xp'],
+      [movaIcon('timer'), timeLabel, timeStr],
+      [movaIcon('mpoint'), xpLabel, xpEarned, 'xp'],
     ];
     statsEl.innerHTML = rows.map(function(r){
       return '<div class="lr-stat-tile'+(r[3]?' '+r[3]:'')+'"><span class="lr-stat-tile-icon">'+r[0]+'</span><span class="lr-stat-tile-val">'+r[2]+'</span><span class="lr-stat-tile-label">'+r[1]+'</span></div>';
@@ -13253,7 +13294,7 @@ function _lrShowStreakCard(streakResult, frozenDaysUsed){
   // покрито mova_streak_freezes) — показуємо про це окремий рядок, щоб
   // не виглядало, ніби користувач помилково "не помітив" пропуску.
   if(frozenEl){
-    if(frozenDaysUsed > 0){ frozenEl.textContent = t('streak_frozen_note'); frozenEl.style.display = ''; }
+    if(frozenDaysUsed > 0){ frozenEl.innerHTML = _iconizeText(t('streak_frozen_note')); frozenEl.style.display = ''; }
     else frozenEl.style.display = 'none';
   }
   // Бонусна заморозка за віху 3/7 днів (див. srUpdateStreak) — окрема
@@ -19590,21 +19631,21 @@ function lfShowResult(){
   const xpEarnedThisLesson = xpGetTotal() - (LF._xpAtStart || 0);
   const statsEl = document.getElementById('lr-stats');
   if(statsEl){
-    const xpRow = ['𐌌', t('lr_l_xp'), xpEarnedThisLesson, 'xp'];
-    const timeRow = ['⏱', t('lr_l_time'), timeStr];
+    const xpRow = [movaIcon('mpoint'), t('lr_l_xp'), xpEarnedThisLesson, 'xp'];
+    const timeRow = [movaIcon('timer'), t('lr_l_time'), timeStr];
     const rows = isFrmOnly ? [
-      ['📰', t('lr_l_frm'), LF.frmCards.length],
+      [movaIcon('post'), t('lr_l_frm'), LF.frmCards.length],
       timeRow, xpRow,
     ] : isEmlOnly ? [
-      ['📧', t('lr_l_eml'), LF.emlCards.length],
+      [movaIcon('mail'), t('lr_l_eml'), LF.emlCards.length],
       timeRow, xpRow,
     ] : isDlgOnly ? [
-      ['💬', t('lr_l_dlg'), LF.dlgCards.length],
-      ['💭', t('lr_l_turns'), totalTurns],
+      [movaIcon('bubble'), t('lr_l_dlg'), LF.dlgCards.length],
+      [movaIcon('chat'), t('lr_l_turns'), totalTurns],
       timeRow, xpRow,
     ] : [
-      ['🗂', t('lr_l_cards'), LF.cards.length],
-      ['📈', t('lr_l_improved'), improved+'/'+LF.cards.length],
+      [movaIcon('tiles'), t('lr_l_cards'), LF.cards.length],
+      [movaIcon('trend'), t('lr_l_improved'), improved+'/'+LF.cards.length],
       timeRow, xpRow,
     ];
     statsEl.innerHTML = rows.map(([icon,l,v,cls])=>
@@ -20459,7 +20500,7 @@ function renderDialogueCard(){
   document.getElementById('dlg-fc-back-inner').innerHTML=`
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-back">${fav?'★':'☆'}</button>
-      <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||'🇩🇪'}</span>
+      <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||F.de}</span>
       <span class="fc-back-term">${(d.q?.[primaryLang()]||'').length>40?(d.q?.[primaryLang()]||'').slice(0,40)+'…':(d.q?.[primaryLang()]||'')}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
     </div>
@@ -21371,7 +21412,7 @@ function showStreakInfoModal(){
   overlay.onclick = function(e){ if(e.target === overlay) closeStreakInfoModal(); };
 
   const buyBtnDisabled = atMax || !canAfford;
-  const buyBtnLabel = atMax ? t('btn_freeze_max') : t('btn_buy_freeze') + ' — ' + STREAK_FREEZE_COST + ' 𐌌';
+  const buyBtnLabel = atMax ? t('btn_freeze_max') : t('btn_buy_freeze') + ' — ' + STREAK_FREEZE_COST + ' ' + movaIcon('mpoint','mi mi-inline');
 
   overlay.innerHTML =
     '<div class="streak-modal">' +
@@ -22010,7 +22051,7 @@ function sbRenderLearn() {
   // ── FRONT: sentence per active lang, order de→en→uk→ru ──
   var frontEl = document.getElementById('sb-front-body');
   if (frontEl) {
-    var langLabels = { en:'🇬🇧 English', uk:'🇺🇦 Українська', de:'🇩🇪 Deutsch', ru:'🇷🇺 Русский' };
+    var langLabels = { en:movaFlag('en','mf-inline')+'English', uk:movaFlag('uk','mf-inline')+'Українська', de:movaFlag('de','mf-inline')+'Deutsch', ru:movaFlag('ru','mf-inline')+'Русский' };
     frontEl.innerHTML = langs.map(function(l, i) {
       var raw  = sbL(card.sentence, l);
       var html = raw.replace('{{BLANK}}', '<b>'+sbA(card, l)+'</b>');
@@ -22026,7 +22067,7 @@ function sbRenderLearn() {
 
   var backEl = document.getElementById('sb-back-body');
   if (backEl) {
-    var langLabels2 = { en:'🇬🇧 Explanation', uk:'🇺🇦 Пояснення', de:'🇩🇪 Erklärung', ru:'🇷🇺 Объяснение' };
+    var langLabels2 = { en:movaFlag('en','mf-inline')+'Explanation', uk:movaFlag('uk','mf-inline')+'Пояснення', de:movaFlag('de','mf-inline')+'Erklärung', ru:movaFlag('ru','mf-inline')+'Объяснение' };
     backEl.innerHTML = langs.map(function(l, i) {
       var expl = sbL(card.explanation, l).replace(/„([^"]+)"/g, '<strong>„$1"</strong>');
       return (i>0 ? '<div class="sb-back-divider"></div>' : '')
