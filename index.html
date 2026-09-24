@@ -1382,12 +1382,13 @@ body{
 .lp-module-bonus .lp-module-title{color:var(--gold);}
 .lp-module-icon{
   width:36px;height:36px;border-radius:10px;
-  background:var(--forest);
+  background:var(--forest);color:var(--gold);
   display:flex;align-items:center;justify-content:center;
   font-size:16px;flex-shrink:0;
 }
-.lp-module.locked .lp-module-icon{background:var(--border);}
-.lp-module.done   .lp-module-icon{background:var(--gold);}
+.lp-module-icon .mi{ width:20px;height:20px; }
+.lp-module.locked .lp-module-icon{background:var(--border);color:rgba(0,0,0,.38);}
+.lp-module.done   .lp-module-icon{background:var(--gold);color:var(--forest);}
 .lp-module-body{flex:1;min-width:0;}
 .lp-module-title{
   font-size:var(--fs-tertiary);font-weight:600;color:var(--ink);
@@ -4498,7 +4499,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '706-cd8f4ce';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -10282,24 +10283,32 @@ function reviewProgress(chapterNums){
 // Рендер картки "Повторення" для Lernpfad — у стилі renderModuleCard
 function renderReviewCard(chapterNums, labelKey, isUnlocked){
   const {pct,done,total} = reviewProgress(chapterNums);
+  // Універсальний фільтр: 0 карток у вказаних главах (типово — глава
+  // "Підготовка до іспиту": там уроки-діалоги/форум/email/симуляція
+  // без власних cardIds) → картку не рендеримо взагалі, а не показуємо
+  // "0 з 0 карток".
+  if(!total) return '';
   const isDone = pct >= 80;
   const statusClass = !isUnlocked ? 'locked' : isDone ? 'done' : '';
   const clickFn = isUnlocked ? `startReviewLesson([${chapterNums.join(',')}],'${labelKey}')` : '';
 
   const title = {
-    de: labelKey==='course'?'Kurswiederholung':'Wiederholung',
-    uk: labelKey==='course'?'Повторення курсу':'Повторення',
-    en: labelKey==='course'?'Course review':'Review',
-    ru: labelKey==='course'?'Повторение курса':'Повторение',
+    de: labelKey==='course'?'Kurswiederholung':'Wörterbuch: Kapitel',
+    uk: labelKey==='course'?'Повторення курсу':'Словник глави',
+    en: labelKey==='course'?'Course review':'Chapter dictionary',
+    ru: labelKey==='course'?'Повторение курса':'Словарь главы',
   }[uiLang] || 'Wiederholung';
 
   const meta = !isUnlocked
     ? (uiLang==='uk'?'Спочатку пройди модулі':uiLang==='ru'?'Сначала пройди модули':uiLang==='en'?'Complete modules first':'Erst Module abschließen')
     : isDone
-      ? '✅ '+(uiLang==='uk'?'Готово':uiLang==='ru'?'Готово':uiLang==='en'?'Done':'Fertig')+' · '+done+'/'+total
+      // Прибрано дублювання: іконка-кружечок ліворуч сама вже стає ✓ —
+      // повторювати ту саму позначку в тексті не потрібно (той самий
+      // принцип, що й у locked_modal_title раніше).
+      ? (uiLang==='uk'?'Готово':uiLang==='ru'?'Готово':uiLang==='en'?'Done':'Fertig')+' · '+done+'/'+total
       : done+' '+(uiLang==='uk'?'з':uiLang==='ru'?'из':uiLang==='en'?'of':'von')+' '+total+' '+(uiLang==='uk'?'карток':uiLang==='ru'?'карточек':uiLang==='en'?'cards':'Karten');
 
-  const icon = !isUnlocked ? '🔒' : isDone ? '✅' : '🔁';
+  const icon = !isUnlocked ? movaIcon('lock') : isDone ? movaIcon('check') : (labelKey==='course' ? movaIcon('repeat') : movaIcon('book'));
 
   return `<div class="lp-module ${statusClass}"
     onclick="${clickFn}"
@@ -11408,7 +11417,7 @@ function renderCourseVocabCard(chapterNums, unlocked){
     en: ids.length+' cards',  ru: ids.length+' карточек',
   }[uiLang] || ids.length+' Karten';
   return `<div class="lp-module lp-module-bonus" onclick="startCourseVocabView()">
-    <div class="lp-module-icon">📖</div>
+    <div class="lp-module-icon">${movaIcon('book')}</div>
     <div class="lp-module-body">
       <div class="lp-module-title">${label}</div>
       <div class="lp-module-meta">${sub}</div>
