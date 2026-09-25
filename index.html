@@ -2778,6 +2778,22 @@ body{
    з оригіналом розміру. Економить вертикальний простір на довгих
    реченнях і одразу сигналізує "це підказка, не головний текст". */
 .lf-unit-sentence-tr{font-size:calc(var(--fs-card) * 0.87);font-weight:400;line-height:1.3;color:var(--muted)}
+/* Mündliche Prüfung Teil 1 — розкривачка "Mögliche Fragen" на екрані
+   вступу (isIntro у _lfStoryHandlers.render()): до кліку видно лише
+   task, tips ховаються тут (display:none знімається інлайн-скриптом
+   у onclick самої кнопки). */
+.lf-story-tips-wrap{ margin-top:10px; }
+.lf-story-tips-btn{
+  display:inline-flex; align-items:center; gap:6px;
+  font-size:var(--fs-utility); color:var(--muted);
+  background:none; border:1px dashed var(--border); border-radius:8px;
+  padding:6px 10px; cursor:pointer;
+}
+.lf-story-tips-btn:hover{ color:var(--ink); border-color:var(--muted); }
+.lf-story-tips-btn .mi{ width:14px; height:14px; }
+.lf-story-tips{
+  margin-top:8px; padding-top:8px; border-top:1px dashed var(--border);
+}
 /* Виділений термін/ключове слово <b> підсвічується кольором-акцентом
    (для <g> — граматичної конструкції — глобальне правило вже є вище
    у файлі: g{font-weight:700;color:var(--g-accent)}) */
@@ -4508,7 +4524,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '710-3ebef1d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -17422,6 +17438,9 @@ var STORY_ROLE_LABELS = {
 // треба — кнопка "Далі" вже сама рухає чергу.
 var STORY_QA_Q_LABEL = {de:'Frage',  en:'Question', uk:'Запитання', ru:'Вопрос'};
 var STORY_QA_A_LABEL = {de:'Antwort', en:'Answer',   uk:'Відповідь', ru:'Ответ'};
+// Підпис кнопки-розкривачки підказок ("Mögliche Fragen") на екрані
+// вступу — див. storyCardTips() і "+"-кнопку в render() нижче.
+var STORY_TIPS_LABEL = {de:'Mögliche Fragen', en:'Possible questions', uk:'Можливі питання', ru:'Возможные вопросы'};
 
 // Кожна картка STORY завжди має topic+task (той самий принцип, що
 // SCHREIBEN) — тож перший юніт (kind:'story_intro') показуємо
@@ -17464,6 +17483,33 @@ function storyCardTaskFull(card){
     var tips = (t.tips && t.tips[lang]) || '';
     out[lang] = tips ? (task + '<br><br>' + tips) : task;
   });
+  return out;
+}
+// task — САМЕ завдання (умова), без підказок. На відміну від
+// storyCardTaskFull() вище (task+tips одним блоком — і далі так
+// лишається там, де потрібен ПОВНИЙ текст, напр. пошук <g>-розмітки
+// для кнопки легенди), це те, що видно на екрані ВСТУПУ ОДРАЗУ: перед
+// стартом теми показуємо лише умову, а підказки ("Mögliche Fragen") —
+// за окремим кліком (див. storyCardTips і "+"-кнопку в render()), щоб
+// не спрощувати вправу заздалегідь.
+function storyCardTaskOnly(card){
+  if(card.custom) return card.task || null; // власна тема — tips-поля в формі нема, тож усе, що є, це й є "лише завдання"
+  var t = _storyTaskFor(card);
+  if(!t) return null;
+  var out = {};
+  ['de','en','uk','ru'].forEach(function(lang){ out[lang] = (t.task && t.task[lang]) || ''; });
+  return out;
+}
+// tips — самі підказки ("Mögliche Fragen"), окремо від завдання.
+// null/порожньо для власних (custom) тем — у формі "Додати свою тему"
+// такого поля нема взагалі, тож і кнопку-розкривачку для них показувати
+// нема сенсу (render() нижче це враховує).
+function storyCardTips(card){
+  if(card.custom) return null;
+  var t = _storyTaskFor(card);
+  if(!t) return null;
+  var out = {};
+  ['de','en','uk','ru'].forEach(function(lang){ out[lang] = (t.tips && t.tips[lang]) || ''; });
   return out;
 }
 // STORY_TASK[].questions — плаский список {id:'q_01',...}/{id:'a_01',...}
@@ -17585,14 +17631,22 @@ var _lfStoryHandlers = {
     // так само власні (custom) теми користувача (getAudioText/
     // getSecondaryButtons вище так само виключають їх з озвучення).
     var canReplay = false;
+    // tipsText/tipsTextTr — заповнюються лише для isIntro, коли є що
+    // розкривати (див. "+"-кнопку в buildBubble нижче). Порожньо для
+    // custom-тем (у формі "Додати свою тему" tips-поля нема) і для тем
+    // без підказок у базі.
+    var tipsText = '', tipsTextTr = '';
 
     if(isIntro){
-      var taskFull    = storyCardTaskFull(card) || {};
-      text        = taskFull[pl] || '';
-      textTr      = ul !== pl ? (taskFull[ul] || '') : '';
+      var taskOnly    = storyCardTaskOnly(card) || {};
+      text        = taskOnly[pl] || '';
+      textTr      = ul !== pl ? (taskOnly[ul] || '') : '';
       audioField  = null; // 'task' — без аудіо (див. getAudioText), нічого підсвічувати
       eyebrowIcon = '🎤';
       eyebrowLabel = _lfBilingualLabel(storyCardTopic(card) || {}, pl, ul);
+      var taskTips = storyCardTips(card) || {};
+      tipsText     = taskTips[pl] || '';
+      tipsTextTr   = ul !== pl ? (taskTips[ul] || '') : '';
     } else if(isQaQ || isQaA){
       // Питання/відповідь екзаменатора — без аудіо (див. getAudioText),
       // просто текст+переклад тим самим рушієм бульбашок, що й parts.
@@ -17631,6 +17685,24 @@ var _lfStoryHandlers = {
       // "можна переслухати" від інтро/питань екзаменатора, де аудіо
       // взагалі нема. .lf-story-replayable — суто візуальна підказка
       // (курсор), без якої клікабельність бульбашки була б непомітна.
+      // "+"-кнопка розкриття підказок ("Mögliche Fragen") — лише на
+      // екрані вступу (isIntro) і лише коли вони справді є (tipsText).
+      // До кліку видно ЛИШЕ task (щоб не спрощувати вправу заздалегідь
+      // — у реальному іспиті підказок наперед нема), сам блок tips уже
+      // готовий у розмітці (display:none), а не підвантажується пізніше,
+      // тож клік — це просто miттєва зміна display, без жодного escaping
+      // тексту через атрибути.
+      var tipsBlock = (isIntro && tipsText) ?
+        '<div class="lf-story-tips-wrap">'+
+          '<button type="button" class="lf-story-tips-btn" onclick="var w=this.parentElement;w.querySelector(\'.lf-story-tips\').style.display=\'block\';this.style.display=\'none\'">'+
+            movaIcon('plus','mi mi-inline')+' '+_lfBilingualLabel(STORY_TIPS_LABEL, pl, ul)+
+          '</button>'+
+          '<div class="lf-story-tips" style="display:none">'+
+            '<div class="lf-unit-main-row"><div class="lf-unit-sentence">'+tipsText+'</div></div>'+
+            (tipsTextTr ? '<div class="lf-unit-main-row lf-unit-tr-row"><div class="lf-unit-sentence-tr">'+tipsTextTr+'</div></div>' : '')+
+          '</div>'+
+        '</div>'
+        : '';
       return eyebrow+'<div class="lf-dlg-task lf-bubble-in">'+
         '<div class="lf-unit-main-row">'+
           '<div class="lf-unit-sentence'+(canReplay ? ' lf-story-replayable' : '')+'" data-audio-field="'+audioField+'"'+(canReplay ? ' data-story-replay="1"' : '')+'>'+text+'</div>'+
@@ -17640,6 +17712,7 @@ var _lfStoryHandlers = {
             '<div class="lf-unit-sentence-tr">'+textTr+'</div>'+
           '</div>'
         : '')+
+        tipsBlock+
       '</div>';
     }
 
