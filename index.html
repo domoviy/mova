@@ -2768,32 +2768,30 @@ body{
    жирний блок; сам термін лишається жирним (.lf-unit-term вище — тільки
    для Vocab term/переклад терміну, короткий текст). */
 .lf-unit-sentence{font-size:var(--fs-card);font-weight:400;line-height:1.3;color:var(--ink)}
-/* Mündliche Prüfung Teil 1 (STORY) — репліка, по якій можна клікнути,
-   щоб переслухати САМЕ ЇЇ озвучення (будь-яку в транскрипті, не лише
-   останню) — див. data-story-replay у _lfStoryHandlers.render() і
-   делегований обробник кліку одразу після _lfStoryHandlers. */
-.lf-unit-sentence.lf-story-replayable{ cursor:pointer; }
+/* Dialogue/Forumsbeitrag/E-Mail/Mündliche Prüfung Teil 1 — репліка, по
+   якій можна клікнути, щоб переслухати САМЕ ЇЇ озвучення (будь-яку в
+   транскрипті, не лише останню) — див. data-lf-replay у render() кожного
+   з handlers (_lfDlgHandlers/_lfFrmHandlers/_lfEmlHandlers/_lfStoryHandlers)
+   і спільний делегований обробник кліку після _lfStoryHandlers. */
+.lf-unit-sentence.lf-replayable{ cursor:pointer; }
 /* Переклад (другий .lf-unit-main-row у парі оригінал/переклад) —
    візуально вторинний: трохи менший і приглушений, замість однакового
    з оригіналом розміру. Економить вертикальний простір на довгих
    реченнях і одразу сигналізує "це підказка, не головний текст". */
 .lf-unit-sentence-tr{font-size:calc(var(--fs-card) * 0.87);font-weight:400;line-height:1.3;color:var(--muted)}
-/* Mündliche Prüfung Teil 1 — розкривачка "Mögliche Fragen" на екрані
-   вступу (isIntro у _lfStoryHandlers.render()): до кліку видно лише
-   task, tips ховаються тут (display:none знімається інлайн-скриптом
-   у onclick самої кнопки). */
-.lf-story-tips-wrap{ margin-top:10px; }
-.lf-story-tips-btn{
-  display:inline-flex; align-items:center; gap:6px;
-  font-size:var(--fs-utility); color:var(--muted);
-  background:none; border:1px dashed var(--border); border-radius:8px;
-  padding:6px 10px; cursor:pointer;
+/* Довідка "Mögliche Fragen" у формі "Додати свою тему"
+   (#story-custom-tips-ref, заповнюється в toggleCustomStoryForm()) —
+   підказки потрібні САМЕ тут, поки пишеш свою розповідь, а не при
+   перегляді вже готового тексту (там їх більше нема — див.
+   _lfStoryHandlers.render()). */
+.story-custom-tips-ref{
+  background:var(--paper); border:1px dashed var(--border); border-radius:8px;
+  padding:8px 10px; font-size:var(--fs-utility); color:var(--muted);
 }
-.lf-story-tips-btn:hover{ color:var(--ink); border-color:var(--muted); }
-.lf-story-tips-btn .mi{ width:14px; height:14px; }
-.lf-story-tips{
-  margin-top:8px; padding-top:8px; border-top:1px dashed var(--border);
-}
+.story-custom-tips-ref summary{ cursor:pointer; color:var(--ink); font-weight:600; }
+.story-custom-tips-ref ul{ margin:8px 0 0; padding-left:18px; }
+.story-custom-tips-ref li{ margin-bottom:6px; }
+.story-custom-tips-ref li b{ color:var(--ink); }
 /* Виділений термін/ключове слово <b> підсвічується кольором-акцентом
    (для <g> — граматичної конструкції — глобальне правило вже є вище
    у файлі: g{font-weight:700;color:var(--g-accent)}) */
@@ -4442,6 +4440,13 @@ body{
             style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
           <small id="story-custom-topic-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 80</small>
         </div>
+        <!-- Довідка з прикладами можливих запитань екзаменатора з
+             УЖЕ ІСНУЮЧИХ тем курсу (заповнюється в toggleCustomStoryForm())
+             — щоб дати орієнтир, які деталі варто закласти у своєму
+             тексті ЗАЗДАЛЕГІДЬ, поки він ще пишеться. Після збереження
+             теми ці підказки ніде більше не показуються (не потрібні
+             при самому перегляді/повторенні готового тексту). -->
+        <details class="story-custom-tips-ref" id="story-custom-tips-ref"></details>
         <div style="display:flex;flex-direction:column;gap:2px">
           <textarea id="story-custom-task" maxlength="400" oninput="_storyCustomUpdateCounter(this)" placeholder="Завдання (умова — про що розповісти)" rows="2"
             style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
@@ -4524,7 +4529,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '711-0eb73e2';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12622,7 +12627,30 @@ function toggleCustomStoryForm(show){
       var el = document.getElementById(id);
       if(el){ el.value = ''; _storyCustomUpdateCounter(el); }
     });
+    _storyRenderCustomTipsRef();
   }
+}
+
+// Довідка "Mögliche Fragen" — приклади можливих запитань екзаменатора,
+// зібрані з УЖЕ ІСНУЮЧИХ (вбудованих) тем курсу (STORY_TASK[].tips),
+// щоб дати орієнтир, поки користувач ще ПИШЕ свою розповідь. Свідомо
+// показуються ЛИШЕ тут, у формі "Додати свою тему" (а не при перегляді/
+// повторенні вже готового тексту — там текст, свій чи вбудований, уже
+// написаний, і підказки-запитання більше ні до чого).
+function _storyRenderCustomTipsRef(){
+  var el = document.getElementById('story-custom-tips-ref');
+  if(!el) return;
+  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  var items = (typeof STORY_TASK !== 'undefined' ? STORY_TASK : []).map(function(t){
+    var tip = (t.tips && (t.tips[ul] || t.tips.de)) || '';
+    if(!tip) return '';
+    var topicLabel = (t.topic && (t.topic[ul] || t.topic.de)) || '';
+    return '<li>'+(topicLabel ? '<b>'+_escapeHtmlText(topicLabel)+':</b> ' : '')+tip+'</li>';
+  }).filter(Boolean);
+  if(!items.length){ el.style.display = 'none'; return; }
+  el.style.display = '';
+  el.innerHTML = '<summary>'+movaIcon('bulb','mi mi-inline')+' '+_lfBilingualLabel(STORY_TIPS_LABEL, primaryLang(), ul)+'</summary>'+
+    '<ul>'+items.join('')+'</ul>';
 }
 
 function saveCustomStoryTopic(){
@@ -17056,9 +17084,14 @@ var _lfDlgHandlers = {
             '<span class="lf-dlg-exam-info" onclick="showExamPartInfo(\''+card.type+'\')">ⓘ</span>'+
           '</div>'
         : '';
+        // data-lf-replay="1"/.lf-replayable — клік по цій репліці
+        // переслуховує САМЕ ЇЇ (спільний делегований обробник, див.
+        // коментар одразу після _lfStoryHandlers нижче у файлі). У
+        // Dialogue (на відміну від Story) карток без реального аудіо
+        // не буває, тож атрибут ставимо безумовно.
         return examBadge+'<div class="lf-dlg-task lf-bubble-in">'+
           '<div class="lf-unit-main-row">'+
-            '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
+            '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1">'+text+'</div>'+
           '</div>'+
           (textTr ?
             '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -17071,7 +17104,7 @@ var _lfDlgHandlers = {
         (avatar ? '<img class="lf-dlg-avatar" src="'+avatar+'" alt="'+speaker+'">' : '')+
         '<div class="lf-dlg-bubble '+bubbleCls+'">'+
           '<div class="lf-unit-main-row">'+
-            '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
+            '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1">'+text+'</div>'+
           '</div>'+
           (textTr ?
             '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -17133,13 +17166,12 @@ var _lfDlgHandlers = {
   // card.gram — лише для курсів/карток старого формату, які ще не
   // мігровані на поле в самій репліці.
   getSecondaryButtons: function(unit){
-    var buttons = [{
-      icon: '🔊',
-      onClick: function(){
-        var items = _lfDlgHandlers.getAudioText(unit) || [];
-        _lfUnitPlay(items, function(){});
-      }
-    }];
+    // Свідомо БЕЗ окремої 🔊-кнопки біля "Далі" (той самий підхід, що й
+    // у Story) — повтор озвучення тут: клік просто по самій репліці
+    // (будь-якій у транскрипті, не лише останній) — див. data-lf-replay/
+    // lf-replayable у render() вище й спільний делегований обробник
+    // кліку після _lfStoryHandlers нижче у файлі.
+    var buttons = [];
     if(unit.kind !== 'dlg_task'){
       var turn = unit.card[unit.field];
       var gramSource = (turn && turn.gram) ? turn : unit.card;
@@ -17327,9 +17359,13 @@ var _lfFrmHandlers = {
       // підсвітку слів (wrapWordsForHighlight), якщо для цього
       // cardId+field є .words.json (наразі для forum_* аудіо ще не
       // згенеровано — просто мовчки нема підсвітки, решта працює як є).
+      // data-lf-replay="1"/.lf-replayable — клік по репліці переслуховує
+      // САМЕ ЇЇ (спільний делегований обробник, той самий, що й для
+      // Dialogue/E-Mail/Story — див. коментар після _lfStoryHandlers
+      // нижче у файлі); карток без реального аудіо тут не буває.
       return eyebrow+'<div class="lf-dlg-task lf-bubble-in">'+
         '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
+          '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1">'+text+'</div>'+
         '</div>'+
         (textTr ?
           '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -17380,13 +17416,11 @@ var _lfFrmHandlers = {
   // (переважно meinung/pro/kontra/vorschlag) — на anrede/schluss/name,
   // де граматичної позначки зазвичай нема, кнопка була б без сенсу.
   getSecondaryButtons: function(unit){
-    var buttons = [{
-      icon: '🔊',
-      onClick: function(){
-        var items = _lfFrmHandlers.getAudioText(unit) || [];
-        _lfUnitPlay(items, function(){});
-      }
-    }];
+    // Свідомо БЕЗ окремої 🔊-кнопки біля "Далі" (той самий підхід, що й
+    // у Dialogue/Story) — повтор озвучення тут: клік просто по самій
+    // репліці — див. data-lf-replay/lf-replayable у render() вище й
+    // спільний делегований обробник кліку після _lfStoryHandlers нижче.
+    var buttons = [];
     var pl = primaryLang();
     var partText = unit.kind === 'frm_intro'
       ? ((unit.card.task && unit.card.task[pl]) || '')
@@ -17631,22 +17665,18 @@ var _lfStoryHandlers = {
     // так само власні (custom) теми користувача (getAudioText/
     // getSecondaryButtons вище так само виключають їх з озвучення).
     var canReplay = false;
-    // tipsText/tipsTextTr — заповнюються лише для isIntro, коли є що
-    // розкривати (див. "+"-кнопку в buildBubble нижче). Порожньо для
-    // custom-тем (у формі "Додати свою тему" tips-поля нема) і для тем
-    // без підказок у базі.
-    var tipsText = '', tipsTextTr = '';
 
     if(isIntro){
-      var taskOnly    = storyCardTaskOnly(card) || {};
+      // Лише task (умова) — БЕЗ tips ("Mögliche Fragen"): підказки
+      // потрібні тільки під час НАПИСАННЯ своєї розповіді (див. довідку
+      // у формі "Додати свою тему" — toggleCustomStoryForm нижче), не
+      // під час перегляду/повторення вже готового тексту.
+      var taskOnly = storyCardTaskOnly(card) || {};
       text        = taskOnly[pl] || '';
       textTr      = ul !== pl ? (taskOnly[ul] || '') : '';
       audioField  = null; // 'task' — без аудіо (див. getAudioText), нічого підсвічувати
       eyebrowIcon = '🎤';
       eyebrowLabel = _lfBilingualLabel(storyCardTopic(card) || {}, pl, ul);
-      var taskTips = storyCardTips(card) || {};
-      tipsText     = taskTips[pl] || '';
-      tipsTextTr   = ul !== pl ? (taskTips[ul] || '') : '';
     } else if(isQaQ || isQaA){
       // Питання/відповідь екзаменатора — без аудіо (див. getAudioText),
       // просто текст+переклад тим самим рушієм бульбашок, що й parts.
@@ -17679,40 +17709,28 @@ var _lfStoryHandlers = {
         (eyebrowIcon ? '<span class="lf-dlg-exam-icon">'+eyebrowIcon+'</span>' : '')+
         '<span class="lf-dlg-exam-label">'+eyebrowLabel+'</span>'+
       '</div>';
-      // data-story-replay="1" — лише на бульбашках з реальним аудіо
-      // (canReplay); саме за цим атрибутом делегований клік-обробник
-      // (_lfStoryBubbleReplayClick, підключений нижче) відрізняє
-      // "можна переслухати" від інтро/питань екзаменатора, де аудіо
-      // взагалі нема. .lf-story-replayable — суто візуальна підказка
+      // data-lf-replay="1" — лише на бульбашках з реальним аудіо
+      // (canReplay); саме за цим атрибутом спільний делегований
+      // клік-обробник (підключений нижче, одразу після
+      // _lfStoryHandlers — той самий для Dialogue/Forumsbeitrag/E-Mail)
+      // відрізняє "можна переслухати" від інтро/питань екзаменатора, де
+      // аудіо взагалі нема. .lf-replayable — суто візуальна підказка
       // (курсор), без якої клікабельність бульбашки була б непомітна.
-      // "+"-кнопка розкриття підказок ("Mögliche Fragen") — лише на
-      // екрані вступу (isIntro) і лише коли вони справді є (tipsText).
-      // До кліку видно ЛИШЕ task (щоб не спрощувати вправу заздалегідь
-      // — у реальному іспиті підказок наперед нема), сам блок tips уже
-      // готовий у розмітці (display:none), а не підвантажується пізніше,
-      // тож клік — це просто miттєва зміна display, без жодного escaping
-      // тексту через атрибути.
-      var tipsBlock = (isIntro && tipsText) ?
-        '<div class="lf-story-tips-wrap">'+
-          '<button type="button" class="lf-story-tips-btn" onclick="var w=this.parentElement;w.querySelector(\'.lf-story-tips\').style.display=\'block\';this.style.display=\'none\'">'+
-            movaIcon('plus','mi mi-inline')+' '+_lfBilingualLabel(STORY_TIPS_LABEL, pl, ul)+
-          '</button>'+
-          '<div class="lf-story-tips" style="display:none">'+
-            '<div class="lf-unit-main-row"><div class="lf-unit-sentence">'+tipsText+'</div></div>'+
-            (tipsTextTr ? '<div class="lf-unit-main-row lf-unit-tr-row"><div class="lf-unit-sentence-tr">'+tipsTextTr+'</div></div>' : '')+
-          '</div>'+
-        '</div>'
-        : '';
+      // "Mögliche Fragen" (tips) навмисно НІКОЛИ не показуються тут, на
+      // екрані вступу/повторного перегляду теми (isIntro) — ні одразу,
+      // ні за кліком: вони мають сенс лише ПОКИ пишеш свою розповідь
+      // (див. довідку в формі "Додати свою тему", toggleCustomStoryForm
+      // нижче) — коли текст (свій чи вбудований) уже написано, підказки
+      // більше ні до чого.
       return eyebrow+'<div class="lf-dlg-task lf-bubble-in">'+
         '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-sentence'+(canReplay ? ' lf-story-replayable' : '')+'" data-audio-field="'+audioField+'"'+(canReplay ? ' data-story-replay="1"' : '')+'>'+text+'</div>'+
+          '<div class="lf-unit-sentence'+(canReplay ? ' lf-replayable' : '')+'" data-audio-field="'+audioField+'"'+(canReplay ? ' data-lf-replay="1"' : '')+'>'+text+'</div>'+
         '</div>'+
         (textTr ?
           '<div class="lf-unit-main-row lf-unit-tr-row">'+
             '<div class="lf-unit-sentence-tr">'+textTr+'</div>'+
           '</div>'
         : '')+
-        tipsBlock+
       '</div>';
     }
 
@@ -17766,10 +17784,11 @@ var _lfStoryHandlers = {
     if(unit.kind === 'story_intro' || unit.kind === 'story_qa_q' || unit.kind === 'story_qa_a') return []; // без аудіо — нема що повторювати
     // Свідомо БЕЗ окремої 🔊-кнопки біля "Далі": повтор озвучення тут —
     // клік просто по самій репліці (будь-якій у транскрипті, не лише
-    // останній — див. data-story-replay/lf-story-replayable у render()
-    // і делегований обробник _lfStoryBubbleReplayClick нижче). Кнопка
+    // останній — див. data-lf-replay/lf-replayable у render() і спільний
+    // делегований обробник кліку нижче, після цього об'єкта). Кнопка
     // вміла повторити лише ОСТАННЮ репліку, а це заважало переслухати
-    // щось раніше в тому ж уроці.
+    // щось раніше в тому ж уроці. Той самий підхід — і в Dialogue/
+    // Forumsbeitrag/E-Mail нижче.
     var buttons = [];
     var pl = primaryLang();
     var partText = unit.kind === 'story_intro'
@@ -17788,14 +17807,17 @@ var _lfStoryHandlers = {
   },
 };
 
-// Клік по будь-якій репліці Mündliche Prüfung Teil 1 (не лише останній,
-// на відміну від колишньої 🔊-кнопки біля "Далі") — повторює ЇЇ
-// озвучення. Делегований на document (а не навішується заново на кожну
-// нову бульбашку) — той самий принцип, що й інші глобальні обробники
-// тут; data-story-replay="1" ставить лише render() у _lfStoryHandlers
-// вище, тож на Dialogue/Forumsbeitrag/E-Mail бульбашки це не впливає.
+// Клік по будь-якій репліці — Dialogue, Forumsbeitrag, E-Mail чи
+// Mündliche Prüfung Teil 1 (не лише останній, на відміну від колишньої
+// 🔊-кнопки біля "Далі") — повторює ЇЇ озвучення. Один спільний
+// делегований обробник на document (а не навішується заново на кожну
+// нову бульбашку) — усі чотири рушії ставлять той самий атрибут
+// data-lf-replay="1" на .lf-unit-sentence у своєму render() (див.
+// _lfDlgHandlers/_lfFrmHandlers/_lfEmlHandlers/_lfStoryHandlers вище) —
+// однакова "бульбашкова" розмітка, однаковий спосіб озвучення
+// (_lfUnitPlay), тож і повтор кліком реалізовано тут ОДИН раз на всіх.
 document.addEventListener('click', function(e){
-  var el = e.target.closest('[data-story-replay="1"]');
+  var el = e.target.closest('[data-lf-replay="1"]');
   if(!el) return;
   // Поки авто-озвучення поточного (останнього) юніта ще не завершилось —
   // клік по ІНШІЙ репліці ігноруємо (див. _lfUnitAudioBusy вище): інакше
@@ -17929,10 +17951,15 @@ function _lfEmlRenderMailOrPart(body, unit){
     '</div>';
   }
 
+  // data-lf-replay="1"/.lf-replayable — клік по репліці переслуховує
+  // САМЕ ЇЇ (спільний делегований обробник, той самий, що й для
+  // Dialogue/Forumsbeitrag/Story — див. коментар після
+  // _lfStoryHandlers нижче у файлі); карток без реального аудіо тут
+  // не буває (eml_question — окремий рендер нижче, без .lf-unit-sentence).
   var bubble = eyebrow+'<div class="lf-dlg-task'+(mailHeader?' eml-mail-card':'')+' lf-bubble-in">'+
     headerHtml+
     '<div class="lf-unit-main-row">'+
-      '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
+      '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1">'+text+'</div>'+
     '</div>'+
     (textTr ?
       '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -18093,13 +18120,12 @@ var _lfEmlHandlers = {
 
   getSecondaryButtons: function(unit){
     if(unit.kind === 'eml_question') return []; // немає ні 🔊, ні 📖 сенсу
-    var buttons = [{
-      icon: '🔊',
-      onClick: function(){
-        var items = _lfEmlHandlers.getAudioText(unit) || [];
-        _lfUnitPlay(items, function(){});
-      }
-    }];
+    // Свідомо БЕЗ окремої 🔊-кнопки біля "Далі" (той самий підхід, що й
+    // у Dialogue/Forumsbeitrag/Story) — повтор озвучення тут: клік
+    // просто по самій репліці — див. data-lf-replay/lf-replayable у
+    // _lfEmlRenderMailOrPart() вище й спільний делегований обробник
+    // кліку після _lfStoryHandlers нижче.
+    var buttons = [];
     var pl = primaryLang();
     var partText = unit.kind === 'eml_part' ? ((unit.part && unit.part[pl]) || '') : '';
     var gramBtn = /<g>/.test(partText) ? _lfGrammarButton(unit.card) : null;
@@ -18765,7 +18791,8 @@ function _lfUnitShow(){
     // Озвучення ЦЬОГО (поточного/останнього) юніта завершилось (чи його
     // взагалі не було) — з цього моменту знову можна переслухати БУДЬ-
     // ЯКУ репліку кліком (_lfUnitAudioBusy, див. виклик _lfUnitPlay
-    // нижче й делегований обробник кліку в Mündliche Prüfung Teil 1).
+    // нижче й спільний делегований обробник кліку для Dialogue/
+    // Forumsbeitrag/E-Mail/Mündliche Prüfung Teil 1).
     _lfUnitAudioBusy = false;
     // Переклад репліки діалогу з'являється РІВНО тут — озвучення або
     // завершилось, або playPregenAudio() зрозумів, що файлу нема (обидва
@@ -18892,16 +18919,17 @@ function _storyTimerReset(){
 // Чи триває ЗАРАЗ авто-озвучення поточного (щойно показаного) юніта —
 // від виклику _lfUnitPlay(items, afterPlay) у _lfUnitShow() до моменту,
 // коли afterPlay() реально спрацює (аудіо дограло/його не було/файл не
-// знайдено). Поки true — клік по ІНШІЙ репліці в Mündliche Prüfung
-// Teil 1 навмисно ІГНОРУЄТЬСЯ (див. обробник кліку нижче): паралельний
-// виклик _lfUnitPlay() для іншої репліки збільшує СПІЛЬНИЙ
-// _lfUnitPlayToken і тим самим обриває ЩЕ АКТИВНУ чергу поточного
-// юніта — її власний onEnd (а разом з ним і показ кнопки "Далі", і
-// _storyTimerPause() лічильника чистого часу проговорювання) просто
-// ніколи не спрацьовує. Блокування — надійніше й безпечніше рішення,
-// ніж встигнути показати "Далі" одразу: воно не лишає "підвішеним" ні
-// кнопку, ні таймер проговорювання, і не вимагає рахувати озвучення
-// перерваним/завершеним одночасно.
+// знайдено). Поки true — клік по ІНШІЙ репліці (Dialogue/Forumsbeitrag/
+// E-Mail/Mündliche Prüfung Teil 1 — усі чотири через спільний обробник
+// нижче) навмисно ІГНОРУЄТЬСЯ: паралельний виклик _lfUnitPlay() для
+// іншої репліки збільшує СПІЛЬНИЙ _lfUnitPlayToken і тим самим обриває
+// ЩЕ АКТИВНУ чергу поточного юніта — її власний onEnd (а разом з ним і
+// показ кнопки "Далі", і _storyTimerPause() лічильника чистого часу
+// проговорювання для Story/Dialogue) просто ніколи не спрацьовує.
+// Блокування — надійніше й безпечніше рішення, ніж встигнути показати
+// "Далі" одразу: воно не лишає "підвішеним" ні кнопку, ні таймер
+// проговорювання, і не вимагає рахувати озвучення перерваним/
+// завершеним одночасно.
 var _lfUnitAudioBusy = false;
 var _lfUnitPlayToken = 0;
 function _lfUnitPlay(items, onDone){
