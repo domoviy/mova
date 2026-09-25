@@ -2768,6 +2768,11 @@ body{
    жирний блок; сам термін лишається жирним (.lf-unit-term вище — тільки
    для Vocab term/переклад терміну, короткий текст). */
 .lf-unit-sentence{font-size:var(--fs-card);font-weight:400;line-height:1.3;color:var(--ink)}
+/* Mündliche Prüfung Teil 1 (STORY) — репліка, по якій можна клікнути,
+   щоб переслухати САМЕ ЇЇ озвучення (будь-яку в транскрипті, не лише
+   останню) — див. data-story-replay у _lfStoryHandlers.render() і
+   делегований обробник кліку одразу після _lfStoryHandlers. */
+.lf-unit-sentence.lf-story-replayable{ cursor:pointer; }
 /* Переклад (другий .lf-unit-main-row у парі оригінал/переклад) —
    візуально вторинний: трохи менший і приглушений, замість однакового
    з оригіналом розміру. Економить вертикальний простір на довгих
@@ -4503,7 +4508,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '708-5cf4c80';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -17561,6 +17566,14 @@ var _lfStoryHandlers = {
     var isQaA   = unit.kind === 'story_qa_a';
     var text, textTr, audioField, eyebrowIcon, eyebrowLabel;
 
+    // canReplay — чи має ЦЯ репліка реальне pregen-аудіо, яке можна
+    // переслухати кліком по бульбашці (див. buildBubble нижче й
+    // делегований клік-обробник _lfStoryBubbleReplayClick): інтро й
+    // питання/відповіді екзаменатора його не мають (audioField=null),
+    // так само власні (custom) теми користувача (getAudioText/
+    // getSecondaryButtons вище так само виключають їх з озвучення).
+    var canReplay = false;
+
     if(isIntro){
       var taskFull    = storyCardTaskFull(card) || {};
       text        = taskFull[pl] || '';
@@ -17592,6 +17605,7 @@ var _lfStoryHandlers = {
       // ще раз без кінцевих цифр.
       var roleInfo = STORY_ROLE_LABELS[part.role] || STORY_ROLE_LABELS[part.role.replace(/\d+$/, '')];
       eyebrowLabel = roleInfo ? _lfBilingualLabel(roleInfo, pl, ul) : (part.role||'');
+      canReplay = !card.custom;
     }
 
     function buildBubble(){
@@ -17599,9 +17613,15 @@ var _lfStoryHandlers = {
         (eyebrowIcon ? '<span class="lf-dlg-exam-icon">'+eyebrowIcon+'</span>' : '')+
         '<span class="lf-dlg-exam-label">'+eyebrowLabel+'</span>'+
       '</div>';
+      // data-story-replay="1" — лише на бульбашках з реальним аудіо
+      // (canReplay); саме за цим атрибутом делегований клік-обробник
+      // (_lfStoryBubbleReplayClick, підключений нижче) відрізняє
+      // "можна переслухати" від інтро/питань екзаменатора, де аудіо
+      // взагалі нема. .lf-story-replayable — суто візуальна підказка
+      // (курсор), без якої клікабельність бульбашки була б непомітна.
       return eyebrow+'<div class="lf-dlg-task lf-bubble-in">'+
         '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-sentence" data-audio-field="'+audioField+'">'+text+'</div>'+
+          '<div class="lf-unit-sentence'+(canReplay ? ' lf-story-replayable' : '')+'" data-audio-field="'+audioField+'"'+(canReplay ? ' data-story-replay="1"' : '')+'>'+text+'</div>'+
         '</div>'+
         (textTr ?
           '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -17659,18 +17679,13 @@ var _lfStoryHandlers = {
 
   getSecondaryButtons: function(unit){
     if(unit.kind === 'story_intro' || unit.kind === 'story_qa_q' || unit.kind === 'story_qa_a') return []; // без аудіо — нема що повторювати
+    // Свідомо БЕЗ окремої 🔊-кнопки біля "Далі": повтор озвучення тут —
+    // клік просто по самій репліці (будь-якій у транскрипті, не лише
+    // останній — див. data-story-replay/lf-story-replayable у render()
+    // і делегований обробник _lfStoryBubbleReplayClick нижче). Кнопка
+    // вміла повторити лише ОСТАННЮ репліку, а це заважало переслухати
+    // щось раніше в тому ж уроці.
     var buttons = [];
-    // 🔊-кнопка повтору має сенс лише там, де реально є аудіо —
-    // для власних (custom) тем його поки нема (див. getAudioText вище).
-    if(!unit.card.custom){
-      buttons.push({
-        icon: '🔊',
-        onClick: function(){
-          var items = _lfStoryHandlers.getAudioText(unit) || [];
-          _lfUnitPlay(items, function(){});
-        }
-      });
-    }
     var pl = primaryLang();
     var partText = unit.kind === 'story_intro'
       ? ((storyCardTaskFull(unit.card) || {})[pl] || '')
@@ -17687,6 +17702,20 @@ var _lfStoryHandlers = {
     if(!_lfUnitSwipedThisView) srsRate(unit.cardId, 3);
   },
 };
+
+// Клік по будь-якій репліці Mündliche Prüfung Teil 1 (не лише останній,
+// на відміну від колишньої 🔊-кнопки біля "Далі") — повторює ЇЇ
+// озвучення. Делегований на document (а не навішується заново на кожну
+// нову бульбашку) — той самий принцип, що й інші глобальні обробники
+// тут; data-story-replay="1" ставить лише render() у _lfStoryHandlers
+// вище, тож на Dialogue/Forumsbeitrag/E-Mail бульбашки це не впливає.
+document.addEventListener('click', function(e){
+  var el = e.target.closest('[data-story-replay="1"]');
+  if(!el) return;
+  var field = el.getAttribute('data-audio-field');
+  if(!field) return;
+  _lfUnitPlay([{ text: el.textContent.trim(), field: field }], function(){});
+});
 
 function lfStartDlgLearn(){
   const hasCards = LF && ((LF.dlgCards && LF.dlgCards.length) || LF.dlgCard);
