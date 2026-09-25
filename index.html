@@ -1928,7 +1928,11 @@ body{
   padding:8px 14px 6px;
   flex-shrink:0;
 }
-#lesson-flow-bar.active{ display:block; }
+/* Коли #header прихований на час уроку (lfSetLessonMode), саме ця
+   панель стає найвищим елементом екрана — тож саме вона й бере на
+   себе безпечний відступ під виїмку/статус-бар (env safe-area-inset-top),
+   яким раніше опікувався #header, щоб лісовий фон не переривався. */
+#lesson-flow-bar.active{ display:block; padding-top:calc(env(safe-area-inset-top,0px) + 8px); }
 .lf-header{
   display:flex;align-items:center;justify-content:space-between;
   margin-bottom:6px;
@@ -4499,7 +4503,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '707-d6feaff';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5288,7 +5292,7 @@ const I18N = {
     lbl_unlock_all:'Alle Lektionen freischalten', sub_unlock_all:'Zeigt alle Lektionen im Pfad als freigeschaltet an, unabhängig vom tatsächlichen Fortschritt. Nur zum Testen — vergiss nicht, es wieder auszuschalten!',
     sec_data:'Daten',
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
-    sr_readiness_info:'Zeigt, wie gut Karten verankert sind (≥2 richtige Wiederholungen, noch nicht fällig) — nicht nur ob sie schon gesehen wurden.',
+    sr_readiness_info:'Zeigt, wie gut Karten verankert sind: mindestens 2 richtige Wiederholungen und noch nicht wieder fällig — nicht nur ob sie schon gesehen wurden.',
     sec_streak_freeze:'Streak-Schutz', streak_freeze_info:'Ein Streak-Schutz bewahrt deine Serie automatisch, wenn du einen Tag verpasst. Du startest mit 3 kostenlos, +1 an Tag 3 und +1 an Tag 7 deiner Serie — weitere kannst du mit M-Punkten kaufen.',
     btn_buy_freeze:'Weiteren kaufen (+1)', btn_freeze_max:'Maximum erreicht',
     msg_freeze_no_m:'Nicht genug M-Punkte (benötigt: {cost} 𐌌)', msg_freeze_bought:'🧊 Streak-Schutz hinzugefügt!', msg_freeze_max:'Du hast bereits die maximale Anzahl an Streak-Schutz',
@@ -5417,7 +5421,7 @@ const I18N = {
     lbl_unlock_all:'Розблокувати усі уроки', sub_unlock_all:'Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!',
     sec_data:'Дані',
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
-    sr_readiness_info:'Показує, наскільки добре закріплені картки (≥2 правильні повторення, ще не due) — а не просто факт, що їх переглянули.',
+    sr_readiness_info:'Показує, наскільки добре закріплені картки: правильно повторені не менше 2 разів і ще не настав час повторювати їх знову — а не просто факт, що їх переглянули.',
     sec_streak_freeze:'Заморозка стріку', streak_freeze_info:'Заморозка автоматично рятує твій стрік, якщо пропустиш день. Стартуєш з 3 безкоштовних, +1 на 3-й день стріку і +1 на 7-й — далі можна докупити за М-бали.',
     btn_buy_freeze:'Докупити ще (+1)', btn_freeze_max:'Максимум досягнуто',
     msg_freeze_no_m:'Замало М-балів (потрібно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку додано!', msg_freeze_max:'У тебе вже максимум заморозок',
@@ -5541,7 +5545,7 @@ const I18N = {
     lbl_unlock_all:'Unlock all lessons', sub_unlock_all:'Shows all lessons in the path as unlocked, regardless of actual progress. For testing only — don\'t forget to turn it off!',
     sec_data:'Data',
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
-    sr_readiness_info:'Shows how well cards are retained (≥2 correct repetitions, not due yet) — not just whether you have seen them.',
+    sr_readiness_info:'Shows how well cards are retained: answered correctly at least 2 times and not due for review again yet — not just whether you have seen them.',
     sec_streak_freeze:'Streak Freeze', streak_freeze_info:'A streak freeze automatically saves your streak if you miss a day. You start with 3 free, +1 on day 3 and +1 on day 7 of your streak — you can buy more with M points.',
     btn_buy_freeze:'Buy another (+1)', btn_freeze_max:'Maximum reached',
     msg_freeze_no_m:'Not enough M points (needs {cost} 𐌌)', msg_freeze_bought:'🧊 Streak freeze added!', msg_freeze_max:'You already have the maximum freezes',
@@ -5666,7 +5670,7 @@ const I18N = {
     lbl_unlock_all:'Разблокировать все уроки', sub_unlock_all:'Показывает все уроки в линии как разблокированные, независимо от реального прогресса. Только для тестирования — не забудьте выключить!',
     sec_data:'Данные',
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
-    sr_readiness_info:'Показывает, насколько хорошо закреплены карточки (≥2 правильных повторения, ещё не due) — а не просто факт, что их просмотрели.',
+    sr_readiness_info:'Показывает, насколько хорошо закреплены карточки: правильно повторены не менее 2 раз и ещё не настало время повторять их снова — а не просто факт, что их просмотрели.',
     sec_streak_freeze:'Заморозка стрика', streak_freeze_info:'Заморозка автоматически спасает твой стрик, если пропустишь день. Начинаешь с 3 бесплатных, +1 на 3-й день стрика и +1 на 7-й — дальше можно докупить за М-баллы.',
     btn_buy_freeze:'Докупить ещё (+1)', btn_freeze_max:'Достигнут максимум',
     msg_freeze_no_m:'Недостаточно М-баллов (нужно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку добавили!', msg_freeze_max:'У тебя уже максимум заморозок',
@@ -16282,21 +16286,19 @@ function lfSetLessonMode(active){
     const vplayerRestore = document.querySelector('#view-vocab .vplayer');
     if(vplayerRestore) vplayerRestore.style.display = '';
   }
-  // Ховаємо ⚙️ і 🔥 під час уроку — щоб не можна було вийти випадково
-  document.querySelectorAll('.h-icon-btn').forEach(btn => {
-    btn.style.display = active ? 'none' : '';
-  });
-  // Лічильник днів до іспиту (#sr-days-chip) — окремий елемент, НЕ
-  // всередині .h-icon-btn, тож цикл вище його не чіпає. Ховаємо на час
-  // уроку (той самий принцип: під час навчання нічого не має
-  // відволікати чи нагадувати про дедлайн), а по виході — не просто
-  // показуємо, а перераховуємо через srUpdateHeaderChip(): чіп і так
-  // мав бути прихований, якщо дата іспиту не встановлена, і безумовний
-  // display='' показав би порожній/застарілий чіп замість цього.
-  if(active){
-    const daysChip = document.getElementById('sr-days-chip');
-    if(daysChip) daysChip.style.display = 'none';
-  } else if(typeof srUpdateHeaderChip === 'function'){
+  // Ховаємо ВЕСЬ верхній блок (#header) цілком — лого, ⚙️/🔥, лічильник
+  // днів до іспиту — одним елементом, а не кожен по одному. Це і
+  // менше DOM-операцій, і головне — під час уроку ніщо зверху (навіть
+  // просто лого) не відволікає від самого lesson-flow-bar, який стає
+  // єдиним верхнім блоком і сам бере на себе safe-area відступ (див.
+  // #lesson-flow-bar.active в CSS).
+  const header = document.getElementById('header');
+  if(header) header.style.display = active ? 'none' : '';
+  // По виході — не просто показуємо блок, а перераховуємо чіп днів до
+  // іспиту через srUpdateHeaderChip(): він і так мав бути прихований,
+  // якщо дата іспиту не встановлена, а безумовне display='' на #header
+  // саме по собі показало б порожній/застарілий чіп замість цього.
+  if(!active && typeof srUpdateHeaderChip === 'function'){
     srUpdateHeaderChip();
   }
 }
@@ -20528,6 +20530,11 @@ function resetDialogueQ(){
 
 // ── INIT ──────────────────────────────────────────────────────
 function initDialogue(){
+  // Повертаємо панель вкладок 🃏/📋, якщо її ховав debugOpenStory() —
+  // це звичайний вхід у Словник:Діалоги (через нижнє меню/showView),
+  // тож вкладки тут завжди мають бути на місці.
+  const dlgTabs = document.getElementById('dialogue-tabs');
+  if(dlgTabs) dlgTabs.style.display = '';
   initDialogueFilters();
   applyDialogueLangUI();
   startDialogueCardMode();
@@ -20952,6 +20959,12 @@ function debugOpenStory(topicIndex){
   document.getElementById('dlg-panel-browse').style.display = 'none';
   var chips = document.getElementById('dlgchips');
   if(chips) chips.style.display = 'none';
+  // Ховаємо саму панель вкладок 🃏/📋 повністю: це самостійний перегляд
+  // ОДНІЄЇ конкретної теми Mündliche Prüfung Teil 1 (var STORY), а не
+  // Словник:Діалоги — перемикання на 📋 показало б звичайний список
+  // діалогових фраз, який до цієї теми взагалі не стосується.
+  var dlgTabs = document.getElementById('dialogue-tabs');
+  if(dlgTabs) dlgTabs.style.display = 'none';
   startStoryMode(topicIndex);
 }
 
