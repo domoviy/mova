@@ -4508,7 +4508,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '709-4b6095b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8573,6 +8573,18 @@ function stopTTS(){
   a.pause();
   if(currentAudio && currentAudio !== a){ currentAudio.pause(); }
   currentAudio = null;
+  // Прибираємо будь-яке "застрягле" підсвічене слово (.tts-word.active).
+  // Раніше підсвітку знімав ЛИШЕ finish() у playPregenAudio() — а він
+  // прив'язаний до подій 'ended'/'onerror' аудіо-елемента, які НЕ
+  // виникають від a.pause() вище: коли нове відтворення перериває
+  // попереднє (напр. клік по іншій репліці в Mündliche Prüfung Teil 1
+  // після завершення поточної), стара підсвітка лишалась висіти
+  // назавжди. stopTTS() — єдина точка, яку гарантовано проходить БУДЬ-
+  // яке переривання аудіо (яким би шляхом воно не почалось), тож
+  // прибирання підсвітки тут покриває це для всіх фіч разом, а не
+  // лише для Story.
+  if(_ttsHighlightRAF){ cancelAnimationFrame(_ttsHighlightRAF); _ttsHighlightRAF = null; }
+  document.querySelectorAll('.tts-word.active').forEach(function(s){ s.classList.remove('active'); });
 }
 
 // ── BACKGROUND/FOREGROUND handling ────────────────────────────
@@ -17712,6 +17724,13 @@ var _lfStoryHandlers = {
 document.addEventListener('click', function(e){
   var el = e.target.closest('[data-story-replay="1"]');
   if(!el) return;
+  // Поки авто-озвучення поточного (останнього) юніта ще не завершилось —
+  // клік по ІНШІЙ репліці ігноруємо (див. _lfUnitAudioBusy вище): інакше
+  // "Далі" ніколи не з'явиться, а щойно підсвічене слово лишиться
+  // застряглим. Коли автоплей вже скінчився — це не заважає й самому
+  // клікнутому елементу (той самий unit), бо на той момент прапорець
+  // уже false.
+  if(_lfUnitAudioBusy) return;
   var field = el.getAttribute('data-audio-field');
   if(!field) return;
   _lfUnitPlay([{ text: el.textContent.trim(), field: field }], function(){});
@@ -18670,6 +18689,11 @@ function _lfUnitShow(){
     : (_lfUnit.handlers.getAudioText(unit) || []);
 
   var afterPlay = function(){
+    // Озвучення ЦЬОГО (поточного/останнього) юніта завершилось (чи його
+    // взагалі не було) — з цього моменту знову можна переслухати БУДЬ-
+    // ЯКУ репліку кліком (_lfUnitAudioBusy, див. виклик _lfUnitPlay
+    // нижче й делегований обробник кліку в Mündliche Prüfung Teil 1).
+    _lfUnitAudioBusy = false;
     // Переклад репліки діалогу з'являється РІВНО тут — озвучення або
     // завершилось, або playPregenAudio() зрозумів, що файлу нема (обидва
     // варіанти ведуть в onDone → сюди). Для vocab/SB нічого не робить
@@ -18728,6 +18752,16 @@ function _lfUnitShow(){
     return;
   }
 
+  // Позначаємо "йде авто-озвучення поточного юніта" ДО старту, а не
+  // після — items може бути порожнім масивом (afterPlay спрацює
+  // синхронно всередині _lfUnitPlay, одразу знявши прапорець) чи
+  // реальною чергою (прапорець тримається, доки не відпрацює onDone).
+  // Див. afterPlay() вище (скидання) і клік-обробник Mündliche Prüfung
+  // Teil 1 (перевірка) — це навмисно ГЛОБАЛЬНИЙ прапорець спільного
+  // рушія lfRunUnitStep, а не лише STORY: коректно й дешево тримати
+  // його тут в одному місці, навіть якщо сьогодні на нього зважає лише
+  // клік по репліці в Story.
+  _lfUnitAudioBusy = true;
   _lfUnitPlay(items, afterPlay);
 }
 
@@ -18782,6 +18816,20 @@ function _storyTimerReset(){
   if(el){ el.style.display = 'none'; el.textContent = '0:00'; }
 }
 
+// Чи триває ЗАРАЗ авто-озвучення поточного (щойно показаного) юніта —
+// від виклику _lfUnitPlay(items, afterPlay) у _lfUnitShow() до моменту,
+// коли afterPlay() реально спрацює (аудіо дограло/його не було/файл не
+// знайдено). Поки true — клік по ІНШІЙ репліці в Mündliche Prüfung
+// Teil 1 навмисно ІГНОРУЄТЬСЯ (див. обробник кліку нижче): паралельний
+// виклик _lfUnitPlay() для іншої репліки збільшує СПІЛЬНИЙ
+// _lfUnitPlayToken і тим самим обриває ЩЕ АКТИВНУ чергу поточного
+// юніта — її власний onEnd (а разом з ним і показ кнопки "Далі", і
+// _storyTimerPause() лічильника чистого часу проговорювання) просто
+// ніколи не спрацьовує. Блокування — надійніше й безпечніше рішення,
+// ніж встигнути показати "Далі" одразу: воно не лишає "підвішеним" ні
+// кнопку, ні таймер проговорювання, і не вимагає рахувати озвучення
+// перерваним/завершеним одночасно.
+var _lfUnitAudioBusy = false;
 var _lfUnitPlayToken = 0;
 function _lfUnitPlay(items, onDone){
   // ВАЖЛИВО: власний токен, НЕ playGen! speak() сама викликає stopTTS()
