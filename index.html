@@ -4551,7 +4551,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '718-0387d35';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5246,6 +5246,24 @@ var MOVA_ICONS = {
   clipboard:'<path d="M9.3 4.5h5.4v2.4H9.3z"/><path d="M8.6 5.6H6.7A1.7 1.7 0 0 0 5 7.3v11A1.7 1.7 0 0 0 6.7 20h10.6a1.7 1.7 0 0 0 1.7-1.7v-11a1.7 1.7 0 0 0-1.7-1.7h-1.9"/><path d="M8.6 11.4h6.8M8.6 15h4.4"/>',
   timer:   '<path d="M12 6.6a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/><path d="M12 10v3.6l2.3 1.4M9.6 3.5h4.8M12 3.5v3.1"/>',
   bug:     '<path d="M12 8.6c-2.4 0-4 1.9-4 4.4v1.1c0 2.6 1.7 4.7 4 4.7s4-2.1 4-4.7V13c0-2.5-1.6-4.4-4-4.4z"/><path d="M9.5 7.7a2.5 2.5 0 0 1 5 0"/><path d="M12 8.6v10.2M8 12.2H4.4M16 12.2h3.6M8.3 16.4 5.6 18.2M15.7 16.4l2.7 1.8M8.6 9.8 6 7.8M15.4 9.8l2.6-2"/>',
+  // ── Іконки типів звіту про помилку (BUG_REPORT_TYPES) ──────────
+  // translate — та сама бульбашка, що й "bubble", але з міні-глобусом
+  // всередині (мова в повідомленні = переклад), а не окрема з нуля
+  // придумана піктограма — так вона одразу впізнається як "з тієї ж
+  // родини", що й інші іконки застосунку.
+  translate:'<path d="M6 4.5h12A2.5 2.5 0 0 1 20.5 7v7A2.5 2.5 0 0 1 18 16.5h-6.2L7 20v-3.5H6A2.5 2.5 0 0 1 3.5 14V7A2.5 2.5 0 0 1 6 4.5z"/><path d="M12 7.3a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"/><path d="M12 7.3c-1.2 1.1-1.8 2.5-1.8 4s.6 2.9 1.8 4c1.2-1.1 1.8-2.5 1.8-4s-.6-2.9-1.8-4z"/><path d="M8.2 11.3h7.6"/>',
+  // puzzle — шматочок пазла: логічна помилка "не той елемент став не на
+  // своє місце" (для exercise_logic — помилка саме в логіці вправи).
+  puzzle:  '<path d="M9 4.8h3.4v1.8a1.4 1.4 0 0 0 2.8 0V4.8H18.6a1.2 1.2 0 0 1 1.2 1.2v3.4h-1.8a1.4 1.4 0 0 0 0 2.8h1.8v3.4a1.2 1.2 0 0 1-1.2 1.2h-3.4v-1.8a1.4 1.4 0 0 0-2.8 0v1.8H9a1.2 1.2 0 0 1-1.2-1.2v-3.4H6a1.4 1.4 0 0 1 0-2.8h1.8V6a1.2 1.2 0 0 1 1.2-1.2z"/>',
+  // uibug — вікно/екран з "тріщиною" всередині: візуальний баг у
+  // самому інтерфейсі (не в контенті чи логіці).
+  uibug:   '<path d="M4.5 6.2h15a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1h-15a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1z"/><path d="M3.5 9.4h17"/><path d="M9 13l1.6 2-1.2 1.6 2 2.4"/>',
+  // crash — "вибух"/зірка-спалах: зависання чи збій застосунку.
+  crash:   '<path d="M12 2.6l1.4 4.4 3.8-2.6-1 4.5 4.6.4-3.6 3 3.2 3.4-4.6-.6.4 4.6-3.4-3-2 4.1-1-4.4-3.9 2.5 1-4.5-4.6-.4 3.6-3-3.2-3.3 4.6.5-.4-4.6 3.4 3z"/>',
+  // other — три крапки: "інше/decision щось інше" (той самий принцип,
+  // що й ⋯-меню деінде — саме тому суцільна заливка (fill), а не
+  // контурний штрих, як у решти іконок).
+  other:   '<path fill="currentColor" stroke="none" d="M6 10.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM12 10.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2zM18 10.6a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2z"/>',
   trash:   '<path d="M4.5 7h15M9.5 7V4.9a1.3 1.3 0 0 1 1.3-1.3h2.4a1.3 1.3 0 0 1 1.3 1.3V7M6.7 7l.8 11.7a1.6 1.6 0 0 0 1.6 1.5h5.8a1.6 1.6 0 0 0 1.6-1.5L17.3 7M10.2 11v5.4M13.8 11v5.4"/>',
   cloud:   '<path d="M7.2 18.6a4 4 0 0 1-.5-7.9 5.5 5.5 0 0 1 10.6 1.3 3.3 3.3 0 0 1-.6 6.6z"/>',
   upload:  '<path d="M12 16.6V5.2M7.5 9.6 12 5.2l4.5 4.4M5 19.6h14"/>',
@@ -5447,6 +5465,24 @@ const I18N = {
     sr_mode_exam_sprint:'Prüfungssprint', sr_mode_last_week:'Letzte Woche', sr_mode_done:'Geschafft',
     sr_start_lesson:'▶ Los geht\'s!',
     sr_all_done:'🎉 Alles geschafft! Auf zur Wiederholung.',
+    // ── Fehlermeldung (showBugReportModal) ──────────────────────
+    bugreport_title:'Fehler melden',
+    bugreport_sub:'Wählen Sie die Art des Problems — so wird es schneller gefunden und behoben.',
+    bugreport_type_label:'Art des Fehlers',
+    bugreport_comment_label:'Kommentar (optional)',
+    bugreport_comment_placeholder:'Beschreiben Sie, was nicht stimmt…',
+    bugreport_ctx_toggle:'Was genau gesendet wird',
+    bugreport_submit:'Senden',
+    bugreport_submitting:'Wird gesendet…',
+    bugreport_privacy_note:'Gesendet werden: Übungskontext, Ihr Kommentar und technische Geräteinformationen — ohne persönliche Daten.',
+    bugreport_notify_ok:'Danke, der Bericht wurde gesendet',
+    bugreport_notify_queued:'Kein Netz — wird später gesendet',
+    bugtype_translation:'Schlechte Übersetzung',
+    bugtype_audio:'Problem mit der Aussprache',
+    bugtype_exercise_logic:'Fehler in der Übung',
+    bugtype_ui_bug:'Visueller Fehler',
+    bugtype_crash:'Absturz/Einfrieren',
+    bugtype_other:'Sonstiges',
   },
   uk: {
     nav_vocab:'Словник', nav_favs:'Обране', nav_settings:'Налаштування',
@@ -5572,6 +5608,24 @@ const I18N = {
     sr_mode_exam_sprint:'Фінальний спринт', sr_mode_last_week:'Останній тиждень', sr_mode_done:'Завершено',
     sr_start_lesson:'▶ Почнімо урок',
     sr_all_done:'🎉 Усі уроки пройдено! Давай повторимо.',
+    // ── Форма "Повідомити про помилку" (showBugReportModal) ──────
+    bugreport_title:'Повідомити про помилку',
+    bugreport_sub:'Оберіть тип проблеми — так її швидше знайдуть і виправлять.',
+    bugreport_type_label:'Тип помилки',
+    bugreport_comment_label:'Коментар (необов\'язково)',
+    bugreport_comment_placeholder:'Опишіть, що не так…',
+    bugreport_ctx_toggle:'Що саме буде надіслано',
+    bugreport_submit:'Надіслати',
+    bugreport_submitting:'Надсилаємо…',
+    bugreport_privacy_note:'Надсилається: контекст вправи, ваш коментар і технічна інформація про пристрій — без персональних даних.',
+    bugreport_notify_ok:'Дякуємо, звіт надіслано',
+    bugreport_notify_queued:'Мережі нема — надішлемо пізніше',
+    bugtype_translation:'Поганий переклад',
+    bugtype_audio:'Проблема з озвученням',
+    bugtype_exercise_logic:'Помилка у вправі',
+    bugtype_ui_bug:'Візуальний баг',
+    bugtype_crash:'Зависання/збій',
+    bugtype_other:'Інше',
   },
   en: {
     nav_vocab:'Vocabulary', nav_favs:'Favorites', nav_settings:'Settings',
@@ -5698,6 +5752,24 @@ const I18N = {
     sr_mode_exam_sprint:'Exam Sprint', sr_mode_last_week:'Last Week', sr_mode_done:'Done',
     sr_start_lesson:'▶ Let\'s start!',
     sr_all_done:'🎉 All lessons done! Let\'s review.',
+    // ── Report a bug (showBugReportModal) ────────────────────────
+    bugreport_title:'Report a bug',
+    bugreport_sub:'Pick the type of issue — it\'ll get found and fixed faster.',
+    bugreport_type_label:'Issue type',
+    bugreport_comment_label:'Comment (optional)',
+    bugreport_comment_placeholder:'Describe what\'s wrong…',
+    bugreport_ctx_toggle:'What exactly will be sent',
+    bugreport_submit:'Submit',
+    bugreport_submitting:'Sending…',
+    bugreport_privacy_note:'Sent: exercise context, your comment, and technical device info — no personal data.',
+    bugreport_notify_ok:'Thanks, your report was sent',
+    bugreport_notify_queued:'No network — we\'ll send it later',
+    bugtype_translation:'Bad translation',
+    bugtype_audio:'Audio issue',
+    bugtype_exercise_logic:'Exercise logic error',
+    bugtype_ui_bug:'Visual bug',
+    bugtype_crash:'Crash/freeze',
+    bugtype_other:'Other',
   },
   ru: {
     nav_vocab:'Словарь', nav_favs:'Закладки', nav_settings:'Настройки',
@@ -5823,6 +5895,24 @@ const I18N = {
     sr_mode_exam_sprint:'Финальный спринт', sr_mode_last_week:'Последняя неделя', sr_mode_done:'Завершено',
     sr_start_lesson:'▶ Начнём урок',
     sr_all_done:'🎉 Все уроки пройдены! Давай повторим.',
+    // ── Форма "Сообщить об ошибке" (showBugReportModal) ──────────
+    bugreport_title:'Сообщить об ошибке',
+    bugreport_sub:'Выберите тип проблемы — так её быстрее найдут и исправят.',
+    bugreport_type_label:'Тип ошибки',
+    bugreport_comment_label:'Комментарий (необязательно)',
+    bugreport_comment_placeholder:'Опишите, что не так…',
+    bugreport_ctx_toggle:'Что именно будет отправлено',
+    bugreport_submit:'Отправить',
+    bugreport_submitting:'Отправляем…',
+    bugreport_privacy_note:'Отправляется: контекст упражнения, ваш комментарий и техническая информация об устройстве — без персональных данных.',
+    bugreport_notify_ok:'Спасибо, отчёт отправлен',
+    bugreport_notify_queued:'Нет сети — отправим позже',
+    bugtype_translation:'Плохой перевод',
+    bugtype_audio:'Проблема с озвучиванием',
+    bugtype_exercise_logic:'Ошибка в упражнении',
+    bugtype_ui_bug:'Визуальный баг',
+    bugtype_crash:'Зависание/сбой',
+    bugtype_other:'Другое',
   },
 };
 
@@ -12827,13 +12917,17 @@ window.addEventListener('unhandledrejection', e=>{
 // вже зараз, без бекенда.
 const BUG_REPORT_ENDPOINT = 'https://REPLACE-ME.workers.dev/report';
 
+// icon — ключ з MOVA_ICONS (svg-піктограма замість emoji: однаковий
+// вигляд на всіх платформах, а не залежний від емодзі-шрифту системи).
+// labelKey — ключ у I18N (уже НЕ хардкод українською — розв'язується
+// через t() при рендері чипів, див. showBugReportModal нижче).
 const BUG_REPORT_TYPES = [
-  { id:'translation',    emoji:'🔤', label:'Поганий переклад' },
-  { id:'audio',          emoji:'🔊', label:'Проблема з озвученням' },
-  { id:'exercise_logic', emoji:'🧩', label:'Помилка у вправі' },
-  { id:'ui_bug',         emoji:'🎨', label:'Візуальний баг' },
-  { id:'crash',          emoji:'💥', label:'Зависання/збій' },
-  { id:'other',          emoji:'❓', label:'Інше' },
+  { id:'translation',    icon:'translate', labelKey:'bugtype_translation' },
+  { id:'audio',          icon:'speaker',   labelKey:'bugtype_audio' },
+  { id:'exercise_logic', icon:'puzzle',    labelKey:'bugtype_exercise_logic' },
+  { id:'ui_bug',         icon:'uibug',     labelKey:'bugtype_ui_bug' },
+  { id:'crash',          icon:'crash',     labelKey:'bugtype_crash' },
+  { id:'other',          icon:'other',     labelKey:'bugtype_other' },
 ];
 
 // Анонімний ідентифікатор інсталяції — НЕ прив'язаний до жодних
@@ -12897,18 +12991,18 @@ function showBugReportModal(){
   modal.className = 'bugreport-modal';
   modal.innerHTML = `
     <div class="bugreport-modal-title">
-      <span>${movaIcon('bug','mi mi-inline')}Повідомити про помилку</span>
+      <span>${movaIcon('bug','mi mi-inline')}${t('bugreport_title')}</span>
       <button class="bugreport-modal-close" id="bugreport-close-btn">✕</button>
     </div>
-    <div class="bugreport-modal-sub">Оберіть тип проблеми — так її швидше знайдуть і виправлять.</div>
-    <div class="bugreport-section-label">Тип помилки</div>
+    <div class="bugreport-modal-sub">${t('bugreport_sub')}</div>
+    <div class="bugreport-section-label">${t('bugreport_type_label')}</div>
     <div class="bugreport-types" id="bugreport-types"></div>
-    <div class="bugreport-section-label">Коментар (необов'язково)</div>
-    <textarea class="bugreport-comment" id="bugreport-comment" placeholder="Опишіть, що не так…"></textarea>
-    <div class="bugreport-context-toggle" id="bugreport-ctx-toggle">▸ Що саме буде надіслано</div>
+    <div class="bugreport-section-label">${t('bugreport_comment_label')}</div>
+    <textarea class="bugreport-comment" id="bugreport-comment" placeholder="${t('bugreport_comment_placeholder')}"></textarea>
+    <div class="bugreport-context-toggle" id="bugreport-ctx-toggle">▸ ${t('bugreport_ctx_toggle')}</div>
     <div class="bugreport-context-body" id="bugreport-ctx-body"></div>
-    <button class="bugreport-submit" id="bugreport-submit-btn" disabled>Надіслати</button>
-    <div class="bugreport-privacy-note">Надсилається: контекст вправи, ваш коментар і технічна інформація про пристрій — без персональних даних.</div>
+    <button class="bugreport-submit" id="bugreport-submit-btn" disabled>${t('bugreport_submit')}</button>
+    <div class="bugreport-privacy-note">${t('bugreport_privacy_note')}</div>
   `;
   overlay.appendChild(modal);
   document.body.appendChild(overlay);
@@ -12917,13 +13011,16 @@ function showBugReportModal(){
 
   const typesEl = document.getElementById('bugreport-types');
   const submitBtn = document.getElementById('bugreport-submit-btn');
-  BUG_REPORT_TYPES.forEach(t => {
+  // Параметр навмисно НЕ названо "t" (як інші forEach-колбеки в файлі) —
+  // тут в області видимості вже є глобальна t() (переклад), і ці два "t"
+  // затерли б одне одного.
+  BUG_REPORT_TYPES.forEach(bt => {
     const chip = document.createElement('button');
     chip.className = 'bugreport-type-chip';
     chip.type = 'button';
-    chip.textContent = t.emoji+' '+t.label;
+    chip.innerHTML = movaIcon(bt.icon,'mi mi-inline')+' '+t(bt.labelKey);
     chip.onclick = () => {
-      selectedType = t.id;
+      selectedType = bt.id;
       typesEl.querySelectorAll('.bugreport-type-chip').forEach(c=>c.classList.remove('active'));
       chip.classList.add('active');
       submitBtn.disabled = false;
@@ -12937,17 +13034,17 @@ function showBugReportModal(){
   ctxBody.textContent = JSON.stringify(_bugReportGatherContext(null), null, 2);
   ctxToggle.onclick = () => {
     const showing = ctxBody.classList.toggle('show');
-    ctxToggle.textContent = (showing?'▾':'▸') + ' Що саме буде надіслано';
+    ctxToggle.textContent = (showing?'▾':'▸') + ' ' + t('bugreport_ctx_toggle');
   };
 
   submitBtn.onclick = () => {
     if(!selectedType) return;
     const comment = document.getElementById('bugreport-comment').value.trim();
     submitBtn.disabled = true;
-    submitBtn.textContent = 'Надсилаємо…';
+    submitBtn.textContent = t('bugreport_submitting');
     submitBugReport(selectedType, comment).then(ok => {
       overlay.remove();
-      notify(ok ? '✓ Дякуємо, звіт надіслано' : '📥 Мережі нема — надішлемо пізніше');
+      notify(ok ? '✓ '+t('bugreport_notify_ok') : '📥 '+t('bugreport_notify_queued'));
     });
   };
 }
@@ -17165,7 +17262,7 @@ var _lfDlgHandlers = {
         // не буває, тож атрибут ставимо безумовно.
         return examBadge+'<div class="lf-dlg-task lf-bubble-in">'+
           '<div class="lf-unit-main-row">'+
-            '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1">'+text+'</div>'+
+            '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1" data-lf-cardid="'+card.id+'">'+text+'</div>'+
           '</div>'+
           (textTr ?
             '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -17183,7 +17280,7 @@ var _lfDlgHandlers = {
         '<div class="lf-dlg-col">'+
           '<div class="lf-dlg-bubble '+bubbleCls+'">'+
             '<div class="lf-unit-main-row">'+
-              '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1">'+text+'</div>'+
+              '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1" data-lf-cardid="'+card.id+'">'+text+'</div>'+
             '</div>'+
             (textTr ?
               '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -17445,7 +17542,7 @@ var _lfFrmHandlers = {
       // нижче у файлі); карток без реального аудіо тут не буває.
       return eyebrow+'<div class="lf-dlg-task lf-bubble-in">'+
         '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1">'+text+'</div>'+
+          '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1" data-lf-cardid="'+card.id+'">'+text+'</div>'+
         '</div>'+
         (textTr ?
           '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -17804,7 +17901,7 @@ var _lfStoryHandlers = {
       // більше ні до чого.
       return eyebrow+'<div class="lf-dlg-task lf-bubble-in">'+
         '<div class="lf-unit-main-row">'+
-          '<div class="lf-unit-sentence'+(canReplay ? ' lf-replayable' : '')+'" data-audio-field="'+audioField+'"'+(canReplay ? ' data-lf-replay="1"' : '')+'>'+text+'</div>'+
+          '<div class="lf-unit-sentence'+(canReplay ? ' lf-replayable' : '')+'" data-audio-field="'+audioField+'"'+(canReplay ? ' data-lf-replay="1" data-lf-cardid="'+card.id+'"' : '')+'>'+text+'</div>'+
         '</div>'+
         (textTr ?
           '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -17908,7 +18005,15 @@ document.addEventListener('click', function(e){
   if(_lfUnitAudioBusy) return;
   var field = el.getAttribute('data-audio-field');
   if(!field) return;
-  _lfUnitPlay([{ text: el.textContent.trim(), field: field }], function(){});
+  // data-lf-cardid — картка САМЕ ЦІЄЇ бульбашки (проставляє render() у
+  // кожного handler'а — Dlg/Frm/Eml/Story), а НЕ поточного активного
+  // юніта: у Dialogue одна сесія програє ОДРАЗУ КІЛЬКА карток підряд
+  // (ланцюжок), і клік по репліці зі СТАРОЇ картки після переходу на
+  // наступну інакше шукав би аудіо за адресою "нова картка + старе
+  // поле" — якої не існує, тож озвучення мовчки не відбувалось (див.
+  // коментар у _lfUnitPlay вище).
+  var cardId = el.getAttribute('data-lf-cardid');
+  _lfUnitPlay([{ text: el.textContent.trim(), field: field, cardId: cardId }], function(){});
 });
 
 function lfStartDlgLearn(){
@@ -18039,7 +18144,7 @@ function _lfEmlRenderMailOrPart(body, unit){
   var bubble = eyebrow+'<div class="lf-dlg-task'+(mailHeader?' eml-mail-card':'')+' lf-bubble-in">'+
     headerHtml+
     '<div class="lf-unit-main-row">'+
-      '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1">'+text+'</div>'+
+      '<div class="lf-unit-sentence lf-replayable" data-audio-field="'+audioField+'" data-lf-replay="1" data-lf-cardid="'+card.id+'">'+text+'</div>'+
     '</div>'+
     (textTr ?
       '<div class="lf-unit-main-row lf-unit-tr-row">'+
@@ -19031,18 +19136,34 @@ function _lfUnitPlay(items, onDone){
     // її не проставив, highlightEl буде null і speak() просто програє без
     // підсвітки (нічого не ламається, підсвітка — суто адитивна фіча).
     var highlightEl = document.querySelector('#lf-unit-card [data-audio-field="'+item.field+'"]');
+    var _curUnit = _lfUnit.units[_lfUnit.idx];
+    // item.cardId — БАГ, який тут виправлено: клік по вже озвученій
+    // репліці (делегований обробник нижче, data-lf-replay) передає
+    // cardId явно, зчитаний з ТІЄЇ САМОЇ бульбашки (data-lf-cardid),
+    // а не з поточного активного юніта. У Dialogue сесія програвав
+    // ОДРАЗУ КІЛЬКА карток одна за одною (buildModuleDialoguePool —
+    // "ланцюжок" діалогів), тож коли користувач клікав на репліку зі
+    // СТАРОЇ картки вже ПІСЛЯ того, як _lfUnit.idx перейшов на
+    // наступну картку в ланцюжку, раніше тут бездумно бралось
+    // _curUnit.cardId — тобто ID НОВОЇ (поточної) картки — і аудіо
+    // шукалось за адресою "нова картка + старе поле", якої не існує
+    // (404) → озвучення мовчки не відбувалось. Для звичайного
+    // автопрогравання щойно показаного юніта item.cardId не передають
+    // (undefined) — тоді, як і раніше, береться _curUnit.cardId.
+    var cardId = item.cardId || (_curUnit && _curUnit.cardId);
     // Таймер рахує лише СПРАВЖНІ репліки — STORY (kind 'story_part') і
     // звичайний Діалог (kind 'dlg'); умови завдання (story_intro/
     // dlg_task) у підрахунок НЕ йдуть, навіть якщо dlg_task теж має
     // власне озвучення (введення до діалогу) — рахуємо тільки чистий
-    // час проговорювання самих реплік.
-    var _curUnit = _lfUnit.units[_lfUnit.idx];
-    var _isTimedUnit = _curUnit && (_curUnit.kind === 'story_part' || _curUnit.kind === 'dlg');
+    // час проговорювання самих реплік. Клік-повтор старої репліки
+    // (item.cardId задано явно) свідомо НЕ рахуємо в цей таймер —
+    // це вже переслуховування, а не "чисте" промовляння вперше.
+    var _isTimedUnit = !item.cardId && _curUnit && (_curUnit.kind === 'story_part' || _curUnit.kind === 'dlg');
     speak(item.text, item.lang || primaryLang(), function(){
       if(_isTimedUnit) _storyTimerPause();
       if(myToken !== _lfUnitPlayToken) return;
       setTimeout(next, V.pause);
-    }, _curUnit.cardId, item.field, false, highlightEl, _isTimedUnit ? _storyTimerStart : null);
+    }, cardId, item.field, false, highlightEl, _isTimedUnit ? _storyTimerStart : null);
   }
   next();
 }

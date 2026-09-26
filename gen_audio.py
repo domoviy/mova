@@ -1502,6 +1502,11 @@ async def main():
     course_lang_order = {}
 
     for course in COURSES:
+      course_file = pathlib.Path(f"{course}.js")
+      if not course_file.exists():
+          print(f"⚠ Курс '{course}': файл бази '{course_file}' не знайдено — "
+                f"курс пропущено (ймовірно, ще не залитий на сервер).", flush=True)
+          continue
       audio_config, raw_items, primary_lang = load_js_database(f"{course}.js")
       audio_base = AUDIO_ROOT / course
       course_lang_order[course] = [primary_lang] + [l for l in audio_config.keys() if l != primary_lang]
