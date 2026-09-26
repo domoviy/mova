@@ -4320,6 +4320,9 @@ body{
       <div class="fs-setting-scale">
         <span>14px</span><span>21px</span><span>28px</span>
       </div>
+      <button type="button" class="btn btn-s" style="align-self:flex-start" onclick="resetFontSize()">
+        <span data-i18n="btn_fontsize_reset">Zurücksetzen</span> <span id="fs-default-val"></span>
+      </button>
     </div>
     </div>
     </div><!-- /ГРУПА 1 -->
@@ -4548,7 +4551,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '714-d3cd263';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5433,6 +5436,7 @@ const I18N = {
     sec_fontsize:'Schriftgröße',
     lbl_fontsize_card:'Kartengröße',
     lbl_fontsize_card_sub:'Begriff, Definition, Sätze, Kacheln',
+    btn_fontsize_reset:'Zurücksetzen',
     quiz_score:'Ergebnis',
     sr_days_prefix:'Noch ', sr_days_suffix:' Tage',
     sr_no_date_plan:'Kein Datum',
@@ -5558,6 +5562,7 @@ const I18N = {
     sec_fontsize:'Розмір шрифту',
     lbl_fontsize_card:'Розмір карток',
     lbl_fontsize_card_sub:'Термін, визначення, речення, плитки',
+    btn_fontsize_reset:'Скинути',
     quiz_score:'Результат', sr_days_suffix:' днів',
     sr_no_date_plan:'Дату не вказано',
     sr_chip_days_suffix:' днів',
@@ -5683,6 +5688,7 @@ const I18N = {
     sec_fontsize:'Font Size',
     lbl_fontsize_card:'Card size',
     lbl_fontsize_card_sub:'Term, definition, sentences, tiles',
+    btn_fontsize_reset:'Reset',
     sr_days_prefix:'', sr_days_suffix:' days left',
     sr_no_date_plan:'No date set',
     sr_chip_days_suffix:'d',
@@ -5807,6 +5813,7 @@ const I18N = {
     sec_fontsize:'Размер шрифта',
     lbl_fontsize_card:'Размер карточек',
     lbl_fontsize_card_sub:'Термин, определение, предложения, плитки',
+    btn_fontsize_reset:'Сбросить',
     sr_days_prefix:'Ещё ', sr_days_suffix:' дней',
     sr_no_date_plan:'Дата не указана',
     sr_chip_days_suffix:' дн',
@@ -6096,6 +6103,21 @@ function syncFontSizeSlider(){
   if(slider) slider.value = px;
   const lbl = document.getElementById('fs-card-val');
   if(lbl) lbl.textContent = px+'px';
+  // "(18px)" поруч з підписом кнопки-скидання — окремо від
+  // data-i18n="btn_fontsize_reset" (сам текст перекладу без числа),
+  // щоб значення завжди бралось із ЦІЄЇ Ж константи FS_DEFAULT, а не
+  // дублювалось вручну в 4 перекладах і в HTML.
+  const defVal = document.getElementById('fs-default-val');
+  if(defVal) defVal.textContent = '('+FS_DEFAULT+'px)';
+}
+
+// Кнопка "За замовчуванням" біля слайдера розміру шрифту — одразу й
+// застосовує, і зберігає FS_DEFAULT (той самий шлях, що ручний рух
+// повзунка: applyFontSize() оновлює --fs-card-* і сам слайдер/підпис,
+// saveFontSize() записує вибір у localStorage).
+function resetFontSize(){
+  applyFontSize(FS_DEFAULT);
+  saveFontSize();
 }
 
 function saveSettings(){
@@ -15059,7 +15081,7 @@ function _spWaveEl(){ return document.getElementById('sp-wave'); }
 // Скільки тиші в кінці РЕАЛЬНОГО аудіо (пауза перед стоп-бітом TTS-генерації)
 // прибрати лише з КАРТИНКИ хвилі — саме аудіо (тривалість, відтворення,
 // таймінг слів) не чіпаємо. Значення легко підкрутити після тестування.
-var SP_WAVE_TAIL_TRIM_SEC = 0.5;
+var SP_WAVE_TAIL_TRIM_SEC = 0.7;
 
 // n паличок будуються з перших samplesLen семплів буфера (не з усього
 // файлу) — саме це "вирізає" хвіст тиші з КАРТИНКИ.
