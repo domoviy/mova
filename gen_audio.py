@@ -76,9 +76,30 @@ if edge_tts:
         parts = voice.split("-")
         return "-".join(parts[:2]) if len(parts) >= 2 else "en-US"
     def _patched_mkssml(tc, escaped_text):
+        """⚠️ ВАЖЛИВО (з'ясовано пізніше): саму лише заміну xml:lang на
+        кореневому <speak> Microsoft НЕ вважає механізмом вибору мови
+        вимови для Multilingual-голосів — це просто обов'язковий за
+        схемою SSML атрибут документа. Офіційно задокументований спосіб
+        (Azure docs, speech-synthesis-markup-voice#adjust-speaking-languages)
+        — обгорнути сам текст елементом <lang xml:lang="..."> ВСЕРЕДИНІ
+        <voice>. Тому тут повністю перебудовуємо SSML (а не патчимо
+        рядок оригінального _orig_mkssml), додаючи цей внутрішній
+        <lang>-wrapper навколо <prosody> з текстом."""
+        if isinstance(escaped_text, bytes):
+            escaped_text = escaped_text.decode("utf-8")
         locale = _extract_voice_locale(getattr(tc, "voice", ""))
-        ssml = _orig_mkssml(tc, escaped_text)
-        return ssml.replace("xml:lang='en-US'", f"xml:lang='{locale}'", 1)
+        return (
+            "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' "
+            f"xml:lang='{locale}'>"
+            f"<voice name='{tc.voice}'>"
+            f"<lang xml:lang='{locale}'>"
+            f"<prosody pitch='{tc.pitch}' rate='{tc.rate}' volume='{tc.volume}'>"
+            f"{escaped_text}"
+            "</prosody>"
+            "</lang>"
+            "</voice>"
+            "</speak>"
+        )
     edge_tts.communicate.mkssml = _patched_mkssml
 
 # ── Конфігурація ──────────────────────────────────────────────
@@ -152,6 +173,7 @@ def field_wants_timing(internal_cat, field, lang, primary_lang):
 COURSES = [
     'Deutsch-B2-Beruf',
     'Financial-Accounting-Foundations',
+    'Deutsch-A1',
     'Deutsch-A2',
     'Deutsch-B1',
 ]
