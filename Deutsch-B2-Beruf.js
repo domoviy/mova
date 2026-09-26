@@ -22816,49 +22816,49 @@ var SCHREIBEN = [
         "role": "einleitung",
         "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, überlegt die Geschäftsleitung, ein digitales Tool für den Schichttausch im Dienstplan einzuführen, mit dem sich Vertretungen künftig eigenständig organisieren lassen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is considering introducing a digital tool for shift swaps in the schedule, with which cover can be organized independently in future. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво розглядає можливість запровадити цифровий інструмент для обміну змінами в графіку, за допомогою якого заміни надалі можна буде організовувати самостійно. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство рассматривает возможность введения цифрового инструмента для обмена сменами в графике, с помощью которого замены в дальнейшем можно будет организовывать самостоятельно. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "en": "<r>as you probably already know</r>, management is considering introducing a digital tool for shift swaps in the schedule, with which cover can be organized independently in future. <r>I would also like to write something on this topic in our blog today</r>.",
+        "uk": "<r>як ви, напевно, вже знаєте</r>, керівництво розглядає можливість запровадити цифровий інструмент для обміну змінами в графіку, за допомогою якого заміни надалі можна буде організовувати самостійно. <r>Я теж хочу сьогодні написати щось на цю тему в нашому блозі</r>.",
+        "ru": "<r>как вы, наверное, уже знаете</r>, руководство рассматривает возможность введения цифрового инструмента для обмена сменами в графике, с помощью которого замены в дальнейшем можно будет организовывать самостоятельно. <r>Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге</r>."
       },
       {
         "role": "meinung",
         "gram": "passiv_passiversatz",
         "de": "<r>Ich bin der Meinung, dass</r> sich viele Probleme im Schichtdienst dadurch <g>lösen lassen</g>, dass wir Schichten künftig flexibler und eigenständig tauschen können, statt jedes Mal auf eine Genehmigung zu warten.",
-        "en": "I am of the opinion that many problems in shift work can be solved by allowing us to swap shifts more flexibly and independently in future, instead of waiting for approval every time.",
-        "uk": "Я вважаю, що багато проблем позмінної роботи можна вирішити, якщо ми зможемо надалі гнучкіше й самостійно обмінюватися змінами, замість того щоб щоразу чекати на дозвіл.",
-        "ru": "Я считаю, что многие проблемы сменной работы можно решить, если мы сможем в дальнейшем более гибко и самостоятельно обмениваться сменами, вместо того чтобы каждый раз ждать разрешения."
+        "en": "<r>I am of the opinion that</r> many problems in shift work can be solved by allowing us to swap shifts more flexibly and independently in future, instead of waiting for approval every time.",
+        "uk": "<r>Я вважаю, що</r> багато проблем позмінної роботи можна вирішити, якщо ми зможемо надалі гнучкіше й самостійно обмінюватися змінами, замість того щоб щоразу чекати на дозвіл.",
+        "ru": "<r>Я считаю, что</r> многие проблемы сменной работы можно решить, если мы сможем в дальнейшем более гибко и самостоятельно обмениваться сменами, вместо того чтобы каждый раз ждать разрешения."
       },
       {
         "role": "pro",
         "gram": "konnektoren_infinitiv",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> wir kurzfristige Ausfälle viel schneller ausgleichen könnten, <g>um zusätzliche Mehrarbeit für einzelne Kolleginnen und Kollegen zu vermeiden</g>.",
-        "en": "A very important argument in favor is that we could compensate for short-notice absences much more quickly, in order to avoid additional overtime for individual colleagues.",
-        "uk": "Дуже важливий аргумент на користь цього — те, що ми могли б набагато швидше компенсувати короткострокові відсутності, щоб уникнути додаткової понаднормової роботи для окремих колег.",
-        "ru": "Очень важный аргумент в пользу этого — то, что мы могли бы намного быстрее компенсировать краткосрочные отсутствия, чтобы избежать дополнительной сверхурочной работы для отдельных коллег."
+        "en": "<r>A very important argument in favor is that</r> we could compensate for short-notice absences much more quickly, in order to avoid additional overtime for individual colleagues.",
+        "uk": "<r>Дуже важливий аргумент на користь цього — те, що</r> ми могли б набагато швидше компенсувати короткострокові відсутності, щоб уникнути додаткової понаднормової роботи для окремих колег.",
+        "ru": "<r>Очень важный аргумент в пользу этого — то, что</r> мы могли бы намного быстрее компенсировать краткосрочные отсутствия, чтобы избежать дополнительной сверхурочной работы для отдельных коллег."
       },
       {
         "role": "kontra",
         "gram": "vergleichssaetze_als_wie_je_desto",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass <g>je</g> mehr Freiheit wir beim Tauschen haben, <g>desto</g> unübersichtlicher könnte der gesamte Dienstplan am Ende werden, wenn niemand mehr richtig den Überblick behält.",
-        "en": "On the other hand, one should also consider that the more freedom we have with swapping, the more confusing the entire schedule could ultimately become, if no one keeps a proper overview anymore.",
-        "uk": "З іншого боку, варто також враховувати, що чим більше свободи ми маємо в обміні змінами, тим заплутанішим може стати весь графік, якщо ніхто вже не матиме чіткого огляду.",
-        "ru": "С другой стороны, стоит также учитывать, что чем больше свободы у нас есть при обмене, тем более запутанным может в итоге стать весь график, если никто уже не будет иметь чёткого обзора."
+        "en": "<r>On the other hand</r>, one should also consider that the more freedom we have with swapping, the more confusing the entire schedule could ultimately become, if no one keeps a proper overview anymore.",
+        "uk": "<r>З іншого боку</r>, варто також враховувати, що чим більше свободи ми маємо в обміні змінами, тим заплутанішим може стати весь графік, якщо ніхто вже не матиме чіткого огляду.",
+        "ru": "<r>С другой стороны</r>, стоит также учитывать, что чем больше свободы у нас есть при обмене, тем более запутанным может в итоге стать весь график, если никто уже не будет иметь чёткого обзора."
       },
       {
         "role": "vorschlag",
         "gram": "relativsatz_wer",
         "de": "<r>Deshalb schlage ich vor</r>: <g>Wer</g> eine Schicht übernehmen möchte, <g>der</g> sollte das direkt im Tool bestätigen, während die Schichtleitung trotzdem eine Übersicht über alle Änderungen behält.",
-        "en": "That is why I propose: whoever wants to take on a shift should confirm this directly in the tool, while the shift supervisor still retains an overview of all changes.",
-        "uk": "Тому я пропоную: хто хоче взяти зміну, той має підтвердити це безпосередньо в інструменті, тоді як керівник зміни все ж матиме огляд усіх змін.",
-        "ru": "Поэтому я предлагаю: тот, кто хочет взять смену, должен подтвердить это непосредственно в инструменте, при этом руководитель смены всё же будет иметь обзор всех изменений."
+        "en": "<r>That is why I propose</r>: whoever wants to take on a shift should confirm this directly in the tool, while the shift supervisor still retains an overview of all changes.",
+        "uk": "<r>Тому я пропоную</r>: хто хоче взяти зміну, той має підтвердити це безпосередньо в інструменті, тоді як керівник зміни все ж матиме огляд усіх змін.",
+        "ru": "<r>Поэтому я предлагаю</r>: тот, кто хочет взять смену, должен подтвердить это непосредственно в инструменте, при этом руководитель смены всё же будет иметь обзор всех изменений."
       },
       {
         "role": "schluss",
         "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
-        "en": "What do you think about this? I'm curious to hear your opinion.",
-        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
-        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+        "en": "<r>What do you think about this? I'm curious to hear your opinion.</r>",
+        "uk": "<r>Що ви про це думаєте? З нетерпінням чекаю на вашу думку.</r>",
+        "ru": "<r>Что вы об этом думаете? С нетерпением жду вашего мнения.</r>"
       },
       {
         "role": "name",
@@ -22899,49 +22899,49 @@ var SCHREIBEN = [
         "role": "einleitung",
         "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, möchte die Geschäftsleitung künftig, dass jede und jeder von uns einmal im Jahr einen kurzen Vortrag über die eigenen Stärken und beruflichen Werte hält. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management wants each of us to give a short presentation about our own strengths and professional values once a year in future. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво хоче, щоб надалі кожен з нас раз на рік виступав з короткою доповіддю про власні сильні сторони й професійні цінності. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство хочет, чтобы в дальнейшем каждый из нас раз в год выступал с коротким докладом о собственных сильных сторонах и профессиональных ценностях. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "en": "<r>as you probably already know</r>, management wants each of us to give a short presentation about our own strengths and professional values once a year in future. <r>I would also like to write something on this topic in our blog today</r>.",
+        "uk": "<r>як ви, напевно, вже знаєте</r>, керівництво хоче, щоб надалі кожен з нас раз на рік виступав з короткою доповіддю про власні сильні сторони й професійні цінності. <r>Я теж хочу сьогодні написати щось на цю тему в нашому блозі</r>.",
+        "ru": "<r>как вы, наверное, уже знаете</r>, руководство хочет, чтобы в дальнейшем каждый из нас раз в год выступал с коротким докладом о собственных сильных сторонах и профессиональных ценностях. <r>Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге</r>."
       },
       {
         "role": "meinung",
         "gram": "textzusammenhang",
         "de": "<r>Ich bin der Meinung, dass</r> ein solcher Kurzvortrag zunächst ungewohnt wirkt. <g>Dennoch</g> halte ich ihn für eine wirklich gute Idee, denn aus meiner Sicht kommen unsere Stärken im Alltag oft viel zu kurz.",
-        "en": "I am of the opinion that such a short presentation seems unfamiliar at first. Nevertheless, I think it's a really good idea, because from my point of view, our strengths often get far too little attention in everyday work.",
-        "uk": "Я вважаю, що така коротка доповідь спочатку здається незвичною. Проте я вважаю це справді гарною ідеєю, адже, на мою думку, нашим сильним сторонам у буденній роботі часто приділяється надто мало уваги.",
-        "ru": "Я считаю, что такой короткий доклад поначалу кажется непривычным. Тем не менее я считаю это действительно хорошей идеей, ведь, на мой взгляд, нашим сильным сторонам в повседневной работе часто уделяется слишком мало внимания."
+        "en": "<r>I am of the opinion that</r> such a short presentation seems unfamiliar at first. Nevertheless, I think it's a really good idea, because from my point of view, our strengths often get far too little attention in everyday work.",
+        "uk": "<r>Я вважаю, що</r> така коротка доповідь спочатку здається незвичною. Проте я вважаю це справді гарною ідеєю, адже, на мою думку, нашим сильним сторонам у буденній роботі часто приділяється надто мало уваги.",
+        "ru": "<r>Я считаю, что</r> такой короткий доклад поначалу кажется непривычным. Тем не менее я считаю это действительно хорошей идеей, ведь, на мой взгляд, нашим сильным сторонам в повседневной работе часто уделяется слишком мало внимания."
       },
       {
         "role": "pro",
         "gram": "modalpartikeln",
         "de": "<r>Ein ganz wichtiges Argument dafür ist</r> <g>ja</g>, dass wir Eigenschaften wie Zuverlässigkeit oder Durchsetzungsvermögen sonst kaum sichtbar machen können, obwohl sie für unsere Arbeit entscheidend sind.",
-        "en": "A very important argument in favor is, after all, that otherwise we can hardly make qualities like reliability or assertiveness visible, even though they are crucial for our work.",
-        "uk": "Дуже важливий аргумент на користь цього — те, що інакше ми навряд чи можемо продемонструвати такі якості, як надійність чи наполегливість, хоча вони є вирішальними для нашої роботи.",
-        "ru": "Очень важный аргумент в пользу этого — то, что иначе мы вряд ли можем продемонстрировать такие качества, как надёжность или настойчивость, хотя они являются решающими для нашей работы."
+        "en": "<r>A very important argument in favor is</r>, after all, that otherwise we can hardly make qualities like reliability or assertiveness visible, even though they are crucial for our work.",
+        "uk": "<r>Дуже важливий аргумент на користь цього — те, що</r> інакше ми навряд чи можемо продемонструвати такі якості, як надійність чи наполегливість, хоча вони є вирішальними для нашої роботи.",
+        "ru": "<r>Очень важный аргумент в пользу этого — то, что</r> иначе мы вряд ли можем продемонстрировать такие качества, как надёжность или настойчивость, хотя они являются решающими для нашей работы."
       },
       {
         "role": "kontra",
         "gram": "konnektoren_zweiteilig",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass sich <g>einerseits</g> nicht jeder gerne vor der ganzen Gruppe präsentiert, <g>andererseits</g> aber genau darin eine wichtige Übung für die eigene Präsentationsstärke liegen könnte.",
-        "en": "On the other hand, one should also consider that, on one hand, not everyone enjoys presenting in front of the whole group, but on the other hand, this could be exactly where an important exercise for one's own presentation skills lies.",
-        "uk": "З іншого боку, варто також враховувати, що, з одного боку, не кожному подобається виступати перед усією групою, але, з іншого боку, саме в цьому може критися важлива вправа для розвитку власних навичок презентації.",
-        "ru": "С другой стороны, стоит также учитывать, что, с одной стороны, не каждому нравится выступать перед всей группой, но, с другой стороны, именно в этом может скрываться важное упражнение для развития собственных навыков презентации."
+        "en": "<r>On the other hand</r>, one should also consider that, on one hand, not everyone enjoys presenting in front of the whole group, but on the other hand, this could be exactly where an important exercise for one's own presentation skills lies.",
+        "uk": "<r>З іншого боку</r>, варто також враховувати, що, з одного боку, не кожному подобається виступати перед усією групою, але, з іншого боку, саме в цьому може критися важлива вправа для розвитку власних навичок презентації.",
+        "ru": "<r>С другой стороны</r>, стоит также учитывать, что, с одной стороны, не каждому нравится выступать перед всей группой, но, с другой стороны, именно в этом может скрываться важное упражнение для развития собственных навыков презентации."
       },
       {
         "role": "vorschlag",
         "gram": "nomen_verb_verbindungen",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir besonderen <g>Wert darauf legen</g>, den Vortrag freiwillig und ohne Bewertung zu gestalten, damit sich niemand unter Druck gesetzt fühlt.",
-        "en": "That is why I propose that we place special value on making the presentation voluntary and without evaluation, so that no one feels pressured.",
-        "uk": "Тому я пропоную приділяти особливу увагу тому, щоб доповідь була добровільною й без оцінювання, щоб ніхто не відчував тиску.",
-        "ru": "Поэтому я предлагаю уделять особое внимание тому, чтобы доклад был добровольным и без оценивания, чтобы никто не чувствовал давления."
+        "en": "<r>That is why I propose that</r> we place special value on making the presentation voluntary and without evaluation, so that no one feels pressured.",
+        "uk": "<r>Тому я пропоную</r> приділяти особливу увагу тому, щоб доповідь була добровільною й без оцінювання, щоб ніхто не відчував тиску.",
+        "ru": "<r>Поэтому я предлагаю</r> уделять особое внимание тому, чтобы доклад был добровольным и без оценивания, чтобы никто не чувствовал давления."
       },
       {
         "role": "schluss",
         "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
-        "en": "What do you think about this? I'm curious to hear your opinion.",
-        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
-        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+        "en": "<r>What do you think about this? I'm curious to hear your opinion.</r>",
+        "uk": "<r>Що ви про це думаєте? З нетерпінням чекаю на вашу думку.</r>",
+        "ru": "<r>Что вы об этом думаете? С нетерпением жду вашего мнения.</r>"
       },
       {
         "role": "name",
@@ -22982,49 +22982,49 @@ var SCHREIBEN = [
         "role": "einleitung",
         "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, ein Kommunikationstraining einzuführen, das uns helfen soll, Botschaften klarer und direkter zu formulieren. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is planning to introduce communication training to help us formulate messages more clearly and directly. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити тренінг зі спілкування, який допоможе нам формулювати повідомлення чіткіше й прямо. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство планирует ввести тренинг по коммуникации, который поможет нам формулировать сообщения яснее и прямее. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "en": "<r>as you probably already know</r>, management is planning to introduce communication training to help us formulate messages more clearly and directly. <r>I would also like to write something on this topic in our blog today</r>.",
+        "uk": "<r>як ви, напевно, вже знаєте</r>, керівництво планує запровадити тренінг зі спілкування, який допоможе нам формулювати повідомлення чіткіше й прямо. <r>Я теж хочу сьогодні написати щось на цю тему в нашому блозі</r>.",
+        "ru": "<r>как вы, наверное, уже знаете</r>, руководство планирует ввести тренинг по коммуникации, который поможет нам формулировать сообщения яснее и прямее. <r>Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге</r>."
       },
       {
         "role": "meinung",
         "gram": "modalpartikeln",
         "de": "<r>Ich bin der Meinung, dass</r> ein solches Training wirklich sinnvoll ist, denn Missverständnisse entstehen <g>ja</g> oft genau dann, wenn wir ein Anliegen zu indirekt ausdrücken, statt es einfach direkt anzusprechen.",
-        "en": "I am of the opinion that such training really makes sense, because misunderstandings, as we know, often arise exactly when we express a concern too indirectly instead of simply addressing it directly.",
-        "uk": "Я вважаю, що такий тренінг справді доцільний, адже непорозуміння, як відомо, часто виникають саме тоді, коли ми надто непрямо висловлюємо прохання, замість того щоб просто прямо його озвучити.",
-        "ru": "Я считаю, что такой тренинг действительно имеет смысл, ведь недоразумения, как известно, часто возникают именно тогда, когда мы слишком косвенно выражаем просьбу, вместо того чтобы просто прямо её озвучить."
+        "en": "<r>I am of the opinion that</r> such training really makes sense, because misunderstandings, as we know, often arise exactly when we express a concern too indirectly instead of simply addressing it directly.",
+        "uk": "<r>Я вважаю, що</r> такий тренінг справді доцільний, адже непорозуміння, як відомо, часто виникають саме тоді, коли ми надто непрямо висловлюємо прохання, замість того щоб просто прямо його озвучити.",
+        "ru": "<r>Я считаю, что</r> такой тренинг действительно имеет смысл, ведь недоразумения, как известно, часто возникают именно тогда, когда мы слишком косвенно выражаем просьбу, вместо того чтобы просто прямо её озвучить."
       },
       {
         "role": "pro",
         "gram": "modalpartikeln",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> wir <g>doch</g> alle schon mal erlebt haben, wie eine unklare Botschaft am Ende zu echten Problemen im Team geführt hat, obwohl niemand das wirklich wollte.",
-        "en": "A very important argument in favor is that we have all, after all, experienced how an unclear message ultimately led to real problems in the team, even though nobody really wanted that.",
-        "uk": "Дуже важливий аргумент на користь цього — те, що ми всі вже, зрештою, стикалися з тим, як нечітке повідомлення в результаті призводило до справжніх проблем у команді, хоча цього ніхто насправді не хотів.",
-        "ru": "Очень важный аргумент в пользу этого — то, что мы все уже, в конце концов, сталкивались с тем, как нечёткое сообщение в итоге приводило к настоящим проблемам в команде, хотя этого никто на самом деле не хотел."
+        "en": "<r>A very important argument in favor is that</r> we have all, after all, experienced how an unclear message ultimately led to real problems in the team, even though nobody really wanted that.",
+        "uk": "<r>Дуже важливий аргумент на користь цього — те, що</r> ми всі вже, зрештою, стикалися з тим, як нечітке повідомлення в результаті призводило до справжніх проблем у команді, хоча цього ніхто насправді не хотів.",
+        "ru": "<r>Очень важный аргумент в пользу этого — то, что</r> мы все уже, в конце концов, сталкивались с тем, как нечёткое сообщение в итоге приводило к настоящим проблемам в команде, хотя этого никто на самом деле не хотел."
       },
       {
         "role": "kontra",
         "gram": "modalpartikeln",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass zu direkte Sprache manchmal <g>eben</g> auch verletzend wirken kann, wenn der passende Unterton oder die richtige Nuance fehlt.",
-        "en": "On the other hand, one should also consider that overly direct language can, after all, sometimes come across as hurtful when the right undertone or the right nuance is missing.",
-        "uk": "З іншого боку, варто також враховувати, що надто пряма мова часом може, зрештою, звучати образливо, якщо бракує потрібного відтінку тону чи правильного нюансу.",
-        "ru": "С другой стороны, стоит также учитывать, что слишком прямая речь порой может, в конце концов, звучать обидно, если не хватает нужного оттенка тона или правильного нюанса."
+        "en": "<r>On the other hand</r>, one should also consider that overly direct language can, after all, sometimes come across as hurtful when the right undertone or the right nuance is missing.",
+        "uk": "<r>З іншого боку</r>, варто також враховувати, що надто пряма мова часом може, зрештою, звучати образливо, якщо бракує потрібного відтінку тону чи правильного нюансу.",
+        "ru": "<r>С другой стороны</r>, стоит также учитывать, что слишком прямая речь порой может, в конце концов, звучать обидно, если не хватает нужного оттенка тона или правильного нюанса."
       },
       {
         "role": "vorschlag",
         "gram": "modalpartikeln",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir im Training <g>ruhig</g> auch schwierige Situationen üben, in denen wir ein Anliegen höflich, aber trotzdem klar auf den Punkt bringen müssen.",
-        "en": "That is why I propose that in the training we also feel free to practice difficult situations in which we have to state a concern politely but still clearly and to the point.",
-        "uk": "Тому я пропоную сміливо практикувати на тренінгу й складні ситуації, у яких нам потрібно ввічливо, але водночас чітко і по суті висловити прохання.",
-        "ru": "Поэтому я предлагаю смело практиковать на тренинге и сложные ситуации, в которых нам нужно вежливо, но при этом чётко и по существу изложить просьбу."
+        "en": "<r>That is why I propose that</r> in the training we also feel free to practice difficult situations in which we have to state a concern politely but still clearly and to the point.",
+        "uk": "<r>Тому я пропоную</r> сміливо практикувати на тренінгу й складні ситуації, у яких нам потрібно ввічливо, але водночас чітко і по суті висловити прохання.",
+        "ru": "<r>Поэтому я предлагаю</r> смело практиковать на тренинге и сложные ситуации, в которых нам нужно вежливо, но при этом чётко и по существу изложить просьбу."
       },
       {
         "role": "schluss",
         "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
-        "en": "What do you think about this? I'm curious to hear your opinion.",
-        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
-        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+        "en": "<r>What do you think about this? I'm curious to hear your opinion.</r>",
+        "uk": "<r>Що ви про це думаєте? З нетерпінням чекаю на вашу думку.</r>",
+        "ru": "<r>Что вы об этом думаете? С нетерпением жду вашего мнения.</r>"
       },
       {
         "role": "name",
@@ -23065,49 +23065,49 @@ var SCHREIBEN = [
         "role": "einleitung",
         "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, überlegt die Geschäftsleitung, nach jedem Mitarbeitergespräch eine verbindliche schriftliche Vereinbarung mit einem festen Termin zur Nachbereitung einzuführen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is considering introducing a binding written agreement with a fixed follow-up date after every performance review. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво розглядає можливість запровадити після кожної бесіди з керівником обов'язкову письмову домовленість із фіксованим терміном для подальшого супроводу. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство рассматривает возможность введения после каждой беседы с руководителем обязательной письменной договорённости с фиксированным сроком для последующего сопровождения. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "en": "<r>as you probably already know</r>, management is considering introducing a binding written agreement with a fixed follow-up date after every performance review. <r>I would also like to write something on this topic in our blog today</r>.",
+        "uk": "<r>як ви, напевно, вже знаєте</r>, керівництво розглядає можливість запровадити після кожної бесіди з керівником обов'язкову письмову домовленість із фіксованим терміном для подальшого супроводу. <r>Я теж хочу сьогодні написати щось на цю тему в нашому блозі</r>.",
+        "ru": "<r>как вы, наверное, уже знаете</r>, руководство рассматривает возможность введения после каждой беседы с руководителем обязательной письменной договорённости с фиксированным сроком для последующего сопровождения. <r>Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге</r>."
       },
       {
         "role": "meinung",
         "gram": "konjunktiv2_als_ob",
         "de": "<r>Ich bin der Meinung, dass</r> wir das wirklich ändern sollten, denn momentan läuft es oft so, <g>als ob die im Jahresgespräch vereinbarten Ziele nach dem Termin einfach vergessen wären</g>.",
-        "en": "I am of the opinion that we should really change this, because at the moment it often seems as if the goals agreed on in the annual review are simply forgotten after the meeting.",
-        "uk": "Я вважаю, що нам справді слід це змінити, адже наразі часто складається враження, ніби цілі, погоджені на річній бесіді, після зустрічі просто забуваються.",
-        "ru": "Я считаю, что нам действительно стоит это изменить, ведь сейчас часто складывается впечатление, будто цели, согласованные на ежегодной беседе, после встречи просто забываются."
+        "en": "<r>I am of the opinion that</r> we should really change this, because at the moment it often seems as if the goals agreed on in the annual review are simply forgotten after the meeting.",
+        "uk": "<r>Я вважаю, що</r> нам справді слід це змінити, адже наразі часто складається враження, ніби цілі, погоджені на річній бесіді, після зустрічі просто забуваються.",
+        "ru": "<r>Я считаю, что</r> нам действительно стоит это изменить, ведь сейчас часто складывается впечатление, будто цели, согласованные на ежегодной беседе, после встречи просто забываются."
       },
       {
         "role": "pro",
         "gram": "nominalisierung",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>die schriftliche Festhaltung der Vereinbarung</g> für deutlich mehr Verbindlichkeit sorgt, gerade wenn es um Themen wie die Gehaltsanpassung oder konkrete Entwicklungsmöglichkeiten geht.",
-        "en": "A very important argument in favor is that writing down the agreement in writing ensures much more commitment, especially when it comes to topics such as salary adjustments or specific development opportunities.",
-        "uk": "Дуже важливий аргумент на користь цього — те, що письмова фіксація домовленості забезпечує значно більшу обов'язковість, особливо коли йдеться про такі теми, як підвищення зарплати чи конкретні можливості розвитку.",
-        "ru": "Очень важный аргумент в пользу этого — то, что письменная фиксация договорённости обеспечивает намного большую обязательность, особенно когда речь идёт о таких темах, как повышение зарплаты или конкретные возможности развития."
+        "en": "<r>A very important argument in favor is that</r> writing down the agreement in writing ensures much more commitment, especially when it comes to topics such as salary adjustments or specific development opportunities.",
+        "uk": "<r>Дуже важливий аргумент на користь цього — те, що</r> письмова фіксація домовленості забезпечує значно більшу обов'язковість, особливо коли йдеться про такі теми, як підвищення зарплати чи конкретні можливості розвитку.",
+        "ru": "<r>Очень важный аргумент в пользу этого — то, что</r> письменная фиксация договорённости обеспечивает намного большую обязательность, особенно когда речь идёт о таких темах, как повышение зарплаты или конкретные возможности развития."
       },
       {
         "role": "kontra",
         "gram": "passiv_mit_sein",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass nicht jedes Ziel bereits zum Zeitpunkt des Gesprächs vollständig <g>durchdacht ist</g> und sich manche Absprachen im Alltag noch verändern können.",
-        "en": "On the other hand, one should also consider that not every goal is already fully thought through at the time of the conversation, and some arrangements can still change in everyday work.",
-        "uk": "З іншого боку, варто також враховувати, що не кожна ціль уже на момент бесіди повністю продумана, і деякі домовленості в буденній роботі ще можуть змінюватися.",
-        "ru": "С другой стороны, стоит также учитывать, что не каждая цель уже на момент беседы полностью продумана, и некоторые договорённости в повседневной работе ещё могут меняться."
+        "en": "<r>On the other hand</r>, one should also consider that not every goal is already fully thought through at the time of the conversation, and some arrangements can still change in everyday work.",
+        "uk": "<r>З іншого боку</r>, варто також враховувати, що не кожна ціль уже на момент бесіди повністю продумана, і деякі домовленості в буденній роботі ще можуть змінюватися.",
+        "ru": "<r>С другой стороны</r>, стоит также учитывать, что не каждая цель уже на момент беседы полностью продумана, и некоторые договорённости в повседневной работе ещё могут меняться."
       },
       {
         "role": "vorschlag",
         "gram": "es_pronomen",
         "de": "<r>Deshalb schlage ich vor, dass</r> <g>es</g> nach jedem Mitarbeitergespräch einen festen Termin zur Nachbereitung <g>gibt</g>, an dem wir gemeinsam prüfen, welche Maßnahmen bereits umgesetzt wurden.",
-        "en": "That is why I propose that there be a fixed follow-up date after every performance review, at which we check together which measures have already been implemented.",
-        "uk": "Тому я пропоную, щоб після кожної бесіди з керівником був фіксований термін для подальшого супроводу, на якому ми разом перевірятимемо, які заходи вже реалізовано.",
-        "ru": "Поэтому я предлагаю, чтобы после каждой беседы с руководителем был фиксированный срок для последующего сопровождения, на котором мы вместе будем проверять, какие меры уже реализованы."
+        "en": "<r>That is why I propose that</r> there be a fixed follow-up date after every performance review, at which we check together which measures have already been implemented.",
+        "uk": "<r>Тому я пропоную, щоб</r> після кожної бесіди з керівником був фіксований термін для подальшого супроводу, на якому ми разом перевірятимемо, які заходи вже реалізовано.",
+        "ru": "<r>Поэтому я предлагаю, чтобы</r> после каждой беседы с руководителем был фиксированный срок для последующего сопровождения, на котором мы вместе будем проверять, какие меры уже реализованы."
       },
       {
         "role": "schluss",
         "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
-        "en": "What do you think about this? I'm curious to hear your opinion.",
-        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
-        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+        "en": "<r>What do you think about this? I'm curious to hear your opinion.</r>",
+        "uk": "<r>Що ви про це думаєте? З нетерпінням чекаю на вашу думку.</r>",
+        "ru": "<r>Что вы об этом думаете? С нетерпением жду вашего мнения.</r>"
       },
       {
         "role": "name",
@@ -23148,49 +23148,49 @@ var SCHREIBEN = [
         "role": "einleitung",
         "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, verstärkt auf künstliche Intelligenz und automatisierte Workflows zu setzen, um wiederkehrende Aufgaben in unserem digitalen Arbeiten zu beschleunigen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is planning to rely more heavily on artificial intelligence and automated workflows to speed up recurring tasks in our digital work. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво планує більше покладатися на штучний інтелект і автоматизовані робочі процеси, щоб прискорити повторювані завдання в нашій цифровій роботі. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство планирует больше полагаться на искусственный интеллект и автоматизированные рабочие процессы, чтобы ускорить повторяющиеся задачи в нашей цифровой работе. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "en": "<r>as you probably already know</r>, management is planning to rely more heavily on artificial intelligence and automated workflows to speed up recurring tasks in our digital work. <r>I would also like to write something on this topic in our blog today</r>.",
+        "uk": "<r>як ви, напевно, вже знаєте</r>, керівництво планує більше покладатися на штучний інтелект і автоматизовані робочі процеси, щоб прискорити повторювані завдання в нашій цифровій роботі. <r>Я теж хочу сьогодні написати щось на цю тему в нашому блозі</r>.",
+        "ru": "<r>как вы, наверное, уже знаете</r>, руководство планирует больше полагаться на искусственный интеллект и автоматизированные рабочие процессы, чтобы ускорить повторяющиеся задачи в нашей цифровой работе. <r>Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге</r>."
       },
       {
         "role": "meinung",
         "gram": "partizipien_als_adjektive",
         "de": "<r>Ich bin der Meinung, dass</r> <g>die zunehmende Automatisierung</g> uns langfristig wirklich entlasten kann, denn viele wiederkehrende Aufgaben kosten uns momentan unnötig viel Zeit.",
-        "en": "I am of the opinion that increasing automation can really relieve us in the long run, because many recurring tasks currently cost us an unnecessary amount of time.",
-        "uk": "Я вважаю, що зростаюча автоматизація може справді розвантажити нас у довгостроковій перспективі, адже багато повторюваних завдань наразі забирають у нас непотрібно багато часу.",
-        "ru": "Я считаю, что растущая автоматизация может действительно разгрузить нас в долгосрочной перспективе, ведь многие повторяющиеся задачи сейчас отнимают у нас неоправданно много времени."
+        "en": "<r>I am of the opinion that</r> increasing automation can really relieve us in the long run, because many recurring tasks currently cost us an unnecessary amount of time.",
+        "uk": "<r>Я вважаю, що</r> зростаюча автоматизація може справді розвантажити нас у довгостроковій перспективі, адже багато повторюваних завдань наразі забирають у нас непотрібно багато часу.",
+        "ru": "<r>Я считаю, что</r> растущая автоматизация может действительно разгрузить нас в долгосрочной перспективе, ведь многие повторяющиеся задачи сейчас отнимают у нас неоправданно много времени."
       },
       {
         "role": "pro",
         "gram": "modalsatz_dadurch_indem",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> wir uns mehr auf anspruchsvollere Aufgaben konzentrieren könnten, <g>indem wir</g> einfache, sich wiederholende Prozesse an KI-gestützte Tools abgeben.",
-        "en": "A very important argument in favor is that we could focus more on more demanding tasks by delegating simple, repetitive processes to AI-supported tools.",
-        "uk": "Дуже важливий аргумент на користь цього — те, що ми могли б більше зосередитися на складніших завданнях, передавши прості, повторювані процеси інструментам зі штучним інтелектом.",
-        "ru": "Очень важный аргумент в пользу этого — то, что мы могли бы больше сосредоточиться на более сложных задачах, передав простые, повторяющиеся процессы инструментам с искусственным интеллектом."
+        "en": "<r>A very important argument in favor is that</r> we could focus more on more demanding tasks by delegating simple, repetitive processes to AI-supported tools.",
+        "uk": "<r>Дуже важливий аргумент на користь цього — те, що</r> ми могли б більше зосередитися на складніших завданнях, передавши прості, повторювані процеси інструментам зі штучним інтелектом.",
+        "ru": "<r>Очень важный аргумент в пользу этого — то, что</r> мы могли бы больше сосредоточиться на более сложных задачах, передав простые, повторяющиеся процессы инструментам с искусственным интеллектом."
       },
       {
         "role": "kontra",
         "gram": "negation",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass <g>kein System</g> völlig fehlerfrei ist, und gerade beim Datenschutz und der Cybersicherheit dürfen wir keine Abstriche machen.",
-        "en": "On the other hand, one should also consider that no system is completely error-free, and especially when it comes to data protection and cybersecurity, we cannot afford to compromise.",
-        "uk": "З іншого боку, варто також враховувати, що жодна система не є абсолютно безпомилковою, і саме щодо захисту даних і кібербезпеки ми не можемо йти на компроміси.",
-        "ru": "С другой стороны, стоит также учитывать, что ни одна система не бывает полностью безошибочной, и именно в вопросах защиты данных и кибербезопасности мы не можем идти на компромиссы."
+        "en": "<r>On the other hand</r>, one should also consider that no system is completely error-free, and especially when it comes to data protection and cybersecurity, we cannot afford to compromise.",
+        "uk": "<r>З іншого боку</r>, варто також враховувати, що жодна система не є абсолютно безпомилковою, і саме щодо захисту даних і кібербезпеки ми не можемо йти на компроміси.",
+        "ru": "<r>С другой стороны</r>, стоит также учитывать, что ни одна система не бывает полностью безошибочной, и именно в вопросах защиты данных и кибербезопасности мы не можем идти на компромиссы."
       },
       {
         "role": "vorschlag",
         "gram": "konnektoren_zweiteilig",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir vor jeder Einführung eines neuen Tools <g>sowohl</g> auf die DSGVO <g>als auch</g> auf eine solide Verschlüsselung der Daten achten.",
-        "en": "That is why I propose that before introducing any new tool, we pay attention to both GDPR compliance and solid data encryption.",
-        "uk": "Тому я пропоную перед запровадженням кожного нового інструменту звертати увагу як на GDPR, так і на надійне шифрування даних.",
-        "ru": "Поэтому я предлагаю перед внедрением каждого нового инструмента обращать внимание как на GDPR, так и на надёжное шифрование данных."
+        "en": "<r>That is why I propose that</r> before introducing any new tool, we pay attention to both GDPR compliance and solid data encryption.",
+        "uk": "<r>Тому я пропоную</r> перед запровадженням кожного нового інструменту звертати увагу як на GDPR, так і на надійне шифрування даних.",
+        "ru": "<r>Поэтому я предлагаю</r> перед внедрением каждого нового инструмента обращать внимание как на GDPR, так и на надёжное шифрование данных."
       },
       {
         "role": "schluss",
         "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
-        "en": "What do you think about this? I'm curious to hear your opinion.",
-        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
-        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+        "en": "<r>What do you think about this? I'm curious to hear your opinion.</r>",
+        "uk": "<r>Що ви про це думаєте? З нетерпінням чекаю на вашу думку.</r>",
+        "ru": "<r>Что вы об этом думаете? С нетерпением жду вашего мнения.</r>"
       },
       {
         "role": "name",
@@ -23231,49 +23231,49 @@ var SCHREIBEN = [
         "role": "einleitung",
         "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, Englisch als offizielle Unternehmenssprache einzuführen, um die internationale Zusammenarbeit mit unserem neuen Handelspartner zu erleichtern. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is planning to introduce English as the official corporate language, in order to facilitate international cooperation with our new trading partner. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити англійську як офіційну корпоративну мову, щоб полегшити міжнародну співпрацю з нашим новим торговельним партнером. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство планирует ввести английский как официальный корпоративный язык, чтобы облегчить международное сотрудничество с нашим новым торговым партнёром. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "en": "<r>as you probably already know</r>, management is planning to introduce English as the official corporate language, in order to facilitate international cooperation with our new trading partner. <r>I would also like to write something on this topic in our blog today</r>.",
+        "uk": "<r>як ви, напевно, вже знаєте</r>, керівництво планує запровадити англійську як офіційну корпоративну мову, щоб полегшити міжнародну співпрацю з нашим новим торговельним партнером. <r>Я теж хочу сьогодні написати щось на цю тему в нашому блозі</r>.",
+        "ru": "<r>как вы, наверное, уже знаете</r>, руководство планирует ввести английский как официальный корпоративный язык, чтобы облегчить международное сотрудничество с нашим новым торговым партнёром. <r>Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге</r>."
       },
       {
         "role": "meinung",
         "gram": "partizipien_als_adjektive",
         "de": "<r>Ich bin der Meinung, dass</r> diese Umstellung angesichts <g>der zunehmend international ausgerichteten Zusammenarbeit</g> mit unseren Handelspartnern wirklich sinnvoll ist.",
-        "en": "I am of the opinion that, given our increasingly internationally oriented cooperation with our trading partners, this change really makes sense.",
-        "uk": "Я вважаю, що з огляду на дедалі більш орієнтовану на міжнародний рівень співпрацю з нашими торговельними партнерами ця зміна справді доцільна.",
-        "ru": "Я считаю, что с учётом всё более ориентированного на международный уровень сотрудничества с нашими торговыми партнёрами это изменение действительно имеет смысл."
+        "en": "<r>I am of the opinion that</r>, given our increasingly internationally oriented cooperation with our trading partners, this change really makes sense.",
+        "uk": "<r>Я вважаю, що</r> з огляду на дедалі більш орієнтовану на міжнародний рівень співпрацю з нашими торговельними партнерами ця зміна справді доцільна.",
+        "ru": "<r>Я считаю, что</r> с учётом всё более ориентированного на международный уровень сотрудничества с нашими торговыми партнёрами это изменение действительно имеет смысл."
       },
       {
         "role": "pro",
         "gram": "konnektoren_infinitiv",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> wir mit einer gemeinsamen Sprache interkulturelle Missverständnisse bei Geschäftsreisen und im Kontakt mit unserer neuen Tochtergesellschaft im Ausland vermeiden können, <g>um Zeit und Nerven zu sparen</g>.",
-        "en": "A very important argument in favor is that with a common language we can avoid intercultural misunderstandings during business trips and in contact with our new subsidiary abroad, in order to save time and nerves.",
-        "uk": "Дуже важливий аргумент на користь цього — те, що завдяки спільній мові ми можемо уникати міжкультурних непорозумінь під час відряджень та в контактах із нашою новою дочірньою компанією за кордоном, щоб заощадити час і нерви.",
-        "ru": "Очень важный аргумент в пользу этого — то, что благодаря общему языку мы можем избегать межкультурных недоразумений во время командировок и в контактах с нашей новой дочерней компанией за рубежом, чтобы сэкономить время и нервы."
+        "en": "<r>A very important argument in favor is that</r> with a common language we can avoid intercultural misunderstandings during business trips and in contact with our new subsidiary abroad, in order to save time and nerves.",
+        "uk": "<r>Дуже важливий аргумент на користь цього — те, що</r> завдяки спільній мові ми можемо уникати міжкультурних непорозумінь під час відряджень та в контактах із нашою новою дочірньою компанією за кордоном, щоб заощадити час і нерви.",
+        "ru": "<r>Очень важный аргумент в пользу этого — то, что</r> благодаря общему языку мы можем избегать межкультурных недоразумений во время командировок и в контактах с нашей новой дочерней компанией за рубежом, чтобы сэкономить время и нервы."
       },
       {
         "role": "kontra",
         "gram": "relativsatz_wer",
         "de": "<r>Andererseits</r> sollte man auch bedenken: <g>Wer</g> bisher kaum Englisch gesprochen hat, <g>der</g> braucht jetzt Zeit und Unterstützung, um sich im Arbeitsalltag wirklich sicher zu fühlen.",
-        "en": "On the other hand, one should also consider: whoever has hardly spoken English until now needs time and support to really feel confident in everyday work.",
-        "uk": "З іншого боку, варто також враховувати: хто досі майже не розмовляв англійською, тому тепер потрібні час і підтримка, щоб дійсно почуватися впевнено в буденній роботі.",
-        "ru": "С другой стороны, стоит также учитывать: тому, кто до сих пор почти не говорил по-английски, теперь нужны время и поддержка, чтобы действительно чувствовать себя уверенно в повседневной работе."
+        "en": "<r>On the other hand</r>, one should also consider: whoever has hardly spoken English until now needs time and support to really feel confident in everyday work.",
+        "uk": "<r>З іншого боку</r>, варто також враховувати: хто досі майже не розмовляв англійською, тому тепер потрібні час і підтримка, щоб дійсно почуватися впевнено в буденній роботі.",
+        "ru": "<r>С другой стороны</r>, стоит также учитывать: тому, кто до сих пор почти не говорил по-английски, теперь нужны время и поддержка, чтобы действительно чувствовать себя уверенно в повседневной работе."
       },
       {
         "role": "vorschlag",
         "gram": "vergleichssaetze_als_wie_je_desto",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir allen Mitarbeitenden kostenlose Sprachkurse anbieten, denn <g>je</g> früher wir damit beginnen, <g>desto</g> leichter wird uns später der Übergang fallen.",
-        "en": "That is why I propose that we offer free language courses to all employees, because the earlier we start, the easier the transition will be for us later.",
-        "uk": "Тому я пропоную запропонувати всім співробітникам безкоштовні мовні курси, адже чим раніше ми почнемо, тим легшим буде для нас перехід у майбутньому.",
-        "ru": "Поэтому я предлагаю предложить всем сотрудникам бесплатные языковые курсы, ведь чем раньше мы начнём, тем легче будет для нас этот переход в будущем."
+        "en": "<r>That is why I propose that</r> we offer free language courses to all employees, because the earlier we start, the easier the transition will be for us later.",
+        "uk": "<r>Тому я пропоную</r> запропонувати всім співробітникам безкоштовні мовні курси, адже чим раніше ми почнемо, тим легшим буде для нас перехід у майбутньому.",
+        "ru": "<r>Поэтому я предлагаю</r> предложить всем сотрудникам бесплатные языковые курсы, ведь чем раньше мы начнём, тем легче будет для нас этот переход в будущем."
       },
       {
         "role": "schluss",
         "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
-        "en": "What do you think about this? I'm curious to hear your opinion.",
-        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
-        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+        "en": "<r>What do you think about this? I'm curious to hear your opinion.</r>",
+        "uk": "<r>Що ви про це думаєте? З нетерпінням чекаю на вашу думку.</r>",
+        "ru": "<r>Что вы об этом думаете? С нетерпением жду вашего мнения.</r>"
       },
       {
         "role": "name",
@@ -23314,49 +23314,49 @@ var SCHREIBEN = [
         "role": "einleitung",
         "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, einen unternehmensweiten Verhaltenskodex für Nachhaltigkeit und Ethik einzuführen, um den neuen gesetzlichen Berichtspflichten gerecht zu werden. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is planning to introduce a company-wide code of conduct for sustainability and ethics, in order to meet the new statutory reporting obligations. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво планує запровадити загальнокорпоративний кодекс поведінки щодо сталого розвитку та етики, щоб відповідати новим законодавчим вимогам звітності. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство планирует ввести общекорпоративный кодекс поведения по устойчивому развитию и этике, чтобы соответствовать новым законодательным требованиям отчётности. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "en": "<r>as you probably already know</r>, management is planning to introduce a company-wide code of conduct for sustainability and ethics, in order to meet the new statutory reporting obligations. <r>I would also like to write something on this topic in our blog today</r>.",
+        "uk": "<r>як ви, напевно, вже знаєте</r>, керівництво планує запровадити загальнокорпоративний кодекс поведінки щодо сталого розвитку та етики, щоб відповідати новим законодавчим вимогам звітності. <r>Я теж хочу сьогодні написати щось на цю тему в нашому блозі</r>.",
+        "ru": "<r>как вы, наверное, уже знаете</r>, руководство планирует ввести общекорпоративный кодекс поведения по устойчивому развитию и этике, чтобы соответствовать новым законодательным требованиям отчётности. <r>Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге</r>."
       },
       {
         "role": "meinung",
         "gram": "waehrend_genitiv_praeposition",
         "de": "<r>Ich bin der Meinung, dass</r> wir <g>angesichts der wachsenden Umweltverantwortung</g> und der neuen Berichtspflicht nicht länger warten sollten, denn bisher gab es zu diesen Themen nur unverbindliche Empfehlungen.",
-        "en": "I am of the opinion that, given our growing environmental responsibility and the new reporting obligation, we should not wait any longer, because until now there have only been non-binding recommendations on these topics.",
-        "uk": "Я вважаю, що з огляду на зростаючу відповідальність за довкілля та нові вимоги звітності нам не варто більше зволікати, адже досі щодо цих тем існували лише необов'язкові рекомендації.",
-        "ru": "Я считаю, что с учётом растущей ответственности за окружающую среду и новых требований отчётности нам не стоит больше медлить, ведь до сих пор по этим темам существовали только необязательные рекомендации."
+        "en": "<r>I am of the opinion that</r>, given our growing environmental responsibility and the new reporting obligation, we should not wait any longer, because until now there have only been non-binding recommendations on these topics.",
+        "uk": "<r>Я вважаю, що</r> з огляду на зростаючу відповідальність за довкілля та нові вимоги звітності нам не варто більше зволікати, адже досі щодо цих тем існували лише необов'язкові рекомендації.",
+        "ru": "<r>Я считаю, что</r> с учётом растущей ответственности за окружающую среду и новых требований отчётности нам не стоит больше медлить, ведь до сих пор по этим темам существовали только необязательные рекомендации."
       },
       {
         "role": "pro",
         "gram": "nominalisierung",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> <g>die Reduzierung unseres CO2-Fußabdrucks</g> durch erneuerbare Energien und mehr Energieeffizienz langfristig auch bares Geld spart, statt nur zusätzliche Kosten zu verursachen.",
-        "en": "A very important argument in favor is that reducing our carbon footprint through renewable energy and greater energy efficiency also saves real money in the long run, instead of just causing additional costs.",
-        "uk": "Дуже важливий аргумент на користь цього — те, що зменшення нашого вуглецевого сліду завдяки відновлюваній енергії та вищій енергоефективності в довгостроковій перспективі також економить реальні гроші, а не лише спричиняє додаткові витрати.",
-        "ru": "Очень важный аргумент в пользу этого — то, что снижение нашего углеродного следа за счёт возобновляемой энергии и большей энергоэффективности в долгосрочной перспективе также экономит реальные деньги, а не только вызывает дополнительные расходы."
+        "en": "<r>A very important argument in favor is that</r> reducing our carbon footprint through renewable energy and greater energy efficiency also saves real money in the long run, instead of just causing additional costs.",
+        "uk": "<r>Дуже важливий аргумент на користь цього — те, що</r> зменшення нашого вуглецевого сліду завдяки відновлюваній енергії та вищій енергоефективності в довгостроковій перспективі також економить реальні гроші, а не лише спричиняє додаткові витрати.",
+        "ru": "<r>Очень важный аргумент в пользу этого — то, что</r> снижение нашего углеродного следа за счёт возобновляемой энергии и большей энергоэффективности в долгосрочной перспективе также экономит реальные деньги, а не только вызывает дополнительные расходы."
       },
       {
         "role": "kontra",
         "gram": "negation",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass <g>kein Verhaltenskodex</g> allein das Problem löst, wenn Themen wie Compliance und Unternehmensethik im Alltag nicht wirklich gelebt werden.",
-        "en": "On the other hand, one should also consider that no code of conduct alone solves the problem if topics such as compliance and corporate ethics are not really lived out in everyday practice.",
-        "uk": "З іншого боку, варто також враховувати, що жоден кодекс поведінки сам по собі не вирішить проблему, якщо такі теми, як комплаєнс і корпоративна етика, не втілюються реально в буденній роботі.",
-        "ru": "С другой стороны, стоит также учитывать, что ни один кодекс поведения сам по себе не решит проблему, если такие темы, как комплаенс и корпоративная этика, не будут реально воплощаться в повседневной работе."
+        "en": "<r>On the other hand</r>, one should also consider that no code of conduct alone solves the problem if topics such as compliance and corporate ethics are not really lived out in everyday practice.",
+        "uk": "<r>З іншого боку</r>, варто також враховувати, що жоден кодекс поведінки сам по собі не вирішить проблему, якщо такі теми, як комплаєнс і корпоративна етика, не втілюються реально в буденній роботі.",
+        "ru": "<r>С другой стороны</r>, стоит также учитывать, что ни один кодекс поведения сам по себе не решит проблему, если такие темы, как комплаенс и корпоративная этика, не будут реально воплощаться в повседневной работе."
       },
       {
         "role": "vorschlag",
         "gram": "konnektoren_zweiteilig",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir <g>sowohl</g> auf Diversität und Chancengleichheit <g>als auch</g> auf Antikorruption und ein funktionierendes Whistleblowing-System gleichermaßen achten, damit der Kodex mehr ist als nur ein Stück Papier.",
-        "en": "That is why I propose that we pay equal attention to both diversity and equal opportunity as well as anti-corruption and a functioning whistleblowing system, so that the code is more than just a piece of paper.",
-        "uk": "Тому я пропоную приділяти однакову увагу як різноманіттю та рівним можливостям, так і протидії корупції та дієвій системі захисту викривачів, щоб кодекс був не просто папірцем.",
-        "ru": "Поэтому я предлагаю уделять одинаковое внимание как разнообразию и равным возможностям, так и противодействию коррупции и работающей системе защиты информаторов, чтобы кодекс был не просто бумажкой."
+        "en": "<r>That is why I propose that</r> we pay equal attention to both diversity and equal opportunity as well as anti-corruption and a functioning whistleblowing system, so that the code is more than just a piece of paper.",
+        "uk": "<r>Тому я пропоную</r> приділяти однакову увагу як різноманіттю та рівним можливостям, так і протидії корупції та дієвій системі захисту викривачів, щоб кодекс був не просто папірцем.",
+        "ru": "<r>Поэтому я предлагаю</r> уделять одинаковое внимание как разнообразию и равным возможностям, так и противодействию коррупции и работающей системе защиты информаторов, чтобы кодекс был не просто бумажкой."
       },
       {
         "role": "schluss",
         "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
-        "en": "What do you think about this? I'm curious to hear your opinion.",
-        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
-        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+        "en": "<r>What do you think about this? I'm curious to hear your opinion.</r>",
+        "uk": "<r>Що ви про це думаєте? З нетерпінням чекаю на вашу думку.</r>",
+        "ru": "<r>Что вы об этом думаете? С нетерпением жду вашего мнения.</r>"
       },
       {
         "role": "name",
@@ -23397,49 +23397,49 @@ var SCHREIBEN = [
         "role": "einleitung",
         "gram": "",
         "de": "<r>wie ihr sicherlich schon wisst</r>, plant die Geschäftsleitung, allen Mitarbeitenden ein jährliches Weiterbildungsbudget für Themen wie agiles Arbeiten und digitale Transformation zur Verfügung zu stellen. <r>Auch ich möchte heute in unserem Blog etwas zum Thema</r> schreiben.",
-        "en": "as you probably already know, management is planning to provide all employees with an annual training budget for topics such as agile working and digital transformation. I would also like to write something on this topic in our blog today.",
-        "uk": "як ви, напевно, вже знаєте, керівництво планує надати всім співробітникам щорічний бюджет на навчання за темами на кшталт гнучких методів роботи та цифрової трансформації. Я теж хочу сьогодні написати щось на цю тему в нашому блозі.",
-        "ru": "как вы, наверное, уже знаете, руководство планирует предоставить всем сотрудникам ежегодный бюджет на обучение по таким темам, как гибкие методы работы и цифровая трансформация. Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге."
+        "en": "<r>as you probably already know</r>, management is planning to provide all employees with an annual training budget for topics such as agile working and digital transformation. <r>I would also like to write something on this topic in our blog today</r>.",
+        "uk": "<r>як ви, напевно, вже знаєте</r>, керівництво планує надати всім співробітникам щорічний бюджет на навчання за темами на кшталт гнучких методів роботи та цифрової трансформації. <r>Я теж хочу сьогодні написати щось на цю тему в нашому блозі</r>.",
+        "ru": "<r>как вы, наверное, уже знаете</r>, руководство планирует предоставить всем сотрудникам ежегодный бюджет на обучение по таким темам, как гибкие методы работы и цифровая трансформация. <r>Я тоже хочу сегодня написать кое-что на эту тему в нашем блоге</r>."
       },
       {
         "role": "meinung",
         "gram": "vergleichssaetze_als_wie_je_desto",
         "de": "<r>Ich bin der Meinung, dass</r> diese Idee wirklich überfällig ist, denn <g>je</g> mehr wir in unsere eigenen Zukunftskompetenzen investieren, <g>desto</g> besser sind wir langfristig auf Veränderungen im Arbeitsalltag vorbereitet.",
-        "en": "I am of the opinion that this idea is really overdue, because the more we invest in our own future skills, the better prepared we are for changes in everyday work in the long run.",
-        "uk": "Я вважаю, що ця ідея справді назріла, адже чим більше ми інвестуємо у власні компетенції майбутнього, тим краще ми готові до змін у буденній роботі в довгостроковій перспективі.",
-        "ru": "Я считаю, что эта идея действительно назрела, ведь чем больше мы инвестируем в собственные компетенции будущего, тем лучше мы подготовлены к изменениям в повседневной работе в долгосрочной перспективе."
+        "en": "<r>I am of the opinion that</r> this idea is really overdue, because the more we invest in our own future skills, the better prepared we are for changes in everyday work in the long run.",
+        "uk": "<r>Я вважаю, що</r> ця ідея справді назріла, адже чим більше ми інвестуємо у власні компетенції майбутнього, тим краще ми готові до змін у буденній роботі в довгостроковій перспективі.",
+        "ru": "<r>Я считаю, что</r> эта идея действительно назрела, ведь чем больше мы инвестируем в собственные компетенции будущего, тем лучше мы подготовлены к изменениям в повседневной работе в долгосрочной перспективе."
       },
       {
         "role": "pro",
         "gram": "konnektoren_infinitiv",
         "de": "<r>Ein ganz wichtiges Argument dafür ist, dass</r> wir uns gezielt weiterbilden können, <g>um mit der digitalen Transformation und neuen Methoden wie Scrum oder Kanban wirklich Schritt zu halten</g>.",
-        "en": "A very important argument in favor is that we can develop our skills in a targeted way, in order to really keep pace with digital transformation and new methods such as Scrum or Kanban.",
-        "uk": "Дуже важливий аргумент на користь цього — те, що ми можемо цілеспрямовано підвищувати кваліфікацію, щоб справді не відставати від цифрової трансформації та нових методів на кшталт Scrum чи Kanban.",
-        "ru": "Очень важный аргумент в пользу этого — то, что мы можем целенаправленно повышать квалификацию, чтобы действительно не отставать от цифровой трансформации и новых методов, таких как Scrum или Kanban."
+        "en": "<r>A very important argument in favor is that</r> we can develop our skills in a targeted way, in order to really keep pace with digital transformation and new methods such as Scrum or Kanban.",
+        "uk": "<r>Дуже важливий аргумент на користь цього — те, що</r> ми можемо цілеспрямовано підвищувати кваліфікацію, щоб справді не відставати від цифрової трансформації та нових методів на кшталт Scrum чи Kanban.",
+        "ru": "<r>Очень важный аргумент в пользу этого — то, что</r> мы можем целенаправленно повышать квалификацию, чтобы действительно не отставать от цифровой трансформации и новых методов, таких как Scrum или Kanban."
       },
       {
         "role": "kontra",
         "gram": "es_pronomen",
         "de": "<r>Andererseits</r> sollte man auch bedenken, dass <g>es</g> im stressigen Arbeitsalltag oft gar nicht so leicht <g>ist</g>, überhaupt Zeit für Fortbildungen zu finden, selbst wenn ein Budget zur Verfügung steht.",
-        "en": "On the other hand, one should also consider that in the stressful everyday work routine it is often not so easy to find any time for training courses at all, even if a budget is available.",
-        "uk": "З іншого боку, варто також враховувати, що в напруженій буденній роботі часто не так уже й легко взагалі знайти час на підвищення кваліфікації, навіть якщо бюджет наявний.",
-        "ru": "С другой стороны, стоит также учитывать, что в напряжённой повседневной работе зачастую не так уж легко вообще найти время на повышение квалификации, даже если бюджет имеется."
+        "en": "<r>On the other hand</r>, one should also consider that in the stressful everyday work routine it is often not so easy to find any time for training courses at all, even if a budget is available.",
+        "uk": "<r>З іншого боку</r>, варто також враховувати, що в напруженій буденній роботі часто не так уже й легко взагалі знайти час на підвищення кваліфікації, навіть якщо бюджет наявний.",
+        "ru": "<r>С другой стороны</r>, стоит также учитывать, что в напряжённой повседневной работе зачастую не так уж легко вообще найти время на повышение квалификации, даже если бюджет имеется."
       },
       {
         "role": "vorschlag",
         "gram": "modalsatz_dadurch_indem",
         "de": "<r>Deshalb schlage ich vor, dass</r> wir feste Lernzeiten direkt im Kalender blockieren, <g>indem wir</g> zum Beispiel jede Woche einen kurzen Zeitraum fest für Weiterbildung reservieren.",
-        "en": "That is why I propose that we block fixed learning times directly in the calendar, for example by reserving a short period each week specifically for training.",
-        "uk": "Тому я пропоную блокувати фіксований час для навчання безпосередньо в календарі, наприклад щотижня резервуючи короткий проміжок часу спеціально для підвищення кваліфікації.",
-        "ru": "Поэтому я предлагаю блокировать фиксированное время для обучения прямо в календаре, например еженедельно резервируя короткий промежуток времени специально для повышения квалификации."
+        "en": "<r>That is why I propose that</r> we block fixed learning times directly in the calendar, for example by reserving a short period each week specifically for training.",
+        "uk": "<r>Тому я пропоную</r> блокувати фіксований час для навчання безпосередньо в календарі, наприклад щотижня резервуючи короткий проміжок часу спеціально для підвищення кваліфікації.",
+        "ru": "<r>Поэтому я предлагаю</r> блокировать фиксированное время для обучения прямо в календаре, например еженедельно резервируя короткий промежуток времени специально для повышения квалификации."
       },
       {
         "role": "schluss",
         "gram": "",
         "de": "<r>Was denkt ihr darüber? Ich bin gespannt auf eure Meinung.</r>",
-        "en": "What do you think about this? I'm curious to hear your opinion.",
-        "uk": "Що ви про це думаєте? З нетерпінням чекаю на вашу думку.",
-        "ru": "Что вы об этом думаете? С нетерпением жду вашего мнения."
+        "en": "<r>What do you think about this? I'm curious to hear your opinion.</r>",
+        "uk": "<r>Що ви про це думаєте? З нетерпінням чекаю на вашу думку.</r>",
+        "ru": "<r>Что вы об этом думаете? С нетерпением жду вашего мнения.</r>"
       },
       {
         "role": "name",
