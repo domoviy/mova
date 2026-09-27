@@ -4566,7 +4566,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '722-9316f15';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -17928,12 +17928,6 @@ var _lfStoryHandlers = {
       audioField  = null;
       eyebrowIcon = isQaQ ? '❓' : '💬';
       eyebrowLabel = _lfBilingualLabel(isQaQ ? STORY_QA_Q_LABEL : STORY_QA_A_LABEL, pl, ul) + ' ' + (unit.qIndex+1) + '/' + unit.qTotal;
-      // qaMarkerAttr — лише на eyebrow ПЕРШОГО питання (qIndex===0): за
-      // ним "Запитання" (_storyScrollToQuestions, див. кінець файлу
-      // Story-розділу) знаходить, куди прокрутити транскрипт, аби
-      // показати блок питань екзаменатора з самого початку, а не з
-      // довільного місця посередині.
-      var qaMarkerAttr = (isQaQ && unit.qIndex === 0) ? ' data-story-qa-first="1"' : '';
     } else {
       var part = unit.part;
       text        = part[pl] || '';
@@ -17953,7 +17947,7 @@ var _lfStoryHandlers = {
     }
 
     function buildBubble(){
-      var eyebrow = '<div class="lf-dlg-exam-badge lf-bubble-in"'+(qaMarkerAttr||'')+'>'+
+      var eyebrow = '<div class="lf-dlg-exam-badge lf-bubble-in">'+
         (eyebrowIcon ? '<span class="lf-dlg-exam-icon">'+eyebrowIcon+'</span>' : '')+
         '<span class="lf-dlg-exam-label">'+eyebrowLabel+'</span>'+
       '</div>';
@@ -19087,9 +19081,31 @@ function _lfUnitShow(){
       // інакше в користувача нема часу перечитати останню репліку чи
       // весь діалог перш ніж побачити святкування. Замість авто-переходу —
       // кнопка з мотивуючим текстом ("✓ Завершити" замість "Далі").
-      var isVeryLastUnit = LF && _lfUnit.idx === _lfUnit.units.length - 1
+      var isLastUnitOfQueue = _lfUnit.idx === _lfUnit.units.length - 1;
+      var isVeryLastUnit = LF && isLastUnitOfQueue
         && LF.step === LF.steps.length - 2; // крок прямо перед 'result'
-      if(isVeryLastUnit && isDialogueUnit){
+      // Story (Mündliche Prüfung Teil 1, debugOpenStory) — самостійна
+      // Debug-сесія БЕЗ звичайного LF-уроку (LF.steps узагалі нема),
+      // тож isVeryLastUnit вище для неї ЗАВЖДИ false. Перевіряємо
+      // окремо, лише за handlers/idx, без залежності від LF.
+      //
+      // ВАЖЛИВО: фінальні 4 кнопки мають з'явитись одразу ПІСЛЯ ТЕКСТУ
+      // розповіді (останній story_part), А НЕ після всіх запитань
+      // екзаменатора (story_qa_q/story_qa_a) — самі запитання йдуть у
+      // ТІЙ САМІЙ черзі units (_storyCardsToUnits), додані ПІСЛЯ частин
+      // розповіді, тож "останній юніт черги" (isLastUnitOfQueue) — це
+      // насправді останнє запитання, а не кінець тексту. isStoryFinish
+      // тому означає "поточний юніт — ще НЕ запитання, а наступний за
+      // ним (якщо є) — вже перше запитання АБО такого юніта нема
+      // взагалі" — тобто природний кінець тексту, незалежно від того,
+      // чи є в картці запитання. Кнопка "Запитання" в
+      // _lfShowStoryFinishButtons() нижче сама продовжує ту саму чергу
+      // (_lfUnitAdvance()) від цього місця, коли на неї натиснуть.
+      var isStoryQaUnit = unit.kind === 'story_qa_q' || unit.kind === 'story_qa_a';
+      var nextUnit = _lfUnit.units[_lfUnit.idx+1];
+      var isStoryFinish = !isStoryQaUnit && _lfUnit.handlers === _lfStoryHandlers
+        && (!nextUnit || nextUnit.kind === 'story_qa_q');
+      if((isVeryLastUnit && isDialogueUnit) || isStoryFinish){
         _lfUnitShowNextBtn(true);
       } else if(_lfUnit.autoAdvance || (isVeryLastUnit && !isDialogueUnit)){
         setTimeout(_lfUnitAdvance, V.pause);
@@ -21416,12 +21432,20 @@ function _lfShowStoryFinishButtons(){
 
   var topicIndex = _lfUnit.storyTopicIndex;
   var hasNext = typeof topicIndex === 'number' && !!_getAllStoryCards()[topicIndex+1];
+  // hasQuestions — чи є в цієї теми ЩЕ НЕ пройдені запитання
+  // екзаменатора попереду (наступний юніт у черзі — story_qa_q). Якщо
+  // так, показуємо "Запитання"; якщо запитань нема взагалі АБО вони
+  // вже пройдені (цей самий екран з'явився ВДРУГЕ — після кліку
+  // "Запитання" і проходження всіх пар — див. кінець функції нижче),
+  // кнопку не показуємо: більше нема куди вести.
+  var nextUnit = _lfUnit.units[_lfUnit.idx+1];
+  var hasQuestions = !!nextUnit && nextUnit.kind === 'story_qa_q';
   // Тему беремо ЗАРАЗ, поки _lfUnit ще живий: _lfUnitStepDone() (яку
-  // ось-ось запустить _lfUnitAdvance() нижче) скидає _lfUnit дощенту
-  // ДО виклику onAllDone — усередині _storyFinishWithCelebration цих
-  // даних уже не буде.
-  var lastUnit = _lfUnit.units[_lfUnit.units.length-1];
-  var topicLabel = lastUnit ? (_lfBilingualLabel(storyCardTopic(lastUnit.card) || {}, primaryLang(), uiLang) || '') : '';
+  // викликають "Завершити"/"Наступна тема" нижче) скидає _lfUnit
+  // дощенту ДО виклику onAllDone — усередині _storyFinishWithCelebration
+  // цих даних уже не буде.
+  var curUnit = _lfUnit.units[_lfUnit.idx];
+  var topicLabel = curUnit ? (_lfBilingualLabel(storyCardTopic(curUnit.card) || {}, primaryLang(), uiLang) || '') : '';
 
   var secondaryRow = document.createElement('div');
   secondaryRow.className = 'lf-story-finish-row-line';
@@ -21429,12 +21453,21 @@ function _lfShowStoryFinishButtons(){
   repeatBtn.className = 'btn btn-s';
   repeatBtn.innerHTML = movaIcon('repeat','mi mi-inline')+t('btn_story_repeat');
   repeatBtn.onclick = function(){ row.remove(); _storyReplayFromStart(); };
-  var questionsBtn = document.createElement('button');
-  questionsBtn.className = 'btn btn-s';
-  questionsBtn.innerHTML = '❓ '+t('btn_story_questions');
-  questionsBtn.onclick = function(){ row.remove(); _storyScrollToQuestions(); };
   secondaryRow.appendChild(repeatBtn);
-  secondaryRow.appendChild(questionsBtn);
+  if(hasQuestions){
+    var questionsBtn = document.createElement('button');
+    questionsBtn.className = 'btn btn-s';
+    questionsBtn.innerHTML = '❓ '+t('btn_story_questions');
+    // На відміну від "Повторити"/"Завершити" — це НЕ окрема дія
+    // осторонь черги, а просто ПРОДОВЖЕННЯ тієї самої черги units()
+    // рівно з того місця, де ми зупинились (кінець тексту): запитання
+    // йдуть далі в НІЙ САМІЙ (_storyCardsToUnits додає їх одразу після
+    // частин розповіді), просто показ на них не автоматичний — саме
+    // тому раніше (до цього виправлення) кнопки з'являлись аж ПІСЛЯ
+    // всіх запитань, а не одразу після тексту.
+    questionsBtn.onclick = function(){ row.remove(); _lfUnitAdvance(); };
+    secondaryRow.appendChild(questionsBtn);
+  }
 
   var primaryRow = document.createElement('div');
   primaryRow.className = 'lf-story-finish-row-line';
@@ -21444,8 +21477,13 @@ function _lfShowStoryFinishButtons(){
     nextTopicBtn.innerHTML = '➜ '+t('btn_story_next_topic');
     nextTopicBtn.onclick = function(){
       row.remove();
+      // _lfUnitStepDone() напряму (НЕ _lfUnitAdvance()!) — щоб коректно
+      // завершити тему одразу, навіть якщо в черзі units ще лишились
+      // непройдені запитання (hasQuestions): _lfUnitAdvance() лише
+      // просунув би на ОДИН юніт вперед (у перше запитання) замість
+      // завершення, якого тут просять.
       _lfUnit.onAllDone = function(){ _storyFinishWithCelebration(topicLabel, function(){ debugOpenStory(topicIndex+1); }); };
-      _lfUnitAdvance();
+      _lfUnitStepDone();
     };
     primaryRow.appendChild(nextTopicBtn);
   }
@@ -21459,8 +21497,10 @@ function _lfShowStoryFinishButtons(){
     // функція всередині lfShowResult() (анімація "іскра летить по
     // шляху" для ЗВИЧАЙНОГО уроку), звідси недосяжна. Для Debug-тесту
     // Story простого переходу на екран шляху цілком достатньо.
+    // _lfUnitStepDone() напряму — той самий принцип, що й у "Наступна
+    // тема" вище (див. коментар там).
     _lfUnit.onAllDone = function(){ _storyFinishWithCelebration(topicLabel, function(){ showView('lernpfad'); }); };
-    _lfUnitAdvance();
+    _lfUnitStepDone();
   };
   primaryRow.appendChild(finishBtn);
 
@@ -21526,17 +21566,6 @@ function _storyReplayFromStart(){
     _lfUnitPlay(items, playNext);
   }
   playNext();
-}
-
-// "Запитання" — питання екзаменатора БЕЗ аудіо (лише текст), тож тут не
-// озвучення, а просто прокрутка транскрипту до самого ПЕРШОГО з них
-// (data-story-qa-first, проставлено в render() вище) — щоб можна було
-// потренуватись відповідати, не гортаючи всю розповідь заново.
-function _storyScrollToQuestions(){
-  var body = document.getElementById('lf-unit-card');
-  if(body) body.style.display = 'flex';
-  var target = document.querySelector('#lf-unit-body [data-story-qa-first="1"]');
-  if(target) target.scrollIntoView({ behavior:'smooth', block:'start' });
 }
 
 function debugOpenStory(topicIndex){
