@@ -2920,8 +2920,11 @@ body{
   font-size:11px;font-weight:700;letter-spacing:.02em;
   color:var(--muted);margin-top:4px;padding:0 14px;
 }
-.lf-dlg-row-q .lf-dlg-speaker{ text-align:left; }
-.lf-dlg-row-a .lf-dlg-speaker{ text-align:right; }
+/* Клас ставиться напряму при рендері (unit.speakerRole), а не через
+   каскад від .lf-dlg-row-q/-a — 'q' завжди зліва (там само, де
+   аватарка персонажа для питання), 'a' завжди справа. */
+.lf-dlg-speaker-left{ text-align:left; }
+.lf-dlg-speaker-right{ text-align:right; }
 /* Месенджер-ефект: контейнер поводиться як звичайний потік зверху вниз
    (стабільний overflow/scroll), але поки повідомлень мало — весь простір
    "з'їдає" псевдоелемент-розпірка (margin-top:auto), тож єдине повідомлення
@@ -4551,7 +4554,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '719-9024490';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -17288,7 +17291,12 @@ var _lfDlgHandlers = {
               '</div>'
             : '')+
           '</div>'+
-          (speaker ? '<div class="lf-dlg-speaker">'+speaker+'</div>' : '')+
+          // Вирівнювання підпису прив'язане НАПРЯМУ до unit.speakerRole
+          // (лівий край для 'q' — там само, де аватарка; правий для
+          // 'a'), а не лише через каскад від предка .lf-dlg-row-q/-a —
+          // так воно однозначно правильне незалежно від того, звідки
+          // саме береться колір/розмір цього блоку.
+          (speaker ? '<div class="lf-dlg-speaker lf-dlg-speaker-'+(unit.speakerRole==='q'?'left':'right')+'">'+speaker+'</div>' : '')+
         '</div>'+
       '</div>';
     }
@@ -17312,13 +17320,25 @@ var _lfDlgHandlers = {
       });
     }
 
+    var _beforeCount = body.children.length;
     _lfDlgAppendBubble(body, buildBubble());
 
-    // Прокручуємо до низу, щоб щойно додане повідомлення було видно
-    // повністю, а не обрізане краєм картки — саме та проблема, з якої
-    // все почалось (довге питання/відповідь чи великий шрифт).
+    // Той самий принцип, що вже застосований у Story/E-Mail
+    // (_lfAlignTallBlockToTop): довге завдання (dlg_task — Mündliche
+    // Prüfung Teil 2/3, включно з problem-solving/prob_XXX, де task —
+    // багатоабзацний текст) інакше СКРОЛИЛОСЬ БИ ОДРАЗУ ДО КІНЦЯ
+    // (body.scrollHeight), показуючи хвіст тексту замість природного
+    // початку читання — саме той баг, що й описано. Коли контент
+    // влазить у видиму область цілком — просто скрол/до низу, звична
+    // "месенджерна" поведінка. topEl = перший щойно доданий елемент
+    // (examBadge для dlg_task, якщо є — щоб мітка контексту іспиту
+    // лишалась видимою поруч із початком умови), bubbleEl — сама
+    // бульбашка, за чиєю висотою й вирішуємо, влазить вона чи ні.
     requestAnimationFrame(function(){
-      body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+      var added = Array.prototype.slice.call(body.children, _beforeCount);
+      var topEl = added[0] || body.lastElementChild;
+      var bubbleEl = added[added.length-1] || body.lastElementChild;
+      _lfAlignTallBlockToTop(body, topEl, bubbleEl);
     });
 
     var cardEl = document.getElementById('lf-unit-card');
@@ -17565,11 +17585,20 @@ var _lfFrmHandlers = {
       });
     }
 
+    var _beforeCount = body.children.length;
     _lfDlgAppendBubble(body, buildBubble());
     _lfMaybeAutoShowMarkerLegend(text);
 
+    // Той самий принцип, що вже в Dialogue/Story/E-Mail: довгий допис
+    // (frm_intro task чи довгий абзац Hauptteil) вирівнюємо по верхньому
+    // краю, якщо він не влазить у видиму область цілком, замість
+    // скролити одразу до кінця (body.scrollHeight) і показувати хвіст
+    // тексту замість природного початку читання.
     requestAnimationFrame(function(){
-      body.scrollTo({ top: body.scrollHeight, behavior: 'smooth' });
+      var added = Array.prototype.slice.call(body.children, _beforeCount);
+      var topEl = added[0] || body.lastElementChild;
+      var bubbleEl = added[added.length-1] || body.lastElementChild;
+      _lfAlignTallBlockToTop(body, topEl, bubbleEl);
     });
 
     var cardEl = document.getElementById('lf-unit-card');
