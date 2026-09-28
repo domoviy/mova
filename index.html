@@ -4499,37 +4499,15 @@ body{
       <button class="btn btn-s" onclick="toggleCustomStoryForm()"><i data-mi="plus" class="mi-inline"></i>Додати свою тему</button>
       <div id="story-custom-form" style="display:none;flex-direction:column;gap:10px;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:10px">
         <div style="display:flex;flex-direction:column;gap:2px">
-          <input type="text" id="story-custom-topic" maxlength="80" oninput="_storyCustomUpdateCounter(this)" placeholder="Тема (напр. Мій робочий день)"
-            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-          <small id="story-custom-topic-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 80</small>
+          <select id="story-custom-topic" onchange="_storyCustomTopicChanged()"
+            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);font-family:inherit"></select>
         </div>
-        <!-- Довідка з прикладами можливих запитань екзаменатора з
-             УЖЕ ІСНУЮЧИХ тем курсу (заповнюється в toggleCustomStoryForm())
-             — щоб дати орієнтир, які деталі варто закласти у своєму
-             тексті ЗАЗДАЛЕГІДЬ, поки він ще пишеться. Після збереження
-             теми ці підказки ніде більше не показуються (не потрібні
-             при самому перегляді/повторенні готового тексту). -->
-        <details class="story-custom-tips-ref" id="story-custom-tips-ref"></details>
-        <div style="display:flex;flex-direction:column;gap:2px">
-          <textarea id="story-custom-task" maxlength="400" oninput="_storyCustomUpdateCounter(this)" placeholder="Завдання (умова — про що розповісти)" rows="2"
-            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
-          <small id="story-custom-task-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 400</small>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:2px">
-          <textarea id="story-custom-einleitung" maxlength="500" oninput="_storyCustomUpdateCounter(this)" placeholder="Вступ (Einleitung) — необов'язково" rows="2"
-            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
-          <small id="story-custom-einleitung-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 500</small>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:2px">
-          <textarea id="story-custom-hauptteil" maxlength="2000" oninput="_storyCustomUpdateCounter(this)" placeholder="Основна частина (Hauptteil)" rows="4"
-            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
-          <small id="story-custom-hauptteil-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 2000</small>
-        </div>
-        <div style="display:flex;flex-direction:column;gap:2px">
-          <textarea id="story-custom-schluss" maxlength="500" oninput="_storyCustomUpdateCounter(this)" placeholder="Висновок (Schluss) — необов'язково" rows="2"
-            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit"></textarea>
-          <small id="story-custom-schluss-counter" style="color:var(--muted);font-size:11px;align-self:flex-end">0 / 500</small>
-        </div>
+        <!-- Завдання й «Можливі запитання» обраної теми зі STORY_TASK (лише
+             для читання; заповнюється в _storyCustomShowTaskInfo()) -->
+        <div id="story-custom-taskinfo" class="story-custom-tips-ref" style="display:none"></div>
+        <!-- Поля розповіді (Вступ 2 / Основна частина 12 / Висновок 3) і поле
+             перекладу під кожним будуються в _storyCustomBuildParts() -->
+        <div id="story-custom-parts" style="display:flex;flex-direction:column;gap:10px"></div>
         <small style="color:var(--muted)">Дозволені літери, цифри, пробіли й звичайні розділові знаки — без символів на кшталт &lt; &gt; &amp; { } [ ] \ ~ ^ та емодзі (можуть зламати генерацію озвучення).</small>
         <div style="display:flex;gap:6px">
           <button class="btn btn-s" style="flex:1" onclick="saveCustomStoryTopic()"><i data-mi="save" class="mi-inline"></i>Зберегти тему</button>
@@ -4592,7 +4570,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '727-9ac6054';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12772,15 +12750,19 @@ function removeCustomStoryTopicByIndex(i){
 // окремо і сумарно; (2) символи на кшталт < > & { } [ ] \ ~ ^ можуть
 // зламати SSML-розмітку чи парсинг тексту в gen_audio.py — прибираємо
 // їх ще на етапі введення, а не намагаємось екранувати пізніше.
-var STORY_CUSTOM_LIMITS = {
-  topic:      { min: 3,  max: 80   },
-  task:       { min: 10, max: 400  },
-  einleitung: { min: 0,  max: 500  }, // необов'язкове поле
-  hauptteil:  { min: 20, max: 2000 },
-  schluss:    { min: 0,  max: 500  }, // необов'язкове поле
-};
-// Сумарна довжина по всіх полях — орієнтир на розумну тривалість
-// одного монологу для TTS (телс-формат Teil 1 — 3-5 хв мовлення).
+// Текст розповіді розбитий на короткі шматки: кожне поле окремо має
+// ліміт 400 символів. Підібрано за базою курсу (STORY, 8 тем, 87 блоків):
+// медіана 106, найдовший блок 325, тож запас ≈ 23% для довших речень.
+// Сумарний ліміт (нижче) — 3000; найдовша вбудована тема — 1740.
+// Під кожним полем — дублююче поле з перекладом мовою інтерфейсу
+// (part[uiLang]; не озвучується, тож у сумарний ліміт не входить).
+var STORY_CUSTOM_GROUPS = [
+  { role:'einleitung', count:2,  max:400, short:'Вступ',           title:"Вступ (Einleitung) — необов'язково" },
+  { role:'hauptteil',  count:12, max:400, short:'Основна частина', title:'Основна частина (Hauptteil)' },
+  { role:'schluss',    count:3,  max:400, short:'Висновок',        title:"Висновок (Schluss) — необов'язково" },
+];
+var STORY_CUSTOM_PART_MIN = 3;   // якщо поле заповнене — мінімум символів
+var STORY_CUSTOM_TR_MAX   = 500; // переклад (у базі найдовший — 275) з запасом на довші мови (напр. RU)
 var STORY_CUSTOM_TOTAL_MAX = 3000;
 // Спільний "символьний клас" — літери (будь-якою мовою) + цифри +
 // пробіли/переноси рядків + звичайні розділові знаки, включно з
@@ -12840,97 +12822,189 @@ function _validateStoryCustomField(text, limits, label){
   return null;
 }
 
+var _STORY_CUSTOM_FIELD_STYLE = 'padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);resize:vertical;font-family:inherit';
+
+// Прибирає теги з тексту завдання (для підстановки в textarea)
+function _storyCustomPlain(html){
+  return String(html||'').replace(/<br\s*\/?>/gi,'\n').replace(/<[^>]*>/g,'').trim();
+}
+
+function _storyCustomFillTopicSelect(){
+  var sel = document.getElementById('story-custom-topic');
+  if(!sel) return;
+  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  var pl = primaryLang();
+  var tasks = (typeof STORY_TASK !== 'undefined' && Array.isArray(STORY_TASK)) ? STORY_TASK : [];
+  sel.innerHTML = '';
+  var ph = document.createElement('option');
+  ph.value = '';
+  ph.textContent = tasks.length ? 'Оберіть тему…' : 'Немає доступних тем';
+  sel.appendChild(ph);
+  tasks.forEach(function(t, i){
+    var label = _storyCustomPlain((t.topic && (t.topic[ul] || t.topic[pl] || t.topic.de)) || ('Тема '+(i+1)));
+    var o = document.createElement('option');
+    o.value = String(i);
+    o.textContent = (i+1)+'. '+label;
+    sel.appendChild(o);
+  });
+  sel.value = '';
+}
+
+// Текст із бази (містить лише <br>) → безпечний HTML: екрануємо все,
+// крім розривів рядка.
+function _storyCustomRich(html){
+  return String(html||'').split(/<br\s*\/?>/i).map(function(x){ return _escapeHtmlText(x); }).join('<br>');
+}
+
+// Завдання й «Можливі запитання» ОБРАНОЇ теми (STORY_TASK) — лише для
+// читання, як орієнтир, поки пишеться розповідь: мова курсу, а під нею
+// (приглушено) переклад мовою інтерфейсу.
+function _storyCustomShowTaskInfo(){
+  var box = document.getElementById('story-custom-taskinfo');
+  var sel = document.getElementById('story-custom-topic');
+  if(!box || !sel) return;
+  var tasks = (typeof STORY_TASK !== 'undefined' && Array.isArray(STORY_TASK)) ? STORY_TASK : [];
+  var src = sel.value === '' ? null : tasks[+sel.value];
+  if(!src){ box.style.display = 'none'; box.innerHTML = ''; return; }
+  var pl = primaryLang();
+  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  function block(title, obj){
+    if(!obj) return '';
+    var main = obj[pl] || obj.de || '';
+    if(!main) return '';
+    var tr = (ul !== pl) ? (obj[ul] || '') : '';
+    return '<div style="margin-bottom:10px">'+
+      (title ? '<div style="font-weight:700;color:var(--ink);margin-bottom:4px">'+title+'</div>' : '')+
+      '<div style="color:var(--ink);font-size:14px;line-height:1.35">'+_storyCustomRich(main)+'</div>'+
+      (tr ? '<div style="color:var(--muted);font-size:13px;line-height:1.35;margin-top:4px">'+_storyCustomRich(tr)+'</div>' : '')+
+    '</div>';
+  }
+  // У tips перший рядок уже сам є заголовком («Mögliche Fragen:»).
+  box.innerHTML = block('Завдання', src.task) + block('', src.tips);
+  box.style.display = box.innerHTML ? '' : 'none';
+}
+
+function _storyCustomTopicChanged(){
+  _storyCustomShowTaskInfo();
+}
+
+function _storyCustomMakeField(id, placeholder, max, isTr){
+  var wrap = document.createElement('div');
+  wrap.style.cssText = 'display:flex;flex-direction:column;gap:2px';
+  var ta = document.createElement('textarea');
+  ta.id = id;
+  ta.setAttribute('maxlength', String(max));
+  ta.rows = 3;
+  ta.placeholder = placeholder;
+  ta.style.cssText = _STORY_CUSTOM_FIELD_STYLE + (isTr ? ';font-size:13px;border-style:dashed;margin-left:12px' : '');
+  ta.addEventListener('input', function(){ _storyCustomUpdateCounter(ta); });
+  var counter = document.createElement('small');
+  counter.id = id+'-counter';
+  counter.style.cssText = 'color:var(--muted);font-size:11px;align-self:flex-end';
+  counter.textContent = '0 / '+max;
+  wrap.appendChild(ta);
+  wrap.appendChild(counter);
+  return wrap;
+}
+
+// Будує групи полів: для кожного шматка — поле тексту (мова курсу) і
+// одразу під ним поле перекладу (мова інтерфейсу; не потрібне, якщо
+// мова інтерфейсу збігається з мовою курсу).
+function _storyCustomBuildParts(){
+  var box = document.getElementById('story-custom-parts');
+  if(!box) return;
+  var pl = primaryLang();
+  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  box.innerHTML = '';
+  STORY_CUSTOM_GROUPS.forEach(function(g){
+    var head = document.createElement('div');
+    head.style.cssText = 'font-size:13px;font-weight:700;color:var(--ink);margin-top:2px';
+    head.textContent = g.title+' · '+g.count+' '+(g.count < 5 ? 'поля' : 'полів');
+    box.appendChild(head);
+    for(var n=1; n<=g.count; n++){
+      var ph = g.short+' '+n+'/'+g.count;
+      box.appendChild(_storyCustomMakeField('story-custom-'+g.role+'-'+n, ph, g.max, false));
+      if(ul !== pl){
+        box.appendChild(_storyCustomMakeField('story-custom-'+g.role+'-'+n+'-tr',
+          'Переклад ('+ul.toUpperCase()+") — необов'язково", STORY_CUSTOM_TR_MAX, true));
+      }
+    }
+  });
+}
+
 function toggleCustomStoryForm(show){
   var form = document.getElementById('story-custom-form');
   if(!form) return;
   var next = (typeof show === 'boolean') ? show : (form.style.display === 'none');
   form.style.display = next ? 'flex' : 'none';
   if(next){
-    ['story-custom-topic','story-custom-task','story-custom-einleitung','story-custom-hauptteil','story-custom-schluss'].forEach(function(id){
-      var el = document.getElementById(id);
-      if(el){ el.value = ''; _storyCustomUpdateCounter(el); }
-    });
-    _storyRenderCustomTipsRef();
+    _storyCustomFillTopicSelect();
+    _storyCustomBuildParts();
+    _storyCustomShowTaskInfo();
   }
-}
-
-// Довідка "Mögliche Fragen" — приклади можливих запитань екзаменатора,
-// зібрані з УЖЕ ІСНУЮЧИХ (вбудованих) тем курсу (STORY_TASK[].tips),
-// щоб дати орієнтир, поки користувач ще ПИШЕ свою розповідь. Свідомо
-// показуються ЛИШЕ тут, у формі "Додати свою тему" (а не при перегляді/
-// повторенні вже готового тексту — там текст, свій чи вбудований, уже
-// написаний, і підказки-запитання більше ні до чого).
-function _storyRenderCustomTipsRef(){
-  var el = document.getElementById('story-custom-tips-ref');
-  if(!el) return;
-  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  var items = (typeof STORY_TASK !== 'undefined' ? STORY_TASK : []).map(function(t){
-    var tip = (t.tips && (t.tips[ul] || t.tips.de)) || '';
-    if(!tip) return '';
-    var topicLabel = (t.topic && (t.topic[ul] || t.topic.de)) || '';
-    return '<li>'+(topicLabel ? '<b>'+_escapeHtmlText(topicLabel)+':</b> ' : '')+tip+'</li>';
-  }).filter(Boolean);
-  if(!items.length){ el.style.display = 'none'; return; }
-  el.style.display = '';
-  el.innerHTML = '<summary>'+movaIcon('bulb','mi mi-inline')+' '+_lfBilingualLabel(STORY_TIPS_LABEL, primaryLang(), ul)+'</summary>'+
-    '<ul>'+items.join('')+'</ul>';
 }
 
 function saveCustomStoryTopic(){
   var pl = primaryLang();
-  var topic       = (document.getElementById('story-custom-topic')?.value || '').trim();
-  var task        = (document.getElementById('story-custom-task')?.value || '').trim();
-  var einleitung  = (document.getElementById('story-custom-einleitung')?.value || '').trim();
-  var hauptteil   = (document.getElementById('story-custom-hauptteil')?.value || '').trim();
-  var schluss     = (document.getElementById('story-custom-schluss')?.value || '').trim();
+  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  var tasks = (typeof STORY_TASK !== 'undefined' && Array.isArray(STORY_TASK)) ? STORY_TASK : [];
+  var sel = document.getElementById('story-custom-topic');
+  var src = (sel && sel.value !== '') ? tasks[+sel.value] : null;
+  if(!src){ notify('⚠️ Оберіть тему зі списку'); return; }
 
-  if(!topic || !task || !hauptteil){
-    notify('⚠️ Заповніть щонайменше тему, завдання й основну частину');
+  var parts = [];
+  var totalLen = 0; // лише текст розповіді (завдання береться з бази, переклади не рахуються)
+  var hasMain = false, trCount = 0;
+  for(var gi=0; gi<STORY_CUSTOM_GROUPS.length; gi++){
+    var g = STORY_CUSTOM_GROUPS[gi];
+    for(var n=1; n<=g.count; n++){
+      var label = g.short+' '+n;
+      var text = (document.getElementById('story-custom-'+g.role+'-'+n)?.value || '').trim();
+      var trEl = document.getElementById('story-custom-'+g.role+'-'+n+'-tr');
+      var tr   = trEl ? (trEl.value || '').trim() : '';
+      if(!text){
+        if(tr){ notify('⚠️ Поле «'+label+'»: є переклад, але немає самого тексту'); return; }
+        continue;
+      }
+      var err = _validateStoryCustomField(text, { min: STORY_CUSTOM_PART_MIN, max: g.max }, label);
+      if(err){ notify('⚠️ '+err); return; }
+      if(tr){
+        err = _validateStoryCustomField(tr, { min: 1, max: STORY_CUSTOM_TR_MAX }, 'Переклад: '+label);
+        if(err){ notify('⚠️ '+err); return; }
+      }
+      totalLen += text.length;
+      var part = { role: g.role+n };
+      part[pl] = text;
+      if(tr && ul !== pl){ part[ul] = tr; trCount++; }
+      parts.push(part);
+      if(g.role === 'hauptteil') hasMain = true;
+    }
+  }
+  if(!hasMain){
+    notify('⚠️ Заповніть щонайменше одне поле основної частини');
     return;
   }
-
-  // Довжина й дозволені символи — окремо на кожне поле (порожні
-  // необов'язкові поля просто пропускаємо, min:0 для них і так означає
-  // "можна не заповнювати").
-  var fieldsToCheck = [
-    { text: topic,      limits: STORY_CUSTOM_LIMITS.topic,      label: 'Тема' },
-    { text: task,       limits: STORY_CUSTOM_LIMITS.task,       label: 'Завдання' },
-    { text: einleitung, limits: STORY_CUSTOM_LIMITS.einleitung, label: 'Вступ' },
-    { text: hauptteil,  limits: STORY_CUSTOM_LIMITS.hauptteil,  label: 'Основна частина' },
-    { text: schluss,    limits: STORY_CUSTOM_LIMITS.schluss,    label: 'Висновок' },
-  ];
-  for(var i=0; i<fieldsToCheck.length; i++){
-    var f = fieldsToCheck[i];
-    if(!f.text && f.limits.min === 0) continue;
-    var err = _validateStoryCustomField(f.text, f.limits, f.label);
-    if(err){ notify('⚠️ '+err); return; }
-  }
-
-  var totalLen = topic.length + task.length + einleitung.length + hauptteil.length + schluss.length;
   if(totalLen > STORY_CUSTOM_TOTAL_MAX){
     notify('⚠️ Забагато тексту загалом ('+totalLen+' із '+STORY_CUSTOM_TOTAL_MAX+' символів) — скоротіть якесь із полів');
     return;
   }
 
-  var parts = [];
-  if(einleitung) parts.push({ role:'einleitung', [pl]: einleitung });
-  parts.push({ role:'hauptteil', [pl]: hauptteil });
-  if(schluss) parts.push({ role:'schluss', [pl]: schluss });
-
   addCustomStoryCard({
     id: 'custom_'+Date.now(),
     custom: true,
-    topic: { [pl]: topic },
-    task: { [pl]: task },
+    topic: Object.assign({}, src.topic),
+    task: Object.assign({}, src.task), // завдання — з обраної теми STORY_TASK
     parts: parts,
   });
   // Аналітика: головний сигнал адопції фічі "власні теми" — саме він
   // визначить, чи варто вкладатись у Cloud Function+Edge TTS для
-  // озвучення власного тексту (обговорювали раніше), чи попит замалий.
+  // озвучення власного тексту, чи попит замалий.
   window.mlog?.('custom_story_topic_added', {
     total_chars:    totalLen,
-    has_einleitung: !!einleitung,
-    has_schluss:    !!schluss,
+    parts_count:    parts.length,
+    translations:   trCount,
+    has_einleitung: parts.some(function(p){ return p.role.indexOf('einleitung') === 0; }),
+    has_schluss:    parts.some(function(p){ return p.role.indexOf('schluss') === 0; }),
     total_custom_topics: getCustomStoryCards().length,
   });
 
