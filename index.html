@@ -1733,7 +1733,17 @@ body{
 .tiles-q-text{font-size:var(--fs-card);color:#fff;line-height:1.3;font-family:'Inter',sans-serif;}
 .tiles-q-text.mc-q-term{color:#fff;font-weight:400;}
 .tiles-answer{
-  flex:0 0 auto;min-height:64px;max-height:28vh;border-radius:14px;
+  /* max-height було 28vh — задовгі речення впирались у стелю й ховали
+     вже вибрані плитки за внутрішнім скролом ЦІЄЇ зони (на відміну від
+     .tiles-bank нижче, у якої є fade-натяк на прихований контент,
+     .tiles-answer такого натяку не мала — незібрані плитки просто
+     мовчки зникали з очей). Піднімаємо стелю: .tiles-bank нижче й так
+     має flex:1 + min-height:64px і власний скрол/fade — вона сама
+     віддасть місце (аж до свого мінімуму), тож підняти тут стелю
+     безпечно для решти компонування, а не лише для цієї зони.
+     overflow-y:auto лишається — суто підстраховка на випадок геть
+     аномально довгого речення, а не звичний робочий режим. */
+  flex:0 0 auto;min-height:64px;max-height:50vh;border-radius:14px;
   border:1.5px dashed var(--border);
   background:rgba(201,168,76,.04);
   padding:12px 14px;margin-bottom:8px;
@@ -1871,6 +1881,24 @@ body{
 .tiles-result-sheet.nok{ border-top:4px solid var(--red); }
 .tiles-result-sheet.ok .tiles-result-icon{ color:#27ae60; }
 .tiles-result-sheet.nok .tiles-result-icon{ color:var(--red); }
+/* Галочка/хрестик "малюються" лінією, ніби олівцем, а не з'являються
+   одразу цілими — класичний прийом stroke-dasharray/-dashoffset: рівно
+   один суцільний штрих довжиною ≈ довжині самого path (з невеликим
+   запасом, щоб не обрізало кут через заокруглення), зсунутий на
+   dashoffset такої ж довжини (тобто повністю "поза" лінією), а тоді
+   dashoffset анімується до 0 — штрих "наповзає" від початку контуру.
+   Довжини рахувались вручну по координатах path (movaIcon 'check'/
+   'cross' у MOVA_ICONS): ≈19.45 і ≈31.68 відповідно — два РІЗНІ
+   значення, а не одне спільне, щоб хрестик (довший, дві діагоналі) не
+   домальовувався "заздалегідь" відносно тривалості анімації.
+   animation-delay — коротка пауза ПІСЛЯ появи самого аркуша, щоб лінія
+   не починала малюватись у ту саму мить, що й з'являється вікно. */
+.tiles-result-icon svg path{
+  stroke-dasharray:32; stroke-dashoffset:32;
+  animation:tiles-icon-draw .45s .1s cubic-bezier(.65,0,.35,1) forwards;
+}
+.tiles-result-sheet.ok .tiles-result-icon svg path{ stroke-dasharray:20; stroke-dashoffset:20; }
+@keyframes tiles-icon-draw{ to{ stroke-dashoffset:0; } }
 .tiles-result-label{font-size:var(--fs-tertiary);font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
 .tiles-result-correct{font-size:var(--fs-card);font-weight:400;color:var(--ink);text-align:center;line-height:1.3;}
 .tiles-result-translation{font-size:var(--fs-secondary);color:var(--muted);line-height:1.3;text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
@@ -4566,7 +4594,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '723-aaca537';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -14184,6 +14212,12 @@ function tilesPickWord(tile){
   tilesInitDrag(aTile);
   aTile.style.opacity = '0'; // з'явиться, коли ghost долетить
   answerEl.appendChild(aTile);
+  // Підстраховка для аномально довгого речення, коли зона відповіді
+  // все ж упирається в max-height (50vh) і скролиться всередині: нова
+  // плитка завжди має бути видимою, а не ховатись нижче краю. Робимо
+  // ДО getBoundingClientRect() нижче — ghost має летіти в реальне,
+  // вже прокручене місце плитки.
+  answerEl.scrollTop = answerEl.scrollHeight;
 
   // Прибираємо bank-тайл з потоку ОДРАЗУ — банк звільняє місце негайно,
   // решта слів у банку відразу підтягуються на його місце (без цього при
@@ -21548,22 +21582,36 @@ function _storyFinishWithCelebration(topicLabel, afterCelebration){
 // перебудовувала з нуля): просто скролимо вже наявні бульбашки назад
 // до самого початку й заново озвучуємо частини розповіді підряд, без
 // очікування тапів "Далі" між ними (усі бульбашки й так уже на екрані).
-// story_intro/qa — без аудіо (getAudioText повертає []), тому цикл сам
-// проходить їх миттєво, зупиняючись лише на реальних story_part.
+// story_intro — без аудіо (getAudioText повертає []), тому цикл сам
+// проходить його миттєво, зупиняючись лише на реальних story_part.
+//
+// Перед питаннями екзаменатора (story_qa_q) ЗУПИНЯЄМОСЬ — той самий
+// момент, що й isStoryFinish в afterPlay() при першому проході, а не
+// мовчки проходимо їх (у них і так нема аудіо) — і показуємо ТІ САМІ
+// 4 кнопки знову (_lfShowStoryFinishButtons), включно з "Запитання",
+// якщо вони в цієї теми є. Оновлюємо _lfUnit.idx по ходу циклу —
+// _lfShowStoryFinishButtons() читає САМЕ його (поточний юніт/
+// nextUnit/topicLabel), а не якийсь окремий локальний лічильник.
 function _storyReplayFromStart(){
-  var body = document.getElementById('lf-unit-card');
-  if(body) body.style.display = 'flex';
+  var card = document.getElementById('lf-unit-card');
+  if(card) card.style.display = 'flex';
   var unitBody = document.getElementById('lf-unit-body');
   if(unitBody) unitBody.scrollTo({ top: 0, behavior: 'smooth' });
   _lfUnitPlayToken++; // на випадок, якщо щось інше ще дограє — обриваємо
-  var units = _lfUnit.units || [];
-  var i = 0;
+  // Повтор — це новий прогін розповіді, тож і "чистий час
+  // проговорювання" рахуємо з нуля (0:00), а не продовжуємо з того, на
+  // чому зупинились після першого проходу.
+  _storyTimerReset();
+  _lfUnit.idx = 0;
   function playNext(){
-    if(i >= units.length) return;
-    var unit = units[i++];
+    var unit = _lfUnit.units[_lfUnit.idx];
+    if(!unit || unit.kind === 'story_qa_q' || unit.kind === 'story_qa_a'){
+      _lfShowStoryFinishButtons();
+      return;
+    }
     var items = (_lfUnit.handlers.getAudioText && _lfUnit.handlers.getAudioText(unit)) || [];
-    if(!items.length){ playNext(); return; }
-    _lfUnitPlay(items, playNext);
+    if(!items.length){ _lfUnit.idx++; playNext(); return; }
+    _lfUnitPlay(items, function(){ _lfUnit.idx++; playNext(); });
   }
   playNext();
 }
