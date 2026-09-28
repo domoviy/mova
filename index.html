@@ -2690,17 +2690,10 @@ body{
 .lf-repeat-btn:active{opacity:.8;transform:scale(.96);background:var(--soft);}
 .lf-repeat-btn .mi{ width:1.15em;height:1.15em; }
 
-/* Фінальний рядок Mündliche Prüfung Teil 1 (Story) — 4 кнопки замість
-   звичайної одиночної "Далі"/"Завершити": .lf-next-row (fixed, left/
-   right:24px) тут стає ВЕРТИКАЛЬНОЮ колонкою з двох рядків кнопок,
-   кожен зі своїм internal display:flex (замість single-row flex
-   базового класу). "Повторити ще раз"/"Запитання" — другорядні дії
-   (btn-s, спільна ширина); "Наступна тема" (як інша другорядна) +
-   "Завершити" (той самий gold-стиль .btn-lesson-sb-next, що й завжди) —
-   основний вибір, унизу. */
-.lf-story-finish-row{ flex-direction:column;gap:8px; }
-.lf-story-finish-row-line{ display:flex;gap:10px; }
-.lf-story-finish-row-line .btn{ flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+/* Фінальний рядок Mündliche Prüfung Teil 1 (Story): один рядок у стилі
+   решти уроків — зліва квадратні кнопки-піктограми (.lf-repeat-btn:
+   «Повторити», «Запитання»), далі «Завершити» (flex:1), справа така сама
+   квадратна кнопка «Наступна тема». Окремих CSS-правил не потрібно. */
 
 /* ── Універсальна картка-юніт уроку (без 3D-обертання — фронт/бек —
    це послідовні рендери одного контейнера, "різні картки") ── */
@@ -4594,7 +4587,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '725-6b094ad';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5323,6 +5316,8 @@ var MOVA_ICONS = {
   trend:   '<path d="M4 17.6 9.4 12l3.6 3.6L20 7.8"/><path d="M15 7.6h5.2v5.2"/>',
   chat:    '<path d="M4.6 5.6h8.8a1.6 1.6 0 0 1 1.6 1.6v4.6a1.6 1.6 0 0 1-1.6 1.6H9.2l-3 2.4v-2.4H4.6A1.6 1.6 0 0 1 3 11.8V7.2a1.6 1.6 0 0 1 1.6-1.6z"/><path d="M17.4 10.2h2A1.6 1.6 0 0 1 21 11.8v4.6a1.6 1.6 0 0 1-1.6 1.6h-1.6v2.4l-3-2.4H11"/>',
   repeat: '<path d="M4.5 11.5V10a3 3 0 0 1 3-3h10.6M15.6 4.4 18.4 7l-2.8 2.6"/><path d="M19.5 12.5V14a3 3 0 0 1-3 3H5.9M8.4 19.6 5.6 17l2.8-2.6"/>',
+  // наступна тема — «пропустити вперед»: трикутник + вертикальна риска
+  skipnext:'<path d="M6 6.4 14 12l-8 5.6z"/><path d="M18 6v12"/>',
 };
 // "▶ Текст" з локалізованих рядків → монолінійна іконка play + текст.
 // Рядки лишаються з ▶ (їх використовують і textContent-місця), а в HTML-чіпи
@@ -21462,7 +21457,7 @@ function _onStoryUnitsDone(topicIndex){
 function _lfShowStoryFinishButtons(){
   var row = document.createElement('div');
   row.id = 'lf-next-row';
-  row.className = 'lf-next-row lf-story-finish-row';
+  row.className = 'lf-next-row';
 
   var topicIndex = _lfUnit.storyTopicIndex;
   var hasNext = typeof topicIndex === 'number' && !!_getAllStoryCards()[topicIndex+1];
@@ -21481,65 +21476,54 @@ function _lfShowStoryFinishButtons(){
   var curUnit = _lfUnit.units[_lfUnit.idx];
   var topicLabel = curUnit ? (_lfBilingualLabel(storyCardTopic(curUnit.card) || {}, primaryLang(), uiLang) || '') : '';
 
-  var secondaryRow = document.createElement('div');
-  secondaryRow.className = 'lf-story-finish-row-line';
-  var repeatBtn = document.createElement('button');
-  repeatBtn.className = 'btn btn-s';
-  repeatBtn.innerHTML = movaIcon('repeat','mi mi-inline')+t('btn_story_repeat');
-  repeatBtn.onclick = function(){ row.remove(); _storyReplayFromStart(); };
-  secondaryRow.appendChild(repeatBtn);
-  if(hasQuestions){
-    var questionsBtn = document.createElement('button');
-    questionsBtn.className = 'btn btn-s';
-    questionsBtn.innerHTML = '❓ '+t('btn_story_questions');
-    // На відміну від "Повторити"/"Завершити" — це НЕ окрема дія
-    // осторонь черги, а просто ПРОДОВЖЕННЯ тієї самої черги units()
-    // рівно з того місця, де ми зупинились (кінець тексту): запитання
-    // йдуть далі в НІЙ САМІЙ (_storyCardsToUnits додає їх одразу після
-    // частин розповіді), просто показ на них не автоматичний — саме
-    // тому раніше (до цього виправлення) кнопки з'являлись аж ПІСЛЯ
-    // всіх запитань, а не одразу після тексту.
-    questionsBtn.onclick = function(){ row.remove(); _lfUnitAdvance(); };
-    secondaryRow.appendChild(questionsBtn);
+  // Квадратна кнопка-піктограма (той самий .lf-repeat-btn, що й кнопка
+  // граматики) — підпис лишається лише в title/aria-label.
+  function iconBtn(icon, label, onClick){
+    var b = document.createElement('button');
+    b.className = 'lf-repeat-btn';
+    b.innerHTML = movaIcon(icon);
+    b.title = label;
+    b.setAttribute('aria-label', label);
+    b.onclick = onClick;
+    return b;
   }
 
-  var primaryRow = document.createElement('div');
-  primaryRow.className = 'lf-story-finish-row-line';
-  if(hasNext){
-    var nextTopicBtn = document.createElement('button');
-    nextTopicBtn.className = 'btn btn-s';
-    nextTopicBtn.innerHTML = '➜ '+t('btn_story_next_topic');
-    nextTopicBtn.onclick = function(){
-      row.remove();
-      // _lfUnitStepDone() напряму (НЕ _lfUnitAdvance()!) — щоб коректно
-      // завершити тему одразу, навіть якщо в черзі units ще лишились
-      // непройдені запитання (hasQuestions): _lfUnitAdvance() лише
-      // просунув би на ОДИН юніт вперед (у перше запитання) замість
-      // завершення, якого тут просять.
-      _lfUnit.onAllDone = function(){ _storyFinishWithCelebration(topicLabel, function(){ debugOpenStory(topicIndex+1); }); };
-      _lfUnitStepDone();
-    };
-    primaryRow.appendChild(nextTopicBtn);
+  // ЗЛІВА: «Повторити» і (якщо є що питати) «Запитання»
+  row.appendChild(iconBtn('repeat', t('btn_story_repeat'), function(){
+    row.remove(); _storyReplayFromStart();
+  }));
+  if(hasQuestions){
+    // Продовжує ту саму чергу units з місця кінця тексту — запитання
+    // йдуть у ній одразу після частин розповіді.
+    row.appendChild(iconBtn('quiz', t('btn_story_questions'), function(){
+      row.remove(); _lfUnitAdvance();
+    }));
   }
+
+  // ЦЕНТР: «Завершити» (gold, flex:1)
   var finishBtn = document.createElement('button');
   finishBtn.className = 'btn btn-lesson-sb-next';
   finishBtn.textContent = t('btn_story_finish');
   finishBtn.onclick = function(){
     row.remove();
-    // showView('lernpfad') — те саме, що й нижнє меню ("лінія уроків"),
-    // а НЕ goToLernpfadActivePoint(): та функція — приватна вкладена
-    // функція всередині lfShowResult() (анімація "іскра летить по
-    // шляху" для ЗВИЧАЙНОГО уроку), звідси недосяжна. Для Debug-тесту
-    // Story простого переходу на екран шляху цілком достатньо.
-    // _lfUnitStepDone() напряму — той самий принцип, що й у "Наступна
-    // тема" вище (див. коментар там).
+    // showView('lernpfad') — те саме, що й нижнє меню. _lfUnitStepDone()
+    // напряму: див. коментар у "Наступна тема" нижче.
     _lfUnit.onAllDone = function(){ _storyFinishWithCelebration(topicLabel, function(){ showView('lernpfad'); }); };
     _lfUnitStepDone();
   };
-  primaryRow.appendChild(finishBtn);
+  row.appendChild(finishBtn);
 
-  row.appendChild(secondaryRow);
-  row.appendChild(primaryRow);
+  // СПРАВА: «Наступна тема» — лише піктограма
+  if(hasNext){
+    row.appendChild(iconBtn('skipnext', t('btn_story_next_topic'), function(){
+      row.remove();
+      // _lfUnitStepDone() напряму (НЕ _lfUnitAdvance()) — щоб завершити
+      // тему одразу, навіть якщо в черзі лишились непройдені запитання.
+      _lfUnit.onAllDone = function(){ _storyFinishWithCelebration(topicLabel, function(){ debugOpenStory(topicIndex+1); }); };
+      _lfUnitStepDone();
+    }));
+  }
+
   document.body.appendChild(row);
 }
 
@@ -21606,6 +21590,9 @@ function _storyReplayFromStart(){
   function playNext(){
     var unit = _lfUnit.units[_lfUnit.idx];
     if(!unit || unit.kind === 'story_qa_q' || unit.kind === 'story_qa_a'){
+      // Повертаємось на ОСТАННІЙ юніт тексту (як і при першому проході):
+      // тоді наступний юніт — перше запитання, і "Запитання" з'являється.
+      if(_lfUnit.idx > 0) _lfUnit.idx--;
       _lfShowStoryFinishButtons();
       return;
     }
