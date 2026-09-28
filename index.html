@@ -1604,6 +1604,26 @@ body{
   flex:1;min-height:0;display:flex;flex-direction:column;
   padding:12px 14px;overflow:hidden;
 }
+/* Вправа «Вписати слово» (Debug, tab 8): те саме речення, що в def-fill, але
+   замість слота-плашки — поле вводу, яке зберігає рядковий вигляд тексту. */
+#vocab-panel-deftype{
+  flex:1;min-height:0;display:none;flex-direction:column;
+  padding:12px 14px;overflow-y:auto;
+}
+.dt-input{
+  display:inline-block;box-sizing:content-box;max-width:100%;
+  margin:0 2px;padding:0 4px;
+  font:inherit;line-height:1.7;text-align:center;
+  color:var(--gold);background:transparent;
+  border:0;border-bottom:2.5px solid rgba(201,168,76,.6);border-radius:0;
+  outline:none;-webkit-appearance:none;appearance:none;
+}
+.dt-input:focus{border-bottom-color:var(--gold);background:rgba(201,168,76,.12)}
+.dt-input.slot-correct{color:#2ecc71;border-bottom-color:#2ecc71}
+.dt-input.slot-wrong{color:#e74c3c;border-bottom-color:#e74c3c}
+.dt-chars{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 12px}
+.dt-chars button{min-width:40px;padding:8px 10px;border:1px solid var(--border);border-radius:10px;background:var(--paper);color:var(--ink);font-size:16px;font-family:inherit;cursor:pointer}
+.dt-chars button:active{opacity:.7}
 
 /* ── SPEECH PRACTICE ─────────────────────────────────────────── */
 #vocab-panel-speech{flex:1;min-height:0;overflow-y:auto;flex-direction:column;gap:12px;padding:12px 14px}
@@ -2950,13 +2970,12 @@ body{
 /* Ім'я персонажа — окремий підпис ПІД бульбашкою (сиблінг .lf-dlg-bubble
    всередині .lf-dlg-col, а НЕ дитина .lf-dlg-bubble — інакше він
    отримував би фон/рамку бульбашки, ніби це частина самого
-   повідомлення). padding:0 14px — той самий горизонтальний відступ,
-   що й у .lf-dlg-bubble (padding:12px 14px), щоб текст підпису
-   вирівнювався по лівому/правому краю тексту в бульбашці, а не по
-   зовнішньому краю бульбашки. */
+   повідомлення). padding:0 — без додаткового горизонтального відступу:
+   підпис вирівнюється по зовнішньому лівому/правому краю бульбашки
+   (text-align задають -left / -right нижче). */
 .lf-dlg-speaker{
   font-size:11px;font-weight:700;letter-spacing:.02em;
-  color:var(--muted);margin-top:4px;padding:0 14px;
+  color:var(--muted);margin-top:4px;padding:0;
 }
 /* Клас ставиться напряму при рендері (unit.speakerRole), а не через
    каскад від .lf-dlg-row-q/-a — 'q' завжди зліва (там само, де
@@ -4077,6 +4096,18 @@ body{
         </div>
       </div>
 
+      <!-- DEF TYPE-IN (tab 8, Debug): пропущене слово треба набрати -->
+      <div id="vocab-panel-deftype" style="display:none">
+        <div class="tiles-question" id="dt-question-block">
+          <div class="tiles-q-text" id="dt-q-text" style="color:#fff;line-height:1.7"></div>
+          <div id="dt-hint" style="color:rgba(255,255,255,.55);font-size:13px;line-height:1.35;margin-top:10px"></div>
+        </div>
+        <div class="dt-chars" id="dt-chars"></div>
+        <div class="tiles-check-row">
+          <button class="tiles-check-btn" id="dt-check-btn" onclick="dtCheck()"></button>
+        </div>
+      </div>
+
       <!-- SPEECH PRACTICE (tab 7) -->
       <div id="vocab-panel-speech" style="display:none">
 
@@ -4491,6 +4522,7 @@ body{
       <div style="display:flex;flex-direction:column;gap:6px">
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)"><i data-mi="mic" class="mi-inline"></i>Вимова</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(8)"><i data-mi="pen" class="mi-inline"></i>Вписати слово (набрати пропущене)</button>
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
@@ -4570,7 +4602,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '730-e6b709a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11757,7 +11789,7 @@ function openVocabDictionary(cardIds, label){
   // рендериться, але лишається невидимою під результатом уроку.
   document.getElementById('lesson-result')?.classList.remove('show');
   ['vocab-panel-match','vocab-panel-choice','vocab-panel-tiles',
-   'vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-speech'].forEach(pid=>{
+   'vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(pid=>{
     const el=document.getElementById(pid); if(el) el.style.display='none';
   });
   const cardPanel = document.getElementById('vocab-panel-card');
@@ -14941,6 +14973,238 @@ function defShowResult(){
       <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Inter',sans-serif">🎉</div>
       <p class="mc-result-praise">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
       <button class="btn" onclick="startDefFill()" style="margin-right:8px">🔄 Nochmal</button>
+      <button class="btn" onclick="switchVocabTab(0)">📖 Karten</button>
+    </div>`;
+}
+
+// ── DEF TYPE-IN (tab 8, Debug) ────────────────────────────────
+// Те саме речення з def[primaryLang()], що й у def-fill, але слово(а) у
+// <b>...</b> пропущені, і їх треба НАБРАТИ. Один інпут на кожен <b>-блок
+// (блок із кількох слів — одне поле, вводяться всі слова через пробіл).
+// Перевірка: без урахування регістру й зайвих пробілів, але суворо до
+// літер (ä/ö/ü/ß). Для німецької над реченням — кнопки Ä Ö Ü ß.
+
+let dtState = { cards:[], idx:0, current:null, answers:[], inputs:[], checked:false, fullSentence:'' };
+
+function _dtDecode(html){
+  const ta = document.createElement('textarea');
+  ta.innerHTML = html;
+  return ta.value;
+}
+function _dtNorm(str){
+  return _dtDecode(String(str||'')).normalize('NFC').toLowerCase().replace(/\s+/g,' ').trim();
+}
+
+function startDefType(){
+  const pool = defGetPool();
+  const qEl = document.getElementById('dt-q-text');
+  const hintEl = document.getElementById('dt-hint');
+  const checkBtn = document.getElementById('dt-check-btn');
+  if(checkBtn) checkBtn.style.display = 'none';
+  if(pool.length < 1){
+    if(qEl) qEl.innerHTML = '<span style="color:rgba(255,255,255,.7)">' + (typeof t === 'function' ? t('match_empty') : 'Keine Karten verfügbar') + '</span>';
+    if(hintEl) hintEl.textContent = '';
+    return;
+  }
+  const _srState = srLoadState();
+  pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
+  const chosen = pool.slice(0, Math.min(21, pool.length)).sort(() => Math.random() - .5).slice(0, 7);
+  dtState = { cards: chosen, idx: 0, current: null, answers: [], inputs: [], checked: false, fullSentence: '' };
+  dtShowCard();
+}
+
+function _dtRenderChars(){
+  const box = document.getElementById('dt-chars');
+  if(!box) return;
+  box.innerHTML = '';
+  if(defGetDisplayLang() !== 'de') return;
+  ['ä','ö','ü','ß','Ä','Ö','Ü'].forEach(ch => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = ch;
+    // mousedown/touchstart + preventDefault — інпут не втрачає фокус
+    const ins = e => {
+      e.preventDefault();
+      const el = document.activeElement && document.activeElement.classList?.contains('dt-input')
+        ? document.activeElement : dtState.inputs[0];
+      if(!el || dtState.checked) return;
+      const st = el.selectionStart ?? el.value.length, en = el.selectionEnd ?? el.value.length;
+      el.value = el.value.slice(0, st) + ch + el.value.slice(en);
+      el.focus();
+      el.setSelectionRange(st + 1, st + 1);
+      dtUpdateCheckBtn();
+    };
+    b.addEventListener('mousedown', ins);
+    b.addEventListener('touchstart', ins, {passive:false});
+    box.appendChild(b);
+  });
+}
+
+function dtShowCard(){
+  const checkBtn = document.getElementById('dt-check-btn');
+  if(checkBtn) checkBtn.style.display = 'none';
+
+  const card = dtState.cards[dtState.idx];
+  if(!card){ dtShowResult(); return; }
+  dtState.current = card;
+  dtState.checked = false;
+  dtState.answers = [];
+  dtState.inputs = [];
+
+  const lang = defGetDisplayLang();
+  const defHtml = card.def?.[lang] || '';
+  const bMatches = [...defHtml.matchAll(/<b>(.*?)<\/b>/gi)];
+  if(!bMatches.length){ dtState.idx++; dtShowCard(); return; }
+
+  dtState.fullSentence = defHtml.replace(/<b>(.*?)<\/b>/gi, '$1').replace(/<[^>]+>/g, '').trim();
+  dtState.answers = bMatches.map(m => _dtDecode(m[1].replace(/<[^>]+>/g, '')).replace(/\s+/g,' ').trim());
+
+  // Речення = текст між <b>-блоками + інпут на місці кожного блоку
+  const qEl = document.getElementById('dt-q-text');
+  qEl.innerHTML = '';
+  const segs2 = defHtml.split(/<b>.*?<\/b>/gi);
+  segs2.forEach((seg, i) => {
+    const plain = _dtDecode(seg.replace(/<[^>]+>/g, ''));
+    if(plain) qEl.appendChild(document.createTextNode(plain));
+    if(i < dtState.answers.length){
+      const inp = document.createElement('input');
+      inp.type = 'text';
+      inp.className = 'dt-input';
+      inp.setAttribute('autocomplete','off');
+      inp.setAttribute('autocorrect','off');
+      inp.setAttribute('autocapitalize','off');
+      inp.setAttribute('spellcheck','false');
+      inp.setAttribute('enterkeyhint', i === dtState.answers.length - 1 ? 'done' : 'next');
+      inp.setAttribute('aria-label', '#' + (i+1));
+      // Ширина за довжиною відповіді (у ch) — щоб поле не «виказувало»
+      // слово, але й не було замалим; мінімум 4ch.
+      inp.style.width = Math.max(4, dtState.answers[i].length + 1) + 'ch';
+      inp.addEventListener('input', dtUpdateCheckBtn);
+      inp.addEventListener('keydown', e => {
+        if(e.key !== 'Enter') return;
+        e.preventDefault();
+        const next = dtState.inputs[i+1];
+        if(next) next.focus();
+        else if(dtState.inputs.every(x => x.value.trim())) dtCheck();
+      });
+      qEl.appendChild(inp);
+      dtState.inputs.push(inp);
+    }
+  });
+
+  // Підказка: переклад речення мовою інтерфейсу (без виділення слів — це
+  // і є підказка, як пояснення в def-fill)
+  const hintEl = document.getElementById('dt-hint');
+  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  hintEl.textContent = (ul !== lang && card.def?.[ul])
+    ? _dtDecode(card.def[ul].replace(/<[^>]+>/g, '')).trim() : '';
+
+  _dtRenderChars();
+  setTimeout(() => { try{ dtState.inputs[0]?.focus(); }catch(e){} }, 60);
+}
+
+function dtUpdateCheckBtn(){
+  const btn = document.getElementById('dt-check-btn');
+  if(!btn) return;
+  const all = dtState.inputs.length && dtState.inputs.every(x => x.value.trim());
+  btn.textContent = typeof t === 'function' ? t('btn_check') : 'Überprüfen';
+  btn.style.display = (all && !dtState.checked) ? 'block' : 'none';
+}
+
+function dtCheck(){
+  if(dtState.checked) return;
+  if(!dtState.inputs.every(x => x.value.trim())) return;
+  dtState.checked = true;
+  const given = dtState.inputs.map(x => x.value.replace(/\s+/g,' ').trim());
+  const oks = given.map((g, i) => _dtNorm(g) === _dtNorm(dtState.answers[i]));
+  const isOk = oks.every(Boolean);
+  haptic[isOk ? 'success' : 'error']();
+  answerFeedback(isOk);
+  dtState.inputs.forEach((inp, i) => {
+    inp.blur();
+    inp.readOnly = true;
+    inp.classList.add(oks[i] ? 'slot-correct' : 'slot-wrong');
+  });
+  const checkBtn = document.getElementById('dt-check-btn');
+  if(checkBtn) checkBtn.style.display = 'none';
+
+  recordCardEvent(dtState.current.id, isOk ? 'task_correct' : 'task_wrong');
+  dtShowResultModal(isOk, given, oks);
+
+  try {
+    const pLang = primaryLang();
+    const pair = getSpeedPair();
+    const savedRate = V.langSpeed?.[pLang];
+    if(V.langSpeed && pair) V.langSpeed[pLang] = pair.normal;
+    // Те саме речення й той самий аудіо-ключ 'def', що в def-fill
+    const highlightEl = hasTimingFor(dtState.current.id, 'def', pLang)
+      ? document.querySelector('#tiles-result-overlay .tiles-result-sentence-text')
+      : null;
+    speak(dtState.fullSentence, pLang, () => {
+      if(V.langSpeed && savedRate !== undefined) V.langSpeed[pLang] = savedRate;
+      tilesRevealResultBtn();
+    }, dtState.current.id, 'def', false, highlightEl);
+  } catch(e){ tilesRevealResultBtn(); }
+}
+
+function dtShowResultModal(isOk, given, oks){
+  document.getElementById('tiles-result-overlay')?.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'tiles-result-overlay';
+  overlay.className = 'tiles-result-overlay';
+  const greatLabels = { uk:'🎉 Чудово! Так тримати!', de:'🎉 Super! Weiter so!', en:'🎉 Excellent! Keep it up!' };
+  const btnLabel = isOk
+    ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
+    : (uiLang==='uk'?'✓ Зрозуміло':uiLang==='en'?'✓ Got it':'✓ Verstanden');
+  const lang = defGetDisplayLang();
+  const rawHtml = dtState.current?.def?.[lang] || dtState.fullSentence;
+  const highlighted = rawHtml
+    .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
+    .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
+  let translationHtml = '';
+  if(uiLang && uiLang !== lang && dtState.current?.def?.[uiLang]){
+    const tr = dtState.current.def[uiLang]
+      .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
+      .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
+    translationHtml = `<div class="tiles-result-translation">${tr}</div>`;
+  }
+  // Для помилок — що саме ввів користувач (лише неправильні поля)
+  let mineHtml = '';
+  if(!isOk){
+    const wrong = given.map((g,i) => oks[i] ? '' : _escapeHtmlText(g)).filter(Boolean);
+    if(wrong.length){
+      const lbl = uiLang==='uk' ? 'Ваша відповідь' : uiLang==='en' ? 'Your answer' : 'Ihre Antwort';
+      mineHtml = `<div style="margin-top:8px;font-size:13px;opacity:.75;text-decoration:line-through">${lbl}: ${wrong.join(', ')}</div>`;
+    }
+  }
+  overlay.innerHTML = `
+    <div class="tiles-result-sheet ${isOk?'ok':'nok'}">
+      <div class="tiles-result-icon">${movaIcon(isOk?'check':'cross')}</div>
+      <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
+      <div class="tiles-result-correct" style="line-height:1.3;text-align:center"><div class="tiles-result-sentence-text" data-audio-field="def">${highlighted}</div>${translationHtml}${mineHtml}</div>
+      <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">${btnLabel}</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('tiles-result-action').addEventListener('click', () => {
+    overlay.remove();
+    dtState.idx++;
+    dtShowCard();
+  });
+}
+
+function dtShowResult(){
+  const qEl = document.getElementById('dt-q-text');
+  const hintEl = document.getElementById('dt-hint');
+  const checkBtn = document.getElementById('dt-check-btn');
+  const chars = document.getElementById('dt-chars');
+  if(checkBtn) checkBtn.style.display = 'none';
+  if(chars) chars.innerHTML = '';
+  if(hintEl) hintEl.textContent = '';
+  if(qEl) qEl.innerHTML = `
+    <div style="text-align:center;padding:12px 0">
+      <div style="font-size:36px">🎉</div>
+      <p class="mc-result-praise" style="color:#fff">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
+      <button class="btn" onclick="startDefType()" style="margin-right:8px">🔄 Nochmal</button>
       <button class="btn" onclick="switchVocabTab(0)">📖 Karten</button>
     </div>`;
 }
@@ -20125,7 +20389,7 @@ function lfShowResult(){
 
   // Ховаємо всі панелі, показуємо result
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-speech'].forEach(id=>{
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.style.display='none';
   });
@@ -21705,7 +21969,7 @@ function _storyExitClicked(){
 function _storyFinishWithCelebration(topicLabel, afterCelebration){
   _storyLeaveLessonChrome();
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-speech'].forEach(function(id){
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.style.display = 'none';
   });
@@ -22393,6 +22657,7 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
+  var _dtPanel = document.getElementById('vocab-panel-deftype'); if(_dtPanel) _dtPanel.style.display = tab===8?'flex':'none';
   // Чіпси категорій — лише у вкладці 📋, і лише коли Словник НЕ обмежений
   // скоупом (урок/глава/курс, V.filterIds) — там картки й так уже
   // відфільтровані, і чіпси лише плутатимуть (можуть звузити список до 0).
@@ -22413,6 +22678,7 @@ function switchVocabTab(tab){
   if(tab===5 && !(LF && LF.steps[LF.step]==='quiz'))      startQuiz();
   if(tab===6 && !(LF && LF.steps[LF.step]==='def')) startDefFill();
   if(tab===7) startSpeech();
+  if(tab===8) startDefType();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
