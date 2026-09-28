@@ -4602,7 +4602,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '738-86500d3';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -18443,6 +18443,25 @@ document.addEventListener('click', function(e){
   if(_lfUnitAudioBusy) return;
   var field = el.getAttribute('data-audio-field');
   if(!field) return;
+
+  // Story (Mündliche Prüfung Teil 1) ПІД ЧАС повтору ("Повторити") —
+  // клік по репліці не просто переслуховує ЇЇ саму, а ПРОДОВЖУЄ той самий
+  // безперервний прогін від неї (_storyPlayFrom), аж до кінця тексту й
+  // фінальних кнопок — див. коментар над _storyPlayFrom. У звичайному
+  // першому проході теми (_storyReplayActive===false, кожна репліка чекає
+  // на ручний "Далі") це не потрібне — там нічого не обривається, і клік
+  // так само просто переслуховує клікнуту репліку (гілка нижче).
+  if(_storyReplayActive && _lfUnit && _lfUnit.handlers === _lfStoryHandlers){
+    var clickedIdx = -1;
+    for(var i = 0; i < _lfUnit.units.length; i++){
+      var u = _lfUnit.units[i];
+      if(u.part && u.part.role === field){ clickedIdx = i; break; }
+    }
+    if(clickedIdx !== -1){
+      _storyPlayFrom(clickedIdx);
+      return;
+    }
+  }
   // data-lf-cardid — картка САМЕ ЦІЄЇ бульбашки (проставляє render() у
   // кожного handler'а — Dlg/Frm/Eml/Story), а НЕ поточного активного
   // юніта: у Dialogue одна сесія програє ОДРАЗУ КІЛЬКА карток підряд
@@ -21925,6 +21944,7 @@ function _storyEnterLessonChrome(topicIndex){
 function _storyLeaveLessonChrome(){
   if(!_storyChromeOn) return;
   _storyChromeOn = false;
+  _storyReplayActive = false; // не лишаємо "хвіст" ланцюжка повтору в наступній сесії
   var bar = document.getElementById('lesson-flow-bar');
   if(bar){
     bar.classList.remove('active');
@@ -22005,17 +22025,41 @@ function _storyFinishWithCelebration(topicLabel, afterCelebration){
 // якщо вони в цієї теми є. Оновлюємо _lfUnit.idx по ходу циклу —
 // _lfShowStoryFinishButtons() читає САМЕ його (поточний юніт/
 // nextUnit/topicLabel), а не якийсь окремий локальний лічильник.
+var _storyReplayActive = false; // true, поки триває безперервний прогін
+// (повний повтор чи продовження після кліку по репліці) — читає клік-
+// обробник нижче, щоб відрізнити цей режим від звичайного першого проходу
+// (там кожна репліка чекає на ручний "Далі", ланцюжка нема й перебивати
+// нічого).
+
 function _storyReplayFromStart(){
   var card = document.getElementById('lf-unit-card');
   if(card) card.style.display = 'flex';
   var unitBody = document.getElementById('lf-unit-body');
   if(unitBody) unitBody.scrollTo({ top: 0, behavior: 'smooth' });
-  _lfUnitPlayToken++; // на випадок, якщо щось інше ще дограє — обриваємо
   // Повтор — це новий прогін розповіді, тож і "чистий час
   // проговорювання" рахуємо з нуля (0:00), а не продовжуємо з того, на
   // чому зупинились після першого проходу.
   _storyTimerReset();
-  _lfUnit.idx = 0;
+  _storyReplayActive = true;
+  _storyPlayFrom(0);
+}
+
+// Програє чергу units теми починаючи із ЗАДАНОГО індексу. Спільна основа
+// для: (а) повного повтору "Повторити" (стартує з 0) і (б) кліку по
+// БУДЬ-ЯКІЙ репліці ПІД ЧАС повтору (стартує з індексу клікнутої репліки —
+// див. делегований клік-обробник нижче, після _lfStoryHandlers). Раніше
+// клік під час повтору грав лише саму клікнуту репліку окремим викликом
+// _lfUnitPlay і на цьому зупинявся: спільний токен у _lfUnitPlay скасовував
+// УЖЕ запущений ланцюжок повтору (новіший виклик завжди перемагає), а сам
+// клік не запускав жодного продовження — озвучення обривалось, і кнопки
+// внизу після цього вже не з'являлись. Тепер клік сам продовжує ту саму
+// чергу з свого місця, тож після нього так само лунають усі наступні
+// репліки й наприкінці з'являються ті самі 4 кнопки. "Чистий час"
+// проговорювання при цьому — час усього ЦЬОГО прогону повтору, а не
+// точний час першого читання; окремо рахувати, скільки саме довелось
+// переслухати, а скільки прозвучало вперше, немає сенсу.
+function _storyPlayFrom(startIdx){
+  _lfUnit.idx = startIdx;
   _storyRenderBar();
   function playNext(){
     var unit = _lfUnit.units[_lfUnit.idx];
@@ -22024,6 +22068,7 @@ function _storyReplayFromStart(){
       // тоді наступний юніт — перше запитання, і "Запитання" з'являється.
       if(_lfUnit.idx > 0) _lfUnit.idx--;
       _storyRenderBar();
+      _storyReplayActive = false;
       _lfShowStoryFinishButtons();
       return;
     }
