@@ -120,6 +120,38 @@ COMMIT_LIMIT = int(os.environ.get('TTS_COMMIT_LIMIT', '20'))
 # покривають короткий транзитний збій з'єднання.
 RETRY_ATTEMPTS = int(os.environ.get('TTS_RETRY_ATTEMPTS', '3'))
 RETRY_BASE_DELAY = float(os.environ.get('TTS_RETRY_BASE_DELAY', '2.0'))
+# Таймаут (секунди) на ОДНУ спробу синтезу (весь виклик synthesize_speech,
+# включно з websocket-обміном Edge TTS). Без цього await communicate.save()
+# міг зависнути НАЗАВЖДИ, якщо Microsoft у стані rate-limit не рве
+# з'єднання явно, а просто перестає щось надсилати — тоді ні виняток не
+# виникає, ні retry-цикл не спрацьовує, і скрипт стоїть до примусового
+# завершення джоби (саме так один прогін провисів 6 годин до ліміту
+# GitHub Actions). asyncio.wait_for() нижче перетворює таке зависання на
+# звичайний TimeoutError, який далі йде в той самий retry/fail-fast шлях,
+# що й будь-яка інша помилка синтезу.
+# 10с — а не з запасом (напр. 30с): успішний синтез одного поля триває
+# реально одиниці секунд (короткий текст, один websocket-обмін), тож 10с
+# — це вже кількаразовий запас на повільну мережу, а не терпиме очікування
+# для потенційно "просто повільного" запиту. Цей таймаут — лише запобіжник
+# проти зависання, не спосіб дочекатись легітимно повільної відповіді:
+# разом з RETRY_ATTEMPTS=3 і CONSECUTIVE_FAILURE_LIMIT нижче гірший випадок
+# (суцільні зависання) — це 10с × 3 спроби × кілька завдань до спрацювання
+# fail-fast, а не години.
+SYNTH_TIMEOUT = float(os.environ.get('TTS_SYNTH_TIMEOUT', '10.0'))
+# Скільки ПОСПІЛЬ повністю провалених завдань (усі RETRY_ATTEMPTS спроб
+# невдалі) означають "зупинити прогін" замість "продовжувати й далі".
+# Причина: "No audio was received" від Edge TTS у переважній більшості
+# випадків — це НЕ проблема конкретного тексту, а rate-limit/блокування
+# на рівні IP з боку Microsoft (особливо ймовірно на спільних IP
+# GitHub-раннерів). Коли це стається, ВСІ наступні завдання в прогоні
+# провалюються тим самим способом — проходити через тисячі з них по
+# RETRY_ATTEMPTS спроб з backoff — це витрачені години й даремно
+# вичерпаний ліміт джоби. Лічильник обнуляється при першому ж успіху.
+# Уже згенероване й записане в manifest.json до цього моменту НЕ
+# втрачається — воно закомічене окремими пачками по COMMIT_LIMIT ще під
+# час роботи, а фінальний коміт/пуш нижче в main() спрацює і для
+# часткового прогону, що зупинився за fail-fast.
+CONSECUTIVE_FAILURE_LIMIT = int(os.environ.get('TTS_FAIL_FAST_LIMIT', '10'))
 # Поля, для яких генерується .words.json (таймінг слів для karaoke-
 # підсвітки) — рішення на рівні ГЕНЕРАТОРА, не бази: додавати однаковий
 # "wordTiming": true в кожен з тисяч записів бази безглуздо (роздуває
@@ -1322,6 +1354,13 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
     file_path = file_dir / task["filename"]
 
     async with semaphore:
+        if stats.get("stop_requested"):
+            # Прогін уже зупиняється через fail-fast (див. нижче) — усі
+            # ще не розпочаті завдання просто виходять без роботи, щоб
+            # main() міг одразу перейти до фінального коміту/пушу того,
+            # що вже згенеровано.
+            return
+
         async with lock:
             stats["processed_tasks"] += 1
             current_num = stats["processed_tasks"]
@@ -1367,10 +1406,31 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         last_error = None
         synthesized = False
         for attempt in range(1, RETRY_ATTEMPTS + 1):
+            # Fail-fast: якщо прогін уже зупинено (інше завдання щойно
+            # набрало CONSECUTIVE_FAILURE_LIMIT провалів підряд) — не
+            # починаємо нову спробу синтезу, а одразу виходимо. Перевірка
+            # без lock навмисно (проста булева змінна, гонка нешкідлива:
+            # у гіршому разі одна зайва спроба встигне стартувати).
+            if stats.get("stop_requested"):
+                return
             try:
-                await synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path, want_timing=task.get("want_timing", False))
+                await asyncio.wait_for(
+                    synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path, want_timing=task.get("want_timing", False)),
+                    timeout=SYNTH_TIMEOUT
+                )
                 synthesized = True
                 break
+            except asyncio.TimeoutError:
+                last_error = f"Синтез не завершився за {SYNTH_TIMEOUT:.0f}с (ймовірно, зависле з'єднання Edge TTS)"
+                if file_path.exists():
+                    file_path.unlink()
+                timing_path = file_path.with_suffix('.words.json')
+                if timing_path.exists():
+                    timing_path.unlink()
+                if attempt < RETRY_ATTEMPTS:
+                    backoff = min(RETRY_BASE_DELAY * (2 ** (attempt - 1)), 4.0)
+                    print(f"⚠️  Спроба {attempt}/{RETRY_ATTEMPTS} для {task['mkey']} невдала: {last_error} — повтор через {backoff:.0f}с", flush=True)
+                    await asyncio.sleep(backoff)
             except Exception as e:
                 last_error = e
                 if file_path.exists():
@@ -1399,7 +1459,26 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
                 stats["failed"] = stats.get("failed", 0) + 1
                 stats["failed_mkeys"] = stats.get("failed_mkeys", [])
                 stats["failed_mkeys"].append(task["mkey"])
+                stats["consecutive_failures"] = stats.get("consecutive_failures", 0) + 1
+                # Fail-fast: N провалів ПІДРЯД (без жодного успіху між
+                # ними) — швидше за все, не проблема тексту, а Microsoft
+                # рейт-лімітить/блокує IP на весь прогін. Продовжувати
+                # означає провалити й решту тисяч завдань, витративши
+                # години на марні ретраї. Зупиняємось, зберігаючи все, що
+                # встигли (manifest.json і git-коміт відбуваються нижче в
+                # main(), незалежно від того, чи прогін дійшов до кінця
+                # природно, чи зупинився тут).
+                if stats["consecutive_failures"] >= CONSECUTIVE_FAILURE_LIMIT and not stats.get("stop_requested"):
+                    stats["stop_requested"] = True
+                    stats["stop_reason"] = (
+                        f"{CONSECUTIVE_FAILURE_LIMIT} завдань поспіль провалились "
+                        f"({last_error}) — схоже на rate-limit/блокування з боку "
+                        f"Edge TTS, а не проблему конкретних текстів."
+                    )
             return
+
+        async with lock:
+            stats["consecutive_failures"] = 0
 
         # Синтез успішний — записуємо в маніфест і, за потреби, комітимо
         # пачку. Це ОКРЕМА зона відповідальності: якщо тут спіткнеться
@@ -2139,11 +2218,23 @@ async def main():
 
     semaphore = asyncio.Semaphore(WORKERS)
     lock = asyncio.Lock()
-    stats = {"generated": 0, "batch_counter": 0, "processed_tasks": 0, "failed": 0, "failed_mkeys": []}
+    stats = {
+        "generated": 0, "batch_counter": 0, "processed_tasks": 0,
+        "failed": 0, "failed_mkeys": [],
+        # Лічильник провалів ПІДРЯД (обнуляється при кожному успіху) і
+        # прапорець дострокової зупинки прогону — див. CONSECUTIVE_FAILURE_LIMIT
+        # та коментарі у worker_task().
+        "consecutive_failures": 0, "stop_requested": False, "stop_reason": None,
+    }
 
     pool = [worker_task(t, semaphore, stats, lock, total_tasks) for t in tasks]
     await asyncio.gather(*pool)
 
+    # Фінальний коміт/пуш спрацьовує ОДНАКОВО незалежно від того, чи прогін
+    # дійшов до кінця списку завдань природно, чи зупинився достроково через
+    # fail-fast (stop_requested) — усе згенероване й записане в manifest.json
+    # до моменту зупинки має бути збережено в репозиторії, а не загублене на
+    # диску ефемерного runner'а.
     if stats["batch_counter"] > 0:
         try:
             git_commit_and_push(stats["batch_counter"])
@@ -2152,6 +2243,13 @@ async def main():
             print("   Аудіофайли й записи manifest.json цієї пачки НЕ потрапили в репозиторій", flush=True)
             print("   (лишились би лише на диску ефемерного runner'а і загубились би без сліду).", flush=True)
             sys.exit(1)
+
+    if stats["stop_requested"]:
+        print(f"🛑 Прогін зупинено достроково: {stats['stop_reason']}", flush=True)
+        print(f"   Збережено (закомічено) до зупинки: {stats['generated']} файлів.", flush=True)
+        print(f"   Решта завдань не оброблялась — запустіть скрипт ще раз пізніше, "
+              f"він продовжить з того місця (manifest.json вже враховує зроблене).", flush=True)
+        sys.exit(1)
 
     print(f"🎉 Роботу завершено! Згенеровано та внесено в маніфест: {stats['generated']} файлів.", flush=True)
     if stats["failed"] > 0:
