@@ -2693,7 +2693,12 @@ body{
 /* Фінальний рядок Mündliche Prüfung Teil 1 (Story): один рядок у стилі
    решти уроків — зліва квадратні кнопки-піктограми (.lf-repeat-btn:
    «Повторити», «Запитання»), далі «Завершити» (flex:1), справа така сама
-   квадратна кнопка «Наступна тема». Окремих CSS-правил не потрібно. */
+   квадратна кнопка «Наступна тема». Кнопок до 4, тому вони компактніші
+   (46px) і «Завершити» може стискатись (min-width:0) — інакше остання
+   кнопка виїжджає за правий край екрана. */
+.lf-story-finish-row{ gap:8px; }
+.lf-story-finish-row .lf-repeat-btn{ width:46px; }
+.lf-story-finish-row .btn-lesson-sb-next{ min-width:0; padding-left:8px; padding-right:8px; white-space:nowrap; }
 
 /* ── Універсальна картка-юніт уроку (без 3D-обертання — фронт/бек —
    це послідовні рендери одного контейнера, "різні картки") ── */
@@ -4587,7 +4592,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '726-f02bc32';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8870,6 +8875,7 @@ function showView(id, opts){
   // через яку проходить абсолютно кожна навігація — а не вручну в
   // кожній окремій "start X" функції.
   _lfUnitTeardown();
+  if(typeof _storyLeaveLessonChrome === 'function') _storyLeaveLessonChrome();
 
   document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
   document.querySelectorAll('.bn-item[data-view]').forEach(n=>n.classList.remove('active'));
@@ -19389,6 +19395,7 @@ function _lfUnitAdvance(){
   }
   _lfUnit.idx++;
   srBeginCardViewing(); // реальний перехід на іншу картку — новий "перегляд"
+  _storyRenderBar();
   if(LF){
     LF.unitProgress = { done: _lfUnit.idx, total: _lfUnit.units.length };
     lfRenderBar();
@@ -21436,6 +21443,7 @@ function startStoryMode(topicIndex){
     return;
   }
   _runStoryQueueAsUnits(topicIndex);
+  _storyRenderBar(); // нова черга — смуга прогресу з нуля
 }
 
 // Фолбек, якщо черга колись завершиться БЕЗ проходження через жодну з
@@ -21457,10 +21465,14 @@ function _onStoryUnitsDone(topicIndex){
 function _lfShowStoryFinishButtons(){
   var row = document.createElement('div');
   row.id = 'lf-next-row';
-  row.className = 'lf-next-row';
+  row.className = 'lf-next-row lf-story-finish-row';
 
   var topicIndex = _lfUnit.storyTopicIndex;
-  var hasNext = typeof topicIndex === 'number' && !!_getAllStoryCards()[topicIndex+1];
+  // «Наступна тема» по колу: після останньої йде перша. Кнопки нема лише
+  // якщо тема єдина (переходити нікуди).
+  var _storyTotal = _getAllStoryCards().length;
+  var hasNext = typeof topicIndex === 'number' && _storyTotal > 1;
+  var nextTopicIndex = hasNext ? (topicIndex + 1) % _storyTotal : 0;
   // hasQuestions — чи є в цієї теми ЩЕ НЕ пройдені запитання
   // екзаменатора попереду (наступний юніт у черзі — story_qa_q). Якщо
   // так, показуємо "Запитання"; якщо запитань нема взагалі АБО вони
@@ -21519,12 +21531,90 @@ function _lfShowStoryFinishButtons(){
       row.remove();
       // _lfUnitStepDone() напряму (НЕ _lfUnitAdvance()) — щоб завершити
       // тему одразу, навіть якщо в черзі лишились непройдені запитання.
-      _lfUnit.onAllDone = function(){ _storyFinishWithCelebration(topicLabel, function(){ debugOpenStory(topicIndex+1); }); };
+      _lfUnit.onAllDone = function(){ _storyFinishWithCelebration(topicLabel, function(){ debugOpenStory(nextTopicIndex); }); };
       _lfUnitStepDone();
     }));
   }
 
   document.body.appendChild(row);
+}
+
+
+// ── Режим «як звичайний урок» для Mündliche Prüfung Teil 1 (Story) ─────
+// Ховаємо верхню (#header) і нижню (#bottom-nav) панелі через той самий
+// lfSetLessonMode(true), що й справжні уроки, та показуємо
+// #lesson-flow-bar: назва теми, смуга прогресу і хрестик закриття.
+var _storyChromeOn = false;
+
+function _storyEnterLessonChrome(topicIndex){
+  _storyChromeOn = true;
+  lfSetLessonMode(true);
+  var dlgTop = document.querySelector('#view-dialogue .vocab-top');
+  if(dlgTop) dlgTop.style.display = 'none';
+  var dlgPanel = document.getElementById('dlg-panel-card');
+  if(dlgPanel) dlgPanel.classList.add('lesson-fullcard');
+
+  var bar = document.getElementById('lesson-flow-bar');
+  if(!bar) return;
+  bar.classList.add('active');
+
+  var card = _getAllStoryCards()[topicIndex];
+  var label = card ? (_lfBilingualLabel(storyCardTopic(card) || {}, primaryLang(), uiLang) || '') : '';
+  label = String(label).replace(/<[^>]*>/g,'');
+  var titleEl = document.getElementById('lf-title');
+  if(titleEl){
+    titleEl.textContent = '';
+    var tw = document.createElement('span'); tw.innerHTML = movaIcon('cap');
+    while(tw.firstChild) titleEl.appendChild(tw.firstChild);
+    titleEl.appendChild(document.createTextNode(label || 'Mündliche Prüfung – Teil 1'));
+  }
+  var nameEl = document.getElementById('lf-step-name');
+  if(nameEl){
+    nameEl.textContent = '';
+    var nw = document.createElement('span'); nw.innerHTML = movaIcon('mic');
+    while(nw.firstChild) nameEl.appendChild(nw.firstChild);
+    nameEl.appendChild(document.createTextNode('Mündliche Prüfung – Teil 1'));
+  }
+  var exitBtn = bar.querySelector('.lf-exit');
+  if(exitBtn){ exitBtn.style.display = ''; exitBtn.onclick = _storyExitClicked; }
+  var stepsEl = document.getElementById('lf-steps');
+  if(stepsEl) stepsEl.innerHTML = '<div class="lf-pb"><div class="lf-pbf" id="lf-pbf" style="width:0%"></div></div>';
+  requestAnimationFrame(function(){
+    document.documentElement.style.setProperty('--lf-bar-h', bar.offsetHeight + 'px');
+  });
+}
+
+function _storyLeaveLessonChrome(){
+  if(!_storyChromeOn) return;
+  _storyChromeOn = false;
+  var bar = document.getElementById('lesson-flow-bar');
+  if(bar){
+    bar.classList.remove('active');
+    // Повертаємо «✕» звичайним урокам (тут ми його перевизначали)
+    var exitBtn = bar.querySelector('.lf-exit');
+    if(exitBtn) exitBtn.onclick = function(){ exitLessonFlow(); };
+  }
+  document.documentElement.style.setProperty('--lf-bar-h','0px');
+  var dlgTop = document.querySelector('#view-dialogue .vocab-top');
+  if(dlgTop) dlgTop.style.display = '';
+  var dlgPanel = document.getElementById('dlg-panel-card');
+  if(dlgPanel) dlgPanel.classList.remove('lesson-fullcard');
+  lfSetLessonMode(false);
+}
+
+// Прогрес = скільки юнітів теми вже пройдено
+function _storyRenderBar(){
+  if(!_storyChromeOn || !_lfUnit || !_lfUnit.units || !_lfUnit.units.length) return;
+  var pbf = document.getElementById('lf-pbf');
+  if(!pbf) return;
+  var pct = Math.round(Math.min(1, _lfUnit.idx / _lfUnit.units.length) * 100);
+  pbf.style.width = pct + '%';
+}
+
+// «✕» — вихід із теми назад у Налаштування (звідки її відкрили)
+function _storyExitClicked(){
+  _storyLeaveLessonChrome();
+  showView('settings');
 }
 
 // Спільне для "Завершити" й "Наступна тема": бали + анімація "як після
@@ -21539,6 +21629,7 @@ function _lfShowStoryFinishButtons(){
 // topicLabel — назва щойно пройденої теми (підзаголовок екрана).
 // afterCelebration — куди йти по завершенню анімації.
 function _storyFinishWithCelebration(topicLabel, afterCelebration){
+  _storyLeaveLessonChrome();
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
    'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-speech'].forEach(function(id){
     var el = document.getElementById(id);
@@ -21587,18 +21678,20 @@ function _storyReplayFromStart(){
   // чому зупинились після першого проходу.
   _storyTimerReset();
   _lfUnit.idx = 0;
+  _storyRenderBar();
   function playNext(){
     var unit = _lfUnit.units[_lfUnit.idx];
     if(!unit || unit.kind === 'story_qa_q' || unit.kind === 'story_qa_a'){
       // Повертаємось на ОСТАННІЙ юніт тексту (як і при першому проході):
       // тоді наступний юніт — перше запитання, і "Запитання" з'являється.
       if(_lfUnit.idx > 0) _lfUnit.idx--;
+      _storyRenderBar();
       _lfShowStoryFinishButtons();
       return;
     }
     var items = (_lfUnit.handlers.getAudioText && _lfUnit.handlers.getAudioText(unit)) || [];
     if(!items.length){ _lfUnit.idx++; playNext(); return; }
-    _lfUnitPlay(items, function(){ _lfUnit.idx++; playNext(); });
+    _lfUnitPlay(items, function(){ _lfUnit.idx++; _storyRenderBar(); playNext(); });
   }
   playNext();
 }
@@ -21632,6 +21725,7 @@ function debugOpenStory(topicIndex){
   // діалогових фраз, який до цієї теми взагалі не стосується.
   var dlgTabs = document.getElementById('dialogue-tabs');
   if(dlgTabs) dlgTabs.style.display = 'none';
+  _storyEnterLessonChrome(topicIndex);
   startStoryMode(topicIndex);
 }
 
