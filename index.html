@@ -814,11 +814,8 @@ body{
 }
 .match-btn.side-audio{ padding:8px 10px; }
 .am-eq{ display:block;width:100%;height:36px;overflow:visible;pointer-events:none; }
-.am-b{ stroke:rgba(201,168,76,.55);stroke-width:3;stroke-linecap:round;transition:stroke .18s; }
+.am-b{ stroke:rgba(201,168,76,.38);stroke-width:3;stroke-linecap:round;transition:stroke .18s; }
 .am-b.on{ stroke:var(--gold); }
-.match-btn.selected .am-b{ stroke:var(--gold); }
-.match-btn.matched .am-b{ stroke:var(--muted); }
-.match-btn.matched-flash .am-b{ stroke:#27ae60; }
 .match-btn.error .am-b{ stroke:#e74c3c; }
 
 
@@ -4662,7 +4659,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '747-052e21a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -9977,6 +9974,15 @@ function _amMakeAudioBtn(card, data){
   return _amBind(btn);
 }
 
+// Знайдена пара: замість еквалайзера показуємо написане слово
+function _amRevealWord(el){
+  const card = amState.cards.find(function(c){ return c.id === el.dataset.cardId; });
+  if(!card) return;
+  el.classList.remove('side-audio');
+  el.lang = primaryLang();
+  el.textContent = targetText(card);
+}
+
 function _amMakeShortBtn(card){
   const btn = document.createElement('button');
   btn.className = 'match-btn side-short';
@@ -10085,6 +10091,7 @@ function amHandleClick(btn){
       setTimeout(function(){
         el.classList.remove('matched-flash');
         el.classList.add('matched');
+        if(el.dataset.side === 'audio') _amRevealWord(el);
       }, 400);
     });
     amState.matched++;
