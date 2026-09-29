@@ -23470,6 +23470,7 @@ var EMAILS = [
     "name": "de_w_julia",
     "mail_boss": {
       "von": "Tim Holzmann, Teamleiter",
+      "name": "de_m_mark",
       "betreff": {
         "de": "FW: Beschwerde: Mangelhafte Ware",
         "en": "FW: Complaint: Defective goods",
@@ -23483,6 +23484,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Jutta Wenger, Bade-Traum",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Beschwerde: Mangelhafte Ware",
         "en": "Complaint: Defective goods",
@@ -23629,6 +23631,7 @@ var EMAILS = [
     "name": "de_w_nina",
     "mail_boss": {
       "von": "Kenji Sato, Vertriebsleiter",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation E-Scooter – bitte um Antwort",
         "en": "E-scooter complaint – please respond",
@@ -23642,6 +23645,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Matthias Schrödinger, Leitung Außendienst",
+      "name": "de_m_david",
       "betreff": {
         "de": "Reklamation E-Scooter Reg.-Nr. 2P787-03, -04, -07, -09",
         "en": "Complaint E-scooters Reg. No. 2P787-03, -04, -07, -09",
@@ -23788,6 +23792,7 @@ var EMAILS = [
     "name": "de_m_david",
     "mail_boss": {
       "von": "Sabine Bergmann, Teamleiterin Buchhaltung",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation Rechnung – bitte prüfen",
         "en": "Invoice complaint – please check",
@@ -23801,6 +23806,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Thomas Weber, Einkaufsleiter, Weber Elektrotechnik GmbH",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation zu Rechnung Nr. 2026-0847",
         "en": "Complaint regarding invoice no. 2026-0847",
@@ -23947,6 +23953,7 @@ var EMAILS = [
     "name": "de_w_anna",
     "mail_boss": {
       "von": "Markus Weiler, Teamleiter Logistik",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation verspätete Lieferung – bitte kümmern",
         "en": "Complaint about delayed delivery – please take care of it",
@@ -23960,6 +23967,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Carla Rossi, Inhaberin, Ristorante Bella Vista",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation: Verspätete Lieferung vor Restauranteröffnung",
         "en": "Complaint: Delayed delivery before restaurant opening",
@@ -24106,6 +24114,7 @@ var EMAILS = [
     "name": "de_m_mark",
     "mail_boss": {
       "von": "Petra Sommer, Serviceleiterin",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Beschwerde Kundenservice – bitte persönlich kümmern",
         "en": "Customer service complaint – please take care of this personally",
@@ -24119,6 +24128,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Tobias Reinert, IT-Leiter",
+      "name": "de_m_david",
       "betreff": {
         "de": "Beschwerde: Keine Rückmeldung trotz mehrfacher Anrufe",
         "en": "Complaint: No response despite multiple calls",
@@ -24265,6 +24275,7 @@ var EMAILS = [
     "name": "de_m_alex",
     "mail_boss": {
       "von": "Claudia Ritter, Teamleiterin Vertrieb Innendienst",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation Bürostühle – bitte kümmern",
         "en": "Office chair complaint – please take care of it",
@@ -24278,6 +24289,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Petra Lindner, Office Managerin, GreenTech Solutions GmbH",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Reklamation: Defekte Bürostühle",
         "en": "Complaint: Defective office chairs",
@@ -24424,6 +24436,7 @@ var EMAILS = [
     "name": "de_w_julia",
     "mail_boss": {
       "von": "Frank Meyer, Teamleiter Marketing-Support",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation verspätete Lieferung Messe – bitte kümmern",
         "en": "Complaint about delayed trade fair delivery – please take care of it",
@@ -24437,6 +24450,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Sandra Koch, Marketingleiterin, TechNova AG",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Reklamation: Werbematerial zu spät geliefert",
         "en": "Complaint: Promotional material delivered too late",
@@ -24583,6 +24597,7 @@ var EMAILS = [
     "name": "de_w_nina",
     "mail_boss": {
       "von": "Robert Kraus, Serviceleiter Technik",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation Kaffeevollautomaten – bitte kümmern",
         "en": "Coffee machine complaint – please take care of it",
@@ -24596,6 +24611,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Thomas Bauer, Facility Manager, Rheinland Bürocenter GmbH",
+      "name": "de_m_david",
       "betreff": {
         "de": "Reklamation: Undichte Brühgruppe bei Kaffeevollautomaten",
         "en": "Complaint: Leaking brewing unit in coffee machines",
@@ -24742,6 +24758,7 @@ var EMAILS = [
     "name": "de_m_david",
     "mail_boss": {
       "von": "Sabine Krüger, Teamleiterin Verkauf Innendienst",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation falsches Modell – bitte kümmern",
         "en": "Wrong model complaint – please take care of it",
@@ -24755,6 +24772,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Sabine Hoffmann, Inhaberin, Schneiderei Nadel und Faden",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Reklamation: Falsches Modell geliefert (SM-380 statt SM-450)",
         "en": "Complaint: Wrong model delivered (SM-380 instead of SM-450)",
@@ -24901,6 +24919,7 @@ var EMAILS = [
     "name": "de_m_mark",
     "mail_boss": {
       "von": "Julia Vogt, Vertriebsleiterin",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation Rechnung vs. Angebot – bitte kümmern",
         "en": "Complaint: invoice vs. offer – please take care of it",
@@ -24914,6 +24933,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Markus Feldmann, Geschäftsführer, Feldmann Elektrotechnik GmbH",
+      "name": "de_m_david",
       "betreff": {
         "de": "Reklamation: Rechnung weicht von Angebot AN-2026-114 ab",
         "en": "Complaint: Invoice deviates from offer AN-2026-114",
@@ -25060,6 +25080,7 @@ var EMAILS = [
     "name": "de_m_alex",
     "mail_boss": {
       "von": "Katrin Lorenz, Vertriebsleiterin",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation unvollständige Bestellung – bitte kümmern",
         "en": "Incomplete order complaint – please take care of it",
@@ -25073,6 +25094,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Nadine Brandt, Assistentin der Geschäftsführung, Solaris Energie AG",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Reklamation: USB-Sticks aus Bestellung weiterhin ausstehend",
         "en": "Complaint: USB sticks from order still outstanding",
@@ -25219,6 +25241,7 @@ var EMAILS = [
     "name": "de_w_anna",
     "mail_boss": {
       "von": "Peter Wagner, Vertriebsleiter",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation Garantiezeit – bitte kümmern",
         "en": "Warranty period complaint – please take care of it",
@@ -25232,6 +25255,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Michael Sterner, Inhaber, Sterner Druck und Kopie GmbH",
+      "name": "de_m_david",
       "betreff": {
         "de": "Reklamation: Garantiezeit im Kaufvertrag stimmt nicht mit Angebot überein",
         "en": "Complaint: Warranty period in the contract does not match the offer",
@@ -25378,6 +25402,7 @@ var EMAILS = [
     "name": "de_w_nina",
     "mail_boss": {
       "von": "Carola Diehl, Teamleiterin Textildruck",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation falsche Farbe – bitte kümmern",
         "en": "Wrong colour complaint – please take care of it",
@@ -25391,6 +25416,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Lea Brenner, Personalleiterin, Bergmann Bau GmbH",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Reklamation: Falsche Farbe bei T-Shirt-Bestellung",
         "en": "Complaint: Wrong colour for T-shirt order",
@@ -25537,6 +25563,7 @@ var EMAILS = [
     "name": "de_m_david",
     "mail_boss": {
       "von": "Silke Brandner, Vertriebsleiterin",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation fehlender Rabatt – bitte kümmern",
         "en": "Missing discount complaint – please take care of it",
@@ -25550,6 +25577,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Petra Lehmann, Personalentwicklung, KomTech Solutions GmbH",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Reklamation: Frühbucherrabatt fehlt in der Rechnung",
         "en": "Complaint: Early-bird discount missing from the invoice",
@@ -25696,6 +25724,7 @@ var EMAILS = [
     "name": "de_m_mark",
     "mail_boss": {
       "von": "Renate Hoff, Teamleiterin Kundenkommunikation",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Beschwerde Standardantworten – bitte persönlich kümmern",
         "en": "Complaint about standard replies – please take care of this personally",
@@ -25709,6 +25738,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Sven Krämer, Einkaufsleiter, Krämer Baustoffe GmbH",
+      "name": "de_m_david",
       "betreff": {
         "de": "Beschwerde: Nur automatisierte Antworten auf meine Anfragen",
         "en": "Complaint: Only automated replies to my inquiries",
@@ -25855,6 +25885,7 @@ var EMAILS = [
     "name": "de_m_alex",
     "mail_boss": {
       "von": "Frank Bergmann, Technischer Leiter",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation Kompressorleistung – bitte kümmern",
         "en": "Compressor performance complaint – please take care of it",
@@ -25868,6 +25899,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Sabrina Kaufmann, Werkstattleiterin, Kaufmann Kfz-Technik",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation: Kompressor erreicht nicht zugesagten Betriebsdruck",
         "en": "Complaint: Compressor does not reach the promised operating pressure",
@@ -26014,6 +26046,7 @@ var EMAILS = [
     "name": "de_w_anna",
     "mail_boss": {
       "von": "Monika Reiter, Einkaufsleiterin",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation Lieferverzögerung Schreibtische – bitte kümmern",
         "en": "Desk delivery delay complaint – please take care of it",
@@ -26027,6 +26060,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Julia Sommer, Inhaberin, Büro und Design Sommer",
+      "name": "de_w_nina",
       "betreff": {
         "de": "Reklamation: Schreibtische weiterhin nicht geliefert",
         "en": "Complaint: Desks still not delivered",
@@ -26173,6 +26207,7 @@ var EMAILS = [
     "name": "de_w_julia",
     "mail_boss": {
       "von": "Bettina Hartmann, Vertriebsleiterin",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Reklamation falsche Filterpatronen – bitte kümmern",
         "en": "Wrong filter cartridges complaint – please take care of it",
@@ -26186,6 +26221,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Robert Klein, Technischer Einkauf, Klein Maschinenbau GmbH",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation: Falsches Filterpatronen-Modell geliefert",
         "en": "Complaint: Wrong filter cartridge model delivered",
@@ -26332,6 +26368,7 @@ var EMAILS = [
     "name": "de_w_nina",
     "mail_boss": {
       "von": "Petra Ahlers, Vertriebsleiterin",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation fehlende Zusatzleistung – bitte kümmern",
         "en": "Missing additional service complaint – please take care of it",
@@ -26345,6 +26382,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Markus Vogt, Geschäftsführer, Vogt Verpackungstechnik GmbH",
+      "name": "de_m_mark",
       "betreff": {
         "de": "Reklamation: Kostenlose Wartung nicht auf Rechnung aufgeführt",
         "en": "Complaint: Free maintenance not listed on invoice",
@@ -26491,6 +26529,7 @@ var EMAILS = [
     "name": "de_m_david",
     "mail_boss": {
       "von": "Ines Wolter, Leiterin Personalentwicklung",
+      "name": "de_w_julia",
       "betreff": {
         "de": "Reklamation Schulungsinhalt – bitte kümmern",
         "en": "Training content complaint – please take care of it",
@@ -26504,6 +26543,7 @@ var EMAILS = [
     },
     "mail_client": {
       "von": "Nadja Berger, Personalleiterin, Berger Systemtechnik GmbH",
+      "name": "de_w_anna",
       "betreff": {
         "de": "Reklamation: Modul 3 der Schulung nicht durchgeführt",
         "en": "Complaint: Module 3 of the training not delivered",
