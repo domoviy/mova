@@ -802,6 +802,25 @@ body{
 }
 .match-result p{font-size:14px;color:var(--muted);margin:4px 0 12px;}
 
+/* ── "Знайди пару: еквалайзер" (debug-вкладка 9, startAudioMatch) ──
+   Той самий каркас, що й ▸ MATCHING GAME вище (.match-grid/.match-btn),
+   але ліва кнопка замість тексту терміна показує "еквалайзер" —
+   палички з обвідної справжнього озвучення слова, як у вправі на
+   вимову (.sp-wb). Тап по ній програє слово, палички підсвічуються
+   по мірі відтворення. */
+#vocab-panel-audiomatch{
+  flex:1;min-height:0;display:none;flex-direction:column;
+  padding:12px 14px 106px 14px;
+}
+.match-btn.side-audio{ padding:8px 10px; }
+.am-eq{ display:block;width:100%;height:36px;overflow:visible;pointer-events:none; }
+.am-b{ stroke:rgba(201,168,76,.55);stroke-width:3;stroke-linecap:round;transition:stroke .18s; }
+.am-b.on{ stroke:var(--gold); }
+.match-btn.selected .am-b{ stroke:var(--gold); }
+.match-btn.matched .am-b{ stroke:var(--muted); }
+.match-btn.matched-flash .am-b{ stroke:#27ae60; }
+.match-btn.error .am-b{ stroke:#e74c3c; }
+
 
 /* ══ LERNPFAD ══ */
 #view-lernpfad.active{
@@ -4137,6 +4156,17 @@ body{
         </div>
       </div>
 
+      <!-- ЗНАЙДИ ПАРУ: ЕКВАЛАЙЗЕР (tab 9) — лише через Налаштування → Налагодження -->
+      <div id="vocab-panel-audiomatch" style="display:none">
+        <div class="match-grid" id="am-grid"></div>
+        <div class="match-result" id="am-result" style="display:none">
+          <div class="score" id="am-score"></div>
+          <p id="am-result-text"></p>
+          <button class="btn" id="am-btn-again" onclick="startAudioMatch()" style="margin-right:8px">🔄</button>
+          <button class="btn" onclick="switchVocabTab(0)">📖</button>
+        </div>
+      </div>
+
       <!-- SPEECH PRACTICE (tab 7) -->
       <div id="vocab-panel-speech" style="display:none">
 
@@ -4552,6 +4582,7 @@ body{
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)"><i data-mi="mic" class="mi-inline"></i>Вимова</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(8)"><i data-mi="pen" class="mi-inline"></i>Вписати слово (набрати пропущене)</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(9)"><i data-mi="speaker" class="mi-inline"></i>Знайди пару: еквалайзер (звук → значення)</button>
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
@@ -4631,7 +4662,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '746-ac893fb';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5473,7 +5504,7 @@ const I18N = {
     match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
     match_good:'Gut gemacht! Weiter üben.',
     match_again:'🔄 Nochmal', match_cards:'📖 Karten',
-    match_empty:'Keine Karten in dieser Kategorie',
+    match_empty:'Keine Karten in dieser Kategorie', am_no_audio:'Für diese Karten gibt es kein Audio',
     match_few:'Zu wenige Karten — mindestens',
     match_needed:'nötig',
     lp_title:'🎓 Lernen',
@@ -5623,7 +5654,7 @@ const I18N = {
     match_perfect:'Ідеально! Всі з першої спроби 🎉',
     match_good:'Непогано! Продовжуй повторювати.',
     match_again:'🔄 Ще раз', match_cards:'📖 Картки',
-    match_empty:'Немає карток у цій категорії',
+    match_empty:'Немає карток у цій категорії', am_no_audio:'Для цих карток немає аудіо',
     match_few:'Замало карток — потрібно мінімум',
     match_needed:'',
     lp_title:'🎓 Навчання',
@@ -5772,7 +5803,7 @@ const I18N = {
     match_perfect:'Perfect! All on first try 🎉',
     match_good:'Good job! Keep reviewing.',
     match_again:'🔄 Again', match_cards:'📖 Cards',
-    match_empty:'No cards in this category',
+    match_empty:'No cards in this category', am_no_audio:'No audio available for these cards',
     match_few:'Too few cards — need at least',
     match_needed:'',
     lp_title:'🎓 Learning',
@@ -5922,7 +5953,7 @@ const I18N = {
     match_perfect:'Идеально! Все с первой попытки 🎉',
     match_good:'Неплохо! Продолжай повторять.',
     match_again:'🔄 Ещё раз', match_cards:'📖 Карточки',
-    match_empty:'Нет карточек в этой категории',
+    match_empty:'Нет карточек в этой категории', am_no_audio:'Для этих карточек нет аудио',
     match_few:'Слишком мало карточек — нужно минимум',
     match_needed:'',
     lp_title:'🎓 Обучение',
@@ -9819,6 +9850,266 @@ function matchShowResult(){
 }
 
 
+// ══════════════════════════════════════════════════════════════════
+// ЗНАЙДИ ПАРУ: ЕКВАЛАЙЗЕР (debug-вкладка 9 Словника)
+// Варіант ▸ MATCHING GAME: ліва колонка — не текст терміна, а
+// намальований \"еквалайзер\" (палички з обвідної справжнього озвучення
+// слова primaryLang — той самий _spComputePeaks, що й у вправі на
+// вимову), права — пояснення/переклад (nativeText). Тап по еквалайзеру
+// програє слово й підсвічує палички по мірі відтворення; треба
+// підібрати до звуку правильне значення.
+// Окремий стан (amState), НЕ matchState: вправа не пов'язана з
+// lesson-flow (LF) і не пише в SRS — це тестовий режим.
+// Відкривається лише з Налаштування → Налагодження → Вправи Vocab.
+// ══════════════════════════════════════════════════════════════════
+let amState = { cards:[], data:{}, selected:null, matched:0, firstTry:new Set(), tok:0 };
+let _amRAF = null;
+const AM_BARS = 24; // паличок на кнопку (у вправі на вимову — SP_WAVE_N=44 на всю ширину)
+
+// Обвідна слова (peaks) — з того самого кешу _spWaveCache, що й вправа
+// на вимову (url → {peaks, dur, words}), тож файл декодується один раз.
+async function _amLoadData(card){
+  const url = getAudioUrl(card.id, 'term', primaryLang());
+  let data = _spWaveCache[url];
+  if(data) return data;
+  const mkey = urlToAudioMkey(url);
+  try{
+    const blobUrl = await fetchBlobUrl(url, 8000, mkey);
+    if(!blobUrl) return null;
+    const ab = await (await fetch(blobUrl)).arrayBuffer();
+    const OAC = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+    const oac = new OAC(1, 1, 44100);
+    const buf = await new Promise(function(res, rej){
+      const pr = oac.decodeAudioData(ab, res, rej);
+      if(pr && pr.then) pr.then(res, rej);
+    });
+    const visualDur = Math.max(buf.duration - Math.min(SP_WAVE_TAIL_TRIM_SEC, buf.duration * 0.5), 0.05);
+    data = { peaks: _spComputePeaks(buf, SP_WAVE_N, Math.round(visualDur * buf.sampleRate)), dur: visualDur, words: null };
+    try{ data.words = await fetchWordTiming(url, mkey); }catch(e){}
+    _spWaveCache[url] = data;
+    return data;
+  }catch(e){ return null; }
+}
+
+// SP_WAVE_N (44) обвідних → AM_BARS паличок (максимум у кожній групі)
+function _amResample(peaks, n){
+  const out = [], step = peaks.length / n;
+  for(let i = 0; i < n; i++){
+    const s = Math.floor(i * step), e = Math.max(s + 1, Math.floor((i + 1) * step));
+    let m = 0;
+    for(let j = s; j < e && j < peaks.length; j++) if(peaks[j] > m) m = peaks[j];
+    out.push(m);
+  }
+  return out;
+}
+
+function _amEqSvg(peaks){
+  const W = 120, H = 36, mid = H / 2, step = W / AM_BARS;
+  const bars = _amResample(peaks, AM_BARS);
+  let out = '';
+  for(let i = 0; i < AM_BARS; i++){
+    const x = ((i + .5) * step).toFixed(1), h = Math.max(1.6, bars[i] * 15);
+    out += '<line class="am-b" x1="'+x+'" x2="'+x+'" y1="'+(mid - h).toFixed(1)+'" y2="'+(mid + h).toFixed(1)+'"/>';
+  }
+  return '<svg class="am-eq" viewBox="0 0 '+W+' '+H+'" preserveAspectRatio="xMidYMid meet" aria-hidden="true">'+out+'</svg>';
+}
+
+function amStop(){
+  if(_amRAF){ cancelAnimationFrame(_amRAF); _amRAF = null; }
+  document.querySelectorAll('#am-grid .am-b.on').forEach(function(b){ b.classList.remove('on'); });
+  try{ stopTTS(); }catch(e){}
+}
+
+// Палички до поточного моменту відтворення — золоті (як spWavePlay)
+function _amAnimate(btn){
+  if(_amRAF){ cancelAnimationFrame(_amRAF); _amRAF = null; }
+  const bars = btn.querySelectorAll('.am-b'); if(!bars.length) return;
+  const d = amState.data[btn.dataset.cardId];
+  const a = currentAudio || getSharedAudio();
+  let last = -1;
+  bars.forEach(function(b){ b.classList.remove('on'); });
+  function tick(){
+    if(!a || a.paused || a.ended || !isFinite(a.duration) || a.duration <= 0){ _amRAF = null; return; }
+    const dur = (d && d.dur > 0) ? d.dur : a.duration;
+    const idx = Math.min(bars.length - 1, Math.floor(a.currentTime / dur * bars.length));
+    if(idx !== last){
+      for(let k = 0; k < bars.length; k++) bars[k].classList.toggle('on', k <= idx);
+      last = idx;
+    }
+    _amRAF = requestAnimationFrame(tick);
+  }
+  _amRAF = requestAnimationFrame(tick);
+}
+
+function amPlay(btn){
+  const url = getAudioUrl(btn.dataset.cardId, 'term', primaryLang());
+  if(_amRAF){ cancelAnimationFrame(_amRAF); _amRAF = null; }
+  document.querySelectorAll('#am-grid .am-b.on').forEach(function(b){ b.classList.remove('on'); });
+  playPregenAudio(url, function(){
+    btn.querySelectorAll('.am-b.on').forEach(function(b){ b.classList.remove('on'); });
+  }, ++playGen, null, function(){ _amAnimate(btn); });
+}
+
+function _amBind(btn){
+  // Один обробник для touch і mouse — як у matchMakeBtn
+  let handled = false, moved = false;
+  btn.addEventListener('touchstart', function(){ moved = false; handled = false; }, {passive:true});
+  btn.addEventListener('touchmove',  function(){ moved = true; }, {passive:true});
+  btn.addEventListener('touchend', function(e){
+    if(moved) return;
+    handled = true;
+    e.preventDefault();
+    amHandleClick(btn);
+  }, {passive:false});
+  btn.addEventListener('click', function(){
+    if(handled){ handled = false; return; }
+    amHandleClick(btn);
+  });
+  return btn;
+}
+
+function _amMakeAudioBtn(card, data){
+  const btn = document.createElement('button');
+  btn.className = 'match-btn side-term side-audio';
+  btn.dataset.cardId = card.id;
+  btn.dataset.side = 'audio';
+  btn.innerHTML = _amEqSvg(data.peaks);
+  return _amBind(btn);
+}
+
+function _amMakeShortBtn(card){
+  const btn = document.createElement('button');
+  btn.className = 'match-btn side-short';
+  btn.lang = uiLang === primaryLang() ? primaryLang() : uiLang;
+  btn.dataset.cardId = card.id;
+  btn.dataset.side = 'short';
+  btn.textContent = nativeText(card);
+  return _amBind(btn);
+}
+
+async function startAudioMatch(){
+  const grid = document.getElementById('am-grid');
+  const result = document.getElementById('am-result');
+  if(!grid) return;
+  amStop();
+  const tok = ++amState.tok;
+  if(result) result.style.display = 'none';
+  const msg = function(txt){
+    grid.innerHTML = '<p style="text-align:center;color:var(--muted);padding:32px 16px;grid-column:1/-1">'+txt+'</p>';
+  };
+
+  const cf = document.getElementById('vf-cat')?.value || 'all';
+  const vocabAll = typeof VOCAB !== 'undefined' ? VOCAB : [];
+  const pool = vocabAll.filter(function(v){
+    return (cf === 'all' || v.cat === cf) && v.term?.[primaryLang()] && v.term?.[uiLang] && (uiLang !== primaryLang() || v.short?.[primaryLang()]);
+  });
+  if(pool.length < MATCH_SIZE){
+    msg('⚠️ ' + (pool.length === 0 ? t('match_empty') : pool.length+' — '+t('match_few')+' '+MATCH_SIZE+' '+t('match_needed')));
+    return;
+  }
+  msg('⏳');
+
+  // Ті самі пріоритети SM-2, що й у звичайній вправі (слабкі — першими)
+  const st = srLoadState();
+  pool.sort(function(a, b){ return srPriorityFromState(st, b.id) - srPriorityFromState(st, a.id); });
+  // Беремо з запасом (2× раунд): картки, для яких нема аудіо, відсіюються
+  const candidates = pool.slice(0, Math.min(MATCH_SIZE * 3, pool.length))
+                         .sort(function(){ return Math.random() - .5; })
+                         .slice(0, MATCH_SIZE * 2);
+  const loaded = await Promise.all(candidates.map(_amLoadData));
+  if(tok !== amState.tok) return; // за час завантаження вправу перезапустили / пішли геть
+
+  const chosen = [], data = {};
+  candidates.forEach(function(c, i){
+    if(loaded[i] && chosen.length < MATCH_SIZE){ chosen.push(c); data[c.id] = loaded[i]; }
+  });
+  if(chosen.length < MATCH_SIZE){ msg('⚠️ ' + t('am_no_audio')); return; }
+
+  amState.cards = chosen;
+  amState.data = data;
+  amState.selected = null;
+  amState.matched = 0;
+  amState.firstTry = new Set(chosen.map(function(c){ return c.id; }));
+
+  const audios = [...chosen].sort(function(){ return Math.random() - .5; });
+  const shorts = [...chosen].sort(function(){ return Math.random() - .5; });
+  grid.innerHTML = '';
+  for(let i = 0; i < chosen.length; i++){
+    grid.appendChild(_amMakeAudioBtn(audios[i], data[audios[i].id]));
+    grid.appendChild(_amMakeShortBtn(shorts[i]));
+  }
+}
+
+function amHandleClick(btn){
+  if(btn.classList.contains('matched') || btn.classList.contains('error')) return;
+  const side = btn.dataset.side;
+
+  // Звук результату пари — ПЕРШИМ, ще до озвучення слова (та сама логіка,
+  // що в matchHandleClick: умови дзеркалять гілки нижче).
+  const pre = amState.selected;
+  if(pre && !pre.el.classList.contains('matched') && pre.el !== btn && pre.side !== side){
+    const ok = pre.cardId === btn.dataset.cardId;
+    haptic[ok ? 'success' : 'error']();
+    answerFeedback(ok);
+  }
+
+  // Слово звучить на КОЖЕН тап по еквалайзеру (і по вже вибраному — щоб
+  // можна було переслухати)
+  if(side === 'audio') amPlay(btn);
+
+  if(amState.selected && amState.selected.el.classList.contains('matched')) amState.selected = null;
+  const selNow = amState.selected;
+
+  if(selNow && selNow.el === btn) return;
+
+  if(!selNow){
+    btn.classList.add('selected');
+    amState.selected = { el:btn, cardId:btn.dataset.cardId, side:side };
+    return;
+  }
+
+  // Той самий стовпчик — перемикаємо активну картку
+  if(selNow.side === side){
+    selNow.el.classList.remove('selected');
+    btn.classList.add('selected');
+    amState.selected = { el:btn, cardId:btn.dataset.cardId, side:side };
+    return;
+  }
+
+  const correct = selNow.cardId === btn.dataset.cardId;
+  selNow.el.classList.remove('selected');
+
+  if(correct){
+    [selNow.el, btn].forEach(function(el){
+      el.classList.add('matched-flash');
+      setTimeout(function(){
+        el.classList.remove('matched-flash');
+        el.classList.add('matched');
+      }, 400);
+    });
+    amState.matched++;
+    amState.selected = null;
+    if(amState.matched === amState.cards.length) setTimeout(amShowResult, 600);
+  } else {
+    [selNow.el, btn].forEach(function(el){
+      el.classList.add('error');
+      setTimeout(function(){ el.classList.remove('error'); }, 400);
+    });
+    amState.selected = null;
+    [selNow.cardId, btn.dataset.cardId].forEach(function(id){ amState.firstTry.delete(id); });
+  }
+}
+
+function amShowResult(){
+  const total = amState.cards.length, first = amState.firstTry.size;
+  const result = document.getElementById('am-result'); if(!result) return;
+  document.getElementById('am-score').textContent = first + '/' + total;
+  document.getElementById('am-result-text').textContent = first === total ? t('match_perfect') : t('match_good');
+  const again = document.getElementById('am-btn-again'); if(again) again.textContent = t('match_again');
+  result.style.display = '';
+  try{ result.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){}
+}
+
 // ── LERNPFAD ──────────────────────────────────────────────────
 
 // Прогрес уроку: скільки карток пройдено (playCount > 0) з cardIds
@@ -11818,7 +12109,7 @@ function openVocabDictionary(cardIds, label){
   // рендериться, але лишається невидимою під результатом уроку.
   document.getElementById('lesson-result')?.classList.remove('show');
   ['vocab-panel-match','vocab-panel-choice','vocab-panel-tiles',
-   'vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(pid=>{
+   'vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-audiomatch','vocab-panel-speech'].forEach(pid=>{
     const el=document.getElementById(pid); if(el) el.style.display='none';
   });
   const cardPanel = document.getElementById('vocab-panel-card');
@@ -20460,7 +20751,7 @@ function lfShowResult(){
 
   // Ховаємо всі панелі, показуємо result
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(id=>{
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-audiomatch','vocab-panel-speech'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.style.display='none';
   });
@@ -22049,7 +22340,7 @@ function _storyExitClicked(){
 function _storyFinishWithCelebration(topicLabel, afterCelebration){
   _storyLeaveLessonChrome();
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(function(id){
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-audiomatch','vocab-panel-speech'].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.style.display = 'none';
   });
@@ -22747,6 +23038,8 @@ function switchVocabTab(tab){
   const leavingSpeech = tab !== 7 &&
     document.getElementById('vocab-panel-speech')?.style.display === 'flex';
   if(leavingSpeech && typeof spExit === 'function') spExit();
+  // Виходимо з debug-вкладки "Знайди пару: еквалайзер" (9): зупиняємо звук і анімацію паличок
+  if(tab !== 9 && document.getElementById('vocab-panel-audiomatch')?.style.display === 'flex' && typeof amStop === 'function') amStop();
   // Зупиняємо запис при переключенні
   if(typeof spState!=='undefined' && spState.recording) spStopRecord();
   // Йдемо геть з картки (tab!==0) — прибираємо активну сесію рушія
@@ -22763,6 +23056,7 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
   var _dtPanel = document.getElementById('vocab-panel-deftype'); if(_dtPanel) _dtPanel.style.display = tab===8?'flex':'none';
+  var _amPanel = document.getElementById('vocab-panel-audiomatch'); if(_amPanel) _amPanel.style.display = tab===9?'flex':'none';
   // Чіпси категорій — лише у вкладці 📋, і лише коли Словник НЕ обмежений
   // скоупом (урок/глава/курс, V.filterIds) — там картки й так уже
   // відфільтровані, і чіпси лише плутатимуть (можуть звузити список до 0).
@@ -22784,6 +23078,7 @@ function switchVocabTab(tab){
   if(tab===6 && !(LF && LF.steps[LF.step]==='def')) startDefFill();
   if(tab===7) startSpeech();
   if(tab===8) startDefType();
+  if(tab===9) startAudioMatch();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
