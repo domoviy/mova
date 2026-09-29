@@ -4675,7 +4675,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '743-b86d775';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -16300,9 +16300,37 @@ function startSpeechNoFlush(){
 function sqExit(){
   if(!_sqActive) return;
   sqStopRecord();
-  spShutdownMic('noflush-exit');
   _sqActive = false;
-  spL('[noflush] exit');
+  _sqDoExitFlush('exit');
+}
+
+// Гіпотеза після ізольованих тестів: сесію можна НЕ "промивати" між
+// кожною фразою (перший прохід завжди відпрацьовує чисто без жодного
+// aborted), але без промивання ЖОДНОГО РАЗУ другий прохід у тій самій
+// вкладці сторінки повністю ламається (rec.start() мовчки не чує
+// жодного звуку, ERROR: aborted на кожній картці). Тож пробуємо
+// проміжний варіант: один цикл промивання — не після кожної фрази, а
+// РІВНО ОДИН РАЗ, коли вправа завершується (вихід або "Ще раз") — щоб
+// "здати" аудіо-сесію в чистому стані перед наступним запуском. Той
+// самий цикл, що й у spAfterSR (800мс пауза → холостий запис мікрофона
+// → чекаємо перший аудіо-чанк → тримаємо 350мс → зупиняємо).
+function _sqDoExitFlush(tag){
+  spL(`[noflush] ${tag} → final flush (once, not per phrase)`);
+  return (async () => {
+    await new Promise(r => setTimeout(r, 800));
+    spL(`[noflush] ${tag}-flush: start AS=${spAS()}`);
+    let firstOk; const gotFirst = new Promise(res => { firstOk = res; });
+    const rec = spMicPulse({ onFirstChunk: () => firstOk(true) });
+    const first = await Promise.race([ gotFirst, new Promise(r => setTimeout(() => r(false), 1800)) ]);
+    if(!first) spL(`[noflush] ${tag}-flush: WARNING no audio chunk within 1.8s`);
+    await new Promise(r => setTimeout(r, 350));
+    rec.abort();
+    await rec.result;
+    await new Promise(r => setTimeout(r, SP_POST_DELAY));
+    spRestoreAudioSession();
+    spShutdownMic('noflush-' + tag);
+    spL(`[noflush] ${tag}-flush: done AS=${spAS()}`);
+  })().catch(e => spL(`[noflush] ${tag}-flush ERROR ` + (e && e.message)));
 }
 
 function sqRenderTermWords(card){
@@ -16571,7 +16599,7 @@ function sqShowFinish(){
       <button class="tiles-result-btn nok" id="sq-finish-btn" onclick="document.getElementById('tiles-result-overlay')?.remove();switchVocabTab(0)">${t('sp_finish')}</button>
     </div>`;
   document.body.appendChild(overlay);
-  document.getElementById('sq-again-btn')?.addEventListener('click', () => { overlay.remove(); startSpeechNoFlush(); });
+  document.getElementById('sq-again-btn')?.addEventListener('click', () => { overlay.remove(); _sqActive = false; _sqDoExitFlush('again').then(startSpeechNoFlush); });
 }
 
 // ── DRAG між слотами у def-fill ────────────────────────────────
