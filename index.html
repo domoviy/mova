@@ -1634,19 +1634,6 @@ body{
    ставав нескролюваним. */
 #vocab-panel-browse{flex:1;min-height:0;overflow-y:auto;padding:12px 14px}
 #dlg-panel-browse{flex:1;min-height:0;overflow-y:auto;padding:12px 14px}
-/* Debug-копія вправи "Вимова" (Settings → Debug → "Розпізнавання без
-   подвійного мікрофона") — тест: чи можна прибрати друге вмикання/
-   вимикання мікрофона ("промивання") після розпізнавання. Селектори
-   sq-* — точні копії sp-* нижче, з тим самим @keyframes sp-pulse. */
-#sq-mic-btn.recording{
-  background:rgba(231,76,60,.15);border-color:#e74c3c;
-  animation:sp-pulse 1.2s ease-in-out infinite;
-}
-#sq-mic-btn.success{border-color:#2ecc71;background:rgba(46,204,113,.12)}
-#sq-mic-btn.fail   {border-color:#e74c3c;background:rgba(231,76,60,.10)}
-.sq-word-ok {color:#27ae60;font-weight:700}
-.sq-word-meh{color:#e67e22;font-weight:600}
-.sq-word-bad{color:#e74c3c;font-weight:600;text-decoration:underline dotted}
 #sp-mic-btn.recording{
   background:rgba(231,76,60,.15);border-color:#e74c3c;
   animation:sp-pulse 1.2s ease-in-out infinite;
@@ -1969,9 +1956,6 @@ body{
 .sp-result-title{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold)}
 .sp-result-pct{font-size:var(--fs-emphasis);font-weight:800}
 .sp-result-count{font-size:var(--fs-tertiary);color:var(--muted);margin-top:4px}
-.sq-result-title{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold)}
-.sq-result-pct{font-size:var(--fs-emphasis);font-weight:800}
-.sq-result-count{font-size:var(--fs-tertiary);color:var(--muted);margin-top:4px}
 .app-footer-version{text-align:center;padding:20px 0 8px;opacity:.45;font-size:var(--fs-tertiary);font-family:'Inter',monospace;letter-spacing:.5px}
 .quiz-no-data-text{font-size:var(--fs-tertiary);line-height:1.3}
 .tiles-result-btn{
@@ -2393,10 +2377,6 @@ body{
 .sp-term-main{font-size:var(--fs-card);font-weight:800;line-height:1.3;word-break:break-word}
 .sp-secondary{font-size:var(--fs-secondary)}
 .sp-accuracy-pct{font-size:var(--fs-card);font-weight:800;min-width:44px;text-align:right}
-.sq-label{font-size:var(--fs-tertiary);letter-spacing:.8px;text-transform:uppercase}
-.sq-term-main{font-size:var(--fs-card);font-weight:800;line-height:1.3;word-break:break-word}
-.sq-secondary{font-size:var(--fs-secondary)}
-.sq-accuracy-pct{font-size:var(--fs-card);font-weight:800;min-width:44px;text-align:right}
 .course-btn.active{border-color:var(--gold)!important;background:rgba(201,168,76,.08)!important;}
 .fc-srs-due{background:rgba(201,168,76,.2);color:var(--gold);border-color:rgba(201,168,76,.5)}
 .fc-hint-back{text-align:center;font-size:var(--fs-utility);color:var(--muted);padding:6px 0 14px;flex-shrink:0}
@@ -3386,16 +3366,6 @@ body{
 .sp-voice.on{ opacity:1; }
 #sp-voice-path{ fill:none;stroke:rgba(255,255,255,.9);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round; }
 #sp-mic-btn .mi{ width:1em;height:1em;stroke-width:1.8; }
-.sq-wave{ width:100%;margin-top:14px; }
-.sq-wave svg{ display:block;width:100%;overflow:visible; }
-#sq-wave-svg{ height:44px; }
-.sq-wb{ stroke:rgba(201,168,76,.38);stroke-width:3;stroke-linecap:round;transition:stroke .18s; }
-.sq-wb.on{ stroke:var(--gold); }
-.sq-wb.ok{ stroke:#2ecc71; } .sq-wb.meh{ stroke:#e67e22; } .sq-wb.bad{ stroke:#e74c3c; }
-.sq-voice{ height:26px;margin-top:8px;opacity:0;transition:opacity .3s; }
-.sq-voice.on{ opacity:1; }
-#sq-voice-path{ fill:none;stroke:rgba(255,255,255,.9);stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round; }
-#sq-mic-btn .mi{ width:1em;height:1em;stroke-width:1.8; }
 
 /* Симуляція іспиту Forumsbeitrag — дві картки вибору теми
    (#exam-sim-picker/examSimPickCard), кожна ~половина доступної області
@@ -4138,48 +4108,6 @@ body{
         </div>
       </div>
 
-      <!-- DEBUG: копія "Вимова" БЕЗ повторного вмикання/вимикання мікрофона
-           після розпізнавання (tab 9) — див. startSpeechNoFlush() нижче.
-           Ідентична розмітка vocab-panel-speech, лише id з префіксом sq-,
-           щоб не чіпати робочу вправу в уроках. -->
-      <div id="vocab-panel-speech2" style="display:none">
-
-        <div id="sq-card" onclick="sqReplay()" style="cursor:pointer;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-user-select:none;background:var(--forest);border-radius:20px;padding:22px 20px;min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;text-align:center">
-          <div id="sq-term" class="sq-term-main" style="color:#fff"></div>
-          <div id="sq-transl" class="sq-secondary" style="color:rgba(255,255,255,.5);margin-top:2px"></div>
-          <div id="sq-wave" class="sq-wave" style="display:none">
-            <svg id="sq-wave-svg" viewBox="0 0 300 44" preserveAspectRatio="xMidYMid meet" aria-hidden="true"></svg>
-            <svg id="sq-voice-svg" class="sq-voice" viewBox="0 0 300 26" preserveAspectRatio="xMidYMid meet" aria-hidden="true"><path id="sq-voice-path" d=""/></svg>
-          </div>
-        </div>
-
-        <div style="display:flex;flex-direction:column;align-items:center;gap:10px">
-          <button id="sq-mic-btn" onclick="sqToggleRecord()"
-            style="width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;color:var(--forest)">
-            <svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.4a3 3 0 0 0-3 3v5.2a3 3 0 0 0 6 0V6.4a3 3 0 0 0-3-3z"/><path d="M5.6 11.2a6.4 6.4 0 0 0 12.8 0"/><path d="M12 17.6v3.2M8.8 20.8h6.4"/></svg>
-          </button>
-          <div id="sq-mic-label" class="sq-label" style="text-align:center">Натисни щоб говорити</div>
-        </div>
-
-        <div id="sq-result-box" style="display:none;background:var(--soft);border-radius:16px;padding:16px;border:1.5px solid var(--border)">
-          <div class="sq-label" style="margin-bottom:6px">Ви сказали:</div>
-          <div id="sq-heard" class="sq-term-main" style="color:var(--ink);font-weight:600;margin-bottom:12px"></div>
-          <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px">
-            <div style="flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden">
-              <div id="sq-accuracy-bar" style="height:100%;border-radius:4px;transition:width .5s ease;width:0%"></div>
-            </div>
-            <span id="sq-accuracy-pct" class="sq-accuracy-pct"></span>
-          </div>
-          <div id="sq-word-diff" class="sq-term-main" style="font-weight:400;line-height:1.3;letter-spacing:.3px"></div>
-        </div>
-
-        <div id="sq-actions" style="display:none;flex-direction:column;gap:8px">
-          <button id="sq-next-btn" onclick="sqNext()" class="tiles-check-btn" style="display:none"></button>
-          <button onclick="sqRetry()" style="background:none;border:1px solid var(--border);border-radius:12px;padding:11px;font-size:var(--fs-card);color:var(--muted);font-family:inherit;cursor:pointer" id="sq-retry-btn">Спробувати ще раз</button>
-        </div>
-
-      </div>
-
       <!-- SPEECH PRACTICE (tab 7) -->
       <div id="vocab-panel-speech" style="display:none">
 
@@ -4595,7 +4523,6 @@ body{
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)"><i data-mi="mic" class="mi-inline"></i>Вимова</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(8)"><i data-mi="pen" class="mi-inline"></i>Вписати слово (набрати пропущене)</button>
-        <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(9)"><i data-mi="mic" class="mi-inline"></i>Вимова без "промивання" (тест)</button>
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
@@ -4675,7 +4602,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '744-4689635';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8947,7 +8874,6 @@ function showView(id, opts){
   const leavingSpeechView = id !== 'vocab' &&
     document.getElementById('vocab-panel-speech')?.style.display === 'flex';
   if(leavingSpeechView && typeof spExit === 'function') spExit();
-  if(typeof sqExit === 'function') sqExit();   // debug-копія (tab 9) — той самий вихід
   // Скасовуємо будь-яку активну сесію рушія карток (аудіо, кнопка
   // "Далі"/"Повторити") — БЕЗУМОВНО, на кожному переході, незалежно від
   // того, звідки й куди саме йде навігація. Це найчастіше джерело бага
@@ -11863,7 +11789,7 @@ function openVocabDictionary(cardIds, label){
   // рендериться, але лишається невидимою під результатом уроку.
   document.getElementById('lesson-result')?.classList.remove('show');
   ['vocab-panel-match','vocab-panel-choice','vocab-panel-tiles',
-   'vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech','vocab-panel-speech2'].forEach(pid=>{
+   'vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(pid=>{
     const el=document.getElementById(pid); if(el) el.style.display='none';
   });
   const cardPanel = document.getElementById('vocab-panel-card');
@@ -16256,352 +16182,6 @@ function spShowFinish(){
   });
 }
 
-
-// ── DEBUG: "Вимова" БЕЗ повторного вмикання/вимикання мікрофона ─────
-// Settings → Debug → "Вимова без промивання (тест)" (tab 9, окрема панель
-// vocab-panel-speech2, id-и sq-*, стан sqState — повністю окремо від
-// робочої вправи вище, щоб її нічим не зачепити).
-//
-// Що саме тестуємо: після rec.onend оригінал чекає ще один короткий
-// цикл мікрофона (spMicPulse — "промивання", потрібне на iOS, щоб
-// повернути аудіо-сесію в режим програвання; див. коментар на початку
-// файлу). Тут sqAfterSR() ЗАВЖДИ бере той самий шлях, що оригінал бере
-// лише на не-iOS (без spMicPulse) — просто пауза SP_POST_DELAY і
-// spRestoreAudioSession(). Тобто другого вмикання/вимикання мікрофона
-// немає ВЗАГАЛІ, ні на iOS, ні деінде. Лог — той самий 🎤 Speech Log
-// (Settings → Debug → Log), рядки позначені тегом [noflush], щоб не
-// плутати з рештою.
-// Решта механіки (chat: чекати _sqRestoreP перед наступною фразою,
-// точки вимкнення мікрофона) — точна копія робочої вправи; спільні
-// чисті утиліти (spNormalize/spSimilarity/spWordDiff/spAS/spSetType/
-// spRestoreAudioSession/spShutdownMic/spL) використовуються напряму,
-// без дублювання.
-
-let sqState = { cards: [], idx: 0, recognition: null, recording: false, correctCount: 0, totalCount: 0, SR: null };
-let _sqActive = false;
-let _sqTok = 0;
-let _sqRestoreP = null;
-
-function startSpeechNoFlush(){
-  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const cf = document.getElementById('vf-cat')?.value || 'all';
-  let pool = (typeof VOCAB !== 'undefined' ? VOCAB : []).filter(v => cf === 'all' || v.cat === cf);
-  const _srState = srLoadState();
-  pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
-  const cards = pool.slice(0, Math.min(21, pool.length)).sort(() => Math.random() - .5).slice(0, 7);
-  if(!cards.length) return;
-  sqStopRecord();
-  _sqActive = true;
-  sqState = { SR: SR || null, cards, idx: 0, recognition: null, recording: false, correctCount: 0, totalCount: 0 };
-  spL('[noflush] startSpeechNoFlush: cards=' + cards.length);
-  sqShowCard();
-}
-
-function sqExit(){
-  if(!_sqActive) return;
-  sqStopRecord();
-  _sqActive = false;
-  _sqDoExitFlush('exit');
-}
-
-// Гіпотеза після ізольованих тестів: сесію можна НЕ "промивати" між
-// кожною фразою (перший прохід завжди відпрацьовує чисто без жодного
-// aborted), але без промивання ЖОДНОГО РАЗУ другий прохід у тій самій
-// вкладці сторінки повністю ламається (rec.start() мовчки не чує
-// жодного звуку, ERROR: aborted на кожній картці). Тож пробуємо
-// проміжний варіант: один цикл промивання — не після кожної фрази, а
-// РІВНО ОДИН РАЗ, коли вправа завершується (вихід або "Ще раз") — щоб
-// "здати" аудіо-сесію в чистому стані перед наступним запуском. Той
-// самий цикл, що й у spAfterSR (800мс пауза → холостий запис мікрофона
-// → чекаємо перший аудіо-чанк → тримаємо 350мс → зупиняємо).
-function _sqDoExitFlush(tag){
-  spL(`[noflush] ${tag} → final flush (once, not per phrase)`);
-  return (async () => {
-    await new Promise(r => setTimeout(r, 800));
-    spL(`[noflush] ${tag}-flush: start AS=${spAS()}`);
-    let firstOk; const gotFirst = new Promise(res => { firstOk = res; });
-    const rec = spMicPulse({ onFirstChunk: () => firstOk(true) });
-    const first = await Promise.race([ gotFirst, new Promise(r => setTimeout(() => r(false), 1800)) ]);
-    if(!first) spL(`[noflush] ${tag}-flush: WARNING no audio chunk within 1.8s`);
-    await new Promise(r => setTimeout(r, 350));
-    rec.abort();
-    await rec.result;
-    await new Promise(r => setTimeout(r, SP_POST_DELAY));
-    spRestoreAudioSession();
-    spShutdownMic('noflush-' + tag);
-    spL(`[noflush] ${tag}-flush: done AS=${spAS()}`);
-  })().catch(e => spL(`[noflush] ${tag}-flush ERROR ` + (e && e.message)));
-}
-
-function sqRenderTermWords(card){
-  const termEl = document.getElementById('sq-term');
-  if(!termEl) return;
-  const words = (card.term?.[primaryLang()] || '').split(' ');
-  termEl.innerHTML = words.map((w,i) => `<span class="sp-tw" data-idx="${i}" style="transition:color .25s">${w}</span>`).join(' ');
-}
-
-function sqPlayPhrase(card, tag){
-  const url = getAudioUrl(card.id, 'term', primaryLang());
-  spL(`[noflush] play phrase[${tag}]: ${card.id} idx=${sqState.idx} AS=${spAS()}`);
-  const tok = _sqTok, t0 = performance.now();
-  Promise.race([ _sqRestoreP || Promise.resolve(), new Promise(r => setTimeout(() => r('timeout'), 3500)) ]).then((r) => {
-    if(tok !== _sqTok || !_sqActive) return;
-    spL(`[noflush] play phrase[${tag}]: gate ${r === 'timeout' ? 'TIMEOUT' : 'released'} after ${Math.round(performance.now() - t0)}ms AS=${spAS()}`);
-    playPregenAudio(url, null, ++playGen, null, null);
-  });
-}
-
-function sqReplay(){
-  if(!_sqActive || sqState.recording) return;
-  const card = sqState.cards[sqState.idx];
-  if(!card) return;
-  try{ haptic.light(); }catch(e){}
-  sqPlayPhrase(card, 'tap');
-}
-
-function sqShowCard(){
-  const card = sqState.cards[sqState.idx];
-  if(!card){ sqShowFinish(); return; }
-  sqRenderTermWords(card);
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
-  const transl = document.getElementById('sq-transl');
-  if(transl) transl.textContent = card.term?.[ul] || card.term?.uk || '';
-  sqReset();
-  sqPlayPhrase(card, 'show');
-}
-
-function sqReset(){
-  document.getElementById('lf-next-row')?.remove();
-  const rb = document.getElementById('sq-result-box');
-  const ab = document.getElementById('sq-actions');
-  const nb = document.getElementById('sq-next-btn');
-  const mb = document.getElementById('sq-mic-btn');
-  if(rb) rb.style.display = 'none';
-  if(ab) ab.style.display = 'none';
-  if(nb) nb.style.display = 'none';
-  const rtb = document.getElementById('sq-retry-btn');
-  if(rtb) rtb.style.display = 'block';
-  if(mb){
-    mb.className = '';
-    mb.style.cssText = 'width:80px;height:80px;border-radius:50%;border:3px solid var(--gold);background:var(--soft);font-size:32px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-tap-highlight-color:transparent;color:var(--forest)';
-    mb.innerHTML = movaIcon('mic');
-  }
-  document.querySelectorAll('#sq-term .sp-tw').forEach(s => { s.style.color = '#fff'; });
-  const lbl = document.getElementById('sq-mic-label');
-  if(lbl) lbl.textContent = t('sp_tap_to_speak');
-}
-
-function sqToggleRecord(){
-  if(sqState.recording){ sqStopRecord(); return; }
-  sqStartRecord();
-}
-
-function sqStartRecord(){
-  const SR = sqState.SR || window.SpeechRecognition || window.webkitSpeechRecognition;
-  if(!SR){ alert(t('sp_not_supported')); return; }
-  if(sqState.recording) return;
-
-  try{ const a = getSharedAudio(); if(a){ a.pause(); a.src=''; } playGen++; }catch(e){}
-
-  _sqRestoreP = new Promise(res => { _sqRepairResolve = res; }); // ворота "сесія відремонтована"
-  spL('[noflush] ▶ cycle AS=' + spAS());
-
-  const mb = document.getElementById('sq-mic-btn');
-  const lbl = document.getElementById('sq-mic-label');
-
-  sqState.recording = true;
-  if(mb){ mb.classList.add('recording'); mb.innerHTML = movaIcon('stop'); mb.style.color = '#e74c3c'; }
-  if(lbl) lbl.textContent = t('sp_listening');
-  try{ haptic.light(); }catch(e){}
-
-  setTimeout(() => sqTryStart(SR, mb, lbl, 0), 150);
-}
-let _sqRepairResolve = null;
-
-function sqTryStart(SR, mb, lbl, attempt){
-  if(!sqState.recording) return;
-  if(sqState.recognition){ try{ sqState.recognition.abort(); }catch(e){} sqState.recognition = null; }
-
-  const rec = new SR();
-  rec.lang = LC[primaryLang()]?.code || 'de-DE';
-  rec.continuous = false;
-  rec.interimResults = true;
-  rec.maxAlternatives = 1;
-  sqState.recognition = rec;
-
-  const _startTime = Date.now();
-  let _done = false, _lastInterim = '';
-
-  rec.onresult = (e) => {
-    let interim = '', final = '';
-    for(let i = e.resultIndex; i < e.results.length; i++){
-      const txt = e.results[i][0]?.transcript || '';
-      if(e.results[i].isFinal) final += txt; else interim += txt;
-    }
-    if(interim) _lastInterim = interim;
-    if(final && !_done){
-      _done = true;
-      try{ rec.stop(); }catch(e){}
-      sqState.recognition = null;
-      sqState.recording = false;
-      sqShowResult(final, sqState.cards[sqState.idx]);
-    }
-  };
-
-  rec.onerror = (e) => {
-    spL(`[noflush] ERROR: ${e.error} elapsed=${Date.now()-_startTime}ms`);
-    if(e.error === 'aborted' && _lastInterim && !_done){
-      _done = true;
-      sqState.recognition = null;
-      sqState.recording = false;
-      sqShowResult(_lastInterim, sqState.cards[sqState.idx]);
-      return;
-    }
-    if(e.error === 'aborted') return;
-    sqState.recording = false;
-    sqState.recognition = null;
-    if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
-    const msg = e.error === 'no-speech' ? t('sp_no_speech')
-      : (e.error === 'not-allowed' || e.error === 'service-not-allowed') ? t('sp_mic_denied')
-      : '❌ ' + t('sp_error');
-    if(lbl) lbl.textContent = msg;
-  };
-
-  rec.onend = () => {
-    const elapsed = Date.now() - _startTime;
-    spL(`[noflush] onend done=${_done} elapsed=${elapsed}ms`);
-    sqState.recording = false;
-    if(!_done){
-      if(elapsed < 800 && attempt < 3){
-        sqState.recording = true;
-        setTimeout(() => sqTryStart(SR, mb, lbl, attempt + 1), 1000);
-        return;
-      }
-      if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
-      if(lbl) lbl.textContent = t('sp_tap_to_speak');
-    }
-    sqSrEnded();
-  };
-
-  try{ rec.start(); }
-  catch(ex){
-    spL(`[noflush] rec.start() error: ${ex.name}`);
-    sqState.recognition = null;
-    if(ex.name === 'InvalidStateError' && attempt < 3){
-      setTimeout(() => sqTryStart(SR, mb, lbl, attempt + 1), 300 * (attempt + 1));
-    } else {
-      sqState.recording = false;
-      if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
-      sqSrEnded();
-    }
-  }
-}
-
-// ЄДИНА суттєва відмінність від оригіналу: тут — ЗАВЖДИ проста пауза й
-// відновлення типу аудіо-сесії, БЕЗ додаткового холостого запису
-// мікрофона (spMicPulse). Тобто друге вмикання/вимикання мікрофона
-// прибрано повністю (а не лише на не-iOS, як у робочій вправі).
-function sqAfterSR(){
-  return new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, SP_POST_DELAY));
-}
-function sqSrEnded(){
-  const P = sqAfterSR();
-  _sqRestoreP = P;
-  if(_sqRepairResolve){ _sqRepairResolve(P); _sqRepairResolve = null; }
-  return P;
-}
-
-function sqStopRecord(){
-  _sqTok++;
-  const wasActive = !!sqState.recognition;
-  if(wasActive){ try{ sqState.recognition.abort(); }catch(e){} sqState.recognition = null; }
-  sqState.recording = false;
-  if(wasActive) sqSrEnded();
-}
-function sqCleanup(){
-  const was = sqState.recording;
-  sqStopRecord();
-  if(was && _sqActive) sqReset();
-}
-
-function sqShowResult(heardText, card){
-  if(!card) return;
-  const target = card.term?.[primaryLang()] || '';
-  const pct = Math.round(spSimilarity(spNormalize(target), spNormalize(heardText)) * 100);
-  const isOk = pct >= 80;
-  sqState.totalCount++;
-  if(isOk) sqState.correctCount++;
-
-  const mb = document.getElementById('sq-mic-btn');
-  if(mb){
-    mb.className = isOk ? 'success' : 'fail';
-    mb.innerHTML = movaIcon(isOk ? 'check' : 'cross');
-  }
-  const lbl = document.getElementById('sq-mic-label');
-  if(lbl) lbl.textContent = '';
-
-  const rb = document.getElementById('sq-result-box');
-  if(rb) rb.style.display = 'block';
-  const heardEl = document.getElementById('sq-heard');
-  if(heardEl) heardEl.textContent = heardText || '—';
-
-  const bar = document.getElementById('sq-accuracy-bar');
-  const pctEl = document.getElementById('sq-accuracy-pct');
-  const color = pct >= 80 ? '#2ecc71' : pct >= 55 ? '#e67e22' : '#e74c3c';
-  if(bar){ bar.style.width = pct + '%'; bar.style.background = color; }
-  if(pctEl){ pctEl.textContent = pct + '%'; pctEl.style.color = color; }
-
-  const wdEl = document.getElementById('sq-word-diff');
-  if(wdEl) wdEl.innerHTML = spWordDiff(target, heardText);
-
-  const ab = document.getElementById('sq-actions');
-  const nb = document.getElementById('sq-next-btn');
-  const rtb = document.getElementById('sq-retry-btn');
-  const isLast = sqState.idx >= sqState.cards.length - 1;
-  if(ab) ab.style.display = 'flex';
-  if(rtb) rtb.style.display = pct > 70 ? 'none' : 'block';
-  if(nb){ nb.style.display = 'block'; nb.textContent = t(isLast ? 'sp_result_btn' : 'sp_next'); }
-
-  haptic[isOk ? 'success' : 'error']();
-}
-
-function sqNext(){
-  sqStopRecord();
-  sqState.idx++;
-  sqShowCard();
-}
-
-function sqRetry(){
-  sqStopRecord();
-  if(sqState.totalCount > 0) sqState.totalCount--;
-  if(sqState.correctCount > 0) sqState.correctCount--;
-  sqRenderTermWords(sqState.cards[sqState.idx]);
-  sqReset();
-  sqPlayPhrase(sqState.cards[sqState.idx], 'retry');
-}
-
-function sqShowFinish(){
-  sqCleanup();
-  const pct = sqState.totalCount ? Math.round(sqState.correctCount / sqState.totalCount * 100) : 0;
-  document.getElementById('tiles-result-overlay')?.remove();
-  const overlay = document.createElement('div');
-  overlay.id = 'tiles-result-overlay';
-  overlay.className = 'tiles-result-overlay';
-  overlay.innerHTML = `
-    <div class="tiles-result-sheet" style="gap:16px">
-      <div style="font-size:56px">${pct>=80?'🏆':pct>=55?'💪':'🔄'}</div>
-      <div class="sq-result-title">[noflush] ${t('sp_done_title')}</div>
-      <div style="background:var(--soft);border-radius:16px;padding:12px 20px;width:100%;box-sizing:border-box;text-align:center">
-        <div class="sq-result-pct" style="color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
-        <div class="sq-result-count">${t('sp_score_of').replace('{a}', sqState.correctCount).replace('{b}', sqState.totalCount)}</div>
-      </div>
-      <button class="tiles-result-btn ok" id="sq-again-btn">${t('sp_again')}</button>
-      <button class="tiles-result-btn nok" id="sq-finish-btn" onclick="document.getElementById('tiles-result-overlay')?.remove();switchVocabTab(0)">${t('sp_finish')}</button>
-    </div>`;
-  document.body.appendChild(overlay);
-  document.getElementById('sq-again-btn')?.addEventListener('click', () => { overlay.remove(); _sqActive = false; _sqDoExitFlush('again').then(startSpeechNoFlush); });
-}
-
 // ── DRAG між слотами у def-fill ────────────────────────────────
 let _defDrag = null; // { slotIdx, ghost, offsetX, offsetY }
 
@@ -17371,7 +16951,6 @@ function lfGoStep(stepIdx){
   if(!LF) return;
   // «Далі» / перехід між кроками уроку: якщо це був крок «Вимова» — вимкнути мікрофон (no-op в інших випадках)
   if(typeof spExit === 'function') spExit();
-  if(typeof sqExit === 'function') sqExit();   // debug-копія (tab 9) — той самий вихід
   LF.step = stepIdx;
   LF.unitProgress = null; // скидаємо — кожен крок сам встановлює, якщо unit-based (напр. vocab)
   lfRenderBar();
@@ -20205,7 +19784,6 @@ function _lfUnitStepDone(){
 // простій навігації.
 function _lfUnitTeardown(){
   if(typeof spExit === 'function') spExit();   // вправа "Вимова": закрити мікрофон/воркер
-  if(typeof sqExit === 'function') sqExit();   // debug-копія (tab 9) — той самий вихід
   _storyTimerReset();
   _lfUnitPlayToken++;
   playGen++;
@@ -20830,7 +20408,7 @@ function lfShowResult(){
 
   // Ховаємо всі панелі, показуємо result
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech','vocab-panel-speech2'].forEach(id=>{
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(id=>{
     const el=document.getElementById(id);
     if(el) el.style.display='none';
   });
@@ -21477,7 +21055,6 @@ function _quizShowResult(){
 // прибирання з exitLessonFlow(), без srRecordLesson().
 function abandonLessonFlow(){
   if(typeof spExit === 'function') spExit();
-  if(typeof sqExit === 'function') sqExit();   // debug-копія (tab 9) — той самий вихід
   if(!LF) return;
   // Аналітика: "закрив урок, не дійшовши до кінця" — лише якщо
   // lfShowResult() ще НЕ зарахував його (LF._recorded), інакше це не
@@ -21564,7 +21141,6 @@ function abandonLessonFlow(){
 
 function exitLessonFlow(){
   if(typeof spExit === 'function') spExit();   // вихід з уроку посеред вправи «Вимова»: вимкнути мікрофон
-  if(typeof sqExit === 'function') sqExit();   // debug-копія (tab 9) — той самий вихід
   // Зарахування уроку (стрік, subtestStats, час) відбувається ВИКЛЮЧНО в
   // lfShowResult() — рівно тоді, коли урок СПРАВДІ повністю пройдено
   // (дійшов до кроку 'result'). Ця функція викликається як з кнопки
@@ -22413,7 +21989,7 @@ function _storyExitClicked(){
 function _storyFinishWithCelebration(topicLabel, afterCelebration){
   _storyLeaveLessonChrome();
   ['vocab-panel-card','vocab-panel-match','vocab-panel-choice',
-   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech','vocab-panel-speech2'].forEach(function(id){
+   'vocab-panel-tiles','vocab-panel-browse','vocab-panel-quiz','vocab-panel-def','vocab-panel-deftype','vocab-panel-speech'].forEach(function(id){
     var el = document.getElementById(id);
     if(el) el.style.display = 'none';
   });
@@ -23111,7 +22687,6 @@ function switchVocabTab(tab){
   const leavingSpeech = tab !== 7 &&
     document.getElementById('vocab-panel-speech')?.style.display === 'flex';
   if(leavingSpeech && typeof spExit === 'function') spExit();
-  if(typeof sqExit === 'function') sqExit();   // debug-копія (tab 9) — той самий вихід
   // Зупиняємо запис при переключенні
   if(typeof spState!=='undefined' && spState.recording) spStopRecord();
   // Йдемо геть з картки (tab!==0) — прибираємо активну сесію рушія
@@ -23128,7 +22703,6 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
   var _dtPanel = document.getElementById('vocab-panel-deftype'); if(_dtPanel) _dtPanel.style.display = tab===8?'flex':'none';
-  var _sqPanel = document.getElementById('vocab-panel-speech2'); if(_sqPanel) _sqPanel.style.display = tab===9?'flex':'none';
   // Чіпси категорій — лише у вкладці 📋, і лише коли Словник НЕ обмежений
   // скоупом (урок/глава/курс, V.filterIds) — там картки й так уже
   // відфільтровані, і чіпси лише плутатимуть (можуть звузити список до 0).
@@ -23150,7 +22724,6 @@ function switchVocabTab(tab){
   if(tab===6 && !(LF && LF.steps[LF.step]==='def')) startDefFill();
   if(tab===7) startSpeech();
   if(tab===8) startDefType();
-  if(tab===9) startSpeechNoFlush();
 }
 function renderVocabBrowse(){
   const cf=document.getElementById('vf-cat')?.value||'all';
