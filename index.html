@@ -3810,7 +3810,7 @@ body{
       <p data-i18n="exam_sim_blank_hint" style="color:rgba(255,255,255,.75);font-size:var(--fs-tertiary);line-height:1.4;margin:0">📝 Візьміть аркуш паперу, або роздрукуйте бланк для відповіді:</p>
       <a id="exam-sim-blank-link" data-i18n="exam_sim_blank_download" href="#" target="_blank" rel="noopener" style="text-align:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:10px;padding:10px;color:#fff;text-decoration:none;font-size:var(--fs-tertiary);font-weight:600">⬇️ Завантажити бланк (PDF)</a>
     </div>
-    <button data-i18n="exam_sim_start_btn" onclick="startExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;width:100%">Почати тест →</button>
+    <button data-i18n="exam_sim_start_btn" onclick="startExamSimTest()" class="btn btn-lesson-sb-next" style="position:static;width:100%">Почати тест</button>
   </div>
 </div>
 
@@ -3861,7 +3861,7 @@ body{
        Дозволяє почати раніше, не чекаючи природного нуля — та сама дія
        (сигнал + перехід на рахунок часу відповіді вгору), що й по
        спливанню часу підготовки, див. _examSimSpeakStartNow(). -->
-  <button id="exam-sim-speak-start-btn" data-i18n="exam_sim_speak_start" onclick="_examSimSpeakStartNow()" class="btn btn-lesson-sb-next" style="display:none">▶ Почати</button>
+  <button id="exam-sim-speak-start-btn" data-i18n="exam_sim_speak_start" onclick="_examSimSpeakStartNow()" class="btn btn-lesson-sb-next" style="display:none">Почати</button>
 
   <!-- З'являється двічі: рано (5 хв від старту, ще є час — м'яке "Текст
        готовий") і по завершенню часу ("Завершити") — той самий блок,
@@ -4090,8 +4090,8 @@ body{
         <div class="match-result" id="match-result" style="display:none">
           <div class="score" id="match-score"></div>
           <p id="match-result-text"></p>
-          <button class="btn" id="match-btn-again" onclick="startMatching()" style="margin-right:8px">🔄 Nochmal</button>
-          <button class="btn" id="match-btn-cards" onclick="switchVocabTab(0)">📖 Karten</button>
+          <button class="btn" id="match-btn-again" onclick="startMatching()" style="margin-right:8px">Nochmal</button>
+          <button class="btn" id="match-btn-cards" onclick="switchVocabTab(0)">Karten</button>
         </div>
       </div>
 
@@ -4159,8 +4159,8 @@ body{
         <div class="match-result" id="am-result" style="display:none">
           <div class="score" id="am-score"></div>
           <p id="am-result-text"></p>
-          <button class="btn" id="am-btn-again" onclick="startAudioMatch()" style="margin-right:8px">🔄</button>
-          <button class="btn" onclick="switchVocabTab(0)">📖</button>
+          <button class="btn" id="am-btn-again" onclick="startAudioMatch()" style="margin-right:8px">Nochmal</button>
+          <button class="btn" id="am-btn-cards" onclick="switchVocabTab(0)">Karten</button>
         </div>
       </div>
 
@@ -4335,7 +4335,7 @@ body{
         <div class="sb-prac-result" id="sb-prac-result" style="display:none">
           <div class="score" id="sb-result-score"></div>
           <p id="sb-result-label"></p>
-          <button class="btn" onclick="sbStartPractice()">🔄 Nochmal üben</button>
+          <button class="btn" onclick="sbStartPractice()">Nochmal üben</button>
         </div>
         <div class="vprogrow" id="sb-prac-progrow">
           <span class="lf-progress-counter" id="sb-prac-counter">1 / 10</span>
@@ -4355,12 +4355,12 @@ body{
           <div class="mc-q-row"><div class="mc-q-term" id="sb-exam-sentence"></div></div>
         </div>
         <div class="mc-options" id="sb-exam-options"></div>
-        <button class="btn" id="sb-exam-submit" onclick="sbExamSubmit()" style="display:none;width:100%;margin-top:8px">Auswertung →</button>
+        <button class="btn" id="sb-exam-submit" onclick="sbExamSubmit()" style="display:none;width:100%;margin-top:8px">Auswertung</button>
         <div class="sb-exam-result" id="sb-exam-result" style="display:none">
           <div class="score" id="sb-exam-score-num">0/6</div>
           <p id="sb-exam-score-label"></p>
           <div class="sb-exam-review" id="sb-exam-review"></div>
-          <button class="btn" style="width:100%;margin-top:12px" onclick="sbStartExam()">🔄 Nochmal</button>
+          <button class="btn" style="width:100%;margin-top:12px" onclick="sbStartExam()">Nochmal</button>
         </div>
       </div>
     </div>
@@ -4578,6 +4578,7 @@ body{
       <div style="display:flex;flex-direction:column;gap:6px">
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)"><i data-mi="mic" class="mi-inline"></i>Вимова</button>
+        <button class="btn btn-s" style="text-align:left" onclick="debugOpenSpeechDef()"><i data-mi="mic" class="mi-inline"></i>Вимова: довгі фрази (def, 5 фраз)</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(8)"><i data-mi="pen" class="mi-inline"></i>Вписати слово (набрати пропущене)</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(9)"><i data-mi="speaker" class="mi-inline"></i>Знайди пару: еквалайзер (звук → значення)</button>
       </div>
@@ -4659,7 +4660,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '749-3f387e3';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5500,7 +5501,7 @@ const I18N = {
     match_title:'🔗 Begriff mit Erklärung verbinden', match_audio_title:'🔊 Klang mit Bedeutung verbinden', match_sub:'Verbinde den Begriff mit der Erklärung',
     match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
     match_good:'Gut gemacht! Weiter üben.',
-    match_again:'🔄 Nochmal', match_cards:'📖 Karten',
+    match_again:'Nochmal', match_cards:'Karten',
     match_empty:'Keine Karten in dieser Kategorie', am_no_audio:'Für diese Karten gibt es kein Audio',
     match_few:'Zu wenige Karten — mindestens',
     match_needed:'nötig',
@@ -5524,19 +5525,19 @@ const I18N = {
     exam_sim_you_have:'Du hast',
     exam_sim_blank_hint:'📝 Nimm ein Blatt Papier oder drucke den Antwortbogen aus:',
     exam_sim_blank_download:'⬇️ Antwortbogen herunterladen (PDF)',
-    exam_sim_start_btn:'Test starten →',
+    exam_sim_start_btn:'Test starten',
     exam_sim_close:'Schließen',
     exam_sim_close_task:'Aufgabe schließen',
     exam_sim_timeup:'⏰ Die Zeit ist um!',
     exam_sim_topic_label:'Thema',
-    exam_sim_repick:'↺ Anderes Thema wählen',
-    exam_sim_speak_start:'▶ Starten',
+    exam_sim_repick:'Anderes Thema wählen',
+    exam_sim_speak_start:'Starten',
     exam_sim_view_example:'Beispiel ansehen',
     exam_sim_finish:'Beenden',
     exam_sim_text_ready:'Text fertig',
     exam_sim_min_unit:'Min.',
     exam_sim_row_meta:'Prüfungssimulation — beliebig oft wiederholbar',
-    exam_sim_row_chip:'▶ Test starten',
+    exam_sim_row_chip:'Test starten',
     exam_sim_err_forum_cards:'⚠️ Im aktuellen Kurs werden mindestens 2 Forumsbeitrag-Karten (var SCHREIBEN) benötigt',
     exam_sim_err_email_cards:'⚠️ Im aktuellen Kurs wird mindestens 1 E-Mail-Karte (var EMAILS) benötigt',
     exam_sim_err_speaking_cards:'⚠️ Im aktuellen Kurs wird mindestens 1 Karte für den mündlichen Teil (type: "Lösungswege diskutieren", var DIALOGE) benötigt',
@@ -5546,12 +5547,12 @@ const I18N = {
     lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
     srs_notify_today:'heute', srs_notify_new:'neue',
     nav_lernpfad:'Lernen',
-    btn_next_lesson:'▶ Nächste Lektion',
-    btn_sb_weiter:'Weiter →',
-    btn_dlg_finish:'✓ Abschließen',
-    btn_to_lessons:'🎓 Zur Lektionsliste',
-    btn_check:'✓ Prüfen',
-    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter →', sp_result_btn:'Ergebnis →', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'🔄 Nochmal', sp_finish:'✓ Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    btn_next_lesson:'Nächste Lektion',
+    btn_sb_weiter:'Weiter',
+    btn_dlg_finish:'Abschließen',
+    btn_to_lessons:'Zur Lektionsliste',
+    btn_check:'Prüfen',
+    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -5559,8 +5560,8 @@ const I18N = {
     quiz_result_perfect:'Perfekt! Alle richtig! 🏆',
     quiz_result_good:'Gut gemacht! Weiter so.',
     quiz_result_try:'Noch üben — du schaffst das!',
-    quiz_again:'🔄 Nochmal',
-    quiz_to_cards:'📖 Karten',
+    quiz_again:'Nochmal',
+    quiz_to_cards:'Karten',
     sec_fontsize:'Schriftgröße',
     lbl_fontsize_card:'Kartengröße',
     lbl_fontsize_card_sub:'Begriff, Definition, Sätze, Kacheln',
@@ -5650,7 +5651,7 @@ const I18N = {
     match_title:'🔗 Поєднай термін з поясненням', match_audio_title:'🔊 Поєднай звук із значенням', match_sub:'Поєднай термін з поясненням',
     match_perfect:'Ідеально! Всі з першої спроби 🎉',
     match_good:'Непогано! Продовжуй повторювати.',
-    match_again:'🔄 Ще раз', match_cards:'📖 Картки',
+    match_again:'Ще раз', match_cards:'Картки',
     match_empty:'Немає карток у цій категорії', am_no_audio:'Для цих карток немає аудіо',
     match_few:'Замало карток — потрібно мінімум',
     match_needed:'',
@@ -5674,19 +5675,19 @@ const I18N = {
     exam_sim_you_have:'У вас буде',
     exam_sim_blank_hint:'📝 Візьміть аркуш паперу, або роздрукуйте бланк для відповіді:',
     exam_sim_blank_download:'⬇️ Завантажити бланк (PDF)',
-    exam_sim_start_btn:'Почати тест →',
+    exam_sim_start_btn:'Почати тест',
     exam_sim_close:'Закрити',
     exam_sim_close_task:'Закрити завдання',
     exam_sim_timeup:'⏰ Час вийшов!',
     exam_sim_topic_label:'Тема',
-    exam_sim_repick:'↺ Обрати іншу тему',
-    exam_sim_speak_start:'▶ Почати',
+    exam_sim_repick:'Обрати іншу тему',
+    exam_sim_speak_start:'Почати',
     exam_sim_view_example:'Подивитися приклад',
     exam_sim_finish:'Завершити',
     exam_sim_text_ready:'Текст готовий',
     exam_sim_min_unit:'хв',
     exam_sim_row_meta:'Симуляція іспиту — необмежена к-сть спроб',
-    exam_sim_row_chip:'▶ Почати тест',
+    exam_sim_row_chip:'Почати тест',
     exam_sim_err_forum_cards:'⚠️ Потрібно щонайменше 2 картки Forumsbeitrag (var SCHREIBEN) у поточному курсі',
     exam_sim_err_email_cards:'⚠️ Потрібна хоча б 1 картка E-Mail (var EMAILS) у поточному курсі',
     exam_sim_err_speaking_cards:'⚠️ Потрібна хоча б 1 картка усної частини (type: "Lösungswege diskutieren", var DIALOGE) у поточному курсі',
@@ -5696,12 +5697,12 @@ const I18N = {
     lp_unlock_hint:'Завершіть 80% попереднього уроку',
     srs_notify_today:'сьогодні', srs_notify_new:'нових',
     nav_lernpfad:'Навчання',
-    btn_next_lesson:'▶ Наступний урок',
-    btn_sb_weiter:'Далі →',
-    btn_dlg_finish:'✓ Завершити',
-    btn_to_lessons:'🎓 До списку уроків',
-    btn_check:'✓ Перевірити',
-    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі →', sp_result_btn:'Результат →', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'🔄 Ще раз', sp_finish:'✓ Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    btn_next_lesson:'Наступний урок',
+    btn_sb_weiter:'Далі',
+    btn_dlg_finish:'Завершити',
+    btn_to_lessons:'До списку уроків',
+    btn_check:'Перевірити',
+    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -5709,8 +5710,8 @@ const I18N = {
     quiz_result_perfect:'Ідеально! Всі правильно! 🏆',
     quiz_result_good:'Добре! Продовжуй!',
     quiz_result_try:'Варто повторити — ти впораєшся!',
-    quiz_again:'🔄 Ще раз',
-    quiz_to_cards:'📖 Картки',
+    quiz_again:'Ще раз',
+    quiz_to_cards:'Картки',
     sec_fontsize:'Розмір шрифту',
     lbl_fontsize_card:'Розмір карток',
     lbl_fontsize_card_sub:'Термін, визначення, речення, плитки',
@@ -5799,7 +5800,7 @@ const I18N = {
     match_title:'🔗 Match the term with its explanation', match_audio_title:'🔊 Match the sound with its meaning', match_sub:'Match the term with its explanation',
     match_perfect:'Perfect! All on first try 🎉',
     match_good:'Good job! Keep reviewing.',
-    match_again:'🔄 Again', match_cards:'📖 Cards',
+    match_again:'Again', match_cards:'Cards',
     match_empty:'No cards in this category', am_no_audio:'No audio available for these cards',
     match_few:'Too few cards — need at least',
     match_needed:'',
@@ -5823,19 +5824,19 @@ const I18N = {
     exam_sim_you_have:'You will have',
     exam_sim_blank_hint:'📝 Grab a sheet of paper or print the answer sheet:',
     exam_sim_blank_download:'⬇️ Download answer sheet (PDF)',
-    exam_sim_start_btn:'Start test →',
+    exam_sim_start_btn:'Start test',
     exam_sim_close:'Close',
     exam_sim_close_task:'Close task',
     exam_sim_timeup:'⏰ Time\'s up!',
     exam_sim_topic_label:'Topic',
-    exam_sim_repick:'↺ Choose another topic',
-    exam_sim_speak_start:'▶ Start',
+    exam_sim_repick:'Choose another topic',
+    exam_sim_speak_start:'Start',
     exam_sim_view_example:'View example',
     exam_sim_finish:'Finish',
     exam_sim_text_ready:'Text is ready',
     exam_sim_min_unit:'min',
     exam_sim_row_meta:'Exam simulation — unlimited attempts',
-    exam_sim_row_chip:'▶ Start test',
+    exam_sim_row_chip:'Start test',
     exam_sim_err_forum_cards:'⚠️ At least 2 Forumsbeitrag cards (var SCHREIBEN) are required in the current course',
     exam_sim_err_email_cards:'⚠️ At least 1 E-Mail card (var EMAILS) is required in the current course',
     exam_sim_err_speaking_cards:'⚠️ At least 1 speaking-part card (type: "Lösungswege diskutieren", var DIALOGE) is required in the current course',
@@ -5845,12 +5846,12 @@ const I18N = {
     lp_unlock_hint:'Complete 80% of the previous lesson',
     srs_notify_today:'today', srs_notify_new:'new',
     nav_lernpfad:'Learning',
-    btn_next_lesson:'▶ Next Lesson',
-    btn_sb_weiter:'Next →',
-    btn_dlg_finish:'✓ Finish',
-    btn_to_lessons:'🎓 Lesson List',
-    btn_check:'✓ Check',
-    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next →', sp_result_btn:'Result →', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'🔄 Again', sp_finish:'✓ Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    btn_next_lesson:'Next Lesson',
+    btn_sb_weiter:'Next',
+    btn_dlg_finish:'Finish',
+    btn_to_lessons:'Lesson List',
+    btn_check:'Check',
+    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -5858,8 +5859,8 @@ const I18N = {
     quiz_result_perfect:'Perfect! All correct! 🏆',
     quiz_result_good:'Good job! Keep going.',
     quiz_result_try:'Keep practising — you\'ve got this!',
-    quiz_again:'🔄 Again',
-    quiz_to_cards:'📖 Cards',
+    quiz_again:'Again',
+    quiz_to_cards:'Cards',
     quiz_score:'Score',
     sec_fontsize:'Font Size',
     lbl_fontsize_card:'Card size',
@@ -5949,7 +5950,7 @@ const I18N = {
     match_title:'🔗 Соедини термин с объяснением', match_audio_title:'🔊 Соедини звук со значением', match_sub:'Соедини термин с объяснением',
     match_perfect:'Идеально! Все с первой попытки 🎉',
     match_good:'Неплохо! Продолжай повторять.',
-    match_again:'🔄 Ещё раз', match_cards:'📖 Карточки',
+    match_again:'Ещё раз', match_cards:'Карточки',
     match_empty:'Нет карточек в этой категории', am_no_audio:'Для этих карточек нет аудио',
     match_few:'Слишком мало карточек — нужно минимум',
     match_needed:'',
@@ -5973,19 +5974,19 @@ const I18N = {
     exam_sim_you_have:'У вас будет',
     exam_sim_blank_hint:'📝 Возьмите лист бумаги или распечатайте бланк для ответа:',
     exam_sim_blank_download:'⬇️ Скачать бланк (PDF)',
-    exam_sim_start_btn:'Начать тест →',
+    exam_sim_start_btn:'Начать тест',
     exam_sim_close:'Закрыть',
     exam_sim_close_task:'Закрыть задание',
     exam_sim_timeup:'⏰ Время вышло!',
     exam_sim_topic_label:'Тема',
-    exam_sim_repick:'↺ Выбрать другую тему',
-    exam_sim_speak_start:'▶ Начать',
+    exam_sim_repick:'Выбрать другую тему',
+    exam_sim_speak_start:'Начать',
     exam_sim_view_example:'Посмотреть пример',
     exam_sim_finish:'Завершить',
     exam_sim_text_ready:'Текст готов',
     exam_sim_min_unit:'мин',
     exam_sim_row_meta:'Симуляция экзамена — неограниченно попыток',
-    exam_sim_row_chip:'▶ Начать тест',
+    exam_sim_row_chip:'Начать тест',
     exam_sim_err_forum_cards:'⚠️ В текущем курсе нужно минимум 2 карточки Forumsbeitrag (var SCHREIBEN)',
     exam_sim_err_email_cards:'⚠️ В текущем курсе нужна хотя бы 1 карточка E-Mail (var EMAILS)',
     exam_sim_err_speaking_cards:'⚠️ В текущем курсе нужна хотя бы 1 карточка устной части (type: "Lösungswege diskutieren", var DIALOGE)',
@@ -5994,12 +5995,12 @@ const I18N = {
     exam_sim_example_speaking_na:'👁 Пример разговора для этого типа пока не добавлен',
     lp_unlock_hint:'Завершите 80% предыдущего урока',
     srs_notify_today:'сегодня', srs_notify_new:'новых',
-    btn_next_lesson:'▶ Следующий урок',
-    btn_sb_weiter:'Далее →',
-    btn_dlg_finish:'✓ Завершить',
-    btn_to_lessons:'🎓 К списку уроков',
-    btn_check:'✓ Проверить',
-    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее →', sp_result_btn:'Результат →', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'🔄 Ещё раз', sp_finish:'✓ Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
+    btn_next_lesson:'Следующий урок',
+    btn_sb_weiter:'Далее',
+    btn_dlg_finish:'Завершить',
+    btn_to_lessons:'К списку уроков',
+    btn_check:'Проверить',
+    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -6007,8 +6008,8 @@ const I18N = {
     quiz_result_perfect:'Идеально! Все правильно! 🏆',
     quiz_result_good:'Хорошо! Продолжай!',
     quiz_result_try:'Стоит повторить — ты справишься!',
-    quiz_again:'🔄 Ещё раз',
-    quiz_to_cards:'📖 Карточки',
+    quiz_again:'Ещё раз',
+    quiz_to_cards:'Карточки',
     quiz_score:'Результат',
     sec_fontsize:'Размер шрифта',
     lbl_fontsize_card:'Размер карточек',
@@ -10130,6 +10131,7 @@ function amShowResult(){
   document.getElementById('am-score').textContent = first + '/' + total;
   document.getElementById('am-result-text').textContent = first === total ? t('match_perfect') : t('match_good');
   const again = document.getElementById('am-btn-again'); if(again) again.textContent = t('match_again');
+  const cardsBtn = document.getElementById('am-btn-cards'); if(cardsBtn) cardsBtn.textContent = t('match_cards');
   result.style.display = '';
   try{ result.scrollIntoView({behavior:'smooth', block:'nearest'}); }catch(e){}
 }
@@ -14412,9 +14414,9 @@ function mcShowResult(){
         ${doneCount===mcState.cards.length ? t('match_perfect') : t('match_good')}
       </p>
       ${LF && mcState._lfMode
-        ? `<button class="btn" onclick="lfNextStep()" style="width:100%">▶ ${uiLang==='uk'?'Далі':uiLang==='en'?'Next':'Weiter'}</button>`
-        : `<button class="btn" onclick="startMultipleChoice()" style="margin-right:8px">🔄 ${t('match_again').replace('🔄 ','')}</button>
-           <button class="btn" onclick="switchVocabTab(0)">📖 ${t('match_cards').replace('📖 ','')}</button>`
+        ? `<button class="btn" onclick="lfNextStep()" style="width:100%">${uiLang==='uk'?'Далі':uiLang==='en'?'Next':'Weiter'}</button>`
+        : `<button class="btn" onclick="startMultipleChoice()" style="margin-right:8px">${t('match_again')}</button>
+           <button class="btn" onclick="switchVocabTab(0)">${t('match_cards')}</button>`
       }
     </div>`;
   if(LF && mcState._lfMode) lfStepDone('choice', doneCount/mcState.cards.length);
@@ -14985,14 +14987,14 @@ function tilesShowResultModal(isOk, correctStr){
 
   // Позитивний гендерно-нейтральний напис для правильної відповіді
   const greatLabels = {
-    uk: '🎉 Чудово! Так тримати!',
-    de: '🎉 Super! Weiter so!',
-    en: '🎉 Excellent! Keep it up!'
+    uk: 'Чудово! Так тримати!',
+    de: 'Super! Weiter so!',
+    en: 'Excellent! Keep it up!'
   };
 
   const btnLabel = isOk
     ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
-    : (uiLang==='uk' ? '✓ Зрозуміло' : uiLang==='en' ? '✓ Got it' : '✓ Verstanden');
+    : (uiLang==='uk' ? 'Зрозуміло' : uiLang==='en' ? 'Got it' : 'Verstanden');
 
   overlay.innerHTML = `
     <div class="tiles-result-sheet ${isOk?'ok':'nok'}">
@@ -15278,10 +15280,10 @@ function defShowResultModal(isOk, fullSentence){
   const overlay = document.createElement('div');
   overlay.id = 'tiles-result-overlay';
   overlay.className = 'tiles-result-overlay';
-  const greatLabels = { uk:'🎉 Чудово! Так тримати!', de:'🎉 Super! Weiter so!', en:'🎉 Excellent! Keep it up!' };
+  const greatLabels = { uk:'Чудово! Так тримати!', de:'Super! Weiter so!', en:'Excellent! Keep it up!' };
   const btnLabel = isOk
     ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
-    : (uiLang==='uk'?'✓ Зрозуміло':uiLang==='en'?'✓ Got it':'✓ Verstanden');
+    : (uiLang==='uk'?'Зрозуміло':uiLang==='en'?'Got it':'Verstanden');
   // Повне речення з виділенням правильних слів золотим
   const lang = defGetDisplayLang();
   const rawHtml = defState.current?.def?.[lang] || fullSentence;
@@ -15328,8 +15330,8 @@ function defShowResult(){
     <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
       <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Inter',sans-serif">🎉</div>
       <p class="mc-result-praise">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
-      <button class="btn" onclick="startDefFill()" style="margin-right:8px">🔄 Nochmal</button>
-      <button class="btn" onclick="switchVocabTab(0)">📖 Karten</button>
+      <button class="btn" onclick="startDefFill()" style="margin-right:8px">Nochmal</button>
+      <button class="btn" onclick="switchVocabTab(0)">Karten</button>
     </div>`;
 }
 
@@ -15508,10 +15510,10 @@ function dtShowResultModal(isOk, given, oks){
   const overlay = document.createElement('div');
   overlay.id = 'tiles-result-overlay';
   overlay.className = 'tiles-result-overlay';
-  const greatLabels = { uk:'🎉 Чудово! Так тримати!', de:'🎉 Super! Weiter so!', en:'🎉 Excellent! Keep it up!' };
+  const greatLabels = { uk:'Чудово! Так тримати!', de:'Super! Weiter so!', en:'Excellent! Keep it up!' };
   const btnLabel = isOk
     ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
-    : (uiLang==='uk'?'✓ Зрозуміло':uiLang==='en'?'✓ Got it':'✓ Verstanden');
+    : (uiLang==='uk'?'Зрозуміло':uiLang==='en'?'Got it':'Verstanden');
   const lang = defGetDisplayLang();
   const rawHtml = dtState.current?.def?.[lang] || dtState.fullSentence;
   const highlighted = rawHtml
@@ -15560,8 +15562,8 @@ function dtShowResult(){
     <div style="text-align:center;padding:12px 0">
       <div style="font-size:36px">🎉</div>
       <p class="mc-result-praise" style="color:#fff">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
-      <button class="btn" onclick="startDefType()" style="margin-right:8px">🔄 Nochmal</button>
-      <button class="btn" onclick="switchVocabTab(0)">📖 Karten</button>
+      <button class="btn" onclick="startDefType()" style="margin-right:8px">Nochmal</button>
+      <button class="btn" onclick="switchVocabTab(0)">Karten</button>
     </div>`;
 }
 
@@ -15829,8 +15831,38 @@ async function spMicPulseRelease(s){
 // ── Старт / потік вправи ──────────────────────────────────────────
 function spSpeechSupported(){ return !!(window.SpeechRecognition || window.webkitSpeechRecognition); }
 
+// ── Режим вправи на вимову ────────────────────────────────────────
+// 'term' — як завжди: слова/вирази з term.
+// 'def'  — довші ФРАЗИ з def (анотоване речення без тегів), рівно 5 на вправу.
+//          Відкривається лише з Налаштування → Налагодження (debugOpenSpeechDef);
+//          в урок не входить і не пише в SM-2 (тестовий режим).
+// Усе, що раніше читало card.term/'term', тепер іде через _spText/_spField.
+var _spNextField = 'term'; // одноразовий прапорець: його читає startSpeech()
+function _spField(){ return (typeof spState !== 'undefined' && spState && spState.field) || 'term'; }
+function _spCleanDef(str){
+  var x = String(str || '').replace(/<[^>]+>/g, '');
+  if(typeof _dtDecode === 'function') x = _dtDecode(x);
+  return x.replace(/\s+/g, ' ').trim();
+}
+function _spText(card){
+  var raw = (card && card[_spField()] && card[_spField()][primaryLang()]) || '';
+  return _spField() === 'def' ? _spCleanDef(raw) : raw;
+}
+function _spTranslText(card){
+  var f = _spField(), o = card && card[f], ul = (typeof uiLang !== 'undefined' && uiLang) || 'uk';
+  var r = (o && (o[ul] || o.uk)) || '';
+  return f === 'def' ? _spCleanDef(r) : r;
+}
+function debugOpenSpeechDef(){
+  _spNextField = 'def';
+  showView('vocab');
+  switchVocabTab(7);
+}
+
 function startSpeech(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const field = (_spNextField === 'def' && !(LF && LF.steps && LF.steps[LF.step] === 'speech')) ? 'def' : 'term';
+  _spNextField = 'term';
 
   // Крок «Вимова» уроку: слова цього уроку (LF.speechCards), у порядку вибірки уроку.
   // Окрема вкладка «Вимова»: випадкові 7 карток за SM-2 пріоритетом, як і раніше.
@@ -15838,6 +15870,21 @@ function startSpeech(){
   let cards;
   if(inLesson){
     cards = LF.speechCards.filter(c => c.term && c.term[primaryLang()]);
+  } else if(field === 'def'){
+    // 5 фраз із def: 4–20 слів (коротші — це вже не "фраза", довші розпізнавач
+    // зазвичай не втримує), за SM-2 пріоритетом з випадковим перемішуванням.
+    const cf = document.getElementById('vf-cat')?.value || 'all';
+    let pool = (typeof VOCAB !== 'undefined' ? VOCAB : []).filter(v => {
+      if(cf !== 'all' && v.cat !== cf) return false;
+      const raw = v.def && v.def[primaryLang()];
+      if(!raw) return false;
+      const n = _spCleanDef(raw).split(' ').filter(Boolean).length;
+      return n >= 4 && n <= 20;
+    });
+    const _srState = srLoadState();
+    pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
+    cards = pool.slice(0, Math.min(15, pool.length))
+      .sort(() => Math.random() - .5).slice(0, 5);
   } else {
     const cf = document.getElementById('vf-cat')?.value || 'all';
     let pool = (typeof VOCAB !== 'undefined' ? VOCAB : [])
@@ -15847,11 +15894,18 @@ function startSpeech(){
     cards = pool.slice(0, Math.min(21, pool.length))
       .sort(() => Math.random() - .5).slice(0, 7);
   }
-  if(!cards.length){ if(inLesson) lfStepDone('speech', 1); return; }
+  if(!cards.length){
+    if(inLesson) lfStepDone('speech', 1);
+    else if(field === 'def'){
+      const te = document.getElementById('sp-term');
+      if(te) te.textContent = '⚠️ Немає карток з def-фразами';
+    }
+    return;
+  }
   spStopRecord();
   _spActive = true;
   spState = { SR: SR || null, cards, idx: 0, recognition: null, recording: false,
-              correctCount: 0, totalCount: 0, cycle: 0, lesson: inLesson };
+              correctCount: 0, totalCount: 0, cycle: 0, lesson: inLesson, field };
   const spPanel = document.getElementById('vocab-panel-speech');
   if(spPanel) spPanel.classList.toggle('sp-lesson', inLesson);
   if(inLesson){
@@ -15900,7 +15954,7 @@ function spShutdownMic(tag){
 function spRenderTermWords(card){
   const termEl = document.getElementById('sp-term');
   if(!termEl) return;
-  const words = (card.term?.[primaryLang()] || '').split(' ');
+  const words = _spText(card).split(' ');
   termEl.innerHTML = words.map((w,i) =>
     `<span class="sp-tw" data-idx="${i}" style="transition:color .25s">${w}</span>`
   ).join(' ');
@@ -15909,7 +15963,7 @@ function spRenderTermWords(card){
 function spHighlightLive(transcript){
   const card = spState.cards[spState.idx];
   if(!card) return;
-  const targetWords = (card.term?.[primaryLang()] || '').split(' ').map(w => spNormalize(w));
+  const targetWords = _spText(card).split(' ').map(w => spNormalize(w));
   const heardWords  = spNormalize(transcript).split(' ');
   document.querySelectorAll('#sp-term .sp-tw').forEach((span, i) => {
     const tw = targetWords[i];
@@ -15982,7 +16036,7 @@ function spWaveClear(){
 async function spWaveLoad(card){
   var wrap = _spWaveEl(); if(!wrap || !card) return;
   var tok = ++_spWaveTok;
-  var url = getAudioUrl(card.id, 'term', primaryLang());
+  var url = getAudioUrl(card.id, _spField(), primaryLang());
   var mkey = urlToAudioMkey(url);
   var data = _spWaveCache[url];
   if(!data){
@@ -16111,7 +16165,7 @@ function spWaveStop(){
 // програвання (_spRestoreP), інакше перші мс наступної фрази ще звучали б
 // у режимі запису.
 function spPlayPhrase(card, tag){
-  const url = getAudioUrl(card.id, 'term', primaryLang());
+  const url = getAudioUrl(card.id, _spField(), primaryLang());
   spL(`play phrase[${tag}]: ${card.id} idx=${spState.idx} micCyclesDone=${spState.cycle} AS=${spAS()}`);
   const tok = _spTok, t0 = performance.now();
   Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(() => r('timeout'), 3500)) ]).then((r) => {
@@ -16138,9 +16192,8 @@ function spShowCard(){
   if(spState.lesson && LF){ LF.unitProgress = { done: spState.idx, total: spState.cards.length }; lfRenderBar(); }
 
   spRenderTermWords(card);
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
   const transl = document.getElementById('sp-transl');
-  if(transl) transl.textContent = card.term?.[ul] || card.term?.uk || '';
+  if(transl) transl.textContent = _spTranslText(card);
 
   spReset();
   spWaveLoad(card);
@@ -16400,7 +16453,7 @@ function spWordDiff(target, heard){
 
 function spShowResult(heardText, card){
   if(!card) return;
-  const target = card.term?.[primaryLang()] || '';
+  const target = _spText(card);
   const pct = Math.round(spSimilarity(spNormalize(target), spNormalize(heardText)) * 100);
   const isOk = pct >= 80;
 
@@ -16449,7 +16502,7 @@ function spShowResult(heardText, card){
     if(isLast) spLessonShowFinish();
   }
 
-  recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
+  if(_spField() !== 'def') recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
   haptic[isOk ? 'success' : 'error']();
   answerFeedback(isOk);
 }
@@ -16657,8 +16710,8 @@ function tilesShowResult(){
       <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
         <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Inter',sans-serif">🎉</div>
         <p class="mc-result-praise">${t('match_perfect')}</p>
-        <button class="btn" onclick="startTiles()" style="margin-right:8px">🔄 ${t('match_again').replace('🔄 ','')}</button>
-        <button class="btn" onclick="switchVocabTab(0)">📖 ${t('match_cards').replace('📖 ','')}</button>
+        <button class="btn" onclick="startTiles()" style="margin-right:8px">${t('match_again')}</button>
+        <button class="btn" onclick="switchVocabTab(0)">${t('match_cards')}</button>
       </div>`;
   }
 }
@@ -20148,8 +20201,8 @@ function _lfUnitShowNextBtn(isFinish){
   // звичайнісінький _lfUnitAdvance() — святкування вже покажеться
   // одразу після нього (dlg_learn = єдиний крок, без штучної паузи).
   nextBtn.textContent = isFinish
-    ? (typeof t === 'function' ? t('btn_dlg_finish') : '✓ Завершити')
-    : (typeof t === 'function' ? t('btn_sb_weiter') : 'Далі →');
+    ? (typeof t === 'function' ? t('btn_dlg_finish') : 'Завершити')
+    : (typeof t === 'function' ? t('btn_sb_weiter') : 'Далі');
   nextBtn.onclick = function(){
     row.remove();
     _lfUnitAdvance();
@@ -20730,7 +20783,7 @@ function _lfInjectSBNextBtn(onNext, labelOverride){
   var btn = document.createElement('button');
   btn.id = 'lf-sb-next-btn';
   btn.className = 'btn btn-lesson-sb-next';
-  btn.textContent = labelOverride || (typeof t==='function' ? t('btn_sb_weiter') : 'Далі →');
+  btn.textContent = labelOverride || (typeof t==='function' ? t('btn_sb_weiter') : 'Далі');
   btn.onclick = function(){
     btn.remove();
     onNext();
@@ -21460,7 +21513,7 @@ function _quizShowResult(){
       <div class="quiz-result-btns">
         ${quizState._lfMode ? `
           <button class="lr-btn-primary" onclick="lfNextStep()">
-            ▶ ${uiLang==='uk'?'Далі до результату':uiLang==='en'?'Continue':'Weiter'}
+            ${uiLang==='uk'?'Далі до результату':uiLang==='en'?'Continue':'Weiter'}
           </button>` : `
           <button class="lr-btn-primary" onclick="startQuiz()">
             ${t('quiz_again')}
@@ -24045,7 +24098,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
       sentenceHtml +
       '<div class="sb-prac-modal-actions">' +
         secondaryBtns +
-        '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn" style="visibility:hidden">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі →'))+'</button>' +
+        '<button class="sb-prac-feedback-modal-next" id="sb-modal-next-btn" style="visibility:hidden">'+(labelOverride || (typeof t==='function'?t('btn_sb_weiter'):'Далі'))+'</button>' +
       '</div>' +
     '</div>';
 
@@ -24369,7 +24422,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
       // Lesson mode: show bottom sheet modal
       var maxCards = SB.pracQueue.length;
       var isLastPrac = (SB.pracIdx + 1 >= Math.min(SB.pracQueue.length, maxCards));
-      var nextBtnLabel = typeof t==='function' ? t('btn_sb_weiter') : 'Далі →';
+      var nextBtnLabel = typeof t==='function' ? t('btn_sb_weiter') : 'Далі';
       sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,primaryLang()), expl, function(){
         sbHideFeedbackModal();
         sbPracNext();
@@ -24383,7 +24436,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
       fb.style.display='block';
       var innerNext=document.getElementById('sb-prac-next-btn');
       if(innerNext){
-        innerNext.textContent=typeof t==='function'?t('btn_sb_weiter'):'Weiter →';
+        innerNext.textContent=typeof t==='function'?t('btn_sb_weiter'):'Weiter';
         // Ховаємо до завершення озвучення речення (reveal — див.
         // sbRevealFeedbackNextBtn / _sbRevealInlineNextBtn нижче), а не
         // показуємо одразу разом з фідбеком.
