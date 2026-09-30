@@ -4659,7 +4659,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '748-621e19a';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5497,7 +5497,7 @@ const I18N = {
     srs_new:'✨ neue Karte', srs_today:'📅 heute',
     card_new:'✨ Neue Karte',
     update_available:'🔄 Neue Version verfügbar – App neu laden',
-    match_title:'🔗 Begriff mit Erklärung verbinden', match_sub:'Verbinde den Begriff mit der Erklärung',
+    match_title:'🔗 Begriff mit Erklärung verbinden', match_audio_title:'🔊 Klang mit Bedeutung verbinden', match_sub:'Verbinde den Begriff mit der Erklärung',
     match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
     match_good:'Gut gemacht! Weiter üben.',
     match_again:'🔄 Nochmal', match_cards:'📖 Karten',
@@ -5647,7 +5647,7 @@ const I18N = {
     srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
     card_new:'✨ Нова картка',
     update_available:'🔄 Доступна нова версія — перезавантажте додаток',
-    match_title:'🔗 Поєднай термін з поясненням', match_sub:'Поєднай термін з поясненням',
+    match_title:'🔗 Поєднай термін з поясненням', match_audio_title:'🔊 Поєднай звук із значенням', match_sub:'Поєднай термін з поясненням',
     match_perfect:'Ідеально! Всі з першої спроби 🎉',
     match_good:'Непогано! Продовжуй повторювати.',
     match_again:'🔄 Ще раз', match_cards:'📖 Картки',
@@ -5796,7 +5796,7 @@ const I18N = {
     srs_new:'✨ new card', srs_today:'📅 today',
     card_new:'✨ New card',
     update_available:'🔄 New version available – reload the app',
-    match_title:'🔗 Match the term with its explanation', match_sub:'Match the term with its explanation',
+    match_title:'🔗 Match the term with its explanation', match_audio_title:'🔊 Match the sound with its meaning', match_sub:'Match the term with its explanation',
     match_perfect:'Perfect! All on first try 🎉',
     match_good:'Good job! Keep reviewing.',
     match_again:'🔄 Again', match_cards:'📖 Cards',
@@ -5946,7 +5946,7 @@ const I18N = {
     srs_new:'✨ новая карточка', srs_today:'📅 сегодня',
     card_new:'✨ Новая карточка',
     update_available:'🔄 Доступна новая версия — перезагрузите приложение',
-    match_title:'🔗 Соедини термин с объяснением', match_sub:'Соедини термин с объяснением',
+    match_title:'🔗 Соедини термин с объяснением', match_audio_title:'🔊 Соедини звук со значением', match_sub:'Соедини термин с объяснением',
     match_perfect:'Идеально! Все с первой попытки 🎉',
     match_good:'Неплохо! Продолжай повторять.',
     match_again:'🔄 Ещё раз', match_cards:'📖 Карточки',
@@ -7974,6 +7974,17 @@ function srIsCardNew(state, id){
   return !cs || !cs.totalPlays;
 }
 
+// Чи слово вже настільки знайоме, що його можна впізнавати ЛИШЕ НА СЛУХ
+// ("Знайди пару" з еквалайзером замість написаного слова): користувач кілька
+// разів відповідав його правильно (≥3 впевнені оцінки ≥4 в останніх 10) і
+// остання відповідь теж правильна — тобто свіжої помилки немає.
+const SR_EAR_MIN_CORRECT = 3;
+function srIsEarReady(state, id){
+  const h = state.cards?.[id]?.history;
+  if(!Array.isArray(h) || !h.length) return false;
+  return h.filter(function(r){ return r >= 4; }).length >= SR_EAR_MIN_CORRECT && h[h.length-1] >= 4;
+}
+
 
 
 // ── HAPTIC FEEDBACK ───────────────────────────────────────────
@@ -9721,8 +9732,12 @@ function matchHandleClick(btn){
   // програвався ВЗАГАЛІ; тепер один спільний виклик тут покриває і
   // дотик, і клік однаково.
   if(btn.dataset.side === 'term'){
-    const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===btn.dataset.cardId);
-    if(card?.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term', true);
+    if(btn.classList.contains('side-audio')){
+      amPlay(btn); // версія з еквалайзером: звук + палички по ходу відтворення
+    } else {
+      const card = (typeof VOCAB!=='undefined'?VOCAB:[]).find(v=>v.id===btn.dataset.cardId);
+      if(card?.term?.[primaryLang()]) speak(card.term[primaryLang()], primaryLang(), null, card.id, 'term', true);
+    }
   }
 
   const sel = matchState.selected;
@@ -9747,7 +9762,7 @@ function matchHandleClick(btn){
     matchState.selected = { el:btn, cardId:btn.dataset.cardId, side:btn.dataset.side };
     // Побіжний контакт з текстом цієї картки — найслабший сигнал з усіх,
     // основна оцінка йде далі через task_correct/task_wrong при підборі.
-    recordCardEvent(btn.dataset.cardId, 'matching_touch', 'Lesen');
+    recordCardEvent(btn.dataset.cardId, 'matching_touch', btn.classList.contains('side-audio') ? 'Hören' : 'Lesen');
     return;
   }
 
@@ -9771,6 +9786,8 @@ function matchHandleClick(btn){
       setTimeout(() => {
         el.classList.remove('matched-flash');
         el.classList.add('matched');
+        // Версія з еквалайзером: знайшли пару — показуємо написане слово
+        if(el.classList.contains('side-audio')) _amRevealWord(el);
       }, 400);
     });
     // Остання пара в раунді — це і є matched===round size-1 ДО інкременту,
@@ -10798,12 +10815,24 @@ function _runLessonFlow(lesson, allCards){
   if(speechCards.length && spSpeechSupported()) steps.push('speech');
   steps.push('result');
 
+  // Дві версії "Знайди пару" — ОБИДВІ лишаються доступними, а який саме
+  // показати в цьому кроці, вирішує знайомість слів (один крок на урок, тож
+  // урок не довшає):
+  //  • matchCards — класична, зі написаними словами: для нових і ще не
+  //    закріплених слів (вперше / повторення);
+  //  • matchAudioCards — версія з еквалайзером (впізнати слово на слух): лише
+  //    коли в модулі набралось 5 слів, які користувач уже кілька разів
+  //    відповідав правильно (srIsEarReady). Інакше — null (лишається класична).
+  const earPool = matchPool.filter(c => srIsEarReady(state, c.id));
+  const matchAudioCards = earPool.length >= 5 ? earPool.slice(0, 5) : null;
+
   LF = {
     lessonId:  lesson.id,
     lesson,
     cards:     flowCards,
     speechCards,
     matchCards,
+    matchAudioCards,
     matchExtraPools: {},
     tilesCards: hasTiles ? tilesCards : [],
     allCards,
@@ -17168,7 +17197,7 @@ function lfRenderBar(){
     const cur = LF.steps[LF.step];
     if(cur === 'matching' || (cur && cur.startsWith('matching_x'))){
       // Повний заголовок вправи (раніше дублювався окремим match-title)
-      nameEl.textContent = t('match_title');
+      nameEl.textContent = t(LF._matchAudio ? 'match_audio_title' : 'match_title');
     } else if(cur === 'dlg_learn' && LF.dlgCards && LF.dlgCards[0] && LF.dlgCards[0].type){
       // Замість завжди-статичного "Dialogue" — реальний тип поточної
       // картки з бази ("Small Talk"/"Gemeinsam etwas planen"/
@@ -17400,41 +17429,86 @@ function lfStartMatching(poolOverride){
   // poolOverride — для запасних раундів (matching_x*), коли цей крок
   // підставлений замість недоступного def/dlg_learn/tiles/sb_prac.
   const pool = poolOverride || (LF.matchCards||[]);
-  const chosen = pool.slice(0, Math.min(5, pool.length));
-  if(chosen.length < 2){
+  const chosenStd = pool.slice(0, Math.min(5, pool.length));
+  if(chosenStd.length < 2){
     lfStepDone(LF.steps[LF.step], 1); return;
   }
-  // Ін'єктуємо у matchState і рендеримо
-  matchState = {
-    cards: chosen.map(c=>({card:c, q:5})),
-    selected: null, matched: 0,
-    firstTry: new Set(chosen.map(c=>c.id)),
-    _lfMode: true,
-  };
-  // Кожна пара — окремий "юніт" для прогрес-бару всього уроку (як і
-  // vocab/dlg/sb) — інакше бар стояв на місці всю вправу і стрибав
-  // одразу на весь крок лише в самому кінці раунду.
-  LF.unitProgress = { done: 0, total: matchState.cards.length };
-  lfRenderBar();
+  // Версія з еквалайзером — лише в основному кроці 'matching' (не в запасних
+  // раундах) і лише коли в модулі є 5 добре знайомих слів (LF.matchAudioCards).
+  const audioPool = (!poolOverride && LF.matchAudioCards && LF.matchAudioCards.length >= 2)
+    ? LF.matchAudioCards.slice(0, 5) : null;
+
   const grid = document.getElementById('match-grid');
   const result = document.getElementById('match-result');
   if(result) result.style.display='none';
+  if(!grid) return;
+  const gen = LF._matchGen = (LF._matchGen||0) + 1;
 
-  const terms  = [...chosen].sort(()=>Math.random()-.5);
-  const shorts = [...chosen].sort(()=>Math.random()-.5);
-  if(grid){
+  // Ін'єктуємо у matchState і рендеримо раунд (audio=true — з еквалайзером)
+  const begin = (chosen, audio)=>{
+    LF._matchAudio = audio;
+    matchState = {
+      cards: chosen.map(c=>({card:c, q:5})),
+      selected: null, matched: 0,
+      firstTry: new Set(chosen.map(c=>c.id)),
+      _lfMode: true,
+    };
+    // Кожна пара — окремий "юніт" для прогрес-бару всього уроку (як і
+    // vocab/dlg/sb) — інакше бар стояв на місці всю вправу і стрибав
+    // одразу на весь крок лише в самому кінці раунду.
+    LF.unitProgress = { done: 0, total: matchState.cards.length };
+    lfRenderBar(); // заодно оновлює назву кроку під вибрану версію
+    const terms  = [...chosen].sort(()=>Math.random()-.5);
+    const shorts = [...chosen].sort(()=>Math.random()-.5);
     // Той самий "шахматковий" перемикач, що й у startMatching() —
-    // див. _matchNeedsStagger і CSS .match-grid.stagger.
-    grid.classList.toggle('stagger', _matchNeedsStagger(matchState.cards));
+    // див. _matchNeedsStagger і CSS .match-grid.stagger. (У версії зі звуком
+    // ліва колонка без тексту — шахматка не потрібна.)
+    grid.classList.toggle('stagger', !audio && _matchNeedsStagger(matchState.cards));
     grid.innerHTML = '';
     const maxLen = Math.max(terms.length, shorts.length);
     for(let i=0;i<maxLen;i++){
-      if(terms[i])  grid.appendChild(matchMakeBtn(terms[i].id,'term', targetText(terms[i]), primaryLang()));
+      if(terms[i]){
+        grid.appendChild(audio
+          ? _lfMakeEqBtn(terms[i], amState.data[terms[i].id])
+          : matchMakeBtn(terms[i].id,'term', targetText(terms[i]), primaryLang()));
+      }
       if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id,'short',nativeText(shorts[i]), uiLang===primaryLang() ? primaryLang() : uiLang));
     }
-  }
-  // Prefetch аудіо всіх DE слів одразу при відкритті
-  matchPrefetchAudio(chosen);
+    // Prefetch аудіо всіх DE слів одразу при відкритті
+    if(!audio) matchPrefetchAudio(chosen);
+  };
+
+  if(!audioPool || typeof _amLoadData !== 'function'){ begin(chosenStd, false); return; }
+
+  // Обвідні звуку беремо з кешу вправи на вимову. Якщо хоч для одного слова
+  // аудіо нема / довго вантажиться (6с) — тихо показуємо класичну версію.
+  grid.innerHTML = '<p style="text-align:center;color:var(--muted);padding:32px 16px;grid-column:1/-1">⏳</p>';
+  Promise.race([
+    Promise.all(audioPool.map(_amLoadData)),
+    new Promise(function(r){ setTimeout(function(){ r(null); }, 6000); }),
+  ]).then(function(loaded){
+    if(!LF || LF._matchGen !== gen) return; // за цей час крок змінився
+    if(loaded && loaded.every(Boolean)){
+      amState.cards = audioPool;
+      amState.data = {};
+      audioPool.forEach(function(c, i){ amState.data[c.id] = loaded[i]; });
+      begin(audioPool, true);
+    } else {
+      begin(chosenStd, false);
+    }
+  }).catch(function(){
+    if(!LF || LF._matchGen !== gen) return;
+    begin(chosenStd, false);
+  });
+}
+
+// Ліва кнопка пари в уроці: клас/логіка як у matchMakeBtn (side 'term'),
+// але замість тексту — еквалайзер зі звуку слова.
+function _lfMakeEqBtn(card, data){
+  const btn = matchMakeBtn(card.id, 'term', '', primaryLang());
+  btn.classList.add('side-audio');
+  btn.innerHTML = _amEqSvg(data.peaks);
+  return btn;
 }
 
 function lfStartChoice(){
