@@ -4634,7 +4634,7 @@ body{
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)"><i data-mi="mic" class="mi-inline"></i>Вимова</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenSpeechDef()"><i data-mi="mic" class="mi-inline"></i>Вимова: довгі фрази (def, 5 фраз)</button>
-        <button class="btn btn-s" style="text-align:left" onclick="spStereoToggle()"><i data-mi="speaker" class="mi-inline"></i>Вимова (def): обидва динаміки — вкл/викл</button>
+        <button class="btn btn-s" style="text-align:left" onclick="spStereoToggle()"><i data-mi="speaker" class="mi-inline"></i>Вимова: обидва динаміки — вкл/викл</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(8)"><i data-mi="pen" class="mi-inline"></i>Вписати слово (набрати пропущене)</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(9)"><i data-mi="speaker" class="mi-inline"></i>Знайди пару: еквалайзер (звук → значення)</button>
       </div>
@@ -4716,7 +4716,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '754-f99d5e1';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15814,7 +15814,9 @@ function _spSfxInfo(){
   try{ return (typeof _sfxCtx !== 'undefined' && _sfxCtx) ? (_sfxCtx.state + '/' + _sfxCtx.sampleRate) : 'none'; }
   catch(e){ return '?'; }
 }
-// ── ЕКСПЕРИМЕНТ «обидва динаміки» (лише def-режим вимови, лише iOS) ─────
+// ── «Обидва динаміки» у вправі на вимову (лише iOS з Audio Session API) ──
+// Увімкнено за замовчуванням у ВСІХ режимах вправи: крок уроку, окрема
+// вкладка «Вимова» і прихована вправа з довгими фразами (def).
 // Веб-сторінка не може вибрати динамік: маршрут звуку визначає iOS за ТИПОМ
 // аудіо-сесії. Поки сесія в режимі запису (play-and-record — а вправа її
 // навмисно тримає "теплою" для надійного старту розпізнавання), iPhone грає
@@ -15823,13 +15825,11 @@ function _spSfxInfo(){
 // Тут перемикаємо тип явно: 'playback' перед озвученням зразка, 'play-and-record'
 // перед розпізнаванням, і 'playback' (а не 'auto') після нього. Усе пишеться
 // у Speech Log (Налаштування → Налагодження), щоб бачити, що прийняв браузер.
-// Діє тільки у вправі з def-фразами; увімкнено за замовчуванням, вимикається
-// кнопкою в Налагодженні (ключ localStorage mova_sp_stereo = '0').
+// Вимикається кнопкою в Налагодженні (ключ localStorage mova_sp_stereo = '0').
 const SP_STEREO_KEY = 'mova_sp_stereo';
 function spStereoOn(){
   try{
     if(!('audioSession' in navigator) || !_spIsIOS()) return false;
-    if(typeof spState === 'undefined' || !spState || spState.field !== 'def') return false;
     return localStorage.getItem(SP_STEREO_KEY) !== '0';
   }catch(e){ return false; }
 }
@@ -15838,7 +15838,7 @@ function spStereoToggle(){
   try{ on = localStorage.getItem(SP_STEREO_KEY) !== '0'; }catch(e){}
   on = !on;
   try{ localStorage.setItem(SP_STEREO_KEY, on ? '1' : '0'); }catch(e){}
-  notify('Вимова (def): режим «обидва динаміки» ' + (on ? 'УВІМКНЕНО' : 'ВИМКНЕНО'));
+  notify('Вимова: режим «обидва динаміки» ' + (on ? 'УВІМКНЕНО' : 'ВИМКНЕНО'));
 }
 // Повернення аудіо-сесії в режим програвання після розпізнавання.
 function spRestoreAudioSession(){ spSetType(spStereoOn() ? 'playback' : 'auto', 'post'); }
@@ -15988,15 +15988,73 @@ function _spTranslText(card){
   var r = (o && (o[ul] || o.uk)) || '';
   return f === 'def' ? _spCleanDef(r) : r;
 }
+// 5 фраз із def: 4–20 слів (коротші — це вже не "фраза", довші розпізнавач
+// зазвичай не втримує), за SM-2 пріоритетом з випадковим перемішуванням.
+function _spPickDefCards(n){
+  const cf = document.getElementById('vf-cat')?.value || 'all';
+  const pool = (typeof VOCAB !== 'undefined' ? VOCAB : []).filter(v => {
+    if(cf !== 'all' && v.cat !== cf) return false;
+    const raw = v.def && v.def[primaryLang()];
+    if(!raw) return false;
+    const w = _spCleanDef(raw).split(' ').filter(Boolean).length;
+    return w >= 4 && w <= 20;
+  });
+  const st = srLoadState();
+  pool.sort((a,b) => srPriorityFromState(st,b.id) - srPriorityFromState(st,a.id));
+  return pool.slice(0, Math.min(n * 3, pool.length)).sort(() => Math.random() - .5).slice(0, n);
+}
+
+// Прихована вправа «Вимова: довгі фрази» у ФОРМАТІ УРОКУ: верхній блок і нижнє
+// меню сховано, угорі смуга уроку з прогресом і хрестиком, у кінці — свій
+// підсумок. Це «одноетапний урок» (LF.solo): нічого не зараховується — ні
+// стрік, ні XP, ні SM-2. ✕ веде назад у Налаштування (LF.soloReturn).
 function debugOpenSpeechDef(){
-  _spNextField = 'def';
+  const cards = _spPickDefCards(5);
+  if(!cards.length){ notify('Немає карток з def-фразами'); return; }
+  const ttl = {
+    uk:'Вимова: довгі фрази', de:'Aussprache: lange Sätze',
+    en:'Pronunciation: long phrases', ru:'Произношение: длинные фразы',
+  };
+  LF = {
+    lessonId: '__debug_speech_def', lesson: { id:'__debug_speech_def', title: ttl },
+    cards: [], speechCards: cards, speechField: 'def',
+    steps: ['speech'], step: 0, results: {}, unitProgress: null,
+    solo: true, soloReturn: 'settings', _recorded: true,
+  };
   showView('vocab');
-  switchVocabTab(7);
+  lfRenderBar();
+  lfGoStep(0);
+}
+
+// Підсумок «одноетапного уроку» (вправа на вимову def): ті самі стилі, що й
+// звичайний підсумок вимови, але кнопки ведуть не у вкладку Картки.
+function spSoloFinish(){
+  const pct = spState.totalCount ? Math.round(spState.correctCount / spState.totalCount * 100) : 0;
+  document.getElementById('tiles-result-overlay')?.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'tiles-result-overlay';
+  overlay.className = 'tiles-result-overlay';
+  overlay.innerHTML = `
+    <div class="tiles-result-sheet" style="gap:16px">
+      <div>${animIconBox(pct>=80?'trophy':pct>=55?'sprout':'repeat',60)}</div>
+      <div class="sp-result-title">${t('sp_done_title')}</div>
+      <div style="background:var(--soft);border-radius:16px;padding:12px 20px;width:100%;box-sizing:border-box;text-align:center">
+        <div class="sp-result-pct" style="color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
+        <div class="sp-result-count">${t('sp_score_of').replace('{a}', spState.correctCount).replace('{b}', spState.totalCount)}</div>
+      </div>
+      <button class="tiles-result-btn ok" id="sp-again-btn">${t('sp_again')}</button>
+      <button class="tiles-result-btn nok" id="sp-finish-btn">${t('sp_finish')}</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('sp-again-btn')?.addEventListener('click', () => { overlay.remove(); exitLessonFlow(); debugOpenSpeechDef(); });
+  document.getElementById('sp-finish-btn')?.addEventListener('click', () => { overlay.remove(); exitLessonFlow(); });
 }
 
 function startSpeech(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const field = (_spNextField === 'def' && !(LF && LF.steps && LF.steps[LF.step] === 'speech')) ? 'def' : 'term';
+  const _inLessonStep = !!(LF && LF.steps && LF.steps[LF.step] === 'speech');
+  const field = _inLessonStep ? (LF.speechField === 'def' ? 'def' : 'term')
+                              : (_spNextField === 'def' ? 'def' : 'term');
   _spNextField = 'term';
 
   // Крок «Вимова» уроку: слова цього уроку (LF.speechCards), у порядку вибірки уроку.
@@ -16004,22 +16062,11 @@ function startSpeech(){
   const inLesson = !!(LF && LF.steps && LF.steps[LF.step] === 'speech' && LF.speechCards);
   let cards;
   if(inLesson){
-    cards = LF.speechCards.filter(c => c.term && c.term[primaryLang()]);
+    cards = LF.speechCards.filter(c => field === 'def' ? (c.def && c.def[primaryLang()]) : (c.term && c.term[primaryLang()]));
   } else if(field === 'def'){
     // 5 фраз із def: 4–20 слів (коротші — це вже не "фраза", довші розпізнавач
     // зазвичай не втримує), за SM-2 пріоритетом з випадковим перемішуванням.
-    const cf = document.getElementById('vf-cat')?.value || 'all';
-    let pool = (typeof VOCAB !== 'undefined' ? VOCAB : []).filter(v => {
-      if(cf !== 'all' && v.cat !== cf) return false;
-      const raw = v.def && v.def[primaryLang()];
-      if(!raw) return false;
-      const n = _spCleanDef(raw).split(' ').filter(Boolean).length;
-      return n >= 4 && n <= 20;
-    });
-    const _srState = srLoadState();
-    pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
-    cards = pool.slice(0, Math.min(15, pool.length))
-      .sort(() => Math.random() - .5).slice(0, 5);
+    cards = _spPickDefCards(5);
   } else {
     const cf = document.getElementById('vf-cat')?.value || 'all';
     let pool = (typeof VOCAB !== 'undefined' ? VOCAB : [])
@@ -16684,7 +16731,10 @@ function spLessonShowFinish(){
 // «Завершити»: вимкнути мікрофон і перейти до підсумку уроку.
 function spLessonFinish(){
   const score = spState.totalCount ? spState.correctCount / spState.totalCount : 1;
+  const _solo = !!(LF && LF.solo);
+  const _snap = { correctCount: spState.correctCount, totalCount: spState.totalCount };
   spExit();                                   // мікрофон вимкнено (spShutdownMic)
+  if(_solo){ spState = Object.assign({}, spState, _snap); spSoloFinish(); return; }
   if(LF){ LF.results.speech = score; lfNextStep(); }
 }
 // Без мікрофона (немає дозволу / розпізнавання недоступне) в уроці не можна застрягти: дозволяємо йти далі.
@@ -21764,6 +21814,7 @@ function abandonLessonFlow(){
 }
 
 function exitLessonFlow(){
+  const _soloReturn = LF && LF.soloReturn;   // «одноетапний урок» (прихована вправа) — назад, звідки запущено
   if(typeof spExit === 'function') spExit();   // вихід з уроку посеред вправи «Вимова»: вимкнути мікрофон
   // Зарахування уроку (стрік, subtestStats, час) відбувається ВИКЛЮЧНО в
   // lfShowResult() — рівно тоді, коли урок СПРАВДІ повністю пройдено
@@ -21854,7 +21905,7 @@ function exitLessonFlow(){
   // лишаються невидимими (visibility:hidden), поки анімація не
   // дограє (див. lfShowResult()) — тобто ця функція вже фізично не може
   // бути викликана ЦИМ шляхом раніше, ніж анімація завершиться.
-  showView('lernpfad');
+  showView(_soloReturn || 'lernpfad');
   switchVocabTab(0);
 }
 
