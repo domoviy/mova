@@ -4634,6 +4634,7 @@ body{
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)"><i data-mi="mic" class="mi-inline"></i>Вимова</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenSpeechDef()"><i data-mi="mic" class="mi-inline"></i>Вимова: довгі фрази (def, 5 фраз)</button>
+        <button class="btn btn-s" style="text-align:left" onclick="spStereoToggle()"><i data-mi="speaker" class="mi-inline"></i>Вимова (def): обидва динаміки — вкл/викл</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(8)"><i data-mi="pen" class="mi-inline"></i>Вписати слово (набрати пропущене)</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(9)"><i data-mi="speaker" class="mi-inline"></i>Знайди пару: еквалайзер (звук → значення)</button>
       </div>
@@ -4715,7 +4716,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '751-c9810b8';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15741,7 +15742,7 @@ function _spLogHeader(){
   _spLogPush(`env: standalone=${standalone} audioSession=${('audioSession' in n) ? spAS() : 'n/a'} gUM=${!!(n.mediaDevices && n.mediaDevices.getUserMedia)} ` +
     `worklet=${typeof AudioWorkletNode !== 'undefined'} SR=${!!(window.SpeechRecognition || window.webkitSpeechRecognition)} ` +
     `secure=${window.isSecureContext}`);
-  _spLogPush(`flush=${spFlushEnabled()}`);
+  _spLogPush(`flush=${spFlushEnabled()} stereoExperiment=${(function(){ try{ return localStorage.getItem(SP_STEREO_KEY) !== '0'; }catch(e){ return '?'; } })()}`);
   try{
     if(n.audioSession && n.audioSession.addEventListener)
       n.audioSession.addEventListener('statechange', () => _spLogPush('AS event: statechange → ' + spAS()));
@@ -15813,8 +15814,34 @@ function _spSfxInfo(){
   try{ return (typeof _sfxCtx !== 'undefined' && _sfxCtx) ? (_sfxCtx.state + '/' + _sfxCtx.sampleRate) : 'none'; }
   catch(e){ return '?'; }
 }
+// ── ЕКСПЕРИМЕНТ «обидва динаміки» (лише def-режим вимови, лише iOS) ─────
+// Веб-сторінка не може вибрати динамік: маршрут звуку визначає iOS за ТИПОМ
+// аудіо-сесії. Поки сесія в режимі запису (play-and-record — а вправа її
+// навмисно тримає "теплою" для надійного старту розпізнавання), iPhone грає
+// лише через нижній динамік. Режим 'playback' — звичайне відтворення медіа,
+// де iOS сам вирішує, чи вмикати і верхній (розмовний) динамік.
+// Тут перемикаємо тип явно: 'playback' перед озвученням зразка, 'play-and-record'
+// перед розпізнаванням, і 'playback' (а не 'auto') після нього. Усе пишеться
+// у Speech Log (Налаштування → Налагодження), щоб бачити, що прийняв браузер.
+// Діє тільки у вправі з def-фразами; увімкнено за замовчуванням, вимикається
+// кнопкою в Налагодженні (ключ localStorage mova_sp_stereo = '0').
+const SP_STEREO_KEY = 'mova_sp_stereo';
+function spStereoOn(){
+  try{
+    if(!('audioSession' in navigator) || !_spIsIOS()) return false;
+    if(typeof spState === 'undefined' || !spState || spState.field !== 'def') return false;
+    return localStorage.getItem(SP_STEREO_KEY) !== '0';
+  }catch(e){ return false; }
+}
+function spStereoToggle(){
+  let on = true;
+  try{ on = localStorage.getItem(SP_STEREO_KEY) !== '0'; }catch(e){}
+  on = !on;
+  try{ localStorage.setItem(SP_STEREO_KEY, on ? '1' : '0'); }catch(e){}
+  notify('Вимова (def): режим «обидва динаміки» ' + (on ? 'УВІМКНЕНО' : 'ВИМКНЕНО'));
+}
 // Повернення аудіо-сесії в режим програвання після розпізнавання.
-function spRestoreAudioSession(){ spSetType('auto', 'post'); }
+function spRestoreAudioSession(){ spSetType(spStereoOn() ? 'playback' : 'auto', 'post'); }
 
 // Діагностика програвання TTS: події спільного <audio> у лог, лише поки
 // відкрита вправа "Вимова". vol/muted показують, що елемент сам у нормі —
@@ -16034,6 +16061,7 @@ function spExit(){
   spFlushCancel();
   try{ spWaveStop(); }catch(e){}
   spShutdownMic('exit');
+  if(spStereoOn()) spSetType('auto', 'stereo-exit');
   _spActive = false;
   spHb('exited');
   spL('exit speech');
@@ -16278,7 +16306,8 @@ function spPlayPhrase(card, tag){
   const tok = _spTok, t0 = performance.now();
   Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(() => r('timeout'), 3500)) ]).then((r) => {
     if(tok !== _spTok || !_spActive) return;
-    spL(`play phrase[${tag}]: gate ${r === 'timeout' ? 'TIMEOUT' : 'released'} after ${Math.round(performance.now() - t0)}ms AS=${spAS()}`);
+    spL(`play phrase[${tag}]: gate ${r === 'timeout' ? 'TIMEOUT' : 'released'} after ${Math.round(performance.now() - t0)}ms AS=${spAS()} stereo=${spStereoOn()}`);
+    if(spStereoOn()) spSetType('playback', 'stereo-play');
     playPregenAudio(url, null, ++playGen, null, spWavePlay);
   });
 }
@@ -16363,6 +16392,8 @@ function spStartRecord(){
   if(_spWaveRAF){ cancelAnimationFrame(_spWaveRAF); _spWaveRAF = null; }
   spVoiceStart();
 
+  // Експеримент "обидва динаміки": на час розпізнавання явно просимо режим запису
+  if(spStereoOn()) spSetType('play-and-record', 'stereo-rec');
   // Невелика затримка щоб браузер закрив аудіо-сесію
   setTimeout(() => spTryStart(SR, mb, lbl, 0), 150);
 }
