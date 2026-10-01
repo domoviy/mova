@@ -1097,6 +1097,61 @@ body{
    біле; done (золотий фон) — лісове; locked — приглушене. */
 .mi{ width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block;flex-shrink:0; }
 /* в потоці тексту (чіпи "▶ Почати", заголовки): іконка як перший "символ" рядка */
+.mi.mi-fill{ fill:currentColor; }
+/* ══ АНІМОВАНІ ІКОНКИ ЗАВЕРШЕННЯ (movaAnimIcon) ═══════════════════════
+   Ті самі монолінійні іконки, що й скрізь, але з \"життям\": контури
+   домальовуються по черзі (miDraw), акценти спалахують (miPop) і
+   мерехтять (miTwinkle). Колір: --mi-accent — другий, золотий/білий,
+   основний береться з color. Усе вимикається при prefers-reduced-motion. */
+.mi-anim{ overflow:visible; }
+.mi-anim .a-d{ stroke-dasharray:1; stroke-dashoffset:0; animation:miDraw .65s cubic-bezier(.5,.05,.2,1) both; }
+.mi-anim .a-d:nth-of-type(2){ animation-delay:.12s; }
+.mi-anim .a-d:nth-of-type(3){ animation-delay:.24s; }
+.mi-anim .a-d:nth-of-type(4){ animation-delay:.36s; }
+.mi-anim .a-d:nth-of-type(5){ animation-delay:.48s; }
+.mi-anim .a-d:nth-of-type(6){ animation-delay:.60s; }
+.mi-anim .a-accent{ stroke:var(--mi-accent,var(--gold)); }
+.mi-anim .a-fill{ fill:var(--mi-accent,var(--gold)); stroke-width:.8; }
+.mi-anim .a-gem{ stroke-width:3.4; }
+.mi-anim .a-pop,.mi-anim .a-tw{ transform-box:fill-box; transform-origin:center; }
+.mi-anim .a-pop{ animation:miPop .5s cubic-bezier(.34,1.56,.64,1) .55s both; }
+.mi-anim .a-pop.a-p2{ animation-delay:.7s; }
+.mi-anim .a-pop.a-p3{ animation-delay:.85s; }
+.mi-anim .a-tw{ animation:miTwinkle 1.9s ease-in-out .9s infinite; }
+.mi-anim .a-tw.a-t1{ animation-delay:1.3s; }
+.mi-anim .a-tw.a-t2{ animation-delay:1.9s; }
+/* Паросток злегка гойдається після того, як виріс */
+.mi-a-sprout{ transform-box:fill-box; transform-origin:50% 92%; animation:miSway 3.2s ease-in-out 1.2s infinite; }
+/* Бульбашка діалогу: хвиля всередині ледь \"говорить\" */
+.mi-a-bubble .a-d:nth-of-type(2){ animation:miDraw .65s cubic-bezier(.5,.05,.2,1) .12s both, miNudge 1.6s ease-in-out 1.2s infinite; }
+@keyframes miDraw{ 0%{ stroke-dashoffset:1; opacity:0; } 2%{ opacity:1; } 100%{ stroke-dashoffset:0; opacity:1; } }
+@keyframes miPop{ 0%{ transform:scale(0); opacity:0; } 60%{ transform:scale(1.25); opacity:1; } 100%{ transform:scale(1); opacity:1; } }
+@keyframes miTwinkle{ 0%,100%{ transform:scale(.55); opacity:.25; } 50%{ transform:scale(1); opacity:1; } }
+@keyframes miFloat{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-4px); } }
+@keyframes miSway{ 0%,100%{ transform:rotate(-3deg); } 50%{ transform:rotate(3deg); } }
+@keyframes miNudge{ 0%,100%{ transform:translateX(-.7px); } 50%{ transform:translateX(.7px); } }
+@media (prefers-reduced-motion:reduce){
+  .mi-anim,.mi-anim *{ animation:none !important; }
+}
+/* Розміри/кольори в конкретних екранах */
+.lr-burst-icon .mi{ width:66px;height:66px;stroke-width:1.5;color:var(--forest);--mi-accent:var(--gold); }
+.lr-burst-icon .mi-anim{ animation:miFloat 2.6s ease-in-out 1.1s infinite; }
+.lr-burst-icon .mi-a-sprout{ animation:miSway 3.2s ease-in-out 1.2s infinite; }
+.mc-trophy .mi{ width:92px;height:92px;stroke-width:1.4;color:#ffd980;--mi-accent:#fff; }
+.cc-crown .mi{ width:108px;height:108px;stroke-width:1.35;color:#ffd980;--mi-accent:#fff; }
+.mi-box{ display:inline-block;width:var(--s,48px);height:var(--s,48px);color:var(--forest);--mi-accent:var(--gold); }
+.mi-box.on-dark{ color:#ffd980;--mi-accent:#fff; }
+.mi-box .mi{ width:100%;height:100%;stroke-width:1.5; }
+.cc-confetti-piece .mi{ width:1em;height:1em;display:block; }
+.vplay .mi{ width:22px;height:22px; }
+.vstop .mi{ width:17px;height:17px; }
+.vseq .mi{ width:21px;height:21px; }
+.vlang-btn > .mi{ width:21px;height:21px;margin:0; }
+.vtab .mi{ display:inline-block;width:1.45em;height:1.45em;vertical-align:-.3em; }
+.fc-fav .mi,.fc-fav-back .mi,.lf-unit-fav .mi{ width:22px;height:22px; }
+.lf-exit .mi{ width:20px;height:20px; }
+.grammar-rule-fs-back .mi{ width:22px;height:22px; }
+.mi-x22{ width:22px;height:22px; }
 .mi.mi-inline{ display:inline-block;width:.95em;height:.95em;vertical-align:-.14em;margin-right:.35em; }
 .lp-node{ color:var(--gold); }
 .lp-node.lp-node-smalltalk,.lp-node.lp-node-problemsolving,.lp-node.lp-node-forum,.lp-node.lp-node-email{ color:#fff; }
@@ -3794,7 +3849,7 @@ body{
         Таймер рахує ВНИЗ від старту (не від вибору теми); звуковий
         сигнал по завершенню (синтезований Web Audio API). -->
 <div id="exam-sim-briefing" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
-  <button onclick="closeExamSimBriefing()" title="Закрити" data-i18n-title="exam_sim_close" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
+  <button onclick="closeExamSimBriefing()" title="Закрити" data-i18n-title="exam_sim_close" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px"><i data-mi="cross" class="mi-x22"></i></button>
   <div style="width:100%;max-width:380px;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:24px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;max-height:80vh;overflow-y:auto">
     <div style="text-align:center">
       <div style="font-size:36px;margin-bottom:10px">✍️</div>
@@ -3818,7 +3873,7 @@ body{
   <div style="display:flex;align-items:center;justify-content:space-between;padding:calc(env(safe-area-inset-top,0px) + 16px) 20px 12px">
     <div style="width:34px"></div>
     <div id="exam-sim-countdown" style="color:var(--gold);font-size:var(--fs-emphasis);font-weight:800;font-variant-numeric:tabular-nums">20:00</div>
-    <button onclick="closeExamSimTest()" title="Закрити завдання" data-i18n-title="exam_sim_close_task" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px">✕</button>
+    <button onclick="closeExamSimTest()" title="Закрити завдання" data-i18n-title="exam_sim_close_task" style="background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px"><i data-mi="cross" class="mi-x22"></i></button>
   </div>
   <div id="exam-sim-timeup-banner" data-i18n="exam_sim_timeup" style="display:none;font-size:var(--fs-tertiary);margin:0 20px 4px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:10px 14px;text-align:center;color:var(--gold);font-weight:700">⏰ Час вийшов!</div>
 
@@ -3946,7 +4001,7 @@ body{
 <div id="lesson-flow-bar">
   <div class="lf-header">
     <div class="lf-title" id="lf-title"></div>
-    <button class="lf-exit" onclick="exitLessonFlow()" title="Урок завершити">✕</button>
+    <button class="lf-exit" onclick="exitLessonFlow()" title="Урок завершити"><i data-mi="cross"></i></button>
   </div>
   <div class="lf-steps" id="lf-steps"></div>
   <div class="lf-step-label"><span id="lf-step-name"></span></div>
@@ -3968,7 +4023,7 @@ body{
         <div class="cc-confetti" id="cc-confetti"></div>
         <div class="cc-rays"></div>
         <div class="cc-inner">
-          <div class="cc-crown">👑</div>
+          <div class="cc-crown"><i data-mi="crown" data-anim></i></div>
           <div class="cc-title" id="cc-title"></div>
           <div class="cc-chapter-name" id="cc-chapter-name"></div>
           <div class="cc-hint" id="cc-hint"></div>
@@ -3988,7 +4043,7 @@ body{
       <div id="module-celebration" onclick="_dismissModuleCelebration()">
         <div class="mc-confetti" id="mc-confetti"></div>
         <div class="mc-inner">
-          <div class="mc-trophy">🏆</div>
+          <div class="mc-trophy"><i data-mi="trophy" data-anim></i></div>
           <div class="mc-title" id="mc-title"></div>
           <div class="mc-module-name" id="mc-module-name"></div>
           <div class="mc-hint" id="mc-hint"></div>
@@ -4011,7 +4066,7 @@ body{
       <div id="lesson-result" onclick="_dismissLessonCelebration()">
         <div class="lr-burst" id="lr-burst">
           <span class="lr-burst-ring"></span>
-          <span class="lr-burst-icon" id="lr-emoji">✓</span>
+          <span class="lr-burst-icon" id="lr-emoji"><i data-mi="check" data-anim></i></span>
         </div>
         <div class="lr-title" id="lr-title"></div>
         <div class="lr-sub" id="lr-sub"></div>
@@ -4039,10 +4094,10 @@ body{
 
       <div class="vocab-top">
         <div class="vplayer">
-          <button class="vplay" id="vplaybtn" onclick="toggleVocabListenMode()">▶</button>
-          <button class="vstop" onclick="stopVocabListenMode()">⏹</button>
-          <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()">🧠</button>
-          <button class="vlang-btn" id="vplayboth-btn" onclick="cycleVocabPlaySide()" title="Передня / обидві / задня">1️⃣</button>
+          <button class="vplay" id="vplaybtn" onclick="toggleVocabListenMode()"><i data-mi="play"></i></button>
+          <button class="vstop" onclick="stopVocabListenMode()"><i data-mi="stop"></i></button>
+          <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()"><i data-mi="brain"></i></button>
+          <button class="vlang-btn" id="vplayboth-btn" onclick="cycleVocabPlaySide()" title="Передня / обидві / задня"><i data-mi="side_front"></i></button>
           <div class="vlang-grp">
             <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')"><i data-flag="de"></i>DE</button>
             <button class="vlang-btn on"  id="vlcard-en" onclick="toggleVocabLang('en')"><i data-flag="en"></i>EN</button>
@@ -4052,8 +4107,8 @@ body{
           <select id="vf-cat" onchange="resetVocabQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
         <div class="vtab-bar" id="vocab-tabs">
-          <button class="vtab active" onclick="switchVocabTab(0)">🃏</button>
-          <button class="vtab" onclick="switchVocabTab(1)">📋</button>
+          <button class="vtab active" onclick="switchVocabTab(0)"><i data-mi="book"></i></button>
+          <button class="vtab" onclick="switchVocabTab(1)"><i data-mi="list"></i></button>
         </div>
         <div class="vchips" id="vchips" style="display:none"></div>
       </div>
@@ -4270,9 +4325,9 @@ body{
 
       <div class="vocab-top" id="sb-vocab-top">
         <div class="vplayer">
-          <button class="vplay" id="sb-play-btn" onclick="sbTogglePlay()">▶</button>
-          <button class="vstop" onclick="sbStopPlay()">⏹</button>
-          <button class="vseq smart" id="sb-vshuffle-btn" onclick="sbCycleSort()" title="Sortiermodus">🧠</button>
+          <button class="vplay" id="sb-play-btn" onclick="sbTogglePlay()"><i data-mi="play"></i></button>
+          <button class="vstop" onclick="sbStopPlay()"><i data-mi="stop"></i></button>
+          <button class="vseq smart" id="sb-vshuffle-btn" onclick="sbCycleSort()" title="Sortiermodus"><i data-mi="brain"></i></button>
           <div class="vlang-grp">
             <button class="vlang-btn on"  id="sblang-de" onclick="sbToggleLang('de')"><i data-flag="de"></i>DE</button>
             <button class="vlang-btn on"  id="sblang-en" onclick="sbToggleLang('en')"><i data-flag="en"></i>EN</button>
@@ -4282,9 +4337,9 @@ body{
         </div>
         <div class="vchips" id="sb-cat-chips"></div>
         <div class="vtab-bar" id="sb-tabs-bar">
-          <button class="vtab active" id="sbt-learn"    onclick="sbSetMode('learn')">📖 Lernen</button>
-          <button class="vtab"        id="sbt-practice" onclick="sbSetMode('practice')">🎯 Üben</button>
-          <button class="vtab"        id="sbt-exam"     onclick="sbSetMode('exam')">📝 Prüfung</button>
+          <button class="vtab active" id="sbt-learn"    onclick="sbSetMode('learn')"><i data-mi="book" class="mi-inline"></i>Lernen</button>
+          <button class="vtab"        id="sbt-practice" onclick="sbSetMode('practice')"><i data-mi="target" class="mi-inline"></i>Üben</button>
+          <button class="vtab"        id="sbt-exam"     onclick="sbSetMode('exam')"><i data-mi="clipboard" class="mi-inline"></i>Prüfung</button>
         </div>
       </div>
 
@@ -4294,7 +4349,7 @@ body{
           <div class="flashcard" id="sb-flashcard">
             <div class="fc-face fc-front">
               <div class="fc-header">
-                <button class="fc-fav" id="sb-fav-front">☆</button>
+                <button class="fc-fav" id="sb-fav-front"><i data-mi="star"></i></button>
                 <div class="fc-cat" id="sb-fc-cat"></div>
               </div>
               <div class="fc-body" id="sb-front-body"></div>
@@ -4302,7 +4357,7 @@ body{
             </div>
             <div class="fc-face fc-back">
               <div class="fc-back-header">
-                <button class="fc-fav-back" id="sb-fav-back">☆</button>
+                <button class="fc-fav-back" id="sb-fav-back"><i data-mi="star"></i></button>
                 <div class="fc-back-term" id="sb-back-answer"></div>
               </div>
               <div class="fc-body" id="sb-back-body" style="overflow-y:auto"></div>
@@ -4370,9 +4425,9 @@ body{
 
       <div class="vocab-top">
         <div class="vplayer" style="display:none">
-          <button class="vplay" id="dlgplaybtn" onclick="toggleDialogue()">▶</button>
-          <button class="vstop" onclick="stopDialogue()">⏹</button>
-          <button class="vseq smart" id="dlgshuffle-btn" onclick="cycleDialogueMode()">🧠</button>
+          <button class="vplay" id="dlgplaybtn" onclick="toggleDialogue()"><i data-mi="play"></i></button>
+          <button class="vstop" onclick="stopDialogue()"><i data-mi="stop"></i></button>
+          <button class="vseq smart" id="dlgshuffle-btn" onclick="cycleDialogueMode()"><i data-mi="brain"></i></button>
           <div class="vlang-grp">
             <button class="vlang-btn on"  id="dlglang-de" onclick="toggleDialogueLang('de')"><i data-flag="de"></i>DE</button>
             <button class="vlang-btn on"  id="dlglang-en" onclick="toggleDialogueLang('en')"><i data-flag="en"></i>EN</button>
@@ -4382,8 +4437,8 @@ body{
           <select id="dlgf-cat" onchange="resetDialogueQ()" style="display:none"><option value="all">Alle</option></select>
         </div>
         <div class="vtab-bar" id="dialogue-tabs">
-          <button class="vtab active" onclick="switchDialogueTab(0)">🃏</button>
-          <button class="vtab" onclick="switchDialogueTab(1)">📋</button>
+          <button class="vtab active" onclick="switchDialogueTab(0)"><i data-mi="book"></i></button>
+          <button class="vtab" onclick="switchDialogueTab(1)"><i data-mi="list"></i></button>
         </div>
         <div class="vchips" id="dlgchips" style="display:none"></div>
       </div>
@@ -4660,7 +4715,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '750-1da0273';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5391,6 +5446,23 @@ var MOVA_ICONS = {
   repeat: '<path d="M4.5 11.5V10a3 3 0 0 1 3-3h10.6M15.6 4.4 18.4 7l-2.8 2.6"/><path d="M19.5 12.5V14a3 3 0 0 1-3 3H5.9M8.4 19.6 5.6 17l2.8-2.6"/>',
   // наступна тема — «пропустити вперед»: трикутник + вертикальна риска
   skipnext:'<path d="M6 6.4 14 12l-8 5.6z"/><path d="M18 6v12"/>',
+  // ── Святкування (екрани завершення): класи a-* керують анімацією, коли іконку
+  // вставлено через movaAnimIcon(); у звичайному movaIcon() вони інертні. ──
+  trophy:    '<path d="M8.2 4.6h7.6v5.1a3.8 3.8 0 0 1-7.6 0z"/><path d="M8.2 6.4H5.9a.9.9 0 0 0-.9.9c0 2.1 1.5 3.4 3.4 3.7"/><path d="M15.8 6.4h2.3a.9.9 0 0 1 .9.9c0 2.1-1.5 3.4-3.4 3.7"/><path d="M12 13.5v3.5M9.4 19.6h5.2M10.3 17h3.4"/><path class="a-accent a-fill a-pop" d="M12 6.8l.75 1.55 1.7.25-1.23 1.2.29 1.7L12 10.7l-1.51.8.29-1.7-1.23-1.2 1.7-.25z"/><path class="a-accent a-tw a-t1" d="M20 2.8v2.6M18.7 4.1h2.6"/><path class="a-accent a-tw a-t2" d="M3.6 2.4v2M2.6 3.4h2"/>',
+  crown:     '<path d="M4.6 18.4 3.6 8.2 8.4 12.4 12 6.2l3.6 6.2 4.8-4.2-1 10.2z"/><path d="M5.6 21h12.8"/><path class="a-accent a-gem a-pop" d="M3.6 5.8h.01"/><path class="a-accent a-gem a-pop a-p2" d="M12 3.6h.01"/><path class="a-accent a-gem a-pop a-p3" d="M20.4 5.8h.01"/>',
+  party:     '<path d="M3.8 20.2 7.4 8.8l8 8z"/><path d="M5.9 14.6l3.6 3.6"/><path class="a-d a-accent" d="M12.4 8.2c.7-1.7.6-3.1-.3-4.2"/><path class="a-d a-accent" d="M16.2 12c1.9-.9 3.4-.8 4.6.1"/><path class="a-accent a-gem a-pop" d="M19.2 6.6h.01"/><path class="a-accent a-gem a-pop a-p2" d="M20.2 16.6h.01"/><path class="a-accent a-gem a-pop a-p3" d="M16.2 4.2h.01"/>',
+  sprout:    '<path d="M12 20.2v-8.4"/><path d="M12 13.6c0-3.5-2.5-5.7-6.4-5.7 0 3.5 2.5 5.7 6.4 5.7z"/><path d="M12 11.6c0-3.4 2.4-5.4 6.2-5.4 0 3.4-2.4 5.4-6.2 5.4z"/><path d="M7.4 20.2h9.2"/><path class="a-accent a-tw a-t1" d="M19.6 12.4v2.2M18.5 13.5h2.2"/>',
+  // ── плеєр, режими, вкладки (замість емодзі/гліфів) ──
+  pause:     '<rect fill="currentColor" x="6.6" y="5.6" width="3.4" height="12.8" rx="1.1"/><rect fill="currentColor" x="14" y="5.6" width="3.4" height="12.8" rx="1.1"/>',
+  shuffle:   '<path d="M3.8 7.2h2.9c3.4 0 4.6 9.6 8.4 9.6h3.4M3.8 16.8h2.9c1.5 0 2.6-1.1 3.5-2.7M13.2 9.9c.8-1.6 1.9-2.7 3.5-2.7h2.8"/><path d="M17 4.6l2.6 2.6L17 9.8M17 14.2l2.6 2.6-2.6 2.6"/>',
+  arrowright: '<path d="M4.6 12h14.4M13.6 6.6 19 12l-5.4 5.4"/>',
+  back:      '<path d="M19.4 12H5M10.4 6.6 5 12l5.4 5.4"/>',
+  list:      '<path d="M9.4 6.6H20M9.4 12H20M9.4 17.4H20"/><path d="M4.8 6.6h.01M4.8 12h.01M4.8 17.4h.01"/>',
+  brain:     '<path d="M12 5.6v13.2"/><path d="M12 5.8a2.9 2.9 0 0 0-5.5-.9 2.9 2.9 0 0 0-2 4.4 3.1 3.1 0 0 0 .5 5.3 3.1 3.1 0 0 0 4.4 3 2.7 2.7 0 0 0 2.6-1.9"/><path d="M12 5.8a2.9 2.9 0 0 1 5.5-.9 2.9 2.9 0 0 1 2 4.4 3.1 3.1 0 0 1-.5 5.3 3.1 3.1 0 0 1-4.4 3A2.7 2.7 0 0 1 12 16.7"/><path d="M8.3 10.2c1 .1 1.7.8 1.9 1.6M15.7 10.2c-1 .1-1.7.8-1.9 1.6"/>',
+  side_front: '<path opacity=".35" d="M8.5 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5"/><path d="M5.5 8h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/>',
+  side_both: '<path d="M8.5 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5"/><path d="M5.5 8h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/>',
+  side_back: '<path d="M8.5 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5"/><path opacity=".35" d="M5.5 8h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/>',
+  // puzzle/arrow/ліва стрілка «назад» — back; список — list; мозок — brain
 };
 // "▶ Текст" з локалізованих рядків → монолінійна іконка play + текст.
 // Рядки лишаються з ▶ (їх використовують і textContent-місця), а в HTML-чіпи
@@ -5414,7 +5486,7 @@ function hydrateMovaIcons(root){
     var name = el.getAttribute('data-mi');
     var cls = 'mi' + (el.className ? ' ' + el.className : '');
     var tmp = document.createElement('span');
-    tmp.innerHTML = movaIcon(name, cls.replace(/^mi\s*/, ''));
+    tmp.innerHTML = el.hasAttribute('data-anim') ? movaAnimIcon(name, cls.replace(/^mi\s*/, '')) : movaIcon(name, cls.replace(/^mi\s*/, ''));
     var svg = tmp.firstChild;
     if(svg) el.replaceWith(svg);
   });
@@ -5438,10 +5510,42 @@ function _iconizeText(msg){
   return s
     .replace(/\uD800\uDF0C/g, movaIcon('mpoint','mi mi-inline'))   // 𐌌 U+1030C
     .replace(/\uD83E\uDDCA/g, movaIcon('snowflake','mi mi-inline')) // 🧊
+    .replace(/\u2605/g, movaIcon('star','mi mi-inline mi-fill'))     // ★
+    .replace(/\u2606/g, movaIcon('star','mi mi-inline'))             // ☆
+    .replace(/\uD83E\uDDE0/g, movaIcon('brain','mi mi-inline'))      // 🧠
+    .replace(/\u27A1\uFE0F?/g, movaIcon('arrowright','mi mi-inline')) // ➡
+    .replace(/\uD83D\uDD00/g, movaIcon('shuffle','mi mi-inline'))     // 🔀
     .replace(/\uD83C\uDDE9\uD83C\uDDEA/g, movaFlag('de','mf-inline'))
     .replace(/\uD83C\uDDFA\uD83C\uDDE6/g, movaFlag('uk','mf-inline'))
     .replace(/\uD83C\uDDEC\uD83C\uDDE7/g, movaFlag('en','mf-inline'))
     .replace(/\uD83C\uDDF7\uD83C\uDDFA/g, movaFlag('ru','mf-inline'));
+}
+// Обране: контурна зірка / залита (active). Одна точка правди для всіх карток.
+function favIcon(on){ return movaIcon('star', on ? 'mi-fill' : ''); }
+// Анімована версія іконки (екрани завершення). Кожному контуру без власного
+// класу дається a-d + pathLength=1 — CSS .mi-anim .a-d \"домальовує\" його
+// штрихом (stroke-dashoffset 1→0) по черзі; a-pop/a-tw/a-fill — акценти
+// (спалах, мерехтіння, заливка). Усе на чистому CSS, без бібліотек.
+function movaAnimIcon(name, cls){
+  var p = MOVA_ICONS[name]; if(!p) return '';
+  p = p.replace(/<path\b([^>]*)>/g, function(m, attrs){
+    if(/pathLength=/.test(attrs)) return m;
+    if(!/\bclass=/.test(attrs)) attrs = ' class="a-d"' + attrs;
+    return '<path pathLength="1"' + attrs + '>';
+  });
+  return '<svg class="mi mi-anim mi-a-'+name+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+p+'</svg>';
+}
+// Анімована іконка у блоці заданого розміру (результати вправ, картки).
+function animIconBox(name, size, dark){
+  return '<span class="mi-box'+(dark?' on-dark':'')+'" style="--s:'+(size||48)+'px">'+movaAnimIcon(name)+'</span>';
+}
+// Іконка в #lr-emoji (екран результату уроку/діалогу/граматики/листа/…).
+// Приймає як назву іконки, так і \"старий\" гліф — так виклики не міняються.
+var _LR_GLYPH_ICON = {'🏆':'trophy','🎉':'party','💪':'sprout','✓':'check','💬':'bubble','📧':'mail','📰':'post','📚':'book','🎤':'mic'};
+function lrSetBurstIcon(glyph){
+  var el = document.getElementById('lr-emoji'); if(!el) return;
+  var n = _LR_GLYPH_ICON[glyph] || glyph;
+  el.innerHTML = MOVA_ICONS[n] ? movaAnimIcon(n) : '';
 }
 function movaIcon(name, cls){ var p = MOVA_ICONS[name]; if(!p) return ''; return '<svg class="mi'+(cls?' '+cls:'')+'" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'+p+'</svg>'; }
 
@@ -5449,7 +5553,7 @@ function movaIcon(name, cls){ var p = MOVA_ICONS[name]; if(!p) return ''; return
 const I18N = {
   de: {
     nav_vocab:'Vokabeln', nav_favs:'Favoriten', nav_settings:'Einstellungen',
-    tab_card:'🃏 Karte', tab_all:'📋 Alle',
+    tab_card:'Karte', tab_all:'Alle',
     fav_added:'★ Zu Lesezeichen hinzugefügt',
     fav_removed:'☆ Aus Lesezeichen entfernt',
     favs_empty:'Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.',
@@ -5537,7 +5641,7 @@ const I18N = {
     exam_sim_text_ready:'Text fertig',
     exam_sim_min_unit:'Min.',
     exam_sim_row_meta:'Prüfungssimulation — beliebig oft wiederholbar',
-    exam_sim_row_chip:'Test starten',
+    exam_sim_row_chip:'▶ Test starten',
     exam_sim_err_forum_cards:'⚠️ Im aktuellen Kurs werden mindestens 2 Forumsbeitrag-Karten (var SCHREIBEN) benötigt',
     exam_sim_err_email_cards:'⚠️ Im aktuellen Kurs wird mindestens 1 E-Mail-Karte (var EMAILS) benötigt',
     exam_sim_err_speaking_cards:'⚠️ Im aktuellen Kurs wird mindestens 1 Karte für den mündlichen Teil (type: "Lösungswege diskutieren", var DIALOGE) benötigt',
@@ -5603,7 +5707,7 @@ const I18N = {
   },
   uk: {
     nav_vocab:'Словник', nav_favs:'Обране', nav_settings:'Налаштування',
-    tab_card:'🃏 Картка', tab_all:'📋 Всі',
+    tab_card:'Картка', tab_all:'Всі',
     fav_added:'★ Додано в обране',
     fav_removed:'☆ Видалено з обраного',
     favs_empty:'Ще немає обраного.<br>Натисни ☆ на картці.',
@@ -5687,7 +5791,7 @@ const I18N = {
     exam_sim_text_ready:'Текст готовий',
     exam_sim_min_unit:'хв',
     exam_sim_row_meta:'Симуляція іспиту — необмежена к-сть спроб',
-    exam_sim_row_chip:'Почати тест',
+    exam_sim_row_chip:'▶ Почати тест',
     exam_sim_err_forum_cards:'⚠️ Потрібно щонайменше 2 картки Forumsbeitrag (var SCHREIBEN) у поточному курсі',
     exam_sim_err_email_cards:'⚠️ Потрібна хоча б 1 картка E-Mail (var EMAILS) у поточному курсі',
     exam_sim_err_speaking_cards:'⚠️ Потрібна хоча б 1 картка усної частини (type: "Lösungswege diskutieren", var DIALOGE) у поточному курсі',
@@ -5752,7 +5856,7 @@ const I18N = {
   },
   en: {
     nav_vocab:'Vocabulary', nav_favs:'Favorites', nav_settings:'Settings',
-    tab_card:'🃏 Card', tab_all:'📋 All',
+    tab_card:'Card', tab_all:'All',
     fav_added:'★ Added to bookmarks',
     fav_removed:'☆ Removed from bookmarks',
     favs_empty:'No favorites yet.<br>Tap ☆ on a card.',
@@ -5836,7 +5940,7 @@ const I18N = {
     exam_sim_text_ready:'Text is ready',
     exam_sim_min_unit:'min',
     exam_sim_row_meta:'Exam simulation — unlimited attempts',
-    exam_sim_row_chip:'Start test',
+    exam_sim_row_chip:'▶ Start test',
     exam_sim_err_forum_cards:'⚠️ At least 2 Forumsbeitrag cards (var SCHREIBEN) are required in the current course',
     exam_sim_err_email_cards:'⚠️ At least 1 E-Mail card (var EMAILS) is required in the current course',
     exam_sim_err_speaking_cards:'⚠️ At least 1 speaking-part card (type: "Lösungswege diskutieren", var DIALOGE) is required in the current course',
@@ -5902,7 +6006,7 @@ const I18N = {
   },
   ru: {
     nav_vocab:'Словарь', nav_favs:'Закладки', nav_settings:'Настройки',
-    tab_card:'🃏 Карточка', tab_all:'📋 Все',
+    tab_card:'Карточка', tab_all:'Все',
     fav_added:'★ Добавлено в закладки',
     fav_removed:'☆ Удалено из закладок',
     favs_empty:'Нет закладок.<br>Нажми ☆ на карточке.',
@@ -5986,7 +6090,7 @@ const I18N = {
     exam_sim_text_ready:'Текст готов',
     exam_sim_min_unit:'мин',
     exam_sim_row_meta:'Симуляция экзамена — неограниченно попыток',
-    exam_sim_row_chip:'Начать тест',
+    exam_sim_row_chip:'▶ Начать тест',
     exam_sim_err_forum_cards:'⚠️ В текущем курсе нужно минимум 2 карточки Forumsbeitrag (var SCHREIBEN)',
     exam_sim_err_email_cards:'⚠️ В текущем курсе нужна хотя бы 1 карточка E-Mail (var EMAILS)',
     exam_sim_err_speaking_cards:'⚠️ В текущем курсе нужна хотя бы 1 карточка устной части (type: "Lösungswege diskutieren", var DIALOGE)',
@@ -6120,23 +6224,26 @@ function applyI18n(){
   // Tabs
   const tabs = document.querySelectorAll('#vocab-tabs .vtab');
   const tabDefs = [
-    {emoji:'🃏', key:'tab_card'},
-    {emoji:'📋', key:'tab_all'},
-    {emoji:'🔗', key:'tab_match_short'},
-    {emoji:'🎯', key:'tab_choice_short'},
-    {emoji:'🧩', key:'tab_tiles_short'},
-    {emoji:'❓', key:'quiz_title'},
-    {emoji:'🔍', key:'tab_def_short'},
-    {emoji:'🎤', key:'tab_speech'},
+    {icon:'book',   key:'tab_card'},
+    {icon:'list',   key:'tab_all'},
+    {icon:'link',   key:'tab_match_short'},
+    {icon:'target', key:'tab_choice_short'},
+    {icon:'puzzle', key:'tab_tiles_short'},
+    {icon:'quiz',   key:'quiz_title'},
+    {icon:'search', key:'tab_def_short'},
+    {icon:'mic',    key:'tab_speech'},
   ];
-  tabs.forEach((tab,i)=>{ if(tabDefs[i]) tab.textContent=tabDefs[i].emoji; });
+  tabs.forEach((tab,i)=>{ if(tabDefs[i]) tab.innerHTML=movaIcon(tabDefs[i].icon); });
   // Favorites empty state — заголовок/підпис/кнопка перекладаються нижче
   // через загальний цикл [data-i18n] (у розмітці більше не голий текст,
   // тож більше не можна просто перезаписати innerHTML одним рядком).
   // Settings heading — через data-i18n span, не перезаписуємо вручну
   // Labels by data-i18n attribute (підхоплює і h3 span, і все інше)
   document.querySelectorAll('[data-i18n]').forEach(el=>{
-    el.textContent = t(el.dataset.i18n);
+    const _v = t(el.dataset.i18n);
+    // ★/☆ у підказках (напр. «Натискай ☆ на картці») — як намальована зірка
+    if(/[\u2605\u2606]/.test(_v) && !/</.test(_v)) el.innerHTML = _iconizeText(_v);
+    else el.textContent = _v;
   });
   // Атрибут title (підказка при наведенні) — той самий принцип,
   // окремим data-i18n-title, бо data-i18n змінює лише textContent.
@@ -8198,9 +8305,9 @@ async function init(){
   const lp=document.getElementById('vreadpause');if(lp){lp.value=V.readPause/1000;document.getElementById('vrpv').textContent=(V.readPause/1000).toFixed(1).replace('.',',')+'s';}
   // Синхронізуємо кнопку режиму
   const sb=document.getElementById('vshuffle-btn');
-  if(sb){sb.classList.remove('smart','shuffle');const cfg={srs:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''}}[V.mode]||{icon:'🧠',cls:'smart'};sb.textContent=cfg.icon;if(cfg.cls)sb.classList.add(cfg.cls);}
+  if(sb){sb.classList.remove('smart','shuffle');const cfg={srs:{icon:'brain',cls:'smart'},seq:{icon:'arrowright',cls:''}}[V.mode]||{icon:'brain',cls:'smart'};sb.innerHTML=movaIcon(cfg.icon);if(cfg.cls)sb.classList.add(cfg.cls);}
   const dsb=document.getElementById('dlgshuffle-btn');
-  if(dsb){dsb.classList.remove('smart','shuffle');const dcfg={smart:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''},random:{icon:'🔀',cls:'shuffle'},srs:{icon:'🔬',cls:'smart'}}[D.mode]||{icon:'🧠',cls:'smart'};dsb.textContent=dcfg.icon;if(dcfg.cls)dsb.classList.add(dcfg.cls);}
+  if(dsb){dsb.classList.remove('smart','shuffle');const dcfg={smart:{icon:'brain',cls:'smart'},seq:{icon:'arrowright',cls:''},random:{icon:'shuffle',cls:'shuffle'},srs:{icon:'timer',cls:'smart'}}[D.mode]||{icon:'brain',cls:'smart'};dsb.innerHTML=movaIcon(dcfg.icon);if(dcfg.cls)dsb.classList.add(dcfg.cls);}
   loadFontSize();
   initVocab();
   _tm('initVocab() завершено');
@@ -9122,7 +9229,7 @@ function renderVocabCard(){
   const srsHintText = t('hint_srs');
   document.getElementById('fc-front-inner').innerHTML=`
     <div class="fc-header">
-      <button class="fc-fav ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-front">${fav?'★':'☆'}</button>
+      <button class="fc-fav ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-front">${favIcon(fav)}</button>
       <span class="fc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</span>
     </div>
     <div class="fc-body">${termRows}</div>
@@ -9130,7 +9237,7 @@ function renderVocabCard(){
     <div class="fc-hint">${srsHintText}</div>`;
   document.getElementById('fc-back-inner').innerHTML=`
     <div class="fc-back-header">
-      <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${fav?'★':'☆'}</button>
+      <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${favIcon(fav)}</button>
       <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||F.de}</span>
       <span class="fc-back-term">${v.term?.[primaryLang()]||''}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
@@ -9184,7 +9291,7 @@ function vocabPrev(){
     srBeginCardViewing();
     V.flipped=false;V.repeatCount=0;
     renderVocabCard();
-    if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+    if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').innerHTML=movaIcon('pause');document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
   });
   window.mlog?.('card_nav',{direction:'prev'});
 }
@@ -9197,7 +9304,7 @@ function vocabNext(){
     srBeginCardViewing();
     V.flipped=false;V.repeatCount=0;
     renderVocabCard();
-    if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+    if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').innerHTML=movaIcon('pause');document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
   });
   window.mlog?.('card_nav',{direction:'next'});
 }
@@ -9244,7 +9351,7 @@ function initSwipe(){
         V.idx++; if(V.idx>=V.queue.length){if(_srPlanCardIds){stopVocab();return;}V.queue=buildVocabQueue();V.idx=0;}
         srBeginCardViewing();
         V.flipped=false; V.repeatCount=0; renderVocabCard();
-        if(wp) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+        if(wp) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').innerHTML=movaIcon('pause');document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
       });
     },
 
@@ -9257,7 +9364,7 @@ function initSwipe(){
         V.idx=(V.idx-1+V.queue.length)%V.queue.length;
         srBeginCardViewing();
         V.flipped=false; V.repeatCount=0; renderVocabCard();
-        if(wp) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').textContent='⏸';document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
+        if(wp) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').innerHTML=movaIcon('pause');document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
       });
     },
 
@@ -10867,7 +10974,7 @@ function _runLessonFlow(lesson, allCards){
   }
   V.mode        = 'srs';
   const _vshBtn = document.getElementById('vshuffle-btn');
-  if(_vshBtn){ _vshBtn.classList.remove('shuffle'); _vshBtn.classList.add('smart'); _vshBtn.textContent='🔬'; }
+  if(_vshBtn){ _vshBtn.classList.remove('shuffle'); _vshBtn.classList.add('smart'); _vshBtn.innerHTML=movaIcon('timer'); }
 
   showView('vocab');
   lfRenderBar();
@@ -11006,7 +11113,7 @@ function renderLernpfad(opts){
   } else {
     // Курс повністю пройдено (немає жодного "поточного" уроку) —
     // порожній рядок замість "Розділ undefined", бар модуля — повний.
-    if(locEl) locEl.innerHTML = '🎉 ' + t('lp_all_done');
+    if(locEl) locEl.innerHTML = movaIcon('party','mi mi-inline') + t('lp_all_done');
     if(modFillEl) modFillEl.style.width = '100%';
   }
 
@@ -12877,7 +12984,7 @@ function _examSimFinishSpeaking(){
   var titleEl = document.getElementById('lr-title');
   var subEl   = document.getElementById('lr-sub');
   var statsEl = document.getElementById('lr-stats');
-  if(emojiEl) emojiEl.textContent = '🎤';
+  lrSetBurstIcon('🎤');
   if(titleEl) titleEl.textContent = t('exam_sim_speaking_done_title');
   if(subEl)   subEl.textContent   = t(_examSimState.part === 'SprechenTeil2' ? 'exam_sim_speaking_teil2_done_sub' : 'exam_sim_speaking_done_sub');
   if(statsEl){
@@ -13924,7 +14031,8 @@ function _ccSpawnConfetti(){
     var p = document.createElement('span');
     p.className = 'cc-confetti-piece';
     if(isStar){
-      p.textContent = '⭐';
+      p.innerHTML = movaIcon('star','mi-fill');
+      p.style.color = (i % 10 === 0) ? '#ffffff' : '#ffd980';
       p.style.fontSize = (10 + Math.random()*8)+'px';
       p.style.background = 'transparent';
     } else {
@@ -15328,7 +15436,7 @@ function defShowResult(){
   const bankEl = document.getElementById('def-bank');
   if(bankEl) bankEl.innerHTML = `
     <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
-      <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Inter',sans-serif">🎉</div>
+      <div>${animIconBox('party',44)}</div>
       <p class="mc-result-praise">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
       <button class="btn" onclick="startDefFill()" style="margin-right:8px">Nochmal</button>
       <button class="btn" onclick="switchVocabTab(0)">Karten</button>
@@ -15560,7 +15668,7 @@ function dtShowResult(){
   if(hintEl) hintEl.textContent = '';
   if(qEl) qEl.innerHTML = `
     <div style="text-align:center;padding:12px 0">
-      <div style="font-size:36px">🎉</div>
+      <div>${animIconBox('party',44,true)}</div>
       <p class="mc-result-praise" style="color:#fff">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
       <button class="btn" onclick="startDefType()" style="margin-right:8px">Nochmal</button>
       <button class="btn" onclick="switchVocabTab(0)">Karten</button>
@@ -16575,7 +16683,7 @@ function spShowFinish(){
   overlay.className = 'tiles-result-overlay';
   overlay.innerHTML = `
     <div class="tiles-result-sheet" style="gap:16px">
-      <div style="font-size:56px">${pct>=80?'🏆':pct>=55?'💪':'🔄'}</div>
+      <div>${animIconBox(pct>=80?'trophy':pct>=55?'sprout':'repeat',60)}</div>
       <div class="sp-result-title">${t('sp_done_title')}</div>
       <div style="background:var(--soft);border-radius:16px;padding:12px 20px;width:100%;box-sizing:border-box;text-align:center">
         <div class="sp-result-pct" style="color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
@@ -16708,7 +16816,7 @@ function tilesShowResult(){
   } else {
     if(bankEl) bankEl.innerHTML=`
       <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
-        <div style="font-size:36px;font-weight:800;color:var(--gold);font-family:'Inter',sans-serif">🎉</div>
+        <div>${animIconBox('party',44)}</div>
         <p class="mc-result-praise">${t('match_perfect')}</p>
         <button class="btn" onclick="startTiles()" style="margin-right:8px">${t('match_again')}</button>
         <button class="btn" onclick="switchVocabTab(0)">${t('match_cards')}</button>
@@ -17633,7 +17741,7 @@ var _lfSBHandlers = {
     var favBtn = document.getElementById('lf-unit-fav');
     if(favBtn){
       var setFavVisual = function(isFav){
-        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.innerHTML = favIcon(isFav);
         favBtn.classList.toggle('active', isFav);
       };
       setFavVisual(fav);
@@ -17645,7 +17753,7 @@ var _lfSBHandlers = {
         // тут прибираємо зірку з самого тексту лейбла, інакше вона дублюється.
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в обране') : (typeof t==='function'?t('fav_removed'):'☆ Видалено з обраного');
         label = label.replace(/^[★☆]\s*/, '');
-        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+        showSrsHint(favIcon(nowFav), label, null, 'lf-unit-card');
       };
       var prevHandlers = favBtn._lfFavHandlers;
       if(prevHandlers){
@@ -18029,7 +18137,7 @@ var _lfDlgHandlers = {
     var favBtn = document.getElementById('lf-unit-fav');
     if(favBtn){
       var setFavVisual = function(isFav){
-        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.innerHTML = favIcon(isFav);
         favBtn.classList.toggle('active', isFav);
       };
       setFavVisual(fav);
@@ -18041,7 +18149,7 @@ var _lfDlgHandlers = {
         // тут прибираємо зірку з самого тексту лейбла, інакше вона дублюється.
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в обране') : (typeof t==='function'?t('fav_removed'):'☆ Видалено з обраного');
         label = label.replace(/^[★☆]\s*/, '');
-        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+        showSrsHint(favIcon(nowFav), label, null, 'lf-unit-card');
       };
       var prevHandlers = favBtn._lfFavHandlers;
       if(prevHandlers){
@@ -18331,7 +18439,7 @@ var _lfFrmHandlers = {
     var favBtn = document.getElementById('lf-unit-fav');
     if(favBtn){
       var setFavVisual = function(isFav){
-        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.innerHTML = favIcon(isFav);
         favBtn.classList.toggle('active', isFav);
       };
       setFavVisual(fav);
@@ -18341,7 +18449,7 @@ var _lfFrmHandlers = {
         setFavVisual(nowFav);
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в обране') : (typeof t==='function'?t('fav_removed'):'☆ Видалено з обраного');
         label = label.replace(/^[★☆]\s*/, '');
-        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+        showSrsHint(favIcon(nowFav), label, null, 'lf-unit-card');
       };
       var prevHandlers = favBtn._lfFavHandlers;
       if(prevHandlers){
@@ -18670,7 +18778,7 @@ var _lfStoryHandlers = {
     var favBtn = document.getElementById('lf-unit-fav');
     if(favBtn){
       var setFavVisual = function(isFav){
-        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.innerHTML = favIcon(isFav);
         favBtn.classList.toggle('active', isFav);
       };
       setFavVisual(fav);
@@ -18680,7 +18788,7 @@ var _lfStoryHandlers = {
         setFavVisual(nowFav);
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в обране') : (typeof t==='function'?t('fav_removed'):'☆ Видалено з обраного');
         label = label.replace(/^[★☆]\s*/, '');
-        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+        showSrsHint(favIcon(nowFav), label, null, 'lf-unit-card');
       };
       var prevHandlers = favBtn._lfFavHandlers;
       if(prevHandlers){
@@ -19133,7 +19241,7 @@ var _lfEmlHandlers = {
     var favBtn = document.getElementById('lf-unit-fav');
     if(favBtn){
       var setFavVisual = function(isFav){
-        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.innerHTML = favIcon(isFav);
         favBtn.classList.toggle('active', isFav);
       };
       setFavVisual(fav);
@@ -19143,7 +19251,7 @@ var _lfEmlHandlers = {
         setFavVisual(nowFav);
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в обране') : (typeof t==='function'?t('fav_removed'):'☆ Видалено з обраного');
         label = label.replace(/^[★☆]\s*/, '');
-        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+        showSrsHint(favIcon(nowFav), label, null, 'lf-unit-card');
       };
       var prevHandlers = favBtn._lfFavHandlers;
       if(prevHandlers){
@@ -19559,7 +19667,7 @@ function showGrammarRuleFullscreen(id){
   el.className = 'grammar-rule-fullscreen';
   el.innerHTML =
     '<div class="grammar-rule-fs-header">' +
-      '<button class="grammar-rule-fs-back" onclick="closeGrammarRuleFullscreen()">←</button>' +
+      '<button class="grammar-rule-fs-back" onclick="closeGrammarRuleFullscreen()">'+movaIcon('back')+'</button>' +
       '<div class="grammar-rule-fs-title-wrap">' +
         '<div class="grammar-rule-fs-title">'+titles.main+'</div>' +
         (titles.sub ? '<div class="grammar-rule-fs-title-sub">'+titles.sub+'</div>' : '') +
@@ -19653,7 +19761,7 @@ function showMarkerLegend(){
   el.className = 'grammar-rule-fullscreen';
   el.innerHTML =
     '<div class="grammar-rule-fs-header">'+
-      '<button class="grammar-rule-fs-back" onclick="closeMarkerLegend()">←</button>'+
+      '<button class="grammar-rule-fs-back" onclick="closeMarkerLegend()">'+movaIcon('back')+'</button>'+
       '<div class="grammar-rule-fs-title-wrap">'+
         '<div class="grammar-rule-fs-title">'+titleText+'</div>'+
       '</div>'+
@@ -20388,7 +20496,7 @@ var _lfVocabHandlers = {
     var favBtn = document.getElementById('lf-unit-fav');
     if(favBtn){
       var setFavVisual = function(isFav){
-        favBtn.textContent = isFav ? '★' : '☆';
+        favBtn.innerHTML = favIcon(isFav);
         favBtn.classList.toggle('active', isFav);
       };
       setFavVisual(fav);
@@ -20400,7 +20508,7 @@ var _lfVocabHandlers = {
         // тут прибираємо зірку з самого тексту лейбла, інакше вона дублюється.
         var label = nowFav ? (typeof t==='function'?t('fav_added'):'★ Додано в обране') : (typeof t==='function'?t('fav_removed'):'☆ Видалено з обраного');
         label = label.replace(/^[★☆]\s*/, '');
-        showSrsHint(nowFav?'★':'☆', label, null, 'lf-unit-card');
+        showSrsHint(favIcon(nowFav), label, null, 'lf-unit-card');
       };
       // Окремі touch listeners (як fc-fav-front/back) — інакше .lf-unit-card
       // touch-action:none (потрібен для SwipeManager) блокує звичайний клік
@@ -20955,7 +21063,7 @@ function lfShowResult(){
     titleText = t(pct>=80 ? 'lr_t_great' : pct>=50 ? 'lr_t_good' : 'lr_t_keep');
   }
 
-  document.getElementById('lr-emoji').textContent = emoji;
+  lrSetBurstIcon(emoji);
   document.getElementById('lr-title').textContent = titleText;
   document.getElementById('lr-sub').textContent =
     LF.lesson.title[uiLang]||LF.lesson.title[primaryLang()]||LF.lesson.title.en||LF.lesson.title.de;
@@ -21594,9 +21702,9 @@ function abandonLessonFlow(){
     window._preLessonVocabMode = null;
     const _vshBtn = document.getElementById('vshuffle-btn');
     if(_vshBtn){
-      const cfg={srs:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''}}[V.mode]||{icon:'🧠',cls:'smart'};
+      const cfg={srs:{icon:'brain',cls:'smart'},seq:{icon:'arrowright',cls:''}}[V.mode]||{icon:'brain',cls:'smart'};
       _vshBtn.classList.remove('smart','shuffle');
-      _vshBtn.textContent=cfg.icon;
+      _vshBtn.innerHTML=movaIcon(cfg.icon);
       if(cfg.cls) _vshBtn.classList.add(cfg.cls);
     }
   }
@@ -21669,9 +21777,9 @@ function exitLessonFlow(){
     window._preLessonVocabMode = null;
     const _vshBtn = document.getElementById('vshuffle-btn');
     if(_vshBtn){
-      const cfg={srs:{icon:'🧠',cls:'smart'},seq:{icon:'➡',cls:''}}[V.mode]||{icon:'🧠',cls:'smart'};
+      const cfg={srs:{icon:'brain',cls:'smart'},seq:{icon:'arrowright',cls:''}}[V.mode]||{icon:'brain',cls:'smart'};
       _vshBtn.classList.remove('smart','shuffle');
-      _vshBtn.textContent=cfg.icon;
+      _vshBtn.innerHTML=movaIcon(cfg.icon);
       if(cfg.cls) _vshBtn.classList.add(cfg.cls);
     }
   }
@@ -21736,7 +21844,7 @@ function stopVocab(){
     try{srUpdateStreak();srRenderDailyPlan();}catch(e){}
     if(pendingSB&&pendingSB.length) setTimeout(()=>srLaunchSBSession(pendingSB), 500);
   }
-  V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);cardGen++;stopTTS();document.getElementById('vplaybtn').textContent='▶';document.getElementById('vplaybtn').classList.remove('pause');}
+  V.playing=false;V.paused=false;V.repeatCount=0;clearTimeout(V.timer);cardGen++;stopTTS();document.getElementById('vplaybtn').innerHTML=movaIcon('play');document.getElementById('vplaybtn').classList.remove('pause');}
 function playVocabNext(){
   if(!V.playing||V.paused)return;
   logErr('card:next','idx='+V.idx+' qlen='+V.queue.length+' cgen='+cardGen);
@@ -21839,12 +21947,12 @@ function cycleDialogueMode(){
   D.mode=modes[(modes.indexOf(D.mode)+1)%modes.length];
   const btn=document.getElementById('dlgshuffle-btn');
   const cfg={
-    smart: {icon:'🧠',cls:'smart'},
-    seq:   {icon:'➡', cls:''},
-    random:{icon:'🔀',cls:'shuffle'},
-    srs:   {icon:'🔬',cls:'smart'},
+    smart: {icon:'brain',cls:'smart'},
+    seq:   {icon:'arrowright', cls:''},
+    random:{icon:'shuffle',cls:'shuffle'},
+    srs:   {icon:'timer',cls:'smart'},
   }[D.mode];
-  if(btn){ btn.classList.remove('smart','shuffle'); btn.textContent=cfg.icon; if(cfg.cls) btn.classList.add(cfg.cls); }
+  if(btn){ btn.classList.remove('smart','shuffle'); btn.innerHTML=movaIcon(cfg.icon); if(cfg.cls) btn.classList.add(cfg.cls); }
   if(D.mode==='srs' && typeof DIALOGE!=='undefined'){
     const cf=document.getElementById('dlgf-cat')?.value||'all';
     const arr=DIALOGE.filter(d=>cf==='all'||d.cat===cf);
@@ -21940,7 +22048,7 @@ function renderDialogueCard(){
   const srsHintText = t('hint_srs');
   document.getElementById('dlg-fc-front-inner').innerHTML=`
     <div class="fc-header">
-      <button class="fc-fav ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-front">${fav?'★':'☆'}</button>
+      <button class="fc-fav ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-front">${favIcon(fav)}</button>
       <span class="fc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):d.cat}</span>
     </div>
     <div class="fc-body">${qRows}</div>
@@ -21948,7 +22056,7 @@ function renderDialogueCard(){
     <div class="fc-hint">${srsHintText}</div>`;
   document.getElementById('dlg-fc-back-inner').innerHTML=`
     <div class="fc-back-header">
-      <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-back">${fav?'★':'☆'}</button>
+      <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-back">${favIcon(fav)}</button>
       <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||F.de}</span>
       <span class="fc-back-term">${(d.q?.[primaryLang()]||'').length>40?(d.q?.[primaryLang()]||'').slice(0,40)+'…':(d.q?.[primaryLang()]||'')}</span>
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
@@ -21994,7 +22102,7 @@ function toggleDialogueFavorite(id){
   const fav=data.favorite;
   ['dlg-fc-fav-front','dlg-fc-fav-back'].forEach(elId=>{
     const btn=document.getElementById(elId);
-    if(btn){ btn.textContent=fav?'★':'☆'; btn.classList.toggle('active',fav); }
+    if(btn){ btn.innerHTML = favIcon(fav); btn.classList.toggle('active',fav); }
   });
   notify(fav?t('fav_added'):t('fav_removed'));
   window.mlog?.('dialogue_favorite_changed',{action:fav?'add':'remove'});
@@ -22018,7 +22126,7 @@ function initDialogueSwipe(){
         D.idx++; if(D.idx>=D.queue.length){ D.queue=buildDialogueQueue(); D.idx=0; }
         srBeginCardViewing();
         D.flipped=false; D.repeatCount=0; renderDialogueCard();
-        if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').textContent='⏸'; document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
+        if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').innerHTML=movaIcon('pause'); document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
       }, 'dlg-fc-area');
     },
     onRight: ()=>{
@@ -22028,7 +22136,7 @@ function initDialogueSwipe(){
         D.idx=(D.idx-1+D.queue.length)%D.queue.length;
         srBeginCardViewing();
         D.flipped=false; D.repeatCount=0; renderDialogueCard();
-        if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').textContent='⏸'; document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
+        if(wp) setTimeout(()=>{ D.playing=true; D.paused=false; document.getElementById('dlgplaybtn').innerHTML=movaIcon('pause'); document.getElementById('dlgplaybtn').classList.add('pause'); playDialogueNext(); },250);
       }, 'dlg-fc-area');
     },
     onUp:   ()=>{ haptic.error();   answerFeedback(false); dlgSrsSwipe(1); },
@@ -22070,18 +22178,18 @@ function toggleDialogue(){ unlockAudioCtx();
   if(!D.playing){
     if(!D.queue.length) D.queue=buildDialogueQueue();
     D.playing=true; D.paused=false;
-    document.getElementById('dlgplaybtn').textContent='⏸';
+    document.getElementById('dlgplaybtn').innerHTML=movaIcon('pause');
     document.getElementById('dlgplaybtn').classList.add('pause');
     window.mlog?.('dialogue_autoplay_started',{mode:D.mode,queue_size:D.queue.length});
     playDialogueNext();
   } else if(!D.paused){
     D.paused=true; clearTimeout(D.timer);
-    document.getElementById('dlgplaybtn').textContent='▶';
+    document.getElementById('dlgplaybtn').innerHTML=movaIcon('play');
     document.getElementById('dlgplaybtn').classList.remove('pause');
     window.mlog?.('dialogue_autoplay_paused');
   } else {
     D.paused=false;
-    document.getElementById('dlgplaybtn').textContent='⏸';
+    document.getElementById('dlgplaybtn').innerHTML=movaIcon('pause');
     document.getElementById('dlgplaybtn').classList.add('pause');
     window.mlog?.('dialogue_autoplay_resumed');
     const d=D.queue[D.idx]; const al=getActiveDialogueLangs();
@@ -22102,7 +22210,7 @@ function toggleDialogue(){ unlockAudioCtx();
 }
 function stopDialogue(){
   D.playing=false; D.paused=false; D.repeatCount=0; clearTimeout(D.timer); cardGen++; stopTTS();
-  const btn=document.getElementById('dlgplaybtn'); if(btn){ btn.textContent='▶'; btn.classList.remove('pause'); }
+  const btn=document.getElementById('dlgplaybtn'); if(btn){ btn.innerHTML=movaIcon('play'); btn.classList.remove('pause'); }
 }
 function playDialogueNext(){
   if(!D.playing||D.paused) return;
@@ -22484,7 +22592,7 @@ function _storyFinishWithCelebration(topicLabel, afterCelebration){
   var emojiEl = document.getElementById('lr-emoji');
   var titleEl = document.getElementById('lr-title');
   var subEl   = document.getElementById('lr-sub');
-  if(emojiEl) emojiEl.textContent = '🎉';
+  lrSetBurstIcon('🎉');
   if(titleEl) titleEl.textContent = t('story_finish_title');
   if(subEl) subEl.textContent = topicLabel || '';
   var statsEl = document.getElementById('lr-stats');
@@ -22770,14 +22878,14 @@ function _onVocabListenDone(){
 function updateVocabPlayerPlayBtn(){
   var btn = document.getElementById('vplaybtn');
   if(!btn) return;
-  btn.textContent = V.listening ? '⏸' : '▶';
+  btn.innerHTML = movaIcon(V.listening ? 'pause' : 'play');
   btn.classList.toggle('pause', V.listening);
 }
 
 // "Передня / обидві / задня" — перемикач у плеєрі по колу:
 // front → both → back → front, визначає склад черги прослуховування.
 var VOCAB_PLAY_SIDE_CYCLE = ['front','both','back'];
-var VOCAB_PLAY_SIDE_ICON  = { front:'1️⃣', both:'1/2', back:'2️⃣' };
+var VOCAB_PLAY_SIDE_ICON  = { front:'side_front', both:'side_both', back:'side_back' };
 var VOCAB_PLAY_SIDE_TITLE = {
   front: {de:'Nur Vorderseite', uk:'Лише передня сторона', en:'Front only',    ru:'Только лицевая'},
   both:  {de:'Beide Seiten',    uk:'Обидві сторони',       en:'Both sides',    ru:'Обе стороны'},
@@ -22795,7 +22903,7 @@ function cycleVocabPlaySide(){
 function updateVocabPlaySideBtn(){
   var btn = document.getElementById('vplayboth-btn');
   if(!btn) return;
-  btn.textContent = VOCAB_PLAY_SIDE_ICON[V.playSide] || '1️⃣';
+  btn.innerHTML = movaIcon(VOCAB_PLAY_SIDE_ICON[V.playSide] || 'side_front');
   btn.title = VOCAB_PLAY_SIDE_TITLE[V.playSide]?.[uiLang] || '';
   btn.classList.toggle('on', V.playSide !== 'front');
 }
@@ -22804,19 +22912,19 @@ function toggleVocab(){ unlockAudioCtx();
   if(!V.playing){
     if(!V.queue.length)V.queue=buildVocabQueue();
     V.playing=true;V.paused=false;
-    document.getElementById('vplaybtn').textContent='⏸';
+    document.getElementById('vplaybtn').innerHTML=movaIcon('pause');
     document.getElementById('vplaybtn').classList.add('pause');
     window.mlog?.('autoplay_started',{mode:V.mode,queue_size:V.queue.length});
     playVocabNext();
   } else if(!V.paused){
     V.paused=true;
     clearTimeout(V.timer);
-    document.getElementById('vplaybtn').textContent='▶';
+    document.getElementById('vplaybtn').innerHTML=movaIcon('play');
     document.getElementById('vplaybtn').classList.remove('pause');
     window.mlog?.('autoplay_paused');
   } else {
     V.paused=false;
-    document.getElementById('vplaybtn').textContent='⏸';
+    document.getElementById('vplaybtn').innerHTML=movaIcon('pause');
     document.getElementById('vplaybtn').classList.add('pause');
     window.mlog?.('autoplay_resumed');
     const v=V.queue[V.idx];
@@ -22905,10 +23013,10 @@ function cycleVocabMode(){
   V.mode=modes[(modes.indexOf(V.mode)+1)%modes.length];
   const btn=document.getElementById('vshuffle-btn');
   const cfg={
-    srs: {icon:'🧠',cls:'smart'},
-    seq: {icon:'➡', cls:''},
+    srs: {icon:'brain',cls:'smart'},
+    seq: {icon:'arrowright', cls:''},
   }[V.mode];
-  if(btn){btn.classList.remove('smart','shuffle');btn.textContent=cfg.icon;if(cfg.cls)btn.classList.add(cfg.cls);}
+  if(btn){btn.classList.remove('smart','shuffle');btn.innerHTML=movaIcon(cfg.icon);if(cfg.cls)btn.classList.add(cfg.cls);}
   if(V.mode==='srs'){
     const cf=document.getElementById('vf-cat')?.value||'all';
     const arr=VOCAB.filter(v=>cf==='all'||v.cat===cf);
@@ -22941,7 +23049,7 @@ function toggleFavorite(id, silent){
   // закладках" (реальний стан у localStorage був коректний, лише
   // відображення кнопки "з'їжджало" через невідфільтрований запит).
   document.querySelectorAll('.fc-fav[data-fav-id="'+CSS.escape(id)+'"],.fc-fav-back[data-fav-id="'+CSS.escape(id)+'"]').forEach(btn=>{
-    btn.textContent=fav?'★':'☆';
+    btn.innerHTML = favIcon(fav);
     btn.classList.toggle('active',fav);
   });
   if(!silent) notify(fav ? t('fav_added') : t('fav_removed'));
@@ -23592,8 +23700,8 @@ function sbApplyShuffleBtnUI() {
   var btn = document.getElementById('sb-vshuffle-btn');
   if(!btn) return;
   btn.classList.remove('smart','shuffle');
-  if(SB.sortMode === 'smart'){ btn.textContent='🧠'; btn.classList.add('smart'); }
-  else { btn.textContent='➡'; }
+  if(SB.sortMode === 'smart'){ btn.innerHTML=movaIcon('brain'); btn.classList.add('smart'); }
+  else { btn.innerHTML=movaIcon('arrowright'); }
 }
 
 function sbUpdateProgressBadge() {
@@ -23702,8 +23810,8 @@ function sbCycleSort() {
   var btn = document.getElementById('sb-vshuffle-btn');
   if(btn){
     btn.classList.remove('smart','shuffle');
-    if(SB.sortMode === 'smart'){ btn.textContent='🧠'; btn.classList.add('smart'); }
-    else { btn.textContent='➡'; }
+    if(SB.sortMode === 'smart'){ btn.innerHTML=movaIcon('brain'); btn.classList.add('smart'); }
+    else { btn.innerHTML=movaIcon('arrowright'); }
   }
   sbBuildLearnQueue();
   sbApplySortMode();
@@ -23922,7 +24030,7 @@ function sbTogglePlay() {
   if(typeof unlockAudioCtx==='function') unlockAudioCtx();
   SB.playing=!SB.playing;
   var btn=document.getElementById('sb-play-btn');
-  if(btn){ btn.textContent=SB.playing?'⏸':'▶'; btn.classList.toggle('pause',SB.playing); }
+  if(btn){ btn.innerHTML=movaIcon(SB.playing?'pause':'play'); btn.classList.toggle('pause',SB.playing); }
   if(SB.playing) sbAutoPlay();
   else { SB.playCardGen++; if(typeof stopTTS==='function') stopTTS(); }
 }
@@ -23931,7 +24039,7 @@ function sbStopPlay() {
   SB.playing=false; SB.playCardGen++;
   if(typeof stopTTS==='function') stopTTS();
   var btn=document.getElementById('sb-play-btn');
-  if(btn){ btn.textContent='▶'; btn.classList.remove('pause'); }
+  if(btn){ btn.innerHTML=movaIcon('play'); btn.classList.remove('pause'); }
 }
 
 function sbAutoPlay() {
@@ -24161,8 +24269,8 @@ function sbToggleFav(e) {
 }
 function sbUpdateFavBtns(id) {
   var fav=sbIsFav(id);
-  var f=document.getElementById('sb-fav-front'); if(f){ f.textContent=fav?'★':'☆'; f.classList.toggle('active',fav); }
-  var b=document.getElementById('sb-fav-back');  if(b){ b.textContent=fav?'★':'☆'; b.classList.toggle('active',fav); }
+  var f=document.getElementById('sb-fav-front'); if(f){ f.innerHTML=favIcon(fav); f.classList.toggle('active',fav); }
+  var b=document.getElementById('sb-fav-back');  if(b){ b.innerHTML=favIcon(fav); b.classList.toggle('active',fav); }
 }
 function sbInitFavBtns(cardId) {
   ['sb-fav-front','sb-fav-back'].forEach(function(btnId) {
@@ -24552,7 +24660,7 @@ function sbShowPracResult() {
   ['sb-prac-sentence','sb-prac-options','sb-prac-dots'].forEach(function(id){ var e=document.getElementById(id); if(e) e.innerHTML=''; });
   document.getElementById('sb-prac-feedback').style.display='none';
   document.getElementById('sb-result-score').textContent=correct+'/'+total;
-  document.getElementById('sb-result-label').textContent=correct===total?'🏆 Perfekt!':correct>=7?'👍 Gut!':'📚 Mehr Übung.';
+  document.getElementById('sb-result-label').innerHTML=correct===total?movaIcon('trophy','mi mi-inline')+'Perfekt!':correct>=7?movaIcon('check','mi mi-inline')+'Gut!':movaIcon('book','mi mi-inline')+'Mehr Übung.';
   document.getElementById('sb-prac-result').style.display='block';
   sbUpdateProgressBadge();
 }
