@@ -1698,6 +1698,9 @@ body{
 
 /* ── SPEECH PRACTICE ─────────────────────────────────────────── */
 #vocab-panel-speech{flex:1;min-height:0;overflow-y:auto;flex-direction:column;gap:12px;padding:12px 14px}
+/* Блоки панелі не стискаються у flex-колонці з прокруткою: раніше картка з довгою
+   фразою (def) "сідала" до min-height, а текст і хвиля вилазили за її межі. */
+#vocab-panel-speech > *{flex-shrink:0}
 /* "Усі картки" (browse) — той самий рецепт, що й у vocab-panel-speech:
    .card-view.active вище задає overflow:hidden на весь батьківський
    flex-контейнер (потрібно для флешкарток, які НЕ повинні скролитись
@@ -2038,7 +2041,19 @@ body{
 .tiles-result-btn.ok{background:linear-gradient(135deg,var(--gold),#b8873a);color:var(--forest);}
 .tiles-result-btn.nok{background:var(--soft);color:var(--warm);border:1px solid var(--border);}
 .tiles-result-btn:active{opacity:.85;}
-
+/* Модалка результату вимови (довгі фрази): той самий аркуш .tiles-result-sheet, але з
+   зеленою/червоною "підсвіткою" зверху (градієнт + м'яке світіння), прокруткою та
+   рядком точності. Галочка/хрестик малюються тією ж анімацією, що й у Tiles/Def. */
+.sp-modal-sheet{ max-height:88vh;overflow-y:auto;gap:10px;-webkit-overflow-scrolling:touch; }
+.sp-modal-sheet.ok{ background:linear-gradient(180deg,rgba(39,174,96,.16),var(--paper) 170px);box-shadow:0 -18px 48px -14px rgba(39,174,96,.5); }
+.sp-modal-sheet.nok{ background:linear-gradient(180deg,rgba(231,76,60,.14),var(--paper) 170px);box-shadow:0 -18px 48px -14px rgba(231,76,60,.45); }
+.sp-modal-sheet .tiles-result-icon{ font-size:54px; }
+.sp-modal-pct{ display:flex;align-items:center;gap:10px;width:100%;max-width:360px; }
+.sp-modal-bar{ flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden; }
+.sp-modal-bar > i{ display:block;height:100%;width:0;border-radius:4px;transition:width .6s ease .25s; }
+.sp-modal-diff{ font-size:var(--fs-card);line-height:1.4;font-weight:400;text-align:center;word-break:break-word;width:100%; }
+.sp-modal-heard{ font-size:var(--fs-secondary);color:var(--muted);text-align:center;line-height:1.35;word-break:break-word;width:100%; }
+.sp-modal-sheet .tiles-result-btn.nok{ margin-top:0; }
 
 /* ══ LESSON FLOW ══ */
 #lesson-flow-bar{
@@ -4726,7 +4741,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '760-d5d77fa';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5667,7 +5682,7 @@ const I18N = {
     btn_dlg_finish:'Abschließen',
     btn_to_lessons:'Zur Lektionsliste',
     btn_check:'Prüfen',
-    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -5817,7 +5832,7 @@ const I18N = {
     btn_dlg_finish:'Завершити',
     btn_to_lessons:'До списку уроків',
     btn_check:'Перевірити',
-    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -5966,7 +5981,7 @@ const I18N = {
     btn_dlg_finish:'Finish',
     btn_to_lessons:'Lesson List',
     btn_check:'Check',
-    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -6115,7 +6130,7 @@ const I18N = {
     btn_dlg_finish:'Завершить',
     btn_to_lessons:'К списку уроков',
     btn_check:'Проверить',
-    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
+    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -16162,6 +16177,7 @@ function spExit(){
   spStopRecord();
   spFlushCancel();
   try{ spWaveStop(); }catch(e){}
+  document.getElementById('sp-result-overlay')?.remove();   // модалка результату (def), якщо відкрита
   try{ stopTTS(); }catch(e){}                 // зразок, що ще звучить (вихід посеред озвучення), зупиняємо
   spShutdownMic('exit');
   if(spStereoOn()) spSetType('auto', 'stereo-exit');
@@ -16763,6 +16779,17 @@ function spShowResult(heardText, card){
   spState.totalCount++;
   if(isOk) spState.correctCount++;
 
+  // Довгі фрази (def): результат у модальному вікні, а не в потоці сторінки — інакше
+  // довгий текст + діаграма слів розтягують панель і ламають розкладку.
+  if(_spField() === 'def'){
+    if(spState.lesson && LF){ LF.unitProgress = { done: spState.idx + 1, total: spState.cards.length }; lfRenderBar(); }
+    try{ spWaveColorize(target, heardText); }catch(e){}
+    spShowResultModal(target, heardText, pct, isOk);
+    haptic[isOk ? 'success' : 'error']();
+    answerFeedback(isOk);
+    return;
+  }
+
   // Оновлюємо кнопку мікрофону напряму (без spSetMic)
   const mb = document.getElementById('sp-mic-btn');
   if(mb){
@@ -16808,6 +16835,52 @@ function spShowResult(heardText, card){
   if(_spField() !== 'def') recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
   haptic[isOk ? 'success' : 'error']();
   answerFeedback(isOk);
+}
+
+// Модалка результату вимови (def). Ті самі класи, що й у результаті Tiles/Def:
+// .tiles-result-overlay/.tiles-result-sheet.ok|nok + галочка/хрестик, що "малюються".
+function spShowResultModal(target, heardText, pct, isOk){
+  document.getElementById('sp-result-overlay')?.remove();
+  const isLast = spState.idx >= spState.cards.length - 1;
+  const lessonLast = !!(spState.lesson && isLast);
+  const color = pct >= 80 ? '#2ecc71' : pct >= 55 ? '#e67e22' : '#e74c3c';
+  const primary = lessonLast ? t('btn_dlg_finish') : t(isLast ? 'sp_result_btn' : 'sp_next');
+  const overlay = document.createElement('div');
+  overlay.id = 'sp-result-overlay';
+  overlay.className = 'tiles-result-overlay';
+  overlay.innerHTML = `
+    <div class="tiles-result-sheet sp-modal-sheet ${isOk ? 'ok' : 'nok'}">
+      <div class="tiles-result-icon">${movaIcon(isOk ? 'check' : 'cross')}</div>
+      <div class="tiles-result-label">${t(isOk ? 'sp_res_ok' : 'sp_res_nok')}</div>
+      <div class="sp-modal-pct">
+        <div class="sp-modal-bar"><i id="sp-modal-bar-fill" style="background:${color}"></i></div>
+        <span class="sp-accuracy-pct" style="color:${color}">${pct}%</span>
+      </div>
+      <div class="sp-modal-diff">${spWordDiff(target, heardText)}</div>
+      <div class="tiles-result-label" style="margin-top:4px">${t('sp_you_said')}</div>
+      <div class="sp-modal-heard">${_escapeHtmlText(heardText || '—')}</div>
+      <button class="tiles-result-btn ok" id="sp-modal-next"${lessonLast ? ' style="visibility:hidden"' : ''}>${primary}</button>
+      ${pct > 70 ? '' : `<button class="tiles-result-btn nok" id="sp-modal-retry">${t('sp_try_again')}</button>`}
+    </div>`;
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => { const f = document.getElementById('sp-modal-bar-fill'); if(f) f.style.width = pct + '%'; });
+
+  const close = () => overlay.remove();
+  document.getElementById('sp-modal-next').addEventListener('click', () => {
+    close();
+    if(lessonLast) spLessonFinish(); else spNext();
+  });
+  document.getElementById('sp-modal-retry')?.addEventListener('click', () => { close(); spRetry(); });
+
+  // Остання фраза в уроці: «Завершити» вимикає мікрофон, тож з'являється лише коли
+  // "промивання" звуку завершилось (так само, як у spLessonShowFinish).
+  if(lessonLast){
+    const tok = _spTok;
+    Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(r, 4000)) ]).then(() => {
+      if(tok !== _spTok || !_spActive) return;
+      const b = document.getElementById('sp-modal-next'); if(b) b.style.visibility = '';
+    });
+  }
 }
 
 function spNext(){
