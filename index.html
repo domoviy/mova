@@ -3459,6 +3459,13 @@ body{
 .sp-wave{ width:100%;margin-top:14px; }
 .sp-wave svg{ display:block;width:100%;overflow:visible; }
 #sp-wave-svg{ height:44px; }
+.sp-skip-link{
+  background:none;border:0;padding:6px 8px;margin-top:4px;font-family:inherit;
+  font-size:var(--fs-tertiary);color:var(--muted);opacity:.75;cursor:pointer;
+  text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:3px;
+  -webkit-tap-highlight-color:transparent;
+}
+.sp-skip-link:active{ opacity:1; }
 .sp-wb{ stroke:rgba(201,168,76,.38);stroke-width:3;stroke-linecap:round;transition:stroke .18s; }
 .sp-wb.on{ stroke:var(--gold); }
 .sp-wb.ok{ stroke:#2ecc71; } .sp-wb.meh{ stroke:#e67e22; } .sp-wb.bad{ stroke:#e74c3c; }
@@ -4243,6 +4250,8 @@ body{
             <svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.4a3 3 0 0 0-3 3v5.2a3 3 0 0 0 6 0V6.4a3 3 0 0 0-3-3z"/><path d="M5.6 11.2a6.4 6.4 0 0 0 12.8 0"/><path d="M12 17.6v3.2M8.8 20.8h6.4"/></svg>
           </button>
           <div id="sp-mic-label" class="sp-label" data-i18n="sp_tap_to_speak" style="text-align:center">Натисни щоб говорити</div>
+          <!-- Тихе посилання (не кнопка): лише в уроці, лише на першій фразі до першого запису -->
+          <button type="button" id="sp-skip-link" class="sp-skip-link" data-i18n="sp_skip_cant_speak" onclick="spSkipSpeech()" style="display:none">Не можу говорити зараз</button>
         </div>
 
         <!-- Результат розпізнавання -->
@@ -4717,7 +4726,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '759-c910ab5';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5658,7 +5667,7 @@ const I18N = {
     btn_dlg_finish:'Abschließen',
     btn_to_lessons:'Zur Lektionsliste',
     btn_check:'Prüfen',
-    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -5808,7 +5817,7 @@ const I18N = {
     btn_dlg_finish:'Завершити',
     btn_to_lessons:'До списку уроків',
     btn_check:'Перевірити',
-    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -5957,7 +5966,7 @@ const I18N = {
     btn_dlg_finish:'Finish',
     btn_to_lessons:'Lesson List',
     btn_check:'Check',
-    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -6106,7 +6115,7 @@ const I18N = {
     btn_dlg_finish:'Завершить',
     btn_to_lessons:'К списку уроков',
     btn_check:'Проверить',
-    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
+    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -16153,6 +16162,7 @@ function spExit(){
   spStopRecord();
   spFlushCancel();
   try{ spWaveStop(); }catch(e){}
+  try{ stopTTS(); }catch(e){}                 // зразок, що ще звучить (вихід посеред озвучення), зупиняємо
   spShutdownMic('exit');
   if(spStereoOn()) spSetType('auto', 'stereo-exit');
   _spActive = false;
@@ -16457,8 +16467,27 @@ function spShowCard(){
   if(transl) transl.textContent = _spTranslText(card);
 
   spReset();
+  spSkipLinkUpdate();
   spWaveLoad(card);
   spPlayPhrase(card, 'show');
+}
+
+// ── «Не можу говорити зараз» ─────────────────────────────────────
+// Тихий вихід для тих, хто зараз не може говорити (громадське місце, поруч люди).
+// Посилання з'являється ТІЛЬКИ в уроці, на першій фразі й до першого запису —
+// щоб не підштовхувати пропускати вправу посеред неї. Не рахується ні як успіх,
+// ні як помилка: крок просто пропускається, XP за вимову не нараховується.
+function spSkipLinkUpdate(){
+  const el = document.getElementById('sp-skip-link'); if(!el) return;
+  const show = !!(spState && spState.lesson && LF && !LF.solo && spState.idx === 0 && spState.cycle === 0);
+  el.style.display = show ? '' : 'none';
+}
+function spSkipSpeech(){
+  if(!spState || !spState.lesson || !LF || LF.solo) return;
+  spL('skip speech: user cannot speak now');
+  spExit();                   // мікрофон/аудіо-сесія/озвучення — рівно як при виході з вправи
+  LF.results.speech = null;   // пропущено — без оцінки
+  lfNextStep();
 }
 
 function spReset(){
@@ -16505,6 +16534,7 @@ function spStartRecord(){
   spRepairBegin();
   spHb('recording');
   spL(`▶ webspeech cycle #${++spState.cycle} AS=${spAS()} flush=${spFlushEnabled()}`);
+  spSkipLinkUpdate();
 
   const mb = document.getElementById('sp-mic-btn');
   const lbl = document.getElementById('sp-mic-label');
@@ -16646,6 +16676,14 @@ function spFlushCancel(){
   if(_spFlushRec){ try{ _spFlushRec.abort(); }catch(e){} }
 }
 function spAfterSR(){
+  // Вправу вже закрито (✕ / навігація / вихід з уроку). Розпізнавач, перервений abort()
+  // у spExit, надсилає СВІЙ onend пізніше, вже після виходу — раніше він заново
+  // скидав _spFlushCancel і запускав "промивання" (мікрофон знову вмикався на ~1.5 с,
+  // двічі) та міняв тип аудіо-сесії ПІСЛЯ виходу. Тепер після виходу не робимо нічого.
+  if(!_spActive){
+    spL('flush: skipped (exercise already exited)');
+    return Promise.resolve();
+  }
   _spLastReleaseAt = Date.now();
   if(!spFlushEnabled()){
     return new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, SP_POST_DELAY));
