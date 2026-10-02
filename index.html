@@ -4634,7 +4634,8 @@ body{
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(7)"><i data-mi="mic" class="mi-inline"></i>Вимова</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenSpeechDef()"><i data-mi="mic" class="mi-inline"></i>Вимова: довгі фрази (def, 5 фраз)</button>
-        <button class="btn btn-s" style="text-align:left" onclick="spStereoToggle()"><i data-mi="speaker" class="mi-inline"></i>Вимова (def): обидва динаміки — вкл/викл</button>
+        <button class="btn btn-s" style="text-align:left" onclick="spStereoToggle()"><i data-mi="speaker" class="mi-inline"></i>Вимова: обидва динаміки — вкл/викл</button>
+        <button class="btn btn-s" style="text-align:left" onclick="spRouteToggle()"><i data-mi="speaker" class="mi-inline"></i>Вимова: скидання маршруту звуку — режим 0/1/2</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(8)"><i data-mi="pen" class="mi-inline"></i>Вписати слово (набрати пропущене)</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(9)"><i data-mi="speaker" class="mi-inline"></i>Знайди пару: еквалайзер (звук → значення)</button>
       </div>
@@ -4716,7 +4717,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '757-19332cd';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15742,7 +15743,7 @@ function _spLogHeader(){
   _spLogPush(`env: standalone=${standalone} audioSession=${('audioSession' in n) ? spAS() : 'n/a'} gUM=${!!(n.mediaDevices && n.mediaDevices.getUserMedia)} ` +
     `worklet=${typeof AudioWorkletNode !== 'undefined'} SR=${!!(window.SpeechRecognition || window.webkitSpeechRecognition)} ` +
     `secure=${window.isSecureContext}`);
-  _spLogPush(`flush=${spFlushEnabled()} stereoExperiment=${(function(){ try{ return localStorage.getItem(SP_STEREO_KEY) !== '0'; }catch(e){ return '?'; } })()}`);
+  _spLogPush(`flush=${spFlushEnabled()} route=${spRouteMode()} stereoExperiment=${(function(){ try{ return localStorage.getItem(SP_STEREO_KEY) !== '0'; }catch(e){ return '?'; } })()}`);
   try{
     if(n.audioSession && n.audioSession.addEventListener)
       n.audioSession.addEventListener('statechange', () => _spLogPush('AS event: statechange → ' + spAS()));
@@ -15802,11 +15803,13 @@ function spAS(){
     return s.type + '/' + (s.state || '?');
   }catch(e){ return 'err'; }
 }
+var _spTypeAt = 0; // коли востаннє змінювали тип сесії (performance.now)
 function spSetType(type, tag){
   try{
     if(!('audioSession' in navigator)){ spL(`AS[${tag}]: API n/a`); return; }
     const before = spAS();
     navigator.audioSession.type = type;
+    _spTypeAt = performance.now();
     spL(`AS[${tag}]: ${before} → set '${type}' → ${spAS()}`);
   }catch(e){ spL(`AS[${tag}]: set '${type}' ERROR ${e.name}: ${e.message}`); }
 }
@@ -15814,7 +15817,9 @@ function _spSfxInfo(){
   try{ return (typeof _sfxCtx !== 'undefined' && _sfxCtx) ? (_sfxCtx.state + '/' + _sfxCtx.sampleRate) : 'none'; }
   catch(e){ return '?'; }
 }
-// ── ЕКСПЕРИМЕНТ «обидва динаміки» (лише def-режим вимови, лише iOS) ─────
+// ── «Обидва динаміки» у вправі на вимову (лише iOS з Audio Session API) ──
+// Увімкнено за замовчуванням у ВСІХ режимах вправи: крок уроку, окрема
+// вкладка «Вимова» і прихована вправа з довгими фразами (def).
 // Веб-сторінка не може вибрати динамік: маршрут звуку визначає iOS за ТИПОМ
 // аудіо-сесії. Поки сесія в режимі запису (play-and-record — а вправа її
 // навмисно тримає "теплою" для надійного старту розпізнавання), iPhone грає
@@ -15823,13 +15828,11 @@ function _spSfxInfo(){
 // Тут перемикаємо тип явно: 'playback' перед озвученням зразка, 'play-and-record'
 // перед розпізнаванням, і 'playback' (а не 'auto') після нього. Усе пишеться
 // у Speech Log (Налаштування → Налагодження), щоб бачити, що прийняв браузер.
-// Діє тільки у вправі з def-фразами; увімкнено за замовчуванням, вимикається
-// кнопкою в Налагодженні (ключ localStorage mova_sp_stereo = '0').
+// Вимикається кнопкою в Налагодженні (ключ localStorage mova_sp_stereo = '0').
 const SP_STEREO_KEY = 'mova_sp_stereo';
 function spStereoOn(){
   try{
     if(!('audioSession' in navigator) || !_spIsIOS()) return false;
-    if(typeof spState === 'undefined' || !spState || spState.field !== 'def') return false;
     return localStorage.getItem(SP_STEREO_KEY) !== '0';
   }catch(e){ return false; }
 }
@@ -15838,10 +15841,46 @@ function spStereoToggle(){
   try{ on = localStorage.getItem(SP_STEREO_KEY) !== '0'; }catch(e){}
   on = !on;
   try{ localStorage.setItem(SP_STEREO_KEY, on ? '1' : '0'); }catch(e){}
-  notify('Вимова (def): режим «обидва динаміки» ' + (on ? 'УВІМКНЕНО' : 'ВИМКНЕНО'));
+  notify('Вимова: режим «обидва динаміки» ' + (on ? 'УВІМКНЕНО' : 'ВИМКНЕНО'));
+}
+// Режим "скидання маршруту" перед озвученням ПІСЛЯ запису (лише коли стерео увімкнено):
+//   0 — після запису просто 'auto', як до експерименту (за замовчуванням: гучно);
+//   1 — 'auto' → пауза 150 мс → 'playback' → пауза 200 мс (може дати тихий "дзвінковий" звук);
+//   2 — як 1, але на час паузи ще й призупиняємо SFX AudioContext (iOS тоді може
+//       зовсім деактивувати аудіо-сесію й перебудувати маршрут), після старту
+//       зразка контекст відновлюється.
+// Перемикається кнопкою в Налагодженні; усе пишеться в Speech Log.
+const SP_ROUTE_KEY = 'mova_sp_route';
+function spRouteMode(){
+  try{ const v = localStorage.getItem(SP_ROUTE_KEY); return v === null ? 0 : (parseInt(v, 10) || 0); }
+  catch(e){ return 0; }
+}
+function spRouteToggle(){
+  const next = (spRouteMode() + 1) % 3;
+  try{ localStorage.setItem(SP_ROUTE_KEY, String(next)); }catch(e){}
+  notify('Вимова: скидання маршруту звуку — режим ' + next + (next === 0 ? ' (як раніше, auto)' : next === 1 ? ' (пауза типу сесії)' : ' (пауза + призупинення SFX)'));
+}
+async function _spRouteReset(mode, tag){
+  const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+  const t0 = performance.now();
+  let held = null;
+  spL(`route-reset[${tag}] mode=${mode} start AS=${spAS()} sfx=${_spSfxInfo()}`);
+  try{
+    if(mode === 2 && typeof _sfxCtx !== 'undefined' && _sfxCtx && _sfxCtx.state === 'running'){
+      held = _sfxCtx;
+      await held.suspend();
+      spL(`route-reset: SFX ctx suspended (${held.state})`);
+    }
+    spSetType('auto', 'route-auto');
+    await sleep(mode === 2 ? 350 : 150);
+    spSetType('playback', 'route-playback');
+    await sleep(200);
+  }catch(e){ spL(`route-reset ERROR ${e && e.name}: ${e && e.message}`); }
+  spL(`route-reset done in ${Math.round(performance.now() - t0)}ms AS=${spAS()}`);
+  return held;
 }
 // Повернення аудіо-сесії в режим програвання після розпізнавання.
-function spRestoreAudioSession(){ spSetType(spStereoOn() ? 'playback' : 'auto', 'post'); }
+function spRestoreAudioSession(){ spSetType('auto', 'post'); }
 
 // Діагностика програвання TTS: події спільного <audio> у лог, лише поки
 // відкрита вправа "Вимова". vol/muted показують, що елемент сам у нормі —
@@ -15988,15 +16027,73 @@ function _spTranslText(card){
   var r = (o && (o[ul] || o.uk)) || '';
   return f === 'def' ? _spCleanDef(r) : r;
 }
+// 5 фраз із def: 4–20 слів (коротші — це вже не "фраза", довші розпізнавач
+// зазвичай не втримує), за SM-2 пріоритетом з випадковим перемішуванням.
+function _spPickDefCards(n){
+  const cf = document.getElementById('vf-cat')?.value || 'all';
+  const pool = (typeof VOCAB !== 'undefined' ? VOCAB : []).filter(v => {
+    if(cf !== 'all' && v.cat !== cf) return false;
+    const raw = v.def && v.def[primaryLang()];
+    if(!raw) return false;
+    const w = _spCleanDef(raw).split(' ').filter(Boolean).length;
+    return w >= 4 && w <= 20;
+  });
+  const st = srLoadState();
+  pool.sort((a,b) => srPriorityFromState(st,b.id) - srPriorityFromState(st,a.id));
+  return pool.slice(0, Math.min(n * 3, pool.length)).sort(() => Math.random() - .5).slice(0, n);
+}
+
+// Прихована вправа «Вимова: довгі фрази» у ФОРМАТІ УРОКУ: верхній блок і нижнє
+// меню сховано, угорі смуга уроку з прогресом і хрестиком, у кінці — свій
+// підсумок. Це «одноетапний урок» (LF.solo): нічого не зараховується — ні
+// стрік, ні XP, ні SM-2. ✕ веде назад у Налаштування (LF.soloReturn).
 function debugOpenSpeechDef(){
-  _spNextField = 'def';
+  const cards = _spPickDefCards(5);
+  if(!cards.length){ notify('Немає карток з def-фразами'); return; }
+  const ttl = {
+    uk:'Вимова: довгі фрази', de:'Aussprache: lange Sätze',
+    en:'Pronunciation: long phrases', ru:'Произношение: длинные фразы',
+  };
+  LF = {
+    lessonId: '__debug_speech_def', lesson: { id:'__debug_speech_def', title: ttl },
+    cards: [], speechCards: cards, speechField: 'def',
+    steps: ['speech'], step: 0, results: {}, unitProgress: null,
+    solo: true, soloReturn: 'settings', _recorded: true,
+  };
   showView('vocab');
-  switchVocabTab(7);
+  lfRenderBar();
+  lfGoStep(0);
+}
+
+// Підсумок «одноетапного уроку» (вправа на вимову def): ті самі стилі, що й
+// звичайний підсумок вимови, але кнопки ведуть не у вкладку Картки.
+function spSoloFinish(){
+  const pct = spState.totalCount ? Math.round(spState.correctCount / spState.totalCount * 100) : 0;
+  document.getElementById('tiles-result-overlay')?.remove();
+  const overlay = document.createElement('div');
+  overlay.id = 'tiles-result-overlay';
+  overlay.className = 'tiles-result-overlay';
+  overlay.innerHTML = `
+    <div class="tiles-result-sheet" style="gap:16px">
+      <div>${animIconBox(pct>=80?'trophy':pct>=55?'sprout':'repeat',60)}</div>
+      <div class="sp-result-title">${t('sp_done_title')}</div>
+      <div style="background:var(--soft);border-radius:16px;padding:12px 20px;width:100%;box-sizing:border-box;text-align:center">
+        <div class="sp-result-pct" style="color:${pct>=80?'#2ecc71':pct>=55?'#e67e22':'#e74c3c'}">${pct}%</div>
+        <div class="sp-result-count">${t('sp_score_of').replace('{a}', spState.correctCount).replace('{b}', spState.totalCount)}</div>
+      </div>
+      <button class="tiles-result-btn ok" id="sp-again-btn">${t('sp_again')}</button>
+      <button class="tiles-result-btn nok" id="sp-finish-btn">${t('sp_finish')}</button>
+    </div>`;
+  document.body.appendChild(overlay);
+  document.getElementById('sp-again-btn')?.addEventListener('click', () => { overlay.remove(); exitLessonFlow(); debugOpenSpeechDef(); });
+  document.getElementById('sp-finish-btn')?.addEventListener('click', () => { overlay.remove(); exitLessonFlow(); });
 }
 
 function startSpeech(){
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-  const field = (_spNextField === 'def' && !(LF && LF.steps && LF.steps[LF.step] === 'speech')) ? 'def' : 'term';
+  const _inLessonStep = !!(LF && LF.steps && LF.steps[LF.step] === 'speech');
+  const field = _inLessonStep ? (LF.speechField === 'def' ? 'def' : 'term')
+                              : (_spNextField === 'def' ? 'def' : 'term');
   _spNextField = 'term';
 
   // Крок «Вимова» уроку: слова цього уроку (LF.speechCards), у порядку вибірки уроку.
@@ -16004,22 +16101,11 @@ function startSpeech(){
   const inLesson = !!(LF && LF.steps && LF.steps[LF.step] === 'speech' && LF.speechCards);
   let cards;
   if(inLesson){
-    cards = LF.speechCards.filter(c => c.term && c.term[primaryLang()]);
+    cards = LF.speechCards.filter(c => field === 'def' ? (c.def && c.def[primaryLang()]) : (c.term && c.term[primaryLang()]));
   } else if(field === 'def'){
     // 5 фраз із def: 4–20 слів (коротші — це вже не "фраза", довші розпізнавач
     // зазвичай не втримує), за SM-2 пріоритетом з випадковим перемішуванням.
-    const cf = document.getElementById('vf-cat')?.value || 'all';
-    let pool = (typeof VOCAB !== 'undefined' ? VOCAB : []).filter(v => {
-      if(cf !== 'all' && v.cat !== cf) return false;
-      const raw = v.def && v.def[primaryLang()];
-      if(!raw) return false;
-      const n = _spCleanDef(raw).split(' ').filter(Boolean).length;
-      return n >= 4 && n <= 20;
-    });
-    const _srState = srLoadState();
-    pool.sort((a,b) => srPriorityFromState(_srState,b.id) - srPriorityFromState(_srState,a.id));
-    cards = pool.slice(0, Math.min(15, pool.length))
-      .sort(() => Math.random() - .5).slice(0, 5);
+    cards = _spPickDefCards(5);
   } else {
     const cf = document.getElementById('vf-cat')?.value || 'all';
     let pool = (typeof VOCAB !== 'undefined' ? VOCAB : [])
@@ -16048,6 +16134,13 @@ function startSpeech(){
     if(vp) vp.style.display = 'none';     // як у tiles/def: плеєр не потрібен
   }
   spAttachAudioDiag();
+  // Стан як після свіжого завантаження: SFX AudioContext існує й працює (див.
+  // spShutdownMic — на виході він закривається, і без цього наступна вправа на
+  // iOS стартує з "глухим" розпізнаванням). Виклик іде з жесту користувача.
+  try{
+    const _sc = _sfxGetCtx();
+    if(_sc && _sc.state !== 'running' && _sc.state !== 'closed') _sc.resume().catch(function(){});
+  }catch(e){}
   spL(`startSpeech: cards=${cards.length} AS=${spAS()} sfx=${_spSfxInfo()}`);
   spHb('exercise');
   spShowCard();
@@ -16175,7 +16268,11 @@ async function spWaveLoad(card){
   var url = getAudioUrl(card.id, _spField(), primaryLang());
   var mkey = urlToAudioMkey(url);
   var data = _spWaveCache[url];
+  wrap._wantPlay = false;
   if(!data){
+    // Нова фраза ще не в кеші: стару обвідну не лишаємо (інакше під час завантаження
+    // підсвічувались би палички ПОПЕРЕДНЬОЇ фрази).
+    wrap._data = null;
     try{
       var blobUrl = await fetchBlobUrl(url, 8000, mkey);
       if(!blobUrl) throw new Error('no audio');
@@ -16202,12 +16299,19 @@ async function spWaveLoad(card){
   wrap._data = data;
   _spWaveDraw(data.peaks);
   wrap.style.display = '';
+  if(wrap._wantPlay){ wrap._wantPlay = false; spWavePlay(); }   // зразок уже звучить — доанімуємо
 }
 
 // Позначка програвання: "палички" до поточного часу — золоті.
 function spWavePlay(){
   if(_spWaveRAF){ cancelAnimationFrame(_spWaveRAF); _spWaveRAF = null; }
-  var wrap = _spWaveEl(); if(!wrap || !wrap._data) return;
+  var wrap = _spWaveEl(); if(!wrap) return;
+  // Обвідна довгої фрази (def, ~7с) ще декодується, коли зразок уже заграв, — раніше
+  // тут просто виходили, і палички не рухались. Тепер лишаємо позначку, і
+  // spWaveLoad() сама запустить анімацію щойно хвиля готова (вона "доженить"
+  // поточну позицію звуку, бо індекс паличок рахується від a.currentTime).
+  if(!wrap._data){ wrap._wantPlay = true; return; }
+  wrap._wantPlay = false;
   var bars = wrap.querySelectorAll('.sp-wb'); if(!bars.length) return;
   var a = currentAudio || getSharedAudio(), last = -1;
   for(var i = 0; i < bars.length; i++) bars[i].classList.remove('on');
@@ -16307,8 +16411,28 @@ function spPlayPhrase(card, tag){
   Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(() => r('timeout'), 3500)) ]).then((r) => {
     if(tok !== _spTok || !_spActive) return;
     spL(`play phrase[${tag}]: gate ${r === 'timeout' ? 'TIMEOUT' : 'released'} after ${Math.round(performance.now() - t0)}ms AS=${spAS()} stereo=${spStereoOn()}`);
-    if(spStereoOn()) spSetType('playback', 'stereo-play');
-    playPregenAudio(url, null, ++playGen, null, spWavePlay);
+    // Перша фраза вправи (запису ще не було) звучить на обох динаміках з 'playback'.
+    // ПІСЛЯ запису (cycle>0) iOS перебуває в режимі запису, і закріплений 'playback'
+    // дав тихий "дзвінковий" звук. Тому за замовчуванням (режим 0) повертаємо 'auto' —
+    // як у версії до експерименту (гучно, нижній динамік). Режими 1/2 — спроби
+    // перебудувати маршрут повільним "танцем" типу сесії (_spRouteReset).
+    const _mode = spRouteMode();
+    const _afterMic = spStereoOn() && spState.cycle > 0;
+    (async () => {
+      let sfxHeld = null;
+      if(_afterMic && _mode > 0){
+        sfxHeld = await _spRouteReset(_mode, tag);
+        if(tok !== _spTok || !_spActive){ if(sfxHeld) sfxHeld.resume().catch(()=>{}); return; }
+      } else if(_afterMic){
+        spSetType('auto', 'stereo-after-mic');
+      } else if(spStereoOn()){
+        spSetType('playback', 'stereo-play');
+      }
+      playPregenAudio(url, null, ++playGen, null, () => {
+        spWavePlay();
+        if(sfxHeld) sfxHeld.resume().then(() => spL(`route-reset: SFX ctx resumed AS=${spAS()}`)).catch(()=>{});
+      });
+    })();
   });
 }
 
@@ -16392,8 +16516,10 @@ function spStartRecord(){
   if(_spWaveRAF){ cancelAnimationFrame(_spWaveRAF); _spWaveRAF = null; }
   spVoiceStart();
 
-  // Експеримент "обидва динаміки": на час розпізнавання явно просимо режим запису
-  if(spStereoOn()) spSetType('play-and-record', 'stereo-rec');
+  // Після першої фрази (закріплений 'playback') повертаємо керування системі, як було
+  // до експерименту. Явний 'play-and-record' НЕ ставимо: за логами після нього вихід
+  // лишається в "дзвінковому" режимі (тихо, гучність як у розмові) на наступних фразах.
+  if(spStereoOn()) spSetType('auto', 'stereo-rec');
   // Невелика затримка щоб браузер закрив аудіо-сесію
   setTimeout(() => spTryStart(SR, mb, lbl, 0), 150);
 }
@@ -16684,7 +16810,10 @@ function spLessonShowFinish(){
 // «Завершити»: вимкнути мікрофон і перейти до підсумку уроку.
 function spLessonFinish(){
   const score = spState.totalCount ? spState.correctCount / spState.totalCount : 1;
+  const _solo = !!(LF && LF.solo);
+  const _snap = { correctCount: spState.correctCount, totalCount: spState.totalCount };
   spExit();                                   // мікрофон вимкнено (spShutdownMic)
+  if(_solo){ spState = Object.assign({}, spState, _snap); spSoloFinish(); return; }
   if(LF){ LF.results.speech = score; lfNextStep(); }
 }
 // Без мікрофона (немає дозволу / розпізнавання недоступне) в уроці не можна застрягти: дозволяємо йти далі.
@@ -21764,6 +21893,7 @@ function abandonLessonFlow(){
 }
 
 function exitLessonFlow(){
+  const _soloReturn = LF && LF.soloReturn;   // «одноетапний урок» (прихована вправа) — назад, звідки запущено
   if(typeof spExit === 'function') spExit();   // вихід з уроку посеред вправи «Вимова»: вимкнути мікрофон
   // Зарахування уроку (стрік, subtestStats, час) відбувається ВИКЛЮЧНО в
   // lfShowResult() — рівно тоді, коли урок СПРАВДІ повністю пройдено
@@ -21854,7 +21984,7 @@ function exitLessonFlow(){
   // лишаються невидимими (visibility:hidden), поки анімація не
   // дограє (див. lfShowResult()) — тобто ця функція вже фізично не може
   // бути викликана ЦИМ шляхом раніше, ніж анімація завершиться.
-  showView('lernpfad');
+  showView(_soloReturn || 'lernpfad');
   switchVocabTab(0);
 }
 
