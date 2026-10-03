@@ -4568,13 +4568,6 @@ body{
       <div class="srow-label"><span class="srow-ico"><i data-mi="snowflake" class=""></i></span> <label data-i18n="sec_streak_freeze">Streak-Schutz</label></div>
       <span style="font-family:'Inter',monospace;font-weight:700;color:var(--gold)" id="st-freeze-count">3</span>
     </div>
-    <div class="srow">
-      <div class="srow-label"><span class="srow-ico"><i data-mi="speaker" class=""></i></span> <label data-i18n="sec_sfx" for="sfx-toggle">Soundeffekte</label><small data-i18n="sub_sfx">Bei richtig/falsch</small></div>
-      <label class="dbg-switch">
-        <input type="checkbox" id="sfx-toggle" checked onchange="setSfxEnabled(this.checked)">
-        <span class="dbg-switch-track"></span>
-      </label>
-    </div>
     </div>
     </div><!-- /ГРУПА 2 -->
 
@@ -4582,9 +4575,16 @@ body{
     <div class="ssec-group">
     <div class="ssec-group-title"><i data-mi="speaker" class=""></i><span data-i18n="grp_audio">Wiedergabe</span><span class="ssec-group-line"></span></div>
 
-    <!-- 7. Налаштування озвучування (Швидкість — перший пункт) -->
+    <!-- 7. Налаштування озвучування (Звукові ефекти — перший пункт, далі Швидкість) -->
     <div class="ssec">
     <h3><i data-mi="speaker" class="mi-inline"></i><span data-i18n="sec_playback">Wiedergabe</span></h3>
+    <div class="srow">
+      <div class="srow-label"><span class="srow-ico"><i data-mi="speaker" class=""></i></span> <label data-i18n="sec_sfx" for="sfx-toggle">Soundeffekte</label><small data-i18n="sub_sfx">Bei richtig/falsch</small></div>
+      <label class="dbg-switch">
+        <input type="checkbox" id="sfx-toggle" checked onchange="setSfxEnabled(this.checked)">
+        <span class="dbg-switch-track"></span>
+      </label>
+    </div>
     <div class="srow" id="tempo-row"></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_repeats">Wiederholungen</label><small data-i18n="sub_repeats">Zyklen pro Karte</small></div><div class="srow-ctrl"><input type="range" min="1" max="5" step="1" value="1" id="vrepeats" oninput="V.repeats=+this.value;document.getElementById('vrpv2').textContent=this.value+'×';saveSettings()"><span id="vrpv2">1×</span></div></div>
     <div class="srow"><div class="srow-label"><label data-i18n="lbl_pause">Pause</label><small data-i18n="sub_pause">Zwischen Begriffen</small></div><div class="srow-ctrl"><input type="range" min="0" max="3" step="0.1" value="0.3" id="vpause" oninput="V.pause=+this.value*1000;document.getElementById('vppv').textContent=(+this.value).toFixed(1).replace('.',',')+'s';saveSettings()"><span id="vppv">0,3s</span></div></div>
@@ -4741,7 +4741,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '762-6b05e87';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -16822,65 +16822,20 @@ function spShowResult(heardText, card){
   spState.totalCount++;
   if(isOk) spState.correctCount++;
 
-  // Довгі фрази (def): результат у модальному вікні, а не в потоці сторінки — інакше
-  // довгий текст + діаграма слів розтягують панель і ламають розкладку.
-  if(_spField() === 'def'){
-    if(spState.lesson && LF){ LF.unitProgress = { done: spState.idx + 1, total: spState.cards.length }; lfRenderBar(); }
-    try{ spWaveColorize(target, heardText); }catch(e){}
-    spShowResultModal(target, heardText, pct, isOk);
-    haptic[isOk ? 'success' : 'error']();
-    answerFeedback(isOk);
-    return;
-  }
-
-  // Оновлюємо кнопку мікрофону напряму (без spSetMic)
-  const mb = document.getElementById('sp-mic-btn');
-  if(mb){
-    mb.className = isOk ? 'success' : 'fail';
-    mb.innerHTML = movaIcon(isOk ? 'check' : 'cross');
-    mb.style.cssText = `width:80px;height:80px;border-radius:50%;border:3px solid ${isOk?'#2ecc71':'#e74c3c'};background:${isOk?'rgba(46,204,113,.12)':'rgba(231,76,60,.10)'};font-size:32px;display:flex;align-items:center;justify-content:center;color:${isOk?'#27ae60':'#e74c3c'}`;
-  }
-  const lbl = document.getElementById('sp-mic-label');
-  if(lbl) lbl.textContent = '';
-
-  const rb = document.getElementById('sp-result-box');
-  if(rb) rb.style.display = 'block';
-  const heardEl = document.getElementById('sp-heard');
-  if(heardEl) heardEl.textContent = heardText || '—';
-
-  const bar = document.getElementById('sp-accuracy-bar');
-  const pctEl = document.getElementById('sp-accuracy-pct');
-  const color = pct >= 80 ? '#2ecc71' : pct >= 55 ? '#e67e22' : '#e74c3c';
-  if(bar){ bar.style.width = pct + '%'; bar.style.background = color; }
-  if(pctEl){ pctEl.textContent = pct + '%'; pctEl.style.color = color; }
-
-  const wdEl = document.getElementById('sp-word-diff');
-  if(wdEl) wdEl.innerHTML = spWordDiff(target, heardText);
+  // Результат у МОДАЛЬНОМУ вікні для всіх режимів (терміни й довгі фрази def): у потоці
+  // сторінки довгий текст + діаграма слів розтягували панель і ламали розкладку.
+  // Старий вивід усередині панелі (sp-result-box / sp-actions) більше не використовується
+  // для результату — лише spOfferSkip() користується кнопкою "Далі" з sp-actions.
+  if(spState.lesson && LF){ LF.unitProgress = { done: spState.idx + 1, total: spState.cards.length }; lfRenderBar(); }
   try{ spWaveColorize(target, heardText); }catch(e){}
-
-  const ab = document.getElementById('sp-actions');
-  const nb = document.getElementById('sp-next-btn');
-  const rtb = document.getElementById('sp-retry-btn');
-  const isLast = spState.idx >= spState.cards.length - 1;
-  if(ab) ab.style.display = 'flex';
-  // Результат уже достатньо добрий (>70%) — повторна спроба не потрібна,
-  // кнопка лише займала б місце й дублювала сенс кнопки "Далі".
-  if(rtb) rtb.style.display = pct > 70 ? 'none' : 'block';
-  if(nb){
-    if(spState.lesson && isLast){ nb.style.display = 'none'; }
-    else { nb.style.display = 'block'; nb.textContent = t(isLast ? 'sp_result_btn' : 'sp_next'); }
-  }
-  if(spState.lesson){
-    if(LF){ LF.unitProgress = { done: spState.idx + 1, total: spState.cards.length }; lfRenderBar(); }
-    if(isLast) spLessonShowFinish();
-  }
+  spShowResultModal(target, heardText, pct, isOk);
 
   if(_spField() !== 'def') recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
   haptic[isOk ? 'success' : 'error']();
   answerFeedback(isOk);
 }
 
-// Модалка результату вимови (def). Ті самі класи, що й у результаті Tiles/Def:
+// Модалка результату вимови (усі режими). Ті самі класи, що й у результаті Tiles/Def:
 // .tiles-result-overlay/.tiles-result-sheet.ok|nok + галочка/хрестик, що "малюються".
 function spShowResultModal(target, heardText, pct, isOk){
   document.getElementById('sp-result-overlay')?.remove();
