@@ -2045,8 +2045,8 @@ body{
    зеленою/червоною "підсвіткою" зверху (градієнт + м'яке світіння), прокруткою та
    рядком точності. Галочка/хрестик малюються тією ж анімацією, що й у Tiles/Def. */
 .sp-modal-sheet{ max-height:88vh;overflow-y:auto;gap:10px;-webkit-overflow-scrolling:touch; }
-.sp-modal-sheet.ok{ background:linear-gradient(180deg,rgba(39,174,96,.16),var(--paper) 170px);box-shadow:0 -18px 48px -14px rgba(39,174,96,.5); }
-.sp-modal-sheet.nok{ background:linear-gradient(180deg,rgba(231,76,60,.14),var(--paper) 170px);box-shadow:0 -18px 48px -14px rgba(231,76,60,.45); }
+.sp-modal-sheet.ok{ background-color:var(--paper);background-image:linear-gradient(180deg,rgba(39,174,96,.16),rgba(39,174,96,0) 170px);box-shadow:0 -18px 48px -14px rgba(39,174,96,.5); }
+.sp-modal-sheet.nok{ background-color:var(--paper);background-image:linear-gradient(180deg,rgba(231,76,60,.14),rgba(231,76,60,0) 170px);box-shadow:0 -18px 48px -14px rgba(231,76,60,.45); }
 .sp-modal-sheet .tiles-result-icon{ font-size:54px; }
 .sp-modal-pct{ display:flex;align-items:center;gap:10px;width:100%;max-width:360px; }
 .sp-modal-bar{ flex:1;height:8px;background:var(--border);border-radius:4px;overflow:hidden; }
@@ -4741,7 +4741,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '761-3b3de83';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15841,6 +15841,39 @@ function _spSfxInfo(){
   try{ return (typeof _sfxCtx !== 'undefined' && _sfxCtx) ? (_sfxCtx.state + '/' + _sfxCtx.sampleRate) : 'none'; }
   catch(e){ return '?'; }
 }
+// ════════════════════════════════════════════════════════════════════════
+// ЩО ПРОБУВАЛИ І НЕ ВАРТО ПОВТОРЮВАТИ
+// (iPhone, iOS 18.7, Safari 26.5.2, PWA standalone; Speech Log 2026-10-01…02)
+// Робоча конфігурація (за замовчуванням): перша фраза вправи — 'playback' (обидва
+// динаміки), перед розпізнаванням і після нього — 'auto', route=0. Нижче — спроби,
+// які дали проблеми. Це СПОСТЕРЕЖЕННЯ з логів, а не доведені причини.
+//
+// 1. Явний 'play-and-record' перед rec.start(). Розпізнавання працює, але вихід після
+//    запису лишається у "дзвінковому" режимі: тихо, лише нижній динамік, гучність
+//    регулюється як у розмові. Так було на всіх фразах після першої. Лишати 'auto'.
+// 2. Закріплений 'playback' ПІСЛЯ запису (у post і перед кожною фразою). Другий
+//    динамік не вмикається з фрази №2, звук так само тихий. Пауза 300 мс перед play
+//    нічого не змінила.
+// 3. 'auto' → 'playback' в одному тику — фактично no-op. «Танець» з паузами (route=1/2,
+//    у режимі 2 ще й suspend SFX AudioContext) розпізнавання не ламав (логи
+//    2026-10-02 20:01–20:10), але надійного виграшу в динаміках не дав — тому НЕ за
+//    замовчуванням.
+// 4. Два паралельні «промивання» (spMicPulse): після переривання/помилки SR (iOS
+//    'aborted') їх запускали і onend, і spStopRecord — два gUM одночасно, одне без
+//    жодного аудіо-чанка ('no audio chunk within 1.8s'). Після цього розпізнавач у тій
+//    сторінці "глухий": audiostart за 1–2 мс (warm), жодного interim 8–10 с, далі
+//    'aborted'/'audio-capture' — до перезавантаження сторінки (логи 2026-10-02
+//    19:55–19:57). Тепер «промивання» single-flight (spAfterSR).
+// 5. Вихід (✕/навігація) під час запису без перевірки _spActive: пізній onend
+//    розпізнавача після exit знову запускав «промивання» (мікрофон вмикався на ~1.5 с
+//    після виходу) і міняв тип сесії. Тепер spAfterSR після exit нічого не робить.
+// 6. Закривати SFX AudioContext на виході і не відновлювати на вході: наступна вправа
+//    у тій самій сторінці стартувала з sfx=none і розпізнавала "глухо" (логи
+//    2026-10-01 19:48, 19:50). Тепер startSpeech відновлює контекст.
+// 7. 'audio-capture' + gUM NotAllowedError, коли застосунок згорнули посеред запису
+//    (visibility hidden → iOS інколи вбиває процес): це не збій вправи, лікувати нічим.
+// ════════════════════════════════════════════════════════════════════════
+
 // ── «Обидва динаміки» у вправі на вимову (лише iOS з Audio Session API) ──
 // Увімкнено за замовчуванням у ВСІХ режимах вправи: крок уроку, окрема
 // вкладка «Вимова» і прихована вправа з довгими фразами (def).
@@ -16165,7 +16198,7 @@ function startSpeech(){
     const _sc = _sfxGetCtx();
     if(_sc && _sc.state !== 'running' && _sc.state !== 'closed') _sc.resume().catch(function(){});
   }catch(e){}
-  spL(`startSpeech: cards=${cards.length} AS=${spAS()} sfx=${_spSfxInfo()}`);
+  spL(`startSpeech: cards=${cards.length} field=${field} lesson=${inLesson} stereo=${spStereoOn()} route=${spRouteMode()} AS=${spAS()} sfx=${_spSfxInfo()}`);
   spHb('exercise');
   spShowCard();
 }
@@ -16686,7 +16719,7 @@ function spSrEnded(){
   if(_spRepairResolve){ _spRepairResolve(P); _spRepairResolve = null; }
   return P;
 }
-let _spFlushRec = null, _spFlushCancel = false;
+let _spFlushRec = null, _spFlushCancel = false, _spFlushP = null;
 function spFlushCancel(){
   _spFlushCancel = true;
   if(_spFlushRec){ try{ _spFlushRec.abort(); }catch(e){} }
@@ -16704,8 +16737,16 @@ function spAfterSR(){
   if(!spFlushEnabled()){
     return new Promise(res => setTimeout(() => { spRestoreAudioSession(); res(); }, SP_POST_DELAY));
   }
+  // SINGLE-FLIGHT: «промивання» вже триває — друге НЕ запускаємо. Після переривання/помилки SR
+  // (напр. iOS 'aborted') його викликали і onend, і spStopRecord, тобто ДВА gUM+AudioContext
+  // одночасно; одне з них не отримувало жодного чанка ('no audio chunk within 1.8s'), і
+  // розпізнавач у цій сторінці лишався "глухим" (див. блок "ЩО ПРОБУВАЛИ" вище).
+  if(_spFlushP){
+    spL('flush: already running — duplicate skipped');
+    return _spFlushP;
+  }
   _spFlushCancel = false;
-  return (async () => {
+  _spFlushP = (async () => {
     await new Promise(r => setTimeout(r, 800));               // дати SR остаточно звільнити аудіоблок
     if(_spFlushCancel){ spL('flush: cancelled (new recording/exit)'); return; }
     spL(`flush: start AS=${spAS()}`);
@@ -16724,7 +16765,9 @@ function spAfterSR(){
     await new Promise(r => setTimeout(r, SP_POST_DELAY));
     spRestoreAudioSession();
     spL(`flush: done AS=${spAS()}`);
-  })().catch(e => { _spFlushRec = null; spL('flush ERROR ' + (e && e.message)); });
+  })().catch(e => { _spFlushRec = null; spL('flush ERROR ' + (e && e.message)); })
+      .finally(() => { _spFlushP = null; });
+  return _spFlushP;
 }
 
 // Скасувати розпізнавання "тихо" (без результату).
