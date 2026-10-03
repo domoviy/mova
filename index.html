@@ -1078,6 +1078,10 @@ body{
   background:#27ae60;
   box-shadow:0 5px 0 rgba(23,104,58,.4), 0 7px 12px rgba(23,104,58,.18);
 }
+.lp-node.lp-node-speech{
+  background:#7b5ea7;
+  box-shadow:0 5px 0 rgba(70,45,105,.4), 0 7px 12px rgba(70,45,105,.18);
+}
 .lp-node.done{
   background:var(--gold);
   box-shadow:0 5px 0 rgba(160,128,40,.4), 0 7px 12px rgba(160,128,40,.16);
@@ -1154,7 +1158,7 @@ body{
 .mi-x22{ width:22px;height:22px; }
 .mi.mi-inline{ display:inline-block;width:.95em;height:.95em;vertical-align:-.14em;margin-right:.35em; }
 .lp-node{ color:var(--gold); }
-.lp-node.lp-node-smalltalk,.lp-node.lp-node-problemsolving,.lp-node.lp-node-forum,.lp-node.lp-node-email{ color:#fff; }
+.lp-node.lp-node-smalltalk,.lp-node.lp-node-problemsolving,.lp-node.lp-node-forum,.lp-node.lp-node-email,.lp-node.lp-node-speech{ color:#fff; }
 .lp-node.done{ color:var(--forest); }
 .lp-node.locked{ color:rgba(0,0,0,.38); }
 .lp-node .mi{ width:1.22em;height:1.22em; }
@@ -4741,7 +4745,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '763-6e0215e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4952,6 +4956,47 @@ function _lpEligibleForumIds(frmCardIds){
   });
 }
 
+// ── ВУЗОЛ «ВИМОВА: ДОВГІ ФРАЗИ» НА СТЕЖЦІ ──────────────────────────────────
+// Необов'язковий вузол (type:'speech'): 5 фраз із def слів, які користувач ВЖЕ вчив —
+// це повторне ВІДТВОРЕННЯ (retrieval) у мовленні, а не нова лексика. З'являється
+// лише коли на стежці вже є ≥ LP_SPEECH_DEF_MIN карток із заповненим def (4–20 слів),
+// тож у курсах без def (напр. A1/A2) його просто нема. Нічого не блокує: наступні
+// уроки розблоковуються від попереднього УРОКУ, а не від цього вузла.
+// Частота — кожен LP_SPEECH_DEF_EVERY-й звичайний урок (5–7 — розумний діапазон).
+var LP_SPEECH_DEF_EVERY = 6;
+var LP_SPEECH_DEF_MIN   = 5;
+function _lpSpeechDefEligibleIds(cardIds){
+  if(typeof VOCAB === 'undefined' || !Array.isArray(VOCAB) || !cardIds || !cardIds.length) return [];
+  var pl = 'de';
+  try{ pl = primaryLang(); }catch(e){}
+  var want = new Set(cardIds), seen = new Set(), out = [];
+  VOCAB.forEach(function(v){
+    if(!want.has(v.id) || seen.has(v.id)) return;
+    var raw = v.def && v.def[pl];
+    if(!raw) return;
+    var w = _spCleanDef(raw).split(' ').filter(Boolean).length;
+    if(w >= 4 && w <= 20){ seen.add(v.id); out.push(v.id); }
+  });
+  return out;
+}
+// Пройдено/не пройдено — окремо від SM-2 (cardIds у вузла порожні, щоб не псувати
+// відсотки модуля/розділу). Ключ — за активним курсом.
+function _speechDoneKey(){
+  var c = '';
+  try{ c = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || ''; }catch(e){}
+  return 'mova_speech_def_done_' + c;
+}
+function speechNodeDone(id){
+  try{ return !!JSON.parse(localStorage.getItem(_speechDoneKey()) || '{}')[id]; }catch(e){ return false; }
+}
+function speechNodeMarkDone(id, score){
+  try{
+    var k = _speechDoneKey(), m = JSON.parse(localStorage.getItem(k) || '{}');
+    m[id] = { t: Date.now(), score: Math.round((score || 0) * 100) };
+    localStorage.setItem(k, JSON.stringify(m));
+  }catch(e){}
+}
+
 function buildLearningPath(rawLessons, courseLevel){
   if(!Array.isArray(rawLessons) || !rawLessons.length) return rawLessons;
   var cfg = PATH_CONFIG[courseLevel] || { newWordsPerLesson: 6, reviewMix: 3 };
@@ -5037,6 +5082,7 @@ function buildLearningPath(rawLessons, courseLevel){
   // якщо прострочених реально пройдених карток не вистачає на квоту
   // (cfg.reviewMix), а не як пріоритет.
   var allCardIdsSoFar = [];
+  var regularCount = 0;   // скільки звичайних уроків уже поставлено (для вузла «Вимова: довгі фрази»)
 
   rawLessons.forEach(function(lesson){
     var ids = lesson.cardIds || [];
@@ -5202,6 +5248,27 @@ function buildLearningPath(rawLessons, courseLevel){
         }));
         withinModulePrevId = nodeId;
       });
+
+      // «Вимова: довгі фрази» — кожен LP_SPEECH_DEF_EVERY-й звичайний урок, якщо є з чого
+      // добрати фрази (див. блок констант вище). Пул — слова, бачені ДО цього чанка
+      // (повторення, а не щойно вивчене); якщо їх замало — додаємо й слова цього чанка.
+      regularCount++;
+      if(LP_SPEECH_DEF_EVERY > 0 && regularCount % LP_SPEECH_DEF_EVERY === 0){
+        var seenBefore = allCardIdsSoFar.concat(shownThisModule.slice(0, Math.max(0, shownThisModule.length - chunk.length)));
+        var spPool = _lpSpeechDefEligibleIds(seenBefore);
+        if(spPool.length < LP_SPEECH_DEF_MIN) spPool = _lpSpeechDefEligibleIds(allCardIdsSoFar.concat(shownThisModule));
+        if(spPool.length >= LP_SPEECH_DEF_MIN){
+          out.push(Object.assign({}, lesson, {
+            id:          lesson.id + '_spd' + (idx+1),
+            type:        'speech',
+            cardIds:     [],      // не впливає на відсотки модуля/розділу
+            dlgCards:    [], frmCards: [], emlCards: [], sbCards: [],
+            speechPool:  spPool,
+            unlockAfter: withinModulePrevId,   // відкривається після попереднього уроку,
+            _parentModuleId: lesson.id,        // але withinModulePrevId НЕ оновлюємо — нічого не блокує
+          }));
+        }
+      }
     });
 
     lastSubOf[lesson.id]     = withinModulePrevId;
@@ -5682,7 +5749,7 @@ const I18N = {
     btn_dlg_finish:'Abschließen',
     btn_to_lessons:'Zur Lektionsliste',
     btn_check:'Prüfen',
-    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', lr_l_phrases:'Sätze', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Die Lektion bleibt auf dem Pfad.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -5832,7 +5899,7 @@ const I18N = {
     btn_dlg_finish:'Завершити',
     btn_to_lessons:'До списку уроків',
     btn_check:'Перевірити',
-    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Урок лишається на шляху.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -5981,7 +6048,7 @@ const I18N = {
     btn_dlg_finish:'Finish',
     btn_to_lessons:'Lesson List',
     btn_check:'Check',
-    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', lr_l_phrases:'Phrases', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. The lesson stays on your path.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -6130,7 +6197,7 @@ const I18N = {
     btn_dlg_finish:'Завершить',
     btn_to_lessons:'К списку уроков',
     btn_check:'Проверить',
-    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
+    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Урок остаётся на пути.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -10392,6 +10459,9 @@ function findCurrentLesson(){
 }
 
 function lessonProgress(lesson){
+  // Вузол «Вимова: довгі фрази» необов'язковий: у суми прогресу не входить (total 0), а pct=100,
+  // щоб жоден пошук «поточного уроку» не застрягав на ньому (його стан — speechNodeDone()).
+  if(lesson && lesson.type === 'speech') return {done:0, total:0, pct:100};
   if(!lesson?.cardIds?.length) return {done:0, total:0, pct:0};
   // totalPlays тепер живе в єдиній структурі Smart Review (state.cards[id]),
   // а не в окремих ключах 'mova_'+id — та стара система була видалена при
@@ -10695,6 +10765,11 @@ function _runBonusLessonFlow(lesson){
     results:    {},
     startTime:  Date.now(),
     _grammarBonusPool: lesson._grammarBonusPool,
+    speechCards: lesson._speechBonusPool,   // лише для 'Вимова: довгі фрази' (інакше undefined)
+    speechField: lesson._speechField,
+    // Для «Вимова: довгі фрази» вузол стежки = _bonusForLessonId, щоб findCurrentLesson() після неї
+    // вказав на наступний УРОК (для решти бонусних уроків поведінку не чіпаємо).
+    _bonusForLessonId: lesson._speechOnly ? lesson._bonusForLessonId : undefined,
     _xpAtStart: xpGetTotal(),
   };
   _mLogLessonStart(lesson);
@@ -11234,7 +11309,7 @@ function renderLernpfad(opts){
       // cardIds, lessonProgress завжди {pct:0}) — якби рахувати її в
       // знаменнику nodes.length, дріб типу "39/40" ніколи не дійшов би
       // до 100%, хоча реально всі СПРАВЖНІ картки модуля пройдені.
-      const countableNodes = grp.nodes.filter(n => n.type !== 'examsim');
+      const countableNodes = grp.nodes.filter(n => n.type !== 'examsim' && n.type !== 'speech');
       const doneCount = countableNodes.filter(n=>lessonProgress(n).pct>=80).length;
       const hasModuleCurrent = grp.nodes.some(n=>findCurrentLesson()?.id===n.id);
       // Той самий принцип, що глава вище: розгорнутий лише модуль з
@@ -11612,6 +11687,9 @@ function _lpNodeVisual(node){
   if(node.type === 'examsim'){
     return { icon: movaIcon('pen'), cls: 'lp-node-examsim' };
   }
+  if(node.type === 'speech'){
+    return { icon: movaIcon('mic'), cls: 'lp-node-speech' };
+  }
   return { icon: movaIcon('book'), cls: 'lp-node-lesson' };
 }
 
@@ -11621,8 +11699,9 @@ function _lpNodeVisual(node){
 function renderPathNode(node, idx){
   const {done, total, pct} = lessonProgress(node);
   const unlocked  = lessonUnlocked(node);
-  const isDone    = pct >= 80;
-  const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
+  const isSpeech  = node.type === 'speech';
+  const isDone    = isSpeech ? speechNodeDone(node.id) : pct >= 80;
+  const isCurrent = !isSpeech && !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
   const isForum = node.type === 'forum';
   const isEmail = node.type === 'email';
@@ -11649,6 +11728,7 @@ function renderPathNode(node, idx){
     : isDialogue ? `startModuleDialogueBonus('${node.id}')`
     : isForum ? `startModuleForumBonus('${node.id}')`
     : isEmail ? `startModuleEmailBonus('${node.id}')`
+    : isSpeech ? `startSpeechDefLesson('${node.id}')`
     : `startLessonFlow('${node.id}')`;
   const chipLabel = pct > 0
     ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
@@ -11660,7 +11740,7 @@ function renderPathNode(node, idx){
       <span class="lp-node-icon">${icon}</span>
     </div>
     ${isCurrent ? `<div class="lp-node-label">${_playLabel(chipLabel)}</div>`
-      : (unlocked && !isDone ? `<div class="lp-node-progress">${done}/${total}</div>` : '')}
+      : (unlocked && !isDone && !isSpeech ? `<div class="lp-node-progress">${done}/${total}</div>` : '')}
   </div>`;
 }
 
@@ -16086,9 +16166,11 @@ function _spTranslText(card){
 }
 // 5 фраз із def: 4–20 слів (коротші — це вже не "фраза", довші розпізнавач
 // зазвичай не втримує), за SM-2 пріоритетом з випадковим перемішуванням.
-function _spPickDefCards(n){
-  const cf = document.getElementById('vf-cat')?.value || 'all';
+function _spPickDefCards(n, onlyIds, preferSeen){
+  const idSet = onlyIds ? new Set(onlyIds) : null;
+  const cf = idSet ? 'all' : (document.getElementById('vf-cat')?.value || 'all');
   const pool = (typeof VOCAB !== 'undefined' ? VOCAB : []).filter(v => {
+    if(idSet && !idSet.has(v.id)) return false;
     if(cf !== 'all' && v.cat !== cf) return false;
     const raw = v.def && v.def[primaryLang()];
     if(!raw) return false;
@@ -16096,8 +16178,18 @@ function _spPickDefCards(n){
     return w >= 4 && w <= 20;
   });
   const st = srLoadState();
-  pool.sort((a,b) => srPriorityFromState(st,b.id) - srPriorityFromState(st,a.id));
-  return pool.slice(0, Math.min(n * 3, pool.length)).sort(() => Math.random() - .5).slice(0, n);
+  const byPrio = (a,b) => srPriorityFromState(st,b.id) - srPriorityFromState(st,a.id);
+  const pick = (arr, k) => arr.slice(0, Math.min(k * 3, arr.length)).sort(() => Math.random() - .5).slice(0, k);
+  if(preferSeen){
+    // Урок на стежці: це ПОВТОРЕННЯ вивченого — спершу вже бачені слова (найслабші/прострочені),
+    // а нові (srPriority дає їм найвищий бал) лише добираємо, якщо бачених замало.
+    const seen  = pool.filter(v => !srIsCardNew(st, v.id)).sort(byPrio);
+    const fresh = pool.filter(v =>  srIsCardNew(st, v.id));
+    let out = pick(seen, n);
+    if(out.length < n) out = out.concat(pick(fresh, n - out.length));
+    return out;
+  }
+  return pick(pool.sort(byPrio), n);
 }
 
 // Прихована вправа «Вимова: довгі фрази» у ФОРМАТІ УРОКУ: верхній блок і нижнє
@@ -16120,6 +16212,31 @@ function debugOpenSpeechDef(){
   showView('vocab');
   lfRenderBar();
   lfGoStep(0);
+}
+
+// Вузол стежки type:'speech' — справжній урок (на відміну від прихованого solo-тесту):
+// екран результату, XP, стрік, святкування — через ті самі lfShowResult/showLessonCelebration.
+function startSpeechDefLesson(lessonId){
+  const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
+  const lesson  = lessons.find(l => l.id === lessonId);
+  if(!lesson) return;
+  const cards = _spPickDefCards(5, lesson.speechPool || [], true);
+  if(cards.length < 3){
+    notify('⚠️ ' + (uiLang==='uk'?'Немає фраз для цього уроку':uiLang==='ru'?'Нет фраз для этого урока':uiLang==='en'?'No phrases for this lesson':'Keine Sätze für diese Lektion'));
+    return;
+  }
+  _runBonusLessonFlow({
+    id: '_speech_def_' + lesson.id,
+    title: { de:'Aussprache: lange Sätze', uk:'Вимова: довгі фрази', en:'Pronunciation: long phrases', ru:'Произношение: длинные фразы' },
+    chapter: lesson.chapter, module: lesson.module,
+    _isBonusLesson: true,
+    _bonusForLessonId: lesson.id,
+    _speechOnly: true,
+    _speechNodeId: lesson.id,
+    _speechBonusPool: cards,
+    _speechField: 'def',
+    steps: ['speech', 'result'],
+  });
 }
 
 // Підсумок «одноетапного уроку» (вправа на вимову def): ті самі стилі, що й
@@ -16534,6 +16651,13 @@ function spSkipLinkUpdate(){
 function spSkipSpeech(){
   if(!spState || !spState.lesson || !LF || LF.solo) return;
   spL('skip speech: user cannot speak now');
+  if(LF.lesson && LF.lesson._speechOnly){
+    // Урок складається ЛИШЕ з вимови: пропуск = вихід без зарахування (ні XP, ні стріку) —
+    // вузол лишається на стежці, повернутись можна будь-коли.
+    exitLessonFlow();
+    notify(t('sp_skipped_toast'));
+    return;
+  }
   spExit();                   // мікрофон/аудіо-сесія/озвучення — рівно як при виході з вправи
   LF.results.speech = null;   // пропущено — без оцінки
   lfNextStep();
@@ -16830,7 +16954,15 @@ function spShowResult(heardText, card){
   try{ spWaveColorize(target, heardText); }catch(e){}
   spShowResultModal(target, heardText, pct, isOk);
 
+  // Прихований solo-тест def нічого не пише; справжній урок зі стежки — пише (як Sprechen).
   if(_spField() !== 'def') recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
+  else if(LF && LF.lesson && LF.lesson._speechOnly){
+    recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong', 'Sprechen');
+    // Бали за фразу (recordCardEvent бали НЕ дає — вони нараховуються окремо): вага Sprechen
+    // за вдалу фразу, невелика «за спробу» за неточну. Бонус за сам урок (+XP_LESSON_COMPLETE_BONUS)
+    // і стрік нараховує lfShowResult().
+    xpAward(isOk ? XP_TASK_WEIGHT.Sprechen : 2);
+  }
   haptic[isOk ? 'success' : 'error']();
   answerFeedback(isOk);
 }
@@ -16921,6 +17053,7 @@ function spLessonFinish(){
   const score = spState.totalCount ? spState.correctCount / spState.totalCount : 1;
   const _solo = !!(LF && LF.solo);
   const _snap = { correctCount: spState.correctCount, totalCount: spState.totalCount };
+  if(LF) LF._speechStats = { correct: spState.correctCount, total: spState.totalCount };   // для екрана результату
   spExit();                                   // мікрофон вимкнено (spShutdownMic)
   if(_solo){ spState = Object.assign({}, spState, _snap); spSoloFinish(); return; }
   if(LF){ LF.results.speech = score; lfNextStep(); }
@@ -21308,8 +21441,16 @@ function lfShowResult(){
   // titleText/emoji — і граматичний урок отримує свій власний підпис.
   const isGrammarOnly = LF.cards.length === 0 && !isDlgOnly && !isFrmOnly && !isEmlOnly && (LF._grammarBonusPool||[]).length > 0;
 
+  // Урок «Вимова: довгі фрази» (вузол type:'speech'): LF.cards порожній, є лише speechCards.
+  const isSpeechOnly = !!(LF.lesson && LF.lesson._speechOnly);
+  const speechScore = isSpeechOnly ? (typeof LF.results?.speech === 'number' ? LF.results.speech : 0) : 0;
+
   let improved = 0, pct = 0, emoji, titleText;
-  if(isFrmOnly){
+  if(isSpeechOnly){
+    pct = Math.round(speechScore * 100);
+    emoji = pct>=80?'🏆':pct>=50?'🎉':'💪';
+    titleText = t(pct>=80 ? 'lr_t_great' : pct>=50 ? 'lr_t_good' : 'lr_t_keep');
+  } else if(isFrmOnly){
     emoji = '📰';
     titleText = t('lr_t_frm');
   } else if(isEmlOnly){
@@ -21446,7 +21587,12 @@ function lfShowResult(){
   if(statsEl){
     const xpRow = [movaIcon('mpoint'), t('lr_l_xp'), xpEarnedThisLesson, 'xp'];
     const timeRow = [movaIcon('timer'), t('lr_l_time'), timeStr];
-    const rows = isFrmOnly ? [
+    const _ss = LF._speechStats || { correct: 0, total: (LF.speechCards||[]).length };
+    const rows = isSpeechOnly ? [
+      [movaIcon('mic'), t('lr_l_phrases'), _ss.total],
+      [movaIcon('check'), t('lr_l_phr_ok'), _ss.correct + '/' + _ss.total],
+      timeRow, xpRow,
+    ] : isFrmOnly ? [
       [movaIcon('post'), t('lr_l_frm'), LF.frmCards.length],
       timeRow, xpRow,
     ] : isEmlOnly ? [
@@ -21477,6 +21623,7 @@ function lfShowResult(){
   let celebrationPending = false;
   if(LF && !LF._recorded){
     LF._recorded = true;
+    if(isSpeechOnly && LF.lesson._speechNodeId) speechNodeMarkDone(LF.lesson._speechNodeId, speechScore);   // вузол на стежці → «пройдено»
     // Аналітика: "дійшов до кінця уроку" — саме тут, у тому самому
     // guard'і, що й XP/стрік нижче (LF._recorded і тут відсікає
     // повторні виклики lfShowResult(), тож подія летить рівно один
