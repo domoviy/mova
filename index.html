@@ -47,6 +47,21 @@
 @font-face{font-family:'Inter';src:url('fonts/inter-v20-latin-800.woff2') format('woff2');font-weight:800;font-style:normal;font-display:swap}
 </style>
 
+<!-- Аналітика: ЧЕРГА подій і user properties до готовності Firebase.
+     window.mlog/window.mprop справжні з'являються лише після того, як модуль нижче
+     завантажить Firebase (await import з gstatic — мережа). Основний скрипт же викликає
+     mprop('course'…) і mlog(…) під час старту, коли справжніх функцій ще немає, — і ці виклики
+     раніше мовчки губились (guard typeof … === 'function'). Через це «course» (його ставить
+     loadCourseScript лише при холодному старті/перемиканні курсу) могла не потрапити в GA
+     ніколи. Тепер заглушка складає виклики в чергу, а модуль відтворює її після ініціалізації. -->
+<script>
+(function(){
+  var q = window._mq = [];
+  function push(item){ if(q.length < 300) q.push(item); }
+  window.mlog  = function(e, p){ push(['e', e, p || {}]); };
+  window.mprop = function(n, v){ push(['p', n, v]); };
+})();
+</script>
 <!-- Firebase Analytics (тільки на https://) -->
 <script type="module">
 if(location.protocol === 'https:'){
@@ -68,12 +83,21 @@ if(location.protocol === 'https:'){
     setUserId(anal,uid);
     const sid   = Date.now().toString();
     const start = Date.now();
-    logEvent(anal,'app_open',{session_id:sid});
+    // DebugView (GA4 → Admin → DebugView): події з debug_mode:true показуються там МИТТЄВО,
+    // а у звітах — лише через 24–48 год. Вмикається ?ga_debug=1 (запам'ятовується; ?ga_debug=0
+    // вимикає) або з Налаштування → Налагодження (для встановленого PWA без адресного рядка).
+    try{
+      const m = location.search.match(/[?&]ga_debug=([01])/);
+      if(m) localStorage.setItem('mova_ga_debug', m[1]);
+    }catch(_){}
+    const _dbg = () => { try{ return localStorage.getItem('mova_ga_debug') === '1' ? {debug_mode:true} : {}; }catch(_){ return {}; } };
+    logEvent(anal,'app_open',{session_id:sid, ..._dbg()});
     document.addEventListener('visibilitychange',()=>{
       if(document.visibilityState==='hidden')
-        logEvent(anal,'session_end',{session_id:sid,duration_sec:Math.round((Date.now()-start)/1000)});
+        logEvent(anal,'session_end',{session_id:sid,duration_sec:Math.round((Date.now()-start)/1000), ..._dbg()});
     });
-    window.mlog=(e,p={})=>{try{logEvent(anal,e,{session_id:sid,...p});}catch(_){}};
+    window.mlog=(e,p={})=>{try{logEvent(anal,e,{session_id:sid,..._dbg(),...p});}catch(_){}};
+    window.mDebugToggle=()=>{ try{ const on = localStorage.getItem('mova_ga_debug') !== '1'; localStorage.setItem('mova_ga_debug', on?'1':'0'); window.notify?.('Аналітика DebugView: '+(on?'УВІМКНЕНО':'ВИМКНЕНО')+' — перезапустіть застосунок'); }catch(_){} };
     // window.mprop — User Properties: стабільні "виміри" користувача
     // (не подія на мить, а атрибут, що чіпляється до ВСІХ наступних
     // подій, доки не зміниться) — саме так у Firebase Analytics
@@ -121,6 +145,14 @@ if(location.protocol === 'https:'){
              window.navigator.standalone === true;
     }
     window.mprop('pwa_installed', _mIsStandalone());
+
+    // Відтворюємо виклики, що надійшли ДО готовності Firebase (див. заглушку вгорі): user
+    // properties (course, streak_*, audio_speed…) і події. Йдуть після власних значень вище,
+    // тож актуальніше значення з основного скрипта перемагає.
+    (function(){
+      const q = window._mq || []; window._mq = null;
+      q.forEach(it => { try{ if(it[0]==='p') window.mprop(it[1], it[2]); else window.mlog(it[1], it[2]); }catch(_){} });
+    })();
     // beforeinstallprompt — браузер ПРОПОНУЄ встановити (лише Chrome/
     // Edge/Android; iOS Safari цю подію взагалі не підтримує — там
     // інсталяція виключно вручну через "Поділитись"→"На екран Домівки",
@@ -4664,6 +4696,7 @@ body{
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenSpeechDef()"><i data-mi="mic" class="mi-inline"></i>Вимова: довгі фрази (def, 5 фраз)</button>
         <button class="btn btn-s" style="text-align:left" onclick="spStereoToggle()"><i data-mi="speaker" class="mi-inline"></i>Вимова: обидва динаміки — вкл/викл</button>
         <button class="btn btn-s" style="text-align:left" onclick="spRouteToggle()"><i data-mi="speaker" class="mi-inline"></i>Вимова: скидання маршруту звуку — режим 0/1/2</button>
+        <button class="btn btn-s" style="text-align:left" onclick="window.mDebugToggle&&window.mDebugToggle()"><i data-mi="trend" class="mi-inline"></i>Аналітика: DebugView вкл/викл</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(8)"><i data-mi="pen" class="mi-inline"></i>Вписати слово (набрати пропущене)</button>
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(9)"><i data-mi="speaker" class="mi-inline"></i>Знайди пару: еквалайзер (звук → значення)</button>
       </div>
@@ -4745,7 +4778,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '764-dea4faa';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4957,14 +4990,17 @@ function _lpEligibleForumIds(frmCardIds){
 }
 
 // ── ВУЗОЛ «ВИМОВА: ДОВГІ ФРАЗИ» НА СТЕЖЦІ ──────────────────────────────────
-// Необов'язковий вузол (type:'speech'): 5 фраз із def слів, які користувач ВЖЕ вчив —
-// це повторне ВІДТВОРЕННЯ (retrieval) у мовленні, а не нова лексика. З'являється
-// лише коли на стежці вже є ≥ LP_SPEECH_DEF_MIN карток із заповненим def (4–20 слів),
-// тож у курсах без def (напр. A1/A2) його просто нема. Нічого не блокує: наступні
+// Необов'язковий вузол (type:'speech'): до 5 фраз із def карток ПОТОЧНОГО МОДУЛЯ.
+// Мета — потренувати МОВЛЕННЯ, а не запам'ятати фрази: таких уроків значно менше, ніж
+// карток у модулі, тож прочитати вголос кожну навіть по разу користувач не встигне.
+// Важливо лише, що фрази релевантні змісту модуля. Тому пул = картки цього модуля, а
+// не вся пройдена історія, і добір віддає перевагу фразам, які ще НЕ вимовляли.
+// З'являється лише коли в модулі є ≥ LP_SPEECH_DEF_MIN карток із заповненим def
+// (4–20 слів), тож у курсах без def вузла просто нема. Нічого не блокує: наступні
 // уроки розблоковуються від попереднього УРОКУ, а не від цього вузла.
 // Частота — кожен LP_SPEECH_DEF_EVERY-й звичайний урок (5–7 — розумний діапазон).
 var LP_SPEECH_DEF_EVERY = 6;
-var LP_SPEECH_DEF_MIN   = 5;
+var LP_SPEECH_DEF_MIN   = 3;
 function _lpSpeechDefEligibleIds(cardIds){
   if(typeof VOCAB === 'undefined' || !Array.isArray(VOCAB) || !cardIds || !cardIds.length) return [];
   var pl = 'de';
@@ -4985,6 +5021,19 @@ function _speechDoneKey(){
   var c = '';
   try{ c = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || ''; }catch(e){}
   return 'mova_speech_def_done_' + c;
+}
+// Фрази, які користувач уже вимовляв у таких уроках (id карток): добір спершу бере ще не
+// вимовлені, щоб за кілька уроків модуля охопити якнайбільше РІЗНИХ фраз.
+function _speechSpokenKey(){ return _speechDoneKey().replace('_done_', '_spoken_'); }
+function speechSpokenLoad(){
+  try{ return new Set(JSON.parse(localStorage.getItem(_speechSpokenKey()) || '[]')); }catch(e){ return new Set(); }
+}
+function speechPhraseMarkSpoken(id){
+  try{
+    var set = speechSpokenLoad(); set.add(id);
+    var arr = Array.from(set); if(arr.length > 3000) arr = arr.slice(arr.length - 3000);
+    localStorage.setItem(_speechSpokenKey(), JSON.stringify(arr));
+  }catch(e){}
 }
 function speechNodeDone(id){
   try{ return !!JSON.parse(localStorage.getItem(_speechDoneKey()) || '{}')[id]; }catch(e){ return false; }
@@ -5249,14 +5298,12 @@ function buildLearningPath(rawLessons, courseLevel){
         withinModulePrevId = nodeId;
       });
 
-      // «Вимова: довгі фрази» — кожен LP_SPEECH_DEF_EVERY-й звичайний урок, якщо є з чого
-      // добрати фрази (див. блок констант вище). Пул — слова, бачені ДО цього чанка
-      // (повторення, а не щойно вивчене); якщо їх замало — додаємо й слова цього чанка.
+      // «Вимова: довгі фрази» — кожен LP_SPEECH_DEF_EVERY-й звичайний урок, якщо в ПОТОЧНОМУ
+      // модулі є з чого добрати фрази (див. блок констант вище). Пул — усі картки цього
+      // модуля (ids), а не пройдена історія: фрази мають бути релевантні змісту модуля.
       regularCount++;
       if(LP_SPEECH_DEF_EVERY > 0 && regularCount % LP_SPEECH_DEF_EVERY === 0){
-        var seenBefore = allCardIdsSoFar.concat(shownThisModule.slice(0, Math.max(0, shownThisModule.length - chunk.length)));
-        var spPool = _lpSpeechDefEligibleIds(seenBefore);
-        if(spPool.length < LP_SPEECH_DEF_MIN) spPool = _lpSpeechDefEligibleIds(allCardIdsSoFar.concat(shownThisModule));
+        var spPool = _lpSpeechDefEligibleIds(ids);
         if(spPool.length >= LP_SPEECH_DEF_MIN){
           out.push(Object.assign({}, lesson, {
             id:          lesson.id + '_spd' + (idx+1),
@@ -6811,8 +6858,9 @@ const SR_EVENT_WEIGHTS = {
   // Сигнал технічно менш надійний: шум, акцент, якість мікрофона
   // можуть і "проковтнути" помилку, і неправильно розпізнати правильну
   // вимову. Тому обидва бали м'якші за task_correct/task_wrong.
-  speech_correct: 8,   // 80% — розпізнано як правильну вимову
-  speech_wrong:   4,   // 40% — розпізнано як неправильну вимову
+  speech_correct: 8,   // 80% — розпізнано як правильну вимову → АКТИВНА: піднімає «знаю» картки (SM-2)
+  speech_wrong:   4,   // 40% — розпізнано як неправильну вимову → ПАСИВНА (див. SR_PASSIVE_EVENTS):
+                       //       «не знаю» НЕ ставимо, інтервал слова не скидаємо
 
   // ── ПАСИВНІ ПОДІЇ БЕЗ ЯКОЇСЬ ЯВНОЇ ДІЇ КОРИСТУВАЧА ────────────
   // Картка просто показана/прослухана автоплеєм, користувач не
@@ -6847,10 +6895,21 @@ const SR_EVENT_WEIGHTS = {
 // лишається незмінним. Лише ці типи зараз кваліфікуються як "пасивні";
 // усе інше (свайпи, активні завдання, мовлення) — доведення пам'яті,
 // тож рухає розклад повторень як завжди.
+//
+// 'speech_wrong' теж тут — свідомо асиметрично до 'speech_correct':
+//  • вимова зі ТЕКСТОМ на екрані й еталонним звуком перед записом — це читання вголос/
+//    повторення, а не відтворення з пам'яті: помилка вимови ≠ "не знаю слова";
+//  • сигнал технічно шумний (акцент, шум, iOS 'aborted'), а довга фраза def ламається
+//    від ОДНОГО неправильно розпізнаного слова — штраф розкладу за такий шум шкодить
+//    (слово, яке людина знає, отримувало б скинутий інтервал і зайві повтори);
+//  • водночас невдача не губиться: partHistory/subtestStats ('Sprechen') її фіксують,
+//    тож слабка вимова видна в профілі слабких місць, але без удару по SM-2.
+// Правильна вимова ('speech_correct') лишається активною і піднімає "знаю".
 const SR_PASSIVE_EVENTS = new Set([
   'passive_listen_implicit', 'passive_read_implicit',
   'tiles_audio_after_check', 'tiles_text_after_check',
   'matching_touch',
+  'speech_wrong',
 ]);
 
 function srStartOfDay(d){ const x=new Date(d); x.setHours(0,0,0,0); return x; }
@@ -16166,7 +16225,7 @@ function _spTranslText(card){
 }
 // 5 фраз із def: 4–20 слів (коротші — це вже не "фраза", довші розпізнавач
 // зазвичай не втримує), за SM-2 пріоритетом з випадковим перемішуванням.
-function _spPickDefCards(n, onlyIds, preferSeen){
+function _spPickDefCards(n, onlyIds, moduleMode){
   const idSet = onlyIds ? new Set(onlyIds) : null;
   const cf = idSet ? 'all' : (document.getElementById('vf-cat')?.value || 'all');
   const pool = (typeof VOCAB !== 'undefined' ? VOCAB : []).filter(v => {
@@ -16177,19 +16236,22 @@ function _spPickDefCards(n, onlyIds, preferSeen){
     const w = _spCleanDef(raw).split(' ').filter(Boolean).length;
     return w >= 4 && w <= 20;
   });
+  const shuffle = arr => arr.slice().sort(() => Math.random() - .5);
+  if(moduleMode){
+    // Урок на стежці: мета — МОВЛЕННЯ в межах теми модуля, а не повторення слів. Спершу фрази,
+    // які ще не вимовляли (щоб за уроки модуля охопити різні), серед них — до яких слова вже
+    // знайомі; потім уже вимовлені. Випадковий порядок усередині груп.
+    const st = srLoadState(), spoken = speechSpokenLoad();
+    const g = { a: [], b: [], c: [], d: [] };
+    pool.forEach(v => {
+      const seen = !srIsCardNew(st, v.id), done = spoken.has(v.id);
+      (done ? (seen ? g.c : g.d) : (seen ? g.a : g.b)).push(v);
+    });
+    return shuffle(g.a).concat(shuffle(g.b), shuffle(g.c), shuffle(g.d)).slice(0, n);
+  }
   const st = srLoadState();
   const byPrio = (a,b) => srPriorityFromState(st,b.id) - srPriorityFromState(st,a.id);
-  const pick = (arr, k) => arr.slice(0, Math.min(k * 3, arr.length)).sort(() => Math.random() - .5).slice(0, k);
-  if(preferSeen){
-    // Урок на стежці: це ПОВТОРЕННЯ вивченого — спершу вже бачені слова (найслабші/прострочені),
-    // а нові (srPriority дає їм найвищий бал) лише добираємо, якщо бачених замало.
-    const seen  = pool.filter(v => !srIsCardNew(st, v.id)).sort(byPrio);
-    const fresh = pool.filter(v =>  srIsCardNew(st, v.id));
-    let out = pick(seen, n);
-    if(out.length < n) out = out.concat(pick(fresh, n - out.length));
-    return out;
-  }
-  return pick(pool.sort(byPrio), n);
+  return pool.sort(byPrio).slice(0, Math.min(n * 3, pool.length)).sort(() => Math.random() - .5).slice(0, n);
 }
 
 // Прихована вправа «Вимова: довгі фрази» у ФОРМАТІ УРОКУ: верхній блок і нижнє
@@ -16955,13 +17017,18 @@ function spShowResult(heardText, card){
   spShowResultModal(target, heardText, pct, isOk);
 
   // Прихований solo-тест def нічого не пише; справжній урок зі стежки — пише (як Sprechen).
-  if(_spField() !== 'def') recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong');
+  if(_spField() !== 'def') recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong', 'Sprechen');
   else if(LF && LF.lesson && LF.lesson._speechOnly){
     recordCardEvent(card.id, isOk ? 'speech_correct' : 'speech_wrong', 'Sprechen');
     // Бали за фразу (recordCardEvent бали НЕ дає — вони нараховуються окремо): вага Sprechen
     // за вдалу фразу, невелика «за спробу» за неточну. Бонус за сам урок (+XP_LESSON_COMPLETE_BONUS)
     // і стрік нараховує lfShowResult().
-    xpAward(isOk ? XP_TASK_WEIGHT.Sprechen : 2);
+    // Бали за фразу — не частіше ніж раз за кожен результат ("спроба" 2 і "вдало" 5), щоб
+    // повторні спроби тієї ж фрази не фармили XP.
+    spState._xpGiven = spState._xpGiven || new Set();
+    const _xk = card.id + (isOk ? ':ok' : ':try');
+    if(!spState._xpGiven.has(_xk)){ spState._xpGiven.add(_xk); xpAward(isOk ? XP_TASK_WEIGHT.Sprechen : 2); }
+    speechPhraseMarkSpoken(card.id);   // наступні уроки модуля спершу беруть ще не вимовлені фрази
   }
   haptic[isOk ? 'success' : 'error']();
   answerFeedback(isOk);
