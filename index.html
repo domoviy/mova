@@ -4750,7 +4750,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '767-71ed74f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15486,13 +15486,18 @@ function _spSfxInfo(){
 //    у тій самій сторінці стартувала з sfx=none і розпізнавала "глухо" (логи
 //    2026-10-01 19:48, 19:50). Тепер startSpeech відновлює контекст.
 // 8. «Глухий старт» розпізнавання (iOS і Android; логи 2026-10-01 19:48, 19:50, 2026-10-02
-//    19:55–19:57, 2026-10-05 06:06): урок відкрито не вперше в сесії — 'SR audiostart +2ms'
-//    (warm), але жодного звуку/результату до 'aborted' (~13 с, iOS) чи 'no-speech' (Android);
-//    наступні цикли теж глухі, поки урок не закрити й не відкрити знову. НЕ з'ясовано, чому.
-//    Що НЕ пояснює проблему (за тими ж логами): пауза від попереднього виходу (глухо і через
-//    12–26 с, але нормально і через 25 с, і через 5 хв), warm/cold старт (warm +2 мс є і в
-//    робочих циклах), стан SFX AudioContext (suspended і в глухому, і в робочому запуску).
-//    Тому — не профілактика, а ВИЯВЛЕННЯ й відновлення: watchdog SP_DEAF_MS і spHardReset().
+//    19:55–19:57, 2026-10-05 06:06 і 12:18–12:21): урок відкрито не вперше в сесії —
+//    'SR audiostart +2ms' (warm), але жодного звуку/результату до 'aborted' (~13 с, iOS) чи
+//    'no-speech' (Android); наступні цикли теж глухі, поки урок не закрити й не відкрити знову.
+//    Що НЕ пояснює: пауза від попереднього виходу (глухо і через 12–26 с, нормально і через
+//    25 с, і через 5 хв), warm/cold старт (warm +2 мс є і в робочих циклах).
+//    Що ПОЯСНЮЄ найкраще — стан SFX AudioContext на старті вправи: sfx=running → розпізнавання
+//    пішло 9 разів з 9 (свіже завантаження, довга пауза); sfx=suspended/none → «глухо» 8 з 10.
+//    Контекст на виході закривається (spShutdownMic), новий створюється поза жестом і лишається
+//    'suspended', а SR стартує раніше, ніж аудіо-блок реально запущено. Автоматичний
+//    spHardReset() допоміг 1 раз з 2 — схоже, залежно від того, чи встиг контекст "прокинутись"
+//    до тапу. Тому: spEnsureSfxRunning() перед rec.start() (чекає 'running'), а watchdog
+//    SP_DEAF_MS і spHardReset() лишаються страховкою.
 // 7. 'audio-capture' + gUM NotAllowedError, коли застосунок згорнули посеред запису
 //    (visibility hidden → iOS інколи вбиває процес): це не збій вправи, лікувати нічим.
 // ════════════════════════════════════════════════════════════════════════
@@ -16253,7 +16258,7 @@ function spStartRecord(){
   spFlushCancel();                       // холостий запис ще триває? — звільняємо мікрофон для SR
   spRepairBegin();
   spHb('recording');
-  spL(`▶ webspeech cycle #${++spState.cycle} AS=${spAS()} flush=${spFlushEnabled()}`);
+  spL(`▶ webspeech cycle #${++spState.cycle} AS=${spAS()} flush=${spFlushEnabled()} sfx=${_spSfxInfo()}`);
   spSkipLinkUpdate();
 
   const mb = document.getElementById('sp-mic-btn');
@@ -16270,8 +16275,44 @@ function spStartRecord(){
   // до експерименту. Явний 'play-and-record' НЕ ставимо: за логами після нього вихід
   // лишається в "дзвінковому" режимі (тихо, гучність як у розмові) на наступних фразах.
   if(spStereoOn()) spSetType('auto', 'stereo-rec');
-  // Невелика затримка щоб браузер закрив аудіо-сесію
-  setTimeout(() => spTryStart(SR, mb, lbl, 0), 150);
+  // Невелика затримка щоб браузер закрив аудіо-сесію — І гарантія, що SFX AudioContext
+  // справді 'running': за логами розпізнавання «глухе», коли він 'suspended'/'none' на старті
+  // (див. spEnsureSfxRunning). Виклик іде з тапу по мікрофону, тобто в жесті користувача.
+  const _tok = _spTok;
+  Promise.all([ spEnsureSfxRunning(), new Promise(r => setTimeout(r, 150)) ]).then(() => {
+    if(_tok !== _spTok || !spState.recording || !_spActive || spState._resetting) return;
+    spTryStart(SR, mb, lbl, 0);
+  });
+}
+
+// ── «Живий» SFX AudioContext перед стартом розпізнавання ──────────────────
+// Спостереження (Speech Log 2026-10-01…05): перший цикл вправи
+//   • sfx=running на старті вправи → розпізнавання пішло 9 разів з 9;
+//   • sfx=suspended/none → «глухий» старт 8 разів з 10 (2 рази пощастило).
+// Старий код (spShutdownMic) на виході закриває контекст; новий створюється поза жестом і
+// лишається 'suspended', а розпізнавач стартує до того, як аудіо-блок iOS справді запущено.
+// Тому перед rec.start() чекаємо, поки контекст стане 'running' (resume у жесті); якщо за
+// ~1.5 с цього немає — створюємо новий контекст і пробуємо ще раз. Якщо контекст уже
+// 'running', повертаємось миттєво.
+async function spEnsureSfxRunning(){
+  const t0 = performance.now();
+  const wait = (p) => Promise.race([ Promise.resolve(p).catch(() => {}), new Promise(r => setTimeout(r, 1500)) ]);
+  try{
+    let c = _sfxGetCtx();
+    if(!c){ spL('sfx gate: no AudioContext available'); return; }
+    if(c.state !== 'running'){
+      spL(`sfx gate: ${c.state} → resume()`);
+      await wait(c.resume());
+      if(c.state !== 'running'){
+        spL(`sfx gate: still ${c.state} after ${Math.round(performance.now() - t0)}ms → new context`);
+        try{ c.close(); }catch(e){}
+        _sfxCtx = null;
+        c = _sfxGetCtx();
+        if(c) await wait(c.resume());
+      }
+    }
+    spL(`sfx gate: ${c ? c.state : 'none'} ready in ${Math.round(performance.now() - t0)}ms`);
+  }catch(e){ spL('sfx gate ERROR: ' + (e && e.message)); }
 }
 
 function spTryStart(SR, mb, lbl, attempt){
