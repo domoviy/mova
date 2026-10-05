@@ -307,10 +307,8 @@ if(location.protocol === 'https:'){
                           Насичений синій (Okabe-Ito blue), трохи темніший за
                           попередній для кращого контрасту на кремовому фоні картки. */
   --nav-h:64px;
-  --hdr-h:56px;
   --prog-h:44px;  /* висота vprogrow */
   --gap:10px;     /* однаковий відступ між всіма блоками */
-  --safe-t:env(safe-area-inset-top,0px);
   --safe-b:env(safe-area-inset-bottom,0px);
   --lf-bar-h:0px; /* set by JS when lesson bar is active */
   /* Простір елементів що ховаються у режимі уроку.
@@ -1456,13 +1454,6 @@ body{
   border-color:var(--gold);border-width:2px;
   box-shadow:0 4px 18px rgba(201,168,76,.32);
 }
-.lp-module-current-chip{
-  position:absolute;top:-9px;left:16px;
-  background:var(--gold);color:var(--forest);
-  font-size:11px;font-weight:800;letter-spacing:.02em;
-  padding:2px 9px;border-radius:8px;
-  box-shadow:0 2px 6px rgba(13,43,26,.18);
-}
 .lp-module.current .lp-module-icon{
   animation:lpCurrentPulse 1.6s ease-in-out infinite;
 }
@@ -1511,20 +1502,6 @@ body{
 }
 .lp-module-prog-fill{
   height:100%;background:var(--gold);border-radius:2px;
-}
-.lp-module-gram-row{
-  display:flex;align-items:center;gap:5px;
-  margin-top:3px;
-}
-.lp-module-gram-badge{
-  flex-shrink:0;
-  font-size:11px;font-weight:700;line-height:1;
-  padding:2px 5px;border-radius:4px;
-  background:rgba(201,168,76,.15);color:var(--gold);
-  letter-spacing:.3px;
-}
-.lp-module-gram-text{
-  font-size:var(--fs-utility);color:var(--muted);
 }
 .lp-bottom-gap{height:16px;}
 
@@ -1752,8 +1729,6 @@ body{
   0%,100%{box-shadow:0 0 0 0 rgba(231,76,60,.4)}
   50%{box-shadow:0 0 0 14px rgba(231,76,60,0)}
 }
-#sp-mic-btn.success{border-color:#2ecc71;background:rgba(46,204,113,.12)}
-#sp-mic-btn.fail   {border-color:#e74c3c;background:rgba(231,76,60,.10)}
 .sp-word-ok {color:#27ae60;font-weight:700}
 .sp-word-meh{color:#e67e22;font-weight:600}
 .sp-word-bad{color:#e74c3c;font-weight:600;text-decoration:underline dotted}
@@ -2494,7 +2469,6 @@ body{
 .ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
 .fs-setting-val{font-weight:700;font-size:var(--fs-tertiary);color:var(--gold);min-width:36px;text-align:right}
 .fs-setting-scale{display:flex;justify-content:space-between;font-size:var(--fs-utility);color:var(--muted);margin-top:-4px}
-.sp-meta{font-size:var(--fs-utility);color:var(--muted)}
 .sp-label{font-size:var(--fs-tertiary);letter-spacing:.8px;text-transform:uppercase}
 .sp-term-main{font-size:var(--fs-card);font-weight:800;line-height:1.3;word-break:break-word}
 .sp-secondary{font-size:var(--fs-secondary)}
@@ -3567,8 +3541,6 @@ body{
 #sb-exam-options .mc-opt.selected { background:var(--gold-dim); border-color:var(--gold); color:var(--warm); }
 
 /* Front: sentence lines per lang */
-.sb-front-lang { margin-bottom:8px; }
-.sb-front-lang:last-child { margin-bottom:0; }
 .sb-front-lang-label { font-size:14px; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:rgba(255,255,255,.3); margin-bottom:3px; }
 .sb-front-sentence { font-size:var(--fs-card); font-weight:600; color:#fff; line-height:1.3; }
 .sb-front-sentence b { color:var(--gold-lt); font-weight:800; }
@@ -4778,7 +4750,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '765-f4aecfc';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5051,29 +5023,6 @@ function buildLearningPath(rawLessons, courseLevel){
   var cfg = PATH_CONFIG[courseLevel] || { newWordsPerLesson: 6, reviewMix: 3 };
   var cap = Math.max(1, cfg.newWordsPerLesson|0);
   var state = (typeof srLoadState === 'function') ? (function(){ try{ return srLoadState(); }catch(e){ return null; } })() : null;
-
-  // Прострочені по SM-2 — спершу; картки без srsState (щойно бачені) — в кінці.
-  //
-  // РАНІШЕ тут було "return ta - tb", де ta/tb — це ISO-РЯДКИ дат
-  // (наприклад "2026-03-15"). Віднімання рядків у JS іде через ToNumber,
-  // а Number("2026-03-15") = NaN — тобто компаратор ПРАКТИЧНО ЗАВЖДИ
-  // повертав NaN (крім порівняння з Infinity для нових карток). На
-  // JavaScriptCore (iOS Safari) сортування з NaN-компаратором не
-  // гарантує ні стабільність, ні початковий порядок — і давно вивчене
-  // слово з величезним nextReview могло випадково опинитись на початку
-  // черги, переганяючи справді прострочені слабкі картки (саме так це
-  // й виглядало: "Insolvenz"/"Werkzeug" з інтервалом у багато днів
-  // раптово потрапляли в урок). Тепер — та сама, вже перевірена формула
-  // пріоритету, що й у Vocab/Tiles/Matching (srPriorityFromState,
-  // визначена нижче за файлом, але доступна тут завдяки hoisting
-  // function-декларацій): нові — найвищий пріоритет, далі due перед
-  // not-due, а всередині групи менший interval — вищий пріоритет.
-  function dueFirst(ids){
-    if(!state || !state.cards) return ids.slice();
-    return ids.slice().sort(function(a,b){
-      return srPriorityFromState(state, b) - srPriorityFromState(state, a);
-    });
-  }
 
   // ПРОДУКТИВНІСТЬ СТАРТУ. Єдине місце виклику dueFirst (нижче, у циклі
   // суб-уроків) бере з результату лише перші cfg.reviewMix (=3) id, але
@@ -5696,22 +5645,22 @@ const I18N = {
     tab_card:'Karte', tab_all:'Alle',
     fav_added:'★ Zu Lesezeichen hinzugefügt',
     fav_removed:'☆ Aus Lesezeichen entfernt',
-    favs_empty:'Noch keine Favoriten.<br>Tippe ☆ auf einer Karte.',
+    
     favs_empty_title:'Hier erscheinen deine Favoriten',
     favs_empty_sub:'Tippe ☆ auf einer Wortkarte — sie landet sofort hier, zum schnellen Wiederholen.',
     favs_empty_cta:'Zu den Vokabeln',
-    settings_title:'⚙️ Einstellungen',
+    
     sec_playback:'Wiedergabe',
     lbl_repeats:'Wiederholungen', sub_repeats:'Zyklen pro Karte',
     lbl_tempo:'Geschwindigkeit',
     lbl_pause:'Pause', sub_pause:'Zwischen Begriffen',
     lbl_readpause:'Lesepause', sub_readpause:'Nach dem Umdrehen',
     btn_slow:'🐢 Langsam', btn_normal:'▶ Normal',
-    sec_streak:'Lernziel & Streak',
+    
     lbl_today:'Heute', lbl_total:'Gesamt', lbl_xp_today:'M heute', lbl_xp_total:'M gesamt',
     lbl_goal:'Tagesziel', sub_goal:'Karten pro Tag',
     lbl_unlock_all:'Alle Lektionen freischalten', sub_unlock_all:'Zeigt alle Lektionen im Pfad als freigeschaltet an, unabhängig vom tatsächlichen Fortschritt. Nur zum Testen — vergiss nicht, es wieder auszuschalten!',
-    sec_data:'Daten',
+    
     sec_settings:'Einstellungen', sec_examdate:'Prüfungsdatum', sec_readiness:'Prüfungsbereitschaft',
     sr_readiness_info:'Zeigt, wie gut Karten verankert sind: mindestens 2 richtige Wiederholungen und noch nicht wieder fällig — nicht nur ob sie schon gesehen wurden.',
     sec_streak_freeze:'Streak-Schutz', streak_freeze_info:'Ein Streak-Schutz bewahrt deine Serie automatisch, wenn du einen Tag verpasst. Du startest mit 3 kostenlos, +1 an Tag 3 und +1 an Tag 7 deiner Serie — weitere kannst du mit M-Punkten kaufen.',
@@ -5725,31 +5674,31 @@ const I18N = {
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
-    nav_lernpfad:'Learning', nav_sb:'Sprachbau',
-    lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
+    nav_lernpfad:'Learning', 
+    lp_locked:'Locked', lp_done:'Done', 
     lp_cards:'cards', lp_of:'of',
-    lp_grammar:'Grammar:',
-    nav_lernpfad:'Lernen', nav_sb:'Sprachbau',
-    lp_locked:'Gesperrt', lp_done:'Fertig', lp_start:'Starten',
+    
+    nav_lernpfad:'Lernen', 
+    lp_locked:'Gesperrt', lp_done:'Fertig', 
     lp_cards:'Karten', lp_of:'von',
-    lp_grammar:'Grammatik:',
+    
     locked_modal_title:'Noch nicht so weit',
     locked_modal_body:'Schließe zuerst den vorherigen Schritt ab — darauf baut dieser hier auf. Das ist kein Hindernis, sondern Teil des Wegs zu flüssigem Deutsch: Jede abgeschlossene Lektion bringt dich schneller ans Ziel als jeder Sprung nach vorn.',
     locked_modal_cta:'Verstanden',
-    hint_front:'↕ Tippen · ← → Wischen',
+    
     hint_srs:'↑ Nicht kennen · ↓ Kennen · ← Weiter · → Zurück',
     hint_srs_lesson:'↑ Nicht kennen · ↓ Kennen',
     srs_new:'✨ neue Karte', srs_today:'📅 heute',
     card_new:'✨ Neue Karte',
     update_available:'🔄 Neue Version verfügbar – App neu laden',
-    match_title:'🔗 Begriff mit Erklärung verbinden', match_audio_title:'🔊 Klang mit Bedeutung verbinden', match_sub:'Verbinde den Begriff mit der Erklärung',
+    match_title:'🔗 Begriff mit Erklärung verbinden', match_audio_title:'🔊 Klang mit Bedeutung verbinden', 
     match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
     match_good:'Gut gemacht! Weiter üben.',
     match_again:'Nochmal', match_cards:'Karten',
     match_empty:'Keine Karten in dieser Kategorie', am_no_audio:'Für diese Karten gibt es kein Audio',
     match_few:'Zu wenige Karten — mindestens',
     match_needed:'nötig',
-    lp_title:'🎓 Lernen',
+    
     lp_overall_loading:'Lädt…',
     lp_no_lessons:'Keine Lektionen verfügbar',
     lp_module_prefix:'Modul',
@@ -5788,15 +5737,15 @@ const I18N = {
     exam_sim_err_smalltalk_cards:'⚠️ Im aktuellen Kurs wird mindestens 1 Smalltalk-Karte (type: "Small Talk", var DIALOGE) benötigt',
     exam_sim_err_not_implemented:'⚠️ Simulation für „{part}“ ist noch nicht implementiert',
     exam_sim_example_speaking_na:'👁 Für diesen Typ gibt es noch kein Gesprächsbeispiel',
-    lp_unlock_hint:'Schließe 80 % der vorherigen Lektion ab',
-    srs_notify_today:'heute', srs_notify_new:'neue',
+    
+    
     nav_lernpfad:'Lernen',
-    btn_next_lesson:'Nächste Lektion',
+    
     btn_sb_weiter:'Weiter',
     btn_dlg_finish:'Abschließen',
-    btn_to_lessons:'Zur Lektionsliste',
+    
     btn_check:'Prüfen',
-    lbl_def_fill:'Ergänze den Satz', sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', lr_l_phrases:'Sätze', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Die Lektion bleibt auf dem Pfad.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', lr_l_phrases:'Sätze', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Die Lektion bleibt auf dem Pfad.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -5811,8 +5760,8 @@ const I18N = {
     lbl_fontsize_card_sub:'Begriff, Definition, Sätze, Kacheln',
     btn_fontsize_reset:'Zurücksetzen',
     quiz_score:'Ergebnis',
-    sr_days_prefix:'Noch ', sr_days_suffix:' Tage',
-    sr_no_date_plan:'Kein Datum',
+    
+    
     sr_chip_days_suffix:' Tage',
     sr_days_label_suffix:'Tage',
     sr_no_date_dashboard:'Kein Termin gesetzt',
@@ -5850,22 +5799,22 @@ const I18N = {
     tab_card:'Картка', tab_all:'Всі',
     fav_added:'★ Додано в обране',
     fav_removed:'☆ Видалено з обраного',
-    favs_empty:'Ще немає обраного.<br>Натисни ☆ на картці.',
+    
     favs_empty_title:"Тут з'являться твої улюблені слова",
     favs_empty_sub:'Натискай ☆ на картці слова — вона одразу опиниться тут, для швидкого повторення.',
     favs_empty_cta:'Перейти до словника',
-    settings_title:'⚙️ Налаштування',
+    
     sec_playback:'Відтворення',
     lbl_repeats:'Повторення', sub_repeats:'Циклів на картку',
     lbl_tempo:'Швидкість',
     lbl_pause:'Пауза', sub_pause:'Між поняттями',
     lbl_readpause:'Пауза читання', sub_readpause:'Після перевертання',
     btn_slow:'🐢 Повільно', btn_normal:'▶ Нормально',
-    sec_streak:'Ціль і серія',
+    
     lbl_today:'Сьогодні', lbl_total:'Всього', lbl_xp_today:'M сьогодні', lbl_xp_total:'M всього',
     lbl_goal:'Денна ціль', sub_goal:'Карток на день',
     lbl_unlock_all:'Розблокувати усі уроки', sub_unlock_all:'Показує всі уроки в лінії як розблоковані, незалежно від реального прогресу. Лише для тестування — не забудьте вимкнути!',
-    sec_data:'Дані',
+    
     sec_settings:'Налаштування', sec_examdate:'Дата іспиту', sec_readiness:'Готовність до іспиту',
     sr_readiness_info:'Показує, наскільки добре закріплені картки: правильно повторені не менше 2 разів і ще не настав час повторювати їх знову — а не просто факт, що їх переглянули.',
     sec_streak_freeze:'Заморозка стріку', streak_freeze_info:'Заморозка автоматично рятує твій стрік, якщо пропустиш день. Стартуєш з 3 безкоштовних, +1 на 3-й день стріку і +1 на 7-й — далі можна докупити за М-бали.',
@@ -5879,27 +5828,27 @@ const I18N = {
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
-    nav_lernpfad:'Навчання', nav_sb:'Sprachbau',
-    lp_locked:'Замкнено', lp_done:'Готово', lp_start:'Почати',
+    nav_lernpfad:'Навчання', 
+    lp_locked:'Замкнено', lp_done:'Готово', 
     lp_cards:'карток', lp_of:'з',
-    lp_grammar:'Граматика:',
+    
     locked_modal_title:'Ще зарано',
     locked_modal_body:'Спершу завершіть попередній крок — матеріал тут на ньому й будується. Це не перешкода, а частина шляху до вільної німецької: кожен пройдений урок наближає вас до мети швидше, ніж будь-який стрибок наперед.',
     locked_modal_cta:'Зрозуміло',
-    hint_front:'↕ Натисни · ← → Свайп',
+    
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далі · → Назад',
     hint_srs_lesson:'↑ Не знаю · ↓ Знаю',
     srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
     card_new:'✨ Нова картка',
     update_available:'🔄 Доступна нова версія — перезавантажте додаток',
-    match_title:'🔗 Поєднай термін з поясненням', match_audio_title:'🔊 Поєднай звук із значенням', match_sub:'Поєднай термін з поясненням',
+    match_title:'🔗 Поєднай термін з поясненням', match_audio_title:'🔊 Поєднай звук із значенням', 
     match_perfect:'Ідеально! Всі з першої спроби 🎉',
     match_good:'Непогано! Продовжуй повторювати.',
     match_again:'Ще раз', match_cards:'Картки',
     match_empty:'Немає карток у цій категорії', am_no_audio:'Для цих карток немає аудіо',
     match_few:'Замало карток — потрібно мінімум',
     match_needed:'',
-    lp_title:'🎓 Навчання',
+    
     lp_overall_loading:'Завантаження…',
     lp_no_lessons:'Уроки недоступні',
     lp_module_prefix:'Модуль',
@@ -5938,15 +5887,15 @@ const I18N = {
     exam_sim_err_smalltalk_cards:'⚠️ Потрібна хоча б 1 картка Smalltalk (type: "Small Talk", var DIALOGE) у поточному курсі',
     exam_sim_err_not_implemented:'⚠️ Симуляція для "{part}" ще не реалізована',
     exam_sim_example_speaking_na:'👁 Приклад розмови для цього типу поки не додано',
-    lp_unlock_hint:'Завершіть 80% попереднього уроку',
-    srs_notify_today:'сьогодні', srs_notify_new:'нових',
+    
+    
     nav_lernpfad:'Навчання',
-    btn_next_lesson:'Наступний урок',
+    
     btn_sb_weiter:'Далі',
     btn_dlg_finish:'Завершити',
-    btn_to_lessons:'До списку уроків',
+    
     btn_check:'Перевірити',
-    lbl_def_fill:'Доповни речення', sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Урок лишається на шляху.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Урок лишається на шляху.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -5960,8 +5909,8 @@ const I18N = {
     lbl_fontsize_card:'Розмір карток',
     lbl_fontsize_card_sub:'Термін, визначення, речення, плитки',
     btn_fontsize_reset:'Скинути',
-    quiz_score:'Результат', sr_days_suffix:' днів',
-    sr_no_date_plan:'Дату не вказано',
+    quiz_score:'Результат', 
+    
     sr_chip_days_suffix:' днів',
     sr_days_label_suffix:'днів',
     sr_no_date_dashboard:'Дату не вказано',
@@ -5999,22 +5948,22 @@ const I18N = {
     tab_card:'Card', tab_all:'All',
     fav_added:'★ Added to bookmarks',
     fav_removed:'☆ Removed from bookmarks',
-    favs_empty:'No favorites yet.<br>Tap ☆ on a card.',
+    
     favs_empty_title:'Your favorite words will appear here',
     favs_empty_sub:'Tap ☆ on a word card — it lands here instantly, ready for quick review.',
     favs_empty_cta:'Go to Vocab',
-    settings_title:'⚙️ Settings',
+    
     sec_playback:'Playback',
     lbl_repeats:'Repetitions', sub_repeats:'Cycles per card',
     lbl_tempo:'Speed',
     lbl_pause:'Pause', sub_pause:'Between terms',
     lbl_readpause:'Reading pause', sub_readpause:'After flip',
     btn_slow:'🐢 Slow', btn_normal:'▶ Normal',
-    sec_streak:'Goal & Streak',
+    
     lbl_today:'Today', lbl_total:'Total', lbl_xp_today:'M today', lbl_xp_total:'M total',
     lbl_goal:'Daily goal', sub_goal:'Cards per day',
     lbl_unlock_all:'Unlock all lessons', sub_unlock_all:'Shows all lessons in the path as unlocked, regardless of actual progress. For testing only — don\'t forget to turn it off!',
-    sec_data:'Data',
+    
     sec_settings:'Settings', sec_examdate:'Exam Date', sec_readiness:'Exam Readiness',
     sr_readiness_info:'Shows how well cards are retained: answered correctly at least 2 times and not due for review again yet — not just whether you have seen them.',
     sec_streak_freeze:'Streak Freeze', streak_freeze_info:'A streak freeze automatically saves your streak if you miss a day. You start with 3 free, +1 on day 3 and +1 on day 7 of your streak — you can buy more with M points.',
@@ -6028,27 +5977,27 @@ const I18N = {
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
-    nav_lernpfad:'Learning', nav_sb:'Sprachbau',
-    lp_locked:'Locked', lp_done:'Done', lp_start:'Start',
+    nav_lernpfad:'Learning', 
+    lp_locked:'Locked', lp_done:'Done', 
     lp_cards:'cards', lp_of:'of',
-    lp_grammar:'Grammar:',
+    
     locked_modal_title:'Not yet',
     locked_modal_body:'Finish the previous step first — this one builds directly on it. It\'s not a roadblock, it\'s part of the path to fluent German: every completed lesson gets you there faster than skipping ahead ever could.',
     locked_modal_cta:'Got it',
-    hint_front:'↕ Tap · ← → Swipe',
+    
     hint_srs:'↑ Don\'t know · ↓ Know · ← Next · → Back',
     hint_srs_lesson:'↑ Don\'t know · ↓ Know',
     srs_new:'✨ new card', srs_today:'📅 today',
     card_new:'✨ New card',
     update_available:'🔄 New version available – reload the app',
-    match_title:'🔗 Match the term with its explanation', match_audio_title:'🔊 Match the sound with its meaning', match_sub:'Match the term with its explanation',
+    match_title:'🔗 Match the term with its explanation', match_audio_title:'🔊 Match the sound with its meaning', 
     match_perfect:'Perfect! All on first try 🎉',
     match_good:'Good job! Keep reviewing.',
     match_again:'Again', match_cards:'Cards',
     match_empty:'No cards in this category', am_no_audio:'No audio available for these cards',
     match_few:'Too few cards — need at least',
     match_needed:'',
-    lp_title:'🎓 Learning',
+    
     lp_overall_loading:'Loading…',
     lp_no_lessons:'No lessons available',
     lp_module_prefix:'Module',
@@ -6087,15 +6036,15 @@ const I18N = {
     exam_sim_err_smalltalk_cards:'⚠️ At least 1 Smalltalk card (type: "Small Talk", var DIALOGE) is required in the current course',
     exam_sim_err_not_implemented:'⚠️ Simulation for "{part}" is not implemented yet',
     exam_sim_example_speaking_na:'👁 No example conversation for this type yet',
-    lp_unlock_hint:'Complete 80% of the previous lesson',
-    srs_notify_today:'today', srs_notify_new:'new',
+    
+    
     nav_lernpfad:'Learning',
-    btn_next_lesson:'Next Lesson',
+    
     btn_sb_weiter:'Next',
     btn_dlg_finish:'Finish',
-    btn_to_lessons:'Lesson List',
+    
     btn_check:'Check',
-    lbl_def_fill:'Complete the sentence', sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', lr_l_phrases:'Phrases', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. The lesson stays on your path.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', lr_l_phrases:'Phrases', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. The lesson stays on your path.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -6110,8 +6059,8 @@ const I18N = {
     lbl_fontsize_card:'Card size',
     lbl_fontsize_card_sub:'Term, definition, sentences, tiles',
     btn_fontsize_reset:'Reset',
-    sr_days_prefix:'', sr_days_suffix:' days left',
-    sr_no_date_plan:'No date set',
+    
+    
     sr_chip_days_suffix:'d',
     sr_days_label_suffix:'days',
     sr_no_date_dashboard:'No date set',
@@ -6149,22 +6098,22 @@ const I18N = {
     tab_card:'Карточка', tab_all:'Все',
     fav_added:'★ Добавлено в закладки',
     fav_removed:'☆ Удалено из закладок',
-    favs_empty:'Нет закладок.<br>Нажми ☆ на карточке.',
+    
     favs_empty_title:'Здесь появятся твои любимые слова',
     favs_empty_sub:'Нажимай ☆ на карточке слова — она сразу окажется здесь, для быстрого повторения.',
     favs_empty_cta:'Перейти к словарю',
-    settings_title:'⚙️ Настройки',
+    
     sec_playback:'Воспроизведение',
     lbl_repeats:'Повторения', sub_repeats:'Циклов на карточку',
     lbl_tempo:'Скорость',
     lbl_pause:'Пауза', sub_pause:'Между понятиями',
     lbl_readpause:'Пауза чтения', sub_readpause:'После переворота',
     btn_slow:'🐢 Медленно', btn_normal:'▶ Нормально',
-    sec_streak:'Цель и серия',
+    
     lbl_today:'Сегодня', lbl_total:'Всего', lbl_xp_today:'M сегодня', lbl_xp_total:'M всего',
     lbl_goal:'Дневная цель', sub_goal:'Карточек в день',
     lbl_unlock_all:'Разблокировать все уроки', sub_unlock_all:'Показывает все уроки в линии как разблокированные, независимо от реального прогресса. Только для тестирования — не забудьте выключить!',
-    sec_data:'Данные',
+    
     sec_settings:'Настройки', sec_examdate:'Дата экзамена', sec_readiness:'Готовность к экзамену',
     sr_readiness_info:'Показывает, насколько хорошо закреплены карточки: правильно повторены не менее 2 раз и ещё не настало время повторять их снова — а не просто факт, что их просмотрели.',
     sec_streak_freeze:'Заморозка стрика', streak_freeze_info:'Заморозка автоматически спасает твой стрик, если пропустишь день. Начинаешь с 3 бесплатных, +1 на 3-й день стрика и +1 на 7-й — дальше можно докупить за М-баллы.',
@@ -6178,27 +6127,27 @@ const I18N = {
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
-    nav_lernpfad:'Обучение', nav_sb:'Sprachbau',
-    lp_locked:'Закрыто', lp_done:'Готово', lp_start:'Начать',
+    nav_lernpfad:'Обучение', 
+    lp_locked:'Закрыто', lp_done:'Готово', 
     lp_cards:'карточек', lp_of:'из',
-    lp_grammar:'Грамматика:',
+    
     locked_modal_title:'Ещё рано',
     locked_modal_body:'Сначала завершите предыдущий шаг — этот урок строится именно на нём. Это не преграда, а часть пути к свободному немецкому: каждый пройденный урок приближает вас к цели быстрее, чем любой прыжок вперёд.',
     locked_modal_cta:'Понятно',
-    hint_front:'↕ Нажми · ← → Свайп',
+    
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далее · → Назад',
     hint_srs_lesson:'↑ Не знаю · ↓ Знаю',
     srs_new:'✨ новая карточка', srs_today:'📅 сегодня',
     card_new:'✨ Новая карточка',
     update_available:'🔄 Доступна новая версия — перезагрузите приложение',
-    match_title:'🔗 Соедини термин с объяснением', match_audio_title:'🔊 Соедини звук со значением', match_sub:'Соедини термин с объяснением',
+    match_title:'🔗 Соедини термин с объяснением', match_audio_title:'🔊 Соедини звук со значением', 
     match_perfect:'Идеально! Все с первой попытки 🎉',
     match_good:'Неплохо! Продолжай повторять.',
     match_again:'Ещё раз', match_cards:'Карточки',
     match_empty:'Нет карточек в этой категории', am_no_audio:'Для этих карточек нет аудио',
     match_few:'Слишком мало карточек — нужно минимум',
     match_needed:'',
-    lp_title:'🎓 Обучение',
+    
     lp_overall_loading:'Загрузка…',
     lp_no_lessons:'Уроки недоступны',
     lp_module_prefix:'Модуль',
@@ -6237,14 +6186,14 @@ const I18N = {
     exam_sim_err_smalltalk_cards:'⚠️ В текущем курсе нужна хотя бы 1 карточка Smalltalk (type: "Small Talk", var DIALOGE)',
     exam_sim_err_not_implemented:'⚠️ Симуляция для "{part}" ещё не реализована',
     exam_sim_example_speaking_na:'👁 Пример разговора для этого типа пока не добавлен',
-    lp_unlock_hint:'Завершите 80% предыдущего урока',
-    srs_notify_today:'сегодня', srs_notify_new:'новых',
-    btn_next_lesson:'Следующий урок',
+    
+    
+    
     btn_sb_weiter:'Далее',
     btn_dlg_finish:'Завершить',
-    btn_to_lessons:'К списку уроков',
+    
     btn_check:'Проверить',
-    lbl_def_fill:'Дополни предложение', sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Урок остаётся на пути.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
+    sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Урок остаётся на пути.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -6259,8 +6208,8 @@ const I18N = {
     lbl_fontsize_card:'Размер карточек',
     lbl_fontsize_card_sub:'Термин, определение, предложения, плитки',
     btn_fontsize_reset:'Сбросить',
-    sr_days_prefix:'Ещё ', sr_days_suffix:' дней',
-    sr_no_date_plan:'Дата не указана',
+    
+    
     sr_chip_days_suffix:' дн',
     sr_days_label_suffix:'дней',
     sr_no_date_dashboard:'Дата не указана',
@@ -6322,11 +6271,6 @@ function syncLangsToVisible(){
   });
 }
 
-// Мова перекладу для активностей (рідна мова користувача)
-// uiLang === primaryLang() → показуємо short[primaryLang()] (монолінгвально,
-// бо term у цьому випадку — це те саме слово, що вивчається, а не переклад)
-// інакше → показуємо term[uiLang] (переклад рідною мовою)
-function nativeLang(){ return uiLang; }
 function nativeText(card){
   if(uiLang === primaryLang()) return card.short?.[primaryLang()] || card.term?.[primaryLang()] || '';
   return card.term?.[uiLang] || '';
@@ -6350,8 +6294,6 @@ function setUiLang(lang){
 }
 
 function applyI18n(){
-  // Bottom nav
-  const qsel = (id) => document.getElementById(id);
   // Bottom nav — знаходимо текстові span (не іконки і не бейджі)
   document.querySelectorAll('#bottom-nav [data-view]').forEach(btn=>{
     const view = btn.dataset.view;
@@ -6808,10 +6750,6 @@ function srMigrateStreakToGlobal(){
 }
 srMigrateStreakToGlobal();
 
-const SR_EXAM_WEIGHT = {
-  Sprachbausteine:1.5, Lesen:1.2, Schreiben:1.2,
-  Hören:1.0, Sprechen:1.0, General:1.0,
-};
 const SR_PART_COLOR = {
   Sprachbausteine:'#c9a84c', Lesen:'#2e7d52', Schreiben:'#4a90d9',
   Hören:'#9b59b6', Sprechen:'#e67e22', General:'#78716c',
@@ -6823,10 +6761,6 @@ const SR_URGENCY_MODES = {
   EXAM_SPRINT: {id:'exam_sprint', label:'Exam Sprint', emoji:'🚨', maxDays:14,       factor:0.4},
   LAST_WEEK:   {id:'last_week',   label:'Last Week',   emoji:'💥', maxDays:7,        factor:0.3},
 };
-const SR_WEAKNESS_THRESHOLD = 0.60;
-const SR_WEAKNESS_MULTIPLIER = 2.0;
-const SR_MAX_MINUTES = 30;
-const SR_SEC_PER_CARD = 35;
 
 // ── ЄДИНА ТАБЛИЦЯ ВАГ ПОДІЙ ─────────────────────────────────────
 // Шкала 0-10, де 10 = 100% довіри до сигналу ("точно знає"), 0 = 0%
@@ -7376,66 +7310,6 @@ function recordCardEvent(cardId, eventType, examPart, side){
   return srRecordAnswer(cardId, rating, part, side);
 }
 
-// Будуємо щоденний план
-function srBuildDailyPlan(allCards){
-  const state = srLoadState();
-  const {examDate, cards:cs={}, subtestStats={}} = state;
-  const urgency = srGetUrgency(examDate);
-  const weakProfile = srBuildWeaknessProfile(subtestStats);
-  const today = srToISO(new Date());
-  const maxCards = Math.floor((SR_MAX_MINUTES*60)/SR_SEC_PER_CARD);
-
-  const scored = allCards.map(card=>{
-    const cstate = cs[card.id] ?? {};
-    const isDue = !cstate.nextReview || cstate.nextReview <= today;
-    // Пріоритет
-    const nr = cstate.nextReview ? srStartOfDay(new Date(cstate.nextReview)) : srStartOfDay(new Date());
-    const tod = srStartOfDay(new Date());
-    const overdue = Math.ceil((tod-nr)/86400000);
-    let priority = overdue>=0 ? 10+overdue : overdue;
-    // card.examPart може бути масивом (наприклад DIALOGE: ['Hören','Sprechen']) —
-    // для пріоритезації беремо найслабшу (найвищий пріоритет повторення) з частин.
-    const cardPartsArr = Array.isArray(card.examPart) ? card.examPart : [card.examPart || 'General'];
-    const weight = Math.max(...cardPartsArr.map(p=>SR_EXAM_WEIGHT[p] ?? 1.0));
-    const acc = Math.min(...cardPartsArr.map(p=>weakProfile[p] ?? 1.0));
-    priority *= weight;
-    if(acc < SR_WEAKNESS_THRESHOLD) priority *= SR_WEAKNESS_MULTIPLIER;
-    if(overdue>0) priority *= (2-urgency.factor);
-    return {card, priority, isDue, cstate};
-  });
-
-  const due = scored.filter(x=>x.isDue).sort((a,b)=>b.priority-a.priority);
-  const newCards = scored.filter(x=>!x.isDue&&!cs[x.card.id]?.repetitions).sort((a,b)=>b.priority-a.priority);
-  const combined = [...due,...newCards].slice(0, maxCards);
-
-  // Exam Sprint/Last Week — гарантуємо Sprachbausteine
-  const isSBPart = (card)=>{
-    const p = Array.isArray(card.examPart) ? card.examPart : [card.examPart||'General'];
-    return p.includes('Sprachbausteine');
-  };
-  if(['exam_sprint','last_week'].includes(urgency.id)){
-    const hasSB = combined.some(x=>isSBPart(x.card));
-    if(!hasSB){
-      const sbCard = scored.find(x=>isSBPart(x.card));
-      if(sbCard) combined.unshift(sbCard);
-    }
-  }
-
-  const plan = combined.map(x=>x.card.id);
-  const breakdown = {};
-  combined.forEach(({card})=>{
-    const p = Array.isArray(card.examPart) ? card.examPart : [card.examPart || 'General'];
-    p.forEach(part=>{ breakdown[part]=(breakdown[part]??0)+1; });
-  });
-
-  const result = {plan, estimatedMinutes:Math.round(plan.length*SR_SEC_PER_CARD/60), urgencyMode:urgency, breakdown, generatedAt:today};
-  // Зберігаємо план у стан
-  const s2 = srLoadState();
-  s2.dailyPlan = result;
-  srSaveState(s2);
-  return result;
-}
-
 // Оновити streak після сесії. Повертає {streak, increased, prevStreak,
 // frozenDaysUsed, streakBroken, milestoneFreezeGranted}. increased=true
 // лише якщо число ЗРОСЛО (не при повторному виклику того самого дня).
@@ -7764,14 +7638,6 @@ function srUpdateHeaderChip(){
   chip.textContent = um.emoji + ' ' + um.daysLeft + t('sr_chip_days_suffix');
 }
 
-// Onboarding для дати іспиту — показуємо після вибору мови якщо дата не встановлена
-function checkExamDateOnboarding(){
-  const state = srLoadState();
-  if(state.examDate) return; // вже є — не показуємо
-  const ob = document.getElementById('sr-exam-onboarding');
-  if(ob) ob.style.display = 'flex';
-}
-
 function selectOnboardExamDate(){
   const inp = document.getElementById('sr-ob-date-input');
   const hasDate = !!(inp && inp.value);
@@ -7796,68 +7662,8 @@ function skipExamDateOnboarding(){
   try{ localStorage.setItem('mova_sr_ob_skipped_'+(activeCourse?.id||getSavedCourseId()),'1'); }catch(e){}
 }
 
-function srStartPlanSession(){
-  const allCards = srGetAllCards();
-  if(!allCards.length) return;
-  const plan = srBuildDailyPlan(allCards);
-  if(!plan.plan.length){ notify('✅ ' + ({'de':'Alle Karten aktuell!','uk':'Всі картки актуальні!','en':'All cards up to date!','ru':'Все карточки актуальны!'}[uiLang]||'Done')); return; }
-
-  // Розділяємо: VOCAB-картки → vocab view, SB-картки → sb view
-  const ordered = plan.plan.map(id=>allCards.find(c=>c.id===id)).filter(Boolean);
-  const vocabCards = ordered.filter(c=>!c._isSB);
-  const sbCards    = ordered.filter(c=>c._isSB);
-
-  _srPlanCardIds = plan.plan;
-  _srSessionStartTime = Date.now();
-  _srSessionTotal = ordered.length;
-
-  window.mlog?.('sr_session_start', {total: ordered.length, vocab: vocabCards.length, sb: sbCards.length});
-
-  if(vocabCards.length > 0){
-    // Запускаємо vocab SRS з картками плану
-    V.queue = vocabCards;
-    V.idx   = 0;
-    V.mode  = 'srs';
-    showView('vocab');
-    renderVocabCard();
-    // Показуємо plan-bar замість lesson-flow-bar
-    srShowPlanBar(vocabCards.length);
-    // Якщо є ще й SB-картки — після vocab сесії нагадаємо
-    if(sbCards.length > 0){
-      _srPendingSBCards = sbCards;
-    }
-  } else if(sbCards.length > 0){
-    // Тільки SB-картки
-    srLaunchSBSession(sbCards);
-  }
-}
-
 let _srPendingSBCards = null;
 let _srSessionStartTime = null;
-let _srSessionTotal = 0;
-
-// Показує progress-bar для plan-сесії (аналог lesson-flow-bar)
-function srShowPlanBar(total){
-  lfSetLessonMode(true); // ховаємо чіпси, tabs, bottom-nav
-  // Використовуємо lesson-flow-bar з кастомним вмістом
-  const bar = document.getElementById('lesson-flow-bar');
-  if(!bar) return;
-  bar.classList.add('active');
-  const titleEl = document.getElementById('lf-title');
-  if(titleEl) titleEl.textContent = {'de':'📋 Sitzung','uk':'📋 Сесія','en':'📋 Session','ru':'📋 Сессия'}[uiLang]||'📋 Session';
-  // Показуємо кнопку виходу
-  const exitBtn = bar.querySelector('.lf-exit');
-  if(exitBtn){ exitBtn.style.display=''; exitBtn.onclick = ()=>{ stopVocab(); }; }
-  // Крок-індикатори — один на картку
-  const stepsEl = document.getElementById('lf-steps');
-  if(stepsEl) stepsEl.innerHTML = Array.from({length:Math.min(total,20)}).map((_,i)=>
-    `<div class="lf-step" data-sr-step="${i}"></div>`
-  ).join('');
-  requestAnimationFrame(()=>{
-    const h = bar.offsetHeight;
-    document.documentElement.style.setProperty('--lf-bar-h', h+'px');
-  });
-}
 
 // Оновлює прогрес plan-bar після кожної картки
 function srUpdatePlanBar(){
@@ -7974,11 +7780,6 @@ function srsLoad(id, side){
     lastRated: root.lastSeen, totalPlays: root.totalPlays,
   };
 }
-// no-op: запис тепер відбувається виключно через srRecordAnswer()
-// (єдина структура). Лишено як заглушку, щоб не шукати й не правити
-// кожен старий викликаючий код, що міг ще десь лишитись.
-function srsSave(id,data){ /* intentionally no-op — see srRecordAnswer */ }
-
 // q: 1=Не знаю, 3=Невпевнений, 5=Знаю
 // Smart Review: getExamPartForCard — повертає examPart(и) картки.
 // Кожна картка словника/діалогу опрацьовується і на слух (аудіо), і візуально (текст) —
@@ -9432,34 +9233,6 @@ function flipCard(){
   document.getElementById('flashcard').classList.toggle('flipped',V.flipped);
   if(V.flipped) window.mlog?.('card_flipped');
 }
-function vocabPrev(){
-  if(LF && LF.steps[LF.step]==='cards') return; // заблоковано в уроці
-  haptic.medium();
-  const wasPlaying=V.playing;
-  stopVocab();
-  if(!V.queue.length)return;
-  swipeCard('right',()=>{
-    V.idx=(V.idx-1+V.queue.length)%V.queue.length;
-    srBeginCardViewing();
-    V.flipped=false;V.repeatCount=0;
-    renderVocabCard();
-    if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').innerHTML=movaIcon('pause');document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
-  });
-  window.mlog?.('card_nav',{direction:'prev'});
-}
-function vocabNext(){
-  haptic.medium();
-  const wasPlaying=V.playing;
-  stopVocab();
-  swipeCard('left',()=>{
-    V.idx++;if(V.idx>=V.queue.length){if(_srPlanCardIds){stopVocab();return;}V.queue=buildVocabQueue();V.idx=0;}
-    srBeginCardViewing();
-    V.flipped=false;V.repeatCount=0;
-    renderVocabCard();
-    if(wasPlaying) setTimeout(()=>{V.playing=true;V.paused=false;document.getElementById('vplaybtn').innerHTML=movaIcon('pause');document.getElementById('vplaybtn').classList.add('pause');playVocabNext();},250);
-  });
-  window.mlog?.('card_nav',{direction:'next'});
-}
 function resetVocabQ(){
   // В режимі уроку чергу не перебудовуємо — нею керує LF/lfGoStep.
   // Це захищає від випадкового скидання при кліку на чіп категорії
@@ -10700,52 +10473,6 @@ function startChapterGrammarBonus(chapterNum){
   });
 }
 
-// Пул діалогів для бонусу глави — union lesson.dlgCards усіх модулів
-// глави (те саме поле бази, що вже існує й частково заповнене, просто
-// досі ніде не читалось — навіть звичайний крок dlg_learn ігнорував
-// його, беручи діалог з усього курсу за SM-2 незалежно від модуля).
-// Якщо жоден модуль глави ще не має заповнених dlgCards — пул
-// порожній, і бонус просто не показується ("перевірка чи є діалоги
-// до цієї теми").
-function buildDialogueBonusPool(chapterNum){
-  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-  const allDlg = typeof DIALOGE!=='undefined' ? DIALOGE : [];
-  if(!allDlg.length) return [];
-  const ids = new Set();
-  lessons.filter(l=>l.chapter===chapterNum).forEach(l=>(l.dlgCards||[]).forEach(id=>ids.add(id)));
-  if(!ids.size) return [];
-  const cards = allDlg.filter(d=>ids.has(d.id));
-  const state = srLoadState();
-  const sorted = cards.slice().sort((a,b)=>srPriorityFromState(state,b.id)-srPriorityFromState(state,a.id));
-  // Менший ліміт, ніж у Граматики (10): один діалог — це ДВІ репліки
-  // (питання+відповідь) аудіо, змістовно важчий за одне речення з
-  // пропуском, тож сесія порівнянної тривалості виходить коротшою.
-  return sorted.slice(0, 8);
-}
-
-function startChapterDialogueBonus(chapterNum){
-  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-  const chapterLessons = lessons.filter(l=>l.chapter===chapterNum);
-  const pool = buildDialogueBonusPool(chapterNum);
-  if(!pool.length){
-    notify('⚠️ '+(uiLang==='uk'?'Немає діалогів для цієї глави':uiLang==='ru'?'Нет диалогов для этой главы':uiLang==='en'?'No dialogues for this chapter':'Keine Dialoge für dieses Kapitel'));
-    return;
-  }
-  const chTitle = chapterLessons[0]?.chapterTitle || {de:'',uk:'',en:'',ru:''};
-  const title = {
-    de:'Dialoge: '+(chTitle.de||''), uk:'Діалоги: '+(chTitle.uk||''),
-    en:'Dialogues: '+(chTitle.en||''), ru:'Диалоги: '+(chTitle.ru||''),
-  };
-  _runBonusLessonFlow({
-    id: '_dlg_chapter_'+chapterNum,
-    title,
-    _isBonusLesson: true,
-    _bonusForChapter: chapterNum,
-    steps: ['dlg_learn', 'result'],
-    _dlgBonusPool: pool,
-  });
-}
-
 // Мінімальний lesson-flow — лише практичний крок (sb_prac або dlg_learn,
 // з підміненим повним пулом замість звичайної куцої вибірки) + result.
 // Використовує той самий LF/lfGoStep/lfShowResult/srRecordLesson, що й
@@ -11927,58 +11654,6 @@ function renderExamPrepRow(node){
   </div>`;
 }
 
-function renderModuleCard(lesson){
-  const {done, total, pct} = lessonProgress(lesson);
-  const unlocked = lessonUnlocked(lesson);
-  const isDone   = pct >= 80;
-  const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === lesson.id;
-
-  const skillIcons = {'Lesen':'📖','Schreiben':'✍️','Sprechen':'🗣','Hören':'👂'};
-  const skills = (lesson.skills||[]).map(s=>skillIcons[s]||s).join(' ');
-  // !unlocked — першим, з тієї ж причини, що й у renderPathNode вище:
-  // pct/isDone відображає фактично зіграні картки, а не те, чи урок
-  // досі заблокований ланцюжком unlockAfter — заблокований урок має
-  // лишатись сірим 🔒, навіть якщо його картки якимось чином вже
-  // "зіграні" (наприклад в обхід через словник/бонус/старий дебаг-стан).
-  const icon   = !unlocked ? '🔒' : isDone ? '✅' : skills||'📚';
-  const statusClass = !unlocked?'locked':isDone?'done':isCurrent?'current':'';
-
-  // lesson.grammar: спочатку пробуємо як id у таблиці GRAMMAR (нові
-  // курси) — показуємо локалізовану назву й робимо клікабельним.
-  // Якщо id не знайдено (старі курси з вільним текстом типу "Passiv") —
-  // просто показуємо як є, без кліку, нічого не ламаючи.
-  const gramRule  = lesson.grammar ? getGrammarRule(lesson.grammar) : null;
-  const gramText  = gramRule ? grammarLabel(gramRule) : (lesson.grammar||'');
-  const gramClick = gramRule ? ` style="text-decoration:underline;cursor:pointer" onclick="event.stopPropagation();showGrammarModal('${lesson.grammar}')"` : '';
-
-  // Чіп "Почати"/"Продовжити" — лише на ЄДИНІЙ картці "поточного" уроку
-  // на весь курс (findCurrentLesson), не на кожному розблокованому.
-  const chipLabel = pct>0
-    ? (uiLang==='uk'?'▶ Продовжити':uiLang==='en'?'▶ Continue':uiLang==='ru'?'▶ Продолжить':'▶ Weiter')
-    : (uiLang==='uk'?'▶ Почати':uiLang==='en'?'▶ Start':uiLang==='ru'?'▶ Начать':'▶ Starten');
-  const currentChip = isCurrent ? `<div class="lp-module-current-chip">${_playLabel(chipLabel)}</div>` : '';
-
-  return `<div class="lp-module ${statusClass}" id="${isCurrent?'lp-current-module':''}"
-    onclick="${unlocked?`startLessonFlow('${lesson.id}')`:''}"
-    style="${unlocked?'':'pointer-events:none'}">
-    ${currentChip}
-    <div class="lp-module-icon">${icon}</div>
-    <div class="lp-module-body">
-      <div class="lp-module-title">${t('lp_module_prefix')} ${lesson.module}${lesson._subTotal>1?' · '+lesson._subIndex+'/'+lesson._subTotal:''} · ${lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de}</div>
-      <div class="lp-module-meta">
-        ${!unlocked
-          ? t('lp_locked')
-          : done+' '+t('lp_of')+' '+total+' '+t('lp_cards')
-        }
-      </div>
-      ${gramText?`<div class="lp-module-gram-row"><span class="lp-module-gram-badge">G</span><span class="lp-module-gram-text"${gramClick}>${gramText}</span></div>`:''}
-      ${unlocked?`<div class="lp-module-prog">
-        <div class="lp-module-prog-fill" style="width:${pct}%"></div>
-      </div>`:''}
-    </div>
-  </div>`;
-}
-
 // Опційна картка "Бонус: Граматика" одного модуля — НЕ блокує основний
 // шлях, доступна одразу, щойно модуль розблокований (незалежно від
 // прогресу решти уроку). Для вмотивованих учнів/за завданням викладача.
@@ -12129,82 +11804,6 @@ function startModuleEmailBonus(lessonId){
   });
 }
 
-// Картка "Діалог" ОДРАЗУ під уроком (не раз на главу в кінці, як
-// раніше renderChapterDialogueBonusCard) — щойно в lesson.dlgCards є
-// хоч одна картка, прив'язана до ЦЬОГО модуля. Та сама умова
-// розблокування, що й Бонус: Граматика/Словник (lessonUnlocked) —
-// з'являється разом з рештою бонусів модуля, щойно урок доступний.
-function renderModuleDialogueCard(lesson){
-  if(!lessonUnlocked(lesson)) return '';
-  const pool = buildModuleDialoguePool(lesson);
-  if(!pool.length) return '';
-  const label = {
-    de:'Dialog',  uk:'Діалог',
-    en:'Dialogue', ru:'Диалог',
-  }[uiLang] || 'Dialog';
-  const sub = {
-    de: pool.length+' Dialoge', uk: pool.length+' '+(pool.length===1?'діалог':'діалоги'),
-    en: pool.length+' dialogue'+(pool.length===1?'':'s'), ru: pool.length+' '+(pool.length===1?'диалог':'диалога'),
-  }[uiLang] || pool.length+' Dialoge';
-  return `<div class="lp-module lp-module-bonus" onclick="startModuleDialogueBonus('${lesson.id}')">
-    <div class="lp-module-icon">💬</div>
-    <div class="lp-module-body">
-      <div class="lp-module-title">${label}</div>
-      <div class="lp-module-meta">${sub}</div>
-    </div>
-  </div>`;
-}
-
-// Повнорозмірна картка "Бонус: Граматика" — БІЛЬШЕ НЕ використовується в
-// основному рендері (замінена компактною renderModuleDividerGramBtn() на
-// плашці модуля, див. renderModuleDivider вище) — розтягувала звивисту
-// доріжку, коли модулів у главі кілька поспіль. Функцію лишено в коді
-// на випадок, якщо формат повнорозмірної картки захочуть повернути.
-function renderGrammarBonusCard(lesson){
-  if(!lessonUnlocked(lesson)) return '';
-  const topic = getModuleGrammarTopic(lesson);
-  if(!topic) return '';
-  if(!buildGrammarBonusPool([topic], _cardIdsUpToLesson(lesson)).length) return '';
-  const label = {
-    de:'Bonus: Grammatik', uk:'Бонус: Граматика',
-    en:'Bonus: Grammar',   ru:'Бонус: Грамматика',
-  }[uiLang] || 'Bonus: Grammatik';
-  const rule = getGrammarRule(topic);
-  const sub = rule ? grammarLabel(rule) : topic;
-  return `<div class="lp-module lp-module-bonus" onclick="startModuleGrammarBonus('${lesson.id}')">
-    <div class="lp-module-icon">⭐</div>
-    <div class="lp-module-body">
-      <div class="lp-module-title">${label}</div>
-      <div class="lp-module-meta">${sub}</div>
-    </div>
-  </div>`;
-}
-
-// Опційна картка "Бонус: Словник" одного модуля — та сама умова
-// розблокування, що й "Бонус: Граматика" (lessonUnlocked), і сама відразу
-// показується поруч з нею в Шляху. Відкриває Словник (🃏+📋), обмежений
-// лише картками ЦЬОГО модуля.
-// БІЛЬШЕ НЕ використовується в основному рендері — замінена
-// renderModuleDividerVocabBtn() на плашці модуля. Лишено в коді.
-function renderModuleVocabCard(lesson){
-  if(!lessonUnlocked(lesson)) return '';
-  if(!(lesson.cardIds||[]).length) return '';
-  const label = {
-    de:'Bonus: Wörterbuch', uk:'Бонус: Словник',
-    en:'Bonus: Dictionary', ru:'Бонус: Словарь',
-  }[uiLang] || 'Bonus: Wörterbuch';
-  const sub = {
-    de: lesson.cardIds.length+' Karten', uk: lesson.cardIds.length+' карток',
-    en: lesson.cardIds.length+' cards',  ru: lesson.cardIds.length+' карточек',
-  }[uiLang] || lesson.cardIds.length+' Karten';
-  return `<div class="lp-module lp-module-bonus" onclick="startModuleVocabBonus('${lesson.id}')">
-    <div class="lp-module-icon">📖</div>
-    <div class="lp-module-body">
-      <div class="lp-module-title">${label}</div>
-      <div class="lp-module-meta">${sub}</div>
-    </div>
-  </div>`;
-}
 function startModuleVocabBonus(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson  = lessons.find(l=>l.id===lessonId);
@@ -12216,90 +11815,6 @@ function startModuleVocabBonus(lessonId){
   openVocabDictionary(lesson.cardIds||[], label);
 }
 
-// Опційна картка "Бонус: Граматика" усієї глави — той самий принцип,
-// але пул охоплює ВСІ теми граматики глави (union тем модулів, кожна —
-// через getModuleGrammarTopic, тобто з успадкуванням для продовжувальних
-// модулів без власного lesson.grammar).
-// БІЛЬШЕ НЕ використовується в основному рендері — замінена
-// renderChapterDividerGramBtn() на плашці глави (.lp-chapter-head). Лишено в коді.
-function renderChapterGrammarBonusCard(chapterNum, chapterLessons, unlocked){
-  if(!unlocked) return '';
-  const topicIds = Array.from(new Set(
-    chapterLessons.map(l=>getModuleGrammarTopic(l)).filter(Boolean)
-  ));
-  if(!topicIds.length || !buildGrammarBonusPool(topicIds, _cardIdsUpToChapter(chapterNum)).length) return '';
-  const label = {
-    de:'Bonus: Grammatik-Wiederholung',   uk:'Бонус: Повторення граматики',
-    en:'Bonus: Grammar review',           ru:'Бонус: Повторение грамматики',
-  }[uiLang] || 'Bonus: Grammatik-Wiederholung';
-  const sub = {
-    de: topicIds.length+' Themen', uk: topicIds.length+' тем',
-    en: topicIds.length+' topics', ru: topicIds.length+' тем',
-  }[uiLang] || topicIds.length+' Themen';
-  return `<div class="lp-module lp-module-bonus" onclick="startChapterGrammarBonus(${chapterNum})">
-    <div class="lp-module-icon">⭐</div>
-    <div class="lp-module-body">
-      <div class="lp-module-title">${label}</div>
-      <div class="lp-module-meta">${sub}</div>
-    </div>
-  </div>`;
-}
-
-// Опційна картка "Бонус: Діалоги" глави — union lesson.dlgCards усіх
-// модулів глави. Порожній рядок, якщо жоден модуль глави ще не має
-// заповнених dlgCards (поле бази існує, але поки що заповнене лише
-// частково — це і є "перевірка, чи є діалоги до цієї теми").
-function renderChapterDialogueBonusCard(chapterNum, unlocked){
-  if(!unlocked) return '';
-  const pool = buildDialogueBonusPool(chapterNum);
-  if(!pool.length) return '';
-  const label = {
-    de:'Bonus: Dialoge',  uk:'Бонус: Діалоги',
-    en:'Bonus: Dialogues', ru:'Бонус: Диалоги',
-  }[uiLang] || 'Bonus: Dialoge';
-  const sub = {
-    de: pool.length+' Dialoge', uk: pool.length+' діалогів',
-    en: pool.length+' dialogues', ru: pool.length+' диалогов',
-  }[uiLang] || pool.length+' Dialoge';
-  return `<div class="lp-module lp-module-bonus" onclick="startChapterDialogueBonus(${chapterNum})">
-    <div class="lp-module-icon">⭐</div>
-    <div class="lp-module-body">
-      <div class="lp-module-title">${label}</div>
-      <div class="lp-module-meta">${sub}</div>
-    </div>
-  </div>`;
-}
-
-// Картка "Словник" у блоці Повторення глави — відкриває звичайний Словник
-// (🃏 картки + 📋 список, той самий вигляд, що й з нижнього меню), але
-// обмежений картками ВСІЄЇ глави (усі уроки з номером chapterNum), а не
-// лише поточної SM-2-сесії повторення. Видима за тих самих умов, що й
-// сама картка "Повторення" (unlocked), і лише якщо в главі є картки.
-// БІЛЬШЕ НЕ використовується в основному рендері — замінена
-// renderChapterDividerVocabBtn() на плашці глави (.lp-chapter-head). Лишено в коді.
-function renderChapterVocabCard(chapterNum, unlocked){
-  if(!unlocked) return '';
-  const ids = _reviewDictionaryCardIds([chapterNum]);
-  if(!ids.length) return '';
-  const label = {
-    de:'Wörterbuch: Kapitel', uk:'Словник глави',
-    en:'Chapter dictionary',  ru:'Словарь главы',
-  }[uiLang] || 'Wörterbuch: Kapitel';
-  const sub = {
-    de: ids.length+' Karten', uk: ids.length+' карток',
-    en: ids.length+' cards',  ru: ids.length+' карточек',
-  }[uiLang] || ids.length+' Karten';
-  // onclick викликає wrapper з числовим аргументом (chapterNum) — без
-  // інлайнових масивів/JSON в атрибуті, щоб не боротись з екрануванням
-  // лапок; ids/label wrapper перераховує сам у момент кліку.
-  return `<div class="lp-module lp-module-bonus" onclick="startChapterVocabView(${chapterNum})">
-    <div class="lp-module-icon">📖</div>
-    <div class="lp-module-body">
-      <div class="lp-module-title">${label}</div>
-      <div class="lp-module-meta">${sub}</div>
-    </div>
-  </div>`;
-}
 function startChapterVocabView(chapterNum){
   const label = {
     de:'Wörterbuch: Kapitel', uk:'Словник глави',
@@ -12342,35 +11857,6 @@ function startCourseVocabView(){
   openVocabDictionary(_reviewDictionaryCardIds(allNums), label);
 }
 
-
-function startLesson(lessonId){
-  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-  const lesson  = lessons.find(l=>l.id===lessonId);
-  if(!lesson) return;
-
-  const vocab   = typeof VOCAB!=='undefined' ? VOCAB : [];
-  const cardSet = new Set(lesson.cardIds);
-  const filtered= vocab.filter(v=>cardSet.has(v.id));
-
-  if(!filtered.length){
-    notify('⚠️ Keine Karten für diese Lektion');
-    return;
-  }
-
-  // Зупиняємо поточне аудіо ОДРАЗУ — не чекаємо кінця картки
-  stopVocab();
-
-  V.lessonId    = lessonId;
-  V.lessonCards = filtered;
-  V.queue       = [...filtered].sort(()=>Math.random()-.5);
-  V.idx         = 0;
-  V.repeatCount = 0;
-  V.flipped     = false;
-
-  showView('vocab');
-  renderVocabCard();
-  notify('📚 '+(lesson.title[uiLang]||lesson.title[primaryLang()]||lesson.title.en||lesson.title.de));
-}
 
 // Знімає скоуп Словника (V.filterIds/filterLabel) — повертає звичайний
 // Словник з усіма картками курсу. Викликається при явному переході в
@@ -13145,7 +12631,6 @@ function _examSimFinishSpeaking(){
     notify(t('msg_streak_broken'));
   }
 
-  var emojiEl = document.getElementById('lr-emoji');
   var titleEl = document.getElementById('lr-title');
   var subEl   = document.getElementById('lr-sub');
   var statsEl = document.getElementById('lr-stats');
@@ -13434,7 +12919,6 @@ var STORY_CUSTOM_TOTAL_MAX = 3000;
 // ОДНЕ джерело правди для обох регулярок нижче (дозволено/заборонено),
 // щоб вони фізично не могли розійтися між собою при майбутніх правках.
 var STORY_CUSTOM_CHAR_CLASS = "\\p{L}\\p{N}\\s.,!?;:'\"()\\-–—„“”«»/";
-var STORY_CUSTOM_ALLOWED_RE   = new RegExp('^['+STORY_CUSTOM_CHAR_CLASS+']*$', 'u');
 var STORY_CUSTOM_FORBIDDEN_RE = new RegExp('[^'+STORY_CUSTOM_CHAR_CLASS+']', 'gu');
 
 // Унікальний, у порядку появи, список заборонених символів у тексті
@@ -15009,11 +14493,6 @@ function t_removeAnswerTile(aTile, bankTile){
   }
 }
 
-function tilesRemoveWord(aTile, srcTile){
-  if(_dragState) return;
-  t_removeAnswerTile(aTile, srcTile);
-}
-
 // Чисті answer-tiles без ghost та drop-indicator
 function _getAnswerTilesClean(){
   return Array.from(document.getElementById('tiles-answer')
@@ -15299,10 +14778,6 @@ function tilesShowResultModal(isOk, correctStr){
 function tilesRevealResultBtn(){
   var btn = document.getElementById('tiles-result-action');
   if(btn) btn.style.visibility = 'visible';
-}
-
-function tilesCheckAuto(){
-  // Застаріла функція — більше не використовується (перевірка тільки по кнопці)
 }
 
 // ── DEF FILL-IN (tab 6) ───────────────────────────────────────
@@ -17301,7 +16776,6 @@ function tilesShowResult(){
 
 let _sharedAudio   = null;   // спільний Audio елемент
 let _audioReady    = false;  // чи активований
-let currentSource  = null;   // не використовується, для сумісності
 
 // Кеш blob URLs: url → blobURL
 const audioBlobCache  = new Map();
@@ -17451,7 +16925,6 @@ function unlockAudioCtx(){
     logErr('audio:unlock','ex: '+e.message,'');
   }
 }
-function unlockAudio(){ unlockAudioCtx(); }
 function initAudioUnlock(){
   // Видаляємо listener після першої активації
   const handler = ()=>{
@@ -19118,9 +18591,6 @@ var STORY_ROLE_LABELS = {
 // треба — кнопка "Далі" вже сама рухає чергу.
 var STORY_QA_Q_LABEL = {de:'Frage',  en:'Question', uk:'Запитання', ru:'Вопрос'};
 var STORY_QA_A_LABEL = {de:'Antwort', en:'Answer',   uk:'Відповідь', ru:'Ответ'};
-// Підпис кнопки-розкривачки підказок ("Mögliche Fragen") на екрані
-// вступу — див. storyCardTips() і "+"-кнопку в render() нижче.
-var STORY_TIPS_LABEL = {de:'Mögliche Fragen', en:'Possible questions', uk:'Можливі питання', ru:'Возможные вопросы'};
 
 // Кожна картка STORY завжди має topic+task (той самий принцип, що
 // SCHREIBEN) — тож перший юніт (kind:'story_intro') показуємо
@@ -19178,18 +18648,6 @@ function storyCardTaskOnly(card){
   if(!t) return null;
   var out = {};
   ['de','en','uk','ru'].forEach(function(lang){ out[lang] = (t.task && t.task[lang]) || ''; });
-  return out;
-}
-// tips — самі підказки ("Mögliche Fragen"), окремо від завдання.
-// null/порожньо для власних (custom) тем — у формі "Додати свою тему"
-// такого поля нема взагалі, тож і кнопку-розкривачку для них показувати
-// нема сенсу (render() нижче це враховує).
-function storyCardTips(card){
-  if(card.custom) return null;
-  var t = _storyTaskFor(card);
-  if(!t) return null;
-  var out = {};
-  ['de','en','uk','ru'].forEach(function(lang){ out[lang] = (t.tips && t.tips[lang]) || ''; });
   return out;
 }
 // STORY_TASK[].questions — плаский список {id:'q_01',...}/{id:'a_01',...}
@@ -19943,14 +19401,6 @@ var _lfUnitSwipeBindGen = 0;
 function getGrammarRule(id){
   if(!id || typeof GRAMMAR === 'undefined') return null;
   return GRAMMAR.find(function(g){ return g.id === id; }) || null;
-}
-
-// Локалізована назва правила: uiLang → primaryLang → en → de → сам id
-// (якщо навіть title порожній — краще показати id, ніж порожній рядок)
-function grammarLabel(rule){
-  if(!rule) return '';
-  var t = rule.title || {};
-  return t[uiLang] || t[primaryLang()] || t.en || t.de || rule.id;
 }
 
 // Заголовок модалки граматики — ЗАВЖДИ мовою курсу (primary_lang) як
@@ -21207,17 +20657,6 @@ function _lfVocabLearnDone(){
   lfNextStep();
 }
 
-// Чи картка вже вивчалась раніше і SM-2 інтервал підійшов сьогодні —
-// на відміну від srBuildDailyPlan().isDue, НЕ вважає нову (ще не бачену)
-// картку "due": тут ідеться саме про ПОВТОРЕННЯ, а не первинне вивчення.
-function srIsRepeatDueToday(cardId){
-  try{
-    var cs = (srLoadState().cards || {})[cardId];
-    if(!cs || !cs.repetitions) return false;
-    var today = srToISO(new Date());
-    return !cs.nextReview || cs.nextReview <= today;
-  }catch(e){ return false; }
-}
 // Batch-варіант — той самий принцип, що й srDueFromState()/srPriorityFromState():
 // приймає вже завантажений `state`, щоб не перечитувати localStorage
 // на кожен елемент всередині .filter().
@@ -21351,21 +20790,6 @@ function _lfSBPracDone(){
   showView('vocab');
   lfRenderBar();
   lfNextStep();
-}
-
-function _lfInjectSBNextBtn(onNext, labelOverride){
-  var existing = document.getElementById('lf-sb-next-btn');
-  if(existing) existing.remove();
-
-  var btn = document.createElement('button');
-  btn.id = 'lf-sb-next-btn';
-  btn.className = 'btn btn-lesson-sb-next';
-  btn.textContent = labelOverride || (typeof t==='function' ? t('btn_sb_weiter') : 'Далі');
-  btn.onclick = function(){
-    btn.remove();
-    onNext();
-  };
-  document.body.appendChild(btn);
 }
 
 function lfShowResult(){
@@ -22311,11 +21735,6 @@ function exitLessonFlow(){
   switchVocabTab(0);
 }
 
-function restartLessonFlow(){
-  const id = LF?.lessonId;
-  if(id){ exitLessonFlow(); startLessonFlow(id); }
-}
-
 
 // ── AUTOPLAY ──────────────────────────────────────────────────
 function stopVocab(){
@@ -23073,7 +22492,6 @@ function _storyFinishWithCelebration(topicLabel, afterCelebration){
   var resultEl = document.getElementById('lesson-result');
   if(!resultEl){ if(afterCelebration) afterCelebration(); return; }
   resultEl.classList.add('show');
-  var emojiEl = document.getElementById('lr-emoji');
   var titleEl = document.getElementById('lr-title');
   var subEl   = document.getElementById('lr-sub');
   lrSetBurstIcon('🎉');
@@ -23392,42 +22810,6 @@ function updateVocabPlaySideBtn(){
   btn.classList.toggle('on', V.playSide !== 'front');
 }
 
-function toggleVocab(){ unlockAudioCtx();
-  if(!V.playing){
-    if(!V.queue.length)V.queue=buildVocabQueue();
-    V.playing=true;V.paused=false;
-    document.getElementById('vplaybtn').innerHTML=movaIcon('pause');
-    document.getElementById('vplaybtn').classList.add('pause');
-    window.mlog?.('autoplay_started',{mode:V.mode,queue_size:V.queue.length});
-    playVocabNext();
-  } else if(!V.paused){
-    V.paused=true;
-    clearTimeout(V.timer);
-    document.getElementById('vplaybtn').innerHTML=movaIcon('play');
-    document.getElementById('vplaybtn').classList.remove('pause');
-    window.mlog?.('autoplay_paused');
-  } else {
-    V.paused=false;
-    document.getElementById('vplaybtn').innerHTML=movaIcon('pause');
-    document.getElementById('vplaybtn').classList.add('pause');
-    window.mlog?.('autoplay_resumed');
-    const v=V.queue[V.idx];
-    const al=getActiveLangs();
-    if(v&&V.flipped){
-      speakVocabDefs(v,al,0,()=>{
-        if(!V.playing||V.paused)return;
-        V.repeatCount++;
-        if(V.repeatCount<V.repeats){V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);}
-        else{
-          if(V.srsRating==null && srsDue(v.id)){ try{ srsRatePassive(v.id); }catch(e){} }
-          V.repeatCount=0;V.idx++;V.timer=setTimeout(()=>{if(V.playing&&!V.paused)playVocabNext();},V.readPause);
-        }
-      });
-    } else {
-      playVocabNext();
-    }
-  }
-}
 // [duplicate stopVocab/playVocabNext removed — see SR-aware version above]
 function speakVocabTerms(v,langs,i,done){
   if(!V.playing||V.paused){return;}
@@ -23753,10 +23135,6 @@ function closeStreakInfoModal(){
   const el = document.getElementById('streak-modal-overlay');
   if(el) el.remove();
 }
-// Стара назва лишається робочою (виклик зі старого коду/кешу onclick
-// у ще не оновленому DOM), просто делегує на нову модалку.
-function showStreakInfo(){ showStreakInfoModal(); }
-
 // ── BROWSE ────────────────────────────────────────────────────
 function switchVocabTab(tab){
   // Виходимо з "Вимова" (tab 7) на іншу вкладку: закриваємо мікрофон і
@@ -24070,11 +23448,7 @@ function sbMarkLearned(id) {
   sbSaveState(s);
   sbUpdateProgressBadge();
 }
-function sbIsLearned(id) { return (sbLoadState().learned || []).includes(id); }
 // ── Helper: card/expl lang (legacy stubs, now replaced by SB.langs) ──
-function sbCardLang() { return SB.langs[primaryLang()]?primaryLang():SB.langs.uk?'uk':'en'; }
-function sbExplLang() { return SB.langs[primaryLang()]?primaryLang():SB.langs.uk?'uk':'en'; }
-
 // Helper: get localised string from multilingual field (obj or string)
 function sbL(field, lang) {
   if (!field) return '';
@@ -24088,12 +23462,6 @@ function sbA(card, lang) {
   if (!card || !card.answer) return '';
   if (typeof card.answer === 'string') return card.answer; // legacy
   return card.answer[lang] || '';
-}
-
-// Helper: get active UI lang for SB answer (same as interface lang for non-DE)
-function sbAnswerLang(cardLang) {
-  // DE answer is always German; for other langs use that lang
-  return cardLang;
 }
 
 // ── STATE ──
@@ -25013,7 +24381,6 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     if(LF) {
       // Lesson mode: show bottom sheet modal
       var maxCards = SB.pracQueue.length;
-      var isLastPrac = (SB.pracIdx + 1 >= Math.min(SB.pracQueue.length, maxCards));
       var nextBtnLabel = typeof t==='function' ? t('btn_sb_weiter') : 'Далі';
       sbShowFeedbackModal(ok, ok ? resultOk : resultFail+sbA(card,primaryLang()), expl, function(){
         sbHideFeedbackModal();
