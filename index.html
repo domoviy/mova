@@ -2042,6 +2042,7 @@ body{
   white-space:nowrap;
 }
 .srs-hint-icon{font-size:22px;line-height:1;flex-shrink:0;}
+.srs-hint-icon .mi{ width:26px;height:26px;stroke-width:2;color:var(--gold); }
 .srs-hint-label{font-size:var(--fs-secondary);font-weight:600;opacity:.9}
 .mc-result-score{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold);font-family:'Inter',sans-serif}
 .mc-result-praise{color:var(--muted);font-size:var(--fs-tertiary);margin:8px 0 16px}
@@ -4757,7 +4758,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '769-3147002';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5609,6 +5610,8 @@ function _iconizeText(msg){
     .replace(/\u2605/g, movaIcon('star','mi mi-inline mi-fill'))     // ★
     .replace(/\u2606/g, movaIcon('star','mi mi-inline'))             // ☆
     .replace(/\uD83E\uDDE0/g, movaIcon('brain','mi mi-inline'))      // 🧠
+    .replace(/\u2705/g, movaIcon('check','mi mi-inline'))               // ✅
+    .replace(/\uD83D\uDD04/g, movaIcon('repeat','mi mi-inline'))        // 🔄
     .replace(/\u27A1\uFE0F?/g, movaIcon('arrowright','mi mi-inline')) // ➡
     .replace(/\uD83D\uDD00/g, movaIcon('shuffle','mi mi-inline'))     // 🔀
     .replace(/\uD83C\uDDE9\uD83C\uDDEA/g, movaFlag('de','mf-inline'))
@@ -5616,6 +5619,11 @@ function _iconizeText(msg){
     .replace(/\uD83C\uDDEC\uD83C\uDDE7/g, movaFlag('en','mf-inline'))
     .replace(/\uD83C\uDDF7\uD83C\uDDFA/g, movaFlag('ru','mf-inline'));
 }
+// Плашка оцінки картки («Повторимо завтра», «Через N дн.», «Завтра»): фірмові іконки
+// замість емодзі 🔄 🤔 ✅. q=1 «не знаю» → repeat, q=3 «не впевнений» → quiz (знак питання),
+// інакше «знаю» → check. Анімовані версії: контур домальовується за ~0.65 с, тобто за час,
+// поки плашка видима (showSrsHint щоразу перемальовує іконку, тож анімація стартує заново).
+function srsHintIcon(q){ return movaAnimIcon(q === 1 ? 'repeat' : q === 3 ? 'quiz' : 'check'); }
 // Обране: контурна зірка / залита (active). Одна точка правди для всіх карток.
 function favIcon(on){ return movaIcon('star', on ? 'mi-fill' : ''); }
 // Анімована версія іконки (екрани завершення). Кожному контуру без власного
@@ -9428,7 +9436,7 @@ function srsSwipe(q){
 
   // Показуємо фідбек
   const days = result.interval;
-  const emoji = q===1 ? '🔄' : q===3 ? '🤔' : '✅';
+  const emoji = srsHintIcon(q);
   const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
   const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
   const _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
@@ -17922,7 +17930,7 @@ var _lfSBHandlers = {
   onSwipeUp: function(unit){
     srsRate(unit.cardId, 1);
     var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
-    showSrsHint('🔄', _rep, 1, 'lf-unit-card');
+    showSrsHint(srsHintIcon(1), _rep, 1, 'lf-unit-card');
   },
 
   onSwipeDown: function(unit){
@@ -17933,7 +17941,7 @@ var _lfSBHandlers = {
     var _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
     var _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
     var label = days===1 ? _tmr : _in+days+_day;
-    showSrsHint('✅', label, 5, 'lf-unit-card');
+    showSrsHint(srsHintIcon(5), label, 5, 'lf-unit-card');
   },
 
   onNext: function(unit){
@@ -20728,7 +20736,7 @@ var _lfVocabHandlers = {
     var side = unit.side === 'term' ? undefined : unit.side;
     srsRate(unit.cardId, 1, side);
     var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
-    showSrsHint('🔄', _rep, 1, 'lf-unit-card');
+    showSrsHint(srsHintIcon(1), _rep, 1, 'lf-unit-card');
   },
 
   onSwipeDown: function(unit){
@@ -20740,7 +20748,7 @@ var _lfVocabHandlers = {
     var _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
     var _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
     var label = days===1 ? _tmr : _in+days+_day;
-    showSrsHint('✅', label, 5, 'lf-unit-card');
+    showSrsHint(srsHintIcon(5), label, 5, 'lf-unit-card');
   },
 
   onNext: function(unit){
@@ -22181,7 +22189,7 @@ function dlgSrsSwipe(q){
   document.querySelectorAll('#dlg-fc-area .fc-srs-new').forEach(el=>el.remove());
 
   const days=result.interval;
-  const emoji = q===1 ? '🔄' : q===3 ? '🤔' : '✅';
+  const emoji = srsHintIcon(q);
   const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
   const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
   const _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
@@ -23961,7 +23969,7 @@ function sbLearnSwipeHard() {
   if(area){ area.style.background='rgba(192,57,43,.08)'; setTimeout(function(){ area.style.background=''; },300); }
   if(typeof showSrsHint==='function'){
     var _rep={'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow','ru':'Повторим завтра'}[uiLang]||'Morgen wiederholen';
-    showSrsHint('🔄', _rep, 1, 'sb-fc-area');
+    showSrsHint(srsHintIcon(1), _rep, 1, 'sb-fc-area');
   }
   SB.learnQueue.splice(SB.learnIdx,1);
   SB.learnQueue.splice(Math.min(SB.learnIdx+3,SB.learnQueue.length),0,card);
@@ -23987,7 +23995,7 @@ function sbLearnSwipeEasy() {
     var _in ={'de':'In ','uk':'Через ','en':'In ','ru':'Через '}[uiLang]||'In ';
     var _day={'de':' Tg.','uk':' дн.','en':' d.','ru':' дн.'}[uiLang]||' Tg.';
     var label = days===1 ? _tmr : _in+days+_day;
-    showSrsHint('✅', label, 5, 'sb-fc-area');
+    showSrsHint(srsHintIcon(5), label, 5, 'sb-fc-area');
   }
   // Переходимо на наступну картку — інакше UI виглядає так, ніби свайп
   // нічого не зробив (попри те, що оцінка вже записана)
@@ -24513,7 +24521,8 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
     } else {
       // Standalone mode: inline feedback block
       var fb=document.getElementById('sb-prac-feedback');
-      document.getElementById('sb-prac-fb-icon').textContent=ok?'✅':'❌';
+      document.getElementById('sb-prac-fb-icon').innerHTML=movaIcon(ok?'check':'cross');
+      document.getElementById('sb-prac-fb-icon').style.color=ok?'#2ecc71':'#e74c3c';
       document.getElementById('sb-prac-fb-title').textContent=ok ? resultOk : resultFail+sbA(card,primaryLang());
       document.getElementById('sb-prac-fb-expl').innerHTML=expl;
       fb.style.display='block';
