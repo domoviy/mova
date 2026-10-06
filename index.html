@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" translate="no">
 <head>
 <meta charset="UTF-8">
+<!-- Заборона автоперекладу браузера (Chrome/Edge/Samsung Internet на Android). Сторінка
+     заявлена як lang="de", а її текст — суміш німецького навчального контенту та інтерфейсу
+     uk/de/en/ru. Без цього Chrome «перекладав» ВЕСЬ екран на мову користувача: німецьке
+     слово/речення на картці підміняв машинним перекладом, а інтерфейс спотворював
+     (напр. кнопка «Далі» ставала «Дейлі»). Додаток має власні переклади, тож браузерний
+     переклад тут завжди шкідливий. translate="no" на <html> + meta — для різних браузерів. -->
+<meta name="google" content="notranslate">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0d2b1a">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -4750,7 +4757,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '768-11eaf70';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
