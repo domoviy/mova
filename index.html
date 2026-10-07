@@ -3223,13 +3223,25 @@ body{
   position:relative;z-index:1;
   width:100%;background:var(--paper);
   border-radius:20px 20px 0 0;
-  padding:20px 20px calc(env(safe-area-inset-bottom,0px) + 16px);
   box-shadow:0 -4px 32px rgba(0,0,0,.18);
   border-top:3px solid var(--gold);
-  max-height:70vh;overflow-y:auto;
+  /* Bottom-sheet з трьох зон: шапка (flex-shrink:0) → прокрутне тіло
+     (flex:1 + min-height:0) → футер (flex-shrink:0). Прокручується ТІЛЬКИ
+     тіло; хрестик і кнопка «Правило» завжди на місці. Падінги переїхали
+     з .grammar-modal на самі зони, бо інакше прокрутка зачіпала б усе вікно.
+     Висота — за вмістом (короткий текст = низьке вікно), стеля 88% екрана:
+     зверху лишається смуга затемненого фону, яка підказує, що вікно
+     закривається тапом повз нього. На планшетах/десктопі — не ширше 560px. */
+  max-width:560px;margin:0 auto;
+  max-height:88%;
+  display:flex;flex-direction:column;
+  overflow:hidden;
 }
 .grammar-modal-header{
-  display:flex;align-items:center;gap:10px;margin-bottom:12px;
+  display:flex;align-items:center;gap:10px;
+  flex-shrink:0;
+  padding:20px 20px 12px;
+  border-bottom:1px solid var(--border);
 }
 .grammar-modal-icon{
   /* Висота піктограми = сума двох рядків заголовка (основна назва +
@@ -3244,16 +3256,30 @@ body{
 .grammar-modal-close{
   background:none;border:none;color:var(--muted);font-size:20px;
   cursor:pointer;padding:4px;line-height:1;font-family:inherit;
+  flex-shrink:0;
 }
 .grammar-modal-body{
   font-size:var(--fs-secondary);color:var(--warm);line-height:1.3;
+  flex:1 1 auto;min-height:0;
+  overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  padding:14px 20px;
+}
+/* Модалка без футера (пояснення картки): нижній відступ бере на себе тіло */
+.grammar-modal-body:last-child{
+  padding-bottom:calc(env(safe-area-inset-bottom,0px) + 16px);
+}
+.grammar-modal-footer{
+  flex-shrink:0;
+  padding:12px 20px calc(env(safe-area-inset-bottom,0px) + 16px);
+  border-top:1px solid var(--border);
+  background:var(--paper);
 }
 .grammar-modal-body g{font-weight:700;color:var(--g-accent)}
 .grammar-modal-body b{color:var(--ink)}
 
 .grammar-modal-rule-toggle{
   display:flex;align-items:center;justify-content:center;gap:7px;
-  width:100%;margin-top:16px;padding:12px;
+  width:100%;margin:0;padding:12px;
   background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.4);border-radius:12px;
   color:var(--gold);font-weight:700;font-size:var(--fs-secondary);
   font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
@@ -4758,7 +4784,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '773-c55d3f6';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4976,8 +5002,9 @@ function _lpEligibleForumIds(frmCardIds){
 // Важливо лише, що фрази релевантні змісту модуля. Тому пул = картки цього модуля, а
 // не вся пройдена історія, і добір віддає перевагу фразам, які ще НЕ вимовляли.
 // З'являється лише коли в модулі є ≥ LP_SPEECH_DEF_MIN карток із заповненим def
-// (4–20 слів), тож у курсах без def вузла просто нема. Нічого не блокує: наступні
-// уроки розблоковуються від попереднього УРОКУ, а не від цього вузла.
+// (4–20 слів), тож у курсах без def вузла просто нема. Вузол стає «поточним» одразу
+// після уроку, за яким іде, і розблоковує наступний урок лише після проходження або
+// пропуску («Не можу говорити зараз» → speechNodeMarkSkipped).
 // Частота — кожен LP_SPEECH_DEF_EVERY-й звичайний урок (5–7 — розумний діапазон).
 var LP_SPEECH_DEF_EVERY = 6;
 var LP_SPEECH_DEF_MIN   = 3;
@@ -5024,6 +5051,39 @@ function speechNodeMarkDone(id, score){
     m[id] = { t: Date.now(), score: Math.round((score || 0) * 100) };
     localStorage.setItem(k, JSON.stringify(m));
   }catch(e){}
+}
+// «Не можу говорити зараз» на вузлі стежки: вузол вважається ПРОЙДЕНИМ (щоб розблокувати
+// наступний урок), але без балів і з позначкою skipped — відрізнити від справжнього проходження.
+function speechNodeMarkSkipped(id){
+  try{
+    var k = _speechDoneKey(), m = JSON.parse(localStorage.getItem(k) || '{}');
+    m[id] = { t: Date.now(), score: 0, skipped: true };
+    localStorage.setItem(k, JSON.stringify(m));
+  }catch(e){}
+}
+// Одноразова міграція (на курс): до появи блокування користувачі проходили уроки повз вузол
+// «Вимова: довгі фрази». Щоб їхні вже пройдені уроки не стали раптом «заблокованими», вузли,
+// після яких наступний урок уже пройдено (≥80%), позначаємо як пропущені. Новий користувач
+// (нічого не пройдено) нічого не отримує — просто ставиться прапорець.
+function _lpSpeechGateMigrate(lessons){
+  try{
+    var fk = _speechDoneKey() + '_gate1';
+    if(localStorage.getItem(fk)) return;
+    for(var i = 0; i < lessons.length - 1; i++){
+      var l = lessons[i];
+      if(l.type !== 'speech' || speechNodeDone(l.id)) continue;
+      var nx = lessons[i+1];
+      if(nx && nx.type !== 'speech' && lessonProgress(nx).pct >= 80) speechNodeMarkSkipped(l.id);
+    }
+    localStorage.setItem(fk, '1');
+  }catch(e){}
+}
+// Вузол ще чекає на проходження? Для звичайних уроків — прогрес <80%, для вузла «Вимова: довгі
+// фрази» (його lessonProgress завжди 100%) — відсутність запису «пройдено/пропущено».
+function _lpNodePending(l){
+  if(!l) return false;
+  if(l.type === 'speech') return !speechNodeDone(l.id);
+  return lessonProgress(l).pct < 80;
 }
 
 function buildLearningPath(rawLessons, courseLevel){
@@ -5268,9 +5328,12 @@ function buildLearningPath(rawLessons, courseLevel){
             cardIds:     [],      // не впливає на відсотки модуля/розділу
             dlgCards:    [], frmCards: [], emlCards: [], sbCards: [],
             speechPool:  spPool,
-            unlockAfter: withinModulePrevId,   // відкривається після попереднього уроку,
-            _parentModuleId: lesson.id,        // але withinModulePrevId НЕ оновлюємо — нічого не блокує
+            unlockAfter: withinModulePrevId,   // відкривається після попереднього уроку
+            _parentModuleId: lesson.id,
           }));
+          // Наступний урок розблоковується лише після цього вузла (пройшов АБО «Не можу
+          // говорити зараз») — тож він стає «поточним» одразу після уроку, за яким іде.
+          withinModulePrevId = lesson.id + '_spd' + (idx+1);
         }
       }
     });
@@ -5760,7 +5823,7 @@ const I18N = {
     btn_dlg_finish:'Abschließen',
     
     btn_check:'Prüfen',
-    sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', lr_l_phrases:'Sätze', sp_mic_restarting:'Mikrofon wird neu gestartet…', sp_mic_restarted:'Mikrofon neu gestartet — tippen und sprechen', sp_mic_stuck:'Das Mikrofon reagiert nicht. Schließe die Lektion und öffne sie erneut.', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Die Lektion bleibt auf dem Pfad.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', lr_l_phrases:'Sätze', sp_mic_restarting:'Mikrofon wird neu gestartet…', sp_mic_restarted:'Mikrofon neu gestartet — tippen und sprechen', sp_mic_stuck:'Das Mikrofon reagiert nicht. Schließe die Lektion und öffne sie erneut.', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Weiter mit der nächsten Lektion.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -5777,8 +5840,6 @@ const I18N = {
     quiz_score:'Ergebnis',
     
     
-    sr_chip_days_suffix:' Tage',
-    sr_days_label_suffix:'Tage',
     sr_no_date_dashboard:'Kein Termin gesetzt',
     sr_mode_cruise:'Entspannt', sr_mode_active:'Aktiv', sr_mode_intensive:'Intensiv',
     sr_mode_exam_sprint:'Prüfungssprint', sr_mode_last_week:'Letzte Woche', sr_mode_done:'Geschafft',
@@ -5910,7 +5971,7 @@ const I18N = {
     btn_dlg_finish:'Завершити',
     
     btn_check:'Перевірити',
-    sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск мікрофона…', sp_mic_restarted:'Мікрофон перезапущено — натисніть і говоріть', sp_mic_stuck:'Мікрофон не відповідає. Закрийте урок і відкрийте знову.', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Урок лишається на шляху.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск мікрофона…', sp_mic_restarted:'Мікрофон перезапущено — натисніть і говоріть', sp_mic_stuck:'Мікрофон не відповідає. Закрийте урок і відкрийте знову.', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Переходимо до наступного уроку.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -5926,8 +5987,6 @@ const I18N = {
     btn_fontsize_reset:'Скинути',
     quiz_score:'Результат', 
     
-    sr_chip_days_suffix:' днів',
-    sr_days_label_suffix:'днів',
     sr_no_date_dashboard:'Дату не вказано',
     sr_mode_cruise:'Спокійний темп', sr_mode_active:'Активний', sr_mode_intensive:'Інтенсивний',
     sr_mode_exam_sprint:'Фінальний спринт', sr_mode_last_week:'Останній тиждень', sr_mode_done:'Завершено',
@@ -6059,7 +6118,7 @@ const I18N = {
     btn_dlg_finish:'Finish',
     
     btn_check:'Check',
-    sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', lr_l_phrases:'Phrases', sp_mic_restarting:'Restarting the microphone…', sp_mic_restarted:'Microphone restarted — tap and speak', sp_mic_stuck:'The microphone is not responding. Close the lesson and open it again.', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. The lesson stays on your path.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', lr_l_phrases:'Phrases', sp_mic_restarting:'Restarting the microphone…', sp_mic_restarted:'Microphone restarted — tap and speak', sp_mic_stuck:'The microphone is not responding. Close the lesson and open it again.', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. On to the next lesson.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -6076,8 +6135,6 @@ const I18N = {
     btn_fontsize_reset:'Reset',
     
     
-    sr_chip_days_suffix:'d',
-    sr_days_label_suffix:'days',
     sr_no_date_dashboard:'No date set',
     sr_mode_cruise:'Cruise', sr_mode_active:'Active', sr_mode_intensive:'Intensive',
     sr_mode_exam_sprint:'Exam Sprint', sr_mode_last_week:'Last Week', sr_mode_done:'Done',
@@ -6208,7 +6265,7 @@ const I18N = {
     btn_dlg_finish:'Завершить',
     
     btn_check:'Проверить',
-    sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск микрофона…', sp_mic_restarted:'Микрофон перезапущен — нажмите и говорите', sp_mic_stuck:'Микрофон не отвечает. Закройте урок и откройте снова.', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Урок остаётся на пути.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
+    sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск микрофона…', sp_mic_restarted:'Микрофон перезапущен — нажмите и говорите', sp_mic_stuck:'Микрофон не отвечает. Закройте урок и откройте снова.', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Переходим к следующему уроку.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -6225,8 +6282,6 @@ const I18N = {
     btn_fontsize_reset:'Сбросить',
     
     
-    sr_chip_days_suffix:' дн',
-    sr_days_label_suffix:'дней',
     sr_no_date_dashboard:'Дата не указана',
     sr_mode_cruise:'Спокойный темп', sr_mode_active:'Активный', sr_mode_intensive:'Интенсивный',
     sr_mode_exam_sprint:'Финальный спринт', sr_mode_last_week:'Последняя неделя', sr_mode_done:'Завершено',
@@ -6920,6 +6975,18 @@ function srSm2(cs, rating){
   // практично недосяжною для повторного показу).
   easeFactor = Math.max(1.3, Math.min(2.5, easeFactor));
   return {interval, easeFactor, repetitions};
+}
+
+// Слово «день» у правильній формі для n (за мовою інтерфейсу).
+// uk/ru: остання цифра 1 (крім 11) → день; 2–4 (крім 12–14) → дні/дня; решта (5–20…) → днів/дней.
+// Після 100 враховуються лише останні 2 цифри. de/en: 1 → однина, решта (і 0) → множина.
+function srDaysWord(n){
+  const W = {de:['Tag','Tage'], en:['day','days'], uk:['день','дні','днів'], ru:['день','дня','дней']}[uiLang] || ['Tag','Tage'];
+  if(W.length === 2) return n === 1 ? W[0] : W[1];
+  const m100 = Math.abs(n) % 100, m10 = m100 % 10;
+  if(m10 === 1 && m100 !== 11) return W[0];
+  if(m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return W[1];
+  return W[2];
 }
 
 function srGetUrgency(examDate){
@@ -7650,7 +7717,7 @@ function srUpdateHeaderChip(){
     return;
   }
   chip.style.display = 'flex';
-  chip.textContent = um.emoji + ' ' + um.daysLeft + t('sr_chip_days_suffix');
+  chip.textContent = um.emoji + ' ' + um.daysLeft + ' ' + srDaysWord(um.daysLeft);
 }
 
 function selectOnboardExamDate(){
@@ -7742,7 +7809,7 @@ function srRenderDashboard(){
     const mode = srGetUrgency(_st.examDate);
     const mlbl = document.getElementById('sr-settings-mode-lbl');
     if(mlbl) mlbl.textContent = mode.daysLeft!==null
-      ? `${mode.emoji} ${t('sr_mode_'+mode.id)} · ${mode.daysLeft} ${t('sr_days_label_suffix')}`
+      ? `${mode.emoji} ${t('sr_mode_'+mode.id)} · ${mode.daysLeft} ${srDaysWord(mode.daysLeft)}`
       : t('sr_no_date_dashboard');
   }catch(e){}
   const rowsEl = document.getElementById('sr-dashboard-rows');
@@ -10241,7 +10308,7 @@ function _findNextLessonAfterCompletion(completedId){
   //    всяк випадок, і щоб pct<80 самого наступного теж був дотриманий
   //    (може вже бути пройдений раніше, напр. через debug-перемикач).
   if(idx+1 < lessons.length && _lpModuleKeyOf(lessons[idx+1]) === completedModuleKey
-     && lessonUnlocked(lessons[idx+1]) && lessonProgress(lessons[idx+1]).pct < 80){
+     && lessonUnlocked(lessons[idx+1]) && _lpNodePending(lessons[idx+1])){
     return lessons[idx+1];
   }
 
@@ -10249,7 +10316,7 @@ function _findNextLessonAfterCompletion(completedId){
   //    РОЗБЛОКОВАНИЙ вузол наступного модуля (може бути й через кілька
   //    модулів, якщо найближчий уже пройдений, напр. debug-розблокування).
   for(let i=idx+1; i<lessons.length; i++){
-    if(lessonUnlocked(lessons[i]) && lessonProgress(lessons[i]).pct < 80){
+    if(lessonUnlocked(lessons[i]) && _lpNodePending(lessons[i])){
       return lessons[i];
     }
   }
@@ -10301,13 +10368,13 @@ function findCurrentLesson(){
   // Фолбек — перший візит без історії завершень, або після останнього
   // завершеного далі вже нічого нема (кінець розділу/курсу): перший
   // незавершений будь-де, стара поведінка.
-  _lpCurrentLessonCache = lessons.find(l => lessonUnlocked(l) && lessonProgress(l).pct < 80) || null;
+  _lpCurrentLessonCache = lessons.find(l => lessonUnlocked(l) && _lpNodePending(l)) || null;
   return _lpCurrentLessonCache;
 }
 
 function lessonProgress(lesson){
-  // Вузол «Вимова: довгі фрази» необов'язковий: у суми прогресу не входить (total 0), а pct=100,
-  // щоб жоден пошук «поточного уроку» не застрягав на ньому (його стан — speechNodeDone()).
+  // Вузол «Вимова: довгі фрази»: у суми прогресу не входить (total 0), pct=100 — щоб не псувати
+  // відсотки модуля. Його стан — speechNodeDone(); «чекає на проходження» рахує _lpNodePending().
   if(lesson && lesson.type === 'speech') return {done:0, total:0, pct:100};
   if(!lesson?.cardIds?.length) return {done:0, total:0, pct:0};
   // totalPlays тепер живе в єдиній структурі Smart Review (state.cards[id]),
@@ -10426,6 +10493,9 @@ function lessonUnlocked(lesson){
   // в лінії з'являється розрив: сірий (заблокований) урок, а ПІСЛЯ
   // нього — кольоровий (розблокований), хоча по суті весь ланцюжок від
   // початку розділу ще не пройдено.
+  // Вузол «Вимова: довгі фрази» — теж блокує наступний урок: його треба або пройти,
+  // або пропустити кнопкою «Не можу говорити зараз» (обидва дають запис у speechNodeDone).
+  if(prev.type === 'speech') return speechNodeDone(prev.id) && lessonUnlocked(prev);
   const {pct} = lessonProgress(prev);
   return pct >= 80 && lessonUnlocked(prev);
 }
@@ -10962,6 +11032,8 @@ function renderLernpfad(opts){
       '<p style="text-align:center;padding:40px;color:var(--muted)">'+t('lp_no_lessons')+'</p>';
     return;
   }
+  _lpSpeechGateMigrate(lessons);
+  _lpCurrentLessonCache = undefined;
 
   // Загальний прогрес — тепер компактним бейджем поруч із заголовком
   // (раніше окремий рядок <small> під ним, зайва висота блоку).
@@ -11502,7 +11574,7 @@ function renderPathNode(node, idx){
   const unlocked  = lessonUnlocked(node);
   const isSpeech  = node.type === 'speech';
   const isDone    = isSpeech ? speechNodeDone(node.id) : pct >= 80;
-  const isCurrent = !isSpeech && !isDone && unlocked && findCurrentLesson()?.id === node.id;
+  const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
   const isForum = node.type === 'forum';
   const isEmail = node.type === 'email';
@@ -16219,8 +16291,14 @@ function spSkipSpeech(){
   if(!spState || !spState.lesson || !LF || LF.solo) return;
   spL('skip speech: user cannot speak now');
   if(LF.lesson && LF.lesson._speechOnly){
-    // Урок складається ЛИШЕ з вимови: пропуск = вихід без зарахування (ні XP, ні стріку) —
-    // вузол лишається на стежці, повернутись можна будь-коли.
+    // Урок складається ЛИШЕ з вимови: пропуск = вихід без зарахування (ні XP, ні стріку),
+    // але вузол вважається пройденим (skipped) — це розблоковує наступний урок і робить
+    // його «поточним». Повернутись до вправи можна будь-коли, тапнувши вузол.
+    const _nid = LF.lesson._speechNodeId || LF.lesson._bonusForLessonId;
+    if(_nid){
+      speechNodeMarkSkipped(_nid);
+      try{ localStorage.setItem('mova_last_completed_lesson', _nid); }catch(e){}
+    }
     exitLessonFlow();
     notify(t('sp_skipped_toast'));
     return;
@@ -19594,10 +19672,12 @@ function showGrammarModal(id){
       '</div>' +
       '<div class="grammar-modal-body">'+explText+'</div>' +
       (ruleText ?
-        '<button class="grammar-modal-rule-toggle" onclick="showGrammarRuleFullscreen(\''+id+'\')">' +
-          '<span>'+movaIcon('book','mi mi-inline')+'</span><span>'+ruleLabel+'</span>' +
-          '<span class="grammar-modal-rule-chevron">›</span>' +
-        '</button>'
+        '<div class="grammar-modal-footer">' +
+          '<button class="grammar-modal-rule-toggle" onclick="showGrammarRuleFullscreen(\''+id+'\')">' +
+            '<span>'+movaIcon('book','mi mi-inline')+'</span><span>'+ruleLabel+'</span>' +
+            '<span class="grammar-modal-rule-chevron">›</span>' +
+          '</button>' +
+        '</div>'
       : '') +
     '</div>';
   document.body.appendChild(overlay);
