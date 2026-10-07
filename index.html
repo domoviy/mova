@@ -4784,7 +4784,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '774-0df9f10';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7712,7 +7712,8 @@ function srUpdateHeaderChip(){
   window.mprop?.('days_to_exam_bucket', state.examDate ? um.id : 'none');
   const chip = document.getElementById('sr-days-chip');
   if(!chip) return;
-  if(!state.examDate || um.daysLeft === null){
+  // Екзамен уже настав або минув (режим 'done') — лічильник днів більше не потрібен.
+  if(!state.examDate || um.daysLeft === null || um.id === 'done'){
     chip.style.display = 'none';
     return;
   }
@@ -7809,7 +7810,7 @@ function srRenderDashboard(){
     const mode = srGetUrgency(_st.examDate);
     const mlbl = document.getElementById('sr-settings-mode-lbl');
     if(mlbl) mlbl.textContent = mode.daysLeft!==null
-      ? `${mode.emoji} ${t('sr_mode_'+mode.id)} · ${mode.daysLeft} ${srDaysWord(mode.daysLeft)}`
+      ? `${mode.emoji} ${t('sr_mode_'+mode.id)}` + (mode.id === 'done' ? '' : ` · ${mode.daysLeft} ${srDaysWord(mode.daysLeft)}`)
       : t('sr_no_date_dashboard');
   }catch(e){}
   const rowsEl = document.getElementById('sr-dashboard-rows');
