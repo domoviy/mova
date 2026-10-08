@@ -2347,13 +2347,13 @@
   "Deutsch-A2/de/080/k1/k1_019_def_de_080": "1f5bf422b4+t",
   "Deutsch-A2/de/080/k1/k1_020_term_de_080": "f7831d47fd+t",
   "Deutsch-A2/de/080/k1/k1_020_short_de_080": "9f2df3b84f+t",
-  "Deutsch-A2/de/080/k1/k1_020_def_de_080": "a58fd0c084+t",
+  "Deutsch-A2/de/080/k1/k1_020_def_de_080": "f472667d73+t",
   "Deutsch-A2/de/080/k1/k1_021_term_de_080": "bdb225e92a+t",
   "Deutsch-A2/de/080/k1/k1_021_short_de_080": "aed84ac602+t",
   "Deutsch-A2/de/080/k1/k1_021_def_de_080": "04c0acc834+t",
   "Deutsch-A2/de/080/k1/k1_022_term_de_080": "8c4f36f24f+t",
   "Deutsch-A2/de/080/k1/k1_022_short_de_080": "ceefecb924+t",
-  "Deutsch-A2/de/080/k1/k1_022_def_de_080": "db91f614ff+t",
+  "Deutsch-A2/de/080/k1/k1_022_def_de_080": "08d57f152c+t",
   "Deutsch-A2/de/080/k1/k1_023_term_de_080": "253d8f7fef+t",
   "Deutsch-A2/de/080/k1/k1_023_short_de_080": "3ce4f7d22d+t",
   "Deutsch-A2/de/080/k1/k1_023_def_de_080": "9e53e9cb47+t",
@@ -2362,7 +2362,7 @@
   "Deutsch-A2/de/080/k1/k1_024_def_de_080": "6cd08394a1+t",
   "Deutsch-A2/de/080/k1/k1_025_term_de_080": "bd25a6f98d+t",
   "Deutsch-A2/de/080/k1/k1_025_short_de_080": "f325f6bbee+t",
-  "Deutsch-A2/de/080/k1/k1_025_def_de_080": "b235e19528+t",
+  "Deutsch-A2/de/080/k1/k1_025_def_de_080": "d057879b6a+t",
   "Deutsch-A2/de/080/k1/k1_026_term_de_080": "5b3f0b8da2+t",
   "Deutsch-A2/de/080/k1/k1_026_short_de_080": "d74e7d3d57+t",
   "Deutsch-A2/de/080/k1/k1_026_def_de_080": "6b23b37ef3+t",
@@ -10370,5 +10370,7 @@
   "Deutsch-A2/de/095/tlc/tlc_685_term_de_095": "d811e1859d+t",
   "Deutsch-A2/de/095/tlc/tlc_685_short_de_095": "c23c440301+t",
   "Deutsch-A2/de/095/tlc/tlc_685_def_de_095": "93b3a14f32+t",
-  "Deutsch-A2/de/095/tlc/tlc_686_term_de_095": "8354653f2c+t"
+  "Deutsch-A2/de/095/tlc/tlc_686_term_de_095": "8354653f2c+t",
+  "Deutsch-A2/de/095/tlc/tlc_686_short_de_095": "30b108a19e+t",
+  "Deutsch-A2/de/095/tlc/tlc_686_def_de_095": "2d4066c8d5+t"
 }
