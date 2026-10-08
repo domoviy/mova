@@ -1678,7 +1678,7 @@
   "Deutsch-A2/de/095/k14/k14_039_def_de_095": "ba3dbb856a+t",
   "Deutsch-A2/de/095/k14/k14_040_term_de_095": "f7517e65c1+t",
   "Deutsch-A2/de/095/k14/k14_040_short_de_095": "59d2598963+t",
-  "Deutsch-A2/de/095/k14/k14_040_def_de_095": "a1715360c6+t",
+  "Deutsch-A2/de/095/k14/k14_040_def_de_095": "4e72f129bf+t",
   "Deutsch-A2/de/095/k15/k15_001_term_de_095": "4ef6053d4a+t",
   "Deutsch-A2/de/095/k15/k15_001_short_de_095": "6a9df3145e+t",
   "Deutsch-A2/de/095/k15/k15_001_def_de_095": "903545d59d+t",
@@ -7621,5 +7621,9 @@
   "Deutsch-A2/de/080/dlg/dlg_092_task_de_080": "083c7f075f+t",
   "Deutsch-A2/de/080/dlg/dlg_093_task_de_080": "5543d1499d+t",
   "Deutsch-A2/de/080/dlg/dlg_094_task_de_080": "a74e024d05+t",
-  "Deutsch-A2/de/080/dlg/dlg_095_task_de_080": "08d9dfbb9e+t"
+  "Deutsch-A2/de/080/dlg/dlg_095_task_de_080": "08d9dfbb9e+t",
+  "Deutsch-A2/de/095/got/got_001_term_de_095": "0dbebb47aa+t",
+  "Deutsch-A2/de/095/got/got_001_short_de_095": "caf20af294+t",
+  "Deutsch-A2/de/095/got/got_001_def_de_095": "f31bd65488+t",
+  "Deutsch-A2/de/095/got/got_002_term_de_095": "ec62d2b2d1+t"
 }
