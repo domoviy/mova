@@ -257,11 +257,16 @@ VOICE_MAPPING = {
     # допис), тут природно ТРИ різні "голоси": керівник (mail_boss),
     # клієнт-скаржник (mail_client) і автор відповіді (parts, той самий
     # принцип, що forum — card['name'], персонаж із characters.js).
-    # mail_boss/mail_client — вільні, вигадані імена (не прив'язані до
-    # пулу персонажів, див. prompt-email-dtb.md), тож голос для них
-    # фіксований per-поле (не намагаємось вгадувати стать з імені) —
-    # головне, щоб два листи звучали ПОМІТНО різними голосами між собою
-    # і від голосу автора відповіді нижче.
+    # mail_boss/mail_client тепер МАЮТЬ власне поле "name" (id персонажа
+    # з characters.js, та сама конвенція, що card['name']) — голос для
+    # них резолвиться через resolve_character_voice() (див. нижче по
+    # коду), щоб відповідати фактичній статі/особі автора листа.
+    # Мапінг нижче — лише ЗАПАСНИЙ варіант: для старих карток без
+    # "name" або коли вказаного персонажа ще нема в characters.js для
+    # потрібної мови. У цьому запасному випадку головне — щоб два
+    # листи звучали ПОМІТНО різними голосами між собою і від голосу
+    # автора відповіді нижче (а не відповідність статі — звідси й
+    # фіксовані "чужі" голоси per-поле).
     "email": {
         "mail_boss":   {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
         "mail_client": {"de": "de-DE-AmalaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"},
@@ -1882,11 +1887,12 @@ async def main():
         if internal_cat == "email":
             # ── E-Mail: окрема гілка, той самий принцип, що forum щойно
             # вище, — лише голос обирається ЗАЛЕЖНО ВІД ПОЛЯ, а не один
-            # раз на всю картку: mail_boss/mail_client — фіксовані
-            # "чужі" голоси (VOICE_MAPPING["email"]), а parts (відповідь
-            # компанії) — голос card['name'] через characters.js, як і
-            # forum. Лише PRIMARY_LANG (той самий принцип, що forum/
-            # redemittel/sprachbau).
+            # раз на всю картку: mail_boss/mail_client — кожен резолвить
+            # СВОГО персонажа через власне поле "name" (characters.js,
+            # запасний варіант — VOICE_MAPPING["email"], якщо персонажа
+            # не знайдено), а parts (відповідь компанії) — голос
+            # card['name'], як і forum. Лише PRIMARY_LANG (той самий
+            # принцип, що forum/redemittel/sprachbau).
             if primary_lang in audio_config:
                 persona_id = item.get("name")
                 reply_voice = resolve_character_voice(characters_list, persona_id, primary_lang)
@@ -1905,7 +1911,19 @@ async def main():
                         continue
 
                     if field in ("mail_boss", "mail_client"):
-                        voice = get_voice_id("email", field, primary_lang)
+                        # mail_boss/mail_client тепер несуть власне "name"
+                        # (id персонажа з characters.js, той самий принцип,
+                        # що card['name'] для reply вище) — резолвимо його
+                        # ТАК САМО, щоб голос відповідав статі/особі
+                        # реального автора листа. VOICE_MAPPING["email"]
+                        # (фіксований "чужий" голос) лишається лише
+                        # запасним варіантом — для старих карток без
+                        # "name" або якщо вказаного персонажа ще нема в
+                        # characters.js для потрібної мови.
+                        letter_persona_id = field_obj.get("name") if isinstance(field_obj, dict) else None
+                        voice = resolve_character_voice(characters_list, letter_persona_id, primary_lang)
+                        if not voice:
+                            voice = get_voice_id("email", field, primary_lang)
                     else:
                         voice = reply_voice
 
