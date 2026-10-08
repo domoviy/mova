@@ -4784,7 +4784,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '779-596bac3';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5346,6 +5346,134 @@ function buildLearningPath(rawLessons, courseLevel){
   return out;
 }
 
+// <MovaCourse>
+// ── РОЗБИТА БАЗА КУРСУ (data/<course>/…) ────────────────────────────────────
+// Замість одного файлу <course>.js (усі мови, весь курс) застосунок читає:
+//   core.json        — структура: LESSONS, CATS, … + order (порядок id) + needs (пакети уроків)
+//   all.json         — весь курс, основна мова + структура
+//   all.<lang>.json  — переклади однією мовою (лише мова інтерфейсу; інші НЕ завантажуються)
+//   b/<модуль>.json (+ .<lang>.json) — те саме по модулях (для покрокового доступу, див. ensureBuckets)
+// Файли генерує split-course.js. Якщо data/<course>/core.json нема (старі курси) —
+// init() повертає false і loadCourseScript() завантажує старий монолітний <course>.js.
+// Після збирання глобальні масиви (VOCAB, DIALOGE, …) виглядають так само, як після
+// монолітного скрипта, тож решта коду застосунку не змінюється.
+const MovaCourse = (function(){
+  let st = null;   // { id, core, parts:{name:{base}}, langs:Set, gen }
+  let gen = 0;     // номер завантаження: відкидає відповіді застарілого (перемкнутого) курсу
+
+  function url(rel){ return 'data/' + st.id + '/' + rel + '?v=' + APP_VERSION; }
+  function relOf(name, lang){
+    return (name === 'all' ? 'all' : 'b/' + name) + (lang ? '.' + lang : '') + '.json';
+  }
+  async function getJson(rel, optional){
+    const r = await fetch(url(rel));
+    if(!r.ok){ if(optional) return null; throw new Error(rel + ' → HTTP ' + r.status); }
+    return await r.json();
+  }
+  // Накладає sidecar на target НА МІСЦІ (масиви — за індексом, null = нічого).
+  function mergeInto(target, side){
+    if(side == null || target == null) return;
+    if(Array.isArray(target)){
+      for(let i = 0; i < target.length && i < side.length; i++)
+        if(side[i] != null && target[i] && typeof target[i] === 'object') mergeInto(target[i], side[i]);
+      return;
+    }
+    for(const k of Object.keys(side)){
+      const sv = side[k];
+      if(sv !== null && typeof sv === 'object' && target[k] && typeof target[k] === 'object') mergeInto(target[k], sv);
+      else target[k] = sv;
+    }
+  }
+  function applySide(part, side){
+    if(!side) return;
+    for(const n of Object.keys(side)) mergeInto(part.base[n], side[n]);
+  }
+  async function loadPart(name){
+    const my = st;
+    const langs = [...my.langs];
+    const [base, ...sides] = await Promise.all([
+      getJson(relOf(name)),
+      ...langs.map(l => getJson(relOf(name, l), true)),
+    ]);
+    if(my !== st) return;
+    const part = { base, langs: new Set(langs) };
+    sides.forEach(sd => applySide(part, sd));
+    my.parts[name] = part;
+  }
+  // Збирає глобальні масиви з завантажених пакетів у початковому порядку; масиви
+  // оновлюються НА МІСЦІ, щоб уже збережені посилання лишались чинними.
+  function assemble(){
+    const byId = {};
+    for(const part of Object.values(st.parts))
+      for(const n of Object.keys(part.base)){
+        const m = byId[n] = byId[n] || {};
+        part.base[n].forEach(it => { m[it.id] = it; });
+      }
+    for(const n of Object.keys(st.core.order)){
+      const m = byId[n] || {};
+      const list = [];
+      st.core.order[n].forEach(id => { if(m[id]) list.push(m[id]); });
+      const g = window[n];
+      if(Array.isArray(g)){ g.length = 0; for(let i = 0; i < list.length; i++) g.push(list[i]); }
+      else window[n] = list;
+    }
+  }
+  function wantedLangs(core, lang){
+    return (lang && lang !== core.langs.primary && core.langs.others.includes(lang)) ? [lang] : [];
+  }
+
+  // true — база зібрана з розбитих файлів; false — розбитої бази нема (потрібен монолітний скрипт).
+  async function init(course){
+    const my = st = { id: course.id, core: null, parts: {}, langs: new Set(), gen: ++gen };
+    try{
+      const core = await getJson('core.json', true);
+      if(!core || core.format !== 1 || !core.order) return (st = null, false);
+      if(my !== st) return false;
+      my.core = core;
+      wantedLangs(core, uiLang).forEach(l => my.langs.add(l));
+      const names = core.hasAll ? ['all'] : Object.keys(core.buckets);
+      await Promise.all(names.map(loadPart));
+      if(my !== st) return false;
+      for(const k of Object.keys(core.globals)) window[k] = core.globals[k];
+      assemble();
+      return true;
+    }catch(e){
+      console.warn('[MovaCourse] розбита база недоступна, перехід на монолітний файл:', e);
+      if(st === my) st = null;
+      return false;
+    }
+  }
+  // Підвантажує переклади мови (наприклад, після зміни мови інтерфейсу). Повертає true, якщо щось додано.
+  async function ensureLang(lang){
+    const my = st;
+    if(!my || !my.core) return false;
+    const ls = wantedLangs(my.core, lang).filter(l => !my.langs.has(l));
+    if(!ls.length) return false;
+    const l = ls[0];
+    await Promise.all(Object.keys(my.parts).map(async name => {
+      const side = await getJson(relOf(name, l), true);
+      if(my === st) applySide(my.parts[name], side);
+    }));
+    if(my !== st) return false;
+    my.langs.add(l);
+    return true;
+  }
+  // Підвантажує пакети по модулях (для покрокового режиму) і доповнює глобальні масиви.
+  async function ensureBuckets(names){
+    const my = st;
+    if(!my || !my.core || !my.core.hasBuckets) return false;
+    const miss = [...new Set(names)].filter(n => !my.parts[n] && my.core.buckets[n]);
+    if(!miss.length) return false;
+    await Promise.all(miss.map(loadPart));
+    if(my !== st) return false;
+    assemble();
+    return true;
+  }
+  function ensureLesson(lessonId){ return ensureBuckets((st && st.core && st.core.needs[lessonId]) || []); }
+  return { init, ensureLang, ensureBuckets, ensureLesson, get state(){ return st; } };
+})();
+// </MovaCourse>
+
 function loadCourseScript(courseId){
   return new Promise((resolve, reject)=>{
     // Видаляємо попередній скрипт курсу якщо є
@@ -5365,10 +5493,8 @@ function loadCourseScript(courseId){
     const _srcUrl = course.id + '.js?v=' + APP_VERSION;
     const _t0 = performance.now();
 
-    const s = document.createElement('script');
-    s.id  = 'course-script';
-    s.src = _srcUrl;
-    s.onload  = ()=>{
+    // Дані курсу готові (з розбитої бази або з монолітного скрипта) — далі однакова обробка.
+    const _onCourseData = ()=>{
       // Resource Timing API: transferSize===0 і encodedBodySize>0 →
       // файл узятий з диск/HTTP-кешу браузера, не з мережі.
       try{
@@ -5413,8 +5539,16 @@ function loadCourseScript(courseId){
         if(typeof logPerf==='function') logPerf(_m); else console.log('⏱ [splash-perf]', _m); }
       resolve(course);
     };
-    s.onerror = ()=>reject(new Error('Failed to load: '+course.id+'.js'));
-    document.head.appendChild(s);
+    // Запасний шлях: старий монолітний <course>.js (курси без data/<course>/core.json).
+    const _loadMonolith = ()=>{
+      const s = document.createElement('script');
+      s.id  = 'course-script';
+      s.src = _srcUrl;
+      s.onload  = _onCourseData;
+      s.onerror = ()=>reject(new Error('Failed to load: '+course.id+'.js'));
+      document.head.appendChild(s);
+    };
+    MovaCourse.init(course).catch(()=>false).then(ok=>{ if(ok) _onCourseData(); else _loadMonolith(); });
   });
 }
 
@@ -6361,6 +6495,17 @@ function setUiLang(lang){
   applyVocabLangUI();
   applyDialogueLangUI();
   if(typeof sbApplyLangUI === 'function') sbApplyLangUI();
+  // Розбита база: переклади нової мови підвантажуються окремо — після цього оновлюємо вигляд.
+  MovaCourse.ensureLang(lang).then(added=>{
+    if(!added || uiLang !== lang) return;
+    try{
+      syncLangsToVisible();
+      applyVocabLangUI();
+      applyDialogueLangUI();
+      if(typeof sbApplyLangUI === 'function') sbApplyLangUI();
+      if(typeof renderLernpfad === 'function') renderLernpfad();
+    }catch(e){ console.warn('[MovaCourse] оновлення після зміни мови:', e); }
+  }).catch(e=>console.warn('[MovaCourse] не вдалося підвантажити мову', lang, e));
 }
 
 function applyI18n(){
