@@ -37,70 +37,40 @@ except ImportError:
     # генерації працює як і раніше.
 
 if edge_tts:
-    # ── Патч edge-tts: реальна локаль замість хардкодженого en-US ───
-    # Бібліотека edge-tts (перевірено до версії 7.2.8 включно, актуальної
-    # на момент цього патчу) у mkssml() ЗАВЖДИ пише в SSML
-    # <speak ... xml:lang='en-US'>, незалежно від фактичного голосу —
-    # див. communicate.py, mkssml(). Для звичайних (одномовних) голосів
-    # (de-DE-KatjaNeural, uk-UA-PolinaNeural тощо) це не шкодить: Azure
-    # все одно озвучує рідною локаллю самого голосу.
+    # ── Патч вимови Multilingual-голосів (Julia тощо) — ВИМКНЕНО ───
+    # Раніше тут підмінявся edge_tts.communicate.mkssml(), щоб обгортати
+    # текст у <lang xml:lang="..."> ВСЕРЕДИНІ <voice> — офіційно
+    # задокументований (для повного платного Azure Speech API) спосіб
+    # вибору мови вимови для Multilingual-голосів (де хардкоджений у
+    # бібліотеці xml:lang='en-US' призводив до вимови перших слів з
+    # англійською інтонацією).
     #
-    # Але для *Multilingual*-голосів (напр. de-DE-SeraphinaMultilingualNeural
-    # — саме такий у персонажа Julia в characters.js) цей xml:lang реально
-    # впливає на мовну модель: рушій орієнтується на нього, вирішуючи,
-    # якою мовою читати. Хардкод en-US призводить до того, що ПЕРШІ слова
-    # німецького речення озвучуються з англійською вимовою/інтонацією,
-    # доки рушій сам не "розпізнає" фактичну мову тексту — саме той ефект,
-    # який чути на початку фраз у багатомовних голосів.
+    # Підтверджено прямим тестом (3 варіанти SSML проти РЕАЛЬНОГО
+    # сервера, 2026-10): безкоштовний/неофіційний ендпоінт edge-tts (той
+    # самий, що й Read Aloud у браузері Edge — НЕ повний Azure Speech
+    # API) мовчки повертає "No audio was received" на БУДЬ-ЯКИЙ запит з
+    # <lang> всередині <voice> — незалежно від голосу, а не лише для
+    # Multilingual. Патч застосовувався безумовно до кожного запиту, тож
+    # ламав 100% генерації, а не лише мультимовні картки Julia.
     #
-    # Офіційного параметра для зміни xml:lang у публічному API Communicate
-    # немає, тому патчимо функцію mkssml прямо в модулі: підміняємо
-    # xml:lang='en-US' на реальну локаль голосу (перші дві частини його
-    # імені, напр. "de-DE" з "de-DE-SeraphinaMultilingualNeural" — так
-    # само влаштовані всі voice-імена Microsoft: <locale>-<VoiceName>).
-    _orig_mkssml = edge_tts.communicate.mkssml
-    _voice_locale_re = re.compile(r"\(([a-zA-Z]{2,3}-[A-Za-z]{2,}),")
-    def _extract_voice_locale(voice):
-        """Дістає локаль ('de-DE', 'uk-UA', ...) з voice-рядка. До моменту
-        виклику mkssml() edge-tts (у TTSConfig.__post_init__) вже встигає
-        розгорнути коротке ім'я голосу ('de-DE-KatjaNeural') у повний
-        формат 'Microsoft Server Speech Text to Speech Voice (de-DE,
-        KatjaNeural)' — тому локаль тут беремо з дужок, а не з початку
-        рядка (короткий формат лишаємо як запасний варіант — про всяк
-        випадок, якщо якась версія edge-tts колись поведеться інакше)."""
-        if not voice:
-            return "en-US"
-        m = _voice_locale_re.search(voice)
-        if m:
-            return m.group(1)
-        parts = voice.split("-")
-        return "-".join(parts[:2]) if len(parts) >= 2 else "en-US"
-    def _patched_mkssml(tc, escaped_text):
-        """⚠️ ВАЖЛИВО (з'ясовано пізніше): саму лише заміну xml:lang на
-        кореневому <speak> Microsoft НЕ вважає механізмом вибору мови
-        вимови для Multilingual-голосів — це просто обов'язковий за
-        схемою SSML атрибут документа. Офіційно задокументований спосіб
-        (Azure docs, speech-synthesis-markup-voice#adjust-speaking-languages)
-        — обгорнути сам текст елементом <lang xml:lang="..."> ВСЕРЕДИНІ
-        <voice>. Тому тут повністю перебудовуємо SSML (а не патчимо
-        рядок оригінального _orig_mkssml), додаючи цей внутрішній
-        <lang>-wrapper навколо <prosody> з текстом."""
-        if isinstance(escaped_text, bytes):
-            escaped_text = escaped_text.decode("utf-8")
-        locale = _extract_voice_locale(getattr(tc, "voice", ""))
-        return (
-            "<speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' "
-            f"xml:lang='{locale}'>"
-            f"<voice name='{tc.voice}'>"
-            f"<lang xml:lang='{locale}'>"
-            f"<prosody pitch='{tc.pitch}' rate='{tc.rate}' volume='{tc.volume}'>"
-            f"{escaped_text}"
-            "</prosody>"
-            "</lang>"
-            "</voice>"
-            "</speak>"
-        )
-    edge_tts.communicate.mkssml = _patched_mkssml
+    # Спрощений варіант (лише підміна xml:lang на кореневому <speak>,
+    # БЕЗ внутрішнього <lang>) сервер приймає нормально, але, за тим же
+    # тестом і офіційною документацією Azure, цей атрибут — лише
+    # обов'язковий за схемою SSML атрибут документа, а не механізм
+    # вибору мови вимови: він не вирішує саму проблему акценту на
+    # перших словах. Тобто "безпечний, але без ефекту" — додавати його
+    # заради самого факту підміни немає сенсу.
+    #
+    # Рішення: патч повністю прибрано, mkssml лишається оригінальним
+    # для ВСІХ голосів. Легкий акцент на перших словах Julia
+    # (Multilingual-голос) — відомий нюанс самого edge-tts, не
+    # пов'язаний з цим скриптом; пожертвувати цим значно дешевше, ніж
+    # втратити генерацію решти ~5200 карток. Якщо колись знадобиться
+    # повернутись до цього — офіційний спосіб (Azure docs,
+    # speech-synthesis-markup-voice#adjust-speaking-languages) працює
+    # лише на повному платному Azure Speech API з API-ключем, не на
+    # безкоштовному ендпоінті edge-tts.
+    pass
 
 # ── Конфігурація ──────────────────────────────────────────────
 WORKERS = int(os.environ.get('TTS_WORKERS', '1'))
