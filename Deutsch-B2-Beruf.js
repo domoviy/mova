@@ -3539,7 +3539,6 @@ var LESSONS = [
       "tlc_466",
       "tlc_467",
       "tlc_468",
-      "tlc_484",
     ],
     "unlockAfter": "k7m3",
     "sbCards": [
