@@ -4819,7 +4819,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '792-6403c27';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5309,10 +5309,62 @@ function _lpSpeechGateMigrate(lessons){
 }
 // Вузол ще чекає на проходження? Для звичайних уроків — прогрес <80%, для вузла «Вимова: довгі
 // фрази» (його lessonProgress завжди 100%) — відсутність запису «пройдено/пропущено».
+// ── ПРОХОДЖЕННЯ ВУЗЛІВ СТЕЖКИ ───────────────────────────────────────────────────
+// Вузол стежки вважається ПРОЙДЕНИМ (золотий, розблоковує наступний), лише якщо
+//   1) урок реально завершено хоч раз (прапорець у mova_lesson_done_<стан курсу>), І
+//   2) його картки вже покриті на ≥80% (lessonProgress; один прохід показує ≤4 картки).
+// Картки, зіграні поза уроком (словник, Smart Review, інші вузли), самі по собі вузол НЕ
+// закривають — інакше стежка мовчки перестрибувала б уроки, яких користувач не проходив.
+// Вузол мовлення має власну логіку (speechNodeDone: пройдено або «Не можу говорити»).
+// Одноразова міграція (на стан курсу): вузли, що ДО цієї зміни вже мали ≥80%, позначаються
+// завершеними, щоб існуючі користувачі не втратили прогрес і не побачили закритих уроків.
+const LESSON_DONE_PREFIX = 'mova_lesson_done_';
+var _lpPathReady = false;            // true, коли LESSONS уже перетворено на вузли стежки
+var _ldCache = null, _ldKey = null, _ldMigKey = null;
+function _lessonDoneKey(){
+  const id = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || getSavedCourseId();
+  return LESSON_DONE_PREFIX + courseStateId(id);
+}
+function _lessonDoneMap(){
+  const key = _lessonDoneKey();
+  if(_ldKey !== key){
+    let m = {};
+    try{ m = JSON.parse(localStorage.getItem(key) || '{}') || {}; }catch(e){ m = {}; }
+    _ldCache = m; _ldKey = key; _ldMigKey = null;
+  }
+  if(_lpPathReady && _ldMigKey !== key){ _ldMigKey = key; _lessonDoneMigrate(key); }
+  return _ldCache;
+}
+function _lessonDoneMigrate(key){
+  const mk = key + '_mig1';
+  try{ if(localStorage.getItem(mk)) return; }catch(e){ return; }
+  const lessons = (typeof LESSONS !== 'undefined' && Array.isArray(LESSONS)) ? LESSONS : [];
+  let changed = false;
+  for(const l of lessons){
+    if(l.type === 'speech' || l.type === 'examsim' || _ldCache[l.id]) continue;
+    if(lessonProgress(l).pct >= 80){ _ldCache[l.id] = 1; changed = true; }
+  }
+  try{
+    if(changed) localStorage.setItem(key, JSON.stringify(_ldCache));
+    localStorage.setItem(mk, '1');
+  }catch(e){}
+}
+function lessonMarkDone(id){
+  const m = _lessonDoneMap();
+  if(m[id]) return;
+  m[id] = Date.now();
+  try{ localStorage.setItem(_lessonDoneKey(), JSON.stringify(m)); }catch(e){}
+}
+function lessonDone(l){
+  if(!l) return false;
+  if(l.type === 'speech') return speechNodeDone(l.id);
+  return !!_lessonDoneMap()[l.id] && lessonProgress(l).pct >= 80;
+}
+// Для лічильників «N/M пройдено»: вузол мовлення необов'язковий і, як і раніше, рахується пройденим.
+function _lpCounted(l){ return l.type === 'speech' ? true : lessonDone(l); }
 function _lpNodePending(l){
   if(!l) return false;
-  if(l.type === 'speech') return !speechNodeDone(l.id);
-  return lessonProgress(l).pct < 80;
+  return !lessonDone(l);
 }
 
 function buildLearningPath(rawLessons, courseLevel){
@@ -5718,6 +5770,7 @@ function loadCourseScript(courseId){
     // PRIMARY_LANG_1 — необов'язкова змінна файлу курсу: без скидання лишилась би від попереднього курсу.
     window.PRIMARY_LANG_1 = '';
     _lp = null;
+    _lpPathReady = false;   // шлях нового курсу ще не побудовано (див. _lessonDoneMap)
     // CHARACTERS сюди НЕ входить: персонажі тепер живуть у спільному
     // characters.js, завантаженому окремо через loadCharactersScript()
     // (див. вище) — вони однакові для всіх курсів і НЕ повинні
@@ -5772,6 +5825,7 @@ function loadCourseScript(courseId){
           const examPrepEntries = LESSONS.filter(l=>l.chapterType==='examprep');
           const regularEntries  = LESSONS.filter(l=>l.chapterType!=='examprep');
           LESSONS = buildLearningPath(regularEntries, course.level).concat(examPrepEntries);
+      _lpPathReady = true;
         }
       }catch(e){ console.error('[path] buildLearningPath failed:', e); }
       // Smart Review: додаємо examPart до карток якщо ще не є
@@ -8083,7 +8137,7 @@ function _srFindNextLesson(){
   const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
   if(!lessons.length) return null;
   const sorted = [...lessons].sort((a,b) => (a.chapter-b.chapter) || (a.module-b.module));
-  return sorted.find(l => lessonProgress(l).pct < 80) || null;
+  return sorted.find(l => l.type !== 'speech' && !lessonDone(l)) || null;
 }
 
 // Запускає "Повторити курс" — синтетичний урок з усіх глав, той самий
@@ -10707,7 +10761,7 @@ function _findNextLessonAfterCompletion(completedId){
   // поки сам він ще технічно заблокований, не можна: рендер (окремо
   // перевіряє lessonUnlocked() для кожного вузла) відмовиться
   // позначити його isCurrent, і лінія лишиться зовсім БЕЗ підсвітки.
-  if(lessonProgress(lessons[idx]).pct < 80){
+  if(!lessonDone(lessons[idx])){
     return lessons[idx];
   }
 
@@ -10909,8 +10963,7 @@ function lessonUnlocked(lesson){
   // Вузол «Вимова: довгі фрази» — теж блокує наступний урок: його треба або пройти,
   // або пропустити кнопкою «Не можу говорити зараз» (обидва дають запис у speechNodeDone).
   if(prev.type === 'speech') return speechNodeDone(prev.id) && lessonUnlocked(prev);
-  const {pct} = lessonProgress(prev);
-  return pct >= 80 && lessonUnlocked(prev);
+  return lessonDone(prev) && lessonUnlocked(prev);
 }
 
 
@@ -11534,7 +11587,7 @@ function renderLernpfad(opts){
   const chapterList = Object.values(chapters);
 
   chapterList.forEach((ch)=>{
-    const allDone = ch.modules.every(m=>lessonProgress(m).pct>=80);
+    const allDone = ch.modules.every(m=>_lpCounted(m));
     // Глава з "поточним" уроком розгортається автоматично, НАВІТЬ якщо
     // його ще жодного разу не відкривали (pct===0) — інакше "you are
     // here"-підсвітка на щойно розблокованій главі була б невидимою,
@@ -11596,7 +11649,7 @@ function renderLernpfad(opts){
       // знаменнику nodes.length, дріб типу "39/40" ніколи не дійшов би
       // до 100%, хоча реально всі СПРАВЖНІ картки модуля пройдені.
       const countableNodes = grp.nodes.filter(n => n.type !== 'examsim' && n.type !== 'speech');
-      const doneCount = countableNodes.filter(n=>lessonProgress(n).pct>=80).length;
+      const doneCount = countableNodes.filter(n=>lessonDone(n)).length;
       const hasModuleCurrent = grp.nodes.some(n=>findCurrentLesson()?.id===n.id);
       // Той самий принцип, що глава вище: розгорнутий лише модуль з
       // АКТИВНИМ уроком, а не будь-який модуль з хоч якимось прогресом —
@@ -11636,7 +11689,7 @@ function renderLernpfad(opts){
         <div class="lp-chapter-info">
           <div class="lp-chapter-title">${ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de}</div>
           <div class="lp-chapter-sub">${ch.modules.length} ${t('lp_module_prefix')} · ${
-            ch.modules.filter(m=>lessonProgress(m).pct>=80).length
+            ch.modules.filter(m=>_lpCounted(m)).length
           }/${ch.modules.length} ${t('lp_done').toLowerCase()}</div>
         </div>
         ${renderChapterDividerVocabBtn(ch.num, reviewUnlocked)}
@@ -11986,7 +12039,7 @@ function renderPathNode(node, idx){
   const {done, total, pct} = lessonProgress(node);
   const unlocked  = lessonUnlocked(node);
   const isSpeech  = node.type === 'speech';
-  const isDone    = isSpeech ? speechNodeDone(node.id) : pct >= 80;
+  const isDone    = isSpeech ? speechNodeDone(node.id) : lessonDone(node);
   const isCurrent = !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
   const isForum = node.type === 'forum';
@@ -12107,7 +12160,7 @@ function renderExamPrepRow(node){
   // навмисно ніколи не показуємо як "done", інакше вузол одного разу
   // назавжди позначився б ✓ і виглядав "пройденим", хоча спробу можна й
   // варто повторювати скільки завгодно.
-  const isDone    = !isExamSim && pct >= 80;
+  const isDone    = !isExamSim && lessonDone(node);
   const isCurrent = !isExamSim && !isDone && unlocked && findCurrentLesson()?.id === node.id;
   const isDialogue = node.type === 'dialogue';
   const isForum = node.type === 'forum';
@@ -21778,7 +21831,11 @@ function lfShowResult(){
     // той самий урок".
     try{
       const completedId = LF._bonusForLessonId || LF.lessonId;
-      if(completedId) localStorage.setItem('mova_last_completed_lesson', completedId);
+      if(completedId){
+        localStorage.setItem('mova_last_completed_lesson', completedId);
+        // Реальне завершення вузла стежки (синтетичні id повторень сюди не потрапляють).
+        if(typeof LESSONS !== 'undefined' && LESSONS.some(l => l.id === completedId)) lessonMarkDone(completedId);
+      }
     }catch(e){}
     celebrationPending = true;
     // Якщо стрік НЕ зріс, але щойно згорів через пропуск без достатньої
