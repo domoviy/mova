@@ -8311,7 +8311,7 @@
   "Deutsch-B1/en/100/k1/k1_002_def_en_100": "084cd6788b",
   "Deutsch-B1/en/100/k1/k1_003_term_en_100": "1774c6cee3",
   "Deutsch-B1/en/100/k1/k1_003_short_en_100": "44a5561aea",
-  "Deutsch-B1/en/100/k1/k1_003_def_en_100": "8835240f18",
+  "Deutsch-B1/en/100/k1/k1_003_def_en_100": "6f7f79c002",
   "Deutsch-B1/en/100/k1/k1_004_term_en_100": "e88319d48a",
   "Deutsch-B1/en/100/k1/k1_004_short_en_100": "cf76108ea4",
   "Deutsch-B1/en/100/k1/k1_004_def_en_100": "2d39ceaed5",
@@ -8350,10 +8350,10 @@
   "Deutsch-B1/en/100/k1/k1_015_def_en_100": "148d10397d",
   "Deutsch-B1/en/100/k1/k1_016_term_en_100": "31d3cb6d3a",
   "Deutsch-B1/en/100/k1/k1_016_short_en_100": "17596c9912",
-  "Deutsch-B1/en/100/k1/k1_016_def_en_100": "00004144a9",
+  "Deutsch-B1/en/100/k1/k1_016_def_en_100": "2b56f18379",
   "Deutsch-B1/en/100/k1/k1_017_term_en_100": "001c22256d",
   "Deutsch-B1/en/100/k1/k1_017_short_en_100": "66b2dd8be4",
-  "Deutsch-B1/en/100/k1/k1_017_def_en_100": "ad5a133931",
+  "Deutsch-B1/en/100/k1/k1_017_def_en_100": "3d79d02536",
   "Deutsch-B1/en/100/k1/k1_018_term_en_100": "ab90eb858d",
   "Deutsch-B1/en/100/k1/k1_018_short_en_100": "2755ac0711",
   "Deutsch-B1/en/100/k1/k1_018_def_en_100": "cdd4dc499e",
@@ -21598,5 +21598,7 @@
   "Deutsch-B1/de/080/k16/k16_110_term_de_080": "46e363a19c+t",
   "Deutsch-B1/de/080/k16/k16_110_short_de_080": "f3211b27ef+t",
   "Deutsch-B1/de/080/k16/k16_110_def_de_080": "a731d25494+t",
-  "Deutsch-B1/de/080/k16/k16_111_term_de_080": "b7bc0730f9+t"
+  "Deutsch-B1/de/080/k16/k16_111_term_de_080": "b7bc0730f9+t",
+  "Deutsch-B1/de/080/k16/k16_111_short_de_080": "4e7e0dc782+t",
+  "Deutsch-B1/de/080/k16/k16_111_def_de_080": "b9ba95e02c+t"
 }
