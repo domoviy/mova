@@ -1519,7 +1519,7 @@ body{
 
 
 /* ══ ONBOARDING ══ */
-#onboarding, #course-onboarding{
+#onboarding, #course-onboarding, #course-lang-step{
   position:fixed;inset:0;z-index:9998;
   background:var(--forest);
   display:flex;flex-direction:column;
@@ -1527,6 +1527,7 @@ body{
   padding:24px 20px;
   gap:0;
 }
+#course-lang-step{ z-index:9999; }   /* крок вибору мови — над усіма іншими onboarding-екранами */
 .ob-logo{
   display:flex;align-items:center;gap:10px;
   margin-bottom:32px;
@@ -3858,6 +3859,29 @@ body{
   </div>
 </div>
 
+<!-- ══ COURSE LANG STEP — вибір вивчуваної мови / мови перекладу (курси з PRIMARY_LANG_1) ══ -->
+<div id="course-lang-step" style="display:none">
+  <div class="ob-logo">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 700" style="height:110px;width:110px">
+      <path d="M 50,385 L 194,212 C 231,252 277,296 297,280 S 355,152 370,168
+               C 388,200 424,272 441,258 C 460,228 577,90 658,76"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 50,660 L 50,460 L 99,560 L 148,460 L 148,660"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 297,477.5 A 59.5,82.5 0 0 1 356.5,560 A 59.5,82.5 0 0 1 297,642.5
+               A 59.5,82.5 0 0 1 237.5,560 A 59.5,82.5 0 0 1 297,477.5"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 421.5,460 L 470.5,660 L 519.5,460"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M 560,660 L 609,460 L 658,660"
+        fill="none" stroke="#c9a84c" stroke-width="35" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="580.8" y1="575" x2="637.2" y2="575" stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
+    </svg>
+  </div>
+  <p class="ob-subtitle" id="course-lang-step-title"></p>
+  <div class="ob-cards" id="course-lang-step-cards"></div>
+</div>
+
 <!-- ══ EXAM DATE ONBOARDING — після мовного onboarding ══ -->
 <div id="sr-exam-onboarding" style="display:none;position:fixed;inset:0;z-index:9000;background:var(--forest);flex-direction:column;align-items:center;justify-content:center;padding:32px 24px;gap:20px">
   <div class="ob-logo">
@@ -4560,6 +4584,12 @@ body{
     </div>
     </div>
 
+    <!-- 2б. Мова вивчення і переклад (лише для курсів із PRIMARY_LANG_1) -->
+    <div class="ssec" id="ssec-learnlang" style="display:none">
+    <h3><i data-mi="globe" class="mi-inline"></i><span id="ssec-learnlang-title"></span></h3>
+    <div id="learnlang-body" style="display:flex;gap:8px;padding:4px 0;flex-direction:column"></div>
+    </div>
+
     <!-- 3. Розмір шрифту -->
     <div class="ssec" id="ssec-fontsize">
     <h3><i data-mi="textsize" class="mi-inline"></i><span data-i18n="sec_fontsize">Schriftgröße</span></h3>
@@ -4789,7 +4819,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '788-f2e9e61';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -4844,7 +4874,7 @@ const COURSES = [
     emoji:    '💰',
     icon:     'chart',
     level:    'Foundations',
-    langs:    ['en','uk'],
+    langs:    ['de','en','uk','ru'],   // PRIMARY_LANG=de, PRIMARY_LANG_1=en (див. Financial-Accounting-Foundations.js)
     desc:     { de:'Grundlagen der Finanzbuchhaltung', uk:'Основи фінансового обліку', en:'Financial accounting fundamentals' },
   },
   // Приклад як додати новий курс:
@@ -4870,6 +4900,189 @@ function getSavedCourseId(){
   if(saved && COURSES.some(c=>c.id===saved)) return saved;
   return 'Deutsch-B2-Beruf';
 }
+
+// ── ВИВЧУВАНА МОВА КУРСУ (PRIMARY_LANG / PRIMARY_LANG_1) ─────────────────────
+// Файл курсу задає PRIMARY_LANG — мова, яку вивчають за замовчуванням. Якщо в ньому є ще
+// й PRIMARY_LANG_1, курс можна вчити будь-якою з двох (напр. фінансові терміни німецькою
+// або англійською). Вибір — окремо для кожного курсу:
+//   mova_learn_alt_<курс>  = код альтернативної мови (ключа нема → мова за замовчуванням);
+//   mova_learn_set_<курс>  = '1', коли користувач уже обрав (більше не питаємо);
+//   mova_trans_lang_<стан> = мова перекладу, якщо мова інтерфейсу збіглася з вивчуваною.
+// Прогрес (Smart Review, вузли мовлення) для альтернативної мови ведеться ОКРЕМО: його ключ
+// має суфікс «~<мова>» (courseStateId). Для мови за замовчуванням ключі лишились як були.
+// Мова інтерфейсу від цього не змінюється ніколи: у курсі з двома мовами вона лишається
+// мовою перекладу, а якщо збіглась з вивчуваною — перекладом стає окремо обрана мова.
+const LEARN_ALT_PREFIX = 'mova_learn_alt_';
+const LEARN_SET_PREFIX = 'mova_learn_set_';
+const TRANS_PREFIX     = 'mova_trans_lang_';
+const LANG_CODES       = ['de','en','uk','ru'];
+var _lp = null;   // { learn, trans, hasAlt, base, alt } для активного курсу (var — щоб була доступна до виконання рядка)
+
+function courseStateId(courseId){
+  try{ const a = localStorage.getItem(LEARN_ALT_PREFIX + courseId); if(a) return courseId + '~' + a; }catch(e){}
+  return courseId;
+}
+function _resolveLangs(courseId, base, alt, ui){
+  const hasAlt = !!alt && alt !== base;
+  let learn = base;
+  if(hasAlt){ try{ if(localStorage.getItem(LEARN_ALT_PREFIX + courseId) === alt) learn = alt; }catch(e){} }
+  let trans = ui;
+  if(hasAlt && ui === learn){
+    let sv = null;
+    try{ sv = localStorage.getItem(TRANS_PREFIX + courseId + (learn !== base ? '~' + learn : '')); }catch(e){}
+    trans = (sv && sv !== learn && LANG_CODES.includes(sv)) ? sv : (['uk','en','ru','de'].find(l => l !== learn) || ui);
+  }
+  return { learn, trans, hasAlt, base, alt };
+}
+function _reloadLangPrefs(){
+  const id   = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || getSavedCourseId();
+  const base = (typeof PRIMARY_LANG   !== 'undefined' && PRIMARY_LANG)   || 'de';
+  const alt  = (typeof PRIMARY_LANG_1 !== 'undefined' && PRIMARY_LANG_1) || '';
+  _lp = _resolveLangs(id, base, alt, uiLang);
+}
+// Мови, переклади яких треба завантажити з розбитої бази (див. MovaCourse): вивчувана + перекладу.
+function _courseLangsWanted(core, courseId){
+  const alt = (core.globals && core.globals.PRIMARY_LANG_1) || '';
+  const r = _resolveLangs(courseId, core.langs.primary, alt, uiLang);
+  return [r.learn, r.trans];
+}
+function primaryLang(){
+  if(_lp && _lp.learn) return _lp.learn;
+  return (typeof PRIMARY_LANG !== 'undefined' && PRIMARY_LANG) || 'de';
+}
+// Мова, якою показуємо ПЕРЕКЛАД картки. У звичайних курсах = мова інтерфейсу (як було завжди).
+function transLang(){ return (_lp && _lp.trans) || uiLang; }
+function courseHasAlt(){ return !!(_lp && _lp.hasAlt); }
+function _transStoreKey(courseId){ return TRANS_PREFIX + courseStateId(courseId); }
+// Потрібно спитати мову перекладу: курс із двома мовами, мова інтерфейсу == вивчувана, вибору ще нема.
+function transChoiceMissing(){
+  if(!courseHasAlt() || !activeCourse || uiLang !== primaryLang()) return false;
+  let sv = null; try{ sv = localStorage.getItem(_transStoreKey(activeCourse.id)); }catch(e){}
+  return !(sv && sv !== primaryLang() && LANG_CODES.includes(sv));
+}
+
+const COURSE_LANG_TXT = {
+  de:{ learn:'Welche Sprache möchtest du lernen?', trans:'In welcher Sprache sollen Übersetzungen erscheinen?', sec:'Lern- und Übersetzungssprache', secLearn:'Ich lerne', secTrans:'Übersetzung', sameUi:'wie die Oberflächensprache' },
+  uk:{ learn:'Яку мову ви хочете вивчати?',        trans:'Якою мовою показувати переклад?',                   sec:'Мова вивчення і переклад',       secLearn:'Вивчаю',   secTrans:'Переклад',    sameUi:'як мова інтерфейсу' },
+  en:{ learn:'Which language do you want to learn?', trans:'Which language should translations be shown in?',  sec:'Learning & translation language', secLearn:'I learn',   secTrans:'Translation', sameUi:'same as the interface language' },
+  ru:{ learn:'Какой язык вы хотите изучать?',      trans:'На каком языке показывать перевод?',                 sec:'Язык изучения и перевод',        secLearn:'Изучаю',   secTrans:'Перевод',     sameUi:'как язык интерфейса' },
+};
+const LANG_NATIVE = { de:'Deutsch', uk:'Українська', en:'English', ru:'Русский' };
+const LANG_NAME_IN = {   // назва мови мовою інтерфейсу
+  de:{ de:'Deutsch', uk:'Ukrainisch', en:'Englisch', ru:'Russisch' },
+  uk:{ de:'Німецька', uk:'Українська', en:'Англійська', ru:'Російська' },
+  en:{ de:'German', uk:'Ukrainian', en:'English', ru:'Russian' },
+  ru:{ de:'Немецкий', uk:'Украинский', en:'Английский', ru:'Русский' },
+};
+
+// Показує повноекранний вибір мови; повертає Promise з обраним кодом. kind: 'learn' | 'trans'.
+function showCourseLangStep(kind, langs, current){
+  return new Promise(resolve=>{
+    const ov = document.getElementById('course-lang-step');
+    const ttl = document.getElementById('course-lang-step-title');
+    const box = document.getElementById('course-lang-step-cards');
+    if(!ov || !ttl || !box){ resolve(current || langs[0]); return; }
+    const tx = COURSE_LANG_TXT[uiLang] || COURSE_LANG_TXT.en;
+    const names = LANG_NAME_IN[uiLang] || LANG_NAME_IN.en;
+    ttl.textContent = kind === 'learn' ? tx.learn : tx.trans;
+    box.innerHTML = '';
+    let done = false;
+    langs.forEach(l=>{
+      const d = document.createElement('div');
+      d.className = 'ob-card';
+      d.innerHTML = '<div class="ob-card-flag">' + movaFlag(l) + '</div>' +
+        '<div class="ob-card-text"><div class="ob-card-lang">' + LANG_NATIVE[l] + '</div>' +
+        '<div class="ob-card-desc">' + names[l] + '</div></div><div class="ob-card-arrow">›</div>';
+      d.addEventListener('click', ()=>{
+        if(done) return; done = true;
+        ov.style.transition = 'opacity .3s ease'; ov.style.opacity = '0';
+        setTimeout(()=>{ ov.style.display = 'none'; resolve(l); }, 300);
+      });
+      box.appendChild(d);
+    });
+    ov.style.opacity = '1'; ov.style.display = 'flex';
+    window.mlog?.('onboarding_step', { step: kind === 'learn' ? 'learnlang' : 'translang', action: 'shown' });
+  });
+}
+
+// Підвантажує переклади потрібних мов і оновлює вигляд (після зміни вивчуваної мови/перекладу).
+async function _applyLangChange(){
+  try{ await MovaCourse.ensureLangs(); }catch(e){ console.warn('[MovaCourse] переклади:', e); }
+  try{
+    syncLangsToVisible(); applyVocabLangUI(); applyDialogueLangUI();
+    if(typeof sbApplyLangUI === 'function') sbApplyLangUI();
+    if(typeof renderLernpfad === 'function') renderLernpfad();
+    renderLearnLangSettings();
+  }catch(e){ console.warn('[MovaCourse] оновлення вигляду:', e); }
+}
+function setCourseTransLang(lang){
+  if(!activeCourse || !LANG_CODES.includes(lang) || lang === primaryLang()) return Promise.resolve();
+  try{ localStorage.setItem(_transStoreKey(activeCourse.id), lang); }catch(e){}
+  _reloadLangPrefs();
+  return _applyLangChange();
+}
+// Обирає вивчувану мову активного курсу. Зміна мови = інший прогрес, тож курс перезавантажується.
+async function setCourseLearnLang(lang){
+  const c = activeCourse, st = _lp;
+  if(!c || !st || !st.hasAlt || (lang !== st.base && lang !== st.alt)) return;
+  try{ localStorage.setItem(LEARN_SET_PREFIX + c.id, '1'); }catch(e){}
+  if(lang === primaryLang()) return;
+  try{
+    if(lang === st.base) localStorage.removeItem(LEARN_ALT_PREFIX + c.id);
+    else localStorage.setItem(LEARN_ALT_PREFIX + c.id, lang);
+  }catch(e){}
+  await switchCourse(c.id, { force: true, noLangSteps: true });
+}
+let _langStepBusy = false;
+// Питає вивчувану мову (раз на курс) і, якщо потрібно, мову перекладу. Для звичайних курсів — нічого не робить.
+async function ensureCourseLangChoices(){
+  if(_langStepBusy) return;
+  const c = activeCourse;
+  if(!c || !courseHasAlt()) return;
+  _langStepBusy = true;
+  try{
+    if(!localStorage.getItem(LEARN_SET_PREFIX + c.id)){
+      const pick = await showCourseLangStep('learn', [_lp.base, _lp.alt], primaryLang());
+      window.mlog?.('onboarding_step', { step: 'learnlang', action: 'completed', language: pick, course: c.id });
+      await setCourseLearnLang(pick);
+    }
+    if(transChoiceMissing()){
+      const pick = await showCourseLangStep('trans', ['uk','en','ru','de'].filter(l => l !== primaryLang()), _lp.trans);
+      window.mlog?.('onboarding_step', { step: 'translang', action: 'completed', language: pick, course: c.id });
+      await setCourseTransLang(pick);
+    }
+  }catch(e){ console.warn('ensureCourseLangChoices:', e); }
+  finally{ _langStepBusy = false; try{ renderLearnLangSettings(); }catch(e){} }
+}
+
+// Блок «Мова вивчення / переклад» у налаштуваннях (видимий лише для курсів із PRIMARY_LANG_1).
+function renderLearnLangSettings(){
+  const sec = document.getElementById('ssec-learnlang');
+  const body = document.getElementById('learnlang-body');
+  if(!sec || !body) return;
+  if(!courseHasAlt()){ sec.style.display = 'none'; return; }
+  const tx = COURSE_LANG_TXT[uiLang] || COURSE_LANG_TXT.en;
+  document.getElementById('ssec-learnlang-title').textContent = tx.sec;
+  const L = primaryLang();
+  const btn = (l, active, fn) => '<button class="btn ui-lang-btn ssec-btn' + (active ? ' active' : '') + '" onclick="' + fn + '(\'' + l + '\')">' + movaFlag(l) + LANG_NATIVE[l] + '</button>';
+  let html = '<small style="color:var(--muted)">' + tx.secLearn + '</small>' +
+    [_lp.base, _lp.alt].map(l => btn(l, l === L, 'onLearnLangPick')).join('');
+  html += '<small style="color:var(--muted);margin-top:6px">' + tx.secTrans + '</small>';
+  if(uiLang === L){
+    html += ['uk','en','ru','de'].filter(l => l !== L).map(l => btn(l, l === _lp.trans, 'onTransLangPick')).join('');
+  } else {
+    html += '<div style="padding:6px 2px;color:var(--ink)">' + movaFlag(uiLang) + LANG_NATIVE[uiLang] + ' <span style="color:var(--muted)">· ' + tx.sameUi + '</span></div>';
+  }
+  body.innerHTML = html;
+  sec.style.display = '';
+}
+async function onLearnLangPick(l){
+  if(l === primaryLang()) return;
+  await setCourseLearnLang(l);
+  await ensureCourseLangChoices();
+  renderLearnLangSettings();
+}
+function onTransLangPick(l){ if(_lp && l !== _lp.trans) setCourseTransLang(l); }
 function saveCourseId(id){
   localStorage.setItem('mova_course', id);
 }
@@ -5043,7 +5256,7 @@ function _lpSpeechDefEligibleIds(cardIds){
 function _speechDoneKey(){
   var c = '';
   try{ c = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || ''; }catch(e){}
-  return 'mova_speech_def_done_' + c;
+  return 'mova_speech_def_done_' + (c ? courseStateId(c) : c);
 }
 // Фрази, які користувач уже вимовляв у таких уроках (id карток): добір спершу бере ще не
 // вимовлені, щоб за кілька уроків модуля охопити якнайбільше РІЗНИХ фраз.
@@ -5434,8 +5647,13 @@ const MovaCourse = (function(){
       else window[n] = list;
     }
   }
-  function wantedLangs(core, lang){
-    return (lang && lang !== core.langs.primary && core.langs.others.includes(lang)) ? [lang] : [];
+  // Які переклади потрібні зараз: вивчувана мова і мова перекладу (їх обирає застосунок через
+  // _courseLangsWanted; без нього — лише мова інтерфейсу). Основна мова курсу є в пакеті завжди.
+  function wantedLangs(core){
+    let want = [];
+    if(typeof _courseLangsWanted === 'function') want = _courseLangsWanted(core, st && st.id);
+    else if(typeof uiLang !== 'undefined') want = [uiLang];
+    return [...new Set(want)].filter(l => l && l !== core.langs.primary && core.langs.others.includes(l));
   }
 
   // true — база зібрана з розбитих файлів; false — розбитої бази нема (потрібен монолітний скрипт).
@@ -5446,7 +5664,7 @@ const MovaCourse = (function(){
       if(!core || core.format !== 1 || !core.order) return (st = null, false);
       if(my !== st) return false;
       my.core = core;
-      wantedLangs(core, uiLang).forEach(l => my.langs.add(l));
+      wantedLangs(core).forEach(l => my.langs.add(l));
       const names = core.hasAll ? ['all'] : Object.keys(core.buckets);
       await Promise.all(names.map(loadPart));
       if(my !== st) return false;
@@ -5459,19 +5677,19 @@ const MovaCourse = (function(){
       return false;
     }
   }
-  // Підвантажує переклади мови (наприклад, після зміни мови інтерфейсу). Повертає true, якщо щось додано.
-  async function ensureLang(lang){
+  // Підвантажує переклади, яких ще нема (після зміни мови інтерфейсу, вивчуваної мови чи мови
+  // перекладу). Повертає true, якщо щось додано.
+  async function ensureLangs(){
     const my = st;
     if(!my || !my.core) return false;
-    const ls = wantedLangs(my.core, lang).filter(l => !my.langs.has(l));
+    const ls = wantedLangs(my.core).filter(l => !my.langs.has(l));
     if(!ls.length) return false;
-    const l = ls[0];
-    await Promise.all(Object.keys(my.parts).map(async name => {
+    await Promise.all(ls.map(l => Promise.all(Object.keys(my.parts).map(async name => {
       const side = await getJson(relOf(name, l), true);
       if(my === st) applySide(my.parts[name], side);
-    }));
+    }))));
     if(my !== st) return false;
-    my.langs.add(l);
+    ls.forEach(l => my.langs.add(l));
     return true;
   }
   // Підвантажує пакети по модулях (для покрокового режиму) і доповнює глобальні масиви.
@@ -5486,7 +5704,7 @@ const MovaCourse = (function(){
     return true;
   }
   function ensureLesson(lessonId){ return ensureBuckets((st && st.core && st.core.needs[lessonId]) || []); }
-  return { init, ensureLang, ensureBuckets, ensureLesson, get state(){ return st; } };
+  return { init, ensureLangs, ensureLang: ensureLangs, ensureBuckets, ensureLesson, get state(){ return st; } };
 })();
 // </MovaCourse>
 
@@ -5497,6 +5715,9 @@ function loadCourseScript(courseId){
     if(old) old.remove();
     // Очищаємо стару базу
     if(window.VOCAB) window.VOCAB = [];
+    // PRIMARY_LANG_1 — необов'язкова змінна файлу курсу: без скидання лишилась би від попереднього курсу.
+    window.PRIMARY_LANG_1 = '';
+    _lp = null;
     // CHARACTERS сюди НЕ входить: персонажі тепер живуть у спільному
     // characters.js, завантаженому окремо через loadCharactersScript()
     // (див. вище) — вони однакові для всіх курсів і НЕ повинні
@@ -5522,6 +5743,14 @@ function loadCourseScript(courseId){
       }catch(e){ console.log('⏱ [splash-perf] course-script timing недоступний:', e); }
 
       activeCourse = course;
+      // Курс з двома вивчуваними мовами: збережена альтернатива має збігатися з PRIMARY_LANG_1 файлу
+      // (файл міг змінитися), а мову вивчення/перекладу фіксуємо ДО побудови шляху і читання прогресу.
+      try{
+        const _alt = (typeof PRIMARY_LANG_1 !== 'undefined' && PRIMARY_LANG_1) || '';
+        const _sv  = localStorage.getItem(LEARN_ALT_PREFIX + course.id);
+        if(_sv && _sv !== _alt) localStorage.removeItem(LEARN_ALT_PREFIX + course.id);
+      }catch(e){}
+      _reloadLangPrefs();
       // Аналітика: 'course' — user property (а не подія), бо це
       // стабільний "вимір" на весь час, доки людина не перемкне курс —
       // саме тут (а не в switchCourse()) спрацьовує і при холодному
@@ -5598,8 +5827,9 @@ function csHideModal(){
 }
 
 // Завантажує курс і перезапускає vocab UI
-async function switchCourse(courseId){
-  if(activeCourse?.id === courseId) return; // вже активний
+async function switchCourse(courseId, opts){
+  opts = opts || {};
+  if(activeCourse?.id === courseId && !opts.force) return; // вже активний (force — перезавантаження курсу)
   const targetCourse = COURSES.find(c=>c.id===courseId);
   csShowModal('loading', targetCourse);
   saveCourseId(courseId);
@@ -5619,6 +5849,7 @@ async function switchCourse(courseId){
     // старого курсу (див. init(), де це робиться при холодному старті).
     syncLangsToVisible();
     updateBottomNavVisibility();
+    try{ renderLearnLangSettings(); }catch(e){}
     document.querySelectorAll('.course-btn').forEach(b=>{
       b.classList.toggle('active', b.dataset.course===courseId);
     });
@@ -5659,6 +5890,8 @@ async function switchCourse(courseId){
     // сам викликає renderLernpfad(), який сам скролить до активної точки
     // (findCurrentLesson) — той самий шлях, що вже є в goToLernpfadActivePoint().
     showView('lernpfad');
+    // Курс з двома вивчуваними мовами: питаємо вивчувану мову (раз) і за потреби мову перекладу.
+    if(!opts.noLangSteps) await ensureCourseLangChoices();
   }catch(e){
     console.error('switchCourse error:', e);
     notify('⚠️ Курс не вдалося завантажити');
@@ -6470,12 +6703,11 @@ function t(key){ return (I18N[uiLang]||I18N.de)[key] || key; }
 
 // Основна мова контенту курсу (мова, яку вчить користувач), напр. "de" для Deutsch-B2-Beruf.
 // Визначається в файлі курсу (Deutsch-B2-Beruf.js); 'de' — фолбек для курсів, де поле відсутнє.
-function primaryLang(){ return (typeof PRIMARY_LANG !== 'undefined' && PRIMARY_LANG) || 'de'; }
 
 // Мови, кнопки яких мають бути видимі в плеєрах: мова інтерфейсу + основна мова курсу.
 // Якщо вони збігаються — повертається лише одна мова.
 function visibleLangs(){
-  const set = new Set([uiLang, primaryLang()]);
+  const set = new Set([transLang(), primaryLang()]);
   return ['de','en','uk','ru'].filter(l=>set.has(l));
 }
 
@@ -6492,8 +6724,9 @@ function syncLangsToVisible(){
 }
 
 function nativeText(card){
-  if(uiLang === primaryLang()) return card.short?.[primaryLang()] || card.term?.[primaryLang()] || '';
-  return card.term?.[uiLang] || '';
+  const tl = transLang();
+  if(tl === primaryLang()) return card.short?.[primaryLang()] || card.term?.[primaryLang()] || '';
+  return card.term?.[tl] || '';
 }
 function targetText(card){ return card.term?.[primaryLang()] || ''; }
 
@@ -6506,21 +6739,28 @@ function setUiLang(lang){
   // поточний стан).
   if(typeof window.mprop === 'function') window.mprop('ui_language', lang);
   if(typeof window.mlog === 'function') window.mlog('ui_language_changed', { language: lang });
+  _reloadLangPrefs();   // мова перекладу залежить від мови інтерфейсу (див. transLang)
   syncLangsToVisible();
   applyI18n();
   applyVocabLangUI();
   applyDialogueLangUI();
   if(typeof sbApplyLangUI === 'function') sbApplyLangUI();
+  try{ renderLearnLangSettings(); }catch(e){}
   // Розбита база: переклади нової мови підвантажуються окремо — після цього оновлюємо вигляд.
-  MovaCourse.ensureLang(lang).then(added=>{
-    if(!added || uiLang !== lang) return;
+  MovaCourse.ensureLangs().then(added=>{
+    if(uiLang !== lang) return;
     try{
-      syncLangsToVisible();
-      applyVocabLangUI();
-      applyDialogueLangUI();
-      if(typeof sbApplyLangUI === 'function') sbApplyLangUI();
-      if(typeof renderLernpfad === 'function') renderLernpfad();
+      if(added){
+        syncLangsToVisible();
+        applyVocabLangUI();
+        applyDialogueLangUI();
+        if(typeof sbApplyLangUI === 'function') sbApplyLangUI();
+        if(typeof renderLernpfad === 'function') renderLernpfad();
+      }
+      renderLearnLangSettings();
     }catch(e){ console.warn('[MovaCourse] оновлення після зміни мови:', e); }
+    // Мова інтерфейсу могла збігтися з вивчуваною у курсі з двома мовами — тоді питаємо мову перекладу.
+    ensureCourseLangChoices().catch(()=>{});
   }).catch(e=>console.warn('[MovaCourse] не вдалося підвантажити мову', lang, e));
 }
 
@@ -6787,7 +7027,7 @@ const SR_STORAGE_KEY_LEGACY = "mova_smart_review"; // єдиний спільн�
 const SR_STORAGE_PREFIX = "mova_smart_review_";
 function srStorageKey(){
   const courseId = (typeof activeCourse !== 'undefined' && activeCourse?.id) || getSavedCourseId();
-  return SR_STORAGE_PREFIX + courseId;
+  return SR_STORAGE_PREFIX + courseStateId(courseId);   // для альтернативної вивчуваної мови — окремий прогрес
 }
 
 // ── ГЛОБАЛЬНИЙ (курсо-незалежний) СТРІК ──────────────────────────
@@ -7903,7 +8143,7 @@ function skipExamDateOnboarding(){
   // Запам'ятовуємо що пропустили для ЦЬОГО курсу (не питаємо знову для
   // нього), але для іншого курсу онбординг дати іспиту повинен зʼявитись
   // знову — дата іспиту тепер прив'язана до курсу.
-  try{ localStorage.setItem('mova_sr_ob_skipped_'+(activeCourse?.id||getSavedCourseId()),'1'); }catch(e){}
+  try{ localStorage.setItem('mova_sr_ob_skipped_'+courseStateId(activeCourse?.id||getSavedCourseId()),'1'); }catch(e){}
 }
 
 let _srPendingSBCards = null;
@@ -8521,6 +8761,8 @@ async function init(){
   // Відкриваємо Lernpfad за замовчуванням
   showView('lernpfad');
   _tm('showView(\'lernpfad\') завершено — init() повністю готовий');
+  // Курс із двома вивчуваними мовами (PRIMARY_LANG_1): якщо вибір ще не зроблено — питаємо один раз.
+  ensureCourseLangChoices().catch(()=>{});
   // PWA portrait lock — маніфест робить це автоматично для встановленого PWA
   // JS API як додатковий fallback (не працює в Safari, але є CSS @media landscape)
   try{ screen.orientation?.lock?.('portrait').catch(()=>{}); }catch(e){}
@@ -9844,6 +10086,7 @@ function renderCourseList(){
       <span class="course-level-badge">${c.level}</span>
     </button>
   `).join('');
+  try{ renderLearnLangSettings(); }catch(e){}
 }
 
 // ── MATCHING GAME ─────────────────────────────────────────────
@@ -9903,7 +10146,7 @@ function startMatching(){
   const cf  = document.getElementById('vf-cat')?.value || 'all';
   // Використовуємо глобальний VOCAB (завантажений динамічно)
   const vocabAll = typeof VOCAB !== 'undefined' ? VOCAB : [];
-  let pool = vocabAll.filter(v => (cf==='all' || v.cat===cf) && v.term?.[primaryLang()] && v.term?.[uiLang] && (uiLang!==primaryLang() || v.short?.[primaryLang()]));
+  let pool = vocabAll.filter(v => (cf==='all' || v.cat===cf) && v.term?.[primaryLang()] && v.term?.[transLang()] && (transLang()!==primaryLang() || v.short?.[primaryLang()]));
 
   if(pool.length < MATCH_SIZE){
     grid.classList.remove('stagger'); // без цього повідомлення могло лишитись у флекс-режимі з минулого раунду
@@ -9945,7 +10188,7 @@ function startMatching(){
     // Ліворуч завжди targetText() = term[primaryLang()] (що вивчаємо)
     if(terms[i])  grid.appendChild(matchMakeBtn(terms[i].id,  'term',  targetText(terms[i]), primaryLang()));
     // Праворуч — рідна мова або short[primaryLang()] для монолінгвального інтерфейсу
-    if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id, 'short', nativeText(shorts[i]), uiLang===primaryLang() ? primaryLang() : uiLang));
+    if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id, 'short', nativeText(shorts[i]), transLang()));
   }
 
   // Prefetch аудіо всіх 5 DE слів одразу при відкритті
@@ -10288,7 +10531,7 @@ function _amRevealWord(el){
 function _amMakeShortBtn(card){
   const btn = document.createElement('button');
   btn.className = 'match-btn side-short';
-  btn.lang = uiLang === primaryLang() ? primaryLang() : uiLang;
+  btn.lang = transLang();
   btn.dataset.cardId = card.id;
   btn.dataset.side = 'short';
   btn.textContent = nativeText(card);
@@ -10309,7 +10552,7 @@ async function startAudioMatch(){
   const cf = document.getElementById('vf-cat')?.value || 'all';
   const vocabAll = typeof VOCAB !== 'undefined' ? VOCAB : [];
   const pool = vocabAll.filter(function(v){
-    return (cf === 'all' || v.cat === cf) && v.term?.[primaryLang()] && v.term?.[uiLang] && (uiLang !== primaryLang() || v.short?.[primaryLang()]);
+    return (cf === 'all' || v.cat === cf) && v.term?.[primaryLang()] && v.term?.[transLang()] && (transLang() !== primaryLang() || v.short?.[primaryLang()]);
   });
   if(pool.length < MATCH_SIZE){
     msg('⚠️ ' + (pool.length === 0 ? t('match_empty') : pool.length+' — '+t('match_few')+' '+MATCH_SIZE+' '+t('match_needed')));
@@ -11012,7 +11255,7 @@ function _runLessonFlow(lesson, allCards){
   const matchPoolSource = moduleVocabPool.length >= 5 ? moduleVocabPool : validCards;
   const matchPoolSorted = [...matchPoolSource].sort((a,b)=>srPriorityFromState(state,b.id)-srPriorityFromState(state,a.id));
   const matchPool = matchPoolSorted.filter(c =>
-    c.term?.[primaryLang()] && c.term?.[uiLang] && (uiLang!==primaryLang() || c.short?.[primaryLang()])
+    c.term?.[primaryLang()] && c.term?.[transLang()] && (transLang()!==primaryLang() || c.short?.[primaryLang()])
   );
   let matchCards = matchPool.slice(0, Math.min(5, matchPool.length));
 
@@ -12240,7 +12483,7 @@ function debugRenderStoryTopics(){
   if(!container) return;
   var cards = _getAllStoryCards();
   var pl = typeof primaryLang === 'function' ? primaryLang() : 'de';
-  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  var ul = transLang();
   var rowsHtml = cards.length ? cards.map(function(card, i){
     var rawLabel = (typeof _lfBilingualLabel === 'function') ? _lfBilingualLabel(storyCardTopic(card) || {}, pl, ul) : '';
     // Топіки в принципі короткі описові фрази без розмітки, але про
@@ -13235,7 +13478,7 @@ function _storyCustomPlain(html){
 function _storyCustomFillTopicSelect(){
   var sel = document.getElementById('story-custom-topic');
   if(!sel) return;
-  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  var ul = transLang();
   var pl = primaryLang();
   var tasks = (typeof STORY_TASK !== 'undefined' && Array.isArray(STORY_TASK)) ? STORY_TASK : [];
   sel.innerHTML = '';
@@ -13270,7 +13513,7 @@ function _storyCustomShowTaskInfo(){
   var src = sel.value === '' ? null : tasks[+sel.value];
   if(!src){ box.style.display = 'none'; box.innerHTML = ''; return; }
   var pl = primaryLang();
-  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  var ul = transLang();
   function block(title, obj){
     if(!obj) return '';
     var main = obj[pl] || obj.de || '';
@@ -13317,7 +13560,7 @@ function _storyCustomBuildParts(){
   var box = document.getElementById('story-custom-parts');
   if(!box) return;
   var pl = primaryLang();
-  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  var ul = transLang();
   box.innerHTML = '';
   STORY_CUSTOM_GROUPS.forEach(function(g){
     var head = document.createElement('div');
@@ -13349,7 +13592,7 @@ function toggleCustomStoryForm(show){
 
 function saveCustomStoryTopic(){
   var pl = primaryLang();
-  var ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  var ul = transLang();
   var tasks = (typeof STORY_TASK !== 'undefined' && Array.isArray(STORY_TASK)) ? STORY_TASK : [];
   var sel = document.getElementById('story-custom-topic');
   var src = (sel && sel.value !== '') ? tasks[+sel.value] : null;
@@ -14260,6 +14503,8 @@ async function selectOnboardCourse(courseId){ unlockAudioCtx();
   window.mlog?.('onboarding_step', {step:'course', action:'completed', course: courseId});
   if(activeCourse?.id !== courseId){
     try{ await switchCourse(courseId); }catch(e){ console.error('selectOnboardCourse:', e); }
+  } else {
+    try{ await ensureCourseLangChoices(); }catch(e){ console.error('selectOnboardCourse (мова курсу):', e); }
   }
   const cob = document.getElementById('course-onboarding');
   if(cob){
@@ -14268,7 +14513,7 @@ async function selectOnboardCourse(courseId){ unlockAudioCtx();
     setTimeout(()=>{
       cob.style.display='none';
       // Після вибору курсу — показуємо exam date onboarding (якщо не пропускали)
-      if(!localStorage.getItem('mova_sr_ob_skipped_'+(activeCourse?.id||getSavedCourseId())) && !srLoadState().examDate){
+      if(!localStorage.getItem('mova_sr_ob_skipped_'+courseStateId(activeCourse?.id||getSavedCourseId())) && !srLoadState().examDate){
         srApplyExamObI18n();
         const eob = document.getElementById('sr-exam-onboarding');
         if(eob){
@@ -14507,7 +14752,7 @@ function tilesShowCard(){
     // потрапляють.
     const stripTags = s => (s||'').replace(/<[^>]+>/g, '');
     const pLang = primaryLang();
-    const defHint = stripTags(card.def?.[uiLang] || card.def?.[pLang] || '');
+    const defHint = stripTags(card.def?.[transLang()] || card.def?.[pLang] || '');
     const qTextEl = document.getElementById('tiles-q-text');
     qTextEl.className = 'tiles-q-text mc-q-term';
     qTextEl.textContent = defHint;
@@ -14547,10 +14792,10 @@ function tilesShowCard(){
   // - інакше → показуємо term[uiLang] (переклад терміну рідною мовою)
   const pLang = primaryLang();
   let qText;
-  if(uiLang === pLang){
+  if(transLang() === pLang){
     qText = card.short?.[pLang] || card.term?.[pLang] || '';
   } else {
-    qText = card.term?.[uiLang] || card.term?.uk || card.term?.en || card.short?.[pLang] || '';
+    qText = card.term?.[transLang()] || card.term?.uk || card.term?.en || card.short?.[pLang] || '';
   }
   // Use mc-q-term style (gold color) for the question text
   const qTextEl = document.getElementById('tiles-q-text');
@@ -15298,8 +15543,8 @@ function defShowResultModal(isOk, fullSentence){
 
   // Переклад речення мовою інтерфейсу (якщо відрізняється від мови курсу)
   let translationHtml = '';
-  if(uiLang && uiLang !== lang && defState.current?.def?.[uiLang]){
-    const tr = defState.current.def[uiLang]
+  if(transLang() && transLang() !== lang && defState.current?.def?.[transLang()]){
+    const tr = defState.current.def[transLang()]
       .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
       .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
     translationHtml = `<div class="tiles-result-translation">${tr}</div>`;
@@ -15458,7 +15703,7 @@ function dtShowCard(){
   // Підказка: переклад речення мовою інтерфейсу (без виділення слів — це
   // і є підказка, як пояснення в def-fill)
   const hintEl = document.getElementById('dt-hint');
-  const ul = typeof uiLang !== 'undefined' ? uiLang : 'uk';
+  const ul = transLang();
   hintEl.textContent = (ul !== lang && card.def?.[ul])
     ? _dtDecode(card.def[ul].replace(/<[^>]+>/g, '')).trim() : '';
 
@@ -15525,8 +15770,8 @@ function dtShowResultModal(isOk, given, oks){
     .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
     .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
   let translationHtml = '';
-  if(uiLang && uiLang !== lang && dtState.current?.def?.[uiLang]){
-    const tr = dtState.current.def[uiLang]
+  if(transLang() && transLang() !== lang && dtState.current?.def?.[transLang()]){
+    const tr = dtState.current.def[transLang()]
       .replace(/<b>(.*?)<\/b>/gi, '<strong style="color:var(--gold)">$1</strong>')
       .replace(/<(?!strong|\/strong)[^>]+>/gi, '');
     translationHtml = `<div class="tiles-result-translation">${tr}</div>`;
@@ -15965,7 +16210,7 @@ function _spText(card){
   return _spField() === 'def' ? _spCleanDef(raw) : raw;
 }
 function _spTranslText(card){
-  var f = _spField(), o = card && card[f], ul = (typeof uiLang !== 'undefined' && uiLang) || 'uk';
+  var f = _spField(), o = card && card[f], ul = transLang() || 'uk';
   var r = (o && (o[ul] || o.uk)) || '';
   return f === 'def' ? _spCleanDef(r) : r;
 }
@@ -17955,7 +18200,7 @@ function lfStartMatching(poolOverride){
           ? _lfMakeEqBtn(terms[i], amState.data[terms[i].id])
           : matchMakeBtn(terms[i].id,'term', targetText(terms[i]), primaryLang()));
       }
-      if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id,'short',nativeText(shorts[i]), uiLang===primaryLang() ? primaryLang() : uiLang));
+      if(shorts[i]) grid.appendChild(matchMakeBtn(shorts[i].id,'short',nativeText(shorts[i]), transLang()));
     }
     // Prefetch аудіо всіх DE слів одразу при відкритті
     if(!audio) matchPrefetchAudio(chosen);
@@ -18056,7 +18301,7 @@ var _lfSBHandlers = {
   render: function(unit){
     var card = unit.card;
     var pl = primaryLang();
-    var ul = uiLang;
+    var ul = transLang();
     var cat = (typeof SB_CATS!=='undefined' ? SB_CATS : []).find(function(c){ return c.id===card.cat; });
     var fav = isFavorite(card.id);
 
@@ -18452,7 +18697,7 @@ var _lfDlgHandlers = {
   render: function(unit){
     var card = unit.card;
     var pl = primaryLang();
-    var ul = uiLang;
+    var ul = transLang();
     var cat = CATS.find(function(c){ return c.id === card.cat; });
     var fav = isFavorite(card.id);
 
@@ -18752,7 +18997,7 @@ var _lfFrmHandlers = {
   render: function(unit){
     var card = unit.card;
     var pl = primaryLang();
-    var ul = uiLang;
+    var ul = transLang();
     var fav = isFavorite(card.id);
 
     // ★-закладка — на весь допис (card.id), той самий id для всіх його
@@ -19078,7 +19323,7 @@ var _lfStoryHandlers = {
   render: function(unit){
     var card = unit.card;
     var pl = primaryLang();
-    var ul = uiLang;
+    var ul = transLang();
     var fav = isFavorite(card.id);
 
     // ★-закладка — на всю розповідь (card.id), той самий принцип, що forum.
@@ -19416,7 +19661,7 @@ function _emlCardsToUnits(cards){
 // контенту листа, який власне й читають, на відміну від eyebrow-мітки
 // вище — вона суто орієнтаційна, тому лишається мовою інтерфейсу).
 function _lfEmlRenderMailOrPart(body, unit){
-  var card = unit.card, pl = primaryLang(), ul = uiLang;
+  var card = unit.card, pl = primaryLang(), ul = transLang();
   var text, textTr, audioField, eyebrowIcon, eyebrowLabel, mailHeader = null;
 
   if(unit.kind === 'eml_boss'){
@@ -19490,7 +19735,7 @@ function _lfEmlRenderMailOrPart(body, unit){
 // картку), уже наявну бульбашку НЕ дублюємо, лише виходимо — стан
 // вибору (клас .eml-q-disabled/.eml-q-correct) і так уже в DOM.
 function _lfEmlRenderQuestion(body, unit){
-  var pl = primaryLang(), ul = uiLang;
+  var pl = primaryLang(), ul = transLang();
   var bubbleId = 'eml-q-'+unit.cardId+'-'+unit.qIndex;
   if(document.getElementById(bubbleId)) return;
 
@@ -19794,7 +20039,7 @@ function grammarTitleParts(rule){
   var t = rule.title || {};
   var pl = primaryLang();
   var main = t[pl] || t.en || t.de || rule.id;
-  var sub = (uiLang !== pl) ? (t[uiLang] || '') : '';
+  var sub = (transLang() !== pl) ? (t[transLang()] || '') : '';
   return { main: main, sub: sub };
 }
 
@@ -20790,7 +21035,7 @@ var _lfVocabHandlers = {
   render: function(unit){
     var card = unit.card;
     var pl = primaryLang();
-    var ul = uiLang;
+    var ul = transLang();
     var cat = CATS.find(function(c){ return c.id === card.cat; });
     var fav = isFavorite(card.id);
 
@@ -20931,7 +21176,7 @@ var _lfVocabHandlers = {
   getMultiLangAudioText: function(unit){
     var card = unit.card;
     var pl = primaryLang();
-    var ul = uiLang;
+    var ul = transLang();
     var langOrder = [pl];
     if(ul !== pl) langOrder.push(ul);
     ['de','en','uk','ru'].forEach(function(l){ if(langOrder.indexOf(l)===-1) langOrder.push(l); });
@@ -22721,7 +22966,7 @@ function _lfShowStoryFinishButtons(){
   // дощенту ДО виклику onAllDone — усередині _storyFinishWithCelebration
   // цих даних уже не буде.
   var curUnit = _lfUnit.units[_lfUnit.idx];
-  var topicLabel = curUnit ? (_lfBilingualLabel(storyCardTopic(curUnit.card) || {}, primaryLang(), uiLang) || '') : '';
+  var topicLabel = curUnit ? (_lfBilingualLabel(storyCardTopic(curUnit.card) || {}, primaryLang(), transLang()) || '') : '';
 
   // Квадратна кнопка-піктограма (той самий .lf-repeat-btn, що й кнопка
   // граматики) — підпис лишається лише в title/aria-label.
@@ -22794,7 +23039,7 @@ function _storyEnterLessonChrome(topicIndex){
   bar.classList.add('active');
 
   var card = _getAllStoryCards()[topicIndex];
-  var label = card ? (_lfBilingualLabel(storyCardTopic(card) || {}, primaryLang(), uiLang) || '') : '';
+  var label = card ? (_lfBilingualLabel(storyCardTopic(card) || {}, primaryLang(), transLang()) || '') : '';
   label = String(label).replace(/<[^>]*>/g,'');
   var titleEl = document.getElementById('lf-title');
   if(titleEl){
@@ -24364,7 +24609,7 @@ function sbShowFeedbackModal(ok, title, expl, onNext, card, labelOverride) {
     // захований під bottom-sheet і користувачу не видний).
     rows.push('<div class="lf-unit-main-row"><div class="lf-unit-sentence" id="sb-modal-sentence-de">'+deFilled+'</div></div>');
     // Якщо мова інтерфейсу відрізняється від мови курсу — додаємо переклад
-    var ifLang = typeof uiLang !== 'undefined' ? uiLang : pLang;
+    var ifLang = transLang() || pLang;
     if(ifLang !== pLang){
       if(card._isGram && card._srcId && typeof VOCAB !== 'undefined'){
         // Grammatik-Trainer: card.sentence має ОДНАКОВИЙ (німецький) текст
