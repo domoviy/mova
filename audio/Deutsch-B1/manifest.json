@@ -11005,10 +11005,10 @@
   "Deutsch-B1/ru/100/k1/k1_020_def_ru_100": "36b7c1e14f",
   "Deutsch-B1/ru/100/k1/k1_021_term_ru_100": "4081669a6a",
   "Deutsch-B1/ru/100/k1/k1_021_short_ru_100": "3ca6204600",
-  "Deutsch-B1/ru/100/k1/k1_021_def_ru_100": "a5b8e8c584",
+  "Deutsch-B1/ru/100/k1/k1_021_def_ru_100": "b90bec9172",
   "Deutsch-B1/ru/100/k1/k1_022_term_ru_100": "9f25e6e287",
   "Deutsch-B1/ru/100/k1/k1_022_short_ru_100": "d29cd43204",
-  "Deutsch-B1/ru/100/k1/k1_022_def_ru_100": "fd1ec020e6",
+  "Deutsch-B1/ru/100/k1/k1_022_def_ru_100": "374985a529",
   "Deutsch-B1/ru/100/k1/k1_023_term_ru_100": "abe0c33ae8",
   "Deutsch-B1/ru/100/k1/k1_023_short_ru_100": "995f8bf7e0",
   "Deutsch-B1/ru/100/k1/k1_023_def_ru_100": "4e43ff027f",
@@ -26382,5 +26382,8 @@
   "Deutsch-B1/uk/100/k16/k16_110_def_uk_100": "86d202735f",
   "Deutsch-B1/uk/100/k16/k16_111_term_uk_100": "ef184d68b7",
   "Deutsch-B1/uk/100/k16/k16_111_short_uk_100": "e693367aba",
-  "Deutsch-B1/uk/100/k16/k16_111_def_uk_100": "ad7b412a00"
+  "Deutsch-B1/uk/100/k16/k16_111_def_uk_100": "ad7b412a00",
+  "Deutsch-B1/ru/100/k1/k1_061_term_ru_100": "ebb97e2a6d",
+  "Deutsch-B1/ru/100/k1/k1_061_short_ru_100": "2e13c6b2ad",
+  "Deutsch-B1/ru/100/k1/k1_061_def_ru_100": "b94a899b1b"
 }
