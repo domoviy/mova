@@ -97,12 +97,16 @@ jobs:
     runs-on: ubuntu-latest
     # Запускаємо, якщо це ручний запуск (завжди) АБО деплой (бамп версії)
     # завершився успішно І в задеплоєному коміті справді змінився хоч один
-    # файл бази/characters.js (див. check-db-changes вище). always() —
-    # бо check-db-changes навмисно пропускається (skip) для
-    # workflow_dispatch, а без always() дефолтна поведінка GitHub Actions
-    # так само пропустила б і generate, побачивши "потрібний job не success".
+    # файл бази/characters.js (див. check-db-changes вище). Статусна функція
+    # потрібна, бо check-db-changes навмисно пропускається (skip) для
+    # workflow_dispatch, а без неї дефолтна поведінка GitHub Actions так
+    # само пропустила б і generate, побачивши "потрібний job не success".
+    # ⚠️ Саме !cancelled(), а НЕ always(): always() спрацьовує ЩЕ Й ПРИ
+    # скасуванні запуску — тому кнопка "Cancel workflow" не зупиняла цей
+    # job (він "ігнорував" скасування й продовжував генерацію). !cancelled()
+    # дає ту саму поведінку для skip-у check-db-changes, але поважає Cancel.
     if: >-
-      always() &&
+      !cancelled() &&
       (github.event_name == 'workflow_dispatch' ||
        (github.event.workflow_run.conclusion == 'success' &&
         needs.check-db-changes.outputs.changed == 'true'))
@@ -193,6 +197,25 @@ jobs:
              || github.event.inputs.run_free == 'true' && '25'
              || '5' }}
         run: python gen_audio.py
+
+      # ЗБЕРЕЖЕННЯ ПІСЛЯ СКАСУВАННЯ: при натисканні "Cancel workflow" скрипт
+      # (gen_audio.py) за секунди завершується з кодом 130, нічого не комітячи
+      # (часу до примусового вбивства процесу замало, а обірваний git лишив би
+      # .git/index.lock). Усе вже згенероване (mp3 + шарди манифесту, записані
+      # атомарно) лежить на диску — цей крок, що виконується ПІСЛЯ скасування
+      # (до 5 хв від GitHub), комітить його, щоб прогрес не пропав.
+      - name: Save progress after cancel
+        if: cancelled()
+        run: |
+          rm -f .git/index.lock
+          git add audio/
+          if git diff --staged --quiet; then
+            echo "Нічого зберігати — усе вже в репозиторії."
+          else
+            CARD_COUNT=$(git diff --staged --name-only | grep '\.mp3$' | wc -l | tr -d ' ')
+            git commit -m "🎙 Generate TTS audio (saved after cancel): ${CARD_COUNT} files [skip ci]"
+            git push || (git pull --rebase && git push)
+          fi
 
       # ФІНАЛЬНИЙ КОМІТ: Дозаписує залишки файлів, які не ввійшли в останню пачку
       - name: Final Commit and push
