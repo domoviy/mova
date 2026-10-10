@@ -229,6 +229,7 @@ if(location.protocol === 'https:'){
     // на вже мігрованих даних).
     const CLOUD_BACKUP_EXCLUDE = [
       'mova_uid', 'mova_audio_hash_registry', 'mova_word_timing_cache',
+      'mova_dt_native_umlauts',   // чи набирає користувач умлаути власною клавіатурою — залежить від пристрою
     ];
     const CLOUD_BACKUP_EXCLUDE_PREFIX = [
       'mova_ef_repair_v', 'mova_streak_migrated_v', 'mova_progress_schema_v', 'mova_sr_ob_skipped_',
@@ -4689,6 +4690,13 @@ body{
       </label>
     </div>
     <div class="srow">
+      <div class="srow-label"><label data-i18n="lbl_dtchars">Sonderzeichen unter dem Feld</label><small data-i18n="sub_dtchars">ä ö ü ß in der Tipp-Übung</small></div>
+      <div style="display:flex;gap:6px;flex-shrink:0">
+        <button class="btn ui-lang-btn ssec-btn" id="dtchars-btn-auto" onclick="setDtCharsMode('auto')" data-i18n="opt_auto">Auto</button>
+        <button class="btn ui-lang-btn ssec-btn" id="dtchars-btn-always" onclick="setDtCharsMode('always')" data-i18n="opt_always">Immer</button>
+      </div>
+    </div>
+    <div class="srow">
       <div class="srow-label"><label>Error Log</label><small>Переглянути помилки аудіо та JS</small></div>
       <button class="btn btn-s" style="white-space:nowrap" onclick="showErrorLog()"><i data-mi="clipboard" class="mi-inline"></i>Log</button>
     </div>
@@ -4819,11 +4827,16 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '801-8fbb9f8';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
 // Список доступних курсів. Додавати нові — тільки тут.
+//
+// Назва, підпис і (за потреби) мітка рівня курсу — НЕ тут, а в словнику інтерфейсу I18N, щоб
+// змінюватись разом із мовою інтерфейсу: ключі course_<id із «_» замість «-»>_title / _desc /
+// _level (напр. course_Deutsch_A1_title). Мітка рівня береться зі словника лише якщо ключ є,
+// інакше показується `level` як є (A1, B2 …). Див. courseTitle()/courseDesc()/courseLevelLabel().
 //
 // `id` — єдине джерело істини для курсу: файл бази завантажується як
 // `${id}.js`, папка з аудіо — audio/<id>/..., ключі в audio/<id>/manifest.json
@@ -4834,61 +4847,60 @@ const BUILD_ID = '1779690311'; // змінюється при кожному д�
 const COURSES = [
   {
     id:       'Deutsch-A1',
-    title:    'Deutsch A1',
     emoji:    '🌱',
     icon:     'sprout',
     level:    'A1',
     langs:    ['de','uk','en'],
-    desc:     { de:'Deutsch für Anfänger', uk:'Німецька для початківців', en:'German for beginners' },
   },
   {
     id:       'Deutsch-A2',
-    title:    'Deutsch A2',
     emoji:    '🏠',
     icon:     'home',
     level:    'A2',
     langs:    ['de','uk','en'],
-    desc:     { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
   },
   {
     id:       'Deutsch-B1',
-    title:    'Deutsch B1',
     emoji:    '💬',
     icon:     'bubble',
     level:    'B1',
     langs:    ['de','uk','en'],
-    desc:     { de:'Deutsch für Fortgeschrittene', uk:'Німецька для середнього рівня', en:'German for intermediate learners' },
   },
   {
     id:       'Deutsch-B2-Beruf',
-    title:    'Deutsch B2 Beruf',
     emoji:    '💼',
     icon:     'briefcase',
     level:    'B2',
     langs:    ['de','uk','en'],
-    desc:     { de:'Deutsch für den Beruf', uk:'Німецька для роботи', en:'German for Work' },
   },
   {
     id:       'Financial-Accounting-Foundations',
-    title:    'Financial Accounting: Foundations',
     emoji:    '💰',
     icon:     'chart',
     level:    'Foundations',
     langs:    ['de','en','uk','ru'],   // PRIMARY_LANG=de, PRIMARY_LANG_1=en (див. Financial-Accounting-Foundations.js)
-    desc:     { de:'Grundlagen der Finanzbuchhaltung', uk:'Основи фінансового обліку', en:'Financial accounting fundamentals' },
   },
   // Приклад як додати новий курс:
   // {
   //   id:    'A2-Alltag',
-  //   title: 'A2 Alltag',
   //   emoji: '🏠',
   //   level: 'A2',
   //   langs: ['de','uk','en'],
-  //   desc:  { de:'Deutsch für den Alltag', uk:'Побутова німецька', en:'Everyday German' },
+  //   // + у I18N (усі 4 мови): course_A2_Alltag_title, course_A2_Alltag_desc
   // },
 ];
 
 let activeCourse = null;  // поточний курс (об'єкт з COURSES)
+
+// Підписи курсу беруться зі словника інтерфейсу за мовою інтерфейсу (з фолбеком en → de → fallback).
+function _courseKey(c){ return String((c && c.id) || c || '').replace(/[^A-Za-z0-9]+/g, '_'); }
+function _courseText(c, part, fallback){
+  const key = 'course_' + _courseKey(c) + '_' + part;
+  return (I18N[uiLang] && I18N[uiLang][key]) || (I18N.en && I18N.en[key]) || (I18N.de && I18N.de[key]) || fallback || '';
+}
+function courseTitle(c){ return _courseText(c, 'title', c && c.id); }
+function courseDesc(c){ return _courseText(c, 'desc', ''); }
+function courseLevelLabel(c){ return _courseText(c, 'level', c && c.level); }
 
 function getSavedCourseId(){
   const saved = localStorage.getItem('mova_course');
@@ -5234,8 +5246,11 @@ function _lpEligibleForumIds(frmCardIds){
 // (4–20 слів), тож у курсах без def вузла просто нема. Вузол стає «поточним» одразу
 // після уроку, за яким іде, і розблоковує наступний урок лише після проходження або
 // пропуску («Не можу говорити зараз» → speechNodeMarkSkipped).
-// Частота — кожен LP_SPEECH_DEF_EVERY-й звичайний урок (5–7 — розумний діапазон).
-var LP_SPEECH_DEF_EVERY = 6;
+// Частота — кожен LP_SPEECH_DEF_EVERY-й звичайний урок (наскрізно по курсу). Було 6; поставлено 4:
+// багато користувачів майже не говорять уголос, тож мовлення — найслабша навичка, і її варто
+// тренувати частіше. Вузол можна пропустити («Не можу говорити зараз»), тож це не блокує тих,
+// кому зараз незручно.
+var LP_SPEECH_DEF_EVERY = 4;
 var LP_SPEECH_DEF_MIN   = 3;
 function _lpSpeechDefEligibleIds(cardIds){
   if(typeof VOCAB === 'undefined' || !Array.isArray(VOCAB) || !cardIds || !cardIds.length) return [];
@@ -5290,21 +5305,21 @@ function speechNodeMarkSkipped(id){
     localStorage.setItem(k, JSON.stringify(m));
   }catch(e){}
 }
-// Одноразова міграція (на курс): до появи блокування користувачі проходили уроки повз вузол
-// «Вимова: довгі фрази». Щоб їхні вже пройдені уроки не стали раптом «заблокованими», вузли,
-// після яких наступний урок уже пройдено (≥80%), позначаємо як пропущені. Новий користувач
-// (нічого не пройдено) нічого не отримує — просто ставиться прапорець.
+// Вузол мовлення блокує наступний урок, доки його не пройдено чи не пропущено. Але набір таких
+// вузлів на стежці може змінитися (змінили частоту LP_SPEECH_DEF_EVERY, додали картки з def у
+// модуль) — тоді новий вузол опиняється ПЕРЕД уроком, який користувач уже пройшов, і закрив би його.
+// Тому при КОЖНІЙ побудові шляху (дешево) вузол, після якого наступний урок уже пройдено, тихо
+// позначається пропущеним: вже пройдене лишається відкритим. Вузол, за яким уроки ще не пройдено,
+// чіпати не можна — це і є нове мовлення, яке користувач має побачити. Новий користувач нічого
+// не втрачає: наступний урок не може бути пройдений, доки вузол мовлення не пройдено.
 function _lpSpeechGateMigrate(lessons){
   try{
-    var fk = _speechDoneKey() + '_gate1';
-    if(localStorage.getItem(fk)) return;
     for(var i = 0; i < lessons.length - 1; i++){
       var l = lessons[i];
       if(l.type !== 'speech' || speechNodeDone(l.id)) continue;
       var nx = lessons[i+1];
-      if(nx && nx.type !== 'speech' && lessonProgress(nx).pct >= 80) speechNodeMarkSkipped(l.id);
+      if(nx && nx.type !== 'speech' && lessonDone(nx)) speechNodeMarkSkipped(l.id);
     }
-    localStorage.setItem(fk, '1');
   }catch(e){}
 }
 // Вузол ще чекає на проходження? Для звичайних уроків — прогрес <80%, для вузла «Вимова: довгі
@@ -5826,6 +5841,7 @@ function loadCourseScript(courseId){
           const regularEntries  = LESSONS.filter(l=>l.chapterType!=='examprep');
           LESSONS = buildLearningPath(regularEntries, course.level).concat(examPrepEntries);
       _lpPathReady = true;
+      _lpSpeechGateMigrate(LESSONS);   // вузли мовлення, що опинились перед уже пройденими уроками
         }
       }catch(e){ console.error('[path] buildLearningPath failed:', e); }
       // Smart Review: додаємо examPart до карток якщо ще не є
@@ -5858,7 +5874,7 @@ function csShowModal(state, course){
   const icon  = document.getElementById('cs-modal-icon');
   const title = document.getElementById('cs-modal-title');
   if(!modal || !icon || !title) return;
-  const name = course?.title || '';
+  const name = course ? courseTitle(course) : '';
   icon.classList.remove('spin','pop');
   if(state === 'loading'){
     icon.innerHTML = (course && course.icon) ? movaIcon(course.icon) : (course?.emoji || movaIcon('book'));
@@ -5934,7 +5950,7 @@ async function switchCourse(courseId, opts){
     // наступного відкриття Settings/Dashboard. Оновлюємо одразу.
     try{ srUpdateHeaderChip(); }catch(e){}
     try{ renderTempoRow(); }catch(e){}
-    notify((activeCourse?.emoji||'📚')+' '+activeCourse?.title);
+    notify((activeCourse?.emoji||'📚')+' '+(activeCourse ? courseTitle(activeCourse) : ''));
     csShowModal('done', activeCourse);
     setTimeout(csHideModal, 1400);
     // Після зміни курсу — одразу в лінію уроків нового курсу (а не
@@ -6189,6 +6205,14 @@ const I18N = {
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
+    lbl_dtchars:'Sonderzeichen unter dem Feld', sub_dtchars:'Zeile mit ä ö ü ß in der Tipp-Übung. „Auto“ blendet sie aus, sobald du Umlaute selbst tippst', opt_auto:'Auto', opt_always:'Immer',
+    // Назви й підписи курсів (див. COURSES / courseTitle)
+    course_Deutsch_A1_title:'Deutsch A1', course_Deutsch_A1_desc:'Deutsch für Anfänger',
+    course_Deutsch_A2_title:'Deutsch A2', course_Deutsch_A2_desc:'Deutsch für den Alltag',
+    course_Deutsch_B1_title:'Deutsch B1', course_Deutsch_B1_desc:'Deutsch für Fortgeschrittene',
+    course_Deutsch_B2_Beruf_title:'Deutsch B2 Beruf', course_Deutsch_B2_Beruf_desc:'Deutsch für den Beruf',
+    course_Financial_Accounting_Foundations_title:'Finanzbuchhaltung', course_Financial_Accounting_Foundations_desc:'Grundlagen der Finanzbuchhaltung',
+    course_Financial_Accounting_Foundations_level:'Grundlagen',
     nav_lernpfad:'Learning', 
     lp_locked:'Locked', lp_done:'Done', 
     lp_cards:'cards', lp_of:'of',
@@ -6341,6 +6365,14 @@ const I18N = {
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
+    lbl_dtchars:'Спецсимволи під полем', sub_dtchars:'Рядок із ä ö ü ß у вправі на письмо. «Авто» ховає його, коли ви самі набираєте умлаути', opt_auto:'Авто', opt_always:'Завжди',
+    // Назви й підписи курсів (див. COURSES / courseTitle)
+    course_Deutsch_A1_title:'Німецька A1', course_Deutsch_A1_desc:'Німецька для початківців',
+    course_Deutsch_A2_title:'Німецька A2', course_Deutsch_A2_desc:'Побутова німецька',
+    course_Deutsch_B1_title:'Німецька B1', course_Deutsch_B1_desc:'Німецька для середнього рівня',
+    course_Deutsch_B2_Beruf_title:'Німецька B2 Beruf', course_Deutsch_B2_Beruf_desc:'Німецька для роботи',
+    course_Financial_Accounting_Foundations_title:'Фінансовий облік', course_Financial_Accounting_Foundations_desc:'Основи фінансового обліку',
+    course_Financial_Accounting_Foundations_level:'Основи',
     nav_lernpfad:'Навчання', 
     lp_locked:'Замкнено', lp_done:'Готово', 
     lp_cards:'карток', lp_of:'з',
@@ -6488,6 +6520,14 @@ const I18N = {
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
+    lbl_dtchars:'Special characters row', sub_dtchars:'Row with ä ö ü ß in the typing exercise. “Auto” hides it once you type umlauts yourself', opt_auto:'Auto', opt_always:'Always',
+    // Назви й підписи курсів (див. COURSES / courseTitle)
+    course_Deutsch_A1_title:'German A1', course_Deutsch_A1_desc:'German for beginners',
+    course_Deutsch_A2_title:'German A2', course_Deutsch_A2_desc:'Everyday German',
+    course_Deutsch_B1_title:'German B1', course_Deutsch_B1_desc:'German for intermediate learners',
+    course_Deutsch_B2_Beruf_title:'German B2 Beruf', course_Deutsch_B2_Beruf_desc:'German for work',
+    course_Financial_Accounting_Foundations_title:'Financial Accounting', course_Financial_Accounting_Foundations_desc:'Financial accounting fundamentals',
+    course_Financial_Accounting_Foundations_level:'Foundations',
     nav_lernpfad:'Learning', 
     lp_locked:'Locked', lp_done:'Done', 
     lp_cards:'cards', lp_of:'of',
@@ -6636,6 +6676,14 @@ const I18N = {
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
+    lbl_dtchars:'Спецсимволы под полем', sub_dtchars:'Строка с ä ö ü ß в упражнении на письмо. «Авто» скрывает её, когда вы сами набираете умлауты', opt_auto:'Авто', opt_always:'Всегда',
+    // Назви й підписи курсів (див. COURSES / courseTitle)
+    course_Deutsch_A1_title:'Немецкий A1', course_Deutsch_A1_desc:'Немецкий для начинающих',
+    course_Deutsch_A2_title:'Немецкий A2', course_Deutsch_A2_desc:'Бытовой немецкий',
+    course_Deutsch_B1_title:'Немецкий B1', course_Deutsch_B1_desc:'Немецкий для среднего уровня',
+    course_Deutsch_B2_Beruf_title:'Немецкий B2 Beruf', course_Deutsch_B2_Beruf_desc:'Немецкий для работы',
+    course_Financial_Accounting_Foundations_title:'Финансовый учёт', course_Financial_Accounting_Foundations_desc:'Основы финансового учёта',
+    course_Financial_Accounting_Foundations_level:'Основы',
     nav_lernpfad:'Обучение', 
     lp_locked:'Закрыто', lp_done:'Готово', 
     lp_cards:'карточек', lp_of:'из',
@@ -6799,6 +6847,7 @@ function setUiLang(lang){
   applyVocabLangUI();
   applyDialogueLangUI();
   if(typeof sbApplyLangUI === 'function') sbApplyLangUI();
+  try{ renderCourseList(); }catch(e){}   // назви й підписи курсів залежать від мови інтерфейсу
   try{ renderLearnLangSettings(); }catch(e){}
   // Розбита база: переклади нової мови підвантажуються окремо — після цього оновлюємо вигляд.
   MovaCourse.ensureLangs().then(added=>{
@@ -10137,10 +10186,10 @@ function renderCourseList(){
                    text-align:left;transition:all .2s;width:100%">
       <span class="course-emoji">${c.icon ? movaIcon(c.icon) : c.emoji}</span>
       <span style="flex:1">
-        <span class="course-title">${c.title}</span>
-        <span class="course-desc">${c.desc[uiLang]||c.desc.en||c.desc.de}</span>
+        <span class="course-title">${courseTitle(c)}</span>
+        <span class="course-desc">${courseDesc(c)}</span>
       </span>
-      <span class="course-level-badge">${c.level}</span>
+      <span class="course-level-badge">${courseLevelLabel(c)}</span>
     </button>
   `).join('');
   try{ renderLearnLangSettings(); }catch(e){}
@@ -14544,8 +14593,8 @@ function renderCourseOnboardingCards(){
     <div class="ob-card" onclick="selectOnboardCourse('${c.id}')">
       <div class="ob-card-flag">${c.icon ? movaIcon(c.icon) : c.emoji}</div>
       <div class="ob-card-text">
-        <div class="ob-card-lang">${c.title}</div>
-        <div class="ob-card-desc">${c.desc[uiLang]||c.desc.en||c.desc.de}</div>
+        <div class="ob-card-lang">${courseTitle(c)}</div>
+        <div class="ob-card-desc">${courseDesc(c)}</div>
       </div>
       <div class="ob-card-arrow">›</div>
     </div>
@@ -15677,11 +15726,57 @@ function startDefType(){
   dtShowCard();
 }
 
+// ── Рядок спецсимволів (ä ö ü ß) під полем вводу ─────────────────────────────
+// Браузер не дає дізнатись, чи встановлена в користувача німецька клавіатура (на телефоні —
+// ніяк, а getLayoutMap() є лише в Chromium на комп'ютері й описує фізичну розкладку). Тому
+// рядок показується за замовчуванням, а ховається, коли користувач САМ набрав умлаути в полі
+// (подія input із ä/ö/ü/ß, не наші кнопки й не вставка) DT_NATIVE_THRESHOLD разів — тобто
+// довів, що вміє їх набирати. Лічильник — на пристрої (mova_dt_native_umlauts не йде в хмарний
+// бекап: клавіатура на іншому пристрої може бути іншою). Режим «Завжди» у налаштуваннях
+// (технічна група) вимикає автоприховування; вибір «Авто» скидає лічильник.
+const DT_CHARS_MODE_KEY  = 'mova_dt_chars_mode';       // 'auto' (за замовчуванням) | 'always'
+const DT_NATIVE_KEY      = 'mova_dt_native_umlauts';   // скільки умлаутів набрано власною клавіатурою
+const DT_NATIVE_THRESHOLD = 3;
+function dtCharsMode(){
+  try{ return localStorage.getItem(DT_CHARS_MODE_KEY) === 'always' ? 'always' : 'auto'; }catch(e){ return 'auto'; }
+}
+function dtNativeCount(){
+  try{ return parseInt(localStorage.getItem(DT_NATIVE_KEY) || '0', 10) || 0; }catch(e){ return 0; }
+}
+function dtCharsHidden(){ return dtCharsMode() === 'auto' && dtNativeCount() >= DT_NATIVE_THRESHOLD; }
+function setDtCharsMode(mode){
+  try{
+    localStorage.setItem(DT_CHARS_MODE_KEY, mode === 'always' ? 'always' : 'auto');
+    if(mode !== 'always') localStorage.setItem(DT_NATIVE_KEY, '0');   // «Авто» — вчимось спочатку
+  }catch(e){}
+  renderDtCharsSetting();
+  try{ _dtRenderChars(); }catch(e){}
+}
+function renderDtCharsSetting(){
+  const m = dtCharsMode();
+  const a = document.getElementById('dtchars-btn-auto'), b = document.getElementById('dtchars-btn-always');
+  if(a) a.classList.toggle('active', m === 'auto');
+  if(b) b.classList.toggle('active', m === 'always');
+}
+// Рахує умлаути, набрані самим користувачем. Ховається рядок з наступної картки (не посеред набору).
+// Враховуємо лише набір (insertText) і композицію екранної клавіатури Android (insertCompositionText),
+// де data — слово, що набирається ('fü' → 'für'), тому дивимось на ОСТАННІЙ символ: умлаут щойно
+// набрали, а не просто він є в слові. Вставка, перетягування, заміна підказкою — не рахуються.
+function dtNoteNativeUmlaut(e){
+  if(!e || !e.isTrusted || dtCharsMode() !== 'auto') return;
+  if(e.inputType !== 'insertText' && e.inputType !== 'insertCompositionText') return;
+  if(!/[äöüßÄÖÜ]/.test(String(e.data || '').slice(-1))) return;
+  const n = dtNativeCount();
+  if(n >= DT_NATIVE_THRESHOLD) return;
+  try{ localStorage.setItem(DT_NATIVE_KEY, String(n + 1)); }catch(err){}
+}
+
 function _dtRenderChars(){
   const box = document.getElementById('dt-chars');
   if(!box) return;
   box.innerHTML = '';
   if(defGetDisplayLang() !== 'de') return;
+  if(dtCharsHidden()) return;
   ['ä','ö','ü','ß','Ä','Ö','Ü'].forEach(ch => {
     const b = document.createElement('button');
     b.type = 'button';
@@ -15744,6 +15839,7 @@ function dtShowCard(){
       // слово, але й не було замалим; мінімум 4ch.
       inp.style.width = Math.max(4, dtState.answers[i].length + 1) + 'ch';
       inp.addEventListener('input', dtUpdateCheckBtn);
+      inp.addEventListener('input', dtNoteNativeUmlaut);
       inp.addEventListener('keydown', e => {
         if(e.key !== 'Enter') return;
         e.preventDefault();
@@ -23484,6 +23580,7 @@ window.addEventListener('DOMContentLoaded', ()=>{
   checkOnboarding();
   applyI18n();
   renderCourseList();
+  try{ renderDtCharsSetting(); }catch(e){}
   // init() важкий (синхронне завантаження+парсинг файлу бази курсу,
   // потім рендер усього Lernpfad/Vocab/Dialogue UI) — усе це блокує
   // головний потік і "зʼїдає" кадри сплеш-анімації, якщо стартує
