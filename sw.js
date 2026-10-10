@@ -2,6 +2,11 @@
 // CACHE_VERSION оновлюється автоматично GitHub Actions при кожному деплої
 const CACHE_VERSION = '791-018a664';
 const CACHE_NAME = `mova-${CACHE_VERSION}`;
+// Аудіо (mp3) живе в ОКРЕМОМУ кеші без версії. CACHE_NAME змінюється на кожен деплой, а
+// activate нижче видаляє всі старі кеші — тож mp3 у ньому перекачувались би після кожного
+// релізу, хоча самі файли не змінились. Актуальність mp3, як і раніше, перевіряє клієнт за
+// хешем із манифесту (index.html сам видаляє застарілий запис із УСІХ кешів).
+const AUDIO_CACHE = 'mova-audio';
 
 const PRECACHE = [
   '/',
@@ -29,7 +34,7 @@ self.addEventListener('install', event => {
 self.addEventListener('activate', event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))
+      Promise.all(keys.filter(k => k !== CACHE_NAME && k !== AUDIO_CACHE).map(k => caches.delete(k)))
     )
   );
   self.clients.claim();
@@ -53,6 +58,26 @@ self.addEventListener('fetch', event => {
     return;
   }
 
+  // Cache First: дані курсів (data/<курс>/*.json?v=…) та версійні скрипти (<курс>.js?v=…,
+  // characters.js?v=…). Адреса містить версію застосунку, тож вміст за нею незмінний: нова версія
+  // = інша адреса. Раніше такі запити потрапляли в "Stale While Revalidate" внизу, який ЩОРАЗУ
+  // перекачував файл у фоні навіть коли він уже в кеші — для бази курсу це кілька МБ на запуск.
+  if (url.pathname.startsWith('/data/') ||
+      (url.pathname.endsWith('.js') && url.searchParams.has('v'))) {
+    event.respondWith(
+      caches.match(event.request).then(cached =>
+        cached || fetch(event.request).then(res => {
+          if (res.ok) {
+            const clone = res.clone();
+            caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
+          }
+          return res;
+        })
+      )
+    );
+    return;
+  }
+
   // Network First: index.html — завжди свіжий якщо є мережа
   if (url.pathname === '/' || url.pathname.endsWith('index.html')) {
     event.respondWith(
@@ -67,17 +92,24 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Network First: audio/manifest.json — джерело правди для хешів аудіо.
+  // Network First: манифест аудіо — джерело правди для хешів аудіо. Тепер він по шардах:
+  //   /audio/<курс>/index.json                      — які шарди існують
+  //   /audio/<курс>/<мова>/<швидкість>/manifest.json — хеші однієї мови й швидкості
+  // (+ старий монолітний /audio/<курс>/manifest.json для перехідного періоду).
   // Застаріла відповідь тут означає неправильне рішення "кеш чи мережа"
   // для самих mp3-файлів, тому, на відміну від звичайних ресурсів,
   // ми НЕ показуємо стару версію поки паралельно йде оновлення —
   // чекаємо мережу і лише при її відсутності падаємо в кеш (офлайн).
-  if (/\/audio\/[^/]+\/manifest\.json$/.test(url.pathname)) {
+  if (/\/audio\/[^/]+\/(?:index\.json|manifest\.json|[^/]+\/[^/]+\/manifest\.json)$/.test(url.pathname)) {
     event.respondWith(
       fetch(event.request)
         .then(res => {
-          const clone = res.clone();
-          caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
+          // Помилкові відповіді (напр. 404 для index.json до міграції) не кешуємо — інакше
+          // вони могли б "прилипнути" й віддаватись офлайн замість справжнього файлу.
+          if (res.ok) {
+            const clone = res.clone();
+            caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
+          }
           return res;
         })
         .catch(() => caches.match(event.request))
@@ -96,7 +128,7 @@ self.addEventListener('fetch', event => {
         cached || fetch(event.request).then(res => {
           if (res.ok) {
             const clone = res.clone();
-            caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
+            caches.open(AUDIO_CACHE).then(c => c.put(event.request, clone));
           }
           return res;
         })

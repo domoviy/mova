@@ -4819,7 +4819,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '793-b7b4c3e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8907,9 +8907,10 @@ function urlToAudioMkey(url){
 // запиту). Якщо маніфест ще не завантажився — не блокуємо UI (true),
 // той самий консервативний підхід, що й у isAudioCacheValid().
 function hasAudioFor(cardId, field, lang){
-  if(!audioManifest) return true;
+  if(!audioManifestReady()) return true;
   var mkey = urlToAudioMkey(getAudioUrl(cardId, field, lang));
-  return mkey in audioManifest;
+  if(!audioManifestKnown(mkey)) return true;   // шард цієї мови/швидкості ще вантажиться — не блокуємо UI
+  return audioManifestHas(mkey);
 }
 
 // Чи є ще й ТАЙМІНГ слів (.words.json) для картки+поля+мови — не лише
@@ -8921,9 +8922,10 @@ function hasAudioFor(cardId, field, lang){
 // областю дії таймінгу (не PRIMARY_LANG, чи поле на кшталт
 // sprachbau.answer/.explanation) просто не морочимось.
 function hasTimingFor(cardId, field, lang){
-  if(!audioManifest) return false;
+  if(!audioManifestReady()) return false;
   var mkey = urlToAudioMkey(getAudioUrl(cardId, field, lang));
-  var v = audioManifest[mkey];
+  if(!audioManifestKnown(mkey)) return false;
+  var v = audioManifestGet(mkey);
   return typeof v === 'string' && v.slice(-2) === '+t';
 }
 
@@ -8975,13 +8977,13 @@ function saveWordTimingEntry(mkey, hash, words){
 // Той самий принцип, що й pruneAudioHashRegistry() — прибирає записи
 // ЛИШЕ поточного курсу, яких більше нема в його audioManifest.
 function pruneWordTimingStore(){
-  if(!audioManifest || !activeCourse) return;
+  if(!audioManifestReady() || !activeCourse) return;
   const store = loadWordTimingStore();
   const prefix = activeCourse.id + '/';
   let changed = false;
   for(const mkey of Object.keys(store)){
     if(!mkey.startsWith(prefix)) continue;
-    if(!(mkey in audioManifest)){ delete store[mkey]; changed = true; }
+    if(audioManifestLoadedFor(mkey) && !audioManifestHas(mkey)){ delete store[mkey]; changed = true; }
   }
   if(changed){
     try{ localStorage.setItem(WORD_TIMING_STORE_KEY, JSON.stringify(store)); }catch(e){}
@@ -8995,7 +8997,8 @@ async function fetchWordTiming(mp3Url, mkey){
   var url = mp3Url.replace(/\.mp3$/, '.words.json');
   if(_ttsWordTimingCache.has(url)) return _ttsWordTimingCache.get(url);
 
-  var manifestHash = (mkey && audioManifest) ? audioManifest[mkey] : null;
+  if(mkey) await ensureAudioShardForMkey(mkey, 2500);
+  var manifestHash = (mkey && audioManifestReady()) ? audioManifestGet(mkey) : null;
   if(mkey && manifestHash){
     var stored = loadWordTimingStore()[mkey];
     if(stored && stored.hash === manifestHash){
@@ -17461,13 +17464,59 @@ const audioBlobCache  = new Map();
 const audioBufferCache = new Map();
 
 // ── AUDIO MANIFEST: хеш-перевірка актуальності кешованих файлів ──
-// audioManifest: {mkey: hash} — завантажується ОДИН РАЗ при старті
-// (network-first, з фолбеком на Cache Storage при офлайні) і живе
-// в пам'яті всю сесію. Якщо завантажити не вдалось (немає мережі і
-// немає кешованої копії) — лишається null, і вся перевірка хешів
-// просто пропускається (довіряємо тому, що вже закешовано — це
-// збігається зі звичною офлайн-поведінкою додатку).
-let audioManifest = null;
+// Манифест ПО ШАРДАХ (мова × швидкість), а не одним файлом на курс:
+//   audio/<course>/index.json                    — {"v":2,"shards":{"de/100":N,…}}: які шарди існують
+//   audio/<course>/<lang>/<speed>/manifest.json  — {"<cat>/<id>_<field>": "<hash>[+t]"}
+// (ключ шарда КОРОТКИЙ: префікс "<course>/<lang>/<speed>/" і суфікс "_<lang>_<speed>" однакові
+// в усьому шарді, тому не повторюються; формат ключа збігається з gen_audio.py — split_mkey).
+// На старті вантажиться лише шард ВИВЧУВАНОЇ мови на ПОТОЧНІЙ швидкості; шард мови перекладу чи
+// іншої швидкості — лише коли знадобиться (перше відтворення/перевірка). Поки шард не
+// завантажено, стан mkey «невідомий» і поведінка та сама, що раніше, коли манифест ще не
+// завантажився: довіряємо кешу, UI не блокуємо. Якщо шарда нема в index.json — аудіо такою
+// мовою/швидкістю не існує (так само, як раніше «ключа нема в манифесті»).
+// Режим сумісності: якщо index.json нема (генератор ще не розбив манифест), читається старий
+// монолітний audio/<course>/manifest.json — {mkey: hash}.
+let audioIndex = null;                 // Set<"lang/speed"> наявних шардів; null — індексу нема
+let audioLegacy = null;                // {mkey: hash} зі старого монолітного файлу
+const audioShards = new Map();         // "course/lang/speed" → {shortKey: value}
+const _audioShardLoading = new Map();  // "course/lang/speed" → Promise (дедублікація запитів)
+let _audioCourse = null;               // курс, для якого зараз зібрано шарди
+
+// 'course/lang/speed/cat/name_lang_speed' → {shard, lang, speed, key:'cat/name'} (або null)
+function audioMkeyParts(mkey){
+  const p = String(mkey).split('/');
+  if(p.length < 5) return null;
+  const course = p[0], lang = p[1], speed = p[2], cat = p[3];
+  const fname = p.slice(4).join('/');
+  const suffix = '_' + lang + '_' + speed;
+  if(!fname.endsWith(suffix)) return null;
+  return { shard: course + '/' + lang + '/' + speed, lang, speed, key: cat + '/' + fname.slice(0, -suffix.length) };
+}
+function audioManifestReady(){ return !!(audioIndex || audioLegacy); }
+// Значення (хеш[+t]) для mkey або undefined, якщо його нема / шард ще не завантажено.
+function audioManifestGet(mkey){
+  if(audioLegacy) return audioLegacy[mkey];
+  const p = audioMkeyParts(mkey);
+  if(!p) return undefined;
+  const sh = audioShards.get(p.shard);
+  return sh ? sh[p.key] : undefined;
+}
+function audioManifestHas(mkey){ return audioManifestGet(mkey) !== undefined; }
+// Чи шард цього mkey уже завантажено (БЕЗ запуску завантаження) — для прибирання застарілих записів.
+function audioManifestLoadedFor(mkey){
+  if(audioLegacy) return true;
+  const p = audioMkeyParts(mkey);
+  return !!(p && audioShards.has(p.shard));
+}
+// Те саме, але якщо шард ще не завантажено — запускає його завантаження у фоні.
+function audioManifestKnown(mkey){
+  if(audioLegacy) return true;
+  if(!audioIndex) return false;
+  const p = audioMkeyParts(mkey);
+  if(!p) return false;
+  if(!audioShards.has(p.shard)) ensureAudioShard(p.lang, p.speed);
+  return audioShards.has(p.shard);
+}
 
 // Локальний реєстр {mkey: hash} того, що реально підтверджено як
 // закешоване з ЦИМ САМЕ хешем. На відміну від audioBlobCache (живе
@@ -17507,48 +17556,104 @@ function saveAudioHashRegistryEntry(mkey, hash){
   try{ localStorage.setItem(AUDIO_HASH_REGISTRY_KEY, JSON.stringify(reg)); }catch(e){}
 }
 
-// Завантажує audio/<course>/manifest.json АКТИВНОГО курсу (не спільний
-// audio/manifest.json на всі курси одразу — кожен курс тепер має власний
-// файл, менший і не залежний від розміру бази інших курсів). Викликається
-// з init() (після loadCourseScript) і з switchCourse() (де activeCourse
-// щойно змінився на новий курс).
+// Завантажує манифест АКТИВНОГО курсу: index.json + шард вивчуваної мови на поточній швидкості
+// (решту шардів — за потреби, див. ensureAudioShard). Викликається з init() (після
+// loadCourseScript) і з switchCourse() (де activeCourse щойно змінився на новий курс).
 async function loadAudioManifest(){
   const course = activeCourse?.id;
   if(!course){ logErr('audio:manifest','no activeCourse yet',''); return; }
+  _audioCourse = course;
+  audioIndex = null; audioLegacy = null;
+  audioShards.clear(); _audioShardLoading.clear();
+  const idxUrl = `audio/${course}/index.json`;
+  let idxJson = null, notFound = false;
+  try{
+    const resp = await fetch(idxUrl, {cache:'no-store'});
+    if(resp.ok) idxJson = await resp.json();
+    else if(resp.status === 404) notFound = true;
+  }catch(e){
+    logErr('audio:manifest','index fetch failed: '+e.message,'');
+    // Немає мережі при старті — беремо те, що SW вже міг закешувати раніше.
+    try{ const cached = await caches.match(idxUrl); if(cached) idxJson = await cached.json(); }catch(e2){}
+  }
+  if(course !== _audioCourse) return;
+  if(idxJson && idxJson.shards){
+    audioIndex = new Set(Object.keys(idxJson.shards));
+    const lang = primaryLang();
+    await ensureAudioShard(lang, V.langSpeed?.[lang] || '100');
+  } else if(notFound){
+    await _loadLegacyAudioManifest(course);
+  }
+  pruneAudioHashRegistry();
+  pruneWordTimingStore();
+}
+
+// Режим сумісності: старий монолітний audio/<course>/manifest.json (до розбиття на шарди).
+async function _loadLegacyAudioManifest(course){
   const url = `audio/${course}/manifest.json`;
   try{
     const resp = await fetch(url, {cache:'no-store'});
     if(resp.ok){
-      audioManifest = await resp.json();
-      logErr('audio:manifest','loaded '+Object.keys(audioManifest).length+' keys ('+course+')','');
-      pruneAudioHashRegistry();
-      pruneWordTimingStore();
+      audioLegacy = await resp.json();
+      logErr('audio:manifest','loaded legacy '+Object.keys(audioLegacy).length+' keys ('+course+')','');
     }
   }catch(e){
-    logErr('audio:manifest','fetch failed: '+e.message,'');
-    // Немає мережі при старті — пробуємо взяти те, що SW вже міг
-    // закешувати раніше (network-first з фолбеком саме для цього).
-    try{
-      const cached = await caches.match(url);
-      if(cached){ audioManifest = await cached.json(); }
-    }catch(e2){}
+    try{ const cached = await caches.match(url); if(cached) audioLegacy = await cached.json(); }catch(e2){}
   }
 }
 
-// Прибирає з локального реєстру записи ПОТОЧНОГО курсу, яких більше немає
-// в його маніфесті (картку видалили з бази) — щоб localStorage не
-// накопичував сміття після кожного редагування бази курсу. Записи ІНШИХ
-// курсів (mkey з іншим префіксом, бо audioManifest тепер містить лише
-// один курс) свідомо не чіпаємо — інакше кожне перемикання курсу стирало
-// б підтверджений кеш усіх інших курсів.
+// Завантажує шард (lang, speed), якщо він існує й ще не завантажений. Для шарда, якого нема
+// в index.json, миттєво фіксує «порожній» стан — аудіо цією мовою/швидкістю не існує.
+function ensureAudioShard(lang, speed){
+  if(!audioIndex || !_audioCourse) return Promise.resolve();
+  const course = _audioCourse, shard = course + '/' + lang + '/' + speed;
+  if(audioShards.has(shard)) return Promise.resolve();
+  if(!audioIndex.has(lang + '/' + speed)){ audioShards.set(shard, {}); return Promise.resolve(); }
+  if(_audioShardLoading.has(shard)) return _audioShardLoading.get(shard);
+  const url = `audio/${course}/${lang}/${speed}/manifest.json`;
+  const pr = (async ()=>{
+    let data = null;
+    try{
+      const resp = await fetch(url, {cache:'no-store'});
+      if(resp.ok) data = await resp.json();
+    }catch(e){
+      logErr('audio:manifest','shard fetch failed: '+e.message, lang+'/'+speed);
+      try{ const cached = await caches.match(url); if(cached) data = await cached.json(); }catch(e2){}
+    }
+    if(course !== _audioCourse) return;          // курс перемкнули, поки вантажилось
+    if(data){
+      audioShards.set(shard, data);
+      logErr('audio:manifest','loaded '+Object.keys(data).length+' keys ('+shard+')','');
+      pruneAudioHashRegistry();
+      pruneWordTimingStore();
+    }
+  })().finally(()=>{ _audioShardLoading.delete(shard); });
+  _audioShardLoading.set(shard, pr);
+  return pr;
+}
+// Гарантує, що шард для mkey завантажено (з необов'язковим лімітом очікування, мс).
+async function ensureAudioShardForMkey(mkey, maxWaitMs){
+  if(!audioIndex) return;
+  const p = audioMkeyParts(mkey);
+  if(!p) return;
+  const pr = ensureAudioShard(p.lang, p.speed);
+  if(maxWaitMs) await Promise.race([pr, new Promise(r => setTimeout(r, maxWaitMs))]);
+  else await pr;
+}
+
+// Прибирає з локального реєстру записи ПОТОЧНОГО курсу, яких більше немає в його манифесті
+// (картку видалили з бази) — щоб localStorage не накопичував сміття після кожного редагування
+// бази курсу. Чіпає лише записи вже ЗАВАНТАЖЕНИХ шардів: записи ще не завантажених шардів (напр.
+// мови перекладу) і ІНШИХ курсів свідомо лишаються — інакше кожен старт стирав би підтверджений
+// кеш аудіо, яке користувач просто ще не відкривав у цій сесії.
 function pruneAudioHashRegistry(){
-  if(!audioManifest || !activeCourse) return;
+  if(!audioManifestReady() || !activeCourse) return;
   const reg = loadAudioHashRegistry();
   const prefix = activeCourse.id + '/';
   let changed = false;
   for(const mkey of Object.keys(reg)){
     if(!mkey.startsWith(prefix)) continue;
-    if(!(mkey in audioManifest)){ delete reg[mkey]; changed = true; }
+    if(audioManifestLoadedFor(mkey) && !audioManifestHas(mkey)){ delete reg[mkey]; changed = true; }
   }
   if(changed){
     try{ localStorage.setItem(AUDIO_HASH_REGISTRY_KEY, JSON.stringify(reg)); }catch(e){}
@@ -17562,8 +17667,8 @@ function pruneAudioHashRegistry(){
 // Якщо маніфест взагалі не завантажився — повертає true (не блокуємо
 // офлайн-роботу додатку перевіркою, якої не можемо виконати).
 function isAudioCacheValid(url, mkey){
-  if(!audioManifest) return true;
-  const currentHash = audioManifest[mkey];
+  if(!audioManifestReady()) return true;
+  const currentHash = audioManifestGet(mkey);
   if(!currentHash) return true; // ключа нема в маніфесті — не наша справа тут
   const reg = loadAudioHashRegistry();
   return reg[mkey] === currentHash;
@@ -17639,6 +17744,9 @@ async function fetchBlobUrl(url, timeoutMs=8000, mkey=null){
   // сесіями/пристроями) — навіть застарілий вміст. Гірше — після такого
   // "сліпого" фетчу код нижче однаково писав у audioHashRegistry
   // ПРАВИЛЬНИЙ хеш для СТАРОГО блоба, самозакріплюючи баг у localStorage.
+  // Хеш цього файлу лежить у шарді його мови/швидкості — гарантуємо, що шард завантажено
+  // (одноразово на шард; ліміт очікування, щоб повільна мережа не гальмувала програвання).
+  if(mkey) await ensureAudioShardForMkey(mkey, 2500);
   if(mkey && !isAudioCacheValid(url, mkey)){
     logErr('audio:stale-hash','invalidating',url.split('/').slice(-1)[0]);
     if(audioBlobCache.has(url)){
@@ -17707,8 +17815,9 @@ async function _doFetchBlobUrl(url, timeoutMs, mkey){
     const blobUrl = URL.createObjectURL(blob);
     audioBlobCache.set(url, blobUrl);
     audioExistsCache.set(url, true);
-    if(mkey && audioManifest && audioManifest[mkey]){
-      saveAudioHashRegistryEntry(mkey, audioManifest[mkey]);
+    if(mkey && audioManifestReady()){
+      const _h = audioManifestGet(mkey);
+      if(_h) saveAudioHashRegistryEntry(mkey, _h);
     }
     logErr('audio:fetched','✓',fname);
     return blobUrl;

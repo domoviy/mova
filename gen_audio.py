@@ -18,6 +18,7 @@ import pathlib
 import re
 import difflib
 import asyncio
+import signal
 import subprocess
 
 try:
@@ -122,6 +123,10 @@ SYNTH_TIMEOUT = float(os.environ.get('TTS_SYNTH_TIMEOUT', '10.0'))
 # час роботи, а фінальний коміт/пуш нижче в main() спрацює і для
 # часткового прогону, що зупинився за fail-fast.
 CONSECUTIVE_FAILURE_LIMIT = int(os.environ.get('TTS_FAIL_FAST_LIMIT', '10'))
+# Ліміт часу (с) на один git-виклик. git_commit_and_push() синхронний і виконується прямо в
+# event loop — без ліміту завислий push (мережа/блокування) заморожував би весь скрипт,
+# зокрема й обробку сигналу скасування.
+GIT_TIMEOUT = float(os.environ.get('TTS_GIT_TIMEOUT', '180'))
 # Поля, для яких генерується .words.json (таймінг слів для karaoke-
 # підсвітки) — рішення на рівні ГЕНЕРАТОРА, не бази: додавати однаковий
 # "wordTiming": true в кожен з тисяч записів бази безглуздо (роздуває
@@ -190,6 +195,99 @@ def manifest_path(course):
     ріс з кожним курсом і при кожному старті довантажував усе відразу,
     хоча в межах сесії користувач бачить максимум один курс."""
     return AUDIO_ROOT / course / 'manifest.json'
+
+# ── МАНІФЕСТ ПО ШАРДАХ (мова × швидкість) ─────────────────────────────────
+# Один монолітний audio/<course>/manifest.json (усі мови й швидкості разом) ріс
+# з кожною мовою/швидкістю, а клієнт тягнув його ЦІЛКОМ, хоча користувачу потрібні
+# лише хеші вивчуваної мови на ОДНІЙ швидкості (переклад — лише якщо він увімкне
+# його озвучення). Тепер:
+#   audio/<course>/<lang>/<rate>/manifest.json  — шард: { "<cat>/<id>_<field>": "<hash>[+t]" }
+#   audio/<course>/index.json                   — {"v":2,"shards":{"<lang>/<rate>": N, ...}}
+# Ключ у шарді КОРОТКИЙ: префікс "<course>/<lang>/<rate>/" і суфікс "_<lang>_<rate>"
+# однакові в усьому шарді, тож їх не повторюємо (повний mkey відновлюється з шляху шарда).
+# У пам'яті скрипт, як і раніше, оперує ПОВНИМИ mkey — решта коду не змінилась.
+SHARD_FILE = 'manifest.json'
+INDEX_FILE = 'index.json'
+
+def shard_path(course, lang, rate):
+    return AUDIO_ROOT / course / lang / str(rate) / SHARD_FILE
+
+def index_path(course):
+    return AUDIO_ROOT / course / INDEX_FILE
+
+def split_mkey(mkey):
+    """'<course>/<lang>/<rate>/<cat>/<name>_<lang>_<rate>' → (course, lang, rate, '<cat>/<name>').
+    Той самий розбір реалізований у index.html (audioMkeyParts) — формат мусить збігатись."""
+    parts = mkey.split('/')
+    if len(parts) < 5:
+        raise ValueError(f"Некоректний mkey (мало сегментів): {mkey}")
+    course, lang, rate, cat = parts[0], parts[1], parts[2], parts[3]
+    fname = '/'.join(parts[4:])
+    suffix = f"_{lang}_{rate}"
+    if not fname.endswith(suffix):
+        raise ValueError(f"mkey не закінчується на '{suffix}': {mkey}")
+    return course, lang, rate, f"{cat}/{fname[:-len(suffix)]}"
+
+def join_mkey(course, lang, rate, short_key):
+    cat, name = short_key.split('/', 1)
+    return f"{course}/{lang}/{rate}/{cat}/{name}_{lang}_{rate}"
+
+def _atomic_write_json(path, obj):
+    """Запис через тимчасовий файл + os.replace: якщо процес вб'ють посеред запису
+    (скасування запуску, SIGKILL), на диску лишиться ЦІЛИЙ попередній файл, а не
+    обірваний JSON, який ламав би і клієнт, і наступний запуск скрипта."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    tmp = path.with_name(path.name + '.tmp')
+    with open(tmp, 'w', encoding='utf-8') as f:
+        json.dump(obj, f, ensure_ascii=False, sort_keys=True, separators=(',', ':'))
+    os.replace(tmp, path)
+
+class ManifestStore:
+    """Манифест одного курсу: у пам'яті — повні mkey → значення (як було), на диску —
+    шарди по мові та швидкості. get() сумісний із dict.get, тож місця перевірки
+    existing_value у main() не змінились. set() одразу (атомарно) перезаписує лише
+    ОДИН шард — раніше кожен згенерований файл переписував увесь манифест курсу."""
+    def __init__(self, course):
+        self.course = course
+        self.data = {}            # повний mkey → значення
+        self.shards = {}          # (lang, rate) → {short_key: значення}
+        self._index_counts = {}   # що зараз записано в index.json: "lang/rate" → N
+        base = AUDIO_ROOT / course
+        if base.exists():
+            for path in sorted(base.glob(f'*/*/{SHARD_FILE}')):
+                lang, rate = path.parent.parent.name, path.parent.name
+                try:
+                    with open(path, 'r', encoding='utf-8') as f:
+                        shard = json.load(f)
+                except Exception as e:
+                    print(f"⚠ Шард {path} не прочитано ({e}) — його записи вважаються відсутніми.", flush=True)
+                    continue
+                self.shards[(lang, rate)] = dict(shard)
+                for short_key, value in shard.items():
+                    self.data[join_mkey(course, lang, rate, short_key)] = value
+        self._sync_index()
+
+    def get(self, mkey, default=None):
+        return self.data.get(mkey, default)
+
+    def set(self, mkey, value):
+        _, lang, rate, short_key = split_mkey(mkey)
+        shard = self.shards.setdefault((lang, rate), {})
+        shard[short_key] = value
+        self.data[mkey] = value
+        _atomic_write_json(shard_path(self.course, lang, rate), shard)
+        self._sync_index()
+
+    def _sync_index(self):
+        """index.json — перелік шардів, які ІСНУЮТЬ. Клієнт за ним розрізняє «шарда нема
+        (аудіо такою мовою/швидкістю не існує)» і «шард ще не завантажено». Перезаписуємо
+        лише коли змінився склад або кількість ключів."""
+        counts = {f"{l}/{r}": len(sh) for (l, r), sh in sorted(self.shards.items()) if sh}
+        if counts and counts != self._index_counts:
+            _atomic_write_json(index_path(self.course), {"v": 2, "shards": counts})
+            self._index_counts = counts
+
+STORES = {}   # course → ManifestStore (заповнюється в main())
 
 # ── Мапінг голосів ────────────────────────────────────────────
 # '&' → явне слово мовою тексту (див. clean_text) — Edge TTS ненадійно
@@ -1286,11 +1384,11 @@ def git_commit_and_push(count):
     остаточній невдачі — щоб зіпсований прогон одразу було видно як ❌ в
     GitHub Actions, а не тихо втрачати дані щоразу.
     """
-    subprocess.run(["git", "add", "audio/"], check=True)
-    status = subprocess.run(["git", "diff", "--staged", "--quiet"])
+    subprocess.run(["git", "add", "audio/"], check=True, timeout=GIT_TIMEOUT)
+    status = subprocess.run(["git", "diff", "--staged", "--quiet"], timeout=GIT_TIMEOUT)
     if status.returncode != 0:
         msg = f"🎙 TTS Audio Update: +{count} files [skip ci]"
-        subprocess.run(["git", "commit", "-m", msg], check=True)
+        subprocess.run(["git", "commit", "-m", msg], check=True, timeout=GIT_TIMEOUT)
         print(f"--- [Git Bot] Закомічено пачку з {count} файлів ---", flush=True)
 
     # Незалежно від того, чи саме ЦЕЙ виклик щось закомітив — допушуємо
@@ -1298,29 +1396,22 @@ def git_commit_and_push(count):
     # непушнутими з попереднього виклику, де commit пройшов, а push — ні).
     ahead = subprocess.run(
         ["git", "rev-list", "@{u}..HEAD", "--count"],
-        capture_output=True, text=True
+        capture_output=True, text=True, timeout=GIT_TIMEOUT
     )
     if ahead.returncode == 0 and ahead.stdout.strip() not in ("", "0"):
-        push_result = subprocess.run(["git", "push"])
+        push_result = subprocess.run(["git", "push"], timeout=GIT_TIMEOUT)
         if push_result.returncode != 0:
             print("--- [Git Bot] Push відхилено, пробуємо pull --rebase і повторити ---", flush=True)
-            subprocess.run(["git", "pull", "--rebase"], check=True)
-            subprocess.run(["git", "push"], check=True)
+            subprocess.run(["git", "pull", "--rebase"], check=True, timeout=GIT_TIMEOUT)
+            subprocess.run(["git", "push"], check=True, timeout=GIT_TIMEOUT)
         print("--- [Git Bot] Запушено ---", flush=True)
 
 def write_to_manifest_file(course, mkey, value):
-    path = manifest_path(course)
-    current_manifest = {}
-    if path.exists():
-        try:
-            with open(path, 'r', encoding='utf-8') as f:
-                current_manifest = json.load(f)
-        except: pass
-
-    current_manifest[mkey] = value
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with open(path, 'w', encoding='utf-8') as f:
-        json.dump(current_manifest, f, ensure_ascii=False, indent=2)
+    """Записує значення в шард (мова × швидкість) манифесту курсу — атомарно й одразу."""
+    store = STORES.get(course)
+    if store is None:
+        store = STORES[course] = ManifestStore(course)
+    store.set(mkey, value)
 
 # ── Основний асинхронний воркер ─────────────────────────────────
 async def worker_task(task, semaphore, stats, lock, total_tasks):
@@ -1395,6 +1486,19 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
                 )
                 synthesized = True
                 break
+            except asyncio.CancelledError:
+                # Запуск скасовано (див. _on_signal в main): прибираємо НАПІВЗАПИСАНІ mp3/.words.json
+                # цього завдання (їх нема в манифесті, але git add audio/ закомітив би їх як є) і
+                # передаємо скасування далі.
+                try:
+                    if file_path.exists():
+                        file_path.unlink()
+                    tp = file_path.with_suffix('.words.json')
+                    if tp.exists():
+                        tp.unlink()
+                except OSError:
+                    pass
+                raise
             except asyncio.TimeoutError:
                 last_error = f"Синтез не завершився за {SYNTH_TIMEOUT:.0f}с (ймовірно, зависле з'єднання Edge TTS)"
                 if file_path.exists():
@@ -1529,9 +1633,45 @@ def migrate_legacy_manifest():
           f"Старий файл перейменовано в manifest.json.migrated (можна видалити пізніше).", flush=True)
 
 
+def migrate_course_manifests_to_shards():
+    """Одноразова міграція: монолітний audio/<course>/manifest.json (усі мови й швидкості
+    разом) ділимо на шарди audio/<course>/<lang>/<rate>/manifest.json + index.json. Без
+    цього перший прогін після переходу не побачив би жодного старого хешу і перегенерував
+    би все аудіо. Старий файл перейменовується в manifest.json.migrated (старі версії
+    застосунку, що ще звертаються до нього, переходять у режим «без перевірки хешів»,
+    а не звіряються з уже застарілими даними)."""
+    for course in COURSES:
+        legacy = manifest_path(course)
+        if not legacy.exists():
+            continue
+        print(f"📦 Знайдено монолітний {legacy} — ділю на шарди мова × швидкість...", flush=True)
+        try:
+            with open(legacy, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        except Exception as e:
+            print(f"⚠ Не вдалося прочитати {legacy}: {e} — міграцію пропущено, файл лишається як є.", flush=True)
+            continue
+        store = ManifestStore(course)
+        moved = bad = 0
+        for mkey, value in data.items():
+            try:
+                split_mkey(mkey)
+            except ValueError:
+                bad += 1
+                continue
+            if store.get(mkey) is None:     # вже наявні записи шардів (напр. з перерваної міграції) не перезаписуємо
+                store.set(mkey, value)
+                moved += 1
+        legacy.replace(legacy.with_name('manifest.json.migrated'))
+        extra = f", {bad} записів із нестандартним ключем пропущено" if bad else ""
+        print(f"✅ {course}: перенесено {moved} записів у {len(store.shards)} шард(ів){extra}. "
+              f"Старий файл → manifest.json.migrated (можна видалити пізніше).", flush=True)
+
+
 async def main():
     print("Запуск генератора MOVA TTS (Edge TTS).", flush=True)
     migrate_legacy_manifest()
+    migrate_course_manifests_to_shards()
 
     tasks = []
     fields_map = {
@@ -1566,16 +1706,9 @@ async def main():
       course_lang_order[course] = [primary_lang] + [l for l in audio_config.keys() if l != primary_lang]
       print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази.", flush=True)
 
-      # Власний manifest.json курсу — читаємо саме тут (а не одним спільним
-      # словником на всі курси до цього циклу), бо нижче він же й пишеться
-      # окремим файлом на курс (write_to_manifest_file(course, ...)).
-      manifest_data = {}
-      mpath = manifest_path(course)
-      if mpath.exists():
-          try:
-              with open(mpath, 'r', encoding='utf-8') as f:
-                  manifest_data = json.load(f)
-          except: pass
+      # Манифест курсу — шарди audio/<course>/<lang>/<rate>/manifest.json (див. ManifestStore).
+      # Той самий об'єкт далі використовується і для запису (write_to_manifest_file).
+      manifest_data = STORES[course] = ManifestStore(course)
 
       for item in raw_items:
         item_id = item["id"]
@@ -2215,8 +2348,48 @@ async def main():
         "consecutive_failures": 0, "stop_requested": False, "stop_reason": None,
     }
 
-    pool = [worker_task(t, semaphore, stats, lock, total_tasks) for t in tasks]
-    await asyncio.gather(*pool)
+    # Скасування запуску (кнопка «Cancel workflow» у GitHub Actions шле SIGINT, через ~7,5с —
+    # SIGTERM, ще через ~2,5с — SIGKILL; локально те саме дає Ctrl+C). Раніше сигнал не
+    # оброблявся осмислено: скрипт міг дописувати прогін аж до SIGKILL, а то й зовсім не
+    # реагувати, поки синхронний git-виклик блокував event loop. Тепер: перший сигнал
+    # скасовує ВСІ завдання, прибирає напівзаписані файли й завершує процес за секунди.
+    # Git тут свідомо НЕ запускаємо (часу до SIGKILL замало, а обірваний commit лишив би
+    # .git/index.lock) — уже згенероване на диску підхопить крок workflow «Save progress
+    # after cancel» (див. gen_audio.yml), а проміжні коміти пачками вже в репозиторії.
+    handles = [asyncio.ensure_future(worker_task(t, semaphore, stats, lock, total_tasks)) for t in tasks]
+    cancel_state = {"signal": None}
+
+    def _on_signal(signame):
+        if cancel_state["signal"]:
+            return
+        cancel_state["signal"] = signame
+        stats["stop_requested"] = True
+        stats["stop_reason"] = f"отримано {signame} (запуск скасовано)"
+        print(f"🛑 Отримано {signame} — скасовую завдання...", flush=True)
+        for h in handles:
+            h.cancel()
+
+    loop = asyncio.get_running_loop()
+    for sig in (signal.SIGINT, signal.SIGTERM):
+        try:
+            loop.add_signal_handler(sig, _on_signal, sig.name)
+        except (NotImplementedError, RuntimeError, ValueError):
+            pass   # напр. Windows — лишається стандартна поведінка KeyboardInterrupt
+
+    results = await asyncio.gather(*handles, return_exceptions=True)
+
+    if not cancel_state["signal"]:
+        # return_exceptions=True потрібен лише для чистого скасування; справжні помилки воркерів
+        # (які раніше обривали прогін видимим ❌) не мусять зникнути безслідно.
+        for r in results:
+            if isinstance(r, BaseException) and not isinstance(r, asyncio.CancelledError):
+                raise r
+
+    if cancel_state["signal"]:
+        print(f"🛑 Зупинено ({cancel_state['signal']}). Збережено на диску: {stats['generated']} файлів "
+              f"(у манифесті; закомічені пачки вже в репозиторії, решту підхопить крок збереження "
+              f"після скасування або наступний запуск).", flush=True)
+        sys.exit(130)
 
     # Фінальний коміт/пуш спрацьовує ОДНАКОВО незалежно від того, чи прогін
     # дійшов до кінця списку завдань природно, чи зупинився достроково через
