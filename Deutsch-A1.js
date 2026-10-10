@@ -47,15 +47,6 @@ var CATS = [
   {id:'Märkte', de:'Märkte', en:'Markets', uk:'Ринки', ru:'Рынки', e:'🛒'}
 ];
 
-// ── МОВИ ─────────────────────────────────────────────────────
-var LC = {
-  de: {code:'de-DE', ms:['Katja','Hedda','Stefan','Conrad']},
-  en: {code:'en-US', ms:['Aria','Jenny','Guy','Zira','David']},
-  uk: {code:'uk-UA', ms:['Ostap','Polina']},
-  ru: {code:'ru-RU', ms:['Irina','Pavel','Dmitry']}
-};
-var F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪', ru:'🇷🇺'};
-var LN = {en:'English', uk:'Українська', de:'Deutsch', ru:'Русский'};
 
 // ── ГРАМАТИКА ────────────────────────────────────────────────
 // Кожне правило: id (стабільний, на нього посилаються LESSONS.grammar
@@ -988,7 +979,13 @@ var LESSONS = [
     ],
     "unlockAfter": null,
     "sbCards": [],
-    "dlgCards": []
+    "dlgCards": [
+      "dlg_001",
+      "dlg_002",
+      "dlg_003",
+      "dlg_004",
+      "dlg_005"
+    ]
   },
   {
     "id": "k1m2",
@@ -6174,6 +6171,11 @@ var VOCAB = [
 // ── DIALOGE (порожньо, структура збережена) ──────────────────
 // {id:"dlg_001", cat:"", task:{de,en,uk,ru}, name_q:"", name_a:"", q:{de,en,uk,ru}, a:{de,en,uk,ru}, gram:""}
 var DIALOGE = [
+{"id": "dlg_001", "cat": "Begrüßung und Vorstellung", "task": {"de": "", "en": "", "uk": "", "ru": ""}, "name_q": "de_w_julia", "name_a": "de_m_mark", "q": {"de": "<r>Hallo!</r> <r>Wie heiß<g>t</g> du?</r>", "en": "<r>Hi!</r> <r>What <g>is</g> your name?</r>", "uk": "<r>Привіт!</r> <r>Як тебе зв<g>уть</g>?</r>", "ru": "<r>Привет!</r> <r>Как тебя зов<g>ут</g>?</r>", "gram": "personalpronomen_verben"}, "a": {"de": "<r>Hallo!</r> <r>Ich heiß<g>e</g></r> Paul. <r>Und du?</r>", "en": "<r>Hi!</r> <r>My name <g>is</g></r> Paul. <r>And you?</r>", "uk": "<r>Привіт!</r> <r>Мене зв<g>уть</g></r> Пауль. <r>А ти?</r>", "ru": "<r>Привет!</r> <r>Меня зов<g>ут</g></r> Пауль. <r>А ты?</r>", "gram": "personalpronomen_verben"}, "q1": {"de": "<r>Ich heiß<g>e</g></r> Olena. <r>Freut mich!</r>", "en": "<r>My name <g>is</g></r> Olena. <r>Nice to meet you!</r>", "uk": "<r>Мене зв<g>уть</g></r> Олена. <r>Приємно познайомитися!</r>", "ru": "<r>Меня зов<g>ут</g></r> Елена. <r>Приятно познакомиться!</r>", "gram": "personalpronomen_verben"}, "a1": {"de": "<r>Freut mich auch!</r> <r>Willkommen</r>, Olena!", "en": "<r>Nice to meet you too!</r> <r>Welcome</r>, Olena!", "uk": "<r>Мені теж приємно!</r> <r>Ласкаво просимо</r>, Олено!", "ru": "<r>Мне тоже приятно!</r> <r>Добро пожаловать</r>, Елена!", "gram": ""}},
+{"id": "dlg_002", "cat": "Begrüßung und Vorstellung", "task": {"de": "", "en": "", "uk": "", "ru": ""}, "name_q": "de_m_mark", "name_a": "de_w_julia", "q": {"de": "<r>Guten Morgen!</r> <r>Wie heiß<g>t</g> du?</r>", "en": "<r>Good morning!</r> <r>What <g>is</g> your name?</r>", "uk": "<r>Доброго ранку!</r> <r>Як тебе зв<g>уть</g>?</r>", "ru": "<r>Доброе утро!</r> <r>Как тебя зов<g>ут</g>?</r>", "gram": "personalpronomen_verben"}, "a": {"de": "<r>Guten Morgen!</r> <r>Ich heiß<g>e</g></r> Oksana. <r>Und du?</r>", "en": "<r>Good morning!</r> <r>My name <g>is</g></r> Oksana. <r>And you?</r>", "uk": "<r>Доброго ранку!</r> <r>Мене зв<g>уть</g></r> Оксана. <r>А ти?</r>", "ru": "<r>Доброе утро!</r> <r>Меня зов<g>ут</g></r> Оксана. <r>А ты?</r>", "gram": "personalpronomen_verben"}, "q1": {"de": "<r>Ich heiß<g>e</g></r> Dmytro. Du komm<g>st</g> aus der Ukraine, oder?", "en": "<r>My name <g>is</g></r> Dmytro. <g>You're</g> from Ukraine, right?", "uk": "<r>Мене зв<g>уть</g></r> Дмитро. <g>Ти</g> з України, так?", "ru": "<r>Меня зов<g>ут</g></r> Дмитрий. <g>Ты</g> из Украины, да?", "gram": "personalpronomen_verben"}, "a1": {"de": "Ja, ich komm<g>e</g> aus Lwiw. <r>Freut mich!</r>", "en": "Yes, <g>I'm</g> from Lviv. <r>Nice to meet you!</r>", "uk": "Так, <g>я</g> зі Львова. <r>Приємно познайомитися!</r>", "ru": "Да, <g>я</g> из Львова. <r>Приятно познакомиться!</r>", "gram": "personalpronomen_verben"}},
+{"id": "dlg_003", "cat": "Begrüßung und Vorstellung", "task": {"de": "", "en": "", "uk": "", "ru": ""}, "name_q": "de_w_julia", "name_a": "de_m_mark", "q": {"de": "<r>Guten Abend!</r> <r>Wie heiß<g>t</g> du?</r>", "en": "<r>Good evening!</r> <r>What <g>is</g> your name?</r>", "uk": "<r>Добрий вечір!</r> <r>Як тебе зв<g>уть</g>?</r>", "ru": "<r>Добрый вечер!</r> <r>Как тебя зов<g>ут</g>?</r>", "gram": "personalpronomen_verben"}, "a": {"de": "<r>Guten Abend!</r> Mein <b>Vorname</b> ist Taras, mein <b>Familienname</b> ist Bondarenko.", "en": "<r>Good evening!</r> My <b>first name</b> is Taras, my <b>last name</b> is Bondarenko.", "uk": "<r>Добрий вечір!</r> Моє <b>імʼя</b> — Тарас, моє <b>прізвище</b> — Бондаренко.", "ru": "<r>Добрый вечер!</r> Моё <b>имя</b> — Тарас, моя <b>фамилия</b> — Бондаренко.", "gram": ""}, "q1": {"de": "<r>Freut mich</r>, Taras! <r>Ich heiß<g>e</g></r> Iryna Melnyk.", "en": "<r>Nice to meet you</r>, Taras! <r>My name <g>is</g></r> Iryna Melnyk.", "uk": "<r>Приємно познайомитися</r>, Тарасе! <r>Мене зв<g>уть</g></r> Ірина Мельник.", "ru": "<r>Приятно познакомиться</r>, Тарас! <r>Меня зов<g>ут</g></r> Ирина Мельник.", "gram": "personalpronomen_verben"}},
+{"id": "dlg_004", "cat": "Begrüßung und Vorstellung", "task": {"de": "", "en": "", "uk": "", "ru": ""}, "name_q": "de_w_julia", "name_a": "de_m_mark", "q": {"de": "<r>Hallo!</r> Ich möchte dich <b>kennenlernen</b>. <r>Wie heiß<g>t</g> du?</r>", "en": "<r>Hi!</r> I'd like to <b>get to know</b> you. <r>What <g>is</g> your name?</r>", "uk": "<r>Привіт!</r> Я хочу з тобою <b>познайомитися</b>. <r>Як тебе зв<g>уть</g>?</r>", "ru": "<r>Привет!</r> Я хочу с тобой <b>познакомиться</b>. <r>Как тебя зов<g>ут</g>?</r>", "gram": "personalpronomen_verben"}, "a": {"de": "<r>Ich heiß<g>e</g></r> Andrij. Ich komm<g>e</g> aus Dnipro. <r>Freut mich!</r>", "en": "<r>My name <g>is</g></r> Andrij. <g>I'm</g> from Dnipro. <r>Nice to meet you!</r>", "uk": "<r>Мене зв<g>уть</g></r> Андрій. <g>Я</g> з Дніпра. <r>Приємно познайомитися!</r>", "ru": "<r>Меня зов<g>ут</g></r> Андрей. <g>Я</g> из Днепра. <r>Приятно познакомиться!</r>", "gram": "personalpronomen_verben"}},
+{"id": "dlg_005", "cat": "Begrüßung und Vorstellung", "task": {"de": "", "en": "", "uk": "", "ru": ""}, "name_q": "de_w_julia", "name_a": "de_m_mark", "q": {"de": "<r>Guten Tag!</r> <r>Wie heiß<g>en</g> Sie?</r>", "en": "<r>Hello!</r> <r>What <g>is</g> your name?</r>", "uk": "<r>Добрий день!</r> <r>Як вас зв<g>уть</g>?</r>", "ru": "<r>Добрый день!</r> <r>Как вас зов<g>ут</g>?</r>", "gram": "personalpronomen_verben"}, "a": {"de": "<r>Guten Tag!</r> <r>Ich heiß<g>e</g></r> Oleksandr Melnyk. <r>Und Sie?</r>", "en": "<r>Hello!</r> <r>My name <g>is</g></r> Oleksandr Melnyk. <r>And you?</r>", "uk": "<r>Добрий день!</r> <r>Мене зв<g>уть</g></r> Олександр Мельник. <r>А ви?</r>", "ru": "<r>Добрый день!</r> <r>Меня зов<g>ут</g></r> Александр Мельник. <r>А вы?</r>", "gram": "personalpronomen_verben"}, "q1": {"de": "<r>Ich heiß<g>e</g></r> Anna Weber. <r>Freut mich</r>, <b>Herr</b> Melnyk! Sie komm<g>en</g> aus der Ukraine, oder?", "en": "<r>My name <g>is</g></r> Anna Weber. <r>Nice to meet you</r>, <b>Mr</b> Melnyk! <g>You're</g> from Ukraine, right?", "uk": "<r>Мене зв<g>уть</g></r> Анна Вебер. <r>Приємно познайомитися</r>, <b>пане</b> Мельник! <g>Ви</g> з України, так?", "ru": "<r>Меня зов<g>ут</g></r> Анна Вебер. <r>Приятно познакомиться</r>, <b>господин</b> Мельник! <g>Вы</g> из Украины, да?", "gram": "personalpronomen_verben"}, "a1": {"de": "Ja, ich komm<g>e</g> aus Charkiw. <r>Freut mich auch</r>, <b>Frau</b> Weber!", "en": "Yes, <g>I'm</g> from Kharkiv. <r>Nice to meet you too</r>, <b>Ms</b> Weber!", "uk": "Так, <g>я</g> з Харкова. <r>Мені теж приємно</r>, <b>пані</b> Вебер!", "ru": "Да, <g>я</g> из Харькова. <r>Мне тоже приятно</r>, <b>госпожа</b> Вебер!", "gram": "personalpronomen_verben"}}
 ];
 
 // ── QUIZ (порожньо, структура збережена) ─────────────────────

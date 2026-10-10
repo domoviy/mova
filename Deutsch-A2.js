@@ -613,55 +613,6 @@ var CATS = [
   {"id":"k16","de":"Das feiern wir!","en":"Let's celebrate that!","uk":"Це ми святкуємо!","ru":"Это мы празднуем!","e":"🎉"}
 ];
 
-// ── МОВИ ─────────────────────────────────────────────────────
-var LC = {
-  de: {
-    code: "de-DE",
-    ms: [
-      "Katja",
-      "Hedda",
-      "Stefan",
-      "Conrad"
-    ]
-  },
-  en: {
-    code: "en-US",
-    ms: [
-      "Aria",
-      "Jenny",
-      "Guy",
-      "Zira",
-      "David"
-    ]
-  },
-  uk: {
-    code: "uk-UA",
-    ms: [
-      "Ostap",
-      "Polina"
-    ]
-  },
-  ru: {
-    code: "ru-RU",
-    ms: [
-      "Irina",
-      "Pavel",
-      "Dmitry"
-    ]
-  }
-};
-var F  = {
-  en: "🇬🇧",
-  uk: "🇺🇦",
-  de: "🇩🇪",
-  ru: "🇷🇺"
-};
-var LN = {
-  en: "English",
-  uk: "Українська",
-  de: "Deutsch",
-  ru: "Русский"
-};
 
 // ── КАРТКИ УРОКІВ (LESSONS) ─────────────────────────────────────
 // Обʼєднано: A2.1 (Kapitel 1–8) + A2.2 (Kapitel 9–16), "Die neue Linie 1"

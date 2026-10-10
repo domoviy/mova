@@ -52,15 +52,7 @@ var CATS = [
   {id:'Online-Kommunikation', de:'Online-Kommunikation', en:'Online Communication', uk:'Онлайн-комунікація', ru:'Онлайн-коммуникация', e:'💻'}
 ];
 
-// ── МОВИ ─────────────────────────────────────────────────────
-var LC = {
-  de: {code:'de-DE', ms:['Katja','Hedda','Stefan','Conrad']},
-  en: {code:'en-US', ms:['Aria','Jenny','Guy','Zira','David']},
-  uk: {code:'uk-UA', ms:['Ostap','Polina']},
-  ru: {code:'ru-RU', ms:['Irina','Pavel','Dmitry']}
-};
-var F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪', ru:'🇷🇺'};
-var LN = {en:'English', uk:'Українська', de:'Deutsch', ru:'Русский'};
+
 
 // ── ГРАМАТИКА ────────────────────────────────────────────────
 // Кожне правило: id (стабільний, на нього посилаються LESSONS.grammar

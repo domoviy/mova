@@ -17426,7 +17426,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Im <b>Versicherungsfall</b> half die Firma sofort, <g>obwohl</g> es Wochenende war.",
-      "en": "In the case of a claim, the company helped immediately <g>although</g> it was the weekend.",
+      "en": "In the <b>case of a claim</b>, the company helped immediately <g>although</g> it was the weekend.",
       "uk": "У <b>страховому випадку</b> фірма допомогла одразу, <g>хоча</g> були вихідні.",
       "ru": "В <b>страховом случае</b> фирма помогла сразу, <g>хотя</g> были выходные."
     },
@@ -22096,8 +22096,8 @@ var VOCAB = [
     "def": {
       "de": "<g>Wovon</g> hast du letzte Nacht <b>geträumt</b>?",
       "en": "What did you <b>dream</b> <g>of</g> last night?",
-      "uk": "<g>Про що</g> тобі снилося вчора вночі?",
-      "ru": "<g>О чём</g> тебе снилось вчера ночью?"
+      "uk": "<g>Про що</g> тобі <b>снилося</b> вчора вночі?",
+      "ru": "<g>О чём</g> тебе <b>снилось</b> вчера ночью?"
     },
     "gram": "verben_praep_personen_sachen"
   },
@@ -22372,8 +22372,8 @@ var VOCAB = [
     "def": {
       "de": "Ich war nicht <b>stolz</b> auf mich, <g>bis</g> ich das Zertifikat endlich in der Hand hielt.",
       "en": "I was not <b>proud</b> of myself <g>until</g> I finally held the certificate in my hand.",
-      "uk": "Я не пишався(-лася) собою, <g>доки</g> нарешті не тримав(-ла) сертифікат у руках.",
-      "ru": "Я не гордился(-лась) собой, <g>пока</g> наконец не держал(-а) сертификат в руках."
+      "uk": "Я не <b>пишався(-лася)</b> собою, <g>доки</g> нарешті не тримав(-ла) сертифікат у руках.",
+      "ru": "Я не <b>гордился(-лась)</b> собой, <g>пока</g> наконец не держал(-а) сертификат в руках."
     },
     "gram": "nebensatz_mit_bis"
   },
@@ -22578,7 +22578,7 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Worauf</g> <b>freust</b> du <b>dich</b> am meisten, wenn du an den Urlaub denkst?",
-      "en": "What are you looking forward to the most when you think about the holiday?",
+      "en": "What are you <b>looking forward</b> <g>to</g> the most when you think about the holiday?",
       "uk": "<g>Чого</g> ти найбільше <b>очікуєш</b>, коли думаєш про відпустку?",
       "ru": "<g>Чего</g> ты больше всего <b>ждёшь</b>, когда думаешь об отпуске?"
     },
@@ -24947,9 +24947,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Diese Wunde <g>wird</g> mit der richtigen Behandlung schnell <g><b>heilen</b></g>.",
-      "en": "This wound <g>will</g> <g>heal</g> quickly with the right treatment.",
-      "uk": "Ця рана швидко загоїться з правильним лікуванням.",
-      "ru": "Эта рана быстро заживёт при правильном лечении."
+      "en": "This wound <g>will</g> <g><b>heal</b></g> quickly with the right treatment.",
+      "uk": "Ця рана швидко <g><b>загоїться</b></g> з правильним лікуванням.",
+      "ru": "Эта рана быстро <g><b>заживёт</b></g> при правильном лечении."
     },
     "gram": "futur_werden"
   },
@@ -24970,9 +24970,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Patient <g>wird</g> sich in den nächsten Wochen vollständig <g><b>erholen</b></g>.",
-      "en": "The patient <g>will</g> <g>recover</g> fully in the coming weeks.",
-      "uk": "Пацієнт повністю одужає протягом наступних тижнів.",
-      "ru": "Пациент полностью выздоровеет в течение следующих недель."
+      "en": "The patient <g>will</g> <g><b>recover</b></g> fully in the coming weeks.",
+      "uk": "Пацієнт повністю <g><b>одужає</b></g> протягом наступних тижнів.",
+      "ru": "Пациент полностью <g><b>выздоровеет</b></g> в течение следующих недель."
     },
     "gram": "futur_werden"
   },
@@ -25039,9 +25039,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Arzt <g>wird</g> ihr ein neues Medikament <g><b>verschreiben</b></g>.",
-      "en": "The doctor <g>will</g> <g>prescribe</g> her a new medication.",
-      "uk": "Лікар призначить їй нові ліки.",
-      "ru": "Врач назначит ей новое лекарство."
+      "en": "The doctor <g>will</g> <g><b>prescribe</b></g> her a new medication.",
+      "uk": "Лікар <g><b>призначить</b></g> їй нові ліки.",
+      "ru": "Врач <g><b>назначит</b></g> ей новое лекарство."
     },
     "gram": "futur_werden"
   },
@@ -25062,9 +25062,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Schmerzen <g>werden</g> in ein paar Tagen sicher <g><b>abklingen</b></g>.",
-      "en": "The pain <g>will</g> definitely <g>subside</g> in a few days.",
-      "uk": "Біль точно вщухне за кілька днів.",
-      "ru": "Боль точно утихнет через несколько дней."
+      "en": "The pain <g>will</g> definitely <g><b>subside</b></g> in a few days.",
+      "uk": "Біль точно <g><b>вщухне</b></g> за кілька днів.",
+      "ru": "Боль точно <g><b>утихнет</b></g> через несколько дней."
     },
     "gram": "futur_werden"
   },
@@ -25086,8 +25086,8 @@ var VOCAB = [
     "def": {
       "de": "Die <b>Genesung</b> <g>wird</g> mit viel Ruhe schneller <g>gehen</g>.",
       "en": "The <b>recovery</b> <g>will</g> <g>go</g> faster with plenty of rest.",
-      "uk": "Одужання пройде швидше за достатнього відпочинку.",
-      "ru": "Выздоровление пройдёт быстрее при достаточном отдыхе."
+      "uk": "<b>Одужання</b> <g>пройде</g> швидше за достатнього відпочинку.",
+      "ru": "<b>Выздоровление</b> <g>пройдёт</g> быстрее при достаточном отдыхе."
     },
     "gram": "futur_werden"
   },
@@ -25292,9 +25292,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Er ging zum Schalter, <g>um</g> sich <g><b>anzumelden</b></g>.",
-      "en": "He went to the counter <g>in order to</g> <g>register</g>.",
-      "uk": "Він пішов до стійки, <g>щоб</g> зареєструватися.",
-      "ru": "Он подошёл к стойке, <g>чтобы</g> зарегистрироваться."
+      "en": "He went to the counter <g>in order to</g> <g><b>register</b></g>.",
+      "uk": "Він пішов до стійки, <g>щоб</g> <g><b>зареєструватися</b></g>.",
+      "ru": "Он подошёл к стойке, <g>чтобы</g> <g><b>зарегистрироваться</b></g>."
     },
     "gram": "satz_mit_um_zu"
   },
@@ -25316,8 +25316,8 @@ var VOCAB = [
     "def": {
       "de": "Sie brachte ein Buch mit, <g>um</g> die <b>Wartezeit</b> sinnvoll <g>zu nutzen</g>.",
       "en": "She brought a book <g>in order to</g> use the <b>waiting time</b> wisely.",
-      "uk": "Вона взяла з собою книжку, <g>щоб</g> корисно провести час очікування.",
-      "ru": "Она взяла с собой книгу, <g>чтобы</g> с пользой провести время ожидания."
+      "uk": "Вона взяла з собою книжку, <g>щоб</g> корисно провести <b>час очікування</b>.",
+      "ru": "Она взяла с собой книгу, <g>чтобы</g> с пользой провести <b>время ожидания</b>."
     },
     "gram": "satz_mit_um_zu"
   },
@@ -25338,9 +25338,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Er kam früh, <g>um</g> alle Unterlagen rechtzeitig <g><b>vorzulegen</b></g>.",
-      "en": "He came early <g>in order to</g> <g>submit</g> all the documents on time.",
-      "uk": "Він прийшов рано, <g>щоб</g> вчасно подати всі документи.",
-      "ru": "Он пришёл рано, <g>чтобы</g> вовремя подать все документы."
+      "en": "He came early <g>in order to</g> <g><b>submit</b></g> all the documents on time.",
+      "uk": "Він прийшов рано, <g>щоб</g> вчасно <g><b>подати</b></g> всі документи.",
+      "ru": "Он пришёл рано, <g>чтобы</g> вовремя <g><b>подать</b></g> все документы."
     },
     "gram": "satz_mit_um_zu"
   },
@@ -25407,9 +25407,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Sie las das Formular genau, <g>um</g> es dann korrekt <g><b>zu unterschreiben</b></g>.",
-      "en": "She read the form carefully <g>in order to</g> then <g>sign</g> it correctly.",
-      "uk": "Вона уважно прочитала формуляр, <g>щоб</g> потім правильно його підписати.",
-      "ru": "Она внимательно прочитала формуляр, <g>чтобы</g> потом правильно его подписать."
+      "en": "She read the form carefully <g>in order to</g> then <g><b>sign</b></g> it correctly.",
+      "uk": "Вона уважно прочитала формуляр, <g>щоб</g> потім правильно його <g><b>підписати</b></g>.",
+      "ru": "Она внимательно прочитала формуляр, <g>чтобы</g> потом правильно его <g><b>подписать</b></g>."
     },
     "gram": "satz_mit_um_zu"
   },
@@ -25430,9 +25430,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Er beeilte sich, <g>um</g> das Formular noch vor Mittag <g><b>abzugeben</b></g>.",
-      "en": "He hurried <g>in order to</g> <g>hand in</g> the form before noon.",
-      "uk": "Він поспішав, <g>щоб</g> здати формуляр ще до обіду.",
-      "ru": "Он торопился, <g>чтобы</g> сдать формуляр ещё до обеда."
+      "en": "He hurried <g>in order to</g> <g><b>hand in</b></g> the form before noon.",
+      "uk": "Він поспішав, <g>щоб</g> <g><b>здати</b></g> формуляр ще до обіду.",
+      "ru": "Он торопился, <g>чтобы</g> <g><b>сдать</b></g> формуляр ещё до обеда."
     },
     "gram": "satz_mit_um_zu"
   },
@@ -27040,9 +27040,9 @@ var VOCAB = [
     },
     "def": {
       "de": "In diesem Haus <g>wird</g> nur mit erneuerbarer Energie <g><b>geheizt</b></g>.",
-      "en": "This house <g>is</g> <g>heated</g> only with renewable energy.",
-      "uk": "У цьому будинку опалюють лише відновлюваною енергією.",
-      "ru": "В этом доме отапливают только возобновляемой энергией."
+      "en": "This house <g>is</g> <g><b>heated</b></g> only with renewable energy.",
+      "uk": "У цьому будинку <b>опалюють</b> лише відновлюваною енергією.",
+      "ru": "В этом доме <b>отапливают</b> только возобновляемой энергией."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27086,9 +27086,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ganze Dach <g>wird</g> im Sommer neu <g><b>isoliert</b></g>.",
-      "en": "The whole roof <g>will be</g> newly <g>insulated</g> in summer.",
-      "uk": "Весь дах влітку заново утеплюють.",
-      "ru": "Всю крышу летом заново утепляют."
+      "en": "The whole roof <g>will be</g> newly <g><b>insulated</b></g> in summer.",
+      "uk": "Весь дах влітку заново <b>утеплюють</b>.",
+      "ru": "Всю крышу летом заново <b>утепляют</b>."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27109,9 +27109,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Am Ende des Arbeitstages <g>wird</g> jeder Computer im Büro <g><b>ausgeschaltet</b></g>.",
-      "en": "At the end of the workday, every computer in the office <g>is</g> <g>switched off</g>.",
-      "uk": "Наприкінці робочого дня в офісі вимикають кожен компʼютер.",
-      "ru": "В конце рабочего дня в офисе выключают каждый компьютер."
+      "en": "At the end of the workday, every computer in the office <g>is</g> <g><b>switched off</b></g>.",
+      "uk": "Наприкінці робочого дня в офісі <b>вимикають</b> кожен компʼютер.",
+      "ru": "В конце рабочего дня в офисе <b>выключают</b> каждый компьютер."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27178,9 +27178,9 @@ var VOCAB = [
     },
     "def": {
       "de": "In diesem Haushalt <g>wird</g> kaum noch Wasser <g><b>verschwendet</b></g>.",
-      "en": "In this household, hardly any water <g>is</g> <g>wasted</g> anymore.",
-      "uk": "У цьому домогосподарстві майже не витрачають воду даремно.",
-      "ru": "В этом домохозяйстве почти не тратят воду впустую."
+      "en": "In this household, hardly any water <g>is</g> <g><b>wasted</b></g> anymore.",
+      "uk": "У цьому домогосподарстві майже не <b>витрачають</b> воду даремно.",
+      "ru": "В этом домохозяйстве почти не <b>тратят</b> воду впустую."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27202,8 +27202,8 @@ var VOCAB = [
     "def": {
       "de": "Der Vortrag <g>hat</g> mich völlig <b>überzeugt</b>.",
       "en": "The presentation <g>has</g> completely <b>convinced</b> me.",
-      "uk": "Виступ мене повністю переконав.",
-      "ru": "Выступление меня полностью убедило."
+      "uk": "Виступ мене повністю <b>переконав</b>.",
+      "ru": "Выступление меня полностью <b>убедило</b>."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27225,8 +27225,8 @@ var VOCAB = [
     "def": {
       "de": "Sie <g>hat</g> sich schon seit ihrer Jugend für den Umweltschutz <b>engagiert</b>.",
       "en": "She <g>has</g> <b>been involved</b> in environmental protection since her youth.",
-      "uk": "Вона займається захистом довкілля ще з юності.",
-      "ru": "Она занимается защитой окружающей среды ещё с юности."
+      "uk": "Вона <b>займається</b> захистом довкілля ще з юності.",
+      "ru": "Она <b>занимается</b> защитой окружающей среды ещё с юности."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27248,8 +27248,8 @@ var VOCAB = [
     "def": {
       "de": "Wir <g>haben</g> unseren Plastikverbrauch stark <b>reduziert</b>.",
       "en": "We <g>have</g> significantly <b>reduced</b> our plastic consumption.",
-      "uk": "Ми значно скоротили використання пластику.",
-      "ru": "Мы значительно сократили использование пластика."
+      "uk": "Ми значно <b>скоротили</b> використання пластику.",
+      "ru": "Мы значительно <b>сократили</b> использование пластика."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27271,8 +27271,8 @@ var VOCAB = [
     "def": {
       "de": "Der Verein <g>hat</g> sich lange für saubere Flüsse <b>eingesetzt</b>.",
       "en": "The association <g>has</g> <b>advocated</b> for clean rivers for a long time.",
-      "uk": "Організація довго відстоювала чисті річки.",
-      "ru": "Организация долго отстаивала чистые реки."
+      "uk": "Організація довго <b>відстоювала</b> чисті річки.",
+      "ru": "Организация долго <b>отстаивала</b> чистые реки."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27294,8 +27294,8 @@ var VOCAB = [
     "def": {
       "de": "Die Temperatur <g>ist</g> in diesem Sommer stark <b>gestiegen</b>.",
       "en": "The temperature <g>has</g> <b>risen</b> a lot this summer.",
-      "uk": "Температура цього літа сильно зросла.",
-      "ru": "Температура этим летом сильно выросла."
+      "uk": "Температура цього літа сильно <b>зросла</b>.",
+      "ru": "Температура этим летом сильно <b>выросла</b>."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27317,8 +27317,8 @@ var VOCAB = [
     "def": {
       "de": "Der Wasserstand des Flusses <g>ist</g> in diesem Jahr deutlich <b>gesunken</b>.",
       "en": "The water level of the river <g>has</g> <b>fallen</b> significantly this year.",
-      "uk": "Рівень води в річці цього року значно знизився.",
-      "ru": "Уровень воды в реке в этом году значительно снизился."
+      "uk": "Рівень води в річці цього року значно <b>знизився</b>.",
+      "ru": "Уровень воды в реке в этом году значительно <b>снизился</b>."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27340,8 +27340,8 @@ var VOCAB = [
     "def": {
       "de": "Wir <g>sind</g> letztes Jahr zu einem grünen Stromanbieter <b>gewechselt</b>.",
       "en": "We <g>have</g> <b>switched</b> to a green electricity provider last year.",
-      "uk": "Ми минулого року перейшли на екологічного постачальника електроенергії.",
-      "ru": "Мы в прошлом году перешли на экологичного поставщика электроэнергии."
+      "uk": "Ми минулого року <b>перейшли</b> на екологічного постачальника електроенергії.",
+      "ru": "Мы в прошлом году <b>перешли</b> на экологичного поставщика электроэнергии."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27363,8 +27363,8 @@ var VOCAB = [
     "def": {
       "de": "Viele Menschen <g>haben</g> die Gefahr des Klimawandels erst spät <b>erkannt</b>.",
       "en": "Many people <g>have</g> only <b>recognized</b> the danger of climate change late.",
-      "uk": "Багато людей визнали небезпеку зміни клімату лише пізно.",
-      "ru": "Многие люди признали опасность изменения климата лишь поздно."
+      "uk": "Багато людей <b>визнали</b> небезпеку зміни клімату лише пізно.",
+      "ru": "Многие люди <b>признали</b> опасность изменения климата лишь поздно."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27569,9 +27569,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Kühe <g>werden</g> auf diesem Hof zweimal täglich <g><b>gemolken</b></g>.",
-      "en": "The cows on this farm <g>are</g> <g>milked</g> twice a day.",
-      "uk": "Корів на цій фермі доять двічі на день.",
-      "ru": "Коров на этой ферме доят дважды в день."
+      "en": "The cows on this farm <g>are</g> <g><b>milked</b></g> twice a day.",
+      "uk": "Корів на цій фермі <b>доять</b> двічі на день.",
+      "ru": "Коров на этой ферме <b>доят</b> дважды в день."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27592,9 +27592,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Äpfel <g>werden</g> im Herbst von den Mitarbeitern von Hand <g><b>gepflückt</b></g>.",
-      "en": "The apples <g>are</g> <g>picked</g> by hand by the workers in autumn.",
-      "uk": "Восени яблука вручну збирають працівники.",
-      "ru": "Осенью яблоки вручную собирают работники."
+      "en": "The apples <g>are</g> <g><b>picked</b></g> by hand by the workers in autumn.",
+      "uk": "Восени яблука вручну <b>збирають</b> працівники.",
+      "ru": "Осенью яблоки вручную <b>собирают</b> работники."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27615,9 +27615,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das Getreide <g>wird</g> jedes Jahr im Frühjahr <g><b>gesät</b></g>.",
-      "en": "The grain <g>is</g> <g>sown</g> every spring.",
-      "uk": "Зерно сіють щовесни.",
-      "ru": "Зерно сеют каждую весну."
+      "en": "The grain <g>is</g> <g><b>sown</b></g> every spring.",
+      "uk": "Зерно <b>сіють</b> щовесни.",
+      "ru": "Зерно <b>сеют</b> каждую весну."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27638,9 +27638,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Kartoffeln <g>werden</g> jetzt im September <g><b>geerntet</b></g>.",
-      "en": "The potatoes <g>are</g> now <g>harvested</g> in September.",
-      "uk": "Картоплю тепер збирають у вересні.",
-      "ru": "Картофель теперь собирают в сентябре."
+      "en": "The potatoes <g>are</g> now <g><b>harvested</b></g> in September.",
+      "uk": "Картоплю тепер <b>збирають</b> у вересні.",
+      "ru": "Картофель теперь <b>собирают</b> в сентябре."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27661,9 +27661,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Wiesen <g>werden</g> auf diesem Hof nur zweimal im Jahr <g><b>gemäht</b></g>.",
-      "en": "The meadows on this farm <g>are</g> <g>mowed</g> only twice a year.",
-      "uk": "Луки на цій фермі косять лише двічі на рік.",
-      "ru": "Луга на этой ферме косят только дважды в год."
+      "en": "The meadows on this farm <g>are</g> <g><b>mowed</b></g> only twice a year.",
+      "uk": "Луки на цій фермі <b>косять</b> лише двічі на рік.",
+      "ru": "Луга на этой ферме <b>косят</b> только дважды в год."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27684,9 +27684,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Qualität der Eier <g>wird</g> jeden Tag genau <g><b>kontrolliert</b></g>.",
-      "en": "The quality of the eggs <g>is</g> checked carefully every day.",
-      "uk": "Якість яєць щодня ретельно перевіряють.",
-      "ru": "Качество яиц ежедневно тщательно проверяют."
+      "en": "The quality of the eggs <g>is</g> <g><b>checked</b></g> carefully every day.",
+      "uk": "Якість яєць щодня ретельно <b>перевіряють</b>.",
+      "ru": "Качество яиц ежедневно тщательно <b>проверяют</b>."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27707,9 +27707,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Kartoffeln <g>werden</g> nach der Ernte automatisch nach Größe <g><b>sortiert</b></g>.",
-      "en": "The potatoes <g>are</g> automatically <g>sorted</g> by size after the harvest.",
-      "uk": "Картоплю після збору автоматично сортують за розміром.",
-      "ru": "Картофель после сбора автоматически сортируют по размеру."
+      "en": "The potatoes <g>are</g> automatically <g><b>sorted</b></g> by size after the harvest.",
+      "uk": "Картоплю після збору автоматично <b>сортують</b> за розміром.",
+      "ru": "Картофель после сбора автоматически <b>сортируют</b> по размеру."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27799,9 +27799,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Wälder <g>werden</g> in diesem Nationalpark streng <g><b>geschützt</b></g>.",
-      "en": "The forests in this national park <g>are</g> strictly <g>protected</g>.",
-      "uk": "Ліси в цьому національному парку суворо охороняють.",
-      "ru": "Леса в этом национальном парке строго охраняют."
+      "en": "The forests in this national park <g>are</g> strictly <g><b>protected</b></g>.",
+      "uk": "Ліси в цьому національному парку суворо <b>охороняють</b>.",
+      "ru": "Леса в этом национальном парке строго <b>охраняют</b>."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27822,9 +27822,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ein großer Teil der Emissionen <g>wird</g> vom Verkehr <g><b>verursacht</b></g>.",
-      "en": "A large part of the emissions <g>is</g> <g>caused</g> by traffic.",
-      "uk": "Велику частину викидів спричиняє транспорт.",
-      "ru": "Значительную часть выбросов вызывает транспорт."
+      "en": "A large part of the emissions <g>is</g> <g><b>caused</b></g> by traffic.",
+      "uk": "Велику частину викидів <b>спричиняє</b> транспорт.",
+      "ru": "Значительную часть выбросов <b>вызывает</b> транспорт."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27845,9 +27845,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das Klima der ganzen Region <g>wird</g> vom Meer stark <g><b>beeinflusst</b></g>.",
-      "en": "The climate of the whole region <g>is</g> strongly <g>influenced</g> by the sea.",
-      "uk": "На клімат усього регіону сильно впливає море.",
-      "ru": "На климат всего региона сильно влияет море."
+      "en": "The climate of the whole region <g>is</g> strongly <g><b>influenced</b></g> by the sea.",
+      "uk": "На клімат усього регіону сильно <b>впливає</b> море.",
+      "ru": "На климат всего региона сильно <b>влияет</b> море."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -31203,7 +31203,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Viele finden das Talent dieses <b>Künstlers</b> einfach <g>unglaublich</g>.",
-      "en": "Many people simply find this artist's talent incredible.",
+      "en": "Many people simply find this <b>artist's</b> talent incredible.",
       "uk": "Багато хто вважає талант цього <b>митця</b> просто неймовірним.",
       "ru": "Многие считают талант этого <b>художника</b> просто невероятным."
     },
@@ -31226,7 +31226,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Das <b>Kunstwerk</b> wirkt <g>unvollendet</g>, aber genau das macht es interessant.",
-      "en": "The artwork looks unfinished, but that is exactly what makes it interesting.",
+      "en": "The <b>artwork</b> looks unfinished, but that is exactly what makes it interesting.",
       "uk": "<b>Витвір мистецтва</b> здається незавершеним, і саме це робить його цікавим.",
       "ru": "<b>Произведение искусства</b> кажется незавершённым, и именно это делает его интересным."
     },
@@ -31249,7 +31249,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Einige Sprayer <b>sprühen</b> ihre Bilder auch an <g>unerlaubten</g> Orten.",
-      "en": "Some sprayers also spray their pictures in unauthorised places.",
+      "en": "Some sprayers also <b>spray</b> their pictures in unauthorised places.",
       "uk": "Деякі спреєри <b>розпилюють</b> фарбу і в недозволених місцях.",
       "ru": "Некоторые райтеры <b>распыляют</b> краску и в неразрешённых местах."
     },
@@ -31272,7 +31272,7 @@ var VOCAB = [
     },
     "def": {
       "de": "An dieser <g>ungeschützten</g> <b>Mauer</b> entstehen immer wieder neue Graffiti.",
-      "en": "New graffiti keeps appearing on this unprotected wall.",
+      "en": "New graffiti keeps appearing on this unprotected <b>wall</b>.",
       "uk": "На цій незахищеній <b>стіні</b> постійно зʼявляються нові графіті.",
       "ru": "На этой незащищённой <b>стене</b> постоянно появляются новые граффити."
     },
@@ -31295,9 +31295,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Manche <b>Sprayer</b> arbeiten sehr <g>unauffällig</g>, damit sie niemand bemerkt.",
-      "en": "Some sprayers work very inconspicuously so that nobody notices them.",
+      "en": "Some <b>sprayers</b> work very inconspicuously so that nobody notices them.",
       "uk": "Деякі <b>спреєри</b> працюють дуже непомітно, щоб їх ніхто не побачив.",
-      "ru": "Некоторые райтеры работают очень незаметно, чтобы их никто не заметил."
+      "ru": "Некоторые <b>райтеры</b> работают очень незаметно, чтобы их никто не заметил."
     },
     "gram": "adjektive_mit_un"
   },
@@ -38770,9 +38770,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<b>Innerhalb</b> einer <g>zumutbaren</g> Frist muss die Firma antworten.",
-      "en": "The company must respond within a reasonable period of time.",
-      "uk": "Фірма повинна відповісти в межах прийнятного терміну.",
-      "ru": "Фирма должна ответить в пределах приемлемого срока."
+      "en": "The company must respond <b>within</b> a reasonable period of time.",
+      "uk": "Фірма повинна відповісти <b>в межах</b> прийнятного терміну.",
+      "ru": "Фирма должна ответить <b>в пределах</b> приемлемого срока."
     },
     "gram": "adjektive_auf_bar_los"
   },
@@ -38793,9 +38793,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<b>Außerhalb</b> der Geschäftszeiten ist leider niemand <g>erreichbar</g>.",
-      "en": "Outside of business hours, unfortunately no one is reachable.",
-      "uk": "Поза робочим часом, на жаль, ніхто не є доступним.",
-      "ru": "За пределами рабочего времени, к сожалению, никто не доступен."
+      "en": "<b>Outside of</b> business hours, unfortunately no one is reachable.",
+      "uk": "<b>Поза</b> робочим часом, на жаль, ніхто не є доступним.",
+      "ru": "<b>За пределами</b> рабочего времени, к сожалению, никто не доступен."
     },
     "gram": "adjektive_auf_bar_los"
   },
@@ -39069,9 +39069,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Bevor sie auswanderte, <g>hatte</g> sie ein kleines Team <g><b>geleitet</b></g>.",
-      "en": "Before she emigrated, she <g>had</g> <g>led</g> a small team.",
-      "uk": "До того як вона емігрувала, вона вже керувала невеликою командою.",
-      "ru": "До того как она эмигрировала, она уже руководила небольшой командой."
+      "en": "Before she emigrated, she <g>had</g> <g><b>led</b></g> a small team.",
+      "uk": "До того як вона емігрувала, вона вже <b>керувала</b> невеликою командою.",
+      "ru": "До того как она эмигрировала, она уже <b>руководила</b> небольшой командой."
     },
     "gram": "plusquamperfekt"
   },
@@ -39092,9 +39092,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Bevor er nach Deutschland kam, <g>hatte</g> er ein eigenes Unternehmen <g><b>gegründet</b></g>.",
-      "en": "Before he came to Germany, he <g>had</g> <g>founded</g> his own company.",
-      "uk": "До того як він приїхав до Німеччини, він уже заснував власну компанію.",
-      "ru": "До того как он приехал в Германию, он уже основал собственную компанию."
+      "en": "Before he came to Germany, he <g>had</g> <g><b>founded</b></g> his own company.",
+      "uk": "До того як він приїхав до Німеччини, він уже <b>заснував</b> власну компанію.",
+      "ru": "До того как он приехал в Германию, он уже <b>основал</b> собственную компанию."
     },
     "gram": "plusquamperfekt"
   },
@@ -39138,9 +39138,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Bevor er auswanderte, <g>hatte</g> er in seinem Heimatland Medizin <g><b>studiert</b></g>.",
-      "en": "Before he emigrated, he <g>had</g> <g>studied</g> medicine in his home country.",
-      "uk": "До того як він емігрував, він уже вивчав медицину на батьківщині.",
-      "ru": "До того как он эмигрировал, он уже изучал медицину на родине."
+      "en": "Before he emigrated, he <g>had</g> <g><b>studied</b></g> medicine in his home country.",
+      "uk": "До того як він емігрував, він уже <b>вивчав</b> медицину на батьківщині.",
+      "ru": "До того как он эмигрировал, он уже <b>изучал</b> медицину на родине."
     },
     "gram": "plusquamperfekt"
   },
@@ -39184,9 +39184,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Bevor er diese Stelle fand, <g>hatte</g> er schon dreimal den Job <g><b>gewechselt</b></g>.",
-      "en": "Before he found this position, he <g>had</g> already <g>changed</g> jobs three times.",
-      "uk": "До того як він знайшов цю посаду, він уже тричі змінював роботу.",
-      "ru": "До того как он нашёл эту должность, он уже трижды менял работу."
+      "en": "Before he found this position, he <g>had</g> already <g><b>changed</b></g> jobs three times.",
+      "uk": "До того як він знайшов цю посаду, він уже тричі <b>змінював</b> роботу.",
+      "ru": "До того как он нашёл эту должность, он уже трижды <b>менял</b> работу."
     },
     "gram": "plusquamperfekt"
   },
@@ -40955,9 +40955,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Wegen der</g> vielen Flüchtlinge <b>engagieren</b> sich immer mehr Menschen in der Region.",
-      "en": "<g>Because of the</g> many refugees, more and more people are getting involved in the region.",
-      "uk": "<g>Через</g> велику кількість біженців у регіоні дедалі більше людей стають волонтерами.",
-      "ru": "<g>Из-за</g> большого количества беженцев в регионе всё больше людей становятся волонтёрами."
+      "en": "<g>Because of the</g> many refugees, more and more people are <b>getting involved</b> in the region.",
+      "uk": "<g>Через</g> велику кількість біженців у регіоні дедалі більше людей <b>стають волонтерами</b>.",
+      "ru": "<g>Из-за</g> большого количества беженцев в регионе всё больше людей <b>становятся волонтёрами</b>."
     },
     "gram": "praepositionen_mit_genitiv"
   },
@@ -41001,9 +41001,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Im sozialen <b>Bereich</b> gibt es viele <g>hilfreiche</g> Projekte für Geflüchtete.",
-      "en": "In the social sector, there are many helpful projects for refugees.",
-      "uk": "У соціальній сфері є багато корисних проєктів для біженців.",
-      "ru": "В социальной сфере есть много полезных проектов для беженцев."
+      "en": "In the social <b>area</b>, there are many helpful projects for refugees.",
+      "uk": "У соціальній <b>сфері</b> є багато корисних проєктів для біженців.",
+      "ru": "В социальной <b>сфере</b> есть много полезных проектов для беженцев."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -41024,9 +41024,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Dieses <g>umfangreiche</g> <b>Hilfsangebot</b> unterstützt Familien in schwierigen Situationen.",
-      "en": "This extensive support service helps families in difficult situations.",
-      "uk": "Ця широка пропозиція допомоги підтримує сімʼї у складних ситуаціях.",
-      "ru": "Это обширное предложение помощи поддерживает семьи в трудных ситуациях."
+      "en": "This extensive <b>support service</b> helps families in difficult situations.",
+      "uk": "Ця широка <b>пропозиція допомоги</b> підтримує сімʼї у складних ситуаціях.",
+      "ru": "Это обширное <b>предложение помощи</b> поддерживает семьи в трудных ситуациях."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -41047,9 +41047,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Trotz der <g>zahlreichen</g> <b>Gefahren</b> half er dem verletzten Wanderer.",
-      "en": "Despite the numerous dangers, he helped the injured hiker.",
-      "uk": "Незважаючи на численні небезпеки, він допоміг пораненому туристу.",
-      "ru": "Несмотря на многочисленные опасности, он помог раненому туристу."
+      "en": "Despite the numerous <b>dangers</b>, he helped the injured hiker.",
+      "uk": "Незважаючи на численні <b>небезпеки</b>, він допоміг пораненому туристу.",
+      "ru": "Несмотря на многочисленные <b>опасности</b>, он помог раненому туристу."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -41116,9 +41116,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Liebevolle</g> <b>Empathie</b> zeigte die Freiwillige gegenüber jedem Kind im Heim.",
-      "en": "The volunteer showed loving empathy towards every child in the home.",
-      "uk": "Волонтерка виявляла ніжну емпатію до кожної дитини в притулку.",
-      "ru": "Волонтёр проявляла нежную эмпатию к каждому ребёнку в приюте."
+      "en": "The volunteer showed loving <b>empathy</b> towards every child in the home.",
+      "uk": "Волонтерка виявляла ніжну <b>емпатію</b> до кожної дитини в притулку.",
+      "ru": "Волонтёр проявляла нежную <b>эмпатию</b> к каждому ребёнку в приюте."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -41139,9 +41139,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Familie bekam <g>hilfreiche</g> <b>Unterstützung</b> von der Nachbarschaft.",
-      "en": "The family received helpful support from the neighbourhood.",
-      "uk": "Родина отримала корисну підтримку від сусідів.",
-      "ru": "Семья получила полезную поддержку от соседей."
+      "en": "The family received helpful <b>support</b> from the neighbourhood.",
+      "uk": "Родина отримала корисну <b>підтримку</b> від сусідів.",
+      "ru": "Семья получила полезную <b>поддержку</b> от соседей."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -41162,9 +41162,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der <g>erfolgreiche</g> Verein <b>unterstützt</b> viele Familien in der Region.",
-      "en": "The successful club supports many families in the region.",
-      "uk": "Успішний клуб підтримує багато сімей у регіоні.",
-      "ru": "Успешный клуб поддерживает много семей в регионе."
+      "en": "The successful club <b>supports</b> many families in the region.",
+      "uk": "Успішний клуб <b>підтримує</b> багато сімей у регіоні.",
+      "ru": "Успешный клуб <b>поддерживает</b> много семей в регионе."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -41185,9 +41185,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ihr <g>zahlreicher</g> <b>Freundeskreis</b> half ihr in der schwierigen Zeit.",
-      "en": "Her numerous circle of friends helped her during the difficult time.",
-      "uk": "Її численне коло друзів допомогло їй у важкий час.",
-      "ru": "Её многочисленный круг друзей помог ей в трудное время."
+      "en": "Her numerous <b>circle of friends</b> helped her during the difficult time.",
+      "uk": "Її численне <b>коло друзів</b> допомогло їй у важкий час.",
+      "ru": "Её многочисленный <b>круг друзей</b> помог ей в трудное время."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -41208,9 +41208,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Eine <g>hoffnungsvolle</g> Gemeinschaft muss in schweren Zeiten <b>zusammenhalten</b>.",
-      "en": "A hopeful community must stick together in hard times.",
-      "uk": "Сповнена надії громада повинна триматися разом у важкі часи.",
-      "ru": "Полная надежды община должна держаться вместе в трудные времена."
+      "en": "A hopeful community must <b>stick together</b> in hard times.",
+      "uk": "Сповнена надії громада повинна <b>триматися разом</b> у важкі часи.",
+      "ru": "Полная надежды община должна <b>держаться вместе</b> в трудные времена."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -41231,9 +41231,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<b>Einerseits</b> ist die Aufgabe <g>anspruchsvoll</g>, <b>andererseits</b> macht sie große Freude.",
-      "en": "On the one hand, the task is demanding, on the other hand it is very rewarding.",
-      "uk": "З одного боку, завдання складне, з іншого боку — воно приносить велике задоволення.",
-      "ru": "С одной стороны, задача сложная, с другой стороны — она приносит большое удовольствие."
+      "en": "<b>On the one hand</b>, the task is demanding, <b>on the other hand</b> it is very rewarding.",
+      "uk": "<b>З одного боку</b>, завдання складне, <b>з іншого боку</b> — воно приносить велике задоволення.",
+      "ru": "<b>С одной стороны</b>, задача сложная, <b>с другой стороны</b> — она приносит большое удовольствие."
     },
     "gram": "adjektive_auf_voll_reich"
   },
@@ -42128,9 +42128,9 @@ var VOCAB = [
     },
     "def": {
       "de": "In unserem <b>Mehrfamilienhaus</b> kenne ich jeden <g>Nachbarn</g> persönlich.",
-      "en": "In our apartment building, I know every neighbour personally.",
-      "uk": "У нашому багатоквартирному будинку я особисто знаю кожного сусіда.",
-      "ru": "В нашем многоквартирном доме я лично знаю каждого соседа."
+      "en": "In our <b>apartment building</b>, I know every neighbour personally.",
+      "uk": "У нашому <b>багатоквартирному будинку</b> я особисто знаю кожного сусіда.",
+      "ru": "В нашем <b>многоквартирном доме</b> я лично знаю каждого соседа."
     },
     "gram": "n_deklination"
   },
@@ -42151,9 +42151,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir haben unser <b>Einfamilienhaus</b> von einem freundlichen <g>Herrn</g> gekauft.",
-      "en": "We bought our single-family house from a friendly gentleman.",
-      "uk": "Ми купили наш одноквартирний будинок у привітного пана.",
-      "ru": "Мы купили наш одноквартирный дом у приветливого господина."
+      "en": "We bought our <b>single-family house</b> from a friendly gentleman.",
+      "uk": "Ми купили наш <b>одноквартирний будинок</b> у привітного пана.",
+      "ru": "Мы купили наш <b>одноквартирный дом</b> у приветливого господина."
     },
     "gram": "n_deklination"
   },
@@ -42174,9 +42174,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <b>Kaltmiete</b>, <g>über die</g> wir gesprochen haben, ist wirklich günstig.",
-      "en": "The rent excluding utilities, <g>about which</g> we talked, is really affordable.",
-      "uk": "Орендна плата без комунальних послуг, <g>про яку</g> ми говорили, справді доступна.",
-      "ru": "Аренда без коммунальных услуг, <g>о которой</g> мы говорили, действительно доступная."
+      "en": "The <b>rent excluding utilities</b>, <g>about which</g> we talked, is really affordable.",
+      "uk": "<b>Орендна плата без комунальних послуг</b>, <g>про яку</g> ми говорили, справді доступна.",
+      "ru": "<b>Аренда без коммунальных услуг</b>, <g>о которой</g> мы говорили, действительно доступная."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42243,9 +42243,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist der <b>Stadtrand</b>, <g>in dem</g> ich seit zehn Jahren wohne.",
-      "en": "That's the outskirts <g>in which</g> I have been living for ten years.",
-      "uk": "Це околиця міста, <g>у якій</g> я живу вже десять років.",
-      "ru": "Это окраина города, <g>в которой</g> я живу уже десять лет."
+      "en": "That's the <b>outskirts</b> <g>in which</g> I have been living for ten years.",
+      "uk": "Це <b>околиця міста</b>, <g>у якій</g> я живу вже десять років.",
+      "ru": "Это <b>окраина города</b>, <g>в которой</g> я живу уже десять лет."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -42266,9 +42266,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der <b>Vorort</b>, <g>in dem</g> meine Eltern leben, ist sehr ruhig.",
-      "en": "The suburb <g>in which</g> my parents live is very quiet.",
-      "uk": "Передмістя, <g>у якому</g> живуть мої батьки, дуже тихе.",
-      "ru": "Пригород, <g>в котором</g> живут мои родители, очень тихий."
+      "en": "The <b>suburb</b> <g>in which</g> my parents live is very quiet.",
+      "uk": "<b>Передмістя</b>, <g>у якому</g> живуть мої батьки, дуже тихе.",
+      "ru": "<b>Пригород</b>, <g>в котором</g> живут мои родители, очень тихий."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -42289,9 +42289,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Diese <b>bezahlbare</b> Wohnung liegt in einer <g>superzentralen</g> Lage.",
-      "en": "This affordable flat is in a super central location.",
-      "uk": "Ця доступна за ціною квартира розташована в дуже центральному місці.",
-      "ru": "Эта доступная по цене квартира расположена в супер-центральном месте."
+      "en": "This <b>affordable</b> flat is in a super central location.",
+      "uk": "Ця <b>доступна за ціною</b> квартира розташована в дуже центральному місці.",
+      "ru": "Эта <b>доступная по цене</b> квартира расположена в супер-центральном месте."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -42312,9 +42312,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Spielplatz ist <g>hochmodern</g> und die ganze Siedlung <b>kinderfreundlich</b>.",
-      "en": "The playground is highly modern and the whole estate is child-friendly.",
-      "uk": "Дитячий майданчик дуже сучасний, а весь житловий комплекс дружній до дітей.",
-      "ru": "Детская площадка супер-современная, а весь жилой комплекс дружелюбен к детям."
+      "en": "The playground is highly modern and the whole estate is <b>child-friendly</b>.",
+      "uk": "Дитячий майданчик дуже сучасний, а весь житловий комплекс <b>дружній до дітей</b>.",
+      "ru": "Детская площадка супер-современная, а весь жилой комплекс <b>дружелюбен к детям</b>."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -42335,9 +42335,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Diese <g>überregionale</g> <b>Nachbarschaftshilfe</b> verbindet mehrere Stadtteile.",
-      "en": "This supra-regional neighbourhood help network connects several districts.",
-      "uk": "Ця міжрегіональна сусідська взаємодопомога обʼєднує кілька районів міста.",
-      "ru": "Эта межрегиональная соседская взаимопомощь объединяет несколько районов города."
+      "en": "This supra-regional <b>neighbourhood help</b> network connects several districts.",
+      "uk": "Ця міжрегіональна <b>сусідська взаємодопомога</b> обʼєднує кілька районів міста.",
+      "ru": "Эта межрегиональная <b>соседская взаимопомощь</b> объединяет несколько районов города."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -42359,8 +42359,8 @@ var VOCAB = [
     "def": {
       "de": "<g>Was</g> in ihrem <b>Gesuch</b> stand, hat mich sofort überzeugt.",
       "en": "<g>What</g> was written in her <b>advertisement</b> convinced me immediately.",
-      "uk": "<g>Те, що</g> було написано в її оголошенні, одразу мене переконало.",
-      "ru": "<g>То, что</g> было написано в её объявлении, сразу меня убедило."
+      "uk": "<g>Те, що</g> було написано в її <b>оголошенні</b>, одразу мене переконало.",
+      "ru": "<g>То, что</g> было написано в её <b>объявлении</b>, сразу меня убедило."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -42381,9 +42381,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ich kann <b>mir</b> kaum <b>vorstellen</b>, wie <g>extrateuer</g> diese Wohnung wirklich ist.",
-      "en": "I can hardly imagine how extremely expensive this flat really is.",
-      "uk": "Я собі ледве можу уявити, наскільки надзвичайно дорогою насправді є ця квартира.",
-      "ru": "Я себе едва могу представить, насколько чрезвычайно дорогая на самом деле эта квартира."
+      "en": "I can hardly <b>imagine</b> how extremely expensive this flat really is.",
+      "uk": "Я <b>собі</b> ледве можу <b>уявити</b>, наскільки надзвичайно дорогою насправді є ця квартира.",
+      "ru": "Я <b>себе</b> едва могу <b>представить</b>, насколько чрезвычайно дорогая на самом деле эта квартира."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -42404,9 +42404,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das <g>hochmoderne</g> Haus ist gut gedämmt, aber die alte Wohnung wirkt völlig <b>isoliert</b> vom Rest des Gebäudes.",
-      "en": "The highly modern house is well insulated, but the old flat seems completely isolated from the rest of the building.",
-      "uk": "Дуже сучасний будинок добре теплоізольований, але стара квартира виглядає повністю відокремленою від решти будівлі.",
-      "ru": "Супер-современный дом хорошо утеплён, но старая квартира выглядит полностью изолированной от остальной части здания."
+      "en": "The highly modern house is well insulated, but the old flat seems completely <b>isolated</b> from the rest of the building.",
+      "uk": "Дуже сучасний будинок добре теплоізольований, але стара квартира виглядає повністю <b>ізольованою</b> від решти будівлі.",
+      "ru": "Супер-современный дом хорошо утеплён, но старая квартира выглядит полностью <b>изолированной</b> от остальной части здания."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -42427,9 +42427,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>übergroße</g> Piazza im Zentrum wirkt jeden Abend besonders <b>lebendig</b>.",
-      "en": "The oversized piazza in the centre feels especially lively every evening.",
-      "uk": "Величезна площа в центрі щовечора виглядає особливо жвавою.",
-      "ru": "Огромная площадь в центре каждый вечер выглядит особенно оживлённой."
+      "en": "The oversized piazza in the centre feels especially <b>lively</b> every evening.",
+      "uk": "Величезна площа в центрі щовечора виглядає особливо <b>жвавою</b>.",
+      "ru": "Огромная площадь в центре каждый вечер выглядит особенно <b>оживлённой</b>."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -42450,9 +42450,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Diese Villa hat eine <g>überdurchschnittliche</g> <b>Wohnfläche</b> von 250 Quadratmetern.",
-      "en": "This villa has an above-average living space of 250 square metres.",
-      "uk": "Ця вілла має надсередню житлову площу в 250 квадратних метрів.",
-      "ru": "Эта вилла имеет сверхсреднюю жилую площадь в 250 квадратных метров."
+      "en": "This villa has an above-average <b>living space</b> of 250 square metres.",
+      "uk": "Ця вілла має надсередню <b>житлову площу</b> в 250 квадратних метрів.",
+      "ru": "Эта вилла имеет сверхсреднюю <b>жилую площадь</b> в 250 квадратных метров."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -42473,9 +42473,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>hochpreisige</g> <b>Innenstadt</b> zieht vor allem wohlhabende Familien an.",
-      "en": "The high-priced city centre mainly attracts wealthy families.",
-      "uk": "Дороговартісний центр міста приваблює насамперед заможні родини.",
-      "ru": "Дорогой центр города привлекает в основном состоятельные семьи."
+      "en": "The high-priced <b>city centre</b> mainly attracts wealthy families.",
+      "uk": "Дороговартісний <b>центр міста</b> приваблює насамперед заможні родини.",
+      "ru": "Дорогой <b>центр города</b> привлекает в основном состоятельные семьи."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -42496,9 +42496,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ich mag diesen freundlichen <g><b>Menschen</b></g> aus der Nachbarschaft sehr.",
-      "en": "I really like this friendly person from the neighbourhood.",
-      "uk": "Мені дуже подобається ця приязна людина із сусідства.",
-      "ru": "Мне очень нравится этот приветливый человек из соседства."
+      "en": "I really like this friendly <b>person</b> from the neighbourhood.",
+      "uk": "Мені дуже подобається ця приязна <b>людина</b> із сусідства.",
+      "ru": "Мне очень нравится этот приветливый <b>человек</b> из соседства."
     },
     "gram": "n_deklination"
   },
@@ -42519,9 +42519,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Für die Reparatur haben wir einen <g><b>Experten</b></g> geholt.",
-      "en": "We called in an expert for the repair.",
-      "uk": "Для ремонту ми викликали експерта.",
-      "ru": "Для ремонта мы вызвали эксперта."
+      "en": "We called in an <b>expert</b> for the repair.",
+      "uk": "Для ремонту ми викликали <b>експерта</b>.",
+      "ru": "Для ремонта мы вызвали <b>эксперта</b>."
     },
     "gram": "n_deklination"
   },
@@ -42542,9 +42542,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Vermieter behandelt jeden <g><b>Kunden</b></g> fair.",
-      "en": "The landlord treats every customer fairly.",
-      "uk": "Орендодавець ставиться до кожного клієнта справедливо.",
-      "ru": "Арендодатель относится к каждому клиенту справедливо."
+      "en": "The landlord treats every <b>customer</b> fairly.",
+      "uk": "Орендодавець ставиться до кожного <b>клієнта</b> справедливо.",
+      "ru": "Арендодатель относится к каждому <b>клиенту</b> справедливо."
     },
     "gram": "n_deklination"
   },
@@ -42565,9 +42565,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das Haus wurde von einem bekannten <g><b>Architekten</b></g> entworfen.",
-      "en": "The house was designed by a well-known architect.",
-      "uk": "Будинок спроєктував відомий архітектор.",
-      "ru": "Дом спроектировал известный архитектор."
+      "en": "The house was designed by a well-known <b>architect</b>.",
+      "uk": "Будинок спроєктував відомий <b>архітектор</b>.",
+      "ru": "Дом спроектировал известный <b>архитектор</b>."
     },
     "gram": "n_deklination"
   },
@@ -42588,9 +42588,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Im Erdgeschoss habe ich einen <g><b>Studenten</b></g> aus Spanien kennengelernt.",
-      "en": "On the ground floor, I got to know a student from Spain.",
-      "uk": "На першому поверсі я познайомився зі студентом з Іспанії.",
-      "ru": "На первом этаже я познакомился со студентом из Испании."
+      "en": "On the ground floor, I got to know a <b>student</b> from Spain.",
+      "uk": "На першому поверсі я познайомився зі <b>студентом</b> з Іспанії.",
+      "ru": "На первом этаже я познакомился со <b>студентом</b> из Испании."
     },
     "gram": "n_deklination"
   },
@@ -42611,9 +42611,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir riefen den <g><b>Polizisten</b></g>, weil es im Treppenhaus laut war.",
-      "en": "We called the police officer because it was loud in the stairwell.",
-      "uk": "Ми викликали поліцейського, бо у підʼїзді було шумно.",
-      "ru": "Мы вызвали полицейского, потому что в подъезде было шумно."
+      "en": "We called the <b>police officer</b> because it was loud in the stairwell.",
+      "uk": "Ми викликали <b>поліцейського</b>, бо у підʼїзді було шумно.",
+      "ru": "Мы вызвали <b>полицейского</b>, потому что в подъезде было шумно."
     },
     "gram": "n_deklination"
   },
@@ -42634,9 +42634,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Hausverwaltung hat dem neuen <g><b>Praktikanten</b></g> viele Aufgaben gegeben.",
-      "en": "The building management gave the new intern many tasks.",
-      "uk": "Управління будинком дало новому практиканту багато завдань.",
-      "ru": "Управление домом дало новому стажёру много заданий."
+      "en": "The building management gave the new <b>intern</b> many tasks.",
+      "uk": "Управління будинком дало новому <b>практиканту</b> багато завдань.",
+      "ru": "Управление домом дало новому <b>стажёру</b> много заданий."
     },
     "gram": "n_deklination"
   },
@@ -42657,9 +42657,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Bewohner sprachen ausführlich mit dem <g><b>Journalisten</b></g> über das neue Viertel.",
-      "en": "The residents spoke extensively with the journalist about the new neighbourhood.",
-      "uk": "Мешканці довго розмовляли з журналістом про новий квартал.",
-      "ru": "Жители подробно говорили с журналистом о новом квартале."
+      "en": "The residents spoke extensively with the <b>journalist</b> about the new neighbourhood.",
+      "uk": "Мешканці довго розмовляли з <b>журналістом</b> про новий квартал.",
+      "ru": "Жители подробно говорили с <b>журналистом</b> о новом квартале."
     },
     "gram": "n_deklination"
   },
@@ -42680,9 +42680,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist der <b>Vermieter</b>, <g>mit dem</g> wir den Vertrag unterschrieben haben.",
-      "en": "That's the landlord <g>with whom</g> we signed the contract.",
-      "uk": "Це орендодавець, <g>з яким</g> ми підписали договір.",
-      "ru": "Это арендодатель, <g>с которым</g> мы подписали договор."
+      "en": "That's the <b>landlord</b> <g>with whom</g> we signed the contract.",
+      "uk": "Це <b>орендодавець</b>, <g>з яким</g> ми підписали договір.",
+      "ru": "Это <b>арендодатель</b>, <g>с которым</g> мы подписали договор."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42703,9 +42703,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist der <b>Mietvertrag</b>, <g>über den</g> wir lange verhandelt haben.",
-      "en": "That's the rental contract <g>about which</g> we negotiated for a long time.",
-      "uk": "Це договір оренди, <g>про який</g> ми довго домовлялися.",
-      "ru": "Это договор аренды, <g>о котором</g> мы долго договаривались."
+      "en": "That's the <b>rental contract</b> <g>about which</g> we negotiated for a long time.",
+      "uk": "Це <b>договір оренди</b>, <g>про який</g> ми довго домовлялися.",
+      "ru": "Это <b>договор аренды</b>, <g>о котором</g> мы долго договаривались."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42726,9 +42726,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <b>Kaution</b>, <g>auf die</g> wir monatelang gewartet haben, wurde endlich zurücküberwiesen.",
-      "en": "The deposit <g>for which</g> we waited for months was finally transferred back.",
-      "uk": "Заставу, <g>на яку</g> ми чекали місяцями, нарешті повернули.",
-      "ru": "Депозит, <g>которого</g> мы ждали месяцами, наконец вернули."
+      "en": "The <b>deposit</b> <g>for which</g> we waited for months was finally transferred back.",
+      "uk": "<b>Заставу</b>, <g>на яку</g> ми чекали місяцями, нарешті повернули.",
+      "ru": "<b>Залог</b>, <g>которого</g> мы ждали месяцами, наконец вернули."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42749,9 +42749,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist die <b>Renovierung</b>, <g>für die</g> wir viel Geld ausgegeben haben.",
-      "en": "That's the renovation <g>for which</g> we spent a lot of money.",
-      "uk": "Це ремонт, <g>на який</g> ми витратили багато грошей.",
-      "ru": "Это ремонт, <g>на который</g> мы потратили много денег."
+      "en": "That's the <b>renovation</b> <g>for which</g> we spent a lot of money.",
+      "uk": "Це <b>ремонт</b>, <g>на який</g> ми витратили багато грошей.",
+      "ru": "Это <b>ремонт</b>, <g>на который</g> мы потратили много денег."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42772,9 +42772,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist der <b>Balkon</b>, <g>von dem aus</g> man das Meer sehen kann.",
-      "en": "That's the balcony <g>from which</g> you can see the sea.",
-      "uk": "Це балкон, <g>з якого</g> видно море.",
-      "ru": "Это балкон, <g>с которого</g> видно море."
+      "en": "That's the <b>balcony</b> <g>from which</g> you can see the sea.",
+      "uk": "Це <b>балкон</b>, <g>з якого</g> видно море.",
+      "ru": "Это <b>балкон</b>, <g>с которого</g> видно море."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42795,9 +42795,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <b>Kündigungsfrist</b>, <g>an die</g> man sich halten muss, beträgt drei Monate.",
-      "en": "The notice period <g>that</g> you have to adhere to is three months.",
-      "uk": "Термін розірвання договору, <g>якого</g> потрібно дотримуватися, становить три місяці.",
-      "ru": "Срок расторжения договора, <g>которого</g> нужно придерживаться, составляет три месяца."
+      "en": "The <b>notice period</b> <g>that</g> you have to adhere to is three months.",
+      "uk": "<b>Термін розірвання договору</b>, <g>якого</g> потрібно дотримуватися, становить три місяці.",
+      "ru": "<b>Срок расторжения договора</b>, <g>которого</g> нужно придерживаться, составляет три месяца."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42818,9 +42818,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir suchen einen <b>Nachmieter</b>, <g>mit dem</g> der Vermieter zufrieden ist.",
-      "en": "We are looking for a next tenant <g>with whom</g> the landlord will be satisfied.",
-      "uk": "Ми шукаємо наступного орендаря, <g>яким</g> буде задоволений орендодавець.",
-      "ru": "Мы ищем следующего арендатора, <g>которым</g> будет доволен арендодатель."
+      "en": "We are looking for a <b>next tenant</b> <g>with whom</g> the landlord will be satisfied.",
+      "uk": "Ми шукаємо <b>наступного орендаря</b>, <g>яким</g> буде задоволений орендодавець.",
+      "ru": "Мы ищем <b>следующего арендатора</b>, <g>которым</g> будет доволен арендодатель."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42841,9 +42841,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist der <b>Makler</b>, <g>durch den</g> wir die Wohnung gefunden haben.",
-      "en": "That's the agent <g>through whom</g> we found the flat.",
-      "uk": "Це маклер, <g>через якого</g> ми знайшли квартиру.",
-      "ru": "Это маклер, <g>через которого</g> мы нашли квартиру."
+      "en": "That's the <b>agent</b> <g>through whom</g> we found the flat.",
+      "uk": "Це <b>маклер</b>, <g>через якого</g> ми знайшли квартиру.",
+      "ru": "Это <b>маклер</b>, <g>через которого</g> мы нашли квартиру."
     },
     "gram": "relativsatz_mit_praeposition"
   },
@@ -42864,9 +42864,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist das <b>Viertel</b>, <g>wo</g> ich aufgewachsen bin.",
-      "en": "That's the neighbourhood <g>where</g> I grew up.",
-      "uk": "Це квартал, <g>де</g> я виріс.",
-      "ru": "Это квартал, <g>где</g> я вырос."
+      "en": "That's the <b>neighbourhood</b> <g>where</g> I grew up.",
+      "uk": "Це <b>квартал</b>, <g>де</g> я виріс.",
+      "ru": "Это <b>квартал</b>, <g>где</g> я вырос."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -42887,9 +42887,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir haben einen <b>Garten</b>, <g>wo</g> die Kinder spielen können.",
-      "en": "We have a garden <g>where</g> the children can play.",
-      "uk": "У нас є сад, <g>де</g> можуть гратися діти.",
-      "ru": "У нас есть сад, <g>где</g> могут играть дети."
+      "en": "We have a <b>garden</b> <g>where</g> the children can play.",
+      "uk": "У нас є <b>сад</b>, <g>де</g> можуть гратися діти.",
+      "ru": "У нас есть <b>сад</b>, <g>где</g> могут играть дети."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -42910,9 +42910,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist das <b>Café</b>, <g>wo</g> wir uns immer treffen.",
-      "en": "That's the café <g>where</g> we always meet.",
-      "uk": "Це кафе, <g>де</g> ми завжди зустрічаємося.",
-      "ru": "Это кафе, <g>где</g> мы всегда встречаемся."
+      "en": "That's the <b>café</b> <g>where</g> we always meet.",
+      "uk": "Це <b>кафе</b>, <g>де</g> ми завжди зустрічаємося.",
+      "ru": "Это <b>кафе</b>, <g>где</g> мы всегда встречаемся."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -42933,9 +42933,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Park ist mein <b>Lieblingsplatz</b>, <g>wo</g> ich mich entspannen kann.",
-      "en": "The park is my favourite spot <g>where</g> I can relax.",
-      "uk": "Парк — моє улюблене місце, <g>де</g> я можу розслабитися.",
-      "ru": "Парк — моё любимое место, <g>где</g> я могу расслабиться."
+      "en": "The park is my <b>favourite spot</b> <g>where</g> I can relax.",
+      "uk": "Парк — моє <b>улюблене місце</b>, <g>де</g> я можу розслабитися.",
+      "ru": "Парк — моё <b>любимое место</b>, <g>где</g> я могу расслабиться."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -42956,9 +42956,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g><b>Alles</b></g>, <g>was</g> ich mir für die neue Wohnung gewünscht habe, ist Wirklichkeit geworden.",
-      "en": "Everything <g>that</g> I wished for the new flat came true.",
-      "uk": "Усе, <g>що</g> я хотів для нової квартири, стало реальністю.",
-      "ru": "Всё, <g>что</g> я хотел для новой квартиры, стало реальностью."
+      "en": "<g><b>Everything</b></g> <g>that</g> I wished for the new flat came true.",
+      "uk": "<g><b>Усе</b></g>, <g>що</g> я хотів для нової квартири, стало реальністю.",
+      "ru": "<g><b>Всё</b></g>, <g>что</g> я хотел для новой квартиры, стало реальностью."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -42979,9 +42979,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Es gibt <g><b>nichts</b></g>, <g>was</g> mir an dieser Wohnung nicht gefällt.",
-      "en": "There is nothing <g>that</g> I don't like about this flat.",
-      "uk": "Немає нічого, <g>що</g> мені не подобається в цій квартирі.",
-      "ru": "Нет ничего, <g>что</g> мне не нравится в этой квартире."
+      "en": "There is <g><b>nothing</b></g> <g>that</g> I don't like about this flat.",
+      "uk": "Немає <g><b>нічого</b></g>, <g>що</g> мені не подобається в цій квартирі.",
+      "ru": "Нет <g><b>ничего</b></g>, <g>что</g> мне не нравится в этой квартире."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -43002,9 +43002,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Ausblick ist <g><b>das Beste</b></g>, <g>was</g> diese Wohnung zu bieten hat.",
-      "en": "The view is the best thing <g>that</g> this flat has to offer.",
-      "uk": "Краєвид — це найкраще, <g>що</g> може запропонувати ця квартира.",
-      "ru": "Вид — это лучшее, <g>что</g> может предложить эта квартира."
+      "en": "The view is <g><b>the best thing</b></g> <g>that</g> this flat has to offer.",
+      "uk": "Краєвид — це <g><b>найкраще</b></g>, <g>що</g> може запропонувати ця квартира.",
+      "ru": "Вид — это <g><b>лучшее</b></g>, <g>что</g> может предложить эта квартира."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -43025,9 +43025,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ich suche <g><b>etwas</b></g>, <g>was</g> zu meinem Budget passt.",
-      "en": "I'm looking for something <g>that</g> fits my budget.",
-      "uk": "Я шукаю щось, <g>що</g> відповідає моєму бюджету.",
-      "ru": "Я ищу что-то, <g>что</g> подходит моему бюджету."
+      "en": "I'm looking for <g><b>something</b></g> <g>that</g> fits my budget.",
+      "uk": "Я шукаю <g><b>щось</b></g>, <g>що</g> відповідає моєму бюджету.",
+      "ru": "Я ищу <g><b>что-то</b></g>, <g>что</g> подходит моему бюджету."
     },
     "gram": "relativsatz_wo_was"
   },
@@ -43048,9 +43048,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist die <b>Familie</b>, <g>der</g> wir die Wohnung vermietet haben.",
-      "en": "That's the family <g>to whom</g> we rented the flat.",
-      "uk": "Це сімʼя, <g>якій</g> ми здали квартиру в оренду.",
-      "ru": "Это семья, <g>которой</g> мы сдали квартиру в аренду."
+      "en": "That's the <b>family</b> <g>to whom</g> we rented the flat.",
+      "uk": "Це <b>сімʼя</b>, <g>якій</g> ми здали квартиру в оренду.",
+      "ru": "Это <b>семья</b>, <g>которой</g> мы сдали квартиру в аренду."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -43071,9 +43071,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist das <b>Ehepaar</b>, <g>dem</g> das Haus gehört.",
-      "en": "That's the married couple <g>to whom</g> the house belongs.",
-      "uk": "Це подружжя, <g>якому</g> належить будинок.",
-      "ru": "Это супружеская пара, <g>которой</g> принадлежит дом."
+      "en": "That's the <b>married couple</b> <g>to whom</g> the house belongs.",
+      "uk": "Це <b>подружжя</b>, <g>якому</g> належить будинок.",
+      "ru": "Это <b>супружеская пара</b>, <g>которой</g> принадлежит дом."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -43094,9 +43094,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das sind die <b>Mieter</b>, <g>denen</g> wir sehr dankbar sind.",
-      "en": "Those are the tenants <g>to whom</g> we are very grateful.",
-      "uk": "Це орендарі, <g>яким</g> ми дуже вдячні.",
-      "ru": "Это арендаторы, <g>которым</g> мы очень благодарны."
+      "en": "Those are the <b>tenants</b> <g>to whom</g> we are very grateful.",
+      "uk": "Це <b>орендарі</b>, <g>яким</g> ми дуже вдячні.",
+      "ru": "Это <b>арендаторы</b>, <g>которым</g> мы очень благодарны."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -43117,9 +43117,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist der <b>Handwerker</b>, <g>dem</g> wir vertrauen.",
-      "en": "That's the tradesman <g>whom</g> we trust.",
-      "uk": "Це майстер, <g>якому</g> ми довіряємо.",
-      "ru": "Это мастер, <g>которому</g> мы доверяем."
+      "en": "That's the <b>tradesman</b> <g>whom</g> we trust.",
+      "uk": "Це <b>майстер</b>, <g>якому</g> ми довіряємо.",
+      "ru": "Это <b>мастер</b>, <g>которому</g> мы доверяем."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -43140,9 +43140,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist die <b>Hausverwaltung</b>, <g>der</g> wir jeden Monat die Miete überweisen.",
-      "en": "That's the property management <g>to whom</g> we transfer the rent every month.",
-      "uk": "Це управління будинком, <g>якому</g> ми щомісяця перераховуємо орендну плату.",
-      "ru": "Это управление домом, <g>которому</g> мы ежемесячно переводим арендную плату."
+      "en": "That's the <b>property management</b> <g>to whom</g> we transfer the rent every month.",
+      "uk": "Це <b>управління будинком</b>, <g>якому</g> ми щомісяця перераховуємо орендну плату.",
+      "ru": "Это <b>управление домом</b>, <g>которому</g> мы ежемесячно переводим арендную плату."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -43163,9 +43163,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das ist der <b>Eigentümer</b>, <g>dem</g> das ganze Gebäude gehört.",
-      "en": "That's the owner <g>to whom</g> the whole building belongs.",
-      "uk": "Це власник, <g>якому</g> належить уся будівля.",
-      "ru": "Это владелец, <g>которому</g> принадлежит всё здание."
+      "en": "That's the <b>owner</b> <g>to whom</g> the whole building belongs.",
+      "uk": "Це <b>власник</b>, <g>якому</g> належить уся будівля.",
+      "ru": "Это <b>владелец</b>, <g>которому</g> принадлежит всё здание."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -43186,9 +43186,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das sind die <b>Kinder</b>, <g>denen</g> der Garten besonders gefällt.",
-      "en": "Those are the children <g>who</g> especially like the garden.",
-      "uk": "Це діти, <g>яким</g> особливо подобається сад.",
-      "ru": "Это дети, <g>которым</g> особенно нравится сад."
+      "en": "Those are the <b>children</b> <g>who</g> especially like the garden.",
+      "uk": "Це <b>діти</b>, <g>яким</g> особливо подобається сад.",
+      "ru": "Это <b>дети</b>, <g>которым</g> особенно нравится сад."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -43209,9 +43209,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das sind die <b>Gäste</b>, <g>denen</g> wir das Gästezimmer anbieten.",
-      "en": "Those are the guests <g>to whom</g> we offer the guest room.",
-      "uk": "Це гості, <g>яким</g> ми пропонуємо гостьову кімнату.",
-      "ru": "Это гости, <g>которым</g> мы предлагаем гостевую комнату."
+      "en": "Those are the <b>guests</b> <g>to whom</g> we offer the guest room.",
+      "uk": "Це <b>гості</b>, <g>яким</g> ми пропонуємо гостьову кімнату.",
+      "ru": "Это <b>гости</b>, <g>которым</g> мы предлагаем гостевую комнату."
     },
     "gram": "relativpronomen_dativ_wdh_b1"
   },
@@ -43232,9 +43232,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Von hier oben hat man eine <g>superschöne</g> <b>Aussicht</b>.",
-      "en": "From up here you have a super beautiful view.",
-      "uk": "Звідси зверху відкривається чудовий краєвид.",
-      "ru": "Отсюда сверху открывается прекрасный вид."
+      "en": "From up here you have a super beautiful <b>view</b>.",
+      "uk": "Звідси зверху відкривається чудовий <b>краєвид</b>.",
+      "ru": "Отсюда сверху открывается прекрасный <b>вид</b>."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43255,9 +43255,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Wohnung liegt in einer <g>hochbegehrten</g> <b>Lage</b>.",
-      "en": "The flat is in a highly sought-after location.",
-      "uk": "Квартира розташована в надзвичайно затребуваному місці.",
-      "ru": "Квартира расположена в чрезвычайно востребованном месте."
+      "en": "The flat is in a highly sought-after <b>location</b>.",
+      "uk": "Квартира розташована в надзвичайно затребуваному <b>місці</b>.",
+      "ru": "Квартира расположена в чрезвычайно востребованном <b>месте</b>."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43278,9 +43278,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>übergroße</g> <b>Nachfrage</b> nach dieser Wohnung hat uns überrascht.",
-      "en": "The overwhelming demand for this flat surprised us.",
-      "uk": "Надзвичайно великий попит на цю квартиру нас здивував.",
-      "ru": "Чрезвычайно большой спрос на эту квартиру нас удивил."
+      "en": "The overwhelming <b>demand</b> for this flat surprised us.",
+      "uk": "Надзвичайно великий <b>попит</b> на цю квартиру нас здивував.",
+      "ru": "Чрезвычайно большой <b>спрос</b> на эту квартиру нас удивил."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43301,9 +43301,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der <b>Preis</b> für diese Wohnung ist <g>superniedrig</g>.",
-      "en": "The price for this flat is super low.",
-      "uk": "Ціна на цю квартиру дуже низька.",
-      "ru": "Цена на эту квартиру очень низкая."
+      "en": "The <b>price</b> for this flat is super low.",
+      "uk": "<b>Ціна</b> на цю квартиру дуже низька.",
+      "ru": "<b>Цена</b> на эту квартиру очень низкая."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43324,9 +43324,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <b>Ausstattung</b> der Küche ist <g>extramodern</g>.",
-      "en": "The kitchen fittings are extra modern.",
-      "uk": "Оснащення кухні надсучасне.",
-      "ru": "Оснащение кухни супер-современное."
+      "en": "The kitchen <b>fittings</b> are extra modern.",
+      "uk": "<b>Оснащення</b> кухні надсучасне.",
+      "ru": "<b>Оснащение</b> кухни супер-современное."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43393,9 +43393,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Bei einem <g>hochoffiziellen</g> Anruf sollte man sich immer mit vollem Namen <b>melden</b>.",
-      "en": "For a highly official call, you should always answer with your full name.",
-      "uk": "Під час дуже офіційного дзвінка слід завжди називати повне імʼя.",
-      "ru": "Во время очень официального звонка следует всегда называть полное имя."
+      "en": "For a highly official call, you should always <b>answer</b> with your full name.",
+      "uk": "Під час дуже офіційного дзвінка слід завжди <b>називати</b> повне імʼя.",
+      "ru": "Во время очень официального звонка следует всегда <b>называть</b> полное имя."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43416,9 +43416,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <b>Durchwahl</b> zur Buchhaltung ist <g>superwichtig</g> für Ihre Anfrage.",
-      "en": "The extension number for accounting is super important for your enquiry.",
-      "uk": "Внутрішній номер бухгалтерії дуже важливий для вашого запиту.",
-      "ru": "Внутренний номер бухгалтерии очень важен для вашего запроса."
+      "en": "The <b>extension number</b> for accounting is super important for your enquiry.",
+      "uk": "<b>Внутрішній номер</b> бухгалтерії дуже важливий для вашого запиту.",
+      "ru": "<b>Внутренний номер</b> бухгалтерии очень важен для вашего запроса."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43438,10 +43438,10 @@ var VOCAB = [
       "ru": "передавать звонок другому лицу"
     },
     "def": {
-      "de": "Ich verbinde Sie jetzt mit der <g>hochkompetenten</g> Kollegin <b>weiter</b>.",
-      "en": "I'll transfer you now to my highly competent colleague.",
-      "uk": "Зараз я зʼєдную вас із дуже компетентною колегою.",
-      "ru": "Сейчас я соединю вас с очень компетентной коллегой."
+      "de": "Ich <b>verbinde</b> Sie jetzt mit der <g>hochkompetenten</g> Kollegin <b>weiter</b>.",
+      "en": "I'll <b>transfer</b> you now to my highly competent colleague.",
+      "uk": "Зараз я <b>зʼєдную</b> вас із дуже компетентною колегою.",
+      "ru": "Сейчас я <b>соединю</b> вас с очень компетентной коллегой."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43462,9 +43462,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der <b>Anrufbeantworter</b> war leider <g>überlastet</g> und nahm keine Nachrichten mehr an.",
-      "en": "The answering machine was unfortunately overloaded and stopped accepting messages.",
-      "uk": "Автовідповідач був, на жаль, перевантажений і більше не приймав повідомлень.",
-      "ru": "Автоответчик, к сожалению, был перегружен и больше не принимал сообщений."
+      "en": "The <b>answering machine</b> was unfortunately overloaded and stopped accepting messages.",
+      "uk": "<b>Автовідповідач</b> був, на жаль, перевантажений і більше не приймав повідомлень.",
+      "ru": "<b>Автоответчик</b>, к сожалению, был перегружен и больше не принимал сообщений."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43485,9 +43485,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Am Ende des Telefonats sollte man sich stets höflich und <g>extrafreundlich</g> <b>verabschieden</b>.",
-      "en": "At the end of a phone call, you should always say goodbye politely and extra kindly.",
-      "uk": "Наприкінці телефонної розмови слід завжди ввічливо й дуже дружньо прощатися.",
-      "ru": "В конце телефонного разговора следует всегда вежливо и очень дружелюбно прощаться."
+      "en": "At the end of a phone call, you should always <b>say goodbye</b> politely and extra kindly.",
+      "uk": "Наприкінці телефонної розмови слід завжди ввічливо й дуже дружньо <b>прощатися</b>.",
+      "ru": "В конце телефонного разговора следует всегда вежливо и очень дружелюбно <b>прощаться</b>."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43991,9 +43991,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Für <g>erfolgreiche</g> <b>Einbürgerung</b> braucht man gute Deutschkenntnisse.",
-      "en": "For successful naturalisation, you need good German skills.",
-      "uk": "Для успішної натуралізації потрібні хороші знання німецької мови.",
-      "ru": "Для успешной натурализации нужны хорошие знания немецкого языка."
+      "en": "For successful <b>naturalisation</b>, you need good German skills.",
+      "uk": "Для успішної <b>натуралізації</b> потрібні хороші знання німецької мови.",
+      "ru": "Для успешной <b>натурализации</b> нужны хорошие знания немецкого языка."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44014,9 +44014,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Vollständiger</g> <b>Einbürgerungsantrag</b> braucht mehrere wichtige Dokumente.",
-      "en": "A complete naturalisation application requires several important documents.",
-      "uk": "Повна заява на натуралізацію потребує кількох важливих документів.",
-      "ru": "Полное заявление на натурализацию требует нескольких важных документов."
+      "en": "A complete <b>naturalisation application</b> requires several important documents.",
+      "uk": "Повна <b>заява на натуралізацію</b> потребує кількох важливих документів.",
+      "ru": "Полное <b>заявление на натурализацию</b> требует нескольких важных документов."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44152,9 +44152,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Entweder</g> man respektiert die <b>Grundwerte</b> der Gesellschaft, <g>oder</g> man lebt gegen sie.",
-      "en": "<g>Either</g> you respect the fundamental values of society, <g>or</g> you live against them.",
-      "uk": "<g>Або</g> людина поважає основні цінності суспільства, <g>або</g> живе всупереч їм.",
-      "ru": "<g>Либо</g> человек уважает основные ценности общества, <g>либо</g> живёт вопреки им."
+      "en": "<g>Either</g> you respect the <b>fundamental values</b> of society, <g>or</g> you live against them.",
+      "uk": "<g>Або</g> людина поважає <b>основні цінності</b> суспільства, <g>або</g> живе всупереч їм.",
+      "ru": "<g>Либо</g> человек уважает <b>основные ценности</b> общества, <g>либо</g> живёт вопреки им."
     },
     "gram": "entweder_oder"
   },
@@ -44359,9 +44359,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Deutscher</g> <b>Pass</b> bedeutet für viele Menschen ein neues Kapitel im Leben.",
-      "en": "A German passport means a new chapter in life for many people.",
-      "uk": "Німецький паспорт означає для багатьох людей новий розділ у житті.",
-      "ru": "Немецкий паспорт означает для многих людей новую главу в жизни."
+      "en": "A German <b>passport</b> means a new chapter in life for many people.",
+      "uk": "Німецький <b>паспорт</b> означає для багатьох людей новий розділ у житті.",
+      "ru": "Немецкий <b>паспорт</b> означает для многих людей новую главу в жизни."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44382,9 +44382,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Harte</g> <b>Arbeit</b> führt oft zum Erfolg.",
-      "en": "Hard work often leads to success.",
-      "uk": "Важка праця часто веде до успіху.",
-      "ru": "Тяжёлый труд часто ведёт к успеху."
+      "en": "Hard <b>work</b> often leads to success.",
+      "uk": "Важка <b>робота</b> часто веде до успіху.",
+      "ru": "Тяжёлая <b>работа</b> часто ведёт к успеху."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44405,9 +44405,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Große</g> <b>Geduld</b> ist bei diesem bürokratischen Prozess notwendig.",
-      "en": "Great patience is necessary in this bureaucratic process.",
-      "uk": "Велике терпіння необхідне в цьому бюрократичному процесі.",
-      "ru": "Большое терпение необходимо в этом бюрократическом процессе."
+      "en": "Great <b>patience</b> is necessary in this bureaucratic process.",
+      "uk": "Велике <b>терпіння</b> необхідне в цьому бюрократичному процесі.",
+      "ru": "Большое <b>терпение</b> необходимо в этом бюрократическом процессе."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44428,9 +44428,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Beruflicher</g> <b>Erfolg</b> braucht meistens viel Zeit.",
-      "en": "Professional success usually takes a lot of time.",
-      "uk": "Професійний успіх зазвичай потребує багато часу.",
-      "ru": "Профессиональный успех обычно требует много времени."
+      "en": "Professional <b>success</b> usually takes a lot of time.",
+      "uk": "Професійний <b>успіх</b> зазвичай потребує багато часу.",
+      "ru": "Профессиональный <b>успех</b> обычно требует много времени."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44451,9 +44451,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Neues</g> <b>Leben</b> in einem fremden Land beginnt oft mit vielen Herausforderungen.",
-      "en": "A new life in a foreign country often begins with many challenges.",
-      "uk": "Нове життя в чужій країні часто починається з багатьох викликів.",
-      "ru": "Новая жизнь в чужой стране часто начинается со множества трудностей."
+      "en": "A new <b>life</b> in a foreign country often begins with many challenges.",
+      "uk": "Нове <b>життя</b> в чужій країні часто починається з багатьох викликів.",
+      "ru": "Новая <b>жизнь</b> в чужой стране часто начинается со множества трудностей."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44474,9 +44474,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Große</g> <b>Hoffnung</b> begleitete sie während des ganzen Verfahrens.",
-      "en": "Great hope accompanied her throughout the whole process.",
-      "uk": "Велика надія супроводжувала її протягом усього процесу.",
-      "ru": "Большая надежда сопровождала её на протяжении всего процесса."
+      "en": "Great <b>hope</b> accompanied her throughout the whole process.",
+      "uk": "Велика <b>надія</b> супроводжувала її протягом усього процесу.",
+      "ru": "Большая <b>надежда</b> сопровождала её на протяжении всего процесса."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44497,9 +44497,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Sichere</g> <b>Zukunft</b> ist der Wunsch vieler Einwanderer.",
-      "en": "A secure future is the wish of many immigrants.",
-      "uk": "Впевнене майбутнє — бажання багатьох іммігрантів.",
-      "ru": "Уверенное будущее — желание многих иммигрантов."
+      "en": "A secure <b>future</b> is the wish of many immigrants.",
+      "uk": "Впевнене <b>майбутнє</b> — бажання багатьох іммігрантів.",
+      "ru": "Уверенное <b>будущее</b> — желание многих иммигрантов."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44520,9 +44520,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Viel</g> <b>Mühe</b> steckt in jedem einzelnen Antrag.",
-      "en": "A lot of effort goes into every single application.",
-      "uk": "Багато зусиль вкладено в кожну окрему заяву.",
-      "ru": "Много усилий вложено в каждое отдельное заявление."
+      "en": "A lot of <b>effort</b> goes into every single application.",
+      "uk": "Багато <b>зусиль</b> вкладено в кожну окрему заяву.",
+      "ru": "Много <b>усилий</b> вложено в каждое отдельное заявление."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -44543,9 +44543,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das <g>weinende</g> <b>Kind</b> wurde schnell von seiner Mutter getröstet.",
-      "en": "The crying child was quickly comforted by its mother.",
-      "uk": "Дитину, що плакала, швидко заспокоїла мама.",
-      "ru": "Плачущего ребёнка быстро успокоила мама."
+      "en": "The <g>crying</g> <b>child</b> was quickly comforted by its mother.",
+      "uk": "<b>Дитину</b>, що плакала, швидко заспокоїла мама.",
+      "ru": "Плачущего <b>ребёнка</b> быстро успокоила мама."
     },
     "gram": "partizip1_als_adjektiv"
   },
@@ -44566,9 +44566,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>wartende</g> <b>Menge</b> stand geduldig vor dem Amt.",
-      "en": "The waiting crowd stood patiently in front of the office.",
-      "uk": "Натовп, що чекав, терпляче стояв перед установою.",
-      "ru": "Ожидающая толпа терпеливо стояла перед учреждением."
+      "en": "The <g>waiting</g> <b>crowd</b> stood patiently in front of the office.",
+      "uk": "<b>Натовп</b>, що чекав, терпляче стояв перед установою.",
+      "ru": "Ожидающая <b>толпа</b> терпеливо стояла перед учреждением."
     },
     "gram": "partizip1_als_adjektiv"
   },
@@ -44589,9 +44589,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>steigende</g> <b>Zahl</b> der Einbürgerungen freut die Behörden.",
-      "en": "The rising number of naturalisations pleases the authorities.",
-      "uk": "Зростаюча кількість натуралізацій радує органи влади.",
-      "ru": "Растущее число натурализаций радует органы власти."
+      "en": "The <g>rising</g> <b>number</b> of naturalisations pleases the authorities.",
+      "uk": "Зростаюча <b>кількість</b> натуралізацій радує органи влади.",
+      "ru": "Растущее <b>число</b> натурализаций радует органы власти."
     },
     "gram": "partizip1_als_adjektiv"
   },
@@ -44612,9 +44612,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>entscheidende</g> <b>Bedingung</b> für die Einbürgerung ist die Sprachprüfung.",
-      "en": "The decisive condition for naturalisation is the language test.",
-      "uk": "Вирішальна умова для натуралізації — мовний іспит.",
-      "ru": "Решающее условие для натурализации — языковой экзамен."
+      "en": "The decisive <b>condition</b> for naturalisation is the language test.",
+      "uk": "Вирішальна <b>умова</b> для натуралізації — мовний іспит.",
+      "ru": "Решающее <b>условие</b> для натурализации — языковой экзамен."
     },
     "gram": "partizip1_als_adjektiv"
   },
@@ -44635,9 +44635,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das <g>bestehende</g> <b>Problem</b> mit den Unterlagen wurde schnell gelöst.",
-      "en": "The existing problem with the documents was quickly resolved.",
-      "uk": "Наявну проблему з документами швидко вирішили.",
-      "ru": "Существующую проблему с документами быстро решили."
+      "en": "The <g>existing</g> <b>problem</b> with the documents was quickly resolved.",
+      "uk": "Наявну <b>проблему</b> з документами швидко вирішили.",
+      "ru": "Существующую <b>проблему</b> с документами быстро решили."
     },
     "gram": "partizip1_als_adjektiv"
   },
@@ -44658,9 +44658,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der <g>helfende</g> <b>Mitarbeiter</b> beantwortete geduldig alle Fragen.",
-      "en": "The helpful staff member patiently answered all questions.",
-      "uk": "Співробітник, який допомагав, терпляче відповідав на всі запитання.",
-      "ru": "Сотрудник, который помогал, терпеливо отвечал на все вопросы."
+      "en": "The helpful <b>staff member</b> patiently answered all questions.",
+      "uk": "<b>Співробітник</b>, який допомагав, терпляче відповідав на всі запитання.",
+      "ru": "<b>Сотрудник</b>, который помогал, терпеливо отвечал на все вопросы."
     },
     "gram": "partizip1_als_adjektiv"
   },
@@ -44681,9 +44681,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>überzeugende</g> <b>Erklärung</b> half ihr, den Antrag richtig auszufüllen.",
-      "en": "The convincing explanation helped her fill out the application correctly.",
-      "uk": "Переконливе пояснення допомогло їй правильно заповнити заяву.",
-      "ru": "Убедительное объяснение помогло ей правильно заполнить заявление."
+      "en": "The <g>convincing</g> <b>explanation</b> helped her fill out the application correctly.",
+      "uk": "Переконливе <b>пояснення</b> допомогло їй правильно заповнити заяву.",
+      "ru": "Убедительное <b>объяснение</b> помогло ей правильно заполнить заявление."
     },
     "gram": "partizip1_als_adjektiv"
   },
@@ -44704,9 +44704,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>belastende</g> <b>Situation</b> dauerte mehrere Monate.",
-      "en": "The stressful situation lasted several months.",
-      "uk": "Обтяжлива ситуація тривала кілька місяців.",
-      "ru": "Тяжёлая ситуация длилась несколько месяцев."
+      "en": "The stressful <b>situation</b> lasted several months.",
+      "uk": "Обтяжлива <b>ситуація</b> тривала кілька місяців.",
+      "ru": "Тяжёлая <b>ситуация</b> длилась несколько месяцев."
     },
     "gram": "partizip1_als_adjektiv"
   },
@@ -44727,9 +44727,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das <g>übersetzte</g> <b>Dokument</b> musste zusätzlich beglaubigt werden.",
-      "en": "The translated document had to be additionally certified.",
-      "uk": "Перекладений документ потрібно було додатково засвідчити.",
-      "ru": "Переведённый документ нужно было дополнительно заверить."
+      "en": "The <g>translated</g> <b>document</b> had to be additionally certified.",
+      "uk": "Перекладений <b>документ</b> потрібно було додатково засвідчити.",
+      "ru": "Переведённый <b>документ</b> нужно было дополнительно заверить."
     },
     "gram": "partizip2_als_adjektiv"
   },
@@ -44750,9 +44750,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der <g>unterschriebene</g> <b>Nachweis</b> lag bereits bei den Unterlagen.",
-      "en": "The signed certificate was already included with the documents.",
-      "uk": "Підписане підтвердження вже було серед документів.",
-      "ru": "Подписанное подтверждение уже было среди документов."
+      "en": "The <g>signed</g> <b>certificate</b> was already included with the documents.",
+      "uk": "Підписане <b>підтвердження</b> вже було серед документів.",
+      "ru": "Подписанное <b>подтверждение</b> уже было среди документов."
     },
     "gram": "partizip2_als_adjektiv"
   },
@@ -44773,9 +44773,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>bestandene</g> <b>Prüfung</b> war die letzte Hürde vor der Einbürgerung.",
-      "en": "The passed test was the last hurdle before naturalisation.",
-      "uk": "Складений іспит став останньою перешкодою перед натуралізацією.",
-      "ru": "Сданный экзамен стал последним препятствием перед натурализацией."
+      "en": "The <g>passed</g> <b>test</b> was the last hurdle before naturalisation.",
+      "uk": "Складений <b>іспит</b> став останньою перешкодою перед натуралізацією.",
+      "ru": "Сданный <b>экзамен</b> стал последним препятствием перед натурализацией."
     },
     "gram": "partizip2_als_adjektiv"
   },
@@ -44796,9 +44796,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>verpasste</g> <b>Frist</b> führte zu einer Verzögerung des Verfahrens.",
-      "en": "The missed deadline led to a delay in the process.",
-      "uk": "Пропущений термін призвів до затримки процесу.",
-      "ru": "Пропущенный срок привёл к задержке процесса."
+      "en": "The <g>missed</g> <b>deadline</b> led to a delay in the process.",
+      "uk": "Пропущений <b>термін</b> призвів до затримки процесу.",
+      "ru": "Пропущенный <b>срок</b> привёл к задержке процесса."
     },
     "gram": "partizip2_als_adjektiv"
   },
@@ -44819,9 +44819,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>beantwortete</g> <b>Anfrage</b> brachte endlich Klarheit.",
-      "en": "The answered inquiry finally brought clarity.",
-      "uk": "Питання, на яке відповіли, нарешті внесло ясність.",
-      "ru": "Вопрос, на который ответили, наконец внёс ясность."
+      "en": "The <g>answered</g> <b>inquiry</b> finally brought clarity.",
+      "uk": "<b>Запит</b>, на який відповіли, нарешті приніс ясність.",
+      "ru": "<b>Запрос</b>, на который ответили, наконец внёс ясность."
     },
     "gram": "partizip2_als_adjektiv"
   },
@@ -44842,9 +44842,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>abgelehnte</g> <b>Bewerbung</b> konnte leider nicht mehr korrigiert werden.",
-      "en": "The rejected application could unfortunately no longer be corrected.",
-      "uk": "Відхилену заявку, на жаль, уже не можна було виправити.",
-      "ru": "Отклонённую заявку, к сожалению, уже нельзя было исправить."
+      "en": "The <g>rejected</g> <b>application</b> could unfortunately no longer be corrected.",
+      "uk": "Відхилену <b>заявку</b>, на жаль, уже не можна було виправити.",
+      "ru": "Отклонённую <b>заявку</b>, к сожалению, уже нельзя было исправить."
     },
     "gram": "partizip2_als_adjektiv"
   },
@@ -44865,9 +44865,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der <g>vereinbarte</g> <b>Termin</b> beim Amt musste leider verschoben werden.",
-      "en": "The agreed appointment at the office unfortunately had to be postponed.",
-      "uk": "Домовлену зустріч в установі, на жаль, довелося перенести.",
-      "ru": "Согласованную встречу в учреждении, к сожалению, пришлось перенести."
+      "en": "The <g>agreed</g> <b>appointment</b> at the office unfortunately had to be postponed.",
+      "uk": "Домовлену <b>зустріч</b> в установі, на жаль, довелося перенести.",
+      "ru": "Согласованную <b>встречу</b> в учреждении, к сожалению, пришлось перенести."
     },
     "gram": "partizip2_als_adjektiv"
   },
@@ -45118,7 +45118,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Man spricht <g>entweder</g> mit dem zuständigen <b>Sachbearbeiter</b> <g>oder</g> wartet auf eine schriftliche Antwort.",
-      "en": "You either speak with the responsible caseworker or wait for a written reply.",
+      "en": "You <g>either</g> speak with the responsible <b>caseworker</b> <g>or</g> wait for a written reply.",
       "uk": "Можна <g>або</g> поговорити з відповідальним <b>працівником</b>, <g>або</g> почекати на письмову відповідь.",
       "ru": "Можно <g>либо</g> поговорить с ответственным <b>сотрудником</b>, <g>либо</g> подождать письменного ответа."
     },
@@ -46728,9 +46728,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Sie <b>hat</b> viel <b>Stress</b>, <g>weil</g> sie zu viele Aufgaben gleichzeitig erledigen muss.",
-      "en": "She is very stressed <g>because</g> she has to complete too many tasks at once.",
-      "uk": "Вона перебуває у великому стресі, <g>тому що</g> їй доводиться виконувати забагато завдань одночасно.",
-      "ru": "Она испытывает большой стресс, <g>потому что</g> ей приходится выполнять слишком много задач одновременно."
+      "en": "She is very <b>stressed</b> <g>because</g> she has to complete too many tasks at once.",
+      "uk": "Вона <b>перебуває</b> у великому <b>стресі</b>, <g>тому що</g> їй доводиться виконувати забагато завдань одночасно.",
+      "ru": "Она <b>испытывает</b> большой <b>стресс</b>, <g>потому что</g> ей приходится выполнять слишком много задач одновременно."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -46751,9 +46751,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Er <b>ist</b> total <b>erschöpft</b>, <g>trotzdem</g> geht er heute noch joggen.",
-      "en": "He is totally exhausted, <g>nevertheless</g> he is still going jogging today.",
-      "uk": "Він повністю виснажений, <g>але все одно</g> сьогодні ще піде на пробіжку.",
-      "ru": "Он совершенно измотан, <g>но всё равно</g> сегодня ещё пойдёт на пробежку."
+      "en": "He <b>is</b> totally <b>exhausted</b>, <g>nevertheless</g> he is still going jogging today.",
+      "uk": "Він повністю <b>виснажений</b>, <g>але все одно</g> сьогодні ще піде на пробіжку.",
+      "ru": "Он совершенно <b>измотан</b>, <g>но всё равно</g> сегодня ещё пойдёт на пробежку."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -46774,9 +46774,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ich <b>freue</b> <b>mich</b> total <b>auf</b> den Urlaub, <g>und</g> ich habe schon alles gepackt.",
-      "en": "I'm really looking forward to the holiday, <g>and</g> I have already packed everything.",
-      "uk": "Я дуже тішуся відпусткою, <g>і</g> я вже все спакував.",
-      "ru": "Я очень радуюсь отпуску, <g>и</g> я уже всё упаковал."
+      "en": "I'm really <b>looking forward to</b> the holiday, <g>and</g> I have already packed everything.",
+      "uk": "Я дуже <b>тішуся</b> відпусткою, <g>і</g> я вже все спакував.",
+      "ru": "Я очень <b>радуюсь</b> отпуску, <g>и</g> я уже всё упаковал."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -46797,9 +46797,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Bevor wir <b>verreisen</b>, <g>nehme</g> ich meine Kamera unbedingt <g>mit</g>.",
-      "en": "Before we go on a trip, I definitely <g>take</g> my camera <g>with me</g>.",
-      "uk": "Перш ніж ми вирушимо в подорож, я обовʼязково візьму з собою камеру.",
-      "ru": "Прежде чем мы отправимся в путешествие, я обязательно возьму с собой камеру."
+      "en": "Before we <b>go on a trip</b>, I definitely <g>take</g> my camera <g>with me</g>.",
+      "uk": "Перш ніж ми <b>вирушимо в подорож</b>, я обовʼязково візьму з собою камеру.",
+      "ru": "Прежде чем мы <b>отправимся в путешествие</b>, я обязательно возьму с собой камеру."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -46820,9 +46820,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir <b>übernachten</b> im Hotel, aber morgen <g>fahren</g> wir schon <g>weiter</g> zur nächsten Stadt.",
-      "en": "We are staying overnight at the hotel, but tomorrow we are already <g>moving</g> <g>on</g> to the next city.",
-      "uk": "Ми ночуємо в готелі, але завтра вже їдемо далі до наступного міста.",
-      "ru": "Мы ночуем в отеле, но завтра уже едем дальше в следующий город."
+      "en": "We are <b>staying overnight</b> at the hotel, but tomorrow we are already <g>moving</g> <g>on</g> to the next city.",
+      "uk": "Ми <b>ночуємо</b> в готелі, але завтра вже їдемо далі до наступного міста.",
+      "ru": "Мы <b>ночуем</b> в отеле, но завтра уже едем дальше в следующий город."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -46843,9 +46843,9 @@ var VOCAB = [
     },
     "def": {
       "de": "In der <b>Jugendherberge</b> <g>räumen</g> alle Gäste am Morgen <g>zusammen</g> auf.",
-      "en": "In the youth hostel, all guests <g>tidy</g> <g>up together</g> in the morning.",
-      "uk": "У молодіжному гуртожитку всі гості вранці разом прибирають.",
-      "ru": "В молодёжном общежитии все гости утром вместе убираются."
+      "en": "In the <b>youth hostel</b>, all guests <g>tidy</g> <g>up together</g> in the morning.",
+      "uk": "У <b>молодіжному гуртожитку</b> всі гості вранці разом прибирають.",
+      "ru": "В <b>молодёжном общежитии</b> все гости утром вместе убираются."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -46866,9 +46866,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Am <b>Denkmal</b> <g>kommen</g> wir morgen wieder <g>zurück</g>, um Fotos zu machen.",
-      "en": "We will <g>come</g> <g>back</g> to the monument tomorrow to take photos.",
-      "uk": "Ми завтра знову повернемося до памʼятника, щоб зробити фото.",
-      "ru": "Мы завтра снова вернёмся к памятнику, чтобы сделать фотографии."
+      "en": "We will <g>come</g> <g>back</g> to the <b>monument</b> tomorrow to take photos.",
+      "uk": "Ми завтра знову повернемося до <b>памʼятника</b>, щоб зробити фото.",
+      "ru": "Мы завтра снова вернёмся к <b>памятнику</b>, чтобы сделать фотографии."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -46889,9 +46889,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Polizei <b>sorgt</b> <b>für</b> <b>Sicherheit</b>, und die Sanitäter <g>bringen</g> den Verletzten sofort <g>weg</g>.",
-      "en": "The police ensure safety, and the paramedics immediately <g>take</g> the injured person <g>away</g>.",
-      "uk": "Поліція дбає про безпеку, а медики одразу забирають пораненого.",
-      "ru": "Полиция заботится о безопасности, а медики сразу увозят раненого."
+      "en": "The police <b>ensure safety</b>, and the paramedics immediately <g>take</g> the injured person <g>away</g>.",
+      "uk": "Поліція <b>забезпечує безпеку</b>, а медики одразу забирають пораненого.",
+      "ru": "Полиция <b>обеспечивает безопасность</b>, а медики сразу увозят раненого."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -46912,9 +46912,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der <b>Einbrecher</b> wollte fliehen, aber ein Nachbar <g>nahm</g> ihn kurzerhand <g>mit</g> zur Polizei.",
-      "en": "The burglar wanted to flee, but a neighbour simply <g>took</g> him <g>along</g> to the police.",
-      "uk": "Грабіжник хотів утекти, але сусід просто відвів його з собою до поліції.",
-      "ru": "Грабитель хотел сбежать, но сосед просто отвёл его с собой в полицию."
+      "en": "The <b>burglar</b> wanted to flee, but a neighbour simply <g>took</g> him <g>along</g> to the police.",
+      "uk": "<b>Грабіжник</b> хотів утекти, але сусід просто відвів його з собою до поліції.",
+      "ru": "<b>Грабитель</b> хотел сбежать, но сосед просто отвёл его с собой в полицию."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -46935,9 +46935,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Dieb <g>nahm</g> das Fahrrad <g>mit</g>, nachdem er es <b>gestohlen</b> hatte.",
-      "en": "The thief <g>took</g> the bike <g>with him</g> after he had stolen it.",
-      "uk": "Злодій забрав велосипед із собою після того, як украв його.",
-      "ru": "Вор забрал велосипед с собой после того, как украл его."
+      "en": "The thief <g>took</g> the bike <g>with him</g> after he had <b>stolen</b> it.",
+      "uk": "Злодій забрав велосипед із собою після того, як <b>украв</b> його.",
+      "ru": "Вор забрал велосипед с собой после того, как <b>украл</b> его."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -46958,9 +46958,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Polizei <b>verhaftete</b> den Mann und <g>brachte</g> ihn <g>weg</g>.",
-      "en": "The police arrested the man and <g>took</g> him <g>away</g>.",
-      "uk": "Поліція заарештувала чоловіка і забрала його геть.",
-      "ru": "Полиция арестовала мужчину и увела его."
+      "en": "The police <b>arrested</b> the man and <g>took</g> him <g>away</g>.",
+      "uk": "Поліція <b>заарештувала</b> чоловіка і забрала його геть.",
+      "ru": "Полиция <b>арестовала</b> мужчину и увела его."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -46981,9 +46981,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Polizei <b>nahm</b> den Verdächtigen <b>fest</b> und <g>brachte</g> ihn sofort <g>mit</g> zur Wache.",
-      "en": "The police detained the suspect and immediately <g>took</g> him <g>along</g> to the station.",
-      "uk": "Поліція затримала підозрюваного і одразу забрала його з собою до відділку.",
-      "ru": "Полиция задержала подозреваемого и сразу забрала его с собой в участок."
+      "en": "The police <b>detained</b> the suspect and immediately <g>took</g> him <g>along</g> to the station.",
+      "uk": "Поліція <b>затримала</b> підозрюваного і одразу забрала його з собою до відділку.",
+      "ru": "Полиция <b>задержала</b> подозреваемого и сразу забрала его с собой в участок."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47004,9 +47004,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Täter versuchte zu <b>fliehen</b>, aber die Polizei <g>brachte</g> ihn schnell <g>zurück</g> in die Zelle.",
-      "en": "The perpetrator tried to flee, but the police quickly <g>brought</g> him <g>back</g> to the cell.",
-      "uk": "Злочинець намагався втекти, але поліція швидко повернула його назад до камери.",
-      "ru": "Преступник пытался сбежать, но полиция быстро вернула его назад в камеру."
+      "en": "The perpetrator tried to <b>flee</b>, but the police quickly <g>brought</g> him <g>back</g> to the cell.",
+      "uk": "Злочинець намагався <b>втекти</b>, але поліція швидко повернула його назад до камери.",
+      "ru": "Преступник пытался <b>сбежать</b>, но полиция быстро вернула его назад в камеру."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47027,9 +47027,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Nach dem <b>Urteil</b> <g>nahm</g> der Anwalt seine Akten <g>mit</g>.",
-      "en": "After the verdict, the lawyer <g>took</g> his files <g>with him</g>.",
-      "uk": "Після вироку адвокат забрав свої документи із собою.",
-      "ru": "После приговора адвокат забрал свои документы с собой."
+      "en": "After the <b>verdict</b>, the lawyer <g>took</g> his files <g>with him</g>.",
+      "uk": "Після <b>вироку</b> адвокат забрав свої документи із собою.",
+      "ru": "После <b>приговора</b> адвокат забрал свои документы с собой."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47050,9 +47050,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Touristen <g>kommen</g> jedes Jahr <g>zurück</g>, um das berühmte <b>Wahrzeichen</b> der Stadt zu sehen.",
-      "en": "Tourists <g>come</g> <g>back</g> every year to see the city's famous landmark.",
-      "uk": "Туристи щороку повертаються, щоб побачити відому визначну памʼятку міста.",
-      "ru": "Туристы каждый год возвращаются, чтобы увидеть знаменитую достопримечательность города."
+      "en": "Tourists <g>come</g> <g>back</g> every year to see the city's famous <b>landmark</b>.",
+      "uk": "Туристи щороку повертаються, щоб побачити відому <b>визначну памʼятку</b> міста.",
+      "ru": "Туристы каждый год возвращаются, чтобы увидеть знаменитую <b>достопримечательность</b> города."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47073,9 +47073,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die moderne <b>Architektur</b> der Stadt und die alten Gebäude <g>passen</g> überraschend gut <g>zusammen</g>.",
-      "en": "The city's modern architecture and the old buildings surprisingly <g>go</g> <g>well together</g>.",
-      "uk": "Сучасна архітектура міста та старі будівлі напрочуд добре поєднуються.",
-      "ru": "Современная архитектура города и старые здания на удивление хорошо сочетаются."
+      "en": "The city's modern <b>architecture</b> and the old buildings surprisingly <g>go</g> <g>well together</g>.",
+      "uk": "Сучасна <b>архітектура</b> міста та старі будівлі напрочуд добре поєднуються.",
+      "ru": "Современная <b>архитектура</b> города и старые здания на удивление хорошо сочетаются."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47096,9 +47096,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir organisieren eine große <b>Feier</b>, <g>denn</g> unser Team hat das Projekt erfolgreich abgeschlossen.",
-      "en": "We are organising a big party, <g>because</g> our team successfully completed the project.",
-      "uk": "Ми організовуємо велике свято, <g>бо</g> наша команда успішно завершила проєкт.",
-      "ru": "Мы организуем большой праздник, <g>потому что</g> наша команда успешно завершила проект."
+      "en": "We are organising a big <b>party</b>, <g>because</g> our team successfully completed the project.",
+      "uk": "Ми організовуємо велике <b>свято</b>, <g>бо</g> наша команда успішно завершила проєкт.",
+      "ru": "Мы организуем большой <b>праздник</b>, <g>потому что</g> наша команда успешно завершила проект."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -47119,9 +47119,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Sie war sehr gestresst, <g>deshalb</g> <b>erholt</b> sie sich jetzt am Meer.",
-      "en": "She was very stressed, <g>that's why</g> she is now relaxing by the sea.",
-      "uk": "Вона була дуже виснажена, <g>тому</g> зараз відпочиває на морі.",
-      "ru": "Она была очень измотана, <g>поэтому</g> сейчас отдыхает у моря."
+      "en": "She was very stressed, <g>that's why</g> she is now <b>relaxing</b> by the sea.",
+      "uk": "Вона була дуже виснажена, <g>тому</g> зараз <b>відпочиває</b> на морі.",
+      "ru": "Она была очень измотана, <g>поэтому</g> сейчас <b>отдыхает</b> у моря."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -47142,9 +47142,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir machen die <b>Reise</b>, <g>obwohl</g> das Wetter nicht ideal ist.",
-      "en": "We are going on the trip, <g>although</g> the weather isn't ideal.",
-      "uk": "Ми вирушаємо в подорож, <g>хоча</g> погода не ідеальна.",
-      "ru": "Мы отправляемся в путешествие, <g>хотя</g> погода не идеальная."
+      "en": "We are going on the <b>trip</b>, <g>although</g> the weather isn't ideal.",
+      "uk": "Ми вирушаємо в <b>подорож</b>, <g>хоча</g> погода не ідеальна.",
+      "ru": "Мы отправляемся в <b>путешествие</b>, <g>хотя</g> погода не идеальная."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -47165,9 +47165,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir <b>planen</b> die Feier neu, <g>wenn</g> es regnet.",
-      "en": "We will replan the party <g>if</g> it rains.",
-      "uk": "Ми переплануємо свято, <g>якщо</g> піде дощ.",
-      "ru": "Мы перепланируем праздник, <g>если</g> пойдёт дождь."
+      "en": "We will <b>replan</b> the party <g>if</g> it rains.",
+      "uk": "Ми <b>переплануємо</b> свято, <g>якщо</g> піде дощ.",
+      "ru": "Мы <b>перепланируем</b> праздник, <g>если</g> пойдёт дождь."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -47188,9 +47188,9 @@ var VOCAB = [
     },
     "def": {
       "de": "<b>Feiern</b> wir das <b>Fest</b> im Garten, <g>oder</g> gehen wir lieber in ein Restaurant?",
-      "en": "Shall we celebrate the party in the garden, <g>or</g> would we rather go to a restaurant?",
-      "uk": "Святкуємо свято в саду, <g>чи</g> краще підемо в ресторан?",
-      "ru": "Празднуем в саду, <g>или</g> лучше пойдём в ресторан?"
+      "en": "Shall we <b>celebrate</b> the <b>party</b> in the garden, <g>or</g> would we rather go to a restaurant?",
+      "uk": "<b>Святкуємо</b> <b>свято</b> в саду, <g>чи</g> краще підемо в ресторан?",
+      "ru": "<b>Празднуем</b> в саду, <g>или</g> лучше пойдём в ресторан?"
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -47211,9 +47211,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ich <b>hoffe</b>, <g>dass</g> das Wetter am Wochenende schön bleibt.",
-      "en": "I hope <g>that</g> the weather stays nice at the weekend.",
-      "uk": "Я сподіваюся, <g>що</g> погода на вихідних залишиться гарною.",
-      "ru": "Я надеюсь, <g>что</g> погода на выходных останется хорошей."
+      "en": "I <b>hope</b> <g>that</g> the weather stays nice at the weekend.",
+      "uk": "Я <b>сподіваюся</b>, <g>що</g> погода на вихідних залишиться гарною.",
+      "ru": "Я <b>надеюсь</b>, <g>что</g> погода на выходных останется хорошей."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -47234,9 +47234,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir wollten früh <b>abreisen</b>, <g>aber</g> der Zug hatte Verspätung.",
-      "en": "We wanted to depart early, <g>but</g> the train was delayed.",
-      "uk": "Ми хотіли виїхати рано, <g>але</g> потяг запізнювався.",
-      "ru": "Мы хотели выехать рано, <g>но</g> поезд опаздывал."
+      "en": "We wanted to <b>depart</b> early, <g>but</g> the train was delayed.",
+      "uk": "Ми хотіли <b>виїхати</b> рано, <g>але</g> потяг запізнювався.",
+      "ru": "Мы хотели <b>выехать</b> рано, <g>но</g> поезд опаздывал."
     },
     "gram": "satzverbindungen_ueberblick"
   },
@@ -47257,9 +47257,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Kinder <g><b>kommen</b></g> morgen <g><b>nach</b></g>, wir fahren schon heute los.",
-      "en": "The children will <g>follow</g> tomorrow, we're already leaving today.",
-      "uk": "Діти приєднаються завтра, ми виїжджаємо вже сьогодні.",
-      "ru": "Дети присоединятся завтра, мы уезжаем уже сегодня."
+      "en": "The children will <g><b>follow</b></g> tomorrow, we're already leaving today.",
+      "uk": "Діти <b>приєднаються</b> завтра, ми виїжджаємо вже сьогодні.",
+      "ru": "Дети <b>присоединятся</b> завтра, мы уезжаем уже сегодня."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47280,9 +47280,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Das Paket war falsch adressiert, deshalb <g><b>schicken</b></g> wir es <g><b>zurück</b></g>.",
-      "en": "The package was addressed incorrectly, so we are <g>sending</g> it <g>back</g>.",
-      "uk": "Посилка була неправильно адресована, тому ми відправляємо її назад.",
-      "ru": "Посылка была неправильно адресована, поэтому мы отправляем её назад."
+      "en": "The package was addressed incorrectly, so we are <g><b>sending</b></g> it <g><b>back</b></g>.",
+      "uk": "Посилка була неправильно адресована, тому ми <b>відправляємо</b> її <b>назад</b>.",
+      "ru": "Посылка была неправильно адресована, поэтому мы <b>отправляем</b> её <b>назад</b>."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47303,9 +47303,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ich <g><b>werfe</b></g> die alten Prospekte einfach <g><b>weg</b></g>.",
-      "en": "I'm simply <g>throwing</g> the old brochures <g>away</g>.",
-      "uk": "Я просто викидаю старі буклети.",
-      "ru": "Я просто выбрасываю старые буклеты."
+      "en": "I'm simply <g><b>throwing</b></g> the old brochures <g><b>away</b></g>.",
+      "uk": "Я просто <b>викидаю</b> старі буклети.",
+      "ru": "Я просто <b>выбрасываю</b> старые буклеты."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47326,9 +47326,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Nach der Pause <g><b>fahren</b></g> wir <g><b>weiter</b></g> Richtung Süden.",
-      "en": "After the break, we <g>continue driving</g> towards the south.",
-      "uk": "Після перерви ми їдемо далі на південь.",
-      "ru": "После перерыва мы едем дальше на юг."
+      "en": "After the break, we <g><b>continue driving</b></g> towards the south.",
+      "uk": "Після перерви ми <b>їдемо далі</b> на південь.",
+      "ru": "После перерыва мы <b>едем дальше</b> на юг."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47349,9 +47349,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ich <g><b>bringe</b></g> meinen Reisepass unbedingt <g><b>mit</b></g>.",
-      "en": "I definitely <g>bring</g> my passport <g>with me</g>.",
-      "uk": "Я обовʼязково беру із собою паспорт.",
-      "ru": "Я обязательно беру с собой паспорт."
+      "en": "I definitely <g><b>bring</b></g> my passport <g><b>with me</b></g>.",
+      "uk": "Я обовʼязково <b>беру із собою</b> паспорт.",
+      "ru": "Я обязательно <b>беру с собой</b> паспорт."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47372,9 +47372,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wann <g><b>kommst</b></g> du von der Reise <g><b>zurück</b></g>?",
-      "en": "When are you <g>coming</g> <g>back</g> from the trip?",
-      "uk": "Коли ти повертаєшся з подорожі?",
-      "ru": "Когда ты возвращаешься из путешествия?"
+      "en": "When are you <g><b>coming</b></g> <g><b>back</b></g> from the trip?",
+      "uk": "Коли ти <b>повертаєшся</b> з подорожі?",
+      "ru": "Когда ты <b>возвращаешься</b> из путешествия?"
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47395,9 +47395,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Ich <g><b>hole</b></g> dich morgen früh am Bahnhof <g><b>ab</b></g>.",
-      "en": "I'll <g>pick</g> you <g>up</g> at the station tomorrow morning.",
-      "uk": "Я заберу тебе завтра вранці з вокзалу.",
-      "ru": "Я заберу тебя завтра утром с вокзала."
+      "en": "I'll <g><b>pick</b></g> you <g><b>up</b></g> at the station tomorrow morning.",
+      "uk": "Я <b>заберу</b> тебе завтра вранці з вокзалу.",
+      "ru": "Я <b>заберу</b> тебя завтра утром с вокзала."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47418,9 +47418,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Nach dem Fest <g><b>räumen</b></g> wir gemeinsam <g><b>auf</b></g>.",
-      "en": "After the party, we <g>tidy</g> <g>up</g> together.",
-      "uk": "Після свята ми разом прибираємо.",
-      "ru": "После праздника мы вместе убираем."
+      "en": "After the party, we <g><b>tidy</b></g> <g><b>up</b></g> together.",
+      "uk": "Після свята ми разом <b>прибираємо</b>.",
+      "ru": "После праздника мы вместе <b>убираем</b>."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47441,9 +47441,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Polizei <g>nahm</g> den <b>Verdächtigen</b> zur Vernehmung <g>mit</g>.",
-      "en": "The police <g>took</g> the suspect <g>along</g> for questioning.",
-      "uk": "Поліція забрала підозрюваного на допит.",
-      "ru": "Полиция забрала подозреваемого на допрос."
+      "en": "The police <g>took</g> the <b>suspect</b> <g>along</g> for questioning.",
+      "uk": "Поліція забрала <b>підозрюваного</b> на допит.",
+      "ru": "Полиция забрала <b>подозреваемого</b> на допрос."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47464,9 +47464,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Nachbarin <g><b>zeigte</b></g> den Vorfall sofort bei der Polizei <g><b>an</b></g>.",
-      "en": "The neighbour immediately <g>reported</g> the incident to the police.",
-      "uk": "Сусідка одразу заявила про інцидент у поліцію.",
-      "ru": "Соседка сразу заявила об инциденте в полицию."
+      "en": "The neighbour immediately <g><b>reported</b></g> the incident to the police.",
+      "uk": "Сусідка одразу <b>заявила</b> про інцидент у поліцію.",
+      "ru": "Соседка сразу <b>заявила</b> об инциденте в полицию."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47487,9 +47487,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Der Zeuge <g><b>sagte</b></g> bei der Polizei alles genau <g><b>aus</b></g>.",
-      "en": "The witness <g>testified</g> everything precisely to the police.",
-      "uk": "Свідок точно дав свідчення поліції.",
-      "ru": "Свидетель точно дал показания полиции."
+      "en": "The witness <g><b>testified</b></g> everything precisely to the police.",
+      "uk": "Свідок точно <b>дав свідчення</b> поліції.",
+      "ru": "Свидетель точно <b>дал показания</b> полиции."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47510,9 +47510,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Polizei <g>sperrte</g> den <b>Tatort</b> sofort <g>ab</g>.",
-      "en": "The police immediately <g>sealed</g> <g>off</g> the crime scene.",
-      "uk": "Поліція одразу оточила місце злочину.",
-      "ru": "Полиция сразу оцепила место преступления."
+      "en": "The police immediately <g>sealed</g> <g>off</g> the <b>crime scene</b>.",
+      "uk": "Поліція одразу оточила <b>місце злочину</b>.",
+      "ru": "Полиция сразу оцепила <b>место преступления</b>."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47533,9 +47533,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Polizei <g><b>lädt</b></g> den Zeugen für morgen <g><b>vor</b></g>.",
-      "en": "The police <g>summon</g> the witness for tomorrow.",
-      "uk": "Поліція викликає свідка на завтра.",
-      "ru": "Полиция вызывает свидетеля на завтра."
+      "en": "The police <g><b>summon</b></g> the witness for tomorrow.",
+      "uk": "Поліція <b>викликає</b> свідка на завтра.",
+      "ru": "Полиция <b>вызывает</b> свидетеля на завтра."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47556,9 +47556,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Polizei <g>stellte</g> alle <b>Beweise</b> am Tatort <g>sicher</g>.",
-      "en": "The police <g>secured</g> all the evidence at the crime scene.",
-      "uk": "Поліція зібрала всі докази на місці злочину.",
-      "ru": "Полиция собрала все доказательства на месте преступления."
+      "en": "The police <g>secured</g> all the <b>evidence</b> at the crime scene.",
+      "uk": "Поліція зібрала всі <b>докази</b> на місці злочину.",
+      "ru": "Полиция собрала все <b>доказательства</b> на месте преступления."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47579,9 +47579,9 @@ var VOCAB = [
     },
     "def": {
       "de": "An der nächsten Haltestelle <g><b>steigen</b></g> wir <g><b>aus</b></g>.",
-      "en": "We <g>get</g> <g>off</g> at the next stop.",
-      "uk": "Ми виходимо на наступній зупинці.",
-      "ru": "Мы выходим на следующей остановке."
+      "en": "We <g><b>get</b></g> <g><b>off</b></g> at the next stop.",
+      "uk": "Ми <b>виходимо</b> на наступній зупинці.",
+      "ru": "Мы <b>выходим</b> на следующей остановке."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47602,9 +47602,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Wir <g><b>steigen</b></g> hier in die U-Bahn <g><b>ein</b></g>.",
-      "en": "We <g>get</g> <g>on</g> the subway here.",
-      "uk": "Ми сідаємо тут у метро.",
-      "ru": "Мы садимся здесь в метро."
+      "en": "We <g><b>get</b></g> <g><b>on</b></g> the subway here.",
+      "uk": "Ми <b>сідаємо</b> тут у метро.",
+      "ru": "Мы <b>садимся</b> здесь в метро."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47625,9 +47625,9 @@ var VOCAB = [
     },
     "def": {
       "de": "Am Hauptbahnhof <g><b>steigen</b></g> wir in die andere Linie <g><b>um</b></g>.",
-      "en": "At the main station, we <g>change</g> to the other line.",
-      "uk": "На головному вокзалі ми пересідаємо на іншу лінію.",
-      "ru": "На главном вокзале мы пересаживаемся на другую линию."
+      "en": "At the main station, we <g><b>change</b></g> to the other line.",
+      "uk": "На головному вокзалі ми <b>пересідаємо</b> на іншу лінію.",
+      "ru": "На главном вокзале мы <b>пересаживаемся</b> на другую линию."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
