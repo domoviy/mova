@@ -98,6 +98,16 @@
     var c = document.getElementById('consent-analytics-toggle');
     if(c) c.checked = (window.mConsent.analytics() === true);
   }
+  // Тексти банера — за поточною мовою інтерфейсу; викликається при показі й при зміні мови
+  function fill(d){
+    var x = TXT[lang()];
+    d.setAttribute('aria-label', x.t);
+    d.querySelector('h2').textContent = x.t;
+    d.querySelector('p').textContent = x.b;
+    d.querySelector('#cb-link').textContent = x.l;
+    d.querySelector('#cb-no').textContent = x.n;
+    d.querySelector('#cb-yes').textContent = x.y;
+  }
   function show(){
     if(document.getElementById('consent-banner')) return;
     var L = lang(), x = TXT[L];
@@ -121,11 +131,7 @@
     d.innerHTML =
       '<div class="cb-box"><h2></h2><p></p><a id="cb-link"></a>' +
       '<div class="cb-row"><button type="button" id="cb-no"></button><button type="button" id="cb-yes"></button></div></div>';
-    d.querySelector('h2').textContent = x.t;
-    d.querySelector('p').textContent = x.b;
-    d.querySelector('#cb-link').textContent = x.l;
-    d.querySelector('#cb-no').textContent = x.n;
-    d.querySelector('#cb-yes').textContent = x.y;
+    fill(d);
     d.querySelector('#cb-link').onclick = function(){ window.openPrivacyPolicy(); };
     d.querySelector('#cb-no').onclick  = function(){ window.mConsent.set(false); };
     d.querySelector('#cb-yes').onclick = function(){ window.mConsent.set(true); };
@@ -138,7 +144,8 @@
       hide(); sync();
       window.dispatchEvent(new CustomEvent('mova-consent', {detail:{analytics: !!v}}));
     },
-    show: show, sync: sync
+    show: show, sync: sync,
+    refresh: function(){ var d = document.getElementById('consent-banner'); if(d) fill(d); }
   };
   window.openPrivacyPolicy = function(){
     var m = lang();
@@ -2545,24 +2552,14 @@ body{
    кожен зі своєю фазою flicker-анімації (asymmetric border-radius +
    scale + rotate) — разом дають враження живого, тремтливого вогню. */
 .cel-fire{ position:relative; width:100px; height:130px; }
-.cel-fire-flame{
-  position:absolute; left:50%; bottom:0;
-  border-radius:50% 50% 50% 50% / 60% 60% 40% 40%;
-  transform-origin:50% 100%;
-  filter: blur(.5px);
-}
-.cel-fire-flame-1{
-  width:80px; height:120px; margin-left:-40px;
-  background: radial-gradient(circle at 50% 78%, #ff9d2e 0%, #ff6a00 55%, #d43d00 100%);
-}
-.cel-fire-flame-2{
-  width:56px; height:90px; margin-left:-28px;
-  background: radial-gradient(circle at 50% 80%, #ffd166 0%, #ff9d2e 60%, #ff6a00 100%);
-}
-.cel-fire-flame-3{
-  width:30px; height:54px; margin-left:-15px;
-  background: radial-gradient(circle at 50% 85%, #fff6d8 0%, #ffe27a 55%, #ffb347 100%);
-}
+/* Силует вогню — той самий контур із двома язиками полум'я, що й іконка
+   movaIcon('flame') у верхній панелі (#h-fire): маленький язик ліворуч і
+   високий праворуч. Три шари одного контуру (зовнішній → середній → серцевина,
+   у <g> зменшені навколо нижнього центру) дають глибину, а кожен шар
+   тремтить у своїй фазі. viewBox="4 1 16 21" тісно обрізає контур під
+   пропорції блоку 100×130. */
+.cel-fire-svg{ display:block; width:100%; height:100%; overflow:visible; filter:drop-shadow(0 0 10px rgba(255,140,0,.5)); }
+.cel-fire-flame{ transform-box:fill-box; transform-origin:50% 100%; }
 /* Клас cel-fire-anim перемикається JS-функцією _restartStreakFlameAnim()
    при кожному показі картки стріку — щоб анімація завжди стартувала з
    нуля, а не продовжувала довільну фазу з минулого разу. */
@@ -2570,19 +2567,19 @@ body{
 .cel-fire-anim .cel-fire-flame-2{ animation: celFlameFlicker2 1.3s ease-in-out infinite; }
 .cel-fire-anim .cel-fire-flame-3{ animation: celFlameFlicker3 1s ease-in-out infinite; }
 @keyframes celFlameFlicker1{
-  0%,100%{ transform:scaleY(1) scaleX(1) rotate(-2deg); border-radius:50% 50% 50% 50% / 60% 60% 40% 40%; }
-  25%{ transform:scaleY(1.08) scaleX(.94) rotate(2deg); border-radius:45% 55% 50% 50% / 65% 55% 45% 35%; }
-  50%{ transform:scaleY(.95) scaleX(1.05) rotate(-1deg); border-radius:55% 45% 45% 55% / 55% 65% 35% 45%; }
-  75%{ transform:scaleY(1.05) scaleX(.97) rotate(1deg); border-radius:50% 50% 55% 45% / 60% 58% 42% 40%; }
+  0%,100%{ transform:scaleY(1) scaleX(1) rotate(-1.5deg); }
+  25%{ transform:scaleY(1.06) scaleX(.96) rotate(1.5deg); }
+  50%{ transform:scaleY(.96) scaleX(1.04) rotate(-1deg); }
+  75%{ transform:scaleY(1.04) scaleX(.98) rotate(1deg); }
 }
 @keyframes celFlameFlicker2{
   0%,100%{ transform:scaleY(1) scaleX(1) rotate(2deg); }
-  33%{ transform:scaleY(1.12) scaleX(.93) rotate(-3deg); }
-  66%{ transform:scaleY(.92) scaleX(1.06) rotate(3deg); }
+  33%{ transform:scaleY(1.1) scaleX(.94) rotate(-2.5deg); }
+  66%{ transform:scaleY(.94) scaleX(1.05) rotate(2.5deg); }
 }
 @keyframes celFlameFlicker3{
-  0%,100%{ transform:scaleY(1) translateY(0) rotate(0deg); }
-  50%{ transform:scaleY(1.18) translateY(-4px) rotate(-2deg); }
+  0%,100%{ transform:scaleY(1) rotate(0deg); }
+  50%{ transform:scaleY(1.16) rotate(-2deg); }
 }
 /* Лічильник-одометр: кожна цифра — вертикальна "стрічка" з послідовністю
    0-9, що прокручується від СТАРОГО значення до НОВОГО (animateOdometer()),
@@ -4404,9 +4401,16 @@ body{
              тепер вбудований у той самий екран власною карткою. -->
         <div class="lr-streak-card" id="lr-streak-card" style="display:none">
           <div class="cel-fire cel-fire-anim" id="lr-streak-flame">
-            <span class="cel-fire-flame cel-fire-flame-1"></span>
-            <span class="cel-fire-flame cel-fire-flame-2"></span>
-            <span class="cel-fire-flame cel-fire-flame-3"></span>
+            <svg class="cel-fire-svg" viewBox="4 1 16 21" aria-hidden="true" focusable="false">
+              <defs>
+                <radialGradient id="celFlameO" cx="50%" cy="78%" r="75%"><stop offset="0" stop-color="#ff9d2e"/><stop offset=".55" stop-color="#ff6a00"/><stop offset="1" stop-color="#d43d00"/></radialGradient>
+                <radialGradient id="celFlameM" cx="50%" cy="80%" r="75%"><stop offset="0" stop-color="#ffd166"/><stop offset=".6" stop-color="#ff9d2e"/><stop offset="1" stop-color="#ff6a00"/></radialGradient>
+                <radialGradient id="celFlameC" cx="50%" cy="85%" r="75%"><stop offset="0" stop-color="#fff6d8"/><stop offset=".55" stop-color="#ffe27a"/><stop offset="1" stop-color="#ffb347"/></radialGradient>
+              </defs>
+              <path class="cel-fire-flame cel-fire-flame-1" fill="url(#celFlameO)" d="M12 21.4C7.9 21.4 5.2 18.7 5.2 14.9c0-2.6 1.4-4.5 2.8-6.2.4 1.5 1.2 2.3 2.2 2.6-.7-3.7.8-6.6 3.4-8.7.3 2.9 2.4 4.6 3.8 6.8.9 1.4 1.4 3.3 1.4 5.5 0 3.8-2.7 6.5-6.8 6.5z"/>
+              <g transform="translate(12 21.4) scale(.72) translate(-12 -21.4)"><path class="cel-fire-flame cel-fire-flame-2" fill="url(#celFlameM)" d="M12 21.4C7.9 21.4 5.2 18.7 5.2 14.9c0-2.6 1.4-4.5 2.8-6.2.4 1.5 1.2 2.3 2.2 2.6-.7-3.7.8-6.6 3.4-8.7.3 2.9 2.4 4.6 3.8 6.8.9 1.4 1.4 3.3 1.4 5.5 0 3.8-2.7 6.5-6.8 6.5z"/></g>
+              <g transform="translate(12 21.4) scale(.42) translate(-12 -21.4)"><path class="cel-fire-flame cel-fire-flame-3" fill="url(#celFlameC)" d="M12 21.4C7.9 21.4 5.2 18.7 5.2 14.9c0-2.6 1.4-4.5 2.8-6.2.4 1.5 1.2 2.3 2.2 2.6-.7-3.7.8-6.6 3.4-8.7.3 2.9 2.4 4.6 3.8 6.8.9 1.4 1.4 3.3 1.4 5.5 0 3.8-2.7 6.5-6.8 6.5z"/></g>
+            </svg>
           </div>
           <div class="lr-streak-num" id="lr-streak-num">1</div>
           <div class="lr-streak-label" id="lr-streak-label"></div>
@@ -5083,7 +5087,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '811-34b4272';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7143,6 +7147,7 @@ function targetText(card){ return card.term?.[primaryLang()] || ''; }
 function setUiLang(lang){
   uiLang = lang;
   localStorage.setItem('mova_ui_lang', lang);
+  window.mConsent?.refresh?.();   // банер згоди (Datenschutz & Statistik) змінює мову разом з інтерфейсом
   // Аналітика: user property (стабільний вимір — з якою мовою
   // інтерфейсу людина користується застосунком загалом) + окрема
   // подія (щоб бачити САМ факт і момент перемикання, не лише

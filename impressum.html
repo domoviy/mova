@@ -2,7 +2,7 @@
 <html lang="de">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="index,follow">
 <title>MOVA – Impressum / Імпресум / Legal notice / Импрессум</title>
 <style>
@@ -10,11 +10,14 @@
   @media (prefers-color-scheme:dark){:root{--bg:#14110f;--ink:#ece8e1;--muted:#a8a29e;--card:#1d1a17;--line:#352f2a;--forest:#c9a84c;--ph:#5b4a00}}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
-  main{max-width:760px;margin:0 auto;padding:20px 18px 60px}
-  .langbar{display:flex;gap:8px;margin:6px 0 18px}
-  .langbar button{flex:1;padding:9px;border-radius:10px;border:1.5px solid var(--forest);background:transparent;color:var(--ink);font:inherit;font-weight:600;cursor:pointer}
-  body[data-lang=de] #b-de,body[data-lang=uk] #b-uk,body[data-lang=en] #b-en,body[data-lang=ru] #b-ru{background:var(--forest);color:#fff}
-  @media (prefers-color-scheme:dark){body[data-lang=de] #b-de,body[data-lang=uk] #b-uk,body[data-lang=en] #b-en,body[data-lang=ru] #b-ru{color:#14110f}}
+  main{max-width:760px;margin:0 auto;padding:0 18px 60px}
+  .topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg);padding:calc(10px + env(safe-area-inset-top,0px)) 0 10px;margin-bottom:8px}
+  .langbar{display:flex;gap:8px}
+  .langbar button{padding:6px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;opacity:.55;line-height:0}
+  .langbar svg{display:block;width:30px;height:21px;border-radius:4px;box-shadow:0 0 0 1px rgba(0,0,0,.16)}
+  body[data-lang=de] #b-de,body[data-lang=uk] #b-uk,body[data-lang=en] #b-en,body[data-lang=ru] #b-ru{opacity:1;border-color:var(--forest);box-shadow:0 0 0 1px var(--forest)}
+  .closebtn{width:40px;height:40px;padding:0;flex-shrink:0;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .closebtn svg{width:18px;height:18px}
   h1{font-size:26px;margin:.2em 0}
   h2{font-size:18px;margin:1.6em 0 .3em;padding-top:.4em;border-top:1px solid var(--line)}
   p,li{margin:.4em 0}
@@ -30,11 +33,14 @@
 </head>
 <body data-lang="de">
 <main>
-<div class="langbar">
-  <button id="b-de" type="button" onclick="setLang('de')">Deutsch</button>
-  <button id="b-uk" type="button" onclick="setLang('uk')">Українська</button>
-  <button id="b-en" type="button" onclick="setLang('en')">English</button>
-  <button id="b-ru" type="button" onclick="setLang('ru')">Русский</button>
+<div class="topbar">
+  <div class="langbar" role="group" aria-label="Language">
+    <button id="b-de" type="button" onclick="setLang('de')" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="6.7" fill="#1f1f1f"/><rect y="6.6" width="28" height="6.8" fill="#d6402f"/><rect y="13.3" width="28" height="6.7" fill="#f2b830"/></svg></button>
+    <button id="b-uk" type="button" onclick="setLang('uk')" aria-label="Українська" title="Українська"><svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="10.1" fill="#2f6bb6"/><rect y="10" width="28" height="10" fill="#f4c62e"/></svg></button>
+    <button id="b-en" type="button" onclick="setLang('en')" aria-label="English" title="English"><svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="20" fill="#24408e"/><path d="M0 0 28 20M28 0 0 20" stroke="#fff" stroke-width="4.2"/><path d="M0 0 28 20M28 0 0 20" stroke="#cf2e3a" stroke-width="1.5"/><path d="M14 0v20M0 10h28" stroke="#fff" stroke-width="6.6"/><path d="M14 0v20M0 10h28" stroke="#cf2e3a" stroke-width="3.6"/></svg></button>
+    <button id="b-ru" type="button" onclick="setLang('ru')" aria-label="Русский" title="Русский"><svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="6.7" fill="#f6f6f4"/><rect y="6.6" width="28" height="6.8" fill="#2e58a8"/><rect y="13.3" width="28" height="6.7" fill="#d5382f"/></svg></button>
+  </div>
+  <button type="button" class="closebtn" aria-label="Close" title="Close" onclick="closePage()"><svg viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M3 3l12 12M15 3L3 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 </div>
 
 <!-- ═══════════════════════════ DEUTSCH ═══════════════════════════ -->
@@ -48,7 +54,7 @@
 <!-- Nur eintragen, falls vorhanden (z. B. bei Gewerbe): Umsatzsteuer-Identifikationsnummer nach § 27a UStG: DE… -->
 <h2>Verbraucherstreitbeilegung</h2>
 <p>Wir sind nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
-<p><a href="privacy.html?lang=de">Datenschutzerklärung</a></p>
+<p><a href="privacy.html?lang=de" onclick="location.replace(this.href);return false">Datenschutzerklärung</a></p>
 </div>
 
 <!-- ═══════════════════════════ УКРАЇНСЬКА ═══════════════════════════ -->
@@ -61,7 +67,7 @@
 <p>Email: <a href="mailto:mova.now.app@gmail.com">mova.now.app@gmail.com</a><br>Телефон: <a href="tel:+491759903343">+49 175 9903343</a></p>
 <h2>Позасудове вирішення спорів зі споживачами</h2>
 <p>Ми не готові й не зобов’язані брати участь у процедурах вирішення спорів перед споживчим арбітражним органом.</p>
-<p><a href="privacy.html?lang=uk">Політика конфіденційності</a></p>
+<p><a href="privacy.html?lang=uk" onclick="location.replace(this.href);return false">Політика конфіденційності</a></p>
 </div>
 
 <!-- ═══════════════════════════ ENGLISH ═══════════════════════════ -->
@@ -74,7 +80,7 @@
 <p>Email: <a href="mailto:mova.now.app@gmail.com">mova.now.app@gmail.com</a><br>Phone: <a href="tel:+491759903343">+49 175 9903343</a></p>
 <h2>Consumer dispute resolution</h2>
 <p>We are neither willing nor obliged to participate in dispute resolution proceedings before a consumer arbitration board.</p>
-<p><a href="privacy.html?lang=en">Privacy policy</a></p>
+<p><a href="privacy.html?lang=en" onclick="location.replace(this.href);return false">Privacy policy</a></p>
 </div>
 <!-- ═══════════════════════════ РУССКИЙ ═══════════════════════════ -->
 <div class="lang" lang="ru">
@@ -86,10 +92,16 @@
 <p>Email: <a href="mailto:mova.now.app@gmail.com">mova.now.app@gmail.com</a><br>Телефон: <a href="tel:+491759903343">+49 175 9903343</a></p>
 <h2>Внесудебное разрешение споров с потребителями</h2>
 <p>Мы не готовы и не обязаны участвовать в процедурах разрешения споров перед потребительским арбитражным органом.</p>
-<p><a href="privacy.html?lang=ru">Политика конфиденциальности</a></p>
+<p><a href="privacy.html?lang=ru" onclick="location.replace(this.href);return false">Политика конфиденциальности</a></p>
 </div>
 </main>
 <script>
+  function closePage(){
+    if(history.length > 1){ history.back(); return; }
+    try{ window.close(); }catch(e){}
+    setTimeout(function(){ location.href = './'; }, 200);   // вкладка не закрилась → повертаємось у застосунок
+  }
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePage(); });
   function setLang(l){
     if(['de','uk','en','ru'].indexOf(l) < 0) l = 'de';
     document.body.setAttribute('data-lang', l);
