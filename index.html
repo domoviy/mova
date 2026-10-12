@@ -141,8 +141,12 @@
     show: show, sync: sync
   };
   window.openPrivacyPolicy = function(){
-    var l = lang(), m = (l === 'ru') ? 'uk' : l;
+    var m = lang();
     window.open('privacy.html?lang=' + m, '_blank', 'noopener');
+  };
+  window.openImpressum = function(){
+    var m = lang();
+    window.open('impressum.html?lang=' + m, '_blank', 'noopener');
   };
   // Банер лише там, де аналітика взагалі можлива (https) і рішення ще не ухвалене
   function init(){ if(location.protocol === 'https:' && window.mConsent.analytics() === null) show(); sync(); }
@@ -4914,6 +4918,10 @@ body{
       <div class="srow-label"><label data-i18n="lbl_privacy_policy">Datenschutzerklärung</label></div>
       <button class="btn btn-s" style="white-space:nowrap" onclick="window.openPrivacyPolicy&&window.openPrivacyPolicy()"><i data-mi="clipboard" class="mi-inline"></i><span data-i18n="btn_open">Öffnen</span></button>
     </div>
+    <div class="srow">
+      <div class="srow-label"><label data-i18n="lbl_impressum">Impressum</label></div>
+      <button class="btn btn-s" style="white-space:nowrap" onclick="window.openImpressum&&window.openImpressum()"><i data-mi="clipboard" class="mi-inline"></i><span data-i18n="btn_open">Öffnen</span></button>
+    </div>
     </div>
     </div><!-- /ГРУПА Конфіденційність -->
 
@@ -5075,7 +5083,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '809-9ab683e';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6612,7 +6620,7 @@ const I18N = {
     bugreport_submit:'Senden',
     bugreport_submitting:'Wird gesendet…',
     bugreport_privacy_note:'Gesendet werden: Übungskontext, Ihr Kommentar, technische Geräteinformationen und eine zufällige Installations-ID – keine Namen oder E-Mail-Adressen.',
-     grp_privacy:'Datenschutz', lbl_analytics:'Nutzungsstatistik', sub_analytics:'Google Firebase Analytics – nur mit Ihrer Einwilligung', lbl_privacy_policy:'Datenschutzerklärung', btn_open:'Öffnen',
+     grp_privacy:'Datenschutz', lbl_analytics:'Nutzungsstatistik', sub_analytics:'Google Firebase Analytics – nur mit Ihrer Einwilligung', lbl_privacy_policy:'Datenschutzerklärung', btn_open:'Öffnen', lbl_impressum:'Impressum',
     bugreport_notify_ok:'Danke, der Bericht wurde gesendet',
     bugreport_notify_queued:'Kein Netz — wird später gesendet',
     bugtype_translation:'Schlechte Übersetzung',
@@ -6768,7 +6776,7 @@ const I18N = {
     bugreport_submit:'Надіслати',
     bugreport_submitting:'Надсилаємо…',
     bugreport_privacy_note:'Надсилається: контекст вправи, ваш коментар, технічна інформація про пристрій і випадковий ідентифікатор встановлення — без імен чи email.',
-     grp_privacy:'Конфіденційність', lbl_analytics:'Статистика використання', sub_analytics:'Google Firebase Analytics — лише за вашою згодою', lbl_privacy_policy:'Політика конфіденційності', btn_open:'Відкрити',
+     grp_privacy:'Конфіденційність', lbl_analytics:'Статистика використання', sub_analytics:'Google Firebase Analytics — лише за вашою згодою', lbl_privacy_policy:'Політика конфіденційності', btn_open:'Відкрити', lbl_impressum:'Імпресум (Impressum)',
     bugreport_notify_ok:'Дякуємо, звіт надіслано',
     bugreport_notify_queued:'Мережі нема — надішлемо пізніше',
     bugtype_translation:'Поганий переклад',
@@ -6925,7 +6933,7 @@ const I18N = {
     bugreport_submit:'Submit',
     bugreport_submitting:'Sending…',
     bugreport_privacy_note:'Sent: exercise context, your comment, technical device info and a random installation ID – no names or email addresses.',
-     grp_privacy:'Privacy', lbl_analytics:'Usage statistics', sub_analytics:'Google Firebase Analytics – only with your consent', lbl_privacy_policy:'Privacy policy', btn_open:'Open',
+     grp_privacy:'Privacy', lbl_analytics:'Usage statistics', sub_analytics:'Google Firebase Analytics – only with your consent', lbl_privacy_policy:'Privacy policy', btn_open:'Open', lbl_impressum:'Legal notice (Impressum)',
     bugreport_notify_ok:'Thanks, your report was sent',
     bugreport_notify_queued:'No network — we\'ll send it later',
     bugtype_translation:'Bad translation',
@@ -7081,7 +7089,7 @@ const I18N = {
     bugreport_submit:'Отправить',
     bugreport_submitting:'Отправляем…',
     bugreport_privacy_note:'Отправляется: контекст упражнения, ваш комментарий, техническая информация об устройстве и случайный идентификатор установки — без имён и email.',
-     grp_privacy:'Конфиденциальность', lbl_analytics:'Статистика использования', sub_analytics:'Google Firebase Analytics — только с вашего согласия', lbl_privacy_policy:'Политика конфиденциальности', btn_open:'Открыть',
+     grp_privacy:'Конфиденциальность', lbl_analytics:'Статистика использования', sub_analytics:'Google Firebase Analytics — только с вашего согласия', lbl_privacy_policy:'Политика конфиденциальности', btn_open:'Открыть', lbl_impressum:'Импрессум (Impressum)',
     bugreport_notify_ok:'Спасибо, отчёт отправлен',
     bugreport_notify_queued:'Нет сети — отправим позже',
     bugtype_translation:'Плохой перевод',
