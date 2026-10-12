@@ -4908,7 +4908,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '806-22ef359';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11352,6 +11352,77 @@ function startReviewLesson(chapterNums, labelKey){
 
 // Внутрішня функція: запускає lesson flow з довільним набором карток
 // (використовується і startLessonFlow і startReviewLesson)
+// ── ПЛАНУВАЛЬНИК СКЛАДУ УРОКУ ────────────────────────────────────
+// Довжина уроку стабільна, а набір кроків змінюється. Кожен крок має
+// «вартість» у умовних одиницях (≈ 30 с); до уроку беруться кроки, поки не
+// вичерпається бюджет LF_LESSON_BUDGET (крок «Картки» і «Результат» — поза
+// бюджетом, вони є завжди). Якщо доступних кроків мало, розмір змінних кроків
+// (пари, плитки, фрази) збільшується, а за потреби додається ще один раунд
+// «Знайди пару» — тож короткий урок добирається до тієї ж довжини. Якщо їх
+// забагато — вибираються ті, що найдавніше траплялись (історія останніх
+// уроків у localStorage), з невеликою випадковістю.
+// Усі числа нижче — оцінка; підлаштовуються за відчуттям тривалості.
+const LF_LESSON_BUDGET = 9;
+const LF_COST = { cards:3, def:1.5, sb_prac:3, deftype:1.5, matchPair:0.6, tile:1.2, speechPhrase:0.9, dlgTurn:0.5 };
+const LF_HIST_KEY = 'mova_lf_step_hist';
+// Порядок кроків у уроці (від впізнавання до продукування й мовлення)
+const LF_STEP_ORDER = ['cards','def','sb_prac','matching','dlg_learn','tiles','matching_x1','deftype','speech','result'];
+
+function _lfPlanSteps(av){
+  let hist = [];
+  try{ const h = JSON.parse(localStorage.getItem(LF_HIST_KEY) || '[]'); if(Array.isArray(h)) hist = h; }catch(e){}
+  const seen = k => hist.reduce((n, plan) => n + (Array.isArray(plan) && plan.indexOf(k) !== -1 ? 1 : 0), 0);
+
+  // Кандидати: unit — вартість одиниці розміру; minN/maxN — діапазон розміру
+  const cands = [];
+  if(av.grammar)  cands.push({key:av.grammar, unit: LF_COST[av.grammar], minN:1, maxN:1});
+  if(av.dlgTurns) cands.push({key:'dlg_learn', unit: Math.max(1.5, av.dlgTurns * LF_COST.dlgTurn), minN:1, maxN:1});
+  if(av.tilesMax) cands.push({key:'tiles', unit: LF_COST.tile, minN:1, maxN:av.tilesMax});
+  if(av.deftype)  cands.push({key:'deftype', unit: LF_COST.deftype, minN:1, maxN:1});
+  if(av.speechMax) cands.push({key:'speech', unit: LF_COST.speechPhrase, minN: Math.min(3, av.speechMax), maxN: av.speechMax});
+
+  // «Знайди пару» — завжди (3–5 пар)
+  const mMax = Math.max(1, Math.min(5, av.matchMax));
+  const chosen = { matching: { unit: LF_COST.matchPair, n: Math.min(3, mMax), maxN: mMax } };
+  let remaining = LF_LESSON_BUDGET - chosen.matching.unit * chosen.matching.n;
+
+  // Найдавніше-невживані першими (+ випадковість, щоб не було жорсткого циклу)
+  cands.map(c => Object.assign({}, c, {score: seen(c.key) + Math.random() * 1.2}))
+       .sort((a, b) => a.score - b.score)
+       .forEach(c => {
+         const cost = c.unit * c.minN;
+         if(cost <= remaining + 0.01){ chosen[c.key] = { unit:c.unit, n:c.minN, maxN:c.maxN }; remaining -= cost; }
+       });
+
+  // Добираємо до бюджету: збільшуємо змінні кроки по одній одиниці по колу
+  let grew = true;
+  while(grew){
+    grew = false;
+    for(const k of ['matching','tiles','speech']){
+      const c = chosen[k];
+      if(c && c.n < c.maxN && c.unit <= remaining + 0.01){ c.n++; remaining -= c.unit; grew = true; }
+    }
+  }
+  // Лишився запас — ще один раунд «Знайди пару» (інші слова модуля)
+  if(av.extraMatch >= 4){
+    const n = Math.min(5, av.extraMatch);
+    if(LF_COST.matchPair * n <= remaining + 0.01){
+      chosen.matching_x1 = { unit: LF_COST.matchPair, n, maxN: n };
+      remaining -= LF_COST.matchPair * n;
+    }
+  }
+
+  const steps = ['cards'].concat(LF_STEP_ORDER.filter(k => chosen[k]), ['result']);
+  const sizes = {}, cost = { cards: LF_COST.cards };
+  Object.keys(chosen).forEach(k => { sizes[k] = chosen[k].n; cost[k] = chosen[k].unit * chosen[k].n; });
+
+  try{
+    hist.push(steps.filter(k => k !== 'cards' && k !== 'result'));
+    localStorage.setItem(LF_HIST_KEY, JSON.stringify(hist.slice(-8)));
+  }catch(e){}
+  return { steps, sizes, cost };
+}
+
 function _runLessonFlow(lesson, allCards){
   if(!allCards.length){ notify('⚠️ Keine Karten'); return; }
   stopVocab();
@@ -11551,15 +11622,22 @@ function _runLessonFlow(lesson, allCards){
     else if(hasSB) grammarStep = 'sb_prac';
   }
 
-  const steps = ['cards'];
-  if(grammarStep) steps.push(grammarStep);
-  steps.push('matching');
-  if(dlgCardForLesson) steps.push('dlg_learn');
-  if(hasTiles) steps.push('tiles');
-  if(hasDefType) steps.push('deftype');
-  // Вимова — лише де є штатне розпізнавання мовлення; інакше крок просто не додається
-  if(speechCards.length && spSpeechSupported()) steps.push('speech');
-  steps.push('result');
+  // Склад уроку планується за бюджетом (див. _lfPlanSteps): довжина стабільна,
+  // кількість і набір кроків змінюються залежно від того, що доступно.
+  // Вимова — лише де є штатне розпізнавання мовлення.
+  const plan = _lfPlanSteps({
+    grammar:   grammarStep,
+    matchMax:  matchCards.length,
+    extraMatch: matchPool.slice(5, 10).length,
+    dlgTurns:  dlgCardForLesson ? _dlgCardTurns(dlgCardForLesson).length : 0,
+    tilesMax:  hasTiles ? tilesCards.length : 0,
+    deftype:   hasDefType,
+    speechMax: (speechCards.length && spSpeechSupported()) ? speechCards.length : 0,
+  });
+  const steps = plan.steps;
+  matchCards = matchCards.slice(0, plan.sizes.matching || matchCards.length);
+  const tilesCardsPlanned  = tilesCards.slice(0, plan.sizes.tiles || 0);
+  const speechCardsPlanned = plan.sizes.speech ? speechCards.slice(0, plan.sizes.speech) : speechCards;
 
   // Дві версії "Знайди пару" — ОБИДВІ лишаються доступними, а який саме
   // показати в цьому кроці, вирішує знайомість слів (один крок на урок, тож
@@ -11567,20 +11645,28 @@ function _runLessonFlow(lesson, allCards){
   //  • matchCards — класична, зі написаними словами: для нових і ще не
   //    закріплених слів (вперше / повторення);
   //  • matchAudioCards — версія з еквалайзером (впізнати слово на слух): лише
+  //    у ~35% випадків (див. LF_MATCH_AUDIO_SHARE нижче), і тільки
   //    коли в модулі набралось 5 слів, які користувач уже кілька разів
   //    відповідав правильно (srIsEarReady). Інакше — null (лишається класична).
   const earPool = matchPool.filter(c => srIsEarReady(state, c.id));
-  const matchAudioCards = earPool.length >= 5 ? earPool.slice(0, 5) : null;
+  // Раніше версія зі звуком вмикалась щоразу, коли набиралось 5 знайомих слів, —
+  // тож при повторенні майже завжди була «закрита». Тепер навіть коли вона
+  // доступна, показуємо її лише в частці LF_MATCH_AUDIO_SHARE уроків (~35%),
+  // решту — класична з написаними словами (~65% «відкритих»).
+  const LF_MATCH_AUDIO_SHARE = 0.35;
+  const matchAudioCards = (earPool.length >= 5 && Math.random() < LF_MATCH_AUDIO_SHARE)
+    ? earPool.slice(0, Math.max(2, matchCards.length)) : null;
 
   LF = {
     lessonId:  lesson.id,
     lesson,
     cards:     flowCards,
-    speechCards,
+    speechCards: speechCardsPlanned,
     matchCards,
     matchAudioCards,
-    matchExtraPools: {},
-    tilesCards: hasTiles ? tilesCards : [],
+    matchExtraPools: plan.sizes.matching_x1 ? { matching_x1: matchPool.slice(5, 5 + plan.sizes.matching_x1) } : {},
+    stepCost:  plan.cost,
+    tilesCards: hasTiles ? tilesCardsPlanned : [],
     allCards,
     sbCards:   hasSB ? lessonSBCards : [],
     sbIdx:     0,
@@ -18386,6 +18472,9 @@ function lfRenderBar(){
 // репліки ОДНІЄЇ картки звичайного уроку (LF.dlgCard). Для решти кроків
 // вага завжди 1 — там немає такого розкиду "довжини" кроку.
 function _lfStepWeight(stepName){
+  // Урок зі складом із планувальника: вага кроку = його «вартість» (≈ тривалість),
+  // тож смуга прогресу рухається рівномірно за часом, а не за кількістю тапів.
+  if(LF && LF.stepCost && LF.stepCost[stepName] != null) return LF.stepCost[stepName];
   if(stepName === 'dlg_learn' && LF){
     if(LF.dlgCards && LF.dlgCards.length) return _dlgCardsToUnits(LF.dlgCards).length;
     if(LF.dlgCard) return _dlgCardTurns(LF.dlgCard).length;
@@ -23989,6 +24078,8 @@ function toggleFavorite(id, silent){
   const key='mova_'+id;let data={};
   try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
   data.favorite=!data.favorite;
+  // favAt — коли картку додали в обране: «Обране» показує найновіші першими
+  if(data.favorite) data.favAt=Date.now(); else delete data.favAt;
   localStorage.setItem(key,JSON.stringify(data));
   const fav=data.favorite;
   // Оновлюємо лише кнопки САМЕ цієї картки (data-fav-id===id) — не
@@ -24028,14 +24119,30 @@ function _favCount(){
   return n;
 }
 function updateFavBadge(){const count=_favCount();const nb=document.getElementById('nb-favs');if(nb)nb.textContent=count;}
+// Обрані картки VOCAB: найновіше додані — першими. Картки, додані до появи
+// favAt (час невідомий), йдуть після них у порядку бази.
+function _favSortedVocab(){
+  const at = v => { try{ return JSON.parse(localStorage.getItem('mova_'+v.id)||'{}').favAt || 0; }catch(e){ return 0; } };
+  return VOCAB.filter(v=>isFavorite(v.id))
+    .map((v,i)=>({v, t:at(v), i}))
+    .sort((a,b)=> (b.t-a.t) || (a.i-b.i))
+    .map(x=>x.v);
+}
+// Рядок списку Словника/Обраного: term мовою курсу (primary), під ним term
+// мовою перекладу. Поле short тут не показуємо — список теж працює як
+// тренажер: бачиш слово й переклад, відкриваєш картку.
+function _vocabListRow(v, onclickAttr){
+  const pl = primaryLang(), tl = transLang();
+  const main = v.term?.[pl] || '';
+  const tr   = (tl && tl !== pl) ? (v.term?.[tl] || '') : '';
+  return renderMiniCardRow(v.cat, main, tr, onclickAttr);
+}
 function renderFavGrid(){
-  const dl=getActiveLangs()[0]||primaryLang();const favs=VOCAB.filter(v=>isFavorite(v.id));
+  const favs=_favSortedVocab();
   const empty=document.getElementById('fav-empty'),grid=document.getElementById('fav-grid');
   if(favs.length===0){grid.innerHTML='';if(empty)empty.style.display='';return;}
   if(empty)empty.style.display='none';
-  grid.innerHTML=favs.map(v=>
-    renderMiniCardRow(v.cat, v.term?.[dl]||v.term?.[primaryLang()]||'', v.short?.[dl]||v.short?.[primaryLang()]||'', `openFavCard(${VOCAB.indexOf(v)})`)
-  ).join('');
+  grid.innerHTML=favs.map(v=>_vocabListRow(v, `openFavCard(${VOCAB.indexOf(v)})`)).join('');
 }
 function openFavCard(vocabIdx){
   const card=VOCAB[vocabIdx];if(!card)return;
@@ -24045,7 +24152,7 @@ function openFavCard(vocabIdx){
   // startVocabCardMode(), який будує чергу "units" з V.queue від самого
   // початку (_lfVocabBuildUnits) і повністю ігнорує V.idx/renderVocabCard,
   // тому завжди показувало першу картку черги замість клікнутої.
-  const favQueue=VOCAB.filter(v=>isFavorite(v.id));
+  const favQueue=_favSortedVocab();
   const qIdx=favQueue.findIndex(v=>v.id===card.id);
   V.queue = qIdx!==-1 ? favQueue.slice(qIdx).concat(favQueue.slice(0,qIdx)) : favQueue;
   V.idx=0;
@@ -24286,7 +24393,7 @@ function renderVocabBrowse(){
     return;
   }
   document.getElementById('vocab-browse-grid').innerHTML=items.map(v=>
-    renderMiniCardRow(v.cat, v.term?.[dl]||v.term?.[primaryLang()]||'', v.short?.[dl]||v.short?.[primaryLang()]||'', `openVocabCard(${VOCAB.indexOf(v)})`)
+    _vocabListRow(v, `openVocabCard(${VOCAB.indexOf(v)})`)
   ).join('');
 }
 function openVocabCard(vocabIdx){
