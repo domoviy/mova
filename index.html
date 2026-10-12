@@ -69,24 +69,122 @@
   window.mprop = function(n, v){ push(['p', n, v]); };
 })();
 </script>
-<!-- Firebase Analytics (тільки на https://) -->
+<!-- Згода на аналітику (GDPR / TDDDG §25): банер + API window.mConsent.
+     Працює незалежно від Firebase: поки користувач не погодився, нічого не йде до Google. -->
+<script>
+(function(){
+  var KEY = 'mova_consent_v1';
+  var TXT = {
+    de:{t:'Datenschutz & Statistik',
+        b:'Mit Ihrer Einwilligung messen wir mit Google Firebase Analytics, wie MOVA genutzt wird (z. B. „Lektion gestartet“). Dabei werden eine zufällige Nutzer-ID sowie Geräte- und Nutzungsdaten an Google übertragen. Ohne Einwilligung funktioniert die App vollständig. Sie können Ihre Entscheidung jederzeit in den Einstellungen ändern.',
+        y:'Zustimmen', n:'Ablehnen', l:'Datenschutzerklärung'},
+    uk:{t:'Конфіденційність і статистика',
+        b:'За вашою згодою ми використовуємо Google Firebase Analytics, щоб розуміти, як люди користуються MOVA (наприклад, «урок розпочато»). Для цього до Google передаються випадковий ідентифікатор користувача, дані про пристрій і використання. Без згоди застосунок працює повністю. Ви можете змінити рішення будь-коли в налаштуваннях.',
+        y:'Погодитись', n:'Відмовитись', l:'Політика конфіденційності'},
+    en:{t:'Privacy & statistics',
+        b:'With your consent we use Google Firebase Analytics to measure how MOVA is used (e.g. “lesson started”). A random user ID plus device and usage data are sent to Google. The app works fully without your consent. You can change your decision at any time in Settings.',
+        y:'Agree', n:'Decline', l:'Privacy policy'},
+    ru:{t:'Конфиденциальность и статистика',
+        b:'С вашего согласия мы используем Google Firebase Analytics, чтобы понимать, как пользуются MOVA (например, «урок начат»). Для этого в Google передаются случайный идентификатор пользователя, данные об устройстве и использовании. Без согласия приложение работает полностью. Вы можете изменить решение в любое время в настройках.',
+        y:'Согласиться', n:'Отказаться', l:'Политика конфиденциальности'}
+  };
+  function lang(){ try{ var l = localStorage.getItem('mova_ui_lang') || 'de'; return TXT[l] ? l : 'de'; }catch(e){ return 'de'; } }
+  function read(){
+    try{ var r = JSON.parse(localStorage.getItem(KEY) || 'null'); return (r && typeof r.analytics === 'boolean') ? r : null; }
+    catch(e){ return null; }
+  }
+  function hide(){ var b = document.getElementById('consent-banner'); if(b) b.remove(); }
+  function sync(){
+    var c = document.getElementById('consent-analytics-toggle');
+    if(c) c.checked = (window.mConsent.analytics() === true);
+  }
+  function show(){
+    if(document.getElementById('consent-banner')) return;
+    var L = lang(), x = TXT[L];
+    if(!document.getElementById('consent-style')){
+      var st = document.createElement('style'); st.id = 'consent-style';
+      st.textContent =
+        '#consent-banner{position:fixed;left:0;right:0;bottom:0;z-index:99999;display:flex;justify-content:center;pointer-events:none}' +
+        '#consent-banner .cb-box{pointer-events:auto;box-sizing:border-box;width:100%;max-width:560px;background:var(--paper,#fff);color:var(--ink,#1c1917);' +
+        'border-top:1px solid var(--border,#e7e3dc);box-shadow:0 -6px 24px rgba(0,0,0,.18);border-radius:16px 16px 0 0;' +
+        'padding:16px 16px calc(14px + env(safe-area-inset-bottom,0px));font-family:inherit}' +
+        '#consent-banner h2{margin:0 0 6px;font-size:16px}' +
+        '#consent-banner p{margin:0 0 10px;font-size:13px;line-height:1.45;color:var(--warm,#44403c)}' +
+        '#consent-banner a{color:inherit;font-size:13px;text-decoration:underline;cursor:pointer}' +
+        '#consent-banner .cb-row{display:flex;gap:10px;margin-top:12px}' +
+        '#consent-banner button{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--forest,#0d2b1a);' +
+        'background:var(--forest,#0d2b1a);color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}';
+      document.head.appendChild(st);
+    }
+    var d = document.createElement('div');
+    d.id = 'consent-banner'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', x.t);
+    d.innerHTML =
+      '<div class="cb-box"><h2></h2><p></p><a id="cb-link"></a>' +
+      '<div class="cb-row"><button type="button" id="cb-no"></button><button type="button" id="cb-yes"></button></div></div>';
+    d.querySelector('h2').textContent = x.t;
+    d.querySelector('p').textContent = x.b;
+    d.querySelector('#cb-link').textContent = x.l;
+    d.querySelector('#cb-no').textContent = x.n;
+    d.querySelector('#cb-yes').textContent = x.y;
+    d.querySelector('#cb-link').onclick = function(){ window.openPrivacyPolicy(); };
+    d.querySelector('#cb-no').onclick  = function(){ window.mConsent.set(false); };
+    d.querySelector('#cb-yes').onclick = function(){ window.mConsent.set(true); };
+    document.body.appendChild(d);
+  }
+  window.mConsent = {
+    analytics: function(){ var r = read(); return r ? r.analytics : null; },
+    set: function(v){
+      try{ localStorage.setItem(KEY, JSON.stringify({analytics: !!v, ts: Date.now(), v: 1})); }catch(e){}
+      hide(); sync();
+      window.dispatchEvent(new CustomEvent('mova-consent', {detail:{analytics: !!v}}));
+    },
+    show: show, sync: sync
+  };
+  window.openPrivacyPolicy = function(){
+    var l = lang(), m = (l === 'ru') ? 'uk' : l;
+    window.open('privacy.html?lang=' + m, '_blank', 'noopener');
+  };
+  // Банер лише там, де аналітика взагалі можлива (https) і рішення ще не ухвалене
+  function init(){ if(location.protocol === 'https:' && window.mConsent.analytics() === null) show(); sync(); }
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+})();
+</script>
+<!-- Firebase Analytics (тільки на https:// і лише за згодою) -->
 <script type="module">
 if(location.protocol === 'https:'){
-  try{
-    const {initializeApp} = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js');
-    const {getAnalytics,logEvent,setUserId,setUserProperty} = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-analytics.js');
-    const app  = initializeApp({
-      apiKey:"AIzaSyAxY0dxMiCDtpQBsDgrrOm2Q7tTZWfe98c",
-      authDomain:"mova-b.firebaseapp.com",
-      projectId:"mova-b",
-      storageBucket:"mova-b.firebasestorage.app",
-      messagingSenderId:"961357218910",
-      appId:"1:961357218910:web:7c4ff747076a6349de20cf",
-      measurementId:"G-MLNBGMC805"
-    });
+  // Firebase SDK вантажиться з gstatic.com (IP користувача потрапляє до Google), тому
+  // НІЧОГО не підключаємо при старті: analytics — лише після згоди, auth/firestore —
+  // лише коли користувач користується хмарним бекапом (або вже був увійшов раніше).
+  const FB_BASE = 'https://www.gstatic.com/firebasejs/10.12.0/';
+  const GA_ID = 'G-MLNBGMC805';
+  const FB_CONFIG = {
+    apiKey:"AIzaSyAxY0dxMiCDtpQBsDgrrOm2Q7tTZWfe98c",
+    authDomain:"mova-b.firebaseapp.com",
+    projectId:"mova-b",
+    storageBucket:"mova-b.firebasestorage.app",
+    messagingSenderId:"961357218910",
+    appId:"1:961357218910:web:7c4ff747076a6349de20cf",
+    measurementId:GA_ID
+  };
+  let _fbAppP = null;
+  const getFbApp = () => _fbAppP || (_fbAppP = import(FB_BASE+'firebase-app.js').then(m => m.initializeApp(FB_CONFIG)));
+  const _ensureUid = () => { let u = localStorage.getItem('mova_uid'); if(!u){ u = crypto.randomUUID(); localStorage.setItem('mova_uid', u); } return u; };
+
+  let _A = null, _starting = false, _consentOn = false;
+  async function startAnalytics(){
+    _consentOn = true;
+    if(_A){   // повторна згода в тій самій сесії
+      try{ window['ga-disable-'+GA_ID] = false; _A.sac(_A.anal, true); _A.setUserId(_A.anal, _ensureUid()); }catch(_){}
+      window.mlog = _A.mlog; window.mprop = _A.mprop;
+      return;
+    }
+    if(_starting) return;
+    _starting = true;
+    try{
+    const app = await getFbApp();
+    const {getAnalytics,logEvent,setUserId,setUserProperty,setAnalyticsCollectionEnabled} = await import(FB_BASE+'firebase-analytics.js');
     const anal = getAnalytics(app);
-    let uid = localStorage.getItem('mova_uid');
-    if(!uid){uid=crypto.randomUUID();localStorage.setItem('mova_uid',uid);}
+    const uid = _ensureUid();
     setUserId(anal,uid);
     const sid   = Date.now().toString();
     const start = Date.now();
@@ -100,7 +198,7 @@ if(location.protocol === 'https:'){
     const _dbg = () => { try{ return localStorage.getItem('mova_ga_debug') === '1' ? {debug_mode:true} : {}; }catch(_){ return {}; } };
     logEvent(anal,'app_open',{session_id:sid, ..._dbg()});
     document.addEventListener('visibilitychange',()=>{
-      if(document.visibilityState==='hidden')
+      if(document.visibilityState==='hidden' && _consentOn)
         logEvent(anal,'session_end',{session_id:sid,duration_sec:Math.round((Date.now()-start)/1000), ..._dbg()});
     });
     window.mlog=(e,p={})=>{try{logEvent(anal,e,{session_id:sid,..._dbg(),...p});}catch(_){}};
@@ -176,110 +274,156 @@ if(location.protocol === 'https:'){
       window.mlog('pwa_installed', {});
     });
 
-    // ── Хмарний бекап/відновлення (Firebase Auth + Firestore) ──────
-    // ЕКСПЕРИМЕНТАЛЬНО: навмисно доступно лише з Налаштування → Debug
-    // (window.cloudSignUp/cloudSignIn/... викликаються з onclick там, не
-    // з жодного видимого звичайним користувачам місця). Email+пароль,
-    // а не magic link/Google — простіше для аудиторії (один екран, без
-    // перемикання в поштову скриньку чи залежності від Google-акаунту),
-    // Firebase Auth сам безпечно хешує паролі й дає готовий "забув
-    // пароль" — нам не треба городити це вручну.
-    //
-    // Навмисно РУЧНИЙ бекап/відновлення, а НЕ фоновий авто-sync: це
-    // перший крок — перевірити весь ланцюжок (Auth → запис у Firestore
-    // → читання назад → коректне відновлення на іншому пристрої) без
-    // найризикованішої частини (фонові слухачі, автоматичне злиття
-    // конфліктів двох пристроїв, що редагували офлайн одночасно). Кнопка
-    // "Зберегти"/"Відновити" — це затребувана дією людини операція, тож
-    // конфлікт (забув натиснути перед зміною пристрою) лягає на
-    // користувача, а не на автоматику, яку легко зламати непомітно.
-    const {getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged}
-      = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js');
-    const {getFirestore, doc, setDoc, getDoc, serverTimestamp}
-      = await import('https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js');
-    const auth = getAuth(app);
-    const db   = getFirestore(app);
-    window._cloudUser = null;
-    onAuthStateChanged(auth, user=>{
-      window._cloudUser = user;
-      if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
-    });
+    _A = {anal, sac:setAnalyticsCollectionEnabled, setUserId, mlog:window.mlog, mprop:window.mprop};
+    }catch(e){ console.warn('Analytics init failed:', e); }
+    _starting = false;
+  }
 
-    window.cloudSignUp = async (email, password) => {
-      try{
-        await createUserWithEmailAndPassword(auth, email, password);
-        window.notify?.('✅ Акаунт створено');
-      }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
-    };
-    window.cloudSignIn = async (email, password) => {
-      try{
-        await signInWithEmailAndPassword(auth, email, password);
-        window.notify?.('✅ Увійшли');
-      }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
-    };
-    window.cloudSignOut = async () => {
-      try{ await signOut(auth); window.notify?.('👋 Вийшли'); }
-      catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
-    };
+  // Відкликання/відмова: вимикаємо збір, видаємо локальний ID і GA-cookie
+  function _disableAnalytics(){
+    _consentOn = false;
+    window.mlog = function(){}; window.mprop = function(){}; window._mq = null;
+    try{ localStorage.removeItem('mova_uid'); }catch(_){}
+    try{ window['ga-disable-'+GA_ID] = true; }catch(_){}
+    if(_A){ try{ _A.sac(_A.anal, false); }catch(_){} }
+    try{
+      document.cookie.split(';').forEach(function(ck){
+        var n = ck.split('=')[0].trim();
+        if(n === '_ga' || n.indexOf('_ga_') === 0){
+          var exp = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+          document.cookie = exp;
+          document.cookie = exp + '; domain=' + location.hostname;
+          document.cookie = exp + '; domain=.' + location.hostname.replace(/^www\./,'');
+        }
+      });
+    }catch(_){}
+  }
+  window.addEventListener('mova-consent', ev => {
+    if(ev.detail && ev.detail.analytics) startAnalytics(); else _disableAnalytics();
+  });
+  (function(){
+    const c = window.mConsent ? window.mConsent.analytics() : false;   // немає модуля згоди → вважаємо «ні»
+    if(c === true) startAnalytics();
+    else if(c === false) _disableAnalytics();
+    // null — рішення ще нема: виклики mlog/mprop лише копляться в пам'яті (_mq), нічого не передається
+  })();
 
-    // Ключі localStorage, які НЕ бекапляться навіть попри префікс
-    // mova_/srs_ — суто пристрій-локальна бухгалтерія (кеші аудіо,
-    // прапорці міграцій), відновлення яких на іншому пристрої не має
-    // сенсу або навіть може зашкодити (напр. повторний запуск міграції
-    // на вже мігрованих даних).
-    const CLOUD_BACKUP_EXCLUDE = [
-      'mova_uid', 'mova_audio_hash_registry', 'mova_word_timing_cache',
-      'mova_dt_native_umlauts',   // чи набирає користувач умлаути власною клавіатурою — залежить від пристрою
-    ];
-    const CLOUD_BACKUP_EXCLUDE_PREFIX = [
-      'mova_ef_repair_v', 'mova_streak_migrated_v', 'mova_progress_schema_v', 'mova_sr_ob_skipped_',
-    ];
-    function _cloudCollectBackupData(){
-      const out = {};
-      for(let i=0; i<localStorage.length; i++){
-        const key = localStorage.key(i);
-        if(!key) continue;
-        if(!(key.startsWith('mova_') || key.startsWith('srs_'))) continue;
-        if(CLOUD_BACKUP_EXCLUDE.includes(key)) continue;
-        if(CLOUD_BACKUP_EXCLUDE_PREFIX.some(p=>key.startsWith(p))) continue;
-        out[key] = localStorage.getItem(key);
-      }
-      return out;
-    }
-
-    window.cloudBackup = async () => {
-      if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
-      try{
-        const data = _cloudCollectBackupData();
-        // Firestore ліміт документа — 1MiB. Для типового обсягу прогресу
-        // (тисячі карток × короткий SM-2-запис) вистачає з великим
-        // запасом; якщо колись впритул — розбити на кілька документів
-        // (напр. по курсу) буде наступним кроком, не зараз.
-        await setDoc(doc(db, 'backups', window._cloudUser.uid), {
-          data: JSON.stringify(data),
-          keyCount: Object.keys(data).length,
-          savedAt: serverTimestamp(),
-          savedAtClient: Date.now(),
-        });
-        window.notify?.('☁️ Збережено ('+Object.keys(data).length+' записів)');
+  // ── Хмарний бекап/відновлення (Firebase Auth + Firestore) ──────
+  // Доступний лише з Налаштування → Debug (поки що). Email+пароль; РУЧНИЙ бекап/відновлення,
+  // без авто-sync. Auth/Firestore SDK вантажаться ЛЕДАЧЕ (ensureCloud): при старті — лише якщо
+  // користувач уже був увійшов (прапорець CLOUD_FLAG), інакше при першому натисканні.
+  const CLOUD_FLAG = 'mova_cloud_active';
+  // Ключі localStorage, які НЕ бекапляться: пристрій-локальна бухгалтерія (кеші аудіо,
+  // прапорці міграцій) і згода (вона стосується конкретного пристрою).
+  const CLOUD_BACKUP_EXCLUDE = [
+    'mova_uid', 'mova_audio_hash_registry', 'mova_word_timing_cache',
+    'mova_dt_native_umlauts',   // чи набирає користувач умлаути власною клавіатурою — залежить від пристрою
+    'mova_consent_v1', CLOUD_FLAG,
+  ];
+  const CLOUD_BACKUP_EXCLUDE_PREFIX = [
+    'mova_ef_repair_v', 'mova_streak_migrated_v', 'mova_progress_schema_v', 'mova_sr_ob_skipped_',
+  ];
+  window._cloudUser = null;
+  let _cloudP = null;
+  function ensureCloud(){
+    if(_cloudP) return _cloudP;
+    _cloudP = (async () => {
+      const app = await getFbApp();
+      const A = await import(FB_BASE+'firebase-auth.js');
+      const F = await import(FB_BASE+'firebase-firestore.js');
+      const auth = A.getAuth(app);
+      const db   = F.getFirestore(app);
+      A.onAuthStateChanged(auth, user => {
+        window._cloudUser = user;
+        try{ if(user) localStorage.setItem(CLOUD_FLAG,'1'); else localStorage.removeItem(CLOUD_FLAG); }catch(_){}
         if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
-      }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
-    };
+      });
+      return {auth, db, A, F};
+    })().catch(e => { _cloudP = null; throw e; });
+    return _cloudP;
+  }
+  window.cloudInit = ensureCloud;
+  if(localStorage.getItem(CLOUD_FLAG) === '1') ensureCloud().catch(e => console.warn('Cloud init failed:', e));
 
-    window.cloudRestore = async () => {
-      if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
-      try{
-        const snap = await getDoc(doc(db, 'backups', window._cloudUser.uid));
-        if(!snap.exists()){ window.notify?.('⚠️ Бекапу ще немає'); return; }
-        const data = JSON.parse(snap.data().data || '{}');
-        // Перезаписуємо ЛИШЕ ключі з бекапу — те, чого в бекапі нема
-        // (напр. пристрій-локальні кеші), не чіпаємо взагалі.
-        Object.keys(data).forEach(key => { try{ localStorage.setItem(key, data[key]); }catch(_){} });
-        window.notify?.('☁️ Відновлено ('+Object.keys(data).length+' записів) — перезавантажую...');
-        setTimeout(()=>location.reload(), 900);
-      }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
-    };
-  }catch(e){console.warn('Firebase init failed:',e);}
+  window.cloudSignUp = async (email, password) => {
+    try{
+      const c = await ensureCloud();
+      await c.A.createUserWithEmailAndPassword(c.auth, email, password);
+      window.notify?.('✅ Акаунт створено');
+    }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+  };
+  window.cloudSignIn = async (email, password) => {
+    try{
+      const c = await ensureCloud();
+      await c.A.signInWithEmailAndPassword(c.auth, email, password);
+      window.notify?.('✅ Увійшли');
+    }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+  };
+  window.cloudSignOut = async () => {
+    try{ const c = await ensureCloud(); await c.A.signOut(c.auth); window.notify?.('👋 Вийшли'); }
+    catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+  };
+  function _cloudCollectBackupData(){
+    const out = {};
+    for(let i=0; i<localStorage.length; i++){
+      const key = localStorage.key(i);
+      if(!key) continue;
+      if(!(key.startsWith('mova_') || key.startsWith('srs_'))) continue;
+      if(CLOUD_BACKUP_EXCLUDE.includes(key)) continue;
+      if(CLOUD_BACKUP_EXCLUDE_PREFIX.some(p=>key.startsWith(p))) continue;
+      out[key] = localStorage.getItem(key);
+    }
+    return out;
+  }
+  window.cloudBackup = async () => {
+    if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
+    try{
+      const c = await ensureCloud();
+      const data = _cloudCollectBackupData();
+      // Firestore ліміт документа — 1MiB. Якщо колись впритул — розбити на кілька документів.
+      await c.F.setDoc(c.F.doc(c.db, 'backups', window._cloudUser.uid), {
+        data: JSON.stringify(data),
+        keyCount: Object.keys(data).length,
+        savedAt: c.F.serverTimestamp(),
+        savedAtClient: Date.now(),
+      });
+      window.notify?.('☁️ Збережено ('+Object.keys(data).length+' записів)');
+      if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
+    }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+  };
+  window.cloudRestore = async () => {
+    if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
+    try{
+      const c = await ensureCloud();
+      const snap = await c.F.getDoc(c.F.doc(c.db, 'backups', window._cloudUser.uid));
+      if(!snap.exists()){ window.notify?.('⚠️ Бекапу ще немає'); return; }
+      const data = JSON.parse(snap.data().data || '{}');
+      // Перезаписуємо ЛИШЕ ключі з бекапу — пристрій-локальні кеші не чіпаємо.
+      Object.keys(data).forEach(key => {
+        if(CLOUD_BACKUP_EXCLUDE.includes(key)) return;
+        try{ localStorage.setItem(key, data[key]); }catch(_){}
+      });
+      window.notify?.('☁️ Відновлено ('+Object.keys(data).length+' записів) — перезавантажую...');
+      setTimeout(()=>location.reload(), 900);
+    }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+  };
+  // Видалення акаунта (право на стирання, GDPR ст. 17; вимога Apple 5.1.1(v) і Google Play):
+  // спершу хмарна копія прогресу, потім сам акаунт. Локальні дані на пристрої лишаються.
+  window.cloudDeleteAccount = async () => {
+    try{
+      const c = await ensureCloud();
+      const u = c.auth.currentUser;
+      if(!u){ window.notify?.('⚠️ Спершу увійдіть'); return false; }
+      await c.F.deleteDoc(c.F.doc(c.db, 'backups', u.uid));
+      await c.A.deleteUser(u);
+      window.notify?.('🗑️ Акаунт і хмарні дані видалено');
+      return true;
+    }catch(e){
+      if(e && e.code === 'auth/requires-recent-login') window.notify?.('⚠️ Для безпеки увійдіть знову й повторіть видалення');
+      else window.notify?.('⚠️ '+(e.message||e.code||e));
+      return false;
+    }
+  };
 }
 </script>
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230d2b1a'/%3E%3Cpath d='M3,18 L7,11 C8.5,13 10,15 11,14 S13,8 13.5,9 C14,10 15.5,13 16,12 C16.5,11 21,5 24,4 L24,2 L30,2' fill='none' stroke='%23c9a84c' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
@@ -2019,6 +2163,10 @@ body{
 .tiles-result-sheet.ok .tiles-result-icon svg path{ stroke-dasharray:20; stroke-dashoffset:20; }
 @keyframes tiles-icon-draw{ to{ stroke-dashoffset:0; } }
 .tiles-result-label{font-size:var(--fs-tertiary);font-weight:600;color:var(--muted);letter-spacing:.3px;text-transform:uppercase;}
+/* Галочка/хрестик і підпис «Правильно!/Неправильно» — один візуальний елемент:
+   між ними зазвичай gap листа (12px), тут стягуємо його до ≈4px (-8px). Діє на
+   всі модалки результату (Tiles, Def, Впиши слово, Вимова), де підпис іде одразу за іконкою. */
+.tiles-result-icon + .tiles-result-label{margin-top:-8px;}
 .tiles-result-correct{font-size:var(--fs-card);font-weight:400;color:var(--ink);text-align:center;line-height:1.3;}
 .tiles-result-translation{font-size:var(--fs-secondary);color:var(--muted);line-height:1.3;text-align:center;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
 .course-emoji{font-size:24px;display:flex;color:var(--forest)}
@@ -4751,6 +4899,24 @@ body{
     </div>
     </div><!-- /ГРУПА 3 -->
 
+    <!-- ГРУПА: Конфіденційність (згода на аналітику + політика) -->
+    <div class="ssec-group">
+    <div class="ssec-group-title"><i data-mi="lock" class=""></i><span data-i18n="grp_privacy">Datenschutz</span><span class="ssec-group-line"></span></div>
+    <div class="ssec">
+    <div class="srow">
+      <div class="srow-label"><label data-i18n="lbl_analytics" for="consent-analytics-toggle">Nutzungsstatistik</label><small data-i18n="sub_analytics">Google Firebase Analytics – nur mit Ihrer Einwilligung</small></div>
+      <label class="dbg-switch">
+        <input type="checkbox" id="consent-analytics-toggle" onchange="window.mConsent&&window.mConsent.set(this.checked)">
+        <span class="dbg-switch-track"></span>
+      </label>
+    </div>
+    <div class="srow">
+      <div class="srow-label"><label data-i18n="lbl_privacy_policy">Datenschutzerklärung</label></div>
+      <button class="btn btn-s" style="white-space:nowrap" onclick="window.openPrivacyPolicy&&window.openPrivacyPolicy()"><i data-mi="clipboard" class="mi-inline"></i><span data-i18n="btn_open">Öffnen</span></button>
+    </div>
+    </div>
+    </div><!-- /ГРУПА Конфіденційність -->
+
     <!-- ГРУПА 4: Технічне — прихована за замовчуванням (лише Debug), -->
     <!-- розблоковується 5 тапами по версії застосунку внизу (_debugVersionTap) -->
     <div class="ssec-group" id="settings-group-technical" style="display:none">
@@ -4816,6 +4982,7 @@ body{
           <button class="btn btn-s" style="flex:1" onclick="debugCloudRestore()"><i data-mi="download" class="mi-inline"></i>Відновити з хмари</button>
         </div>
         <button class="btn btn-s" onclick="window.cloudSignOut?.()">Вийти з акаунту</button>
+        <button class="btn btn-s" style="color:var(--red)" onclick="debugCloudDelete()"><i data-mi="trash" class="mi-inline"></i>Видалити акаунт і хмарні дані</button>
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
@@ -4908,7 +5075,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '807-ec7cdae';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6444,7 +6611,8 @@ const I18N = {
     bugreport_ctx_toggle:'Was genau gesendet wird',
     bugreport_submit:'Senden',
     bugreport_submitting:'Wird gesendet…',
-    bugreport_privacy_note:'Gesendet werden: Übungskontext, Ihr Kommentar und technische Geräteinformationen — ohne persönliche Daten.',
+    bugreport_privacy_note:'Gesendet werden: Übungskontext, Ihr Kommentar, technische Geräteinformationen und eine zufällige Installations-ID – keine Namen oder E-Mail-Adressen.',
+     grp_privacy:'Datenschutz', lbl_analytics:'Nutzungsstatistik', sub_analytics:'Google Firebase Analytics – nur mit Ihrer Einwilligung', lbl_privacy_policy:'Datenschutzerklärung', btn_open:'Öffnen',
     bugreport_notify_ok:'Danke, der Bericht wurde gesendet',
     bugreport_notify_queued:'Kein Netz — wird später gesendet',
     bugtype_translation:'Schlechte Übersetzung',
@@ -6599,7 +6767,8 @@ const I18N = {
     bugreport_ctx_toggle:'Що саме буде надіслано',
     bugreport_submit:'Надіслати',
     bugreport_submitting:'Надсилаємо…',
-    bugreport_privacy_note:'Надсилається: контекст вправи, ваш коментар і технічна інформація про пристрій — без персональних даних.',
+    bugreport_privacy_note:'Надсилається: контекст вправи, ваш коментар, технічна інформація про пристрій і випадковий ідентифікатор встановлення — без імен чи email.',
+     grp_privacy:'Конфіденційність', lbl_analytics:'Статистика використання', sub_analytics:'Google Firebase Analytics — лише за вашою згодою', lbl_privacy_policy:'Політика конфіденційності', btn_open:'Відкрити',
     bugreport_notify_ok:'Дякуємо, звіт надіслано',
     bugreport_notify_queued:'Мережі нема — надішлемо пізніше',
     bugtype_translation:'Поганий переклад',
@@ -6755,7 +6924,8 @@ const I18N = {
     bugreport_ctx_toggle:'What exactly will be sent',
     bugreport_submit:'Submit',
     bugreport_submitting:'Sending…',
-    bugreport_privacy_note:'Sent: exercise context, your comment, and technical device info — no personal data.',
+    bugreport_privacy_note:'Sent: exercise context, your comment, technical device info and a random installation ID – no names or email addresses.',
+     grp_privacy:'Privacy', lbl_analytics:'Usage statistics', sub_analytics:'Google Firebase Analytics – only with your consent', lbl_privacy_policy:'Privacy policy', btn_open:'Open',
     bugreport_notify_ok:'Thanks, your report was sent',
     bugreport_notify_queued:'No network — we\'ll send it later',
     bugtype_translation:'Bad translation',
@@ -6910,7 +7080,8 @@ const I18N = {
     bugreport_ctx_toggle:'Что именно будет отправлено',
     bugreport_submit:'Отправить',
     bugreport_submitting:'Отправляем…',
-    bugreport_privacy_note:'Отправляется: контекст упражнения, ваш комментарий и техническая информация об устройстве — без персональных данных.',
+    bugreport_privacy_note:'Отправляется: контекст упражнения, ваш комментарий, техническая информация об устройстве и случайный идентификатор установки — без имён и email.',
+     grp_privacy:'Конфиденциальность', lbl_analytics:'Статистика использования', sub_analytics:'Google Firebase Analytics — только с вашего согласия', lbl_privacy_policy:'Политика конфиденциальности', btn_open:'Открыть',
     bugreport_notify_ok:'Спасибо, отчёт отправлен',
     bugreport_notify_queued:'Нет сети — отправим позже',
     bugtype_translation:'Плохой перевод',
@@ -11381,9 +11552,9 @@ function _lfPlanSteps(av){
   if(av.deftype)  cands.push({key:'deftype', unit: LF_COST.deftype, minN:1, maxN:1});
   if(av.speechMax) cands.push({key:'speech', unit: LF_COST.speechPhrase, minN: Math.min(3, av.speechMax), maxN: av.speechMax});
 
-  // «Знайди пару» — завжди (3–5 пар)
+  // «Знайди пару» — завжди, і завжди 5 пар (менше лише якщо слів у модулі менше 5)
   const mMax = Math.max(1, Math.min(5, av.matchMax));
-  const chosen = { matching: { unit: LF_COST.matchPair, n: Math.min(3, mMax), maxN: mMax } };
+  const chosen = { matching: { unit: LF_COST.matchPair, n: mMax, maxN: mMax } };
   let remaining = LF_LESSON_BUDGET - chosen.matching.unit * chosen.matching.n;
 
   // Найдавніше-невживані першими (+ випадковість, щоб не було жорсткого циклу)
@@ -11579,7 +11750,25 @@ function _runLessonFlow(lesson, allCards){
   const matchPool = matchPoolSorted.filter(c =>
     c.term?.[primaryLang()] && c.term?.[transLang()] && (transLang()!==primaryLang() || c.short?.[primaryLang()])
   );
-  let matchCards = matchPool.slice(0, Math.min(5, matchPool.length));
+  // «Знайди пару» — завжди 5 пар (якщо в модулі вистачає слів). Порядок добору:
+  //  1) слова САМОГО уроку (flowCards — вони щойно були на кроці «Картки»);
+  //  2) якщо їх менше 5 — фрази, які користувач уже бачив і які час повторити
+  //     (due за SM-2), від найпріоритетніших;
+  //  3) далі — уже бачені, але ще не due (ближчі до повторення першими);
+  //  4) в останню чергу — ще не бачені слова модуля.
+  const _matchOk = c => c.term?.[primaryLang()] && c.term?.[transLang()] && (transLang()!==primaryLang() || c.short?.[primaryLang()]);
+  const _flowOk  = flowCards.filter(_matchOk);
+  const _flowIds = new Set(_flowOk.map(c => c.id));
+  const _rest    = matchPool.filter(c => !_flowIds.has(c.id));   // matchPool уже за SM-2-пріоритетом
+  const _isNew   = c => srIsCardNew(state, c.id);
+  const _isDue   = c => !_isNew(c) && srPriorityFromState(state, c.id) >= 1e9;
+  const matchRanked = [
+    ..._flowOk,
+    ..._rest.filter(_isDue),
+    ..._rest.filter(c => !_isNew(c) && !_isDue(c)),
+    ..._rest.filter(_isNew),
+  ];
+  let matchCards = matchRanked.slice(0, Math.min(5, matchRanked.length));
 
   // Вибираємо 1 картку Dialogue для уроку — ПРІОРИТЕТНО з власного
   // lesson.dlgCards (прив'язка діалог↔модуль, яка вже існує в базі), і
@@ -11628,7 +11817,7 @@ function _runLessonFlow(lesson, allCards){
   const plan = _lfPlanSteps({
     grammar:   grammarStep,
     matchMax:  matchCards.length,
-    extraMatch: matchPool.slice(5, 10).length,
+    extraMatch: matchRanked.slice(5, 10).length,
     dlgTurns:  dlgCardForLesson ? _dlgCardTurns(dlgCardForLesson).length : 0,
     tilesMax:  hasTiles ? tilesCards.length : 0,
     deftype:   hasDefType,
@@ -11664,7 +11853,7 @@ function _runLessonFlow(lesson, allCards){
     speechCards: speechCardsPlanned,
     matchCards,
     matchAudioCards,
-    matchExtraPools: plan.sizes.matching_x1 ? { matching_x1: matchPool.slice(5, 5 + plan.sizes.matching_x1) } : {},
+    matchExtraPools: plan.sizes.matching_x1 ? { matching_x1: matchRanked.slice(5, 5 + plan.sizes.matching_x1) } : {},
     stepCost:  plan.cost,
     tilesCards: hasTiles ? tilesCardsPlanned : [],
     allCards,
@@ -18219,6 +18408,10 @@ function debugCloudSignIn(){
   if(!email || !pw){ notify('⚠️ Введіть email і пароль'); return; }
   window.cloudSignIn?.(email, pw);
 }
+function debugCloudDelete(){
+  if(!confirm('Видалити акаунт і хмарну копію прогресу назавжди? Локальні дані на цьому пристрої залишаться.')) return;
+  Promise.resolve(window.cloudDeleteAccount?.()).then(()=>window._cloudRenderAuthUI?.());
+}
 function debugCloudBackup(){
   if(!confirm('Зберегти поточний прогрес у хмару? Попередній бекап (якщо був) буде перезаписано.')) return;
   window.cloudBackup?.();
@@ -24284,6 +24477,7 @@ function renderStreakUI(pulse=false){
   // збереженим станом (HTML має checked за замовчуванням лише як
   // початкове значення до першого рендеру).
   const sfxT=document.getElementById('sfx-toggle'); if(sfxT && typeof sfxEnabled==='function') sfxT.checked = sfxEnabled();
+  window.mConsent?.sync();
 }
 // Модалка "Стрік і заморозки" — замінює стару showStreakInfo() (яка була
 // коротким тостом фіксовано німецькою, незалежно від uiLang). Показує
