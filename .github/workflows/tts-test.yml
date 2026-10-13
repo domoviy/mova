@@ -1,0 +1,14 @@
+name: TTS test
+on: workflow_dispatch
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -U edge-tts
+      - run: pip show edge-tts | head -2
+      - run: date -u
+      - run: edge-tts --voice de-DE-SeraphinaMultilingualNeural --text "Hallo Welt" --write-media t.mp3 && ls -l t.mp3
