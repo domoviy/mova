@@ -5087,7 +5087,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '821-67ad370';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -17296,7 +17296,11 @@ function spPlayPhrase(card, tag){
       } else if(spStereoOn()){
         spSetType('playback', 'stereo-play');
       }
-      playPregenAudio(url, null, ++playGen, null, () => {
+      // Karaoke: слово, що зараз звучить, підсвічується (.tts-word.active). Таймінг — .words.json
+      // поруч з mp3 (той самий механізм, що в картках/діалогах); якщо файлу нема — без підсвітки,
+      // звук грає як завжди. Підсвічуємо рівно те поле, що озвучується (term або def).
+      const _hlEl = hasTimingFor(card.id, _spField(), primaryLang()) ? document.getElementById('sp-term') : null;
+      playPregenAudio(url, null, ++playGen, _hlEl, () => {
         spWavePlay();
         if(sfxHeld) sfxHeld.resume().then(() => spL(`route-reset: SFX ctx resumed AS=${spAS()}`)).catch(()=>{});
       });
@@ -17378,6 +17382,7 @@ function spReset(){
     mb.innerHTML = movaIcon('mic');
   }
   document.querySelectorAll('#sp-term .sp-tw').forEach(s => { s.style.color = '#fff'; });
+  try{ clearWordHighlight(document.getElementById('sp-term')); }catch(e){}
   spWaveClear();
   const lbl = document.getElementById('sp-mic-label');
   if(lbl) lbl.textContent = t('sp_tap_to_speak');
@@ -17400,6 +17405,7 @@ function spStartRecord(){
 
   // Зупиняємо аудіо перед SR
   try{ const a = getSharedAudio(); if(a){ a.pause(); a.src=''; } playGen++; }catch(e){}
+  try{ clearWordHighlight(document.getElementById('sp-term')); }catch(e){}   // karaoke: зупинене озвучення не лишає слово підсвіченим
 
   spFlushCancel();                       // холостий запис ще триває? — звільняємо мікрофон для SR
   spRepairBegin();
